@@ -39,7 +39,8 @@ for path in sorted((ROOT / 'Sources').rglob('*.swift')):
     source_builds.append(build_file('build:' + relative, source_ref))
 assets = file('assets', 'Resources/Assets.xcassets', 'folder.assetcatalog')
 info = file('info', 'Resources/Info.plist', 'text.plist.xml')
-source_refs += [assets, info]
+scene_map = file('scene-map', 'Resources/SceneMap.json', 'text.json')
+source_refs += [assets, info, scene_map]
 app = obj('app-product', 'PBXFileReference', explicitFileType='wrapper.application',
           path='MeadowJourney.app', sourceTree='BUILT_PRODUCTS_DIR', includeInIndex=0)
 unit = obj('unit-product', 'PBXFileReference', explicitFileType='wrapper.cfbundle',
@@ -70,7 +71,7 @@ app_settings = {
     'PRODUCT_NAME': '$(TARGET_NAME)', 'PRODUCT_BUNDLE_IDENTIFIER': 'com.liamchan.experiment.meadow',
     'INFOPLIST_FILE': 'Sources/Resources/Info.plist', 'GENERATE_INFOPLIST_FILE': 'NO',
     'TARGETED_DEVICE_FAMILY': '1,2', 'SUPPORTED_PLATFORMS': 'iphoneos iphonesimulator',
-    'CODE_SIGN_STYLE': 'Automatic', 'MARKETING_VERSION': '1.0.1', 'CURRENT_PROJECT_VERSION': '2',
+    'CODE_SIGN_STYLE': 'Automatic', 'MARKETING_VERSION': '1.1.0', 'CURRENT_PROJECT_VERSION': '3',
     'ASSETCATALOG_COMPILER_APPICON_NAME': 'AppIcon',
     'LD_RUNPATH_SEARCH_PATHS': ['$(inherited)', '@executable_path/Frameworks'],
     'SWIFT_EMIT_LOC_STRINGS': 'YES', 'ENABLE_PREVIEWS': 'NO',
@@ -101,7 +102,7 @@ def target(key, name, product, sources, product_type, resources=None, settings=N
 
 
 target('app-target', 'MeadowJourney', app, source_builds, 'com.apple.product-type.application',
-       resources=[build_file('assets-build', assets)], settings=app_settings)
+       resources=[build_file('assets-build', assets), build_file('scene-map-build', scene_map)], settings=app_settings)
 for key, name, product, source, kind in [
     ('unit-target', 'MeadowJourneyTests', unit, unit_ref, 'unit-test'),
     ('ui-target', 'MeadowJourneyUITests', ui, ui_ref, 'ui-testing')

@@ -1,0 +1,82 @@
+{
+  "MeadowGround": {
+    "width": 1254,
+    "height": 1254,
+    "decodedBytes": 6290064
+  },
+  "OakA": {
+    "width": 516,
+    "height": 553,
+    "decodedBytes": 1141392
+  },
+  "OakB": {
+    "width": 552,
+    "height": 469,
+    "decodedBytes": 1035552
+  },
+  "Pines": {
+    "width": 442,
+    "height": 565,
+    "decodedBytes": 998920
+  },
+  "RockLow": {
+    "width": 518,
+    "height": 326,
+    "decodedBytes": 675472
+  },
+  "RockHigh": {
+    "width": 553,
+    "height": 423,
+    "decodedBytes": 935676
+  },
+  "RockSmall": {
+    "width": 413,
+    "height": 426,
+    "decodedBytes": 703752
+  },
+  "CampTent": {
+    "width": 607,
+    "height": 404,
+    "decodedBytes": 980912
+  },
+  "WatchTower": {
+    "width": 388,
+    "height": 499,
+    "decodedBytes": 774448
+  },
+  "Shrub": {
+    "width": 501,
+    "height": 419,
+    "decodedBytes": 839676
+  },
+  "Fence": {
+    "width": 471,
+    "height": 295,
+    "decodedBytes": 555780
+  },
+  "Flowers": {
+    "width": 538,
+    "height": 355,
+    "decodedBytes": 763960
+  },
+  "Banner": {
+    "width": 400,
+    "height": 258,
+    "decodedBytes": 412800
+  },
+  "Hero1Directions": {
+    "width": 1536,
+    "height": 1536,
+    "decodedBytes": 9437184
+  },
+  "Hero2Directions": {
+    "width": 1536,
+    "height": 1536,
+    "decodedBytes": 9437184
+  },
+  "Hero3Directions": {
+    "width": 1536,
+    "height": 1536,
+    "decodedBytes": 9437184
+  }
+}

@@ -4,6 +4,10 @@ import json
 import subprocess
 import sys
 
+family = sys.argv[1] if len(sys.argv) > 1 else 'iPhone'
+if family not in ['iPhone', 'iPad']:
+    raise SystemExit('Expected iPhone or iPad simulator family')
+
 
 def version(value):
     return tuple(int(part) for part in value.split('.')[:2])
@@ -24,23 +28,25 @@ if not runtimes:
     sys.exit(2)
 runtime = max(runtimes, key=lambda item: version(item['version']))
 devices = [device for device in inventory['devices'].get(runtime['identifier'], [])
-           if device.get('isAvailable') and device['name'].startswith('iPhone')]
+           if device.get('isAvailable') and device['name'].startswith(family)]
 if devices:
-    device = next((device for device in devices if device['name'] == 'iPhone 16'), devices[0])
+    preferred_name = 'iPhone 16' if family == 'iPhone' else 'iPad Pro 13-inch (M4)'
+    device = next((device for device in devices if device['name'] == preferred_name), devices[0])
     udid = device['udid']
     name = device['name']
 else:
     types = inventory['devicetypes']
-    eligible = [kind for kind in types if kind.get('productFamily') == 'iPhone'
+    eligible = [kind for kind in types if kind.get('productFamily') == family
                 and version(kind.get('minRuntimeVersionString', '0.0')) <= version(runtime['version'])]
-    preferred = next((kind for kind in eligible if kind['name'] == 'iPhone 16'), None)
+    preferred_names = ['iPhone 16', 'iPhone 15'] if family == 'iPhone' else ['iPad Pro 13-inch (M4)', 'iPad Air 13-inch (M2)']
+    preferred = next((kind for kind in eligible if kind['name'] == preferred_names[0]), None)
     if preferred is None:
-        preferred = next((kind for kind in eligible if kind['name'] == 'iPhone 15'), None)
+        preferred = next((kind for kind in eligible if kind['name'] == preferred_names[1]), None)
     if preferred is None:
         if not eligible:
             raise SystemExit('No compatible iPhone device type installed')
         preferred = eligible[-1]
-    name = 'MeadowJourney CI iPhone'
+    name = 'MeadowJourney CI ' + family
     udid = simctl('create', name, preferred['identifier'], runtime['identifier']).strip()
 print(f'Selected {name}, {runtime["name"]}, {udid}', file=sys.stderr)
 print(udid)

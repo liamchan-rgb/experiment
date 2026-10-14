@@ -1,0 +1,22 @@
+{
+  "version": "1.1.0",
+  "build": "3",
+  "sourceCommit": "61d3ce96a458d53f6133704f5d17d9e762867548",
+  "verifiedRun": "https://github.com/liamchan-rgb/experiment/actions/runs/38526956170",
+  "tests": {
+    "modelAndAssetChecks": 12,
+    "iPhoneUITests": 1,
+    "iPadUITests": 1
+  },
+  "iPadScreenshotPixels": [
+    2752,
+    2064
+  ],
+  "videoPixels": [
+    2752,
+    2064
+  ],
+  "videoFramesPerSecond": 30,
+  "IPA_SHA256": "0e37e02e1374581205b1ffc6c96d09692e86a2c7965d9f638664137f734986c8",
+  "pendingPolish": "Uniform ground texture, global stochastic sampling and road material UV binding remain on feat/layered-living-scene; GitHub declined the new macOS job because account payments failed or the spending limit needs adjustment."
+}

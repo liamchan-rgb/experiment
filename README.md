@@ -1,56 +1,54 @@
-# 安然 · 林间行旅
+# 安然 · 林间行旅 1.1
 
-参考提供的金绿色林间地图制作的原生 iOS 游戏 Demo。Swift + UIKit + SpriteKit，无第三方运行依赖，支持 iPhone / iPad、iOS 15 及以上，横屏运行。所有源码、参考图、生成的原始素材、打包资产和 CI 配置都保存在本仓库。
+原生 Swift / UIKit / SpriteKit iOS 游戏 Demo，支持 iPhone / iPad、iOS 15 及以上，横屏、离线运行，无第三方运行依赖。安装名称为 `MeadowJourney`，便于 SideStore 重签。
+
+## 动态场景
+
+场景由 `SceneMap.json` 和独立资源搭建：地表纹理、两类阔叶树、松树、三类岩丘、营地、塔楼、栅栏、灌木、花草和独立蓝旗。141 个物件位置经过配置，额外花草按固定种子布置。旧整图背景已移出 App 的运行资源。
+
+实时效果包括双层流动雾、光束、移动云影、缓慢变化的物件投影、树冠与花草风动、飘动蓝旗和空气微粒。素材保留像素画的形体明暗；环境效果在运行时计算。人物和环境按脚底位置排序，UI 标签单独显示。
+
+三位人物各有 1536 × 1536 动作图集，四个朝向，每个方向包含待机及三帧行走。缩放保持手指下的地图位置，iPad 通过上下扩展环境显示完整核心构图。
 
 ## 操作
 
-- **▶ / Ⅱ**：三位旅人沿土路往返，或暂停。
-- **点选人物，然后点土路**：让选中的人物沿道路移动到点击的位置并停下。人物显示 P1、P2、P3 标记。
-- **↻**：恢复样例中的人物位置、暂停状态和缩放。
-- **＋**：循环放大；也可双指缩放、双指拖动。
-- **问号**：触发林间微光。左上角“安然”可查看操作说明。
+- ▶ / Ⅱ：沿道路巡逻或暂停，继续时保留已经指定的目的地。
+- 点选 P1 / P2 / P3，再点道路：沿连接的道路最短路径移动并停下。
+- 点问号：选中旅人抵达探索点后解锁地点并产生微光。
+- ↻：恢复初始人物位置、镜头与探索状态。
+- ＋、双指缩放和拖动：调整镜头。
+- 点“安然”查看说明；长按“安然”切换帧率、物件数、纹理预算与进程内存显示。
 
-初始构图保留蓝旗营地、两座塔楼、土路、岩丘、花草和暖色光照。背景与人物分离，行走使用透明帧动画，路线由地图中的土路折线定义。宽屏会等比例填满屏幕，按钮适配安全区。
+## iPad / SideStore 验收
 
-## Xcode 工程
+[直接下载 1.1.0 IPA](https://github.com/liamchan-rgb/experiment/raw/refs/heads/main/Downloads/MeadowJourney-v1.1.0-unsigned.ipa)。在 Safari 保存到“文件”，再打开 SideStore → My Apps → ＋ → 选择带 `v1.1.0` 的新文件重签。版本为 **1.1.0（build 3）**，安装后名称应为 MeadowJourney。
 
-打开 `MeadowJourney.xcodeproj`，选择共享 Scheme **MeadowJourney**。工程已提交，可直接构建，不需要 XcodeGen、CocoaPods 或网络下载依赖。
+最新 CI 产物也在 Actions 页：`MeadowJourney-unsigned-IPA` 是包含 IPA 的 Artifact ZIP；`ios-visual-review-*` 包含 iPhone / iPad 原尺寸截图、iPad 动态录像和 RuntimeMetrics.json；完整 Xcode 测试结果在 `ios-test-results-*`；`xcode-build-logs-*` 即使失败也上传。
+
+运行指标中的纹理数值为基础 RGBA 解码预算，约 42.4 MiB；进程内存单独实测。CI 的帧率与内存来自 macOS 的 iPad 模拟器，真机指标可在你自己的 iPad 上长按“安然”查看。
+
+## 构建
+
+打开已提交的 `MeadowJourney.xcodeproj`，共享 Scheme 为 MeadowJourney，不需要 XcodeGen 或 CocoaPods。
 
 ```bash
-xcodebuild build \
-  -project MeadowJourney.xcodeproj -scheme MeadowJourney \
+xcodebuild build -project MeadowJourney.xcodeproj -scheme MeadowJourney \
   -configuration Debug -destination 'generic/platform=iOS Simulator' \
   CODE_SIGNING_ALLOWED=NO
 ```
 
-目录：`Sources/` 包含 App、游戏与 UI；`Tests/` 验证路线投影、恒速移动、端点反弹和指定位置停止；`UITests/` 验证播放、暂停、缩放、复位，并保存界面截图。`Art/` 保留原图和生成素材，资产说明见 [docs/ASSETS.md](docs/ASSETS.md)。
-
-## GitHub Actions
-
-[iOS Build and Visual Demo](.github/workflows/ios.yml) 在每次 PR 新建、更新、重新打开、转为待审时运行，也支持 main 分支推送和手动触发。使用 **macos-15** 和 Runner 默认的 Xcode，并记录具体版本。
-
-1. 检查实际 `.xcodeproj` 与共享 Scheme，编译 Swift 模拟器版本。
-2. 根据所选 Xcode 的 SDK 选择兼容的已安装 iOS Runtime，选择或创建 iPhone 模拟器；缺少 Runtime 时下载对应平台，再执行路线单元测试和 UI 测试。
-3. 构建设备 Release archive，打包未签名 IPA。
-4. 上传 `xcode-build-logs-*`、`ios-visual-review-*`、`MeadowJourney-unsigned-IPA` 三类 Artifact。即使构建失败，已有编译日志与测试结果仍上传；`pipefail` 保证 `tee` 不会掩盖失败。
-
-## SideStore 视觉验收
-
-**iPad 直接下载：** [MeadowJourney 1.0.1 IPA](https://github.com/liamchan-rgb/experiment/raw/refs/heads/main/Downloads/MeadowJourney-v1.0.1-unsigned.ipa)。在 Safari 保存到“文件”后，打开 SideStore → My Apps（我的应用）→ ＋ → 选择该文件重签安装。该链接直接提供 1.0.1（build 2）修复版 IPA，安装名称为 MeadowJourney，避免 SideStore 的中文 appIdName 注册错误。详细步骤见 [Downloads/README.md](Downloads/README.md)。
-
-在成功的 Actions 运行页面底部下载 **MeadowJourney-unsigned-IPA**，解压 Artifact ZIP 得到 `MeadowJourney-unsigned.ipa`。在已配置好的 SideStore 中导入这个 IPA，由 SideStore 使用你的 Apple ID 重签后安装。应用离线运行，没有 App 扩展或特殊签名权限。
-
-这是**未签名的真机 arm64 IPA**，不能直接点开安装，也不是模拟器包；不需要在此仓库存放 Apple 证书。截图位于 `ios-visual-review-*` 中，原始测试报告可在 Xcode 打开 `.xcresult`。
-
-本地打包：
+PR 新建、更新、重新打开、转为待审时自动在 macos-15 / Xcode 编译。工作流选择或创建兼容 iPhone 和 iPad，验证路线、目的地保留、方向资源绑定和两种设备的界面，记录 18 秒 iPad 动态演示，最后构建设备 Release archive 和未签名 IPA。`pipefail` 保留构建失败状态。
 
 ```bash
-xcodebuild archive \
-  -project MeadowJourney.xcodeproj -scheme MeadowJourney \
+xcodebuild archive -project MeadowJourney.xcodeproj -scheme MeadowJourney \
   -configuration Release -destination 'generic/platform=iOS' \
   -archivePath build/MeadowJourney.xcarchive \
   CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO
 bash scripts/package-ipa.sh build/MeadowJourney.xcarchive build/MeadowJourney-unsigned.ipa
 ```
 
-静态检查：`python3 scripts/validate-project.py`。若维护工程文件，可用 `python3 scripts/generate-project.py` 重生成同一组确定性 target ID 和共享 Scheme。
+资源说明见 [docs/ASSETS.md](docs/ASSETS.md)。静态检查：`python3 scripts/validate-project.py`。修改项目绑定后可运行 `python3 scripts/generate-project.py`。
+
+## 此次交付状态
+
+[动态录像与原尺寸截图](Media/README.md)和 1.1.0 IPA 对应已通过完整验证的构建。最后的草地与道路材质调整保留在 `feat/layered-living-scene`：GitHub 以账户付款失败或支出上限需要调整为由拒绝启动新的 macOS 构建，因此这些调整尚未进入当前 IPA。

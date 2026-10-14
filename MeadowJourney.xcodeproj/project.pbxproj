@@ -15,6 +15,16 @@
 			"isa" = "PBXBuildFile";
 			"fileRef" = 12BE6F43C250EA1C0ABFBF32;
 		};
+		F1DA447D6A7A060E6C4C4E80 = {
+			"isa" = "PBXFileReference";
+			"lastKnownFileType" = "sourcecode.swift";
+			"path" = "Game/EnvironmentShaders.swift";
+			"sourceTree" = "<group>";
+		};
+		A0A1CFB1B359C88FE613E3FB = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = F1DA447D6A7A060E6C4C4E80;
+		};
 		269650C38F8DD9DB3EA6712D = {
 			"isa" = "PBXFileReference";
 			"lastKnownFileType" = "sourcecode.swift";
@@ -25,6 +35,36 @@
 			"isa" = "PBXBuildFile";
 			"fileRef" = 269650C38F8DD9DB3EA6712D;
 		};
+		A05AAE886C1A644A2AF1E17A = {
+			"isa" = "PBXFileReference";
+			"lastKnownFileType" = "sourcecode.swift";
+			"path" = "Game/JourneySimulation.swift";
+			"sourceTree" = "<group>";
+		};
+		EAE0075545ABB42C40815692 = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = A05AAE886C1A644A2AF1E17A;
+		};
+		99D30FA4C024C21330B21291 = {
+			"isa" = "PBXFileReference";
+			"lastKnownFileType" = "sourcecode.swift";
+			"path" = "Game/LivingWorld.swift";
+			"sourceTree" = "<group>";
+		};
+		9230100C79CFE05C6D40D51A = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = 99D30FA4C024C21330B21291;
+		};
+		1CAF9877A5F6B9813F15739A = {
+			"isa" = "PBXFileReference";
+			"lastKnownFileType" = "sourcecode.swift";
+			"path" = "Game/SceneDefinition.swift";
+			"sourceTree" = "<group>";
+		};
+		85ECA9C97CEF1442EB09388B = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = 1CAF9877A5F6B9813F15739A;
+		};
 		4B5D87B0E3C770DAA09EE100 = {
 			"isa" = "PBXFileReference";
 			"lastKnownFileType" = "sourcecode.swift";
@@ -34,6 +74,16 @@
 		7A73B65B6F0455441E0B5B86 = {
 			"isa" = "PBXBuildFile";
 			"fileRef" = 4B5D87B0E3C770DAA09EE100;
+		};
+		D0760787AC13759F118D8DE8 = {
+			"isa" = "PBXFileReference";
+			"lastKnownFileType" = "sourcecode.swift";
+			"path" = "Game/TrailNetwork.swift";
+			"sourceTree" = "<group>";
+		};
+		BB374ADDA90DD49DAF266AD2 = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = D0760787AC13759F118D8DE8;
 		};
 		5595A96AECADD87EFD6DE6D6 = {
 			"isa" = "PBXFileReference";
@@ -65,6 +115,12 @@
 			"isa" = "PBXFileReference";
 			"lastKnownFileType" = "text.plist.xml";
 			"path" = "Resources/Info.plist";
+			"sourceTree" = "<group>";
+		};
+		9D2CA8BB80F6B45E61F8F68A = {
+			"isa" = "PBXFileReference";
+			"lastKnownFileType" = "text.json";
+			"path" = "Resources/SceneMap.json";
 			"sourceTree" = "<group>";
 		};
 		4E783A9E10D2A8ABA38CD11C = {
@@ -106,12 +162,18 @@
 			"sourceTree" = "<group>";
 			"children" = (
 				12BE6F43C250EA1C0ABFBF32,
+				F1DA447D6A7A060E6C4C4E80,
 				269650C38F8DD9DB3EA6712D,
+				A05AAE886C1A644A2AF1E17A,
+				99D30FA4C024C21330B21291,
+				1CAF9877A5F6B9813F15739A,
 				4B5D87B0E3C770DAA09EE100,
+				D0760787AC13759F118D8DE8,
 				5595A96AECADD87EFD6DE6D6,
 				3010D05254CDB3E5CA6C1B15,
 				3685E330EC5277A9DD5661C6,
 				59BD0A3FF43B32849B319E64,
+				9D2CA8BB80F6B45E61F8F68A,
 			);
 		};
 		A619C04D8A87AB070162A099 = {
@@ -154,6 +216,10 @@
 			"isa" = "PBXBuildFile";
 			"fileRef" = 3685E330EC5277A9DD5661C6;
 		};
+		DC6E2079C400C6682BC65BAF = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = 9D2CA8BB80F6B45E61F8F68A;
+		};
 		9E376739A3B9742C9CF18DEB = {
 			"isa" = "XCBuildConfiguration";
 			"name" = "Debug";
@@ -165,8 +231,8 @@
 				"TARGETED_DEVICE_FAMILY" = "1,2";
 				"SUPPORTED_PLATFORMS" = "iphoneos iphonesimulator";
 				"CODE_SIGN_STYLE" = "Automatic";
-				"MARKETING_VERSION" = "1.0.1";
-				"CURRENT_PROJECT_VERSION" = "2";
+				"MARKETING_VERSION" = "1.1.0";
+				"CURRENT_PROJECT_VERSION" = "3";
 				"ASSETCATALOG_COMPILER_APPICON_NAME" = "AppIcon";
 				"LD_RUNPATH_SEARCH_PATHS" = (
 					"$(inherited)",
@@ -192,8 +258,8 @@
 				"TARGETED_DEVICE_FAMILY" = "1,2";
 				"SUPPORTED_PLATFORMS" = "iphoneos iphonesimulator";
 				"CODE_SIGN_STYLE" = "Automatic";
-				"MARKETING_VERSION" = "1.0.1";
-				"CURRENT_PROJECT_VERSION" = "2";
+				"MARKETING_VERSION" = "1.1.0";
+				"CURRENT_PROJECT_VERSION" = "3";
 				"ASSETCATALOG_COMPILER_APPICON_NAME" = "AppIcon";
 				"LD_RUNPATH_SEARCH_PATHS" = (
 					"$(inherited)",
@@ -219,8 +285,13 @@
 			"buildActionMask" = 2147483647;
 			"files" = (
 				A9B47589F1C47027677602E0,
+				A0A1CFB1B359C88FE613E3FB,
 				435A1C7E2595EA1985DE130C,
+				EAE0075545ABB42C40815692,
+				9230100C79CFE05C6D40D51A,
+				85ECA9C97CEF1442EB09388B,
 				7A73B65B6F0455441E0B5B86,
+				BB374ADDA90DD49DAF266AD2,
 				ACC04BAE083F06BFDC7ED36E,
 				3CECB03B99CDC07317983836,
 			);
@@ -238,6 +309,7 @@
 			"buildActionMask" = 2147483647;
 			"files" = (
 				716E9590E60B3AFA6E62BF18,
+				DC6E2079C400C6682BC65BAF,
 			);
 			"runOnlyForDeploymentPostprocessing" = 0;
 		};
