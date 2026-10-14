@@ -39,7 +39,8 @@ final class EnvironmentShaders {
         // Exchange the legs below the hem without flipping asymmetric equipment.
         bool frontBack = gait.x >= 0.0 && (gait.x < 0.5 || (gait.x > 1.5 && gait.x < 2.5));
         if (frontBack && gait.y > 2.5) {
-            float lower = 1.0 - smoothstep(0.295, 0.335, uv.y);
+            float lower = 1.0 - smoothstep(0.285, 0.315, uv.y);
+            lower *= smoothstep(0.28, 0.32, uv.x) * (1.0 - smoothstep(0.68, 0.72, uv.x));
             // Blend colors, never UVs: interpolating opposing UVs collapses
             // a whole scanline onto the center texel and stretches the hem.
             return mix(texture2D(tex, uv), texture2D(tex, vec2(1.0 - uv.x, uv.y)), lower);
