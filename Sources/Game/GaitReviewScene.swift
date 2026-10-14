@@ -98,7 +98,8 @@ final class GaitReviewScene: SKScene {
                 && viewport.contains(content.convert(CGPoint(x: frame.maxX, y: frame.maxY), to: self))
         }
         if let view, visible, content.xScale > 0, size.width > 100, size.height > 100 {
-            view.accessibilityValue = "步态验收：三位人物 · " + ["正面", "向左", "背面", "向右"][direction]
+            let description = "步态验收：三位人物 · " + ["正面", "向左", "背面", "向右"][direction]
+            if view.accessibilityValue != description { view.accessibilityValue = description }
         }
         for index in actors.indices {
             let texture = frames[index][direction][frame]
