@@ -90,7 +90,14 @@ final class GaitReviewScene: SKScene {
         heading.text = "四方向步态 · " + ["正面", "向左", "背面", "向右"][direction]
         // UI verification can identify the fitted, visible review instead of
         // accepting a successfully launched app with all sprites off-screen.
-        if let view, content.xScale > 0, size.width > 100, size.height > 100 {
+        let viewport = CGRect(origin: .zero, size: size)
+        let visible = actors.count == 3 && actors.allSatisfy { actor in
+            let frame = actor.frame
+            return actor.size.width > 100 && actor.size.height > 100
+                && viewport.contains(content.convert(CGPoint(x: frame.minX, y: frame.minY), to: self))
+                && viewport.contains(content.convert(CGPoint(x: frame.maxX, y: frame.maxY), to: self))
+        }
+        if let view, visible, content.xScale > 0, size.width > 100, size.height > 100 {
             view.accessibilityValue = "步态验收：三位人物 · " + ["正面", "向左", "背面", "向右"][direction]
         }
         for index in actors.indices {
