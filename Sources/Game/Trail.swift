@@ -10,7 +10,9 @@ struct Trail {
         precondition(points.count >= 2, "A trail needs two points")
         self.points = points
         segmentLengths = zip(points, points.dropFirst()).map { a, b in
-            hypot(b.x - a.x, b.y - a.y)
+            let dx = b.x - a.x
+            let dy = b.y - a.y
+            return (dx * dx + dy * dy).squareRoot()
         }
         length = segmentLengths.reduce(0, +)
     }
