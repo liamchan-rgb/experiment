@@ -22,6 +22,26 @@ def save_asset(name, image):
                       'decodedBytes': image.width * image.height * 4}
 
 
+def main_figure(cell):
+    """Ignore a neighboring row's stray boot pixels outside the main figure."""
+    mask = cell.getchannel('A').point(lambda alpha: 255 if alpha > 80 else 0)
+    bands = []
+    start = None
+    for y in range(cell.height + 1):
+        occupied = y < cell.height and mask.crop((0, y, cell.width, y + 1)).getbbox() is not None
+        if occupied and start is None:
+            start = y
+        elif not occupied and start is not None:
+            bands.append((start, y))
+            start = None
+    if not bands:
+        raise ValueError('Empty hero frame')
+    top, bottom = max(bands, key=lambda band: band[1] - band[0])
+    cell = cell.crop((0, top, cell.width, bottom))
+    bounds = cell.getchannel('A').point(lambda alpha: 255 if alpha > 80 else 0).getbbox()
+    return cell.crop(bounds)
+
+
 save_asset('MeadowGround', Image.open(RAW / 'ground.png').convert('RGB'))
 
 # Regions follow the actual atlas's transparent gutters, rather than assuming equal object widths.
@@ -57,10 +77,7 @@ for hero in range(1, 4):
         for column in range(4):
             cell = source.crop((column * source.width // 4, row * source.height // 4,
                                 (column + 1) * source.width // 4, (row + 1) * source.height // 4))
-            bounds = cell.getchannel('A').point(lambda alpha: 255 if alpha > 80 else 0).getbbox()
-            if bounds is None:
-                raise ValueError('Empty hero frame')
-            cells.append(cell.crop(bounds))
+            cells.append(main_figure(cell))
     # One scale per character preserves frame-to-frame body dimensions and stride variation.
     scale = 240 / max(cell.height for cell in cells)
     atlas = Image.new('RGBA', (1536, 1536))
