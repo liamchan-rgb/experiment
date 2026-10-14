@@ -6,17 +6,73 @@ on:
   push:
     branches: [main]
   workflow_dispatch:
+    inputs:
+      review_run:
+        description: 'Successful run whose existing visual artifacts should be repackaged (leave empty for a full build)'
+        required: false
+        type: string
 
 permissions:
   contents: read
+  actions: read
 
 concurrency:
   group: ios-${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
   cancel-in-progress: true
 
 jobs:
+  recover-review:
+    name: Prepare compact review from an existing successful build
+    if: ${{ github.event_name == 'workflow_dispatch' && inputs.review_run != '' }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    env:
+      GH_TOKEN: ${{ github.token }}
+      REVIEW_RUN: ${{ inputs.review_run }}
+    steps:
+      - name: Verify provenance and download the existing review
+        run: |
+          set -euo pipefail
+          [[ "$REVIEW_RUN" =~ ^[0-9]+$ ]]
+          mkdir -p compact
+          gh run view "$REVIEW_RUN" --repo "$GITHUB_REPOSITORY" \
+            --json databaseId,headSha,headBranch,conclusion,url > compact/SourceRun.json
+          python3 -c 'import json; assert json.load(open("compact/SourceRun.json"))["conclusion"] == "success"'
+          gh run download "$REVIEW_RUN" --repo "$GITHUB_REPOSITORY" \
+            --pattern "ios-visual-review-$REVIEW_RUN-*" --dir original
+      - name: Compress recordings at their original pixel dimensions
+        run: |
+          set -euo pipefail
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq ffmpeg
+          python3 - <<'PY'
+          import shutil, subprocess
+          from pathlib import Path
+          source = Path('original')
+          target = Path('compact')
+          for file in source.rglob('*'):
+              if file.is_file() and file.suffix in ['.png', '.json']:
+                  output = target / file.relative_to(source)
+                  output.parent.mkdir(parents=True, exist_ok=True)
+                  shutil.copy2(file, output)
+          for file in source.rglob('*.mp4'):
+              output = target / file.relative_to(source)
+              output.parent.mkdir(parents=True, exist_ok=True)
+              subprocess.run(['ffmpeg', '-hide_banner', '-loglevel', 'warning', '-y',
+                              '-i', str(file), '-an', '-c:v', 'libx264', '-preset', 'fast',
+                              '-crf', '20', '-pix_fmt', 'yuv420p', '-r', '30',
+                              '-movflags', '+faststart', str(output)], check=True)
+          PY
+      - uses: actions/upload-artifact@v7
+        with:
+          name: ios-compact-review-${{ inputs.review_run }}
+          path: compact/
+          if-no-files-found: error
+          retention-days: 30
+
   build:
     name: Xcode compile, test and unsigned IPA
+    if: ${{ github.event_name != 'workflow_dispatch' || inputs.review_run == '' }}
     runs-on: macos-15
     timeout-minutes: 45
     defaults:
