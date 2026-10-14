@@ -28,6 +28,7 @@ final class EnvironmentShaders {
     """
 
     init() {
+        let clock = time
         let commonAttributes = [SKAttribute(name: "a_origin", type: .vectorFloat2),
                                 SKAttribute(name: "a_extent", type: .vectorFloat2),
                                 SKAttribute(name: "a_wind", type: .float),
@@ -50,8 +51,8 @@ final class EnvironmentShaders {
             gl_FragColor = color;
         }
         """
-        ground = SKShader(source: surface, uniforms: [time])
-        vegetation = SKShader(source: surface, uniforms: [time])
+        ground = SKShader(source: surface, uniforms: [clock])
+        vegetation = SKShader(source: surface, uniforms: [clock])
         ground.attributes = commonAttributes
         vegetation.attributes = commonAttributes
         shadow = SKShader(source: """
@@ -90,22 +91,22 @@ final class EnvironmentShaders {
                 vec3 tint = mix(vec3(0.85, 0.88, 0.72), vec3(1.0, 0.94, 0.78), u_layer);
                 gl_FragColor = vec4(tint * a, a);
             }
-            """, uniforms: [time, SKUniform(name: "u_layer", float: layer)])
+            """, uniforms: [clock, SKUniform(name: "u_layer", float: layer)])
         }
         backMist = mist(layer: 0)
         frontMist = mist(layer: 1)
         sunlight = SKShader(source: """
         void main() {
             vec2 p = vec2(-160.0, 940.0) + v_tex_coord * vec2(1600.0, -1160.0);
-            float cross = p.x - p.y * 0.67 + sin(u_sceneTime * 0.065) * 28.0;
-            float rays = pow(max(0.0, sin(cross * 0.026)), 24.0);
-            rays += pow(max(0.0, sin(cross * 0.017 + 1.3)), 32.0) * 0.5;
+            float axis = p.x - p.y * 0.67 + sin(u_sceneTime * 0.065) * 28.0;
+            float rays = pow(max(0.0, sin(axis * 0.026)), 24.0);
+            rays += pow(max(0.0, sin(axis * 0.017 + 1.3)), 32.0) * 0.5;
             float falloff = exp(-length(p - vec2(5.0, -90.0)) * 0.0015);
             float glow = exp(-length(p - vec2(-30.0, -140.0)) * 0.003) * 0.10;
             float a = (rays * 0.18 + glow) * falloff * (0.9 + 0.1 * sin(u_sceneTime * 0.28));
             gl_FragColor = vec4(vec3(1.0, 0.86, 0.52) * a, a);
         }
-        """, uniforms: [time])
+        """, uniforms: [clock])
     }
 
     func apply(_ shader: SKShader, to node: SKSpriteNode, origin: CGPoint,
