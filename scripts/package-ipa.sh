@@ -7,6 +7,19 @@ app_path="$archive_path/Products/Applications/MeadowJourney.app"
 test -d "$app_path"
 test -f "$app_path/MeadowJourney"
 test -f "$app_path/Assets.car"
+python3 - "$app_path/Info.plist" <<'PY'
+import plistlib, re, sys
+with open(sys.argv[1], 'rb') as file:
+    info = plistlib.load(file)
+for key in ['CFBundleName', 'CFBundleDisplayName']:
+    name = info.get(key, '')
+    if not re.fullmatch(r'[A-Za-z][A-Za-z0-9 -]*', name):
+        raise SystemExit(f'{key} is not safe for SideStore App ID registration: {name!r}')
+if info.get('CFBundleSupportedPlatforms') != ['iPhoneOS']:
+    raise SystemExit('Expected a physical-device iPhoneOS archive')
+print('SideStore package metadata verified:', info['CFBundleDisplayName'],
+      info['CFBundleShortVersionString'], 'build', info['CFBundleVersion'])
+PY
 mkdir -p "$(dirname "$output_path")"
 output_dir="$(cd "$(dirname "$output_path")" && pwd)"
 output_name="$(basename "$output_path")"
