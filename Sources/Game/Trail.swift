@@ -18,6 +18,8 @@ struct Trail {
     }
 
     func point(at distance: CGFloat) -> CGPoint {
+        if distance <= 0 { return points.first! }
+        if distance >= length { return points.last! }
         var remaining = max(0, min(distance, length))
         for index in segmentLengths.indices {
             let segment = segmentLengths[index]
