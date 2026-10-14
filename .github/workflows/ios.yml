@@ -27,7 +27,7 @@ jobs:
       SCHEME: MeadowJourney
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
       - name: Inspect Xcode and the checked-in project
         run: |
@@ -107,7 +107,7 @@ jobs:
 
       - name: Upload build logs even on failure
         if: ${{ always() }}
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: xcode-build-logs-${{ github.run_id }}-${{ github.run_attempt }}
           path: build/logs/
@@ -116,7 +116,7 @@ jobs:
 
       - name: Upload test results and visual screenshots
         if: ${{ always() }}
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: ios-visual-review-${{ github.run_id }}-${{ github.run_attempt }}
           path: |
@@ -126,7 +126,7 @@ jobs:
           retention-days: 30
 
       - name: Upload SideStore re-signable unsigned IPA
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: MeadowJourney-unsigned-IPA
           path: build/MeadowJourney-unsigned.ipa
