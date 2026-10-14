@@ -9,3 +9,6 @@ xcuserdata/
 __pycache__/
 *.pyc
 
+
+# Keep the review IPA directly downloadable on iPad.
+!Downloads/*.ipa

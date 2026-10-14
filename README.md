@@ -36,6 +36,8 @@ xcodebuild build \
 
 ## SideStore 视觉验收
 
+**iPad 直接下载：** [MeadowJourney-unsigned.ipa](https://github.com/liamchan-rgb/experiment/raw/refs/heads/main/Downloads/MeadowJourney-unsigned.ipa)。在 Safari 保存到“文件”后，打开 SideStore → My Apps（我的应用）→ ＋ → 选择该文件重签安装。该链接直接提供 IPA。详细步骤见 [Downloads/README.md](Downloads/README.md)。
+
 在成功的 Actions 运行页面底部下载 **MeadowJourney-unsigned-IPA**，解压 Artifact ZIP 得到 `MeadowJourney-unsigned.ipa`。在已配置好的 SideStore 中导入这个 IPA，由 SideStore 使用你的 Apple ID 重签后安装。应用离线运行，没有 App 扩展或特殊签名权限。
 
 这是**未签名的真机 arm64 IPA**，不能直接点开安装，也不是模拟器包；不需要在此仓库存放 Apple 证书。截图位于 `ios-visual-review-*` 中，原始测试报告可在 Xcode 打开 `.xcresult`。
