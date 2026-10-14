@@ -35,13 +35,16 @@ final class EnvironmentShaders {
         float warmth = exp(-length(p - vec2(-100.0, -170.0)) * 0.0012);
         return 0.77 + cloud * 0.25 + warmth * 0.08;
     }
-    vec2 legPoseUV(vec2 uv, vec2 gait) {
+    vec4 poseSample(sampler2D tex, vec2 uv, vec2 gait) {
         // Exchange the legs below the hem without flipping asymmetric equipment.
         bool frontBack = gait.x >= 0.0 && (gait.x < 0.5 || (gait.x > 1.5 && gait.x < 2.5));
         if (frontBack && gait.y > 2.5) {
-            uv.x = mix(uv.x, 1.0 - uv.x, 1.0 - smoothstep(0.295, 0.345, uv.y));
+            float lower = 1.0 - smoothstep(0.295, 0.335, uv.y);
+            // Blend colors, never UVs: interpolating opposing UVs collapses
+            // a whole scanline onto the center texel and stretches the hem.
+            return mix(texture2D(tex, uv), texture2D(tex, vec2(1.0 - uv.x, uv.y)), lower);
         }
-        return uv;
+        return texture2D(tex, uv);
     }
     """
 
@@ -54,13 +57,13 @@ final class EnvironmentShaders {
                           SKAttribute(name: "a_gait", type: .vectorFloat2)]
         vegetation = SKShader(source: Self.noise + """
         void main() {
-            vec2 uv = legPoseUV(v_tex_coord, a_gait);
+            vec2 uv = v_tex_coord;
             if (a_wind > 1.5) {
                 uv.y += sin(uv.x * 10.0 - u_sceneTime * 3.8 + a_phase) * 0.04 * uv.x;
             } else {
                 uv.x += sin(u_sceneTime * 1.4 + a_phase + uv.y * 3.0) * 0.011 * a_wind * uv.y * uv.y;
             }
-            vec4 color = texture2D(u_texture, clamp(uv, 0.001, 0.999));
+            vec4 color = poseSample(u_texture, clamp(uv, 0.001, 0.999), a_gait);
             bool profile = (a_gait.x > 0.5 && a_gait.x < 1.5) || a_gait.x > 2.5;
             if (profile && (a_gait.y == 1.0 || a_gait.y == 3.0)) {
                 float nearSide = a_gait.x < 2.0 ? 1.0 - smoothstep(0.46, 0.54, uv.x) : smoothstep(0.46, 0.54, uv.x);
@@ -100,7 +103,7 @@ final class EnvironmentShaders {
         shadow = SKShader(source: Self.noise + """
         float silhouette(vec2 uv) {
             float inside = step(0.0, uv.x) * step(uv.x, 1.0) * step(0.0, uv.y) * step(uv.y, 1.0);
-            return texture2D(u_texture, clamp(legPoseUV(uv, a_gait), 0.001, 0.999)).a * inside;
+            return poseSample(u_texture, clamp(uv, 0.001, 0.999), a_gait).a * inside;
         }
         void main() {
             vec2 local = (v_tex_coord - vec2(0.5)) * a_extent + vec2(a_body.y * a_cast.x * (0.5 - a_body.z), a_body.y * a_cast.y * (a_body.z - 0.5));

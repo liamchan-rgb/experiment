@@ -177,6 +177,8 @@ final class TrailTests: XCTestCase {
             effects.apply(effects.vegetation, to: node, origin: .zero, extent: node.size, gait: SIMD2(Float(direction), 3))
             let right = try renderedPixels(node, in: view)
             XCTAssertGreaterThan(pixelDifference(left, right), 0.5, "Opposite leg contact cannot render the same pose")
+            XCTAssertLessThanOrEqual(widestOpaqueRow(right), widestOpaqueRow(left) + 2,
+                                     "The hem must not stretch into the transparent frame gutters")
         }
     }
 
@@ -198,5 +200,14 @@ final class TrailTests: XCTestCase {
     private func pixelDifference(_ first: [UInt8], _ second: [UInt8]) -> Double {
         guard first.count == second.count, !first.isEmpty else { return 0 }
         return Double(zip(first, second).reduce(0) { $0 + abs(Int($1.0) - Int($1.1)) }) / Double(first.count)
+    }
+
+    private func widestOpaqueRow(_ pixels: [UInt8]) -> Int {
+        let width = Int(Double(pixels.count / 4).squareRoot())
+        guard width > 0 else { return 0 }
+        return (0..<width).map { y in
+            let covered = (0..<width).filter { pixels[(y * width + $0) * 4 + 3] > 32 }
+            return covered.isEmpty ? 0 : covered.last! - covered.first! + 1
+        }.max() ?? 0
     }
 }
