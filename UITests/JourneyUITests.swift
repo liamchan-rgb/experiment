@@ -1,6 +1,20 @@
 import XCTest
 
 final class JourneyUITests: XCTestCase {
+    func testFourDirectionReviewSurvivesInitialViewLayout() {
+        continueAfterFailure = false
+        XCUIDevice.shared.orientation = .landscapeLeft
+        let app = XCUIApplication()
+        app.launchArguments = ["-gaitReview"]
+        app.launch()
+        let map = app.otherElements["meadowMap"]
+        let ready = NSPredicate(format: "value BEGINSWITH %@", "步态验收：三位人物")
+        expectation(for: ready, evaluatedWith: map)
+        waitForExpectations(timeout: 15)
+        XCTAssertGreaterThan(map.frame.width, map.frame.height)
+        capture("06-four-direction-review")
+    }
+
     func testPlaybackResetZoomAndCapture() {
         continueAfterFailure = false
         XCUIDevice.shared.orientation = .landscapeLeft

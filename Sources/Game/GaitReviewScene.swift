@@ -4,6 +4,9 @@ import SpriteKit
 /// textures and distance-to-pose mapping at a size suitable for visual checking.
 final class GaitReviewScene: SKScene {
     private let effects = EnvironmentShaders()
+    private let content = SKNode()
+    private let ground = SKSpriteNode(color: .white, size: CGSize(width: 1, height: 1))
+    private let canvas = CGSize(width: 1280, height: 720)
     private var frames: [[[SKTexture]]] = []
     private var actors: [SKSpriteNode] = []
     private var shadows: [ProjectedShadow] = []
@@ -13,11 +16,14 @@ final class GaitReviewScene: SKScene {
 
     override func didMove(to view: SKView) {
         guard actors.isEmpty else { return }
-        let scale = min(size.width / 1280, size.height / 720)
-        let ground = SKSpriteNode(texture: SKTexture(imageNamed: "MeadowGround"), size: size)
-        ground.position = CGPoint(x: size.width / 2, y: size.height / 2)
+        // UIKit may present this scene before the SKView has a nonzero frame.
+        // Build at stable logical dimensions and fit the content on every resize.
+        let scale: CGFloat = 1
+        let size = canvas
+        ground.texture = SKTexture(imageNamed: "MeadowGround")
         ground.shader = effects.ground
         addChild(ground)
+        addChild(content)
         let road = SKShapeNode(rect: CGRect(x: -10, y: size.height * 0.36 - 14 * scale, width: size.width + 20, height: 35 * scale))
         road.fillColor = .white
         road.strokeColor = .clear
@@ -26,7 +32,7 @@ final class GaitReviewScene: SKScene {
         road.attributeValues = ["a_origin": SKAttributeValue(vectorFloat2: SIMD2(640, 442)),
                                 "a_extent": SKAttributeValue(vectorFloat2: SIMD2(1280, 35))]
         road.zPosition = 10
-        addChild(road)
+        content.addChild(road)
         for index in 0..<3 {
             let directions = HeroFrames.load(index + 1)
             frames.append(directions)
@@ -36,30 +42,43 @@ final class GaitReviewScene: SKScene {
             feet.append(foot)
             sprite.position = foot
             sprite.zPosition = 100
-            addChild(sprite)
+            content.addChild(sprite)
             actors.append(sprite)
             let shadow = ProjectedShadow(texture: directions[0][0], body: sprite.size, anchorY: sprite.anchorPoint.y,
                                          ratio: 0.82, softness: 2.0, opacity: 0.52, shader: effects.shadow)
-            addChild(shadow)
+            content.addChild(shadow)
             shadows.append(shadow)
             let contact = SKSpriteNode(color: .white, size: CGSize(width: 44 * scale, height: 13 * scale))
             contact.position = foot
             contact.shader = effects.contact
             contact.zPosition = 45
-            addChild(contact)
+            content.addChild(contact)
             let label = SKLabelNode(fontNamed: "HelveticaNeue-Medium")
             label.text = "P\(index + 1)"
             label.position = CGPoint(x: foot.x, y: foot.y - 58 * scale)
             label.fontSize = 22 * scale
             label.fontColor = SKColor(red: 1, green: 0.96, blue: 0.80, alpha: 1)
             label.zPosition = 200
-            addChild(label)
+            content.addChild(label)
         }
         heading.position = CGPoint(x: size.width / 2, y: size.height * 0.78)
         heading.fontSize = 30 * scale
         heading.fontColor = SKColor(red: 1, green: 0.96, blue: 0.80, alpha: 1)
         heading.zPosition = 200
-        addChild(heading)
+        content.addChild(heading)
+        layoutContent()
+    }
+
+    override func didChangeSize(_ oldSize: CGSize) { layoutContent() }
+
+    private func layoutContent() {
+        guard size.width > 0, size.height > 0 else { return }
+        let scale = min(size.width / canvas.width, size.height / canvas.height)
+        ground.size = size
+        ground.position = CGPoint(x: size.width / 2, y: size.height / 2)
+        content.setScale(scale)
+        content.position = CGPoint(x: (size.width - canvas.width * scale) / 2,
+                                   y: (size.height - canvas.height * scale) / 2)
     }
 
     override func update(_ currentTime: TimeInterval) {
@@ -69,6 +88,11 @@ final class GaitReviewScene: SKScene {
         let direction = Int(elapsed / 3) % 4
         let frame = WalkCycle.frame(at: CGFloat(elapsed) * 42)
         heading.text = "四方向步态 · " + ["正面", "向左", "背面", "向右"][direction]
+        // UI verification can identify the fitted, visible review instead of
+        // accepting a successfully launched app with all sprites off-screen.
+        if let view, content.xScale > 0, size.width > 100, size.height > 100 {
+            view.accessibilityValue = "步态验收：三位人物 · " + ["正面", "向左", "背面", "向右"][direction]
+        }
         for index in actors.indices {
             let texture = frames[index][direction][frame]
             actors[index].texture = texture
