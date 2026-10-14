@@ -35,17 +35,15 @@ final class EnvironmentShaders {
         float warmth = exp(-length(p - vec2(-100.0, -170.0)) * 0.0012);
         return 0.77 + cloud * 0.25 + warmth * 0.08;
     }
-    vec4 poseSample(sampler2D tex, vec2 uv, vec2 gait) {
+    float legExchangeWeight(vec2 uv, vec2 gait) {
         // Exchange the legs below the hem without flipping asymmetric equipment.
         bool frontBack = gait.x >= 0.0 && (gait.x < 0.5 || (gait.x > 1.5 && gait.x < 2.5));
         if (frontBack && gait.y > 2.5) {
             float lower = 1.0 - smoothstep(0.285, 0.315, uv.y);
             lower *= smoothstep(0.28, 0.32, uv.x) * (1.0 - smoothstep(0.68, 0.72, uv.x));
-            // Blend colors, never UVs: interpolating opposing UVs collapses
-            // a whole scanline onto the center texel and stretches the hem.
-            return mix(texture2D(tex, uv), texture2D(tex, vec2(1.0 - uv.x, uv.y)), lower);
+            return lower;
         }
-        return texture2D(tex, uv);
+        return 0.0;
     }
     """
 
@@ -64,7 +62,12 @@ final class EnvironmentShaders {
             } else {
                 uv.x += sin(u_sceneTime * 1.4 + a_phase + uv.y * 3.0) * 0.011 * a_wind * uv.y * uv.y;
             }
-            vec4 color = poseSample(u_texture, clamp(uv, 0.001, 0.999), a_gait);
+            uv = clamp(uv, 0.001, 0.999);
+            vec4 color = texture2D(u_texture, uv);
+            float exchanged = legExchangeWeight(uv, a_gait);
+            if (exchanged > 0.0) {
+                color = mix(color, texture2D(u_texture, vec2(1.0 - uv.x, uv.y)), exchanged);
+            }
             bool profile = (a_gait.x > 0.5 && a_gait.x < 1.5) || a_gait.x > 2.5;
             if (profile && (a_gait.y == 1.0 || a_gait.y == 3.0)) {
                 float nearSide = a_gait.x < 2.0 ? 1.0 - smoothstep(0.46, 0.54, uv.x) : smoothstep(0.46, 0.54, uv.x);
@@ -102,20 +105,33 @@ final class EnvironmentShaders {
         """, uniforms: [clock()])
 
         shadow = SKShader(source: Self.noise + """
-        float silhouette(vec2 uv) {
-            float inside = step(0.0, uv.x) * step(uv.x, 1.0) * step(0.0, uv.y) * step(uv.y, 1.0);
-            return poseSample(u_texture, clamp(uv, 0.001, 0.999), a_gait).a * inside;
-        }
         void main() {
             vec2 local = (v_tex_coord - vec2(0.5)) * a_extent + vec2(a_body.y * a_cast.x * (0.5 - a_body.z), a_body.y * a_cast.y * (a_body.z - 0.5));
             float height = -local.y / max(a_cast.y, 0.05);
             vec2 uv = vec2(0.5 + (local.x - height * a_cast.x) / (a_body.x * a_body.w), a_body.z + height / a_body.y);
+            if (a_foliage > 0.5) {
+                uv.x += sin(u_sceneTime * 1.4 + a_phase + uv.y * 3.0) * 0.011 * uv.y * uv.y;
+            }
             float elevation = clamp(uv.y - a_body.z, 0.0, 1.0);
             float radius = mix(0.35, a_cast.z, elevation);
             vec2 blur = vec2(radius / a_body.x, radius / (a_body.y * max(a_cast.y, 0.05)));
-            float mask = silhouette(uv) * 4.0;
-            mask += (silhouette(uv + vec2(blur.x, 0.0)) + silhouette(uv - vec2(blur.x, 0.0)) + silhouette(uv + vec2(0.0, blur.y)) + silhouette(uv - vec2(0.0, blur.y))) * 2.0;
-            mask += silhouette(uv + blur) + silhouette(uv - blur) + silhouette(uv + vec2(blur.x, -blur.y)) + silhouette(uv + vec2(-blur.x, blur.y));
+            // Keep every texture lookup inside main: SpriteKit translates these
+            // to Metal texture objects and cannot translate sampler parameters.
+            float mask = 0.0;
+            for (int y = -1; y <= 1; y++) {
+                for (int x = -1; x <= 1; x++) {
+                    vec2 tap = uv + blur * vec2(float(x), float(y));
+                    float inside = step(0.0, tap.x) * step(tap.x, 1.0) * step(0.0, tap.y) * step(tap.y, 1.0);
+                    vec2 sampleUV = clamp(tap, 0.001, 0.999);
+                    float alpha = texture2D(u_texture, sampleUV).a;
+                    float exchanged = legExchangeWeight(sampleUV, a_gait);
+                    if (exchanged > 0.0) {
+                        alpha = mix(alpha, texture2D(u_texture, vec2(1.0 - sampleUV.x, sampleUV.y)).a, exchanged);
+                    }
+                    float weight = (x == 0 ? 2.0 : 1.0) * (y == 0 ? 2.0 : 1.0);
+                    mask += alpha * inside * weight;
+                }
+            }
             mask /= 16.0;
             if (a_foliage > 0.5) {
                 float leaf = noise21(uv * vec2(52.0, 47.0) + vec2(sin(u_sceneTime * 1.4 + a_phase) * 0.65, 0.0));

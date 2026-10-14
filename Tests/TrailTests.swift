@@ -182,6 +182,18 @@ final class TrailTests: XCTestCase {
         }
     }
 
+    func testProjectedShadowActuallyRendersTheCurrentLegPose() throws {
+        let effects = EnvironmentShaders()
+        let view = SKView(frame: CGRect(x: 0, y: 0, width: 384, height: 192))
+        let shadow = ProjectedShadow(texture: HeroFrames.load(1)[0][1], body: CGSize(width: 192, height: 192),
+                                     anchorY: 0.125, ratio: 0.82, softness: 1.2, opacity: 0.52, shader: effects.shadow)
+        shadow.update(foot: .zero, gait: SIMD2(0, 1))
+        let left = try renderedPixels(shadow, in: view)
+        shadow.update(foot: .zero, gait: SIMD2(0, 3))
+        let right = try renderedPixels(shadow, in: view)
+        XCTAssertGreaterThan(pixelDifference(left, right), 0.05, "The ground projection must follow the rendered leg pose")
+    }
+
     private func renderedPixels(_ node: SKNode, in view: SKView) throws -> [UInt8] {
         let texture = try XCTUnwrap(view.texture(from: node))
         let image = texture.cgImage()

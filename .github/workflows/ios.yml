@@ -18,7 +18,7 @@ jobs:
   build:
     name: Xcode compile, test and unsigned IPA
     runs-on: macos-15
-    timeout-minutes: 35
+    timeout-minutes: 45
     defaults:
       run:
         shell: bash
@@ -70,8 +70,6 @@ jobs:
           python3 scripts/select-simulator.py iPad > build/ipad-udid.txt
           ipad_udid="$(cat build/ipad-udid.txt)"
           echo "ipad_udid=$ipad_udid" >> "$GITHUB_OUTPUT"
-          xcrun simctl bootstatus "$ipad_udid" -b \
-            2>&1 | tee build/logs/ipad-boot.log
 
       - name: Run route logic and UI tests
         run: |
@@ -88,6 +86,9 @@ jobs:
       - name: Verify the iPad layout and ordered journey
         run: |
           set -euo pipefail
+          xcrun simctl shutdown '${{ steps.simulator.outputs.udid }}'
+          xcrun simctl bootstatus '${{ steps.simulator.outputs.ipad_udid }}' -b \
+            2>&1 | tee build/logs/ipad-boot.log
           xcodebuild test \
             -project "$PROJECT" -scheme "$SCHEME" -configuration Debug \
             -destination 'platform=iOS Simulator,id=${{ steps.simulator.outputs.ipad_udid }}' \
