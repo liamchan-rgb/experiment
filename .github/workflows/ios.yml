@@ -1,0 +1,135 @@
+name: iOS Build and Visual Demo
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ios-${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: Xcode compile, test and unsigned IPA
+    runs-on: macos-15
+    timeout-minutes: 35
+    defaults:
+      run:
+        shell: bash
+    env:
+      PROJECT: MeadowJourney.xcodeproj
+      SCHEME: MeadowJourney
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Inspect Xcode and the checked-in project
+        run: |
+          set -euo pipefail
+          mkdir -p build/logs
+          if [ -d /Applications/Xcode_16.4.app ]; then
+            sudo xcode-select --switch /Applications/Xcode_16.4.app/Contents/Developer
+          fi
+          xcodebuild -version 2>&1 | tee build/logs/xcode-version.log
+          xcodebuild -list -project "$PROJECT" 2>&1 | tee build/logs/project.log
+          python3 scripts/validate-project.py
+
+      - name: Compile Swift for iOS Simulator
+        run: |
+          set -euo pipefail
+          xcodebuild build \
+            -project "$PROJECT" -scheme "$SCHEME" -configuration Debug \
+            -destination 'generic/platform=iOS Simulator' \
+            -derivedDataPath build/SimulatorDerivedData \
+            CODE_SIGNING_ALLOWED=NO \
+            2>&1 | tee build/logs/simulator-build.log
+
+      - name: Choose an installed compatible iPhone simulator
+        id: simulator
+        run: |
+          set -euo pipefail
+          xcodebuild -showdestinations -project "$PROJECT" -scheme "$SCHEME" \
+            2>&1 | tee build/logs/destinations.log
+          python3 - <<'PY'
+          import os, re
+          from pathlib import Path
+          text = Path('build/logs/destinations.log').read_text()
+          candidates = re.findall(r'\{ platform:iOS Simulator,[^\n]*?id:([A-Fa-f0-9-]{36}),[^\n]*?name:(iPhone[^}]+)\}', text)
+          if not candidates:
+              raise SystemExit('No compatible installed iPhone simulator. See destinations.log.')
+          udid, name = candidates[0]
+          with open(os.environ['GITHUB_OUTPUT'], 'a') as output:
+              output.write(f'udid={udid}\n')
+          print(f'Selected {name.strip()} ({udid})')
+          PY
+
+      - name: Run route logic and UI tests
+        run: |
+          set -euo pipefail
+          xcodebuild test \
+            -project "$PROJECT" -scheme "$SCHEME" -configuration Debug \
+            -destination 'platform=iOS Simulator,id=${{ steps.simulator.outputs.udid }}' \
+            -derivedDataPath build/SimulatorDerivedData \
+            -resultBundlePath build/TestResults.xcresult \
+            -parallel-testing-enabled NO \
+            CODE_SIGNING_ALLOWED=NO \
+            2>&1 | tee build/logs/tests.log
+
+      - name: Export visual screenshots
+        if: ${{ always() && steps.simulator.outcome == 'success' }}
+        run: |
+          set -euo pipefail
+          if [ -d build/TestResults.xcresult ]; then
+            xcrun xcresulttool export attachments \
+              --path build/TestResults.xcresult --output-path build/screenshots \
+              2>&1 | tee build/logs/screenshot-export.log
+          fi
+
+      - name: Archive for physical iPhone and iPad without signing
+        run: |
+          set -euo pipefail
+          xcodebuild archive \
+            -project "$PROJECT" -scheme "$SCHEME" -configuration Release \
+            -destination 'generic/platform=iOS' \
+            -archivePath build/MeadowJourney.xcarchive \
+            -derivedDataPath build/DeviceDerivedData \
+            CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO \
+            2>&1 | tee build/logs/device-archive.log
+          bash scripts/package-ipa.sh \
+            build/MeadowJourney.xcarchive build/MeadowJourney-unsigned.ipa \
+            2>&1 | tee build/logs/package-ipa.log
+
+      - name: Upload build logs even on failure
+        if: ${{ always() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: xcode-build-logs-${{ github.run_id }}-${{ github.run_attempt }}
+          path: build/logs/
+          if-no-files-found: warn
+          retention-days: 30
+
+      - name: Upload test results and visual screenshots
+        if: ${{ always() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: ios-visual-review-${{ github.run_id }}-${{ github.run_attempt }}
+          path: |
+            build/screenshots/
+            build/TestResults.xcresult/
+          if-no-files-found: warn
+          retention-days: 30
+
+      - name: Upload SideStore re-signable unsigned IPA
+        uses: actions/upload-artifact@v4
+        with:
+          name: MeadowJourney-unsigned-IPA
+          path: build/MeadowJourney-unsigned.ipa
+          if-no-files-found: error
+          retention-days: 30
+
