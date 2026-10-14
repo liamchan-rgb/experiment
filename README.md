@@ -27,10 +27,10 @@ xcodebuild build \
 
 ## GitHub Actions
 
-[iOS Build and Visual Demo](.github/workflows/ios.yml) 在每次 PR 新建、更新、重新打开、转为待审时运行，也支持 main 分支推送和手动触发。使用 **macos-15** 和 Xcode（优先 16.4，否则使用 Runner 的默认 Xcode）。
+[iOS Build and Visual Demo](.github/workflows/ios.yml) 在每次 PR 新建、更新、重新打开、转为待审时运行，也支持 main 分支推送和手动触发。使用 **macos-15** 和 Runner 默认的 Xcode，并记录具体版本。
 
 1. 检查实际 `.xcodeproj` 与共享 Scheme，编译 Swift 模拟器版本。
-2. 从 Xcode 列出的兼容设备中选择 iPhone，执行路线单元测试和 UI 测试。
+2. 根据所选 Xcode 的 SDK 选择兼容的已安装 iOS Runtime，选择或创建 iPhone 模拟器；缺少 Runtime 时下载对应平台，再执行路线单元测试和 UI 测试。
 3. 构建设备 Release archive，打包未签名 IPA。
 4. 上传 `xcode-build-logs-*`、`ios-visual-review-*`、`MeadowJourney-unsigned-IPA` 三类 Artifact。即使构建失败，已有编译日志与测试结果仍上传；`pipefail` 保证 `tee` 不会掩盖失败。
 
