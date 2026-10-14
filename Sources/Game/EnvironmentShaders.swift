@@ -51,7 +51,27 @@ final class EnvironmentShaders {
             gl_FragColor = color;
         }
         """
-        ground = SKShader(source: surface, uniforms: [clock])
+        ground = SKShader(source: Self.noise + """
+        vec3 grassSample(vec2 uv, vec2 cell) {
+            vec2 offset = vec2(hash21(cell), hash21(cell + 17.3));
+            return texture2D(u_texture, fract(uv + offset)).rgb;
+        }
+        void main() {
+            vec2 p = a_origin + vec2((v_tex_coord.x - 0.5) * a_extent.x,
+                                     (0.5 - v_tex_coord.y) * a_extent.y);
+            vec2 grid = p / 150.0;
+            vec2 cell = floor(grid);
+            vec2 weight = smoothstep(vec2(0.0), vec2(1.0), fract(grid));
+            vec2 uv = p / 330.0;
+            vec3 first = mix(grassSample(uv, cell), grassSample(uv, cell + vec2(1.0, 0.0)), weight.x);
+            vec3 second = mix(grassSample(uv, cell + vec2(0.0, 1.0)), grassSample(uv, cell + vec2(1.0)), weight.x);
+            vec3 grass = mix(first, second, weight.y);
+            float meadow = noise21(p * 0.006);
+            grass = mix(grass, vec3(0.30, 0.38, 0.14), 0.12 + (1.0 - meadow) * 0.08);
+            grass *= vec3(1.01, 1.0, 0.95) * (0.92 + meadowCloud(p, u_sceneTime) * 0.13);
+            gl_FragColor = vec4(grass, 1.0);
+        }
+        """, uniforms: [clock])
         vegetation = SKShader(source: surface, uniforms: [clock])
         ground.attributes = commonAttributes
         vegetation.attributes = commonAttributes
@@ -69,8 +89,12 @@ final class EnvironmentShaders {
             float patches = noise21(p * 0.09);
             vec3 sand = mix(vec3(0.55, 0.38, 0.20), vec3(0.91, 0.75, 0.45), 0.45 + fine * 0.4);
             sand *= 0.89 + patches * 0.20;
-            float stones = step(0.981, hash21(floor(p * 0.40)));
-            sand = mix(sand, vec3(0.82, 0.77, 0.60), stones * 0.80);
+            vec2 pebbleCell = floor(p * 0.25);
+            vec2 pebbleUV = fract(p * 0.25) - vec2(0.5);
+            float stones = step(0.88, hash21(pebbleCell)) * (1.0 - smoothstep(0.12, 0.34, length(pebbleUV)));
+            vec3 stone = mix(vec3(0.44, 0.36, 0.27), vec3(0.89, 0.83, 0.68), hash21(pebbleCell + 9.0));
+            sand = mix(sand, stone, stones * 0.85);
+            sand *= 0.94 + noise21(p * 0.024) * 0.13;
             gl_FragColor = vec4(sand, 1.0);
         }
         """)

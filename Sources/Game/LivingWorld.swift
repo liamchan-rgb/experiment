@@ -18,6 +18,7 @@ final class LivingWorld: SKNode {
         buildRoads()
         for prop in definition.props { addProp(prop) }
         buildMeadowDetails()
+        buildRoadsideGrass()
         addOverlay(shader: effects.backMist, depth: 95)
         addOverlay(shader: effects.sunlight, depth: 20000, additive: true)
         addOverlay(shader: effects.frontMist, depth: 21000)
@@ -155,6 +156,26 @@ final class LivingWorld: SKNode {
         node.zPosition = depth
         if additive { node.blendMode = .add }
         addChild(node)
+    }
+
+    private func buildRoadsideGrass() {
+        var random = MeadowRandom(seed: 39281)
+        for edge in network.edges {
+            var distance: CGFloat = 12
+            while distance < edge.trail.length - 12 {
+                let point = edge.trail.point(at: distance)
+                let ahead = edge.trail.point(at: distance + 1)
+                let dx = ahead.x - point.x
+                let dy = ahead.y - point.y
+                let length = max(0.1, (dx * dx + dy * dy).squareRoot())
+                let side: CGFloat = random.next() > 0.5 ? 1 : -1
+                let offset = edge.width / 2 + random.value(0, 3)
+                addProp(SceneDefinition.Prop(asset: "Flowers", x: point.x - dy / length * offset * side,
+                                             y: point.y + dx / length * offset * side,
+                                             width: random.value(7, 14), mirror: random.next() > 0.5, wind: 1.2))
+                distance += random.value(10, 20)
+            }
+        }
     }
 
     private func buildMotes() {

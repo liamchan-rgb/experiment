@@ -163,10 +163,19 @@ jobs:
           name: ios-visual-review-${{ github.run_id }}-${{ github.run_attempt }}
           path: |
             build/screenshots/
-            build/TestResults.xcresult/
-            build/iPadResults.xcresult/
             build/ipad-screenshots/
             build/visual-review/
+          if-no-files-found: warn
+          retention-days: 30
+
+      - name: Upload complete Xcode test reports
+        if: ${{ always() }}
+        uses: actions/upload-artifact@v7
+        with:
+          name: ios-test-results-${{ github.run_id }}-${{ github.run_attempt }}
+          path: |
+            build/TestResults.xcresult/
+            build/iPadResults.xcresult/
           if-no-files-found: warn
           retention-days: 30
 
