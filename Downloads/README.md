@@ -1,17 +1,13 @@
-# iPad / iPhone 安装
+# SideStore 安装与视觉验收
 
-[直接下载 MeadowJourney 1.0.1 IPA](https://github.com/liamchan-rgb/experiment/raw/refs/heads/main/Downloads/MeadowJourney-v1.0.1-unsigned.ipa)（约 9.9 MB）。
+[直接下载动态版 1.1.0 IPA](https://github.com/liamchan-rgb/experiment/raw/refs/heads/main/Downloads/MeadowJourney-v1.1.0-unsigned.ipa)（约 15.8 MB）。
 
-这是 1.0.1（build 2）修复版，IPA 的 `CFBundleName` 和 `CFBundleDisplayName` 都是 `MeadowJourney`，避免 SideStore 注册 App ID 时出现中文 `appIdName` 无效的错误。游戏内仍显示“安然”。旧下载链接也已更新到同一修复版。
+在 Safari 保存到“文件”，然后 SideStore → My Apps → ＋，选择带 `v1.1.0` 的新 IPA 重签安装。安装名称为 MeadowJourney，版本为 1.1.0（build 3），需 iOS / iPadOS 15 及以上。包标识保持不变，可以更新此前安装的 Demo。
 
-1. 在 Safari 下载新版 IPA，保存到“文件”的“下载项”。
-2. 打开已配置好的 SideStore → My Apps（我的应用）→ 右上角 ＋。
-3. 在文件选择器中选中 `MeadowJourney-v1.0.1-unsigned.ipa`，等待 SideStore 重签并安装。
+这个包来自已通过 Xcode 编译、12 项模型/资源测试、iPhone 与 iPad 交互测试的构建，新增独立场景、动态光雾与风动、四方向人物动画、遮挡、分支寻路及暂停目的地保留。
 
-请选带 v1.0.1 的新文件，避免导入 iPad 上已经下载的旧包。SideStore 中应显示 `MeadowJourney`。
+[录像、原尺寸截图及验证信息](../Media/README.md)。旧的 `MeadowJourney-unsigned.ipa` 下载地址也已更新为此版本。
 
-IPA 为未签名的真机 arm64 包，需要 iOS / iPadOS 15 及以上。私有仓库下载需要登录有仓库权限的 GitHub 账号。
+最后的草地与道路材质调整留在优化分支，因 GitHub 账户账单限制尚未重编译，不包含在当前安装包中。
 
-若使用免费 Apple 账户，一般最多同时激活三个应用（包含 SideStore 自身）；需要留出一个安装名额。[SideStore 官方说明](https://docs.sidestore.io/zh/docs/faq)。
-
-相关名称兼容问题：[SideStore #1489](https://github.com/SideStore/SideStore/issues/1489)。Xcode 编译、7 项测试和设备 archive 验证：[成功的 Actions 运行](https://github.com/liamchan-rgb/experiment/actions/runs/38512023512)。SHA-256 校验值见 `SHA256SUMS`。
+SHA-256 校验值见 `SHA256SUMS`。私有仓库下载需要登录有访问权限的 GitHub 账号。

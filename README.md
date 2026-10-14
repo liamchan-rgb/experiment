@@ -23,7 +23,7 @@
 
 [直接下载 1.1.0 IPA](https://github.com/liamchan-rgb/experiment/raw/refs/heads/main/Downloads/MeadowJourney-v1.1.0-unsigned.ipa)。在 Safari 保存到“文件”，再打开 SideStore → My Apps → ＋ → 选择带 `v1.1.0` 的新文件重签。版本为 **1.1.0（build 3）**，安装后名称应为 MeadowJourney。
 
-最新 CI 产物也在 Actions 页：`MeadowJourney-unsigned-IPA` 是包含 IPA 的 Artifact ZIP；`ios-visual-review-*` 包含 iPhone / iPad 原尺寸截图、iPad 动态录像、RuntimeMetrics.json 和 Xcode 测试结果；`xcode-build-logs-*` 即使失败也上传。
+最新 CI 产物也在 Actions 页：`MeadowJourney-unsigned-IPA` 是包含 IPA 的 Artifact ZIP；`ios-visual-review-*` 包含 iPhone / iPad 原尺寸截图、iPad 动态录像和 RuntimeMetrics.json；完整 Xcode 测试结果在 `ios-test-results-*`；`xcode-build-logs-*` 即使失败也上传。
 
 运行指标中的纹理数值为基础 RGBA 解码预算，约 42.4 MiB；进程内存单独实测。CI 的帧率与内存来自 macOS 的 iPad 模拟器，真机指标可在你自己的 iPad 上长按“安然”查看。
 
@@ -48,3 +48,7 @@ bash scripts/package-ipa.sh build/MeadowJourney.xcarchive build/MeadowJourney-un
 ```
 
 资源说明见 [docs/ASSETS.md](docs/ASSETS.md)。静态检查：`python3 scripts/validate-project.py`。修改项目绑定后可运行 `python3 scripts/generate-project.py`。
+
+## 此次交付状态
+
+[动态录像与原尺寸截图](Media/README.md)和 1.1.0 IPA 对应已通过完整验证的构建。最后的草地与道路材质调整保留在 `feat/layered-living-scene`：GitHub 以账户付款失败或支出上限需要调整为由拒绝启动新的 macOS 构建，因此这些调整尚未进入当前 IPA。
