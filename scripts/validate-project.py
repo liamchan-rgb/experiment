@@ -2,6 +2,7 @@
 """Validate resource bindings and shared scheme without requiring Xcode or Pillow."""
 import json
 import plistlib
+import re
 import xml.etree.ElementTree as ET
 from pathlib import Path
 
@@ -9,6 +10,8 @@ root = Path(__file__).resolve().parents[1]
 project = root / 'MeadowJourney.xcodeproj'
 pbx = (project / 'project.pbxproj').read_text()
 plist = plistlib.loads((root / 'Sources/Resources/Info.plist').read_bytes())
+assert re.fullmatch(r'[A-Za-z][A-Za-z0-9 -]*', plist['CFBundleDisplayName']), \
+    'SideStore App ID registration requires an ASCII-safe display name for this package'
 assert plist['UISupportedInterfaceOrientations'] == [
     'UIInterfaceOrientationLandscapeLeft', 'UIInterfaceOrientationLandscapeRight']
 for file in (root / 'Sources').rglob('*.swift'):
