@@ -28,14 +28,7 @@ final class GaitReviewScene: SKScene {
         road.zPosition = 10
         addChild(road)
         for index in 0..<3 {
-            let atlas = SKTexture(imageNamed: "Hero\(index + 1)Directions")
-            let directions = (0..<4).map { row in
-                (0..<4).map { column -> SKTexture in
-                    let frame = SKTexture(rect: CGRect(x: CGFloat(column) / 4, y: CGFloat(3-row) / 4, width: 0.25, height: 0.25), in: atlas)
-                    frame.filteringMode = .nearest
-                    return frame
-                }
-            }
+            let directions = HeroFrames.load(index + 1)
             frames.append(directions)
             let sprite = SKSpriteNode(texture: directions[0][0], size: CGSize(width: 192 * scale, height: 192 * scale))
             sprite.anchorPoint = CGPoint(x: 0.5, y: 0.125)

@@ -99,17 +99,7 @@ final class GameScene: SKScene {
 
     private func buildActors() {
         for index in 0..<3 {
-            let atlas = world.texture("Hero\(index + 1)Directions")
-            var directions: [[SKTexture]] = []
-            for row in 0..<4 {
-                directions.append((0..<4).map { column in
-                    let texture = SKTexture(rect: CGRect(x: CGFloat(column) / 4,
-                                                        y: CGFloat(3 - row) / 4,
-                                                        width: 0.25, height: 0.25), in: atlas)
-                    texture.filteringMode = .nearest
-                    return texture
-                })
-            }
+            let directions = HeroFrames.load(index + 1)
             frames.append(directions)
             let root = SKNode()
             root.name = "hero-\(index)"

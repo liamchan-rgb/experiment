@@ -71,7 +71,7 @@ for hero in range(1, 4):
         row, column = divmod(index, 4)
         atlas.alpha_composite(cell, (column * 384 + (384 - width) // 2, row * 384 + 336 - height))
     save_asset(f'Hero{hero}Directions', atlas)
-    manifest[f'Hero{hero}Directions']['source'] = source.filename if hasattr(source, 'filename') else gait_source.name
+    manifest[f'Hero{hero}Directions']['source'] = gait_source.name if gait_source.exists() else f'hero{hero}.png'
     manifest[f'Hero{hero}Directions']['runtimeRig'] = 'Front/back right contact exchanges legs below the hem; profile contacts exchange near/far leg depth.'
 
 (ROOT / 'Art/Generated/LivingScene/asset-manifest.json').write_text(json.dumps(manifest, indent=2) + '\n')
