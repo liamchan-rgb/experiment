@@ -46,22 +46,44 @@ jobs:
           sudo apt-get update -qq
           sudo apt-get install -y -qq ffmpeg
           python3 - <<'PY'
-          import shutil, subprocess
+          import json, shutil, subprocess
           from pathlib import Path
           source = Path('original')
           target = Path('compact')
+          def probe(file):
+              return json.loads(subprocess.check_output([
+                  'ffprobe', '-v', 'error', '-show_entries', 'stream=width,height',
+                  '-show_entries', 'format=duration', '-of', 'json', str(file)]))
+          recordings = []
           for file in source.rglob('*'):
               if file.is_file() and file.suffix in ['.png', '.json']:
                   output = target / file.relative_to(source)
                   output.parent.mkdir(parents=True, exist_ok=True)
-                  shutil.copy2(file, output)
+                  if file.suffix == '.png' and probe(file)['streams'][0]['width'] < probe(file)['streams'][0]['height']:
+                      subprocess.run(['ffmpeg', '-loglevel', 'warning', '-y', '-noautorotate',
+                                      '-i', str(file), '-vf', 'transpose=2', '-threads', '2',
+                                      str(output)], check=True)
+                  else:
+                      shutil.copy2(file, output)
           for file in source.rglob('*.mp4'):
               output = target / file.relative_to(source)
               output.parent.mkdir(parents=True, exist_ok=True)
-              subprocess.run(['ffmpeg', '-hide_banner', '-loglevel', 'warning', '-y',
-                              '-i', str(file), '-an', '-c:v', 'libx264', '-preset', 'fast',
-                              '-crf', '20', '-pix_fmt', 'yuv420p', '-r', '30',
+              original = probe(file)
+              duration = float(original['format']['duration'])
+              limit = 40 if file.stem == 'iPad-LivingScene' else 60
+              speed = min(1.0, limit / duration)
+              filters = []
+              if original['streams'][0]['width'] < original['streams'][0]['height']:
+                  filters.append('transpose=2')
+              filters.append(f'setpts={speed}*(PTS-STARTPTS)')
+              subprocess.run(['ffmpeg', '-hide_banner', '-loglevel', 'warning', '-y', '-noautorotate',
+                              '-i', str(file), '-vf', ','.join(filters), '-an', '-c:v', 'libx264', '-preset', 'fast',
+                              '-crf', '24', '-maxrate', '12M', '-bufsize', '24M',
+                              '-threads', '2', '-pix_fmt', 'yuv420p', '-r', '30',
                               '-movflags', '+faststart', str(output)], check=True)
+              recordings.append({'file': str(file.relative_to(source)), 'original': original,
+                                 'preview': probe(output), 'timelineScale': speed})
+          (target / 'RecordingInfo.json').write_text(json.dumps(recordings, indent=2) + '\n')
           PY
       - uses: actions/upload-artifact@v7
         with:
