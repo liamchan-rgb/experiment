@@ -29,4 +29,10 @@ for ref in refs:
     assert ref.attrib['ReferencedContainer'] == 'container:MeadowJourney.xcodeproj'
 assert 'com.apple.product-type.application' in pbx
 assert '"IPHONEOS_DEPLOYMENT_TARGET" = "15.0"' in pbx
+definition = json.loads((root / 'Sources/Resources/SceneMap.json').read_text())
+assert 'Resources/SceneMap.json' in pbx
+assert len(definition['roads']) >= 4
+for prop in definition['props']:
+    assert (root / 'Sources/Resources/Assets.xcassets' / (prop['asset'] + '.imageset')).is_dir()
+assert not (root / 'Sources/Resources/Assets.xcassets/MapBackground.imageset').exists(), 'Flattened scene must not ship'
 print('Project paths, Swift file references, asset bindings, orientations and shared test scheme valid.')

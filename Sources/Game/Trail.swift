@@ -55,6 +55,42 @@ struct Trail {
         return bestDistance
     }
 
+    func subsection(from start: CGFloat, to end: CGFloat) -> [CGPoint] {
+        let low = min(start, end)
+        let high = max(start, end)
+        var result = [point(at: low)]
+        var distance: CGFloat = 0
+        for index in segmentLengths.indices {
+            distance += segmentLengths[index]
+            if distance > low && distance < high { result.append(points[index + 1]) }
+        }
+        result.append(point(at: high))
+        return start <= end ? result : Array(result.reversed())
+    }
+
+    static func smooth(_ controls: [CGPoint], steps: Int = 8) -> Trail {
+        guard controls.count > 2 else { return Trail(points: controls) }
+        var output: [CGPoint] = []
+        for index in 0..<(controls.count - 1) {
+            let a = controls[max(index - 1, 0)]
+            let b = controls[index]
+            let c = controls[index + 1]
+            let d = controls[min(index + 2, controls.count - 1)]
+            for step in 0..<steps {
+                let t = CGFloat(step) / CGFloat(steps)
+                let t2 = t * t
+                let t3 = t2 * t
+                func interpolate(_ a: CGFloat, _ b: CGFloat, _ c: CGFloat, _ d: CGFloat) -> CGFloat {
+                    0.5 * ((2 * b) + (-a + c) * t + (2 * a - 5 * b + 4 * c - d) * t2 + (-a + 3 * b - 3 * c + d) * t3)
+                }
+                output.append(CGPoint(x: interpolate(a.x, b.x, c.x, d.x),
+                                      y: interpolate(a.y, b.y, c.y, d.y)))
+            }
+        }
+        output.append(controls.last!)
+        return Trail(points: output)
+    }
+
     static let meadow = Trail(points: [
         CGPoint(x: 285, y: 442), CGPoint(x: 330, y: 447),
         CGPoint(x: 383, y: 448), CGPoint(x: 440, y: 444),
