@@ -67,16 +67,22 @@
   "Hero1Directions": {
     "width": 1536,
     "height": 1536,
-    "decodedBytes": 9437184
+    "decodedBytes": 9437184,
+    "source": "hero1-gait-v1.2.png",
+    "runtimeRig": "Front/back right contact exchanges legs below the hem; profile contacts exchange near/far leg depth."
   },
   "Hero2Directions": {
     "width": 1536,
     "height": 1536,
-    "decodedBytes": 9437184
+    "decodedBytes": 9437184,
+    "source": "hero2-gait-v1.2.png",
+    "runtimeRig": "Front/back right contact exchanges legs below the hem; profile contacts exchange near/far leg depth."
   },
   "Hero3Directions": {
     "width": 1536,
     "height": 1536,
-    "decodedBytes": 9437184
+    "decodedBytes": 9437184,
+    "source": "hero3-gait-v1.2.png",
+    "runtimeRig": "Front/back right contact exchanges legs below the hem; profile contacts exchange near/far leg depth."
   }
 }

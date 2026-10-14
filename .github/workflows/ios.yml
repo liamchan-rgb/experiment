@@ -133,6 +133,31 @@ jobs:
           python3 scripts/summarize-metrics.py build/visual-review/RuntimeMetrics.json \
             2>&1 | tee build/logs/runtime-metrics.log
 
+      - name: Record four-direction gait and a stationary atmosphere view
+        run: |
+          set -euo pipefail
+          ipad_udid='${{ steps.simulator.outputs.ipad_udid }}'
+          record_review() {
+            local clip_name="$1"
+            local clip_seconds="$2"
+            shift 2
+            xcrun simctl terminate "$ipad_udid" com.liamchan.experiment.meadow || true
+            xcrun simctl launch "$ipad_udid" com.liamchan.experiment.meadow "$@"
+            sleep 1
+            xcrun simctl io "$ipad_udid" recordVideo --codec=h264 \
+              "build/visual-review/$clip_name.mp4" > "build/logs/$clip_name.log" 2>&1 &
+            local recorder_pid=$!
+            trap 'kill -INT "$recorder_pid" 2>/dev/null || true' EXIT
+            xcrun simctl io "$ipad_udid" screenshot "build/visual-review/$clip_name-start.png"
+            sleep "$clip_seconds"
+            xcrun simctl io "$ipad_udid" screenshot "build/visual-review/$clip_name-end.png"
+            kill -INT "$recorder_pid"
+            wait "$recorder_pid" || true
+            trap - EXIT
+          }
+          record_review iPad-FourDirectionGait 12 -gaitReview
+          record_review iPad-Atmosphere 12 -visualReview
+
       - name: Archive for physical iPhone and iPad without signing
         run: |
           set -euo pipefail

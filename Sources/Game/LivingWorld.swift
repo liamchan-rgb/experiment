@@ -6,8 +6,7 @@ final class LivingWorld: SKNode {
     let network: TrailNetwork
     let effects = EnvironmentShaders()
     private var textures: [String: SKTexture] = [:]
-    private var shadows: [SKSpriteNode] = []
-    private var lastShadowUpdate: TimeInterval = -1
+    private(set) var shadowCount = 0
     private(set) var objectCount = 0
 
     init(definition: SceneDefinition) {
@@ -67,8 +66,8 @@ final class LivingWorld: SKNode {
 
     private func buildRoads() {
         for edge in network.edges {
-            let border = SKShapeNode(path: roadPolygon(edge.trail, width: edge.width + 6))
-            border.fillColor = SKColor(red: 0.59, green: 0.48, blue: 0.22, alpha: 0.40)
+            let border = SKShapeNode(path: roadPolygon(edge.trail, width: edge.width + 9))
+            border.fillColor = SKColor(red: 0.44, green: 0.38, blue: 0.18, alpha: 0.20)
             border.strokeColor = .clear
             border.zPosition = 10
             addChild(border)
@@ -77,9 +76,48 @@ final class LivingWorld: SKNode {
             road.strokeColor = .clear
             road.fillTexture = texture("MeadowGround")
             road.fillShader = effects.soil
+            let bounds = road.path!.boundingBoxOfPath
+            road.attributeValues = [
+                "a_origin": SKAttributeValue(vectorFloat2: SIMD2(Float(bounds.midX), Float(-bounds.midY))),
+                "a_extent": SKAttributeValue(vectorFloat2: SIMD2(Float(bounds.width), Float(bounds.height)))
+            ]
             road.zPosition = 11
             addChild(road)
         }
+        buildRoadDetails()
+    }
+
+    private func buildRoadDetails() {
+        var random = MeadowRandom(seed: 9182)
+        for edge in network.edges {
+            var distance: CGFloat = 5
+            while distance < edge.trail.length - 5 {
+                let point = edge.trail.point(at: distance)
+                let next = edge.trail.point(at: distance + 1)
+                let dx = next.x - point.x, dy = next.y - point.y
+                let length = max(0.1, hypot(dx, dy))
+                let side = random.value(-edge.width * 0.40, edge.width * 0.40)
+                let width = random.value(1.2, 3.5)
+                let stone = SKShapeNode(ellipseOf: CGSize(width: width, height: width * 0.65))
+                stone.position = Self.position(CGPoint(x: point.x - dy / length * side, y: point.y + dx / length * side))
+                let tone = random.value(0.52, 0.78)
+                stone.fillColor = SKColor(red: tone, green: tone * 0.94, blue: tone * 0.78, alpha: 0.85)
+                stone.strokeColor = SKColor(red: 0.28, green: 0.24, blue: 0.15, alpha: 0.25)
+                stone.lineWidth = 0.4
+                stone.zPosition = 12
+                addChild(stone)
+                distance += random.value(7, 17)
+            }
+        }
+    }
+
+    func makeContact(foot: CGPoint, width: CGFloat, depth: CGFloat) -> SKSpriteNode {
+        let node = SKSpriteNode(color: .white, size: CGSize(width: width, height: depth))
+        node.position = foot
+        node.shader = effects.contact
+        node.zPosition = 45
+        addChild(node)
+        return node
     }
 
     private func addProp(_ prop: SceneDefinition.Prop) {
@@ -89,7 +127,8 @@ final class LivingWorld: SKNode {
         node.anchorPoint = CGPoint(x: 0.5, y: 0.02)
         node.position = Self.position(CGPoint(x: prop.x, y: prop.y))
         node.zPosition = 10000 + prop.y
-        node.xScale = prop.mirror ? -1 : 1
+        // Preserve upper-left painted highlights on solid objects.
+        node.xScale = prop.mirror && prop.asset == "Flowers" ? -1 : 1
         effects.apply(effects.vegetation, to: node,
                       origin: CGPoint(x: prop.x, y: prop.y - height * 0.48),
                       extent: CGSize(width: prop.width * node.xScale, height: height),
@@ -97,15 +136,16 @@ final class LivingWorld: SKNode {
         addChild(node)
         objectCount += 1
         if prop.asset != "Flowers" {
-            let shadow = SKSpriteNode(texture: propTexture, size: CGSize(width: prop.width * 0.85, height: height * 0.50))
-            shadow.anchorPoint = CGPoint(x: 0.5, y: 0.02)
-            shadow.position = Self.position(CGPoint(x: prop.x + 3, y: prop.y + 3))
-            shadow.xScale = node.xScale
-            shadow.zRotation = -2.2
-            shadow.shader = effects.shadow
-            shadow.zPosition = 40
+            let tree = ["OakA", "OakB", "Pines"].contains(prop.asset)
+            let ratio: CGFloat = tree || prop.asset == "WatchTower" ? 0.90 : 0.53
+            let shadow = ProjectedShadow(texture: propTexture, body: node.size, anchorY: node.anchorPoint.y,
+                                         ratio: ratio, softness: tree ? 2.6 : 1.5, opacity: tree ? 0.48 : 0.53,
+                                         foliage: tree, phase: Float(prop.x * 0.03 + prop.y * 0.017), shader: effects.shadow)
+            shadow.update(foot: node.position)
             addChild(shadow)
-            shadows.append(shadow)
+            shadowCount += 1
+            let contactWidth = prop.width * (tree ? 0.27 : 0.70)
+            _ = makeContact(foot: node.position, width: contactWidth, depth: max(4, contactWidth * 0.23))
         }
         if prop.asset == "WatchTower" || prop.asset == "CampTent" {
             let bannerTexture = texture("Banner")
@@ -124,13 +164,14 @@ final class LivingWorld: SKNode {
 
     private func buildMeadowDetails() {
         var random = MeadowRandom(seed: definition.seed)
-        for index in 0..<230 {
+        for index in 0..<145 {
             let point = CGPoint(x: random.value(Self.bounds.minX, Self.bounds.maxX),
                                 y: random.value(Self.bounds.minY, Self.bounds.maxY))
-            if network.project(point).error < 23 { continue }
-            if CGRect(x: 220, y: 285, width: 330, height: 125).contains(point) { continue }
-            let name = index % 5 == 0 ? "Shrub" : "Flowers"
-            let width = name == "Shrub" ? random.value(28, 43) : random.value(17, 32)
+            if network.project(point).error < 38 { continue }
+            if CGRect(x: 215, y: 275, width: 360, height: 160).contains(point) { continue }
+            if definition.props.contains(where: { hypot($0.x - point.x, $0.y - point.y) < 23 }) { continue }
+            let name = index % 9 == 0 ? "Shrub" : "Flowers"
+            let width = name == "Shrub" ? random.value(23, 34) : random.value(12, 23)
             addProp(SceneDefinition.Prop(asset: name, x: point.x, y: point.y, width: width,
                                          mirror: random.next() > 0.5, wind: 1.15))
         }
@@ -173,7 +214,7 @@ final class LivingWorld: SKNode {
         }
         let emitter = SKEmitterNode()
         emitter.particleTexture = SKTexture(image: dot)
-        emitter.particleBirthRate = 2.5
+        emitter.particleBirthRate = 4
         emitter.particleLifetime = 16
         emitter.particleLifetimeRange = 5
         emitter.particlePositionRange = CGVector(dx: 1400, dy: 920)
@@ -196,11 +237,6 @@ final class LivingWorld: SKNode {
     }
 
     func update(time: TimeInterval) {
-        effects.time.floatValue = Float(time)
-        if time - lastShadowUpdate > 0.10 {
-            let angle = CGFloat(-2.2 + sin(time * 0.035) * 0.12)
-            for shadow in shadows { shadow.zRotation = angle }
-            lastShadowUpdate = time
-        }
+        effects.update(time: time)
     }
 }

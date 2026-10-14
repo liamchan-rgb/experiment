@@ -81,7 +81,14 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
                 self.discoveryLabel.alpha = 0
             }
         }
-        gameView.presentScene(scene)
+        if ProcessInfo.processInfo.arguments.contains("-gaitReview") {
+            let review = GaitReviewScene(size: view.bounds.size)
+            review.scaleMode = .resizeFill
+            gameView.presentScene(review)
+            for button in [titleButton, playButton, resetButton, zoomButton] { button.isHidden = true }
+        } else {
+            gameView.presentScene(scene)
+        }
         titleButton.addGestureRecognizer(UILongPressGestureRecognizer(target: self, action: #selector(toggleMetrics(_:))))
         let pinch = UIPinchGestureRecognizer(target: self, action: #selector(pinchMap(_:)))
         pinch.delegate = self

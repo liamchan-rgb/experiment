@@ -1,0 +1,65 @@
+import SpriteKit
+
+struct ShadowProjection {
+    let size: CGSize
+    let offset: CGPoint
+    let cast: CGVector
+
+    init(body: CGSize, anchorY: CGFloat, ratio: CGFloat, softness: CGFloat) {
+        cast = CGVector(dx: MeadowSun.cast.dx * ratio, dy: MeadowSun.cast.dy * ratio)
+        let margin = softness * 3 + 2
+        size = CGSize(width: body.width + body.height * abs(cast.dx) + margin * 2,
+                      height: body.height * abs(cast.dy) + margin * 2)
+        offset = CGPoint(x: body.height * cast.dx * (0.5 - anchorY),
+                         y: body.height * cast.dy * (anchorY - 0.5))
+    }
+
+    func point(x: CGFloat, height: CGFloat) -> CGPoint {
+        CGPoint(x: x + height * cast.dx, y: -height * cast.dy)
+    }
+}
+
+/// Samples the source silhouette through an oblique projection, with an
+/// elevation-dependent penumbra. The contact patch is a separate, small node.
+final class ProjectedShadow: SKSpriteNode {
+    let projection: ShadowProjection
+    private let body: CGSize
+    private let anchorY: CGFloat
+    private let mirror: Float
+    private let opacity: Float
+    private let softness: Float
+    private let foliage: Float
+    private let phase: Float
+
+    init(texture: SKTexture, body: CGSize, anchorY: CGFloat, ratio: CGFloat,
+         softness: Float, opacity: Float, mirrored: Bool = false,
+         foliage: Bool = false, phase: Float = 0, shader: SKShader) {
+        self.body = body
+        self.anchorY = anchorY
+        self.mirror = mirrored ? -1 : 1
+        self.softness = softness
+        self.opacity = opacity
+        self.foliage = foliage ? 1 : 0
+        self.phase = phase
+        projection = ShadowProjection(body: body, anchorY: anchorY, ratio: ratio, softness: CGFloat(softness))
+        super.init(texture: texture, color: .white, size: projection.size)
+        self.shader = shader
+        zPosition = 40
+        update(foot: .zero)
+    }
+
+    required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
+
+    func update(foot: CGPoint, texture: SKTexture? = nil, gait: SIMD2<Float> = SIMD2(-1, 0)) {
+        if let texture { self.texture = texture }
+        position = CGPoint(x: foot.x + projection.offset.x, y: foot.y + projection.offset.y)
+        attributeValues = [
+            "a_origin": SKAttributeValue(vectorFloat2: SIMD2(Float(position.x), Float(-position.y))),
+            "a_extent": SKAttributeValue(vectorFloat2: SIMD2(Float(size.width), Float(size.height))),
+            "a_body": SKAttributeValue(vectorFloat4: SIMD4(Float(body.width), Float(body.height), Float(anchorY), mirror)),
+            "a_cast": SKAttributeValue(vectorFloat4: SIMD4(Float(projection.cast.dx), Float(projection.cast.dy), softness, opacity)),
+            "a_foliage": SKAttributeValue(float: foliage), "a_phase": SKAttributeValue(float: phase),
+            "a_gait": SKAttributeValue(vectorFloat2: gait)
+        ]
+    }
+}

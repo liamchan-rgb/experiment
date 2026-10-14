@@ -116,4 +116,37 @@ final class TrailTests: XCTestCase {
             XCTAssertNotNil(UIImage(named: name))
         }
     }
+
+    func testWalkCadenceRetainsItsPhaseAcrossAStop() {
+        var walk = WalkCycle()
+        walk.advance(from: .zero, to: CGPoint(x: 13, y: 0))
+        XCTAssertEqual(walk.frame, 3)
+        XCTAssertEqual(walk.facing, 3)
+        walk.advance(from: CGPoint(x: 13, y: 0), to: CGPoint(x: 13, y: 0))
+        XCTAssertEqual(walk.frame, 0)
+        XCTAssertEqual(walk.distance, 13)
+        walk.advance(from: CGPoint(x: 13, y: 0), to: CGPoint(x: 14, y: 0))
+        XCTAssertEqual(walk.frame, 3)
+    }
+
+    func testWalkTurnHysteresisAvoidsBoundaryFlicker() {
+        var walk = WalkCycle()
+        walk.advance(from: .zero, to: CGPoint(x: 10, y: 0))
+        walk.advance(from: .zero, to: CGPoint(x: 10, y: 7))
+        XCTAssertEqual(walk.facing, 3)
+        walk.advance(from: .zero, to: CGPoint(x: 10, y: 9))
+        XCTAssertEqual(walk.facing, 0)
+        walk.advance(from: .zero, to: CGPoint(x: 10, y: 7))
+        XCTAssertEqual(walk.facing, 0)
+    }
+
+    func testGroundProjectionKeepsTheFeetFixedAndCastsAwayFromSun() {
+        let projection = ShadowProjection(body: CGSize(width: 60, height: 100), anchorY: 0.02, ratio: 0.9, softness: 2)
+        XCTAssertEqual(projection.point(x: 0, height: 0), .zero)
+        let crown = projection.point(x: 0, height: 80)
+        XCTAssertGreaterThan(crown.x, 0)
+        XCTAssertLessThan(crown.y, 0)
+        XCTAssertEqual(crown.x / -crown.y, MeadowSun.cast.dx / MeadowSun.cast.dy, accuracy: 0.001)
+        XCTAssertGreaterThan(projection.size.width, 60 + crown.x)
+    }
 }

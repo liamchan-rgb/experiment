@@ -50,7 +50,8 @@ for source_name, regions in [('terrain-atlas.png', terrain_regions), ('props-atl
         save_asset(name, padded)
 
 for hero in range(1, 4):
-    source = Image.open(RAW / f'hero{hero}.png').convert('RGBA')
+    gait_source = RAW / f'hero{hero}-gait-v1.2.png'
+    source = Image.open(gait_source if gait_source.exists() else RAW / f'hero{hero}.png').convert('RGBA')
     cells = []
     for row in range(4):
         for column in range(4):
@@ -70,6 +71,8 @@ for hero in range(1, 4):
         row, column = divmod(index, 4)
         atlas.alpha_composite(cell, (column * 384 + (384 - width) // 2, row * 384 + 336 - height))
     save_asset(f'Hero{hero}Directions', atlas)
+    manifest[f'Hero{hero}Directions']['source'] = source.filename if hasattr(source, 'filename') else gait_source.name
+    manifest[f'Hero{hero}Directions']['runtimeRig'] = 'Front/back right contact exchanges legs below the hem; profile contacts exchange near/far leg depth.'
 
 (ROOT / 'Art/Generated/LivingScene/asset-manifest.json').write_text(json.dumps(manifest, indent=2) + '\n')
 print('Prepared', len(manifest), 'independent assets; decoded texture budget:',

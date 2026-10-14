@@ -25,6 +25,16 @@
 			"isa" = "PBXBuildFile";
 			"fileRef" = F1DA447D6A7A060E6C4C4E80;
 		};
+		CFD9363EC2CA8229D023C432 = {
+			"isa" = "PBXFileReference";
+			"lastKnownFileType" = "sourcecode.swift";
+			"path" = "Game/GaitReviewScene.swift";
+			"sourceTree" = "<group>";
+		};
+		7870D9C736172F8A9F534C7E = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = CFD9363EC2CA8229D023C432;
+		};
 		269650C38F8DD9DB3EA6712D = {
 			"isa" = "PBXFileReference";
 			"lastKnownFileType" = "sourcecode.swift";
@@ -55,6 +65,16 @@
 			"isa" = "PBXBuildFile";
 			"fileRef" = 99D30FA4C024C21330B21291;
 		};
+		0B4C15D230DDB88CF54B1AC6 = {
+			"isa" = "PBXFileReference";
+			"lastKnownFileType" = "sourcecode.swift";
+			"path" = "Game/ProjectedShadow.swift";
+			"sourceTree" = "<group>";
+		};
+		2EFBE336E765741024D160F5 = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = 0B4C15D230DDB88CF54B1AC6;
+		};
 		1CAF9877A5F6B9813F15739A = {
 			"isa" = "PBXFileReference";
 			"lastKnownFileType" = "sourcecode.swift";
@@ -84,6 +104,16 @@
 		BB374ADDA90DD49DAF266AD2 = {
 			"isa" = "PBXBuildFile";
 			"fileRef" = D0760787AC13759F118D8DE8;
+		};
+		6A21BA7FDDC2FB7B790D0351 = {
+			"isa" = "PBXFileReference";
+			"lastKnownFileType" = "sourcecode.swift";
+			"path" = "Game/WalkCycle.swift";
+			"sourceTree" = "<group>";
+		};
+		8E972FB2B3AACA4C529240AD = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = 6A21BA7FDDC2FB7B790D0351;
 		};
 		5595A96AECADD87EFD6DE6D6 = {
 			"isa" = "PBXFileReference";
@@ -163,12 +193,15 @@
 			"children" = (
 				12BE6F43C250EA1C0ABFBF32,
 				F1DA447D6A7A060E6C4C4E80,
+				CFD9363EC2CA8229D023C432,
 				269650C38F8DD9DB3EA6712D,
 				A05AAE886C1A644A2AF1E17A,
 				99D30FA4C024C21330B21291,
+				0B4C15D230DDB88CF54B1AC6,
 				1CAF9877A5F6B9813F15739A,
 				4B5D87B0E3C770DAA09EE100,
 				D0760787AC13759F118D8DE8,
+				6A21BA7FDDC2FB7B790D0351,
 				5595A96AECADD87EFD6DE6D6,
 				3010D05254CDB3E5CA6C1B15,
 				3685E330EC5277A9DD5661C6,
@@ -231,8 +264,8 @@
 				"TARGETED_DEVICE_FAMILY" = "1,2";
 				"SUPPORTED_PLATFORMS" = "iphoneos iphonesimulator";
 				"CODE_SIGN_STYLE" = "Automatic";
-				"MARKETING_VERSION" = "1.1.0";
-				"CURRENT_PROJECT_VERSION" = "3";
+				"MARKETING_VERSION" = "1.2.0";
+				"CURRENT_PROJECT_VERSION" = "4";
 				"ASSETCATALOG_COMPILER_APPICON_NAME" = "AppIcon";
 				"LD_RUNPATH_SEARCH_PATHS" = (
 					"$(inherited)",
@@ -258,8 +291,8 @@
 				"TARGETED_DEVICE_FAMILY" = "1,2";
 				"SUPPORTED_PLATFORMS" = "iphoneos iphonesimulator";
 				"CODE_SIGN_STYLE" = "Automatic";
-				"MARKETING_VERSION" = "1.1.0";
-				"CURRENT_PROJECT_VERSION" = "3";
+				"MARKETING_VERSION" = "1.2.0";
+				"CURRENT_PROJECT_VERSION" = "4";
 				"ASSETCATALOG_COMPILER_APPICON_NAME" = "AppIcon";
 				"LD_RUNPATH_SEARCH_PATHS" = (
 					"$(inherited)",
@@ -286,12 +319,15 @@
 			"files" = (
 				A9B47589F1C47027677602E0,
 				A0A1CFB1B359C88FE613E3FB,
+				7870D9C736172F8A9F534C7E,
 				435A1C7E2595EA1985DE130C,
 				EAE0075545ABB42C40815692,
 				9230100C79CFE05C6D40D51A,
+				2EFBE336E765741024D160F5,
 				85ECA9C97CEF1442EB09388B,
 				7A73B65B6F0455441E0B5B86,
 				BB374ADDA90DD49DAF266AD2,
+				8E972FB2B3AACA4C529240AD,
 				ACC04BAE083F06BFDC7ED36E,
 				3CECB03B99CDC07317983836,
 			);

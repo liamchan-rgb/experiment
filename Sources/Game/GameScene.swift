@@ -6,10 +6,11 @@ final class GameScene: SKScene {
     private var simulation: JourneySimulation!
     private var actors: [SKSpriteNode] = []
     private var actorRoots: [SKNode] = []
-    private var actorShadows: [SKSpriteNode] = []
+    private var actorShadows: [ProjectedShadow] = []
+    private var actorContacts: [SKSpriteNode] = []
     private var actorLabels: [SKNode] = []
     private var frames: [[[SKTexture]]] = []
-    private var facing = [0, 0, 0]
+    private var walks = [WalkCycle(), WalkCycle(), WalkCycle()]
     private var discoveryNodes: [SKNode] = []
     private var discovered = Set<Int>()
     private var pendingDiscovery: Int?
@@ -56,11 +57,10 @@ final class GameScene: SKScene {
         world.addChild(start)
         for (index, discovery) in world.definition.discoveries.enumerated() {
             let root = SKNode()
-            root.position = LivingWorld.position(CGPoint(x: discovery.x, y: discovery.y))
+            root.position = LivingWorld.position(CGPoint(x: discovery.x + 28, y: discovery.y - 40))
             root.zPosition = 22500
             root.name = "discovery-\(index)"
-            let diamond = SKShapeNode(rectOf: CGSize(width: 28, height: 28), cornerRadius: 5)
-            diamond.zRotation = .pi / 4
+            let diamond = SKShapeNode(circleOfRadius: 13)
             diamond.fillColor = SKColor(red: 0.25, green: 0.27, blue: 0.23, alpha: 0.9)
             diamond.strokeColor = SKColor(red: 0.87, green: 0.73, blue: 0.46, alpha: 1)
             diamond.lineWidth = 1.5
@@ -75,6 +75,13 @@ final class GameScene: SKScene {
             root.addChild(label)
             world.addChild(root)
             discoveryNodes.append(root)
+            let footprint = SKShapeNode(ellipseOf: CGSize(width: 18, height: 8))
+            footprint.position = LivingWorld.position(CGPoint(x: discovery.x, y: discovery.y))
+            footprint.fillColor = .clear
+            footprint.strokeColor = SKColor(red: 0.87, green: 0.73, blue: 0.46, alpha: 0.55)
+            footprint.lineWidth = 1
+            footprint.zPosition = 65
+            world.addChild(footprint)
         }
         selectionRing.fillColor = .clear
         selectionRing.strokeColor = SKColor(red: 1, green: 0.89, blue: 0.56, alpha: 0.9)
@@ -99,7 +106,7 @@ final class GameScene: SKScene {
                     let texture = SKTexture(rect: CGRect(x: CGFloat(column) / 4,
                                                         y: CGFloat(3 - row) / 4,
                                                         width: 0.25, height: 0.25), in: atlas)
-                    texture.filteringMode = .linear
+                    texture.filteringMode = .nearest
                     return texture
                 })
             }
@@ -114,21 +121,19 @@ final class GameScene: SKScene {
             world.addChild(root)
             actorRoots.append(root)
             actors.append(sprite)
-            let shadow = SKSpriteNode(texture: directions[0][0], size: CGSize(width: 43, height: 34))
-            shadow.anchorPoint = sprite.anchorPoint
-            shadow.shader = world.effects.shadow
-            shadow.zRotation = -2.2
-            shadow.zPosition = 42
+            let shadow = ProjectedShadow(texture: directions[0][0], body: sprite.size, anchorY: sprite.anchorPoint.y,
+                                         ratio: 0.82, softness: 1.2, opacity: 0.52, shader: world.effects.shadow)
             world.addChild(shadow)
             actorShadows.append(shadow)
-            let plate = SKShapeNode(rectOf: CGSize(width: 26, height: 17), cornerRadius: 3)
+            actorContacts.append(world.makeContact(foot: .zero, width: 15, depth: 5))
+            let plate = SKShapeNode(rectOf: CGSize(width: 23, height: 14), cornerRadius: 3)
             plate.fillColor = .init(red: 0.18, green: 0.23, blue: 0.25, alpha: 0.9)
             plate.strokeColor = SKColor(red: 0.78, green: 0.70, blue: 0.46, alpha: 0.25)
             plate.lineWidth = 0.6
             plate.name = root.name
             let label = SKLabelNode(fontNamed: "HelveticaNeue-Medium")
             label.text = "P\(index + 1)"
-            label.fontSize = 12
+            label.fontSize = 10
             label.verticalAlignmentMode = .center
             label.fontColor = .white
             label.name = root.name
@@ -201,7 +206,7 @@ final class GameScene: SKScene {
         }
         selectionRing.isHidden = true
         destinationRing.isHidden = true
-        facing = [0, 0, 0]
+        walks = [WalkCycle(), WalkCycle(), WalkCycle()]
         cameraCenter = CGPoint(x: 640, y: 360)
         zoom = 1
         layoutWorld()
@@ -245,28 +250,20 @@ final class GameScene: SKScene {
     private func updateActors(before: [CGPoint]?) {
         for index in actors.indices {
             let point = simulation.point(for: index)
-            var moving = false
             if let before {
-                let dx = point.x - before[index].x
-                let dy = point.y - before[index].y
-                moving = abs(dx) + abs(dy) > 0.001
-                if moving {
-                    if abs(dy) > abs(dx) * 0.65 { facing[index] = dy < 0 ? 2 : 0 }
-                    else { facing[index] = dx < 0 ? 1 : 3 }
-                }
+                walks[index].advance(from: before[index], to: point)
             }
-            let phase = Int(environmentTime * Double(simulation.travelers[index].speed) / 5.1 + Double(index) * 1.4)
-            let frame = moving ? [1, 2, 3, 2][phase % 4] : 0
-            let texture = frames[index][facing[index]][frame]
+            let walk = walks[index]
+            let gait = SIMD2(Float(walk.facing), Float(walk.frame))
+            let texture = frames[index][walk.facing][walk.frame]
             actors[index].texture = texture
             actorRoots[index].position = LivingWorld.position(point)
             actorRoots[index].zPosition = 10000 + point.y
-            actorShadows[index].texture = texture
-            actorShadows[index].position = LivingWorld.position(CGPoint(x: point.x + 1, y: point.y + 2))
-            actorShadows[index].zRotation = CGFloat(-2.2 + sin(environmentTime * 0.035) * 0.12)
-            actorLabels[index].position = actorRoots[index].position + CGPoint(x: 0, y: -14)
+            actorShadows[index].update(foot: actorRoots[index].position, texture: texture, gait: gait)
+            actorContacts[index].position = actorRoots[index].position
+            actorLabels[index].position = actorRoots[index].position + CGPoint(x: 0, y: -13)
             world.effects.apply(world.effects.vegetation, to: actors[index],
-                                origin: CGPoint(x: point.x, y: point.y - 24), extent: actors[index].size)
+                                origin: CGPoint(x: point.x, y: point.y - 24), extent: actors[index].size, gait: gait)
         }
         selectionRing.position = actorRoots[simulation.selected].position
     }
@@ -376,6 +373,8 @@ final class GameScene: SKScene {
             "fps": measuredFPS, "residentMemoryMiB": memory,
             "textureBudgetMiB": world.definition.textureBudgetMiB,
             "independentProps": world.objectCount, "roads": world.network.edges.count,
+            "projectedShadows": world.shadowCount + actorShadows.count,
+            "sunDirection": ["x": Double(MeadowSun.cast.dx), "y": Double(MeadowSun.cast.dy)],
             "environmentTime": environmentTime, "zoom": Double(zoom),
             "selected": simulation.selected, "isPlaying": simulation.isPlaying,
             "mode": simulation.mode == .patrol ? "patrol" : "destination",
