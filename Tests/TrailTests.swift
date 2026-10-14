@@ -1,5 +1,6 @@
 import XCTest
 import UIKit
+import SpriteKit
 @testable import MeadowJourney
 
 final class TrailTests: XCTestCase {
@@ -148,5 +149,54 @@ final class TrailTests: XCTestCase {
         XCTAssertLessThan(crown.y, 0)
         XCTAssertEqual(crown.x / -crown.y, MeadowSun.cast.dx / MeadowSun.cast.dy, accuracy: 0.001)
         XCTAssertGreaterThan(projection.size.width, 60 + crown.x)
+    }
+
+    func testAtmosphereActuallyChangesRenderedPixels() throws {
+        let effects = EnvironmentShaders()
+        let view = SKView(frame: CGRect(x: 0, y: 0, width: 256, height: 256))
+        let node = SKSpriteNode(color: .white, size: CGSize(width: 256, height: 256))
+        for shader in [effects.frontMist, effects.sunlight] {
+            node.shader = shader
+            effects.update(time: 0)
+            let before = try renderedPixels(node, in: view)
+            effects.update(time: 8)
+            let after = try renderedPixels(node, in: view)
+            XCTAssertGreaterThan(pixelDifference(before, after), 0.4, "Atmosphere must visibly change with a fixed camera")
+        }
+    }
+
+    func testFrontBackLegRigChangesTheContactPoseWithoutAtlasCoordinates() throws {
+        let effects = EnvironmentShaders()
+        let view = SKView(frame: CGRect(x: 0, y: 0, width: 192, height: 192))
+        let frames = HeroFrames.load(1)
+        let node = SKSpriteNode(texture: frames[0][1], size: CGSize(width: 192, height: 192))
+        for direction in [0, 2] {
+            node.texture = frames[direction][1]
+            effects.apply(effects.vegetation, to: node, origin: .zero, extent: node.size, gait: SIMD2(Float(direction), 1))
+            let left = try renderedPixels(node, in: view)
+            effects.apply(effects.vegetation, to: node, origin: .zero, extent: node.size, gait: SIMD2(Float(direction), 3))
+            let right = try renderedPixels(node, in: view)
+            XCTAssertGreaterThan(pixelDifference(left, right), 0.5, "Opposite leg contact cannot render the same pose")
+        }
+    }
+
+    private func renderedPixels(_ node: SKNode, in view: SKView) throws -> [UInt8] {
+        let texture = try XCTUnwrap(view.texture(from: node))
+        let image = texture.cgImage()
+        var bytes = [UInt8](repeating: 0, count: image.width * image.height * 4)
+        let drew = bytes.withUnsafeMutableBytes { buffer -> Bool in
+            guard let context = CGContext(data: buffer.baseAddress, width: image.width, height: image.height,
+                                          bitsPerComponent: 8, bytesPerRow: image.width * 4, space: CGColorSpaceCreateDeviceRGB(),
+                                          bitmapInfo: CGImageAlphaInfo.premultipliedLast.rawValue) else { return false }
+            context.draw(image, in: CGRect(x: 0, y: 0, width: image.width, height: image.height))
+            return true
+        }
+        XCTAssertTrue(drew)
+        return bytes
+    }
+
+    private func pixelDifference(_ first: [UInt8], _ second: [UInt8]) -> Double {
+        guard first.count == second.count, !first.isEmpty else { return 0 }
+        return Double(zip(first, second).reduce(0) { $0 + abs(Int($1.0) - Int($1.1)) }) / Double(first.count)
     }
 }
