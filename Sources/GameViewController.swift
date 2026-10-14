@@ -66,11 +66,11 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
         gameView.frame = view.bounds
         let inset = view.safeAreaInsets
         let top = max(inset.top, 6)
-        titleButton.frame = CGRect(x: max(inset.left, 10) + 4, y: top, width: 88, height: 44)
+        titleButton.frame = CGRect(x: max(inset.left, 10) + 4, y: top, width: 70, height: 38)
         let right = view.bounds.width - max(inset.right, 10) - 4
-        zoomButton.frame = CGRect(x: right - 44, y: top, width: 44, height: 44)
-        resetButton.frame = zoomButton.frame.offsetBy(dx: -46, dy: 0)
-        playButton.frame = resetButton.frame.offsetBy(dx: -46, dy: 0)
+        zoomButton.frame = CGRect(x: right - 34, y: top + 2, width: 34, height: 34)
+        resetButton.frame = zoomButton.frame.offsetBy(dx: -36, dy: 0)
+        playButton.frame = resetButton.frame.offsetBy(dx: -36, dy: 0)
     }
 
     @objc private func togglePlayback() { scene.togglePlayback() }

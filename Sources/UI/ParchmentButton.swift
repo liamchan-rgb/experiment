@@ -21,6 +21,10 @@ final class ParchmentButton: UIButton {
     required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
     override var isHighlighted: Bool { didSet { alpha = isHighlighted ? 0.75 : 1 } }
 
+    override func point(inside point: CGPoint, with event: UIEvent?) -> Bool {
+        bounds.insetBy(dx: -5, dy: -5).contains(point)
+    }
+
     override func draw(_ rect: CGRect) {
         guard let context = UIGraphicsGetCurrentContext() else { return }
         let box = bounds.insetBy(dx: 4, dy: 4)
@@ -55,11 +59,16 @@ final class ParchmentButton: UIButton {
         ink.setFill()
         ink.setStroke()
         let center = CGPoint(x: box.midX, y: box.midY)
+        if symbol != .title {
+            context.translateBy(x: center.x, y: center.y)
+            context.scaleBy(x: 0.75, y: 0.75)
+            context.translateBy(x: -center.x, y: -center.y)
+        }
         switch symbol {
         case .title:
             let text = "安然" as NSString
             let attributes: [NSAttributedString.Key: Any] = [
-                .font: UIFont(name: "SongtiSC-Bold", size: 21) ?? UIFont.boldSystemFont(ofSize: 20),
+                .font: UIFont(name: "SongtiSC-Bold", size: 17) ?? UIFont.boldSystemFont(ofSize: 17),
                 .foregroundColor: ink
             ]
             let size = text.size(withAttributes: attributes)
