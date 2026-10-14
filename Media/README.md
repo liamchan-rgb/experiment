@@ -1,11 +1,15 @@
-# 动态版 1.1.0 视觉验收
+# 1.2.0 视觉验收资料
 
-- [iPad 横屏录像](https://github.com/liamchan-rgb/experiment/raw/refs/heads/main/Media/iPad-LivingScene-v1.1.0.mp4)：约 18 秒，2752 × 2064、H.264、30 FPS，已调整为正确横屏方向并压缩，保持像素尺寸。
-- [iPad 原尺寸截图](https://github.com/liamchan-rgb/experiment/raw/refs/heads/main/Media/iPad-LivingScene-v1.1.0-native.png)。
-- [放大截图](https://github.com/liamchan-rgb/experiment/raw/refs/heads/main/Media/iPad-LivingScene-v1.1.0-zoom.png)。
-- `RuntimeMetrics-v1.1.0.json`：CI iPad 模拟器运行采样，平均约 58 FPS，基础纹理预算 42.36 MiB。此数据不代表真机性能。
-- `BuildInfo-v1.1.0.json`：源码提交、已通过的构建、测试和 IPA 校验信息。
+本轮修复在 [PR #3](https://github.com/liamchan-rgb/experiment/pull/3)，当前主分支仍保留 1.1.0。安装使用 [1.2.0 IPA](https://github.com/liamchan-rgb/experiment/raw/refs/heads/feat/layered-living-scene/Downloads/MeadowJourney-v1.2.0-unsigned.ipa)。
 
-本版本来自已完整通过 Xcode 编译、12 项模型/资源检查、iPhone 与 iPad 界面测试的源码提交。整图背景已从 App 移除，场景通过独立资源搭建，风、雾、光束、投影及人物运动在运行时更新。
+- [四方向步态近景](https://github.com/liamchan-rgb/experiment/raw/refs/heads/feat/layered-living-scene/Media/iPad-FourDirectionGait-v1.2.0.mp4)：约 40 秒，保留原始时间轴；三位人物分别展示正面、向左、背面、向右行走；可查看双腿交替、腰部和装备边缘，以及地面投影是否跟随人物姿势。
+- [正面接触姿态对照](https://github.com/liamchan-rgb/experiment/raw/refs/heads/feat/layered-living-scene/Media/iPad-GaitContact-v1.2.0.png)与[四方向画面索引](https://github.com/liamchan-rgb/experiment/raw/refs/heads/feat/layered-living-scene/Media/iPad-GaitDirections-v1.2.0.png)。
+- [静止镜头光雾](https://github.com/liamchan-rgb/experiment/raw/refs/heads/feat/layered-living-scene/Media/iPad-Atmosphere-v1.2.0.mp4)：人物暂停、镜头固定，约 60 秒紧凑预览，查看雾、光束、云影与风动；[开始画面](https://github.com/liamchan-rgb/experiment/raw/refs/heads/feat/layered-living-scene/Media/iPad-Atmosphere-v1.2.0-start.png)与[结束画面](https://github.com/liamchan-rgb/experiment/raw/refs/heads/feat/layered-living-scene/Media/iPad-Atmosphere-v1.2.0-end.png)供对照。
+- [iPad 行旅演示](https://github.com/liamchan-rgb/experiment/raw/refs/heads/feat/layered-living-scene/Media/iPad-LivingScene-v1.2.0.mp4)：约 40 秒紧凑预览，巡逻、缩放及探索地点。
+- [原尺寸场景截图](https://github.com/liamchan-rgb/experiment/raw/refs/heads/feat/layered-living-scene/Media/iPad-LivingScene-v1.2.0-native.png)与[放大截图](https://github.com/liamchan-rgb/experiment/raw/refs/heads/feat/layered-living-scene/Media/iPad-LivingScene-v1.2.0-zoom.png)。
 
-草地仍有可见重复形状。最后的均匀地表纹理、全局随机采样和道路材质坐标调整保留在 `feat/layered-living-scene`，尚未进入此 IPA：GitHub 因账户付款失败或支出上限拒绝启动这次 macOS 构建。解除账单限制后需要重新验证和打包。
+录像调整为正确横屏方向、H.264 / 30 FPS，保留 2752 × 2064 像素；PNG 保留原尺寸。超长录屏的紧凑预览按比例缩短，并保留整段场景变化；原始时间轴录像与 Xcode 测试附件在来源构建的 Actions 页面，具体时间比例见 `RecordingInfo-v1.2.0.json`。
+
+`BuildInfo-v1.2.0.json` 记录源码、成功构建、测试数量、录像整理来源和 IPA 校验值。`RuntimeMetrics-v1.2.0.json` 为 iPad 模拟器原始运行采样，基础纹理预算约 42.36 MiB；模拟器的帧率和驻留内存不代表物理 iPad。
+
+恢复时发现旧构建的四方向录屏为空白，原因是验收场景在 UIKit 初次布局前按零尺寸建立节点，未适配后续尺寸。此次修复后重新执行 iPhone 与 iPad 验收入口测试，并检查实际录像。早先的 1.1.0 文件保留作历史对照；本页的链接均指向 1.2.0。
