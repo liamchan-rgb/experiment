@@ -38,25 +38,11 @@ final class LivingWorld: SKNode {
     static func position(_ point: CGPoint) -> CGPoint { CGPoint(x: point.x, y: -point.y) }
 
     private func buildGround() {
-        let tile: CGFloat = 320
-        let groundTexture = texture("MeadowGround")
-        for row in 0..<4 {
-            for column in 0..<5 {
-                let x = Self.bounds.minX + CGFloat(column) * tile
-                let y = Self.bounds.minY + CGFloat(row) * tile
-                let node = SKSpriteNode(texture: groundTexture, size: CGSize(width: tile, height: tile))
-                node.position = Self.position(CGPoint(x: x + tile / 2, y: y + tile / 2))
-                let flipX: CGFloat = column % 2 == 0 ? 1 : -1
-                let flipY: CGFloat = row % 2 == 0 ? 1 : -1
-                node.xScale = flipX
-                node.yScale = flipY
-                node.zPosition = 0
-                effects.apply(effects.ground, to: node,
-                              origin: CGPoint(x: x + tile / 2, y: y + tile / 2),
-                              extent: CGSize(width: tile * flipX, height: tile * flipY))
-                addChild(node)
-            }
-        }
+        let node = SKSpriteNode(texture: texture("MeadowGround"), size: Self.bounds.size)
+        node.position = Self.position(CGPoint(x: Self.bounds.midX, y: Self.bounds.midY))
+        node.shader = effects.ground
+        node.zPosition = 0
+        addChild(node)
     }
 
     private func roadPolygon(_ trail: Trail, width: CGFloat) -> CGPath {
@@ -89,6 +75,7 @@ final class LivingWorld: SKNode {
             let road = SKShapeNode(path: roadPolygon(edge.trail, width: edge.width))
             road.fillColor = SKColor(red: 0.89, green: 0.72, blue: 0.44, alpha: 1)
             road.strokeColor = .clear
+            road.fillTexture = texture("MeadowGround")
             road.fillShader = effects.soil
             road.zPosition = 11
             addChild(road)

@@ -52,19 +52,19 @@ final class EnvironmentShaders {
         }
         """
         ground = SKShader(source: Self.noise + """
-        vec3 grassSample(vec2 uv, vec2 cell) {
-            vec2 offset = vec2(hash21(cell), hash21(cell + 17.3));
-            return texture2D(u_texture, fract(uv + offset)).rgb;
-        }
         void main() {
-            vec2 p = a_origin + vec2((v_tex_coord.x - 0.5) * a_extent.x,
-                                     (0.5 - v_tex_coord.y) * a_extent.y);
+            vec2 p = vec2(-160.0, 940.0) + v_tex_coord * vec2(1600.0, -1160.0);
             vec2 grid = p / 150.0;
             vec2 cell = floor(grid);
             vec2 weight = smoothstep(vec2(0.0), vec2(1.0), fract(grid));
             vec2 uv = p / 330.0;
-            vec3 first = mix(grassSample(uv, cell), grassSample(uv, cell + vec2(1.0, 0.0)), weight.x);
-            vec3 second = mix(grassSample(uv, cell + vec2(0.0, 1.0)), grassSample(uv, cell + vec2(1.0)), weight.x);
+            vec2 a = cell, b = cell + vec2(1.0, 0.0), c = cell + vec2(0.0, 1.0), d = cell + vec2(1.0);
+            vec3 sampleA = texture2D(u_texture, fract(uv + vec2(hash21(a), hash21(a + 17.3)))).rgb;
+            vec3 sampleB = texture2D(u_texture, fract(uv + vec2(hash21(b), hash21(b + 17.3)))).rgb;
+            vec3 sampleC = texture2D(u_texture, fract(uv + vec2(hash21(c), hash21(c + 17.3)))).rgb;
+            vec3 sampleD = texture2D(u_texture, fract(uv + vec2(hash21(d), hash21(d + 17.3)))).rgb;
+            vec3 first = mix(sampleA, sampleB, weight.x);
+            vec3 second = mix(sampleC, sampleD, weight.x);
             vec3 grass = mix(first, second, weight.y);
             float meadow = noise21(p * 0.006);
             grass = mix(grass, vec3(0.30, 0.38, 0.14), 0.12 + (1.0 - meadow) * 0.08);
@@ -73,7 +73,6 @@ final class EnvironmentShaders {
         }
         """, uniforms: [clock])
         vegetation = SKShader(source: surface, uniforms: [clock])
-        ground.attributes = commonAttributes
         vegetation.attributes = commonAttributes
         shadow = SKShader(source: """
         void main() {
