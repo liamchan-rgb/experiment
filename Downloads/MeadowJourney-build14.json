@@ -27,7 +27,8 @@
     "uiTestsPassed": 1,
     "totalFailures": 0,
     "gaitContactReview": "All three heroes and eight headings inspected as complete contact frames; runtime UV leg splicing removed.",
-    "shadowsAndRoadsVisualReview": "User feedback pending; no effect-image review performed."
+    "shadowsAndRoadsVisualReview": "User feedback pending; no effect-image review performed.",
+    "publicDownloadBytesAndSha256": "matched archive IPA"
   },
   "rendering": {
     "mainShadowSize": 2048,
@@ -36,8 +37,8 @@
     "groundReceiver": "grass and unified road surface",
     "cpuPixelReadbackOnDisplay": false,
     "displayScheduling": "One scene-driven loop; background capped at 30fps with immediate camera/pose refresh and explicit drawable release.",
-    "backgroundMaximumFPS": 30,
-    "foregroundPreferredFPS": 60
+    "foregroundPreferredFPS": 60,
+    "backgroundTargetFPS": 30
   },
   "installationStatus": "Awaiting user device feedback; classic stored ZIP format, same bundle ID for SideStore replacement."
 }
