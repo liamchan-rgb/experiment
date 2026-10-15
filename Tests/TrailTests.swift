@@ -7,54 +7,72 @@ import MetalKit
 final class TrailTests: XCTestCase {
     private let trail = Trail(points: [CGPoint(x: 0, y: 0), CGPoint(x: 30, y: 0), CGPoint(x: 30, y: 40)])
 
-    func testShadowLabCutoutPipelineSubmitsBothCasterModes() throws {
+    func testShadowLabCutoutPipelineSubmitsContourModes() throws {
         let renderer = try ShadowLabRenderer(device: XCTUnwrap(MTLCreateSystemDefaultDevice()))
-        // Basic GPU execution only. Visual quality is checked by the user.
-        for imageCasters in [true, false] {
-            for models in [false, true] {
-                try renderer.validateFrameSubmission(frame: ShadowLabFrame(time: 1.1, models: models, imageCasters: imageCasters))
-            }
+        for models in [false, true] {
+            try renderer.validateFrameSubmission(frame: ShadowLabFrame(time: 1.1, models: models))
         }
         try renderer.validateFrameSubmission(frame: ShadowLabFrame(time: 12, sunAngle: 0.85, models: true, seed: 8))
     }
 
-    func testShadowLabUsesActualDepthAndCastsAtTreeTowerAndBootContacts() throws {
+    func testMeadowAllAssetsSubmitSharedShadowDepth() throws {
+        let world = LivingWorld(definition: .load())
+        let renderer = try MeadowShadowRenderer(device: XCTUnwrap(MTLCreateSystemDefaultDevice()), world: world)
+        XCTAssertGreaterThan(renderer.casterCount, 200)
+        XCTAssertTrue(Set(world.casterProps.map(\.asset)).isSuperset(of: ["OakA", "OakB", "Pines", "WatchTower", "CampTent", "Fence", "RockLow", "RockHigh", "RockSmall", "Flowers", "Shrub"]))
+        for facing in 0..<8 {
+            let heroes = (0..<3).map { MeadowHeroCaster(index: $0, foot: CGPoint(x: 300 + $0 * 100, y: 442), facing: facing, frame: facing % 4) }
+            world.update(time: TimeInterval(facing))
+            try renderer.validateSubmission(world: world, heroes: heroes)
+        }
+    }
+
+    func testReliefPreservesArtCoordinatesForEveryAsset() {
+        let assets: [ShadowLabAsset] = [.tree, .oakB, .pines, .tower, .hero, .tent, .fence, .rockLow, .rockHigh, .rockSmall, .shrub, .flowers]
+        for asset in assets {
+            let instance = ShadowLabInstance(asset: asset, root: SIMD3(3, 4, 0), width: 3, aspect: 1.2, anchor: SIMD2(0.5, asset.anchorY))
+            var mesh = ShadowLabMesh(); mesh.imageCaster(instance)
+            for vertex in mesh.vertices {
+                let p = SIMD3(vertex.position.x, vertex.position.y, vertex.position.z) - instance.root
+                XCTAssertEqual(p.x, (vertex.uvWind.x - 0.5) * instance.width, accuracy: 0.0001)
+                let projected = p.y * ShadowLabMath.cameraUp.y + p.z * ShadowLabMath.cameraUp.z
+                XCTAssertEqual(projected, (1 - vertex.uvWind.y - instance.anchor.y) * instance.screenHeight, accuracy: 0.0001)
+                XCTAssertGreaterThanOrEqual(p.z, 0)
+            }
+        }
+    }
+
+    func testRoadMaskUsesOneUnionAtJunctions() throws {
+        let roads = SceneDefinition.load().roads
+        let bounds = LivingWorld.bounds
+        let image = MeadowRoadMask.make(network: TrailNetwork(roads: roads), bounds: bounds)
+        let reversed = MeadowRoadMask.make(network: TrailNetwork(roads: Array(roads.reversed())), bounds: bounds)
+        XCTAssertEqual(image.width, 1600); XCTAssertEqual(image.height, 1160)
+        let first = try XCTUnwrap(image.dataProvider?.data) as Data
+        let second = try XCTUnwrap(reversed.dataProvider?.data) as Data
+        XCTAssertEqual(first, second, "Road overlap must be independent of drawing order")
+        XCTAssertGreaterThan(first.filter { $0 > 0 && $0 < 255 }.count, 10000, "Edges need a continuous distance mask")
+    }
+
+    func testShadowLabUsesActualDepthForImageContours() throws {
         let device = try XCTUnwrap(MTLCreateSystemDefaultDevice())
         let renderer = try ShadowLabRenderer(device: device)
-        var frame = ShadowLabFrame(time: 0, wind: false, artwork: false, heroFrame: 1, imageCasters: false)
+        var frame = ShadowLabFrame(time: 0, wind: false, artwork: false, heroFrame: 1)
         let shaded = try renderer.snapshot(frame: frame)
         frame.shadows = false
         let lit = try renderer.snapshot(frame: frame)
         XCTAssertGreaterThan(shaded.depthTexels, 1000, "The shadow texture must contain rasterized 3D geometry")
         XCTAssertGreaterThan(shaded.minimumDepth, 0)
         XCTAssertLessThan(shaded.minimumDepth, 0.9)
-        let instances = ShadowLabMath.instances(seed: 1, time: 0)
-        var contacts = [instances[0].root]
-        contacts += instances[1].towerFeet
-        contacts.append(instances[2].root + SIMD3(-0.36, 0, 0))
-        let camera = ShadowLabMath.camera(aspect: Float(shaded.width) / Float(shaded.height), zoom: 1)
-        for contact in contacts {
-            let p = camera * SIMD4(contact, 1)
-            let px = Int((p.x / p.w * 0.5 + 0.5) * Float(shaded.width))
-            let py = Int((0.5 - p.y / p.w * 0.5) * Float(shaded.height))
-            var strongest = 0
-            for y in max(0, py - 5)...min(shaded.height - 1, py + 5) {
-                for x in max(0, px - 5)...min(shaded.width - 1, px + 5) {
-                    let i = (y * shaded.width + x) * 4
-                    let delta = (0..<3).reduce(0) { $0 + Int(lit.bgra[i + $1]) - Int(shaded.bgra[i + $1]) }
-                    strongest = max(strongest, delta)
-                }
-            }
-            XCTAssertGreaterThan(strongest, 30, "No rendered shadow at actual ground contact \(contact)")
-        }
+        XCTAssertGreaterThan(pixelDifference(shaded.bgra, lit.bgra), 0.1)
         attachLab(shaded.image, "shadow-lab-ground-receiver")
-        attachLab(try renderer.snapshot(frame: ShadowLabFrame(time: 0, wind: false, imageCasters: false)).image, "shadow-lab-artwork")
-        attachLab(try renderer.snapshot(frame: ShadowLabFrame(time: 0, wind: false, models: true, imageCasters: false)).image, "shadow-lab-proxy-alignment")
+        attachLab(try renderer.snapshot(frame: ShadowLabFrame(time: 0, wind: false)).image, "shadow-lab-artwork")
+        attachLab(try renderer.snapshot(frame: ShadowLabFrame(time: 0, wind: false, models: true)).image, "shadow-lab-proxy-alignment")
     }
 
     func testShadowLabDepthShadowsRespondToSunWindAndLegPose() throws {
         let renderer = try ShadowLabRenderer(device: XCTUnwrap(MTLCreateSystemDefaultDevice()))
-        var frame = ShadowLabFrame(time: 1.1, wind: false, artwork: false, heroFrame: 1, imageCasters: false)
+        var frame = ShadowLabFrame(time: 1.1, wind: false, artwork: false, heroFrame: 1)
         let original = try renderer.snapshot(frame: frame)
         frame.sunAngle = 0.85
         let changedSun = try renderer.snapshot(frame: frame)
@@ -201,9 +219,8 @@ final class TrailTests: XCTestCase {
             let sprite = try XCTUnwrap(tower as? SKSpriteNode)
             let banner = try XCTUnwrap(tower.childNode(withName: "banner") as? SKSpriteNode)
             XCTAssertEqual(banner.position.x, 0, accuracy: 0.001)
-            XCTAssertEqual(banner.position.y, sprite.size.height * LivingWorld.towerBannerRoofAnchorY, accuracy: 0.001)
-            XCTAssertGreaterThan(banner.position.y / sprite.size.height, 0.9,
-                                 "The flagpole base should meet the tower roof ridge")
+            XCTAssertEqual(banner.position.y, sprite.size.height * (LivingWorld.towerBannerRoofAnchorY - sprite.anchorPoint.y), accuracy: 0.001)
+            XCTAssertLessThan(banner.zPosition, 0, "The tower roof must occlude the lower pole")
         }
     }
 
@@ -306,20 +323,33 @@ final class TrailTests: XCTestCase {
         }
     }
 
-    func testFrontBackLegRigChangesTheContactPoseWithoutAtlasCoordinates() throws {
+    func testAuthoredGaitFramesDoNotGetShaderLegAlphaTears() throws {
         let effects = EnvironmentShaders()
         let view = SKView(frame: CGRect(x: 0, y: 0, width: 192, height: 192))
-        let frames = HeroFrames.load(1)
-        let node = SKSpriteNode(texture: frames[0][1], size: CGSize(width: 192, height: 192))
-        for direction in [0, 2, 4, 5, 6, 7] {
-            node.texture = frames[direction][1]
-            effects.apply(effects.vegetation, to: node, origin: .zero, extent: node.size, gait: SIMD2(Float(direction), 1))
-            let left = try renderedPixels(node, in: view)
-            effects.apply(effects.vegetation, to: node, origin: .zero, extent: node.size, gait: SIMD2(Float(direction), 3))
-            let right = try renderedPixels(node, in: view)
-            XCTAssertGreaterThan(pixelDifference(left, right), 0.5, "Opposite leg contact cannot render the same pose")
-            XCTAssertLessThanOrEqual(widestOpaqueRow(right), widestOpaqueRow(left) + 2,
-                                     "The hem must not stretch into the transparent frame gutters")
+        for hero in 1...3 {
+            let frames = HeroFrames.load(hero)
+            let node = SKSpriteNode(texture: frames[0][1], size: CGSize(width: 192, height: 192))
+            for direction in 0..<8 {
+                node.texture = frames[direction][1]
+                effects.apply(effects.vegetation, to: node, origin: .zero, extent: node.size,
+                              gait: SIMD2(Float(direction), 1))
+                let contactA = try renderedPixels(node, in: view)
+
+                // Changing the contact phase without changing its texture may
+                // alter no alpha pixels: the shader must not splice a boot from
+                // the other side of the image around the knees.
+                effects.apply(effects.vegetation, to: node, origin: .zero, extent: node.size,
+                              gait: SIMD2(Float(direction), 3))
+                let sameFrameOtherPhase = try renderedPixels(node, in: view)
+                XCTAssertLessThan(alphaDifference(contactA, sameFrameOtherPhase), 0.25,
+                                  "Gait attributes must not cut or replace the authored leg silhouette")
+
+                // The paired pose comes from the real atlas column instead.
+                node.texture = frames[direction][3]
+                let contactB = try renderedPixels(node, in: view)
+                XCTAssertGreaterThan(pixelDifference(contactA, contactB), 0.5,
+                                     "Contact A/B must use the two authored full-frame poses")
+            }
         }
     }
 
@@ -334,17 +364,16 @@ final class TrailTests: XCTestCase {
                 effects.apply(effects.vegetation, to: node, origin: .zero, extent: node.size, gait: SIMD2(Float(direction), 1))
                 node.texture = frames[direction][1]
                 let left = try renderedPixels(node, in: view)
+                effects.apply(effects.vegetation, to: node, origin: .zero, extent: node.size, gait: SIMD2(Float(direction), 2))
                 node.texture = frames[direction][2]
                 let passing = try renderedPixels(node, in: view)
-                node.texture = frames[direction][3]
-                let originalContact = try renderedPixels(node, in: view)
                 effects.apply(effects.vegetation, to: node, origin: .zero, extent: node.size, gait: SIMD2(Float(direction), 3))
+                node.texture = frames[direction][3]
                 let right = try renderedPixels(node, in: view)
                 XCTAssertGreaterThan(pixelDifference(left, right), 0.5)
                 XCTAssertGreaterThan(pixelDifference(left, passing), 0.5)
-                XCTAssertGreaterThanOrEqual(largestOpaqueComponentRatio(right),
-                                            largestOpaqueComponentRatio(originalContact) - 0.015,
-                                            "An exchanged boot must remain attached to the body (hero \(hero), direction \(direction))")
+                XCTAssertGreaterThan(largestOpaqueComponentRatio(right), 0.80,
+                                     "The complete authored leg frame should remain connected (hero \(hero), direction \(direction))")
             }
         }
     }
@@ -368,13 +397,15 @@ final class TrailTests: XCTestCase {
     func testProjectedShadowActuallyRendersTheCurrentLegPose() throws {
         let effects = EnvironmentShaders()
         let view = SKView(frame: CGRect(x: 0, y: 0, width: 384, height: 192))
-        let shadow = ProjectedShadow(texture: HeroFrames.load(1)[0][1], body: CGSize(width: 192, height: 192),
+        let contacts = HeroFrames.load(1)[0]
+        let shadow = ProjectedShadow(texture: contacts[1], body: CGSize(width: 192, height: 192),
                                      anchorY: 0.125, ratio: 0.82, softness: 1.2, opacity: 0.52, shader: effects.shadow)
-        shadow.update(foot: .zero, gait: SIMD2(0, 1))
+        shadow.update(foot: .zero, texture: contacts[1], gait: SIMD2(0, 1))
         let left = try renderedPixels(shadow, in: view)
-        shadow.update(foot: .zero, gait: SIMD2(0, 3))
+        shadow.update(foot: .zero, texture: contacts[3], gait: SIMD2(0, 3))
         let right = try renderedPixels(shadow, in: view)
-        XCTAssertGreaterThan(pixelDifference(left, right), 0.05, "The ground projection must follow the rendered leg pose")
+        XCTAssertGreaterThan(pixelDifference(left, right), 0.05,
+                             "The ground projection must use the currently selected full animation frame")
     }
 
     func testMeadowPlantShaderSoftensThePaintedGrassBase() throws {
@@ -425,13 +456,13 @@ final class TrailTests: XCTestCase {
         return Double(zip(first, second).reduce(0) { $0 + abs(Int($1.0) - Int($1.1)) }) / Double(first.count)
     }
 
-    private func widestOpaqueRow(_ pixels: [UInt8]) -> Int {
-        let width = Int(Double(pixels.count / 4).squareRoot())
-        guard width > 0 else { return 0 }
-        return (0..<width).map { y in
-            let covered = (0..<width).filter { pixels[(y * width + $0) * 4 + 3] > 32 }
-            return covered.isEmpty ? 0 : covered.last! - covered.first! + 1
-        }.max() ?? 0
+    private func alphaDifference(_ first: [UInt8], _ second: [UInt8]) -> Double {
+        guard first.count == second.count, first.count >= 4 else { return .infinity }
+        var total = 0
+        for index in stride(from: 3, to: first.count, by: 4) {
+            total += abs(Int(first[index]) - Int(second[index]))
+        }
+        return Double(total) / Double(first.count / 4)
     }
 
     private func largestOpaqueComponentRatio(_ pixels: [UInt8]) -> Double {

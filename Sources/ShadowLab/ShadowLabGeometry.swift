@@ -25,12 +25,22 @@ struct ShadowLabFrame {
     var zoom: Float = 1
     var seed: UInt64 = 1
     var heroFrame: Int? = nil
-    var imageCasters = true
 }
 
 enum ShadowLabAsset: String {
-    case tree = "OakA", tower = "WatchTower", hero = "Hero1Directions"
-    var casterKind: Float { switch self { case .tree: return 0; case .tower: return 1; case .hero: return 2 } }
+    case tree = "OakA", oakB = "OakB", pines = "Pines", tower = "WatchTower", hero = "Hero1Directions"
+    case tent = "CampTent", fence = "Fence", rockLow = "RockLow", rockHigh = "RockHigh", rockSmall = "RockSmall", shrub = "Shrub", flowers = "Flowers", banner = "Banner"
+    var casterKind: Float {
+        switch self { case .tree, .oakB, .pines: return 0; case .tower: return 1; case .hero: return 2
+        case .tent: return 3; case .fence: return 4; case .rockLow, .rockHigh, .rockSmall: return 5
+        case .shrub: return 6; case .flowers: return 7; case .banner: return 8 }
+    }
+    var isTree: Bool { casterKind == 0 }
+    var anchorY: Float {
+        switch self { case .tree, .oakB, .pines: return 0.09; case .tower: return 0.14
+        case .hero: return 0.125; case .tent: return 0.10; case .rockLow, .rockHigh, .rockSmall: return 0.10
+        case .fence: return 0.08; case .shrub, .flowers: return 0.04; case .banner: return 0.04 }
+    }
 }
 
 struct ShadowLabInstance {
@@ -136,15 +146,16 @@ struct ShadowLabMesh {
             let t = max(0, min(1, (x - a) / (b - a)))
             return t * t * (3 - 2 * t)
         }
-        let columns = instance.asset == .hero ? 8 : 16
-        let rows = 32
+        let small = instance.asset == .flowers || instance.asset == .shrub || instance.asset == .fence || instance.asset == .banner
+        let columns = small ? 4 : (instance.asset == .hero ? 8 : 16)
+        let rows = small ? 8 : 32
         let roofDepth = instance.asset == .tower ? instance.proxyCenter.y - instance.root.y : 0
         vertices.reserveCapacity(vertices.count + columns * rows * 6)
         func vertex(_ u: Float, _ v: Float) -> ShadowLabVertex {
             let screenUp = (1 - v - instance.anchor.y) * instance.screenHeight
             var depth: Float
             switch instance.asset {
-            case .tree:
+            case .tree, .oakB, .pines:
                 let canopy = 1 - smooth(0.70, 0.86, v)
                 let back = 1 - smooth(0.23, 0.39, v)
                 let front = smooth(0.57, 0.72, v)
@@ -163,6 +174,13 @@ struct ShadowLabMesh {
                 depth = footDepth * (1 - roof) + roofDepth * roof
             case .hero:
                 depth = (u - 0.5) * 0.20 * (1 - smooth(0.63, 0.86, v))
+            case .tent, .rockLow, .rockHigh, .rockSmall, .shrub, .flowers, .fence, .banner:
+                // A sloping footprint keeps the lower art on the receiver;
+                // raised details retain their alpha silhouette above it.
+                let footV = 1 - instance.anchor.y - 0.09 * abs(u - 0.5) * 2
+                let footprint = (1 - footV - instance.anchor.y) * instance.screenHeight / ShadowLabMath.cameraUp.y
+                let volume: Float = instance.asset == .tent ? 0.18 : (instance.asset == .fence ? 0.015 : 0.07)
+                depth = footprint + sin(u * .pi) * volume * instance.width * (1 - smooth(0.40, 0.88, v))
             }
             var height = (screenUp - depth * ShadowLabMath.cameraUp.y) / ShadowLabMath.cameraUp.z
             // The painted ground apron is placed ON the receiver, then excluded
@@ -171,8 +189,8 @@ struct ShadowLabMesh {
             var x = (u - instance.anchor.x) * instance.width
             if mirrored { x = -x }
             let position = instance.root + SIMD3(x, depth, height)
-            let bend = instance.asset == .tree ? max(0, (1 - v - instance.anchor.y) / (1 - instance.anchor.y)) : 0
-            let tint: SIMD4<Float> = instance.asset == .tree ? SIMD4(0.80, 1, 0.45, 1)
+            let bend = instance.asset.isTree ? max(0, (1 - v - instance.anchor.y) / (1 - instance.anchor.y)) : 0
+            let tint: SIMD4<Float> = instance.asset.isTree ? SIMD4(0.80, 1, 0.45, 1)
                 : (instance.asset == .tower ? SIMD4(1, 0.72, 0.28, 1) : SIMD4(0.38, 0.83, 1, 1))
             return ShadowLabVertex(position: SIMD4(position, 1), uvWind: SIMD4(u, v, bend, 0.4), color: tint)
         }
@@ -190,115 +208,11 @@ struct ShadowLabMesh {
         }
     }
 
-    mutating func box(center: SIMD3<Float>, size: SIMD3<Float>, rotation: Float = 0) {
-        let corners: [SIMD3<Float>] = (0..<8).map { i in
-            let p = SIMD3<Float>(i & 1 == 0 ? -0.5 : 0.5, i & 2 == 0 ? -0.5 : 0.5, i & 4 == 0 ? -0.5 : 0.5) * size
-            return center + SIMD3(cos(rotation) * p.x - sin(rotation) * p.y, sin(rotation) * p.x + cos(rotation) * p.y, p.z)
-        }
-        for face in [[0, 2, 3, 1], [4, 5, 7, 6], [0, 1, 5, 4], [2, 6, 7, 3], [0, 4, 6, 2], [1, 3, 7, 5]] {
-            triangle(corners[face[0]], corners[face[1]], corners[face[2]])
-            triangle(corners[face[0]], corners[face[2]], corners[face[3]])
-        }
-    }
-
-    mutating func ellipsoid(center: SIMD3<Float>, radii: SIMD3<Float>, segments: Int = 10, rings: Int = 6) {
-        func point(_ i: Int, _ j: Int) -> SIMD3<Float> {
-            let a = Float(i) / Float(segments) * .pi * 2
-            let b = Float(j) / Float(rings) * .pi
-            return center + SIMD3(cos(a) * sin(b), sin(a) * sin(b), cos(b)) * radii
-        }
-        for j in 0..<rings { for i in 0..<segments {
-            triangle(point(i, j), point(i + 1, j), point(i + 1, j + 1))
-            triangle(point(i, j), point(i + 1, j + 1), point(i, j + 1))
-        } }
-    }
-
-    mutating func beam(from a: SIMD3<Float>, to b: SIMD3<Float>, radius: Float, sides: Int = 7) {
-        let n = simd_normalize(b - a)
-        let tangent = simd_normalize(simd_cross(n, abs(n.z) < 0.9 ? SIMD3(0, 0, 1) : SIMD3(0, 1, 0)))
-        let bitangent = simd_cross(n, tangent)
-        func ring(_ i: Int) -> SIMD3<Float> {
-            let angle = Float(i) * 2 * .pi / Float(sides)
-            return (tangent * cos(angle) + bitangent * sin(angle)) * radius
-        }
-        for i in 0..<sides {
-            let u = ring(i), v = ring(i + 1)
-            triangle(a + u, b + u, b + v); triangle(a + u, b + v, a + v)
-            triangle(a, a + v, a + u); triangle(b, b + u, b + v)
-        }
-    }
-
-    mutating func addProxy(_ instance: ShadowLabInstance, frame: Int, mirrored: Bool = false) {
-        let start = vertices.count
-        let r = instance.proxyCenter, h = instance.proxyHeight
-        switch instance.asset {
-        case .tree:
-            color = SIMD4(0.87, 0.98, 0.55, 0.45)
-            wind = h; phase = 0.4
-            beam(from: r, to: r + SIMD3(0, 0, h * 0.58), radius: 0.25)
-            for (x, y, z, sx, sz) in [(-1.1, 0.0, 0.48, 1.05, 1.10), (1.1, 0.0, 0.49, 1.00, 1.14),
-                                      (-0.8, 0.1, 0.69, 1.13, 1.22), (0.8, 0.1, 0.70, 1.12, 1.22),
-                                      (0.0, 0.0, 0.85, 1.02, 1.13), (0.0, -0.3, 0.61, 1.23, 1.20)] as [(Float, Float, Float, Float, Float)] {
-                ellipsoid(center: r + SIMD3(x, y, h * z), radii: SIMD3(sx, 0.83, sz))
-            }
-            wind = 0; phase = 0
-        case .tower:
-            color = SIMD4(1, 0.75, 0.34, 0.55)
-            let feet = instance.towerFeet
-            func ring(_ z: Float, scale: Float = 1) -> [SIMD3<Float>] {
-                feet.map { r + ($0 - r) * SIMD3(scale, scale, 0) + SIMD3(0, 0, z) }
-            }
-            for foot in feet { beam(from: foot, to: foot + SIMD3(0, 0, h * 0.72), radius: 0.13) }
-            for z in [h * 0.32, h * 0.63] {
-                let corners = ring(z, scale: 1.13)
-                triangle(corners[0], corners[1], corners[2]); triangle(corners[0], corners[2], corners[3])
-            }
-            for i in 0..<4 {
-                let a = feet[i], b = feet[(i + 1) % 4]
-                beam(from: a + SIMD3(0, 0, h * 0.05), to: b + SIMD3(0, 0, h * 0.59), radius: 0.07)
-                beam(from: b + SIMD3(0, 0, h * 0.05), to: a + SIMD3(0, 0, h * 0.59), radius: 0.07)
-            }
-            let peak = SIMD3(instance.root.x, r.y, h - instance.cardHeight * 0.022)
-            // A wider roof does not imply uniformly scaling the painted footprint's depth.
-            // Calibrate the four eaves on one horizontal plane from the actual roof corners.
-            let corners = [SIMD2<Float>(0.50, 0.24), SIMD2(0.12, 0.18), SIMD2(0.50, 0.095), SIMD2(0.85, 0.17)]
-                .map { instance.pointOnPlane($0.x, $0.y, height: h * 0.78) }
-            for i in 0..<4 { triangle(corners[i], corners[(i + 1) % 4], peak) }
-        case .hero:
-            color = SIMD4(0.55, 0.85, 1, 0.65)
-            // The first experiment calibrates the relatively sound left-facing artwork.
-            // The contact frame is shared by the visible art and both 3D legs.
-            let unit = instance.cardHeight
-            let passing = frame == 2 || frame == 0
-            let depth: Float = frame == 3 ? -0.08 : 0.08
-            let hip = r + SIMD3<Float>(0.01, 0, unit * 0.27)
-            // The grounded sole stays at Z=0 AND at the image's ground-depth Y=0.
-            // A raised boot's depth/height pair is calibrated to its image-space sole.
-            let footA = r + SIMD3<Float>(passing ? -0.03 : (frame == 3 ? -0.33 : -0.36), 0, 0.06)
-            let farY: Float = frame == 3 ? 0.02 : -0.04
-            let solePixels: Float = passing ? 9 : (frame == 3 ? 4 : 2)
-            let farZ = 0.06 + (solePixels / 384 * instance.screenHeight - farY * ShadowLabMath.cameraUp.y) / ShadowLabMath.cameraUp.z
-            let footB = r + SIMD3<Float>(passing ? -0.17 : (frame == 3 ? 0.24 : 0.205), farY, farZ)
-            for (foot, side) in [(footA, depth), (footB, -depth)] {
-                let knee = (hip + foot) * 0.5 + SIMD3<Float>(-0.07, side * 0.5, 0.05)
-                beam(from: hip + SIMD3(0, side, 0), to: knee, radius: 0.13)
-                beam(from: knee, to: foot, radius: 0.105)
-                box(center: foot + SIMD3(-0.07, 0, 0), size: SIMD3(0.32, 0.23, 0.12))
-            }
-            ellipsoid(center: r + SIMD3(0, 0, unit * 0.40), radii: SIMD3(0.27, 0.22, unit * 0.16), segments: 8)
-            ellipsoid(center: r + SIMD3(-0.01, 0, unit * 0.56), radii: SIMD3(0.31, 0.27, 0.33), segments: 8)
-            beam(from: r + SIMD3(-0.10, 0, unit * 0.46), to: r + SIMD3(-0.35, 0, unit * 0.31), radius: 0.12)
-            if mirrored {
-                for index in start..<vertices.count { vertices[index].position.x = 2 * r.x - vertices[index].position.x }
-            }
-        }
-    }
-
     mutating func card(_ instance: ShadowLabInstance, rows: Int = 1, windPhase: Float = 0) {
         func vertex(_ u: Float, _ v: Float) -> ShadowLabVertex {
             let z = (1 - v - instance.anchor.y) * instance.cardHeight
             return ShadowLabVertex(position: SIMD4(instance.root + SIMD3((u - instance.anchor.x) * instance.width, 0, z), 1),
-                                   uvWind: SIMD4(u, v, instance.asset == .tree ? max(0, z / instance.height) : 0, windPhase), color: SIMD4(repeating: 1))
+                                   uvWind: SIMD4(u, v, instance.asset.isTree ? max(0, z / instance.height) : 0, windPhase), color: SIMD4(repeating: 1))
         }
         for row in 0..<rows {
             let lo = Float(row) / Float(rows), hi = Float(row + 1) / Float(rows)

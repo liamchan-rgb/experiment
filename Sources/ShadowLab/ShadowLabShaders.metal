@@ -3,15 +3,12 @@ using namespace metal;
 
 struct LabVertex { float4 position; float4 uvWind; float4 color; };
 struct LabUniforms { float4x4 camera; float4x4 light; float4 sunTime; float4 options; };
-struct LabRaster { float4 position [[position]]; float3 world; float2 uv; float4 color; };
+struct LabRaster { float4 position [[position]]; float3 world; float2 uv; float4 color; float2 wind; };
 
 float3 labDeform(LabVertex v, constant LabUniforms &u) {
+    if (u.options.w > 0.5) return v.position.xyz;
     float bend = (sin(u.sunTime.w * 1.55 + v.uvWind.w) + 0.28 * sin(u.sunTime.w * 2.73 + v.uvWind.w * 1.7)) * 0.24;
     return v.position.xyz + float3(bend * v.uvWind.z * v.uvWind.z * u.options.z, 0, 0);
-}
-
-vertex float4 labShadowVertex(uint id [[vertex_id]], device const LabVertex *v [[buffer(0)]], constant LabUniforms &u [[buffer(1)]]) {
-    return u.light * float4(labDeform(v[id], u), 1);
 }
 
 vertex LabRaster labColorVertex(uint id [[vertex_id]], device const LabVertex *v [[buffer(0)]], constant LabUniforms &u [[buffer(1)]]) {
@@ -20,6 +17,7 @@ vertex LabRaster labColorVertex(uint id [[vertex_id]], device const LabVertex *v
     o.position = u.camera * float4(o.world, 1);
     o.uv = v[id].uvWind.xy;
     o.color = v[id].color;
+    o.wind = v[id].uvWind.zw;
     return o;
 }
 
@@ -29,6 +27,7 @@ vertex LabRaster labCutoutShadowVertex(uint id [[vertex_id]], device const LabVe
     o.position = u.light * float4(o.world, 1);
     o.uv = v[id].uvWind.xy;
     o.color = v[id].color;
+    o.wind = v[id].uvWind.zw;
     return o;
 }
 
@@ -88,6 +87,24 @@ fragment float4 labArtworkFragment(LabRaster in [[stage_in]], texture2d<float> a
     return color;
 }
 
-fragment float4 labModelFragment(LabRaster in [[stage_in]]) {
-    return float4(in.color.rgb * in.color.a, in.color.a);
+// Main map shares SpriteKit's UV wind and ground fade with its depth silhouettes.
+fragment void meadowCutoutShadowFragment(LabRaster in [[stage_in]], texture2d<float> art [[texture(0)]],
+                                         constant LabUniforms &u [[buffer(1)]], constant float4 &settings [[buffer(2)]]) {
+    constexpr sampler pixels(coord::normalized, address::clamp_to_edge, filter::nearest);
+    float2 uv = in.uv;
+    float height = 1 - uv.y;
+    float root = smoothstep(0.06, 0.95, height);
+    float gust = 0.74 + 0.26 * sin(u.sunTime.w * 0.47 + in.wind.y * 0.31);
+    float sway = sin(u.sunTime.w * 1.55 + in.wind.y) + 0.28 * sin(u.sunTime.w * 2.73 + in.wind.y * 1.7);
+    if (in.wind.x > 1.5) uv.y -= sin(uv.x * 10 - u.sunTime.w * 3.8 + in.wind.y) * 0.04 * uv.x;
+    else uv.x += sway * 0.052 * gust * in.wind.x * root * root;
+    float4 color = art.sample(pixels, clamp(uv, 0.001, 0.999));
+    if (settings.x >= 5.5 && settings.x < 7.5) color.a *= smoothstep(0.035, 0.16, height);
+    if (!labCasterVisible(in, color, settings)) discard_fragment();
+}
+
+fragment float4 meadowShadowReceiverFragment(LabRaster in [[stage_in]], constant LabUniforms &u [[buffer(1)]],
+                                              depth2d<float> shadowMap [[texture(1)]]) {
+    float alpha = (1 - labVisibility(in.world, u, shadowMap)) * 0.61;
+    return float4(float3(0.075, 0.105, 0.080) * alpha, alpha);
 }

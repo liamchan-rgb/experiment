@@ -8,6 +8,7 @@ ROOT = Path(__file__).resolve().parents[1]
 RAW = ROOT / 'Art/Generated/LivingScene'
 CATALOG = ROOT / 'Sources/Resources/Assets.xcassets'
 manifest = {}
+GAIT_PHASES = ['idle', 'contact-a', 'passing', 'contact-b']
 
 
 def save_asset(name, image):
@@ -81,6 +82,8 @@ for hero in range(1, 4):
             cell = source.crop((column * source.width // 4, row * source.height // 4,
                                 (column + 1) * source.width // 4, (row + 1) * source.height // 4))
             cells.append(main_figure(cell))
+    if len(cells) != 16:
+        raise ValueError(f'Hero {hero} gait atlas must contain 4 directions × 4 phases')
     # One scale per character preserves frame-to-frame body dimensions and stride variation.
     scale = 240 / max(cell.height for cell in cells)
     atlas = Image.new('RGBA', (1536, 1536))
@@ -92,7 +95,9 @@ for hero in range(1, 4):
         atlas.alpha_composite(cell, (column * 384 + (384 - width) // 2, row * 384 + 336 - height))
     save_asset(f'Hero{hero}Directions', atlas)
     manifest[f'Hero{hero}Directions']['source'] = gait_source.name if gait_source.exists() else f'hero{hero}.png'
-    manifest[f'Hero{hero}Directions']['runtimeRig'] = 'Front/back right contact exchanges legs below the hem; profile contacts exchange near/far leg depth.'
+    manifest[f'Hero{hero}Directions']['directions'] = ['front', 'left-profile', 'back', 'right-profile']
+    manifest[f'Hero{hero}Directions']['gaitPhases'] = GAIT_PHASES
+    manifest[f'Hero{hero}Directions']['runtimeRig'] = 'Keep each authored frame whole for both sprite and ground shadow; gait columns already contain alternating leg contacts.'
 
 for hero in range(1, 4):
     source_path = RAW / f'hero{hero}-diagonal-v1.3.png'
@@ -111,6 +116,7 @@ for hero in range(1, 4):
     save_asset(name, atlas)
     manifest[name]['source'] = source_path.name
     manifest[name]['rows'] = ['southeast', 'southwest', 'northwest', 'northeast']
+    manifest[name]['gaitPhases'] = GAIT_PHASES
 
 (ROOT / 'Art/Generated/LivingScene/asset-manifest.json').write_text(json.dumps(manifest, indent=2) + '\n')
 print('Prepared', len(manifest), 'independent assets; decoded texture budget:',

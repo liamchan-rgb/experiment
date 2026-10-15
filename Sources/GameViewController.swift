@@ -1,9 +1,12 @@
 import UIKit
 import SpriteKit
+import MetalKit
 
 final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
     private let gameView = SKView()
     private let scene = GameScene()
+    private var groundView: MTKView?
+    private var groundRenderer: MeadowShadowRenderer?
     private let titleButton = ParchmentButton(symbol: .title)
     private let playButton = ParchmentButton(symbol: .play)
     private let resetButton = ParchmentButton(symbol: .reset)
@@ -25,6 +28,33 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
         gameView.frame = view.bounds
         view.addSubview(gameView)
         gameView.ignoresSiblingOrder = true
+        if !ProcessInfo.processInfo.arguments.contains("-gaitReview"), let device = MTLCreateSystemDefaultDevice() {
+            let ground = MTKView(frame: view.bounds, device: device)
+            ground.colorPixelFormat = .bgra8Unorm
+            ground.isPaused = true
+            ground.isUserInteractionEnabled = false
+            view.insertSubview(ground, belowSubview: gameView)
+            groundView = ground
+            scene.onWorldReady = { [weak self] world in
+                guard let self else { return }
+                do {
+                    self.groundRenderer = try MeadowShadowRenderer(device: device, world: world)
+                    self.scene.shadowReady = true
+                    self.gameView.isOpaque = false
+                    self.gameView.allowsTransparency = true
+                    self.gameView.backgroundColor = .clear
+                    self.scene.backgroundColor = .clear
+                } catch { self.metricsLabel.text = "投影初始化失败：\(error.localizedDescription)"; self.metricsLabel.isHidden = false }
+            }
+            scene.onRenderGround = { [weak self] world, center, scale, time, heroes in
+                guard let self, let surface = self.groundView else { return }
+                do {
+                    try self.groundRenderer?.render(in: surface, world: world, center: center, scale: scale, time: time, heroes: heroes)
+                    self.scene.shadowFrames = self.groundRenderer?.submittedFrames ?? 0
+                }
+                catch { self.metricsLabel.text = "投影运行失败：\(error.localizedDescription)"; self.metricsLabel.isHidden = false }
+            }
+        }
         gameView.preferredFramesPerSecond = 60
         gameView.isMultipleTouchEnabled = true
         gameView.accessibilityIdentifier = "meadowMap"
@@ -113,6 +143,7 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         gameView.frame = view.bounds
+        groundView?.frame = view.bounds
         let inset = view.safeAreaInsets
         let top = max(inset.top, 6)
         let isPad = traitCollection.userInterfaceIdiom == .pad

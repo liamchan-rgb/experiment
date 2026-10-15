@@ -6,8 +6,6 @@ final class GameScene: SKScene {
     private var simulation: JourneySimulation!
     private var actors: [SKSpriteNode] = []
     private var actorRoots: [SKNode] = []
-    private var actorShadows: [ProjectedShadow] = []
-    private var actorContacts: [SKSpriteNode] = []
     private var actorLabels: [SKNode] = []
     private var frames: [[[SKTexture]]] = []
     private var walks = [WalkCycle(), WalkCycle(), WalkCycle()]
@@ -25,6 +23,10 @@ final class GameScene: SKScene {
     private var demoPhase = 0
     private(set) var zoom: CGFloat = 1
     var isRunning: Bool { simulation?.isPlaying ?? false }
+    var shadowReady = false
+    var shadowFrames = 0
+    var onWorldReady: ((LivingWorld) -> Void)?
+    var onRenderGround: ((LivingWorld, CGPoint, CGFloat, TimeInterval, [MeadowHeroCaster]) -> Void)?
     var onPlaybackChanged: ((Bool) -> Void)?
     var onSelectionChanged: ((String) -> Void)?
     var onDiagnostics: ((String) -> Void)?
@@ -44,6 +46,7 @@ final class GameScene: SKScene {
         buildMarkers()
         buildActors()
         reset()
+        onWorldReady?(world)
         if demoMode { togglePlayback() }
     }
 
@@ -111,11 +114,6 @@ final class GameScene: SKScene {
             world.addChild(root)
             actorRoots.append(root)
             actors.append(sprite)
-            let shadow = ProjectedShadow(texture: directions[0][0], body: sprite.size, anchorY: sprite.anchorPoint.y,
-                                         ratio: 0.82, softness: 1.2, opacity: 0.52, shader: world.effects.shadow)
-            world.addChild(shadow)
-            actorShadows.append(shadow)
-            actorContacts.append(world.makeContact(foot: .zero, width: 15, depth: 5))
             let plate = SKShapeNode(rectOf: CGSize(width: 23, height: 14), cornerRadius: 3)
             plate.fillColor = .init(red: 0.18, green: 0.23, blue: 0.25, alpha: 0.9)
             plate.strokeColor = SKColor(red: 0.78, green: 0.70, blue: 0.46, alpha: 0.25)
@@ -237,6 +235,12 @@ final class GameScene: SKScene {
         }
     }
 
+    override func didFinishUpdate() {
+        guard world != nil, simulation != nil else { return }
+        let heroes = actors.indices.map { MeadowHeroCaster(index: $0, foot: simulation.point(for: $0), facing: walks[$0].facing, frame: walks[$0].frame) }
+        onRenderGround?(world, cameraCenter, baseScale * zoom, environmentTime, heroes)
+    }
+
     private func updateActors(before: [CGPoint]?) {
         for index in actors.indices {
             let point = simulation.point(for: index)
@@ -250,10 +254,6 @@ final class GameScene: SKScene {
             actors[index].position = CGPoint(x: 0, y: walk.lift)
             actorRoots[index].position = LivingWorld.position(point)
             actorRoots[index].zPosition = 10000 + point.y
-            let projectedFoot = actorRoots[index].position + CGPoint(x: 0, y: walk.lift)
-            actorShadows[index].update(foot: projectedFoot, texture: texture, gait: gait,
-                                       sun: world.effects.currentCast)
-            actorContacts[index].position = actorRoots[index].position
             actorLabels[index].position = actorRoots[index].position + CGPoint(x: 0, y: -13)
             world.effects.apply(world.effects.vegetation, to: actors[index],
                                 origin: CGPoint(x: point.x, y: point.y - 24), extent: actors[index].size, gait: gait)
@@ -366,7 +366,7 @@ final class GameScene: SKScene {
             "fps": measuredFPS, "residentMemoryMiB": memory,
             "textureBudgetMiB": world.definition.textureBudgetMiB,
             "independentProps": world.objectCount, "roads": world.network.edges.count,
-            "projectedShadows": world.shadowCount + actorShadows.count,
+            "projectedShadows": world.shadowCount + actors.count, "shadowRenderer": "image-alpha relief Metal depth map", "shadowReady": shadowReady, "shadowFrames": shadowFrames,
             "sunDirection": ["x": Double(world.effects.currentCast.dx), "y": Double(world.effects.currentCast.dy)],
             "environmentTime": environmentTime, "zoom": Double(zoom),
             "selected": simulation.selected, "isPlaying": simulation.isPlaying,

@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
     inputs:
       quick_lab:
-        description: 'Build the shadow lab IPA and run only its basic Metal submission test'
+        description: 'Build IPA and run focused map, contour, gait and interaction checks'
         required: false
         type: boolean
         default: false

@@ -51,36 +51,6 @@ final class EnvironmentShaders {
         float sway = sin(t * 1.55 + phase) + 0.28 * sin(t * 2.73 + phase * 1.7);
         return sway * 0.052 * gust * wind * root * root;
     }
-    float legExchangeWeight(vec2 uv, vec2 gait) {
-        // Exchange the legs below the hem without flipping asymmetric equipment.
-        bool frontBack = gait.x >= 0.0 && (gait.x < 0.5 || (gait.x > 1.5 && gait.x < 2.5));
-        if ((frontBack || gait.x > 3.5) && gait.y > 2.5) {
-            // Exchange the full leg up to the hem. A transition halfway down
-            // the shin disconnects the transported boot from its upper leg.
-            float lower = 1.0 - smoothstep(0.285, 0.315, uv.y);
-            if (gait.x < 3.5) {
-                lower *= smoothstep(0.28, 0.32, uv.x) * (1.0 - smoothstep(0.68, 0.72, uv.x));
-            }
-            return lower;
-        }
-        return 0.0;
-    }
-    float diagonalLegCenter(float facing) {
-        if (facing < 4.5) return 0.54;
-        if (facing < 5.5) return 0.45;
-        if (facing < 6.5) return 0.47;
-        return 0.53;
-    }
-    float exchangedLegVisibility(vec2 uv, vec2 gait) {
-        if (gait.x < 3.5) return 1.0;
-        return step(abs(uv.x - diagonalLegCenter(gait.x)), 0.185);
-    }
-    vec2 exchangedLegUV(vec2 uv, vec2 gait) {
-        // Diagonal boots retain their toe direction: translate the two leg
-        // regions rather than reflecting each boot or stretching its height.
-        if (gait.x > 3.5) return uv + vec2(uv.x < diagonalLegCenter(gait.x) ? 0.185 : -0.185, 0.0);
-        return vec2(1.0 - uv.x, uv.y);
-    }
     """
 
     init() {
@@ -88,8 +58,7 @@ final class EnvironmentShaders {
         let attributes = [SKAttribute(name: "a_origin", type: .vectorFloat2),
                           SKAttribute(name: "a_extent", type: .vectorFloat2),
                           SKAttribute(name: "a_wind", type: .float),
-                          SKAttribute(name: "a_phase", type: .float),
-                          SKAttribute(name: "a_gait", type: .vectorFloat2)]
+                          SKAttribute(name: "a_phase", type: .float)]
         let vegetationSource = Self.noise + """
         void main() {
             vec2 uv = v_tex_coord;
@@ -100,18 +69,6 @@ final class EnvironmentShaders {
             }
             uv = clamp(uv, 0.001, 0.999);
             vec4 color = texture2D(u_texture, uv);
-            float exchanged = legExchangeWeight(uv, a_gait);
-            if (exchanged > 0.0) {
-                vec4 otherLeg = texture2D(u_texture, exchangedLegUV(uv, a_gait)) * exchangedLegVisibility(uv, a_gait);
-                color = mix(color, otherLeg, exchanged);
-            }
-            bool profile = (a_gait.x > 0.5 && a_gait.x < 1.5) || (a_gait.x > 2.5 && a_gait.x < 3.5);
-            if (profile && (a_gait.y == 1.0 || a_gait.y == 3.0)) {
-                float nearSide = a_gait.x < 2.0 ? 1.0 - smoothstep(0.46, 0.54, uv.x) : smoothstep(0.46, 0.54, uv.x);
-                if (a_gait.y > 2.0) nearSide = 1.0 - nearSide;
-                float leg = (1.0 - smoothstep(0.28, 0.35, uv.y)) * smoothstep(0.11, 0.15, uv.y);
-                color.rgb *= mix(1.0, mix(0.78, 1.10, nearSide), leg);
-            }
             vec2 p = a_origin + vec2((v_tex_coord.x - 0.5) * a_extent.x, (0.5 - v_tex_coord.y) * a_extent.y);
             if (GROUND_BLEND_ENABLED) {
                 float breakup = noise21(p * 0.62 + vec2(a_phase, a_phase * 0.37));
@@ -176,11 +133,6 @@ final class EnvironmentShaders {
                     float inside = step(0.0, tap.x) * step(tap.x, 1.0) * step(0.0, tap.y) * step(tap.y, 1.0);
                     vec2 sampleUV = clamp(tap, 0.001, 0.999);
                     float alpha = texture2D(u_texture, sampleUV).a;
-                    float exchanged = legExchangeWeight(sampleUV, a_gait);
-                    if (exchanged > 0.0) {
-                        float otherLeg = texture2D(u_texture, exchangedLegUV(sampleUV, a_gait)).a * exchangedLegVisibility(sampleUV, a_gait);
-                        alpha = mix(alpha, otherLeg, exchanged);
-                    }
                     float weight = (x == 0 ? 2.0 : 1.0) * (y == 0 ? 2.0 : 1.0);
                     mask += alpha * inside * weight;
                 }
@@ -199,7 +151,7 @@ final class EnvironmentShaders {
         shadow.attributes = [SKAttribute(name: "a_origin", type: .vectorFloat2), SKAttribute(name: "a_extent", type: .vectorFloat2),
                              SKAttribute(name: "a_body", type: .vectorFloat4), SKAttribute(name: "a_cast", type: .vectorFloat4),
                              SKAttribute(name: "a_foliage", type: .float), SKAttribute(name: "a_phase", type: .float),
-                             SKAttribute(name: "a_gait", type: .vectorFloat2), SKAttribute(name: "a_wind", type: .float)]
+                             SKAttribute(name: "a_wind", type: .float)]
         contact = SKShader(source: """
         void main() {
             float radius = length((v_tex_coord - vec2(0.5)) * 2.0);
@@ -210,18 +162,24 @@ final class EnvironmentShaders {
 
         soil = SKShader(source: Self.noise + """
         void main() {
-            vec2 p = a_origin + vec2((v_tex_coord.x - 0.5) * a_extent.x, (0.5 - v_tex_coord.y) * a_extent.y);
-            float fine = hash21(floor(p * 1.8)), patches = noise21(p * 0.075);
-            vec3 sand = mix(vec3(0.57, 0.41, 0.23), vec3(0.84, 0.69, 0.43), fine * 0.48 + patches * 0.38);
-            vec2 cell = floor(p * 0.30), spot = fract(p * 0.30) - vec2(0.5);
-            float stones = step(0.89, hash21(cell)) * (1.0 - smoothstep(0.12, 0.34, length(spot)));
-            vec3 stone = mix(vec3(0.44, 0.40, 0.32), vec3(0.87, 0.80, 0.65), hash21(cell + 9.0));
-            sand = mix(sand, stone, stones * 0.85);
-            sand *= (0.88 + patches * 0.17) * sunStrength(p, u_sceneTime);
-            gl_FragColor = vec4(sand, 1.0);
+            vec2 p = vec2(-160.0, 940.0) + v_tex_coord * vec2(1600.0, -1160.0);
+            vec4 mask = texture2D(u_texture, v_tex_coord);
+            float edgeNoise = noise21(p * 0.23) * 0.58 + noise21(p * 0.73) * 0.28 + hash21(floor(p * 1.6)) * 0.14;
+            float coverage = smoothstep(0.10 + edgeNoise * 0.15, 0.58 + edgeNoise * 0.12, mask.r);
+            float patches = noise21(p * 0.045);
+            float fine = hash21(floor(p * 1.5));
+            vec3 soil = mix(vec3(0.37, 0.32, 0.19), vec3(0.59, 0.51, 0.32), patches * 0.64 + fine * 0.25);
+            // Faint wheel wear breaks up the center without a pair of rigid lines.
+            soil *= 1.0 - mask.g * (0.035 + noise21(p * 0.11) * 0.045);
+            vec2 cell = floor(p * 0.48), spot = fract(p * 0.48) - vec2(0.5);
+            float stones = step(0.95, hash21(cell)) * (1.0 - smoothstep(0.08, 0.25, length(spot)));
+            soil = mix(soil, vec3(0.53, 0.50, 0.37), stones * 0.40);
+            float sparseGrass = smoothstep(0.42, 0.72, noise21(p * 0.31)) * (1.0 - coverage * 0.78);
+            float alpha = coverage * (0.78 + patches * 0.10) * (1.0 - sparseGrass * 0.70);
+            soil *= sunStrength(p, u_sceneTime);
+            gl_FragColor = vec4(soil * alpha, alpha);
         }
         """, uniforms: [clock()])
-        soil.attributes = Array(attributes.prefix(2))
 
         func mist(layer: Float) -> SKShader {
             SKShader(source: Self.noise + """
@@ -274,12 +232,14 @@ final class EnvironmentShaders {
     func apply(_ shader: SKShader, to node: SKSpriteNode, origin: CGPoint,
                extent: CGSize, wind: Float = 0, phase: Float = 0,
                gait: SIMD2<Float> = SIMD2(-1, 0)) {
+        // Kept for call-site compatibility. Whole authored gait frames are
+        // already applied to the sprite and shadow textures by the scene.
+        _ = gait
         node.shader = shader
         node.attributeValues = [
             "a_origin": SKAttributeValue(vectorFloat2: SIMD2(Float(origin.x), Float(origin.y))),
             "a_extent": SKAttributeValue(vectorFloat2: SIMD2(Float(extent.width), Float(extent.height))),
-            "a_wind": SKAttributeValue(float: wind), "a_phase": SKAttributeValue(float: phase),
-            "a_gait": SKAttributeValue(vectorFloat2: gait)
+            "a_wind": SKAttributeValue(float: wind), "a_phase": SKAttributeValue(float: phase)
         ]
     }
 }

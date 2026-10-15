@@ -61,6 +61,9 @@ final class ProjectedShadow: SKSpriteNode {
 
     func update(foot: CGPoint, texture: SKTexture? = nil,
                 gait: SIMD2<Float> = SIMD2(-1, 0), sun: CGVector = MeadowSun.cast) {
+        // Kept in the call signature for existing scene callers. Animation is
+        // already present in `texture`; the shadow no longer remaps leg UVs.
+        _ = gait
         if let texture { self.texture = texture }
         projection = ShadowProjection(body: body, anchorY: anchorY, ratio: ratio,
                                       softness: CGFloat(softness), sun: sun)
@@ -72,8 +75,7 @@ final class ProjectedShadow: SKSpriteNode {
             "a_body": SKAttributeValue(vectorFloat4: SIMD4(Float(body.width), Float(body.height), Float(anchorY), mirror)),
             "a_cast": SKAttributeValue(vectorFloat4: SIMD4(Float(projection.cast.dx), Float(projection.cast.dy), softness, opacity)),
             "a_foliage": SKAttributeValue(float: foliage), "a_phase": SKAttributeValue(float: phase),
-            "a_wind": SKAttributeValue(float: wind),
-            "a_gait": SKAttributeValue(vectorFloat2: gait)
+            "a_wind": SKAttributeValue(float: wind)
         ]
     }
 }

@@ -25,7 +25,6 @@ final class ShadowLabRenderer: NSObject, MTKViewDelegate {
     var manualSun: Float = -0.65
     var shadowsEnabled = true
     var modelsVisible = false
-    var imageCasters = true
     var zoom: Float = 1
     var seed: UInt64 = 1
     var onStatus: ((String) -> Void)?
@@ -33,11 +32,9 @@ final class ShadowLabRenderer: NSObject, MTKViewDelegate {
     var currentSunAngle: Float { automaticSun ? -0.65 + sin(elapsed * 0.19) * 0.60 : manualSun }
     private let queue: MTLCommandQueue
     private let shadowMap: MTLTexture
-    private let shadowPipeline: MTLRenderPipelineState
     private let cutoutShadowPipeline: MTLRenderPipelineState
     private let groundPipeline: MTLRenderPipelineState
     private let artworkPipeline: MTLRenderPipelineState
-    private let modelPipeline: MTLRenderPipelineState
     private let cutoutModelPipeline: MTLRenderPipelineState
     private let depthState: MTLDepthStencilState
     private let groundBuffer: MTLBuffer
@@ -61,11 +58,6 @@ final class ShadowLabRenderer: NSObject, MTKViewDelegate {
         guard let shadowMap = device.makeTexture(descriptor: depth) else { throw ShadowLabError.setup("无法分配深度阴影贴图") }
         self.shadowMap = shadowMap
         shadowMap.label = "ShadowLab 1024x1024 real 3D depth"
-        let shadow = MTLRenderPipelineDescriptor()
-        shadow.label = "ShadowLab depth-only casters"
-        shadow.vertexFunction = library.makeFunction(name: "labShadowVertex")
-        shadow.depthAttachmentPixelFormat = .depth32Float
-        shadowPipeline = try device.makeRenderPipelineState(descriptor: shadow)
         let cutout = MTLRenderPipelineDescriptor()
         cutout.label = "Image-alpha clipped 3D relief casters"
         cutout.vertexFunction = library.makeFunction(name: "labCutoutShadowVertex")
@@ -91,7 +83,6 @@ final class ShadowLabRenderer: NSObject, MTKViewDelegate {
         }
         groundPipeline = try colorPipeline("labGroundFragment", blend: false)
         artworkPipeline = try colorPipeline("labArtworkFragment", blend: true)
-        modelPipeline = try colorPipeline("labModelFragment", blend: true)
         cutoutModelPipeline = try colorPipeline("labCutoutModelFragment", blend: true)
         let state = MTLDepthStencilDescriptor()
         state.depthCompareFunction = .lessEqual
@@ -150,7 +141,7 @@ final class ShadowLabRenderer: NSObject, MTKViewDelegate {
               let command = queue.makeCommandBuffer() else { inFlight.signal(); return }
         command.label = "ShadowLab depth + receiver + artwork"
         let sun = currentSunAngle
-        let frame = ShadowLabFrame(time: elapsed, sunAngle: sun, shadows: shadowsEnabled, models: modelsVisible, zoom: zoom, seed: seed, imageCasters: imageCasters)
+        let frame = ShadowLabFrame(time: elapsed, sunAngle: sun, shadows: shadowsEnabled, models: modelsVisible, zoom: zoom, seed: seed)
         do {
             let count = try encode(command: command, color: descriptor, size: view.drawableSize, frame: frame)
             let semaphore = inFlight
@@ -163,11 +154,11 @@ final class ShadowLabRenderer: NSObject, MTKViewDelegate {
             frameCount += 1; reportFrames += 1
             if now - reportTime >= 1 {
                 let fps = Double(reportFrames) / (now - reportTime)
-                let status = String(format: "%.0f FPS · %@ %@ · 光向 %.0f°", fps, imageCasters ? "轮廓投影" : "简模投影", shadowsEnabled ? "开" : "关", sun * 180 / .pi)
+                let status = String(format: "%.0f FPS · %@ %@ · 光向 %.0f°", fps, "轮廓投影", shadowsEnabled ? "开" : "关", sun * 180 / .pi)
                 onStatus?(status)
                 samples.append(["time": elapsed, "fps": fps, "proxyTriangles": count / 3, "shadowMapSize": shadowSize,
                                 "sunAngle": sun, "shadowsEnabled": shadowsEnabled, "seed": seed, "zoom": zoom,
-                                "objects": 3, "depthPasses": frameCount, "imageCasters": imageCasters])
+                                "objects": 3, "depthPasses": frameCount])
                 if samples.count > 180 { samples.removeFirst() }
                 if let data = try? JSONSerialization.data(withJSONObject: samples, options: .prettyPrinted),
                    let url = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("ShadowLabMetrics.json") {
@@ -191,20 +182,13 @@ final class ShadowLabRenderer: NSObject, MTKViewDelegate {
                                          options: SIMD4(frame.shadows ? 1 : 0, 1 / Float(shadowSize), frame.wind ? 1 : 0, 0))
         let instances = ShadowLabMath.instances(seed: frame.seed, time: frame.time)
         let heroFrame = frame.heroFrame ?? ShadowLabMath.heroFrame(time: frame.time)
-        var proxy = ShadowLabMesh()
-        var proxyBuffer: MTLBuffer?
         var cutouts: [(buffer: MTLBuffer, count: Int, texture: MTLTexture, kind: Float)] = []
-        if frame.imageCasters {
-            for instance in instances {
-                var mesh = ShadowLabMesh()
-                mesh.imageCaster(instance, mirrored: instance.asset == .hero && ShadowLabMath.heroMovingRight(time: frame.time))
-                let key = instance.asset == .hero ? "hero\(heroFrame)" : instance.asset.rawValue
-                guard let texture = textures[key] else { throw ShadowLabError.setup("投影素材缺失：\(key)") }
-                cutouts.append((try buffer(mesh.vertices), mesh.vertices.count, texture, instance.asset.casterKind))
-            }
-        } else {
-            for instance in instances { proxy.addProxy(instance, frame: heroFrame, mirrored: ShadowLabMath.heroMovingRight(time: frame.time)) }
-            proxyBuffer = try buffer(proxy.vertices)
+        for instance in instances {
+            var mesh = ShadowLabMesh()
+            mesh.imageCaster(instance, mirrored: instance.asset == .hero && ShadowLabMath.heroMovingRight(time: frame.time))
+            let key = instance.asset == .hero ? "hero\(heroFrame)" : instance.asset.rawValue
+            guard let texture = textures[key] else { throw ShadowLabError.setup("投影素材缺失：\(key)") }
+            cutouts.append((try buffer(mesh.vertices), mesh.vertices.count, texture, instance.asset.casterKind))
         }
         let shadowPass = MTLRenderPassDescriptor()
         shadowPass.depthAttachment.texture = shadowMap
@@ -212,23 +196,17 @@ final class ShadowLabRenderer: NSObject, MTKViewDelegate {
         shadowPass.depthAttachment.storeAction = .store
         shadowPass.depthAttachment.clearDepth = 1
         guard let depth = command.makeRenderCommandEncoder(descriptor: shadowPass) else { throw ShadowLabError.setup("阴影通道建立失败") }
-        depth.label = frame.imageCasters ? "Alpha-clipped image relief into real 3D depth" : "Legacy solid 3D proxy comparison"
+        depth.label = "Alpha-clipped image relief into real 3D depth"
         depth.setDepthStencilState(depthState)
         depth.setCullMode(.none)
         depth.setVertexBytes(&uniforms, length: MemoryLayout<ShadowLabUniforms>.stride, index: 1)
-        if frame.imageCasters {
-            depth.setRenderPipelineState(cutoutShadowPipeline)
-            for caster in cutouts {
-                var settings = SIMD4<Float>(caster.kind, 0.32, 0, 0)
-                depth.setVertexBuffer(caster.buffer, offset: 0, index: 0)
-                depth.setFragmentTexture(caster.texture, index: 0)
-                depth.setFragmentBytes(&settings, length: MemoryLayout<SIMD4<Float>>.stride, index: 2)
-                depth.drawPrimitives(type: .triangle, vertexStart: 0, vertexCount: caster.count)
-            }
-        } else {
-            depth.setRenderPipelineState(shadowPipeline)
-            depth.setVertexBuffer(proxyBuffer, offset: 0, index: 0)
-            depth.drawPrimitives(type: .triangle, vertexStart: 0, vertexCount: proxy.vertices.count)
+        depth.setRenderPipelineState(cutoutShadowPipeline)
+        for caster in cutouts {
+            var settings = SIMD4<Float>(caster.kind, 0.32, 0, 0)
+            depth.setVertexBuffer(caster.buffer, offset: 0, index: 0)
+            depth.setFragmentTexture(caster.texture, index: 0)
+            depth.setFragmentBytes(&settings, length: MemoryLayout<SIMD4<Float>>.stride, index: 2)
+            depth.drawPrimitives(type: .triangle, vertexStart: 0, vertexCount: caster.count)
         }
         depth.endEncoding()
 
@@ -269,24 +247,17 @@ final class ShadowLabRenderer: NSObject, MTKViewDelegate {
             }
         }
         if frame.models {
-            if frame.imageCasters {
-                encoder.setRenderPipelineState(cutoutModelPipeline)
-                for caster in cutouts {
-                    var settings = SIMD4<Float>(caster.kind, 0.32, 0, 0)
-                    encoder.setVertexBuffer(caster.buffer, offset: 0, index: 0)
-                    encoder.setFragmentTexture(caster.texture, index: 0)
-                    encoder.setFragmentBytes(&settings, length: MemoryLayout<SIMD4<Float>>.stride, index: 2)
-                    encoder.drawPrimitives(type: .triangle, vertexStart: 0, vertexCount: caster.count)
-                }
-            } else {
-                encoder.setRenderPipelineState(modelPipeline)
-                encoder.setTriangleFillMode(.lines)
-                encoder.setVertexBuffer(proxyBuffer, offset: 0, index: 0)
-                encoder.drawPrimitives(type: .triangle, vertexStart: 0, vertexCount: proxy.vertices.count)
+            encoder.setRenderPipelineState(cutoutModelPipeline)
+            for caster in cutouts {
+                var settings = SIMD4<Float>(caster.kind, 0.32, 0, 0)
+                encoder.setVertexBuffer(caster.buffer, offset: 0, index: 0)
+                encoder.setFragmentTexture(caster.texture, index: 0)
+                encoder.setFragmentBytes(&settings, length: MemoryLayout<SIMD4<Float>>.stride, index: 2)
+                encoder.drawPrimitives(type: .triangle, vertexStart: 0, vertexCount: caster.count)
             }
         }
         encoder.endEncoding()
-        return frame.imageCasters ? cutouts.reduce(0) { $0 + $1.count } : proxy.vertices.count
+        return cutouts.reduce(0) { $0 + $1.count }
     }
 
     /// Submission/error check only: no image readback, screenshot or visual assertion.

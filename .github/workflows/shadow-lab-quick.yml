@@ -71,7 +71,7 @@ jobs:
           retention-days: 30
 
   smoke:
-    name: Shadow Lab Native Metal Smoke Test
+    name: Map and Contour Native Checks
     runs-on: macos-15
     timeout-minutes: 20
     defaults:
@@ -112,13 +112,21 @@ jobs:
           xcrun simctl bootstatus "$simulator_udid" -b \
             2>&1 | tee build/logs/simulator-boot.log
 
-      - name: Run the focused shadow lab Metal test
+      - name: Run map, contour, gait and interaction checks
         run: |
           set -euo pipefail
           xcodebuild test \
             -project "$PROJECT" -scheme "$SCHEME" -configuration Debug \
             -destination 'platform=iOS Simulator,id=${{ steps.simulator.outputs.udid }}' \
-            -only-testing:MeadowJourneyTests/TrailTests/testShadowLabCutoutPipelineSubmitsBothCasterModes \
+            -only-testing:MeadowJourneyTests/TrailTests/testShadowLabCutoutPipelineSubmitsContourModes \
+            -only-testing:MeadowJourneyTests/TrailTests/testMeadowAllAssetsSubmitSharedShadowDepth \
+            -only-testing:MeadowJourneyTests/TrailTests/testReliefPreservesArtCoordinatesForEveryAsset \
+            -only-testing:MeadowJourneyTests/TrailTests/testRoadMaskUsesOneUnionAtJunctions \
+            -only-testing:MeadowJourneyTests/TrailTests/testOnlyTheTowerGetsAnAdditionalBanner \
+            -only-testing:MeadowJourneyTests/TrailTests/testAuthoredGaitFramesDoNotGetShaderLegAlphaTears \
+            -only-testing:MeadowJourneyTests/TrailTests/testDiagonalContactsAndPassingFramesRenderDistinctPoses \
+            -only-testing:MeadowJourneyTests/TrailTests/testProjectedShadowActuallyRendersTheCurrentLegPose \
+            -only-testing:MeadowJourneyUITests/JourneyUITests/testMapContourRendererAndInteraction \
             -derivedDataPath build/SimulatorDerivedData \
             -resultBundlePath build/ShadowLabSmoke.xcresult \
             -parallel-testing-enabled NO \

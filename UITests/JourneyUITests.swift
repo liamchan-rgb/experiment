@@ -1,6 +1,33 @@
 import XCTest
 
 final class JourneyUITests: XCTestCase {
+    func testMapContourRendererAndInteraction() {
+        continueAfterFailure = false
+        XCUIDevice.shared.orientation = .landscapeLeft
+        let app = XCUIApplication()
+        app.launchArguments = ["-visualReview"]
+        app.launch()
+        let map = app.otherElements["meadowMap"]
+        XCTAssertTrue(map.waitForExistence(timeout: 20))
+        expectation(for: NSPredicate(format: "value CONTAINS %@", "\"shadowReady\":true"), evaluatedWith: map)
+        waitForExpectations(timeout: 20)
+        let state = diagnostics(app)
+        XCTAssertGreaterThan(state["shadowFrames"] as? Int ?? 0, 0)
+        XCTAssertEqual(state["shadowRenderer"] as? String, "image-alpha relief Metal depth map")
+        let play = app.buttons["playButton"]
+        play.tap(); XCTAssertEqual(play.label, "暂停行旅")
+        app.buttons["zoomButton"].tap()
+        XCTAssertEqual(app.buttons["zoomButton"].value as? String, "125%")
+        app.buttons["resetButton"].tap()
+        XCTAssertEqual(play.label, "开始行旅")
+        XCTAssertEqual(app.buttons["zoomButton"].value as? String, "100%")
+        app.buttons["openShadowLab"].tap()
+        XCTAssertTrue(app.otherElements["shadowLabSurface"].waitForExistence(timeout: 15))
+        XCTAssertFalse(app.buttons["shadowLabCasterMode"].exists)
+        app.buttons["shadowLabClose"].tap()
+        XCTAssertTrue(map.waitForExistence(timeout: 15))
+    }
+
     func testShadowLabControlsAndLayout() {
         continueAfterFailure = false
         XCUIDevice.shared.orientation = .landscapeLeft
