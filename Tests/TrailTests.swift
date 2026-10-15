@@ -118,6 +118,16 @@ final class TrailTests: XCTestCase {
         }
     }
 
+    func testOnlyTheTowerGetsAnAdditionalBanner() {
+        let world = LivingWorld(definition: SceneDefinition.load())
+        let camps = world.children.filter { $0.name == "CampTent" }
+        let towers = world.children.filter { $0.name == "WatchTower" }
+        XCTAssertEqual(camps.count, 1)
+        XCTAssertTrue(camps.allSatisfy { $0.childNode(withName: "banner") == nil })
+        XCTAssertEqual(towers.count, 2)
+        XCTAssertTrue(towers.allSatisfy { $0.childNode(withName: "banner") != nil })
+    }
+
     func testWalkCadenceRetainsItsPhaseAcrossAStop() {
         var walk = WalkCycle()
         walk.advance(from: .zero, to: CGPoint(x: 13, y: 0))
@@ -130,15 +140,25 @@ final class TrailTests: XCTestCase {
         XCTAssertEqual(walk.frame, 3)
     }
 
-    func testWalkTurnHysteresisAvoidsBoundaryFlicker() {
+    func testDiagonalHeadingUsesANarrowStableHysteresisBand() {
         var walk = WalkCycle()
         walk.advance(from: .zero, to: CGPoint(x: 10, y: 0))
-        walk.advance(from: .zero, to: CGPoint(x: 10, y: 7))
+        walk.advance(from: .zero, to: CGPoint(x: 10, y: 8))
         XCTAssertEqual(walk.facing, 3)
-        walk.advance(from: .zero, to: CGPoint(x: 10, y: 9))
+        walk.advance(from: .zero, to: CGPoint(x: 10, y: 10.9))
         XCTAssertEqual(walk.facing, 0)
-        walk.advance(from: .zero, to: CGPoint(x: 10, y: 7))
+        walk.advance(from: .zero, to: CGPoint(x: 10, y: 10))
         XCTAssertEqual(walk.facing, 0)
+    }
+
+    func testWalkLiftPeaksBetweenAlternatingContactPoses() {
+        var walk = WalkCycle()
+        walk.advance(from: .zero, to: CGPoint(x: 6, y: 0))
+        XCTAssertEqual(walk.frame, 2)
+        XCTAssertEqual(walk.lift, 1.35, accuracy: 0.001)
+        walk.advance(from: CGPoint(x: 6, y: 0), to: CGPoint(x: 12, y: 0))
+        XCTAssertEqual(walk.frame, 3)
+        XCTAssertEqual(walk.lift, 0, accuracy: 0.001)
     }
 
     func testGroundProjectionKeepsTheFeetFixedAndCastsAwayFromSun() {
@@ -149,6 +169,37 @@ final class TrailTests: XCTestCase {
         XCTAssertLessThan(crown.y, 0)
         XCTAssertEqual(crown.x / -crown.y, MeadowSun.cast.dx / MeadowSun.cast.dy, accuracy: 0.001)
         XCTAssertGreaterThan(projection.size.width, 60 + crown.x)
+    }
+
+    func testLiveShadowDirectionTracksTheMovingSunAndKeepsItsGroundAnchor() {
+        let firstSun = MeadowSun.cast(at: 0)
+        let laterSun = MeadowSun.cast(at: 32)
+        let first = ShadowProjection(body: CGSize(width: 60, height: 100), anchorY: 0.02,
+                                     ratio: 0.9, softness: 2, sun: firstSun)
+        let later = ShadowProjection(body: CGSize(width: 60, height: 100), anchorY: 0.02,
+                                     ratio: 0.9, softness: 2, sun: laterSun)
+        XCTAssertEqual(first.point(x: 0, height: 0), .zero)
+        XCTAssertEqual(later.point(x: 0, height: 0), .zero)
+        XCTAssertNotEqual(first.point(x: 0, height: 80), later.point(x: 0, height: 80))
+        XCTAssertEqual(later.point(x: 0, height: 80).x / -later.point(x: 0, height: 80).y,
+                       laterSun.dx / laterSun.dy, accuracy: 0.001)
+    }
+
+    func testRenderedShadowMovesWithTheLiveSunDirection() throws {
+        let effects = EnvironmentShaders()
+        let view = SKView(frame: CGRect(x: 0, y: 0, width: 384, height: 256))
+        let scene = SKScene(size: CGSize(width: 384, height: 256))
+        scene.backgroundColor = .clear
+        let shadow = ProjectedShadow(texture: HeroFrames.load(1)[0][1], body: CGSize(width: 192, height: 192),
+                                     anchorY: 0.125, ratio: 0.82, softness: 1.2, opacity: 0.52, shader: effects.shadow)
+        scene.addChild(shadow)
+        let foot = CGPoint(x: 192, y: 160)
+        shadow.update(foot: foot, sun: MeadowSun.cast(at: 0))
+        let morning = try renderedPixels(scene, in: view)
+        shadow.update(foot: foot, sun: MeadowSun.cast(at: 32))
+        let later = try renderedPixels(scene, in: view)
+        XCTAssertGreaterThan(pixelDifference(morning, later), 0.05,
+                             "The rendered silhouette should follow the current directional light")
     }
 
     func testAtmosphereActuallyChangesRenderedPixels() throws {
@@ -192,6 +243,30 @@ final class TrailTests: XCTestCase {
         shadow.update(foot: .zero, gait: SIMD2(0, 3))
         let right = try renderedPixels(shadow, in: view)
         XCTAssertGreaterThan(pixelDifference(left, right), 0.05, "The ground projection must follow the rendered leg pose")
+    }
+
+    func testMeadowPlantShaderSoftensThePaintedGrassBase() throws {
+        let effects = EnvironmentShaders()
+        let view = SKView(frame: CGRect(x: 0, y: 0, width: 192, height: 192))
+        let node = SKSpriteNode(texture: SKTexture(imageNamed: "Flowers"), size: CGSize(width: 192, height: 192))
+        effects.apply(effects.vegetation, to: node, origin: .zero, extent: node.size)
+        let crispBase = try renderedPixels(node, in: view)
+        effects.apply(effects.vegetation, to: node, origin: .zero, extent: node.size, groundBlend: true)
+        let blendedBase = try renderedPixels(node, in: view)
+        let width = 192
+        let rows = 24
+        func difference(in range: Range<Int>) -> Int {
+            range.reduce(0) { total, y in
+                total + (0..<width).reduce(0) { rowTotal, x in
+                    let offset = (y * width + x) * 4 + 3
+                    return rowTotal + abs(Int(crispBase[offset]) - Int(blendedBase[offset]))
+                }
+            }
+        }
+        let edgeChange = difference(in: 0..<(rows * 2)) + difference(in: (width - rows * 2)..<width)
+        let interiorChange = difference(in: (rows * 2)..<(width - rows * 2))
+        XCTAssertGreaterThan(edgeChange, 10_000, "The painted sod edge should blend into the meadow")
+        XCTAssertLessThan(interiorChange, edgeChange, "The blend should preserve the flower heads and upper foliage")
     }
 
     private func renderedPixels(_ node: SKNode, in view: SKView) throws -> [UInt8] {

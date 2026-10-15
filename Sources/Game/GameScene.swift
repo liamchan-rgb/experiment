@@ -247,9 +247,12 @@ final class GameScene: SKScene {
             let gait = SIMD2(Float(walk.facing), Float(walk.frame))
             let texture = frames[index][walk.facing][walk.frame]
             actors[index].texture = texture
+            actors[index].position = CGPoint(x: 0, y: walk.lift)
             actorRoots[index].position = LivingWorld.position(point)
             actorRoots[index].zPosition = 10000 + point.y
-            actorShadows[index].update(foot: actorRoots[index].position, texture: texture, gait: gait)
+            let projectedFoot = actorRoots[index].position + CGPoint(x: 0, y: walk.lift)
+            actorShadows[index].update(foot: projectedFoot, texture: texture, gait: gait,
+                                       sun: world.effects.currentCast)
             actorContacts[index].position = actorRoots[index].position
             actorLabels[index].position = actorRoots[index].position + CGPoint(x: 0, y: -13)
             world.effects.apply(world.effects.vegetation, to: actors[index],

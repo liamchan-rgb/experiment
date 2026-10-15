@@ -6,6 +6,7 @@ final class LivingWorld: SKNode {
     let network: TrailNetwork
     let effects = EnvironmentShaders()
     private var textures: [String: SKTexture] = [:]
+    private var propShadows: [(node: ProjectedShadow, foot: CGPoint)] = []
     private(set) var shadowCount = 0
     private(set) var objectCount = 0
 
@@ -124,6 +125,7 @@ final class LivingWorld: SKNode {
         let propTexture = texture(prop.asset)
         let height = prop.width * propTexture.size().height / propTexture.size().width
         let node = SKSpriteNode(texture: propTexture, size: CGSize(width: prop.width, height: height))
+        node.name = prop.asset
         node.anchorPoint = CGPoint(x: 0.5, y: 0.02)
         node.position = Self.position(CGPoint(x: prop.x, y: prop.y))
         node.zPosition = 10000 + prop.y
@@ -132,7 +134,8 @@ final class LivingWorld: SKNode {
         effects.apply(effects.vegetation, to: node,
                       origin: CGPoint(x: prop.x, y: prop.y - height * 0.48),
                       extent: CGSize(width: prop.width * node.xScale, height: height),
-                      wind: prop.wind, phase: Float(prop.x * 0.03 + prop.y * 0.017))
+                      wind: prop.wind, phase: Float(prop.x * 0.03 + prop.y * 0.017),
+                      groundBlend: prop.asset == "Flowers" || prop.asset == "Shrub")
         addChild(node)
         objectCount += 1
         if prop.asset != "Flowers" {
@@ -143,20 +146,25 @@ final class LivingWorld: SKNode {
                                          foliage: tree, phase: Float(prop.x * 0.03 + prop.y * 0.017), shader: effects.shadow)
             shadow.update(foot: node.position)
             addChild(shadow)
+            propShadows.append((shadow, node.position))
             shadowCount += 1
             let contactWidth = prop.width * (tree ? 0.27 : 0.70)
             _ = makeContact(foot: node.position, width: contactWidth, depth: max(4, contactWidth * 0.23))
         }
-        if prop.asset == "WatchTower" || prop.asset == "CampTent" {
+        // CampTent already contains its stitched banner. The tower needs a
+        // separate flag, anchored at the roof peak instead of the image top.
+        if prop.asset == "WatchTower" {
             let bannerTexture = texture("Banner")
-            let width: CGFloat = prop.asset == "WatchTower" ? 43 : 35
+            let width = min(34, max(22, prop.width * 0.40))
             let banner = SKSpriteNode(texture: bannerTexture,
                                       size: CGSize(width: width, height: width * bannerTexture.size().height / bannerTexture.size().width))
-            banner.anchorPoint = CGPoint(x: 0, y: 0.04)
-            banner.position = CGPoint(x: prop.asset == "WatchTower" ? 0 : -prop.width * 0.18, y: height - 5)
+            banner.name = "banner"
+            banner.anchorPoint = CGPoint(x: 0.035, y: 0.04)
+            banner.position = CGPoint(x: 0, y: height * 0.78)
             banner.zPosition = 1
             effects.apply(effects.vegetation, to: banner,
-                          origin: CGPoint(x: prop.x + width / 2, y: prop.y - height),
+                          origin: CGPoint(x: prop.x + width * 0.465,
+                                          y: prop.y - height * 0.78 - banner.size.height * 0.46),
                           extent: banner.size, wind: 2, phase: Float(prop.x * 0.03))
             node.addChild(banner)
         }
@@ -238,5 +246,8 @@ final class LivingWorld: SKNode {
 
     func update(time: TimeInterval) {
         effects.update(time: time)
+        for shadow in propShadows {
+            shadow.node.update(foot: shadow.foot, sun: effects.currentCast)
+        }
     }
 }

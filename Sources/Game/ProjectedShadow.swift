@@ -5,8 +5,9 @@ struct ShadowProjection {
     let offset: CGPoint
     let cast: CGVector
 
-    init(body: CGSize, anchorY: CGFloat, ratio: CGFloat, softness: CGFloat) {
-        cast = CGVector(dx: MeadowSun.cast.dx * ratio, dy: MeadowSun.cast.dy * ratio)
+    init(body: CGSize, anchorY: CGFloat, ratio: CGFloat, softness: CGFloat,
+         sun: CGVector = MeadowSun.cast) {
+        cast = CGVector(dx: sun.dx * ratio, dy: sun.dy * ratio)
         let margin = softness * 3 + 2
         size = CGSize(width: body.width + body.height * abs(cast.dx) + margin * 2,
                       height: body.height * abs(cast.dy) + margin * 2)
@@ -22,11 +23,12 @@ struct ShadowProjection {
 /// Samples the source silhouette through an oblique projection, with an
 /// elevation-dependent penumbra. The contact patch is a separate, small node.
 final class ProjectedShadow: SKSpriteNode {
-    let projection: ShadowProjection
+    private(set) var projection: ShadowProjection
     private let body: CGSize
     private let anchorY: CGFloat
     private let mirror: Float
     private let opacity: Float
+    private let ratio: CGFloat
     private let softness: Float
     private let foliage: Float
     private let phase: Float
@@ -39,6 +41,7 @@ final class ProjectedShadow: SKSpriteNode {
         self.mirror = mirrored ? -1 : 1
         self.softness = softness
         self.opacity = opacity
+        self.ratio = ratio
         self.foliage = foliage ? 1 : 0
         self.phase = phase
         projection = ShadowProjection(body: body, anchorY: anchorY, ratio: ratio, softness: CGFloat(softness))
@@ -50,8 +53,12 @@ final class ProjectedShadow: SKSpriteNode {
 
     required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
 
-    func update(foot: CGPoint, texture: SKTexture? = nil, gait: SIMD2<Float> = SIMD2(-1, 0)) {
+    func update(foot: CGPoint, texture: SKTexture? = nil,
+                gait: SIMD2<Float> = SIMD2(-1, 0), sun: CGVector = MeadowSun.cast) {
         if let texture { self.texture = texture }
+        projection = ShadowProjection(body: body, anchorY: anchorY, ratio: ratio,
+                                      softness: CGFloat(softness), sun: sun)
+        size = projection.size
         position = CGPoint(x: foot.x + projection.offset.x, y: foot.y + projection.offset.y)
         attributeValues = [
             "a_origin": SKAttributeValue(vectorFloat2: SIMD2(Float(position.x), Float(-position.y))),

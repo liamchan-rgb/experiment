@@ -107,7 +107,7 @@ final class GaitReviewScene: SKScene {
             let gait = SIMD2(Float(direction), Float(frame))
             effects.apply(effects.vegetation, to: actors[index], origin: CGPoint(x: feet[index].x, y: -feet[index].y - 50),
                           extent: actors[index].size, gait: gait)
-            shadows[index].update(foot: feet[index], texture: texture, gait: gait)
+            shadows[index].update(foot: feet[index], texture: texture, gait: gait, sun: effects.currentCast)
         }
     }
 }
