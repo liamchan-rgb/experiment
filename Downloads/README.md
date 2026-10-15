@@ -1,6 +1,6 @@
 # SideStore 安装与视觉验收
 
-[最新三维阴影试验包：1.4.0 build 11 兼容打包版](SHADOW_LAB_PREVIEW.md)。安装后点地图左上角「光影试验」。
+[最新三维阴影试验包：1.4.1 build 12 贴图轮廓版](SHADOW_LAB_PREVIEW.md)。安装后点地图左上角「光影试验」。
 
 [直接下载 1.3.0（build 9）IPA](https://github.com/liamchan-rgb/experiment/raw/refs/heads/feat/layered-living-scene/Downloads/MeadowJourney-v1.3.0-unsigned.ipa)。
 

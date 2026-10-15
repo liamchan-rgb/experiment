@@ -1,9 +1,11 @@
 # 三维阴影试验包
 
-[下载 1.4.0 build 11 兼容打包 IPA](https://raw.githubusercontent.com/liamchan-rgb/experiment/feat/layered-living-scene/Downloads/MeadowJourney-b11.ipa)。
+[下载 1.4.1 build 12 IPA](https://raw.githubusercontent.com/liamchan-rgb/experiment/feat/layered-living-scene/Downloads/MeadowJourney-b12.ipa)。
 
-下载后保存到「文件 → 我的 iPad」，再在 SideStore 点「＋」选择新文件 MeadowJourney-b11.ipa。无需卸载已有游戏。安装后点地图左上角「光影试验」，可调整光向、开关投影、显示模型并重新布局。
+下载后保存到「文件 → 我的 iPad」，再在 SideStore 点「＋」选择新文件 MeadowJourney-b12.ipa。可覆盖安装。安装后点地图左上角「光影试验」。
 
-build 11 包含塔柱、屋檐与人物鞋底的地标校准，以及连续往返。此包针对 build 10 的 SideStore「Archive appears to be corrupt」反馈，使用无压缩、无扩展字段的经典 ZIP 重新封装；与 CI 归档的每个程序／资源文件逐字节相同。旧包的公开下载和常规 CRC、libdeflate 校验均通过，设备端失败原因尚未复现，需重新安装确认。
+本轮默认「轮廓投影」：使用素材透明轮廓裁切投影网格，树冠、塔楼与人物分别配置少量纵深，人物使用当前动画帧。底部可切换「轮廓投影／简模投影」作对照；「模型显示」显示对应网格。光向、投影开关、暂停、缩放和重新布局仍可使用。原地图尚未全量切换。
 
-构建 38708663449 已完成编译、27 项模型／GPU 渲染检查、iPhone 与 iPad 各 3 项 UI 检查及设备归档；视觉录像的后续复核另行继续。包来源、大小与 SHA-256 见 [ShadowLab-build11.json](ShadowLab-build11.json)。
+按用户要求，本轮不检查图片效果、不录制验收视频、不运行视觉像素对比；效果由用户安装后反馈。设备 Release 归档和 IPA CRC、arm64、Metal 资源及可执行权限校验已通过，基础 Metal 命令执行检查也已通过（1 项测试，0 失败，涵盖新旧模式及模型显示）。
+
+包使用与已安装 build 11 相同的经典 ZIP_STORED 格式，无扩展字段。来源、大小与 SHA-256 见 [ShadowLab-build12.json](ShadowLab-build12.json)，[构建记录](https://github.com/liamchan-rgb/experiment/actions/runs/38764253674)。

@@ -10,7 +10,9 @@
 
 快速打包入口：手动运行 iOS Build and Visual Demo 并设置 `quick_lab=true`，仅归档 IPA 和执行 `testShadowLabCutoutPipelineSubmitsBothCasterModes`；没有图像读取／对比断言。
 
-状态：1.4.0 原型开发中，待原生构建及画面验收。
+## 1.4.0 build 11 历史实现与检查
+
+以下记录旧简模模式；本轮默认使用上面的 1.4.1 轮廓通道，未执行下述历史画面检查。
 
 从地图左上方的「光影试验」进入，或用启动参数 `-shadowReview` 直接启动。原地图保持现有 SpriteKit 实现，便于对照；本轮先验证树、瞭望塔和左行人物，没有把全地图切换到新渲染器。
 

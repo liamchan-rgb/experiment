@@ -1,0 +1,28 @@
+{
+  "version": "1.4.1",
+  "build": "12",
+  "kind": "image-alpha-relief-shadow-lab",
+  "sourceCommit": "d448ff1bbcd436a89f7012b8f1ebb05342a6be98",
+  "workflowRun": 38764253674,
+  "workflowConclusion": "success",
+  "artifactId": 11988230689,
+  "ipa": "MeadowJourney-b12.ipa",
+  "bytes": 17277743,
+  "sha256": "c2fb0ce20359c64ef041ffa8c8008d2049eb1eba028add039590877b092297d1",
+  "compression": "ZIP_STORED",
+  "zip64": false,
+  "extendedFields": false,
+  "validation": {
+    "zipCRC": "passed",
+    "arm64": "passed",
+    "devicePlatform": "iPhoneOS",
+    "metalLibraryPresent": true,
+    "executablePermission": "passed",
+    "deviceReleaseArchive": "passed",
+    "nativeMetalCommandSubmission": "passed",
+    "visualReview": "not performed; user will review",
+    "focusedNativeTests": 1,
+    "focusedNativeTestFailures": 0
+  },
+  "installationStatus": "Awaiting user device feedback; same stored ZIP format as installed build 11."
+}
