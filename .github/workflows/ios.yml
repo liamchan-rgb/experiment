@@ -7,6 +7,12 @@ on:
     branches: [main]
   workflow_dispatch:
     inputs:
+      macos_runner:
+        description: 'Hosted macOS runner for the focused build (alternate pool if queued)'
+        required: false
+        type: choice
+        options: [macos-15, macos-14]
+        default: macos-15
       quick_lab:
         description: 'Build IPA and run focused map, contour, gait and interaction checks'
         required: false
@@ -22,13 +28,15 @@ permissions:
   actions: read
 
 concurrency:
-  group: ios-${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  group: ios-${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}-${{ inputs.macos_runner || 'macos-15' }}
   cancel-in-progress: true
 
 jobs:
   quick-shadow-lab:
     if: ${{ github.event_name == 'workflow_dispatch' && inputs.quick_lab }}
     uses: ./.github/workflows/shadow-lab-quick.yml
+    with:
+      macos_runner: ${{ inputs.macos_runner || 'macos-15' }}
 
   recover-review:
     name: Prepare compact review from an existing successful build

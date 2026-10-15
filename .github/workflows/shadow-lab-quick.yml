@@ -3,18 +3,23 @@ name: Shadow Lab Quick Build
 on:
   workflow_dispatch:
   workflow_call:
+    inputs:
+      macos_runner:
+        type: string
+        required: false
+        default: macos-15
 
 permissions:
   contents: read
 
 concurrency:
-  group: shadow-lab-quick-${{ github.ref }}
+  group: shadow-lab-quick-${{ github.ref }}-${{ inputs.macos_runner || 'macos-15' }}
   cancel-in-progress: true
 
 jobs:
   archive:
     name: Device Release IPA
-    runs-on: macos-15
+    runs-on: ${{ inputs.macos_runner || 'macos-15' }}
     timeout-minutes: 20
     defaults:
       run:
@@ -72,7 +77,7 @@ jobs:
 
   smoke:
     name: Map and Contour Native Checks
-    runs-on: macos-15
+    runs-on: ${{ inputs.macos_runner || 'macos-15' }}
     timeout-minutes: 20
     defaults:
       run:
