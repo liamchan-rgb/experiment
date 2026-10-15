@@ -2,6 +2,7 @@ import SpriteKit
 
 final class LivingWorld: SKNode {
     static let bounds = CGRect(x: -160, y: -220, width: 1600, height: 1160)
+    static let towerBannerRoofAnchorY: CGFloat = 0.91
     let definition: SceneDefinition
     let network: TrailNetwork
     let effects = EnvironmentShaders()
@@ -160,11 +161,11 @@ final class LivingWorld: SKNode {
                                       size: CGSize(width: width, height: width * bannerTexture.size().height / bannerTexture.size().width))
             banner.name = "banner"
             banner.anchorPoint = CGPoint(x: 0.035, y: 0.04)
-            banner.position = CGPoint(x: 0, y: height * 0.78)
+            banner.position = CGPoint(x: 0, y: height * Self.towerBannerRoofAnchorY)
             banner.zPosition = 1
             effects.apply(effects.vegetation, to: banner,
                           origin: CGPoint(x: prop.x + width * 0.465,
-                                          y: prop.y - height * 0.78 - banner.size.height * 0.46),
+                                          y: prop.y - height * Self.towerBannerRoofAnchorY - banner.size.height * 0.46),
                           extent: banner.size, wind: 2, phase: Float(prop.x * 0.03))
             node.addChild(banner)
         }

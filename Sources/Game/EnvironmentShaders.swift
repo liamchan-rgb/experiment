@@ -88,8 +88,8 @@ final class EnvironmentShaders {
             vec2 p = a_origin + vec2((v_tex_coord.x - 0.5) * a_extent.x, (0.5 - v_tex_coord.y) * a_extent.y);
             if (GROUND_BLEND_ENABLED) {
                 float breakup = noise21(p * 0.62 + vec2(a_phase, a_phase * 0.37));
-                float fadeStart = 0.025 + breakup * 0.10;
-                float groundFade = smoothstep(fadeStart, fadeStart + 0.10, v_tex_coord.y);
+                float fadeStart = 0.035 + breakup * 0.11;
+                float groundFade = smoothstep(fadeStart, fadeStart + 0.17, v_tex_coord.y);
                 color.rgb *= groundFade;
                 color.a *= groundFade;
             }
@@ -128,7 +128,10 @@ final class EnvironmentShaders {
 
         shadow = SKShader(source: Self.noise + """
         void main() {
-            vec2 local = (v_tex_coord - vec2(0.5)) * a_extent + vec2(a_body.y * a_cast.x * (0.5 - a_body.z), a_body.y * a_cast.y * (a_body.z - 0.5));
+            float projectedHeight = a_body.y * (1.0 - a_body.z);
+            vec2 local = (v_tex_coord - vec2(0.5)) * a_extent
+                       + vec2(projectedHeight * a_cast.x * 0.5,
+                              -projectedHeight * a_cast.y * 0.5);
             float height = -local.y / max(a_cast.y, 0.05);
             vec2 uv = vec2(0.5 + (local.x - height * a_cast.x) / (a_body.x * a_body.w), a_body.z + height / a_body.y);
             if (a_foliage > 0.5) {
@@ -172,7 +175,7 @@ final class EnvironmentShaders {
         contact = SKShader(source: """
         void main() {
             float radius = length((v_tex_coord - vec2(0.5)) * 2.0);
-            float alpha = (1.0 - smoothstep(0.08, 1.0, radius)) * 0.36;
+            float alpha = (1.0 - smoothstep(0.08, 1.0, radius)) * 0.46;
             gl_FragColor = vec4(vec3(0.065, 0.085, 0.055) * alpha, alpha);
         }
         """)

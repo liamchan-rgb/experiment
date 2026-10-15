@@ -9,10 +9,14 @@ struct ShadowProjection {
          sun: CGVector = MeadowSun.cast) {
         cast = CGVector(dx: sun.dx * ratio, dy: sun.dy * ratio)
         let margin = softness * 3 + 2
-        size = CGSize(width: body.width + body.height * abs(cast.dx) + margin * 2,
-                      height: body.height * abs(cast.dy) + margin * 2)
-        offset = CGPoint(x: body.height * cast.dx * (0.5 - anchorY),
-                         y: body.height * cast.dy * (anchorY - 0.5))
+        let projectedHeight = body.height * max(0, 1 - anchorY)
+        size = CGSize(width: body.width + projectedHeight * abs(cast.dx) + margin * 2,
+                      height: projectedHeight * abs(cast.dy) + margin * 2)
+        // Center the full foot-to-crown projection around its actual bounds.
+        // Keeping this tied to the same ground anchor prevents the silhouette
+        // from appearing detached when object or actor sizes change.
+        offset = CGPoint(x: projectedHeight * cast.dx * 0.5,
+                         y: -projectedHeight * cast.dy * 0.5)
     }
 
     func point(x: CGFloat, height: CGFloat) -> CGPoint {

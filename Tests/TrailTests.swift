@@ -118,14 +118,21 @@ final class TrailTests: XCTestCase {
         }
     }
 
-    func testOnlyTheTowerGetsAnAdditionalBanner() {
+    func testOnlyTheTowerGetsAnAdditionalBanner() throws {
         let world = LivingWorld(definition: SceneDefinition.load())
         let camps = world.children.filter { $0.name == "CampTent" }
         let towers = world.children.filter { $0.name == "WatchTower" }
         XCTAssertEqual(camps.count, 1)
         XCTAssertTrue(camps.allSatisfy { $0.childNode(withName: "banner") == nil })
         XCTAssertEqual(towers.count, 2)
-        XCTAssertTrue(towers.allSatisfy { $0.childNode(withName: "banner") != nil })
+        for tower in towers {
+            let sprite = try XCTUnwrap(tower as? SKSpriteNode)
+            let banner = try XCTUnwrap(tower.childNode(withName: "banner") as? SKSpriteNode)
+            XCTAssertEqual(banner.position.x, 0, accuracy: 0.001)
+            XCTAssertEqual(banner.position.y, sprite.size.height * LivingWorld.towerBannerRoofAnchorY, accuracy: 0.001)
+            XCTAssertGreaterThan(banner.position.y / sprite.size.height, 0.9,
+                                 "The flagpole base should meet the tower roof ridge")
+        }
     }
 
     func testWalkCadenceRetainsItsPhaseAcrossAStop() {
@@ -169,6 +176,9 @@ final class TrailTests: XCTestCase {
         XCTAssertLessThan(crown.y, 0)
         XCTAssertEqual(crown.x / -crown.y, MeadowSun.cast.dx / MeadowSun.cast.dy, accuracy: 0.001)
         XCTAssertGreaterThan(projection.size.width, 60 + crown.x)
+        let fullProjection = projection.point(x: 0, height: 98)
+        XCTAssertEqual(projection.offset.x, fullProjection.x / 2, accuracy: 0.001)
+        XCTAssertEqual(projection.offset.y, fullProjection.y / 2, accuracy: 0.001)
     }
 
     func testLiveShadowDirectionTracksTheMovingSunAndKeepsItsGroundAnchor() {
