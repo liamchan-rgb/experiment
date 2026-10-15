@@ -59,15 +59,27 @@ final class EnvironmentShaders {
             // End the exchange below it so sideways sampling never widens it.
             float lower = gait.x > 3.5 ? 1.0 - smoothstep(0.235, 0.265, uv.y)
                                       : 1.0 - smoothstep(0.285, 0.315, uv.y);
-            lower *= smoothstep(0.28, 0.32, uv.x) * (1.0 - smoothstep(0.68, 0.72, uv.x));
+            if (gait.x < 3.5) {
+                lower *= smoothstep(0.28, 0.32, uv.x) * (1.0 - smoothstep(0.68, 0.72, uv.x));
+            }
             return lower;
         }
         return 0.0;
     }
+    float diagonalLegCenter(float facing) {
+        if (facing < 4.5) return 0.54;
+        if (facing < 5.5) return 0.45;
+        if (facing < 6.5) return 0.47;
+        return 0.53;
+    }
+    float exchangedLegVisibility(vec2 uv, vec2 gait) {
+        if (gait.x < 3.5) return 1.0;
+        return step(abs(uv.x - diagonalLegCenter(gait.x)), 0.185);
+    }
     vec2 exchangedLegUV(vec2 uv, vec2 gait) {
         // Diagonal boots retain their toe direction: translate the two leg
         // regions rather than reflecting each boot or stretching its height.
-        if (gait.x > 3.5) return uv + vec2(uv.x < 0.5 ? 0.14 : -0.14, 0.0);
+        if (gait.x > 3.5) return uv + vec2(uv.x < diagonalLegCenter(gait.x) ? 0.185 : -0.185, 0.0);
         return vec2(1.0 - uv.x, uv.y);
     }
     """
@@ -91,7 +103,8 @@ final class EnvironmentShaders {
             vec4 color = texture2D(u_texture, uv);
             float exchanged = legExchangeWeight(uv, a_gait);
             if (exchanged > 0.0) {
-                color = mix(color, texture2D(u_texture, exchangedLegUV(uv, a_gait)), exchanged);
+                vec4 otherLeg = texture2D(u_texture, exchangedLegUV(uv, a_gait)) * exchangedLegVisibility(uv, a_gait);
+                color = mix(color, otherLeg, exchanged);
             }
             bool profile = (a_gait.x > 0.5 && a_gait.x < 1.5) || (a_gait.x > 2.5 && a_gait.x < 3.5);
             if (profile && (a_gait.y == 1.0 || a_gait.y == 3.0)) {
@@ -166,7 +179,8 @@ final class EnvironmentShaders {
                     float alpha = texture2D(u_texture, sampleUV).a;
                     float exchanged = legExchangeWeight(sampleUV, a_gait);
                     if (exchanged > 0.0) {
-                        alpha = mix(alpha, texture2D(u_texture, exchangedLegUV(sampleUV, a_gait)).a, exchanged);
+                        float otherLeg = texture2D(u_texture, exchangedLegUV(sampleUV, a_gait)).a * exchangedLegVisibility(sampleUV, a_gait);
+                        alpha = mix(alpha, otherLeg, exchanged);
                     }
                     float weight = (x == 0 ? 2.0 : 1.0) * (y == 0 ? 2.0 : 1.0);
                     mask += alpha * inside * weight;
