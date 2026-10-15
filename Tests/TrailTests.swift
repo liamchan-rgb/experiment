@@ -269,10 +269,14 @@ final class TrailTests: XCTestCase {
                 node.texture = frames[direction][2]
                 let passing = try renderedPixels(node, in: view)
                 node.texture = frames[direction][3]
+                let originalContact = try renderedPixels(node, in: view)
                 effects.apply(effects.vegetation, to: node, origin: .zero, extent: node.size, gait: SIMD2(Float(direction), 3))
                 let right = try renderedPixels(node, in: view)
                 XCTAssertGreaterThan(pixelDifference(left, right), 0.5)
                 XCTAssertGreaterThan(pixelDifference(left, passing), 0.5)
+                XCTAssertGreaterThanOrEqual(largestOpaqueComponentRatio(right),
+                                            largestOpaqueComponentRatio(originalContact) - 0.015,
+                                            "An exchanged boot must remain attached to the body (hero \(hero), direction \(direction))")
             }
         }
     }
@@ -360,5 +364,36 @@ final class TrailTests: XCTestCase {
             let covered = (0..<width).filter { pixels[(y * width + $0) * 4 + 3] > 32 }
             return covered.isEmpty ? 0 : covered.last! - covered.first! + 1
         }.max() ?? 0
+    }
+
+    private func largestOpaqueComponentRatio(_ pixels: [UInt8]) -> Double {
+        let width = Int(Double(pixels.count / 4).squareRoot())
+        var occupied = (0..<(width * width)).map { pixels[$0 * 4 + 3] > 32 }
+        let total = occupied.filter { $0 }.count
+        guard total > 0 else { return 0 }
+        var largest = 0
+        for start in occupied.indices where occupied[start] {
+            var queue = [start]
+            occupied[start] = false
+            var cursor = 0
+            while cursor < queue.count {
+                let index = queue[cursor]
+                cursor += 1
+                let x = index % width, y = index / width
+                for dy in -1...1 {
+                    for dx in -1...1 where dx != 0 || dy != 0 {
+                        let nx = x + dx, ny = y + dy
+                        guard nx >= 0, nx < width, ny >= 0, ny < width else { continue }
+                        let neighbor = ny * width + nx
+                        if occupied[neighbor] {
+                            occupied[neighbor] = false
+                            queue.append(neighbor)
+                        }
+                    }
+                }
+            }
+            largest = max(largest, queue.count)
+        }
+        return Double(largest) / Double(total)
     }
 }

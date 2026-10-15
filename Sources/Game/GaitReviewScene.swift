@@ -65,7 +65,7 @@ final class GaitReviewScene: SKScene {
             content.addChild(label)
             labels.append(label)
         }
-        heading.position = CGPoint(x: size.width / 2, y: size.height * 0.78)
+        heading.position = CGPoint(x: size.width / 2, y: size.height * 0.86)
         heading.fontSize = 30 * scale
         heading.fontColor = SKColor(red: 1, green: 0.96, blue: 0.80, alpha: 1)
         heading.zPosition = 200
@@ -91,10 +91,10 @@ final class GaitReviewScene: SKScene {
         effects.update(time: elapsed)
         let direction = [0, 4, 3, 7, 2, 6, 1, 5][Int(elapsed / 3) % 8]
         let names = ["正面", "向左", "背面", "向右", "右下", "左下", "左上", "右上"]
-        let distance = CGFloat(elapsed) * 20
+        let distance = CGFloat(elapsed) * 42
         let frame = WalkCycle.frame(at: distance)
         let angle = CGFloat(Int(elapsed / 3) % 8) * .pi / 4
-        let travel = CGFloat(elapsed.truncatingRemainder(dividingBy: 3) - 1.5) * 60
+        let travel = CGFloat(elapsed.truncatingRemainder(dividingBy: 3) - 1.5) * 126
         let offset = CGPoint(x: sin(angle) * travel, y: -cos(angle) * travel)
         let lift = abs(sin(distance / 24 * 2 * .pi)) * 0.85 * 3
         heading.text = "八方向步态 · " + names[direction]
