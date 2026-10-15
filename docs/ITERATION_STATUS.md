@@ -119,3 +119,9 @@ IPA为1.3.0（build9），arm64，支持iPhone／iPad与iOS15及以上；16,838,
 状态：最终源码 `42f0d68` 的 [构建 38771289888](https://github.com/liamchan-rgb/experiment/actions/runs/38771289888) 已完成设备 Release 归档与 IPA 完整性校验，先行提供 [1.5.0 build 13 IPA](../Downloads/MeadowJourney-b13.ipa)。最后一轮针对性原生检查仍在进行；源代码、SHA 与检查状态见 [MeadowJourney-build13.json](../Downloads/MeadowJourney-build13.json)。
 
 主地图接入补充：地形 Metal 视图由同一场景帧驱动，但经 `MTKView.draw()`／delegate 生命周期获取和释放 drawable，避免手动读取 drawable 后重复呈现同一表面。该修正纳入最终包，重新构建验证。
+
+## build 13 最终交互检查失败与 build 14 替换
+
+build 13（源码 `42f0d68`，run `38771289888`）通过编译、归档与 8 项原生资源／GPU／步态检查；UI 检查在开始行走后查询缩放按钮超时，1 项失败。该包已先行发布，现撤回其最终交付地位；不是安装解包错误。`MTKView.draw()` 嵌入 SpriteKit 更新回调的同步绘制会占用界面／渲染事务。
+
+build 14（1.5.1）改为两个视图分别由显示时钟调度：SpriteKit 只发布最新的相机、实例和步态状态，MTKView 自己在 delegate 周期中获取、提交和释放 drawable。界面退出／返回时同步暂停和恢复两层。阴影算法、完整人物帧与道路材质不变。重新构建并复测交互后发布专用的新文件名，避免混用 build 13。

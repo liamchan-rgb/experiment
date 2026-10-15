@@ -6,7 +6,7 @@
   "implementationCommit": "ecdbdbbe2b4cfc905ade9e5d45c1c6c195fc5442",
   "workflowRun": 38771289888,
   "runner": "macos-14",
-  "workflowConclusion": "in_progress",
+  "workflowConclusion": "failure",
   "artifactId": 11991287669,
   "ipa": "MeadowJourney-b13.ipa",
   "bytes": 17297304,
@@ -21,7 +21,12 @@
     "devicePlatform": "iPhoneOS",
     "metalLibraryPresent": true,
     "executablePermission": "passed",
-    "focusedNativeTests": "pending",
+    "focusedNativeTests": {
+      "unitPassed": 8,
+      "uiPassed": 0,
+      "uiFailed": 1,
+      "failure": "UI query for zoomButton timed out after starting playback; superseded by build 14."
+    },
     "gaitContactReview": "All three heroes and eight headings inspected as complete contact frames; runtime UV leg splicing removed.",
     "shadowsAndRoadsVisualReview": "user feedback pending; no effect-image review performed"
   },
@@ -32,6 +37,6 @@
     "groundReceiver": "grass and unified road surface",
     "cpuPixelReadbackOnDisplay": false
   },
-  "installationStatus": "Awaiting user device feedback; same classic stored ZIP format as installed builds 11 and 12.",
+  "installationStatus": "Withdrawn as final delivery: interaction test failed. Use build 14 replacement.",
   "xcode": "15.4 (15F31d)"
 }

@@ -187,12 +187,10 @@ final class MeadowShadowRenderer: NSObject, MTKViewDelegate {
 
     func render(in view: MTKView, world: LivingWorld, center: CGPoint, scale: CGFloat, time: TimeInterval, heroes: [MeadowHeroCaster]) throws {
         pendingFrame = (world, center, scale, time, heroes)
-        submissionError = nil
-        view.delegate = self
-        // MTKView owns acquisition and release of each drawable. Always enter
-        // its draw lifecycle rather than repeatedly presenting a cached drawable.
-        view.draw()
-        if let error = submissionError { throw error }
+        // The MTKView display link owns drawable acquisition/presentation.
+        // Never synchronously enter its draw cycle from SpriteKit's update;
+        // nested drawing can monopolize the UI/render transaction.
+        if let error = submissionError { submissionError = nil; throw error }
     }
 
     func mtkView(_ view: MTKView, drawableSizeWillChange size: CGSize) {}

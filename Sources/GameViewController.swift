@@ -39,6 +39,9 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
                 guard let self else { return }
                 do {
                     self.groundRenderer = try MeadowShadowRenderer(device: device, world: world)
+                    self.groundView?.delegate = self.groundRenderer
+                    self.groundView?.preferredFramesPerSecond = 60
+                    self.groundView?.isPaused = false
                     self.scene.shadowReady = true
                     self.gameView.isOpaque = false
                     self.gameView.allowsTransparency = true
@@ -167,8 +170,8 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
         present(lab, animated: true)
     }
 
-    override func viewWillAppear(_ animated: Bool) { super.viewWillAppear(animated); gameView.isPaused = false }
-    override func viewDidDisappear(_ animated: Bool) { super.viewDidDisappear(animated); gameView.isPaused = true }
+    override func viewWillAppear(_ animated: Bool) { super.viewWillAppear(animated); gameView.isPaused = false; groundView?.isPaused = false }
+    override func viewDidDisappear(_ animated: Bool) { super.viewDidDisappear(animated); gameView.isPaused = true; groundView?.isPaused = true }
 
     @objc private func reset() {
         scene.reset()
