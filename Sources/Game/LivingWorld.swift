@@ -131,11 +131,11 @@ final class LivingWorld: SKNode {
         node.zPosition = 10000 + prop.y
         // Preserve upper-left painted highlights on solid objects.
         node.xScale = prop.mirror && prop.asset == "Flowers" ? -1 : 1
-        effects.apply(effects.vegetation, to: node,
+        let vegetationShader = prop.asset == "Flowers" || prop.asset == "Shrub" ? effects.meadowPlants : effects.vegetation
+        effects.apply(vegetationShader, to: node,
                       origin: CGPoint(x: prop.x, y: prop.y - height * 0.48),
                       extent: CGSize(width: prop.width * node.xScale, height: height),
-                      wind: prop.wind, phase: Float(prop.x * 0.03 + prop.y * 0.017),
-                      groundBlend: prop.asset == "Flowers" || prop.asset == "Shrub")
+                      wind: prop.wind, phase: Float(prop.x * 0.03 + prop.y * 0.017))
         addChild(node)
         objectCount += 1
         if prop.asset != "Flowers" {

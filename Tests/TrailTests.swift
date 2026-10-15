@@ -251,7 +251,7 @@ final class TrailTests: XCTestCase {
         let node = SKSpriteNode(texture: SKTexture(imageNamed: "Flowers"), size: CGSize(width: 192, height: 192))
         effects.apply(effects.vegetation, to: node, origin: .zero, extent: node.size)
         let crispBase = try renderedPixels(node, in: view)
-        effects.apply(effects.vegetation, to: node, origin: .zero, extent: node.size, groundBlend: true)
+        effects.apply(effects.meadowPlants, to: node, origin: .zero, extent: node.size)
         let blendedBase = try renderedPixels(node, in: view)
         let width = 192
         let rows = 24

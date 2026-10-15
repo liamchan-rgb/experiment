@@ -16,6 +16,7 @@ enum MeadowSun {
 final class EnvironmentShaders {
     let ground: SKShader
     let vegetation: SKShader
+    let meadowPlants: SKShader
     let shadow: SKShader
     let contact: SKShader
     let soil: SKShader
@@ -62,9 +63,8 @@ final class EnvironmentShaders {
                           SKAttribute(name: "a_extent", type: .vectorFloat2),
                           SKAttribute(name: "a_wind", type: .float),
                           SKAttribute(name: "a_phase", type: .float),
-                          SKAttribute(name: "a_gait", type: .vectorFloat2),
-                          SKAttribute(name: "a_groundBlend", type: .float)]
-        vegetation = SKShader(source: Self.noise + """
+                          SKAttribute(name: "a_gait", type: .vectorFloat2)]
+        let vegetationSource = Self.noise + """
         void main() {
             vec2 uv = v_tex_coord;
             if (a_wind > 1.5) {
@@ -86,7 +86,7 @@ final class EnvironmentShaders {
                 color.rgb *= mix(1.0, mix(0.78, 1.10, nearSide), leg);
             }
             vec2 p = a_origin + vec2((v_tex_coord.x - 0.5) * a_extent.x, (0.5 - v_tex_coord.y) * a_extent.y);
-            if (a_groundBlend > 0.5) {
+            if (u_groundBlend > 0.5) {
                 float breakup = noise21(p * 0.62 + vec2(a_phase, a_phase * 0.37));
                 float fadeStart = 0.025 + breakup * 0.10;
                 float groundFade = smoothstep(fadeStart, fadeStart + 0.10, v_tex_coord.y);
@@ -98,8 +98,13 @@ final class EnvironmentShaders {
             color.rgb = mix(vec3(gray), color.rgb, 0.94) * mix(vec3(0.91, 0.97, 1.03), vec3(1.08, 1.025, 0.92), smoothstep(0.78, 1.08, light)) * light;
             gl_FragColor = color;
         }
-        """, uniforms: [clock()])
+        """
+        vegetation = SKShader(source: vegetationSource,
+                              uniforms: [clock(), SKUniform(name: "u_groundBlend", float: 0)])
+        meadowPlants = SKShader(source: vegetationSource,
+                                uniforms: [clock(), SKUniform(name: "u_groundBlend", float: 1)])
         vegetation.attributes = attributes
+        meadowPlants.attributes = attributes
 
         ground = SKShader(source: Self.noise + """
         void main() {
@@ -228,7 +233,7 @@ final class EnvironmentShaders {
 
     func update(time: TimeInterval) {
         currentCast = MeadowSun.cast(at: time)
-        for shader in [ground, vegetation, shadow, soil, backMist, frontMist, sunlight] {
+        for shader in [ground, vegetation, meadowPlants, shadow, soil, backMist, frontMist, sunlight] {
             shader.uniformNamed("u_sceneTime")?.floatValue = Float(time)
         }
         sunlight.uniformNamed("u_sunCast")?.vectorFloat2Value = SIMD2(Float(currentCast.dx), Float(currentCast.dy))
@@ -236,14 +241,13 @@ final class EnvironmentShaders {
 
     func apply(_ shader: SKShader, to node: SKSpriteNode, origin: CGPoint,
                extent: CGSize, wind: Float = 0, phase: Float = 0,
-               gait: SIMD2<Float> = SIMD2(-1, 0), groundBlend: Bool = false) {
+               gait: SIMD2<Float> = SIMD2(-1, 0)) {
         node.shader = shader
         node.attributeValues = [
             "a_origin": SKAttributeValue(vectorFloat2: SIMD2(Float(origin.x), Float(origin.y))),
             "a_extent": SKAttributeValue(vectorFloat2: SIMD2(Float(extent.width), Float(extent.height))),
             "a_wind": SKAttributeValue(float: wind), "a_phase": SKAttributeValue(float: phase),
-            "a_gait": SKAttributeValue(vectorFloat2: gait),
-            "a_groundBlend": SKAttributeValue(float: groundBlend ? 1 : 0)
+            "a_gait": SKAttributeValue(vectorFloat2: gait)
         ]
     }
 }
