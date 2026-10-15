@@ -253,8 +253,9 @@ final class TrailTests: XCTestCase {
         let crispBase = try renderedPixels(node, in: view)
         effects.apply(effects.meadowPlants, to: node, origin: .zero, extent: node.size)
         let blendedBase = try renderedPixels(node, in: view)
-        let width = 192
-        let rows = 24
+        XCTAssertEqual(crispBase.count, blendedBase.count)
+        let width = Int(Double(crispBase.count / 4).squareRoot())
+        let rows = max(1, width / 4)
         func difference(in range: Range<Int>) -> Int {
             range.reduce(0) { total, y in
                 total + (0..<width).reduce(0) { rowTotal, x in
@@ -263,8 +264,11 @@ final class TrailTests: XCTestCase {
                 }
             }
         }
-        let edgeChange = difference(in: 0..<(rows * 2)) + difference(in: (width - rows * 2)..<width)
-        let interiorChange = difference(in: (rows * 2)..<(width - rows * 2))
+        let edgeChange = difference(in: 0..<rows) + difference(in: (width - rows)..<width)
+        let interiorChange = difference(in: rows..<(width - rows))
+        let overallChange = pixelDifference(crispBase, blendedBase)
+        XCTAssertGreaterThan(overallChange, 0.05,
+                             "The plant shader must alter rendered pixels (texture side: \(width))")
         XCTAssertGreaterThan(edgeChange, 10_000, "The painted sod edge should blend into the meadow")
         XCTAssertLessThan(interiorChange, edgeChange, "The blend should preserve the flower heads and upper foliage")
     }
