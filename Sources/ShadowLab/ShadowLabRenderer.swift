@@ -25,6 +25,7 @@ final class ShadowLabRenderer: NSObject, MTKViewDelegate {
     var manualSun: Float = -0.65
     var shadowsEnabled = true
     var modelsVisible = false
+    var imageCasters = true
     var zoom: Float = 1
     var seed: UInt64 = 1
     var onStatus: ((String) -> Void)?
@@ -33,9 +34,11 @@ final class ShadowLabRenderer: NSObject, MTKViewDelegate {
     private let queue: MTLCommandQueue
     private let shadowMap: MTLTexture
     private let shadowPipeline: MTLRenderPipelineState
+    private let cutoutShadowPipeline: MTLRenderPipelineState
     private let groundPipeline: MTLRenderPipelineState
     private let artworkPipeline: MTLRenderPipelineState
     private let modelPipeline: MTLRenderPipelineState
+    private let cutoutModelPipeline: MTLRenderPipelineState
     private let depthState: MTLDepthStencilState
     private let groundBuffer: MTLBuffer
     private var textures: [String: MTLTexture] = [:]
@@ -63,6 +66,12 @@ final class ShadowLabRenderer: NSObject, MTKViewDelegate {
         shadow.vertexFunction = library.makeFunction(name: "labShadowVertex")
         shadow.depthAttachmentPixelFormat = .depth32Float
         shadowPipeline = try device.makeRenderPipelineState(descriptor: shadow)
+        let cutout = MTLRenderPipelineDescriptor()
+        cutout.label = "Image-alpha clipped 3D relief casters"
+        cutout.vertexFunction = library.makeFunction(name: "labCutoutShadowVertex")
+        cutout.fragmentFunction = library.makeFunction(name: "labCutoutShadowFragment")
+        cutout.depthAttachmentPixelFormat = .depth32Float
+        cutoutShadowPipeline = try device.makeRenderPipelineState(descriptor: cutout)
 
         func colorPipeline(_ fragment: String, blend: Bool) throws -> MTLRenderPipelineState {
             let descriptor = MTLRenderPipelineDescriptor()
@@ -83,6 +92,7 @@ final class ShadowLabRenderer: NSObject, MTKViewDelegate {
         groundPipeline = try colorPipeline("labGroundFragment", blend: false)
         artworkPipeline = try colorPipeline("labArtworkFragment", blend: true)
         modelPipeline = try colorPipeline("labModelFragment", blend: true)
+        cutoutModelPipeline = try colorPipeline("labCutoutModelFragment", blend: true)
         let state = MTLDepthStencilDescriptor()
         state.depthCompareFunction = .lessEqual
         state.isDepthWriteEnabled = true
@@ -140,7 +150,7 @@ final class ShadowLabRenderer: NSObject, MTKViewDelegate {
               let command = queue.makeCommandBuffer() else { inFlight.signal(); return }
         command.label = "ShadowLab depth + receiver + artwork"
         let sun = currentSunAngle
-        let frame = ShadowLabFrame(time: elapsed, sunAngle: sun, shadows: shadowsEnabled, models: modelsVisible, zoom: zoom, seed: seed)
+        let frame = ShadowLabFrame(time: elapsed, sunAngle: sun, shadows: shadowsEnabled, models: modelsVisible, zoom: zoom, seed: seed, imageCasters: imageCasters)
         do {
             let count = try encode(command: command, color: descriptor, size: view.drawableSize, frame: frame)
             let semaphore = inFlight
@@ -153,11 +163,11 @@ final class ShadowLabRenderer: NSObject, MTKViewDelegate {
             frameCount += 1; reportFrames += 1
             if now - reportTime >= 1 {
                 let fps = Double(reportFrames) / (now - reportTime)
-                let status = String(format: "%.0f FPS · 三维投影 %@ · 光向 %.0f°", fps, shadowsEnabled ? "开" : "关", sun * 180 / .pi)
+                let status = String(format: "%.0f FPS · %@ %@ · 光向 %.0f°", fps, imageCasters ? "轮廓投影" : "简模投影", shadowsEnabled ? "开" : "关", sun * 180 / .pi)
                 onStatus?(status)
                 samples.append(["time": elapsed, "fps": fps, "proxyTriangles": count / 3, "shadowMapSize": shadowSize,
                                 "sunAngle": sun, "shadowsEnabled": shadowsEnabled, "seed": seed, "zoom": zoom,
-                                "objects": 3, "depthPasses": frameCount])
+                                "objects": 3, "depthPasses": frameCount, "imageCasters": imageCasters])
                 if samples.count > 180 { samples.removeFirst() }
                 if let data = try? JSONSerialization.data(withJSONObject: samples, options: .prettyPrinted),
                    let url = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("ShadowLabMetrics.json") {
@@ -182,21 +192,44 @@ final class ShadowLabRenderer: NSObject, MTKViewDelegate {
         let instances = ShadowLabMath.instances(seed: frame.seed, time: frame.time)
         let heroFrame = frame.heroFrame ?? ShadowLabMath.heroFrame(time: frame.time)
         var proxy = ShadowLabMesh()
-        for instance in instances { proxy.addProxy(instance, frame: heroFrame, mirrored: ShadowLabMath.heroMovingRight(time: frame.time)) }
-        let proxyBuffer = try buffer(proxy.vertices)
+        var proxyBuffer: MTLBuffer?
+        var cutouts: [(buffer: MTLBuffer, count: Int, texture: MTLTexture, kind: Float)] = []
+        if frame.imageCasters {
+            for instance in instances {
+                var mesh = ShadowLabMesh()
+                mesh.imageCaster(instance, mirrored: instance.asset == .hero && ShadowLabMath.heroMovingRight(time: frame.time))
+                let key = instance.asset == .hero ? "hero\(heroFrame)" : instance.asset.rawValue
+                guard let texture = textures[key] else { throw ShadowLabError.setup("投影素材缺失：\(key)") }
+                cutouts.append((try buffer(mesh.vertices), mesh.vertices.count, texture, instance.asset.casterKind))
+            }
+        } else {
+            for instance in instances { proxy.addProxy(instance, frame: heroFrame, mirrored: ShadowLabMath.heroMovingRight(time: frame.time)) }
+            proxyBuffer = try buffer(proxy.vertices)
+        }
         let shadowPass = MTLRenderPassDescriptor()
         shadowPass.depthAttachment.texture = shadowMap
         shadowPass.depthAttachment.loadAction = .clear
         shadowPass.depthAttachment.storeAction = .store
         shadowPass.depthAttachment.clearDepth = 1
         guard let depth = command.makeRenderCommandEncoder(descriptor: shadowPass) else { throw ShadowLabError.setup("阴影通道建立失败") }
-        depth.label = "3D occluders only; no sprite silhouette projection"
-        depth.setRenderPipelineState(shadowPipeline)
+        depth.label = frame.imageCasters ? "Alpha-clipped image relief into real 3D depth" : "Legacy solid 3D proxy comparison"
         depth.setDepthStencilState(depthState)
         depth.setCullMode(.none)
-        depth.setVertexBuffer(proxyBuffer, offset: 0, index: 0)
         depth.setVertexBytes(&uniforms, length: MemoryLayout<ShadowLabUniforms>.stride, index: 1)
-        depth.drawPrimitives(type: .triangle, vertexStart: 0, vertexCount: proxy.vertices.count)
+        if frame.imageCasters {
+            depth.setRenderPipelineState(cutoutShadowPipeline)
+            for caster in cutouts {
+                var settings = SIMD4<Float>(caster.kind, 0.32, 0, 0)
+                depth.setVertexBuffer(caster.buffer, offset: 0, index: 0)
+                depth.setFragmentTexture(caster.texture, index: 0)
+                depth.setFragmentBytes(&settings, length: MemoryLayout<SIMD4<Float>>.stride, index: 2)
+                depth.drawPrimitives(type: .triangle, vertexStart: 0, vertexCount: caster.count)
+            }
+        } else {
+            depth.setRenderPipelineState(shadowPipeline)
+            depth.setVertexBuffer(proxyBuffer, offset: 0, index: 0)
+            depth.drawPrimitives(type: .triangle, vertexStart: 0, vertexCount: proxy.vertices.count)
+        }
         depth.endEncoding()
 
         color.colorAttachments[0].loadAction = .clear
@@ -226,7 +259,7 @@ final class ShadowLabRenderer: NSObject, MTKViewDelegate {
                     encoder.drawPrimitives(type: .triangle, vertexStart: 0, vertexCount: mesh.vertices.count)
                 }
                 var mesh = ShadowLabMesh()
-                mesh.card(instance, rows: instance.asset == .tree ? 18 : 1, windPhase: 0.4)
+                mesh.card(instance, rows: instance.asset == .tree ? 32 : 1, windPhase: 0.4)
                 if instance.asset == .hero && ShadowLabMath.heroMovingRight(time: frame.time) {
                     for index in mesh.vertices.indices { mesh.vertices[index].uvWind.x = 1 - mesh.vertices[index].uvWind.x }
                 }
@@ -236,13 +269,38 @@ final class ShadowLabRenderer: NSObject, MTKViewDelegate {
             }
         }
         if frame.models {
-            encoder.setRenderPipelineState(modelPipeline)
-            encoder.setTriangleFillMode(.lines)
-            encoder.setVertexBuffer(proxyBuffer, offset: 0, index: 0)
-            encoder.drawPrimitives(type: .triangle, vertexStart: 0, vertexCount: proxy.vertices.count)
+            if frame.imageCasters {
+                encoder.setRenderPipelineState(cutoutModelPipeline)
+                for caster in cutouts {
+                    var settings = SIMD4<Float>(caster.kind, 0.32, 0, 0)
+                    encoder.setVertexBuffer(caster.buffer, offset: 0, index: 0)
+                    encoder.setFragmentTexture(caster.texture, index: 0)
+                    encoder.setFragmentBytes(&settings, length: MemoryLayout<SIMD4<Float>>.stride, index: 2)
+                    encoder.drawPrimitives(type: .triangle, vertexStart: 0, vertexCount: caster.count)
+                }
+            } else {
+                encoder.setRenderPipelineState(modelPipeline)
+                encoder.setTriangleFillMode(.lines)
+                encoder.setVertexBuffer(proxyBuffer, offset: 0, index: 0)
+                encoder.drawPrimitives(type: .triangle, vertexStart: 0, vertexCount: proxy.vertices.count)
+            }
         }
         encoder.endEncoding()
-        return proxy.vertices.count
+        return frame.imageCasters ? cutouts.reduce(0) { $0 + $1.count } : proxy.vertices.count
+    }
+
+    /// Submission/error check only: no image readback, screenshot or visual assertion.
+    func validateFrameSubmission(frame: ShadowLabFrame) throws {
+        let descriptor = MTLTextureDescriptor.texture2DDescriptor(pixelFormat: .bgra8Unorm, width: 64, height: 64, mipmapped: false)
+        descriptor.usage = .renderTarget; descriptor.storageMode = .private
+        guard let target = device.makeTexture(descriptor: descriptor), let command = queue.makeCommandBuffer() else {
+            throw ShadowLabError.setup("基础运行缓冲区分配失败")
+        }
+        let pass = MTLRenderPassDescriptor(); pass.colorAttachments[0].texture = target
+        try encode(command: command, color: pass, size: CGSize(width: 64, height: 64), frame: frame)
+        command.commit(); command.waitUntilCompleted()
+        if let error = command.error { throw error }
+        guard command.status == .completed else { throw ShadowLabError.setup("Metal 命令未正常完成") }
     }
 
     /// Explicit review path only: waits for the GPU and reads actual rendered colors AND depth.

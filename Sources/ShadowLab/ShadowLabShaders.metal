@@ -23,6 +23,38 @@ vertex LabRaster labColorVertex(uint id [[vertex_id]], device const LabVertex *v
     return o;
 }
 
+vertex LabRaster labCutoutShadowVertex(uint id [[vertex_id]], device const LabVertex *v [[buffer(0)]], constant LabUniforms &u [[buffer(1)]]) {
+    LabRaster o;
+    o.world = labDeform(v[id], u);
+    o.position = u.light * float4(o.world, 1);
+    o.uv = v[id].uvWind.xy;
+    o.color = v[id].color;
+    return o;
+}
+
+bool labCasterVisible(LabRaster in, float4 color, constant float4 &settings) {
+    if (color.a < settings.y || in.world.z < 0.002) return false;
+    // Oak's low green apron belongs to the ground, not to the trunk volume.
+    if (settings.x < 0.5 && in.uv.y > 0.83 && color.g > color.r * 1.03 && color.g > color.b * 1.15) return false;
+    return true;
+}
+
+fragment void labCutoutShadowFragment(LabRaster in [[stage_in]], texture2d<float> art [[texture(0)]], constant float4 &settings [[buffer(2)]]) {
+    constexpr sampler pixels(coord::normalized, address::clamp_to_edge, filter::nearest);
+    float4 color = art.sample(pixels, in.uv);
+    if (!labCasterVisible(in, color, settings)) discard_fragment();
+}
+
+fragment float4 labCutoutModelFragment(LabRaster in [[stage_in]], texture2d<float> art [[texture(0)]], constant float4 &settings [[buffer(2)]]) {
+    constexpr sampler pixels(coord::normalized, address::clamp_to_edge, filter::nearest);
+    float4 color = art.sample(pixels, in.uv);
+    if (!labCasterVisible(in, color, settings)) discard_fragment();
+    float2 cell = fract(in.uv * float2(16, 32));
+    float grid = max(step(0.94, cell.x), step(0.94, cell.y));
+    float alpha = (0.18 + grid * 0.40) * color.a;
+    return float4(in.color.rgb * alpha, alpha);
+}
+
 float labVisibility(float3 world, constant LabUniforms &u, depth2d<float> shadowMap) {
     if (u.options.x < 0.5) return 1;
     float4 clip = u.light * float4(world, 1);

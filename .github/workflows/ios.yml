@@ -7,6 +7,11 @@ on:
     branches: [main]
   workflow_dispatch:
     inputs:
+      quick_lab:
+        description: 'Build the shadow lab IPA and run only its basic Metal submission test'
+        required: false
+        type: boolean
+        default: false
       review_run:
         description: 'Successful run whose existing visual artifacts should be repackaged (leave empty for a full build)'
         required: false
@@ -21,10 +26,14 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  quick-shadow-lab:
+    if: ${{ github.event_name == 'workflow_dispatch' && inputs.quick_lab }}
+    uses: ./.github/workflows/shadow-lab-quick.yml
+
   recover-review:
     name: Prepare compact review from an existing successful build
     needs: build
-    if: ${{ always() && ((github.event_name == 'workflow_dispatch' && inputs.review_run != '') || needs.build.result == 'success') }}
+    if: ${{ always() && !inputs.quick_lab && ((github.event_name == 'workflow_dispatch' && inputs.review_run != '') || needs.build.result == 'success') }}
     runs-on: ubuntu-24.04
     timeout-minutes: 20
     env:
@@ -95,7 +104,7 @@ jobs:
 
   build:
     name: Xcode compile, test and unsigned IPA
-    if: ${{ github.event_name != 'workflow_dispatch' || inputs.review_run == '' }}
+    if: ${{ github.event_name != 'workflow_dispatch' || (inputs.review_run == '' && !inputs.quick_lab) }}
     runs-on: macos-15
     timeout-minutes: 45
     defaults:

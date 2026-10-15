@@ -25,10 +25,12 @@ struct ShadowLabFrame {
     var zoom: Float = 1
     var seed: UInt64 = 1
     var heroFrame: Int? = nil
+    var imageCasters = true
 }
 
 enum ShadowLabAsset: String {
     case tree = "OakA", tower = "WatchTower", hero = "Hero1Directions"
+    var casterKind: Float { switch self { case .tree: return 0; case .tower: return 1; case .hero: return 2 } }
 }
 
 struct ShadowLabInstance {
@@ -125,6 +127,62 @@ struct ShadowLabMesh {
     var wind: Float = 0
     var phase: Float = 0
     var color = SIMD4<Float>(0.85, 0.66, 0.29, 0.55)
+
+    /// A relief surface derived from image coordinates: changing ground-depth Y
+    /// solves height Z to preserve the artwork's projection in the fixed camera.
+    /// Fine silhouette detail comes from alpha testing, not extra sphere geometry.
+    mutating func imageCaster(_ instance: ShadowLabInstance, mirrored: Bool = false) {
+        func smooth(_ a: Float, _ b: Float, _ x: Float) -> Float {
+            let t = max(0, min(1, (x - a) / (b - a)))
+            return t * t * (3 - 2 * t)
+        }
+        let columns = instance.asset == .hero ? 8 : 16
+        let rows = 32
+        let roofDepth = instance.asset == .tower ? instance.proxyCenter.y - instance.root.y : 0
+        vertices.reserveCapacity(vertices.count + columns * rows * 6)
+        func vertex(_ u: Float, _ v: Float) -> ShadowLabVertex {
+            let screenUp = (1 - v - instance.anchor.y) * instance.screenHeight
+            var depth: Float
+            switch instance.asset {
+            case .tree:
+                let canopy = 1 - smooth(0.70, 0.86, v)
+                let back = 1 - smooth(0.23, 0.39, v)
+                let front = smooth(0.57, 0.72, v)
+                depth = (0.10 + 0.36 * back - 0.38 * front + sin(u * .pi) * 0.16) * canopy
+            case .tower:
+                let groundV: Float
+                if u < 0.48 {
+                    let t = max(0, min(1, (u - 0.24) / 0.24))
+                    groundV = 0.78 + t * 0.08
+                } else {
+                    let t = max(0, min(1, (u - 0.48) / 0.25))
+                    groundV = 0.86 - t * 0.09
+                }
+                let footDepth = (1 - groundV - instance.anchor.y) * instance.screenHeight / ShadowLabMath.cameraUp.y
+                let roof = 1 - smooth(0.20, 0.30, v)
+                depth = footDepth * (1 - roof) + roofDepth * roof
+            case .hero:
+                depth = (u - 0.5) * 0.20 * (1 - smooth(0.63, 0.86, v))
+            }
+            var height = (screenUp - depth * ShadowLabMath.cameraUp.y) / ShadowLabMath.cameraUp.z
+            // The painted ground apron is placed ON the receiver, then excluded
+            // by the caster fragment; it cannot become a standing grass rectangle.
+            if height < 0 { height = 0; depth = screenUp / ShadowLabMath.cameraUp.y }
+            var x = (u - instance.anchor.x) * instance.width
+            if mirrored { x = -x }
+            let position = instance.root + SIMD3(x, depth, height)
+            let bend = instance.asset == .tree ? max(0, (1 - v - instance.anchor.y) / (1 - instance.anchor.y)) : 0
+            let tint: SIMD4<Float> = instance.asset == .tree ? SIMD4(0.80, 1, 0.45, 1)
+                : (instance.asset == .tower ? SIMD4(1, 0.72, 0.28, 1) : SIMD4(0.38, 0.83, 1, 1))
+            return ShadowLabVertex(position: SIMD4(position, 1), uvWind: SIMD4(u, v, bend, 0.4), color: tint)
+        }
+        for row in 0..<rows { for column in 0..<columns {
+            let u0 = Float(column) / Float(columns), u1 = Float(column + 1) / Float(columns)
+            let v0 = Float(row) / Float(rows), v1 = Float(row + 1) / Float(rows)
+            vertices += [vertex(u0, v0), vertex(u0, v1), vertex(u1, v1),
+                         vertex(u0, v0), vertex(u1, v1), vertex(u1, v0)]
+        } }
+    }
 
     mutating func triangle(_ a: SIMD3<Float>, _ b: SIMD3<Float>, _ c: SIMD3<Float>) {
         for p in [a, b, c] {

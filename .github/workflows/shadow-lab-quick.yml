@@ -1,0 +1,137 @@
+name: Shadow Lab Quick Build
+
+on:
+  workflow_dispatch:
+  workflow_call:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: shadow-lab-quick-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  archive:
+    name: Device Release IPA
+    runs-on: macos-15
+    timeout-minutes: 20
+    defaults:
+      run:
+        shell: bash
+    env:
+      PROJECT: MeadowJourney.xcodeproj
+      SCHEME: MeadowJourney
+
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Validate project and record Xcode details
+        run: |
+          set -euo pipefail
+          mkdir -p build/logs
+          xcode-select -p 2>&1 | tee build/logs/xcode-path.log
+          xcodebuild -version 2>&1 | tee build/logs/xcode-version.log
+          xcodebuild -list -project "$PROJECT" 2>&1 | tee build/logs/project.log
+          python3 scripts/validate-project.py 2>&1 | tee build/logs/project-validation.log
+
+      - name: Archive device Release build
+        run: |
+          set -euo pipefail
+          xcodebuild archive \
+            -project "$PROJECT" -scheme "$SCHEME" -configuration Release \
+            -destination 'generic/platform=iOS' \
+            -archivePath build/MeadowJourney-shadow-lab.xcarchive \
+            -derivedDataPath build/DeviceDerivedData \
+            CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO \
+            2>&1 | tee build/logs/device-archive.log
+
+      - name: Package unsigned IPA
+        run: |
+          set -euo pipefail
+          bash scripts/package-ipa.sh \
+            build/MeadowJourney-shadow-lab.xcarchive build/MeadowJourney-shadow-lab.ipa \
+            2>&1 | tee build/logs/package-ipa.log
+
+      - name: Upload shadow lab IPA
+        uses: actions/upload-artifact@v7
+        with:
+          name: MeadowJourney-shadow-lab-IPA
+          path: build/MeadowJourney-shadow-lab.ipa
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Upload archive logs
+        if: ${{ always() }}
+        uses: actions/upload-artifact@v7
+        with:
+          name: shadow-lab-archive-logs-${{ github.run_id }}-${{ github.run_attempt }}
+          path: build/logs/
+          if-no-files-found: warn
+          retention-days: 30
+
+  smoke:
+    name: Shadow Lab Native Metal Smoke Test
+    runs-on: macos-15
+    timeout-minutes: 20
+    defaults:
+      run:
+        shell: bash
+    env:
+      PROJECT: MeadowJourney.xcodeproj
+      SCHEME: MeadowJourney
+
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Record Xcode details
+        run: |
+          set -euo pipefail
+          mkdir -p build/logs
+          xcode-select -p 2>&1 | tee build/logs/xcode-path.log
+          xcodebuild -version 2>&1 | tee build/logs/xcode-version.log
+
+      - name: Select, install if needed, and boot an iPhone simulator
+        id: simulator
+        run: |
+          set -euo pipefail
+          xcrun simctl list --json > build/logs/simulator-inventory.json
+          if python3 scripts/select-simulator.py > build/simulator-udid.txt; then
+            :
+          else
+            status=$?
+            if [ "$status" -ne 2 ]; then
+              exit "$status"
+            fi
+            xcodebuild -downloadPlatform iOS 2>&1 | tee build/logs/runtime-download.log
+            xcrun simctl list --json > build/logs/simulator-inventory-after-download.json
+            python3 scripts/select-simulator.py > build/simulator-udid.txt
+          fi
+          simulator_udid="$(cat build/simulator-udid.txt)"
+          echo "udid=$simulator_udid" >> "$GITHUB_OUTPUT"
+          xcrun simctl bootstatus "$simulator_udid" -b \
+            2>&1 | tee build/logs/simulator-boot.log
+
+      - name: Run the focused shadow lab Metal test
+        run: |
+          set -euo pipefail
+          xcodebuild test \
+            -project "$PROJECT" -scheme "$SCHEME" -configuration Debug \
+            -destination 'platform=iOS Simulator,id=${{ steps.simulator.outputs.udid }}' \
+            -only-testing:MeadowJourneyTests/TrailTests/testShadowLabCutoutPipelineSubmitsBothCasterModes \
+            -derivedDataPath build/SimulatorDerivedData \
+            -resultBundlePath build/ShadowLabSmoke.xcresult \
+            -parallel-testing-enabled NO \
+            CODE_SIGNING_ALLOWED=NO \
+            2>&1 | tee build/logs/shadow-lab-smoke.log
+
+      - name: Upload smoke logs and test result
+        if: ${{ always() }}
+        uses: actions/upload-artifact@v7
+        with:
+          name: shadow-lab-smoke-logs-${{ github.run_id }}-${{ github.run_attempt }}
+          path: |
+            build/logs/
+            build/ShadowLabSmoke.xcresult/
+          if-no-files-found: warn
+          retention-days: 30

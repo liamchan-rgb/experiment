@@ -7,10 +7,21 @@ import MetalKit
 final class TrailTests: XCTestCase {
     private let trail = Trail(points: [CGPoint(x: 0, y: 0), CGPoint(x: 30, y: 0), CGPoint(x: 30, y: 40)])
 
+    func testShadowLabCutoutPipelineSubmitsBothCasterModes() throws {
+        let renderer = try ShadowLabRenderer(device: XCTUnwrap(MTLCreateSystemDefaultDevice()))
+        // Basic GPU execution only. Visual quality is checked by the user.
+        for imageCasters in [true, false] {
+            for models in [false, true] {
+                try renderer.validateFrameSubmission(frame: ShadowLabFrame(time: 1.1, models: models, imageCasters: imageCasters))
+            }
+        }
+        try renderer.validateFrameSubmission(frame: ShadowLabFrame(time: 12, sunAngle: 0.85, models: true, seed: 8))
+    }
+
     func testShadowLabUsesActualDepthAndCastsAtTreeTowerAndBootContacts() throws {
         let device = try XCTUnwrap(MTLCreateSystemDefaultDevice())
         let renderer = try ShadowLabRenderer(device: device)
-        var frame = ShadowLabFrame(time: 0, wind: false, artwork: false, heroFrame: 1)
+        var frame = ShadowLabFrame(time: 0, wind: false, artwork: false, heroFrame: 1, imageCasters: false)
         let shaded = try renderer.snapshot(frame: frame)
         frame.shadows = false
         let lit = try renderer.snapshot(frame: frame)
@@ -37,13 +48,13 @@ final class TrailTests: XCTestCase {
             XCTAssertGreaterThan(strongest, 30, "No rendered shadow at actual ground contact \(contact)")
         }
         attachLab(shaded.image, "shadow-lab-ground-receiver")
-        attachLab(try renderer.snapshot(frame: ShadowLabFrame(time: 0, wind: false)).image, "shadow-lab-artwork")
-        attachLab(try renderer.snapshot(frame: ShadowLabFrame(time: 0, wind: false, models: true)).image, "shadow-lab-proxy-alignment")
+        attachLab(try renderer.snapshot(frame: ShadowLabFrame(time: 0, wind: false, imageCasters: false)).image, "shadow-lab-artwork")
+        attachLab(try renderer.snapshot(frame: ShadowLabFrame(time: 0, wind: false, models: true, imageCasters: false)).image, "shadow-lab-proxy-alignment")
     }
 
     func testShadowLabDepthShadowsRespondToSunWindAndLegPose() throws {
         let renderer = try ShadowLabRenderer(device: XCTUnwrap(MTLCreateSystemDefaultDevice()))
-        var frame = ShadowLabFrame(time: 1.1, wind: false, artwork: false, heroFrame: 1)
+        var frame = ShadowLabFrame(time: 1.1, wind: false, artwork: false, heroFrame: 1, imageCasters: false)
         let original = try renderer.snapshot(frame: frame)
         frame.sunAngle = 0.85
         let changedSun = try renderer.snapshot(frame: frame)

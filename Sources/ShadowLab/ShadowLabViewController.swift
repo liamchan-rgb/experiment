@@ -11,6 +11,7 @@ final class ShadowLabViewController: UIViewController {
     private let sunButton = UIButton(type: .system)
     private let shadowButton = UIButton(type: .system)
     private let modelButton = UIButton(type: .system)
+    private let casterButton = UIButton(type: .system)
     private let layoutButton = UIButton(type: .system)
     private let sunSlider = UISlider()
     private let controls = UIStackView()
@@ -66,9 +67,10 @@ final class ShadowLabViewController: UIViewController {
         configure(sunButton, "阳光自动", "shadowLabSun", #selector(toggleSun))
         configure(shadowButton, "投影开启", "shadowLabShadows", #selector(toggleShadows))
         configure(modelButton, "模型隐藏", "shadowLabModels", #selector(toggleModels))
+        configure(casterButton, "轮廓投影", "shadowLabCasterMode", #selector(toggleCaster))
         configure(layoutButton, "换一组布局", "shadowLabRelayout", #selector(relayout))
         controls.axis = .horizontal; controls.spacing = 8; controls.distribution = .fillEqually
-        for button in [sunButton, shadowButton, modelButton, layoutButton] { controls.addArrangedSubview(button) }
+        for button in [sunButton, shadowButton, modelButton, casterButton, layoutButton] { controls.addArrangedSubview(button) }
         view.addSubview(controls)
         sunSlider.minimumValue = -1.5; sunSlider.maximumValue = 1.5; sunSlider.value = -0.65
         sunSlider.tintColor = UIColor(red: 1, green: 0.83, blue: 0.35, alpha: 1)
@@ -105,7 +107,7 @@ final class ShadowLabViewController: UIViewController {
         closeButton.frame = CGRect(x: left, y: top, width: 96, height: 36)
         pauseButton.frame = CGRect(x: right - 96, y: top, width: 96, height: 36)
         titleLabel.frame = CGRect(x: left + 100, y: top, width: max(0, right - left - 200), height: 36)
-        let width = min(570, right - left)
+        let width = min(690, right - left)
         controls.frame = CGRect(x: view.bounds.midX - width / 2, y: bottom - 36, width: width, height: 36)
         sunSlider.frame = CGRect(x: left + 8, y: bottom - 77, width: min(260, (right - left) * 0.40), height: 32)
         statusLabel.frame = CGRect(x: right - min(390, (right - left) * 0.57), y: bottom - 73,
@@ -133,6 +135,11 @@ final class ShadowLabViewController: UIViewController {
     }
     @objc private func toggleShadows() { renderer?.shadowsEnabled.toggle(); title(shadowButton, renderer?.shadowsEnabled == true ? "投影开启" : "投影关闭"); publishState() }
     @objc private func toggleModels() { renderer?.modelsVisible.toggle(); title(modelButton, renderer?.modelsVisible == true ? "模型显示" : "模型隐藏"); publishState() }
+    @objc private func toggleCaster() {
+        renderer?.imageCasters.toggle()
+        title(casterButton, renderer?.imageCasters == true ? "轮廓投影" : "简模投影")
+        publishState()
+    }
     @objc private func relayout() { renderer?.seed += 7; publishState() }
     @objc private func changeSun() { renderer?.automaticSun = false; renderer?.manualSun = sunSlider.value; title(sunButton, "阳光固定"); publishState() }
     @objc private func pinch(_ gesture: UIPinchGestureRecognizer) {
@@ -150,7 +157,7 @@ final class ShadowLabViewController: UIViewController {
         guard let renderer, let metalView else { return }
         let state: [String: Any] = ["ready": true, "renderer": "Metal depth shadow map", "objects": 3,
                                     "shadowSize": renderer.shadowSize, "shadows": renderer.shadowsEnabled,
-                                    "models": renderer.modelsVisible, "paused": renderer.paused,
+                                    "models": renderer.modelsVisible, "paused": renderer.paused, "imageCasters": renderer.imageCasters,
                                     "automaticSun": renderer.automaticSun, "seed": renderer.seed, "time": renderer.elapsed,
                                     "zoom": renderer.zoom]
         if let data = try? JSONSerialization.data(withJSONObject: state, options: .sortedKeys) {
