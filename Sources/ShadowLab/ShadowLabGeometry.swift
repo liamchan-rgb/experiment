@@ -44,7 +44,7 @@ struct ShadowLabInstance {
     /// Painted post bases, clockwise around the footprint; coordinates are asset metadata.
     var towerFeet: [SIMD3<Float>] {
         [SIMD2<Float>(0.48, 0.86), SIMD2(0.24, 0.78), SIMD2(0.50, 0.70), SIMD2(0.73, 0.77)].map { p in
-            root + SIMD3((p.x - anchor.x) * width, (1 - p.y - anchor.y) * screenHeight / ShadowLabMath.cameraUp.y, 0)
+            pointOnPlane(p.x, p.y, height: 0)
         }
     }
     var proxyCenter: SIMD3<Float> {
@@ -56,6 +56,12 @@ struct ShadowLabInstance {
 
     func imagePoint(_ u: Float, _ vFromTop: Float) -> SIMD3<Float> {
         root + SIMD3((u - anchor.x) * width, 0, (1 - vFromTop - anchor.y) * cardHeight)
+    }
+
+    func pointOnPlane(_ u: Float, _ vFromTop: Float, height: Float) -> SIMD3<Float> {
+        let screenUp = (1 - vFromTop - anchor.y) * screenHeight
+        return root + SIMD3((u - anchor.x) * width,
+                            (screenUp - height * ShadowLabMath.cameraUp.z) / ShadowLabMath.cameraUp.y, height)
     }
 }
 
@@ -194,8 +200,11 @@ struct ShadowLabMesh {
                 beam(from: a + SIMD3(0, 0, h * 0.05), to: b + SIMD3(0, 0, h * 0.59), radius: 0.07)
                 beam(from: b + SIMD3(0, 0, h * 0.05), to: a + SIMD3(0, 0, h * 0.59), radius: 0.07)
             }
-            let peak = r + SIMD3<Float>(0, 0, h * 0.98)
-            let corners = ring(h * 0.78, scale: 1.43)
+            let peak = SIMD3(instance.root.x, r.y, h - instance.cardHeight * 0.022)
+            // A wider roof does not imply uniformly scaling the painted footprint's depth.
+            // Calibrate the four eaves on one horizontal plane from the actual roof corners.
+            let corners = [SIMD2<Float>(0.50, 0.24), SIMD2(0.12, 0.18), SIMD2(0.50, 0.095), SIMD2(0.85, 0.17)]
+                .map { instance.pointOnPlane($0.x, $0.y, height: h * 0.78) }
             for i in 0..<4 { triangle(corners[i], corners[(i + 1) % 4], peak) }
         case .hero:
             color = SIMD4(0.55, 0.85, 1, 0.65)
