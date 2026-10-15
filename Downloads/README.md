@@ -1,5 +1,7 @@
 # SideStore 安装与视觉验收
 
+[最新三维阴影试验包：1.4.0 build 11 兼容打包版](SHADOW_LAB_PREVIEW.md)。安装后点地图左上角「光影试验」。
+
 [直接下载 1.3.0（build 9）IPA](https://github.com/liamchan-rgb/experiment/raw/refs/heads/feat/layered-living-scene/Downloads/MeadowJourney-v1.3.0-unsigned.ipa)。
 
 在 Safari 保存到“文件”，然后 SideStore → My Apps → ＋，选择带 v1.3.0 的文件重签安装。安装名称为 MeadowJourney，需要 iOS / iPadOS 15 及以上。包标识保持 com.liamchan.experiment.meadow，可覆盖更新旧版。

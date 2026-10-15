@@ -95,3 +95,7 @@ IPA为1.3.0（build9），arm64，支持iPhone／iPad与iOS15及以上；16,838,
 首轮源码 `be9a95e` 的 run `38706558980` 通过 Swift／Metal 编译、27 项模型／GPU 渲染检查、iPhone 与 iPad 各 3 项 UI 检查以及设备归档。检查原尺寸图片后，继续校准塔楼四柱的素材地标与人物脚底纵深，并将人物移动改为无瞬移的镜像折返。首轮产物不作为交付版。
 
 当前候选为 1.4.0 build 11，待重新构建和画面验收。实现与边界见 [SHADOW_LAB.md](SHADOW_LAB.md)；人物八方向、道路材质与全地图阴影迁移仍需后续迭代。
+
+## SideStore 解包报错后的替换包
+
+用户反馈先行 build 10 安装时提示 Archive appears to be corrupt。公开链接重新下载的 SHA 与构建产物一致，ZIP CRC 和 SideSign 使用的同类 libdeflate 解压检查均通过，尚未在本地复现设备错误。已将成功构建 38708663449 的 build 11 原始 IPA 重新封装为经典 ZIP_STORED，移除扩展字段，逐文件确认程序与资源字节完全不变。替换包为 Downloads/MeadowJourney-b11.ipa，来源与校验值见 Downloads/ShadowLab-build11.json；安装兼容性仍待用户设备确认。后续默认打包采用 zip -0 -X，提供 scripts/repack-ipa.py 作为兼容重封装工具。
