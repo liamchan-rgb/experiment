@@ -1,6 +1,36 @@
 import XCTest
 
 final class JourneyUITests: XCTestCase {
+    func testShadowLabControlsAndLayout() {
+        continueAfterFailure = false
+        XCUIDevice.shared.orientation = .landscapeLeft
+        let app = XCUIApplication()
+        app.launchArguments = ["-shadowReview"]
+        app.launch()
+        let surface = app.otherElements["shadowLabSurface"]
+        XCTAssertTrue(surface.waitForExistence(timeout: 15))
+        expectation(for: NSPredicate(format: "value CONTAINS %@", "\"ready\":true"), evaluatedWith: surface)
+        waitForExpectations(timeout: 15)
+        XCTAssertGreaterThan(surface.frame.width, surface.frame.height)
+        capture("08-shadow-lab-artwork")
+        app.buttons["shadowLabPause"].tap()
+        app.buttons["shadowLabModels"].tap()
+        capture("09-shadow-lab-proxies")
+        app.buttons["shadowLabModels"].tap()
+        app.buttons["shadowLabShadows"].tap()
+        XCTAssertTrue((surface.value as? String ?? "").contains("\"shadows\":false"))
+        capture("10-shadow-lab-without-shadows")
+        app.buttons["shadowLabShadows"].tap()
+        app.buttons["shadowLabRelayout"].tap()
+        XCTAssertTrue((surface.value as? String ?? "").contains("\"seed\":8"))
+        app.buttons["shadowLabSun"].tap()
+        capture("11-shadow-lab-relayout")
+        app.buttons["shadowLabClose"].tap()
+        XCTAssertTrue(app.buttons["openShadowLab"].waitForExistence(timeout: 15))
+        app.buttons["openShadowLab"].tap()
+        XCTAssertTrue(surface.waitForExistence(timeout: 15))
+    }
+
     func testEightDirectionReviewSurvivesInitialViewLayout() {
         continueAfterFailure = false
         XCUIDevice.shared.orientation = .landscapeLeft

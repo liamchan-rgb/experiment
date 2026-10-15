@@ -32,9 +32,9 @@ def build_file(key, file_ref):
 
 
 source_refs, source_builds = [], []
-for path in sorted((ROOT / 'Sources').rglob('*.swift')):
+for path in sorted(p for p in (ROOT / 'Sources').rglob('*') if p.suffix in ['.swift', '.metal']):
     relative = str(path.relative_to(ROOT / 'Sources'))
-    source_ref = file('file:' + relative, relative, 'sourcecode.swift')
+    source_ref = file('file:' + relative, relative, 'sourcecode.metal' if path.suffix == '.metal' else 'sourcecode.swift')
     source_refs.append(source_ref)
     source_builds.append(build_file('build:' + relative, source_ref))
 assets = file('assets', 'Resources/Assets.xcassets', 'folder.assetcatalog')
@@ -71,7 +71,7 @@ app_settings = {
     'PRODUCT_NAME': '$(TARGET_NAME)', 'PRODUCT_BUNDLE_IDENTIFIER': 'com.liamchan.experiment.meadow',
     'INFOPLIST_FILE': 'Sources/Resources/Info.plist', 'GENERATE_INFOPLIST_FILE': 'NO',
     'TARGETED_DEVICE_FAMILY': '1,2', 'SUPPORTED_PLATFORMS': 'iphoneos iphonesimulator',
-    'CODE_SIGN_STYLE': 'Automatic', 'MARKETING_VERSION': '1.3.0', 'CURRENT_PROJECT_VERSION': '9',
+    'CODE_SIGN_STYLE': 'Automatic', 'MARKETING_VERSION': '1.4.0', 'CURRENT_PROJECT_VERSION': '10',
     'ASSETCATALOG_COMPILER_APPICON_NAME': 'AppIcon',
     'LD_RUNPATH_SEARCH_PATHS': ['$(inherited)', '@executable_path/Frameworks'],
     'SWIFT_EMIT_LOC_STRINGS': 'YES', 'ENABLE_PREVIEWS': 'NO',

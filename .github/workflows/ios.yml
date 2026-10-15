@@ -247,6 +247,36 @@ jobs:
           print('Minimum-zoom recording verified: stationary camera, paused travelers, live environment.')
           PY
 
+      - name: Record the real 3D shadow-map prototype
+        run: |
+          set -euo pipefail
+          ipad_udid='${{ steps.simulator.outputs.ipad_udid }}'
+          xcrun simctl terminate "$ipad_udid" com.liamchan.experiment.meadow || true
+          xcrun simctl launch "$ipad_udid" com.liamchan.experiment.meadow -shadowReview -shadowReviewDemo
+          sleep 2
+          xcrun simctl io "$ipad_udid" screenshot build/visual-review/iPad-ShadowLab-start.png
+          xcrun simctl io "$ipad_udid" recordVideo --codec=h264 \
+            build/visual-review/iPad-ShadowLab.mp4 > build/logs/shadow-lab-video.log 2>&1 &
+          recorder_pid=$!
+          trap 'kill -INT "$recorder_pid" 2>/dev/null || true' EXIT
+          sleep 25
+          kill -INT "$recorder_pid"
+          wait "$recorder_pid" || true
+          trap - EXIT
+          xcrun simctl io "$ipad_udid" screenshot build/visual-review/iPad-ShadowLab-end.png
+          data_path="$(xcrun simctl get_app_container "$ipad_udid" com.liamchan.experiment.meadow data)"
+          cp "$data_path/Documents/ShadowLabMetrics.json" build/visual-review/ShadowLabMetrics.json
+          python3 - <<'PY'
+          import json
+          samples = json.load(open('build/visual-review/ShadowLabMetrics.json'))
+          assert len(samples) >= 8
+          assert all(s['shadowMapSize'] == 1024 and s['objects'] == 3 and s['proxyTriangles'] > 100 for s in samples)
+          assert any(s['shadowsEnabled'] for s in samples)
+          assert any(not s['shadowsEnabled'] for s in samples)
+          assert len({s['seed'] for s in samples}) >= 2
+          print('Real depth-map lab recorded: dynamic sun, wind, walking, proxy overlay, shadows off/on and regenerated layout.')
+          PY
+
       - name: Upload original stills for immediate visual review
         uses: actions/upload-artifact@v7
         with:

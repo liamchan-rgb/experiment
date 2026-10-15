@@ -14,7 +14,7 @@ assert re.fullmatch(r'[A-Za-z][A-Za-z0-9 -]*', plist['CFBundleDisplayName']), \
     'SideStore App ID registration requires an ASCII-safe display name for this package'
 assert plist['UISupportedInterfaceOrientations'] == [
     'UIInterfaceOrientationLandscapeLeft', 'UIInterfaceOrientationLandscapeRight']
-for file in (root / 'Sources').rglob('*.swift'):
+for file in (p for p in (root / 'Sources').rglob('*') if p.suffix in ['.swift', '.metal']):
     assert str(file.relative_to(root / 'Sources')) in pbx, f'Unbound Swift file: {file}'
 for catalog in (root / 'Sources/Resources/Assets.xcassets').rglob('Contents.json'):
     data = json.loads(catalog.read_text())

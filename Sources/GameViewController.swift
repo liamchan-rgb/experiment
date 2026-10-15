@@ -8,6 +8,7 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
     private let playButton = ParchmentButton(symbol: .play)
     private let resetButton = ParchmentButton(symbol: .reset)
     private let zoomButton = ParchmentButton(symbol: .zoom)
+    private let shadowLabButton = UIButton(type: .system)
     private var gestureZoom: CGFloat = 1
     private let metricsLabel = UILabel()
     private let discoveryLabel = UILabel()
@@ -33,6 +34,14 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
         scene.scaleMode = .resizeFill
         scene.size = view.bounds.size
         for button in [titleButton, playButton, resetButton, zoomButton] { view.addSubview(button) }
+        var labStyle = UIButton.Configuration.filled()
+        labStyle.title = "光影试验"
+        labStyle.baseBackgroundColor = UIColor(red: 0.97, green: 0.91, blue: 0.70, alpha: 0.96)
+        labStyle.baseForegroundColor = UIColor(red: 0.25, green: 0.28, blue: 0.14, alpha: 1)
+        shadowLabButton.configuration = labStyle
+        shadowLabButton.accessibilityIdentifier = "openShadowLab"
+        shadowLabButton.addTarget(self, action: #selector(openShadowLab), for: .touchUpInside)
+        view.addSubview(shadowLabButton)
         for label in [metricsLabel, discoveryLabel] {
             label.textColor = UIColor(red: 1, green: 0.94, blue: 0.75, alpha: 1)
             label.backgroundColor = UIColor(red: 0.17, green: 0.22, blue: 0.17, alpha: 0.82)
@@ -86,6 +95,7 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
             review.scaleMode = .resizeFill
             gameView.presentScene(review)
             for button in [titleButton, playButton, resetButton, zoomButton] { button.isHidden = true }
+            shadowLabButton.isHidden = true
         } else {
             gameView.presentScene(scene)
         }
@@ -109,6 +119,7 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
         let button: CGFloat = isPad ? 44 : 34
         let spacing = button + 2
         titleButton.frame = CGRect(x: max(inset.left, 10) + 4, y: top, width: isPad ? 88 : 70, height: isPad ? 44 : 38)
+        shadowLabButton.frame = CGRect(x: titleButton.frame.maxX + 8, y: top + 2, width: 96, height: button)
         let right = view.bounds.width - max(inset.right, 10) - 4
         zoomButton.frame = CGRect(x: right - button, y: top + 2, width: button, height: button)
         resetButton.frame = zoomButton.frame.offsetBy(dx: -spacing, dy: 0)
@@ -118,6 +129,15 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
     }
 
     @objc private func togglePlayback() { scene.togglePlayback() }
+
+    @objc private func openShadowLab() {
+        let lab = ShadowLabViewController()
+        lab.modalPresentationStyle = .fullScreen
+        present(lab, animated: true)
+    }
+
+    override func viewWillAppear(_ animated: Bool) { super.viewWillAppear(animated); gameView.isPaused = false }
+    override func viewDidDisappear(_ animated: Bool) { super.viewDidDisappear(animated); gameView.isPaused = true }
 
     @objc private func reset() {
         scene.reset()

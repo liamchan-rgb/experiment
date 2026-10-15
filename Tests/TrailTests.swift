@@ -1,10 +1,69 @@
 import XCTest
 import UIKit
 import SpriteKit
+import MetalKit
 @testable import MeadowJourney
 
 final class TrailTests: XCTestCase {
     private let trail = Trail(points: [CGPoint(x: 0, y: 0), CGPoint(x: 30, y: 0), CGPoint(x: 30, y: 40)])
+
+    func testShadowLabUsesActualDepthAndCastsAtTreeTowerAndBootContacts() throws {
+        let device = try XCTUnwrap(MTLCreateSystemDefaultDevice())
+        let renderer = try ShadowLabRenderer(device: device)
+        var frame = ShadowLabFrame(time: 0, wind: false, artwork: false, heroFrame: 1)
+        let shaded = try renderer.snapshot(frame: frame)
+        frame.shadows = false
+        let lit = try renderer.snapshot(frame: frame)
+        XCTAssertGreaterThan(shaded.depthTexels, 1000, "The shadow texture must contain rasterized 3D geometry")
+        XCTAssertGreaterThan(shaded.minimumDepth, 0)
+        XCTAssertLessThan(shaded.minimumDepth, 0.9)
+        let instances = ShadowLabMath.instances(seed: 1, time: 0)
+        var contacts = [instances[0].root]
+        for x: Float in [-0.66, 0.66] { for y: Float in [-0.48, 0.48] {
+            contacts.append(instances[1].root + SIMD3((x - y) * 0.7071, (x + y) * 0.7071, 0))
+        } }
+        contacts.append(instances[2].root + SIMD3(-0.36, 0.12, 0))
+        let camera = ShadowLabMath.camera(aspect: Float(shaded.width) / Float(shaded.height), zoom: 1)
+        for contact in contacts {
+            let p = camera * SIMD4(contact, 1)
+            let px = Int((p.x / p.w * 0.5 + 0.5) * Float(shaded.width))
+            let py = Int((0.5 - p.y / p.w * 0.5) * Float(shaded.height))
+            var strongest = 0
+            for y in max(0, py - 5)...min(shaded.height - 1, py + 5) {
+                for x in max(0, px - 5)...min(shaded.width - 1, px + 5) {
+                    let i = (y * shaded.width + x) * 4
+                    let delta = (0..<3).reduce(0) { $0 + Int(lit.bgra[i + $1]) - Int(shaded.bgra[i + $1]) }
+                    strongest = max(strongest, delta)
+                }
+            }
+            XCTAssertGreaterThan(strongest, 30, "No rendered shadow at actual ground contact \(contact)")
+        }
+        attachLab(shaded.image, "shadow-lab-ground-receiver")
+        attachLab(try renderer.snapshot(frame: ShadowLabFrame(time: 0, wind: false)).image, "shadow-lab-artwork")
+        attachLab(try renderer.snapshot(frame: ShadowLabFrame(time: 0, wind: false, models: true)).image, "shadow-lab-proxy-alignment")
+    }
+
+    func testShadowLabDepthShadowsRespondToSunWindAndLegPose() throws {
+        let renderer = try ShadowLabRenderer(device: XCTUnwrap(MTLCreateSystemDefaultDevice()))
+        var frame = ShadowLabFrame(time: 1.1, wind: false, artwork: false, heroFrame: 1)
+        let original = try renderer.snapshot(frame: frame)
+        frame.sunAngle = 0.85
+        let changedSun = try renderer.snapshot(frame: frame)
+        XCTAssertGreaterThan(pixelDifference(original.bgra, changedSun.bgra), 0.5)
+        frame.sunAngle = -0.65; frame.wind = true
+        let changedWind = try renderer.snapshot(frame: frame)
+        XCTAssertGreaterThan(pixelDifference(original.bgra, changedWind.bgra), 0.02)
+        frame.wind = false; frame.heroFrame = 3
+        let changedLegs = try renderer.snapshot(frame: frame)
+        XCTAssertGreaterThan(pixelDifference(original.bgra, changedLegs.bgra), 0.001)
+        attachLab(changedSun.image, "shadow-lab-opposite-sun")
+    }
+
+    private func attachLab(_ image: UIImage, _ name: String) {
+        let attachment = XCTAttachment(image: image)
+        attachment.name = name; attachment.lifetime = .keepAlways
+        add(attachment)
+    }
 
     func testArcLengthInterpolationAndClamping() {
         XCTAssertEqual(trail.length, 70, accuracy: 0.001)
