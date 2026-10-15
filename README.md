@@ -1,6 +1,6 @@
 # 安然 · 林间行旅
 
-[1.5.1 build 14 替换包进度：全地图轮廓阴影、步态与道路](Downloads/SHADOW_LAB_PREVIEW.md)。[迭代日志](docs/ITERATION_STATUS.md)记录本轮实现与检查。
+[最新 1.5.1 build 14：全地图轮廓阴影、步态撕裂修复与道路过渡](Downloads/SHADOW_LAB_PREVIEW.md)。[迭代日志](docs/ITERATION_STATUS.md)记录本轮实现与检查。
 
 以下为此前 1.3 验收版的历史说明。
 

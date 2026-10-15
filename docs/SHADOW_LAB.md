@@ -1,8 +1,6 @@
-> build 13 最终 UI 检查失败，正在以 1.5.1 build 14 替换。8 项原生检查通过；界面绘制调度已修正，等待重新验证。
-
 # 贴图轮廓实时阴影
 
-## 1.5.0 build 13
+## 1.5.1 build 14
 
 build 12 的小场景轮廓效果已由用户确认。本轮将同一图像 alpha 裁切、少量纵深分层和实时 shadow map 扩展到主地图，删除简模网格与模式切换。
 
@@ -20,6 +18,8 @@ build 12 的小场景轮廓效果已由用户确认。本轮将同一图像 alph
 
 本轮对照三位人物八方向的完整接触帧，执行原生步态、主地图全资源深度提交、资源坐标对齐、道路交叉口顺序无关性和 UI 交互检查。阴影及道路的最终画面由用户安装反馈；不再以测试通过替代美术验收。
 
-最终源码 `42f0d68` 已完成设备归档，安装包为 [MeadowJourney-b13.ipa](../Downloads/MeadowJourney-b13.ipa)。最后一轮针对性检查进行中；来源与校验值见 [MeadowJourney-build13.json](../Downloads/MeadowJourney-build13.json)。
+最终源码 `cc3b7b9` 的构建 `38775110277` 通过编译、设备归档、8 项原生检查及 1 项 UI 交互检查（0 失败）。安装包为 [MeadowJourney-b14.ipa](../Downloads/MeadowJourney-b14.ipa)，来源与 SHA 见 [MeadowJourney-build14.json](../Downloads/MeadowJourney-build14.json)。
+
+build 13 曾在 SpriteKit 更新回调内同步触发 `MTKView.draw()`，最终 UI 缩放查询超时。build 14 的首个独立显示时钟候选仍出现交互超时，未发布。最终版恢复单一场景驱动，背景上限 30fps，镜头、视口或人物动作帧变化时立即更新；背景视图保持暂停其自身时钟。每帧呈现／提交后显式释放 MTKView 的 drawable 缓存引用，由 command buffer 持有已提交资源直至完成。build 13 已由此替换。
 
 当前为图像驱动的 2.5D 近似；物件表面接收其他物件投影、不可见背面体积，以及物理设备帧率／发热仍需后续验证。

@@ -131,3 +131,9 @@ build 14（1.5.1）改为两个视图分别由显示时钟调度：SpriteKit 只
 候选源码 `9e53706` 的 run `38772925127` 再次通过 8 项资源／GPU／步态检查，但 UI 在缩放之后查询复位按钮超时，1 项失败，因此没有发布该候选包。将两个视图都按 60fps 独立运行仍会增加主线程与渲染负载。
 
 现恢复已通过交互检查的单一场景驱动入口：暂停背景 MTKView 自身的显示时钟，由前景场景驱动地形／投影提交；背景上限 30fps，镜头、视口或人物动作帧变化时立即提交。前景仍为 60fps。每次编码／呈现后显式 releaseDrawables 归还 view 缓存，提交的 command buffer 继续持有其 GPU 资源；失败路径也释放引用与信号。背景纯装饰视图不进入辅助功能树。build 14 版本号保持，先完成交互复测再发布。
+
+## 1.5.1 build 14 最终交付
+
+最终源码 `cc3b7b9` 的 [构建 38775110277](https://github.com/liamchan-rgb/experiment/actions/runs/38775110277) 已成功：Swift／Metal 编译、设备 Release 归档、8 项原生资源／GPU／步态检查、1 项主地图 UI 交互检查全部通过（9 项，0 失败）。UI 覆盖开始行走、缩放、复位、打开试验场和返回地图；验证单一场景驱动与限频后的显示调度。build 13 的失败状态保留，最终交付改为 [1.5.1 build 14 IPA](../Downloads/MeadowJourney-b14.ipa)。
+
+包内版本、arm64、iPhone／iPad 支持、Metal 资源、ZIP CRC、可执行权限及经典无压缩 ZIP 格式已校验。来源与 SHA-256 见 [MeadowJourney-build14.json](../Downloads/MeadowJourney-build14.json)。三位人物八方向接触帧已自行对照，测试确认完整帧不会被 gait 参数改写轮廓；阴影和道路效果仍由用户安装反馈，本轮没有复核其图片或录像。

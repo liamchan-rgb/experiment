@@ -1,0 +1,43 @@
+{
+  "version": "1.5.1",
+  "build": "14",
+  "kind": "full-map-alpha-relief-shadows",
+  "sourceCommit": "cc3b7b9292f86da9c835afcbaa13f9676c70f3fa",
+  "implementationCommit": "ecdbdbbe2b4cfc905ade9e5d45c1c6c195fc5442",
+  "workflowRun": 38775110277,
+  "runner": "macos-14",
+  "xcode": "15.4 (15F31d)",
+  "workflowConclusion": "success",
+  "artifactId": 11992908770,
+  "replacesBuild": "13",
+  "ipa": "MeadowJourney-b14.ipa",
+  "bytes": 17297296,
+  "sha256": "ae65cd081160474b8d0c6aab2bcbdaacaa23cd519f0851176b36a05a6709c2db",
+  "compression": "ZIP_STORED",
+  "zip64": false,
+  "extendedFields": false,
+  "validation": {
+    "deviceReleaseArchive": "passed",
+    "zipCRC": "passed",
+    "arm64": "passed",
+    "devicePlatform": "iPhoneOS",
+    "metalLibraryPresent": true,
+    "executablePermission": "passed",
+    "nativeTestsPassed": 8,
+    "uiTestsPassed": 1,
+    "totalFailures": 0,
+    "gaitContactReview": "All three heroes and eight headings inspected as complete contact frames; runtime UV leg splicing removed.",
+    "shadowsAndRoadsVisualReview": "User feedback pending; no effect-image review performed."
+  },
+  "rendering": {
+    "mainShadowSize": 2048,
+    "labShadowSize": 1024,
+    "casterMode": "image alpha relief only; solid proxy removed",
+    "groundReceiver": "grass and unified road surface",
+    "cpuPixelReadbackOnDisplay": false,
+    "displayScheduling": "One scene-driven loop; background capped at 30fps with immediate camera/pose refresh and explicit drawable release.",
+    "backgroundMaximumFPS": 30,
+    "foregroundPreferredFPS": 60
+  },
+  "installationStatus": "Awaiting user device feedback; classic stored ZIP format, same bundle ID for SideStore replacement."
+}
