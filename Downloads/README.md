@@ -1,6 +1,6 @@
 # SideStore 安装与迭代包
 
-[最新：1.5.0 build 13，全地图轮廓阴影、步态与道路调整](SHADOW_LAB_PREVIEW.md)。启动后的主地图已启用；「光影试验」保留独立小场景。
+[1.5.1 build 14 替换包构建中；build 13 交互检查失败](SHADOW_LAB_PREVIEW.md)。启动后的主地图已启用；「光影试验」保留独立小场景。
 
 在 Safari 下载后保存到「文件」，再打开 SideStore → My Apps → ＋，选择 MeadowJourney-b13.ipa 重签安装。安装名 MeadowJourney，包标识 com.liamchan.experiment.meadow，支持 iPhone／iPad 与 iOS 15 及以上，可覆盖已有安装。
 
