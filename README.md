@@ -1,4 +1,8 @@
-# 安然 · 林间行旅 1.3 验收版
+# 安然 · 林间行旅
+
+[最新 1.5.0 build 13：全地图轮廓阴影、步态撕裂修复与道路过渡](Downloads/SHADOW_LAB_PREVIEW.md)。[迭代日志](docs/ITERATION_STATUS.md)记录本轮实现与检查。
+
+以下为此前 1.3 验收版的历史说明。
 
 原生 Swift / UIKit / SpriteKit iOS 游戏 Demo，支持 iPhone / iPad、iOS 15 及以上，横屏、离线运行，无第三方运行依赖。安装名称为 MeadowJourney，便于 SideStore 重签。
 

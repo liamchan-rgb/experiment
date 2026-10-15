@@ -116,6 +116,6 @@ IPA为1.3.0（build9），arm64，支持iPhone／iPad与iOS15及以上；16,838,
 - 道路：将四条道路合并为一张世界坐标距离遮罩，交叉口只合成一次；不透明平整黄砂改成低饱和裸土、细微轮迹、细碎石与保留稀草。通过多尺度噪声和透明衰减软化草土交界，路边花点也减少。
 - 验证计划：原生 Swift／Metal 编译、全资源 GPU 命令执行、轮廓坐标对齐、道路并集顺序无关性、步态完整帧检查、主地图播放／缩放／复位与试验场往返。阴影和道路画面由用户继续反馈；本轮不复核这些效果图片。
 
-状态：实现完成，等待原生构建与校验后发布 1.5.0 build 13 IPA。
+状态：最终源码 `42f0d68` 的 [构建 38771289888](https://github.com/liamchan-rgb/experiment/actions/runs/38771289888) 已完成设备 Release 归档与 IPA 完整性校验，先行提供 [1.5.0 build 13 IPA](../Downloads/MeadowJourney-b13.ipa)。最后一轮针对性原生检查仍在进行；源代码、SHA 与检查状态见 [MeadowJourney-build13.json](../Downloads/MeadowJourney-build13.json)。
 
 主地图接入补充：地形 Metal 视图由同一场景帧驱动，但经 `MTKView.draw()`／delegate 生命周期获取和释放 drawable，避免手动读取 drawable 后重复呈现同一表面。该修正纳入最终包，重新构建验证。

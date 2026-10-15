@@ -69,21 +69,57 @@
     "height": 1536,
     "decodedBytes": 9437184,
     "source": "hero1-gait-v1.2.png",
-    "runtimeRig": "Front/back right contact exchanges legs below the hem; profile contacts exchange near/far leg depth."
+    "runtimeRig": "Keep each authored frame whole for both sprite and ground shadow; gait columns already contain alternating leg contacts.",
+    "gaitPhases": [
+      "idle",
+      "contact-a",
+      "passing",
+      "contact-b"
+    ],
+    "directions": [
+      "front",
+      "left-profile",
+      "back",
+      "right-profile"
+    ]
   },
   "Hero2Directions": {
     "width": 1536,
     "height": 1536,
     "decodedBytes": 9437184,
     "source": "hero2-gait-v1.2.png",
-    "runtimeRig": "Front/back right contact exchanges legs below the hem; profile contacts exchange near/far leg depth."
+    "runtimeRig": "Keep each authored frame whole for both sprite and ground shadow; gait columns already contain alternating leg contacts.",
+    "gaitPhases": [
+      "idle",
+      "contact-a",
+      "passing",
+      "contact-b"
+    ],
+    "directions": [
+      "front",
+      "left-profile",
+      "back",
+      "right-profile"
+    ]
   },
   "Hero3Directions": {
     "width": 1536,
     "height": 1536,
     "decodedBytes": 9437184,
     "source": "hero3-gait-v1.2.png",
-    "runtimeRig": "Front/back right contact exchanges legs below the hem; profile contacts exchange near/far leg depth."
+    "runtimeRig": "Keep each authored frame whole for both sprite and ground shadow; gait columns already contain alternating leg contacts.",
+    "gaitPhases": [
+      "idle",
+      "contact-a",
+      "passing",
+      "contact-b"
+    ],
+    "directions": [
+      "front",
+      "left-profile",
+      "back",
+      "right-profile"
+    ]
   },
   "Hero1Diagonals": {
     "width": 1024,
@@ -95,6 +131,12 @@
       "southwest",
       "northwest",
       "northeast"
+    ],
+    "gaitPhases": [
+      "idle",
+      "contact-a",
+      "passing",
+      "contact-b"
     ]
   },
   "Hero2Diagonals": {
@@ -107,6 +149,12 @@
       "southwest",
       "northwest",
       "northeast"
+    ],
+    "gaitPhases": [
+      "idle",
+      "contact-a",
+      "passing",
+      "contact-b"
     ]
   },
   "Hero3Diagonals": {
@@ -119,6 +167,12 @@
       "southwest",
       "northwest",
       "northeast"
+    ],
+    "gaitPhases": [
+      "idle",
+      "contact-a",
+      "passing",
+      "contact-b"
     ]
   }
 }
