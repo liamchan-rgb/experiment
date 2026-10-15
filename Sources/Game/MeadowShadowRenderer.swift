@@ -4,7 +4,7 @@ import simd
 
 /// The SpriteKit ground, image-alpha depth map and receiver share one Metal buffer.
 /// SpriteKit's interactive foreground stays above this surface; no GPU pixels cross the CPU.
-final class MeadowShadowRenderer: NSObject, MTKViewDelegate {
+final class MeadowShadowRenderer {
     private struct Draw {
         let buffer: MTLBuffer
         let count: Int
@@ -29,8 +29,11 @@ final class MeadowShadowRenderer: NSObject, MTKViewDelegate {
     private let inFlight = DispatchSemaphore(value: 2)
     private(set) var casterCount = 0
     private(set) var submittedFrames = 0
-    private var pendingFrame: (world: LivingWorld, center: CGPoint, scale: CGFloat, time: TimeInterval, heroes: [MeadowHeroCaster])?
-    private var submissionError: Error?
+    private var lastRenderTime: TimeInterval = -.infinity
+    private var lastCenter = CGPoint.zero
+    private var lastScale: CGFloat = 0
+    private var lastViewport = CGSize.zero
+    private var lastPoses: [Int] = []
 
     init(device: MTLDevice, world: LivingWorld) throws {
         self.device = device
@@ -65,7 +68,6 @@ final class MeadowShadowRenderer: NSObject, MTKViewDelegate {
         receiver = buffer
         terrain = world.terrain
         groundRenderer = SKRenderer(device: device)
-        super.init()
         groundScene.backgroundColor = .init(red: 0.31, green: 0.38, blue: 0.15, alpha: 1)
         groundScene.scaleMode = .resizeFill
         groundRenderer.scene = groundScene
@@ -186,23 +188,14 @@ final class MeadowShadowRenderer: NSObject, MTKViewDelegate {
     }
 
     func render(in view: MTKView, world: LivingWorld, center: CGPoint, scale: CGFloat, time: TimeInterval, heroes: [MeadowHeroCaster]) throws {
-        pendingFrame = (world, center, scale, time, heroes)
-        // The MTKView display link owns drawable acquisition/presentation.
-        // Never synchronously enter its draw cycle from SpriteKit's update;
-        // nested drawing can monopolize the UI/render transaction.
-        if let error = submissionError { submissionError = nil; throw error }
-    }
-
-    func mtkView(_ view: MTKView, drawableSizeWillChange size: CGSize) {}
-
-    func draw(in view: MTKView) {
-        guard let frame = pendingFrame else { return }
-        do { try renderFrame(in: view, world: frame.world, center: frame.center, scale: frame.scale, time: frame.time, heroes: frame.heroes) }
-        catch { submissionError = error }
-    }
-
-    private func renderFrame(in view: MTKView, world: LivingWorld, center: CGPoint, scale: CGFloat, time: TimeInterval, heroes: [MeadowHeroCaster]) throws {
+        let poses = heroes.map { $0.facing * 4 + $0.frame }
+        let changed = center != lastCenter || scale != lastScale || view.bounds.size != lastViewport || poses != lastPoses
+        guard changed || time - lastRenderTime >= 1.0 / 30 else { return }
         guard inFlight.wait(timeout: .now()) == .success else { return }
+        // The paused MTKView has no second display link. Explicitly relinquish
+        // its cached drawable after encoding/presenting, including error paths.
+        // The committed command buffer retains its GPU resources until completion.
+        defer { view.releaseDrawables() }
         guard let pass = view.currentRenderPassDescriptor, let drawable = view.currentDrawable, let command = queue.makeCommandBuffer() else { inFlight.signal(); return }
         do {
             let size = view.bounds.size
@@ -213,6 +206,8 @@ final class MeadowShadowRenderer: NSObject, MTKViewDelegate {
             try encode(command: command, target: pass, viewport: size, center: center, scale: scale, time: time, sunCast: world.effects.currentCast, heroes: heroes)
             let semaphore = inFlight; command.addCompletedHandler { _ in semaphore.signal() }
             command.present(drawable); command.commit(); submittedFrames += 1
+            lastRenderTime = time; lastCenter = center; lastScale = scale
+            lastViewport = view.bounds.size; lastPoses = poses
         } catch { inFlight.signal(); throw error }
     }
 
