@@ -54,20 +54,18 @@ final class EnvironmentShaders {
     float legExchangeWeight(vec2 uv, vec2 gait) {
         // Exchange the legs below the hem without flipping asymmetric equipment.
         bool frontBack = gait.x >= 0.0 && (gait.x < 0.5 || (gait.x > 1.5 && gait.x < 2.5));
-        if (frontBack && gait.y > 2.5) {
+        if ((frontBack || gait.x > 3.5) && gait.y > 2.5) {
             float lower = 1.0 - smoothstep(0.285, 0.315, uv.y);
             lower *= smoothstep(0.28, 0.32, uv.x) * (1.0 - smoothstep(0.68, 0.72, uv.x));
             return lower;
         }
         return 0.0;
     }
-    float diagonalLegOffset(vec2 uv, vec2 gait) {
-        if (gait.x < 3.5 || gait.y < 2.5) return 0.0;
-        // Counter-translate the two boots below the hem for the opposite
-        // contact. Keep their diagonal toe direction and all equipment intact.
-        float side = smoothstep(0.48, 0.52, uv.x) * 2.0 - 1.0;
-        float leftHeading = (gait.x > 4.5 && gait.x < 5.5) || gait.x > 6.5 ? 1.0 : -1.0;
-        return side * leftHeading * 0.035 * (1.0 - smoothstep(0.26, 0.31, uv.y));
+    vec2 exchangedLegUV(vec2 uv, vec2 gait) {
+        // Diagonal boots retain their toe direction: translate the two leg
+        // regions rather than reflecting each boot or stretching its height.
+        if (gait.x > 3.5) return uv + vec2(uv.x < 0.5 ? 0.14 : -0.14, 0.0);
+        return vec2(1.0 - uv.x, uv.y);
     }
     """
 
@@ -86,12 +84,11 @@ final class EnvironmentShaders {
             } else {
                 uv.x += canopyBend(uv.y, u_sceneTime, a_phase, a_wind);
             }
-            uv.y += diagonalLegOffset(uv, a_gait);
             uv = clamp(uv, 0.001, 0.999);
             vec4 color = texture2D(u_texture, uv);
             float exchanged = legExchangeWeight(uv, a_gait);
             if (exchanged > 0.0) {
-                color = mix(color, texture2D(u_texture, vec2(1.0 - uv.x, uv.y)), exchanged);
+                color = mix(color, texture2D(u_texture, exchangedLegUV(uv, a_gait)), exchanged);
             }
             bool profile = (a_gait.x > 0.5 && a_gait.x < 1.5) || (a_gait.x > 2.5 && a_gait.x < 3.5);
             if (profile && (a_gait.y == 1.0 || a_gait.y == 3.0)) {
@@ -152,7 +149,6 @@ final class EnvironmentShaders {
             if (a_foliage > 0.5) {
                 uv.x += canopyBend(uv.y, u_sceneTime, a_phase, a_wind);
             }
-            uv.y += diagonalLegOffset(uv, a_gait);
             float elevation = clamp(uv.y - a_body.z, 0.0, 1.0);
             float radius = mix(0.35, a_cast.z, elevation);
             vec2 blur = vec2(radius / a_body.x, radius / (a_body.y * max(a_cast.y, 0.05)));
@@ -167,7 +163,7 @@ final class EnvironmentShaders {
                     float alpha = texture2D(u_texture, sampleUV).a;
                     float exchanged = legExchangeWeight(sampleUV, a_gait);
                     if (exchanged > 0.0) {
-                        alpha = mix(alpha, texture2D(u_texture, vec2(1.0 - sampleUV.x, sampleUV.y)).a, exchanged);
+                        alpha = mix(alpha, texture2D(u_texture, exchangedLegUV(sampleUV, a_gait)).a, exchanged);
                     }
                     float weight = (x == 0 ? 2.0 : 1.0) * (y == 0 ? 2.0 : 1.0);
                     mask += alpha * inside * weight;

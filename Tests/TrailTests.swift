@@ -243,7 +243,7 @@ final class TrailTests: XCTestCase {
         let view = SKView(frame: CGRect(x: 0, y: 0, width: 192, height: 192))
         let frames = HeroFrames.load(1)
         let node = SKSpriteNode(texture: frames[0][1], size: CGSize(width: 192, height: 192))
-        for direction in [0, 2] {
+        for direction in [0, 2, 4, 5, 6, 7] {
             node.texture = frames[direction][1]
             effects.apply(effects.vegetation, to: node, origin: .zero, extent: node.size, gait: SIMD2(Float(direction), 1))
             let left = try renderedPixels(node, in: view)
