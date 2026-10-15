@@ -55,7 +55,10 @@ final class EnvironmentShaders {
         // Exchange the legs below the hem without flipping asymmetric equipment.
         bool frontBack = gait.x >= 0.0 && (gait.x < 0.5 || (gait.x > 1.5 && gait.x < 2.5));
         if ((frontBack || gait.x > 3.5) && gait.y > 2.5) {
-            float lower = 1.0 - smoothstep(0.285, 0.315, uv.y);
+            // The diagonal atlas has a lower coat hem than the cardinal art.
+            // End the exchange below it so sideways sampling never widens it.
+            float lower = gait.x > 3.5 ? 1.0 - smoothstep(0.235, 0.265, uv.y)
+                                      : 1.0 - smoothstep(0.285, 0.315, uv.y);
             lower *= smoothstep(0.28, 0.32, uv.x) * (1.0 - smoothstep(0.68, 0.72, uv.x));
             return lower;
         }

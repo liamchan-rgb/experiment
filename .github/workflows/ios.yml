@@ -224,19 +224,28 @@ jobs:
             xcrun simctl terminate "$ipad_udid" com.liamchan.experiment.meadow || true
             xcrun simctl launch "$ipad_udid" com.liamchan.experiment.meadow "$@"
             sleep 1
+            xcrun simctl io "$ipad_udid" screenshot "build/visual-review/$clip_name-start.png"
             xcrun simctl io "$ipad_udid" recordVideo --codec=h264 \
               "build/visual-review/$clip_name.mp4" > "build/logs/$clip_name.log" 2>&1 &
             local recorder_pid=$!
             trap 'kill -INT "$recorder_pid" 2>/dev/null || true' EXIT
-            xcrun simctl io "$ipad_udid" screenshot "build/visual-review/$clip_name-start.png"
             sleep "$clip_seconds"
-            xcrun simctl io "$ipad_udid" screenshot "build/visual-review/$clip_name-end.png"
             kill -INT "$recorder_pid"
             wait "$recorder_pid" || true
             trap - EXIT
+            xcrun simctl io "$ipad_udid" screenshot "build/visual-review/$clip_name-end.png"
           }
           record_review iPad-EightDirectionGait 26 -gaitReview
           record_review iPad-MinimumZoomAtmosphere 12 -visualReview
+          data_path="$(xcrun simctl get_app_container "$ipad_udid" com.liamchan.experiment.meadow data)"
+          cp "$data_path/Documents/RuntimeMetrics.json" build/visual-review/MinimumZoomMetrics.json
+          python3 - <<'PY'
+          import json
+          samples = json.load(open('build/visual-review/MinimumZoomMetrics.json'))
+          assert len(samples) >= 8
+          assert all(s['zoom'] == 1 and not s['isPlaying'] for s in samples)
+          print('Minimum-zoom recording verified: stationary camera, paused travelers, live environment.')
+          PY
 
       - name: Upload original stills for immediate visual review
         uses: actions/upload-artifact@v7
