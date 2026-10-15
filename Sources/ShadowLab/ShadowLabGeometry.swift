@@ -41,6 +41,18 @@ struct ShadowLabInstance {
     var screenHeight: Float { width * aspect }
     var cardHeight: Float { screenHeight / ShadowLabMath.cameraUp.z }
     var height: Float { cardHeight * (1 - anchor.y) }
+    /// Painted post bases, clockwise around the footprint; coordinates are asset metadata.
+    var towerFeet: [SIMD3<Float>] {
+        [SIMD2<Float>(0.48, 0.86), SIMD2(0.24, 0.78), SIMD2(0.50, 0.70), SIMD2(0.73, 0.77)].map { p in
+            root + SIMD3((p.x - anchor.x) * width, (1 - p.y - anchor.y) * screenHeight / ShadowLabMath.cameraUp.y, 0)
+        }
+    }
+    var proxyCenter: SIMD3<Float> {
+        asset == .tower ? towerFeet.reduce(SIMD3<Float>.zero, +) / 4 : root
+    }
+    var proxyHeight: Float {
+        height - (proxyCenter.y - root.y) * ShadowLabMath.cameraUp.y / ShadowLabMath.cameraUp.z
+    }
 
     func imagePoint(_ u: Float, _ vFromTop: Float) -> SIMD3<Float> {
         root + SIMD3((u - anchor.x) * width, 0, (1 - vFromTop - anchor.y) * cardHeight)
@@ -86,18 +98,20 @@ enum ShadowLabMath {
         // One shared record drives both passes; re-layout never places art and shadows separately.
         let offset: Float = seed == 1 ? 0 : Float(Int(seed % 5) - 2) * 0.38
         let depth: Float = seed == 1 ? 0 : Float(Int((seed / 3) % 5) - 2) * 0.28
-        let travel = (time * 0.75).truncatingRemainder(dividingBy: 7)
+        let travel = (time * 0.75).truncatingRemainder(dividingBy: 14)
+        let heroX = travel <= 7 ? 3.5 - travel : travel - 10.5
         return [
             ShadowLabInstance(asset: .tree, root: SIMD3(-5.2 + offset, 1 + depth, 0), width: 5,
                               aspect: 553.0 / 516, anchor: SIMD2(0.50, 0.09)),
             ShadowLabInstance(asset: .tower, root: SIMD3(4.0 - offset, 1.1 - depth, 0), width: 4.4,
                               aspect: 499.0 / 388, anchor: SIMD2(0.50, 0.14)),
-            ShadowLabInstance(asset: .hero, root: SIMD3(3.5 - travel, -3.0 + depth, 0), width: 2.6,
+            ShadowLabInstance(asset: .hero, root: SIMD3(heroX, -3.0 + depth, 0), width: 2.6,
                               aspect: 1, anchor: SIMD2(0.50, 0.125))
         ]
     }
 
     static func heroFrame(time: Float) -> Int { [1, 2, 3, 2][Int(max(0, time) * 7) % 4] }
+    static func heroMovingRight(time: Float) -> Bool { (time * 0.75).truncatingRemainder(dividingBy: 14) > 7 }
 }
 
 struct ShadowLabMesh {
@@ -150,8 +164,9 @@ struct ShadowLabMesh {
         }
     }
 
-    mutating func addProxy(_ instance: ShadowLabInstance, frame: Int) {
-        let r = instance.root, h = instance.height
+    mutating func addProxy(_ instance: ShadowLabInstance, frame: Int, mirrored: Bool = false) {
+        let start = vertices.count
+        let r = instance.proxyCenter, h = instance.proxyHeight
         switch instance.asset {
         case .tree:
             color = SIMD4(0.87, 0.98, 0.55, 0.45)
@@ -165,22 +180,22 @@ struct ShadowLabMesh {
             wind = 0; phase = 0
         case .tower:
             color = SIMD4(1, 0.75, 0.34, 0.55)
-            let angle: Float = .pi / 4
-            func p(_ x: Float, _ y: Float, _ z: Float) -> SIMD3<Float> {
-                r + SIMD3((x - y) * 0.7071, (x + y) * 0.7071, z)
+            let feet = instance.towerFeet
+            func ring(_ z: Float, scale: Float = 1) -> [SIMD3<Float>] {
+                feet.map { r + ($0 - r) * SIMD3(scale, scale, 0) + SIMD3(0, 0, z) }
             }
-            for x: Float in [-0.66, 0.66] { for y: Float in [-0.48, 0.48] {
-                beam(from: p(x, y, 0), to: p(x, y, h * 0.72), radius: 0.13)
-            } }
+            for foot in feet { beam(from: foot, to: foot + SIMD3(0, 0, h * 0.72), radius: 0.13) }
             for z in [h * 0.32, h * 0.63] {
-                box(center: r + SIMD3(0, 0, z), size: SIMD3(1.8, 1.55, 0.16), rotation: angle)
+                let corners = ring(z, scale: 1.13)
+                triangle(corners[0], corners[1], corners[2]); triangle(corners[0], corners[2], corners[3])
             }
-            for y: Float in [-0.48, 0.48] {
-                beam(from: p(-0.66, y, h * 0.05), to: p(0.66, y, h * 0.59), radius: 0.07)
-                beam(from: p(0.66, y, h * 0.05), to: p(-0.66, y, h * 0.59), radius: 0.07)
+            for i in 0..<4 {
+                let a = feet[i], b = feet[(i + 1) % 4]
+                beam(from: a + SIMD3(0, 0, h * 0.05), to: b + SIMD3(0, 0, h * 0.59), radius: 0.07)
+                beam(from: b + SIMD3(0, 0, h * 0.05), to: a + SIMD3(0, 0, h * 0.59), radius: 0.07)
             }
             let peak = r + SIMD3<Float>(0, 0, h * 0.98)
-            let corners = [p(-1.0, -0.9, h * 0.78), p(1.0, -0.9, h * 0.78), p(1.0, 0.9, h * 0.78), p(-1.0, 0.9, h * 0.78)]
+            let corners = ring(h * 0.78, scale: 1.43)
             for i in 0..<4 { triangle(corners[i], corners[(i + 1) % 4], peak) }
         case .hero:
             color = SIMD4(0.55, 0.85, 1, 0.65)
@@ -188,10 +203,15 @@ struct ShadowLabMesh {
             // The contact frame is shared by the visible art and both 3D legs.
             let unit = instance.cardHeight
             let passing = frame == 2 || frame == 0
-            let depth: Float = frame == 3 ? -0.12 : 0.12
+            let depth: Float = frame == 3 ? -0.08 : 0.08
             let hip = r + SIMD3<Float>(0.01, 0, unit * 0.27)
-            let footA = r + SIMD3<Float>(passing ? -0.03 : -0.36, depth, 0.06)
-            let footB = r + SIMD3<Float>(passing ? 0.12 : 0.27, -depth, passing ? 0.27 : 0.16)
+            // The grounded sole stays at Z=0 AND at the image's ground-depth Y=0.
+            // A raised boot's depth/height pair is calibrated to its image-space sole.
+            let footA = r + SIMD3<Float>(passing ? -0.03 : (frame == 3 ? -0.33 : -0.36), 0, 0.06)
+            let farY: Float = frame == 3 ? 0.02 : -0.04
+            let solePixels: Float = passing ? 9 : (frame == 3 ? 4 : 2)
+            let farZ = 0.06 + (solePixels / 384 * instance.screenHeight - farY * ShadowLabMath.cameraUp.y) / ShadowLabMath.cameraUp.z
+            let footB = r + SIMD3<Float>(passing ? -0.17 : (frame == 3 ? 0.24 : 0.205), farY, farZ)
             for (foot, side) in [(footA, depth), (footB, -depth)] {
                 let knee = (hip + foot) * 0.5 + SIMD3<Float>(-0.07, side * 0.5, 0.05)
                 beam(from: hip + SIMD3(0, side, 0), to: knee, radius: 0.13)
@@ -201,6 +221,9 @@ struct ShadowLabMesh {
             ellipsoid(center: r + SIMD3(0, 0, unit * 0.40), radii: SIMD3(0.27, 0.22, unit * 0.16), segments: 8)
             ellipsoid(center: r + SIMD3(-0.01, 0, unit * 0.56), radii: SIMD3(0.31, 0.27, 0.33), segments: 8)
             beam(from: r + SIMD3(-0.10, 0, unit * 0.46), to: r + SIMD3(-0.35, 0, unit * 0.31), radius: 0.12)
+            if mirrored {
+                for index in start..<vertices.count { vertices[index].position.x = 2 * r.x - vertices[index].position.x }
+            }
         }
     }
 

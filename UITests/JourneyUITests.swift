@@ -24,6 +24,12 @@ final class JourneyUITests: XCTestCase {
         app.buttons["shadowLabRelayout"].tap()
         XCTAssertTrue((surface.value as? String ?? "").contains("\"seed\":8"))
         app.buttons["shadowLabSun"].tap()
+        app.sliders["shadowLabSunSlider"].adjust(toNormalizedSliderPosition: 0.8)
+        surface.pinch(withScale: 1.2, velocity: 1)
+        let data = Data((surface.value as! String).utf8)
+        let state = try! JSONSerialization.jsonObject(with: data) as! [String: Any]
+        XCTAssertGreaterThan(state["zoom"] as? Double ?? 0, 1)
+        XCTAssertEqual(state["automaticSun"] as? Bool, false)
         capture("11-shadow-lab-relayout")
         app.buttons["shadowLabClose"].tap()
         XCTAssertTrue(app.buttons["openShadowLab"].waitForExistence(timeout: 15))

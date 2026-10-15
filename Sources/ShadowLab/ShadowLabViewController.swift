@@ -124,7 +124,13 @@ final class ShadowLabViewController: UIViewController {
 
     private func title(_ button: UIButton, _ text: String) { var c = button.configuration; c?.title = text; button.configuration = c }
     @objc private func togglePause() { renderer?.paused.toggle(); title(pauseButton, renderer?.paused == true ? "继续动态" : "暂停动态"); publishState() }
-    @objc private func toggleSun() { renderer?.automaticSun.toggle(); title(sunButton, renderer?.automaticSun == true ? "阳光自动" : "阳光固定"); publishState() }
+    @objc private func toggleSun() {
+        guard let renderer else { return }
+        renderer.manualSun = renderer.currentSunAngle
+        renderer.automaticSun.toggle()
+        sunSlider.value = renderer.manualSun
+        title(sunButton, renderer.automaticSun ? "阳光自动" : "阳光固定"); publishState()
+    }
     @objc private func toggleShadows() { renderer?.shadowsEnabled.toggle(); title(shadowButton, renderer?.shadowsEnabled == true ? "投影开启" : "投影关闭"); publishState() }
     @objc private func toggleModels() { renderer?.modelsVisible.toggle(); title(modelButton, renderer?.modelsVisible == true ? "模型显示" : "模型隐藏"); publishState() }
     @objc private func relayout() { renderer?.seed += 7; publishState() }
@@ -157,9 +163,11 @@ final class ShadowLabViewController: UIViewController {
         demoStep += 1
         switch demoStep {
         case 1: toggleModels()
-        case 2: toggleModels(); renderer.automaticSun = false; renderer.manualSun = 0.85; title(sunButton, "阳光固定")
+        case 2:
+            toggleModels(); togglePause()
+            renderer.automaticSun = false; renderer.manualSun = 0.85; title(sunButton, "阳光固定")
         case 3: toggleShadows()
-        case 4: toggleShadows(); relayout()
+        case 4: toggleShadows(); relayout(); togglePause()
         default: demoTimer?.invalidate()
         }
         publishState()

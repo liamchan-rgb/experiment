@@ -19,10 +19,8 @@ final class TrailTests: XCTestCase {
         XCTAssertLessThan(shaded.minimumDepth, 0.9)
         let instances = ShadowLabMath.instances(seed: 1, time: 0)
         var contacts = [instances[0].root]
-        for x: Float in [-0.66, 0.66] { for y: Float in [-0.48, 0.48] {
-            contacts.append(instances[1].root + SIMD3((x - y) * 0.7071, (x + y) * 0.7071, 0))
-        } }
-        contacts.append(instances[2].root + SIMD3(-0.36, 0.12, 0))
+        contacts += instances[1].towerFeet
+        contacts.append(instances[2].root + SIMD3(-0.36, 0, 0))
         let camera = ShadowLabMath.camera(aspect: Float(shaded.width) / Float(shaded.height), zoom: 1)
         for contact in contacts {
             let p = camera * SIMD4(contact, 1)

@@ -277,6 +277,16 @@ jobs:
           print('Real depth-map lab recorded: dynamic sun, wind, walking, proxy overlay, shadows off/on and regenerated layout.')
           PY
 
+      - name: Upload the isolated shadow-map review
+        uses: actions/upload-artifact@v7
+        with:
+          name: ios-shadow-lab-review-${{ github.run_id }}
+          path: |
+            build/visual-review/iPad-ShadowLab*
+            build/visual-review/ShadowLabMetrics.json
+          if-no-files-found: error
+          retention-days: 30
+
       - name: Upload original stills for immediate visual review
         uses: actions/upload-artifact@v7
         with:

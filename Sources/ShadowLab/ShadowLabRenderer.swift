@@ -29,6 +29,7 @@ final class ShadowLabRenderer: NSObject, MTKViewDelegate {
     var seed: UInt64 = 1
     var onStatus: ((String) -> Void)?
     private(set) var elapsed: Float = 0
+    var currentSunAngle: Float { automaticSun ? -0.65 + sin(elapsed * 0.19) * 0.60 : manualSun }
     private let queue: MTLCommandQueue
     private let shadowMap: MTLTexture
     private let shadowPipeline: MTLRenderPipelineState
@@ -138,7 +139,7 @@ final class ShadowLabRenderer: NSObject, MTKViewDelegate {
         guard let descriptor = view.currentRenderPassDescriptor, let drawable = view.currentDrawable,
               let command = queue.makeCommandBuffer() else { inFlight.signal(); return }
         command.label = "ShadowLab depth + receiver + artwork"
-        let sun = automaticSun ? -0.65 + sin(elapsed * 0.19) * 0.60 : manualSun
+        let sun = currentSunAngle
         let frame = ShadowLabFrame(time: elapsed, sunAngle: sun, shadows: shadowsEnabled, models: modelsVisible, zoom: zoom, seed: seed)
         do {
             let count = try encode(command: command, color: descriptor, size: view.drawableSize, frame: frame)
@@ -181,7 +182,7 @@ final class ShadowLabRenderer: NSObject, MTKViewDelegate {
         let instances = ShadowLabMath.instances(seed: frame.seed, time: frame.time)
         let heroFrame = frame.heroFrame ?? ShadowLabMath.heroFrame(time: frame.time)
         var proxy = ShadowLabMesh()
-        for instance in instances { proxy.addProxy(instance, frame: heroFrame) }
+        for instance in instances { proxy.addProxy(instance, frame: heroFrame, mirrored: ShadowLabMath.heroMovingRight(time: frame.time)) }
         let proxyBuffer = try buffer(proxy.vertices)
         let shadowPass = MTLRenderPassDescriptor()
         shadowPass.depthAttachment.texture = shadowMap
@@ -226,6 +227,9 @@ final class ShadowLabRenderer: NSObject, MTKViewDelegate {
                 }
                 var mesh = ShadowLabMesh()
                 mesh.card(instance, rows: instance.asset == .tree ? 18 : 1, windPhase: 0.4)
+                if instance.asset == .hero && ShadowLabMath.heroMovingRight(time: frame.time) {
+                    for index in mesh.vertices.indices { mesh.vertices[index].uvWind.x = 1 - mesh.vertices[index].uvWind.x }
+                }
                 encoder.setVertexBuffer(try buffer(mesh.vertices), offset: 0, index: 0)
                 encoder.setFragmentTexture(textures[instance.asset == .hero ? "hero\(heroFrame)" : instance.asset.rawValue], index: 0)
                 encoder.drawPrimitives(type: .triangle, vertexStart: 0, vertexCount: mesh.vertices.count)
