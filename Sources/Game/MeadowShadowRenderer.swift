@@ -4,7 +4,7 @@ import simd
 
 /// The SpriteKit ground, image-alpha depth map and receiver share one Metal buffer.
 /// SpriteKit's interactive foreground stays above this surface; no GPU pixels cross the CPU.
-final class MeadowShadowRenderer {
+final class MeadowShadowRenderer: NSObject, MTKViewDelegate {
     private struct Draw {
         let buffer: MTLBuffer
         let count: Int
@@ -29,6 +29,8 @@ final class MeadowShadowRenderer {
     private let inFlight = DispatchSemaphore(value: 2)
     private(set) var casterCount = 0
     private(set) var submittedFrames = 0
+    private var pendingFrame: (world: LivingWorld, center: CGPoint, scale: CGFloat, time: TimeInterval, heroes: [MeadowHeroCaster])?
+    private var submissionError: Error?
 
     init(device: MTLDevice, world: LivingWorld) throws {
         self.device = device
@@ -66,6 +68,7 @@ final class MeadowShadowRenderer {
         groundScene.backgroundColor = .init(red: 0.31, green: 0.38, blue: 0.15, alpha: 1)
         groundScene.scaleMode = .resizeFill
         groundRenderer.scene = groundScene
+        super.init()
         // Group static instances by their original art; the depth pass needs one draw per asset.
         var groups: [String: ShadowLabMesh] = [:]
         for prop in world.casterProps {
@@ -183,6 +186,24 @@ final class MeadowShadowRenderer {
     }
 
     func render(in view: MTKView, world: LivingWorld, center: CGPoint, scale: CGFloat, time: TimeInterval, heroes: [MeadowHeroCaster]) throws {
+        pendingFrame = (world, center, scale, time, heroes)
+        submissionError = nil
+        view.delegate = self
+        // MTKView owns acquisition and release of each drawable. Always enter
+        // its draw lifecycle rather than repeatedly presenting a cached drawable.
+        view.draw()
+        if let error = submissionError { throw error }
+    }
+
+    func mtkView(_ view: MTKView, drawableSizeWillChange size: CGSize) {}
+
+    func draw(in view: MTKView) {
+        guard let frame = pendingFrame else { return }
+        do { try renderFrame(in: view, world: frame.world, center: frame.center, scale: frame.scale, time: frame.time, heroes: frame.heroes) }
+        catch { submissionError = error }
+    }
+
+    private func renderFrame(in view: MTKView, world: LivingWorld, center: CGPoint, scale: CGFloat, time: TimeInterval, heroes: [MeadowHeroCaster]) throws {
         guard inFlight.wait(timeout: .now()) == .success else { return }
         guard let pass = view.currentRenderPassDescriptor, let drawable = view.currentDrawable, let command = queue.makeCommandBuffer() else { inFlight.signal(); return }
         do {
