@@ -86,7 +86,7 @@ final class EnvironmentShaders {
                 color.rgb *= mix(1.0, mix(0.78, 1.10, nearSide), leg);
             }
             vec2 p = a_origin + vec2((v_tex_coord.x - 0.5) * a_extent.x, (0.5 - v_tex_coord.y) * a_extent.y);
-            if (u_groundBlend > 0.5) {
+            if (GROUND_BLEND_ENABLED) {
                 float breakup = noise21(p * 0.62 + vec2(a_phase, a_phase * 0.37));
                 float fadeStart = 0.025 + breakup * 0.10;
                 float groundFade = smoothstep(fadeStart, fadeStart + 0.10, v_tex_coord.y);
@@ -99,10 +99,10 @@ final class EnvironmentShaders {
             gl_FragColor = color;
         }
         """
-        vegetation = SKShader(source: vegetationSource,
-                              uniforms: [clock(), SKUniform(name: "u_groundBlend", float: 0)])
-        meadowPlants = SKShader(source: vegetationSource,
-                                uniforms: [clock(), SKUniform(name: "u_groundBlend", float: 1)])
+        let baseVegetationSource = vegetationSource.replacingOccurrences(of: "GROUND_BLEND_ENABLED", with: "false")
+        let meadowPlantSource = vegetationSource.replacingOccurrences(of: "GROUND_BLEND_ENABLED", with: "true")
+        vegetation = SKShader(source: baseVegetationSource, uniforms: [clock()])
+        meadowPlants = SKShader(source: meadowPlantSource, uniforms: [clock()])
         vegetation.attributes = attributes
         meadowPlants.attributes = attributes
 
