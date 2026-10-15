@@ -65,10 +65,10 @@ final class MeadowShadowRenderer: NSObject, MTKViewDelegate {
         receiver = buffer
         terrain = world.terrain
         groundRenderer = SKRenderer(device: device)
+        super.init()
         groundScene.backgroundColor = .init(red: 0.31, green: 0.38, blue: 0.15, alpha: 1)
         groundScene.scaleMode = .resizeFill
         groundRenderer.scene = groundScene
-        super.init()
         // Group static instances by their original art; the depth pass needs one draw per asset.
         var groups: [String: ShadowLabMesh] = [:]
         for prop in world.casterProps {
