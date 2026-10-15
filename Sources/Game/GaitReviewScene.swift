@@ -10,6 +10,8 @@ final class GaitReviewScene: SKScene {
     private var frames: [[[SKTexture]]] = []
     private var actors: [SKSpriteNode] = []
     private var shadows: [ProjectedShadow] = []
+    private var contacts: [SKSpriteNode] = []
+    private var labels: [SKLabelNode] = []
     private var feet: [CGPoint] = []
     private let heading = SKLabelNode(fontNamed: "HelveticaNeue-Medium")
     private var began: TimeInterval?
@@ -53,6 +55,7 @@ final class GaitReviewScene: SKScene {
             contact.shader = effects.contact
             contact.zPosition = 45
             content.addChild(contact)
+            contacts.append(contact)
             let label = SKLabelNode(fontNamed: "HelveticaNeue-Medium")
             label.text = "P\(index + 1)"
             label.position = CGPoint(x: foot.x, y: foot.y - 58 * scale)
@@ -60,6 +63,7 @@ final class GaitReviewScene: SKScene {
             label.fontColor = SKColor(red: 1, green: 0.96, blue: 0.80, alpha: 1)
             label.zPosition = 200
             content.addChild(label)
+            labels.append(label)
         }
         heading.position = CGPoint(x: size.width / 2, y: size.height * 0.78)
         heading.fontSize = 30 * scale
@@ -85,9 +89,15 @@ final class GaitReviewScene: SKScene {
         if began == nil { began = currentTime }
         let elapsed = currentTime - (began ?? currentTime)
         effects.update(time: elapsed)
-        let direction = Int(elapsed / 3) % 4
-        let frame = WalkCycle.frame(at: CGFloat(elapsed) * 42)
-        heading.text = "四方向步态 · " + ["正面", "向左", "背面", "向右"][direction]
+        let direction = [0, 4, 3, 7, 2, 6, 1, 5][Int(elapsed / 3) % 8]
+        let names = ["正面", "向左", "背面", "向右", "右下", "左下", "左上", "右上"]
+        let distance = CGFloat(elapsed) * 20
+        let frame = WalkCycle.frame(at: distance)
+        let angle = CGFloat(Int(elapsed / 3) % 8) * .pi / 4
+        let travel = CGFloat(elapsed.truncatingRemainder(dividingBy: 3) - 1.5) * 60
+        let offset = CGPoint(x: sin(angle) * travel, y: -cos(angle) * travel)
+        let lift = abs(sin(distance / 24 * 2 * .pi)) * 0.85 * 3
+        heading.text = "八方向步态 · " + names[direction]
         // UI verification can identify the fitted, visible review instead of
         // accepting a successfully launched app with all sprites off-screen.
         let viewport = CGRect(origin: .zero, size: size)
@@ -98,16 +108,20 @@ final class GaitReviewScene: SKScene {
                 && viewport.contains(content.convert(CGPoint(x: frame.maxX, y: frame.maxY), to: self))
         }
         if let view, visible, content.xScale > 0, size.width > 100, size.height > 100 {
-            let description = "步态验收：三位人物 · " + ["正面", "向左", "背面", "向右"][direction]
+            let description = "步态验收：三位人物 · " + names[direction]
             if view.accessibilityValue != description { view.accessibilityValue = description }
         }
         for index in actors.indices {
             let texture = frames[index][direction][frame]
             actors[index].texture = texture
+            let foot = CGPoint(x: feet[index].x + offset.x, y: feet[index].y + offset.y)
+            actors[index].position = CGPoint(x: foot.x, y: foot.y + lift)
+            contacts[index].position = foot
+            labels[index].position = CGPoint(x: foot.x, y: foot.y - 58)
             let gait = SIMD2(Float(direction), Float(frame))
-            effects.apply(effects.vegetation, to: actors[index], origin: CGPoint(x: feet[index].x, y: -feet[index].y - 50),
+            effects.apply(effects.vegetation, to: actors[index], origin: CGPoint(x: foot.x, y: -foot.y - 50),
                           extent: actors[index].size, gait: gait)
-            shadows[index].update(foot: feet[index], texture: texture, gait: gait, sun: effects.currentCast)
+            shadows[index].update(foot: actors[index].position, texture: texture, gait: gait, sun: effects.currentCast)
         }
     }
 }

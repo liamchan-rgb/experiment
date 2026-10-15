@@ -36,10 +36,11 @@ final class ProjectedShadow: SKSpriteNode {
     private let softness: Float
     private let foliage: Float
     private let phase: Float
+    private let wind: Float
 
     init(texture: SKTexture, body: CGSize, anchorY: CGFloat, ratio: CGFloat,
          softness: Float, opacity: Float, mirrored: Bool = false,
-         foliage: Bool = false, phase: Float = 0, shader: SKShader) {
+         foliage: Bool = false, phase: Float = 0, wind: Float = 0, shader: SKShader) {
         self.body = body
         self.anchorY = anchorY
         self.mirror = mirrored ? -1 : 1
@@ -48,6 +49,7 @@ final class ProjectedShadow: SKSpriteNode {
         self.ratio = ratio
         self.foliage = foliage ? 1 : 0
         self.phase = phase
+        self.wind = wind
         projection = ShadowProjection(body: body, anchorY: anchorY, ratio: ratio, softness: CGFloat(softness))
         super.init(texture: texture, color: .white, size: projection.size)
         self.shader = shader
@@ -70,6 +72,7 @@ final class ProjectedShadow: SKSpriteNode {
             "a_body": SKAttributeValue(vectorFloat4: SIMD4(Float(body.width), Float(body.height), Float(anchorY), mirror)),
             "a_cast": SKAttributeValue(vectorFloat4: SIMD4(Float(projection.cast.dx), Float(projection.cast.dy), softness, opacity)),
             "a_foliage": SKAttributeValue(float: foliage), "a_phase": SKAttributeValue(float: phase),
+            "a_wind": SKAttributeValue(float: wind),
             "a_gait": SKAttributeValue(vectorFloat2: gait)
         ]
     }

@@ -113,6 +113,10 @@ final class TrailTests: XCTestCase {
             XCTAssertEqual(UIImage(named: name)?.cgImage?.width, 1536)
             XCTAssertEqual(UIImage(named: name)?.cgImage?.height, 1536)
         }
+        for name in ["Hero1Diagonals", "Hero2Diagonals", "Hero3Diagonals"] {
+            XCTAssertEqual(UIImage(named: name)?.cgImage?.width, 1024)
+            XCTAssertEqual(UIImage(named: name)?.cgImage?.height, 1024)
+        }
         for name in ["OakA", "OakB", "WatchTower", "CampTent", "MeadowGround", "Banner"] {
             XCTAssertNotNil(UIImage(named: name))
         }
@@ -150,19 +154,27 @@ final class TrailTests: XCTestCase {
     func testDiagonalHeadingUsesANarrowStableHysteresisBand() {
         var walk = WalkCycle()
         walk.advance(from: .zero, to: CGPoint(x: 10, y: 0))
-        walk.advance(from: .zero, to: CGPoint(x: 10, y: 8))
+        walk.advance(from: .zero, to: CGPoint(x: 10, y: 4.5))
         XCTAssertEqual(walk.facing, 3)
-        walk.advance(from: .zero, to: CGPoint(x: 10, y: 10.9))
-        XCTAssertEqual(walk.facing, 0)
-        walk.advance(from: .zero, to: CGPoint(x: 10, y: 10))
-        XCTAssertEqual(walk.facing, 0)
+        walk.advance(from: .zero, to: CGPoint(x: 10, y: 6))
+        XCTAssertEqual(walk.facing, 4)
+        walk.advance(from: .zero, to: CGPoint(x: 10, y: 4))
+        XCTAssertEqual(walk.facing, 4)
+        walk.advance(from: .zero, to: CGPoint(x: 10, y: 3))
+        XCTAssertEqual(walk.facing, 3)
+        for (point, row) in [(CGPoint(x: 10, y: 10), 4), (CGPoint(x: -10, y: 10), 5),
+                             (CGPoint(x: -10, y: -10), 6), (CGPoint(x: 10, y: -10), 7)] {
+            var diagonal = WalkCycle()
+            diagonal.advance(from: .zero, to: point)
+            XCTAssertEqual(diagonal.facing, row)
+        }
     }
 
     func testWalkLiftPeaksBetweenAlternatingContactPoses() {
         var walk = WalkCycle()
         walk.advance(from: .zero, to: CGPoint(x: 6, y: 0))
         XCTAssertEqual(walk.frame, 2)
-        XCTAssertEqual(walk.lift, 1.35, accuracy: 0.001)
+        XCTAssertEqual(walk.lift, 0.85, accuracy: 0.001)
         walk.advance(from: CGPoint(x: 6, y: 0), to: CGPoint(x: 12, y: 0))
         XCTAssertEqual(walk.frame, 3)
         XCTAssertEqual(walk.lift, 0, accuracy: 0.001)
@@ -241,6 +253,44 @@ final class TrailTests: XCTestCase {
             XCTAssertLessThanOrEqual(widestOpaqueRow(right), widestOpaqueRow(left) + 2,
                                      "The hem must not stretch into the transparent frame gutters")
         }
+    }
+
+    func testDiagonalContactsAndPassingFramesRenderDistinctPoses() throws {
+        let effects = EnvironmentShaders()
+        let view = SKView(frame: CGRect(x: 0, y: 0, width: 192, height: 192))
+        for hero in 1...3 {
+            let frames = HeroFrames.load(hero)
+            XCTAssertEqual(frames.count, 8)
+            let node = SKSpriteNode(color: .white, size: CGSize(width: 192, height: 192))
+            for direction in 4...7 {
+                effects.apply(effects.vegetation, to: node, origin: .zero, extent: node.size, gait: SIMD2(Float(direction), 1))
+                node.texture = frames[direction][1]
+                let left = try renderedPixels(node, in: view)
+                node.texture = frames[direction][2]
+                let passing = try renderedPixels(node, in: view)
+                node.texture = frames[direction][3]
+                effects.apply(effects.vegetation, to: node, origin: .zero, extent: node.size, gait: SIMD2(Float(direction), 3))
+                let right = try renderedPixels(node, in: view)
+                XCTAssertGreaterThan(pixelDifference(left, right), 0.5)
+                XCTAssertGreaterThan(pixelDifference(left, passing), 0.5)
+            }
+        }
+    }
+
+    func testFullViewTreeWindChangesTheRenderedSilhouette() throws {
+        let effects = EnvironmentShaders()
+        let view = SKView(frame: CGRect(x: 0, y: 0, width: 96, height: 96))
+        let node = SKSpriteNode(texture: SKTexture(imageNamed: "OakA"), size: CGSize(width: 60, height: 80))
+        effects.apply(effects.vegetation, to: node, origin: .zero, extent: node.size, wind: 1, phase: 0.4)
+        effects.update(time: 0)
+        let first = try renderedPixels(node, in: view)
+        effects.update(time: 2)
+        let later = try renderedPixels(node, in: view)
+        let alphaChange = stride(from: 3, to: first.count, by: 4).reduce(0) {
+            $0 + abs(Int(first[$1]) - Int(later[$1]))
+        }
+        XCTAssertGreaterThan(Double(alphaChange) / Double(first.count / 4), 0.8,
+                             "Tree motion must deform its silhouette at the full-view size, independently of lighting")
     }
 
     func testProjectedShadowActuallyRendersTheCurrentLegPose() throws {

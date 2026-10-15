@@ -144,7 +144,7 @@ final class LivingWorld: SKNode {
             let ratio: CGFloat = tree || prop.asset == "WatchTower" ? 0.90 : 0.53
             let shadow = ProjectedShadow(texture: propTexture, body: node.size, anchorY: node.anchorPoint.y,
                                          ratio: ratio, softness: tree ? 2.6 : 1.5, opacity: tree ? 0.48 : 0.53,
-                                         foliage: tree, phase: Float(prop.x * 0.03 + prop.y * 0.017), shader: effects.shadow)
+                                         foliage: tree, phase: Float(prop.x * 0.03 + prop.y * 0.017), wind: prop.wind, shader: effects.shadow)
             shadow.update(foot: node.position)
             addChild(shadow)
             propShadows.append((shadow, node.position))
@@ -173,7 +173,7 @@ final class LivingWorld: SKNode {
 
     private func buildMeadowDetails() {
         var random = MeadowRandom(seed: definition.seed)
-        for index in 0..<145 {
+        for index in 0..<110 {
             let point = CGPoint(x: random.value(Self.bounds.minX, Self.bounds.maxX),
                                 y: random.value(Self.bounds.minY, Self.bounds.maxY))
             if network.project(point).error < 38 { continue }

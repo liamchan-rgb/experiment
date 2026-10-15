@@ -38,12 +38,18 @@ final class EnvironmentShaders {
                    mix(hash21(i + vec2(0.0, 1.0)), hash21(i + vec2(1.0)), f.x), f.y);
     }
     float meadowCloud(vec2 p, float t) {
-        return noise21((p - vec2(t * 7.0, t * 2.0)) * 0.0038);
+        return noise21((p - vec2(t * 14.0, t * 5.0)) * 0.0065);
     }
     float sunStrength(vec2 p, float t) {
         float cloud = smoothstep(0.25, 0.76, meadowCloud(p, t));
         float warmth = exp(-length(p - vec2(-100.0, -170.0)) * 0.0012);
-        return 0.77 + cloud * 0.25 + warmth * 0.08;
+        return 0.65 + cloud * 0.36 + warmth * 0.07;
+    }
+    float canopyBend(float height, float t, float phase, float wind) {
+        float root = smoothstep(0.06, 0.95, height);
+        float gust = 0.74 + 0.26 * sin(t * 0.47 + phase * 0.31);
+        float sway = sin(t * 1.55 + phase) + 0.28 * sin(t * 2.73 + phase * 1.7);
+        return sway * 0.052 * gust * wind * root * root;
     }
     float legExchangeWeight(vec2 uv, vec2 gait) {
         // Exchange the legs below the hem without flipping asymmetric equipment.
@@ -54,6 +60,14 @@ final class EnvironmentShaders {
             return lower;
         }
         return 0.0;
+    }
+    float diagonalLegOffset(vec2 uv, vec2 gait) {
+        if (gait.x < 3.5 || gait.y < 2.5) return 0.0;
+        // Counter-translate the two boots below the hem for the opposite
+        // contact. Keep their diagonal toe direction and all equipment intact.
+        float side = smoothstep(0.48, 0.52, uv.x) * 2.0 - 1.0;
+        float leftHeading = (gait.x > 4.5 && gait.x < 5.5) || gait.x > 6.5 ? 1.0 : -1.0;
+        return side * leftHeading * 0.035 * (1.0 - smoothstep(0.26, 0.31, uv.y));
     }
     """
 
@@ -70,15 +84,16 @@ final class EnvironmentShaders {
             if (a_wind > 1.5) {
                 uv.y += sin(uv.x * 10.0 - u_sceneTime * 3.8 + a_phase) * 0.04 * uv.x;
             } else {
-                uv.x += sin(u_sceneTime * 1.4 + a_phase + uv.y * 3.0) * 0.011 * a_wind * uv.y * uv.y;
+                uv.x += canopyBend(uv.y, u_sceneTime, a_phase, a_wind);
             }
+            uv.y += diagonalLegOffset(uv, a_gait);
             uv = clamp(uv, 0.001, 0.999);
             vec4 color = texture2D(u_texture, uv);
             float exchanged = legExchangeWeight(uv, a_gait);
             if (exchanged > 0.0) {
                 color = mix(color, texture2D(u_texture, vec2(1.0 - uv.x, uv.y)), exchanged);
             }
-            bool profile = (a_gait.x > 0.5 && a_gait.x < 1.5) || a_gait.x > 2.5;
+            bool profile = (a_gait.x > 0.5 && a_gait.x < 1.5) || (a_gait.x > 2.5 && a_gait.x < 3.5);
             if (profile && (a_gait.y == 1.0 || a_gait.y == 3.0)) {
                 float nearSide = a_gait.x < 2.0 ? 1.0 - smoothstep(0.46, 0.54, uv.x) : smoothstep(0.46, 0.54, uv.x);
                 if (a_gait.y > 2.0) nearSide = 1.0 - nearSide;
@@ -88,8 +103,8 @@ final class EnvironmentShaders {
             vec2 p = a_origin + vec2((v_tex_coord.x - 0.5) * a_extent.x, (0.5 - v_tex_coord.y) * a_extent.y);
             if (GROUND_BLEND_ENABLED) {
                 float breakup = noise21(p * 0.62 + vec2(a_phase, a_phase * 0.37));
-                float fadeStart = 0.035 + breakup * 0.11;
-                float groundFade = smoothstep(fadeStart, fadeStart + 0.17, v_tex_coord.y);
+                float fadeStart = 0.018 + breakup * 0.055;
+                float groundFade = smoothstep(fadeStart, fadeStart + 0.11, v_tex_coord.y);
                 color.rgb *= groundFade;
                 color.a *= groundFade;
             }
@@ -135,8 +150,9 @@ final class EnvironmentShaders {
             float height = -local.y / max(a_cast.y, 0.05);
             vec2 uv = vec2(0.5 + (local.x - height * a_cast.x) / (a_body.x * a_body.w), a_body.z + height / a_body.y);
             if (a_foliage > 0.5) {
-                uv.x += sin(u_sceneTime * 1.4 + a_phase + uv.y * 3.0) * 0.011 * uv.y * uv.y;
+                uv.x += canopyBend(uv.y, u_sceneTime, a_phase, a_wind);
             }
+            uv.y += diagonalLegOffset(uv, a_gait);
             float elevation = clamp(uv.y - a_body.z, 0.0, 1.0);
             float radius = mix(0.35, a_cast.z, elevation);
             vec2 blur = vec2(radius / a_body.x, radius / (a_body.y * max(a_cast.y, 0.05)));
@@ -171,7 +187,7 @@ final class EnvironmentShaders {
         shadow.attributes = [SKAttribute(name: "a_origin", type: .vectorFloat2), SKAttribute(name: "a_extent", type: .vectorFloat2),
                              SKAttribute(name: "a_body", type: .vectorFloat4), SKAttribute(name: "a_cast", type: .vectorFloat4),
                              SKAttribute(name: "a_foliage", type: .float), SKAttribute(name: "a_phase", type: .float),
-                             SKAttribute(name: "a_gait", type: .vectorFloat2)]
+                             SKAttribute(name: "a_gait", type: .vectorFloat2), SKAttribute(name: "a_wind", type: .float)]
         contact = SKShader(source: """
         void main() {
             float radius = length((v_tex_coord - vec2(0.5)) * 2.0);
@@ -222,12 +238,13 @@ final class EnvironmentShaders {
         void main() {
             vec2 p = vec2(-160.0, 940.0) + v_tex_coord * vec2(1600.0, -1160.0);
             vec2 cast = normalize(u_sunCast);
-            float axis = dot(p, vec2(cast.y, -cast.x)) * 0.0342 + sin(u_sceneTime * 0.14) * 10.0;
-            float rays = pow(max(0.0, sin(axis * 0.020)), 14.0);
-            rays += pow(max(0.0, sin(axis * 0.011 + 1.3)), 22.0) * 0.55;
-            float falloff = exp(-length(p - vec2(-130.0, -200.0)) * 0.0016);
-            float glow = exp(-length(p - vec2(-70.0, -100.0)) * 0.0035) * 0.18;
-            float alpha = (rays * 0.48 + glow) * falloff * (0.91 + 0.09 * sin(u_sceneTime * 0.38));
+            float axis = dot(p, vec2(cast.y, -cast.x)) - u_sceneTime * 18.0 + sin(u_sceneTime * 0.55) * 24.0;
+            float rays = pow(0.5 + 0.5 * sin(axis * 0.036), 6.0);
+            rays += pow(0.5 + 0.5 * sin(axis * 0.068 + 1.3), 12.0) * 0.35;
+            float falloff = exp(-length(p - vec2(-130.0, -200.0)) * 0.0009);
+            float glow = exp(-length(p - vec2(-70.0, -100.0)) * 0.0035) * 0.08;
+            float cloud = smoothstep(0.18, 0.78, meadowCloud(p, u_sceneTime));
+            float alpha = (rays * 0.32 + glow) * falloff * mix(0.45, 1.0, cloud);
             gl_FragColor = vec4(vec3(1.0, 0.84, 0.48) * alpha, alpha);
         }
         """, uniforms: [clock(), SKUniform(name: "u_sunCast",

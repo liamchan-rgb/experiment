@@ -1,7 +1,7 @@
 import XCTest
 
 final class JourneyUITests: XCTestCase {
-    func testFourDirectionReviewSurvivesInitialViewLayout() {
+    func testEightDirectionReviewSurvivesInitialViewLayout() {
         continueAfterFailure = false
         XCUIDevice.shared.orientation = .landscapeLeft
         let app = XCUIApplication()
@@ -12,7 +12,10 @@ final class JourneyUITests: XCTestCase {
         expectation(for: ready, evaluatedWith: map)
         waitForExpectations(timeout: 15)
         XCTAssertGreaterThan(map.frame.width, map.frame.height)
-        capture("06-four-direction-review")
+        capture("06-eight-direction-review")
+        expectation(for: NSPredicate(format: "value ENDSWITH %@", "右下"), evaluatedWith: map)
+        waitForExpectations(timeout: 28)
+        capture("07-diagonal-walking")
     }
 
     func testPlaybackResetZoomAndCapture() {

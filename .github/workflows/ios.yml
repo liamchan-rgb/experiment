@@ -23,12 +23,13 @@ concurrency:
 jobs:
   recover-review:
     name: Prepare compact review from an existing successful build
-    if: ${{ github.event_name == 'workflow_dispatch' && inputs.review_run != '' }}
+    needs: build
+    if: ${{ always() && ((github.event_name == 'workflow_dispatch' && inputs.review_run != '') || needs.build.result == 'success') }}
     runs-on: ubuntu-24.04
     timeout-minutes: 20
     env:
       GH_TOKEN: ${{ github.token }}
-      REVIEW_RUN: ${{ inputs.review_run }}
+      REVIEW_RUN: ${{ inputs.review_run || github.run_id }}
     steps:
       - name: Verify provenance and download the existing review
         run: |
@@ -37,7 +38,7 @@ jobs:
           mkdir -p compact
           gh run view "$REVIEW_RUN" --repo "$GITHUB_REPOSITORY" \
             --json databaseId,headSha,headBranch,conclusion,url > compact/SourceRun.json
-          python3 -c 'import json; assert json.load(open("compact/SourceRun.json"))["conclusion"] == "success"'
+          python3 -c 'import json, os; r=json.load(open("compact/SourceRun.json")); assert r["conclusion"] == "success" or str(r["databaseId"]) == os.environ["GITHUB_RUN_ID"]'
           gh run download "$REVIEW_RUN" --repo "$GITHUB_REPOSITORY" \
             --pattern "ios-visual-review-$REVIEW_RUN-*" --dir original
       - name: Compress recordings at their original pixel dimensions
@@ -87,7 +88,7 @@ jobs:
           PY
       - uses: actions/upload-artifact@v7
         with:
-          name: ios-compact-review-${{ inputs.review_run }}
+          name: ios-compact-review-${{ inputs.review_run || github.run_id }}
           path: compact/
           if-no-files-found: error
           retention-days: 30
@@ -212,7 +213,7 @@ jobs:
           python3 scripts/summarize-metrics.py build/visual-review/RuntimeMetrics.json \
             2>&1 | tee build/logs/runtime-metrics.log
 
-      - name: Record four-direction gait and a stationary atmosphere view
+      - name: Record eight-direction walking and the minimum-zoom wind and sunlight
         run: |
           set -euo pipefail
           ipad_udid='${{ steps.simulator.outputs.ipad_udid }}'
@@ -234,8 +235,20 @@ jobs:
             wait "$recorder_pid" || true
             trap - EXIT
           }
-          record_review iPad-FourDirectionGait 12 -gaitReview
-          record_review iPad-Atmosphere 12 -visualReview
+          record_review iPad-EightDirectionGait 26 -gaitReview
+          record_review iPad-MinimumZoomAtmosphere 12 -visualReview
+
+      - name: Upload original stills for immediate visual review
+        uses: actions/upload-artifact@v7
+        with:
+          name: ios-review-stills-${{ github.run_id }}
+          path: |
+            build/visual-review/*.png
+            build/visual-review/*.json
+            build/screenshots/**/*.png
+            build/ipad-screenshots/**/*.png
+          if-no-files-found: error
+          retention-days: 30
 
       - name: Archive for physical iPhone and iPad without signing
         run: |

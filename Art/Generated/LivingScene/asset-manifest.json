@@ -45,9 +45,9 @@
     "decodedBytes": 774448
   },
   "Shrub": {
-    "width": 501,
-    "height": 419,
-    "decodedBytes": 839676
+    "width": 592,
+    "height": 452,
+    "decodedBytes": 1070336
   },
   "Fence": {
     "width": 471,
@@ -55,9 +55,9 @@
     "decodedBytes": 555780
   },
   "Flowers": {
-    "width": 538,
-    "height": 355,
-    "decodedBytes": 763960
+    "width": 592,
+    "height": 570,
+    "decodedBytes": 1349760
   },
   "Banner": {
     "width": 400,
@@ -84,5 +84,41 @@
     "decodedBytes": 9437184,
     "source": "hero3-gait-v1.2.png",
     "runtimeRig": "Front/back right contact exchanges legs below the hem; profile contacts exchange near/far leg depth."
+  },
+  "Hero1Diagonals": {
+    "width": 1024,
+    "height": 1024,
+    "decodedBytes": 4194304,
+    "source": "hero1-diagonal-v1.3.png",
+    "rows": [
+      "southeast",
+      "southwest",
+      "northwest",
+      "northeast"
+    ]
+  },
+  "Hero2Diagonals": {
+    "width": 1024,
+    "height": 1024,
+    "decodedBytes": 4194304,
+    "source": "hero2-diagonal-v1.3.png",
+    "rows": [
+      "southeast",
+      "southwest",
+      "northwest",
+      "northeast"
+    ]
+  },
+  "Hero3Diagonals": {
+    "width": 1024,
+    "height": 1024,
+    "decodedBytes": 4194304,
+    "source": "hero3-diagonal-v1.3.png",
+    "rows": [
+      "southeast",
+      "southwest",
+      "northwest",
+      "northeast"
+    ]
   }
 }

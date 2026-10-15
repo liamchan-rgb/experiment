@@ -367,7 +367,7 @@ final class GameScene: SKScene {
             "textureBudgetMiB": world.definition.textureBudgetMiB,
             "independentProps": world.objectCount, "roads": world.network.edges.count,
             "projectedShadows": world.shadowCount + actorShadows.count,
-            "sunDirection": ["x": Double(MeadowSun.cast.dx), "y": Double(MeadowSun.cast.dy)],
+            "sunDirection": ["x": Double(world.effects.currentCast.dx), "y": Double(world.effects.currentCast.dy)],
             "environmentTime": environmentTime, "zoom": Double(zoom),
             "selected": simulation.selected, "isPlaying": simulation.isPlaying,
             "mode": simulation.mode == .patrol ? "patrol" : "destination",

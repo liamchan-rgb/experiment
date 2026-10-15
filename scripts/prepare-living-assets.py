@@ -59,11 +59,14 @@ for source_name, regions in [('terrain-atlas.png', terrain_regions), ('props-atl
     source = Image.open(RAW / source_name).convert('RGBA')
     assert source.size == (1536, 1024)
     for name, region in regions:
-        cell = source.crop(region)
+        override = RAW / f'{name.lower()}-v1.3.png'
+        cell = Image.open(override).convert('RGBA') if override.exists() else source.crop(region)
         bounds = cell.getchannel('A').point(lambda alpha: 255 if alpha > 48 else 0).getbbox()
         if bounds is None:
             raise ValueError('Empty object: ' + name)
         sprite = cell.crop(bounds)
+        if override.exists():
+            sprite.thumbnail((576, 576), Image.Resampling.NEAREST)
         # Keep native object resolution; a transparent gutter protects shader deformation edges.
         padded = Image.new('RGBA', (sprite.width + 16, sprite.height + 16))
         padded.alpha_composite(sprite, (8, 8))
@@ -90,6 +93,24 @@ for hero in range(1, 4):
     save_asset(f'Hero{hero}Directions', atlas)
     manifest[f'Hero{hero}Directions']['source'] = gait_source.name if gait_source.exists() else f'hero{hero}.png'
     manifest[f'Hero{hero}Directions']['runtimeRig'] = 'Front/back right contact exchanges legs below the hem; profile contacts exchange near/far leg depth.'
+
+for hero in range(1, 4):
+    source_path = RAW / f'hero{hero}-diagonal-v1.3.png'
+    source = Image.open(source_path).convert('RGBA')
+    cells = [main_figure(source.crop((column * source.width // 4, row * source.height // 4,
+                                    (column + 1) * source.width // 4, (row + 1) * source.height // 4)))
+             for row in range(4) for column in range(4)]
+    scale = 160 / max(cell.height for cell in cells)
+    atlas = Image.new('RGBA', (1024, 1024))
+    for index, cell in enumerate(cells):
+        width, height = round(cell.width * scale), round(cell.height * scale)
+        row, column = divmod(index, 4)
+        atlas.alpha_composite(cell.resize((width, height), Image.Resampling.NEAREST),
+                              (column * 256 + (256 - width) // 2, row * 256 + 224 - height))
+    name = f'Hero{hero}Diagonals'
+    save_asset(name, atlas)
+    manifest[name]['source'] = source_path.name
+    manifest[name]['rows'] = ['southeast', 'southwest', 'northwest', 'northeast']
 
 (ROOT / 'Art/Generated/LivingScene/asset-manifest.json').write_text(json.dumps(manifest, indent=2) + '\n')
 print('Prepared', len(manifest), 'independent assets; decoded texture budget:',
