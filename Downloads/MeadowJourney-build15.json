@@ -33,7 +33,7 @@
     "actualGroundScreenChecks": "Initial, zoom, and return from shadow lab checked on both devices; iPad return attachment inspected and terrain is visible.",
     "gaitContactReview": "Inspected actual SpriteKit-rendered contact/passing sheets for all three heroes; seven corrected headings, four phases each. Eight-heading source-frame tests and shared caster projection/sole-plane checks passed.",
     "shadowsAndRoadsArtReview": "User feedback pending; review limited to terrain visibility and gait contours.",
-    "publicDownloadBytesAndSha256": "pending final public download verification"
+    "publicDownloadBytesAndSha256": "matched final archive IPA"
   },
   "rendering": {
     "mainShadowSize": 2048,
