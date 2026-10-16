@@ -13,16 +13,16 @@ final class LivingWorld: SKNode {
     private(set) var shadowCount = 0
     private(set) var objectCount = 0
 
-    init(definition: SceneDefinition) {
+    init(definition: SceneDefinition, roadMask: CGImage? = nil, props: [SceneDefinition.Prop]? = nil, textures: [String: SKTexture] = [:]) {
         self.definition = definition
+        self.textures = textures
         network = TrailNetwork(roads: definition.roads)
         super.init()
         addChild(terrain)
         buildGround()
-        buildRoads()
-        for prop in definition.props { addProp(prop) }
-        buildMeadowDetails()
-        buildRoadsideGrass()
+        buildRoads(mask: roadMask)
+        let allProps = props ?? (definition.props + Self.meadowDetails(definition: definition, network: network) + Self.roadsideGrass(network: network))
+        for prop in allProps { addProp(prop) }
         addOverlay(shader: effects.backMist, depth: 95)
         addOverlay(shader: effects.sunlight, depth: 20000, additive: true)
         addOverlay(shader: effects.frontMist, depth: 21000)
@@ -49,8 +49,8 @@ final class LivingWorld: SKNode {
         terrain.addChild(node)
     }
 
-    private func buildRoads() {
-        let mask = MeadowRoadMask.make(network: network, bounds: Self.bounds)
+    private func buildRoads(mask prepared: CGImage?) {
+        let mask = prepared ?? MeadowRoadMask.make(network: network, bounds: Self.bounds)
         roadMask = mask
         let road = SKSpriteNode(texture: SKTexture(cgImage: mask), size: Self.bounds.size)
         road.position = Self.position(CGPoint(x: Self.bounds.midX, y: Self.bounds.midY))
@@ -106,7 +106,8 @@ final class LivingWorld: SKNode {
         }
     }
 
-    private func buildMeadowDetails() {
+    static func meadowDetails(definition: SceneDefinition, network: TrailNetwork) -> [SceneDefinition.Prop] {
+        var props: [SceneDefinition.Prop] = []
         var random = MeadowRandom(seed: definition.seed)
         for index in 0..<110 {
             let point = CGPoint(x: random.value(Self.bounds.minX, Self.bounds.maxX),
@@ -116,9 +117,10 @@ final class LivingWorld: SKNode {
             if definition.props.contains(where: { hypot($0.x - point.x, $0.y - point.y) < 23 }) { continue }
             let name = index % 9 == 0 ? "Shrub" : "Flowers"
             let width = name == "Shrub" ? random.value(23, 34) : random.value(12, 23)
-            addProp(SceneDefinition.Prop(asset: name, x: point.x, y: point.y, width: width,
+            props.append(SceneDefinition.Prop(asset: name, x: point.x, y: point.y, width: width,
                                          mirror: random.next() > 0.5, wind: 1.15))
         }
+        return props
     }
 
     private func addOverlay(shader: SKShader, depth: CGFloat, additive: Bool = false) {
@@ -130,7 +132,8 @@ final class LivingWorld: SKNode {
         addChild(node)
     }
 
-    private func buildRoadsideGrass() {
+    static func roadsideGrass(network: TrailNetwork) -> [SceneDefinition.Prop] {
+        var props: [SceneDefinition.Prop] = []
         var random = MeadowRandom(seed: 39281)
         for edge in network.edges {
             var distance: CGFloat = 12
@@ -142,12 +145,13 @@ final class LivingWorld: SKNode {
                 let length = max(0.1, (dx * dx + dy * dy).squareRoot())
                 let side: CGFloat = random.next() > 0.5 ? 1 : -1
                 let offset = edge.width / 2 + random.value(0, 3)
-                addProp(SceneDefinition.Prop(asset: "Flowers", x: point.x - dy / length * offset * side,
+                props.append(SceneDefinition.Prop(asset: "Flowers", x: point.x - dy / length * offset * side,
                                              y: point.y + dx / length * offset * side,
                                              width: random.value(7, 14), mirror: random.next() > 0.5, wind: 1.2))
                 distance += random.value(22, 38)
             }
         }
+        return props
     }
 
     private func buildMotes() {

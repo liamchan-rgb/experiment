@@ -5,6 +5,16 @@ import MetalKit
 final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
     private let gameView = SKView()
     private let scene = GameScene()
+    private let loadingView = MeadowLoadingView()
+    private var loadStarted = false
+    private var ready = false
+    private var groundBecameReady = false
+    private var foregroundBecameReady = false
+    private var loadingTimer: Timer?
+    private var loadingBegan: TimeInterval = 0
+    private var lastHeartbeat: TimeInterval = 0
+    private var longestHeartbeatGap: TimeInterval = 0
+    private var loadingHeartbeats = 0
     private var groundView: MTKView?
     private var groundRenderer: MeadowShadowRenderer?
     private let titleButton = ParchmentButton(symbol: .title)
@@ -32,6 +42,7 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
         gameView.backgroundColor = .clear
         view.addSubview(gameView)
         gameView.ignoresSiblingOrder = true
+        scene.onForegroundReady = { [weak self] in self?.foregroundBecameReady = true; self?.finishLoading() }
         if !ProcessInfo.processInfo.arguments.contains("-gaitReview"), let device = MTLCreateSystemDefaultDevice() {
             let ground = MTKView(frame: view.bounds, device: device)
             ground.colorPixelFormat = .bgra8Unorm
@@ -44,22 +55,18 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
             groundView = ground
             scene.onWorldReady = { [weak self] world in
                 guard let self else { return }
-                do {
-                    self.groundRenderer = try MeadowShadowRenderer(device: device, world: world)
-                    self.scene.shadowReady = true
-                    self.gameView.isOpaque = false
-                    self.gameView.allowsTransparency = true
-                    self.gameView.backgroundColor = .clear
+                if self.groundRenderer != nil {
+                    world.terrain.removeFromParent()
                     self.scene.backgroundColor = .clear
-                } catch { self.metricsLabel.text = "投影初始化失败：\(error.localizedDescription)"; self.metricsLabel.isHidden = false }
+                }
             }
-            scene.onRenderGround = { [weak self] world, center, scale, time, heroes in
+            scene.onRenderGround = { [weak self] world, camera, time, heroes in
                 guard let self, let surface = self.groundView else { return }
                 do {
-                    try self.groundRenderer?.render(in: surface, world: world, center: center, scale: scale, time: time, heroes: heroes)
+                    try self.groundRenderer?.render(in: surface, world: world, camera: camera, time: time, heroes: heroes)
                     self.scene.shadowFrames = self.groundRenderer?.submittedFrames ?? 0
                 }
-                catch { self.metricsLabel.text = "投影运行失败：\(error.localizedDescription)"; self.metricsLabel.isHidden = false }
+                catch { DispatchQueue.main.async { self.failRendering(error) } }
             }
         }
         gameView.preferredFramesPerSecond = 60
@@ -106,25 +113,32 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
         zoomButton.accessibilityValue = "100%"
         zoomButton.addTarget(self, action: #selector(zoom), for: .touchUpInside)
         scene.onPlaybackChanged = { [weak self] playing in
-            self?.playButton.isPlaying = playing
-            self?.playButton.accessibilityLabel = playing ? "暂停行旅" : "开始行旅"
+            DispatchQueue.main.async {
+                self?.playButton.isPlaying = playing
+                self?.playButton.accessibilityLabel = playing ? "暂停行旅" : "开始行旅"
+            }
         }
         scene.onSelectionChanged = { [weak self] name in
-            self?.gameView.accessibilityLabel = "林间地图，已选择 \(name)"
+            DispatchQueue.main.async { self?.gameView.accessibilityLabel = "林间地图，已选择 \(name)" }
         }
         scene.onDiagnostics = { [weak self] text in
             guard let self else { return }
-            self.gameView.accessibilityValue = self.reviewMode ? text : (self.scene.isRunning ? "旅人移动中" : "旅人暂停")
-            self.zoomButton.accessibilityValue = "\(Int(round(self.scene.zoom * 100)))%"
+            let playing = self.scene.isRunning, zoom = self.scene.zoom
+            DispatchQueue.main.async {
+                self.gameView.accessibilityValue = self.reviewMode ? text : (playing ? "旅人移动中" : "旅人暂停")
+                self.zoomButton.accessibilityValue = "\(Int(round(zoom * 100)))%"
+            }
         }
-        scene.onMetrics = { [weak self] text in self?.metricsLabel.text = text }
+        scene.onMetrics = { [weak self] text in DispatchQueue.main.async { self?.metricsLabel.text = text } }
         scene.onDiscovery = { [weak self] text in
+            DispatchQueue.main.async {
             guard let self else { return }
             self.discoveryLabel.text = text
             self.discoveryLabel.layer.removeAllAnimations()
             self.discoveryLabel.alpha = 1
             UIView.animate(withDuration: 0.6, delay: 2.2, options: [.beginFromCurrentState]) {
                 self.discoveryLabel.alpha = 0
+            }
             }
         }
         if ProcessInfo.processInfo.arguments.contains("-gaitReview") {
@@ -134,7 +148,10 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
             for button in [titleButton, playButton, resetButton, zoomButton] { button.isHidden = true }
             shadowLabButton.isHidden = true
         } else {
-            gameView.presentScene(scene)
+            loadingView.frame = view.bounds
+            view.addSubview(loadingView)
+            loadingView.onRetry = { [weak self] in self?.view.window?.rootViewController = GameViewController() }
+            setMapEnabled(false)
         }
         titleButton.addGestureRecognizer(UILongPressGestureRecognizer(target: self, action: #selector(toggleMetrics(_:))))
         let pinch = UIPinchGestureRecognizer(target: self, action: #selector(pinchMap(_:)))
@@ -151,6 +168,7 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
         super.viewDidLayoutSubviews()
         gameView.frame = view.bounds
         groundView?.frame = view.bounds
+        loadingView.frame = view.bounds
         let inset = view.safeAreaInsets
         let top = max(inset.top, 6)
         let isPad = traitCollection.userInterfaceIdiom == .pad
@@ -164,6 +182,70 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
         playButton.frame = resetButton.frame.offsetBy(dx: -spacing, dy: 0)
         metricsLabel.frame = CGRect(x: right - 225, y: view.bounds.height - max(inset.bottom, 10) - 50, width: 225, height: 48)
         discoveryLabel.frame = CGRect(x: view.bounds.midX - 110, y: view.bounds.height - max(inset.bottom, 10) - 44, width: 220, height: 34)
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if !ProcessInfo.processInfo.arguments.contains("-gaitReview") { beginLoading() }
+    }
+
+    private func beginLoading() {
+        guard !loadStarted else { return }
+        loadStarted = true
+        loadingBegan = ProcessInfo.processInfo.systemUptime
+        lastHeartbeat = loadingBegan
+        longestHeartbeatGap = 0; loadingHeartbeats = 0
+        loadingTimer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { [weak self] _ in
+            guard let self else { return }
+            let now = ProcessInfo.processInfo.systemUptime
+            self.longestHeartbeatGap = max(self.longestHeartbeatGap, now - self.lastHeartbeat)
+            self.lastHeartbeat = now; self.loadingHeartbeats += 1
+        }
+        MeadowLoader.load(device: groundView?.device, progress: { [weak self] value, text in
+            self?.loadingView.update(value, text: text)
+        }) { [weak self] result in
+            guard let self else { return }
+            switch result {
+            case .success(let prepared):
+                self.groundRenderer = prepared.renderer
+                self.groundRenderer?.alignmentReview = ProcessInfo.processInfo.arguments.contains("-alignmentReview")
+                self.groundRenderer?.onFirstFrameCompleted = { [weak self] in self?.groundBecameReady = true; self?.finishLoading() }
+                self.groundRenderer?.onFrameFailed = { [weak self] error in self?.failRendering(error) }
+                self.scene.size = self.gameView.bounds.size
+                self.scene.prepare(prepared)
+                self.loadingView.update(0.98, text: "显示林地")
+                self.gameView.presentScene(self.scene)
+                if prepared.renderer == nil { self.finishLoading() }
+            case .failure(let error): self.loadingTimer?.invalidate(); self.loadingView.failed(error)
+            }
+        }
+    }
+
+    private func finishLoading() {
+        guard !ready, foregroundBecameReady, groundRenderer == nil || groundBecameReady else { return }
+        ready = true
+        let now = ProcessInfo.processInfo.systemUptime
+        loadingTimer?.invalidate(); loadingTimer = nil
+        scene.startupMetrics = ["seconds": now - loadingBegan,
+            "mainThreadLongestGap": max(longestHeartbeatGap, now - lastHeartbeat), "heartbeats": Double(loadingHeartbeats)]
+        scene.shadowReady = groundRenderer != nil
+        loadingView.update(1, text: "准备就绪")
+        loadingView.isHidden = true
+        setMapEnabled(true)
+    }
+
+    private func setMapEnabled(_ enabled: Bool) {
+        gameView.isUserInteractionEnabled = enabled
+        for button in [titleButton, playButton, resetButton, zoomButton] { button.isEnabled = enabled }
+        shadowLabButton.isEnabled = enabled
+    }
+
+    private func failRendering(_ error: Error) {
+        loadingTimer?.invalidate(); loadingTimer = nil
+        gameView.isPaused = true
+        setMapEnabled(false)
+        loadingView.isHidden = false
+        loadingView.failed(error)
     }
 
     @objc private func togglePlayback() { scene.togglePlayback() }

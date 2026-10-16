@@ -138,6 +138,15 @@ struct ShadowLabMesh {
     var phase: Float = 0
     var color = SIMD4<Float>(0.85, 0.66, 0.29, 0.55)
 
+    mutating func meadowCaster(_ instance: ShadowLabInstance, mirrored: Bool = false, wind: Float, phase: Float) {
+        let start = vertices.count
+        imageCaster(instance, mirrored: mirrored)
+        for index in start..<vertices.count {
+            vertices[index].uvWind.z = wind
+            vertices[index].uvWind.w = phase
+        }
+    }
+
     /// A relief surface derived from image coordinates: changing ground-depth Y
     /// solves height Z to preserve the artwork's projection in the fixed camera.
     /// Fine silhouette detail comes from alpha testing, not extra sphere geometry.

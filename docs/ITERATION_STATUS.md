@@ -155,3 +155,13 @@ build 14（1.5.1）改为两个视图分别由显示时钟调度：SpriteKit 只
 最终源码 `ee5a2513023efbab78e48a6aef193b1aba648d0d` 的 [构建 38842001680](https://github.com/liamchan-rgb/experiment/actions/runs/38842001680) 已通过 Swift／Metal 编译、设备 Release 归档、15 项原生检查，以及 iPhone／iPad 共 2 项实际屏幕与交互检查（17 项，0 失败）。人工核对 iPad 实际返回截图，确认地面恢复；三位人物各七个待修朝向的接触／经过帧已自行对照，图见 [P1](../Media/Build15-Gait/Hero1-contacts.png)、[P2](../Media/Build15-Gait/Hero2-contacts.png)、[P3](../Media/Build15-Gait/Hero3-contacts.png)。用户仍负责阴影／道路的美术观感与实机步态反馈。
 
 交付 [MeadowJourney-b15.ipa](../Downloads/MeadowJourney-b15.ipa)，1.5.2 build 15，17,310,714 字节；CRC、arm64、iPhoneOS、双设备支持、Metal 资源、可执行权限和经典 ZIP_STORED 格式已校验。[构建来源与 SHA-256](../Downloads/MeadowJourney-build15.json)一并保存。
+
+## 2026-10-16：放大阴影错位与启动卡顿，build 16
+
+用户反馈 build 15 在放大后阴影明显脱离物件，刚启动时画面和按键长时间无响应；人物动画仍有问题，按用户要求推迟处理。
+
+相机改为每帧从 SpriteKit 的真实 world→scene→view 变换采样，Metal 直接使用同一视口快照，不再独立重建缩放与中心。旧公式在理想统一缩放条件下代数等价，尚不把某个漏乘系数当成已证实根因。新增实际屏幕校准：SpriteKit 红点和 Metal 地面青色环在 100%、125%、150%、175%、双指缩放上限及复位后比较中心位置；同时检查实际设备视口与平移投影。
+
+启动发现明确热点：逐个物件从字典取出值类型网格并追加，会反复复制累计顶点。改为原地分组构建；道路遮罩、资源准备、网格、Metal 纹理上传与 SpriteKit 光效预热移到后台。加载页显示真实阶段进度，前景首帧和地面 GPU 完成后再开放操作；异步 GPU 失败提供可见错误和重试。加载期间测量主线程心跳间隔。人物投影预先上传完整图集，切帧只改 UV，避免运行时裁切和上传；人物动画本身不在本轮重做，仅去掉静止时反复提交的恒等变形。
+
+构建与最终校验结果将在验证完成后补记。

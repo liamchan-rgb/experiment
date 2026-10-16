@@ -89,7 +89,8 @@ fragment float4 labArtworkFragment(LabRaster in [[stage_in]], texture2d<float> a
 
 // Main map shares SpriteKit's UV wind and ground fade with its depth silhouettes.
 fragment void meadowCutoutShadowFragment(LabRaster in [[stage_in]], texture2d<float> art [[texture(0)]],
-                                         constant LabUniforms &u [[buffer(1)]], constant float4 &settings [[buffer(2)]]) {
+                                         constant LabUniforms &u [[buffer(1)]], constant float4 &settings [[buffer(2)]],
+                                         constant float4 &atlasRect [[buffer(3)]]) {
     constexpr sampler pixels(coord::normalized, address::clamp_to_edge, filter::nearest);
     float2 uv = in.uv;
     float height = 1 - uv.y;
@@ -98,7 +99,7 @@ fragment void meadowCutoutShadowFragment(LabRaster in [[stage_in]], texture2d<fl
     float sway = sin(u.sunTime.w * 1.55 + in.wind.y) + 0.28 * sin(u.sunTime.w * 2.73 + in.wind.y * 1.7);
     if (in.wind.x > 1.5) uv.y -= sin(uv.x * 10 - u.sunTime.w * 3.8 + in.wind.y) * 0.04 * uv.x;
     else uv.x += sway * 0.052 * gust * in.wind.x * root * root;
-    float4 color = art.sample(pixels, clamp(uv, 0.001, 0.999));
+    float4 color = art.sample(pixels, atlasRect.xy + clamp(uv, 0.001, 0.999) * atlasRect.zw);
     if (settings.x >= 5.5 && settings.x < 7.5) color.a *= smoothstep(0.035, 0.16, height);
     if (!labCasterVisible(in, color, settings)) discard_fragment();
 }
@@ -153,5 +154,7 @@ fragment float4 meadowGroundFragment(LabRaster in [[stage_in]], constant LabUnif
     float light = 0.65 + cloud * 0.36 + exp(-length(p - float2(-100, -170)) * 0.0012) * 0.07;
     float3 base = mix(grass, soil, roadAlpha) * light;
     float visibility = labVisibility(in.world, u, shadowMap);
+    float marker = min(distance(p, float2(540, 300)), min(distance(p, float2(740, 300)), distance(p, float2(640, 440))));
+    if (settings.y > 0.5 && marker < 8) return float4(0, 1, 1, 1);
     return float4(base * mix(float3(0.38, 0.44, 0.43), float3(1), visibility), 1);
 }

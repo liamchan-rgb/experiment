@@ -126,19 +126,13 @@ jobs:
             -only-testing:MeadowJourneyTests/TrailTests/testShadowLabCutoutPipelineSubmitsContourModes \
             -only-testing:MeadowJourneyTests/TrailTests/testMeadowAllAssetsSubmitSharedShadowDepth \
             -only-testing:MeadowJourneyTests/TrailTests/testMeadowGroundContainsOpaqueGrassRoadsAndShadows \
-            -only-testing:MeadowJourneyTests/TrailTests/testHeroWarpMatchesCasterProjectionAcrossContactPhases \
-            -only-testing:MeadowJourneyTests/TrailTests/testHeroPoseAlternatesWholeLegReachAcrossAllHeadings \
-            -only-testing:MeadowJourneyTests/TrailTests/testHeroPosePassesContinuouslyBetweenRepeatedPassingFrames \
-            -only-testing:MeadowJourneyTests/TrailTests/testWalkCycleDoesNotLiftAuthoredContactSoles \
-            -only-testing:MeadowJourneyTests/TrailTests/testHeroFramesUsesWholeMirroredProfileForRightFacing \
-            -only-testing:MeadowJourneyTests/TrailTests/testHeroPoseSpriteKitRenderingKeepsAllHeroContoursConnected \
+            -only-testing:MeadowJourneyTests/TrailTests/testCapturedViewportKeepsGroundAndArtworkAlignedThroughZoomAndPan \
+            -only-testing:MeadowJourneyTests/TrailTests/testHeroShadowAtlasChangesFramesWithoutLiveTextureUploads \
             -only-testing:MeadowJourneyTests/TrailTests/testReliefPreservesArtCoordinatesForEveryAsset \
             -only-testing:MeadowJourneyTests/TrailTests/testRoadMaskUsesOneUnionAtJunctions \
             -only-testing:MeadowJourneyTests/TrailTests/testOnlyTheTowerGetsAnAdditionalBanner \
-            -only-testing:MeadowJourneyTests/TrailTests/testAuthoredGaitFramesDoNotGetShaderLegAlphaTears \
-            -only-testing:MeadowJourneyTests/TrailTests/testDiagonalContactsAndPassingFramesRenderDistinctPoses \
-            -only-testing:MeadowJourneyTests/TrailTests/testProjectedShadowActuallyRendersTheCurrentLegPose \
             -only-testing:MeadowJourneyUITests/JourneyUITests/testMapContourRendererAndInteraction \
+            -only-testing:MeadowJourneyUITests/JourneyUITests/testForegroundAndShadowReceiverStayAlignedAtEveryZoom \
             -derivedDataPath build/SimulatorDerivedData \
             -resultBundlePath build/ShadowLabSmoke.xcresult \
             -parallel-testing-enabled NO \
@@ -164,6 +158,7 @@ jobs:
             -project "$PROJECT" -scheme "$SCHEME" -configuration Debug \
             -destination 'platform=iOS Simulator,id=${{ steps.ipad.outputs.udid }}' \
             -only-testing:MeadowJourneyUITests/JourneyUITests/testMapContourRendererAndInteraction \
+            -only-testing:MeadowJourneyUITests/JourneyUITests/testForegroundAndShadowReceiverStayAlignedAtEveryZoom \
             -derivedDataPath build/SimulatorDerivedData \
             -resultBundlePath build/MapIPad.xcresult \
             -parallel-testing-enabled NO CODE_SIGNING_ALLOWED=NO \

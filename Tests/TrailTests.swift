@@ -7,6 +7,43 @@ import MetalKit
 final class TrailTests: XCTestCase {
     private let trail = Trail(points: [CGPoint(x: 0, y: 0), CGPoint(x: 30, y: 0), CGPoint(x: 30, y: 40)])
 
+    func testCapturedViewportKeepsGroundAndArtworkAlignedThroughZoomAndPan() {
+        var maximumError: CGFloat = 0
+        for size in [CGSize(width: 1190, height: 892), CGSize(width: 844, height: 390)] {
+            let view = SKView(frame: CGRect(origin: .zero, size: size))
+            let scene = SKScene(size: size); scene.scaleMode = .resizeFill
+            let world = SKNode(); scene.addChild(world); view.presentScene(scene)
+            for zoom in [CGFloat(1), 1.25, 1.5, 1.8, 1] {
+                let scale = min(size.width / 1280, size.height / 720) * zoom
+                world.setScale(scale)
+                world.position = CGPoint(x: size.width / 2 - 700 * scale, y: size.height / 2 + 430 * scale)
+                let camera = MeadowViewport(world: world, scene: scene, view: view)
+                for point in [CGPoint.zero, CGPoint(x: 640, y: 360), CGPoint(x: 500, y: 405), CGPoint(x: 1300, y: 800)] {
+                    let root = MeadowShadowRenderer.root(point)
+                    let clip = camera.matrix * SIMD4(root, 1)
+                    let metal = CGPoint(x: CGFloat(clip.x + 1) * size.width / 2, y: CGFloat(1 - clip.y) * size.height / 2)
+                    let artwork = scene.convertPoint(toView: world.convert(LivingWorld.position(point), to: scene))
+                    maximumError = max(maximumError, hypot(metal.x - artwork.x, metal.y - artwork.y))
+                }
+            }
+        }
+        XCTAssertLessThan(maximumError, 0.25)
+    }
+
+    func testHeroShadowAtlasChangesFramesWithoutLiveTextureUploads() throws {
+        let world = LivingWorld(definition: .load(), props: [])
+        let renderer = try MeadowShadowRenderer(device: XCTUnwrap(MTLCreateSystemDefaultDevice()), world: world)
+        let uploads = renderer.textureUploadCount
+        let foot = CGPoint(x: 640, y: 360)
+        let a = try renderer.groundSnapshot(world: world, heroes: [MeadowHeroCaster(index: 0, foot: foot, facing: 1, frame: 1)])
+        let b = try renderer.groundSnapshot(world: world, heroes: [MeadowHeroCaster(index: 0, foot: foot, facing: 1, frame: 3)])
+        XCTAssertGreaterThan(pixelDifference(a.bgra, b.bgra), 0.0001)
+        for facing in 0..<8 {
+            try renderer.validateSubmission(world: world, heroes: [MeadowHeroCaster(index: 2, foot: foot, facing: facing, frame: facing % 4)])
+        }
+        XCTAssertEqual(renderer.textureUploadCount, uploads, "Walking must not decode or upload textures on a live frame")
+    }
+
     func testMeadowGroundContainsOpaqueGrassRoadsAndShadows() throws {
         let world = LivingWorld(definition: .load())
         let renderer = try MeadowShadowRenderer(device: XCTUnwrap(MTLCreateSystemDefaultDevice()), world: world)

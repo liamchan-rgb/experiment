@@ -3,12 +3,15 @@ import UIKit
 /// Union of distances to every road segment, in world pixels. Junctions share
 /// one mask/material, so overlapping paths never create a seam or dark stripe.
 enum MeadowRoadMask {
-    static func make(network: TrailNetwork, bounds: CGRect) -> CGImage {
+    static func make(network: TrailNetwork, bounds: CGRect, progress: ((Double) -> Void)? = nil) -> CGImage {
         let width = Int(bounds.width), height = Int(bounds.height)
         var rgba = [UInt8](repeating: 0, count: width * height * 4)
+        let segments = network.edges.reduce(0) { $0 + max(0, $1.trail.points.count - 1) }
+        var completed = 0
         for edge in network.edges {
             let radius = edge.width * 0.5 + 9
             for (a, b) in zip(edge.trail.points, edge.trail.points.dropFirst()) {
+                defer { completed += 1; progress?(Double(completed) / Double(max(1, segments))) }
                 let dx = b.x - a.x, dy = b.y - a.y
                 let length2 = dx * dx + dy * dy
                 guard length2 > 0.001 else { continue }

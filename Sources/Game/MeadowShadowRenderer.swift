@@ -10,6 +10,7 @@ final class MeadowShadowRenderer {
         let count: Int
         let texture: MTLTexture
         let kind: Float
+        var uvRect = SIMD4<Float>(0, 0, 1, 1)
     }
     static let units: Float = 32
     let device: MTLDevice
@@ -22,17 +23,24 @@ final class MeadowShadowRenderer {
     private let receiver: MTLBuffer
     private var staticDraws: [Draw] = []
     private var textures: [String: MTLTexture] = [:]
-    private var atlases: [String: CGImage] = [:]
+    var alignmentReview = false
+    var onFirstFrameCompleted: (() -> Void)?
+    var onFrameFailed: ((Error) -> Void)?
     private let inFlight = DispatchSemaphore(value: 2)
     private(set) var casterCount = 0
     private(set) var submittedFrames = 0
+    private(set) var textureUploadCount = 0
     private var lastRenderTime: TimeInterval = -.infinity
-    private var lastCenter = CGPoint.zero
-    private var lastScale: CGFloat = 0
-    private var lastViewport = CGSize.zero
+    private var lastCamera: MeadowViewport?
     private var lastPoses: [Int] = []
 
-    init(device: MTLDevice, world: LivingWorld) throws {
+    convenience init(device: MTLDevice, world: LivingWorld) throws {
+        try self.init(device: device, props: world.casterProps, roadMask: world.roadMask)
+        world.terrain.removeFromParent()
+    }
+
+    init(device: MTLDevice, props: [SceneDefinition.Prop], roadMask: CGImage,
+         images: [String: CGImage] = [:], progress: ((Double) -> Void)? = nil) throws {
         self.device = device
         guard let queue = device.makeCommandQueue(), let library = device.makeDefaultLibrary() else { throw ShadowLabError.setup("地图 Metal 初始化失败") }
         self.queue = queue
@@ -65,42 +73,51 @@ final class MeadowShadowRenderer {
         receiver = buffer
         // Group static instances by their original art; the depth pass needs one draw per asset.
         var groups: [String: ShadowLabMesh] = [:]
-        for prop in world.casterProps {
-            guard let asset = ShadowLabAsset(rawValue: prop.asset), let image = UIImage(named: prop.asset)?.cgImage else { throw ShadowLabError.setup("未配置投影素材：\(prop.asset)") }
-            var mesh = groups[prop.asset] ?? ShadowLabMesh()
+        var art = images
+        func assetImage(_ name: String) -> CGImage? {
+            if let cached = art[name] { return cached }
+            let loaded = UIImage(named: name)?.cgImage; art[name] = loaded; return loaded
+        }
+        for (index, prop) in props.enumerated() {
+            guard let asset = ShadowLabAsset(rawValue: prop.asset), let image = assetImage(prop.asset) else { throw ShadowLabError.setup("未配置投影素材：\(prop.asset)") }
             let instance = ShadowLabInstance(asset: asset, root: Self.root(CGPoint(x: prop.x, y: prop.y)), width: Float(prop.width) / Self.units,
                                              aspect: Float(image.height) / Float(image.width), anchor: SIMD2(0.5, asset.anchorY))
-            let start = mesh.vertices.count
-            mesh.imageCaster(instance, mirrored: prop.mirror && asset == .flowers)
-            for i in start..<mesh.vertices.count {
-                mesh.vertices[i].uvWind.z = prop.wind
-                mesh.vertices[i].uvWind.w = Float(prop.x * 0.03 + prop.y * 0.017)
-            }
-            groups[prop.asset] = mesh
+            // Mutate the grouped value in place: extracting a mesh from the
+            // dictionary then appending copied all preceding vertices per prop.
+            groups[prop.asset, default: ShadowLabMesh()].meadowCaster(instance,
+                mirrored: prop.mirror && asset == .flowers, wind: prop.wind, phase: Float(prop.x * 0.03 + prop.y * 0.017))
+            progress?(0.55 * Double(index + 1) / Double(max(1, props.count)))
             casterCount += 1
         }
         // The pole and cloth also cast through their own transparent artwork.
-        for prop in world.casterProps where prop.asset == "WatchTower" {
-            guard let image = UIImage(named: "Banner")?.cgImage, let tower = UIImage(named: "WatchTower")?.cgImage else { throw ShadowLabError.setup("旗帜投影素材缺失") }
+        for prop in props where prop.asset == "WatchTower" {
+            guard let image = assetImage("Banner"), let tower = assetImage("WatchTower") else { throw ShadowLabError.setup("旗帜投影素材缺失") }
             let height = Float(prop.width) * Float(tower.height) / Float(tower.width)
             let root = Self.root(CGPoint(x: prop.x, y: prop.y)) + SIMD3<Float>(0, 0, height * (Float(LivingWorld.towerBannerRoofAnchorY) - ShadowLabAsset.tower.anchorY) / Self.units / ShadowLabMath.cameraUp.z)
             let width = min(34, max(22, Float(prop.width) * 0.40)) / Self.units
             let instance = ShadowLabInstance(asset: .banner, root: root, width: width, aspect: Float(image.height) / Float(image.width), anchor: SIMD2(0.035, 0.04))
-            var mesh = groups["Banner"] ?? ShadowLabMesh()
-            let start = mesh.vertices.count; mesh.imageCaster(instance)
-            for i in start..<mesh.vertices.count { mesh.vertices[i].uvWind.z = 2; mesh.vertices[i].uvWind.w = Float(prop.x * 0.03) }
-            groups["Banner"] = mesh; casterCount += 1
+            groups["Banner", default: ShadowLabMesh()].meadowCaster(instance, wind: 2, phase: Float(prop.x * 0.03))
+            casterCount += 1
         }
-        for (name, mesh) in groups {
-            let image = UIImage(named: name)!.cgImage!
-            let texture = try upload(image)
+        for (index, group) in groups.sorted(by: { $0.key < $1.key }).enumerated() {
+            let (name, mesh) = group
+            let texture = try upload(assetImage(name)!)
             textures[name] = texture
             staticDraws.append(try draw(mesh, texture: texture, kind: ShadowLabAsset(rawValue: name)!.casterKind))
+            progress?(0.55 + 0.25 * Double(index + 1) / Double(max(1, groups.count)))
         }
-        guard let grass = UIImage(named: "MeadowGround")?.cgImage else { throw ShadowLabError.setup("地表素材缺失") }
+        // Upload each hero atlas once during loading. Changing a walk frame
+        // only changes UV bounds; it never decodes/crops/uploads on a live frame.
+        for hero in 1...3 { for suffix in ["Directions", "Diagonals"] {
+            let name = "Hero\(hero)\(suffix)"
+            guard let atlas = assetImage(name) else { throw ShadowLabError.setup("人物投影素材缺失") }
+            textures[name] = try upload(atlas)
+            progress?(0.80 + Double((hero - 1) * 2 + (suffix == "Directions" ? 1 : 2)) / 6 * 0.17)
+        } }
+        guard let grass = assetImage("MeadowGround") else { throw ShadowLabError.setup("地表素材缺失") }
         textures["MeadowGround"] = try upload(grass)
-        textures["RoadMask"] = try upload(world.roadMask)
-        world.terrain.removeFromParent()
+        textures["RoadMask"] = try upload(roadMask)
+        progress?(1)
     }
 
     static func root(_ point: CGPoint) -> SIMD3<Float> {
@@ -124,24 +141,19 @@ final class MeadowShadowRenderer {
         d.storageMode = .shared; d.usage = .shaderRead
         guard ok, let texture = device.makeTexture(descriptor: d) else { throw ShadowLabError.setup("地图素材上传失败") }
         rgba.withUnsafeBytes { texture.replace(region: MTLRegionMake2D(0, 0, w, h), mipmapLevel: 0, withBytes: $0.baseAddress!, bytesPerRow: w * 4) }
+        textureUploadCount += 1
         return texture
     }
 
     private func heroTexture(_ hero: MeadowHeroCaster) throws -> MTLTexture {
         let suffix = hero.facing < 4 ? "Directions" : "Diagonals"
         let name = "Hero\(hero.index + 1)\(suffix)"
-        let key = "\(name)-\(hero.facing)-\(hero.frame)"
-        if let texture = textures[key] { return texture }
-        guard let atlas = atlases[name] ?? UIImage(named: name)?.cgImage else { throw ShadowLabError.setup("人物投影素材缺失") }
-        atlases[name] = atlas
-        let cell = atlas.width / 4
-        let sourceFacing = HeroFrames.sourceFacing(hero.facing)
-        guard let image = atlas.cropping(to: CGRect(x: hero.frame * cell, y: (sourceFacing % 4) * cell, width: cell, height: cell)) else { throw ShadowLabError.setup("人物投影帧裁切失败") }
-        let texture = try upload(image); textures[key] = texture; return texture
+        guard let texture = textures[name] else { throw ShadowLabError.setup("人物投影图集未加载") }
+        return texture
     }
 
-    private func encode(command: MTLCommandBuffer, target: MTLRenderPassDescriptor, viewport: CGSize, center: CGPoint,
-                        scale: CGFloat, time: TimeInterval, sunCast: CGVector, heroes: [MeadowHeroCaster], shadows: Bool = true, roads: Bool = true) throws {
+    private func encode(command: MTLCommandBuffer, target: MTLRenderPassDescriptor, camera: MeadowViewport,
+                        time: TimeInterval, sunCast: CGVector, heroes: [MeadowHeroCaster], shadows: Bool = true, roads: Bool = true, alignment: Bool = false) throws {
         var draws = staticDraws
         for hero in heroes {
             let texture = try heroTexture(hero)
@@ -151,16 +163,15 @@ final class MeadowShadowRenderer {
             let foot = CGPoint(x: hero.foot.x + offset.x, y: hero.foot.y - offset.y)
             let instance = ShadowLabInstance(asset: .hero, root: Self.root(foot), width: 64 / Self.units, aspect: 1, anchor: SIMD2(0.5, 0.125))
             mesh.imageCaster(instance, mirrored: HeroFrames.isMirrored(hero.facing), pose: pose)
-            draws.append(try draw(mesh, texture: texture, kind: 2))
+            var item = try draw(mesh, texture: texture, kind: 2)
+            item.uvRect = SIMD4(Float(hero.frame) / 4, Float(HeroFrames.sourceFacing(hero.facing) % 4) / 4, 0.25, 0.25)
+            draws.append(item)
         }
         let up = ShadowLabMath.cameraUp
-        let sx = Float(2 * scale / max(1, viewport.width)), sy = Float(2 * scale / max(1, viewport.height))
-        let camera = simd_float4x4(columns: (SIMD4(Self.units * sx, 0, 0, 0), SIMD4(0, Self.units * up.y * sy, 0, 0),
-                                            SIMD4(0, Self.units * up.z * sy, 0, 0), SIMD4((640 - Float(center.x)) * sx, (Float(center.y) - 360) * sy, 0.5, 1)))
         let sun = simd_normalize(SIMD3(-Float(sunCast.dx) * up.z, Float(sunCast.dy) * up.z / up.y, 1))
         let light = ShadowLabMath.orthographic(halfWidth: 46, halfHeight: 46, near: 0.1, far: 180)
             * ShadowLabMath.lookAt(eye: sun * 85, target: .zero, up: SIMD3(0, 0, 1))
-        var u = ShadowLabUniforms(camera: camera, light: light, sunTime: SIMD4(sun, Float(time)), options: SIMD4(shadows ? 1 : 0, 1 / Float(shadowSize), 1, 1))
+        var u = ShadowLabUniforms(camera: camera.matrix, light: light, sunTime: SIMD4(sun, Float(time)), options: SIMD4(shadows ? 1 : 0, 1 / Float(shadowSize), 1, 1))
         let pass = MTLRenderPassDescriptor(); pass.depthAttachment.texture = depthTexture
         pass.depthAttachment.loadAction = .clear; pass.depthAttachment.storeAction = .store; pass.depthAttachment.clearDepth = 1
         guard let depth = command.makeRenderCommandEncoder(descriptor: pass) else { throw ShadowLabError.setup("地图深度通道失败") }
@@ -172,6 +183,8 @@ final class MeadowShadowRenderer {
             var settings = SIMD4<Float>(item.kind, 0.32, 0, 0)
             depth.setVertexBuffer(item.buffer, offset: 0, index: 0); depth.setFragmentTexture(item.texture, index: 0)
             depth.setFragmentBytes(&settings, length: MemoryLayout<SIMD4<Float>>.stride, index: 2)
+            var uvRect = item.uvRect
+            depth.setFragmentBytes(&uvRect, length: MemoryLayout<SIMD4<Float>>.stride, index: 3)
             depth.drawPrimitives(type: .triangle, vertexStart: 0, vertexCount: item.count)
         }
         depth.endEncoding()
@@ -186,14 +199,14 @@ final class MeadowShadowRenderer {
         color.setFragmentTexture(textures["MeadowGround"], index: 0)
         color.setFragmentTexture(depthTexture, index: 1)
         color.setFragmentTexture(textures["RoadMask"], index: 2)
-        var settings = SIMD4<Float>(roads ? 1 : 0, 0, 0, 0)
+        var settings = SIMD4<Float>(roads ? 1 : 0, alignment ? 1 : 0, 0, 0)
         color.setFragmentBytes(&settings, length: MemoryLayout<SIMD4<Float>>.stride, index: 2)
         color.drawPrimitives(type: .triangle, vertexStart: 0, vertexCount: 6); color.endEncoding()
     }
 
-    func render(in view: MTKView, world: LivingWorld, center: CGPoint, scale: CGFloat, time: TimeInterval, heroes: [MeadowHeroCaster]) throws {
+    func render(in view: MTKView, world: LivingWorld, camera: MeadowViewport, time: TimeInterval, heroes: [MeadowHeroCaster]) throws {
         let poses = heroes.map { $0.facing * 4 + $0.frame }
-        let changed = center != lastCenter || scale != lastScale || view.bounds.size != lastViewport || poses != lastPoses
+        let changed = camera != lastCamera || poses != lastPoses
         guard changed || time - lastRenderTime >= 1.0 / 30 else { return }
         guard inFlight.wait(timeout: .now()) == .success else { return }
         // The paused MTKView has no second display link. Explicitly relinquish
@@ -202,21 +215,25 @@ final class MeadowShadowRenderer {
         defer { view.releaseDrawables() }
         guard let pass = view.currentRenderPassDescriptor, let drawable = view.currentDrawable, let command = queue.makeCommandBuffer() else { inFlight.signal(); return }
         do {
-            let size = view.bounds.size
-            try encode(command: command, target: pass, viewport: size, center: center, scale: scale, time: time, sunCast: world.effects.currentCast, heroes: heroes)
-            let semaphore = inFlight; command.addCompletedHandler { _ in semaphore.signal() }
+            try encode(command: command, target: pass, camera: camera, time: time, sunCast: world.effects.currentCast, heroes: heroes, alignment: alignmentReview)
+            let first = submittedFrames == 0
+            let semaphore = inFlight
+            command.addCompletedHandler { [weak self] buffer in
+                semaphore.signal()
+                if first, buffer.status == .completed { DispatchQueue.main.async { self?.onFirstFrameCompleted?() } }
+                if let error = buffer.error { DispatchQueue.main.async { self?.onFrameFailed?(error) } }
+            }
             command.present(drawable); command.commit(); submittedFrames += 1
-            lastRenderTime = time; lastCenter = center; lastScale = scale
-            lastViewport = view.bounds.size; lastPoses = poses
+            lastRenderTime = time; lastCamera = camera; lastPoses = poses
         } catch { inFlight.signal(); throw error }
     }
 
-    func groundSnapshot(world: LivingWorld, width: Int = 768, height: Int = 432, roads: Bool = true, shadows: Bool = true) throws -> (image: UIImage, bgra: [UInt8]) {
+    func groundSnapshot(world: LivingWorld, width: Int = 768, height: Int = 432, roads: Bool = true, shadows: Bool = true, camera: MeadowViewport? = nil, alignment: Bool = false, heroes: [MeadowHeroCaster] = []) throws -> (image: UIImage, bgra: [UInt8]) {
         let d = MTLTextureDescriptor.texture2DDescriptor(pixelFormat: .bgra8Unorm, width: width, height: height, mipmapped: false)
         d.storageMode = .shared; d.usage = .renderTarget
         guard let target = device.makeTexture(descriptor: d), let command = queue.makeCommandBuffer() else { throw ShadowLabError.setup("地面检查缓冲区失败") }
         let pass = MTLRenderPassDescriptor(); pass.colorAttachments[0].texture = target
-        try encode(command: command, target: pass, viewport: CGSize(width: width, height: height), center: CGPoint(x: 640, y: 360), scale: CGFloat(width) / 1280, time: 1, sunCast: world.effects.currentCast, heroes: [], shadows: shadows, roads: roads)
+        try encode(command: command, target: pass, camera: camera ?? MeadowViewport(size: CGSize(width: width, height: height), center: CGPoint(x: 640, y: 360), scale: CGFloat(width) / 1280), time: 1, sunCast: world.effects.currentCast, heroes: heroes, shadows: shadows, roads: roads, alignment: alignment)
         command.commit(); command.waitUntilCompleted()
         if let error = command.error { throw error }
         var bytes = [UInt8](repeating: 0, count: width * height * 4)
@@ -231,7 +248,7 @@ final class MeadowShadowRenderer {
         d.storageMode = .private; d.usage = .renderTarget
         guard let texture = device.makeTexture(descriptor: d), let command = queue.makeCommandBuffer() else { throw ShadowLabError.setup("地图运行检查分配失败") }
         let pass = MTLRenderPassDescriptor(); pass.colorAttachments[0].texture = texture
-        try encode(command: command, target: pass, viewport: CGSize(width: 128, height: 72), center: CGPoint(x: 640, y: 360), scale: 0.1, time: 1, sunCast: world.effects.currentCast, heroes: heroes)
+        try encode(command: command, target: pass, camera: MeadowViewport(size: CGSize(width: 128, height: 72), center: CGPoint(x: 640, y: 360), scale: 0.1), time: 1, sunCast: world.effects.currentCast, heroes: heroes)
         command.commit(); command.waitUntilCompleted()
         if let error = command.error { throw error }
         guard command.status == .completed else { throw ShadowLabError.setup("地图 Metal 检查未完成") }

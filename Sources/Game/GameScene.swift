@@ -25,8 +25,11 @@ final class GameScene: SKScene {
     var isRunning: Bool { simulation?.isPlaying ?? false }
     var shadowReady = false
     var shadowFrames = 0
+    var startupMetrics: [String: Double] = [:]
+    var onForegroundReady: (() -> Void)?
+    private var initialFrames = 0
     var onWorldReady: ((LivingWorld) -> Void)?
-    var onRenderGround: ((LivingWorld, CGPoint, CGFloat, TimeInterval, [MeadowHeroCaster]) -> Void)?
+    var onRenderGround: ((LivingWorld, MeadowViewport, TimeInterval, [MeadowHeroCaster]) -> Void)?
     var onPlaybackChanged: ((Bool) -> Void)?
     var onSelectionChanged: ((String) -> Void)?
     var onDiagnostics: ((String) -> Void)?
@@ -37,16 +40,33 @@ final class GameScene: SKScene {
     private let reviewMode = ProcessInfo.processInfo.arguments.contains("-visualReview")
     private let demoMode = ProcessInfo.processInfo.arguments.contains("-visualDemo")
 
-    override func didMove(to view: SKView) {
-        guard world == nil else { return }
-        backgroundColor = SKColor(red: 0.31, green: 0.38, blue: 0.15, alpha: 1)
-        world = LivingWorld(definition: .load())
+    func prepare(_ prepared: PreparedMeadow) {
+        installWorld(LivingWorld(definition: prepared.definition, roadMask: prepared.roadMask,
+            props: prepared.props, textures: prepared.textures), heroes: prepared.heroes)
+    }
+
+    private func installWorld(_ prepared: LivingWorld, heroes: [[[SKTexture]]]? = nil) {
+        world = prepared
+        if let heroes { frames = heroes }
         addChild(world)
         simulation = JourneySimulation(network: world.network)
-        buildMarkers()
-        buildActors()
-        reset()
+        buildMarkers(); buildActors(); reset()
+    }
+
+    override func didMove(to view: SKView) {
+        backgroundColor = SKColor(red: 0.31, green: 0.38, blue: 0.15, alpha: 1)
+        if world == nil { installWorld(LivingWorld(definition: .load())) }
+        layoutWorld()
         onWorldReady?(world)
+        if ProcessInfo.processInfo.arguments.contains("-alignmentReview") {
+            world.children.forEach { $0.isHidden = true }
+            for point in [CGPoint(x: 540, y: 300), CGPoint(x: 740, y: 300), CGPoint(x: 640, y: 440)] {
+                let marker = SKShapeNode(circleOfRadius: 3)
+                marker.fillColor = .red; marker.strokeColor = .clear
+                marker.position = LivingWorld.position(point); marker.zPosition = 100000
+                world.addChild(marker)
+            }
+        }
         if demoMode { togglePlayback() }
     }
 
@@ -102,8 +122,8 @@ final class GameScene: SKScene {
 
     private func buildActors() {
         for index in 0..<3 {
-            let directions = HeroFrames.load(index + 1)
-            frames.append(directions)
+            if frames.count <= index { frames.append(HeroFrames.load(index + 1)) }
+            let directions = frames[index]
             let root = SKNode()
             root.name = "hero-\(index)"
             let sprite = SKSpriteNode(texture: directions[0][0], size: CGSize(width: 64, height: 64))
@@ -236,9 +256,11 @@ final class GameScene: SKScene {
     }
 
     override func didFinishUpdate() {
-        guard world != nil, simulation != nil else { return }
+        guard world != nil, simulation != nil, let view else { return }
         let heroes = actors.indices.map { MeadowHeroCaster(index: $0, foot: simulation.point(for: $0), facing: walks[$0].facing, frame: walks[$0].frame, phase: walks[$0].phase) }
-        onRenderGround?(world, cameraCenter, baseScale * zoom, environmentTime, heroes)
+        onRenderGround?(world, MeadowViewport(world: world, scene: self, view: view), environmentTime, heroes)
+        initialFrames += 1
+        if initialFrames == 2 { DispatchQueue.main.async { [weak self] in self?.onForegroundReady?() } }
     }
 
     private func updateActors(before: [CGPoint]?) {
@@ -253,7 +275,10 @@ final class GameScene: SKScene {
             actors[index].texture = texture
             actors[index].xScale = HeroFrames.isMirrored(walk.facing) ? -1 : 1
             let pose = HeroPose(heroIndex: index, facing: walk.facing, frame: walk.frame, phase: walk.phase)
-            actors[index].warpGeometry = pose.warpGeometry()
+            // An idle/profile pose is the identity: avoid rebuilding GPU warp
+            // geometry every frame for three stationary actors.
+            if pose.legReachPoints > 0 { actors[index].warpGeometry = pose.warpGeometry() }
+            else if actors[index].warpGeometry != nil { actors[index].warpGeometry = nil }
             actors[index].position = pose.bodyOffset(size: actors[index].size)
             actorRoots[index].position = LivingWorld.position(point)
             actorRoots[index].zPosition = 10000 + point.y
@@ -367,6 +392,7 @@ final class GameScene: SKScene {
         let memory = residentMemoryMiB()
         let metrics: [String: Any] = [
             "fps": measuredFPS, "residentMemoryMiB": memory,
+            "startup": startupMetrics,
             "textureBudgetMiB": world.definition.textureBudgetMiB,
             "independentProps": world.objectCount, "roads": world.network.edges.count,
             "projectedShadows": world.shadowCount + actors.count, "shadowRenderer": "image-alpha relief Metal depth map", "shadowReady": shadowReady, "shadowFrames": shadowFrames,

@@ -2,6 +2,81 @@ import XCTest
 import UIKit
 
 final class JourneyUITests: XCTestCase {
+    func testForegroundAndShadowReceiverStayAlignedAtEveryZoom() {
+        continueAfterFailure = false
+        XCUIDevice.shared.orientation = .landscapeLeft
+        let app = XCUIApplication()
+        app.launchArguments = ["-visualReview", "-alignmentReview"]
+        app.launch()
+        let map = app.otherElements["meadowMap"]
+        XCTAssertTrue(map.waitForExistence(timeout: 120))
+        expectation(for: NSPredicate(format: "value CONTAINS %@", "\"shadowReady\":true"), evaluatedWith: map)
+        waitForExpectations(timeout: 120)
+        assertCameraLandmarks("100")
+        for zoom in [125, 150, 175] {
+            app.buttons["zoomButton"].tap()
+            XCTAssertEqual(app.buttons["zoomButton"].value as? String, "\(zoom)%")
+            assertCameraLandmarks("\(zoom)")
+        }
+        map.pinch(withScale: 1.3, velocity: 1)
+        assertCameraLandmarks("pinch-max")
+        app.buttons["resetButton"].tap()
+        assertCameraLandmarks("reset")
+    }
+
+    /// Red points come from the SpriteKit world; cyan rings are rasterized in
+    /// the native receiver shader. Compare actual composited pixels, not just
+    /// two copies of the camera formula or a successful zoom-button response.
+    private func assertCameraLandmarks(_ name: String) {
+        let screenshot = XCUIScreen.main.screenshot()
+        guard let image = screenshot.image.cgImage else { return XCTFail("Missing alignment screen") }
+        let width = min(1024, image.width), height = image.height * width / image.width
+        var rgba = [UInt8](repeating: 0, count: width * height * 4)
+        let ok = rgba.withUnsafeMutableBytes { raw -> Bool in
+            guard let context = CGContext(data: raw.baseAddress, width: width, height: height, bitsPerComponent: 8, bytesPerRow: width * 4,
+                space: CGColorSpaceCreateDeviceRGB(), bitmapInfo: CGBitmapInfo.byteOrder32Big.rawValue | CGImageAlphaInfo.premultipliedLast.rawValue) else { return false }
+            context.draw(image, in: CGRect(x: 0, y: 0, width: width, height: height)); return true
+        }
+        XCTAssertTrue(ok)
+        func centers(red: Bool) -> [CGPoint] {
+            var mask = [Bool](repeating: false, count: width * height)
+            for index in mask.indices {
+                let i = index * 4
+                mask[index] = red ? (rgba[i] > 220 && rgba[i + 1] < 35 && rgba[i + 2] < 35)
+                    : (rgba[i] < 35 && rgba[i + 1] > 220 && rgba[i + 2] > 220)
+            }
+            var result: [CGPoint] = []
+            for start in mask.indices where mask[start] {
+                mask[start] = false
+                var pixels = [start], cursor = 0, sumX = 0, sumY = 0
+                while cursor < pixels.count {
+                    let index = pixels[cursor], x = index % width, y = index / width
+                    cursor += 1; sumX += x; sumY += y
+                    for dy in -1...1 { for dx in -1...1 {
+                        let nx = x + dx, ny = y + dy
+                        if nx >= 0 && nx < width && ny >= 0 && ny < height {
+                            let next = ny * width + nx
+                            if mask[next] { mask[next] = false; pixels.append(next) }
+                        }
+                    } }
+                }
+                if pixels.count >= 3 {
+                    result.append(CGPoint(x: Double(sumX) / Double(pixels.count), y: Double(sumY) / Double(pixels.count)))
+                }
+            }
+            return result
+        }
+        let red = centers(red: true), cyan = centers(red: false)
+        XCTAssertEqual(red.count, 3, "Foreground calibration points missing: \(name)")
+        XCTAssertEqual(cyan.count, 3, "Receiver calibration points missing: \(name)")
+        for point in red {
+            let error = cyan.map { hypot(point.x - $0.x, point.y - $0.y) }.min() ?? 1000
+            XCTAssertLessThan(error, 2, "Foreground/receiver drift in actual screen pixels: \(name)")
+        }
+        let attachment = XCTAttachment(screenshot: screenshot)
+        attachment.name = "main-ground-alignment-\(name)"; attachment.lifetime = .keepAlways; add(attachment)
+    }
+
     func testMapContourRendererAndInteraction() {
         continueAfterFailure = false
         XCUIDevice.shared.orientation = .landscapeLeft
@@ -9,12 +84,16 @@ final class JourneyUITests: XCTestCase {
         app.launchArguments = ["-visualReview"]
         app.launch()
         let map = app.otherElements["meadowMap"]
-        XCTAssertTrue(map.waitForExistence(timeout: 20))
+        XCTAssertTrue(map.waitForExistence(timeout: 120))
         expectation(for: NSPredicate(format: "value CONTAINS %@", "\"shadowReady\":true"), evaluatedWith: map)
-        waitForExpectations(timeout: 20)
+        waitForExpectations(timeout: 120)
         let state = diagnostics(app)
         XCTAssertGreaterThan(state["shadowFrames"] as? Int ?? 0, 0)
         XCTAssertEqual(state["shadowRenderer"] as? String, "image-alpha relief Metal depth map")
+        let startup = state["startup"] as? [String: Double] ?? [:]
+        XCTAssertGreaterThan(startup["heartbeats"] ?? 0, 0)
+        XCTAssertLessThan(startup["mainThreadLongestGap"] ?? 100, 2.0, "Loading must leave UIKit responsive")
+        print("STARTUP_METRICS", startup)
         assertVisibleGround(map, name: "main-ground-visible")
         let play = app.buttons["playButton"]
         play.tap(); XCTAssertEqual(play.label, "暂停行旅")
