@@ -40,5 +40,11 @@
     "foregroundPreferredFPS": 60,
     "backgroundTargetFPS": 30
   },
-  "installationStatus": "Awaiting user device feedback; classic stored ZIP format, same bundle ID for SideStore replacement."
+  "installationStatus": "Awaiting user device feedback; classic stored ZIP format, same bundle ID for SideStore replacement.",
+  "supersededByBuild": "15",
+  "userFeedback": {
+    "date": "2026-10-16",
+    "terrain": "Grass and roads black on iPad despite prior command-submission tests passing.",
+    "gait": "Knee splicing resolved; non-left directions still appeared to tiptoe/slide."
+  }
 }

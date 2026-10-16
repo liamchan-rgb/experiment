@@ -1,6 +1,6 @@
 # 贴图轮廓实时阴影
 
-## 1.5.2 build 15（验证中）
+## 1.5.2 build 15
 
 build 12 的小场景轮廓效果已由用户确认。本轮将同一图像 alpha 裁切、少量纵深分层和实时 shadow map 扩展到主地图，删除简模网格与模式切换。
 
@@ -23,3 +23,9 @@ build 14 的检查仅验证了 GPU 提交与交互，未覆盖最终地面像素
 build 13 曾在 SpriteKit 更新回调内同步触发 `MTKView.draw()`，最终 UI 缩放查询超时。build 14 的首个独立显示时钟候选仍出现交互超时，未发布。最终版恢复单一场景驱动，背景上限 30fps，镜头、视口或人物动作帧变化时立即更新；背景视图保持暂停其自身时钟。每帧呈现／提交后显式释放 MTKView 的 drawable 缓存引用，由 command buffer 持有已提交资源直至完成。build 13 已由此替换。
 
 当前为图像驱动的 2.5D 近似；物件表面接收其他物件投影、不可见背面体积，以及物理设备帧率／发热仍需后续验证。
+
+## build 15 验证结果
+
+最终源码 `ee5a251`，构建 [38842001680](https://github.com/liamchan-rgb/experiment/actions/runs/38842001680)，设备归档、15 项原生回归及 iPhone／iPad 各一项 UI 检查通过（17 项，0 失败）。实际屏幕检查覆盖地面初始、缩放、试验场返回；人工核对 iPad 返回截图，整层草地与道路已显示。三位人物的七个待修方向、四个相位的 SpriteKit 渲染图已对照，轮廓连通；共享网格投影和精确鞋底平面检查通过。静态帧与数学检查不等于完全消除运动观感上的滑步，正背向仍需实机反馈。
+
+安装包：[MeadowJourney-b15.ipa](../Downloads/MeadowJourney-b15.ipa)，[来源与校验值](../Downloads/MeadowJourney-build15.json)。
