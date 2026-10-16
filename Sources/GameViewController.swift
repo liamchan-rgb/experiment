@@ -17,6 +17,8 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
     private var loadingHeartbeats = 0
     private var firstFrameWaitSeconds: TimeInterval?
     private var loadingFailed = false
+    private var setupTimings: [String: Double] = [:]
+    private var mapPresentationBegan: TimeInterval = 0
     private var groundView: MTKView?
     private var groundRenderer: MeadowShadowRenderer?
     private let titleButton = ParchmentButton(symbol: .title)
@@ -44,7 +46,11 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
         gameView.backgroundColor = .clear
         view.addSubview(gameView)
         gameView.ignoresSiblingOrder = true
-        scene.onForegroundReady = { [weak self] in self?.foregroundBecameReady = true; self?.finishLoading() }
+        scene.onForegroundReady = { [weak self] in
+            guard let self else { return }
+            self.setupTimings["mapFirstForegroundDelay"] = ProcessInfo.processInfo.systemUptime - self.mapPresentationBegan
+            self.foregroundBecameReady = true; self.finishLoading()
+        }
         if !ProcessInfo.processInfo.arguments.contains("-gaitReview"), let device = MTLCreateSystemDefaultDevice() {
             let ground = MTKView(frame: view.bounds, device: device)
             ground.colorPixelFormat = .bgra8Unorm
@@ -214,8 +220,7 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
             self.lastHeartbeat = now; self.loadingHeartbeats += 1
         }
         MeadowLoader.load(device: groundView?.device, progress: { [weak self] value, text in
-            self?.loadingView.update(value, text: text)
-            if self?.reviewMode == true { self?.gameView.accessibilityValue = "{\"loadingProgress\":\(value),\"phase\":\"\(text)\"}" }
+            self?.reportLoadingProgress(value, text: text)
         }) { [weak self] result in
             guard let self else { return }
             switch result {
@@ -224,18 +229,40 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
                 self.groundRenderer?.alignmentReview = ProcessInfo.processInfo.arguments.contains("-alignmentReview")
                 self.groundRenderer?.onFirstFrameCompleted = { [weak self] in self?.groundBecameReady = true; self?.finishLoading() }
                 self.groundRenderer?.onFrameFailed = { [weak self] error in self?.failRendering(error) }
-                self.scene.size = self.gameView.bounds.size
-                self.scene.prepare(prepared, progress: { value in
-                    self.loadingView.update(Float(0.96 + value * 0.03), text: "布置场景")
-                }) {
-                    self.loadingView.update(0.99, text: "显示林地")
-                    self.firstFrameWaitSeconds = 0
-                    self.gameView.presentScene(self.scene)
-                    if prepared.renderer == nil { self.finishLoading() }
+                let warmup = MeadowWarmupScene(size: self.gameView.bounds.size, prepared: prepared, progress: { [weak self] value in
+                    self?.reportLoadingProgress(Float(0.90 + value * 0.06), text: "准备场景显示")
+                }) { [weak self] timings in
+                    guard let self, !self.loadingFailed else { return }
+                    self.setupTimings = timings
+                    self.prepareWorld(prepared)
                 }
+                self.firstFrameWaitSeconds = 0
+                self.gameView.presentScene(warmup)
             case .failure(let error): self.loadingTimer?.invalidate(); self.loadingView.failed(error)
             }
         }
+    }
+
+    private func prepareWorld(_ prepared: PreparedMeadow) {
+        reportLoadingProgress(0.96, text: "布置场景")
+        scene.size = gameView.bounds.size
+        scene.prepare(prepared, progress: { [weak self] value in
+            self?.reportLoadingProgress(Float(0.96 + value * 0.03), text: "布置场景")
+        }) { [weak self] in
+            guard let self, !self.loadingFailed else { return }
+            self.reportLoadingProgress(0.99, text: "显示林地")
+            self.firstFrameWaitSeconds = 0
+            self.mapPresentationBegan = ProcessInfo.processInfo.systemUptime
+            self.gameView.presentScene(self.scene)
+            self.setupTimings["presentMap"] = ProcessInfo.processInfo.systemUptime - self.mapPresentationBegan
+            if prepared.renderer == nil { self.finishLoading() }
+        }
+    }
+
+    private func reportLoadingProgress(_ value: Float, text: String) {
+        guard !ready, !loadingFailed else { return }
+        loadingView.update(value, text: text)
+        if reviewMode { gameView.accessibilityValue = "{\"loadingProgress\":\(value),\"phase\":\"\(text)\"}" }
     }
 
     private func finishLoading() {
@@ -246,6 +273,8 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
         loadingTimer?.invalidate(); loadingTimer = nil
         scene.startupMetrics = ["seconds": now - loadingBegan,
             "mainThreadLongestGap": max(longestHeartbeatGap, now - lastHeartbeat), "heartbeats": Double(loadingHeartbeats)]
+            .merging(setupTimings, uniquingKeysWith: { _, new in new })
+            .merging(scene.setupTimings, uniquingKeysWith: { _, new in new })
         scene.shadowReady = groundRenderer != nil
         scene.refreshDiagnostics()
         loadingView.update(1, text: "准备就绪")

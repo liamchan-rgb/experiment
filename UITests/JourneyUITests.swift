@@ -104,9 +104,9 @@ final class JourneyUITests: XCTestCase {
         XCTAssertGreaterThan(state["shadowFrames"] as? Int ?? 0, 0)
         XCTAssertEqual(state["shadowRenderer"] as? String, "image-alpha relief Metal depth map")
         let startup = state["startup"] as? [String: Double] ?? [:]
+        print("STARTUP_METRICS", startup)
         XCTAssertGreaterThan(startup["heartbeats"] ?? 0, 0)
         XCTAssertLessThan(startup["mainThreadLongestGap"] ?? 100, 2.0, "Loading must leave UIKit responsive")
-        print("STARTUP_METRICS", startup)
         assertVisibleGround(map, name: "main-ground-visible")
         let play = app.buttons["playButton"]
         play.tap(); XCTAssertEqual(play.label, "暂停行旅")

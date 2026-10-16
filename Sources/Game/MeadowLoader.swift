@@ -58,44 +58,93 @@ enum MeadowLoader {
                                              textures: textures, heroes: heroes, effects: effects, renderer: renderer)
                 report(0.84, "上传场景纹理")
                 SKTexture.preload(Array(textures.values) + heroes.flatMap { $0.flatMap { $0 } }) {
-                    queue.async {
-                        do {
-                            report(0.90, "预热光照与薄雾")
-                            if let device { try warmEffects(device: device, textures: textures, effects: effects) }
-                            report(0.96, "布置场景")
-                            DispatchQueue.main.async { completion(.success(prepared)) }
-                        } catch { DispatchQueue.main.async { completion(.failure(error)) } }
-                    }
+                    DispatchQueue.main.async { completion(.success(prepared)) }
                 }
             } catch { DispatchQueue.main.async { completion(.failure(error)) } }
         }
     }
 
-    /// Compile and submit the actual SpriteKit effect sources while the loading
-    /// screen remains on the main thread. This scene is owned only by this queue.
-    /// UIKit font/shape preparation stays on the actual foreground scene: doing
-    /// it inside this offscreen background renderer can stall cold startup.
-    private static func warmEffects(device: MTLDevice, textures: [String: SKTexture], effects: EnvironmentShaders) throws {
-        guard let queue = device.makeCommandQueue(), let command = queue.makeCommandBuffer() else {
-            throw ShadowLabError.setup("光效预热初始化失败")
+}
+
+/// Warm the actual SKView renderer one pipeline at a time, with complete view
+/// frames between stages. Match textured/untextured and additive variants;
+/// offscreen textured sprites do not warm every real foreground pipeline.
+final class MeadowWarmupScene: SKScene {
+    private let prepared: PreparedMeadow
+    private let progress: (Double) -> Void
+    private var completion: (([String: Double]) -> Void)?
+    private var stage = 0
+    private var frames = 0
+    private var advancing = false
+    private var stageBegan: TimeInterval = 0
+    private var timings: [String: Double] = [:]
+
+    init(size: CGSize, prepared: PreparedMeadow, progress: @escaping (Double) -> Void,
+         completion: @escaping ([String: Double]) -> Void) {
+        self.prepared = prepared; self.progress = progress; self.completion = completion
+        super.init(size: size)
+        scaleMode = .resizeFill; backgroundColor = .clear
+    }
+
+    required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
+
+    override func didMove(to view: SKView) { advance() }
+
+    override func didFinishUpdate() {
+        guard !advancing, completion != nil else { return }
+        frames += 1
+        if frames >= 3 {
+            advancing = true
+            DispatchQueue.main.async { [weak self] in
+                guard let self else { return }
+                guard !self.isPaused else { self.advancing = false; self.frames = 0; return }
+                self.timings["warmStage\(self.stage - 1)"] = ProcessInfo.processInfo.systemUptime - self.stageBegan
+                self.advance()
+            }
         }
-        let descriptor = MTLTextureDescriptor.texture2DDescriptor(pixelFormat: .bgra8Unorm, width: 64, height: 64, mipmapped: false)
-        descriptor.storageMode = .private; descriptor.usage = [.renderTarget, .shaderRead]
-        guard let texture = device.makeTexture(descriptor: descriptor) else { throw ShadowLabError.setup("光效预热缓冲失败") }
-        let scene = SKScene(size: CGSize(width: 64, height: 64))
-        scene.backgroundColor = .clear
-        for (index, shader) in [effects.vegetation, effects.meadowPlants, effects.contact, effects.backMist, effects.sunlight, effects.frontMist].enumerated() {
-            let sprite = SKSpriteNode(texture: textures["OakA"], size: CGSize(width: 64, height: 64))
-            sprite.position = CGPoint(x: 32, y: 32); sprite.zPosition = CGFloat(index)
-            effects.apply(shader, to: sprite, origin: .zero, extent: sprite.size)
-            scene.addChild(sprite)
+    }
+
+    private func advance() {
+        removeAllChildren()
+        progress(Double(stage) / 10)
+        guard stage < 10 else {
+            let finished = completion; completion = nil
+            finished?(timings)
+            return
         }
-        let renderer = SKRenderer(device: device); renderer.scene = scene
-        let pass = MTLRenderPassDescriptor(); pass.colorAttachments[0].texture = texture
-        pass.colorAttachments[0].loadAction = .clear; pass.colorAttachments[0].storeAction = .store
-        renderer.update(atTime: 0)
-        renderer.render(withViewport: CGRect(x: 0, y: 0, width: 64, height: 64), commandBuffer: command, renderPassDescriptor: pass)
-        command.commit(); command.waitUntilCompleted()
-        if let error = command.error { throw error }
+        stageBegan = ProcessInfo.processInfo.systemUptime
+        let node: SKNode
+        if stage < 6 {
+            let effects = prepared.effects
+            let shaders = [effects.vegetation, effects.meadowPlants, effects.contact,
+                           effects.backMist, effects.sunlight, effects.frontMist]
+            let sprite: SKSpriteNode
+            if stage < 2 {
+                sprite = SKSpriteNode(texture: prepared.textures[stage == 0 ? "OakA" : "Flowers"],
+                                      size: CGSize(width: 64, height: 64))
+            } else { sprite = SKSpriteNode(color: .white, size: CGSize(width: 64, height: 64)) }
+            if stage == 4 { sprite.blendMode = .add }
+            effects.apply(shaders[stage], to: sprite, origin: .zero, extent: sprite.size)
+            node = sprite
+        } else if stage < 8 {
+            let label = SKLabelNode(fontNamed: stage == 6 ? "Georgia-Bold" : "HelveticaNeue-Medium")
+            label.text = "? ✓ P1 P2 P3"; label.fontSize = stage == 6 ? 20 : 10
+            node = label
+        } else if stage == 8 {
+            let shape = SKShapeNode(ellipseOf: CGSize(width: 24, height: 12))
+            shape.fillColor = .white; shape.strokeColor = .gray
+            node = shape
+        } else {
+            let emitter = SKEmitterNode()
+            emitter.particleTexture = prepared.textures["Flowers"]
+            emitter.particleBirthRate = 4; emitter.particleLifetime = 2
+            emitter.particleScale = 0.01
+            emitter.particleBlendMode = .add
+            emitter.advanceSimulationTime(1)
+            node = emitter
+        }
+        node.position = CGPoint(x: size.width / 2, y: size.height / 2)
+        addChild(node)
+        stage += 1; frames = 0; advancing = false
     }
 }

@@ -12,6 +12,7 @@ final class LivingWorld: SKNode {
     private(set) var casterProps: [SceneDefinition.Prop] = []
     private(set) var shadowCount = 0
     private(set) var objectCount = 0
+    private(set) var longestPopulateBatchSeconds: Double = 0
 
     init(definition: SceneDefinition, roadMask: CGImage? = nil, props: [SceneDefinition.Prop]? = nil, textures: [String: SKTexture] = [:], effects preparedEffects: EnvironmentShaders? = nil, deferProps: Bool = false, renderTerrain: Bool = true) {
         self.definition = definition
@@ -37,8 +38,10 @@ final class LivingWorld: SKNode {
     func populate(_ props: [SceneDefinition.Prop], progress: @escaping (Double) -> Void, completion: @escaping () -> Void) {
         var index = 0
         func batch() {
+            let began = ProcessInfo.processInfo.systemUptime
             let end = min(index + 8, props.count)
             while index < end { addProp(props[index]); index += 1 }
+            longestPopulateBatchSeconds = max(longestPopulateBatchSeconds, ProcessInfo.processInfo.systemUptime - began)
             progress(Double(index) / Double(max(1, props.count)))
             if index < props.count { DispatchQueue.main.asyncAfter(deadline: .now() + 0.001) { batch() } }
             else { completion() }

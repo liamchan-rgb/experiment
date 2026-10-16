@@ -26,6 +26,7 @@ final class GameScene: SKScene {
     var shadowReady = false
     var shadowFrames = 0
     var startupMetrics: [String: Double] = [:]
+    private(set) var setupTimings: [String: Double] = [:]
     var onForegroundReady: (() -> Void)?
     private var initialFrames = 0
     var onWorldReady: ((LivingWorld) -> Void)?
@@ -41,11 +42,16 @@ final class GameScene: SKScene {
     private let demoMode = ProcessInfo.processInfo.arguments.contains("-visualDemo")
 
     func prepare(_ prepared: PreparedMeadow, progress: @escaping (Double) -> Void, completion: @escaping () -> Void) {
+        let began = ProcessInfo.processInfo.systemUptime
         let staged = LivingWorld(definition: prepared.definition, roadMask: prepared.roadMask,
             props: prepared.props, textures: prepared.textures, effects: prepared.effects,
             deferProps: true, renderTerrain: prepared.renderer == nil)
+        setupTimings["worldInit"] = ProcessInfo.processInfo.systemUptime - began
         staged.populate(prepared.props, progress: progress) { [weak self] in
+            let began = ProcessInfo.processInfo.systemUptime
             self?.installWorld(staged, heroes: prepared.heroes)
+            self?.setupTimings["markersActorsReset"] = ProcessInfo.processInfo.systemUptime - began
+            self?.setupTimings["propsBatchMax"] = staged.longestPopulateBatchSeconds
             completion()
         }
     }
