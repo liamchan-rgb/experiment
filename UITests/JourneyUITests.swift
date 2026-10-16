@@ -10,8 +10,7 @@ final class JourneyUITests: XCTestCase {
         app.launch()
         let map = app.otherElements["meadowMap"]
         XCTAssertTrue(map.waitForExistence(timeout: 120))
-        expectation(for: NSPredicate(format: "value CONTAINS %@", "\"shadowReady\":true"), evaluatedWith: map)
-        waitForExpectations(timeout: 120)
+        waitForReady(app, map: map)
         assertCameraLandmarks("100")
         for zoom in [125, 150, 175] {
             app.buttons["zoomButton"].tap()
@@ -23,6 +22,18 @@ final class JourneyUITests: XCTestCase {
         assertCameraLandmarks("pinch-max")
         app.buttons["resetButton"].tap()
         assertCameraLandmarks("reset")
+    }
+
+    private func waitForReady(_ app: XCUIApplication, map: XCUIElement) {
+        let ready = XCTNSPredicateExpectation(predicate: NSPredicate(format: "value CONTAINS %@", "\"shadowReady\":true"), object: map)
+        let result = XCTWaiter.wait(for: [ready], timeout: 120)
+        if result != .completed {
+            print("LOADING_FAILURE_STATE", map.value ?? "none")
+            let status = app.staticTexts["loadingStatus"]
+            print("LOADING_FAILURE_STAGE", status.exists ? status.label : "loading page hidden")
+            capture("main-ground-loading-failure")
+        }
+        XCTAssertEqual(result, .completed)
     }
 
     /// Red points come from the SpriteKit world; cyan rings are rasterized in
@@ -88,8 +99,7 @@ final class JourneyUITests: XCTestCase {
         app.launch()
         let map = app.otherElements["meadowMap"]
         XCTAssertTrue(map.waitForExistence(timeout: 120))
-        expectation(for: NSPredicate(format: "value CONTAINS %@", "\"shadowReady\":true"), evaluatedWith: map)
-        waitForExpectations(timeout: 120)
+        waitForReady(app, map: map)
         let state = diagnostics(app)
         XCTAssertGreaterThan(state["shadowFrames"] as? Int ?? 0, 0)
         XCTAssertEqual(state["shadowRenderer"] as? String, "image-alpha relief Metal depth map")

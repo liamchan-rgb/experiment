@@ -40,10 +40,16 @@ final class GameScene: SKScene {
     private let reviewMode = ProcessInfo.processInfo.arguments.contains("-visualReview")
     private let demoMode = ProcessInfo.processInfo.arguments.contains("-visualDemo")
 
-    func prepare(_ prepared: PreparedMeadow) {
-        installWorld(LivingWorld(definition: prepared.definition, roadMask: prepared.roadMask,
-            props: prepared.props, textures: prepared.textures), heroes: prepared.heroes)
+    func prepare(_ prepared: PreparedMeadow, progress: @escaping (Double) -> Void, completion: @escaping () -> Void) {
+        let staged = LivingWorld(definition: prepared.definition, roadMask: prepared.roadMask,
+            props: prepared.props, textures: prepared.textures, deferProps: true, renderTerrain: prepared.renderer == nil)
+        staged.populate(prepared.props, progress: progress) { [weak self] in
+            self?.installWorld(staged, heroes: prepared.heroes)
+            completion()
+        }
     }
+
+    func refreshDiagnostics() { publishDiagnostics() }
 
     private func installWorld(_ prepared: LivingWorld, heroes: [[[SKTexture]]]? = nil) {
         world = prepared
@@ -260,7 +266,7 @@ final class GameScene: SKScene {
         let heroes = actors.indices.map { MeadowHeroCaster(index: $0, foot: simulation.point(for: $0), facing: walks[$0].facing, frame: walks[$0].frame, phase: walks[$0].phase) }
         onRenderGround?(world, MeadowViewport(world: world, scene: self, view: view), environmentTime, heroes)
         initialFrames += 1
-        if initialFrames == 2 { DispatchQueue.main.async { [weak self] in self?.onForegroundReady?() } }
+        if initialFrames == 1 { DispatchQueue.main.async { [weak self] in self?.onForegroundReady?() } }
     }
 
     private func updateActors(before: [CGPoint]?) {

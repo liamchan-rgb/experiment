@@ -13,16 +13,16 @@ final class LivingWorld: SKNode {
     private(set) var shadowCount = 0
     private(set) var objectCount = 0
 
-    init(definition: SceneDefinition, roadMask: CGImage? = nil, props: [SceneDefinition.Prop]? = nil, textures: [String: SKTexture] = [:]) {
+    init(definition: SceneDefinition, roadMask: CGImage? = nil, props: [SceneDefinition.Prop]? = nil, textures: [String: SKTexture] = [:], deferProps: Bool = false, renderTerrain: Bool = true) {
         self.definition = definition
         self.textures = textures
         network = TrailNetwork(roads: definition.roads)
         super.init()
         addChild(terrain)
-        buildGround()
-        buildRoads(mask: roadMask)
+        if renderTerrain { buildGround(); buildRoads(mask: roadMask) }
+        else { self.roadMask = roadMask ?? MeadowRoadMask.make(network: network, bounds: Self.bounds) }
         let allProps = props ?? (definition.props + Self.meadowDetails(definition: definition, network: network) + Self.roadsideGrass(network: network))
-        for prop in allProps { addProp(prop) }
+        if !deferProps { for prop in allProps { addProp(prop) } }
         addOverlay(shader: effects.backMist, depth: 95)
         addOverlay(shader: effects.sunlight, depth: 20000, additive: true)
         addOverlay(shader: effects.frontMist, depth: 21000)
@@ -30,6 +30,20 @@ final class LivingWorld: SKNode {
     }
 
     required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
+
+    /// Keep UIKit's run loop available while attaching hundreds of prepared
+    /// nodes. This world is not presented until the final batch is attached.
+    func populate(_ props: [SceneDefinition.Prop], progress: @escaping (Double) -> Void, completion: @escaping () -> Void) {
+        var index = 0
+        func batch() {
+            let end = min(index + 8, props.count)
+            while index < end { addProp(props[index]); index += 1 }
+            progress(Double(index) / Double(max(1, props.count)))
+            if index < props.count { DispatchQueue.main.asyncAfter(deadline: .now() + 0.001) { batch() } }
+            else { completion() }
+        }
+        batch()
+    }
 
     func texture(_ name: String) -> SKTexture {
         if let texture = textures[name] { return texture }

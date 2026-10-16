@@ -10,7 +10,10 @@ final class MeadowLoadingView: UIView {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = UIColor(red: 0.10, green: 0.15, blue: 0.10, alpha: 1)
+        // Keep the first SpriteKit/Metal frames eligible for presentation under
+        // the loading page; readiness must not depend on an occluded surface.
+        isOpaque = false
+        backgroundColor = UIColor(red: 0.10, green: 0.15, blue: 0.10, alpha: 0.99)
         accessibilityIdentifier = "meadowLoading"
         title.text = "林间行旅"
         title.font = .systemFont(ofSize: 25, weight: .semibold)

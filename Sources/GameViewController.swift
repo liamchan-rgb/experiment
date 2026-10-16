@@ -203,6 +203,7 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
         }
         MeadowLoader.load(device: groundView?.device, progress: { [weak self] value, text in
             self?.loadingView.update(value, text: text)
+            if self?.reviewMode == true { self?.gameView.accessibilityValue = "{\"loadingProgress\":\(value),\"phase\":\"\(text)\"}" }
         }) { [weak self] result in
             guard let self else { return }
             switch result {
@@ -212,10 +213,13 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
                 self.groundRenderer?.onFirstFrameCompleted = { [weak self] in self?.groundBecameReady = true; self?.finishLoading() }
                 self.groundRenderer?.onFrameFailed = { [weak self] error in self?.failRendering(error) }
                 self.scene.size = self.gameView.bounds.size
-                self.scene.prepare(prepared)
-                self.loadingView.update(0.98, text: "显示林地")
-                self.gameView.presentScene(self.scene)
-                if prepared.renderer == nil { self.finishLoading() }
+                self.scene.prepare(prepared, progress: { value in
+                    self.loadingView.update(Float(0.96 + value * 0.03), text: "布置场景")
+                }) {
+                    self.loadingView.update(0.99, text: "显示林地")
+                    self.gameView.presentScene(self.scene)
+                    if prepared.renderer == nil { self.finishLoading() }
+                }
             case .failure(let error): self.loadingTimer?.invalidate(); self.loadingView.failed(error)
             }
         }
@@ -229,6 +233,7 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
         scene.startupMetrics = ["seconds": now - loadingBegan,
             "mainThreadLongestGap": max(longestHeartbeatGap, now - lastHeartbeat), "heartbeats": Double(loadingHeartbeats)]
         scene.shadowReady = groundRenderer != nil
+        scene.refreshDiagnostics()
         loadingView.update(1, text: "准备就绪")
         loadingView.isHidden = true
         setMapEnabled(true)

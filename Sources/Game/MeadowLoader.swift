@@ -87,6 +87,15 @@ enum MeadowLoader {
             effects.apply(shader, to: sprite, origin: .zero, extent: sprite.size)
             scene.addChild(sprite)
         }
+        let marker = SKShapeNode(ellipseOf: CGSize(width: 24, height: 12))
+        marker.position = CGPoint(x: 32, y: 32); marker.fillColor = .white; marker.alpha = 0.2
+        marker.zPosition = 7; scene.addChild(marker)
+        for (index, font) in ["Georgia-Bold", "HelveticaNeue-Medium"].enumerated() {
+            let label = SKLabelNode(fontNamed: font)
+            label.text = "P1 ? ✓"; label.fontSize = 12
+            label.position = CGPoint(x: 32, y: 18 + index * 16); label.zPosition = 8
+            scene.addChild(label)
+        }
         let renderer = SKRenderer(device: device); renderer.scene = scene
         let pass = MTLRenderPassDescriptor(); pass.colorAttachments[0].texture = texture
         pass.colorAttachments[0].loadAction = .clear; pass.colorAttachments[0].storeAction = .store
