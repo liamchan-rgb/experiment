@@ -7,6 +7,7 @@ struct PreparedMeadow {
     let props: [SceneDefinition.Prop]
     let textures: [String: SKTexture]
     let heroes: [[[SKTexture]]]
+    let effects: EnvironmentShaders
     let renderer: MeadowShadowRenderer?
 }
 
@@ -52,14 +53,15 @@ enum MeadowLoader {
                         report(0.50 + $0 * 0.33, "准备实时投影")
                     }
                 } else { renderer = nil }
+                let effects = EnvironmentShaders()
                 let prepared = PreparedMeadow(definition: definition, roadMask: mask, props: props,
-                                             textures: textures, heroes: heroes, renderer: renderer)
+                                             textures: textures, heroes: heroes, effects: effects, renderer: renderer)
                 report(0.84, "上传场景纹理")
                 SKTexture.preload(Array(textures.values) + heroes.flatMap { $0.flatMap { $0 } }) {
                     queue.async {
                         do {
                             report(0.90, "预热光照与薄雾")
-                            if let device { try warmEffects(device: device, textures: textures) }
+                            if let device { try warmEffects(device: device, textures: textures, effects: effects) }
                             report(0.96, "布置场景")
                             DispatchQueue.main.async { completion(.success(prepared)) }
                         } catch { DispatchQueue.main.async { completion(.failure(error)) } }
@@ -71,14 +73,13 @@ enum MeadowLoader {
 
     /// Compile and submit the actual SpriteKit effect sources while the loading
     /// screen remains on the main thread. This scene is owned only by this queue.
-    private static func warmEffects(device: MTLDevice, textures: [String: SKTexture]) throws {
+    private static func warmEffects(device: MTLDevice, textures: [String: SKTexture], effects: EnvironmentShaders) throws {
         guard let queue = device.makeCommandQueue(), let command = queue.makeCommandBuffer() else {
             throw ShadowLabError.setup("光效预热初始化失败")
         }
         let descriptor = MTLTextureDescriptor.texture2DDescriptor(pixelFormat: .bgra8Unorm, width: 64, height: 64, mipmapped: false)
         descriptor.storageMode = .private; descriptor.usage = [.renderTarget, .shaderRead]
         guard let texture = device.makeTexture(descriptor: descriptor) else { throw ShadowLabError.setup("光效预热缓冲失败") }
-        let effects = EnvironmentShaders()
         let scene = SKScene(size: CGSize(width: 64, height: 64))
         scene.backgroundColor = .clear
         for (index, shader) in [effects.vegetation, effects.meadowPlants, effects.contact, effects.backMist, effects.sunlight, effects.frontMist].enumerated() {

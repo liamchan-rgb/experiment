@@ -42,7 +42,8 @@ final class GameScene: SKScene {
 
     func prepare(_ prepared: PreparedMeadow, progress: @escaping (Double) -> Void, completion: @escaping () -> Void) {
         let staged = LivingWorld(definition: prepared.definition, roadMask: prepared.roadMask,
-            props: prepared.props, textures: prepared.textures, deferProps: true, renderTerrain: prepared.renderer == nil)
+            props: prepared.props, textures: prepared.textures, effects: prepared.effects,
+            deferProps: true, renderTerrain: prepared.renderer == nil)
         staged.populate(prepared.props, progress: progress) { [weak self] in
             self?.installWorld(staged, heroes: prepared.heroes)
             completion()
