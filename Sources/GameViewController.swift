@@ -238,7 +238,6 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
                     self.setupTimings = timings
                     self.prepareWorld(prepared)
                 }
-                self.firstFrameWaitSeconds = 0
                 self.gameView.presentScene(warmup)
             case .failure(let error): self.showLoadingFailure(error)
             }
@@ -253,6 +252,8 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
         }) { [weak self] in
             guard let self, !self.loadingFailed else { return }
             self.reportLoadingProgress(0.99, text: "显示林地")
+            // Only the actual map's first frame gets a timeout. Shader warmup
+            // and world population may take longer on slower physical iPads.
             self.firstFrameWaitSeconds = 0
             self.mapPresentationBegan = ProcessInfo.processInfo.systemUptime
             self.gameView.presentScene(self.scene)

@@ -19,6 +19,8 @@ final class MeadowLoadingView: UIView {
         title.font = .systemFont(ofSize: 25, weight: .semibold)
         title.textColor = UIColor(red: 1, green: 0.94, blue: 0.76, alpha: 1)
         status.font = .monospacedDigitSystemFont(ofSize: 14, weight: .regular)
+        status.numberOfLines = 0
+        status.lineBreakMode = .byWordWrapping
         status.textColor = title.textColor
         status.accessibilityIdentifier = "loadingStatus"
         for label in [title, status] { label.textAlignment = .center }
@@ -49,7 +51,7 @@ final class MeadowLoadingView: UIView {
 
     func failed(_ error: Error) {
         spinner.stopAnimating(); retry.isHidden = false
-        status.text = "加载失败，请重试"
+        status.text = "加载失败，请重试\n\(error.localizedDescription)"
         accessibilityHint = error.localizedDescription
     }
 
