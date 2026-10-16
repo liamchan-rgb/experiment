@@ -141,7 +141,7 @@ struct ShadowLabMesh {
     /// A relief surface derived from image coordinates: changing ground-depth Y
     /// solves height Z to preserve the artwork's projection in the fixed camera.
     /// Fine silhouette detail comes from alpha testing, not extra sphere geometry.
-    mutating func imageCaster(_ instance: ShadowLabInstance, mirrored: Bool = false) {
+    mutating func imageCaster(_ instance: ShadowLabInstance, mirrored: Bool = false, pose: HeroPose? = nil) {
         func smooth(_ a: Float, _ b: Float, _ x: Float) -> Float {
             let t = max(0, min(1, (x - a) / (b - a)))
             return t * t * (3 - 2 * t)
@@ -151,8 +151,9 @@ struct ShadowLabMesh {
         let rows = small ? 8 : 32
         let roofDepth = instance.asset == .tower ? instance.proxyCenter.y - instance.root.y : 0
         vertices.reserveCapacity(vertices.count + columns * rows * 6)
-        func vertex(_ u: Float, _ v: Float) -> ShadowLabVertex {
-            let screenUp = (1 - v - instance.anchor.y) * instance.screenHeight
+        func vertex(_ u: Float, _ v: Float, destination: SIMD2<Float>? = nil) -> ShadowLabVertex {
+            let point = destination ?? SIMD2(u, 1 - v)
+            let screenUp = (point.y - instance.anchor.y) * instance.screenHeight
             var depth: Float
             switch instance.asset {
             case .tree, .oakB, .pines:
@@ -174,6 +175,9 @@ struct ShadowLabMesh {
                 depth = footDepth * (1 - roof) + roofDepth * roof
             case .hero:
                 depth = (u - 0.5) * 0.20 * (1 - smooth(0.63, 0.86, v))
+                // Leg reach is motion along the receiver, rather than an
+                // artificial elevation of a planted boot. Preserve art Z.
+                depth += (point.y - (1 - v)) * instance.screenHeight / ShadowLabMath.cameraUp.y
             case .tent, .rockLow, .rockHigh, .rockSmall, .shrub, .flowers, .fence, .banner:
                 // A sloping footprint keeps the lower art on the receiver;
                 // raised details retain their alpha silhouette above it.
@@ -186,13 +190,24 @@ struct ShadowLabMesh {
             // The painted ground apron is placed ON the receiver, then excluded
             // by the caster fragment; it cannot become a standing grass rectangle.
             if height < 0 { height = 0; depth = screenUp / ShadowLabMath.cameraUp.y }
-            var x = (u - instance.anchor.x) * instance.width
+            var x = (point.x - instance.anchor.x) * instance.width
             if mirrored { x = -x }
             let position = instance.root + SIMD3(x, depth, height)
             let bend = instance.asset.isTree ? max(0, (1 - v - instance.anchor.y) / (1 - instance.anchor.y)) : 0
             let tint: SIMD4<Float> = instance.asset.isTree ? SIMD4(0.80, 1, 0.45, 1)
                 : (instance.asset == .tower ? SIMD4(1, 0.72, 0.28, 1) : SIMD4(0.38, 0.83, 1, 1))
             return ShadowLabVertex(position: SIMD4(position, 1), uvWind: SIMD4(u, v, bend, 0.4), color: tint)
+        }
+        if let pose {
+            let source = pose.sourcePositions, destination = pose.destinationPositions()
+            let stride = HeroPose.gridColumns + 1
+            for row in 0..<HeroPose.gridRows { for column in 0..<HeroPose.gridColumns {
+                let a = row * stride + column, b = a + stride, c = b + 1, d = a + 1
+                for index in [a, b, c, a, c, d] {
+                    vertices.append(vertex(source[index].x, 1 - source[index].y, destination: destination[index]))
+                }
+            } }
+            return
         }
         for row in 0..<rows { for column in 0..<columns {
             let u0 = Float(column) / Float(columns), u1 = Float(column + 1) / Float(columns)

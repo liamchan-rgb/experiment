@@ -135,7 +135,8 @@ final class MeadowShadowRenderer {
         guard let atlas = atlases[name] ?? UIImage(named: name)?.cgImage else { throw ShadowLabError.setup("人物投影素材缺失") }
         atlases[name] = atlas
         let cell = atlas.width / 4
-        guard let image = atlas.cropping(to: CGRect(x: hero.frame * cell, y: (hero.facing % 4) * cell, width: cell, height: cell)) else { throw ShadowLabError.setup("人物投影帧裁切失败") }
+        let sourceFacing = HeroFrames.sourceFacing(hero.facing)
+        guard let image = atlas.cropping(to: CGRect(x: hero.frame * cell, y: (sourceFacing % 4) * cell, width: cell, height: cell)) else { throw ShadowLabError.setup("人物投影帧裁切失败") }
         let texture = try upload(image); textures[key] = texture; return texture
     }
 
@@ -145,8 +146,11 @@ final class MeadowShadowRenderer {
         for hero in heroes {
             let texture = try heroTexture(hero)
             var mesh = ShadowLabMesh()
-            let instance = ShadowLabInstance(asset: .hero, root: Self.root(hero.foot), width: 64 / Self.units, aspect: 1, anchor: SIMD2(0.5, 0.125))
-            mesh.imageCaster(instance)
+            let pose = HeroPose(heroIndex: hero.index, facing: hero.facing, frame: hero.frame, phase: hero.phase)
+            let offset = pose.bodyOffset()
+            let foot = CGPoint(x: hero.foot.x + offset.x, y: hero.foot.y - offset.y)
+            let instance = ShadowLabInstance(asset: .hero, root: Self.root(foot), width: 64 / Self.units, aspect: 1, anchor: SIMD2(0.5, 0.125))
+            mesh.imageCaster(instance, mirrored: HeroFrames.isMirrored(hero.facing), pose: pose)
             draws.append(try draw(mesh, texture: texture, kind: 2))
         }
         let up = ShadowLabMath.cameraUp
@@ -239,4 +243,5 @@ struct MeadowHeroCaster {
     let foot: CGPoint
     let facing: Int
     let frame: Int
+    var phase: CGFloat = 0
 }

@@ -93,10 +93,10 @@ final class GaitReviewScene: SKScene {
         let names = ["正面", "向左", "背面", "向右", "右下", "左下", "左上", "右上"]
         let distance = CGFloat(elapsed) * 42
         let frame = WalkCycle.frame(at: distance)
+        let phase = distance.truncatingRemainder(dividingBy: 24) / 24
         let angle = CGFloat(Int(elapsed / 3) % 8) * .pi / 4
         let travel = CGFloat(elapsed.truncatingRemainder(dividingBy: 3) - 1.5) * 126
         let offset = CGPoint(x: sin(angle) * travel, y: -cos(angle) * travel)
-        let lift = abs(sin(distance / 24 * 2 * .pi)) * 0.85 * 3
         heading.text = "八方向步态 · " + names[direction]
         // UI verification can identify the fitted, visible review instead of
         // accepting a successfully launched app with all sprites off-screen.
@@ -113,13 +113,17 @@ final class GaitReviewScene: SKScene {
         }
         for index in actors.indices {
             let texture = frames[index][direction][frame]
+            let pose = HeroPose(heroIndex: index, facing: direction, frame: frame, phase: phase)
             actors[index].texture = texture
+            actors[index].xScale = HeroFrames.isMirrored(direction) ? -1 : 1
+            actors[index].warpGeometry = pose.warpGeometry()
             let foot = CGPoint(x: feet[index].x + offset.x, y: feet[index].y + offset.y)
-            actors[index].position = CGPoint(x: foot.x, y: foot.y + lift)
+            let poseOffset = pose.bodyOffset(size: actors[index].size)
+            actors[index].position = CGPoint(x: foot.x + poseOffset.x, y: foot.y + poseOffset.y)
             contacts[index].position = foot
             labels[index].position = CGPoint(x: foot.x, y: foot.y - 58)
             let gait = SIMD2(Float(direction), Float(frame))
-            effects.apply(effects.vegetation, to: actors[index], origin: CGPoint(x: foot.x, y: -foot.y - 50),
+            effects.apply(effects.vegetation, to: actors[index], origin: CGPoint(x: actors[index].position.x, y: -actors[index].position.y - 50),
                           extent: actors[index].size, gait: gait)
             shadows[index].update(foot: actors[index].position, texture: texture, gait: gait, sun: effects.currentCast)
         }

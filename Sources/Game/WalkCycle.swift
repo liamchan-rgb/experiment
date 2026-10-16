@@ -7,7 +7,9 @@ struct WalkCycle {
     private(set) var moving = false
     private(set) var frame = 0
     var phase: CGFloat { distance.truncatingRemainder(dividingBy: 24) / 24 }
-    var lift: CGFloat { moving ? abs(sin(phase * 2 * .pi)) * 0.85 : 0 }
+    // The authored contact and passing frames already contain their leg lift.
+    // Adding a whole-body bob raises every contact sole off the trail.
+    var lift: CGFloat { 0 }
 
     // Clockwise from screen-down. Art rows retain the original cardinal order.
     private static let rows = [0, 4, 3, 7, 2, 6, 1, 5]

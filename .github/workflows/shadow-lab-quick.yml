@@ -126,6 +126,12 @@ jobs:
             -only-testing:MeadowJourneyTests/TrailTests/testShadowLabCutoutPipelineSubmitsContourModes \
             -only-testing:MeadowJourneyTests/TrailTests/testMeadowAllAssetsSubmitSharedShadowDepth \
             -only-testing:MeadowJourneyTests/TrailTests/testMeadowGroundContainsOpaqueGrassRoadsAndShadows \
+            -only-testing:MeadowJourneyTests/TrailTests/testHeroWarpMatchesCasterProjectionAcrossContactPhases \
+            -only-testing:MeadowJourneyTests/TrailTests/testHeroPoseAlternatesWholeLegReachAcrossAllHeadings \
+            -only-testing:MeadowJourneyTests/TrailTests/testHeroPosePassesContinuouslyBetweenRepeatedPassingFrames \
+            -only-testing:MeadowJourneyTests/TrailTests/testWalkCycleDoesNotLiftAuthoredContactSoles \
+            -only-testing:MeadowJourneyTests/TrailTests/testHeroFramesUsesWholeMirroredProfileForRightFacing \
+            -only-testing:MeadowJourneyTests/TrailTests/testHeroPoseSpriteKitRenderingKeepsAllHeroContoursConnected \
             -only-testing:MeadowJourneyTests/TrailTests/testReliefPreservesArtCoordinatesForEveryAsset \
             -only-testing:MeadowJourneyTests/TrailTests/testRoadMaskUsesOneUnionAtJunctions \
             -only-testing:MeadowJourneyTests/TrailTests/testOnlyTheTowerGetsAnAdditionalBanner \
@@ -144,7 +150,7 @@ jobs:
         run: |
           set -euo pipefail
           mkdir -p build/review
-          xcrun simctl io '${{ steps.simulator.outputs.udid }}' screenshot build/review/iPhone-ground.png
+          python3 scripts/export-ground-review.py build/ShadowLabSmoke.xcresult build/review iPhone
           xcrun simctl shutdown '${{ steps.simulator.outputs.udid }}'
           python3 scripts/select-simulator.py iPad > build/ipad-udid.txt
           simulator_udid="$(cat build/ipad-udid.txt)"
@@ -162,7 +168,7 @@ jobs:
             -resultBundlePath build/MapIPad.xcresult \
             -parallel-testing-enabled NO CODE_SIGNING_ALLOWED=NO \
             2>&1 | tee build/logs/ipad-ground.log
-          xcrun simctl io '${{ steps.ipad.outputs.udid }}' screenshot build/review/iPad-ground.png
+          python3 scripts/export-ground-review.py build/MapIPad.xcresult build/review iPad
 
       - name: Upload actual ground captures
         if: ${{ always() }}

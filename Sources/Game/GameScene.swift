@@ -237,7 +237,7 @@ final class GameScene: SKScene {
 
     override func didFinishUpdate() {
         guard world != nil, simulation != nil else { return }
-        let heroes = actors.indices.map { MeadowHeroCaster(index: $0, foot: simulation.point(for: $0), facing: walks[$0].facing, frame: walks[$0].frame) }
+        let heroes = actors.indices.map { MeadowHeroCaster(index: $0, foot: simulation.point(for: $0), facing: walks[$0].facing, frame: walks[$0].frame, phase: walks[$0].phase) }
         onRenderGround?(world, cameraCenter, baseScale * zoom, environmentTime, heroes)
     }
 
@@ -251,7 +251,10 @@ final class GameScene: SKScene {
             let gait = SIMD2(Float(walk.facing), Float(walk.frame))
             let texture = frames[index][walk.facing][walk.frame]
             actors[index].texture = texture
-            actors[index].position = CGPoint(x: 0, y: walk.lift)
+            actors[index].xScale = HeroFrames.isMirrored(walk.facing) ? -1 : 1
+            let pose = HeroPose(heroIndex: index, facing: walk.facing, frame: walk.frame, phase: walk.phase)
+            actors[index].warpGeometry = pose.warpGeometry()
+            actors[index].position = pose.bodyOffset(size: actors[index].size)
             actorRoots[index].position = LivingWorld.position(point)
             actorRoots[index].zPosition = 10000 + point.y
             actorLabels[index].position = actorRoots[index].position + CGPoint(x: 0, y: -13)
