@@ -23,6 +23,8 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
     private var mapPresentationBegan: TimeInterval = 0
     private var groundView: MTKView?
     private var groundRenderer: MeadowShadowRenderer?
+    private var groundDrawableScale: CGFloat = 1
+    private var gpuFallbackCount = 0
     private let titleButton = ParchmentButton(symbol: .title)
     private let playButton = ParchmentButton(symbol: .play)
     private let resetButton = ParchmentButton(symbol: .reset)
@@ -180,13 +182,7 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
         super.viewDidLayoutSubviews()
         gameView.frame = view.bounds
         groundView?.frame = view.bounds
-        if let groundView {
-            // One pixel per UIKit point avoids rendering a Retina-sized
-            // background that the display will immediately downsample.
-            let size = CGSize(width: max(1, view.bounds.width.rounded(.up)),
-                              height: max(1, view.bounds.height.rounded(.up)))
-            if groundView.drawableSize != size { groundView.drawableSize = size }
-        }
+        updateGroundDrawableSize()
         loadingView.frame = view.bounds
         let inset = view.safeAreaInsets
         let top = max(inset.top, 6)
@@ -236,9 +232,10 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
             switch result {
             case .success(let prepared):
                 self.groundRenderer = prepared.renderer
+                self.scene.shadowMapSize = prepared.renderer?.shadowSize ?? 0
                 self.groundRenderer?.alignmentReview = ProcessInfo.processInfo.arguments.contains("-alignmentReview")
                 self.groundRenderer?.onFirstFrameCompleted = { [weak self] in self?.groundBecameReady = true; self?.finishLoading() }
-                self.groundRenderer?.onFrameFailed = { [weak self] error in self?.failRendering(error) }
+                self.groundRenderer?.onFrameFailed = { [weak self] error in self?.recoverAfterGPUFailure(error) }
                 let warmup = MeadowWarmupScene(size: self.gameView.bounds.size, prepared: prepared, progress: { [weak self] value in
                     self?.reportLoadingProgress(Float(0.90 + value * 0.06), text: "准备场景显示")
                 }) { [weak self] timings in
@@ -288,7 +285,10 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
             "mainThreadLongestGap": max(longestHeartbeatGap, now - lastHeartbeat), "heartbeats": Double(loadingHeartbeats)]
             .merging(setupTimings, uniquingKeysWith: { _, new in new })
             .merging(scene.setupTimings, uniquingKeysWith: { _, new in new })
-        scene.shadowReady = groundRenderer != nil
+        scene.shadowReady = groundRenderer?.shadowsEnabled ?? false
+        scene.shadowMapSize = groundRenderer?.shadowSize ?? 0
+        scene.gpuFallbackCount = gpuFallbackCount
+        scene.groundDrawableScale = Double(groundDrawableScale)
         scene.refreshDiagnostics()
         loadingView.update(1, text: "准备就绪")
         loadingView.isHidden = true
@@ -299,6 +299,35 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
         gameView.isUserInteractionEnabled = enabled
         for button in [titleButton, playButton, resetButton, zoomButton] { button.isEnabled = enabled }
         shadowLabButton.isEnabled = enabled
+    }
+
+    private func updateGroundDrawableSize() {
+        guard let groundView else { return }
+        // Start at one pixel per UIKit point; GPU recovery can lower this to
+        // half or quarter resolution while retaining the same view geometry.
+        let size = CGSize(width: max(1, (view.bounds.width * groundDrawableScale).rounded(.up)),
+                          height: max(1, (view.bounds.height * groundDrawableScale).rounded(.up)))
+        if groundView.drawableSize != size { groundView.drawableSize = size }
+    }
+
+    private func recoverAfterGPUFailure(_ error: Error) {
+        guard !loadingFailed else { return }
+        guard let fallback = groundRenderer?.reduceQualityAfterGPUFailure() else {
+            failRendering(error)
+            return
+        }
+        gpuFallbackCount += 1
+        groundDrawableScale = max(0.25, groundDrawableScale * 0.5)
+        updateGroundDrawableSize()
+        scene.shadowReady = groundRenderer?.shadowsEnabled ?? false
+        scene.shadowMapSize = groundRenderer?.shadowSize ?? 0
+        scene.gpuFallbackCount = gpuFallbackCount
+        scene.groundDrawableScale = Double(groundDrawableScale)
+        scene.refreshDiagnostics()
+        if !ready {
+            firstFrameWaitSeconds = 0
+            reportLoadingProgress(0.99, text: "GPU 超时，\(fallback)；降低画质重试")
+        }
     }
 
     private func failRendering(_ error: Error) { showLoadingFailure(error) }
@@ -314,7 +343,11 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
             "loadingError": error.localizedDescription, "loadingProgress": loadingProgress,
             "loadingStage": loadingStage,
             "foregroundReady": foregroundBecameReady, "groundReady": groundBecameReady,
-            "shadowFrames": groundRenderer?.submittedFrames ?? 0
+            "shadowFrames": groundRenderer?.submittedFrames ?? 0,
+            "gpuFallbackCount": gpuFallbackCount,
+            "shadowMapSize": groundRenderer?.shadowSize ?? 0,
+            "shadowsEnabled": groundRenderer?.shadowsEnabled ?? false,
+            "groundDrawableScale": groundDrawableScale
         ]), let text = String(data: data, encoding: .utf8) { gameView.accessibilityValue = text }
     }
 

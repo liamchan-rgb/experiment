@@ -85,6 +85,24 @@ final class TrailTests: XCTestCase {
         }
     }
 
+    func testMeadowRendererStepsDownAfterGPUFailures() throws {
+        let world = LivingWorld(definition: .load())
+        let renderer = try MeadowShadowRenderer(device: XCTUnwrap(MTLCreateSystemDefaultDevice()), world: world)
+        XCTAssertEqual(renderer.shadowSize, 2048)
+        XCTAssertTrue(renderer.shadowsEnabled)
+
+        XCTAssertEqual(renderer.reduceQualityAfterGPUFailure(), "实时阴影图降至 1024")
+        XCTAssertEqual(renderer.shadowSize, 1024)
+        XCTAssertTrue(renderer.shadowsEnabled)
+        try renderer.validateSubmission(world: world, heroes: [])
+
+        XCTAssertEqual(renderer.reduceQualityAfterGPUFailure(), "关闭实时阴影")
+        XCTAssertFalse(renderer.shadowsEnabled)
+        try renderer.validateSubmission(world: world, heroes: [])
+
+        XCTAssertNil(renderer.reduceQualityAfterGPUFailure(), "The renderer must stop retrying after both fallback tiers")
+    }
+
     func testHeroWarpMatchesCasterProjectionAcrossContactPhases() {
         var maximumError: Float = 0
         var maximumSoleHeight: Float = 0

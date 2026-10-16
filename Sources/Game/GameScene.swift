@@ -25,6 +25,9 @@ final class GameScene: SKScene {
     var isRunning: Bool { simulation?.isPlaying ?? false }
     var shadowReady = false
     var shadowFrames = 0
+    var shadowMapSize = 0
+    var gpuFallbackCount = 0
+    var groundDrawableScale: Double = 1
     var startupMetrics: [String: Double] = [:]
     private(set) var setupTimings: [String: Double] = [:]
     var onForegroundReady: (() -> Void)?
@@ -409,6 +412,7 @@ final class GameScene: SKScene {
             "textureBudgetMiB": world.definition.textureBudgetMiB,
             "independentProps": world.objectCount, "roads": world.network.edges.count,
             "projectedShadows": world.shadowCount + actors.count, "shadowRenderer": "image-alpha relief Metal depth map", "shadowReady": shadowReady, "shadowFrames": shadowFrames,
+            "shadowMapSize": shadowMapSize, "gpuFallbackCount": gpuFallbackCount, "groundDrawableScale": groundDrawableScale,
             "sunDirection": ["x": Double(world.effects.currentCast.dx), "y": Double(world.effects.currentCast.dy)],
             "environmentTime": environmentTime, "zoom": Double(zoom),
             "selected": simulation.selected, "isPlaying": simulation.isPlaying,

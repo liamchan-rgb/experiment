@@ -14,7 +14,12 @@ on:
         options: [macos-15, macos-14]
         default: macos-15
       quick_lab:
-        description: 'Build IPA and run focused map, contour, gait and interaction checks'
+        description: 'Build IPA and optionally run focused iPad map, contour, gait and interaction checks'
+        required: false
+        type: boolean
+        default: false
+      package_only:
+        description: 'When quick_lab is enabled, build and upload the IPA without simulator checks'
         required: false
         type: boolean
         default: false
@@ -37,6 +42,7 @@ jobs:
     uses: ./.github/workflows/shadow-lab-quick.yml
     with:
       macos_runner: ${{ inputs.macos_runner || 'macos-15' }}
+      package_only: ${{ inputs.package_only }}
 
   recover-review:
     name: Prepare compact review from an existing successful build

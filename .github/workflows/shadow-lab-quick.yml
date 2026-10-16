@@ -2,12 +2,22 @@ name: Shadow Lab Quick Build
 
 on:
   workflow_dispatch:
+    inputs:
+      package_only:
+        description: 'Build and upload the unsigned iPad IPA without starting simulator checks'
+        type: boolean
+        required: false
+        default: false
   workflow_call:
     inputs:
       macos_runner:
         type: string
         required: false
         default: macos-15
+      package_only:
+        type: boolean
+        required: false
+        default: false
 
 permissions:
   contents: read
@@ -77,6 +87,7 @@ jobs:
 
   smoke:
     name: Map and Contour Checks (${{ matrix.device }})
+    if: ${{ !inputs.package_only }}
     runs-on: ${{ inputs.macos_runner || 'macos-15' }}
     timeout-minutes: 40
     strategy:
