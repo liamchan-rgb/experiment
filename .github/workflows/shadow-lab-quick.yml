@@ -139,12 +139,18 @@ jobs:
             CODE_SIGNING_ALLOWED=NO \
             2>&1 | tee build/logs/shadow-lab-smoke.log
 
-      - name: Capture iPhone ground and boot iPad
+      - name: Export iPhone screen evidence, including failed assertions
+        if: ${{ always() }}
+        run: |
+          if [ -d build/ShadowLabSmoke.xcresult ]; then
+            python3 scripts/export-ground-review.py build/ShadowLabSmoke.xcresult build/review iPhone
+          fi
+
+      - name: Boot iPad
         id: ipad
         run: |
           set -euo pipefail
           mkdir -p build/review
-          python3 scripts/export-ground-review.py build/ShadowLabSmoke.xcresult build/review iPhone
           xcrun simctl shutdown '${{ steps.simulator.outputs.udid }}'
           python3 scripts/select-simulator.py iPad > build/ipad-udid.txt
           simulator_udid="$(cat build/ipad-udid.txt)"
@@ -163,7 +169,13 @@ jobs:
             -resultBundlePath build/MapIPad.xcresult \
             -parallel-testing-enabled NO CODE_SIGNING_ALLOWED=NO \
             2>&1 | tee build/logs/ipad-ground.log
-          python3 scripts/export-ground-review.py build/MapIPad.xcresult build/review iPad
+
+      - name: Export iPad screen evidence, including failed assertions
+        if: ${{ always() }}
+        run: |
+          if [ -d build/MapIPad.xcresult ]; then
+            python3 scripts/export-ground-review.py build/MapIPad.xcresult build/review iPad
+          fi
 
       - name: Upload actual ground captures
         if: ${{ always() }}

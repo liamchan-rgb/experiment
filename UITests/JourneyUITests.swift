@@ -19,6 +19,7 @@ final class JourneyUITests: XCTestCase {
             assertCameraLandmarks("\(zoom)")
         }
         map.pinch(withScale: 1.3, velocity: 1)
+        XCTAssertGreaterThanOrEqual(diagnostics(app)["zoom"] as? Double ?? 0, 1.79)
         assertCameraLandmarks("pinch-max")
         app.buttons["resetButton"].tap()
         assertCameraLandmarks("reset")
@@ -67,14 +68,14 @@ final class JourneyUITests: XCTestCase {
             return result
         }
         let red = centers(red: true), cyan = centers(red: false)
+        let attachment = XCTAttachment(screenshot: screenshot)
+        attachment.name = "main-ground-alignment-\(name)"; attachment.lifetime = .keepAlways; add(attachment)
         XCTAssertEqual(red.count, 3, "Foreground calibration points missing: \(name)")
         XCTAssertEqual(cyan.count, 3, "Receiver calibration points missing: \(name)")
         for point in red {
             let error = cyan.map { hypot(point.x - $0.x, point.y - $0.y) }.min() ?? 1000
             XCTAssertLessThan(error, 2, "Foreground/receiver drift in actual screen pixels: \(name)")
         }
-        let attachment = XCTAttachment(screenshot: screenshot)
-        attachment.name = "main-ground-alignment-\(name)"; attachment.lifetime = .keepAlways; add(attachment)
     }
 
     func testMapContourRendererAndInteraction() {
@@ -100,6 +101,11 @@ final class JourneyUITests: XCTestCase {
         app.buttons["zoomButton"].tap()
         XCTAssertEqual(app.buttons["zoomButton"].value as? String, "125%")
         assertVisibleGround(map, name: "main-ground-zoom")
+        app.buttons["zoomButton"].tap()
+        app.buttons["zoomButton"].tap()
+        map.pinch(withScale: 1.3, velocity: 1)
+        XCTAssertGreaterThanOrEqual(diagnostics(app)["zoom"] as? Double ?? 0, 1.79)
+        assertVisibleGround(map, name: "main-ground-real-map-max-zoom")
         app.buttons["resetButton"].tap()
         XCTAssertEqual(play.label, "开始行旅")
         XCTAssertEqual(app.buttons["zoomButton"].value as? String, "100%")
