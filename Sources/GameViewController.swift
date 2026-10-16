@@ -15,6 +15,8 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
     private var lastHeartbeat: TimeInterval = 0
     private var longestHeartbeatGap: TimeInterval = 0
     private var loadingHeartbeats = 0
+    private var firstFrameWaitSeconds: TimeInterval?
+    private var loadingFailed = false
     private var groundView: MTKView?
     private var groundRenderer: MeadowShadowRenderer?
     private let titleButton = ParchmentButton(symbol: .title)
@@ -125,6 +127,7 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
             guard let self else { return }
             let playing = self.scene.isRunning, zoom = self.scene.zoom
             DispatchQueue.main.async {
+                guard !self.loadingFailed else { return }
                 self.gameView.accessibilityValue = self.reviewMode ? text : (playing ? "旅人移动中" : "旅人暂停")
                 self.zoomButton.accessibilityValue = "\(Int(round(zoom * 100)))%"
             }
@@ -199,6 +202,15 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
             guard let self else { return }
             let now = ProcessInfo.processInfo.systemUptime
             self.longestHeartbeatGap = max(self.longestHeartbeatGap, now - self.lastHeartbeat)
+            if let waited = self.firstFrameWaitSeconds, UIApplication.shared.applicationState == .active {
+                // Count active heartbeat time; app suspension must not consume
+                // the first-frame timeout when the user returns to loading.
+                let elapsed = waited + min(now - self.lastHeartbeat, 1)
+                self.firstFrameWaitSeconds = elapsed
+                if elapsed >= 20 {
+                    self.failRendering(ShadowLabError.setup("首帧渲染等待超时，请重新加载"))
+                }
+            }
             self.lastHeartbeat = now; self.loadingHeartbeats += 1
         }
         MeadowLoader.load(device: groundView?.device, progress: { [weak self] value, text in
@@ -217,6 +229,7 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
                     self.loadingView.update(Float(0.96 + value * 0.03), text: "布置场景")
                 }) {
                     self.loadingView.update(0.99, text: "显示林地")
+                    self.firstFrameWaitSeconds = 0
                     self.gameView.presentScene(self.scene)
                     if prepared.renderer == nil { self.finishLoading() }
                 }
@@ -226,8 +239,9 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
     }
 
     private func finishLoading() {
-        guard !ready, foregroundBecameReady, groundRenderer == nil || groundBecameReady else { return }
+        guard !ready, !loadingFailed, foregroundBecameReady, groundRenderer == nil || groundBecameReady else { return }
         ready = true
+        firstFrameWaitSeconds = nil
         let now = ProcessInfo.processInfo.systemUptime
         loadingTimer?.invalidate(); loadingTimer = nil
         scene.startupMetrics = ["seconds": now - loadingBegan,
@@ -246,11 +260,17 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
     }
 
     private func failRendering(_ error: Error) {
+        loadingFailed = true; firstFrameWaitSeconds = nil
         loadingTimer?.invalidate(); loadingTimer = nil
         gameView.isPaused = true
         setMapEnabled(false)
         loadingView.isHidden = false
         loadingView.failed(error)
+        if reviewMode, let data = try? JSONSerialization.data(withJSONObject: [
+            "loadingError": error.localizedDescription,
+            "foregroundReady": foregroundBecameReady, "groundReady": groundBecameReady,
+            "shadowFrames": groundRenderer?.submittedFrames ?? 0
+        ]), let text = String(data: data, encoding: .utf8) { gameView.accessibilityValue = text }
     }
 
     @objc private func togglePlayback() { scene.togglePlayback() }
