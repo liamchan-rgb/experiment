@@ -355,10 +355,12 @@ final class TrailTests: XCTestCase {
         let beforeGrid = before.destinationPositions()
         let afterGrid = after.destinationPositions()
         XCTAssertEqual(beforeGrid.count, afterGrid.count)
-        let largestStep = zip(beforeGrid, afterGrid).map { lhs, rhs in
-            let dx = lhs.x - rhs.x, dy = lhs.y - rhs.y
-            return (dx * dx + dy * dy).squareRoot()
-        }.max() ?? 0
+        var largestStep: Float = 0
+        for index in beforeGrid.indices {
+            let delta: SIMD2<Float> = beforeGrid[index] - afterGrid[index]
+            let squared: Float = delta.x * delta.x + delta.y * delta.y
+            largestStep = max(largestStep, squared.squareRoot())
+        }
         XCTAssertLessThan(largestStep, 0.001,
                           "The lower-leg warp must remain continuous as frame 2 becomes contact B")
 
