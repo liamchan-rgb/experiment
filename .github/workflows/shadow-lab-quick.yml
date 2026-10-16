@@ -82,7 +82,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        device: [iPhone, iPad]
+        device: [iPad]
     defaults:
       run:
         shell: bash
@@ -126,19 +126,17 @@ jobs:
             -only-testing:MeadowJourneyUITests/JourneyUITests/testMapContourRendererAndInteraction
             -only-testing:MeadowJourneyUITests/JourneyUITests/testForegroundAndShadowReceiverStayAlignedAtEveryZoom
           )
-          if [ "$REVIEW_DEVICE" = iPhone ]; then
-            for test in \
-              testShadowLabCutoutPipelineSubmitsContourModes \
-              testMeadowAllAssetsSubmitSharedShadowDepth \
-              testMeadowGroundContainsOpaqueGrassRoadsAndShadows \
-              testCapturedViewportKeepsGroundAndArtworkAlignedThroughZoomAndPan \
-              testHeroShadowAtlasChangesFramesWithoutLiveTextureUploads \
-              testReliefPreservesArtCoordinatesForEveryAsset \
-              testRoadMaskUsesOneUnionAtJunctions \
-              testOnlyTheTowerGetsAnAdditionalBanner; do
-              focused_tests+=("-only-testing:MeadowJourneyTests/TrailTests/$test")
-            done
-          fi
+          for test in \
+            testShadowLabCutoutPipelineSubmitsContourModes \
+            testMeadowAllAssetsSubmitSharedShadowDepth \
+            testMeadowGroundContainsOpaqueGrassRoadsAndShadows \
+            testCapturedViewportKeepsGroundAndArtworkAlignedThroughZoomAndPan \
+            testHeroShadowAtlasChangesFramesWithoutLiveTextureUploads \
+            testReliefPreservesArtCoordinatesForEveryAsset \
+            testRoadMaskUsesOneUnionAtJunctions \
+            testOnlyTheTowerGetsAnAdditionalBanner; do
+            focused_tests+=("-only-testing:MeadowJourneyTests/TrailTests/$test")
+          done
           xcodebuild test \
             -project "$PROJECT" -scheme "$SCHEME" -configuration Debug \
             -destination 'platform=iOS Simulator,id=${{ steps.simulator.outputs.udid }}' \

@@ -144,12 +144,12 @@ jobs:
             CODE_SIGNING_ALLOWED=NO \
             2>&1 | tee build/logs/simulator-build.log
 
-      - name: Choose an installed compatible iPhone simulator
+      - name: Choose an installed compatible iPad simulator
         id: simulator
         run: |
           set -euo pipefail
           xcrun simctl list --json > build/logs/simulator-inventory.json
-          if python3 scripts/select-simulator.py > build/simulator-udid.txt; then
+          if python3 scripts/select-simulator.py iPad > build/simulator-udid.txt; then
             :
           else
             status=$?
@@ -157,17 +157,15 @@ jobs:
               exit "$status"
             fi
             xcodebuild -downloadPlatform iOS 2>&1 | tee build/logs/runtime-download.log
-            python3 scripts/select-simulator.py > build/simulator-udid.txt
+            python3 scripts/select-simulator.py iPad > build/simulator-udid.txt
           fi
           simulator_udid="$(cat build/simulator-udid.txt)"
           echo "udid=$simulator_udid" >> "$GITHUB_OUTPUT"
+          echo "ipad_udid=$simulator_udid" >> "$GITHUB_OUTPUT"
           xcrun simctl bootstatus "$simulator_udid" -b \
             2>&1 | tee build/logs/simulator-boot.log
-          python3 scripts/select-simulator.py iPad > build/ipad-udid.txt
-          ipad_udid="$(cat build/ipad-udid.txt)"
-          echo "ipad_udid=$ipad_udid" >> "$GITHUB_OUTPUT"
 
-      - name: Run route logic and UI tests
+      - name: Run route logic and UI tests on iPad
         run: |
           set -euo pipefail
           xcodebuild test \
@@ -179,21 +177,6 @@ jobs:
             CODE_SIGNING_ALLOWED=NO \
             2>&1 | tee build/logs/tests.log
 
-      - name: Verify the iPad layout and ordered journey
-        run: |
-          set -euo pipefail
-          xcrun simctl shutdown '${{ steps.simulator.outputs.udid }}'
-          xcrun simctl bootstatus '${{ steps.simulator.outputs.ipad_udid }}' -b \
-            2>&1 | tee build/logs/ipad-boot.log
-          xcodebuild test \
-            -project "$PROJECT" -scheme "$SCHEME" -configuration Debug \
-            -destination 'platform=iOS Simulator,id=${{ steps.simulator.outputs.ipad_udid }}' \
-            -only-testing:MeadowJourneyUITests \
-            -derivedDataPath build/SimulatorDerivedData \
-            -resultBundlePath build/iPadResults.xcresult \
-            -parallel-testing-enabled NO CODE_SIGNING_ALLOWED=NO \
-            2>&1 | tee build/logs/ipad-tests.log
-
       - name: Export visual screenshots
         if: ${{ always() && steps.simulator.outcome == 'success' }}
         run: |
@@ -202,11 +185,6 @@ jobs:
             xcrun xcresulttool export attachments \
               --path build/TestResults.xcresult --output-path build/screenshots \
               2>&1 | tee build/logs/screenshot-export.log
-          fi
-          if [ -d build/iPadResults.xcresult ]; then
-            xcrun xcresulttool export attachments \
-              --path build/iPadResults.xcresult --output-path build/ipad-screenshots \
-              2>&1 | tee build/logs/ipad-screenshot-export.log
           fi
 
       - name: Record a native-resolution iPad dynamic scene
@@ -312,11 +290,10 @@ jobs:
             build/visual-review/*.png
             build/visual-review/*.json
             build/screenshots/**/*.png
-            build/ipad-screenshots/**/*.png
           if-no-files-found: error
           retention-days: 30
 
-      - name: Archive for physical iPhone and iPad without signing
+      - name: Archive generic iOS device IPA without signing
         run: |
           set -euo pipefail
           xcodebuild archive \
@@ -346,7 +323,6 @@ jobs:
           name: ios-visual-review-${{ github.run_id }}-${{ github.run_attempt }}
           path: |
             build/screenshots/
-            build/ipad-screenshots/
             build/visual-review/
           if-no-files-found: warn
           retention-days: 30
@@ -358,7 +334,6 @@ jobs:
           name: ios-test-results-${{ github.run_id }}-${{ github.run_attempt }}
           path: |
             build/TestResults.xcresult/
-            build/iPadResults.xcresult/
           if-no-files-found: warn
           retention-days: 30
 
