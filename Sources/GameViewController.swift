@@ -55,6 +55,7 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
         }
         if !ProcessInfo.processInfo.arguments.contains("-gaitReview"), let device = MTLCreateSystemDefaultDevice() {
             let ground = MTKView(frame: view.bounds, device: device)
+            ground.autoResizeDrawable = false
             ground.colorPixelFormat = .bgra8Unorm
             ground.isOpaque = true
             ground.clearColor = MTLClearColor(red: 0.15, green: 0.20, blue: 0.08, alpha: 1)
@@ -179,6 +180,13 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
         super.viewDidLayoutSubviews()
         gameView.frame = view.bounds
         groundView?.frame = view.bounds
+        if let groundView {
+            // One pixel per UIKit point avoids rendering a Retina-sized
+            // background that the display will immediately downsample.
+            let size = CGSize(width: max(1, view.bounds.width.rounded(.up)),
+                              height: max(1, view.bounds.height.rounded(.up)))
+            if groundView.drawableSize != size { groundView.drawableSize = size }
+        }
         loadingView.frame = view.bounds
         let inset = view.safeAreaInsets
         let top = max(inset.top, 6)

@@ -26,7 +26,9 @@ final class MeadowShadowRenderer {
     var alignmentReview = false
     var onFirstFrameCompleted: (() -> Void)?
     var onFrameFailed: ((Error) -> Void)?
-    private let inFlight = DispatchSemaphore(value: 2)
+    // Keep at most one terrain/shadow frame queued on iPad hardware. If the
+    // GPU is busy, the next SpriteKit callback simply skips this background frame.
+    private let inFlight = DispatchSemaphore(value: 1)
     private(set) var casterCount = 0
     private(set) var submittedFrames = 0
     private(set) var textureUploadCount = 0

@@ -191,3 +191,9 @@ build 14（1.5.1）改为两个视图分别由显示时钟调度：SpriteKit 只
 用户反馈 build 16 在“显示林地 · 99%”停住后进入加载失败页。检查加载状态机发现，20 秒首帧等待计时器在 SpriteKit 十阶段 shader／效果预热开始前启动，而地图要等预热与场景布置完成后才显示 99%；较慢的 iPad 会把前置工作时间错误计入地图首帧等待。现将计时器起点留在实际 `presentScene(map)` 后，并让失败页显示具体错误文本，便于识别仍存在的 Metal 或首帧问题。
 
 build 17（1.5.4）的设备 Release 归档、IPA 校验和 iPad 模拟器测试执行均成功：8 项原生检查与 2 项 UI 检查全部通过。工作流整体被标为失败，是因为后续“导出屏幕证据”步骤报错；没有导出截图附件。该步骤发生在测试之后，不影响测试执行结果，也没有据此声称实机验证已通过。IPA 为 17,381,160 字节，SHA-256 为 `b2a4b0027391bcf0f435debcfe00efa93d5c65ab399548c0c5fec677a6a87f17`，经典 ZIP_STORED 格式。已发布 [MeadowJourney-b17.ipa](../Downloads/MeadowJourney-b17.ipa)，来源和完整性记录见 [build 17 元数据](../Downloads/MeadowJourney-build17.json)。此包未签名，使用 SideStore 重签安装；99% 加载修复仍待用户 iPad 实机确认。
+
+### build 17 实机 GPU 超时，build 18 性能修正候选
+
+用户实机在进度完成、地图即将进入时停顿约一两秒，随后显示 `kIOGPUCommandBufferCallbackErrorTimeout`。该错误由已提交的 Metal 命令缓冲区回调，说明系统 GPU 执行超时，不是加载状态机的 99% 计时器再次触发。源码中主地图每帧重画 2048² 投影深度图，并在全屏 Retina 地表上进行九次 PCF 阴影比较和程序化地表计算；模拟器测试没有覆盖目标 iPad 的 GPU 吞吐，因此无法仅凭截图判定其中哪个阶段耗时最多。
+
+build 18 候选将地表 drawable 限制为每 UIKit point 一个像素（Retina iPad 上约为原像素数的四分之一），PCF 改为四个双线性比较采样，并将同时在途的地表帧从两帧收紧为一帧，繁忙时跳过背景帧。保留 2048² 实时深度阴影图，避免通过关闭阴影掩盖问题。应用版本升至 1.5.5 build 18；待 iPad 模拟器构建和屏幕检查完成后，再提供新的 IPA。物理 iPad 是否消除超时仍需用户复测。

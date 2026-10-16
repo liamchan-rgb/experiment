@@ -61,11 +61,15 @@ float labVisibility(float3 world, constant LabUniforms &u, depth2d<float> shadow
     float2 uv = float2(p.x * 0.5 + 0.5, 0.5 - p.y * 0.5);
     if (any(uv < 0) || any(uv > 1) || p.z < 0 || p.z > 1) return 1;
     constexpr sampler comparison(coord::normalized, address::clamp_to_edge, filter::linear, compare_func::less_equal);
-    float visibility = 0;
-    for (int y = -1; y <= 1; ++y) for (int x = -1; x <= 1; ++x) {
-        visibility += shadowMap.sample_compare(comparison, uv + float2(x, y) * u.options.y * 0.7, p.z - 0.00003);
-    }
-    return visibility / 9;
+    // Four bilinear comparison taps preserve soft PCF while cutting the
+    // full-screen shadow lookup count from nine to four on iPad GPUs.
+    float2 texel = float2(u.options.y * 0.7);
+    float depth = p.z - 0.00003;
+    float visibility = shadowMap.sample_compare(comparison, uv + texel * float2(-1, -1), depth);
+    visibility += shadowMap.sample_compare(comparison, uv + texel * float2( 1, -1), depth);
+    visibility += shadowMap.sample_compare(comparison, uv + texel * float2(-1,  1), depth);
+    visibility += shadowMap.sample_compare(comparison, uv + texel * float2( 1,  1), depth);
+    return visibility * 0.25;
 }
 
 fragment float4 labGroundFragment(LabRaster in [[stage_in]], constant LabUniforms &u [[buffer(1)]],
