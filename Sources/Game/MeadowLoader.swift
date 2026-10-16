@@ -73,6 +73,8 @@ enum MeadowLoader {
 
     /// Compile and submit the actual SpriteKit effect sources while the loading
     /// screen remains on the main thread. This scene is owned only by this queue.
+    /// UIKit font/shape preparation stays on the actual foreground scene: doing
+    /// it inside this offscreen background renderer can stall cold startup.
     private static func warmEffects(device: MTLDevice, textures: [String: SKTexture], effects: EnvironmentShaders) throws {
         guard let queue = device.makeCommandQueue(), let command = queue.makeCommandBuffer() else {
             throw ShadowLabError.setup("光效预热初始化失败")
@@ -87,15 +89,6 @@ enum MeadowLoader {
             sprite.position = CGPoint(x: 32, y: 32); sprite.zPosition = CGFloat(index)
             effects.apply(shader, to: sprite, origin: .zero, extent: sprite.size)
             scene.addChild(sprite)
-        }
-        let marker = SKShapeNode(ellipseOf: CGSize(width: 24, height: 12))
-        marker.position = CGPoint(x: 32, y: 32); marker.fillColor = .white; marker.alpha = 0.2
-        marker.zPosition = 7; scene.addChild(marker)
-        for (index, font) in ["Georgia-Bold", "HelveticaNeue-Medium"].enumerated() {
-            let label = SKLabelNode(fontNamed: font)
-            label.text = "P1 ? ✓"; label.fontSize = 12
-            label.position = CGPoint(x: 32, y: 18 + index * 16); label.zPosition = 8
-            scene.addChild(label)
         }
         let renderer = SKRenderer(device: device); renderer.scene = scene
         let pass = MTLRenderPassDescriptor(); pass.colorAttachments[0].texture = texture
