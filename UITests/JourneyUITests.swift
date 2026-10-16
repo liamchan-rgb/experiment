@@ -31,6 +31,7 @@ final class JourneyUITests: XCTestCase {
             print("LOADING_FAILURE_STATE", map.value ?? "none")
             let status = app.staticTexts["loadingStatus"]
             print("LOADING_FAILURE_STAGE", status.exists ? status.label : "loading page hidden")
+            print("LOADING_FAILURE_REASON", status.exists ? status.hint : "none")
             capture("main-ground-loading-failure")
         }
         XCTAssertEqual(result, .completed)

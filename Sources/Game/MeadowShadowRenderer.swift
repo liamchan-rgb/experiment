@@ -40,19 +40,23 @@ final class MeadowShadowRenderer {
     }
 
     init(device: MTLDevice, props: [SceneDefinition.Prop], roadMask: CGImage,
-         images: [String: CGImage] = [:], progress: ((Double) -> Void)? = nil) throws {
+         images: [String: CGImage] = [:], progress: ((Double, String) -> Void)? = nil) throws {
         self.device = device
+        progress?(0.02, "准备投影队列")
         guard let queue = device.makeCommandQueue(), let library = device.makeDefaultLibrary() else { throw ShadowLabError.setup("地图 Metal 初始化失败") }
         self.queue = queue
+        progress?(0.06, "分配阴影深度图")
         let descriptor = MTLTextureDescriptor.texture2DDescriptor(pixelFormat: .depth32Float, width: shadowSize, height: shadowSize, mipmapped: false)
         descriptor.storageMode = .private; descriptor.usage = [.renderTarget, .shaderRead]
         guard let depth = device.makeTexture(descriptor: descriptor) else { throw ShadowLabError.setup("地图深度贴图分配失败") }
         depthTexture = depth
+        progress?(0.10, "编译阴影着色器")
         let pipeline = MTLRenderPipelineDescriptor()
         pipeline.vertexFunction = library.makeFunction(name: "labCutoutShadowVertex")
         pipeline.fragmentFunction = library.makeFunction(name: "meadowCutoutShadowFragment")
         pipeline.depthAttachmentPixelFormat = .depth32Float
         depthPipeline = try device.makeRenderPipelineState(descriptor: pipeline)
+        progress?(0.20, "编译地面着色器")
         let color = MTLRenderPipelineDescriptor()
         color.vertexFunction = library.makeFunction(name: "labColorVertex")
         color.fragmentFunction = library.makeFunction(name: "meadowGroundFragment")
@@ -62,6 +66,7 @@ final class MeadowShadowRenderer {
         attachment.sourceRGBBlendFactor = .one; attachment.destinationRGBBlendFactor = .oneMinusSourceAlpha
         attachment.sourceAlphaBlendFactor = .one; attachment.destinationAlphaBlendFactor = .oneMinusSourceAlpha
         receiverPipeline = try device.makeRenderPipelineState(descriptor: color)
+        progress?(0.27, "准备地面深度状态")
         let state = MTLDepthStencilDescriptor(); state.depthCompareFunction = .lessEqual; state.isDepthWriteEnabled = true
         guard let depthState = device.makeDepthStencilState(descriptor: state) else { throw ShadowLabError.setup("地图深度状态失败") }
         self.depthState = depthState
@@ -71,6 +76,7 @@ final class MeadowShadowRenderer {
         mesh.triangle(a, SIMD3(c.x, a.y, 0), c); mesh.triangle(a, c, SIMD3(a.x, c.y, 0))
         guard let buffer = device.makeBuffer(bytes: mesh.vertices, length: mesh.vertices.count * MemoryLayout<ShadowLabVertex>.stride) else { throw ShadowLabError.setup("地图接收网格失败") }
         receiver = buffer
+        progress?(0.32, "生成物件投影网格")
         // Group static instances by their original art; the depth pass needs one draw per asset.
         var groups: [String: ShadowLabMesh] = [:]
         var art = images
@@ -86,7 +92,7 @@ final class MeadowShadowRenderer {
             // dictionary then appending copied all preceding vertices per prop.
             groups[prop.asset, default: ShadowLabMesh()].meadowCaster(instance,
                 mirrored: prop.mirror && asset == .flowers, wind: prop.wind, phase: Float(prop.x * 0.03 + prop.y * 0.017))
-            progress?(0.55 * Double(index + 1) / Double(max(1, props.count)))
+            progress?(0.32 + 0.40 * Double(index + 1) / Double(max(1, props.count)), "生成物件投影网格")
             casterCount += 1
         }
         // The pole and cloth also cast through their own transparent artwork.
@@ -104,7 +110,7 @@ final class MeadowShadowRenderer {
             let texture = try upload(assetImage(name)!)
             textures[name] = texture
             staticDraws.append(try draw(mesh, texture: texture, kind: ShadowLabAsset(rawValue: name)!.casterKind))
-            progress?(0.55 + 0.25 * Double(index + 1) / Double(max(1, groups.count)))
+            progress?(0.72 + 0.13 * Double(index + 1) / Double(max(1, groups.count)), "上传环境投影素材")
         }
         // Upload each hero atlas once during loading. Changing a walk frame
         // only changes UV bounds; it never decodes/crops/uploads on a live frame.
@@ -112,12 +118,12 @@ final class MeadowShadowRenderer {
             let name = "Hero\(hero)\(suffix)"
             guard let atlas = assetImage(name) else { throw ShadowLabError.setup("人物投影素材缺失") }
             textures[name] = try upload(atlas)
-            progress?(0.80 + Double((hero - 1) * 2 + (suffix == "Directions" ? 1 : 2)) / 6 * 0.17)
+            progress?(0.85 + Double((hero - 1) * 2 + (suffix == "Directions" ? 1 : 2)) / 6 * 0.13, "上传人物投影图集")
         } }
         guard let grass = assetImage("MeadowGround") else { throw ShadowLabError.setup("地表素材缺失") }
         textures["MeadowGround"] = try upload(grass)
         textures["RoadMask"] = try upload(roadMask)
-        progress?(1)
+        progress?(1, "完成地表投影")
     }
 
     static func root(_ point: CGPoint) -> SIMD3<Float> {

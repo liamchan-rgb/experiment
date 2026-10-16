@@ -15,6 +15,8 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
     private var lastHeartbeat: TimeInterval = 0
     private var longestHeartbeatGap: TimeInterval = 0
     private var loadingHeartbeats = 0
+    private var loadingStage = "准备进入林地"
+    private var loadingProgress: Float = 0
     private var firstFrameWaitSeconds: TimeInterval?
     private var loadingFailed = false
     private var setupTimings: [String: Double] = [:]
@@ -238,7 +240,7 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
                 }
                 self.firstFrameWaitSeconds = 0
                 self.gameView.presentScene(warmup)
-            case .failure(let error): self.loadingTimer?.invalidate(); self.loadingView.failed(error)
+            case .failure(let error): self.showLoadingFailure(error)
             }
         }
     }
@@ -261,8 +263,10 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
 
     private func reportLoadingProgress(_ value: Float, text: String) {
         guard !ready, !loadingFailed else { return }
+        loadingProgress = max(loadingProgress, min(1, value))
+        loadingStage = text
         loadingView.update(value, text: text)
-        if reviewMode { gameView.accessibilityValue = "{\"loadingProgress\":\(value),\"phase\":\"\(text)\"}" }
+        if reviewMode { gameView.accessibilityValue = "{\"loadingProgress\":\(loadingProgress),\"phase\":\"\(text)\"}" }
     }
 
     private func finishLoading() {
@@ -288,7 +292,9 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
         shadowLabButton.isEnabled = enabled
     }
 
-    private func failRendering(_ error: Error) {
+    private func failRendering(_ error: Error) { showLoadingFailure(error) }
+
+    private func showLoadingFailure(_ error: Error) {
         loadingFailed = true; firstFrameWaitSeconds = nil
         loadingTimer?.invalidate(); loadingTimer = nil
         gameView.isPaused = true
@@ -296,7 +302,8 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
         loadingView.isHidden = false
         loadingView.failed(error)
         if reviewMode, let data = try? JSONSerialization.data(withJSONObject: [
-            "loadingError": error.localizedDescription,
+            "loadingError": error.localizedDescription, "loadingProgress": loadingProgress,
+            "loadingStage": loadingStage,
             "foregroundReady": foregroundBecameReady, "groundReady": groundBecameReady,
             "shadowFrames": groundRenderer?.submittedFrames ?? 0
         ]), let text = String(data: data, encoding: .utf8) { gameView.accessibilityValue = text }

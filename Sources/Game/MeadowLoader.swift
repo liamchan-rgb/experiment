@@ -49,8 +49,9 @@ enum MeadowLoader {
                 }
                 let renderer: MeadowShadowRenderer?
                 if let device {
+                    report(0.50, "准备实时投影")
                     renderer = try MeadowShadowRenderer(device: device, props: props, roadMask: mask, images: images) {
-                        report(0.50 + $0 * 0.33, "准备实时投影")
+                        report(0.50 + $0 * 0.34, $1)
                     }
                 } else { renderer = nil }
                 let effects = EnvironmentShaders()
