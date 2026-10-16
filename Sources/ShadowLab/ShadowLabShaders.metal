@@ -108,3 +108,50 @@ fragment float4 meadowShadowReceiverFragment(LabRaster in [[stage_in]], constant
     float alpha = (1 - labVisibility(in.world, u, shadowMap)) * 0.61;
     return float4(float3(0.075, 0.105, 0.080) * alpha, alpha);
 }
+
+// Native opaque terrain: grass, road coverage and PCF reception are written in
+// one pass. There is no dependency on a separately scheduled SKRenderer pass.
+float meadowHash(float2 p) {
+    float3 q = fract(float3(p.x, p.y, p.x) * 0.1031);
+    q += dot(q, q.yzx + 33.33);
+    return fract((q.x + q.y) * q.z);
+}
+float meadowNoise(float2 p) {
+    float2 i = floor(p), f = fract(p); f = f * f * (3 - 2 * f);
+    return mix(mix(meadowHash(i), meadowHash(i + float2(1, 0)), f.x),
+               mix(meadowHash(i + float2(0, 1)), meadowHash(i + 1), f.x), f.y);
+}
+fragment float4 meadowGroundFragment(LabRaster in [[stage_in]], constant LabUniforms &u [[buffer(1)]],
+                                    constant float4 &settings [[buffer(2)]], texture2d<float> grassTexture [[texture(0)]],
+                                    depth2d<float> shadowMap [[texture(1)]], texture2d<float> roadMask [[texture(2)]]) {
+    constexpr sampler tile(coord::normalized, address::repeat, filter::linear);
+    constexpr sampler maskSampler(coord::normalized, address::clamp_to_edge, filter::linear);
+    float2 p = float2(in.world.x * 32 + 640, 360 - in.world.y * 32 * 0.8137334712);
+    float2 cell = floor(p / 190), weight = smoothstep(0.0, 1.0, fract(p / 190));
+    float2 uv = p / 440;
+    float2 a = cell, b = cell + float2(1, 0), c = cell + float2(0, 1), d = cell + 1;
+    float3 sa = grassTexture.sample(tile, uv + float2(meadowHash(a), meadowHash(a + 17.3))).rgb;
+    float3 sb = grassTexture.sample(tile, uv + float2(meadowHash(b), meadowHash(b + 17.3))).rgb;
+    float3 sc = grassTexture.sample(tile, uv + float2(meadowHash(c), meadowHash(c + 17.3))).rgb;
+    float3 sd = grassTexture.sample(tile, uv + float2(meadowHash(d), meadowHash(d + 17.3))).rgb;
+    float3 grass = mix(mix(sa, sb, weight.x), mix(sc, sd, weight.x), weight.y);
+    grass = mix(grass, float3(0.25, 0.34, 0.12), 0.15 + (1 - meadowNoise(p * 0.0037)) * 0.10);
+    grass = mix(float3(dot(grass, float3(0.299, 0.587, 0.114))), grass, 0.88);
+    float2 maskUV = (p - float2(-160, -220)) / float2(1600, 1160);
+    float4 mask = roadMask.sample(maskSampler, maskUV);
+    float edge = meadowNoise(p * 0.23) * 0.58 + meadowNoise(p * 0.73) * 0.28 + meadowHash(floor(p * 1.6)) * 0.14;
+    float coverage = smoothstep(0.10 + edge * 0.15, 0.58 + edge * 0.12, mask.r) * settings.x;
+    float patches = meadowNoise(p * 0.045), fine = meadowHash(floor(p * 1.5));
+    float3 soil = mix(float3(0.37, 0.32, 0.19), float3(0.59, 0.51, 0.32), patches * 0.64 + fine * 0.25);
+    soil *= 1 - mask.g * (0.035 + meadowNoise(p * 0.11) * 0.045);
+    float2 stoneCell = floor(p * 0.48), spot = fract(p * 0.48) - 0.5;
+    float stones = step(0.95, meadowHash(stoneCell)) * (1 - smoothstep(0.08, 0.25, length(spot)));
+    soil = mix(soil, float3(0.53, 0.50, 0.37), stones * 0.40);
+    float sparse = smoothstep(0.42, 0.72, meadowNoise(p * 0.31)) * (1 - coverage * 0.78);
+    float roadAlpha = coverage * (0.78 + patches * 0.10) * (1 - sparse * 0.70);
+    float cloud = smoothstep(0.25, 0.76, meadowNoise((p - float2(u.sunTime.w * 14, u.sunTime.w * 5)) * 0.0065));
+    float light = 0.65 + cloud * 0.36 + exp(-length(p - float2(-100, -170)) * 0.0012) * 0.07;
+    float3 base = mix(grass, soil, roadAlpha) * light;
+    float visibility = labVisibility(in.world, u, shadowMap);
+    return float4(base * mix(float3(0.38, 0.44, 0.43), float3(1), visibility), 1);
+}

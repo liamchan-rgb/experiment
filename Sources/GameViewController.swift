@@ -26,11 +26,17 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         gameView.frame = view.bounds
+        // Configure the layer before presenting the scene/creating its renderer.
+        gameView.isOpaque = false
+        gameView.allowsTransparency = true
+        gameView.backgroundColor = .clear
         view.addSubview(gameView)
         gameView.ignoresSiblingOrder = true
         if !ProcessInfo.processInfo.arguments.contains("-gaitReview"), let device = MTLCreateSystemDefaultDevice() {
             let ground = MTKView(frame: view.bounds, device: device)
             ground.colorPixelFormat = .bgra8Unorm
+            ground.isOpaque = true
+            ground.clearColor = MTLClearColor(red: 0.15, green: 0.20, blue: 0.08, alpha: 1)
             ground.isPaused = true
             ground.isUserInteractionEnabled = false
             ground.accessibilityElementsHidden = true

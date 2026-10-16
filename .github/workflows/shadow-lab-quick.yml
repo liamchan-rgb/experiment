@@ -20,7 +20,7 @@ jobs:
   archive:
     name: Device Release IPA
     runs-on: ${{ inputs.macos_runner || 'macos-15' }}
-    timeout-minutes: 20
+    timeout-minutes: 30
     defaults:
       run:
         shell: bash
@@ -78,7 +78,7 @@ jobs:
   smoke:
     name: Map and Contour Native Checks
     runs-on: ${{ inputs.macos_runner || 'macos-15' }}
-    timeout-minutes: 20
+    timeout-minutes: 30
     defaults:
       run:
         shell: bash
@@ -125,6 +125,7 @@ jobs:
             -destination 'platform=iOS Simulator,id=${{ steps.simulator.outputs.udid }}' \
             -only-testing:MeadowJourneyTests/TrailTests/testShadowLabCutoutPipelineSubmitsContourModes \
             -only-testing:MeadowJourneyTests/TrailTests/testMeadowAllAssetsSubmitSharedShadowDepth \
+            -only-testing:MeadowJourneyTests/TrailTests/testMeadowGroundContainsOpaqueGrassRoadsAndShadows \
             -only-testing:MeadowJourneyTests/TrailTests/testReliefPreservesArtCoordinatesForEveryAsset \
             -only-testing:MeadowJourneyTests/TrailTests/testRoadMaskUsesOneUnionAtJunctions \
             -only-testing:MeadowJourneyTests/TrailTests/testOnlyTheTowerGetsAnAdditionalBanner \
@@ -138,6 +139,40 @@ jobs:
             CODE_SIGNING_ALLOWED=NO \
             2>&1 | tee build/logs/shadow-lab-smoke.log
 
+      - name: Capture iPhone ground and boot iPad
+        id: ipad
+        run: |
+          set -euo pipefail
+          mkdir -p build/review
+          xcrun simctl io '${{ steps.simulator.outputs.udid }}' screenshot build/review/iPhone-ground.png
+          xcrun simctl shutdown '${{ steps.simulator.outputs.udid }}'
+          python3 scripts/select-simulator.py iPad > build/ipad-udid.txt
+          simulator_udid="$(cat build/ipad-udid.txt)"
+          echo "udid=$simulator_udid" >> "$GITHUB_OUTPUT"
+          xcrun simctl bootstatus "$simulator_udid" -b 2>&1 | tee build/logs/ipad-boot.log
+
+      - name: Verify actual composited iPad ground and interaction
+        run: |
+          set -euo pipefail
+          xcodebuild test-without-building \
+            -project "$PROJECT" -scheme "$SCHEME" -configuration Debug \
+            -destination 'platform=iOS Simulator,id=${{ steps.ipad.outputs.udid }}' \
+            -only-testing:MeadowJourneyUITests/JourneyUITests/testMapContourRendererAndInteraction \
+            -derivedDataPath build/SimulatorDerivedData \
+            -resultBundlePath build/MapIPad.xcresult \
+            -parallel-testing-enabled NO CODE_SIGNING_ALLOWED=NO \
+            2>&1 | tee build/logs/ipad-ground.log
+          xcrun simctl io '${{ steps.ipad.outputs.udid }}' screenshot build/review/iPad-ground.png
+
+      - name: Upload actual ground captures
+        if: ${{ always() }}
+        uses: actions/upload-artifact@v7
+        with:
+          name: map-ground-review
+          path: build/review/
+          if-no-files-found: warn
+          retention-days: 30
+
       - name: Upload smoke logs and test result
         if: ${{ always() }}
         uses: actions/upload-artifact@v7
@@ -146,5 +181,6 @@ jobs:
           path: |
             build/logs/
             build/ShadowLabSmoke.xcresult/
+            build/MapIPad.xcresult/
           if-no-files-found: warn
           retention-days: 30

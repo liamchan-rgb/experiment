@@ -8,6 +8,7 @@ final class LivingWorld: SKNode {
     let effects = EnvironmentShaders()
     private var textures: [String: SKTexture] = [:]
     let terrain = SKNode()
+    private(set) var roadMask: CGImage!
     private(set) var casterProps: [SceneDefinition.Prop] = []
     private(set) var shadowCount = 0
     private(set) var objectCount = 0
@@ -50,6 +51,7 @@ final class LivingWorld: SKNode {
 
     private func buildRoads() {
         let mask = MeadowRoadMask.make(network: network, bounds: Self.bounds)
+        roadMask = mask
         let road = SKSpriteNode(texture: SKTexture(cgImage: mask), size: Self.bounds.size)
         road.position = Self.position(CGPoint(x: Self.bounds.midX, y: Self.bounds.midY))
         road.shader = effects.soil

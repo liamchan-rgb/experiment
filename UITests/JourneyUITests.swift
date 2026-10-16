@@ -1,4 +1,5 @@
 import XCTest
+import UIKit
 
 final class JourneyUITests: XCTestCase {
     func testMapContourRendererAndInteraction() {
@@ -14,10 +15,12 @@ final class JourneyUITests: XCTestCase {
         let state = diagnostics(app)
         XCTAssertGreaterThan(state["shadowFrames"] as? Int ?? 0, 0)
         XCTAssertEqual(state["shadowRenderer"] as? String, "image-alpha relief Metal depth map")
+        assertVisibleGround(map, name: "main-ground-visible")
         let play = app.buttons["playButton"]
         play.tap(); XCTAssertEqual(play.label, "暂停行旅")
         app.buttons["zoomButton"].tap()
         XCTAssertEqual(app.buttons["zoomButton"].value as? String, "125%")
+        assertVisibleGround(map, name: "main-ground-zoom")
         app.buttons["resetButton"].tap()
         XCTAssertEqual(play.label, "开始行旅")
         XCTAssertEqual(app.buttons["zoomButton"].value as? String, "100%")
@@ -26,6 +29,7 @@ final class JourneyUITests: XCTestCase {
         XCTAssertFalse(app.buttons["shadowLabCasterMode"].exists)
         app.buttons["shadowLabClose"].tap()
         XCTAssertTrue(map.waitForExistence(timeout: 15))
+        assertVisibleGround(map, name: "main-ground-return")
     }
 
     func testShadowLabControlsAndLayout() {
@@ -126,6 +130,32 @@ final class JourneyUITests: XCTestCase {
         XCTAssertEqual(resumed["mode"] as? String, "destination")
         XCTAssertEqual(resumed["goal"] as! [String: Double], destination)
         capture("05-ordered-journey")
+    }
+
+    private func assertVisibleGround(_ map: XCUIElement, name: String) {
+        let screenshot = XCUIScreen.main.screenshot()
+        guard let image = screenshot.image.cgImage else { return XCTFail("Screen capture unavailable") }
+        let w = image.width, h = image.height
+        var rgba = [UInt8](repeating: 0, count: w * h * 4)
+        let rendered = rgba.withUnsafeMutableBytes { raw -> Bool in
+            guard let context = CGContext(data: raw.baseAddress, width: w, height: h, bitsPerComponent: 8, bytesPerRow: w * 4,
+                space: CGColorSpaceCreateDeviceRGB(), bitmapInfo: CGBitmapInfo.byteOrder32Big.rawValue | CGImageAlphaInfo.premultipliedLast.rawValue) else { return false }
+            context.draw(image, in: CGRect(x: 0, y: 0, width: w, height: h)); return true
+        }
+        XCTAssertTrue(rendered)
+        let screen = screenshot.image.size
+        let rect = map.frame.insetBy(dx: map.frame.width * 0.08, dy: map.frame.height * 0.15)
+        var visible = 0, total = 0
+        for row in 0..<40 { for column in 0..<60 {
+            let x = min(w - 1, max(0, Int((rect.minX + rect.width * (CGFloat(column) + 0.5) / 60) * CGFloat(w) / screen.width)))
+            let y = min(h - 1, max(0, Int((rect.minY + rect.height * (CGFloat(row) + 0.5) / 40) * CGFloat(h) / screen.height)))
+            let offset = (y * w + x) * 4
+            if max(rgba[offset], max(rgba[offset + 1], rgba[offset + 2])) > 30 { visible += 1 }
+            total += 1
+        } }
+        XCTAssertGreaterThan(Double(visible) / Double(total), 0.75, "Black terrain regression in the actual composited screen: \(name)")
+        let attachment = XCTAttachment(screenshot: screenshot)
+        attachment.name = name; attachment.lifetime = .keepAlways; add(attachment)
     }
 
     private func capture(_ name: String) {

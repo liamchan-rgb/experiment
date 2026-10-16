@@ -7,6 +7,27 @@ import MetalKit
 final class TrailTests: XCTestCase {
     private let trail = Trail(points: [CGPoint(x: 0, y: 0), CGPoint(x: 30, y: 0), CGPoint(x: 30, y: 40)])
 
+    func testMeadowGroundContainsOpaqueGrassRoadsAndShadows() throws {
+        let world = LivingWorld(definition: .load())
+        let renderer = try MeadowShadowRenderer(device: XCTUnwrap(MTLCreateSystemDefaultDevice()), world: world)
+        let ground = try renderer.groundSnapshot(world: world)
+        let grass = try renderer.groundSnapshot(world: world, roads: false)
+        let lit = try renderer.groundSnapshot(world: world, shadows: false)
+        var visible = 0, opaque = 0, minimum = 255, maximum = 0
+        for offset in stride(from: 0, to: ground.bgra.count, by: 4) {
+            if ground.bgra[offset + 3] == 255 { opaque += 1 }
+            let green = Int(ground.bgra[offset + 1])
+            minimum = min(minimum, green); maximum = max(maximum, green)
+            if max(ground.bgra[offset], max(ground.bgra[offset + 1], ground.bgra[offset + 2])) > 24 { visible += 1 }
+        }
+        XCTAssertEqual(opaque, ground.bgra.count / 4)
+        XCTAssertGreaterThan(Double(visible) / Double(ground.bgra.count / 4), 0.95, "The entire terrain must be visible, including in shade")
+        XCTAssertGreaterThan(maximum - minimum, 25, "A flat clear color is not a textured ground")
+        XCTAssertGreaterThan(pixelDifference(ground.bgra, grass.bgra), 0.1, "Road coverage must reach the final target")
+        XCTAssertGreaterThan(pixelDifference(ground.bgra, lit.bgra), 0.1, "Depth shadows must reach the opaque ground")
+        attachLab(ground.image, "main-ground-native-pixels")
+    }
+
     func testShadowLabCutoutPipelineSubmitsContourModes() throws {
         let renderer = try ShadowLabRenderer(device: XCTUnwrap(MTLCreateSystemDefaultDevice()))
         for models in [false, true] {

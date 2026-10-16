@@ -2,7 +2,7 @@ import MetalKit
 import SpriteKit
 import simd
 
-/// The SpriteKit ground, image-alpha depth map and receiver share one Metal buffer.
+/// Native opaque terrain and image-alpha shadows share one Metal command buffer.
 /// SpriteKit's interactive foreground stays above this surface; no GPU pixels cross the CPU.
 final class MeadowShadowRenderer {
     private struct Draw {
@@ -19,9 +19,6 @@ final class MeadowShadowRenderer {
     private let depthPipeline: MTLRenderPipelineState
     private let receiverPipeline: MTLRenderPipelineState
     private let depthState: MTLDepthStencilState
-    private let groundRenderer: SKRenderer
-    private let groundScene = SKScene()
-    private let terrain: SKNode
     private let receiver: MTLBuffer
     private var staticDraws: [Draw] = []
     private var textures: [String: MTLTexture] = [:]
@@ -50,10 +47,10 @@ final class MeadowShadowRenderer {
         depthPipeline = try device.makeRenderPipelineState(descriptor: pipeline)
         let color = MTLRenderPipelineDescriptor()
         color.vertexFunction = library.makeFunction(name: "labColorVertex")
-        color.fragmentFunction = library.makeFunction(name: "meadowShadowReceiverFragment")
+        color.fragmentFunction = library.makeFunction(name: "meadowGroundFragment")
         color.colorAttachments[0].pixelFormat = .bgra8Unorm
         let attachment = color.colorAttachments[0]!
-        attachment.isBlendingEnabled = true
+        attachment.isBlendingEnabled = false
         attachment.sourceRGBBlendFactor = .one; attachment.destinationRGBBlendFactor = .oneMinusSourceAlpha
         attachment.sourceAlphaBlendFactor = .one; attachment.destinationAlphaBlendFactor = .oneMinusSourceAlpha
         receiverPipeline = try device.makeRenderPipelineState(descriptor: color)
@@ -66,11 +63,6 @@ final class MeadowShadowRenderer {
         mesh.triangle(a, SIMD3(c.x, a.y, 0), c); mesh.triangle(a, c, SIMD3(a.x, c.y, 0))
         guard let buffer = device.makeBuffer(bytes: mesh.vertices, length: mesh.vertices.count * MemoryLayout<ShadowLabVertex>.stride) else { throw ShadowLabError.setup("地图接收网格失败") }
         receiver = buffer
-        terrain = world.terrain
-        groundRenderer = SKRenderer(device: device)
-        groundScene.backgroundColor = .init(red: 0.31, green: 0.38, blue: 0.15, alpha: 1)
-        groundScene.scaleMode = .resizeFill
-        groundRenderer.scene = groundScene
         // Group static instances by their original art; the depth pass needs one draw per asset.
         var groups: [String: ShadowLabMesh] = [:]
         for prop in world.casterProps {
@@ -105,7 +97,10 @@ final class MeadowShadowRenderer {
             textures[name] = texture
             staticDraws.append(try draw(mesh, texture: texture, kind: ShadowLabAsset(rawValue: name)!.casterKind))
         }
-        terrain.removeFromParent(); groundScene.addChild(terrain)
+        guard let grass = UIImage(named: "MeadowGround")?.cgImage else { throw ShadowLabError.setup("地表素材缺失") }
+        textures["MeadowGround"] = try upload(grass)
+        textures["RoadMask"] = try upload(world.roadMask)
+        world.terrain.removeFromParent()
     }
 
     static func root(_ point: CGPoint) -> SIMD3<Float> {
@@ -145,7 +140,7 @@ final class MeadowShadowRenderer {
     }
 
     private func encode(command: MTLCommandBuffer, target: MTLRenderPassDescriptor, viewport: CGSize, center: CGPoint,
-                        scale: CGFloat, time: TimeInterval, sunCast: CGVector, heroes: [MeadowHeroCaster]) throws {
+                        scale: CGFloat, time: TimeInterval, sunCast: CGVector, heroes: [MeadowHeroCaster], shadows: Bool = true, roads: Bool = true) throws {
         var draws = staticDraws
         for hero in heroes {
             let texture = try heroTexture(hero)
@@ -161,7 +156,7 @@ final class MeadowShadowRenderer {
         let sun = simd_normalize(SIMD3(-Float(sunCast.dx) * up.z, Float(sunCast.dy) * up.z / up.y, 1))
         let light = ShadowLabMath.orthographic(halfWidth: 46, halfHeight: 46, near: 0.1, far: 180)
             * ShadowLabMath.lookAt(eye: sun * 85, target: .zero, up: SIMD3(0, 0, 1))
-        var u = ShadowLabUniforms(camera: camera, light: light, sunTime: SIMD4(sun, Float(time)), options: SIMD4(1, 1 / Float(shadowSize), 1, 1))
+        var u = ShadowLabUniforms(camera: camera, light: light, sunTime: SIMD4(sun, Float(time)), options: SIMD4(shadows ? 1 : 0, 1 / Float(shadowSize), 1, 1))
         let pass = MTLRenderPassDescriptor(); pass.depthAttachment.texture = depthTexture
         pass.depthAttachment.loadAction = .clear; pass.depthAttachment.storeAction = .store; pass.depthAttachment.clearDepth = 1
         guard let depth = command.makeRenderCommandEncoder(descriptor: pass) else { throw ShadowLabError.setup("地图深度通道失败") }
@@ -176,14 +171,19 @@ final class MeadowShadowRenderer {
             depth.drawPrimitives(type: .triangle, vertexStart: 0, vertexCount: item.count)
         }
         depth.endEncoding()
-        target.colorAttachments[0].loadAction = .load; target.colorAttachments[0].storeAction = .store
+        target.colorAttachments[0].loadAction = .clear; target.colorAttachments[0].storeAction = .store
+        target.colorAttachments[0].clearColor = MTLClearColor(red: 0.15, green: 0.20, blue: 0.08, alpha: 1)
         guard let color = command.makeRenderCommandEncoder(descriptor: target) else { throw ShadowLabError.setup("地图接收通道失败") }
-        color.label = "PCF shadow over shared grass and roads"
+        color.label = "Opaque grass + road material + PCF reception"
         color.setRenderPipelineState(receiverPipeline); color.setCullMode(.none)
         color.setVertexBuffer(receiver, offset: 0, index: 0)
         color.setVertexBytes(&u, length: MemoryLayout<ShadowLabUniforms>.stride, index: 1)
         color.setFragmentBytes(&u, length: MemoryLayout<ShadowLabUniforms>.stride, index: 1)
+        color.setFragmentTexture(textures["MeadowGround"], index: 0)
         color.setFragmentTexture(depthTexture, index: 1)
+        color.setFragmentTexture(textures["RoadMask"], index: 2)
+        var settings = SIMD4<Float>(roads ? 1 : 0, 0, 0, 0)
+        color.setFragmentBytes(&settings, length: MemoryLayout<SIMD4<Float>>.stride, index: 2)
         color.drawPrimitives(type: .triangle, vertexStart: 0, vertexCount: 6); color.endEncoding()
     }
 
@@ -199,10 +199,6 @@ final class MeadowShadowRenderer {
         guard let pass = view.currentRenderPassDescriptor, let drawable = view.currentDrawable, let command = queue.makeCommandBuffer() else { inFlight.signal(); return }
         do {
             let size = view.bounds.size
-            groundScene.size = size; terrain.position = world.position; terrain.setScale(world.xScale)
-            groundRenderer.update(atTime: time)
-            pass.colorAttachments[0].loadAction = .clear; pass.colorAttachments[0].storeAction = .store
-            groundRenderer.render(withViewport: CGRect(origin: .zero, size: view.drawableSize), commandBuffer: command, renderPassDescriptor: pass)
             try encode(command: command, target: pass, viewport: size, center: center, scale: scale, time: time, sunCast: world.effects.currentCast, heroes: heroes)
             let semaphore = inFlight; command.addCompletedHandler { _ in semaphore.signal() }
             command.present(drawable); command.commit(); submittedFrames += 1
@@ -211,16 +207,26 @@ final class MeadowShadowRenderer {
         } catch { inFlight.signal(); throw error }
     }
 
+    func groundSnapshot(world: LivingWorld, width: Int = 768, height: Int = 432, roads: Bool = true, shadows: Bool = true) throws -> (image: UIImage, bgra: [UInt8]) {
+        let d = MTLTextureDescriptor.texture2DDescriptor(pixelFormat: .bgra8Unorm, width: width, height: height, mipmapped: false)
+        d.storageMode = .shared; d.usage = .renderTarget
+        guard let target = device.makeTexture(descriptor: d), let command = queue.makeCommandBuffer() else { throw ShadowLabError.setup("地面检查缓冲区失败") }
+        let pass = MTLRenderPassDescriptor(); pass.colorAttachments[0].texture = target
+        try encode(command: command, target: pass, viewport: CGSize(width: width, height: height), center: CGPoint(x: 640, y: 360), scale: CGFloat(width) / 1280, time: 1, sunCast: world.effects.currentCast, heroes: [], shadows: shadows, roads: roads)
+        command.commit(); command.waitUntilCompleted()
+        if let error = command.error { throw error }
+        var bytes = [UInt8](repeating: 0, count: width * height * 4)
+        bytes.withUnsafeMutableBytes { target.getBytes($0.baseAddress!, bytesPerRow: width * 4, from: MTLRegionMake2D(0, 0, width, height), mipmapLevel: 0) }
+        guard let provider = CGDataProvider(data: Data(bytes) as CFData), let image = CGImage(width: width, height: height, bitsPerComponent: 8, bitsPerPixel: 32, bytesPerRow: width * 4, space: CGColorSpaceCreateDeviceRGB(), bitmapInfo: CGBitmapInfo.byteOrder32Little.union(CGBitmapInfo(rawValue: CGImageAlphaInfo.premultipliedFirst.rawValue)), provider: provider, decode: nil, shouldInterpolate: false, intent: .defaultIntent) else { throw ShadowLabError.setup("地面检查图像失败") }
+        return (UIImage(cgImage: image), bytes)
+    }
+
     /// Native pipeline execution check: no image readback or effect inspection.
     func validateSubmission(world: LivingWorld, heroes: [MeadowHeroCaster]) throws {
         let d = MTLTextureDescriptor.texture2DDescriptor(pixelFormat: .bgra8Unorm, width: 128, height: 72, mipmapped: false)
         d.storageMode = .private; d.usage = .renderTarget
         guard let texture = device.makeTexture(descriptor: d), let command = queue.makeCommandBuffer() else { throw ShadowLabError.setup("地图运行检查分配失败") }
         let pass = MTLRenderPassDescriptor(); pass.colorAttachments[0].texture = texture
-        groundScene.size = CGSize(width: 128, height: 72); terrain.setScale(0.1); terrain.position = CGPoint(x: 0, y: 72)
-        groundRenderer.update(atTime: 1)
-        pass.colorAttachments[0].loadAction = .clear; pass.colorAttachments[0].storeAction = .store
-        groundRenderer.render(withViewport: CGRect(x: 0, y: 0, width: 128, height: 72), commandBuffer: command, renderPassDescriptor: pass)
         try encode(command: command, target: pass, viewport: CGSize(width: 128, height: 72), center: CGPoint(x: 640, y: 360), scale: 0.1, time: 1, sunCast: world.effects.currentCast, heroes: heroes)
         command.commit(); command.waitUntilCompleted()
         if let error = command.error { throw error }
