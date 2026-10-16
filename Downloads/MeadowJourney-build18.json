@@ -1,0 +1,57 @@
+{
+  "version": "1.5.5",
+  "build": "18",
+  "kind": "ipad-metal-timeout-reduced-fullscreen-workload",
+  "sourceCommit": "50f6f97ce120e97dfcdfd4781a1b9aaad57bcbc5",
+  "workflowRun": 38881458485,
+  "workflowUrl": "https://github.com/liamchan-rgb/experiment/actions/runs/38881458485",
+  "runner": "macos-15",
+  "artifactId": 12037273067,
+  "reviewArtifactIds": {
+    "iPadLogs": 12038237115,
+    "archiveLogs": 12037422861
+  },
+  "workflowConclusion": "failure",
+  "workflowFailureReason": "The iPad native and composited screen checks passed; only the screen-evidence export step failed.",
+  "ipa": "MeadowJourney-b18.ipa",
+  "bytes": 17380888,
+  "sha256": "b3f20a23a47fb0c2994e99dcf9a0457144578197e1eea2f9b5e18016f10d22dd",
+  "compression": "ZIP_STORED",
+  "zip64": false,
+  "extendedFields": false,
+  "validation": {
+    "projectValidation": "passed",
+    "deviceReleaseArchive": "passed",
+    "ipaPackage": "passed",
+    "zipCRC": "passed",
+    "arm64": "passed",
+    "devicePlatform": "iPhoneOS",
+    "supportedDeviceFamilies": [
+      "iPhone",
+      "iPad"
+    ],
+    "minimumOSVersion": "15.0",
+    "metalLibraryPresent": true,
+    "executablePermission": "passed",
+    "nativeTestsPassed": 8,
+    "uiTestsPassed": 2,
+    "uiDevices": [
+      "iPad simulator"
+    ],
+    "testExecutionStep": "passed",
+    "actualCompositedScreenChecks": "passed",
+    "screenEvidenceExport": "failed; no image evidence artifact was produced",
+    "workflowTestFailures": 0
+  },
+  "renderingChanges": {
+    "groundDrawable": "One pixel per UIKit point; approximately one-quarter of Retina display pixels",
+    "shadowFilter": "Four bilinear PCF comparison taps instead of nine",
+    "maxInFlightGroundFrames": 1,
+    "mainShadowMapResolution": 2048
+  },
+  "limitations": [
+    "Checks ran in the iPad simulator; physical-device GPU timeout still needs user confirmation.",
+    "Screen-evidence export failed after the native and composited screen checks passed.",
+    "The IPA is unsigned and must be re-signed with SideStore."
+  ]
+}

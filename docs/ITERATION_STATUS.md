@@ -192,8 +192,8 @@ build 14（1.5.1）改为两个视图分别由显示时钟调度：SpriteKit 只
 
 build 17（1.5.4）的设备 Release 归档、IPA 校验和 iPad 模拟器测试执行均成功：8 项原生检查与 2 项 UI 检查全部通过。工作流整体被标为失败，是因为后续“导出屏幕证据”步骤报错；没有导出截图附件。该步骤发生在测试之后，不影响测试执行结果，也没有据此声称实机验证已通过。IPA 为 17,381,160 字节，SHA-256 为 `b2a4b0027391bcf0f435debcfe00efa93d5c65ab399548c0c5fec677a6a87f17`，经典 ZIP_STORED 格式。已发布 [MeadowJourney-b17.ipa](../Downloads/MeadowJourney-b17.ipa)，来源和完整性记录见 [build 17 元数据](../Downloads/MeadowJourney-build17.json)。此包未签名，使用 SideStore 重签安装；99% 加载修复仍待用户 iPad 实机确认。
 
-### build 17 实机 GPU 超时，build 18 性能修正候选
+### build 17 实机 GPU 超时，build 18 性能修正
 
 用户实机在进度完成、地图即将进入时停顿约一两秒，随后显示 `kIOGPUCommandBufferCallbackErrorTimeout`。该错误由已提交的 Metal 命令缓冲区回调，说明系统 GPU 执行超时，不是加载状态机的 99% 计时器再次触发。源码中主地图每帧重画 2048² 投影深度图，并在全屏 Retina 地表上进行九次 PCF 阴影比较和程序化地表计算；模拟器测试没有覆盖目标 iPad 的 GPU 吞吐，因此无法仅凭截图判定其中哪个阶段耗时最多。
 
-build 18 候选将地表 drawable 限制为每 UIKit point 一个像素（Retina iPad 上约为原像素数的四分之一），PCF 改为四个双线性比较采样，并将同时在途的地表帧从两帧收紧为一帧，繁忙时跳过背景帧。保留 2048² 实时深度阴影图，避免通过关闭阴影掩盖问题。应用版本升至 1.5.5 build 18；待 iPad 模拟器构建和屏幕检查完成后，再提供新的 IPA。物理 iPad 是否消除超时仍需用户复测。
+build 18（1.5.5）将地表 drawable 限制为每 UIKit point 一个像素（Retina iPad 上约为原像素数的四分之一），PCF 改为四个双线性比较采样，并将同时在途的地表帧从两帧收紧为一帧，繁忙时跳过背景帧。保留 2048² 实时深度阴影图，没有关闭阴影。构建 `38881458485` 的设备 Release 归档成功；iPad 模拟器 8 项原生 Metal 检查和 2 项实际合成／交互检查通过。工作流整体状态仍为失败，因为独立的截图证据导出步骤报错；实际测试步骤成功，但没有图片附件。IPA 为 17,380,888 字节，SHA-256 为 `b3f20a23a47fb0c2994e99dcf9a0457144578197e1eea2f9b5e18016f10d22dd`，经典 ZIP_STORED 格式。交付 [MeadowJourney-b18.ipa](../Downloads/MeadowJourney-b18.ipa)，构建和包校验见 [build 18 元数据](../Downloads/MeadowJourney-build18.json)。模拟器的 GPU 与帧率不同于用户实机；是否消除超时仍需用户用 iPad 安装反馈。
