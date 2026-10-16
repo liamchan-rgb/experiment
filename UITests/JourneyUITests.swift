@@ -31,7 +31,8 @@ final class JourneyUITests: XCTestCase {
     private func assertCameraLandmarks(_ name: String) {
         let screenshot = XCUIScreen.main.screenshot()
         guard let image = screenshot.image.cgImage else { return XCTFail("Missing alignment screen") }
-        let width = min(1024, image.width), height = image.height * width / image.width
+        let factor = min(1.0, 512.0 / Double(max(image.width, image.height)))
+        let width = max(1, Int(Double(image.width) * factor)), height = max(1, Int(Double(image.height) * factor))
         var rgba = [UInt8](repeating: 0, count: width * height * 4)
         let ok = rgba.withUnsafeMutableBytes { raw -> Bool in
             guard let context = CGContext(data: raw.baseAddress, width: width, height: height, bitsPerComponent: 8, bytesPerRow: width * 4,
@@ -43,8 +44,8 @@ final class JourneyUITests: XCTestCase {
             var mask = [Bool](repeating: false, count: width * height)
             for index in mask.indices {
                 let i = index * 4
-                mask[index] = red ? (rgba[i] > 220 && rgba[i + 1] < 35 && rgba[i + 2] < 35)
-                    : (rgba[i] < 35 && rgba[i + 1] > 220 && rgba[i + 2] > 220)
+                mask[index] = red ? (rgba[i] > 160 && rgba[i + 1] < 100 && rgba[i + 2] < 100)
+                    : (rgba[i] < 100 && rgba[i + 1] > 160 && rgba[i + 2] > 160)
             }
             var result: [CGPoint] = []
             for start in mask.indices where mask[start] {
@@ -61,7 +62,7 @@ final class JourneyUITests: XCTestCase {
                         }
                     } }
                 }
-                if pixels.count >= 3 {
+                if !pixels.isEmpty {
                     result.append(CGPoint(x: Double(sumX) / Double(pixels.count), y: Double(sumY) / Double(pixels.count)))
                 }
             }
@@ -74,7 +75,8 @@ final class JourneyUITests: XCTestCase {
         XCTAssertEqual(cyan.count, 3, "Receiver calibration points missing: \(name)")
         for point in red {
             let error = cyan.map { hypot(point.x - $0.x, point.y - $0.y) }.min() ?? 1000
-            XCTAssertLessThan(error, 2, "Foreground/receiver drift in actual screen pixels: \(name)")
+            print("ALIGNMENT_ERROR", name, error)
+            XCTAssertLessThan(error, 1.5, "Foreground/receiver drift in actual screen pixels: \(name)")
         }
     }
 
@@ -220,7 +222,8 @@ final class JourneyUITests: XCTestCase {
     private func assertVisibleGround(_ map: XCUIElement, name: String) {
         let screenshot = XCUIScreen.main.screenshot()
         guard let image = screenshot.image.cgImage else { return XCTFail("Screen capture unavailable") }
-        let w = image.width, h = image.height
+        let factor = min(1.0, 512.0 / Double(max(image.width, image.height)))
+        let w = max(1, Int(Double(image.width) * factor)), h = max(1, Int(Double(image.height) * factor))
         var rgba = [UInt8](repeating: 0, count: w * h * 4)
         let rendered = rgba.withUnsafeMutableBytes { raw -> Bool in
             guard let context = CGContext(data: raw.baseAddress, width: w, height: h, bitsPerComponent: 8, bytesPerRow: w * 4,

@@ -35,8 +35,10 @@ enum MeadowLoader {
                 for (index, name) in names.enumerated() {
                     guard let image = UIImage(named: name)?.cgImage else { throw ShadowLabError.setup("素材缺失：\(name)") }
                     images[name] = image
-                    let texture = SKTexture(cgImage: image); texture.filteringMode = .linear
-                    textures[name] = texture
+                    if !name.hasPrefix("Hero") {
+                        let texture = SKTexture(cgImage: image); texture.filteringMode = .linear
+                        textures[name] = texture
+                    }
                     report(0.28 + Double(index + 1) / Double(names.count) * 0.13, "准备场景素材")
                 }
                 var heroes: [[[SKTexture]]] = []
