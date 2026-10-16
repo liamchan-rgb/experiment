@@ -13,10 +13,10 @@ final class LivingWorld: SKNode {
     private(set) var shadowCount = 0
     private(set) var objectCount = 0
 
-    init(definition: SceneDefinition, roadMask: CGImage? = nil, props: [SceneDefinition.Prop]? = nil, textures: [String: SKTexture] = [:], effects: EnvironmentShaders? = nil, deferProps: Bool = false, renderTerrain: Bool = true) {
+    init(definition: SceneDefinition, roadMask: CGImage? = nil, props: [SceneDefinition.Prop]? = nil, textures: [String: SKTexture] = [:], effects preparedEffects: EnvironmentShaders? = nil, deferProps: Bool = false, renderTerrain: Bool = true) {
         self.definition = definition
         self.textures = textures
-        self.effects = effects ?? EnvironmentShaders()
+        self.effects = preparedEffects ?? EnvironmentShaders()
         network = TrailNetwork(roads: definition.roads)
         super.init()
         addChild(terrain)
