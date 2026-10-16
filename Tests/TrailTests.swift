@@ -50,6 +50,8 @@ final class TrailTests: XCTestCase {
 
     func testHeroWarpMatchesCasterProjectionAcrossContactPhases() {
         var maximumError: Float = 0
+        var maximumSoleHeight: Float = 0
+        var soleVertices = 0
         for hero in 0..<3 { for facing in 0..<8 { for phase in [CGFloat(0), 0.125, 0.25, 0.5, 0.625, 0.75] {
             let pose = HeroPose(heroIndex: hero, facing: facing, frame: WalkCycle.frame(at: phase * 24), phase: phase)
             let instance = ShadowLabInstance(asset: .hero, root: .zero, width: 2, aspect: 1, anchor: SIMD2(0.5, 0.125))
@@ -59,6 +61,10 @@ final class TrailTests: XCTestCase {
                 let point = SIMD2(vertex.uvWind.x, 1 - vertex.uvWind.y)
                 guard let index = source.firstIndex(where: { abs($0.x - point.x) + abs($0.y - point.y) < 0.00001 }) else { return XCTFail("Caster changed the source texture coordinates") }
                 let position = vertex.position
+                if abs(point.y - 0.125) < 0.00001 {
+                    maximumSoleHeight = max(maximumSoleHeight, abs(position.z))
+                    soleVertices += 1
+                }
                 let projected = SIMD2(position.x / 2 + 0.5,
                                       (position.y * ShadowLabMath.cameraUp.y + position.z * ShadowLabMath.cameraUp.z) / 2 + 0.125)
                 let expectedX = facing == 3 ? 1 - destination[index].x : destination[index].x
@@ -66,6 +72,8 @@ final class TrailTests: XCTestCase {
             }
         } } }
         XCTAssertLessThan(maximumError, 0.0001, "The visible actor and depth caster must use identical warped landmarks")
+        XCTAssertGreaterThan(soleVertices, 0, "The mesh needs a row at the exact sole anchor")
+        XCTAssertLessThan(maximumSoleHeight, 0.0001, "Planted soles must stay on the shadow receiver")
     }
 
     func testReliefPreservesArtCoordinatesForEveryAsset() {

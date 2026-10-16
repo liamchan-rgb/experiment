@@ -130,7 +130,7 @@ struct HeroPose {
 
     private static let xCoordinates: [Float] = [0, 0.20, 0.34, 0.40, 0.50, 0.60, 0.66, 0.80, 1]
     // SpriteKit's normalized warp coordinates are bottom-origin.
-    private static let yCoordinates: [Float] = [0, 0.10, 0.18, 0.25, 0.32, 0.40, 0.55, 0.76, 1]
+    private static let yCoordinates: [Float] = [0, 0.125, 0.18, 0.25, 0.32, 0.40, 0.55, 0.76, 1]
 
     // Node-local coordinates (positive y is up), in the logical direction
     // order. Facing right reuses left-profile art and is mirrored by the node,
