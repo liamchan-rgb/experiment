@@ -49,5 +49,7 @@
     "Front/back source artwork has limited separated sole detail; complete foot locking and walking feel still need user device feedback.",
     "Simulator checks do not replace physical-device frame-rate or thermal measurements."
   ],
-  "installationStatus": "Classic stored ZIP, same bundle identifier; SideStore device installation awaiting user feedback."
+  "installationStatus": "Classic stored ZIP, same bundle identifier; SideStore device installation awaiting user feedback.",
+  "supersededBy": "build 16",
+  "supersededReason": "User reported zoom shadow misalignment and startup unresponsiveness; build 16 shares the sampled SpriteKit viewport with the ground receiver and provides staged loading progress."
 }

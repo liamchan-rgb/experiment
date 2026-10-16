@@ -1,6 +1,6 @@
 # 安然 · 林间行旅
 
-[最新 1.5.2 build 15：修复地面黑底，校正踮脚与滑步](Downloads/SHADOW_LAB_PREVIEW.md)。[迭代日志](docs/ITERATION_STATUS.md)记录本轮实现与检查。
+[最新 1.5.3 build 16：统一缩放投影，优化启动加载](Downloads/SHADOW_LAB_PREVIEW.md)。[迭代日志](docs/ITERATION_STATUS.md)记录本轮实现与检查。
 
 以下为此前 1.3 验收版的历史说明。
 

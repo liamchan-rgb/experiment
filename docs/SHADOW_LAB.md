@@ -29,3 +29,16 @@ build 13 曾在 SpriteKit 更新回调内同步触发 `MTKView.draw()`，最终 
 最终源码 `ee5a251`，构建 [38842001680](https://github.com/liamchan-rgb/experiment/actions/runs/38842001680)，设备归档、15 项原生回归及 iPhone／iPad 各一项 UI 检查通过（17 项，0 失败）。实际屏幕检查覆盖地面初始、缩放、试验场返回；人工核对 iPad 返回截图，整层草地与道路已显示。三位人物的七个待修方向、四个相位的 SpriteKit 渲染图已对照，轮廓连通；共享网格投影和精确鞋底平面检查通过。静态帧与数学检查不等于完全消除运动观感上的滑步，正背向仍需实机反馈。
 
 安装包：[MeadowJourney-b15.ipa](../Downloads/MeadowJourney-b15.ipa)，[来源与校验值](../Downloads/MeadowJourney-build15.json)。
+
+
+## 1.5.3 build 16：共享实际视口与分阶段加载
+
+主地图每帧采样 SpriteKit 的 world→scene→view 变换，原生 Metal 接收通道直接使用该快照。旧理想公式在统一缩放与平移条件下代数等价，因此本轮不把单个漏乘的缩放系数当作已证明根因。实际前景红点与地面青环在 100%、125%、150%、175%、双指缩放上限和复位后比较中心；原生检查另覆盖平移及不同视口。
+
+启动道路遮罩、资源准备、原地分组网格、Metal 纹理上传和光效准备移至后台。加载条会分别显示投影队列、阴影深度贴图、两个 Metal 着色器、物件网格、环境贴图、人物图集与地表遮罩的实际阶段；失败诊断保留当前阶段和错误。前景实际 SKView 再分阶段预热贴图、无纹理／加色管线、字形、形状和粒子；不使用会阻塞的后台 SKRenderer。主线程每批布置 8 个物件，并让出事件循环；删除主地图中已被原生地面通道取代的多余 SpriteKit 地形构建。人物投影使用预先上传的完整图集，切帧只改 UV 范围。
+
+加载页显示实际阶段进度，以前景首个更新及地面 GPU 完成为操作放行条件；GPU 失败或首帧等待超时显示重试，迟到回调不会覆盖失败状态。应用挂起不消耗首帧等待的活跃心跳限额。记录加载耗时、心跳次数和主线程最长间隔；它们是模拟器观测，不代替物理设备性能结果。行走动画按用户要求推迟。
+
+最终源码 `5ef101a01a1b9468b4b3e9f65c28ca2c5c1b2152` 的[构建 38868407052](https://github.com/liamchan-rgb/experiment/actions/runs/38868407052) 通过设备 Release 归档、8 项原生检查、iPhone 2 项 UI 检查及 iPad 2 项 UI 检查（12 项，0 失败）。红色前景点与 Metal 地面青环在 100%、125%、150%、175%、双指最大缩放和平移复位后比较：iPhone 最大误差 0.67、iPad 0.25 个 512 长边分析像素。iPhone 模拟器启动约 6.17 秒、主线程最长停顿 0.29 秒；iPad 约 15.48 秒、最长停顿 0.50 秒。首次加载会显示细分阶段进度；这些模拟器数值不代替真实设备的启动／发热表现。
+
+安装包 [MeadowJourney-b16.ipa](../Downloads/MeadowJourney-b16.ipa)，1.5.3 build 16，17,396,826 字节。ZIP CRC、arm64、iPhoneOS、iPhone／iPad 支持、Metal 资源、可执行权限与经典 ZIP_STORED 格式均通过校验。源码与 SHA-256 见 [MeadowJourney-build16.json](../Downloads/MeadowJourney-build16.json)。实机加载体验及美术观感留待用户反馈；行走动画按用户要求不纳入本轮。
