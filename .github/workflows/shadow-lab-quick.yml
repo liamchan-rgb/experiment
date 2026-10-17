@@ -204,7 +204,7 @@ jobs:
             mkdir -p build/layered-preview
             xcrun xcresulttool export attachments --path build/MapReview.xcresult \
               --output-path build/layered-preview \
-              --test-id 'MeadowJourneyUITests/JourneyUITests/testLayeredP1ColorwayPreviewRunsBesideOriginalInTheMapScene()' \
+              --test-id 'JourneyUITests/testLayeredP1ColorwayPreviewRunsBesideOriginalInTheMapScene()' \
               2>&1 | tee build/logs/layered-preview-export.log
           fi
 
