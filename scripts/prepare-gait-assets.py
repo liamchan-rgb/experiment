@@ -96,36 +96,17 @@ def clean_gutter(image):
     rgba[:, :, 3] *= keep
     return Image.fromarray(rgba)
 
-def planted_shoe(shoe, ankle, destination, phase, forward_x):
-    """Heel strike, flat weight bearing, toe release, then swing recovery.
+def rigid_shoe(shoe, ankle, destination):
+    """Move the painted shoe with its ankle while preserving its authored angle.
 
-    Roll about the contact point so a planted heel/toe does not skate. This is
-    a rigid shoe transform, independent of the knee's projected bone length.
+    Each directional drawing already encodes its own toe and heel orientation.
+    Reconstructing a generic screen-space heel/toe axis rotated front and
+    diagonal boots away from that artwork, so the shoe remains a rigid stamp.
     """
-    heel = ankle + np.array([-forward_x * 8, 7])
-    toe = ankle + np.array([forward_x * 13, 7])
-    if phase < .08:
-        pitch, pivot = .10 * (1 - phase / .08), heel
-    elif phase < .38:
-        pitch, pivot = 0, ankle
-    elif phase < .5:
-        pitch, pivot = -.14 * (phase - .38) / .12, toe
-    else:
-        swing = (phase - .5) * 2
-        eased = swing * swing * (3 - 2 * swing)
-        pitch = -.14 + .24 * eased
-        if swing < .2:
-            blend = swing / .2
-            pivot = toe * (1 - blend) + ankle * blend
-        elif swing > .8:
-            blend = (swing - .8) / .2
-            pivot = ankle * (1 - blend) + heel * blend
-        else:
-            pivot = ankle
-    angle = -pitch * forward_x
-    direction = np.array([-math.sin(angle), math.cos(angle)])
-    return bone(shoe, pivot, pivot + [0, 1], pivot + destination - ankle,
-                pivot + destination - ankle + direction)
+    offset = destination - ankle
+    return shoe.transform((CELL, CELL), Image.Transform.AFFINE,
+                          (1, 0, -offset[0], 0, 1, -offset[1]),
+                          Image.Resampling.NEAREST)
 
 def prepare_gait_assets(root, save_asset, manifest):
     metadata = {'format': 1, 'frames': FRAME_COUNT, 'columns': FRAME_COUNT + 1, 'cell': CELL, 'heroes': []}
@@ -239,7 +220,7 @@ def prepare_gait_assets(root, save_asset, manifest):
                     layers.extend([
                         (side_depth + (hip3[1] + knee3[1]) / 2, bone(upper, hip, knee, dh, dk, end_overlap=2)),
                         (side_depth + (knee3[1] + ankle3[1]) / 2, bone(calf, knee, ankle, dk, da)),
-                        (side_depth + ankle3[1], planted_shoe(shoe, ankle, da, t, forward[0]))])
+                        (side_depth + ankle3[1], rigid_shoe(shoe, ankle, da))])
                     feet.append([float(da[0] / CELL), float((224 + project(forward * f)[1]) / CELL), float(lift / CELL)])
                 for _, part in sorted(layers, key=lambda item: item[0]): image.alpha_composite(part)
                 image.alpha_composite(body, (0, round(-bob)))

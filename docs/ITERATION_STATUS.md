@@ -1,6 +1,6 @@
 # 林间行旅迭代进度 · 2026-10-17
 
-当前交付：[1.6.0 build 25 人物步态重做 IPA](../Downloads/README.md)，源码 `75e54c87223afe248ee1055379931c0a92d55219`，成功构建 `39023714295`。三位人物八方向，每方向24张完整行走姿势；19项 iPad 云端检查通过，正常与慢速录像已按方向连续抽帧复核。[完整资料](../Media/Build25-Gait/README.md)。
+当前可下载版：[1.6.0 build 25 人物步态重做 IPA](../Downloads/README.md)，源码 `75e54c8`，成功构建 `39023714295`。build 26 正在修复动态步态里鞋子被额外扭转的问题，并评估可换装骨骼动画项目。兼容性验证只覆盖 iPad；完成云端实画复核后再更新下载链接。
 
 **后续兼容性测试口径（2026-10-16 起）：只在 iPad 模拟器／设备上执行并判定兼容性测试；不再测试或要求 iPhone 结果。** 常规 CI 与快速阴影验收均以 iPad 为唯一测试设备。此前记录的 iPhone 测试结果保留为历史数据；设备 IPA 仍按通用 iOS 目标归档。
 
@@ -297,3 +297,11 @@ build 23（1.5.10）将阳光节点直接挂到 SKScene，覆盖实际画面，�
 IPA：`Downloads/MeadowJourney-b25.ipa`，17,276,922字节，SHA-256 `1ca2dbde7a80f2701c3d1a903a1ce01c5efd49fc3a065f8313621c743408a664`。已检查ZIP CRC、ZIP_STORED、无Zip64／额外字段、arm64、0755、Metal库及步态资源。预览录像校正为2752×2064横屏、60FPS，不加速时间轴；simctl原始码流标称600FPS但实际平均约60FPS，导出时不能按标称600FPS重复帧。此导出修正仅影响检查资料，不修改已验收的应用产物。
 
 [安装与校验](../Downloads/README.md) · [录像、抽帧和完整来源](../Media/Build25-Gait/README.md)。
+
+## 2026-10-17 · build 26 鞋部方向修正与换装动画选型（验证中）
+
+用户指出 build 25 的步态交替已正确，但鞋仍歪斜；要求动作细节继续修，并为之后的外观自定义寻找可复用项目。复核生成器发现，鞋部被套用一个按屏幕横向推算的脚尖／脚跟轴。不同朝向原画鞋子的脚尖角度不同，这个假设会把原本刚性的鞋面旋偏。
+
+build 26 暂改为保留朝向原画里的鞋面角度，只把完整鞋部蒙版随踝点平移。需要 iPad 连续录屏确认脚踝接缝、承重落脚和各斜向姿势；素材生成成功不等于动作验收通过。源码和图集已更新，云端测试及录像抽帧待执行。
+
+GitHub 调研发现 Rigby2D 可作为未来换装角色的候选：MIT／Apache-2.0，带分层 PSD 自动绑骨、skin／slot 换装和无第三方依赖的 Rust 运行时；但项目自称 early alpha，没有 Swift、SpriteKit 或 iOS 渲染器。它需要接入现有单 MTKView 的 Metal 角色批次和同姿势阴影，不能直接丢进 app。DragonBones C++ 运行时虽为 MIT，但官方使用路径依赖 DragonBones Pro，所列运行示例为 Cocos2d-x／SFML；设计面板还依赖旧 Flash Pro。完整评估和移植门槛见 [CHARACTER_RIG_EVALUATION.md](CHARACTER_RIG_EVALUATION.md)。本轮尚未把第三方运行时并入应用。
