@@ -1,0 +1,79 @@
+{
+  "sourceRun": 39033438871,
+  "recordings": [
+    {
+      "file": "Media/iPad-Gait-Normal-b26.mp4",
+      "sourceRun": 39033438871,
+      "sourceArtifact": 12101717576,
+      "original": {
+        "width": 2064,
+        "height": 2752,
+        "rFrameRate": "600/1",
+        "avgFrameRate": "960/19",
+        "durationSeconds": 30.241667,
+        "bytes": 136068177
+      },
+      "preview": {
+        "width": 2752,
+        "height": 2064,
+        "frameRate": "60/1",
+        "durationSeconds": 30.25,
+        "bytes": 11178497,
+        "sha256": "e28a1db78ab26053ffe86d7d182d2e6c2b44e0d65882b2b901bc9a6187e5a949",
+        "codec": "H.264",
+        "pixelFormat": "yuv420p"
+      },
+      "timelineScale": 1,
+      "gameSpeedScale": 1,
+      "orientation": "90 degrees counterclockwise to landscape",
+      "frameRateHandling": "native VFR normalized to 60 FPS, timeline unchanged",
+      "directionCoverage": [
+        "NE",
+        "Right",
+        "SE",
+        "Down",
+        "SW",
+        "Left",
+        "NW"
+      ],
+      "captureLimitation": "Recorder started after the direction timer advanced; Up is absent."
+    },
+    {
+      "file": "Media/iPad-Gait-Quarter-b26.mp4",
+      "sourceRun": 39033438871,
+      "sourceArtifact": 12100963775,
+      "original": {
+        "width": 2064,
+        "height": 2752,
+        "rFrameRate": "600/1",
+        "avgFrameRate": "785400/14057",
+        "durationSeconds": 46.856667,
+        "bytes": 215693945
+      },
+      "preview": {
+        "width": 2752,
+        "height": 2064,
+        "frameRate": "60/1",
+        "durationSeconds": 46.85,
+        "bytes": 14427083,
+        "sha256": "aa46051a42e2f8bd076a06d123e77fcb1e79cf5fd94d71a92b60d3c7cf4a38e0",
+        "codec": "H.264",
+        "pixelFormat": "yuv420p"
+      },
+      "timelineScale": 1,
+      "gameSpeedScale": 0.25,
+      "orientation": "90 degrees counterclockwise to landscape",
+      "frameRateHandling": "native VFR normalized to 60 FPS, timeline unchanged",
+      "directionCoverage": [
+        "Up",
+        "NE",
+        "Right",
+        "SE",
+        "Down",
+        "SW",
+        "Left",
+        "NW"
+      ]
+    }
+  ]
+}

@@ -67,7 +67,13 @@ struct JourneySimulation {
 
     mutating func advance(_ seconds: TimeInterval) {
         guard isPlaying else { return }
-        for index in travelers.indices { travelers[index].advance(by: seconds, on: routes[index]) }
+        for index in travelers.indices {
+            let trail = routes[index], traveler = travelers[index]
+            let here = trail.point(at: traveler.distance)
+            let ahead = trail.point(at: max(0, min(trail.length, traveler.distance + traveler.direction * 1)))
+            let projection = WalkCycle.projectedScale(dx: ahead.x - here.x, dy: ahead.y - here.y)
+            travelers[index].advance(by: seconds * Double(projection), on: trail)
+        }
         if mode == .destination && travelers.allSatisfy(\.isWaiting) { isPlaying = false }
     }
 }

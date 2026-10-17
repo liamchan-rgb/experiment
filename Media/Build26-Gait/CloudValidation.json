@@ -1,0 +1,58 @@
+{
+  "sourceCommit": "b60d8e5b7e2aab4ac80ffc607b34c4eecdca47aa",
+  "workflowRun": 39033438871,
+  "workflowUrl": "https://github.com/liamchan-rgb/experiment/actions/runs/39033438871",
+  "workflowConclusion": "success",
+  "runner": "macos-15",
+  "xcode": "16.4 (16F6)",
+  "deviceReleaseArchive": "passed",
+  "nativeTests": {
+    "passed": 16,
+    "failed": 0
+  },
+  "iPadUITests": {
+    "passed": 3,
+    "failed": 0,
+    "cases": [
+      "testActualMapGaitControlsCoverAllDirectionsAndEveryFrame",
+      "testForegroundAndShadowReceiverStayAlignedAtEveryZoom",
+      "testMapContourRendererAndInteraction"
+    ]
+  },
+  "testDevice": "iPad Pro 13-inch (M4) simulator",
+  "testOS": "iOS 18.5",
+  "gaitCoverage": {
+    "facings": 8,
+    "posesPerFacing": 24,
+    "normalRecording": "captured; recorder began after direction timer advanced, so Up is absent",
+    "quarterSpeedRecording": "captured all 8 directions",
+    "sampledReview": {
+      "heroes": 3,
+      "samplesPerHeroPerFacing": 12,
+      "totalPoseSamples": 288,
+      "checks": [
+        "authored boot direction",
+        "boot/ankle outline continuity"
+      ]
+    }
+  },
+  "startupMetrics": {
+    "seconds": 4.126035,
+    "heartbeats": 40,
+    "mainThreadLongestGapSeconds": 0.209608,
+    "firstForegroundDelaySeconds": 0.065871,
+    "mapWorldInitSeconds": 0.000752,
+    "presentMapSeconds": 0.003316
+  },
+  "ipa": {
+    "file": "../../Downloads/MeadowJourney-b26.ipa",
+    "bytes": 16641050,
+    "sha256": "555c8467897e0e263bc12731158293a06cbc9aac4c86e020764bb493f632e98d",
+    "unsigned": "true; SideStore must re-sign before installation"
+  },
+  "limitations": [
+    "Cloud verification used an iPad simulator, not the user’s physical M1 iPad running iPadOS 27.2.",
+    "No iPhone compatibility tests were run.",
+    "The normal-speed recorder missed the initial Up segment; all eight directions are covered by the quarter-speed recording and UI test."
+  ]
+}

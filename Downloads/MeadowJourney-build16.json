@@ -1,0 +1,69 @@
+{
+  "version": "1.5.3",
+  "build": "16",
+  "kind": "captured-viewport-and-responsive-startup",
+  "sourceCommit": "5ef101a01a1b9468b4b3e9f65c28ca2c5c1b2152",
+  "workflowRun": 38868407052,
+  "workflowUrl": "https://github.com/liamchan-rgb/experiment/actions/runs/38868407052",
+  "runner": "macos-14",
+  "xcode": "15.4 (15F31d)",
+  "workflowConclusion": "success",
+  "artifactId": 12032187608,
+  "reviewArtifactIds": {
+    "iPhone": 12033050407,
+    "iPad": 12033165760
+  },
+  "replacesBuild": "15",
+  "ipa": "MeadowJourney-b16.ipa",
+  "bytes": 17396826,
+  "sha256": "899b92661401485e7736e635eea486b46f039fc978e2bb48753409681400e053",
+  "compression": "ZIP_STORED",
+  "zip64": false,
+  "extendedFields": false,
+  "validation": {
+    "projectValidation": "passed",
+    "deviceReleaseArchive": "passed",
+    "zipCRC": "passed",
+    "arm64": "passed",
+    "devicePlatform": "iPhoneOS",
+    "metalLibraryPresent": true,
+    "executablePermission": "passed",
+    "nativeTestsPassed": 8,
+    "uiTestsPassed": 4,
+    "uiDevices": [
+      "iPhone simulator",
+      "iPad simulator"
+    ],
+    "totalFailures": 0,
+    "actualGroundScreenChecks": "Initial, zoom, maximum zoom, and return from shadow lab checked on both devices.",
+    "alignmentMaximumError512px": {
+      "iPhone": 0.666667,
+      "iPad": 0.244936
+    },
+    "startupSimulatorSeconds": {
+      "iPhone": 6.166533,
+      "iPad": 15.479796
+    },
+    "mainThreadLongestGapSeconds": {
+      "iPhone": 0.291837,
+      "iPad": 0.501009
+    },
+    "publicDownloadBytesAndSha256": "matched final archive IPA"
+  },
+  "rendering": {
+    "mainShadowSize": 2048,
+    "labShadowSize": 1024,
+    "casterMode": "image alpha relief only; solid proxy removed",
+    "groundReceiver": "Native opaque Metal grass + unified road mask + PCF",
+    "camera": "Foreground SpriteKit world-to-scene-to-view transform sampled and shared with Metal receiver",
+    "cpuPixelReadbackOnDisplay": false,
+    "foregroundPreferredFPS": 60,
+    "backgroundTargetFPS": 30,
+    "loading": "Granular progress for shadow pipeline, mesh, texture upload, foreground warmup, and world population"
+  },
+  "limitations": [
+    "Simulator startup timings do not replace physical-device startup, frame-rate, or thermal measurements.",
+    "Walking animation is deferred per user request and remains to be reviewed on device."
+  ],
+  "installationStatus": "Classic stored ZIP; install and re-sign with SideStore, then provide physical-device feedback."
+}

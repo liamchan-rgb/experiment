@@ -1,0 +1,62 @@
+{
+  "version": "1.6.2",
+  "build": "27",
+  "kind": "eight-direction-footwear-orientation-local-test-with-optional-blue-colorway-preview",
+  "sourceCommit": "9a8dc3a3ac8692c5d279e9d428bc3ca85edc0d0e",
+  "workflowRun": 39049360600,
+  "workflowUrl": "https://github.com/liamchan-rgb/experiment/actions/runs/39049360600",
+  "runner": "macos-15",
+  "ipa": "MeadowJourney-b27.ipa",
+  "bytes": 16744850,
+  "sha256": "2954efd466000db241ac4d1b61e9c3d743ed9bb8839925f9993417e5d8048e93",
+  "compression": "ZIP_STORED",
+  "zip64": false,
+  "extendedFields": false,
+  "signing": "unsigned; re-sign with SideStore",
+  "bundleIdentifier": "com.liamchan.experiment.meadow",
+  "minimumOSVersion": "15.0",
+  "validation": {
+    "zipCRC": "passed",
+    "architecture": "arm64",
+    "machoPlatform": "iOS device (2)",
+    "executableMode": "0o755",
+    "metalLibraries": [
+      "Payload/MeadowJourney.app/default.metallib"
+    ],
+    "layeredAtlas": "LayeredP1BlueVariant present in Assets.car",
+    "layeredPreviewCode": "loader and UI control present in device executable",
+    "gaitAtlas": "3 heroes, 8 directions, 24 walking poses per direction plus idle",
+    "currentRunTests": "not rerun; package-only device Release archive",
+    "previousLayeredPreviewUI": {
+      "run": 39042942547,
+      "sourceCommit": "40f2242ac712e657bba465b33637b8629fd8553a",
+      "result": "1 test passed, 0 failures",
+      "device": "iPad Pro 13-inch (M4) simulator",
+      "os": "iOS 18.5",
+      "scope": "same app code and resources; current build changes app version only"
+    },
+    "physicalDevice": "not tested; awaiting local iPad installation",
+    "deviceReleaseArchive": "passed",
+    "projectResourceBindings": "passed",
+    "previousGaitUI": {
+      "run": 39033438871,
+      "result": "3 iPad UI tests passed; gait UI traversed all eight directions and 24 poses per direction",
+      "device": "iPad Pro 13-inch (M4) simulator",
+      "os": "iOS 18.5",
+      "code": "the eight-direction shoe-orientation and gait implementation is unchanged; the later build adds the optional blue-boots preview and version metadata"
+    },
+    "additionalColorwayPreviewUI": {
+      "run": 39042942547,
+      "result": "1 iPad UI test passed; optional P1 down-direction blue-boots comparison"
+    }
+  },
+  "testEntry": "主地图 → 步态测试 → 逐一选择八方向",
+  "xcode": "16.4 (16F6)",
+  "artifactId": 12106942909,
+  "archiveLogsArtifactId": 12107127378,
+  "workflowConclusion": "success",
+  "artifactZipSHA256": "2b06101050b6fdfe19ea6b24fc10454afa0df2624b11619e080c7f4fe43b11d6",
+  "archiveLogsZipSHA256": "c89d0bb9da6d4e8969dbf3300ce93dce28531c04c251dbe008f698cb762dd668",
+  "testScope": "P1, P2, P3; eight directions; normal and quarter speed; pause, single step, replay",
+  "optionalBlueBootsPreview": "P1 down direction only; 24 frames; colorway check, separate from footwear-orientation testing"
+}

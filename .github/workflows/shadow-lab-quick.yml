@@ -1,0 +1,300 @@
+name: Shadow Lab Quick Build
+
+on:
+  workflow_dispatch:
+    inputs:
+      package_only:
+        description: 'Build and upload the unsigned iPad IPA without starting simulator checks'
+        type: boolean
+        required: false
+        default: false
+      preview_only:
+        description: 'Run only the layered gait preview iPad screenshot check'
+        type: boolean
+        required: false
+        default: false
+  workflow_call:
+    inputs:
+      macos_runner:
+        type: string
+        required: false
+        default: macos-15
+      package_only:
+        type: boolean
+        required: false
+        default: false
+      preview_only:
+        type: boolean
+        required: false
+        default: false
+
+permissions:
+  contents: read
+
+concurrency:
+  group: shadow-lab-quick-${{ github.ref }}-${{ inputs.macos_runner || 'macos-15' }}
+  cancel-in-progress: true
+
+jobs:
+  archive:
+    name: Device Release IPA
+    if: ${{ !inputs.preview_only }}
+    runs-on: ${{ inputs.macos_runner || 'macos-15' }}
+    timeout-minutes: 30
+    defaults:
+      run:
+        shell: bash
+    env:
+      PROJECT: MeadowJourney.xcodeproj
+      SCHEME: MeadowJourney
+
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Validate project and record Xcode details
+        run: |
+          set -euo pipefail
+          mkdir -p build/logs
+          xcode-select -p 2>&1 | tee build/logs/xcode-path.log
+          xcodebuild -version 2>&1 | tee build/logs/xcode-version.log
+          xcodebuild -list -project "$PROJECT" 2>&1 | tee build/logs/project.log
+          python3 scripts/validate-project.py 2>&1 | tee build/logs/project-validation.log
+
+      - name: Archive device Release build
+        run: |
+          set -euo pipefail
+          xcodebuild archive \
+            -project "$PROJECT" -scheme "$SCHEME" -configuration Release \
+            -destination 'generic/platform=iOS' \
+            -archivePath build/MeadowJourney-shadow-lab.xcarchive \
+            -derivedDataPath build/DeviceDerivedData \
+            CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO \
+            2>&1 | tee build/logs/device-archive.log
+
+      - name: Package unsigned IPA
+        run: |
+          set -euo pipefail
+          bash scripts/package-ipa.sh \
+            build/MeadowJourney-shadow-lab.xcarchive build/MeadowJourney-shadow-lab.ipa \
+            2>&1 | tee build/logs/package-ipa.log
+
+      - name: Upload shadow lab IPA
+        uses: actions/upload-artifact@v7
+        with:
+          name: MeadowJourney-shadow-lab-IPA
+          path: build/MeadowJourney-shadow-lab.ipa
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Upload archive logs
+        if: ${{ always() }}
+        uses: actions/upload-artifact@v7
+        with:
+          name: shadow-lab-archive-logs-${{ github.run_id }}-${{ github.run_attempt }}
+          path: build/logs/
+          if-no-files-found: warn
+          retention-days: 30
+
+  smoke:
+    name: Map and Contour Checks (${{ matrix.device }})
+    if: ${{ !inputs.package_only }}
+    runs-on: ${{ inputs.macos_runner || 'macos-15' }}
+    timeout-minutes: 40
+    strategy:
+      fail-fast: false
+      matrix:
+        device: [iPad]
+    defaults:
+      run:
+        shell: bash
+    env:
+      PROJECT: MeadowJourney.xcodeproj
+      SCHEME: MeadowJourney
+      REVIEW_DEVICE: ${{ matrix.device }}
+
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Record Xcode details
+        run: |
+          set -euo pipefail
+          mkdir -p build/logs
+          xcode-select -p 2>&1 | tee build/logs/xcode-path.log
+          xcodebuild -version 2>&1 | tee build/logs/xcode-version.log
+
+      - name: Select, install if needed, and boot simulator
+        id: simulator
+        run: |
+          set -euo pipefail
+          xcrun simctl list --json > build/logs/simulator-inventory.json
+          if python3 scripts/select-simulator.py "$REVIEW_DEVICE" > build/simulator-udid.txt; then
+            :
+          else
+            status=$?
+            if [ "$status" -ne 2 ]; then exit "$status"; fi
+            xcodebuild -downloadPlatform iOS 2>&1 | tee build/logs/runtime-download.log
+            xcrun simctl list --json > build/logs/simulator-inventory-after-download.json
+            python3 scripts/select-simulator.py "$REVIEW_DEVICE" > build/simulator-udid.txt
+          fi
+          simulator_udid="$(cat build/simulator-udid.txt)"
+          echo "udid=$simulator_udid" >> "$GITHUB_OUTPUT"
+          xcrun simctl bootstatus "$simulator_udid" -b 2>&1 | tee build/logs/simulator-boot.log
+
+      - name: Run native and actual composited screen checks
+        run: |
+          set -euo pipefail
+          if [[ '${{ inputs.preview_only }}' == 'true' ]]; then
+            focused_tests=(
+              -only-testing:MeadowJourneyUITests/JourneyUITests/testLayeredP1ColorwayPreviewRunsBesideOriginalInTheMapScene
+            )
+          else
+            focused_tests=(
+              -only-testing:MeadowJourneyUITests/JourneyUITests/testMapContourRendererAndInteraction
+              -only-testing:MeadowJourneyUITests/JourneyUITests/testForegroundAndShadowReceiverStayAlignedAtEveryZoom
+              -only-testing:MeadowJourneyUITests/JourneyUITests/testActualMapGaitControlsCoverAllDirectionsAndEveryFrame
+              -only-testing:MeadowJourneyUITests/JourneyUITests/testLayeredP1ColorwayPreviewRunsBesideOriginalInTheMapScene
+            )
+            for test in \
+              testShadowLabCutoutPipelineSubmitsContourModes \
+              testMeadowAllAssetsSubmitSharedShadowDepth \
+              testMeadowGroundContainsOpaqueGrassRoadsAndShadows \
+              testCapturedViewportKeepsGroundAndArtworkAlignedThroughZoomAndPan \
+              testHeroShadowAtlasChangesFramesWithoutLiveTextureUploads \
+              testReliefPreservesArtCoordinatesForEveryAsset \
+              testRoadMaskUsesOneUnionAtJunctions \
+              testOnlyTheTowerGetsAnAdditionalBanner \
+              testAuthoredWalkUses24WholeFramesAndNoLegWarp \
+              testFootprintGroundLineFollowsAlternatingFeet \
+              testHeroCasterAnchorsEachPlantedFootAndTracksLift \
+              testHeroFramesBundlesAllDirectionsAndWholeMirroredRightProfile \
+              testWalkCycleVisitsEveryFrameAndWrapsWithoutRepeatingPassingArt \
+              testGaitTestCoversEightRoadIndependentHeadingsAndSupportsStepping \
+              testGaitTestReturnsToTheSameMapCameraAndActorPositions \
+              testHeroPoseSpriteKitRenderingKeepsAllHeroContoursConnected; do
+              focused_tests+=("-only-testing:MeadowJourneyTests/TrailTests/$test")
+            done
+          fi
+          xcodebuild test \
+            -project "$PROJECT" -scheme "$SCHEME" -configuration Debug \
+            -destination 'platform=iOS Simulator,id=${{ steps.simulator.outputs.udid }}' \
+            "${focused_tests[@]}" \
+            -derivedDataPath build/SimulatorDerivedData \
+            -resultBundlePath build/MapReview.xcresult \
+            -parallel-testing-enabled NO \
+            -test-timeouts-enabled YES \
+            -default-test-execution-time-allowance 600 \
+            -maximum-test-execution-time-allowance 600 \
+            CODE_SIGNING_ALLOWED=NO \
+            2>&1 | tee build/logs/map-review.log
+
+      - name: Export screen evidence, including failed assertions
+        if: ${{ always() }}
+        run: |
+          if [ -d build/MapReview.xcresult ]; then
+            mkdir -p build/review/attachments
+            xcrun xcresulttool export attachments --path build/MapReview.xcresult \
+              --output-path build/review/attachments 2>&1 | tee build/logs/screen-export.log
+          fi
+
+      - name: Export layered preview screenshot only
+        if: ${{ always() }}
+        run: |
+          set -euo pipefail
+          if [ -d build/MapReview.xcresult ]; then
+            mkdir -p build/layered-preview
+            xcrun xcresulttool export attachments --path build/MapReview.xcresult \
+              --output-path build/layered-preview \
+              --test-id 'JourneyUITests/testLayeredP1ColorwayPreviewRunsBesideOriginalInTheMapScene()' \
+              2>&1 | tee build/logs/layered-preview-export.log
+          fi
+
+      - name: Upload focused layered preview screenshot
+        if: ${{ always() }}
+        uses: actions/upload-artifact@v7
+        with:
+          name: layered-p1-preview-iPad
+          path: build/layered-preview/
+          if-no-files-found: warn
+          retention-days: 30
+
+      - name: Record all eight directions in the actual map renderer
+        if: ${{ always() && !inputs.preview_only }}
+        run: |
+          set -euo pipefail
+          if [ ! -d build/SimulatorDerivedData/Build/Products/Debug-iphonesimulator/MeadowJourney.app ]; then exit 0; fi
+          simulator_udid='${{ steps.simulator.outputs.udid }}'
+          mkdir -p build/review
+          xcrun simctl install "$simulator_udid" build/SimulatorDerivedData/Build/Products/Debug-iphonesimulator/MeadowJourney.app
+          record_gait() {
+            local name="$1" duration="$2"
+            shift 2
+            xcrun simctl terminate "$simulator_udid" com.liamchan.experiment.meadow || true
+            local app_data
+            app_data="$(xcrun simctl get_app_container "$simulator_udid" com.liamchan.experiment.meadow data)"
+            rm -f "$app_data/Documents/GaitCaptureReady.txt"
+            xcrun simctl launch "$simulator_udid" com.liamchan.experiment.meadow -visualReview -gaitCapture "$@"
+            for attempt in $(seq 1 240); do
+              [ ! -f "$app_data/Documents/GaitCaptureReady.txt" ] || break
+              sleep 0.5
+            done
+            test -f "$app_data/Documents/GaitCaptureReady.txt"
+            xcrun simctl io "$simulator_udid" recordVideo --codec=h264 "build/review/$name.mp4" > "build/logs/$name-recording.log" 2>&1 &
+            local recorder_pid=$!
+            trap 'kill -INT "$recorder_pid" 2>/dev/null || true' EXIT
+            sleep "$duration"
+            kill -INT "$recorder_pid"
+            wait "$recorder_pid" || true
+            trap - EXIT
+            cp "$app_data/Documents/RuntimeMetrics.json" "build/review/$name-metrics.json"
+            xcrun simctl io "$simulator_udid" screenshot "build/review/$name-end.png"
+          }
+          record_gait iPad-Gait-Normal 33
+          record_gait iPad-Gait-QuarterSpeed 49 -slowGaitCapture
+
+      - name: Upload actual ground captures
+        if: ${{ always() && !inputs.preview_only }}
+        uses: actions/upload-artifact@v7
+        with:
+          name: map-ground-review-${{ matrix.device }}
+          path: |
+            build/review/attachments/
+            build/review/*.json
+            build/review/*-end.png
+          if-no-files-found: warn
+          retention-days: 30
+
+      - name: Upload normal-speed gait recording
+        if: ${{ always() && !inputs.preview_only }}
+        uses: actions/upload-artifact@v7
+        with:
+          name: gait-normal-${{ matrix.device }}
+          path: build/review/iPad-Gait-Normal.mp4
+          if-no-files-found: warn
+          retention-days: 30
+
+      - name: Upload quarter-speed gait recording
+        if: ${{ always() && !inputs.preview_only }}
+        uses: actions/upload-artifact@v7
+        with:
+          name: gait-quarter-${{ matrix.device }}
+          path: build/review/iPad-Gait-QuarterSpeed.mp4
+          if-no-files-found: warn
+          retention-days: 30
+
+      - name: Preserve raw result even if screen export fails
+        if: ${{ always() && !inputs.preview_only }}
+        run: |
+          if [ -d build/MapReview.xcresult ]; then
+            tar -cf build/MapReview.xcresult.tar -C build MapReview.xcresult
+          fi
+
+      - name: Upload logs and test result
+        if: ${{ always() }}
+        uses: actions/upload-artifact@v7
+        with:
+          name: shadow-lab-smoke-logs-${{ matrix.device }}-${{ github.run_id }}-${{ github.run_attempt }}
+          path: |
+            build/logs/
+            build/MapReview.xcresult.tar
+          if-no-files-found: warn
+          retention-days: 30

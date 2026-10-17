@@ -1,0 +1,42 @@
+{
+  "provenance": "Condensed from the build 20 diagnostic JSON pasted by the user on 2026-10-17; not the complete original report.",
+  "build": "20",
+  "sourceCommit": "944b031b604dbf22606e817ebce1c1cb0a961406",
+  "startedAt": "2026-10-17T03:22:12Z",
+  "hardware": "iPad13,8",
+  "gpu": "Apple M1 GPU",
+  "os": "Version 27.2 (Build 24B5089g)",
+  "viewPoints": [1366, 1024],
+  "displayScale": 2,
+  "status": "failed",
+  "gpuMilliseconds": {
+    "A01 native clear": 0.019500032067298889,
+    "A02 terrain without shadow": 6.0879166703671217,
+    "A03 all prop and idle hero depth, 2048 square": 1.3869166141375899,
+    "A04 PCF receiver": 5.2235833136364818,
+    "B01 plain foreground": [0.049749971367418766, 1.975625054910779],
+    "B02 vegetation": [3.6652917042374611, 3.8317500147968531],
+    "B03 back mist": [5.52500004414469, 5.5252499878406525],
+    "B04 sunlight": [2.3649584036320448, 2.3675833363085985],
+    "B05 front mist": [5.5751666659489274, 5.2813333459198475],
+    "B06 full foreground": [10.668375063687563, 6.8326250184327364],
+    "C01 actual map first native background": 6.1088333604857326
+  },
+  "observations": [
+    "All A and B submissions completed.",
+    "C01 first native background completed, then CPU foreground readiness was observed; SKView GPU completion was not exposed.",
+    "A later actual-map native command failed. Its frame number and environment time were not recorded in build 20."
+  ],
+  "firstError": {
+    "stage": "C01 实际地图组合（首次观察到错误的背景命令）",
+    "command": "C01 实际地图背景：阴影＋地表",
+    "domain": "MTLCommandBufferErrorDomain",
+    "code": 2,
+    "description": "Caused GPU Timeout Error (00000002:kIOGPUCommandBufferCallbackErrorTimeout)",
+    "encoders": [
+      {"label": "All meadow assets: alpha relief depth", "rawState": 4, "stateName": "faulted"},
+      {"label": "Opaque grass + road material + PCF reception", "rawState": 2, "stateName": "completed"}
+    ]
+  },
+  "interpretation": "Isolated workload completion does not support simply attributing the timeout to M1 throughput. Repeated resource use, frame state and actual dual-view scheduling remain candidates; neither a specific shader instruction nor an OS driver defect is proven."
+}

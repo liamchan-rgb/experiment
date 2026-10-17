@@ -1,0 +1,13 @@
+{
+  "version": "1.4.0",
+  "build": "10",
+  "kind": "early-shadow-lab-preview",
+  "sourceCommit": "be9a95ecee64d30e09ec4c8957abfe9c4b284320",
+  "workflowRun": 38706558980,
+  "nativeBuildJob": 116327296025,
+  "nativeBuildJobConclusion": "success",
+  "ipa": "MeadowJourney-v1.4.0-build10-shadow-lab.ipa",
+  "bytes": 16886712,
+  "sha256": "496954a5594e1678fbfb8512e21c0e53d8469fb85f5092b2261cd70fd480fb42",
+  "note": "User requested the already-built package before completing the later review. Does not contain build 11 foot/eave calibration or continuous return movement."
+}

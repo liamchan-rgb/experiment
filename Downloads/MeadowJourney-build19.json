@@ -1,0 +1,46 @@
+{
+  "version": "1.5.6",
+  "build": "19",
+  "kind": "ipad-metal-timeout-tiered-fallback",
+  "sourceCommit": "1f53f640e236e096dc685da00e7c7a5bb4194b64",
+  "workflowRun": 38935878042,
+  "workflowUrl": "https://github.com/liamchan-rgb/experiment/actions/runs/38935878042",
+  "runner": "macos-15",
+  "artifactId": 12060273920,
+  "workflowConclusion": "success",
+  "ipa": "MeadowJourney-b19.ipa",
+  "bytes": 17380896,
+  "sha256": "e0a9f36f1fc925ee774a5fad7e50f2d739487b368f85dedac3ca66c613d6d9a0",
+  "compression": "ZIP_STORED",
+  "zip64": false,
+  "extendedFields": false,
+  "validation": {
+    "projectValidation": "passed",
+    "deviceReleaseArchive": "passed",
+    "ipaPackage": "passed",
+    "zipCRC": "passed",
+    "architecture": "arm64",
+    "devicePlatform": "iPhoneOS",
+    "supportedDeviceFamilies": [
+      "iPhone",
+      "iPad"
+    ],
+    "minimumOSVersion": "15.0",
+    "metalLibraryPresent": true,
+    "nativeTests": "not run; package-only workflow",
+    "simulatorTests": "skipped; package-only workflow",
+    "physicalIPadGPUValidation": "pending user installation"
+  },
+  "renderingChanges": {
+    "initialShadowMapResolution": 2048,
+    "firstGPUFailure": "Retry with 1024x1024 realtime shadow map and half-resolution ground drawable",
+    "secondGPUFailure": "Skip shadow depth pass, disable shadow sampling, and halve ground drawable again",
+    "minimumGroundDrawableScale": "0.25 pixel per UIKit point",
+    "loadingGate": "First successfully completed ground command buffer, including after fallback"
+  },
+  "limitations": [
+    "Build-only workflow: simulator and native test targets were intentionally not run.",
+    "The real iPad GPU timeout can only be confirmed or cleared by testing on the user's iPad.",
+    "The IPA is unsigned and must be re-signed with SideStore."
+  ]
+}

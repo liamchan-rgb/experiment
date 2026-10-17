@@ -1,0 +1,86 @@
+[
+  {
+    "file": "ios-visual-review-38567622574-1/visual-review/iPad-FourDirectionGait.mp4",
+    "original": {
+      "programs": [],
+      "streams": [
+        {
+          "width": 2064,
+          "height": 2752
+        }
+      ],
+      "format": {
+        "duration": "39.591667"
+      }
+    },
+    "preview": {
+      "programs": [],
+      "streams": [
+        {
+          "width": 2752,
+          "height": 2064
+        }
+      ],
+      "format": {
+        "duration": "39.633333"
+      }
+    },
+    "timelineScale": 1.0
+  },
+  {
+    "file": "ios-visual-review-38567622574-1/visual-review/iPad-Atmosphere.mp4",
+    "original": {
+      "programs": [],
+      "streams": [
+        {
+          "width": 2064,
+          "height": 2752
+        }
+      ],
+      "format": {
+        "duration": "170.200000"
+      }
+    },
+    "preview": {
+      "programs": [],
+      "streams": [
+        {
+          "width": 2752,
+          "height": 2064
+        }
+      ],
+      "format": {
+        "duration": "59.866667"
+      }
+    },
+    "timelineScale": 0.35252643948296125
+  },
+  {
+    "file": "ios-visual-review-38567622574-1/visual-review/iPad-LivingScene.mp4",
+    "original": {
+      "programs": [],
+      "streams": [
+        {
+          "width": 2064,
+          "height": 2752
+        }
+      ],
+      "format": {
+        "duration": "113.460000"
+      }
+    },
+    "preview": {
+      "programs": [],
+      "streams": [
+        {
+          "width": 2752,
+          "height": 2064
+        }
+      ],
+      "format": {
+        "duration": "40.033333"
+      }
+    },
+    "timelineScale": 0.35254715318173807
+  }
+]

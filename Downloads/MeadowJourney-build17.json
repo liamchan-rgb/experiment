@@ -1,0 +1,56 @@
+{
+  "version": "1.5.4",
+  "build": "17",
+  "kind": "ipad-first-frame-loading-timeout-fix",
+  "sourceCommit": "1e8d94975b8f5fb6bcdc9588b42a836127a35d02",
+  "workflowRun": 38874465515,
+  "workflowUrl": "https://github.com/liamchan-rgb/experiment/actions/runs/38874465515",
+  "runner": "macos-15",
+  "xcode": "16.4 (16F6)",
+  "workflowConclusion": "failure",
+  "workflowFailureReason": "Only the screen-evidence export step failed; device archive and iPad test execution succeeded.",
+  "artifactId": 12035225274,
+  "reviewArtifactIds": {
+    "iPadLogs": 12034584494,
+    "archiveLogs": 12034519292
+  },
+  "replacesBuild": "16",
+  "ipa": "MeadowJourney-b17.ipa",
+  "bytes": 17381160,
+  "sha256": "b2a4b0027391bcf0f435debcfe00efa93d5c65ab399548c0c5fec677a6a87f17",
+  "compression": "ZIP_STORED",
+  "zip64": false,
+  "extendedFields": false,
+  "validation": {
+    "projectValidation": "passed",
+    "deviceReleaseArchive": "passed",
+    "ipaPackage": "passed",
+    "zipCRC": "passed",
+    "arm64": "passed",
+    "devicePlatform": "iPhoneOS",
+    "supportedDeviceFamilies": [
+      "iPhone",
+      "iPad"
+    ],
+    "minimumOSVersion": "15.0",
+    "metalLibraryPresent": true,
+    "executablePermission": "passed",
+    "nativeTestsPassed": 8,
+    "uiTestsPassed": 2,
+    "uiDevices": [
+      "iPad simulator"
+    ],
+    "testExecutionStep": "passed",
+    "screenEvidenceExport": "failed; no screenshot evidence artifact was produced",
+    "workflowTestFailures": 0
+  },
+  "loadingFix": {
+    "rootCause": "The 20-second first-frame wait began before SpriteKit warmup and map population, so that setup time was incorrectly counted against the presented map.",
+    "change": "Start the first-frame wait only after progress reaches 99% and the map scene is about to be presented; show the underlying localized error on the retry screen."
+  },
+  "limitations": [
+    "The iPad checks ran in the simulator; physical-device startup still needs user confirmation.",
+    "Screen-evidence export failed after the native and composited screen checks passed, so this run has no screenshot attachment.",
+    "The IPA is unsigned and must be re-signed with SideStore."
+  ]
+}

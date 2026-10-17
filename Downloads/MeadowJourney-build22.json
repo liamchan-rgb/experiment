@@ -1,0 +1,109 @@
+{
+  "version": "1.5.9",
+  "build": "22",
+  "kind": "fence-contact-calibration-and-viewport-radial-sunlight",
+  "sourceCommit": "c217df4cf62a1fef6407b0817be946ea54538a00",
+  "workflowRun": 39007267154,
+  "workflowUrl": "https://github.com/liamchan-rgb/experiment/actions/runs/39007267154",
+  "runner": "macos-15",
+  "xcode": "16.4 (16F6)",
+  "artifactId": 12091880382,
+  "archiveLogsArtifactId": 12091576466,
+  "workflowConclusion": "success",
+  "ipa": "MeadowJourney-b22.ipa",
+  "bytes": 17440206,
+  "sha256": "43e1fd037b14c77d09650de9f857e5980e757046094af83f50ae66b5c8bf257d",
+  "compression": "ZIP_STORED",
+  "zip64": false,
+  "extendedFields": false,
+  "validation": {
+    "projectValidation": "passed",
+    "deviceReleaseArchive": "passed",
+    "ipaPackage": "passed",
+    "zipCRC": "passed",
+    "architecture": "arm64",
+    "devicePlatform": "iPhoneOS",
+    "minimumOSVersion": "15.0",
+    "supportedDeviceFamilies": [
+      "iPhone",
+      "iPad"
+    ],
+    "metalLibraryPresent": true,
+    "executablePermission": "0755",
+    "nativeTests": "not run; package-only workflow",
+    "simulatorTests": "skipped; package-only workflow",
+    "physicalIPadGPUValidation": "User supplied a running-map screenshot and requested sunlight adjustments on 2026-10-17; no sustained timing report",
+    "visualReview": "not performed; user handles visual feedback",
+    "spriteKitShaderRuntime": "pending device startup; Release archive does not execute SKShader source strings"
+  },
+  "rendering": {
+    "presentation": "one MTKView; native depth and terrain, backdrop presentation and SKRenderer foreground in the same command buffer",
+    "maximumInFlightFrames": 1,
+    "shadowMap": [
+      2048,
+      2048
+    ],
+    "terrainResolution": "one pixel per UIKit point; target 30Hz",
+    "foregroundResolution": "native Retina; target 60Hz",
+    "sceneCallbackSubmission": false
+  },
+  "diagnostics": {
+    "format": 2,
+    "nativeStages": [
+      "clear",
+      "terrain without shadows",
+      "all prop and idle hero depth",
+      "PCF shadow receiver"
+    ],
+    "foregroundStages": [
+      "plain sprites",
+      "vegetation shader",
+      "back mist",
+      "sun shafts",
+      "front mist",
+      "full foreground"
+    ],
+    "foregroundSamplesPerStage": 2,
+    "C00": "60 sequential full-composite offscreen frames using production encoding and shared depth/backdrop resources",
+    "C02": "actual single-MTKView map; completed frame count, GPU timing aggregates and failure frame/time context",
+    "commandErrorOptions": "encoderExecutionStatus",
+    "encoderStateNames": {
+      "2": "completed",
+      "4": "faulted"
+    },
+    "report": "Documents/MeadowGPUDiagnostic.json; copy from loading/failure page or help menu",
+    "previousReport": "Documents/MeadowGPUDiagnostic.previous.json",
+    "automaticSameProcessFallback": "disabled; preserve first observed GPU failure"
+  },
+  "evidence": "../docs/evidence/Build20-iPad13-8-summary.json",
+  "limitations": [
+    "User confirmed that build 21 opens the map on the previously failing M1 iPad Pro; sustained frame time and thermal behavior have not been measured.",
+    "Build 22 visual quality and runtime shader execution await the user device; no image-effect review was performed.",
+    "Cloud workflow compiled, archived and packaged only; simulator and GPU test jobs were skipped.",
+    "The IPA is unsigned and must be re-signed with SideStore."
+  ],
+  "changes": {
+    "fence": "Fit relief to the three diagonal post bases instead of a symmetric footprint; exact mesh row on the receiver and grass apron at Z=0.",
+    "fencePostBasesTopOriginUV": [
+      [
+        0.17,
+        0.5
+      ],
+      [
+        0.5,
+        0.68
+      ],
+      [
+        0.83,
+        0.86
+      ]
+    ],
+    "sunlight": "Fan-shaped rays from just outside the viewport upper-left corner, widening with distance; camera transform keeps source stable during zoom and pan.",
+    "sunlightSourceFraction": [
+      -0.035,
+      -0.055
+    ],
+    "dynamics": "Slow angular sway, longitudinal brightness flow and moving cloud modulation.",
+    "mapRenderer": "Retain build 21 single-MTKView composition, 2048-square depth and native Retina foreground."
+  }
+}

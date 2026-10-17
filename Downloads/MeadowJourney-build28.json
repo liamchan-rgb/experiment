@@ -1,0 +1,70 @@
+{
+  "version": "1.6.3",
+  "build": "28",
+  "kind": "eight-direction-footwear-orientation-correction-local-test-with-optional-blue-colorway-preview",
+  "sourceCommit": "9508a733af1a828b6039992e0fce8b63069ea403",
+  "workflowRun": 39051625894,
+  "workflowUrl": "https://github.com/liamchan-rgb/experiment/actions/runs/39051625894",
+  "runner": "macos-15",
+  "ipa": "MeadowJourney-b28.ipa",
+  "bytes": 16806354,
+  "sha256": "e99c0e9754dd3ea4875566603df82273b49365474b8069a7e0693e25fad0cd0f",
+  "compression": "ZIP_STORED",
+  "zip64": false,
+  "extendedFields": false,
+  "signing": "unsigned; re-sign with SideStore",
+  "bundleIdentifier": "com.liamchan.experiment.meadow",
+  "minimumOSVersion": "15.0",
+  "validation": {
+    "zipCRC": "passed",
+    "architecture": "arm64",
+    "machoPlatform": "iOS device (2)",
+    "executableMode": "0o755",
+    "metalLibraries": [
+      "Payload/MeadowJourney.app/default.metallib"
+    ],
+    "layeredAtlas": "LayeredP1BlueVariant present in Assets.car",
+    "layeredPreviewCode": "loader and UI control present in device executable",
+    "gaitAtlas": "3 heroes, 8 directions, 24 walking poses per direction plus idle",
+    "currentRunTests": "passed: native map checks, iPad UI gait traversal across all 8 headings and all 24 frames per heading, map recording, and normal/quarter-speed captures",
+    "physicalDevice": "not tested; awaiting local iPad installation"
+  },
+  "testEntry": "主地图 → 步态测试 → 逐一选择八方向",
+  "previewScope": "optional colorway check only: P1, down direction, 24 frames, baked blue boot colorway",
+  "artifactId": 12107947513,
+  "archiveLogsArtifactId": 12108101845,
+  "artifactZipSHA256": "1231d243e8a3b2260127a2e5ebfcb2bdeca2edeaafa55ef64394e6d39906ec76",
+  "archiveLogsZipSHA256": "deacca7c2b2efe179a8c80d7c51c91e27eb138bb2b861cf17f645a5a7d1c5af1",
+  "workflowConclusion": "success",
+  "testScope": "P1, P2, P3 visible together; eight directions; 24 frames per direction; native map contour, zoom alignment, optional blue colorway preview, and normal/quarter-speed map captures",
+  "optionalBlueBootsPreview": "P1 down direction only; 24 frames; colorway check, separate from footwear-orientation testing",
+  "testDevice": "iPad Pro 13-inch (M4) simulator, iOS 18.5",
+  "xcode": "16.4 (16F6)",
+  "testArtifacts": [
+    {
+      "name": "map-ground-review-iPad",
+      "id": 12108665816,
+      "sha256": "0d44e051ee84a7899a064df890ac1c2693547cd2d8f6cee0130a7fcda462eca3"
+    },
+    {
+      "name": "gait-normal-iPad",
+      "id": 12108551204,
+      "sha256": "9c7c216ae2e2694616cd0229aca4b3980d8bc7e19ed8fe17689aa9baa47c5c75"
+    },
+    {
+      "name": "gait-quarter-iPad",
+      "id": 12108551234,
+      "sha256": "d91ecf1cdf6bd2f63ee5300253b68290a79c5072d974b6a3145d684407f85fe3"
+    },
+    {
+      "name": "layered-p1-preview-iPad",
+      "id": 12108550735,
+      "sha256": "c0a22f3267c550357cd1d136dd284e2df76b925f920027d41d63ee08153aa473"
+    }
+  ],
+  "testResultArtifact": {
+    "name": "shadow-lab-smoke-logs-iPad-39051625894-1",
+    "id": 12108148421,
+    "sha256": "2c8bb77e313efb3aafc920b069879ea433e75d7ec3201465bbbea82f860c8626"
+  }
+}

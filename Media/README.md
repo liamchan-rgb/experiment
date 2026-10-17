@@ -1,11 +1,7 @@
-# 动态版 1.1.0 视觉验收
+# 1.6.1（build 26）步态复核
 
-- [iPad 横屏录像](https://github.com/liamchan-rgb/experiment/raw/refs/heads/main/Media/iPad-LivingScene-v1.1.0.mp4)：约 18 秒，2752 × 2064、H.264、30 FPS，已调整为正确横屏方向并压缩，保持像素尺寸。
-- [iPad 原尺寸截图](https://github.com/liamchan-rgb/experiment/raw/refs/heads/main/Media/iPad-LivingScene-v1.1.0-native.png)。
-- [放大截图](https://github.com/liamchan-rgb/experiment/raw/refs/heads/main/Media/iPad-LivingScene-v1.1.0-zoom.png)。
-- `RuntimeMetrics-v1.1.0.json`：CI iPad 模拟器运行采样，平均约 58 FPS，基础纹理预算 42.36 MiB。此数据不代表真机性能。
-- `BuildInfo-v1.1.0.json`：源码提交、已通过的构建、测试和 IPA 校验信息。
+[下载 IPA](../Downloads/README.md) · [正常速度录像](iPad-Gait-Normal-b26.mp4) · [四分之一速度录像](iPad-Gait-Quarter-b26.mp4) · [鞋部朝向和连续样本](Build26-Gait/README.md) · [16 项原生、3 项 iPad UI 检查](Build26-Gait/CloudValidation.json)。
 
-本版本来自已完整通过 Xcode 编译、12 项模型/资源检查、iPhone 与 iPad 界面测试的源码提交。整图背景已从 App 移除，场景通过独立资源搭建，风、雾、光束、投影及人物运动在运行时更新。
+本版保持鞋子原画里的朝向，去掉会把鞋扳歪的通用旋转，仅随踝点平移。云端 UI 测试遍历八个方向和每方向 24 姿势；四分之一速度实景录像覆盖三位人物、全部八方向，每位人物每方向抽样 12 次。正常速度录像因捕获启动晚于方向计时器，缺少“上”方向，完整方向对照请看慢速录像。云端为 iPad Pro 13-inch（M4）模拟器、iOS 18.5；未测试物理 M1 iPad／iPadOS 27.2，也未运行 iPhone 测试。
 
-草地仍有可见重复形状。最后的均匀地表纹理、全局随机采样和道路材质坐标调整保留在 `feat/layered-living-scene`，尚未进入此 IPA：GitHub 因账户付款失败或支出上限拒绝启动这次 macOS 构建。解除账单限制后需要重新验证和打包。
+可换装开源角色系统调研见[骨骼方案评估](../docs/CHARACTER_RIG_EVALUATION.md)。其他版本资料保留在各自目录。

@@ -45,9 +45,9 @@
     "decodedBytes": 774448
   },
   "Shrub": {
-    "width": 501,
-    "height": 419,
-    "decodedBytes": 839676
+    "width": 592,
+    "height": 452,
+    "decodedBytes": 1070336
   },
   "Fence": {
     "width": 471,
@@ -55,9 +55,9 @@
     "decodedBytes": 555780
   },
   "Flowers": {
-    "width": 538,
-    "height": 355,
-    "decodedBytes": 763960
+    "width": 592,
+    "height": 570,
+    "decodedBytes": 1349760
   },
   "Banner": {
     "width": 400,
@@ -65,18 +65,57 @@
     "decodedBytes": 412800
   },
   "Hero1Directions": {
-    "width": 1536,
-    "height": 1536,
-    "decodedBytes": 9437184
+    "width": 6400,
+    "height": 1024,
+    "decodedBytes": 26214400,
+    "frames": 24,
+    "columns": 25,
+    "source": "original direction artwork + independently articulated offline leg rig",
+    "runtimeRig": "24 whole-frame poses; inward-aimed rigid shoes, two-bone knees, distance-locked stance; no runtime limb warp"
+  },
+  "Hero1Diagonals": {
+    "width": 6400,
+    "height": 1024,
+    "decodedBytes": 26214400,
+    "frames": 24,
+    "columns": 25,
+    "source": "original direction artwork + independently articulated offline leg rig",
+    "runtimeRig": "24 whole-frame poses; inward-aimed rigid shoes, two-bone knees, distance-locked stance; no runtime limb warp"
   },
   "Hero2Directions": {
-    "width": 1536,
-    "height": 1536,
-    "decodedBytes": 9437184
+    "width": 6400,
+    "height": 1024,
+    "decodedBytes": 26214400,
+    "frames": 24,
+    "columns": 25,
+    "source": "original direction artwork + independently articulated offline leg rig",
+    "runtimeRig": "24 whole-frame poses; inward-aimed rigid shoes, two-bone knees, distance-locked stance; no runtime limb warp"
+  },
+  "Hero2Diagonals": {
+    "width": 6400,
+    "height": 1024,
+    "decodedBytes": 26214400,
+    "frames": 24,
+    "columns": 25,
+    "source": "original direction artwork + independently articulated offline leg rig",
+    "runtimeRig": "24 whole-frame poses; inward-aimed rigid shoes, two-bone knees, distance-locked stance; no runtime limb warp"
   },
   "Hero3Directions": {
-    "width": 1536,
-    "height": 1536,
-    "decodedBytes": 9437184
+    "width": 6400,
+    "height": 1024,
+    "decodedBytes": 26214400,
+    "frames": 24,
+    "columns": 25,
+    "source": "original direction artwork + independently articulated offline leg rig",
+    "runtimeRig": "24 whole-frame poses; inward-aimed rigid shoes, two-bone knees, distance-locked stance; no runtime limb warp"
+  },
+  "Hero3Diagonals": {
+    "width": 6400,
+    "height": 1024,
+    "decodedBytes": 26214400,
+    "frames": 24,
+    "columns": 25,
+    "source": "original direction artwork + independently articulated offline leg rig",
+    "runtimeRig": "24 whole-frame poses; inward-aimed rigid shoes, two-bone knees, distance-locked stance; no runtime limb warp"
   }
 }

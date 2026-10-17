@@ -1,0 +1,55 @@
+{
+  "version": "1.5.2",
+  "build": "15",
+  "kind": "native-opaque-ground-and-shared-gait-relief",
+  "sourceCommit": "ee5a2513023efbab78e48a6aef193b1aba648d0d",
+  "workflowRun": 38842001680,
+  "runner": "macos-14",
+  "xcode": "15.4 (15F31d)",
+  "workflowConclusion": "success",
+  "artifactId": 12021697751,
+  "reviewArtifactId": 12021713713,
+  "replacesBuild": "14",
+  "ipa": "MeadowJourney-b15.ipa",
+  "bytes": 17310714,
+  "sha256": "a1350e48c81bdf57038fa703322f57d66a3aa39719199eff1c67fc3c4ff51887",
+  "compression": "ZIP_STORED",
+  "zip64": false,
+  "extendedFields": false,
+  "validation": {
+    "deviceReleaseArchive": "passed",
+    "zipCRC": "passed",
+    "arm64": "passed",
+    "devicePlatform": "iPhoneOS",
+    "metalLibraryPresent": true,
+    "executablePermission": "passed",
+    "nativeTestsPassed": 15,
+    "uiTestsPassed": 2,
+    "uiDevices": [
+      "iPhone simulator",
+      "iPad simulator"
+    ],
+    "totalFailures": 0,
+    "actualGroundScreenChecks": "Initial, zoom, and return from shadow lab checked on both devices; iPad return attachment inspected and terrain is visible.",
+    "gaitContactReview": "Inspected actual SpriteKit-rendered contact/passing sheets for all three heroes; seven corrected headings, four phases each. Eight-heading source-frame tests and shared caster projection/sole-plane checks passed.",
+    "shadowsAndRoadsArtReview": "User feedback pending; review limited to terrain visibility and gait contours.",
+    "publicDownloadBytesAndSha256": "matched final archive IPA"
+  },
+  "rendering": {
+    "mainShadowSize": 2048,
+    "labShadowSize": 1024,
+    "casterMode": "image alpha relief only; solid proxy removed",
+    "groundReceiver": "Native opaque Metal grass + unified road mask + PCF, alpha=1; independent SKRenderer floor removed",
+    "cpuPixelReadbackOnDisplay": false,
+    "foregroundPreferredFPS": 60,
+    "backgroundTargetFPS": 30,
+    "gait": "No extra body lift; whole left-profile frames mirrored for right; bounded continuous lower-leg stance sweep for other headings; actor and depth caster share pose."
+  },
+  "limitations": [
+    "Front/back source artwork has limited separated sole detail; complete foot locking and walking feel still need user device feedback.",
+    "Simulator checks do not replace physical-device frame-rate or thermal measurements."
+  ],
+  "installationStatus": "Classic stored ZIP, same bundle identifier; SideStore device installation awaiting user feedback.",
+  "supersededBy": "build 16",
+  "supersededReason": "User reported zoom shadow misalignment and startup unresponsiveness; build 16 shares the sampled SpriteKit viewport with the ground receiver and provides staged loading progress."
+}

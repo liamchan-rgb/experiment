@@ -1,0 +1,137 @@
+{
+  "version": "1.3.0",
+  "build": "9",
+  "sourceCommit": "1fc241572c4c3a2921f36b4a2461e21f36520bbb",
+  "verifiedRun": "https://github.com/liamchan-rgb/experiment/actions/runs/38696431707",
+  "buildJobID": 116293952808,
+  "IPAArtifactID": 11955540300,
+  "IPA_SHA256": "47a750826bad352d50e84bc563d3a8149b291ea34e8ae15f0ffb20ffe8d2f1ca",
+  "IPABytes": 16838405,
+  "architecture": "arm64",
+  "bundleIdentifier": "com.liamchan.experiment.meadow",
+  "minimumOSVersion": "15.0",
+  "supportedDevices": [
+    "iPhone",
+    "iPad"
+  ],
+  "tests": {
+    "modelAssetAndNativeRenderingChecks": 25,
+    "iPhoneUITests": 2,
+    "iPadUITests": 2
+  },
+  "nativeRenderingChecks": [
+    "Sunlight and mist alter actual pixels with a fixed camera",
+    "Tree wind alters alpha silhouette at full-view size",
+    "Diagonal contact and passing poses differ for all three heroes and four diagonal headings",
+    "Opposite-contact limbs preserve connected silhouette coverage",
+    "Hem and figure width do not expand during leg exchange",
+    "Projected shadows follow the current leg pose and sun direction"
+  ],
+  "renderingModel": "Existing 2.5D ground silhouette projection, shared sun direction and tree wind, separate contact patches",
+  "sourcePullRequest": "https://github.com/liamchan-rgb/experiment/pull/3",
+  "physicalDeviceValidation": "Not performed; measurements and recordings are from iOS simulators. IPA is unsigned for SideStore re-signing.",
+  "simulatorMetrics": {
+    "samples": 30,
+    "averageFPS": 58.97,
+    "minimumFPS": 55,
+    "maximumSampledResidentMiB": 173.89,
+    "decodedTextureMiB": 55.14,
+    "independentProps": 288,
+    "sampleEnvironmentTimeRange": [
+      49.71823254166661,
+      78.71823254166661
+    ]
+  },
+  "minimumZoomSimulatorMetrics": {
+    "samples": 30,
+    "averageFPS": 56.38,
+    "minimumFPS": 51,
+    "maximumSampledResidentMiB": 209.3,
+    "decodedTextureMiB": 55.14,
+    "independentProps": 288,
+    "sampleEnvironmentTimeRange": [
+      25.00134520833326,
+      54.073120208333336
+    ]
+  },
+  "iPadScreenshotPixels": [
+    2752,
+    2064
+  ],
+  "visualReview": {
+    "fixedCameraStartEndMeanRGBChange": 18.293,
+    "minimumZoom": 1,
+    "travelersPausedInMinimumZoomSamples": true,
+    "gaitInspectionSpeedWorldUnitsPerSecond": 42,
+    "productionJourneySpeedRangeWorldUnitsPerSecond": [
+      38,
+      45
+    ],
+    "continuousRecordingReview": "passed",
+    "eightHeadingsVisible": true,
+    "diagonalContactFramesInspected": 24,
+    "diagonalContactSampleHero": 2,
+    "legConnectionContinuityChecked": true,
+    "figureWidthStable": true,
+    "minimumZoomWindVisuallyChecked": true,
+    "gaitTimelineScale": 1.0,
+    "minimumZoomTimelineScale": 1.0,
+    "sourceRecordings": "RecordingInfo-v1.3.0.json"
+  },
+  "compactArtifactID": 11955511949,
+  "validationStatus": "Native compile,29 checks,device archive,IPA integrity and sampled recording review passed.",
+  "visualArtifacts": {
+    "MinimumZoomMetrics-v1.3.0.json": {
+      "bytes": 16968,
+      "sha256": "11b9ed1b6932564ba5dd0fe38a28c41f1d50f2bb3bd5fa3ceab2067b92df2a7e"
+    },
+    "RecordingInfo-v1.3.0.json": {
+      "bytes": 1771,
+      "sha256": "eefad88b1801bd570aef6ba52d4243bc0c4360a8e2307d3945f65f79bcf47af6"
+    },
+    "RuntimeMetrics-v1.3.0.json": {
+      "bytes": 16997,
+      "sha256": "a5338c591f64a9a1f632f409217c3d0d66bec7601b1f48daccf75397aeca54d3"
+    },
+    "SourceRun-v1.3.0.json": {
+      "bytes": 220,
+      "sha256": "e223dd6c18f89ce952d1137d7924b1b6d8041e494a0e8f49a6c88dfc5f27d252"
+    },
+    "iPad-DiagonalContacts-v1.3.0.png": {
+      "bytes": 5253866,
+      "sha256": "c76060c7435f7a428629623c23a74c7429952b77641c5b97e0fc0172c0ab7ad5"
+    },
+    "iPad-EightDirectionGait-v1.3.0.mp4": {
+      "bytes": 27222215,
+      "sha256": "2616ba5d0cf3734432603d031aa56a780431a5af4572d3dba3319f9bb4d7b332"
+    },
+    "iPad-GaitDirections-v1.3.0.jpg": {
+      "bytes": 453651,
+      "sha256": "5652706dae632a2f64143a01fc1fcc4177490f93f174729a5a23e1556b868d21"
+    },
+    "iPad-LivingScene-v1.3.0-native.png": {
+      "bytes": 12886672,
+      "sha256": "0f16bf53b55243fc7af76515d2aa14d95a2b1e02b08cbd304a1b14b5b8545202"
+    },
+    "iPad-LivingScene-v1.3.0.mp4": {
+      "bytes": 61195567,
+      "sha256": "68371632bdefa7a3cbd3f27c568a48d16e6e9188fd9038badfecf60c18d29712"
+    },
+    "iPad-MinimumZoomAtmosphere-v1.3.0-end.png": {
+      "bytes": 12871801,
+      "sha256": "dd91a30670766c53cde4a3b045ffdda05f33bc261cce8a9e7273b38ed8c15674"
+    },
+    "iPad-MinimumZoomAtmosphere-v1.3.0-start.png": {
+      "bytes": 12905064,
+      "sha256": "5d6a8f0a7abfc266910f0653d235f41147476cb7a2f43521e4e749cc596c84f1"
+    },
+    "iPad-MinimumZoomAtmosphere-v1.3.0.mp4": {
+      "bytes": 46412170,
+      "sha256": "0d225b7f3d1b6e4ccf41a0094dec04e4b0c66fd447f41cae42555ce25f95d0e1"
+    },
+    "iPad-TreeWind-v1.3.0.png": {
+      "bytes": 1175107,
+      "sha256": "dee34bb459ad80ad594f0f836a2705c2022d11656b18f9c214488804b056e833"
+    }
+  }
+}
