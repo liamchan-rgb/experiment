@@ -1,6 +1,6 @@
 # 安然 · 林间行旅
 
-[最新 1.6.1 build 26：鞋部朝向修正 IPA](Downloads/README.md) · [正常／慢速录像与抽帧](Media/Build26-Gait/README.md) · [可换装骨骼方案评估](docs/CHARACTER_RIG_EVALUATION.md) · [迭代日志](docs/ITERATION_STATUS.md)
+[最新 1.6.1 build 26：鞋部朝向修正 IPA](Downloads/README.md) · [正常／慢速录像与抽帧](Media/Build26-Gait/README.md) · [分层动画原型](docs/OPEN_TOONZ_PROTOTYPE.md) · [可换装角色方案评估](docs/CHARACTER_RIG_EVALUATION.md) · [迭代日志](docs/ITERATION_STATUS.md)
 
 以下为 build 9 的历史版本说明。
 

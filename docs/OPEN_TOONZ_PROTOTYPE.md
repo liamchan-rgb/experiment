@@ -1,0 +1,25 @@
+# OpenToonz 分层步态原型
+
+## 本轮做了什么
+
+按“离线分层动画”方案，为 P1 的向下步态导出了一组 24 帧步态周期、每帧 256×256 的 RGBA 图像序列。图层分为 `Legs`、`Boots` 和 `Body`，另有可替换的 `BlueBoots` 鞋色层。蓝鞋沿用原鞋轮廓、明暗和位置，仅单独调整颜色，用来验证装备层可以替换。PNG 序列不内嵌播放帧率；实际时序应由动画场景设置。
+
+[下载 OpenToonz/Tahoma2D 序列包](../Art/Prototypes/P1-Down-Layered-Walk.zip) · [单帧分层检查文件](../Art/Prototypes/P1-Down-BlueBoots-Frame12.ora) · [24 帧对照图](../Media/LayeredGait-P1-Down.png)
+
+解压序列包后，将 `P1-Down-Legs.0001.png`、`P1-Down-Boots.0001.png`（或 `P1-Down-BlueBoots.0001.png`）和 `P1-Down-Body.0001.png` 分别作为图像序列导入 OpenToonz 或 Tahoma2D 的 level，按 Legs、Boots、Body 的顺序从后向前合成。包内 `IMPORT-README.txt` 也记录了这些说明。`Reference` 是当前正式角色的逐帧原图，可作比对；`BlueVariant` 是已经合成好的蓝鞋预览。
+
+本轮从现有步态生成器导出，没有在 OpenToonz/Tahoma2D 编辑器中手工绘制关键帧；当前执行环境没有图形界面，因此未声称完成编辑器内的导入往返。ZIP 序列和 `.ora` 分层单帧均已通过结构与 CRC 检查。
+
+## 保真检查与已知边界
+
+`Reference` 的 24 帧与当前 P1 正面方向游戏图集逐像素相同。把所有腿部片段先合成到 `Legs`、再把鞋合成到 `Boots` 的三层演示合成，在最多一帧中有 342 个不同像素（256×256 单帧的约 0.52%），集中于腿鞋交叠的遮挡区域。游戏原图没有变化；独立拆层合成时的细小差异说明，继续扩展时需将远腿、近腿与鞋的前后关系分层，或在离线合成阶段保留逐帧深度顺序。
+
+这次只验证了一个角色、一个朝向和一种鞋色替换。它证明现有程序化步态可以输出给分层动画工具检查，也证明可单独替换一个装备颜色；没有接入运行时换装界面，也没有建立通用角色骨骼。应用仍读取完整姿势图集，所以本原型没有生成新 IPA。若决定采用此流程，下一步应补充方向／角色覆盖并定义带逐帧遮挡信息的图层打包器，再考虑把换装结果打入游戏图集。
+
+OpenToonz 图像序列说明：[Working in the Xsheet](https://opentoonz.readthedocs.io/en/latest/working_in_xsheet.html)。有官方 Linux/macOS/Windows 安装包的 OpenToonz 分支：[Tahoma2D](https://github.com/tahoma2d/tahoma2d)。
+
+可从仓库根目录重新生成：
+
+```bash
+python3 scripts/export-layered-gait-prototype.py
+```

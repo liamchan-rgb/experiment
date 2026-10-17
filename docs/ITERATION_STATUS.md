@@ -310,3 +310,9 @@ GitHub 调研发现 Rigby2D 可作为未来换装角色的候选：MIT／Apache-
 构建 `39033438871` 的源码完整提交为 `b60d8e5b7e2aab4ac80ffc607b34c4eecdca47aa`。Xcode 16.4 在 macos-15 runner 完成设备 Release archive、16 项原生检查与 3 项 iPad UI 检查；八方向步态 UI 检查遍历每方向 24 张姿势，人物投影与阴影在缩放变化下的对齐检查通过。IPA 为 16,641,050 字节，SHA-256 `555c8467897e0e263bc12731158293a06cbc9aac4c86e020764bb493f632e98d`；ZIP CRC、ZIP_STORED、arm64、0755 执行权限与 Metal 库已核验。直接下载：[MeadowJourney-b26.ipa](../Downloads/MeadowJourney-b26.ipa)。完整构建信息见[元数据](../Downloads/MeadowJourney-build26.json)。
 
 正常速度录像与慢速录像均来自实际地图渲染器；正常录像启动时已错过方向计时器的“上”方向，不能用它作为完整八方向证据。慢速录像覆盖全部八方向，配合 UI 遍历和 288 个连续时间抽样用于检查鞋角及踝口。[视频与抽帧](../Media/Build26-Gait/README.md)。云端只使用 iPad Pro 13-inch（M4）模拟器、iOS 18.5，未执行 iPhone 测试或用户物理 M1 iPad／iPadOS 27.2 实测。
+
+## 2026-10-17 · OpenToonz 离线分层动画小样
+
+用户选择尝试第三种方案：以 OpenToonz/Tahoma2D 制作离线分层动画，不先移植通用骨骼运行时。为 P1 向下步态输出 24 帧图像 level，包含腿、鞋、身体、原姿势参考，以及单独替换颜色的蓝鞋层。这样能先验证装备部件可否独立编辑，再烘焙回当前游戏使用的完整姿势图集。
+
+24 帧原姿势参考与现有 P1 图集逐像素一致。三层简化重组最多有 342 个像素不同（单帧约 0.52%），差异在腿鞋遮挡交界；后续需保留前后腿／鞋的分层或逐帧深度顺序。该原型只覆盖一角色、一方向，不等于通用骨骼或应用内换装；运行时资源没有更改，因此本轮没有 IPA。当前无图形界面的构建环境不能完成 OpenToonz/Tahoma2D GUI 往返导入，序列包和分层单帧已做 ZIP 结构、CRC 检查。详见 [原型和导入说明](OPEN_TOONZ_PROTOTYPE.md)。

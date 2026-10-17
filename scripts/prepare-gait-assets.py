@@ -108,7 +108,7 @@ def rigid_shoe(shoe, ankle, destination):
                           (1, 0, -offset[0], 0, 1, -offset[1]),
                           Image.Resampling.NEAREST)
 
-def prepare_gait_assets(root, save_asset, manifest):
+def prepare_gait_assets(root, save_asset, manifest, layer_export=None, write_metadata=True):
     metadata = {'format': 1, 'frames': FRAME_COUNT, 'columns': FRAME_COUNT + 1, 'cell': CELL, 'heroes': []}
     # The long skirt hides P3's neutral thigh artwork. New swing poses need
     # that hidden area covered with the family's existing dark trouser fabric,
@@ -187,6 +187,7 @@ def prepare_gait_assets(root, save_asset, manifest):
                 bob = -1.0 * math.cos(4 * math.pi * phase)
                 image = Image.new('RGBA', (CELL, CELL))
                 layers, feet = [], []
+                export_layers = [] if layer_export is not None else None
                 for leg, (upper, calf, shoe, hip, knee, ankle) in enumerate(pieces):
                     t = (phase + leg * .5) % 1
                     # Stance covers exactly half a cycle: constant backward
@@ -217,10 +218,17 @@ def prepare_gait_assets(root, save_asset, manifest):
                     # knee, not stamped over it. Sort all six rigid segments
                     # together, including the lateral depth of each hip.
                     side_depth = depth * 12
-                    layers.extend([
-                        (side_depth + (hip3[1] + knee3[1]) / 2, bone(upper, hip, knee, dh, dk, end_overlap=2)),
-                        (side_depth + (knee3[1] + ankle3[1]) / 2, bone(calf, knee, ankle, dk, da)),
-                        (side_depth + ankle3[1], rigid_shoe(shoe, ankle, da))])
+                    thigh = bone(upper, hip, knee, dh, dk, end_overlap=2)
+                    shin = bone(calf, knee, ankle, dk, da)
+                    boot = rigid_shoe(shoe, ankle, da)
+                    thigh_depth = side_depth + (hip3[1] + knee3[1]) / 2
+                    calf_depth = side_depth + (knee3[1] + ankle3[1]) / 2
+                    shoe_depth = side_depth + ankle3[1]
+                    layers.extend([(thigh_depth, thigh), (calf_depth, shin), (shoe_depth, boot)])
+                    if export_layers is not None:
+                        export_layers.extend([(thigh_depth, f'leg{leg + 1}-thigh', thigh),
+                                              (calf_depth, f'leg{leg + 1}-calf', shin),
+                                              (shoe_depth, f'leg{leg + 1}-shoe', boot)])
                     feet.append([float(da[0] / CELL), float((224 + project(forward * f)[1]) / CELL), float(lift / CELL)])
                 for _, part in sorted(layers, key=lambda item: item[0]): image.alpha_composite(part)
                 image.alpha_composite(body, (0, round(-bob)))
@@ -231,6 +239,14 @@ def prepare_gait_assets(root, save_asset, manifest):
                     debug.mkdir(parents=True, exist_ok=True)
                     image.save(debug / f'hero{hero + 1}-direction{facing}-frame{frame + 1}.png')
                     raise ValueError(f'Hero {hero + 1}, direction {facing}, frame {frame + 1}: {error}') from error
+                if layer_export is not None:
+                    body_pose = Image.new('RGBA', (CELL, CELL))
+                    body_pose.alpha_composite(body, (0, round(-bob)))
+                    ordered_layers = sorted(export_layers, key=lambda item: item[0])
+                    # Keep exporter transformations isolated from the production pose and source parts.
+                    layer_export(hero + 1, facing, frame + 1, body_pose.copy(),
+                                 [(depth, name, part.copy()) for depth, name, part in ordered_layers],
+                                 finished.copy())
                 frames.append(finished); info.append({'feet': feet})
             poses.append(frames); hero_metadata.append(info)
         metadata['heroes'].append(hero_metadata)
@@ -244,5 +260,6 @@ def prepare_gait_assets(root, save_asset, manifest):
             manifest[name].update({'frames': FRAME_COUNT, 'columns': FRAME_COUNT + 1,
                 'source': 'original direction artwork + independently articulated offline leg rig',
                 'runtimeRig': '24 whole-frame poses; rigid shoes, two-bone knees, distance-locked stance; no runtime limb warp'})
-    (root / 'Sources/Resources/hero-gait.json').write_text(json.dumps(metadata, separators=(',', ':')) + '\n')
+    if write_metadata:
+        (root / 'Sources/Resources/hero-gait.json').write_text(json.dumps(metadata, separators=(',', ':')) + '\n')
     return metadata
