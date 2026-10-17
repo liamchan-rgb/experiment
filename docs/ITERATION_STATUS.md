@@ -1,6 +1,6 @@
 # 林间行旅迭代进度 · 2026-10-17
 
-当前可下载版：[1.6.2 build 27 八方向鞋向测试 IPA](../Downloads/README.md)，成功构建 `39049360600`。兼容性测试只覆盖 iPad；云端使用 iPad Pro 13-inch（M4）模拟器、iOS 18.5，没有连接用户的物理 iPad。
+当前可下载版：[1.6.3 build 28 八方向鞋向修正 IPA](../Downloads/README.md)，iPad UI 检查已通过。兼容性测试只覆盖 iPad；云端使用 iPad Pro 13-inch（M4）模拟器、iOS 18.5，没有连接用户的物理 iPad。
 
 **后续兼容性测试口径（2026-10-16 起）：只在 iPad 模拟器／设备上执行并判定兼容性测试；不再测试或要求 iPhone 结果。** 常规 CI 与快速阴影验收均以 iPad 为唯一测试设备。此前记录的 iPhone 测试结果保留为历史数据；设备 IPA 仍按通用 iOS 目标归档。
 
@@ -334,3 +334,11 @@ GitHub 调研发现 Rigby2D 可作为未来换装角色的候选：MIT／Apache-
 交付 [MeadowJourney-b27.ipa](../Downloads/MeadowJourney-b27.ipa)，16,744,850 字节，SHA-256 `2954efd466000db241ac4d1b61e9c3d743ed9bb8839925f9993417e5d8048e93`。已核验版本、最低系统 15.0、iPhoneOS 真机 arm64 Mach-O、0755 权限、ZIP CRC／ZIP_STORED、无 Zip64／额外字段、Metal 库、包内蓝靴图集与预览控制代码；下载到工作区的外层 artifact ZIP 摘要也与 GitHub 提供的 digest 一致。包标识沿用原值，使用 SideStore 重签更新。
 
 [安装与下载](../Downloads/README.md) · [八方向鞋向测试步骤](GAIT_TEST.md) · [来源与校验元数据](../Downloads/MeadowJourney-build27.json)。
+
+## 2026-10-17 · build 28 修正八方向外八鞋尖
+
+用户指出 build 27 的三位人物不止一个方向，所有方向的鞋尖都向外撇。之前仅保留各朝向原图里的鞋角度、再随脚踝平移，没能消除这个问题。build 28 在图集生成时让每只刚性鞋围绕脚踝向前进方向收拢 18°；应用于三位人物、八个朝向和每方向 24 帧，分层蓝靴样例也同步重烘焙。运行时步态骨架没有变化。
+
+设备 Release IPA 已打包，源码提交 `9508a733af1a828b6039992e0fce8b63069ea403`。构建 `39051625894` 的 iPad UI 检查已通过：实际地图中的步态测试逐一切换八方向，并检查每方向全部 24 帧；附带地图轮廓、缩放对齐和蓝靴预览回归。工作流也完成八方向地图截图、正常速度和四分之一速度录像。设备为 iPad Pro 13-inch（M4）模拟器、iOS 18.5；物理 M1 iPad／iPadOS 27.2 尚未本地安装验证。
+
+IPA 为 16,806,354 字节，SHA-256 `e99c0e9754dd3ea4875566603df82273b49365474b8069a7e0693e25fad0cd0f`。已核对 IPA 版本、真机 arm64、签名状态、ZIP CRC、资源及执行权限。安装与下载见 [build 28 说明](../Downloads/README.md)，完整来源见[元数据](../Downloads/MeadowJourney-build28.json)。

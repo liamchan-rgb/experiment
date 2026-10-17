@@ -1,6 +1,6 @@
 # 安然 · 林间行旅
 
-[最新 1.6.2 build 27：八方向鞋向测试 IPA](Downloads/README.md) · [鞋向实机测试步骤](docs/GAIT_TEST.md) · [正常／慢速录像与抽帧](Media/Build26-Gait/README.md) · [分层动画原型](docs/OPEN_TOONZ_PROTOTYPE.md) · [可换装角色方案评估](docs/CHARACTER_RIG_EVALUATION.md) · [迭代日志](docs/ITERATION_STATUS.md)
+[最新 1.6.3 build 28：八方向鞋向修正 IPA](Downloads/README.md) · [鞋向实机测试步骤](docs/GAIT_TEST.md) · [正常／慢速录像与抽帧](Media/Build26-Gait/README.md) · [分层动画原型](docs/OPEN_TOONZ_PROTOTYPE.md) · [可换装角色方案评估](docs/CHARACTER_RIG_EVALUATION.md) · [迭代日志](docs/ITERATION_STATUS.md)
 
 以下为 build 9 的历史版本说明。
 
@@ -18,7 +18,7 @@
 
 ## 安装
 
-[直接下载最新 1.6.2 build 27 IPA](https://raw.githubusercontent.com/liamchan-rgb/experiment/feat/layered-living-scene/Downloads/MeadowJourney-b27.ipa)。在 Safari 保存到“文件”，再打开 SideStore → My Apps → ＋，选择该文件重签安装。主地图 →“步态测试”可逐一检查三位人物的八方向鞋向。
+[直接下载最新 1.6.3 build 28 IPA](https://raw.githubusercontent.com/liamchan-rgb/experiment/feat/layered-living-scene/Downloads/MeadowJourney-b28.ipa)。在 Safari 保存到“文件”，再打开 SideStore → My Apps → ＋，选择该文件重签安装。主地图 →“步态测试”可逐一检查三位人物的八方向鞋向。
 
 [安装与校验说明](Downloads/README.md) · [录像与截图](Media/README.md) · [迭代记录](docs/ITERATION_STATUS.md) · [PR #3](https://github.com/liamchan-rgb/experiment/pull/3)
 
