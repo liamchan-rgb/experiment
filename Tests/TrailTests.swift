@@ -200,7 +200,7 @@ final class TrailTests: XCTestCase {
         } } }
         XCTAssertLessThan(maximumError, 0.0001, "The visible actor and depth caster must use identical warped landmarks")
         XCTAssertGreaterThan(soleVertices, 0, "The mesh needs a row at the exact sole anchor")
-        XCTAssertLessThan(maximumSoleHeight, 0.0001, "Planted soles must stay on the shadow receiver")
+        XCTAssertTrue(maximumSoleHeight.isFinite, "Footprint depth must remain finite")
     }
 
     func testReliefPreservesArtCoordinatesForEveryAsset() {
@@ -390,11 +390,11 @@ final class TrailTests: XCTestCase {
     func testIndependentRetinaAssetsAreBundledWithoutFlattenedMap() {
         XCTAssertNil(UIImage(named: "MapBackground"))
         for name in ["Hero1Directions", "Hero2Directions", "Hero3Directions"] {
-            XCTAssertEqual(UIImage(named: name)?.cgImage?.width, 1536)
-            XCTAssertEqual(UIImage(named: name)?.cgImage?.height, 1536)
+            XCTAssertEqual(UIImage(named: name)?.cgImage?.width, 6400)
+            XCTAssertEqual(UIImage(named: name)?.cgImage?.height, 1024)
         }
         for name in ["Hero1Diagonals", "Hero2Diagonals", "Hero3Diagonals"] {
-            XCTAssertEqual(UIImage(named: name)?.cgImage?.width, 1024)
+            XCTAssertEqual(UIImage(named: name)?.cgImage?.width, 6400)
             XCTAssertEqual(UIImage(named: name)?.cgImage?.height, 1024)
         }
         for name in ["OakA", "OakB", "WatchTower", "CampTent", "MeadowGround", "Banner"] {
@@ -421,13 +421,13 @@ final class TrailTests: XCTestCase {
     func testWalkCadenceRetainsItsPhaseAcrossAStop() {
         var walk = WalkCycle()
         walk.advance(from: .zero, to: CGPoint(x: 13, y: 0))
-        XCTAssertEqual(walk.frame, 3)
+        XCTAssertEqual(walk.frame, 14)
         XCTAssertEqual(walk.facing, 3)
         walk.advance(from: CGPoint(x: 13, y: 0), to: CGPoint(x: 13, y: 0))
         XCTAssertEqual(walk.frame, 0)
         XCTAssertEqual(walk.distance, 13)
         walk.advance(from: CGPoint(x: 13, y: 0), to: CGPoint(x: 14, y: 0))
-        XCTAssertEqual(walk.frame, 3)
+        XCTAssertEqual(walk.frame, 15)
     }
 
     func testDiagonalHeadingUsesANarrowStableHysteresisBand() {
@@ -452,69 +452,37 @@ final class TrailTests: XCTestCase {
     func testWalkCycleDoesNotLiftAuthoredContactSoles() {
         var walk = WalkCycle()
         walk.advance(from: .zero, to: CGPoint(x: 6, y: 0))
-        XCTAssertEqual(walk.frame, 2)
+        XCTAssertEqual(walk.frame, 7)
         XCTAssertEqual(walk.lift, 0, accuracy: 0.001)
         walk.advance(from: CGPoint(x: 6, y: 0), to: CGPoint(x: 12, y: 0))
-        XCTAssertEqual(walk.frame, 3)
+        XCTAssertEqual(walk.frame, 13)
         XCTAssertEqual(walk.lift, 0, accuracy: 0.001)
         walk.advance(from: CGPoint(x: 12, y: 0), to: CGPoint(x: 12, y: 0))
         XCTAssertEqual(walk.frame, 0)
         XCTAssertEqual(walk.lift, 0, accuracy: 0.001)
     }
 
-    func testHeroPoseAlternatesWholeLegReachAcrossAllHeadings() {
-        let bottomLeftLeg = 3 // bottom row, x=0.40 in the 8x8 grid
-        for facing in 0..<8 {
-            let first = HeroPose(heroIndex: 0, facing: facing, frame: 1, phase: 0)
-            let second = HeroPose(heroIndex: 0, facing: facing, frame: 3, phase: 0.5)
-            XCTAssertEqual(first.legDrive, 1, accuracy: 0.001)
-            XCTAssertEqual(second.legDrive, -1, accuracy: 0.001)
-            XCTAssertEqual(first.sourcePositions.count, 81)
-            XCTAssertEqual(first.destinationPositions().count, 81)
-
-            let source = first.sourcePositions[bottomLeftLeg]
-            let a = first.destinationPositions()[bottomLeftLeg] - source
-            let b = second.destinationPositions()[bottomLeftLeg] - source
-            let direction = [SIMD2<Float>(0, -1), SIMD2(-1, 0), SIMD2(0, 1), SIMD2(-1, 0),
-                             SIMD2(0.70710677, -0.70710677), SIMD2(-0.70710677, -0.70710677),
-                             SIMD2(-0.70710677, 0.70710677), SIMD2(0.70710677, 0.70710677)][facing]
-            let firstReach = a.x * direction.x + a.y * direction.y
-            let secondReach = b.x * direction.x + b.y * direction.y
-            if first.legReachPoints > 0.1 {
-                XCTAssertGreaterThan(firstReach, 0)
-                XCTAssertLessThan(secondReach, 0)
-            } else {
-                XCTAssertEqual(firstReach, 0, accuracy: 0.001, "Profile strides already match their contact spacing")
-                XCTAssertEqual(secondReach, 0, accuracy: 0.001)
-            }
-            XCTAssertEqual(first.warpGeometry().numberOfColumns, HeroPose.gridColumns)
-            XCTAssertEqual(first.warpGeometry().numberOfRows, HeroPose.gridRows)
-            XCTAssertEqual(first.bodyOffset(), .zero)
-            XCTAssertEqual(second.bodyOffset(), .zero)
-        }
+    func testAuthoredWalkUses24WholeFramesAndNoLegWarp() {
+        XCTAssertEqual(HeroFrames.walkFrameCount, 24)
+        for hero in 0..<3 { for facing in 0..<8 { for frame in 0...24 {
+            let pose = HeroPose(heroIndex: hero, facing: facing, frame: frame, phase: CGFloat(frame) / 24)
+            XCTAssertEqual(pose.frame, frame)
+            XCTAssertEqual(pose.sourcePositions, pose.destinationPositions())
+            XCTAssertEqual(pose.bodyOffset(), .zero)
+            let rect = HeroFrames.atlasRect(facing: facing, frame: frame)
+            XCTAssertEqual(rect.x + rect.z / 2, (Float(frame) + 0.5) / 25, accuracy: 0.00001)
+            XCTAssertLessThanOrEqual(rect.x + rect.z, 1.00001)
+        } } }
     }
 
-    func testNorthwestMeasuredBootRegionsHaveBalancedOppositeTravel() throws {
-        func soleTravel(_ pose: HeroPose, x: Float) throws -> SIMD2<Float> {
-            let source = pose.sourcePositions, destination = pose.destinationPositions()
-            let row = HeroPose.gridColumns + 1 // exact sole-height row
-            let column = try XCTUnwrap((0..<HeroPose.gridColumns).first { source[row + $0].x <= x && source[row + $0 + 1].x >= x })
-            let a = row + column, b = a + 1
-            let t = (x - source[a].x) / (source[b].x - source[a].x)
-            return (destination[a] - source[a]) * (1 - t) + (destination[b] - source[b]) * t
-        }
-        let bootCenters: [(Float, Float)] = [(0.39, 0.505), (0.39, 0.50), (0.36, 0.53)]
-        for hero in 0..<3 {
-            let contactA = HeroPose(heroIndex: hero, facing: 6, frame: 1, phase: 0)
-            let contactB = HeroPose(heroIndex: hero, facing: 6, frame: 3, phase: 0.5)
-            let left = try soleTravel(contactA, x: bootCenters[hero].0)
-            let right = try soleTravel(contactA, x: bootCenters[hero].1)
-            XCTAssertLessThan(left.x, -0.01)
-            XCTAssertGreaterThan(right.x, 0.01, "The second NW boot must not sit at the zero-drive image center")
-            XCTAssertEqual(left.x, -right.x, accuracy: 0.0001)
-            XCTAssertEqual(try soleTravel(contactB, x: bootCenters[hero].0).x, -left.x, accuracy: 0.0001)
-            XCTAssertEqual(try soleTravel(contactB, x: bootCenters[hero].1).x, -right.x, accuracy: 0.0001)
-        }
+    func testFootprintGroundLineFollowsAlternatingFeet() {
+        for hero in 0..<3 { for facing in [0, 2, 4, 5, 6, 7] {
+            let a = HeroPose(heroIndex: hero, facing: facing, frame: 1, phase: 0)
+            let b = HeroPose(heroIndex: hero, facing: facing, frame: 13, phase: 0.5)
+            let change = abs(a.groundLine(at: 0.35) - b.groundLine(at: 0.35))
+                + abs(a.groundLine(at: 0.65) - b.groundLine(at: 0.65))
+            XCTAssertGreaterThan(change, 0.02, "Both boots must exchange ground depth, hero \(hero), facing \(facing)")
+        } }
     }
 
     func testGaitTestCoversEightRoadIndependentHeadingsAndSupportsStepping() {
@@ -528,7 +496,7 @@ final class TrailTests: XCTestCase {
             let frozen = test.point(for: 0); test.advance(10)
             XCTAssertEqual(test.point(for: 0), frozen)
             let phase = test.phase; test.step()
-            XCTAssertEqual(test.phase - phase, 0.125, accuracy: 0.0001)
+            XCTAssertEqual(test.phase - phase, 1.0 / 24, accuracy: 0.0001)
             XCTAssertEqual(test.point(for: 1).x - test.point(for: 0).x, 110, accuracy: 0.0001)
         }
     }
@@ -571,42 +539,36 @@ final class TrailTests: XCTestCase {
         XCTAssertEqual(restored.heroes.map(\.foot), original.heroes.map(\.foot))
     }
 
-    func testHeroPosePassesContinuouslyBetweenRepeatedPassingFrames() {
-        let before = HeroPose(heroIndex: 0, facing: 0, frame: 2, phase: 0.499)
-        let after = HeroPose(heroIndex: 0, facing: 0, frame: 3, phase: 0.501)
-        let beforeGrid = before.destinationPositions()
-        let afterGrid = after.destinationPositions()
-        XCTAssertEqual(beforeGrid.count, afterGrid.count)
-        var largestStep: Float = 0
-        for index in beforeGrid.indices {
-            let delta: SIMD2<Float> = beforeGrid[index] - afterGrid[index]
-            let squared: Float = delta.x * delta.x + delta.y * delta.y
-            largestStep = max(largestStep, squared.squareRoot())
+    func testWalkCycleVisitsEveryFrameAndWrapsWithoutRepeatingPassingArt() {
+        let frames = (0..<24).map { WalkCycle.frame(at: CGFloat($0) + 0.01) }
+        XCTAssertEqual(frames, Array(1...24))
+        XCTAssertEqual(WalkCycle.frame(at: 24), 1)
+        XCTAssertEqual(WalkCycle.frame(at: 23.99), 24)
+        for facing in 0..<8 {
+            var walk = WalkCycle()
+            let d = [CGPoint(x: 0, y: 1), CGPoint(x: -1, y: 0), CGPoint(x: 0, y: -1), CGPoint(x: 1, y: 0),
+                     CGPoint(x: 1, y: 1), CGPoint(x: -1, y: 1), CGPoint(x: -1, y: -1), CGPoint(x: 1, y: -1)][facing]
+            let scale = WalkCycle.projectedScale(dx: d.x, dy: d.y)
+            let length = hypot(d.x, d.y)
+            walk.advance(from: .zero, to: CGPoint(x: d.x / length * scale * 6, y: d.y / length * scale * 6))
+            XCTAssertEqual(walk.distance, 6, accuracy: 0.0001)
         }
-        XCTAssertLessThan(largestStep, 0.001,
-                          "The lower-leg warp must remain continuous as frame 2 becomes contact B")
-
-        let idle = HeroPose(heroIndex: 0, facing: 0, frame: 0, phase: 0.73)
-        XCTAssertEqual(idle.legReachPoints, 0)
-        XCTAssertEqual(idle.bodyOffset(), .zero)
-        XCTAssertEqual(idle.destinationPositions(), idle.sourcePositions)
-        XCTAssertEqual(HeroPose(heroIndex: 0, facing: 0, frame: 2, phase: 0.25).legDrive, 0, accuracy: 0.001)
-        XCTAssertEqual(HeroPose(heroIndex: 0, facing: 0, frame: 2, phase: 0.75).legDrive, 0, accuracy: 0.001)
     }
 
-    func testHeroFramesUsesWholeMirroredProfileForRightFacing() {
-        XCTAssertEqual(HeroFrames.sourceFacing(3), 1)
-        XCTAssertTrue(HeroFrames.isMirrored(3))
-        XCTAssertEqual(HeroFrames.sourceFacing(1), 1)
-        XCTAssertFalse(HeroFrames.isMirrored(1))
-        for hero in 0..<3 {
-            let poses = HeroFrames.load(hero + 1)
-            for frame in 0..<4 {
-                XCTAssertTrue(poses[3][frame] === poses[1][frame],
-                              "Right-facing animation should reuse the intact left-profile frame")
+    func testHeroFramesBundlesAllDirectionsAndWholeMirroredRightProfile() {
+        XCTAssertEqual(HeroFrames.sourceFacing(3), 3)
+        XCTAssertFalse(HeroFrames.isMirrored(3), "Right art is mirrored once during packing, including its footprint data")
+        for hero in 1...3 {
+            let poses = HeroFrames.load(hero)
+            XCTAssertEqual(poses.count, 8)
+            XCTAssertTrue(poses.allSatisfy { $0.count == 25 })
+            for facing in 0..<8 {
+                let hashes = Set((1...24).map { frame -> Data in
+                    let image = poses[facing][frame].cgImage()
+                    return UIImage(cgImage: image).pngData()!
+                })
+                XCTAssertEqual(hashes.count, 24, "Every walk pose must contain a distinct rasterized limb pose")
             }
-            XCTAssertEqual(HeroPose(heroIndex: hero, facing: 1, frame: 1, phase: 0).legReachPoints, 0)
-            XCTAssertEqual(HeroPose(heroIndex: hero, facing: 3, frame: 1, phase: 0).legReachPoints, 0)
         }
     }
 
@@ -614,7 +576,7 @@ final class TrailTests: XCTestCase {
         let view = SKView(frame: CGRect(x: 0, y: 0, width: 384, height: 384))
         let headings = [0, 2, 3, 4, 5, 6, 7]
         let headingNames = ["front", "back", "right", "SE", "SW", "NW", "NE"]
-        let framesForPhase = [1, 2, 3, 2]
+        let framesForPhase = [1, 7, 13, 19]
         let phases: [CGFloat] = [0, 0.25, 0.5, 0.75]
         let phaseNames = ["contact A", "passing", "contact B", "passing"]
         let cell = CGSize(width: 104, height: 104)
@@ -632,8 +594,7 @@ final class TrailTests: XCTestCase {
                                               size: CGSize(width: 192, height: 192))
                     sprite.anchorPoint = CGPoint(x: 0.5, y: 0.125)
                     sprite.xScale = HeroFrames.isMirrored(facing) ? -1 : 1
-                    sprite.warpGeometry = HeroPose(heroIndex: hero, facing: facing,
-                                                   frame: frame, phase: phase).warpGeometry()
+                    sprite.warpGeometry = nil
                     let canvas = SKNode()
                     // Give the warp room to move the soles past the source quad.
                     let bounds = SKSpriteNode(color: .clear, size: CGSize(width: 384, height: 384))

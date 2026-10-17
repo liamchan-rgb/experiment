@@ -14,6 +14,10 @@ struct GaitTest {
     private(set) var distance: CGFloat = 0
     var paused = false
     var slow = false
+    var projection: CGFloat {
+        let d = Self.directions[facing]
+        return WalkCycle.projectedScale(dx: d.dx, dy: d.dy)
+    }
     var phase: CGFloat { distance.truncatingRemainder(dividingBy: 24) / 24 }
     var frame: Int { WalkCycle.frame(at: distance) }
     var speed: CGFloat { slow ? 10.5 : 42 }
@@ -27,10 +31,10 @@ struct GaitTest {
     }
     mutating func step() {
         paused = true
-        distance = (distance + 3).truncatingRemainder(dividingBy: 144)
+        distance = (distance + 24 / CGFloat(HeroFrames.walkFrameCount)).truncatingRemainder(dividingBy: 144)
     }
     func point(for hero: Int) -> CGPoint {
-        let direction = Self.directions[facing], travel = distance - 72
+        let direction = Self.directions[facing], travel = (distance - 72) * projection
         return CGPoint(x: 530 + CGFloat(hero) * 110 + direction.dx * travel, y: 400 + direction.dy * travel)
     }
 }

@@ -41,6 +41,7 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
     private let gaitSlowButton = UIButton(type: .system)
     private let gaitStepButton = UIButton(type: .system)
     private var gaitDirectionButtons: [UIButton] = []
+    private var gaitCaptureTimer: Timer?
     private var gestureZoom: CGFloat = 1
     private let metricsLabel = UILabel()
     private let discoveryLabel = UILabel()
@@ -341,6 +342,24 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
         loadingView.update(1, text: "准备就绪")
         loadingView.isHidden = true
         setMapEnabled(true)
+        if ProcessInfo.processInfo.arguments.contains("-gaitCapture") { startGaitCapture() }
+    }
+
+    /// CI records the real single-MTKView renderer, at normal and quarter speed.
+    /// This deliberately uses the same scene and controls as manual inspection.
+    private func startGaitCapture() {
+        scene.toggleGaitTest()
+        let slow = ProcessInfo.processInfo.arguments.contains("-slowGaitCapture")
+        if slow { scene.toggleGaitSlow() }
+        let order = GaitTest.menuOrder
+        scene.setGaitDirection(order[0]); refreshGaitControls()
+        let directory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+        try? Data("ready".utf8).write(to: directory.appendingPathComponent("GaitCaptureReady.txt"), options: .atomic)
+        var index = 0
+        gaitCaptureTimer = Timer.scheduledTimer(withTimeInterval: slow ? 6 : 4, repeats: true) { [weak self] _ in
+            index = (index + 1) % order.count
+            self?.scene.setGaitDirection(order[index]); self?.refreshGaitControls()
+        }
     }
 
     private func setMapEnabled(_ enabled: Bool) {
@@ -417,6 +436,9 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
             button.configuration = style; controls.addArrangedSubview(button)
         }
         gaitStepButton.configuration?.title = "单步"
+        gaitStepButton.accessibilityIdentifier = "gaitStep"
+        gaitPauseButton.accessibilityIdentifier = "gaitPause"
+        gaitSlowButton.accessibilityIdentifier = "gaitSlow"
         restart.configuration?.title = "重新走"
         gaitPauseButton.addAction(UIAction { [weak self] _ in self?.scene.toggleGaitPause(); self?.refreshGaitControls() }, for: .touchUpInside)
         gaitSlowButton.addAction(UIAction { [weak self] _ in self?.scene.toggleGaitSlow(); self?.refreshGaitControls() }, for: .touchUpInside)

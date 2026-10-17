@@ -135,7 +135,7 @@ enum ShadowLabMath {
         ]
     }
 
-    static func heroFrame(time: Float) -> Int { [1, 2, 3, 2][Int(max(0, time) * 7) % 4] }
+    static func heroFrame(time: Float) -> Int { WalkCycle.frame(at: CGFloat(max(0, time) * 42)) }
     static func heroMovingRight(time: Float) -> Bool { (time * 0.75).truncatingRemainder(dividingBy: 14) > 7 }
 }
 
@@ -191,9 +191,9 @@ struct ShadowLabMesh {
                 depth = footDepth * (1 - roof) + roofDepth * roof
             case .hero:
                 depth = (u - 0.5) * 0.20 * (1 - smooth(0.63, 0.86, v))
-                // Leg reach is motion along the receiver, rather than an
-                // artificial elevation of a planted boot. Preserve art Z.
-                depth += (point.y - (1 - v)) * instance.screenHeight / ShadowLabMath.cameraUp.y
+                if let pose {
+                    depth += (pose.groundLine(at: u) - instance.anchor.y) * instance.screenHeight / ShadowLabMath.cameraUp.y
+                }
             case .fence:
                 let groundV = ShadowLabAsset.fenceGroundV(at: u)
                 depth = (1 - groundV - instance.anchor.y) * instance.screenHeight / ShadowLabMath.cameraUp.y

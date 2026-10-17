@@ -87,7 +87,7 @@ final class GaitReviewScene: SKScene {
 
     override func update(_ currentTime: TimeInterval) {
         if began == nil { began = currentTime }
-        let elapsed = currentTime - (began ?? currentTime)
+        let elapsed = (currentTime - (began ?? currentTime)) * (ProcessInfo.processInfo.arguments.contains("-slowGaitReview") ? 0.25 : 1)
         effects.update(time: elapsed)
         let direction = [0, 4, 3, 7, 2, 6, 1, 5][Int(elapsed / 3) % 8]
         let names = ["正面", "向左", "背面", "向右", "右下", "左下", "左上", "右上"]
@@ -96,7 +96,8 @@ final class GaitReviewScene: SKScene {
         let phase = distance.truncatingRemainder(dividingBy: 24) / 24
         let angle = CGFloat(Int(elapsed / 3) % 8) * .pi / 4
         let travel = CGFloat(elapsed.truncatingRemainder(dividingBy: 3) - 1.5) * 126
-        let offset = CGPoint(x: sin(angle) * travel, y: -cos(angle) * travel)
+        let projection = WalkCycle.projectedScale(dx: sin(angle), dy: cos(angle))
+        let offset = CGPoint(x: sin(angle) * travel * projection, y: -cos(angle) * travel * projection)
         heading.text = "八方向步态 · " + names[direction]
         // UI verification can identify the fitted, visible review instead of
         // accepting a successfully launched app with all sprites off-screen.
@@ -116,7 +117,7 @@ final class GaitReviewScene: SKScene {
             let pose = HeroPose(heroIndex: index, facing: direction, frame: frame, phase: phase)
             actors[index].texture = texture
             actors[index].xScale = HeroFrames.isMirrored(direction) ? -1 : 1
-            actors[index].warpGeometry = pose.warpGeometry()
+            actors[index].warpGeometry = nil
             let foot = CGPoint(x: feet[index].x + offset.x, y: feet[index].y + offset.y)
             let poseOffset = pose.bodyOffset(size: actors[index].size)
             actors[index].position = CGPoint(x: foot.x + poseOffset.x, y: foot.y + poseOffset.y)

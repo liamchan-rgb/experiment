@@ -20,7 +20,7 @@ struct WalkCycle {
         let movement = hypot(dx, dy)
         moving = movement > 0.001
         guard moving else { frame = 0; return }
-        distance += movement
+        distance += movement / Self.projectedScale(dx: dx, dy: dy)
         let angle = atan2(dx, dy)
         let sector = .pi / CGFloat(4)
         let difference = heading.map { atan2(sin(angle - $0), cos(angle - $0)) }
@@ -34,6 +34,13 @@ struct WalkCycle {
     }
 
     static func frame(at distance: CGFloat) -> Int {
-        [1, 2, 3, 2][Int(max(0, distance) / 24 * 4) % 4]
+        1 + Int(max(0, distance) / 24 * CGFloat(HeroFrames.walkFrameCount)) % HeroFrames.walkFrameCount
+    }
+
+    /// Map art uses an elevated camera: depth travel projects shorter than
+    /// profile travel. Apply the same metric to simulation, gait and review.
+    static func projectedScale(dx: CGFloat, dy: CGFloat) -> CGFloat {
+        let screen = hypot(dx, dy)
+        return screen > 0.0001 ? screen / hypot(dx, dy * 2) : 1
     }
 }

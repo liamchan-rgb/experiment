@@ -263,13 +263,13 @@ final class GameScene: SKScene {
 
     func setGaitDirection(_ direction: Int) {
         guard gaitTest != nil else { return }
-        gaitTest?.select(direction); updateActors(before: nil)
+        gaitTest?.select(direction); updateActors(before: nil); publishDiagnostics()
     }
-    func toggleGaitPause() { gaitTest?.paused.toggle() }
-    func toggleGaitSlow() { gaitTest?.slow.toggle() }
+    func toggleGaitPause() { gaitTest?.paused.toggle(); publishDiagnostics() }
+    func toggleGaitSlow() { gaitTest?.slow.toggle(); publishDiagnostics() }
     func stepGait() {
         guard gaitTest != nil else { return }
-        gaitTest?.step(); updateActors(before: nil)
+        gaitTest?.step(); updateActors(before: nil); publishDiagnostics()
     }
 
     func reset() {
@@ -363,10 +363,7 @@ final class GameScene: SKScene {
             let texture = frames[index][pose.facing][pose.frame]
             actors[index].texture = texture
             actors[index].xScale = HeroFrames.isMirrored(pose.facing) ? -1 : 1
-            // An idle/profile pose is the identity: avoid rebuilding GPU warp
-            // geometry every frame for three stationary actors.
-            if pose.legReachPoints > 0 { actors[index].warpGeometry = pose.warpGeometry() }
-            else if actors[index].warpGeometry != nil { actors[index].warpGeometry = nil }
+            actors[index].warpGeometry = nil
             actors[index].position = pose.bodyOffset(size: actors[index].size)
             actorRoots[index].position = LivingWorld.position(point)
             actorRoots[index].zPosition = 10000 + point.y
@@ -498,6 +495,7 @@ final class GameScene: SKScene {
             "selected": simulation.selected, "isPlaying": isRunning,
             "mode": gaitTest != nil ? "gaitTest" : (simulation.mode == .patrol ? "patrol" : "destination"),
             "gaitFacing": gaitTest?.facing ?? -1, "gaitPhase": Double(gaitTest?.phase ?? 0),
+            "gaitFrame": gaitTest?.frame ?? -1, "gaitPaused": gaitTest?.paused ?? false,
             "goal": ["x": Double(goal.x), "y": Double(goal.y)],
             "heroTargets": heroTargets,
             "orderPoint": ["x": Double(orderPoint.x / size.width), "y": Double(1 - orderPoint.y / size.height)],

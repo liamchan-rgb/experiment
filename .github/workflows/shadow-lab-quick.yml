@@ -136,6 +136,7 @@ jobs:
           focused_tests=(
             -only-testing:MeadowJourneyUITests/JourneyUITests/testMapContourRendererAndInteraction
             -only-testing:MeadowJourneyUITests/JourneyUITests/testForegroundAndShadowReceiverStayAlignedAtEveryZoom
+            -only-testing:MeadowJourneyUITests/JourneyUITests/testActualMapGaitControlsCoverAllDirectionsAndEveryFrame
           )
           for test in \
             testShadowLabCutoutPipelineSubmitsContourModes \
@@ -145,7 +146,14 @@ jobs:
             testHeroShadowAtlasChangesFramesWithoutLiveTextureUploads \
             testReliefPreservesArtCoordinatesForEveryAsset \
             testRoadMaskUsesOneUnionAtJunctions \
-            testOnlyTheTowerGetsAnAdditionalBanner; do
+            testOnlyTheTowerGetsAnAdditionalBanner \
+            testAuthoredWalkUses24WholeFramesAndNoLegWarp \
+            testFootprintGroundLineFollowsAlternatingFeet \
+            testHeroFramesBundlesAllDirectionsAndWholeMirroredRightProfile \
+            testWalkCycleVisitsEveryFrameAndWrapsWithoutRepeatingPassingArt \
+            testGaitTestCoversEightRoadIndependentHeadingsAndSupportsStepping \
+            testGaitTestReturnsToTheSameMapCameraAndActorPositions \
+            testHeroPoseSpriteKitRenderingKeepsAllHeroContoursConnected; do
             focused_tests+=("-only-testing:MeadowJourneyTests/TrailTests/$test")
           done
           xcodebuild test \
@@ -165,8 +173,42 @@ jobs:
         if: ${{ always() }}
         run: |
           if [ -d build/MapReview.xcresult ]; then
-            python3 scripts/export-ground-review.py build/MapReview.xcresult build/review "$REVIEW_DEVICE"
+            mkdir -p build/review/attachments
+            xcrun xcresulttool export attachments --path build/MapReview.xcresult \
+              --output-path build/review/attachments 2>&1 | tee build/logs/screen-export.log
           fi
+
+      - name: Record all eight directions in the actual map renderer
+        run: |
+          set -euo pipefail
+          simulator_udid='${{ steps.simulator.outputs.udid }}'
+          mkdir -p build/review
+          xcrun simctl install "$simulator_udid" build/SimulatorDerivedData/Build/Products/Debug-iphonesimulator/MeadowJourney.app
+          record_gait() {
+            local name="$1" duration="$2"
+            shift 2
+            xcrun simctl terminate "$simulator_udid" com.liamchan.experiment.meadow || true
+            local app_data
+            app_data="$(xcrun simctl get_app_container "$simulator_udid" com.liamchan.experiment.meadow data)"
+            rm -f "$app_data/Documents/GaitCaptureReady.txt"
+            xcrun simctl launch "$simulator_udid" com.liamchan.experiment.meadow -visualReview -gaitCapture "$@"
+            for attempt in $(seq 1 240); do
+              [ ! -f "$app_data/Documents/GaitCaptureReady.txt" ] || break
+              sleep 0.5
+            done
+            test -f "$app_data/Documents/GaitCaptureReady.txt"
+            xcrun simctl io "$simulator_udid" recordVideo --codec=h264 "build/review/$name.mp4" > "build/logs/$name-recording.log" 2>&1 &
+            local recorder_pid=$!
+            trap 'kill -INT "$recorder_pid" 2>/dev/null || true' EXIT
+            sleep "$duration"
+            kill -INT "$recorder_pid"
+            wait "$recorder_pid" || true
+            trap - EXIT
+            cp "$app_data/Documents/RuntimeMetrics.json" "build/review/$name-metrics.json"
+            xcrun simctl io "$simulator_udid" screenshot "build/review/$name-end.png"
+          }
+          record_gait iPad-Gait-Normal 33
+          record_gait iPad-Gait-QuarterSpeed 49 -slowGaitCapture
 
       - name: Upload actual ground captures
         if: ${{ always() }}

@@ -2,6 +2,32 @@ import XCTest
 import UIKit
 
 final class JourneyUITests: XCTestCase {
+    func testActualMapGaitControlsCoverAllDirectionsAndEveryFrame() {
+        continueAfterFailure = false
+        XCUIDevice.shared.orientation = .landscapeLeft
+        let app = XCUIApplication(); app.launchArguments = ["-visualReview"]; app.launch()
+        let map = app.otherElements["meadowMap"]
+        XCTAssertTrue(map.waitForExistence(timeout: 120)); waitForReady(app, map: map)
+        app.buttons["zoomButton"].tap()
+        app.buttons["openGaitTest"].tap()
+        app.buttons["gaitPause"].tap()
+        for facing in [2, 7, 3, 4, 0, 5, 1, 6] {
+            app.buttons["gaitDirection\(facing)"].tap()
+            XCTAssertEqual(diagnostics(app)["gaitFacing"] as? Int, facing)
+            XCTAssertEqual(diagnostics(app)["mode"] as? String, "gaitTest")
+            for frame in 1...24 {
+                XCTAssertEqual(diagnostics(app)["gaitFrame"] as? Int, frame)
+                if [1, 7, 13, 19].contains(frame) { capture("gait-hero-map-dir\(facing)-frame\(frame)") }
+                app.buttons["gaitStep"].tap()
+            }
+            XCTAssertEqual(diagnostics(app)["gaitFrame"] as? Int, 1)
+        }
+        app.buttons["openGaitTest"].tap()
+        XCTAssertNotEqual(diagnostics(app)["mode"] as? String, "gaitTest")
+        XCTAssertEqual(app.buttons["zoomButton"].value as? String, "125%")
+        assertVisibleGround(map, name: "main-ground-after-gait-review")
+    }
+
     func testForegroundAndShadowReceiverStayAlignedAtEveryZoom() {
         continueAfterFailure = false
         XCUIDevice.shared.orientation = .landscapeLeft

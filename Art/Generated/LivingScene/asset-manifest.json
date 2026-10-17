@@ -65,114 +65,57 @@
     "decodedBytes": 412800
   },
   "Hero1Directions": {
-    "width": 1536,
-    "height": 1536,
-    "decodedBytes": 9437184,
-    "source": "hero1-gait-v1.2.png",
-    "runtimeRig": "Keep each authored frame whole for both sprite and ground shadow; gait columns already contain alternating leg contacts.",
-    "gaitPhases": [
-      "idle",
-      "contact-a",
-      "passing",
-      "contact-b"
-    ],
-    "directions": [
-      "front",
-      "left-profile",
-      "back",
-      "right-profile"
-    ]
-  },
-  "Hero2Directions": {
-    "width": 1536,
-    "height": 1536,
-    "decodedBytes": 9437184,
-    "source": "hero2-gait-v1.2.png",
-    "runtimeRig": "Keep each authored frame whole for both sprite and ground shadow; gait columns already contain alternating leg contacts.",
-    "gaitPhases": [
-      "idle",
-      "contact-a",
-      "passing",
-      "contact-b"
-    ],
-    "directions": [
-      "front",
-      "left-profile",
-      "back",
-      "right-profile"
-    ]
-  },
-  "Hero3Directions": {
-    "width": 1536,
-    "height": 1536,
-    "decodedBytes": 9437184,
-    "source": "hero3-gait-v1.2.png",
-    "runtimeRig": "Keep each authored frame whole for both sprite and ground shadow; gait columns already contain alternating leg contacts.",
-    "gaitPhases": [
-      "idle",
-      "contact-a",
-      "passing",
-      "contact-b"
-    ],
-    "directions": [
-      "front",
-      "left-profile",
-      "back",
-      "right-profile"
-    ]
+    "width": 6400,
+    "height": 1024,
+    "decodedBytes": 26214400,
+    "frames": 24,
+    "columns": 25,
+    "source": "original direction artwork + independently articulated offline leg rig",
+    "runtimeRig": "24 whole-frame poses; rigid shoes, two-bone knees, distance-locked stance; no runtime limb warp"
   },
   "Hero1Diagonals": {
-    "width": 1024,
+    "width": 6400,
     "height": 1024,
-    "decodedBytes": 4194304,
-    "source": "hero1-diagonal-v1.3.png",
-    "rows": [
-      "southeast",
-      "southwest",
-      "northwest",
-      "northeast"
-    ],
-    "gaitPhases": [
-      "idle",
-      "contact-a",
-      "passing",
-      "contact-b"
-    ]
+    "decodedBytes": 26214400,
+    "frames": 24,
+    "columns": 25,
+    "source": "original direction artwork + independently articulated offline leg rig",
+    "runtimeRig": "24 whole-frame poses; rigid shoes, two-bone knees, distance-locked stance; no runtime limb warp"
+  },
+  "Hero2Directions": {
+    "width": 6400,
+    "height": 1024,
+    "decodedBytes": 26214400,
+    "frames": 24,
+    "columns": 25,
+    "source": "original direction artwork + independently articulated offline leg rig",
+    "runtimeRig": "24 whole-frame poses; rigid shoes, two-bone knees, distance-locked stance; no runtime limb warp"
   },
   "Hero2Diagonals": {
-    "width": 1024,
+    "width": 6400,
     "height": 1024,
-    "decodedBytes": 4194304,
-    "source": "hero2-diagonal-v1.3.png",
-    "rows": [
-      "southeast",
-      "southwest",
-      "northwest",
-      "northeast"
-    ],
-    "gaitPhases": [
-      "idle",
-      "contact-a",
-      "passing",
-      "contact-b"
-    ]
+    "decodedBytes": 26214400,
+    "frames": 24,
+    "columns": 25,
+    "source": "original direction artwork + independently articulated offline leg rig",
+    "runtimeRig": "24 whole-frame poses; rigid shoes, two-bone knees, distance-locked stance; no runtime limb warp"
+  },
+  "Hero3Directions": {
+    "width": 6400,
+    "height": 1024,
+    "decodedBytes": 26214400,
+    "frames": 24,
+    "columns": 25,
+    "source": "original direction artwork + independently articulated offline leg rig",
+    "runtimeRig": "24 whole-frame poses; rigid shoes, two-bone knees, distance-locked stance; no runtime limb warp"
   },
   "Hero3Diagonals": {
-    "width": 1024,
+    "width": 6400,
     "height": 1024,
-    "decodedBytes": 4194304,
-    "source": "hero3-diagonal-v1.3.png",
-    "rows": [
-      "southeast",
-      "southwest",
-      "northwest",
-      "northeast"
-    ],
-    "gaitPhases": [
-      "idle",
-      "contact-a",
-      "passing",
-      "contact-b"
-    ]
+    "decodedBytes": 26214400,
+    "frames": 24,
+    "columns": 25,
+    "source": "original direction artwork + independently articulated offline leg rig",
+    "runtimeRig": "24 whole-frame poses; rigid shoes, two-bone knees, distance-locked stance; no runtime limb warp"
   }
 }

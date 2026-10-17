@@ -73,50 +73,10 @@ for source_name, regions in [('terrain-atlas.png', terrain_regions), ('props-atl
         padded.alpha_composite(sprite, (8, 8))
         save_asset(name, padded)
 
-for hero in range(1, 4):
-    gait_source = RAW / f'hero{hero}-gait-v1.2.png'
-    source = Image.open(gait_source if gait_source.exists() else RAW / f'hero{hero}.png').convert('RGBA')
-    cells = []
-    for row in range(4):
-        for column in range(4):
-            cell = source.crop((column * source.width // 4, row * source.height // 4,
-                                (column + 1) * source.width // 4, (row + 1) * source.height // 4))
-            cells.append(main_figure(cell))
-    if len(cells) != 16:
-        raise ValueError(f'Hero {hero} gait atlas must contain 4 directions × 4 phases')
-    # One scale per character preserves frame-to-frame body dimensions and stride variation.
-    scale = 240 / max(cell.height for cell in cells)
-    atlas = Image.new('RGBA', (1536, 1536))
-    for index, cell in enumerate(cells):
-        width = round(cell.width * scale)
-        height = round(cell.height * scale)
-        cell = cell.resize((width, height), Image.Resampling.NEAREST)
-        row, column = divmod(index, 4)
-        atlas.alpha_composite(cell, (column * 384 + (384 - width) // 2, row * 384 + 336 - height))
-    save_asset(f'Hero{hero}Directions', atlas)
-    manifest[f'Hero{hero}Directions']['source'] = gait_source.name if gait_source.exists() else f'hero{hero}.png'
-    manifest[f'Hero{hero}Directions']['directions'] = ['front', 'left-profile', 'back', 'right-profile']
-    manifest[f'Hero{hero}Directions']['gaitPhases'] = GAIT_PHASES
-    manifest[f'Hero{hero}Directions']['runtimeRig'] = 'Keep each authored frame whole for both sprite and ground shadow; gait columns already contain alternating leg contacts.'
-
-for hero in range(1, 4):
-    source_path = RAW / f'hero{hero}-diagonal-v1.3.png'
-    source = Image.open(source_path).convert('RGBA')
-    cells = [main_figure(source.crop((column * source.width // 4, row * source.height // 4,
-                                    (column + 1) * source.width // 4, (row + 1) * source.height // 4)))
-             for row in range(4) for column in range(4)]
-    scale = 160 / max(cell.height for cell in cells)
-    atlas = Image.new('RGBA', (1024, 1024))
-    for index, cell in enumerate(cells):
-        width, height = round(cell.width * scale), round(cell.height * scale)
-        row, column = divmod(index, 4)
-        atlas.alpha_composite(cell.resize((width, height), Image.Resampling.NEAREST),
-                              (column * 256 + (256 - width) // 2, row * 256 + 224 - height))
-    name = f'Hero{hero}Diagonals'
-    save_asset(name, atlas)
-    manifest[name]['source'] = source_path.name
-    manifest[name]['rows'] = ['southeast', 'southwest', 'northwest', 'northeast']
-    manifest[name]['gaitPhases'] = GAIT_PHASES
+# Keep the animation source and packing rules reproducible alongside environment art.
+import runpy
+gait = runpy.run_path(str(ROOT / 'scripts/prepare-gait-assets.py'))
+gait['prepare_gait_assets'](ROOT, save_asset, manifest)
 
 (ROOT / 'Art/Generated/LivingScene/asset-manifest.json').write_text(json.dumps(manifest, indent=2) + '\n')
 print('Prepared', len(manifest), 'independent assets; decoded texture budget:',
