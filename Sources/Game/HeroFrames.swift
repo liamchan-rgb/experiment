@@ -51,8 +51,8 @@ struct HeroPose {
     let facing: Int
     let frame: Int
     let phase: CGFloat
-    private let firstFoot: SIMD2<Float>
-    private let secondFoot: SIMD2<Float>
+    private let firstFoot: SIMD3<Float>
+    private let secondFoot: SIMD3<Float>
 
     init(heroIndex: Int, facing: Int, frame: Int, phase: CGFloat) {
         let hero = min(2, max(0, heroIndex)), direction = HeroFrames.sourceFacing(facing)
@@ -63,9 +63,9 @@ struct HeroPose {
         let wrapped = phase.truncatingRemainder(dividingBy: 1)
         self.phase = wrapped < 0 ? wrapped + 1 : wrapped
         let feet = Self.rig.heroes[hero][direction][column].feet
-        let a = SIMD2(feet[0][0], feet[0][1]), b = SIMD2(feet[1][0], feet[1][1])
-        firstFoot = a.x <= b.x ? a : b
-        secondFoot = a.x <= b.x ? b : a
+        let a = SIMD3(feet[0][0], feet[0][1], feet[0][2]), b = SIMD3(feet[1][0], feet[1][1], feet[1][2])
+        firstFoot = a
+        secondFoot = b
     }
 
     func bodyOffset(size: CGSize = CGSize(width: referenceSize, height: referenceSize)) -> CGPoint { .zero }
@@ -73,19 +73,50 @@ struct HeroPose {
     // Retain relief tessellation and the exact sole-height row, with identity
     // positions for every animation phase.
     var sourcePositions: [SIMD2<Float>] {
-        (0...Self.gridRows).flatMap { row in
-            (0...Self.gridColumns).map { column in
-                SIMD2(Float(column) / Float(Self.gridColumns), Float(row) / Float(Self.gridRows))
-            }
-        }
+        let feet = footLandmarks
+        let xs = Self.stops([0, 0.15, 0.30, 0.50, 0.70, 0.85, 1, feet[0].x, feet[1].x])
+        let ys = Self.stops([0, 0.125, 0.25, 0.40, 0.55, 0.75, 1, feet[0].y, feet[1].y])
+        return ys.flatMap { y in xs.map { x in SIMD2(x, y) } }
     }
+
+    private static func stops(_ values: [Float]) -> [Float] {
+        var result: [Float] = []
+        for value in values.sorted() where result.last.map({ abs($0 - value) > 0.000001 }) ?? true { result.append(value) }
+        while result.count < 9 {
+            let gap = (0..<(result.count - 1)).max { result[$0 + 1] - result[$0] < result[$1 + 1] - result[$1] }!
+            result.insert((result[gap] + result[gap + 1]) / 2, at: gap + 1)
+        }
+        return result
+    }
+
+    /// x/y are exact source-art landmarks, z is lift in image-height units.
+    /// Include these points in the depth mesh so a boot cannot miss the ground
+    /// because its foot falls between coarse regular grid vertices.
+    var footLandmarks: [SIMD3<Float>] {
+        [firstFoot, secondFoot].map { SIMD3($0.x, 1 - $0.y + $0.z * 0.8660254, $0.z * 0.8660254) }
+    }
+
     func destinationPositions() -> [SIMD2<Float>] { sourcePositions }
 
-    /// Bottom-origin ground line, including each planted foot's depth. A foot
-    /// behind the root belongs on the receiver rather than floating above it.
-    func groundLine(at u: Float) -> Float {
-        let a = firstFoot, b = secondFoot
-        let t = abs(b.x - a.x) < 0.001 ? 0.5 : max(0, min(1, (u - a.x) / (b.x - a.x)))
-        return 1 - (a.y * (1 - t) + b.y * t)
+    /// Both feet can overlap in x while occupying different depths. Select
+    /// their ground depth in two image dimensions, then blend back to the
+    /// body's root plane above the legs to keep the torso relief stable.
+    func groundLine(at point: SIMD2<Float>) -> Float {
+        let feet = footLandmarks
+        func squared(_ foot: SIMD3<Float>) -> Float {
+            let dx = point.x - foot.x, dy = point.y - foot.y
+            return dx * dx + dy * dy
+        }
+        let da = squared(feet[0]), db = squared(feet[1])
+        let ground: Float
+        if da < 0.00000001 { ground = 1 - firstFoot.y }
+        else if db < 0.00000001 { ground = 1 - secondFoot.y }
+        else {
+            let a = 1 / (da * da), b = 1 / (db * db)
+            ground = ((1 - firstFoot.y) * a + (1 - secondFoot.y) * b) / (a + b)
+        }
+        let t = max(0, min(1, (point.y - 0.22) / 0.20))
+        let blend = t * t * (3 - 2 * t)
+        return ground * (1 - blend) + 0.125 * blend
     }
 }

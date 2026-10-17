@@ -191,9 +191,9 @@ struct ShadowLabMesh {
                 let roof = 1 - smooth(0.20, 0.30, v)
                 depth = footDepth * (1 - roof) + roofDepth * roof
             case .hero:
-                depth = (u - 0.5) * 0.20 * (1 - smooth(0.63, 0.86, v))
+                depth = (u - 0.5) * 0.20 * (1 - smooth(0.52, 0.70, v))
                 if let pose {
-                    depth += (pose.groundLine(at: u) - instance.anchor.y) * instance.screenHeight / ShadowLabMath.cameraUp.y
+                    depth += (pose.groundLine(at: point) - instance.anchor.y) * instance.screenHeight / ShadowLabMath.cameraUp.y
                 }
             case .fence:
                 let groundV = ShadowLabAsset.fenceGroundV(at: u)

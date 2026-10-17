@@ -88,6 +88,37 @@ def clean_gutter(image):
     rgba[:, :, 3] *= keep
     return Image.fromarray(rgba)
 
+def planted_shoe(shoe, ankle, destination, phase, forward_x):
+    """Heel strike, flat weight bearing, toe release, then swing recovery.
+
+    Roll about the contact point so a planted heel/toe does not skate. This is
+    a rigid shoe transform, independent of the knee's projected bone length.
+    """
+    heel = ankle + np.array([-forward_x * 8, 7])
+    toe = ankle + np.array([forward_x * 13, 7])
+    if phase < .08:
+        pitch, pivot = .10 * (1 - phase / .08), heel
+    elif phase < .38:
+        pitch, pivot = 0, ankle
+    elif phase < .5:
+        pitch, pivot = -.14 * (phase - .38) / .12, toe
+    else:
+        swing = (phase - .5) * 2
+        eased = swing * swing * (3 - 2 * swing)
+        pitch = -.14 + .24 * eased
+        if swing < .2:
+            blend = swing / .2
+            pivot = toe * (1 - blend) + ankle * blend
+        elif swing > .8:
+            blend = (swing - .8) / .2
+            pivot = ankle * (1 - blend) + heel * blend
+        else:
+            pivot = ankle
+    angle = -pitch * forward_x
+    direction = np.array([-math.sin(angle), math.cos(angle)])
+    return bone(shoe, pivot, pivot + [0, 1], pivot + destination - ankle,
+                pivot + destination - ankle + direction)
+
 def prepare_gait_assets(root, save_asset, manifest):
     metadata = {'format': 1, 'frames': FRAME_COUNT, 'columns': FRAME_COUNT + 1, 'cell': CELL, 'heroes': []}
     for hero in range(3):
@@ -175,7 +206,7 @@ def prepare_gait_assets(root, save_asset, manifest):
                     limb.alpha_composite(bone(calf, knee, ankle, dk, da))
                     # Shoes retain their shape and flat sole; they do not inherit
                     # calf foreshortening or stretch into a point at passing.
-                    limb.alpha_composite(bone(shoe, ankle, ankle + [0, 1], da, da + [0, 1]))
+                    limb.alpha_composite(planted_shoe(shoe, ankle, da, t, forward[0]))
                     depth = right[1] * side_order[leg]
                     legs.append((depth, limb))
                     feet.append([float(da[0] / CELL), float((224 + project(forward * f)[1]) / CELL), float(lift / CELL)])

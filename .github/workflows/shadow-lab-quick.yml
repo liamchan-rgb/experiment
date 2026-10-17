@@ -149,6 +149,7 @@ jobs:
             testOnlyTheTowerGetsAnAdditionalBanner \
             testAuthoredWalkUses24WholeFramesAndNoLegWarp \
             testFootprintGroundLineFollowsAlternatingFeet \
+            testHeroCasterAnchorsEachPlantedFootAndTracksLift \
             testHeroFramesBundlesAllDirectionsAndWholeMirroredRightProfile \
             testWalkCycleVisitsEveryFrameAndWrapsWithoutRepeatingPassingArt \
             testGaitTestCoversEightRoadIndependentHeadingsAndSupportsStepping \
@@ -179,8 +180,10 @@ jobs:
           fi
 
       - name: Record all eight directions in the actual map renderer
+        if: ${{ always() }}
         run: |
           set -euo pipefail
+          if [ ! -d build/SimulatorDerivedData/Build/Products/Debug-iphonesimulator/MeadowJourney.app ]; then exit 0; fi
           simulator_udid='${{ steps.simulator.outputs.udid }}'
           mkdir -p build/review
           xcrun simctl install "$simulator_udid" build/SimulatorDerivedData/Build/Products/Debug-iphonesimulator/MeadowJourney.app

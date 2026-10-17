@@ -35,4 +35,13 @@ assert len(definition['roads']) >= 4
 for prop in definition['props']:
     assert (root / 'Sources/Resources/Assets.xcassets' / (prop['asset'] + '.imageset')).is_dir()
 assert not (root / 'Sources/Resources/Assets.xcassets/MapBackground.imageset').exists(), 'Flattened scene must not ship'
+assert 'Resources/hero-gait.json' in pbx
+rig = json.loads((root / 'Sources/Resources/hero-gait.json').read_text())
+assert rig['frames'] == 24 and rig['columns'] == 25 and len(rig['heroes']) == 3
+for hero in rig['heroes']:
+    assert len(hero) == 8 and all(len(direction) == 25 for direction in hero)
+    for direction in hero:
+        for pose in direction:
+            assert len(pose['feet']) == 2
+            assert all(len(foot) == 3 and all(0 <= value <= 1 for value in foot) for foot in pose['feet'])
 print('Project paths, Swift file references, asset bindings, orientations and shared test scheme valid.')

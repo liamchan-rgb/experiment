@@ -182,7 +182,7 @@ final class TrailTests: XCTestCase {
         for hero in 0..<3 { for facing in 0..<8 { for phase in [CGFloat(0), 0.125, 0.25, 0.5, 0.625, 0.75] {
             let pose = HeroPose(heroIndex: hero, facing: facing, frame: WalkCycle.frame(at: phase * 24), phase: phase)
             let instance = ShadowLabInstance(asset: .hero, root: .zero, width: 2, aspect: 1, anchor: SIMD2(0.5, 0.125))
-            var mesh = ShadowLabMesh(); mesh.imageCaster(instance, mirrored: facing == 3, pose: pose)
+            var mesh = ShadowLabMesh(); mesh.imageCaster(instance, mirrored: HeroFrames.isMirrored(facing), pose: pose)
             let source = pose.sourcePositions, destination = pose.destinationPositions()
             for vertex in mesh.vertices {
                 let point = SIMD2(vertex.uvWind.x, 1 - vertex.uvWind.y)
@@ -194,7 +194,7 @@ final class TrailTests: XCTestCase {
                 }
                 let projected = SIMD2(position.x / 2 + 0.5,
                                       (position.y * ShadowLabMath.cameraUp.y + position.z * ShadowLabMath.cameraUp.z) / 2 + 0.125)
-                let expectedX = facing == 3 ? 1 - destination[index].x : destination[index].x
+                let expectedX = HeroFrames.isMirrored(facing) ? 1 - destination[index].x : destination[index].x
                 maximumError = max(maximumError, abs(projected.x - expectedX) + abs(projected.y - destination[index].y))
             }
         } } }
@@ -475,13 +475,30 @@ final class TrailTests: XCTestCase {
         } } }
     }
 
+    func testHeroCasterAnchorsEachPlantedFootAndTracksLift() {
+        for hero in 0..<3 { for facing in 0..<8 { for frame in 0...24 {
+            let pose = HeroPose(heroIndex: hero, facing: facing, frame: frame, phase: CGFloat(frame) / 24)
+            let instance = ShadowLabInstance(asset: .hero, root: .zero, width: 2, aspect: 1, anchor: SIMD2(0.5, 0.125))
+            var mesh = ShadowLabMesh(); mesh.imageCaster(instance, pose: pose)
+            for foot in pose.footLandmarks {
+                let vertex = mesh.vertices.first { abs($0.uvWind.x - foot.x) < 0.00001 && abs(1 - $0.uvWind.y - foot.y) < 0.00001 }
+                guard let vertex else { return XCTFail("The depth mesh omitted a foot landmark") }
+                let expectedHeight = foot.z * 2 / ShadowLabMath.cameraUp.z
+                XCTAssertEqual(vertex.position.z, expectedHeight, accuracy: 0.0001,
+                               "Planted and swinging soles must share the artwork's exact depth, hero \(hero), facing \(facing), frame \(frame)")
+            }
+        } } }
+    }
+
     func testFootprintGroundLineFollowsAlternatingFeet() {
         for hero in 0..<3 { for facing in [0, 2, 4, 5, 6, 7] {
             let a = HeroPose(heroIndex: hero, facing: facing, frame: 1, phase: 0)
             let b = HeroPose(heroIndex: hero, facing: facing, frame: 13, phase: 0.5)
-            let change = abs(a.groundLine(at: 0.35) - b.groundLine(at: 0.35))
-                + abs(a.groundLine(at: 0.65) - b.groundLine(at: 0.65))
-            XCTAssertGreaterThan(change, 0.02, "Both boots must exchange ground depth, hero \(hero), facing \(facing)")
+            for leg in 0..<2 {
+                let af = a.footLandmarks[leg], bf = b.footLandmarks[leg]
+                let change = abs(a.groundLine(at: SIMD2(af.x, af.y)) - b.groundLine(at: SIMD2(bf.x, bf.y)))
+                XCTAssertGreaterThan(change, 0.02, "Each anatomical boot must exchange ground depth, hero \(hero), facing \(facing), leg \(leg)")
+            }
         } }
     }
 
@@ -596,7 +613,7 @@ final class TrailTests: XCTestCase {
                     sprite.xScale = HeroFrames.isMirrored(facing) ? -1 : 1
                     sprite.warpGeometry = nil
                     let canvas = SKNode()
-                    // Give the warp room to move the soles past the source quad.
+                    // Inspect complete rendered poses with a transparent surrounding gutter.
                     let bounds = SKSpriteNode(color: .clear, size: CGSize(width: 384, height: 384))
                     canvas.addChild(bounds)
                     canvas.addChild(sprite)
