@@ -32,7 +32,7 @@
     "executablePermission": "0755",
     "nativeTests": "not run; package-only workflow",
     "simulatorTests": "skipped; package-only workflow",
-    "physicalIPadGPUValidation": "pending user test of build 22; user confirmed build 21 map startup succeeds on their M1 iPad Pro",
+    "physicalIPadGPUValidation": "User supplied a running-map screenshot and requested sunlight adjustments on 2026-10-17; no sustained timing report",
     "visualReview": "not performed; user handles visual feedback",
     "spriteKitShaderRuntime": "pending device startup; Release archive does not execute SKShader source strings"
   },
