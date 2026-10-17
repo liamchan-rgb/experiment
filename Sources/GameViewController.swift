@@ -3,7 +3,8 @@ import SpriteKit
 import MetalKit
 
 final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
-    private let gameView = SKView()
+    private let gameView = UIView()
+    private var gaitView: SKView?
     private let scene = GameScene()
     private let loadingView = MeadowLoadingView()
     private var loadStarted = false
@@ -47,13 +48,11 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         gameView.frame = view.bounds
-        gameView.isPaused = true
-        // Configure the layer before presenting the scene/creating its renderer.
+        // This transparent UIView owns gestures/accessibility, not a renderer.
+        // Normal map graphics are presented by the single MTKView below it.
         gameView.isOpaque = false
-        gameView.allowsTransparency = true
         gameView.backgroundColor = .clear
         view.addSubview(gameView)
-        gameView.ignoresSiblingOrder = true
         scene.onForegroundReady = { [weak self] in
             guard let self else { return }
             self.setupTimings["mapFirstForegroundDelay"] = ProcessInfo.processInfo.systemUptime - self.mapPresentationBegan
@@ -61,7 +60,7 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
         }
         if !ProcessInfo.processInfo.arguments.contains("-gaitReview"), let device = MTLCreateSystemDefaultDevice() {
             let ground = MTKView(frame: view.bounds, device: device)
-            ground.autoResizeDrawable = false
+            ground.autoResizeDrawable = true
             ground.colorPixelFormat = .bgra8Unorm
             ground.isOpaque = true
             ground.clearColor = MTLClearColor(red: 0.15, green: 0.20, blue: 0.08, alpha: 1)
@@ -77,16 +76,7 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
                     self.scene.backgroundColor = .clear
                 }
             }
-            scene.onRenderGround = { [weak self] world, camera, time, heroes in
-                guard let self, let surface = self.groundView else { return }
-                do {
-                    try self.groundRenderer?.render(in: surface, world: world, camera: camera, time: time, heroes: heroes)
-                    self.scene.shadowFrames = self.groundRenderer?.submittedFrames ?? 0
-                }
-                catch { DispatchQueue.main.async { self.failRendering(error) } }
-            }
         }
-        gameView.preferredFramesPerSecond = 60
         gameView.isMultipleTouchEnabled = true
         gameView.accessibilityIdentifier = "meadowMap"
         gameView.isAccessibilityElement = true
@@ -162,8 +152,11 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
         if ProcessInfo.processInfo.arguments.contains("-gaitReview") {
             let review = GaitReviewScene(size: view.bounds.size)
             review.scaleMode = .resizeFill
-            gameView.presentScene(review)
-            mapPresented = true; gameView.isPaused = false
+            let reviewView = SKView(frame: gameView.bounds)
+            reviewView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+            gameView.addSubview(reviewView); gaitView = reviewView
+            reviewView.presentScene(review)
+            mapPresented = true
             for button in [titleButton, playButton, resetButton, zoomButton] { button.isHidden = true }
             shadowLabButton.isHidden = true
         } else {
@@ -178,6 +171,7 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
             setMapEnabled(false)
         }
         titleButton.addGestureRecognizer(UILongPressGestureRecognizer(target: self, action: #selector(toggleMetrics(_:))))
+        gameView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tapMap(_:))))
         let pinch = UIPinchGestureRecognizer(target: self, action: #selector(pinchMap(_:)))
         pinch.delegate = self
         gameView.addGestureRecognizer(pinch)
@@ -192,7 +186,6 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
         super.viewDidLayoutSubviews()
         gameView.frame = view.bounds
         groundView?.frame = view.bounds
-        updateGroundDrawableSize()
         loadingView.frame = view.bounds
         let inset = view.safeAreaInsets
         let top = max(inset.top, 6)
@@ -218,12 +211,14 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
         guard !loadStarted else { return }
         if !checkedSavedReport {
             checkedSavedReport = true
-            if let saved = MeadowGPUDiagnostics.shared.savedFailureOrInterruption {
+            if MeadowGPUDiagnostics.shared.recordedBuild == Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as? String,
+               let saved = MeadowGPUDiagnostics.shared.savedFailureOrInterruption {
                 loadingView.showSavedReport(saved)
                 return
             }
         }
         loadStarted = true
+        guard groundView?.device != nil else { showLoadingFailure(ShadowLabError.setup("无法取得 Metal 设备")); return }
         MeadowGPUDiagnostics.shared.begin(device: groundView?.device, size: gameView.bounds.size, scale: gameView.contentScaleFactor)
         MeadowGPUDiagnostics.shared.beginStage("资源准备", kind: "CPU setup; not GPU fault attribution")
         loadingBegan = ProcessInfo.processInfo.systemUptime
@@ -253,9 +248,12 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
                 self.groundRenderer = prepared.renderer
                 self.scene.shadowMapSize = prepared.renderer?.shadowSize ?? 0
                 self.groundRenderer?.alignmentReview = ProcessInfo.processInfo.arguments.contains("-alignmentReview")
-                self.groundRenderer?.onFirstFrameCompleted = { [weak self] in self?.groundBecameReady = true; self?.finishLoading() }
+                self.groundRenderer?.onFirstFrameCompleted = { [weak self] in
+                    self?.groundBecameReady = true
+                    self?.foregroundBecameReady = true // Same completed command includes the foreground.
+                    self?.finishLoading()
+                }
                 self.groundRenderer?.onFrameFailed = { [weak self] error in self?.failRendering(error) }
-                if prepared.renderer == nil { self.prepareWorld(prepared); return }
                 do {
                     MeadowGPUDiagnostics.shared.beginStage("B00 前景诊断目标准备", kind: "CPU SKRenderer setup; not GPU completion")
                     let probe = try MeadowGPUProbe(prepared: prepared, size: self.gameView.bounds.size,
@@ -291,11 +289,14 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
             // and world population may take longer on slower physical iPads.
             self.firstFrameWaitSeconds = 0
             self.mapPresentationBegan = ProcessInfo.processInfo.systemUptime
-            MeadowGPUDiagnostics.shared.beginStage("C01 实际双视图地图", kind: "live SKView + MTKView; first observed error is not automatic foreground/background attribution")
-            self.mapPresented = true; self.gameView.isPaused = false
-            self.gameView.presentScene(self.scene)
+            guard let surface = self.groundView, let renderer = self.groundRenderer else {
+                self.showLoadingFailure(ShadowLabError.setup("单视图地图渲染器缺失")); return
+            }
+            MeadowGPUDiagnostics.shared.beginStage("C02 实际单视图地图", kind: "one MTKView; native backdrop + SKRenderer in one submitted command buffer")
+            self.scene.activateForMetalRenderer()
+            self.mapPresented = true
+            renderer.start(in: surface, scene: self.scene)
             self.setupTimings["presentMap"] = ProcessInfo.processInfo.systemUptime - self.mapPresentationBegan
-            if prepared.renderer == nil { self.finishLoading() }
         }
     }
 
@@ -334,14 +335,6 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
         shadowLabButton.isEnabled = enabled
     }
 
-    private func updateGroundDrawableSize() {
-        guard let groundView else { return }
-        // Match A-stage diagnostics: one ground pixel per UIKit point.
-        let size = CGSize(width: max(1, (view.bounds.width * groundDrawableScale).rounded(.up)),
-                          height: max(1, (view.bounds.height * groundDrawableScale).rounded(.up)))
-        if groundView.drawableSize != size { groundView.drawableSize = size }
-    }
-
     private func failRendering(_ error: Error) { showLoadingFailure(error) }
 
     private func showLoadingFailure(_ error: Error) {
@@ -349,7 +342,7 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
         let first = MeadowGPUDiagnostics.shared.failed(error)
         loadingFailed = true; firstFrameWaitSeconds = nil
         loadingTimer?.invalidate(); loadingTimer = nil
-        gameView.isPaused = true
+        setRenderingPaused(true)
         setMapEnabled(false)
         loadingView.isHidden = false
         loadingView.failed(first, restartRequired: MeadowGPUDiagnostics.shared.requiresColdLaunch)
@@ -373,8 +366,11 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
         present(lab, animated: true)
     }
 
-    override func viewWillAppear(_ animated: Bool) { super.viewWillAppear(animated); gameView.isPaused = !mapPresented || loadingFailed }
-    override func viewDidDisappear(_ animated: Bool) { super.viewDidDisappear(animated); gameView.isPaused = true }
+    private func setRenderingPaused(_ paused: Bool) { groundView?.isPaused = paused; gaitView?.isPaused = paused }
+    override func viewWillAppear(_ animated: Bool) { super.viewWillAppear(animated); setRenderingPaused(!mapPresented || loadingFailed) }
+    override func viewDidDisappear(_ animated: Bool) { super.viewDidDisappear(animated); setRenderingPaused(true) }
+
+    @objc private func tapMap(_ recognizer: UITapGestureRecognizer) { scene.handleTap(inView: recognizer.location(in: gameView)) }
 
     @objc private func reset() {
         scene.reset()

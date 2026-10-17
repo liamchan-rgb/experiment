@@ -18,12 +18,16 @@ final class TrailTests: XCTestCase {
                 world.setScale(scale)
                 world.position = CGPoint(x: size.width / 2 - 700 * scale, y: size.height / 2 + 430 * scale)
                 let camera = MeadowViewport(world: world, scene: scene, view: view)
+                let external = MeadowViewport(world: world, scene: scene, viewSize: size)
                 for point in [CGPoint.zero, CGPoint(x: 640, y: 360), CGPoint(x: 500, y: 405), CGPoint(x: 1300, y: 800)] {
                     let root = MeadowShadowRenderer.root(point)
                     let clip = camera.matrix * SIMD4(root, 1)
                     let metal = CGPoint(x: CGFloat(clip.x + 1) * size.width / 2, y: CGFloat(1 - clip.y) * size.height / 2)
                     let artwork = scene.convertPoint(toView: world.convert(LivingWorld.position(point), to: scene))
                     maximumError = max(maximumError, hypot(metal.x - artwork.x, metal.y - artwork.y))
+                    let sharedClip = external.matrix * SIMD4(root, 1)
+                    let sharedPoint = CGPoint(x: CGFloat(sharedClip.x + 1) * size.width / 2, y: CGFloat(1 - sharedClip.y) * size.height / 2)
+                    maximumError = max(maximumError, hypot(sharedPoint.x - artwork.x, sharedPoint.y - artwork.y))
                 }
             }
         }
@@ -117,6 +121,37 @@ final class TrailTests: XCTestCase {
         let events = try XCTUnwrap(report["events"] as? [[String: Any]])
         XCTAssertEqual(events.filter { $0["state"] as? String == "gpuCompleted" }.count, 4)
         XCTAssertNil(report["firstError"])
+    }
+
+    func testSingleSurfaceCompositeReusesResourcesAcrossFramesAndZoom() throws {
+        let device = try XCTUnwrap(MTLCreateSystemDefaultDevice())
+        let queue = try XCTUnwrap(device.makeCommandQueue())
+        let size = CGSize(width: 256, height: 192)
+        let world = LivingWorld(definition: .load(), renderTerrain: false)
+        let native = try MeadowShadowRenderer(device: device, world: world)
+        let uploads = native.textureUploadCount
+        let scene = SKScene(size: size); scene.backgroundColor = .clear
+        scene.addChild(world)
+        let foreground = SKRenderer(device: device); foreground.scene = scene
+        let descriptor = MTLTextureDescriptor.texture2DDescriptor(pixelFormat: .bgra8Unorm, width: 512, height: 384, mipmapped: false)
+        descriptor.storageMode = .private; descriptor.usage = .renderTarget
+        let target = try XCTUnwrap(device.makeTexture(descriptor: descriptor))
+        for index in 0..<4 {
+            let scale = CGFloat(0.2 + Double(index) * 0.025)
+            world.setScale(scale)
+            world.position = CGPoint(x: size.width / 2 - 640 * scale, y: size.height / 2 + 360 * scale)
+            let time = Double(index) / 60
+            world.update(time: time); foreground.update(atTime: time)
+            let camera = MeadowViewport(world: world, scene: scene, viewSize: size)
+            let frame = MeadowFrameState(world: world, camera: camera, time: time, heroes: [])
+            let command = try MeadowGPUDiagnostics.command(queue: queue, label: "Unit repeated composite \(index)")
+            let pass = MTLRenderPassDescriptor(); pass.colorAttachments[0].texture = target
+            try native.encodeComposite(command: command, target: pass, frame: frame, foreground: foreground, forceBackground: true)
+            command.commit(); command.waitUntilCompleted()
+            XCTAssertNil(command.error)
+            XCTAssertEqual(command.status, .completed)
+        }
+        XCTAssertEqual(native.textureUploadCount, uploads)
     }
 
     func testHeroWarpMatchesCasterProjectionAcrossContactPhases() {

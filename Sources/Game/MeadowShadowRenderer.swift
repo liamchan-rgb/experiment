@@ -2,9 +2,9 @@ import MetalKit
 import SpriteKit
 import simd
 
-/// Native opaque terrain and image-alpha shadows share one Metal command buffer.
-/// SpriteKit's interactive foreground stays above this surface; no GPU pixels cross the CPU.
-final class MeadowShadowRenderer {
+/// One MTKView, one queue and one submitted frame own both the native backdrop
+/// and SKRenderer foreground. No rendering is submitted from an SKScene callback.
+final class MeadowShadowRenderer: NSObject, MTKViewDelegate {
     private struct Draw {
         let buffer: MTLBuffer
         let count: Int
@@ -14,21 +14,26 @@ final class MeadowShadowRenderer {
     }
     static let units: Float = 32
     let device: MTLDevice
-    let shadowSize = 2048
+    private static let shadowResolution = 2048
+    var shadowSize: Int { Self.shadowResolution }
     let shadowsEnabled = true
     private let queue: MTLCommandQueue
     private let depthTexture: MTLTexture
     private let depthPipeline: MTLRenderPipelineState
     private let receiverPipeline: MTLRenderPipelineState
+    private let presentationPipeline: MTLRenderPipelineState
     private let depthState: MTLDepthStencilState
     private let receiver: MTLBuffer
     private var staticDraws: [Draw] = []
     private var textures: [String: MTLTexture] = [:]
+    private var backgroundTarget: MTLTexture?
+    private var foregroundRenderer: SKRenderer?
+    private weak var gameScene: GameScene?
     var alignmentReview = false
     var onFirstFrameCompleted: (() -> Void)?
     var onFrameFailed: ((Error) -> Void)?
-    // Keep at most one terrain/shadow frame queued on iPad hardware. If the
-    // GPU is busy, the next SpriteKit callback simply skips this background frame.
+    // Keep at most one complete map frame queued. If the GPU is busy, the next
+    // display callback skips submission instead of accumulating work.
     private let inFlight = DispatchSemaphore(value: 1)
     private(set) var casterCount = 0
     private(set) var submittedFrames = 0
@@ -51,7 +56,7 @@ final class MeadowShadowRenderer {
         guard let queue = device.makeCommandQueue(), let library = device.makeDefaultLibrary() else { throw ShadowLabError.setup("地图 Metal 初始化失败") }
         self.queue = queue
         progress?(0.06, "分配阴影深度图")
-        guard let depth = Self.makeDepthTexture(device: device, size: shadowSize) else { throw ShadowLabError.setup("地图深度贴图分配失败") }
+        guard let depth = Self.makeDepthTexture(device: device, size: Self.shadowResolution) else { throw ShadowLabError.setup("地图深度贴图分配失败") }
         depthTexture = depth
         progress?(0.10, "编译阴影着色器")
         let pipeline = MTLRenderPipelineDescriptor()
@@ -69,6 +74,11 @@ final class MeadowShadowRenderer {
         attachment.sourceRGBBlendFactor = .one; attachment.destinationRGBBlendFactor = .oneMinusSourceAlpha
         attachment.sourceAlphaBlendFactor = .one; attachment.destinationAlphaBlendFactor = .oneMinusSourceAlpha
         receiverPipeline = try device.makeRenderPipelineState(descriptor: color)
+        let presentation = MTLRenderPipelineDescriptor()
+        presentation.vertexFunction = library.makeFunction(name: "meadowBackdropVertex")
+        presentation.fragmentFunction = library.makeFunction(name: "meadowBackdropFragment")
+        presentation.colorAttachments[0].pixelFormat = .bgra8Unorm
+        presentationPipeline = try device.makeRenderPipelineState(descriptor: presentation)
         progress?(0.27, "准备地面深度状态")
         let state = MTLDepthStencilDescriptor(); state.depthCompareFunction = .lessEqual; state.isDepthWriteEnabled = true
         guard let depthState = device.makeDepthStencilState(descriptor: state) else { throw ShadowLabError.setup("地图深度状态失败") }
@@ -79,6 +89,7 @@ final class MeadowShadowRenderer {
         mesh.triangle(a, SIMD3(c.x, a.y, 0), c); mesh.triangle(a, c, SIMD3(a.x, c.y, 0))
         guard let buffer = device.makeBuffer(bytes: mesh.vertices, length: mesh.vertices.count * MemoryLayout<ShadowLabVertex>.stride) else { throw ShadowLabError.setup("地图接收网格失败") }
         receiver = buffer
+        super.init()
         progress?(0.32, "生成物件投影网格")
         // Group static instances by their original art; the depth pass needs one draw per asset.
         var groups: [String: ShadowLabMesh] = [:]
@@ -243,45 +254,90 @@ final class MeadowShadowRenderer {
         depth.endEncoding()
     }
 
-    func render(in view: MTKView, world: LivingWorld, camera: MeadowViewport, time: TimeInterval, heroes: [MeadowHeroCaster]) throws {
-        guard !gpuStopped else { return }
-        let poses = heroes.map { $0.facing * 4 + $0.frame }
-        let changed = camera != lastCamera || poses != lastPoses
-        guard changed || time - lastRenderTime >= 1.0 / 30 else { return }
-        guard inFlight.wait(timeout: .now()) == .success else { return }
-        // The paused MTKView has no second display link. Explicitly relinquish
-        // its cached drawable after encoding/presenting, including error paths.
-        // The committed command buffer retains its GPU resources until completion.
-        defer { view.releaseDrawables() }
-        guard let pass = view.currentRenderPassDescriptor, let drawable = view.currentDrawable else { inFlight.signal(); return }
+    func start(in view: MTKView, scene: GameScene) {
+        gameScene = scene
+        let foreground = SKRenderer(device: device)
+        foreground.scene = scene
+        foregroundRenderer = foreground
+        lastCamera = nil; lastRenderTime = -.infinity; lastPoses = []
+        view.delegate = self
+        view.preferredFramesPerSecond = 60
+        view.isPaused = false
+    }
+
+    func mtkView(_ view: MTKView, drawableSizeWillChange size: CGSize) {}
+
+    func draw(in view: MTKView) {
+        guard !gpuStopped, let foreground = foregroundRenderer, let scene = gameScene,
+              inFlight.wait(timeout: .now()) == .success else { return }
+        if scene.size != view.bounds.size { scene.size = view.bounds.size }
+        foreground.update(atTime: CACurrentMediaTime())
+        guard let frame = scene.metalFrame(viewSize: view.bounds.size),
+              let pass = view.currentRenderPassDescriptor, let drawable = view.currentDrawable else { inFlight.signal(); return }
+        let frameNumber = submittedFrames + 1
         do {
-            let command = try MeadowGPUDiagnostics.command(queue: queue, label: "C01 实际地图背景：阴影＋地表")
-            try encode(command: command, target: pass, camera: camera, time: time, sunCast: world.effects.currentCast, heroes: heroes, alignment: alignmentReview)
+            let command = try MeadowGPUDiagnostics.command(queue: queue, label: "C02 单视图完整组合 #\(frameNumber)")
+            try encodeComposite(command: command, target: pass, frame: frame, foreground: foreground)
             let semaphore = inFlight
             command.addCompletedHandler { [weak self] buffer in
                 if let error = buffer.error {
-                    // Preserve the first failure. Retrying a process whose GPU
-                    // submissions are ignored cannot validate lower quality.
-                    let failure = MeadowGPUDiagnostics.shared.failed(error, stage: "C01 实际地图组合（首次观察到错误的背景命令）", command: buffer)
+                    let failure = MeadowGPUDiagnostics.shared.failed(error, stage: "C02 单视图完整组合", command: buffer,
+                        context: ["frame": frameNumber, "environmentTime": frame.time,
+                                  "shadowMap": self?.shadowSize ?? 0, "cameraPoints": [Double(frame.camera.size.width), Double(frame.camera.size.height)]])
                     DispatchQueue.main.async {
-                        self?.gpuStopped = true
-                        self?.onFrameFailed?(failure)
-                        semaphore.signal()
+                        self?.gpuStopped = true; self?.onFrameFailed?(failure); semaphore.signal()
                     }
                     return
                 }
                 semaphore.signal()
                 guard buffer.status == .completed else { return }
                 DispatchQueue.main.async {
-                    guard let self, !self.firstFrameReported else { return }
-                    self.firstFrameReported = true
-                    MeadowGPUDiagnostics.shared.passed("C01 实际地图背景首帧", command: buffer)
-                    self.onFirstFrameCompleted?()
+                    guard let self else { return }
+                    let record = frameNumber <= 2 || frameNumber == 60
+                    MeadowGPUDiagnostics.shared.passed("C02 组合帧 #\(frameNumber)", command: buffer, recordEvent: record, group: "liveComposite")
+                    if !self.firstFrameReported {
+                        self.firstFrameReported = true
+                        self.onFirstFrameCompleted?()
+                    }
                 }
             }
-            command.present(drawable); command.commit(); submittedFrames += 1
-            lastRenderTime = time; lastCamera = camera; lastPoses = poses
-        } catch { inFlight.signal(); throw error }
+            command.present(drawable); command.commit(); submittedFrames = frameNumber
+            scene.shadowFrames = submittedFrames
+        } catch {
+            inFlight.signal(); gpuStopped = true; onFrameFailed?(error)
+        }
+    }
+
+    /// The offscreen repeated probe and the live drawable use this same path.
+    /// Keep terrain at one pixel per point and foreground at native Retina size.
+    func encodeComposite(command: MTLCommandBuffer, target: MTLRenderPassDescriptor, frame: MeadowFrameState,
+                         foreground: SKRenderer, forceBackground: Bool = false) throws {
+        let width = max(1, Int(frame.camera.size.width.rounded(.up)))
+        let height = max(1, Int(frame.camera.size.height.rounded(.up)))
+        var recreated = false
+        if backgroundTarget?.width != width || backgroundTarget?.height != height {
+            let descriptor = MTLTextureDescriptor.texture2DDescriptor(pixelFormat: .bgra8Unorm, width: width, height: height, mipmapped: false)
+            descriptor.storageMode = .private; descriptor.usage = [.renderTarget, .shaderRead]
+            guard let texture = device.makeTexture(descriptor: descriptor) else { throw ShadowLabError.setup("组合地表目标分配失败") }
+            texture.label = "Meadow point-resolution backdrop"
+            backgroundTarget = texture; recreated = true
+        }
+        let poses = frame.heroes.map { $0.facing * 4 + $0.frame }
+        if forceBackground || recreated || frame.camera != lastCamera || poses != lastPoses || frame.time - lastRenderTime >= 1.0 / 30 {
+            let backdrop = MTLRenderPassDescriptor(); backdrop.colorAttachments[0].texture = backgroundTarget
+            try encode(command: command, target: backdrop, camera: frame.camera, time: frame.time,
+                       sunCast: frame.world.effects.currentCast, heroes: frame.heroes, alignment: alignmentReview)
+            lastRenderTime = frame.time; lastCamera = frame.camera; lastPoses = poses
+        }
+        target.colorAttachments[0].loadAction = .clear; target.colorAttachments[0].storeAction = .store
+        guard let present = command.makeRenderCommandEncoder(descriptor: target), let output = target.colorAttachments[0].texture else { throw ShadowLabError.setup("组合背景呈现编码失败") }
+        present.label = "Point-resolution backdrop to Retina target"
+        present.setRenderPipelineState(presentationPipeline)
+        present.setFragmentTexture(backgroundTarget, index: 0)
+        present.drawPrimitives(type: .triangle, vertexStart: 0, vertexCount: 3)
+        present.endEncoding()
+        target.colorAttachments[0].loadAction = .load
+        foreground.render(withViewport: CGRect(x: 0, y: 0, width: output.width, height: output.height), commandBuffer: command, renderPassDescriptor: target)
     }
 
     /// Run only on the loader's worker queue, before any SpriteKit texture
@@ -350,4 +406,11 @@ struct MeadowHeroCaster {
     let facing: Int
     let frame: Int
     var phase: CGFloat = 0
+}
+
+struct MeadowFrameState {
+    let world: LivingWorld
+    let camera: MeadowViewport
+    let time: TimeInterval
+    let heroes: [MeadowHeroCaster]
 }

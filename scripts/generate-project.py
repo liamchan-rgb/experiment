@@ -71,7 +71,7 @@ app_settings = {
     'PRODUCT_NAME': '$(TARGET_NAME)', 'PRODUCT_BUNDLE_IDENTIFIER': 'com.liamchan.experiment.meadow',
     'INFOPLIST_FILE': 'Sources/Resources/Info.plist', 'GENERATE_INFOPLIST_FILE': 'NO',
     'TARGETED_DEVICE_FAMILY': '1,2', 'SUPPORTED_PLATFORMS': 'iphoneos iphonesimulator',
-    'CODE_SIGN_STYLE': 'Automatic', 'MARKETING_VERSION': '1.5.7', 'CURRENT_PROJECT_VERSION': '20',
+    'CODE_SIGN_STYLE': 'Automatic', 'MARKETING_VERSION': '1.5.8', 'CURRENT_PROJECT_VERSION': '21',
     'ASSETCATALOG_COMPILER_APPICON_NAME': 'AppIcon',
     'LD_RUNPATH_SEARCH_PATHS': ['$(inherited)', '@executable_path/Frameworks'],
     'SWIFT_EMIT_LOC_STRINGS': 'YES', 'ENABLE_PREVIEWS': 'NO',

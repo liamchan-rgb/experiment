@@ -5,6 +5,20 @@ struct LabVertex { float4 position; float4 uvWind; float4 color; };
 struct LabUniforms { float4x4 camera; float4x4 light; float4 sunTime; float4 options; };
 struct LabRaster { float4 position [[position]]; float3 world; float2 uv; float4 color; float2 wind; };
 
+struct MeadowBackdropRaster { float4 position [[position]]; float2 uv; };
+vertex MeadowBackdropRaster meadowBackdropVertex(uint id [[vertex_id]]) {
+    const float2 positions[3] = { float2(-1, 1), float2(-1, -3), float2(3, 1) };
+    MeadowBackdropRaster out;
+    float2 p = positions[id];
+    out.position = float4(p, 0, 1);
+    out.uv = float2((p.x + 1) * 0.5, (1 - p.y) * 0.5);
+    return out;
+}
+fragment float4 meadowBackdropFragment(MeadowBackdropRaster in [[stage_in]], texture2d<float> backdrop [[texture(0)]]) {
+    constexpr sampler linearPixels(coord::normalized, address::clamp_to_edge, filter::linear);
+    return float4(backdrop.sample(linearPixels, in.uv).rgb, 1);
+}
+
 float3 labDeform(LabVertex v, constant LabUniforms &u) {
     if (u.options.w > 0.5) return v.position.xyz;
     float bend = (sin(u.sunTime.w * 1.55 + v.uvWind.w) + 0.28 * sin(u.sunTime.w * 2.73 + v.uvWind.w * 1.7)) * 0.24;

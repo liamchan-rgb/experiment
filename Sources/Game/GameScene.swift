@@ -33,7 +33,6 @@ final class GameScene: SKScene {
     var onForegroundReady: (() -> Void)?
     private var initialFrames = 0
     var onWorldReady: ((LivingWorld) -> Void)?
-    var onRenderGround: ((LivingWorld, MeadowViewport, TimeInterval, [MeadowHeroCaster]) -> Void)?
     var onPlaybackChanged: ((Bool) -> Void)?
     var onSelectionChanged: ((String) -> Void)?
     var onDiagnostics: ((String) -> Void)?
@@ -70,7 +69,13 @@ final class GameScene: SKScene {
     }
 
     override func didMove(to view: SKView) {
-        backgroundColor = SKColor(red: 0.31, green: 0.38, blue: 0.15, alpha: 1)
+        activate(background: SKColor(red: 0.31, green: 0.38, blue: 0.15, alpha: 1))
+    }
+
+    func activateForMetalRenderer() { activate(background: .clear) }
+
+    private func activate(background: SKColor) {
+        backgroundColor = background
         if world == nil { installWorld(LivingWorld(definition: .load())) }
         layoutWorld()
         onWorldReady?(world)
@@ -272,11 +277,15 @@ final class GameScene: SKScene {
     }
 
     override func didFinishUpdate() {
-        guard world != nil, simulation != nil, let view else { return }
-        let heroes = actors.indices.map { MeadowHeroCaster(index: $0, foot: simulation.point(for: $0), facing: walks[$0].facing, frame: walks[$0].frame, phase: walks[$0].phase) }
-        onRenderGround?(world, MeadowViewport(world: world, scene: self, view: view), environmentTime, heroes)
+        guard world != nil, simulation != nil else { return }
         initialFrames += 1
         if initialFrames == 1 { DispatchQueue.main.async { [weak self] in self?.onForegroundReady?() } }
+    }
+
+    func metalFrame(viewSize: CGSize) -> MeadowFrameState? {
+        guard let world, let simulation else { return nil }
+        let heroes = actors.indices.map { MeadowHeroCaster(index: $0, foot: simulation.point(for: $0), facing: walks[$0].facing, frame: walks[$0].frame, phase: walks[$0].phase) }
+        return MeadowFrameState(world: world, camera: MeadowViewport(world: world, scene: self, viewSize: viewSize), time: environmentTime, heroes: heroes)
     }
 
     private func updateActors(before: [CGPoint]?) {
@@ -341,7 +350,15 @@ final class GameScene: SKScene {
 
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard let touch = touches.first, world != nil else { return }
-        let location = touch.location(in: world)
+        handleWorldTap(touch.location(in: world))
+    }
+
+    func handleTap(inView point: CGPoint) {
+        guard world != nil else { return }
+        handleWorldTap(world.convert(CGPoint(x: point.x, y: size.height - point.y), from: self))
+    }
+
+    private func handleWorldTap(_ location: CGPoint) {
         if let index = actorRoots.indices.min(by: {
             hypot(actorRoots[$0].position.x - location.x, actorRoots[$0].position.y + 17 - location.y) <
             hypot(actorRoots[$1].position.x - location.x, actorRoots[$1].position.y + 17 - location.y)

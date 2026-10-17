@@ -20,6 +20,20 @@ struct MeadowViewport: Equatable {
         yAxis = CGVector(dx: (y.x - origin.x) / 32, dy: (y.y - origin.y) / 32)
     }
 
+    /// SKRenderer uses a resizeFill scene whose point size matches the view.
+    /// Capture its actual node transform without requiring a second SKView.
+    init(world: SKNode, scene: SKScene, viewSize: CGSize) {
+        func project(_ p: CGPoint) -> CGPoint {
+            let point = world.convert(CGPoint(x: p.x, y: -p.y), to: scene)
+            return CGPoint(x: point.x, y: viewSize.height - point.y)
+        }
+        size = viewSize
+        origin = project(.zero)
+        let x = project(CGPoint(x: 32, y: 0)), y = project(CGPoint(x: 0, y: 32))
+        xAxis = CGVector(dx: (x.x - origin.x) / 32, dy: (x.y - origin.y) / 32)
+        yAxis = CGVector(dx: (y.x - origin.x) / 32, dy: (y.y - origin.y) / 32)
+    }
+
     init(size: CGSize, center: CGPoint, scale: CGFloat) {
         self.size = size
         origin = CGPoint(x: size.width / 2 - center.x * scale, y: size.height / 2 - center.y * scale)
