@@ -71,7 +71,7 @@
     "frames": 24,
     "columns": 25,
     "source": "original direction artwork + independently articulated offline leg rig",
-    "runtimeRig": "24 whole-frame poses; rigid shoes, two-bone knees, distance-locked stance; no runtime limb warp"
+    "runtimeRig": "24 whole-frame poses; inward-aimed rigid shoes, two-bone knees, distance-locked stance; no runtime limb warp"
   },
   "Hero1Diagonals": {
     "width": 6400,
@@ -80,7 +80,7 @@
     "frames": 24,
     "columns": 25,
     "source": "original direction artwork + independently articulated offline leg rig",
-    "runtimeRig": "24 whole-frame poses; rigid shoes, two-bone knees, distance-locked stance; no runtime limb warp"
+    "runtimeRig": "24 whole-frame poses; inward-aimed rigid shoes, two-bone knees, distance-locked stance; no runtime limb warp"
   },
   "Hero2Directions": {
     "width": 6400,
@@ -89,7 +89,7 @@
     "frames": 24,
     "columns": 25,
     "source": "original direction artwork + independently articulated offline leg rig",
-    "runtimeRig": "24 whole-frame poses; rigid shoes, two-bone knees, distance-locked stance; no runtime limb warp"
+    "runtimeRig": "24 whole-frame poses; inward-aimed rigid shoes, two-bone knees, distance-locked stance; no runtime limb warp"
   },
   "Hero2Diagonals": {
     "width": 6400,
@@ -98,7 +98,7 @@
     "frames": 24,
     "columns": 25,
     "source": "original direction artwork + independently articulated offline leg rig",
-    "runtimeRig": "24 whole-frame poses; rigid shoes, two-bone knees, distance-locked stance; no runtime limb warp"
+    "runtimeRig": "24 whole-frame poses; inward-aimed rigid shoes, two-bone knees, distance-locked stance; no runtime limb warp"
   },
   "Hero3Directions": {
     "width": 6400,
@@ -107,7 +107,7 @@
     "frames": 24,
     "columns": 25,
     "source": "original direction artwork + independently articulated offline leg rig",
-    "runtimeRig": "24 whole-frame poses; rigid shoes, two-bone knees, distance-locked stance; no runtime limb warp"
+    "runtimeRig": "24 whole-frame poses; inward-aimed rigid shoes, two-bone knees, distance-locked stance; no runtime limb warp"
   },
   "Hero3Diagonals": {
     "width": 6400,
@@ -116,6 +116,6 @@
     "frames": 24,
     "columns": 25,
     "source": "original direction artwork + independently articulated offline leg rig",
-    "runtimeRig": "24 whole-frame poses; rigid shoes, two-bone knees, distance-locked stance; no runtime limb warp"
+    "runtimeRig": "24 whole-frame poses; inward-aimed rigid shoes, two-bone knees, distance-locked stance; no runtime limb warp"
   }
 }

@@ -15,6 +15,10 @@ from scipy.ndimage import label, binary_dilation
 
 FRAME_COUNT = 24
 CELL = 256
+# The source character drawings splay their boots away from each other. Turn
+# each rigid stamp back toward its walking heading so the pair reads as a
+# single forward-facing stance. Keep the change small for the pixel-art style.
+SHOE_TOE_INSET_DEGREES = 18
 # leg center, toe extent; traced against each direction's original idle art.
 LEGS = [
     [[(113, 94, 124), (137, 126, 155)], [(130, 113, 146)] * 2,
@@ -96,13 +100,11 @@ def clean_gutter(image):
     rgba[:, :, 3] *= keep
     return Image.fromarray(rgba)
 
-def rigid_shoe(shoe, ankle, destination):
-    """Move the painted shoe with its ankle while preserving its authored angle.
-
-    Each directional drawing already encodes its own toe and heel orientation.
-    Reconstructing a generic screen-space heel/toe axis rotated front and
-    diagonal boots away from that artwork, so the shoe remains a rigid stamp.
-    """
+def rigid_shoe(shoe, ankle, destination, lateral_side):
+    """Aim a rigid boot stamp slightly inward, toward its facing's heading."""
+    angle = -lateral_side * SHOE_TOE_INSET_DEGREES
+    shoe = shoe.rotate(angle, resample=Image.Resampling.NEAREST,
+                       center=(float(ankle[0]), float(ankle[1])))
     offset = destination - ankle
     return shoe.transform((CELL, CELL), Image.Transform.AFFINE,
                           (1, 0, -offset[0], 0, 1, -offset[1]),
@@ -220,7 +222,7 @@ def prepare_gait_assets(root, save_asset, manifest, layer_export=None, write_met
                     side_depth = depth * 12
                     thigh = bone(upper, hip, knee, dh, dk, end_overlap=2)
                     shin = bone(calf, knee, ankle, dk, da)
-                    boot = rigid_shoe(shoe, ankle, da)
+                    boot = rigid_shoe(shoe, ankle, da, side_order[leg])
                     thigh_depth = side_depth + (hip3[1] + knee3[1]) / 2
                     calf_depth = side_depth + (knee3[1] + ankle3[1]) / 2
                     shoe_depth = side_depth + ankle3[1]
@@ -259,7 +261,7 @@ def prepare_gait_assets(root, save_asset, manifest, layer_export=None, write_met
             save_asset(name, atlas)
             manifest[name].update({'frames': FRAME_COUNT, 'columns': FRAME_COUNT + 1,
                 'source': 'original direction artwork + independently articulated offline leg rig',
-                'runtimeRig': '24 whole-frame poses; rigid shoes, two-bone knees, distance-locked stance; no runtime limb warp'})
+                'runtimeRig': '24 whole-frame poses; inward-aimed rigid shoes, two-bone knees, distance-locked stance; no runtime limb warp'})
     if write_metadata:
         (root / 'Sources/Resources/hero-gait.json').write_text(json.dumps(metadata, separators=(',', ':')) + '\n')
     return metadata
