@@ -206,39 +206,48 @@ final class EnvironmentShaders {
         frontMist = mist(layer: 1)
         sunlight = SKShader(source: Self.noise + """
         void main() {
-            vec2 p = vec2(-160.0, 940.0) + v_tex_coord * vec2(1600.0, -1160.0);
-            vec2 viewPoint = u_viewOrigin + p.x * u_viewXAxis + p.y * u_viewYAxis;
+            // This sprite fills the scene directly, outside the scaled world.
+            // Neither the ray coordinates nor cloud modulation use the map camera.
+            vec2 viewPoint = vec2(v_tex_coord.x, 1.0 - v_tex_coord.y) * u_viewSize;
+            float referenceSize = max(min(u_viewSize.x, u_viewSize.y), 1.0);
+            vec2 p = viewPoint * (1024.0 / referenceSize);
             // The shared source sits just outside the viewport's upper left.
             // Constant angular coordinates define widening rays, not parallel bands.
             vec2 delta = viewPoint + u_viewSize * vec2(0.035, 0.055);
             float angular = delta.y / max(delta.x + delta.y, 0.001);
-            float radialDistance = length(delta) / max(min(u_viewSize.x, u_viewSize.y), 1.0);
-            float sway = sin(u_sceneTime * 0.19 + angular * 9.0) * 0.28;
-            float axis = angular * 80.0 + sway;
-            float rays = pow(0.5 + 0.5 * sin(axis), 8.0);
-            rays += pow(0.5 + 0.5 * sin(angular * 137.0 + sway * 0.7 + 1.3), 14.0) * 0.28;
+            float radialDistance = length(delta) / referenceSize;
+            float sway = sin(u_sceneTime * 0.38 + angular * 9.0) * 0.40;
+            float axis = angular * 64.0 - u_sceneTime * 0.75 + sway;
+            float rays = pow(0.5 + 0.5 * sin(axis), 4.0);
+            rays += pow(0.5 + 0.5 * sin(angular * 108.0 - u_sceneTime * 0.49 + sway * 0.7 + 1.3), 6.0) * 0.22;
             float castAngle = u_sunCast.y / max(u_sunCast.x + u_sunCast.y, 0.001);
             float fan = 1.0 - smoothstep(0.36, 0.72, abs(angular - castAngle));
             float falloff = exp(-radialDistance * 0.85) * smoothstep(0.025, 0.14, radialDistance);
-            float travel = 0.82 + 0.18 * sin(radialDistance * 9.0 - u_sceneTime * 0.24 + angular * 16.0);
+            float travel = 0.72 + 0.28 * sin(radialDistance * 10.0 - u_sceneTime * 1.10 + angular * 12.0);
             float glow = exp(-radialDistance * 3.5) * 0.045;
             float cloud = smoothstep(0.18, 0.78, meadowCloud(p, u_sceneTime));
-            float alpha = (rays * 0.29 * fan * travel + glow) * falloff * mix(0.45, 1.0, cloud);
+            float alpha = (rays * 0.29 * fan * travel + glow) * falloff * mix(0.55, 1.0, cloud);
             gl_FragColor = vec4(vec3(1.0, 0.84, 0.48) * alpha, alpha);
         }
         """, uniforms: [clock(), SKUniform(name: "u_sunCast",
                                             vectorFloat2: SIMD2(Float(MeadowSun.cast.dx), Float(MeadowSun.cast.dy))),
-                        SKUniform(name: "u_viewOrigin", vectorFloat2: .zero),
-                        SKUniform(name: "u_viewXAxis", vectorFloat2: SIMD2(1, 0)),
-                        SKUniform(name: "u_viewYAxis", vectorFloat2: SIMD2(0, 1)),
                         SKUniform(name: "u_viewSize", vectorFloat2: SIMD2(1280, 720))])
     }
 
-    func setSunlightViewport(_ viewport: MeadowViewport) {
-        sunlight.uniformNamed("u_viewOrigin")?.vectorFloat2Value = SIMD2(Float(viewport.origin.x), Float(viewport.origin.y))
-        sunlight.uniformNamed("u_viewXAxis")?.vectorFloat2Value = SIMD2(Float(viewport.xAxis.dx), Float(viewport.xAxis.dy))
-        sunlight.uniformNamed("u_viewYAxis")?.vectorFloat2Value = SIMD2(Float(viewport.yAxis.dx), Float(viewport.yAxis.dy))
-        sunlight.uniformNamed("u_viewSize")?.vectorFloat2Value = SIMD2(Float(viewport.size.width), Float(viewport.size.height))
+    func makeSunlightOverlay(size: CGSize) -> SKSpriteNode {
+        let node = SKSpriteNode(color: .white, size: size)
+        node.name = "viewportSunlight"
+        node.shader = sunlight
+        node.blendMode = .add
+        node.zPosition = 20000
+        layoutSunlight(node, size: size)
+        return node
+    }
+
+    func layoutSunlight(_ node: SKSpriteNode, size: CGSize) {
+        node.size = size
+        node.position = CGPoint(x: size.width / 2, y: size.height / 2)
+        sunlight.uniformNamed("u_viewSize")?.vectorFloat2Value = SIMD2(Float(size.width), Float(size.height))
     }
 
     func update(time: TimeInterval) {

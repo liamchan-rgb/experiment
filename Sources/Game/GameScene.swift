@@ -81,6 +81,7 @@ final class GameScene: SKScene {
         onWorldReady?(world)
         if ProcessInfo.processInfo.arguments.contains("-alignmentReview") {
             world.children.forEach { $0.isHidden = true }
+            world.sunlightOverlay?.isHidden = true
             for point in [CGPoint(x: 540, y: 300), CGPoint(x: 740, y: 300), CGPoint(x: 640, y: 440)] {
                 let marker = SKShapeNode(circleOfRadius: 3)
                 marker.fillColor = .red; marker.strokeColor = .clear
@@ -193,6 +194,7 @@ final class GameScene: SKScene {
         world.setScale(scale)
         world.position = CGPoint(x: size.width / 2 - cameraCenter.x * scale,
                                  y: size.height / 2 + cameraCenter.y * scale)
+        world.attachSunlight(to: self)
     }
 
     func setZoom(_ value: CGFloat, anchorInView: CGPoint? = nil) {
@@ -278,7 +280,6 @@ final class GameScene: SKScene {
 
     override func didFinishUpdate() {
         guard world != nil, simulation != nil else { return }
-        world.effects.setSunlightViewport(MeadowViewport(world: world, scene: self, viewSize: size))
         initialFrames += 1
         if initialFrames == 1 { DispatchQueue.main.async { [weak self] in self?.onForegroundReady?() } }
     }

@@ -9,6 +9,7 @@ final class LivingWorld: SKNode {
     private let vegetationEnabled: Bool
     private var textures: [String: SKTexture] = [:]
     let terrain = SKNode()
+    private(set) var sunlightOverlay: SKSpriteNode?
     private(set) var roadMask: CGImage!
     private(set) var casterProps: [SceneDefinition.Prop] = []
     private(set) var shadowCount = 0
@@ -30,13 +31,24 @@ final class LivingWorld: SKNode {
         if !deferProps { for prop in allProps { addProp(prop) } }
         if atmosphereEnabled {
             addOverlay(shader: effects.backMist, depth: 95)
-            addOverlay(shader: effects.sunlight, depth: 20000, additive: true)
+            sunlightOverlay = effects.makeSunlightOverlay(size: .zero)
             addOverlay(shader: effects.frontMist, depth: 21000)
             buildMotes()
         }
     }
 
     required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
+
+    /// The sun belongs to the viewport, not the world transform. Both production
+    /// and diagnostic scenes attach this same overlay directly to the scene.
+    func attachSunlight(to scene: SKScene) {
+        guard let sunlightOverlay else { return }
+        if sunlightOverlay.parent !== scene {
+            sunlightOverlay.removeFromParent()
+            scene.addChild(sunlightOverlay)
+        }
+        effects.layoutSunlight(sunlightOverlay, size: scene.size)
+    }
 
     /// Keep UIKit's run loop available while attaching hundreds of prepared
     /// nodes. This world is not presented until the final batch is attached.

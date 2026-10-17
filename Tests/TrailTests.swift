@@ -132,6 +132,7 @@ final class TrailTests: XCTestCase {
         let uploads = native.textureUploadCount
         let scene = SKScene(size: size); scene.backgroundColor = .clear
         scene.addChild(world)
+        world.attachSunlight(to: scene)
         let foreground = SKRenderer(device: device); foreground.scene = scene
         let descriptor = MTLTextureDescriptor.texture2DDescriptor(pixelFormat: .bgra8Unorm, width: 512, height: 384, mipmapped: false)
         descriptor.storageMode = .private; descriptor.usage = .renderTarget
@@ -152,6 +153,26 @@ final class TrailTests: XCTestCase {
             XCTAssertEqual(command.status, .completed)
         }
         XCTAssertEqual(native.textureUploadCount, uploads)
+    }
+
+    func testSunlightSourceAndCoverageStayFixedWhileTheMapZoomsAndPans() throws {
+        let size = CGSize(width: 1366, height: 1024)
+        let scene = SKScene(size: size)
+        let world = LivingWorld(definition: .load(), props: [], renderTerrain: false)
+        scene.addChild(world); world.attachSunlight(to: scene)
+        let light = try XCTUnwrap(world.sunlightOverlay)
+        let sourceInLight = CGPoint(x: -size.width * 0.535, y: size.height * 0.555)
+        let expectedSource = CGPoint(x: -size.width * 0.035, y: size.height * 1.055)
+        for scale in [CGFloat(0.6), 1, 1.25, 1.5, 1.8] {
+            world.setScale(scale)
+            world.position = CGPoint(x: 177 - 700 * scale, y: 320 + 430 * scale)
+            world.attachSunlight(to: scene)
+            XCTAssertTrue(light.parent === scene)
+            let source = light.convert(sourceInLight, to: scene)
+            XCTAssertEqual(source.x, expectedSource.x, accuracy: 0.0001)
+            XCTAssertEqual(source.y, expectedSource.y, accuracy: 0.0001)
+            XCTAssertEqual(light.calculateAccumulatedFrame(), CGRect(origin: .zero, size: size))
+        }
     }
 
     func testHeroWarpMatchesCasterProjectionAcrossContactPhases() {

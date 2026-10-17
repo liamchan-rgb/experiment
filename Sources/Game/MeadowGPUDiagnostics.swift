@@ -33,7 +33,7 @@ final class MeadowGPUDiagnostics {
             "hardware": model, "system": UIDevice.current.systemVersion,
             "os": ProcessInfo.processInfo.operatingSystemVersionString,
             "gpu": device?.name ?? "unavailable", "viewPoints": [Double(size.width), Double(size.height)], "displayScale": Double(scale),
-            "startupPath": "b22 one MTKView, one queue; radial sunlight and calibrated fence ground line",
+            "startupPath": "b23 one MTKView, one queue; wide moving sunlight on an unscaled scene overlay",
             "notes": ["A stages: serial native Metal command buffers before SpriteKit preload/rendering.",
                       "B stages: serial offscreen SKRenderer submissions at the foreground pixel size.",
                       "C00: 60 repeated full-composite offscreen frames, reusing the production depth and backdrop resources.",
@@ -219,7 +219,6 @@ final class MeadowGPUProbe {
             if sample == 0 { renderer.scene = makeScene(stage: stage) }
             let time: TimeInterval = stage == 6 ? Double(sample) / 60 : (sample == 0 ? 0 : 2)
             prepared.effects.update(time: time)
-            prepared.effects.setSunlightViewport(MeadowViewport(size: size, center: CGPoint(x: 640, y: 360), scale: min(size.width / 1280, size.height / 720)))
             let command = try MeadowGPUDiagnostics.command(queue: queue, label: label)
             let pass = MTLRenderPassDescriptor(); pass.colorAttachments[0].texture = target
             pass.colorAttachments[0].loadAction = .clear; pass.colorAttachments[0].storeAction = .store
@@ -255,6 +254,10 @@ final class MeadowGPUProbe {
 
     private func makeScene(stage: Int) -> SKScene {
         let scene = SKScene(size: size); scene.scaleMode = .resizeFill; scene.backgroundColor = .clear
+        if stage == 3 {
+            scene.addChild(prepared.effects.makeSunlightOverlay(size: size))
+            return scene
+        }
         let root: SKNode
         if stage == 0 || stage == 1 || stage >= 5 {
             root = LivingWorld(definition: prepared.definition, roadMask: prepared.roadMask, props: prepared.props,
@@ -270,14 +273,14 @@ final class MeadowGPUProbe {
             root = SKNode()
             let sprite = SKSpriteNode(color: .white, size: LivingWorld.bounds.size)
             sprite.position = LivingWorld.position(CGPoint(x: LivingWorld.bounds.midX, y: LivingWorld.bounds.midY))
-            sprite.shader = stage == 2 ? prepared.effects.backMist : (stage == 3 ? prepared.effects.sunlight : prepared.effects.frontMist)
-            if stage == 3 { sprite.blendMode = .add }
+            sprite.shader = stage == 2 ? prepared.effects.backMist : prepared.effects.frontMist
             root.addChild(sprite)
         }
         let scale = min(size.width / 1280, size.height / 720)
         root.setScale(scale)
         root.position = CGPoint(x: size.width / 2 - 640 * scale, y: size.height / 2 + 360 * scale)
         scene.addChild(root)
+        (root as? LivingWorld)?.attachSunlight(to: scene)
         return scene
     }
 }
