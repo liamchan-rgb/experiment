@@ -28,6 +28,29 @@ final class JourneyUITests: XCTestCase {
         assertVisibleGround(map, name: "main-ground-after-gait-review")
     }
 
+    func testLayeredP1ColorwayPreviewRunsBesideOriginalInTheMapScene() {
+        continueAfterFailure = false
+        XCUIDevice.shared.orientation = .landscapeLeft
+        let app = XCUIApplication(); app.launchArguments = ["-visualReview"]; app.launch()
+        let map = app.otherElements["meadowMap"]
+        XCTAssertTrue(map.waitForExistence(timeout: 120)); waitForReady(app, map: map)
+        app.buttons["openGaitTest"].tap()
+        app.buttons["gaitPause"].tap()
+        app.buttons["gaitLayeredPreview"].tap()
+        var state = diagnostics(app)
+        XCTAssertEqual(state["layeredPreview"] as? Bool, true)
+        XCTAssertEqual(state["layeredPreviewFrameCount"] as? Int, 24)
+        XCTAssertEqual(state["gaitFacing"] as? Int, 0)
+        capture("layered-p1-original-versus-blue-boots")
+        app.buttons["gaitStep"].tap()
+        state = diagnostics(app)
+        XCTAssertEqual(state["gaitFrame"] as? Int, 2)
+        app.buttons["gaitLayeredPreview"].tap()
+        XCTAssertEqual(diagnostics(app)["layeredPreview"] as? Bool, false)
+        app.buttons["openGaitTest"].tap()
+        assertVisibleGround(map, name: "main-ground-after-layered-preview")
+    }
+
     func testForegroundAndShadowReceiverStayAlignedAtEveryZoom() {
         continueAfterFailure = false
         XCUIDevice.shared.orientation = .landscapeLeft

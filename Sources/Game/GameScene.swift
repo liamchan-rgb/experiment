@@ -8,6 +8,8 @@ final class GameScene: SKScene {
     private var actorRoots: [SKNode] = []
     private var actorLabels: [SKNode] = []
     private var frames: [[[SKTexture]]] = []
+    private var layeredP1Frames: [SKTexture]?
+    private(set) var layeredPreview = false
     private var walks = [WalkCycle(), WalkCycle(), WalkCycle()]
     private(set) var gaitTest: GaitTest?
     private var gaitHiddenNodes: [(SKNode, Bool)] = []
@@ -249,6 +251,7 @@ final class GameScene: SKScene {
             gaitSunWasHidden = world.sunlightOverlay?.isHidden ?? false
             world.sunlightOverlay?.isHidden = true
         } else {
+            layeredPreview = false
             gaitTest = nil
             for (node, hidden) in gaitHiddenNodes { node.isHidden = hidden }
             gaitHiddenNodes.removeAll()
@@ -263,7 +266,21 @@ final class GameScene: SKScene {
 
     func setGaitDirection(_ direction: Int) {
         guard gaitTest != nil else { return }
+        guard !layeredPreview || direction == 0 else { return }
         gaitTest?.select(direction); updateActors(before: nil); publishDiagnostics()
+    }
+
+    func toggleLayeredPreview() {
+        guard gaitTest != nil else { return }
+        if !layeredPreview {
+            if layeredP1Frames == nil { layeredP1Frames = HeroFrames.loadLayeredP1BlueVariant() }
+            layeredPreview = true
+            gaitTest?.select(0)
+        } else {
+            layeredPreview = false
+        }
+        updateActors(before: nil)
+        publishDiagnostics()
     }
     func toggleGaitPause() { gaitTest?.paused.toggle(); publishDiagnostics() }
     func toggleGaitSlow() { gaitTest?.slow.toggle(); publishDiagnostics() }
@@ -274,7 +291,7 @@ final class GameScene: SKScene {
 
     func reset() {
         guard world != nil else { return }
-        if let gaitTest { setGaitDirection(gaitTest.facing); return }
+        if let gaitTest { setGaitDirection(layeredPreview ? 0 : gaitTest.facing); return }
         simulation.reset()
         pendingDiscovery = nil
         discovered.removeAll()
@@ -339,16 +356,17 @@ final class GameScene: SKScene {
 
     func metalFrame(viewSize: CGSize) -> MeadowFrameState? {
         guard let world, simulation != nil else { return nil }
-        let heroes = actors.indices.map { index -> MeadowHeroCaster in
+        let heroIndices = layeredPreview ? [0, 1] : Array(actors.indices)
+        let heroes = heroIndices.map { index -> MeadowHeroCaster in
             let pose = actorPose(index)
-            return MeadowHeroCaster(index: index, foot: actorPoint(index), facing: pose.facing, frame: pose.frame, phase: pose.phase)
+            return MeadowHeroCaster(index: layeredPreview ? 0 : index, foot: actorPoint(index), facing: pose.facing, frame: pose.frame, phase: pose.phase)
         }
         return MeadowFrameState(world: world, camera: MeadowViewport(world: world, scene: self, viewSize: viewSize), time: environmentTime, heroes: heroes, includeEnvironment: gaitTest == nil)
     }
 
     private func actorPoint(_ index: Int) -> CGPoint { gaitTest?.point(for: index) ?? simulation.point(for: index) }
     private func actorPose(_ index: Int) -> HeroPose {
-        HeroPose(heroIndex: index, facing: gaitTest?.facing ?? walks[index].facing,
+        HeroPose(heroIndex: layeredPreview && index < 2 ? 0 : index, facing: gaitTest?.facing ?? walks[index].facing,
                  frame: gaitTest?.frame ?? walks[index].frame, phase: gaitTest?.phase ?? walks[index].phase)
     }
 
@@ -359,8 +377,16 @@ final class GameScene: SKScene {
                 walks[index].advance(from: before[index], to: point)
             }
             let pose = actorPose(index)
+            let visible = !layeredPreview || index < 2
+            actors[index].isHidden = !visible
+            actorLabels[index].isHidden = !visible
             let gait = SIMD2(Float(pose.facing), Float(pose.frame))
-            let texture = frames[index][pose.facing][pose.frame]
+            let texture: SKTexture
+            if layeredPreview && index == 1, let layeredP1Frames {
+                texture = layeredP1Frames[min(layeredP1Frames.count - 1, max(0, pose.frame - 1))]
+            } else {
+                texture = frames[layeredPreview ? 0 : index][pose.facing][pose.frame]
+            }
             actors[index].texture = texture
             actors[index].xScale = HeroFrames.isMirrored(pose.facing) ? -1 : 1
             actors[index].warpGeometry = nil
@@ -368,6 +394,8 @@ final class GameScene: SKScene {
             actorRoots[index].position = LivingWorld.position(point)
             actorRoots[index].zPosition = 10000 + point.y
             actorLabels[index].position = actorRoots[index].position + CGPoint(x: 0, y: -13)
+            actorLabels[index].children.compactMap { $0 as? SKLabelNode }.first?.text = layeredPreview
+                ? (index == 0 ? "P1 原图" : "P1 分层蓝靴") : "P\(index + 1)"
             world.effects.apply(world.effects.vegetation, to: actors[index],
                                 origin: CGPoint(x: point.x, y: point.y - 24), extent: actors[index].size, gait: gait)
         }
@@ -488,7 +516,7 @@ final class GameScene: SKScene {
             "startup": startupMetrics,
             "textureBudgetMiB": world.definition.textureBudgetMiB,
             "independentProps": gaitTest == nil ? world.objectCount : 0, "roads": gaitTest == nil ? world.network.edges.count : 0,
-            "projectedShadows": (gaitTest == nil ? world.shadowCount : 0) + actors.count, "shadowRenderer": "image-alpha relief Metal depth map", "shadowReady": shadowReady, "shadowFrames": shadowFrames,
+            "projectedShadows": (gaitTest == nil ? world.shadowCount : 0) + (layeredPreview ? 2 : actors.count), "shadowRenderer": "image-alpha relief Metal depth map", "shadowReady": shadowReady, "shadowFrames": shadowFrames,
             "shadowMapSize": shadowMapSize, "gpuFallbackCount": gpuFallbackCount, "groundDrawableScale": groundDrawableScale,
             "sunDirection": ["x": Double(world.effects.currentCast.dx), "y": Double(world.effects.currentCast.dy)],
             "environmentTime": environmentTime, "zoom": Double(zoom),
@@ -496,6 +524,7 @@ final class GameScene: SKScene {
             "mode": gaitTest != nil ? "gaitTest" : (simulation.mode == .patrol ? "patrol" : "destination"),
             "gaitFacing": gaitTest?.facing ?? -1, "gaitPhase": Double(gaitTest?.phase ?? 0),
             "gaitFrame": gaitTest?.frame ?? -1, "gaitPaused": gaitTest?.paused ?? false,
+            "layeredPreview": layeredPreview, "layeredPreviewFrameCount": layeredP1Frames?.count ?? 0,
             "goal": ["x": Double(goal.x), "y": Double(goal.y)],
             "heroTargets": heroTargets,
             "orderPoint": ["x": Double(orderPoint.x / size.width), "y": Double(1 - orderPoint.y / size.height)],

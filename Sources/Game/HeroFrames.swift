@@ -22,6 +22,25 @@ enum HeroFrames {
         }
     }
 
+    /// Baked output of the layered P1 shoe-color prototype. The art is authored
+    /// as transparent layers offline, then packed for the app's normal atlas path.
+    static func loadLayeredP1BlueVariant() -> [SKTexture] {
+        guard let atlas = UIImage(named: "LayeredP1BlueVariant")?.cgImage else {
+            fatalError("Missing layered P1 colorway preview")
+        }
+        let cell = atlas.height
+        precondition(cell == 256 && atlas.width == cell * walkFrameCount,
+                     "Layered P1 colorway atlas must be 24 square frames")
+        let strip = SKTexture(cgImage: atlas)
+        return (0..<walkFrameCount).map { column in
+            let rect = CGRect(x: CGFloat(column) / CGFloat(walkFrameCount), y: 0,
+                              width: 1 / CGFloat(walkFrameCount), height: 1)
+            let texture = SKTexture(rect: rect, in: strip)
+            texture.filteringMode = .nearest
+            return texture
+        }
+    }
+
     static func sourceFacing(_ facing: Int) -> Int { ((facing % 8) + 8) % 8 }
     static func isMirrored(_ facing: Int) -> Bool { false }
 

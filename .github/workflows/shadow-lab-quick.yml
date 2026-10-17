@@ -137,6 +137,7 @@ jobs:
             -only-testing:MeadowJourneyUITests/JourneyUITests/testMapContourRendererAndInteraction
             -only-testing:MeadowJourneyUITests/JourneyUITests/testForegroundAndShadowReceiverStayAlignedAtEveryZoom
             -only-testing:MeadowJourneyUITests/JourneyUITests/testActualMapGaitControlsCoverAllDirectionsAndEveryFrame
+            -only-testing:MeadowJourneyUITests/JourneyUITests/testLayeredP1ColorwayPreviewRunsBesideOriginalInTheMapScene
           )
           for test in \
             testShadowLabCutoutPipelineSubmitsContourModes \

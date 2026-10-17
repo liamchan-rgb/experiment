@@ -40,6 +40,7 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
     private let gaitPauseButton = UIButton(type: .system)
     private let gaitSlowButton = UIButton(type: .system)
     private let gaitStepButton = UIButton(type: .system)
+    private let gaitLayeredPreviewButton = UIButton(type: .system)
     private var gaitDirectionButtons: [UIButton] = []
     private var gaitCaptureTimer: Timer?
     private var gestureZoom: CGFloat = 1
@@ -208,7 +209,7 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
                                       y: top + 2, width: 100, height: button)
         let panelWidth = min(960, max(1, view.bounds.width - 32))
         gaitPanel.frame = CGRect(x: (view.bounds.width - panelWidth) / 2,
-                                 y: view.bounds.height - max(inset.bottom, 12) - 148, width: panelWidth, height: 148)
+                                 y: view.bounds.height - max(inset.bottom, 12) - 194, width: panelWidth, height: 194)
         let right = view.bounds.width - max(inset.right, 10) - 4
         zoomButton.frame = CGRect(x: right - button, y: top + 2, width: button, height: button)
         resetButton.frame = zoomButton.frame.offsetBy(dx: -spacing, dy: 0)
@@ -446,6 +447,14 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
         restart.addAction(UIAction { [weak self] _ in self?.scene.reset(); self?.refreshGaitControls() }, for: .touchUpInside)
         controls.heightAnchor.constraint(equalToConstant: 42).isActive = true
         gaitPanel.addArrangedSubview(controls)
+        gaitLayeredPreviewButton.configuration = style
+        gaitLayeredPreviewButton.configuration?.title = "原图 / 分层蓝靴对照"
+        gaitLayeredPreviewButton.accessibilityIdentifier = "gaitLayeredPreview"
+        gaitLayeredPreviewButton.heightAnchor.constraint(equalToConstant: 38).isActive = true
+        gaitLayeredPreviewButton.addAction(UIAction { [weak self] _ in
+            self?.scene.toggleLayeredPreview(); self?.refreshGaitControls()
+        }, for: .touchUpInside)
+        gaitPanel.addArrangedSubview(gaitLayeredPreviewButton)
         view.addSubview(gaitPanel)
     }
 
@@ -456,7 +465,9 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
         let mapControls: [UIView] = [shadowLabButton, playButton, resetButton, zoomButton]
         for control in mapControls { control.isHidden = active }
         if let test = scene.gaitTest {
-            gaitStatusLabel.text = "P1 / P2 / P3 · " + GaitTest.names[test.facing] + " · 直线循环（走完回起点） · " + (test.slow ? "四分之一速度" : "正常速度")
+            gaitStatusLabel.text = scene.layeredPreview
+                ? "P1 原图 / 分层蓝靴 · 同步向下循环 · " + (test.slow ? "四分之一速度" : "正常速度")
+                : "P1 / P2 / P3 · " + GaitTest.names[test.facing] + " · 直线循环（走完回起点） · " + (test.slow ? "四分之一速度" : "正常速度")
             gaitPauseButton.configuration?.title = test.paused ? "继续" : "暂停"
             gaitSlowButton.configuration?.title = test.slow ? "切回正常" : "切换慢速"
             for button in gaitDirectionButtons {
@@ -465,6 +476,8 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
                     : UIColor(red: 0.97, green: 0.91, blue: 0.70, alpha: 0.96)
             }
         }
+        gaitLayeredPreviewButton.configuration?.title = scene.layeredPreview ? "退出分层对照" : "原图 / 分层蓝靴对照"
+        for button in gaitDirectionButtons { button.isEnabled = !scene.layeredPreview }
         view.setNeedsLayout()
     }
 
