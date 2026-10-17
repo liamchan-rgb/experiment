@@ -59,7 +59,7 @@ def legacy_rows(root, hero):
             result.append(idle)
     return result
 
-def bone(part, src_a, src_b, dst_a, dst_b):
+def bone(part, src_a, src_b, dst_a, dst_b, end_overlap=None):
     """Foreshorten only along the bone; keep its width and its own alpha mask."""
     v, w = src_b - src_a, dst_b - dst_a
     source_length, target_length = np.linalg.norm(v), np.linalg.norm(w)
@@ -71,8 +71,16 @@ def bone(part, src_a, src_b, dst_a, dst_b):
     offset = dst_a - matrix @ src_a
     inverse = np.linalg.inv(matrix)
     shift = -inverse @ offset
-    return part.transform((CELL, CELL), Image.Transform.AFFINE,
-                          (*inverse[0], shift[0], *inverse[1], shift[1]), Image.Resampling.BICUBIC)
+    rendered = part.transform((CELL, CELL), Image.Transform.AFFINE,
+                              (*inverse[0], shift[0], *inverse[1], shift[1]), Image.Resampling.BICUBIC)
+    if end_overlap is not None:
+        # Joint overdraw is measured in destination pixels. A short source
+        # thigh under a long skirt must not magnify its cuff into a long flap.
+        rgba = np.array(rendered); yy, xx = np.mgrid[:CELL, :CELL]
+        beyond = (xx - dst_b[0]) * q[0] + (yy - dst_b[1]) * q[1]
+        rgba[:, :, 3][beyond > end_overlap] = 0
+        rendered = Image.fromarray(rgba)
+    return rendered
 
 def clean_gutter(image):
     """Remove tiny matte remnants, never an actual detached hand or boot."""
@@ -121,6 +129,10 @@ def planted_shoe(shoe, ankle, destination, phase, forward_x):
 
 def prepare_gait_assets(root, save_asset, manifest):
     metadata = {'format': 1, 'frames': FRAME_COUNT, 'columns': FRAME_COUNT + 1, 'cell': CELL, 'heroes': []}
+    # The long skirt hides P3's neutral thigh artwork. New swing poses need
+    # that hidden area covered with the family's existing dark trouser fabric,
+    # rather than dragging a piece of white skirt down as if it were a leg.
+    trouser_fabric = legacy_rows(root, 1)[0].crop((110, 183, 119, 191))
     for hero in range(3):
         idles = legacy_rows(root, hero + 1)
         poses, hero_metadata = [], []
@@ -136,7 +148,7 @@ def prepare_gait_assets(root, save_asset, manifest):
                 continue
             specs = LEGS[hero][facing]
             cut = (194 if facing in [0, 4, 5, 6, 7] else 193) if hero == 2 else (181 if facing in [0, 2] else 182)
-            knee_y = 204 if hero == 2 else 199
+            knee_y = 198 if hero == 2 else 193
             body = idle.copy()
             body_draw = ImageDraw.Draw(body)
             pieces = []
@@ -157,9 +169,22 @@ def prepare_gait_assets(root, save_asset, manifest):
                             (toe_left, 200)], fill=255)
                 part = Image.new('RGBA', (CELL, CELL)); part.paste(idle, (0, 0), mask)
                 upper, calf, shoe = part.copy(), part.copy(), part.copy()
-                ImageDraw.Draw(upper).rectangle((0, knee_y + 5, CELL, CELL), fill=0)
-                cd = ImageDraw.Draw(calf); cd.rectangle((0, 0, CELL, knee_y - 6), fill=0); cd.rectangle((0, 217, CELL, CELL), fill=0)
-                ImageDraw.Draw(shoe).rectangle((0, 0, CELL, 209), fill=0)
+                ImageDraw.Draw(upper).rectangle((0, knee_y + 3, CELL, CELL), fill=0)
+                cd = ImageDraw.Draw(calf)
+                cd.rectangle((0, 0, CELL, max(cut, knee_y - (2 if hero == 2 else 5))), fill=0)
+                cd.rectangle((0, 212, CELL, CELL), fill=0)
+                cd.rectangle((0, 0, cx - 10, CELL), fill=0)
+                cd.rectangle((cx + 11, 0, CELL, CELL), fill=0)
+                # The instep/toe belongs only to the rigid shoe. Including it
+                # in the calf stamp produces a second, pointed toe on diagonals.
+                ImageDraw.Draw(shoe).rectangle((0, 0, CELL, 206), fill=0)
+                if hero == 2:
+                    top, bottom = cut - 4, knee_y + 6
+                    fabric = trouser_fabric.resize((18, bottom - top), Image.Resampling.NEAREST)
+                    silhouette = Image.new('L', fabric.size)
+                    ImageDraw.Draw(silhouette).rounded_rectangle((0, 0, 17, bottom - top - 1), radius=6, fill=255)
+                    upper = Image.new('RGBA', (CELL, CELL))
+                    upper.paste(fabric, (cx - 9, top), silhouette)
                 # A second profile leg is behind the first, not another copy of
                 # a whole sprite. Its reduced light also preserves the overlap.
                 if facing == 1 and leg == 0:
@@ -180,7 +205,7 @@ def prepare_gait_assets(root, save_asset, manifest):
                 phase = frame / FRAME_COUNT
                 bob = -1.0 * math.cos(4 * math.pi * phase)
                 image = Image.new('RGBA', (CELL, CELL))
-                legs, feet = [], []
+                layers, feet = [], []
                 for leg, (upper, calf, shoe, hip, knee, ankle) in enumerate(pieces):
                     t = (phase + leg * .5) % 1
                     # Stance covers exactly half a cycle: constant backward
@@ -201,18 +226,31 @@ def prepare_gait_assets(root, save_asset, manifest):
                     anchor = np.array([hip[0], 217.])
                     if facing == 1: anchor[0] += (-3 if leg == 0 else 3)
                     dh, dk, da = [anchor + project(p) for p in [hip3, knee3, ankle3]]
-                    limb = Image.new('RGBA', (CELL, CELL))
-                    limb.alpha_composite(bone(upper, hip, knee, dh, dk))
-                    limb.alpha_composite(bone(calf, knee, ankle, dk, da))
-                    # Shoes retain their shape and flat sole; they do not inherit
-                    # calf foreshortening or stretch into a point at passing.
-                    limb.alpha_composite(planted_shoe(shoe, ankle, da, t, forward[0]))
+                    # The painted camera uses a stable visible boot cuff.
+                    # At early rear swing, raw projection can reverse the calf
+                    # into an upside-down stamp; tuck the knee above the boot
+                    # instead, as a drawn 2D foreshortened pose would do.
+                    dk[1] = min(dk[1], da[1] - 8)
                     depth = right[1] * side_order[leg]
-                    legs.append((depth, limb))
+                    # A swing foot behind its knee must be occluded by that
+                    # knee, not stamped over it. Sort all six rigid segments
+                    # together, including the lateral depth of each hip.
+                    side_depth = depth * 12
+                    layers.extend([
+                        (side_depth + (hip3[1] + knee3[1]) / 2, bone(upper, hip, knee, dh, dk, end_overlap=2)),
+                        (side_depth + (knee3[1] + ankle3[1]) / 2, bone(calf, knee, ankle, dk, da)),
+                        (side_depth + ankle3[1], planted_shoe(shoe, ankle, da, t, forward[0]))])
                     feet.append([float(da[0] / CELL), float((224 + project(forward * f)[1]) / CELL), float(lift / CELL)])
-                for _, limb in sorted(legs, key=lambda item: item[0]): image.alpha_composite(limb)
+                for _, part in sorted(layers, key=lambda item: item[0]): image.alpha_composite(part)
                 image.alpha_composite(body, (0, round(-bob)))
-                frames.append(clean_gutter(image)); info.append({'feet': feet})
+                try:
+                    finished = clean_gutter(image)
+                except ValueError as error:
+                    debug = root / 'build/gait-debug'
+                    debug.mkdir(parents=True, exist_ok=True)
+                    image.save(debug / f'hero{hero + 1}-direction{facing}-frame{frame + 1}.png')
+                    raise ValueError(f'Hero {hero + 1}, direction {facing}, frame {frame + 1}: {error}') from error
+                frames.append(finished); info.append({'feet': feet})
             poses.append(frames); hero_metadata.append(info)
         metadata['heroes'].append(hero_metadata)
         for group, suffix in enumerate(['Directions', 'Diagonals']):

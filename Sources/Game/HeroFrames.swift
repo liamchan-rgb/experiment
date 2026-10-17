@@ -93,7 +93,11 @@ struct HeroPose {
     /// Include these points in the depth mesh so a boot cannot miss the ground
     /// because its foot falls between coarse regular grid vertices.
     var footLandmarks: [SIMD3<Float>] {
-        [firstFoot, secondFoot].map { SIMD3($0.x, 1 - $0.y + $0.z * 0.8660254, $0.z * 0.8660254) }
+        [Self.landmark(firstFoot), Self.landmark(secondFoot)]
+    }
+
+    private static func landmark(_ foot: SIMD3<Float>) -> SIMD3<Float> {
+        SIMD3(foot.x, 1 - foot.y + foot.z * 0.8660254, foot.z * 0.8660254)
     }
 
     func destinationPositions() -> [SIMD2<Float>] { sourcePositions }
@@ -102,12 +106,12 @@ struct HeroPose {
     /// their ground depth in two image dimensions, then blend back to the
     /// body's root plane above the legs to keep the torso relief stable.
     func groundLine(at point: SIMD2<Float>) -> Float {
-        let feet = footLandmarks
+        let first = Self.landmark(firstFoot), second = Self.landmark(secondFoot)
         func squared(_ foot: SIMD3<Float>) -> Float {
             let dx = point.x - foot.x, dy = point.y - foot.y
             return dx * dx + dy * dy
         }
-        let da = squared(feet[0]), db = squared(feet[1])
+        let da = squared(first), db = squared(second)
         let ground: Float
         if da < 0.00000001 { ground = 1 - firstFoot.y }
         else if db < 0.00000001 { ground = 1 - secondFoot.y }

@@ -62,8 +62,13 @@ jobs:
           gh run view "$REVIEW_RUN" --repo "$GITHUB_REPOSITORY" \
             --json databaseId,headSha,headBranch,conclusion,url > compact/SourceRun.json
           python3 -c 'import json, os; r=json.load(open("compact/SourceRun.json")); assert r["conclusion"] == "success" or str(r["databaseId"]) == os.environ["GITHUB_RUN_ID"]'
-          gh run download "$REVIEW_RUN" --repo "$GITHUB_REPOSITORY" \
-            --pattern "ios-visual-review-$REVIEW_RUN-*" --dir original
+          if ! gh run download "$REVIEW_RUN" --repo "$GITHUB_REPOSITORY" \
+            --pattern "ios-visual-review-$REVIEW_RUN-*" --dir original; then
+            gh run download "$REVIEW_RUN" --repo "$GITHUB_REPOSITORY" \
+              --pattern 'map-ground-review-*' --dir original
+            gh run download "$REVIEW_RUN" --repo "$GITHUB_REPOSITORY" \
+              --pattern 'gait-*-iPad' --dir original || true
+          fi
       - name: Compress recordings at their original pixel dimensions
         run: |
           set -euo pipefail
@@ -100,10 +105,11 @@ jobs:
               if original['streams'][0]['width'] < original['streams'][0]['height']:
                   filters.append('transpose=2')
               filters.append(f'setpts={speed}*(PTS-STARTPTS)')
+              fps = [] if file.stem.startswith('iPad-Gait-') else ['-r', '30']
               subprocess.run(['ffmpeg', '-hide_banner', '-loglevel', 'warning', '-y', '-noautorotate',
                               '-i', str(file), '-vf', ','.join(filters), '-an', '-c:v', 'libx264', '-preset', 'fast',
                               '-crf', '24', '-maxrate', '12M', '-bufsize', '24M',
-                              '-threads', '2', '-pix_fmt', 'yuv420p', '-r', '30',
+                              '-threads', '2', '-pix_fmt', 'yuv420p', *fps,
                               '-movflags', '+faststart', str(output)], check=True)
               recordings.append({'file': str(file.relative_to(source)), 'original': original,
                                  'preview': probe(output), 'timelineScale': speed})

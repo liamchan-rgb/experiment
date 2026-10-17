@@ -218,7 +218,28 @@ jobs:
         uses: actions/upload-artifact@v7
         with:
           name: map-ground-review-${{ matrix.device }}
-          path: build/review/
+          path: |
+            build/review/attachments/
+            build/review/*.json
+            build/review/*-end.png
+          if-no-files-found: warn
+          retention-days: 30
+
+      - name: Upload normal-speed gait recording
+        if: ${{ always() }}
+        uses: actions/upload-artifact@v7
+        with:
+          name: gait-normal-${{ matrix.device }}
+          path: build/review/iPad-Gait-Normal.mp4
+          if-no-files-found: warn
+          retention-days: 30
+
+      - name: Upload quarter-speed gait recording
+        if: ${{ always() }}
+        uses: actions/upload-artifact@v7
+        with:
+          name: gait-quarter-${{ matrix.device }}
+          path: build/review/iPad-Gait-QuarterSpeed.mp4
           if-no-files-found: warn
           retention-days: 30
 
