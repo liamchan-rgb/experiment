@@ -1,0 +1,137 @@
+{
+  "version": "1.6.1",
+  "build": "26",
+  "kind": "24-frame-articulated-eight-direction-gait-shoe-angle-preservation",
+  "sourceCommit": "b60d8e5b7e2aab4ac80ffc607b34c4eecdca47aa",
+  "workflowRun": 39033438871,
+  "workflowUrl": "https://github.com/liamchan-rgb/experiment/actions/runs/39033438871",
+  "runner": "macos-15",
+  "xcode": "16.4 (16F6)",
+  "artifactId": 12100809246,
+  "archiveLogsArtifactId": 12100684894,
+  "workflowConclusion": "success",
+  "ipa": "MeadowJourney-b26.ipa",
+  "bytes": 16641050,
+  "sha256": "555c8467897e0e263bc12731158293a06cbc9aac4c86e020764bb493f632e98d",
+  "compression": "ZIP_STORED",
+  "zip64": false,
+  "extendedFields": false,
+  "validation": {
+    "deviceReleaseArchive": "passed",
+    "zipCRC": "passed",
+    "architecture": "arm64",
+    "executableMode": "0o755",
+    "metalLibrary": "present",
+    "gaitAtlas": "24 poses per facing bundled",
+    "nativeTests": 16,
+    "iPadUITests": 3,
+    "iPhoneTests": 0,
+    "testDevice": "iPad Pro 13-inch (M4) simulator",
+    "testOS": "iOS 18.5",
+    "startup": {
+      "seconds": 4.126035,
+      "heartbeats": 40,
+      "mainThreadLongestGap": 0.209608,
+      "mapFirstForegroundDelay": 0.065871,
+      "markersActorsReset": 0.001844,
+      "worldInit": 0.000752,
+      "propsBatchMax": 0.000325,
+      "presentMap": 0.003316
+    },
+    "gaitUI": "passed; traversed all 8 facings and 24 frames per direction",
+    "shadowAlignment": "passed at every tested zoom",
+    "visualReview": {
+      "status": "sampled review completed",
+      "heroes": 3,
+      "directions": 8,
+      "quarterSpeedSamplesPerHeroDirection": 12,
+      "reviewedPoseSamples": 288,
+      "method": "actual MTKView quarter-speed native recording; checked authored boot angle and ankle silhouette",
+      "normalSpeedRecording": "captured, but recorder starts after the direction timer advances; Up is absent from that recording; use quarter-speed recording and gait UI test for all-direction coverage"
+    },
+    "physicalM1iPadOS27": "not tested in cloud; user device not connected"
+  },
+  "changes": {
+    "boots": "rigid shoe stamp translated with ankle; preserve source-art angle; no generic heel-to-toe rotation",
+    "gait": "existing 24 complete poses per facing retained; no runtime limb warp",
+    "renderer": "same production single-MTKView gait renderer"
+  },
+  "recordings": [
+    {
+      "file": "Media/iPad-Gait-Normal-b26.mp4",
+      "sourceRun": 39033438871,
+      "sourceArtifact": 12101717576,
+      "original": {
+        "width": 2064,
+        "height": 2752,
+        "rFrameRate": "600/1",
+        "avgFrameRate": "960/19",
+        "durationSeconds": 30.241667,
+        "bytes": 136068177
+      },
+      "preview": {
+        "width": 2752,
+        "height": 2064,
+        "frameRate": "60/1",
+        "durationSeconds": 30.25,
+        "bytes": 11178497,
+        "sha256": "e28a1db78ab26053ffe86d7d182d2e6c2b44e0d65882b2b901bc9a6187e5a949",
+        "codec": "H.264",
+        "pixelFormat": "yuv420p"
+      },
+      "timelineScale": 1,
+      "gameSpeedScale": 1,
+      "orientation": "90 degrees counterclockwise to landscape",
+      "frameRateHandling": "native VFR normalized to 60 FPS, timeline unchanged",
+      "directionCoverage": [
+        "NE",
+        "Right",
+        "SE",
+        "Down",
+        "SW",
+        "Left",
+        "NW"
+      ],
+      "captureLimitation": "Recorder started after the direction timer advanced; Up is absent."
+    },
+    {
+      "file": "Media/iPad-Gait-Quarter-b26.mp4",
+      "sourceRun": 39033438871,
+      "sourceArtifact": 12100963775,
+      "original": {
+        "width": 2064,
+        "height": 2752,
+        "rFrameRate": "600/1",
+        "avgFrameRate": "785400/14057",
+        "durationSeconds": 46.856667,
+        "bytes": 215693945
+      },
+      "preview": {
+        "width": 2752,
+        "height": 2064,
+        "frameRate": "60/1",
+        "durationSeconds": 46.85,
+        "bytes": 14427083,
+        "sha256": "aa46051a42e2f8bd076a06d123e77fcb1e79cf5fd94d71a92b60d3c7cf4a38e0",
+        "codec": "H.264",
+        "pixelFormat": "yuv420p"
+      },
+      "timelineScale": 1,
+      "gameSpeedScale": 0.25,
+      "orientation": "90 degrees counterclockwise to landscape",
+      "frameRateHandling": "native VFR normalized to 60 FPS, timeline unchanged",
+      "directionCoverage": [
+        "Up",
+        "NE",
+        "Right",
+        "SE",
+        "Down",
+        "SW",
+        "Left",
+        "NW"
+      ]
+    }
+  ],
+  "evidence": "../Media/Build26-Gait/CloudValidation.json",
+  "log": "../docs/ITERATION_STATUS.md"
+}

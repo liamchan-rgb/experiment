@@ -1,6 +1,6 @@
 # 林间行旅迭代进度 · 2026-10-17
 
-当前可下载版：[1.6.0 build 25 人物步态重做 IPA](../Downloads/README.md)，源码 `75e54c8`，成功构建 `39023714295`。build 26 正在修复动态步态里鞋子被额外扭转的问题，并评估可换装骨骼动画项目。兼容性验证只覆盖 iPad；完成云端实画复核后再更新下载链接。
+当前可下载版：[1.6.1 build 26 鞋部方向修正 IPA](../Downloads/README.md)，源码 `b60d8e5`，成功构建 `39033438871`。兼容性测试只覆盖 iPad；本轮云端使用 iPad Pro 13-inch（M4）模拟器、iOS 18.5，没有连接用户的 M1 iPad／iPadOS 27.2。
 
 **后续兼容性测试口径（2026-10-16 起）：只在 iPad 模拟器／设备上执行并判定兼容性测试；不再测试或要求 iPhone 结果。** 常规 CI 与快速阴影验收均以 iPad 为唯一测试设备。此前记录的 iPhone 测试结果保留为历史数据；设备 IPA 仍按通用 iOS 目标归档。
 
@@ -298,10 +298,15 @@ IPA：`Downloads/MeadowJourney-b25.ipa`，17,276,922字节，SHA-256 `1ca2dbde7a
 
 [安装与校验](../Downloads/README.md) · [录像、抽帧和完整来源](../Media/Build25-Gait/README.md)。
 
-## 2026-10-17 · build 26 鞋部方向修正与换装动画选型（验证中）
+## 2026-10-17 · build 26 鞋部方向修正与换装动画选型
 
 用户指出 build 25 的步态交替已正确，但鞋仍歪斜；要求动作细节继续修，并为之后的外观自定义寻找可复用项目。复核生成器发现，鞋部被套用一个按屏幕横向推算的脚尖／脚跟轴。不同朝向原画鞋子的脚尖角度不同，这个假设会把原本刚性的鞋面旋偏。
 
-build 26 暂改为保留朝向原画里的鞋面角度，只把完整鞋部蒙版随踝点平移。需要 iPad 连续录屏确认脚踝接缝、承重落脚和各斜向姿势；素材生成成功不等于动作验收通过。源码和图集已更新，云端测试及录像抽帧待执行。
+build 26（1.6.1）保留朝向原画里的鞋面角度，只把完整鞋部蒙版随踝点平移。源码和图集已更新；iPad 模拟器云端 UI 测试、双速录像和四分之一速度录像抽帧已完成。三位人物、八方向、每方向 12 个样本共 288 个姿势检查了鞋面原角度与踝部轮廓。样本未见明显鞋面旋歪或踝口断开；这属于抽样复核，不能证明所有编码帧或用户实机观感都无问题。
 
-GitHub 调研发现 Rigby2D 可作为未来换装角色的候选：MIT／Apache-2.0，带分层 PSD 自动绑骨、skin／slot 换装和无第三方依赖的 Rust 运行时；但项目自称 early alpha，没有 Swift、SpriteKit 或 iOS 渲染器。它需要接入现有单 MTKView 的 Metal 角色批次和同姿势阴影，不能直接丢进 app。DragonBones C++ 运行时虽为 MIT，但官方使用路径依赖 DragonBones Pro，所列运行示例为 Cocos2d-x／SFML；设计面板还依赖旧 Flash Pro。完整评估和移植门槛见 [CHARACTER_RIG_EVALUATION.md](CHARACTER_RIG_EVALUATION.md)。本轮尚未把第三方运行时并入应用。
+GitHub 调研发现 Rigby2D 可作为未来换装角色的候选：MIT／Apache-2.0，带分层 PSD 自动绑骨、skin／slot 换装和无第三方依赖的 Rust 运行时；但项目自称 early alpha，没有 Swift、SpriteKit 或 iOS 渲染器。它需要接入现有单 MTKView 的 Metal 角色批次和同姿势阴影，不能直接丢进 app。DragonBones C++ 运行时虽为 MIT，但官方使用路径依赖 DragonBones Pro，所列运行示例为 Cocos2d-x／SFML；设计面板还依赖旧 Flash Pro。完整评估和移植门槛见 [CHARACTER_RIG_EVALUATION.md](CHARACTER_RIG_EVALUATION.md)。本轮尚未把第三方运行时并入应用。当前人物源图为单层 PNG，缺少身体／服装分层；直接导入骨骼 runtime 不能生成可靠换装。建议以 Rigby2D 为基础开展单人物分层 PSD 原型，验证 iOS 编译、换装 skin、Metal 角色绘制与同姿势实时投影，再评估是否移植其 Rust 核心。
+
+
+构建 `39033438871` 的源码完整提交为 `b60d8e5b7e2aab4ac80ffc607b34c4eecdca47aa`。Xcode 16.4 在 macos-15 runner 完成设备 Release archive、16 项原生检查与 3 项 iPad UI 检查；八方向步态 UI 检查遍历每方向 24 张姿势，人物投影与阴影在缩放变化下的对齐检查通过。IPA 为 16,641,050 字节，SHA-256 `555c8467897e0e263bc12731158293a06cbc9aac4c86e020764bb493f632e98d`；ZIP CRC、ZIP_STORED、arm64、0755 执行权限与 Metal 库已核验。直接下载：[MeadowJourney-b26.ipa](../Downloads/MeadowJourney-b26.ipa)。完整构建信息见[元数据](../Downloads/MeadowJourney-build26.json)。
+
+正常速度录像与慢速录像均来自实际地图渲染器；正常录像启动时已错过方向计时器的“上”方向，不能用它作为完整八方向证据。慢速录像覆盖全部八方向，配合 UI 遍历和 288 个连续时间抽样用于检查鞋角及踝口。[视频与抽帧](../Media/Build26-Gait/README.md)。云端只使用 iPad Pro 13-inch（M4）模拟器、iOS 18.5，未执行 iPhone 测试或用户物理 M1 iPad／iPadOS 27.2 实测。

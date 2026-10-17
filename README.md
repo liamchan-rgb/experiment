@@ -1,12 +1,12 @@
 # 安然 · 林间行旅
 
-[最新 1.6.0 build 25：24帧八方向步态 IPA](Downloads/README.md) · [正常／慢速录像与连续抽帧](Media/Build25-Gait/README.md) · [迭代日志](docs/ITERATION_STATUS.md)
+[最新 1.6.1 build 26：鞋部朝向修正 IPA](Downloads/README.md) · [正常／慢速录像与抽帧](Media/Build26-Gait/README.md) · [可换装骨骼方案评估](docs/CHARACTER_RIG_EVALUATION.md) · [迭代日志](docs/ITERATION_STATUS.md)
 
-以下为此前 1.3 验收版的历史说明。
+以下为 build 9 的历史版本说明。
 
 原生 Swift / UIKit / SpriteKit iOS 游戏 Demo，支持 iPhone / iPad、iOS 15 及以上，横屏、离线运行，无第三方运行依赖。安装名称为 MeadowJourney，便于 SideStore 重签。
 
-## 本版改进
+## 历史版本：build 9 改进
 
 - 阳光改为清晰的移动光带，增强云影明暗变化；镜头固定、人物暂停时仍持续变化。
 - 树冠采用根部固定的阵风摆动，最小缩放下也能观察，树影共享风动与太阳方向。
@@ -18,7 +18,7 @@
 
 ## 安装
 
-[直接下载 1.3.0（build 9）IPA](https://github.com/liamchan-rgb/experiment/raw/refs/heads/feat/layered-living-scene/Downloads/MeadowJourney-v1.3.0-unsigned.ipa)。在 Safari 保存到“文件”，再打开 SideStore → My Apps → ＋，选择该文件重签安装。包标识与旧版相同，可覆盖更新。
+[直接下载最新 1.6.1 build 26 IPA](https://raw.githubusercontent.com/liamchan-rgb/experiment/feat/layered-living-scene/Downloads/MeadowJourney-b26.ipa)。在 Safari 保存到“文件”，再打开 SideStore → My Apps → ＋，选择该文件重签安装。
 
 [安装与校验说明](Downloads/README.md) · [录像与截图](Media/README.md) · [迭代记录](docs/ITERATION_STATUS.md) · [PR #3](https://github.com/liamchan-rgb/experiment/pull/3)
 
