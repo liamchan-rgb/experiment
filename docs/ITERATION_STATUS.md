@@ -324,3 +324,13 @@ GitHub 调研发现 Rigby2D 可作为未来换装角色的候选：MIT／Apache-
 新增 iPad UI 检查会打开地图、步态测试和对照入口，确认蓝靴 24 帧序列载入、暂停单步更新，并保留画面截图。构建 `39041129120` 的 iPad 全组快速检查通过；为便于查看截图，新增只跑此预览用例的入口。构建 `39042942547` 的 iPad 单项 UI 检查通过（1 项、0 失败），Xcode 附件筛选后导出原图／蓝靴并排画面。截图中蓝鞋颜色变化可辨，角色、标签和测试面板没有互相遮挡；此结论只针对该模拟器截图，换装细节和美术观感仍由用户确认。设备为 iPad Pro 13-inch（M4）模拟器、iOS 18.5，没有执行 iPhone 测试或用户物理 M1 iPad／iPadOS 27.2 实测。
 
 [iPad 分层蓝靴对照截图附件](https://github.com/liamchan-rgb/experiment/actions/runs/39042942547/artifacts/12105126129) · [对应工作流结果](https://github.com/liamchan-rgb/experiment/actions/runs/39042942547)
+
+## 2026-10-17 · build 27 分层蓝靴对照实机测试包
+
+按用户要求为本地 IPA 测试打包。版本提升为 1.6.2 build 27；应用代码和资源沿用已通过 iPad 单项 UI 检查的分层蓝靴预览，没有增加新的角色、方向或通用换装。主地图 →“步态测试”→“原图 / 分层蓝靴对照”可并排观察 P1 向下 24 帧原图和蓝鞋烘焙结果，支持正常／慢速、暂停、单步及返回地图。
+
+源码 `9a8dc3a3ac8692c5d279e9d428bc3ca85edc0d0e` 的[构建 39049360600](https://github.com/liamchan-rgb/experiment/actions/runs/39049360600) 在 macos-15、Xcode 16.4（16F6）完成设备 Release archive 和未签名 IPA 打包。本轮仅打包，模拟器和 UI／GPU 任务均 skipped；此前分层预览 UI 通过记录保留在 run 39042942547。未连接或测试用户的物理 iPad。
+
+交付 [MeadowJourney-b27.ipa](../Downloads/MeadowJourney-b27.ipa)，16,744,850 字节，SHA-256 `2954efd466000db241ac4d1b61e9c3d743ed9bb8839925f9993417e5d8048e93`。已核验版本、最低系统 15.0、iPhoneOS 真机 arm64 Mach-O、0755 权限、ZIP CRC／ZIP_STORED、无 Zip64／额外字段、Metal 库、包内蓝靴图集与预览控制代码；下载到工作区的外层 artifact ZIP 摘要也与 GitHub 提供的 digest 一致。包标识沿用原值，使用 SideStore 重签更新。
+
+[安装与下载](../Downloads/README.md) · [本地测试步骤](GAIT_TEST.md) · [来源与校验元数据](../Downloads/MeadowJourney-build27.json)。
