@@ -1,0 +1,237 @@
+import MetalKit
+import SpriteKit
+import Darwin
+
+/// Small, atomic reports survive a watchdog termination. A pending stage is a
+/// breadcrumb, not proof that its encoder caused a GPU fault.
+final class MeadowGPUDiagnostics {
+    static let shared = MeadowGPUDiagnostics()
+    private let lock = NSLock()
+    private let url: URL
+    private var report: [String: Any] = [:]
+    private var started: [String: TimeInterval] = [:]
+
+    init(url: URL? = nil) {
+        self.url = url ?? FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+            .appendingPathComponent("MeadowGPUDiagnostic.json")
+        if let data = try? Data(contentsOf: self.url),
+           let saved = try? JSONSerialization.jsonObject(with: data) as? [String: Any] { report = saved }
+    }
+
+    func begin(device: MTLDevice?, size: CGSize, scale: CGFloat) {
+        lock.lock(); defer { lock.unlock() }
+        var machine = utsname(); uname(&machine)
+        let capacity = MemoryLayout.size(ofValue: machine.machine)
+        let model = withUnsafePointer(to: &machine.machine) {
+            $0.withMemoryRebound(to: CChar.self, capacity: capacity) { String(cString: $0) }
+        }
+        report = ["format": 1, "status": "running", "startedAt": ISO8601DateFormatter().string(from: Date()),
+            "build": Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as? String ?? "unknown",
+            "hardware": model, "system": UIDevice.current.systemVersion,
+            "os": ProcessInfo.processInfo.operatingSystemVersionString,
+            "gpu": device?.name ?? "unavailable", "viewPoints": [Double(size.width), Double(size.height)], "displayScale": Double(scale),
+            "startupPath": "b20 serial offscreen probes replace the prior SKView update-count warmup",
+            "notes": ["A stages: serial native Metal command buffers before SpriteKit preload/rendering.",
+                      "B stages: serial offscreen SKRenderer submissions at the foreground pixel size; these do not prove SKView composition.",
+                      "C stage: actual SKView plus MTKView composition. SKView does not expose its command-buffer completion.",
+                      "firstError means the first error observed in this diagnostic launch; SubmissionsIgnored alone does not reveal its earlier cause.",
+                      "A pending stage after termination is a breadcrumb, not a confirmed GPU error."], "events": [[String: Any]]()]
+        started = [:]
+        saveLocked()
+    }
+
+    func beginStage(_ stage: String, kind: String, size: CGSize? = nil) {
+        lock.lock(); defer { lock.unlock() }
+        guard report["firstError"] == nil else { return }
+        started[stage] = ProcessInfo.processInfo.systemUptime
+        report["currentStage"] = stage
+        var event: [String: Any] = ["stage": stage, "state": "submitted", "kind": kind]
+        if let size { event["pixels"] = [Double(size.width), Double(size.height)] }
+        appendLocked(event); saveLocked()
+    }
+
+    func passed(_ stage: String, command: MTLCommandBuffer) {
+        lock.lock(); defer { lock.unlock() }
+        guard report["firstError"] == nil else { return }
+        var event: [String: Any] = ["stage": stage, "state": "gpuCompleted", "command": command.label ?? ""]
+        if let began = started[stage] { event["wallMilliseconds"] = (ProcessInfo.processInfo.systemUptime - began) * 1000 }
+        if command.gpuEndTime > command.gpuStartTime, command.gpuStartTime > 0 {
+            event["gpuMilliseconds"] = (command.gpuEndTime - command.gpuStartTime) * 1000
+        }
+        appendLocked(event); saveLocked()
+    }
+
+    @discardableResult
+    func failed(_ error: Error, stage: String? = nil, command: MTLCommandBuffer? = nil) -> NSError {
+        lock.lock(); defer { lock.unlock() }
+        if report["firstError"] == nil {
+            let original = error as NSError
+            var detail: [String: Any] = ["stage": stage ?? report["currentStage"] as? String ?? "setup",
+                "domain": original.domain, "code": original.code, "description": original.localizedDescription,
+                "gpuCommand": command != nil, "command": command?.label ?? ""]
+            if let reason = original.localizedFailureReason { detail["reason"] = reason }
+            if let debug = original.userInfo[NSDebugDescriptionErrorKey] { detail["debug"] = String(describing: debug) }
+            if let infos = original.userInfo[MTLCommandBufferEncoderInfoErrorKey] as? [MTLCommandBufferEncoderInfo] {
+                detail["encoders"] = infos.map { ["label": $0.label ?? "", "state": String(describing: $0.errorState), "signposts": $0.debugSignposts] as [String: Any] }
+            }
+            report["firstError"] = detail; report["status"] = "failed"
+            appendLocked(["stage": detail["stage"]!, "state": "failed"])
+            saveLocked()
+        }
+        let first = report["firstError"] as? [String: Any] ?? [:]
+        let text = "首次失败：\(first["stage"] as? String ?? "unknown")\n\(first["description"] as? String ?? error.localizedDescription)"
+        return NSError(domain: "MeadowGPU.Diagnostic", code: first["code"] as? Int ?? -1,
+                       userInfo: [NSLocalizedDescriptionKey: text, NSUnderlyingErrorKey: error])
+    }
+
+    func mapReady() {
+        lock.lock(); defer { lock.unlock() }
+        guard report["firstError"] == nil else { return }
+        report["status"] = "ready"
+        appendLocked(["stage": "C01 实际地图", "state": "readinessGatesSatisfied",
+                      "proof": "Native ground completed; foreground CPU update observed. SKView GPU completion is not exposed."])
+        saveLocked()
+    }
+
+    var savedFailureOrInterruption: String? {
+        lock.lock(); defer { lock.unlock() }
+        if let first = report["firstError"] as? [String: Any] {
+            return "上次首次失败：\(first["stage"] as? String ?? "unknown")\n\(first["description"] as? String ?? "")"
+        }
+        if report["status"] as? String == "running" {
+            return "上次诊断中断于：\(report["currentStage"] as? String ?? "资源准备")\n中断本身不能证明该阶段有 GPU 错误。"
+        }
+        return nil
+    }
+
+    var requiresColdLaunch: Bool {
+        lock.lock(); defer { lock.unlock() }
+        return (report["firstError"] as? [String: Any])?["gpuCommand"] as? Bool ?? false
+    }
+
+    var json: String {
+        lock.lock(); defer { lock.unlock() }
+        guard let data = try? JSONSerialization.data(withJSONObject: report, options: [.prettyPrinted, .sortedKeys]) else { return "{}" }
+        return String(data: data, encoding: .utf8) ?? "{}"
+    }
+
+    static func command(queue: MTLCommandQueue, label: String) throws -> MTLCommandBuffer {
+        let descriptor = MTLCommandBufferDescriptor()
+        descriptor.errorOptions = .encoderExecutionStatus
+        guard let command = queue.makeCommandBuffer(descriptor: descriptor) else { throw ShadowLabError.setup("诊断命令缓冲区分配失败") }
+        command.label = label
+        return command
+    }
+
+    private func appendLocked(_ event: [String: Any]) {
+        var events = report["events"] as? [[String: Any]] ?? []
+        events.append(event); report["events"] = Array(events.suffix(100))
+    }
+
+    private func saveLocked() {
+        guard let data = try? JSONSerialization.data(withJSONObject: report, options: [.prettyPrinted, .sortedKeys]) else { return }
+        do {
+            try FileManager.default.createDirectory(at: url.deletingLastPathComponent(), withIntermediateDirectories: true)
+            try data.write(to: url, options: .atomic)
+        } catch { report["persistenceError"] = error.localizedDescription }
+    }
+}
+
+/// SKRenderer exposes the command buffer that SKView hides. Probe each production
+/// shader at full foreground pixel size, serially, without reading any image pixels.
+final class MeadowGPUProbe {
+    private let prepared: PreparedMeadow
+    private let size: CGSize
+    private let pixels: CGSize
+    private let renderer: SKRenderer
+    private let queue: MTLCommandQueue
+    private let target: MTLTexture
+    private let diagnostics: MeadowGPUDiagnostics
+    private let progress: (Double, String) -> Void
+    private var completion: ((Result<Void, Error>) -> Void)?
+    private var stage = 0
+    private var sample = 0
+    private let labels = ["B01 普通贴图前景", "B02 全物件植被着色器", "B03 后层薄雾", "B04 阳光光束", "B05 前层薄雾", "B06 完整前景组合"]
+
+    init(prepared: PreparedMeadow, size: CGSize, scale: CGFloat, diagnostics: MeadowGPUDiagnostics = .shared,
+         progress: @escaping (Double, String) -> Void) throws {
+        guard let device = prepared.renderer?.device, let queue = device.makeCommandQueue() else { throw ShadowLabError.setup("前景诊断队列分配失败") }
+        self.prepared = prepared; self.size = size; self.progress = progress; self.diagnostics = diagnostics
+        pixels = CGSize(width: max(1, (size.width * scale).rounded(.up)), height: max(1, (size.height * scale).rounded(.up)))
+        let descriptor = MTLTextureDescriptor.texture2DDescriptor(pixelFormat: .bgra8Unorm, width: Int(pixels.width), height: Int(pixels.height), mipmapped: false)
+        descriptor.storageMode = .private; descriptor.usage = .renderTarget
+        guard let target = device.makeTexture(descriptor: descriptor) else { throw ShadowLabError.setup("前景诊断目标分配失败") }
+        self.target = target; self.queue = queue; renderer = SKRenderer(device: device)
+    }
+
+    func start(completion: @escaping (Result<Void, Error>) -> Void) {
+        self.completion = completion
+        submitNext()
+    }
+
+    private func submitNext() {
+        guard stage < labels.count else {
+            renderer.scene = nil
+            let finished = completion; completion = nil; finished?(.success(())); return
+        }
+        let label = "\(labels[stage]) [\(sample + 1)/2]"
+        progress(Double(stage * 2 + sample) / Double(labels.count * 2), label)
+        diagnostics.beginStage(label, kind: "offscreen SKRenderer; not SKView composition", size: pixels)
+        do {
+            if sample == 0 { renderer.scene = makeScene(stage: stage) }
+            prepared.effects.update(time: sample == 0 ? 0 : 2)
+            let command = try MeadowGPUDiagnostics.command(queue: queue, label: label)
+            let pass = MTLRenderPassDescriptor(); pass.colorAttachments[0].texture = target
+            pass.colorAttachments[0].loadAction = .clear; pass.colorAttachments[0].storeAction = .store
+            pass.colorAttachments[0].clearColor = MTLClearColor(red: 0.15, green: 0.2, blue: 0.08, alpha: 1)
+            renderer.update(atTime: Double(stage * 2 + sample + 1))
+            renderer.render(withViewport: CGRect(origin: .zero, size: pixels), commandBuffer: command, renderPassDescriptor: pass)
+            command.addCompletedHandler { [weak self] buffer in
+                DispatchQueue.main.async {
+                    guard let self else { return }
+                    if let error = buffer.error {
+                        let failure = self.diagnostics.failed(error, stage: label, command: buffer)
+                        let finished = self.completion; self.completion = nil; finished?(.failure(failure)); return
+                    }
+                    guard buffer.status == .completed else { return }
+                    self.diagnostics.passed(label, command: buffer)
+                    self.sample += 1
+                    if self.sample == 2 { self.sample = 0; self.stage += 1 }
+                    DispatchQueue.main.async { self.submitNext() }
+                }
+            }
+            command.commit()
+        } catch {
+            let failure = diagnostics.failed(error, stage: label)
+            let finished = completion; completion = nil; finished?(.failure(failure))
+        }
+    }
+
+    private func makeScene(stage: Int) -> SKScene {
+        let scene = SKScene(size: size); scene.scaleMode = .resizeFill; scene.backgroundColor = .clear
+        let root: SKNode
+        if stage == 0 || stage == 1 || stage == 5 {
+            root = LivingWorld(definition: prepared.definition, roadMask: prepared.roadMask, props: prepared.props,
+                textures: prepared.textures, effects: prepared.effects, renderTerrain: false,
+                vegetationEnabled: stage != 0, atmosphereEnabled: stage == 5)
+            for index in 0..<3 {
+                let actor = SKSpriteNode(texture: prepared.heroes[index][0][0], size: CGSize(width: 64, height: 64))
+                actor.anchorPoint = CGPoint(x: 0.5, y: 0.125)
+                actor.position = LivingWorld.position(CGPoint(x: 300 + index * 100, y: 442))
+                actor.zPosition = 10442; root.addChild(actor)
+            }
+        } else {
+            root = SKNode()
+            let sprite = SKSpriteNode(color: .white, size: LivingWorld.bounds.size)
+            sprite.position = LivingWorld.position(CGPoint(x: LivingWorld.bounds.midX, y: LivingWorld.bounds.midY))
+            sprite.shader = stage == 2 ? prepared.effects.backMist : (stage == 3 ? prepared.effects.sunlight : prepared.effects.frontMist)
+            if stage == 3 { sprite.blendMode = .add }
+            root.addChild(sprite)
+        }
+        let scale = min(size.width / 1280, size.height / 720)
+        root.setScale(scale)
+        root.position = CGPoint(x: size.width / 2 - 640 * scale, y: size.height / 2 + 360 * scale)
+        scene.addChild(root)
+        return scene
+    }
+}

@@ -85,22 +85,38 @@ final class TrailTests: XCTestCase {
         }
     }
 
-    func testMeadowRendererStepsDownAfterGPUFailures() throws {
+    func testGPUReportKeepsFirstFailureAcrossReload() throws {
+        let directory = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString)
+        defer { try? FileManager.default.removeItem(at: directory) }
+        let url = directory.appendingPathComponent("report.json")
+        let diagnostics = MeadowGPUDiagnostics(url: url)
+        diagnostics.begin(device: nil, size: CGSize(width: 1024, height: 768), scale: 2)
+        diagnostics.beginStage("A02 ground", kind: "native Metal")
+        XCTAssertTrue(MeadowGPUDiagnostics(url: url).savedFailureOrInterruption?.contains("中断") == true)
+        diagnostics.failed(NSError(domain: "GPU", code: 2, userInfo: [NSLocalizedDescriptionKey: "first timeout"]), stage: "A02 ground")
+        diagnostics.failed(NSError(domain: "GPU", code: 4, userInfo: [NSLocalizedDescriptionKey: "later ignored"]), stage: "A03 depth")
+        let reloaded = MeadowGPUDiagnostics(url: url)
+        let data = try XCTUnwrap(reloaded.json.data(using: .utf8))
+        let report = try XCTUnwrap(JSONSerialization.jsonObject(with: data) as? [String: Any])
+        let failure = try XCTUnwrap(report["firstError"] as? [String: Any])
+        XCTAssertEqual(failure["stage"] as? String, "A02 ground")
+        XCTAssertEqual(failure["code"] as? Int, 2)
+        XCTAssertTrue(reloaded.savedFailureOrInterruption?.contains("first timeout") == true)
+    }
+
+    func testNativeDiagnosticSubmitsFourSeparatePasses() throws {
+        let directory = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString)
+        defer { try? FileManager.default.removeItem(at: directory) }
+        let diagnostics = MeadowGPUDiagnostics(url: directory.appendingPathComponent("report.json"))
         let world = LivingWorld(definition: .load())
         let renderer = try MeadowShadowRenderer(device: XCTUnwrap(MTLCreateSystemDefaultDevice()), world: world)
-        XCTAssertEqual(renderer.shadowSize, 2048)
-        XCTAssertTrue(renderer.shadowsEnabled)
-
-        XCTAssertEqual(renderer.reduceQualityAfterGPUFailure(), "实时阴影图降至 1024")
-        XCTAssertEqual(renderer.shadowSize, 1024)
-        XCTAssertTrue(renderer.shadowsEnabled)
-        try renderer.validateSubmission(world: world, heroes: [])
-
-        XCTAssertEqual(renderer.reduceQualityAfterGPUFailure(), "关闭实时阴影")
-        XCTAssertFalse(renderer.shadowsEnabled)
-        try renderer.validateSubmission(world: world, heroes: [])
-
-        XCTAssertNil(renderer.reduceQualityAfterGPUFailure(), "The renderer must stop retrying after both fallback tiers")
+        diagnostics.begin(device: renderer.device, size: CGSize(width: 256, height: 192), scale: 1)
+        try renderer.diagnoseStartup(size: CGSize(width: 256, height: 192), diagnostics: diagnostics)
+        let data = try XCTUnwrap(diagnostics.json.data(using: .utf8))
+        let report = try XCTUnwrap(JSONSerialization.jsonObject(with: data) as? [String: Any])
+        let events = try XCTUnwrap(report["events"] as? [[String: Any]])
+        XCTAssertEqual(events.filter { $0["state"] as? String == "gpuCompleted" }.count, 4)
+        XCTAssertNil(report["firstError"])
     }
 
     func testHeroWarpMatchesCasterProjectionAcrossContactPhases() {

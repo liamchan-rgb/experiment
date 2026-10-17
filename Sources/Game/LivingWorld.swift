@@ -6,6 +6,7 @@ final class LivingWorld: SKNode {
     let definition: SceneDefinition
     let network: TrailNetwork
     let effects: EnvironmentShaders
+    private let vegetationEnabled: Bool
     private var textures: [String: SKTexture] = [:]
     let terrain = SKNode()
     private(set) var roadMask: CGImage!
@@ -14,10 +15,12 @@ final class LivingWorld: SKNode {
     private(set) var objectCount = 0
     private(set) var longestPopulateBatchSeconds: Double = 0
 
-    init(definition: SceneDefinition, roadMask: CGImage? = nil, props: [SceneDefinition.Prop]? = nil, textures: [String: SKTexture] = [:], effects preparedEffects: EnvironmentShaders? = nil, deferProps: Bool = false, renderTerrain: Bool = true) {
+    init(definition: SceneDefinition, roadMask: CGImage? = nil, props: [SceneDefinition.Prop]? = nil, textures: [String: SKTexture] = [:], effects preparedEffects: EnvironmentShaders? = nil, deferProps: Bool = false, renderTerrain: Bool = true,
+         vegetationEnabled: Bool = true, atmosphereEnabled: Bool = true) {
         self.definition = definition
         self.textures = textures
         self.effects = preparedEffects ?? EnvironmentShaders()
+        self.vegetationEnabled = vegetationEnabled
         network = TrailNetwork(roads: definition.roads)
         super.init()
         addChild(terrain)
@@ -25,10 +28,12 @@ final class LivingWorld: SKNode {
         else { self.roadMask = roadMask ?? MeadowRoadMask.make(network: network, bounds: Self.bounds) }
         let allProps = props ?? (definition.props + Self.meadowDetails(definition: definition, network: network) + Self.roadsideGrass(network: network))
         if !deferProps { for prop in allProps { addProp(prop) } }
-        addOverlay(shader: effects.backMist, depth: 95)
-        addOverlay(shader: effects.sunlight, depth: 20000, additive: true)
-        addOverlay(shader: effects.frontMist, depth: 21000)
-        buildMotes()
+        if atmosphereEnabled {
+            addOverlay(shader: effects.backMist, depth: 95)
+            addOverlay(shader: effects.sunlight, depth: 20000, additive: true)
+            addOverlay(shader: effects.frontMist, depth: 21000)
+            buildMotes()
+        }
     }
 
     required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
@@ -97,10 +102,10 @@ final class LivingWorld: SKNode {
         // Preserve upper-left painted highlights on solid objects.
         node.xScale = prop.mirror && prop.asset == "Flowers" ? -1 : 1
         let vegetationShader = prop.asset == "Flowers" || prop.asset == "Shrub" ? effects.meadowPlants : effects.vegetation
-        effects.apply(vegetationShader, to: node,
+        if vegetationEnabled { effects.apply(vegetationShader, to: node,
                       origin: CGPoint(x: prop.x, y: prop.y - height * (0.5 - node.anchorPoint.y)),
                       extent: CGSize(width: prop.width * node.xScale, height: height),
-                      wind: prop.wind, phase: Float(prop.x * 0.03 + prop.y * 0.017))
+                      wind: prop.wind, phase: Float(prop.x * 0.03 + prop.y * 0.017)) }
         addChild(node)
         objectCount += 1
         casterProps.append(prop)
@@ -116,10 +121,10 @@ final class LivingWorld: SKNode {
             banner.anchorPoint = CGPoint(x: 0.035, y: 0.04)
             banner.position = CGPoint(x: 0, y: height * (Self.towerBannerRoofAnchorY - node.anchorPoint.y))
             banner.zPosition = -1
-            effects.apply(effects.vegetation, to: banner,
+            if vegetationEnabled { effects.apply(effects.vegetation, to: banner,
                           origin: CGPoint(x: prop.x + width * 0.465,
                                           y: prop.y - height * (Self.towerBannerRoofAnchorY - node.anchorPoint.y) - banner.size.height * 0.46),
-                          extent: banner.size, wind: 2, phase: Float(prop.x * 0.03))
+                          extent: banner.size, wind: 2, phase: Float(prop.x * 0.03)) }
             node.addChild(banner)
         }
     }

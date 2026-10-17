@@ -14,7 +14,7 @@ struct PreparedMeadow {
 enum MeadowLoader {
     private static let queue = DispatchQueue(label: "meadow.loading", qos: .userInitiated)
 
-    static func load(device: MTLDevice?, progress: @escaping (Float, String) -> Void,
+    static func load(device: MTLDevice?, diagnosticSize: CGSize? = nil, progress: @escaping (Float, String) -> Void,
                      completion: @escaping (Result<PreparedMeadow, Error>) -> Void) {
         func report(_ value: Double, _ text: String) {
             DispatchQueue.main.async { progress(Float(value), text) }
@@ -36,28 +36,39 @@ enum MeadowLoader {
                 for (index, name) in names.enumerated() {
                     guard let image = UIImage(named: name)?.cgImage else { throw ShadowLabError.setup("素材缺失：\(name)") }
                     images[name] = image
-                    if !name.hasPrefix("Hero") {
-                        let texture = SKTexture(cgImage: image); texture.filteringMode = .linear
-                        textures[name] = texture
-                    }
                     report(0.28 + Double(index + 1) / Double(names.count) * 0.13, "准备场景素材")
-                }
-                var heroes: [[[SKTexture]]] = []
-                for index in 1...3 {
-                    heroes.append(HeroFrames.load(index))
-                    report(0.41 + Double(index) * 0.03, "准备旅人")
                 }
                 let renderer: MeadowShadowRenderer?
                 if let device {
                     report(0.50, "准备实时投影")
+                    var lastStage = ""
                     renderer = try MeadowShadowRenderer(device: device, props: props, roadMask: mask, images: images) {
-                        report(0.50 + $0 * 0.34, $1)
+                        report(0.50 + $0 * 0.23, $1)
+                        if diagnosticSize != nil, lastStage != $1 {
+                            lastStage = $1
+                            MeadowGPUDiagnostics.shared.beginStage("A00 初始化：\($1)", kind: "CPU resource/pipeline setup; not GPU completion")
+                        }
+                    }
+                    if let diagnosticSize {
+                        try renderer?.diagnoseStartup(size: diagnosticSize) { report(0.73 + $0 * 0.10, $1) }
                     }
                 } else { renderer = nil }
+                // Construct/preload SpriteKit resources only after the native
+                // probes, so a prior SpriteKit fault cannot poison A01...A04.
+                for name in names where !name.hasPrefix("Hero") {
+                    let texture = SKTexture(cgImage: images[name]!); texture.filteringMode = .linear
+                    textures[name] = texture
+                }
+                var heroes: [[[SKTexture]]] = []
+                for index in 1...3 {
+                    heroes.append(HeroFrames.load(index))
+                    report(0.83 + Double(index) * 0.003, "准备旅人")
+                }
                 let effects = EnvironmentShaders()
                 let prepared = PreparedMeadow(definition: definition, roadMask: mask, props: props,
                                              textures: textures, heroes: heroes, effects: effects, renderer: renderer)
                 report(0.84, "上传场景纹理")
+                if diagnosticSize != nil { MeadowGPUDiagnostics.shared.beginStage("B00 SpriteKit 纹理预加载", kind: "SpriteKit preload API; GPU completion is not exposed") }
                 SKTexture.preload(Array(textures.values) + heroes.flatMap { $0.flatMap { $0 } }) {
                     DispatchQueue.main.async { completion(.success(prepared)) }
                 }

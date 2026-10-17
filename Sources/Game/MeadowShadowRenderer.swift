@@ -14,10 +14,10 @@ final class MeadowShadowRenderer {
     }
     static let units: Float = 32
     let device: MTLDevice
-    private(set) var shadowSize = 2048
-    private(set) var shadowsEnabled = true
+    let shadowSize = 2048
+    let shadowsEnabled = true
     private let queue: MTLCommandQueue
-    private var depthTexture: MTLTexture
+    private let depthTexture: MTLTexture
     private let depthPipeline: MTLRenderPipelineState
     private let receiverPipeline: MTLRenderPipelineState
     private let depthState: MTLDepthStencilState
@@ -37,6 +37,7 @@ final class MeadowShadowRenderer {
     private var lastCamera: MeadowViewport?
     private var lastPoses: [Int] = []
     private var firstFrameReported = false
+    private var gpuStopped = false
 
     convenience init(device: MTLDevice, world: LivingWorld) throws {
         try self.init(device: device, props: world.casterProps, roadMask: world.roadMask)
@@ -139,30 +140,6 @@ final class MeadowShadowRenderer {
         return device.makeTexture(descriptor: descriptor)
     }
 
-    /// Step down after a command-buffer GPU timeout. The caller also reduces
-    /// the drawable size so the next submitted frame has a smaller workload.
-    @discardableResult
-    func reduceQualityAfterGPUFailure() -> String? {
-        if shadowSize > 1024, let smaller = Self.makeDepthTexture(device: device, size: 1024) {
-            depthTexture = smaller
-            shadowSize = 1024
-            resetRenderCache()
-            return "实时阴影图降至 1024"
-        }
-        if shadowsEnabled {
-            shadowsEnabled = false
-            resetRenderCache()
-            return "关闭实时阴影"
-        }
-        return nil
-    }
-
-    private func resetRenderCache() {
-        lastRenderTime = -.infinity
-        lastCamera = nil
-        lastPoses = []
-    }
-
     private func draw(_ mesh: ShadowLabMesh, texture: MTLTexture, kind: Float) throws -> Draw {
         guard let buffer = device.makeBuffer(bytes: mesh.vertices, length: mesh.vertices.count * MemoryLayout<ShadowLabVertex>.stride) else { throw ShadowLabError.setup("地图投影网格上传失败") }
         return Draw(buffer: buffer, count: mesh.vertices.count, texture: texture, kind: kind)
@@ -195,27 +172,36 @@ final class MeadowShadowRenderer {
                         time: TimeInterval, sunCast: CGVector, heroes: [MeadowHeroCaster], shadows: Bool = true, roads: Bool = true, alignment: Bool = false) throws {
         let renderShadows = shadows && shadowsEnabled
         if renderShadows {
-            var draws = staticDraws
-            for hero in heroes {
-                let texture = try heroTexture(hero)
-                var mesh = ShadowLabMesh()
-                let pose = HeroPose(heroIndex: hero.index, facing: hero.facing, frame: hero.frame, phase: hero.phase)
-                let offset = pose.bodyOffset()
-                let foot = CGPoint(x: hero.foot.x + offset.x, y: hero.foot.y - offset.y)
-                let instance = ShadowLabInstance(asset: .hero, root: Self.root(foot), width: 64 / Self.units, aspect: 1, anchor: SIMD2(0.5, 0.125))
-                mesh.imageCaster(instance, mirrored: HeroFrames.isMirrored(hero.facing), pose: pose)
-                var item = try draw(mesh, texture: texture, kind: 2)
-                item.uvRect = SIMD4(Float(hero.frame) / 4, Float(HeroFrames.sourceFacing(hero.facing) % 4) / 4, 0.25, 0.25)
-                draws.append(item)
-            }
-            try encodeShadowDepth(command: command, draws: draws, camera: camera, time: time, sunCast: sunCast)
+            try encodeShadowDepth(command: command, draws: shadowDraws(heroes: heroes), camera: camera, time: time, sunCast: sunCast)
         }
+        try encodeGround(command: command, target: target, camera: camera, time: time, sunCast: sunCast,
+                         shadows: renderShadows, roads: roads, alignment: alignment)
+    }
 
-        var u = makeUniforms(camera: camera, time: time, sunCast: sunCast, shadows: renderShadows)
+    private func shadowDraws(heroes: [MeadowHeroCaster]) throws -> [Draw] {
+        var draws = staticDraws
+        for hero in heroes {
+            let texture = try heroTexture(hero)
+            var mesh = ShadowLabMesh()
+            let pose = HeroPose(heroIndex: hero.index, facing: hero.facing, frame: hero.frame, phase: hero.phase)
+            let offset = pose.bodyOffset()
+            let foot = CGPoint(x: hero.foot.x + offset.x, y: hero.foot.y - offset.y)
+            let instance = ShadowLabInstance(asset: .hero, root: Self.root(foot), width: 64 / Self.units, aspect: 1, anchor: SIMD2(0.5, 0.125))
+            mesh.imageCaster(instance, mirrored: HeroFrames.isMirrored(hero.facing), pose: pose)
+            var item = try draw(mesh, texture: texture, kind: 2)
+            item.uvRect = SIMD4(Float(hero.frame) / 4, Float(HeroFrames.sourceFacing(hero.facing) % 4) / 4, 0.25, 0.25)
+            draws.append(item)
+        }
+        return draws
+    }
+
+    private func encodeGround(command: MTLCommandBuffer, target: MTLRenderPassDescriptor, camera: MeadowViewport,
+                              time: TimeInterval, sunCast: CGVector, shadows: Bool, roads: Bool = true, alignment: Bool = false) throws {
+        var u = makeUniforms(camera: camera, time: time, sunCast: sunCast, shadows: shadows)
         target.colorAttachments[0].loadAction = .clear; target.colorAttachments[0].storeAction = .store
         target.colorAttachments[0].clearColor = MTLClearColor(red: 0.15, green: 0.20, blue: 0.08, alpha: 1)
         guard let color = command.makeRenderCommandEncoder(descriptor: target) else { throw ShadowLabError.setup("地图接收通道失败") }
-        color.label = renderShadows ? "Opaque grass + road material + PCF reception" : "Opaque grass + road material (GPU fallback)"
+        color.label = shadows ? "Opaque grass + road material + PCF reception" : "Opaque grass + road material; no shadow sampling"
         color.setRenderPipelineState(receiverPipeline); color.setCullMode(.none)
         color.setVertexBuffer(receiver, offset: 0, index: 0)
         color.setVertexBytes(&u, length: MemoryLayout<ShadowLabUniforms>.stride, index: 1)
@@ -258,6 +244,7 @@ final class MeadowShadowRenderer {
     }
 
     func render(in view: MTKView, world: LivingWorld, camera: MeadowViewport, time: TimeInterval, heroes: [MeadowHeroCaster]) throws {
+        guard !gpuStopped else { return }
         let poses = heroes.map { $0.facing * 4 + $0.frame }
         let changed = camera != lastCamera || poses != lastPoses
         guard changed || time - lastRenderTime >= 1.0 / 30 else { return }
@@ -266,15 +253,19 @@ final class MeadowShadowRenderer {
         // its cached drawable after encoding/presenting, including error paths.
         // The committed command buffer retains its GPU resources until completion.
         defer { view.releaseDrawables() }
-        guard let pass = view.currentRenderPassDescriptor, let drawable = view.currentDrawable, let command = queue.makeCommandBuffer() else { inFlight.signal(); return }
+        guard let pass = view.currentRenderPassDescriptor, let drawable = view.currentDrawable else { inFlight.signal(); return }
         do {
+            let command = try MeadowGPUDiagnostics.command(queue: queue, label: "C01 实际地图背景：阴影＋地表")
             try encode(command: command, target: pass, camera: camera, time: time, sunCast: world.effects.currentCast, heroes: heroes, alignment: alignmentReview)
             let semaphore = inFlight
             command.addCompletedHandler { [weak self] buffer in
                 if let error = buffer.error {
-                    // Apply the fallback before allowing another frame to enter the queue.
+                    // Preserve the first failure. Retrying a process whose GPU
+                    // submissions are ignored cannot validate lower quality.
+                    let failure = MeadowGPUDiagnostics.shared.failed(error, stage: "C01 实际地图组合（首次观察到错误的背景命令）", command: buffer)
                     DispatchQueue.main.async {
-                        self?.onFrameFailed?(error)
+                        self?.gpuStopped = true
+                        self?.onFrameFailed?(failure)
                         semaphore.signal()
                     }
                     return
@@ -284,12 +275,46 @@ final class MeadowShadowRenderer {
                 DispatchQueue.main.async {
                     guard let self, !self.firstFrameReported else { return }
                     self.firstFrameReported = true
+                    MeadowGPUDiagnostics.shared.passed("C01 实际地图背景首帧", command: buffer)
                     self.onFirstFrameCompleted?()
                 }
             }
             command.present(drawable); command.commit(); submittedFrames += 1
             lastRenderTime = time; lastCamera = camera; lastPoses = poses
         } catch { inFlight.signal(); throw error }
+    }
+
+    /// Run only on the loader's worker queue, before any SpriteKit texture
+    /// preload/rendering. Separate command buffers identify the failed native pass.
+    func diagnoseStartup(size: CGSize, diagnostics: MeadowGPUDiagnostics = .shared,
+                         progress: (Double, String) -> Void = { _, _ in }) throws {
+        let pixels = CGSize(width: max(1, size.width.rounded(.up)), height: max(1, size.height.rounded(.up)))
+        let descriptor = MTLTextureDescriptor.texture2DDescriptor(pixelFormat: .bgra8Unorm, width: Int(pixels.width), height: Int(pixels.height), mipmapped: false)
+        descriptor.storageMode = .private; descriptor.usage = .renderTarget
+        guard let target = device.makeTexture(descriptor: descriptor) else { throw ShadowLabError.setup("地表诊断目标分配失败") }
+        let camera = MeadowViewport(size: size, center: CGPoint(x: 640, y: 360), scale: min(size.width / 1280, size.height / 720))
+        let heroes = (0..<3).map { MeadowHeroCaster(index: $0, foot: CGPoint(x: 300 + $0 * 100, y: 442), facing: 0, frame: 0) }
+        let labels = ["A01 原生 Metal 清屏", "A02 地表材质（无阴影）", "A03 全物件＋待机人物阴影深度", "A04 地表阴影接收 PCF"]
+        for (index, label) in labels.enumerated() {
+            progress(Double(index) / Double(labels.count), label)
+            diagnostics.beginStage(label, kind: "native Metal; no SpriteKit rendering", size: index == 2 ? CGSize(width: shadowSize, height: shadowSize) : pixels)
+            let command = try MeadowGPUDiagnostics.command(queue: queue, label: label)
+            let pass = MTLRenderPassDescriptor(); pass.colorAttachments[0].texture = target
+            if index == 0 {
+                pass.colorAttachments[0].loadAction = .clear; pass.colorAttachments[0].storeAction = .store
+                guard let clear = command.makeRenderCommandEncoder(descriptor: pass) else { throw ShadowLabError.setup("清屏诊断编码失败") }
+                clear.label = label; clear.endEncoding()
+            } else if index == 2 {
+                try encodeShadowDepth(command: command, draws: shadowDraws(heroes: heroes), camera: camera, time: 1, sunCast: MeadowSun.cast)
+            } else {
+                try encodeGround(command: command, target: pass, camera: camera, time: 1, sunCast: MeadowSun.cast, shadows: index == 3)
+            }
+            command.commit(); command.waitUntilCompleted()
+            if let error = command.error { throw diagnostics.failed(error, stage: label, command: command) }
+            guard command.status == .completed else { throw diagnostics.failed(ShadowLabError.setup("诊断命令未完成"), stage: label, command: command) }
+            diagnostics.passed(label, command: command)
+        }
+        progress(1, "原生 Metal 分通道检查完成")
     }
 
     func groundSnapshot(world: LivingWorld, width: Int = 768, height: Int = 432, roads: Bool = true, shadows: Bool = true, camera: MeadowViewport? = nil, alignment: Bool = false, heroes: [MeadowHeroCaster] = []) throws -> (image: UIImage, bgra: [UInt8]) {
