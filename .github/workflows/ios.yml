@@ -23,6 +23,11 @@ on:
         required: false
         type: boolean
         default: false
+      preview_only:
+        description: 'When quick_lab is enabled, run only the layered gait preview screenshot check'
+        required: false
+        type: boolean
+        default: false
       review_run:
         description: 'Successful run whose existing visual artifacts should be repackaged (leave empty for a full build)'
         required: false
@@ -43,6 +48,7 @@ jobs:
     with:
       macos_runner: ${{ inputs.macos_runner || 'macos-15' }}
       package_only: ${{ inputs.package_only }}
+      preview_only: ${{ inputs.preview_only }}
 
   recover-review:
     name: Prepare compact review from an existing successful build

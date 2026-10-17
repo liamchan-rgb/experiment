@@ -8,6 +8,11 @@ on:
         type: boolean
         required: false
         default: false
+      preview_only:
+        description: 'Run only the layered gait preview iPad screenshot check'
+        type: boolean
+        required: false
+        default: false
   workflow_call:
     inputs:
       macos_runner:
@@ -15,6 +20,10 @@ on:
         required: false
         default: macos-15
       package_only:
+        type: boolean
+        required: false
+        default: false
+      preview_only:
         type: boolean
         required: false
         default: false
@@ -29,6 +38,7 @@ concurrency:
 jobs:
   archive:
     name: Device Release IPA
+    if: ${{ !inputs.preview_only }}
     runs-on: ${{ inputs.macos_runner || 'macos-15' }}
     timeout-minutes: 30
     defaults:
@@ -133,31 +143,37 @@ jobs:
       - name: Run native and actual composited screen checks
         run: |
           set -euo pipefail
-          focused_tests=(
-            -only-testing:MeadowJourneyUITests/JourneyUITests/testMapContourRendererAndInteraction
-            -only-testing:MeadowJourneyUITests/JourneyUITests/testForegroundAndShadowReceiverStayAlignedAtEveryZoom
-            -only-testing:MeadowJourneyUITests/JourneyUITests/testActualMapGaitControlsCoverAllDirectionsAndEveryFrame
-            -only-testing:MeadowJourneyUITests/JourneyUITests/testLayeredP1ColorwayPreviewRunsBesideOriginalInTheMapScene
-          )
-          for test in \
-            testShadowLabCutoutPipelineSubmitsContourModes \
-            testMeadowAllAssetsSubmitSharedShadowDepth \
-            testMeadowGroundContainsOpaqueGrassRoadsAndShadows \
-            testCapturedViewportKeepsGroundAndArtworkAlignedThroughZoomAndPan \
-            testHeroShadowAtlasChangesFramesWithoutLiveTextureUploads \
-            testReliefPreservesArtCoordinatesForEveryAsset \
-            testRoadMaskUsesOneUnionAtJunctions \
-            testOnlyTheTowerGetsAnAdditionalBanner \
-            testAuthoredWalkUses24WholeFramesAndNoLegWarp \
-            testFootprintGroundLineFollowsAlternatingFeet \
-            testHeroCasterAnchorsEachPlantedFootAndTracksLift \
-            testHeroFramesBundlesAllDirectionsAndWholeMirroredRightProfile \
-            testWalkCycleVisitsEveryFrameAndWrapsWithoutRepeatingPassingArt \
-            testGaitTestCoversEightRoadIndependentHeadingsAndSupportsStepping \
-            testGaitTestReturnsToTheSameMapCameraAndActorPositions \
-            testHeroPoseSpriteKitRenderingKeepsAllHeroContoursConnected; do
-            focused_tests+=("-only-testing:MeadowJourneyTests/TrailTests/$test")
-          done
+          if [[ '${{ inputs.preview_only }}' == 'true' ]]; then
+            focused_tests=(
+              -only-testing:MeadowJourneyUITests/JourneyUITests/testLayeredP1ColorwayPreviewRunsBesideOriginalInTheMapScene
+            )
+          else
+            focused_tests=(
+              -only-testing:MeadowJourneyUITests/JourneyUITests/testMapContourRendererAndInteraction
+              -only-testing:MeadowJourneyUITests/JourneyUITests/testForegroundAndShadowReceiverStayAlignedAtEveryZoom
+              -only-testing:MeadowJourneyUITests/JourneyUITests/testActualMapGaitControlsCoverAllDirectionsAndEveryFrame
+              -only-testing:MeadowJourneyUITests/JourneyUITests/testLayeredP1ColorwayPreviewRunsBesideOriginalInTheMapScene
+            )
+            for test in \
+              testShadowLabCutoutPipelineSubmitsContourModes \
+              testMeadowAllAssetsSubmitSharedShadowDepth \
+              testMeadowGroundContainsOpaqueGrassRoadsAndShadows \
+              testCapturedViewportKeepsGroundAndArtworkAlignedThroughZoomAndPan \
+              testHeroShadowAtlasChangesFramesWithoutLiveTextureUploads \
+              testReliefPreservesArtCoordinatesForEveryAsset \
+              testRoadMaskUsesOneUnionAtJunctions \
+              testOnlyTheTowerGetsAnAdditionalBanner \
+              testAuthoredWalkUses24WholeFramesAndNoLegWarp \
+              testFootprintGroundLineFollowsAlternatingFeet \
+              testHeroCasterAnchorsEachPlantedFootAndTracksLift \
+              testHeroFramesBundlesAllDirectionsAndWholeMirroredRightProfile \
+              testWalkCycleVisitsEveryFrameAndWrapsWithoutRepeatingPassingArt \
+              testGaitTestCoversEightRoadIndependentHeadingsAndSupportsStepping \
+              testGaitTestReturnsToTheSameMapCameraAndActorPositions \
+              testHeroPoseSpriteKitRenderingKeepsAllHeroContoursConnected; do
+              focused_tests+=("-only-testing:MeadowJourneyTests/TrailTests/$test")
+            done
+          fi
           xcodebuild test \
             -project "$PROJECT" -scheme "$SCHEME" -configuration Debug \
             -destination 'platform=iOS Simulator,id=${{ steps.simulator.outputs.udid }}' \
@@ -180,8 +196,29 @@ jobs:
               --output-path build/review/attachments 2>&1 | tee build/logs/screen-export.log
           fi
 
-      - name: Record all eight directions in the actual map renderer
+      - name: Export layered preview screenshot only
         if: ${{ always() }}
+        run: |
+          set -euo pipefail
+          if [ -d build/MapReview.xcresult ]; then
+            mkdir -p build/layered-preview
+            xcrun xcresulttool export attachments --path build/MapReview.xcresult \
+              --output-path build/layered-preview \
+              --test-id 'MeadowJourneyUITests/JourneyUITests/testLayeredP1ColorwayPreviewRunsBesideOriginalInTheMapScene()' \
+              2>&1 | tee build/logs/layered-preview-export.log
+          fi
+
+      - name: Upload focused layered preview screenshot
+        if: ${{ always() }}
+        uses: actions/upload-artifact@v7
+        with:
+          name: layered-p1-preview-iPad
+          path: build/layered-preview/
+          if-no-files-found: warn
+          retention-days: 30
+
+      - name: Record all eight directions in the actual map renderer
+        if: ${{ always() && !inputs.preview_only }}
         run: |
           set -euo pipefail
           if [ ! -d build/SimulatorDerivedData/Build/Products/Debug-iphonesimulator/MeadowJourney.app ]; then exit 0; fi
@@ -215,7 +252,7 @@ jobs:
           record_gait iPad-Gait-QuarterSpeed 49 -slowGaitCapture
 
       - name: Upload actual ground captures
-        if: ${{ always() }}
+        if: ${{ always() && !inputs.preview_only }}
         uses: actions/upload-artifact@v7
         with:
           name: map-ground-review-${{ matrix.device }}
@@ -227,7 +264,7 @@ jobs:
           retention-days: 30
 
       - name: Upload normal-speed gait recording
-        if: ${{ always() }}
+        if: ${{ always() && !inputs.preview_only }}
         uses: actions/upload-artifact@v7
         with:
           name: gait-normal-${{ matrix.device }}
@@ -236,7 +273,7 @@ jobs:
           retention-days: 30
 
       - name: Upload quarter-speed gait recording
-        if: ${{ always() }}
+        if: ${{ always() && !inputs.preview_only }}
         uses: actions/upload-artifact@v7
         with:
           name: gait-quarter-${{ matrix.device }}
@@ -245,7 +282,7 @@ jobs:
           retention-days: 30
 
       - name: Preserve raw result even if screen export fails
-        if: ${{ always() }}
+        if: ${{ always() && !inputs.preview_only }}
         run: |
           if [ -d build/MapReview.xcresult ]; then
             tar -cf build/MapReview.xcresult.tar -C build MapReview.xcresult
