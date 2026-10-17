@@ -1,0 +1,102 @@
+[
+  {
+    "file": "Media/iPad-Gait-Normal-b25.mp4",
+    "sourceRun": 39023714295,
+    "sourceArtifact": 12098245300,
+    "original": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "width": 2064,
+          "height": 2752,
+          "r_frame_rate": "600/1",
+          "avg_frame_rate": "5104/85"
+        }
+      ],
+      "format": {
+        "duration": "31.865000",
+        "size": "147434848"
+      }
+    },
+    "preview": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "width": 2752,
+          "height": 2064,
+          "avg_frame_rate": "60/1",
+          "nb_frames": "1913"
+        }
+      ],
+      "format": {
+        "duration": "31.883333",
+        "size": "12466509"
+      }
+    },
+    "timelineScale": 1,
+    "gameSpeedScale": 1,
+    "orientation": "90 degrees counterclockwise to landscape",
+    "frameRateHandling": "native VFR (~60 FPS, nominal timebase 600) normalized to 60 FPS; no playback speed change",
+    "bytes": 12466509,
+    "sha256": "b39dc54e57d5d72f9894d976a64f2bc291a5924a840bf9988ee9d04d4cbe4b93",
+    "runtimeSamples": {
+      "count": 30,
+      "meanFps": 59.53008066126595,
+      "minimumWindowFps": 55.82790118993475,
+      "sampledPeakResidentMiB": 249.90625,
+      "scope": "last 30 one-second samples in the gait lab; iPad simulator, not physical M1 performance"
+    }
+  },
+  {
+    "file": "Media/iPad-Gait-Quarter-b25.mp4",
+    "sourceRun": 39023714295,
+    "sourceArtifact": 12096954583,
+    "original": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "width": 2064,
+          "height": 2752,
+          "r_frame_rate": "600/1",
+          "avg_frame_rate": "72650/1203"
+        }
+      ],
+      "format": {
+        "duration": "48.106667",
+        "size": "224518190"
+      }
+    },
+    "preview": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "width": 2752,
+          "height": 2064,
+          "avg_frame_rate": "60/1",
+          "nb_frames": "2888"
+        }
+      ],
+      "format": {
+        "duration": "48.133333",
+        "size": "14965778"
+      }
+    },
+    "timelineScale": 1,
+    "gameSpeedScale": 0.25,
+    "orientation": "90 degrees counterclockwise to landscape",
+    "frameRateHandling": "native VFR (~60 FPS, nominal timebase 600) normalized to 60 FPS; no playback speed change",
+    "bytes": 14965778,
+    "sha256": "1311f627b0d7d235e6ded8ea143041680afd58310bd8f413180e9bd659959bfc",
+    "runtimeSamples": {
+      "count": 30,
+      "meanFps": 59.70326237972354,
+      "minimumWindowFps": 56.06708804143458,
+      "sampledPeakResidentMiB": 185.984375,
+      "scope": "last 30 one-second samples in the gait lab; iPad simulator, not physical M1 performance"
+    }
+  }
+]

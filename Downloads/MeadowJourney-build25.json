@@ -1,0 +1,167 @@
+{
+  "version": "1.6.0",
+  "build": "25",
+  "kind": "24-frame-articulated-eight-direction-gait",
+  "sourceCommit": "75e54c87223afe248ee1055379931c0a92d55219",
+  "workflowRun": 39023714295,
+  "workflowUrl": "https://github.com/liamchan-rgb/experiment/actions/runs/39023714295",
+  "runner": "macos-15",
+  "xcode": "16.4 (16F6)",
+  "artifactId": 12097518730,
+  "archiveLogsArtifactId": 12097528493,
+  "workflowConclusion": "success",
+  "ipa": "MeadowJourney-b25.ipa",
+  "bytes": 17276922,
+  "sha256": "1ca2dbde7a80f2701c3d1a903a1ce01c5efd49fc3a065f8313621c743408a664",
+  "compression": "ZIP_STORED",
+  "zip64": false,
+  "extendedFields": false,
+  "validation": {
+    "deviceReleaseArchive": "passed",
+    "zipCRC": "passed",
+    "architecture": "arm64",
+    "executableMode": "0755",
+    "metalLibrary": "present",
+    "gaitRig": "bundled",
+    "nativeTests": 16,
+    "iPadUITests": 3,
+    "iPhoneTests": 0,
+    "testDevice": "iPad Pro 13-inch (M4) simulator",
+    "testOS": "iOS 18.5",
+    "startup": {
+      "presentMap": 0.0016808333330118337,
+      "heartbeats": 22,
+      "mainThreadLongestGap": 0.11742495833323119,
+      "mapFirstForegroundDelay": 0.024446416666705766,
+      "markersActorsReset": 0.0008891666666386297,
+      "worldInit": 0.0005039583334109918,
+      "propsBatchMax": 0.00010695833316276544,
+      "seconds": 2.2356447083334388
+    },
+    "visualReview": {
+      "status": "completed sampled review",
+      "normalAndQuarterSpeed": true,
+      "heroes": 3,
+      "directions": 8,
+      "timeSamplesPerHeroDirectionRate": 12,
+      "method": "consecutive native-video frame samples; checked knee connection, opposite-foot weight transfer, boot silhouette and skirt occlusion",
+      "sourceAtlasChecks": "all 600 idle/walk cells connected at source alpha threshold 32; 24 distinct walk rasters per direction",
+      "artMethod": "original character art and independently masked limb pieces; 24 offline whole-frame poses per facing, not 576 independently hand-painted images"
+    },
+    "physicalM1iPadOS27": "not tested in cloud; user device not connected"
+  },
+  "changes": {
+    "walkFramesPerDirection": 24,
+    "directionsPerHero": 8,
+    "heroes": 3,
+    "runtimeLimbWarp": false,
+    "stance": "distance-locked with shared projection scale for movement and pose cadence",
+    "boots": "rigid shoe layer, heel-to-toe roll, cuff and toe separated",
+    "occlusion": "per-segment depth ordering; long-skirt thigh coverage; stable camera-facing knee pose",
+    "shadow": "same complete frame and shared footprint landmarks in the existing single-MTKView renderer"
+  },
+  "recordings": [
+    {
+      "file": "Media/iPad-Gait-Normal-b25.mp4",
+      "sourceRun": 39023714295,
+      "sourceArtifact": 12098245300,
+      "original": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "width": 2064,
+            "height": 2752,
+            "r_frame_rate": "600/1",
+            "avg_frame_rate": "5104/85"
+          }
+        ],
+        "format": {
+          "duration": "31.865000",
+          "size": "147434848"
+        }
+      },
+      "preview": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "width": 2752,
+            "height": 2064,
+            "avg_frame_rate": "60/1",
+            "nb_frames": "1913"
+          }
+        ],
+        "format": {
+          "duration": "31.883333",
+          "size": "12466509"
+        }
+      },
+      "timelineScale": 1,
+      "gameSpeedScale": 1,
+      "orientation": "90 degrees counterclockwise to landscape",
+      "frameRateHandling": "native VFR (~60 FPS, nominal timebase 600) normalized to 60 FPS; no playback speed change",
+      "bytes": 12466509,
+      "sha256": "b39dc54e57d5d72f9894d976a64f2bc291a5924a840bf9988ee9d04d4cbe4b93",
+      "runtimeSamples": {
+        "count": 30,
+        "meanFps": 59.53008066126595,
+        "minimumWindowFps": 55.82790118993475,
+        "sampledPeakResidentMiB": 249.90625,
+        "scope": "last 30 one-second samples in the gait lab; iPad simulator, not physical M1 performance"
+      }
+    },
+    {
+      "file": "Media/iPad-Gait-Quarter-b25.mp4",
+      "sourceRun": 39023714295,
+      "sourceArtifact": 12096954583,
+      "original": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "width": 2064,
+            "height": 2752,
+            "r_frame_rate": "600/1",
+            "avg_frame_rate": "72650/1203"
+          }
+        ],
+        "format": {
+          "duration": "48.106667",
+          "size": "224518190"
+        }
+      },
+      "preview": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "width": 2752,
+            "height": 2064,
+            "avg_frame_rate": "60/1",
+            "nb_frames": "2888"
+          }
+        ],
+        "format": {
+          "duration": "48.133333",
+          "size": "14965778"
+        }
+      },
+      "timelineScale": 1,
+      "gameSpeedScale": 0.25,
+      "orientation": "90 degrees counterclockwise to landscape",
+      "frameRateHandling": "native VFR (~60 FPS, nominal timebase 600) normalized to 60 FPS; no playback speed change",
+      "bytes": 14965778,
+      "sha256": "1311f627b0d7d235e6ded8ea143041680afd58310bd8f413180e9bd659959bfc",
+      "runtimeSamples": {
+        "count": 30,
+        "meanFps": 59.70326237972354,
+        "minimumWindowFps": 56.06708804143458,
+        "sampledPeakResidentMiB": 185.984375,
+        "scope": "last 30 one-second samples in the gait lab; iPad simulator, not physical M1 performance"
+      }
+    }
+  ],
+  "evidence": "../Media/Build25-Gait/CloudValidation.json",
+  "log": "../docs/ITERATION_STATUS.md"
+}

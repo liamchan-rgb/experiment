@@ -81,7 +81,7 @@ jobs:
           target = Path('compact')
           def probe(file):
               return json.loads(subprocess.check_output([
-                  'ffprobe', '-v', 'error', '-show_entries', 'stream=width,height',
+                  'ffprobe', '-v', 'error', '-show_entries', 'stream=width,height,avg_frame_rate,r_frame_rate',
                   '-show_entries', 'format=duration', '-of', 'json', str(file)]))
           recordings = []
           for file in source.rglob('*'):
@@ -105,7 +105,10 @@ jobs:
               if original['streams'][0]['width'] < original['streams'][0]['height']:
                   filters.append('transpose=2')
               filters.append(f'setpts={speed}*(PTS-STARTPTS)')
-              fps = [] if file.stem.startswith('iPad-Gait-') else ['-r', '30']
+              # simctl can report a nominal 600 FPS timebase for an actual
+              # ~60 FPS VFR recording. Preserve time, without duplicating it
+              # into a 600 FPS preview or speeding up the walk cycle.
+              fps = ['-r', '60'] if file.stem.startswith('iPad-Gait-') else ['-r', '30']
               subprocess.run(['ffmpeg', '-hide_banner', '-loglevel', 'warning', '-y', '-noautorotate',
                               '-i', str(file), '-vf', ','.join(filters), '-an', '-c:v', 'libx264', '-preset', 'fast',
                               '-crf', '24', '-maxrate', '12M', '-bufsize', '24M',

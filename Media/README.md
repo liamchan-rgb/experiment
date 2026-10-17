@@ -1,3 +1,11 @@
+# 1.6.0（build 25）步态复核
+
+[下载 IPA](../Downloads/README.md) · [正常录像](iPad-Gait-Normal-b25.mp4) · [四分之一速度录像](iPad-Gait-Quarter-b25.mp4) · [八方向连续抽帧与19项检查](Build25-Gait/README.md)。
+
+三位人物、八方向、每方向24张完整行走姿势。使用实际地图渲染器完成 iPad 云端运行、录像和连续抽帧复核。构建来源、帧率、时间轴及证据范围见上方记录。
+
+以下为历史验收资料。
+
 # 1.3.0（build 9）视觉验收
 
 [下载 IPA](https://github.com/liamchan-rgb/experiment/raw/refs/heads/feat/layered-living-scene/Downloads/MeadowJourney-v1.3.0-unsigned.ipa) · [构建与校验信息](BuildInfo-v1.3.0.json) · [来源构建](https://github.com/liamchan-rgb/experiment/actions/runs/38696431707)

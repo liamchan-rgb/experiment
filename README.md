@@ -1,6 +1,6 @@
 # 安然 · 林间行旅
 
-[最新 1.5.3 build 16：统一缩放投影，优化启动加载](Downloads/SHADOW_LAB_PREVIEW.md)。[迭代日志](docs/ITERATION_STATUS.md)记录本轮实现与检查。
+[最新 1.6.0 build 25：24帧八方向步态 IPA](Downloads/README.md) · [正常／慢速录像与连续抽帧](Media/Build25-Gait/README.md) · [迭代日志](docs/ITERATION_STATUS.md)
 
 以下为此前 1.3 验收版的历史说明。
 
