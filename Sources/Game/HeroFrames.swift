@@ -106,7 +106,7 @@ struct HeroPose {
     /// Nonuniform grid points put vertices through the legs and fade the warp
     /// into the hips. SpriteKit and the Metal caster consume the same arrays.
     var sourcePositions: [SIMD2<Float>] {
-        Self.yCoordinates.flatMap { y in Self.xCoordinates.map { SIMD2($0, y) } }
+        Self.yCoordinates.flatMap { y in xCoordinates.map { SIMD2($0, y) } }
     }
 
     func destinationPositions() -> [SIMD2<Float>] {
@@ -114,7 +114,7 @@ struct HeroPose {
         let reach = Float(legReachPoints / Self.referenceSize)
         let drive = Float(legDrive)
         return sourcePositions.map { point in
-            let side = Self.legSide(at: point.x)
+            let side = legSide(at: point.x)
             let weight = Self.lowerLegWeight(at: point.y)
             let travel = reach * drive * side * weight
             return SIMD2(point.x + heading.x * travel,
@@ -128,7 +128,13 @@ struct HeroPose {
                            destinationPositions: destinationPositions())
     }
 
-    private static let xCoordinates: [Float] = [0, 0.20, 0.34, 0.40, 0.50, 0.60, 0.66, 0.80, 1]
+    private var xCoordinates: [Float] {
+        // NW boots occupy roughly x=0.38 and x=0.50, rather than opposite
+        // halves of the image. Put the transition BETWEEN those boots: the
+        // former center at 0.50 left the right boot almost stationary.
+        if facing == 6 { return [0, 0.20, 0.32, 0.395, 0.445, 0.495, 0.58, 0.80, 1] }
+        return [0, 0.20, 0.34, 0.40, 0.50, 0.60, 0.66, 0.80, 1]
+    }
     // SpriteKit's normalized warp coordinates are bottom-origin.
     private static let yCoordinates: [Float] = [0, 0.125, 0.18, 0.25, 0.32, 0.40, 0.55, 0.76, 1]
 
@@ -141,7 +147,8 @@ struct HeroPose {
         SIMD2(-0.70710677, 0.70710677), SIMD2(0.70710677, 0.70710677)
     ]
 
-    private static func legSide(at x: Float) -> Float {
+    private func legSide(at x: Float) -> Float {
+        if facing == 6 { return max(-1, min(1, (0.445 - x) / 0.050)) }
         if x <= 0.40 { return 1 }
         if x >= 0.60 { return -1 }
         return 1 - (x - 0.40) * 10

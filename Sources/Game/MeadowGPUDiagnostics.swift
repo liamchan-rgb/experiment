@@ -33,7 +33,7 @@ final class MeadowGPUDiagnostics {
             "hardware": model, "system": UIDevice.current.systemVersion,
             "os": ProcessInfo.processInfo.operatingSystemVersionString,
             "gpu": device?.name ?? "unavailable", "viewPoints": [Double(size.width), Double(size.height)], "displayScale": Double(scale),
-            "startupPath": "b23 one MTKView, one queue; wide moving sunlight on an unscaled scene overlay",
+            "startupPath": "b24 one MTKView, one queue; NW leg-region calibration and in-map eight-direction gait test",
             "notes": ["A stages: serial native Metal command buffers before SpriteKit preload/rendering.",
                       "B stages: serial offscreen SKRenderer submissions at the foreground pixel size.",
                       "C00: 60 repeated full-composite offscreen frames, reusing the production depth and backdrop resources.",

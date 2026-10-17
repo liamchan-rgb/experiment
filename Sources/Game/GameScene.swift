@@ -9,6 +9,10 @@ final class GameScene: SKScene {
     private var actorLabels: [SKNode] = []
     private var frames: [[[SKTexture]]] = []
     private var walks = [WalkCycle(), WalkCycle(), WalkCycle()]
+    private(set) var gaitTest: GaitTest?
+    private var gaitHiddenNodes: [(SKNode, Bool)] = []
+    private var gaitMapCamera: (CGPoint, CGFloat)?
+    private var gaitSunWasHidden = false
     private var discoveryNodes: [SKNode] = []
     private var discovered = Set<Int>()
     private var pendingDiscovery: Int?
@@ -22,7 +26,7 @@ final class GameScene: SKScene {
     private var cameraCenter = CGPoint(x: 640, y: 360)
     private var demoPhase = 0
     private(set) var zoom: CGFloat = 1
-    var isRunning: Bool { simulation?.isPlaying ?? false }
+    var isRunning: Bool { gaitTest.map { !$0.paused } ?? simulation?.isPlaying ?? false }
     var shadowReady = false
     var shadowFrames = 0
     var shadowMapSize = 0
@@ -178,6 +182,13 @@ final class GameScene: SKScene {
 
     private func layoutWorld() {
         guard world != nil, size.width > 0, size.height > 0 else { return }
+        if gaitTest != nil {
+            let scale = max(0.1, min(size.width / 470, (size.height - 220) / 270))
+            world.setScale(scale)
+            world.position = CGPoint(x: size.width / 2 - 640 * scale, y: size.height / 2 + 400 * scale)
+            world.attachSunlight(to: self)
+            return
+        }
         // Preserve the entire reference composition; independent terrain extends beyond it.
         baseScale = min(size.width / 1280, size.height / 720)
         let scale = baseScale * zoom
@@ -198,7 +209,7 @@ final class GameScene: SKScene {
     }
 
     func setZoom(_ value: CGFloat, anchorInView: CGPoint? = nil) {
-        guard world != nil else { return }
+        guard world != nil, gaitTest == nil else { return }
         let anchor = anchorInView.map { CGPoint(x: $0.x, y: size.height - $0.y) }
             ?? CGPoint(x: size.width / 2, y: size.height / 2)
         let previous = world.convert(anchor, from: self)
@@ -211,7 +222,7 @@ final class GameScene: SKScene {
     }
 
     func panBy(_ translation: CGPoint) {
-        guard world != nil else { return }
+        guard world != nil, gaitTest == nil else { return }
         let scale = baseScale * zoom
         cameraCenter.x -= translation.x / scale
         cameraCenter.y -= translation.y / scale
@@ -220,13 +231,50 @@ final class GameScene: SKScene {
     }
 
     func togglePlayback() {
+        if gaitTest != nil { gaitTest?.paused.toggle(); return }
         simulation.togglePlayback()
         onPlaybackChanged?(simulation.isPlaying)
         publishDiagnostics()
     }
 
+    func toggleGaitTest() {
+        guard world != nil, simulation != nil else { return }
+        if gaitTest == nil {
+            gaitMapCamera = (cameraCenter, zoom)
+            gaitTest = GaitTest()
+            gaitHiddenNodes = world.children.filter { node in
+                !actorRoots.contains(where: { $0 === node }) && !actorLabels.contains(where: { $0 === node })
+            }.map { ($0, $0.isHidden) }
+            for (node, _) in gaitHiddenNodes { node.isHidden = true }
+            gaitSunWasHidden = world.sunlightOverlay?.isHidden ?? false
+            world.sunlightOverlay?.isHidden = true
+        } else {
+            gaitTest = nil
+            for (node, hidden) in gaitHiddenNodes { node.isHidden = hidden }
+            gaitHiddenNodes.removeAll()
+            world.sunlightOverlay?.isHidden = gaitSunWasHidden
+            if let saved = gaitMapCamera { cameraCenter = saved.0; zoom = saved.1 }
+            gaitMapCamera = nil
+        }
+        layoutWorld(); updateActors(before: nil)
+        onPlaybackChanged?(isRunning)
+        publishDiagnostics()
+    }
+
+    func setGaitDirection(_ direction: Int) {
+        guard gaitTest != nil else { return }
+        gaitTest?.select(direction); updateActors(before: nil)
+    }
+    func toggleGaitPause() { gaitTest?.paused.toggle() }
+    func toggleGaitSlow() { gaitTest?.slow.toggle() }
+    func stepGait() {
+        guard gaitTest != nil else { return }
+        gaitTest?.step(); updateActors(before: nil)
+    }
+
     func reset() {
         guard world != nil else { return }
+        if let gaitTest { setGaitDirection(gaitTest.facing); return }
         simulation.reset()
         pendingDiscovery = nil
         discovered.removeAll()
@@ -258,17 +306,22 @@ final class GameScene: SKScene {
         let delta = min(rawDelta, 0.1)
         environmentTime += delta
         world.update(time: environmentTime)
-        let previous = actors.indices.map { simulation.point(for: $0) }
-        let wasPlaying = simulation.isPlaying
-        simulation.advance(delta)
-        updateActors(before: previous)
-        if wasPlaying != simulation.isPlaying { onPlaybackChanged?(simulation.isPlaying) }
-        if let discovery = pendingDiscovery, simulation.travelers[simulation.selected].isWaiting {
-            completeDiscovery(discovery)
-            pendingDiscovery = nil
+        if gaitTest != nil {
+            gaitTest?.advance(delta)
+            updateActors(before: nil)
+        } else {
+            let previous = actors.indices.map { simulation.point(for: $0) }
+            let wasPlaying = simulation.isPlaying
+            simulation.advance(delta)
+            updateActors(before: previous)
+            if wasPlaying != simulation.isPlaying { onPlaybackChanged?(simulation.isPlaying) }
+            if let discovery = pendingDiscovery, simulation.travelers[simulation.selected].isWaiting {
+                completeDiscovery(discovery)
+                pendingDiscovery = nil
+            }
+            if !simulation.isPlaying && simulation.mode == .destination { destinationRing.isHidden = true }
+            if demoMode { updateDemo() }
         }
-        if !simulation.isPlaying && simulation.mode == .destination { destinationRing.isHidden = true }
-        if demoMode { updateDemo() }
         frameCounter += 1
         if currentTime - frameWindowStart >= 1 {
             measuredFPS = Double(frameCounter) / (currentTime - frameWindowStart)
@@ -285,23 +338,31 @@ final class GameScene: SKScene {
     }
 
     func metalFrame(viewSize: CGSize) -> MeadowFrameState? {
-        guard let world, let simulation else { return nil }
-        let heroes = actors.indices.map { MeadowHeroCaster(index: $0, foot: simulation.point(for: $0), facing: walks[$0].facing, frame: walks[$0].frame, phase: walks[$0].phase) }
-        return MeadowFrameState(world: world, camera: MeadowViewport(world: world, scene: self, viewSize: viewSize), time: environmentTime, heroes: heroes)
+        guard let world, simulation != nil else { return nil }
+        let heroes = actors.indices.map { index -> MeadowHeroCaster in
+            let pose = actorPose(index)
+            return MeadowHeroCaster(index: index, foot: actorPoint(index), facing: pose.facing, frame: pose.frame, phase: pose.phase)
+        }
+        return MeadowFrameState(world: world, camera: MeadowViewport(world: world, scene: self, viewSize: viewSize), time: environmentTime, heroes: heroes, includeEnvironment: gaitTest == nil)
+    }
+
+    private func actorPoint(_ index: Int) -> CGPoint { gaitTest?.point(for: index) ?? simulation.point(for: index) }
+    private func actorPose(_ index: Int) -> HeroPose {
+        HeroPose(heroIndex: index, facing: gaitTest?.facing ?? walks[index].facing,
+                 frame: gaitTest?.frame ?? walks[index].frame, phase: gaitTest?.phase ?? walks[index].phase)
     }
 
     private func updateActors(before: [CGPoint]?) {
         for index in actors.indices {
-            let point = simulation.point(for: index)
-            if let before {
+            let point = actorPoint(index)
+            if gaitTest == nil, let before {
                 walks[index].advance(from: before[index], to: point)
             }
-            let walk = walks[index]
-            let gait = SIMD2(Float(walk.facing), Float(walk.frame))
-            let texture = frames[index][walk.facing][walk.frame]
+            let pose = actorPose(index)
+            let gait = SIMD2(Float(pose.facing), Float(pose.frame))
+            let texture = frames[index][pose.facing][pose.frame]
             actors[index].texture = texture
-            actors[index].xScale = HeroFrames.isMirrored(walk.facing) ? -1 : 1
-            let pose = HeroPose(heroIndex: index, facing: walk.facing, frame: walk.frame, phase: walk.phase)
+            actors[index].xScale = HeroFrames.isMirrored(pose.facing) ? -1 : 1
             // An idle/profile pose is the identity: avoid rebuilding GPU warp
             // geometry every frame for three stationary actors.
             if pose.legReachPoints > 0 { actors[index].warpGeometry = pose.warpGeometry() }
@@ -351,12 +412,12 @@ final class GameScene: SKScene {
     }
 
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        guard let touch = touches.first, world != nil else { return }
+        guard let touch = touches.first, world != nil, gaitTest == nil else { return }
         handleWorldTap(touch.location(in: world))
     }
 
     func handleTap(inView point: CGPoint) {
-        guard world != nil else { return }
+        guard world != nil, gaitTest == nil else { return }
         handleWorldTap(world.convert(CGPoint(x: point.x, y: size.height - point.y), from: self))
     }
 
@@ -429,13 +490,14 @@ final class GameScene: SKScene {
             "fps": measuredFPS, "residentMemoryMiB": memory,
             "startup": startupMetrics,
             "textureBudgetMiB": world.definition.textureBudgetMiB,
-            "independentProps": world.objectCount, "roads": world.network.edges.count,
-            "projectedShadows": world.shadowCount + actors.count, "shadowRenderer": "image-alpha relief Metal depth map", "shadowReady": shadowReady, "shadowFrames": shadowFrames,
+            "independentProps": gaitTest == nil ? world.objectCount : 0, "roads": gaitTest == nil ? world.network.edges.count : 0,
+            "projectedShadows": (gaitTest == nil ? world.shadowCount : 0) + actors.count, "shadowRenderer": "image-alpha relief Metal depth map", "shadowReady": shadowReady, "shadowFrames": shadowFrames,
             "shadowMapSize": shadowMapSize, "gpuFallbackCount": gpuFallbackCount, "groundDrawableScale": groundDrawableScale,
             "sunDirection": ["x": Double(world.effects.currentCast.dx), "y": Double(world.effects.currentCast.dy)],
             "environmentTime": environmentTime, "zoom": Double(zoom),
-            "selected": simulation.selected, "isPlaying": simulation.isPlaying,
-            "mode": simulation.mode == .patrol ? "patrol" : "destination",
+            "selected": simulation.selected, "isPlaying": isRunning,
+            "mode": gaitTest != nil ? "gaitTest" : (simulation.mode == .patrol ? "patrol" : "destination"),
+            "gaitFacing": gaitTest?.facing ?? -1, "gaitPhase": Double(gaitTest?.phase ?? 0),
             "goal": ["x": Double(goal.x), "y": Double(goal.y)],
             "heroTargets": heroTargets,
             "orderPoint": ["x": Double(orderPoint.x / size.width), "y": Double(1 - orderPoint.y / size.height)],

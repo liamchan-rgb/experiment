@@ -34,6 +34,13 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
     private let resetButton = ParchmentButton(symbol: .reset)
     private let zoomButton = ParchmentButton(symbol: .zoom)
     private let shadowLabButton = UIButton(type: .system)
+    private let gaitTestButton = UIButton(type: .system)
+    private let gaitPanel = UIStackView()
+    private let gaitStatusLabel = UILabel()
+    private let gaitPauseButton = UIButton(type: .system)
+    private let gaitSlowButton = UIButton(type: .system)
+    private let gaitStepButton = UIButton(type: .system)
+    private var gaitDirectionButtons: [UIButton] = []
     private var gestureZoom: CGFloat = 1
     private let metricsLabel = UILabel()
     private let discoveryLabel = UILabel()
@@ -93,6 +100,7 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
         shadowLabButton.accessibilityIdentifier = "openShadowLab"
         shadowLabButton.addTarget(self, action: #selector(openShadowLab), for: .touchUpInside)
         view.addSubview(shadowLabButton)
+        configureGaitControls()
         for label in [metricsLabel, discoveryLabel] {
             label.textColor = UIColor(red: 1, green: 0.94, blue: 0.75, alpha: 1)
             label.backgroundColor = UIColor(red: 0.17, green: 0.22, blue: 0.17, alpha: 0.82)
@@ -159,6 +167,7 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
             mapPresented = true
             for button in [titleButton, playButton, resetButton, zoomButton] { button.isHidden = true }
             shadowLabButton.isHidden = true
+            gaitTestButton.isHidden = true
         } else {
             loadingView.frame = view.bounds
             view.addSubview(loadingView)
@@ -194,6 +203,11 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
         let spacing = button + 2
         titleButton.frame = CGRect(x: max(inset.left, 10) + 4, y: top, width: isPad ? 88 : 70, height: isPad ? 44 : 38)
         shadowLabButton.frame = CGRect(x: titleButton.frame.maxX + 8, y: top + 2, width: 96, height: button)
+        gaitTestButton.frame = CGRect(x: (scene.gaitTest == nil ? shadowLabButton.frame.maxX : titleButton.frame.maxX) + 8,
+                                      y: top + 2, width: 100, height: button)
+        let panelWidth = min(960, max(1, view.bounds.width - 32))
+        gaitPanel.frame = CGRect(x: (view.bounds.width - panelWidth) / 2,
+                                 y: view.bounds.height - max(inset.bottom, 12) - 148, width: panelWidth, height: 148)
         let right = view.bounds.width - max(inset.right, 10) - 4
         zoomButton.frame = CGRect(x: right - button, y: top + 2, width: button, height: button)
         resetButton.frame = zoomButton.frame.offsetBy(dx: -spacing, dy: 0)
@@ -333,6 +347,8 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
         gameView.isUserInteractionEnabled = enabled
         for button in [titleButton, playButton, resetButton, zoomButton] { button.isEnabled = enabled }
         shadowLabButton.isEnabled = enabled
+        gaitTestButton.isEnabled = enabled
+        gaitPanel.isUserInteractionEnabled = enabled
     }
 
     private func failRendering(_ error: Error) { showLoadingFailure(error) }
@@ -359,6 +375,76 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
     }
 
     @objc private func togglePlayback() { scene.togglePlayback() }
+
+    private func configureGaitControls() {
+        var style = UIButton.Configuration.filled()
+        style.baseBackgroundColor = UIColor(red: 0.97, green: 0.91, blue: 0.70, alpha: 0.96)
+        style.baseForegroundColor = UIColor(red: 0.25, green: 0.28, blue: 0.14, alpha: 1)
+        style.contentInsets = NSDirectionalEdgeInsets(top: 6, leading: 4, bottom: 6, trailing: 4)
+        gaitTestButton.configuration = style
+        gaitTestButton.configuration?.title = "步态测试"
+        gaitTestButton.accessibilityIdentifier = "openGaitTest"
+        gaitTestButton.addAction(UIAction { [weak self] _ in
+            self?.scene.toggleGaitTest(); self?.refreshGaitControls()
+        }, for: .touchUpInside)
+        view.addSubview(gaitTestButton)
+        gaitPanel.axis = .vertical; gaitPanel.spacing = 6
+        gaitPanel.isLayoutMarginsRelativeArrangement = true
+        gaitPanel.layoutMargins = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
+        gaitPanel.backgroundColor = UIColor(red: 0.13, green: 0.18, blue: 0.14, alpha: 0.94)
+        gaitPanel.layer.cornerRadius = 10
+        gaitPanel.isHidden = true
+        gaitStatusLabel.textColor = .white
+        gaitStatusLabel.textAlignment = .center
+        gaitStatusLabel.font = .systemFont(ofSize: 15, weight: .medium)
+        gaitPanel.addArrangedSubview(gaitStatusLabel)
+        let directions = UIStackView(); directions.distribution = .fillEqually; directions.spacing = 4
+        for facing in GaitTest.menuOrder {
+            let button = UIButton(type: .system); button.configuration = style
+            button.configuration?.title = GaitTest.names[facing]
+            button.tag = facing
+            button.accessibilityIdentifier = "gaitDirection\(facing)"
+            button.addAction(UIAction { [weak self] _ in
+                self?.scene.setGaitDirection(facing); self?.refreshGaitControls()
+            }, for: .touchUpInside)
+            directions.addArrangedSubview(button); gaitDirectionButtons.append(button)
+        }
+        directions.heightAnchor.constraint(equalToConstant: 44).isActive = true
+        gaitPanel.addArrangedSubview(directions)
+        let controls = UIStackView(); controls.distribution = .fillEqually; controls.spacing = 6
+        let restart = UIButton(type: .system)
+        for button in [gaitPauseButton, gaitSlowButton, gaitStepButton, restart] {
+            button.configuration = style; controls.addArrangedSubview(button)
+        }
+        gaitStepButton.configuration?.title = "单步"
+        restart.configuration?.title = "重新走"
+        gaitPauseButton.addAction(UIAction { [weak self] _ in self?.scene.toggleGaitPause(); self?.refreshGaitControls() }, for: .touchUpInside)
+        gaitSlowButton.addAction(UIAction { [weak self] _ in self?.scene.toggleGaitSlow(); self?.refreshGaitControls() }, for: .touchUpInside)
+        gaitStepButton.addAction(UIAction { [weak self] _ in self?.scene.stepGait(); self?.refreshGaitControls() }, for: .touchUpInside)
+        restart.addAction(UIAction { [weak self] _ in self?.scene.reset(); self?.refreshGaitControls() }, for: .touchUpInside)
+        controls.heightAnchor.constraint(equalToConstant: 42).isActive = true
+        gaitPanel.addArrangedSubview(controls)
+        view.addSubview(gaitPanel)
+    }
+
+    private func refreshGaitControls() {
+        let active = scene.gaitTest != nil
+        gaitPanel.isHidden = !active
+        gaitTestButton.configuration?.title = active ? "返回地图" : "步态测试"
+        let mapControls: [UIView] = [shadowLabButton, playButton, resetButton, zoomButton]
+        for control in mapControls { control.isHidden = active }
+        if let test = scene.gaitTest {
+            gaitStatusLabel.text = "P1 / P2 / P3 · " + GaitTest.names[test.facing] + " · 直线循环（走完回起点） · " + (test.slow ? "四分之一速度" : "正常速度")
+            gaitPauseButton.configuration?.title = test.paused ? "继续" : "暂停"
+            gaitSlowButton.configuration?.title = test.slow ? "切回正常" : "切换慢速"
+            for button in gaitDirectionButtons {
+                button.configuration?.baseBackgroundColor = button.tag == test.facing
+                    ? UIColor(red: 0.98, green: 0.72, blue: 0.24, alpha: 1)
+                    : UIColor(red: 0.97, green: 0.91, blue: 0.70, alpha: 0.96)
+            }
+        }
+        view.setNeedsLayout()
+    }
 
     @objc private func openShadowLab() {
         let lab = ShadowLabViewController()
@@ -402,7 +488,7 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
 
     @objc private func showHelp() {
         let help = UIAlertController(title: "安然 · 林间行旅",
-                                     message: "▶ 三位旅人沿土路往返；Ⅱ 暂停后保留目的地\n点选 P1 / P2 / P3，再点道路指定目的地\n点问号，让旅人抵达并探索\n↻ 恢复初始位置；＋ 放大\n双指缩放、拖动；长按安然显示运行指标", preferredStyle: .alert)
+                                     message: "▶ 三位旅人沿土路往返；Ⅱ 暂停后保留目的地\n点选 P1 / P2 / P3，再点道路指定目的地\n点问号，让旅人抵达并探索\n↻ 恢复初始位置；＋ 放大\n双指缩放、拖动；长按安然显示运行指标\n步态测试：选择八个方向直线行走，可慢速、暂停和单步；走完一段会回到起点继续", preferredStyle: .alert)
         help.addAction(UIAlertAction(title: "出发", style: .default))
         help.addAction(UIAlertAction(title: "复制 GPU 诊断", style: .default) { _ in
             UIPasteboard.general.string = MeadowGPUDiagnostics.shared.json

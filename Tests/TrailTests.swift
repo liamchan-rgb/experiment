@@ -494,6 +494,83 @@ final class TrailTests: XCTestCase {
         }
     }
 
+    func testNorthwestMeasuredBootRegionsHaveBalancedOppositeTravel() throws {
+        func soleTravel(_ pose: HeroPose, x: Float) throws -> SIMD2<Float> {
+            let source = pose.sourcePositions, destination = pose.destinationPositions()
+            let row = HeroPose.gridColumns + 1 // exact sole-height row
+            let column = try XCTUnwrap((0..<HeroPose.gridColumns).first { source[row + $0].x <= x && source[row + $0 + 1].x >= x })
+            let a = row + column, b = a + 1
+            let t = (x - source[a].x) / (source[b].x - source[a].x)
+            return (destination[a] - source[a]) * (1 - t) + (destination[b] - source[b]) * t
+        }
+        let bootCenters: [(Float, Float)] = [(0.39, 0.505), (0.39, 0.50), (0.36, 0.53)]
+        for hero in 0..<3 {
+            let contactA = HeroPose(heroIndex: hero, facing: 6, frame: 1, phase: 0)
+            let contactB = HeroPose(heroIndex: hero, facing: 6, frame: 3, phase: 0.5)
+            let left = try soleTravel(contactA, x: bootCenters[hero].0)
+            let right = try soleTravel(contactA, x: bootCenters[hero].1)
+            XCTAssertLessThan(left.x, -0.01)
+            XCTAssertGreaterThan(right.x, 0.01, "The second NW boot must not sit at the zero-drive image center")
+            XCTAssertEqual(left.x, -right.x, accuracy: 0.0001)
+            XCTAssertEqual(try soleTravel(contactB, x: bootCenters[hero].0).x, -left.x, accuracy: 0.0001)
+            XCTAssertEqual(try soleTravel(contactB, x: bootCenters[hero].1).x, -right.x, accuracy: 0.0001)
+        }
+    }
+
+    func testGaitTestCoversEightRoadIndependentHeadingsAndSupportsStepping() {
+        for facing in GaitTest.menuOrder {
+            var test = GaitTest(); test.select(facing)
+            let previous = test.point(for: 0)
+            test.advance(0.1)
+            var walk = WalkCycle(); walk.advance(from: previous, to: test.point(for: 0))
+            XCTAssertEqual(walk.facing, facing)
+            test.paused = true
+            let frozen = test.point(for: 0); test.advance(10)
+            XCTAssertEqual(test.point(for: 0), frozen)
+            let phase = test.phase; test.step()
+            XCTAssertEqual(test.phase - phase, 0.125, accuracy: 0.0001)
+            XCTAssertEqual(test.point(for: 1).x - test.point(for: 0).x, 110, accuracy: 0.0001)
+        }
+    }
+
+    func testNorthwestLegMeshNeverFoldsAcrossTheCycle() {
+        func area(_ a: SIMD2<Float>, _ b: SIMD2<Float>, _ c: SIMD2<Float>) -> Float {
+            (b.x - a.x) * (c.y - a.y) - (b.y - a.y) * (c.x - a.x)
+        }
+        var minimumRatio: Float = 1
+        for hero in 0..<3 { for sample in 0..<128 {
+            let phase = CGFloat(sample) / 128
+            let pose = HeroPose(heroIndex: hero, facing: 6, frame: WalkCycle.frame(at: phase * 24), phase: phase)
+            let source = pose.sourcePositions, destination = pose.destinationPositions()
+            for row in 0..<8 { for column in 0..<8 {
+                let a = row * 9 + column, b = a + 9, c = b + 1, d = a + 1
+                for indices in [[a, b, c], [a, c, d]] {
+                    let original = area(source[indices[0]], source[indices[1]], source[indices[2]])
+                    let warped = area(destination[indices[0]], destination[indices[1]], destination[indices[2]])
+                    minimumRatio = min(minimumRatio, warped / original)
+                }
+            } }
+        } }
+        XCTAssertGreaterThan(minimumRatio, 0.15, "Boot exchange must not invert or collapse the connecting mesh")
+    }
+
+    func testGaitTestReturnsToTheSameMapCameraAndActorPositions() throws {
+        let scene = GameScene(size: CGSize(width: 1366, height: 1024))
+        scene.activateForMetalRenderer()
+        scene.setZoom(1.5)
+        let original = try XCTUnwrap(scene.metalFrame(viewSize: scene.size))
+        scene.toggleGaitTest()
+        let test = try XCTUnwrap(scene.metalFrame(viewSize: scene.size))
+        XCTAssertFalse(test.includeEnvironment)
+        XCTAssertTrue(test.heroes.allSatisfy { $0.facing == 6 })
+        scene.setGaitDirection(7); scene.stepGait()
+        scene.toggleGaitTest()
+        let restored = try XCTUnwrap(scene.metalFrame(viewSize: scene.size))
+        XCTAssertTrue(restored.includeEnvironment)
+        XCTAssertEqual(restored.camera, original.camera)
+        XCTAssertEqual(restored.heroes.map(\.foot), original.heroes.map(\.foot))
+    }
+
     func testHeroPosePassesContinuouslyBetweenRepeatedPassingFrames() {
         let before = HeroPose(heroIndex: 0, facing: 0, frame: 2, phase: 0.499)
         let after = HeroPose(heroIndex: 0, facing: 0, frame: 3, phase: 0.501)

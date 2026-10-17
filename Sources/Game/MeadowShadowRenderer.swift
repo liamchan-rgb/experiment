@@ -180,17 +180,17 @@ final class MeadowShadowRenderer: NSObject, MTKViewDelegate {
     }
 
     private func encode(command: MTLCommandBuffer, target: MTLRenderPassDescriptor, camera: MeadowViewport,
-                        time: TimeInterval, sunCast: CGVector, heroes: [MeadowHeroCaster], shadows: Bool = true, roads: Bool = true, alignment: Bool = false) throws {
+                        time: TimeInterval, sunCast: CGVector, heroes: [MeadowHeroCaster], shadows: Bool = true, roads: Bool = true, alignment: Bool = false, includeEnvironment: Bool = true) throws {
         let renderShadows = shadows && shadowsEnabled
         if renderShadows {
-            try encodeShadowDepth(command: command, draws: shadowDraws(heroes: heroes), camera: camera, time: time, sunCast: sunCast)
+            try encodeShadowDepth(command: command, draws: shadowDraws(heroes: heroes, includeEnvironment: includeEnvironment), camera: camera, time: time, sunCast: sunCast)
         }
         try encodeGround(command: command, target: target, camera: camera, time: time, sunCast: sunCast,
-                         shadows: renderShadows, roads: roads, alignment: alignment)
+                         shadows: renderShadows, roads: roads && includeEnvironment, alignment: alignment)
     }
 
-    private func shadowDraws(heroes: [MeadowHeroCaster]) throws -> [Draw] {
-        var draws = staticDraws
+    private func shadowDraws(heroes: [MeadowHeroCaster], includeEnvironment: Bool = true) throws -> [Draw] {
+        var draws = includeEnvironment ? staticDraws : []
         for hero in heroes {
             let texture = try heroTexture(hero)
             var mesh = ShadowLabMesh()
@@ -282,7 +282,7 @@ final class MeadowShadowRenderer: NSObject, MTKViewDelegate {
             command.addCompletedHandler { [weak self] buffer in
                 if let error = buffer.error {
                     let failure = MeadowGPUDiagnostics.shared.failed(error, stage: "C02 单视图完整组合", command: buffer,
-                        context: ["frame": frameNumber, "environmentTime": frame.time,
+                        context: ["frame": frameNumber, "environmentTime": frame.time, "gaitTest": !frame.includeEnvironment,
                                   "shadowMap": self?.shadowSize ?? 0, "cameraPoints": [Double(frame.camera.size.width), Double(frame.camera.size.height)]])
                     DispatchQueue.main.async {
                         self?.gpuStopped = true; self?.onFrameFailed?(failure); semaphore.signal()
@@ -322,11 +322,11 @@ final class MeadowShadowRenderer: NSObject, MTKViewDelegate {
             texture.label = "Meadow point-resolution backdrop"
             backgroundTarget = texture; recreated = true
         }
-        let poses = frame.heroes.map { $0.facing * 4 + $0.frame }
+        let poses = [frame.includeEnvironment ? 1 : 0] + frame.heroes.map { $0.facing * 4 + $0.frame }
         if forceBackground || recreated || frame.camera != lastCamera || poses != lastPoses || frame.time - lastRenderTime >= 1.0 / 30 {
             let backdrop = MTLRenderPassDescriptor(); backdrop.colorAttachments[0].texture = backgroundTarget
             try encode(command: command, target: backdrop, camera: frame.camera, time: frame.time,
-                       sunCast: frame.world.effects.currentCast, heroes: frame.heroes, alignment: alignmentReview)
+                       sunCast: frame.world.effects.currentCast, heroes: frame.heroes, alignment: alignmentReview, includeEnvironment: frame.includeEnvironment)
             lastRenderTime = frame.time; lastCamera = frame.camera; lastPoses = poses
         }
         target.colorAttachments[0].loadAction = .clear; target.colorAttachments[0].storeAction = .store
@@ -413,4 +413,5 @@ struct MeadowFrameState {
     let camera: MeadowViewport
     let time: TimeInterval
     let heroes: [MeadowHeroCaster]
+    var includeEnvironment: Bool = true
 }
