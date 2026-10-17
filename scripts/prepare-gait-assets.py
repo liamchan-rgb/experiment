@@ -110,12 +110,13 @@ def prepare_gait_assets(root, save_asset, manifest):
             body_draw = ImageDraw.Draw(body)
             pieces = []
             for leg, (cx, toe_left, toe_right) in enumerate(specs):
+                remove_y = max(185, cut)
                 # Remove each old leg below its own garment opening. Skirt,
                 # sword, coat tails and bags outside the leg matte stay intact.
                 if facing == 1:
-                    body_draw.rectangle((min(s[1] for s in specs) - 18, cut, max(s[2] for s in specs), 226), fill=0)
+                    body_draw.rectangle((min(s[1] for s in specs) - 18, remove_y, max(s[2] for s in specs), 226), fill=0)
                 else:
-                    polygon = [(cx - 10, cut), (cx + 10, cut),
+                    polygon = [(cx - 10, remove_y), (cx + 10, remove_y),
                                (toe_right, 200), (toe_right, 226), (toe_left, 226),
                                (toe_left, 200)]
                     body_draw.polygon(polygon, fill=0)

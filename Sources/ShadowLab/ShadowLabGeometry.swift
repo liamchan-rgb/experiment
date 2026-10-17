@@ -1,4 +1,5 @@
 import simd
+import Foundation
 
 /// The lab uses one world: X right, Y along the ground, Z height; ground is Z=0.
 /// Sprite landmarks and shadow geometry share the same per-instance ground root.
