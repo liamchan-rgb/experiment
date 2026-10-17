@@ -29,7 +29,7 @@
     "executablePermission": "0755",
     "nativeTests": "not run; package-only workflow",
     "simulatorTests": "skipped; package-only workflow",
-    "physicalIPadGPUValidation": "pending; build 21 has not yet run on the user device",
+    "physicalIPadGPUValidation": "User confirmed on 2026-10-17 that build 21 opens the map on their M1 iPad Pro; no sustained frame timing report yet",
     "visualReview": "not performed; user handles visual feedback"
   },
   "rendering": {

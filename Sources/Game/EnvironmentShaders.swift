@@ -1,10 +1,10 @@
 import SpriteKit
 
-/// One sun drives surface light, atmospheric shafts and every ground projection.
+/// One directional sun drives surface light and every ground projection.
 enum MeadowSun {
     static let cast = CGVector(dx: 0.86, dy: 0.62)
 
-    /// A slowly moving directional sun keeps live silhouettes and light shafts coherent.
+    /// Atmospheric rays fan out from a viewport source; ground shadows remain directional.
     static func cast(at time: TimeInterval) -> CGVector {
         let baseAngle = atan2(cast.dy, cast.dx)
         let angle = baseAngle + CGFloat(0.11 * sin(time * 0.035))
@@ -207,18 +207,38 @@ final class EnvironmentShaders {
         sunlight = SKShader(source: Self.noise + """
         void main() {
             vec2 p = vec2(-160.0, 940.0) + v_tex_coord * vec2(1600.0, -1160.0);
-            vec2 cast = normalize(u_sunCast);
-            float axis = dot(p, vec2(cast.y, -cast.x)) - u_sceneTime * 18.0 + sin(u_sceneTime * 0.55) * 24.0;
-            float rays = pow(0.5 + 0.5 * sin(axis * 0.036), 6.0);
-            rays += pow(0.5 + 0.5 * sin(axis * 0.068 + 1.3), 12.0) * 0.35;
-            float falloff = exp(-length(p - vec2(-130.0, -200.0)) * 0.0009);
-            float glow = exp(-length(p - vec2(-70.0, -100.0)) * 0.0035) * 0.08;
+            vec2 viewPoint = u_viewOrigin + p.x * u_viewXAxis + p.y * u_viewYAxis;
+            // The shared source sits just outside the viewport's upper left.
+            // Constant angular coordinates define widening rays, not parallel bands.
+            vec2 delta = viewPoint + u_viewSize * vec2(0.035, 0.055);
+            float angular = delta.y / max(delta.x + delta.y, 0.001);
+            float radialDistance = length(delta) / max(min(u_viewSize.x, u_viewSize.y), 1.0);
+            float sway = sin(u_sceneTime * 0.19 + angular * 9.0) * 0.28;
+            float axis = angular * 80.0 + sway;
+            float rays = pow(0.5 + 0.5 * sin(axis), 8.0);
+            rays += pow(0.5 + 0.5 * sin(angular * 137.0 + sway * 0.7 + 1.3), 14.0) * 0.28;
+            float castAngle = u_sunCast.y / max(u_sunCast.x + u_sunCast.y, 0.001);
+            float fan = 1.0 - smoothstep(0.36, 0.72, abs(angular - castAngle));
+            float falloff = exp(-radialDistance * 0.85) * smoothstep(0.025, 0.14, radialDistance);
+            float travel = 0.82 + 0.18 * sin(radialDistance * 9.0 - u_sceneTime * 0.24 + angular * 16.0);
+            float glow = exp(-radialDistance * 3.5) * 0.045;
             float cloud = smoothstep(0.18, 0.78, meadowCloud(p, u_sceneTime));
-            float alpha = (rays * 0.32 + glow) * falloff * mix(0.45, 1.0, cloud);
+            float alpha = (rays * 0.29 * fan * travel + glow) * falloff * mix(0.45, 1.0, cloud);
             gl_FragColor = vec4(vec3(1.0, 0.84, 0.48) * alpha, alpha);
         }
         """, uniforms: [clock(), SKUniform(name: "u_sunCast",
-                                            vectorFloat2: SIMD2(Float(MeadowSun.cast.dx), Float(MeadowSun.cast.dy)))])
+                                            vectorFloat2: SIMD2(Float(MeadowSun.cast.dx), Float(MeadowSun.cast.dy))),
+                        SKUniform(name: "u_viewOrigin", vectorFloat2: .zero),
+                        SKUniform(name: "u_viewXAxis", vectorFloat2: SIMD2(1, 0)),
+                        SKUniform(name: "u_viewYAxis", vectorFloat2: SIMD2(0, 1)),
+                        SKUniform(name: "u_viewSize", vectorFloat2: SIMD2(1280, 720))])
+    }
+
+    func setSunlightViewport(_ viewport: MeadowViewport) {
+        sunlight.uniformNamed("u_viewOrigin")?.vectorFloat2Value = SIMD2(Float(viewport.origin.x), Float(viewport.origin.y))
+        sunlight.uniformNamed("u_viewXAxis")?.vectorFloat2Value = SIMD2(Float(viewport.xAxis.dx), Float(viewport.xAxis.dy))
+        sunlight.uniformNamed("u_viewYAxis")?.vectorFloat2Value = SIMD2(Float(viewport.yAxis.dx), Float(viewport.yAxis.dy))
+        sunlight.uniformNamed("u_viewSize")?.vectorFloat2Value = SIMD2(Float(viewport.size.width), Float(viewport.size.height))
     }
 
     func update(time: TimeInterval) {

@@ -197,6 +197,24 @@ final class TrailTests: XCTestCase {
         }
     }
 
+    func testFencePostsAllTouchTheReceiverAlongTheirPaintedGroundLine() throws {
+        let instance = ShadowLabInstance(asset: .fence, root: SIMD3(3, 4, 0), width: 3,
+                                         aspect: 295.0 / 471, anchor: SIMD2(0.5, 0.08))
+        var mesh = ShadowLabMesh(); mesh.imageCaster(instance)
+        // Independent landmarks from the original Fence.png, in top-origin UV.
+        for base in [SIMD2<Float>(0.17, 0.50), SIMD2(0.50, 0.68), SIMD2(0.83, 0.86)] {
+            let foot = try XCTUnwrap(mesh.vertices.first {
+                abs($0.uvWind.x - base.x) < 0.0001 && abs($0.uvWind.y - base.y) < 0.0001
+            })
+            XCTAssertEqual(foot.position.z, 0, accuracy: 0.0001, "Every post must meet the receiver")
+            let screenUp = (foot.position.y - instance.root.y) * ShadowLabMath.cameraUp.y
+            XCTAssertEqual(screenUp, (1 - base.y - instance.anchor.y) * instance.screenHeight, accuracy: 0.0001)
+        }
+        for vertex in mesh.vertices where vertex.uvWind.y > ShadowLabAsset.fenceGroundV(at: vertex.uvWind.x) {
+            XCTAssertEqual(vertex.position.z, 0, accuracy: 0.0001, "The painted grass below the posts must not cast a raised shadow")
+        }
+    }
+
     func testRoadMaskUsesOneUnionAtJunctions() throws {
         let roads = SceneDefinition.load().roads
         let bounds = LivingWorld.bounds

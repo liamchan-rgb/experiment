@@ -33,7 +33,7 @@ final class MeadowGPUDiagnostics {
             "hardware": model, "system": UIDevice.current.systemVersion,
             "os": ProcessInfo.processInfo.operatingSystemVersionString,
             "gpu": device?.name ?? "unavailable", "viewPoints": [Double(size.width), Double(size.height)], "displayScale": Double(scale),
-            "startupPath": "b21 one MTKView, one queue; native backdrop and SKRenderer foreground share the submitted command buffer",
+            "startupPath": "b22 one MTKView, one queue; radial sunlight and calibrated fence ground line",
             "notes": ["A stages: serial native Metal command buffers before SpriteKit preload/rendering.",
                       "B stages: serial offscreen SKRenderer submissions at the foreground pixel size.",
                       "C00: 60 repeated full-composite offscreen frames, reusing the production depth and backdrop resources.",
@@ -219,6 +219,7 @@ final class MeadowGPUProbe {
             if sample == 0 { renderer.scene = makeScene(stage: stage) }
             let time: TimeInterval = stage == 6 ? Double(sample) / 60 : (sample == 0 ? 0 : 2)
             prepared.effects.update(time: time)
+            prepared.effects.setSunlightViewport(MeadowViewport(size: size, center: CGPoint(x: 640, y: 360), scale: min(size.width / 1280, size.height / 720)))
             let command = try MeadowGPUDiagnostics.command(queue: queue, label: label)
             let pass = MTLRenderPassDescriptor(); pass.colorAttachments[0].texture = target
             pass.colorAttachments[0].loadAction = .clear; pass.colorAttachments[0].storeAction = .store

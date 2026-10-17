@@ -36,6 +36,13 @@ enum ShadowLabAsset: String {
         case .shrub: return 6; case .flowers: return 7; case .banner: return 8 }
     }
     var isTree: Bool { casterKind == 0 }
+    /// Centers of the painted post bases in Fence.png (top-origin UV).
+    /// This fence recedes diagonally across the ground, unlike a symmetric rock.
+    static let fencePostBases: [SIMD2<Float>] = [SIMD2(0.17, 0.50), SIMD2(0.50, 0.68), SIMD2(0.83, 0.86)]
+    static func fenceGroundV(at u: Float) -> Float {
+        let left = fencePostBases[0], right = fencePostBases[2]
+        return left.y + (u - left.x) * (right.y - left.y) / (right.x - left.x)
+    }
     var anchorY: Float {
         switch self { case .tree, .oakB, .pines: return 0.09; case .tower: return 0.14
         case .hero: return 0.125; case .tent: return 0.10; case .rockLow, .rockHigh, .rockSmall: return 0.10
@@ -187,12 +194,15 @@ struct ShadowLabMesh {
                 // Leg reach is motion along the receiver, rather than an
                 // artificial elevation of a planted boot. Preserve art Z.
                 depth += (point.y - (1 - v)) * instance.screenHeight / ShadowLabMath.cameraUp.y
-            case .tent, .rockLow, .rockHigh, .rockSmall, .shrub, .flowers, .fence, .banner:
+            case .fence:
+                let groundV = ShadowLabAsset.fenceGroundV(at: u)
+                depth = (1 - groundV - instance.anchor.y) * instance.screenHeight / ShadowLabMath.cameraUp.y
+            case .tent, .rockLow, .rockHigh, .rockSmall, .shrub, .flowers, .banner:
                 // A sloping footprint keeps the lower art on the receiver;
                 // raised details retain their alpha silhouette above it.
                 let footV = 1 - instance.anchor.y - 0.09 * abs(u - 0.5) * 2
                 let footprint = (1 - footV - instance.anchor.y) * instance.screenHeight / ShadowLabMath.cameraUp.y
-                let volume: Float = instance.asset == .tent ? 0.18 : (instance.asset == .fence ? 0.015 : 0.07)
+                let volume: Float = instance.asset == .tent ? 0.18 : 0.07
                 depth = footprint + sin(u * .pi) * volume * instance.width * (1 - smooth(0.40, 0.88, v))
             }
             var height = (screenUp - depth * ShadowLabMath.cameraUp.y) / ShadowLabMath.cameraUp.z
@@ -218,11 +228,20 @@ struct ShadowLabMesh {
             } }
             return
         }
-        for row in 0..<rows { for column in 0..<columns {
-            let u0 = Float(column) / Float(columns), u1 = Float(column + 1) / Float(columns)
-            let v0 = Float(row) / Float(rows), v1 = Float(row + 1) / Float(rows)
-            vertices += [vertex(u0, v0), vertex(u0, v1), vertex(u1, v1),
-                         vertex(u0, v0), vertex(u1, v1), vertex(u1, v0)]
+        let fence = instance.asset == .fence
+        let uStops = fence ? [Float(0)] + ShadowLabAsset.fencePostBases.map(\.x) + [Float(1)]
+            : (0...columns).map { Float($0) / Float(columns) }
+        func rowV(_ u: Float, _ row: Int) -> Float {
+            if fence { return row > rows ? 1 : Float(row) / Float(rows) * ShadowLabAsset.fenceGroundV(at: u) }
+            return Float(row) / Float(rows)
+        }
+        // Include the sloping ground line itself as a mesh row. Everything
+        // below it lies on Z=0 and cannot cast a raised grass-apron shadow.
+        for row in 0..<(rows + (fence ? 1 : 0)) { for column in 0..<(uStops.count - 1) {
+            let u0 = uStops[column], u1 = uStops[column + 1]
+            let a = vertex(u0, rowV(u0, row)), b = vertex(u0, rowV(u0, row + 1))
+            let c = vertex(u1, rowV(u1, row + 1)), d = vertex(u1, rowV(u1, row))
+            vertices += [a, b, c, a, c, d]
         } }
     }
 

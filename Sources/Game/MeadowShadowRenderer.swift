@@ -312,6 +312,7 @@ final class MeadowShadowRenderer: NSObject, MTKViewDelegate {
     /// Keep terrain at one pixel per point and foreground at native Retina size.
     func encodeComposite(command: MTLCommandBuffer, target: MTLRenderPassDescriptor, frame: MeadowFrameState,
                          foreground: SKRenderer, forceBackground: Bool = false) throws {
+        frame.world.effects.setSunlightViewport(frame.camera)
         let width = max(1, Int(frame.camera.size.width.rounded(.up)))
         let height = max(1, Int(frame.camera.size.height.rounded(.up)))
         var recreated = false

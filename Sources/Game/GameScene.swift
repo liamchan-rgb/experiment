@@ -278,6 +278,7 @@ final class GameScene: SKScene {
 
     override func didFinishUpdate() {
         guard world != nil, simulation != nil else { return }
+        world.effects.setSunlightViewport(MeadowViewport(world: world, scene: self, viewSize: size))
         initialFrames += 1
         if initialFrames == 1 { DispatchQueue.main.async { [weak self] in self?.onForegroundReady?() } }
     }
