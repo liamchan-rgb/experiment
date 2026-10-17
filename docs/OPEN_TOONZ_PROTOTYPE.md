@@ -1,6 +1,6 @@
 # OpenToonz 分层步态原型
 
-[下载 1.6.2 build 27 实机测试 IPA](../Downloads/README.md)：使用 SideStore 重签后，从主地图 →“步态测试”→“原图 / 分层蓝靴对照”进入。[实机测试步骤](GAIT_TEST.md)。
+[下载 1.6.2 build 27 鞋向实机测试 IPA](../Downloads/README.md)：使用 SideStore 重签后，从主地图 →“步态测试”逐一选择八个方向，检查三位人物的鞋向。[实机测试步骤](GAIT_TEST.md)。文中的“原图 / 分层蓝靴对照”入口是单独的颜色样例。
 
 ## 本轮做了什么
 

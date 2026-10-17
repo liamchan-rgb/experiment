@@ -1,6 +1,6 @@
 # 林间行旅迭代进度 · 2026-10-17
 
-当前可下载版：[1.6.1 build 26 鞋部方向修正 IPA](../Downloads/README.md)，源码 `b60d8e5`，成功构建 `39033438871`。兼容性测试只覆盖 iPad；本轮云端使用 iPad Pro 13-inch（M4）模拟器、iOS 18.5，没有连接用户的 M1 iPad／iPadOS 27.2。
+当前可下载版：[1.6.2 build 27 八方向鞋向测试 IPA](../Downloads/README.md)，成功构建 `39049360600`。兼容性测试只覆盖 iPad；云端使用 iPad Pro 13-inch（M4）模拟器、iOS 18.5，没有连接用户的物理 iPad。
 
 **后续兼容性测试口径（2026-10-16 起）：只在 iPad 模拟器／设备上执行并判定兼容性测试；不再测试或要求 iPhone 结果。** 常规 CI 与快速阴影验收均以 iPad 为唯一测试设备。此前记录的 iPhone 测试结果保留为历史数据；设备 IPA 仍按通用 iOS 目标归档。
 
@@ -325,12 +325,12 @@ GitHub 调研发现 Rigby2D 可作为未来换装角色的候选：MIT／Apache-
 
 [iPad 分层蓝靴对照截图附件](https://github.com/liamchan-rgb/experiment/actions/runs/39042942547/artifacts/12105126129) · [对应工作流结果](https://github.com/liamchan-rgb/experiment/actions/runs/39042942547)
 
-## 2026-10-17 · build 27 分层蓝靴对照实机测试包
+## 2026-10-17 · build 27 八方向鞋向实机测试包
 
-按用户要求为本地 IPA 测试打包。版本提升为 1.6.2 build 27；应用代码和资源沿用已通过 iPad 单项 UI 检查的分层蓝靴预览，没有增加新的角色、方向或通用换装。主地图 →“步态测试”→“原图 / 分层蓝靴对照”可并排观察 P1 向下 24 帧原图和蓝鞋烘焙结果，支持正常／慢速、暂停、单步及返回地图。
+按用户要求提供本地检查鞋子朝向的 IPA。版本为 1.6.2 build 27，沿用 build 26 保留各方向原画鞋角度的修正。主地图 →“步态测试”可让 P1、P2、P3 依次走过八个方向，用正常／慢速、暂停、单步和重新走检查鞋尖方向、落脚及鞋踝接缝。蓝靴对照入口只适用于 P1 向下的换色小样，不是本轮鞋向检查入口。
 
-源码 `9a8dc3a3ac8692c5d279e9d428bc3ca85edc0d0e` 的[构建 39049360600](https://github.com/liamchan-rgb/experiment/actions/runs/39049360600) 在 macos-15、Xcode 16.4（16F6）完成设备 Release archive 和未签名 IPA 打包。本轮仅打包，模拟器和 UI／GPU 任务均 skipped；此前分层预览 UI 通过记录保留在 run 39042942547。未连接或测试用户的物理 iPad。
+源码 `9a8dc3a3ac8692c5d279e9d428bc3ca85edc0d0e` 的[构建 39049360600](https://github.com/liamchan-rgb/experiment/actions/runs/39049360600) 在 macos-15、Xcode 16.4（16F6）完成设备 Release archive 和未签名 IPA 打包。本轮仅打包，模拟器和 UI／GPU 任务均 skipped。IPA 中步态代码与此前八方向 UI 检查版本一致；该检查遍历了每方向 24 个姿势。物理 iPad 上三位人物鞋向的观感待本地测试。
 
 交付 [MeadowJourney-b27.ipa](../Downloads/MeadowJourney-b27.ipa)，16,744,850 字节，SHA-256 `2954efd466000db241ac4d1b61e9c3d743ed9bb8839925f9993417e5d8048e93`。已核验版本、最低系统 15.0、iPhoneOS 真机 arm64 Mach-O、0755 权限、ZIP CRC／ZIP_STORED、无 Zip64／额外字段、Metal 库、包内蓝靴图集与预览控制代码；下载到工作区的外层 artifact ZIP 摘要也与 GitHub 提供的 digest 一致。包标识沿用原值，使用 SideStore 重签更新。
 
-[安装与下载](../Downloads/README.md) · [本地测试步骤](GAIT_TEST.md) · [来源与校验元数据](../Downloads/MeadowJourney-build27.json)。
+[安装与下载](../Downloads/README.md) · [八方向鞋向测试步骤](GAIT_TEST.md) · [来源与校验元数据](../Downloads/MeadowJourney-build27.json)。

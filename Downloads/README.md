@@ -1,6 +1,6 @@
 # SideStore 安装与迭代包
 
-最新版本 **1.6.2 build 27**：包含步态测试中的“原图 / 分层蓝靴对照”，可在实机并排观察 P1 原图和蓝靴离线烘焙动画。此小样覆盖 P1 向下方向、24 帧和一种鞋色；普通三人八方向步态测试仍可使用。
+最新版本 **1.6.2 build 27**：供本地检查三位人物在八个行走方向的鞋子朝向。步态测试支持正常／四分之一速度、暂停、逐帧单步和重新播放。“原图 / 分层蓝靴对照”是附带的换色小样，仅覆盖 P1 向下方向。
 
 [直接下载 MeadowJourney-b27.ipa](https://raw.githubusercontent.com/liamchan-rgb/experiment/feat/layered-living-scene/Downloads/MeadowJourney-b27.ipa)
 
@@ -8,7 +8,7 @@ IPA：16,744,850 字节，SHA-256：`2954efd466000db241ac4d1b61e9c3d743ed9bb8839
 
 Safari 下载后保存到“文件”，再打开 SideStore → My Apps → ＋，选择该 IPA 重签安装。
 
-安装后进入主地图 →“步态测试”→“原图 / 分层蓝靴对照”。依次检查正常／四分之一速度、暂停、24 帧单步，以及退出对照和返回地图。重点观察鞋腿交界是否裂开、鞋是否突然跳动、两组动作是否同步。[完整实机测试步骤](../docs/GAIT_TEST.md)。
+安装后进入主地图 →“步态测试”，依次选择八个方向，检查 P1、P2、P3 的鞋尖朝向及行走中的落脚状态。可切换四分之一速度、暂停和单步定位问题。完整步骤见[鞋向实机测试说明](../docs/GAIT_TEST.md)。
 
 [正常速度录像](https://raw.githubusercontent.com/liamchan-rgb/experiment/feat/layered-living-scene/Media/iPad-Gait-Normal-b26.mp4) · [四分之一速度录像](https://raw.githubusercontent.com/liamchan-rgb/experiment/feat/layered-living-scene/Media/iPad-Gait-Quarter-b26.mp4) · [鞋部方向连续抽帧](../Media/Build26-Gait/README.md) · [可换装骨骼方案评估](../docs/CHARACTER_RIG_EVALUATION.md) · [迭代日志](../docs/ITERATION_STATUS.md)。
 
