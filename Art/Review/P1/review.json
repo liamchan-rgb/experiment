@@ -1,16 +1,16 @@
 {
   "character": "P1",
-  "format": 1,
+  "format": 2,
   "updated": "2026-10-18",
-  "workflow": "Review exactly one source pose at a time. Revise the current pose from user feedback; advance only after explicit user approval. Approved assets will define a layered, equipment-compatible character template.",
-  "current": "01-down-idle",
+  "workflow": "Review one complete P1 gait atlas at a time. Revise frames from user feedback and resubmit the same atlas; advance only after explicit artwork approval. Image identification does not imply artwork approval.",
+  "current": "01-cardinal-atlas",
   "templateStatus": "requirements only; no approved template yet",
   "items": [
     {
       "id": "01-down-idle",
       "direction": "down",
       "pose": "original idle",
-      "status": "awaiting_user_review",
+      "status": "superseded_review_scope",
       "sourceSheet": "Art/Generated/LivingScene/hero1-gait-v1.2.png",
       "sourceSheetSHA256": "c04bbf27ec34f1da532093cb557e090ecb6530b02c658eac4fbf8ae0f0e84a1a",
       "cropPixels": [
@@ -23,6 +23,64 @@
       "previewImage": "01-down-idle/preview-2x.png",
       "previewScale": 2,
       "previewResampling": "nearest; original pixels unchanged",
+      "revisions": [],
+      "approval": null,
+      "scopeNote": "User identified the complete cardinal gait atlas as the intended review image. This idle crop was not approved."
+    },
+    {
+      "id": "01-cardinal-atlas",
+      "status": "awaiting_user_feedback",
+      "sourceSheet": "Sources/Resources/Assets.xcassets/Hero1Directions.imageset/Hero1Directions.png",
+      "baselineImage": "01-cardinal-atlas/baseline.png",
+      "baselineSHA256": "621887c8aaec3e9ecc58155bd1a26a27da07fdf38a5fb62876c4d8cbd252b54c",
+      "dimensions": [
+        6400,
+        1024
+      ],
+      "cellSize": [
+        256,
+        256
+      ],
+      "rows": [
+        "down",
+        "left",
+        "up",
+        "right"
+      ],
+      "columns": [
+        "idle",
+        "walk-01",
+        "walk-02",
+        "walk-03",
+        "walk-04",
+        "walk-05",
+        "walk-06",
+        "walk-07",
+        "walk-08",
+        "walk-09",
+        "walk-10",
+        "walk-11",
+        "walk-12",
+        "walk-13",
+        "walk-14",
+        "walk-15",
+        "walk-16",
+        "walk-17",
+        "walk-18",
+        "walk-19",
+        "walk-20",
+        "walk-21",
+        "walk-22",
+        "walk-23",
+        "walk-24"
+      ],
+      "sourceBuild": "1.6.3 build 28",
+      "sourceCommit": "9508a733af1a828b6039992e0fce8b63069ea403",
+      "identification": {
+        "confirmed": true,
+        "userStatement": "就是这个",
+        "date": "2026-10-18"
+      },
       "revisions": [],
       "approval": null
     }
