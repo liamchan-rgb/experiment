@@ -1,0 +1,99 @@
+{
+  "revision": "r1",
+  "direction": "down-left",
+  "status": "technical packaging checks passed; art awaits user review",
+  "idlePoses": 1,
+  "walkingPoses": 8,
+  "distinctWalkingPoses": 8,
+  "pngCellAndStripMatch": "passed",
+  "numberedGridMatch": "passed",
+  "doubleSizeNearestPreview": "passed",
+  "sourcePNGsPreserved": "byte-identical to selected imagegen output",
+  "sourceAlphaExtrema": [
+    [
+      0,
+      255
+    ],
+    [
+      0,
+      255
+    ],
+    [
+      0,
+      255
+    ],
+    [
+      0,
+      255
+    ],
+    [
+      0,
+      255
+    ],
+    [
+      0,
+      255
+    ],
+    [
+      0,
+      255
+    ],
+    [
+      0,
+      255
+    ],
+    [
+      0,
+      255
+    ]
+  ],
+  "packedSoleExtrema": [
+    224,
+    224,
+    224,
+    224,
+    224,
+    224,
+    224,
+    224,
+    224
+  ],
+  "gifChecks": {
+    "walk.gif": {
+      "frames": 8,
+      "durationPerFrameMs": 120,
+      "cycleDurationMs": 960,
+      "orderAndPixels": "match packed poses after declared palette quantization",
+      "loop": 0
+    },
+    "walk-slow.gif": {
+      "frames": 8,
+      "durationPerFrameMs": 480,
+      "cycleDurationMs": 3840,
+      "orderAndPixels": "match packed poses after declared palette quantization",
+      "loop": 0
+    }
+  },
+  "reproductionCheck": {
+    "artifactsCompared": 15,
+    "result": "byte-identical PNG/GIF artifacts from temporary fresh export"
+  },
+  "coordinationReference": {
+    "direction": "down-right/r1 approved",
+    "registrationProfile": "byte-identical; same whole-pose heights and sole envelope",
+    "timing": "same normal/slow durations",
+    "scope": "observing-side phase correspondence; not anatomical-side equipment metadata"
+  },
+  "approvedDirections": {
+    "count": 5,
+    "result": "all five approval artifact sets unchanged"
+  },
+  "baselineDirections": {
+    "stripsVerified": 8,
+    "atlasChecks": "both fixed atlases byte-identical to original runtime assets",
+    "pixelChecks": "all strips equal corresponding fixed atlas rows"
+  },
+  "remainingDiagonals": "up-left and up-right queued; no artwork revisions",
+  "artApproval": null,
+  "runtimeAndIPAUpdated": false
+}
