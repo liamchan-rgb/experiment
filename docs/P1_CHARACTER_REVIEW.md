@@ -4,12 +4,13 @@
 
 ## 当前审核
 
-**当前第 01 个方向：P1 向下。状态：待用户指出修改意见。**
+**当前第 01 个方向：P1 向下。状态：用户已提出修改意见，正在讨论问题与依据，尚未通过。**
 
 用户在看到原有 `Hero1Directions.png` 完整宽图后回复“就是这个”，随后要求按方向切片讨论。以这张确认过身份的图集为来源，按下、左、上、右逐方向审核。尚无动作或美术通过记录。
 
 - [当前向下方向编号预览](../Art/Review/P1/directions/down/review.png)
 - [当前向下方向原像素横条](../Art/Review/P1/directions/down/strip.png)
+- [当前反馈与逐帧问题核对](../Art/Review/P1/directions/down/AUDIT.md)
 - [完整图集固定基线](../Art/Review/P1/01-cardinal-atlas/baseline.png)
 - [审核状态及来源记录](../Art/Review/P1/review.json)
 
@@ -19,7 +20,7 @@
 
 | 顺序 | 方向 | 原像素横条 | 编号预览 | 审核状态 |
 | --- | --- | --- | --- | --- |
-| 01 | 下 | [横条](../Art/Review/P1/directions/down/strip.png) | [预览](../Art/Review/P1/directions/down/review.png) | 当前，待反馈 |
+| 01 | 下 | [横条](../Art/Review/P1/directions/down/strip.png) | [预览](../Art/Review/P1/directions/down/review.png) | 当前，已收到反馈，讨论中 |
 | 02 | 左 | [横条](../Art/Review/P1/directions/left/strip.png) | [预览](../Art/Review/P1/directions/left/review.png) | 排队，未审核 |
 | 03 | 上 | [横条](../Art/Review/P1/directions/up/strip.png) | [预览](../Art/Review/P1/directions/up/review.png) | 排队，未审核 |
 | 04 | 右 | [横条](../Art/Review/P1/directions/right/strip.png) | [预览](../Art/Review/P1/directions/right/review.png) | 排队，未审核 |

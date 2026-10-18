@@ -88,7 +88,7 @@
     {
       "id": "01-down-gait",
       "direction": "down",
-      "status": "awaiting_user_feedback",
+      "status": "feedback_received_under_discussion",
       "sourceAtlas": "01-cardinal-atlas/baseline.png",
       "cropPixels": [
         0,
@@ -133,7 +133,22 @@
       "previewLayout": "5 columns x 5 rows, left to right then top to bottom; 00 idle, 01-24 walk; black backdrop; no pose changes",
       "pixelVerification": "source strip RGBA equals the corresponding baseline atlas row",
       "revisions": [],
-      "approval": null
+      "approval": null,
+      "feedback": [
+        {
+          "date": "2026-10-18",
+          "source": "user",
+          "text": "这个方向上你所有的鞋尖方向都在投篮沿用idle状态的，正常走路谁这样鸭子步，而且一走起来鞋子大小直接就缩小了，1-5帧人物左脚大小基本没变化，从第6帧开始才能看到脚在靠拢，后两组动作也是同样问题，你还有什么其他的发现没有",
+          "issues": [
+            "鞋尖沿用站姿，持续外八",
+            "站姿切步行时靴子视觉上变小",
+            "人物左脚01–05变化不明显，06起才明显靠拢，后续重复相同节奏问题"
+          ],
+          "sideConvention": "角色自身左脚位于画面右侧（正面向下）"
+        }
+      ],
+      "audit": "directions/down/AUDIT.md",
+      "auditStatus": "additional findings documented; no artwork revised yet"
     },
     {
       "id": "02-left-gait",
