@@ -8,6 +8,7 @@
 
 用户确认“可以的，我们走路的方向动画都调好了”，右上 r1 的认可已记录。已认可动作冻结为 `Art/Templates/P1-Motion-v1.json`，共八方向、每方向站姿＋八帧。用户随后以“按你说的来”授权先做向下方向换装验证；这个授权不等于新外观美术认可。
 
+- [在线换装预览（iPad）](https://p1-character-atelier.smokytide.chatgpt.site)
 - [向下换装小样说明与源文件](../Art/Templates/P1-Down/v1/README.md) · [离线交互预览（下载后打开）](../Art/Templates/P1-Down/v1/preview.html)
 - [原动作／银发游侠持剑同步循环](../Art/Templates/P1-Down/v1/review/walk-compare.gif) · [慢速](../Art/Templates/P1-Down/v1/review/walk-compare-slow.gif) · [九帧对照](../Art/Templates/P1-Down/v1/review/comparison.png)
 - [小样验证记录](../Art/Templates/P1-Down/v1/validation.json) · [八方向动作锁定清单](../Art/Templates/P1-Motion-v1.json)

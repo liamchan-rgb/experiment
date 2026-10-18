@@ -4,6 +4,7 @@
 
 当前候选：[向下换装小样 v1](P1-Down/v1/README.md)，两种发型、两种面部、两套同袖型上衣和空手／短剑，共 16 种搭配。
 
+- [在线换装预览（适合 iPad）](https://p1-character-atelier.smokytide.chatgpt.site)
 - [完整下载包](../Prototypes/P1-Down-Customizer-v1.zip)：解压后打开 `P1-Down-v1/preview.html`，无需联网。
 - [同步动作对照](P1-Down/v1/review/walk-compare.gif) · [慢速对照](P1-Down/v1/review/walk-compare-slow.gif)
 - [离线预览文件](P1-Down/v1/preview.html) · [逐帧 ORA／SVG](P1-Down/v1/editable/) · [验证记录](P1-Down/v1/validation.json)
