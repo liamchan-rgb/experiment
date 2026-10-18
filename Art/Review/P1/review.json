@@ -3,8 +3,8 @@
   "format": 3,
   "updated": "2026-10-18",
   "workflow": "Review one direction at a time from fixed cardinal and diagonal baselines. Modify and resubmit the same direction until explicit user artwork approval, then advance. Record provenance, feedback and accepted revisions for the future character template.",
-  "current": "06-down-left-gait",
-  "templateStatus": "four cardinal and down-right r1 approved; down-left r1 awaits user review; up-left/up-right queued; layered character template not yet complete",
+  "current": "07-up-left-gait",
+  "templateStatus": "six directions r1 approved; up-left r1 awaits user review; up-right queued; layered character template not yet complete",
   "items": [
     {
       "id": "01-down-idle",
@@ -748,7 +748,7 @@
     {
       "id": "06-down-left-gait",
       "direction": "down-left",
-      "status": "awaiting_user_review",
+      "status": "approved",
       "sourceAtlas": "02-diagonal-atlas/baseline.png",
       "cropPixels": [
         0,
@@ -796,8 +796,22 @@
         {
           "id": "r1",
           "date": "2026-10-18",
-          "status": "awaiting_user_review",
-          "artApproval": null,
+          "status": "approved",
+          "artApproval": {
+            "date": "2026-10-18",
+            "reviewer": "user",
+            "statement": "没问题，现在修改下一组",
+            "direction": "down-left",
+            "revision": "r1",
+            "scope": "one redrawn idle and 8 key poses of the down-left-direction cycle shown for review",
+            "status": "approved",
+            "artifacts": {
+              "review-2x.png": "d27895d9c03a621f4d3c9d7c7ebee4a3facf69e7f1dbc19f8930d2c0fb318832",
+              "strip.png": "57a865920a720dbd5c3e755f9c3c199c2641c7ce86cbde115be4934d4b2fa206",
+              "walk.gif": "93823657698db3f7119aec10d55e1273532e92548579f509120bd881c144e75b",
+              "walk-slow.gif": "dd05b1171133d1cb1d48eaea3765e0553471be7a95d1117492bd5e087b289160"
+            }
+          },
           "method": "imagegen complete down-left counterparts of approved down-right poses; same uniform whole-pose registration and timing",
           "idlePoses": 1,
           "walkingPoses": 8,
@@ -819,7 +833,21 @@
           "productionAssetsUpdated": false
         }
       ],
-      "approval": null,
+      "approval": {
+        "date": "2026-10-18",
+        "reviewer": "user",
+        "statement": "没问题，现在修改下一组",
+        "direction": "down-left",
+        "revision": "r1",
+        "scope": "one redrawn idle and 8 key poses of the down-left-direction cycle shown for review",
+        "status": "approved",
+        "artifacts": {
+          "review-2x.png": "d27895d9c03a621f4d3c9d7c7ebee4a3facf69e7f1dbc19f8930d2c0fb318832",
+          "strip.png": "57a865920a720dbd5c3e755f9c3c199c2641c7ce86cbde115be4934d4b2fa206",
+          "walk.gif": "93823657698db3f7119aec10d55e1273532e92548579f509120bd881c144e75b",
+          "walk-slow.gif": "dd05b1171133d1cb1d48eaea3765e0553471be7a95d1117492bd5e087b289160"
+        }
+      },
       "currentRevision": "r1",
       "audit": "directions/down-left/AUDIT.md",
       "feedback": [
@@ -830,12 +858,12 @@
           "scope": "down-right r1 approved; proceed to down-left, second diagonal, using the same sequential revision workflow"
         }
       ],
-      "auditStatus": "complete down-left counterparts of approved down-right phases; awaiting explicit user artwork approval"
+      "auditStatus": "user approved down-left r1; historical build28 baseline unchanged"
     },
     {
       "id": "07-up-left-gait",
       "direction": "up-left",
-      "status": "queued",
+      "status": "awaiting_user_review",
       "sourceAtlas": "02-diagonal-atlas/baseline.png",
       "cropPixels": [
         0,
@@ -879,8 +907,45 @@
       ],
       "previewLayout": "5 columns x 5 rows; 00 idle, 01-24 walk; black backdrop; no pose changes",
       "pixelVerification": "source strip RGBA equals corresponding fixed diagonal baseline row",
-      "revisions": [],
-      "approval": null
+      "revisions": [
+        {
+          "id": "r1",
+          "date": "2026-10-18",
+          "status": "awaiting_user_review",
+          "artApproval": null,
+          "method": "imagegen redrawing of complete three-quarter rear poses; uniform whole-pose registration",
+          "idlePoses": 1,
+          "walkingPoses": 8,
+          "reviewImage": "directions/up-left/revisions/r1/review-2x.png",
+          "strip": "directions/up-left/revisions/r1/strip.png",
+          "normalLoop": "directions/up-left/revisions/r1/walk.gif",
+          "slowLoop": "directions/up-left/revisions/r1/walk-slow.gif",
+          "comparison": "directions/up-left/revisions/r1/comparison.png",
+          "referenceDirectionRevision": "03-up-gait/r1 (rear design); 06-down-left-gait/r1 (approved timing and registration)",
+          "notes": "directions/up-left/revisions/r1/README.md",
+          "validation": "directions/up-left/revisions/r1/validation.json",
+          "addressedInCandidate": [
+            "fixed three-quarter rear up-left view",
+            "complete boot cuffs, ankles and heel roll",
+            "alternating leg support and two passing poses",
+            "opposite arm swing and compact stride",
+            "far shoe direction corrected before review"
+          ],
+          "productionAssetsUpdated": false
+        }
+      ],
+      "approval": null,
+      "currentRevision": "r1",
+      "audit": "directions/up-left/AUDIT.md",
+      "auditStatus": "up-left r1 drawn and export-validated; awaits explicit user artwork approval",
+      "feedback": [
+        {
+          "date": "2026-10-18",
+          "source": "user",
+          "text": "没问题，现在修改下一组",
+          "scope": "approve down-left r1 and proceed to up-left, third diagonal"
+        }
+      ]
     },
     {
       "id": "08-up-right-gait",

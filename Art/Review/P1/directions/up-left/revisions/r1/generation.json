@@ -1,0 +1,169 @@
+{
+  "date": "2026-10-18",
+  "direction": "up-left",
+  "revision": "r1",
+  "method": "imagegen redrawing complete poses; whole-pose registration only",
+  "artApproval": null,
+  "poses": [
+    {
+      "pose": 0,
+      "prompt": "Create one full-body pixel-art RPG character sprite, a NEW IDLE pose 00 for the supplied P1 hero facing UP-LEFT (northwest ↖), seen at a true three-quarter REAR view. Reference 1 is the original up-left orientation only; reference 2 is the approved new rear-view character design and full boot construction. Repaint the second design in the first view angle, but make the diagonal unmistakable: back of head and coat dominate, a little leftward face edge at most, torso and pelvis yaw 45 degrees toward upper-left, both toes point away toward upper-left, visible heel backs and outer side of boots; NOT straight rear, NOT front-left, NOT pure side. Character is short chibi chestnut spiky hair, vivid blue scarf trailing right, rich blue short coat with cream/gold hem and white cuffs, brown gloves, charcoal knee trousers, brown folded-cuff boots of matched volume, brown cross-body straps and small pouch. Match the approved pixel illustration style, outlines, character proportions, garment design, and calm neutral standing. Both feet planted, knees untwisted, full boot shafts connected to knees, natural small foot separation, no duck feet. Single entire character centered with generous transparent margin on all sides. No shadow, floor, glow, background, text, labels or panels. Transparent RGBA background.",
+      "references": [
+        "/workspace/experiment/Art/Review/P1/directions/up-left/revisions/r1/baseline-idle-reference.png",
+        "/workspace/experiment/Art/Review/P1/directions/up/revisions/r1/raw/00.png"
+      ],
+      "selectedSource": "/workspace/generated_images/exec-fdab52cd-72d5-4ab9-946b-0d7a089b3d14.png",
+      "selectedSourceSHA256": "e4e9605f279278da4ed4cd5e869e089578f0d5728f66ba2790aaa4e23b7e93ee",
+      "referenceSHA256": {
+        "/workspace/experiment/Art/Review/P1/directions/up-left/revisions/r1/baseline-idle-reference.png": "9ca411de903d3777552d761b79430d24a148c37b080c417fc640451e5e504cf8",
+        "/workspace/experiment/Art/Review/P1/directions/up/revisions/r1/raw/00.png": "07ad3154932153ec88753c78ab5dcaf3e637cd414a92c2e1fac7ae1390bba41a"
+      },
+      "savedAs": "raw/00.png"
+    },
+    {
+      "pose": 1,
+      "prompt": "Draw ONE complete pixel-art sprite of the SAME P1 character from reference 1 in a new WALKING pose. Reference 1 fixes character design, short chibi proportions, boot volume, and the exact UP-LEFT northwest three-quarter REAR camera angle. Reference 2 gives the gait PHASE viewed straight from rear; translate that phase into reference 1's diagonal camera, never copy the straight-rear orientation. Keep the head, shoulders, pelvis and both shoe toes consistently pointing AWAY toward upper-left ↖. Back of hair, scarf collar, coat back, crossing brown straps, right-side pouch, full folded-cuff brown boots, charcoal trousers, brown gloves, rich blue coat cream/gold trim remain exactly the same. Only a slim face edge, no visible eyes. View shows heels and outside of boots; sole visible ONLY on trailing heel roll, never backwards footwear. Compact ordinary walking, no running, lunging or gigantic rear sole. Keep both boot volumes and connected knee/ankle anatomy. Opposite arm swing and small weight transfer, restrained body bob. Preserve pixel illustration style, clear dark outline and coloring. Keep a consistent head size and same yaw as reference 1. No perspective zoom, no outfit redesign. Single whole figure centered with generous transparent margins. No background, cast shadow, glow, floor, text or panels. Transparent background. POSE 01, first CONTACT: near-side leg steps forward away toward upper-left, boot lands modestly in front, far-side leg trails diagonally lower-right with heel lifting and forefoot touching. Near-side arm swings BACK toward viewer, far-side arm swings forward away; short stride, clearly separated feet.",
+      "references": [
+        "/workspace/experiment/Art/Review/P1/directions/up-left/revisions/r1/raw/00.png",
+        "/workspace/experiment/Art/Review/P1/directions/up/revisions/r1/raw/01.png"
+      ],
+      "selectedSource": "/workspace/generated_images/exec-d97b7715-68d2-4805-ac64-d5b7d70de134.png",
+      "selectedSourceSHA256": "8d2e8b5681b430013d8bd56fa005964d47f5db79268021613592e8c947af4e31",
+      "referenceSHA256": {
+        "/workspace/experiment/Art/Review/P1/directions/up-left/revisions/r1/raw/00.png": "e4e9605f279278da4ed4cd5e869e089578f0d5728f66ba2790aaa4e23b7e93ee",
+        "/workspace/experiment/Art/Review/P1/directions/up/revisions/r1/raw/01.png": "7e55de38f39854d9864adf8cef8918a1eb92414497bb0883e0992a50560b66dd"
+      },
+      "savedAs": "raw/01.png"
+    },
+    {
+      "pose": 2,
+      "prompt": "Draw ONE complete pixel-art sprite of the SAME P1 character from reference 1 in a new WALKING pose. Reference 1 is the new first contact; it fixes character design, short chibi proportions, boot volume, and the exact UP-LEFT northwest three-quarter REAR camera angle. Reference 2 gives the gait PHASE viewed straight from rear; translate that phase into reference 1's diagonal camera, never copy the straight-rear orientation. Keep the head, shoulders, pelvis and both shoe toes consistently pointing AWAY toward upper-left ↖. Back of hair, scarf collar, coat back, crossing brown straps, right-side pouch, full folded-cuff brown boots, charcoal trousers, brown gloves, rich blue coat cream/gold trim remain exactly the same. Only a slim face edge, no visible eyes. View shows heels and outside of boots; sole visible ONLY on trailing heel roll, never backwards footwear. Compact ordinary walking, no running, lunging or gigantic rear sole. Keep both boot volumes and connected knee/ankle anatomy. Opposite arm swing and small weight transfer, restrained body bob. Preserve pixel illustration style, clear dark outline and coloring. Keep a consistent head size and same yaw as reference 1. No perspective zoom, no outfit redesign. Single whole figure centered with generous transparent margins. No background, cast shadow, glow, floor, text or panels. Transparent background. POSE 02, first DOWN/WEIGHT ACCEPTANCE: near-side front leg bears weight and knee flexes slightly. Far-side rear knee bends, heel rises, whole full boot lifts and starts returning toward the support ankle; sole turned gently toward viewer. Near arm starts moving through mid swing. CRITICAL SCREEN GEOMETRY: Near leg is SCREEN LEFT, support boot planted with heel lower-left under hip. Far SCREEN RIGHT knee bends, FAR boot lifts and returns toward support ankle instead of remaining in a long rear stride; moderate sole glimpse. Fore-aft distance is smaller than reference 1.",
+      "references": [
+        "/workspace/experiment/Art/Review/P1/directions/up-left/revisions/r1/raw/01.png",
+        "/workspace/experiment/Art/Review/P1/directions/up/revisions/r1/raw/02.png"
+      ],
+      "selectedSource": "/workspace/generated_images/exec-68a12e93-5163-4e20-a27c-9dcbeaa4e675.png",
+      "selectedSourceSHA256": "d495739b5efc5f7c02ada082130efde6a48d4db5ea5cc088272151ee5d672afa",
+      "referenceSHA256": {
+        "/workspace/experiment/Art/Review/P1/directions/up-left/revisions/r1/raw/01.png": "8d2e8b5681b430013d8bd56fa005964d47f5db79268021613592e8c947af4e31",
+        "/workspace/experiment/Art/Review/P1/directions/up/revisions/r1/raw/02.png": "cf51b54b786a702207d786c8b1afee1fa413d87ec5376abd1f02796284d0f617"
+      },
+      "savedAs": "raw/02.png"
+    },
+    {
+      "pose": 3,
+      "prompt": "Draw ONE complete pixel-art sprite of the SAME P1 character from reference 1 in a new WALKING pose. Reference 1 is the new first contact; it fixes character design, short chibi proportions, boot volume, and the exact UP-LEFT northwest three-quarter REAR camera angle. Reference 2 gives the gait PHASE viewed straight from rear; translate that phase into reference 1's diagonal camera, never copy the straight-rear orientation. Keep the head, shoulders, pelvis and both shoe toes consistently pointing AWAY toward upper-left ↖. Back of hair, scarf collar, coat back, crossing brown straps, right-side pouch, full folded-cuff brown boots, charcoal trousers, brown gloves, rich blue coat cream/gold trim remain exactly the same. Only a slim face edge, no visible eyes. View shows heels and outside of boots; sole visible ONLY on trailing heel roll, never backwards footwear. Compact ordinary walking, no running, lunging or gigantic rear sole. Keep both boot volumes and connected knee/ankle anatomy. Opposite arm swing and small weight transfer, restrained body bob. Preserve pixel illustration style, clear dark outline and coloring. Keep a consistent head size and same yaw as reference 1. No perspective zoom, no outfit redesign. Single whole figure centered with generous transparent margins. No background, cast shadow, glow, floor, text or panels. Transparent background. POSE 03, first PASSING: near-side leg supports the body. Far-side thigh and knee swing forward, far boot is gathered closely BESIDE and partly BEHIND the support ankle. Feet almost aligned, no wide split stride. The swinging boot is slightly lifted and its shaft remains complete. Arms near mid swing. CRITICAL SCREEN GEOMETRY: Feet MUST GATHER. SCREEN LEFT near leg is straight support; SCREEN RIGHT far knee swings forward and bends; far boot tucked closely behind near support ankle, its toe partially occluded. No long rear stride, no running. Both boot bottoms within a small vertical range. Do not leave far leg extended behind.",
+      "references": [
+        "/workspace/experiment/Art/Review/P1/directions/up-left/revisions/r1/raw/01.png",
+        "/workspace/experiment/Art/Review/P1/directions/up/revisions/r1/raw/03.png"
+      ],
+      "selectedSource": "/workspace/generated_images/exec-3254470e-00a9-4e28-a77f-29f8c3e3b00d.png",
+      "selectedSourceSHA256": "5b16e1b297a27a032c065b48414401d8a3cf55218448577084830ad3f95c2de8",
+      "referenceSHA256": {
+        "/workspace/experiment/Art/Review/P1/directions/up-left/revisions/r1/raw/01.png": "8d2e8b5681b430013d8bd56fa005964d47f5db79268021613592e8c947af4e31",
+        "/workspace/experiment/Art/Review/P1/directions/up/revisions/r1/raw/03.png": "235c4e05f42347683f234319f93628dd382afb468b29337e6532ed9c4233280d"
+      },
+      "savedAs": "raw/03.png"
+    },
+    {
+      "pose": 4,
+      "prompt": "Edit this exact P1 northwest-facing three-quarter REAR sprite into the described SINGLE NEW POSE. Preserve its exact head/camera angle, hair silhouette, coat, straps and right-side pouch, scarf trailing right, glove and folded-cuff boot design, and detailed pixel-art coloring and outline. Head, torso and pelvis keep facing AWAY toward upper-left. Both shoe toes must point upper-left away; never point the far shoe rightwards. Keep realistic connected hip-knee-ankle chains, equal boot volumes, short walking stride and restrained bob. Do not copy the legs unchanged. Single full-body sprite centered, generous transparent margins, transparent RGBA background. No text, panels, floor, cast shadow, glow or scenery. POSE 04, late swing just BEFORE reference contact: near SCREEN LEFT leg still supports, foot remains lower and slightly behind; lower its heel so just a slim sole edge shows, NOT a lifted rear sole. Far SCREEN RIGHT leg reaches a SHORT distance forward toward upper-left, its boot lifted a little above the ground, ankle almost straight. Keep far boot upper-right relative to near one, but its toe tip points UPPER LEFT, hidden partly by near shin, never an outward right-pointing toe. Reduce overall front-back separation from reference, bring far boot closer to near ankle. Near left arm forward/foreshortened, far right arm back. This is the lead-in to the opposite contact, not the original first contact.",
+      "references": [
+        "/workspace/experiment/Art/Review/P1/directions/up-left/revisions/r1/drafts/05-before-toe.png"
+      ],
+      "selectedSource": "/workspace/generated_images/exec-c41e717d-6c71-498d-a149-cdfd35809c0f.png",
+      "selectedSourceSHA256": "bcfde181c3ace5ae6a66048579328fa46aabb76695947ac9e6c2e8d3b0eead96",
+      "referenceSHA256": {
+        "/workspace/experiment/Art/Review/P1/directions/up-left/revisions/r1/drafts/05-before-toe.png": "30ddf569c1ad576cb30b6b913f99fab9608062f4a00b1373b1dcb4e9ced62fb3"
+      },
+      "savedAs": "raw/04.png"
+    },
+    {
+      "pose": 5,
+      "prompt": "Make a precise correction to this entire northwest-facing three-quarter rear sprite. Preserve the exact pose, head, arms, body, clothes, stride, and lifted SCREEN LEFT rear boot completely. ONLY redraw the far PLANTED boot on SCREEN RIGHT to point correctly UPPER LEFT away from viewer, in alignment with the pelvis and other foot. Currently its toe sticks out to the RIGHT, a wrong outward turned shoe. The planted boot's TOE must instead extend diagonally UPPER LEFT, partially hidden behind the near trouser/leg; show its HEEL BACK on the LOWER RIGHT, with a vertical rear seam and heel patch. Do not mirror the whole character, do not turn the knee or other boot, do not add footwear. Keep equal full folded-cuff brown boot volume, correct ankle connection, same detailed pixel-art style. One full sprite with generous transparent margin, no shadow, floor, glow, text or background. Transparent RGBA.",
+      "references": [
+        "/workspace/experiment/Art/Review/P1/directions/up-left/revisions/r1/drafts/05-before-toe.png"
+      ],
+      "selectedSource": "/workspace/generated_images/exec-ad0f1590-d315-4e08-a1be-ec515630b199.png",
+      "selectedSourceSHA256": "7ef157447119067e408972d907bd764f8793dd17e48e7a8682a72e231c1f0e5a",
+      "referenceSHA256": {
+        "/workspace/experiment/Art/Review/P1/directions/up-left/revisions/r1/drafts/05-before-toe.png": "30ddf569c1ad576cb30b6b913f99fab9608062f4a00b1373b1dcb4e9ced62fb3"
+      },
+      "savedAs": "raw/05.png"
+    },
+    {
+      "pose": 6,
+      "prompt": "Edit this exact P1 northwest-facing three-quarter REAR sprite into the described SINGLE NEW POSE. Preserve its exact head/camera angle, hair silhouette, coat, straps and right-side pouch, scarf trailing right, glove and folded-cuff boot design, and detailed pixel-art coloring and outline. Head, torso and pelvis keep facing AWAY toward upper-left. Both shoe toes must point upper-left away; never point the far shoe rightwards. Keep realistic connected hip-knee-ankle chains, equal boot volumes, short walking stride and restrained bob. Do not copy the legs unchanged. Single full-body sprite centered, generous transparent margins, transparent RGBA background. No text, panels, floor, cast shadow, glow or scenery. POSE 06, weight acceptance after reference: far SCREEN RIGHT leg is now vertical SUPPORT under right hip, its planted foot heel below hip, toe points UPPER LEFT partly hidden behind near leg, never to screen right. Near SCREEN LEFT rear knee bends and HEEL LIFTS, its full boot rises toward the body, modest dark sole visible toward viewer on lower-left, foot begins returning to support ankle. Shorten the rear separation from reference and draw genuine flexed knee and full boot cuff. Near left arm begins return from forward to middle; far right glove begins middle swing. Opposite to pose02: RIGHT leg supports, LEFT boot is the lifted one.",
+      "references": [
+        "/workspace/experiment/Art/Review/P1/directions/up-left/revisions/r1/drafts/05-before-toe.png"
+      ],
+      "selectedSource": "/workspace/generated_images/exec-9a35544e-e7c4-4def-a556-f676e0bc433b.png",
+      "selectedSourceSHA256": "3ca0241ef892dd6cd265afda7d320389043f36a5dd64b28c6d7a67e02345f561",
+      "referenceSHA256": {
+        "/workspace/experiment/Art/Review/P1/directions/up-left/revisions/r1/drafts/05-before-toe.png": "30ddf569c1ad576cb30b6b913f99fab9608062f4a00b1373b1dcb4e9ced62fb3"
+      },
+      "savedAs": "raw/06.png"
+    },
+    {
+      "pose": 7,
+      "prompt": "Edit this exact P1 northwest-facing three-quarter REAR sprite into the described SINGLE NEW POSE. Preserve its exact head/camera angle, hair silhouette, coat, straps and right-side pouch, scarf trailing right, glove and folded-cuff boot design, and detailed pixel-art coloring and outline. Head, torso and pelvis keep facing AWAY toward upper-left. Both shoe toes must point upper-left away; never point the far shoe rightwards. Keep realistic connected hip-knee-ankle chains, equal boot volumes, short walking stride and restrained bob. Do not copy the legs unchanged. Single full-body sprite centered, generous transparent margins, transparent RGBA background. No text, panels, floor, cast shadow, glow or scenery. POSE 07, PASSING FEET GATHERED: far SCREEN RIGHT leg straight SUPPORT under hip, heel planted lower center-right, toe points UPPER LEFT not outward right. Near SCREEN LEFT knee bends and swings FORWARD, its full boot tucked CLOSE beside and in FRONT OF the far support ankle, passing on the camera-near LEFT side; near lifted boot partly covers far shin. Both boots should gather under the body with very small fore-aft split, not stay extended apart as reference. Small sole glimpse on lifted near boot, never giant sole. Arms through relaxed midpoint. Opposite of pose03: RIGHT leg supports, LEFT knee advances.",
+      "references": [
+        "/workspace/experiment/Art/Review/P1/directions/up-left/revisions/r1/drafts/05-before-toe.png"
+      ],
+      "selectedSource": "/workspace/generated_images/exec-962bf45a-dd96-48f5-a3cd-b52fbe247acb.png",
+      "selectedSourceSHA256": "38a998ea6d96b126fbfd483b1b3a746fa61de62a4b3afeaf0026a0babf0da292",
+      "referenceSHA256": {
+        "/workspace/experiment/Art/Review/P1/directions/up-left/revisions/r1/drafts/05-before-toe.png": "30ddf569c1ad576cb30b6b913f99fab9608062f4a00b1373b1dcb4e9ced62fb3"
+      },
+      "savedAs": "raw/07.png"
+    },
+    {
+      "pose": 8,
+      "prompt": "Edit this exact P1 northwest-facing three-quarter REAR sprite into the described SINGLE NEW POSE. Preserve its exact head/camera angle, hair silhouette, coat, straps and right-side pouch, scarf trailing right, glove and folded-cuff boot design, and detailed pixel-art coloring and outline. Head, torso and pelvis keep facing AWAY toward upper-left. Both shoe toes must point upper-left away; never point the far shoe rightwards. Keep realistic connected hip-knee-ankle chains, equal boot volumes, short walking stride and restrained bob. Do not copy the legs unchanged. Single full-body sprite centered, generous transparent margins, transparent RGBA background. No text, panels, floor, cast shadow, glow or scenery. POSE 08, late swing just BEFORE reference first contact: SCREEN LEFT near leg reaches LOW FORWARD UPPER LEFT away from viewer and is about to land, not yet supporting; toe slightly lifted but never backwards. SCREEN RIGHT far leg still SUPPORTS lower-right under hip with almost flat sole and heel JUST starting roll-up, only a slim bottom edge visible. SHORTEN separation from reference and lower the far heel; do not leave the right boot raised high. Near SCREEN LEFT arm back toward viewer, far arm forward. Compact reach, no kick, both boot volumes match reference. This leads into pose01 contact.",
+      "references": [
+        "/workspace/experiment/Art/Review/P1/directions/up-left/revisions/r1/raw/01.png"
+      ],
+      "selectedSource": "/workspace/generated_images/exec-dbd8717a-595e-4785-9bc5-cff36aac9b8b.png",
+      "selectedSourceSHA256": "236f5443c0057a875eedf4367610f01dfb4a7c8305e4ed3a35939e05e52028f0",
+      "referenceSHA256": {
+        "/workspace/experiment/Art/Review/P1/directions/up-left/revisions/r1/raw/01.png": "8d2e8b5681b430013d8bd56fa005964d47f5db79268021613592e8c947af4e31"
+      },
+      "savedAs": "raw/08.png"
+    }
+  ],
+  "discarded": [
+    {
+      "key": "pose_05_initial",
+      "prompt": "Draw ONE complete pixel-art sprite of the SAME P1 character from reference 1 in a new WALKING pose. Reference 1 fixes character design, short chibi proportions, boot volume, and the exact UP-LEFT northwest three-quarter REAR camera angle. Reference 2 gives the gait PHASE viewed straight from rear; translate that phase into reference 1's diagonal camera, never copy the straight-rear orientation. Keep the head, shoulders, pelvis and both shoe toes consistently pointing AWAY toward upper-left ↖. Back of hair, scarf collar, coat back, crossing brown straps, right-side pouch, full folded-cuff brown boots, charcoal trousers, brown gloves, rich blue coat cream/gold trim remain exactly the same. Only a slim face edge, no visible eyes. View shows heels and outside of boots; sole visible ONLY on trailing heel roll, never backwards footwear. Compact ordinary walking, no running, lunging or gigantic rear sole. Keep both boot volumes and connected knee/ankle anatomy. Opposite arm swing and small weight transfer, restrained body bob. Preserve pixel illustration style, clear dark outline and coloring. Keep a consistent head size and same yaw as reference 1. No perspective zoom, no outfit redesign. Single whole figure centered with generous transparent margins. No background, cast shadow, glow, floor, text or panels. Transparent background. POSE 05, opposite CONTACT: far-side leg steps forward away toward upper-left and lands, near-side leg trails diagonally lower-right with heel lifting and forefoot touching. Near-side arm swings FORWARD away, far-side arm swings BACK toward viewer. This swaps leg support from pose 01, short stride.",
+      "references": [
+        "/workspace/experiment/Art/Review/P1/directions/up-left/revisions/r1/raw/00.png",
+        "/workspace/experiment/Art/Review/P1/directions/up/revisions/r1/raw/05.png"
+      ],
+      "source": "/workspace/generated_images/exec-660b117d-6a59-4a60-9f06-18394a99b0ae.png",
+      "sha256": "c009bf42c71e626adee9519df606b572ae7884fa940f582d9f18f479ec65e9a0",
+      "savedAs": "drafts/05-initial.png"
+    },
+    {
+      "key": "pose_05_before_toe",
+      "prompt": "Edit reference 1, this exact northwest-facing three-quarter REAR sprite, to show the OPPOSITE walking contact (pose 05). Reference 2 only illustrates alternating legs from straight rear. Keep reference 1's camera yaw, head, hair, blue scarf and coat identity. CRITICAL SWAP THE LEGS, not just arms: the NEAR leg emerging on SCREEN LEFT must now trail DOWN toward the viewer, its knee and entire folded-cuff boot extend diagonally LOWER LEFT. Lift that trailing heel gently, show a modest sole facing viewer. The FAR leg emerging on SCREEN RIGHT must be planted SHORT FORWARD away from viewer toward UPPER LEFT, ending HIGHER in the image (its heel at roughly the other boot's ankle-height). Thus the left boot is LOWER and slightly nearer than the right boot. This must visibly be the inverse of reference 1, which has left boot high and right boot low. Keep both toes pointing away northwest, heel backs visible, no backwards shoe. Do NOT keep reference 1's legs unchanged. Two complete connected legs and two equal-volume boots only. The near SCREEN LEFT arm swings FORWARD away and becomes foreshortened with glove partly hidden, FAR screen right arm swings BACK with glove visible. Compact ordinary walk contact, no run, no giant soles, no open-legged idle. Same pixel artwork and exact proportions. Single full sprite centered within generous transparent margin; no floor, glow, background, text or shadow. Transparent RGBA.",
+      "references": [
+        "/workspace/experiment/Art/Review/P1/directions/up-left/revisions/r1/raw/01.png",
+        "/workspace/experiment/Art/Review/P1/directions/up/revisions/r1/raw/05.png"
+      ],
+      "source": "/workspace/generated_images/exec-bc3fb597-b5c6-447d-a13e-85f7a2566417.png",
+      "sha256": "30ddf569c1ad576cb30b6b913f99fab9608062f4a00b1373b1dcb4e9ced62fb3",
+      "savedAs": "drafts/05-before-toe.png"
+    },
+    {
+      "key": "pose_04_initial",
+      "prompt": "Draw ONE complete pixel-art sprite of the SAME P1 character from reference 1 in a new WALKING pose. Reference 1 is the new first contact; it fixes character design, short chibi proportions, boot volume, and the exact UP-LEFT northwest three-quarter REAR camera angle. Reference 2 gives the gait PHASE viewed straight from rear; translate that phase into reference 1's diagonal camera, never copy the straight-rear orientation. Keep the head, shoulders, pelvis and both shoe toes consistently pointing AWAY toward upper-left ↖. Back of hair, scarf collar, coat back, crossing brown straps, right-side pouch, full folded-cuff brown boots, charcoal trousers, brown gloves, rich blue coat cream/gold trim remain exactly the same. Only a slim face edge, no visible eyes. View shows heels and outside of boots; sole visible ONLY on trailing heel roll, never backwards footwear. Compact ordinary walking, no running, lunging or gigantic rear sole. Keep both boot volumes and connected knee/ankle anatomy. Opposite arm swing and small weight transfer, restrained body bob. Preserve pixel illustration style, clear dark outline and coloring. Keep a consistent head size and same yaw as reference 1. No perspective zoom, no outfit redesign. Single whole figure centered with generous transparent margins. No background, cast shadow, glow, floor, text or panels. Transparent background. POSE 04, first LATE SWING: far-side knee extends a little, far boot reaches LOW FORWARD toward upper-left just ahead of the near-side support foot, near-side heel begins to rise. Near arm moves FORWARD away, far arm back. Short foot reach, no kick, no giant sole. CRITICAL SCREEN GEOMETRY: Switch toward the next contact. Near SCREEN LEFT support heel begins rising; far SCREEN RIGHT foot has passed and now reaches LOW FORWARD upper-left, farther and HIGHER on canvas than near boot. Near arm moves forward, far arm back. Avoid any visible toe pointing right; all toes point upper-left away. Compact 3/4 rear gait.",
+      "references": [
+        "/workspace/experiment/Art/Review/P1/directions/up-left/revisions/r1/raw/01.png",
+        "/workspace/experiment/Art/Review/P1/directions/up/revisions/r1/raw/04.png"
+      ],
+      "source": "/workspace/generated_images/exec-d36cf249-607c-4a59-acb5-553d21950fd3.png",
+      "sha256": "9b21c932e31a2cda2cc4cbad14bcdbe1c24cffc621055124c74c40cb10b271b7",
+      "savedAs": "drafts/04-initial.png"
+    }
+  ]
+}

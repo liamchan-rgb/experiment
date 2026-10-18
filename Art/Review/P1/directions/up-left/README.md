@@ -1,5 +1,7 @@
-# P1 左上 ↖ · 排队未审核
+# P1 左上 ↖ · 当前审核
 
-2026-10-18，从四斜向固定基线按行原像素切出，保存 [横图](strip.png) 和 [00–24 编号图](review.png)。当前进行左下 ↙ 修改，本方向未重画、未审核、未认可。
+用户认可左下 r1 后要求修改下一组。第三组斜向 [左上 r1](revisions/r1/README.md) 已完成新站姿和八张关键姿势，待用户审核。
 
-收到前一方向的用户明确认可后再逐方向推进。来源与摘要见 `../../review.json`，固定基线说明见 `../../02-diagonal-atlas/README.md`。
+[编号图](revisions/r1/review-2x.png) · [正常循环](revisions/r1/walk.gif) · [四分之一速度循环](revisions/r1/walk-slow.gif) · [修改依据](AUDIT.md)。保留 [原横条](strip.png) 和 [00–24 原编号图](review.png)，原图未修改。
+
+右上排队；用户明确认可本组后才继续。正式游戏、IPA 和最终分层模板未更新。

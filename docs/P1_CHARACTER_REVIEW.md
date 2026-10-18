@@ -4,19 +4,15 @@
 
 ## 当前审核
 
-**当前第 06 个方向、斜向第二组：P1 左下 ↙ r1 待用户审核。四个正交方向与右下 r1 均已认可，左上／右上排队。**
+**当前第 07 个方向、斜向第三组：P1 左上 ↖ r1 待用户审核。四个正交方向、右下和左下 r1 均已认可，右上仍排队。**
 
-用户确认完整宽图后要求按方向切片讨论；四正交 r1 依次修改并获认可。用户要求四斜向同样逐组修改，第一组右下完成后回复「继续下一组的」，据此记录右下 r1 通过，当前只推进左下。
+用户回复“没问题，现在修改下一组”，认可左下 r1，按原斜向行序推进左上。当前只回审左上，不提前推进右上。
 
-- [当前左下 ↙ r1 编号图](../Art/Review/P1/directions/down-left/revisions/r1/review-2x.png)
-- [当前左下 r1 正常循环](../Art/Review/P1/directions/down-left/revisions/r1/walk.gif) · [四分之一速度循环](../Art/Review/P1/directions/down-left/revisions/r1/walk-slow.gif)
-- [左下 r1 横条](../Art/Review/P1/directions/down-left/revisions/r1/strip.png) · [修改说明](../Art/Review/P1/directions/down-left/revisions/r1/README.md) · [问题依据](../Art/Review/P1/directions/down-left/AUDIT.md)
-- [已认可右下 r1](../Art/Review/P1/directions/down-right/revisions/r1/README.md) · [用户确认记录](../Art/Review/P1/directions/down-right/revisions/r1/approval.json)
-- [已认可向右 r1](../Art/Review/P1/directions/right/revisions/r1/README.md) · [用户确认记录](../Art/Review/P1/directions/right/revisions/r1/approval.json) · [左右协调对照](../Art/Review/P1/directions/right/revisions/r1/left-right.gif)
-- [已认可向上 r1](../Art/Review/P1/directions/up/revisions/r1/README.md) · [用户确认记录](../Art/Review/P1/directions/up/revisions/r1/approval.json)
-- [已认可向左 r1](../Art/Review/P1/directions/left/revisions/r1/README.md) · [用户确认记录](../Art/Review/P1/directions/left/revisions/r1/approval.json)
-- [已认可向下 r1](../Art/Review/P1/directions/down/revisions/r1/README.md) · [用户确认记录](../Art/Review/P1/directions/down/revisions/r1/approval.json)
-- [四正交固定基线](../Art/Review/P1/01-cardinal-atlas/baseline.png) · [四斜向固定基线与行序](../Art/Review/P1/02-diagonal-atlas/README.md) · [审核状态与来源](../Art/Review/P1/review.json)
+- [当前左上 r1 编号图](../Art/Review/P1/directions/up-left/revisions/r1/review-2x.png)
+- [正常循环](../Art/Review/P1/directions/up-left/revisions/r1/walk.gif) · [四分之一速度循环](../Art/Review/P1/directions/up-left/revisions/r1/walk-slow.gif)
+- [左上 r1 说明与来源](../Art/Review/P1/directions/up-left/revisions/r1/README.md) · [问题依据](../Art/Review/P1/directions/up-left/AUDIT.md)
+- [已认可左下 r1 与记录](../Art/Review/P1/directions/down-left/revisions/r1/approval.json) · [已认可右下 r1](../Art/Review/P1/directions/down-right/revisions/r1/README.md)
+- [完整状态与全部认可范围](../Art/Review/P1/review.json)
 
 两份固定图集均为 build 28 正式生成结果，各 6400 × 1024、每格 256 × 256，与正式图集逐字节一致。正交图集行序下、左、上、右；斜向图集为右下、左下、左上、右上，由生成器 HEADINGS 索引 4–7 与运行时逐行加载核对。每行最左格为站姿，随后 01–24 步行帧。
 
@@ -29,13 +25,13 @@
 | 03 | 上 | [r1 横条](../Art/Review/P1/directions/up/revisions/r1/strip.png) | [r1 预览](../Art/Review/P1/directions/up/revisions/r1/review-2x.png) | r1 用户已认可 |
 | 04 | 右 | [r1 横条](../Art/Review/P1/directions/right/revisions/r1/strip.png) | [r1 预览](../Art/Review/P1/directions/right/revisions/r1/review-2x.png) | r1 用户已认可 |
 | 05 | 右下 ↘ | [r1 横条](../Art/Review/P1/directions/down-right/revisions/r1/strip.png) | [r1 预览](../Art/Review/P1/directions/down-right/revisions/r1/review-2x.png) | r1 用户已认可 |
-| 06 | 左下 ↙ | [r1 横条](../Art/Review/P1/directions/down-left/revisions/r1/strip.png) | [r1 预览](../Art/Review/P1/directions/down-left/revisions/r1/review-2x.png) | 当前，r1 待认可 |
-| 07 | 左上 ↖ | [原横条](../Art/Review/P1/directions/up-left/strip.png) | [原预览](../Art/Review/P1/directions/up-left/review.png) | 排队，未重画／审核 |
+| 06 | 左下 ↙ | [r1 横条](../Art/Review/P1/directions/down-left/revisions/r1/strip.png) | [r1 预览](../Art/Review/P1/directions/down-left/revisions/r1/review-2x.png) | r1 用户已认可 |
+| 07 | 左上 ↖ | [r1 横条](../Art/Review/P1/directions/up-left/revisions/r1/strip.png) | [r1 预览](../Art/Review/P1/directions/up-left/revisions/r1/review-2x.png) | 当前，r1 待认可 |
 | 08 | 右上 ↗ | [原横条](../Art/Review/P1/directions/up-right/strip.png) | [原预览](../Art/Review/P1/directions/up-right/review.png) | 排队，未重画／审核 |
 
 每次只提交当前方向。收到反馈后按帧编号另存修改版本，记录具体意见与依据，再提交同一方向；用户明确认可后才推进下一方向。历史站姿提取和旧版图集识别不代表美术认可。
 
-四正交、右下 r1 和当前左下 r1 均为新站姿＋八张关键姿势，编号 00–08，与旧版 00–24 不同。右下参考已认可向下／向右重画并获认可；左下以已认可右下完整姿势为参考逐相位绘制对应方向，协调靴子体积、膝踝、两次过腿和反向摆臂。左下认可为空；左上／右上未重画。最终分层模板及固定侧装备挂点尚未完成，正式安装包未更新。
+六个已认可方向与当前左上 r1 均为新站姿＋八张关键姿势，编号 00–08，与旧版 00–24 不同。左上参照原左上视角和已认可向上背部／靴子设计，逐张重画完整姿势，协调短步幅、抬跟、两次过腿与反向摆臂。左上认可为空，右上未重画。最终分层模板及固定侧装备挂点尚未完成，正式安装包未更新。
 
 ## 现有资源与问题依据
 
