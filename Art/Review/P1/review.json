@@ -2,9 +2,9 @@
   "character": "P1",
   "format": 3,
   "updated": "2026-10-18",
-  "workflow": "Review one direction at a time, sliced without pose changes from the user-identified complete P1 cardinal atlas. Modify and resubmit the same direction until explicit user approval, then advance to the next direction. Record feedback and revisions for the character template.",
-  "current": "04-right-gait",
-  "templateStatus": "down r1, left r1 and up r1 approved as direction bases; right under review; layered character template not yet complete",
+  "workflow": "Review one direction at a time from fixed cardinal and diagonal baselines. Modify and resubmit the same direction until explicit user artwork approval, then advance. Record provenance, feedback and accepted revisions for the future character template.",
+  "current": "05-down-right-gait",
+  "templateStatus": "all four cardinal r1 revisions approved; down-right r1 awaits user review; down-left/up-left/up-right queued; layered character template not yet complete",
   "items": [
     {
       "id": "01-down-idle",
@@ -447,7 +447,7 @@
     {
       "id": "04-right-gait",
       "direction": "right",
-      "status": "awaiting_user_review",
+      "status": "approved",
       "sourceAtlas": "01-cardinal-atlas/baseline.png",
       "cropPixels": [
         0,
@@ -495,8 +495,25 @@
         {
           "id": "r1",
           "date": "2026-10-18",
-          "status": "awaiting_user_review",
-          "artApproval": null,
+          "status": "approved",
+          "artApproval": {
+            "date": "2026-10-18",
+            "reviewer": "user",
+            "statement": "没问题，还剩下四个斜方向的也要改，同样的方式，先来修第一组",
+            "direction": "right",
+            "revision": "r1",
+            "scope": "one redrawn idle and 8 key poses of the right-direction cycle, including displayed coordination with approved left r1",
+            "status": "approved",
+            "artifacts": {
+              "review-2x.png": "dcfeb89a724c3759a56fe743d407ff352e238f02ebb335a3b62c93c1c1ab763f",
+              "strip.png": "048ba38d0b48277ef34bf77575e00a508cab3a6f254e48ac724aa5de1a1f8b61",
+              "walk.gif": "d211b7717ed0167cf821f371d268cfeffef08eac5ec5d3a5b9f9006cee3e3d19",
+              "walk-slow.gif": "bf6a832ea44e85718c4caba45384eddcb6eba403c3bb276d1db020eaa1a69267",
+              "left-right-review-2x.png": "4c1c652dafa1cc500f2e3fbc422c5271e46c3438a26eaa5e6e2bdc209a8ba306",
+              "left-right.gif": "90031ee77f186e48821390bb10f63b92d622ca7b28d84fca77618dffb8172a9b",
+              "left-right-slow.gif": "96a5e4b69be3222fb1f2ea463aa115e2587b45dcd9cd2cc7a7c8dc248ce2030e"
+            }
+          },
           "method": "imagegen right-facing whole-pose counterparts of approved left r1; same uniform silhouette registration and timing",
           "idlePoses": 1,
           "walkingPoses": 8,
@@ -522,7 +539,24 @@
           "productionAssetsUpdated": false
         }
       ],
-      "approval": null,
+      "approval": {
+        "date": "2026-10-18",
+        "reviewer": "user",
+        "statement": "没问题，还剩下四个斜方向的也要改，同样的方式，先来修第一组",
+        "direction": "right",
+        "revision": "r1",
+        "scope": "one redrawn idle and 8 key poses of the right-direction cycle, including displayed coordination with approved left r1",
+        "status": "approved",
+        "artifacts": {
+          "review-2x.png": "dcfeb89a724c3759a56fe743d407ff352e238f02ebb335a3b62c93c1c1ab763f",
+          "strip.png": "048ba38d0b48277ef34bf77575e00a508cab3a6f254e48ac724aa5de1a1f8b61",
+          "walk.gif": "d211b7717ed0167cf821f371d268cfeffef08eac5ec5d3a5b9f9006cee3e3d19",
+          "walk-slow.gif": "bf6a832ea44e85718c4caba45384eddcb6eba403c3bb276d1db020eaa1a69267",
+          "left-right-review-2x.png": "4c1c652dafa1cc500f2e3fbc422c5271e46c3438a26eaa5e6e2bdc209a8ba306",
+          "left-right.gif": "90031ee77f186e48821390bb10f63b92d622ca7b28d84fca77618dffb8172a9b",
+          "left-right-slow.gif": "96a5e4b69be3222fb1f2ea463aa115e2587b45dcd9cd2cc7a7c8dc248ce2030e"
+        }
+      },
       "audit": "directions/right/AUDIT.md",
       "feedback": [
         {
@@ -539,13 +573,309 @@
         }
       ],
       "currentRevision": "r1",
-      "auditStatus": "right r1 coordinated against approved left r1, exported with synchronized comparisons; awaiting explicit user artwork approval"
+      "auditStatus": "user approved right r1 with left/right coordination; build 28 remains historical baseline"
+    },
+    {
+      "id": "02-diagonal-atlas",
+      "status": "reference_split_by_direction",
+      "sourceSheet": "Sources/Resources/Assets.xcassets/Hero1Diagonals.imageset/Hero1Diagonals.png",
+      "baselineImage": "02-diagonal-atlas/baseline.png",
+      "baselineSHA256": "56f78a9904bd707c6bba0d482bbe5a076367320c2e6458fe313b0e2d890d2c09",
+      "dimensions": [
+        6400,
+        1024
+      ],
+      "cellSize": [
+        256,
+        256
+      ],
+      "rows": [
+        "down-right",
+        "down-left",
+        "up-left",
+        "up-right"
+      ],
+      "columns": [
+        "idle",
+        "walk-01",
+        "walk-02",
+        "walk-03",
+        "walk-04",
+        "walk-05",
+        "walk-06",
+        "walk-07",
+        "walk-08",
+        "walk-09",
+        "walk-10",
+        "walk-11",
+        "walk-12",
+        "walk-13",
+        "walk-14",
+        "walk-15",
+        "walk-16",
+        "walk-17",
+        "walk-18",
+        "walk-19",
+        "walk-20",
+        "walk-21",
+        "walk-22",
+        "walk-23",
+        "walk-24"
+      ],
+      "directionOrderEvidence": "scripts/prepare-gait-assets.py HEADINGS indices 4-7; HeroFrames.load reads Diagonals rows 0-3 in order",
+      "sourceBuild": "1.6.3 build 28",
+      "approval": null
+    },
+    {
+      "id": "05-down-right-gait",
+      "direction": "down-right",
+      "status": "awaiting_user_review",
+      "sourceAtlas": "02-diagonal-atlas/baseline.png",
+      "cropPixels": [
+        0,
+        0,
+        6400,
+        256
+      ],
+      "sourceImage": "directions/down-right/strip.png",
+      "previewImage": "directions/down-right/review.png",
+      "sourceImageSHA256": "342a4cfcb4cab1c9af225af6e1e0ddde9b9da6eb300fefad1327e3385df1e3c2",
+      "dimensions": [
+        6400,
+        256
+      ],
+      "columns": [
+        "idle",
+        "walk-01",
+        "walk-02",
+        "walk-03",
+        "walk-04",
+        "walk-05",
+        "walk-06",
+        "walk-07",
+        "walk-08",
+        "walk-09",
+        "walk-10",
+        "walk-11",
+        "walk-12",
+        "walk-13",
+        "walk-14",
+        "walk-15",
+        "walk-16",
+        "walk-17",
+        "walk-18",
+        "walk-19",
+        "walk-20",
+        "walk-21",
+        "walk-22",
+        "walk-23",
+        "walk-24"
+      ],
+      "previewLayout": "5 columns x 5 rows; 00 idle, 01-24 walk; black backdrop; no pose changes",
+      "pixelVerification": "source strip RGBA equals corresponding fixed diagonal baseline row",
+      "revisions": [
+        {
+          "id": "r1",
+          "date": "2026-10-18",
+          "status": "awaiting_user_review",
+          "artApproval": null,
+          "method": "imagegen complete down-right poses, guided by approved down/right phases; whole-pose silhouette registration only",
+          "idlePoses": 1,
+          "walkingPoses": 8,
+          "reviewImage": "directions/down-right/revisions/r1/review-2x.png",
+          "strip": "directions/down-right/revisions/r1/strip.png",
+          "normalLoop": "directions/down-right/revisions/r1/walk.gif",
+          "slowLoop": "directions/down-right/revisions/r1/walk-slow.gif",
+          "comparison": "directions/down-right/revisions/r1/comparison.png",
+          "referenceDirectionRevisions": [
+            "01-down-gait/r1",
+            "04-right-gait/r1"
+          ],
+          "notes": "directions/down-right/revisions/r1/README.md",
+          "validation": "directions/down-right/revisions/r1/validation.json",
+          "addressedInCandidate": [
+            "fixed three-quarter down-right character view",
+            "parallel southeast boot axes and complete cuff/shaft anatomy",
+            "diagonal fore-aft stride with two passing poses",
+            "opposite arm swing and near/far occlusion",
+            "reduced oversized advancing sole/boot perspective"
+          ],
+          "productionAssetsUpdated": false
+        }
+      ],
+      "approval": null,
+      "audit": "directions/down-right/AUDIT.md",
+      "feedback": [
+        {
+          "date": "2026-10-18",
+          "source": "user",
+          "text": "没问题，还剩下四个斜方向的也要改，同样的方式，先来修第一组",
+          "scope": "four diagonal directions, one at a time; first group uses existing atlas row 0 down-right",
+          "approvalMeaning": "right r1 approved; diagonals authorized for sequential revision, not yet approved"
+        }
+      ],
+      "currentRevision": "r1",
+      "auditStatus": "down-right r1 redrawn with approved down/right model and phase references; awaiting explicit user artwork approval"
+    },
+    {
+      "id": "06-down-left-gait",
+      "direction": "down-left",
+      "status": "queued",
+      "sourceAtlas": "02-diagonal-atlas/baseline.png",
+      "cropPixels": [
+        0,
+        256,
+        6400,
+        512
+      ],
+      "sourceImage": "directions/down-left/strip.png",
+      "previewImage": "directions/down-left/review.png",
+      "sourceImageSHA256": "465da7d2bd05be5c694d58eb13a8f8defcf984dbc9fab9600049f4ce6719f813",
+      "dimensions": [
+        6400,
+        256
+      ],
+      "columns": [
+        "idle",
+        "walk-01",
+        "walk-02",
+        "walk-03",
+        "walk-04",
+        "walk-05",
+        "walk-06",
+        "walk-07",
+        "walk-08",
+        "walk-09",
+        "walk-10",
+        "walk-11",
+        "walk-12",
+        "walk-13",
+        "walk-14",
+        "walk-15",
+        "walk-16",
+        "walk-17",
+        "walk-18",
+        "walk-19",
+        "walk-20",
+        "walk-21",
+        "walk-22",
+        "walk-23",
+        "walk-24"
+      ],
+      "previewLayout": "5 columns x 5 rows; 00 idle, 01-24 walk; black backdrop; no pose changes",
+      "pixelVerification": "source strip RGBA equals corresponding fixed diagonal baseline row",
+      "revisions": [],
+      "approval": null
+    },
+    {
+      "id": "07-up-left-gait",
+      "direction": "up-left",
+      "status": "queued",
+      "sourceAtlas": "02-diagonal-atlas/baseline.png",
+      "cropPixels": [
+        0,
+        512,
+        6400,
+        768
+      ],
+      "sourceImage": "directions/up-left/strip.png",
+      "previewImage": "directions/up-left/review.png",
+      "sourceImageSHA256": "d9f4ba5148b91367c4773ccf8df01445a5d85873f25a02a5d1c45d97587ecbbe",
+      "dimensions": [
+        6400,
+        256
+      ],
+      "columns": [
+        "idle",
+        "walk-01",
+        "walk-02",
+        "walk-03",
+        "walk-04",
+        "walk-05",
+        "walk-06",
+        "walk-07",
+        "walk-08",
+        "walk-09",
+        "walk-10",
+        "walk-11",
+        "walk-12",
+        "walk-13",
+        "walk-14",
+        "walk-15",
+        "walk-16",
+        "walk-17",
+        "walk-18",
+        "walk-19",
+        "walk-20",
+        "walk-21",
+        "walk-22",
+        "walk-23",
+        "walk-24"
+      ],
+      "previewLayout": "5 columns x 5 rows; 00 idle, 01-24 walk; black backdrop; no pose changes",
+      "pixelVerification": "source strip RGBA equals corresponding fixed diagonal baseline row",
+      "revisions": [],
+      "approval": null
+    },
+    {
+      "id": "08-up-right-gait",
+      "direction": "up-right",
+      "status": "queued",
+      "sourceAtlas": "02-diagonal-atlas/baseline.png",
+      "cropPixels": [
+        0,
+        768,
+        6400,
+        1024
+      ],
+      "sourceImage": "directions/up-right/strip.png",
+      "previewImage": "directions/up-right/review.png",
+      "sourceImageSHA256": "a0fc38a4883c1d158591038f0576883226b1ebf476d87a98430d11e1c057dc6b",
+      "dimensions": [
+        6400,
+        256
+      ],
+      "columns": [
+        "idle",
+        "walk-01",
+        "walk-02",
+        "walk-03",
+        "walk-04",
+        "walk-05",
+        "walk-06",
+        "walk-07",
+        "walk-08",
+        "walk-09",
+        "walk-10",
+        "walk-11",
+        "walk-12",
+        "walk-13",
+        "walk-14",
+        "walk-15",
+        "walk-16",
+        "walk-17",
+        "walk-18",
+        "walk-19",
+        "walk-20",
+        "walk-21",
+        "walk-22",
+        "walk-23",
+        "walk-24"
+      ],
+      "previewLayout": "5 columns x 5 rows; 00 idle, 01-24 walk; black backdrop; no pose changes",
+      "pixelVerification": "source strip RGBA equals corresponding fixed diagonal baseline row",
+      "revisions": [],
+      "approval": null
     }
   ],
   "directionOrder": [
     "01-down-gait",
     "02-left-gait",
     "03-up-gait",
-    "04-right-gait"
+    "04-right-gait",
+    "05-down-right-gait",
+    "06-down-left-gait",
+    "07-up-left-gait",
+    "08-up-right-gait"
   ]
 }

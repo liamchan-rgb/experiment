@@ -1,0 +1,18 @@
+{
+  "date": "2026-10-18",
+  "reviewer": "user",
+  "statement": "没问题，还剩下四个斜方向的也要改，同样的方式，先来修第一组",
+  "direction": "right",
+  "revision": "r1",
+  "scope": "one redrawn idle and 8 key poses of the right-direction cycle, including displayed coordination with approved left r1",
+  "status": "approved",
+  "artifacts": {
+    "review-2x.png": "dcfeb89a724c3759a56fe743d407ff352e238f02ebb335a3b62c93c1c1ab763f",
+    "strip.png": "048ba38d0b48277ef34bf77575e00a508cab3a6f254e48ac724aa5de1a1f8b61",
+    "walk.gif": "d211b7717ed0167cf821f371d268cfeffef08eac5ec5d3a5b9f9006cee3e3d19",
+    "walk-slow.gif": "bf6a832ea44e85718c4caba45384eddcb6eba403c3bb276d1db020eaa1a69267",
+    "left-right-review-2x.png": "4c1c652dafa1cc500f2e3fbc422c5271e46c3438a26eaa5e6e2bdc209a8ba306",
+    "left-right.gif": "90031ee77f186e48821390bb10f63b92d622ca7b28d84fca77618dffb8172a9b",
+    "left-right-slow.gif": "96a5e4b69be3222fb1f2ea463aa115e2587b45dcd9cd2cc7a7c8dc248ce2030e"
+  }
+}
