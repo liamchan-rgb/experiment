@@ -4,13 +4,14 @@
 
 ## 当前审核
 
-**当前第 03 个方向：P1 向上 r1 重画稿待用户审核。向下 r1、向左 r1 已获用户认可。**
+**当前第 04 个方向：P1 向右，原有站姿＋24 帧步态待审核。向下 r1、向左 r1、向上 r1 已获用户认可。**
 
-用户在看到原有 `Hero1Directions.png` 完整宽图后回复“就是这个”，随后要求按方向切片讨论。向下 r1、向左 r1 先后重画并获认可；用户在向左 r1 后回复“没问题，继续下一个方向”，现按下、左、上、右顺序进入向上审核。
+用户在看到原有 `Hero1Directions.png` 完整宽图后回复“就是这个”，随后要求按方向切片讨论。向下 r1、向左 r1、向上 r1 先后重画并获认可；用户在向上 r1 后回复“可以的，继续下一个方向”，现按下、左、上、右顺序进入向右审核。
 
-- [当前向上 r1 编号图](../Art/Review/P1/directions/up/revisions/r1/review-2x.png)
-- [当前向上 r1 正常循环](../Art/Review/P1/directions/up/revisions/r1/walk.gif) · [四分之一速度循环](../Art/Review/P1/directions/up/revisions/r1/walk-slow.gif)
-- [向上 r1 横条](../Art/Review/P1/directions/up/revisions/r1/strip.png) · [修改说明](../Art/Review/P1/directions/up/revisions/r1/README.md) · [问题依据](../Art/Review/P1/directions/up/AUDIT.md)
+- [当前向右方向编号图](../Art/Review/P1/directions/right/review.png)
+- [当前向右正常循环](../Art/Review/P1/directions/right/walk-baseline.gif) · [四分之一速度循环](../Art/Review/P1/directions/right/walk-baseline-slow.gif)
+- [向右原像素横条](../Art/Review/P1/directions/right/strip.png) · [当前审核说明](../Art/Review/P1/directions/right/README.md)
+- [已认可的向上 r1](../Art/Review/P1/directions/up/revisions/r1/README.md) · [用户确认记录](../Art/Review/P1/directions/up/revisions/r1/approval.json)
 - [已认可的向左 r1](../Art/Review/P1/directions/left/revisions/r1/README.md) · [用户确认记录](../Art/Review/P1/directions/left/revisions/r1/approval.json)
 - [已认可的向下 r1](../Art/Review/P1/directions/down/revisions/r1/README.md) · [用户确认记录](../Art/Review/P1/directions/down/revisions/r1/approval.json)
 - [完整图集固定基线](../Art/Review/P1/01-cardinal-atlas/baseline.png)
@@ -24,12 +25,12 @@
 | --- | --- | --- | --- | --- |
 | 01 | 下 | [r1 横条](../Art/Review/P1/directions/down/revisions/r1/strip.png) | [r1 预览](../Art/Review/P1/directions/down/revisions/r1/review-2x.png) | r1 用户已认可 |
 | 02 | 左 | [r1 横条](../Art/Review/P1/directions/left/revisions/r1/strip.png) | [r1 预览](../Art/Review/P1/directions/left/revisions/r1/review-2x.png) | r1 用户已认可 |
-| 03 | 上 | [r1 横条](../Art/Review/P1/directions/up/revisions/r1/strip.png) | [r1 预览](../Art/Review/P1/directions/up/revisions/r1/review-2x.png) | 当前，r1 待认可 |
-| 04 | 右 | [横条](../Art/Review/P1/directions/right/strip.png) | [预览](../Art/Review/P1/directions/right/review.png) | 排队，未审核 |
+| 03 | 上 | [r1 横条](../Art/Review/P1/directions/up/revisions/r1/strip.png) | [r1 预览](../Art/Review/P1/directions/up/revisions/r1/review-2x.png) | r1 用户已认可 |
+| 04 | 右 | [横条](../Art/Review/P1/directions/right/strip.png) | [预览](../Art/Review/P1/directions/right/review.png) | 当前，待反馈 |
 
 收到反馈后按方向、帧编号另存修改版本，记录具体意见与改法，再提交同一方向。用户明确认可当前方向后才进入下一方向；四个基本方向完成后再处理斜向图集。此前单独站姿和向下单行的提取文件仍保留为历史记录，均未被标记通过。
 
-向下 r1、向左 r1 和当前向上 r1 均为一张新站姿与八张重画关键姿势，编号 00–08；与旧版站姿＋24 帧的编号含义不同。用户同意向上原版的外撇与摆臂问题并要求修改后，本轮重画背面后跟、抬脚鞋底、膝踝与交替摆臂，另修落脚／摆腿末段纵深和站姿后跟体积，提供双速循环。向下／向左的两份认可记录作为模板依据，向上仅为待审候选，向右仍排队；最终分层模板尚未完成，正式安装包未更新。
+已认可的向下 r1、向左 r1、向上 r1 均为一张新站姿与八张重画关键姿势，编号 00–08；当前向右仍是旧版站姿＋24 帧，编号 00–24，帧号含义不同。三份认可记录均保存用户原话、范围及图像／循环摘要，作为后续模板的方向依据。向右尚未认可，最终分层模板尚未完成，正式安装包未更新。
 
 ## 现有资源与问题依据
 
