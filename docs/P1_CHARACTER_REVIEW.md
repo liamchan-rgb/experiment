@@ -4,15 +4,14 @@
 
 ## 当前审核
 
-**当前第 01 个方向：P1 向下。最新候选：r1 新站姿＋8 张关键姿势，待用户审核，尚未通过。**
+**当前第 02 个方向：P1 向左。现有 24 帧步态待用户指出修改意见。向下 r1 已获用户认可。**
 
-用户在看到原有 `Hero1Directions.png` 完整宽图后回复“就是这个”，随后要求按方向切片讨论。以这张确认过身份的图集为来源，按下、左、上、右逐方向审核。尚无动作或美术通过记录。
+用户在看到原有 `Hero1Directions.png` 完整宽图后回复“就是这个”，随后要求按方向切片讨论。向下 r1 重画后，用户回复“这就对了，继续审核下一个方向”，现按下、左、上、右顺序进入向左审核。
 
-- [r1 编号图](../Art/Review/P1/directions/down/revisions/r1/review-2x.png)
-- [r1 正常循环](../Art/Review/P1/directions/down/revisions/r1/walk.gif) · [r1 四分之一速度循环](../Art/Review/P1/directions/down/revisions/r1/walk-slow.gif)
-- [r1 改动与验证范围](../Art/Review/P1/directions/down/revisions/r1/README.md)
-- [旧版向下方向编号预览](../Art/Review/P1/directions/down/review.png) · [旧版原像素横条](../Art/Review/P1/directions/down/strip.png)
-- [当前反馈与逐帧问题核对](../Art/Review/P1/directions/down/AUDIT.md)
+- [当前向左方向编号图](../Art/Review/P1/directions/left/review.png)
+- [当前向左正常循环](../Art/Review/P1/directions/left/walk-baseline.gif) · [四分之一速度循环](../Art/Review/P1/directions/left/walk-baseline-slow.gif)
+- [向左原像素横条](../Art/Review/P1/directions/left/strip.png) · [当前审核说明](../Art/Review/P1/directions/left/README.md)
+- [已认可的向下 r1](../Art/Review/P1/directions/down/revisions/r1/README.md) · [用户确认记录](../Art/Review/P1/directions/down/revisions/r1/approval.json)
 - [完整图集固定基线](../Art/Review/P1/01-cardinal-atlas/baseline.png)
 - [审核状态及来源记录](../Art/Review/P1/review.json)
 
@@ -22,14 +21,14 @@
 
 | 顺序 | 方向 | 原像素横条 | 编号预览 | 审核状态 |
 | --- | --- | --- | --- | --- |
-| 01 | 下 | [r1 横条](../Art/Review/P1/directions/down/revisions/r1/strip.png) | [r1 预览](../Art/Review/P1/directions/down/revisions/r1/review-2x.png) | 当前，r1 待用户审核 |
-| 02 | 左 | [横条](../Art/Review/P1/directions/left/strip.png) | [预览](../Art/Review/P1/directions/left/review.png) | 排队，未审核 |
+| 01 | 下 | [r1 横条](../Art/Review/P1/directions/down/revisions/r1/strip.png) | [r1 预览](../Art/Review/P1/directions/down/revisions/r1/review-2x.png) | r1 用户已认可 |
+| 02 | 左 | [横条](../Art/Review/P1/directions/left/strip.png) | [预览](../Art/Review/P1/directions/left/review.png) | 当前，待反馈 |
 | 03 | 上 | [横条](../Art/Review/P1/directions/up/strip.png) | [预览](../Art/Review/P1/directions/up/review.png) | 排队，未审核 |
 | 04 | 右 | [横条](../Art/Review/P1/directions/right/strip.png) | [预览](../Art/Review/P1/directions/right/review.png) | 排队，未审核 |
 
 收到反馈后按方向、帧编号另存修改版本，记录具体意见与改法，再提交同一方向。用户明确认可当前方向后才进入下一方向；四个基本方向完成后再处理斜向图集。此前单独站姿和向下单行的提取文件仍保留为历史记录，均未被标记通过。
 
-r1 改为一张新站姿与八张实际重画的关键姿势，编号 00–08；01–08 是完整两步周期，不沿用旧版 01–24 编号含义。当前先核对关键动作，未通过前不会据此推进到其他方向或更新安装包。
+已认可的向下 r1 为一张新站姿与八张重画关键姿势，编号 00–08；当前向左仍为旧版站姿＋24 帧，编号 00–24，两者帧号含义不同。向下 r1 已作为后续模板的首个方向依据；最终模板尚未完成，正式安装包未更新。
 
 ## 现有资源与问题依据
 

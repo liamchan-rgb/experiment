@@ -1,0 +1,48 @@
+{
+  "direction": "left",
+  "kind": "unchanged build 28 baseline review",
+  "idleFrame": 0,
+  "walkFrames": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24
+  ],
+  "sourceSHA256": "3b16ba66b517c29c541803abf1cdfc2b0aa564343790a122082fc9910ccef898",
+  "artworkChanges": false,
+  "gifChecks": {
+    "walk-baseline.gif": {
+      "frames": 24,
+      "frameDurationMs": 40,
+      "cycleDurationMs": 960,
+      "decodedOrderAndPixels": "passed after GIF palette quantization"
+    },
+    "walk-baseline-slow.gif": {
+      "frames": 24,
+      "frameDurationMs": 160,
+      "cycleDurationMs": 3840,
+      "decodedOrderAndPixels": "passed after GIF palette quantization"
+    }
+  },
+  "artApproval": null
+}

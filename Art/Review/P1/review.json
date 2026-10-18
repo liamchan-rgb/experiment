@@ -3,8 +3,8 @@
   "format": 3,
   "updated": "2026-10-18",
   "workflow": "Review one direction at a time, sliced without pose changes from the user-identified complete P1 cardinal atlas. Modify and resubmit the same direction until explicit user approval, then advance to the next direction. Record feedback and revisions for the character template.",
-  "current": "01-down-gait",
-  "templateStatus": "requirements only; no approved template yet",
+  "current": "02-left-gait",
+  "templateStatus": "down r1 approved as the first direction basis; left under review, up/right queued; layered character template not yet complete",
   "items": [
     {
       "id": "01-down-idle",
@@ -88,7 +88,7 @@
     {
       "id": "01-down-gait",
       "direction": "down",
-      "status": "revision_ready_for_user_review",
+      "status": "approved",
       "sourceAtlas": "01-cardinal-atlas/baseline.png",
       "cropPixels": [
         0,
@@ -136,8 +136,22 @@
         {
           "id": "r1",
           "date": "2026-10-18",
-          "status": "awaiting_user_review",
-          "artApproval": null,
+          "status": "approved",
+          "artApproval": {
+            "date": "2026-10-18",
+            "reviewer": "user",
+            "statement": "这就对了，继续审核下一个方向",
+            "direction": "down",
+            "revision": "r1",
+            "scope": "one redrawn idle and 8 key poses of the down-direction cycle shown for review",
+            "status": "approved",
+            "artifacts": {
+              "review-2x.png": "6a916ebec6528b55cbe2c98f4ba6cdeb3dcc7859c2b35c9bb1b2d3e1ec303c1b",
+              "strip.png": "19d934db5e3ce02fd8054759300e5c115ab1a440c17c48f954eb48a0e23987e3",
+              "walk.gif": "8c53d6014fb86049a52fef99699e3afedbf4fb09a07709d9b1c0304f13c5924c",
+              "walk-slow.gif": "ea1025daf9577cbb53e77c108f5c25cae1a4897360dec8c559ea75437ab427e4"
+            }
+          },
           "method": "imagegen redraw of complete poses; whole-pose registration and review packaging",
           "idlePoses": 1,
           "walkingPoses": 8,
@@ -158,7 +172,21 @@
           "productionAssetsUpdated": false
         }
       ],
-      "approval": null,
+      "approval": {
+        "date": "2026-10-18",
+        "reviewer": "user",
+        "statement": "这就对了，继续审核下一个方向",
+        "direction": "down",
+        "revision": "r1",
+        "scope": "one redrawn idle and 8 key poses of the down-direction cycle shown for review",
+        "status": "approved",
+        "artifacts": {
+          "review-2x.png": "6a916ebec6528b55cbe2c98f4ba6cdeb3dcc7859c2b35c9bb1b2d3e1ec303c1b",
+          "strip.png": "19d934db5e3ce02fd8054759300e5c115ab1a440c17c48f954eb48a0e23987e3",
+          "walk.gif": "8c53d6014fb86049a52fef99699e3afedbf4fb09a07709d9b1c0304f13c5924c",
+          "walk-slow.gif": "ea1025daf9577cbb53e77c108f5c25cae1a4897360dec8c559ea75437ab427e4"
+        }
+      },
       "feedback": [
         {
           "date": "2026-10-18",
@@ -173,13 +201,13 @@
         }
       ],
       "audit": "directions/down/AUDIT.md",
-      "auditStatus": "r1 drawings ready; original concerns remain open pending user review",
+      "auditStatus": "user approved r1; the original build 28 images remain historical baseline",
       "currentRevision": "r1"
     },
     {
       "id": "02-left-gait",
       "direction": "left",
-      "status": "queued",
+      "status": "awaiting_user_feedback",
       "sourceAtlas": "01-cardinal-atlas/baseline.png",
       "cropPixels": [
         0,
