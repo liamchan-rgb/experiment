@@ -1,0 +1,132 @@
+{
+  "tool": "image_gen.imagegen",
+  "date": "2026-10-18",
+  "records": {
+    "neutral_idle_full": {
+      "path": "Art/Templates/P1-Neutral/down/r1/source/full-00.png",
+      "sha256": "377fc4999ba45802c1c48f4200a10ee049e4aaf517e668318f3511e8ae1a0724",
+      "prompt": "Create ONE complete neutral base body of the SAME front/down-facing chibi adventurer in the provided approved reference. This will be the universal body under all hairstyles, faces and clothes. Keep his exact short chibi proportions, standing pose, head-to-body size, shoulder/hip/leg proportions and camera view. Remove every accessory: hair, eyes, eyebrows, nose, mouth, scarf, coat, belt, gloves and boots. Draw a COMPLETE BALD BLANK HEAD with small ears, round scalp and cheek/chin outline, absolutely no facial features. Plain fitted IVORY sleeveless undershirt and simple CHARCOAL short fitted safety shorts, no logos, trim, lacing, belt or jewelry. Complete thin childlike chibi bare arms, relaxed closed hands, bare legs and feet. Bare feet parallel and pointing straight toward camera/down, no turned-out toes, no muscular anatomical exaggeration. Small neutral person; no sexual detail. Preserve the reference stance and same anatomical joint positions under the removed clothes. Crisp readable pixel-art clusters, restrained warm peach skin palette, thin dark brown pixel outline, upper-left light, exactly the reference's pixel-art game style. NO soft airbrush, no glow or cast shadow, no floor, no checkerboard, no text or guides. Single whole body from bald scalp to bare toes, generous TRANSPARENT padding. True transparent background with clean alpha; no grey rectangle or texture.",
+      "status": "design-reference",
+      "references": [
+        {
+          "path": "Art/Review/P1/directions/down/revisions/r1/frames/00.png",
+          "sha256": "80c042f1626923b71fd0fbe6be3e81804b359a0c5df7eeb91bc1199abf4d374b"
+        }
+      ]
+    },
+    "neutral_idle_kit": {
+      "path": "Art/Templates/P1-Neutral/down/r1/drafts/unregistered-atlas.png",
+      "sha256": "03a8c5216b5e5c0ec3f065dd930046cfed7decec249995454e2681032f06a3f0",
+      "prompt": "Paint a TRUE MODULAR NEUTRAL BODY KIT for the provided front/down-facing chibi adventurer, in the exact 3-by-3 registration template. This is a game art production sheet, not a new dressed character and not nine complete characters.\n\nPRESERVE the template's square canvas, nine equal square cells, cell border positions and small labels exactly. Everything inside cells must be TRUE TRANSPARENT background except the required body part. Remove ALL ghosted reference characters. Each cell uses the SAME full-body coordinate system as its faint reference; draw the component at its anatomical position, not centered/enlarged to fill the cell. All parts must overlay correctly WITHOUT moving or individually resizing when cells are stacked. Important full-body coordinates in each nominal 256x256 cell: bald skull top y85; ear/eye level y116; chin y132; neck y129-141; shoulders x108/142,y140; waist center125,157; pelvis y174; character RIGHT wrist screen-left x98,y165; right fist center98,171; LEFT wrist screen-right153,165; left fist153,171; hips x116/135,y174; knees y188; ankles y204; bare foot bottoms y217. Keep original down/front camera, chibi proportions and front-facing parallel feet. Complete drawing extends from scalp to bare toes, head slightly viewed from above as source.\n\nThe SAME neutral person and skin/cloth palette in all nine cells. Soft peach skin, small chibi build, dark brown thin crisp pixel outline, top-left lighting, deliberate clean pixel clusters matching reference. BASIC fitted ivory sleeveless undershirt and simple charcoal fitted safety shorts, no folds resembling a jacket. No belt, buckles, accessories, scarf, coat, boots, gloves, hair, eyes, brows, nose or mouth anywhere. No facial features at all, just complete rounded scalp/ears/cheeks/chin. No sexual details or anatomical muscle exaggeration.\n\nCell 1 top-left: ONLY complete bald blank head with ears and chin. NO neck, body, hair or features. It sits at the original head position.\nCell 2 top-middle: ONLY torso with neck, sleeveless ivory undershirt and charcoal safety shorts/pelvis. Complete shoulder attachment and crotch outline including areas arms/legs will cover. No head, arms or legs.\nCell 3 top-right: ONLY character RIGHT full bare arm, screen-left. Rounded complete shoulder cap to elbow and forearm to wrist, no hand. Its complete proximal shoulder must be drawn even where torso will cover it. Slight relaxed bend, same idle arm position.\nCell 4 middle-left: ONLY character LEFT full bare arm, screen-right, complete shoulder to wrist, no hand. Anatomical direction is opposite screen direction.\nCell 5 middle-middle: ONLY character RIGHT bare leg and bare foot, screen-left. Complete rounded upper thigh/hip cap (including hidden 2-3px under shorts), knee, calf, ankle and full foot. Foot points toward camera/down, never outward. No clothing or shoe.\nCell 6 middle-right: ONLY character LEFT bare leg and bare foot, screen-right. Same completeness, front-facing parallel foot, natural stance gap.\nCell 7 bottom-left: ONLY character RIGHT relaxed closed fist/hand, screen-left, at wrist x98,165 with center x98,171. Complete hand with short wrist overlap, suitable for future one-hand weapon grip. No forearm, glove or weapon.\nCell 8 bottom-middle: ONLY character LEFT relaxed closed fist/hand, screen-right, corresponding position. No forearm, glove or weapon.\nCell 9 bottom-right: complete neutral person ASSEMBLED from exactly those same components at the same coordinates, to show the intended registration. Bald blank face, plain underclothes and bare feet.\n\nNever draw extra faces/hair in detached pieces; never bake hands into arm images; never leave hidden body regions missing. Keep all grid/labels in the 16px outer gutter of each cell only. No shadows, glow, floor, backdrop or texture anywhere. Transparent cutouts in all drawing regions.",
+      "status": "rejected: opaque backing and component registration drift",
+      "references": [
+        {
+          "path": "Art/Templates/P1-Neutral/down/r1/references/rejected-atlas-template.png",
+          "sha256": "3acda22402a319bc8ea615cfc769ee12e3e3a1a0da2de9cac425eeee139d0430"
+        },
+        {
+          "path": "Art/Review/P1/directions/down/revisions/r1/frames/00.png",
+          "sha256": "80c042f1626923b71fd0fbe6be3e81804b359a0c5df7eeb91bc1199abf4d374b"
+        }
+      ]
+    },
+    "head": {
+      "path": "Art/Templates/P1-Neutral/down/r1/source/head.png",
+      "sha256": "d4cd418413559ffd1544a393cdc53f71692237fed321dbc77eea7be149217b35",
+      "prompt": "Edit the provided registration reference into ONE isolated anatomical body layer, on the SAME 1254x1254 transparent canvas. Preserve all FOUR cyan corner fiducials exactly; they fix canvas registration. Keep the drawing at the EXACT ORIGINAL pixel position and size. DO NOT center, enlarge, move, rotate or rescale the component. The component must overlay the reference without any adjustment. Remove every other body component completely to true transparency. No background, checkerboard, shadow, glow or labels. Match the original neutral person's restrained warm peach skin, ivory/charcoal innerwear and crisp pixel-art style. Complete the portions hidden underneath adjacent parts, with about 12-18 source pixels of overlap (2-3 final pixels). Do not add facial features, hair, accessories or muscle exaggeration. Keep ONLY the BALD BLANK HEAD including ears, cheeks and chin at reference bbox roughly x460..790,y293..588. NO neck, torso or other part. Complete its smooth closed chin contour beneath the neck attachment. Absolutely no nose, eyes, brows or mouth. The head will be the same public base for every face and hair.",
+      "status": "selected authored layer",
+      "references": [
+        {
+          "path": "Art/Templates/P1-Neutral/down/r1/references/neutral-00-registration.png",
+          "sha256": "3ff69651519955b7cdb09052760b56c8a397f4846f53cbdf34a9e9485f583307"
+        }
+      ]
+    },
+    "torso": {
+      "path": "Art/Templates/P1-Neutral/down/r1/drafts/torso.png",
+      "sha256": "ee5a0f2f60c05759089b4c3f3aa94d04a6a67bbe7cab7669e2cf5581c7fe84b0",
+      "prompt": "Edit the provided registration reference into ONE isolated anatomical body layer, on the SAME 1254x1254 transparent canvas. Preserve all FOUR cyan corner fiducials exactly; they fix canvas registration. Keep the drawing at the EXACT ORIGINAL pixel position and size. DO NOT center, enlarge, move, rotate or rescale the component. The component must overlay the reference without any adjustment. Remove every other body component completely to true transparency. No background, checkerboard, shadow, glow or labels. Match the original neutral person's restrained warm peach skin, ivory/charcoal innerwear and crisp pixel-art style. Complete the portions hidden underneath adjacent parts, with about 12-18 source pixels of overlap (2-3 final pixels). Do not add facial features, hair, accessories or muscle exaggeration. Keep ONLY complete TORSO including short neck, ivory sleeveless undershirt and charcoal fitted safety shorts/pelvis, roughly x520..725,y575..875. NO head, arms, hands, legs or feet. Complete both shoulder attachment areas and pelvic/hip openings previously covered by arms/legs. Neck reaches slightly under chin. No belt, lacing, logos or outer clothes.",
+      "status": "not used: registration or part ownership fails",
+      "references": [
+        {
+          "path": "Art/Templates/P1-Neutral/down/r1/references/neutral-00-registration.png",
+          "sha256": "3ff69651519955b7cdb09052760b56c8a397f4846f53cbdf34a9e9485f583307"
+        }
+      ]
+    },
+    "torso_fixed": {
+      "path": "Art/Templates/P1-Neutral/down/r1/source/torso_fixed.png",
+      "sha256": "9bd2d6fb6862d09c8368d4fadc12fb384ed235b526f62e60ae401270d4cf6564",
+      "prompt": "Edit this TORSO-ONLY neutral-body sprite layer, preserve the exact 1254x1254 canvas, four cyan corner fiducials, position, scale, ivory undershirt, neck and dark shorts drawing. One correction only: REMOVE the two exposed peach THIGH STUBS below the charcoal shorts. The torso layer must stop exactly at the dark shorts hem, with true transparency below; complete bare thighs belong to independent leg layers. Keep no leg, knee, foot, hand or arm except the small complete shoulder/neck attachment surfaces that are already part of this torso. Do not extend or lower the shorts, do not move or resize the torso, do not add skin below it. All other pixels and proportions remain as close as possible to this source. No facial features, background, shadow, glow, texture or checkerboard. True transparent cutout.",
+      "status": "selected authored layer",
+      "references": [
+        {
+          "path": "Art/Templates/P1-Neutral/down/r1/drafts/torso.png",
+          "sha256": "ee5a0f2f60c05759089b4c3f3aa94d04a6a67bbe7cab7669e2cf5581c7fe84b0"
+        }
+      ]
+    },
+    "leg-right": {
+      "path": "Art/Templates/P1-Neutral/down/r1/source/leg-right.png",
+      "sha256": "a92d25440d0e500de95d0b83e617484fa2b83288afa4afae908fbe803926612d",
+      "prompt": "Edit the provided registration reference into ONE isolated anatomical body layer, on the SAME 1254x1254 transparent canvas. Preserve all FOUR cyan corner fiducials exactly; they fix canvas registration. Keep the drawing at the EXACT ORIGINAL pixel position and size. DO NOT center, enlarge, move, rotate or rescale the component. The component must overlay the reference without any adjustment. Remove every other body component completely to true transparency. No background, checkerboard, shadow, glow or labels. Match the original neutral person's restrained warm peach skin, ivory/charcoal innerwear and crisp pixel-art style. Complete the portions hidden underneath adjacent parts, with about 12-18 source pixels of overlap (2-3 final pixels). Do not add facial features, hair, accessories or muscle exaggeration. Keep ONLY character RIGHT BARE leg and bare foot (screen LEFT), roughly x525..625,y850..1103. Draw COMPLETE upper thigh cap behind shorts at y832..875, then knee, calf, ankle, full bare foot. Preserve exact original leg/foot position and shape, toe points straight toward camera/down. No shorts, no boot, no second leg or body. Complete any thigh previously hidden by shorts.",
+      "status": "selected authored layer",
+      "references": [
+        {
+          "path": "Art/Templates/P1-Neutral/down/r1/references/neutral-00-registration.png",
+          "sha256": "3ff69651519955b7cdb09052760b56c8a397f4846f53cbdf34a9e9485f583307"
+        }
+      ]
+    },
+    "leg-left": {
+      "path": "Art/Templates/P1-Neutral/down/r1/source/leg-left.png",
+      "sha256": "b28a87dbd9226b50ff8158ce64604eb1cd7aa5f3a1fc29955cedd8e34c05da99",
+      "prompt": "Edit the provided registration reference into ONE isolated anatomical body layer, on the SAME 1254x1254 transparent canvas. Preserve all FOUR cyan corner fiducials exactly; they fix canvas registration. Keep the drawing at the EXACT ORIGINAL pixel position and size. DO NOT center, enlarge, move, rotate or rescale the component. The component must overlay the reference without any adjustment. Remove every other body component completely to true transparency. No background, checkerboard, shadow, glow or labels. Match the original neutral person's restrained warm peach skin, ivory/charcoal innerwear and crisp pixel-art style. Complete the portions hidden underneath adjacent parts, with about 12-18 source pixels of overlap (2-3 final pixels). Do not add facial features, hair, accessories or muscle exaggeration. Keep ONLY character LEFT BARE leg and bare foot (screen RIGHT), roughly x635..735,y850..1103. Complete upper thigh cap behind shorts y832..875, then knee, calf, ankle, full bare foot. Exact reference pose and scale, toe toward camera/down. No shorts, boots, second leg or body. Complete occluded thigh.",
+      "status": "selected authored layer",
+      "references": [
+        {
+          "path": "Art/Templates/P1-Neutral/down/r1/references/neutral-00-registration.png",
+          "sha256": "3ff69651519955b7cdb09052760b56c8a397f4846f53cbdf34a9e9485f583307"
+        }
+      ]
+    },
+    "neutral_arm_board": {
+      "path": "Art/Templates/P1-Neutral/down/r1/drafts/neutral_arm_board.png",
+      "sha256": "963ee864db47804ec1cacc746df398d98dcb43e9ad7e50ddf4a76a5d1feaea50",
+      "prompt": "Create a FOUR-PANEL ART PRODUCTION BOARD in the same exact square 2x2 layout as this reference. This is a neutral game-avatar component registration study. Keep cyan panel headings and all corner registration markers. Preserve identical scale and positioning within every panel. Bottom-left panel retains the COMPLETE avatar wearing its ivory undershirt and charcoal shorts, as anatomical context. Top-left panel shows only its character RIGHT ARM (screen-left limb) from complete rounded shoulder cap to wrist, with the rest of that panel transparent. Top-right shows only its character LEFT ARM (screen-right limb) from rounded shoulder cap to wrist. Bottom-right shows both corresponding arm layers together, in their correct position, with a thin dotted schematic line connecting shoulder positions for anatomical context. The two arm drawings are copied from the corresponding avatar arms, same peach skin, same modest slim chibi form, pose, pixel size and warm pixel-art shading; complete 2-3 final-pixel shoulder and wrist overlaps. Hands are omitted from arm layers; no fingers or fists in the three arm panels. Remove all ghosted reference bodies from the three arm panels, keeping the full-body reference only in bottom-left. Do not enlarge or center isolated parts. No grey panel fill, no checkerboard, no glow or shadows; all panel drawing regions have TRUE TRANSPARENT backgrounds. No extra anatomy, clothing or accessories.",
+      "status": "not used: registration or part ownership fails",
+      "references": [
+        {
+          "path": "Art/Templates/P1-Neutral/down/r1/references/arm-context-template.png",
+          "sha256": "2060e4318d79624700d84bfeb5274129826b1b37b9031ee4a84e5d8d84db581e"
+        }
+      ]
+    },
+    "neutral_arm_board_fixed": {
+      "path": "Art/Templates/P1-Neutral/down/r1/drafts/neutral_arm_board_fixed.png",
+      "sha256": "f1af5e18f3f450322c42fe1acc555c22f4498fc35e0e41962e94471745dc70d6",
+      "prompt": "Correct the REGISTRATION of this four-panel avatar art board. Preserve complete bottom-left reference avatar, bottom-right anatomical diagram, cyan headings, all corner markers, and exact 1254x1254 square canvas. In the TWO TOP PANELS ONLY, the detached arm drawings are too large and too high. Redraw each arm to fit its cyan target rectangle, preserving the same arm anatomy, pose, proportions and skin style. Top-left arm must occupy approx x222..284, y292..414; top-right arm must occupy approx x970..1032, y292..414. This means the shoulder caps move DOWN to y296-302 and wrists end near y410, while each arm becomes smaller. The top-left right-arm shoulder is around (272,300) and wrist around (240,407). Top-right left-arm shoulder around (983,300), wrist around (1015,407). Keep arms separate from hands. After fitting, REMOVE the two cyan target rectangles, leaving only correctly registered transparent arm cutouts in the top panels. Do not change the actual complete reference character below. True transparent background; no grey fill or shadow. This is a scale/registration correction for a game production board.",
+      "status": "not used: registration or part ownership fails",
+      "references": [
+        {
+          "path": "Art/Templates/P1-Neutral/down/r1/references/arm-fit-targets.png",
+          "sha256": "c69ab5f17a8b3fdca4f0677ec8aa14124a100ac8ab15182f7b396335b9e7f23e"
+        }
+      ]
+    }
+  },
+  "blockedRequests": [
+    {
+      "part": "isolated right arm",
+      "reason": "image tool output moderation rejected (sexual); no image returned",
+      "requestId": "04999435-1de1-4076-93ce-4a0f97d52c95"
+    },
+    {
+      "part": "isolated left arm",
+      "reason": "image tool output moderation rejected (sexual); no image returned",
+      "requestId": "ac3fdc95-df13-408a-a052-856e9610f254"
+    }
+  ],
+  "armSource": "The complete neutral full-00 design, geometrically exported at its original coordinates. Shoulder-girdle surface is supplied by the independently drawn complete torso. Context-board arms were not registered and were rejected; no rejected isolated arm output exists.",
+  "initialArmBatchNote": "The initial two arm jobs yielded no stored image; explicit retries produced the recorded moderation errors. No isolated-arm output is used."
+}

@@ -1,0 +1,79 @@
+{
+  "date": "2026-10-18",
+  "artApproval": null,
+  "scope": "down idle 00 only; neutral-body proportions pending user review",
+  "registeredRGBA256Layers": 8,
+  "sourceTransformSharedByAllParts": true,
+  "alphaContentAutoFit": false,
+  "sourceImagesUnmodified": true,
+  "independentHeadTile96Matches": true,
+  "oraLayerReassemblyPixelExact": true,
+  "jointOverlapChecks": [
+    {
+      "parts": [
+        "head.base",
+        "body.torso"
+      ],
+      "opaqueOverlapPixels": 35,
+      "overlapHeightPx": 4
+    },
+    {
+      "parts": [
+        "body.arm.right",
+        "body.torso"
+      ],
+      "opaqueOverlapPixels": 121,
+      "overlapHeightPx": 20
+    },
+    {
+      "parts": [
+        "body.arm.left",
+        "body.torso"
+      ],
+      "opaqueOverlapPixels": 109,
+      "overlapHeightPx": 19
+    },
+    {
+      "parts": [
+        "body.arm.right",
+        "body.hand.right"
+      ],
+      "opaqueOverlapPixels": 54,
+      "overlapHeightPx": 5
+    },
+    {
+      "parts": [
+        "body.arm.left",
+        "body.hand.left"
+      ],
+      "opaqueOverlapPixels": 52,
+      "overlapHeightPx": 5
+    },
+    {
+      "parts": [
+        "body.leg.right",
+        "body.torso"
+      ],
+      "opaqueOverlapPixels": 158,
+      "overlapHeightPx": 12
+    },
+    {
+      "parts": [
+        "body.leg.left",
+        "body.torso"
+      ],
+      "opaqueOverlapPixels": 175,
+      "overlapHeightPx": 12
+    }
+  ],
+  "strongAlphaBodyIsOneConnectedComponent": true,
+  "handUnderwearFragmentsExcluded": true,
+  "idlePackageContractPassed": true,
+  "productionPackageCorrectlyRejected": true,
+  "approvedMotionFramesUnchanged": 72,
+  "previousImagesUnchanged": 510,
+  "reexportSnapshotFilesByteExact": 31,
+  "walkingFramesProduced": 0,
+  "nativeEditorRoundtripOrApplicationBuild": "not run",
+  "checksAreNotUserArtworkApproval": true
+}

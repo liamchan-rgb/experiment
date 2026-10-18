@@ -3,8 +3,8 @@
   "format": 3,
   "updated": "2026-10-18",
   "workflow": "Review one direction at a time from fixed cardinal and diagonal baselines. Modify and resubmit the same direction until explicit user artwork approval, then advance. Record provenance, feedback and accepted revisions for the future character template.",
-  "current": "template-art-standard-v1",
-  "templateStatus": "eight approved motion directions retained; modular pilot revision requested; reusable art contract draft and guides created, neutral body and generic importer pending",
+  "current": "neutral-down-idle-r1",
+  "templateStatus": "approved eight-direction motions retained; first common neutral down idle body r1 awaits review; walking neutral poses and generic modular integration pending",
   "items": [
     {
       "id": "01-down-idle",
@@ -1319,13 +1319,30 @@
     ]
   },
   "templateStandard": {
-    "status": "draft",
+    "status": "neutral-body-idle-r1-awaiting-review",
     "path": "Art/Standards/P1-Parts-v1/README.md",
     "profile": "Art/Standards/P1-Parts-v1/profile.json",
     "artApproval": null,
     "neutralBodyComplete": false,
     "genericRendererComplete": false,
     "thirdResourceIntegrationComplete": false,
-    "motionApprovalUnchanged": true
+    "motionApprovalUnchanged": true,
+    "neutralBodyIdleCandidate": "Art/Templates/P1-Neutral/down/r1"
+  },
+  "neutralBodyReview": {
+    "status": "awaiting_user_review",
+    "revision": "r1",
+    "direction": "down",
+    "pose": "idle 00",
+    "source": "Art/Templates/P1-Neutral/down/r1",
+    "reviewImage": "Art/Templates/P1-Neutral/down/r1/review.png",
+    "composite": "Art/Templates/P1-Neutral/down/r1/00.png",
+    "assetManifest": "Art/Templates/P1-Neutral/down/r1/asset.json",
+    "registration": "Art/Templates/P1-Neutral/down/r1/registration.json",
+    "validation": "Art/Templates/P1-Neutral/down/r1/validation.json",
+    "artApproval": null,
+    "request": "按你的思路开始下一步",
+    "scope": "first shared neutral body and head reference; eight independent base layers; 00 only; not walking animation or completed customization system",
+    "next": "after common-body proportion review, author down walking poses 01-08"
   }
 }

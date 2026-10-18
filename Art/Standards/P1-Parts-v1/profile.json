@@ -187,7 +187,7 @@
     }
   },
   "releaseBlockers": [
-    "neutral full body missing",
+    "neutral body only has an unapproved idle candidate; eight neutral walking poses missing",
     "head layout not reviewed",
     "shoulder/elbow tracks incomplete",
     "per-pose draw order not reviewed",
@@ -205,5 +205,12 @@
     "skinAndSkinShadingOwner": "base",
     "optionalWorkingScale": 4,
     "perAssetAutoFitAllowed": false
+  },
+  "neutralBodyCandidate": {
+    "direction": "down",
+    "pose": "idle 00",
+    "path": "Art/Templates/P1-Neutral/down/r1",
+    "status": "awaiting-user-art-review",
+    "artApproval": null
   }
 }

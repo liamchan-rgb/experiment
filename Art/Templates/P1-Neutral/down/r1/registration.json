@@ -1,0 +1,125 @@
+{
+  "status": "candidate-not-approved",
+  "sourceCanvas": [
+    1254,
+    1254
+  ],
+  "sourceToWorld": [
+    0.16,
+    0,
+    0,
+    0.16,
+    25,
+    38
+  ],
+  "sourceGutter": [
+    80,
+    80,
+    1174,
+    1174
+  ],
+  "allPartsShareOneTransform": true,
+  "alphaFitOrPerPartResize": false,
+  "commonAlphaExport": "alpha >= 250 becomes 255 for all parts; raw sources unchanged",
+  "handAndArmSource": "full-00.png, fixed anatomical partitions",
+  "shoulderGirdleOwner": "body.torso; arm roots overlap underneath",
+  "hipRootCutY": 170,
+  "headLocalCanvas": [
+    96,
+    96
+  ],
+  "headLocalOrigin": [
+    76,
+    61
+  ],
+  "eyeGuideWorld": {
+    "right": [
+      114,
+      117
+    ],
+    "left": [
+      134,
+      117
+    ]
+  },
+  "neckGuideWorld": [
+    124,
+    133
+  ],
+  "rightWristGuide": [
+    102,
+    165
+  ],
+  "leftWristGuide": [
+    148,
+    165
+  ],
+  "hipRightGuide": [
+    117,
+    176
+  ],
+  "hipLeftGuide": [
+    135,
+    176
+  ],
+  "shoulderRightGuide": [
+    110,
+    140
+  ],
+  "shoulderLeftGuide": [
+    140,
+    140
+  ],
+  "elbowRightGuide": [
+    104,
+    153
+  ],
+  "elbowLeftGuide": [
+    146,
+    153
+  ],
+  "gripRightGuide": [
+    102,
+    170
+  ],
+  "gripLeftGuide": [
+    148,
+    170
+  ],
+  "kneeRightGuide": [
+    118,
+    188
+  ],
+  "kneeLeftGuide": [
+    134,
+    188
+  ],
+  "ankleRightGuide": [
+    116,
+    205
+  ],
+  "ankleLeftGuide": [
+    134,
+    205
+  ],
+  "soleRightGuide": [
+    117,
+    214
+  ],
+  "soleLeftGuide": [
+    134,
+    214
+  ],
+  "guidesAreProposedNotApproved": true,
+  "layerOrder": [
+    "body.leg.right",
+    "body.leg.left",
+    "body.arm.right",
+    "body.arm.left",
+    "body.torso",
+    "head.base",
+    "body.hand.right",
+    "body.hand.left"
+  ],
+  "walkingFrames": "not produced; first shared-body proportions need artwork review"
+}
