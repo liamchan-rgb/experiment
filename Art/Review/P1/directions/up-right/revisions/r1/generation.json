@@ -1,0 +1,126 @@
+{
+  "date": "2026-10-18",
+  "direction": "up-right",
+  "revision": "r1",
+  "method": "imagegen complete northeast counterparts of approved up-left r6 poses, using matching phase as input; no programmatic limb editing",
+  "artApproval": null,
+  "poses": [
+    {
+      "pose": 0,
+      "prompt": "Edit the supplied SINGLE P1 sprite into its precise horizontally reflected full-body counterpart facing UP-RIGHT / NORTHEAST ↗. Reflect the ENTIRE pose's geometry, not isolated limbs. This is the opposite-view counterpart of an APPROVED up-left frame, so preserve this exact gait phase, foot-to-foot distance, knee/ankle bends, foot lift, rigid boot volumes, supporting leg, overlapping leg order, arm swing, proportions and head/body yaw. Do not invent a different step. The character's head, shoulders, pelvis, knees and BOTH toes consistently point UP-RIGHT away from viewer. Show three-quarter REAR, the back of head and coat dominate, only a little RIGHT ear/face edge; do not turn to front or pure side. Scarf trails to LEFT, pouch moves with the entire reflection to LEFT. Same tousled chestnut hair, vivid blue scarf, blue coat cream/gold trim, white cuffs, brown gloves/straps/pouch, charcoal trousers, full folded-cuff brown boots. Keep the original sprite's precise illustration style, outline, colors and silhouette detail. Preserve both boot toe/heel relationships, toes northeast, no outward splay or twisted ankle, no newly giant sole or shrinking boot. Do not open gathered legs into a standing split. Both boots and every limb stay complete and attached, with the same natural occlusion as the reflected source. One entire centered sprite, generous transparent margins. NO panels, labels, numbers, floor, cast shadow, glow or scenery. Transparent RGBA background. This is pose 00; preserve the supplied neutral idle stance exactly in its reflected view.",
+      "references": [
+        "/workspace/experiment/Art/Review/P1/directions/up-left/revisions/r6/raw/00.png"
+      ],
+      "selectedSource": "/workspace/generated_images/exec-6ae79e4d-a99a-4a07-86ef-75848691c012.png",
+      "savedAs": "raw/00.png",
+      "selectedSourceSHA256": "b57721ce495e4974cfb46b7491aac0bc8fb40bd7deba5a1142b77d96f49ac31d",
+      "referenceSHA256": {
+        "/workspace/experiment/Art/Review/P1/directions/up-left/revisions/r6/raw/00.png": "e4e9605f279278da4ed4cd5e869e089578f0d5728f66ba2790aaa4e23b7e93ee"
+      }
+    },
+    {
+      "pose": 1,
+      "prompt": "Edit the supplied SINGLE P1 sprite into its precise horizontally reflected full-body counterpart facing UP-RIGHT / NORTHEAST ↗. Reflect the ENTIRE pose's geometry, not isolated limbs. This is the opposite-view counterpart of an APPROVED up-left frame, so preserve this exact gait phase, foot-to-foot distance, knee/ankle bends, foot lift, rigid boot volumes, supporting leg, overlapping leg order, arm swing, proportions and head/body yaw. Do not invent a different step. The character's head, shoulders, pelvis, knees and BOTH toes consistently point UP-RIGHT away from viewer. Show three-quarter REAR, the back of head and coat dominate, only a little RIGHT ear/face edge; do not turn to front or pure side. Scarf trails to LEFT, pouch moves with the entire reflection to LEFT. Same tousled chestnut hair, vivid blue scarf, blue coat cream/gold trim, white cuffs, brown gloves/straps/pouch, charcoal trousers, full folded-cuff brown boots. Keep the original sprite's precise illustration style, outline, colors and silhouette detail. Preserve both boot toe/heel relationships, toes northeast, no outward splay or twisted ankle, no newly giant sole or shrinking boot. Do not open gathered legs into a standing split. Both boots and every limb stay complete and attached, with the same natural occlusion as the reflected source. One entire centered sprite, generous transparent margins. NO panels, labels, numbers, floor, cast shadow, glow or scenery. Transparent RGBA background. This is pose 01; preserve the supplied walking key pose exactly in its reflected view.",
+      "references": [
+        "/workspace/experiment/Art/Review/P1/directions/up-left/revisions/r6/raw/01.png"
+      ],
+      "selectedSource": "/workspace/generated_images/exec-10836b8b-ddfd-4444-a515-627b675b3e19.png",
+      "savedAs": "raw/01.png",
+      "selectedSourceSHA256": "cf410ad615130584c37cdc5741961a9d591f4982ca43e30fcc3e32707a15e79c",
+      "referenceSHA256": {
+        "/workspace/experiment/Art/Review/P1/directions/up-left/revisions/r6/raw/01.png": "8d2e8b5681b430013d8bd56fa005964d47f5db79268021613592e8c947af4e31"
+      }
+    },
+    {
+      "pose": 2,
+      "prompt": "Edit the supplied SINGLE P1 sprite into its precise horizontally reflected full-body counterpart facing UP-RIGHT / NORTHEAST ↗. Reflect the ENTIRE pose's geometry, not isolated limbs. This is the opposite-view counterpart of an APPROVED up-left frame, so preserve this exact gait phase, foot-to-foot distance, knee/ankle bends, foot lift, rigid boot volumes, supporting leg, overlapping leg order, arm swing, proportions and head/body yaw. Do not invent a different step. The character's head, shoulders, pelvis, knees and BOTH toes consistently point UP-RIGHT away from viewer. Show three-quarter REAR, the back of head and coat dominate, only a little RIGHT ear/face edge; do not turn to front or pure side. Scarf trails to LEFT, pouch moves with the entire reflection to LEFT. Same tousled chestnut hair, vivid blue scarf, blue coat cream/gold trim, white cuffs, brown gloves/straps/pouch, charcoal trousers, full folded-cuff brown boots. Keep the original sprite's precise illustration style, outline, colors and silhouette detail. Preserve both boot toe/heel relationships, toes northeast, no outward splay or twisted ankle, no newly giant sole or shrinking boot. Do not open gathered legs into a standing split. Both boots and every limb stay complete and attached, with the same natural occlusion as the reflected source. One entire centered sprite, generous transparent margins. NO panels, labels, numbers, floor, cast shadow, glow or scenery. Transparent RGBA background. This is pose 02; preserve the supplied walking key pose exactly in its reflected view.",
+      "references": [
+        "/workspace/experiment/Art/Review/P1/directions/up-left/revisions/r6/raw/02.png"
+      ],
+      "selectedSource": "/workspace/generated_images/exec-5820546b-428c-4b10-8d16-a1fa37cae55b.png",
+      "savedAs": "raw/02.png",
+      "selectedSourceSHA256": "e04f5b6e81295314a117f72fd7533e5a5345ff25719a1def08f492a0c1fc141e",
+      "referenceSHA256": {
+        "/workspace/experiment/Art/Review/P1/directions/up-left/revisions/r6/raw/02.png": "d495739b5efc5f7c02ada082130efde6a48d4db5ea5cc088272151ee5d672afa"
+      }
+    },
+    {
+      "pose": 3,
+      "prompt": "Edit the supplied SINGLE P1 sprite into its precise horizontally reflected full-body counterpart facing UP-RIGHT / NORTHEAST ↗. Reflect the ENTIRE pose's geometry, not isolated limbs. This is the opposite-view counterpart of an APPROVED up-left frame, so preserve this exact gait phase, foot-to-foot distance, knee/ankle bends, foot lift, rigid boot volumes, supporting leg, overlapping leg order, arm swing, proportions and head/body yaw. Do not invent a different step. The character's head, shoulders, pelvis, knees and BOTH toes consistently point UP-RIGHT away from viewer. Show three-quarter REAR, the back of head and coat dominate, only a little RIGHT ear/face edge; do not turn to front or pure side. Scarf trails to LEFT, pouch moves with the entire reflection to LEFT. Same tousled chestnut hair, vivid blue scarf, blue coat cream/gold trim, white cuffs, brown gloves/straps/pouch, charcoal trousers, full folded-cuff brown boots. Keep the original sprite's precise illustration style, outline, colors and silhouette detail. Preserve both boot toe/heel relationships, toes northeast, no outward splay or twisted ankle, no newly giant sole or shrinking boot. Do not open gathered legs into a standing split. Both boots and every limb stay complete and attached, with the same natural occlusion as the reflected source. One entire centered sprite, generous transparent margins. NO panels, labels, numbers, floor, cast shadow, glow or scenery. Transparent RGBA background. This is pose 03, the approved gathered-leg transition. CRITICAL: preserve EXACTLY the source's narrow foot spacing and supporting vs moving leg, in the reflected view. Do not straighten the moving leg into a wide idle stance. Reflect the whole body heading so this frame remains northeast like every adjacent frame.",
+      "references": [
+        "/workspace/experiment/Art/Review/P1/directions/up-left/revisions/r6/raw/03.png"
+      ],
+      "selectedSource": "/workspace/generated_images/exec-0bb8f615-bcaf-427f-8d79-3e5ca85afe89.png",
+      "savedAs": "raw/03.png",
+      "selectedSourceSHA256": "9b5da2b618cd8c2843d1f8050fd3a484ae29838bbf69f7ba2754c8bbc78299e3",
+      "referenceSHA256": {
+        "/workspace/experiment/Art/Review/P1/directions/up-left/revisions/r6/raw/03.png": "5b16e1b297a27a032c065b48414401d8a3cf55218448577084830ad3f95c2de8"
+      }
+    },
+    {
+      "pose": 4,
+      "prompt": "Edit the supplied SINGLE P1 sprite into its precise horizontally reflected full-body counterpart facing UP-RIGHT / NORTHEAST ↗. Reflect the ENTIRE pose's geometry, not isolated limbs. This is the opposite-view counterpart of an APPROVED up-left frame, so preserve this exact gait phase, foot-to-foot distance, knee/ankle bends, foot lift, rigid boot volumes, supporting leg, overlapping leg order, arm swing, proportions and head/body yaw. Do not invent a different step. The character's head, shoulders, pelvis, knees and BOTH toes consistently point UP-RIGHT away from viewer. Show three-quarter REAR, the back of head and coat dominate, only a little RIGHT ear/face edge; do not turn to front or pure side. Scarf trails to LEFT, pouch moves with the entire reflection to LEFT. Same tousled chestnut hair, vivid blue scarf, blue coat cream/gold trim, white cuffs, brown gloves/straps/pouch, charcoal trousers, full folded-cuff brown boots. Keep the original sprite's precise illustration style, outline, colors and silhouette detail. Preserve both boot toe/heel relationships, toes northeast, no outward splay or twisted ankle, no newly giant sole or shrinking boot. Do not open gathered legs into a standing split. Both boots and every limb stay complete and attached, with the same natural occlusion as the reflected source. One entire centered sprite, generous transparent margins. NO panels, labels, numbers, floor, cast shadow, glow or scenery. Transparent RGBA background. This is pose 04, the approved gathered-leg transition. CRITICAL: preserve EXACTLY the source's narrow foot spacing and supporting vs moving leg, in the reflected view. Do not straighten the moving leg into a wide idle stance. Reflect the whole body heading so this frame remains northeast like every adjacent frame.",
+      "references": [
+        "/workspace/experiment/Art/Review/P1/directions/up-left/revisions/r6/raw/04.png"
+      ],
+      "selectedSource": "/workspace/generated_images/exec-df957035-ccd6-4970-8d96-f6ee69d09e93.png",
+      "savedAs": "raw/04.png",
+      "selectedSourceSHA256": "5e59fc3102fb481b3733e16e0985ee932823fe3ea52eba884235e19ea63741c4",
+      "referenceSHA256": {
+        "/workspace/experiment/Art/Review/P1/directions/up-left/revisions/r6/raw/04.png": "59d53abf6b2875f9bee69735850b705a0bf170affdf39ec78623a052d9ea9093"
+      }
+    },
+    {
+      "pose": 5,
+      "prompt": "Edit the supplied SINGLE P1 sprite into its precise horizontally reflected full-body counterpart facing UP-RIGHT / NORTHEAST ↗. Reflect the ENTIRE pose's geometry, not isolated limbs. This is the opposite-view counterpart of an APPROVED up-left frame, so preserve this exact gait phase, foot-to-foot distance, knee/ankle bends, foot lift, rigid boot volumes, supporting leg, overlapping leg order, arm swing, proportions and head/body yaw. Do not invent a different step. The character's head, shoulders, pelvis, knees and BOTH toes consistently point UP-RIGHT away from viewer. Show three-quarter REAR, the back of head and coat dominate, only a little RIGHT ear/face edge; do not turn to front or pure side. Scarf trails to LEFT, pouch moves with the entire reflection to LEFT. Same tousled chestnut hair, vivid blue scarf, blue coat cream/gold trim, white cuffs, brown gloves/straps/pouch, charcoal trousers, full folded-cuff brown boots. Keep the original sprite's precise illustration style, outline, colors and silhouette detail. Preserve both boot toe/heel relationships, toes northeast, no outward splay or twisted ankle, no newly giant sole or shrinking boot. Do not open gathered legs into a standing split. Both boots and every limb stay complete and attached, with the same natural occlusion as the reflected source. One entire centered sprite, generous transparent margins. NO panels, labels, numbers, floor, cast shadow, glow or scenery. Transparent RGBA background. This is pose 05, the approved gathered-leg transition. CRITICAL: preserve EXACTLY the source's narrow foot spacing and supporting vs moving leg, in the reflected view. Do not straighten the moving leg into a wide idle stance. Reflect the whole body heading so this frame remains northeast like every adjacent frame.",
+      "references": [
+        "/workspace/experiment/Art/Review/P1/directions/up-left/revisions/r6/raw/05.png"
+      ],
+      "selectedSource": "/workspace/generated_images/exec-e9304b0e-393b-46e0-9b6e-7b75b75fa382.png",
+      "savedAs": "raw/05.png",
+      "selectedSourceSHA256": "a57d2ac6e01a2725033db7b62f1f59992378c5e9b6bece2845f15e67a2ad1d22",
+      "referenceSHA256": {
+        "/workspace/experiment/Art/Review/P1/directions/up-left/revisions/r6/raw/05.png": "d52bd6967f4f8f101d1a3ee14f787043f2b20e8ff0f552f9863d659df128903d"
+      }
+    },
+    {
+      "pose": 6,
+      "prompt": "Edit the supplied SINGLE P1 sprite into its precise horizontally reflected full-body counterpart facing UP-RIGHT / NORTHEAST ↗. Reflect the ENTIRE pose's geometry, not isolated limbs. This is the opposite-view counterpart of an APPROVED up-left frame, so preserve this exact gait phase, foot-to-foot distance, knee/ankle bends, foot lift, rigid boot volumes, supporting leg, overlapping leg order, arm swing, proportions and head/body yaw. Do not invent a different step. The character's head, shoulders, pelvis, knees and BOTH toes consistently point UP-RIGHT away from viewer. Show three-quarter REAR, the back of head and coat dominate, only a little RIGHT ear/face edge; do not turn to front or pure side. Scarf trails to LEFT, pouch moves with the entire reflection to LEFT. Same tousled chestnut hair, vivid blue scarf, blue coat cream/gold trim, white cuffs, brown gloves/straps/pouch, charcoal trousers, full folded-cuff brown boots. Keep the original sprite's precise illustration style, outline, colors and silhouette detail. Preserve both boot toe/heel relationships, toes northeast, no outward splay or twisted ankle, no newly giant sole or shrinking boot. Do not open gathered legs into a standing split. Both boots and every limb stay complete and attached, with the same natural occlusion as the reflected source. One entire centered sprite, generous transparent margins. NO panels, labels, numbers, floor, cast shadow, glow or scenery. Transparent RGBA background. This is pose 06, preserve its exact approved support/return/swing relationship and compact stride in the reflected view. The toe direction remains northeast throughout, and pose08 must join back to pose01 without changing yaw.",
+      "references": [
+        "/workspace/experiment/Art/Review/P1/directions/up-left/revisions/r6/raw/06.png"
+      ],
+      "selectedSource": "/workspace/generated_images/exec-b2f66542-635d-4143-b48e-4c2cfa28476a.png",
+      "savedAs": "raw/06.png",
+      "selectedSourceSHA256": "0fecd1335801f0529edb8a5850092308320b2d778d5b021dc368ebd1bf365ba8",
+      "referenceSHA256": {
+        "/workspace/experiment/Art/Review/P1/directions/up-left/revisions/r6/raw/06.png": "0d048a5782dc529d550d4e62f8f100022eec722688cafd9782881345fbfe9499"
+      }
+    },
+    {
+      "pose": 7,
+      "prompt": "Edit the supplied SINGLE P1 sprite into its precise horizontally reflected full-body counterpart facing UP-RIGHT / NORTHEAST ↗. Reflect the ENTIRE pose's geometry, not isolated limbs. This is the opposite-view counterpart of an APPROVED up-left frame, so preserve this exact gait phase, foot-to-foot distance, knee/ankle bends, foot lift, rigid boot volumes, supporting leg, overlapping leg order, arm swing, proportions and head/body yaw. Do not invent a different step. The character's head, shoulders, pelvis, knees and BOTH toes consistently point UP-RIGHT away from viewer. Show three-quarter REAR, the back of head and coat dominate, only a little RIGHT ear/face edge; do not turn to front or pure side. Scarf trails to LEFT, pouch moves with the entire reflection to LEFT. Same tousled chestnut hair, vivid blue scarf, blue coat cream/gold trim, white cuffs, brown gloves/straps/pouch, charcoal trousers, full folded-cuff brown boots. Keep the original sprite's precise illustration style, outline, colors and silhouette detail. Preserve both boot toe/heel relationships, toes northeast, no outward splay or twisted ankle, no newly giant sole or shrinking boot. Do not open gathered legs into a standing split. Both boots and every limb stay complete and attached, with the same natural occlusion as the reflected source. One entire centered sprite, generous transparent margins. NO panels, labels, numbers, floor, cast shadow, glow or scenery. Transparent RGBA background. This is pose 07, preserve its exact approved support/return/swing relationship and compact stride in the reflected view. The toe direction remains northeast throughout, and pose08 must join back to pose01 without changing yaw.",
+      "references": [
+        "/workspace/experiment/Art/Review/P1/directions/up-left/revisions/r6/raw/07.png"
+      ],
+      "selectedSource": "/workspace/generated_images/exec-a81c7555-5208-4998-aa7c-c4ca3d3411fe.png",
+      "savedAs": "raw/07.png",
+      "selectedSourceSHA256": "92d5b36c3e4072b1be14a900bb4eac62570ba8f90408c5367cd085c92cc3edf6",
+      "referenceSHA256": {
+        "/workspace/experiment/Art/Review/P1/directions/up-left/revisions/r6/raw/07.png": "38a998ea6d96b126fbfd483b1b3a746fa61de62a4b3afeaf0026a0babf0da292"
+      }
+    },
+    {
+      "pose": 8,
+      "prompt": "Edit the supplied SINGLE P1 sprite into its precise horizontally reflected full-body counterpart facing UP-RIGHT / NORTHEAST ↗. Reflect the ENTIRE pose's geometry, not isolated limbs. This is the opposite-view counterpart of an APPROVED up-left frame, so preserve this exact gait phase, foot-to-foot distance, knee/ankle bends, foot lift, rigid boot volumes, supporting leg, overlapping leg order, arm swing, proportions and head/body yaw. Do not invent a different step. The character's head, shoulders, pelvis, knees and BOTH toes consistently point UP-RIGHT away from viewer. Show three-quarter REAR, the back of head and coat dominate, only a little RIGHT ear/face edge; do not turn to front or pure side. Scarf trails to LEFT, pouch moves with the entire reflection to LEFT. Same tousled chestnut hair, vivid blue scarf, blue coat cream/gold trim, white cuffs, brown gloves/straps/pouch, charcoal trousers, full folded-cuff brown boots. Keep the original sprite's precise illustration style, outline, colors and silhouette detail. Preserve both boot toe/heel relationships, toes northeast, no outward splay or twisted ankle, no newly giant sole or shrinking boot. Do not open gathered legs into a standing split. Both boots and every limb stay complete and attached, with the same natural occlusion as the reflected source. One entire centered sprite, generous transparent margins. NO panels, labels, numbers, floor, cast shadow, glow or scenery. Transparent RGBA background. This is pose 08, preserve its exact approved support/return/swing relationship and compact stride in the reflected view. The toe direction remains northeast throughout, and pose08 must join back to pose01 without changing yaw.",
+      "references": [
+        "/workspace/experiment/Art/Review/P1/directions/up-left/revisions/r6/raw/08.png"
+      ],
+      "selectedSource": "/workspace/generated_images/exec-d2c71610-1a7d-4d8b-887d-9f13a6395089.png",
+      "savedAs": "raw/08.png",
+      "selectedSourceSHA256": "cda995258594548662075f32e3d4a3e7e7cd9f23d43427626cc9ea2f4e5fb8e0",
+      "referenceSHA256": {
+        "/workspace/experiment/Art/Review/P1/directions/up-left/revisions/r6/raw/08.png": "236f5443c0057a875eedf4367610f01dfb4a7c8305e4ed3a35939e05e52028f0"
+      }
+    }
+  ]
+}

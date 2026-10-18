@@ -3,8 +3,8 @@
   "format": 3,
   "updated": "2026-10-18",
   "workflow": "Review one direction at a time from fixed cardinal and diagonal baselines. Modify and resubmit the same direction until explicit user artwork approval, then advance. Record provenance, feedback and accepted revisions for the future character template.",
-  "current": "07-up-left-gait",
-  "templateStatus": "six directions approved; up-left r6 assembled cycle awaits user review; up-right queued",
+  "current": "08-up-right-gait",
+  "templateStatus": "seven directions approved; up-right r1 whole cycle awaits user review; final layered template not complete",
   "items": [
     {
       "id": "01-down-idle",
@@ -863,7 +863,7 @@
     {
       "id": "07-up-left-gait",
       "direction": "up-left",
-      "status": "awaiting_user_review",
+      "status": "approved",
       "sourceAtlas": "02-diagonal-atlas/baseline.png",
       "cropPixels": [
         0,
@@ -1045,8 +1045,22 @@
         {
           "id": "r6",
           "date": "2026-10-18",
-          "status": "awaiting_user_review",
-          "artApproval": null,
+          "status": "approved",
+          "artApproval": {
+            "date": "2026-10-18",
+            "reviewer": "user",
+            "statement": "好到下一个方向的修改了，你参考我们左上动画的制作过程，不要再犯错",
+            "direction": "up-left",
+            "revision": "r6",
+            "scope": "complete up-left r6 idle and eight walking poses, numbered preview and normal/slow loops shown for review; excludes production app, other directions and final layered template",
+            "status": "approved",
+            "artifacts": {
+              "review-2x.png": "7acb20bc907d7709f6fa1e71c58d6786306e0f0d924ea3ab75a99e6cb6bb99cb",
+              "strip.png": "5a6282612299914da5b829cff5f3c86085731088bc2a17be08b43c34eba6ff96",
+              "walk.gif": "29106f6a357e56812160ab789acae58640ac77250e2ff55013a47cc50ea419a2",
+              "walk-slow.gif": "1f92af90cf8db052f012e4a6102c8ab840fae52b4ff56c97a1b84e00b193c56f"
+            }
+          },
           "method": "new standalone05 combined with eight unchanged r5 complete poses; review composition only",
           "idlePoses": 1,
           "walkingPoses": 8,
@@ -1079,10 +1093,24 @@
           "assemblyRequest": "directions/up-left/revisions/r6/assembly-request.json"
         }
       ],
-      "approval": null,
+      "approval": {
+        "date": "2026-10-18",
+        "reviewer": "user",
+        "statement": "好到下一个方向的修改了，你参考我们左上动画的制作过程，不要再犯错",
+        "direction": "up-left",
+        "revision": "r6",
+        "scope": "complete up-left r6 idle and eight walking poses, numbered preview and normal/slow loops shown for review; excludes production app, other directions and final layered template",
+        "status": "approved",
+        "artifacts": {
+          "review-2x.png": "7acb20bc907d7709f6fa1e71c58d6786306e0f0d924ea3ab75a99e6cb6bb99cb",
+          "strip.png": "5a6282612299914da5b829cff5f3c86085731088bc2a17be08b43c34eba6ff96",
+          "walk.gif": "29106f6a357e56812160ab789acae58640ac77250e2ff55013a47cc50ea419a2",
+          "walk-slow.gif": "1f92af90cf8db052f012e4a6102c8ab840fae52b4ff56c97a1b84e00b193c56f"
+        }
+      },
       "currentRevision": "r6",
       "audit": "directions/up-left/AUDIT.md",
-      "auditStatus": "r6 full cycle assembled with revised05; awaits user continuity review",
+      "auditStatus": "user approved complete r6; earlier revisions retained",
       "feedback": [
         {
           "date": "2026-10-18",
@@ -1143,7 +1171,7 @@
     {
       "id": "08-up-right-gait",
       "direction": "up-right",
-      "status": "queued",
+      "status": "awaiting_user_review",
       "sourceAtlas": "02-diagonal-atlas/baseline.png",
       "cropPixels": [
         0,
@@ -1187,8 +1215,47 @@
       ],
       "previewLayout": "5 columns x 5 rows; 00 idle, 01-24 walk; black backdrop; no pose changes",
       "pixelVerification": "source strip RGBA equals corresponding fixed diagonal baseline row",
-      "revisions": [],
-      "approval": null
+      "revisions": [
+        {
+          "id": "r1",
+          "date": "2026-10-18",
+          "status": "awaiting_user_review",
+          "artApproval": null,
+          "method": "imagegen complete northeast counterparts of approved up-left r6 poses; uniform whole-pose registration",
+          "idlePoses": 1,
+          "walkingPoses": 8,
+          "reviewImage": "directions/up-right/revisions/r1/review-2x.png",
+          "strip": "directions/up-right/revisions/r1/strip.png",
+          "normalLoop": "directions/up-right/revisions/r1/walk.gif",
+          "slowLoop": "directions/up-right/revisions/r1/walk-slow.gif",
+          "comparison": "directions/up-right/revisions/r1/comparison.png",
+          "synchronizedComparison": "directions/up-right/revisions/r1/left-right-slow.gif",
+          "referenceDirectionRevision": "07-up-left-gait/r6",
+          "notes": "directions/up-right/revisions/r1/README.md",
+          "validation": "directions/up-right/revisions/r1/validation.json",
+          "addressedInCandidate": [
+            "consistent northeast heading across head/torso/pelvis/knees/ankles/toes",
+            "phase-by-phase reference to approved up-left r6",
+            "gathered foot spacing through03–06 rather than abrupt standing split",
+            "complete boot volume and connected knee/ankle drawings",
+            "opposite arm swing, support and near/far occlusion",
+            "08–01 cyclic heading continuity"
+          ],
+          "productionAssetsUpdated": false
+        }
+      ],
+      "approval": null,
+      "audit": "directions/up-right/AUDIT.md",
+      "currentRevision": "r1",
+      "auditStatus": "nine corresponding poses drawn from approved up-left r6; whole cycle awaits explicit user artwork approval",
+      "feedback": [
+        {
+          "date": "2026-10-18",
+          "source": "user",
+          "text": "好到下一个方向的修改了，你参考我们左上动画的制作过程，不要再犯错",
+          "scope": "approve up-left r6; redraw final diagonal up-right with the continuity lessons from up-left"
+        }
+      ]
     }
   ],
   "directionOrder": [
