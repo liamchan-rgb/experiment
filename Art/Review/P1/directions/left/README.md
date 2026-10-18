@@ -1,8 +1,8 @@
-# P1 向左方向 · 当前审核
+# P1 向左方向 · r1 已认可
 
-2026-10-18，收到用户关于鞋踝扭曲的修改意见，已交付 [向左 r1 重画稿](revisions/r1/README.md)，当前待用户审核，尚未认可。
+2026-10-18，收到用户关于鞋踝扭曲的修改意见后，交付 [向左 r1 重画稿](revisions/r1/README.md)。用户回复“没问题，继续下一个方向”，现记录为已认可；[确认记录](revisions/r1/approval.json)保存原话、范围及文件摘要。
 
-当前稿：[编号图](revisions/r1/review-2x.png) · [正常循环](revisions/r1/walk.gif) · [四分之一速度循环](revisions/r1/walk-slow.gif)。00 为新站姿，01–08 为两步循环八张关键姿势；具体修改依据见 [AUDIT.md](AUDIT.md)。用户认可前继续修改本方向，向上／向右仍排队。
+已认可稿：[编号图](revisions/r1/review-2x.png) · [正常循环](revisions/r1/walk.gif) · [四分之一速度循环](revisions/r1/walk-slow.gif)。00 为新站姿，01–08 为两步循环八张关键姿势；具体修改依据见 [AUDIT.md](AUDIT.md)。当前进入向上审核，向右仍排队。
 
 以下是未修改的 build 28 基线，保留供对照；帧号与 r1 不对应。
 
@@ -12,4 +12,4 @@
 
 新增 GIF 已解码核对 24 帧、帧序、像素（经声明的 GIF 调色板量化）、时长和无限循环标记；原横条 SHA-256 保持与固定基线一致，详情见 `preview.json`。
 
-收到意见后修改同一方向并回发审核，用户认可后再进入向上方向。当前所有向左认可字段均为空。
+旧版 build 28 保留为基线，未因 r1 获认可而标记通过；本目录 `preview.json` 是旧版预览记录，认可仅针对 `revisions/r1/`。

@@ -1,0 +1,15 @@
+{
+  "date": "2026-10-18",
+  "reviewer": "user",
+  "statement": "没问题，继续下一个方向",
+  "direction": "left",
+  "revision": "r1",
+  "scope": "one redrawn idle and 8 key poses of the left-direction cycle shown for review",
+  "status": "approved",
+  "artifacts": {
+    "review-2x.png": "c74040ce222902e0b45ad09f73f958ae07995ad9da849cd1d387bc4739303eea",
+    "strip.png": "91b94ac7d5037e0155ed480d5afda807c5ab29597b54bf239ab9745cc8d4d039",
+    "walk.gif": "bdf7aa119a076760388c39d94544730be8eda53116987b524b61136832f9f991",
+    "walk-slow.gif": "0babd2da306f524e9f00cc17ad7d487bff8859efd41be7e43b9621fbdbcd870d"
+  }
+}
