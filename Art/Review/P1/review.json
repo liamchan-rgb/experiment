@@ -1,0 +1,30 @@
+{
+  "character": "P1",
+  "format": 1,
+  "updated": "2026-10-18",
+  "workflow": "Review exactly one source pose at a time. Revise the current pose from user feedback; advance only after explicit user approval. Approved assets will define a layered, equipment-compatible character template.",
+  "current": "01-down-idle",
+  "templateStatus": "requirements only; no approved template yet",
+  "items": [
+    {
+      "id": "01-down-idle",
+      "direction": "down",
+      "pose": "original idle",
+      "status": "awaiting_user_review",
+      "sourceSheet": "Art/Generated/LivingScene/hero1-gait-v1.2.png",
+      "sourceSheetSHA256": "c04bbf27ec34f1da532093cb557e090ecb6530b02c658eac4fbf8ae0f0e84a1a",
+      "cropPixels": [
+        0,
+        0,
+        313,
+        313
+      ],
+      "sourceImage": "01-down-idle/source.png",
+      "previewImage": "01-down-idle/preview-2x.png",
+      "previewScale": 2,
+      "previewResampling": "nearest; original pixels unchanged",
+      "revisions": [],
+      "approval": null
+    }
+  ]
+}
