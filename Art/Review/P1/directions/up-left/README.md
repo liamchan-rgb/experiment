@@ -1,7 +1,7 @@
-# P1 左上 ↖ · 当前审核 r2
+# P1 左上 ↖ · 当前审核 r3
 
-用户要求修订 r1 的 04–06，随后回复“那就开始修”。当前 [r2](revisions/r2/README.md) 重画这三张连续姿势，其余六张原样继承，待用户审核。
+用户反馈 r2“第4帧的右脚太外翻了”。当前 [r3](revisions/r3/README.md) 修正画面右侧远脚的膝踝及鞋头朝向，仅更新 04，其余八张姿势原样继承。
 
-[正常循环](revisions/r2/walk.gif) · [四分之一速度循环](revisions/r2/walk-slow.gif) · [00–08 编号图](revisions/r2/review-2x.png) · [04–06 前后对照](revisions/r2/comparison-r1-r2-2x.png) · [同步慢速对照](revisions/r2/r1-r2-slow.gif)。
+[04 局部前后对照](revisions/r3/detail-04.png) · [正常循环](revisions/r3/walk.gif) · [慢速循环](revisions/r3/walk-slow.gif) · [编号图](revisions/r3/review-2x.png)。
 
-[r1 历史稿](revisions/r1/README.md) 和原横条／编号图保留，r1 与 r2 都未获美术认可。右上仍排队；正式游戏、IPA 与最终分层模板未修改。
+r1、r2、原图和六个已认可方向均保留；左上未获认可，右上排队，正式游戏与最终模板未更新。

@@ -4,7 +4,7 @@
   "updated": "2026-10-18",
   "workflow": "Review one direction at a time from fixed cardinal and diagonal baselines. Modify and resubmit the same direction until explicit user artwork approval, then advance. Record provenance, feedback and accepted revisions for the future character template.",
   "current": "07-up-left-gait",
-  "templateStatus": "six directions r1 approved; up-left r2 awaits user review; up-right queued; final layered template not complete",
+  "templateStatus": "six directions r1 approved; up-left r3 awaits user review; up-right queued; final layered template not complete",
   "items": [
     {
       "id": "01-down-idle",
@@ -936,7 +936,7 @@
         {
           "id": "r2",
           "date": "2026-10-18",
-          "status": "awaiting_user_review",
+          "status": "revision_requested",
           "artApproval": null,
           "method": "imagegen redraw of complete poses04–06; six other complete poses inherited byte-exactly from r1",
           "idlePoses": 1,
@@ -970,12 +970,48 @@
             8
           ],
           "synchronizedComparison": "directions/up-left/revisions/r2/r1-r2-slow.gif"
+        },
+        {
+          "id": "r3",
+          "date": "2026-10-18",
+          "status": "awaiting_user_review",
+          "artApproval": null,
+          "method": "imagegen correction of screen-right leg/boot direction in full pose04; eight other complete poses inherited byte-exactly from r2",
+          "idlePoses": 1,
+          "walkingPoses": 8,
+          "reviewImage": "directions/up-left/revisions/r3/review-2x.png",
+          "strip": "directions/up-left/revisions/r3/strip.png",
+          "normalLoop": "directions/up-left/revisions/r3/walk.gif",
+          "slowLoop": "directions/up-left/revisions/r3/walk-slow.gif",
+          "comparison": "directions/up-left/revisions/r3/detail-04.png",
+          "referenceDirectionRevision": "07-up-left-gait/r2",
+          "notes": "directions/up-left/revisions/r3/README.md",
+          "validation": "directions/up-left/revisions/r3/validation.json",
+          "addressedInCandidate": [
+            "reduce external rotation of screen-right toe in04",
+            "align knee/ankle/toe toward northwest while preserving support phase"
+          ],
+          "productionAssetsUpdated": false,
+          "changedFrames": [
+            4
+          ],
+          "inheritedFrames": [
+            0,
+            1,
+            2,
+            3,
+            5,
+            6,
+            7,
+            8
+          ],
+          "synchronizedComparison": "directions/up-left/revisions/r3/r2-r3-slow.gif"
         }
       ],
       "approval": null,
-      "currentRevision": "r2",
+      "currentRevision": "r3",
       "audit": "directions/up-left/AUDIT.md",
-      "auditStatus": "r1 frames04–06 require revision; r2 drawn, export-validated and awaiting explicit user artwork approval",
+      "auditStatus": "r2 pose04 right foot external rotation feedback; r3 corrected and awaiting explicit user artwork approval",
       "feedback": [
         {
           "date": "2026-10-18",
@@ -988,6 +1024,12 @@
           "source": "user",
           "text": "4-6帧的问题你自己描述一下；那就开始修",
           "scope": "redraw up-left frames 04–06 together, fix boot direction, heel roll and weight transfer"
+        },
+        {
+          "date": "2026-10-18",
+          "source": "user",
+          "text": "第4帧的右脚太外翻了",
+          "scope": "correct screen-right foot direction in04; preserve other poses"
         }
       ]
     },

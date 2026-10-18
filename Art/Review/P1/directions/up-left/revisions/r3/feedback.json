@@ -1,0 +1,10 @@
+{
+  "date": "2026-10-18",
+  "revision": "r3",
+  "userStatement": "第4帧的右脚太外翻了",
+  "interpretation": "screen-right far boot in pose04; align knee, ankle and toe toward northwest without swapping support or altering other poses",
+  "changedFrames": [
+    4
+  ],
+  "artApproval": null
+}
