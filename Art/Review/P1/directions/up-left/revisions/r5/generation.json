@@ -1,0 +1,17 @@
+{
+  "date": "2026-10-18",
+  "direction": "up-left",
+  "revision": "r5",
+  "scope": "standalone pose04 review only; no full-cycle replacement",
+  "userStatement": "而且指向性没有和上一帧连贯起来，感觉更偏右上，而不是左上，你再把这一帧修一下",
+  "prompt": "This reference is FRAME03 of a walking cycle, facing NORTHWEST / UP-LEFT ↖. Draw the immediately following FRAME04. Use THIS frame03 as the fixed camera and body-direction reference. Keep the exact left-facing rear three-quarter head, neck, shoulder line, pelvis yaw, blue coat back, scarf trailing right, straps, right-side pouch, proportions, colors and pixel-sprite character design. The entire character must still unmistakably travel UP-LEFT, never up-right, and must not yaw between these two frames.\nAdvance ONLY the gait from passing into low forward reach: the LARGE NEAR leg currently on SCREEN LEFT stays the grounded support, knee and ankle stacked naturally. The OTHER leg, from the hip on SCREEN RIGHT, swings FORWARD toward the UPPER LEFT of the picture, passing BEHIND the near support shin. Draw its bent knee moving leftward and its ankle moving leftward too. Its boot must reach AHEAD TOWARD UPPER LEFT, with its TOE visibly extending LEFT of the near support shin and a little higher than the near planted boot, while some calf/cuff is naturally occluded behind the support leg. Do not leave that far boot floating off to SCREEN RIGHT as in the reference passing pose. Do not draw the far shoe pointing down-right or up-right. The far boot's HEEL is on its lower-right side and the TOE is on its upper-left side. All knee-to-ankle-to-toe lines follow the same northwest direction. Keep normal matched boot volume, complete brown folded cuff and connected ankle; no twisted ankle, no oversized sole aimed at viewer, no detached leg. A compact ordinary walking step just before landing, not a run or high kick. Subtle opposite arm swing progresses naturally from reference without changing shoulder/camera yaw. One complete centered sprite on transparent background with generous margins. No arrows, text, labels, panels, ground, shadow or glow.",
+  "references": [
+    "/workspace/experiment/Art/Review/P1/directions/up-left/revisions/r3/raw/03.png"
+  ],
+  "selectedSource": "/workspace/generated_images/exec-d4778c55-0a88-46b5-bfe4-e90fdc210cfb.png",
+  "artApproval": null,
+  "sha256": "59d53abf6b2875f9bee69735850b705a0bf170affdf39ec78623a052d9ea9093",
+  "referenceSHA256": {
+    "/workspace/experiment/Art/Review/P1/directions/up-left/revisions/r3/raw/03.png": "5b16e1b297a27a032c065b48414401d8a3cf55218448577084830ad3f95c2de8"
+  }
+}

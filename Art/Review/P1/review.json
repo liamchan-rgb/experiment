@@ -4,7 +4,7 @@
   "updated": "2026-10-18",
   "workflow": "Review one direction at a time from fixed cardinal and diagonal baselines. Modify and resubmit the same direction until explicit user artwork approval, then advance. Record provenance, feedback and accepted revisions for the future character template.",
   "current": "07-up-left-gait",
-  "templateStatus": "six directions r1 approved; up-left r3 awaits user review; up-right queued; final layered template not complete",
+  "templateStatus": "six directions approved; up-left pose04 standalone r5 awaits heading review; last full cycle r3 retained; up-right queued",
   "items": [
     {
       "id": "01-down-idle",
@@ -1030,8 +1030,23 @@
           "source": "user",
           "text": "第4帧的右脚太外翻了",
           "scope": "correct screen-right foot direction in04; preserve other poses"
+        },
+        {
+          "date": "2026-10-18",
+          "source": "user",
+          "text": "而且指向性没有和上一帧连贯起来，感觉更偏右上，而不是左上，你再把这一帧修一下",
+          "scope": "single pose04 heading must be continuous northwest from pose03; r4 not approved"
         }
-      ]
+      ],
+      "singlePoseReview": {
+        "pose": 4,
+        "revision": "r5",
+        "status": "awaiting_user_review",
+        "image": "directions/up-left/revisions/r5/04.png",
+        "reference": "directions/up-left/revisions/r3/raw/03.png",
+        "artApproval": null,
+        "fullCycleUpdated": false
+      }
     },
     {
       "id": "08-up-right-gait",
