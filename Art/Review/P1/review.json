@@ -4,7 +4,7 @@
   "updated": "2026-10-18",
   "workflow": "Review one direction at a time from fixed cardinal and diagonal baselines. Modify and resubmit the same direction until explicit user artwork approval, then advance. Record provenance, feedback and accepted revisions for the future character template.",
   "current": "07-up-left-gait",
-  "templateStatus": "six directions approved; up-left r5 assembled cycle awaits user review; only standalone04 approved for assembly; up-right queued",
+  "templateStatus": "six directions approved; up-left pose05 standalone r6 awaits continuity review; last full cycle r5 retained; up-right queued",
   "items": [
     {
       "id": "01-down-idle",
@@ -1010,7 +1010,7 @@
         {
           "id": "r5",
           "date": "2026-10-18",
-          "status": "awaiting_user_review",
+          "status": "revision_requested",
           "artApproval": null,
           "method": "accepted standalone04 combined with eight unchanged r3 complete poses; whole-pose registration and review layout only",
           "idlePoses": 1,
@@ -1077,28 +1077,25 @@
           "source": "user",
           "text": "OK和其他几帧拼起来发给我看看",
           "scope": "accept standalone04 for assembly; request full cycle review, not approval of entire up-left direction"
+        },
+        {
+          "date": "2026-10-18",
+          "source": "user",
+          "text": "第五帧和上下两帧不连贯，突然腿就分开了",
+          "scope": "pose05 leg spacing must bridge current04 and06 without abrupt wide separation"
         }
       ],
       "singlePoseReview": {
-        "pose": 4,
-        "revision": "r5",
-        "status": "approved_for_assembly",
-        "image": "directions/up-left/revisions/r5/04.png",
-        "reference": "directions/up-left/revisions/r3/raw/03.png",
-        "artApproval": {
-          "date": "2026-10-18",
-          "reviewer": "user",
-          "statement": "OK和其他几帧拼起来发给我看看",
-          "direction": "up-left",
-          "revision": "r5",
-          "pose": 4,
-          "scope": "standalone pose04 source PNG shown to user; does not approve assembled cycle, transitions, remaining poses or final template",
-          "status": "approved_for_assembly",
-          "artifacts": {
-            "04.png": "59d53abf6b2875f9bee69735850b705a0bf170affdf39ec78623a052d9ea9093"
-          }
-        },
-        "fullCycleUpdated": true
+        "pose": 5,
+        "revision": "r6",
+        "status": "awaiting_user_review",
+        "image": "directions/up-left/revisions/r6/05.png",
+        "references": [
+          "directions/up-left/revisions/r5/raw/04.png",
+          "directions/up-left/revisions/r5/raw/06.png"
+        ],
+        "artApproval": null,
+        "fullCycleUpdated": false
       }
     },
     {

@@ -4,11 +4,12 @@
 
 ## 当前审核
 
-**当前第 07 个方向、斜向第三组：P1 左上 ↖ r5 整组待用户审核。四个正交方向、右下和左下 r1 均已认可，右上仍排队。**
+**当前第 07 个方向、斜向第三组：P1 左上第 05 帧 r6 单张待审核；上一整组 r5 因 05 双腿突然分开收到修订反馈。四个正交方向、右下和左下 r1 已认可，右上排队。**
 
 左下已认可；用户随后要求修订左上 r1 的 04–06，并回复“那就开始修”。用户继续反馈第 04 帧外翻和朝向衔接，r5 单张重画后回复“OK和其他几帧拼起来发给我看看”。现将确认的 04 与其他八张姿势拼接为 r5 整组，待连续效果审核，不提前推进右上。
 
-- [当前左上 r5 编号图](../Art/Review/P1/directions/up-left/revisions/r5/review-2x.png)
+- [当前第 05 帧 r6 单张](../Art/Review/P1/directions/up-left/revisions/r6/05.png) · [修改说明](../Art/Review/P1/directions/up-left/revisions/r6/README.md)
+- [上一整组左上 r5 编号图](../Art/Review/P1/directions/up-left/revisions/r5/review-2x.png)
 - [正常循环](../Art/Review/P1/directions/up-left/revisions/r5/walk.gif) · [四分之一速度循环](../Art/Review/P1/directions/up-left/revisions/r5/walk-slow.gif)
 - [左上 r5 说明与来源](../Art/Review/P1/directions/up-left/revisions/r5/README.md) · [问题依据](../Art/Review/P1/directions/up-left/AUDIT.md)
 - [已认可左下 r1 与记录](../Art/Review/P1/directions/down-left/revisions/r1/approval.json) · [已认可右下 r1](../Art/Review/P1/directions/down-right/revisions/r1/README.md)

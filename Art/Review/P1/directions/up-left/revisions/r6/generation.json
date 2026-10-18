@@ -1,0 +1,19 @@
+{
+  "date": "2026-10-18",
+  "direction": "up-left",
+  "revision": "r6",
+  "scope": "standalone pose05 review only; full cycle remains r5",
+  "userStatement": "第五帧和上下两帧不连贯，突然腿就分开了",
+  "prompt": "Draw ONE replacement FRAME05 that fits smoothly BETWEEN these two exact walking frames: reference1 is FRAME04, reference2 is FRAME06. Same P1 character, same rear three-quarter UP-LEFT/northwest camera, exact head/body/boot proportions, hair silhouette, blue scarf trailing right, coat, gloves, crossed straps and right-side pouch. Do not turn the character or change its yaw.\nThe critical correction is CONTINUOUS NARROW LEG SPACING. Both neighbors have feet gathered/overlapping near the support ankle, so FRAME05 must also keep feet close together. Do NOT suddenly spread the legs into a wide two-feet-planted idle stance. Do NOT put one boot far out to screen-left and the other far out to screen-right.\nMaintain the SAME grounded support leg visible on SCREEN RIGHT in both references, with its boot at the lowest ground line under the pelvis. The OTHER bent leg and boot stay close on its SCREEN LEFT, traveling smoothly from reference1's slightly-behind gathered foot to reference2's slightly-in-front gathered foot. Draw this moving boot just beside and partially overlapping the planted ankle, at a modest low lift; its knee, ankle and full folded-cuff boot remain connected. Its placement and occlusion should be BETWEEN the two references, not a new split stride. Foot-to-foot distance must be no greater than either neighboring reference. Both toes keep pointing UPPER LEFT/away in the SAME direction, never outward right; matched rigid brown boot volumes, no twisting or shoe shrinking. Keep a subtle coherent pelvis/shoulder and opposite glove movement midway between the references. Compact ordinary walk, not running, kicking, or standing with feet apart.\nOne entire centered sprite only, generous transparent margins, matching the supplied detailed sprite illustration style. No panels, captions, numbers, arrows, floor, shadow, glow or scenery. Transparent RGBA background.",
+  "references": [
+    "/workspace/experiment/Art/Review/P1/directions/up-left/revisions/r5/raw/04.png",
+    "/workspace/experiment/Art/Review/P1/directions/up-left/revisions/r5/raw/06.png"
+  ],
+  "selectedSource": "/workspace/generated_images/exec-2d66240e-464c-4daf-a400-6302890d0601.png",
+  "artApproval": null,
+  "sha256": "d52bd6967f4f8f101d1a3ee14f787043f2b20e8ff0f552f9863d659df128903d",
+  "referenceSHA256": {
+    "/workspace/experiment/Art/Review/P1/directions/up-left/revisions/r5/raw/04.png": "59d53abf6b2875f9bee69735850b705a0bf170affdf39ec78623a052d9ea9093",
+    "/workspace/experiment/Art/Review/P1/directions/up-left/revisions/r5/raw/06.png": "0d048a5782dc529d550d4e62f8f100022eec722688cafd9782881345fbfe9499"
+  }
+}
