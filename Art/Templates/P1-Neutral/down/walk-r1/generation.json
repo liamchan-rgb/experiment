@@ -1,0 +1,313 @@
+{
+  "tool": "image_gen.imagegen",
+  "date": "2026-10-18",
+  "status": "neutral down walk r1 artwork candidate; not user approved",
+  "approvedBody": "../r1/approval.json",
+  "sourceToWorld": [
+    0.16,
+    0,
+    0,
+    0.16,
+    25,
+    38
+  ],
+  "perPartRescalingOrAlphaFit": false,
+  "sourcePartOwnership": "export-time anatomical partitions only; runtime consumes independent PNG pose maps; no colour-based segmentation or appearance branches",
+  "headAndTorso": "approved idle layers translated by the explicitly authored per-pose bodyTranslation; never selected by hairstyle or face",
+  "hiddenCompletions": "approved common hip caps; explicit occluded calf patches in passing poses, covered by the opposite passing leg; see extraction.json",
+  "records": [
+    {
+      "id": "01",
+      "file": "source/01.png",
+      "generatorOutputPath": "/workspace/generated_images/exec-307d8938-7256-47b3-88d7-9513ba680bc7.png",
+      "sha256": "ca4c85c8d9443158975f7486abb6ae73f31dca05e8b5e214f299dcfb189dd94f",
+      "prompt": "Edit the FIRST image into ONE complete walking pose of that EXACT SAME neutral game-avatar body, facing straight toward the viewer/down. The SECOND image is ONLY the approved walk-phase reference: copy its leg support/swing, opposite arm swing and front-facing perspective, NEVER copy its hair, face, outer clothes, gloves or boots. Use the first image's bald completely blank head (no eyes/brows/nose/mouth), peach skin, ivory sleeveless undershirt and charcoal shorts. No accessories. Preserve exact same body/head/limb proportions, restrained pixel-art palette and crisp clusters. SAME 1254x1254 canvas and same cyan corner fiducials. Same body registration: head around x460..790 y293..588, shoulders x530/718 y638, hips x575/688 y865. Do not zoom, recenter or auto-fit. Keep head/torso facing down/front, no sideways turn. Feet are BARE and point forward/down, never duck-footed or outward. Keep full feet/calves/palms volume; no tiny rear foot or exaggerated sole facing the camera. Relaxed closed hands. Slim stylized anatomy, no muscular exaggeration. Ivory shirt and charcoal shorts remain fitted and simple. Only limbs and small natural weight movement change. TRUE transparent background, no grey fill, texture, checkerboard, floor, shadows or labels. Keep every part connected and complete. The hand should stay outside torso/shorts silhouette with a narrow gap, so the parts can later be exported independently. Pose 01 RIGHT heel contact. Character's RIGHT leg is SCREEN LEFT: it steps forward to support, right knee near world(117,190), right ankle near(117,207), right toe baseline near y217. Character LEFT leg SCREEN RIGHT trails and bends, ankle near(134,196), rear toes near y206. Narrow natural hip-width stride, no wide lateral split. LEFT arm on screen-right swings forward/down, closed palm near world(148,174); right arm on screen-left swings back/up, palm near(104,163). Head and torso stay at first-reference idle position. These world coordinates are on a 256px canvas: convert to source x=(worldX-25)/0.16, y=(worldY-38)/0.16. Preserve this reference stance phase; don't just lift a straight idle leg.",
+      "references": [
+        {
+          "pathAtGeneration": "Art/Templates/P1-Neutral/down/walk-r1/references/approved-idle-registration.png",
+          "sha256": "00e224b198e5ad9938256572ae5abc1fb61a855e45b2045ff67c00164abb39c0"
+        },
+        {
+          "pathAtGeneration": "Art/Review/P1/directions/down/revisions/r1/frames/01.png",
+          "sha256": "36d650a3621e586d9bba1d945ec694328fcf0df18ba6613b1032602512d72e88",
+          "preservedAs": "Art/Templates/P1-Neutral/down/walk-r1/references/motion/01.png"
+        }
+      ],
+      "status": "selected limb source; head and torso ignored"
+    },
+    {
+      "id": "02",
+      "file": "source/02.png",
+      "generatorOutputPath": "/workspace/generated_images/exec-3d1caf8b-40f6-4d2a-83be-786802faea27.png",
+      "sha256": "93cd00d4f77d7f73ee4f5d78ed44131c44889c93332f8aefbf48421c6b988ec7",
+      "prompt": "Create ONE complete neutral game-avatar walking pose. Image 1 is the APPROVED COMMON BODY registration. Image 2 is the SAME neutral person's first walking pose, for identical bare-feet/limb volume and palette. Image 3 is ONLY the approved clothed walk-phase reference: copy its support/swing phase and opposite arm swing, NEVER its hair, face, clothes, gloves or boots. Use image1's bald blank head (absolutely no facial features), peach skin, ivory sleeveless undershirt, charcoal fitted safety shorts, bare arms/hands/legs/feet. Slim stylized chibi game proportions, no exaggerated anatomy. Crisp pixel-art clusters, restrained palette, thin warm dark outlines, upper-left light. EXACT SAME 1254x1254 transparent canvas, cyan corner fiducials, body registration and scale as image1. No zoom, recenter, rescale or changed camera. Shoulders source x530/718,y638, hips x575/688,y865. Head/torso face straight toward viewer/down. Feet point toward viewer/down throughout, NEVER outward. Keep palm/calf/foot volume consistent; rear foot may be bent but not shrunken into a tiny shoe. No exaggerated underside soles facing camera. Complete connected limbs. Closed relaxed hands remain outside torso/shorts silhouette for independent layering. No accessories, hair, face, cast shadow, floor, texture, grey fill, checkerboard or labels. TRUE transparent background. Coordinates below are on final 256px world canvas: sourceX=(worldX-25)/.16, sourceY=(worldY-38)/.16. POSE02: RIGHT support/loading, LEFT early swing. Right leg SCREEN LEFT stays planted beneath right hip x117, sole baseline world y217, slight knee flexion. Left SCREEN RIGHT thigh/knee bends forward, ankle x132 y194 and bare toes around y203, clearly lifted off the ground. Keep legs about hip-width, do NOT leave trailing leg straight. Right arm SCREEN LEFT back/up hand around x104 y161; left arm SCREEN RIGHT forward hand x148 y173. Head and torso lower exactly 2 final world pixels from idle. Natural small loading movement.",
+      "references": [
+        {
+          "pathAtGeneration": "Art/Templates/P1-Neutral/down/walk-r1/references/approved-idle-registration.png",
+          "sha256": "00e224b198e5ad9938256572ae5abc1fb61a855e45b2045ff67c00164abb39c0"
+        },
+        {
+          "pathAtGeneration": "Art/Templates/P1-Neutral/down/walk-r1/source/01.png",
+          "sha256": "ca4c85c8d9443158975f7486abb6ae73f31dca05e8b5e214f299dcfb189dd94f"
+        },
+        {
+          "pathAtGeneration": "Art/Review/P1/directions/down/revisions/r1/frames/02.png",
+          "sha256": "08451a6d548ab02982a9432c802827af750d347a364222c34ec8fe61d382b402",
+          "preservedAs": "Art/Templates/P1-Neutral/down/walk-r1/references/motion/02.png"
+        }
+      ],
+      "status": "selected limb source; head and torso ignored"
+    },
+    {
+      "id": "03",
+      "file": "drafts/03-initial.png",
+      "generatorOutputPath": "/workspace/generated_images/exec-58f50886-e16d-4319-acbb-708e55edf592.png",
+      "sha256": "05372db01c39d0c99efb918289a01b8d4fc9b8a0c620ed814397b01c2662d97f",
+      "prompt": "Edit the FIRST image into ONE complete walking pose of that EXACT SAME neutral game-avatar body, facing straight toward the viewer/down. The SECOND image is ONLY the approved walk-phase reference: copy its leg support/swing, opposite arm swing and front-facing perspective, NEVER copy its hair, face, outer clothes, gloves or boots. Use the first image's bald completely blank head (no eyes/brows/nose/mouth), peach skin, ivory sleeveless undershirt and charcoal shorts. No accessories. Preserve exact same body/head/limb proportions, restrained pixel-art palette and crisp clusters. SAME 1254x1254 canvas and same cyan corner fiducials. Same body registration: head around x460..790 y293..588, shoulders x530/718 y638, hips x575/688 y865. Do not zoom, recenter or auto-fit. Keep head/torso facing down/front, no sideways turn. Feet are BARE and point forward/down, never duck-footed or outward. Keep full feet/calves/palms volume; no tiny rear foot or exaggerated sole facing the camera. Relaxed closed hands. Slim stylized anatomy, no muscular exaggeration. Ivory shirt and charcoal shorts remain fitted and simple. Only limbs and small natural weight movement change. TRUE transparent background, no grey fill, texture, checkerboard, floor, shadows or labels. Keep every part connected and complete. The hand should stay outside torso/shorts silhouette with a narrow gap, so the parts can later be exported independently. Pose 03 LEFT passing pose, RIGHT leg supporting. Character RIGHT leg SCREEN LEFT remains planted under hip at x117, ankle near world y205, toes y215. Character LEFT leg SCREEN RIGHT bends its knee forward and brings the raised foot inward near x128,y198-203, passing close to standing leg. Knee lift and flexion are essential, NO straight shortened leg. Natural narrower spacing than contact, no cross-step. Arms are near neutral crossover, hands near world x103/148 y168. Body/head rise just ONE final world pixel relative to idle, all proportions unchanged. These world coordinates are on a 256px canvas: convert to source x=(worldX-25)/0.16, y=(worldY-38)/0.16. Do not repeat the contact pose.",
+      "references": [
+        {
+          "pathAtGeneration": "Art/Templates/P1-Neutral/down/walk-r1/references/approved-idle-registration.png",
+          "sha256": "00e224b198e5ad9938256572ae5abc1fb61a855e45b2045ff67c00164abb39c0"
+        },
+        {
+          "pathAtGeneration": "Art/Review/P1/directions/down/revisions/r1/frames/03.png",
+          "sha256": "9c430e686520275762c32de0243665538087c225c890efc5ef906d269a88bfcb",
+          "preservedAs": "Art/Templates/P1-Neutral/down/walk-r1/references/motion/03.png"
+        }
+      ],
+      "status": "revised: passing leg too far outside"
+    },
+    {
+      "id": "04",
+      "file": "source/04.png",
+      "generatorOutputPath": "/workspace/generated_images/exec-44785fa0-0405-4cc9-ae71-8e9f65b10058.png",
+      "sha256": "34c248cd50611ce06cab7798211963367e53e6f92615ee0e404cfe1a615e1e71",
+      "prompt": "Create ONE complete neutral game-avatar walking pose. Image 1 is the APPROVED COMMON BODY registration. Image 2 is the SAME neutral person's first walking pose, for identical bare-feet/limb volume and palette. Image 3 is ONLY the approved clothed walk-phase reference: copy its support/swing phase and opposite arm swing, NEVER its hair, face, clothes, gloves or boots. Use image1's bald blank head (absolutely no facial features), peach skin, ivory sleeveless undershirt, charcoal fitted safety shorts, bare arms/hands/legs/feet. Slim stylized chibi game proportions, no exaggerated anatomy. Crisp pixel-art clusters, restrained palette, thin warm dark outlines, upper-left light. EXACT SAME 1254x1254 transparent canvas, cyan corner fiducials, body registration and scale as image1. No zoom, recenter, rescale or changed camera. Shoulders source x530/718,y638, hips x575/688,y865. Head/torso face straight toward viewer/down. Feet point toward viewer/down throughout, NEVER outward. Keep palm/calf/foot volume consistent; rear foot may be bent but not shrunken into a tiny shoe. No exaggerated underside soles facing camera. Complete connected limbs. Closed relaxed hands remain outside torso/shorts silhouette for independent layering. No accessories, hair, face, cast shadow, floor, texture, grey fill, checkerboard or labels. TRUE transparent background. Coordinates below are on final 256px world canvas: sourceX=(worldX-25)/.16, sourceY=(worldY-38)/.16. POSE04: LEFT late swing, just before left heel contact. Left leg SCREEN RIGHT extends forward at x133, ankle world y206, toes around y215, ready to touch down; foot long axis still vertical/down. Right leg SCREEN LEFT trails, knee flexed, ankle x117 y197, toes y207. Keep hip-width or slightly narrower feet, no suddenly wide split. Right arm SCREEN LEFT swings forward/down hand x103 y174, left arm SCREEN RIGHT swings back/up hand x147 y161. Head/torso rise 2 final world pixels from idle. Extend lower leg naturally; no stretched ankle, no huge visible sole.",
+      "references": [
+        {
+          "pathAtGeneration": "Art/Templates/P1-Neutral/down/walk-r1/references/approved-idle-registration.png",
+          "sha256": "00e224b198e5ad9938256572ae5abc1fb61a855e45b2045ff67c00164abb39c0"
+        },
+        {
+          "pathAtGeneration": "Art/Templates/P1-Neutral/down/walk-r1/source/01.png",
+          "sha256": "ca4c85c8d9443158975f7486abb6ae73f31dca05e8b5e214f299dcfb189dd94f"
+        },
+        {
+          "pathAtGeneration": "Art/Review/P1/directions/down/revisions/r1/frames/04.png",
+          "sha256": "7bb55796e8fc3a9f0de109e5216399aa395c619f7e015505bf4d00dbddb3e6c1",
+          "preservedAs": "Art/Templates/P1-Neutral/down/walk-r1/references/motion/04.png"
+        }
+      ],
+      "status": "selected limb source; head and torso ignored"
+    },
+    {
+      "id": "05",
+      "file": "source/05.png",
+      "generatorOutputPath": "/workspace/generated_images/exec-6e1c598a-7692-4f33-be1f-5077fc0e76bb.png",
+      "sha256": "a31a0b60ccb60f09247a8dfbc325a5e5acba18299811c2645dbf586857419bf5",
+      "prompt": "Create ONE complete neutral game-avatar walking pose. Image 1 is the APPROVED COMMON BODY registration. Image 2 is the SAME neutral person's first walking pose, for identical bare-feet/limb volume and palette. Image 3 is ONLY the approved clothed walk-phase reference: copy its support/swing phase and opposite arm swing, NEVER its hair, face, clothes, gloves or boots. Use image1's bald blank head (absolutely no facial features), peach skin, ivory sleeveless undershirt, charcoal fitted safety shorts, bare arms/hands/legs/feet. Slim stylized chibi game proportions, no exaggerated anatomy. Crisp pixel-art clusters, restrained palette, thin warm dark outlines, upper-left light. EXACT SAME 1254x1254 transparent canvas, cyan corner fiducials, body registration and scale as image1. No zoom, recenter, rescale or changed camera. Shoulders source x530/718,y638, hips x575/688,y865. Head/torso face straight toward viewer/down. Feet point toward viewer/down throughout, NEVER outward. Keep palm/calf/foot volume consistent; rear foot may be bent but not shrunken into a tiny shoe. No exaggerated underside soles facing camera. Complete connected limbs. Closed relaxed hands remain outside torso/shorts silhouette for independent layering. No accessories, hair, face, cast shadow, floor, texture, grey fill, checkerboard or labels. TRUE transparent background. Coordinates below are on final 256px world canvas: sourceX=(worldX-25)/.16, sourceY=(worldY-38)/.16. POSE05: LEFT heel contact. Left leg SCREEN RIGHT steps forward and supports at x134, ankle world y207 and toes y217. Right leg SCREEN LEFT trails and bends, ankle x117 y196, toes y206. Natural hip-width stride, no lateral opening compared with04. Right arm SCREEN LEFT forward/down hand x102 y174; left arm SCREEN RIGHT back/up hand x146 y163. Head/torso stay at idle height. Match the opposite-step counterpart of neutral pose01, maintaining upper-left lighting, not mirroring the lighting.",
+      "references": [
+        {
+          "pathAtGeneration": "Art/Templates/P1-Neutral/down/walk-r1/references/approved-idle-registration.png",
+          "sha256": "00e224b198e5ad9938256572ae5abc1fb61a855e45b2045ff67c00164abb39c0"
+        },
+        {
+          "pathAtGeneration": "Art/Templates/P1-Neutral/down/walk-r1/source/01.png",
+          "sha256": "ca4c85c8d9443158975f7486abb6ae73f31dca05e8b5e214f299dcfb189dd94f"
+        },
+        {
+          "pathAtGeneration": "Art/Review/P1/directions/down/revisions/r1/frames/05.png",
+          "sha256": "73b14ff65b08be334e50a0ebd60f31a5a3e7ca47e6b6ff99c3a4a60dbab2d2d7",
+          "preservedAs": "Art/Templates/P1-Neutral/down/walk-r1/references/motion/05.png"
+        }
+      ],
+      "status": "selected limb source; head and torso ignored"
+    },
+    {
+      "id": "06",
+      "file": "source/06.png",
+      "generatorOutputPath": "/workspace/generated_images/exec-72be556d-f3d9-40ce-8cd4-15e9df8dc928.png",
+      "sha256": "2f57a0702e79da5b72285f2d3113a3ae0a87f6688035b1d5eaeedfdaa9ecb54e",
+      "prompt": "Create ONE complete neutral game-avatar walking pose. Image 1 is the APPROVED COMMON BODY registration. Image 2 is the SAME neutral person's first walking pose, for identical bare-feet/limb volume and palette. Image 3 is ONLY the approved clothed walk-phase reference: copy its support/swing phase and opposite arm swing, NEVER its hair, face, clothes, gloves or boots. Use image1's bald blank head (absolutely no facial features), peach skin, ivory sleeveless undershirt, charcoal fitted safety shorts, bare arms/hands/legs/feet. Slim stylized chibi game proportions, no exaggerated anatomy. Crisp pixel-art clusters, restrained palette, thin warm dark outlines, upper-left light. EXACT SAME 1254x1254 transparent canvas, cyan corner fiducials, body registration and scale as image1. No zoom, recenter, rescale or changed camera. Shoulders source x530/718,y638, hips x575/688,y865. Head/torso face straight toward viewer/down. Feet point toward viewer/down throughout, NEVER outward. Keep palm/calf/foot volume consistent; rear foot may be bent but not shrunken into a tiny shoe. No exaggerated underside soles facing camera. Complete connected limbs. Closed relaxed hands remain outside torso/shorts silhouette for independent layering. No accessories, hair, face, cast shadow, floor, texture, grey fill, checkerboard or labels. TRUE transparent background. Coordinates below are on final 256px world canvas: sourceX=(worldX-25)/.16, sourceY=(worldY-38)/.16. POSE06: LEFT support/loading, RIGHT early swing. Left leg SCREEN RIGHT planted beneath hip x134, sole baseline world y217, knee slightly flexed. Right leg SCREEN LEFT bends its thigh/knee forward, ankle x120 y194, toes around y203, lifted clear of ground. Natural narrow hip-width stance; no straight shortened trailing leg. Right arm SCREEN LEFT forward/down hand x103 y173, left arm SCREEN RIGHT back/up hand x146 y161. Head/torso lower exactly 2 final world pixels from idle.",
+      "references": [
+        {
+          "pathAtGeneration": "Art/Templates/P1-Neutral/down/walk-r1/references/approved-idle-registration.png",
+          "sha256": "00e224b198e5ad9938256572ae5abc1fb61a855e45b2045ff67c00164abb39c0"
+        },
+        {
+          "pathAtGeneration": "Art/Templates/P1-Neutral/down/walk-r1/source/01.png",
+          "sha256": "ca4c85c8d9443158975f7486abb6ae73f31dca05e8b5e214f299dcfb189dd94f"
+        },
+        {
+          "pathAtGeneration": "Art/Review/P1/directions/down/revisions/r1/frames/06.png",
+          "sha256": "bd0509de58954a41f74f5076c94f414ae74f4c68a5f1146571bf8d037006fdec",
+          "preservedAs": "Art/Templates/P1-Neutral/down/walk-r1/references/motion/06.png"
+        }
+      ],
+      "status": "selected limb source; head and torso ignored"
+    },
+    {
+      "id": "07",
+      "file": "drafts/07-initial.png",
+      "generatorOutputPath": "/workspace/generated_images/exec-3a4118b8-18bd-409e-8956-f118467ddc8c.png",
+      "sha256": "ba1b7b4c7769a2ba1b477f460898a3a1faf36dcbe4de51b73872082798985969",
+      "prompt": "Create ONE complete neutral game-avatar walking pose. Image 1 is the APPROVED COMMON BODY registration. Image 2 is the SAME neutral person's first walking pose, for identical bare-feet/limb volume and palette. Image 3 is ONLY the approved clothed walk-phase reference: copy its support/swing phase and opposite arm swing, NEVER its hair, face, clothes, gloves or boots. Use image1's bald blank head (absolutely no facial features), peach skin, ivory sleeveless undershirt, charcoal fitted safety shorts, bare arms/hands/legs/feet. Slim stylized chibi game proportions, no exaggerated anatomy. Crisp pixel-art clusters, restrained palette, thin warm dark outlines, upper-left light. EXACT SAME 1254x1254 transparent canvas, cyan corner fiducials, body registration and scale as image1. No zoom, recenter, rescale or changed camera. Shoulders source x530/718,y638, hips x575/688,y865. Head/torso face straight toward viewer/down. Feet point toward viewer/down throughout, NEVER outward. Keep palm/calf/foot volume consistent; rear foot may be bent but not shrunken into a tiny shoe. No exaggerated underside soles facing camera. Complete connected limbs. Closed relaxed hands remain outside torso/shorts silhouette for independent layering. No accessories, hair, face, cast shadow, floor, texture, grey fill, checkerboard or labels. TRUE transparent background. Coordinates below are on final 256px world canvas: sourceX=(worldX-25)/.16, sourceY=(worldY-38)/.16. POSE07: RIGHT passing, LEFT support. Left SCREEN RIGHT leg stands under hip x134, ankle world y205, toes y215. Right SCREEN LEFT leg bends knee forward and its lifted foot passes inward close to supporting leg around x123,y198-203. Narrower foot spacing than contact, no cross-step or duck foot. Clear knee flexion, not just shrinking leg length. Both arms near neutral crossover hands near world x103/148 y168. Head/torso rise exactly 1 final world pixel from idle. Opposite-step counterpart of pose03.",
+      "references": [
+        {
+          "pathAtGeneration": "Art/Templates/P1-Neutral/down/walk-r1/references/approved-idle-registration.png",
+          "sha256": "00e224b198e5ad9938256572ae5abc1fb61a855e45b2045ff67c00164abb39c0"
+        },
+        {
+          "pathAtGeneration": "Art/Templates/P1-Neutral/down/walk-r1/source/01.png",
+          "sha256": "ca4c85c8d9443158975f7486abb6ae73f31dca05e8b5e214f299dcfb189dd94f"
+        },
+        {
+          "pathAtGeneration": "Art/Review/P1/directions/down/revisions/r1/frames/07.png",
+          "sha256": "8bbeb7da0f91e108e010cc69241f64bdd254ded82f6097f318704262ff196033",
+          "preservedAs": "Art/Templates/P1-Neutral/down/walk-r1/references/motion/07.png"
+        }
+      ],
+      "status": "revised: passing leg too far outside"
+    },
+    {
+      "id": "08",
+      "file": "source/08.png",
+      "generatorOutputPath": "/workspace/generated_images/exec-12f99881-fc5f-4bce-ac41-b0c54f619236.png",
+      "sha256": "6af23876af4c6d5fe880a019f035a73513dd12b1050b2cc0db363b8cbe510259",
+      "prompt": "Create ONE complete neutral game-avatar walking pose. Image 1 is the APPROVED COMMON BODY registration. Image 2 is the SAME neutral person's first walking pose, for identical bare-feet/limb volume and palette. Image 3 is ONLY the approved clothed walk-phase reference: copy its support/swing phase and opposite arm swing, NEVER its hair, face, clothes, gloves or boots. Use image1's bald blank head (absolutely no facial features), peach skin, ivory sleeveless undershirt, charcoal fitted safety shorts, bare arms/hands/legs/feet. Slim stylized chibi game proportions, no exaggerated anatomy. Crisp pixel-art clusters, restrained palette, thin warm dark outlines, upper-left light. EXACT SAME 1254x1254 transparent canvas, cyan corner fiducials, body registration and scale as image1. No zoom, recenter, rescale or changed camera. Shoulders source x530/718,y638, hips x575/688,y865. Head/torso face straight toward viewer/down. Feet point toward viewer/down throughout, NEVER outward. Keep palm/calf/foot volume consistent; rear foot may be bent but not shrunken into a tiny shoe. No exaggerated underside soles facing camera. Complete connected limbs. Closed relaxed hands remain outside torso/shorts silhouette for independent layering. No accessories, hair, face, cast shadow, floor, texture, grey fill, checkerboard or labels. TRUE transparent background. Coordinates below are on final 256px world canvas: sourceX=(worldX-25)/.16, sourceY=(worldY-38)/.16. POSE08: RIGHT late swing, before next right heel contact at01. Right leg SCREEN LEFT extends forward at x118, ankle world y206, bare toes around y215, ready to touch down. Left leg SCREEN RIGHT trails with knee flexion, ankle x134 y197, toes y207. Feet remain hip-width or slightly closer, continuous08-to01, no lateral split and toes never swing outward. Left arm SCREEN RIGHT forward/down hand x148 y174; right arm SCREEN LEFT back/up hand x104 y161. Head/torso rise exactly 2 final world pixels from idle. No large underside sole toward camera.",
+      "references": [
+        {
+          "pathAtGeneration": "Art/Templates/P1-Neutral/down/walk-r1/references/approved-idle-registration.png",
+          "sha256": "00e224b198e5ad9938256572ae5abc1fb61a855e45b2045ff67c00164abb39c0"
+        },
+        {
+          "pathAtGeneration": "Art/Templates/P1-Neutral/down/walk-r1/source/01.png",
+          "sha256": "ca4c85c8d9443158975f7486abb6ae73f31dca05e8b5e214f299dcfb189dd94f"
+        },
+        {
+          "pathAtGeneration": "Art/Review/P1/directions/down/revisions/r1/frames/08.png",
+          "sha256": "e45bba2d68093e150b677a6e912da372cfcbfd0d06d84183aecc4a068a3abff1",
+          "preservedAs": "Art/Templates/P1-Neutral/down/walk-r1/references/motion/08.png"
+        }
+      ],
+      "status": "selected limb source; head and torso ignored"
+    },
+    {
+      "id": "03-gather",
+      "file": "source/03.png",
+      "generatorOutputPath": "/workspace/generated_images/exec-a2778cd7-8b2f-4ab8-ab33-ca39bd7ce514.png",
+      "sha256": "d8370ea5b8a7218ac739c5f9bcaadd54631411b4b6c39d1ce90512bb6480a8aa",
+      "prompt": "Edit this SAME complete neutral game-avatar sprite on the EXACT same 1254x1254 transparent registration canvas. Preserve head, torso, right supporting leg (SCREEN LEFT), both arms, skin palette, shorts, pixel-art style and cyan fiducials. Correct ONLY the LEFT passing leg on SCREEN RIGHT: it currently remains too far out and resembles the earlier trailing-foot phase. Bend its knee naturally and bring its ankle and bare foot INWARD toward the standing leg by about 35 source pixels (5-6 final world pixels), also lift its bare toes about 15 source pixels (2-3 final pixels). The left knee should be near source x665 y900, bent ankle near source x646 y970, bare toes bottom near source y1012; the raised foot passes close to the supporting calf, in FRONT where their silhouettes touch. Keep whole left thigh/calf/ankle/foot anatomically connected, same volume, crisp existing style. Feet point straight down/front, no toe-out, no sideward skating or crossed step. This is phase03, RIGHT support and LEFT passing. Do not move other body parts or change proportions. No facial features or accessories. True transparent background. Source bounds and registration unchanged.",
+      "references": [
+        {
+          "pathAtGeneration": "Art/Templates/P1-Neutral/down/walk-r1/source/03.png",
+          "sha256": "05372db01c39d0c99efb918289a01b8d4fc9b8a0c620ed814397b01c2662d97f",
+          "preservedAs": "Art/Templates/P1-Neutral/down/walk-r1/drafts/03-initial.png"
+        }
+      ],
+      "status": "selected arms, hands, left passing leg"
+    },
+    {
+      "id": "07-gather",
+      "file": "source/07.png",
+      "generatorOutputPath": "/workspace/generated_images/exec-39ed7f8a-ec1e-4eaf-91fb-c08ed20073e1.png",
+      "sha256": "25061bf438c58adee50e49737b4b794ea73c529607fa7a623b3246c0932b3a87",
+      "prompt": "Correct ONLY the character RIGHT passing leg (SCREEN LEFT) in this complete neutral game-avatar pose07. Same 1254x1254 registration canvas and cyan corner fiducials; preserve all other body parts, head, shirt, shorts, left supporting leg, arms, skin palette, pixel style and scale. The raised right foot currently hangs too far out near its idle stance column. Bend its knee naturally and bring its ankle/foot INWARD toward the left supporting calf by about 30 source pixels (5 final world pixels) and lift toes by about 12 source pixels (2 final world pixels). Target right bent ankle near source(612,968), toes bottom near source y1012, so right bare foot passes at world x123,y198-201, close to the supporting leg without crossing. Keep the same foot/calf volume and anatomical connection to its own right hip. The raised foot appears in front if it touches the supporting calf silhouette. Both bare feet point straight forward/down; no turned-out toes or sideward skating. Pose07 is LEFT support with RIGHT leg passing. Do not move the whole body, change proportions, enlarge or shrink the foot. True transparent background, no facial features, accessories or other changes.",
+      "references": [
+        {
+          "pathAtGeneration": "Art/Templates/P1-Neutral/down/walk-r1/source/07.png",
+          "sha256": "ba1b7b4c7769a2ba1b477f460898a3a1faf36dcbe4de51b73872082798985969",
+          "preservedAs": "Art/Templates/P1-Neutral/down/walk-r1/drafts/07-initial.png"
+        }
+      ],
+      "status": "selected arms, hands, right passing leg"
+    },
+    {
+      "id": "06-support",
+      "file": "drafts/06-support-overextended.png",
+      "generatorOutputPath": "/workspace/generated_images/exec-b5c765a7-2db6-4138-88a3-cceaf4e15c61.png",
+      "sha256": "40ed607fe064aea089d8588b0637ed339972847aab8018c81e24b5fb87b9e833",
+      "prompt": "Edit ONLY the LEFT SUPPORTING LEG on SCREEN RIGHT of this neutral game-avatar walk pose06. Preserve the exact 1254x1254 transparent canvas, registration fiducials, head, torso, clothes, both arms and the raised right leg on screen-left. The planted left bare foot is about 12 source pixels too high compared to the other contact/support poses. Redraw the left thigh/calf/ankle connection with this tiny 12-source-pixel extension downward so the supporting toes touch source y1106 (final world y215) instead of source y1094. Keep its foot horizontal position, size, forward/down pointing toes and same volume; do NOT enlarge or stretch the foot itself. Upper thigh remains attached under the shorts, knee mildly flexed for loading. Maintain exactly the same crisp pixel-art palette and outline. No change to the raised right foot or other body parts, no whole-body movement or rescaling. True transparent background, no features, accessories, text or floor.",
+      "references": [
+        {
+          "pathAtGeneration": "Art/Templates/P1-Neutral/down/walk-r1/source/06.png",
+          "sha256": "2f57a0702e79da5b72285f2d3113a3ae0a87f6688035b1d5eaeedfdaa9ecb54e"
+        }
+      ],
+      "status": "rejected: extending support foot undermines its receding stance phase"
+    },
+    {
+      "id": "03-support",
+      "file": "drafts/03-support-too-short.png",
+      "generatorOutputPath": "/workspace/generated_images/exec-65c00bcc-c32d-4b2f-a123-a4680c732941.png",
+      "sha256": "abcddcb21ae61b137545b05fc7ae8b03d250076014da48b130af252bd31bcff4",
+      "prompt": "Edit this exact complete neutral game-avatar sprite on the SAME 1254x1254 transparent registration canvas. Preserve head, torso, shirt, shorts, arms, all other body parts, body proportions, cyan corner fiducials, crisp pixel-art style, peach skin palette and upper-left lighting. The RIGHT SUPPORTING LEG on SCREEN LEFT remains too long/forward in pose03, repeating contact01. As the body passes over it, that support foot should recede slightly under the body. Redraw ONLY that right thigh/knee/calf/ankle and foot so its toes end about 30 source pixels HIGHER, at source y1081 (world y211), instead of y1112 (world216). Keep the same hip root position, knee near source y930, complete ankle connection, and unchanged bare foot SIZE and forward pointing direction. Use natural slight knee flexion and foreshortening, not a chopped-off or scaled-down foot. The raised LEFT passing leg on SCREEN RIGHT is already correct: preserve it exactly, including its inward foot position. No whole-body motion, resizing, facial features, accessories, background or floor; true transparent cutout.",
+      "references": [
+        {
+          "pathAtGeneration": "Art/Templates/P1-Neutral/down/walk-r1/source/03.png",
+          "sha256": "d8370ea5b8a7218ac739c5f9bcaadd54631411b4b6c39d1ce90512bb6480a8aa"
+        }
+      ],
+      "status": "revised: support leg shortened too much"
+    },
+    {
+      "id": "07-support",
+      "file": "drafts/07-support-too-short.png",
+      "generatorOutputPath": "/workspace/generated_images/exec-75f14af9-d714-46ea-9639-ac0915a8c4df.png",
+      "sha256": "21e80b694aa90a7152e6a1044886b4a300b656fd2f6e457c568d47447d171ced",
+      "prompt": "Edit this exact complete neutral game-avatar sprite on the SAME 1254x1254 transparent registration canvas. Preserve head, torso, shirt, shorts, arms, all other body parts, body proportions, cyan corner fiducials, crisp pixel-art style, peach skin palette and upper-left lighting. The LEFT SUPPORTING LEG on SCREEN RIGHT remains too long/forward in pose07, repeating contact05. As the body passes over it, that support foot should recede slightly under the body. Redraw ONLY that left thigh/knee/calf/ankle and foot so its toes end about 25 source pixels HIGHER, at source y1075 (world y210), instead of y1100 (world214). Keep the same hip root position, knee near source y930, complete ankle connection, and unchanged bare foot SIZE and forward pointing direction. Use natural slight knee flexion and foreshortening, not a chopped-off or scaled-down foot. The raised RIGHT passing leg on SCREEN LEFT is already correct: preserve it exactly, including its inward foot position. No whole-body motion, resizing, facial features, accessories, background or floor; true transparent cutout.",
+      "references": [
+        {
+          "pathAtGeneration": "Art/Templates/P1-Neutral/down/walk-r1/source/07.png",
+          "sha256": "25061bf438c58adee50e49737b4b794ea73c529607fa7a623b3246c0932b3a87"
+        }
+      ],
+      "status": "revised: support leg shortened too much"
+    },
+    {
+      "id": "03-support-v2",
+      "file": "source/03-support-v2.png",
+      "generatorOutputPath": "/workspace/generated_images/exec-7775e1ec-6525-48f6-b7b2-1092f10abf86.png",
+      "sha256": "fbd9f2eb4dfdd4f557b101f5e9da22fecf83164da8f57bcaab9c2ba9bebb678c",
+      "prompt": "One precise correction to this game-avatar pose. The RIGHT SUPPORTING LEG on SCREEN LEFT was made too short in the last edit. Keep its HIP and KNEE exactly where they are now. Lengthen ONLY that supporting calf segment by about 25 source pixels, moving its existing ankle and bare foot DOWN by that amount. Keep the foot drawing, width, size, forward/down orientation and ankle volume unchanged; reconnect the calf naturally, do not scale the foot. Target supporting toes lower edge is source y1081 on the 1254x1254 canvas. This is a modest, slightly bent SUPPORTING leg, not a deeply crouching leg. Preserve the other raised/passing leg exactly. Every other pixel/part including head, torso, clothes, arms, corner markers, canvas, placement, palette and crisp pixel style stays as close as possible to this reference. Do not move the whole person or shrink anything. Transparent background; no facial features or accessories.",
+      "references": [
+        {
+          "pathAtGeneration": "Art/Templates/P1-Neutral/down/walk-r1/source/03-support.png",
+          "sha256": "abcddcb21ae61b137545b05fc7ae8b03d250076014da48b130af252bd31bcff4",
+          "preservedAs": "Art/Templates/P1-Neutral/down/walk-r1/drafts/03-support-too-short.png"
+        }
+      ],
+      "status": "selected right support leg only"
+    },
+    {
+      "id": "07-support-v2",
+      "file": "source/07-support-v2.png",
+      "generatorOutputPath": "/workspace/generated_images/exec-e0b39cf0-1cc5-4f01-b785-c59fd4205d12.png",
+      "sha256": "86802247770872627f03f2ada4695d7a6ad8d196e15b11ff514992d4deb7b5e3",
+      "prompt": "One precise correction to this game-avatar pose. The LEFT SUPPORTING LEG on SCREEN RIGHT was made too short in the last edit. Keep its HIP and KNEE exactly where they are now. Lengthen ONLY that supporting calf segment by about 30 source pixels, moving its existing ankle and bare foot DOWN by that amount. Keep the foot drawing, width, size, forward/down orientation and ankle volume unchanged; reconnect the calf naturally, do not scale the foot. Target supporting toes lower edge is source y1075 on the 1254x1254 canvas. This is a modest, slightly bent SUPPORTING leg, not a deeply crouching leg. Preserve the other raised/passing leg exactly. Every other pixel/part including head, torso, clothes, arms, corner markers, canvas, placement, palette and crisp pixel style stays as close as possible to this reference. Do not move the whole person or shrink anything. Transparent background; no facial features or accessories.",
+      "references": [
+        {
+          "pathAtGeneration": "Art/Templates/P1-Neutral/down/walk-r1/source/07-support.png",
+          "sha256": "21e80b694aa90a7152e6a1044886b4a300b656fd2f6e457c568d47447d171ced",
+          "preservedAs": "Art/Templates/P1-Neutral/down/walk-r1/drafts/07-support-too-short.png"
+        }
+      ],
+      "status": "selected left support leg only"
+    }
+  ],
+  "partSourcesByPose": {
+    "0": {},
+    "1": {},
+    "2": {},
+    "3": {
+      "body.leg.right": "03-support-v2"
+    },
+    "4": {},
+    "5": {},
+    "6": {},
+    "7": {
+      "body.leg.left": "07-support-v2"
+    },
+    "8": {}
+  }
+}

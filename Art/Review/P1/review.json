@@ -3,8 +3,8 @@
   "format": 3,
   "updated": "2026-10-18",
   "workflow": "Review one direction at a time from fixed cardinal and diagonal baselines. Modify and resubmit the same direction until explicit user artwork approval, then advance. Record provenance, feedback and accepted revisions for the future character template.",
-  "current": "neutral-down-idle-r1",
-  "templateStatus": "approved eight-direction motions retained; first common neutral down idle body r1 awaits review; walking neutral poses and generic modular integration pending",
+  "current": "neutral-down-walk-r1",
+  "templateStatus": "eight original directions and neutral idle body r1 approved; neutral down walk r1 awaiting artwork review; independent assets and generic customization pending",
   "items": [
     {
       "id": "01-down-idle",
@@ -1319,7 +1319,7 @@
     ]
   },
   "templateStandard": {
-    "status": "neutral-body-idle-r1-awaiting-review",
+    "status": "neutral-down-walk-r1-awaiting-review",
     "path": "Art/Standards/P1-Parts-v1/README.md",
     "profile": "Art/Standards/P1-Parts-v1/profile.json",
     "artApproval": null,
@@ -1327,10 +1327,11 @@
     "genericRendererComplete": false,
     "thirdResourceIntegrationComplete": false,
     "motionApprovalUnchanged": true,
-    "neutralBodyIdleCandidate": "Art/Templates/P1-Neutral/down/r1"
+    "neutralBodyIdleCandidate": "Art/Templates/P1-Neutral/down/r1",
+    "neutralBodyWalkCandidate": "Art/Templates/P1-Neutral/down/walk-r1"
   },
   "neutralBodyReview": {
-    "status": "awaiting_user_review",
+    "status": "approved",
     "revision": "r1",
     "direction": "down",
     "pose": "idle 00",
@@ -1340,9 +1341,47 @@
     "assetManifest": "Art/Templates/P1-Neutral/down/r1/asset.json",
     "registration": "Art/Templates/P1-Neutral/down/r1/registration.json",
     "validation": "Art/Templates/P1-Neutral/down/r1/validation.json",
-    "artApproval": null,
+    "artApproval": {
+      "date": "2026-10-18",
+      "reviewer": "user",
+      "statement": "没问题",
+      "status": "approved",
+      "scope": "neutral down idle 00 r1 common-body shape, proportions and layer separation; walking poses and production standard not yet approved",
+      "artifacts": {
+        "00.png": "a74c005b6b115928f953ccba588fb9712113d6eead7fc3222624fa116c54fc8d",
+        "review.png": "b055708246f5e3c77d624f1ecc07e6f8d8ded7058836a60b072e4e6f0139912f",
+        "head-down.png": "3ce3e9a37a1d4144850c968fcfac1ac731dfa54763b1f7ed14b4e4591480cc20",
+        "asset.json": "7ecbc9253e4c146ddc157f278001e7128913c82f78767170be0abc7335d038ea",
+        "registration.json": "fdd939db89c5954177d15f2bc0d279b4141249ba3949ffdd5c1d422835850bbe",
+        "layers/00/body.arm.left.png": "9801a6694f6623d38d991bf16693528c7a9fd07092e39633dfad410e313587b7",
+        "layers/00/body.hand.right.png": "31aca92cc2479f20c3bec511f245791b2037e864cff3d0b8377c0de6a998e251",
+        "layers/00/body.torso.png": "782b15d071486d00864d67eebf5b6e5090a57d9d93aa0d8edb0f3267f84a29da",
+        "layers/00/body.hand.left.png": "eb62b5e34125dd9c3e05ca3beb1edb47c17aa91074492536ee95813c3b920bb3",
+        "layers/00/body.arm.right.png": "7f7957e771f2353e1acbe19b79c80f8354b60bfe6de6916b2064c00a4d0851d6",
+        "layers/00/body.leg.left.png": "1aebf46ed1e196125b19a488f2d7a52bd435b80ba4b451eb1fd4f54429f38141",
+        "layers/00/body.leg.right.png": "de4c728640be1a66fc85cf1975cdb5bef5687b658953a49301fc607ec037c74b",
+        "layers/00/head.base.png": "aecb5bd4249d51469566642c873ab6dcae90c0dfaedfb5f74ba9b4089c0ff8da"
+      }
+    },
     "request": "按你的思路开始下一步",
     "scope": "first shared neutral body and head reference; eight independent base layers; 00 only; not walking animation or completed customization system",
-    "next": "after common-body proportion review, author down walking poses 01-08"
+    "next": "idle approved; down neutral walk r1 submitted for separate review"
+  },
+  "neutralWalkReview": {
+    "status": "awaiting_user_review",
+    "direction": "down",
+    "revision": "r1",
+    "source": "Art/Templates/P1-Neutral/down/walk-r1",
+    "artApproval": null,
+    "scope": "eight neutral walking poses 01-08 using approved idle body and approved down gait phases",
+    "reviewImage": "Art/Templates/P1-Neutral/down/walk-r1/review.png",
+    "normalLoop": "Art/Templates/P1-Neutral/down/walk-r1/walk.gif",
+    "slowLoop": "Art/Templates/P1-Neutral/down/walk-r1/walk-slow.gif",
+    "assetManifest": "Art/Templates/P1-Neutral/down/walk-r1/asset.json",
+    "motion": "Art/Templates/P1-Neutral/down/walk-r1/motion.json",
+    "validation": "Art/Templates/P1-Neutral/down/walk-r1/validation.json",
+    "editableLayers": 72,
+    "request": "没问题",
+    "requestMeaning": "approve shared neutral idle r1; authorize down walk continuation, not approve new walking artwork"
   }
 }

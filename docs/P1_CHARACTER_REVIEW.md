@@ -4,11 +4,11 @@
 
 ## 当前审核
 
-**八方向步态已获用户认可；当前审核第一份共同中性人体：向下 00 站姿 r1。**
+**八方向原步态、向下共同中性站姿 r1 已获认可；当前审核向下八帧中性行走 r1。**
 
-用户授权“按你的思路开始下一步”后，另存[中性人体 r1](../Art/Templates/P1-Neutral/down/r1/README.md)，提供[当前审核图](../Art/Templates/P1-Neutral/down/r1/review.png)、八层 PNG、公共头板和 ORA／SVG。头身比例、接缝与拟定眼位待本轮审核；按逐张审核规则先确认共同底模，再展开向下 01–08，不将未确认比例批量应用。
+用户回复“没问题”，认可[共同站姿 r1](../Art/Templates/P1-Neutral/down/r1/approval.json)，按此展开[向下八帧中性行走 r1](../Art/Templates/P1-Neutral/down/walk-r1/README.md)。[当前编号图](../Art/Templates/P1-Neutral/down/walk-r1/review.png) · [正常循环](../Art/Templates/P1-Neutral/down/walk-r1/walk.gif) · [慢速循环](../Art/Templates/P1-Neutral/down/walk-r1/walk-slow.gif)。共 72 张独立部件、九份 ORA／SVG及逐帧关节／握持／足底与身体层序；新行走认可为空，不把站姿认可扩大到动作。
 
-用户明确要求新美术资源遵守统一人体／动作标准，直接挂载使用，指出旧银发与金眼脸片存在配套耦合。已建立[独立部件合同与导板](../Art/Standards/P1-Parts-v1/README.md)及[旧方案审查](../Art/Standards/P1-Parts-v1/MIGRATION.md)；头部坐标仍为草案，向下 00 中性人体已有候选；八帧中性行走与通用装配器尚未完成。
+用户明确要求新美术资源遵守统一人体／动作标准，直接挂载使用，指出旧银发与金眼脸片存在配套耦合。已建立[独立部件合同与导板](../Art/Standards/P1-Parts-v1/README.md)及[旧方案审查](../Art/Standards/P1-Parts-v1/MIGRATION.md)；共同头型已随站姿认可，向下中性行走候选已完成；完整外观挂载、通用装配器及其他七方向中性人体尚未完成。
 
 用户确认“可以的，我们走路的方向动画都调好了”，右上 r1 的认可已记录。已认可动作冻结为 `Art/Templates/P1-Motion-v1.json`，共八方向、每方向站姿＋八帧。用户随后以“按你说的来”授权先做向下方向换装验证；这个授权不等于新外观美术认可。
 
