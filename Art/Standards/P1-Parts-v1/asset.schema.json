@@ -1,0 +1,262 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "P1 independent character part package",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "id",
+    "version",
+    "part",
+    "compatibility",
+    "mode",
+    "slots",
+    "directions",
+    "clips",
+    "sourceFiles",
+    "bindings"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "1.0.0"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9-]*$"
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$"
+    },
+    "part": {
+      "enum": [
+        "base",
+        "hair",
+        "face",
+        "outfit",
+        "weapon"
+      ]
+    },
+    "compatibility": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "rig",
+        "bodyProfile",
+        "actionSet"
+      ],
+      "properties": {
+        "rig": {
+          "const": "p1-chibi-v1"
+        },
+        "bodyProfile": {
+          "const": "p1-standard"
+        },
+        "actionSet": {
+          "const": "locomotion-v1"
+        }
+      }
+    },
+    "mode": {
+      "enum": [
+        "head-local",
+        "pose-map",
+        "socket"
+      ]
+    },
+    "slots": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "body.torso",
+          "body.arm.right",
+          "body.arm.left",
+          "body.leg.right",
+          "body.leg.left",
+          "body.hand.right",
+          "body.hand.left",
+          "head.base",
+          "hair.back",
+          "hair.front",
+          "face.eyes",
+          "face.brows",
+          "face.nose",
+          "face.mouth",
+          "outfit.torso",
+          "outfit.sleeve.right",
+          "outfit.sleeve.left",
+          "outfit.hem.back",
+          "outfit.hem.front",
+          "outfit.pants.right",
+          "outfit.pants.left",
+          "outfit.boot.right",
+          "outfit.boot.left",
+          "weapon.right",
+          "weapon.left"
+        ]
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "directions": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "down",
+          "left",
+          "up",
+          "right",
+          "down-right",
+          "down-left",
+          "up-left",
+          "up-right"
+        ]
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "clips": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "idle",
+          "walk"
+        ]
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "sourceFiles": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "canvas": {
+      "type": "array",
+      "prefixItems": [
+        {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 256
+        },
+        {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 256
+        }
+      ],
+      "minItems": 2,
+      "maxItems": 2
+    },
+    "pivot": {
+      "type": "array",
+      "items": {
+        "type": "number"
+      },
+      "minItems": 2,
+      "maxItems": 2
+    },
+    "socket": {
+      "enum": [
+        "grip.right",
+        "grip.left"
+      ]
+    },
+    "gripProfile": {
+      "enum": [
+        "one-hand-closed"
+      ]
+    },
+    "bindings": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "direction",
+          "clip",
+          "frame",
+          "layers"
+        ],
+        "properties": {
+          "direction": {
+            "enum": [
+              "down",
+              "left",
+              "up",
+              "right",
+              "down-right",
+              "down-left",
+              "up-left",
+              "up-right"
+            ]
+          },
+          "clip": {
+            "enum": [
+              "idle",
+              "walk"
+            ]
+          },
+          "frame": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 8
+          },
+          "layers": {
+            "type": "object",
+            "minProperties": 1,
+            "additionalProperties": {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9_./-]+\\.png$"
+            }
+          }
+        }
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "mode": {
+            "const": "socket"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "canvas",
+          "pivot",
+          "socket",
+          "gripProfile"
+        ]
+      },
+      "else": {
+        "not": {
+          "anyOf": [
+            {
+              "required": [
+                "canvas"
+              ]
+            },
+            {
+              "required": [
+                "pivot"
+              ]
+            },
+            {
+              "required": [
+                "socket"
+              ]
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

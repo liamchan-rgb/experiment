@@ -3,8 +3,8 @@
   "format": 3,
   "updated": "2026-10-18",
   "workflow": "Review one direction at a time from fixed cardinal and diagonal baselines. Modify and resubmit the same direction until explicit user artwork approval, then advance. Record provenance, feedback and accepted revisions for the future character template.",
-  "current": "template-down-v1-pilot",
-  "templateStatus": "eight gait directions approved; down modular appearance pilot v1 awaits user artwork review",
+  "current": "template-art-standard-v1",
+  "templateStatus": "eight approved motion directions retained; modular pilot revision requested; reusable art contract draft and guides created, neutral body and generic importer pending",
   "items": [
     {
       "id": "01-down-idle",
@@ -1297,7 +1297,7 @@
     "08-up-right-gait"
   ],
   "templatePilot": {
-    "status": "awaiting_user_review",
+    "status": "revision_requested",
     "direction": "down",
     "baseline": "directions/down/revisions/r1",
     "request": "按你说的来",
@@ -1308,6 +1308,24 @@
     "source": "Art/Templates/P1-Down/v1",
     "validation": "Art/Templates/P1-Down/v1/validation.json",
     "approvedMotionLock": "Art/Templates/P1-Motion-v1.json",
-    "productionAssetsUpdated": false
+    "productionAssetsUpdated": false,
+    "feedback": [
+      {
+        "date": "2026-10-18",
+        "source": "user",
+        "text": "你这个银色头发完全是给金色眼睛面部的的小人做配套的，我的意思你又没用明白，你这个技术路线之后能好好换装吗，你得制定一个可复用的美术标准，把新的美术资源挂载到这个动作模组上就能用，这就是我的想法，就像其他游戏换装那样",
+        "scope": "require a reusable art standard and independent asset packages mounted to one motion/body module; reject paired appearance workaround"
+      }
+    ]
+  },
+  "templateStandard": {
+    "status": "draft",
+    "path": "Art/Standards/P1-Parts-v1/README.md",
+    "profile": "Art/Standards/P1-Parts-v1/profile.json",
+    "artApproval": null,
+    "neutralBodyComplete": false,
+    "genericRendererComplete": false,
+    "thirdResourceIntegrationComplete": false,
+    "motionApprovalUnchanged": true
   }
 }

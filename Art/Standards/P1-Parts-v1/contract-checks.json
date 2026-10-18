@@ -1,0 +1,10 @@
+{
+  "tests": 19,
+  "failures": 0,
+  "errors": 0,
+  "scope": "synthetic declaration/geometry/file probes; no character art approval",
+  "artApproval": null,
+  "neutralBodyCompleted": false,
+  "genericRendererCompleted": false,
+  "thirdResourceZeroCodeIntegrationPassed": false
+}
