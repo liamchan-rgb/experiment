@@ -1,6 +1,10 @@
 # P1 向上方向 · 当前审核
 
-2026-10-18，用户认可向左 r1 后，进入向上方向审核。当前展示原有 build 28 素材，尚未重画、尚未认可。
+2026-10-18，用户反馈“我的意见和你一样，你开始修吧”，已据此交付 [向上 r1 重画稿](revisions/r1/README.md)，当前待用户审核，尚未认可。
+
+当前稿：[编号图](revisions/r1/review-2x.png) · [正常循环](revisions/r1/walk.gif) · [四分之一速度循环](revisions/r1/walk-slow.gif)。00 为新站姿，01–08 为两步循环八张关键姿势；修改依据见 [AUDIT.md](AUDIT.md)。认可前继续修改向上，向右仍排队。
+
+以下为未改动的 build 28 基线，保留供对照；帧号与 r1 不对应。
 
 [编号图](review.png) · [原像素横条](strip.png) · [正常循环](walk-baseline.gif) · [四分之一速度循环](walk-baseline-slow.gif)
 

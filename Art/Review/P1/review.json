@@ -327,7 +327,7 @@
     {
       "id": "03-up-gait",
       "direction": "up",
-      "status": "awaiting_user_feedback",
+      "status": "awaiting_user_review",
       "sourceAtlas": "01-cardinal-atlas/baseline.png",
       "cropPixels": [
         0,
@@ -371,8 +371,50 @@
       ],
       "previewLayout": "5 columns x 5 rows, left to right then top to bottom; 00 idle, 01-24 walk; black backdrop; no pose changes",
       "pixelVerification": "source strip RGBA equals the corresponding baseline atlas row",
-      "revisions": [],
-      "approval": null
+      "revisions": [
+        {
+          "id": "r1",
+          "date": "2026-10-18",
+          "status": "awaiting_user_review",
+          "artApproval": null,
+          "method": "imagegen redraw of complete rear-facing poses; uniform whole-pose silhouette scaling and sole-envelope alignment",
+          "idlePoses": 1,
+          "walkingPoses": 8,
+          "reviewImage": "directions/up/revisions/r1/review-2x.png",
+          "strip": "directions/up/revisions/r1/strip.png",
+          "normalLoop": "directions/up/revisions/r1/walk.gif",
+          "slowLoop": "directions/up/revisions/r1/walk-slow.gif",
+          "comparison": "directions/up/revisions/r1/comparison.png",
+          "notes": "directions/up/revisions/r1/README.md",
+          "validation": "directions/up/revisions/r1/validation.json",
+          "addressedInCandidate": [
+            "rear heel seams and parallel up-facing boot axes",
+            "heel rise and sole/ankle drawings",
+            "two bent-knee passing poses",
+            "opposite arm swing and rear hand visibility",
+            "reduced exaggerated depth and boot-size contrast",
+            "idle heel/cuff volume matched to walking model"
+          ],
+          "productionAssetsUpdated": false
+        }
+      ],
+      "approval": null,
+      "audit": "directions/up/AUDIT.md",
+      "feedback": [
+        {
+          "date": "2026-10-18",
+          "source": "user",
+          "text": "我的意见和你一样，你开始修吧",
+          "issues": [
+            "双脚向两侧撇",
+            "背面抬脚时鞋跟、鞋底与脚踝关系需重画",
+            "手臂与上身基本固定，缺少交替摆动和承重变化"
+          ],
+          "approvalMeaning": "修改授权；不是向上美术认可"
+        }
+      ],
+      "currentRevision": "r1",
+      "auditStatus": "up r1 redrawn and exported; awaiting explicit user artwork approval"
     },
     {
       "id": "04-right-gait",
