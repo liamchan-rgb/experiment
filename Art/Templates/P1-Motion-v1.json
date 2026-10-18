@@ -1,0 +1,368 @@
+{
+  "schemaVersion": 1,
+  "name": "P1 approved motion v1",
+  "date": "2026-10-18",
+  "scope": "approved motion only; layered customization is a separate down-direction pilot",
+  "canvas": [
+    256,
+    256
+  ],
+  "idle": 0,
+  "walk": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8
+  ],
+  "normalFrameMs": 120,
+  "directions": {
+    "down": {
+      "revision": "r1",
+      "approval": "Art/Review/P1/directions/down/revisions/r1/approval.json",
+      "approvalSHA256": "1fe68c49308a449dcd4301fc1e0814aa97bb7e0b2e30107cdef43e02212cc669",
+      "frames": [
+        {
+          "path": "Art/Review/P1/directions/down/revisions/r1/frames/00.png",
+          "sha256": "80c042f1626923b71fd0fbe6be3e81804b359a0c5df7eeb91bc1199abf4d374b"
+        },
+        {
+          "path": "Art/Review/P1/directions/down/revisions/r1/frames/01.png",
+          "sha256": "36d650a3621e586d9bba1d945ec694328fcf0df18ba6613b1032602512d72e88"
+        },
+        {
+          "path": "Art/Review/P1/directions/down/revisions/r1/frames/02.png",
+          "sha256": "08451a6d548ab02982a9432c802827af750d347a364222c34ec8fe61d382b402"
+        },
+        {
+          "path": "Art/Review/P1/directions/down/revisions/r1/frames/03.png",
+          "sha256": "9c430e686520275762c32de0243665538087c225c890efc5ef906d269a88bfcb"
+        },
+        {
+          "path": "Art/Review/P1/directions/down/revisions/r1/frames/04.png",
+          "sha256": "7bb55796e8fc3a9f0de109e5216399aa395c619f7e015505bf4d00dbddb3e6c1"
+        },
+        {
+          "path": "Art/Review/P1/directions/down/revisions/r1/frames/05.png",
+          "sha256": "73b14ff65b08be334e50a0ebd60f31a5a3e7ca47e6b6ff99c3a4a60dbab2d2d7"
+        },
+        {
+          "path": "Art/Review/P1/directions/down/revisions/r1/frames/06.png",
+          "sha256": "bd0509de58954a41f74f5076c94f414ae74f4c68a5f1146571bf8d037006fdec"
+        },
+        {
+          "path": "Art/Review/P1/directions/down/revisions/r1/frames/07.png",
+          "sha256": "8bbeb7da0f91e108e010cc69241f64bdd254ded82f6097f318704262ff196033"
+        },
+        {
+          "path": "Art/Review/P1/directions/down/revisions/r1/frames/08.png",
+          "sha256": "e45bba2d68093e150b677a6e912da372cfcbfd0d06d84183aecc4a068a3abff1"
+        }
+      ]
+    },
+    "left": {
+      "revision": "r1",
+      "approval": "Art/Review/P1/directions/left/revisions/r1/approval.json",
+      "approvalSHA256": "edfff43c592b235152d93796c2ac110fd11b37c3e1d9386a59f907893ff7194b",
+      "frames": [
+        {
+          "path": "Art/Review/P1/directions/left/revisions/r1/frames/00.png",
+          "sha256": "9fb20374af673926ffd8fab790a632582634f32471b111056579f65f02f541f5"
+        },
+        {
+          "path": "Art/Review/P1/directions/left/revisions/r1/frames/01.png",
+          "sha256": "03825478c81cb87279891bce57fcc4a4197bf23e4a83035187cbcdebbf17d531"
+        },
+        {
+          "path": "Art/Review/P1/directions/left/revisions/r1/frames/02.png",
+          "sha256": "2f3c3a241cdccef12ab5f1e82ca81a5ce937f9ec11216a9d0e15eaed78e68700"
+        },
+        {
+          "path": "Art/Review/P1/directions/left/revisions/r1/frames/03.png",
+          "sha256": "ea816b3416c69958a5db45927b4c6dfa22bc20e5c5b917d488e55f0adabde8e0"
+        },
+        {
+          "path": "Art/Review/P1/directions/left/revisions/r1/frames/04.png",
+          "sha256": "be983787fb7e42c0239b2c7520ef2b34b557c2e7f6ddb752f4a2ab0188545775"
+        },
+        {
+          "path": "Art/Review/P1/directions/left/revisions/r1/frames/05.png",
+          "sha256": "7a43a1b671de911b84f73bc845c08cb02b5d5688bc92dd6045ef3f26b5caf347"
+        },
+        {
+          "path": "Art/Review/P1/directions/left/revisions/r1/frames/06.png",
+          "sha256": "0c67cd601634e0950368922bc27c377434c4e9202c4b0ac25ac7bfa1eed03ba9"
+        },
+        {
+          "path": "Art/Review/P1/directions/left/revisions/r1/frames/07.png",
+          "sha256": "d566b71bebc66389f3ec8a8e6b4a528f523bd18261efcfe6723c8f79f5faed7c"
+        },
+        {
+          "path": "Art/Review/P1/directions/left/revisions/r1/frames/08.png",
+          "sha256": "b0d0897e436471978f9f3232aeaeeaadb1a1486c2f630431346b84b926b23036"
+        }
+      ]
+    },
+    "up": {
+      "revision": "r1",
+      "approval": "Art/Review/P1/directions/up/revisions/r1/approval.json",
+      "approvalSHA256": "ea760cdc809c9a3d392d29ac9ace9f30b9e29f8a7a60c049a2fa940a15638369",
+      "frames": [
+        {
+          "path": "Art/Review/P1/directions/up/revisions/r1/frames/00.png",
+          "sha256": "a76fc7a282c81efa57b1de2d068fe92d80bc2d48a55feb02f5f25adeb1e069a5"
+        },
+        {
+          "path": "Art/Review/P1/directions/up/revisions/r1/frames/01.png",
+          "sha256": "39a45128668c0663b89f3357d576573b8cc14d2c7f978c7cb7306e824a5b7e7b"
+        },
+        {
+          "path": "Art/Review/P1/directions/up/revisions/r1/frames/02.png",
+          "sha256": "4dedfff032e6ce2dd3bf25290d4bf7828fcb12329689cce1dd72b489ac75c5e3"
+        },
+        {
+          "path": "Art/Review/P1/directions/up/revisions/r1/frames/03.png",
+          "sha256": "4d6baab33bf9e5874131073707738ab77df9eebf50034dbdde61bfe4d83a713d"
+        },
+        {
+          "path": "Art/Review/P1/directions/up/revisions/r1/frames/04.png",
+          "sha256": "d8e3fa2db950163b270e7a5225cff982816f47bec4bf83c0f4418af3ee8445a8"
+        },
+        {
+          "path": "Art/Review/P1/directions/up/revisions/r1/frames/05.png",
+          "sha256": "95fd56eaeb6dc9c4e583815a22ba90ebe330cf07e533aadf418395d2bc6218f1"
+        },
+        {
+          "path": "Art/Review/P1/directions/up/revisions/r1/frames/06.png",
+          "sha256": "671071000bf0f54ae7069b377ba46e2860a9a17587bcd28501d03222714adae2"
+        },
+        {
+          "path": "Art/Review/P1/directions/up/revisions/r1/frames/07.png",
+          "sha256": "6663d588a0fc2319dc8c5f99b4531724bfcae9750cbc8e92656ca61eea5488f5"
+        },
+        {
+          "path": "Art/Review/P1/directions/up/revisions/r1/frames/08.png",
+          "sha256": "2f1f6dd51f62b81a4239717d86798a570e2c5078411b5692c43c537b513db8c0"
+        }
+      ]
+    },
+    "right": {
+      "revision": "r1",
+      "approval": "Art/Review/P1/directions/right/revisions/r1/approval.json",
+      "approvalSHA256": "d8c33d7db01cbbbfe3efee5988f77a04488a0baeb69979eb8ce7636ccca5721e",
+      "frames": [
+        {
+          "path": "Art/Review/P1/directions/right/revisions/r1/frames/00.png",
+          "sha256": "1a9e96358b6c93cf830e477102a31e5d6be325c07c97b64e2edfbccde62cce68"
+        },
+        {
+          "path": "Art/Review/P1/directions/right/revisions/r1/frames/01.png",
+          "sha256": "62ee4e4137c36abbfc480b8bc909655910e2c0cb6db675747650835fe646b2b7"
+        },
+        {
+          "path": "Art/Review/P1/directions/right/revisions/r1/frames/02.png",
+          "sha256": "93145184abc490859a925cfa43f33399a98317ea19819059973c191b4d745f49"
+        },
+        {
+          "path": "Art/Review/P1/directions/right/revisions/r1/frames/03.png",
+          "sha256": "1edfe32f1d60d644c80edf814bbf0a75c404fe9c7f7288d4280ba5cfe22e39cb"
+        },
+        {
+          "path": "Art/Review/P1/directions/right/revisions/r1/frames/04.png",
+          "sha256": "94d3b301e12c5f76e46754bb444e59d5596b39f1769d6a490effd14aba8aa885"
+        },
+        {
+          "path": "Art/Review/P1/directions/right/revisions/r1/frames/05.png",
+          "sha256": "6118a134e868098f2e5f2829dd732c90373ee3ef51b8c28d9e64afbed130200b"
+        },
+        {
+          "path": "Art/Review/P1/directions/right/revisions/r1/frames/06.png",
+          "sha256": "25cc8378c342569497cf88a7e324827efc5e10ca1c65eb65f3fd804a24427586"
+        },
+        {
+          "path": "Art/Review/P1/directions/right/revisions/r1/frames/07.png",
+          "sha256": "8f949fc761ce2184a3320071996448bc55371f5af9234cacc520b400c4ac1226"
+        },
+        {
+          "path": "Art/Review/P1/directions/right/revisions/r1/frames/08.png",
+          "sha256": "6a5b03743fdd7b3c081b9e7bc348189d0b032d318f93fe5dd5a8ca2801c57ba0"
+        }
+      ]
+    },
+    "down-right": {
+      "revision": "r1",
+      "approval": "Art/Review/P1/directions/down-right/revisions/r1/approval.json",
+      "approvalSHA256": "fc3f70137f1a8a051f61146e1bcb3ab2ae0c86ed3710c499a5760e0f5f1ecbd2",
+      "frames": [
+        {
+          "path": "Art/Review/P1/directions/down-right/revisions/r1/frames/00.png",
+          "sha256": "441cc2a0ead3966b3f921d0907648a494537c374711ccd1625cb5682d25cb749"
+        },
+        {
+          "path": "Art/Review/P1/directions/down-right/revisions/r1/frames/01.png",
+          "sha256": "7fbaad094c1e809c6fb7ab894cfa9f788b8de3017342c5b8961f1e82bc3c434b"
+        },
+        {
+          "path": "Art/Review/P1/directions/down-right/revisions/r1/frames/02.png",
+          "sha256": "4a38c8de63cb4fd792ffd9380a02e53981cdd7ffec948693ac77a2844fb5f3f5"
+        },
+        {
+          "path": "Art/Review/P1/directions/down-right/revisions/r1/frames/03.png",
+          "sha256": "78d00e9794bf69525e74ef647947a6060bb5927559c4f4457431cef8241ab8fd"
+        },
+        {
+          "path": "Art/Review/P1/directions/down-right/revisions/r1/frames/04.png",
+          "sha256": "74321810fe4d42a0e633b8c7c43cff84f86871603737bf470e44381aa8c42988"
+        },
+        {
+          "path": "Art/Review/P1/directions/down-right/revisions/r1/frames/05.png",
+          "sha256": "9cf46582c367d58e6120538d8de1a2a836e6f26f87991b281e653cd222c951ae"
+        },
+        {
+          "path": "Art/Review/P1/directions/down-right/revisions/r1/frames/06.png",
+          "sha256": "22db1ba37554aa682cef469b0fc0cd0a671f8d803228bd0280290c42245c0ba0"
+        },
+        {
+          "path": "Art/Review/P1/directions/down-right/revisions/r1/frames/07.png",
+          "sha256": "1ab1d53dc57b9fe8fa633a78b7977f20b9950b542e6d3b9a1a3a6aa6ee6ae39d"
+        },
+        {
+          "path": "Art/Review/P1/directions/down-right/revisions/r1/frames/08.png",
+          "sha256": "7f211027d7944bf4283c13c79038ee39821d4653f9aecc02c0aa96ad31bb0ad4"
+        }
+      ]
+    },
+    "down-left": {
+      "revision": "r1",
+      "approval": "Art/Review/P1/directions/down-left/revisions/r1/approval.json",
+      "approvalSHA256": "aea4848000f70d555319abe8f520365e359efc539a4432022663c3c38146cd9f",
+      "frames": [
+        {
+          "path": "Art/Review/P1/directions/down-left/revisions/r1/frames/00.png",
+          "sha256": "2be22c493354e7998a4d18f294a4fcb93d80ec85df4e681167de7356ec1d6299"
+        },
+        {
+          "path": "Art/Review/P1/directions/down-left/revisions/r1/frames/01.png",
+          "sha256": "53fc0f936dfb2f8baf8e3c05fd615778a3a3e21e9d21f919de4a13188be99d77"
+        },
+        {
+          "path": "Art/Review/P1/directions/down-left/revisions/r1/frames/02.png",
+          "sha256": "8dc67be30740410bf2fa6e9f6989edf40c6c58fb2823568c35b057dcd318590e"
+        },
+        {
+          "path": "Art/Review/P1/directions/down-left/revisions/r1/frames/03.png",
+          "sha256": "d14bd3d567d109e58773d6c3d0eb91a2231cebbeb348b0f2e76f90c085948306"
+        },
+        {
+          "path": "Art/Review/P1/directions/down-left/revisions/r1/frames/04.png",
+          "sha256": "bdaf34958732d5d2369846acdc430f844f2b02a361368e5bb51e0daa223902d7"
+        },
+        {
+          "path": "Art/Review/P1/directions/down-left/revisions/r1/frames/05.png",
+          "sha256": "e1d1e46d751d1b6a180898527c48adc3be0b196f41cd9de7c5e959b6e8ac9593"
+        },
+        {
+          "path": "Art/Review/P1/directions/down-left/revisions/r1/frames/06.png",
+          "sha256": "93783c69d54e9c8ddba63af98293f383c59b91d98f303c57895f781f9947e795"
+        },
+        {
+          "path": "Art/Review/P1/directions/down-left/revisions/r1/frames/07.png",
+          "sha256": "e2dbe43ad2e9adafc44cfbffc884d7d15d789b45de97bf795e85eccd110933dd"
+        },
+        {
+          "path": "Art/Review/P1/directions/down-left/revisions/r1/frames/08.png",
+          "sha256": "27cfcbaca7a4b568e37336f19c49c4a50216e1492fc6ea9960a2ca4574eda3f9"
+        }
+      ]
+    },
+    "up-left": {
+      "revision": "r6",
+      "approval": "Art/Review/P1/directions/up-left/revisions/r6/approval.json",
+      "approvalSHA256": "3a7277c1d2a90bdae36b431802adb00b9eee4eba1e6cef35426b3e9b2a833577",
+      "frames": [
+        {
+          "path": "Art/Review/P1/directions/up-left/revisions/r6/frames/00.png",
+          "sha256": "0959022506ce2b1b97213f4d61c9f2bc5a49c0bd9a2ab25563fc0a7d2bde428b"
+        },
+        {
+          "path": "Art/Review/P1/directions/up-left/revisions/r6/frames/01.png",
+          "sha256": "c89e86151cb213031ed6185242cca2fe23153476e3c2a18fa4c29b648db14960"
+        },
+        {
+          "path": "Art/Review/P1/directions/up-left/revisions/r6/frames/02.png",
+          "sha256": "ebd262bc9f729310e112b924cda2d785acdb6133ece1ad8f008a450e72859d8c"
+        },
+        {
+          "path": "Art/Review/P1/directions/up-left/revisions/r6/frames/03.png",
+          "sha256": "d79f8f3af00ded9d88e7654c5fd7b777e4729c647128b236930b72627d17a2f9"
+        },
+        {
+          "path": "Art/Review/P1/directions/up-left/revisions/r6/frames/04.png",
+          "sha256": "5c5d3adb56d473b90785c69d48507497940b6451636d3befe282323497c6ed7f"
+        },
+        {
+          "path": "Art/Review/P1/directions/up-left/revisions/r6/frames/05.png",
+          "sha256": "fb489088bde5d779ce09ee425b0abfb3d9c1b20615e8c309e3de3753ddf4bcd4"
+        },
+        {
+          "path": "Art/Review/P1/directions/up-left/revisions/r6/frames/06.png",
+          "sha256": "807a19a07cf057eec97b9c23f35c73cb693d819bb4f402d4b9187041a2263154"
+        },
+        {
+          "path": "Art/Review/P1/directions/up-left/revisions/r6/frames/07.png",
+          "sha256": "f8114186f4e87c10f60bf45f96bbcea49c5a4877398b7a871922b6327c026473"
+        },
+        {
+          "path": "Art/Review/P1/directions/up-left/revisions/r6/frames/08.png",
+          "sha256": "c4cffc3818d94521d47ade5c6a5c499973f8994e5101b2181fe6bdf787cb3d6a"
+        }
+      ]
+    },
+    "up-right": {
+      "revision": "r1",
+      "approval": "Art/Review/P1/directions/up-right/revisions/r1/approval.json",
+      "approvalSHA256": "8d90556c25ce47e191c2c4ade6f8f3584a0e63876b9055b90477e0cedc391f95",
+      "frames": [
+        {
+          "path": "Art/Review/P1/directions/up-right/revisions/r1/frames/00.png",
+          "sha256": "0504029ae05698a49d775ef4336b9336b67691851e540b51286983fc940ce59e"
+        },
+        {
+          "path": "Art/Review/P1/directions/up-right/revisions/r1/frames/01.png",
+          "sha256": "a8592e2ccb095b6ff5a12c10a6407c325243cfc4149d92f6005584f739338e71"
+        },
+        {
+          "path": "Art/Review/P1/directions/up-right/revisions/r1/frames/02.png",
+          "sha256": "0e84bed29ea14312138027677608704488988a9ccbfaa63d192bf0339b7ab296"
+        },
+        {
+          "path": "Art/Review/P1/directions/up-right/revisions/r1/frames/03.png",
+          "sha256": "3195cf834a58050df715961a3bd09031e24afab49b65b515ebd2b0388713e0b3"
+        },
+        {
+          "path": "Art/Review/P1/directions/up-right/revisions/r1/frames/04.png",
+          "sha256": "3d089800a3629969a5136cc4b887c90d90790e0c1255fbc896805cfeab0bb761"
+        },
+        {
+          "path": "Art/Review/P1/directions/up-right/revisions/r1/frames/05.png",
+          "sha256": "8ed88bd58926fb346b3fe5e5a7ead0df841615b29af1d81c53eae4e37cd98bb0"
+        },
+        {
+          "path": "Art/Review/P1/directions/up-right/revisions/r1/frames/06.png",
+          "sha256": "ba67988058410233d16787091ed3237ea4950fff9d2b552dcf3ed07076fd95a0"
+        },
+        {
+          "path": "Art/Review/P1/directions/up-right/revisions/r1/frames/07.png",
+          "sha256": "edd8aaf665cf1415fb03cae4439d5d0db9ec4feba8611085a9ad1e1ba1a511f0"
+        },
+        {
+          "path": "Art/Review/P1/directions/up-right/revisions/r1/frames/08.png",
+          "sha256": "10d9488428c80458c2abce18692403c90b81c51e81c1b373cc1148bf0eea26cb"
+        }
+      ]
+    }
+  }
+}

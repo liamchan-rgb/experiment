@@ -3,8 +3,8 @@
   "format": 3,
   "updated": "2026-10-18",
   "workflow": "Review one direction at a time from fixed cardinal and diagonal baselines. Modify and resubmit the same direction until explicit user artwork approval, then advance. Record provenance, feedback and accepted revisions for the future character template.",
-  "current": "08-up-right-gait",
-  "templateStatus": "seven directions approved; up-right r1 whole cycle awaits user review; final layered template not complete",
+  "current": "template-down-v1-pilot",
+  "templateStatus": "eight gait directions approved; down modular appearance pilot v1 awaits user artwork review",
   "items": [
     {
       "id": "01-down-idle",
@@ -1171,7 +1171,7 @@
     {
       "id": "08-up-right-gait",
       "direction": "up-right",
-      "status": "awaiting_user_review",
+      "status": "approved",
       "sourceAtlas": "02-diagonal-atlas/baseline.png",
       "cropPixels": [
         0,
@@ -1219,8 +1219,22 @@
         {
           "id": "r1",
           "date": "2026-10-18",
-          "status": "awaiting_user_review",
-          "artApproval": null,
+          "status": "approved",
+          "artApproval": {
+            "date": "2026-10-18",
+            "reviewer": "user",
+            "statement": "可以的，我们走路的方向动画都调好了，这套人物动作我想作为模板，之后能够自定义人物头发面部和衣物武器。你有什么路径",
+            "direction": "up-right",
+            "revision": "r1",
+            "scope": "up-right r1 idle and eight walking poses completing eight approved directions; template pilot is separately authorized, not artwork-approved",
+            "status": "approved",
+            "artifacts": {
+              "review-2x.png": "1c97f1336cb12e0efd0876adc875918a427f3c2dd548306812428f1c7f994a1a",
+              "strip.png": "ab21948e2e6d1a94220c2cfa32626c50a2baf3e9a0782152130595c610c4b34c",
+              "walk.gif": "84512436f0567f7d6bf1c1eb343b1c761417f0d10c1f7e05e7ac6da7fcb34098",
+              "walk-slow.gif": "4ad9c19c5ac856a2730f2c950c72622ef6bac2403117e8c64ddf5e86cc1faa8d"
+            }
+          },
           "method": "imagegen complete northeast counterparts of approved up-left r6 poses; uniform whole-pose registration",
           "idlePoses": 1,
           "walkingPoses": 8,
@@ -1244,10 +1258,24 @@
           "productionAssetsUpdated": false
         }
       ],
-      "approval": null,
+      "approval": {
+        "date": "2026-10-18",
+        "reviewer": "user",
+        "statement": "可以的，我们走路的方向动画都调好了，这套人物动作我想作为模板，之后能够自定义人物头发面部和衣物武器。你有什么路径",
+        "direction": "up-right",
+        "revision": "r1",
+        "scope": "up-right r1 idle and eight walking poses completing eight approved directions; template pilot is separately authorized, not artwork-approved",
+        "status": "approved",
+        "artifacts": {
+          "review-2x.png": "1c97f1336cb12e0efd0876adc875918a427f3c2dd548306812428f1c7f994a1a",
+          "strip.png": "ab21948e2e6d1a94220c2cfa32626c50a2baf3e9a0782152130595c610c4b34c",
+          "walk.gif": "84512436f0567f7d6bf1c1eb343b1c761417f0d10c1f7e05e7ac6da7fcb34098",
+          "walk-slow.gif": "4ad9c19c5ac856a2730f2c950c72622ef6bac2403117e8c64ddf5e86cc1faa8d"
+        }
+      },
       "audit": "directions/up-right/AUDIT.md",
       "currentRevision": "r1",
-      "auditStatus": "nine corresponding poses drawn from approved up-left r6; whole cycle awaits explicit user artwork approval",
+      "auditStatus": "user approved r1; eight directions approved, layered pilot separately in progress",
       "feedback": [
         {
           "date": "2026-10-18",
@@ -1267,5 +1295,19 @@
     "06-down-left-gait",
     "07-up-left-gait",
     "08-up-right-gait"
-  ]
+  ],
+  "templatePilot": {
+    "status": "awaiting_user_review",
+    "direction": "down",
+    "baseline": "directions/down/revisions/r1",
+    "request": "按你说的来",
+    "scope": "two hairstyles, two faces, two upper outfits, sword or empty hand; editable layers, anchors and interactive preview",
+    "artApproval": null,
+    "manifest": "Art/Templates/P1-Down/v1/manifest.json",
+    "preview": "Art/Templates/P1-Down/v1/preview.html",
+    "source": "Art/Templates/P1-Down/v1",
+    "validation": "Art/Templates/P1-Down/v1/validation.json",
+    "approvedMotionLock": "Art/Templates/P1-Motion-v1.json",
+    "productionAssetsUpdated": false
+  }
 }

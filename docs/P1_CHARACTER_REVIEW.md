@@ -4,15 +4,16 @@
 
 ## 当前审核
 
-**当前第 08 个方向、斜向第四组：P1 右上 ↗ r1 整组待审核。左上 r6 与其他六个方向已获认可。**
+**八方向步态已获用户认可；当前审核向下方向的分层换装小样 v1。**
 
-用户要求参考左上制作过程，避免朝向漂移、鞋脚外翻与相邻帧突然张腿。本轮以已认可左上 r6 的 00–08 完整姿势逐张对应绘制右上，统一相位、脚距与完整靴子设计，再用整组和左右同步循环检查。
+用户确认“可以的，我们走路的方向动画都调好了”，右上 r1 的认可已记录。已认可动作冻结为 `Art/Templates/P1-Motion-v1.json`，共八方向、每方向站姿＋八帧。用户随后以“按你说的来”授权先做向下方向换装验证；这个授权不等于新外观美术认可。
 
-- [当前右上 r1 编号图](../Art/Review/P1/directions/up-right/revisions/r1/review-2x.png)
-- [正常循环](../Art/Review/P1/directions/up-right/revisions/r1/walk.gif) · [四分之一速度循环](../Art/Review/P1/directions/up-right/revisions/r1/walk-slow.gif)
-- [左上／右上同步慢速对照](../Art/Review/P1/directions/up-right/revisions/r1/left-right-slow.gif) · [逐帧同步对照](../Art/Review/P1/directions/up-right/revisions/r1/left-right-review-2x.png)
-- [右上绘制说明](../Art/Review/P1/directions/up-right/revisions/r1/README.md) · [制作约束](../Art/Review/P1/directions/up-right/AUDIT.md)
-- [左上 r6 整组认可记录](../Art/Review/P1/directions/up-left/revisions/r6/approval.json) · [完整审核状态](../Art/Review/P1/review.json)
+- [向下换装小样说明与源文件](../Art/Templates/P1-Down/v1/README.md) · [离线交互预览（下载后打开）](../Art/Templates/P1-Down/v1/preview.html)
+- [原动作／银发游侠持剑同步循环](../Art/Templates/P1-Down/v1/review/walk-compare.gif) · [慢速](../Art/Templates/P1-Down/v1/review/walk-compare-slow.gif) · [九帧对照](../Art/Templates/P1-Down/v1/review/comparison.png)
+- [小样验证记录](../Art/Templates/P1-Down/v1/validation.json) · [八方向动作锁定清单](../Art/Templates/P1-Motion-v1.json)
+- [右上 r1 认可](../Art/Review/P1/directions/up-right/revisions/r1/approval.json) · [完整审核状态](../Art/Review/P1/review.json)
+
+当前小样含两种头发、两种面部、两套同袖型上衣及短剑／空手，共 16 种搭配，提供透明部件、逐帧关节／挂点、18 份 ORA 与 18 份分组 SVG、图集和逐帧预览。默认搭配可见像素还原已认可向下原图，腿脚不随外观变化。只提交向下方向小样审核，不将它扩大为八方向分层完成或新外观已认可。右上旧预览中的 REVIEW 标签保留其提交时历史状态。
 
 两份固定图集均为 build 28 正式生成结果，各 6400 × 1024、每格 256 × 256，与正式图集逐字节一致。正交图集行序下、左、上、右；斜向图集为右下、左下、左上、右上，由生成器 HEADINGS 索引 4–7 与运行时逐行加载核对。每行最左格为站姿，随后 01–24 步行帧。
 
@@ -27,11 +28,11 @@
 | 05 | 右下 ↘ | [r1 横条](../Art/Review/P1/directions/down-right/revisions/r1/strip.png) | [r1 预览](../Art/Review/P1/directions/down-right/revisions/r1/review-2x.png) | r1 用户已认可 |
 | 06 | 左下 ↙ | [r1 横条](../Art/Review/P1/directions/down-left/revisions/r1/strip.png) | [r1 预览](../Art/Review/P1/directions/down-left/revisions/r1/review-2x.png) | r1 用户已认可 |
 | 07 | 左上 ↖ | [r6 横条](../Art/Review/P1/directions/up-left/revisions/r6/strip.png) | [r6 预览](../Art/Review/P1/directions/up-left/revisions/r6/review-2x.png) | r6 用户已认可 |
-| 08 | 右上 ↗ | [r1 横条](../Art/Review/P1/directions/up-right/revisions/r1/strip.png) | [r1 预览](../Art/Review/P1/directions/up-right/revisions/r1/review-2x.png) | 当前，r1 整组待认可 |
+| 08 | 右上 ↗ | [r1 横条](../Art/Review/P1/directions/up-right/revisions/r1/strip.png) | [r1 预览](../Art/Review/P1/directions/up-right/revisions/r1/review-2x.png) | r1 用户已认可 |
 
 每次只提交当前方向。收到反馈后按帧编号另存修改版本，记录具体意见与依据，再提交同一方向；用户明确认可后才推进下一方向。历史站姿提取和旧版图集识别不代表美术认可。
 
-七个已认可方向与当前右上 r1 均为站姿＋八张步行关键姿势，编号 00–08，与旧版 00–24 不同。右上以左上 r6 同号完整姿势为参照绘制对应视角，保留相位、脚距、膝踝关系与摆臂，并核对 03–06 和循环接缝。右上尚未认可，最终分层模板、固定侧装备挂点与正式安装包未更新。
+八个已认可方向均为站姿＋八张步行关键姿势，编号 00–08，与旧版 00–24 不同。右上以左上 r6 同号完整姿势为参照绘制对应视角，保留相位、脚距、膝踝关系与摆臂。当前只有向下方向进行了分层换装试验，其余七方向、正式运行资源与安装包尚未接入。
 
 ## 现有资源与问题依据
 
@@ -39,7 +40,7 @@ P1 原始素材有两张 4 × 4 图：`hero1-gait-v1.2.png` 和 `hero1-diagonal-
 
 以用户确认的完整图集为素材来源，按方向切片审核，结合帧编号定位修改；审核顺序和下一项由当前项的实际进展更新。动作仍需逐帧与连续播放检查，特别是承重、摆腿、两次过腿、鞋尖朝向及鞋腿接缝。
 
-## 人物模板目标（待审核后制作）
+## 人物模板目标（向下小样已制作，待审核）
 
 - 统一八方向的身体比例、观察角度、画布、地面线与左右肢体命名。
 - 分离身体、头发、服装、手、腿、左右鞋和装备，明确被衣物遮住的身体所需补画，保留可编辑源文件。
@@ -47,7 +48,7 @@ P1 原始素材有两张 4 × 4 图：`hero1-gait-v1.2.png` 和 `hero1-diagonal-
 - 每张姿势记录脚底接触、抬脚、前后遮挡和部件绘制顺序；前景与阴影共用确认过的姿势。
 - 用确认后的 P1 建立模板 v1，再验证至少一次装备替换和人物外观替换，之后扩展其他人物。
 
-以上是模板要求，当前尚未产出或认可最终模板，也未选定新的运行时。
+以上是完整模板要求。当前向下小样验证了预制外观替换、挂点与图集输出，完整隐藏肢体、任意衣型和其他七方向仍需补齐。换装小样尚未获美术认可；运行时接入另行实施。
 
 ## 同方向完整动作横图参考
 
