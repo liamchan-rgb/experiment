@@ -88,7 +88,7 @@
     {
       "id": "01-down-gait",
       "direction": "down",
-      "status": "feedback_received_under_discussion",
+      "status": "revision_ready_for_user_review",
       "sourceAtlas": "01-cardinal-atlas/baseline.png",
       "cropPixels": [
         0,
@@ -132,7 +132,32 @@
       ],
       "previewLayout": "5 columns x 5 rows, left to right then top to bottom; 00 idle, 01-24 walk; black backdrop; no pose changes",
       "pixelVerification": "source strip RGBA equals the corresponding baseline atlas row",
-      "revisions": [],
+      "revisions": [
+        {
+          "id": "r1",
+          "date": "2026-10-18",
+          "status": "awaiting_user_review",
+          "artApproval": null,
+          "method": "imagegen redraw of complete poses; whole-pose registration and review packaging",
+          "idlePoses": 1,
+          "walkingPoses": 8,
+          "reviewImage": "directions/down/revisions/r1/review-2x.png",
+          "strip": "directions/down/revisions/r1/strip.png",
+          "normalLoop": "directions/down/revisions/r1/walk.gif",
+          "slowLoop": "directions/down/revisions/r1/walk-slow.gif",
+          "comparison": "directions/down/revisions/r1/comparison.png",
+          "notes": "directions/down/revisions/r1/README.md",
+          "validation": "directions/down/revisions/r1/validation.json",
+          "addressedInCandidate": [
+            "front-facing boot artwork",
+            "full boot shafts and knee drawings",
+            "passing poses and earlier swing motion",
+            "opposite arm swing",
+            "matching idle boot design"
+          ],
+          "productionAssetsUpdated": false
+        }
+      ],
       "approval": null,
       "feedback": [
         {
@@ -148,7 +173,8 @@
         }
       ],
       "audit": "directions/down/AUDIT.md",
-      "auditStatus": "additional findings documented; no artwork revised yet"
+      "auditStatus": "r1 drawings ready; original concerns remain open pending user review",
+      "currentRevision": "r1"
     },
     {
       "id": "02-left-gait",
