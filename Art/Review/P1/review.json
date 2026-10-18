@@ -4,7 +4,7 @@
   "updated": "2026-10-18",
   "workflow": "Review one direction at a time from fixed cardinal and diagonal baselines. Modify and resubmit the same direction until explicit user artwork approval, then advance. Record provenance, feedback and accepted revisions for the future character template.",
   "current": "07-up-left-gait",
-  "templateStatus": "six directions approved; up-left pose04 standalone r5 awaits heading review; last full cycle r3 retained; up-right queued",
+  "templateStatus": "six directions approved; up-left r5 assembled cycle awaits user review; only standalone04 approved for assembly; up-right queued",
   "items": [
     {
       "id": "01-down-idle",
@@ -974,7 +974,7 @@
         {
           "id": "r3",
           "date": "2026-10-18",
-          "status": "awaiting_user_review",
+          "status": "superseded_by_r5_assembly",
           "artApproval": null,
           "method": "imagegen correction of screen-right leg/boot direction in full pose04; eight other complete poses inherited byte-exactly from r2",
           "idlePoses": 1,
@@ -1006,12 +1006,47 @@
             8
           ],
           "synchronizedComparison": "directions/up-left/revisions/r3/r2-r3-slow.gif"
+        },
+        {
+          "id": "r5",
+          "date": "2026-10-18",
+          "status": "awaiting_user_review",
+          "artApproval": null,
+          "method": "accepted standalone04 combined with eight unchanged r3 complete poses; whole-pose registration and review layout only",
+          "idlePoses": 1,
+          "walkingPoses": 8,
+          "reviewImage": "directions/up-left/revisions/r5/review-2x.png",
+          "strip": "directions/up-left/revisions/r5/strip.png",
+          "normalLoop": "directions/up-left/revisions/r5/walk.gif",
+          "slowLoop": "directions/up-left/revisions/r5/walk-slow.gif",
+          "comparison": "directions/up-left/revisions/r5/comparison.png",
+          "referenceDirectionRevision": "07-up-left-gait/r3 plus confirmed standalone r5/04.png",
+          "notes": "directions/up-left/revisions/r5/README.md",
+          "validation": "directions/up-left/revisions/r5/validation.json",
+          "addressedInCandidate": [
+            "combine confirmed04 with other poses to review continuity"
+          ],
+          "productionAssetsUpdated": false,
+          "changedFrames": [
+            4
+          ],
+          "inheritedFrames": [
+            0,
+            1,
+            2,
+            3,
+            5,
+            6,
+            7,
+            8
+          ],
+          "singlePoseApproval": "directions/up-left/revisions/r5/pose04-approval.json"
         }
       ],
       "approval": null,
-      "currentRevision": "r3",
+      "currentRevision": "r5",
       "audit": "directions/up-left/AUDIT.md",
-      "auditStatus": "r2 pose04 right foot external rotation feedback; r3 corrected and awaiting explicit user artwork approval",
+      "auditStatus": "standalone04 approved for assembly; r5 full cycle awaits user continuity review",
       "feedback": [
         {
           "date": "2026-10-18",
@@ -1036,16 +1071,34 @@
           "source": "user",
           "text": "而且指向性没有和上一帧连贯起来，感觉更偏右上，而不是左上，你再把这一帧修一下",
           "scope": "single pose04 heading must be continuous northwest from pose03; r4 not approved"
+        },
+        {
+          "date": "2026-10-18",
+          "source": "user",
+          "text": "OK和其他几帧拼起来发给我看看",
+          "scope": "accept standalone04 for assembly; request full cycle review, not approval of entire up-left direction"
         }
       ],
       "singlePoseReview": {
         "pose": 4,
         "revision": "r5",
-        "status": "awaiting_user_review",
+        "status": "approved_for_assembly",
         "image": "directions/up-left/revisions/r5/04.png",
         "reference": "directions/up-left/revisions/r3/raw/03.png",
-        "artApproval": null,
-        "fullCycleUpdated": false
+        "artApproval": {
+          "date": "2026-10-18",
+          "reviewer": "user",
+          "statement": "OK和其他几帧拼起来发给我看看",
+          "direction": "up-left",
+          "revision": "r5",
+          "pose": 4,
+          "scope": "standalone pose04 source PNG shown to user; does not approve assembled cycle, transitions, remaining poses or final template",
+          "status": "approved_for_assembly",
+          "artifacts": {
+            "04.png": "59d53abf6b2875f9bee69735850b705a0bf170affdf39ec78623a052d9ea9093"
+          }
+        },
+        "fullCycleUpdated": true
       }
     },
     {
