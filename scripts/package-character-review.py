@@ -43,6 +43,8 @@ def main():
     parser.add_argument('--output', type=Path, required=True)
     parser.add_argument('--columns', type=int, default=3)
     parser.add_argument('--rows', type=int, default=3)
+    parser.add_argument('--revision-label', default='R1',
+                        help='Caption for the candidate row in the baseline comparison')
     parser.add_argument('--registration-profile', type=Path,
                         help='Optional whole-pose silhouette heights and common sole-envelope line')
     args = parser.parse_args()
@@ -159,7 +161,7 @@ def main():
         old_frame = baseline.crop((old_index * 256, 0, (old_index + 1) * 256, 256))
         draw.text((x + 10, 3), f'BASE {old_index:02d}', fill='white', font=font)
         comparison.paste(old_frame, (x, 24), old_frame)
-        draw.text((x + 10, 283), f'R1 {new_index:02d}', fill='white', font=font)
+        draw.text((x + 10, 283), f'{args.revision_label} {new_index:02d}', fill='white', font=font)
         comparison.paste(frames[new_index], (x, 304), frames[new_index])
     comparison.save(args.output / 'comparison.png')
     report = {'format': 1, 'source': args.source.name, 'sourceSHA256': source_hashes,

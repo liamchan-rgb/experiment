@@ -1,0 +1,41 @@
+{
+  "date": "2026-10-18",
+  "direction": "up-left",
+  "revision": "r2",
+  "artApproval": null,
+  "selectedNewSourcesByteExact": 3,
+  "inheritedRawAndPackedPosesByteExact": [
+    0,
+    1,
+    2,
+    3,
+    7,
+    8
+  ],
+  "distinctWalkingPoses": 8,
+  "stripAndReviewPixelsMatch": true,
+  "noSourceOrExportClipping": true,
+  "gif": {
+    "walk.gif": {
+      "frames": 8,
+      "durationMs": 120,
+      "cycleMs": 960,
+      "infiniteLoop": true,
+      "orderAndPixelsMatch": true
+    },
+    "walk-slow.gif": {
+      "frames": 8,
+      "durationMs": 480,
+      "cycleMs": 3840,
+      "infiniteLoop": true,
+      "orderAndPixelsMatch": true
+    }
+  },
+  "independentReexportByteExactFiles": 15,
+  "protectedExistingArtifactsUnchanged": 218,
+  "baselineRowsRGBAEqual": 8,
+  "checksAreExportIntegrityNotArtApproval": true,
+  "priorR1DefaultExportStillByteExact": true,
+  "comparisonPanelsPixelExact": true,
+  "applicationBuildOrDeviceTests": "not run; no application code, production assets or IPA changed"
+}
