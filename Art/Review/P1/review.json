@@ -207,7 +207,7 @@
     {
       "id": "02-left-gait",
       "direction": "left",
-      "status": "awaiting_user_feedback",
+      "status": "awaiting_user_review",
       "sourceAtlas": "01-cardinal-atlas/baseline.png",
       "cropPixels": [
         0,
@@ -251,8 +251,50 @@
       ],
       "previewLayout": "5 columns x 5 rows, left to right then top to bottom; 00 idle, 01-24 walk; black backdrop; no pose changes",
       "pixelVerification": "source strip RGBA equals the corresponding baseline atlas row",
-      "revisions": [],
-      "approval": null
+      "revisions": [
+        {
+          "id": "r1",
+          "date": "2026-10-18",
+          "status": "awaiting_user_review",
+          "artApproval": null,
+          "method": "imagegen redraw of complete poses; uniform whole-pose silhouette scaling and sole-envelope alignment",
+          "idlePoses": 1,
+          "walkingPoses": 8,
+          "reviewImage": "directions/left/revisions/r1/review-2x.png",
+          "strip": "directions/left/revisions/r1/strip.png",
+          "normalLoop": "directions/left/revisions/r1/walk.gif",
+          "slowLoop": "directions/left/revisions/r1/walk-slow.gif",
+          "comparison": "directions/left/revisions/r1/comparison.png",
+          "notes": "directions/left/revisions/r1/README.md",
+          "validation": "directions/left/revisions/r1/validation.json",
+          "addressedInCandidate": [
+            "left-pointing boot shapes throughout rear swing",
+            "full boot cuffs, shafts and ankle connection",
+            "two passing poses with knee bend",
+            "opposite near-arm swing during far-leg-forward half",
+            "near/far leg occlusion and shading",
+            "consistent whole-pose review scale and sole envelope"
+          ],
+          "productionAssetsUpdated": false
+        }
+      ],
+      "approval": null,
+      "feedback": [
+        {
+          "date": "2026-10-18",
+          "source": "user",
+          "text": "你说的对，特别是鞋这部分，扭成麻花了，开始改吧",
+          "issues": [
+            "后摆脚鞋头翻向右侧、踝部关系扭转",
+            "双脚交会时鞋形压缩与重叠",
+            "上半身和摆臂缺少行走变化"
+          ],
+          "approvalMeaning": "修改授权；不是向左美术认可"
+        }
+      ],
+      "audit": "directions/left/AUDIT.md",
+      "currentRevision": "r1",
+      "auditStatus": "left r1 redrawn and exported; awaiting explicit user artwork approval"
     },
     {
       "id": "03-up-gait",

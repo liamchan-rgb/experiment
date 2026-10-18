@@ -1,6 +1,10 @@
 # P1 向左方向 · 当前审核
 
-2026-10-18，向下 r1 获用户认可后，进入本方向审核。当前展示的是原有 build 28 素材，尚未重画、尚未认可。
+2026-10-18，收到用户关于鞋踝扭曲的修改意见，已交付 [向左 r1 重画稿](revisions/r1/README.md)，当前待用户审核，尚未认可。
+
+当前稿：[编号图](revisions/r1/review-2x.png) · [正常循环](revisions/r1/walk.gif) · [四分之一速度循环](revisions/r1/walk-slow.gif)。00 为新站姿，01–08 为两步循环八张关键姿势；具体修改依据见 [AUDIT.md](AUDIT.md)。用户认可前继续修改本方向，向上／向右仍排队。
+
+以下是未修改的 build 28 基线，保留供对照；帧号与 r1 不对应。
 
 [编号图](review.png) · [原像素横条](strip.png) · [正常循环](walk-baseline.gif) · [四分之一速度循环](walk-baseline-slow.gif)
 

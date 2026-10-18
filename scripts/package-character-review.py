@@ -2,7 +2,8 @@
 """Slice an already drawn review sheet and package unchanged poses for review.
 
 This does not draw, interpolate, deform limbs, or synthesize additional poses.
-A sheet uses a common transform; individual drawings register by head landmarks.
+A sheet uses a common transform; individual drawings register by head landmarks
+or an explicit whole-pose silhouette/sole-envelope profile.
 """
 import argparse
 import hashlib
@@ -42,7 +43,10 @@ def main():
     parser.add_argument('--output', type=Path, required=True)
     parser.add_argument('--columns', type=int, default=3)
     parser.add_argument('--rows', type=int, default=3)
+    parser.add_argument('--registration-profile', type=Path,
+                        help='Optional whole-pose silhouette heights and common sole-envelope line')
     args = parser.parse_args()
+    profile = json.loads(args.registration_profile.read_text()) if args.registration_profile else None
     baseline = Image.open(args.baseline).convert('RGBA')
     cells = []
     if args.source.is_dir():
@@ -65,6 +69,11 @@ def main():
                 tile = Image.new('RGBA', (cell_w, cell_h))
                 tile.paste(source.crop(box), (0, 0))
                 cells.append(tile)
+    if profile:
+        if not args.source.is_dir() or len(profile['silhouetteHeights']) != len(cells):
+            raise ValueError('Registration profile requires one height per separately drawn pose')
+        if any(height <= 0 for height in profile['silhouetteHeights']):
+            raise ValueError('Registration heights must be positive')
     for index, tile in enumerate(cells):
         if tile.getchannel('A').getextrema()[0] != 0:
             raise ValueError('Expected the artist-supplied transparent background')
@@ -90,6 +99,10 @@ def main():
             head_x, head_y = head['centerX'], head['top']
             sway = [0, -1, -1, -1, 0, 1, 1, 1, 0][index]
             bob = [0, 0, 2, 0, -1, 0, 2, 0, -1][index]
+            if profile:
+                source_box = bounds(tile)
+                ratio = profile['silhouetteHeights'][index] / (source_box[3] - source_box[1])
+                sway = bob = 0
         else:
             head_x = (idle_bounds[0] + idle_bounds[2]) / 2
             head_y = idle_bounds[1]
@@ -99,6 +112,8 @@ def main():
         anchor_x = target_head['centerX'] if args.source.is_dir() else (old_bounds[0] + old_bounds[2]) / 2
         anchor_y = target_head['top'] if args.source.is_dir() else old_bounds[1]
         offset = (round(anchor_x + sway - head_x * scale_x), round(anchor_y + bob - head_y * scale_y))
+        if profile:
+            offset = (offset[0], round(profile['soleEnvelopeY'] - source_box[3] * scale_y))
         tile = tile.resize(target, Image.Resampling.NEAREST)
         bb = bounds(tile)
         placed = (bb[0] + offset[0], bb[1] + offset[1], bb[2] + offset[0], bb[3] + offset[1])
@@ -153,6 +168,13 @@ def main():
               'packing': 'whole-pose nearest-neighbor registration by head landmarks for separately drawn poses; no limb edits, foot scaling or interpolation',
               'durationsMilliseconds': {'normal': 120, 'slow': 480},
               'frames': frame_records, 'artApproval': None}
+    if profile:
+        report['packing'] = 'uniform whole-pose scaling to declared silhouette heights and sole-envelope alignment; no limb edits, foot scaling or interpolation'
+        report['registrationProfile'] = {
+            'file': args.registration_profile.name,
+            'sha256': hashlib.sha256(args.registration_profile.read_bytes()).hexdigest(),
+            'soleEnvelopeY': profile['soleEnvelopeY'],
+            'silhouetteHeights': profile['silhouetteHeights']}
     (args.output / 'packing.json').write_text(json.dumps(report, ensure_ascii=False, indent=2) + '\n')
     print(json.dumps({key: report[key] for key in ['walkingFrames', 'packing', 'artApproval']}))
 
