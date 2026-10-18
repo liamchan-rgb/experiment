@@ -4,14 +4,14 @@
 
 ## 当前审核
 
-**当前第 07 个方向、斜向第三组：P1 左上第 05 帧 r6 单张待审核；上一整组 r5 因 05 双腿突然分开收到修订反馈。四个正交方向、右下和左下 r1 已认可，右上排队。**
+**当前第 07 个方向、斜向第三组：P1 左上 r6 整组待审核。新第 05 帧已与其他八张原样姿势拼接，重点复审 04→05→06 的连贯性。四个正交方向、右下和左下 r1 已认可，右上排队。**
 
 左下已认可；用户随后要求修订左上 r1 的 04–06，并回复“那就开始修”。用户继续反馈第 04 帧外翻和朝向衔接，r5 单张重画后回复“OK和其他几帧拼起来发给我看看”。现将确认的 04 与其他八张姿势拼接为 r5 整组，待连续效果审核，不提前推进右上。
 
-- [当前第 05 帧 r6 单张](../Art/Review/P1/directions/up-left/revisions/r6/05.png) · [修改说明](../Art/Review/P1/directions/up-left/revisions/r6/README.md)
-- [上一整组左上 r5 编号图](../Art/Review/P1/directions/up-left/revisions/r5/review-2x.png)
-- [正常循环](../Art/Review/P1/directions/up-left/revisions/r5/walk.gif) · [四分之一速度循环](../Art/Review/P1/directions/up-left/revisions/r5/walk-slow.gif)
-- [左上 r5 说明与来源](../Art/Review/P1/directions/up-left/revisions/r5/README.md) · [问题依据](../Art/Review/P1/directions/up-left/AUDIT.md)
+- [新第 05 帧原图](../Art/Review/P1/directions/up-left/revisions/r6/05.png) · [修改说明](../Art/Review/P1/directions/up-left/revisions/r6/README.md)
+- [当前左上 r6 编号图](../Art/Review/P1/directions/up-left/revisions/r6/review-2x.png)
+- [正常循环](../Art/Review/P1/directions/up-left/revisions/r6/walk.gif) · [四分之一速度循环](../Art/Review/P1/directions/up-left/revisions/r6/walk-slow.gif)
+- [左上 r6 说明与来源](../Art/Review/P1/directions/up-left/revisions/r6/README.md) · [问题依据](../Art/Review/P1/directions/up-left/AUDIT.md)
 - [已认可左下 r1 与记录](../Art/Review/P1/directions/down-left/revisions/r1/approval.json) · [已认可右下 r1](../Art/Review/P1/directions/down-right/revisions/r1/README.md)
 - [第 04 帧单张认可范围](../Art/Review/P1/directions/up-left/revisions/r5/pose04-approval.json) · [各帧来源](../Art/Review/P1/directions/up-left/revisions/r5/assembly.json)
 - [完整状态与全部认可范围](../Art/Review/P1/review.json)
@@ -28,12 +28,12 @@
 | 04 | 右 | [r1 横条](../Art/Review/P1/directions/right/revisions/r1/strip.png) | [r1 预览](../Art/Review/P1/directions/right/revisions/r1/review-2x.png) | r1 用户已认可 |
 | 05 | 右下 ↘ | [r1 横条](../Art/Review/P1/directions/down-right/revisions/r1/strip.png) | [r1 预览](../Art/Review/P1/directions/down-right/revisions/r1/review-2x.png) | r1 用户已认可 |
 | 06 | 左下 ↙ | [r1 横条](../Art/Review/P1/directions/down-left/revisions/r1/strip.png) | [r1 预览](../Art/Review/P1/directions/down-left/revisions/r1/review-2x.png) | r1 用户已认可 |
-| 07 | 左上 ↖ | [r5 横条](../Art/Review/P1/directions/up-left/revisions/r5/strip.png) | [r5 预览](../Art/Review/P1/directions/up-left/revisions/r5/review-2x.png) | 当前，r5 整组待认可 |
+| 07 | 左上 ↖ | [r6 横条](../Art/Review/P1/directions/up-left/revisions/r6/strip.png) | [r6 预览](../Art/Review/P1/directions/up-left/revisions/r6/review-2x.png) | 当前，r6 整组待认可 |
 | 08 | 右上 ↗ | [原横条](../Art/Review/P1/directions/up-right/strip.png) | [原预览](../Art/Review/P1/directions/up-right/review.png) | 排队，未重画／审核 |
 
 每次只提交当前方向。收到反馈后按帧编号另存修改版本，记录具体意见与依据，再提交同一方向；用户明确认可后才推进下一方向。历史站姿提取和旧版图集识别不代表美术认可。
 
-六个已认可方向与当前左上审核稿均为站姿＋八张关键姿势，编号 00–08，与旧版 00–24 不同。左上参照原左上视角和已认可向上背部／靴子设计，逐张重画完整姿势，协调短步幅、抬跟、两次过腿与反向摆臂。左上 r5 拼接刚确认的第 04 帧与原样继承的其他八张，整组认可仍为空，右上未重画。最终分层模板及固定侧装备挂点尚未完成，正式安装包未更新。
+六个已认可方向与当前左上审核稿均为站姿＋八张关键姿势，编号 00–08，与旧版 00–24 不同。左上参照原左上视角和已认可向上背部／靴子设计，逐张重画完整姿势，协调短步幅、抬跟、两次过腿与反向摆臂。左上 r6 拼接新第 05 帧与原样继承的其他八张，整组认可仍为空，右上未重画。最终分层模板及固定侧装备挂点尚未完成，正式安装包未更新。
 
 ## 现有资源与问题依据
 

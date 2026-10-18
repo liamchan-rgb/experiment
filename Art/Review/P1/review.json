@@ -4,7 +4,7 @@
   "updated": "2026-10-18",
   "workflow": "Review one direction at a time from fixed cardinal and diagonal baselines. Modify and resubmit the same direction until explicit user artwork approval, then advance. Record provenance, feedback and accepted revisions for the future character template.",
   "current": "07-up-left-gait",
-  "templateStatus": "six directions approved; up-left pose05 standalone r6 awaits continuity review; last full cycle r5 retained; up-right queued",
+  "templateStatus": "six directions approved; up-left r6 assembled cycle awaits user review; up-right queued",
   "items": [
     {
       "id": "01-down-idle",
@@ -1041,12 +1041,48 @@
             8
           ],
           "singlePoseApproval": "directions/up-left/revisions/r5/pose04-approval.json"
+        },
+        {
+          "id": "r6",
+          "date": "2026-10-18",
+          "status": "awaiting_user_review",
+          "artApproval": null,
+          "method": "new standalone05 combined with eight unchanged r5 complete poses; review composition only",
+          "idlePoses": 1,
+          "walkingPoses": 8,
+          "reviewImage": "directions/up-left/revisions/r6/review-2x.png",
+          "strip": "directions/up-left/revisions/r6/strip.png",
+          "normalLoop": "directions/up-left/revisions/r6/walk.gif",
+          "slowLoop": "directions/up-left/revisions/r6/walk-slow.gif",
+          "comparison": "directions/up-left/revisions/r6/comparison.png",
+          "referenceDirectionRevision": "07-up-left-gait/r5 plus new standalone r6/05.png",
+          "notes": "directions/up-left/revisions/r6/README.md",
+          "validation": "directions/up-left/revisions/r6/validation.json",
+          "addressedInCandidate": [
+            "assemble revised05 to review narrow leg spacing and04–05–06 continuity"
+          ],
+          "productionAssetsUpdated": false,
+          "changedFrames": [
+            5
+          ],
+          "inheritedFrames": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            6,
+            7,
+            8
+          ],
+          "inheritedPose04Approval": "directions/up-left/revisions/r5/pose04-approval.json",
+          "assemblyRequest": "directions/up-left/revisions/r6/assembly-request.json"
         }
       ],
       "approval": null,
-      "currentRevision": "r5",
+      "currentRevision": "r6",
       "audit": "directions/up-left/AUDIT.md",
-      "auditStatus": "standalone04 approved for assembly; r5 full cycle awaits user continuity review",
+      "auditStatus": "r6 full cycle assembled with revised05; awaits user continuity review",
       "feedback": [
         {
           "date": "2026-10-18",
@@ -1083,19 +1119,25 @@
           "source": "user",
           "text": "第五帧和上下两帧不连贯，突然腿就分开了",
           "scope": "pose05 leg spacing must bridge current04 and06 without abrupt wide separation"
+        },
+        {
+          "date": "2026-10-18",
+          "source": "user",
+          "text": "拼起来",
+          "scope": "assemble new05 for full-cycle review; no art approval implied"
         }
       ],
       "singlePoseReview": {
         "pose": 5,
         "revision": "r6",
-        "status": "awaiting_user_review",
+        "status": "included_in_cycle_for_review",
         "image": "directions/up-left/revisions/r6/05.png",
         "references": [
           "directions/up-left/revisions/r5/raw/04.png",
           "directions/up-left/revisions/r5/raw/06.png"
         ],
         "artApproval": null,
-        "fullCycleUpdated": false
+        "fullCycleUpdated": true
       }
     },
     {
