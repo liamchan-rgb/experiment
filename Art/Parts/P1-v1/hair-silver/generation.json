@@ -1,0 +1,44 @@
+{
+  "tool": "image_gen.imagegen",
+  "date": "2026-10-18",
+  "transparentBackgroundRequested": true,
+  "selectedSource": "source/down.png",
+  "registration": "full1254 canvas to96 head-local; constant scale, reserved80px gutter removed, no alpha-bbox fitting",
+  "commonAlphaExport": "alpha>=250 ->255, raw sources unchanged",
+  "runtimeDependencies": [],
+  "referenceRole": "art authoring references only; manifest uses only package-local files, never another hair or face",
+  "optionalEmptySlots": [],
+  "records": [
+    {
+      "revision": "r1",
+      "file": "drafts/down-r1.png",
+      "sha256": "6073bef82651a183a90b2d8192f2a2afaacabafc1c47121a5bf18c15f10d58ff",
+      "generatorOutputPath": "/workspace/generated_images/exec-f86a5c29-6e27-4b94-9577-e63163baf4a5.png",
+      "prompt": "Create ONE isolated HAIR-FRONT sprite layer for the exact shared bald game-avatar head in the reference. This is a reusable transparent hair asset, NOT a portrait. Preserve the EXACT 1254x1254 canvas, cyan corner fiducials, registration and scale. Paint ONLY hair; REMOVE the reference head, scalp, peach skin, ears and face completely to true transparency. Absolutely NO skin patch, eyes, brows, nose, mouth, neck, clothing or head-shaped backing inside or under the hairstyle. The transparent hole under the fringe must reveal the SAME base head when this image overlays it. Dark outline pixels only outline HAIR strands, never the face or ears. Match the reference's crisp chibi pixel-game style, restrained 4-6-shade palette, fine dark outline and upper-left light. No soft airbrush, shadows, backdrop, checkerboard, glow, text or labels. Hair fits the existing skull and is not enlarged to fill the canvas. Full canvas is a 96x96 local head plate enlarged by 13.0625: bald scalp bbox approx local(24,24)-(73,73), ears near(24,61) and(74,61). Keep hairstyle within local x17..80,y15..61. Main hair cap covers scalp top (24,24)-(73,45), fringe can extend to y50, and sideburns sit near x25 and73. Eye centers are local(38,56),(58,56); keep both eye windows x35..41/y54..59 andx55..61/y54..59 fully TRANSPARENT. No hair across those windows. Preserve corner fiducials in outer gutter, all other drawing-region background genuinely transparent. HAIRSTYLE: SILVER-ASH short layered hair with a clear off-center part, soft outward layered tips and two swept fringe groups opening the central forehead. Cool pale silver highlights, slate-grey shadows, dark cool grey outline. Bangs end above eyebrow/eye line, side sections beside temples only; absolutely no skin or ear drawing. Distinct silhouette from a spiky brown cut.",
+      "references": [
+        {
+          "pathAtGeneration": "Art/Templates/P1-Modular/down/v1/references/head-registration.png",
+          "preservedAs": "Art/Templates/P1-Modular/down/v1/references/head-registration.png",
+          "sha256": "e8938c6c22844db89b1a32bf2c118c61cb4db5d0ca2e7afcad5a1f737e08a9b2"
+        }
+      ],
+      "status": "rejected: fixed-coordinate or eye-clearance mismatch"
+    },
+    {
+      "revision": "r2",
+      "file": "source/down.png",
+      "sha256": "ac1714f6192069b66789c1c05e779abaf820ba2d3ea2a0dbddc894f3c28a81f2",
+      "generatorOutputPath": "/workspace/generated_images/exec-8c60f7db-68be-4961-af15-194b366562e3.png",
+      "prompt": "Edit ONLY the lower fringe tips of this isolated transparent silver hair layer. Exact same 1254 square canvas, registration, hairstyle, silver colours, lighting and pixel-art scale. The fringe tip at local96 coordinate(35,56) intrudes into the eye window. SHORTEN the bangs over both eye columns x31..44 and51..64 so they end no lower than local y51 (=source y666). Those columns must be entirely transparent for local y54..60 (=source y705..796). Central lock between localx45..50 may remain lower; outer temple sideburns x<31 orx>65 may remain. Keep top cap and side silhouette unchanged. Do not shift, shrink or raise the whole hairstyle; redraw only the lower strand tips and their outline. Hair ONLY: no skin, ears, eyes, brows, head or backing. True transparent background; keep cyan corner fiducials.",
+      "references": [
+        {
+          "pathAtGeneration": "Art/Parts/P1-v1/hair-silver/source/down.png",
+          "preservedAs": "Art/Parts/P1-v1/hair-silver/drafts/down-r1.png",
+          "sha256": "6073bef82651a183a90b2d8192f2a2afaacabafc1c47121a5bf18c15f10d58ff"
+        }
+      ],
+      "status": "selected source; artwork not user approved"
+    }
+  ],
+  "artApproval": null
+}

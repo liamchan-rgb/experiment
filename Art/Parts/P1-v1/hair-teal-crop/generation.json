@@ -1,0 +1,29 @@
+{
+  "tool": "image_gen.imagegen",
+  "date": "2026-10-18",
+  "transparentBackgroundRequested": true,
+  "selectedSource": "source/down.png",
+  "registration": "full1254 canvas to96 head-local; constant scale, reserved80px gutter removed, no alpha-bbox fitting",
+  "commonAlphaExport": "alpha>=250 ->255, raw sources unchanged",
+  "runtimeDependencies": [],
+  "referenceRole": "art authoring references only; manifest uses only package-local files, never another hair or face",
+  "optionalEmptySlots": [],
+  "records": [
+    {
+      "revision": "r1",
+      "file": "source/down.png",
+      "sha256": "094545e4d6171bcbf7c82b840032aaa71ca13d798b5bfe5f9ce3043ae40d33e7",
+      "generatorOutputPath": "/workspace/generated_images/exec-18959243-1a43-4974-8f57-3d7bfe77bcfb.png",
+      "prompt": "Create one NEW independently authored HAIR-FRONT asset for the EXACT shared bald chibi game-avatar head in the reference. This is a THIRD haircut to plug into a frozen art standard, so keep the exact1254x1254 canvas, cyan corner fiducials, skull position and scale. Draw ONLY HAIR and remove the head, skin, scalp, ears, jaw, eyes, brows, nose, mouth and neck entirely to true transparency. Never leave any face-coloured or head-shaped backing. HAIRSTYLE: DARK TEAL cropped side-part cut, short smooth swept top with a small broad wave, closely cropped temples and a tidy rounded silhouette. No tall spikes, no long central lock, no bangs below eyebrow line; visually distinct from tousled spiky adventurer hair. Restrained deep blue-green shadows, muted teal midtones, turquoise-grey upper-left highlights, very thin dark navy outline. Same crisp pixel-art clusters and scale as the common head. Fit the existing scalp: on the96x96 local plate (=source/13.0625), bald skull lies aboutx24..73,y24..73. Hair top may reach y19, cap surrounds top/temples, fringe front edge stays ABOVE local y48 at both eye columns x31..44 and51..64. Keep both eye windows localx35..41/y54..59 andx55..61/y54..59 completely transparent, including all outlines/antialiasing. Short sideburns only near localx25/73,y48..55. No ears, earring, hat, ornament, eyebrows or other objects. Do not enlarge to fill canvas or recenter. Transparent all around and below hair; no backdrop, checkerboard, shadows or text. Preserve four cyan corner fiducials in reserved outer gutter.",
+      "references": [
+        {
+          "pathAtGeneration": "Art/Templates/P1-Modular/down/v1/references/head-registration.png",
+          "preservedAs": "Art/Templates/P1-Modular/down/v1/references/head-registration.png",
+          "sha256": "e8938c6c22844db89b1a32bf2c118c61cb4db5d0ca2e7afcad5a1f737e08a9b2"
+        }
+      ],
+      "status": "selected source; artwork not user approved"
+    }
+  ],
+  "artApproval": null
+}

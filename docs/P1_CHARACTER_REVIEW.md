@@ -4,11 +4,11 @@
 
 ## 当前审核
 
-**八方向原步态、向下共同中性站姿 r1 已获认可；当前审核向下八帧中性行走 r1。**
+**八方向原步态、向下共同中性站姿和八帧行走已获认可；当前审核独立头部换装 v1。**
 
-用户回复“没问题”，认可[共同站姿 r1](../Art/Templates/P1-Neutral/down/r1/approval.json)，按此展开[向下八帧中性行走 r1](../Art/Templates/P1-Neutral/down/walk-r1/README.md)。[当前编号图](../Art/Templates/P1-Neutral/down/walk-r1/review.png) · [正常循环](../Art/Templates/P1-Neutral/down/walk-r1/walk.gif) · [慢速循环](../Art/Templates/P1-Neutral/down/walk-r1/walk-slow.gif)。共 72 张独立部件、九份 ORA／SVG及逐帧关节／握持／足底与身体层序；新行走认可为空，不把站姿认可扩大到动作。
+用户回复“没问题，开始下一部分工作”，认可[中性向下步态](../Art/Templates/P1-Neutral/down/walk-r1/approval.json)，并明确后续动图只提供正常速度（120 ms／帧）。当前[三发型×两五官](../Art/Templates/P1-Modular/down/v1/README.md)六种组合使用相同身体／动作：[正常循环](../Art/Templates/P1-Modular/down/v1/walk.gif) · [头部放大](../Art/Templates/P1-Modular/down/v1/heads.png) · [不铺底模的独立部件](../Art/Templates/P1-Modular/down/v1/independent-parts.png)。清单驱动装配器通过19项集成检查，[第三发型接入证明](../Art/Templates/P1-Modular/down/v1/integration-after-third.json)确认工具／身体／动作／合同不改；新美术认可为空。
 
-用户明确要求新美术资源遵守统一人体／动作标准，直接挂载使用，指出旧银发与金眼脸片存在配套耦合。已建立[独立部件合同与导板](../Art/Standards/P1-Parts-v1/README.md)及[旧方案审查](../Art/Standards/P1-Parts-v1/MIGRATION.md)；共同头型已随站姿认可，向下中性行走候选已完成；完整外观挂载、通用装配器及其他七方向中性人体尚未完成。
+用户明确要求新美术资源遵守统一人体／动作标准，直接挂载使用，指出旧银发与金眼脸片存在配套耦合。已建立[独立部件合同与导板](../Art/Standards/P1-Parts-v1/README.md)及[旧方案审查](../Art/Standards/P1-Parts-v1/MIGRATION.md)；共同头型与向下中性行走已认可，独立头部挂载和装配器原型已实现；实际衣物／武器、完整换装验收及其他七方向中性人体尚未完成。
 
 用户确认“可以的，我们走路的方向动画都调好了”，右上 r1 的认可已记录。已认可动作冻结为 `Art/Templates/P1-Motion-v1.json`，共八方向、每方向站姿＋八帧。用户随后以“按你说的来”授权先做向下方向换装验证；这个授权不等于新外观美术认可。
 

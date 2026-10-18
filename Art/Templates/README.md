@@ -1,6 +1,6 @@
 # P1 人物模板
 
-当前审核：[向下中性行走 r1](P1-Neutral/down/walk-r1/README.md)，包含已认可站姿与八帧新行走候选、72 张独立部件和逐帧关节／遮挡数据。[共同站姿 r1](P1-Neutral/down/r1/approval.json)已获用户认可。
+当前审核：[独立头部换装 v1](P1-Modular/down/v1/README.md)，三款发型 × 两款五官，共六种正常速度搭配；附清单驱动装配器及第三发型零工具／身体／动作修改接入证明。[共同站姿及向下八帧](P1-Neutral/down/walk-r1/approval.json)已获用户认可。
 
 规范依据：[可复用换装美术标准草案](../Standards/P1-Parts-v1/README.md)，先建立唯一中性人体、独立部件与通用挂载合同。原向下演示不满足该合同。
 
@@ -13,4 +13,4 @@
 - [同步动作对照](P1-Down/v1/review/walk-compare.gif) · [慢速对照](P1-Down/v1/review/walk-compare-slow.gif)
 - [离线预览文件](P1-Down/v1/preview.html) · [逐帧 ORA／SVG](P1-Down/v1/editable/) · [验证记录](P1-Down/v1/validation.json)
 
-下一步审核向下中性行走，再制作独立外观和通用装配器；交叉组合与第三件新资源接入通过后，再扩展其他方向与正式应用。
+下一步审核本组独立头部资源，再制作实际衣物／武器并验收遮挡及交叉组合；其他七方向中性人体与正式应用接入仍待推进。

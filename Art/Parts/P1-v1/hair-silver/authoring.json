@@ -1,0 +1,27 @@
+{
+  "id": "p1-hair-silver-v1",
+  "part": "hair",
+  "source": "source/down.png",
+  "sourceCanvas": [
+    1254,
+    1254
+  ],
+  "registrationGutter": [
+    80,
+    80,
+    1174,
+    1174
+  ],
+  "regions": {
+    "hair.front": [
+      [
+        0,
+        0,
+        96,
+        96
+      ]
+    ]
+  },
+  "status": "artwork-candidate-not-approved",
+  "autoFit": false
+}

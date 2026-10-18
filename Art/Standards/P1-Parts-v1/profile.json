@@ -1,7 +1,7 @@
 {
   "contractVersion": "1.0.0",
   "id": "p1-chibi-v1",
-  "status": "draft-down-walk-review-pending",
+  "status": "draft-down-head-resources-awaiting-review",
   "bodyProfile": "p1-standard",
   "actionSet": "locomotion-v1",
   "canvas": [
@@ -42,7 +42,7 @@
   ],
   "headLayouts": {
     "down": {
-      "status": "proposed-not-approved",
+      "status": "shared-head-and-neutral-motion-approved; independent-feature-art-review-pending",
       "neck": [
         48,
         72
@@ -187,12 +187,11 @@
     }
   },
   "releaseBlockers": [
-    "neutral down walk r1 awaiting artwork review; other seven neutral directions missing",
-    "idle head art approved; facial placement and hair overlap pending independent assets",
-    "down shoulder/elbow tracks authored as candidates; other directions missing",
-    "down body draw order authored; full appearance occlusion not reviewed",
-    "generic importer/compositor not implemented",
-    "third independent asset has not passed zero-code-addition acceptance"
+    "other seven neutral body directions missing",
+    "independent head-resource artwork and facial placement pending user review",
+    "full wardrobe occlusion and real weapon grip art not reviewed",
+    "compositor supports three drawing spaces in tests; real outfit/weapon integration pending",
+    "third new resource artwork and full wardrobe acceptance not reviewed"
   ],
   "artStyle": {
     "finalPixelDensity": "1x on a 256px pose canvas",
@@ -220,8 +219,12 @@
       "walk"
     ],
     "path": "Art/Templates/P1-Neutral/down/walk-r1",
-    "status": "awaiting_user_review",
-    "artApproval": null,
+    "status": "approved",
+    "artApproval": "Art/Templates/P1-Neutral/down/walk-r1/approval.json",
     "motion": "Art/Templates/P1-Neutral/down/walk-r1/motion.json"
+  },
+  "genericCompositor": {
+    "path": "scripts/compose-character-parts.py",
+    "status": "prototype; head art review pending; full wardrobe acceptance pending"
   }
 }

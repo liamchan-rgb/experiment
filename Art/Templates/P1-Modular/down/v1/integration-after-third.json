@@ -1,0 +1,21 @@
+{
+  "checkedAtUTC": "2026-10-18T15:37:29.545228+00:00",
+  "passed": true,
+  "scope": "third independent down hair; mechanical integration, not artwork approval or whole wardrobe acceptance",
+  "snapshot": "integration-before-third.json",
+  "thirdAsset": {
+    "id": "p1-hair-teal-crop-v1",
+    "manifest": "Art/Parts/P1-v1/hair-teal-crop/asset.json",
+    "label": "TEAL CROP"
+  },
+  "frozenFilesByteExact": 114,
+  "existingCombinationFilesByteExact": 44,
+  "catalogChange": "exactly one entry appended; existing entries identical",
+  "newCombinations": 2,
+  "engineChanges": 0,
+  "bodyChanges": 0,
+  "motionChanges": 0,
+  "contractChanges": 0,
+  "firstFourAppearanceChanges": 0,
+  "newAppearanceArtApproval": null
+}

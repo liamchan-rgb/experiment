@@ -1,0 +1,57 @@
+{
+  "id": "p1-face-blue-v1",
+  "part": "face",
+  "source": "source/down.png",
+  "sourceCanvas": [
+    1254,
+    1254
+  ],
+  "registrationGutter": [
+    80,
+    80,
+    1174,
+    1174
+  ],
+  "regions": {
+    "face.eyes": [
+      [
+        31,
+        51,
+        45,
+        62
+      ],
+      [
+        51,
+        51,
+        65,
+        62
+      ]
+    ],
+    "face.brows": [
+      [
+        30,
+        44,
+        66,
+        51
+      ]
+    ],
+    "face.nose": [
+      [
+        45,
+        59,
+        51,
+        64
+      ]
+    ],
+    "face.mouth": [
+      [
+        40,
+        64,
+        56,
+        69
+      ]
+    ]
+  },
+  "status": "artwork-candidate-not-approved",
+  "autoFit": false
+}

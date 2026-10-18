@@ -1,0 +1,12 @@
+{
+  "passed": true,
+  "scope": "independent extracted current-head bundle, not installed game application",
+  "archive": "Art/Prototypes/P1-Modular-Head-v1.zip",
+  "standaloneCompositorTestsPassed": 19,
+  "standaloneCLIPosesPixelExact": 9,
+  "packageLocalLayerAndSourcePathsValid": true,
+  "CRCValid": true,
+  "normalOnlyGIFs": true,
+  "dependencies": "Pillow, numpy, jsonschema; reused installed libraries during test",
+  "artApproval": null
+}

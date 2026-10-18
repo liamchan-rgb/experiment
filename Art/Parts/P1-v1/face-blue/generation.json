@@ -1,0 +1,64 @@
+{
+  "tool": "image_gen.imagegen",
+  "date": "2026-10-18",
+  "transparentBackgroundRequested": true,
+  "selectedSource": "source/down.png",
+  "registration": "full1254 canvas to96 head-local; constant scale, reserved80px gutter removed, no alpha-bbox fitting",
+  "commonAlphaExport": "alpha>=250 ->255, raw sources unchanged",
+  "runtimeDependencies": [],
+  "referenceRole": "art authoring references only; manifest uses only package-local files, never another hair or face",
+  "optionalEmptySlots": [],
+  "records": [
+    {
+      "revision": "r1",
+      "file": "drafts/down-r1.png",
+      "sha256": "3d6e1aaa64cd8caed0be1382611e20cff37dd9db8ed9027c6e0f99f5f19aa175",
+      "generatorOutputPath": "/workspace/generated_images/exec-1fc4391f-69ad-4c68-91e5-e70fdc536181.png",
+      "prompt": "Create ONLY a set of isolated FACIAL FEATURES as a transparent game-art sprite layer on the EXACT 1254x1254 registration canvas. Image1 is the coordinate plate: tiny cyan crosses mark eye centers and must be REMOVED after painting; preserve FOUR corner fiducials. Image2 shows the common blank head for size and style ONLY; DO NOT paint or retain that head, scalp, skin, ears, cheeks, jaw, hair, neck or any backing at all. The final artwork is floating eyes, eyebrows, a tiny nose mark and a mouth line, with TRUE TRANSPARENT space around and BETWEEN every feature. No peach face-shaped blob, no rectangular skin patches behind eyes, no blush. Ink ONLY the actual feature shapes. Match crisp chibi game pixel-art, upper-left highlights, narrow dark warm outlines, deliberate flat colour clusters, no airbrush. Full 1254 square maps to a 96x96 local plate by constant factor13.0625. EYES must be inside local boxes right x31..44 y51..61 and left x51..64 y51..61, centers(38,56),(58,56) (=source approx496/758,y731). Each eye about10x9 final pixels, with small whites, iris and dark upper lid; do not fill the entire box. Eyebrows at local x33..43 and53..63, y47..49. Tiny 1-2px dark nose mark at local(48,61), not a shaded skin wedge. Mouth is a 5-7px warm dark line around local(48,66), inside x40..55,y63..68. Leave transparent margins between eyes/brows/nose/mouth so four independent layers can be exported. Do not shift features to accommodate a hairstyle: no hairstyle reference is provided. No background, checkerboard, shadow, portrait border or text. FEATURE SET: bright BLUE irises with restrained cyan lower highlight and tiny white catchlights, friendly open eyes. Thin gently curved dark umber eyebrows. Tiny nose mark and small relaxed closed smile. Mouth is a line, not a tooth/skin-filled wedge. No blush or eyelashes outside eye boxes.",
+      "references": [
+        {
+          "pathAtGeneration": "Art/Templates/P1-Modular/down/v1/references/feature-registration.png",
+          "preservedAs": "Art/Templates/P1-Modular/down/v1/references/feature-registration.png",
+          "sha256": "679a7a0b4247b2a65ac5db73f745e2bbf533f5004fa7be4d371161841940dde7"
+        },
+        {
+          "pathAtGeneration": "Art/Templates/P1-Modular/down/v1/references/head-registration.png",
+          "preservedAs": "Art/Templates/P1-Modular/down/v1/references/head-registration.png",
+          "sha256": "e8938c6c22844db89b1a32bf2c118c61cb4db5d0ca2e7afcad5a1f737e08a9b2"
+        }
+      ],
+      "status": "rejected: fixed-coordinate or eye-clearance mismatch"
+    },
+    {
+      "revision": "r2",
+      "file": "drafts/down-r2.png",
+      "sha256": "a689029fcbf7404adc572fa0c7f91c8785677188ea302fbd453b13dce109002e",
+      "generatorOutputPath": "/workspace/generated_images/exec-806e79c4-0b09-4adb-8775-2b0fb55a7f7d.png",
+      "prompt": "Correct the REGISTRATION of these isolated blue facial features on the SAME 1254x1254 transparent canvas. The current eyebrows are too high and the whole eyes/nose/mouth are above their intended anchors. Reposition/redraw ONLY the features at these exact source-pixel targets: RIGHT eye (screen-left) centered(496,731), LEFT eye(screen-right) centered(758,731), each about130px wide and105px tall, with all eye pixels staying within x405..575 or666..836,y679..796. Eyebrows centered about(496,626) and(758,626), only about90px wide and20px high, and no pixels above y590. Tiny nose dot centered(627,790). Small closed smile centered(627,863), within x575..680,y836..889. Keep eyes' blue colour, tiny whites/catchlights and pixel-art style. Scale is common 96x96 local plate ×13.0625: eye centers(38,56),(58,56), brow y48, nose y60.5, mouth y66. Absolutely NO feature may remain in its OLD higher position; remove old feature pixels fully to transparency. Keep actual features separate with transparent gaps. Do not add a face, skin, ears, hair, cheeks, blush or backing. Four corner fiducials stay fixed. True transparent cutouts.",
+      "references": [
+        {
+          "pathAtGeneration": "Art/Parts/P1-v1/face-blue/source/down.png",
+          "preservedAs": "Art/Parts/P1-v1/face-blue/drafts/down-r1.png",
+          "sha256": "3d6e1aaa64cd8caed0be1382611e20cff37dd9db8ed9027c6e0f99f5f19aa175"
+        }
+      ],
+      "status": "rejected: fixed-coordinate or eye-clearance mismatch"
+    },
+    {
+      "revision": "r3",
+      "file": "source/down.png",
+      "sha256": "9e9d328b68222b174749ee30137a691f159abf36b402866de2dac305091e5c86",
+      "generatorOutputPath": "/workspace/generated_images/exec-19e5dd55-1734-4c43-9927-83ab5ee3b882.png",
+      "prompt": "Make a BLUE-IRIS variant of this exact transparent common facial-feature master. ONE CHANGE ONLY: recolour the two amber/gold iris interiors to saturated sapphire BLUE with a small cyan lower highlight. Preserve both eye outlines, eye whites, highlights, eye shape, every feature's exact coordinate and size, both eyebrows, the tiny closed mouth line, canvas and corner fiducials. Do NOT move any eye, brow or mouth, do NOT enlarge them, do NOT add a nose, lashes, skin, head, ears, hair, cheeks, face patch or backing. Same exact 1254x1254 transparent canvas and crisp pixel-art colour clusters. This is an independent floating feature layer for the shared game-avatar head; every non-feature background pixel stays truly transparent. Only the iris colours change.",
+      "references": [
+        {
+          "pathAtGeneration": "Art/Parts/P1-v1/face-amber/source/down.png",
+          "preservedAs": "Art/Parts/P1-v1/face-amber/source/down.png",
+          "sha256": "bd3d931e1be1036c50227f447b770463dad92e4fccad964484e0daa5a148c803"
+        }
+      ],
+      "status": "selected source; artwork not user approved"
+    }
+  ],
+  "artApproval": null
+}
