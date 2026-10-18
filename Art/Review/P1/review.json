@@ -447,7 +447,7 @@
     {
       "id": "04-right-gait",
       "direction": "right",
-      "status": "awaiting_user_feedback",
+      "status": "awaiting_user_review",
       "sourceAtlas": "01-cardinal-atlas/baseline.png",
       "cropPixels": [
         0,
@@ -491,8 +491,55 @@
       ],
       "previewLayout": "5 columns x 5 rows, left to right then top to bottom; 00 idle, 01-24 walk; black backdrop; no pose changes",
       "pixelVerification": "source strip RGBA equals the corresponding baseline atlas row",
-      "revisions": [],
-      "approval": null
+      "revisions": [
+        {
+          "id": "r1",
+          "date": "2026-10-18",
+          "status": "awaiting_user_review",
+          "artApproval": null,
+          "method": "imagegen right-facing whole-pose counterparts of approved left r1; same uniform silhouette registration and timing",
+          "idlePoses": 1,
+          "walkingPoses": 8,
+          "reviewImage": "directions/right/revisions/r1/review-2x.png",
+          "strip": "directions/right/revisions/r1/strip.png",
+          "normalLoop": "directions/right/revisions/r1/walk.gif",
+          "slowLoop": "directions/right/revisions/r1/walk-slow.gif",
+          "comparison": "directions/right/revisions/r1/comparison.png",
+          "pairedReview": "directions/right/revisions/r1/left-right-review-2x.png",
+          "pairedNormalLoop": "directions/right/revisions/r1/left-right.gif",
+          "pairedSlowLoop": "directions/right/revisions/r1/left-right-slow.gif",
+          "referenceDirectionRevision": "02-left-gait/r1",
+          "notes": "directions/right/revisions/r1/README.md",
+          "validation": "directions/right/revisions/r1/validation.json",
+          "addressedInCandidate": [
+            "right-pointing boots during rear swing",
+            "connected full boot cuff/shaft/ankle drawings",
+            "two passing poses matched to left r1",
+            "opposite arm swing and near/far leg occlusion",
+            "phase-by-phase stride and proportions coordinated with approved left r1",
+            "same registration profile and normal/slow timing; synchronized review artifacts"
+          ],
+          "productionAssetsUpdated": false
+        }
+      ],
+      "approval": null,
+      "audit": "directions/right/AUDIT.md",
+      "feedback": [
+        {
+          "date": "2026-10-18",
+          "source": "user",
+          "text": "对的，开始修，确保和刚才修好的向左走的观感能互相呼应协调",
+          "issues": [
+            "后摆脚鞋尖翻向左",
+            "双脚交会时鞋形挤压",
+            "上身和手臂基本固定",
+            "需要与已认可向左 r1 统一人物比例、鞋子体积、步幅和节奏"
+          ],
+          "approvalMeaning": "修改授权；不是向右美术认可"
+        }
+      ],
+      "currentRevision": "r1",
+      "auditStatus": "right r1 coordinated against approved left r1, exported with synchronized comparisons; awaiting explicit user artwork approval"
     }
   ],
   "directionOrder": [

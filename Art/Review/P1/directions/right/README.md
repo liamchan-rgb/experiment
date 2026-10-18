@@ -1,6 +1,10 @@
 # P1 向右方向 · 当前审核
 
-2026-10-18，用户认可向上 r1 后，进入向右方向审核。当前展示原有 build 28 素材，尚未重画、尚未认可。
+2026-10-18，用户要求修改向右，并确保与已认可向左 r1 协调。现已交付 [向右 r1](revisions/r1/README.md)，当前待用户审核，尚未认可。
+
+当前稿：[向右编号图](revisions/r1/review-2x.png) · [正常循环](revisions/r1/walk.gif) · [慢速循环](revisions/r1/walk-slow.gif) · [左右同步对照](revisions/r1/left-right.gif) · [慢速对照](revisions/r1/left-right-slow.gif)。00 为新站姿，01–08 为两步循环八张关键姿势，修改依据见 [AUDIT.md](AUDIT.md)。
+
+以下为未改动的 build 28 基线，帧号与 r1 不对应。
 
 [编号图](review.png) · [原像素横条](strip.png) · [正常循环](walk-baseline.gif) · [四分之一速度循环](walk-baseline-slow.gif)
 

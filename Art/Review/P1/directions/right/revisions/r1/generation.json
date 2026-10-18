@@ -1,0 +1,178 @@
+{
+  "revision": "r1",
+  "direction": "right",
+  "method": "imagegen right-facing counterparts of approved left r1 whole poses; whole-pose registration only during packaging",
+  "idlePoses": 1,
+  "walkingPoses": 8,
+  "approvedReference": "Art/Review/P1/directions/left/revisions/r1",
+  "sideConvention": "view-local phases match left r1: near RIGHT in right-facing view; near LEFT in left-facing view; anatomical limb mapping changes",
+  "poses": [
+    {
+      "index": 0,
+      "id": "00-idle",
+      "referencePose": "Art/Review/P1/directions/left/revisions/r1/raw/00.png",
+      "rawImage": "raw/00.png",
+      "initial": {
+        "prompt": "Create the matching RIGHT-FACING NEUTRAL IDLE counterpart of the FIRST approved LEFT-facing P1 sprite. The FIRST image is the definitive character MODEL and quality reference; the SECOND old right-view image is only a facing/camera reference, do not copy its inferior proportions. Same exact boy, tousled chestnut hair, blue eye, head/body proportions, blue scarf and short blue coat with cream/gold trim, cream shirt, brown belt/gloves/side pouch, charcoal knee-length trousers, FULL folded-cuff brown laced leather boots. Turn the whole character to face SCREEN RIGHT at the same slightly elevated RPG near-side camera. Keep the same silhouette scale, head size relative to torso, trouser length, boot cuff/shaft height, heel thickness and toe length as the approved left sprite. The two directions must look like one coherent animation character, no redesign or aging. Scarf trails behind toward SCREEN LEFT, pouch sits behind belt at screen left as in old right camera reference. Crisp detailed pixel-sprite rendering and same colors, not painterly or blurry. Boots' toe boxes BOTH point screen RIGHT, natural hip-width stance, planted soles on common ground line, no outward splay. Arms relaxed, body upright. EXACTLY ONE full-body character, generous transparent margin, fully transparent background, no halo/aura/glow/ground/shadow/text/labels/sheet.",
+        "generatedSource": "/workspace/generated_images/exec-7a307c10-07d9-444c-8823-5cb945db0805.png"
+      },
+      "refinements": [],
+      "generatedSource": "/workspace/generated_images/exec-7a307c10-07d9-444c-8823-5cb945db0805.png",
+      "sha256": "d4a0e5e1f6db14301520e15006c388b91737566cbf2fe1d340e49abfb5671b57",
+      "referencePoseSHA256": "733fe4e3a0bea237c4cfd4b34827f9a232e20be6cabbd6accb6ef2d7b95a5c47"
+    },
+    {
+      "index": 1,
+      "id": "01 CONTACT A",
+      "referencePose": "Art/Review/P1/directions/left/revisions/r1/raw/01.png",
+      "rawImage": "raw/01.png",
+      "initial": {
+        "prompt": "Redraw the FIRST approved LEFT-facing walking pose as the matching RIGHT-facing counterpart. FIRST IMAGE defines the EXACT gait phase, stride length, knee bend, boot dimensions, arm swing amplitude, body/head proportions and pixel-art quality. SECOND image is the new matching RIGHT IDLE model, for facing and costume, NOT the walking pose. The pair must look like ONE COORDINATED left/right game animation character. Same exact brown-haired blue-eyed boy, royal blue scarf/cream-gold trimmed coat, cream shirt, belt/gloves/pouch, charcoal knee-length trousers, FULL folded-cuff laced brown boots. Face SCREEN RIGHT at same slightly elevated near-side RPG camera, no diagonal/front/head turn. Scarf trails to SCREEN LEFT; brown pouch stays behind hip at screen left in this view. Preserve the first pose's body proportions, head size, normal short stride, boot cuff height/shaft/heel/toe length. Both toe boxes point SCREEN RIGHT in EVERY phase, even trailing raised boot. No outward splay, no boot flipping to screen left, no twisted ankles, no shoe shrink/stretch. Draw actual connected thigh-knee-shin-ankle-boot anatomy and near/far occlusion. Walking is not running or marching. Match FIRST pose timing/gesture precisely after changing facing. Near RIGHT leg/arm are closest to viewer in the RIGHT-facing view; FAR left leg/arm behind. Near sleeve is the large visible shoulder on screen LEFT; control its swing as specified. Crisp detailed pixel sprite, ONE full body with transparent margin, no text/sheet/labels/ground/shadow/halo/aura.\nPOSE TO RETAIN:\n01 CONTACT A: NEAR RIGHT leg advances to SCREEN RIGHT, heel contacting ground with toe gently lifted; FAR LEFT leg trails to SCREEN LEFT, heel rising while its RIGHT-directed toe still on ground. NEAR RIGHT arm swings BACK to screen LEFT, far arm forward to screen RIGHT. Same split-stride amplitude as first reference.",
+        "generatedSource": "/workspace/generated_images/exec-7d8e9e7a-bd38-4df9-9881-b4a7cff0506c.png"
+      },
+      "refinements": [
+        {
+          "prompt": "Make the RIGHT-FACING counterpart by HORIZONTALLY REFLECTING this COMPLETE approved LEFT-facing sprite. Preserve the EXACT pose silhouette, knee geometry, distance between the ankles, foot placement, arm swing, near/far leg overlap, near/far boot brightness and full boot proportions after reflection. Do NOT widen the stride or raise the knee higher. This must look like the SAME short walk seen in the opposite direction. Do NOT invent a new phase, revert to idle or swap foreground leg. Everything faces SCREEN RIGHT, including both toe boxes and the raised foot. Dark far leg remains dark; bright near leg remains bright. Preserve same head/body ratio, face/hair identity, detailed crisp pixel-sprite rendering, blue scarf/coat, belt/pouch and gloves. Whole character, generous transparent margin, transparent background, no text/ground/shadow/halo/glow. Phase 01 geometry must match reference after changing facing. The goal is a synchronized left/right counterpart, not a different walk.",
+          "generatedSource": "/workspace/generated_images/exec-b337a703-4a70-4cb4-a14c-fc1954d49b41.png"
+        }
+      ],
+      "generatedSource": "/workspace/generated_images/exec-b337a703-4a70-4cb4-a14c-fc1954d49b41.png",
+      "sha256": "b7f0983f2593d77dc4ab8dd26ff0383f79eacba98d7d0454ff682218b7c96cae",
+      "referencePoseSHA256": "5c88f40ab1fda228ba4839d9f5007a9ac4f0fe3a60f280c0f049d7a7cb0c9143"
+    },
+    {
+      "index": 2,
+      "id": "02 WEIGHT A",
+      "referencePose": "Art/Review/P1/directions/left/revisions/r1/raw/02.png",
+      "rawImage": "raw/02.png",
+      "initial": {
+        "prompt": "Redraw the FIRST approved LEFT-facing walking pose as the matching RIGHT-facing counterpart. FIRST IMAGE defines the EXACT gait phase, stride length, knee bend, boot dimensions, arm swing amplitude, body/head proportions and pixel-art quality. SECOND image is the new matching RIGHT IDLE model, for facing and costume, NOT the walking pose. The pair must look like ONE COORDINATED left/right game animation character. Same exact brown-haired blue-eyed boy, royal blue scarf/cream-gold trimmed coat, cream shirt, belt/gloves/pouch, charcoal knee-length trousers, FULL folded-cuff laced brown boots. Face SCREEN RIGHT at same slightly elevated near-side RPG camera, no diagonal/front/head turn. Scarf trails to SCREEN LEFT; brown pouch stays behind hip at screen left in this view. Preserve the first pose's body proportions, head size, normal short stride, boot cuff height/shaft/heel/toe length. Both toe boxes point SCREEN RIGHT in EVERY phase, even trailing raised boot. No outward splay, no boot flipping to screen left, no twisted ankles, no shoe shrink/stretch. Draw actual connected thigh-knee-shin-ankle-boot anatomy and near/far occlusion. Walking is not running or marching. Match FIRST pose timing/gesture precisely after changing facing. Near RIGHT leg/arm are closest to viewer in the RIGHT-facing view; FAR left leg/arm behind. Near sleeve is the large visible shoulder on screen LEFT; control its swing as specified. Crisp detailed pixel sprite, ONE full body with transparent margin, no text/sheet/labels/ground/shadow/halo/aura.\nPOSE TO RETAIN:\n02 WEIGHT A: NEAR RIGHT support boot flat on ground a little forward to screen RIGHT, knee flexed modestly. FAR LEFT leg bends at knee and leaves rear position at screen LEFT, full-size raised boot oriented RIGHT, beginning to advance. Near right arm remains BACK but returns toward neutral. Same low-pelvis acceptance as first reference.",
+        "generatedSource": "/workspace/generated_images/exec-cf966c52-f6b8-46f0-be57-28f81fa8b56e.png"
+      },
+      "refinements": [
+        {
+          "prompt": "Make the RIGHT-FACING counterpart by HORIZONTALLY REFLECTING this COMPLETE approved LEFT-facing sprite. Preserve the EXACT pose silhouette, knee geometry, distance between the ankles, foot placement, arm swing, near/far leg overlap, near/far boot brightness and full boot proportions after reflection. Do NOT widen the stride or raise the knee higher. This must look like the SAME short walk seen in the opposite direction. Do NOT invent a new phase, revert to idle or swap foreground leg. Everything faces SCREEN RIGHT, including both toe boxes and the raised foot. Dark far leg remains dark; bright near leg remains bright. Preserve same head/body ratio, face/hair identity, detailed crisp pixel-sprite rendering, blue scarf/coat, belt/pouch and gloves. Whole character, generous transparent margin, transparent background, no text/ground/shadow/halo/glow. Phase 02 geometry must match reference after changing facing. The goal is a synchronized left/right counterpart, not a different walk.",
+          "generatedSource": "/workspace/generated_images/exec-9a200015-cbe5-43f5-8e6f-ea46d8bcf811.png"
+        }
+      ],
+      "generatedSource": "/workspace/generated_images/exec-9a200015-cbe5-43f5-8e6f-ea46d8bcf811.png",
+      "sha256": "d4c02903cfc4e97747b6eb66a5c24874f1b62d75dff4556cceb1276819e915b1",
+      "referencePoseSHA256": "0a812b85ee27f76bdb5df63668ed96da423f1873d3d120ab04a100d1c481eebe"
+    },
+    {
+      "index": 3,
+      "id": "03 PASS A",
+      "referencePose": "Art/Review/P1/directions/left/revisions/r1/raw/03.png",
+      "rawImage": "raw/03.png",
+      "initial": {
+        "prompt": "Redraw the FIRST approved LEFT-facing walking pose as the matching RIGHT-facing counterpart. FIRST IMAGE defines the EXACT gait phase, stride length, knee bend, boot dimensions, arm swing amplitude, body/head proportions and pixel-art quality. SECOND image is the new matching RIGHT IDLE model, for facing and costume, NOT the walking pose. The pair must look like ONE COORDINATED left/right game animation character. Same exact brown-haired blue-eyed boy, royal blue scarf/cream-gold trimmed coat, cream shirt, belt/gloves/pouch, charcoal knee-length trousers, FULL folded-cuff laced brown boots. Face SCREEN RIGHT at same slightly elevated near-side RPG camera, no diagonal/front/head turn. Scarf trails to SCREEN LEFT; brown pouch stays behind hip at screen left in this view. Preserve the first pose's body proportions, head size, normal short stride, boot cuff height/shaft/heel/toe length. Both toe boxes point SCREEN RIGHT in EVERY phase, even trailing raised boot. No outward splay, no boot flipping to screen left, no twisted ankles, no shoe shrink/stretch. Draw actual connected thigh-knee-shin-ankle-boot anatomy and near/far occlusion. Walking is not running or marching. Match FIRST pose timing/gesture precisely after changing facing. Near RIGHT leg/arm are closest to viewer in the RIGHT-facing view; FAR left leg/arm behind. Near sleeve is the large visible shoulder on screen LEFT; control its swing as specified. Crisp detailed pixel sprite, ONE full body with transparent margin, no text/sheet/labels/ground/shadow/halo/aura.\nPOSE TO RETAIN:\n03 PASS A: NEAR RIGHT support leg vertical under hip and planted. FAR LEFT knee advances toward SCREEN RIGHT; FAR boot passes CLOSE behind the support ankle, lifted half a boot-height, partly occluded by foreground supporting shin. Feet CLOSE, not split widely, no twisted overlap. Arms approximately neutral, match first passing silhouette and full boot proportions.",
+        "generatedSource": "/workspace/generated_images/exec-b33e57c4-3a70-4b80-9b2f-1cb2aaec4b74.png"
+      },
+      "refinements": [
+        {
+          "prompt": "Make the RIGHT-FACING counterpart by HORIZONTALLY REFLECTING this COMPLETE approved LEFT-facing sprite. Preserve the EXACT pose silhouette, knee geometry, foot placement, arm swing, forearm crossing, near/far leg overlap and near/far boot brightness of the reference after reflection. Do NOT invent a new phase, do NOT revert to idle, do NOT swap which leg is foreground. Everything faces SCREEN RIGHT afterwards, including both toe boxes and the bent lifted foot. In the reflected pose the dark far leg remains dark, bright near leg stays bright, the crossing foreground arm still crosses the shirt. Preserve EXACT same body/head proportions, full cuffed boot dimensions, detailed pixel sprite style, colors, hair, blue scarf and coat, belt/pouch and gloves. One full-body character, fully transparent background and generous margin. No text, no labels, no ground/shadow/glow, no new equipment. This is a whole-pose direction counterpart for a synchronized left/right walking comparison, not a new walk design. Phase 03 must match the reference exactly after changing facing.",
+          "generatedSource": "/workspace/generated_images/exec-6cd6e3f6-bbf4-41ac-8fb8-ed9fbba70373.png"
+        }
+      ],
+      "generatedSource": "/workspace/generated_images/exec-6cd6e3f6-bbf4-41ac-8fb8-ed9fbba70373.png",
+      "sha256": "6e7bfb6943aaf03886e82390dbfd6b37f2e270cf4ffbce7424f15dd41d870378",
+      "referencePoseSHA256": "f2fa880763464ebfc678e98cc86abf90fa59fa9293ea7b8974061313033b9824"
+    },
+    {
+      "index": 4,
+      "id": "04 LATE SWING A",
+      "referencePose": "Art/Review/P1/directions/left/revisions/r1/raw/04.png",
+      "rawImage": "raw/04.png",
+      "initial": {
+        "prompt": "Redraw the FIRST approved LEFT-facing walking pose as the matching RIGHT-facing counterpart. FIRST IMAGE defines the EXACT gait phase, stride length, knee bend, boot dimensions, arm swing amplitude, body/head proportions and pixel-art quality. SECOND image is the new matching RIGHT IDLE model, for facing and costume, NOT the walking pose. The pair must look like ONE COORDINATED left/right game animation character. Same exact brown-haired blue-eyed boy, royal blue scarf/cream-gold trimmed coat, cream shirt, belt/gloves/pouch, charcoal knee-length trousers, FULL folded-cuff laced brown boots. Face SCREEN RIGHT at same slightly elevated near-side RPG camera, no diagonal/front/head turn. Scarf trails to SCREEN LEFT; brown pouch stays behind hip at screen left in this view. Preserve the first pose's body proportions, head size, normal short stride, boot cuff height/shaft/heel/toe length. Both toe boxes point SCREEN RIGHT in EVERY phase, even trailing raised boot. No outward splay, no boot flipping to screen left, no twisted ankles, no shoe shrink/stretch. Draw actual connected thigh-knee-shin-ankle-boot anatomy and near/far occlusion. Walking is not running or marching. Match FIRST pose timing/gesture precisely after changing facing. Near RIGHT leg/arm are closest to viewer in the RIGHT-facing view; FAR left leg/arm behind. Near sleeve is the large visible shoulder on screen LEFT; control its swing as specified. Crisp detailed pixel sprite, ONE full body with transparent margin, no text/sheet/labels/ground/shadow/halo/aura.\nPOSE TO RETAIN:\n04 LATE SWING A: FAR LEFT boot reaches toward SCREEN RIGHT low, heel just ABOUT to land; near RIGHT leg trails to screen LEFT at toe-off, RIGHT-directed toe contacts ground. NEAR RIGHT arm (large visible shoulder on SCREEN LEFT) swings FORWARD toward screen RIGHT: forearm/fist crosses IN FRONT OF CREAM SHIRT and belt, fist to RIGHT of buckle. FAR arm back, partly hidden. Same pre-contact pose and modest stride as first.",
+        "generatedSource": "/workspace/generated_images/exec-e733d1a4-50cd-4f48-95cd-df6614c007be.png"
+      },
+      "refinements": [
+        {
+          "prompt": "Make the RIGHT-FACING counterpart by HORIZONTALLY REFLECTING this COMPLETE approved LEFT-facing sprite. Preserve the EXACT pose silhouette, knee geometry, foot placement, arm swing, forearm crossing, near/far leg overlap and near/far boot brightness of the reference after reflection. Do NOT invent a new phase, do NOT revert to idle, do NOT swap which leg is foreground. Everything faces SCREEN RIGHT afterwards, including both toe boxes and the bent lifted foot. In the reflected pose the dark far leg remains dark, bright near leg stays bright, the crossing foreground arm still crosses the shirt. Preserve EXACT same body/head proportions, full cuffed boot dimensions, detailed pixel sprite style, colors, hair, blue scarf and coat, belt/pouch and gloves. One full-body character, fully transparent background and generous margin. No text, no labels, no ground/shadow/glow, no new equipment. This is a whole-pose direction counterpart for a synchronized left/right walking comparison, not a new walk design. Phase 04 must match the reference exactly after changing facing.",
+          "generatedSource": "/workspace/generated_images/exec-c04dc210-3dc8-47c3-8a09-1dca549ddaf9.png"
+        }
+      ],
+      "generatedSource": "/workspace/generated_images/exec-c04dc210-3dc8-47c3-8a09-1dca549ddaf9.png",
+      "sha256": "0ee2c02aedeb27c2f480b0f751d00402338ed8e2710a3ef809b7cbcce7179c07",
+      "referencePoseSHA256": "9aa7cc2414d19fb47f245e996b7604ca835257b62619e6f9a8e0c6db215e7750"
+    },
+    {
+      "index": 5,
+      "id": "05 CONTACT B",
+      "referencePose": "Art/Review/P1/directions/left/revisions/r1/raw/05.png",
+      "rawImage": "raw/05.png",
+      "initial": {
+        "prompt": "Redraw the FIRST approved LEFT-facing walking pose as the matching RIGHT-facing counterpart. FIRST IMAGE defines the EXACT gait phase, stride length, knee bend, boot dimensions, arm swing amplitude, body/head proportions and pixel-art quality. SECOND image is the new matching RIGHT IDLE model, for facing and costume, NOT the walking pose. The pair must look like ONE COORDINATED left/right game animation character. Same exact brown-haired blue-eyed boy, royal blue scarf/cream-gold trimmed coat, cream shirt, belt/gloves/pouch, charcoal knee-length trousers, FULL folded-cuff laced brown boots. Face SCREEN RIGHT at same slightly elevated near-side RPG camera, no diagonal/front/head turn. Scarf trails to SCREEN LEFT; brown pouch stays behind hip at screen left in this view. Preserve the first pose's body proportions, head size, normal short stride, boot cuff height/shaft/heel/toe length. Both toe boxes point SCREEN RIGHT in EVERY phase, even trailing raised boot. No outward splay, no boot flipping to screen left, no twisted ankles, no shoe shrink/stretch. Draw actual connected thigh-knee-shin-ankle-boot anatomy and near/far occlusion. Walking is not running or marching. Match FIRST pose timing/gesture precisely after changing facing. Near RIGHT leg/arm are closest to viewer in the RIGHT-facing view; FAR left leg/arm behind. Near sleeve is the large visible shoulder on screen LEFT; control its swing as specified. Crisp detailed pixel sprite, ONE full body with transparent margin, no text/sheet/labels/ground/shadow/halo/aura.\nPOSE TO RETAIN:\n05 CONTACT B: FAR LEFT leg advances to SCREEN RIGHT, heel contacts; NEAR RIGHT leg trails to screen LEFT with heel lifted and toe still pointing RIGHT. NEAR RIGHT arm (large visible shoulder SCREEN LEFT) reaches FORWARD toward SCREEN RIGHT across front of cream shirt, glove to RIGHT of belt buckle, occludes front coat/shirt. FAR arm back and partly hidden. Near trailing leg foreground/brighter, far advancing leg slightly darker but same physical boot size. This is opposite arm/leg half to 01.",
+        "generatedSource": "/workspace/generated_images/exec-3776e071-d3f3-4ef9-b1c6-28c719a108b9.png"
+      },
+      "refinements": [
+        {
+          "prompt": "Make the RIGHT-FACING counterpart by HORIZONTALLY REFLECTING this COMPLETE approved LEFT-facing sprite. Preserve the EXACT pose silhouette, knee geometry, foot placement, arm swing, forearm crossing, near/far leg overlap and near/far boot brightness of the reference after reflection. Do NOT invent a new phase, do NOT revert to idle, do NOT swap which leg is foreground. Everything faces SCREEN RIGHT afterwards, including both toe boxes and the bent lifted foot. In the reflected pose the dark far leg remains dark, bright near leg stays bright, the crossing foreground arm still crosses the shirt. Preserve EXACT same body/head proportions, full cuffed boot dimensions, detailed pixel sprite style, colors, hair, blue scarf and coat, belt/pouch and gloves. One full-body character, fully transparent background and generous margin. No text, no labels, no ground/shadow/glow, no new equipment. This is a whole-pose direction counterpart for a synchronized left/right walking comparison, not a new walk design. Phase 05 must match the reference exactly after changing facing.",
+          "generatedSource": "/workspace/generated_images/exec-7e460cf2-3bee-41ec-84bb-b42aa24762ce.png"
+        }
+      ],
+      "generatedSource": "/workspace/generated_images/exec-7e460cf2-3bee-41ec-84bb-b42aa24762ce.png",
+      "sha256": "3742651eb07d8baa6c1a811688fcad0020b75d687bfa32b618c8c139687de357",
+      "referencePoseSHA256": "6df84248ae86dd7876835dfbf0abe4737ef0d46c8de1a3dd201b8dfd0fad3718"
+    },
+    {
+      "index": 6,
+      "id": "06 WEIGHT B",
+      "referencePose": "Art/Review/P1/directions/left/revisions/r1/raw/06.png",
+      "rawImage": "raw/06.png",
+      "initial": {
+        "prompt": "Redraw the FIRST approved LEFT-facing walking pose as the matching RIGHT-facing counterpart. FIRST IMAGE defines the EXACT gait phase, stride length, knee bend, boot dimensions, arm swing amplitude, body/head proportions and pixel-art quality. SECOND image is the new matching RIGHT IDLE model, for facing and costume, NOT the walking pose. The pair must look like ONE COORDINATED left/right game animation character. Same exact brown-haired blue-eyed boy, royal blue scarf/cream-gold trimmed coat, cream shirt, belt/gloves/pouch, charcoal knee-length trousers, FULL folded-cuff laced brown boots. Face SCREEN RIGHT at same slightly elevated near-side RPG camera, no diagonal/front/head turn. Scarf trails to SCREEN LEFT; brown pouch stays behind hip at screen left in this view. Preserve the first pose's body proportions, head size, normal short stride, boot cuff height/shaft/heel/toe length. Both toe boxes point SCREEN RIGHT in EVERY phase, even trailing raised boot. No outward splay, no boot flipping to screen left, no twisted ankles, no shoe shrink/stretch. Draw actual connected thigh-knee-shin-ankle-boot anatomy and near/far occlusion. Walking is not running or marching. Match FIRST pose timing/gesture precisely after changing facing. Near RIGHT leg/arm are closest to viewer in the RIGHT-facing view; FAR left leg/arm behind. Near sleeve is the large visible shoulder on screen LEFT; control its swing as specified. Crisp detailed pixel sprite, ONE full body with transparent margin, no text/sheet/labels/ground/shadow/halo/aura.\nPOSE TO RETAIN:\n06 WEIGHT B: FAR LEFT support boot flat and forward at screen RIGHT. NEAR RIGHT leg bends and lifts behind at SCREEN LEFT, beginning to advance; boot full size, toe points RIGHT, raised heel, no twist. NEAR RIGHT arm (large visible shoulder screen LEFT) stays FORWARD with glove crossing front of shirt to SCREEN RIGHT, then starts returning. Far arm back. Match low pelvis and raised rear boot of first reference.",
+        "generatedSource": "/workspace/generated_images/exec-9a838eaa-195c-4e9b-820f-e45846fff430.png"
+      },
+      "refinements": [
+        {
+          "prompt": "Make the RIGHT-FACING counterpart by HORIZONTALLY REFLECTING this COMPLETE approved LEFT-facing sprite. Preserve the EXACT pose silhouette, knee geometry, distance between the ankles, foot placement, arm swing, near/far leg overlap, near/far boot brightness and full boot proportions after reflection. Do NOT widen the stride or raise the knee higher. This must look like the SAME short walk seen in the opposite direction. Do NOT invent a new phase, revert to idle or swap foreground leg. Everything faces SCREEN RIGHT, including both toe boxes and the raised foot. Dark far leg remains dark; bright near leg remains bright. Preserve same head/body ratio, face/hair identity, detailed crisp pixel-sprite rendering, blue scarf/coat, belt/pouch and gloves. Whole character, generous transparent margin, transparent background, no text/ground/shadow/halo/glow. Phase 06 geometry must match reference after changing facing. The goal is a synchronized left/right counterpart, not a different walk.",
+          "generatedSource": "/workspace/generated_images/exec-e9493719-e189-450d-84e3-7814ebaed43f.png"
+        }
+      ],
+      "generatedSource": "/workspace/generated_images/exec-e9493719-e189-450d-84e3-7814ebaed43f.png",
+      "sha256": "7aa2c31b3c67673ba899cdf4cd70c9de2b7cc9e387091fd237429ab184dfd0ff",
+      "referencePoseSHA256": "ba4e997b29bd09fe7dfafdfbdacb8afffd9ab6a04af31a05ea96a2e0b34e1726"
+    },
+    {
+      "index": 7,
+      "id": "07 PASS B",
+      "referencePose": "Art/Review/P1/directions/left/revisions/r1/raw/07.png",
+      "rawImage": "raw/07.png",
+      "initial": {
+        "prompt": "Redraw the FIRST approved LEFT-facing walking pose as the matching RIGHT-facing counterpart. FIRST IMAGE defines the EXACT gait phase, stride length, knee bend, boot dimensions, arm swing amplitude, body/head proportions and pixel-art quality. SECOND image is the new matching RIGHT IDLE model, for facing and costume, NOT the walking pose. The pair must look like ONE COORDINATED left/right game animation character. Same exact brown-haired blue-eyed boy, royal blue scarf/cream-gold trimmed coat, cream shirt, belt/gloves/pouch, charcoal knee-length trousers, FULL folded-cuff laced brown boots. Face SCREEN RIGHT at same slightly elevated near-side RPG camera, no diagonal/front/head turn. Scarf trails to SCREEN LEFT; brown pouch stays behind hip at screen left in this view. Preserve the first pose's body proportions, head size, normal short stride, boot cuff height/shaft/heel/toe length. Both toe boxes point SCREEN RIGHT in EVERY phase, even trailing raised boot. No outward splay, no boot flipping to screen left, no twisted ankles, no shoe shrink/stretch. Draw actual connected thigh-knee-shin-ankle-boot anatomy and near/far occlusion. Walking is not running or marching. Match FIRST pose timing/gesture precisely after changing facing. Near RIGHT leg/arm are closest to viewer in the RIGHT-facing view; FAR left leg/arm behind. Near sleeve is the large visible shoulder on screen LEFT; control its swing as specified. Crisp detailed pixel sprite, ONE full body with transparent margin, no text/sheet/labels/ground/shadow/halo/aura.\nPOSE TO RETAIN:\n07 PASS B: FAR LEFT supporting leg vertical under hip, planted. NEAR RIGHT knee advances toward SCREEN RIGHT; full-size near boot passes beside support ankle lifted off ground IN FOREGROUND, its toe still RIGHT, same tight passing silhouette as first reference. Arms near neutral, no wide split or high knee.",
+        "generatedSource": "/workspace/generated_images/exec-c8765305-577f-425e-abad-784bae97febe.png"
+      },
+      "refinements": [
+        {
+          "prompt": "Make the RIGHT-FACING counterpart by HORIZONTALLY REFLECTING this COMPLETE approved LEFT-facing sprite. Preserve the EXACT pose silhouette, knee geometry, distance between the ankles, foot placement, arm swing, near/far leg overlap, near/far boot brightness and full boot proportions after reflection. Do NOT widen the stride or raise the knee higher. This must look like the SAME short walk seen in the opposite direction. Do NOT invent a new phase, revert to idle or swap foreground leg. Everything faces SCREEN RIGHT, including both toe boxes and the raised foot. Dark far leg remains dark; bright near leg remains bright. Preserve same head/body ratio, face/hair identity, detailed crisp pixel-sprite rendering, blue scarf/coat, belt/pouch and gloves. Whole character, generous transparent margin, transparent background, no text/ground/shadow/halo/glow. Phase 07 geometry must match reference after changing facing. The goal is a synchronized left/right counterpart, not a different walk.",
+          "generatedSource": "/workspace/generated_images/exec-dd8eccaf-d633-4f5b-b686-86de516988db.png"
+        }
+      ],
+      "generatedSource": "/workspace/generated_images/exec-dd8eccaf-d633-4f5b-b686-86de516988db.png",
+      "sha256": "c611e08aba2d35f2fe9df88fe9cf6123a7dcbeb2ff22a54de67f9e1ad8f5515b",
+      "referencePoseSHA256": "022bcf6b27d83f60d5481f687de034711d603fcadb9794f7e8c9b191e2dc45ca"
+    },
+    {
+      "index": 8,
+      "id": "08 LATE SWING B",
+      "referencePose": "Art/Review/P1/directions/left/revisions/r1/raw/08.png",
+      "rawImage": "raw/08.png",
+      "initial": {
+        "prompt": "Redraw the FIRST approved LEFT-facing walking pose as the matching RIGHT-facing counterpart. FIRST IMAGE defines the EXACT gait phase, stride length, knee bend, boot dimensions, arm swing amplitude, body/head proportions and pixel-art quality. SECOND image is the new matching RIGHT IDLE model, for facing and costume, NOT the walking pose. The pair must look like ONE COORDINATED left/right game animation character. Same exact brown-haired blue-eyed boy, royal blue scarf/cream-gold trimmed coat, cream shirt, belt/gloves/pouch, charcoal knee-length trousers, FULL folded-cuff laced brown boots. Face SCREEN RIGHT at same slightly elevated near-side RPG camera, no diagonal/front/head turn. Scarf trails to SCREEN LEFT; brown pouch stays behind hip at screen left in this view. Preserve the first pose's body proportions, head size, normal short stride, boot cuff height/shaft/heel/toe length. Both toe boxes point SCREEN RIGHT in EVERY phase, even trailing raised boot. No outward splay, no boot flipping to screen left, no twisted ankles, no shoe shrink/stretch. Draw actual connected thigh-knee-shin-ankle-boot anatomy and near/far occlusion. Walking is not running or marching. Match FIRST pose timing/gesture precisely after changing facing. Near RIGHT leg/arm are closest to viewer in the RIGHT-facing view; FAR left leg/arm behind. Near sleeve is the large visible shoulder on screen LEFT; control its swing as specified. Crisp detailed pixel sprite, ONE full body with transparent margin, no text/sheet/labels/ground/shadow/halo/aura.\nPOSE TO RETAIN:\n08 LATE SWING B: NEAR RIGHT leg reaches forward to SCREEN RIGHT, heel low about to contact, toe gently lifted. FAR LEFT support leg trails to screen LEFT at toe-off, toe still RIGHT on ground. NEAR RIGHT arm swings BACK toward SCREEN LEFT, far arm forward. Same short late-swing pose and boot scale as first reference, ready to loop into01.",
+        "generatedSource": "/workspace/generated_images/exec-89654586-8cd3-495a-afb7-1027f1a25438.png"
+      },
+      "refinements": [
+        {
+          "prompt": "Make the RIGHT-FACING counterpart by HORIZONTALLY REFLECTING this COMPLETE approved LEFT-facing sprite. Preserve the EXACT pose silhouette, knee geometry, distance between the ankles, foot placement, arm swing, near/far leg overlap, near/far boot brightness and full boot proportions after reflection. Do NOT widen the stride or raise the knee higher. This must look like the SAME short walk seen in the opposite direction. Do NOT invent a new phase, revert to idle or swap foreground leg. Everything faces SCREEN RIGHT, including both toe boxes and the raised foot. Dark far leg remains dark; bright near leg remains bright. Preserve same head/body ratio, face/hair identity, detailed crisp pixel-sprite rendering, blue scarf/coat, belt/pouch and gloves. Whole character, generous transparent margin, transparent background, no text/ground/shadow/halo/glow. Phase 08 geometry must match reference after changing facing. The goal is a synchronized left/right counterpart, not a different walk.",
+          "generatedSource": "/workspace/generated_images/exec-da42db72-729e-4054-9763-f2b9cda01cbf.png"
+        }
+      ],
+      "generatedSource": "/workspace/generated_images/exec-da42db72-729e-4054-9763-f2b9cda01cbf.png",
+      "sha256": "1c41665f64f35dba8c77816e141d365852e5fb7de1ebcf73a3a6606ef4a4af57",
+      "referencePoseSHA256": "5aa4ed114c78d8440834a90697c5ab8c604e4c9570bf32f8bc20668f1ee53378"
+    }
+  ],
+  "artApproval": null
+}
