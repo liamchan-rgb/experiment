@@ -26,3 +26,7 @@
 技能样例按桌游 `native/Packages/GameCore/Sources/ClassroomGameCore/Resources/initial-content.json` 冒险者定义抄录：`heavyStrike` 强击1AP、射程0、1D6+2、2次；`breather` 喘息1AP、恢复4生命、2次；`simpleGuard` 简易防护1AP、4护盾、2次。样例用初始生命12/12、盾0、金币0、积分0和空背包，不伪称读取真实桌游存档。来源文件SHA-256：`aaab980fd5f3154ac813a02dc907a835ee0e0181c4149f2b7803d9594795f34a`。
 
 真实当前行动者、混合队列、节点遇敌、离屏头像、真实背包和合法性、一次已提交结果驱动仍须与桌游数据正式连接。原桌游仓库、本局规则和存档格式未改；本轮只在 experiment 的隔离分支内验证布局。测试／构建／截图不等于美术审美通过。
+
+## 验证与交付
+
+最终源码 `be26604` 在 iPad 专项运行 `39253090062` 通过3项原生与2项UI检查。两比例及紧凑窗口的区域边界、三态展开／收起、十单位轨道、地图真实地面与退出恢复通过；三态原始截图已目视核对，见 [截图索引](../Media/MeadowBattle-b31/README.md)。同源码设备归档 `39253094367` 生成 [build31 IPA与元数据](../Downloads/MeadowJourney-build31.json)。未测试物理iPad或电视，也未重跑完整步态套件；审美状态仍待用户确认。

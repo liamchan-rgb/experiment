@@ -1,0 +1,89 @@
+{
+  "schemaVersion": "1.0.0",
+  "application": "MeadowJourney",
+  "bundleIdentifier": "com.liamchan.experiment.meadow",
+  "version": "1.6.6",
+  "build": 31,
+  "file": "MeadowJourney-b31.ipa",
+  "bytes": 17242444,
+  "sha256": "e2c84b63e53e8141cddcb159a88f3cb4d56eb6297675a75658f3465ff9f3ddab",
+  "source": {
+    "branch": "feat/meadow-battle-scene-v0.1",
+    "commit": "be2660473dc0fc57fe59e72fcfd079380a5693f1"
+  },
+  "archive": {
+    "workflowRunId": 39253094367,
+    "workflowRun": "https://github.com/liamchan-rgb/experiment/actions/runs/39253094367",
+    "artifactId": 12185809672,
+    "artifactName": "MeadowJourney-shadow-lab-IPA",
+    "packageMode": "unsigned SideStore re-signable IPA"
+  },
+  "validation": {
+    "ipaZipCRC": "passed",
+    "zipCompression": "ZIP_STORED",
+    "bundleVersion": "passed",
+    "physicalDevicePlatform": "iPhoneOS",
+    "architectures": [
+      "arm64"
+    ],
+    "deviceFamilies": [
+      "iPhone",
+      "iPad"
+    ],
+    "minimumOSVersion": "15.0",
+    "metalLibrary": "present",
+    "executablePermission": "0755",
+    "localPackageInspection": "passed"
+  },
+  "uiReview": {
+    "workflowRunId": 39253090062,
+    "workflowRun": "https://github.com/liamchan-rgb/experiment/actions/runs/39253090062",
+    "tests": [
+      "testBattleLayoutKeepsSharedRowsAndExpandsForExplorationAndMonsterTurns",
+      "testBattlePreviewCropsAroundTravellerAndKeepsTerrainAcrossViewport",
+      "testCapturedViewportKeepsGroundAndArtworkAlignedThroughZoomAndPan",
+      "testLayeredP1ColorwayPreviewRunsBesideOriginalInTheMapScene",
+      "testMeadowBattlePreviewKeepsReferenceMapBesideLandscapeScene"
+    ],
+    "result": "5 passed, 0 failures",
+    "device": "iPad Pro 13-inch (M4) simulator",
+    "fullSuite": "not rerun; historical gait failures remain documented in docs/ITERATION_STATUS.md",
+    "runtime": "com.apple.CoreSimulator.SimRuntime.iOS-18-5",
+    "screenshotArtifactId": 12186677326,
+    "manualScreenshotReview": "player rows aligned, monster turn expands both panes, exploration expands map, visible boots meet ground; original images inspected",
+    "screenshots": [
+      {
+        "mode": "player-turn",
+        "file": "../Media/MeadowBattle-b31/player-turn.png",
+        "sha256": "2fec04fba964188c4ea32e616352fc086d9d0111d8fc290deb39a7e23ca83029"
+      },
+      {
+        "mode": "monster-turn",
+        "file": "../Media/MeadowBattle-b31/monster-turn.png",
+        "sha256": "029e9d7b2262690dcfca0383df4d57579df0c3cd900c11e123dee65f3c50b792"
+      },
+      {
+        "mode": "exploration",
+        "file": "../Media/MeadowBattle-b31/exploration.png",
+        "sha256": "9f5fcbb015ad471d643dadd381471a8bbf680f24abcc5df1c0ad73da614cc9ef"
+      }
+    ]
+  },
+  "physicalIPadTested": false,
+  "artReviewStatus": "three-state layout and scene prototype awaiting user review; contact pose remains an unapproved candidate",
+  "layoutPreview": {
+    "isSampleData": true,
+    "modes": [
+      "exploration",
+      "playerTurn",
+      "monsterTurn"
+    ],
+    "realGameCoreConnected": false,
+    "runtimeMapTravellers": 3,
+    "sampleQueuePlayers": 7,
+    "sampleQueueEnemies": 3,
+    "skillFixtureSource": "classroom-boardgame/native/Packages/GameCore/Sources/ClassroomGameCore/Resources/initial-content.json",
+    "skillFixtureSourceSHA256": "aaab980fd5f3154ac813a02dc907a835ee0e0181c4149f2b7803d9594795f34a",
+    "limits": "candidate contact pose, target placeholders and layout fixtures; no real battle settlement or complete army animation"
+  }
+}

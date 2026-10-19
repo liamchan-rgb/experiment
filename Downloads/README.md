@@ -1,16 +1,18 @@
 # SideStore 安装与迭代包
 
-## Meadow Journey 横版战斗场景试验包 · 1.6.5 build 30
+## Meadow Journey 桌游布局试验包 · 1.6.6 build 31
 
-修正 build 29 的左侧地图缩成中间矩形、上下露底问题：地图现在铺满左栏，保留进入前的缩放和物件大小，并聚焦当前旅人；退出后恢复原来的镜头。只保留右侧一个“返回地图”按钮。右侧仍是复用 Meadow Journey 地表、树石与林地氛围的战场原型，人物单帧仍待审核。
+按桌游已确认记录安排共用顶部、中间等高地图与战场、整屏连续混合回合轨道及紧凑技能／物品详情。顶部可切换探索、玩家回合、怪物回合；探索展开地图，怪物回合收起详情并增高地图与战场。素材、色调和环境效果继续以 Meadow Journey 为基准。
 
-[直接下载 MeadowJourney-b30.ipa](https://raw.githubusercontent.com/liamchan-rgb/experiment/feat/meadow-battle-scene-v0.1/Downloads/MeadowJourney-b30.ipa) · [查看实际分屏截图](../Media/MeadowBattle-b30.png)
+[直接下载 MeadowJourney-b31.ipa](https://raw.githubusercontent.com/liamchan-rgb/experiment/feat/meadow-battle-scene-v0.1/Downloads/MeadowJourney-b31.ipa) · [玩家回合实际截图](../Media/MeadowBattle-b31/player-turn.png) · [全部三态截图](../Media/MeadowBattle-b31/README.md)
 
-IPA 为 17,208,156 字节，SHA-256：`9a49b0ed7d38560b84dc0767364643a999b2fc6631234747d5b4e9e24a8a5bef`。已检查包内版本、真机 arm64、iPad 支持、Metal 库、可执行权限、ZIP CRC 和 ZIP_STORED 格式。[构建与完整性元数据](MeadowJourney-build30.json)。
+IPA 为 17,242,444 字节，SHA-256：`e2c84b63e53e8141cddcb159a88f3cb4d56eb6297675a75658f3465ff9f3ddab`。已检查包内版本、真机 arm64、iPad 支持、Metal 库、0755 可执行权限、ZIP CRC 和 ZIP_STORED。[构建与完整性元数据](MeadowJourney-build31.json)。
 
-首次打开主地图后点“战斗预览”，地图留在左侧，右侧查看横版战场；点击战斗面板的“返回地图”可退出。请用 SideStore 重签安装。2 项原生相机检查与 2 项 iPad UI 检查均通过，包含左栏顶部／底部的真实地面纹理、相机缩放和退出恢复检查；实际截图已目视核对。完整步态套件未重跑，既有失败记录见[迭代记录](../docs/ITERATION_STATUS.md)；此包尚未在物理 iPad 上测试。
+用 SideStore 重签安装，进入主地图 →“战斗预览”，顶部切换三种布局状态；“返回地图”退出并恢复原来的镜头和缩放。3 项原生布局／相机检查与 2 项 iPad UI 检查通过，含三态切换、十单位轨道、公开资源无AP、地图边缘纹理及相机恢复；三张原始截图已逐一目视核对。
 
-上一版原型保留为 [build 29](MeadowJourney-build29.json)，包含已在 build 30 修复的左栏适配问题。
+这是布局演示：轨道7玩家＋3敌方、技能和空背包为只读样例，尚未接真实桌游回合、技能结算或存档；右侧人物仍是单帧候选，敌方仍为占位。完整步态套件未重跑，历史失败记录见[迭代日志](../docs/ITERATION_STATUS.md)；物理 iPad 和电视尚未测试。
+
+旧原型保留：[build 30 左栏适配修复](MeadowJourney-build30.json) · [build 29 初始战场](MeadowJourney-build29.json)。
 
 上次完整通过 iPad UI 套件的正式基线仍是 build 28：
 
