@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0.0",
-  "status": "draft-awaiting-neutral-pose-art-review",
+  "status": "approved-neutral-pose-study",
   "direction": "battle-side-right",
   "clip": "idle",
   "frame": 0,
@@ -215,8 +215,16 @@
     "weapon.right",
     "body.hand.right.near"
   ],
-  "layerStatus": "not yet separated; this is a neutral-pose study",
-  "approval": null,
+  "layerStatus": "segmented as an unapproved static review candidate in ../right-idle-parts-v1; hidden anatomy remains incomplete",
+  "approval": {
+    "date": "2026-10-19",
+    "reviewer": "user",
+    "statement": "对了，继续下一步",
+    "direction": "battle-side-right",
+    "revision": "r2",
+    "scope": "One registered neutral right-side idle pose and its near/right hand direction; no weapon, animation, hidden anatomy, wardrobe, or runtime approval",
+    "status": "approved"
+  },
   "revision": "r2",
   "registrationReusedFrom": "../right-idle-r1/registration.json"
 }

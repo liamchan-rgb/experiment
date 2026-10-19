@@ -1,0 +1,161 @@
+{
+  "schemaVersion": "1.0.0",
+  "status": "passed-with-artwork-limitations",
+  "builtBy": "./build.sh",
+  "sourcePose": {
+    "path": "../right-idle-r2/00.png",
+    "canvasPx": [
+      256,
+      256
+    ],
+    "mode": "RGBA",
+    "nonTransparentPixels": 5345,
+    "sha256": "9ac9c8141617b9eb31084b7139227fa9cf8ab9ccf6fa7a31a98c661a68923065",
+    "bytes": 15513
+  },
+  "canvasPx": [
+    256,
+    256
+  ],
+  "partCount": 8,
+  "parts": [
+    {
+      "path": "parts/body.arm.left.far.png",
+      "canvasPx": [
+        256,
+        256
+      ],
+      "mode": "RGBA",
+      "nonTransparentPixels": 270,
+      "sha256": "a1f67c7b961dd060385445c65a6f4e9823408bf419f8cfba86a48b305fcaa11e",
+      "bytes": 2166
+    },
+    {
+      "path": "parts/body.arm.right.near.png",
+      "canvasPx": [
+        256,
+        256
+      ],
+      "mode": "RGBA",
+      "nonTransparentPixels": 450,
+      "sha256": "d55067a74ca17ec0c360e7774b4a7d55152aa683af7ecd5f457875d73c5baca1",
+      "bytes": 2554
+    },
+    {
+      "path": "parts/body.hand.left.far.png",
+      "canvasPx": [
+        256,
+        256
+      ],
+      "mode": "RGBA",
+      "nonTransparentPixels": 76,
+      "sha256": "538604a07d236c6611ebad612e7cdcd00f9fb97705012a4565e9e97839ae6d56",
+      "bytes": 1355
+    },
+    {
+      "path": "parts/body.hand.right.near.png",
+      "canvasPx": [
+        256,
+        256
+      ],
+      "mode": "RGBA",
+      "nonTransparentPixels": 128,
+      "sha256": "dbb304070663aee9cf17bf933b4784d4fd3dd3d446e625628998c1e1d6ee0af3",
+      "bytes": 1532
+    },
+    {
+      "path": "parts/body.leg.left.far.png",
+      "canvasPx": [
+        256,
+        256
+      ],
+      "mode": "RGBA",
+      "nonTransparentPixels": 496,
+      "sha256": "8628b7eb4258237015640618d3bcce9eabf622a9542840ab9957afafb7828cc7",
+      "bytes": 2676
+    },
+    {
+      "path": "parts/body.leg.right.near.png",
+      "canvasPx": [
+        256,
+        256
+      ],
+      "mode": "RGBA",
+      "nonTransparentPixels": 524,
+      "sha256": "91618c6a27ee01a90be9788c5ed2edaa2b2843428067999c3354935b21ddcad4",
+      "bytes": 2747
+    },
+    {
+      "path": "parts/body.torso.png",
+      "canvasPx": [
+        256,
+        256
+      ],
+      "mode": "RGBA",
+      "nonTransparentPixels": 880,
+      "sha256": "1f7ce0aecabf93e356bfaa301e9e9668e27eeb8bcc887f4863b6236cfdfa7bba",
+      "bytes": 3948
+    },
+    {
+      "path": "parts/head.base.png",
+      "canvasPx": [
+        256,
+        256
+      ],
+      "mode": "RGBA",
+      "nonTransparentPixels": 2433,
+      "sha256": "36cc6ce3cab769177acf223483819f548401319caa2978327c8304a534bfbf75",
+      "bytes": 6983
+    }
+  ],
+  "coverageFill": {
+    "path": "coverage-fill.png",
+    "canvasPx": [
+      256,
+      256
+    ],
+    "mode": "RGBA",
+    "nonTransparentPixels": 442,
+    "sha256": "4d24387130f429f11382e31bf2d24a2c1de5044d4ccee8664c7170e5179cc499",
+    "bytes": 14002,
+    "role": "Fixed-pose gap fill only; not hidden anatomy"
+  },
+  "sourceNonTransparentPixelCount": 5345,
+  "coverageFillNonTransparentPixelCount": 442,
+  "assembled": {
+    "path": "assembled.png",
+    "canvasPx": [
+      256,
+      256
+    ],
+    "mode": "RGBA",
+    "nonTransparentPixels": 5345,
+    "sha256": "9b0e58ef4e6f8194d76bc3618b9b521712270e1bc1f59ef7c50d73a1794fba37",
+    "bytes": 15105
+  },
+  "assembledAlphaSilhouetteDifferencePixels": 0,
+  "assembledRgbaDifferentPixels": 633,
+  "reviewImage": {
+    "path": "review.png",
+    "canvasPx": [
+      1600,
+      930
+    ],
+    "sha256": "828404570f824a0121d2b29f36f8ed34f7e251accd535c46558fba78e7aa0129",
+    "bytes": 178062
+  },
+  "checks": {
+    "allPartsAre256x256RGBA": true,
+    "allPartsNonEmpty": true,
+    "sourceAndPartCanvasShareSameCoordinates": true,
+    "alphaSilhouetteMatchesSource": true,
+    "artworkAppearanceApproved": false,
+    "hiddenAnatomyComplete": false,
+    "runtimeIntegrated": false
+  },
+  "limits": [
+    "SVG mask edges are rasterized and the composite is not byte-identical to the approved source",
+    "Coverage fill is tied to this single static pose",
+    "Torso-under-arm and limb-joint anatomy remain unfinished"
+  ]
+}

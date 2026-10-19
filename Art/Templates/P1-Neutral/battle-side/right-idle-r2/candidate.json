@@ -1,6 +1,6 @@
 {
   "id": "p1-neutral-battle-side-right-idle-r2",
-  "status": "awaiting-user-hand-direction-art-review",
+  "status": "approved-neutral-pose-study",
   "artApproval": null,
   "supersedes": "../right-idle-r1/candidate.json",
   "sourceUserFeedback": "手好像反了",
@@ -75,5 +75,15 @@
       "sha256": "071f878b25b98fce57fcffa76c164e155464e7f402b5d05eab6a976f81c0cb65",
       "bytes": 63366
     }
-  }
+  },
+  "approval": {
+    "date": "2026-10-19",
+    "reviewer": "user",
+    "statement": "对了，继续下一步",
+    "direction": "battle-side-right",
+    "revision": "r2",
+    "scope": "One registered neutral right-side idle pose and its near/right hand direction; no weapon, animation, hidden anatomy, wardrobe, or runtime approval",
+    "status": "approved"
+  },
+  "next": "The neutral pose is approved. Review the first eight-part segmentation in ../right-idle-parts-v1; hidden anatomy and independent appearance resources remain unfinished."
 }

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="930" viewBox="0 0 1600 930">
+  <rect width="1600" height="930" fill="#e8e5dc"/>
+  <text x="44" y="54" font-family="Noto Sans CJK SC, sans-serif" font-size="30" font-weight="700" fill="#26352f">侧视待机人物 · r2 身体部件拆分 v1</text>
+  <text x="46" y="84" font-family="Noto Sans CJK SC, sans-serif" font-size="16" fill="#54625b">沿用已确认的空白中性人体与右手方向；统一 256×256 坐标，不按单件缩放。</text>
+
+  <rect x="36" y="108" width="650" height="780" rx="16" fill="#f5f2ea" stroke="#c9c5b9"/>
+  <text x="62" y="145" font-family="Noto Sans CJK SC, sans-serif" font-size="19" font-weight="700" fill="#34423b">重组预览 · 原站姿／右手保留</text>
+  <rect x="61" y="163" width="600" height="600" fill="#ddd9d0"/>
+  <image href="assembled.png" x="67" y="169" width="588" height="588" image-rendering="pixelated"/>
+  <text x="62" y="798" font-family="Noto Sans CJK SC, sans-serif" font-size="15" fill="#4d5b54">8 个透明人体层按共同注册重叠；左图沿用 r2 的人物轮廓。</text>
+  <text x="62" y="824" font-family="Noto Sans CJK SC, sans-serif" font-size="15" fill="#4d5b54">画布与脚底线不变：256×256 · y=214。</text>
+  <text x="62" y="858" font-family="Noto Sans CJK SC, sans-serif" font-size="14" fill="#80583d">接缝覆盖片仅补当前单帧的漏像素，不能代替完整隐藏人体。</text>
+
+  <rect x="710" y="108" width="854" height="780" rx="16" fill="#f5f2ea" stroke="#c9c5b9"/>
+  <text x="736" y="145" font-family="Noto Sans CJK SC, sans-serif" font-size="19" font-weight="700" fill="#34423b">独立透明层 · 显示局部轮廓，位置仍对应同一全画布</text>
+
+  <g font-family="Noto Sans CJK SC, sans-serif" fill="#34423b">
+    <g transform="translate(734 164)"><rect width="396" height="156" rx="10" fill="#e5e1d8"/><text x="14" y="27" font-size="16" font-weight="700">01 · body.leg.left.far</text><text x="14" y="51" font-size="14" fill="#66736b">远侧腿／脚</text><svg x="207" y="28" width="176" height="112" viewBox="83 179 39 41" preserveAspectRatio="xMidYMid meet"><image href="parts/body.leg.left.far.png" width="256" height="256" image-rendering="pixelated"/></svg></g>
+    <g transform="translate(1142 164)"><rect width="396" height="156" rx="10" fill="#e5e1d8"/><text x="14" y="27" font-size="16" font-weight="700">02 · body.arm.left.far</text><text x="14" y="51" font-size="14" fill="#66736b">远侧上臂／前臂</text><svg x="207" y="28" width="176" height="112" viewBox="95 135 26 44" preserveAspectRatio="xMidYMid meet"><image href="parts/body.arm.left.far.png" width="256" height="256" image-rendering="pixelated"/></svg></g>
+    <g transform="translate(734 333)"><rect width="396" height="156" rx="10" fill="#e5e1d8"/><text x="14" y="27" font-size="16" font-weight="700">03 · body.hand.left.far</text><text x="14" y="51" font-size="14" fill="#66736b">远侧手</text><svg x="207" y="28" width="176" height="112" viewBox="94 163 20 22" preserveAspectRatio="xMidYMid meet"><image href="parts/body.hand.left.far.png" width="256" height="256" image-rendering="pixelated"/></svg></g>
+    <g transform="translate(1142 333)"><rect width="396" height="156" rx="10" fill="#e5e1d8"/><text x="14" y="27" font-size="16" font-weight="700">04 · body.leg.right.near</text><text x="14" y="51" font-size="14" fill="#66736b">近侧腿／脚</text><svg x="207" y="28" width="176" height="112" viewBox="124 178 38 42" preserveAspectRatio="xMidYMid meet"><image href="parts/body.leg.right.near.png" width="256" height="256" image-rendering="pixelated"/></svg></g>
+    <g transform="translate(734 502)"><rect width="396" height="156" rx="10" fill="#e5e1d8"/><text x="14" y="27" font-size="16" font-weight="700">05 · body.torso</text><text x="14" y="51" font-size="14" fill="#66736b">可见躯干片段／隐藏处待补</text><svg x="207" y="28" width="176" height="112" viewBox="96 132 56 60" preserveAspectRatio="xMidYMid meet"><image href="parts/body.torso.png" width="256" height="256" image-rendering="pixelated"/></svg></g>
+    <g transform="translate(1142 502)"><rect width="396" height="156" rx="10" fill="#e5e1d8"/><text x="14" y="27" font-size="16" font-weight="700">06 · head.base</text><text x="14" y="51" font-size="14" fill="#66736b">空白头皮／耳朵／颈根</text><svg x="207" y="28" width="176" height="112" viewBox="97 79 61 72" preserveAspectRatio="xMidYMid meet"><image href="parts/head.base.png" width="256" height="256" image-rendering="pixelated"/></svg></g>
+    <g transform="translate(734 671)"><rect width="396" height="156" rx="10" fill="#e5e1d8"/><text x="14" y="27" font-size="16" font-weight="700">07 · body.arm.right.near</text><text x="14" y="51" font-size="14" fill="#66736b">近侧手臂／前臂</text><svg x="207" y="28" width="176" height="112" viewBox="103 133 47 40" preserveAspectRatio="xMidYMid meet"><image href="parts/body.arm.right.near.png" width="256" height="256" image-rendering="pixelated"/></svg></g>
+    <g transform="translate(1142 671)"><rect width="396" height="156" rx="10" fill="#e5e1d8"/><text x="14" y="27" font-size="16" font-weight="700">08 · body.hand.right.near</text><text x="14" y="51" font-size="14" fill="#66736b">已确认方向的近侧右手</text><svg x="207" y="28" width="176" height="112" viewBox="132 153 26 21" preserveAspectRatio="xMidYMid meet"><image href="parts/body.hand.right.near.png" width="256" height="256" image-rendering="pixelated"/></svg></g>
+  </g>
+
+  <text x="738" y="858" font-family="Noto Sans CJK SC, sans-serif" font-size="14" fill="#80583d">当前是静态分层样稿：接缝内的隐藏皮肤与服装底层还需补画和逐件开关验收。</text>
+</svg>

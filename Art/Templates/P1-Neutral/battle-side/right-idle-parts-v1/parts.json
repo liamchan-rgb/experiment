@@ -1,0 +1,41 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "p1-neutral-battle-side-right-idle-parts-v1",
+  "status": "awaiting-user-part-review",
+  "poseApproval": "p1-neutral-battle-side-right-idle-r2",
+  "direction": "battle-side-right",
+  "clip": "idle",
+  "frame": 0,
+  "canvasPx": [256, 256],
+  "registeredSource": "../right-idle-r2/00.png",
+  "sourceToCanvas": [
+    0.1829787234042553,
+    0,
+    0,
+    0.1829787234042553,
+    10.344680851063842,
+    17.297872340425542
+  ],
+  "soleLineCanvasY": 214,
+  "parts": [
+    {"layer": "body.leg.left.far", "png": "parts/body.leg.left.far.png", "z": 1},
+    {"layer": "body.arm.left.far", "png": "parts/body.arm.left.far.png", "z": 2},
+    {"layer": "body.hand.left.far", "png": "parts/body.hand.left.far.png", "z": 3},
+    {"layer": "body.leg.right.near", "png": "parts/body.leg.right.near.png", "z": 4},
+    {"layer": "body.torso", "png": "parts/body.torso.png", "z": 5},
+    {"layer": "head.base", "png": "parts/head.base.png", "z": 6},
+    {"layer": "body.arm.right.near", "png": "parts/body.arm.right.near.png", "z": 7},
+    {"layer": "body.hand.right.near", "png": "parts/body.hand.right.near.png", "z": 8}
+  ],
+  "reviewOnlyLayers": [
+    {
+      "layer": "body.coverage-fill",
+      "png": "coverage-fill.png",
+      "z": 0,
+      "role": "Static single-pose gap fill sourced from r2; not hidden anatomy and not for runtime movement"
+    }
+  ],
+  "runtimeIntegrated": false,
+  "animationDelivered": false,
+  "hiddenAnatomyComplete": false
+}

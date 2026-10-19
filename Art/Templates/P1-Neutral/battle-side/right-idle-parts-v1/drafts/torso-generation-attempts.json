@@ -1,0 +1,27 @@
+{
+  "note": "Both generated torso-only images were rejected because their proportions and vertical landmarks did not register to the approved r2 body. They are preserved as drafts and are not used by the deliverable parts.",
+  "attempts": [
+    {
+      "id": "torso-test-a",
+      "image": "torso-test-a.png",
+      "prompt": "A single isolated modular torso sprite part for the exact same blank-faced bald neutral character in the reference image, strict right-facing side profile and same small pixel-art scale, palette and black one-pixel outline. Include neck, torso, white sleeveless base shirt, and charcoal safety shorts; no head, arms, hands, legs, feet, weapon, text, scenery, or cast shadow. Transparent full square canvas. The neck, shoulders and waist must end in compact overlap tabs for assembly with separate limbs; crisp pixel clusters, no blur, preserve the profile silhouette and understated game sprite finish.",
+      "rejection": "The neck/torso length and vertical position drifted from r2; did not match the source neck root and pelvis landmarks.",
+      "sha256": "e2c107bdc831842c1fc26f4b0c69f0244626f6e5c4746b5bc62bba1737f19f4c",
+      "canvasPx": [
+        1254,
+        1254
+      ]
+    },
+    {
+      "id": "torso-test-b",
+      "image": "torso-test-b.png",
+      "prompt": "Layer extraction with fixed registration: create ONLY the torso-core part from the reference character, not a redesigned body. The full transparent output canvas must stay exactly the same square 1254 x 1254 coordinate space as the reference. Preserve the reference's right-facing side profile, exact relative scale and exact screen position. Use these source-canvas anchor coordinates: neck root at (653,654); shoulders around (584,677) and (670,683); pelvis/waist at (621,861). The top of the visible neck must begin only near y=630, never above y=600. The torso ends at the shorts hem near y=885. Include skin neck and chest, white sleeveless undershirt and charcoal safety shorts only. No head, no visible arms or hands, no legs or feet, no props. Shoulder edges and hip edges may have just 3-5 pixels of hidden overlap tab. All other pixels transparent. Match the source sprite's warm skin, charcoal 1-pixel outline, upper-left highlights, and crisp clustered pixels. Keep garment and body shape as in the reference; do not change perspective, relative width, light direction or stance.",
+      "rejection": "The alpha bounds at threshold 32 were (510,564)-(766,964), far taller than the r2 torso landmarks and outside the fixed shoulder/neck/waist alignment.",
+      "sha256": "5ff2397496a6315727b43b78f824e23171cb9e1e23b9044b3139882697c952ca",
+      "canvasPx": [
+        1254,
+        1254
+      ]
+    }
+  ]
+}

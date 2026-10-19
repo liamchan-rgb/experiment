@@ -3,8 +3,8 @@
   "format": 3,
   "updated": "2026-10-19",
   "workflow": "Review one direction at a time from fixed cardinal and diagonal baselines. Modify and resubmit the same direction until explicit user artwork approval, then advance. Record provenance, feedback and accepted revisions for the future character template.",
-  "current": "p1-neutral-battle-side-right-idle-r2",
-  "templateStatus": "independent heads approved; the v5 down idle sword pose is approved as one art study only; modular wardrobe/weapon production and the full character template remain incomplete; the heavyStrike + trainingSword standalone effect prototype is awaiting user art review; battle-side right idle neutral r2 hand-direction revision is now awaiting review before limb separation and independent battle appearance resources",
+  "current": "p1-neutral-battle-side-right-idle-parts-v1",
+  "templateStatus": "independent heads approved; the v5 down idle sword pose is approved as one art study only; modular wardrobe/weapon production and the full character template remain incomplete; the heavyStrike + trainingSword standalone effect prototype remains awaiting user art review; battle-side right idle pose and hand direction r2 approved; first eight-part segmentation is awaiting user part review, with hidden anatomy and runtime integration incomplete",
   "items": [
     {
       "id": "01-down-idle",
@@ -1686,17 +1686,30 @@
       "previousCurrent": "p1-neutral-battle-side-right-idle-r1",
       "newCurrent": "p1-neutral-battle-side-right-idle-r2",
       "reason": "User hand-direction correction; same neutral pose remains in review"
+    },
+    {
+      "previousCurrent": "p1-neutral-battle-side-right-idle-r2",
+      "newCurrent": "p1-neutral-battle-side-right-idle-parts-v1",
+      "reason": "User approved the r2 neutral pose/hand direction and asked to continue; the first static body-part segmentation is now the current review item"
     }
   ],
   "battleNeutralBodyReview": {
     "id": "p1-neutral-battle-side-right-idle-r2",
-    "status": "awaiting_user_art_review",
+    "status": "approved-neutral-pose-study",
     "source": "Art/Templates/P1-Neutral/battle-side/right-idle-r2",
     "reviewImage": "Art/Templates/P1-Neutral/battle-side/right-idle-r2/review.png",
     "registeredPose": "Art/Templates/P1-Neutral/battle-side/right-idle-r2/00.png",
     "registration": "Art/Templates/P1-Neutral/battle-side/right-idle-r2/registration.json",
     "scope": "same neutral right-side idle pose; near/right thumb and dorsal/palmar hand direction revision",
-    "artApproval": null,
+    "artApproval": {
+      "date": "2026-10-19",
+      "reviewer": "user",
+      "statement": "对了，继续下一步",
+      "direction": "battle-side-right",
+      "revision": "r2",
+      "scope": "One registered neutral right-side idle pose and its near/right hand direction; no weapon, animation, hidden anatomy, wardrobe, or runtime approval",
+      "status": "approved"
+    },
     "partsDelivered": false,
     "history": [
       {
@@ -1714,6 +1727,29 @@
       }
     ],
     "feedbackAddressed": "手好像反了",
-    "next": "Continue reviewing the same pose; only after explicit neutral-pose approval author body layers and independent appearance resources"
+    "next": "Review the separate eight-part static segmentation in battleNeutralPartsReview; complete hidden anatomy after the layer boundaries are accepted."
+  },
+  "battleNeutralPartsReview": {
+    "id": "p1-neutral-battle-side-right-idle-parts-v1",
+    "status": "awaiting_user_part_review",
+    "source": "Art/Templates/P1-Neutral/battle-side/right-idle-parts-v1",
+    "reviewImage": "Art/Templates/P1-Neutral/battle-side/right-idle-parts-v1/review.png",
+    "editableMaster": "Art/Templates/P1-Neutral/battle-side/right-idle-parts-v1/authoring.svg",
+    "partsManifest": "Art/Templates/P1-Neutral/battle-side/right-idle-parts-v1/parts.json",
+    "sourcePoseApproval": {
+      "date": "2026-10-19",
+      "reviewer": "user",
+      "statement": "对了，继续下一步",
+      "direction": "battle-side-right",
+      "revision": "r2",
+      "scope": "One registered neutral right-side idle pose and its near/right hand direction; no weapon, animation, hidden anatomy, wardrobe, or runtime approval",
+      "status": "approved"
+    },
+    "scope": "Eight full-canvas transparent part masks for the approved right idle pose; static cut boundaries only",
+    "partsDelivered": true,
+    "hiddenAnatomyComplete": false,
+    "animationDelivered": false,
+    "runtimeIntegrated": false,
+    "next": "After review, replace the fixed-pose coverage patch with authored hidden anatomy and verify each limb independently before creating appearance resources."
   }
 }
