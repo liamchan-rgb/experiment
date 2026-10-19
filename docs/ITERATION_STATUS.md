@@ -16,7 +16,9 @@
 
 已交付[营地旁林地静态样板 v1](../Art/Scenes/MeadowBattle/camp-clearing/v1/README.md)：一名向右持剑待机的人物与一只史莱姆，远景蓝金营帐／木塔、中景战斗空地、远近树林与前景遮挡。实际生成输入为现有 Meadow Journey 地图原画和侧视人物外观候选；用户截图的横向镜头、层次与光影要求写入[完整指令](../Art/Scenes/MeadowBattle/camp-clearing/v1/source/prompt.txt)。生成原件保留，1309×1201 RGB 图按原字节另存，不裁切／改色／覆盖原资源。
 
-人工查看原图并检查握柄连接、双方接地、侧向对峙、环境层次及营地线索；PNG 解码、原件与归档逐字节相等、参考及指令摘要检查通过，详见[清单](../Art/Scenes/MeadowBattle/camp-clearing/v1/asset-manifest.json)。该稿仍待用户审核，是合成构图稿，不是应用截图、地图坐标精确重建或可复用分层成品；正式场景层、独立人物与武器、阴影挂载和动画均未由此完成。代码和 build31 IPA 不变，无需重跑编译／UI检查，未验证实体 iPad；本轮未制作动图。
+人工查看原图并检查握柄连接、双方接地、侧向对峙、环境层次及营地线索；PNG 解码、原件与归档逐字节相等、参考及指令摘要检查通过，详见[清单](../Art/Scenes/MeadowBattle/camp-clearing/v1/asset-manifest.json)。该稿当时待用户审核，是合成构图稿，不是应用截图、地图坐标精确重建或可复用分层成品；正式场景层、独立人物与武器、阴影挂载和动画均未由此完成。代码和 build31 IPA 不变，无需重跑编译／UI检查，未验证实体 iPad；本轮未制作动图。
+
+用户在重新贴图并提供原图链接后回复“可以的”，认可本张静态样板的整体观感、横向构图、森林层次、Meadow 环境对应及双方尺度。已记录[approval.json](../Art/Scenes/MeadowBattle/camp-clearing/v1/approval.json)，同步清单和样板说明；原图 SHA-256 保持 `b12b900126b9e4b2f52985fbc4b5efef827b5c702eb130d11e93a68d9541685d`。本次仅更新认可记录，核对 JSON 与原图摘要通过，无代码、图片或 IPA 变化。下一项按此稿制作独立场景层、人物及史莱姆资源，继续沿用换装合同；不将静态画面的认可扩展为尚未交付部分通过。
 
 ### build 31 · 对齐桌游已确认布局
 

@@ -1,8 +1,12 @@
 {
   "schemaVersion": "1.0.0",
   "id": "meadow-battle-camp-clearing-static-v1",
-  "status": "awaiting-user-art-review",
-  "artApproval": null,
+  "status": "approved-static-look-and-composition",
+  "artApproval": {
+    "record": "approval.json",
+    "sourceUserMessage": "可以的",
+    "scope": "Static scene look and composition only; production layering and integration remain pending"
+  },
   "assetRole": "Single flattened composition and look-development study, not production scene layers or a modular character resource",
   "artwork": {
     "path": "review.png",

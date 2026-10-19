@@ -1,6 +1,6 @@
 # Meadow Journey 桌游布局实验 · build 31
 
-用户已认可 build31 的整体布局，认可范围不包括新场景、人物、敌方或完整动画。下一项[营地旁林地一人对一怪静态样板](../Art/Scenes/MeadowBattle/camp-clearing/v1/README.md)独立审核，尚未替换本页所述的应用内候选人物与目标占位。
+用户已认可 build31 的整体布局，认可范围不包括新场景、人物、敌方或完整动画。下一项[营地旁林地一人对一怪静态样板](../Art/Scenes/MeadowBattle/camp-clearing/v1/README.md)已获整体观感与构图认可，尚未替换本页所述的应用内候选人物与目标占位。
 
 ## 布局依据
 

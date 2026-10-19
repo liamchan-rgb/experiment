@@ -1,0 +1,18 @@
+{
+  "status": "approved-static-look-and-composition",
+  "sourceUserMessage": "可以的",
+  "context": "用户两次反馈看不到图，重新直接贴出原图并提供原图链接后确认。",
+  "artwork": "review.png",
+  "artworkSHA256": "b12b900126b9e4b2f52985fbc4b5efef827b5c702eb130d11e93a68d9541685d",
+  "approvedScope": [
+    "营地旁林地一人对一怪静态样板的整体观感",
+    "横向构图与森林层次",
+    "Meadow Journey 环境与配色对应",
+    "双方尺度及静态对峙呈现"
+  ],
+  "doesNotApprove": [
+    "尚未交付的独立场景层、人物部件或武器挂载",
+    "完整动画、七人多怪布局、真实规则接入",
+    "尚未更新的应用内画面或 IPA"
+  ]
+}
