@@ -145,7 +145,7 @@ jobs:
           set -euo pipefail
           if [[ '${{ inputs.preview_only }}' == 'true' ]]; then
             focused_tests=(
-              -only-testing:MeadowJourneyTests/TrailTests/testMeadowBattleUsesRegisteredCampLayersAndOneVisibleSlime
+              -only-testing:MeadowJourneyTests/TrailTests/testMeadowBattleUsesRegisteredCampLayersAndOneVisibleForestWarden
               -only-testing:MeadowJourneyTests/TrailTests/testBattleLayoutKeepsSharedRowsAndExpandsForExplorationAndMonsterTurns
               -only-testing:MeadowJourneyTests/TrailTests/testBattlePreviewCropsAroundTravellerAndKeepsTerrainAcrossViewport
               -only-testing:MeadowJourneyTests/TrailTests/testCapturedViewportKeepsGroundAndArtworkAlignedThroughZoomAndPan

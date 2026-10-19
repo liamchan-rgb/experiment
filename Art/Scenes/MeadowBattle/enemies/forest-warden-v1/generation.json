@@ -1,0 +1,28 @@
+{
+  "schemaVersion": "1.0.0",
+  "assetId": "meadow-battle-forest-warden-v1",
+  "sourceTool": "OpenAI image generation",
+  "sourceFile": "source/forest-warden-chromakey.png",
+  "sourceCanvas": {
+    "width": 1536,
+    "height": 1024
+  },
+  "prompt": "Wide 3:2 canvas pixel-art game sprite. A single large left-facing forest stag enemy in a charging side pose, four legs, broad chestnut body, leafy dark green mane and tail, amber antlers and cream accents, crisp readable 16-bit RPG pixel clusters. Full isolated character only, centered. The entire background must be one perfectly flat solid chroma-key magenta color (#FF00FF), edge to edge, with absolutely no gradient, glow, shadow, checkerboard, texture, horizon or objects. Do not use magenta anywhere on the character. No text, no UI, no 3D, no scenery.",
+  "processing": {
+    "operation": "ImageMagick magenta color key to alpha; no crop or rescale",
+    "command": "magick forest-warden-chromakey.png -fuzz 18% -transparent '#ff00ff' PNG32:forest-warden.png",
+    "alphaBounds": {
+      "x": 32,
+      "y": 12,
+      "width": 1484,
+      "height": 948
+    },
+    "runAsset": "Sources/Resources/Assets.xcassets/MeadowBattleForestWarden.imageset/forest-warden.png"
+  },
+  "sha256": {
+    "source": "68c683bf8906ea8c79deda7ac35f1b806fceb11969f58f2226f830bf67a4267b",
+    "runtime": "860c851bb8a4bcd7ef093a3c812b77029940101542df965e3f648ad58b67c34d"
+  },
+  "reviewStatus": "unapproved sample; pending visual review",
+  "scope": "single static enemy illustration for Meadow Journey battle-pane composition"
+}

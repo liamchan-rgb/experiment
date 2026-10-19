@@ -402,13 +402,17 @@ final class TrailTests: XCTestCase {
         }
     }
 
-    func testMeadowBattleUsesRegisteredCampLayersAndOneVisibleSlime() throws {
+    func testMeadowBattleUsesRegisteredCampLayersAndOneVisibleForestWarden() throws {
         for name in ["MeadowCampFarForest", "MeadowCampGround", "MeadowCampMidground", "MeadowCampForeground"] {
             let image = try XCTUnwrap(UIImage(named: name), "Missing approved Meadow battle layer: \(name)")
             XCTAssertEqual(image.cgImage?.width, 1309)
             XCTAssertEqual(image.cgImage?.height, 1201)
         }
-        XCTAssertNotNil(UIImage(named: "MeadowBattleSlime"))
+        let enemy = try XCTUnwrap(UIImage(named: "MeadowBattleForestWarden"))
+        XCTAssertEqual(enemy.cgImage?.width, Int(MeadowBattleCanvasGeometry.enemyImageSize.width))
+        XCTAssertEqual(enemy.cgImage?.height, Int(MeadowBattleCanvasGeometry.enemyImageSize.height))
+        XCTAssertNotEqual(enemy.cgImage?.alphaInfo, CGImageAlphaInfo.none,
+                          "The forest enemy must remain a transparent sprite cutout")
 
         let view = MeadowBattleLandscapeView(frame: CGRect(x: 0, y: 0, width: 900, height: 500))
         view.layoutIfNeeded()
@@ -429,36 +433,44 @@ final class TrailTests: XCTestCase {
         }
         let heroFoot = CGPoint(x: view.heroViewFrame.minX + 128.5 / 256.0 * view.heroViewFrame.width,
                                y: view.heroViewFrame.minY + 224.0 / 256.0 * view.heroViewFrame.height)
-        let slimeFoot = CGPoint(x: view.slimeViewFrame.minX + 500.0 / 1024.0 * view.slimeViewFrame.width,
-                                y: view.slimeViewFrame.minY + 855.0 / 1024.0 * view.slimeViewFrame.height)
+        let enemyFoot = CGPoint(x: view.enemyViewFrame.minX
+                                    + MeadowBattleCanvasGeometry.enemyAlphaBounds.midX
+                                    / MeadowBattleCanvasGeometry.enemyImageSize.width
+                                    * view.enemyViewFrame.width,
+                                y: view.enemyViewFrame.minY
+                                    + MeadowBattleCanvasGeometry.enemyAlphaBounds.maxY
+                                    / MeadowBattleCanvasGeometry.enemyImageSize.height
+                                    * view.enemyViewFrame.height)
         XCTAssertEqual(heroFoot.x, expectedCanvas.width * 0.30, accuracy: 0.01)
         XCTAssertEqual(heroFoot.y, expectedCanvas.height * 0.69, accuracy: 0.01)
-        XCTAssertEqual(slimeFoot.x, expectedCanvas.width * 0.76, accuracy: 0.01)
-        XCTAssertEqual(slimeFoot.y, expectedCanvas.height * 0.685, accuracy: 0.01)
+        XCTAssertEqual(enemyFoot.x, expectedCanvas.width * MeadowBattleCanvasGeometry.enemyFoot.x, accuracy: 0.01)
+        XCTAssertEqual(enemyFoot.y, expectedCanvas.height * MeadowBattleCanvasGeometry.enemyFoot.y, accuracy: 0.01)
         XCTAssertEqual(view.heroViewFrame.height * (156.0 / 256.0),
                        expectedCanvas.height * MeadowBattleCanvasGeometry.heroVisibleHeight, accuracy: 0.01,
                        "The traveller should read at battle-character scale rather than as a map-scale giant")
-        XCTAssertEqual(view.slimeViewFrame.height * (648.0 / 1024.0),
-                       expectedCanvas.height * MeadowBattleCanvasGeometry.slimeVisibleHeight, accuracy: 0.01,
+        XCTAssertEqual(view.enemyViewFrame.height
+                           * MeadowBattleCanvasGeometry.enemyAlphaBounds.height
+                           / MeadowBattleCanvasGeometry.enemyImageSize.height,
+                       expectedCanvas.height * MeadowBattleCanvasGeometry.enemyVisibleHeight, accuracy: 0.01,
                        "The enemy needs enough visual weight to read clearly in the battle pane")
-        XCTAssertTrue(view.slimeFacesLeft, "The enemy should face the approaching right-facing traveller")
+        XCTAssertFalse(view.enemyIsMirrored, "The source sprite already faces the approaching right-facing traveller")
 
         let subviewOrder = view.sceneCanvasSubviewOrder
         XCTAssertEqual(subviewOrder, [
             "MeadowCampFarForest", "MeadowCampGround", "MeadowCampMidground",
-            "meadowBattleHeroShadow", "meadowBattleSlimeShadow", "meadowBattleHero",
-            "meadowBattleSlime", "MeadowCampForeground"
+            "meadowBattleHeroShadow", "meadowBattleForestWardenShadow", "meadowBattleHero",
+            "meadowBattleForestWarden", "MeadowCampForeground"
         ], "Scene layers, actor shadows, units and foreground must retain their fixed composite order")
         let heroIndex = try XCTUnwrap(subviewOrder.firstIndex(of: "meadowBattleHero"))
-        let slimeIndex = try XCTUnwrap(subviewOrder.firstIndex(of: "meadowBattleSlime"))
+        let enemyIndex = try XCTUnwrap(subviewOrder.firstIndex(of: "meadowBattleForestWarden"))
         let foregroundIndex = try XCTUnwrap(subviewOrder.firstIndex(of: "MeadowCampForeground"))
         XCTAssertLessThan(subviewOrder.firstIndex(of: "MeadowCampMidground")!, heroIndex)
         XCTAssertLessThan(heroIndex, foregroundIndex)
-        XCTAssertLessThan(slimeIndex, foregroundIndex)
-        XCTAssertEqual(subviewOrder.filter { $0 == "meadowBattleSlime" }.count, 1,
-                       "The approved scene sample should show one distinct enemy")
+        XCTAssertLessThan(enemyIndex, foregroundIndex)
+        XCTAssertEqual(subviewOrder.filter { $0 == "meadowBattleForestWarden" }.count, 1,
+                       "The scene sample should show one distinct enemy")
         XCTAssertTrue(subviewOrder.contains("meadowBattleHeroShadow"))
-        XCTAssertTrue(subviewOrder.contains("meadowBattleSlimeShadow"))
+        XCTAssertTrue(subviewOrder.contains("meadowBattleForestWardenShadow"))
     }
 
     func testOnlyTheTowerGetsAnAdditionalBanner() throws {
