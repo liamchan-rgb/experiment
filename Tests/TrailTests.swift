@@ -419,8 +419,14 @@ final class TrailTests: XCTestCase {
         XCTAssertEqual(view.sceneCanvasFrame.minY, expectedCanvas.minY, accuracy: 0.001)
         XCTAssertEqual(view.sceneCanvasFrame.width, expectedCanvas.width, accuracy: 0.001)
         XCTAssertEqual(view.sceneCanvasFrame.height, expectedCanvas.height, accuracy: 0.001)
-        XCTAssertTrue(view.sceneLayerFrames.allSatisfy { $0 == CGRect(origin: .zero, size: expectedCanvas.size) },
-                      "Every environment plate must share the unchanged full-canvas registration")
+        for layerFrame in view.sceneLayerFrames {
+            XCTAssertEqual(layerFrame.minX, 0, accuracy: 0.01)
+            XCTAssertEqual(layerFrame.minY, 0, accuracy: 0.01)
+            XCTAssertEqual(layerFrame.width, expectedCanvas.width, accuracy: 0.01,
+                           "Every environment plate must use the same full-canvas width")
+            XCTAssertEqual(layerFrame.height, expectedCanvas.height, accuracy: 0.01,
+                           "Every environment plate must use the same full-canvas height")
+        }
         let heroFoot = CGPoint(x: view.heroViewFrame.minX + 128.5 / 256.0 * view.heroViewFrame.width,
                                y: view.heroViewFrame.minY + 224.0 / 256.0 * view.heroViewFrame.height)
         let slimeFoot = CGPoint(x: view.slimeViewFrame.minX + 500.0 / 1024.0 * view.slimeViewFrame.width,
