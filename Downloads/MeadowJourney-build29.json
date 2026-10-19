@@ -1,0 +1,42 @@
+{
+  "schemaVersion": "1.0.0",
+  "application": "MeadowJourney",
+  "bundleIdentifier": "com.liamchan.experiment.meadow",
+  "version": "1.6.4",
+  "build": 29,
+  "file": "MeadowJourney-b29.ipa",
+  "bytes": 17192658,
+  "sha256": "8e0861e2ecd8ea4976e334e42c2605b96abfa1d07510945b5379300ccdc3ac5f",
+  "source": {
+    "branch": "feat/meadow-battle-scene-v0.1",
+    "commit": "cd28a0b458d7f0ced327405d48e5640388b5c9d8"
+  },
+  "archive": {
+    "workflowRunId": 39240608275,
+    "workflowRun": "https://github.com/liamchan-rgb/experiment/actions/runs/39240608275",
+    "artifactId": 12181775575,
+    "artifactName": "MeadowJourney-shadow-lab-IPA",
+    "packageMode": "unsigned SideStore re-signable IPA"
+  },
+  "validation": {
+    "ipaZipCRC": "passed",
+    "zipCompression": "ZIP_STORED",
+    "bundleVersion": "passed",
+    "physicalDevicePlatform": "iPhoneOS",
+    "architectures": ["arm64"],
+    "deviceFamilies": ["iPhone", "iPad"],
+    "minimumOSVersion": "15.0",
+    "metalLibrary": "present",
+    "executablePermission": "0755",
+    "localPackageInspection": "passed"
+  },
+  "uiReview": {
+    "workflowRunId": 39238544283,
+    "test": "testMeadowBattlePreviewKeepsReferenceMapBesideLandscapeScene",
+    "result": "passed",
+    "device": "iPad Pro 13-inch (M4) simulator, iOS 18.5",
+    "fullSuite": "failed on existing gait-review and gait-contour assertions; see docs/ITERATION_STATUS.md"
+  },
+  "physicalIPadTested": false,
+  "artReviewStatus": "scene prototype pending user review; contact pose remains an unapproved candidate"
+}

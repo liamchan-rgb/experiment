@@ -1,0 +1,69 @@
+name: Meadow Battle Preview Screenshot
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  iPad-preview:
+    name: Capture the Meadow battle preview on iPad
+    runs-on: macos-15
+    timeout-minutes: 25
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Validate project and select an iPad simulator
+        id: simulator
+        run: |
+          set -euo pipefail
+          mkdir -p build
+          python3 scripts/validate-project.py
+          xcrun simctl list --json > build/simulator-inventory.json
+          if python3 scripts/select-simulator.py iPad > build/simulator-udid.txt; then
+            :
+          else
+            status=$?
+            if [ "$status" -ne 2 ]; then exit "$status"; fi
+            xcodebuild -downloadPlatform iOS
+            xcrun simctl list --json > build/simulator-inventory.json
+            python3 scripts/select-simulator.py iPad > build/simulator-udid.txt
+          fi
+          simulator_udid="$(cat build/simulator-udid.txt)"
+          echo "udid=$simulator_udid" >> "$GITHUB_OUTPUT"
+          xcrun simctl bootstatus "$simulator_udid" -b
+
+      - name: Run only the Meadow battle preview UI test
+        run: |
+          set -euo pipefail
+          xcodebuild test \
+            -project MeadowJourney.xcodeproj -scheme MeadowJourney -configuration Debug \
+            -destination 'platform=iOS Simulator,id=${{ steps.simulator.outputs.udid }}' \
+            -derivedDataPath build/DerivedData \
+            -resultBundlePath build/MeadowBattlePreview.xcresult \
+            -parallel-testing-enabled NO \
+            -only-testing:MeadowJourneyUITests/JourneyUITests/testMeadowBattlePreviewKeepsReferenceMapBesideLandscapeScene \
+            CODE_SIGNING_ALLOWED=NO
+
+      - name: Export the focused preview screenshots
+        if: ${{ always() }}
+        run: |
+          set -euo pipefail
+          if [ -d build/MeadowBattlePreview.xcresult ]; then
+            xcrun xcresulttool export attachments \
+              --path build/MeadowBattlePreview.xcresult \
+              --output-path build/MeadowBattlePreview
+          fi
+
+      - name: Upload the iPad battle preview stills
+        if: ${{ always() }}
+        uses: actions/upload-artifact@v7
+        with:
+          name: meadow-battle-preview-iPad
+          path: build/MeadowBattlePreview/
+          if-no-files-found: error
+          retention-days: 30

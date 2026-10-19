@@ -2,7 +2,13 @@
 
 ## Meadow Journey 横版战斗场景试验包 · 1.6.4 build 29
 
-本试验包把 Meadow Journey 原地图保留在左侧，右侧打开复用同一地图地表、树石与林地氛围的横向战斗场景；单帧人物仍标为候选。请从[构建 39240608275](https://github.com/liamchan-rgb/experiment/actions/runs/39240608275)页面的 Artifacts 下载 `MeadowJourney-shadow-lab-IPA`，解压后取得未签名 IPA，再用 SideStore 重签安装。完整 UI 工作流中的新增分屏用例已通过；全套步态检查仍有既有失败项，详情见[迭代记录](../docs/ITERATION_STATUS.md)。此包尚未在物理 iPad 上测试。
+本试验包把 Meadow Journey 原地图保留在左侧，右侧打开复用同一地图地表、树石与林地氛围的横向战斗场景；单帧人物仍标为候选。
+
+[直接下载 MeadowJourney-b29.ipa](https://raw.githubusercontent.com/liamchan-rgb/experiment/feat/meadow-battle-scene-v0.1/Downloads/MeadowJourney-b29.ipa)
+
+IPA 为 17,192,658 字节，SHA-256：`8e0861e2ecd8ea4976e334e42c2605b96abfa1d07510945b5379300ccdc3ac5f`。已检查包内版本、真机 arm64、iPad 支持、Metal 库、可执行权限、ZIP CRC 和 ZIP_STORED 格式。[构建与完整性元数据](MeadowJourney-build29.json)。
+
+首次打开主地图后点“战斗预览”，地图留在左侧，右侧查看横版战场；点击战斗面板的“返回地图”可退出。请用 SideStore 重签安装。新增分屏 UI 用例通过，但完整 iPad 套件有既有步态失败项，详见[迭代记录](../docs/ITERATION_STATUS.md)；此包尚未在物理 iPad 上测试。
 
 上次完整通过 iPad UI 套件的正式基线仍是 build 28：
 
