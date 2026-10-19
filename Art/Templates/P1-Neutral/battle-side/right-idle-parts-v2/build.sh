@@ -102,6 +102,7 @@ semantic_parts=()
 for name in "${part_names[@]}"; do semantic_parts+=("parts/$name.png"); done
 convert "${semantic_parts[@]}" -background none -layers flatten assembled.png
 ./movement-seam-test.sh
+joint_coverage_passed=true # The test exits nonzero unless every local joint window has zero uncovered pixels.
 inkscape review.svg --export-area-page --export-filename=review.png >/dev/null 2>&1
 
 test "$(identify -format '%wx%h' assembled.png)" = "256x256"
@@ -141,6 +142,9 @@ test "$outside_count" = "0"
 
 read -r underbody_w underbody_h underbody_x underbody_y <<< "$(convert parts/body.skin.underlay.png -alpha extract -trim -format '%wx%h%X%Y' info: | tr 'x+' '  ')"
 underbody_pixels="$(convert parts/body.skin.underlay.png -alpha extract -threshold 0 -format '%[fx:mean*w*h]' info: | awk '{printf "%d", $1}')"
+underbody_component_output="$(convert parts/body.skin.underlay.png -alpha extract -threshold 0 -define connected-components:verbose=true -connected-components 8 null:)"
+underbody_components="$(awk '/srgb\(255,255,255\)/ {count++} END {print count + 0}' <<< "$underbody_component_output")"
+test "$underbody_components" = "1"
 
 rm -f coverage-fill.png
 cat > validation.json <<EOF
@@ -173,9 +177,11 @@ cat > validation.json <<EOF
     "mode": "RGBA",
     "nonTransparentPixels": $underbody_pixels,
     "alphaBoundsXYWH": [$underbody_x, $underbody_y, $underbody_w, $underbody_h],
+    "connectedForegroundComponents": $underbody_components,
     "includedInStaticAssembly": false,
     "complete": false,
-    "movementSeamTestPassed": false
+    "movementSeamTestPassed": false,
+    "localizedJointRootCoveragePassed": $joint_coverage_passed
   },
   "assembled": {
     "canvasPx": [256, 256],
@@ -186,19 +192,21 @@ cat > validation.json <<EOF
   "checks": {
     "allSemanticPartsAre256x256RGBAAndNonempty": true,
     "underbodyIs256x256RGBAAndNonempty": true,
+    "underbodyIsOneConnectedCore": true,
     "sourceAndPartsShareTheSameCanvasCoordinates": true,
     "sourcePixelPartitionCoversFullR2Silhouette": true,
     "staticAssemblyExactlyMatchesR2Source": true,
     "underbodyIncludedInStaticAssembly": false,
     "underbodyArtworkApproved": false,
     "movementSeamTestPassed": false,
+    "localizedJointRootCoveragePassed": $joint_coverage_passed,
     "hiddenAnatomyComplete": false,
     "runtimeIntegrated": false
   },
   "limitations": [
     "Underbody is still a torso/pelvis study; complete arm, hand, and leg anatomy remains unfinished.",
     "The pixel-owner masks reconstruct the source exactly but still need human review for semantic cut placement.",
-    "A small rigid-part translation is a diagnostic, not a finished animation or production approval.",
+    "The four local joint-root windows pass under the documented rigid shifts; this does not validate the shifted full silhouette, redraws, or animation.",
     "This package has not passed outfit swapping, weapon grip, other directions, or runtime tests."
   ]
 }

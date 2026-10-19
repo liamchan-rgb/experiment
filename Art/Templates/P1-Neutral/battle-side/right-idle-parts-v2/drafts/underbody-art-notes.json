@@ -10,11 +10,12 @@
     "warmMid": "#f3a277",
     "hipMid": "#f8b687"
   },
-  "pixelBounds": [100, 131, 51, 63],
-  "nontransparentPixelCount": 1979,
-  "artPass": "Connected neck, shoulder, chest, abdomen, pelvis and upper-hip-root core, manually authored as a hidden anatomy study beneath the existing garment and limb parts.",
-  "staticIntegration": "Not included in assembled.png. The semantic masks have since been rebuilt as exclusive source-pixel owners, and the static assembly now matches r2 exactly. The underbody stays separate while shoulder and hip overlap art is revised; small limb translations still expose seams.",
-  "movementPreflight": "Four 2-3 px rigid translations were rendered in movement-joints.png; the test is not passed because shoulder and hip cut seams remain.",
+  "pixelBounds": [93, 132, 58, 67],
+  "nontransparentPixelCount": 2298,
+  "artPass": "Connected neck, shoulder, chest, abdomen, pelvis and short upper-thigh root overlaps, manually authored as a hidden anatomy study beneath the existing garment and limb parts.",
+  "staticIntegration": "Not included in assembled.png. The semantic masks have been rebuilt as exclusive source-pixel owners, and the static assembly still matches r2 exactly. The underbody stays separate; the shoulder and hip-root windows are now covered under the documented local shifts.",
+  "movementPreflight": "Four 2-3 px rigid translations are shown in movement-joints.png. All four anatomical root windows contain zero uncovered source pixels. The changed outer silhouette is not treated as a gap because these are rigid shifts, not articulated poses.",
+  "sourceNoise": "The six isolated alpha specks in the approved source are preserved in the exact static assembly and omitted from the movement contact sheets only.",
   "notApproved": true,
   "notComplete": true
 }

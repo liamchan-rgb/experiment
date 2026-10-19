@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0.0",
-  "purpose": "Rigid single-limb translation checks for underlayer coverage, not animation approval.",
+  "purpose": "Localized shoulder and hip-root coverage checks under rigid single-limb translations, not animation approval.",
   "canvasPx": [256, 256],
   "testTranslationsPx": {
     "nearArmAndHand": [3, 1],
@@ -10,11 +10,25 @@
   },
   "contactSheet": "movement-seams.png",
   "jointDetailSheet": "movement-joints.png",
-  "status": "needs-joint-art-revision",
-  "seamsPassed": false,
+  "status": "localized-joint-root-windows-passed",
+  "jointCoveragePassed": true,
+  "wholeSilhouetteSeamsPassed": false,
+  "isolatedApprovedSourceSpecksExcludedFromDiagnostic": true,
+  "jointCoverageWindowsPx": {
+    "nearArm": [105, 133, 123, 151],
+    "farArm": [96, 142, 112, 158],
+    "nearLeg": [129, 174, 149, 194],
+    "farLeg": [95, 174, 115, 194]
+  },
+  "holesInsideSourceSilhouetteByJointWindow": {
+  "nearArmJoint": 0,
+  "farArmJoint": 0,
+  "nearLegJoint": 0,
+  "farLegJoint": 0
+  },
   "findings": [
-    "Far-arm displacement leaves an outline at the original shoulder cut.",
-    "Leg displacement exposes gaps at the hip and garment edge."
+    "The four registered joint windows remain covered after the documented rigid translations.",
+    "The contact sheet still changes the outer silhouette because whole parts are translated rather than redrawn or posed around a joint."
   ],
-  "knownLimit": "Rigid shifts are diagnostic; the underbody reaches shoulder and upper-hip roots but does not contain complete limb anatomy, and limb rotations are not tested."
+  "knownLimit": "A zero-hole result applies only to the four joint windows, not to the whole displaced silhouette. This is a coverage diagnostic, not an animation or artwork approval; limb rotations, redraws, clothing overlap, other poses and directions are not tested."
 }

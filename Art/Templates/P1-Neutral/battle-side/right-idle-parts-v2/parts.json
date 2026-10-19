@@ -29,7 +29,7 @@
       "layer": "body.skin.underlay",
       "png": "parts/body.skin.underlay.png",
       "z": 0,
-      "role": "Incomplete connected neck/shoulder/chest/abdomen/pelvis skin core",
+      "role": "Incomplete connected neck/shoulder/chest/abdomen/pelvis skin core with short shoulder and upper-thigh root overlaps",
       "includedInStaticAssembly": false
     },
     {"layer": "body.leg.left.far", "png": "parts/body.leg.left.far.png", "z": 1},
@@ -44,17 +44,18 @@
   "underbody": {
     "source": "underbody-authoring.svg",
     "discardedGenerationAttempt": "drafts/underbody-generated-source.png",
-    "method": "Fixed registered 256x256 SVG, palette sampled from the approved r2 pose and clipped to its silhouette",
-    "alphaPixels": 1979,
-    "alphaBounds": [100, 131, 51, 63],
+    "method": "Fixed registered 256x256 SVG, palette sampled from the approved r2 pose and clipped to its silhouette; expanded through the shoulder and upper-thigh roots",
+    "alphaPixels": 2298,
+    "alphaBounds": [93, 132, 58, 67],
+    "connectedForegroundComponents": 1,
     "regions": ["connected neck, shoulders, chest, abdomen, pelvis and upper-hip roots"],
     "complete": false,
-    "movementTest": "not passed"
+    "movementTest": "localized joint-root windows passed; full movement seam test and animation not passed or tested"
   },
   "movementPreflight": {
     "script": "movement-seam-test.sh",
     "images": ["movement-seams.png", "movement-joints.png"],
-    "status": "failed-joint-art-in-progress",
+    "status": "localized-joint-root-windows-passed",
     "tests": ["near arm and hand +3,+1 px", "far arm and hand -3,+1 px", "near leg +2,-2 px", "far leg -2,-2 px"]
   },
   "staticAssembly": {

@@ -5,7 +5,7 @@
     <clipPath id="clip-hips"><rect x="795" y="200" width="220" height="210"/></clipPath>
   </defs>
   <rect width="1600" height="1440" fill="#e8e5dc"/>
-  <text x="42" y="54" font-family="Noto Sans CJK SC, sans-serif" font-size="30" font-weight="700" fill="#26352f">侧视待机 r2 · 遮罩修复与关节预检</text>
+  <text x="42" y="54" font-family="Noto Sans CJK SC, sans-serif" font-size="30" font-weight="700" fill="#26352f">侧视待机 r2 · 肩髋根部补画与重组预检</text>
   <text x="44" y="84" font-family="Noto Sans CJK SC, sans-serif" font-size="16" fill="#54625b">姿势、脚底 y=214 与近侧右手保持已认可版本；原始 r2 画布没有改动。</text>
 
   <rect x="36" y="108" width="470" height="530" rx="16" fill="#f5f2ea" stroke="#c9c5b9"/>
@@ -16,8 +16,8 @@
   <text x="64" y="605" font-family="Noto Sans CJK SC, sans-serif" font-size="15" fill="#4d5b54">静态 RGBA 差异 0；固定姿态补位从 442 降到 0。</text>
 
   <rect x="522" y="108" width="520" height="530" rx="16" fill="#f5f2ea" stroke="#c9c5b9"/>
-  <text x="548" y="145" font-family="Noto Sans CJK SC, sans-serif" font-size="19" font-weight="700" fill="#34423b">独立隐藏底层 · 颈肩至骨盆</text>
-  <text x="548" y="173" font-family="Noto Sans CJK SC, sans-serif" font-size="14" fill="#66736b">完整 256×256 注册画布，非透明像素 1,979。</text>
+  <text x="548" y="145" font-family="Noto Sans CJK SC, sans-serif" font-size="19" font-weight="700" fill="#34423b">独立隐藏底层 · 颈肩至上髋</text>
+  <text x="548" y="173" font-family="Noto Sans CJK SC, sans-serif" font-size="14" fill="#66736b">完整 256×256 注册画布，非透明像素 2,298。</text>
   <rect x="550" y="190" width="466" height="220" rx="10" fill="#e5e1d8"/>
   <g clip-path="url(#clip-upper)">
     <svg x="570" y="200" width="215" height="210" viewBox="100 124 55 61" preserveAspectRatio="xMidYMid meet">
@@ -29,30 +29,30 @@
       <image href="parts/body.skin.underlay.png" width="256" height="256" image-rendering="pixelated"/>
     </svg>
   </g>
-  <text x="550" y="448" font-family="Noto Sans CJK SC, sans-serif" font-size="14" fill="#66736b">底层保留独立；肢体根部与移动轮廓仍需补画。</text>
-  <text x="550" y="476" font-family="Noto Sans CJK SC, sans-serif" font-size="14" fill="#66736b">当前未并入静态成图，避免改变已认可的 r2 像素。</text>
-  <text x="550" y="518" font-family="Noto Sans CJK SC, sans-serif" font-size="14" fill="#80583d">这不是完整人体底层，也未通过动作接缝验收。</text>
+  <text x="550" y="448" font-family="Noto Sans CJK SC, sans-serif" font-size="14" fill="#66736b">肩部与两侧上髋已向遮挡下的身体延展。</text>
+  <text x="550" y="476" font-family="Noto Sans CJK SC, sans-serif" font-size="14" fill="#66736b">底层仍独立，不改变已认可 r2 的任何像素。</text>
+  <text x="550" y="518" font-family="Noto Sans CJK SC, sans-serif" font-size="14" fill="#80583d">不是完整隐藏人体；逐帧动作和服装遮挡未验证。</text>
 
   <rect x="1058" y="108" width="506" height="530" rx="16" fill="#f5f2ea" stroke="#c9c5b9"/>
-  <text x="1084" y="145" font-family="Noto Sans CJK SC, sans-serif" font-size="19" font-weight="700" fill="#34423b">遮罩修复结果</text>
+  <text x="1084" y="145" font-family="Noto Sans CJK SC, sans-serif" font-size="19" font-weight="700" fill="#34423b">静态遮罩与关节覆盖</text>
   <text x="1084" y="192" font-family="Noto Sans CJK SC, sans-serif" font-size="16" fill="#26352f">• 256×256 全画布坐标不变</text>
   <text x="1084" y="226" font-family="Noto Sans CJK SC, sans-serif" font-size="16" fill="#26352f">• 八个部件完整覆盖原始轮廓</text>
   <text x="1084" y="260" font-family="Noto Sans CJK SC, sans-serif" font-size="16" fill="#26352f">• 6 个孤立源像素保留在躯干根层</text>
   <text x="1084" y="294" font-family="Noto Sans CJK SC, sans-serif" font-size="16" fill="#26352f">• 原固定姿态补位层已删除</text>
   <line x1="1084" y1="324" x2="1530" y2="324" stroke="#c9c5b9"/>
-  <text x="1084" y="360" font-family="Noto Sans CJK SC, sans-serif" font-size="17" font-weight="700" fill="#80583d">小幅位移测试仍有明显接缝</text>
-  <text x="1084" y="394" font-family="Noto Sans CJK SC, sans-serif" font-size="14" fill="#4d5b54">手臂各平移 3 px，腿各平移 2 px，</text>
-  <text x="1084" y="421" font-family="Noto Sans CJK SC, sans-serif" font-size="14" fill="#4d5b54">暴露了肩部、髋部与原轮廓的断线。</text>
-  <text x="1084" y="464" font-family="Noto Sans CJK SC, sans-serif" font-size="14" fill="#4d5b54">接缝细节见下方放大图与 movement-joints.png。</text>
-  <text x="1084" y="520" font-family="Noto Sans CJK SC, sans-serif" font-size="14" fill="#80583d">美术状态：继续修订 · 不能用于生产模板</text>
+  <text x="1084" y="360" font-family="Noto Sans CJK SC, sans-serif" font-size="17" font-weight="700" fill="#80583d">四个局部关节窗口：覆盖通过</text>
+  <text x="1084" y="394" font-family="Noto Sans CJK SC, sans-serif" font-size="14" fill="#4d5b54">手臂各平移 3 px，腿各平移 2 px；</text>
+  <text x="1084" y="421" font-family="Noto Sans CJK SC, sans-serif" font-size="14" fill="#4d5b54">肩髋窗口内均无未覆盖的原轮廓像素。</text>
+  <text x="1084" y="464" font-family="Noto Sans CJK SC, sans-serif" font-size="14" fill="#4d5b54">整段平移改变外轮廓；不代表真实动作。</text>
+  <text x="1084" y="520" font-family="Noto Sans CJK SC, sans-serif" font-size="14" fill="#80583d">美术状态：关节根部候选 · 仍不能作生产模板</text>
 
   <rect x="36" y="662" width="1528" height="740" rx="16" fill="#f5f2ea" stroke="#c9c5b9"/>
-  <text x="62" y="700" font-family="Noto Sans CJK SC, sans-serif" font-size="19" font-weight="700" fill="#34423b">四组静态接缝预检 · 小幅刚性位移，不是动画预览</text>
+  <text x="62" y="700" font-family="Noto Sans CJK SC, sans-serif" font-size="19" font-weight="700" fill="#34423b">四组根部覆盖预检 · 小幅刚性位移诊断，不是动画预览</text>
   <image href="movement-joints.png" x="56" y="720" width="726" height="620" image-rendering="pixelated"/>
-  <text x="914" y="770" font-family="Noto Sans CJK SC, sans-serif" font-size="17" font-weight="700" fill="#80583d">当前判断：未通过</text>
-  <text x="914" y="810" font-family="Noto Sans CJK SC, sans-serif" font-size="15" fill="#4d5b54">远侧手臂移开后，背部轮廓残留原切层黑线。</text>
-  <text x="914" y="842" font-family="Noto Sans CJK SC, sans-serif" font-size="15" fill="#4d5b54">两条腿移位后，裤脚与髋根出现断线和空缺。</text>
-  <text x="914" y="874" font-family="Noto Sans CJK SC, sans-serif" font-size="15" fill="#4d5b54">这些位置需要补画遮挡下的身体像素并调整分界。</text>
+  <text x="914" y="770" font-family="Noto Sans CJK SC, sans-serif" font-size="17" font-weight="700" fill="#80583d">当前判断：关节窗口覆盖通过</text>
+  <text x="914" y="810" font-family="Noto Sans CJK SC, sans-serif" font-size="15" fill="#4d5b54">近／远肩与近／远髋四个局部窗内空洞数均为 0。</text>
+  <text x="914" y="842" font-family="Noto Sans CJK SC, sans-serif" font-size="15" fill="#4d5b54">移位后的大片灰区属于轮廓变化，不应补成旧肢体。</text>
+  <text x="914" y="874" font-family="Noto Sans CJK SC, sans-serif" font-size="15" fill="#4d5b54">下一阶段仍需逐帧重画动作与衣物遮挡，不能直接转轴。</text>
   <text x="914" y="926" font-family="Noto Sans CJK SC, sans-serif" font-size="15" fill="#4d5b54">完整五格对照：</text>
   <text x="914" y="957" font-family="Noto Sans CJK SC, sans-serif" font-size="15" fill="#26352f">movement-joints.png</text>
   <text x="914" y="1010" font-family="Noto Sans CJK SC, sans-serif" font-size="14" fill="#66736b">• 近侧手臂＋手：+3,+1 px</text>

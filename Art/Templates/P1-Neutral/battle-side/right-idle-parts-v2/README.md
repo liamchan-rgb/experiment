@@ -12,9 +12,11 @@ The assembled eight-part image now matches the registered r2 source exactly: zer
 
 ## Hidden anatomy and movement checks
 
-The editable [underbody-authoring.svg](underbody-authoring.svg) now contains a 1,979-pixel connected core extending through the shoulders and upper-hip roots. It remains a separate layer so the reviewed r2 pose stays pixel-identical. It does not yet include complete limb anatomy.
+The editable [underbody-authoring.svg](underbody-authoring.svg) contains a 2,298-pixel connected core with short overlaps behind both shoulders and upper-thigh roots. It remains a separate layer so the reviewed r2 pose stays pixel-identical. It does not yet include complete limb anatomy.
 
-[movement-seam-test.sh](movement-seam-test.sh) makes a static diagnostic sheet for four small rigid translations: near/far arms by 3 px and near/far legs by 2 px. [movement-joints.png](movement-joints.png) enlarges the shoulder, torso and hip area. These tests reveal unresolved mask-edge and joint-outline seams, especially where the far arm or a leg moves away from its original cut. The movement seam check is therefore still **not passed**. The sheets are still previews, not an approved animation.
+[movement-seam-test.sh](movement-seam-test.sh) makes a static diagnostic sheet for four small rigid translations: near/far arms by 3 px and near/far legs by 2 px. It checks only the anatomical shoulder and hip-root windows against the original silhouette; all four windows now have zero uncovered source pixels. Six isolated alpha specks in the approved source remain in the exact static assembly and are excluded from these movement diagnostics so they are not mistaken for anatomy. [movement-joints.png](movement-joints.png) still shows how whole-part translations alter the outer silhouette. This is a localized coverage check, not an animation test or art approval.
+
+The underbody candidate remains separate from the static composite and is still incomplete. Full limb anatomy, articulated redraws, clothing overlap, other poses/directions and runtime integration are not covered.
 
 Hair, face, clothing, footwear, weapon grip, limb rotation, other poses/directions and runtime integration remain out of scope. Do not use this candidate as a production rig or mark the underbody art approved.
 

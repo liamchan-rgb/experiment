@@ -25,11 +25,13 @@
     "editableSource": "underbody-authoring.svg",
     "canvasPx": [256, 256],
     "mode": "RGBA",
-    "nonTransparentPixels": 1917,
-    "alphaBoundsXYWH": [101, 132, 50, 61],
+    "nonTransparentPixels": 2298,
+    "alphaBoundsXYWH": [93, 132, 58, 67],
+    "connectedForegroundComponents": 1,
     "includedInStaticAssembly": false,
     "complete": false,
-    "movementSeamTestPassed": false
+    "movementSeamTestPassed": false,
+    "localizedJointRootCoveragePassed": true
   },
   "assembled": {
     "canvasPx": [256, 256],
@@ -40,19 +42,21 @@
   "checks": {
     "allSemanticPartsAre256x256RGBAAndNonempty": true,
     "underbodyIs256x256RGBAAndNonempty": true,
+    "underbodyIsOneConnectedCore": true,
     "sourceAndPartsShareTheSameCanvasCoordinates": true,
     "sourcePixelPartitionCoversFullR2Silhouette": true,
     "staticAssemblyExactlyMatchesR2Source": true,
     "underbodyIncludedInStaticAssembly": false,
     "underbodyArtworkApproved": false,
     "movementSeamTestPassed": false,
+    "localizedJointRootCoveragePassed": true,
     "hiddenAnatomyComplete": false,
     "runtimeIntegrated": false
   },
   "limitations": [
     "Underbody is still a torso/pelvis study; complete arm, hand, and leg anatomy remains unfinished.",
     "The pixel-owner masks reconstruct the source exactly but still need human review for semantic cut placement.",
-    "A small rigid-part translation is a diagnostic, not a finished animation or production approval.",
+    "The four local joint-root windows pass under the documented rigid shifts; this does not validate the shifted full silhouette, redraws, or animation.",
     "This package has not passed outfit swapping, weapon grip, other directions, or runtime tests."
   ]
 }

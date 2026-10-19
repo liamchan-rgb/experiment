@@ -8,7 +8,7 @@
     "statement": "对了，继续下一步",
     "approvedScope": "One neutral right-side idle pose and the near/right hand direction in the registered 256x256 review"
   },
-  "scope": "Repair the eight semantic source-pixel masks, complete the torso/pelvis underlay and check small limb translations without changing the approved r2 source pose.",
+  "scope": "Repair the eight semantic source-pixel masks, extend the hidden skin core through shoulder and upper-thigh roots, and check localized joint windows without changing the approved r2 source pose.",
   "source": "../right-idle-r2/00.png",
   "editableMaster": "authoring.svg",
   "underbodyMaster": "underbody-authoring.svg",
@@ -30,15 +30,16 @@
     "semanticOwnershipReviewComplete": false
   },
   "underbody": {
-    "regions": ["connected neck, shoulder, chest, abdomen and pelvis core"],
-    "pixelCount": 1979,
+    "regions": ["connected neck, shoulder, chest, abdomen, pelvis, and short shoulder/upper-thigh root overlaps"],
+    "pixelCount": 2298,
     "complete": false,
-    "movementSeamsPassed": false
+    "localizedJointRootWindowsPassed": true,
+    "wholeSilhouetteMotionTested": false
   },
   "movementPreflight": {
     "contactSheet": "movement-seams.png",
     "jointDetailSheet": "movement-joints.png",
-    "status": "failed-joint-art-in-progress",
+    "status": "localized-joint-root-windows-passed",
     "tests": ["near arm and hand +3,+1 px", "far arm and hand -3,+1 px", "near leg +2,-2 px", "far leg -2,-2 px"]
   },
   "partsDelivered": true,
@@ -47,10 +48,10 @@
   "runtimeIntegrated": false,
   "limits": [
     "The hard ownership partition rebuilds the source exactly, but its semantic cut placement still needs review under motion.",
-    "The movement sheets show unresolved outline and shoulder/hip connection seams; do not mark the movement test as passed.",
-    "Underbody art remains a torso/pelvis core; limb anatomy and articulated overlap patches remain incomplete.",
+    "All four registered joint-root windows have zero uncovered source pixels under the documented diagnostic translations; the rest of each translated silhouette is intentionally not treated as anatomy.",
+    "Underbody art remains a torso/pelvis and joint-root core; complete limb anatomy and articulated poses remain unfinished.",
     "No hair, face, outfit variant, shoes, weapon, action, other frame, other direction or runtime integration is included.",
     "The approved empty-hand study does not validate a weapon grip."
   ],
-  "next": "Repair the shoulder and hip overlap artwork identified in movement-joints.png, then rerun the same four registered translation checks."
+  "next": "Use this reviewed root-coverage candidate to split the neutral outfit into independent clothing layers; author proper articulated poses before assessing animation continuity."
 }

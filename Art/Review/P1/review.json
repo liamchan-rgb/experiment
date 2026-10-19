@@ -4,7 +4,7 @@
   "updated": "2026-10-19",
   "workflow": "Review one direction at a time from fixed cardinal and diagonal baselines. Modify and resubmit the same direction until explicit user artwork approval, then advance. Record provenance, feedback and accepted revisions for the future character template.",
   "current": "p1-neutral-battle-side-right-idle-parts-v2",
-  "templateStatus": "independent heads approved; the v5 down idle sword pose is approved as one art study only; modular wardrobe/weapon production and the full character template remain incomplete; the heavyStrike + trainingSword standalone effect prototype remains awaiting user art review; battle-side right idle pose and hand direction r2 approved; partial hidden-skin underlay v2 is awaiting review; complete anatomy, movement tests and runtime integration remain incomplete",
+  "templateStatus": "independent heads approved; the v5 down idle sword pose is approved as one art study only; modular wardrobe/weapon production and the full character template remain incomplete; the heavyStrike + trainingSword standalone effect prototype remains awaiting user art review; battle-side right idle pose and hand direction r2 approved; localized shoulder/hip-root underbody candidate is awaiting review; complete anatomy, articulated movement and runtime integration remain incomplete",
   "items": [
     {
       "id": "01-down-idle",
@@ -1766,28 +1766,35 @@
     "editableMaster": "Art/Templates/P1-Neutral/battle-side/right-idle-parts-v2/authoring.svg",
     "partsManifest": "Art/Templates/P1-Neutral/battle-side/right-idle-parts-v2/parts.json",
     "poseApprovalReference": "p1-neutral-battle-side-right-idle-r2",
-    "scope": "Repair the eight source-pixel masks and test a separate connected neck/shoulder/chest/abdomen/pelvis underbody without changing the approved r2 source pose",
+    "scope": "Repair the eight source-pixel masks and extend a separate connected neck/shoulder/chest/abdomen/pelvis underbody through the shoulder and upper-thigh roots without changing the approved r2 source pose",
     "sourcePoseChanged": false,
     "fixedPoseCoverageFillPixels": 0,
     "staticRgbaDifferencePixelsVsR2": 0,
     "isolatedSourcePixelsAssignedToTorsoRoot": 6,
-    "underbodyPixelCount": 1979,
+    "underbodyPixelCount": 2298,
     "underbodyComplete": false,
     "movementSeamsPassed": false,
+    "localizedJointRootCoveragePassed": true,
     "runtimeIntegrated": false,
     "movementPreflight": {
-      "status": "failed_joint_art_in_progress",
+      "status": "localized_joint_root_windows_passed",
       "translations": {
         "nearArmAndHand": [3, 1],
         "farArmAndHand": [-3, 1],
         "nearLeg": [2, -2],
         "farLeg": [-2, -2]
       },
+      "zeroUncoveredSourcePixelsInJointWindows": {
+        "nearArm": true,
+        "farArm": true,
+        "nearLeg": true,
+        "farLeg": true
+      },
       "findings": [
-        "Far-arm displacement leaves an outline from the original shoulder cut.",
-        "Leg displacement exposes hip and garment-edge gaps."
+        "All four registered joint-root windows have zero uncovered source pixels under the documented rigid shifts.",
+        "The whole translated silhouette changes; this diagnostic does not validate articulated poses, redraws, clothing overlap or animation."
       ]
     },
-    "next": "Redraw the hidden shoulder and hip overlaps and refine semantic cut placement, then rerun the same four registered translations."
+    "next": "Use the reviewed shoulder/hip-root candidate as a base for separate clothing layers, then validate any posed motion with authored frame redraws rather than rigidly translating complete limbs."
   }
 }
