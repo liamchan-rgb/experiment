@@ -506,10 +506,10 @@ private final class MeadowBattleLandscapeView: UIView {
         pebblesDark.path = darkPebbles.cgPath
 
         let actorGroundY = h * 0.79
-        // Keep the registered square image intact and its feet on the ground
-        // across the taller 4:3 battlefield and the expanded monster-turn layout.
+        // Visible boot edge is y1052 on the original 1254px canvas. Alpha=1
+        // noise extends to y1236 and must not be mistaken for the foot anchor.
         let actorSize = min(w * 0.48, h * 0.60)
-        hero.frame = CGRect(x: w * 0.105, y: actorGroundY - actorSize * 1236 / 1254,
+        hero.frame = CGRect(x: w * 0.105, y: actorGroundY - actorSize * 1052 / 1254,
                             width: actorSize, height: actorSize)
         contactShadow.path = UIBezierPath(ovalIn: CGRect(x: hero.frame.minX + actorSize * 0.04,
             y: actorGroundY - 3, width: actorSize * 0.72, height: max(10, actorSize * 0.06))).cgPath
