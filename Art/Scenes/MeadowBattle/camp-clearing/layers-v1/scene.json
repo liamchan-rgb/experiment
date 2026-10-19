@@ -1,0 +1,189 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "meadow-battle-camp-clearing-layers-v1",
+  "status": "awaiting-recomposed-scene-art-review",
+  "artApproval": null,
+  "canvasPx": [
+    1309,
+    1201
+  ],
+  "origin": "top-left",
+  "colorSpace": "sRGB",
+  "alphaConvention": "straight-alpha PNG",
+  "approvedReference": {
+    "path": "../v1/review.png",
+    "sha256": "b12b900126b9e4b2f52985fbc4b5efef827b5c702eb130d11e93a68d9541685d",
+    "approval": "../v1/approval.json"
+  },
+  "layers": [
+    {
+      "id": "01-far-forest",
+      "path": "layers/01-far-forest.png",
+      "zIndex": 0,
+      "sourceTool": "OpenAI image generation",
+      "originalGeneratedFile": "/workspace/generated_images/exec-3bb02dbf-0fc1-43cf-ac32-c49f9103bd71.png",
+      "sourceReference": "../v1/review.png",
+      "promptPath": "source/01-far-forest-prompt.txt",
+      "promptSHA256": "866df216cc70ec91215411239743d019653c584b23806d9e6b31570c0c500cb2",
+      "sha256": "291fd390cdc894004b8c93370a486069d10527f3cca6bd523367dc5784c11e52",
+      "bytes": 3245781,
+      "canvasPx": [
+        1309,
+        1201
+      ],
+      "mode": "RGB",
+      "alphaZeroFraction": 0.0,
+      "alphaOpaqueFraction": 1.0,
+      "registration": {
+        "offsetPx": [
+          0,
+          0
+        ],
+        "scale": 1,
+        "crop": null
+      },
+      "originalBytesPreserved": true
+    },
+    {
+      "id": "02-ground",
+      "path": "layers/02-ground.png",
+      "zIndex": 10,
+      "sourceTool": "OpenAI image generation",
+      "originalGeneratedFile": "/workspace/generated_images/exec-b3a2f27a-1490-46b8-b8a0-08b8a89ad94f.png",
+      "sourceReference": "../v1/review.png",
+      "promptPath": "source/02-ground-prompt.txt",
+      "promptSHA256": "bea570a1ec7076705bbd55d00e1153128affba1c246b01b3d07de8247c569da3",
+      "sha256": "f76f1ad3f83f5d6b8b8234f5708a2dc2c90bd42dd0b86de0847ac3176c4b3879",
+      "bytes": 2006004,
+      "canvasPx": [
+        1309,
+        1201
+      ],
+      "mode": "RGBA",
+      "alphaZeroFraction": 0.485848,
+      "alphaOpaqueFraction": 7e-06,
+      "registration": {
+        "offsetPx": [
+          0,
+          0
+        ],
+        "scale": 1,
+        "crop": null
+      },
+      "originalBytesPreserved": true
+    },
+    {
+      "id": "03-midground",
+      "path": "layers/03-midground.png",
+      "zIndex": 20,
+      "sourceTool": "OpenAI image generation",
+      "originalGeneratedFile": "/workspace/generated_images/exec-d7343ae4-cc78-4b1e-bc62-5f073e82e800.png",
+      "sourceReference": "../v1/review.png",
+      "promptPath": "source/03-midground-prompt.txt",
+      "promptSHA256": "9aa77e9f4b39848a5b79574132f94b31df3d5d001391e367e096245ed15e2cf8",
+      "sha256": "7c46ac01aeb05956ed3ea9390c0fc07ed2951c551ce019c0523bb455b9f93d34",
+      "bytes": 843779,
+      "canvasPx": [
+        1309,
+        1201
+      ],
+      "mode": "RGBA",
+      "alphaZeroFraction": 0.80724,
+      "alphaOpaqueFraction": 4.3e-05,
+      "registration": {
+        "offsetPx": [
+          0,
+          0
+        ],
+        "scale": 1,
+        "crop": null
+      },
+      "originalBytesPreserved": true
+    },
+    {
+      "id": "04-foreground",
+      "path": "layers/04-foreground.png",
+      "zIndex": 40,
+      "sourceTool": "OpenAI image generation",
+      "originalGeneratedFile": "/workspace/generated_images/exec-0e2944ad-ac24-4723-8f2b-5bd1e4d85794.png",
+      "sourceReference": "../v1/review.png",
+      "promptPath": "source/04-foreground-prompt.txt",
+      "promptSHA256": "dfc29e47a5fec480e7dc0750361ca6e7353008e918f32b05f6ad21ef6384d1de",
+      "sha256": "0def1d45ba05d6b316ef901071656d0ceb4310c35027d5c9ed1a68ffcd0b6050",
+      "bytes": 836971,
+      "canvasPx": [
+        1309,
+        1201
+      ],
+      "mode": "RGBA",
+      "alphaZeroFraction": 0.693994,
+      "alphaOpaqueFraction": 0.0,
+      "registration": {
+        "offsetPx": [
+          0,
+          0
+        ],
+        "scale": 1,
+        "crop": null
+      },
+      "originalBytesPreserved": true
+    }
+  ],
+  "compositeOrder": [
+    "01-far-forest",
+    "02-ground",
+    "03-midground",
+    "actor-shadows-reserved",
+    "actors-reserved",
+    "04-foreground"
+  ],
+  "actorSlots": [
+    {
+      "id": "hero",
+      "footNormalized": [
+        0.3,
+        0.69
+      ],
+      "facing": "right",
+      "referenceVisibleHeightNormalized": 0.24
+    },
+    {
+      "id": "slime",
+      "footNormalized": [
+        0.76,
+        0.685
+      ],
+      "facing": "left",
+      "referenceVisibleHeightNormalized": 0.085
+    }
+  ],
+  "runtimeImport": {
+    "fit": "uniform-contain",
+    "sharedCanvasTransform": true,
+    "automaticAlphaBoundsCrop": false,
+    "perLayerStretchOrRecenter": false,
+    "parallax": "disabled in this deliverable; hidden-content completion and overscan not validated for moving camera",
+    "lighting": "upper-left sun and environment dapple are baked into the individual scene layers; actor shadows must be separate"
+  },
+  "scope": [
+    "Four independent registered full-canvas environment plates",
+    "Opaque far forest plus real-alpha ground, camp/rocks and foreground",
+    "Actor-free layered reconstruction, browser preview and source provenance"
+  ],
+  "notDelivered": [
+    "Independent hero, wardrobe, weapon, slime or animation",
+    "Real-time relighting or interactive parallax",
+    "Map coordinate exact reconstruction",
+    "Native app integration or new IPA"
+  ],
+  "reservedLayers": [
+    {
+      "id": "actor-shadows-reserved",
+      "zIndex": 30
+    },
+    {
+      "id": "actors-reserved",
+      "zIndex": 35
+    }
+  ]
+}

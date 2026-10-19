@@ -1,0 +1,203 @@
+{
+  "status": "asset-contract-and-browser-recomposition-checked-awaiting-art-review",
+  "checks": [
+    {
+      "name": "frozen-approved-reference",
+      "passed": true,
+      "detail": "Original approved image hash unchanged"
+    },
+    {
+      "name": "01-far-forest-file-contract",
+      "passed": true,
+      "detail": {
+        "canvasPx": [
+          1309,
+          1201
+        ],
+        "mode": "RGB",
+        "sourceBytesPreserved": true
+      }
+    },
+    {
+      "name": "02-ground-file-contract",
+      "passed": true,
+      "detail": {
+        "canvasPx": [
+          1309,
+          1201
+        ],
+        "mode": "RGBA",
+        "sourceBytesPreserved": true
+      }
+    },
+    {
+      "name": "03-midground-file-contract",
+      "passed": true,
+      "detail": {
+        "canvasPx": [
+          1309,
+          1201
+        ],
+        "mode": "RGBA",
+        "sourceBytesPreserved": true
+      }
+    },
+    {
+      "name": "04-foreground-file-contract",
+      "passed": true,
+      "detail": {
+        "canvasPx": [
+          1309,
+          1201
+        ],
+        "mode": "RGBA",
+        "sourceBytesPreserved": true
+      }
+    },
+    {
+      "name": "03-midground-foot-contact-window",
+      "passed": true,
+      "detail": {
+        "hero": {
+          "maxAlpha": 1,
+          "visibleAlphaAbove20": 0,
+          "rectLTRB": [
+            315,
+            802,
+            477,
+            851
+          ]
+        },
+        "slime": {
+          "maxAlpha": 1,
+          "visibleAlphaAbove20": 0,
+          "rectLTRB": [
+            925,
+            799,
+            1065,
+            844
+          ]
+        }
+      }
+    },
+    {
+      "name": "04-foreground-foot-contact-window",
+      "passed": true,
+      "detail": {
+        "hero": {
+          "maxAlpha": 1,
+          "visibleAlphaAbove20": 0,
+          "rectLTRB": [
+            315,
+            802,
+            477,
+            851
+          ]
+        },
+        "slime": {
+          "maxAlpha": 0,
+          "visibleAlphaAbove20": 0,
+          "rectLTRB": [
+            925,
+            799,
+            1065,
+            844
+          ]
+        }
+      }
+    },
+    {
+      "name": "openraster-roundtrip",
+      "passed": true,
+      "detail": "CRC, original layer bytes, zero offsets and foreground-first stack order verified"
+    }
+  ],
+  "manualReview": {
+    "performed": true,
+    "scope": [
+      "View all four generated plates and actual browser recomposition",
+      "No visible human, slime, weapon or leftover actor shadow in environment",
+      "Path and camp reconnect; foreground preserves battle window"
+    ],
+    "artApproval": null
+  },
+  "outputs": {
+    "review.png": {
+      "sha256": "1f486f48a39e3f5ecab1727836425578a4a8ab6b38ee8ff9a06c1b04eb4c06cd",
+      "bytes": 3017579
+    },
+    "camp-clearing-layers.ora": {
+      "sha256": "1dc2fe3cd87f6e97a12bfaad53641d685a451d5142d7c9417cdbc01c0f4451ae",
+      "bytes": 9771392
+    }
+  },
+  "limits": [
+    "No native compilation, new IPA or physical iPad test",
+    "No parallax movement or real-time lighting validation",
+    "Automated alpha checks cover foot contact windows, not all possible seven-player formations"
+  ],
+  "browser": {
+    "imageDecode": [
+      {
+        "id": "01-far-forest",
+        "complete": true,
+        "width": 1309,
+        "height": 1201
+      },
+      {
+        "id": "02-ground",
+        "complete": true,
+        "width": 1309,
+        "height": 1201
+      },
+      {
+        "id": "03-midground",
+        "complete": true,
+        "width": 1309,
+        "height": 1201
+      },
+      {
+        "id": "04-foreground",
+        "complete": true,
+        "width": 1309,
+        "height": 1201
+      }
+    ],
+    "independentLayerToggles": [
+      {
+        "id": "01-far-forest",
+        "removalChangesRenderedPixels": true,
+        "restoringRecoversOriginal": true
+      },
+      {
+        "id": "02-ground",
+        "removalChangesRenderedPixels": true,
+        "restoringRecoversOriginal": true
+      },
+      {
+        "id": "03-midground",
+        "removalChangesRenderedPixels": true,
+        "restoringRecoversOriginal": true
+      },
+      {
+        "id": "04-foreground",
+        "removalChangesRenderedPixels": true,
+        "restoringRecoversOriginal": true
+      }
+    ],
+    "resizedSharedCanvas": [
+      {
+        "viewportWidth": 1194,
+        "identicalLayerFrames": true,
+        "aspectPreserved": true
+      },
+      {
+        "viewportWidth": 960,
+        "identicalLayerFrames": true,
+        "aspectPreserved": true
+      }
+    ],
+    "scriptErrors": [],
+    "renderer": "Chromium via Playwright; fixed camera; no native iPad runtime claim"
+  }
+}
