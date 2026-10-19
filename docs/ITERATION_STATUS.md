@@ -16,7 +16,7 @@
 
 设备 Release 归档使用 `package_only` 路径单独成功，生成 1.6.4 build 29 未签名 IPA；工作流已执行包内 ZIP 完整性检查和 SideStore 包信息检查。包已保存为 [MeadowJourney-b29.ipa](../Downloads/MeadowJourney-b29.ipa)，17,192,658 字节，SHA-256 `8e0861e2ecd8ea4976e334e42c2605b96abfa1d07510945b5379300ccdc3ac5f`；[构建与校验元数据](../Downloads/MeadowJourney-build29.json)。该归档工作流没有运行模拟器测试；以上分屏检查来自同一源码提交 `cd28a0b` 的完整工作流。物理 iPad 安装和场景观感仍待用户检视，人物单帧及环境搭配仍是原型候选。
 
-为直接检查构图，快速预览工作流的 `preview_only` 现在会单独跑分层步态对照和 Meadow 战斗分屏两个 UI 用例，并上传小型 `ios-preview-stills-iPad` 截图包；本分支的这一轮截图任务待运行。
+为直接检查构图，快速预览工作流的 `preview_only` 单独运行了分层步态对照和 Meadow 战斗分屏两个 UI 用例。run `39241549676` 的两个用例均通过，截图包 artifact `12181223533` 已上传；其中 `meadow-map-left-battle-scene-right` 已解出并目视确认左侧为 Meadow Journey 地图、右侧为横版战场。工作流最后的截图导出步骤因两次导出共用 `manifest.json` 路径而报错，未影响两项 UI 测试；导出的截图仍在 artifact 中。下一轮整理截图时应将两次导出写入不同目录。
 
 build 9 交付后用户仍发现阴影、步态、道路及旗杆遮挡问题；最新待修项见文末，后续版本需重新进行视觉验收。
 
