@@ -92,7 +92,7 @@ private final class MeadowBattleLandscapeView: UIView {
     private let sky = CAGradientLayer()
     private let ground = UIImageView(image: UIImage(named: "MeadowGround"))
     private let groundMask = CAGradientLayer()
-    private let sunGlow = UIImageView(image: Self.makeSunGlow())
+    private let sunGlow = UIImageView(image: MeadowBattleLandscapeView.makeSunGlow())
     private let sunWash = CAGradientLayer()
     private let pathFill = CAShapeLayer()
     private let pathEdge = CAShapeLayer()
