@@ -3,8 +3,8 @@
   "format": 3,
   "updated": "2026-10-19",
   "workflow": "Review one direction at a time from fixed cardinal and diagonal baselines. Modify and resubmit the same direction until explicit user artwork approval, then advance. Record provenance, feedback and accepted revisions for the future character template.",
-  "current": "wardrobe-down-v3-forward-grip-idle",
-  "templateStatus": "independent heads approved; wardrobe requires forward-grip and coherent blade/guard perspective review; current v3 is idle00 study only",
+  "current": "wardrobe-down-v4-point-down-grip",
+  "templateStatus": "independent heads approved; current wardrobe/sword artwork awaits review of a single down idle pose with point-down forward grip and coherent edge/guard perspective",
   "items": [
     {
       "id": "01-down-idle",
@@ -1530,24 +1530,28 @@
   },
   "wardrobeReview": {
     "status": "awaiting_user_review",
-    "source": "Art/Templates/P1-Wardrobe/down/v3",
+    "source": "Art/Templates/P1-Wardrobe/down/v4",
     "direction": "down",
     "clip": "idle",
     "frame": 0,
     "artApproval": null,
-    "scope": "single idle00 forward-grip and oblique blade/crossguard art study; no new animation or production package",
-    "reviewImage": "Art/Templates/P1-Wardrobe/down/v3/review.png",
+    "scope": "single 00 pose: natural arm, normal forward grip on point-down sword, blade edge turned slightly toward camera and same-plane foreshortened guard",
+    "reviewImage": "Art/Templates/P1-Wardrobe/down/v4/review.png",
+    "standaloneParts": "Art/Templates/P1-Wardrobe/down/v4/independent-parts.png",
+    "registration": "Art/Templates/P1-Wardrobe/down/v4/registration.json",
+    "generation": "Art/Templates/P1-Wardrobe/down/v4/generation.json",
+    "validation": "Art/Templates/P1-Wardrobe/down/v4/validation.json",
     "normalLoop": null,
-    "standaloneParts": "Art/Templates/P1-Wardrobe/down/v3/independent-parts.png",
-    "validation": "Art/Templates/P1-Wardrobe/down/v3/validation.json",
-    "registration": "Art/Templates/P1-Wardrobe/down/v3/registration.json",
-    "generation": "Art/Templates/P1-Wardrobe/down/v3/generation.json",
     "animationGenerated": false,
     "productionManifestGenerated": false,
-    "feedback": "还是怪，持剑别要反手握剑柄。而且这个方向的剑应该是剑刃部分微微斜对镜头，而不是剑身正对镜头",
-    "additionalFeedback": "你做的图里剑柄的护手方向没有随剑身一起旋转",
-    "gripRevision": "thumb/index at guard end; pommel at pinky end; blade and foreshortened crossguard share oblique plane",
-    "next": "review idle00 anatomy and blade/guard perspective before expanding same shared hand and independent weapon into nine poses",
+    "feedbackHistory": [
+      "剑没有握持感",
+      "还是怪，持剑别要反手握剑柄。而且这个方向的剑应该是剑刃部分微微斜对镜头，而不是剑身正对镜头",
+      "你做的图里剑柄的护手方向没有随剑身一起旋转",
+      "这张还不能过；上一稿抬起剑尖而且握法不自然。"
+    ],
+    "authorization": "那你改到你自己满意为止",
+    "next": "After pose review, expand the common hand grip and sword setup to the same nine down poses.",
     "history": [
       {
         "source": "Art/Templates/P1-Wardrobe/down/v1",
@@ -1579,6 +1583,16 @@
         "feedback": "还是怪，持剑别要反手握剑柄。而且这个方向的剑应该是剑刃部分微微斜对镜头，而不是剑身正对镜头",
         "gripRevision": "shared closed fist plus compact hilt; same common hand when empty and armed",
         "additionalFeedback": "你做的图里剑柄的护手方向没有随剑身一起旋转"
+      },
+      {
+        "source": "Art/Templates/P1-Wardrobe/down/v3",
+        "status": "revision_requested",
+        "reviewImage": "Art/Templates/P1-Wardrobe/down/v3/review.png",
+        "feedback": [
+          "你觉得这对吗",
+          "那你改到你自己满意为止"
+        ],
+        "assistantAssessment": "v3 raised the sword tip and did not preserve a natural downward carry; hand and blade/guard relation were not accepted."
       }
     ]
   }

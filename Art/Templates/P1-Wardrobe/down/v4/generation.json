@@ -1,0 +1,42 @@
+{
+  "date": "2026-10-19",
+  "status": "awaiting_art_review",
+  "records": [
+    {
+      "part": "weapon",
+      "source": "parts/weapon/source/down.png",
+      "prompt": "parts/weapon/source/prompt.txt",
+      "tool": "image_gen.imagegen",
+      "toolOutput": "/workspace/generated_images/exec-6d738c44-1e9e-4fe7-91ca-b0233a9b7905.png",
+      "references": [],
+      "sha256": "94d19f35d9ab3701d4ddf93c863e6de78f18f3c7e408b206cf71c658ce70d1f3",
+      "promptSHA256": "b2165be53adc1253ff4766c13ad2f89bce7aeefeb8708deb701f334295514d00",
+      "note": "Point-down blade at a modest oblique camera angle; fixed whole-plate registration to 96px, width 3-4px with a short foreshortened guard."
+    },
+    {
+      "part": "hand",
+      "source": "parts/hand/source/common-hand-r3.png",
+      "tool": "existing common body art",
+      "references": [
+        "Art/Templates/P1-Neutral/down/walk-r3/layers/00/body.hand.right.png"
+      ],
+      "sha256": "bc93b76f0e398adfbeb831dc236d31feee8843e2d6210c96490dfa55ccae5117",
+      "note": "Fixed 90-degree clockwise rotation about grip socket, kept as a separate local hand piece."
+    },
+    {
+      "part": "hand-draft-not-used",
+      "source": "drafts/hand-refinement.png",
+      "prompt": "drafts/hand-refinement-prompt.txt",
+      "tool": "image_gen.imagegen",
+      "toolOutput": "/workspace/generated_images/exec-17bc4d0b-9f01-4cde-a808-2d322a8e0e7e.png",
+      "references": [
+        "drafts/old-generated-hand.png"
+      ],
+      "sha256": "bfaacb9573945d3667d2e2a6d7fbbea4a5ed32f56aff1880c6449009443586f6",
+      "promptSHA256": "01eb48d08f2f39fb926b15f9e0eb914b84ffef524a2f1ba79923936f4b0897e7",
+      "referenceSHA256": "ba87919e57ef497eaea0301d765ee530459b90c90cfce3022c4381344692c469",
+      "note": "Rejected hand refinement; current hand uses the shared common fist with an explicit fixed turn."
+    }
+  ],
+  "registrationSHA256": "2be13d1c76048c5bb1865663e0a8a291a43a4590bdaca11f7fc15f037154c8b6"
+}
