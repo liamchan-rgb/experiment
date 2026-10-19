@@ -9,7 +9,7 @@ on:
         required: false
         default: false
       preview_only:
-        description: 'Run only the layered gait preview iPad screenshot check'
+        description: 'Run only the layered gait and Meadow battle preview iPad screenshot checks'
         type: boolean
         required: false
         default: false
@@ -146,6 +146,7 @@ jobs:
           if [[ '${{ inputs.preview_only }}' == 'true' ]]; then
             focused_tests=(
               -only-testing:MeadowJourneyUITests/JourneyUITests/testLayeredP1ColorwayPreviewRunsBesideOriginalInTheMapScene
+              -only-testing:MeadowJourneyUITests/JourneyUITests/testMeadowBattlePreviewKeepsReferenceMapBesideLandscapeScene
             )
           else
             focused_tests=(
@@ -196,24 +197,28 @@ jobs:
               --output-path build/review/attachments 2>&1 | tee build/logs/screen-export.log
           fi
 
-      - name: Export layered preview screenshot only
+      - name: Export the focused preview screenshots
         if: ${{ always() }}
         run: |
           set -euo pipefail
           if [ -d build/MapReview.xcresult ]; then
-            mkdir -p build/layered-preview
+            mkdir -p build/preview-stills
             xcrun xcresulttool export attachments --path build/MapReview.xcresult \
-              --output-path build/layered-preview \
+              --output-path build/preview-stills \
               --test-id 'JourneyUITests/testLayeredP1ColorwayPreviewRunsBesideOriginalInTheMapScene()' \
               2>&1 | tee build/logs/layered-preview-export.log
+            xcrun xcresulttool export attachments --path build/MapReview.xcresult \
+              --output-path build/preview-stills \
+              --test-id 'JourneyUITests/testMeadowBattlePreviewKeepsReferenceMapBesideLandscapeScene()' \
+              2>&1 | tee build/logs/meadow-battle-preview-export.log
           fi
 
-      - name: Upload focused layered preview screenshot
+      - name: Upload the focused preview screenshots
         if: ${{ always() }}
         uses: actions/upload-artifact@v7
         with:
-          name: layered-p1-preview-iPad
-          path: build/layered-preview/
+          name: ios-preview-stills-iPad
+          path: build/preview-stills/
           if-no-files-found: warn
           retention-days: 30
 
