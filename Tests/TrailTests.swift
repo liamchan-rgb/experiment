@@ -435,6 +435,9 @@ final class TrailTests: XCTestCase {
         XCTAssertEqual(heroFoot.y, expectedCanvas.height * 0.69, accuracy: 0.01)
         XCTAssertEqual(slimeFoot.x, expectedCanvas.width * 0.76, accuracy: 0.01)
         XCTAssertEqual(slimeFoot.y, expectedCanvas.height * 0.685, accuracy: 0.01)
+        XCTAssertEqual(view.heroViewFrame.height * (156.0 / 256.0),
+                       expectedCanvas.height * MeadowBattleCanvasGeometry.heroVisibleHeight, accuracy: 0.01,
+                       "The traveller should read at battle-character scale rather than as a map-scale giant")
         XCTAssertEqual(view.slimeViewFrame.height * (648.0 / 1024.0),
                        expectedCanvas.height * MeadowBattleCanvasGeometry.slimeVisibleHeight, accuracy: 0.01,
                        "The enemy needs enough visual weight to read clearly in the battle pane")

@@ -270,8 +270,8 @@ private final class MeadowPreviewCard: UIView {
 struct MeadowBattleCanvasGeometry {
     static let sourceCanvas = CGSize(width: 1309, height: 1201)
     static let sceneLayerOrder = ["MeadowCampFarForest", "MeadowCampGround", "MeadowCampMidground", "MeadowCampForeground"]
-    static let heroVisibleHeight: CGFloat = 0.24
-    static let slimeVisibleHeight: CGFloat = 0.17
+    static let heroVisibleHeight: CGFloat = 0.12
+    static let slimeVisibleHeight: CGFloat = 0.38
 
     static func fittedCanvas(in bounds: CGRect) -> CGRect {
         let scale = min(bounds.width / sourceCanvas.width, bounds.height / sourceCanvas.height)
