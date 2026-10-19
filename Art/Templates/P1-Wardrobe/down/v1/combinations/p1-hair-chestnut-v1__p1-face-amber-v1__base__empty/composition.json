@@ -1,0 +1,26 @@
+{
+  "folder": "combinations/p1-hair-chestnut-v1__p1-face-amber-v1__base__empty",
+  "base": "p1-neutral-down-walk-r2",
+  "assets": [
+    "p1-hair-chestnut-v1",
+    "p1-face-amber-v1"
+  ],
+  "direction": "down",
+  "motionSHA256": "cb0b4896eb90062b93a3e9768b5bf24be4a3ed794c1621188bf189cc9e802642",
+  "assetManifestSHA256": {
+    "p1-neutral-down-walk-r2": "42f3d3ca196b4f1d73f2a2972625f5c5ebd1b7a0d6e47e8b59298eed17eeb829",
+    "p1-hair-chestnut-v1": "8cb282d7b17d9026320c9b8ee7e2e62339dbb68adc18896a715fb0be806a91cd",
+    "p1-face-amber-v1": "6594c9cf4c0e1674c143d68ca61f3b1d631b7207d7aa60e7bbd33340bd12e319"
+  },
+  "frames": {
+    "00.png": "7f005a92c6a72a15dc6adf586e4eb07f606c191ef69754e83dc4a6def896f792",
+    "01.png": "9ffaa03c074fed62d7dffa66b5e68e5b79f0a12af5cb6ed78f32940a11cf3bcd",
+    "02.png": "220e55d44ac2ecd90fd297112b9b6da02c4ded842d702a4a555f82970a4db2be",
+    "03.png": "1760082952edd9f1d35b9043824db7e6d48c158e24473737610534cf09ac5f85",
+    "04.png": "26a842c9dc8fb28538a1b8434640e9ab59708994ac89fad7809020f4b5a20d8b",
+    "05.png": "23b31d3ade905a8511bbe665001a651b4fa62eed4ab5449b75e63da7c5280a4f",
+    "06.png": "a861a58fb4edf7e306277acea11c2c960ce491fb01952a5a8e5fbd509417b312",
+    "07.png": "eda12913a7f466cc2f9bb5d08add143d08eff7ac3cce1f04f4e61a8f4a71cc2a",
+    "08.png": "a5c853c522b11027c36fad56c3eeede3bd01b63fc186f043f3dd8846a5e8eb3f"
+  }
+}

@@ -1,0 +1,112 @@
+{
+  "passed": true,
+  "frozenFilesChecked": 100,
+  "protectedImagesChecked": 732,
+  "originalFrozenFilesChanged": [],
+  "runtimeAndContractChanged": [],
+  "motionPoseDataIdenticalToApprovedHeadModule": true,
+  "motionChangedFields": [
+    "baseManifestSHA256"
+  ],
+  "commonBodyTechnicalCorrection": {
+    "kind": "technical-layer-ownership-correction",
+    "source": "Art/Templates/P1-Neutral/down/walk-r1",
+    "sourceManifestSHA256": "0ffe93b713abd772071b9c55a4733674094aa6c01993f644a7c613c1803f97e7",
+    "date": "2026-10-19",
+    "reason": "Frame07 right foreground layer included a posterior left-calf fragment; it covered long trousers.",
+    "reassignedPolygon": [
+      [
+        129,
+        193
+      ],
+      [
+        135,
+        193
+      ],
+      [
+        135,
+        210
+      ],
+      [
+        127,
+        210
+      ],
+      [
+        127,
+        202
+      ],
+      [
+        129,
+        202
+      ]
+    ],
+    "from": "body.leg.right",
+    "to": "body.leg.left",
+    "movedAlphaPixels": 48,
+    "changedLayers": [
+      "layers/07/body.leg.right.png",
+      "layers/07/body.leg.left.png"
+    ],
+    "approvedCompositePixelEquality": true,
+    "approvedPNGBytesPreserved": {
+      "frames/00.png": "a74c005b6b115928f953ccba588fb9712113d6eead7fc3222624fa116c54fc8d",
+      "frames/01.png": "f80ede7385ba37588d0441a2a64b8ce30ed09c8632e828e2ef711d56d4be2046",
+      "frames/02.png": "fcab5c5b509041159984ba0a293e4dfe377cb5e19da38ac0e5f16d1dad2eb3f6",
+      "frames/03.png": "3b603bfbe41cc16aeaca5ba4599e82ef0c2f54c12dfd0dad96c2cb8e8a24c3a5",
+      "frames/04.png": "75c7ecc65bc33af86e9c109a7c82690fb1974fab6d5aed89a73b7c543204cbfb",
+      "frames/05.png": "0ec2f33e77f8bbe92455b5bf084c24d0fe416b00a372c47061a62091900e922d",
+      "frames/06.png": "f67ef155780e4ede883ac83090b14fe860628da70317ba1ea36643b0cb832a2c",
+      "frames/07.png": "4b3a6e6bd98954d9007ef4443d20e8f3fb78ec62bf3b8cb8b22d7e2df4aefe9d",
+      "frames/08.png": "bfc009ee05efb938621c5e0a4fba537632a62eeeac8079227e17682f88e7fdca"
+    },
+    "scope": "One common base for all new combinations, never selected by appearance ID.",
+    "artApproval": null,
+    "approvalNote": "Original composed body artwork remains exactly as approved; layer reassignment is technical, not a new user art approval."
+  },
+  "catalogOldHeadEntriesUnchanged": true,
+  "catalogCommonBaseReplaced": {
+    "id": "p1-neutral-down-walk-r2",
+    "manifest": "Art/Templates/P1-Neutral/down/walk-r2/asset.json",
+    "label": "COMMON BODY / CORRECTED LAYER OWNERSHIP"
+  },
+  "catalogEntriesAdded": [
+    {
+      "id": "p1-outfit-forester-v1",
+      "manifest": "Art/Parts/P1-v1/outfit-forester/asset.json",
+      "label": "FORESTER OUTFIT"
+    },
+    {
+      "id": "p1-weapon-short-sword-v1",
+      "manifest": "Art/Parts/P1-v1/weapon-short-sword/asset.json",
+      "label": "SHORT SWORD"
+    }
+  ],
+  "packages": [
+    {
+      "id": "p1-outfit-forester-v1",
+      "manifest": "Art/Parts/P1-v1/outfit-forester/asset.json",
+      "sha256": "ea504138699da7f93836b8578befdc2116cc1862990b26bb352415bf62ee5291",
+      "slots": [
+        "outfit.pants.right",
+        "outfit.boot.right",
+        "outfit.pants.left",
+        "outfit.boot.left",
+        "outfit.sleeve.right",
+        "outfit.sleeve.left",
+        "outfit.torso",
+        "outfit.hem.front"
+      ]
+    },
+    {
+      "id": "p1-weapon-short-sword-v1",
+      "manifest": "Art/Parts/P1-v1/weapon-short-sword/asset.json",
+      "sha256": "76be08492267661177d8b2a9c06805ec282f6b506efa3595171d87537e670f8a",
+      "slots": [
+        "weapon.right"
+      ]
+    }
+  ],
+  "combinations": 24,
+  "poses": 216,
+  "artApproval": null
+}

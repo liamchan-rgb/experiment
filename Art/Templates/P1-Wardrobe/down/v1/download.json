@@ -1,0 +1,14 @@
+{
+  "artifact": "Art/Prototypes/P1-Wardrobe-v1.zip",
+  "sha256": "303698419590ef6370aceda425221be23de68eebde91a0fd9da0ee7de0c4b57b",
+  "bytes": 14933249,
+  "files": 799,
+  "zipCRC": true,
+  "inventorySHA256Verified": 798,
+  "standaloneCompositorTests": 19,
+  "standaloneAssetPackagesChecked": 8,
+  "standaloneActualCLIPoseEquality": 9,
+  "gifFiles": 2,
+  "allGIFFrameMs": 120,
+  "nativeOrDeviceTest": false
+}

@@ -1,0 +1,28 @@
+{
+  "folder": "combinations/p1-hair-teal-crop-v1__p1-face-blue-v1__dressed__empty",
+  "base": "p1-neutral-down-walk-r2",
+  "assets": [
+    "p1-hair-teal-crop-v1",
+    "p1-face-blue-v1",
+    "p1-outfit-forester-v1"
+  ],
+  "direction": "down",
+  "motionSHA256": "cb0b4896eb90062b93a3e9768b5bf24be4a3ed794c1621188bf189cc9e802642",
+  "assetManifestSHA256": {
+    "p1-neutral-down-walk-r2": "42f3d3ca196b4f1d73f2a2972625f5c5ebd1b7a0d6e47e8b59298eed17eeb829",
+    "p1-hair-teal-crop-v1": "051240fda008c51945c40b5ceff78e6891ce793d65e2a95e379b4870f2a1a05c",
+    "p1-face-blue-v1": "44acc92dbdc081fc0678a3ca6131cb73cb28c48b506cf75f8c2c27d5ba8d3a86",
+    "p1-outfit-forester-v1": "ea504138699da7f93836b8578befdc2116cc1862990b26bb352415bf62ee5291"
+  },
+  "frames": {
+    "00.png": "51b744409d477754ea9ac7b7fc7efac70294c2d12d8b231a331921bd92acc1f6",
+    "01.png": "75e827bf0ed39757bd55d56b32bad943c86fc84c02f63704f50446aace8dbf90",
+    "02.png": "0f53e6eab9b6d92ba147a0697c8a163d1a907ad67b5ea8376571880c9b49f008",
+    "03.png": "0131e9189eb8cdfeec5f2f44fa54ff9d57063209a6f3bfd8ad8390dcbd5b0605",
+    "04.png": "58240d7a5aee510043ad6ab1e8cda088e33db375004b84c8cda5645641c92d50",
+    "05.png": "6abd39e5cca636f6848f822d4173b72c77288477d0c78dc8c116616b19e8d6da",
+    "06.png": "dec76622366ad0532950f7b0ac4ad2d2d20a51670ba924dd555d48fc2b0470ad",
+    "07.png": "1f6e409b9b18811d418b53ccb95d3342ba85d0a3386b495b39cdf8d00fb10d52",
+    "08.png": "a6d38cfe464eef5006d595a2335240f442a90f6010b36cc7f1584d2f8fd6106c"
+  }
+}

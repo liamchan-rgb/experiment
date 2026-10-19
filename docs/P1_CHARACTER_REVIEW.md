@@ -4,11 +4,13 @@
 
 ## 当前审核
 
-**八方向原步态、向下共同中性站姿和八帧行走已获认可；当前审核独立头部换装 v1。**
+**八方向原步态、向下中性人体和独立头部组合已认可；当前审核首套独立衣物与短剑。**
 
-用户回复“没问题，开始下一部分工作”，认可[中性向下步态](../Art/Templates/P1-Neutral/down/walk-r1/approval.json)，并明确后续动图只提供正常速度（120 ms／帧）。当前[三发型×两五官](../Art/Templates/P1-Modular/down/v1/README.md)六种组合使用相同身体／动作：[正常循环](../Art/Templates/P1-Modular/down/v1/walk.gif) · [头部放大](../Art/Templates/P1-Modular/down/v1/heads.png) · [不铺底模的独立部件](../Art/Templates/P1-Modular/down/v1/independent-parts.png)。清单驱动装配器通过19项集成检查，[第三发型接入证明](../Art/Templates/P1-Modular/down/v1/integration-after-third.json)确认工具／身体／动作／合同不改；新美术认可为空。
+用户于2026-10-19回复“没问题”，认可[三发型×两五官](../Art/Templates/P1-Modular/down/v1/approval.json)。本组新增绿外套、深灰裤装、棕靴和独立单手短剑：[正常120ms循环](../Art/Templates/P1-Wardrobe/down/v1/walk.gif) · [编号九帧](../Art/Templates/P1-Wardrobe/down/v1/poses.png) · [资源与验证说明](../Art/Templates/P1-Wardrobe/down/v1/README.md)。24种组合／216个姿势通过同一装配器，新美术认可为空。当前只提交这组向下资源，不生成新的慢动作。
 
-用户明确要求新美术资源遵守统一人体／动作标准，直接挂载使用，指出旧银发与金眼脸片存在配套耦合。已建立[独立部件合同与导板](../Art/Standards/P1-Parts-v1/README.md)及[旧方案审查](../Art/Standards/P1-Parts-v1/MIGRATION.md)；共同头型与向下中性行走已认可，独立头部挂载和装配器原型已实现；实际衣物／武器、完整换装验收及其他七方向中性人体尚未完成。
+长裤试穿发现旧底模第7帧前景腿层夹带后腿片段；另存[公共r2技术修正](../Art/Templates/P1-Neutral/down/walk-r2/correction.json)，归回48个像素，九张合成人体与已认可版本完全相同。所有新组合统一使用该底模，不按外观切身体；动作仅更新身体清单摘要，全部姿势／关节／层序不变。本轮不宣称身体／动作文件零修改，原头部第三资源证明继续有效。
+
+用户明确要求新美术资源遵守统一人体／动作标准，直接挂载使用，指出旧银发与金眼脸片存在配套耦合。已建立[独立部件合同与导板](../Art/Standards/P1-Parts-v1/README.md)及[旧方案审查](../Art/Standards/P1-Parts-v1/MIGRATION.md)；共同头型与向下中性行走已认可，独立头部挂载和装配器已认可；首套实际衣物／武器待本组美术认可，第二种衣物版型、完整换装验收及其他七方向中性人体尚未完成。
 
 用户确认“可以的，我们走路的方向动画都调好了”，右上 r1 的认可已记录。已认可动作冻结为 `Art/Templates/P1-Motion-v1.json`，共八方向、每方向站姿＋八帧。用户随后以“按你说的来”授权先做向下方向换装验证；这个授权不等于新外观美术认可。
 

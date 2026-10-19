@@ -1,0 +1,57 @@
+{
+  "id": "p1-weapon-short-sword-v1",
+  "part": "weapon",
+  "mode": "socket",
+  "compatibility": {
+    "rig": "p1-chibi-v1",
+    "bodyProfile": "p1-standard",
+    "actionSet": "locomotion-v1"
+  },
+  "sourceCanvas": [
+    1254,
+    1254
+  ],
+  "registrationGutter": [
+    80,
+    80,
+    1174,
+    1174
+  ],
+  "authorCanvas": [
+    96,
+    96
+  ],
+  "canvas": [
+    64,
+    96
+  ],
+  "pivot": [
+    32,
+    26
+  ],
+  "socket": "grip.right",
+  "gripProfile": "one-hand-closed",
+  "notes": [
+    "Whole registration plate1254->96, then fixed x16..80 crop; no content bounds fitting.",
+    "Authored pivot26 is actual central handle pixel, not the proposed guide20. Motion is unchanged."
+  ],
+  "poses": [
+    {
+      "frame": 0,
+      "clip": "idle",
+      "layers": {
+        "weapon.right": [
+          {
+            "source": "source/down.png",
+            "crop": [
+              16,
+              0,
+              80,
+              96
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

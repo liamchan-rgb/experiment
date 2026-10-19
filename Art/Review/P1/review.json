@@ -3,8 +3,8 @@
   "format": 3,
   "updated": "2026-10-18",
   "workflow": "Review one direction at a time from fixed cardinal and diagonal baselines. Modify and resubmit the same direction until explicit user artwork approval, then advance. Record provenance, feedback and accepted revisions for the future character template.",
-  "current": "modular-down-head-v1",
-  "templateStatus": "neutral down body and motion approved; head-local resource/compositor prototype and third-hair integration ready for artwork review; full wardrobe pending",
+  "current": "wardrobe-down-v1",
+  "templateStatus": "neutral down and independent heads approved; first actual wardrobe/weapon awaiting art review; all new combinations share r2 with identical approved body pixels",
   "items": [
     {
       "id": "01-down-idle",
@@ -1319,7 +1319,7 @@
     ]
   },
   "templateStandard": {
-    "status": "independent-down-head-assets-awaiting-review",
+    "status": "independent-heads-approved-first-real-wardrobe-awaiting-art-review",
     "path": "Art/Standards/P1-Parts-v1/README.md",
     "profile": "Art/Standards/P1-Parts-v1/profile.json",
     "artApproval": null,
@@ -1481,9 +1481,40 @@
     "userStatement": "没问题，开始下一部分工作，之后的动图预览不要给我发慢动作，正常速即可"
   },
   "modularHeadReview": {
-    "status": "awaiting_user_review",
+    "status": "approved",
     "source": "Art/Templates/P1-Modular/down/v1",
-    "artApproval": null,
+    "artApproval": {
+      "date": "2026-10-19",
+      "reviewer": "user",
+      "statement": "没问题",
+      "status": "approved",
+      "scope": "three independent down hairstyles, two facial-feature sets and six combinations shown at normal speed; first wardrobe/weapon separately pending",
+      "artifactPathBase": "repository root",
+      "artifacts": {
+        "Art/Templates/P1-Modular/down/v1/heads.png": "80b0caf9a2341d51b30f46d135b1589f69b584d8c4482c504e99dc46b000c8aa",
+        "Art/Templates/P1-Modular/down/v1/walk.gif": "fa12286d9461263b924ea5f6279f18c92a70009812486aea79a9aaa4201f811e",
+        "Art/Templates/P1-Modular/down/v1/independent-parts.png": "4047409b7b9488a70224c1b6f59241215881c15a1d79f15eb4e1b05ec14263e0",
+        "Art/Templates/P1-Modular/down/v1/catalog.json": "5299fe32ed98afeace4f6927ead40289a29f6893d33b2fee9f22655cfd76adea",
+        "Art/Templates/P1-Modular/down/v1/motion.json": "24270480b0206628e8528d644c8e491bff505965b258caa2d865992f248c10d3",
+        "Art/Templates/P1-Modular/down/v1/integration-after-third.json": "9c6e6f493225f9a5ea98baea00d52e3b57fe80f3f1cc2f519056594e3fa9e6d8",
+        "Art/Parts/P1-v1/face-amber/asset.json": "6594c9cf4c0e1674c143d68ca61f3b1d631b7207d7aa60e7bbd33340bd12e319",
+        "Art/Parts/P1-v1/face-amber/png/face.brows.png": "0fe5cc804c1ddf4e54ed21b4f0eca28238c7e532adf0a6d5d110f43cacd11e43",
+        "Art/Parts/P1-v1/face-amber/png/face.eyes.png": "6a486ffb177b704680003687e413a8812730dadc27e6aafcba37a13a6120af2b",
+        "Art/Parts/P1-v1/face-amber/png/face.mouth.png": "1210ee5e45a0b152aecbf2120413da84fb903dfe43a2a159321f731540bcabbc",
+        "Art/Parts/P1-v1/face-amber/png/face.nose.png": "8b231645299630d2468be58415c173a572fcda1e9e22b5c32fde082757a0758c",
+        "Art/Parts/P1-v1/face-blue/asset.json": "44acc92dbdc081fc0678a3ca6131cb73cb28c48b506cf75f8c2c27d5ba8d3a86",
+        "Art/Parts/P1-v1/face-blue/png/face.brows.png": "e81c4f12b9dee4ab5de01431999717864c70e18d5552bb9292c87973f1836663",
+        "Art/Parts/P1-v1/face-blue/png/face.eyes.png": "cc5a5bbb3b57263ade3bfd9ec14bf3c73560ef58e26a441f4ffe164c5e320bba",
+        "Art/Parts/P1-v1/face-blue/png/face.mouth.png": "0b1ee713d69214543cb44ad492112b9886b827289aa6a006ecb2367185339b1d",
+        "Art/Parts/P1-v1/face-blue/png/face.nose.png": "59e68b7fbe2db66c76fe8f687f8af01e03d58d51ddaed3084b70a935a91a1a9d",
+        "Art/Parts/P1-v1/hair-chestnut/asset.json": "8cb282d7b17d9026320c9b8ee7e2e62339dbb68adc18896a715fb0be806a91cd",
+        "Art/Parts/P1-v1/hair-chestnut/png/hair.front.png": "f5ec280903d3f3543dd4e46ed2546ee6dc37b4e971746297c013888f3ff4c53f",
+        "Art/Parts/P1-v1/hair-silver/asset.json": "f712156c63c16ef1ef3aa77274ba6101c44ccc17d0771e983c5ffec5112b0df2",
+        "Art/Parts/P1-v1/hair-silver/png/hair.front.png": "b7ea3acb10669c9a9d94834d2a5ac381dc7d51c2366c399cc24e09110dcb3e68",
+        "Art/Parts/P1-v1/hair-teal-crop/asset.json": "051240fda008c51945c40b5ceff78e6891ce793d65e2a95e379b4870f2a1a05c",
+        "Art/Parts/P1-v1/hair-teal-crop/png/hair.front.png": "b516ff57ee57b2dad1e63951a2d554c2f94c9c9d7393b3efc1f3af8440a16224"
+      }
+    },
     "scope": "independent hair/feature packages, generic compositor, cross combinations and third-hair zero-code integration",
     "hairPackages": 3,
     "facePackages": 2,
@@ -1495,6 +1526,28 @@
     "motion": "Art/Templates/P1-Modular/down/v1/motion.json",
     "validation": "Art/Templates/P1-Modular/down/v1/validation.json",
     "thirdHairProof": "Art/Templates/P1-Modular/down/v1/integration-after-third.json",
-    "next": "after head-resource review, author independent outfits/weapons and validate actual wardrobe occlusion; other directions later"
+    "next": "head resources approved; current wardrobe review in progress"
+  },
+  "wardrobeReview": {
+    "status": "awaiting_user_review",
+    "source": "Art/Templates/P1-Wardrobe/down/v1",
+    "direction": "down",
+    "artApproval": null,
+    "scope": "one long-sleeve green jacket, slate trousers and ankle boots set; one independent short sword; normal speed only",
+    "reviewImage": "Art/Templates/P1-Wardrobe/down/v1/poses.png",
+    "normalLoop": "Art/Templates/P1-Wardrobe/down/v1/walk.gif",
+    "standaloneParts": "Art/Templates/P1-Wardrobe/down/v1/independent-parts.png",
+    "catalog": "Art/Templates/P1-Wardrobe/down/v1/catalog.json",
+    "motion": "Art/Templates/P1-Wardrobe/down/v1/motion.json",
+    "validation": "Art/Templates/P1-Wardrobe/down/v1/validation.json",
+    "integrationProof": "Art/Templates/P1-Wardrobe/down/v1/integration-after.json",
+    "commonBody": "Art/Templates/P1-Neutral/down/walk-r2/asset.json",
+    "commonBodyCorrection": "Art/Templates/P1-Neutral/down/walk-r2/correction.json",
+    "combinations": 24,
+    "poses": 216,
+    "outfitPackages": 1,
+    "weaponPackages": 1,
+    "frameMs": 120,
+    "next": "after art review, validate replacement by a second outfit silhouette; remaining directions later"
   }
 }

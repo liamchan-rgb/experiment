@@ -1,0 +1,267 @@
+{
+  "tool": "image_gen.imagegen",
+  "date": "2026-10-19",
+  "transparentBackgroundRequested": true,
+  "referencePathBase": "repository root",
+  "rawSourcesPreserved": true,
+  "runtimeDependencies": [],
+  "authoringReferenceRole": "neutral fitting guide and same-outfit design only; no runtime dependency on another appearance",
+  "records": [
+    {
+      "revision": "00-r1",
+      "file": "source/00.png",
+      "promptFile": "source/prompt-00.txt",
+      "references": [
+        {
+          "path": "Art/Templates/P1-Wardrobe/down/v1/references/poses/00.png",
+          "sha256": "00e224b198e5ad9938256572ae5abc1fb61a855e45b2045ff67c00164abb39c0"
+        }
+      ],
+      "generatorOutputPath": "/workspace/generated_images/exec-5f660af3-918c-4696-aaa6-9400f68072c3.png",
+      "sha256": "207f7fa5beaa8a6b67b96e13372628f98b2d15d93f90b146d41e93e877e65d06",
+      "promptSHA256": "6ecae08be772dfb1f90c0a79b3c2fe49252d59049a9b7c8c37e40c74d1b9370e",
+      "status": "selected source regions as explicitly declared in authoring.json; wardrobe artwork awaiting user review"
+    },
+    {
+      "revision": "01-r1",
+      "file": "source/01.png",
+      "promptFile": "source/prompt-01.txt",
+      "references": [
+        {
+          "path": "Art/Templates/P1-Wardrobe/down/v1/references/poses/01.png",
+          "sha256": "bb33a07790f2006a228be8fe1ce7d210a0857ee9b001516d743d8b409aa47043"
+        },
+        {
+          "path": "Art/Parts/P1-v1/outfit-forester/source/00.png",
+          "sha256": "207f7fa5beaa8a6b67b96e13372628f98b2d15d93f90b146d41e93e877e65d06"
+        }
+      ],
+      "generatorOutputPath": "/workspace/generated_images/exec-ea7eafdc-3650-48ac-bf37-1b1bb2c28e70.png",
+      "sha256": "72e2d61e0bd6c776897455c4db6012773dce8bfec6b4aa7e2b467a15e92d2662",
+      "promptSHA256": "929a9c4ca15d5f002a1e55530a369f10750226ce80830610775ebd2502797c98",
+      "status": "selected source regions as explicitly declared in authoring.json; wardrobe artwork awaiting user review"
+    },
+    {
+      "revision": "02-r1",
+      "file": "drafts/02-r1.png",
+      "promptFile": "source/prompt-02.txt",
+      "references": [
+        {
+          "path": "Art/Templates/P1-Wardrobe/down/v1/references/poses/02.png",
+          "sha256": "32cbe13640ec62d71d2a794ae1d5e316c9fe5a55dd6dc666aecdcf4a5ecb532e"
+        },
+        {
+          "path": "Art/Parts/P1-v1/outfit-forester/source/00.png",
+          "sha256": "207f7fa5beaa8a6b67b96e13372628f98b2d15d93f90b146d41e93e877e65d06"
+        }
+      ],
+      "generatorOutputPath": "/workspace/generated_images/exec-6adfcf9a-d59b-423d-8a0e-943092b46953.png",
+      "sha256": "0eb0eb3d01b982f0ce03b43290e529755d80aae7def2c477eeb38be52fa1df51",
+      "promptSHA256": "47445b499e0d708da5d9480a1e45f5b520649d8962cbae99200f01e235a8d380",
+      "status": "retained earlier fitting revision, not selected"
+    },
+    {
+      "revision": "03-r1",
+      "file": "drafts/03-r1.png",
+      "promptFile": "source/prompt-03.txt",
+      "references": [
+        {
+          "path": "Art/Templates/P1-Wardrobe/down/v1/references/poses/03.png",
+          "sha256": "d4a46cd5483692242b72a62673334416dadf8f7409f13580265f669fd4ba2307"
+        },
+        {
+          "path": "Art/Parts/P1-v1/outfit-forester/source/00.png",
+          "sha256": "207f7fa5beaa8a6b67b96e13372628f98b2d15d93f90b146d41e93e877e65d06"
+        }
+      ],
+      "generatorOutputPath": "/workspace/generated_images/exec-b558daaa-8606-4dd3-b9cc-26dbcc96d9bf.png",
+      "sha256": "05cde1f31b974a9fb7ee74ec1e6909eac0e3d72eac62a3f3de1b9bc3aeced673",
+      "promptSHA256": "60c1d12cf633cc3e092099a43d397d571a1411d806b3d56c67f12bbdb08359a0",
+      "status": "retained earlier fitting revision, not selected"
+    },
+    {
+      "revision": "04-r1",
+      "file": "source/04.png",
+      "promptFile": "source/prompt-04.txt",
+      "references": [
+        {
+          "path": "Art/Templates/P1-Wardrobe/down/v1/references/poses/04.png",
+          "sha256": "9f3ee765c5f2562afbfe9d783d853a07cbb35ec970ad6fec9bac7a9d5475015d"
+        },
+        {
+          "path": "Art/Parts/P1-v1/outfit-forester/source/00.png",
+          "sha256": "207f7fa5beaa8a6b67b96e13372628f98b2d15d93f90b146d41e93e877e65d06"
+        }
+      ],
+      "generatorOutputPath": "/workspace/generated_images/exec-d1cfe8bd-e797-4234-a4bc-c68952cd5acc.png",
+      "sha256": "a08206558a1aa11b182eb067aaaf4877a17484390f2b3e98f89f8302e9196f3f",
+      "promptSHA256": "4a811cc9a20adc4c91079a863eb2e85bc01073af8dd744edd5666f91b0fce731",
+      "status": "selected source regions as explicitly declared in authoring.json; wardrobe artwork awaiting user review"
+    },
+    {
+      "revision": "05-r1",
+      "file": "source/05.png",
+      "promptFile": "source/prompt-05.txt",
+      "references": [
+        {
+          "path": "Art/Templates/P1-Wardrobe/down/v1/references/poses/05.png",
+          "sha256": "2ea0bf6e35a951f4ab98ff5b39dd53f1bc0e0274b65c23f4c060838942b271fe"
+        },
+        {
+          "path": "Art/Parts/P1-v1/outfit-forester/source/00.png",
+          "sha256": "207f7fa5beaa8a6b67b96e13372628f98b2d15d93f90b146d41e93e877e65d06"
+        }
+      ],
+      "generatorOutputPath": "/workspace/generated_images/exec-bec4f8b1-1059-49c2-807e-2f9113037500.png",
+      "sha256": "6ecfc51bb13fc7651087ff797834ea2875eddb6a44a6e7b1ceeb298e48fb41d7",
+      "promptSHA256": "3294142104245ed66a92034117ce7463a7496fd88e9889a2696228f7f2b7531e",
+      "status": "selected source regions as explicitly declared in authoring.json; wardrobe artwork awaiting user review"
+    },
+    {
+      "revision": "06-r1",
+      "file": "drafts/06-r1.png",
+      "promptFile": "source/prompt-06.txt",
+      "references": [
+        {
+          "path": "Art/Templates/P1-Wardrobe/down/v1/references/poses/06.png",
+          "sha256": "31058d877a04bc63986e1a8ecf0af00bf2ed35cde02ef0e4d886b04479ca51fb"
+        },
+        {
+          "path": "Art/Parts/P1-v1/outfit-forester/source/00.png",
+          "sha256": "207f7fa5beaa8a6b67b96e13372628f98b2d15d93f90b146d41e93e877e65d06"
+        }
+      ],
+      "generatorOutputPath": "/workspace/generated_images/exec-9c5b6e5e-de12-45ed-b784-ef5a08dd95da.png",
+      "sha256": "af76dd08a18b48ed89954878010a64282098c387f0a9b6cefca7da8b4eb9d7d9",
+      "promptSHA256": "4bbef488d50093e1a3f84d0e9dd68bb165d53ec085a22a5c107b2f48e632545b",
+      "status": "retained earlier fitting revision, not selected"
+    },
+    {
+      "revision": "07-r1",
+      "file": "drafts/07-r1.png",
+      "promptFile": "source/prompt-07.txt",
+      "references": [
+        {
+          "path": "Art/Templates/P1-Wardrobe/down/v1/references/poses/07.png",
+          "sha256": "76acd39f17854d07e2149c8f414a081c29c3cd6012365a4d5e3480fe7ea93d0e"
+        },
+        {
+          "path": "Art/Parts/P1-v1/outfit-forester/source/00.png",
+          "sha256": "207f7fa5beaa8a6b67b96e13372628f98b2d15d93f90b146d41e93e877e65d06"
+        }
+      ],
+      "generatorOutputPath": "/workspace/generated_images/exec-590111ac-d814-48ef-b8e5-2c0d1f0454d8.png",
+      "sha256": "38a9f5bd0244bbc9bf44d8a8ee7e1182e1dd6e37f2aae946a6ef595c6ca86c13",
+      "promptSHA256": "0b9aa1e391522d2a7164d0887a2061f1ff65e2da569b28f5d42efa4acfb751fe",
+      "status": "retained earlier fitting revision, not selected"
+    },
+    {
+      "revision": "08-r1",
+      "file": "source/08.png",
+      "promptFile": "source/prompt-08.txt",
+      "references": [
+        {
+          "path": "Art/Templates/P1-Wardrobe/down/v1/references/poses/08.png",
+          "sha256": "a92e6a2c07cf3ab993741049e2dc5ad64f83f97ae148c6126fe91de69a4aee28"
+        },
+        {
+          "path": "Art/Parts/P1-v1/outfit-forester/source/00.png",
+          "sha256": "207f7fa5beaa8a6b67b96e13372628f98b2d15d93f90b146d41e93e877e65d06"
+        }
+      ],
+      "generatorOutputPath": "/workspace/generated_images/exec-02048e53-69e7-4f9a-bff7-0e9f5e74d0e7.png",
+      "sha256": "6e1d58a1d6a67a76028e67934622d1d67675daa0cfea7938a0867bc4e6b72249",
+      "promptSHA256": "44d051eb97580102d8f5dd434ccef403e7f0187fe18215a59a0b7a7381129adb",
+      "status": "selected source regions as explicitly declared in authoring.json; wardrobe artwork awaiting user review"
+    },
+    {
+      "revision": "pants-underlay-r1",
+      "file": "source/pants-underlay.png",
+      "promptFile": "source/prompt-pants-underlay.txt",
+      "references": [
+        {
+          "path": "Art/Parts/P1-v1/outfit-forester/source/00.png",
+          "sha256": "207f7fa5beaa8a6b67b96e13372628f98b2d15d93f90b146d41e93e877e65d06"
+        }
+      ],
+      "generatorOutputPath": "/workspace/generated_images/exec-9bec070b-b9d0-41a7-9a82-71f91a83b610.png",
+      "sha256": "429aa1b1cb1a953c8b594bf9f3f130b99ee904adc94b749468356e1bf91822b4",
+      "promptSHA256": "3ec6aa46e43c4474cccac2793585e7ff8016260ab14187bc35fb79b65378761f",
+      "status": "selected source regions as explicitly declared in authoring.json; wardrobe artwork awaiting user review"
+    },
+    {
+      "revision": "03-r2",
+      "file": "source/03.png",
+      "promptFile": "source/prompt-03-r2.txt",
+      "references": [
+        {
+          "path": "Art/Parts/P1-v1/outfit-forester/drafts/03-r1.png",
+          "sha256": "05cde1f31b974a9fb7ee74ec1e6909eac0e3d72eac62a3f3de1b9bc3aeced673"
+        }
+      ],
+      "generatorOutputPath": "/workspace/generated_images/exec-2b450a73-0678-459a-9e81-48fc79e827c7.png",
+      "sha256": "f5620a3e330ae5be1c9b0aad56ed80483bb70acd0769038749f158264d8d4ecb",
+      "promptSHA256": "c80c079ff6a4d6b221feff28adb85b6c7f0571c9bd1afe60b7ef993080058e49",
+      "status": "selected source regions as explicitly declared in authoring.json; wardrobe artwork awaiting user review"
+    },
+    {
+      "revision": "02-r2",
+      "file": "source/02.png",
+      "promptFile": "source/prompt-02-r2.txt",
+      "references": [
+        {
+          "path": "Art/Parts/P1-v1/outfit-forester/drafts/02-r1.png",
+          "sha256": "0eb0eb3d01b982f0ce03b43290e529755d80aae7def2c477eeb38be52fa1df51"
+        },
+        {
+          "path": "Art/Templates/P1-Wardrobe/down/v1/references/poses/02.png",
+          "sha256": "32cbe13640ec62d71d2a794ae1d5e316c9fe5a55dd6dc666aecdcf4a5ecb532e"
+        }
+      ],
+      "generatorOutputPath": "/workspace/generated_images/exec-9358368b-b89a-4d9e-b89e-55b2f8a663a0.png",
+      "sha256": "6e327c636b1f0b67b853e2c5ac7fb5f6c2122303fd85bc57606b48602dd84bf1",
+      "promptSHA256": "fff3ea0bd71f502c350d3f3169d7308100f71f6cafcbb6cd2a39d8da0c1f7d16",
+      "status": "selected source regions as explicitly declared in authoring.json; wardrobe artwork awaiting user review"
+    },
+    {
+      "revision": "06-r2",
+      "file": "source/06.png",
+      "promptFile": "source/prompt-06-r2.txt",
+      "references": [
+        {
+          "path": "Art/Parts/P1-v1/outfit-forester/drafts/06-r1.png",
+          "sha256": "af76dd08a18b48ed89954878010a64282098c387f0a9b6cefca7da8b4eb9d7d9"
+        },
+        {
+          "path": "Art/Templates/P1-Wardrobe/down/v1/references/poses/06.png",
+          "sha256": "31058d877a04bc63986e1a8ecf0af00bf2ed35cde02ef0e4d886b04479ca51fb"
+        }
+      ],
+      "generatorOutputPath": "/workspace/generated_images/exec-fd36e2bd-e7ff-406f-a77c-91814eb48933.png",
+      "sha256": "2a85105f83edde6c0663baf53cf8f56d6c4622984ad1d382b9fcbf372aa14824",
+      "promptSHA256": "ceea3a664ccf016fa10a635019e0feb2118b659e537fe5b0a876f7932844d87d",
+      "status": "selected source regions as explicitly declared in authoring.json; wardrobe artwork awaiting user review"
+    },
+    {
+      "revision": "07-r2",
+      "file": "source/07.png",
+      "promptFile": "source/prompt-07-r2.txt",
+      "references": [
+        {
+          "path": "Art/Parts/P1-v1/outfit-forester/drafts/07-r1.png",
+          "sha256": "38a9f5bd0244bbc9bf44d8a8ee7e1182e1dd6e37f2aae946a6ef595c6ca86c13"
+        },
+        {
+          "path": "Art/Templates/P1-Wardrobe/down/v1/references/poses/07.png",
+          "sha256": "76acd39f17854d07e2149c8f414a081c29c3cd6012365a4d5e3480fe7ea93d0e"
+        }
+      ],
+      "generatorOutputPath": "/workspace/generated_images/exec-a81a412c-fa2a-40a8-ab72-e18feb196f98.png",
+      "sha256": "19890d1217f91f2270f5d58c1e69249da145f84f8f8913b9c378317379ca5685",
+      "promptSHA256": "22b84ef713bfb94baec84bcb3bea2521beecf9d9a02dbfe52a222985f671c2a8",
+      "status": "selected source regions as explicitly declared in authoring.json; wardrobe artwork awaiting user review"
+    }
+  ],
+  "artApproval": null,
+  "finalBootSelection": "Both complete00 boot drawings reused at explicit per-pose integer placements; generated boot variants01..08 retained as history, not used in runtime PNGs."
+}

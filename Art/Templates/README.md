@@ -1,6 +1,6 @@
 # P1 人物模板
 
-当前审核：[独立头部换装 v1](P1-Modular/down/v1/README.md)，三款发型 × 两款五官，共六种正常速度搭配；附清单驱动装配器及第三发型零工具／身体／动作修改接入证明。[共同站姿及向下八帧](P1-Neutral/down/walk-r1/approval.json)已获用户认可。
+当前审核：[独立衣物与短剑 v1](P1-Wardrobe/down/v1/README.md)，一套衣物和一把独立武器，三发型×两五官×衣物／武器开关共24种搭配、216个姿势，只提供正常速度。[头部六种搭配](P1-Modular/down/v1/approval.json)及[向下中性步态](P1-Neutral/down/walk-r1/approval.json)已认可。本轮修正[公共底模第7帧分层归属](P1-Neutral/down/walk-r2/correction.json)，九张合成人体与已认可版本完全一致，全部新组合统一使用r2。
 
 规范依据：[可复用换装美术标准草案](../Standards/P1-Parts-v1/README.md)，先建立唯一中性人体、独立部件与通用挂载合同。原向下演示不满足该合同。
 
@@ -13,4 +13,4 @@
 - [同步动作对照](P1-Down/v1/review/walk-compare.gif) · [慢速对照](P1-Down/v1/review/walk-compare-slow.gif)
 - [离线预览文件](P1-Down/v1/preview.html) · [逐帧 ORA／SVG](P1-Down/v1/editable/) · [验证记录](P1-Down/v1/validation.json)
 
-下一步审核本组独立头部资源，再制作实际衣物／武器并验收遮挡及交叉组合；其他七方向中性人体与正式应用接入仍待推进。
+本组衣物／武器待美术认可；随后做第二种衣物版型替换验证，再扩展其他七方向中性人体。正式应用尚未接入。

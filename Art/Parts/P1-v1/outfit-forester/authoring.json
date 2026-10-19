@@ -1,0 +1,4349 @@
+{
+  "id": "p1-outfit-forester-v1",
+  "part": "outfit",
+  "mode": "pose-map",
+  "compatibility": {
+    "rig": "p1-chibi-v1",
+    "bodyProfile": "p1-standard",
+    "actionSet": "locomotion-v1"
+  },
+  "sourceCanvas": [
+    1254,
+    1254
+  ],
+  "registrationGutter": [
+    80,
+    80,
+    1174,
+    1174
+  ],
+  "authorCanvas": [
+    256,
+    256
+  ],
+  "canvas": [
+    256,
+    256
+  ],
+  "inverseSourceToCanvas": [
+    6.25,
+    0,
+    -156.25,
+    0,
+    6.25,
+    -237.5
+  ],
+  "notes": [
+    "Common torso and hem use idle artwork with exact approved integer body translation.",
+    "Complete hip/cuff underlaps are authored from the independent trousers-only source. Runtime never fits images or supplies patches.",
+    "Polygons are fixed semantic authoring boundaries, not colour-key extraction.",
+    "Jacket torso owns the upper shoulder cloth caps, above the neutral torso shoulder caps; sleeves continue beneath them.",
+    "Ankle underlaps are clipped to their own opaque boot in authoring only, preventing detached cloth strips.",
+    "The07 foreground boot/pant diagonal cuff is explicitly partitioned. Other-boot edge fragments and source jacket hems are excluded by authored boundaries.",
+    "Final authoring audit removed explicit neighbouring-leg, cuff and hem edge slivers using recorded exclusion polygons; no automatic component filtering or runtime cleanup.",
+    "Sleeves and visible trousers use registered pose drawings; all boots reuse the same complete idle front-facing pair, with explicit integer translations from approved sole markers.",
+    "No boot is resized, alpha-fitted, rotated outward or clipped to a requested sole; complete outline and volume are preserved in all nine poses.",
+    "Generated boot variants in source01..08 are retained as authoring history but not selected in final runtime layers.",
+    "Manual fitting offsets retain complete boot pixels:03-left +1x,04-left +2x,08-right +1x; all approved sole y positions remain exact.07 right hip cloth underlap moves2px inward and extends2px for the passing thigh. No runtime inference."
+  ],
+  "poses": [
+    {
+      "frame": 0,
+      "clip": "idle",
+      "layers": {
+        "outfit.pants.right": [
+          {
+            "source": "source/pants-underlay.png",
+            "polygons": [
+              [
+                [
+                  109,
+                  195
+                ],
+                [
+                  123,
+                  195
+                ],
+                [
+                  123,
+                  207
+                ],
+                [
+                  109,
+                  207
+                ]
+              ]
+            ],
+            "translate": [
+              0,
+              0
+            ],
+            "hiddenUnder": "outfit.boot.right"
+          },
+          {
+            "source": "source/pants-underlay.png",
+            "polygons": [
+              [
+                [
+                  106,
+                  165
+                ],
+                [
+                  125,
+                  165
+                ],
+                [
+                  125,
+                  183
+                ],
+                [
+                  106,
+                  183
+                ]
+              ]
+            ],
+            "translate": [
+              0,
+              0
+            ]
+          },
+          {
+            "source": "source/00.png",
+            "polygons": [
+              [
+                [
+                  125.0,
+                  178
+                ],
+                [
+                  125.0,
+                  198
+                ],
+                [
+                  85.0,
+                  198
+                ],
+                [
+                  85.0,
+                  178
+                ]
+              ]
+            ],
+            "translate": [
+              0,
+              0
+            ]
+          }
+        ],
+        "outfit.boot.right": [
+          {
+            "source": "source/00.png",
+            "polygons": [
+              [
+                [
+                  108,
+                  199
+                ],
+                [
+                  125,
+                  199
+                ],
+                [
+                  125,
+                  214
+                ],
+                [
+                  108,
+                  214
+                ]
+              ]
+            ],
+            "translate": [
+              0,
+              0
+            ]
+          }
+        ],
+        "outfit.pants.left": [
+          {
+            "source": "source/pants-underlay.png",
+            "polygons": [
+              [
+                [
+                  127,
+                  195
+                ],
+                [
+                  141,
+                  195
+                ],
+                [
+                  141,
+                  207
+                ],
+                [
+                  127,
+                  207
+                ]
+              ]
+            ],
+            "translate": [
+              0,
+              0
+            ],
+            "hiddenUnder": "outfit.boot.left"
+          },
+          {
+            "source": "source/pants-underlay.png",
+            "polygons": [
+              [
+                [
+                  125,
+                  165
+                ],
+                [
+                  143,
+                  165
+                ],
+                [
+                  143,
+                  183
+                ],
+                [
+                  125,
+                  183
+                ]
+              ]
+            ],
+            "translate": [
+              0,
+              0
+            ]
+          },
+          {
+            "source": "source/00.png",
+            "polygons": [
+              [
+                [
+                  125.0,
+                  178
+                ],
+                [
+                  125.0,
+                  198
+                ],
+                [
+                  165.0,
+                  198
+                ],
+                [
+                  165.0,
+                  178
+                ]
+              ]
+            ],
+            "translate": [
+              0,
+              0
+            ]
+          }
+        ],
+        "outfit.boot.left": [
+          {
+            "source": "source/00.png",
+            "polygons": [
+              [
+                [
+                  126,
+                  199
+                ],
+                [
+                  145,
+                  199
+                ],
+                [
+                  145,
+                  214
+                ],
+                [
+                  126,
+                  214
+                ]
+              ]
+            ],
+            "translate": [
+              0,
+              0
+            ]
+          }
+        ],
+        "outfit.sleeve.right": [
+          {
+            "source": "source/00.png",
+            "polygons": [
+              [
+                [
+                  80,
+                  128
+                ],
+                [
+                  105,
+                  128
+                ],
+                [
+                  112,
+                  136
+                ],
+                [
+                  112,
+                  146
+                ],
+                [
+                  109,
+                  166
+                ],
+                [
+                  109,
+                  169
+                ],
+                [
+                  92,
+                  169
+                ],
+                [
+                  80,
+                  145
+                ]
+              ]
+            ],
+            "translate": [
+              0,
+              0
+            ],
+            "excludePolygons": [
+              [
+                [
+                  110,
+                  160
+                ],
+                [
+                  112,
+                  160
+                ],
+                [
+                  112,
+                  164
+                ],
+                [
+                  110,
+                  164
+                ]
+              ]
+            ]
+          }
+        ],
+        "outfit.sleeve.left": [
+          {
+            "source": "source/00.png",
+            "polygons": [
+              [
+                [
+                  145,
+                  128
+                ],
+                [
+                  170,
+                  128
+                ],
+                [
+                  170,
+                  145
+                ],
+                [
+                  158,
+                  169
+                ],
+                [
+                  141,
+                  169
+                ],
+                [
+                  141,
+                  166
+                ],
+                [
+                  138,
+                  146
+                ],
+                [
+                  138,
+                  136
+                ]
+              ]
+            ],
+            "translate": [
+              0,
+              0
+            ]
+          }
+        ],
+        "outfit.torso": [
+          {
+            "source": "source/00.png",
+            "polygons": [
+              [
+                [
+                  101,
+                  127
+                ],
+                [
+                  148,
+                  127
+                ],
+                [
+                  148,
+                  139
+                ],
+                [
+                  145,
+                  149
+                ],
+                [
+                  138,
+                  153
+                ],
+                [
+                  137,
+                  157
+                ],
+                [
+                  140,
+                  164
+                ],
+                [
+                  109,
+                  164
+                ],
+                [
+                  111,
+                  154
+                ],
+                [
+                  104,
+                  151
+                ],
+                [
+                  101,
+                  140
+                ]
+              ]
+            ],
+            "translate": [
+              0,
+              0
+            ]
+          }
+        ],
+        "outfit.hem.front": [
+          {
+            "source": "source/00.png",
+            "polygons": [
+              [
+                [
+                  109,
+                  162
+                ],
+                [
+                  139,
+                  162
+                ],
+                [
+                  143,
+                  171
+                ],
+                [
+                  138,
+                  173
+                ],
+                [
+                  127,
+                  173
+                ],
+                [
+                  124,
+                  166
+                ],
+                [
+                  122,
+                  173
+                ],
+                [
+                  108,
+                  173
+                ],
+                [
+                  105,
+                  170
+                ]
+              ]
+            ],
+            "translate": [
+              0,
+              0
+            ],
+            "excludePolygons": [
+              [
+                [
+                  103,
+                  160
+                ],
+                [
+                  107,
+                  160
+                ],
+                [
+                  107,
+                  169
+                ],
+                [
+                  103,
+                  169
+                ]
+              ]
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "frame": 1,
+      "clip": "walk",
+      "layers": {
+        "outfit.pants.right": [
+          {
+            "source": "source/pants-underlay.png",
+            "polygons": [
+              [
+                [
+                  109,
+                  195
+                ],
+                [
+                  123,
+                  195
+                ],
+                [
+                  123,
+                  207
+                ],
+                [
+                  109,
+                  207
+                ]
+              ]
+            ],
+            "translate": [
+              1,
+              -1
+            ],
+            "hiddenUnder": "outfit.boot.right"
+          },
+          {
+            "source": "source/pants-underlay.png",
+            "polygons": [
+              [
+                [
+                  106,
+                  165
+                ],
+                [
+                  125,
+                  165
+                ],
+                [
+                  125,
+                  183
+                ],
+                [
+                  106,
+                  183
+                ]
+              ]
+            ],
+            "translate": [
+              0,
+              0
+            ]
+          },
+          {
+            "source": "source/01.png",
+            "polygons": [
+              [
+                [
+                  125.0,
+                  178
+                ],
+                [
+                  125.0,
+                  200
+                ],
+                [
+                  85.0,
+                  200
+                ],
+                [
+                  85.0,
+                  178
+                ]
+              ]
+            ],
+            "translate": [
+              0,
+              0
+            ]
+          }
+        ],
+        "outfit.boot.right": [
+          {
+            "source": "source/00.png",
+            "polygons": [
+              [
+                [
+                  108,
+                  199
+                ],
+                [
+                  125,
+                  199
+                ],
+                [
+                  125,
+                  214
+                ],
+                [
+                  108,
+                  214
+                ]
+              ]
+            ],
+            "translate": [
+              1,
+              1
+            ]
+          }
+        ],
+        "outfit.pants.left": [
+          {
+            "source": "source/pants-underlay.png",
+            "polygons": [
+              [
+                [
+                  127,
+                  195
+                ],
+                [
+                  141,
+                  195
+                ],
+                [
+                  141,
+                  207
+                ],
+                [
+                  127,
+                  207
+                ]
+              ]
+            ],
+            "translate": [
+              0,
+              -9
+            ],
+            "hiddenUnder": "outfit.boot.left"
+          },
+          {
+            "source": "source/pants-underlay.png",
+            "polygons": [
+              [
+                [
+                  125,
+                  165
+                ],
+                [
+                  143,
+                  165
+                ],
+                [
+                  143,
+                  183
+                ],
+                [
+                  125,
+                  183
+                ]
+              ]
+            ],
+            "translate": [
+              0,
+              0
+            ]
+          },
+          {
+            "source": "source/01.png",
+            "polygons": [
+              [
+                [
+                  125.0,
+                  178
+                ],
+                [
+                  125.0,
+                  192
+                ],
+                [
+                  165.0,
+                  192
+                ],
+                [
+                  165.0,
+                  178
+                ]
+              ]
+            ],
+            "translate": [
+              0,
+              0
+            ]
+          }
+        ],
+        "outfit.boot.left": [
+          {
+            "source": "source/00.png",
+            "polygons": [
+              [
+                [
+                  126,
+                  199
+                ],
+                [
+                  145,
+                  199
+                ],
+                [
+                  145,
+                  214
+                ],
+                [
+                  126,
+                  214
+                ]
+              ]
+            ],
+            "translate": [
+              0,
+              -9
+            ]
+          }
+        ],
+        "outfit.sleeve.right": [
+          {
+            "source": "source/01.png",
+            "polygons": [
+              [
+                [
+                  80,
+                  128
+                ],
+                [
+                  105,
+                  128
+                ],
+                [
+                  112,
+                  136
+                ],
+                [
+                  112,
+                  146
+                ],
+                [
+                  107,
+                  153
+                ],
+                [
+                  107,
+                  156
+                ],
+                [
+                  90,
+                  156
+                ],
+                [
+                  80,
+                  145
+                ]
+              ]
+            ],
+            "translate": [
+              0,
+              0
+            ]
+          }
+        ],
+        "outfit.sleeve.left": [
+          {
+            "source": "source/01.png",
+            "polygons": [
+              [
+                [
+                  145,
+                  128
+                ],
+                [
+                  170,
+                  128
+                ],
+                [
+                  170,
+                  145
+                ],
+                [
+                  158,
+                  167
+                ],
+                [
+                  141,
+                  167
+                ],
+                [
+                  141,
+                  164
+                ],
+                [
+                  138,
+                  146
+                ],
+                [
+                  138,
+                  136
+                ]
+              ]
+            ],
+            "translate": [
+              0,
+              0
+            ],
+            "excludePolygons": [
+              [
+                [
+                  140,
+                  166
+                ],
+                [
+                  142,
+                  166
+                ],
+                [
+                  142,
+                  169
+                ],
+                [
+                  140,
+                  169
+                ]
+              ]
+            ]
+          }
+        ],
+        "outfit.torso": [
+          {
+            "source": "source/00.png",
+            "polygons": [
+              [
+                [
+                  101,
+                  127
+                ],
+                [
+                  148,
+                  127
+                ],
+                [
+                  148,
+                  139
+                ],
+                [
+                  145,
+                  149
+                ],
+                [
+                  138,
+                  153
+                ],
+                [
+                  137,
+                  157
+                ],
+                [
+                  140,
+                  164
+                ],
+                [
+                  109,
+                  164
+                ],
+                [
+                  111,
+                  154
+                ],
+                [
+                  104,
+                  151
+                ],
+                [
+                  101,
+                  140
+                ]
+              ]
+            ],
+            "translate": [
+              0,
+              0
+            ]
+          }
+        ],
+        "outfit.hem.front": [
+          {
+            "source": "source/00.png",
+            "polygons": [
+              [
+                [
+                  109,
+                  162
+                ],
+                [
+                  139,
+                  162
+                ],
+                [
+                  143,
+                  171
+                ],
+                [
+                  138,
+                  173
+                ],
+                [
+                  127,
+                  173
+                ],
+                [
+                  124,
+                  166
+                ],
+                [
+                  122,
+                  173
+                ],
+                [
+                  108,
+                  173
+                ],
+                [
+                  105,
+                  170
+                ]
+              ]
+            ],
+            "translate": [
+              0,
+              0
+            ],
+            "excludePolygons": [
+              [
+                [
+                  103,
+                  160
+                ],
+                [
+                  107,
+                  160
+                ],
+                [
+                  107,
+                  169
+                ],
+                [
+                  103,
+                  169
+                ]
+              ]
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "frame": 2,
+      "clip": "walk",
+      "layers": {
+        "outfit.pants.right": [
+          {
+            "source": "source/pants-underlay.png",
+            "polygons": [
+              [
+                [
+                  109,
+                  195
+                ],
+                [
+                  123,
+                  195
+                ],
+                [
+                  123,
+                  207
+                ],
+                [
+                  109,
+                  207
+                ]
+              ]
+            ],
+            "translate": [
+              0,
+              -1
+            ],
+            "hiddenUnder": "outfit.boot.right"
+          },
+          {
+            "source": "source/pants-underlay.png",
+            "polygons": [
+              [
+                [
+                  106,
+                  165
+                ],
+                [
+                  125,
+                  165
+                ],
+                [
+                  125,
+                  183
+                ],
+                [
+                  106,
+                  183
+                ]
+              ]
+            ],
+            "translate": [
+              0,
+              2
+            ]
+          },
+          {
+            "source": "source/02.png",
+            "polygons": [
+              [
+                [
+                  125.0,
+                  180
+                ],
+                [
+                  125.0,
+                  199
+                ],
+                [
+                  85.0,
+                  199
+                ],
+                [
+                  85.0,
+                  180
+                ]
+              ]
+            ],
+            "translate": [
+              0,
+              0
+            ]
+          }
+        ],
+        "outfit.boot.right": [
+          {
+            "source": "source/00.png",
+            "polygons": [
+              [
+                [
+                  108,
+                  199
+                ],
+                [
+                  125,
+                  199
+                ],
+                [
+                  125,
+                  214
+                ],
+                [
+                  108,
+                  214
+                ]
+              ]
+            ],
+            "translate": [
+              1,
+              1
+            ]
+          }
+        ],
+        "outfit.pants.left": [
+          {
+            "source": "source/pants-underlay.png",
+            "polygons": [
+              [
+                [
+                  127,
+                  195
+                ],
+                [
+                  141,
+                  195
+                ],
+                [
+                  141,
+                  207
+                ],
+                [
+                  127,
+                  207
+                ]
+              ]
+            ],
+            "translate": [
+              -1,
+              -12
+            ],
+            "hiddenUnder": "outfit.boot.left"
+          },
+          {
+            "source": "source/pants-underlay.png",
+            "polygons": [
+              [
+                [
+                  125,
+                  165
+                ],
+                [
+                  143,
+                  165
+                ],
+                [
+                  143,
+                  183
+                ],
+                [
+                  125,
+                  183
+                ]
+              ]
+            ],
+            "translate": [
+              0,
+              2
+            ]
+          },
+          {
+            "source": "source/02.png",
+            "polygons": [
+              [
+                [
+                  125.0,
+                  180
+                ],
+                [
+                  125.0,
+                  188
+                ],
+                [
+                  165.0,
+                  188
+                ],
+                [
+                  165.0,
+                  180
+                ]
+              ]
+            ],
+            "translate": [
+              0,
+              0
+            ],
+            "excludePolygons": [
+              [
+                [
+                  125,
+                  186
+                ],
+                [
+                  125,
+                  186
+                ],
+                [
+                  125,
+                  189
+                ],
+                [
+                  125,
+                  189
+                ]
+              ]
+            ]
+          }
+        ],
+        "outfit.boot.left": [
+          {
+            "source": "source/00.png",
+            "polygons": [
+              [
+                [
+                  126,
+                  199
+                ],
+                [
+                  145,
+                  199
+                ],
+                [
+                  145,
+                  214
+                ],
+                [
+                  126,
+                  214
+                ]
+              ]
+            ],
+            "translate": [
+              -1,
+              -13
+            ]
+          }
+        ],
+        "outfit.sleeve.right": [
+          {
+            "source": "source/02.png",
+            "polygons": [
+              [
+                [
+                  80,
+                  130
+                ],
+                [
+                  105,
+                  130
+                ],
+                [
+                  112,
+                  138
+                ],
+                [
+                  112,
+                  148
+                ],
+                [
+                  107,
+                  150
+                ],
+                [
+                  107,
+                  153
+                ],
+                [
+                  90,
+                  153
+                ],
+                [
+                  80,
+                  145
+                ]
+              ]
+            ],
+            "translate": [
+              0,
+              0
+            ]
+          }
+        ],
+        "outfit.sleeve.left": [
+          {
+            "source": "source/02.png",
+            "polygons": [
+              [
+                [
+                  145,
+                  130
+                ],
+                [
+                  170,
+                  130
+                ],
+                [
+                  170,
+                  145
+                ],
+                [
+                  159,
+                  166
+                ],
+                [
+                  142,
+                  166
+                ],
+                [
+                  142,
+                  163
+                ],
+                [
+                  138,
+                  148
+                ],
+                [
+                  138,
+                  138
+                ]
+              ]
+            ],
+            "translate": [
+              0,
+              0
+            ]
+          }
+        ],
+        "outfit.torso": [
+          {
+            "source": "source/00.png",
+            "polygons": [
+              [
+                [
+                  101,
+                  127
+                ],
+                [
+                  148,
+                  127
+                ],
+                [
+                  148,
+                  139
+                ],
+                [
+                  145,
+                  149
+                ],
+                [
+                  138,
+                  153
+                ],
+                [
+                  137,
+                  157
+                ],
+                [
+                  140,
+                  164
+                ],
+                [
+                  109,
+                  164
+                ],
+                [
+                  111,
+                  154
+                ],
+                [
+                  104,
+                  151
+                ],
+                [
+                  101,
+                  140
+                ]
+              ]
+            ],
+            "translate": [
+              0,
+              2
+            ]
+          }
+        ],
+        "outfit.hem.front": [
+          {
+            "source": "source/00.png",
+            "polygons": [
+              [
+                [
+                  109,
+                  162
+                ],
+                [
+                  139,
+                  162
+                ],
+                [
+                  143,
+                  171
+                ],
+                [
+                  138,
+                  173
+                ],
+                [
+                  127,
+                  173
+                ],
+                [
+                  124,
+                  166
+                ],
+                [
+                  122,
+                  173
+                ],
+                [
+                  108,
+                  173
+                ],
+                [
+                  105,
+                  170
+                ]
+              ]
+            ],
+            "translate": [
+              0,
+              2
+            ],
+            "excludePolygons": [
+              [
+                [
+                  103,
+                  160
+                ],
+                [
+                  107,
+                  160
+                ],
+                [
+                  107,
+                  169
+                ],
+                [
+                  103,
+                  169
+                ]
+              ]
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "frame": 3,
+      "clip": "walk",
+      "layers": {
+        "outfit.pants.right": [
+          {
+            "source": "source/pants-underlay.png",
+            "polygons": [
+              [
+                [
+                  109,
+                  195
+                ],
+                [
+                  123,
+                  195
+                ],
+                [
+                  123,
+                  207
+                ],
+                [
+                  109,
+                  207
+                ]
+              ]
+            ],
+            "translate": [
+              2,
+              -4
+            ],
+            "hiddenUnder": "outfit.boot.right"
+          },
+          {
+            "source": "source/pants-underlay.png",
+            "polygons": [
+              [
+                [
+                  106,
+                  165
+                ],
+                [
+                  125,
+                  165
+                ],
+                [
+                  125,
+                  183
+                ],
+                [
+                  106,
+                  183
+                ]
+              ]
+            ],
+            "translate": [
+              0,
+              -1
+            ]
+          },
+          {
+            "source": "source/03.png",
+            "polygons": [
+              [
+                [
+                  125.0,
+                  177
+                ],
+                [
+                  125,
+                  184
+                ],
+                [
+                  122,
+                  192
+                ],
+                [
+                  122.0,
+                  195
+                ],
+                [
+                  85.0,
+                  195
+                ],
+                [
+                  85.0,
+                  177
+                ]
+              ]
+            ],
+            "translate": [
+              0,
+              0
+            ]
+          }
+        ],
+        "outfit.boot.right": [
+          {
+            "source": "source/00.png",
+            "polygons": [
+              [
+                [
+                  108,
+                  199
+                ],
+                [
+                  125,
+                  199
+                ],
+                [
+                  125,
+                  214
+                ],
+                [
+                  108,
+                  214
+                ]
+              ]
+            ],
+            "translate": [
+              1,
+              -3
+            ]
+          }
+        ],
+        "outfit.pants.left": [
+          {
+            "source": "source/pants-underlay.png",
+            "polygons": [
+              [
+                [
+                  127,
+                  195
+                ],
+                [
+                  141,
+                  195
+                ],
+                [
+                  141,
+                  207
+                ],
+                [
+                  127,
+                  207
+                ]
+              ]
+            ],
+            "translate": [
+              -6,
+              -11
+            ],
+            "hiddenUnder": "outfit.boot.left"
+          },
+          {
+            "source": "source/pants-underlay.png",
+            "polygons": [
+              [
+                [
+                  125,
+                  165
+                ],
+                [
+                  143,
+                  165
+                ],
+                [
+                  143,
+                  183
+                ],
+                [
+                  125,
+                  183
+                ]
+              ]
+            ],
+            "translate": [
+              0,
+              -1
+            ]
+          },
+          {
+            "source": "source/03.png",
+            "polygons": [
+              [
+                [
+                  125.0,
+                  177
+                ],
+                [
+                  125,
+                  184
+                ],
+                [
+                  123.125,
+                  189
+                ],
+                [
+                  165.0,
+                  189
+                ],
+                [
+                  165.0,
+                  177
+                ]
+              ]
+            ],
+            "translate": [
+              0,
+              0
+            ]
+          }
+        ],
+        "outfit.boot.left": [
+          {
+            "source": "source/00.png",
+            "polygons": [
+              [
+                [
+                  126,
+                  199
+                ],
+                [
+                  145,
+                  199
+                ],
+                [
+                  145,
+                  214
+                ],
+                [
+                  126,
+                  214
+                ]
+              ]
+            ],
+            "translate": [
+              -5,
+              -12
+            ]
+          }
+        ],
+        "outfit.sleeve.right": [
+          {
+            "source": "source/03.png",
+            "polygons": [
+              [
+                [
+                  80,
+                  127
+                ],
+                [
+                  105,
+                  127
+                ],
+                [
+                  112,
+                  135
+                ],
+                [
+                  112,
+                  145
+                ],
+                [
+                  108,
+                  167
+                ],
+                [
+                  108,
+                  170
+                ],
+                [
+                  91,
+                  170
+                ],
+                [
+                  80,
+                  145
+                ]
+              ]
+            ],
+            "translate": [
+              0,
+              0
+            ],
+            "excludePolygons": [
+              [
+                [
+                  108,
+                  169
+                ],
+                [
+                  109,
+                  169
+                ],
+                [
+                  109,
+                  171
+                ],
+                [
+                  108,
+                  171
+                ]
+              ]
+            ]
+          }
+        ],
+        "outfit.sleeve.left": [
+          {
+            "source": "source/03.png",
+            "polygons": [
+              [
+                [
+                  145,
+                  127
+                ],
+                [
+                  170,
+                  127
+                ],
+                [
+                  170,
+                  145
+                ],
+                [
+                  159,
+                  170
+                ],
+                [
+                  142,
+                  170
+                ],
+                [
+                  142,
+                  167
+                ],
+                [
+                  138,
+                  145
+                ],
+                [
+                  138,
+                  135
+                ]
+              ]
+            ],
+            "translate": [
+              0,
+              0
+            ]
+          }
+        ],
+        "outfit.torso": [
+          {
+            "source": "source/00.png",
+            "polygons": [
+              [
+                [
+                  101,
+                  127
+                ],
+                [
+                  148,
+                  127
+                ],
+                [
+                  148,
+                  139
+                ],
+                [
+                  145,
+                  149
+                ],
+                [
+                  138,
+                  153
+                ],
+                [
+                  137,
+                  157
+                ],
+                [
+                  140,
+                  164
+                ],
+                [
+                  109,
+                  164
+                ],
+                [
+                  111,
+                  154
+                ],
+                [
+                  104,
+                  151
+                ],
+                [
+                  101,
+                  140
+                ]
+              ]
+            ],
+            "translate": [
+              0,
+              -1
+            ]
+          }
+        ],
+        "outfit.hem.front": [
+          {
+            "source": "source/00.png",
+            "polygons": [
+              [
+                [
+                  109,
+                  162
+                ],
+                [
+                  139,
+                  162
+                ],
+                [
+                  143,
+                  171
+                ],
+                [
+                  138,
+                  173
+                ],
+                [
+                  127,
+                  173
+                ],
+                [
+                  124,
+                  166
+                ],
+                [
+                  122,
+                  173
+                ],
+                [
+                  108,
+                  173
+                ],
+                [
+                  105,
+                  170
+                ]
+              ]
+            ],
+            "translate": [
+              0,
+              -1
+            ],
+            "excludePolygons": [
+              [
+                [
+                  103,
+                  160
+                ],
+                [
+                  107,
+                  160
+                ],
+                [
+                  107,
+                  169
+                ],
+                [
+                  103,
+                  169
+                ]
+              ]
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "frame": 4,
+      "clip": "walk",
+      "layers": {
+        "outfit.pants.right": [
+          {
+            "source": "source/pants-underlay.png",
+            "polygons": [
+              [
+                [
+                  109,
+                  195
+                ],
+                [
+                  123,
+                  195
+                ],
+                [
+                  123,
+                  207
+                ],
+                [
+                  109,
+                  207
+                ]
+              ]
+            ],
+            "translate": [
+              1,
+              -10
+            ],
+            "hiddenUnder": "outfit.boot.right"
+          },
+          {
+            "source": "source/pants-underlay.png",
+            "polygons": [
+              [
+                [
+                  106,
+                  165
+                ],
+                [
+                  125,
+                  165
+                ],
+                [
+                  125,
+                  183
+                ],
+                [
+                  106,
+                  183
+                ]
+              ]
+            ],
+            "translate": [
+              0,
+              -2
+            ]
+          },
+          {
+            "source": "source/04.png",
+            "polygons": [
+              [
+                [
+                  125.0,
+                  176
+                ],
+                [
+                  125.0,
+                  191
+                ],
+                [
+                  85.0,
+                  191
+                ],
+                [
+                  85.0,
+                  176
+                ]
+              ]
+            ],
+            "translate": [
+              0,
+              0
+            ]
+          }
+        ],
+        "outfit.boot.right": [
+          {
+            "source": "source/00.png",
+            "polygons": [
+              [
+                [
+                  108,
+                  199
+                ],
+                [
+                  125,
+                  199
+                ],
+                [
+                  125,
+                  214
+                ],
+                [
+                  108,
+                  214
+                ]
+              ]
+            ],
+            "translate": [
+              0,
+              -11
+            ]
+          }
+        ],
+        "outfit.pants.left": [
+          {
+            "source": "source/pants-underlay.png",
+            "polygons": [
+              [
+                [
+                  127,
+                  195
+                ],
+                [
+                  141,
+                  195
+                ],
+                [
+                  141,
+                  207
+                ],
+                [
+                  127,
+                  207
+                ]
+              ]
+            ],
+            "translate": [
+              -1,
+              0
+            ],
+            "hiddenUnder": "outfit.boot.left"
+          },
+          {
+            "source": "source/pants-underlay.png",
+            "polygons": [
+              [
+                [
+                  125,
+                  165
+                ],
+                [
+                  143,
+                  165
+                ],
+                [
+                  143,
+                  183
+                ],
+                [
+                  125,
+                  183
+                ]
+              ]
+            ],
+            "translate": [
+              0,
+              -2
+            ]
+          },
+          {
+            "source": "source/04.png",
+            "polygons": [
+              [
+                [
+                  125.0,
+                  176
+                ],
+                [
+                  125.0,
+                  202
+                ],
+                [
+                  165.0,
+                  202
+                ],
+                [
+                  165.0,
+                  176
+                ]
+              ]
+            ],
+            "translate": [
+              0,
+              0
+            ],
+            "excludePolygons": [
+              [
+                [
+                  125,
+                  182
+                ],
+                [
+                  125,
+                  182
+                ],
+                [
+                  125,
+                  188
+                ],
+                [
+                  125,
+                  188
+                ]
+              ]
+            ]
+          }
+        ],
+        "outfit.boot.left": [
+          {
+            "source": "source/00.png",
+            "polygons": [
+              [
+                [
+                  126,
+                  199
+                ],
+                [
+                  145,
+                  199
+                ],
+                [
+                  145,
+                  214
+                ],
+                [
+                  126,
+                  214
+                ]
+              ]
+            ],
+            "translate": [
+              1,
+              2
+            ]
+          }
+        ],
+        "outfit.sleeve.right": [
+          {
+            "source": "source/04.png",
+            "polygons": [
+              [
+                [
+                  80,
+                  126
+                ],
+                [
+                  105,
+                  126
+                ],
+                [
+                  112,
+                  134
+                ],
+                [
+                  112,
+                  144
+                ],
+                [
+                  108,
+                  163
+                ],
+                [
+                  108,
+                  166
+                ],
+                [
+                  91,
+                  166
+                ],
+                [
+                  80,
+                  145
+                ]
+              ]
+            ],
+            "translate": [
+              0,
+              0
+            ]
+          }
+        ],
+        "outfit.sleeve.left": [
+          {
+            "source": "source/04.png",
+            "polygons": [
+              [
+                [
+                  145,
+                  126
+                ],
+                [
+                  170,
+                  126
+                ],
+                [
+                  170,
+                  145
+                ],
+                [
+                  157,
+                  154
+                ],
+                [
+                  140,
+                  154
+                ],
+                [
+                  140,
+                  151
+                ],
+                [
+                  138,
+                  144
+                ],
+                [
+                  138,
+                  134
+                ]
+              ]
+            ],
+            "translate": [
+              0,
+              0
+            ]
+          }
+        ],
+        "outfit.torso": [
+          {
+            "source": "source/00.png",
+            "polygons": [
+              [
+                [
+                  101,
+                  127
+                ],
+                [
+                  148,
+                  127
+                ],
+                [
+                  148,
+                  139
+                ],
+                [
+                  145,
+                  149
+                ],
+                [
+                  138,
+                  153
+                ],
+                [
+                  137,
+                  157
+                ],
+                [
+                  140,
+                  164
+                ],
+                [
+                  109,
+                  164
+                ],
+                [
+                  111,
+                  154
+                ],
+                [
+                  104,
+                  151
+                ],
+                [
+                  101,
+                  140
+                ]
+              ]
+            ],
+            "translate": [
+              0,
+              -2
+            ]
+          }
+        ],
+        "outfit.hem.front": [
+          {
+            "source": "source/00.png",
+            "polygons": [
+              [
+                [
+                  109,
+                  162
+                ],
+                [
+                  139,
+                  162
+                ],
+                [
+                  143,
+                  171
+                ],
+                [
+                  138,
+                  173
+                ],
+                [
+                  127,
+                  173
+                ],
+                [
+                  124,
+                  166
+                ],
+                [
+                  122,
+                  173
+                ],
+                [
+                  108,
+                  173
+                ],
+                [
+                  105,
+                  170
+                ]
+              ]
+            ],
+            "translate": [
+              0,
+              -2
+            ],
+            "excludePolygons": [
+              [
+                [
+                  103,
+                  160
+                ],
+                [
+                  107,
+                  160
+                ],
+                [
+                  107,
+                  169
+                ],
+                [
+                  103,
+                  169
+                ]
+              ]
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "frame": 5,
+      "clip": "walk",
+      "layers": {
+        "outfit.pants.right": [
+          {
+            "source": "source/pants-underlay.png",
+            "polygons": [
+              [
+                [
+                  109,
+                  195
+                ],
+                [
+                  123,
+                  195
+                ],
+                [
+                  123,
+                  207
+                ],
+                [
+                  109,
+                  207
+                ]
+              ]
+            ],
+            "translate": [
+              1,
+              -8
+            ],
+            "hiddenUnder": "outfit.boot.right"
+          },
+          {
+            "source": "source/pants-underlay.png",
+            "polygons": [
+              [
+                [
+                  106,
+                  165
+                ],
+                [
+                  125,
+                  165
+                ],
+                [
+                  125,
+                  183
+                ],
+                [
+                  106,
+                  183
+                ]
+              ]
+            ],
+            "translate": [
+              0,
+              0
+            ]
+          },
+          {
+            "source": "source/05.png",
+            "polygons": [
+              [
+                [
+                  125.0,
+                  178
+                ],
+                [
+                  125.0,
+                  192
+                ],
+                [
+                  85.0,
+                  192
+                ],
+                [
+                  85.0,
+                  178
+                ]
+              ]
+            ],
+            "translate": [
+              0,
+              0
+            ],
+            "excludePolygons": [
+              [
+                [
+                  125,
+                  190
+                ],
+                [
+                  125,
+                  190
+                ],
+                [
+                  125,
+                  193
+                ],
+                [
+                  125,
+                  193
+                ]
+              ]
+            ]
+          }
+        ],
+        "outfit.boot.right": [
+          {
+            "source": "source/00.png",
+            "polygons": [
+              [
+                [
+                  108,
+                  199
+                ],
+                [
+                  125,
+                  199
+                ],
+                [
+                  125,
+                  214
+                ],
+                [
+                  108,
+                  214
+                ]
+              ]
+            ],
+            "translate": [
+              0,
+              -8
+            ]
+          }
+        ],
+        "outfit.pants.left": [
+          {
+            "source": "source/pants-underlay.png",
+            "polygons": [
+              [
+                [
+                  127,
+                  195
+                ],
+                [
+                  141,
+                  195
+                ],
+                [
+                  141,
+                  207
+                ],
+                [
+                  127,
+                  207
+                ]
+              ]
+            ],
+            "translate": [
+              -1,
+              0
+            ],
+            "hiddenUnder": "outfit.boot.left"
+          },
+          {
+            "source": "source/pants-underlay.png",
+            "polygons": [
+              [
+                [
+                  125,
+                  165
+                ],
+                [
+                  143,
+                  165
+                ],
+                [
+                  143,
+                  183
+                ],
+                [
+                  125,
+                  183
+                ]
+              ]
+            ],
+            "translate": [
+              0,
+              0
+            ]
+          },
+          {
+            "source": "source/05.png",
+            "polygons": [
+              [
+                [
+                  125.0,
+                  178
+                ],
+                [
+                  125.0,
+                  202
+                ],
+                [
+                  165.0,
+                  202
+                ],
+                [
+                  165.0,
+                  178
+                ]
+              ]
+            ],
+            "translate": [
+              0,
+              0
+            ]
+          }
+        ],
+        "outfit.boot.left": [
+          {
+            "source": "source/00.png",
+            "polygons": [
+              [
+                [
+                  126,
+                  199
+                ],
+                [
+                  145,
+                  199
+                ],
+                [
+                  145,
+                  214
+                ],
+                [
+                  126,
+                  214
+                ]
+              ]
+            ],
+            "translate": [
+              -1,
+              2
+            ]
+          }
+        ],
+        "outfit.sleeve.right": [
+          {
+            "source": "source/05.png",
+            "polygons": [
+              [
+                [
+                  80,
+                  128
+                ],
+                [
+                  105,
+                  128
+                ],
+                [
+                  112,
+                  136
+                ],
+                [
+                  112,
+                  146
+                ],
+                [
+                  108,
+                  167
+                ],
+                [
+                  108,
+                  170
+                ],
+                [
+                  91,
+                  170
+                ],
+                [
+                  80,
+                  145
+                ]
+              ]
+            ],
+            "translate": [
+              0,
+              0
+            ]
+          }
+        ],
+        "outfit.sleeve.left": [
+          {
+            "source": "source/05.png",
+            "polygons": [
+              [
+                [
+                  145,
+                  128
+                ],
+                [
+                  170,
+                  128
+                ],
+                [
+                  170,
+                  145
+                ],
+                [
+                  157,
+                  154
+                ],
+                [
+                  140,
+                  154
+                ],
+                [
+                  140,
+                  151
+                ],
+                [
+                  138,
+                  146
+                ],
+                [
+                  138,
+                  136
+                ]
+              ]
+            ],
+            "translate": [
+              0,
+              0
+            ]
+          }
+        ],
+        "outfit.torso": [
+          {
+            "source": "source/00.png",
+            "polygons": [
+              [
+                [
+                  101,
+                  127
+                ],
+                [
+                  148,
+                  127
+                ],
+                [
+                  148,
+                  139
+                ],
+                [
+                  145,
+                  149
+                ],
+                [
+                  138,
+                  153
+                ],
+                [
+                  137,
+                  157
+                ],
+                [
+                  140,
+                  164
+                ],
+                [
+                  109,
+                  164
+                ],
+                [
+                  111,
+                  154
+                ],
+                [
+                  104,
+                  151
+                ],
+                [
+                  101,
+                  140
+                ]
+              ]
+            ],
+            "translate": [
+              0,
+              0
+            ]
+          }
+        ],
+        "outfit.hem.front": [
+          {
+            "source": "source/00.png",
+            "polygons": [
+              [
+                [
+                  109,
+                  162
+                ],
+                [
+                  139,
+                  162
+                ],
+                [
+                  143,
+                  171
+                ],
+                [
+                  138,
+                  173
+                ],
+                [
+                  127,
+                  173
+                ],
+                [
+                  124,
+                  166
+                ],
+                [
+                  122,
+                  173
+                ],
+                [
+                  108,
+                  173
+                ],
+                [
+                  105,
+                  170
+                ]
+              ]
+            ],
+            "translate": [
+              0,
+              0
+            ],
+            "excludePolygons": [
+              [
+                [
+                  103,
+                  160
+                ],
+                [
+                  107,
+                  160
+                ],
+                [
+                  107,
+                  169
+                ],
+                [
+                  103,
+                  169
+                ]
+              ]
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "frame": 6,
+      "clip": "walk",
+      "layers": {
+        "outfit.pants.right": [
+          {
+            "source": "source/pants-underlay.png",
+            "polygons": [
+              [
+                [
+                  109,
+                  195
+                ],
+                [
+                  123,
+                  195
+                ],
+                [
+                  123,
+                  207
+                ],
+                [
+                  109,
+                  207
+                ]
+              ]
+            ],
+            "translate": [
+              1,
+              -11
+            ],
+            "hiddenUnder": "outfit.boot.right"
+          },
+          {
+            "source": "source/pants-underlay.png",
+            "polygons": [
+              [
+                [
+                  106,
+                  165
+                ],
+                [
+                  125,
+                  165
+                ],
+                [
+                  125,
+                  183
+                ],
+                [
+                  106,
+                  183
+                ]
+              ]
+            ],
+            "translate": [
+              0,
+              2
+            ]
+          },
+          {
+            "source": "source/06.png",
+            "polygons": [
+              [
+                [
+                  125.0,
+                  180
+                ],
+                [
+                  125.0,
+                  189
+                ],
+                [
+                  85.0,
+                  189
+                ],
+                [
+                  85.0,
+                  180
+                ]
+              ]
+            ],
+            "translate": [
+              0,
+              0
+            ]
+          }
+        ],
+        "outfit.boot.right": [
+          {
+            "source": "source/00.png",
+            "polygons": [
+              [
+                [
+                  108,
+                  199
+                ],
+                [
+                  125,
+                  199
+                ],
+                [
+                  125,
+                  214
+                ],
+                [
+                  108,
+                  214
+                ]
+              ]
+            ],
+            "translate": [
+              0,
+              -10
+            ]
+          }
+        ],
+        "outfit.pants.left": [
+          {
+            "source": "source/pants-underlay.png",
+            "polygons": [
+              [
+                [
+                  127,
+                  195
+                ],
+                [
+                  141,
+                  195
+                ],
+                [
+                  141,
+                  207
+                ],
+                [
+                  127,
+                  207
+                ]
+              ]
+            ],
+            "translate": [
+              0,
+              -1
+            ],
+            "hiddenUnder": "outfit.boot.left"
+          },
+          {
+            "source": "source/pants-underlay.png",
+            "polygons": [
+              [
+                [
+                  125,
+                  165
+                ],
+                [
+                  143,
+                  165
+                ],
+                [
+                  143,
+                  183
+                ],
+                [
+                  125,
+                  183
+                ]
+              ]
+            ],
+            "translate": [
+              0,
+              2
+            ]
+          },
+          {
+            "source": "source/06.png",
+            "polygons": [
+              [
+                [
+                  125.0,
+                  180
+                ],
+                [
+                  125.0,
+                  199
+                ],
+                [
+                  165.0,
+                  199
+                ],
+                [
+                  165.0,
+                  180
+                ]
+              ]
+            ],
+            "translate": [
+              0,
+              0
+            ]
+          }
+        ],
+        "outfit.boot.left": [
+          {
+            "source": "source/00.png",
+            "polygons": [
+              [
+                [
+                  126,
+                  199
+                ],
+                [
+                  145,
+                  199
+                ],
+                [
+                  145,
+                  214
+                ],
+                [
+                  126,
+                  214
+                ]
+              ]
+            ],
+            "translate": [
+              0,
+              -1
+            ]
+          }
+        ],
+        "outfit.sleeve.right": [
+          {
+            "source": "source/06.png",
+            "polygons": [
+              [
+                [
+                  80,
+                  130
+                ],
+                [
+                  105,
+                  130
+                ],
+                [
+                  112,
+                  138
+                ],
+                [
+                  112,
+                  148
+                ],
+                [
+                  107,
+                  162
+                ],
+                [
+                  107,
+                  165
+                ],
+                [
+                  90,
+                  165
+                ],
+                [
+                  80,
+                  145
+                ]
+              ]
+            ],
+            "translate": [
+              0,
+              0
+            ]
+          }
+        ],
+        "outfit.sleeve.left": [
+          {
+            "source": "source/06.png",
+            "polygons": [
+              [
+                [
+                  145,
+                  130
+                ],
+                [
+                  170,
+                  130
+                ],
+                [
+                  170,
+                  145
+                ],
+                [
+                  157,
+                  155
+                ],
+                [
+                  140,
+                  155
+                ],
+                [
+                  140,
+                  152
+                ],
+                [
+                  138,
+                  148
+                ],
+                [
+                  138,
+                  138
+                ]
+              ]
+            ],
+            "translate": [
+              0,
+              0
+            ]
+          }
+        ],
+        "outfit.torso": [
+          {
+            "source": "source/00.png",
+            "polygons": [
+              [
+                [
+                  101,
+                  127
+                ],
+                [
+                  148,
+                  127
+                ],
+                [
+                  148,
+                  139
+                ],
+                [
+                  145,
+                  149
+                ],
+                [
+                  138,
+                  153
+                ],
+                [
+                  137,
+                  157
+                ],
+                [
+                  140,
+                  164
+                ],
+                [
+                  109,
+                  164
+                ],
+                [
+                  111,
+                  154
+                ],
+                [
+                  104,
+                  151
+                ],
+                [
+                  101,
+                  140
+                ]
+              ]
+            ],
+            "translate": [
+              0,
+              2
+            ]
+          }
+        ],
+        "outfit.hem.front": [
+          {
+            "source": "source/00.png",
+            "polygons": [
+              [
+                [
+                  109,
+                  162
+                ],
+                [
+                  139,
+                  162
+                ],
+                [
+                  143,
+                  171
+                ],
+                [
+                  138,
+                  173
+                ],
+                [
+                  127,
+                  173
+                ],
+                [
+                  124,
+                  166
+                ],
+                [
+                  122,
+                  173
+                ],
+                [
+                  108,
+                  173
+                ],
+                [
+                  105,
+                  170
+                ]
+              ]
+            ],
+            "translate": [
+              0,
+              2
+            ],
+            "excludePolygons": [
+              [
+                [
+                  103,
+                  160
+                ],
+                [
+                  107,
+                  160
+                ],
+                [
+                  107,
+                  169
+                ],
+                [
+                  103,
+                  169
+                ]
+              ]
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "frame": 7,
+      "clip": "walk",
+      "layers": {
+        "outfit.pants.left": [
+          {
+            "source": "source/pants-underlay.png",
+            "polygons": [
+              [
+                [
+                  127,
+                  195
+                ],
+                [
+                  141,
+                  195
+                ],
+                [
+                  141,
+                  207
+                ],
+                [
+                  127,
+                  207
+                ]
+              ]
+            ],
+            "translate": [
+              0,
+              -4
+            ],
+            "hiddenUnder": "outfit.boot.left"
+          },
+          {
+            "source": "source/pants-underlay.png",
+            "polygons": [
+              [
+                [
+                  125,
+                  165
+                ],
+                [
+                  143,
+                  165
+                ],
+                [
+                  143,
+                  183
+                ],
+                [
+                  125,
+                  183
+                ]
+              ]
+            ],
+            "translate": [
+              0,
+              -1
+            ]
+          },
+          {
+            "source": "source/07.png",
+            "polygons": [
+              [
+                [
+                  125.5,
+                  177
+                ],
+                [
+                  126,
+                  184
+                ],
+                [
+                  129,
+                  192
+                ],
+                [
+                  129.0,
+                  195
+                ],
+                [
+                  165.0,
+                  195
+                ],
+                [
+                  165.0,
+                  177
+                ]
+              ]
+            ],
+            "translate": [
+              0,
+              0
+            ]
+          }
+        ],
+        "outfit.boot.left": [
+          {
+            "source": "source/00.png",
+            "polygons": [
+              [
+                [
+                  126,
+                  199
+                ],
+                [
+                  145,
+                  199
+                ],
+                [
+                  145,
+                  214
+                ],
+                [
+                  126,
+                  214
+                ]
+              ]
+            ],
+            "translate": [
+              0,
+              -3
+            ]
+          }
+        ],
+        "outfit.pants.right": [
+          {
+            "source": "source/pants-underlay.png",
+            "polygons": [
+              [
+                [
+                  109,
+                  195
+                ],
+                [
+                  123,
+                  195
+                ],
+                [
+                  123,
+                  207
+                ],
+                [
+                  109,
+                  207
+                ]
+              ]
+            ],
+            "translate": [
+              7,
+              -12
+            ],
+            "hiddenUnder": "outfit.boot.right"
+          },
+          {
+            "source": "source/pants-underlay.png",
+            "polygons": [
+              [
+                [
+                  106,
+                  165
+                ],
+                [
+                  125,
+                  165
+                ],
+                [
+                  125,
+                  185
+                ],
+                [
+                  106,
+                  185
+                ]
+              ]
+            ],
+            "translate": [
+              2,
+              -1
+            ]
+          },
+          {
+            "source": "source/07.png",
+            "polygons": [
+              [
+                [
+                  125.5,
+                  177
+                ],
+                [
+                  126,
+                  184
+                ],
+                [
+                  127.875,
+                  189
+                ],
+                [
+                  85.0,
+                  189
+                ],
+                [
+                  85.0,
+                  177
+                ]
+              ]
+            ],
+            "translate": [
+              0,
+              0
+            ],
+            "excludePolygons": [
+              [
+                [
+                  122,
+                  188
+                ],
+                [
+                  124,
+                  188
+                ],
+                [
+                  127,
+                  191
+                ],
+                [
+                  127,
+                  198
+                ],
+                [
+                  124,
+                  201
+                ],
+                [
+                  118,
+                  201
+                ],
+                [
+                  116,
+                  199
+                ],
+                [
+                  116,
+                  192
+                ],
+                [
+                  118,
+                  190
+                ],
+                [
+                  121,
+                  190
+                ]
+              ],
+              [
+                [
+                  126,
+                  181
+                ],
+                [
+                  126,
+                  181
+                ],
+                [
+                  126,
+                  181
+                ],
+                [
+                  126,
+                  181
+                ]
+              ]
+            ]
+          }
+        ],
+        "outfit.boot.right": [
+          {
+            "source": "source/00.png",
+            "polygons": [
+              [
+                [
+                  108,
+                  199
+                ],
+                [
+                  125,
+                  199
+                ],
+                [
+                  125,
+                  214
+                ],
+                [
+                  108,
+                  214
+                ]
+              ]
+            ],
+            "translate": [
+              6,
+              -13
+            ]
+          }
+        ],
+        "outfit.sleeve.right": [
+          {
+            "source": "source/07.png",
+            "polygons": [
+              [
+                [
+                  80,
+                  127
+                ],
+                [
+                  105,
+                  127
+                ],
+                [
+                  112,
+                  135
+                ],
+                [
+                  112,
+                  145
+                ],
+                [
+                  114,
+                  158
+                ],
+                [
+                  114,
+                  161
+                ],
+                [
+                  97,
+                  161
+                ],
+                [
+                  80,
+                  145
+                ]
+              ]
+            ],
+            "translate": [
+              0,
+              0
+            ]
+          }
+        ],
+        "outfit.sleeve.left": [
+          {
+            "source": "source/07.png",
+            "polygons": [
+              [
+                [
+                  145,
+                  127
+                ],
+                [
+                  170,
+                  127
+                ],
+                [
+                  170,
+                  145
+                ],
+                [
+                  158,
+                  165
+                ],
+                [
+                  141,
+                  165
+                ],
+                [
+                  141,
+                  162
+                ],
+                [
+                  138,
+                  145
+                ],
+                [
+                  138,
+                  135
+                ]
+              ]
+            ],
+            "translate": [
+              0,
+              0
+            ],
+            "excludePolygons": [
+              [
+                [
+                  140,
+                  165
+                ],
+                [
+                  142,
+                  165
+                ],
+                [
+                  142,
+                  168
+                ],
+                [
+                  140,
+                  168
+                ]
+              ]
+            ]
+          }
+        ],
+        "outfit.torso": [
+          {
+            "source": "source/00.png",
+            "polygons": [
+              [
+                [
+                  101,
+                  127
+                ],
+                [
+                  148,
+                  127
+                ],
+                [
+                  148,
+                  139
+                ],
+                [
+                  145,
+                  149
+                ],
+                [
+                  138,
+                  153
+                ],
+                [
+                  137,
+                  157
+                ],
+                [
+                  140,
+                  164
+                ],
+                [
+                  109,
+                  164
+                ],
+                [
+                  111,
+                  154
+                ],
+                [
+                  104,
+                  151
+                ],
+                [
+                  101,
+                  140
+                ]
+              ]
+            ],
+            "translate": [
+              0,
+              -1
+            ]
+          }
+        ],
+        "outfit.hem.front": [
+          {
+            "source": "source/00.png",
+            "polygons": [
+              [
+                [
+                  109,
+                  162
+                ],
+                [
+                  139,
+                  162
+                ],
+                [
+                  143,
+                  171
+                ],
+                [
+                  138,
+                  173
+                ],
+                [
+                  127,
+                  173
+                ],
+                [
+                  124,
+                  166
+                ],
+                [
+                  122,
+                  173
+                ],
+                [
+                  108,
+                  173
+                ],
+                [
+                  105,
+                  170
+                ]
+              ]
+            ],
+            "translate": [
+              0,
+              -1
+            ],
+            "excludePolygons": [
+              [
+                [
+                  103,
+                  160
+                ],
+                [
+                  107,
+                  160
+                ],
+                [
+                  107,
+                  169
+                ],
+                [
+                  103,
+                  169
+                ]
+              ]
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "frame": 8,
+      "clip": "walk",
+      "layers": {
+        "outfit.pants.right": [
+          {
+            "source": "source/pants-underlay.png",
+            "polygons": [
+              [
+                [
+                  109,
+                  195
+                ],
+                [
+                  123,
+                  195
+                ],
+                [
+                  123,
+                  207
+                ],
+                [
+                  109,
+                  207
+                ]
+              ]
+            ],
+            "translate": [
+              1,
+              -1
+            ],
+            "hiddenUnder": "outfit.boot.right"
+          },
+          {
+            "source": "source/pants-underlay.png",
+            "polygons": [
+              [
+                [
+                  106,
+                  165
+                ],
+                [
+                  125,
+                  165
+                ],
+                [
+                  125,
+                  183
+                ],
+                [
+                  106,
+                  183
+                ]
+              ]
+            ],
+            "translate": [
+              0,
+              -2
+            ]
+          },
+          {
+            "source": "source/08.png",
+            "polygons": [
+              [
+                [
+                  125.0,
+                  176
+                ],
+                [
+                  125.0,
+                  199
+                ],
+                [
+                  85.0,
+                  199
+                ],
+                [
+                  85.0,
+                  176
+                ]
+              ]
+            ],
+            "translate": [
+              0,
+              0
+            ]
+          }
+        ],
+        "outfit.boot.right": [
+          {
+            "source": "source/00.png",
+            "polygons": [
+              [
+                [
+                  108,
+                  199
+                ],
+                [
+                  125,
+                  199
+                ],
+                [
+                  125,
+                  214
+                ],
+                [
+                  108,
+                  214
+                ]
+              ]
+            ],
+            "translate": [
+              1,
+              0
+            ]
+          }
+        ],
+        "outfit.pants.left": [
+          {
+            "source": "source/pants-underlay.png",
+            "polygons": [
+              [
+                [
+                  127,
+                  195
+                ],
+                [
+                  141,
+                  195
+                ],
+                [
+                  141,
+                  207
+                ],
+                [
+                  127,
+                  207
+                ]
+              ]
+            ],
+            "translate": [
+              0,
+              -11
+            ],
+            "hiddenUnder": "outfit.boot.left"
+          },
+          {
+            "source": "source/pants-underlay.png",
+            "polygons": [
+              [
+                [
+                  125,
+                  165
+                ],
+                [
+                  143,
+                  165
+                ],
+                [
+                  143,
+                  183
+                ],
+                [
+                  125,
+                  183
+                ]
+              ]
+            ],
+            "translate": [
+              0,
+              -2
+            ]
+          },
+          {
+            "source": "source/08.png",
+            "polygons": [
+              [
+                [
+                  125.0,
+                  176
+                ],
+                [
+                  125.0,
+                  188
+                ],
+                [
+                  165.0,
+                  188
+                ],
+                [
+                  165.0,
+                  176
+                ]
+              ]
+            ],
+            "translate": [
+              0,
+              0
+            ],
+            "excludePolygons": [
+              [
+                [
+                  125,
+                  187
+                ],
+                [
+                  125,
+                  187
+                ],
+                [
+                  125,
+                  189
+                ],
+                [
+                  125,
+                  189
+                ]
+              ]
+            ]
+          }
+        ],
+        "outfit.boot.left": [
+          {
+            "source": "source/00.png",
+            "polygons": [
+              [
+                [
+                  126,
+                  199
+                ],
+                [
+                  145,
+                  199
+                ],
+                [
+                  145,
+                  214
+                ],
+                [
+                  126,
+                  214
+                ]
+              ]
+            ],
+            "translate": [
+              0,
+              -11
+            ]
+          }
+        ],
+        "outfit.sleeve.right": [
+          {
+            "source": "source/08.png",
+            "polygons": [
+              [
+                [
+                  80,
+                  126
+                ],
+                [
+                  105,
+                  126
+                ],
+                [
+                  112,
+                  134
+                ],
+                [
+                  112,
+                  144
+                ],
+                [
+                  107,
+                  149
+                ],
+                [
+                  107,
+                  152
+                ],
+                [
+                  90,
+                  152
+                ],
+                [
+                  80,
+                  145
+                ]
+              ]
+            ],
+            "translate": [
+              0,
+              0
+            ]
+          }
+        ],
+        "outfit.sleeve.left": [
+          {
+            "source": "source/08.png",
+            "polygons": [
+              [
+                [
+                  145,
+                  126
+                ],
+                [
+                  170,
+                  126
+                ],
+                [
+                  170,
+                  145
+                ],
+                [
+                  159,
+                  167
+                ],
+                [
+                  142,
+                  167
+                ],
+                [
+                  142,
+                  164
+                ],
+                [
+                  138,
+                  144
+                ],
+                [
+                  138,
+                  134
+                ]
+              ]
+            ],
+            "translate": [
+              0,
+              0
+            ],
+            "excludePolygons": [
+              [
+                [
+                  141,
+                  166
+                ],
+                [
+                  142,
+                  166
+                ],
+                [
+                  142,
+                  169
+                ],
+                [
+                  141,
+                  169
+                ]
+              ]
+            ]
+          }
+        ],
+        "outfit.torso": [
+          {
+            "source": "source/00.png",
+            "polygons": [
+              [
+                [
+                  101,
+                  127
+                ],
+                [
+                  148,
+                  127
+                ],
+                [
+                  148,
+                  139
+                ],
+                [
+                  145,
+                  149
+                ],
+                [
+                  138,
+                  153
+                ],
+                [
+                  137,
+                  157
+                ],
+                [
+                  140,
+                  164
+                ],
+                [
+                  109,
+                  164
+                ],
+                [
+                  111,
+                  154
+                ],
+                [
+                  104,
+                  151
+                ],
+                [
+                  101,
+                  140
+                ]
+              ]
+            ],
+            "translate": [
+              0,
+              -2
+            ]
+          }
+        ],
+        "outfit.hem.front": [
+          {
+            "source": "source/00.png",
+            "polygons": [
+              [
+                [
+                  109,
+                  162
+                ],
+                [
+                  139,
+                  162
+                ],
+                [
+                  143,
+                  171
+                ],
+                [
+                  138,
+                  173
+                ],
+                [
+                  127,
+                  173
+                ],
+                [
+                  124,
+                  166
+                ],
+                [
+                  122,
+                  173
+                ],
+                [
+                  108,
+                  173
+                ],
+                [
+                  105,
+                  170
+                ]
+              ]
+            ],
+            "translate": [
+              0,
+              -2
+            ],
+            "excludePolygons": [
+              [
+                [
+                  103,
+                  160
+                ],
+                [
+                  107,
+                  160
+                ],
+                [
+                  107,
+                  169
+                ],
+                [
+                  103,
+                  169
+                ]
+              ]
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}
