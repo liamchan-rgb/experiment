@@ -1,6 +1,6 @@
 # 林间行旅迭代进度 · 2026-10-19
 
-**2026-10-19 最新进展：战场静态样板与独立环境四层重组已获认可；[向右侧视待机中性人体 r2](../Art/Templates/P1-Neutral/battle-side/right-idle-r2/README.md)的姿态与近侧右手方向已获认可，当前回审[隐藏人体底层 v2](../Art/Templates/P1-Neutral/battle-side/right-idle-parts-v2/README.md)。已绘制连续颈肩至骨盆皮肤核心；它尚未并入静态合成，四肢底层、动作接缝与运行时仍待完成。向下正手垂剑 v5 的单帧认可保留；[强击 × 训练短剑首组特效](../Art/Effects/P1-Boardgame/heavyStrike-trainingSword-v1/README.md)正常速度原型仍待独立审美审核。最终分层模板和正式应用接入尚未完成。**
+**2026-10-19 最新进展：战场静态样板与独立环境四层重组已获认可；[向右侧视待机中性人体 r2](../Art/Templates/P1-Neutral/battle-side/right-idle-r2/README.md)的姿态与近侧右手方向已获认可。[隐藏人体底层 v2](../Art/Templates/P1-Neutral/battle-side/right-idle-parts-v2/README.md)已修复八层像素归属，静态重组与 r2 逐像素一致；小幅四肢位移测试仍暴露肩髋接缝，需继续补画。通用模板、动作与运行时接入仍未完成。向下正手垂剑 v5 的单帧认可保留；[强击 × 训练短剑首组特效](../Art/Effects/P1-Boardgame/heavyStrike-trainingSword-v1/README.md)正常速度原型仍待独立审美审核。**
 
 最近通过完整 iPad UI 套件的正式基线仍为 [1.6.3 build 28](../Downloads/README.md)。最新 MeadowJourney 桌游布局实验包为 [1.6.6 build 31](../Downloads/MeadowJourney-build31.json)：实现三态共用布局并通过 5 项专项检查，仓库完整步态套件尚未全绿。兼容性测试只覆盖 iPad；云端使用 iPad Pro 13-inch（M4）模拟器、iOS 18.5，没有连接用户的物理 iPad。
 
@@ -18,7 +18,7 @@ r2首次修订消除了错误钩线，但实际256图放大后拇指仍只是一
 
 原[身体部件拆分 v1](../Art/Templates/P1-Neutral/battle-side/right-idle-parts-v1/README.md)继续保留为静态分层记录：从认可的256×256姿势按共同注册导出远近手臂、手、腿、躯干与头部共八个透明层，并制作可编辑SVG母稿。442个接缝覆盖像素单列为当前站姿补位，不是隐藏解剖。两次生成的躯干层因颈根／腰线漂移而弃用并留档。
 
-新增[隐藏人体底层 v2](../Art/Templates/P1-Neutral/battle-side/right-idle-parts-v2/README.md)：在固定注册坐标手绘连续颈肩至骨盆皮肤核心，共1527个非透明像素；保留原八层和脚底线。新层单独输出，未并入静态合成，因为试叠时现有抗锯齿部件边缘会让底层透出并改变认可外观；静态review仍与v1逐像素一致。它尚未通过肢体移动接缝测试；442像素固定姿态补位层仍用于静态审核，不能进入动作或运行时。完整四肢底层、衣物独立层、武器、其它方向和外观组合仍未完成。应用、IPA、已认可场景与步行动作未改。
+继续修订[隐藏人体底层 v2](../Art/Templates/P1-Neutral/battle-side/right-idle-parts-v2/README.md)：把原八个抗锯齿遮罩改成互斥像素归属，旧的442像素固定姿态补位层已删除；六个离散源像素并入躯干根层。八层静态重组现与注册 r2 源图逐像素一致，零 RGBA 差异，未改动 r2 原图和脚底线。将隐藏皮肤核心扩到1979像素，覆盖肩部与上髋连接面，并生成近／远手臂与腿的四组小幅平移接缝预检。预检仍发现肩部轮廓残线、髋根断线与空缺，故未通过；这轮是遮罩修复和问题定位，不代表完整解剖、动画或模板通过。下一步补画肩髋遮挡下的身体像素并调整部件分界，再复测。应用、IPA、已认可场景与步行动作未改。
 
 用户在认可四层场景后明确“开始下一项工作”，授权制作独立侧视待机人物。按分层合同，先制作并单张审核向右侧视待机中性人体；维持已认可共同人体的头身比例、完整无发头皮／耳朵、空白面部、安全内衫／短裤与裸足。已认可战场样板仅用于侧向姿态、镜头与地面关系，不将其中绿衣、棕发、蓝眼或短剑烘焙进基础人体。新稿及生成依据另存 `Art/Templates/P1-Neutral/battle-side/right-idle-r1/`，原向下人体和四层场景不改。
 

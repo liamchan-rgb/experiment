@@ -1,0 +1,20 @@
+{
+  "schemaVersion": "1.0.0",
+  "purpose": "Rigid single-limb translation checks for underlayer coverage, not animation approval.",
+  "canvasPx": [256, 256],
+  "testTranslationsPx": {
+    "nearArmAndHand": [3, 1],
+    "farArmAndHand": [-3, 1],
+    "nearLeg": [2, -2],
+    "farLeg": [-2, -2]
+  },
+  "contactSheet": "movement-seams.png",
+  "jointDetailSheet": "movement-joints.png",
+  "status": "needs-joint-art-revision",
+  "seamsPassed": false,
+  "findings": [
+    "Far-arm displacement leaves an outline at the original shoulder cut.",
+    "Leg displacement exposes gaps at the hip and garment edge."
+  ],
+  "knownLimit": "Rigid shifts are diagnostic; the underbody reaches shoulder and upper-hip roots but does not contain complete limb anatomy, and limb rotations are not tested."
+}

@@ -1,7 +1,7 @@
 {
-  "schemaVersion": "1.1.0",
+  "schemaVersion": "1.2.0",
   "id": "p1-neutral-battle-side-right-idle-parts-v2",
-  "status": "awaiting-user-underbody-review",
+  "status": "artwork-in-progress",
   "poseApproval": "p1-neutral-battle-side-right-idle-r2",
   "direction": "battle-side-right",
   "clip": "idle",
@@ -17,39 +17,50 @@
     17.297872340425542
   ],
   "soleLineCanvasY": 214,
+  "maskOwnership": {
+    "method": "One source pixel is assigned to one semantic part. Pixels outside authored cores are assigned to the nearest expanded mask through 12 px; shoulder and hand ties use the limb-aware owner order below, while display compositing keeps its separate z-order.",
+    "tieOrder": ["body.hand.right.near", "body.arm.right.near", "head.base", "body.hand.left.far", "body.arm.left.far", "body.torso", "body.leg.right.near", "body.leg.left.far"],
+    "unassignedResidualPixels": 0,
+    "isolatedSourceSpecksAttachedTo": "body.torso",
+    "fixedPoseCoverageFill": false
+  },
   "parts": [
     {
       "layer": "body.skin.underlay",
       "png": "parts/body.skin.underlay.png",
       "z": 0,
-      "role": "First-pass continuous hidden skin core from neck/shoulders to pelvis; limb anatomy is incomplete"
+      "role": "Incomplete connected neck/shoulder/chest/abdomen/pelvis skin core",
+      "includedInStaticAssembly": false
     },
-    {"layer": "body.leg.left.far", "png": "parts/body.leg.left.far.png", "z": 2},
-    {"layer": "body.arm.left.far", "png": "parts/body.arm.left.far.png", "z": 3},
-    {"layer": "body.hand.left.far", "png": "parts/body.hand.left.far.png", "z": 4},
-    {"layer": "body.leg.right.near", "png": "parts/body.leg.right.near.png", "z": 5},
-    {"layer": "body.torso", "png": "parts/body.torso.png", "z": 6},
-    {"layer": "head.base", "png": "parts/head.base.png", "z": 7},
-    {"layer": "body.arm.right.near", "png": "parts/body.arm.right.near.png", "z": 8},
-    {"layer": "body.hand.right.near", "png": "parts/body.hand.right.near.png", "z": 9}
-  ],
-  "reviewOnlyLayers": [
-    {
-      "layer": "body.coverage-fill",
-      "png": "coverage-fill.png",
-      "z": 1,
-      "role": "Static single-pose residual from r2; not hidden anatomy and not for runtime movement"
-    }
+    {"layer": "body.leg.left.far", "png": "parts/body.leg.left.far.png", "z": 1},
+    {"layer": "body.arm.left.far", "png": "parts/body.arm.left.far.png", "z": 2},
+    {"layer": "body.hand.left.far", "png": "parts/body.hand.left.far.png", "z": 3},
+    {"layer": "body.leg.right.near", "png": "parts/body.leg.right.near.png", "z": 4},
+    {"layer": "body.torso", "png": "parts/body.torso.png", "z": 5},
+    {"layer": "head.base", "png": "parts/head.base.png", "z": 6},
+    {"layer": "body.arm.right.near", "png": "parts/body.arm.right.near.png", "z": 7},
+    {"layer": "body.hand.right.near", "png": "parts/body.hand.right.near.png", "z": 8}
   ],
   "underbody": {
     "source": "underbody-authoring.svg",
     "discardedGenerationAttempt": "drafts/underbody-generated-source.png",
-    "method": "Editable SVG authored in the fixed registered 256x256 coordinates, with source palette sampling and silhouette clipping; no per-part fitting",
-    "alphaPixels": 1527,
-    "alphaBounds": [106, 131, 41, 54],
-    "regions": ["one connected neck/shoulder/chest/abdomen/pelvis core beneath the current clothing and limb layers"],
+    "method": "Fixed registered 256x256 SVG, palette sampled from the approved r2 pose and clipped to its silhouette",
+    "alphaPixels": 1979,
+    "alphaBounds": [100, 131, 51, 63],
+    "regions": ["connected neck, shoulders, chest, abdomen, pelvis and upper-hip roots"],
     "complete": false,
     "movementTest": "not passed"
+  },
+  "movementPreflight": {
+    "script": "movement-seam-test.sh",
+    "images": ["movement-seams.png", "movement-joints.png"],
+    "status": "failed-joint-art-in-progress",
+    "tests": ["near arm and hand +3,+1 px", "far arm and hand -3,+1 px", "near leg +2,-2 px", "far leg -2,-2 px"]
+  },
+  "staticAssembly": {
+    "path": "assembled.png",
+    "matchesRegisteredR2SourceExactly": true,
+    "underbodyIncluded": false
   },
   "runtimeIntegrated": false,
   "animationDelivered": false,

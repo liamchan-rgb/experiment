@@ -1759,16 +1759,35 @@
   },
   "battleNeutralUnderbodyReview": {
     "id": "p1-neutral-battle-side-right-idle-parts-v2",
-    "status": "awaiting_user_underbody_review",
+    "status": "artwork_in_progress",
     "source": "Art/Templates/P1-Neutral/battle-side/right-idle-parts-v2",
     "reviewImage": "Art/Templates/P1-Neutral/battle-side/right-idle-parts-v2/review.png",
+    "movementSeamSheet": "Art/Templates/P1-Neutral/battle-side/right-idle-parts-v2/movement-joints.png",
     "editableMaster": "Art/Templates/P1-Neutral/battle-side/right-idle-parts-v2/authoring.svg",
     "partsManifest": "Art/Templates/P1-Neutral/battle-side/right-idle-parts-v2/parts.json",
     "poseApprovalReference": "p1-neutral-battle-side-right-idle-r2",
-    "scope": "Registered first-pass connected neck/shoulder/chest/abdomen/pelvis skin core; existing eight static part masks and visible r2 pose preserved, new core is shown separately until mask bleed is fixed",
+    "scope": "Repair the eight source-pixel masks and test a separate connected neck/shoulder/chest/abdomen/pelvis underbody without changing the approved r2 source pose",
+    "sourcePoseChanged": false,
+    "fixedPoseCoverageFillPixels": 0,
+    "staticRgbaDifferencePixelsVsR2": 0,
+    "isolatedSourcePixelsAssignedToTorsoRoot": 6,
+    "underbodyPixelCount": 1979,
     "underbodyComplete": false,
     "movementSeamsPassed": false,
     "runtimeIntegrated": false,
-    "next": "Review the continuous torso/pelvis core. Finish limb underlayers and repair the cut-mask boundaries before articulated movement tests or production use."
+    "movementPreflight": {
+      "status": "failed_joint_art_in_progress",
+      "translations": {
+        "nearArmAndHand": [3, 1],
+        "farArmAndHand": [-3, 1],
+        "nearLeg": [2, -2],
+        "farLeg": [-2, -2]
+      },
+      "findings": [
+        "Far-arm displacement leaves an outline from the original shoulder cut.",
+        "Leg displacement exposes hip and garment-edge gaps."
+      ]
+    },
+    "next": "Redraw the hidden shoulder and hip overlaps and refine semantic cut placement, then rerun the same four registered translations."
   }
 }

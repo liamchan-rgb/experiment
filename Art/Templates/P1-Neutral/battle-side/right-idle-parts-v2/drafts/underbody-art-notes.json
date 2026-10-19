@@ -10,10 +10,11 @@
     "warmMid": "#f3a277",
     "hipMid": "#f8b687"
   },
-  "pixelBounds": [106, 131, 41, 54],
-  "nontransparentPixelCount": 1527,
-  "artPass": "Connected neck/shoulder/chest/abdomen/pelvis core, manually authored as a hidden anatomy study beneath the existing garment and limb parts.",
-  "staticIntegration": "Not included in assembled.png. Test compositing visibly bled through the current antialiased part boundaries and changed the accepted appearance; preserve the v1 static composite until masks and overlap coverage are repaired.",
+  "pixelBounds": [100, 131, 51, 63],
+  "nontransparentPixelCount": 1979,
+  "artPass": "Connected neck, shoulder, chest, abdomen, pelvis and upper-hip-root core, manually authored as a hidden anatomy study beneath the existing garment and limb parts.",
+  "staticIntegration": "Not included in assembled.png. The semantic masks have since been rebuilt as exclusive source-pixel owners, and the static assembly now matches r2 exactly. The underbody stays separate while shoulder and hip overlap art is revised; small limb translations still expose seams.",
+  "movementPreflight": "Four 2-3 px rigid translations were rendered in movement-joints.png; the test is not passed because shoulder and hip cut seams remain.",
   "notApproved": true,
   "notComplete": true
 }

@@ -1,5 +1,5 @@
 {
-  "schemaVersion": "1.1.0",
+  "schemaVersion": "1.2.0",
   "status": "passed-structural-checks-with-artwork-limitations",
   "builtBy": "./build.sh",
   "sourcePose": {
@@ -11,54 +11,48 @@
   },
   "canvasPx": [256, 256],
   "semanticPartCount": 8,
+  "maskRepair": {
+    "method": "Exclusive pixel ownership from registered SVG masks; gaps through 12 px go to the nearest region, with joint ties resolved by the limb-aware ownership order in parts.json.",
+    "isolatedResidualPixelsAssignedToTorsoRoot": 6,
+    "coverageFillPixels": 0,
+    "sourcePixelOwnershipSum": 5345,
+    "unownedSourcePixels": 0,
+    "multiplyOwnedSourcePixels": 0,
+    "rgbaReconstructionDifferencePixelsVsR2": 0
+  },
   "underbodyCandidate": {
     "path": "parts/body.skin.underlay.png",
     "editableSource": "underbody-authoring.svg",
     "canvasPx": [256, 256],
     "mode": "RGBA",
-    "nonTransparentPixels": 1527,
-    "alphaBoundsXYWH": [106, 131, 41, 54],
+    "nonTransparentPixels": 1917,
+    "alphaBoundsXYWH": [101, 132, 50, 61],
     "includedInStaticAssembly": false,
     "complete": false,
     "movementSeamTestPassed": false
   },
-  "coverageFill": {
-    "path": "coverage-fill.png",
-    "canvasPx": [256, 256],
-    "mode": "RGBA",
-    "nonTransparentPixels": 442,
-    "role": "Fixed-pose review only; not anatomy and not for movement"
-  },
   "assembled": {
-    "path": "assembled.png",
     "canvasPx": [256, 256],
-    "mode": "RGBA",
     "nonTransparentPixels": 5345,
     "alphaSilhouetteDifferencePixelsVsSource": 0,
-    "rgbaDifferentPixelsVsSource": 633,
-    "pixelDifferenceVsV1Composite": 0
-  },
-  "reviewImage": {
-    "path": "review.png",
-    "canvasPx": [1600, 930]
+    "rgbaDifferentPixelsVsSource": 0
   },
   "checks": {
     "allSemanticPartsAre256x256RGBAAndNonempty": true,
     "underbodyIs256x256RGBAAndNonempty": true,
     "sourceAndPartsShareTheSameCanvasCoordinates": true,
-    "underbodyHasNoPixelsOutsideApprovedR2Silhouette": true,
-    "staticAssemblyAlphaSilhouetteMatchesSource": true,
-    "staticAssemblyExactlyMatchesV1Composite": true,
-    "underbodyIntegratedIntoFinalStack": false,
+    "sourcePixelPartitionCoversFullR2Silhouette": true,
+    "staticAssemblyExactlyMatchesR2Source": true,
+    "underbodyIncludedInStaticAssembly": false,
     "underbodyArtworkApproved": false,
     "movementSeamTestPassed": false,
     "hiddenAnatomyComplete": false,
     "runtimeIntegrated": false
   },
   "limitations": [
-    "Underbody is a torso/pelvis study and has no complete arm, hand, or leg anatomy.",
-    "Adding it beneath the existing antialiased segmentation visibly changes the static composite; the current mask edges must be repaired before integration.",
-    "The 442-pixel coverage fill is still fixed to this one pose and cannot be animated.",
-    "This package has not passed limb movement, outfit swapping, weapon grip, other directions, or runtime tests."
+    "Underbody is still a torso/pelvis study; complete arm, hand, and leg anatomy remains unfinished.",
+    "The pixel-owner masks reconstruct the source exactly but still need human review for semantic cut placement.",
+    "A small rigid-part translation is a diagnostic, not a finished animation or production approval.",
+    "This package has not passed outfit swapping, weapon grip, other directions, or runtime tests."
   ]
 }
