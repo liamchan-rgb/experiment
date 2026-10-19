@@ -1,0 +1,80 @@
+{
+  "schemaVersion": "1.0.0",
+  "application": "MeadowJourney",
+  "bundleIdentifier": "com.liamchan.experiment.meadow",
+  "version": "1.6.7",
+  "build": 32,
+  "file": "MeadowJourney-b32.ipa",
+  "bytes": 23798348,
+  "sha256": "b767b974b147a881c309626bc2bc3cdd8d59c4a4d107354d0e7b97a9014a88d3",
+  "source": {
+    "branch": "feat/meadow-battle-scene-v0.1",
+    "commit": "c58dea84d773c219fd78432937be737b4537d69b"
+  },
+  "archive": {
+    "workflowRunId": 39301837295,
+    "workflowRun": "https://github.com/liamchan-rgb/experiment/actions/runs/39301837295",
+    "artifactId": 12212352567,
+    "artifactName": "MeadowJourney-shadow-lab-IPA",
+    "logsArtifactId": 12212352573,
+    "runner": "macos-14",
+    "xcode": "15.4 (15F31d)",
+    "packageMode": "unsigned SideStore re-signable IPA"
+  },
+  "validation": {
+    "ipaZipCRC": "passed",
+    "zipCompression": "ZIP_STORED",
+    "zip64": false,
+    "zipExtraFields": 0,
+    "bundleVersion": "passed",
+    "physicalDevicePlatform": "iPhoneOS",
+    "architectures": [
+      "arm64"
+    ],
+    "deviceFamilies": [
+      "iPhone",
+      "iPad"
+    ],
+    "minimumOSVersion": "15.0",
+    "metalLibrary": "present",
+    "executablePermission": "0755",
+    "localPackageInspection": "passed"
+  },
+  "uiReview": {
+    "workflowRunId": 39300527243,
+    "workflowRun": "https://github.com/liamchan-rgb/experiment/actions/runs/39300527243",
+    "tests": [
+      "testMeadowBattleUsesRegisteredCampLayersAndOneVisibleForestWarden",
+      "testBattleLayoutKeepsSharedRowsAndExpandsForExplorationAndMonsterTurns",
+      "testBattlePreviewCropsAroundTravellerAndKeepsTerrainAcrossViewport",
+      "testCapturedViewportKeepsGroundAndArtworkAlignedThroughZoomAndPan",
+      "testLayeredP1ColorwayPreviewRunsBesideOriginalInTheMapScene",
+      "testMeadowBattlePreviewKeepsReferenceMapBesideLandscapeScene"
+    ],
+    "result": "6 passed, 0 failures; 4 native checks and 2 iPad UI checks",
+    "device": "iPad Pro 13-inch (M4) simulator",
+    "runtime": "iOS 17.5",
+    "fullSuite": "not rerun; historical gait-suite status remains in docs/ITERATION_STATUS.md",
+    "rawResultArtifactId": 12210578508,
+    "rawResultArtifactName": "shadow-lab-smoke-logs-iPad-39300527243-1",
+    "screenshotExport": "Xcode 15.4 xcresulttool has no export attachments command; raw .xcresult retained in the test artifact",
+    "offlineBattleComposite": "../Art/Scenes/MeadowBattle/enemies/forest-warden-v1/review-composite.png",
+    "manualSceneReview": "camp clearing layers, right-facing map hero, left-facing forest enemy, relative scale, registered feet, edge clearance, and contact shadows inspected in the offline composite"
+  },
+  "physicalIPadTested": false,
+  "artReviewStatus": "approved Meadow Journey camp environment; forest warden is a new static sample awaiting user art review",
+  "layoutPreview": {
+    "isSampleData": true,
+    "modes": [
+      "exploration",
+      "playerTurn",
+      "monsterTurn"
+    ],
+    "realGameCoreConnected": false,
+    "mapTravellers": 3,
+    "sampleQueuePlayers": 7,
+    "sampleQueueEnemies": 3,
+    "battleActors": "one static hero and one static forest warden",
+    "limits": "no real battle settlement, save data, enemy animation, or complete party formation"
+  }
+}

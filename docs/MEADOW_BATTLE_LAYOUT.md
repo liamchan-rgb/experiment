@@ -32,4 +32,4 @@ build31 的地图／战斗分屏、三态和底部队列布局已获用户认可
 
 ## 验证与交付
 
-build32 当前加入 `testMeadowBattleUsesRegisteredCampLayersAndOneVisibleForestWarden`，检查四张原始图层尺寸、透明敌方资源、统一注册、人物／敌方脚底、相对体量和前景遮挡顺序。构建结果、UI 检查、SHA-256 与物理 iPad 测试状态会记录在 [交付索引](../Downloads/README.md) 和 [迭代日志](ITERATION_STATUS.md)。
+build32 的 `testMeadowBattleUsesRegisteredCampLayersAndOneVisibleForestWarden` 覆盖四张原始图层尺寸、敌方透明资源、统一注册、脚底、体量和前景遮挡；该项与三项既有原生布局检查、两项 iPad UI 检查一共 6 项全部通过。工作流 [39300527243](https://github.com/liamchan-rgb/experiment/actions/runs/39300527243) 使用 iPad Pro 13-inch（M4）模拟器、iOS 17.5 和 Xcode 15.4；原始 `.xcresult` 已留档，旧版 `xcresulttool` 无法另行导出截图。设备 Release IPA 来自 [归档 39301837295](https://github.com/liamchan-rgb/experiment/actions/runs/39301837295)，大小 23,798,348 字节，SHA-256 `b767b974b147a881c309626bc2bc3cdd8d59c4a4d107354d0e7b97a9014a88d3`。安装包、元数据和试用步骤见[交付索引](../Downloads/README.md)。未在物理 iPad 上测试；战斗规则、存档和角色／敌方动画尚未接入。

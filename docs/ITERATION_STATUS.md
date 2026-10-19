@@ -2,7 +2,7 @@
 
 **2026-10-19 最新进展：战场静态样板与独立环境四层重组已获认可；[向右侧视待机中性人体 r2](../Art/Templates/P1-Neutral/battle-side/right-idle-r2/README.md)的姿态与近侧右手方向已获认可。[隐藏人体底层 v2](../Art/Templates/P1-Neutral/battle-side/right-idle-parts-v2/README.md)已修复八层像素归属，静态重组与 r2 逐像素一致；肩髋四个局部根部窗口的小位移覆盖检查通过。整段肢体平移会改变外轮廓，因此全动作接缝、完整隐藏人体与运行时接入仍未完成。向下正手垂剑 v5 的单帧认可保留；[强击 × 训练短剑首组特效](../Art/Effects/P1-Boardgame/heavyStrike-trainingSword-v1/README.md)正常速度原型仍待独立审美审核。**
 
-最近通过完整 iPad UI 套件的正式基线仍为 [1.6.3 build 28](../Downloads/README.md)。最新 MeadowJourney 桌游布局实验包为 [1.6.6 build 31](../Downloads/MeadowJourney-build31.json)：实现三态共用布局并通过 5 项专项检查，仓库完整步态套件尚未全绿。兼容性测试只覆盖 iPad；云端使用 iPad Pro 13-inch（M4）模拟器、iOS 18.5，没有连接用户的物理 iPad。
+最近通过完整 iPad UI 套件的正式基线仍为 [1.6.3 build 28](../Downloads/README.md)。最新布局／战场试验包为 [1.6.7 build32](../Downloads/MeadowJourney-build32.json)：新增 Meadow 营地战场层级，4 项原生和 2 项 iPad UI 专项检查通过；完整步态套件未重跑。专项测试使用 iPad Pro 13-inch（M4）模拟器、iOS 17.5／Xcode 15.4；未连接用户的物理 iPad。
 
 **后续兼容性测试口径（2026-10-16 起）：只在 iPad 模拟器／设备上执行并判定兼容性测试；不再测试或要求 iPhone 结果。** 常规 CI 与快速阴影验收均以 iPad 为唯一测试设备。此前记录的 iPhone 测试结果保留为历史数据；设备 IPA 仍按通用 iOS 目标归档。
 
@@ -822,4 +822,4 @@ r5/04.png 原样复制进入 raw/04.png，00–03、05–08 从上一完整循�
 
 整屏自审还发现首版敌方脚下的横条影子过硬；改为低不透明度、按躯干宽度铺开的椭圆接触影。固定敌方左向、脚底锚点 `(0.70,0.685)` 和38%可见高度，旅人仍为12%；右侧尾部留出容器边缘，不遮断轮廓。按真实四层营地环境、最近邻角色缩放和相同脚底几何离线复合检查，战场接地与色调通过自审，预览明确标成离线图而非模拟器截图。
 
-对应原生测试与 focused iPad 工作流同步改为校验鹿灵资源透明通道、画布注册、脚底／体量和层级。之前对蓝史莱姆构图启动的 `39298487411` 在测试中被主动取消，未作为最终版本验收；新构图的编译、iPad XCTest、UI 截图检查和 build32 IPA 将在本次源码修订后重新运行。鹿灵仍是用户未审核的静态样例，不代表敌方正式设定或动画完成。
+对应原生测试与 focused iPad 工作流同步改为校验鹿灵资源透明通道、画布注册、脚底／体量和层级。之前对蓝史莱姆构图启动的 `39298487411` 在测试中被主动取消，未作为最终版本验收。修订后提交 `c58dea84d773c219fd78432937be737b4537d69b` 的[专项测试 39300527243](https://github.com/liamchan-rgb/experiment/actions/runs/39300527243) 在 Xcode 15.4／iPad Pro M4／iOS 17.5 通过 4 项原生检查和 2 项 UI 检查，0 失败；[设备归档 39301837295](https://github.com/liamchan-rgb/experiment/actions/runs/39301837295) 通过并生成 build32。IPA 大小 23,798,348 字节，SHA-256 `b767b974b147a881c309626bc2bc3cdd8d59c4a4d107354d0e7b97a9014a88d3`，iPhoneOS arm64、最低系统15.0、支持 iPhone／iPad，ZIP CRC 与 ZIP_STORED 检查通过。未签名，需由 SideStore 重签；没有在物理 iPad 上验证安装。Xcode 15.4 缺少单独导出 xcresult 附件的命令，原测试结果保存在工件 `12210578508`；供查看的战场合成图是离线几何复合，不冒称模拟器截图。鹿灵仍是用户未审核的静态样例，不代表敌方正式设定或动画完成；完整步态套件和真实桌游战斗规则／存档／技能仍未接入本实验包。

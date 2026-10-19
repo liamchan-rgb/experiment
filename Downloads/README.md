@@ -1,6 +1,18 @@
 # SideStore 安装与迭代包
 
-## Meadow Journey 桌游布局试验包 · 1.6.6 build 31
+## Meadow Journey 战场布局试验包 · 1.6.7 build 32
+
+左侧继续显示 experiment 的 Meadow Journey 地图；右侧战场改为同一套营地林地环境，人物取自地图图集，并配套一只暖棕／苔绿的林地鹿灵样例。整体保持 build31 已确认的地图／战场三态布局和混合回合轨道。
+
+[直接下载 MeadowJourney-b32.ipa](https://raw.githubusercontent.com/liamchan-rgb/experiment/feat/meadow-battle-scene-v0.1/Downloads/MeadowJourney-b32.ipa) · [构建与校验元数据](MeadowJourney-build32.json) · [战场合成预览](../Art/Scenes/MeadowBattle/enemies/forest-warden-v1/review-composite.png) · [战场布局说明](../docs/MEADOW_BATTLE_LAYOUT.md)
+
+IPA 为 23,798,348 字节，SHA-256：`b767b974b147a881c309626bc2bc3cdd8d59c4a4d107354d0e7b97a9014a88d3`。包标识 `com.liamchan.experiment.meadow`，版本 1.6.7（32），最低 iPadOS 15，arm64，支持 iPad。已检查 IPA CRC、ZIP_STORED、无 Zip64／额外字段、Metal 库和 0755 执行文件；IPA 未签名，用 SideStore 重签安装。Safari 下载后保存到“文件”，再打开 SideStore → My Apps → ＋，选择 IPA 重签安装。进入主地图 →“战斗预览”，切换探索、玩家回合和怪物回合查看三态。
+
+最终专项工作流 [39300527243](https://github.com/liamchan-rgb/experiment/actions/runs/39300527243) 在 iPad Pro 13-inch（M4）模拟器、iOS 17.5／Xcode 15.4 上通过 4 项原生检查和 2 项 UI 检查（0 失败）。[设备归档 39301837295](https://github.com/liamchan-rgb/experiment/actions/runs/39301837295) 从源码 `c58dea84d773c219fd78432937be737b4537d69b` 构建，含该提交中的林地鹿灵资源。Xcode 15.4 不支持独立导出 `.xcresult` 附件，原始测试结果仍保存在工作流工件；另提供[离线战场合成预览](../Art/Scenes/MeadowBattle/enemies/forest-warden-v1/review-composite.png)，该图不是模拟器截图。完整来源与校验记录见[build32 元数据](MeadowJourney-build32.json)。
+
+此包是战场美术／布局试验，不连接桌游真实战斗状态、技能结算或存档。右侧鹿灵为单帧、尚未获用户审美审核的样例，仍没有敌方动画；未在物理 iPad 上实测安装。
+
+## 历史版本：Meadow Journey 桌游布局试验包 · 1.6.6 build 31
 
 按桌游已确认记录安排共用顶部、中间等高地图与战场、整屏连续混合回合轨道及紧凑技能／物品详情。顶部可切换探索、玩家回合、怪物回合；探索展开地图，怪物回合收起详情并增高地图与战场。素材、色调和环境效果继续以 Meadow Journey 为基准。
 
