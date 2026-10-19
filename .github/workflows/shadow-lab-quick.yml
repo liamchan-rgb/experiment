@@ -197,8 +197,13 @@ jobs:
         run: |
           if [ -d build/MapReview.xcresult ]; then
             mkdir -p build/review/attachments
-            xcrun xcresulttool export attachments --path build/MapReview.xcresult \
-              --output-path build/review/attachments 2>&1 | tee build/logs/screen-export.log
+            if xcrun xcresulttool export attachments --help >/dev/null 2>&1; then
+              xcrun xcresulttool export attachments --path build/MapReview.xcresult \
+                --output-path build/review/attachments 2>&1 | tee build/logs/screen-export.log
+            else
+              echo 'This Xcode version cannot export xcresult attachments; the raw xcresult will be preserved.' \
+                | tee build/logs/screen-export.log
+            fi
           fi
 
       - name: Export the focused preview screenshots
@@ -207,14 +212,19 @@ jobs:
           set -euo pipefail
           if [ -d build/MapReview.xcresult ]; then
             mkdir -p build/preview-stills/layered build/preview-stills/meadow-battle
-            xcrun xcresulttool export attachments --path build/MapReview.xcresult \
-              --output-path build/preview-stills/layered \
-              --test-id 'JourneyUITests/testLayeredP1ColorwayPreviewRunsBesideOriginalInTheMapScene()' \
-              2>&1 | tee build/logs/layered-preview-export.log
-            xcrun xcresulttool export attachments --path build/MapReview.xcresult \
-              --output-path build/preview-stills/meadow-battle \
-              --test-id 'JourneyUITests/testMeadowBattlePreviewKeepsReferenceMapBesideLandscapeScene()' \
-              2>&1 | tee build/logs/meadow-battle-preview-export.log
+            if xcrun xcresulttool export attachments --help >/dev/null 2>&1; then
+              xcrun xcresulttool export attachments --path build/MapReview.xcresult \
+                --output-path build/preview-stills/layered \
+                --test-id 'JourneyUITests/testLayeredP1ColorwayPreviewRunsBesideOriginalInTheMapScene()' \
+                2>&1 | tee build/logs/layered-preview-export.log
+              xcrun xcresulttool export attachments --path build/MapReview.xcresult \
+                --output-path build/preview-stills/meadow-battle \
+                --test-id 'JourneyUITests/testMeadowBattlePreviewKeepsReferenceMapBesideLandscapeScene()' \
+                2>&1 | tee build/logs/meadow-battle-preview-export.log
+            else
+              echo 'Screenshot attachments remain in MapReview.xcresult; this Xcode version has no export attachments command.' \
+                | tee build/logs/meadow-battle-preview-export.log
+            fi
           fi
 
       - name: Upload the focused preview screenshots
@@ -291,7 +301,7 @@ jobs:
           retention-days: 30
 
       - name: Preserve raw result even if screen export fails
-        if: ${{ always() && !inputs.preview_only }}
+        if: ${{ always() }}
         run: |
           if [ -d build/MapReview.xcresult ]; then
             tar -cf build/MapReview.xcresult.tar -C build MapReview.xcresult

@@ -813,3 +813,5 @@ r5/04.png 原样复制进入 raw/04.png，00–03、05–08 从上一完整循�
 新增 `testMeadowBattleUsesRegisteredCampLayersAndOneVisibleSlime`，覆盖四张图层原尺寸、容器居中统一变换、场景图层及遮挡次序、人物／史莱姆脚底锚点、敌人体量和朝向；该测试加入 focused iPad 工作流。代码复核还修正 Swift 初始化顺序，避免在 `super.init` 前访问人物视图。已离线目视检查角色比例与原始合成；Xcode 编译、XCTest、iPad 实际截图、IPA 均待 GitHub macOS 工作流验证。版本拟更新到1.6.7 build32。本次不连接桌游战斗状态、技能、敌方规则或动作动画，也未把人物／敌方样例标记为用户审美认可。
 
 首轮 iPad 专项运行 `39294982982` 已在 Xcode 15.4/macOS14-arm64 编译成功；三项既有原生布局测试和两项 UI 测试通过。新测试唯一失败点是对不同精度计算得到的 `CGRect` 做整体精确相等比较，改为逐坐标、带容差的注册检查。模拟器 UI 测试本身通过，但 Xcode 15.4 的 `xcresulttool` 不支持工作流使用的 `export attachments` 子命令，导致截图导出步骤失败。全屏布局草图目视复核又显示原大小层级与八方旅人参考相反，已将人物缩至12%、史莱姆放大至38%，新增人物可见高度断言；本项之后重新执行编译、iPad 模拟器测试、画面检查和 IPA 归档。
+
+为避免把 Xcode 版本缺少的截图导出命令误判成应用检查失败，快速工作流现在先检测 `xcresulttool export attachments` 是否可用；旧版 Xcode 会保留原始 `.xcresult` 并明确记录导出受限，结果包始终作为日志工件上传。代码与兼容性检查、最终 iPad 专项结果和重新归档完成后，再补记本条 build32 交付状态。
