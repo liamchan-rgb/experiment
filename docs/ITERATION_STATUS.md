@@ -2,7 +2,7 @@
 
 **2026-10-19 最新进展：向下正手垂剑 v5 的单帧站姿已获认可，认可范围仅限该站姿。按桌游仓库规划制作的[强击 × 训练短剑首组特效](../Art/Effects/P1-Boardgame/heavyStrike-trainingSword-v1/README.md)已有可编辑矢量、8帧正常速度预览和透明条带，待用户审美审核。最终分层模板和正式应用接入尚未完成。**
 
-当前可下载版：[1.6.3 build 28 八方向鞋向修正 IPA](../Downloads/README.md)，iPad UI 检查已通过。兼容性测试只覆盖 iPad；云端使用 iPad Pro 13-inch（M4）模拟器、iOS 18.5，没有连接用户的物理 iPad。
+最近通过完整 iPad UI 套件的正式基线仍为 [1.6.3 build 28](../Downloads/README.md)。下方 build 29 是 MeadowJourney 横版战斗场景实验包：新增场景用例单项通过，但仓库完整步态套件尚未全绿。兼容性测试只覆盖 iPad；云端使用 iPad Pro 13-inch（M4）模拟器、iOS 18.5，没有连接用户的物理 iPad。
 
 **后续兼容性测试口径（2026-10-16 起）：只在 iPad 模拟器／设备上执行并判定兼容性测试；不再测试或要求 iPhone 结果。** 常规 CI 与快速阴影验收均以 iPad 为唯一测试设备。此前记录的 iPhone 测试结果保留为历史数据；设备 IPA 仍按通用 iOS 目标归档。
 
@@ -12,7 +12,9 @@
 
 右侧人物沿用待审的侧面单帧概念，仅作尺度参照；画面明确标为候选，目标位置也是占位，不代表人物动作、敌人、装备、技能效果或规则演出已获批准。本轮先验证场景搭配与分屏阅读性，不接入战斗逻辑或完整攻击动画。
 
-状态：原型已写入隔离分支 `feat/meadow-battle-scene-v0.1`，改动尚未进入 `feat/layered-living-scene`。iPad UI／构建检查与 IPA 完整性检查待执行，场景美术仍待用户审核；本机没有 Xcode，需以 GitHub Actions 的 iPad 模拟器结果验证。
+状态：原型位于隔离分支 `feat/meadow-battle-scene-v0.1`，未合入 `feat/layered-living-scene`。源码 `cd28a0b` 的[完整 iPad 工作流](https://github.com/liamchan-rgb/experiment/actions/runs/39238544283)通过 Swift 编译；8 项 UI 测试中新增的 `testMeadowBattlePreviewKeepsReferenceMapBesideLandscapeScene` 通过，确认地图地面实际渲染、右侧横向布局成立、预览关闭后恢复原缩放。UI 套件整体有 1 项既有步态预览启动检查失败；49 项 TrailTests 中有 17 个断言失败，均集中在 `testAuthoredGaitFramesDoNotGetShaderLegAlphaTears` 与 `testDiagonalContactsAndPassingFramesRenderDistinctPoses` 的旧步态轮廓阈值。本轮没有修改步态算法，保留这些失败状态，不把它们记成战斗场景回归。
+
+设备 Release 归档使用 `package_only` 路径单独成功，生成 1.6.4 build 29 未签名 IPA；工作流已执行包内 ZIP 完整性检查和 SideStore 包信息检查。可从[构建 39240608275 的 Artifacts](https://github.com/liamchan-rgb/experiment/actions/runs/39240608275)下载 `MeadowJourney-shadow-lab-IPA`。该归档工作流没有运行模拟器测试；以上分屏检查来自同一源码提交 `cd28a0b` 的完整工作流。物理 iPad 安装和场景观感仍待用户检视，人物单帧及环境搭配仍是原型候选。
 
 build 9 交付后用户仍发现阴影、步态、道路及旗杆遮挡问题；最新待修项见文末，后续版本需重新进行视觉验收。
 

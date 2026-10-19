@@ -1,6 +1,12 @@
 # SideStore 安装与迭代包
 
-最新版本 **1.6.3 build 28**：修正三位人物在八个行走方向中两只鞋分别向外撇的问题，使鞋尖更一致地朝向前进方向。“原图 / 分层蓝靴对照”仍是附带的换色小样，仅覆盖 P1 向下方向。
+## Meadow Journey 横版战斗场景试验包 · 1.6.4 build 29
+
+本试验包把 Meadow Journey 原地图保留在左侧，右侧打开复用同一地图地表、树石与林地氛围的横向战斗场景；单帧人物仍标为候选。请从[构建 39240608275](https://github.com/liamchan-rgb/experiment/actions/runs/39240608275)页面的 Artifacts 下载 `MeadowJourney-shadow-lab-IPA`，解压后取得未签名 IPA，再用 SideStore 重签安装。完整 UI 工作流中的新增分屏用例已通过；全套步态检查仍有既有失败项，详情见[迭代记录](../docs/ITERATION_STATUS.md)。此包尚未在物理 iPad 上测试。
+
+上次完整通过 iPad UI 套件的正式基线仍是 build 28：
+
+**1.6.3 build 28**：修正三位人物在八个行走方向中两只鞋分别向外撇的问题，使鞋尖更一致地朝向前进方向。“原图 / 分层蓝靴对照”仍是附带的换色小样，仅覆盖 P1 向下方向。
 
 [直接下载 MeadowJourney-b28.ipa](https://raw.githubusercontent.com/liamchan-rgb/experiment/feat/layered-living-scene/Downloads/MeadowJourney-b28.ipa)
 
