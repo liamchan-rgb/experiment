@@ -21,7 +21,19 @@ final class JourneyUITests: XCTestCase {
         let battlefield = app.otherElements["battleLandscape"]
         XCTAssertTrue(battlefield.waitForExistence(timeout: 15))
         XCTAssertLessThan(map.frame.width, originalWidth * 0.75)
-        XCTAssertGreaterThan(battlefield.frame.width, battlefield.frame.height)
+        XCTAssertEqual(map.frame.minY, battlefield.frame.minY, accuracy: 1)
+        XCTAssertEqual(map.frame.height, battlefield.frame.height, accuracy: 1)
+        let track = app.otherElements["previewTurnTrack"]
+        let details = app.otherElements["previewPlayerDetails"]
+        XCTAssertTrue(track.exists); XCTAssertTrue(details.exists)
+        XCTAssertGreaterThan(track.frame.minY, map.frame.maxY)
+        XCTAssertGreaterThan(details.frame.minY, track.frame.maxY)
+        XCTAssertLessThan(details.frame.height, app.frame.height * 0.17)
+        XCTAssertEqual(track.frame.minX, map.frame.minX, accuracy: 1)
+        XCTAssertEqual(track.frame.maxX, battlefield.frame.maxX, accuracy: 1)
+        XCTAssertEqual(app.otherElements.matching(NSPredicate(format: "identifier BEGINSWITH %@", "previewQueue")).count, 10)
+        XCTAssertEqual(app.otherElements["previewQueueP1"].value as? String, "当前行动")
+        XCTAssertFalse(app.staticTexts["previewResourceValues"].label.contains("AP"))
         XCTAssertFalse(app.buttons["openGaitTest"].isHittable)
         XCTAssertFalse(app.buttons["openBattlePreview"].isHittable)
         XCTAssertEqual(app.buttons.matching(NSPredicate(format: "label == %@", "返回地图")).count, 1)
@@ -37,7 +49,30 @@ final class JourneyUITests: XCTestCase {
         XCTAssertGreaterThan(previewState["independentProps"] as? Int ?? 0, 0)
         assertVisibleGround(map, name: "meadow-map-left-of-battle-scene")
         assertMapPaneHasTexturedTopAndBottom(map)
-        capture("meadow-map-left-battle-scene-right")
+        capture("meadow-layout-player-turn")
+
+        let playerMapFrame = map.frame
+        let mode = app.segmentedControls["battlePreviewMode"]
+        mode.buttons["怪物回合"].tap()
+        XCTAssertFalse(details.isHittable)
+        XCTAssertTrue(track.exists)
+        XCTAssertEqual(app.otherElements["previewQueue敌1"].value as? String, "当前行动")
+        XCTAssertGreaterThan(map.frame.height, playerMapFrame.height)
+        XCTAssertEqual(map.frame.height, battlefield.frame.height, accuracy: 1)
+        assertMapPaneHasTexturedTopAndBottom(map)
+        capture("meadow-layout-monster-turn")
+
+        mode.buttons["探索"].tap()
+        XCTAssertFalse(battlefield.isHittable)
+        XCTAssertFalse(track.isHittable)
+        XCTAssertFalse(details.isHittable)
+        XCTAssertGreaterThan(map.frame.width, playerMapFrame.width * 1.9)
+        assertMapPaneHasTexturedTopAndBottom(map)
+        capture("meadow-layout-exploration")
+
+        mode.buttons["玩家回合"].tap()
+        XCTAssertEqual(map.frame.height, playerMapFrame.height, accuracy: 1)
+        XCTAssertTrue(details.exists)
 
         app.buttons["closeBattlePreview"].tap()
         XCTAssertTrue(app.buttons["zoomButton"].waitForExistence(timeout: 15))

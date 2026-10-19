@@ -1,84 +1,260 @@
 import UIKit
 
-/// Side-view environment study that keeps the Meadow Journey art vocabulary:
-/// the ground, trees, stones, flowers and atmosphere all come from the map.
-/// The contact pose is shown as a candidate so this screen does not imply art approval.
+private enum MeadowPreviewPalette {
+    static let panel = UIColor(red: 0.10, green: 0.17, blue: 0.13, alpha: 0.97)
+    static let card = UIColor(red: 0.17, green: 0.25, blue: 0.19, alpha: 1)
+    static let ink = UIColor(red: 0.98, green: 0.93, blue: 0.77, alpha: 1)
+    static let muted = UIColor(red: 0.72, green: 0.79, blue: 0.66, alpha: 1)
+    static let gold = UIColor(red: 0.92, green: 0.77, blue: 0.42, alpha: 1)
+    static let border = UIColor(red: 0.60, green: 0.57, blue: 0.34, alpha: 0.65)
+    static func stylePanel(_ view: UIView) {
+        view.backgroundColor = panel
+        view.layer.cornerRadius = 14
+        view.layer.borderWidth = 1
+        view.layer.borderColor = border.cgColor
+    }
+    static func label(_ text: String, size: CGFloat, weight: UIFont.Weight = .medium) -> UILabel {
+        let label = UILabel(); label.text = text
+        label.font = .systemFont(ofSize: size, weight: weight)
+        label.textColor = ink; label.adjustsFontSizeToFitWidth = true; label.minimumScaleFactor = 0.85
+        return label
+    }
+}
+
+/// Presentation-only fixture. It does not drive turns, damage, inventory or map movement.
+/// The small header badge distinguishes the layout sample from a real battle.
 final class MeadowBattlePreviewView: UIView {
     var onClose: (() -> Void)?
-
-    private let title = UILabel()
-    private let detail = UILabel()
+    var onLayoutChanged: (() -> Void)?
+    private(set) var mode: MeadowBattlePreviewMode = .playerTurn
+    private(set) var mapFrame = CGRect.zero
+    private let header = UIView()
+    private let actor = MeadowPreviewPalette.label("", size: 23, weight: .bold)
+    private let subtitle = MeadowPreviewPalette.label("", size: 13)
+    private let modeControl = UISegmentedControl(items: ["探索", "玩家回合", "怪物回合"])
     private let closeButton = UIButton(type: .system)
     private let landscape = MeadowBattleLandscapeView()
-    private let notes = UILabel()
-    private let footer = UIView()
+    private let mapBorder = UIView()
+    private let mapTitle = MeadowPreviewPalette.label("Meadow Journey", size: 15, weight: .semibold)
+    private let stageTitle = MeadowPreviewPalette.label("Meadow Journey · 林地", size: 17, weight: .semibold)
+    private let track = MeadowTurnTrackView()
+    private let details = MeadowPlayerDetailsView()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = UIColor(red: 0.09, green: 0.13, blue: 0.12, alpha: 1)
+        backgroundColor = .clear
         accessibilityIdentifier = "meadowBattlePreview"
-
-        title.text = "战斗场景试验"
-        title.font = .systemFont(ofSize: 24, weight: .bold)
-        title.textColor = UIColor(red: 0.98, green: 0.92, blue: 0.75, alpha: 1)
-        title.adjustsFontSizeToFitWidth = true
-        title.minimumScaleFactor = 0.8
-        addSubview(title)
-
-        detail.text = "Meadow Journey 林地资源 · 横向战斗镜头"
-        detail.font = .systemFont(ofSize: 15, weight: .medium)
-        detail.textColor = UIColor(red: 0.72, green: 0.78, blue: 0.68, alpha: 1)
-        detail.adjustsFontSizeToFitWidth = true
-        detail.minimumScaleFactor = 0.75
-        addSubview(detail)
-
-        var closeStyle = UIButton.Configuration.filled()
-        closeStyle.title = "返回地图"
-        closeStyle.baseBackgroundColor = UIColor(red: 0.89, green: 0.78, blue: 0.55, alpha: 1)
-        closeStyle.baseForegroundColor = UIColor(red: 0.20, green: 0.24, blue: 0.17, alpha: 1)
-        closeStyle.contentInsets = NSDirectionalEdgeInsets(top: 6, leading: 12, bottom: 6, trailing: 12)
-        closeButton.configuration = closeStyle
+        MeadowPreviewPalette.stylePanel(header)
+        header.accessibilityIdentifier = "battlePreviewHeader"
+        addSubview(header)
+        actor.accessibilityIdentifier = "previewCurrentActor"
+        header.addSubview(actor); header.addSubview(subtitle)
+        subtitle.textColor = MeadowPreviewPalette.muted
+        modeControl.accessibilityIdentifier = "battlePreviewMode"
+        modeControl.selectedSegmentIndex = mode.rawValue
+        modeControl.selectedSegmentTintColor = MeadowPreviewPalette.gold
+        modeControl.setTitleTextAttributes([.foregroundColor: MeadowPreviewPalette.ink], for: .normal)
+        modeControl.setTitleTextAttributes([.foregroundColor: MeadowPreviewPalette.panel], for: .selected)
+        modeControl.addTarget(self, action: #selector(changeMode), for: .valueChanged)
+        header.addSubview(modeControl)
+        var style = UIButton.Configuration.filled(); style.title = "返回地图"
+        style.baseBackgroundColor = MeadowPreviewPalette.gold
+        style.baseForegroundColor = MeadowPreviewPalette.panel
+        closeButton.configuration = style
         closeButton.accessibilityIdentifier = "closeBattlePreview"
         closeButton.addAction(UIAction { [weak self] _ in self?.onClose?() }, for: .touchUpInside)
-        addSubview(closeButton)
-
+        header.addSubview(closeButton)
+        mapBorder.layer.cornerRadius = 14; mapBorder.layer.borderWidth = 1
+        mapBorder.layer.borderColor = MeadowPreviewPalette.border.cgColor
+        mapBorder.isUserInteractionEnabled = false; addSubview(mapBorder)
+        mapTitle.backgroundColor = MeadowPreviewPalette.panel
+        mapTitle.textAlignment = .center; mapTitle.layer.cornerRadius = 8; mapTitle.clipsToBounds = true
+        mapTitle.isUserInteractionEnabled = false; addSubview(mapTitle)
         landscape.accessibilityIdentifier = "battleLandscape"
         landscape.isAccessibilityElement = true
-        landscape.accessibilityLabel = "Meadow Journey 林地横版战斗场景预览。沿用地图草地、松树、阔叶树、岩石、花丛与暖色日光、空气雾和微粒。人物为待审核的单帧侧视候选；敌方位置为占位标记。"
+        landscape.accessibilityLabel = "Meadow Journey 林地横版战场。单帧人物候选与目标占位，尚未接入真实战斗。"
         addSubview(landscape)
-
-        footer.backgroundColor = UIColor(red: 0.14, green: 0.20, blue: 0.17, alpha: 0.96)
-        footer.layer.cornerRadius = 14
-        footer.layer.borderWidth = 1
-        footer.layer.borderColor = UIColor(red: 0.71, green: 0.61, blue: 0.40, alpha: 0.34).cgColor
-        addSubview(footer)
-
-        notes.text = "本轮只检查战场环境与镜头：地图原有地表和植被资源，配合 MeadowJourney 的暖光、雾层、微粒与接地阴影。人物单帧仍是候选，敌方素材、完整动作和规则演出尚未接入。"
-        notes.font = .systemFont(ofSize: 15, weight: .medium)
-        notes.textColor = UIColor(red: 0.89, green: 0.89, blue: 0.79, alpha: 1)
-        notes.numberOfLines = 0
-        notes.adjustsFontSizeToFitWidth = true
-        notes.minimumScaleFactor = 0.78
-        footer.addSubview(notes)
+        stageTitle.isUserInteractionEnabled = false; landscape.addSubview(stageTitle)
+        track.accessibilityIdentifier = "previewTurnTrack"; addSubview(track)
+        details.accessibilityIdentifier = "previewPlayerDetails"; addSubview(details)
+        updateMode()
     }
-
     required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
 
+    @objc private func changeMode() {
+        mode = MeadowBattlePreviewMode(rawValue: modeControl.selectedSegmentIndex) ?? .playerTurn
+        updateMode(); setNeedsLayout(); onLayoutChanged?()
+    }
+    private func updateMode() {
+        actor.text = mode == .exploration ? "探索 · Meadow Journey"
+            : mode == .playerTurn ? "第1轮 · 行动中：P1 冒险者" : "第1轮 · 行动中：敌1"
+        subtitle.text = mode == .exploration ? "布局演示 · 地图查看" : "布局演示 · 已暂停 · 单帧动作样片"
+        landscape.isHidden = !mode.showsBattle
+        track.isHidden = !mode.showsBattle
+        details.isHidden = !mode.showsDetails
+        track.show(monsterTurn: mode == .monsterTurn)
+    }
     override func layoutSubviews() {
         super.layoutSubviews()
-        let inset: CGFloat = 18
-        let buttonWidth: CGFloat = 106
-        title.frame = CGRect(x: inset, y: 18, width: max(140, bounds.width - inset * 3 - buttonWidth), height: 32)
-        detail.frame = CGRect(x: inset, y: title.frame.maxY + 2, width: max(140, bounds.width - inset * 3 - buttonWidth), height: 24)
-        closeButton.frame = CGRect(x: bounds.width - inset - buttonWidth, y: 20, width: buttonWidth, height: 38)
+        guard bounds.width > 0, bounds.height > 0 else { return }
+        let layout = MeadowBattleLayout(size: bounds.size, safeArea: safeAreaInsets, mode: mode)
+        header.frame = layout.header; mapFrame = layout.map
+        mapBorder.frame = mapFrame
+        mapTitle.frame = CGRect(x: mapFrame.minX + 12, y: mapFrame.minY + 12, width: 154, height: 28)
+        landscape.frame = layout.battlefield; track.frame = layout.track; details.frame = layout.details
+        stageTitle.frame = CGRect(x: 16, y: 12, width: max(1, landscape.bounds.width - 32), height: 26)
+        let buttonWidth: CGFloat = 104
+        let selectorWidth = min(292, header.bounds.width * 0.29)
+        closeButton.frame = CGRect(x: header.bounds.width - buttonWidth - 12, y: (header.bounds.height - 44) / 2,
+                                   width: buttonWidth, height: 44)
+        modeControl.frame = CGRect(x: closeButton.frame.minX - selectorWidth - 12, y: closeButton.frame.minY,
+                                   width: selectorWidth, height: 44)
+        let textWidth = max(1, modeControl.frame.minX - 28)
+        actor.frame = CGRect(x: 16, y: 9, width: textWidth, height: 27)
+        subtitle.frame = CGRect(x: 16, y: 38, width: textWidth, height: 18)
+    }
+    override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
+        // The live map sits below this shell; leave its gestures in the real renderer.
+        if mapFrame.contains(point) { return nil }
+        return super.hitTest(point, with: event)
+    }
+}
 
-        let stageWidth = max(1, bounds.width - inset * 2)
-        let stageHeight = min(stageWidth * 9 / 16, bounds.height * 0.58)
-        landscape.frame = CGRect(x: inset, y: detail.frame.maxY + 18, width: stageWidth, height: stageHeight)
-        let notesY = landscape.frame.maxY + 16
-        footer.frame = CGRect(x: inset, y: notesY, width: stageWidth,
-                              height: max(96, bounds.height - notesY - 20))
-        notes.frame = footer.bounds.insetBy(dx: 14, dy: 12)
+private final class MeadowTurnTrackView: UIView {
+    private let line = CAShapeLayer()
+    private let completed = CAShapeLayer()
+    private let ids = ["P2", "敌2", "P3", "P1", "敌1", "P4", "P5", "P6", "敌3", "P7"]
+    private var tokens: [MeadowTurnTokenView] = []
+    private var current = 3
+    override init(frame: CGRect) {
+        super.init(frame: frame); MeadowPreviewPalette.stylePanel(self)
+        line.strokeColor = MeadowPreviewPalette.muted.withAlphaComponent(0.35).cgColor; line.lineWidth = 5
+        completed.strokeColor = MeadowPreviewPalette.gold.cgColor; completed.lineWidth = 5
+        layer.addSublayer(line); layer.addSublayer(completed)
+        for id in ids {
+            let token = MeadowTurnTokenView(id: id); tokens.append(token); addSubview(token)
+        }
+        show(monsterTurn: false)
+    }
+    required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
+    func show(monsterTurn: Bool) {
+        current = monsterTurn ? 4 : 3
+        for (index, token) in tokens.enumerated() {
+            token.show(current: index == current, done: index < current,
+                       badge: ids[index] == "P5" ? "×" : ids[index] == "P6" ? "◷" : "")
+        }
+        setNeedsLayout()
+    }
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        let step = bounds.width / CGFloat(tokens.count)
+        guard bounds.width > 0, bounds.height > 0 else { return }
+        let y = min(34, bounds.height * 0.46)
+        let path = UIBezierPath(); path.move(to: CGPoint(x: step / 2, y: y))
+        path.addLine(to: CGPoint(x: bounds.width - step / 2, y: y)); line.path = path.cgPath
+        let done = UIBezierPath(); done.move(to: CGPoint(x: step / 2, y: y))
+        done.addLine(to: CGPoint(x: step * (CGFloat(current) + 0.5), y: y)); completed.path = done.cgPath
+        for (index, token) in tokens.enumerated() {
+            token.frame = CGRect(x: CGFloat(index) * step, y: 0, width: step, height: bounds.height)
+        }
+    }
+}
+
+private final class MeadowTurnTokenView: UIView {
+    private let circle = UIView()
+    private let portrait = UIImageView()
+    private let name: UILabel
+    private let marker = MeadowPreviewPalette.label("▼", size: 11, weight: .bold)
+    private let badge = MeadowPreviewPalette.label("", size: 17, weight: .bold)
+    private let id: String
+    private static let portraits: [UIImage?] = (1...3).map { index in
+        guard let atlas = UIImage(named: "Hero\(index)Directions")?.cgImage else { return nil }
+        let cell = atlas.width / HeroFrames.columns
+        return atlas.cropping(to: CGRect(x: 0, y: 0, width: cell, height: cell)).map { UIImage(cgImage: $0) }
+    }
+    init(id: String) {
+        self.id = id; name = MeadowPreviewPalette.label(id, size: 12, weight: .semibold)
+        super.init(frame: .zero)
+        isAccessibilityElement = true; accessibilityIdentifier = "previewQueue\(id)"
+        accessibilityLabel = id
+        circle.backgroundColor = MeadowPreviewPalette.card; circle.layer.borderWidth = 1.5
+        addSubview(circle); addSubview(portrait); addSubview(name); addSubview(marker); addSubview(badge)
+        name.textAlignment = .center; marker.textAlignment = .center; badge.textAlignment = .center
+        marker.textColor = MeadowPreviewPalette.gold
+        portrait.contentMode = .scaleAspectFit; portrait.layer.magnificationFilter = .nearest
+        if id.hasPrefix("P"), let number = Int(id.dropFirst()) {
+            portrait.image = Self.portraits[(number - 1) % Self.portraits.count]
+        } else {
+            portrait.image = UIImage(systemName: "pawprint.fill"); portrait.tintColor = MeadowPreviewPalette.gold
+        }
+    }
+    required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
+    func show(current: Bool, done: Bool, badge value: String) {
+        marker.isHidden = !current
+        circle.layer.borderColor = (current || done ? MeadowPreviewPalette.gold : MeadowPreviewPalette.muted).cgColor
+        circle.layer.borderWidth = current ? 3 : 1.5
+        badge.text = value.isEmpty && done ? "✓" : value
+        badge.textColor = value == "×" ? .systemRed : MeadowPreviewPalette.gold
+        portrait.alpha = value == "×" ? 0.38 : 1
+        accessibilityValue = current ? "当前行动" : value == "×" ? "倒地" : value == "◷" ? "下轮资格" : done ? "已行动" : "待行动"
+    }
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        let side = min(44, bounds.height - 25)
+        guard bounds.width > 0, bounds.height > 25 else { return }
+        circle.frame = CGRect(x: (bounds.width - side) / 2, y: 12, width: side, height: side)
+        circle.layer.cornerRadius = side / 2
+        portrait.frame = circle.frame.insetBy(dx: 5, dy: 4)
+        marker.frame = CGRect(x: circle.frame.midX - 8, y: 0, width: 16, height: 13)
+        badge.frame = CGRect(x: circle.frame.maxX - 10, y: 8, width: 20, height: 20)
+        name.frame = CGRect(x: 0, y: circle.frame.maxY + 2, width: bounds.width, height: 16)
+    }
+}
+
+private final class MeadowPlayerDetailsView: UIView {
+    private let resources = MeadowPreviewPalette.label("冒险者    生命 12/12    盾 0    金币 0    积分 0    ● 蓝队", size: 16, weight: .semibold)
+    private var cards: [UIView] = []
+    override init(frame: CGRect) {
+        super.init(frame: frame); MeadowPreviewPalette.stylePanel(self)
+        resources.accessibilityIdentifier = "previewResourceValues"; addSubview(resources)
+        // Read-only catalog fixture, not the map simulation's inventory or skill state.
+        for (title, text) in [
+            ("强击 · 1 AP", "射程0 · 1D6+2伤害\n余2次 · 可用"),
+            ("喘息 · 1 AP", "自身 · 恢复4生命\n余2次 · 可用"),
+            ("简易防护 · 1 AP", "自身 · 获得4护盾\n余2次 · 可用"),
+            ("个人物品", "空背包\n尚未持有可用道具")
+        ] {
+            let card = MeadowPreviewCard(title: title, text: text); addSubview(card); cards.append(card)
+        }
+    }
+    required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        guard bounds.width > 0, bounds.height > 0 else { return }
+        resources.frame = CGRect(x: 14, y: 8, width: max(1, bounds.width - 28), height: 23)
+        let gap: CGFloat = 8; let width = max(1, (bounds.width - 28 - gap * 3) / 4)
+        for (index, card) in cards.enumerated() {
+            card.frame = CGRect(x: 14 + CGFloat(index) * (width + gap), y: 37, width: width, height: max(1, bounds.height - 47))
+        }
+    }
+}
+
+private final class MeadowPreviewCard: UIView {
+    private let title: UILabel
+    private let detail: UILabel
+    init(title: String, text: String) {
+        self.title = MeadowPreviewPalette.label(title, size: 17, weight: .bold)
+        self.detail = MeadowPreviewPalette.label(text, size: 15)
+        super.init(frame: .zero); backgroundColor = MeadowPreviewPalette.card
+        layer.cornerRadius = 9; detail.numberOfLines = 2
+        addSubview(self.title); addSubview(detail)
+    }
+    required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        guard bounds.width > 0, bounds.height > 0 else { return }
+        title.frame = CGRect(x: 10, y: 6, width: max(1, bounds.width - 20), height: 22)
+        detail.frame = CGRect(x: 10, y: 30, width: max(1, bounds.width - 20), height: max(1, bounds.height - 35))
     }
 }
 
@@ -285,6 +461,7 @@ private final class MeadowBattleLandscapeView: UIView {
         super.layoutSubviews()
         let w = bounds.width
         let h = bounds.height
+        guard w > 0, h > 0 else { return }
         sky.frame = bounds
         ground.frame = bounds
         groundMask.frame = bounds
@@ -325,11 +502,15 @@ private final class MeadowBattleLandscapeView: UIView {
         pebblesDark.path = darkPebbles.cgPath
 
         let actorGroundY = h * 0.79
-        contactShadow.path = UIBezierPath(ovalIn: CGRect(x: w * 0.20, y: actorGroundY - h * 0.018,
-                                                         width: w * 0.30, height: h * 0.045)).cgPath
-        hero.frame = CGRect(x: w * 0.105, y: h * 0.075, width: w * 0.44, height: h * 0.80)
+        // Keep the registered square image intact and its feet on the ground
+        // across the taller 4:3 battlefield and the expanded monster-turn layout.
+        let actorSize = min(w * 0.48, h * 0.60)
+        hero.frame = CGRect(x: w * 0.105, y: actorGroundY - actorSize * 1236 / 1254,
+                            width: actorSize, height: actorSize)
+        contactShadow.path = UIBezierPath(ovalIn: CGRect(x: hero.frame.minX + actorSize * 0.04,
+            y: actorGroundY - 3, width: actorSize * 0.72, height: max(10, actorSize * 0.06))).cgPath
 
-        let targetCenter = CGPoint(x: w * 0.61, y: actorGroundY - h * 0.075)
+        let targetCenter = CGPoint(x: w * 0.76, y: actorGroundY - actorSize * 0.12)
         let radius = w * 0.035
         targetGlow.path = UIBezierPath(ovalIn: CGRect(x: targetCenter.x - radius * 1.55,
                                                      y: targetCenter.y - radius * 1.55,
@@ -349,8 +530,8 @@ private final class MeadowBattleLandscapeView: UIView {
         motes.frame = bounds
         motes.emitterPosition = CGPoint(x: w * 0.5, y: h * 0.52)
         motes.emitterSize = CGSize(width: w * 0.92, height: h * 0.62)
-        heroTag.frame = CGRect(x: w * 0.14, y: h * 0.08, width: w * 0.25, height: 22)
-        targetTag.frame = CGRect(x: w * 0.51, y: h * 0.82, width: w * 0.20, height: 20)
+        heroTag.frame = CGRect(x: 16, y: 44, width: min(170, w - 32), height: 22)
+        targetTag.frame = CGRect(x: targetCenter.x - 65, y: actorGroundY + 20, width: 130, height: 20)
     }
 
     private static func makeSunGlow() -> UIImage {

@@ -60,6 +60,7 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = UIColor(red: 0.055, green: 0.09, blue: 0.065, alpha: 1)
         gameView.frame = view.bounds
         // This transparent UIView owns gestures/accessibility, not a renderer.
         // Normal map graphics are presented by the single MTKView below it.
@@ -200,14 +201,21 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        let mapWidth = battlePreviewActive ? view.bounds.width * 0.50 : view.bounds.width
-        let mapFrame = CGRect(x: 0, y: 0, width: mapWidth, height: view.bounds.height)
+        let mapFrame: CGRect
+        if battlePreviewActive, let preview = battlePreviewView {
+            preview.frame = view.bounds
+            preview.layoutIfNeeded()
+            mapFrame = preview.mapFrame
+        } else {
+            battlePreviewView?.frame = .zero
+            mapFrame = view.bounds
+        }
+        let mapWidth = mapFrame.width
         gameView.frame = mapFrame
         groundView?.frame = mapFrame
+        groundView?.layer.cornerRadius = battlePreviewActive ? 14 : 0
+        groundView?.clipsToBounds = battlePreviewActive
         scene.resizeMapViewport(to: mapFrame.size, referenceSize: view.bounds.size)
-        battlePreviewView?.frame = battlePreviewActive
-            ? CGRect(x: mapWidth, y: 0, width: view.bounds.width - mapWidth, height: view.bounds.height)
-            : .zero
         loadingView.frame = view.bounds
         let inset = view.safeAreaInsets
         let top = max(inset.top, 6)
@@ -490,6 +498,10 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
         let preview = MeadowBattlePreviewView(frame: .zero)
         preview.isHidden = true
         preview.onClose = { [weak self] in self?.setBattlePreviewActive(false) }
+        preview.onLayoutChanged = { [weak self] in
+            guard let self else { return }
+            self.view.setNeedsLayout(); self.view.layoutIfNeeded()
+        }
         view.addSubview(preview)
         battlePreviewView = preview
     }

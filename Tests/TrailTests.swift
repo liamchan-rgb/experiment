@@ -539,6 +539,35 @@ final class TrailTests: XCTestCase {
         XCTAssertGreaterThan(minimumRatio, 0.15, "Boot exchange must not invert or collapse the connecting mesh")
     }
 
+    func testBattleLayoutKeepsSharedRowsAndExpandsForExplorationAndMonsterTurns() {
+        for size in [CGSize(width: 1366, height: 1024), CGSize(width: 1920, height: 1080),
+                     CGSize(width: 1190, height: 820)] {
+            let player = MeadowBattleLayout(size: size, safeArea: .zero, mode: .playerTurn)
+            let monster = MeadowBattleLayout(size: size, safeArea: .zero, mode: .monsterTurn)
+            let explore = MeadowBattleLayout(size: size, safeArea: .zero, mode: .exploration)
+            let canvas = CGRect(origin: .zero, size: size)
+            for rect in [player.header, player.map, player.battlefield, player.track, player.details,
+                         monster.map, monster.battlefield, monster.track, explore.map] {
+                XCTAssertTrue(canvas.contains(rect))
+            }
+            XCTAssertEqual(player.map.minY, player.battlefield.minY)
+            XCTAssertEqual(player.map.height, player.battlefield.height)
+            XCTAssertGreaterThan(player.map.height, size.height * 0.45)
+            XCTAssertLessThan(player.details.height, size.height * 0.17)
+            XCTAssertGreaterThan(player.track.minY, player.map.maxY)
+            XCTAssertGreaterThan(player.details.minY, player.track.maxY)
+            XCTAssertEqual(player.track.minX, player.map.minX)
+            XCTAssertEqual(player.track.maxX, player.battlefield.maxX, accuracy: 0.001)
+            XCTAssertEqual(player.details.width, player.track.width)
+            XCTAssertEqual(monster.details, .zero)
+            XCTAssertGreaterThan(monster.map.height, player.map.height)
+            XCTAssertEqual(monster.map.height, monster.battlefield.height)
+            XCTAssertEqual(explore.track, .zero)
+            XCTAssertEqual(explore.battlefield, .zero)
+            XCTAssertGreaterThan(explore.map.width, player.map.width * 1.9)
+        }
+    }
+
     func testBattlePreviewCropsAroundTravellerAndKeepsTerrainAcrossViewport() throws {
         let fullSize = CGSize(width: 1366, height: 1024)
         let scene = GameScene(size: fullSize)
