@@ -204,7 +204,6 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
         let mapFrame: CGRect
         if battlePreviewActive, let preview = battlePreviewView {
             preview.frame = view.bounds
-            preview.layoutIfNeeded()
             mapFrame = preview.mapFrame
         } else {
             battlePreviewView?.frame = .zero

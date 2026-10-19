@@ -27,7 +27,11 @@ final class MeadowBattlePreviewView: UIView {
     var onClose: (() -> Void)?
     var onLayoutChanged: (() -> Void)?
     private(set) var mode: MeadowBattlePreviewMode = .playerTurn
-    private(set) var mapFrame = CGRect.zero
+    // Query the current mode directly. UIViewController's layout callback may
+    // precede this child's layout pass when a footer is hidden or revealed.
+    var mapFrame: CGRect {
+        MeadowBattleLayout(size: bounds.size, safeArea: safeAreaInsets, mode: mode).map
+    }
     private let header = UIView()
     private let actor = MeadowPreviewPalette.label("", size: 23, weight: .bold)
     private let subtitle = MeadowPreviewPalette.label("", size: 13)
@@ -98,7 +102,7 @@ final class MeadowBattlePreviewView: UIView {
         super.layoutSubviews()
         guard bounds.width > 0, bounds.height > 0 else { return }
         let layout = MeadowBattleLayout(size: bounds.size, safeArea: safeAreaInsets, mode: mode)
-        header.frame = layout.header; mapFrame = layout.map
+        header.frame = layout.header
         mapBorder.frame = mapFrame
         mapTitle.frame = CGRect(x: mapFrame.minX + 12, y: mapFrame.minY + 12, width: 154, height: 28)
         landscape.frame = layout.battlefield; track.frame = layout.track; details.frame = layout.details
