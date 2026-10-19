@@ -2,7 +2,7 @@
 
 **2026-10-19 最新进展：向下正手垂剑 v5 的单帧站姿已获认可，认可范围仅限该站姿。按桌游仓库规划制作的[强击 × 训练短剑首组特效](../Art/Effects/P1-Boardgame/heavyStrike-trainingSword-v1/README.md)已有可编辑矢量、8帧正常速度预览和透明条带，待用户审美审核。最终分层模板和正式应用接入尚未完成。**
 
-最近通过完整 iPad UI 套件的正式基线仍为 [1.6.3 build 28](../Downloads/README.md)。下方 build 29 是 MeadowJourney 横版战斗场景实验包：新增场景用例单项通过，但仓库完整步态套件尚未全绿。兼容性测试只覆盖 iPad；云端使用 iPad Pro 13-inch（M4）模拟器、iOS 18.5，没有连接用户的物理 iPad。
+最近通过完整 iPad UI 套件的正式基线仍为 [1.6.3 build 28](../Downloads/README.md)。最新 MeadowJourney 横版战斗场景实验包为 [1.6.5 build 30](../Downloads/MeadowJourney-build30.json)：修正左栏露底并通过 4 项专项检查，仓库完整步态套件尚未全绿。兼容性测试只覆盖 iPad；云端使用 iPad Pro 13-inch（M4）模拟器、iOS 18.5，没有连接用户的物理 iPad。
 
 **后续兼容性测试口径（2026-10-16 起）：只在 iPad 模拟器／设备上执行并判定兼容性测试；不再测试或要求 iPhone 结果。** 常规 CI 与快速阴影验收均以 iPad 为唯一测试设备。此前记录的 iPhone 测试结果保留为历史数据；设备 IPA 仍按通用 iOS 目标归档。
 
@@ -12,7 +12,11 @@
 
 用户指出左侧地图被压缩成中间矩形、上下露出大片背景与光束，要求修正。根因为分屏后仍用左栏宽度计算整张 1280×720 地图的缩放，导致可见世界高度超过有限地形范围。现在左栏按完整应用画布保持地图物件的显示大小，保留用户当前缩放，以当前旅人为镜头中心；视口最小比例保证地形覆盖全栏，并沿原地图边界限制拖动。地面、人物、阴影和雾继续读取同一实际相机投影。关闭后恢复打开前的镜头和缩放。移除地图侧重复的返回按钮，只保留战场侧返回按钮。右侧场景、候选人物和占位标记本轮未改。
 
-补充原生相机测试，覆盖两种 iPad 窗口尺寸、极限拖动、物件大小与退出恢复；实际界面用例新增左栏上下边缘的地面纹理检查，先按 UIImage 朝向归一化截图，避免旧亮度检查把平滑绿色背景误判为地图。快速预览工作流加入相机检查，并将两个场景的附件导出到独立目录，修正 build 29 截图导出的 manifest 重名错误。版本更新为 1.6.5 build 30；本地项目校验与 iPad 原生验证结果待补记，不把测试或截图当成用户美术认可。
+补充原生相机测试，覆盖两种 iPad 窗口尺寸、极限拖动、物件大小与退出恢复；实际界面用例新增左栏上下边缘的地面纹理检查，先按 UIImage 朝向归一化截图，避免旧亮度检查把平滑绿色背景误判为地图。快速预览工作流加入相机检查，并将两个场景的附件导出到独立目录，修正 build 29 截图导出的 manifest 重名错误。
+
+源码 `4fb3dd0` 已通过本地项目绑定／资源／YAML 校验与 `git diff --check`。[iPad 专项工作流 `39245257295`](https://github.com/liamchan-rgb/experiment/actions/runs/39245257295) 成功：2 项原生相机／投影测试、2 项实际界面测试均通过，0 失败；截图导出步骤也成功。原始截图来自 artifact `12182832331`，保存为 [MeadowBattle-b30.png](../Media/MeadowBattle-b30.png)，已目视确认地面从上到下覆盖左栏、人物和营地可辨认且重复返回按钮消失。该截图只验证本轮左栏修复，右侧仍为待审环境原型。
+
+同一源码的[设备 Release 归档 `39245610340`](https://github.com/liamchan-rgb/experiment/actions/runs/39245610340) 成功，artifact `12183257753` 保存为 [MeadowJourney-b30.ipa](../Downloads/MeadowJourney-b30.ipa)，版本 1.6.5 build 30，17,208,156 字节，SHA-256 `9a49b0ed7d38560b84dc0767364643a999b2fc6631234747d5b4e9e24a8a5bef`。已检查 ZIP CRC、ZIP_STORED、包内版本／bundle ID、真机 arm64、iPad 支持、Metal 库、0755 可执行权限；[完整元数据](../Downloads/MeadowJourney-build30.json)。未重跑完整步态套件，未连接物理 iPad；测试通过和本人目视检查均不代表用户美术认可。
 
 本轮明确以 `experiment` 中 Meadow Journey 的现有地图为唯一环境美术基准，不使用桌游 IPA 地图。新入口将真实 Meadow Journey 地图留在左侧，右侧展示横向战斗镜头；战斗草地、松树、阔叶树、岩石和花丛直接复用地图资源，并按地图的暖色日光、前后雾层、漂浮微粒与贴地阴影语言布置场景。build 30 起左栏保持地图物件显示大小并聚焦当前旅人，退出后恢复打开前的镜头与缩放。
 
@@ -22,7 +26,7 @@
 
 设备 Release 归档使用 `package_only` 路径单独成功，生成 1.6.4 build 29 未签名 IPA；工作流已执行包内 ZIP 完整性检查和 SideStore 包信息检查。包已保存为 [MeadowJourney-b29.ipa](../Downloads/MeadowJourney-b29.ipa)，17,192,658 字节，SHA-256 `8e0861e2ecd8ea4976e334e42c2605b96abfa1d07510945b5379300ccdc3ac5f`；[构建与校验元数据](../Downloads/MeadowJourney-build29.json)。该归档工作流没有运行模拟器测试；以上分屏检查来自同一源码提交 `cd28a0b` 的完整工作流。物理 iPad 安装和场景观感仍待用户检视，人物单帧及环境搭配仍是原型候选。
 
-为直接检查构图，快速预览工作流的 `preview_only` 单独运行了分层步态对照和 Meadow 战斗分屏两个 UI 用例。run `39241549676` 的两个用例均通过，截图包 artifact `12181223533` 已上传；其中 `meadow-map-left-battle-scene-right` 已解出并目视确认左侧为 Meadow Journey 地图、右侧为横版战场。工作流最后的截图导出步骤因两次导出共用 `manifest.json` 路径而报错，未影响两项 UI 测试；导出的截图仍在 artifact 中。下一轮整理截图时应将两次导出写入不同目录。
+build 29 的快速预览 run `39241549676` 两个 UI 用例通过，截图包 artifact `12181223533` 已上传；当时的亮度检查未发现左栏上下露底，用户后续指出后在 build 30 修正并加强验证。该轮截图导出步骤因两次导出共用 `manifest.json` 路径而报错，截图仍在 artifact 中；此导出错误也已在 build 30 修正。
 
 build 9 交付后用户仍发现阴影、步态、道路及旗杆遮挡问题；最新待修项见文末，后续版本需重新进行视觉验收。
 

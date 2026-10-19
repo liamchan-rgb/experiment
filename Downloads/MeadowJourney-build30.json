@@ -1,0 +1,58 @@
+{
+  "schemaVersion": "1.0.0",
+  "application": "MeadowJourney",
+  "bundleIdentifier": "com.liamchan.experiment.meadow",
+  "version": "1.6.5",
+  "build": 30,
+  "file": "MeadowJourney-b30.ipa",
+  "bytes": 17208156,
+  "sha256": "9a49b0ed7d38560b84dc0767364643a999b2fc6631234747d5b4e9e24a8a5bef",
+  "source": {
+    "branch": "feat/meadow-battle-scene-v0.1",
+    "commit": "4fb3dd05b044080a5146ec4098d2e9be73eeb4c3"
+  },
+  "archive": {
+    "workflowRunId": 39245610340,
+    "workflowRun": "https://github.com/liamchan-rgb/experiment/actions/runs/39245610340",
+    "artifactId": 12183257753,
+    "artifactName": "MeadowJourney-shadow-lab-IPA",
+    "packageMode": "unsigned SideStore re-signable IPA"
+  },
+  "validation": {
+    "ipaZipCRC": "passed",
+    "zipCompression": "ZIP_STORED",
+    "bundleVersion": "passed",
+    "physicalDevicePlatform": "iPhoneOS",
+    "architectures": [
+      "arm64"
+    ],
+    "deviceFamilies": [
+      "iPhone",
+      "iPad"
+    ],
+    "minimumOSVersion": "15.0",
+    "metalLibrary": "present",
+    "executablePermission": "0755",
+    "localPackageInspection": "passed"
+  },
+  "uiReview": {
+    "workflowRunId": 39245257295,
+    "workflowRun": "https://github.com/liamchan-rgb/experiment/actions/runs/39245257295",
+    "tests": [
+      "testBattlePreviewCropsAroundTravellerAndKeepsTerrainAcrossViewport",
+      "testCapturedViewportKeepsGroundAndArtworkAlignedThroughZoomAndPan",
+      "testLayeredP1ColorwayPreviewRunsBesideOriginalInTheMapScene",
+      "testMeadowBattlePreviewKeepsReferenceMapBesideLandscapeScene"
+    ],
+    "result": "4 passed, 0 failures",
+    "device": "iPad Pro 13-inch (M4) simulator",
+    "runtime": "com.apple.CoreSimulator.SimRuntime.iOS-18-5",
+    "screenshotArtifactId": 12182832331,
+    "screenshot": "../Media/MeadowBattle-b30.png",
+    "screenshotSHA256": "010da167b7c243415352c71e11645c17bd352ae08beaf36ebb534efe431c723d",
+    "manualScreenshotReview": "terrain fills left pane; selected traveller readable; duplicate return button removed",
+    "fullSuite": "not rerun; existing gait failures remain documented in docs/ITERATION_STATUS.md"
+  },
+  "physicalIPadTested": false,
+  "artReviewStatus": "scene prototype pending user review; contact pose remains an unapproved candidate"
+}
