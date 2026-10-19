@@ -1,0 +1,222 @@
+{
+  "schemaVersion": "1.0.0",
+  "status": "draft-awaiting-neutral-pose-art-review",
+  "direction": "battle-side-right",
+  "clip": "idle",
+  "frame": 0,
+  "bodyProfileReference": "p1-standard",
+  "actionSet": "battle-v1-draft-not-registered-to-runtime",
+  "canvasPx": [
+    256,
+    256
+  ],
+  "sourceCanvasPx": [
+    1254,
+    1254
+  ],
+  "sourceToCanvas": [
+    0.1829787234042553,
+    0,
+    0,
+    0.1829787234042553,
+    10.344680851063842,
+    17.297872340425542
+  ],
+  "registrationMethod": "One explicit artist-landmark transform for the entire source canvas; crown at source y370 -> y85, common sole line y1075 -> y214, skull center x643 -> x128. Never fit per alpha bounds or per appearance.",
+  "automaticAlphaFit": false,
+  "sourceLandmarksPx": {
+    "headCenter": [
+      643,
+      500
+    ],
+    "neckRoot": [
+      653,
+      654
+    ],
+    "shoulderRightNear": [
+      584,
+      677
+    ],
+    "elbowRightNear": [
+      621,
+      773
+    ],
+    "wristRightNear": [
+      701,
+      794
+    ],
+    "gripRightNear": [
+      739,
+      800
+    ],
+    "shoulderLeftFarHidden": [
+      670,
+      683
+    ],
+    "elbowLeftFar": [
+      546,
+      780
+    ],
+    "wristLeftFar": [
+      518,
+      828
+    ],
+    "handLeftFar": [
+      514,
+      845
+    ],
+    "pelvis": [
+      621,
+      861
+    ],
+    "hipRightNear": [
+      674,
+      864
+    ],
+    "kneeRightNear": [
+      714,
+      927
+    ],
+    "ankleRightNear": [
+      704,
+      1033
+    ],
+    "soleRightNear": [
+      736,
+      1075
+    ],
+    "hipLeftFar": [
+      574,
+      869
+    ],
+    "kneeLeftFar": [
+      510,
+      955
+    ],
+    "ankleLeftFar": [
+      471,
+      1028
+    ],
+    "soleLeftFar": [
+      477,
+      1075
+    ]
+  },
+  "jointsCanvasPx": {
+    "headCenter": [
+      128.0,
+      108.787
+    ],
+    "neckRoot": [
+      129.83,
+      136.966
+    ],
+    "shoulderRightNear": [
+      117.204,
+      141.174
+    ],
+    "elbowRightNear": [
+      123.974,
+      158.74
+    ],
+    "wristRightNear": [
+      138.613,
+      162.583
+    ],
+    "gripRightNear": [
+      145.566,
+      163.681
+    ],
+    "shoulderLeftFarHidden": [
+      132.94,
+      142.272
+    ],
+    "elbowLeftFar": [
+      110.251,
+      160.021
+    ],
+    "wristLeftFar": [
+      105.128,
+      168.804
+    ],
+    "handLeftFar": [
+      104.396,
+      171.915
+    ],
+    "pelvis": [
+      123.974,
+      174.843
+    ],
+    "hipRightNear": [
+      133.672,
+      175.391
+    ],
+    "kneeRightNear": [
+      140.991,
+      186.919
+    ],
+    "ankleRightNear": [
+      139.162,
+      206.315
+    ],
+    "soleRightNear": [
+      145.017,
+      214.0
+    ],
+    "hipLeftFar": [
+      115.374,
+      176.306
+    ],
+    "kneeLeftFar": [
+      103.664,
+      192.043
+    ],
+    "ankleLeftFar": [
+      96.528,
+      205.4
+    ],
+    "soleLeftFar": [
+      97.626,
+      214.0
+    ]
+  },
+  "soleLineCanvasY": 214,
+  "headLocalCanvasPx": [
+    96,
+    96
+  ],
+  "headToCanvasDraft": [
+    1,
+    0,
+    0,
+    1,
+    76,
+    61
+  ],
+  "faceLayout": "not authored; do not apply front-view eye regions to this side view",
+  "gripDraft": {
+    "id": "one-hand-closed-near-right",
+    "positionCanvasPx": [
+      145.566,
+      163.681
+    ],
+    "bladeDirectionCanvasDegrees": null,
+    "weaponPresent": false,
+    "gripArtValidation": "Near right fist dorsal side toward camera, thumb on upper edge; actual weapon axis and finger/handle/guard occlusion remain unvalidated"
+  },
+  "semanticLayerOrderPlanned": [
+    "body.leg.left.far",
+    "body.arm.left.far",
+    "body.hand.left.far",
+    "body.leg.right.near",
+    "body.torso",
+    "head.base",
+    "body.arm.right.near",
+    "weapon.right",
+    "body.hand.right.near"
+  ],
+  "layerStatus": "not yet separated; this is a neutral-pose study",
+  "approval": null,
+  "revision": "r2",
+  "registrationReusedFrom": "../right-idle-r1/registration.json"
+}

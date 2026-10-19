@@ -1,6 +1,6 @@
 # P1 侧视待机 · 向右中性人体 r1
 
-**当前审核：一张无发、无五官、无外衣／武器的中性待机人体，待用户认可。**
+**用户反馈“手好像反了”，本版要求修订，未获认可。** 原图保留，当前回审[右手方向修订 r2](../right-idle-r2/README.md)。
 
 [当前审核图](review.png) · [透明256×256注册候选](00.png) · [源图](source/neutral-body.png) · [挂点与统一变换](registration.json) · [来源清单](candidate.json) · [检查记录](validation.json)
 

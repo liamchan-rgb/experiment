@@ -1,6 +1,6 @@
 {
   "id": "p1-neutral-battle-side-right-idle-r1",
-  "status": "awaiting-user-neutral-pose-art-review",
+  "status": "revision-requested",
   "artApproval": null,
   "role": "Single neutral body pose study before body-part separation and wardrobe authoring",
   "direction": "battle-side-right",
@@ -73,5 +73,7 @@
       "sha256": "1cce94d128c3fc77bdf8c36e6bc1d938adc1c5e97072ccfac46e785929c3f396",
       "bytes": 55499
     }
-  }
+  },
+  "userFeedback": "手好像反了",
+  "nextRevision": "../right-idle-r2/candidate.json"
 }

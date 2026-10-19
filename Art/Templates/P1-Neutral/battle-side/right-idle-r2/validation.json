@@ -1,0 +1,70 @@
+{
+  "status": "hand-revision-file-and-shared-registration-checked-awaiting-user-art-review",
+  "artApproval": null,
+  "checks": [
+    {
+      "name": "original-source-preserved",
+      "passed": true
+    },
+    {
+      "name": "r1-source-reference-hash-unchanged",
+      "passed": true
+    },
+    {
+      "name": "same-whole-canvas-registration-as-r1",
+      "passed": true,
+      "sourceToCanvas": [
+        0.1829787234042553,
+        0,
+        0,
+        0.1829787234042553,
+        10.344680851063842,
+        17.297872340425542
+      ],
+      "alphaFit": false
+    },
+    {
+      "name": "transparent-pose-and-sole-diagnostics",
+      "passed": true,
+      "canvasPx": [
+        256,
+        256
+      ],
+      "mode": "RGBA",
+      "visibleBoundsAlphaAbove20": [
+        87,
+        83,
+        159,
+        215
+      ],
+      "boundsUsedForFitting": false,
+      "soleLandmarkY": 214
+    },
+    {
+      "name": "actual-browser-review-render",
+      "passed": true,
+      "bodyZoom": 4,
+      "handZoom": 12,
+      "handInsetSource": "same 00.png",
+      "scriptErrors": []
+    }
+  ],
+  "manualReview": {
+    "performed": true,
+    "observations": [
+      "Near hand no longer contains the lower palm-like hooked crease",
+      "Thumb is along upper edge and finger/knuckle steps are on forward edge",
+      "Forearm-wrist remains connected, ready stance and source frame retained"
+    ],
+    "limits": [
+      "Visual anatomy is still subject to user review",
+      "Weapon and grip axis have not been tested with a real weapon",
+      "Image generator redrew source; no claim of pixel identity outside hand"
+    ]
+  },
+  "notDelivered": [
+    "Independent semantic body layers and hidden-joint completion",
+    "Wardrobe, hair, facial features, sword or animation",
+    "Native app integration, new IPA or physical iPad testing"
+  ]
+}

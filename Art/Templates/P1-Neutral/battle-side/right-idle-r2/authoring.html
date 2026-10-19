@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="zh-CN"><meta charset="utf-8"><title>P1 侧视待机 · 中性人体候选</title>
+<style>
+* { box-sizing:border-box; }
+html,body { margin:0; width:1024px; height:1024px; background:#e3dfd3; }
+body { font-family:system-ui,sans-serif; color:#303e34; }
+header { position:absolute; left:56px; top:38px; }
+h1 { margin:0 0 12px; font-size:30px; }
+p { margin:0; font-size:20px; }
+#pose { position:absolute; width:256px; height:256px; left:0; top:0; overflow:hidden; background:transparent; transform:scale(4); transform-origin:0 0; }
+#source { position:absolute; width:1254px; height:1254px; max-width:none; transform-origin:0 0; image-rendering:pixelated; }
+#baseline { position:absolute; height:1px; width:430px; left:304px; top:856px; border-top:1px dashed #7e8977; }
+footer { position:absolute; left:56px; right:56px; bottom:45px; font-size:20px; line-height:1.8; }
+#hand-detail { position:absolute; left:688px; top:360px; width:288px; height:288px; overflow:hidden; background:#d9d4c7; border:1px solid #aaa793; border-radius:8px; }
+#hand-detail img { position:absolute; width:3072px; height:3072px; max-width:none; left:-1584px; top:-1800px; image-rendering:pixelated; }
+#zoom-title { position:absolute; left:688px; top:318px; font-size:20px; }
+.export #hand-detail,.export #zoom-title { display:none; }
+.export,.export body { width:256px; height:256px; background:transparent; }
+.export #pose { transform:none; }
+.export header,.export footer,.export #baseline { display:none; }
+</style>
+<header><h1>侧视待机 · 中性人体 r2</h1><p>向右朝向 · 近侧右手拇指与指节方向修订</p></header>
+<div id="pose"><img id="source" src="source/neutral-body.png" alt="向右侧视的中性人体：无发无五官，穿安全内衫短裤，近侧闭拳在腰前，双脚落地"></div>
+<div id="baseline" aria-hidden="true"></div>
+<div id="zoom-title">右手细节 · 实际像素放大</div>
+<div id="hand-detail"><img id="zoom-image" src="00.png" alt="近侧右手放大"></div>
+<footer>共用基础内衫与安全短裤，完整头皮及裸足。<br>头发、五官、外衣、鞋与武器另行制作。</footer>
+<script>
+const s=129/705, tx=128-643*s, ty=85-370*s;
+const image=document.getElementById('source');
+if(new URLSearchParams(location.search).has('export')) {
+ document.documentElement.classList.add('export');
+ image.style.left=tx+'px'; image.style.top=ty+'px'; image.style.transform='scale('+s+')';
+} else {
+ image.src='00.png'; image.style.width='256px'; image.style.height='256px';
+ image.style.left='0'; image.style.top='0'; image.style.transform='none';
+}
+window.poseReady=Promise.all([image.decode(), ...(new URLSearchParams(location.search).has('export')?[]:[document.getElementById('zoom-image').decode()])]);
+</script></html>

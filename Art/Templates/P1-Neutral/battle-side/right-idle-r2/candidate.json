@@ -1,0 +1,79 @@
+{
+  "id": "p1-neutral-battle-side-right-idle-r2",
+  "status": "awaiting-user-hand-direction-art-review",
+  "artApproval": null,
+  "supersedes": "../right-idle-r1/candidate.json",
+  "sourceUserFeedback": "手好像反了",
+  "scope": "Same single neutral right-side idle; revised near right hand thumb and dorsal/palmar reading",
+  "source": {
+    "path": "source/neutral-body.png",
+    "originalGeneratedFile": "/workspace/generated_images/exec-52608965-7571-4002-a1b2-356329c7c4c3.png",
+    "sha256": "e1ceb468c0baea37e5d269d8f4fa350e00ba88ad6fb46711512bd5bde15ff542",
+    "canvasPx": [
+      1254,
+      1254
+    ],
+    "mode": "RGBA",
+    "originalBytesPreserved": true
+  },
+  "generation": {
+    "sourceTool": "OpenAI image generation",
+    "prompt": "source/prompt.txt",
+    "imageReference": "../right-idle-r1/source/neutral-body.png",
+    "referenceSHA256": "0f3a5edcca1891d9b0685908e835c611e98be014e135a884595c4b98f1048dbf",
+    "refinementPrompt": "source/thumb-detail-prompt.txt",
+    "intermediateDraft": "drafts/thumb-silhouette-only.png",
+    "intermediateRejectionReason": "Thumb only a bump without clear index/thumb relationship at 256px",
+    "refinementReference": "drafts/thumb-silhouette-only.png",
+    "refinementReferenceSHA256": "da942b818dcc276994b265f8b23acebca728d3e101e4fd585127baab9ea0b0d7"
+  },
+  "registration": "registration.json",
+  "renderedPose": "00.png",
+  "reviewImage": "review.png",
+  "reviewHandInset": {
+    "source": "00.png",
+    "sourceRectLTRB": [
+      132,
+      150,
+      156,
+      174
+    ],
+    "scale": 12,
+    "role": "Mechanical pixel zoom of same current pose; not separately repainted hand art"
+  },
+  "partsDelivered": false,
+  "animationDelivered": false,
+  "runtimeIntegrated": false,
+  "limits": [
+    "Source is an image-generation revision, not a guaranteed pixel-identical local patch outside hand",
+    "Unchanged whole-canvas registration; no alpha fitting or appearance-dependent body swap",
+    "Empty hand only; actual weapon pose and grip axis require separate review",
+    "Single flattened neutral candidate; semantic body parts and hidden-joint completion remain pending"
+  ],
+  "artifacts": {
+    "source/neutral-body.png": {
+      "sha256": "e1ceb468c0baea37e5d269d8f4fa350e00ba88ad6fb46711512bd5bde15ff542",
+      "bytes": 275479
+    },
+    "source/prompt.txt": {
+      "sha256": "80ad98addddc3c66b4992973ffc3380e8610311e860588fc55f46bf389b4264e",
+      "bytes": 2534
+    },
+    "source/thumb-detail-prompt.txt": {
+      "sha256": "940e0b3fcfbd615bb005c4ed474e403ca0819aba73a220a63721b25c233b2e13",
+      "bytes": 2331
+    },
+    "drafts/thumb-silhouette-only.png": {
+      "sha256": "da942b818dcc276994b265f8b23acebca728d3e101e4fd585127baab9ea0b0d7",
+      "bytes": 267519
+    },
+    "00.png": {
+      "sha256": "9ac9c8141617b9eb31084b7139227fa9cf8ab9ccf6fa7a31a98c661a68923065",
+      "bytes": 15513
+    },
+    "review.png": {
+      "sha256": "071f878b25b98fce57fcffa76c164e155464e7f402b5d05eab6a976f81c0cb65",
+      "bytes": 63366
+    }
+  }
+}

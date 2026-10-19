@@ -3,8 +3,8 @@
   "format": 3,
   "updated": "2026-10-19",
   "workflow": "Review one direction at a time from fixed cardinal and diagonal baselines. Modify and resubmit the same direction until explicit user artwork approval, then advance. Record provenance, feedback and accepted revisions for the future character template.",
-  "current": "p1-neutral-battle-side-right-idle-r1",
-  "templateStatus": "independent heads approved; the v5 down idle sword pose is approved as one art study only; modular wardrobe/weapon production and the full character template remain incomplete; the heavyStrike + trainingSword standalone effect prototype is awaiting user art review; battle-side right idle neutral pose is now awaiting review before limb separation and independent battle appearance resources",
+  "current": "p1-neutral-battle-side-right-idle-r2",
+  "templateStatus": "independent heads approved; the v5 down idle sword pose is approved as one art study only; modular wardrobe/weapon production and the full character template remain incomplete; the heavyStrike + trainingSword standalone effect prototype is awaiting user art review; battle-side right idle neutral r2 hand-direction revision is now awaiting review before limb separation and independent battle appearance resources",
   "items": [
     {
       "id": "01-down-idle",
@@ -1681,18 +1681,39 @@
       "previousCurrent": "boardgame-effect-heavyStrike-trainingSword-v1",
       "newCurrent": "p1-neutral-battle-side-right-idle-r1",
       "reason": "User approved battle environment and requested next item; neutral side idle now current, older pending effect review is preserved"
+    },
+    {
+      "previousCurrent": "p1-neutral-battle-side-right-idle-r1",
+      "newCurrent": "p1-neutral-battle-side-right-idle-r2",
+      "reason": "User hand-direction correction; same neutral pose remains in review"
     }
   ],
   "battleNeutralBodyReview": {
-    "id": "p1-neutral-battle-side-right-idle-r1",
+    "id": "p1-neutral-battle-side-right-idle-r2",
     "status": "awaiting_user_art_review",
-    "source": "Art/Templates/P1-Neutral/battle-side/right-idle-r1",
-    "reviewImage": "Art/Templates/P1-Neutral/battle-side/right-idle-r1/review.png",
-    "registeredPose": "Art/Templates/P1-Neutral/battle-side/right-idle-r1/00.png",
-    "registration": "Art/Templates/P1-Neutral/battle-side/right-idle-r1/registration.json",
-    "scope": "single right-side battle idle neutral body; no appearance, weapon or animation approval",
+    "source": "Art/Templates/P1-Neutral/battle-side/right-idle-r2",
+    "reviewImage": "Art/Templates/P1-Neutral/battle-side/right-idle-r2/review.png",
+    "registeredPose": "Art/Templates/P1-Neutral/battle-side/right-idle-r2/00.png",
+    "registration": "Art/Templates/P1-Neutral/battle-side/right-idle-r2/registration.json",
+    "scope": "same neutral right-side idle pose; near/right thumb and dorsal/palmar hand direction revision",
     "artApproval": null,
     "partsDelivered": false,
-    "next": "After explicit neutral-pose approval, author common hidden anatomy and semantic body layers, then independent hair/face/outfit/weapon resources using the same registered body"
+    "history": [
+      {
+        "id": "p1-neutral-battle-side-right-idle-r1",
+        "status": "revision_requested",
+        "source": "Art/Templates/P1-Neutral/battle-side/right-idle-r1",
+        "reviewImage": "Art/Templates/P1-Neutral/battle-side/right-idle-r1/review.png",
+        "registeredPose": "Art/Templates/P1-Neutral/battle-side/right-idle-r1/00.png",
+        "registration": "Art/Templates/P1-Neutral/battle-side/right-idle-r1/registration.json",
+        "scope": "single right-side battle idle neutral body; no appearance, weapon or animation approval",
+        "artApproval": null,
+        "partsDelivered": false,
+        "next": "After explicit neutral-pose approval, author common hidden anatomy and semantic body layers, then independent hair/face/outfit/weapon resources using the same registered body",
+        "feedback": "手好像反了"
+      }
+    ],
+    "feedbackAddressed": "手好像反了",
+    "next": "Continue reviewing the same pose; only after explicit neutral-pose approval author body layers and independent appearance resources"
   }
 }
