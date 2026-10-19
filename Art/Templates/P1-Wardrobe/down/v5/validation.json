@@ -3,8 +3,17 @@
   "direction": "down",
   "clip": "idle",
   "frame": 0,
-  "status": "awaiting_user_art_review",
-  "artApproval": null,
+  "status": "structural_valid_art_approved_single_pose",
+  "artApproval": {
+    "date": "2026-10-19",
+    "reviewer": "user",
+    "statement": "对的",
+    "scope": "the single 00 down-idle pose shown in v5, including its continuous arm/wrist/hand and natural point-down sword grip",
+    "status": "approved",
+    "limits": [
+      "Does not approve a nine-pose weapon animation, independent production parts, other directions, or App integration."
+    ]
+  },
   "reviewImage": "review.png",
   "baseImage": "references/00-without-grip.png",
   "generatedGuide": "source/guide-with-completed-grip.png",
@@ -26,6 +35,6 @@
   "limits": [
     "One idle pose only; no nine-pose or animation validation.",
     "The forearm, hand and sword are one registered overlay for this visual study, not yet independently swappable parts.",
-    "Visual grip and wrist continuity were reviewed at full pose and enlarged detail; this does not constitute user approval."
+    "User approved the displayed single pose; this does not constitute approval beyond that scope."
   ]
 }

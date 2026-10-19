@@ -1,0 +1,14 @@
+Create a brand-new production-style sprite sheet for an original classroom fantasy board game: one generic “heavy strike” sword-hit visual effect, designed to overlay a small HD pixel-art adventurer who swings a short silver blade with a gold guard. The effect is independent of the character and equipment art; do not draw a person, arm, hand, weapon, interface, text, letters, numerals, damage values, dice, or icons.
+
+Canvas/layout: exact wide 8:1 horizontal strip, eight equal square frames in a single row, consistent scale and center anchor across cells, no gutters, borders, labels, grid lines, or registration marks. Each frame shows one sequential moment of the same brief strike. Outside the effect pixels is fully transparent. Crisp high-resolution pixel art: deliberate square pixel clusters, sharp stepped edges, restrained highlights, no blur or smooth vector gradients. Bright picturebook fantasy palette with ivory-white core, warm gold and amber motion, and only a few cool cyan glints. Keep the effect compact enough to overlay a small character without obscuring their body.
+
+Animation from left to right, played once at normal speed over about 650 ms:
+1 tiny warm blade-glint and short diagonal spark;
+2 thin crescent slash sweeps lower-left to upper-right;
+3 arc brighter/full but narrow;
+4 compact eight-point impact flash;
+5 largest burst;
+6 few angular sparks/fragments;
+7 three/four tiny fading gold pixels;
+8 fully transparent empty.
+Keep anchor near cell center; slash from lower-left to upper-right, not a thick crescent or circular shield. Compact/readable at small scale.

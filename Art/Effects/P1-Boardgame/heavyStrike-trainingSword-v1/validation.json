@@ -1,0 +1,46 @@
+{
+  "status": "passed",
+  "masterSVG": {
+    "path": "source/fx_heavyStrike.svg",
+    "sha256": "3343f2a91ef5b5343e209c8b3d445c9dae2636d2b155c17e5f7f062013a7f538"
+  },
+  "conceptStudySHA256": "296e331ba1ae9cca8025c3523f80d52f4b298faf5eceb056498de64ba3050f49",
+  "sheetSizePx": [
+    2048,
+    256
+  ],
+  "frameCount": 8,
+  "frameSizePx": [
+    256,
+    256
+  ],
+  "durationMs": 650,
+  "durationSequenceMs": [
+    50,
+    70,
+    80,
+    80,
+    100,
+    100,
+    80,
+    90
+  ],
+  "terminalFrameAlphaPixels": 0,
+  "gifFrameCount": 8,
+  "gifDurationsMs": [
+    50,
+    70,
+    80,
+    80,
+    100,
+    100,
+    80,
+    90
+  ],
+  "gifLoopExtensionPresent": false,
+  "sha256": {
+    "spriteSheet": "66483563de538f3e323f8b642a1062293d75d882c35c48355fd3a8d0913153a1",
+    "reviewContactSheet": "a81b70243987970a9358912d1933d6e1bba5157ecbd7ce8d1df6a77e0cb2e22b",
+    "normalSpeedPreview": "bc8d97e0d0e3fbb763228d51fe195876ee829c4c96745118109bdc5b1f9fd836"
+  }
+}

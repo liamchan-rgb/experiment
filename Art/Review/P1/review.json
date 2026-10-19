@@ -3,8 +3,8 @@
   "format": 3,
   "updated": "2026-10-19",
   "workflow": "Review one direction at a time from fixed cardinal and diagonal baselines. Modify and resubmit the same direction until explicit user artwork approval, then advance. Record provenance, feedback and accepted revisions for the future character template.",
-  "current": "wardrobe-down-v5-continuous-arm-point-down-grip",
-  "templateStatus": "independent heads approved; current wardrobe/sword artwork awaits review of a single down idle pose with continuous arm/wrist/hand, point-down forward grip, and narrow edge-on blade",
+  "current": "boardgame-effect-heavyStrike-trainingSword-v1",
+  "templateStatus": "independent heads approved; the v5 down idle sword pose is approved as one art study only; modular wardrobe/weapon production and the full character template remain incomplete; the heavyStrike + trainingSword standalone effect prototype is awaiting user art review",
   "items": [
     {
       "id": "01-down-idle",
@@ -1529,12 +1529,27 @@
     "next": "head resources approved; current wardrobe review in progress"
   },
   "wardrobeReview": {
-    "status": "awaiting_user_review",
+    "status": "approved_single_pose",
     "source": "Art/Templates/P1-Wardrobe/down/v5",
     "direction": "down",
     "clip": "idle",
     "frame": 0,
-    "artApproval": null,
+    "artApproval": {
+      "date": "2026-10-19",
+      "reviewer": "user",
+      "statement": "对的",
+      "direction": "down",
+      "revision": "v5",
+      "scope": "only the single 00 down-idle pose shown in v5, including its continuous arm/wrist/hand and natural point-down sword grip",
+      "status": "approved",
+      "artifacts": {
+        "review.png": "f7c34189042126e11da651a2e581d2c95ef9da68ad7cad96e1b66e9cc23ee490",
+        "00.png": "b1b0ee76c1f0402d2b1237e93e664b1b8456f3b5b8397cdc1251cf68dfae5923"
+      },
+      "limits": [
+        "Does not approve a nine-pose weapon animation, independent production parts, other directions, or App integration."
+      ]
+    },
     "scope": "single 00 pose: continuous natural arm/wrist/hand, normal forward grip on point-down sword, narrow blade edge toward camera and short same-plane guard",
     "reviewImage": "Art/Templates/P1-Wardrobe/down/v5/review.png",
     "integratedOverlay": "Art/Templates/P1-Wardrobe/down/v5/parts/grip/registered-overlay.png",
@@ -1552,8 +1567,8 @@
       "你确定这个动作正常？"
     ],
     "authorization": "那你改到你自己满意为止",
-    "assistantAssessment": "v4's separately rotated fist left an unnatural wrist-to-forearm connection. v5 draws the lower arm, wrist and grip continuously; the assistant considers the single-frame pose viable, pending user review.",
-    "next": "Await user review of v5's single down idle pose; if approved, separate reusable hand and weapon parts and validate across the same nine down poses.",
+    "assistantAssessment": "User approved v5 as the displayed single down-idle pose. The combined forearm/hand/sword overlay remains an art study; modular parts, nine-pose validation, attack animation, and runtime integration are still incomplete.",
+    "next": "v5 single-pose approval recorded; continue with boardgame skill/equipment planning. Treat the v5 combined overlay as a reference, not a completed reusable weapon package.",
     "history": [
       {
         "source": "Art/Templates/P1-Wardrobe/down/v1",
@@ -1604,7 +1619,61 @@
           "你确定这个动作正常？"
         ],
         "assistantAssessment": "The hand was rotated separately from the forearm, leaving an unnatural wrist transition."
+      },
+      {
+        "source": "Art/Templates/P1-Wardrobe/down/v5",
+        "status": "approved_single_pose",
+        "direction": "down",
+        "clip": "idle",
+        "frame": 0,
+        "artApproval": {
+          "date": "2026-10-19",
+          "reviewer": "user",
+          "statement": "对的",
+          "direction": "down",
+          "revision": "v5",
+          "scope": "only the single 00 down-idle pose shown in v5, including its continuous arm/wrist/hand and natural point-down sword grip",
+          "status": "approved",
+          "artifacts": {
+            "review.png": "f7c34189042126e11da651a2e581d2c95ef9da68ad7cad96e1b66e9cc23ee490",
+            "00.png": "b1b0ee76c1f0402d2b1237e93e664b1b8456f3b5b8397cdc1251cf68dfae5923"
+          },
+          "limits": [
+            "Does not approve a nine-pose weapon animation, independent production parts, other directions, or App integration."
+          ]
+        },
+        "scopeNote": "This approval is limited to the displayed single idle pose; it does not approve modular parts or an attack animation."
       }
+    ]
+  },
+  "skillAnimationReview": {
+    "id": "skill-heavyStrike-trainingSword-v1",
+    "status": "awaiting_user_art_review",
+    "skillID": "heavyStrike",
+    "equipmentID": "trainingSword",
+    "effectID": "heavyStrike",
+    "source": "Art/Effects/P1-Boardgame/heavyStrike-trainingSword-v1",
+    "reviewImage": "Art/Effects/P1-Boardgame/heavyStrike-trainingSword-v1/outputs/review.png",
+    "normalSpeedPreview": "Art/Effects/P1-Boardgame/heavyStrike-trainingSword-v1/outputs/preview-normal.gif",
+    "spriteSheet": "Art/Effects/P1-Boardgame/heavyStrike-trainingSword-v1/outputs/fx_heavyStrike_sheet.png",
+    "editableMaster": "Art/Effects/P1-Boardgame/heavyStrike-trainingSword-v1/source/fx_heavyStrike.svg",
+    "manifest": "Art/Effects/P1-Boardgame/heavyStrike-trainingSword-v1/asset-manifest.json",
+    "validation": "Art/Effects/P1-Boardgame/heavyStrike-trainingSword-v1/validation.json",
+    "frameCount": 8,
+    "frameSizePx": [
+      256,
+      256
+    ],
+    "durationMs": 650,
+    "loop": false,
+    "terminalFrameTransparent": true,
+    "artApproval": null,
+    "scope": "standalone red/ivory slash and impact effect associated with the heavyStrike skill and trainingSword equipment IDs; excludes a frame-by-frame character swing or weapon part",
+    "triggerContract": "play once only after the corresponding committed game result; no rules, dice, damage values, or App code are changed",
+    "limits": [
+      "Effect art remains a prototype awaiting user review.",
+      "No character attack poses or weapon integration are included.",
+      "Existing skill/equipment image assets and game rules remain unchanged."
     ]
   }
 }

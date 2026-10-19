@@ -1,0 +1,274 @@
+{
+  "formatVersion": 1,
+  "assetID": "heavyStrike-trainingSword-v1",
+  "status": "prototype-awaiting-art-review",
+  "skillID": "heavyStrike",
+  "equipmentID": "trainingSword",
+  "effectID": "heavyStrike",
+  "visualRole": "one-shot slash and impact overlay after a committed game result",
+  "sourceContract": {
+    "repository": "classroom-boardgame",
+    "gameContentCommit": "1e9100c4c18364ea64b3ec974fe957ba4ef42f6f",
+    "gameContentSHA256": "aaab980fd5f3154ac813a02dc907a835ee0e0181c4149f2b7803d9594795f34a",
+    "designArchiveTag": "archive-design-b-art-motion-v1-20261012",
+    "designArchiveCommit": "bc2049fb579ef488470a8a2a75a0c078eb492c22",
+    "effectTemplate": "impact",
+    "effectFrames": 8,
+    "frameSizePx": [
+      256,
+      256
+    ],
+    "durationMs": 650,
+    "loop": false,
+    "playsPerCommittedResult": 1,
+    "terminalFrameTransparent": true,
+    "reducedMotion": {
+      "frameIndex": 4,
+      "description": "brief static peak glyph, then clear"
+    }
+  },
+  "sourceImage": {
+    "path": "source/fx_heavyStrike.svg",
+    "sourceType": "original-editable-vector",
+    "sha256": "3343f2a91ef5b5343e209c8b3d445c9dae2636d2b155c17e5f7f062013a7f538"
+  },
+  "conceptStudy": {
+    "path": "source/concepts/generated-heavy-strike.png",
+    "sha256": "296e331ba1ae9cca8025c3523f80d52f4b298faf5eceb056498de64ba3050f49",
+    "use": "initial direction study only; retained for provenance and not used in production outputs"
+  },
+  "outputs": {
+    "spriteSheet": "outputs/fx_heavyStrike_sheet.png",
+    "reviewContactSheet": "outputs/review.png",
+    "normalSpeedPreview": "outputs/preview-normal.gif",
+    "frameDirectory": "frames/",
+    "spriteSheetSizePx": [
+      2048,
+      256
+    ]
+  },
+  "palette": {
+    "impactRed": "#B93838",
+    "ivory": "#FFF3CD",
+    "skyAccent": "#B2DDEF"
+  },
+  "limitations": [
+    "Effect-only animation; it does not contain the character, arm, hand, weapon, or a frame-by-frame swing pose.",
+    "No rules, dice, damage values, game content, or App code were changed.",
+    "The equipment ID selects the associated item reference; it does not alter this generic visual effect.",
+    "Not yet integrated into the reusable character template or game runtime."
+  ],
+  "frames": [
+    {
+      "index": 0,
+      "name": "glint",
+      "sourceCellLTRB": [
+        0,
+        0,
+        256,
+        256
+      ],
+      "durationMs": 50,
+      "sizePx": [
+        256,
+        256
+      ],
+      "hitAnchorPx": [
+        128,
+        128
+      ],
+      "effectBoundsInCell": [
+        104,
+        119,
+        146,
+        157
+      ],
+      "transparent": false,
+      "sha256": "4e369f1455bebf3c68c63d163716bfff8957c58ff44fdae927d87d2fe2a9608f"
+    },
+    {
+      "index": 1,
+      "name": "slash-enter",
+      "sourceCellLTRB": [
+        256,
+        0,
+        512,
+        256
+      ],
+      "durationMs": 70,
+      "sizePx": [
+        256,
+        256
+      ],
+      "hitAnchorPx": [
+        128,
+        128
+      ],
+      "effectBoundsInCell": [
+        66,
+        106,
+        166,
+        196
+      ],
+      "transparent": false,
+      "sha256": "8b9cb1bb230d981dcd49f72a0761b78acdc4b4f85de6c0a6b5d0d12fbf87e4fb"
+    },
+    {
+      "index": 2,
+      "name": "slash-full",
+      "sourceCellLTRB": [
+        512,
+        0,
+        768,
+        256
+      ],
+      "durationMs": 80,
+      "sizePx": [
+        256,
+        256
+      ],
+      "hitAnchorPx": [
+        128,
+        128
+      ],
+      "effectBoundsInCell": [
+        35,
+        97,
+        177,
+        221
+      ],
+      "transparent": false,
+      "sha256": "48bb8d7303e626e394bf4782b172bd3ac55011511c3178586d261704647ff507"
+    },
+    {
+      "index": 3,
+      "name": "impact-small",
+      "sourceCellLTRB": [
+        768,
+        0,
+        1024,
+        256
+      ],
+      "durationMs": 80,
+      "sizePx": [
+        256,
+        256
+      ],
+      "hitAnchorPx": [
+        128,
+        128
+      ],
+      "effectBoundsInCell": [
+        59,
+        77,
+        177,
+        198
+      ],
+      "transparent": false,
+      "sha256": "50acd53e69176c3748826872df7e3a2244b45d4766743ddaf8d8b479aabc7b6b"
+    },
+    {
+      "index": 4,
+      "name": "impact-peak",
+      "sourceCellLTRB": [
+        1024,
+        0,
+        1280,
+        256
+      ],
+      "durationMs": 100,
+      "sizePx": [
+        256,
+        256
+      ],
+      "hitAnchorPx": [
+        128,
+        128
+      ],
+      "effectBoundsInCell": [
+        47,
+        47,
+        209,
+        209
+      ],
+      "transparent": false,
+      "sha256": "2855c23363899b4cb8ed3dfcb20c253bd7d0d57473337e3ed9e18fff52a015eb"
+    },
+    {
+      "index": 5,
+      "name": "fragments",
+      "sourceCellLTRB": [
+        1280,
+        0,
+        1536,
+        256
+      ],
+      "durationMs": 100,
+      "sizePx": [
+        256,
+        256
+      ],
+      "hitAnchorPx": [
+        128,
+        128
+      ],
+      "effectBoundsInCell": [
+        64,
+        75,
+        193,
+        200
+      ],
+      "transparent": false,
+      "sha256": "e282ed2a20f6ea32aed5de132b49936f9b282895ca471915a260d49f74510620"
+    },
+    {
+      "index": 6,
+      "name": "embers",
+      "sourceCellLTRB": [
+        1536,
+        0,
+        1792,
+        256
+      ],
+      "durationMs": 80,
+      "sizePx": [
+        256,
+        256
+      ],
+      "hitAnchorPx": [
+        128,
+        128
+      ],
+      "effectBoundsInCell": [
+        81,
+        66,
+        191,
+        182
+      ],
+      "transparent": false,
+      "sha256": "888ed75c31370d0ed66f62f58dbe4acf190692c0de8b1d8544de307cc47f0f18"
+    },
+    {
+      "index": 7,
+      "name": "transparent-end",
+      "sourceCellLTRB": [
+        1792,
+        0,
+        2048,
+        256
+      ],
+      "durationMs": 90,
+      "sizePx": [
+        256,
+        256
+      ],
+      "hitAnchorPx": [
+        128,
+        128
+      ],
+      "effectBoundsInCell": null,
+      "transparent": true,
+      "sha256": "9cdc25f88c3847e224535507a3d1aed35c4796dadb515cd52bf46c72b56f9369"
+    }
+  ]
+}
