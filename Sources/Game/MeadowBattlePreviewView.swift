@@ -76,8 +76,13 @@ final class MeadowBattlePreviewView: UIView {
         mapTitle.isUserInteractionEnabled = false; addSubview(mapTitle)
         landscape.accessibilityIdentifier = "battleLandscape"
         landscape.isAccessibilityElement = true
-        landscape.accessibilityLabel = "Meadow Journey 林地横版战场。单帧人物候选与目标占位，尚未接入真实战斗。"
+        landscape.accessibilityLabel = "Meadow Journey 营地林地场景，显示一名冒险者与一只史莱姆美术样例；尚未接入真实战斗。"
         addSubview(landscape)
+        stageTitle.text = "Meadow Journey · 营地林地"
+        stageTitle.textAlignment = .center
+        stageTitle.backgroundColor = MeadowPreviewPalette.panel.withAlphaComponent(0.88)
+        stageTitle.layer.cornerRadius = 8
+        stageTitle.clipsToBounds = true
         stageTitle.isUserInteractionEnabled = false; landscape.addSubview(stageTitle)
         track.accessibilityIdentifier = "previewTurnTrack"; addSubview(track)
         details.accessibilityIdentifier = "previewPlayerDetails"; addSubview(details)
@@ -92,7 +97,7 @@ final class MeadowBattlePreviewView: UIView {
     private func updateMode() {
         actor.text = mode == .exploration ? "探索 · Meadow Journey"
             : mode == .playerTurn ? "第1轮 · 行动中：P1 冒险者" : "第1轮 · 行动中：敌1"
-        subtitle.text = mode == .exploration ? "布局演示 · 地图查看" : "布局演示 · 已暂停 · 单帧动作样片"
+        subtitle.text = mode == .exploration ? "布局演示 · 地图查看" : "布局演示 · 已暂停 · 人物与敌方美术样例"
         landscape.isHidden = !mode.showsBattle
         track.isHidden = !mode.showsBattle
         details.isHidden = !mode.showsDetails
@@ -106,7 +111,7 @@ final class MeadowBattlePreviewView: UIView {
         mapBorder.frame = mapFrame
         mapTitle.frame = CGRect(x: mapFrame.minX + 12, y: mapFrame.minY + 12, width: 154, height: 28)
         landscape.frame = layout.battlefield; track.frame = layout.track; details.frame = layout.details
-        stageTitle.frame = CGRect(x: 16, y: 12, width: max(1, landscape.bounds.width - 32), height: 26)
+        stageTitle.frame = CGRect(x: 16, y: 12, width: min(246, max(1, landscape.bounds.width - 32)), height: 26)
         let buttonWidth: CGFloat = 104
         let selectorWidth = min(292, header.bounds.width * 0.29)
         closeButton.frame = CGRect(x: header.bounds.width - buttonWidth - 12, y: (header.bounds.height - 44) / 2,
@@ -262,296 +267,135 @@ private final class MeadowPreviewCard: UIView {
     }
 }
 
-private final class MeadowBattleLandscapeView: UIView {
-    private struct Prop {
-        let view: UIImageView
-        let rect: CGRect
-        let alpha: CGFloat
+struct MeadowBattleCanvasGeometry {
+    static let sourceCanvas = CGSize(width: 1309, height: 1201)
+    static let sceneLayerOrder = ["MeadowCampFarForest", "MeadowCampGround", "MeadowCampMidground", "MeadowCampForeground"]
+    static let heroVisibleHeight: CGFloat = 0.24
+    static let slimeVisibleHeight: CGFloat = 0.17
+
+    static func fittedCanvas(in bounds: CGRect) -> CGRect {
+        let scale = min(bounds.width / sourceCanvas.width, bounds.height / sourceCanvas.height)
+        let size = CGSize(width: sourceCanvas.width * scale, height: sourceCanvas.height * scale)
+        return CGRect(x: bounds.midX - size.width / 2, y: bounds.midY - size.height / 2,
+                      width: size.width, height: size.height)
     }
 
-    private let sky = CAGradientLayer()
-    private let ground = UIImageView(image: UIImage(named: "MeadowGround"))
-    private let groundMask = CAGradientLayer()
-    private let sunGlow = UIImageView(image: MeadowBattleLandscapeView.makeSunGlow())
-    private let sunWash = CAGradientLayer()
-    private let pathFill = CAShapeLayer()
-    private let pathEdge = CAShapeLayer()
-    private let pebblesLight = CAShapeLayer()
-    private let pebblesDark = CAShapeLayer()
-    private let contactShadow = CAShapeLayer()
-    private let targetGlow = CAShapeLayer()
-    private let targetRing = CAShapeLayer()
-    private let targetCross = CAShapeLayer()
-    private let hero = UIImageView(image: UIImage(named: "BattleHeroContactCandidate"))
-    private let backHaze = CAGradientLayer()
-    private let frontHaze = CAGradientLayer()
-    private let motes = CAEmitterLayer()
-    private let propViews: [Prop]
+    static func registeredSpriteFrame(imageSize: CGSize, alphaBounds: CGRect, foot: CGPoint,
+                                      visibleHeight: CGFloat, canvas: CGRect) -> CGRect {
+        let scale = canvas.height * visibleHeight / alphaBounds.height
+        let footPoint = CGPoint(x: canvas.minX + canvas.width * foot.x,
+                                y: canvas.minY + canvas.height * foot.y)
+        return CGRect(x: footPoint.x - (alphaBounds.midX * scale),
+                      y: footPoint.y - (alphaBounds.maxY * scale),
+                      width: imageSize.width * scale, height: imageSize.height * scale)
+    }
+}
+
+final class MeadowBattleLandscapeView: UIView {
+    private let canvas = UIView()
+    private let farForest = UIImageView(image: UIImage(named: "MeadowCampFarForest"))
+    private let ground = UIImageView(image: UIImage(named: "MeadowCampGround"))
+    private let midground = UIImageView(image: UIImage(named: "MeadowCampMidground"))
+    private let foreground = UIImageView(image: UIImage(named: "MeadowCampForeground"))
+    private let hero = UIImageView()
+    private let slime = UIImageView(image: UIImage(named: "MeadowBattleSlime"))
+    private let heroShadow = UIView()
+    private let slimeShadow = UIView()
+    private var sceneLayers: [UIImageView] { [farForest, ground, midground, foreground] }
+
+    var sceneLayerOrder: [String] { sceneLayers.compactMap(\.accessibilityIdentifier) }
+    var sceneLayerFrames: [CGRect] { sceneLayers.map(\.frame) }
+    var sceneCanvasFrame: CGRect { canvas.frame }
+    var sceneCanvasSubviewOrder: [String] { canvas.subviews.compactMap(\.accessibilityIdentifier) }
+    var heroViewFrame: CGRect { hero.frame }
+    var slimeViewFrame: CGRect { slime.frame }
+    var slimeFacesLeft: Bool { slime.transform.a < 0 }
 
     override init(frame: CGRect) {
-        let pineFar = UIImageView(image: UIImage(named: "Pines"))
-        let oakFar = UIImageView(image: UIImage(named: "OakA"))
-        let pineRight = UIImageView(image: UIImage(named: "Pines"))
-        let oakRight = UIImageView(image: UIImage(named: "OakB"))
-        let rockLeft = UIImageView(image: UIImage(named: "RockLow"))
-        let rockRight = UIImageView(image: UIImage(named: "RockHigh"))
-        let flowersLeft = UIImageView(image: UIImage(named: "Flowers"))
-        let flowersRight = UIImageView(image: UIImage(named: "Shrub"))
-        propViews = [
-            Prop(view: pineFar, rect: CGRect(x: -0.02, y: 0.16, width: 0.24, height: 0.64), alpha: 0.50),
-            Prop(view: oakFar, rect: CGRect(x: 0.16, y: 0.28, width: 0.22, height: 0.47), alpha: 0.46),
-            Prop(view: pineRight, rect: CGRect(x: 0.66, y: 0.18, width: 0.22, height: 0.60), alpha: 0.50),
-            Prop(view: oakRight, rect: CGRect(x: 0.80, y: 0.25, width: 0.23, height: 0.52), alpha: 0.56),
-            Prop(view: rockLeft, rect: CGRect(x: -0.02, y: 0.62, width: 0.20, height: 0.28), alpha: 0.94),
-            Prop(view: rockRight, rect: CGRect(x: 0.82, y: 0.59, width: 0.20, height: 0.30), alpha: 0.94),
-            Prop(view: flowersLeft, rect: CGRect(x: 0.04, y: 0.70, width: 0.17, height: 0.24), alpha: 0.95),
-            Prop(view: flowersRight, rect: CGRect(x: 0.80, y: 0.71, width: 0.16, height: 0.22), alpha: 0.94)
-        ]
+        let atlas = UIImage(named: "Hero1Directions")?.cgImage
+        let cellSize = 256
+        let rightIdle = atlas?.cropping(to: CGRect(x: 0, y: cellSize * 3,
+                                                   width: cellSize, height: cellSize))
         super.init(frame: frame)
+        if let rightIdle { hero.image = UIImage(cgImage: rightIdle) }
         clipsToBounds = true
         layer.cornerRadius = 14
         layer.borderWidth = 1
         layer.borderColor = UIColor(red: 0.91, green: 0.81, blue: 0.58, alpha: 0.7).cgColor
 
-        sky.colors = [
-            UIColor(red: 0.15, green: 0.25, blue: 0.29, alpha: 1).cgColor,
-            UIColor(red: 0.39, green: 0.49, blue: 0.40, alpha: 1).cgColor,
-            UIColor(red: 0.70, green: 0.60, blue: 0.37, alpha: 1).cgColor
-        ]
-        sky.locations = [0, 0.53, 1]
-        sky.startPoint = CGPoint(x: 0.4, y: 0)
-        sky.endPoint = CGPoint(x: 0.62, y: 1)
-        layer.addSublayer(sky)
-
-        ground.contentMode = .scaleAspectFill
-        ground.layer.magnificationFilter = .linear
-        groundMask.startPoint = CGPoint(x: 0.5, y: 0)
-        groundMask.endPoint = CGPoint(x: 0.5, y: 1)
-        groundMask.colors = [UIColor.clear.cgColor, UIColor.white.withAlphaComponent(0.55).cgColor, UIColor.white.cgColor]
-        groundMask.locations = [0, 0.43, 0.70]
-        ground.layer.mask = groundMask
-        addSubview(ground)
-
-        sunGlow.contentMode = .scaleToFill
-        sunGlow.alpha = 0.72
-        sunGlow.layer.compositingFilter = "screenBlendMode"
-        addSubview(sunGlow)
-
-        sunWash.colors = [
-            UIColor(red: 1, green: 0.89, blue: 0.61, alpha: 0.22).cgColor,
-            UIColor(red: 1, green: 0.86, blue: 0.56, alpha: 0.08).cgColor,
-            UIColor.clear.cgColor
-        ]
-        sunWash.startPoint = CGPoint(x: 0, y: 0)
-        sunWash.endPoint = CGPoint(x: 1, y: 1)
-        layer.addSublayer(sunWash)
-
-        for prop in propViews {
-            prop.view.contentMode = .scaleAspectFit
-            prop.view.alpha = prop.alpha
-            prop.view.isAccessibilityElement = false
-            prop.view.layer.minificationFilter = .linear
-            addSubview(prop.view)
+        canvas.clipsToBounds = true
+        canvas.accessibilityIdentifier = "meadowBattleSceneCanvas"
+        addSubview(canvas)
+        for (index, imageView) in sceneLayers.enumerated() {
+            imageView.accessibilityIdentifier = MeadowBattleCanvasGeometry.sceneLayerOrder[index]
+            imageView.contentMode = .scaleToFill
+            imageView.isAccessibilityElement = false
+            imageView.layer.minificationFilter = .linear
+            imageView.layer.magnificationFilter = .linear
+            canvas.addSubview(imageView)
         }
+        configureShadow(heroShadow, identifier: "meadowBattleHeroShadow")
+        configureShadow(slimeShadow, identifier: "meadowBattleSlimeShadow")
+        canvas.addSubview(heroShadow)
+        canvas.addSubview(slimeShadow)
 
-        pathFill.fillColor = UIColor(red: 0.39, green: 0.31, blue: 0.18, alpha: 0.74).cgColor
-        pathEdge.fillColor = UIColor.clear.cgColor
-        pathEdge.strokeColor = UIColor(red: 0.74, green: 0.60, blue: 0.35, alpha: 0.35).cgColor
-        pathEdge.lineWidth = 2
-        pebblesLight.fillColor = UIColor(red: 0.91, green: 0.77, blue: 0.48, alpha: 0.36).cgColor
-        pebblesDark.fillColor = UIColor(red: 0.25, green: 0.23, blue: 0.14, alpha: 0.32).cgColor
-        for shape in [pathFill, pathEdge, pebblesDark, pebblesLight] { layer.addSublayer(shape) }
-
-        contactShadow.fillColor = UIColor(red: 0.05, green: 0.08, blue: 0.07, alpha: 0.52).cgColor
-        contactShadow.strokeColor = UIColor.clear.cgColor
-        contactShadow.shadowColor = UIColor.black.cgColor
-        contactShadow.shadowOpacity = 0.28
-        contactShadow.shadowRadius = 9
-        contactShadow.shadowOffset = CGSize(width: 0, height: 3)
-        layer.addSublayer(contactShadow)
-
-        hero.contentMode = .scaleAspectFit
-        hero.isAccessibilityElement = false
-        hero.layer.minificationFilter = .linear
+        hero.accessibilityIdentifier = "meadowBattleHero"
+        hero.isAccessibilityElement = true
+        hero.accessibilityLabel = "Meadow Journey 冒险者，向右待机姿态"
+        hero.contentMode = .scaleToFill
+        hero.layer.minificationFilter = .nearest
         hero.layer.magnificationFilter = .nearest
-        addSubview(hero)
+        canvas.addSubview(hero)
 
-        targetGlow.fillColor = UIColor(red: 1, green: 0.82, blue: 0.39, alpha: 0.13).cgColor
-        targetRing.fillColor = UIColor.clear.cgColor
-        targetRing.strokeColor = UIColor(red: 1, green: 0.88, blue: 0.59, alpha: 0.90).cgColor
-        targetRing.lineWidth = 2
-        targetCross.fillColor = UIColor.clear.cgColor
-        targetCross.strokeColor = UIColor(red: 1, green: 0.88, blue: 0.59, alpha: 0.70).cgColor
-        targetCross.lineWidth = 1
-        for shape in [targetGlow, targetRing, targetCross] { layer.addSublayer(shape) }
+        slime.accessibilityIdentifier = "meadowBattleSlime"
+        slime.isAccessibilityElement = true
+        slime.accessibilityLabel = "史莱姆敌方单位示意"
+        slime.contentMode = .scaleToFill
+        slime.transform = CGAffineTransform(scaleX: -1, y: 1)
+        slime.layer.minificationFilter = .nearest
+        slime.layer.magnificationFilter = .nearest
+        canvas.addSubview(slime)
 
-        backHaze.colors = [
-            UIColor(red: 0.66, green: 0.79, blue: 0.77, alpha: 0).cgColor,
-            UIColor(red: 0.69, green: 0.80, blue: 0.78, alpha: 0.22).cgColor,
-            UIColor(red: 0.78, green: 0.83, blue: 0.72, alpha: 0).cgColor
-        ]
-        backHaze.startPoint = CGPoint(x: 0, y: 0.5)
-        backHaze.endPoint = CGPoint(x: 1, y: 0.5)
-        layer.addSublayer(backHaze)
-        let drift = CABasicAnimation(keyPath: "transform.translation.x")
-        drift.fromValue = -22
-        drift.toValue = 22
-        drift.duration = 12
-        drift.autoreverses = true
-        drift.repeatCount = .infinity
-        backHaze.add(drift, forKey: "meadow-mist-drift")
-
-        frontHaze.colors = [
-            UIColor(red: 0.88, green: 0.81, blue: 0.61, alpha: 0).cgColor,
-            UIColor(red: 0.88, green: 0.81, blue: 0.61, alpha: 0.18).cgColor,
-            UIColor(red: 0.88, green: 0.81, blue: 0.61, alpha: 0.02).cgColor
-        ]
-        frontHaze.startPoint = CGPoint(x: 0.5, y: 0)
-        frontHaze.endPoint = CGPoint(x: 0.5, y: 1)
-        layer.addSublayer(frontHaze)
-
-        let particle = Self.makeSunGlow().cgImage
-        let cell = CAEmitterCell()
-        cell.contents = particle
-        cell.contentsScale = UIScreen.main.scale
-        cell.birthRate = 2
-        cell.lifetime = 8
-        cell.lifetimeRange = 2
-        cell.velocity = 7
-        cell.velocityRange = 5
-        cell.emissionLongitude = -.pi / 2
-        cell.emissionRange = .pi / 3
-        cell.alphaSpeed = -0.035
-        cell.scale = 0.035
-        cell.scaleRange = 0.025
-        cell.color = UIColor(red: 1, green: 0.86, blue: 0.52, alpha: 0.64).cgColor
-        motes.emitterShape = .rectangle
-        motes.emitterMode = .surface
-        motes.renderMode = .additive
-        motes.emitterCells = [cell]
-        layer.addSublayer(motes)
-
-        let tag = UILabel()
-        tag.text = "姿势候选 · 单帧"
-        tag.font = .systemFont(ofSize: 12, weight: .bold)
-        tag.textColor = UIColor(red: 0.18, green: 0.23, blue: 0.16, alpha: 1)
-        tag.textAlignment = .center
-        tag.backgroundColor = UIColor(red: 0.97, green: 0.90, blue: 0.70, alpha: 0.94)
-        tag.layer.cornerRadius = 9
-        tag.clipsToBounds = true
-        tag.accessibilityElementsHidden = true
-        addSubview(tag)
-        self.heroTag = tag
-
-        let targetLabel = UILabel()
-        targetLabel.text = "目标位置占位"
-        targetLabel.font = .systemFont(ofSize: 11, weight: .semibold)
-        targetLabel.textColor = UIColor(red: 0.21, green: 0.25, blue: 0.18, alpha: 1)
-        targetLabel.textAlignment = .center
-        targetLabel.backgroundColor = UIColor(red: 0.97, green: 0.90, blue: 0.70, alpha: 0.86)
-        targetLabel.layer.cornerRadius = 8
-        targetLabel.clipsToBounds = true
-        targetLabel.accessibilityElementsHidden = true
-        addSubview(targetLabel)
-        self.targetTag = targetLabel
+        canvas.addSubview(foreground)
     }
-
-    private var heroTag: UILabel!
-    private var targetTag: UILabel!
 
     required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
 
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        let w = bounds.width
-        let h = bounds.height
-        guard w > 0, h > 0 else { return }
-        sky.frame = bounds
-        ground.frame = bounds
-        groundMask.frame = bounds
-        sunWash.frame = bounds
-        sunGlow.frame = CGRect(x: -w * 0.10, y: -h * 0.38, width: w * 0.70, height: h * 1.18)
-        for prop in propViews {
-            prop.view.frame = CGRect(x: prop.rect.minX * w, y: prop.rect.minY * h,
-                                     width: prop.rect.width * w, height: prop.rect.height * h)
-        }
-
-        let road = UIBezierPath()
-        road.move(to: CGPoint(x: 0, y: h * 0.76))
-        road.addCurve(to: CGPoint(x: w, y: h * 0.74),
-                      controlPoint1: CGPoint(x: w * 0.28, y: h * 0.70),
-                      controlPoint2: CGPoint(x: w * 0.70, y: h * 0.82))
-        road.addLine(to: CGPoint(x: w, y: h))
-        road.addLine(to: CGPoint(x: 0, y: h))
-        road.close()
-        pathFill.path = road.cgPath
-
-        let crest = UIBezierPath()
-        crest.move(to: CGPoint(x: 0, y: h * 0.76))
-        crest.addCurve(to: CGPoint(x: w, y: h * 0.74),
-                       controlPoint1: CGPoint(x: w * 0.28, y: h * 0.70),
-                       controlPoint2: CGPoint(x: w * 0.70, y: h * 0.82))
-        pathEdge.path = crest.cgPath
-
-        let lightPebbles = UIBezierPath()
-        let darkPebbles = UIBezierPath()
-        for index in 0..<54 {
-            let x = CGFloat((index * 37 + 11) % 97) / 97 * w
-            let y = h * (0.79 + CGFloat((index * 19 + 5) % 20) / 100)
-            let radius = CGFloat(1 + (index % 3))
-            let pebble = UIBezierPath(ovalIn: CGRect(x: x, y: y, width: radius * 2, height: radius))
-            (index % 3 == 0 ? darkPebbles : lightPebbles).append(pebble)
-        }
-        pebblesLight.path = lightPebbles.cgPath
-        pebblesDark.path = darkPebbles.cgPath
-
-        let actorGroundY = h * 0.79
-        // Visible boot edge is y1052 on the original 1254px canvas. Alpha=1
-        // noise extends to y1236 and must not be mistaken for the foot anchor.
-        let actorSize = min(w * 0.48, h * 0.60)
-        hero.frame = CGRect(x: w * 0.105, y: actorGroundY - actorSize * 1052 / 1254,
-                            width: actorSize, height: actorSize)
-        contactShadow.path = UIBezierPath(ovalIn: CGRect(x: hero.frame.minX + actorSize * 0.04,
-            y: actorGroundY - 3, width: actorSize * 0.72, height: max(10, actorSize * 0.06))).cgPath
-
-        let targetCenter = CGPoint(x: w * 0.76, y: actorGroundY - actorSize * 0.12)
-        let radius = w * 0.035
-        targetGlow.path = UIBezierPath(ovalIn: CGRect(x: targetCenter.x - radius * 1.55,
-                                                     y: targetCenter.y - radius * 1.55,
-                                                     width: radius * 3.1, height: radius * 3.1)).cgPath
-        targetRing.path = UIBezierPath(ovalIn: CGRect(x: targetCenter.x - radius,
-                                                     y: targetCenter.y - radius,
-                                                     width: radius * 2, height: radius * 2)).cgPath
-        let cross = UIBezierPath()
-        cross.move(to: CGPoint(x: targetCenter.x - radius * 1.3, y: targetCenter.y))
-        cross.addLine(to: CGPoint(x: targetCenter.x + radius * 1.3, y: targetCenter.y))
-        cross.move(to: CGPoint(x: targetCenter.x, y: targetCenter.y - radius * 1.3))
-        cross.addLine(to: CGPoint(x: targetCenter.x, y: targetCenter.y + radius * 1.3))
-        targetCross.path = cross.cgPath
-
-        backHaze.frame = CGRect(x: -w * 0.12, y: h * 0.34, width: w * 1.24, height: h * 0.30)
-        frontHaze.frame = CGRect(x: 0, y: h * 0.73, width: w, height: h * 0.27)
-        motes.frame = bounds
-        motes.emitterPosition = CGPoint(x: w * 0.5, y: h * 0.52)
-        motes.emitterSize = CGSize(width: w * 0.92, height: h * 0.62)
-        heroTag.frame = CGRect(x: 16, y: 44, width: min(170, w - 32), height: 22)
-        targetTag.frame = CGRect(x: targetCenter.x - 65, y: actorGroundY + 20, width: 130, height: 20)
+    private func configureShadow(_ shadow: UIView, identifier: String) {
+        shadow.accessibilityIdentifier = identifier
+        shadow.isUserInteractionEnabled = false
+        shadow.backgroundColor = UIColor(red: 0.08, green: 0.10, blue: 0.07, alpha: 0.42)
+        shadow.layer.cornerRadius = 100
     }
 
-    private static func makeSunGlow() -> UIImage {
-        let size = CGSize(width: 256, height: 256)
-        let renderer = UIGraphicsImageRenderer(size: size)
-        return renderer.image { context in
-            let center = CGPoint(x: size.width / 2, y: size.height / 2)
-            let colors = [
-                UIColor(red: 1, green: 0.91, blue: 0.64, alpha: 0.72).cgColor,
-                UIColor(red: 1, green: 0.86, blue: 0.58, alpha: 0.30).cgColor,
-                UIColor(red: 1, green: 0.83, blue: 0.49, alpha: 0).cgColor
-            ] as CFArray
-            let gradient = CGGradient(colorsSpace: CGColorSpaceCreateDeviceRGB(), colors: colors,
-                                      locations: [0, 0.42, 1])!
-            context.cgContext.drawRadialGradient(gradient, startCenter: center, startRadius: 0,
-                                                 endCenter: center, endRadius: size.width * 0.49, options: [])
-        }
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        guard bounds.width > 0, bounds.height > 0 else { return }
+        let fitted = MeadowBattleCanvasGeometry.fittedCanvas(in: bounds)
+        canvas.frame = fitted
+        let canvasBounds = canvas.bounds
+        sceneLayers.forEach { $0.frame = canvasBounds }
+
+        let heroFrame = MeadowBattleCanvasGeometry.registeredSpriteFrame(
+            imageSize: CGSize(width: 256, height: 256),
+            alphaBounds: CGRect(x: 87, y: 68, width: 83, height: 156),
+            foot: CGPoint(x: 0.30, y: 0.69), visibleHeight: MeadowBattleCanvasGeometry.heroVisibleHeight,
+            canvas: canvasBounds)
+        hero.frame = heroFrame
+        let slimeFrame = MeadowBattleCanvasGeometry.registeredSpriteFrame(
+            imageSize: slime.image.map { CGSize(width: $0.size.width, height: $0.size.height) } ?? CGSize(width: 1024, height: 1024),
+            alphaBounds: CGRect(x: 179, y: 207, width: 642, height: 648),
+            foot: CGPoint(x: 0.76, y: 0.685), visibleHeight: MeadowBattleCanvasGeometry.slimeVisibleHeight,
+            canvas: canvasBounds)
+        slime.frame = slimeFrame
+
+        let heroFoot = CGPoint(x: canvasBounds.width * 0.30, y: canvasBounds.height * 0.69)
+        let slimeFoot = CGPoint(x: canvasBounds.width * 0.76, y: canvasBounds.height * 0.685)
+        heroShadow.frame = CGRect(x: heroFoot.x - heroFrame.width * 0.21,
+                                  y: heroFoot.y - max(2, canvasBounds.height * 0.006),
+                                  width: heroFrame.width * 0.42, height: max(4, canvasBounds.height * 0.012))
+        slimeShadow.frame = CGRect(x: slimeFoot.x - slimeFrame.width * 0.22,
+                                   y: slimeFoot.y - max(2, canvasBounds.height * 0.006),
+                                   width: slimeFrame.width * 0.44, height: max(4, canvasBounds.height * 0.012))
     }
 }

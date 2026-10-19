@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" width="256" height="256" viewBox="0 0 256 256" shape-rendering="crispEdges">
+  <title>Single pose test · editable semantic mask cores</title>
+  <desc>Eight mask cores partition the registered test pose into head, torso, near/far arms and hands, and near/far legs. The masks are a static export study; hidden anatomy remains incomplete.</desc>
+  <g id="part-body-leg-left-far" inkscape:groupmode="layer" inkscape:label="body.leg.left.far"><path fill="#fff" d="M 120,170 L 128,173 L 125,181 L 119,190 L 113,197 L 109,204 L 108,211 L 104,215 L 94,214 L 88,209 L 88,202 L 94,195 L 99,187 L 104,180 L 111,175 Z"/></g>
+  <g id="part-body-arm-left-far" inkscape:groupmode="layer" inkscape:label="body.arm.left.far"><path fill="#fff" d="M 104,136 L 111,136 L 117,141 L 115,148 L 111,155 L 108,163 L 103,170 L 98,175 L 93,173 L 91,169 L 95,162 L 98,155 L 99,147 Z"/></g>
+  <g id="part-body-hand-left-far" inkscape:groupmode="layer" inkscape:label="body.hand.left.far"><path fill="#fff" d="M 93,163 L 98,161 L 104,163 L 108,168 L 108,173 L 103,177 L 97,175 L 92,172 L 90,168 Z"/></g>
+  <g id="part-body-leg-right-near" inkscape:groupmode="layer" inkscape:label="body.leg.right.near"><path fill="#fff" d="M 121,171 L 130,169 L 139,173 L 147,180 L 151,188 L 151,197 L 154,204 L 159,210 L 159,214 L 139,214 L 134,211 L 133,202 L 131,194 L 126,188 L 121,182 Z"/></g>
+  <g id="part-body-torso" inkscape:groupmode="layer" inkscape:label="body.torso"><path fill="#fff" d="M 106,132 L 111,128 L 121,129 L 128,134 L 136,135 L 140,143 L 139,152 L 137,161 L 141,169 L 141,177 L 136,184 L 113,185 L 108,181 L 104,174 L 108,165 L 108,153 Z"/></g>
+  <g id="part-head-base" inkscape:groupmode="layer" inkscape:label="head.base"><path fill="#fff" d="M 121,83 L 134,84 L 145,88 L 153,95 L 157,104 L 157,114 L 155,123 L 150,131 L 142,136 L 131,138 L 118,138 L 107,134 L 100,128 L 96,119 L 95,108 L 97,98 L 103,90 L 111,85 Z"/></g>
+  <g id="part-body-arm-right-near" inkscape:groupmode="layer" inkscape:label="body.arm.right.near"><path fill="#fff" d="M 111,136 L 118,136 L 124,140 L 130,146 L 137,151 L 145,152 L 149,156 L 147,161 L 140,163 L 132,160 L 125,157 L 119,153 L 115,148 L 110,142 Z"/></g>
+  <g id="part-body-hand-right-near" inkscape:groupmode="layer" inkscape:label="body.hand.right.near"><path fill="#fff" d="M 143,152 L 149,150 L 155,152 L 160,157 L 160,163 L 156,167 L 150,168 L 145,165 L 142,160 Z"/></g>
+</svg>

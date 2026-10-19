@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" width="256" height="256" viewBox="0 0 256 256" shape-rendering="crispEdges">
+  <title>Pose test · localized hidden skin cleanup</title>
+  <desc>Fourteen flat skin pixels cover source-outline holes in the one-pixel movement diagnostic. They extend the existing torso and hip-root underlay; they are not complete hidden anatomy.</desc>
+  <g id="pose-underlay-patches" inkscape:groupmode="layer" inkscape:label="localized shoulder and hip skin patches" shape-rendering="crispEdges" fill="#fcbd8e">
+    <rect x="113" y="136" width="1" height="1"/>
+    <rect x="130" y="185" width="1" height="1"/>
+    <rect x="132" y="186" width="1" height="1"/>
+    <rect x="132" y="187" width="1" height="1"/>
+    <rect x="132" y="188" width="1" height="1"/>
+    <rect x="132" y="189" width="1" height="1"/>
+    <rect x="130" y="190" width="1" height="1"/>
+    <rect x="115" y="191" width="1" height="1"/>
+    <rect x="130" y="191" width="1" height="1"/>
+    <rect x="115" y="192" width="1" height="1"/>
+    <rect x="130" y="192" width="1" height="1"/>
+    <rect x="130" y="193" width="1" height="1"/>
+    <rect x="110" y="194" width="1" height="1"/>
+    <rect x="130" y="194" width="1" height="1"/>
+  </g>
+</svg>

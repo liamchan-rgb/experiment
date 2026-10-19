@@ -3,8 +3,8 @@
   "format": 3,
   "updated": "2026-10-19",
   "workflow": "Review one direction at a time from fixed cardinal and diagonal baselines. Modify and resubmit the same direction until explicit user artwork approval, then advance. Record provenance, feedback and accepted revisions for the future character template.",
-  "current": "p1-neutral-battle-side-right-idle-parts-v2",
-  "templateStatus": "independent heads approved; the v5 down idle sword pose is approved as one art study only; modular wardrobe/weapon production and the full character template remain incomplete; the heavyStrike + trainingSword standalone effect prototype remains awaiting user art review; battle-side right idle pose and hand direction r2 approved; localized shoulder/hip-root underbody candidate is awaiting review; complete anatomy, articulated movement and runtime integration remain incomplete",
+  "current": "p1-neutral-battle-side-right-walk-pose-test-v1",
+  "templateStatus": "independent heads approved; the v5 down idle sword pose is approved as one art study only; modular wardrobe/weapon production and the full character template remain incomplete; the heavyStrike + trainingSword standalone effect prototype remains awaiting user art review; battle-side right idle pose and hand direction r2 approved; localized shoulder/hip-root underbody remains incomplete; a right-side walking pose test is now the current single-frame review candidate; complete anatomy, articulated movement and runtime integration remain incomplete",
   "items": [
     {
       "id": "01-down-idle",
@@ -1696,6 +1696,11 @@
       "previousCurrent": "p1-neutral-battle-side-right-idle-parts-v1",
       "newCurrent": "p1-neutral-battle-side-right-idle-parts-v2",
       "reason": "Continue to the hidden-anatomy step: add a registered partial underlay while preserving v1 and the approved r2 pose"
+    },
+    {
+      "previousCurrent": "p1-neutral-battle-side-right-idle-parts-v2",
+      "newCurrent": "p1-neutral-battle-side-right-walk-pose-test-v1",
+      "reason": "Continue the user-authorized next step with a first right-facing side-walk pose; test static semantic layers and localized joint-root coverage without claiming an animation."
     }
   ],
   "battleNeutralBodyReview": {
@@ -1796,5 +1801,63 @@
       ]
     },
     "next": "Use the reviewed shoulder/hip-root candidate as a base for separate clothing layers, then validate any posed motion with authored frame redraws rather than rigidly translating complete limbs."
+  },
+  "battleNeutralWalkPoseReview": {
+    "id": "p1-neutral-battle-side-right-walk-pose-test-v1",
+    "status": "single-pose-candidate-awaiting-user-art-review",
+    "source": "Art/Templates/P1-Neutral/battle-side/right-walk-pose-test-v1",
+    "frame": "Art/Templates/P1-Neutral/battle-side/right-walk-pose-test-v1/frames/01.png",
+    "reviewImage": "Art/Templates/P1-Neutral/battle-side/right-walk-pose-test-v1/review.png",
+    "edgeDetailImage": "Art/Templates/P1-Neutral/battle-side/right-walk-pose-test-v1/details.png",
+    "partsReviewImage": "Art/Templates/P1-Neutral/battle-side/right-walk-pose-test-v1/parts-review.png",
+    "movementTestImage": "Art/Templates/P1-Neutral/battle-side/right-walk-pose-test-v1/movement-test.png",
+    "editableMaster": "Art/Templates/P1-Neutral/battle-side/right-walk-pose-test-v1/authoring.svg",
+    "provenance": [
+      "Art/Templates/P1-Neutral/battle-side/right-walk-pose-test-v1/source/generation.json",
+      "Art/Templates/P1-Neutral/battle-side/right-walk-pose-test-v1/source/prompt.txt"
+    ],
+    "registration": "256x256 shared canvas aligned to approved right idle r2; sole line y=214",
+    "scope": "One right-facing small-step pose candidate to inspect silhouette and test semantic parts plus localized joint-root coverage; not a full animation or production rig.",
+    "artApproval": null,
+    "staticSemanticRecomposition": {
+      "status": "passed",
+      "partCount": 8,
+      "sourceAlphaPixels": 5212,
+      "rgbaDifferencePixels": 0,
+      "validation": "Art/Templates/P1-Neutral/battle-side/right-walk-pose-test-v1/layers-validation.json"
+    },
+    "localizedRootCoverageDiagnostic": {
+      "status": "passed-for-diagnostic-only",
+      "underlayPatchPixels": 14,
+      "translationsPx": {
+        "farArmAndHand": [
+          -1,
+          0
+        ],
+        "nearArmAndHand": [
+          1,
+          0
+        ],
+        "farLeg": [
+          -1,
+          0
+        ],
+        "nearLeg": [
+          1,
+          0
+        ]
+      },
+      "uncoveredJointWindowPixels": {
+        "nearArm": 0,
+        "farArm": 0,
+        "nearLeg": 0,
+        "farLeg": 0
+      },
+      "validation": "Art/Templates/P1-Neutral/battle-side/right-walk-pose-test-v1/movement-validation.json"
+    },
+    "fullHiddenAnatomyComplete": false,
+    "animationDelivered": false,
+    "runtimeIntegrated": false,
+    "next": "Review the candidate silhouette and layer assignment. If accepted, author actual articulated pose redraws with complete hidden anatomy and test seams across frames before building the walk animation."
   }
 }

@@ -402,6 +402,56 @@ final class TrailTests: XCTestCase {
         }
     }
 
+    func testMeadowBattleUsesRegisteredCampLayersAndOneVisibleSlime() throws {
+        for name in ["MeadowCampFarForest", "MeadowCampGround", "MeadowCampMidground", "MeadowCampForeground"] {
+            let image = try XCTUnwrap(UIImage(named: name), "Missing approved Meadow battle layer: \(name)")
+            XCTAssertEqual(image.cgImage?.width, 1309)
+            XCTAssertEqual(image.cgImage?.height, 1201)
+        }
+        XCTAssertNotNil(UIImage(named: "MeadowBattleSlime"))
+
+        let view = MeadowBattleLandscapeView(frame: CGRect(x: 0, y: 0, width: 900, height: 500))
+        view.layoutIfNeeded()
+        XCTAssertEqual(view.sceneLayerOrder, MeadowBattleCanvasGeometry.sceneLayerOrder)
+
+        let expectedCanvas = CGRect(x: 177.518734388, y: 0, width: 544.962531224, height: 500)
+        XCTAssertEqual(view.sceneCanvasFrame.minX, expectedCanvas.minX, accuracy: 0.001)
+        XCTAssertEqual(view.sceneCanvasFrame.minY, expectedCanvas.minY, accuracy: 0.001)
+        XCTAssertEqual(view.sceneCanvasFrame.width, expectedCanvas.width, accuracy: 0.001)
+        XCTAssertEqual(view.sceneCanvasFrame.height, expectedCanvas.height, accuracy: 0.001)
+        XCTAssertTrue(view.sceneLayerFrames.allSatisfy { $0 == CGRect(origin: .zero, size: expectedCanvas.size) },
+                      "Every environment plate must share the unchanged full-canvas registration")
+        let heroFoot = CGPoint(x: view.heroViewFrame.minX + 128.5 / 256.0 * view.heroViewFrame.width,
+                               y: view.heroViewFrame.minY + 224.0 / 256.0 * view.heroViewFrame.height)
+        let slimeFoot = CGPoint(x: view.slimeViewFrame.minX + 500.0 / 1024.0 * view.slimeViewFrame.width,
+                                y: view.slimeViewFrame.minY + 855.0 / 1024.0 * view.slimeViewFrame.height)
+        XCTAssertEqual(heroFoot.x, expectedCanvas.width * 0.30, accuracy: 0.01)
+        XCTAssertEqual(heroFoot.y, expectedCanvas.height * 0.69, accuracy: 0.01)
+        XCTAssertEqual(slimeFoot.x, expectedCanvas.width * 0.76, accuracy: 0.01)
+        XCTAssertEqual(slimeFoot.y, expectedCanvas.height * 0.685, accuracy: 0.01)
+        XCTAssertEqual(view.slimeViewFrame.height * (648.0 / 1024.0),
+                       expectedCanvas.height * MeadowBattleCanvasGeometry.slimeVisibleHeight, accuracy: 0.01,
+                       "The enemy needs enough visual weight to read clearly in the battle pane")
+        XCTAssertTrue(view.slimeFacesLeft, "The enemy should face the approaching right-facing traveller")
+
+        let subviewOrder = view.sceneCanvasSubviewOrder
+        XCTAssertEqual(subviewOrder, [
+            "MeadowCampFarForest", "MeadowCampGround", "MeadowCampMidground",
+            "meadowBattleHeroShadow", "meadowBattleSlimeShadow", "meadowBattleHero",
+            "meadowBattleSlime", "MeadowCampForeground"
+        ], "Scene layers, actor shadows, units and foreground must retain their fixed composite order")
+        let heroIndex = try XCTUnwrap(subviewOrder.firstIndex(of: "meadowBattleHero"))
+        let slimeIndex = try XCTUnwrap(subviewOrder.firstIndex(of: "meadowBattleSlime"))
+        let foregroundIndex = try XCTUnwrap(subviewOrder.firstIndex(of: "MeadowCampForeground"))
+        XCTAssertLessThan(subviewOrder.firstIndex(of: "MeadowCampMidground")!, heroIndex)
+        XCTAssertLessThan(heroIndex, foregroundIndex)
+        XCTAssertLessThan(slimeIndex, foregroundIndex)
+        XCTAssertEqual(subviewOrder.filter { $0 == "meadowBattleSlime" }.count, 1,
+                       "The approved scene sample should show one distinct enemy")
+        XCTAssertTrue(subviewOrder.contains("meadowBattleHeroShadow"))
+        XCTAssertTrue(subviewOrder.contains("meadowBattleSlimeShadow"))
+    }
+
     func testOnlyTheTowerGetsAnAdditionalBanner() throws {
         let world = LivingWorld(definition: SceneDefinition.load())
         let camps = world.children.filter { $0.name == "CampTent" }

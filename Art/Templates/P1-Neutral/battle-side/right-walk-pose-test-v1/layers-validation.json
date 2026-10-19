@@ -1,0 +1,27 @@
+{
+  "schemaVersion": "1.0.0",
+  "status": "static-semantic-recomposition-passed",
+  "sourceFrame": "frames/01.png",
+  "assembledFrame": "assembled/01.png",
+  "canvasPx": [256, 256],
+  "partCount": 8,
+  "underlay": "parts/body.skin.underlay.png",
+  "localizedUnderlayPatchPixels": 14,
+  "sourcePixelCount": 5212,
+  "sumOfExclusivePartPixels": 5212,
+  "unionPartPixels": 5212,
+  "unassignedSourcePixelsBeforeRootFallback": 0,
+  "rgbaReconstructionDifferencePixels": 0,
+  "ownership": "Exclusive source-pixel assignment from editable authored cores; nearest expanded core through 12 px, limb-aware tie order.",
+  "checks": {
+    "allParts256x256": true,
+    "sourcePixelsPartitionedOnce": true,
+    "semanticCompositeMatchesSourceExactly": true,
+    "hiddenAnatomyMovementTested": false,
+    "poseApproved": false
+  },
+  "limitations": [
+    "Static recomposition confirms layer coverage only; it does not validate movement seams or complete hidden anatomy.",
+    "The pose itself remains a single generated art candidate and is not production-approved."
+  ]
+}

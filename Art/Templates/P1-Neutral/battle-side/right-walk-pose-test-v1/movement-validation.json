@@ -1,0 +1,25 @@
+{
+  "schemaVersion": "1.0.0",
+  "status": "single-pixel-root-nudge-diagnostic",
+  "pose": "frames/01.png",
+  "underlay": "parts/body.skin.underlay.png",
+  "translationsPx": {
+    "farArmAndHand": [-1, 0],
+    "nearArmAndHand": [1, 0],
+    "farLeg": [-1, 0],
+    "nearLeg": [1, 0]
+  },
+  "jointWindowUncoveredPixels": {
+    "nearArm": 0,
+    "farArm": 0,
+    "nearLeg": 0,
+    "farLeg": 0
+  },
+  "connectedSilhouetteComponents": 1,
+  "checks": {
+    "allFourJointWindowsCovered": true,
+    "nudgeIsARealAnimationFrame": false,
+    "underbodyIsComplete": false
+  },
+  "limitation": "A one-pixel rigid root nudge checks only local coverage; it is not a natural pose or animation approval."
+}

@@ -1,0 +1,20 @@
+{
+  "status": "single-frame-concept-candidate",
+  "referencePose": "../../right-idle-r2/00.png",
+  "poseGuide": "pose-guide.png",
+  "rawGeneratedOutput": "generated-raw.png",
+  "prompt": "prompt.txt",
+  "processing": {
+    "alphaThreshold": "25%",
+    "resampling": "nearest-neighbor",
+    "registeredCharacterBoundsXYWH": [87, 84, 72, 131],
+    "paletteLimit": 24,
+    "canvasPx": [256, 256],
+    "soleLineCanvasY": 214
+  },
+  "limits": [
+    "Head and torso are close visual references, not byte-preserved source pixels.",
+    "Semantic frame layers are a static split; their coverage does not validate hidden anatomy.",
+    "A one-pixel rigid nudge does not establish full animation or outfit-overlap quality."
+  ]
+}

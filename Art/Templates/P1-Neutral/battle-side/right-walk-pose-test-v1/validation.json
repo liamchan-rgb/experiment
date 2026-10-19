@@ -1,0 +1,28 @@
+{
+  "schemaVersion": "1.0.0",
+  "status": "single-pose-edge-check-passed-awaiting-art-review",
+  "frame": "frames/01.png",
+  "canvasPx": [256, 256],
+  "registeredSource": "../right-idle-r2/00.png",
+  "alphaThresholdForGeneratorFringe": "25%",
+  "resampling": "nearest-neighbor",
+  "paletteColors": 22,
+  "alphaPixels": 5212,
+  "alphaBoundsXYWH": [72,131,87,84],
+  "connectedSilhouetteComponents": 1,
+  "soleLineCanvasY": 214,
+  "checks": {
+    "frameCanvasIs256x256": true,
+    "silhouetteIsOneConnectedComponent": true,
+    "approvedR2SourceModified": false,
+    "semanticPartsRecomposed": true,
+    "localizedJointRootNudgePassed": true,
+    "fullHiddenAnatomyValidated": false,
+    "animationApproved": false
+  },
+  "limitations": [
+    "One complete pose image only; static semantic recomposition does not validate joint movement.",
+    "The pose checks the visible silhouette and hand/foot edges, not hidden joint anatomy or outfit overlap during motion.",
+    "No animation loop or runtime integration is included."
+  ]
+}
