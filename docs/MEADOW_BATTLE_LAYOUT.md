@@ -2,7 +2,7 @@
 
 用户已认可 build31 的整体布局，认可范围不包括新场景、人物、敌方或完整动画。下一项[营地旁林地一人对一怪静态样板](../Art/Scenes/MeadowBattle/camp-clearing/v1/README.md)已获整体观感与构图认可，尚未替换本页所述的应用内候选人物与目标占位。
 
-按该样板制作的[独立环境四层 v1](../Art/Scenes/MeadowBattle/camp-clearing/layers-v1/README.md)已保存四张全画布图片、透明区域、预留站位、可编辑原稿和实际重组图，重组稿待美术审核。原生应用接入尚未开始，不能将环境图层交付视为 build31 中的画面已经更新。
+按该样板制作的[独立环境四层 v1](../Art/Scenes/MeadowBattle/camp-clearing/layers-v1/README.md)已保存四张全画布图片、透明区域、预留站位、可编辑原稿和实际重组图，重组稿已获用户“没问题”认可，范围为固定镜头环境画面。原生应用接入尚未开始，不能将环境图层交付视为 build31 中的画面已经更新。
 
 ## 布局依据
 

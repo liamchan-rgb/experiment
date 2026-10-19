@@ -1,0 +1,37 @@
+{
+  "status": "approved-fixed-camera-environment-layer-recomposition",
+  "sourceUserMessage": "没问题",
+  "reviewArtwork": "review.png",
+  "reviewArtworkSHA256": "1f486f48a39e3f5ecab1727836425578a4a8ab6b38ee8ff9a06c1b04eb4c06cd",
+  "layers": [
+    {
+      "id": "01-far-forest",
+      "path": "layers/01-far-forest.png",
+      "sha256": "291fd390cdc894004b8c93370a486069d10527f3cca6bd523367dc5784c11e52"
+    },
+    {
+      "id": "02-ground",
+      "path": "layers/02-ground.png",
+      "sha256": "f76f1ad3f83f5d6b8b8234f5708a2dc2c90bd42dd0b86de0847ac3176c4b3879"
+    },
+    {
+      "id": "03-midground",
+      "path": "layers/03-midground.png",
+      "sha256": "7c46ac01aeb05956ed3ea9390c0fc07ed2951c551ce019c0523bb455b9f93d34"
+    },
+    {
+      "id": "04-foreground",
+      "path": "layers/04-foreground.png",
+      "sha256": "0def1d45ba05d6b316ef901071656d0ceb4310c35027d5c9ed1a68ffcd0b6050"
+    }
+  ],
+  "approvedScope": [
+    "独立四层环境的实际重组画面",
+    "固定镜头下的构图、森林层次、营地环境和遮挡关系"
+  ],
+  "doesNotApprove": [
+    "未制作的独立人物、换装部件、武器及史莱姆",
+    "动画、视差移动、动态重打光及七人多怪站位",
+    "原生应用接入、新IPA或实体iPad运行效果"
+  ]
+}

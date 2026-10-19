@@ -1,8 +1,12 @@
 {
   "schemaVersion": "1.0.0",
   "id": "meadow-battle-camp-clearing-layers-v1",
-  "status": "awaiting-recomposed-scene-art-review",
-  "artApproval": null,
+  "status": "approved-fixed-camera-environment-layer-recomposition",
+  "artApproval": {
+    "record": "approval.json",
+    "sourceUserMessage": "没问题",
+    "scope": "Actual four-layer fixed-camera environment recomposition only"
+  },
   "canvasPx": [
     1309,
     1201
