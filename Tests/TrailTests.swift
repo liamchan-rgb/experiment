@@ -539,6 +539,42 @@ final class TrailTests: XCTestCase {
         XCTAssertGreaterThan(minimumRatio, 0.15, "Boot exchange must not invert or collapse the connecting mesh")
     }
 
+    func testBattlePreviewCropsAroundTravellerAndKeepsTerrainAcrossViewport() throws {
+        let fullSize = CGSize(width: 1366, height: 1024)
+        let scene = GameScene(size: fullSize)
+        scene.activateForMetalRenderer()
+        scene.resizeMapViewport(to: fullSize, referenceSize: fullSize)
+        scene.setZoom(1.25)
+        scene.panBy(CGPoint(x: -85, y: 40))
+        let original = try XCTUnwrap(scene.metalFrame(viewSize: fullSize))
+        for reference in [fullSize, CGSize(width: 1190, height: 892)] {
+            scene.beginBattlePreviewCamera()
+            let pane = CGSize(width: reference.width / 2, height: reference.height)
+            scene.resizeMapViewport(to: pane, referenceSize: reference)
+            let frame = try XCTUnwrap(scene.metalFrame(viewSize: pane))
+            XCTAssertEqual(frame.camera.xAxis.dx,
+                           min(reference.width / 1280, reference.height / 720) * 1.25, accuracy: 0.001)
+            let traveller = frame.camera.project(frame.heroes[0].foot)
+            XCTAssertTrue(CGRect(origin: .zero, size: pane).insetBy(dx: 80, dy: 80).contains(traveller))
+            // Panning into any world edge must still leave terrain across the viewport.
+            for translation in [CGPoint(x: -10000, y: -10000), CGPoint(x: 20000, y: 20000)] {
+                scene.panBy(translation)
+                let camera = try XCTUnwrap(scene.metalFrame(viewSize: pane)).camera
+                let topLeft = camera.project(LivingWorld.bounds.origin)
+                let bottomRight = camera.project(CGPoint(x: LivingWorld.bounds.maxX, y: LivingWorld.bounds.maxY))
+                XCTAssertLessThanOrEqual(topLeft.x, 0.01)
+                XCTAssertLessThanOrEqual(topLeft.y, 0.01)
+                XCTAssertGreaterThanOrEqual(bottomRight.x, pane.width - 0.01)
+                XCTAssertGreaterThanOrEqual(bottomRight.y, pane.height - 0.01)
+            }
+            scene.resizeMapViewport(to: fullSize, referenceSize: fullSize)
+            scene.endBattlePreviewCamera()
+            let restored = try XCTUnwrap(scene.metalFrame(viewSize: fullSize))
+            XCTAssertEqual(restored.camera, original.camera)
+            XCTAssertEqual(restored.heroes.map(\.foot), original.heroes.map(\.foot))
+        }
+    }
+
     func testGaitTestReturnsToTheSameMapCameraAndActorPositions() throws {
         let scene = GameScene(size: CGSize(width: 1366, height: 1024))
         scene.activateForMetalRenderer()

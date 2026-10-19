@@ -15,6 +15,7 @@ final class JourneyUITests: XCTestCase {
 
         app.buttons["zoomButton"].tap()
         XCTAssertEqual(app.buttons["zoomButton"].value as? String, "125%")
+        let originalCamera = diagnostics(app)["camera"] as! [String: Double]
         app.buttons["openBattlePreview"].tap()
 
         let battlefield = app.otherElements["battleLandscape"]
@@ -22,11 +23,20 @@ final class JourneyUITests: XCTestCase {
         XCTAssertLessThan(map.frame.width, originalWidth * 0.75)
         XCTAssertGreaterThan(battlefield.frame.width, battlefield.frame.height)
         XCTAssertFalse(app.buttons["openGaitTest"].isHittable)
+        XCTAssertFalse(app.buttons["openBattlePreview"].isHittable)
+        XCTAssertEqual(app.buttons.matching(NSPredicate(format: "label == %@", "返回地图")).count, 1)
         let previewState = diagnostics(app)
-        XCTAssertEqual(previewState["zoom"] as? Double ?? -1, 1, accuracy: 0.001,
-                       "The map pane should show its full reference composition")
+        XCTAssertEqual(previewState["zoom"] as? Double ?? -1, 1.25, accuracy: 0.001)
+        let previewCamera = previewState["camera"] as! [String: Double]
+        XCTAssertEqual(previewCamera["scale"]!, originalCamera["scale"]!, accuracy: 0.001,
+                       "Splitting the viewport must preserve the map's object sizes")
+        let selected = previewState["selected"] as! Int
+        let hero = (previewState["heroTargets"] as! [[String: Double]])[selected]
+        XCTAssertTrue((0.2...0.8).contains(hero["x"]!))
+        XCTAssertTrue((0.2...0.8).contains(hero["y"]!))
         XCTAssertGreaterThan(previewState["independentProps"] as? Int ?? 0, 0)
         assertVisibleGround(map, name: "meadow-map-left-of-battle-scene")
+        assertMapPaneHasTexturedTopAndBottom(map)
         capture("meadow-map-left-battle-scene-right")
 
         app.buttons["closeBattlePreview"].tap()
@@ -35,6 +45,10 @@ final class JourneyUITests: XCTestCase {
         XCTAssertEqual(app.buttons["zoomButton"].value as? String, "125%")
         XCTAssertEqual(diagnostics(app)["zoom"] as? Double ?? -1, 1.25, accuracy: 0.001,
                        "Closing the preview should restore the user's previous map zoom")
+        let restoredCamera = diagnostics(app)["camera"] as! [String: Double]
+        for key in ["scale", "centerX", "centerY"] {
+            XCTAssertEqual(restoredCamera[key]!, originalCamera[key]!, accuracy: 0.001)
+        }
         assertVisibleGround(map, name: "meadow-map-after-battle-preview")
     }
 
@@ -312,6 +326,43 @@ final class JourneyUITests: XCTestCase {
         XCTAssertEqual(resumed["mode"] as? String, "destination")
         XCTAssertEqual(resumed["goal"] as! [String: Double], destination)
         capture("05-ordered-journey")
+    }
+
+    /// A green clear color with screen-space sunbeams passed the old brightness
+    /// check. Require actual terrain detail in both formerly empty edge strips.
+    private func assertMapPaneHasTexturedTopAndBottom(_ map: XCUIElement) {
+        let source = map.screenshot().image
+        let width = 384
+        let height = max(1, Int(CGFloat(width) * map.frame.height / map.frame.width))
+        let target = CGSize(width: CGFloat(width), height: CGFloat(height))
+        let format = UIGraphicsImageRendererFormat(); format.scale = 1
+        // UIImage.draw respects screenshot orientation; raw cgImage does not.
+        let normalized = UIGraphicsImageRenderer(size: target, format: format).image { _ in
+            source.draw(in: CGRect(origin: .zero, size: target))
+        }
+        guard let image = normalized.cgImage else { return XCTFail("Map screenshot unavailable") }
+        var rgba = [UInt8](repeating: 0, count: width * height * 4)
+        let rendered = rgba.withUnsafeMutableBytes { raw -> Bool in
+            guard let context = CGContext(data: raw.baseAddress, width: width, height: height,
+                bitsPerComponent: 8, bytesPerRow: width * 4, space: CGColorSpaceCreateDeviceRGB(),
+                bitmapInfo: CGBitmapInfo.byteOrder32Big.rawValue | CGImageAlphaInfo.premultipliedLast.rawValue)
+            else { return false }
+            context.draw(image, in: CGRect(origin: .zero, size: target)); return true
+        }
+        XCTAssertTrue(rendered)
+        for start in [0.08, 0.84] {
+            var textured = 0, samples = 0
+            for y in Int(Double(height) * start)..<Int(Double(height) * (start + 0.08)) {
+                for x in (width / 10)..<(width * 9 / 10 - 1) {
+                    let offset = (y * width + x) * 4
+                    let delta = (0..<3).map { abs(Int(rgba[offset + $0]) - Int(rgba[offset + 4 + $0])) }.max()!
+                    if delta > 5 { textured += 1 }
+                    samples += 1
+                }
+            }
+            XCTAssertGreaterThan(Double(textured) / Double(max(1, samples)), 0.20,
+                                 "Terrain must fill the map pane, including edge strip at \(start)")
+        }
     }
 
     private func assertVisibleGround(_ map: XCUIElement, name: String) {

@@ -26,6 +26,7 @@ final class GameScene: SKScene {
     private var measuredFPS: Double = 0
     private var metricSamples: [[String: Any]] = []
     private var baseScale: CGFloat = 1
+    private var referenceViewportSize: CGSize?
     private var cameraCenter = CGPoint(x: 640, y: 360)
     private var demoPhase = 0
     private(set) var zoom: CGFloat = 1
@@ -183,6 +184,16 @@ final class GameScene: SKScene {
 
     override func didChangeSize(_ oldSize: CGSize) { layoutWorld() }
 
+    /// Keep map object sizes tied to the app canvas when its viewport narrows.
+    /// The renderer continues to capture this scene's actual transform for terrain and shadows.
+    func resizeMapViewport(to viewportSize: CGSize, referenceSize: CGSize) {
+        guard size != viewportSize || referenceViewportSize != referenceSize else { return }
+        referenceViewportSize = referenceSize
+        if size != viewportSize { size = viewportSize }
+        else { layoutWorld() }
+        publishDiagnostics()
+    }
+
     private func layoutWorld() {
         guard world != nil, size.width > 0, size.height > 0 else { return }
         if gaitTest != nil {
@@ -192,12 +203,18 @@ final class GameScene: SKScene {
             world.attachSunlight(to: self)
             return
         }
-        // Preserve the entire reference composition; independent terrain extends beyond it.
-        baseScale = min(size.width / 1280, size.height / 720)
+        let bounds = LivingWorld.bounds
+        if battlePreviewCamera != nil {
+            // Crop a useful map window instead of shrinking the whole map into it.
+            let reference = referenceViewportSize ?? size
+            baseScale = max(min(reference.width / 1280, reference.height / 720),
+                            max(size.width / bounds.width, size.height / bounds.height))
+        } else {
+            baseScale = min(size.width / 1280, size.height / 720)
+        }
         let scale = baseScale * zoom
         let halfWidth = size.width / scale / 2
         let halfHeight = size.height / scale / 2
-        let bounds = LivingWorld.bounds
         func clamp(_ value: CGFloat, low: CGFloat, high: CGFloat, fallback: CGFloat) -> CGFloat {
             low <= high ? min(high, max(low, value)) : fallback
         }
@@ -224,13 +241,12 @@ final class GameScene: SKScene {
         publishDiagnostics()
     }
 
-    /// Temporarily show the full Meadow Journey map in the left preview pane.
-    /// The original zoom and camera center are restored when that pane closes.
+    /// Focus the selected traveller without changing the map's object scale.
+    /// The original zoom and camera center are restored when the pane closes.
     func beginBattlePreviewCamera() {
         guard world != nil, gaitTest == nil, battlePreviewCamera == nil else { return }
         battlePreviewCamera = (cameraCenter, zoom)
-        cameraCenter = CGPoint(x: 640, y: 360)
-        zoom = 1
+        cameraCenter = simulation.point(for: simulation.selected)
         layoutWorld()
         publishDiagnostics()
     }
@@ -541,6 +557,8 @@ final class GameScene: SKScene {
             "shadowMapSize": shadowMapSize, "gpuFallbackCount": gpuFallbackCount, "groundDrawableScale": groundDrawableScale,
             "sunDirection": ["x": Double(world.effects.currentCast.dx), "y": Double(world.effects.currentCast.dy)],
             "environmentTime": environmentTime, "zoom": Double(zoom),
+            "camera": ["scale": Double(baseScale * zoom),
+                       "centerX": Double(cameraCenter.x), "centerY": Double(cameraCenter.y)],
             "selected": simulation.selected, "isPlaying": isRunning,
             "mode": gaitTest != nil ? "gaitTest" : (simulation.mode == .patrol ? "patrol" : "destination"),
             "gaitFacing": gaitTest?.facing ?? -1, "gaitPhase": Double(gaitTest?.phase ?? 0),

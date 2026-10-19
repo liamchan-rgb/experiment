@@ -204,7 +204,7 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
         let mapFrame = CGRect(x: 0, y: 0, width: mapWidth, height: view.bounds.height)
         gameView.frame = mapFrame
         groundView?.frame = mapFrame
-        if scene.size != mapFrame.size { scene.size = mapFrame.size }
+        scene.resizeMapViewport(to: mapFrame.size, referenceSize: view.bounds.size)
         battlePreviewView?.frame = battlePreviewActive
             ? CGRect(x: mapWidth, y: 0, width: view.bounds.width - mapWidth, height: view.bounds.height)
             : .zero
@@ -501,8 +501,7 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
         if active { scene.beginBattlePreviewCamera() }
         battlePreviewActive = active
         battlePreviewView?.isHidden = !active
-        battlePreviewButton.configuration?.title = active ? "返回地图" : "战斗预览"
-        battlePreviewButton.accessibilityLabel = active ? "关闭战斗场景预览，返回地图" : "打开 Meadow Journey 林地战斗场景预览"
+        battlePreviewButton.isHidden = active
         shadowLabButton.isHidden = active
         gaitTestButton.isHidden = active
         for control in [titleButton, playButton, resetButton, zoomButton] { control.isHidden = active }
@@ -522,7 +521,7 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
         let active = scene.gaitTest != nil
         gaitPanel.isHidden = !active
         gaitTestButton.configuration?.title = active ? "返回地图" : "步态测试"
-        battlePreviewButton.isHidden = active
+        battlePreviewButton.isHidden = active || battlePreviewActive
         let mapControls: [UIView] = [shadowLabButton, playButton, resetButton, zoomButton]
         for control in mapControls { control.isHidden = active }
         if let test = scene.gaitTest {

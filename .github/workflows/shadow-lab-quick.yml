@@ -145,6 +145,8 @@ jobs:
           set -euo pipefail
           if [[ '${{ inputs.preview_only }}' == 'true' ]]; then
             focused_tests=(
+              -only-testing:MeadowJourneyTests/TrailTests/testBattlePreviewCropsAroundTravellerAndKeepsTerrainAcrossViewport
+              -only-testing:MeadowJourneyTests/TrailTests/testCapturedViewportKeepsGroundAndArtworkAlignedThroughZoomAndPan
               -only-testing:MeadowJourneyUITests/JourneyUITests/testLayeredP1ColorwayPreviewRunsBesideOriginalInTheMapScene
               -only-testing:MeadowJourneyUITests/JourneyUITests/testMeadowBattlePreviewKeepsReferenceMapBesideLandscapeScene
             )
@@ -202,13 +204,13 @@ jobs:
         run: |
           set -euo pipefail
           if [ -d build/MapReview.xcresult ]; then
-            mkdir -p build/preview-stills
+            mkdir -p build/preview-stills/layered build/preview-stills/meadow-battle
             xcrun xcresulttool export attachments --path build/MapReview.xcresult \
-              --output-path build/preview-stills \
+              --output-path build/preview-stills/layered \
               --test-id 'JourneyUITests/testLayeredP1ColorwayPreviewRunsBesideOriginalInTheMapScene()' \
               2>&1 | tee build/logs/layered-preview-export.log
             xcrun xcresulttool export attachments --path build/MapReview.xcresult \
-              --output-path build/preview-stills \
+              --output-path build/preview-stills/meadow-battle \
               --test-id 'JourneyUITests/testMeadowBattlePreviewKeepsReferenceMapBesideLandscapeScene()' \
               2>&1 | tee build/logs/meadow-battle-preview-export.log
           fi
