@@ -2,6 +2,42 @@ import XCTest
 import UIKit
 
 final class JourneyUITests: XCTestCase {
+    func testMeadowBattlePreviewKeepsReferenceMapBesideLandscapeScene() {
+        continueAfterFailure = false
+        XCUIDevice.shared.orientation = .landscapeLeft
+        let app = XCUIApplication()
+        app.launchArguments = ["-visualReview"]
+        app.launch()
+        let map = app.otherElements["meadowMap"]
+        XCTAssertTrue(map.waitForExistence(timeout: 120))
+        waitForReady(app, map: map)
+        let originalWidth = map.frame.width
+
+        app.buttons["zoomButton"].tap()
+        XCTAssertEqual(app.buttons["zoomButton"].value as? String, "125%")
+        app.buttons["openBattlePreview"].tap()
+
+        let battlefield = app.otherElements["battleLandscape"]
+        XCTAssertTrue(battlefield.waitForExistence(timeout: 15))
+        XCTAssertLessThan(map.frame.width, originalWidth * 0.75)
+        XCTAssertGreaterThan(battlefield.frame.width, battlefield.frame.height)
+        XCTAssertFalse(app.buttons["openGaitTest"].isHittable)
+        let previewState = diagnostics(app)
+        XCTAssertEqual(previewState["zoom"] as? Double ?? -1, 1, accuracy: 0.001,
+                       "The map pane should show its full reference composition")
+        XCTAssertGreaterThan(previewState["independentProps"] as? Int ?? 0, 0)
+        assertVisibleGround(map, name: "meadow-map-left-of-battle-scene")
+        capture("meadow-map-left-battle-scene-right")
+
+        app.buttons["closeBattlePreview"].tap()
+        XCTAssertTrue(app.buttons["zoomButton"].waitForExistence(timeout: 15))
+        XCTAssertEqual(map.frame.width, originalWidth, accuracy: 1)
+        XCTAssertEqual(app.buttons["zoomButton"].value as? String, "125%")
+        XCTAssertEqual(diagnostics(app)["zoom"] as? Double ?? -1, 1.25, accuracy: 0.001,
+                       "Closing the preview should restore the user's previous map zoom")
+        assertVisibleGround(map, name: "meadow-map-after-battle-preview")
+    }
+
     func testActualMapGaitControlsCoverAllDirectionsAndEveryFrame() {
         continueAfterFailure = false
         XCUIDevice.shared.orientation = .landscapeLeft

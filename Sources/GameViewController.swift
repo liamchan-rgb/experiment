@@ -35,6 +35,10 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
     private let zoomButton = ParchmentButton(symbol: .zoom)
     private let shadowLabButton = UIButton(type: .system)
     private let gaitTestButton = UIButton(type: .system)
+    private let battlePreviewButton = UIButton(type: .system)
+    private var battlePreviewView: MeadowBattlePreviewView?
+    private var battlePreviewActive = false
+    private var metricsHiddenBeforeBattlePreview = true
     private let gaitPanel = UIStackView()
     private let gaitStatusLabel = UILabel()
     private let gaitPauseButton = UIButton(type: .system)
@@ -103,6 +107,7 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
         shadowLabButton.addTarget(self, action: #selector(openShadowLab), for: .touchUpInside)
         view.addSubview(shadowLabButton)
         configureGaitControls()
+        configureBattlePreview()
         for label in [metricsLabel, discoveryLabel] {
             label.textColor = UIColor(red: 1, green: 0.94, blue: 0.75, alpha: 1)
             label.backgroundColor = UIColor(red: 0.17, green: 0.22, blue: 0.17, alpha: 0.82)
@@ -195,8 +200,14 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        gameView.frame = view.bounds
-        groundView?.frame = view.bounds
+        let mapWidth = battlePreviewActive ? view.bounds.width * 0.50 : view.bounds.width
+        let mapFrame = CGRect(x: 0, y: 0, width: mapWidth, height: view.bounds.height)
+        gameView.frame = mapFrame
+        groundView?.frame = mapFrame
+        if scene.size != mapFrame.size { scene.size = mapFrame.size }
+        battlePreviewView?.frame = battlePreviewActive
+            ? CGRect(x: mapWidth, y: 0, width: view.bounds.width - mapWidth, height: view.bounds.height)
+            : .zero
         loadingView.frame = view.bounds
         let inset = view.safeAreaInsets
         let top = max(inset.top, 6)
@@ -207,10 +218,12 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
         shadowLabButton.frame = CGRect(x: titleButton.frame.maxX + 8, y: top + 2, width: 96, height: button)
         gaitTestButton.frame = CGRect(x: (scene.gaitTest == nil ? shadowLabButton.frame.maxX : titleButton.frame.maxX) + 8,
                                       y: top + 2, width: 100, height: button)
-        let panelWidth = min(960, max(1, view.bounds.width - 32))
+        let battleX = battlePreviewActive ? titleButton.frame.maxX + 8 : gaitTestButton.frame.maxX + 8
+        battlePreviewButton.frame = CGRect(x: battleX, y: top + 2, width: 104, height: button)
+        let panelWidth = min(960, max(1, mapWidth - 32))
         gaitPanel.frame = CGRect(x: (view.bounds.width - panelWidth) / 2,
                                  y: view.bounds.height - max(inset.bottom, 12) - 194, width: panelWidth, height: 194)
-        let right = view.bounds.width - max(inset.right, 10) - 4
+        let right = mapWidth - max(inset.right, 10) - 4
         zoomButton.frame = CGRect(x: right - button, y: top + 2, width: button, height: button)
         resetButton.frame = zoomButton.frame.offsetBy(dx: -spacing, dy: 0)
         playButton.frame = resetButton.frame.offsetBy(dx: -spacing, dy: 0)
@@ -368,6 +381,7 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
         for button in [titleButton, playButton, resetButton, zoomButton] { button.isEnabled = enabled }
         shadowLabButton.isEnabled = enabled
         gaitTestButton.isEnabled = enabled
+        battlePreviewButton.isEnabled = enabled
         gaitPanel.isUserInteractionEnabled = enabled
     }
 
@@ -458,10 +472,57 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
         view.addSubview(gaitPanel)
     }
 
+    private func configureBattlePreview() {
+        var style = UIButton.Configuration.filled()
+        style.title = "战斗预览"
+        style.baseBackgroundColor = UIColor(red: 0.97, green: 0.91, blue: 0.70, alpha: 0.96)
+        style.baseForegroundColor = UIColor(red: 0.25, green: 0.28, blue: 0.14, alpha: 1)
+        style.contentInsets = NSDirectionalEdgeInsets(top: 6, leading: 6, bottom: 6, trailing: 6)
+        battlePreviewButton.configuration = style
+        battlePreviewButton.accessibilityIdentifier = "openBattlePreview"
+        battlePreviewButton.accessibilityLabel = "打开 Meadow Journey 林地战斗场景预览"
+        battlePreviewButton.addAction(UIAction { [weak self] _ in
+            guard let self else { return }
+            self.setBattlePreviewActive(!self.battlePreviewActive)
+        }, for: .touchUpInside)
+        view.addSubview(battlePreviewButton)
+
+        let preview = MeadowBattlePreviewView(frame: .zero)
+        preview.isHidden = true
+        preview.onClose = { [weak self] in self?.setBattlePreviewActive(false) }
+        view.addSubview(preview)
+        battlePreviewView = preview
+    }
+
+    private func setBattlePreviewActive(_ active: Bool) {
+        guard active != battlePreviewActive else { return }
+        guard scene.gaitTest == nil else { return }
+        if active { metricsHiddenBeforeBattlePreview = metricsLabel.isHidden }
+        if active { scene.beginBattlePreviewCamera() }
+        battlePreviewActive = active
+        battlePreviewView?.isHidden = !active
+        battlePreviewButton.configuration?.title = active ? "返回地图" : "战斗预览"
+        battlePreviewButton.accessibilityLabel = active ? "关闭战斗场景预览，返回地图" : "打开 Meadow Journey 林地战斗场景预览"
+        shadowLabButton.isHidden = active
+        gaitTestButton.isHidden = active
+        for control in [titleButton, playButton, resetButton, zoomButton] { control.isHidden = active }
+        metricsLabel.isHidden = active ? true : metricsHiddenBeforeBattlePreview
+        discoveryLabel.isHidden = active
+        if active { gameView.accessibilityLabel = "Meadow Journey 林间地图，显示在左侧；右侧为横向战斗场景预览" }
+        else { gameView.accessibilityLabel = "林间地图，已选择 P1" }
+        view.setNeedsLayout()
+        view.layoutIfNeeded()
+        if !active {
+            scene.endBattlePreviewCamera()
+            zoomButton.accessibilityValue = "\(Int(round(scene.zoom * 100)))%"
+        }
+    }
+
     private func refreshGaitControls() {
         let active = scene.gaitTest != nil
         gaitPanel.isHidden = !active
         gaitTestButton.configuration?.title = active ? "返回地图" : "步态测试"
+        battlePreviewButton.isHidden = active
         let mapControls: [UIView] = [shadowLabButton, playButton, resetButton, zoomButton]
         for control in mapControls { control.isHidden = active }
         if let test = scene.gaitTest {
@@ -523,7 +584,7 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
 
     @objc private func showHelp() {
         let help = UIAlertController(title: "安然 · 林间行旅",
-                                     message: "▶ 三位旅人沿土路往返；Ⅱ 暂停后保留目的地\n点选 P1 / P2 / P3，再点道路指定目的地\n点问号，让旅人抵达并探索\n↻ 恢复初始位置；＋ 放大\n双指缩放、拖动；长按安然显示运行指标\n步态测试：选择八个方向直线行走，可慢速、暂停和单步；走完一段会回到起点继续", preferredStyle: .alert)
+                                     message: "▶ 三位旅人沿土路往返；Ⅱ 暂停后保留目的地\n点选 P1 / P2 / P3，再点道路指定目的地\n点问号，让旅人抵达并探索\n↻ 恢复初始位置；＋ 放大\n双指缩放、拖动；长按安然显示运行指标\n战斗预览：地图留在左侧，右侧检查 Meadow Journey 林地横版场景\n步态测试：选择八个方向直线行走，可慢速、暂停和单步；走完一段会回到起点继续", preferredStyle: .alert)
         help.addAction(UIAlertAction(title: "出发", style: .default))
         help.addAction(UIAlertAction(title: "复制 GPU 诊断", style: .default) { _ in
             UIPasteboard.general.string = MeadowGPUDiagnostics.shared.json

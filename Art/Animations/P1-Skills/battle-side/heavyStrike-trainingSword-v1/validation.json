@@ -1,0 +1,36 @@
+{
+  "status": "passed-technical-source-check-only",
+  "checks": {
+    "rgbaPNG": true,
+    "dimensionsPx": [
+      1254,
+      1254
+    ],
+    "hasTransparency": true,
+    "alphaBoundsLTRB": [
+      21,
+      29,
+      1216,
+      1236
+    ],
+    "promptSHA256Matches": true,
+    "referenceHashesMatch": true,
+    "productionScaleValidated": false,
+    "artApproval": false
+  },
+  "imageSHA256": "92621973da4d352c625f20660bae5303aae25e68c4f557632535030330dd2e4a",
+  "references": [
+    {
+      "path": "Art/Templates/P1-Wardrobe/down/v5/00.png",
+      "sha256": "b1b0ee76c1f0402d2b1237e93e664b1b8456f3b5b8397cdc1251cf68dfae5923",
+      "matchesManifest": true
+    },
+    {
+      "path": "Art/Review/P1/directions/right/revisions/r1/strip.png",
+      "sha256": "048ba38d0b48277ef34bf77575e00a508cab3a6f254e48ac724aa5de1a1f8b61",
+      "matchesManifest": true
+    }
+  ],
+  "errors": [],
+  "notes": "This checks saved files and provenance links only; camera fit, grip, production registration and visual quality require human review."
+}

@@ -14,6 +14,7 @@ final class GameScene: SKScene {
     private(set) var gaitTest: GaitTest?
     private var gaitHiddenNodes: [(SKNode, Bool)] = []
     private var gaitMapCamera: (CGPoint, CGFloat)?
+    private var battlePreviewCamera: (CGPoint, CGFloat)?
     private var gaitSunWasHidden = false
     private var discoveryNodes: [SKNode] = []
     private var discovered = Set<Int>()
@@ -219,6 +220,26 @@ final class GameScene: SKScene {
         let scale = baseScale * zoom
         cameraCenter = CGPoint(x: previous.x - (anchor.x - size.width / 2) / scale,
                                y: -previous.y + (anchor.y - size.height / 2) / scale)
+        layoutWorld()
+        publishDiagnostics()
+    }
+
+    /// Temporarily show the full Meadow Journey map in the left preview pane.
+    /// The original zoom and camera center are restored when that pane closes.
+    func beginBattlePreviewCamera() {
+        guard world != nil, gaitTest == nil, battlePreviewCamera == nil else { return }
+        battlePreviewCamera = (cameraCenter, zoom)
+        cameraCenter = CGPoint(x: 640, y: 360)
+        zoom = 1
+        layoutWorld()
+        publishDiagnostics()
+    }
+
+    func endBattlePreviewCamera() {
+        guard let saved = battlePreviewCamera else { return }
+        cameraCenter = saved.0
+        zoom = saved.1
+        battlePreviewCamera = nil
         layoutWorld()
         publishDiagnostics()
     }

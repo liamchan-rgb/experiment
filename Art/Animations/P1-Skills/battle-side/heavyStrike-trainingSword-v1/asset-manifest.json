@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "p1-skill-heavyStrike-trainingSword-battle-side-v1",
+  "status": "single-side-view-contact-pose-candidate-awaiting-user-art-review",
+  "approvalStatus": "candidate-not-user-approved",
+  "direction": "battle-side-right",
+  "skillID": "heavyStrike",
+  "equipmentID": "trainingSword",
+  "effectID": "impact",
+  "view": "horizontal lateral profile facing screen-right",
+  "assetRole": "view-angle/contact-pose study only; not a runtime sprite or complete action",
+  "canvasPx": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "artwork": {
+    "path": "side-view-contact-candidate.png",
+    "sha256": "92621973da4d352c625f20660bae5303aae25e68c4f557632535030330dd2e4a",
+    "alphaBoundsLTRB": [
+      21,
+      29,
+      1216,
+      1236
+    ],
+    "sourceTool": "OpenAI image generation",
+    "generatedFromPrompt": "source/prompt.txt",
+    "originalGeneratedFile": "/workspace/generated_images/exec-0ca0ebc4-120e-4c09-93b0-66190caf1698.png",
+    "promptSHA256": "272751f6909065500b42baf0cac21f5fd0369e7861a370c0c35d2e9473925183"
+  },
+  "references": [
+    {
+      "path": "Art/Templates/P1-Wardrobe/down/v5/00.png",
+      "purpose": "character outfit and v5 single-pose identity reference",
+      "sha256": "b1b0ee76c1f0402d2b1237e93e664b1b8456f3b5b8397cdc1251cf68dfae5923"
+    },
+    {
+      "path": "Art/Review/P1/directions/right/revisions/r1/strip.png",
+      "purpose": "approved right-facing profile camera and silhouette baseline",
+      "sha256": "048ba38d0b48277ef34bf77575e00a508cab3a6f254e48ac724aa5de1a1f8b61"
+    }
+  ],
+  "limits": [
+    "single concept pose only; not animation or spatial battle composite",
+    "1254x1254 source is not a production 256x256 frame; scale, palette, pixel density and registration require art approval and fixed-template adaptation",
+    "does not imply the training sword or impact effect is approved for this view",
+    "does not replace or expand v5 approval for the down idle pose"
+  ],
+  "artApproval": null
+}
