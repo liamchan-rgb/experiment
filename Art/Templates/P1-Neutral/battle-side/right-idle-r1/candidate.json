@@ -1,0 +1,77 @@
+{
+  "id": "p1-neutral-battle-side-right-idle-r1",
+  "status": "awaiting-user-neutral-pose-art-review",
+  "artApproval": null,
+  "role": "Single neutral body pose study before body-part separation and wardrobe authoring",
+  "direction": "battle-side-right",
+  "clip": "idle",
+  "frame": 0,
+  "references": [
+    {
+      "path": "Art/Templates/P1-Neutral/down/walk-r2/frames/00.png",
+      "sha256": "a74c005b6b115928f953ccba588fb9712113d6eead7fc3222624fa116c54fc8d",
+      "role": "Approved common neutral body proportions and neutral skin/base-garment style"
+    },
+    {
+      "path": "Art/Scenes/MeadowBattle/camp-clearing/v1/review.png",
+      "sha256": "b12b900126b9e4b2f52985fbc4b5efef827b5c702eb130d11e93a68d9541685d",
+      "role": "Approved side battle camera, ready stance and scene scale reference; appearance not baked into body"
+    }
+  ],
+  "source": {
+    "path": "source/neutral-body.png",
+    "originalGeneratedFile": "/workspace/generated_images/exec-5eb167da-b996-4ccf-93d3-1b83d0615ae0.png",
+    "sha256": "0f3a5edcca1891d9b0685908e835c611e98be014e135a884595c4b98f1048dbf",
+    "canvasPx": [
+      1254,
+      1254
+    ],
+    "mode": "RGBA",
+    "originalBytesPreserved": true
+  },
+  "generation": {
+    "sourceTool": "OpenAI image generation",
+    "initialPrompt": "source/prompt.txt",
+    "armCorrectionPrompt": "source/arm-correction-prompt.txt",
+    "initialDraft": "drafts/near-arm-behind.png",
+    "draftRejectionReason": "Visible near/right arm swung backwards while far arm held forward; wrong occlusion for near-hand weapon"
+  },
+  "registration": "registration.json",
+  "renderedPose": "00.png",
+  "reviewImage": "review.png",
+  "partsDelivered": false,
+  "animationDelivered": false,
+  "runtimeIntegrated": false,
+  "limits": [
+    "Common base tank and safety shorts only; no outer clothing or boots",
+    "No hair, eyes or other facial features, sword or actor shadow",
+    "Head shape, pose, hand and anatomical registration require user review",
+    "No independent completed limb layers, hidden joint overlap, weapon fit or full modular combinations are claimed"
+  ],
+  "artifacts": {
+    "source/neutral-body.png": {
+      "sha256": "0f3a5edcca1891d9b0685908e835c611e98be014e135a884595c4b98f1048dbf",
+      "bytes": 268891
+    },
+    "source/prompt.txt": {
+      "sha256": "a6faf1e1f28021fd94ce8b28dd18f2fc6f7fc812f23edcc41a5a3d6f19524992",
+      "bytes": 4913
+    },
+    "source/arm-correction-prompt.txt": {
+      "sha256": "594d4c63d5bb1c6223cc195517bdc4605a43b217da0ea73ead677b90cf22f23e",
+      "bytes": 2529
+    },
+    "drafts/near-arm-behind.png": {
+      "sha256": "f2a5c9368b4b34987a330ab5fdd381a3aadbcc1086887557e22f112e66696975",
+      "bytes": 292417
+    },
+    "00.png": {
+      "sha256": "a0c8c07c2aabcfedb067faac2b53c6f4bf6180b655cc8230489a2f48f31ce6b5",
+      "bytes": 15373
+    },
+    "review.png": {
+      "sha256": "1cce94d128c3fc77bdf8c36e6bc1d938adc1c5e97072ccfac46e785929c3f396",
+      "bytes": 55499
+    }
+  }
+}

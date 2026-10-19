@@ -1,0 +1,63 @@
+{
+  "status": "single-neutral-pose-file-registration-and-browser-render-checked-awaiting-user-art-review",
+  "artApproval": null,
+  "checks": [
+    {
+      "name": "source-preserved",
+      "passed": true
+    },
+    {
+      "name": "approved-reference-hashes-unchanged",
+      "passed": true
+    },
+    {
+      "name": "registered-pose-canvas-and-alpha",
+      "passed": true,
+      "canvasPx": [
+        256,
+        256
+      ],
+      "mode": "RGBA",
+      "fullyTransparentFraction": 0.920074462890625,
+      "top40RowsMaxAlpha": 1,
+      "alphaNoisePolicy": "Original alpha=1 noise preserved, not interpreted as a visible outline or changed by thresholding",
+      "visibleBoundsAlphaAbove20": [
+        87,
+        84,
+        159,
+        215
+      ],
+      "boundsRole": "diagnostic only; not used to fit/crop image"
+    },
+    {
+      "name": "shared-sole-landmarks",
+      "passed": true,
+      "soleY": 214,
+      "automaticAlphaFit": false
+    },
+    {
+      "name": "browser-render",
+      "passed": true,
+      "reviewShows": "registered 00.png enlarged 4x with nearest sampling",
+      "scriptErrors": []
+    }
+  ],
+  "manualReview": {
+    "performed": true,
+    "scope": [
+      "Bald blank-faced neutral with common tank/shorts and complete bare feet",
+      "Near/right shoulder-elbow-wrist-front fist is continuous and in front of torso; far hand behind",
+      "Modest ready stance, both feet point right with no obvious sole gap"
+    ],
+    "pending": [
+      "User approval of head/body proportions and neutral pose",
+      "Actual weapon grip and guard occlusion once weapon exists",
+      "Hidden anatomy, limb separation and overlapping seams"
+    ]
+  },
+  "limits": [
+    "This is one flattened neutral study, not independent completed body layers",
+    "Empty authored SVG part groups are authoring placeholders, not delivered appearance resources",
+    "No animation, app code, new IPA or physical iPad test"
+  ]
+}
