@@ -1,6 +1,6 @@
 # P1 人物模板
 
-当前审核：[独立衣物与短剑 v1](P1-Wardrobe/down/v1/README.md)，一套衣物和一把独立武器，三发型×两五官×衣物／武器开关共24种搭配、216个姿势，只提供正常速度。[头部六种搭配](P1-Modular/down/v1/approval.json)及[向下中性步态](P1-Neutral/down/walk-r1/approval.json)已认可。本轮修正[公共底模第7帧分层归属](P1-Neutral/down/walk-r2/correction.json)，九张合成人体与已认可版本完全一致，全部新组合统一使用r2。
+当前审核：[向下衣物／持握v2](P1-Wardrobe/down/v2/README.md)，按“剑没有握持感”修共同闭拳与独立短柄。24种组合／216个姿势统一使用公共r3，其他63层身体、衣物、头部和原动作不变；三发型×两五官已认可，新握持美术仍待确认。
 
 规范依据：[可复用换装美术标准草案](../Standards/P1-Parts-v1/README.md)，先建立唯一中性人体、独立部件与通用挂载合同。原向下演示不满足该合同。
 

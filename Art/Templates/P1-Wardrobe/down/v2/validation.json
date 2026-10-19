@@ -1,0 +1,132 @@
+{
+  "passed": true,
+  "userFeedback": "\u5251\u6ca1\u6709\u63e1\u6301\u611f",
+  "artApproval": null,
+  "frozenFilesPreserved": 1161,
+  "engineAndContractChanged": [],
+  "motionChangedFields": [
+    "baseManifestSHA256"
+  ],
+  "commonBodyChangedLayers": [
+    "layers/00/body.hand.right.png",
+    "layers/01/body.hand.right.png",
+    "layers/02/body.hand.right.png",
+    "layers/03/body.hand.right.png",
+    "layers/04/body.hand.right.png",
+    "layers/05/body.hand.right.png",
+    "layers/06/body.hand.right.png",
+    "layers/07/body.hand.right.png",
+    "layers/08/body.hand.right.png"
+  ],
+  "otherBodyLayersByteExact": 63,
+  "sameCommonHandWhenEmptyAndArmed": true,
+  "outfitAndHeadLayersUnchanged": true,
+  "combinations": 24,
+  "poses": 216,
+  "sharedHandStrongAlphaComponents": 1,
+  "toolOutputsAndReferencesVerified": 2,
+  "editableORARecompositions": 10,
+  "svgXMLValid": 10,
+  "contactChecks": [
+    {
+      "frame": 0,
+      "grip": [
+        102,
+        170
+      ],
+      "handleCoveredByFingers": 1.0,
+      "guardToFingersPixelDistance": 0,
+      "wristOverlapRows": 5
+    },
+    {
+      "frame": 1,
+      "grip": [
+        100,
+        156
+      ],
+      "handleCoveredByFingers": 1.0,
+      "guardToFingersPixelDistance": 0,
+      "wristOverlapRows": 6
+    },
+    {
+      "frame": 2,
+      "grip": [
+        100,
+        153
+      ],
+      "handleCoveredByFingers": 1.0,
+      "guardToFingersPixelDistance": 0,
+      "wristOverlapRows": 6
+    },
+    {
+      "frame": 3,
+      "grip": [
+        101,
+        170
+      ],
+      "handleCoveredByFingers": 1.0,
+      "guardToFingersPixelDistance": 0,
+      "wristOverlapRows": 6
+    },
+    {
+      "frame": 4,
+      "grip": [
+        101,
+        168
+      ],
+      "handleCoveredByFingers": 1.0,
+      "guardToFingersPixelDistance": 0,
+      "wristOverlapRows": 4
+    },
+    {
+      "frame": 5,
+      "grip": [
+        101,
+        171
+      ],
+      "handleCoveredByFingers": 1.0,
+      "guardToFingersPixelDistance": 0,
+      "wristOverlapRows": 5
+    },
+    {
+      "frame": 6,
+      "grip": [
+        100,
+        166
+      ],
+      "handleCoveredByFingers": 1.0,
+      "guardToFingersPixelDistance": 0,
+      "wristOverlapRows": 5
+    },
+    {
+      "frame": 7,
+      "grip": [
+        108,
+        162
+      ],
+      "handleCoveredByFingers": 1.0,
+      "guardToFingersPixelDistance": 0,
+      "wristOverlapRows": 5
+    },
+    {
+      "frame": 8,
+      "grip": [
+        100,
+        153
+      ],
+      "handleCoveredByFingers": 1.0,
+      "guardToFingersPixelDistance": 0,
+      "wristOverlapRows": 5
+    }
+  ],
+  "gif": {
+    "frames": 8,
+    "frameMs": 120,
+    "loop": 0
+  },
+  "limits": [
+    "Visual grip still requires user review; contact tests do not certify naturalness.",
+    "Downward one-hand carry only; no attack or other grip poses.",
+    "New common right fist is an art revision, not previously approved body pixels."
+  ]
+}

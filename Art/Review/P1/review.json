@@ -3,8 +3,8 @@
   "format": 3,
   "updated": "2026-10-18",
   "workflow": "Review one direction at a time from fixed cardinal and diagonal baselines. Modify and resubmit the same direction until explicit user artwork approval, then advance. Record provenance, feedback and accepted revisions for the future character template.",
-  "current": "wardrobe-down-v1",
-  "templateStatus": "neutral down and independent heads approved; first actual wardrobe/weapon awaiting art review; all new combinations share r2 with identical approved body pixels",
+  "current": "wardrobe-down-v2-grip",
+  "templateStatus": "independent heads approved; down wardrobe grip revision awaits user review, new shared right fist in common r3",
   "items": [
     {
       "id": "01-down-idle",
@@ -1530,24 +1530,34 @@
   },
   "wardrobeReview": {
     "status": "awaiting_user_review",
-    "source": "Art/Templates/P1-Wardrobe/down/v1",
+    "source": "Art/Templates/P1-Wardrobe/down/v2",
     "direction": "down",
     "artApproval": null,
     "scope": "one long-sleeve green jacket, slate trousers and ankle boots set; one independent short sword; normal speed only",
-    "reviewImage": "Art/Templates/P1-Wardrobe/down/v1/poses.png",
-    "normalLoop": "Art/Templates/P1-Wardrobe/down/v1/walk.gif",
-    "standaloneParts": "Art/Templates/P1-Wardrobe/down/v1/independent-parts.png",
-    "catalog": "Art/Templates/P1-Wardrobe/down/v1/catalog.json",
-    "motion": "Art/Templates/P1-Wardrobe/down/v1/motion.json",
-    "validation": "Art/Templates/P1-Wardrobe/down/v1/validation.json",
-    "integrationProof": "Art/Templates/P1-Wardrobe/down/v1/integration-after.json",
-    "commonBody": "Art/Templates/P1-Neutral/down/walk-r2/asset.json",
-    "commonBodyCorrection": "Art/Templates/P1-Neutral/down/walk-r2/correction.json",
+    "reviewImage": "Art/Templates/P1-Wardrobe/down/v2/review.png",
+    "normalLoop": "Art/Templates/P1-Wardrobe/down/v2/walk.gif",
+    "standaloneParts": "Art/Templates/P1-Wardrobe/down/v2/independent-parts.png",
+    "catalog": "Art/Templates/P1-Wardrobe/down/v2/catalog.json",
+    "motion": "Art/Templates/P1-Wardrobe/down/v2/motion.json",
+    "validation": "Art/Templates/P1-Wardrobe/down/v2/validation.json",
+    "integrationProof": "Art/Templates/P1-Wardrobe/down/v2/validation.json",
+    "commonBody": "Art/Templates/P1-Neutral/down/walk-r3/asset.json",
+    "commonBodyCorrection": "Art/Templates/P1-Neutral/down/walk-r3/grip-profile.json",
     "combinations": 24,
     "poses": 216,
     "outfitPackages": 1,
     "weaponPackages": 1,
     "frameMs": 120,
-    "next": "after art review, validate replacement by a second outfit silhouette; remaining directions later"
+    "next": "after art review, validate replacement by a second outfit silhouette; remaining directions later",
+    "history": [
+      {
+        "source": "Art/Templates/P1-Wardrobe/down/v1",
+        "status": "revision_requested",
+        "feedback": "剑没有握持感",
+        "scope": "grip readability; no art approval of wardrobe v1"
+      }
+    ],
+    "feedback": "剑没有握持感",
+    "gripRevision": "shared closed fist plus compact hilt; same common hand when empty and armed"
   }
 }

@@ -1,0 +1,22 @@
+{
+  "tool": "image_gen.imagegen",
+  "date": "2026-10-19",
+  "transparentBackgroundRequested": true,
+  "referencePathBase": "repository root",
+  "records": [
+    {
+      "file": "source/grip-down.png",
+      "promptFile": "source/prompt-grip.txt",
+      "references": [
+        {
+          "path": "Art/Templates/P1-Wardrobe/down/v2/references/neutral-idle.png",
+          "sha256": "c684178efd9fb6e42747b9991dc13a0cbbdd6a4b4cd5002c45fc910125c150d1"
+        }
+      ],
+      "generatorOutputPath": "/workspace/generated_images/exec-f92ef845-8f56-46dc-a81d-b1b7e8b3b0d1.png",
+      "sha256": "03f9936ca258ab07d0461ab6add3621c0da5388a4f7df87909995edf5b56f2f1",
+      "promptSHA256": "d54b32e59a5ae55797ea06b85d47647f167eff7a068cc87aa4c1b9389411f41b"
+    }
+  ],
+  "artApproval": null
+}

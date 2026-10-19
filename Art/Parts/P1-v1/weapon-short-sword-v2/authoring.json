@@ -1,0 +1,58 @@
+{
+  "id": "p1-weapon-short-sword-v2",
+  "part": "weapon",
+  "mode": "socket",
+  "compatibility": {
+    "rig": "p1-chibi-v1",
+    "bodyProfile": "p1-standard",
+    "actionSet": "locomotion-v1"
+  },
+  "sourceCanvas": [
+    1254,
+    1254
+  ],
+  "registrationGutter": [
+    80,
+    80,
+    1174,
+    1174
+  ],
+  "authorCanvas": [
+    96,
+    96
+  ],
+  "canvas": [
+    64,
+    96
+  ],
+  "pivot": [
+    32,
+    31
+  ],
+  "socket": "grip.right",
+  "gripProfile": "one-hand-closed",
+  "notes": [
+    "Same fixed1254->96 whole-board registration and fixed16..80 horizontal crop.",
+    "Compact hilt; actual contact-calibrated grip(32,31), guard near(32,35), adjacent to common fist bottom. Same rigid point-down carry and original motion.",
+    "Independent weapon only, no hand or skin."
+  ],
+  "poses": [
+    {
+      "frame": 0,
+      "clip": "idle",
+      "layers": {
+        "weapon.right": [
+          {
+            "source": "source/down.png",
+            "crop": [
+              16,
+              0,
+              80,
+              96
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}
