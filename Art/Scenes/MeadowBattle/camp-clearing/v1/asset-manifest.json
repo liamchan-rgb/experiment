@@ -1,0 +1,64 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "meadow-battle-camp-clearing-static-v1",
+  "status": "awaiting-user-art-review",
+  "artApproval": null,
+  "assetRole": "Single flattened composition and look-development study, not production scene layers or a modular character resource",
+  "artwork": {
+    "path": "review.png",
+    "sha256": "b12b900126b9e4b2f52985fbc4b5efef827b5c702eb130d11e93a68d9541685d",
+    "bytes": 3000490,
+    "canvasPx": [
+      1309,
+      1201
+    ],
+    "mode": "RGB",
+    "sourceTool": "OpenAI image generation",
+    "originalGeneratedFile": "/workspace/generated_images/exec-4baea82e-c193-473c-ac6b-37d7c417df79.png",
+    "copiedWithoutPixelChanges": true,
+    "promptPath": "source/prompt.txt",
+    "promptSHA256": "ab7957d5ae9fc2c53ba4aa0ea09f6c1f2f77966f493ed5c35557828836d1a6fd"
+  },
+  "references": [
+    {
+      "path": "Art/Generated/meadow-background.png",
+      "sha256": "be2916c1be27a04187a4b75111d6da0255e7afebff1451ffe15f376ca208e85d",
+      "role": "Meadow Journey environment, palette and camp identity; reinterpret lateral camera"
+    },
+    {
+      "path": "Sources/Resources/Assets.xcassets/BattleHeroContactCandidate.imageset/BattleHeroContactCandidate.png",
+      "sha256": "92621973da4d352c625f20660bae5303aae25e68c4f557632535030330dd2e4a",
+      "role": "Hero identity, outfit and sword reference only; new idle pose is unapproved"
+    }
+  ],
+  "userVisualDirection": "User-provided Octopath Traveler forest battle screenshots: lateral camera, layered depth, ground contact, atmosphere. Actual local image-generation references are the two files listed above.",
+  "environment": "Camp-edge woodland clearing, distant blue/gold tent and timber lookout, Meadow limestone and flowers",
+  "reviewScope": [
+    "lateral battle camera and framing",
+    "foreground/midground/distant forest depth",
+    "Meadow Journey palette and camp continuity",
+    "one hero versus one slime scale and idle readability",
+    "grip and ground contact"
+  ],
+  "layoutApproval": {
+    "build": 31,
+    "scope": "overall map/battle/header/turn-track/current-player-detail three-state layout only",
+    "sourceUserMessage": "可以，下一项我们做什么",
+    "doesNotApproveNewSceneArt": true
+  },
+  "limitations": [
+    "Not an in-app screenshot; build31 IPA and runtime source unchanged",
+    "Generated camp perspective is a visual continuity proposal, not a verified geometric reconstruction of a map coordinate",
+    "Hero, clothing, weapon, slime, scenery and shadows are flattened in this study; reusable production layers and sockets have not been delivered",
+    "No animation, seven-player layout, rules integration, dynamic lighting or physical iPad validation in this deliverable"
+  ],
+  "plannedProductionSeparation": [
+    "distant forest and haze",
+    "midground trees, rocks and distant camp",
+    "perspective ground and contact plane",
+    "foreground occlusion",
+    "hero body, hair, face, clothing and weapon via the reusable parts standard",
+    "slime actor",
+    "independent contact/cast shadows and light effects"
+  ]
+}
