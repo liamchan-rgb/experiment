@@ -1,0 +1,43 @@
+{
+  "id": "p1-neutral-battle-side-right-idle-parts-v2",
+  "status": "awaiting-user-underbody-review",
+  "poseApprovalReference": {
+    "id": "p1-neutral-battle-side-right-idle-r2",
+    "date": "2026-10-19",
+    "reviewer": "user",
+    "statement": "对了，继续下一步",
+    "approvedScope": "One neutral right-side idle pose and the near/right hand direction in the registered 256x256 review"
+  },
+  "scope": "The existing eight static part masks plus a registered first-pass connected skin core from neck/shoulders to pelvis",
+  "source": "../right-idle-r2/00.png",
+  "editableMaster": "authoring.svg",
+  "underbodyMaster": "underbody-authoring.svg",
+  "reviewImage": "review.png",
+  "partsManifest": "parts.json",
+  "underbodyImage": "parts/body.skin.underlay.png",
+  "artNotes": "drafts/underbody-art-notes.json",
+  "discardedGenerationAttempt": "drafts/underbody-generation.json",
+  "staticAssembly": {
+    "sameAsV1": true,
+    "visiblePoseChanged": false,
+    "soleLineCanvasY": 214
+  },
+  "underbody": {
+    "regions": ["one connected neck/shoulder/chest/abdomen/pelvis core beneath the current clothing and limb layers"],
+    "coverage": "continuous torso/pelvis base; arms, hands, legs and joint seam redraws remain incomplete",
+    "complete": false,
+    "movementSeamsPassed": false
+  },
+  "partsDelivered": true,
+  "hiddenAnatomyComplete": false,
+  "animationDelivered": false,
+  "runtimeIntegrated": false,
+  "limits": [
+    "This is only the first overlap pass, not a complete reusable body underlayer.",
+    "The fixed coverage-fill layer is still needed for the static pose and must be replaced before moving parts.",
+    "No translated/rotated limb seam test has passed.",
+    "No hair, face, outfit variant, shoes, weapon, action, other frame, other direction, or runtime integration is included.",
+    "The approved empty-hand study does not validate a weapon grip."
+  ],
+  "next": "Review the shape and registration of the connected torso/pelvis core; finish limb underlayers and repair the cut-mask boundaries before articulated seam tests."
+}

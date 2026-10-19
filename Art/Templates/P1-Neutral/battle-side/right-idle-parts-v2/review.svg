@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="930" viewBox="0 0 1600 930">
+  <defs>
+    <clipPath id="clip-underbody-upper"><rect x="1004" y="238" width="500" height="240"/></clipPath>
+    <clipPath id="clip-underbody-hips"><rect x="684" y="596" width="520" height="202"/></clipPath>
+  </defs>
+  <rect width="1600" height="930" fill="#e8e5dc"/>
+  <text x="44" y="54" font-family="Noto Sans CJK SC, sans-serif" font-size="30" font-weight="700" fill="#26352f">侧视待机人物 · 隐藏人体底层首稿</text>
+  <text x="46" y="84" font-family="Noto Sans CJK SC, sans-serif" font-size="16" fill="#54625b">保持已认可 r2 的注册坐标与姿势；body.skin.underlay 另存为透明候选层。</text>
+
+  <rect x="36" y="108" width="570" height="780" rx="16" fill="#f5f2ea" stroke="#c9c5b9"/>
+  <text x="62" y="145" font-family="Noto Sans CJK SC, sans-serif" font-size="19" font-weight="700" fill="#34423b">静态重组 · 原姿态不变</text>
+  <rect x="61" y="163" width="520" height="600" fill="#ddd9d0"/>
+  <image href="assembled.png" x="151" y="199" width="340" height="340" image-rendering="pixelated"/>
+  <text x="62" y="584" font-family="Noto Sans CJK SC, sans-serif" font-size="15" fill="#4d5b54">左图沿用 v1 八层和固定姿态补位，保留 r2 静态图。</text>
+  <text x="62" y="610" font-family="Noto Sans CJK SC, sans-serif" font-size="15" fill="#4d5b54">右侧新增层独立展示，尚未合入静态成品。</text>
+  <text x="62" y="655" font-family="Noto Sans CJK SC, sans-serif" font-size="15" fill="#80583d">现有切层边缘仍会让底层透出；需先修边界，</text>
+  <text x="62" y="681" font-family="Noto Sans CJK SC, sans-serif" font-size="15" fill="#80583d">再做关节移动验收；固定补位层不能用于动作。</text>
+  <text x="62" y="824" font-family="Noto Sans CJK SC, sans-serif" font-size="15" fill="#4d5b54">画布 256×256 · r2 sole line y=214。</text>
+
+  <rect x="628" y="108" width="936" height="780" rx="16" fill="#f5f2ea" stroke="#c9c5b9"/>
+  <text x="654" y="145" font-family="Noto Sans CJK SC, sans-serif" font-size="19" font-weight="700" fill="#34423b">底层候选 · 颈肩至髋部的连续皮肤核心</text>
+  <text x="654" y="173" font-family="Noto Sans CJK SC, sans-serif" font-size="14" fill="#66736b">透明层保留整张 256×256 画布，不单独挪动或缩放。</text>
+  <rect x="662" y="194" width="300" height="300" rx="10" fill="#e5e1d8"/>
+  <image href="parts/body.skin.underlay.png" x="684" y="216" width="256" height="256" image-rendering="pixelated"/>
+  <text x="665" y="523" font-family="Noto Sans CJK SC, sans-serif" font-size="14" fill="#66736b">全画布定位</text>
+
+  <rect x="984" y="194" width="548" height="300" rx="10" fill="#e5e1d8"/>
+  <text x="1004" y="224" font-family="Noto Sans CJK SC, sans-serif" font-size="15" font-weight="700" fill="#34423b">颈根、肩部、胸腹与骨盆</text>
+  <g clip-path="url(#clip-underbody-upper)">
+    <svg x="1004" y="238" width="500" height="240" viewBox="100 124 55 55" preserveAspectRatio="xMidYMid meet">
+      <image href="parts/body.skin.underlay.png" width="256" height="256" image-rendering="pixelated"/>
+    </svg>
+  </g>
+
+  <rect x="662" y="554" width="870" height="270" rx="10" fill="#e5e1d8"/>
+  <text x="684" y="584" font-family="Noto Sans CJK SC, sans-serif" font-size="15" font-weight="700" fill="#34423b">短裤下的左右髋／大腿根连接面</text>
+  <g clip-path="url(#clip-underbody-hips)">
+    <svg x="684" y="596" width="520" height="202" viewBox="99 166 54 31" preserveAspectRatio="xMidYMid meet">
+      <image href="parts/body.skin.underlay.png" width="256" height="256" image-rendering="pixelated"/>
+    </svg>
+  </g>
+  <text x="1220" y="632" font-family="Noto Sans CJK SC, sans-serif" font-size="14" fill="#66736b">用 r2 的整体变换映射后，</text>
+  <text x="1220" y="658" font-family="Noto Sans CJK SC, sans-serif" font-size="14" fill="#66736b">裁到原人物可见轮廓内；</text>
+  <text x="1220" y="684" font-family="Noto Sans CJK SC, sans-serif" font-size="14" fill="#66736b">未对单件做自动对齐。</text>
+  <text x="684" y="856" font-family="Noto Sans CJK SC, sans-serif" font-size="14" fill="#80583d">当前只补连续躯干／骨盆底层；四肢与移动接缝仍未验收。按固定 256 坐标手绘，首次生成碎片稿已弃用并留存在 drafts/。</text>
+</svg>

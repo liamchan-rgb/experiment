@@ -1,0 +1,19 @@
+{
+  "candidate": "parts/body.skin.underlay.png",
+  "editableSource": "underbody-authoring.svg",
+  "coordinateCanvas": [256, 256],
+  "registration": "Same body canvas and source-to-canvas transform as right-idle-r2; no per-layer alpha fitting, scaling, or translation.",
+  "sourcePaletteSamples": {
+    "base": "#fcbd8e",
+    "shadow": "#e58d64",
+    "light": "#fbe9da",
+    "warmMid": "#f3a277",
+    "hipMid": "#f8b687"
+  },
+  "pixelBounds": [106, 131, 41, 54],
+  "nontransparentPixelCount": 1527,
+  "artPass": "Connected neck/shoulder/chest/abdomen/pelvis core, manually authored as a hidden anatomy study beneath the existing garment and limb parts.",
+  "staticIntegration": "Not included in assembled.png. Test compositing visibly bled through the current antialiased part boundaries and changed the accepted appearance; preserve the v1 static composite until masks and overlap coverage are repaired.",
+  "notApproved": true,
+  "notComplete": true
+}

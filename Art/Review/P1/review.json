@@ -3,8 +3,8 @@
   "format": 3,
   "updated": "2026-10-19",
   "workflow": "Review one direction at a time from fixed cardinal and diagonal baselines. Modify and resubmit the same direction until explicit user artwork approval, then advance. Record provenance, feedback and accepted revisions for the future character template.",
-  "current": "p1-neutral-battle-side-right-idle-parts-v1",
-  "templateStatus": "independent heads approved; the v5 down idle sword pose is approved as one art study only; modular wardrobe/weapon production and the full character template remain incomplete; the heavyStrike + trainingSword standalone effect prototype remains awaiting user art review; battle-side right idle pose and hand direction r2 approved; first eight-part segmentation is awaiting user part review, with hidden anatomy and runtime integration incomplete",
+  "current": "p1-neutral-battle-side-right-idle-parts-v2",
+  "templateStatus": "independent heads approved; the v5 down idle sword pose is approved as one art study only; modular wardrobe/weapon production and the full character template remain incomplete; the heavyStrike + trainingSword standalone effect prototype remains awaiting user art review; battle-side right idle pose and hand direction r2 approved; partial hidden-skin underlay v2 is awaiting review; complete anatomy, movement tests and runtime integration remain incomplete",
   "items": [
     {
       "id": "01-down-idle",
@@ -1691,6 +1691,11 @@
       "previousCurrent": "p1-neutral-battle-side-right-idle-r2",
       "newCurrent": "p1-neutral-battle-side-right-idle-parts-v1",
       "reason": "User approved the r2 neutral pose/hand direction and asked to continue; the first static body-part segmentation is now the current review item"
+    },
+    {
+      "previousCurrent": "p1-neutral-battle-side-right-idle-parts-v1",
+      "newCurrent": "p1-neutral-battle-side-right-idle-parts-v2",
+      "reason": "Continue to the hidden-anatomy step: add a registered partial underlay while preserving v1 and the approved r2 pose"
     }
   ],
   "battleNeutralBodyReview": {
@@ -1731,7 +1736,7 @@
   },
   "battleNeutralPartsReview": {
     "id": "p1-neutral-battle-side-right-idle-parts-v1",
-    "status": "awaiting_user_part_review",
+    "status": "preserved_as_v1_static_candidate",
     "source": "Art/Templates/P1-Neutral/battle-side/right-idle-parts-v1",
     "reviewImage": "Art/Templates/P1-Neutral/battle-side/right-idle-parts-v1/review.png",
     "editableMaster": "Art/Templates/P1-Neutral/battle-side/right-idle-parts-v1/authoring.svg",
@@ -1750,6 +1755,20 @@
     "hiddenAnatomyComplete": false,
     "animationDelivered": false,
     "runtimeIntegrated": false,
-    "next": "After review, replace the fixed-pose coverage patch with authored hidden anatomy and verify each limb independently before creating appearance resources."
+    "next": "Superseded as the current review image by parts-v2; its original files and static segmentation remain preserved."
+  },
+  "battleNeutralUnderbodyReview": {
+    "id": "p1-neutral-battle-side-right-idle-parts-v2",
+    "status": "awaiting_user_underbody_review",
+    "source": "Art/Templates/P1-Neutral/battle-side/right-idle-parts-v2",
+    "reviewImage": "Art/Templates/P1-Neutral/battle-side/right-idle-parts-v2/review.png",
+    "editableMaster": "Art/Templates/P1-Neutral/battle-side/right-idle-parts-v2/authoring.svg",
+    "partsManifest": "Art/Templates/P1-Neutral/battle-side/right-idle-parts-v2/parts.json",
+    "poseApprovalReference": "p1-neutral-battle-side-right-idle-r2",
+    "scope": "Registered first-pass connected neck/shoulder/chest/abdomen/pelvis skin core; existing eight static part masks and visible r2 pose preserved, new core is shown separately until mask bleed is fixed",
+    "underbodyComplete": false,
+    "movementSeamsPassed": false,
+    "runtimeIntegrated": false,
+    "next": "Review the continuous torso/pelvis core. Finish limb underlayers and repair the cut-mask boundaries before articulated movement tests or production use."
   }
 }

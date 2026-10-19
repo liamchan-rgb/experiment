@@ -1,0 +1,24 @@
+{
+  "status": "discarded-not-used",
+  "sourceImage": "underbody-generated-source.png",
+  "sourceSha256": "bd7d5aaae3b27ca8c779b2d4a011202c9e013acb2357cbe26c8fc359750f8362",
+  "dimensions": [1254, 1254],
+  "reference": "../../right-idle-r2/source/neutral-body.png",
+  "targetCanvas": [256, 256],
+  "sourceToCanvas": [
+    0.1829787234042553,
+    0,
+    0,
+    0.1829787234042553,
+    10.344680851063842,
+    17.297872340425542
+  ],
+  "prompt": "Create a hidden-anatomy underlayer for the exact registered character in the reference, not a new pose. Output a transparent 1254x1254 full-source canvas with ONLY the missing skin/body pixels that belong underneath the existing r2 arms, shirt, shorts, and fist. Leave every other pixel transparent. This is a nonsexual neutral game mannequin in the same warm skin pixel-art style; no face, no hair, no weapons, no new visible silhouette, no text, no background. Keep the same right-facing side profile, proportions and exact source coordinates. Use these anchors from the reference canvas: neck root (653,654), near shoulder (584,677), far shoulder (670,683), near wrist (701,794), far wrist (518,828), pelvis (621,861), near hip (674,864), far hip (574,869). Add only short continuous hidden overlap anatomy beneath the white undershirt at both shoulders and neck root, beneath the charcoal shorts at both hips/upper thighs, and behind the existing forearm/fist at its wrist. Each overlap should extend 6-10 source pixels into the covered body so the existing foreground parts fully hide its edge. Do not extend outside the current visible character silhouette. Use small crisp clustered pixels, a 1-pixel dark outline only where the anatomy would emerge from under the garment, upper-left light, and the reference skin palette. Keep the face and all currently visible pixels out of this output.",
+  "processing": [
+    "Mapped the full 1254x1254 image with the same r2 source-to-canvas transform.",
+    "Thresholded alpha at 50 percent to drop fractional transparent fringe.",
+    "Clipped to nontransparent pixels of the approved r2 silhouette; no translation or per-part fitting."
+  ],
+  "unusedTrialOutputSha256": "e33d251ac48c781f834033f43f30c6340908ce7094fbd913a8847f132d47874b",
+  "review": "At registered 256x256 scale the generated result was several disconnected islands with colored edge fringe. It was rejected for this candidate and replaced by the connected editable SVG underlayer. Preserve only as a rejected draft, not as an asset."
+}
