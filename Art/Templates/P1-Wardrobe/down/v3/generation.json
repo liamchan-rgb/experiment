@@ -1,0 +1,97 @@
+{
+  "date": "2026-10-19",
+  "artApproval": null,
+  "records": [
+    {
+      "source": "source/grip-study.png",
+      "prompt": "source/prompt-study.txt",
+      "references": [
+        "references/00-body-guide.png"
+      ],
+      "status": "design reference only; rejected world registration",
+      "tool": "image_gen.imagegen",
+      "originalToolOutput": "/workspace/generated_images/exec-ecf284c9-c0e6-42a8-9f58-4d5815ad0903.png",
+      "sha256": "8d8681fc072421071520a06a471c148328728eda9f1ae46c8e1eb1bfa8aab0bc",
+      "promptSHA256": "060c8abbeea59c4f9b4d0daa745b64d843e747dd50281bed50e39ec35e9ee08c",
+      "referenceSHA256": {
+        "references/00-body-guide.png": "410456c0ab81de490bfaa99bcbf67282cec71bdf9959975d6d44c970eac93f6f"
+      }
+    },
+    {
+      "source": "drafts/downward-study/hand.png",
+      "prompt": "drafts/downward-study/hand-prompt.txt",
+      "references": [
+        "source/grip-study.png"
+      ],
+      "status": "superseded downward study",
+      "tool": "image_gen.imagegen",
+      "originalToolOutput": "/workspace/generated_images/exec-c89c29ea-a81e-4e59-9fd9-c3ff5ba9f3ea.png",
+      "sha256": "ba87919e57ef497eaea0301d765ee530459b90c90cfce3022c4381344692c469",
+      "promptSHA256": "fcbbdae749eb2eb9b92274d991e574e425906aeedf744c5b660176a767e9b809",
+      "referenceSHA256": {
+        "source/grip-study.png": "8d8681fc072421071520a06a471c148328728eda9f1ae46c8e1eb1bfa8aab0bc"
+      }
+    },
+    {
+      "source": "drafts/downward-study/weapon.png",
+      "prompt": "drafts/downward-study/weapon-prompt.txt",
+      "references": [
+        "source/grip-study.png"
+      ],
+      "status": "superseded; guard required further yaw correction",
+      "tool": "image_gen.imagegen",
+      "originalToolOutput": "/workspace/generated_images/exec-e95b9fe5-1d95-48cb-bcae-4a96226d8919.png",
+      "sha256": "c94019841307f728d70baa4feb001b7efbc1a4669303c012afc231d13e4ffa04",
+      "promptSHA256": "27bef3c4ade82a249bdb5a635d7aea2a3b7505ef7afce5f467d8f5741541d0e4",
+      "referenceSHA256": {
+        "source/grip-study.png": "8d8681fc072421071520a06a471c148328728eda9f1ae46c8e1eb1bfa8aab0bc"
+      }
+    },
+    {
+      "source": "parts/hand/source/down.png",
+      "prompt": "parts/hand/source/prompt.txt",
+      "references": [
+        "drafts/downward-study/hand.png"
+      ],
+      "status": "current hand art candidate",
+      "tool": "image_gen.imagegen",
+      "originalToolOutput": "/workspace/generated_images/exec-81cb6880-899c-42ad-9491-bed09b1eef88.png",
+      "sha256": "7559392ced72feecfaf74e04892e0fd399a6de7ee522fdc64a94a8f3c5decb69",
+      "promptSHA256": "bd45fd9d032799bfc394635939db64496f0d0109c95b0265881d222ad62983dc",
+      "referenceSHA256": {
+        "drafts/downward-study/hand.png": "ba87919e57ef497eaea0301d765ee530459b90c90cfce3022c4381344692c469"
+      }
+    },
+    {
+      "source": "drafts/guard-refinement/weapon.png",
+      "prompt": "drafts/guard-refinement/prompt.txt",
+      "references": [
+        "drafts/downward-study/weapon.png"
+      ],
+      "status": "superseded; guard further foreshortened",
+      "tool": "image_gen.imagegen",
+      "originalToolOutput": "/workspace/generated_images/exec-7c4fe4af-7e79-44d2-a401-567a5f015c00.png",
+      "sha256": "f28e3aa37b6a74a1937957d3d5f4c568a5f12fd39732e372cc7d42cf4cac02ff",
+      "promptSHA256": "7300d8ff4e08ea83b8aef4f08a5d9fbbdc88b8d93f2646e19e1d958f789ef42c",
+      "referenceSHA256": {
+        "drafts/downward-study/weapon.png": "c94019841307f728d70baa4feb001b7efbc1a4669303c012afc231d13e4ffa04"
+      }
+    },
+    {
+      "source": "parts/weapon/source/down.png",
+      "prompt": "parts/weapon/source/prompt.txt",
+      "references": [
+        "drafts/guard-refinement/weapon.png"
+      ],
+      "status": "current weapon art candidate",
+      "tool": "image_gen.imagegen",
+      "originalToolOutput": "/workspace/generated_images/exec-6f673379-518f-4311-b2fa-508082266b07.png",
+      "sha256": "41ed63c6aeb5deb411bcebb57e997bcda15fa172cdab6a0b7bccb232d4b43164",
+      "promptSHA256": "6f66b4fcdb7481e53f93ccd3390526946486a1a83fac6d2b4ade0984c617f9a0",
+      "referenceSHA256": {
+        "drafts/guard-refinement/weapon.png": "f28e3aa37b6a74a1937957d3d5f4c568a5f12fd39732e372cc7d42cf4cac02ff"
+      }
+    }
+  ],
+  "exportNote": "Tool sources did not precisely respect requested scale/coordinates; explicit offline whole-canvas64 hand/96 weapon and actual hilt pivot calibration recorded in registration.json. No alpha-bbox fitting; not yet production-standard validation."
+}
