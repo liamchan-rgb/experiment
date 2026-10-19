@@ -1,0 +1,47 @@
+{
+  "kind": "single-idle-pose-art-study",
+  "direction": "down",
+  "clip": "idle",
+  "frame": 0,
+  "artApproval": null,
+  "socket": [
+    102,
+    170
+  ],
+  "grip": "normal forward, point-down",
+  "handAndWeaponStoredSeparately": true,
+  "wristSleeveAttached": true,
+  "handWeaponOverlapPixels": 41,
+  "handSleeveOverlapPixels": 31,
+  "otherPixelsMatchOldCompositionOutsideHandAndWeapon": true,
+  "local": {
+    "hand": {
+      "size": [
+        11,
+        12
+      ],
+      "pivot": [
+        5,
+        6
+      ],
+      "sha256": "1e8c1ff056da4fb4d7bbcc42c01fc12424e026a9b0dcf4faec1556cb0618fb99"
+    },
+    "weapon": {
+      "size": [
+        64,
+        96
+      ],
+      "pivot": [
+        33,
+        49
+      ],
+      "sha256": "88d628c64acc7a20a531f74cc72e21f3675b23d1646a64033add0ba63efe67e2"
+    }
+  },
+  "animationGenerated": false,
+  "productionManifestGenerated": false,
+  "limits": [
+    "Single idle pose only; no nine-frame or production validation.",
+    "Visual grip quality and edge/guard perspective remain subject to review."
+  ]
+}

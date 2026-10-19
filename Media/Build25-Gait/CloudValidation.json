@@ -1,0 +1,137 @@
+{
+  "run": 39023714295,
+  "source": "75e54c87223afe248ee1055379931c0a92d55219",
+  "url": "https://github.com/liamchan-rgb/experiment/actions/runs/39023714295",
+  "status": "success",
+  "xcode": "16.4 (16F6)",
+  "device": "iPad Pro 13-inch (M4) simulator",
+  "os": "iOS 18.5",
+  "nativeTests": 16,
+  "uiTests": 3,
+  "startup": {
+    "presentMap": 0.0016808333330118337,
+    "heartbeats": 22,
+    "mainThreadLongestGap": 0.11742495833323119,
+    "mapFirstForegroundDelay": 0.024446416666705766,
+    "markersActorsReset": 0.0008891666666386297,
+    "worldInit": 0.0005039583334109918,
+    "propsBatchMax": 0.00010695833316276544,
+    "seconds": 2.2356447083334388
+  },
+  "tests": [
+    {
+      "suite": "MeadowJourneyTests.TrailTests",
+      "name": "testAuthoredWalkUses24WholeFramesAndNoLegWarp",
+      "seconds": 0.032,
+      "status": "passed"
+    },
+    {
+      "suite": "MeadowJourneyTests.TrailTests",
+      "name": "testCapturedViewportKeepsGroundAndArtworkAlignedThroughZoomAndPan",
+      "seconds": 0.029,
+      "status": "passed"
+    },
+    {
+      "suite": "MeadowJourneyTests.TrailTests",
+      "name": "testFootprintGroundLineFollowsAlternatingFeet",
+      "seconds": 0.001,
+      "status": "passed"
+    },
+    {
+      "suite": "MeadowJourneyTests.TrailTests",
+      "name": "testGaitTestCoversEightRoadIndependentHeadingsAndSupportsStepping",
+      "seconds": 0.001,
+      "status": "passed"
+    },
+    {
+      "suite": "MeadowJourneyTests.TrailTests",
+      "name": "testGaitTestReturnsToTheSameMapCameraAndActorPositions",
+      "seconds": 0.646,
+      "status": "passed"
+    },
+    {
+      "suite": "MeadowJourneyTests.TrailTests",
+      "name": "testHeroCasterAnchorsEachPlantedFootAndTracksLift",
+      "seconds": 0.117,
+      "status": "passed"
+    },
+    {
+      "suite": "MeadowJourneyTests.TrailTests",
+      "name": "testHeroFramesBundlesAllDirectionsAndWholeMirroredRightProfile",
+      "seconds": 50.173,
+      "status": "passed"
+    },
+    {
+      "suite": "MeadowJourneyTests.TrailTests",
+      "name": "testHeroPoseSpriteKitRenderingKeepsAllHeroContoursConnected",
+      "seconds": 41.795,
+      "status": "passed"
+    },
+    {
+      "suite": "MeadowJourneyTests.TrailTests",
+      "name": "testHeroShadowAtlasChangesFramesWithoutLiveTextureUploads",
+      "seconds": 1.58,
+      "status": "passed"
+    },
+    {
+      "suite": "MeadowJourneyTests.TrailTests",
+      "name": "testMeadowAllAssetsSubmitSharedShadowDepth",
+      "seconds": 1.129,
+      "status": "passed"
+    },
+    {
+      "suite": "MeadowJourneyTests.TrailTests",
+      "name": "testMeadowGroundContainsOpaqueGrassRoadsAndShadows",
+      "seconds": 1.616,
+      "status": "passed"
+    },
+    {
+      "suite": "MeadowJourneyTests.TrailTests",
+      "name": "testOnlyTheTowerGetsAnAdditionalBanner",
+      "seconds": 0.223,
+      "status": "passed"
+    },
+    {
+      "suite": "MeadowJourneyTests.TrailTests",
+      "name": "testReliefPreservesArtCoordinatesForEveryAsset",
+      "seconds": 0.039,
+      "status": "passed"
+    },
+    {
+      "suite": "MeadowJourneyTests.TrailTests",
+      "name": "testRoadMaskUsesOneUnionAtJunctions",
+      "seconds": 0.423,
+      "status": "passed"
+    },
+    {
+      "suite": "MeadowJourneyTests.TrailTests",
+      "name": "testShadowLabCutoutPipelineSubmitsContourModes",
+      "seconds": 0.125,
+      "status": "passed"
+    },
+    {
+      "suite": "MeadowJourneyTests.TrailTests",
+      "name": "testWalkCycleVisitsEveryFrameAndWrapsWithoutRepeatingPassingArt",
+      "seconds": 0.002,
+      "status": "passed"
+    },
+    {
+      "suite": "MeadowJourneyUITests.JourneyUITests",
+      "name": "testActualMapGaitControlsCoverAllDirectionsAndEveryFrame",
+      "seconds": 106.432,
+      "status": "passed"
+    },
+    {
+      "suite": "MeadowJourneyUITests.JourneyUITests",
+      "name": "testForegroundAndShadowReceiverStayAlignedAtEveryZoom",
+      "seconds": 16.387,
+      "status": "passed"
+    },
+    {
+      "suite": "MeadowJourneyUITests.JourneyUITests",
+      "name": "testMapContourRendererAndInteraction",
+      "seconds": 16.899,
+      "status": "passed"
+    }
+  ]
+}

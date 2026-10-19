@@ -1,0 +1,45 @@
+{
+  "schemaVersion": "1.0.0",
+  "assets": [
+    {
+      "id": "p1-neutral-down-walk-r2",
+      "manifest": "Art/Templates/P1-Neutral/down/walk-r2/asset.json",
+      "label": "COMMON BODY / CORRECTED LAYER OWNERSHIP"
+    },
+    {
+      "id": "p1-hair-chestnut-v1",
+      "manifest": "Art/Parts/P1-v1/hair-chestnut/asset.json",
+      "label": "CHESTNUT"
+    },
+    {
+      "id": "p1-hair-silver-v1",
+      "manifest": "Art/Parts/P1-v1/hair-silver/asset.json",
+      "label": "SILVER"
+    },
+    {
+      "id": "p1-face-blue-v1",
+      "manifest": "Art/Parts/P1-v1/face-blue/asset.json",
+      "label": "BLUE EYES"
+    },
+    {
+      "id": "p1-face-amber-v1",
+      "manifest": "Art/Parts/P1-v1/face-amber/asset.json",
+      "label": "AMBER EYES"
+    },
+    {
+      "id": "p1-hair-teal-crop-v1",
+      "manifest": "Art/Parts/P1-v1/hair-teal-crop/asset.json",
+      "label": "TEAL CROP"
+    },
+    {
+      "id": "p1-outfit-forester-v1",
+      "manifest": "Art/Parts/P1-v1/outfit-forester/asset.json",
+      "label": "FORESTER OUTFIT"
+    },
+    {
+      "id": "p1-weapon-short-sword-v1",
+      "manifest": "Art/Parts/P1-v1/weapon-short-sword/asset.json",
+      "label": "SHORT SWORD"
+    }
+  ]
+}

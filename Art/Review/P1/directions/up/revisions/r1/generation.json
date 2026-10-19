@@ -1,0 +1,159 @@
+{
+  "revision": "r1",
+  "direction": "up",
+  "method": "imagegen redraw of complete poses; packaging only registers whole sprites",
+  "idlePoses": 1,
+  "walkingPoses": 8,
+  "identityReferences": [
+    "baseline-idle-reference.png",
+    "approved-down-reference.png",
+    "walk-identity-reference.png"
+  ],
+  "sideConvention": "back-facing: character left is screen left, character right is screen right",
+  "poses": [
+    {
+      "index": 0,
+      "id": "00-idle",
+      "rawImage": "raw/00.png",
+      "initial": {
+        "prompt": "Redraw the FIRST reference into ONE updated REAR/UP IDLE pixel-art game sprite, using the SECOND approved front-facing reference for definitive head/body proportions, clothing colors and full cuffed boot design. It is the SAME boy, tousled chestnut hair, vivid royal blue scarf and blue short coat with cream/gold trim, charcoal knee-length trousers, brown gloves, belt and folded-cuff leather boots. Show the BACK OF HIS HEAD AND BODY, facing directly AWAY from viewer toward SCREEN TOP, same slightly elevated RPG camera. No face, no eye, no profile, no head turn. Keep the first reference's X-shaped brown back straps and small pouch at screen right, cream-edged split coat tails. Detailed crisp pixel-sprite art, same body/head ratio as approved front reference. One full body sprite, ample transparent margin.\nCorrect the boots to a true BACK view: two solid brown rounded HEELS facing viewer, subtle vertical rear seams, full folded cuffs, small visible heel blocks and thin sole edges. Both toe axes point AWAY toward SCREEN TOP and are largely hidden behind ankle/cuff from this camera. NO FRONT LACES visible from the back; no front-facing toe caps pasted below rear trousers; no outward duck feet or sideways protruding boot noses. Both boots parallel, modest natural hip-width apart, flat on same ground line. Preserve full cuff/shaft volume and boot length; do not shrink to shoes. Arms relaxed at sides, knees relaxed. Neutral standing pose. Transparent background only: no aura, haze, halo, ground, cast shadow, checkerboard, text, labels, or extra characters.",
+        "generatedSource": "/workspace/generated_images/exec-16cc5485-a9f2-44e4-9462-087cc9baa720.png"
+      },
+      "backgroundCleanupAttempt": {
+        "prompt": "Remove ONLY the faint colored atmospheric glow / haze surrounding this rear-view sprite. Keep the actual character silhouette, BACK-FACING pose, proportions, boots, hair, clothes and pixel outlines unchanged. Everything outside the character must be fully transparent: no halo, aura, haze, shadow, colored backdrop or blur. Preserve crisp detailed pixel art, one full-body back-facing character. This is background cleanup only.",
+        "generatedSource": "/workspace/generated_images/exec-3aae3ac5-3026-49c3-9d96-3156ef537598.png"
+      },
+      "generatedSource": "/workspace/generated_images/exec-75543ed2-6ed6-457f-a8cd-84299eb7130b.png",
+      "sha256": "07ad3154932153ec88753c78ab5dcaf3e637cd414a92c2e1fac7ae1390bba41a",
+      "refinements": [
+        {
+          "prompt": "Edit ONLY the two BOOTS in the FIRST neutral REAR-IDLE character to match the SAME boot proportions as the supporting boot in the SECOND rear-WALK reference. Preserve FIRST image head, hair, scarf, arms, torso, straps/pouch, trousers, idle posture, camera, framing and crisp pixel style EXACTLY. Single BACK-FACING full-body sprite, transparent background, no halo/shadow.\nThe current idle heels/cuffs look wider and bulkier than the walking boots. Make them the SAME actual full folded-cuff width, cuff height, shaft length and rounded heel volume as the standing support boot on SCREEN LEFT of the second reference, at the SAME head/body scale. Do NOT make ankle shoes or shorten boot shafts; just remove the excess sideways heel/toe bulge and overly wide cuff. Viewed from behind, the rear heel counter sits directly below the shin with a vertical back seam, a modest heel block and thin sole edge. It should NOT look like a broad front toe cap facing camera; toes point away toward SCREEN TOP hidden behind shin. Two boots parallel at natural hip width, planted on same ground line, no outward toe splay. They must read as the same matching boots as the walk, no idle-to-walk boot size pop. Keep both full shafts and cuffs, no shoe warping. No other edits.",
+          "generatedSource": "/workspace/generated_images/exec-75543ed2-6ed6-457f-a8cd-84299eb7130b.png",
+          "reason": "match neutral back-heel/cuff proportions to walking model"
+        }
+      ]
+    },
+    {
+      "index": 1,
+      "id": "01 CONTACT A",
+      "rawImage": "raw/01.png",
+      "initial": {
+        "prompt": "Edit this BACK-VIEW character into EXACTLY ONE full-body rear/up WALK sprite. SAME boy and EXACT same tousled chestnut hair silhouette, head/body proportions, blue scarf trailing to screen left, royal-blue coat with cream/gold split tails, X brown straps across the BACK, brown belt/pouch at screen right, brown fingerless gloves, charcoal knee-length trousers, folded-cuff brown leather boots. Keep directly facing AWAY toward SCREEN TOP, fixed slightly elevated RPG camera, NO face/eyes/profile, do not turn sideways or diagonal. Detailed crisp pixel-sprite art, same rendering and costume, generous transparent margin, ONE character, no sheet/text/ground/shadow/aura/halo. The BACK of each boot has a vertical heel seam and full cuff. Both toe axes point AWAY toward SCREEN TOP, NEVER outward/sideways, no front laces visible on the back. Draw real connected knees/shins/ankles; boots keep full physical cuff height/shaft/volume, never shrink/rotate pasted shoes. Normal SHORT walking stride, no running, jumping, giant sole, high kick or high knees. From rear view LEFT LEG/ARM is SCREEN LEFT, RIGHT is SCREEN RIGHT. Forearm swing follows opposite leg, clearly alternate which hand is visible behind the body.\nPOSE:\n01 CONTACT A: LEFT leg (SCREEN LEFT) reaches forward AWAY from camera, heel arriving in front of body; left boot lies slightly HIGHER in image than trailing right boot, shows the back of its heel and cuff, no front laces. RIGHT leg (SCREEN RIGHT) is trailing closer to camera, pushes off with HEEL raised, toe still points screen TOP and remains on ground; show a small appropriate rear sole/heel edge, not a giant full sole. LEFT ARM on screen left swings BACK toward camera, hand visible lower beside left hip. RIGHT ARM on screen right swings forward AWAY, hand partly hidden by torso/pouch. Modest depth split and natural foot width.",
+        "generatedSource": "/workspace/generated_images/exec-e99ac217-d17b-4e18-a592-ccaa3179d173.png"
+      },
+      "refinements": [
+        {
+          "prompt": "Correct ONLY the LOWER BODY / BOOT PROPORTIONS of the FIRST rear-view walking sprite using the SECOND rear IDLE image as the boot model. Preserve EXACTLY the first sprite's head, hair, body/costume design, scarf, straps, pouch, arm swing and pixel art. One full-body BACK-FACING sprite, no face, same camera and generous transparent margin. Transparent background, no glow/halo/shadow.\nThe current walk has exaggerated depth: the foot advanced AWAY is too small and the rear boot shaft is stretched. Use a near-ORTHOGRAPHIC RPG camera: the two boots have the SAME actual cuff WIDTH/circumference, cuff HEIGHT, shaft length and heel WIDTH, matching idle. Do not shrink the far boot or stretch the trailing shin/shaft. Tighten the fore-aft stride by roughly one third. The heels should have modest vertical separation in image, not one tiny shoe high up and one long giant shoe near camera. Keep knees naturally bent under coat, both toe axes point SCREEN TOP, NO outward splay, NO front laces. Draw anatomical connected legs, no warped shoes, never change overall body proportions. Preserve full brown heel seams, folded cuffs, thin sole edges. The backward rolling boot pitches around toe joint and shows only a modest rear sole edge, not an enormous sole facing viewer.\nPHASE TO RETAIN: 01 CONTACT A: LEFT leg (SCREEN LEFT) reaches forward AWAY from camera, heel arriving in front of body; left boot lies slightly HIGHER in image than trailing right boot, shows the back of its heel and cuff, no front laces. RIGHT leg (SCREEN RIGHT) is trailing closer to camera, pushes off with HEEL raised, toe still points screen TOP and remains on ground; show a small appropriate rear sole/heel edge, not a giant full sole. LEFT ARM on screen left swings BACK toward camera, hand visible lower beside left hip. RIGHT ARM on screen right swings forward AWAY, hand partly hidden by torso/pouch. Modest depth split and natural foot width.",
+          "generatedSource": "/workspace/generated_images/exec-2b1f2184-4545-45a6-a0ff-8c52d4e5f609.png"
+        }
+      ],
+      "generatedSource": "/workspace/generated_images/exec-2b1f2184-4545-45a6-a0ff-8c52d4e5f609.png",
+      "sha256": "7e55de38f39854d9864adf8cef8918a1eb92414497bb0883e0992a50560b66dd"
+    },
+    {
+      "index": 2,
+      "id": "02 WEIGHT ACCEPTANCE A",
+      "rawImage": "raw/02.png",
+      "initial": {
+        "prompt": "Edit this BACK-VIEW character into EXACTLY ONE full-body rear/up WALK sprite. SAME boy and EXACT same tousled chestnut hair silhouette, head/body proportions, blue scarf trailing to screen left, royal-blue coat with cream/gold split tails, X brown straps across the BACK, brown belt/pouch at screen right, brown fingerless gloves, charcoal knee-length trousers, folded-cuff brown leather boots. Keep directly facing AWAY toward SCREEN TOP, fixed slightly elevated RPG camera, NO face/eyes/profile, do not turn sideways or diagonal. Detailed crisp pixel-sprite art, same rendering and costume, generous transparent margin, ONE character, no sheet/text/ground/shadow/aura/halo. The BACK of each boot has a vertical heel seam and full cuff. Both toe axes point AWAY toward SCREEN TOP, NEVER outward/sideways, no front laces visible on the back. Draw real connected knees/shins/ankles; boots keep full physical cuff height/shaft/volume, never shrink/rotate pasted shoes. Normal SHORT walking stride, no running, jumping, giant sole, high kick or high knees. From rear view LEFT LEG/ARM is SCREEN LEFT, RIGHT is SCREEN RIGHT. Forearm swing follows opposite leg, clearly alternate which hand is visible behind the body.\nPOSE:\n02 WEIGHT ACCEPTANCE A: LEFT support leg on screen LEFT accepts weight, knee flexes a little. RIGHT knee on screen RIGHT has already bent and moves forward AWAY from camera under hip, right boot fully leaves ground, heel lifts and a modest section of back sole becomes visible. Raised right boot still full size and pointing screen TOP, not splayed. Pelvis slightly lowers. LEFT arm still back but returning toward neutral; RIGHT arm forward mostly hidden. Distinct from split-stride contact: right shin and foot visibly folding in under body.",
+        "generatedSource": "/workspace/generated_images/exec-4a418c45-c608-4454-b6d7-41c276455685.png"
+      },
+      "refinements": [],
+      "generatedSource": "/workspace/generated_images/exec-eba4c4f9-d3fe-4b87-a535-cdb480013360.png",
+      "sha256": "cf51b54b786a702207d786c8b1afee1fa413d87ec5376abd1f02796284d0f617",
+      "backgroundCleanup": {
+        "prompt": "Clean this sprite's TRANSPARENT BACKGROUND ONLY. The image contains unwanted faint colored haze behind/around the character, including low-opacity background pixels extending all the way to the TOP EDGE. Remove ALL of that atmospheric haze, colored light, aura, glow and shadow. There must be generous FULLY TRANSPARENT empty space around every side of the character, especially the entire top margin. No black matte, no vignette, no atmospheric backdrop, no fuzzy surround. Keep ONLY the crisply outlined actual character as a clean alpha cutout. Preserve the exact actual rear-facing character pose, proportions, size, face-hidden brown hair, blue costume, arm swing, lifted RIGHT boot and sole shape without alteration. One full body pixel-art sprite on completely transparent background. This is mask/background cleanup, not a pose redesign.",
+        "generatedSource": "/workspace/generated_images/exec-eba4c4f9-d3fe-4b87-a535-cdb480013360.png",
+        "reason": "initial low-opacity surrounding pixels reached the top source edge; selected cleanup leaves source margin at silhouette alpha threshold"
+      }
+    },
+    {
+      "index": 3,
+      "id": "03 PASSING A",
+      "rawImage": "raw/03.png",
+      "initial": {
+        "prompt": "Edit this BACK-VIEW character into EXACTLY ONE full-body rear/up WALK sprite. SAME boy and EXACT same tousled chestnut hair silhouette, head/body proportions, blue scarf trailing to screen left, royal-blue coat with cream/gold split tails, X brown straps across the BACK, brown belt/pouch at screen right, brown fingerless gloves, charcoal knee-length trousers, folded-cuff brown leather boots. Keep directly facing AWAY toward SCREEN TOP, fixed slightly elevated RPG camera, NO face/eyes/profile, do not turn sideways or diagonal. Detailed crisp pixel-sprite art, same rendering and costume, generous transparent margin, ONE character, no sheet/text/ground/shadow/aura/halo. The BACK of each boot has a vertical heel seam and full cuff. Both toe axes point AWAY toward SCREEN TOP, NEVER outward/sideways, no front laces visible on the back. Draw real connected knees/shins/ankles; boots keep full physical cuff height/shaft/volume, never shrink/rotate pasted shoes. Normal SHORT walking stride, no running, jumping, giant sole, high kick or high knees. From rear view LEFT LEG/ARM is SCREEN LEFT, RIGHT is SCREEN RIGHT. Forearm swing follows opposite leg, clearly alternate which hand is visible behind the body.\nPOSE:\n03 PASSING A: LEFT leg screen LEFT is planted almost vertical beneath hip supporting body. RIGHT knee screen RIGHT bends advancing AWAY toward screen TOP; the right boot passes CLOSE beside the supporting left ankle IN DEPTH, raised about half a boot height. Both heels are almost at the same depth rather than one foot far back, right sole modestly visible beneath cuff, full-size shaft/cuff, no inward/outward splay. Do not stick raised boot out sideways or leave it far below/back. Arms approximately neutral, modest relaxed knees, no high-knee march.",
+        "generatedSource": "/workspace/generated_images/exec-43ecf65c-33b7-4fe8-a216-3a190595e299.png"
+      },
+      "refinements": [],
+      "generatedSource": "/workspace/generated_images/exec-43ecf65c-33b7-4fe8-a216-3a190595e299.png",
+      "sha256": "235c4e05f42347683f234319f93628dd382afb468b29337e6532ed9c4233280d"
+    },
+    {
+      "index": 4,
+      "id": "04 LATE SWING / UP A",
+      "rawImage": "raw/04.png",
+      "initial": {
+        "prompt": "Edit this BACK-VIEW character into EXACTLY ONE full-body rear/up WALK sprite. SAME boy and EXACT same tousled chestnut hair silhouette, head/body proportions, blue scarf trailing to screen left, royal-blue coat with cream/gold split tails, X brown straps across the BACK, brown belt/pouch at screen right, brown fingerless gloves, charcoal knee-length trousers, folded-cuff brown leather boots. Keep directly facing AWAY toward SCREEN TOP, fixed slightly elevated RPG camera, NO face/eyes/profile, do not turn sideways or diagonal. Detailed crisp pixel-sprite art, same rendering and costume, generous transparent margin, ONE character, no sheet/text/ground/shadow/aura/halo. The BACK of each boot has a vertical heel seam and full cuff. Both toe axes point AWAY toward SCREEN TOP, NEVER outward/sideways, no front laces visible on the back. Draw real connected knees/shins/ankles; boots keep full physical cuff height/shaft/volume, never shrink/rotate pasted shoes. Normal SHORT walking stride, no running, jumping, giant sole, high kick or high knees. From rear view LEFT LEG/ARM is SCREEN LEFT, RIGHT is SCREEN RIGHT. Forearm swing follows opposite leg, clearly alternate which hand is visible behind the body.\nPOSE:\n04 LATE SWING / UP A: RIGHT leg screen RIGHT has passed body and reaches forward AWAY toward screen TOP, heel low just about to land, toe relaxed. LEFT support leg screen LEFT trails slightly TOWARD viewer, heel rising while toe remains on ground, show a slim rear sole edge. Right boot appears slightly HIGHER in image than trailing left boot. RIGHT ARM screen RIGHT swings BACK toward viewer with visible glove lower beside right hip; LEFT ARM swings forward AWAY, hand mostly hidden by left flank. Short natural stride, late swing NOT an exaggerated sole-facing camera kick.",
+        "generatedSource": "/workspace/generated_images/exec-b56ea80c-5480-45de-93e1-a90406f4302c.png"
+      },
+      "refinements": [
+        {
+          "prompt": "Correct ONLY the LOWER BODY / BOOT PROPORTIONS of the FIRST rear-view walking sprite using the SECOND rear IDLE image as the boot model. Preserve EXACTLY the first sprite's head, hair, body/costume design, scarf, straps, pouch, arm swing and pixel art. One full-body BACK-FACING sprite, no face, same camera and generous transparent margin. Transparent background, no glow/halo/shadow.\nThe current walk has exaggerated depth: the foot advanced AWAY is too small and the rear boot shaft is stretched. Use a near-ORTHOGRAPHIC RPG camera: the two boots have the SAME actual cuff WIDTH/circumference, cuff HEIGHT, shaft length and heel WIDTH, matching idle. Do not shrink the far boot or stretch the trailing shin/shaft. Tighten the fore-aft stride by roughly one third. The heels should have modest vertical separation in image, not one tiny shoe high up and one long giant shoe near camera. Keep knees naturally bent under coat, both toe axes point SCREEN TOP, NO outward splay, NO front laces. Draw anatomical connected legs, no warped shoes, never change overall body proportions. Preserve full brown heel seams, folded cuffs, thin sole edges. The backward rolling boot pitches around toe joint and shows only a modest rear sole edge, not an enormous sole facing viewer.\nPHASE TO RETAIN: 04 LATE SWING / UP A: RIGHT leg screen RIGHT has passed body and reaches forward AWAY toward screen TOP, heel low just about to land, toe relaxed. LEFT support leg screen LEFT trails slightly TOWARD viewer, heel rising while toe remains on ground, show a slim rear sole edge. Right boot appears slightly HIGHER in image than trailing left boot. RIGHT ARM screen RIGHT swings BACK toward viewer with visible glove lower beside right hip; LEFT ARM swings forward AWAY, hand mostly hidden by left flank. Short natural stride, late swing NOT an exaggerated sole-facing camera kick.",
+          "generatedSource": "/workspace/generated_images/exec-0cb919ba-797b-4944-aabb-e045638af302.png"
+        }
+      ],
+      "generatedSource": "/workspace/generated_images/exec-0cb919ba-797b-4944-aabb-e045638af302.png",
+      "sha256": "33589d15e45399d46826bf61425d3c8dd8027e78eb1051abcac1a64086853772"
+    },
+    {
+      "index": 5,
+      "id": "05 CONTACT B",
+      "rawImage": "raw/05.png",
+      "initial": {
+        "prompt": "Edit this BACK-VIEW character into EXACTLY ONE full-body rear/up WALK sprite. SAME boy and EXACT same tousled chestnut hair silhouette, head/body proportions, blue scarf trailing to screen left, royal-blue coat with cream/gold split tails, X brown straps across the BACK, brown belt/pouch at screen right, brown fingerless gloves, charcoal knee-length trousers, folded-cuff brown leather boots. Keep directly facing AWAY toward SCREEN TOP, fixed slightly elevated RPG camera, NO face/eyes/profile, do not turn sideways or diagonal. Detailed crisp pixel-sprite art, same rendering and costume, generous transparent margin, ONE character, no sheet/text/ground/shadow/aura/halo. The BACK of each boot has a vertical heel seam and full cuff. Both toe axes point AWAY toward SCREEN TOP, NEVER outward/sideways, no front laces visible on the back. Draw real connected knees/shins/ankles; boots keep full physical cuff height/shaft/volume, never shrink/rotate pasted shoes. Normal SHORT walking stride, no running, jumping, giant sole, high kick or high knees. From rear view LEFT LEG/ARM is SCREEN LEFT, RIGHT is SCREEN RIGHT. Forearm swing follows opposite leg, clearly alternate which hand is visible behind the body.\nPOSE:\n05 CONTACT B: RIGHT leg screen RIGHT reaches forward AWAY from viewer toward screen TOP, heel makes contact, back heel/cuff visible. LEFT leg screen LEFT trails CLOSER toward viewer and pushes off with heel lifted, toe stays pointed screen TOP on ground; a small appropriate back sole edge visible. RIGHT ARM screen RIGHT swings BACK toward camera, visible gloved fist lower beside right hip. LEFT ARM screen LEFT swings forward AWAY and hand mostly hidden at left flank. This is opposite leg and arm cycle to 01, not the same pose again. Modest depth split.",
+        "generatedSource": "/workspace/generated_images/exec-2b7913a0-9e24-425d-bf28-ea1da64562ba.png"
+      },
+      "refinements": [
+        {
+          "prompt": "Correct ONLY the LOWER BODY / BOOT PROPORTIONS of the FIRST rear-view walking sprite using the SECOND rear IDLE image as the boot model. Preserve EXACTLY the first sprite's head, hair, body/costume design, scarf, straps, pouch, arm swing and pixel art. One full-body BACK-FACING sprite, no face, same camera and generous transparent margin. Transparent background, no glow/halo/shadow.\nThe current walk has exaggerated depth: the foot advanced AWAY is too small and the rear boot shaft is stretched. Use a near-ORTHOGRAPHIC RPG camera: the two boots have the SAME actual cuff WIDTH/circumference, cuff HEIGHT, shaft length and heel WIDTH, matching idle. Do not shrink the far boot or stretch the trailing shin/shaft. Tighten the fore-aft stride by roughly one third. The heels should have modest vertical separation in image, not one tiny shoe high up and one long giant shoe near camera. Keep knees naturally bent under coat, both toe axes point SCREEN TOP, NO outward splay, NO front laces. Draw anatomical connected legs, no warped shoes, never change overall body proportions. Preserve full brown heel seams, folded cuffs, thin sole edges. The backward rolling boot pitches around toe joint and shows only a modest rear sole edge, not an enormous sole facing viewer.\nPHASE TO RETAIN: 05 CONTACT B: RIGHT leg screen RIGHT reaches forward AWAY from viewer toward screen TOP, heel makes contact, back heel/cuff visible. LEFT leg screen LEFT trails CLOSER toward viewer and pushes off with heel lifted, toe stays pointed screen TOP on ground; a small appropriate back sole edge visible. RIGHT ARM screen RIGHT swings BACK toward camera, visible gloved fist lower beside right hip. LEFT ARM screen LEFT swings forward AWAY and hand mostly hidden at left flank. This is opposite leg and arm cycle to 01, not the same pose again. Modest depth split.",
+          "generatedSource": "/workspace/generated_images/exec-6777c8b5-6a31-4c2c-8f22-ef37462099fb.png"
+        }
+      ],
+      "generatedSource": "/workspace/generated_images/exec-6777c8b5-6a31-4c2c-8f22-ef37462099fb.png",
+      "sha256": "66696cf35e173bf8ef9484bba6e30fdac17343fc1ed252cab79273c27bc06834"
+    },
+    {
+      "index": 6,
+      "id": "06 WEIGHT ACCEPTANCE B",
+      "rawImage": "raw/06.png",
+      "initial": {
+        "prompt": "Edit this BACK-VIEW character into EXACTLY ONE full-body rear/up WALK sprite. SAME boy and EXACT same tousled chestnut hair silhouette, head/body proportions, blue scarf trailing to screen left, royal-blue coat with cream/gold split tails, X brown straps across the BACK, brown belt/pouch at screen right, brown fingerless gloves, charcoal knee-length trousers, folded-cuff brown leather boots. Keep directly facing AWAY toward SCREEN TOP, fixed slightly elevated RPG camera, NO face/eyes/profile, do not turn sideways or diagonal. Detailed crisp pixel-sprite art, same rendering and costume, generous transparent margin, ONE character, no sheet/text/ground/shadow/aura/halo. The BACK of each boot has a vertical heel seam and full cuff. Both toe axes point AWAY toward SCREEN TOP, NEVER outward/sideways, no front laces visible on the back. Draw real connected knees/shins/ankles; boots keep full physical cuff height/shaft/volume, never shrink/rotate pasted shoes. Normal SHORT walking stride, no running, jumping, giant sole, high kick or high knees. From rear view LEFT LEG/ARM is SCREEN LEFT, RIGHT is SCREEN RIGHT. Forearm swing follows opposite leg, clearly alternate which hand is visible behind the body.\nPOSE:\n06 WEIGHT ACCEPTANCE B: RIGHT support leg screen RIGHT accepts weight with knee modestly flexed, boot heel on ground farther away. LEFT knee screen LEFT bends and has already started moving AWAY forward beneath hip; left full-size boot is LIFTED clear of ground, heel raised, modest back sole visible, toe points screen TOP. Low pelvis. RIGHT ARM remains back toward camera but returning, its glove visible beside right hip; LEFT arm forward mostly hidden by left flank. No outward boots, no shrinkage, no running.",
+        "generatedSource": "/workspace/generated_images/exec-49ab7367-b110-45c3-8f2f-104b66e4fe0e.png"
+      },
+      "refinements": [],
+      "generatedSource": "/workspace/generated_images/exec-49ab7367-b110-45c3-8f2f-104b66e4fe0e.png",
+      "sha256": "a1fa6538e0e69bdb66c45922049fce72f072adaa7f193b1a4903e6f740bbaa47"
+    },
+    {
+      "index": 7,
+      "id": "07 PASSING B",
+      "rawImage": "raw/07.png",
+      "initial": {
+        "prompt": "Edit this BACK-VIEW character into EXACTLY ONE full-body rear/up WALK sprite. SAME boy and EXACT same tousled chestnut hair silhouette, head/body proportions, blue scarf trailing to screen left, royal-blue coat with cream/gold split tails, X brown straps across the BACK, brown belt/pouch at screen right, brown fingerless gloves, charcoal knee-length trousers, folded-cuff brown leather boots. Keep directly facing AWAY toward SCREEN TOP, fixed slightly elevated RPG camera, NO face/eyes/profile, do not turn sideways or diagonal. Detailed crisp pixel-sprite art, same rendering and costume, generous transparent margin, ONE character, no sheet/text/ground/shadow/aura/halo. The BACK of each boot has a vertical heel seam and full cuff. Both toe axes point AWAY toward SCREEN TOP, NEVER outward/sideways, no front laces visible on the back. Draw real connected knees/shins/ankles; boots keep full physical cuff height/shaft/volume, never shrink/rotate pasted shoes. Normal SHORT walking stride, no running, jumping, giant sole, high kick or high knees. From rear view LEFT LEG/ARM is SCREEN LEFT, RIGHT is SCREEN RIGHT. Forearm swing follows opposite leg, clearly alternate which hand is visible behind the body.\nPOSE:\n07 PASSING B: RIGHT leg screen RIGHT is planted almost vertical under hip supporting body. LEFT knee screen LEFT bends advancing AWAY toward screen TOP, full-size left boot passes CLOSE beside right supporting ankle IN DEPTH, raised half a boot height. Two heels close in depth; LEFT boot lifted with modest sole edge visible, not stuck far below/back or out to side. Arms approximately neutral, slight high pelvis, no high knee, no toe splay. This is the opposite support foot to 03.",
+        "generatedSource": "/workspace/generated_images/exec-5a373dd5-97d0-4475-b70b-0523503e4323.png"
+      },
+      "refinements": [],
+      "generatedSource": "/workspace/generated_images/exec-5a373dd5-97d0-4475-b70b-0523503e4323.png",
+      "sha256": "16c4354d3f84096d7fa4b07dd138db4430c8fc4454ade16fdcc42cdf2684fef2"
+    },
+    {
+      "index": 8,
+      "id": "08 LATE SWING / UP B",
+      "rawImage": "raw/08.png",
+      "initial": {
+        "prompt": "Edit this BACK-VIEW character into EXACTLY ONE full-body rear/up WALK sprite. SAME boy and EXACT same tousled chestnut hair silhouette, head/body proportions, blue scarf trailing to screen left, royal-blue coat with cream/gold split tails, X brown straps across the BACK, brown belt/pouch at screen right, brown fingerless gloves, charcoal knee-length trousers, folded-cuff brown leather boots. Keep directly facing AWAY toward SCREEN TOP, fixed slightly elevated RPG camera, NO face/eyes/profile, do not turn sideways or diagonal. Detailed crisp pixel-sprite art, same rendering and costume, generous transparent margin, ONE character, no sheet/text/ground/shadow/aura/halo. The BACK of each boot has a vertical heel seam and full cuff. Both toe axes point AWAY toward SCREEN TOP, NEVER outward/sideways, no front laces visible on the back. Draw real connected knees/shins/ankles; boots keep full physical cuff height/shaft/volume, never shrink/rotate pasted shoes. Normal SHORT walking stride, no running, jumping, giant sole, high kick or high knees. From rear view LEFT LEG/ARM is SCREEN LEFT, RIGHT is SCREEN RIGHT. Forearm swing follows opposite leg, clearly alternate which hand is visible behind the body.\nPOSE:\n08 LATE SWING / UP B: LEFT leg screen LEFT has passed body, reaches forward AWAY toward screen TOP, full-size heel low about to touch ground, toe relaxed. RIGHT leg screen RIGHT trails CLOSER toward viewer, heel raised with toe pointed screen TOP on ground, thin back sole edge. Advancing left boot is slightly HIGHER in image than trailing right boot. LEFT ARM screen LEFT swings BACK toward camera, clearly visible glove lower beside left hip; RIGHT arm forward AWAY, hand partly hidden by torso/pouch. Natural short stride ready to loop to 01, no big kick/sole.",
+        "generatedSource": "/workspace/generated_images/exec-1af95dfc-b49d-43a1-981f-9e5bb8cc12ff.png"
+      },
+      "refinements": [
+        {
+          "prompt": "Correct ONLY the LOWER BODY / BOOT PROPORTIONS of the FIRST rear-view walking sprite using the SECOND rear IDLE image as the boot model. Preserve EXACTLY the first sprite's head, hair, body/costume design, scarf, straps, pouch, arm swing and pixel art. One full-body BACK-FACING sprite, no face, same camera and generous transparent margin. Transparent background, no glow/halo/shadow.\nThe current walk has exaggerated depth: the foot advanced AWAY is too small and the rear boot shaft is stretched. Use a near-ORTHOGRAPHIC RPG camera: the two boots have the SAME actual cuff WIDTH/circumference, cuff HEIGHT, shaft length and heel WIDTH, matching idle. Do not shrink the far boot or stretch the trailing shin/shaft. Tighten the fore-aft stride by roughly one third. The heels should have modest vertical separation in image, not one tiny shoe high up and one long giant shoe near camera. Keep knees naturally bent under coat, both toe axes point SCREEN TOP, NO outward splay, NO front laces. Draw anatomical connected legs, no warped shoes, never change overall body proportions. Preserve full brown heel seams, folded cuffs, thin sole edges. The backward rolling boot pitches around toe joint and shows only a modest rear sole edge, not an enormous sole facing viewer.\nPHASE TO RETAIN: 08 LATE SWING / UP B: LEFT leg screen LEFT has passed body, reaches forward AWAY toward screen TOP, full-size heel low about to touch ground, toe relaxed. RIGHT leg screen RIGHT trails CLOSER toward viewer, heel raised with toe pointed screen TOP on ground, thin back sole edge. Advancing left boot is slightly HIGHER in image than trailing right boot. LEFT ARM screen LEFT swings BACK toward camera, clearly visible glove lower beside left hip; RIGHT arm forward AWAY, hand partly hidden by torso/pouch. Natural short stride ready to loop to 01, no big kick/sole.",
+          "generatedSource": "/workspace/generated_images/exec-c3fbb2b8-9238-4c68-a50e-183495712a79.png"
+        }
+      ],
+      "generatedSource": "/workspace/generated_images/exec-c3fbb2b8-9238-4c68-a50e-183495712a79.png",
+      "sha256": "4126b111d2b4b7722e5382ce79c30444bf4a5c1057c1abad33cbbf4aedcf9d61"
+    }
+  ],
+  "artApproval": null
+}

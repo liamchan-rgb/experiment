@@ -1,0 +1,690 @@
+{
+  "date": "2026-10-18",
+  "artApproval": null,
+  "idleApproval": "../r1/approval.json",
+  "scope": "down idle 00 plus eight new neutral walking poses; other neutral directions and generic customization pending",
+  "registeredRGBA256Layers": 72,
+  "sharedHeadAndTorsoPixelExactAcrossPoses": true,
+  "oraLayerReassemblyPixelExact": true,
+  "headLocalTileMatchesAllFrames": true,
+  "stripMatchesFrames": true,
+  "independentLayerIssues": [],
+  "sourceProvenanceHashesChecked": 15,
+  "previousTrackedPNGAndGIFUnchanged": 534,
+  "approvedMotionFramesUnchanged": 72,
+  "normalLoopMs": 960,
+  "slowLoopMs": 3840,
+  "gifOrderAndPalettePixelsMatch": true,
+  "productionCorrectlyRejected": true,
+  "nativeEditorOrApplicationBuild": "not run",
+  "thirdNewResourceIntegration": "not implemented; no claim of completed customization",
+  "frameChecks": [
+    {
+      "frame": 0,
+      "bodyStrongAlphaComponents": [
+        4881
+      ],
+      "jointOverlaps": [
+        {
+          "parts": [
+            "head.base",
+            "body.torso"
+          ],
+          "pixels": 35,
+          "height": 4
+        },
+        {
+          "parts": [
+            "body.arm.right",
+            "body.torso"
+          ],
+          "pixels": 121,
+          "height": 20
+        },
+        {
+          "parts": [
+            "body.arm.left",
+            "body.torso"
+          ],
+          "pixels": 109,
+          "height": 19
+        },
+        {
+          "parts": [
+            "body.arm.right",
+            "body.hand.right"
+          ],
+          "pixels": 54,
+          "height": 5
+        },
+        {
+          "parts": [
+            "body.arm.left",
+            "body.hand.left"
+          ],
+          "pixels": 52,
+          "height": 5
+        },
+        {
+          "parts": [
+            "body.leg.right",
+            "body.torso"
+          ],
+          "pixels": 158,
+          "height": 12
+        },
+        {
+          "parts": [
+            "body.leg.left",
+            "body.torso"
+          ],
+          "pixels": 175,
+          "height": 12
+        }
+      ],
+      "soleBounds": [
+        {
+          "side": "right",
+          "strongAlphaBottomY": 213
+        },
+        {
+          "side": "left",
+          "strongAlphaBottomY": 213
+        }
+      ]
+    },
+    {
+      "frame": 1,
+      "bodyStrongAlphaComponents": [
+        4742
+      ],
+      "jointOverlaps": [
+        {
+          "parts": [
+            "head.base",
+            "body.torso"
+          ],
+          "pixels": 35,
+          "height": 4
+        },
+        {
+          "parts": [
+            "body.arm.right",
+            "body.torso"
+          ],
+          "pixels": 113,
+          "height": 17
+        },
+        {
+          "parts": [
+            "body.arm.left",
+            "body.torso"
+          ],
+          "pixels": 114,
+          "height": 17
+        },
+        {
+          "parts": [
+            "body.arm.right",
+            "body.hand.right"
+          ],
+          "pixels": 46,
+          "height": 5
+        },
+        {
+          "parts": [
+            "body.arm.left",
+            "body.hand.left"
+          ],
+          "pixels": 54,
+          "height": 5
+        },
+        {
+          "parts": [
+            "body.leg.right",
+            "body.torso"
+          ],
+          "pixels": 158,
+          "height": 12
+        },
+        {
+          "parts": [
+            "body.leg.left",
+            "body.torso"
+          ],
+          "pixels": 175,
+          "height": 12
+        }
+      ],
+      "soleBounds": [
+        {
+          "side": "right",
+          "strongAlphaBottomY": 215
+        },
+        {
+          "side": "left",
+          "strongAlphaBottomY": 206
+        }
+      ]
+    },
+    {
+      "frame": 2,
+      "bodyStrongAlphaComponents": [
+        4693
+      ],
+      "jointOverlaps": [
+        {
+          "parts": [
+            "head.base",
+            "body.torso"
+          ],
+          "pixels": 35,
+          "height": 4
+        },
+        {
+          "parts": [
+            "body.arm.right",
+            "body.torso"
+          ],
+          "pixels": 86,
+          "height": 14
+        },
+        {
+          "parts": [
+            "body.arm.left",
+            "body.torso"
+          ],
+          "pixels": 102,
+          "height": 16
+        },
+        {
+          "parts": [
+            "body.arm.right",
+            "body.hand.right"
+          ],
+          "pixels": 44,
+          "height": 5
+        },
+        {
+          "parts": [
+            "body.arm.left",
+            "body.hand.left"
+          ],
+          "pixels": 53,
+          "height": 5
+        },
+        {
+          "parts": [
+            "body.leg.right",
+            "body.torso"
+          ],
+          "pixels": 159,
+          "height": 12
+        },
+        {
+          "parts": [
+            "body.leg.left",
+            "body.torso"
+          ],
+          "pixels": 175,
+          "height": 12
+        }
+      ],
+      "soleBounds": [
+        {
+          "side": "right",
+          "strongAlphaBottomY": 215
+        },
+        {
+          "side": "left",
+          "strongAlphaBottomY": 202
+        }
+      ]
+    },
+    {
+      "frame": 3,
+      "bodyStrongAlphaComponents": [
+        4772
+      ],
+      "jointOverlaps": [
+        {
+          "parts": [
+            "head.base",
+            "body.torso"
+          ],
+          "pixels": 35,
+          "height": 4
+        },
+        {
+          "parts": [
+            "body.arm.right",
+            "body.torso"
+          ],
+          "pixels": 121,
+          "height": 19
+        },
+        {
+          "parts": [
+            "body.arm.left",
+            "body.torso"
+          ],
+          "pixels": 119,
+          "height": 19
+        },
+        {
+          "parts": [
+            "body.arm.right",
+            "body.hand.right"
+          ],
+          "pixels": 52,
+          "height": 5
+        },
+        {
+          "parts": [
+            "body.arm.left",
+            "body.hand.left"
+          ],
+          "pixels": 61,
+          "height": 6
+        },
+        {
+          "parts": [
+            "body.leg.right",
+            "body.torso"
+          ],
+          "pixels": 158,
+          "height": 12
+        },
+        {
+          "parts": [
+            "body.leg.left",
+            "body.torso"
+          ],
+          "pixels": 175,
+          "height": 12
+        }
+      ],
+      "soleBounds": [
+        {
+          "side": "right",
+          "strongAlphaBottomY": 211
+        },
+        {
+          "side": "left",
+          "strongAlphaBottomY": 202
+        }
+      ]
+    },
+    {
+      "frame": 4,
+      "bodyStrongAlphaComponents": [
+        4764
+      ],
+      "jointOverlaps": [
+        {
+          "parts": [
+            "head.base",
+            "body.torso"
+          ],
+          "pixels": 35,
+          "height": 4
+        },
+        {
+          "parts": [
+            "body.arm.right",
+            "body.torso"
+          ],
+          "pixels": 120,
+          "height": 18
+        },
+        {
+          "parts": [
+            "body.arm.left",
+            "body.torso"
+          ],
+          "pixels": 112,
+          "height": 16
+        },
+        {
+          "parts": [
+            "body.arm.right",
+            "body.hand.right"
+          ],
+          "pixels": 53,
+          "height": 5
+        },
+        {
+          "parts": [
+            "body.arm.left",
+            "body.hand.left"
+          ],
+          "pixels": 48,
+          "height": 5
+        },
+        {
+          "parts": [
+            "body.leg.right",
+            "body.torso"
+          ],
+          "pixels": 158,
+          "height": 12
+        },
+        {
+          "parts": [
+            "body.leg.left",
+            "body.torso"
+          ],
+          "pixels": 175,
+          "height": 12
+        }
+      ],
+      "soleBounds": [
+        {
+          "side": "right",
+          "strongAlphaBottomY": 203
+        },
+        {
+          "side": "left",
+          "strongAlphaBottomY": 216
+        }
+      ]
+    },
+    {
+      "frame": 5,
+      "bodyStrongAlphaComponents": [
+        4770
+      ],
+      "jointOverlaps": [
+        {
+          "parts": [
+            "head.base",
+            "body.torso"
+          ],
+          "pixels": 35,
+          "height": 4
+        },
+        {
+          "parts": [
+            "body.arm.right",
+            "body.torso"
+          ],
+          "pixels": 121,
+          "height": 19
+        },
+        {
+          "parts": [
+            "body.arm.left",
+            "body.torso"
+          ],
+          "pixels": 109,
+          "height": 17
+        },
+        {
+          "parts": [
+            "body.arm.right",
+            "body.hand.right"
+          ],
+          "pixels": 53,
+          "height": 5
+        },
+        {
+          "parts": [
+            "body.arm.left",
+            "body.hand.left"
+          ],
+          "pixels": 52,
+          "height": 5
+        },
+        {
+          "parts": [
+            "body.leg.right",
+            "body.torso"
+          ],
+          "pixels": 158,
+          "height": 12
+        },
+        {
+          "parts": [
+            "body.leg.left",
+            "body.torso"
+          ],
+          "pixels": 175,
+          "height": 12
+        }
+      ],
+      "soleBounds": [
+        {
+          "side": "right",
+          "strongAlphaBottomY": 205
+        },
+        {
+          "side": "left",
+          "strongAlphaBottomY": 216
+        }
+      ]
+    },
+    {
+      "frame": 6,
+      "bodyStrongAlphaComponents": [
+        4640
+      ],
+      "jointOverlaps": [
+        {
+          "parts": [
+            "head.base",
+            "body.torso"
+          ],
+          "pixels": 35,
+          "height": 4
+        },
+        {
+          "parts": [
+            "body.arm.right",
+            "body.torso"
+          ],
+          "pixels": 110,
+          "height": 18
+        },
+        {
+          "parts": [
+            "body.arm.left",
+            "body.torso"
+          ],
+          "pixels": 103,
+          "height": 16
+        },
+        {
+          "parts": [
+            "body.arm.right",
+            "body.hand.right"
+          ],
+          "pixels": 54,
+          "height": 5
+        },
+        {
+          "parts": [
+            "body.arm.left",
+            "body.hand.left"
+          ],
+          "pixels": 52,
+          "height": 5
+        },
+        {
+          "parts": [
+            "body.leg.right",
+            "body.torso"
+          ],
+          "pixels": 159,
+          "height": 12
+        },
+        {
+          "parts": [
+            "body.leg.left",
+            "body.torso"
+          ],
+          "pixels": 175,
+          "height": 12
+        }
+      ],
+      "soleBounds": [
+        {
+          "side": "right",
+          "strongAlphaBottomY": 204
+        },
+        {
+          "side": "left",
+          "strongAlphaBottomY": 213
+        }
+      ]
+    },
+    {
+      "frame": 7,
+      "bodyStrongAlphaComponents": [
+        4626
+      ],
+      "jointOverlaps": [
+        {
+          "parts": [
+            "head.base",
+            "body.torso"
+          ],
+          "pixels": 35,
+          "height": 4
+        },
+        {
+          "parts": [
+            "body.arm.right",
+            "body.torso"
+          ],
+          "pixels": 134,
+          "height": 29
+        },
+        {
+          "parts": [
+            "body.arm.left",
+            "body.torso"
+          ],
+          "pixels": 121,
+          "height": 18
+        },
+        {
+          "parts": [
+            "body.arm.right",
+            "body.hand.right"
+          ],
+          "pixels": 62,
+          "height": 6
+        },
+        {
+          "parts": [
+            "body.arm.left",
+            "body.hand.left"
+          ],
+          "pixels": 53,
+          "height": 5
+        },
+        {
+          "parts": [
+            "body.leg.right",
+            "body.torso"
+          ],
+          "pixels": 158,
+          "height": 12
+        },
+        {
+          "parts": [
+            "body.leg.left",
+            "body.torso"
+          ],
+          "pixels": 175,
+          "height": 12
+        }
+      ],
+      "soleBounds": [
+        {
+          "side": "right",
+          "strongAlphaBottomY": 202
+        },
+        {
+          "side": "left",
+          "strongAlphaBottomY": 211
+        }
+      ]
+    },
+    {
+      "frame": 8,
+      "bodyStrongAlphaComponents": [
+        4767
+      ],
+      "jointOverlaps": [
+        {
+          "parts": [
+            "head.base",
+            "body.torso"
+          ],
+          "pixels": 35,
+          "height": 4
+        },
+        {
+          "parts": [
+            "body.arm.right",
+            "body.torso"
+          ],
+          "pixels": 123,
+          "height": 16
+        },
+        {
+          "parts": [
+            "body.arm.left",
+            "body.torso"
+          ],
+          "pixels": 109,
+          "height": 17
+        },
+        {
+          "parts": [
+            "body.arm.right",
+            "body.hand.right"
+          ],
+          "pixels": 43,
+          "height": 5
+        },
+        {
+          "parts": [
+            "body.arm.left",
+            "body.hand.left"
+          ],
+          "pixels": 55,
+          "height": 5
+        },
+        {
+          "parts": [
+            "body.leg.right",
+            "body.torso"
+          ],
+          "pixels": 158,
+          "height": 12
+        },
+        {
+          "parts": [
+            "body.leg.left",
+            "body.torso"
+          ],
+          "pixels": 175,
+          "height": 12
+        }
+      ],
+      "soleBounds": [
+        {
+          "side": "right",
+          "strongAlphaBottomY": 214
+        },
+        {
+          "side": "left",
+          "strongAlphaBottomY": 203
+        }
+      ]
+    }
+  ],
+  "independentReexportByteExactExistingFiles": 144
+}

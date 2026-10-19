@@ -1,0 +1,27 @@
+{
+  "tool": "image_gen.imagegen",
+  "date": "2026-10-19",
+  "transparentBackgroundRequested": true,
+  "referencePathBase": "repository root",
+  "rawSourcesPreserved": true,
+  "runtimeDependencies": [],
+  "authoringReferenceRole": "neutral fitting guide and same-outfit design only; no runtime dependency on another appearance",
+  "records": [
+    {
+      "revision": "down-r1",
+      "file": "source/down.png",
+      "promptFile": "source/prompt-down.txt",
+      "references": [
+        {
+          "path": "Art/Templates/P1-Wardrobe/down/v1/references/weapon-registration.png",
+          "sha256": "01b4fb52bb968c43d08c108f4d08fd61ea9ca563cf9d656771609dd2fc3735fe"
+        }
+      ],
+      "generatorOutputPath": "/workspace/generated_images/exec-42213176-30c3-4426-94c4-7b17c284a4e9.png",
+      "sha256": "74fa3e52ea2a1973d68da8dc262d2e138c396828f2860498f06db90cdffed3a8",
+      "promptSHA256": "d9f3b1c0b622b62c4f5657be40663be5f44ea04268a2d6e23de2a02a2817c9e6",
+      "status": "selected source regions as explicitly declared in authoring.json; wardrobe artwork awaiting user review"
+    }
+  ],
+  "artApproval": null
+}

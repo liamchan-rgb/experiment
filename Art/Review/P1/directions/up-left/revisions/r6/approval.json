@@ -1,0 +1,15 @@
+{
+  "date": "2026-10-18",
+  "reviewer": "user",
+  "statement": "好到下一个方向的修改了，你参考我们左上动画的制作过程，不要再犯错",
+  "direction": "up-left",
+  "revision": "r6",
+  "scope": "complete up-left r6 idle and eight walking poses, numbered preview and normal/slow loops shown for review; excludes production app, other directions and final layered template",
+  "status": "approved",
+  "artifacts": {
+    "review-2x.png": "7acb20bc907d7709f6fa1e71c58d6786306e0f0d924ea3ab75a99e6cb6bb99cb",
+    "strip.png": "5a6282612299914da5b829cff5f3c86085731088bc2a17be08b43c34eba6ff96",
+    "walk.gif": "29106f6a357e56812160ab789acae58640ac77250e2ff55013a47cc50ea419a2",
+    "walk-slow.gif": "1f92af90cf8db052f012e4a6102c8ab840fae52b4ff56c97a1b84e00b193c56f"
+  }
+}

@@ -1,0 +1,761 @@
+{
+  "version": 1,
+  "direction": "down",
+  "canvas": [
+    256,
+    256
+  ],
+  "space": "pixels, x right, y down; character right is screen left",
+  "headFacePolygonOffsets": [
+    [
+      -23,
+      -3
+    ],
+    [
+      -19,
+      2
+    ],
+    [
+      -16,
+      3
+    ],
+    [
+      -14,
+      -6
+    ],
+    [
+      -10,
+      -11
+    ],
+    [
+      -6,
+      -3
+    ],
+    [
+      -4,
+      -2
+    ],
+    [
+      0,
+      -8
+    ],
+    [
+      4,
+      -14
+    ],
+    [
+      9,
+      -6
+    ],
+    [
+      13,
+      2
+    ],
+    [
+      16,
+      4
+    ],
+    [
+      22,
+      -3
+    ],
+    [
+      23,
+      7
+    ],
+    [
+      14,
+      12
+    ],
+    [
+      5,
+      16
+    ],
+    [
+      -6,
+      15
+    ],
+    [
+      -16,
+      10
+    ],
+    [
+      -23,
+      7
+    ]
+  ],
+  "frames": [
+    {
+      "id": "00",
+      "head": [
+        124,
+        117
+      ],
+      "neck": [
+        124,
+        132
+      ],
+      "waist": [
+        125,
+        157
+      ],
+      "torsoBox": [
+        108,
+        136,
+        34,
+        38
+      ],
+      "rightHand": [
+        98,
+        171
+      ],
+      "leftHand": [
+        153,
+        171
+      ],
+      "handBoxes": [
+        [
+          89,
+          160,
+          110,
+          178
+        ],
+        [
+          143,
+          160,
+          163,
+          178
+        ]
+      ],
+      "swordAngleDeg": 22,
+      "hipRight": [
+        117,
+        177
+      ],
+      "hipLeft": [
+        133,
+        177
+      ],
+      "phase": "idle",
+      "contact": "both",
+      "kneeRight": [
+        115,
+        189
+      ],
+      "kneeLeft": [
+        135,
+        189
+      ],
+      "ankleRight": [
+        115,
+        204
+      ],
+      "ankleLeft": [
+        135,
+        204
+      ]
+    },
+    {
+      "id": "01",
+      "head": [
+        124,
+        116
+      ],
+      "neck": [
+        124,
+        131
+      ],
+      "waist": [
+        125,
+        156
+      ],
+      "torsoBox": [
+        108,
+        135,
+        34,
+        38
+      ],
+      "rightHand": [
+        96,
+        160
+      ],
+      "leftHand": [
+        153,
+        165
+      ],
+      "handBoxes": [
+        [
+          87,
+          151,
+          106,
+          166
+        ],
+        [
+          143,
+          154,
+          165,
+          174
+        ]
+      ],
+      "swordAngleDeg": 24,
+      "hipRight": [
+        117,
+        176
+      ],
+      "hipLeft": [
+        133,
+        176
+      ],
+      "phase": "right-contact",
+      "contact": "right",
+      "kneeRight": [
+        116,
+        185
+      ],
+      "kneeLeft": [
+        135,
+        178
+      ],
+      "ankleRight": [
+        116,
+        202
+      ],
+      "ankleLeft": [
+        135,
+        192
+      ]
+    },
+    {
+      "id": "02",
+      "head": [
+        127,
+        119
+      ],
+      "neck": [
+        127,
+        134
+      ],
+      "waist": [
+        127,
+        161
+      ],
+      "torsoBox": [
+        110,
+        140,
+        34,
+        38
+      ],
+      "rightHand": [
+        97,
+        162
+      ],
+      "leftHand": [
+        155,
+        169
+      ],
+      "handBoxes": [
+        [
+          91,
+          155,
+          110,
+          171
+        ],
+        [
+          143,
+          157,
+          168,
+          176
+        ]
+      ],
+      "swordAngleDeg": 24,
+      "hipRight": [
+        119,
+        181
+      ],
+      "hipLeft": [
+        135,
+        181
+      ],
+      "phase": "right-loading",
+      "contact": "right",
+      "kneeRight": [
+        115,
+        187
+      ],
+      "kneeLeft": [
+        136,
+        178
+      ],
+      "ankleRight": [
+        115,
+        202
+      ],
+      "ankleLeft": [
+        136,
+        193
+      ]
+    },
+    {
+      "id": "03",
+      "head": [
+        123,
+        116
+      ],
+      "neck": [
+        123,
+        131
+      ],
+      "waist": [
+        123,
+        158
+      ],
+      "torsoBox": [
+        106,
+        137,
+        34,
+        38
+      ],
+      "rightHand": [
+        97,
+        167
+      ],
+      "leftHand": [
+        151,
+        168
+      ],
+      "handBoxes": [
+        [
+          86,
+          155,
+          109,
+          175
+        ],
+        [
+          142,
+          157,
+          164,
+          175
+        ]
+      ],
+      "swordAngleDeg": 23,
+      "hipRight": [
+        115,
+        178
+      ],
+      "hipLeft": [
+        131,
+        178
+      ],
+      "phase": "left-passing",
+      "contact": "right",
+      "kneeRight": [
+        114,
+        189
+      ],
+      "kneeLeft": [
+        135,
+        183
+      ],
+      "ankleRight": [
+        114,
+        204
+      ],
+      "ankleLeft": [
+        135,
+        195
+      ]
+    },
+    {
+      "id": "04",
+      "head": [
+        124,
+        115
+      ],
+      "neck": [
+        124,
+        130
+      ],
+      "waist": [
+        125,
+        157
+      ],
+      "torsoBox": [
+        108,
+        136,
+        34,
+        38
+      ],
+      "rightHand": [
+        102,
+        164
+      ],
+      "leftHand": [
+        155,
+        161
+      ],
+      "handBoxes": [
+        [
+          90,
+          151,
+          112,
+          173
+        ],
+        [
+          145,
+          151,
+          166,
+          169
+        ]
+      ],
+      "swordAngleDeg": 18,
+      "hipRight": [
+        117,
+        177
+      ],
+      "hipLeft": [
+        133,
+        177
+      ],
+      "phase": "left-late-swing",
+      "contact": "right-to-left",
+      "kneeRight": [
+        116,
+        185
+      ],
+      "kneeLeft": [
+        136,
+        190
+      ],
+      "ankleRight": [
+        116,
+        198
+      ],
+      "ankleLeft": [
+        138,
+        208
+      ]
+    },
+    {
+      "id": "05",
+      "head": [
+        125,
+        115
+      ],
+      "neck": [
+        125,
+        130
+      ],
+      "waist": [
+        126,
+        157
+      ],
+      "torsoBox": [
+        109,
+        136,
+        34,
+        38
+      ],
+      "rightHand": [
+        101,
+        161
+      ],
+      "leftHand": [
+        153,
+        163
+      ],
+      "handBoxes": [
+        [
+          90,
+          150,
+          112,
+          170
+        ],
+        [
+          143,
+          152,
+          164,
+          171
+        ]
+      ],
+      "swordAngleDeg": 18,
+      "hipRight": [
+        118,
+        177
+      ],
+      "hipLeft": [
+        134,
+        177
+      ],
+      "phase": "left-contact",
+      "contact": "left",
+      "kneeRight": [
+        116,
+        180
+      ],
+      "kneeLeft": [
+        135,
+        188
+      ],
+      "ankleRight": [
+        115,
+        193
+      ],
+      "ankleLeft": [
+        136,
+        203
+      ]
+    },
+    {
+      "id": "06",
+      "head": [
+        126,
+        117
+      ],
+      "neck": [
+        126,
+        132
+      ],
+      "waist": [
+        127,
+        157
+      ],
+      "torsoBox": [
+        110,
+        136,
+        34,
+        38
+      ],
+      "rightHand": [
+        104,
+        162
+      ],
+      "leftHand": [
+        155,
+        163
+      ],
+      "handBoxes": [
+        [
+          92,
+          151,
+          116,
+          172
+        ],
+        [
+          145,
+          154,
+          166,
+          172
+        ]
+      ],
+      "swordAngleDeg": 20,
+      "hipRight": [
+        119,
+        177
+      ],
+      "hipLeft": [
+        135,
+        177
+      ],
+      "phase": "left-loading",
+      "contact": "left",
+      "kneeRight": [
+        117,
+        178
+      ],
+      "kneeLeft": [
+        136,
+        185
+      ],
+      "ankleRight": [
+        117,
+        190
+      ],
+      "ankleLeft": [
+        137,
+        202
+      ]
+    },
+    {
+      "id": "07",
+      "head": [
+        125,
+        116
+      ],
+      "neck": [
+        125,
+        131
+      ],
+      "waist": [
+        126,
+        157
+      ],
+      "torsoBox": [
+        109,
+        136,
+        34,
+        38
+      ],
+      "rightHand": [
+        98,
+        163
+      ],
+      "leftHand": [
+        153,
+        167
+      ],
+      "handBoxes": [
+        [
+          87,
+          153,
+          110,
+          172
+        ],
+        [
+          142,
+          155,
+          166,
+          178
+        ]
+      ],
+      "swordAngleDeg": 24,
+      "hipRight": [
+        118,
+        177
+      ],
+      "hipLeft": [
+        134,
+        177
+      ],
+      "phase": "right-passing",
+      "contact": "left",
+      "kneeRight": [
+        116,
+        178
+      ],
+      "kneeLeft": [
+        136,
+        184
+      ],
+      "ankleRight": [
+        116,
+        191
+      ],
+      "ankleLeft": [
+        136,
+        200
+      ]
+    },
+    {
+      "id": "08",
+      "head": [
+        126,
+        116
+      ],
+      "neck": [
+        126,
+        131
+      ],
+      "waist": [
+        126,
+        156
+      ],
+      "torsoBox": [
+        109,
+        135,
+        34,
+        38
+      ],
+      "rightHand": [
+        97,
+        155
+      ],
+      "leftHand": [
+        154,
+        165
+      ],
+      "handBoxes": [
+        [
+          87,
+          145,
+          108,
+          163
+        ],
+        [
+          142,
+          153,
+          167,
+          175
+        ]
+      ],
+      "swordAngleDeg": 25,
+      "hipRight": [
+        118,
+        176
+      ],
+      "hipLeft": [
+        134,
+        176
+      ],
+      "phase": "right-late-swing",
+      "contact": "left-to-right",
+      "kneeRight": [
+        115,
+        184
+      ],
+      "kneeLeft": [
+        136,
+        178
+      ],
+      "ankleRight": [
+        115,
+        198
+      ],
+      "ankleLeft": [
+        136,
+        191
+      ]
+    }
+  ],
+  "parts": {
+    "hair_silver": {
+      "size": [
+        70,
+        55
+      ],
+      "offsetFromHead": [
+        -35,
+        -50
+      ]
+    },
+    "head_blank": {
+      "size": [
+        48,
+        46
+      ],
+      "offsetFromHead": [
+        -24,
+        -32
+      ]
+    },
+    "face_amber": {
+      "size": [
+        40,
+        27
+      ],
+      "offsetFromHead": [
+        -20,
+        -11
+      ]
+    },
+    "sword": {
+      "size": [
+        19,
+        62
+      ],
+      "pivot": [
+        9.5,
+        14
+      ]
+    }
+  }
+}

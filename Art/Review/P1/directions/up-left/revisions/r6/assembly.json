@@ -1,0 +1,61 @@
+{
+  "sources": [
+    {
+      "pose": 0,
+      "source": "Art/Review/P1/directions/up-left/revisions/r5/raw/00.png",
+      "sourceSHA256": "e4e9605f279278da4ed4cd5e869e089578f0d5728f66ba2790aaa4e23b7e93ee",
+      "packedPNG_SHA256": "0959022506ce2b1b97213f4d61c9f2bc5a49c0bd9a2ab25563fc0a7d2bde428b"
+    },
+    {
+      "pose": 1,
+      "source": "Art/Review/P1/directions/up-left/revisions/r5/raw/01.png",
+      "sourceSHA256": "8d2e8b5681b430013d8bd56fa005964d47f5db79268021613592e8c947af4e31",
+      "packedPNG_SHA256": "c89e86151cb213031ed6185242cca2fe23153476e3c2a18fa4c29b648db14960"
+    },
+    {
+      "pose": 2,
+      "source": "Art/Review/P1/directions/up-left/revisions/r5/raw/02.png",
+      "sourceSHA256": "d495739b5efc5f7c02ada082130efde6a48d4db5ea5cc088272151ee5d672afa",
+      "packedPNG_SHA256": "ebd262bc9f729310e112b924cda2d785acdb6133ece1ad8f008a450e72859d8c"
+    },
+    {
+      "pose": 3,
+      "source": "Art/Review/P1/directions/up-left/revisions/r5/raw/03.png",
+      "sourceSHA256": "5b16e1b297a27a032c065b48414401d8a3cf55218448577084830ad3f95c2de8",
+      "packedPNG_SHA256": "d79f8f3af00ded9d88e7654c5fd7b777e4729c647128b236930b72627d17a2f9"
+    },
+    {
+      "pose": 4,
+      "source": "Art/Review/P1/directions/up-left/revisions/r5/raw/04.png",
+      "sourceSHA256": "59d53abf6b2875f9bee69735850b705a0bf170affdf39ec78623a052d9ea9093",
+      "packedPNG_SHA256": "5c5d3adb56d473b90785c69d48507497940b6451636d3befe282323497c6ed7f"
+    },
+    {
+      "pose": 5,
+      "source": "Art/Review/P1/directions/up-left/revisions/r6/05.png",
+      "sourceSHA256": "d52bd6967f4f8f101d1a3ee14f787043f2b20e8ff0f552f9863d659df128903d",
+      "packedPNG_SHA256": "fb489088bde5d779ce09ee425b0abfb3d9c1b20615e8c309e3de3753ddf4bcd4"
+    },
+    {
+      "pose": 6,
+      "source": "Art/Review/P1/directions/up-left/revisions/r5/raw/06.png",
+      "sourceSHA256": "0d048a5782dc529d550d4e62f8f100022eec722688cafd9782881345fbfe9499",
+      "packedPNG_SHA256": "807a19a07cf057eec97b9c23f35c73cb693d819bb4f402d4b9187041a2263154"
+    },
+    {
+      "pose": 7,
+      "source": "Art/Review/P1/directions/up-left/revisions/r5/raw/07.png",
+      "sourceSHA256": "38a998ea6d96b126fbfd483b1b3a746fa61de62a4b3afeaf0026a0babf0da292",
+      "packedPNG_SHA256": "f8114186f4e87c10f60bf45f96bbcea49c5a4877398b7a871922b6327c026473"
+    },
+    {
+      "pose": 8,
+      "source": "Art/Review/P1/directions/up-left/revisions/r5/raw/08.png",
+      "sourceSHA256": "236f5443c0057a875eedf4367610f01dfb4a7c8305e4ed3a35939e05e52028f0",
+      "packedPNG_SHA256": "c4cffc3818d94521d47ade5c6a5c499973f8994e5101b2181fe6bdf787cb3d6a"
+    }
+  ],
+  "method": "existing complete poses registered and laid out; no drawing, interpolation, limb deformation or separate boot transform",
+  "assemblyRequest": "assembly-request.json",
+  "assembledCycleArtApproval": null
+}

@@ -1,0 +1,81 @@
+{
+  "date": "2026-10-18",
+  "direction": "down-left",
+  "revision": "r1",
+  "method": "imagegen complete down-left counterparts of approved down-right poses; no programmatic limb changes",
+  "artApproval": null,
+  "poses": [
+    {
+      "pose": 0,
+      "prompt": "Edit the supplied single sprite into its precise horizontally mirrored full-body counterpart facing DOWN-LEFT (southwest ↙). This is pose 00 of a coordinated walking cycle: neutral idle; both soles planted. Preserve this EXACT phase, leg separation, knee and ankle bends, short stride, arm swing, near/far occlusion, head/body proportions, boot volumes and all crisp pixel-art design. Flip the whole pose's viewing geometry, not individual shoes. Three-quarter FRONT view toward lower-left: both eyes visible, far eye narrower; chest front and near flank, not pure left profile or straight front. All head, torso, pelvis, knees and both toes consistently toward southwest. The scarf trails upper-right. Keep the same tousled chestnut hair, blue eyes, vivid blue scarf, blue coat cream/gold edges, brown gloves and pouch, charcoal trousers, full brown laced folded-cuff boots. Do not enlarge the advancing shoe or shrink the lifted shoe. No idle splay, backwards toes, twisted ankle or amputated cuff. Natural opposite arm/leg swing. Same character and same detailed sprite style as supplied; no creative redesign. One whole sprite centered fully inside generous transparent margins. Transparent background, no text, numbers, panels, floor, halo, cast shadow or scenery.",
+      "reference": "/workspace/experiment/Art/Review/P1/directions/down-right/revisions/r1/raw/00.png",
+      "selectedSource": "/workspace/generated_images/exec-e0e3dd3b-63a3-4fc9-a75f-3cdfa4c017fe.png",
+      "selectedSourceSHA256": "50efaa96507cb345c22175460bc2f76a7586b02dd041044dc1b3c631b46125b2",
+      "referenceSHA256": "fc03139076d63088eec5497d58e3fd1475d9f45f27d09003a18218293ca14c90"
+    },
+    {
+      "pose": 1,
+      "prompt": "Edit the supplied single sprite into its precise horizontally mirrored full-body counterpart facing DOWN-LEFT (southwest ↙). This is pose 01 of a coordinated walking cycle: near leg forward contact, far rear toe-off; near arm back and far arm forward. Preserve this EXACT phase, leg separation, knee and ankle bends, short stride, arm swing, near/far occlusion, head/body proportions, boot volumes and all crisp pixel-art design. Flip the whole pose's viewing geometry, not individual shoes. Three-quarter FRONT view toward lower-left: both eyes visible, far eye narrower; chest front and near flank, not pure left profile or straight front. All head, torso, pelvis, knees and both toes consistently toward southwest. The scarf trails upper-right. Keep the same tousled chestnut hair, blue eyes, vivid blue scarf, blue coat cream/gold edges, brown gloves and pouch, charcoal trousers, full brown laced folded-cuff boots. Do not enlarge the advancing shoe or shrink the lifted shoe. No idle splay, backwards toes, twisted ankle or amputated cuff. Natural opposite arm/leg swing. Same character and same detailed sprite style as supplied; no creative redesign. One whole sprite centered fully inside generous transparent margins. Transparent background, no text, numbers, panels, floor, halo, cast shadow or scenery.",
+      "reference": "/workspace/experiment/Art/Review/P1/directions/down-right/revisions/r1/raw/01.png",
+      "selectedSource": "/workspace/generated_images/exec-62271802-b5e9-4f21-993b-d04c28802ae7.png",
+      "selectedSourceSHA256": "beb740210889dd4d4cc09a828e092dcae938b443d79be0945f7c844d1af643f0",
+      "referenceSHA256": "b586a19f3eb4b9230798ad5550f320eb22252cb7a7f2b112599f06c05bca4d25"
+    },
+    {
+      "pose": 2,
+      "prompt": "Edit the supplied single sprite into its precise horizontally mirrored full-body counterpart facing DOWN-LEFT (southwest ↙). This is pose 02 of a coordinated walking cycle: near leg takes weight; far knee bends and returns. Preserve this EXACT phase, leg separation, knee and ankle bends, short stride, arm swing, near/far occlusion, head/body proportions, boot volumes and all crisp pixel-art design. Flip the whole pose's viewing geometry, not individual shoes. Three-quarter FRONT view toward lower-left: both eyes visible, far eye narrower; chest front and near flank, not pure left profile or straight front. All head, torso, pelvis, knees and both toes consistently toward southwest. The scarf trails upper-right. Keep the same tousled chestnut hair, blue eyes, vivid blue scarf, blue coat cream/gold edges, brown gloves and pouch, charcoal trousers, full brown laced folded-cuff boots. Do not enlarge the advancing shoe or shrink the lifted shoe. No idle splay, backwards toes, twisted ankle or amputated cuff. Natural opposite arm/leg swing. Same character and same detailed sprite style as supplied; no creative redesign. One whole sprite centered fully inside generous transparent margins. Transparent background, no text, numbers, panels, floor, halo, cast shadow or scenery.",
+      "reference": "/workspace/experiment/Art/Review/P1/directions/down-right/revisions/r1/raw/02.png",
+      "selectedSource": "/workspace/generated_images/exec-084b2d02-7a20-4a52-a920-540966f6e3c9.png",
+      "selectedSourceSHA256": "1b4ba7da2e6dd0af35ba7b59e353e87715c7c45e59e20e42d18d9f326b67f49d",
+      "referenceSHA256": "38386f4939f5ab1e04062f28ed00686e690416114945af7b45f6c9cb93cba55f"
+    },
+    {
+      "pose": 3,
+      "prompt": "Edit the supplied single sprite into its precise horizontally mirrored full-body counterpart facing DOWN-LEFT (southwest ↙). This is pose 03 of a coordinated walking cycle: far boot passing closely beside/behind near support ankle; feet gathered. Preserve this EXACT phase, leg separation, knee and ankle bends, short stride, arm swing, near/far occlusion, head/body proportions, boot volumes and all crisp pixel-art design. Flip the whole pose's viewing geometry, not individual shoes. Three-quarter FRONT view toward lower-left: both eyes visible, far eye narrower; chest front and near flank, not pure left profile or straight front. All head, torso, pelvis, knees and both toes consistently toward southwest. The scarf trails upper-right. Keep the same tousled chestnut hair, blue eyes, vivid blue scarf, blue coat cream/gold edges, brown gloves and pouch, charcoal trousers, full brown laced folded-cuff boots. Do not enlarge the advancing shoe or shrink the lifted shoe. No idle splay, backwards toes, twisted ankle or amputated cuff. Natural opposite arm/leg swing. Same character and same detailed sprite style as supplied; no creative redesign. One whole sprite centered fully inside generous transparent margins. Transparent background, no text, numbers, panels, floor, halo, cast shadow or scenery.",
+      "reference": "/workspace/experiment/Art/Review/P1/directions/down-right/revisions/r1/raw/03.png",
+      "selectedSource": "/workspace/generated_images/exec-6183d814-d072-4fab-b41f-1deb931e0b5f.png",
+      "selectedSourceSHA256": "0503835cc1c58311120678f7c23b0b54abe8ff95eadc43b5458c44a36e22f85e",
+      "referenceSHA256": "36d4184a4e8768163b0e17b6f2ae6e6b28add0094d3bc5e6f19b0c916ff4d94f"
+    },
+    {
+      "pose": 4,
+      "prompt": "Edit the supplied single sprite into its precise horizontally mirrored full-body counterpart facing DOWN-LEFT (southwest ↙). This is pose 04 of a coordinated walking cycle: far leg late forward swing; near arm forward across chest. Preserve this EXACT phase, leg separation, knee and ankle bends, short stride, arm swing, near/far occlusion, head/body proportions, boot volumes and all crisp pixel-art design. Flip the whole pose's viewing geometry, not individual shoes. Three-quarter FRONT view toward lower-left: both eyes visible, far eye narrower; chest front and near flank, not pure left profile or straight front. All head, torso, pelvis, knees and both toes consistently toward southwest. The scarf trails upper-right. Keep the same tousled chestnut hair, blue eyes, vivid blue scarf, blue coat cream/gold edges, brown gloves and pouch, charcoal trousers, full brown laced folded-cuff boots. Do not enlarge the advancing shoe or shrink the lifted shoe. No idle splay, backwards toes, twisted ankle or amputated cuff. Natural opposite arm/leg swing. Same character and same detailed sprite style as supplied; no creative redesign. One whole sprite centered fully inside generous transparent margins. Transparent background, no text, numbers, panels, floor, halo, cast shadow or scenery.",
+      "reference": "/workspace/experiment/Art/Review/P1/directions/down-right/revisions/r1/raw/04.png",
+      "selectedSource": "/workspace/generated_images/exec-22864bf6-174d-4da7-818e-32da4cca3eaf.png",
+      "selectedSourceSHA256": "67f77c5773ace9e1211f3b3e607bc20bb8f7fb15aa4ab25c30021c7ae0073a18",
+      "referenceSHA256": "940d92b7916ca3a31355be10a5a8c8367295f0fa67966a2442bfec3bf2afe23c"
+    },
+    {
+      "pose": 5,
+      "prompt": "Edit the supplied single sprite into its precise horizontally mirrored full-body counterpart facing DOWN-LEFT (southwest ↙). This is pose 05 of a coordinated walking cycle: far leg forward contact; near boot trails; near arm forward. Preserve this EXACT phase, leg separation, knee and ankle bends, short stride, arm swing, near/far occlusion, head/body proportions, boot volumes and all crisp pixel-art design. Flip the whole pose's viewing geometry, not individual shoes. Three-quarter FRONT view toward lower-left: both eyes visible, far eye narrower; chest front and near flank, not pure left profile or straight front. All head, torso, pelvis, knees and both toes consistently toward southwest. The scarf trails upper-right. Keep the same tousled chestnut hair, blue eyes, vivid blue scarf, blue coat cream/gold edges, brown gloves and pouch, charcoal trousers, full brown laced folded-cuff boots. Do not enlarge the advancing shoe or shrink the lifted shoe. No idle splay, backwards toes, twisted ankle or amputated cuff. Natural opposite arm/leg swing. Same character and same detailed sprite style as supplied; no creative redesign. One whole sprite centered fully inside generous transparent margins. Transparent background, no text, numbers, panels, floor, halo, cast shadow or scenery.",
+      "reference": "/workspace/experiment/Art/Review/P1/directions/down-right/revisions/r1/raw/05.png",
+      "selectedSource": "/workspace/generated_images/exec-082d84ff-1902-4b5f-a2c6-75dab8663839.png",
+      "selectedSourceSHA256": "28807c3b1ae7dacf749ecd2f94fbe5aee965928a4ad1ac2ff464d0efc052a8e2",
+      "referenceSHA256": "56038dde01293c7cac9a0154d99243a47fa3bd302c7fa4d206dc9b21fa4ee5bc"
+    },
+    {
+      "pose": 6,
+      "prompt": "Edit the supplied single sprite into its precise horizontally mirrored full-body counterpart facing DOWN-LEFT (southwest ↙). This is pose 06 of a coordinated walking cycle: far support leg takes weight; near knee bends returning. Preserve this EXACT phase, leg separation, knee and ankle bends, short stride, arm swing, near/far occlusion, head/body proportions, boot volumes and all crisp pixel-art design. Flip the whole pose's viewing geometry, not individual shoes. Three-quarter FRONT view toward lower-left: both eyes visible, far eye narrower; chest front and near flank, not pure left profile or straight front. All head, torso, pelvis, knees and both toes consistently toward southwest. The scarf trails upper-right. Keep the same tousled chestnut hair, blue eyes, vivid blue scarf, blue coat cream/gold edges, brown gloves and pouch, charcoal trousers, full brown laced folded-cuff boots. Do not enlarge the advancing shoe or shrink the lifted shoe. No idle splay, backwards toes, twisted ankle or amputated cuff. Natural opposite arm/leg swing. Same character and same detailed sprite style as supplied; no creative redesign. One whole sprite centered fully inside generous transparent margins. Transparent background, no text, numbers, panels, floor, halo, cast shadow or scenery.",
+      "reference": "/workspace/experiment/Art/Review/P1/directions/down-right/revisions/r1/raw/06.png",
+      "selectedSource": "/workspace/generated_images/exec-7ac87859-2db4-4b2b-80c6-4a8947ce2e55.png",
+      "selectedSourceSHA256": "3d1f76814e96036de445fead6976d51fe1b93124e7ca50af69657e81fc581a6d",
+      "referenceSHA256": "9b7c505eb75e0835ce7fcdc2ecf8efadce7e94884883c8683caea7fde50ea274"
+    },
+    {
+      "pose": 7,
+      "prompt": "Edit the supplied single sprite into its precise horizontally mirrored full-body counterpart facing DOWN-LEFT (southwest ↙). This is pose 07 of a coordinated walking cycle: near boot passing in front of far support ankle, feet gathered. Preserve this EXACT phase, leg separation, knee and ankle bends, short stride, arm swing, near/far occlusion, head/body proportions, boot volumes and all crisp pixel-art design. Flip the whole pose's viewing geometry, not individual shoes. Three-quarter FRONT view toward lower-left: both eyes visible, far eye narrower; chest front and near flank, not pure left profile or straight front. All head, torso, pelvis, knees and both toes consistently toward southwest. The scarf trails upper-right. Keep the same tousled chestnut hair, blue eyes, vivid blue scarf, blue coat cream/gold edges, brown gloves and pouch, charcoal trousers, full brown laced folded-cuff boots. Do not enlarge the advancing shoe or shrink the lifted shoe. No idle splay, backwards toes, twisted ankle or amputated cuff. Natural opposite arm/leg swing. Same character and same detailed sprite style as supplied; no creative redesign. One whole sprite centered fully inside generous transparent margins. Transparent background, no text, numbers, panels, floor, halo, cast shadow or scenery.",
+      "reference": "/workspace/experiment/Art/Review/P1/directions/down-right/revisions/r1/raw/07.png",
+      "selectedSource": "/workspace/generated_images/exec-a763d82d-d2ef-4d68-900f-d9ac81bdc208.png",
+      "selectedSourceSHA256": "692df5b6547eb08d3f086a18dffb9da86a774b42f08eabbc12c1e7f9de46c14c",
+      "referenceSHA256": "bd3dba0b3dc78e41ac48595945949d450019ab1af318170dc1c0cf09978cac7c"
+    },
+    {
+      "pose": 8,
+      "prompt": "Edit the supplied single sprite into its precise horizontally mirrored full-body counterpart facing DOWN-LEFT (southwest ↙). This is pose 08 of a coordinated walking cycle: near leg late forward swing; near arm back. Preserve this EXACT phase, leg separation, knee and ankle bends, short stride, arm swing, near/far occlusion, head/body proportions, boot volumes and all crisp pixel-art design. Flip the whole pose's viewing geometry, not individual shoes. Three-quarter FRONT view toward lower-left: both eyes visible, far eye narrower; chest front and near flank, not pure left profile or straight front. All head, torso, pelvis, knees and both toes consistently toward southwest. The scarf trails upper-right. Keep the same tousled chestnut hair, blue eyes, vivid blue scarf, blue coat cream/gold edges, brown gloves and pouch, charcoal trousers, full brown laced folded-cuff boots. Do not enlarge the advancing shoe or shrink the lifted shoe. No idle splay, backwards toes, twisted ankle or amputated cuff. Natural opposite arm/leg swing. Same character and same detailed sprite style as supplied; no creative redesign. One whole sprite centered fully inside generous transparent margins. Transparent background, no text, numbers, panels, floor, halo, cast shadow or scenery.",
+      "reference": "/workspace/experiment/Art/Review/P1/directions/down-right/revisions/r1/raw/08.png",
+      "selectedSource": "/workspace/generated_images/exec-13c714fa-270e-4203-8657-834704bb1ffe.png",
+      "selectedSourceSHA256": "9b6a01305e71fb771f6f436f922a95809f8216c2573d31356efc7d5019674539",
+      "referenceSHA256": "7fc6010fadbc74ab083dfb4ebb56c3a3868e2c8a469c915f6d15b3823929a6c4"
+    }
+  ]
+}

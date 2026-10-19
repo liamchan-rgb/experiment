@@ -1,0 +1,86 @@
+{
+  "revision": "r1",
+  "direction": "up",
+  "status": "technical packaging checks passed; art awaits user review",
+  "idlePoses": 1,
+  "walkingPoses": 8,
+  "distinctWalkingPoses": 8,
+  "pngCellAndStripMatch": "passed",
+  "numberedGridMatch": "passed",
+  "doubleSizeNearestPreview": "passed",
+  "sourcePNGsPreserved": "byte-identical to selected imagegen output",
+  "sourceAlphaExtrema": [
+    [
+      0,
+      254
+    ],
+    [
+      0,
+      254
+    ],
+    [
+      0,
+      254
+    ],
+    [
+      0,
+      254
+    ],
+    [
+      0,
+      254
+    ],
+    [
+      0,
+      254
+    ],
+    [
+      0,
+      254
+    ],
+    [
+      0,
+      254
+    ],
+    [
+      0,
+      254
+    ]
+  ],
+  "soleEnvelopeY": 224,
+  "packedSoleExtrema": [
+    224,
+    224,
+    224,
+    224,
+    224,
+    223,
+    223,
+    224,
+    224
+  ],
+  "gifChecks": {
+    "walk.gif": {
+      "frames": 8,
+      "durationPerFrameMs": 120,
+      "cycleDurationMs": 960,
+      "orderAndPixels": "match packed poses after declared palette quantization",
+      "loop": 0
+    },
+    "walk-slow.gif": {
+      "frames": 8,
+      "durationPerFrameMs": 480,
+      "cycleDurationMs": 3840,
+      "orderAndPixels": "match packed poses after declared palette quantization",
+      "loop": 0
+    }
+  },
+  "reproductionCheck": {
+    "artifactsCompared": 15,
+    "result": "byte-identical PNG/GIF artifacts from temporary fresh export"
+  },
+  "approvedDownAndLeft": "approval artifact hashes unchanged",
+  "baselineDirections": "all four source strip hashes unchanged",
+  "artApproval": null,
+  "runtimeAndIPAUpdated": false
+}

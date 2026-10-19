@@ -1,0 +1,40 @@
+{
+  "kind": "single-idle-pose-art-study",
+  "direction": "down",
+  "clip": "idle",
+  "frame": 0,
+  "status": "structural_valid_art_approved_single_pose",
+  "artApproval": {
+    "date": "2026-10-19",
+    "reviewer": "user",
+    "statement": "对的",
+    "scope": "the single 00 down-idle pose shown in v5, including its continuous arm/wrist/hand and natural point-down sword grip",
+    "status": "approved",
+    "limits": [
+      "Does not approve a nine-pose weapon animation, independent production parts, other directions, or App integration."
+    ]
+  },
+  "reviewImage": "review.png",
+  "baseImage": "references/00-without-grip.png",
+  "generatedGuide": "source/guide-with-completed-grip.png",
+  "registeredOverlay": "parts/grip/registered-overlay.png",
+  "overlayRect": [
+    89,
+    150,
+    112,
+    208
+  ],
+  "outsideOverlayPixelsUnchanged": true,
+  "sourceSHA256": "778cf641c962d7ba732c4fceafe40981bcca67dc66bb78ce48d5a2e42dd73542",
+  "baseSHA256": "544b4454d73594dad303890971ca3737ac524136f94c7369d955b93a51c08b3c",
+  "overlaySHA256": "fdf03d118e412e9ca318398d5f2249aebe7d8ae57380e8b897e5879b50749bcf",
+  "reviewSHA256": "f7c34189042126e11da651a2e581d2c95ef9da68ad7cad96e1b66e9cc23ee490",
+  "assembledSHA256": "b1b0ee76c1f0402d2b1237e93e664b1b8456f3b5b8397cdc1251cf68dfae5923",
+  "animationGenerated": false,
+  "productionManifestGenerated": false,
+  "limits": [
+    "One idle pose only; no nine-pose or animation validation.",
+    "The forearm, hand and sword are one registered overlay for this visual study, not yet independently swappable parts.",
+    "User approved the displayed single pose; this does not constitute approval beyond that scope."
+  ]
+}

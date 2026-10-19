@@ -2,30 +2,69 @@ import SpriteKit
 
 final class LivingWorld: SKNode {
     static let bounds = CGRect(x: -160, y: -220, width: 1600, height: 1160)
+    static let towerBannerRoofAnchorY: CGFloat = 0.91
     let definition: SceneDefinition
     let network: TrailNetwork
-    let effects = EnvironmentShaders()
+    let effects: EnvironmentShaders
+    private let vegetationEnabled: Bool
     private var textures: [String: SKTexture] = [:]
-    private var shadows: [SKSpriteNode] = []
-    private var lastShadowUpdate: TimeInterval = -1
+    let terrain = SKNode()
+    private(set) var sunlightOverlay: SKSpriteNode?
+    private(set) var roadMask: CGImage!
+    private(set) var casterProps: [SceneDefinition.Prop] = []
+    private(set) var shadowCount = 0
     private(set) var objectCount = 0
+    private(set) var longestPopulateBatchSeconds: Double = 0
 
-    init(definition: SceneDefinition) {
+    init(definition: SceneDefinition, roadMask: CGImage? = nil, props: [SceneDefinition.Prop]? = nil, textures: [String: SKTexture] = [:], effects preparedEffects: EnvironmentShaders? = nil, deferProps: Bool = false, renderTerrain: Bool = true,
+         vegetationEnabled: Bool = true, atmosphereEnabled: Bool = true) {
         self.definition = definition
+        self.textures = textures
+        self.effects = preparedEffects ?? EnvironmentShaders()
+        self.vegetationEnabled = vegetationEnabled
         network = TrailNetwork(roads: definition.roads)
         super.init()
-        buildGround()
-        buildRoads()
-        for prop in definition.props { addProp(prop) }
-        buildMeadowDetails()
-        buildRoadsideGrass()
-        addOverlay(shader: effects.backMist, depth: 95)
-        addOverlay(shader: effects.sunlight, depth: 20000, additive: true)
-        addOverlay(shader: effects.frontMist, depth: 21000)
-        buildMotes()
+        addChild(terrain)
+        if renderTerrain { buildGround(); buildRoads(mask: roadMask) }
+        else { self.roadMask = roadMask ?? MeadowRoadMask.make(network: network, bounds: Self.bounds) }
+        let allProps = props ?? (definition.props + Self.meadowDetails(definition: definition, network: network) + Self.roadsideGrass(network: network))
+        if !deferProps { for prop in allProps { addProp(prop) } }
+        if atmosphereEnabled {
+            addOverlay(shader: effects.backMist, depth: 95)
+            sunlightOverlay = effects.makeSunlightOverlay(size: .zero)
+            addOverlay(shader: effects.frontMist, depth: 21000)
+            buildMotes()
+        }
     }
 
     required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
+
+    /// The sun belongs to the viewport, not the world transform. Both production
+    /// and diagnostic scenes attach this same overlay directly to the scene.
+    func attachSunlight(to scene: SKScene) {
+        guard let sunlightOverlay else { return }
+        if sunlightOverlay.parent !== scene {
+            sunlightOverlay.removeFromParent()
+            scene.addChild(sunlightOverlay)
+        }
+        effects.layoutSunlight(sunlightOverlay, size: scene.size)
+    }
+
+    /// Keep UIKit's run loop available while attaching hundreds of prepared
+    /// nodes. This world is not presented until the final batch is attached.
+    func populate(_ props: [SceneDefinition.Prop], progress: @escaping (Double) -> Void, completion: @escaping () -> Void) {
+        var index = 0
+        func batch() {
+            let began = ProcessInfo.processInfo.systemUptime
+            let end = min(index + 8, props.count)
+            while index < end { addProp(props[index]); index += 1 }
+            longestPopulateBatchSeconds = max(longestPopulateBatchSeconds, ProcessInfo.processInfo.systemUptime - began)
+            progress(Double(index) / Double(max(1, props.count)))
+            if index < props.count { DispatchQueue.main.asyncAfter(deadline: .now() + 0.001) { batch() } }
+            else { completion() }
+        }
+        batch()
+    }
 
     func texture(_ name: String) -> SKTexture {
         if let texture = textures[name] { return texture }
@@ -38,115 +77,85 @@ final class LivingWorld: SKNode {
     static func position(_ point: CGPoint) -> CGPoint { CGPoint(x: point.x, y: -point.y) }
 
     private func buildGround() {
-        let tile: CGFloat = 320
-        let groundTexture = texture("MeadowGround")
-        for row in 0..<4 {
-            for column in 0..<5 {
-                let x = Self.bounds.minX + CGFloat(column) * tile
-                let y = Self.bounds.minY + CGFloat(row) * tile
-                let node = SKSpriteNode(texture: groundTexture, size: CGSize(width: tile, height: tile))
-                node.position = Self.position(CGPoint(x: x + tile / 2, y: y + tile / 2))
-                let flipX: CGFloat = column % 2 == 0 ? 1 : -1
-                let flipY: CGFloat = row % 2 == 0 ? 1 : -1
-                node.xScale = flipX
-                node.yScale = flipY
-                node.zPosition = 0
-                effects.apply(effects.ground, to: node,
-                              origin: CGPoint(x: x + tile / 2, y: y + tile / 2),
-                              extent: CGSize(width: tile * flipX, height: tile * flipY))
-                addChild(node)
-            }
-        }
+        let node = SKSpriteNode(texture: texture("MeadowGround"), size: Self.bounds.size)
+        node.position = Self.position(CGPoint(x: Self.bounds.midX, y: Self.bounds.midY))
+        node.shader = effects.ground
+        node.zPosition = 0
+        terrain.addChild(node)
     }
 
-    private func roadPolygon(_ trail: Trail, width: CGFloat) -> CGPath {
-        var left: [CGPoint] = [], right: [CGPoint] = []
-        for index in trail.points.indices {
-            let before = trail.points[max(0, index - 1)]
-            let after = trail.points[min(trail.points.count - 1, index + 1)]
-            let dx = after.x - before.x
-            let dy = after.y - before.y
-            let length = max(0.1, (dx * dx + dy * dy).squareRoot())
-            let half = width / 2 * (1 + sin(CGFloat(index) * 0.85) * 0.10)
-            let offset = CGPoint(x: -dy / length * half, y: dx / length * half)
-            let p = trail.points[index]
-            left.append(Self.position(CGPoint(x: p.x + offset.x, y: p.y + offset.y)))
-            right.append(Self.position(CGPoint(x: p.x - offset.x, y: p.y - offset.y)))
-        }
-        let path = CGMutablePath()
-        path.addLines(between: left + Array(right.reversed()))
-        path.closeSubpath()
-        return path
+    private func buildRoads(mask prepared: CGImage?) {
+        let mask = prepared ?? MeadowRoadMask.make(network: network, bounds: Self.bounds)
+        roadMask = mask
+        let road = SKSpriteNode(texture: SKTexture(cgImage: mask), size: Self.bounds.size)
+        road.position = Self.position(CGPoint(x: Self.bounds.midX, y: Self.bounds.midY))
+        road.shader = effects.soil
+        road.zPosition = 11
+        terrain.addChild(road)
     }
 
-    private func buildRoads() {
-        for edge in network.edges {
-            let border = SKShapeNode(path: roadPolygon(edge.trail, width: edge.width + 6))
-            border.fillColor = SKColor(red: 0.59, green: 0.48, blue: 0.22, alpha: 0.40)
-            border.strokeColor = .clear
-            border.zPosition = 10
-            addChild(border)
-            let road = SKShapeNode(path: roadPolygon(edge.trail, width: edge.width))
-            road.fillColor = SKColor(red: 0.89, green: 0.72, blue: 0.44, alpha: 1)
-            road.strokeColor = .clear
-            road.fillShader = effects.soil
-            road.zPosition = 11
-            addChild(road)
-        }
+    func makeContact(foot: CGPoint, width: CGFloat, depth: CGFloat) -> SKSpriteNode {
+        let node = SKSpriteNode(color: .white, size: CGSize(width: width, height: depth))
+        node.position = foot
+        node.shader = effects.contact
+        node.zPosition = 45
+        addChild(node)
+        return node
     }
 
     private func addProp(_ prop: SceneDefinition.Prop) {
         let propTexture = texture(prop.asset)
         let height = prop.width * propTexture.size().height / propTexture.size().width
         let node = SKSpriteNode(texture: propTexture, size: CGSize(width: prop.width, height: height))
-        node.anchorPoint = CGPoint(x: 0.5, y: 0.02)
+        node.name = prop.asset
+        node.anchorPoint = CGPoint(x: 0.5, y: CGFloat(ShadowLabAsset(rawValue: prop.asset)?.anchorY ?? 0.04))
         node.position = Self.position(CGPoint(x: prop.x, y: prop.y))
         node.zPosition = 10000 + prop.y
-        node.xScale = prop.mirror ? -1 : 1
-        effects.apply(effects.vegetation, to: node,
-                      origin: CGPoint(x: prop.x, y: prop.y - height * 0.48),
+        // Preserve upper-left painted highlights on solid objects.
+        node.xScale = prop.mirror && prop.asset == "Flowers" ? -1 : 1
+        let vegetationShader = prop.asset == "Flowers" || prop.asset == "Shrub" ? effects.meadowPlants : effects.vegetation
+        if vegetationEnabled { effects.apply(vegetationShader, to: node,
+                      origin: CGPoint(x: prop.x, y: prop.y - height * (0.5 - node.anchorPoint.y)),
                       extent: CGSize(width: prop.width * node.xScale, height: height),
-                      wind: prop.wind, phase: Float(prop.x * 0.03 + prop.y * 0.017))
+                      wind: prop.wind, phase: Float(prop.x * 0.03 + prop.y * 0.017)) }
         addChild(node)
         objectCount += 1
-        if prop.asset != "Flowers" {
-            let shadow = SKSpriteNode(texture: propTexture, size: CGSize(width: prop.width * 0.85, height: height * 0.50))
-            shadow.anchorPoint = CGPoint(x: 0.5, y: 0.02)
-            shadow.position = Self.position(CGPoint(x: prop.x + 3, y: prop.y + 3))
-            shadow.xScale = node.xScale
-            shadow.zRotation = -2.2
-            shadow.shader = effects.shadow
-            shadow.zPosition = 40
-            addChild(shadow)
-            shadows.append(shadow)
-        }
-        if prop.asset == "WatchTower" || prop.asset == "CampTent" {
+        casterProps.append(prop)
+        shadowCount += 1
+        // CampTent already contains its stitched banner. The tower needs a
+        // separate flag, anchored at the roof peak instead of the image top.
+        if prop.asset == "WatchTower" {
             let bannerTexture = texture("Banner")
-            let width: CGFloat = prop.asset == "WatchTower" ? 43 : 35
+            let width = min(34, max(22, prop.width * 0.40))
             let banner = SKSpriteNode(texture: bannerTexture,
                                       size: CGSize(width: width, height: width * bannerTexture.size().height / bannerTexture.size().width))
-            banner.anchorPoint = CGPoint(x: 0, y: 0.04)
-            banner.position = CGPoint(x: prop.asset == "WatchTower" ? 0 : -prop.width * 0.18, y: height - 5)
-            banner.zPosition = 1
-            effects.apply(effects.vegetation, to: banner,
-                          origin: CGPoint(x: prop.x + width / 2, y: prop.y - height),
-                          extent: banner.size, wind: 2, phase: Float(prop.x * 0.03))
+            banner.name = "banner"
+            banner.anchorPoint = CGPoint(x: 0.035, y: 0.04)
+            banner.position = CGPoint(x: 0, y: height * (Self.towerBannerRoofAnchorY - node.anchorPoint.y))
+            banner.zPosition = -1
+            if vegetationEnabled { effects.apply(effects.vegetation, to: banner,
+                          origin: CGPoint(x: prop.x + width * 0.465,
+                                          y: prop.y - height * (Self.towerBannerRoofAnchorY - node.anchorPoint.y) - banner.size.height * 0.46),
+                          extent: banner.size, wind: 2, phase: Float(prop.x * 0.03)) }
             node.addChild(banner)
         }
     }
 
-    private func buildMeadowDetails() {
+    static func meadowDetails(definition: SceneDefinition, network: TrailNetwork) -> [SceneDefinition.Prop] {
+        var props: [SceneDefinition.Prop] = []
         var random = MeadowRandom(seed: definition.seed)
-        for index in 0..<230 {
+        for index in 0..<110 {
             let point = CGPoint(x: random.value(Self.bounds.minX, Self.bounds.maxX),
                                 y: random.value(Self.bounds.minY, Self.bounds.maxY))
-            if network.project(point).error < 23 { continue }
-            if CGRect(x: 220, y: 285, width: 330, height: 125).contains(point) { continue }
-            let name = index % 5 == 0 ? "Shrub" : "Flowers"
-            let width = name == "Shrub" ? random.value(28, 43) : random.value(17, 32)
-            addProp(SceneDefinition.Prop(asset: name, x: point.x, y: point.y, width: width,
+            if network.project(point).error < 38 { continue }
+            if CGRect(x: 215, y: 275, width: 360, height: 160).contains(point) { continue }
+            if definition.props.contains(where: { hypot($0.x - point.x, $0.y - point.y) < 23 }) { continue }
+            let name = index % 9 == 0 ? "Shrub" : "Flowers"
+            let width = name == "Shrub" ? random.value(23, 34) : random.value(12, 23)
+            props.append(SceneDefinition.Prop(asset: name, x: point.x, y: point.y, width: width,
                                          mirror: random.next() > 0.5, wind: 1.15))
         }
+        return props
     }
 
     private func addOverlay(shader: SKShader, depth: CGFloat, additive: Bool = false) {
@@ -158,7 +167,8 @@ final class LivingWorld: SKNode {
         addChild(node)
     }
 
-    private func buildRoadsideGrass() {
+    static func roadsideGrass(network: TrailNetwork) -> [SceneDefinition.Prop] {
+        var props: [SceneDefinition.Prop] = []
         var random = MeadowRandom(seed: 39281)
         for edge in network.edges {
             var distance: CGFloat = 12
@@ -170,12 +180,13 @@ final class LivingWorld: SKNode {
                 let length = max(0.1, (dx * dx + dy * dy).squareRoot())
                 let side: CGFloat = random.next() > 0.5 ? 1 : -1
                 let offset = edge.width / 2 + random.value(0, 3)
-                addProp(SceneDefinition.Prop(asset: "Flowers", x: point.x - dy / length * offset * side,
+                props.append(SceneDefinition.Prop(asset: "Flowers", x: point.x - dy / length * offset * side,
                                              y: point.y + dx / length * offset * side,
                                              width: random.value(7, 14), mirror: random.next() > 0.5, wind: 1.2))
-                distance += random.value(10, 20)
+                distance += random.value(22, 38)
             }
         }
+        return props
     }
 
     private func buildMotes() {
@@ -186,7 +197,7 @@ final class LivingWorld: SKNode {
         }
         let emitter = SKEmitterNode()
         emitter.particleTexture = SKTexture(image: dot)
-        emitter.particleBirthRate = 2.5
+        emitter.particleBirthRate = 4
         emitter.particleLifetime = 16
         emitter.particleLifetimeRange = 5
         emitter.particlePositionRange = CGVector(dx: 1400, dy: 920)
@@ -209,11 +220,6 @@ final class LivingWorld: SKNode {
     }
 
     func update(time: TimeInterval) {
-        effects.time.floatValue = Float(time)
-        if time - lastShadowUpdate > 0.10 {
-            let angle = CGFloat(-2.2 + sin(time * 0.035) * 0.12)
-            for shadow in shadows { shadow.zRotation = angle }
-            lastShadowUpdate = time
-        }
+        effects.update(time: time)
     }
 }

@@ -1,0 +1,25 @@
+{
+  "base": "p1-neutral-down-walk-r1",
+  "assets": [
+    "p1-hair-chestnut-v1",
+    "p1-face-blue-v1"
+  ],
+  "direction": "down",
+  "motionSHA256": "24270480b0206628e8528d644c8e491bff505965b258caa2d865992f248c10d3",
+  "assetManifestSHA256": {
+    "p1-neutral-down-walk-r1": "0ffe93b713abd772071b9c55a4733674094aa6c01993f644a7c613c1803f97e7",
+    "p1-hair-chestnut-v1": "8cb282d7b17d9026320c9b8ee7e2e62339dbb68adc18896a715fb0be806a91cd",
+    "p1-face-blue-v1": "44acc92dbdc081fc0678a3ca6131cb73cb28c48b506cf75f8c2c27d5ba8d3a86"
+  },
+  "frameSHA256": {
+    "00.png": "b78fb718cab60da5bf4970a1d2d06b8f913b504886f67fc5e6b3ab8e46bb849f",
+    "01.png": "7850bb9a8a51bfde1cb7320b1e8b30613c612a1d9a556cb9933f43e48232400a",
+    "02.png": "11145fd7a41e69e4560339de5c4f23dae4c47860dd42e02d11c68d3ff3dbd45b",
+    "03.png": "f35a1cd08de4726c8a38c16bdefcac6a83c48fdd95211644737c8939e073afa0",
+    "04.png": "3f66149a612118f771f672eef88f4e5a78255987f624dfa5828a7a95118de986",
+    "05.png": "2acbd7f740521d2c2fbc151368036edeb40cc23b40e3c412e0f46917d7e8ff9c",
+    "06.png": "692e22b0e4c3ad4f22d0e86ec8c38a1a65dca5815ef41f265286a6f6210b09c1",
+    "07.png": "c9106cd2d40ea236232e174ea4325876eef464398023fd60b4487c84139d9bbb",
+    "08.png": "ffa1af1411caad66154242c7cd64ddcf2cdcb7bce32462d65954c0f76a5ad2e7"
+  }
+}

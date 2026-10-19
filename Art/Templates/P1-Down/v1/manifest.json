@@ -1,0 +1,764 @@
+{
+  "schemaVersion": 1,
+  "name": "P1 Down Modular Pilot v1",
+  "direction": "down",
+  "canvas": [
+    256,
+    256
+  ],
+  "coordinateSystem": "pixels, x right, y down; character right is screen left",
+  "choices": {
+    "hair": [
+      "chestnut",
+      "silver"
+    ],
+    "face": [
+      "blue",
+      "amber"
+    ],
+    "outfit": [
+      "traveler",
+      "ranger"
+    ],
+    "weapon": [
+      "empty",
+      "sword"
+    ]
+  },
+  "layerOrderBackToFront": [
+    "body",
+    "weapon",
+    "outfit",
+    "face",
+    "hair",
+    "hands"
+  ],
+  "idleFrame": 0,
+  "walkFrames": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8
+  ],
+  "normalFrameMs": 120,
+  "slowFrameMs": 480,
+  "artStatus": "pilot-awaiting-user-review",
+  "motionBaseline": "approved P1 down r1",
+  "frames": [
+    {
+      "id": "00",
+      "phase": "idle",
+      "contact": "both",
+      "head": [
+        124,
+        117
+      ],
+      "neck": [
+        124,
+        132
+      ],
+      "waist": [
+        125,
+        157
+      ],
+      "rightHand": [
+        98,
+        171
+      ],
+      "leftHand": [
+        153,
+        171
+      ],
+      "hipRight": [
+        117,
+        177
+      ],
+      "hipLeft": [
+        133,
+        177
+      ],
+      "kneeRight": [
+        115,
+        189
+      ],
+      "kneeLeft": [
+        135,
+        189
+      ],
+      "ankleRight": [
+        115,
+        204
+      ],
+      "ankleLeft": [
+        135,
+        204
+      ],
+      "swordAngleDeg": 22,
+      "soleMarkers": {
+        "right": [
+          114,
+          224
+        ],
+        "left": [
+          136,
+          224
+        ]
+      },
+      "referenceSHA256": "80c042f1626923b71fd0fbe6be3e81804b359a0c5df7eeb91bc1199abf4d374b"
+    },
+    {
+      "id": "01",
+      "phase": "right-contact",
+      "contact": "right",
+      "head": [
+        124,
+        116
+      ],
+      "neck": [
+        124,
+        131
+      ],
+      "waist": [
+        125,
+        156
+      ],
+      "rightHand": [
+        96,
+        160
+      ],
+      "leftHand": [
+        153,
+        165
+      ],
+      "hipRight": [
+        117,
+        176
+      ],
+      "hipLeft": [
+        133,
+        176
+      ],
+      "kneeRight": [
+        116,
+        185
+      ],
+      "kneeLeft": [
+        135,
+        178
+      ],
+      "ankleRight": [
+        116,
+        202
+      ],
+      "ankleLeft": [
+        135,
+        192
+      ],
+      "swordAngleDeg": 24,
+      "soleMarkers": {
+        "right": [
+          115,
+          222
+        ],
+        "left": [
+          125,
+          219
+        ]
+      },
+      "referenceSHA256": "36d650a3621e586d9bba1d945ec694328fcf0df18ba6613b1032602512d72e88"
+    },
+    {
+      "id": "02",
+      "phase": "right-loading",
+      "contact": "right",
+      "head": [
+        127,
+        119
+      ],
+      "neck": [
+        127,
+        134
+      ],
+      "waist": [
+        127,
+        161
+      ],
+      "rightHand": [
+        97,
+        162
+      ],
+      "leftHand": [
+        155,
+        169
+      ],
+      "hipRight": [
+        119,
+        181
+      ],
+      "hipLeft": [
+        135,
+        181
+      ],
+      "kneeRight": [
+        115,
+        187
+      ],
+      "kneeLeft": [
+        136,
+        178
+      ],
+      "ankleRight": [
+        115,
+        202
+      ],
+      "ankleLeft": [
+        136,
+        193
+      ],
+      "swordAngleDeg": 24,
+      "soleMarkers": {
+        "right": [
+          112,
+          221
+        ],
+        "left": [
+          136,
+          210
+        ]
+      },
+      "referenceSHA256": "08451a6d548ab02982a9432c802827af750d347a364222c34ec8fe61d382b402"
+    },
+    {
+      "id": "03",
+      "phase": "left-passing",
+      "contact": "right",
+      "head": [
+        123,
+        116
+      ],
+      "neck": [
+        123,
+        131
+      ],
+      "waist": [
+        123,
+        158
+      ],
+      "rightHand": [
+        97,
+        167
+      ],
+      "leftHand": [
+        151,
+        168
+      ],
+      "hipRight": [
+        115,
+        178
+      ],
+      "hipLeft": [
+        131,
+        178
+      ],
+      "kneeRight": [
+        114,
+        189
+      ],
+      "kneeLeft": [
+        135,
+        183
+      ],
+      "ankleRight": [
+        114,
+        204
+      ],
+      "ankleLeft": [
+        135,
+        195
+      ],
+      "swordAngleDeg": 23,
+      "soleMarkers": {
+        "right": [
+          114,
+          218
+        ],
+        "left": [
+          123,
+          217
+        ]
+      },
+      "referenceSHA256": "9c430e686520275762c32de0243665538087c225c890efc5ef906d269a88bfcb"
+    },
+    {
+      "id": "04",
+      "phase": "left-late-swing",
+      "contact": "right-to-left",
+      "head": [
+        124,
+        115
+      ],
+      "neck": [
+        124,
+        130
+      ],
+      "waist": [
+        125,
+        157
+      ],
+      "rightHand": [
+        102,
+        164
+      ],
+      "leftHand": [
+        155,
+        161
+      ],
+      "hipRight": [
+        117,
+        177
+      ],
+      "hipLeft": [
+        133,
+        177
+      ],
+      "kneeRight": [
+        116,
+        185
+      ],
+      "kneeLeft": [
+        136,
+        190
+      ],
+      "ankleRight": [
+        116,
+        198
+      ],
+      "ankleLeft": [
+        138,
+        208
+      ],
+      "swordAngleDeg": 18,
+      "soleMarkers": {
+        "right": [
+          115,
+          213
+        ],
+        "left": [
+          135,
+          224
+        ]
+      },
+      "referenceSHA256": "7bb55796e8fc3a9f0de109e5216399aa395c619f7e015505bf4d00dbddb3e6c1"
+    },
+    {
+      "id": "05",
+      "phase": "left-contact",
+      "contact": "left",
+      "head": [
+        125,
+        115
+      ],
+      "neck": [
+        125,
+        130
+      ],
+      "waist": [
+        126,
+        157
+      ],
+      "rightHand": [
+        101,
+        161
+      ],
+      "leftHand": [
+        153,
+        163
+      ],
+      "hipRight": [
+        118,
+        177
+      ],
+      "hipLeft": [
+        134,
+        177
+      ],
+      "kneeRight": [
+        116,
+        180
+      ],
+      "kneeLeft": [
+        135,
+        188
+      ],
+      "ankleRight": [
+        115,
+        193
+      ],
+      "ankleLeft": [
+        136,
+        203
+      ],
+      "swordAngleDeg": 18,
+      "soleMarkers": {
+        "right": [
+          125,
+          218
+        ],
+        "left": [
+          134,
+          220
+        ]
+      },
+      "referenceSHA256": "73b14ff65b08be334e50a0ebd60f31a5a3e7ca47e6b6ff99c3a4a60dbab2d2d7"
+    },
+    {
+      "id": "06",
+      "phase": "left-loading",
+      "contact": "left",
+      "head": [
+        126,
+        117
+      ],
+      "neck": [
+        126,
+        132
+      ],
+      "waist": [
+        127,
+        157
+      ],
+      "rightHand": [
+        104,
+        162
+      ],
+      "leftHand": [
+        155,
+        163
+      ],
+      "hipRight": [
+        119,
+        177
+      ],
+      "hipLeft": [
+        135,
+        177
+      ],
+      "kneeRight": [
+        117,
+        178
+      ],
+      "kneeLeft": [
+        136,
+        185
+      ],
+      "ankleRight": [
+        117,
+        190
+      ],
+      "ankleLeft": [
+        137,
+        202
+      ],
+      "swordAngleDeg": 20,
+      "soleMarkers": {
+        "right": [
+          116,
+          206
+        ],
+        "left": [
+          138,
+          219
+        ]
+      },
+      "referenceSHA256": "bd0509de58954a41f74f5076c94f414ae74f4c68a5f1146571bf8d037006fdec"
+    },
+    {
+      "id": "07",
+      "phase": "right-passing",
+      "contact": "left",
+      "head": [
+        125,
+        116
+      ],
+      "neck": [
+        125,
+        131
+      ],
+      "waist": [
+        126,
+        157
+      ],
+      "rightHand": [
+        98,
+        163
+      ],
+      "leftHand": [
+        153,
+        167
+      ],
+      "hipRight": [
+        118,
+        177
+      ],
+      "hipLeft": [
+        134,
+        177
+      ],
+      "kneeRight": [
+        116,
+        178
+      ],
+      "kneeLeft": [
+        136,
+        184
+      ],
+      "ankleRight": [
+        116,
+        191
+      ],
+      "ankleLeft": [
+        136,
+        200
+      ],
+      "swordAngleDeg": 24,
+      "soleMarkers": {
+        "right": [
+          125,
+          213
+        ],
+        "left": [
+          135,
+          216
+        ]
+      },
+      "referenceSHA256": "8bbeb7da0f91e108e010cc69241f64bdd254ded82f6097f318704262ff196033"
+    },
+    {
+      "id": "08",
+      "phase": "right-late-swing",
+      "contact": "left-to-right",
+      "head": [
+        126,
+        116
+      ],
+      "neck": [
+        126,
+        131
+      ],
+      "waist": [
+        126,
+        156
+      ],
+      "rightHand": [
+        97,
+        155
+      ],
+      "leftHand": [
+        154,
+        165
+      ],
+      "hipRight": [
+        118,
+        176
+      ],
+      "hipLeft": [
+        134,
+        176
+      ],
+      "kneeRight": [
+        115,
+        184
+      ],
+      "kneeLeft": [
+        136,
+        178
+      ],
+      "ankleRight": [
+        115,
+        198
+      ],
+      "ankleLeft": [
+        136,
+        191
+      ],
+      "swordAngleDeg": 25,
+      "soleMarkers": {
+        "right": [
+          115,
+          215
+        ],
+        "left": [
+          135,
+          207
+        ]
+      },
+      "referenceSHA256": "e45bba2d68093e150b677a6e912da372cfcbfd0d06d84183aecc4a068a3abff1"
+    }
+  ],
+  "combinations": [
+    {
+      "key": "chestnut-blue-traveler-empty",
+      "selection": {
+        "hair": "chestnut",
+        "face": "blue",
+        "outfit": "traveler",
+        "weapon": "empty"
+      },
+      "atlas": "appearances/chestnut-blue-traveler-empty.png"
+    },
+    {
+      "key": "chestnut-blue-traveler-sword",
+      "selection": {
+        "hair": "chestnut",
+        "face": "blue",
+        "outfit": "traveler",
+        "weapon": "sword"
+      },
+      "atlas": "appearances/chestnut-blue-traveler-sword.png"
+    },
+    {
+      "key": "chestnut-blue-ranger-empty",
+      "selection": {
+        "hair": "chestnut",
+        "face": "blue",
+        "outfit": "ranger",
+        "weapon": "empty"
+      },
+      "atlas": "appearances/chestnut-blue-ranger-empty.png"
+    },
+    {
+      "key": "chestnut-blue-ranger-sword",
+      "selection": {
+        "hair": "chestnut",
+        "face": "blue",
+        "outfit": "ranger",
+        "weapon": "sword"
+      },
+      "atlas": "appearances/chestnut-blue-ranger-sword.png"
+    },
+    {
+      "key": "chestnut-amber-traveler-empty",
+      "selection": {
+        "hair": "chestnut",
+        "face": "amber",
+        "outfit": "traveler",
+        "weapon": "empty"
+      },
+      "atlas": "appearances/chestnut-amber-traveler-empty.png"
+    },
+    {
+      "key": "chestnut-amber-traveler-sword",
+      "selection": {
+        "hair": "chestnut",
+        "face": "amber",
+        "outfit": "traveler",
+        "weapon": "sword"
+      },
+      "atlas": "appearances/chestnut-amber-traveler-sword.png"
+    },
+    {
+      "key": "chestnut-amber-ranger-empty",
+      "selection": {
+        "hair": "chestnut",
+        "face": "amber",
+        "outfit": "ranger",
+        "weapon": "empty"
+      },
+      "atlas": "appearances/chestnut-amber-ranger-empty.png"
+    },
+    {
+      "key": "chestnut-amber-ranger-sword",
+      "selection": {
+        "hair": "chestnut",
+        "face": "amber",
+        "outfit": "ranger",
+        "weapon": "sword"
+      },
+      "atlas": "appearances/chestnut-amber-ranger-sword.png"
+    },
+    {
+      "key": "silver-blue-traveler-empty",
+      "selection": {
+        "hair": "silver",
+        "face": "blue",
+        "outfit": "traveler",
+        "weapon": "empty"
+      },
+      "atlas": "appearances/silver-blue-traveler-empty.png"
+    },
+    {
+      "key": "silver-blue-traveler-sword",
+      "selection": {
+        "hair": "silver",
+        "face": "blue",
+        "outfit": "traveler",
+        "weapon": "sword"
+      },
+      "atlas": "appearances/silver-blue-traveler-sword.png"
+    },
+    {
+      "key": "silver-blue-ranger-empty",
+      "selection": {
+        "hair": "silver",
+        "face": "blue",
+        "outfit": "ranger",
+        "weapon": "empty"
+      },
+      "atlas": "appearances/silver-blue-ranger-empty.png"
+    },
+    {
+      "key": "silver-blue-ranger-sword",
+      "selection": {
+        "hair": "silver",
+        "face": "blue",
+        "outfit": "ranger",
+        "weapon": "sword"
+      },
+      "atlas": "appearances/silver-blue-ranger-sword.png"
+    },
+    {
+      "key": "silver-amber-traveler-empty",
+      "selection": {
+        "hair": "silver",
+        "face": "amber",
+        "outfit": "traveler",
+        "weapon": "empty"
+      },
+      "atlas": "appearances/silver-amber-traveler-empty.png"
+    },
+    {
+      "key": "silver-amber-traveler-sword",
+      "selection": {
+        "hair": "silver",
+        "face": "amber",
+        "outfit": "traveler",
+        "weapon": "sword"
+      },
+      "atlas": "appearances/silver-amber-traveler-sword.png"
+    },
+    {
+      "key": "silver-amber-ranger-empty",
+      "selection": {
+        "hair": "silver",
+        "face": "amber",
+        "outfit": "ranger",
+        "weapon": "empty"
+      },
+      "atlas": "appearances/silver-amber-ranger-empty.png"
+    },
+    {
+      "key": "silver-amber-ranger-sword",
+      "selection": {
+        "hair": "silver",
+        "face": "amber",
+        "outfit": "ranger",
+        "weapon": "sword"
+      },
+      "atlas": "appearances/silver-amber-ranger-sword.png"
+    }
+  ]
+}

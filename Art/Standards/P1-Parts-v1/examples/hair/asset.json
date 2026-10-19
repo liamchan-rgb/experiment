@@ -1,0 +1,109 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "example-hair",
+  "version": "1.0.0",
+  "part": "hair",
+  "compatibility": {
+    "rig": "p1-chibi-v1",
+    "bodyProfile": "p1-standard",
+    "actionSet": "locomotion-v1"
+  },
+  "mode": "head-local",
+  "slots": [
+    "hair.back",
+    "hair.front"
+  ],
+  "directions": [
+    "down"
+  ],
+  "clips": [
+    "idle",
+    "walk"
+  ],
+  "sourceFiles": [
+    "source/hair.ora"
+  ],
+  "bindings": [
+    {
+      "direction": "down",
+      "clip": "idle",
+      "frame": 0,
+      "layers": {
+        "hair.back": "png/down-back.png",
+        "hair.front": "png/down-front.png"
+      }
+    },
+    {
+      "direction": "down",
+      "clip": "walk",
+      "frame": 1,
+      "layers": {
+        "hair.back": "png/down-back.png",
+        "hair.front": "png/down-front.png"
+      }
+    },
+    {
+      "direction": "down",
+      "clip": "walk",
+      "frame": 2,
+      "layers": {
+        "hair.back": "png/down-back.png",
+        "hair.front": "png/down-front.png"
+      }
+    },
+    {
+      "direction": "down",
+      "clip": "walk",
+      "frame": 3,
+      "layers": {
+        "hair.back": "png/down-back.png",
+        "hair.front": "png/down-front.png"
+      }
+    },
+    {
+      "direction": "down",
+      "clip": "walk",
+      "frame": 4,
+      "layers": {
+        "hair.back": "png/down-back.png",
+        "hair.front": "png/down-front.png"
+      }
+    },
+    {
+      "direction": "down",
+      "clip": "walk",
+      "frame": 5,
+      "layers": {
+        "hair.back": "png/down-back.png",
+        "hair.front": "png/down-front.png"
+      }
+    },
+    {
+      "direction": "down",
+      "clip": "walk",
+      "frame": 6,
+      "layers": {
+        "hair.back": "png/down-back.png",
+        "hair.front": "png/down-front.png"
+      }
+    },
+    {
+      "direction": "down",
+      "clip": "walk",
+      "frame": 7,
+      "layers": {
+        "hair.back": "png/down-back.png",
+        "hair.front": "png/down-front.png"
+      }
+    },
+    {
+      "direction": "down",
+      "clip": "walk",
+      "frame": 8,
+      "layers": {
+        "hair.back": "png/down-back.png",
+        "hair.front": "png/down-front.png"
+      }
+    }
+  ]
+}

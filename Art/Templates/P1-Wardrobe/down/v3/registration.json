@@ -1,0 +1,55 @@
+{
+  "sourceCanvas": [
+    1254,
+    1254
+  ],
+  "gutter": [
+    80,
+    80,
+    1174,
+    1174
+  ],
+  "sourceToLocal": "Fixed whole-plate export to each explicitly authored canvas, nearest; never alpha-bounds fitting",
+  "worldGrip": [
+    102,
+    170
+  ],
+  "hand": {
+    "pivot": [
+      10,
+      10
+    ],
+    "gripConvention": "forward saber; thumb/index toward guard and blade, pinky toward pommel",
+    "authorCanvas": [
+      64,
+      64
+    ],
+    "cropFromAuthorCanvas": [
+      23,
+      23,
+      43,
+      43
+    ],
+    "authoringNote": "Raw hand design drawn at larger pixel density; explicit whole-plate1254 to64 export, no silhouette fitting. Center of curled grip at source~647,647."
+  },
+  "weapon": {
+    "pivot": [
+      34,
+      61
+    ],
+    "projection": "oblique cutting edge toward camera, broad face turned away; collinear hilt/blade",
+    "authorCanvas": [
+      96,
+      96
+    ],
+    "cropFromAuthorCanvas": [
+      16,
+      0,
+      80,
+      96
+    ],
+    "authoringNote": "Manual hilt-center calibration in actual source, source~653,797; not alpha-bounds-derived."
+  },
+  "stage": "idle00 form study before animation/production manifests",
+  "artApproval": null
+}

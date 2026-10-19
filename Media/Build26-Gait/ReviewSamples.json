@@ -1,0 +1,106 @@
+[
+  {
+    "direction": "Up",
+    "facing": 2,
+    "source": "quarter-native.mp4",
+    "startSeconds": 0.4,
+    "intervalSeconds": 0.19,
+    "samples": 12,
+    "heroes": [
+      1,
+      2,
+      3
+    ]
+  },
+  {
+    "direction": "NE",
+    "facing": 7,
+    "source": "quarter-native.mp4",
+    "startSeconds": 6.4,
+    "intervalSeconds": 0.19,
+    "samples": 12,
+    "heroes": [
+      1,
+      2,
+      3
+    ]
+  },
+  {
+    "direction": "Right",
+    "facing": 3,
+    "source": "quarter-native.mp4",
+    "startSeconds": 12.4,
+    "intervalSeconds": 0.19,
+    "samples": 12,
+    "heroes": [
+      1,
+      2,
+      3
+    ]
+  },
+  {
+    "direction": "SE",
+    "facing": 4,
+    "source": "quarter-native.mp4",
+    "startSeconds": 18.4,
+    "intervalSeconds": 0.19,
+    "samples": 12,
+    "heroes": [
+      1,
+      2,
+      3
+    ]
+  },
+  {
+    "direction": "Down",
+    "facing": 0,
+    "source": "quarter-native.mp4",
+    "startSeconds": 24.4,
+    "intervalSeconds": 0.19,
+    "samples": 12,
+    "heroes": [
+      1,
+      2,
+      3
+    ]
+  },
+  {
+    "direction": "SW",
+    "facing": 5,
+    "source": "quarter-native.mp4",
+    "startSeconds": 30.4,
+    "intervalSeconds": 0.19,
+    "samples": 12,
+    "heroes": [
+      1,
+      2,
+      3
+    ]
+  },
+  {
+    "direction": "Left",
+    "facing": 1,
+    "source": "quarter-native.mp4",
+    "startSeconds": 36.4,
+    "intervalSeconds": 0.19,
+    "samples": 12,
+    "heroes": [
+      1,
+      2,
+      3
+    ]
+  },
+  {
+    "direction": "NW",
+    "facing": 6,
+    "source": "quarter-native.mp4",
+    "startSeconds": 42.4,
+    "intervalSeconds": 0.19,
+    "samples": 12,
+    "heroes": [
+      1,
+      2,
+      3
+    ]
+  }
+]

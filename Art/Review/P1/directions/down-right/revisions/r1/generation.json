@@ -1,0 +1,222 @@
+{
+  "revision": "r1",
+  "direction": "down-right",
+  "method": "imagegen complete poses at fixed three-quarter southeast view, guided by approved down/right phase references; whole-pose registration only during packaging",
+  "idlePoses": 1,
+  "walkingPoses": 8,
+  "viewReference": "raw/00.png",
+  "sideConvention": "character right = near/lower-left flank; character left = far/upper-right flank in idle; movement projected along southeast",
+  "poses": [
+    {
+      "index": 0,
+      "id": "00-idle",
+      "neighborReferencePoses": [
+        "Art/Review/P1/directions/down/revisions/r1/raw/00.png",
+        "Art/Review/P1/directions/right/revisions/r1/raw/00.png"
+      ],
+      "rawImage": "raw/00.png",
+      "initial": {
+        "prompt": "Redraw P1 into ONE matching DOWN-RIGHT / SOUTHEAST (↘) NEUTRAL IDLE game sprite. Reference 1 is the old diagonal-facing camera only; references 2 (approved FRONT/DOWN) and 3 (approved RIGHT) define the SAME character identity, outfit, proportions and boot design. Create the true 45-degree THREE-QUARTER FRONT view BETWEEN refs 2 and 3. Head, chest, hips, knees and BOTH boots all face diagonally toward SCREEN LOWER RIGHT. Not straight down, not pure side-right, not back. Show both blue eyes with the farther eye slightly smaller/partly occluded; nose/chest turn toward screen right, visible front and near flank, same slightly elevated RPG camera. Do not just rotate a flat image.\nSame exact tousled chestnut-haired boy, royal blue scarf and short coat with cream/gold trim, cream shirt, brown belt/fingerless gloves/side pouch, charcoal knee-length trousers, full folded-cuff LACED brown leather boots. Same head/body ratio and full boot cuff height/shaft/sole/toe proportions as approved refs. Crisp detailed pixel-sprite rendering, same palette, no redesign or extra equipment.\nNatural quiet stance, both soles planted and knees relaxed, arms down. BOTH boot toe axes point PARALLEL along ↘, same diagonal direction as face and torso, natural modest hip-width stance; no outward duck feet, no one toe to LEFT and one to RIGHT. Draw real three-quarter boot toe boxes, heels and cuff geometry. Transparent background, NO glow, aura, haze, floor, shadow, text, labels or sheet. Exactly ONE full body with generous transparent margins and all soles visible.",
+        "generatedSource": "/workspace/generated_images/exec-1bac75d3-2b77-4c17-bae5-38a43a95aa83.png"
+      },
+      "refinements": [],
+      "generatedSource": "/workspace/generated_images/exec-1bac75d3-2b77-4c17-bae5-38a43a95aa83.png",
+      "sha256": "fc03139076d63088eec5497d58e3fd1475d9f45f27d09003a18218293ca14c90",
+      "neighborReferenceSHA256": {
+        "Art/Review/P1/directions/down/revisions/r1/raw/00.png": "c6cb2535837c9c7e8a7f089ed4a75b2da50dd17991f8ec39d9f2d04933367906",
+        "Art/Review/P1/directions/right/revisions/r1/raw/00.png": "d4a0e5e1f6db14301520e15006c388b91737566cbf2fe1d340e49abfb5671b57"
+      }
+    },
+    {
+      "index": 1,
+      "id": "01 CONTACT A",
+      "neighborReferencePoses": [
+        "Art/Review/P1/directions/down/revisions/r1/raw/01.png",
+        "Art/Review/P1/directions/right/revisions/r1/raw/01.png"
+      ],
+      "rawImage": "raw/01.png",
+      "initial": {
+        "prompt": "Create ONE walking pose of the FIRST DOWN-RIGHT (↘) character. FIRST image is the definitive three-quarter FRONT 45-degree down-right view and character model: preserve EXACT head/camera direction, both visible blue eyes with far eye smaller, face/chest/hips pointed SCREEN LOWER RIGHT, blue scarf trailing upper-left, blue cream/gold trimmed coat, cream shirt, brown belt/gloves/pouch, charcoal knee trousers and full folded-cuff laced brown boots. SECOND and THIRD references show the SAME gait phase from approved DOWN and RIGHT views; use their phase, normal short stride, limb gesture and full boot proportions, but render it at FIRST image's fixed intermediate 45-degree view. Do NOT turn into a pure right profile or frontal down view. Never just rotate flat art or mix body directions.\nHead, torso and BOTH boot toe axes stay along SCREEN LOWER RIGHT ↘ throughout. Near/right leg is character RIGHT, on the image's near/lower-left flank; far/left leg is character LEFT, image upper-right flank in idle. Feet move forward/back along the SAME diagonal ground axis (+x,+y for forward), not sideways splay; knee bend and heel rise give anatomy, no warped or shrunken shoes. Full cuff/shaft/sole/toe physical volume like first model, no giant near boot/sole, no bare knees or added gear. Arms counter-swing opposite legs with appropriate foreground occlusion. Natural short WALK, no running/jumping/high knee/marching kick. Same crisp detailed pixel sprite style and head/body ratio, one complete figure, generous fully transparent margins, no text/sheet/labels/aura/glow/shadow/floor.\nPOSE:\n01 CONTACT A: Near RIGHT leg strides forward along ↘, its full-size boot at lower/front depth and slightly right of hip, heel contacting, toe gently lifted. Far LEFT leg trails along ↖, full boot at upper/rear depth, heel rises with toe still pointed ↘ on ground. RIGHT near arm swings BACK toward upper-left; LEFT far arm forward lower-right. Match R-forward contact phase of neighbor references, modest foreshortened depth split, not a lateral split.",
+        "generatedSource": "/workspace/generated_images/exec-5d4b8b7e-7432-48dd-a1b1-4922052e9279.png"
+      },
+      "refinements": [
+        {
+          "prompt": "Correct ONLY the LOWER-BODY walking anatomy of the FIRST sprite. Preserve exact first character's face/hair, BOTH eyes visible, fixed DOWN-RIGHT ↘ THREE-QUARTER FRONT camera, upper body costume, scarf, pouch, arm swing, head/body proportions and crisp pixel style. SECOND image is the matching neutral boot model. One full character, generous transparent margins, transparent background, no aura/shadow/text. Both boots' toe axes stay PARALLEL toward LOWER RIGHT ↘, same as head/chest, no splay or pure right-side boots. Preserve full cuff/shaft/heel geometry, no shrunken shoes or stretching trousers.\nThe current advancing boot/sole is exaggerated and too big. Use the SAME physical boot cuff WIDTH and HEIGHT, shaft length, heel/toe-box volume as the neutral reference at SAME head/body scale. No oversized near-camera boot, no tiny rear boot. Reduce fore-aft separation modestly into a short relaxed WALKING stride, preserve the same phase and foreground leg. The advancing boot's sole points mostly DOWN toward ground, toe only gently raised 5 degrees; reveal just a THIN sole/heel edge, NOT a broad sole facing viewer. Both boots full-size and connected to shins. Do not turn into high kick, marching, running or jumping.\nPHASE TO RETAIN: 01 CONTACT A: Near RIGHT leg strides forward along ↘, its full-size boot at lower/front depth and slightly right of hip, heel contacting, toe gently lifted. Far LEFT leg trails along ↖, full boot at upper/rear depth, heel rises with toe still pointed ↘ on ground. RIGHT near arm swings BACK toward upper-left; LEFT far arm forward lower-right. Match R-forward contact phase of neighbor references, modest foreshortened depth split, not a lateral split.",
+          "generatedSource": "/workspace/generated_images/exec-84796a45-2d6f-4635-b7a1-0ab1e5e31aa7.png"
+        }
+      ],
+      "generatedSource": "/workspace/generated_images/exec-84796a45-2d6f-4635-b7a1-0ab1e5e31aa7.png",
+      "sha256": "b586a19f3eb4b9230798ad5550f320eb22252cb7a7f2b112599f06c05bca4d25",
+      "neighborReferenceSHA256": {
+        "Art/Review/P1/directions/down/revisions/r1/raw/01.png": "10bb884405b3057ffe1918fb685792b67e72db04e6fe1985f29697f857f4cc36",
+        "Art/Review/P1/directions/right/revisions/r1/raw/01.png": "b7f0983f2593d77dc4ab8dd26ff0383f79eacba98d7d0454ff682218b7c96cae"
+      }
+    },
+    {
+      "index": 2,
+      "id": "02 WEIGHT A",
+      "neighborReferencePoses": [
+        "Art/Review/P1/directions/down/revisions/r1/raw/02.png",
+        "Art/Review/P1/directions/right/revisions/r1/raw/02.png"
+      ],
+      "rawImage": "raw/02.png",
+      "initial": {
+        "prompt": "Create ONE walking pose of the FIRST DOWN-RIGHT (↘) character. FIRST image is the definitive three-quarter FRONT 45-degree down-right view and character model: preserve EXACT head/camera direction, both visible blue eyes with far eye smaller, face/chest/hips pointed SCREEN LOWER RIGHT, blue scarf trailing upper-left, blue cream/gold trimmed coat, cream shirt, brown belt/gloves/pouch, charcoal knee trousers and full folded-cuff laced brown boots. SECOND and THIRD references show the SAME gait phase from approved DOWN and RIGHT views; use their phase, normal short stride, limb gesture and full boot proportions, but render it at FIRST image's fixed intermediate 45-degree view. Do NOT turn into a pure right profile or frontal down view. Never just rotate flat art or mix body directions.\nHead, torso and BOTH boot toe axes stay along SCREEN LOWER RIGHT ↘ throughout. Near/right leg is character RIGHT, on the image's near/lower-left flank; far/left leg is character LEFT, image upper-right flank in idle. Feet move forward/back along the SAME diagonal ground axis (+x,+y for forward), not sideways splay; knee bend and heel rise give anatomy, no warped or shrunken shoes. Full cuff/shaft/sole/toe physical volume like first model, no giant near boot/sole, no bare knees or added gear. Arms counter-swing opposite legs with appropriate foreground occlusion. Natural short WALK, no running/jumping/high knee/marching kick. Same crisp detailed pixel sprite style and head/body ratio, one complete figure, generous fully transparent margins, no text/sheet/labels/aura/glow/shadow/floor.\nPOSE:\n02 WEIGHT A: Near RIGHT support boot flat on ground in lower/front position; near knee flexes a little accepting weight, pelvis low. Far LEFT knee has ALREADY bent and advances along ↘ under hip; far boot lifts and travels inward/forward from rear, full cuff and toe volume, still oriented ↘. Right near arm back but returning; left far arm forward. Clear change from contact, no frozen far shoe.",
+        "generatedSource": "/workspace/generated_images/exec-a139d6ac-4749-4fb4-a469-e321ef07ff52.png"
+      },
+      "refinements": [],
+      "generatedSource": "/workspace/generated_images/exec-a139d6ac-4749-4fb4-a469-e321ef07ff52.png",
+      "sha256": "38386f4939f5ab1e04062f28ed00686e690416114945af7b45f6c9cb93cba55f",
+      "neighborReferenceSHA256": {
+        "Art/Review/P1/directions/down/revisions/r1/raw/02.png": "ffa65ab96e3deebdebb1b862298e122e024e00f2b219b216a8e13bc4ace233c4",
+        "Art/Review/P1/directions/right/revisions/r1/raw/02.png": "d4c02903cfc4e97747b6eb66a5c24874f1b62d75dff4556cceb1276819e915b1"
+      }
+    },
+    {
+      "index": 3,
+      "id": "03 PASS A",
+      "neighborReferencePoses": [
+        "Art/Review/P1/directions/down/revisions/r1/raw/03.png",
+        "Art/Review/P1/directions/right/revisions/r1/raw/03.png"
+      ],
+      "rawImage": "raw/03.png",
+      "initial": {
+        "prompt": "Create ONE walking pose of the FIRST DOWN-RIGHT (↘) character. FIRST image is the definitive three-quarter FRONT 45-degree down-right view and character model: preserve EXACT head/camera direction, both visible blue eyes with far eye smaller, face/chest/hips pointed SCREEN LOWER RIGHT, blue scarf trailing upper-left, blue cream/gold trimmed coat, cream shirt, brown belt/gloves/pouch, charcoal knee trousers and full folded-cuff laced brown boots. SECOND and THIRD references show the SAME gait phase from approved DOWN and RIGHT views; use their phase, normal short stride, limb gesture and full boot proportions, but render it at FIRST image's fixed intermediate 45-degree view. Do NOT turn into a pure right profile or frontal down view. Never just rotate flat art or mix body directions.\nHead, torso and BOTH boot toe axes stay along SCREEN LOWER RIGHT ↘ throughout. Near/right leg is character RIGHT, on the image's near/lower-left flank; far/left leg is character LEFT, image upper-right flank in idle. Feet move forward/back along the SAME diagonal ground axis (+x,+y for forward), not sideways splay; knee bend and heel rise give anatomy, no warped or shrunken shoes. Full cuff/shaft/sole/toe physical volume like first model, no giant near boot/sole, no bare knees or added gear. Arms counter-swing opposite legs with appropriate foreground occlusion. Natural short WALK, no running/jumping/high knee/marching kick. Same crisp detailed pixel sprite style and head/body ratio, one complete figure, generous fully transparent margins, no text/sheet/labels/aura/glow/shadow/floor.\nPOSE:\n03 PASS A: Near RIGHT leg supports almost vertical under body, its boot planted. Far LEFT knee bends and advances along ↘; full-size far boot passes CLOSE beside/partly BEHIND supporting ankle, lifted about half boot height. Boots close in both ground depth and lateral spacing, not a wide split; far knee leads slightly toward lower-right while boot comes under hip, never stuck far rear at upper-left. Arms near neutral. Both toe boxes still ↘ and shafts intact.",
+        "generatedSource": "/workspace/generated_images/exec-901a3739-bb8f-4fcc-9a7c-6e9b79568b74.png"
+      },
+      "refinements": [
+        {
+          "prompt": "Correct ONLY the LOWER-BODY walking anatomy of the FIRST sprite. Preserve exact first character's face/hair, BOTH eyes visible, fixed DOWN-RIGHT ↘ THREE-QUARTER FRONT camera, upper body costume, scarf, pouch, arm swing, head/body proportions and crisp pixel style. SECOND image is the matching neutral boot model. One full character, generous transparent margins, transparent background, no aura/shadow/text. Both boots' toe axes stay PARALLEL toward LOWER RIGHT ↘, same as head/chest, no splay or pure right-side boots. Preserve full cuff/shaft/heel geometry, no shrunken shoes or stretching trousers.\nTRUE PASSING A: The current far lifted foot is still far behind at upper-left. Bring it FORWARD and CLOSE beside the planted near ankle. Near RIGHT supporting leg/boot must be almost vertical under hip on the LOWER-LEFT flank, flat sole. Far LEFT knee bends and leads a little toward LOWER RIGHT, its full-size raised boot sits immediately to the RIGHT/behind the supporting shin, partly occluded, heel only half a boot height above support sole. Two ankles close in BOTH DEPTH and lateral spacing; far boot NOT left behind at upper-left, no wide stride. Real connected bent knee and ankle. Do not swap to opposite support leg.",
+          "generatedSource": "/workspace/generated_images/exec-d4e7777b-085c-4d30-94df-04c35afcd8ec.png"
+        }
+      ],
+      "generatedSource": "/workspace/generated_images/exec-d4e7777b-085c-4d30-94df-04c35afcd8ec.png",
+      "sha256": "36d4184a4e8768163b0e17b6f2ae6e6b28add0094d3bc5e6f19b0c916ff4d94f",
+      "neighborReferenceSHA256": {
+        "Art/Review/P1/directions/down/revisions/r1/raw/03.png": "b76f3ded56ba3b416f06876da12faa81d5033d4c307454bcc669935213e4c86e",
+        "Art/Review/P1/directions/right/revisions/r1/raw/03.png": "6e7bfb6943aaf03886e82390dbfd6b37f2e270cf4ffbce7424f15dd41d870378"
+      }
+    },
+    {
+      "index": 4,
+      "id": "04 LATE SWING A",
+      "neighborReferencePoses": [
+        "Art/Review/P1/directions/down/revisions/r1/raw/04.png",
+        "Art/Review/P1/directions/right/revisions/r1/raw/04.png"
+      ],
+      "rawImage": "raw/04.png",
+      "initial": {
+        "prompt": "Create ONE walking pose of the FIRST DOWN-RIGHT (↘) character. FIRST image is the definitive three-quarter FRONT 45-degree down-right view and character model: preserve EXACT head/camera direction, both visible blue eyes with far eye smaller, face/chest/hips pointed SCREEN LOWER RIGHT, blue scarf trailing upper-left, blue cream/gold trimmed coat, cream shirt, brown belt/gloves/pouch, charcoal knee trousers and full folded-cuff laced brown boots. SECOND and THIRD references show the SAME gait phase from approved DOWN and RIGHT views; use their phase, normal short stride, limb gesture and full boot proportions, but render it at FIRST image's fixed intermediate 45-degree view. Do NOT turn into a pure right profile or frontal down view. Never just rotate flat art or mix body directions.\nHead, torso and BOTH boot toe axes stay along SCREEN LOWER RIGHT ↘ throughout. Near/right leg is character RIGHT, on the image's near/lower-left flank; far/left leg is character LEFT, image upper-right flank in idle. Feet move forward/back along the SAME diagonal ground axis (+x,+y for forward), not sideways splay; knee bend and heel rise give anatomy, no warped or shrunken shoes. Full cuff/shaft/sole/toe physical volume like first model, no giant near boot/sole, no bare knees or added gear. Arms counter-swing opposite legs with appropriate foreground occlusion. Natural short WALK, no running/jumping/high knee/marching kick. Same crisp detailed pixel sprite style and head/body ratio, one complete figure, generous fully transparent margins, no text/sheet/labels/aura/glow/shadow/floor.\nPOSE:\n04 LATE SWING A: Far LEFT leg has passed body and extends forward toward LOWER RIGHT ↘, far boot low heel just about to land, toe relaxed. Near RIGHT support leg trails toward upper-left, heel rising with ↘-pointed toe still on ground. Near RIGHT arm swings FORWARD/down-right across the front of cream shirt/belt; far left arm back. Full near trailing boot foreground/brighter, far advancing boot slightly darker but SAME physical size. Short pre-contact stride, not a kick.",
+        "generatedSource": "/workspace/generated_images/exec-afaede55-2198-426d-bf96-882911ff68d3.png"
+      },
+      "refinements": [
+        {
+          "prompt": "Correct ONLY the LOWER-BODY walking anatomy of the FIRST sprite. Preserve exact first character's face/hair, BOTH eyes visible, fixed DOWN-RIGHT ↘ THREE-QUARTER FRONT camera, upper body costume, scarf, pouch, arm swing, head/body proportions and crisp pixel style. SECOND image is the matching neutral boot model. One full character, generous transparent margins, transparent background, no aura/shadow/text. Both boots' toe axes stay PARALLEL toward LOWER RIGHT ↘, same as head/chest, no splay or pure right-side boots. Preserve full cuff/shaft/heel geometry, no shrunken shoes or stretching trousers.\nThe current advancing boot/sole is exaggerated and too big. Use the SAME physical boot cuff WIDTH and HEIGHT, shaft length, heel/toe-box volume as the neutral reference at SAME head/body scale. No oversized near-camera boot, no tiny rear boot. Reduce fore-aft separation modestly into a short relaxed WALKING stride, preserve the same phase and foreground leg. The advancing boot's sole points mostly DOWN toward ground, toe only gently raised 5 degrees; reveal just a THIN sole/heel edge, NOT a broad sole facing viewer. Both boots full-size and connected to shins. Do not turn into high kick, marching, running or jumping.\nPHASE TO RETAIN: 04 LATE SWING A: Far LEFT leg has passed body and extends forward toward LOWER RIGHT ↘, far boot low heel just about to land, toe relaxed. Near RIGHT support leg trails toward upper-left, heel rising with ↘-pointed toe still on ground. Near RIGHT arm swings FORWARD/down-right across the front of cream shirt/belt; far left arm back. Full near trailing boot foreground/brighter, far advancing boot slightly darker but SAME physical size. Short pre-contact stride, not a kick.",
+          "generatedSource": "/workspace/generated_images/exec-399c96cf-4da5-4b21-ba52-f936776e5cbb.png"
+        }
+      ],
+      "generatedSource": "/workspace/generated_images/exec-399c96cf-4da5-4b21-ba52-f936776e5cbb.png",
+      "sha256": "940d92b7916ca3a31355be10a5a8c8367295f0fa67966a2442bfec3bf2afe23c",
+      "neighborReferenceSHA256": {
+        "Art/Review/P1/directions/down/revisions/r1/raw/04.png": "9b55b9d91c5997420a53613f098887675f8f58bb91a0803923c803b7c8b943b2",
+        "Art/Review/P1/directions/right/revisions/r1/raw/04.png": "0ee2c02aedeb27c2f480b0f751d00402338ed8e2710a3ef809b7cbcce7179c07"
+      }
+    },
+    {
+      "index": 5,
+      "id": "05 CONTACT B",
+      "neighborReferencePoses": [
+        "Art/Review/P1/directions/down/revisions/r1/raw/05.png",
+        "Art/Review/P1/directions/right/revisions/r1/raw/05.png"
+      ],
+      "rawImage": "raw/05.png",
+      "initial": {
+        "prompt": "Create ONE walking pose of the FIRST DOWN-RIGHT (↘) character. FIRST image is the definitive three-quarter FRONT 45-degree down-right view and character model: preserve EXACT head/camera direction, both visible blue eyes with far eye smaller, face/chest/hips pointed SCREEN LOWER RIGHT, blue scarf trailing upper-left, blue cream/gold trimmed coat, cream shirt, brown belt/gloves/pouch, charcoal knee trousers and full folded-cuff laced brown boots. SECOND and THIRD references show the SAME gait phase from approved DOWN and RIGHT views; use their phase, normal short stride, limb gesture and full boot proportions, but render it at FIRST image's fixed intermediate 45-degree view. Do NOT turn into a pure right profile or frontal down view. Never just rotate flat art or mix body directions.\nHead, torso and BOTH boot toe axes stay along SCREEN LOWER RIGHT ↘ throughout. Near/right leg is character RIGHT, on the image's near/lower-left flank; far/left leg is character LEFT, image upper-right flank in idle. Feet move forward/back along the SAME diagonal ground axis (+x,+y for forward), not sideways splay; knee bend and heel rise give anatomy, no warped or shrunken shoes. Full cuff/shaft/sole/toe physical volume like first model, no giant near boot/sole, no bare knees or added gear. Arms counter-swing opposite legs with appropriate foreground occlusion. Natural short WALK, no running/jumping/high knee/marching kick. Same crisp detailed pixel sprite style and head/body ratio, one complete figure, generous fully transparent margins, no text/sheet/labels/aura/glow/shadow/floor.\nPOSE:\n05 CONTACT B: Far LEFT leg reaches forward along ↘ to lower-right/front, heel contacts ground, toe gently lifted. Near RIGHT leg trails along ↖ toward upper-left/back with heel lifted and toe STILL pointed ↘. Near RIGHT arm FORWARD/down-right across front of shirt; far left arm back. Near trailing leg foreground/brighter, far forward leg slightly darker. Opposite leg and arm phase to01; maintain fixed three-quarter frontal view and modest stride.",
+        "generatedSource": "/workspace/generated_images/exec-25188466-c830-48e6-90fc-c9a811f3952f.png"
+      },
+      "refinements": [
+        {
+          "prompt": "Correct ONLY the LOWER-BODY walking anatomy of the FIRST sprite. Preserve exact first character's face/hair, BOTH eyes visible, fixed DOWN-RIGHT ↘ THREE-QUARTER FRONT camera, upper body costume, scarf, pouch, arm swing, head/body proportions and crisp pixel style. SECOND image is the matching neutral boot model. One full character, generous transparent margins, transparent background, no aura/shadow/text. Both boots' toe axes stay PARALLEL toward LOWER RIGHT ↘, same as head/chest, no splay or pure right-side boots. Preserve full cuff/shaft/heel geometry, no shrunken shoes or stretching trousers.\nThe current advancing boot/sole is exaggerated and too big. Use the SAME physical boot cuff WIDTH and HEIGHT, shaft length, heel/toe-box volume as the neutral reference at SAME head/body scale. No oversized near-camera boot, no tiny rear boot. Reduce fore-aft separation modestly into a short relaxed WALKING stride, preserve the same phase and foreground leg. The advancing boot's sole points mostly DOWN toward ground, toe only gently raised 5 degrees; reveal just a THIN sole/heel edge, NOT a broad sole facing viewer. Both boots full-size and connected to shins. Do not turn into high kick, marching, running or jumping.\nPHASE TO RETAIN: 05 CONTACT B: Far LEFT leg reaches forward along ↘ to lower-right/front, heel contacts ground, toe gently lifted. Near RIGHT leg trails along ↖ toward upper-left/back with heel lifted and toe STILL pointed ↘. Near RIGHT arm FORWARD/down-right across front of shirt; far left arm back. Near trailing leg foreground/brighter, far forward leg slightly darker. Opposite leg and arm phase to01; maintain fixed three-quarter frontal view and modest stride.",
+          "generatedSource": "/workspace/generated_images/exec-822c5dd6-e81b-4ca6-96d5-011d13bef99d.png"
+        }
+      ],
+      "generatedSource": "/workspace/generated_images/exec-822c5dd6-e81b-4ca6-96d5-011d13bef99d.png",
+      "sha256": "56038dde01293c7cac9a0154d99243a47fa3bd302c7fa4d206dc9b21fa4ee5bc",
+      "neighborReferenceSHA256": {
+        "Art/Review/P1/directions/down/revisions/r1/raw/05.png": "98c7667e41db0fd57d68bd84ef7b83f5a8ebf3d19bb8cc09956249709417808e",
+        "Art/Review/P1/directions/right/revisions/r1/raw/05.png": "3742651eb07d8baa6c1a811688fcad0020b75d687bfa32b618c8c139687de357"
+      }
+    },
+    {
+      "index": 6,
+      "id": "06 WEIGHT B",
+      "neighborReferencePoses": [
+        "Art/Review/P1/directions/down/revisions/r1/raw/06.png",
+        "Art/Review/P1/directions/right/revisions/r1/raw/06.png"
+      ],
+      "rawImage": "raw/06.png",
+      "initial": {
+        "prompt": "Create ONE walking pose of the FIRST DOWN-RIGHT (↘) character. FIRST image is the definitive three-quarter FRONT 45-degree down-right view and character model: preserve EXACT head/camera direction, both visible blue eyes with far eye smaller, face/chest/hips pointed SCREEN LOWER RIGHT, blue scarf trailing upper-left, blue cream/gold trimmed coat, cream shirt, brown belt/gloves/pouch, charcoal knee trousers and full folded-cuff laced brown boots. SECOND and THIRD references show the SAME gait phase from approved DOWN and RIGHT views; use their phase, normal short stride, limb gesture and full boot proportions, but render it at FIRST image's fixed intermediate 45-degree view. Do NOT turn into a pure right profile or frontal down view. Never just rotate flat art or mix body directions.\nHead, torso and BOTH boot toe axes stay along SCREEN LOWER RIGHT ↘ throughout. Near/right leg is character RIGHT, on the image's near/lower-left flank; far/left leg is character LEFT, image upper-right flank in idle. Feet move forward/back along the SAME diagonal ground axis (+x,+y for forward), not sideways splay; knee bend and heel rise give anatomy, no warped or shrunken shoes. Full cuff/shaft/sole/toe physical volume like first model, no giant near boot/sole, no bare knees or added gear. Arms counter-swing opposite legs with appropriate foreground occlusion. Natural short WALK, no running/jumping/high knee/marching kick. Same crisp detailed pixel sprite style and head/body ratio, one complete figure, generous fully transparent margins, no text/sheet/labels/aura/glow/shadow/floor.\nPOSE:\n06 WEIGHT B: Far LEFT support boot flat on ground at lower-right/front, knee flexes accepting weight. Near RIGHT knee bends and lifts from upper-left/rear, boot begins traveling forward/inward along ↘ under hip, full-size cuff/shaft/toe, still pointed ↘. Near RIGHT arm remains forward across cream shirt but begins returning; far left arm back. Low pelvis; match neighbors' opposite support phase, no boot shrink or backward-facing toe.",
+        "generatedSource": "/workspace/generated_images/exec-7cd8f979-a4f6-4e6b-b42b-eeed9da2b8d2.png"
+      },
+      "refinements": [],
+      "generatedSource": "/workspace/generated_images/exec-7cd8f979-a4f6-4e6b-b42b-eeed9da2b8d2.png",
+      "sha256": "9b7c505eb75e0835ce7fcdc2ecf8efadce7e94884883c8683caea7fde50ea274",
+      "neighborReferenceSHA256": {
+        "Art/Review/P1/directions/down/revisions/r1/raw/06.png": "0dc8d963c2e00356661ee871048ecd08c5a1aa9f6f59fbcddc361b8b20f3680f",
+        "Art/Review/P1/directions/right/revisions/r1/raw/06.png": "7aa2c31b3c67673ba899cdf4cd70c9de2b7cc9e387091fd237429ab184dfd0ff"
+      }
+    },
+    {
+      "index": 7,
+      "id": "07 PASS B",
+      "neighborReferencePoses": [
+        "Art/Review/P1/directions/down/revisions/r1/raw/07.png",
+        "Art/Review/P1/directions/right/revisions/r1/raw/07.png"
+      ],
+      "rawImage": "raw/07.png",
+      "initial": {
+        "prompt": "Create ONE walking pose of the FIRST DOWN-RIGHT (↘) character. FIRST image is the definitive three-quarter FRONT 45-degree down-right view and character model: preserve EXACT head/camera direction, both visible blue eyes with far eye smaller, face/chest/hips pointed SCREEN LOWER RIGHT, blue scarf trailing upper-left, blue cream/gold trimmed coat, cream shirt, brown belt/gloves/pouch, charcoal knee trousers and full folded-cuff laced brown boots. SECOND and THIRD references show the SAME gait phase from approved DOWN and RIGHT views; use their phase, normal short stride, limb gesture and full boot proportions, but render it at FIRST image's fixed intermediate 45-degree view. Do NOT turn into a pure right profile or frontal down view. Never just rotate flat art or mix body directions.\nHead, torso and BOTH boot toe axes stay along SCREEN LOWER RIGHT ↘ throughout. Near/right leg is character RIGHT, on the image's near/lower-left flank; far/left leg is character LEFT, image upper-right flank in idle. Feet move forward/back along the SAME diagonal ground axis (+x,+y for forward), not sideways splay; knee bend and heel rise give anatomy, no warped or shrunken shoes. Full cuff/shaft/sole/toe physical volume like first model, no giant near boot/sole, no bare knees or added gear. Arms counter-swing opposite legs with appropriate foreground occlusion. Natural short WALK, no running/jumping/high knee/marching kick. Same crisp detailed pixel sprite style and head/body ratio, one complete figure, generous fully transparent margins, no text/sheet/labels/aura/glow/shadow/floor.\nPOSE:\n07 PASS B: Far LEFT leg supports vertically beneath hip, full boot planted. Near RIGHT knee bends and advances along ↘; its full-size lifted boot passes CLOSE IN FRONT of far supporting shin/ankle in foreground, near boot on lower-left flank but traveling toward lower-right. Two feet near each other in depth, no wide stride or high knee, no crossing/twisting. Both toe axes ↘. Arms near neutral; opposite support to03.",
+        "generatedSource": "/workspace/generated_images/exec-d28ffb71-3be7-4c90-867e-aca92a3d0305.png"
+      },
+      "refinements": [
+        {
+          "prompt": "Correct ONLY the LOWER-BODY walking anatomy of the FIRST sprite. Preserve exact first character's face/hair, BOTH eyes visible, fixed DOWN-RIGHT ↘ THREE-QUARTER FRONT camera, upper body costume, scarf, pouch, arm swing, head/body proportions and crisp pixel style. SECOND image is the matching neutral boot model. One full character, generous transparent margins, transparent background, no aura/shadow/text. Both boots' toe axes stay PARALLEL toward LOWER RIGHT ↘, same as head/chest, no splay or pure right-side boots. Preserve full cuff/shaft/heel geometry, no shrunken shoes or stretching trousers.\nTRUE PASSING B: Far LEFT support leg/boot is vertical beneath hip and planted on upper-right flank. Near RIGHT knee bends slightly and advances ↘, its boot passes CLOSE IN FRONT of support ankle on lower-left flank, lifted about half a boot height; keep ankles close IN DEPTH and lateral spacing. This must be a legs-together passing pose, NOT a big forward stride, high-knee march or camera-facing kick. Full boot volume/cuff/shaft preserved. No crossed/twisted feet, soles mostly face ground with only modest edge visible. Do not swap to opposite support leg.",
+          "generatedSource": "/workspace/generated_images/exec-1e0e6a55-4ee2-4ce5-836c-c0226da925ca.png"
+        }
+      ],
+      "generatedSource": "/workspace/generated_images/exec-1e0e6a55-4ee2-4ce5-836c-c0226da925ca.png",
+      "sha256": "bd3dba0b3dc78e41ac48595945949d450019ab1af318170dc1c0cf09978cac7c",
+      "neighborReferenceSHA256": {
+        "Art/Review/P1/directions/down/revisions/r1/raw/07.png": "77f89e5210852e2d04d71f678df70198d59bb79450b7323c4508f3d901590125",
+        "Art/Review/P1/directions/right/revisions/r1/raw/07.png": "c611e08aba2d35f2fe9df88fe9cf6123a7dcbeb2ff22a54de67f9e1ad8f5515b"
+      }
+    },
+    {
+      "index": 8,
+      "id": "08 LATE SWING B",
+      "neighborReferencePoses": [
+        "Art/Review/P1/directions/down/revisions/r1/raw/08.png",
+        "Art/Review/P1/directions/right/revisions/r1/raw/08.png"
+      ],
+      "rawImage": "raw/08.png",
+      "initial": {
+        "prompt": "Create ONE walking pose of the FIRST DOWN-RIGHT (↘) character. FIRST image is the definitive three-quarter FRONT 45-degree down-right view and character model: preserve EXACT head/camera direction, both visible blue eyes with far eye smaller, face/chest/hips pointed SCREEN LOWER RIGHT, blue scarf trailing upper-left, blue cream/gold trimmed coat, cream shirt, brown belt/gloves/pouch, charcoal knee trousers and full folded-cuff laced brown boots. SECOND and THIRD references show the SAME gait phase from approved DOWN and RIGHT views; use their phase, normal short stride, limb gesture and full boot proportions, but render it at FIRST image's fixed intermediate 45-degree view. Do NOT turn into a pure right profile or frontal down view. Never just rotate flat art or mix body directions.\nHead, torso and BOTH boot toe axes stay along SCREEN LOWER RIGHT ↘ throughout. Near/right leg is character RIGHT, on the image's near/lower-left flank; far/left leg is character LEFT, image upper-right flank in idle. Feet move forward/back along the SAME diagonal ground axis (+x,+y for forward), not sideways splay; knee bend and heel rise give anatomy, no warped or shrunken shoes. Full cuff/shaft/sole/toe physical volume like first model, no giant near boot/sole, no bare knees or added gear. Arms counter-swing opposite legs with appropriate foreground occlusion. Natural short WALK, no running/jumping/high knee/marching kick. Same crisp detailed pixel sprite style and head/body ratio, one complete figure, generous fully transparent margins, no text/sheet/labels/aura/glow/shadow/floor.\nPOSE:\n08 LATE SWING B: Near RIGHT leg advances low along ↘, its full-size heel near front/lower depth just about to land, toe gently lifted. Far LEFT support leg trails toward ↖, heel rising while ↘ toe remains on ground. Near RIGHT arm BACK toward upper-left, far LEFT arm forward toward lower-right. Short foreshortened stride, no large near-camera boot or broad sole, ready to loop into01 while keeping fixed 45-degree view.",
+        "generatedSource": "/workspace/generated_images/exec-0ca4c299-1e64-4c82-a8a2-cefc992261e2.png"
+      },
+      "refinements": [
+        {
+          "prompt": "Correct ONLY the LOWER-BODY walking anatomy of the FIRST sprite. Preserve exact first character's face/hair, BOTH eyes visible, fixed DOWN-RIGHT ↘ THREE-QUARTER FRONT camera, upper body costume, scarf, pouch, arm swing, head/body proportions and crisp pixel style. SECOND image is the matching neutral boot model. One full character, generous transparent margins, transparent background, no aura/shadow/text. Both boots' toe axes stay PARALLEL toward LOWER RIGHT ↘, same as head/chest, no splay or pure right-side boots. Preserve full cuff/shaft/heel geometry, no shrunken shoes or stretching trousers.\nThe current advancing boot/sole is exaggerated and too big. Use the SAME physical boot cuff WIDTH and HEIGHT, shaft length, heel/toe-box volume as the neutral reference at SAME head/body scale. No oversized near-camera boot, no tiny rear boot. Reduce fore-aft separation modestly into a short relaxed WALKING stride, preserve the same phase and foreground leg. The advancing boot's sole points mostly DOWN toward ground, toe only gently raised 5 degrees; reveal just a THIN sole/heel edge, NOT a broad sole facing viewer. Both boots full-size and connected to shins. Do not turn into high kick, marching, running or jumping.\nPHASE TO RETAIN: 08 LATE SWING B: Near RIGHT leg advances low along ↘, its full-size heel near front/lower depth just about to land, toe gently lifted. Far LEFT support leg trails toward ↖, heel rising while ↘ toe remains on ground. Near RIGHT arm BACK toward upper-left, far LEFT arm forward toward lower-right. Short foreshortened stride, no large near-camera boot or broad sole, ready to loop into01 while keeping fixed 45-degree view.",
+          "generatedSource": "/workspace/generated_images/exec-91de71b9-8642-4f9d-8035-1037156ddb92.png"
+        }
+      ],
+      "generatedSource": "/workspace/generated_images/exec-91de71b9-8642-4f9d-8035-1037156ddb92.png",
+      "sha256": "7fc6010fadbc74ab083dfb4ebb56c3a3868e2c8a469c915f6d15b3823929a6c4",
+      "neighborReferenceSHA256": {
+        "Art/Review/P1/directions/down/revisions/r1/raw/08.png": "a31025c7ab7d4f7091ccbff7921408a74a3e9789f25c3f15829fd89f9f03902d",
+        "Art/Review/P1/directions/right/revisions/r1/raw/08.png": "1c41665f64f35dba8c77816e141d365852e5fb7de1ebcf73a3a6606ef4a4af57"
+      }
+    }
+  ],
+  "artApproval": null
+}

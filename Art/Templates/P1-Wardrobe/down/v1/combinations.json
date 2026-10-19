@@ -1,0 +1,680 @@
+{
+  "count": 24,
+  "poses": 216,
+  "frameMs": 120,
+  "slowPreviewGenerated": false,
+  "combinations": [
+    {
+      "folder": "combinations/p1-hair-chestnut-v1__p1-face-blue-v1__base__empty",
+      "base": "p1-neutral-down-walk-r2",
+      "assets": [
+        "p1-hair-chestnut-v1",
+        "p1-face-blue-v1"
+      ],
+      "direction": "down",
+      "motionSHA256": "cb0b4896eb90062b93a3e9768b5bf24be4a3ed794c1621188bf189cc9e802642",
+      "assetManifestSHA256": {
+        "p1-neutral-down-walk-r2": "42f3d3ca196b4f1d73f2a2972625f5c5ebd1b7a0d6e47e8b59298eed17eeb829",
+        "p1-hair-chestnut-v1": "8cb282d7b17d9026320c9b8ee7e2e62339dbb68adc18896a715fb0be806a91cd",
+        "p1-face-blue-v1": "44acc92dbdc081fc0678a3ca6131cb73cb28c48b506cf75f8c2c27d5ba8d3a86"
+      },
+      "frames": {
+        "00.png": "b78fb718cab60da5bf4970a1d2d06b8f913b504886f67fc5e6b3ab8e46bb849f",
+        "01.png": "7850bb9a8a51bfde1cb7320b1e8b30613c612a1d9a556cb9933f43e48232400a",
+        "02.png": "11145fd7a41e69e4560339de5c4f23dae4c47860dd42e02d11c68d3ff3dbd45b",
+        "03.png": "f35a1cd08de4726c8a38c16bdefcac6a83c48fdd95211644737c8939e073afa0",
+        "04.png": "3f66149a612118f771f672eef88f4e5a78255987f624dfa5828a7a95118de986",
+        "05.png": "2acbd7f740521d2c2fbc151368036edeb40cc23b40e3c412e0f46917d7e8ff9c",
+        "06.png": "692e22b0e4c3ad4f22d0e86ec8c38a1a65dca5815ef41f265286a6f6210b09c1",
+        "07.png": "c9106cd2d40ea236232e174ea4325876eef464398023fd60b4487c84139d9bbb",
+        "08.png": "ffa1af1411caad66154242c7cd64ddcf2cdcb7bce32462d65954c0f76a5ad2e7"
+      }
+    },
+    {
+      "folder": "combinations/p1-hair-chestnut-v1__p1-face-blue-v1__base__sword",
+      "base": "p1-neutral-down-walk-r2",
+      "assets": [
+        "p1-hair-chestnut-v1",
+        "p1-face-blue-v1",
+        "p1-weapon-short-sword-v1"
+      ],
+      "direction": "down",
+      "motionSHA256": "cb0b4896eb90062b93a3e9768b5bf24be4a3ed794c1621188bf189cc9e802642",
+      "assetManifestSHA256": {
+        "p1-neutral-down-walk-r2": "42f3d3ca196b4f1d73f2a2972625f5c5ebd1b7a0d6e47e8b59298eed17eeb829",
+        "p1-hair-chestnut-v1": "8cb282d7b17d9026320c9b8ee7e2e62339dbb68adc18896a715fb0be806a91cd",
+        "p1-face-blue-v1": "44acc92dbdc081fc0678a3ca6131cb73cb28c48b506cf75f8c2c27d5ba8d3a86",
+        "p1-weapon-short-sword-v1": "76be08492267661177d8b2a9c06805ec282f6b506efa3595171d87537e670f8a"
+      },
+      "frames": {
+        "00.png": "7365bb7b8cbe56b7ce0afb6063cb85e7c60474a1dcce2760e154b098687acf7d",
+        "01.png": "006357fc9f63ad6ec5824bf8184827da589fb7d7d7569a339761f78fb5615bbf",
+        "02.png": "4ac1df28ed52fe9d7ad3d7f88d80442ccb4895350be8620bd603cc2c5c63dac5",
+        "03.png": "7ac64eac6432e09056e4049f78cef44de3d56501a3cf7391e005e427bc9d7896",
+        "04.png": "c918b57d482d467ec6430fef3d3bb9edc12f4b3f68aafd1c66373f3562a3d737",
+        "05.png": "7210db8cb77230af62944d52c0b60f4193a6bc0fab2a8f58582d6c0f87d02a17",
+        "06.png": "483513aef7dd0260755e6e7302950a92c0f500385420ee4105901574a42cbaf1",
+        "07.png": "9ce8d15b158e75fdcd5b11aa754c289a44efbf3daa2981aaccf04efe739444de",
+        "08.png": "304bf634ba397e95e3d2c74a3fa98d4c0d9108daba60fa7f290ee9cbe71435f2"
+      }
+    },
+    {
+      "folder": "combinations/p1-hair-chestnut-v1__p1-face-blue-v1__dressed__empty",
+      "base": "p1-neutral-down-walk-r2",
+      "assets": [
+        "p1-hair-chestnut-v1",
+        "p1-face-blue-v1",
+        "p1-outfit-forester-v1"
+      ],
+      "direction": "down",
+      "motionSHA256": "cb0b4896eb90062b93a3e9768b5bf24be4a3ed794c1621188bf189cc9e802642",
+      "assetManifestSHA256": {
+        "p1-neutral-down-walk-r2": "42f3d3ca196b4f1d73f2a2972625f5c5ebd1b7a0d6e47e8b59298eed17eeb829",
+        "p1-hair-chestnut-v1": "8cb282d7b17d9026320c9b8ee7e2e62339dbb68adc18896a715fb0be806a91cd",
+        "p1-face-blue-v1": "44acc92dbdc081fc0678a3ca6131cb73cb28c48b506cf75f8c2c27d5ba8d3a86",
+        "p1-outfit-forester-v1": "ea504138699da7f93836b8578befdc2116cc1862990b26bb352415bf62ee5291"
+      },
+      "frames": {
+        "00.png": "6693f48c3d280d859a965f3e011dc2af8750a2ab9f917d36db7e66de331e0c6a",
+        "01.png": "bbcc4a16217914536bced9b7633a9226c442dc766987cb84c0a39c07617cd049",
+        "02.png": "86e757da39508c1cd1371734629919175fa016587b5f497ae31996a87cf3d094",
+        "03.png": "0df8868416d7e3f7cf80ae355a61a910c44e94437b265b0004da3d10ea03a5ab",
+        "04.png": "ff04f576da28c2b79c9b70506ffb48f5d34a9ee86d27c12316ae9c24d5fb2102",
+        "05.png": "fcfc4e4f441992e25864c9febeeb65bea2dc7446ce7c758a9a4e58c38b63d3f8",
+        "06.png": "3ee09d39de9254cc7030f8c11f44f879011f6c4ca9effeedf5724cc4721c286d",
+        "07.png": "f5900bbc028c2d437d1daf5b0466bccafbb507f301c2eb52f203dcb1ccb117f0",
+        "08.png": "9f13314e14fa8f81f211e52571c4a0cb339da806081ac66ab072ce1588583ac5"
+      }
+    },
+    {
+      "folder": "combinations/p1-hair-chestnut-v1__p1-face-blue-v1__dressed__sword",
+      "base": "p1-neutral-down-walk-r2",
+      "assets": [
+        "p1-hair-chestnut-v1",
+        "p1-face-blue-v1",
+        "p1-outfit-forester-v1",
+        "p1-weapon-short-sword-v1"
+      ],
+      "direction": "down",
+      "motionSHA256": "cb0b4896eb90062b93a3e9768b5bf24be4a3ed794c1621188bf189cc9e802642",
+      "assetManifestSHA256": {
+        "p1-neutral-down-walk-r2": "42f3d3ca196b4f1d73f2a2972625f5c5ebd1b7a0d6e47e8b59298eed17eeb829",
+        "p1-hair-chestnut-v1": "8cb282d7b17d9026320c9b8ee7e2e62339dbb68adc18896a715fb0be806a91cd",
+        "p1-face-blue-v1": "44acc92dbdc081fc0678a3ca6131cb73cb28c48b506cf75f8c2c27d5ba8d3a86",
+        "p1-outfit-forester-v1": "ea504138699da7f93836b8578befdc2116cc1862990b26bb352415bf62ee5291",
+        "p1-weapon-short-sword-v1": "76be08492267661177d8b2a9c06805ec282f6b506efa3595171d87537e670f8a"
+      },
+      "frames": {
+        "00.png": "623edc1c8f7c643806b21983702df293cbe1cff0fc9ec84452f58c35ffd28e47",
+        "01.png": "6c49ded643baeac7cec45742832151d8bc88edc6d70c78d3917052d7503fb3f2",
+        "02.png": "d8a4433794c287ae4dbf00940a2d188cbcf91fe6e77f1ec052bd514cb3acfcc3",
+        "03.png": "1257f4e1a5ef1350afd121ec6715932ca7b91e4e54eaad383bec64eb59221bb6",
+        "04.png": "a69ed4280cf8c67d19195e89abd4da59a89292dac8cea791fa068572166abcfe",
+        "05.png": "80a7990b8b91836549cf534bf5b23fdbe32d2a87c28290e71b5d710b90ede1d9",
+        "06.png": "dcf553106f49f816107b6d0403e3f67e7f8f7667dca8dd91d8795f468e759f8a",
+        "07.png": "9c26cc94f1d4a9ce415bb000ed4e32708c07370385a47caeb830f567813b803a",
+        "08.png": "6fad8e1aeb3117b2ed5aaee8f5bd97d92aa3943f284151cc7d904cd12c16cfef"
+      }
+    },
+    {
+      "folder": "combinations/p1-hair-chestnut-v1__p1-face-amber-v1__base__empty",
+      "base": "p1-neutral-down-walk-r2",
+      "assets": [
+        "p1-hair-chestnut-v1",
+        "p1-face-amber-v1"
+      ],
+      "direction": "down",
+      "motionSHA256": "cb0b4896eb90062b93a3e9768b5bf24be4a3ed794c1621188bf189cc9e802642",
+      "assetManifestSHA256": {
+        "p1-neutral-down-walk-r2": "42f3d3ca196b4f1d73f2a2972625f5c5ebd1b7a0d6e47e8b59298eed17eeb829",
+        "p1-hair-chestnut-v1": "8cb282d7b17d9026320c9b8ee7e2e62339dbb68adc18896a715fb0be806a91cd",
+        "p1-face-amber-v1": "6594c9cf4c0e1674c143d68ca61f3b1d631b7207d7aa60e7bbd33340bd12e319"
+      },
+      "frames": {
+        "00.png": "7f005a92c6a72a15dc6adf586e4eb07f606c191ef69754e83dc4a6def896f792",
+        "01.png": "9ffaa03c074fed62d7dffa66b5e68e5b79f0a12af5cb6ed78f32940a11cf3bcd",
+        "02.png": "220e55d44ac2ecd90fd297112b9b6da02c4ded842d702a4a555f82970a4db2be",
+        "03.png": "1760082952edd9f1d35b9043824db7e6d48c158e24473737610534cf09ac5f85",
+        "04.png": "26a842c9dc8fb28538a1b8434640e9ab59708994ac89fad7809020f4b5a20d8b",
+        "05.png": "23b31d3ade905a8511bbe665001a651b4fa62eed4ab5449b75e63da7c5280a4f",
+        "06.png": "a861a58fb4edf7e306277acea11c2c960ce491fb01952a5a8e5fbd509417b312",
+        "07.png": "eda12913a7f466cc2f9bb5d08add143d08eff7ac3cce1f04f4e61a8f4a71cc2a",
+        "08.png": "a5c853c522b11027c36fad56c3eeede3bd01b63fc186f043f3dd8846a5e8eb3f"
+      }
+    },
+    {
+      "folder": "combinations/p1-hair-chestnut-v1__p1-face-amber-v1__base__sword",
+      "base": "p1-neutral-down-walk-r2",
+      "assets": [
+        "p1-hair-chestnut-v1",
+        "p1-face-amber-v1",
+        "p1-weapon-short-sword-v1"
+      ],
+      "direction": "down",
+      "motionSHA256": "cb0b4896eb90062b93a3e9768b5bf24be4a3ed794c1621188bf189cc9e802642",
+      "assetManifestSHA256": {
+        "p1-neutral-down-walk-r2": "42f3d3ca196b4f1d73f2a2972625f5c5ebd1b7a0d6e47e8b59298eed17eeb829",
+        "p1-hair-chestnut-v1": "8cb282d7b17d9026320c9b8ee7e2e62339dbb68adc18896a715fb0be806a91cd",
+        "p1-face-amber-v1": "6594c9cf4c0e1674c143d68ca61f3b1d631b7207d7aa60e7bbd33340bd12e319",
+        "p1-weapon-short-sword-v1": "76be08492267661177d8b2a9c06805ec282f6b506efa3595171d87537e670f8a"
+      },
+      "frames": {
+        "00.png": "ef3e7b4518a79f2f9c60f376e2f56602b54ff41465c9989cf89d401a038929c6",
+        "01.png": "5753b345aaecf90c23a488ff2ff3857edb01683cd12c1d560a39e088dc46f306",
+        "02.png": "30d0fe505b0c7292b013c1096b06fbbb1fbf6c68ea8cf44344d151ede9d7cb4a",
+        "03.png": "65f73264c86791ff88d4e018b08424b3bf8b46b6f8d9d6d94b41e0b052039f0e",
+        "04.png": "257e67532a8d7cae461ed90a74b9bb71e7e91c07bfcaba63d736caa5f802663a",
+        "05.png": "25fa4b7fbc81f6c03963453173d87c78624754a3e73abb4503b95e7a457e623d",
+        "06.png": "308ec8a331fe92cede91e3b9a09819042fce800ba1be80be3ec60fcaf98b54a0",
+        "07.png": "27c3ae5058534cd7376ab48f11a9e846c6394e37385c1059ed802fd40a7742e4",
+        "08.png": "029bfd793dd4485ffe1bc0da5a229b7e98a514a625b2943332e4a45b78f1a01f"
+      }
+    },
+    {
+      "folder": "combinations/p1-hair-chestnut-v1__p1-face-amber-v1__dressed__empty",
+      "base": "p1-neutral-down-walk-r2",
+      "assets": [
+        "p1-hair-chestnut-v1",
+        "p1-face-amber-v1",
+        "p1-outfit-forester-v1"
+      ],
+      "direction": "down",
+      "motionSHA256": "cb0b4896eb90062b93a3e9768b5bf24be4a3ed794c1621188bf189cc9e802642",
+      "assetManifestSHA256": {
+        "p1-neutral-down-walk-r2": "42f3d3ca196b4f1d73f2a2972625f5c5ebd1b7a0d6e47e8b59298eed17eeb829",
+        "p1-hair-chestnut-v1": "8cb282d7b17d9026320c9b8ee7e2e62339dbb68adc18896a715fb0be806a91cd",
+        "p1-face-amber-v1": "6594c9cf4c0e1674c143d68ca61f3b1d631b7207d7aa60e7bbd33340bd12e319",
+        "p1-outfit-forester-v1": "ea504138699da7f93836b8578befdc2116cc1862990b26bb352415bf62ee5291"
+      },
+      "frames": {
+        "00.png": "f4953957b34c18a9adf5d7e533fb28119efeac77ad4fcd6b75b795861de3d14a",
+        "01.png": "2516b1b6d064fcf6977e77b82d595e2e742ae6662e4506f49a724fd8c2add5d3",
+        "02.png": "d1c1169de2010d083581e677d31233cb0fd927aaa857a5f2d15f8abeb2fab3b9",
+        "03.png": "517a4b2e0329e8f03278f158191591f79a80a1abd7e23e133f7d8283a30e32c2",
+        "04.png": "0e3c45a878238232b80d3f072fdbdd66aad8473cf7889006e180369a07021394",
+        "05.png": "f98adb23ccf8a9becb9264e0c5bba611c87b233b83e15500b5a489d2d1bbfa6c",
+        "06.png": "69f34b9970d132d6bca178af13586b755104ca8faf679e4b1341223c3d89840f",
+        "07.png": "fbee847b7374494a20f032061234781c928d7a738f051f5691353152e561ca5a",
+        "08.png": "e68fcaba470b371f789eb36da9de63641beb6cf0d49aa79d4ef4bac80ad50194"
+      }
+    },
+    {
+      "folder": "combinations/p1-hair-chestnut-v1__p1-face-amber-v1__dressed__sword",
+      "base": "p1-neutral-down-walk-r2",
+      "assets": [
+        "p1-hair-chestnut-v1",
+        "p1-face-amber-v1",
+        "p1-outfit-forester-v1",
+        "p1-weapon-short-sword-v1"
+      ],
+      "direction": "down",
+      "motionSHA256": "cb0b4896eb90062b93a3e9768b5bf24be4a3ed794c1621188bf189cc9e802642",
+      "assetManifestSHA256": {
+        "p1-neutral-down-walk-r2": "42f3d3ca196b4f1d73f2a2972625f5c5ebd1b7a0d6e47e8b59298eed17eeb829",
+        "p1-hair-chestnut-v1": "8cb282d7b17d9026320c9b8ee7e2e62339dbb68adc18896a715fb0be806a91cd",
+        "p1-face-amber-v1": "6594c9cf4c0e1674c143d68ca61f3b1d631b7207d7aa60e7bbd33340bd12e319",
+        "p1-outfit-forester-v1": "ea504138699da7f93836b8578befdc2116cc1862990b26bb352415bf62ee5291",
+        "p1-weapon-short-sword-v1": "76be08492267661177d8b2a9c06805ec282f6b506efa3595171d87537e670f8a"
+      },
+      "frames": {
+        "00.png": "3e6af282dee28bf582e8d2f537130ffe86a5d130410f24b5923ad7ef5d17f7ab",
+        "01.png": "9f1fe6fcd140c92aee4def6677dd37ab16c6094103e5f818b85ac0c4d087fa7d",
+        "02.png": "1f154c58af6020da7cd6458645088e1575fd9b1dc7f74b4d2efa58918388d0df",
+        "03.png": "4ceebedbee2f34654d12cea2b329d3dfe1f1c3e3104616d0d77b3116d18c6c84",
+        "04.png": "5c40dd8d36b8f16a058d490c9198cf036f0e1d00dfcf27a106ed3189478a7898",
+        "05.png": "a6863f8bd4851e93eb14cb2e51f0e610a46eab680500045f2ecacb6e3bb50a9d",
+        "06.png": "22674a4f3f471173bccb87aa9e39c45b28fa3103eb42d594cdbe7446e455efb0",
+        "07.png": "4c315adc3c608b8d4f2ce27b906098111b11b796739228b4ef7c898af8a31c19",
+        "08.png": "55cfb5fa5a3dfa7c165064c6ef0bcfec8f0c932b265a1bbe60f2dda5155d538e"
+      }
+    },
+    {
+      "folder": "combinations/p1-hair-silver-v1__p1-face-blue-v1__base__empty",
+      "base": "p1-neutral-down-walk-r2",
+      "assets": [
+        "p1-hair-silver-v1",
+        "p1-face-blue-v1"
+      ],
+      "direction": "down",
+      "motionSHA256": "cb0b4896eb90062b93a3e9768b5bf24be4a3ed794c1621188bf189cc9e802642",
+      "assetManifestSHA256": {
+        "p1-neutral-down-walk-r2": "42f3d3ca196b4f1d73f2a2972625f5c5ebd1b7a0d6e47e8b59298eed17eeb829",
+        "p1-hair-silver-v1": "f712156c63c16ef1ef3aa77274ba6101c44ccc17d0771e983c5ffec5112b0df2",
+        "p1-face-blue-v1": "44acc92dbdc081fc0678a3ca6131cb73cb28c48b506cf75f8c2c27d5ba8d3a86"
+      },
+      "frames": {
+        "00.png": "59a17fb904468ca4eb78a6bcacc54dcf98abeb6a17f47725f59be5523ae0911f",
+        "01.png": "b5de992ef8b94642bacde43e09c6cc4cbfdf2caef2661cfefa9438d7a7726344",
+        "02.png": "1ab23ccced415f1efbf686f9a0114b7d1878555360b8dda0ea6ac4324fb72f50",
+        "03.png": "a33251da9be3393463a3e68ba742b5a1f5d1ab75900615be3af7d2e923039e6e",
+        "04.png": "6114f7f7104efaf2a3f3e2c1ae9ebb8838322ee195945b793e5fe52081a6fda8",
+        "05.png": "64c534ecc3a1735d9defa9b536991a2092945a27b30303fb67e0c5f8d6357f17",
+        "06.png": "4b679eb89f436fdadec7140db7981bbfb0276af982df7a03022e73c261a0f352",
+        "07.png": "d43398c5b3ce695e744ceeee642cffd8ee0a78b6998d821a12078154f6743620",
+        "08.png": "f8f927fdecf3930b031feb2a222274d4a2399c7cc0de0cc29e296d0f6af312dd"
+      }
+    },
+    {
+      "folder": "combinations/p1-hair-silver-v1__p1-face-blue-v1__base__sword",
+      "base": "p1-neutral-down-walk-r2",
+      "assets": [
+        "p1-hair-silver-v1",
+        "p1-face-blue-v1",
+        "p1-weapon-short-sword-v1"
+      ],
+      "direction": "down",
+      "motionSHA256": "cb0b4896eb90062b93a3e9768b5bf24be4a3ed794c1621188bf189cc9e802642",
+      "assetManifestSHA256": {
+        "p1-neutral-down-walk-r2": "42f3d3ca196b4f1d73f2a2972625f5c5ebd1b7a0d6e47e8b59298eed17eeb829",
+        "p1-hair-silver-v1": "f712156c63c16ef1ef3aa77274ba6101c44ccc17d0771e983c5ffec5112b0df2",
+        "p1-face-blue-v1": "44acc92dbdc081fc0678a3ca6131cb73cb28c48b506cf75f8c2c27d5ba8d3a86",
+        "p1-weapon-short-sword-v1": "76be08492267661177d8b2a9c06805ec282f6b506efa3595171d87537e670f8a"
+      },
+      "frames": {
+        "00.png": "b54ef9c0ddcf8fe7659539fa5810b3897bfb1da37a0e65eccf5d0e818c52e959",
+        "01.png": "45370a534cacd56d5724d55423b83b8dfe67bcb2ff5d6c46df9548a81e39aa34",
+        "02.png": "fd0020648ce71f33a15caecefb06a14f168b1989c613dd2ca00cf53b10bdee36",
+        "03.png": "029d4c30f911fa728fa57ad14db6639e52418676c219361c637da78392b049b9",
+        "04.png": "8e212b7df3986c851ef8107ad32dca0e3caf817ee6c94cfaecdf603ee7dd038d",
+        "05.png": "450ee1a234477622ba197e066ac30d89fd8c896ffb79fb6baeed41595297688e",
+        "06.png": "57ab08a59f1a3ce0ec2cb4b8b6382158163576353bf14337c6554602b538f943",
+        "07.png": "f7e2cad5a03651b23ab90033c4e6b02f299cfa3a23d36dfd80892d9e8c99a76a",
+        "08.png": "2c73dbd6c9fae9cf06374c75e64320420254e22527d96f71bd7cded2532531bd"
+      }
+    },
+    {
+      "folder": "combinations/p1-hair-silver-v1__p1-face-blue-v1__dressed__empty",
+      "base": "p1-neutral-down-walk-r2",
+      "assets": [
+        "p1-hair-silver-v1",
+        "p1-face-blue-v1",
+        "p1-outfit-forester-v1"
+      ],
+      "direction": "down",
+      "motionSHA256": "cb0b4896eb90062b93a3e9768b5bf24be4a3ed794c1621188bf189cc9e802642",
+      "assetManifestSHA256": {
+        "p1-neutral-down-walk-r2": "42f3d3ca196b4f1d73f2a2972625f5c5ebd1b7a0d6e47e8b59298eed17eeb829",
+        "p1-hair-silver-v1": "f712156c63c16ef1ef3aa77274ba6101c44ccc17d0771e983c5ffec5112b0df2",
+        "p1-face-blue-v1": "44acc92dbdc081fc0678a3ca6131cb73cb28c48b506cf75f8c2c27d5ba8d3a86",
+        "p1-outfit-forester-v1": "ea504138699da7f93836b8578befdc2116cc1862990b26bb352415bf62ee5291"
+      },
+      "frames": {
+        "00.png": "93e34a41c37aacf767f4c4dbb9f53ef9e4094b2834834d6bb169205a2d4a9f37",
+        "01.png": "d2b95864e5e32b94da9374b3e66491c4142641b92d2fdb3e7889d5130cd87704",
+        "02.png": "06b4b8bc84d885bac3a47261a1c741a7873b6c97cc9afefffb7a9d15f4a1f6f5",
+        "03.png": "07380f0e92dfdb49714ba95e55c32f3551c0fb8e7c1450ffa6d91debbc418fbc",
+        "04.png": "7b167d3bcd63cbd63f8e2e8d49b4f4dbe71307de2cec91e2f844bf2342f83368",
+        "05.png": "bcbfa17e42806a0a196006efb85be3f2ed54121c6fefdef98d9f22d592d3ebaa",
+        "06.png": "47577d21e645cb5c1c87d5d8821471bc40a15a5400f39c12d9fe497791f54eb0",
+        "07.png": "e8ae1340db433e53acf6b41cb3a5d89a49fa43443e19083f5190101dd2036904",
+        "08.png": "a09835a074746f49188044c34488de05db8239338b7f66cbb7909ade8b64c9de"
+      }
+    },
+    {
+      "folder": "combinations/p1-hair-silver-v1__p1-face-blue-v1__dressed__sword",
+      "base": "p1-neutral-down-walk-r2",
+      "assets": [
+        "p1-hair-silver-v1",
+        "p1-face-blue-v1",
+        "p1-outfit-forester-v1",
+        "p1-weapon-short-sword-v1"
+      ],
+      "direction": "down",
+      "motionSHA256": "cb0b4896eb90062b93a3e9768b5bf24be4a3ed794c1621188bf189cc9e802642",
+      "assetManifestSHA256": {
+        "p1-neutral-down-walk-r2": "42f3d3ca196b4f1d73f2a2972625f5c5ebd1b7a0d6e47e8b59298eed17eeb829",
+        "p1-hair-silver-v1": "f712156c63c16ef1ef3aa77274ba6101c44ccc17d0771e983c5ffec5112b0df2",
+        "p1-face-blue-v1": "44acc92dbdc081fc0678a3ca6131cb73cb28c48b506cf75f8c2c27d5ba8d3a86",
+        "p1-outfit-forester-v1": "ea504138699da7f93836b8578befdc2116cc1862990b26bb352415bf62ee5291",
+        "p1-weapon-short-sword-v1": "76be08492267661177d8b2a9c06805ec282f6b506efa3595171d87537e670f8a"
+      },
+      "frames": {
+        "00.png": "f384d30a7546fb446db7f57342f850e623f74a748042a4641b1817776ff4ca1d",
+        "01.png": "793fdc117f8db2e11b9ff2b4111b0784b769e20c909af17e68da932bfa6f9716",
+        "02.png": "562f5a07cf6d93dda73a941432be3fbbd6081a7b6c9ffe955c58fa34b447567e",
+        "03.png": "98c713b652a0269eec799ce9aa4965cb8d56ca27c2d9d3f679e2e90487304583",
+        "04.png": "2fac15d15da6515531c698069bc5897925121622c497179d1f5113e52d0917a4",
+        "05.png": "96c978762949e53af879822b2ed0bf6f06798671b5468422c6b01f1b1f0e8562",
+        "06.png": "92cd491ca9efe7f5a56ca8f0459a9f53e82c6fbf04bcc1e819acfd2a3c030fce",
+        "07.png": "2737ef9fdb0d6ef061fa3de375b421fd87061dd2ba8803a5efdddc98907956c7",
+        "08.png": "41cce734ab540ca21049d9ef04f5eacaf962eff72252ddcef6c6f8a1a39b2083"
+      }
+    },
+    {
+      "folder": "combinations/p1-hair-silver-v1__p1-face-amber-v1__base__empty",
+      "base": "p1-neutral-down-walk-r2",
+      "assets": [
+        "p1-hair-silver-v1",
+        "p1-face-amber-v1"
+      ],
+      "direction": "down",
+      "motionSHA256": "cb0b4896eb90062b93a3e9768b5bf24be4a3ed794c1621188bf189cc9e802642",
+      "assetManifestSHA256": {
+        "p1-neutral-down-walk-r2": "42f3d3ca196b4f1d73f2a2972625f5c5ebd1b7a0d6e47e8b59298eed17eeb829",
+        "p1-hair-silver-v1": "f712156c63c16ef1ef3aa77274ba6101c44ccc17d0771e983c5ffec5112b0df2",
+        "p1-face-amber-v1": "6594c9cf4c0e1674c143d68ca61f3b1d631b7207d7aa60e7bbd33340bd12e319"
+      },
+      "frames": {
+        "00.png": "8f1a1be4ab5ffc2956ed0878cafae2ce90705b2e11b2b0a2dd2f7e7fbb22644e",
+        "01.png": "b5000d9e3c2a93a5a34a0a4c69747c1c55b94df9faf0cfdda3511e7af865af76",
+        "02.png": "e37740c95fede9cfa3f6ec086acb2eea39ce585100e6e5dc978a5f9147ca664f",
+        "03.png": "0197d18137736f15666ba749aaaa096ff35ea0666358e988e2d1af10922e7a55",
+        "04.png": "8ec79f76c457e52a9e92f040674ce67378b84353a3ec5a97e11d86eacbc8e16c",
+        "05.png": "87638a56af48cbc70500466549ee2090357a0ec21b6161acb097c759e7f62e1f",
+        "06.png": "2505e233782284492e7ab2e404b15d373eaaa40e1aa42ef7398e12b1b5f32a5a",
+        "07.png": "c3f73e0e8c2d3bb98f08d13acb2bf46ebfc46589bd77f507c75419408071db44",
+        "08.png": "e0e491b6486dbca12c2635b38cb8f80e2f302205da4496c8ba9fa511f7c7e73c"
+      }
+    },
+    {
+      "folder": "combinations/p1-hair-silver-v1__p1-face-amber-v1__base__sword",
+      "base": "p1-neutral-down-walk-r2",
+      "assets": [
+        "p1-hair-silver-v1",
+        "p1-face-amber-v1",
+        "p1-weapon-short-sword-v1"
+      ],
+      "direction": "down",
+      "motionSHA256": "cb0b4896eb90062b93a3e9768b5bf24be4a3ed794c1621188bf189cc9e802642",
+      "assetManifestSHA256": {
+        "p1-neutral-down-walk-r2": "42f3d3ca196b4f1d73f2a2972625f5c5ebd1b7a0d6e47e8b59298eed17eeb829",
+        "p1-hair-silver-v1": "f712156c63c16ef1ef3aa77274ba6101c44ccc17d0771e983c5ffec5112b0df2",
+        "p1-face-amber-v1": "6594c9cf4c0e1674c143d68ca61f3b1d631b7207d7aa60e7bbd33340bd12e319",
+        "p1-weapon-short-sword-v1": "76be08492267661177d8b2a9c06805ec282f6b506efa3595171d87537e670f8a"
+      },
+      "frames": {
+        "00.png": "90f301f4a58d502fa2c1cfdc5db0302f622cb18a973e928fc828fc9a6ff7748a",
+        "01.png": "76a1b5842ebf75be417c9c2a61d7e91d0dd74ef52341c7d12625966b056c6b82",
+        "02.png": "9cc0c0117331b3b46a66a3b2b190f02f4e4979937e3bdb160ee172f4a44a97e9",
+        "03.png": "90249c35d5cb7b6c90fa7f65b80c37d62c3836a853b97baaedd3091610bf6f70",
+        "04.png": "64bbc0650b864277421a7e30f41eb670e9ee1797714bfa42e9231a0592665431",
+        "05.png": "acabebb3c3f34e43b5391cffc41b0164883349f559786494a238b2914f06194a",
+        "06.png": "96f3d82f716e907b761721266fa84c771d03f2316422434b1dfffef1e3df72bb",
+        "07.png": "bc5d486c2116974c19c927cf2b3717c819bac35bae4309e1dc7d7b0ed0e3ee06",
+        "08.png": "7876c6e764d8b638476c72044eda56a08d86d8b7942dcfc29d8cb655eeb8f11b"
+      }
+    },
+    {
+      "folder": "combinations/p1-hair-silver-v1__p1-face-amber-v1__dressed__empty",
+      "base": "p1-neutral-down-walk-r2",
+      "assets": [
+        "p1-hair-silver-v1",
+        "p1-face-amber-v1",
+        "p1-outfit-forester-v1"
+      ],
+      "direction": "down",
+      "motionSHA256": "cb0b4896eb90062b93a3e9768b5bf24be4a3ed794c1621188bf189cc9e802642",
+      "assetManifestSHA256": {
+        "p1-neutral-down-walk-r2": "42f3d3ca196b4f1d73f2a2972625f5c5ebd1b7a0d6e47e8b59298eed17eeb829",
+        "p1-hair-silver-v1": "f712156c63c16ef1ef3aa77274ba6101c44ccc17d0771e983c5ffec5112b0df2",
+        "p1-face-amber-v1": "6594c9cf4c0e1674c143d68ca61f3b1d631b7207d7aa60e7bbd33340bd12e319",
+        "p1-outfit-forester-v1": "ea504138699da7f93836b8578befdc2116cc1862990b26bb352415bf62ee5291"
+      },
+      "frames": {
+        "00.png": "d2efa1b10d70e8ced830984923376c08f6bbb11265369e056c05e52337f8e9ac",
+        "01.png": "68f6e581e424c667d7826f303beeaa420c6f288259d2715e84f40e319e5fd700",
+        "02.png": "29f3ad25cad39a912b68623bfe62d7e7753f1f5b99b55a808e14e5ea15604bcd",
+        "03.png": "889b3879b993bcf2c374f28e218ac8ac5d60d30a69331926c86740f7437a80b5",
+        "04.png": "c1e1e7d2d28b96adb8a1f617c5d32f9108fc643af8680680947e657d2bed2b36",
+        "05.png": "8b2ac68baf91cbf9005d3850a034c0fffd64f34faf01b0a2d55ce082f6ebce31",
+        "06.png": "5e4993749b1305eee411a2b91fd17c9c91b42fc720e997c9fa873ebeb17cb5e9",
+        "07.png": "8207457b22d4feb1797fcc17d86112a31d978a55eb27271e9fe638115bfe9f23",
+        "08.png": "8b3a455ac13a04d51824dafc6b3e954f1ed899973e31b54de5f58fbdcb0bda89"
+      }
+    },
+    {
+      "folder": "combinations/p1-hair-silver-v1__p1-face-amber-v1__dressed__sword",
+      "base": "p1-neutral-down-walk-r2",
+      "assets": [
+        "p1-hair-silver-v1",
+        "p1-face-amber-v1",
+        "p1-outfit-forester-v1",
+        "p1-weapon-short-sword-v1"
+      ],
+      "direction": "down",
+      "motionSHA256": "cb0b4896eb90062b93a3e9768b5bf24be4a3ed794c1621188bf189cc9e802642",
+      "assetManifestSHA256": {
+        "p1-neutral-down-walk-r2": "42f3d3ca196b4f1d73f2a2972625f5c5ebd1b7a0d6e47e8b59298eed17eeb829",
+        "p1-hair-silver-v1": "f712156c63c16ef1ef3aa77274ba6101c44ccc17d0771e983c5ffec5112b0df2",
+        "p1-face-amber-v1": "6594c9cf4c0e1674c143d68ca61f3b1d631b7207d7aa60e7bbd33340bd12e319",
+        "p1-outfit-forester-v1": "ea504138699da7f93836b8578befdc2116cc1862990b26bb352415bf62ee5291",
+        "p1-weapon-short-sword-v1": "76be08492267661177d8b2a9c06805ec282f6b506efa3595171d87537e670f8a"
+      },
+      "frames": {
+        "00.png": "53b107c98c654fab42bb38c0595afdf880a6eaab093913b0354b659a32b8cb67",
+        "01.png": "0d59ec8fd8351269dd61b006ecfe5c148131eb9e531ad54ead1b8e0d9745197f",
+        "02.png": "0fa6bbc0350d2a1ea33edf2aa85d01b522566ac0162e7f0439045f28a4afeca1",
+        "03.png": "1302b9e1b3831642ab36c2f0c51d6802313e5d12862c6b9457d49564e61d0a66",
+        "04.png": "774c83445f10a8e35470be5d27c1f3fb070aa3c1fa7a7bc9377544508a1ed06c",
+        "05.png": "dcdb233610c8444b8f33166111b6dd6afa2e2f0ad30c43675208f976aad2d209",
+        "06.png": "3dadaa3bd3406fb57cadb007756a181d30e69f1890d8646cc4d6b0bf89b841f3",
+        "07.png": "9c7d50fb72a2dd9ba83f96cc294f21ec1dd6a88d384c9bfc8b355a31eb17739b",
+        "08.png": "ec3a0b2b0583e3bec9a6e5cfb6413c212ded9921b9730eb86e6bf659ab6828e7"
+      }
+    },
+    {
+      "folder": "combinations/p1-hair-teal-crop-v1__p1-face-blue-v1__base__empty",
+      "base": "p1-neutral-down-walk-r2",
+      "assets": [
+        "p1-hair-teal-crop-v1",
+        "p1-face-blue-v1"
+      ],
+      "direction": "down",
+      "motionSHA256": "cb0b4896eb90062b93a3e9768b5bf24be4a3ed794c1621188bf189cc9e802642",
+      "assetManifestSHA256": {
+        "p1-neutral-down-walk-r2": "42f3d3ca196b4f1d73f2a2972625f5c5ebd1b7a0d6e47e8b59298eed17eeb829",
+        "p1-hair-teal-crop-v1": "051240fda008c51945c40b5ceff78e6891ce793d65e2a95e379b4870f2a1a05c",
+        "p1-face-blue-v1": "44acc92dbdc081fc0678a3ca6131cb73cb28c48b506cf75f8c2c27d5ba8d3a86"
+      },
+      "frames": {
+        "00.png": "9b79904def17e0e28cadb3c423fa73359ab387368982310267bcac39c6b96026",
+        "01.png": "091ddc3e4b03c7f555b91262443e8b1eae897bd3e422f2881fa3327da977d3f0",
+        "02.png": "a8e8ecb4d016ed9cf49d60a3e6f4914f3b1bc61cf58ef6fa33d758ded1e331da",
+        "03.png": "e1ca6f3f4c22756a160969f78f98df4989242ae3c185e06ab6350d9e49e4aeee",
+        "04.png": "d8bc40b4d8e7e2367d8197f6cead8dd3364debca0b3377ce7396c48c8350c627",
+        "05.png": "a6ce8c5201c9cee8609f1dc1753e829bd330482222574d8f54a0b874ea4963db",
+        "06.png": "a0be3b021e51b5c2634bc47d91e991a859489610b70508191d2fb9efa2081f73",
+        "07.png": "f34e4fe09a27b6963bb52f752eadcfc0c4e65df3519aad10e53119a6a99ab892",
+        "08.png": "5b9b00abb371c72aa2848b6fe11ac8cece0de6263dacff22b2b436488b4b911f"
+      }
+    },
+    {
+      "folder": "combinations/p1-hair-teal-crop-v1__p1-face-blue-v1__base__sword",
+      "base": "p1-neutral-down-walk-r2",
+      "assets": [
+        "p1-hair-teal-crop-v1",
+        "p1-face-blue-v1",
+        "p1-weapon-short-sword-v1"
+      ],
+      "direction": "down",
+      "motionSHA256": "cb0b4896eb90062b93a3e9768b5bf24be4a3ed794c1621188bf189cc9e802642",
+      "assetManifestSHA256": {
+        "p1-neutral-down-walk-r2": "42f3d3ca196b4f1d73f2a2972625f5c5ebd1b7a0d6e47e8b59298eed17eeb829",
+        "p1-hair-teal-crop-v1": "051240fda008c51945c40b5ceff78e6891ce793d65e2a95e379b4870f2a1a05c",
+        "p1-face-blue-v1": "44acc92dbdc081fc0678a3ca6131cb73cb28c48b506cf75f8c2c27d5ba8d3a86",
+        "p1-weapon-short-sword-v1": "76be08492267661177d8b2a9c06805ec282f6b506efa3595171d87537e670f8a"
+      },
+      "frames": {
+        "00.png": "69594e2a3ea4262a7884bd84fe11a055f1fef9c98bbe2fb98a2e29ca20f8b56a",
+        "01.png": "2f89dd3762b1781591e6ab0b2046e9f261f83b8d68494f4980a769b567356480",
+        "02.png": "dc6290c002292bfd9809415cab9bdf6360197601fc911677c4b608a9fcd3294c",
+        "03.png": "ddce9cdbf12869f9e3f7c7ad084feb42c5abebe8f6c3ad9365bd67538b31f158",
+        "04.png": "67e032e15931617da2fca888a5c1b33c38a5055e04ab710d828f2e9c0df0e591",
+        "05.png": "a66499aecd81bec8ef804d601c5f8c9f923585a13f260f85b7ae9d1e25f535c7",
+        "06.png": "08b60767d9b0d3db40d8ad4c315ba82d38151af2b8b57e23a74dc99f27fb7819",
+        "07.png": "e5b8f92b766dfc45f2940111aa6199dcaeaa0a55e334160702fc9d75d2a89795",
+        "08.png": "0cb7deed1bef1311d6833fbfd6d9baa72eb3c8d95af2e5790188482c1d8fc5b7"
+      }
+    },
+    {
+      "folder": "combinations/p1-hair-teal-crop-v1__p1-face-blue-v1__dressed__empty",
+      "base": "p1-neutral-down-walk-r2",
+      "assets": [
+        "p1-hair-teal-crop-v1",
+        "p1-face-blue-v1",
+        "p1-outfit-forester-v1"
+      ],
+      "direction": "down",
+      "motionSHA256": "cb0b4896eb90062b93a3e9768b5bf24be4a3ed794c1621188bf189cc9e802642",
+      "assetManifestSHA256": {
+        "p1-neutral-down-walk-r2": "42f3d3ca196b4f1d73f2a2972625f5c5ebd1b7a0d6e47e8b59298eed17eeb829",
+        "p1-hair-teal-crop-v1": "051240fda008c51945c40b5ceff78e6891ce793d65e2a95e379b4870f2a1a05c",
+        "p1-face-blue-v1": "44acc92dbdc081fc0678a3ca6131cb73cb28c48b506cf75f8c2c27d5ba8d3a86",
+        "p1-outfit-forester-v1": "ea504138699da7f93836b8578befdc2116cc1862990b26bb352415bf62ee5291"
+      },
+      "frames": {
+        "00.png": "51b744409d477754ea9ac7b7fc7efac70294c2d12d8b231a331921bd92acc1f6",
+        "01.png": "75e827bf0ed39757bd55d56b32bad943c86fc84c02f63704f50446aace8dbf90",
+        "02.png": "0f53e6eab9b6d92ba147a0697c8a163d1a907ad67b5ea8376571880c9b49f008",
+        "03.png": "0131e9189eb8cdfeec5f2f44fa54ff9d57063209a6f3bfd8ad8390dcbd5b0605",
+        "04.png": "58240d7a5aee510043ad6ab1e8cda088e33db375004b84c8cda5645641c92d50",
+        "05.png": "6abd39e5cca636f6848f822d4173b72c77288477d0c78dc8c116616b19e8d6da",
+        "06.png": "dec76622366ad0532950f7b0ac4ad2d2d20a51670ba924dd555d48fc2b0470ad",
+        "07.png": "1f6e409b9b18811d418b53ccb95d3342ba85d0a3386b495b39cdf8d00fb10d52",
+        "08.png": "a6d38cfe464eef5006d595a2335240f442a90f6010b36cc7f1584d2f8fd6106c"
+      }
+    },
+    {
+      "folder": "combinations/p1-hair-teal-crop-v1__p1-face-blue-v1__dressed__sword",
+      "base": "p1-neutral-down-walk-r2",
+      "assets": [
+        "p1-hair-teal-crop-v1",
+        "p1-face-blue-v1",
+        "p1-outfit-forester-v1",
+        "p1-weapon-short-sword-v1"
+      ],
+      "direction": "down",
+      "motionSHA256": "cb0b4896eb90062b93a3e9768b5bf24be4a3ed794c1621188bf189cc9e802642",
+      "assetManifestSHA256": {
+        "p1-neutral-down-walk-r2": "42f3d3ca196b4f1d73f2a2972625f5c5ebd1b7a0d6e47e8b59298eed17eeb829",
+        "p1-hair-teal-crop-v1": "051240fda008c51945c40b5ceff78e6891ce793d65e2a95e379b4870f2a1a05c",
+        "p1-face-blue-v1": "44acc92dbdc081fc0678a3ca6131cb73cb28c48b506cf75f8c2c27d5ba8d3a86",
+        "p1-outfit-forester-v1": "ea504138699da7f93836b8578befdc2116cc1862990b26bb352415bf62ee5291",
+        "p1-weapon-short-sword-v1": "76be08492267661177d8b2a9c06805ec282f6b506efa3595171d87537e670f8a"
+      },
+      "frames": {
+        "00.png": "2fb73fadf84014e1ee8b19338c88b5678fc0ba66918aaffae1e004baacc0c3ba",
+        "01.png": "f4d82314ee86df50f30b2b54858ae5b9446ca662601c478e3db00d546c2b9a8a",
+        "02.png": "fee25e27a48e5fc52621a845e11895226e4d412b941a273022a8527d194a68a4",
+        "03.png": "90080246cf291c59174cb191e253ffaba22cba3fb0ab34e125ddc137eb845a6d",
+        "04.png": "a4914ca774eee3c19114cce076a3625018df6b37162500ba27c6f502322221d9",
+        "05.png": "f5fcf63be7da6deb38d9e5f51242409e691f8fe324917d1a569a978567d39ecb",
+        "06.png": "48a70674143721abff8e1301370c70daf1246934e95fc1b9d2b0d83b84fa4984",
+        "07.png": "0a5ba31d75c054b18700fb5e10636a3e663ea537275493d6df5efdee80d6e891",
+        "08.png": "043a3e0c6cd1982db5f671f313150b446ab256bc079e62a6e464a7868ab6b275"
+      }
+    },
+    {
+      "folder": "combinations/p1-hair-teal-crop-v1__p1-face-amber-v1__base__empty",
+      "base": "p1-neutral-down-walk-r2",
+      "assets": [
+        "p1-hair-teal-crop-v1",
+        "p1-face-amber-v1"
+      ],
+      "direction": "down",
+      "motionSHA256": "cb0b4896eb90062b93a3e9768b5bf24be4a3ed794c1621188bf189cc9e802642",
+      "assetManifestSHA256": {
+        "p1-neutral-down-walk-r2": "42f3d3ca196b4f1d73f2a2972625f5c5ebd1b7a0d6e47e8b59298eed17eeb829",
+        "p1-hair-teal-crop-v1": "051240fda008c51945c40b5ceff78e6891ce793d65e2a95e379b4870f2a1a05c",
+        "p1-face-amber-v1": "6594c9cf4c0e1674c143d68ca61f3b1d631b7207d7aa60e7bbd33340bd12e319"
+      },
+      "frames": {
+        "00.png": "6857cb219f7686a9bef21e10dd2d72d1cdff01ca51548b90df77270e6444dcbb",
+        "01.png": "e54d3d9deb67ca08f0b15e70abfcd44c549794f285fa0e1f58a70450dab32bd7",
+        "02.png": "c6d35b547b0db4080c457b87d7a03ade0641710784eb3a41eb0c651a840efeed",
+        "03.png": "ae2c7d6556474dd15b3943fccc09ab52b2563bcf523ae2058af9ebb8960b368b",
+        "04.png": "7b8526ef4f17e99916213d51397b9e31819a782c31ba8375979a57375ba1ffcf",
+        "05.png": "c688ea601c450d14e5a81287f62b68c9f353887c53daf69a448bd165e53f82cf",
+        "06.png": "e41a7c2e8d72624f042fe110aaa2ad152983beb45d370cc0e4800bae627dd44d",
+        "07.png": "f377a7b4ea2806b6058846fae3db9b1ed58bc036d9cb003e37d812e919deb38e",
+        "08.png": "2d500f38a30c4b8c110766b99985741827d44443ff1a64fde508e173f21792cd"
+      }
+    },
+    {
+      "folder": "combinations/p1-hair-teal-crop-v1__p1-face-amber-v1__base__sword",
+      "base": "p1-neutral-down-walk-r2",
+      "assets": [
+        "p1-hair-teal-crop-v1",
+        "p1-face-amber-v1",
+        "p1-weapon-short-sword-v1"
+      ],
+      "direction": "down",
+      "motionSHA256": "cb0b4896eb90062b93a3e9768b5bf24be4a3ed794c1621188bf189cc9e802642",
+      "assetManifestSHA256": {
+        "p1-neutral-down-walk-r2": "42f3d3ca196b4f1d73f2a2972625f5c5ebd1b7a0d6e47e8b59298eed17eeb829",
+        "p1-hair-teal-crop-v1": "051240fda008c51945c40b5ceff78e6891ce793d65e2a95e379b4870f2a1a05c",
+        "p1-face-amber-v1": "6594c9cf4c0e1674c143d68ca61f3b1d631b7207d7aa60e7bbd33340bd12e319",
+        "p1-weapon-short-sword-v1": "76be08492267661177d8b2a9c06805ec282f6b506efa3595171d87537e670f8a"
+      },
+      "frames": {
+        "00.png": "85a581e5bab3c08ee1959a21d2547402203844d4e8a60648a97727b7fa765e27",
+        "01.png": "2296b2606891781c459911a88fa7d7b83d9b2209e410985c9562c89358b82552",
+        "02.png": "aa5b9d47020578da91550d269bb21ba3ac238414e5158200625907ad903e680b",
+        "03.png": "4c3a59a6eb01855324addb4fb226ae2928046f9d5bc625d4a704fa63fcc9b678",
+        "04.png": "58aee0f889dd1c16aae3a445bd993e608172ea4fd58fb483e9a6fab6c52fd743",
+        "05.png": "a972a297940ca8ceb7ecb03ee2c46070bf2d2bd06b1285ea80af52fd8055dc85",
+        "06.png": "beef61302b98e63d03047549a3f68a4bb9d7eac9c6e3b83802370c629a1a8ee3",
+        "07.png": "39c9d87d4df3f2fe356dcbc0a05e2e544e30f0bbf3a9d66b6159d56c2da47bd1",
+        "08.png": "3c66f5324648cab744d19b1ae823b74c784041fdf395d51337a7b0ccb0ff0134"
+      }
+    },
+    {
+      "folder": "combinations/p1-hair-teal-crop-v1__p1-face-amber-v1__dressed__empty",
+      "base": "p1-neutral-down-walk-r2",
+      "assets": [
+        "p1-hair-teal-crop-v1",
+        "p1-face-amber-v1",
+        "p1-outfit-forester-v1"
+      ],
+      "direction": "down",
+      "motionSHA256": "cb0b4896eb90062b93a3e9768b5bf24be4a3ed794c1621188bf189cc9e802642",
+      "assetManifestSHA256": {
+        "p1-neutral-down-walk-r2": "42f3d3ca196b4f1d73f2a2972625f5c5ebd1b7a0d6e47e8b59298eed17eeb829",
+        "p1-hair-teal-crop-v1": "051240fda008c51945c40b5ceff78e6891ce793d65e2a95e379b4870f2a1a05c",
+        "p1-face-amber-v1": "6594c9cf4c0e1674c143d68ca61f3b1d631b7207d7aa60e7bbd33340bd12e319",
+        "p1-outfit-forester-v1": "ea504138699da7f93836b8578befdc2116cc1862990b26bb352415bf62ee5291"
+      },
+      "frames": {
+        "00.png": "e70db353f0b17b052764f9f31943734e95f5cf3669a7cfa46fdfb647fe8c4c42",
+        "01.png": "11bec170cc09fe335f87ba316f1e507ce63397f1cfd9b2530220406dc0096ce4",
+        "02.png": "c93472a2238354c8baf7c20399f5ca8437d2f4e5846e19bb7f9a6ff92275962c",
+        "03.png": "30b4b79addc8e24e45eea272ba0ed12cba3f44d6ed110ed9349a5e11567ec2cb",
+        "04.png": "6457d926addb025c6a61aedc7c47b15683c32388e9ba706fe60efd27c4aa7336",
+        "05.png": "4088c7f9491f8ad9edcec073cfca95146d0752136473ce53585d7b2fb66bcb4e",
+        "06.png": "3b434094fe05b4755d9a792902d4a4fd2a464deaabb924bbbde2c5d1fe4108a1",
+        "07.png": "4c2610726903b6c1dd627fab32a45a4e182659a17d5197f2c7c20dc18b589846",
+        "08.png": "9cbed4fceec8974c74af83c2e7560190852a05b115984e66dd24dffe68e949c4"
+      }
+    },
+    {
+      "folder": "combinations/p1-hair-teal-crop-v1__p1-face-amber-v1__dressed__sword",
+      "base": "p1-neutral-down-walk-r2",
+      "assets": [
+        "p1-hair-teal-crop-v1",
+        "p1-face-amber-v1",
+        "p1-outfit-forester-v1",
+        "p1-weapon-short-sword-v1"
+      ],
+      "direction": "down",
+      "motionSHA256": "cb0b4896eb90062b93a3e9768b5bf24be4a3ed794c1621188bf189cc9e802642",
+      "assetManifestSHA256": {
+        "p1-neutral-down-walk-r2": "42f3d3ca196b4f1d73f2a2972625f5c5ebd1b7a0d6e47e8b59298eed17eeb829",
+        "p1-hair-teal-crop-v1": "051240fda008c51945c40b5ceff78e6891ce793d65e2a95e379b4870f2a1a05c",
+        "p1-face-amber-v1": "6594c9cf4c0e1674c143d68ca61f3b1d631b7207d7aa60e7bbd33340bd12e319",
+        "p1-outfit-forester-v1": "ea504138699da7f93836b8578befdc2116cc1862990b26bb352415bf62ee5291",
+        "p1-weapon-short-sword-v1": "76be08492267661177d8b2a9c06805ec282f6b506efa3595171d87537e670f8a"
+      },
+      "frames": {
+        "00.png": "85760533b8fde40fc49a7fbc0f83b0bf30968344c149333152c7b3c007d38a18",
+        "01.png": "bd4b5da83ac4b121f9e9e21bcd1dd425efc33d6a02656691846667107d4d5e63",
+        "02.png": "949c768d4cb64dace024766817521663801bb770c459dbe3ae28d428ad7b957c",
+        "03.png": "deac8fabb50385770db046a5db5d95d60ecf525f631b35f44dca3763ee00675a",
+        "04.png": "344a26b4a3a1eeb387ba9dc42b557b97d1d945ac342586c25ee7bb6491bc5778",
+        "05.png": "19f8cf8b584007e8e410f1737ad356653b7ae1d11e339174d5018ffae184bcdc",
+        "06.png": "f88ec58858c94f3199cca0bb45e9ff3e93d997441145a660048c24fd0bcbd701",
+        "07.png": "b8452be4f4654ff0c9591e76dadc633f444dea57e856a6fd62ceb6762e53392e",
+        "08.png": "3ef7ea6a104a5cb1d9272247888c0d197379da65277d2a60f2053826427a3d78"
+      }
+    }
+  ]
+}

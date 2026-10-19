@@ -1,0 +1,98 @@
+{
+  "version": "1.2.0",
+  "build": "5",
+  "sourceCommit": "e9e781908d8d8d6e94c9c8335df65cf0cdad0910",
+  "verifiedRun": "https://github.com/liamchan-rgb/experiment/actions/runs/38567622574",
+  "reviewPackagingRun": "https://github.com/liamchan-rgb/experiment/actions/runs/38571744425",
+  "tests": {
+    "modelAssetAndNativeRenderingChecks": 18,
+    "iPhoneUITests": 2,
+    "iPadUITests": 2
+  },
+  "nativeRenderingChecks": [
+    "Fixed-camera mist and sunlight change rendered pixels",
+    "Front/back opposite contact poses render differently without hem stretching",
+    "Projected character shadow follows the current leg pose"
+  ],
+  "IPA_SHA256": "0ba5162fb855ae25003da6ce01607d40a6b806c324ddc1bbc14d360827594a3d",
+  "renderingModel": "2.5D silhouette projection on a flat ground plane, with height-dependent softening and separate contact patches",
+  "physicalDeviceValidation": "SideStore installation and physical iPad performance require user-device verification",
+  "sourcePullRequest": "https://github.com/liamchan-rgb/experiment/pull/3",
+  "bundleIdentifier": "com.liamchan.experiment.meadow",
+  "minimumOSVersion": "15.0",
+  "supportedDevices": [
+    "iPhone",
+    "iPad"
+  ],
+  "reviewLayoutRegression": "The gait review must fit three full-sized sprites after UIKit presents a zero-sized initial view and resizes it.",
+  "validationStatus": "Native compile, 22 checks, device archive and visual review passed.",
+  "simulatorMetrics": {
+    "averageFPS": 59.2,
+    "minimumFPS": 55.0,
+    "maximumSampledResidentMiB": 171.84,
+    "decodedTextureMiB": 42.36
+  },
+  "iPadScreenshotPixels": [
+    2752,
+    2064
+  ],
+  "videoPixels": [
+    2752,
+    2064
+  ],
+  "videoFramesPerSecond": 30,
+  "visualReview": {
+    "fourDirectionsVisible": true,
+    "threeTravelersVisible": true,
+    "oppositeFrontContactPosesVisuallyChecked": true,
+    "fixedCameraAtmosphereAverageRGBChange": 9.763,
+    "gaitTimelineScale": 1.0,
+    "longPreviewTimelineDetails": "RecordingInfo-v1.2.0.json"
+  },
+  "visualArtifacts": {
+    "RecordingInfo-v1.2.0.json": {
+      "bytes": 1605,
+      "sha256": "dea0ea463325dff99822e670066c3fbf04554992cf5b5988f9010eb8ad59bb4b"
+    },
+    "RuntimeMetrics-v1.2.0.json": {
+      "bytes": 16566,
+      "sha256": "b05f0a872979e665c5a8420af92b06b66d9d033c4fee7262c0eeb04c0b94a42c"
+    },
+    "iPad-Atmosphere-v1.2.0-end.png": {
+      "bytes": 16717619,
+      "sha256": "4020f69e2214b6ec9931c2e1f861b67d9dd7f37fb8226b0e203da1cb79a6f857"
+    },
+    "iPad-Atmosphere-v1.2.0-start.png": {
+      "bytes": 16717177,
+      "sha256": "dc476108cfa5f9deafe0ccd333feb8fc6f227a26de821420a616e455578f0db4"
+    },
+    "iPad-Atmosphere-v1.2.0.mp4": {
+      "bytes": 90796801,
+      "sha256": "2bfc1154620ec6e48f9f323f0784f2e2f1e85c815ab8bdda7769e04572ec35ef"
+    },
+    "iPad-FourDirectionGait-v1.2.0.mp4": {
+      "bytes": 23098132,
+      "sha256": "db22fa091998018a33992e200c2a8c28465ed4be18442a1024799595d5a07828"
+    },
+    "iPad-GaitContact-v1.2.0.png": {
+      "bytes": 3193534,
+      "sha256": "71187ef3525807c1bddfe1b88b4cd9fcd73c149d90f5fcc2a71c23c74e2c82dd"
+    },
+    "iPad-GaitDirections-v1.2.0.png": {
+      "bytes": 4030384,
+      "sha256": "b94081f4aa018d847dcbd14f951c70dc004a3e7634ffdb11cf49ebdfca1e2f45"
+    },
+    "iPad-LivingScene-v1.2.0-native.png": {
+      "bytes": 16723709,
+      "sha256": "bc883edfe2c5623cab81a5e4b53948600196f0b6bb03df12c2e48cdccb6f42bc"
+    },
+    "iPad-LivingScene-v1.2.0-zoom.png": {
+      "bytes": 15373935,
+      "sha256": "adb12bd276016de832f24e3c47d01d7f16eac720180815ba5e9989c66b2e539b"
+    },
+    "iPad-LivingScene-v1.2.0.mp4": {
+      "bytes": 61004918,
+      "sha256": "3a548de2a8b95950bfcf6aafa96b0dcbc687ecbcd1a6916030a5c391d357fd4a"
+    }
+  }
+}

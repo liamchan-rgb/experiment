@@ -1,0 +1,17 @@
+{
+  "date": "2026-10-18",
+  "revision": "r4",
+  "direction": "up-left",
+  "scope": "standalone pose04 only; no new full-cycle exports",
+  "userStatement": "还是在外翻，你生成这一帧之后单独发图片出来给我",
+  "prompt": "Edit this sprite's SMALL BOOT ON THE RIGHT SIDE OF THE PICTURE. It is still turned outward. Make a substantial, unmistakable correction: turn that entire foot about 60 degrees toward the LEFT, so its heel-to-toe axis is PARALLEL to the large planted boot on the left. On the corrected right boot, the TOE is visibly to the LEFT of its ankle, and the HEEL is to the RIGHT. The toe points diagonally upper-left, away in the walking direction. Show a left-facing side/rear boot shape with a shortened forefoot extending leftward partly behind the supporting shin. Do NOT retain the current vertical/front-facing oval foot silhouette or a toe aimed down-right. Heel at lower-right, toe at upper-left, same heading as the other foot. Redraw the right knee, ankle and full boot together so the joint is untwisted; keep full folded cuff, normal boot volume and connected leg. Leave the large left support boot, all upper body, head, hair, coat, scarf, gloves and bag as close to the original as possible. Same walking pose, same rear three-quarter character view and sprite illustration style. One complete character only, no panels or comparison, no text or arrows, no floor or shadow. Preserve transparent background and generous clear margins.",
+  "references": [
+    "/workspace/experiment/Art/Review/P1/directions/up-left/revisions/r3/raw/04.png"
+  ],
+  "selectedSource": "/workspace/generated_images/exec-7bda266d-0092-497e-8eb6-972e944f35ac.png",
+  "artApproval": null,
+  "sha256": "43e293c438923b32e17751ff63c52366c21d51ef332f35fc86c9216f558bb1b3",
+  "referenceSHA256": {
+    "/workspace/experiment/Art/Review/P1/directions/up-left/revisions/r3/raw/04.png": "24b7caf60bf44402df70bf1843722dea4156d232f8e9d7ac91ada13e00647d75"
+  }
+}

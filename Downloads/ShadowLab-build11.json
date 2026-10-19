@@ -1,0 +1,26 @@
+{
+  "version": "1.4.0",
+  "build": "11",
+  "kind": "shadow-lab-compatible-zip",
+  "sourceCommit": "d83223ed69c9cca08fe2f777bac21e183a77479e",
+  "workflowRun": 38708663449,
+  "workflowConclusion": "success",
+  "originalIpaSha256": "ef02baa5153159186b9d564d3e055dd3394f77b2d3b9a1504769f596ec5a92a0",
+  "ipa": "MeadowJourney-b11.ipa",
+  "bytes": 17246515,
+  "sha256": "8a574c682410d3e13eb0a5b4453ff888041ca6fc9b1563e2326ab3d4ef6903dc",
+  "compression": "ZIP_STORED",
+  "zip64": false,
+  "extendedFields": false,
+  "everyPayloadFileByteIdenticalToArchive": true,
+  "validation": {
+    "zipCRC": "passed",
+    "arm64": "passed",
+    "devicePlatform": "iPhoneOS",
+    "metalLibraryPresent": true,
+    "nativeModelAndRenderTests": 27,
+    "iphoneUITests": 3,
+    "ipadUITests": 3
+  },
+  "installationStatus": "Awaiting user device confirmation; original SideStore error not reproduced locally."
+}

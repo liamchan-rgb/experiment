@@ -1,0 +1,37 @@
+{
+  "revision": "r1",
+  "direction": "down",
+  "status": "technical packaging checks passed; art awaits user review",
+  "idlePoses": 1,
+  "walkingPoses": 8,
+  "distinctWalkingPoses": 8,
+  "pngCellAndStripMatch": "passed",
+  "numberedGridMatch": "passed",
+  "sourceAlphaMaxima": [
+    254,
+    255,
+    255,
+    255,
+    255,
+    255,
+    255,
+    255,
+    255
+  ],
+  "gifChecks": {
+    "walk.gif": {
+      "frames": 8,
+      "durationPerFrameMs": 120,
+      "cycleDurationMs": 960,
+      "orderAndPixels": "match packed poses after declared palette quantization"
+    },
+    "walk-slow.gif": {
+      "frames": 8,
+      "durationPerFrameMs": 480,
+      "cycleDurationMs": 3840,
+      "orderAndPixels": "match packed poses after declared palette quantization"
+    }
+  },
+  "otherDirections": "queued; baseline strip hashes unchanged",
+  "artApproval": null
+}

@@ -1,0 +1,1037 @@
+{
+  "passed": true,
+  "frozenFilesChecked": 100,
+  "protectedImagesChecked": 732,
+  "originalFrozenFilesChanged": [],
+  "runtimeAndContractChanged": [],
+  "motionPoseDataIdenticalToApprovedHeadModule": true,
+  "motionChangedFields": [
+    "baseManifestSHA256"
+  ],
+  "commonBodyTechnicalCorrection": {
+    "kind": "technical-layer-ownership-correction",
+    "source": "Art/Templates/P1-Neutral/down/walk-r1",
+    "sourceManifestSHA256": "0ffe93b713abd772071b9c55a4733674094aa6c01993f644a7c613c1803f97e7",
+    "date": "2026-10-19",
+    "reason": "Frame07 right foreground layer included a posterior left-calf fragment; it covered long trousers.",
+    "reassignedPolygon": [
+      [
+        129,
+        193
+      ],
+      [
+        135,
+        193
+      ],
+      [
+        135,
+        210
+      ],
+      [
+        127,
+        210
+      ],
+      [
+        127,
+        202
+      ],
+      [
+        129,
+        202
+      ]
+    ],
+    "from": "body.leg.right",
+    "to": "body.leg.left",
+    "movedAlphaPixels": 48,
+    "changedLayers": [
+      "layers/07/body.leg.right.png",
+      "layers/07/body.leg.left.png"
+    ],
+    "approvedCompositePixelEquality": true,
+    "approvedPNGBytesPreserved": {
+      "frames/00.png": "a74c005b6b115928f953ccba588fb9712113d6eead7fc3222624fa116c54fc8d",
+      "frames/01.png": "f80ede7385ba37588d0441a2a64b8ce30ed09c8632e828e2ef711d56d4be2046",
+      "frames/02.png": "fcab5c5b509041159984ba0a293e4dfe377cb5e19da38ac0e5f16d1dad2eb3f6",
+      "frames/03.png": "3b603bfbe41cc16aeaca5ba4599e82ef0c2f54c12dfd0dad96c2cb8e8a24c3a5",
+      "frames/04.png": "75c7ecc65bc33af86e9c109a7c82690fb1974fab6d5aed89a73b7c543204cbfb",
+      "frames/05.png": "0ec2f33e77f8bbe92455b5bf084c24d0fe416b00a372c47061a62091900e922d",
+      "frames/06.png": "f67ef155780e4ede883ac83090b14fe860628da70317ba1ea36643b0cb832a2c",
+      "frames/07.png": "4b3a6e6bd98954d9007ef4443d20e8f3fb78ec62bf3b8cb8b22d7e2df4aefe9d",
+      "frames/08.png": "bfc009ee05efb938621c5e0a4fba537632a62eeeac8079227e17682f88e7fdca"
+    },
+    "scope": "One common base for all new combinations, never selected by appearance ID.",
+    "artApproval": null,
+    "approvalNote": "Original composed body artwork remains exactly as approved; layer reassignment is technical, not a new user art approval."
+  },
+  "catalogOldHeadEntriesUnchanged": true,
+  "catalogCommonBaseReplaced": {
+    "id": "p1-neutral-down-walk-r2",
+    "manifest": "Art/Templates/P1-Neutral/down/walk-r2/asset.json",
+    "label": "COMMON BODY / CORRECTED LAYER OWNERSHIP"
+  },
+  "catalogEntriesAdded": [
+    {
+      "id": "p1-outfit-forester-v1",
+      "manifest": "Art/Parts/P1-v1/outfit-forester/asset.json",
+      "label": "FORESTER OUTFIT"
+    },
+    {
+      "id": "p1-weapon-short-sword-v1",
+      "manifest": "Art/Parts/P1-v1/weapon-short-sword/asset.json",
+      "label": "SHORT SWORD"
+    }
+  ],
+  "packages": [
+    {
+      "id": "p1-outfit-forester-v1",
+      "manifest": "Art/Parts/P1-v1/outfit-forester/asset.json",
+      "sha256": "ea504138699da7f93836b8578befdc2116cc1862990b26bb352415bf62ee5291",
+      "slots": [
+        "outfit.pants.right",
+        "outfit.boot.right",
+        "outfit.pants.left",
+        "outfit.boot.left",
+        "outfit.sleeve.right",
+        "outfit.sleeve.left",
+        "outfit.torso",
+        "outfit.hem.front"
+      ]
+    },
+    {
+      "id": "p1-weapon-short-sword-v1",
+      "manifest": "Art/Parts/P1-v1/weapon-short-sword/asset.json",
+      "sha256": "76be08492267661177d8b2a9c06805ec282f6b506efa3595171d87537e670f8a",
+      "slots": [
+        "weapon.right"
+      ]
+    }
+  ],
+  "combinations": 24,
+  "poses": 216,
+  "artApproval": null,
+  "actualPartLayersIndependentAcrossAllSelections": true,
+  "bodyLayersUnchangedInAll216Poses": true,
+  "editableORARecompositions": 19,
+  "strongAlphaConnectedArtLayers": 73,
+  "toolOutputsAndPromptReferencesVerified": 15,
+  "completeBootShapePreservedAtApprovedSoleHeight": [
+    {
+      "frame": 0,
+      "side": "right",
+      "sole": [
+        117,
+        214
+      ],
+      "translation": [
+        0,
+        0
+      ]
+    },
+    {
+      "frame": 1,
+      "side": "right",
+      "sole": [
+        118,
+        215
+      ],
+      "translation": [
+        1,
+        1
+      ]
+    },
+    {
+      "frame": 2,
+      "side": "right",
+      "sole": [
+        118,
+        215
+      ],
+      "translation": [
+        1,
+        1
+      ]
+    },
+    {
+      "frame": 3,
+      "side": "right",
+      "sole": [
+        118,
+        211
+      ],
+      "translation": [
+        1,
+        -3
+      ]
+    },
+    {
+      "frame": 4,
+      "side": "right",
+      "sole": [
+        117,
+        203
+      ],
+      "translation": [
+        0,
+        -11
+      ]
+    },
+    {
+      "frame": 5,
+      "side": "right",
+      "sole": [
+        117,
+        206
+      ],
+      "translation": [
+        0,
+        -8
+      ]
+    },
+    {
+      "frame": 6,
+      "side": "right",
+      "sole": [
+        117,
+        204
+      ],
+      "translation": [
+        0,
+        -10
+      ]
+    },
+    {
+      "frame": 7,
+      "side": "right",
+      "sole": [
+        123,
+        201
+      ],
+      "translation": [
+        6,
+        -13
+      ]
+    },
+    {
+      "frame": 8,
+      "side": "right",
+      "sole": [
+        117,
+        214
+      ],
+      "translation": [
+        1,
+        0
+      ]
+    },
+    {
+      "frame": 0,
+      "side": "left",
+      "sole": [
+        134,
+        214
+      ],
+      "translation": [
+        0,
+        0
+      ]
+    },
+    {
+      "frame": 1,
+      "side": "left",
+      "sole": [
+        134,
+        205
+      ],
+      "translation": [
+        0,
+        -9
+      ]
+    },
+    {
+      "frame": 2,
+      "side": "left",
+      "sole": [
+        133,
+        201
+      ],
+      "translation": [
+        -1,
+        -13
+      ]
+    },
+    {
+      "frame": 3,
+      "side": "left",
+      "sole": [
+        128,
+        202
+      ],
+      "translation": [
+        -5,
+        -12
+      ]
+    },
+    {
+      "frame": 4,
+      "side": "left",
+      "sole": [
+        133,
+        216
+      ],
+      "translation": [
+        1,
+        2
+      ]
+    },
+    {
+      "frame": 5,
+      "side": "left",
+      "sole": [
+        133,
+        216
+      ],
+      "translation": [
+        -1,
+        2
+      ]
+    },
+    {
+      "frame": 6,
+      "side": "left",
+      "sole": [
+        134,
+        213
+      ],
+      "translation": [
+        0,
+        -1
+      ]
+    },
+    {
+      "frame": 7,
+      "side": "left",
+      "sole": [
+        134,
+        211
+      ],
+      "translation": [
+        0,
+        -3
+      ]
+    },
+    {
+      "frame": 8,
+      "side": "left",
+      "sole": [
+        134,
+        203
+      ],
+      "translation": [
+        0,
+        -11
+      ]
+    }
+  ],
+  "svgXMLValid": 19,
+  "gripAndHandOcclusion": [
+    {
+      "frame": 0,
+      "position": [
+        102,
+        170
+      ],
+      "pixels": 59,
+      "rows": 11
+    },
+    {
+      "frame": 1,
+      "position": [
+        100,
+        156
+      ],
+      "pixels": 42,
+      "rows": 9
+    },
+    {
+      "frame": 2,
+      "position": [
+        100,
+        153
+      ],
+      "pixels": 43,
+      "rows": 9
+    },
+    {
+      "frame": 3,
+      "position": [
+        101,
+        170
+      ],
+      "pixels": 66,
+      "rows": 12
+    },
+    {
+      "frame": 4,
+      "position": [
+        101,
+        168
+      ],
+      "pixels": 60,
+      "rows": 11
+    },
+    {
+      "frame": 5,
+      "position": [
+        101,
+        171
+      ],
+      "pixels": 56,
+      "rows": 10
+    },
+    {
+      "frame": 6,
+      "position": [
+        100,
+        166
+      ],
+      "pixels": 65,
+      "rows": 12
+    },
+    {
+      "frame": 7,
+      "position": [
+        108,
+        162
+      ],
+      "pixels": 68,
+      "rows": 13
+    },
+    {
+      "frame": 8,
+      "position": [
+        100,
+        153
+      ],
+      "pixels": 54,
+      "rows": 12
+    }
+  ],
+  "seamMeasurements": [
+    {
+      "frame": 0,
+      "shoulder.right": {
+        "pixels": 82,
+        "rows": 9,
+        "joint": [
+          110,
+          140
+        ]
+      },
+      "cuff.right": {
+        "pixels": 77,
+        "rows": 8,
+        "joint": [
+          102,
+          165
+        ]
+      },
+      "hip.right": {
+        "pixels": 90,
+        "rows": 6,
+        "joint": [
+          117,
+          176
+        ]
+      },
+      "ankle.right": {
+        "pixels": 83,
+        "rows": 7,
+        "joint": [
+          116,
+          205
+        ]
+      },
+      "shoulder.left": {
+        "pixels": 76,
+        "rows": 9,
+        "joint": [
+          140,
+          140
+        ]
+      },
+      "cuff.left": {
+        "pixels": 75,
+        "rows": 8,
+        "joint": [
+          148,
+          165
+        ]
+      },
+      "hip.left": {
+        "pixels": 87,
+        "rows": 6,
+        "joint": [
+          135,
+          176
+        ]
+      },
+      "ankle.left": {
+        "pixels": 81,
+        "rows": 7,
+        "joint": [
+          134,
+          205
+        ]
+      }
+    },
+    {
+      "frame": 1,
+      "shoulder.right": {
+        "pixels": 81,
+        "rows": 9,
+        "joint": [
+          110,
+          140
+        ]
+      },
+      "cuff.right": {
+        "pixels": 58,
+        "rows": 8,
+        "joint": [
+          100,
+          152
+        ]
+      },
+      "hip.right": {
+        "pixels": 90,
+        "rows": 6,
+        "joint": [
+          117,
+          176
+        ]
+      },
+      "ankle.right": {
+        "pixels": 83,
+        "rows": 7,
+        "joint": [
+          117,
+          204
+        ]
+      },
+      "shoulder.left": {
+        "pixels": 74,
+        "rows": 9,
+        "joint": [
+          140,
+          140
+        ]
+      },
+      "cuff.left": {
+        "pixels": 82,
+        "rows": 8,
+        "joint": [
+          148,
+          163
+        ]
+      },
+      "hip.left": {
+        "pixels": 87,
+        "rows": 6,
+        "joint": [
+          135,
+          176
+        ]
+      },
+      "ankle.left": {
+        "pixels": 81,
+        "rows": 7,
+        "joint": [
+          134,
+          196
+        ]
+      }
+    },
+    {
+      "frame": 2,
+      "shoulder.right": {
+        "pixels": 82,
+        "rows": 9,
+        "joint": [
+          110,
+          142
+        ]
+      },
+      "cuff.right": {
+        "pixels": 61,
+        "rows": 8,
+        "joint": [
+          100,
+          149
+        ]
+      },
+      "hip.right": {
+        "pixels": 90,
+        "rows": 6,
+        "joint": [
+          117,
+          178
+        ]
+      },
+      "ankle.right": {
+        "pixels": 76,
+        "rows": 7,
+        "joint": [
+          116,
+          204
+        ]
+      },
+      "shoulder.left": {
+        "pixels": 76,
+        "rows": 9,
+        "joint": [
+          140,
+          142
+        ]
+      },
+      "cuff.left": {
+        "pixels": 73,
+        "rows": 8,
+        "joint": [
+          149,
+          162
+        ]
+      },
+      "hip.left": {
+        "pixels": 87,
+        "rows": 6,
+        "joint": [
+          135,
+          178
+        ]
+      },
+      "ankle.left": {
+        "pixels": 83,
+        "rows": 7,
+        "joint": [
+          133,
+          193
+        ]
+      }
+    },
+    {
+      "frame": 3,
+      "shoulder.right": {
+        "pixels": 73,
+        "rows": 9,
+        "joint": [
+          110,
+          139
+        ]
+      },
+      "cuff.right": {
+        "pixels": 73,
+        "rows": 8,
+        "joint": [
+          101,
+          166
+        ]
+      },
+      "hip.right": {
+        "pixels": 90,
+        "rows": 6,
+        "joint": [
+          117,
+          175
+        ]
+      },
+      "ankle.right": {
+        "pixels": 84,
+        "rows": 7,
+        "joint": [
+          118,
+          201
+        ]
+      },
+      "shoulder.left": {
+        "pixels": 73,
+        "rows": 9,
+        "joint": [
+          140,
+          139
+        ]
+      },
+      "cuff.left": {
+        "pixels": 78,
+        "rows": 8,
+        "joint": [
+          149,
+          166
+        ]
+      },
+      "hip.left": {
+        "pixels": 87,
+        "rows": 6,
+        "joint": [
+          135,
+          175
+        ]
+      },
+      "ankle.left": {
+        "pixels": 85,
+        "rows": 7,
+        "joint": [
+          128,
+          194
+        ]
+      }
+    },
+    {
+      "frame": 4,
+      "shoulder.right": {
+        "pixels": 71,
+        "rows": 9,
+        "joint": [
+          110,
+          138
+        ]
+      },
+      "cuff.right": {
+        "pixels": 81,
+        "rows": 8,
+        "joint": [
+          101,
+          162
+        ]
+      },
+      "hip.right": {
+        "pixels": 90,
+        "rows": 6,
+        "joint": [
+          117,
+          174
+        ]
+      },
+      "ankle.right": {
+        "pixels": 86,
+        "rows": 7,
+        "joint": [
+          117,
+          195
+        ]
+      },
+      "shoulder.left": {
+        "pixels": 71,
+        "rows": 9,
+        "joint": [
+          140,
+          138
+        ]
+      },
+      "cuff.left": {
+        "pixels": 76,
+        "rows": 8,
+        "joint": [
+          147,
+          150
+        ]
+      },
+      "hip.left": {
+        "pixels": 87,
+        "rows": 6,
+        "joint": [
+          135,
+          174
+        ]
+      },
+      "ankle.left": {
+        "pixels": 77,
+        "rows": 7,
+        "joint": [
+          133,
+          205
+        ]
+      }
+    },
+    {
+      "frame": 5,
+      "shoulder.right": {
+        "pixels": 77,
+        "rows": 9,
+        "joint": [
+          110,
+          140
+        ]
+      },
+      "cuff.right": {
+        "pixels": 81,
+        "rows": 8,
+        "joint": [
+          101,
+          166
+        ]
+      },
+      "hip.right": {
+        "pixels": 90,
+        "rows": 6,
+        "joint": [
+          117,
+          176
+        ]
+      },
+      "ankle.right": {
+        "pixels": 85,
+        "rows": 7,
+        "joint": [
+          117,
+          197
+        ]
+      },
+      "shoulder.left": {
+        "pixels": 76,
+        "rows": 9,
+        "joint": [
+          140,
+          140
+        ]
+      },
+      "cuff.left": {
+        "pixels": 77,
+        "rows": 8,
+        "joint": [
+          147,
+          150
+        ]
+      },
+      "hip.left": {
+        "pixels": 87,
+        "rows": 6,
+        "joint": [
+          135,
+          176
+        ]
+      },
+      "ankle.left": {
+        "pixels": 79,
+        "rows": 7,
+        "joint": [
+          133,
+          205
+        ]
+      }
+    },
+    {
+      "frame": 6,
+      "shoulder.right": {
+        "pixels": 76,
+        "rows": 9,
+        "joint": [
+          110,
+          142
+        ]
+      },
+      "cuff.right": {
+        "pixels": 81,
+        "rows": 8,
+        "joint": [
+          100,
+          161
+        ]
+      },
+      "hip.right": {
+        "pixels": 90,
+        "rows": 6,
+        "joint": [
+          117,
+          178
+        ]
+      },
+      "ankle.right": {
+        "pixels": 84,
+        "rows": 7,
+        "joint": [
+          117,
+          194
+        ]
+      },
+      "shoulder.left": {
+        "pixels": 72,
+        "rows": 9,
+        "joint": [
+          140,
+          142
+        ]
+      },
+      "cuff.left": {
+        "pixels": 70,
+        "rows": 8,
+        "joint": [
+          147,
+          151
+        ]
+      },
+      "hip.left": {
+        "pixels": 87,
+        "rows": 6,
+        "joint": [
+          135,
+          178
+        ]
+      },
+      "ankle.left": {
+        "pixels": 81,
+        "rows": 7,
+        "joint": [
+          134,
+          204
+        ]
+      }
+    },
+    {
+      "frame": 7,
+      "shoulder.right": {
+        "pixels": 80,
+        "rows": 9,
+        "joint": [
+          110,
+          139
+        ]
+      },
+      "cuff.right": {
+        "pixels": 87,
+        "rows": 8,
+        "joint": [
+          107,
+          157
+        ]
+      },
+      "hip.right": {
+        "pixels": 90,
+        "rows": 6,
+        "joint": [
+          117,
+          175
+        ]
+      },
+      "ankle.right": {
+        "pixels": 86,
+        "rows": 7,
+        "joint": [
+          123,
+          193
+        ]
+      },
+      "shoulder.left": {
+        "pixels": 74,
+        "rows": 9,
+        "joint": [
+          140,
+          139
+        ]
+      },
+      "cuff.left": {
+        "pixels": 83,
+        "rows": 8,
+        "joint": [
+          148,
+          161
+        ]
+      },
+      "hip.left": {
+        "pixels": 87,
+        "rows": 6,
+        "joint": [
+          135,
+          175
+        ]
+      },
+      "ankle.left": {
+        "pixels": 80,
+        "rows": 7,
+        "joint": [
+          134,
+          201
+        ]
+      }
+    },
+    {
+      "frame": 8,
+      "shoulder.right": {
+        "pixels": 68,
+        "rows": 9,
+        "joint": [
+          110,
+          138
+        ]
+      },
+      "cuff.right": {
+        "pixels": 52,
+        "rows": 8,
+        "joint": [
+          100,
+          148
+        ]
+      },
+      "hip.right": {
+        "pixels": 90,
+        "rows": 6,
+        "joint": [
+          117,
+          174
+        ]
+      },
+      "ankle.right": {
+        "pixels": 83,
+        "rows": 7,
+        "joint": [
+          117,
+          204
+        ]
+      },
+      "shoulder.left": {
+        "pixels": 63,
+        "rows": 9,
+        "joint": [
+          140,
+          138
+        ]
+      },
+      "cuff.left": {
+        "pixels": 83,
+        "rows": 8,
+        "joint": [
+          149,
+          163
+        ]
+      },
+      "hip.left": {
+        "pixels": 87,
+        "rows": 6,
+        "joint": [
+          135,
+          174
+        ]
+      },
+      "ankle.left": {
+        "pixels": 81,
+        "rows": 7,
+        "joint": [
+          134,
+          194
+        ]
+      }
+    }
+  ],
+  "gif": {
+    "frames": 8,
+    "frameMs": 120,
+    "cycleMs": 960,
+    "loop": 0,
+    "decodedPixelsVerified": true
+  },
+  "slowPreviewGenerated": false,
+  "limits": [
+    "Visual naturalness requires user review.",
+    "Down direction only; no game runtime or device test.",
+    "ORA/SVG checked structurally and by pixels; no desktop editor GUI round-trip."
+  ]
+}

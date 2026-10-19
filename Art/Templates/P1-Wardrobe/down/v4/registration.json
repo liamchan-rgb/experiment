@@ -1,0 +1,18 @@
+{
+  "stage": "single down idle study",
+  "sourceCanvas": [1254, 1254],
+  "socket": [102, 170],
+  "weapon": {
+    "source": "fixed whole-canvas 1254-to-96 nearest-neighbor export",
+    "cropFrom96": [16, 0, 80, 96],
+    "pivot": [33, 49],
+    "note": "Explicit hilt center measured on the generated fixed plate; no alpha-bounds fitting."
+  },
+  "hand": {
+    "source": "P1-Neutral/down/walk-r3/layers/00/body.hand.right.png",
+    "clockwise90AroundSocket": [0, 1, -68, -1, 0, 272],
+    "socket": [102, 170],
+    "reason": "Rotate the common closed fist around its grip so the thumb lies toward the lower guard end for this point-down forward hold.",
+    "note": "Single-pose study transform only; not yet a nine-pose shared hand package."
+  }
+}

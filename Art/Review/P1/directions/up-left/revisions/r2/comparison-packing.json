@@ -1,0 +1,66 @@
+{
+  "method": "unchanged complete poses laid out with labels; nearest-neighbor preview only",
+  "frames": [
+    {
+      "frame": 0,
+      "r1SHA256": "0959022506ce2b1b97213f4d61c9f2bc5a49c0bd9a2ab25563fc0a7d2bde428b",
+      "r2SHA256": "0959022506ce2b1b97213f4d61c9f2bc5a49c0bd9a2ab25563fc0a7d2bde428b"
+    },
+    {
+      "frame": 1,
+      "r1SHA256": "c89e86151cb213031ed6185242cca2fe23153476e3c2a18fa4c29b648db14960",
+      "r2SHA256": "c89e86151cb213031ed6185242cca2fe23153476e3c2a18fa4c29b648db14960"
+    },
+    {
+      "frame": 2,
+      "r1SHA256": "ebd262bc9f729310e112b924cda2d785acdb6133ece1ad8f008a450e72859d8c",
+      "r2SHA256": "ebd262bc9f729310e112b924cda2d785acdb6133ece1ad8f008a450e72859d8c"
+    },
+    {
+      "frame": 3,
+      "r1SHA256": "d79f8f3af00ded9d88e7654c5fd7b777e4729c647128b236930b72627d17a2f9",
+      "r2SHA256": "d79f8f3af00ded9d88e7654c5fd7b777e4729c647128b236930b72627d17a2f9"
+    },
+    {
+      "frame": 4,
+      "r1SHA256": "f6ff731e36b9b0b7ba0872b4107b09e07aab09ec1c00e3670523167b51b0832e",
+      "r2SHA256": "8bbb56eecb01f52486510514058f600563b138f7c3061a28bc3c4cc2e0d74919"
+    },
+    {
+      "frame": 5,
+      "r1SHA256": "224117ea249e06e8d59c3cde9b53a4b8a96a8f808fc81a2478a3655a315403a6",
+      "r2SHA256": "30cb5cc3b639e95f7d9269b09b2d93f996d6097c53ad3288e1b5e17620e1c816"
+    },
+    {
+      "frame": 6,
+      "r1SHA256": "3ab59f18b88728d42c3f677ba12df5534d89c8f41fdff33f45baea1aa3efa63d",
+      "r2SHA256": "807a19a07cf057eec97b9c23f35c73cb693d819bb4f402d4b9187041a2263154"
+    },
+    {
+      "frame": 7,
+      "r1SHA256": "f8114186f4e87c10f60bf45f96bbcea49c5a4877398b7a871922b6327c026473",
+      "r2SHA256": "f8114186f4e87c10f60bf45f96bbcea49c5a4877398b7a871922b6327c026473"
+    },
+    {
+      "frame": 8,
+      "r1SHA256": "c4cffc3818d94521d47ade5c6a5c499973f8994e5101b2181fe6bdf787cb3d6a",
+      "r2SHA256": "c4cffc3818d94521d47ade5c6a5c499973f8994e5101b2181fe6bdf787cb3d6a"
+    }
+  ],
+  "r1ArtApproval": null,
+  "r2ArtApproval": null,
+  "phaseOrder": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8
+  ],
+  "durationsMs": {
+    "normal": 120,
+    "slow": 480
+  }
+}

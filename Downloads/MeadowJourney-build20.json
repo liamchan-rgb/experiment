@@ -1,0 +1,49 @@
+{
+  "version": "1.5.7",
+  "build": "20",
+  "kind": "on-device-staged-gpu-evidence",
+  "sourceCommit": "944b031b604dbf22606e817ebce1c1cb0a961406",
+  "workflowRun": 38994245349,
+  "workflowUrl": "https://github.com/liamchan-rgb/experiment/actions/runs/38994245349",
+  "runner": "macos-15",
+  "artifactId": 12086901137,
+  "workflowConclusion": "success",
+  "ipa": "MeadowJourney-b20.ipa",
+  "bytes": 17415976,
+  "sha256": "054d7e8952943cc98f7c4c6848e7bdfd98b45cc9e758e514ff0508ecdec75ae2",
+  "compression": "ZIP_STORED",
+  "zip64": false,
+  "extendedFields": false,
+  "validation": {
+    "projectValidation": "passed",
+    "deviceReleaseArchive": "passed",
+    "ipaPackage": "passed",
+    "zipCRC": "passed",
+    "architecture": "arm64",
+    "devicePlatform": "iPhoneOS",
+    "minimumOSVersion": "15.0",
+    "supportedDeviceFamilies": ["iPhone", "iPad"],
+    "metalLibraryPresent": true,
+    "executablePermission": "0755",
+    "nativeTests": "not run; package-only workflow",
+    "simulatorTests": "skipped; package-only workflow",
+    "physicalIPadGPUValidation": "pending diagnostic report from user device"
+  },
+  "diagnostics": {
+    "nativeStages": ["clear", "terrain without shadows", "all prop and idle hero depth", "PCF shadow receiver"],
+    "foregroundStages": ["plain sprites", "vegetation shader", "back mist", "sun shafts", "front mist", "full foreground"],
+    "foregroundSamplesPerStage": 2,
+    "foregroundPixelSize": "actual view points multiplied by display scale",
+    "commandErrorOptions": "encoderExecutionStatus",
+    "report": "Documents/MeadowGPUDiagnostic.json; copy from loading/failure page or help menu",
+    "persistence": "atomic write before each submission and after completion/failure",
+    "automaticSameProcessFallback": "removed; preserve first observed failure"
+  },
+  "limitations": [
+    "This is a diagnostic build, not a confirmed GPU timeout fix.",
+    "Offscreen SKRenderer completion does not prove actual SKView plus MTKView composition.",
+    "A pending stage after interruption is a breadcrumb, not a confirmed failing encoder.",
+    "SubmissionsIgnored as the first observed error does not reveal an earlier unobserved fault.",
+    "The IPA is unsigned and must be re-signed with SideStore."
+  ]
+}

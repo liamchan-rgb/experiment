@@ -1,0 +1,26 @@
+{
+  "folder": "combinations/p1-hair-teal-crop-v1__p1-face-amber-v1__base__empty",
+  "base": "p1-neutral-down-walk-r2",
+  "assets": [
+    "p1-hair-teal-crop-v1",
+    "p1-face-amber-v1"
+  ],
+  "direction": "down",
+  "motionSHA256": "cb0b4896eb90062b93a3e9768b5bf24be4a3ed794c1621188bf189cc9e802642",
+  "assetManifestSHA256": {
+    "p1-neutral-down-walk-r2": "42f3d3ca196b4f1d73f2a2972625f5c5ebd1b7a0d6e47e8b59298eed17eeb829",
+    "p1-hair-teal-crop-v1": "051240fda008c51945c40b5ceff78e6891ce793d65e2a95e379b4870f2a1a05c",
+    "p1-face-amber-v1": "6594c9cf4c0e1674c143d68ca61f3b1d631b7207d7aa60e7bbd33340bd12e319"
+  },
+  "frames": {
+    "00.png": "6857cb219f7686a9bef21e10dd2d72d1cdff01ca51548b90df77270e6444dcbb",
+    "01.png": "e54d3d9deb67ca08f0b15e70abfcd44c549794f285fa0e1f58a70450dab32bd7",
+    "02.png": "c6d35b547b0db4080c457b87d7a03ade0641710784eb3a41eb0c651a840efeed",
+    "03.png": "ae2c7d6556474dd15b3943fccc09ab52b2563bcf523ae2058af9ebb8960b368b",
+    "04.png": "7b8526ef4f17e99916213d51397b9e31819a782c31ba8375979a57375ba1ffcf",
+    "05.png": "c688ea601c450d14e5a81287f62b68c9f353887c53daf69a448bd165e53f82cf",
+    "06.png": "e41a7c2e8d72624f042fe110aaa2ad152983beb45d370cc0e4800bae627dd44d",
+    "07.png": "f377a7b4ea2806b6058846fae3db9b1ed58bc036d9cb003e37d812e919deb38e",
+    "08.png": "2d500f38a30c4b8c110766b99985741827d44443ff1a64fde508e173f21792cd"
+  }
+}

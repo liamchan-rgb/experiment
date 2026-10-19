@@ -1,0 +1,230 @@
+{
+  "contractVersion": "1.0.0",
+  "id": "p1-chibi-v1",
+  "status": "draft-down-head-resources-awaiting-review",
+  "bodyProfile": "p1-standard",
+  "actionSet": "locomotion-v1",
+  "canvas": [
+    256,
+    256
+  ],
+  "directions": [
+    "down",
+    "left",
+    "up",
+    "right",
+    "down-right",
+    "down-left",
+    "up-left",
+    "up-right"
+  ],
+  "clips": {
+    "idle": [
+      0
+    ],
+    "walk": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ]
+  },
+  "frameMs": {
+    "walk": 120
+  },
+  "headCanvas": [
+    96,
+    96
+  ],
+  "headLayouts": {
+    "down": {
+      "status": "shared-head-and-neutral-motion-approved; independent-feature-art-review-pending",
+      "neck": [
+        48,
+        72
+      ],
+      "eyes": {
+        "right": [
+          38,
+          56
+        ],
+        "left": [
+          58,
+          56
+        ]
+      },
+      "skullGuide": [
+        24,
+        24,
+        72,
+        72
+      ],
+      "faceRegions": {
+        "face.eyes": [
+          [
+            31,
+            51,
+            45,
+            62
+          ],
+          [
+            51,
+            51,
+            65,
+            62
+          ]
+        ],
+        "face.brows": [
+          [
+            30,
+            44,
+            66,
+            53
+          ]
+        ],
+        "face.nose": [
+          [
+            44,
+            57,
+            52,
+            64
+          ]
+        ],
+        "face.mouth": [
+          [
+            40,
+            63,
+            56,
+            69
+          ]
+        ]
+      },
+      "hairFrontKeepClear": [
+        [
+          35,
+          54,
+          42,
+          60
+        ],
+        [
+          55,
+          54,
+          62,
+          60
+        ]
+      ]
+    }
+  },
+  "gripProfiles": [
+    "one-hand-closed"
+  ],
+  "parts": {
+    "base": {
+      "modes": [
+        "pose-map"
+      ],
+      "slots": [
+        "body.torso",
+        "body.arm.right",
+        "body.arm.left",
+        "body.leg.right",
+        "body.leg.left",
+        "body.hand.right",
+        "body.hand.left",
+        "head.base"
+      ]
+    },
+    "hair": {
+      "modes": [
+        "head-local",
+        "pose-map"
+      ],
+      "slots": [
+        "hair.back",
+        "hair.front"
+      ]
+    },
+    "face": {
+      "modes": [
+        "head-local"
+      ],
+      "slots": [
+        "face.eyes",
+        "face.brows",
+        "face.nose",
+        "face.mouth"
+      ]
+    },
+    "outfit": {
+      "modes": [
+        "pose-map"
+      ],
+      "slots": [
+        "outfit.torso",
+        "outfit.sleeve.right",
+        "outfit.sleeve.left",
+        "outfit.hem.back",
+        "outfit.hem.front",
+        "outfit.pants.right",
+        "outfit.pants.left",
+        "outfit.boot.right",
+        "outfit.boot.left"
+      ]
+    },
+    "weapon": {
+      "modes": [
+        "socket",
+        "pose-map"
+      ],
+      "slots": [
+        "weapon.right",
+        "weapon.left"
+      ]
+    }
+  },
+  "releaseBlockers": [
+    "other seven neutral body directions missing",
+    "independent head-resource artwork and facial placement pending user review",
+    "full wardrobe occlusion and real weapon grip art not reviewed",
+    "compositor supports three drawing spaces in tests; real outfit/weapon integration pending",
+    "third new resource artwork and full wardrobe acceptance not reviewed"
+  ],
+  "artStyle": {
+    "finalPixelDensity": "1x on a 256px pose canvas",
+    "nominalOutlinePx": 1,
+    "lightDirection": "upper-left",
+    "maxEdgeAntialiasPx": 1,
+    "alpha": "straight",
+    "colorSpace": "sRGB",
+    "minHiddenJointOverlapPx": 2,
+    "skinAndSkinShadingOwner": "base",
+    "optionalWorkingScale": 4,
+    "perAssetAutoFitAllowed": false
+  },
+  "neutralBodyCandidate": {
+    "direction": "down",
+    "pose": "idle 00",
+    "path": "Art/Templates/P1-Neutral/down/r1",
+    "status": "idle-approved",
+    "artApproval": "Art/Templates/P1-Neutral/down/r1/approval.json"
+  },
+  "neutralBodyWalkCandidate": {
+    "direction": "down",
+    "clips": [
+      "idle",
+      "walk"
+    ],
+    "path": "Art/Templates/P1-Neutral/down/walk-r1",
+    "status": "approved",
+    "artApproval": "Art/Templates/P1-Neutral/down/walk-r1/approval.json",
+    "motion": "Art/Templates/P1-Neutral/down/walk-r1/motion.json"
+  },
+  "genericCompositor": {
+    "path": "scripts/compose-character-parts.py",
+    "status": "prototype; head art review pending; full wardrobe acceptance pending"
+  }
+}

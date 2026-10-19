@@ -1,0 +1,139 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "example-outfit",
+  "version": "1.0.0",
+  "part": "outfit",
+  "compatibility": {
+    "rig": "p1-chibi-v1",
+    "bodyProfile": "p1-standard",
+    "actionSet": "locomotion-v1"
+  },
+  "mode": "pose-map",
+  "slots": [
+    "outfit.torso",
+    "outfit.sleeve.right",
+    "outfit.sleeve.left",
+    "outfit.hem.back",
+    "outfit.hem.front"
+  ],
+  "directions": [
+    "down"
+  ],
+  "clips": [
+    "idle",
+    "walk"
+  ],
+  "sourceFiles": [
+    "source/outfit.ora"
+  ],
+  "bindings": [
+    {
+      "direction": "down",
+      "clip": "idle",
+      "frame": 0,
+      "layers": {
+        "outfit.torso": "png/down/00-outfit-torso.png",
+        "outfit.sleeve.right": "png/down/00-outfit-sleeve-right.png",
+        "outfit.sleeve.left": "png/down/00-outfit-sleeve-left.png",
+        "outfit.hem.back": "png/down/00-outfit-hem-back.png",
+        "outfit.hem.front": "png/down/00-outfit-hem-front.png"
+      }
+    },
+    {
+      "direction": "down",
+      "clip": "walk",
+      "frame": 1,
+      "layers": {
+        "outfit.torso": "png/down/01-outfit-torso.png",
+        "outfit.sleeve.right": "png/down/01-outfit-sleeve-right.png",
+        "outfit.sleeve.left": "png/down/01-outfit-sleeve-left.png",
+        "outfit.hem.back": "png/down/01-outfit-hem-back.png",
+        "outfit.hem.front": "png/down/01-outfit-hem-front.png"
+      }
+    },
+    {
+      "direction": "down",
+      "clip": "walk",
+      "frame": 2,
+      "layers": {
+        "outfit.torso": "png/down/02-outfit-torso.png",
+        "outfit.sleeve.right": "png/down/02-outfit-sleeve-right.png",
+        "outfit.sleeve.left": "png/down/02-outfit-sleeve-left.png",
+        "outfit.hem.back": "png/down/02-outfit-hem-back.png",
+        "outfit.hem.front": "png/down/02-outfit-hem-front.png"
+      }
+    },
+    {
+      "direction": "down",
+      "clip": "walk",
+      "frame": 3,
+      "layers": {
+        "outfit.torso": "png/down/03-outfit-torso.png",
+        "outfit.sleeve.right": "png/down/03-outfit-sleeve-right.png",
+        "outfit.sleeve.left": "png/down/03-outfit-sleeve-left.png",
+        "outfit.hem.back": "png/down/03-outfit-hem-back.png",
+        "outfit.hem.front": "png/down/03-outfit-hem-front.png"
+      }
+    },
+    {
+      "direction": "down",
+      "clip": "walk",
+      "frame": 4,
+      "layers": {
+        "outfit.torso": "png/down/04-outfit-torso.png",
+        "outfit.sleeve.right": "png/down/04-outfit-sleeve-right.png",
+        "outfit.sleeve.left": "png/down/04-outfit-sleeve-left.png",
+        "outfit.hem.back": "png/down/04-outfit-hem-back.png",
+        "outfit.hem.front": "png/down/04-outfit-hem-front.png"
+      }
+    },
+    {
+      "direction": "down",
+      "clip": "walk",
+      "frame": 5,
+      "layers": {
+        "outfit.torso": "png/down/05-outfit-torso.png",
+        "outfit.sleeve.right": "png/down/05-outfit-sleeve-right.png",
+        "outfit.sleeve.left": "png/down/05-outfit-sleeve-left.png",
+        "outfit.hem.back": "png/down/05-outfit-hem-back.png",
+        "outfit.hem.front": "png/down/05-outfit-hem-front.png"
+      }
+    },
+    {
+      "direction": "down",
+      "clip": "walk",
+      "frame": 6,
+      "layers": {
+        "outfit.torso": "png/down/06-outfit-torso.png",
+        "outfit.sleeve.right": "png/down/06-outfit-sleeve-right.png",
+        "outfit.sleeve.left": "png/down/06-outfit-sleeve-left.png",
+        "outfit.hem.back": "png/down/06-outfit-hem-back.png",
+        "outfit.hem.front": "png/down/06-outfit-hem-front.png"
+      }
+    },
+    {
+      "direction": "down",
+      "clip": "walk",
+      "frame": 7,
+      "layers": {
+        "outfit.torso": "png/down/07-outfit-torso.png",
+        "outfit.sleeve.right": "png/down/07-outfit-sleeve-right.png",
+        "outfit.sleeve.left": "png/down/07-outfit-sleeve-left.png",
+        "outfit.hem.back": "png/down/07-outfit-hem-back.png",
+        "outfit.hem.front": "png/down/07-outfit-hem-front.png"
+      }
+    },
+    {
+      "direction": "down",
+      "clip": "walk",
+      "frame": 8,
+      "layers": {
+        "outfit.torso": "png/down/08-outfit-torso.png",
+        "outfit.sleeve.right": "png/down/08-outfit-sleeve-right.png",
+        "outfit.sleeve.left": "png/down/08-outfit-sleeve-left.png",
+        "outfit.hem.back": "png/down/08-outfit-hem-back.png",
+        "outfit.hem.front": "png/down/08-outfit-hem-front.png"
+      }
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "kind": "single-idle-pose-art-study",
+  "direction": "down",
+  "clip": "idle",
+  "frame": 0,
+  "artApproval": null,
+  "grip": [
+    102,
+    170
+  ],
+  "handAndWeaponStoredSeparately": true,
+  "headClothesAndOtherBodyPixelsUnchanged": true,
+  "handWeaponIntersectionPixels": 53,
+  "wristSleeveIntersectionPixels": 67,
+  "localPNG": {
+    "hand": {
+      "sha256": "a161e6a867c8e90a32d761fb34da50c031560aa0eea9291d98781c486712fe71",
+      "size": [
+        20,
+        20
+      ]
+    },
+    "weapon": {
+      "sha256": "fd5c7b312195a58df84ef9c1f550c6874d0276b8dfb01b9e38c427f5216e6334",
+      "size": [
+        64,
+        96
+      ]
+    }
+  },
+  "animationGenerated": false,
+  "productionManifestGenerated": false,
+  "limits": [
+    "Forward grip and oblique blade perspective require visual user review.",
+    "This authoring preview is not nine-frame animation or production asset validation."
+  ]
+}

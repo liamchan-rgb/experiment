@@ -1,0 +1,105 @@
+{
+  "revision": "r1",
+  "direction": "down",
+  "method": "imagegen redraw of complete poses; packaging only registers whole sprites",
+  "walkingPoses": 8,
+  "idlePoses": 1,
+  "identityReference": "identity-reference.png",
+  "poses": [
+    {
+      "index": 0,
+      "id": "00-idle",
+      "rawImage": "raw/00.png",
+      "prompt": "Edit the referenced walking character into ONE matching NEUTRAL IDLE sprite. This must be the same animation character, SAME face/hair, head size relative to torso, trouser length, boot shape and full cuff/shaft proportions, same camera and pixel-art rendering. Use the walking sprites as the definitive proportion reference, not a different chubbier character.\nPose: face straight toward viewer / screen down, same slightly elevated camera. Both knees relaxed, both boots planted side by side in a modest natural hip-width stance. Both toes point straight FORWARD toward screen bottom, not outward duck feet and not inward pigeon toes. Keep each boot the SAME width and shaft/cuff height as the walking forward boot; do not widen/squash boots for idle. Lower both arms naturally by his sides. Preserve the exact original blue scarf/coat, cream trim and shirt, charcoal short trousers, brown belt/fingerless gloves and brown cuffed leather boots.\nOnly adjust pose, maintain original character identity and outfit, no added equipment, no extra large head, no overall style change. One full-body sprite with generous transparent margin, no text, no labels, no shadows or ground.",
+      "generatedSource": "exec-4b746a3a-d199-48fa-b513-df7877791561.png",
+      "cleanup": {
+        "prompt": "Remove ONLY the faint colored atmospheric glow / haze surrounding this sprite. Keep the actual character, pose, proportions, boots, face, clothing and pixel outlines unchanged. Everything outside the character silhouette must be fully transparent, with no halo, aura, shadow, colored backdrop or blur. Preserve crisp detailed pixel art, one full-body character. This is background cleanup only.",
+        "generatedSource": "exec-e23636fb-7caf-492d-9197-6e71a2eea3cf.png"
+      },
+      "sha256": "c6cb2535837c9c7e8a7f089ed4a75b2da50dd17991f8ec39d9f2d04933367906"
+    },
+    {
+      "index": 1,
+      "id": "01-contact-a",
+      "rawImage": "raw/01.png",
+      "prompt": "Edit the reference character into EXACTLY ONE full-body FRONT/DOWN game sprite in the pose described below. Same exact boy, brown tousled hair and blue eyes, blue scarf and blue short coat with cream trim, cream shirt, brown belt/gloves, charcoal short trousers, full cuffed brown leather boots. Preserve character identity, SAME head/body proportions, costume details and detailed pixel-sprite art style. Keep facing STRAIGHT toward viewer / screen bottom with the SAME slightly elevated camera. Do not turn sideways or diagonal. Do not redesign, zoom, change age, add equipment, or change costume. Transparent background. ONE character only, no text, no sheet, no shadows, no floor. Keep whole figure and soles visible with ample transparent margin.\nBOTH toe directions stay toward SCREEN BOTTOM, draw real frontal boot geometry rather than rotating sideways duck feet. Boots keep full width, shaft, cuff height and sole length, including when raised; trousers keep the same length, not elongated tubes. Express knee bends by drawing anatomy, not shrinking boots. Arms naturally counter-swing with legs. Preserve the face/hair/coat design. \nPOSE FOR THIS ONE SPRITE:\nRIGHT leg (on SCREEN LEFT) strides toward the camera, heel reaches floor in front, its substantial boot is the lower/front boot. LEFT leg (SCREEN RIGHT) trails behind with its heel rising at toe-off. LEFT arm (SCREEN RIGHT) swings forward, RIGHT arm back. A clear contact pose, neither foot splayed outward.",
+      "generatedSource": "exec-e0d7cf95-206d-4d01-95c0-3355f6a9f3d1.png",
+      "sha256": "10bb884405b3057ffe1918fb685792b67e72db04e6fe1985f29697f857f4cc36"
+    },
+    {
+      "index": 2,
+      "id": "02-down-a",
+      "rawImage": "raw/02.png",
+      "prompt": "Edit the reference character into EXACTLY ONE full-body FRONT/DOWN game sprite in the pose described below. Same exact boy, brown tousled hair and blue eyes, blue scarf and blue short coat with cream trim, cream shirt, brown belt/gloves, charcoal short trousers, full cuffed brown leather boots. Preserve character identity, SAME head/body proportions, costume details and detailed pixel-sprite art style. Keep facing STRAIGHT toward viewer / screen bottom with the SAME slightly elevated camera. Do not turn sideways or diagonal. Do not redesign, zoom, change age, add equipment, or change costume. Transparent background. ONE character only, no text, no sheet, no shadows, no floor. Keep whole figure and soles visible with ample transparent margin.\nBOTH toe directions stay toward SCREEN BOTTOM, draw real frontal boot geometry rather than rotating sideways duck feet. Boots keep full width, shaft, cuff height and sole length, including when raised; trousers keep the same length, not elongated tubes. Express knee bends by drawing anatomy, not shrinking boots. Arms naturally counter-swing with legs. Preserve the face/hair/coat design. \nPOSE FOR THIS ONE SPRITE:\nWeight-acceptance pose just after RIGHT leg (SCREEN LEFT) contacts. Right support knee flexes modestly, pelvis settles. LEFT knee (SCREEN RIGHT) has ALREADY advanced, bending clearly; left heel is lifted, left boot is traveling forward UNDER the hip, no frozen rear leg. LEFT arm (SCREEN RIGHT) forward, RIGHT arm back. This differs clearly from the full split-stride contact pose.",
+      "generatedSource": "exec-10e226d3-1834-48b1-8173-65e7b9315d1c.png",
+      "sha256": "ffa65ab96e3deebdebb1b862298e122e024e00f2b219b216a8e13bc4ace233c4"
+    },
+    {
+      "index": 3,
+      "id": "03-pass-a",
+      "rawImage": "raw/03.png",
+      "prompt": "Edit the reference character into EXACTLY ONE full-body FRONT/DOWN game sprite in the pose described below. Same exact boy, brown tousled hair and blue eyes, blue scarf and blue short coat with cream trim, cream shirt, brown belt/gloves, charcoal short trousers, full cuffed brown leather boots. Preserve character identity, SAME head/body proportions, costume details and detailed pixel-sprite art style. Keep facing STRAIGHT toward viewer / screen bottom with the SAME slightly elevated camera. Do not turn sideways or diagonal. Do not redesign, zoom, change age, add equipment, or change costume. Transparent background. ONE character only, no text, no sheet, no shadows, no floor. Keep whole figure and soles visible with ample transparent margin.\nBOTH toe directions stay toward SCREEN BOTTOM, draw real frontal boot geometry rather than rotating sideways duck feet. Boots keep full width, shaft, cuff height and sole length, including when raised; trousers keep the same length, not elongated tubes. Express knee bends by drawing anatomy, not shrinking boots. Arms naturally counter-swing with legs. Preserve the face/hair/coat design. \nPOSE FOR THIS ONE SPRITE:\nPASSING pose: RIGHT leg (SCREEN LEFT) is planted vertically under the body carrying weight. LEFT knee (SCREEN RIGHT) is bent and passes under the pelvis. Show the lifted full-size LEFT boot NEXT TO THE SUPPORTING ANKLE, its toe a little higher than the support boot toe. Both boots are CLOSE IN FRONT/BACK DEPTH, side by side near the center; NOT one boot far in front and one behind. The lifted boot must have its full shaft and cuff, never shrink. Arms are approximately passing through their neutral swing.",
+      "generatedSource": "exec-420df201-109d-4e2d-bbf0-439f82877e4c.png",
+      "sha256": "b76f3ded56ba3b416f06876da12faa81d5033d4c307454bcc669935213e4c86e"
+    },
+    {
+      "index": 4,
+      "id": "04-up-a",
+      "rawImage": "raw/04.png",
+      "prompt": "Edit the reference character into EXACTLY ONE full-body FRONT/DOWN game sprite in the pose described below. Same exact boy, brown tousled hair and blue eyes, blue scarf and blue short coat with cream trim, cream shirt, brown belt/gloves, charcoal short trousers, full cuffed brown leather boots. Preserve character identity, SAME head/body proportions, costume details and detailed pixel-sprite art style. Keep facing STRAIGHT toward viewer / screen bottom with the SAME slightly elevated camera. Do not turn sideways or diagonal. Do not redesign, zoom, change age, add equipment, or change costume. Transparent background. ONE character only, no text, no sheet, no shadows, no floor. Keep whole figure and soles visible with ample transparent margin.\nBOTH toe directions stay toward SCREEN BOTTOM, draw real frontal boot geometry rather than rotating sideways duck feet. Boots keep full width, shaft, cuff height and sole length, including when raised; trousers keep the same length, not elongated tubes. Express knee bends by drawing anatomy, not shrinking boots. Arms naturally counter-swing with legs. Preserve the face/hair/coat design. \nPOSE FOR THIS ONE SPRITE:\nUP/pre-contact pose: LEFT leg (SCREEN RIGHT) has passed the body and reaches forward toward the camera, its toe lifted slightly so the front of the sole can be seen, not quite landed. RIGHT leg (SCREEN LEFT) extends behind with heel rising. RIGHT arm (SCREEN LEFT) swings forward, LEFT arm back. Entire boot volume stays full. Slight high point in pelvis; clearly extend into the next opposite contact.",
+      "generatedSource": "exec-e9e6df15-a963-48be-a967-eb41f1067d1a.png",
+      "refinement": {
+        "prompt": "Correct this one sprite's LOWER LEG AND BOOT POSE to an ordinary short WALKING stride. Preserve the SAME character face, hair, costume, arm swing, upper body, pixel art style and full-body framing. Transparent background, one full character.\nThe current forward boot is an exaggerated giant kick toward the camera. Replace that with a relaxed late-swing walking foot. The forward boot must have the SAME physical width, shaft, cuff, sole thickness and length as the other boot and the neutral boot reference. No oversized near-camera boot. Its sole faces mostly DOWN toward the ground, only a tiny thin heel/sole edge visible, toe just gently lifted 5 degrees. Do NOT present a broad sole directly at the viewer. Modest front-back foot separation, not a high knee marching kick. Both toes point straight forward toward screen bottom, no outward duck foot angle. Keep dark trousers covering the knees with the same length; remove any accidental bare-knee patch. Preserve full boot cuffs and normal boot volume, do not shrink to ankle shoes.\nThe advancing boot to correct is on SCREEN RIGHT. The opposite boot is the trailing/support foot.",
+        "generatedSource": "exec-e8b41193-0f20-4eb5-9d18-b74bc1193ea1.png"
+      },
+      "sha256": "9b55b9d91c5997420a53613f098887675f8f58bb91a0803923c803b7c8b943b2"
+    },
+    {
+      "index": 5,
+      "id": "05-contact-b",
+      "rawImage": "raw/05.png",
+      "prompt": "Edit the reference character into EXACTLY ONE full-body FRONT/DOWN game sprite in the pose described below. Same exact boy, brown tousled hair and blue eyes, blue scarf and blue short coat with cream trim, cream shirt, brown belt/gloves, charcoal short trousers, full cuffed brown leather boots. Preserve character identity, SAME head/body proportions, costume details and detailed pixel-sprite art style. Keep facing STRAIGHT toward viewer / screen bottom with the SAME slightly elevated camera. Do not turn sideways or diagonal. Do not redesign, zoom, change age, add equipment, or change costume. Transparent background. ONE character only, no text, no sheet, no shadows, no floor. Keep whole figure and soles visible with ample transparent margin.\nBOTH toe directions stay toward SCREEN BOTTOM, draw real frontal boot geometry rather than rotating sideways duck feet. Boots keep full width, shaft, cuff height and sole length, including when raised; trousers keep the same length, not elongated tubes. Express knee bends by drawing anatomy, not shrinking boots. Arms naturally counter-swing with legs. Preserve the face/hair/coat design. \nPOSE FOR THIS ONE SPRITE:\nLEFT leg (on SCREEN RIGHT) strides toward the camera, heel reaches floor in front, its substantial boot is the lower/front boot. RIGHT leg (SCREEN LEFT) trails behind with its heel rising at toe-off. RIGHT arm (SCREEN LEFT) swings forward, LEFT arm back. A clear contact pose, opposite to right-leg-forward. Neither foot splayed outward.",
+      "generatedSource": "exec-b72d8c78-c724-4c0f-86d4-9c074f1d0948.png",
+      "sha256": "98c7667e41db0fd57d68bd84ef7b83f5a8ebf3d19bb8cc09956249709417808e"
+    },
+    {
+      "index": 6,
+      "id": "06-down-b",
+      "rawImage": "raw/06.png",
+      "prompt": "Edit the reference character into EXACTLY ONE full-body FRONT/DOWN game sprite in the pose described below. Same exact boy, brown tousled hair and blue eyes, blue scarf and blue short coat with cream trim, cream shirt, brown belt/gloves, charcoal short trousers, full cuffed brown leather boots. Preserve character identity, SAME head/body proportions, costume details and detailed pixel-sprite art style. Keep facing STRAIGHT toward viewer / screen bottom with the SAME slightly elevated camera. Do not turn sideways or diagonal. Do not redesign, zoom, change age, add equipment, or change costume. Transparent background. ONE character only, no text, no sheet, no shadows, no floor. Keep whole figure and soles visible with ample transparent margin.\nBOTH toe directions stay toward SCREEN BOTTOM, draw real frontal boot geometry rather than rotating sideways duck feet. Boots keep full width, shaft, cuff height and sole length, including when raised; trousers keep the same length, not elongated tubes. Express knee bends by drawing anatomy, not shrinking boots. Arms naturally counter-swing with legs. Preserve the face/hair/coat design. \nPOSE FOR THIS ONE SPRITE:\nWeight-acceptance pose just after LEFT leg (SCREEN RIGHT) contacts. Left support knee flexes modestly, pelvis settles. RIGHT knee (SCREEN LEFT) has ALREADY advanced, bending clearly; right heel is lifted, right boot is traveling forward UNDER the hip, no frozen rear leg. RIGHT arm (SCREEN LEFT) forward, LEFT arm back. This differs clearly from the full split-stride contact pose.",
+      "generatedSource": "exec-b1bb472a-a071-4fa3-b6ac-5e74e52bd02f.png",
+      "sha256": "0dc8d963c2e00356661ee871048ecd08c5a1aa9f6f59fbcddc361b8b20f3680f"
+    },
+    {
+      "index": 7,
+      "id": "07-pass-b",
+      "rawImage": "raw/07.png",
+      "prompt": "Edit the reference character into EXACTLY ONE full-body FRONT/DOWN game sprite in the pose described below. Same exact boy, brown tousled hair and blue eyes, blue scarf and blue short coat with cream trim, cream shirt, brown belt/gloves, charcoal short trousers, full cuffed brown leather boots. Preserve character identity, SAME head/body proportions, costume details and detailed pixel-sprite art style. Keep facing STRAIGHT toward viewer / screen bottom with the SAME slightly elevated camera. Do not turn sideways or diagonal. Do not redesign, zoom, change age, add equipment, or change costume. Transparent background. ONE character only, no text, no sheet, no shadows, no floor. Keep whole figure and soles visible with ample transparent margin.\nBOTH toe directions stay toward SCREEN BOTTOM, draw real frontal boot geometry rather than rotating sideways duck feet. Boots keep full width, shaft, cuff height and sole length, including when raised; trousers keep the same length, not elongated tubes. Express knee bends by drawing anatomy, not shrinking boots. Arms naturally counter-swing with legs. Preserve the face/hair/coat design. \nPOSE FOR THIS ONE SPRITE:\nPASSING pose: LEFT leg (SCREEN RIGHT) is planted vertically under the body carrying weight. RIGHT knee (SCREEN LEFT) is bent and passes under the pelvis. Show the lifted full-size RIGHT boot NEXT TO THE SUPPORTING ANKLE, its toe a little higher than the support boot toe. Both boots are CLOSE IN FRONT/BACK DEPTH, side by side near the center; NOT one boot far in front and one behind. The lifted boot must have its full shaft and cuff, never shrink. Arms are approximately passing through their neutral swing.",
+      "generatedSource": "exec-7958ba66-26d5-422f-a870-ce62efa31d5b.png",
+      "sha256": "77f89e5210852e2d04d71f678df70198d59bb79450b7323c4508f3d901590125"
+    },
+    {
+      "index": 8,
+      "id": "08-up-b",
+      "rawImage": "raw/08.png",
+      "prompt": "Edit the reference character into EXACTLY ONE full-body FRONT/DOWN game sprite in the pose described below. Same exact boy, brown tousled hair and blue eyes, blue scarf and blue short coat with cream trim, cream shirt, brown belt/gloves, charcoal short trousers, full cuffed brown leather boots. Preserve character identity, SAME head/body proportions, costume details and detailed pixel-sprite art style. Keep facing STRAIGHT toward viewer / screen bottom with the SAME slightly elevated camera. Do not turn sideways or diagonal. Do not redesign, zoom, change age, add equipment, or change costume. Transparent background. ONE character only, no text, no sheet, no shadows, no floor. Keep whole figure and soles visible with ample transparent margin.\nBOTH toe directions stay toward SCREEN BOTTOM, draw real frontal boot geometry rather than rotating sideways duck feet. Boots keep full width, shaft, cuff height and sole length, including when raised; trousers keep the same length, not elongated tubes. Express knee bends by drawing anatomy, not shrinking boots. Arms naturally counter-swing with legs. Preserve the face/hair/coat design. \nPOSE FOR THIS ONE SPRITE:\nUP/pre-contact pose: RIGHT leg (SCREEN LEFT) has passed the body and reaches forward toward the camera, its toe lifted slightly so the front of the sole can be seen, not quite landed. LEFT leg (SCREEN RIGHT) extends behind with heel rising. LEFT arm (SCREEN RIGHT) swings forward, RIGHT arm back. Entire boot volume stays full. Slight high point in pelvis; clearly extend into next right-leg-forward contact.",
+      "generatedSource": "exec-0f9b1546-f3d3-4b7f-8a01-ace52548cf1d.png",
+      "refinement": {
+        "prompt": "Correct this one sprite's LOWER LEG AND BOOT POSE to an ordinary short WALKING stride. Preserve the SAME character face, hair, costume, arm swing, upper body, pixel art style and full-body framing. Transparent background, one full character.\nThe current forward boot is an exaggerated giant kick toward the camera. Replace that with a relaxed late-swing walking foot. The forward boot must have the SAME physical width, shaft, cuff, sole thickness and length as the other boot and the neutral boot reference. No oversized near-camera boot. Its sole faces mostly DOWN toward the ground, only a tiny thin heel/sole edge visible, toe just gently lifted 5 degrees. Do NOT present a broad sole directly at the viewer. Modest front-back foot separation, not a high knee marching kick. Both toes point straight forward toward screen bottom, no outward duck foot angle. Keep dark trousers covering the knees with the same length; remove any accidental bare-knee patch. Preserve full boot cuffs and normal boot volume, do not shrink to ankle shoes.\nThe advancing boot to correct is on SCREEN LEFT. The opposite boot is the trailing/support foot.",
+        "generatedSource": "exec-133914d4-1ad8-421d-83b1-bfcc1457de5d.png"
+      },
+      "sha256": "a31025c7ab7d4f7091ccbff7921408a74a3e9789f25c3f15829fd89f9f03902d"
+    }
+  ],
+  "notSelected": [
+    {
+      "file": "exec-eb15f197-06a7-40ed-aad1-24a6af6dff5f.png",
+      "reason": "25-cell sheet did not form a coherent cycle"
+    },
+    {
+      "file": "exec-e723d9b1-8b55-4c20-a9a4-1389ad4287f6.png",
+      "reason": "9-cell sheet had unreliable passing poses and grid alignment"
+    }
+  ],
+  "artApproval": null
+}

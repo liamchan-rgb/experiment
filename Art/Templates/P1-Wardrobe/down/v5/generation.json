@@ -1,0 +1,20 @@
+{
+  "date": "2026-10-19",
+  "status": "awaiting_art_review",
+  "records": [
+    {
+      "part": "continuous-right-arm-hand-and-sword-pose-study",
+      "source": "source/guide-with-completed-grip.png",
+      "prompt": "source/prompt.txt",
+      "tool": "image_gen.imagegen",
+      "toolOutput": "/workspace/generated_images/exec-ff1d69a2-3799-4482-b744-93918b0dc562.png",
+      "references": [
+        "Art/Templates/P1-Wardrobe/down/v3/references/00-body-guide.png"
+      ],
+      "sha256": "778cf641c962d7ba732c4fceafe40981bcca67dc66bb78ce48d5a2e42dd73542",
+      "promptSHA256": "68304f93f8f89c4fab0583ba0373851fe9202f874322828556fac6b52962ac8e",
+      "referenceSHA256": "410456c0ab81de490bfaa99bcbf67282cec71bdf9959975d6d44c970eac93f6f",
+      "note": "The tool output changed unrelated pixels elsewhere in the guide. The deterministic preview uses only the explicitly registered lower-arm/hand/sword crop; all pixels outside that rectangle match the no-grip base. This is an integrated single-pose overlay, not yet a set of independent production parts."
+    }
+  ]
+}

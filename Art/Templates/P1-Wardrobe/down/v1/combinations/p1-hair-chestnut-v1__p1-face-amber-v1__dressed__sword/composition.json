@@ -1,0 +1,30 @@
+{
+  "folder": "combinations/p1-hair-chestnut-v1__p1-face-amber-v1__dressed__sword",
+  "base": "p1-neutral-down-walk-r2",
+  "assets": [
+    "p1-hair-chestnut-v1",
+    "p1-face-amber-v1",
+    "p1-outfit-forester-v1",
+    "p1-weapon-short-sword-v1"
+  ],
+  "direction": "down",
+  "motionSHA256": "cb0b4896eb90062b93a3e9768b5bf24be4a3ed794c1621188bf189cc9e802642",
+  "assetManifestSHA256": {
+    "p1-neutral-down-walk-r2": "42f3d3ca196b4f1d73f2a2972625f5c5ebd1b7a0d6e47e8b59298eed17eeb829",
+    "p1-hair-chestnut-v1": "8cb282d7b17d9026320c9b8ee7e2e62339dbb68adc18896a715fb0be806a91cd",
+    "p1-face-amber-v1": "6594c9cf4c0e1674c143d68ca61f3b1d631b7207d7aa60e7bbd33340bd12e319",
+    "p1-outfit-forester-v1": "ea504138699da7f93836b8578befdc2116cc1862990b26bb352415bf62ee5291",
+    "p1-weapon-short-sword-v1": "76be08492267661177d8b2a9c06805ec282f6b506efa3595171d87537e670f8a"
+  },
+  "frames": {
+    "00.png": "3e6af282dee28bf582e8d2f537130ffe86a5d130410f24b5923ad7ef5d17f7ab",
+    "01.png": "9f1fe6fcd140c92aee4def6677dd37ab16c6094103e5f818b85ac0c4d087fa7d",
+    "02.png": "1f154c58af6020da7cd6458645088e1575fd9b1dc7f74b4d2efa58918388d0df",
+    "03.png": "4ceebedbee2f34654d12cea2b329d3dfe1f1c3e3104616d0d77b3116d18c6c84",
+    "04.png": "5c40dd8d36b8f16a058d490c9198cf036f0e1d00dfcf27a106ed3189478a7898",
+    "05.png": "a6863f8bd4851e93eb14cb2e51f0e610a46eab680500045f2ecacb6e3bb50a9d",
+    "06.png": "22674a4f3f471173bccb87aa9e39c45b28fa3103eb42d594cdbe7446e455efb0",
+    "07.png": "4c315adc3c608b8d4f2ce27b906098111b11b796739228b4ef7c898af8a31c19",
+    "08.png": "55cfb5fa5a3dfa7c165064c6ef0bcfec8f0c932b265a1bbe60f2dda5155d538e"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "httpPreviewStatus": 200,
+  "touchViewports": [
+    [
+      834,
+      1194
+    ],
+    [
+      1194,
+      834
+    ]
+  ],
+  "appearanceSwitching": true,
+  "frameStepPause": true,
+  "slowSpeed": true,
+  "anchors": true,
+  "pngDownload": true,
+  "horizontalOverflow": false,
+  "javascriptErrors": [],
+  "engine": "Chromium touch emulation; physical iPad Safari not tested",
+  "deployment": {
+    "project_id": "appgprj_6ad4c430158081919337306817d34d9e",
+    "url": "https://p1-character-atelier.smokytide.chatgpt.site",
+    "audience": "owner-private",
+    "deployment_id": "appgdep_6ad4c4bc143c81919d4a79b25406de5f",
+    "version_id": "appgprj_6ad4c430158081919337306817d34d9e~appgver_43f85e2b8cd88191a077e7c1066163be",
+    "source_commit": "a285650b6b141a9866ce1277dd15389cfdf45a18",
+    "status": "succeeded"
+  }
+}

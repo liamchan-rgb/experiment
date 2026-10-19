@@ -1,0 +1,24 @@
+{
+  "date": "2026-10-18",
+  "artApproval": null,
+  "approvedMotionFramesLocked": 72,
+  "defaultVisibleRGBAEqualsApprovedFrames": 9,
+  "appearancePoseCombinations": 144,
+  "legAndBootPixelsUnchangedAcrossAllCombinations": true,
+  "handAndGripAnchorsInsideArtwork": true,
+  "noCellEdgeClipping": true,
+  "openRasterVisibleLayerReassemblyMatches": 18,
+  "gifWalkFrames": 8,
+  "gifFrameMs": [
+    120,
+    480
+  ],
+  "browserAtlasesMatchOfflineExports": 16,
+  "maxBrowserPremultipliedChannelDelta": 2.2078431372549048,
+  "browserControlsAndThreeDownloadsPassed": true,
+  "desktopAnd390pxMobileLayoutPassed": true,
+  "externalNetworkRequests": 0,
+  "browserFileNavigation": "managed Chromium blocks file://; tested identical HTML via set_content with requests blocked",
+  "nativeEditorGUIOrApplicationBuild": "not run; ORA structurally/recomposition checked, no native app changes",
+  "note": "Checks verify export and customization invariants, not user artwork approval."
+}

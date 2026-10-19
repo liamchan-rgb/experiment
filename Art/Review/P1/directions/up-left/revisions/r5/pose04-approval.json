@@ -1,0 +1,13 @@
+{
+  "date": "2026-10-18",
+  "reviewer": "user",
+  "statement": "OK和其他几帧拼起来发给我看看",
+  "direction": "up-left",
+  "revision": "r5",
+  "pose": 4,
+  "scope": "standalone pose04 source PNG shown to user; does not approve assembled cycle, transitions, remaining poses or final template",
+  "status": "approved_for_assembly",
+  "artifacts": {
+    "04.png": "59d53abf6b2875f9bee69735850b705a0bf170affdf39ec78623a052d9ea9093"
+  }
+}

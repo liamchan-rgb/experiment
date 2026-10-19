@@ -1,0 +1,89 @@
+[
+  {
+    "file": "ios-visual-review-38696431707-1/visual-review/iPad-MinimumZoomAtmosphere.mp4",
+    "original": {
+      "programs": [],
+      "streams": [
+        {
+          "width": 2064,
+          "height": 2752
+        }
+      ],
+      "format": {
+        "duration": "30.730000"
+      }
+    },
+    "preview": {
+      "programs": [],
+      "streams": [
+        {
+          "width": 2752,
+          "height": 2064
+        }
+      ],
+      "format": {
+        "duration": "30.766667"
+      }
+    },
+    "timelineScale": 1.0,
+    "publishedFile": "iPad-MinimumZoomAtmosphere-v1.3.0.mp4"
+  },
+  {
+    "file": "ios-visual-review-38696431707-1/visual-review/iPad-EightDirectionGait.mp4",
+    "original": {
+      "programs": [],
+      "streams": [
+        {
+          "width": 2064,
+          "height": 2752
+        }
+      ],
+      "format": {
+        "duration": "25.011667"
+      }
+    },
+    "preview": {
+      "programs": [],
+      "streams": [
+        {
+          "width": 2752,
+          "height": 2064
+        }
+      ],
+      "format": {
+        "duration": "25.033333"
+      }
+    },
+    "timelineScale": 1.0,
+    "publishedFile": "iPad-EightDirectionGait-v1.3.0.mp4"
+  },
+  {
+    "file": "ios-visual-review-38696431707-1/visual-review/iPad-LivingScene.mp4",
+    "original": {
+      "programs": [],
+      "streams": [
+        {
+          "width": 2064,
+          "height": 2752
+        }
+      ],
+      "format": {
+        "duration": "65.440000"
+      }
+    },
+    "preview": {
+      "programs": [],
+      "streams": [
+        {
+          "width": 2752,
+          "height": 2064
+        }
+      ],
+      "format": {
+        "duration": "40.066667"
+      }
+    },
+    "timelineScale": 0.6112469437652812,
+    "publishedFile": "iPad-LivingScene-v1.3.0.mp4"
+  }
+]

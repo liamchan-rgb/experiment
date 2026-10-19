@@ -1,0 +1,20 @@
+{
+  "date": "2026-10-18",
+  "direction": "up-left",
+  "revision": "r2",
+  "supersedes": "r1",
+  "userPrompt": "4-6帧的问题你自己描述一下",
+  "userAuthorization": "那就开始修",
+  "targetFrames": [
+    4,
+    5,
+    6
+  ],
+  "issues": [
+    "04近脚向外拧，远腿前伸和落脚不清",
+    "04到05缺少连续滚跟，鞋底突然朝向镜头",
+    "05到06近腿突然高抬，重心没有移到远侧支撑腿",
+    "膝踝关系、鞋子透视和上身摆臂不连续"
+  ],
+  "artApproval": null
+}

@@ -1,0 +1,15 @@
+{
+  "date": "2026-10-18",
+  "reviewer": "user",
+  "statement": "可以的，继续下一个方向",
+  "direction": "up",
+  "revision": "r1",
+  "scope": "one redrawn idle and 8 key poses of the up-direction cycle shown for review",
+  "status": "approved",
+  "artifacts": {
+    "review-2x.png": "3cdd5ac8c2538774c43c80e680b91f14df0373f3155b719e375ce6f1cd0b355e",
+    "strip.png": "baaf947de7d5a16d0e4c1a8fbdddd7b46effb03c33d7f195097857beab6a3df8",
+    "walk.gif": "1e1804ed46bedde5a8a25ea736e41e4ece9dc1ecfaca2596375e2f6675e9207a",
+    "walk-slow.gif": "6ca4a5a51d404301536debbb2cdd68da1db036bae122397b76044ca3090bb37d"
+  }
+}

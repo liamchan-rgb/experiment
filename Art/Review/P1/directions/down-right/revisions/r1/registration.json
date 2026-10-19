@@ -1,0 +1,8 @@
+{
+  "format": 1,
+  "method": "Uniform whole-pose silhouette scaling; common sole-envelope line for in-place review",
+  "silhouetteHeights": [156, 154, 152, 154, 155, 154, 152, 154, 155],
+  "soleEnvelopeY": 224,
+  "phaseOrder": ["idle", "contact-a", "weight-a", "pass-a", "late-swing-a", "contact-b", "weight-b", "pass-b", "late-swing-b"],
+  "scope": "Review canvas registration only. Sole envelope is the lowest drawn silhouette, not runtime physical foot-contact metadata. The complete pose is scaled uniformly; boots and legs are never transformed separately."
+}

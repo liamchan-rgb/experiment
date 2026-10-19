@@ -1,0 +1,66 @@
+{
+  "profile": "one-hand-closed",
+  "status": "grip-art-review-candidate",
+  "source": "source/grip-down.png",
+  "referenceGrip": [
+    102,
+    170
+  ],
+  "handPolygons": [
+    [
+      [
+        100,
+        164
+      ],
+      [
+        105,
+        164
+      ],
+      [
+        107,
+        165
+      ],
+      [
+        107,
+        171
+      ],
+      [
+        106,
+        173
+      ],
+      [
+        100,
+        174
+      ],
+      [
+        97,
+        172
+      ],
+      [
+        95,
+        169
+      ],
+      [
+        95,
+        166
+      ],
+      [
+        98,
+        164
+      ]
+    ]
+  ],
+  "localCanvas": [
+    24,
+    24
+  ],
+  "localGrip": [
+    12,
+    12
+  ],
+  "reuse": "Same hand drawing and same base for empty-hand and all weapon selections. No weapon ID/body selection branch.",
+  "placement": "Only integer translation from the authored reference grip to original motion sockets; no content-bounds fit or resize.",
+  "sourceRole": "Generated neutral figure used only to author the isolated right hand; other body pixels never exported from it.",
+  "artApproval": null,
+  "semanticBoundary": "Anatomical wrist/hand polygon excludes adjacent neutral shorts atx>=108; no clothing pixels in common hand."
+}

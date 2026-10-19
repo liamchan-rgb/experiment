@@ -1,0 +1,15 @@
+{
+  "date": "2026-10-18",
+  "reviewer": "user",
+  "statement": "这就对了，继续审核下一个方向",
+  "direction": "down",
+  "revision": "r1",
+  "scope": "one redrawn idle and 8 key poses of the down-direction cycle shown for review",
+  "status": "approved",
+  "artifacts": {
+    "review-2x.png": "6a916ebec6528b55cbe2c98f4ba6cdeb3dcc7859c2b35c9bb1b2d3e1ec303c1b",
+    "strip.png": "19d934db5e3ce02fd8054759300e5c115ab1a440c17c48f954eb48a0e23987e3",
+    "walk.gif": "8c53d6014fb86049a52fef99699e3afedbf4fb09a07709d9b1c0304f13c5924c",
+    "walk-slow.gif": "ea1025daf9577cbb53e77c108f5c25cae1a4897360dec8c559ea75437ab427e4"
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "date": "2026-10-18",
+  "direction": "up-left",
+  "revision": "r3",
+  "method": "imagegen local-direction correction requested on full pose04; other eight complete poses inherited from r2",
+  "artApproval": null,
+  "selected": [
+    {
+      "pose": 4,
+      "prompt": "Correct ONLY the FAR LEG and BOOT on SCREEN RIGHT in this exact rear three-quarter northwest-facing sprite. The far foot is too externally rotated and looks turned outward to screen-right. Redraw its connected lower thigh, knee, calf, ankle and full folded-cuff boot to face INWARD along the character's actual travel, UPPER LEFT / northwest, matching the pelvis and the screen-left foot. Preserve the gait phase: screen-left leg stays planted support and screen-right far leg reaches low forward. Do NOT swap legs.\nThe corrected SCREEN RIGHT boot should be seen predominantly from the HEEL BACK, with a rear seam and heel counter at LOWER RIGHT. Its TOE must foreshorten away toward UPPER LEFT, partly hidden behind the screen-left supporting shin. Remove the current round toe-like bulge facing RIGHT and its outward-turned forefoot silhouette. Do not merely rotate a detached shoe: knee, shin, ankle and shoe all share the same northwest axis. Keep the boot's full shaft/cuff and normal physical volume, with only perspective and natural occlusion narrowing the visible shape. No toe pointing down toward camera or horizontally outward right. No big sole exposed. Foot stays low just before landing. Leave the near SCREEN LEFT planted boot in the exact same position and shape.\nPreserve EVERYTHING ELSE as closely as possible: head and hair, body, pose, shoulders, both gloves, blue scarf, coat, straps, pouch, colors, character size, image composition, detailed sprite linework and transparent background. One full centered character with generous margin. No text, arrows, floor, shadow, glow or background.",
+      "references": [
+        "/workspace/experiment/Art/Review/P1/directions/up-left/revisions/r2/raw/04.png"
+      ],
+      "selectedSource": "/workspace/generated_images/exec-252e1437-af68-4d17-980e-5da95d76d4b7.png",
+      "savedAs": "raw/04.png",
+      "selectedSourceSHA256": "24b7caf60bf44402df70bf1843722dea4156d232f8e9d7ac91ada13e00647d75",
+      "referenceSHA256": {
+        "/workspace/experiment/Art/Review/P1/directions/up-left/revisions/r2/raw/04.png": "c92a99dc62889c57ebb6c14f5ef57a277fbedb2ee85497496dff3a0848c50f3d"
+      }
+    }
+  ],
+  "inherited": [
+    {
+      "pose": 0,
+      "from": "../r2/raw/00.png",
+      "sha256": "e4e9605f279278da4ed4cd5e869e089578f0d5728f66ba2790aaa4e23b7e93ee"
+    },
+    {
+      "pose": 1,
+      "from": "../r2/raw/01.png",
+      "sha256": "8d2e8b5681b430013d8bd56fa005964d47f5db79268021613592e8c947af4e31"
+    },
+    {
+      "pose": 2,
+      "from": "../r2/raw/02.png",
+      "sha256": "d495739b5efc5f7c02ada082130efde6a48d4db5ea5cc088272151ee5d672afa"
+    },
+    {
+      "pose": 3,
+      "from": "../r2/raw/03.png",
+      "sha256": "5b16e1b297a27a032c065b48414401d8a3cf55218448577084830ad3f95c2de8"
+    },
+    {
+      "pose": 5,
+      "from": "../r2/raw/05.png",
+      "sha256": "a7d3650c04e1edff55429948fb269854e56a55927cc899c42fd1fd9bc21db4bc"
+    },
+    {
+      "pose": 6,
+      "from": "../r2/raw/06.png",
+      "sha256": "0d048a5782dc529d550d4e62f8f100022eec722688cafd9782881345fbfe9499"
+    },
+    {
+      "pose": 7,
+      "from": "../r2/raw/07.png",
+      "sha256": "38a998ea6d96b126fbfd483b1b3a746fa61de62a4b3afeaf0026a0babf0da292"
+    },
+    {
+      "pose": 8,
+      "from": "../r2/raw/08.png",
+      "sha256": "236f5443c0057a875eedf4367610f01dfb4a7c8305e4ed3a35939e05e52028f0"
+    }
+  ]
+}

@@ -1,0 +1,246 @@
+{
+  "format": 1,
+  "source": "raw",
+  "sourceSHA256": {
+    "00.png": "50efaa96507cb345c22175460bc2f76a7586b02dd041044dc1b3c631b46125b2",
+    "01.png": "beb740210889dd4d4cc09a828e092dcae938b443d79be0945f7c844d1af643f0",
+    "02.png": "1b4ba7da2e6dd0af35ba7b59e353e87715c7c45e59e20e42d18d9f326b67f49d",
+    "03.png": "0503835cc1c58311120678f7c23b0b54abe8ff95eadc43b5458c44a36e22f85e",
+    "04.png": "67f77c5773ace9e1211f3b3e607bc20bb8f7fb15aa4ab25c30021c7ae0073a18",
+    "05.png": "28807c3b1ae7dacf749ecd2f94fbe5aee965928a4ad1ac2ff464d0efc052a8e2",
+    "06.png": "3d1f76814e96036de445fead6976d51fe1b93124e7ca50af69657e81fc581a6d",
+    "07.png": "692df5b6547eb08d3f086a18dffb9da86a774b42f08eabbc12c1e7f9de46c14c",
+    "08.png": "9b6a01305e71fb771f6f436f922a95809f8216c2573d31356efc7d5019674539"
+  },
+  "sourceDimensions": [
+    [
+      1312,
+      1199
+    ],
+    [
+      1312,
+      1199
+    ],
+    [
+      1312,
+      1199
+    ],
+    [
+      1312,
+      1199
+    ],
+    [
+      1312,
+      1199
+    ],
+    [
+      1312,
+      1199
+    ],
+    [
+      1312,
+      1199
+    ],
+    [
+      1312,
+      1199
+    ],
+    [
+      1312,
+      1199
+    ]
+  ],
+  "reviewGrid": [
+    3,
+    3
+  ],
+  "cell": 256,
+  "idleFrames": 1,
+  "walkingFrames": 8,
+  "packing": "uniform whole-pose scaling to declared silhouette heights and sole-envelope alignment; no limb edits, foot scaling or interpolation",
+  "durationsMilliseconds": {
+    "normal": 120,
+    "slow": 480
+  },
+  "frames": [
+    {
+      "frame": 0,
+      "alphaBounds": [
+        78,
+        68,
+        174,
+        224
+      ],
+      "wholePoseRegistration": {
+        "scaleX": 0.16234756097560976,
+        "scaleY": 0.16263552960800667,
+        "offset": [
+          13,
+          44
+        ]
+      },
+      "sha256": "578bd925752655b91ae9aa9a4e59a3656d85d76ba3c6e9b1a300db0df9edc7e2"
+    },
+    {
+      "frame": 1,
+      "alphaBounds": [
+        53,
+        70,
+        169,
+        224
+      ],
+      "wholePoseRegistration": {
+        "scaleX": 0.15777439024390244,
+        "scaleY": 0.15763135946622187,
+        "offset": [
+          5,
+          51
+        ]
+      },
+      "sha256": "66a1802daa02e4a72bde4f83266c5e4bba241703e0933156839f75e8e9a59fc6"
+    },
+    {
+      "frame": 2,
+      "alphaBounds": [
+        57,
+        72,
+        169,
+        224
+      ],
+      "wholePoseRegistration": {
+        "scaleX": 0.15929878048780488,
+        "scaleY": 0.15929941618015012,
+        "offset": [
+          2,
+          48
+        ]
+      },
+      "sha256": "972383bfc470f678e92cc97b57e3eb141a3aa5fa56dd3c25a2ae42e1b3ef63fa"
+    },
+    {
+      "frame": 3,
+      "alphaBounds": [
+        59,
+        70,
+        170,
+        224
+      ],
+      "wholePoseRegistration": {
+        "scaleX": 0.15472560975609756,
+        "scaleY": 0.15512927439532945,
+        "offset": [
+          7,
+          52
+        ]
+      },
+      "sha256": "56a7f15f2ac897139c8fac281a1f41177f3503c90763636fc0b2b1d7b2c81e70"
+    },
+    {
+      "frame": 4,
+      "alphaBounds": [
+        53,
+        69,
+        173,
+        224
+      ],
+      "wholePoseRegistration": {
+        "scaleX": 0.16539634146341464,
+        "scaleY": 0.1651376146788991,
+        "offset": [
+          -3,
+          45
+        ]
+      },
+      "sha256": "d4eba67449a99eb62fbae099c547dcb0b899d543d7a8dca187ea8707c8d6a6c8"
+    },
+    {
+      "frame": 5,
+      "alphaBounds": [
+        60,
+        70,
+        171,
+        224
+      ],
+      "wholePoseRegistration": {
+        "scaleX": 0.15853658536585366,
+        "scaleY": 0.15846538782318598,
+        "offset": [
+          2,
+          50
+        ]
+      },
+      "sha256": "2a279b4f94bbfa24835373070ce3f98992ad31d6d896d2572f619a9ae01fcc36"
+    },
+    {
+      "frame": 6,
+      "alphaBounds": [
+        54,
+        72,
+        175,
+        224
+      ],
+      "wholePoseRegistration": {
+        "scaleX": 0.15777439024390244,
+        "scaleY": 0.15763135946622187,
+        "offset": [
+          0,
+          51
+        ]
+      },
+      "sha256": "54a9994b7c61aa2b52e9aa1c18b586fbdb77d2932948c502da477db6c5d67ce5"
+    },
+    {
+      "frame": 7,
+      "alphaBounds": [
+        72,
+        70,
+        176,
+        224
+      ],
+      "wholePoseRegistration": {
+        "scaleX": 0.16310975609756098,
+        "scaleY": 0.16263552960800667,
+        "offset": [
+          8,
+          47
+        ]
+      },
+      "sha256": "013b588e16027d3d4a98036fd1f2bece85e6a8262481e7c71d1ed0d00c849c36"
+    },
+    {
+      "frame": 8,
+      "alphaBounds": [
+        55,
+        69,
+        169,
+        224
+      ],
+      "wholePoseRegistration": {
+        "scaleX": 0.1638719512195122,
+        "scaleY": 0.1634695579649708,
+        "offset": [
+          1,
+          46
+        ]
+      },
+      "sha256": "5665609eba54cde19c9169841b95b5bbeb2d7897a582913cd6b13bd6bc8f2ba3"
+    }
+  ],
+  "artApproval": null,
+  "registrationProfile": {
+    "file": "registration.json",
+    "sha256": "483b2db1417d93eb1a97cab0035e4d49d9acae01c6dbb0a5af273c1de02b12d2",
+    "soleEnvelopeY": 224,
+    "silhouetteHeights": [
+      156,
+      154,
+      152,
+      154,
+      155,
+      154,
+      152,
+      154,
+      155
+    ]
+  }
+}

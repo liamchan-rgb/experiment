@@ -1,0 +1,28 @@
+{
+  "folder": "combinations/p1-hair-chestnut-v1__p1-face-amber-v1__dressed__empty",
+  "base": "p1-neutral-down-walk-r2",
+  "assets": [
+    "p1-hair-chestnut-v1",
+    "p1-face-amber-v1",
+    "p1-outfit-forester-v1"
+  ],
+  "direction": "down",
+  "motionSHA256": "cb0b4896eb90062b93a3e9768b5bf24be4a3ed794c1621188bf189cc9e802642",
+  "assetManifestSHA256": {
+    "p1-neutral-down-walk-r2": "42f3d3ca196b4f1d73f2a2972625f5c5ebd1b7a0d6e47e8b59298eed17eeb829",
+    "p1-hair-chestnut-v1": "8cb282d7b17d9026320c9b8ee7e2e62339dbb68adc18896a715fb0be806a91cd",
+    "p1-face-amber-v1": "6594c9cf4c0e1674c143d68ca61f3b1d631b7207d7aa60e7bbd33340bd12e319",
+    "p1-outfit-forester-v1": "ea504138699da7f93836b8578befdc2116cc1862990b26bb352415bf62ee5291"
+  },
+  "frames": {
+    "00.png": "f4953957b34c18a9adf5d7e533fb28119efeac77ad4fcd6b75b795861de3d14a",
+    "01.png": "2516b1b6d064fcf6977e77b82d595e2e742ae6662e4506f49a724fd8c2add5d3",
+    "02.png": "d1c1169de2010d083581e677d31233cb0fd927aaa857a5f2d15f8abeb2fab3b9",
+    "03.png": "517a4b2e0329e8f03278f158191591f79a80a1abd7e23e133f7d8283a30e32c2",
+    "04.png": "0e3c45a878238232b80d3f072fdbdd66aad8473cf7889006e180369a07021394",
+    "05.png": "f98adb23ccf8a9becb9264e0c5bba611c87b233b83e15500b5a489d2d1bbfa6c",
+    "06.png": "69f34b9970d132d6bca178af13586b755104ca8faf679e4b1341223c3d89840f",
+    "07.png": "fbee847b7374494a20f032061234781c928d7a738f051f5691353152e561ca5a",
+    "08.png": "e68fcaba470b371f789eb36da9de63641beb6cf0d49aa79d4ef4bac80ad50194"
+  }
+}

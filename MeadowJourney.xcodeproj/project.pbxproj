@@ -25,6 +25,26 @@
 			"isa" = "PBXBuildFile";
 			"fileRef" = F1DA447D6A7A060E6C4C4E80;
 		};
+		CFD9363EC2CA8229D023C432 = {
+			"isa" = "PBXFileReference";
+			"lastKnownFileType" = "sourcecode.swift";
+			"path" = "Game/GaitReviewScene.swift";
+			"sourceTree" = "<group>";
+		};
+		7870D9C736172F8A9F534C7E = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = CFD9363EC2CA8229D023C432;
+		};
+		B8BDBAB5CA8D5D68A9E7A7C2 = {
+			"isa" = "PBXFileReference";
+			"lastKnownFileType" = "sourcecode.swift";
+			"path" = "Game/GaitTest.swift";
+			"sourceTree" = "<group>";
+		};
+		974231828279BD055013C155 = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = B8BDBAB5CA8D5D68A9E7A7C2;
+		};
 		269650C38F8DD9DB3EA6712D = {
 			"isa" = "PBXFileReference";
 			"lastKnownFileType" = "sourcecode.swift";
@@ -34,6 +54,16 @@
 		435A1C7E2595EA1985DE130C = {
 			"isa" = "PBXBuildFile";
 			"fileRef" = 269650C38F8DD9DB3EA6712D;
+		};
+		405E9001CFA240D228B75EB7 = {
+			"isa" = "PBXFileReference";
+			"lastKnownFileType" = "sourcecode.swift";
+			"path" = "Game/HeroFrames.swift";
+			"sourceTree" = "<group>";
+		};
+		44DBFB4339E402F99158D5D2 = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = 405E9001CFA240D228B75EB7;
 		};
 		A05AAE886C1A644A2AF1E17A = {
 			"isa" = "PBXFileReference";
@@ -54,6 +84,76 @@
 		9230100C79CFE05C6D40D51A = {
 			"isa" = "PBXBuildFile";
 			"fileRef" = 99D30FA4C024C21330B21291;
+		};
+		8C885855554D55514A170921 = {
+			"isa" = "PBXFileReference";
+			"lastKnownFileType" = "sourcecode.swift";
+			"path" = "Game/MeadowGPUDiagnostics.swift";
+			"sourceTree" = "<group>";
+		};
+		A41D7E7DC7582CFD98977811 = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = 8C885855554D55514A170921;
+		};
+		66DEAFD22FF432D6B57BB5F0 = {
+			"isa" = "PBXFileReference";
+			"lastKnownFileType" = "sourcecode.swift";
+			"path" = "Game/MeadowLoader.swift";
+			"sourceTree" = "<group>";
+		};
+		6F13D5561D7427A98E0DED30 = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = 66DEAFD22FF432D6B57BB5F0;
+		};
+		8DCCE6164BBE625A6E8C5618 = {
+			"isa" = "PBXFileReference";
+			"lastKnownFileType" = "sourcecode.swift";
+			"path" = "Game/MeadowLoadingView.swift";
+			"sourceTree" = "<group>";
+		};
+		2A6A97E3A2291053F11B3878 = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = 8DCCE6164BBE625A6E8C5618;
+		};
+		97003780C51256BE75EFB134 = {
+			"isa" = "PBXFileReference";
+			"lastKnownFileType" = "sourcecode.swift";
+			"path" = "Game/MeadowRoadMask.swift";
+			"sourceTree" = "<group>";
+		};
+		1F92EB805BEE2323B04135B2 = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = 97003780C51256BE75EFB134;
+		};
+		F39DBACF2497FB5A75EB6EF7 = {
+			"isa" = "PBXFileReference";
+			"lastKnownFileType" = "sourcecode.swift";
+			"path" = "Game/MeadowShadowRenderer.swift";
+			"sourceTree" = "<group>";
+		};
+		FF2F198554EEA584CE78CC25 = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = F39DBACF2497FB5A75EB6EF7;
+		};
+		8C7845360427CB66876E55FD = {
+			"isa" = "PBXFileReference";
+			"lastKnownFileType" = "sourcecode.swift";
+			"path" = "Game/MeadowViewport.swift";
+			"sourceTree" = "<group>";
+		};
+		E34862DA991D98F5498CFE87 = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = 8C7845360427CB66876E55FD;
+		};
+		0B4C15D230DDB88CF54B1AC6 = {
+			"isa" = "PBXFileReference";
+			"lastKnownFileType" = "sourcecode.swift";
+			"path" = "Game/ProjectedShadow.swift";
+			"sourceTree" = "<group>";
+		};
+		2EFBE336E765741024D160F5 = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = 0B4C15D230DDB88CF54B1AC6;
 		};
 		1CAF9877A5F6B9813F15739A = {
 			"isa" = "PBXFileReference";
@@ -85,6 +185,16 @@
 			"isa" = "PBXBuildFile";
 			"fileRef" = D0760787AC13759F118D8DE8;
 		};
+		6A21BA7FDDC2FB7B790D0351 = {
+			"isa" = "PBXFileReference";
+			"lastKnownFileType" = "sourcecode.swift";
+			"path" = "Game/WalkCycle.swift";
+			"sourceTree" = "<group>";
+		};
+		8E972FB2B3AACA4C529240AD = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = 6A21BA7FDDC2FB7B790D0351;
+		};
 		5595A96AECADD87EFD6DE6D6 = {
 			"isa" = "PBXFileReference";
 			"lastKnownFileType" = "sourcecode.swift";
@@ -94,6 +204,46 @@
 		ACC04BAE083F06BFDC7ED36E = {
 			"isa" = "PBXBuildFile";
 			"fileRef" = 5595A96AECADD87EFD6DE6D6;
+		};
+		45C12FE3B590F238A72F9416 = {
+			"isa" = "PBXFileReference";
+			"lastKnownFileType" = "sourcecode.swift";
+			"path" = "ShadowLab/ShadowLabGeometry.swift";
+			"sourceTree" = "<group>";
+		};
+		579D851CA923F0E0D661773A = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = 45C12FE3B590F238A72F9416;
+		};
+		FC7639FDB953C3A752437661 = {
+			"isa" = "PBXFileReference";
+			"lastKnownFileType" = "sourcecode.swift";
+			"path" = "ShadowLab/ShadowLabRenderer.swift";
+			"sourceTree" = "<group>";
+		};
+		0018ED367738F2E5C55380DD = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = FC7639FDB953C3A752437661;
+		};
+		C60F22B6DBFFBBF82C4AFECF = {
+			"isa" = "PBXFileReference";
+			"lastKnownFileType" = "sourcecode.metal";
+			"path" = "ShadowLab/ShadowLabShaders.metal";
+			"sourceTree" = "<group>";
+		};
+		4420166AA53DF322630DA815 = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = C60F22B6DBFFBBF82C4AFECF;
+		};
+		3FA97B42366A42314CC7F06C = {
+			"isa" = "PBXFileReference";
+			"lastKnownFileType" = "sourcecode.swift";
+			"path" = "ShadowLab/ShadowLabViewController.swift";
+			"sourceTree" = "<group>";
+		};
+		4EE4D3643C508069615BF9B1 = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = 3FA97B42366A42314CC7F06C;
 		};
 		3010D05254CDB3E5CA6C1B15 = {
 			"isa" = "PBXFileReference";
@@ -121,6 +271,12 @@
 			"isa" = "PBXFileReference";
 			"lastKnownFileType" = "text.json";
 			"path" = "Resources/SceneMap.json";
+			"sourceTree" = "<group>";
+		};
+		F1714008CDDE33F3416FBAA3 = {
+			"isa" = "PBXFileReference";
+			"lastKnownFileType" = "text.json";
+			"path" = "Resources/hero-gait.json";
 			"sourceTree" = "<group>";
 		};
 		4E783A9E10D2A8ABA38CD11C = {
@@ -163,17 +319,33 @@
 			"children" = (
 				12BE6F43C250EA1C0ABFBF32,
 				F1DA447D6A7A060E6C4C4E80,
+				CFD9363EC2CA8229D023C432,
+				B8BDBAB5CA8D5D68A9E7A7C2,
 				269650C38F8DD9DB3EA6712D,
+				405E9001CFA240D228B75EB7,
 				A05AAE886C1A644A2AF1E17A,
 				99D30FA4C024C21330B21291,
+				8C885855554D55514A170921,
+				66DEAFD22FF432D6B57BB5F0,
+				8DCCE6164BBE625A6E8C5618,
+				97003780C51256BE75EFB134,
+				F39DBACF2497FB5A75EB6EF7,
+				8C7845360427CB66876E55FD,
+				0B4C15D230DDB88CF54B1AC6,
 				1CAF9877A5F6B9813F15739A,
 				4B5D87B0E3C770DAA09EE100,
 				D0760787AC13759F118D8DE8,
+				6A21BA7FDDC2FB7B790D0351,
 				5595A96AECADD87EFD6DE6D6,
+				45C12FE3B590F238A72F9416,
+				FC7639FDB953C3A752437661,
+				C60F22B6DBFFBBF82C4AFECF,
+				3FA97B42366A42314CC7F06C,
 				3010D05254CDB3E5CA6C1B15,
 				3685E330EC5277A9DD5661C6,
 				59BD0A3FF43B32849B319E64,
 				9D2CA8BB80F6B45E61F8F68A,
+				F1714008CDDE33F3416FBAA3,
 			);
 		};
 		A619C04D8A87AB070162A099 = {
@@ -220,6 +392,10 @@
 			"isa" = "PBXBuildFile";
 			"fileRef" = 9D2CA8BB80F6B45E61F8F68A;
 		};
+		FE9D94340BC577C82EF57473 = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = F1714008CDDE33F3416FBAA3;
+		};
 		9E376739A3B9742C9CF18DEB = {
 			"isa" = "XCBuildConfiguration";
 			"name" = "Debug";
@@ -231,8 +407,8 @@
 				"TARGETED_DEVICE_FAMILY" = "1,2";
 				"SUPPORTED_PLATFORMS" = "iphoneos iphonesimulator";
 				"CODE_SIGN_STYLE" = "Automatic";
-				"MARKETING_VERSION" = "1.1.0";
-				"CURRENT_PROJECT_VERSION" = "3";
+				"MARKETING_VERSION" = "1.6.3";
+				"CURRENT_PROJECT_VERSION" = "28";
 				"ASSETCATALOG_COMPILER_APPICON_NAME" = "AppIcon";
 				"LD_RUNPATH_SEARCH_PATHS" = (
 					"$(inherited)",
@@ -258,8 +434,8 @@
 				"TARGETED_DEVICE_FAMILY" = "1,2";
 				"SUPPORTED_PLATFORMS" = "iphoneos iphonesimulator";
 				"CODE_SIGN_STYLE" = "Automatic";
-				"MARKETING_VERSION" = "1.1.0";
-				"CURRENT_PROJECT_VERSION" = "3";
+				"MARKETING_VERSION" = "1.6.3";
+				"CURRENT_PROJECT_VERSION" = "28";
 				"ASSETCATALOG_COMPILER_APPICON_NAME" = "AppIcon";
 				"LD_RUNPATH_SEARCH_PATHS" = (
 					"$(inherited)",
@@ -286,13 +462,28 @@
 			"files" = (
 				A9B47589F1C47027677602E0,
 				A0A1CFB1B359C88FE613E3FB,
+				7870D9C736172F8A9F534C7E,
+				974231828279BD055013C155,
 				435A1C7E2595EA1985DE130C,
+				44DBFB4339E402F99158D5D2,
 				EAE0075545ABB42C40815692,
 				9230100C79CFE05C6D40D51A,
+				A41D7E7DC7582CFD98977811,
+				6F13D5561D7427A98E0DED30,
+				2A6A97E3A2291053F11B3878,
+				1F92EB805BEE2323B04135B2,
+				FF2F198554EEA584CE78CC25,
+				E34862DA991D98F5498CFE87,
+				2EFBE336E765741024D160F5,
 				85ECA9C97CEF1442EB09388B,
 				7A73B65B6F0455441E0B5B86,
 				BB374ADDA90DD49DAF266AD2,
+				8E972FB2B3AACA4C529240AD,
 				ACC04BAE083F06BFDC7ED36E,
+				579D851CA923F0E0D661773A,
+				0018ED367738F2E5C55380DD,
+				4420166AA53DF322630DA815,
+				4EE4D3643C508069615BF9B1,
 				3CECB03B99CDC07317983836,
 			);
 			"runOnlyForDeploymentPostprocessing" = 0;
@@ -310,6 +501,7 @@
 			"files" = (
 				716E9590E60B3AFA6E62BF18,
 				DC6E2079C400C6682BC65BAF,
+				FE9D94340BC577C82EF57473,
 			);
 			"runOnlyForDeploymentPostprocessing" = 0;
 		};

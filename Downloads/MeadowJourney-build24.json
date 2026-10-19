@@ -1,0 +1,124 @@
+{
+  "version": "1.5.11",
+  "build": "24",
+  "kind": "northwest-leg-calibration-and-eight-direction-gait-test",
+  "sourceCommit": "19b7e4c7e1fc94f55e81028d34a509adaa1873d9",
+  "workflowRun": 39017151633,
+  "workflowUrl": "https://github.com/liamchan-rgb/experiment/actions/runs/39017151633",
+  "runner": "macos-15",
+  "xcode": "16.4 (16F6)",
+  "artifactId": 12095302525,
+  "archiveLogsArtifactId": 12095362070,
+  "workflowConclusion": "success",
+  "ipa": "MeadowJourney-b24.ipa",
+  "bytes": 17457111,
+  "sha256": "7408c86c48ba152800b787d32515a9a810ef0fde675235d6de694da2171fa840",
+  "compression": "ZIP_STORED",
+  "zip64": false,
+  "extendedFields": false,
+  "validation": {
+    "projectValidation": "passed",
+    "deviceReleaseArchive": "passed",
+    "ipaPackage": "passed",
+    "zipCRC": "passed",
+    "architecture": "arm64",
+    "devicePlatform": "iPhoneOS",
+    "minimumOSVersion": "15.0",
+    "supportedDeviceFamilies": [
+      "iPhone",
+      "iPad"
+    ],
+    "metalLibraryPresent": true,
+    "executablePermission": "0755",
+    "nativeTests": "not run; package-only workflow",
+    "simulatorTests": "skipped; package-only workflow",
+    "physicalIPadGPUValidation": "pending user test of build 24",
+    "visualReview": "NW source atlas reviewed; no runtime animation or lighting image review",
+    "spriteKitShaderRuntime": "pending device startup; Release archive does not execute SKShader source strings",
+    "geometryModel": "CPU arithmetic using NW rig parameters: 3 heroes x 128 phases x 128 triangles, minimum signed-area ratio 0.239741; not execution of Swift or SpriteKit"
+  },
+  "rendering": {
+    "presentation": "one MTKView; native depth and terrain, backdrop presentation and SKRenderer foreground in the same command buffer",
+    "maximumInFlightFrames": 1,
+    "shadowMap": [
+      2048,
+      2048
+    ],
+    "terrainResolution": "one pixel per UIKit point; target 30Hz",
+    "foregroundResolution": "native Retina; target 60Hz",
+    "sceneCallbackSubmission": false,
+    "gaitTestEnvironment": "Three heroes and their real-time shadows on grass; no separate SKView or resource reload"
+  },
+  "diagnostics": {
+    "format": 2,
+    "nativeStages": [
+      "clear",
+      "terrain without shadows",
+      "all prop and idle hero depth",
+      "PCF shadow receiver"
+    ],
+    "foregroundStages": [
+      "plain sprites",
+      "vegetation shader",
+      "back mist",
+      "sun shafts",
+      "front mist",
+      "full foreground"
+    ],
+    "foregroundSamplesPerStage": 2,
+    "C00": "60 sequential full-composite offscreen frames using production encoding and shared depth/backdrop resources",
+    "C02": "actual single-MTKView map; completed frame count, GPU timing aggregates and failure frame/time context",
+    "commandErrorOptions": "encoderExecutionStatus",
+    "encoderStateNames": {
+      "2": "completed",
+      "4": "faulted"
+    },
+    "report": "Documents/MeadowGPUDiagnostic.json; copy from loading/failure page or help menu",
+    "previousReport": "Documents/MeadowGPUDiagnostic.previous.json",
+    "automaticSameProcessFallback": "disabled; preserve first observed GPU failure"
+  },
+  "evidence": "../docs/evidence/Build20-iPad13-8-summary.json",
+  "limitations": [
+    "Only the reported NW leg-region issue is targeted; remaining headings require device feedback through the new test mode.",
+    "Source atlas inspection and non-inverted mathematical meshes do not prove natural movement or complete foot locking.",
+    "Added regression source covers measured boot displacement, mesh area, directions/stepping and map restoration; these Swift tests were not executed in the package-only workflow.",
+    "Cloud workflow compiled, archived and packaged only; simulator and GPU test jobs were skipped.",
+    "The IPA is unsigned and must be re-signed with SideStore."
+  ],
+  "changes": {
+    "northwestLegRegion": {
+      "centerX": 0.445,
+      "transitionX": [
+        0.395,
+        0.495
+      ],
+      "sourceBootCentersP1ApproximateX": [
+        0.39,
+        0.505
+      ],
+      "scope": "NW direction for all three heroes; other seven directions retain their prior rig parameters"
+    },
+    "rendering": "Full authored texture frames and a continuous hip-to-sole warp; SpriteKit and native shadow caster share HeroPose.",
+    "gaitTest": {
+      "entry": "Top map button: 步态测试; defaults to 左上 ↖",
+      "heroes": "P1, P2 and P3 simultaneously",
+      "directions": 8,
+      "normalSpeed": 42,
+      "slowSpeed": 10.5,
+      "pathLength": 144,
+      "loop": "Return to the start and continue the selected heading; no reversal",
+      "controls": [
+        "direction selection",
+        "pause/resume",
+        "normal/quarter speed",
+        "single step",
+        "restart",
+        "return to map"
+      ],
+      "stepCycleFraction": 0.125,
+      "mapRestore": "Preserve map actor simulation, camera and prior visibility/playback state",
+      "renderer": "Same MTKView, resources, WalkCycle frame mapping, HeroPose and Metal caster; hide props/roads/atmosphere and omit static casters during the test"
+    },
+    "lighting": "Retain build 23 screen-space wide moving sunlight on the map."
+  }
+}

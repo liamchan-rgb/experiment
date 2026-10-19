@@ -1,0 +1,103 @@
+{
+  "date": "2026-10-18",
+  "artApproval": null,
+  "scope": "down head customization prototype; full wardrobe and other neutral directions pending",
+  "assetPackages": [
+    {
+      "id": "p1-face-amber-v1",
+      "part": "face",
+      "slots": [
+        "face.eyes",
+        "face.brows",
+        "face.nose",
+        "face.mouth"
+      ],
+      "sourceSHA256": "bd3d931e1be1036c50227f447b770463dad92e4fccad964484e0daa5a148c803",
+      "runtimeDependencies": []
+    },
+    {
+      "id": "p1-face-blue-v1",
+      "part": "face",
+      "slots": [
+        "face.eyes",
+        "face.brows",
+        "face.nose",
+        "face.mouth"
+      ],
+      "sourceSHA256": "9e9d328b68222b174749ee30137a691f159abf36b402866de2dac305091e5c86",
+      "runtimeDependencies": []
+    },
+    {
+      "id": "p1-hair-chestnut-v1",
+      "part": "hair",
+      "slots": [
+        "hair.front"
+      ],
+      "sourceSHA256": "066d2a621bf89a084715066085fd4dd1b1cf3f4bd36b6c1fa0dd8be6ac463af2",
+      "runtimeDependencies": []
+    },
+    {
+      "id": "p1-hair-silver-v1",
+      "part": "hair",
+      "slots": [
+        "hair.front"
+      ],
+      "sourceSHA256": "ac1714f6192069b66789c1c05e779abaf820ba2d3ea2a0dbddc894f3c28a81f2",
+      "runtimeDependencies": []
+    },
+    {
+      "id": "p1-hair-teal-crop-v1",
+      "part": "hair",
+      "slots": [
+        "hair.front"
+      ],
+      "sourceSHA256": "094545e4d6171bcbf7c82b840032aaa71ca13d798b5bfe5f9ce3043ae40d33e7",
+      "runtimeDependencies": []
+    }
+  ],
+  "hairCount": 3,
+  "faceCount": 2,
+  "combinations": 6,
+  "composedPoses": 54,
+  "actualPackageContractPassed": 5,
+  "compositorIntegrationTestsPassed": 19,
+  "existingContractTestsPassed": 19,
+  "drawingSpacesTested": [
+    "pose-map",
+    "head-local",
+    "socket"
+  ],
+  "realArtDrawingSpaces": [
+    "head-local",
+    "pose-map base"
+  ],
+  "realOutfitAndWeaponArtTested": false,
+  "headFeaturesWithinFixedRegions": true,
+  "hairEyeWindowsClear": true,
+  "bodyLayersIdenticalUnderEveryAppearance": true,
+  "hairLayerIdenticalRegardlessOfFace": true,
+  "faceLayersIdenticalRegardlessOfHair": true,
+  "belowHeadCompositeMatchesApprovedBody": true,
+  "baseOnlyMatchesNineApprovedFrames": true,
+  "ORAReassemblyAndSVGStructurePassed": 5,
+  "sourceArtGenerationsPreserved": 11,
+  "normalGIF": {
+    "frames": 8,
+    "frameMs": 120,
+    "cycleMs": 960,
+    "infiniteLoop": true,
+    "pixelsAndOrderMatchAllSixCombinations": true
+  },
+  "newSlowPreviewsGenerated": 0,
+  "previousTrackedPNGAndGIFUnchanged": 644,
+  "thirdHairProof": "integration-after-third.json",
+  "frozenEngineContractBodyAndInitialAssetFilesUnchanged": 114,
+  "initialCombinationFilesUnchanged": 44,
+  "thirdResourceArtApproval": null,
+  "nativeAppBuildOrDeviceTests": "not run",
+  "standalonePartArtworkInspected": "hair-only and floating features, no skin/head/ear backing; human visual review, not automated semantic certification",
+  "independentReexportByteExactExistingFiles": 137,
+  "selectedAppearanceWorksWithOnlyItsCatalogEntries": true,
+  "standaloneExtractedBundleTestsPassed": 19,
+  "standaloneExtractedBundleCLIPosesPixelExact": 9
+}

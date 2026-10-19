@@ -1,0 +1,28 @@
+{
+  "date": "2026-10-18",
+  "revision": "r6",
+  "artApproval": null,
+  "standalone05SourcePreserved": true,
+  "inheritedRawAndPackedPosesByteExact": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    6,
+    7,
+    8
+  ],
+  "distinctWalkingPoses": 8,
+  "sourceMarginsAndPackedClipping": "passed by packer and check",
+  "stripAndNumberedPreviewPixelsMatch": true,
+  "GIFOrderAndQuantizedPixelsMatch": true,
+  "durationsMs": {
+    "normal": 120,
+    "slow": 480
+  },
+  "infiniteLoop": true,
+  "reexportByteExactFiles": 15,
+  "protectedArtworkUnchanged": 307,
+  "applicationTests": "not run; review composition only"
+}

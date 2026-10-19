@@ -1,0 +1,10 @@
+{
+  "stage": "single down idle pose study",
+  "sourceCanvas": [1254, 1254],
+  "sourceToWorld": [0.16, 0, 0, 0.16, 25, 38],
+  "worldSocket": [102, 170],
+  "worldCanvas": [256, 256],
+  "overlayRect": [89, 150, 112, 208],
+  "overlayOrigin": [89, 150],
+  "note": "The image tool changed unrelated pixels elsewhere in the full guide. The review script applies only this fixed local crop to the exact no-grip base; no alpha-bounds fitting is used. The overlay contains the completed lower arm, hand and sword together for pose review, not independently swappable production parts."
+}

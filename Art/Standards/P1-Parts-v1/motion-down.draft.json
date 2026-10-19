@@ -1,0 +1,1053 @@
+{
+  "schemaVersion": "1.0.0",
+  "rig": "p1-chibi-v1",
+  "status": "draft-not-loadable-as-production-motion",
+  "source": "neutral down walk r1 with approved down gait phase references",
+  "bodyApproval": "Art/Templates/P1-Neutral/down/r1/approval.json",
+  "neutralBasePath": "Art/Templates/P1-Neutral/down/walk-r1",
+  "missing": [
+    "user approval of neutral walking artwork",
+    "other seven neutral body directions",
+    "full appearance layer order and weapon socket-angle review",
+    "independent appearance and generic compositor integration"
+  ],
+  "transformConvention": "[a,b,c,d,tx,ty] maps x to a*x+c*y+tx and y to b*x+d*y+ty",
+  "frames": [
+    {
+      "direction": "down",
+      "clip": "idle",
+      "frame": 0,
+      "facing": [
+        0,
+        1
+      ],
+      "headToCanvas": [
+        1,
+        0,
+        0,
+        1,
+        76,
+        61
+      ],
+      "bodyTranslation": [
+        0,
+        0
+      ],
+      "drawOrder": [
+        "body.leg.right",
+        "body.leg.left",
+        "body.arm.right",
+        "body.arm.left",
+        "body.torso",
+        "head.base",
+        "body.hand.right",
+        "body.hand.left"
+      ],
+      "joints": {
+        "shoulderRight": [
+          110,
+          140
+        ],
+        "shoulderLeft": [
+          140,
+          140
+        ],
+        "elbowRight": [
+          104,
+          153
+        ],
+        "elbowLeft": [
+          146,
+          153
+        ],
+        "hipRight": [
+          117,
+          176
+        ],
+        "hipLeft": [
+          135,
+          176
+        ],
+        "kneeRight": [
+          118,
+          188
+        ],
+        "kneeLeft": [
+          134,
+          188
+        ],
+        "ankleRight": [
+          116,
+          205
+        ],
+        "ankleLeft": [
+          134,
+          205
+        ],
+        "neck": [
+          124,
+          133
+        ]
+      },
+      "sockets": {
+        "grip.right": {
+          "position": [
+            102,
+            170
+          ],
+          "angleDeg": 0
+        },
+        "grip.left": {
+          "position": [
+            148,
+            170
+          ],
+          "angleDeg": 0
+        }
+      },
+      "soleMarkers": {
+        "right": [
+          117,
+          214
+        ],
+        "left": [
+          134,
+          214
+        ]
+      },
+      "support": "both",
+      "artApproval": "idle r1 approval.json",
+      "sourceSHA256": "80c042f1626923b71fd0fbe6be3e81804b359a0c5df7eeb91bc1199abf4d374b",
+      "neutralPoseSHA256": "a74c005b6b115928f953ccba588fb9712113d6eead7fc3222624fa116c54fc8d",
+      "annotationStatus": "calibrated on neutral down walk r1; walking artwork and appearance occlusion pending review"
+    },
+    {
+      "direction": "down",
+      "clip": "walk",
+      "frame": 1,
+      "facing": [
+        0,
+        1
+      ],
+      "headToCanvas": [
+        1,
+        0,
+        0,
+        1,
+        76,
+        61
+      ],
+      "bodyTranslation": [
+        0,
+        0
+      ],
+      "drawOrder": [
+        "body.leg.right",
+        "body.leg.left",
+        "body.arm.right",
+        "body.arm.left",
+        "body.torso",
+        "head.base",
+        "body.hand.right",
+        "body.hand.left"
+      ],
+      "joints": {
+        "neck": [
+          124,
+          133
+        ],
+        "shoulderRight": [
+          110,
+          140
+        ],
+        "shoulderLeft": [
+          140,
+          140
+        ],
+        "hipRight": [
+          117,
+          176
+        ],
+        "hipLeft": [
+          135,
+          176
+        ],
+        "elbowRight": [
+          104,
+          144
+        ],
+        "elbowLeft": [
+          146,
+          150
+        ],
+        "wristRight": [
+          100,
+          152
+        ],
+        "wristLeft": [
+          148,
+          163
+        ],
+        "kneeRight": [
+          117,
+          189
+        ],
+        "kneeLeft": [
+          134,
+          186
+        ],
+        "ankleRight": [
+          117,
+          204
+        ],
+        "ankleLeft": [
+          134,
+          196
+        ]
+      },
+      "sockets": {
+        "grip.right": {
+          "position": [
+            100,
+            156
+          ],
+          "angleDeg": 0
+        },
+        "grip.left": {
+          "position": [
+            150,
+            168
+          ],
+          "angleDeg": 0
+        }
+      },
+      "soleMarkers": {
+        "right": [
+          118,
+          215
+        ],
+        "left": [
+          134,
+          205
+        ]
+      },
+      "support": "right",
+      "artApproval": null,
+      "sourceSHA256": "36d650a3621e586d9bba1d945ec694328fcf0df18ba6613b1032602512d72e88",
+      "neutralPoseSHA256": "f80ede7385ba37588d0441a2a64b8ce30ed09c8632e828e2ef711d56d4be2046",
+      "annotationStatus": "calibrated on neutral down walk r1; walking artwork and appearance occlusion pending review"
+    },
+    {
+      "direction": "down",
+      "clip": "walk",
+      "frame": 2,
+      "facing": [
+        0,
+        1
+      ],
+      "headToCanvas": [
+        1,
+        0,
+        0,
+        1,
+        76,
+        63
+      ],
+      "bodyTranslation": [
+        0,
+        2
+      ],
+      "drawOrder": [
+        "body.leg.right",
+        "body.leg.left",
+        "body.arm.right",
+        "body.arm.left",
+        "body.torso",
+        "head.base",
+        "body.hand.right",
+        "body.hand.left"
+      ],
+      "joints": {
+        "neck": [
+          124,
+          135
+        ],
+        "shoulderRight": [
+          110,
+          142
+        ],
+        "shoulderLeft": [
+          140,
+          142
+        ],
+        "hipRight": [
+          117,
+          178
+        ],
+        "hipLeft": [
+          135,
+          178
+        ],
+        "elbowRight": [
+          104,
+          142
+        ],
+        "elbowLeft": [
+          147,
+          149
+        ],
+        "wristRight": [
+          100,
+          149
+        ],
+        "wristLeft": [
+          149,
+          162
+        ],
+        "kneeRight": [
+          117,
+          188
+        ],
+        "kneeLeft": [
+          134,
+          184
+        ],
+        "ankleRight": [
+          116,
+          204
+        ],
+        "ankleLeft": [
+          133,
+          193
+        ]
+      },
+      "sockets": {
+        "grip.right": {
+          "position": [
+            100,
+            153
+          ],
+          "angleDeg": 0
+        },
+        "grip.left": {
+          "position": [
+            150,
+            167
+          ],
+          "angleDeg": 0
+        }
+      },
+      "soleMarkers": {
+        "right": [
+          118,
+          215
+        ],
+        "left": [
+          133,
+          201
+        ]
+      },
+      "support": "right",
+      "artApproval": null,
+      "sourceSHA256": "08451a6d548ab02982a9432c802827af750d347a364222c34ec8fe61d382b402",
+      "neutralPoseSHA256": "fcab5c5b509041159984ba0a293e4dfe377cb5e19da38ac0e5f16d1dad2eb3f6",
+      "annotationStatus": "calibrated on neutral down walk r1; walking artwork and appearance occlusion pending review"
+    },
+    {
+      "direction": "down",
+      "clip": "walk",
+      "frame": 3,
+      "facing": [
+        0,
+        1
+      ],
+      "headToCanvas": [
+        1,
+        0,
+        0,
+        1,
+        76,
+        60
+      ],
+      "bodyTranslation": [
+        0,
+        -1
+      ],
+      "drawOrder": [
+        "body.leg.right",
+        "body.leg.left",
+        "body.arm.right",
+        "body.arm.left",
+        "body.torso",
+        "head.base",
+        "body.hand.right",
+        "body.hand.left"
+      ],
+      "joints": {
+        "neck": [
+          124,
+          132
+        ],
+        "shoulderRight": [
+          110,
+          139
+        ],
+        "shoulderLeft": [
+          140,
+          139
+        ],
+        "hipRight": [
+          117,
+          175
+        ],
+        "hipLeft": [
+          135,
+          175
+        ],
+        "elbowRight": [
+          104,
+          152
+        ],
+        "elbowLeft": [
+          146,
+          151
+        ],
+        "wristRight": [
+          101,
+          166
+        ],
+        "wristLeft": [
+          149,
+          166
+        ],
+        "kneeRight": [
+          118,
+          188
+        ],
+        "kneeLeft": [
+          133,
+          185
+        ],
+        "ankleRight": [
+          118,
+          201
+        ],
+        "ankleLeft": [
+          128,
+          194
+        ]
+      },
+      "sockets": {
+        "grip.right": {
+          "position": [
+            101,
+            170
+          ],
+          "angleDeg": 0
+        },
+        "grip.left": {
+          "position": [
+            150,
+            169
+          ],
+          "angleDeg": 0
+        }
+      },
+      "soleMarkers": {
+        "right": [
+          118,
+          211
+        ],
+        "left": [
+          128,
+          202
+        ]
+      },
+      "support": "right",
+      "artApproval": null,
+      "sourceSHA256": "9c430e686520275762c32de0243665538087c225c890efc5ef906d269a88bfcb",
+      "neutralPoseSHA256": "3b603bfbe41cc16aeaca5ba4599e82ef0c2f54c12dfd0dad96c2cb8e8a24c3a5",
+      "annotationStatus": "calibrated on neutral down walk r1; walking artwork and appearance occlusion pending review"
+    },
+    {
+      "direction": "down",
+      "clip": "walk",
+      "frame": 4,
+      "facing": [
+        0,
+        1
+      ],
+      "headToCanvas": [
+        1,
+        0,
+        0,
+        1,
+        76,
+        59
+      ],
+      "bodyTranslation": [
+        0,
+        -2
+      ],
+      "drawOrder": [
+        "body.leg.right",
+        "body.leg.left",
+        "body.arm.right",
+        "body.arm.left",
+        "body.torso",
+        "head.base",
+        "body.hand.right",
+        "body.hand.left"
+      ],
+      "joints": {
+        "neck": [
+          124,
+          131
+        ],
+        "shoulderRight": [
+          110,
+          138
+        ],
+        "shoulderLeft": [
+          140,
+          138
+        ],
+        "hipRight": [
+          117,
+          174
+        ],
+        "hipLeft": [
+          135,
+          174
+        ],
+        "elbowRight": [
+          105,
+          151
+        ],
+        "elbowLeft": [
+          145,
+          142
+        ],
+        "wristRight": [
+          101,
+          162
+        ],
+        "wristLeft": [
+          147,
+          150
+        ],
+        "kneeRight": [
+          117,
+          185
+        ],
+        "kneeLeft": [
+          134,
+          188
+        ],
+        "ankleRight": [
+          117,
+          195
+        ],
+        "ankleLeft": [
+          133,
+          205
+        ]
+      },
+      "sockets": {
+        "grip.right": {
+          "position": [
+            101,
+            168
+          ],
+          "angleDeg": 0
+        },
+        "grip.left": {
+          "position": [
+            147,
+            154
+          ],
+          "angleDeg": 0
+        }
+      },
+      "soleMarkers": {
+        "right": [
+          117,
+          203
+        ],
+        "left": [
+          133,
+          216
+        ]
+      },
+      "support": "right",
+      "artApproval": null,
+      "sourceSHA256": "7bb55796e8fc3a9f0de109e5216399aa395c619f7e015505bf4d00dbddb3e6c1",
+      "neutralPoseSHA256": "75c7ecc65bc33af86e9c109a7c82690fb1974fab6d5aed89a73b7c543204cbfb",
+      "annotationStatus": "calibrated on neutral down walk r1; walking artwork and appearance occlusion pending review"
+    },
+    {
+      "direction": "down",
+      "clip": "walk",
+      "frame": 5,
+      "facing": [
+        0,
+        1
+      ],
+      "headToCanvas": [
+        1,
+        0,
+        0,
+        1,
+        76,
+        61
+      ],
+      "bodyTranslation": [
+        0,
+        0
+      ],
+      "drawOrder": [
+        "body.leg.right",
+        "body.leg.left",
+        "body.arm.right",
+        "body.arm.left",
+        "body.torso",
+        "head.base",
+        "body.hand.right",
+        "body.hand.left"
+      ],
+      "joints": {
+        "neck": [
+          124,
+          133
+        ],
+        "shoulderRight": [
+          110,
+          140
+        ],
+        "shoulderLeft": [
+          140,
+          140
+        ],
+        "hipRight": [
+          117,
+          176
+        ],
+        "hipLeft": [
+          135,
+          176
+        ],
+        "elbowRight": [
+          104,
+          152
+        ],
+        "elbowLeft": [
+          145,
+          142
+        ],
+        "wristRight": [
+          101,
+          166
+        ],
+        "wristLeft": [
+          147,
+          150
+        ],
+        "kneeRight": [
+          117,
+          187
+        ],
+        "kneeLeft": [
+          134,
+          189
+        ],
+        "ankleRight": [
+          117,
+          197
+        ],
+        "ankleLeft": [
+          133,
+          205
+        ]
+      },
+      "sockets": {
+        "grip.right": {
+          "position": [
+            101,
+            171
+          ],
+          "angleDeg": 0
+        },
+        "grip.left": {
+          "position": [
+            147,
+            155
+          ],
+          "angleDeg": 0
+        }
+      },
+      "soleMarkers": {
+        "right": [
+          117,
+          206
+        ],
+        "left": [
+          133,
+          216
+        ]
+      },
+      "support": "left",
+      "artApproval": null,
+      "sourceSHA256": "73b14ff65b08be334e50a0ebd60f31a5a3e7ca47e6b6ff99c3a4a60dbab2d2d7",
+      "neutralPoseSHA256": "0ec2f33e77f8bbe92455b5bf084c24d0fe416b00a372c47061a62091900e922d",
+      "annotationStatus": "calibrated on neutral down walk r1; walking artwork and appearance occlusion pending review"
+    },
+    {
+      "direction": "down",
+      "clip": "walk",
+      "frame": 6,
+      "facing": [
+        0,
+        1
+      ],
+      "headToCanvas": [
+        1,
+        0,
+        0,
+        1,
+        76,
+        63
+      ],
+      "bodyTranslation": [
+        0,
+        2
+      ],
+      "drawOrder": [
+        "body.leg.right",
+        "body.leg.left",
+        "body.arm.right",
+        "body.arm.left",
+        "body.torso",
+        "head.base",
+        "body.hand.right",
+        "body.hand.left"
+      ],
+      "joints": {
+        "neck": [
+          124,
+          135
+        ],
+        "shoulderRight": [
+          110,
+          142
+        ],
+        "shoulderLeft": [
+          140,
+          142
+        ],
+        "hipRight": [
+          117,
+          178
+        ],
+        "hipLeft": [
+          135,
+          178
+        ],
+        "elbowRight": [
+          104,
+          151
+        ],
+        "elbowLeft": [
+          145,
+          144
+        ],
+        "wristRight": [
+          100,
+          161
+        ],
+        "wristLeft": [
+          147,
+          151
+        ],
+        "kneeRight": [
+          117,
+          184
+        ],
+        "kneeLeft": [
+          134,
+          189
+        ],
+        "ankleRight": [
+          117,
+          194
+        ],
+        "ankleLeft": [
+          134,
+          204
+        ]
+      },
+      "sockets": {
+        "grip.right": {
+          "position": [
+            100,
+            166
+          ],
+          "angleDeg": 0
+        },
+        "grip.left": {
+          "position": [
+            147,
+            156
+          ],
+          "angleDeg": 0
+        }
+      },
+      "soleMarkers": {
+        "right": [
+          117,
+          204
+        ],
+        "left": [
+          134,
+          213
+        ]
+      },
+      "support": "left",
+      "artApproval": null,
+      "sourceSHA256": "bd0509de58954a41f74f5076c94f414ae74f4c68a5f1146571bf8d037006fdec",
+      "neutralPoseSHA256": "f67ef155780e4ede883ac83090b14fe860628da70317ba1ea36643b0cb832a2c",
+      "annotationStatus": "calibrated on neutral down walk r1; walking artwork and appearance occlusion pending review"
+    },
+    {
+      "direction": "down",
+      "clip": "walk",
+      "frame": 7,
+      "facing": [
+        0,
+        1
+      ],
+      "headToCanvas": [
+        1,
+        0,
+        0,
+        1,
+        76,
+        60
+      ],
+      "bodyTranslation": [
+        0,
+        -1
+      ],
+      "drawOrder": [
+        "body.leg.left",
+        "body.leg.right",
+        "body.arm.right",
+        "body.arm.left",
+        "body.torso",
+        "head.base",
+        "body.hand.right",
+        "body.hand.left"
+      ],
+      "joints": {
+        "neck": [
+          124,
+          132
+        ],
+        "shoulderRight": [
+          110,
+          139
+        ],
+        "shoulderLeft": [
+          140,
+          139
+        ],
+        "hipRight": [
+          117,
+          175
+        ],
+        "hipLeft": [
+          135,
+          175
+        ],
+        "elbowRight": [
+          103,
+          150
+        ],
+        "elbowLeft": [
+          146,
+          149
+        ],
+        "wristRight": [
+          107,
+          157
+        ],
+        "wristLeft": [
+          148,
+          161
+        ],
+        "kneeRight": [
+          119,
+          185
+        ],
+        "kneeLeft": [
+          134,
+          188
+        ],
+        "ankleRight": [
+          123,
+          193
+        ],
+        "ankleLeft": [
+          134,
+          201
+        ]
+      },
+      "sockets": {
+        "grip.right": {
+          "position": [
+            108,
+            162
+          ],
+          "angleDeg": 0
+        },
+        "grip.left": {
+          "position": [
+            149,
+            166
+          ],
+          "angleDeg": 0
+        }
+      },
+      "soleMarkers": {
+        "right": [
+          123,
+          201
+        ],
+        "left": [
+          134,
+          211
+        ]
+      },
+      "support": "left",
+      "artApproval": null,
+      "sourceSHA256": "8bbeb7da0f91e108e010cc69241f64bdd254ded82f6097f318704262ff196033",
+      "neutralPoseSHA256": "4b3a6e6bd98954d9007ef4443d20e8f3fb78ec62bf3b8cb8b22d7e2df4aefe9d",
+      "annotationStatus": "calibrated on neutral down walk r1; walking artwork and appearance occlusion pending review"
+    },
+    {
+      "direction": "down",
+      "clip": "walk",
+      "frame": 8,
+      "facing": [
+        0,
+        1
+      ],
+      "headToCanvas": [
+        1,
+        0,
+        0,
+        1,
+        76,
+        59
+      ],
+      "bodyTranslation": [
+        0,
+        -2
+      ],
+      "drawOrder": [
+        "body.leg.right",
+        "body.leg.left",
+        "body.arm.right",
+        "body.arm.left",
+        "body.torso",
+        "head.base",
+        "body.hand.right",
+        "body.hand.left"
+      ],
+      "joints": {
+        "neck": [
+          124,
+          131
+        ],
+        "shoulderRight": [
+          110,
+          138
+        ],
+        "shoulderLeft": [
+          140,
+          138
+        ],
+        "hipRight": [
+          117,
+          174
+        ],
+        "hipLeft": [
+          135,
+          174
+        ],
+        "elbowRight": [
+          104,
+          141
+        ],
+        "elbowLeft": [
+          147,
+          151
+        ],
+        "wristRight": [
+          100,
+          148
+        ],
+        "wristLeft": [
+          149,
+          163
+        ],
+        "kneeRight": [
+          117,
+          188
+        ],
+        "kneeLeft": [
+          134,
+          185
+        ],
+        "ankleRight": [
+          117,
+          204
+        ],
+        "ankleLeft": [
+          134,
+          194
+        ]
+      },
+      "sockets": {
+        "grip.right": {
+          "position": [
+            100,
+            153
+          ],
+          "angleDeg": 0
+        },
+        "grip.left": {
+          "position": [
+            150,
+            168
+          ],
+          "angleDeg": 0
+        }
+      },
+      "soleMarkers": {
+        "right": [
+          117,
+          214
+        ],
+        "left": [
+          134,
+          203
+        ]
+      },
+      "support": "left",
+      "artApproval": null,
+      "sourceSHA256": "e45bba2d68093e150b677a6e912da372cfcbfd0d06d84183aecc4a068a3abff1",
+      "neutralPoseSHA256": "bfc009ee05efb938621c5e0a4fba537632a62eeeac8079227e17682f88e7fdca",
+      "annotationStatus": "calibrated on neutral down walk r1; walking artwork and appearance occlusion pending review"
+    }
+  ]
+}

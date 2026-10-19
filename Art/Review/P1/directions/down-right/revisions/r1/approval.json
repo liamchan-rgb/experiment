@@ -1,0 +1,15 @@
+{
+  "date": "2026-10-18",
+  "reviewer": "user",
+  "statement": "继续下一组的",
+  "direction": "down-right",
+  "revision": "r1",
+  "scope": "one redrawn idle and 8 key poses of the down-right-direction cycle shown for review",
+  "status": "approved",
+  "artifacts": {
+    "review-2x.png": "c432f401dc9d0f582d4f5a4a04891f64a7bfa4e4ab74990bde4bc93b996ef747",
+    "strip.png": "f1e8f8f77ace3e5e779efe0655f011393bf42b24dc4c5552eefe1835a5dacb94",
+    "walk.gif": "63937ff7233b56db74913223617c446926c4c2c6425de6dee74154780ef4c2c0",
+    "walk-slow.gif": "c3a8805ceb24836f1ba28f551e6c4e31f29869b71f96355a035ec17f96aa521d"
+  }
+}

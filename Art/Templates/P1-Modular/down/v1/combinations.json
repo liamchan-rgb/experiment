@@ -1,0 +1,156 @@
+{
+  "combinations": [
+    {
+      "base": "p1-neutral-down-walk-r1",
+      "assets": [
+        "p1-hair-chestnut-v1",
+        "p1-face-blue-v1"
+      ],
+      "direction": "down",
+      "motionSHA256": "24270480b0206628e8528d644c8e491bff505965b258caa2d865992f248c10d3",
+      "assetManifestSHA256": {
+        "p1-neutral-down-walk-r1": "0ffe93b713abd772071b9c55a4733674094aa6c01993f644a7c613c1803f97e7",
+        "p1-hair-chestnut-v1": "8cb282d7b17d9026320c9b8ee7e2e62339dbb68adc18896a715fb0be806a91cd",
+        "p1-face-blue-v1": "44acc92dbdc081fc0678a3ca6131cb73cb28c48b506cf75f8c2c27d5ba8d3a86"
+      },
+      "frameSHA256": {
+        "00.png": "b78fb718cab60da5bf4970a1d2d06b8f913b504886f67fc5e6b3ab8e46bb849f",
+        "01.png": "7850bb9a8a51bfde1cb7320b1e8b30613c612a1d9a556cb9933f43e48232400a",
+        "02.png": "11145fd7a41e69e4560339de5c4f23dae4c47860dd42e02d11c68d3ff3dbd45b",
+        "03.png": "f35a1cd08de4726c8a38c16bdefcac6a83c48fdd95211644737c8939e073afa0",
+        "04.png": "3f66149a612118f771f672eef88f4e5a78255987f624dfa5828a7a95118de986",
+        "05.png": "2acbd7f740521d2c2fbc151368036edeb40cc23b40e3c412e0f46917d7e8ff9c",
+        "06.png": "692e22b0e4c3ad4f22d0e86ec8c38a1a65dca5815ef41f265286a6f6210b09c1",
+        "07.png": "c9106cd2d40ea236232e174ea4325876eef464398023fd60b4487c84139d9bbb",
+        "08.png": "ffa1af1411caad66154242c7cd64ddcf2cdcb7bce32462d65954c0f76a5ad2e7"
+      }
+    },
+    {
+      "base": "p1-neutral-down-walk-r1",
+      "assets": [
+        "p1-hair-silver-v1",
+        "p1-face-blue-v1"
+      ],
+      "direction": "down",
+      "motionSHA256": "24270480b0206628e8528d644c8e491bff505965b258caa2d865992f248c10d3",
+      "assetManifestSHA256": {
+        "p1-neutral-down-walk-r1": "0ffe93b713abd772071b9c55a4733674094aa6c01993f644a7c613c1803f97e7",
+        "p1-hair-silver-v1": "f712156c63c16ef1ef3aa77274ba6101c44ccc17d0771e983c5ffec5112b0df2",
+        "p1-face-blue-v1": "44acc92dbdc081fc0678a3ca6131cb73cb28c48b506cf75f8c2c27d5ba8d3a86"
+      },
+      "frameSHA256": {
+        "00.png": "59a17fb904468ca4eb78a6bcacc54dcf98abeb6a17f47725f59be5523ae0911f",
+        "01.png": "b5de992ef8b94642bacde43e09c6cc4cbfdf2caef2661cfefa9438d7a7726344",
+        "02.png": "1ab23ccced415f1efbf686f9a0114b7d1878555360b8dda0ea6ac4324fb72f50",
+        "03.png": "a33251da9be3393463a3e68ba742b5a1f5d1ab75900615be3af7d2e923039e6e",
+        "04.png": "6114f7f7104efaf2a3f3e2c1ae9ebb8838322ee195945b793e5fe52081a6fda8",
+        "05.png": "64c534ecc3a1735d9defa9b536991a2092945a27b30303fb67e0c5f8d6357f17",
+        "06.png": "4b679eb89f436fdadec7140db7981bbfb0276af982df7a03022e73c261a0f352",
+        "07.png": "d43398c5b3ce695e744ceeee642cffd8ee0a78b6998d821a12078154f6743620",
+        "08.png": "f8f927fdecf3930b031feb2a222274d4a2399c7cc0de0cc29e296d0f6af312dd"
+      }
+    },
+    {
+      "base": "p1-neutral-down-walk-r1",
+      "assets": [
+        "p1-hair-teal-crop-v1",
+        "p1-face-blue-v1"
+      ],
+      "direction": "down",
+      "motionSHA256": "24270480b0206628e8528d644c8e491bff505965b258caa2d865992f248c10d3",
+      "assetManifestSHA256": {
+        "p1-neutral-down-walk-r1": "0ffe93b713abd772071b9c55a4733674094aa6c01993f644a7c613c1803f97e7",
+        "p1-hair-teal-crop-v1": "051240fda008c51945c40b5ceff78e6891ce793d65e2a95e379b4870f2a1a05c",
+        "p1-face-blue-v1": "44acc92dbdc081fc0678a3ca6131cb73cb28c48b506cf75f8c2c27d5ba8d3a86"
+      },
+      "frameSHA256": {
+        "00.png": "9b79904def17e0e28cadb3c423fa73359ab387368982310267bcac39c6b96026",
+        "01.png": "091ddc3e4b03c7f555b91262443e8b1eae897bd3e422f2881fa3327da977d3f0",
+        "02.png": "a8e8ecb4d016ed9cf49d60a3e6f4914f3b1bc61cf58ef6fa33d758ded1e331da",
+        "03.png": "e1ca6f3f4c22756a160969f78f98df4989242ae3c185e06ab6350d9e49e4aeee",
+        "04.png": "d8bc40b4d8e7e2367d8197f6cead8dd3364debca0b3377ce7396c48c8350c627",
+        "05.png": "a6ce8c5201c9cee8609f1dc1753e829bd330482222574d8f54a0b874ea4963db",
+        "06.png": "a0be3b021e51b5c2634bc47d91e991a859489610b70508191d2fb9efa2081f73",
+        "07.png": "f34e4fe09a27b6963bb52f752eadcfc0c4e65df3519aad10e53119a6a99ab892",
+        "08.png": "5b9b00abb371c72aa2848b6fe11ac8cece0de6263dacff22b2b436488b4b911f"
+      }
+    },
+    {
+      "base": "p1-neutral-down-walk-r1",
+      "assets": [
+        "p1-hair-chestnut-v1",
+        "p1-face-amber-v1"
+      ],
+      "direction": "down",
+      "motionSHA256": "24270480b0206628e8528d644c8e491bff505965b258caa2d865992f248c10d3",
+      "assetManifestSHA256": {
+        "p1-neutral-down-walk-r1": "0ffe93b713abd772071b9c55a4733674094aa6c01993f644a7c613c1803f97e7",
+        "p1-hair-chestnut-v1": "8cb282d7b17d9026320c9b8ee7e2e62339dbb68adc18896a715fb0be806a91cd",
+        "p1-face-amber-v1": "6594c9cf4c0e1674c143d68ca61f3b1d631b7207d7aa60e7bbd33340bd12e319"
+      },
+      "frameSHA256": {
+        "00.png": "7f005a92c6a72a15dc6adf586e4eb07f606c191ef69754e83dc4a6def896f792",
+        "01.png": "9ffaa03c074fed62d7dffa66b5e68e5b79f0a12af5cb6ed78f32940a11cf3bcd",
+        "02.png": "220e55d44ac2ecd90fd297112b9b6da02c4ded842d702a4a555f82970a4db2be",
+        "03.png": "1760082952edd9f1d35b9043824db7e6d48c158e24473737610534cf09ac5f85",
+        "04.png": "26a842c9dc8fb28538a1b8434640e9ab59708994ac89fad7809020f4b5a20d8b",
+        "05.png": "23b31d3ade905a8511bbe665001a651b4fa62eed4ab5449b75e63da7c5280a4f",
+        "06.png": "a861a58fb4edf7e306277acea11c2c960ce491fb01952a5a8e5fbd509417b312",
+        "07.png": "eda12913a7f466cc2f9bb5d08add143d08eff7ac3cce1f04f4e61a8f4a71cc2a",
+        "08.png": "a5c853c522b11027c36fad56c3eeede3bd01b63fc186f043f3dd8846a5e8eb3f"
+      }
+    },
+    {
+      "base": "p1-neutral-down-walk-r1",
+      "assets": [
+        "p1-hair-silver-v1",
+        "p1-face-amber-v1"
+      ],
+      "direction": "down",
+      "motionSHA256": "24270480b0206628e8528d644c8e491bff505965b258caa2d865992f248c10d3",
+      "assetManifestSHA256": {
+        "p1-neutral-down-walk-r1": "0ffe93b713abd772071b9c55a4733674094aa6c01993f644a7c613c1803f97e7",
+        "p1-hair-silver-v1": "f712156c63c16ef1ef3aa77274ba6101c44ccc17d0771e983c5ffec5112b0df2",
+        "p1-face-amber-v1": "6594c9cf4c0e1674c143d68ca61f3b1d631b7207d7aa60e7bbd33340bd12e319"
+      },
+      "frameSHA256": {
+        "00.png": "8f1a1be4ab5ffc2956ed0878cafae2ce90705b2e11b2b0a2dd2f7e7fbb22644e",
+        "01.png": "b5000d9e3c2a93a5a34a0a4c69747c1c55b94df9faf0cfdda3511e7af865af76",
+        "02.png": "e37740c95fede9cfa3f6ec086acb2eea39ce585100e6e5dc978a5f9147ca664f",
+        "03.png": "0197d18137736f15666ba749aaaa096ff35ea0666358e988e2d1af10922e7a55",
+        "04.png": "8ec79f76c457e52a9e92f040674ce67378b84353a3ec5a97e11d86eacbc8e16c",
+        "05.png": "87638a56af48cbc70500466549ee2090357a0ec21b6161acb097c759e7f62e1f",
+        "06.png": "2505e233782284492e7ab2e404b15d373eaaa40e1aa42ef7398e12b1b5f32a5a",
+        "07.png": "c3f73e0e8c2d3bb98f08d13acb2bf46ebfc46589bd77f507c75419408071db44",
+        "08.png": "e0e491b6486dbca12c2635b38cb8f80e2f302205da4496c8ba9fa511f7c7e73c"
+      }
+    },
+    {
+      "base": "p1-neutral-down-walk-r1",
+      "assets": [
+        "p1-hair-teal-crop-v1",
+        "p1-face-amber-v1"
+      ],
+      "direction": "down",
+      "motionSHA256": "24270480b0206628e8528d644c8e491bff505965b258caa2d865992f248c10d3",
+      "assetManifestSHA256": {
+        "p1-neutral-down-walk-r1": "0ffe93b713abd772071b9c55a4733674094aa6c01993f644a7c613c1803f97e7",
+        "p1-hair-teal-crop-v1": "051240fda008c51945c40b5ceff78e6891ce793d65e2a95e379b4870f2a1a05c",
+        "p1-face-amber-v1": "6594c9cf4c0e1674c143d68ca61f3b1d631b7207d7aa60e7bbd33340bd12e319"
+      },
+      "frameSHA256": {
+        "00.png": "6857cb219f7686a9bef21e10dd2d72d1cdff01ca51548b90df77270e6444dcbb",
+        "01.png": "e54d3d9deb67ca08f0b15e70abfcd44c549794f285fa0e1f58a70450dab32bd7",
+        "02.png": "c6d35b547b0db4080c457b87d7a03ade0641710784eb3a41eb0c651a840efeed",
+        "03.png": "ae2c7d6556474dd15b3943fccc09ab52b2563bcf523ae2058af9ebb8960b368b",
+        "04.png": "7b8526ef4f17e99916213d51397b9e31819a782c31ba8375979a57375ba1ffcf",
+        "05.png": "c688ea601c450d14e5a81287f62b68c9f353887c53daf69a448bd165e53f82cf",
+        "06.png": "e41a7c2e8d72624f042fe110aaa2ad152983beb45d370cc0e4800bae627dd44d",
+        "07.png": "f377a7b4ea2806b6058846fae3db9b1ed58bc036d9cb003e37d812e919deb38e",
+        "08.png": "2d500f38a30c4b8c110766b99985741827d44443ff1a64fde508e173f21792cd"
+      }
+    }
+  ],
+  "frameMs": 120,
+  "slowPreviewGenerated": false
+}

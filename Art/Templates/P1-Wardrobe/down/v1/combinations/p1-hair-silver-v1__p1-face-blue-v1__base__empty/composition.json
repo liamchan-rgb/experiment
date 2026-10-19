@@ -1,0 +1,26 @@
+{
+  "folder": "combinations/p1-hair-silver-v1__p1-face-blue-v1__base__empty",
+  "base": "p1-neutral-down-walk-r2",
+  "assets": [
+    "p1-hair-silver-v1",
+    "p1-face-blue-v1"
+  ],
+  "direction": "down",
+  "motionSHA256": "cb0b4896eb90062b93a3e9768b5bf24be4a3ed794c1621188bf189cc9e802642",
+  "assetManifestSHA256": {
+    "p1-neutral-down-walk-r2": "42f3d3ca196b4f1d73f2a2972625f5c5ebd1b7a0d6e47e8b59298eed17eeb829",
+    "p1-hair-silver-v1": "f712156c63c16ef1ef3aa77274ba6101c44ccc17d0771e983c5ffec5112b0df2",
+    "p1-face-blue-v1": "44acc92dbdc081fc0678a3ca6131cb73cb28c48b506cf75f8c2c27d5ba8d3a86"
+  },
+  "frames": {
+    "00.png": "59a17fb904468ca4eb78a6bcacc54dcf98abeb6a17f47725f59be5523ae0911f",
+    "01.png": "b5de992ef8b94642bacde43e09c6cc4cbfdf2caef2661cfefa9438d7a7726344",
+    "02.png": "1ab23ccced415f1efbf686f9a0114b7d1878555360b8dda0ea6ac4324fb72f50",
+    "03.png": "a33251da9be3393463a3e68ba742b5a1f5d1ab75900615be3af7d2e923039e6e",
+    "04.png": "6114f7f7104efaf2a3f3e2c1ae9ebb8838322ee195945b793e5fe52081a6fda8",
+    "05.png": "64c534ecc3a1735d9defa9b536991a2092945a27b30303fb67e0c5f8d6357f17",
+    "06.png": "4b679eb89f436fdadec7140db7981bbfb0276af982df7a03022e73c261a0f352",
+    "07.png": "d43398c5b3ce695e744ceeee642cffd8ee0a78b6998d821a12078154f6743620",
+    "08.png": "f8f927fdecf3930b031feb2a222274d4a2399c7cc0de0cc29e296d0f6af312dd"
+  }
+}

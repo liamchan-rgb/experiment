@@ -1,0 +1,464 @@
+{
+  "base": "p1-neutral-down-walk-r3",
+  "count": 24,
+  "poses": 216,
+  "records": [
+    {
+      "assets": [
+        "p1-hair-chestnut-v1",
+        "p1-face-blue-v1"
+      ],
+      "poses": 9,
+      "commonHandSHA256": [
+        "bc93b76f0e398adfbeb831dc236d31feee8843e2d6210c96490dfa55ccae5117",
+        "7fa36036a7371e99bf4a18955c86316dc22bb0f5fa04f486bd08adc2e94668c9",
+        "2e0c50bf0e9dc70e06dc1a50a16c4c24550b2a7d246c79f596077ff9508d2146",
+        "54a4570460d622d4837e0435fe6343fa69ce11b928b0fd822ca342a8f8f68b02",
+        "70b802b865cdaad6df38515fb39e536e1c912b55bc4c76e1ec8db218c8c37d17",
+        "c7ca22c26dd50b182a2f458e9eb6189507c9eb8da2301b10455e66ccc5b2b948",
+        "76476c8aee612457b66636179d422411d4f3e768fa6ed9a3a76324ba70d7f4e8",
+        "1594f95ad9a7410e44a13ba41e3456043d9dc5894dd94f2d2edae8ac9bcc3b9a",
+        "2e0c50bf0e9dc70e06dc1a50a16c4c24550b2a7d246c79f596077ff9508d2146"
+      ]
+    },
+    {
+      "assets": [
+        "p1-hair-chestnut-v1",
+        "p1-face-blue-v1",
+        "p1-weapon-short-sword-v2"
+      ],
+      "poses": 9,
+      "commonHandSHA256": [
+        "bc93b76f0e398adfbeb831dc236d31feee8843e2d6210c96490dfa55ccae5117",
+        "7fa36036a7371e99bf4a18955c86316dc22bb0f5fa04f486bd08adc2e94668c9",
+        "2e0c50bf0e9dc70e06dc1a50a16c4c24550b2a7d246c79f596077ff9508d2146",
+        "54a4570460d622d4837e0435fe6343fa69ce11b928b0fd822ca342a8f8f68b02",
+        "70b802b865cdaad6df38515fb39e536e1c912b55bc4c76e1ec8db218c8c37d17",
+        "c7ca22c26dd50b182a2f458e9eb6189507c9eb8da2301b10455e66ccc5b2b948",
+        "76476c8aee612457b66636179d422411d4f3e768fa6ed9a3a76324ba70d7f4e8",
+        "1594f95ad9a7410e44a13ba41e3456043d9dc5894dd94f2d2edae8ac9bcc3b9a",
+        "2e0c50bf0e9dc70e06dc1a50a16c4c24550b2a7d246c79f596077ff9508d2146"
+      ]
+    },
+    {
+      "assets": [
+        "p1-hair-chestnut-v1",
+        "p1-face-blue-v1",
+        "p1-outfit-forester-v1"
+      ],
+      "poses": 9,
+      "commonHandSHA256": [
+        "bc93b76f0e398adfbeb831dc236d31feee8843e2d6210c96490dfa55ccae5117",
+        "7fa36036a7371e99bf4a18955c86316dc22bb0f5fa04f486bd08adc2e94668c9",
+        "2e0c50bf0e9dc70e06dc1a50a16c4c24550b2a7d246c79f596077ff9508d2146",
+        "54a4570460d622d4837e0435fe6343fa69ce11b928b0fd822ca342a8f8f68b02",
+        "70b802b865cdaad6df38515fb39e536e1c912b55bc4c76e1ec8db218c8c37d17",
+        "c7ca22c26dd50b182a2f458e9eb6189507c9eb8da2301b10455e66ccc5b2b948",
+        "76476c8aee612457b66636179d422411d4f3e768fa6ed9a3a76324ba70d7f4e8",
+        "1594f95ad9a7410e44a13ba41e3456043d9dc5894dd94f2d2edae8ac9bcc3b9a",
+        "2e0c50bf0e9dc70e06dc1a50a16c4c24550b2a7d246c79f596077ff9508d2146"
+      ]
+    },
+    {
+      "assets": [
+        "p1-hair-chestnut-v1",
+        "p1-face-blue-v1",
+        "p1-outfit-forester-v1",
+        "p1-weapon-short-sword-v2"
+      ],
+      "poses": 9,
+      "commonHandSHA256": [
+        "bc93b76f0e398adfbeb831dc236d31feee8843e2d6210c96490dfa55ccae5117",
+        "7fa36036a7371e99bf4a18955c86316dc22bb0f5fa04f486bd08adc2e94668c9",
+        "2e0c50bf0e9dc70e06dc1a50a16c4c24550b2a7d246c79f596077ff9508d2146",
+        "54a4570460d622d4837e0435fe6343fa69ce11b928b0fd822ca342a8f8f68b02",
+        "70b802b865cdaad6df38515fb39e536e1c912b55bc4c76e1ec8db218c8c37d17",
+        "c7ca22c26dd50b182a2f458e9eb6189507c9eb8da2301b10455e66ccc5b2b948",
+        "76476c8aee612457b66636179d422411d4f3e768fa6ed9a3a76324ba70d7f4e8",
+        "1594f95ad9a7410e44a13ba41e3456043d9dc5894dd94f2d2edae8ac9bcc3b9a",
+        "2e0c50bf0e9dc70e06dc1a50a16c4c24550b2a7d246c79f596077ff9508d2146"
+      ]
+    },
+    {
+      "assets": [
+        "p1-hair-chestnut-v1",
+        "p1-face-amber-v1"
+      ],
+      "poses": 9,
+      "commonHandSHA256": [
+        "bc93b76f0e398adfbeb831dc236d31feee8843e2d6210c96490dfa55ccae5117",
+        "7fa36036a7371e99bf4a18955c86316dc22bb0f5fa04f486bd08adc2e94668c9",
+        "2e0c50bf0e9dc70e06dc1a50a16c4c24550b2a7d246c79f596077ff9508d2146",
+        "54a4570460d622d4837e0435fe6343fa69ce11b928b0fd822ca342a8f8f68b02",
+        "70b802b865cdaad6df38515fb39e536e1c912b55bc4c76e1ec8db218c8c37d17",
+        "c7ca22c26dd50b182a2f458e9eb6189507c9eb8da2301b10455e66ccc5b2b948",
+        "76476c8aee612457b66636179d422411d4f3e768fa6ed9a3a76324ba70d7f4e8",
+        "1594f95ad9a7410e44a13ba41e3456043d9dc5894dd94f2d2edae8ac9bcc3b9a",
+        "2e0c50bf0e9dc70e06dc1a50a16c4c24550b2a7d246c79f596077ff9508d2146"
+      ]
+    },
+    {
+      "assets": [
+        "p1-hair-chestnut-v1",
+        "p1-face-amber-v1",
+        "p1-weapon-short-sword-v2"
+      ],
+      "poses": 9,
+      "commonHandSHA256": [
+        "bc93b76f0e398adfbeb831dc236d31feee8843e2d6210c96490dfa55ccae5117",
+        "7fa36036a7371e99bf4a18955c86316dc22bb0f5fa04f486bd08adc2e94668c9",
+        "2e0c50bf0e9dc70e06dc1a50a16c4c24550b2a7d246c79f596077ff9508d2146",
+        "54a4570460d622d4837e0435fe6343fa69ce11b928b0fd822ca342a8f8f68b02",
+        "70b802b865cdaad6df38515fb39e536e1c912b55bc4c76e1ec8db218c8c37d17",
+        "c7ca22c26dd50b182a2f458e9eb6189507c9eb8da2301b10455e66ccc5b2b948",
+        "76476c8aee612457b66636179d422411d4f3e768fa6ed9a3a76324ba70d7f4e8",
+        "1594f95ad9a7410e44a13ba41e3456043d9dc5894dd94f2d2edae8ac9bcc3b9a",
+        "2e0c50bf0e9dc70e06dc1a50a16c4c24550b2a7d246c79f596077ff9508d2146"
+      ]
+    },
+    {
+      "assets": [
+        "p1-hair-chestnut-v1",
+        "p1-face-amber-v1",
+        "p1-outfit-forester-v1"
+      ],
+      "poses": 9,
+      "commonHandSHA256": [
+        "bc93b76f0e398adfbeb831dc236d31feee8843e2d6210c96490dfa55ccae5117",
+        "7fa36036a7371e99bf4a18955c86316dc22bb0f5fa04f486bd08adc2e94668c9",
+        "2e0c50bf0e9dc70e06dc1a50a16c4c24550b2a7d246c79f596077ff9508d2146",
+        "54a4570460d622d4837e0435fe6343fa69ce11b928b0fd822ca342a8f8f68b02",
+        "70b802b865cdaad6df38515fb39e536e1c912b55bc4c76e1ec8db218c8c37d17",
+        "c7ca22c26dd50b182a2f458e9eb6189507c9eb8da2301b10455e66ccc5b2b948",
+        "76476c8aee612457b66636179d422411d4f3e768fa6ed9a3a76324ba70d7f4e8",
+        "1594f95ad9a7410e44a13ba41e3456043d9dc5894dd94f2d2edae8ac9bcc3b9a",
+        "2e0c50bf0e9dc70e06dc1a50a16c4c24550b2a7d246c79f596077ff9508d2146"
+      ]
+    },
+    {
+      "assets": [
+        "p1-hair-chestnut-v1",
+        "p1-face-amber-v1",
+        "p1-outfit-forester-v1",
+        "p1-weapon-short-sword-v2"
+      ],
+      "poses": 9,
+      "commonHandSHA256": [
+        "bc93b76f0e398adfbeb831dc236d31feee8843e2d6210c96490dfa55ccae5117",
+        "7fa36036a7371e99bf4a18955c86316dc22bb0f5fa04f486bd08adc2e94668c9",
+        "2e0c50bf0e9dc70e06dc1a50a16c4c24550b2a7d246c79f596077ff9508d2146",
+        "54a4570460d622d4837e0435fe6343fa69ce11b928b0fd822ca342a8f8f68b02",
+        "70b802b865cdaad6df38515fb39e536e1c912b55bc4c76e1ec8db218c8c37d17",
+        "c7ca22c26dd50b182a2f458e9eb6189507c9eb8da2301b10455e66ccc5b2b948",
+        "76476c8aee612457b66636179d422411d4f3e768fa6ed9a3a76324ba70d7f4e8",
+        "1594f95ad9a7410e44a13ba41e3456043d9dc5894dd94f2d2edae8ac9bcc3b9a",
+        "2e0c50bf0e9dc70e06dc1a50a16c4c24550b2a7d246c79f596077ff9508d2146"
+      ]
+    },
+    {
+      "assets": [
+        "p1-hair-silver-v1",
+        "p1-face-blue-v1"
+      ],
+      "poses": 9,
+      "commonHandSHA256": [
+        "bc93b76f0e398adfbeb831dc236d31feee8843e2d6210c96490dfa55ccae5117",
+        "7fa36036a7371e99bf4a18955c86316dc22bb0f5fa04f486bd08adc2e94668c9",
+        "2e0c50bf0e9dc70e06dc1a50a16c4c24550b2a7d246c79f596077ff9508d2146",
+        "54a4570460d622d4837e0435fe6343fa69ce11b928b0fd822ca342a8f8f68b02",
+        "70b802b865cdaad6df38515fb39e536e1c912b55bc4c76e1ec8db218c8c37d17",
+        "c7ca22c26dd50b182a2f458e9eb6189507c9eb8da2301b10455e66ccc5b2b948",
+        "76476c8aee612457b66636179d422411d4f3e768fa6ed9a3a76324ba70d7f4e8",
+        "1594f95ad9a7410e44a13ba41e3456043d9dc5894dd94f2d2edae8ac9bcc3b9a",
+        "2e0c50bf0e9dc70e06dc1a50a16c4c24550b2a7d246c79f596077ff9508d2146"
+      ]
+    },
+    {
+      "assets": [
+        "p1-hair-silver-v1",
+        "p1-face-blue-v1",
+        "p1-weapon-short-sword-v2"
+      ],
+      "poses": 9,
+      "commonHandSHA256": [
+        "bc93b76f0e398adfbeb831dc236d31feee8843e2d6210c96490dfa55ccae5117",
+        "7fa36036a7371e99bf4a18955c86316dc22bb0f5fa04f486bd08adc2e94668c9",
+        "2e0c50bf0e9dc70e06dc1a50a16c4c24550b2a7d246c79f596077ff9508d2146",
+        "54a4570460d622d4837e0435fe6343fa69ce11b928b0fd822ca342a8f8f68b02",
+        "70b802b865cdaad6df38515fb39e536e1c912b55bc4c76e1ec8db218c8c37d17",
+        "c7ca22c26dd50b182a2f458e9eb6189507c9eb8da2301b10455e66ccc5b2b948",
+        "76476c8aee612457b66636179d422411d4f3e768fa6ed9a3a76324ba70d7f4e8",
+        "1594f95ad9a7410e44a13ba41e3456043d9dc5894dd94f2d2edae8ac9bcc3b9a",
+        "2e0c50bf0e9dc70e06dc1a50a16c4c24550b2a7d246c79f596077ff9508d2146"
+      ]
+    },
+    {
+      "assets": [
+        "p1-hair-silver-v1",
+        "p1-face-blue-v1",
+        "p1-outfit-forester-v1"
+      ],
+      "poses": 9,
+      "commonHandSHA256": [
+        "bc93b76f0e398adfbeb831dc236d31feee8843e2d6210c96490dfa55ccae5117",
+        "7fa36036a7371e99bf4a18955c86316dc22bb0f5fa04f486bd08adc2e94668c9",
+        "2e0c50bf0e9dc70e06dc1a50a16c4c24550b2a7d246c79f596077ff9508d2146",
+        "54a4570460d622d4837e0435fe6343fa69ce11b928b0fd822ca342a8f8f68b02",
+        "70b802b865cdaad6df38515fb39e536e1c912b55bc4c76e1ec8db218c8c37d17",
+        "c7ca22c26dd50b182a2f458e9eb6189507c9eb8da2301b10455e66ccc5b2b948",
+        "76476c8aee612457b66636179d422411d4f3e768fa6ed9a3a76324ba70d7f4e8",
+        "1594f95ad9a7410e44a13ba41e3456043d9dc5894dd94f2d2edae8ac9bcc3b9a",
+        "2e0c50bf0e9dc70e06dc1a50a16c4c24550b2a7d246c79f596077ff9508d2146"
+      ]
+    },
+    {
+      "assets": [
+        "p1-hair-silver-v1",
+        "p1-face-blue-v1",
+        "p1-outfit-forester-v1",
+        "p1-weapon-short-sword-v2"
+      ],
+      "poses": 9,
+      "commonHandSHA256": [
+        "bc93b76f0e398adfbeb831dc236d31feee8843e2d6210c96490dfa55ccae5117",
+        "7fa36036a7371e99bf4a18955c86316dc22bb0f5fa04f486bd08adc2e94668c9",
+        "2e0c50bf0e9dc70e06dc1a50a16c4c24550b2a7d246c79f596077ff9508d2146",
+        "54a4570460d622d4837e0435fe6343fa69ce11b928b0fd822ca342a8f8f68b02",
+        "70b802b865cdaad6df38515fb39e536e1c912b55bc4c76e1ec8db218c8c37d17",
+        "c7ca22c26dd50b182a2f458e9eb6189507c9eb8da2301b10455e66ccc5b2b948",
+        "76476c8aee612457b66636179d422411d4f3e768fa6ed9a3a76324ba70d7f4e8",
+        "1594f95ad9a7410e44a13ba41e3456043d9dc5894dd94f2d2edae8ac9bcc3b9a",
+        "2e0c50bf0e9dc70e06dc1a50a16c4c24550b2a7d246c79f596077ff9508d2146"
+      ]
+    },
+    {
+      "assets": [
+        "p1-hair-silver-v1",
+        "p1-face-amber-v1"
+      ],
+      "poses": 9,
+      "commonHandSHA256": [
+        "bc93b76f0e398adfbeb831dc236d31feee8843e2d6210c96490dfa55ccae5117",
+        "7fa36036a7371e99bf4a18955c86316dc22bb0f5fa04f486bd08adc2e94668c9",
+        "2e0c50bf0e9dc70e06dc1a50a16c4c24550b2a7d246c79f596077ff9508d2146",
+        "54a4570460d622d4837e0435fe6343fa69ce11b928b0fd822ca342a8f8f68b02",
+        "70b802b865cdaad6df38515fb39e536e1c912b55bc4c76e1ec8db218c8c37d17",
+        "c7ca22c26dd50b182a2f458e9eb6189507c9eb8da2301b10455e66ccc5b2b948",
+        "76476c8aee612457b66636179d422411d4f3e768fa6ed9a3a76324ba70d7f4e8",
+        "1594f95ad9a7410e44a13ba41e3456043d9dc5894dd94f2d2edae8ac9bcc3b9a",
+        "2e0c50bf0e9dc70e06dc1a50a16c4c24550b2a7d246c79f596077ff9508d2146"
+      ]
+    },
+    {
+      "assets": [
+        "p1-hair-silver-v1",
+        "p1-face-amber-v1",
+        "p1-weapon-short-sword-v2"
+      ],
+      "poses": 9,
+      "commonHandSHA256": [
+        "bc93b76f0e398adfbeb831dc236d31feee8843e2d6210c96490dfa55ccae5117",
+        "7fa36036a7371e99bf4a18955c86316dc22bb0f5fa04f486bd08adc2e94668c9",
+        "2e0c50bf0e9dc70e06dc1a50a16c4c24550b2a7d246c79f596077ff9508d2146",
+        "54a4570460d622d4837e0435fe6343fa69ce11b928b0fd822ca342a8f8f68b02",
+        "70b802b865cdaad6df38515fb39e536e1c912b55bc4c76e1ec8db218c8c37d17",
+        "c7ca22c26dd50b182a2f458e9eb6189507c9eb8da2301b10455e66ccc5b2b948",
+        "76476c8aee612457b66636179d422411d4f3e768fa6ed9a3a76324ba70d7f4e8",
+        "1594f95ad9a7410e44a13ba41e3456043d9dc5894dd94f2d2edae8ac9bcc3b9a",
+        "2e0c50bf0e9dc70e06dc1a50a16c4c24550b2a7d246c79f596077ff9508d2146"
+      ]
+    },
+    {
+      "assets": [
+        "p1-hair-silver-v1",
+        "p1-face-amber-v1",
+        "p1-outfit-forester-v1"
+      ],
+      "poses": 9,
+      "commonHandSHA256": [
+        "bc93b76f0e398adfbeb831dc236d31feee8843e2d6210c96490dfa55ccae5117",
+        "7fa36036a7371e99bf4a18955c86316dc22bb0f5fa04f486bd08adc2e94668c9",
+        "2e0c50bf0e9dc70e06dc1a50a16c4c24550b2a7d246c79f596077ff9508d2146",
+        "54a4570460d622d4837e0435fe6343fa69ce11b928b0fd822ca342a8f8f68b02",
+        "70b802b865cdaad6df38515fb39e536e1c912b55bc4c76e1ec8db218c8c37d17",
+        "c7ca22c26dd50b182a2f458e9eb6189507c9eb8da2301b10455e66ccc5b2b948",
+        "76476c8aee612457b66636179d422411d4f3e768fa6ed9a3a76324ba70d7f4e8",
+        "1594f95ad9a7410e44a13ba41e3456043d9dc5894dd94f2d2edae8ac9bcc3b9a",
+        "2e0c50bf0e9dc70e06dc1a50a16c4c24550b2a7d246c79f596077ff9508d2146"
+      ]
+    },
+    {
+      "assets": [
+        "p1-hair-silver-v1",
+        "p1-face-amber-v1",
+        "p1-outfit-forester-v1",
+        "p1-weapon-short-sword-v2"
+      ],
+      "poses": 9,
+      "commonHandSHA256": [
+        "bc93b76f0e398adfbeb831dc236d31feee8843e2d6210c96490dfa55ccae5117",
+        "7fa36036a7371e99bf4a18955c86316dc22bb0f5fa04f486bd08adc2e94668c9",
+        "2e0c50bf0e9dc70e06dc1a50a16c4c24550b2a7d246c79f596077ff9508d2146",
+        "54a4570460d622d4837e0435fe6343fa69ce11b928b0fd822ca342a8f8f68b02",
+        "70b802b865cdaad6df38515fb39e536e1c912b55bc4c76e1ec8db218c8c37d17",
+        "c7ca22c26dd50b182a2f458e9eb6189507c9eb8da2301b10455e66ccc5b2b948",
+        "76476c8aee612457b66636179d422411d4f3e768fa6ed9a3a76324ba70d7f4e8",
+        "1594f95ad9a7410e44a13ba41e3456043d9dc5894dd94f2d2edae8ac9bcc3b9a",
+        "2e0c50bf0e9dc70e06dc1a50a16c4c24550b2a7d246c79f596077ff9508d2146"
+      ]
+    },
+    {
+      "assets": [
+        "p1-hair-teal-crop-v1",
+        "p1-face-blue-v1"
+      ],
+      "poses": 9,
+      "commonHandSHA256": [
+        "bc93b76f0e398adfbeb831dc236d31feee8843e2d6210c96490dfa55ccae5117",
+        "7fa36036a7371e99bf4a18955c86316dc22bb0f5fa04f486bd08adc2e94668c9",
+        "2e0c50bf0e9dc70e06dc1a50a16c4c24550b2a7d246c79f596077ff9508d2146",
+        "54a4570460d622d4837e0435fe6343fa69ce11b928b0fd822ca342a8f8f68b02",
+        "70b802b865cdaad6df38515fb39e536e1c912b55bc4c76e1ec8db218c8c37d17",
+        "c7ca22c26dd50b182a2f458e9eb6189507c9eb8da2301b10455e66ccc5b2b948",
+        "76476c8aee612457b66636179d422411d4f3e768fa6ed9a3a76324ba70d7f4e8",
+        "1594f95ad9a7410e44a13ba41e3456043d9dc5894dd94f2d2edae8ac9bcc3b9a",
+        "2e0c50bf0e9dc70e06dc1a50a16c4c24550b2a7d246c79f596077ff9508d2146"
+      ]
+    },
+    {
+      "assets": [
+        "p1-hair-teal-crop-v1",
+        "p1-face-blue-v1",
+        "p1-weapon-short-sword-v2"
+      ],
+      "poses": 9,
+      "commonHandSHA256": [
+        "bc93b76f0e398adfbeb831dc236d31feee8843e2d6210c96490dfa55ccae5117",
+        "7fa36036a7371e99bf4a18955c86316dc22bb0f5fa04f486bd08adc2e94668c9",
+        "2e0c50bf0e9dc70e06dc1a50a16c4c24550b2a7d246c79f596077ff9508d2146",
+        "54a4570460d622d4837e0435fe6343fa69ce11b928b0fd822ca342a8f8f68b02",
+        "70b802b865cdaad6df38515fb39e536e1c912b55bc4c76e1ec8db218c8c37d17",
+        "c7ca22c26dd50b182a2f458e9eb6189507c9eb8da2301b10455e66ccc5b2b948",
+        "76476c8aee612457b66636179d422411d4f3e768fa6ed9a3a76324ba70d7f4e8",
+        "1594f95ad9a7410e44a13ba41e3456043d9dc5894dd94f2d2edae8ac9bcc3b9a",
+        "2e0c50bf0e9dc70e06dc1a50a16c4c24550b2a7d246c79f596077ff9508d2146"
+      ]
+    },
+    {
+      "assets": [
+        "p1-hair-teal-crop-v1",
+        "p1-face-blue-v1",
+        "p1-outfit-forester-v1"
+      ],
+      "poses": 9,
+      "commonHandSHA256": [
+        "bc93b76f0e398adfbeb831dc236d31feee8843e2d6210c96490dfa55ccae5117",
+        "7fa36036a7371e99bf4a18955c86316dc22bb0f5fa04f486bd08adc2e94668c9",
+        "2e0c50bf0e9dc70e06dc1a50a16c4c24550b2a7d246c79f596077ff9508d2146",
+        "54a4570460d622d4837e0435fe6343fa69ce11b928b0fd822ca342a8f8f68b02",
+        "70b802b865cdaad6df38515fb39e536e1c912b55bc4c76e1ec8db218c8c37d17",
+        "c7ca22c26dd50b182a2f458e9eb6189507c9eb8da2301b10455e66ccc5b2b948",
+        "76476c8aee612457b66636179d422411d4f3e768fa6ed9a3a76324ba70d7f4e8",
+        "1594f95ad9a7410e44a13ba41e3456043d9dc5894dd94f2d2edae8ac9bcc3b9a",
+        "2e0c50bf0e9dc70e06dc1a50a16c4c24550b2a7d246c79f596077ff9508d2146"
+      ]
+    },
+    {
+      "assets": [
+        "p1-hair-teal-crop-v1",
+        "p1-face-blue-v1",
+        "p1-outfit-forester-v1",
+        "p1-weapon-short-sword-v2"
+      ],
+      "poses": 9,
+      "commonHandSHA256": [
+        "bc93b76f0e398adfbeb831dc236d31feee8843e2d6210c96490dfa55ccae5117",
+        "7fa36036a7371e99bf4a18955c86316dc22bb0f5fa04f486bd08adc2e94668c9",
+        "2e0c50bf0e9dc70e06dc1a50a16c4c24550b2a7d246c79f596077ff9508d2146",
+        "54a4570460d622d4837e0435fe6343fa69ce11b928b0fd822ca342a8f8f68b02",
+        "70b802b865cdaad6df38515fb39e536e1c912b55bc4c76e1ec8db218c8c37d17",
+        "c7ca22c26dd50b182a2f458e9eb6189507c9eb8da2301b10455e66ccc5b2b948",
+        "76476c8aee612457b66636179d422411d4f3e768fa6ed9a3a76324ba70d7f4e8",
+        "1594f95ad9a7410e44a13ba41e3456043d9dc5894dd94f2d2edae8ac9bcc3b9a",
+        "2e0c50bf0e9dc70e06dc1a50a16c4c24550b2a7d246c79f596077ff9508d2146"
+      ]
+    },
+    {
+      "assets": [
+        "p1-hair-teal-crop-v1",
+        "p1-face-amber-v1"
+      ],
+      "poses": 9,
+      "commonHandSHA256": [
+        "bc93b76f0e398adfbeb831dc236d31feee8843e2d6210c96490dfa55ccae5117",
+        "7fa36036a7371e99bf4a18955c86316dc22bb0f5fa04f486bd08adc2e94668c9",
+        "2e0c50bf0e9dc70e06dc1a50a16c4c24550b2a7d246c79f596077ff9508d2146",
+        "54a4570460d622d4837e0435fe6343fa69ce11b928b0fd822ca342a8f8f68b02",
+        "70b802b865cdaad6df38515fb39e536e1c912b55bc4c76e1ec8db218c8c37d17",
+        "c7ca22c26dd50b182a2f458e9eb6189507c9eb8da2301b10455e66ccc5b2b948",
+        "76476c8aee612457b66636179d422411d4f3e768fa6ed9a3a76324ba70d7f4e8",
+        "1594f95ad9a7410e44a13ba41e3456043d9dc5894dd94f2d2edae8ac9bcc3b9a",
+        "2e0c50bf0e9dc70e06dc1a50a16c4c24550b2a7d246c79f596077ff9508d2146"
+      ]
+    },
+    {
+      "assets": [
+        "p1-hair-teal-crop-v1",
+        "p1-face-amber-v1",
+        "p1-weapon-short-sword-v2"
+      ],
+      "poses": 9,
+      "commonHandSHA256": [
+        "bc93b76f0e398adfbeb831dc236d31feee8843e2d6210c96490dfa55ccae5117",
+        "7fa36036a7371e99bf4a18955c86316dc22bb0f5fa04f486bd08adc2e94668c9",
+        "2e0c50bf0e9dc70e06dc1a50a16c4c24550b2a7d246c79f596077ff9508d2146",
+        "54a4570460d622d4837e0435fe6343fa69ce11b928b0fd822ca342a8f8f68b02",
+        "70b802b865cdaad6df38515fb39e536e1c912b55bc4c76e1ec8db218c8c37d17",
+        "c7ca22c26dd50b182a2f458e9eb6189507c9eb8da2301b10455e66ccc5b2b948",
+        "76476c8aee612457b66636179d422411d4f3e768fa6ed9a3a76324ba70d7f4e8",
+        "1594f95ad9a7410e44a13ba41e3456043d9dc5894dd94f2d2edae8ac9bcc3b9a",
+        "2e0c50bf0e9dc70e06dc1a50a16c4c24550b2a7d246c79f596077ff9508d2146"
+      ]
+    },
+    {
+      "assets": [
+        "p1-hair-teal-crop-v1",
+        "p1-face-amber-v1",
+        "p1-outfit-forester-v1"
+      ],
+      "poses": 9,
+      "commonHandSHA256": [
+        "bc93b76f0e398adfbeb831dc236d31feee8843e2d6210c96490dfa55ccae5117",
+        "7fa36036a7371e99bf4a18955c86316dc22bb0f5fa04f486bd08adc2e94668c9",
+        "2e0c50bf0e9dc70e06dc1a50a16c4c24550b2a7d246c79f596077ff9508d2146",
+        "54a4570460d622d4837e0435fe6343fa69ce11b928b0fd822ca342a8f8f68b02",
+        "70b802b865cdaad6df38515fb39e536e1c912b55bc4c76e1ec8db218c8c37d17",
+        "c7ca22c26dd50b182a2f458e9eb6189507c9eb8da2301b10455e66ccc5b2b948",
+        "76476c8aee612457b66636179d422411d4f3e768fa6ed9a3a76324ba70d7f4e8",
+        "1594f95ad9a7410e44a13ba41e3456043d9dc5894dd94f2d2edae8ac9bcc3b9a",
+        "2e0c50bf0e9dc70e06dc1a50a16c4c24550b2a7d246c79f596077ff9508d2146"
+      ]
+    },
+    {
+      "assets": [
+        "p1-hair-teal-crop-v1",
+        "p1-face-amber-v1",
+        "p1-outfit-forester-v1",
+        "p1-weapon-short-sword-v2"
+      ],
+      "poses": 9,
+      "commonHandSHA256": [
+        "bc93b76f0e398adfbeb831dc236d31feee8843e2d6210c96490dfa55ccae5117",
+        "7fa36036a7371e99bf4a18955c86316dc22bb0f5fa04f486bd08adc2e94668c9",
+        "2e0c50bf0e9dc70e06dc1a50a16c4c24550b2a7d246c79f596077ff9508d2146",
+        "54a4570460d622d4837e0435fe6343fa69ce11b928b0fd822ca342a8f8f68b02",
+        "70b802b865cdaad6df38515fb39e536e1c912b55bc4c76e1ec8db218c8c37d17",
+        "c7ca22c26dd50b182a2f458e9eb6189507c9eb8da2301b10455e66ccc5b2b948",
+        "76476c8aee612457b66636179d422411d4f3e768fa6ed9a3a76324ba70d7f4e8",
+        "1594f95ad9a7410e44a13ba41e3456043d9dc5894dd94f2d2edae8ac9bcc3b9a",
+        "2e0c50bf0e9dc70e06dc1a50a16c4c24550b2a7d246c79f596077ff9508d2146"
+      ]
+    }
+  ],
+  "sameHandWhenEmptyAndArmed": true
+}

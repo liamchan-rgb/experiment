@@ -6,19 +6,136 @@ on:
   push:
     branches: [main]
   workflow_dispatch:
+    inputs:
+      macos_runner:
+        description: 'Hosted macOS runner for the focused build (alternate pool if queued)'
+        required: false
+        type: choice
+        options: [macos-15, macos-14]
+        default: macos-15
+      quick_lab:
+        description: 'Build IPA and optionally run focused iPad map, contour, gait and interaction checks'
+        required: false
+        type: boolean
+        default: false
+      package_only:
+        description: 'When quick_lab is enabled, build and upload the IPA without simulator checks'
+        required: false
+        type: boolean
+        default: false
+      preview_only:
+        description: 'When quick_lab is enabled, run only the layered gait preview screenshot check'
+        required: false
+        type: boolean
+        default: false
+      review_run:
+        description: 'Successful run whose existing visual artifacts should be repackaged (leave empty for a full build)'
+        required: false
+        type: string
 
 permissions:
   contents: read
+  actions: read
 
 concurrency:
-  group: ios-${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  group: ios-${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}-${{ inputs.macos_runner || 'macos-15' }}
   cancel-in-progress: true
 
 jobs:
+  quick-shadow-lab:
+    if: ${{ github.event_name == 'workflow_dispatch' && inputs.quick_lab }}
+    uses: ./.github/workflows/shadow-lab-quick.yml
+    with:
+      macos_runner: ${{ inputs.macos_runner || 'macos-15' }}
+      package_only: ${{ inputs.package_only }}
+      preview_only: ${{ inputs.preview_only }}
+
+  recover-review:
+    name: Prepare compact review from an existing successful build
+    needs: build
+    if: ${{ always() && !inputs.quick_lab && ((github.event_name == 'workflow_dispatch' && inputs.review_run != '') || needs.build.result == 'success') }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    env:
+      GH_TOKEN: ${{ github.token }}
+      REVIEW_RUN: ${{ inputs.review_run || github.run_id }}
+    steps:
+      - name: Verify provenance and download the existing review
+        run: |
+          set -euo pipefail
+          [[ "$REVIEW_RUN" =~ ^[0-9]+$ ]]
+          mkdir -p compact
+          gh run view "$REVIEW_RUN" --repo "$GITHUB_REPOSITORY" \
+            --json databaseId,headSha,headBranch,conclusion,url > compact/SourceRun.json
+          python3 -c 'import json, os; r=json.load(open("compact/SourceRun.json")); assert r["conclusion"] == "success" or str(r["databaseId"]) == os.environ["GITHUB_RUN_ID"]'
+          if ! gh run download "$REVIEW_RUN" --repo "$GITHUB_REPOSITORY" \
+            --pattern "ios-visual-review-$REVIEW_RUN-*" --dir original; then
+            gh run download "$REVIEW_RUN" --repo "$GITHUB_REPOSITORY" \
+              --pattern 'map-ground-review-*' --dir original
+            gh run download "$REVIEW_RUN" --repo "$GITHUB_REPOSITORY" \
+              --pattern 'gait-*-iPad' --dir original || true
+          fi
+      - name: Compress recordings at their original pixel dimensions
+        run: |
+          set -euo pipefail
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq ffmpeg
+          python3 - <<'PY'
+          import json, shutil, subprocess
+          from pathlib import Path
+          source = Path('original')
+          target = Path('compact')
+          def probe(file):
+              return json.loads(subprocess.check_output([
+                  'ffprobe', '-v', 'error', '-show_entries', 'stream=width,height,avg_frame_rate,r_frame_rate',
+                  '-show_entries', 'format=duration', '-of', 'json', str(file)]))
+          recordings = []
+          for file in source.rglob('*'):
+              if file.is_file() and file.suffix in ['.png', '.json']:
+                  output = target / file.relative_to(source)
+                  output.parent.mkdir(parents=True, exist_ok=True)
+                  if file.suffix == '.png' and probe(file)['streams'][0]['width'] < probe(file)['streams'][0]['height']:
+                      subprocess.run(['ffmpeg', '-loglevel', 'warning', '-y', '-noautorotate',
+                                      '-i', str(file), '-vf', 'transpose=2', '-threads', '2',
+                                      str(output)], check=True)
+                  else:
+                      shutil.copy2(file, output)
+          for file in source.rglob('*.mp4'):
+              output = target / file.relative_to(source)
+              output.parent.mkdir(parents=True, exist_ok=True)
+              original = probe(file)
+              duration = float(original['format']['duration'])
+              limit = 40 if file.stem == 'iPad-LivingScene' else 60
+              speed = min(1.0, limit / duration)
+              filters = []
+              if original['streams'][0]['width'] < original['streams'][0]['height']:
+                  filters.append('transpose=2')
+              filters.append(f'setpts={speed}*(PTS-STARTPTS)')
+              # simctl can report a nominal 600 FPS timebase for an actual
+              # ~60 FPS VFR recording. Preserve time, without duplicating it
+              # into a 600 FPS preview or speeding up the walk cycle.
+              fps = ['-r', '60'] if file.stem.startswith('iPad-Gait-') else ['-r', '30']
+              subprocess.run(['ffmpeg', '-hide_banner', '-loglevel', 'warning', '-y', '-noautorotate',
+                              '-i', str(file), '-vf', ','.join(filters), '-an', '-c:v', 'libx264', '-preset', 'fast',
+                              '-crf', '24', '-maxrate', '12M', '-bufsize', '24M',
+                              '-threads', '2', '-pix_fmt', 'yuv420p', *fps,
+                              '-movflags', '+faststart', str(output)], check=True)
+              recordings.append({'file': str(file.relative_to(source)), 'original': original,
+                                 'preview': probe(output), 'timelineScale': speed})
+          (target / 'RecordingInfo.json').write_text(json.dumps(recordings, indent=2) + '\n')
+          PY
+      - uses: actions/upload-artifact@v7
+        with:
+          name: ios-compact-review-${{ inputs.review_run || github.run_id }}
+          path: compact/
+          if-no-files-found: error
+          retention-days: 30
+
   build:
     name: Xcode compile, test and unsigned IPA
+    if: ${{ github.event_name != 'workflow_dispatch' || (inputs.review_run == '' && !inputs.quick_lab) }}
     runs-on: macos-15
-    timeout-minutes: 35
+    timeout-minutes: 45
     defaults:
       run:
         shell: bash
@@ -48,12 +165,12 @@ jobs:
             CODE_SIGNING_ALLOWED=NO \
             2>&1 | tee build/logs/simulator-build.log
 
-      - name: Choose an installed compatible iPhone simulator
+      - name: Choose an installed compatible iPad simulator
         id: simulator
         run: |
           set -euo pipefail
           xcrun simctl list --json > build/logs/simulator-inventory.json
-          if python3 scripts/select-simulator.py > build/simulator-udid.txt; then
+          if python3 scripts/select-simulator.py iPad > build/simulator-udid.txt; then
             :
           else
             status=$?
@@ -61,19 +178,15 @@ jobs:
               exit "$status"
             fi
             xcodebuild -downloadPlatform iOS 2>&1 | tee build/logs/runtime-download.log
-            python3 scripts/select-simulator.py > build/simulator-udid.txt
+            python3 scripts/select-simulator.py iPad > build/simulator-udid.txt
           fi
           simulator_udid="$(cat build/simulator-udid.txt)"
           echo "udid=$simulator_udid" >> "$GITHUB_OUTPUT"
+          echo "ipad_udid=$simulator_udid" >> "$GITHUB_OUTPUT"
           xcrun simctl bootstatus "$simulator_udid" -b \
             2>&1 | tee build/logs/simulator-boot.log
-          python3 scripts/select-simulator.py iPad > build/ipad-udid.txt
-          ipad_udid="$(cat build/ipad-udid.txt)"
-          echo "ipad_udid=$ipad_udid" >> "$GITHUB_OUTPUT"
-          xcrun simctl bootstatus "$ipad_udid" -b \
-            2>&1 | tee build/logs/ipad-boot.log
 
-      - name: Run route logic and UI tests
+      - name: Run route logic and UI tests on iPad
         run: |
           set -euo pipefail
           xcodebuild test \
@@ -85,18 +198,6 @@ jobs:
             CODE_SIGNING_ALLOWED=NO \
             2>&1 | tee build/logs/tests.log
 
-      - name: Verify the iPad layout and ordered journey
-        run: |
-          set -euo pipefail
-          xcodebuild test \
-            -project "$PROJECT" -scheme "$SCHEME" -configuration Debug \
-            -destination 'platform=iOS Simulator,id=${{ steps.simulator.outputs.ipad_udid }}' \
-            -only-testing:MeadowJourneyUITests \
-            -derivedDataPath build/SimulatorDerivedData \
-            -resultBundlePath build/iPadResults.xcresult \
-            -parallel-testing-enabled NO CODE_SIGNING_ALLOWED=NO \
-            2>&1 | tee build/logs/ipad-tests.log
-
       - name: Export visual screenshots
         if: ${{ always() && steps.simulator.outcome == 'success' }}
         run: |
@@ -105,11 +206,6 @@ jobs:
             xcrun xcresulttool export attachments \
               --path build/TestResults.xcresult --output-path build/screenshots \
               2>&1 | tee build/logs/screenshot-export.log
-          fi
-          if [ -d build/iPadResults.xcresult ]; then
-            xcrun xcresulttool export attachments \
-              --path build/iPadResults.xcresult --output-path build/ipad-screenshots \
-              2>&1 | tee build/logs/ipad-screenshot-export.log
           fi
 
       - name: Record a native-resolution iPad dynamic scene
@@ -133,7 +229,92 @@ jobs:
           python3 scripts/summarize-metrics.py build/visual-review/RuntimeMetrics.json \
             2>&1 | tee build/logs/runtime-metrics.log
 
-      - name: Archive for physical iPhone and iPad without signing
+      - name: Record eight-direction walking and the minimum-zoom wind and sunlight
+        run: |
+          set -euo pipefail
+          ipad_udid='${{ steps.simulator.outputs.ipad_udid }}'
+          record_review() {
+            local clip_name="$1"
+            local clip_seconds="$2"
+            shift 2
+            xcrun simctl terminate "$ipad_udid" com.liamchan.experiment.meadow || true
+            xcrun simctl launch "$ipad_udid" com.liamchan.experiment.meadow "$@"
+            sleep 1
+            xcrun simctl io "$ipad_udid" screenshot "build/visual-review/$clip_name-start.png"
+            xcrun simctl io "$ipad_udid" recordVideo --codec=h264 \
+              "build/visual-review/$clip_name.mp4" > "build/logs/$clip_name.log" 2>&1 &
+            local recorder_pid=$!
+            trap 'kill -INT "$recorder_pid" 2>/dev/null || true' EXIT
+            sleep "$clip_seconds"
+            kill -INT "$recorder_pid"
+            wait "$recorder_pid" || true
+            trap - EXIT
+            xcrun simctl io "$ipad_udid" screenshot "build/visual-review/$clip_name-end.png"
+          }
+          record_review iPad-EightDirectionGait 26 -gaitReview
+          record_review iPad-MinimumZoomAtmosphere 12 -visualReview
+          data_path="$(xcrun simctl get_app_container "$ipad_udid" com.liamchan.experiment.meadow data)"
+          cp "$data_path/Documents/RuntimeMetrics.json" build/visual-review/MinimumZoomMetrics.json
+          python3 - <<'PY'
+          import json
+          samples = json.load(open('build/visual-review/MinimumZoomMetrics.json'))
+          assert len(samples) >= 8
+          assert all(s['zoom'] == 1 and not s['isPlaying'] for s in samples)
+          print('Minimum-zoom recording verified: stationary camera, paused travelers, live environment.')
+          PY
+
+      - name: Record the real 3D shadow-map prototype
+        run: |
+          set -euo pipefail
+          ipad_udid='${{ steps.simulator.outputs.ipad_udid }}'
+          xcrun simctl terminate "$ipad_udid" com.liamchan.experiment.meadow || true
+          xcrun simctl launch "$ipad_udid" com.liamchan.experiment.meadow -shadowReview -shadowReviewDemo
+          sleep 2
+          xcrun simctl io "$ipad_udid" screenshot build/visual-review/iPad-ShadowLab-start.png
+          xcrun simctl io "$ipad_udid" recordVideo --codec=h264 \
+            build/visual-review/iPad-ShadowLab.mp4 > build/logs/shadow-lab-video.log 2>&1 &
+          recorder_pid=$!
+          trap 'kill -INT "$recorder_pid" 2>/dev/null || true' EXIT
+          sleep 25
+          kill -INT "$recorder_pid"
+          wait "$recorder_pid" || true
+          trap - EXIT
+          xcrun simctl io "$ipad_udid" screenshot build/visual-review/iPad-ShadowLab-end.png
+          data_path="$(xcrun simctl get_app_container "$ipad_udid" com.liamchan.experiment.meadow data)"
+          cp "$data_path/Documents/ShadowLabMetrics.json" build/visual-review/ShadowLabMetrics.json
+          python3 - <<'PY'
+          import json
+          samples = json.load(open('build/visual-review/ShadowLabMetrics.json'))
+          assert len(samples) >= 8
+          assert all(s['shadowMapSize'] == 1024 and s['objects'] == 3 and s['proxyTriangles'] > 100 for s in samples)
+          assert any(s['shadowsEnabled'] for s in samples)
+          assert any(not s['shadowsEnabled'] for s in samples)
+          assert len({s['seed'] for s in samples}) >= 2
+          print('Real depth-map lab recorded: dynamic sun, wind, walking, proxy overlay, shadows off/on and regenerated layout.')
+          PY
+
+      - name: Upload the isolated shadow-map review
+        uses: actions/upload-artifact@v7
+        with:
+          name: ios-shadow-lab-review-${{ github.run_id }}
+          path: |
+            build/visual-review/iPad-ShadowLab*
+            build/visual-review/ShadowLabMetrics.json
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Upload original stills for immediate visual review
+        uses: actions/upload-artifact@v7
+        with:
+          name: ios-review-stills-${{ github.run_id }}
+          path: |
+            build/visual-review/*.png
+            build/visual-review/*.json
+            build/screenshots/**/*.png
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Archive generic iOS device IPA without signing
         run: |
           set -euo pipefail
           xcodebuild archive \
@@ -163,7 +344,6 @@ jobs:
           name: ios-visual-review-${{ github.run_id }}-${{ github.run_attempt }}
           path: |
             build/screenshots/
-            build/ipad-screenshots/
             build/visual-review/
           if-no-files-found: warn
           retention-days: 30
@@ -175,7 +355,6 @@ jobs:
           name: ios-test-results-${{ github.run_id }}-${{ github.run_attempt }}
           path: |
             build/TestResults.xcresult/
-            build/iPadResults.xcresult/
           if-no-files-found: warn
           retention-days: 30
 

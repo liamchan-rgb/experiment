@@ -1,0 +1,112 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "p1-weapon-short-sword-v1",
+  "version": "1.0.0",
+  "part": "weapon",
+  "compatibility": {
+    "rig": "p1-chibi-v1",
+    "bodyProfile": "p1-standard",
+    "actionSet": "locomotion-v1"
+  },
+  "mode": "socket",
+  "slots": [
+    "weapon.right"
+  ],
+  "directions": [
+    "down"
+  ],
+  "clips": [
+    "idle",
+    "walk"
+  ],
+  "sourceFiles": [
+    "source/down.png",
+    "authoring.json",
+    "editable/00.ora",
+    "editable/00.svg"
+  ],
+  "bindings": [
+    {
+      "direction": "down",
+      "clip": "idle",
+      "frame": 0,
+      "layers": {
+        "weapon.right": "png/00/weapon.right.png"
+      }
+    },
+    {
+      "direction": "down",
+      "clip": "walk",
+      "frame": 1,
+      "layers": {
+        "weapon.right": "png/00/weapon.right.png"
+      }
+    },
+    {
+      "direction": "down",
+      "clip": "walk",
+      "frame": 2,
+      "layers": {
+        "weapon.right": "png/00/weapon.right.png"
+      }
+    },
+    {
+      "direction": "down",
+      "clip": "walk",
+      "frame": 3,
+      "layers": {
+        "weapon.right": "png/00/weapon.right.png"
+      }
+    },
+    {
+      "direction": "down",
+      "clip": "walk",
+      "frame": 4,
+      "layers": {
+        "weapon.right": "png/00/weapon.right.png"
+      }
+    },
+    {
+      "direction": "down",
+      "clip": "walk",
+      "frame": 5,
+      "layers": {
+        "weapon.right": "png/00/weapon.right.png"
+      }
+    },
+    {
+      "direction": "down",
+      "clip": "walk",
+      "frame": 6,
+      "layers": {
+        "weapon.right": "png/00/weapon.right.png"
+      }
+    },
+    {
+      "direction": "down",
+      "clip": "walk",
+      "frame": 7,
+      "layers": {
+        "weapon.right": "png/00/weapon.right.png"
+      }
+    },
+    {
+      "direction": "down",
+      "clip": "walk",
+      "frame": 8,
+      "layers": {
+        "weapon.right": "png/00/weapon.right.png"
+      }
+    }
+  ],
+  "canvas": [
+    64,
+    96
+  ],
+  "pivot": [
+    32,
+    26
+  ],
+  "socket": "grip.right",
+  "gripProfile": "one-hand-closed"
+}

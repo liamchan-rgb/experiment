@@ -1,0 +1,88 @@
+{
+  "format": 1,
+  "method": "unchanged complete poses side by side; labels and nearest-neighbor enlargement only",
+  "phaseMapping": "same view-local near/far phase; right near limb is anatomical right, left near limb is anatomical left",
+  "leftReference": "Art/Review/P1/directions/left/revisions/r1",
+  "rightCandidate": "Art/Review/P1/directions/right/revisions/r1",
+  "idleFrame": 0,
+  "walkingFrames": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8
+  ],
+  "durationsMilliseconds": {
+    "normal": 120,
+    "slow": 480
+  },
+  "pairs": [
+    {
+      "index": 0,
+      "leftPNG": "Art/Review/P1/directions/left/revisions/r1/frames/00.png",
+      "rightPNG": "Art/Review/P1/directions/right/revisions/r1/frames/00.png",
+      "leftSHA256": "9fb20374af673926ffd8fab790a632582634f32471b111056579f65f02f541f5",
+      "rightSHA256": "1a9e96358b6c93cf830e477102a31e5d6be325c07c97b64e2edfbccde62cce68"
+    },
+    {
+      "index": 1,
+      "leftPNG": "Art/Review/P1/directions/left/revisions/r1/frames/01.png",
+      "rightPNG": "Art/Review/P1/directions/right/revisions/r1/frames/01.png",
+      "leftSHA256": "03825478c81cb87279891bce57fcc4a4197bf23e4a83035187cbcdebbf17d531",
+      "rightSHA256": "62ee4e4137c36abbfc480b8bc909655910e2c0cb6db675747650835fe646b2b7"
+    },
+    {
+      "index": 2,
+      "leftPNG": "Art/Review/P1/directions/left/revisions/r1/frames/02.png",
+      "rightPNG": "Art/Review/P1/directions/right/revisions/r1/frames/02.png",
+      "leftSHA256": "2f3c3a241cdccef12ab5f1e82ca81a5ce937f9ec11216a9d0e15eaed78e68700",
+      "rightSHA256": "93145184abc490859a925cfa43f33399a98317ea19819059973c191b4d745f49"
+    },
+    {
+      "index": 3,
+      "leftPNG": "Art/Review/P1/directions/left/revisions/r1/frames/03.png",
+      "rightPNG": "Art/Review/P1/directions/right/revisions/r1/frames/03.png",
+      "leftSHA256": "ea816b3416c69958a5db45927b4c6dfa22bc20e5c5b917d488e55f0adabde8e0",
+      "rightSHA256": "1edfe32f1d60d644c80edf814bbf0a75c404fe9c7f7288d4280ba5cfe22e39cb"
+    },
+    {
+      "index": 4,
+      "leftPNG": "Art/Review/P1/directions/left/revisions/r1/frames/04.png",
+      "rightPNG": "Art/Review/P1/directions/right/revisions/r1/frames/04.png",
+      "leftSHA256": "be983787fb7e42c0239b2c7520ef2b34b557c2e7f6ddb752f4a2ab0188545775",
+      "rightSHA256": "94d3b301e12c5f76e46754bb444e59d5596b39f1769d6a490effd14aba8aa885"
+    },
+    {
+      "index": 5,
+      "leftPNG": "Art/Review/P1/directions/left/revisions/r1/frames/05.png",
+      "rightPNG": "Art/Review/P1/directions/right/revisions/r1/frames/05.png",
+      "leftSHA256": "7a43a1b671de911b84f73bc845c08cb02b5d5688bc92dd6045ef3f26b5caf347",
+      "rightSHA256": "6118a134e868098f2e5f2829dd732c90373ee3ef51b8c28d9e64afbed130200b"
+    },
+    {
+      "index": 6,
+      "leftPNG": "Art/Review/P1/directions/left/revisions/r1/frames/06.png",
+      "rightPNG": "Art/Review/P1/directions/right/revisions/r1/frames/06.png",
+      "leftSHA256": "0c67cd601634e0950368922bc27c377434c4e9202c4b0ac25ac7bfa1eed03ba9",
+      "rightSHA256": "25cc8378c342569497cf88a7e324827efc5e10ca1c65eb65f3fd804a24427586"
+    },
+    {
+      "index": 7,
+      "leftPNG": "Art/Review/P1/directions/left/revisions/r1/frames/07.png",
+      "rightPNG": "Art/Review/P1/directions/right/revisions/r1/frames/07.png",
+      "leftSHA256": "d566b71bebc66389f3ec8a8e6b4a528f523bd18261efcfe6723c8f79f5faed7c",
+      "rightSHA256": "8f949fc761ce2184a3320071996448bc55371f5af9234cacc520b400c4ac1226"
+    },
+    {
+      "index": 8,
+      "leftPNG": "Art/Review/P1/directions/left/revisions/r1/frames/08.png",
+      "rightPNG": "Art/Review/P1/directions/right/revisions/r1/frames/08.png",
+      "leftSHA256": "b0d0897e436471978f9f3232aeaeeaadb1a1486c2f630431346b84b926b23036",
+      "rightSHA256": "6a5b03743fdd7b3c081b9e7bc348189d0b032d318f93fe5dd5a8ca2801c57ba0"
+    }
+  ],
+  "rightArtApproval": null
+}

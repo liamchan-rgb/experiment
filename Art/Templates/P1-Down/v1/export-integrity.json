@@ -1,0 +1,9 @@
+{
+  "reexportByteExactFiles": 200,
+  "existingArtFilesUnchanged": 353,
+  "date": "2026-10-18",
+  "artApproval": null,
+  "method": "snapshot all 200 then-present pilot files, run exporter independently, compare SHA-256; separately compare all 353 pre-existing P1 PNG/GIF files against pre-edit snapshot",
+  "transparentRGBNote": "Default visible RGBA equals approved frames; RGB at alpha zero is canonicalized, so PNG bytes differ.",
+  "scope": "Initial pilot f0c6aa8; subsequent iPad delivery-only changes are tracked in web-preview.json and web-qa.json."
+}

@@ -1,0 +1,162 @@
+{
+  "method": "256px canvas silhouette bounds at alpha>32; head boundary from existing blue-scarf detector; brown pixels below y=180 for lower-boot projected envelope",
+  "limitations": "Projected brown silhouette width is a review aid, not a physical shoe measurement or automatic artwork approval. Differences include hand-drawn silhouettes and integer nearest-neighbor sampling.",
+  "frames": [
+    {
+      "frame": 0,
+      "left": {
+        "silhouetteHeight": 156,
+        "headHeight": 54,
+        "lowerBootEnvelopeWidth": 43,
+        "soleEnvelopeY": 224
+      },
+      "right": {
+        "silhouetteHeight": 156,
+        "headHeight": 55,
+        "lowerBootEnvelopeWidth": 44,
+        "soleEnvelopeY": 224
+      },
+      "bootEnvelopeWidthDifference": 1,
+      "headHeightDifference": 1
+    },
+    {
+      "frame": 1,
+      "left": {
+        "silhouetteHeight": 154,
+        "headHeight": 56,
+        "lowerBootEnvelopeWidth": 75,
+        "soleEnvelopeY": 224
+      },
+      "right": {
+        "silhouetteHeight": 154,
+        "headHeight": 56,
+        "lowerBootEnvelopeWidth": 77,
+        "soleEnvelopeY": 224
+      },
+      "bootEnvelopeWidthDifference": 2,
+      "headHeightDifference": 0
+    },
+    {
+      "frame": 2,
+      "left": {
+        "silhouetteHeight": 151,
+        "headHeight": 53,
+        "lowerBootEnvelopeWidth": 68,
+        "soleEnvelopeY": 224
+      },
+      "right": {
+        "silhouetteHeight": 153,
+        "headHeight": 53,
+        "lowerBootEnvelopeWidth": 68,
+        "soleEnvelopeY": 224
+      },
+      "bootEnvelopeWidthDifference": 0,
+      "headHeightDifference": 0
+    },
+    {
+      "frame": 3,
+      "left": {
+        "silhouetteHeight": 154,
+        "headHeight": 53,
+        "lowerBootEnvelopeWidth": 33,
+        "soleEnvelopeY": 224
+      },
+      "right": {
+        "silhouetteHeight": 154,
+        "headHeight": 54,
+        "lowerBootEnvelopeWidth": 34,
+        "soleEnvelopeY": 224
+      },
+      "bootEnvelopeWidthDifference": 1,
+      "headHeightDifference": 1
+    },
+    {
+      "frame": 4,
+      "left": {
+        "silhouetteHeight": 155,
+        "headHeight": 55,
+        "lowerBootEnvelopeWidth": 91,
+        "soleEnvelopeY": 224
+      },
+      "right": {
+        "silhouetteHeight": 155,
+        "headHeight": 55,
+        "lowerBootEnvelopeWidth": 94,
+        "soleEnvelopeY": 224
+      },
+      "bootEnvelopeWidthDifference": 3,
+      "headHeightDifference": 0
+    },
+    {
+      "frame": 5,
+      "left": {
+        "silhouetteHeight": 154,
+        "headHeight": 55,
+        "lowerBootEnvelopeWidth": 95,
+        "soleEnvelopeY": 224
+      },
+      "right": {
+        "silhouetteHeight": 154,
+        "headHeight": 56,
+        "lowerBootEnvelopeWidth": 96,
+        "soleEnvelopeY": 224
+      },
+      "bootEnvelopeWidthDifference": 1,
+      "headHeightDifference": 1
+    },
+    {
+      "frame": 6,
+      "left": {
+        "silhouetteHeight": 152,
+        "headHeight": 56,
+        "lowerBootEnvelopeWidth": 88,
+        "soleEnvelopeY": 224
+      },
+      "right": {
+        "silhouetteHeight": 152,
+        "headHeight": 55,
+        "lowerBootEnvelopeWidth": 89,
+        "soleEnvelopeY": 224
+      },
+      "bootEnvelopeWidthDifference": 1,
+      "headHeightDifference": -1
+    },
+    {
+      "frame": 7,
+      "left": {
+        "silhouetteHeight": 154,
+        "headHeight": 54,
+        "lowerBootEnvelopeWidth": 42,
+        "soleEnvelopeY": 224
+      },
+      "right": {
+        "silhouetteHeight": 154,
+        "headHeight": 54,
+        "lowerBootEnvelopeWidth": 41,
+        "soleEnvelopeY": 224
+      },
+      "bootEnvelopeWidthDifference": -1,
+      "headHeightDifference": 0
+    },
+    {
+      "frame": 8,
+      "left": {
+        "silhouetteHeight": 155,
+        "headHeight": 55,
+        "lowerBootEnvelopeWidth": 76,
+        "soleEnvelopeY": 224
+      },
+      "right": {
+        "silhouetteHeight": 155,
+        "headHeight": 56,
+        "lowerBootEnvelopeWidth": 77,
+        "soleEnvelopeY": 224
+      },
+      "bootEnvelopeWidthDifference": 1,
+      "headHeightDifference": 1
+    }
+  ],
+  "maximumAbsoluteBootEnvelopeWidthDifference": 3,
+  "maximumAbsoluteHeadHeightDifference": 1,
+  "artApproval": null
+}

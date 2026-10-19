@@ -1,0 +1,28 @@
+{
+  "folder": "combinations/p1-hair-silver-v1__p1-face-amber-v1__dressed__empty",
+  "base": "p1-neutral-down-walk-r2",
+  "assets": [
+    "p1-hair-silver-v1",
+    "p1-face-amber-v1",
+    "p1-outfit-forester-v1"
+  ],
+  "direction": "down",
+  "motionSHA256": "cb0b4896eb90062b93a3e9768b5bf24be4a3ed794c1621188bf189cc9e802642",
+  "assetManifestSHA256": {
+    "p1-neutral-down-walk-r2": "42f3d3ca196b4f1d73f2a2972625f5c5ebd1b7a0d6e47e8b59298eed17eeb829",
+    "p1-hair-silver-v1": "f712156c63c16ef1ef3aa77274ba6101c44ccc17d0771e983c5ffec5112b0df2",
+    "p1-face-amber-v1": "6594c9cf4c0e1674c143d68ca61f3b1d631b7207d7aa60e7bbd33340bd12e319",
+    "p1-outfit-forester-v1": "ea504138699da7f93836b8578befdc2116cc1862990b26bb352415bf62ee5291"
+  },
+  "frames": {
+    "00.png": "d2efa1b10d70e8ced830984923376c08f6bbb11265369e056c05e52337f8e9ac",
+    "01.png": "68f6e581e424c667d7826f303beeaa420c6f288259d2715e84f40e319e5fd700",
+    "02.png": "29f3ad25cad39a912b68623bfe62d7e7753f1f5b99b55a808e14e5ea15604bcd",
+    "03.png": "889b3879b993bcf2c374f28e218ac8ac5d60d30a69331926c86740f7437a80b5",
+    "04.png": "c1e1e7d2d28b96adb8a1f617c5d32f9108fc643af8680680947e657d2bed2b36",
+    "05.png": "8b2ac68baf91cbf9005d3850a034c0fffd64f34faf01b0a2d55ce082f6ebce31",
+    "06.png": "5e4993749b1305eee411a2b91fd17c9c91b42fc720e997c9fa873ebeb17cb5e9",
+    "07.png": "8207457b22d4feb1797fcc17d86112a31d978a55eb27271e9fe638115bfe9f23",
+    "08.png": "8b3a455ac13a04d51824dafc6b3e954f1ed899973e31b54de5f58fbdcb0bda89"
+  }
+}

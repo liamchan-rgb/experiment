@@ -1,0 +1,230 @@
+{
+  "format": 1,
+  "source": "raw",
+  "sourceSHA256": {
+    "00.png": "c6cb2535837c9c7e8a7f089ed4a75b2da50dd17991f8ec39d9f2d04933367906",
+    "01.png": "10bb884405b3057ffe1918fb685792b67e72db04e6fe1985f29697f857f4cc36",
+    "02.png": "ffa65ab96e3deebdebb1b862298e122e024e00f2b219b216a8e13bc4ace233c4",
+    "03.png": "b76f3ded56ba3b416f06876da12faa81d5033d4c307454bcc669935213e4c86e",
+    "04.png": "9b55b9d91c5997420a53613f098887675f8f58bb91a0803923c803b7c8b943b2",
+    "05.png": "98c7667e41db0fd57d68bd84ef7b83f5a8ebf3d19bb8cc09956249709417808e",
+    "06.png": "0dc8d963c2e00356661ee871048ecd08c5a1aa9f6f59fbcddc361b8b20f3680f",
+    "07.png": "77f89e5210852e2d04d71f678df70198d59bb79450b7323c4508f3d901590125",
+    "08.png": "a31025c7ab7d4f7091ccbff7921408a74a3e9789f25c3f15829fd89f9f03902d"
+  },
+  "sourceDimensions": [
+    [
+      1024,
+      1536
+    ],
+    [
+      1017,
+      1546
+    ],
+    [
+      1017,
+      1546
+    ],
+    [
+      1017,
+      1546
+    ],
+    [
+      1017,
+      1546
+    ],
+    [
+      1017,
+      1546
+    ],
+    [
+      1017,
+      1546
+    ],
+    [
+      1017,
+      1546
+    ],
+    [
+      1017,
+      1546
+    ]
+  ],
+  "reviewGrid": [
+    3,
+    3
+  ],
+  "cell": 256,
+  "idleFrames": 1,
+  "walkingFrames": 8,
+  "packing": "whole-pose nearest-neighbor registration by head landmarks for separately drawn poses; no limb edits, foot scaling or interpolation",
+  "durationsMilliseconds": {
+    "normal": 120,
+    "slow": 480
+  },
+  "frames": [
+    {
+      "frame": 0,
+      "alphaBounds": [
+        88,
+        71,
+        175,
+        224
+      ],
+      "wholePoseRegistration": {
+        "scaleX": 0.1142578125,
+        "scaleY": 0.11393229166666667,
+        "offset": [
+          70,
+          60
+        ]
+      },
+      "sha256": "11602f51485e9646ca1f70cd1b6500a91938b5e8e98e3fef4e5a0b16b4ea243f"
+    },
+    {
+      "frame": 1,
+      "alphaBounds": [
+        84,
+        71,
+        173,
+        222
+      ],
+      "wholePoseRegistration": {
+        "scaleX": 0.11012782694198624,
+        "scaleY": 0.11060802069857698,
+        "offset": [
+          71,
+          60
+        ]
+      },
+      "sha256": "551a03f55d076402657f982245f70d6aa1fc5af52d466f1f27932e2dbd6dced6"
+    },
+    {
+      "frame": 2,
+      "alphaBounds": [
+        85,
+        73,
+        175,
+        221
+      ],
+      "wholePoseRegistration": {
+        "scaleX": 0.1111111111111111,
+        "scaleY": 0.111254851228978,
+        "offset": [
+          72,
+          62
+        ]
+      },
+      "sha256": "aab0b4aae2edddb3cf23af9d7b678bea133d8c7d3951ba13bcc6e771a9b7ba5a"
+    },
+    {
+      "frame": 3,
+      "alphaBounds": [
+        85,
+        71,
+        172,
+        218
+      ],
+      "wholePoseRegistration": {
+        "scaleX": 0.11012782694198624,
+        "scaleY": 0.10996119016817593,
+        "offset": [
+          72,
+          59
+        ]
+      },
+      "sha256": "71f3e2ee9e4c18fc7365dc4b2bc81a2b4d41c934efcf12094a93894bd5fc3354"
+    },
+    {
+      "frame": 4,
+      "alphaBounds": [
+        85,
+        70,
+        176,
+        224
+      ],
+      "wholePoseRegistration": {
+        "scaleX": 0.11799410029498525,
+        "scaleY": 0.11772315653298836,
+        "offset": [
+          68,
+          55
+        ]
+      },
+      "sha256": "cc30e8567bfc46b419a801f7d83536d30cf27979e126954e72e623271bcc93da"
+    },
+    {
+      "frame": 5,
+      "alphaBounds": [
+        85,
+        71,
+        173,
+        220
+      ],
+      "wholePoseRegistration": {
+        "scaleX": 0.10816125860373647,
+        "scaleY": 0.10866752910737387,
+        "offset": [
+          73,
+          60
+        ]
+      },
+      "sha256": "179b6739c816f63b79092e82a65909c78282267f167bbcaef8b3842193192fbc"
+    },
+    {
+      "frame": 6,
+      "alphaBounds": [
+        89,
+        73,
+        174,
+        219
+      ],
+      "wholePoseRegistration": {
+        "scaleX": 0.11012782694198624,
+        "scaleY": 0.10996119016817593,
+        "offset": [
+          74,
+          61
+        ]
+      },
+      "sha256": "e45d70032e410d9c26e2d684d5c207e9516ece9ca68977d9b20ce4da65a51ad7"
+    },
+    {
+      "frame": 7,
+      "alphaBounds": [
+        87,
+        71,
+        176,
+        216
+      ],
+      "wholePoseRegistration": {
+        "scaleX": 0.11307767944936087,
+        "scaleY": 0.11254851228978008,
+        "offset": [
+          72,
+          54
+        ]
+      },
+      "sha256": "7c3a7c4f477834eb1736fa8efe7b6fb0dc3490bb51c6daae6e51a89c54a3eb3c"
+    },
+    {
+      "frame": 8,
+      "alphaBounds": [
+        88,
+        70,
+        177,
+        215
+      ],
+      "wholePoseRegistration": {
+        "scaleX": 0.10914454277286136,
+        "scaleY": 0.10866752910737387,
+        "offset": [
+          73,
+          59
+        ]
+      },
+      "sha256": "f858b64c1576dc35ed8683d8f0dded2bbc6c2c27b6769325ffd1b071e64f9d65"
+    }
+  ],
+  "artApproval": null
+}

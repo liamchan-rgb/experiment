@@ -29,7 +29,9 @@ mkdir -p "$stage_dir/Payload"
 ditto "$app_path" "$stage_dir/Payload/MeadowJourney.app"
 (
   cd "$stage_dir"
-  /usr/bin/zip -qry "$output_dir/$output_name" Payload
+  # Stored ZIP with no Unix extra fields avoids the decompression path in
+  # SideStore's archive reader; Assets.car is already internally compressed.
+  /usr/bin/zip -q -0 -r -X -y "$output_dir/$output_name" Payload
 )
 unzip -t "$output_dir/$output_name"
 shasum -a 256 "$output_dir/$output_name"

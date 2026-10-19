@@ -1,0 +1,96 @@
+{
+  "revision": "r1",
+  "direction": "right",
+  "status": "technical packaging checks passed; art awaits user review",
+  "idlePoses": 1,
+  "walkingPoses": 8,
+  "distinctWalkingPoses": 8,
+  "pngCellAndStripMatch": "passed",
+  "numberedGridMatch": "passed",
+  "pairGridUnchangedSourcePixels": "passed; both halves match original left/right pose PNGs after black composition",
+  "doubleSizeNearestPreviews": "passed",
+  "sourcePNGsPreserved": "byte-identical to selected imagegen output",
+  "sameRegistrationProfileAsApprovedLeft": true,
+  "sourceAlphaExtrema": [
+    [
+      0,
+      255
+    ],
+    [
+      0,
+      255
+    ],
+    [
+      0,
+      255
+    ],
+    [
+      0,
+      255
+    ],
+    [
+      0,
+      255
+    ],
+    [
+      0,
+      255
+    ],
+    [
+      0,
+      255
+    ],
+    [
+      0,
+      255
+    ],
+    [
+      0,
+      255
+    ]
+  ],
+  "gifChecks": {
+    "walk.gif": {
+      "frames": 8,
+      "durationPerFrameMs": 120,
+      "cycleDurationMs": 960,
+      "orderAndPixels": "match packed poses after declared palette quantization",
+      "loop": 0
+    },
+    "walk-slow.gif": {
+      "frames": 8,
+      "durationPerFrameMs": 480,
+      "cycleDurationMs": 3840,
+      "orderAndPixels": "match packed poses after declared palette quantization",
+      "loop": 0
+    },
+    "left-right.gif": {
+      "frames": 8,
+      "durationPerFrameMs": 120,
+      "cycleDurationMs": 960,
+      "orderAndPixels": "match packed poses after declared palette quantization",
+      "loop": 0
+    },
+    "left-right-slow.gif": {
+      "frames": 8,
+      "durationPerFrameMs": 480,
+      "cycleDurationMs": 3840,
+      "orderAndPixels": "match packed poses after declared palette quantization",
+      "loop": 0
+    }
+  },
+  "coordinationObservations": {
+    "report": "coordination.json",
+    "maximumHeadHeightDifferencePixels": 1,
+    "maximumLowerBootProjectedEnvelopeWidthDifferencePixels": 3,
+    "meaning": "scale/pose envelope observations only; not physical shoe size or artwork approval"
+  },
+  "reproductionCheck": {
+    "artifactsCompared": 19,
+    "result": "byte-identical PNG/GIF artifacts from temporary fresh export"
+  },
+  "approvedDownLeftUp": "approval artifact hashes unchanged",
+  "baselineDirections": "all four source strip hashes unchanged",
+  "artApproval": null,
+  "runtimeAndIPAUpdated": false
+}

@@ -1,0 +1,28 @@
+{
+  "folder": "combinations/p1-hair-chestnut-v1__p1-face-amber-v1__base__sword",
+  "base": "p1-neutral-down-walk-r2",
+  "assets": [
+    "p1-hair-chestnut-v1",
+    "p1-face-amber-v1",
+    "p1-weapon-short-sword-v1"
+  ],
+  "direction": "down",
+  "motionSHA256": "cb0b4896eb90062b93a3e9768b5bf24be4a3ed794c1621188bf189cc9e802642",
+  "assetManifestSHA256": {
+    "p1-neutral-down-walk-r2": "42f3d3ca196b4f1d73f2a2972625f5c5ebd1b7a0d6e47e8b59298eed17eeb829",
+    "p1-hair-chestnut-v1": "8cb282d7b17d9026320c9b8ee7e2e62339dbb68adc18896a715fb0be806a91cd",
+    "p1-face-amber-v1": "6594c9cf4c0e1674c143d68ca61f3b1d631b7207d7aa60e7bbd33340bd12e319",
+    "p1-weapon-short-sword-v1": "76be08492267661177d8b2a9c06805ec282f6b506efa3595171d87537e670f8a"
+  },
+  "frames": {
+    "00.png": "ef3e7b4518a79f2f9c60f376e2f56602b54ff41465c9989cf89d401a038929c6",
+    "01.png": "5753b345aaecf90c23a488ff2ff3857edb01683cd12c1d560a39e088dc46f306",
+    "02.png": "30d0fe505b0c7292b013c1096b06fbbb1fbf6c68ea8cf44344d151ede9d7cb4a",
+    "03.png": "65f73264c86791ff88d4e018b08424b3bf8b46b6f8d9d6d94b41e0b052039f0e",
+    "04.png": "257e67532a8d7cae461ed90a74b9bb71e7e91c07bfcaba63d736caa5f802663a",
+    "05.png": "25fa4b7fbc81f6c03963453173d87c78624754a3e73abb4503b95e7a457e623d",
+    "06.png": "308ec8a331fe92cede91e3b9a09819042fce800ba1be80be3ec60fcaf98b54a0",
+    "07.png": "27c3ae5058534cd7376ab48f11a9e846c6394e37385c1059ed802fd40a7742e4",
+    "08.png": "029bfd793dd4485ffe1bc0da5a229b7e98a514a625b2943332e4a45b78f1a01f"
+  }
+}

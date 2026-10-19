@@ -1,0 +1,39 @@
+{
+  "tool": "image_gen.imagegen",
+  "date": "2026-10-18",
+  "reference": "Art/Review/P1/directions/down/revisions/r1/frames/00.png",
+  "referenceSHA256": "80c042f1626923b71fd0fbe6be3e81804b359a0c5df7eeb91bc1199abf4d374b",
+  "referencePreparation": "4x nearest-neighbour complete pose, no artwork changes",
+  "assets": {
+    "hair_silver": {
+      "prompt": "Create ONE isolated replacement HAIR sprite for the provided chibi pixel-art adventurer. Down/front facing, exactly the same chibi head proportions and slight top-down game camera as reference. Only hair: short silver-white side-swept layered hair, charcoal/blue-grey deep shadow, small lively tuft, clear silver appearance. Strong coherent solid hair mass, tidy side locks at temples, bangs stop just ABOVE eyes. Keep forehead window as transparent opening along bottom; no face, skin, ears, eyes, body, neck, scarf, labels, guide marks, floor, background, cast shadow. Hair should be as broad as original chestnut hairstyle and cover its scalp footprint, but silver swept silhouette visibly distinct. Crisp clean outlines and deliberate pixel clusters matching reference, not smooth 3D. One centered high quality cutout on true transparent background, generous padding. This is a reusable hair equipment part, not a whole character.",
+      "source": "Art/Templates/P1-Down/v1/art-source/hair_silver.png",
+      "sha256": "57ee202f4b811d41afdb55ee5cda490f5abe61ee618e05dc13aae84c355cf2d9"
+    },
+    "head_blank": {
+      "prompt": "Create ONE isolated bald blank HEAD base sprite for the provided front/down facing chibi pixel-art adventurer. Same skin tone and exact chibi head proportions/camera. Rounded bald scalp, small side ears, tapering cheeks and chin, a hint of nose. Absolutely NO HAIR, NO EYES, NO EYEBROWS, NO MOUTH, no clothing, no body, no neck, no labels. Just skin base head so facial features and hair can be separate layers. Soft peach skin with warm edge shadow, crisp dark brown outline and pixel clusters matching reference. Front facing slightly viewed from above. Wide head proportions suitable underneath the original hairstyle. Single centered cutout on true transparent background with generous padding, no ground shadow.",
+      "source": "Art/Templates/P1-Down/v1/art-source/head_blank.png",
+      "sha256": "f655c5991a648a8fdc43721d0a5560a61f9243df7a90739f55c73b74d6257e52"
+    },
+    "face_amber": {
+      "prompt": "Create ONE isolated front/down facing face sprite for the provided chibi pixel-art adventurer with a new expression: warm amber-gold eyes, slightly friendly confident smile. Only the FACE PATCH from eyebrows to chin, including peach skin cheeks and tiny nose, NO HAIR, no scalp above brows, NO EARS, NO NECK, no clothing. Same proportions as original eyes/cheeks: large anime pixel eyes but subtle mouth, straight front view slight top-down camera, warm original skin palette. Rectangular-ish upper patch tapering to rounded chin, completely transparent outside skin. Skin forehead at top, no dark outline along top border because hair will cover the seam. Crisp pixel clusters, not high-res painting. A single centered face cutout for a modular sprite, generous transparent padding. No whole character, text, labels, shadows, background.",
+      "source": "Art/Templates/P1-Down/v1/art-source/face_amber.png",
+      "sha256": "d898ede4c45871d4ea3a7c9e0cd0d91e215ac9e1aaffe441fc10f179785fa520"
+    },
+    "ranger_vest": {
+      "prompt": "Create ONE isolated clothing equipment overlay for the provided front/down facing chibi pixel-art adventurer. This part replaces ONLY the CENTRAL TORSO clothing panel: small forest-green leather sleeveless vest over cream undershirt with tan cord criss-cross lacing at chest, brown waist belt with small brass clasp, short split shirt hem below belt. A different ranger outfit design from original. NO HEAD, NO FACE, NO HAIR, NO NECK, NO SCARF, NO SHOULDER PADS, NO ARMS, NO SLEEVES, NO HANDS, NO LEGS, NO BOOTS. Torso panel only, shaped to fit between existing blue/green coat lapels with shoulders narrow beneath scarf. Original chest/waist anatomy and chibi proportions viewed straight front slightly from above. Width about 1/2 original head width, height from bottom of scarf to top of shorts (roughly 1.3x its width). Brown dark outline, clean readable pixel clusters matching reference. Front symmetric design, no logos. One centered transparent cutout, generous padding, no ground shadow, no text or guides.",
+      "source": "Art/Templates/P1-Down/v1/art-source/ranger_vest.png",
+      "sha256": "48510acb92991debfc1de147a8a7c287d9aaebf9d377487d749642ac710ac9cf"
+    },
+    "sword": {
+      "prompt": "Create ONE isolated equipment sprite, a short adventurer's straight steel sword in the SAME crisp chibi pixel-art style as provided reference. Sword alone on true transparent background, centered UPRIGHT vertical with POMMEL at TOP, small brown leather GRIP below it, brass horizontal crossguard below grip, silver grey straight double-edged BLADE pointing DOWN, sharp triangular tip at bottom. Grip visually distinct from guard. Simple readable thick enough blade, dark navy outline and pale steel highlight, brown wrap grip and modest golden guard, no jewels, no hands, no person, no scabbard, no background, no shadow, no text. Single rigid sword object viewed flat front, suitable for down-facing character carrying it in right hand with blade down. Blade length about 3 times handle length; overall about 7 times blade width, sized as a short sword rather than oversized greatsword. Generous transparent margin.",
+      "source": "Art/Templates/P1-Down/v1/art-source/sword.png",
+      "sha256": "79446692717ebc049958b068c7b0b7628ba99f610fe7b5745d7ec0024072e38b"
+    },
+    "body_torso": {
+      "prompt": "Create ONE isolated BASE TORSO sprite for the provided front/down-facing chibi pixel-art adventurer, for the body underneath replaceable clothing. Plain unadorned fitted ivory/cream sleeveless undershirt covering chest, waist and small shirt hem, with short peach-skin shoulder caps only. NO belt, NO vest, no jacket, scarf, armor, logos, lacing or accessories. NO head, hair, face, neck above shoulder line, no arms below shoulder caps, no hands, legs or boots. Front straight view with same subtle top-down camera and exactly same chibi body proportions as reference. Shape broad upper chest tapering gently at waist and short split lower hem. Torso width roughly half original head width; height roughly 1.3 times torso width. Warm cream fabric shadows, dark brown thin pixel outline, crisp pixel clusters matching original art. One centered reusable body part on true transparent background with padding; no text or ground shadow.",
+      "source": "Art/Templates/P1-Down/v1/art-source/body_torso.png",
+      "sha256": "9b4f51ea639e3d9460796ea34dbb51228d8be255163c96f9c16d2df13091c060"
+    }
+  }
+}
