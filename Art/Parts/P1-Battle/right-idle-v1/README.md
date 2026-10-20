@@ -1,6 +1,6 @@
 # P1 battle-side right idle · modular art candidate
 
-The current user art review has moved to the [isolated v8 cleanup candidate](../right-idle-v2/README.md). This directory retains the v7 runtime fixture. Its package is withheld while the marked forehead/shoulder pixels and rear-head contour are reviewed; v8 is not imported into the app.
+The current user art review has moved to the [isolated v9 rear-plane shading candidate](../right-idle-v3/README.md). This directory retains the v7 runtime fixture. Its package is withheld while the artwork is reviewed; v8/v9 are not imported into the app.
 
 The approved neutral `right-idle-r2/00.png` is unchanged. This static fixture adds separate chestnut hair, blue facial features, forester clothing, and a short sword. All images use the same 256×256 canvas; the anatomical foot anchor is fixed at `(123,214)` and the reference body height is 132 px. No appearance is automatically fitted from its alpha bounds. Near and far hand layers come from the static semantic split and remain in front of the outfit and grip. `hand-foreground/` excludes a rear-leg patch incorrectly owned by the redundant far-hand copy; the complete approved body underneath is unchanged.
 

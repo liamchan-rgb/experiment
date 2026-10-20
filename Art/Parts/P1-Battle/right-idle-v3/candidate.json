@@ -1,0 +1,49 @@
+{
+  "id": "p1-battle-side-right-idle-rear-shading-v9",
+  "status": "single-frame-candidate-awaiting-user-art-review",
+  "date": "2026-10-20",
+  "reviewImage": "review.png",
+  "nativeComposite": "assembled.png",
+  "canvasPx": [
+    256,
+    256
+  ],
+  "footAnchorPx": [
+    123,
+    214
+  ],
+  "previousCandidate": "../right-idle-v2/candidate.json",
+  "bodyHeadCandidate": "../../../Templates/P1-Neutral/battle-side/right-idle-r3-head-contour/00.png",
+  "userFeedback": "左肩还有黑边；靠后的部分加阴影做出层次，参考之前行走动画左右方向的层次处理。",
+  "depthReferences": [
+    {
+      "path": "Art/Review/P1/directions/left/revisions/r1/frames/03.png",
+      "sha256": "ea816b3416c69958a5db45927b4c6dfa22bc20e5c5b917d488e55f0adabde8e0",
+      "approvalScope": "left/right r1 walking artwork approved 2026-10-18; shading relationship reference only"
+    },
+    {
+      "path": "Art/Review/P1/directions/right/revisions/r1/frames/03.png",
+      "sha256": "1edfe32f1d60d644c80edf814bbf0a75c404fe9c7f7288d4280ba5cfe22e39cb",
+      "approvalScope": "left/right r1 walking artwork approved 2026-10-18; shading relationship reference only"
+    }
+  ],
+  "referenceStudy": "reference/rear-shading-study.png; imagegen shading guide only, no pixels imported",
+  "sourceRegistration": "fixed shared canvas; exact v8 wardrobe alpha retained",
+  "unchangedSources": {
+    "face": "../right-idle-v2/face-blue/face.png",
+    "hair": "../right-idle-v2/hair-chestnut/hair.png",
+    "head": "../../../Templates/P1-Neutral/battle-side/right-idle-r3-head-contour/00.png"
+  },
+  "runtimeIntegrated": false,
+  "packaging": "paused by user",
+  "userArtApproval": null,
+  "hashes": {
+    "assembled.png": "b22fdc328e474a93cd7c060c4924d771109b5b23c4caf31305b061ca876012aa",
+    "review.png": "00f237a2c8aa5cbee3b6993704ae795f98b4a061b0507f004a73a8f2fb1f98f3",
+    "outfit-forester/wardrobe.png": "74abfbe6d6da043bc1fe7d936be1fba1915cfadc5c72803b1cd0259aa164717c",
+    "outfit-forester/rear-edge-tones.svg": "75b26a776c1f4199834757fb732469aadedacde88b0f0c91b552d2bc39eab37b",
+    "outfit-forester/rear-shade.svg": "bb85104eec3a65ca2f9a1adb99a5ea9298898ea4530e2ae3b97bed8d8925a6db",
+    "build-review.sh": "5f99dbacbe8139122fb546a4351bb159ee2d579a8137dfc89c8dfa89a8b9f13c",
+    "reference/rear-shading-study.png": "1fdc3404c6657de064191ec5ba600a976ae9bedd71143aaf21eec879d93e17e3"
+  }
+}

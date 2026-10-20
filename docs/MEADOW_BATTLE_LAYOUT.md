@@ -45,3 +45,5 @@ build32 的 `testMeadowBattleUsesRegisteredCampLayersAndOneVisibleForestWarden` 
 build34 旧截图还暴露独立 aspect-fill 底图在锐利场景结束处形成错位横带。现在模糊底图用与锐利画布相同的宽度比例和顶端位置生成，超出原始场景的部分由模糊底边延展；锐利画布最后 12% 逐渐淡出。此修正尚未通过新运行截图目视验收。按用户要求，实机安装／运行和截图由用户执行；收到截图后再按实际画面迭代。
 
 用户随后要求先停打包，清理 v7 额前和肩部箭头处多余像素并收窄后脑轮廓。当前仅提交[独立 v8 全身美术候选](../Art/Parts/P1-Battle/right-idle-v2/review.png)；其素材、共同中性头型 r3 候选与像素变化范围见[说明](../Art/Parts/P1-Battle/right-idle-v2/README.md)。v8 未接入运行资产，上一轮归档已完成但不交付。
+
+v8 左肩残留的硬黑线继续修订为[当前 v9 层次候选](../Art/Parts/P1-Battle/right-idle-v3/review.png)：按已认可左右向步态的明暗关系，肩背与后侧袖子使用连续冷蓝暗面，持剑臂保留亮面。仅改衣层局部RGB，轮廓alpha和其他部件沿用v8；仍只审核这一张图，未接入App或打包。

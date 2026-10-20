@@ -3,8 +3,8 @@
   "format": 3,
   "updated": "2026-10-20",
   "workflow": "Review one direction at a time from fixed cardinal and diagonal baselines. Modify and resubmit the same direction until explicit user artwork approval, then advance. Record provenance, feedback and accepted revisions for the future character template.",
-  "current": "p1-battle-side-right-idle-art-cleanup-v8",
-  "templateStatus": "independent heads approved; the v5 down idle sword pose is approved as one art study only; modular wardrobe/weapon production and the full character template remain incomplete; the heavyStrike + trainingSword standalone effect prototype remains awaiting user art review; battle-side right idle pose and hand direction r2 approved; localized shoulder/hip-root underbody remains incomplete; the right-side walking pose test remains pending; the current single-frame review is battle appearance cleanup v8; complete anatomy, articulated movement and runtime integration remain incomplete",
+  "current": "p1-battle-side-right-idle-rear-shading-v9",
+  "templateStatus": "independent heads approved; the v5 down idle sword pose is approved as one art study only; modular wardrobe/weapon production and the full character template remain incomplete; the heavyStrike + trainingSword standalone effect prototype remains awaiting user art review; battle-side right idle pose and hand direction r2 approved; localized shoulder/hip-root underbody remains incomplete; the right-side walking pose test remains pending; the current single-frame review is battle rear-shoulder shading v9; complete anatomy, articulated movement and runtime integration remain incomplete",
   "items": [
     {
       "id": "01-down-idle",
@@ -1706,6 +1706,11 @@
       "previousCurrent": "p1-neutral-battle-side-right-walk-pose-test-v1",
       "newCurrent": "p1-battle-side-right-idle-art-cleanup-v8",
       "reason": "User paused IPA packaging and requested one-image cleanup of marked forehead/shoulder pixels and the rounded rear head. The pending walking pose review is preserved."
+    },
+    {
+      "previousCurrent": "p1-battle-side-right-idle-art-cleanup-v8",
+      "newCurrent": "p1-battle-side-right-idle-rear-shading-v9",
+      "reason": "User requested the remaining shoulder black edge be replaced with rear-plane shading based on approved left/right gait depth. Continue reviewing the same single static image; packaging stays paused."
     }
   ],
   "battleNeutralBodyReview": {
@@ -1920,8 +1925,8 @@
     "id": "p1-battle-side-right-idle-face-blue-v8",
     "status": "pixel-cleanup-candidate-awaiting-user-art-review",
     "source": "Art/Parts/P1-Battle/right-idle-v2/face-blue",
-    "reviewImage": "Art/Parts/P1-Battle/right-idle-v2/review.png",
-    "nativeComposite": "Art/Parts/P1-Battle/right-idle-v2/assembled.png",
+    "reviewImage": "Art/Parts/P1-Battle/right-idle-v3/review.png",
+    "nativeComposite": "Art/Parts/P1-Battle/right-idle-v3/assembled.png",
     "basePoseApprovalReference": "p1-neutral-battle-side-right-idle-r2",
     "canvasPx": [
       256,
@@ -1961,7 +1966,7 @@
         "statement": "别急着打包；箭头处有多余像素，后脑勺太圆也要改。"
       }
     ],
-    "next": "Review this single static image. Packaging is paused at the user request; v8 is not imported into the app.",
+    "next": "Review the same static character with v9 shoulder shading; face pixels remain v8. Packaging stays paused; v8/v9 are not imported into the app.",
     "internalReadabilityReview": {
       "status": "whole-character-cleanup-reviewed-user-review-pending",
       "scope": "Native and 3x full-character review, plus targeted pixel checks for the marked cleanup areas",
@@ -1993,11 +1998,11 @@
     "camera": "width-locked top-anchored scene; blurred backdrop shares its transform, uses clamped edge extension, and feathers the sharp canvas bottom",
     "shadow": "independent cast silhouettes plus four hoof contacts aligned to pixel sprite",
     "iPadScreenshotReview": "paused until the current artwork correction is reviewed; physical-device runs remain the user responsibility",
-    "ipa": "Run 39465865631 succeeded at d988299; its v7 package is withheld after the user paused packaging. The v8 artwork is not imported or packaged."
+    "ipa": "Run 39465865631 succeeded at d988299; its v7 package is withheld after the user paused packaging. The v8/v9 artwork is not imported or packaged."
   },
   "battleSideCleanupReview": {
     "id": "p1-battle-side-right-idle-art-cleanup-v8",
-    "status": "single-static-candidate-awaiting-user-art-review",
+    "status": "preserved-v8-candidate-continued-in-v9-rear-shading-review",
     "source": "Art/Parts/P1-Battle/right-idle-v2",
     "reviewImage": "Art/Parts/P1-Battle/right-idle-v2/review.png",
     "candidateManifest": "Art/Parts/P1-Battle/right-idle-v2/candidate.json",
@@ -2009,6 +2014,44 @@
       "97-pixel common neutral rear-head contour candidate; r2 original and pose retained"
     ],
     "commonHeadContourCandidate": "Art/Templates/P1-Neutral/battle-side/right-idle-r3-head-contour",
+    "runtimeIntegrated": false,
+    "packaging": "paused by user",
+    "userArtApproval": null
+  },
+  "battleSideShadingReview": {
+    "id": "p1-battle-side-right-idle-rear-shading-v9",
+    "status": "single-frame-candidate-awaiting-user-art-review",
+    "source": "Art/Parts/P1-Battle/right-idle-v3",
+    "reviewImage": "Art/Parts/P1-Battle/right-idle-v3/review.png",
+    "nativeComposite": "Art/Parts/P1-Battle/right-idle-v3/assembled.png",
+    "candidateManifest": "Art/Parts/P1-Battle/right-idle-v3/candidate.json",
+    "validation": "Art/Parts/P1-Battle/right-idle-v3/validation.json",
+    "userFeedback": "左肩还有黑边；靠后的部分加阴影做出层次，参考之前行走动画左右方向的层次处理。",
+    "depthReferences": [
+      {
+        "path": "Art/Review/P1/directions/left/revisions/r1/frames/03.png",
+        "sha256": "ea816b3416c69958a5db45927b4c6dfa22bc20e5c5b917d488e55f0adabde8e0",
+        "approvalScope": "left/right r1 walking artwork approved 2026-10-18; shading relationship reference only"
+      },
+      {
+        "path": "Art/Review/P1/directions/right/revisions/r1/frames/03.png",
+        "sha256": "1edfe32f1d60d644c80edf814bbf0a75c404fe9c7f7288d4280ba5cfe22e39cb",
+        "approvalScope": "left/right r1 walking artwork approved 2026-10-18; shading relationship reference only"
+      }
+    ],
+    "changes": [
+      "Replace the remaining diagonal shoulder seam and outer black strip with blue transitions",
+      "Shade the rear shoulder/back as a continuous plane and deepen the trailing sleeve",
+      "Preserve the foreground sword arm light face, exact outfit alpha and all artwork outside the shoulder/rear-sleeve region"
+    ],
+    "changedCompositePixels": 209,
+    "changedCompositeBoundsPx": [
+      102,
+      133,
+      119,
+      168
+    ],
+    "unchangedFaceSource": "Art/Parts/P1-Battle/right-idle-v2/face-blue",
     "runtimeIntegrated": false,
     "packaging": "paused by user",
     "userArtApproval": null
