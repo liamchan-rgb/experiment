@@ -1,0 +1,47 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "p1-battle-side-right-idle-short-sword-candidate-v1",
+  "status": "single-pose-art-candidate-awaiting-review",
+  "direction": "battle-side-right",
+  "clip": "idle",
+  "frame": 0,
+  "canvasPx": [256, 256],
+  "image": "weapon.png",
+  "editableSource": "weapon.svg",
+  "attachmentMode": "registered-pose-map-candidate",
+  "socket": "grip.right.near",
+  "gripCenterCanvasPx": [145.566, 163.681],
+  "gripProfile": "one-hand-closed-near-right-candidate",
+  "axis": {
+    "degreesFromPositiveX": -22,
+    "direction": "toward-upper-right",
+    "guardCenterCanvasPx": [151.5, 159.5],
+    "pommelCenterCanvasPx": [137.5, 168.0],
+    "bladeTipCanvasPx": [192.0, 141.5],
+    "bladeLengthPxApprox": 44,
+    "bladeWidthPxApprox": 3
+  },
+  "palette": {
+    "grip": "brown leather/wood",
+    "blade": "silver-white steel",
+    "guard": "warm gold",
+    "pommel": "warm gold"
+  },
+  "compositing": {
+    "weaponZ": "behind body and near/right hand",
+    "handOccludesGrip": true,
+    "preview": "assembled-r2.png",
+    "localReview": "review-local.png"
+  },
+  "provenance": {
+    "basePose": "Art/Templates/P1-Neutral/battle-side/right-idle-r2/00.png",
+    "gripLandmarkReference": "Art/Templates/P1-Neutral/battle-side/right-idle-r2/registration.json",
+    "sourceArtModified": false,
+    "sourceWasCroppedFromSceneComposite": false
+  },
+  "limits": [
+    "This is a single right-facing idle weapon candidate only; it has no animation or other-direction mappings.",
+    "The r2 body and hand remain unchanged; the approved hand direction does not approve this weapon or this grip.",
+    "A local composite checks overlap only; it does not establish natural finger pressure, weapon balance, gameplay integration, or reusable production compatibility."
+  ]
+}

@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256" shape-rendering="crispEdges">
+  <!-- Foot-shaped brown underlap, clipped by the neutral body's alpha in build.sh. -->
+  <g fill="#4a2b1b">
+    <path id="left-foot-underlap" d="M94 193l2-2 7 1 2 4 5 3 1 5-2 4 1 6H89l-1-5 2-5v-5l2-3z"/>
+    <path id="right-foot-underlap" d="M138 194l3-2 8 1 1 3 6 2 5 5 1 5 2 3v4h-28l-1-4 1-5-1-5z"/>
+    <path id="right-heel-extension" d="M134 200h5v14h-5z"/>
+  </g>
+</svg>

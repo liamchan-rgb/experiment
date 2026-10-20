@@ -1,0 +1,51 @@
+{
+  "name": "P1-Battle/right-idle-v1/outfit-forester",
+  "status": "candidate-unreviewed",
+  "output": "wardrobe.png",
+  "canvas": {
+    "width": 256,
+    "height": 256,
+    "registration": "approved P1-Neutral right-idle-r2"
+  },
+  "source": "source/registered-chromakey.png",
+  "source_canvas": {
+    "width": 1254,
+    "height": 1254
+  },
+  "registration_transform": "full-canvas point resize to 256x256, no crop or translation",
+  "fixed_coordinates": {
+    "jacket_collar_top_y": 126,
+    "left_trouser_boot_zone": {
+      "x": 87,
+      "y": 170,
+      "width": 27,
+      "height": 44
+    },
+    "right_trouser_boot_zone": {
+      "x": 122,
+      "y": 170,
+      "width": 44,
+      "height": 44
+    },
+    "sole_baseline_y": 214,
+    "sole_visible_rows": "0..213",
+    "boot_translation_source_pixels": {
+      "x": 0,
+      "y": -4
+    },
+    "far_upper_thigh_underlap": {
+      "x": 99,
+      "y": 177,
+      "width": 14,
+      "height": 9,
+      "role": "trousers, excludes far fist above y177"
+    }
+  },
+  "editable_repairs": [
+    "source/fit-repair.svg",
+    "source/boot-mask.svg",
+    "source/boot-underlap.svg"
+  ],
+  "build": "./build.sh",
+  "review_composite": "review-runtime-order.png"
+}

@@ -1,0 +1,74 @@
+[
+  {
+    "asset": "MeadowBattleHeroBody",
+    "source": "Art/Templates/P1-Neutral/battle-side/right-idle-r2/00.png",
+    "filename": "MeadowBattleHeroBody.png",
+    "canvasPx": [
+      256,
+      256
+    ]
+  },
+  {
+    "asset": "MeadowBattleHeroWeapon",
+    "source": "Art/Parts/P1-Battle/right-idle-v1/weapon-short-sword/weapon.png",
+    "filename": "MeadowBattleHeroWeapon.png",
+    "canvasPx": [
+      256,
+      256
+    ]
+  },
+  {
+    "asset": "MeadowBattleHeroWardrobe",
+    "source": "Art/Parts/P1-Battle/right-idle-v1/outfit-forester/wardrobe.png",
+    "filename": "MeadowBattleHeroWardrobe.png",
+    "canvasPx": [
+      256,
+      256
+    ]
+  },
+  {
+    "asset": "MeadowBattleHeroHair",
+    "source": "Art/Parts/P1-Battle/right-idle-v1/hair-chestnut/hair.png",
+    "filename": "MeadowBattleHeroHair.png",
+    "canvasPx": [
+      256,
+      256
+    ]
+  },
+  {
+    "asset": "MeadowBattleHeroFace",
+    "source": "Art/Parts/P1-Battle/right-idle-v1/face-blue/face.png",
+    "filename": "MeadowBattleHeroFace.png",
+    "canvasPx": [
+      256,
+      256
+    ]
+  },
+  {
+    "asset": "MeadowBattleHeroNearHand",
+    "source": "Art/Templates/P1-Neutral/battle-side/right-idle-parts-v2/parts/body.hand.right.near.png",
+    "filename": "MeadowBattleHeroNearHand.png",
+    "canvasPx": [
+      256,
+      256
+    ]
+  },
+  {
+    "asset": "MeadowBattleHeroFarHand",
+    "source": "Art/Parts/P1-Battle/right-idle-v1/hand-foreground/far.png",
+    "filename": "MeadowBattleHeroFarHand.png",
+    "canvasPx": [
+      256,
+      256
+    ]
+  },
+  {
+    "asset": "MeadowBattleForestWarden",
+    "source": "Art/Scenes/MeadowBattle/enemies/forest-warden-v2/idle.png",
+    "filename": "MeadowBattleForestWarden.png",
+    "canvasPx": [
+      384,
+      256
+    ]
+  }
+]

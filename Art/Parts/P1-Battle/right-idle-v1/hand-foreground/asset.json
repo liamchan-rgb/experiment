@@ -1,0 +1,22 @@
+{
+  "status": "single-pose-ownership-correction-candidate",
+  "source": "Art/Templates/P1-Neutral/battle-side/right-idle-parts-v2/parts/body.hand.left.far.png",
+  "image": "far.png",
+  "canvasPx": [
+    256,
+    256
+  ],
+  "sourceRegionRetained": [
+    0,
+    0,
+    256,
+    177
+  ],
+  "placement": [
+    0,
+    0
+  ],
+  "neutralBodyChanged": false,
+  "reason": "Prevent rear-leg pixels owned by the old far-hand split from restoring bare skin above trousers",
+  "userArtApproval": null
+}

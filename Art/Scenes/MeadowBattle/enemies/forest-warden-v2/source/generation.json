@@ -1,0 +1,12 @@
+{
+  "tool": "OpenAI image generation",
+  "date": "2026-10-20",
+  "retainedOriginal": "idle-chromakey.png",
+  "originalGeneratedPath": "/workspace/generated_images/exec-a925b318-2d53-4197-8b6e-50563eaf4117.png",
+  "sha256": "e5e0c9f58f888d90e58c643e0dbfa13734be41dff36ac428c7dfc4789c25fdb4",
+  "reference": "Art/Scenes/MeadowBattle/enemies/forest-warden-v1/source/forest-warden-chromakey.png",
+  "referenceSHA256": "68c683bf8906ea8c79deda7ac35f1b806fceb11969f58f2226f830bf67a4267b",
+  "prompt": "prompt.txt",
+  "promptSHA256": "20a204b5b8797fc2872172ad6b4536249a83a858173b0e5ef0b4c0f63f3ea1af",
+  "status": "new art candidate, no user approval"
+}

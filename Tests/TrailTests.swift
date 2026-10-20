@@ -413,10 +413,22 @@ final class TrailTests: XCTestCase {
         XCTAssertEqual(enemy.cgImage?.height, Int(MeadowBattleCanvasGeometry.enemyImageSize.height))
         XCTAssertNotEqual(enemy.cgImage?.alphaInfo, CGImageAlphaInfo.none,
                           "The forest enemy must remain a transparent sprite cutout")
+        let actor = try XCTUnwrap(MeadowBattleActorConfiguration.load())
+        XCTAssertEqual(actor.canvasSize, CGSize(width: 256, height: 256))
+        XCTAssertEqual(actor.footAnchor, CGPoint(x: 123, y: 214))
+        XCTAssertEqual(actor.layers, ["MeadowBattleHeroWeapon", "MeadowBattleHeroBody", "MeadowBattleHeroWardrobe",
+                                      "MeadowBattleHeroHair", "MeadowBattleHeroFace",
+                                      "MeadowBattleHeroNearHand", "MeadowBattleHeroFarHand"])
+        for name in actor.layers {
+            let layer = try XCTUnwrap(UIImage(named: name), "Missing registered actor part: \(name)")
+            XCTAssertEqual(layer.cgImage?.width, 256)
+            XCTAssertEqual(layer.cgImage?.height, 256)
+        }
 
         let view = MeadowBattleLandscapeView(frame: CGRect(x: 0, y: 0, width: 900, height: 500))
         view.layoutIfNeeded()
         XCTAssertEqual(view.sceneLayerOrder, MeadowBattleCanvasGeometry.sceneLayerOrder)
+        XCTAssertEqual(view.heroLayerNames, actor.layers)
 
         let expectedCanvas = CGRect(x: 177.518734388, y: 0, width: 544.962531224, height: 500)
         XCTAssertEqual(view.sceneCanvasFrame.minX, expectedCanvas.minX, accuracy: 0.001)
@@ -431,8 +443,8 @@ final class TrailTests: XCTestCase {
             XCTAssertEqual(layerFrame.height, expectedCanvas.height, accuracy: 0.01,
                            "Every environment plate must use the same full-canvas height")
         }
-        let heroFoot = CGPoint(x: view.heroViewFrame.minX + 128.5 / 256.0 * view.heroViewFrame.width,
-                               y: view.heroViewFrame.minY + 224.0 / 256.0 * view.heroViewFrame.height)
+        let heroFoot = CGPoint(x: view.heroViewFrame.minX + actor.footAnchor.x / actor.canvasSize.width * view.heroViewFrame.width,
+                               y: view.heroViewFrame.minY + actor.footAnchor.y / actor.canvasSize.height * view.heroViewFrame.height)
         let enemyFoot = CGPoint(x: view.enemyViewFrame.minX
                                     + MeadowBattleCanvasGeometry.enemyAlphaBounds.midX
                                     / MeadowBattleCanvasGeometry.enemyImageSize.width
@@ -441,11 +453,11 @@ final class TrailTests: XCTestCase {
                                     + MeadowBattleCanvasGeometry.enemyAlphaBounds.maxY
                                     / MeadowBattleCanvasGeometry.enemyImageSize.height
                                     * view.enemyViewFrame.height)
-        XCTAssertEqual(heroFoot.x, expectedCanvas.width * 0.30, accuracy: 0.01)
-        XCTAssertEqual(heroFoot.y, expectedCanvas.height * 0.69, accuracy: 0.01)
+        XCTAssertEqual(heroFoot.x, expectedCanvas.width * MeadowBattleCanvasGeometry.heroFoot.x, accuracy: 0.01)
+        XCTAssertEqual(heroFoot.y, expectedCanvas.height * MeadowBattleCanvasGeometry.heroFoot.y, accuracy: 0.01)
         XCTAssertEqual(enemyFoot.x, expectedCanvas.width * MeadowBattleCanvasGeometry.enemyFoot.x, accuracy: 0.01)
         XCTAssertEqual(enemyFoot.y, expectedCanvas.height * MeadowBattleCanvasGeometry.enemyFoot.y, accuracy: 0.01)
-        XCTAssertEqual(view.heroViewFrame.height * (156.0 / 256.0),
+        XCTAssertEqual(view.heroViewFrame.height * actor.referenceHeightPx / actor.canvasSize.height,
                        expectedCanvas.height * MeadowBattleCanvasGeometry.heroVisibleHeight, accuracy: 0.01,
                        "The traveller should read at battle-character scale rather than as a map-scale giant")
         XCTAssertEqual(view.enemyViewFrame.height
@@ -453,6 +465,10 @@ final class TrailTests: XCTestCase {
                            / MeadowBattleCanvasGeometry.enemyImageSize.height,
                        expectedCanvas.height * MeadowBattleCanvasGeometry.enemyVisibleHeight, accuracy: 0.01,
                        "The enemy needs enough visual weight to read clearly in the battle pane")
+        let heroPixelScale = view.heroViewFrame.width / actor.canvasSize.width
+        let enemyPixelScale = view.enemyViewFrame.width / MeadowBattleCanvasGeometry.enemyImageSize.width
+        XCTAssertEqual(enemyPixelScale / heroPixelScale, 1, accuracy: 0.15,
+                       "Actor and enemy should use comparable source-pixel density")
         XCTAssertFalse(view.enemyIsMirrored, "The source sprite already faces the approaching right-facing traveller")
 
         let subviewOrder = view.sceneCanvasSubviewOrder

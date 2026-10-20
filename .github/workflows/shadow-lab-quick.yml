@@ -212,18 +212,17 @@ jobs:
           set -euo pipefail
           if [ -d build/MapReview.xcresult ]; then
             mkdir -p build/preview-stills/layered build/preview-stills/meadow-battle
-            if xcrun xcresulttool export attachments --help >/dev/null 2>&1; then
-              xcrun xcresulttool export attachments --path build/MapReview.xcresult \
-                --output-path build/preview-stills/layered \
-                --test-id 'JourneyUITests/testLayeredP1ColorwayPreviewRunsBesideOriginalInTheMapScene()' \
-                2>&1 | tee build/logs/layered-preview-export.log
-              xcrun xcresulttool export attachments --path build/MapReview.xcresult \
-                --output-path build/preview-stills/meadow-battle \
-                --test-id 'JourneyUITests/testMeadowBattlePreviewKeepsReferenceMapBesideLandscapeScene()' \
+            python3 scripts/export-xcresult-attachments.py \
+              build/MapReview.xcresult build/preview-stills/layered \
+              --name layered-p1-original-versus-blue-boots \
+              2>&1 | tee build/logs/layered-preview-export.log
+            if [[ '${{ inputs.preview_only }}' == 'true' ]]; then
+              python3 scripts/export-xcresult-attachments.py \
+                build/MapReview.xcresult build/preview-stills/meadow-battle \
+                --name meadow-layout-player-turn \
+                --name meadow-layout-monster-turn \
+                --name meadow-layout-exploration \
                 2>&1 | tee build/logs/meadow-battle-preview-export.log
-            else
-              echo 'Screenshot attachments remain in MapReview.xcresult; this Xcode version has no export attachments command.' \
-                | tee build/logs/meadow-battle-preview-export.log
             fi
           fi
 

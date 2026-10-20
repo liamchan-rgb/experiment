@@ -1,0 +1,34 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "p1-battle-side-right-idle-hair-chestnut-candidate-v1",
+  "status": "single-pose-art-candidate-awaiting-user-review",
+  "part": "hair.front-and-cap",
+  "direction": "battle-side-right",
+  "clip": "idle",
+  "frame": 0,
+  "canvasPx": [
+    256,
+    256
+  ],
+  "png": "hair.png",
+  "editableSource": "hair.svg",
+  "registration": "same full-canvas coordinates as the approved battle-side right idle r2 pose",
+  "coverage": "Solid chestnut cap covering the upper skull and left back of head, down to the area above the ear, with a short right-forehead fringe; no skin, ear, face, or clothing pixels.",
+  "reviewComposite": "review-r2.png",
+  "provenance": {
+    "basePose": "Art/Templates/P1-Neutral/battle-side/right-idle-r2/00.png",
+    "sourceArtModified": false,
+    "sourceWasCroppedFromSceneComposite": false
+  },
+  "limits": [
+    "This is one unapproved static view; no walk frames or other directions are supplied.",
+    "The placement is a visual candidate and does not establish a reusable head profile or production hair module."
+  ],
+  "alphaBoundsPx": [
+    101,
+    82,
+    158,
+    117
+  ],
+  "revisionNote": "Self-review found the prior cap too thin and ring-like, leaving a broad bare central scalp. This revision fills the crown and back-of-head mass while preserving the approved r2 body and keeping the right-facing eyebrow/eye unobstructed. Self-review is not user artwork approval."
+}

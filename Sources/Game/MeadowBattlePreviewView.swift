@@ -270,11 +270,12 @@ private final class MeadowPreviewCard: UIView {
 struct MeadowBattleCanvasGeometry {
     static let sourceCanvas = CGSize(width: 1309, height: 1201)
     static let sceneLayerOrder = ["MeadowCampFarForest", "MeadowCampGround", "MeadowCampMidground", "MeadowCampForeground"]
-    static let enemyImageSize = CGSize(width: 1536, height: 1024)
-    static let enemyAlphaBounds = CGRect(x: 32, y: 12, width: 1484, height: 948)
+    static let enemyImageSize = CGSize(width: 384, height: 256)
+    static let enemyAlphaBounds = CGRect(x: 13, y: 9, width: 331, height: 232)
     static let enemyFoot = CGPoint(x: 0.70, y: 0.685)
-    static let heroVisibleHeight: CGFloat = 0.12
-    static let enemyVisibleHeight: CGFloat = 0.38
+    static let heroFoot = CGPoint(x: 0.29, y: 0.69)
+    static let heroVisibleHeight: CGFloat = 0.17
+    static let enemyVisibleHeight: CGFloat = 0.33
 
     static func fittedCanvas(in bounds: CGRect) -> CGRect {
         let scale = min(bounds.width / sourceCanvas.width, bounds.height / sourceCanvas.height)
@@ -292,18 +293,25 @@ struct MeadowBattleCanvasGeometry {
                       y: footPoint.y - (alphaBounds.maxY * scale),
                       width: imageSize.width * scale, height: imageSize.height * scale)
     }
+
+    static func actorFrame(configuration: MeadowBattleActorConfiguration, canvas: CGRect) -> CGRect {
+        let scale = canvas.height * heroVisibleHeight / configuration.referenceHeightPx
+        return CGRect(x: canvas.minX + canvas.width * heroFoot.x - configuration.footAnchor.x * scale,
+                      y: canvas.minY + canvas.height * heroFoot.y - configuration.footAnchor.y * scale,
+                      width: configuration.canvasSize.width * scale, height: configuration.canvasSize.height * scale)
+    }
 }
 
 final class MeadowBattleLandscapeView: UIView {
     private let canvas = UIView()
-    private let farForest = UIImageView(image: UIImage(named: "MeadowCampFarForest"))
-    private let ground = UIImageView(image: UIImage(named: "MeadowCampGround"))
-    private let midground = UIImageView(image: UIImage(named: "MeadowCampMidground"))
+    private let farForest = UIImageView(image: MeadowBattlePlateProcessor.image(named: "MeadowCampFarForest", role: .farForest))
+    private let ground = UIImageView(image: MeadowBattlePlateProcessor.image(named: "MeadowCampGround", role: .ground))
+    private let midground = UIImageView(image: MeadowBattlePlateProcessor.image(named: "MeadowCampMidground", role: .midground))
     private let foreground = UIImageView(image: UIImage(named: "MeadowCampForeground"))
-    private let hero = UIImageView()
-    private let enemy = UIImageView(image: UIImage(named: "MeadowBattleForestWarden"))
-    private let heroShadow = UIView()
-    private let enemyShadow = UIView()
+    private let hero: MeadowBattleActorView
+    private let enemy: UIImageView
+    private let heroShadow: MeadowBattleGroundingView
+    private let enemyShadow: MeadowBattleGroundingView
     private var sceneLayers: [UIImageView] { [farForest, ground, midground, foreground] }
 
     var sceneLayerOrder: [String] { sceneLayers.compactMap(\.accessibilityIdentifier) }
@@ -311,16 +319,26 @@ final class MeadowBattleLandscapeView: UIView {
     var sceneCanvasFrame: CGRect { canvas.frame }
     var sceneCanvasSubviewOrder: [String] { canvas.subviews.compactMap(\.accessibilityIdentifier) }
     var heroViewFrame: CGRect { hero.frame }
+    var heroLayerNames: [String] { hero.layerNames }
     var enemyViewFrame: CGRect { enemy.frame }
     var enemyIsMirrored: Bool { enemy.transform.a < 0 }
 
     override init(frame: CGRect) {
-        let atlas = UIImage(named: "Hero1Directions")?.cgImage
-        let cellSize = 256
-        let rightIdle = atlas?.cropping(to: CGRect(x: 0, y: cellSize * 3,
-                                                   width: cellSize, height: cellSize))
+        let actor = MeadowBattleActorView(frame: .zero)
+        hero = actor
+        let enemyImage = UIImage(named: "MeadowBattleForestWarden")
+        enemy = UIImageView(image: enemyImage)
+        heroShadow = MeadowBattleGroundingView(image: actor.silhouette, soleY: 214, contacts: [
+            .init(point: CGPoint(x: 98, y: 214), radius: 12),
+            .init(point: CGPoint(x: 146, y: 214), radius: 12)
+        ])
+        enemyShadow = MeadowBattleGroundingView(image: enemyImage, soleY: 241, contacts: [
+            .init(point: CGPoint(x: 83, y: 240), radius: 19),
+            .init(point: CGPoint(x: 175, y: 240), radius: 19),
+            .init(point: CGPoint(x: 236, y: 235), radius: 17),
+            .init(point: CGPoint(x: 320, y: 240), radius: 20)
+        ])
         super.init(frame: frame)
-        if let rightIdle { hero.image = UIImage(cgImage: rightIdle) }
         clipsToBounds = true
         layer.cornerRadius = 14
         layer.borderWidth = 1
@@ -344,15 +362,12 @@ final class MeadowBattleLandscapeView: UIView {
 
         hero.accessibilityIdentifier = "meadowBattleHero"
         hero.isAccessibilityElement = true
-        hero.accessibilityLabel = "Meadow Journey 冒险者，向右待机姿态"
-        hero.contentMode = .scaleToFill
-        hero.layer.minificationFilter = .nearest
-        hero.layer.magnificationFilter = .nearest
+        hero.accessibilityLabel = "Meadow Journey 冒险者，向右侧向备战，独立头发、五官、衣物与短剑"
         canvas.addSubview(hero)
 
         enemy.accessibilityIdentifier = "meadowBattleForestWarden"
         enemy.isAccessibilityElement = true
-        enemy.accessibilityLabel = "林地鹿灵敌方单位示意，朝左"
+        enemy.accessibilityLabel = "林地鹿灵敌方单位示意，朝左站立警戒"
         enemy.contentMode = .scaleToFill
         enemy.layer.minificationFilter = .nearest
         enemy.layer.magnificationFilter = .nearest
@@ -366,7 +381,6 @@ final class MeadowBattleLandscapeView: UIView {
     private func configureShadow(_ shadow: UIView, identifier: String) {
         shadow.accessibilityIdentifier = identifier
         shadow.isUserInteractionEnabled = false
-        shadow.backgroundColor = UIColor(red: 0.08, green: 0.10, blue: 0.07, alpha: 0.26)
     }
 
     override func layoutSubviews() {
@@ -377,12 +391,9 @@ final class MeadowBattleLandscapeView: UIView {
         let canvasBounds = canvas.bounds
         sceneLayers.forEach { $0.frame = canvasBounds }
 
-        let heroFrame = MeadowBattleCanvasGeometry.registeredSpriteFrame(
-            imageSize: CGSize(width: 256, height: 256),
-            alphaBounds: CGRect(x: 87, y: 68, width: 83, height: 156),
-            foot: CGPoint(x: 0.30, y: 0.69), visibleHeight: MeadowBattleCanvasGeometry.heroVisibleHeight,
-            canvas: canvasBounds)
-        hero.frame = heroFrame
+        if let configuration = hero.configuration {
+            hero.frame = MeadowBattleCanvasGeometry.actorFrame(configuration: configuration, canvas: canvasBounds)
+        }
         let enemyFrame = MeadowBattleCanvasGeometry.registeredSpriteFrame(
             imageSize: MeadowBattleCanvasGeometry.enemyImageSize,
             alphaBounds: MeadowBattleCanvasGeometry.enemyAlphaBounds,
@@ -390,16 +401,9 @@ final class MeadowBattleLandscapeView: UIView {
             canvas: canvasBounds)
         enemy.frame = enemyFrame
 
-        let heroFoot = CGPoint(x: canvasBounds.width * 0.30, y: canvasBounds.height * 0.69)
-        let enemyFoot = CGPoint(x: canvasBounds.width * MeadowBattleCanvasGeometry.enemyFoot.x,
-                                y: canvasBounds.height * MeadowBattleCanvasGeometry.enemyFoot.y)
-        heroShadow.frame = CGRect(x: heroFoot.x - heroFrame.width * 0.21,
-                                  y: heroFoot.y - max(2, canvasBounds.height * 0.006),
-                                  width: heroFrame.width * 0.42, height: max(5, canvasBounds.height * 0.016))
-        enemyShadow.frame = CGRect(x: enemyFoot.x - enemyFrame.width * 0.36,
-                                   y: enemyFoot.y - max(2, canvasBounds.height * 0.006),
-                                   width: enemyFrame.width * 0.72, height: max(6, canvasBounds.height * 0.018))
-        heroShadow.layer.cornerRadius = heroShadow.bounds.height / 2
-        enemyShadow.layer.cornerRadius = enemyShadow.bounds.height / 2
+        heroShadow.frame = canvasBounds
+        heroShadow.spriteFrame = hero.frame
+        enemyShadow.frame = canvasBounds
+        enemyShadow.spriteFrame = enemyFrame
     }
 }

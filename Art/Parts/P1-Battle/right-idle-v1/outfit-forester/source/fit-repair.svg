@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256" shape-rendering="crispEdges">
+  <!-- This pose-locked clothing underlap is clipped to the neutral silhouette by build.sh. -->
+  <path id="jacket-underlap" fill="#28492b" d="M104 130h24v29h-24z"/>
+  <path id="jacket-edge-shade" fill="#17251b" d="M104 130h3v29h-3z"/>
+  <path id="jacket-light" fill="#3e6337" d="M107 130h2v29h-2z"/>
+  <path id="trouser-underlap" fill="#41413b" d="M88 170h64v44H88z"/>
+  <path id="trouser-light" fill="#4a4a43" d="M96 170h18v44H96z"/>
+  <path id="trouser-shadow" fill="#30312d" d="M132 170h20v44h-20z"/>
+  <path id="far-upper-thigh" fill="#30312d" d="M99 177h14v9H99z"/>
+</svg>

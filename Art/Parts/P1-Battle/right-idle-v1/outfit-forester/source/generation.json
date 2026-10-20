@@ -1,0 +1,12 @@
+{
+  "tool": "OpenAI image generation",
+  "date": "2026-10-20",
+  "retainedOriginal": "registered-chromakey.png",
+  "originalGeneratedPath": "/workspace/generated_images/exec-b60948d0-7db7-4ad8-8f97-ba4766763710.png",
+  "sha256": "cc48c230d20605a4387167eb5d7c97cd23a26ce7646ec7da0e382c2d39ccd673",
+  "reference": "Art/Templates/P1-Neutral/battle-side/right-idle-r2/00.png",
+  "referenceSHA256": "9ac9c8141617b9eb31084b7139227fa9cf8ab9ccf6fa7a31a98c661a68923065",
+  "prompt": "prompt.txt",
+  "promptSHA256": "1550326c72c96446a9257780583d9611fa16e5b4bdeba9087715b6d2c77ea043",
+  "status": "new art candidate, no user approval"
+}

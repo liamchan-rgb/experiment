@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256" shape-rendering="crispEdges">
+  <title>Right-facing side idle short sword candidate</title>
+  <desc>Independent pixel-geometric short sword on the registered 256 by 256 P1 battle-side canvas. Transparent everywhere except sword pixels.</desc>
+  <!-- Blade: narrow, tapered steel, extending up-right from the guard. -->
+  <g id="weapon.blade">
+    <path fill="#302a29" d="M151 157 L189 140 L194 142 L157 163 Z"/>
+    <path fill="#687078" d="M153 157 L189 141 L193 142 L157 160 Z"/>
+    <path fill="#dce3e4" d="M154 157 L188 142 L191 142 L157 159 Z"/>
+    <path fill="#f4f2e8" d="M157 156 L188 142 L190 142 L159 157 Z"/>
+    <path fill="#8d989b" d="M153 158 L157 160 L193 142 L191 142 Z"/>
+    <path fill="#aab4b4" d="M188 141 L193 142 L194 143 L190 144 Z"/>
+    <path fill="#252527" d="M190 140 L194 142 L194 143 L192 143 Z"/>
+  </g>
+  <!-- Symmetric foreshortened guard: both wings follow the same upper-left/lower-right diagonal. -->
+  <g id="weapon.guard">
+    <path fill="#493018" d="M147 153 L150 151 L158 165 L155 168 Z"/>
+    <path fill="#a86f2d" d="M148 153 L150 152 L157 165 L155 166 Z"/>
+    <path fill="#e4b65c" d="M149 153 L150 153 L156 164 L155 164 Z"/>
+    <path fill="#70471f" d="M147 153 L150 151 L151 153 L149 155 Z"/>
+    <path fill="#70471f" d="M155 165 L158 165 L155 168 L154 166 Z"/>
+    <path fill="#f0cb78" d="M149 152 L150 151 L151 153 L150 154 Z"/>
+    <path fill="#f0cb78" d="M155 165 L157 165 L156 167 L154 167 Z"/>
+  </g>
+  <!-- Brown grip runs from the pinky-side pommel through the palm to the guard. -->
+  <g id="weapon.grip">
+    <path fill="#34251e" d="M136 167 L149 159 L153 160 L140 169 Z"/>
+    <path fill="#68452d" d="M137 166 L149 159 L152 160 L140 168 Z"/>
+    <path fill="#91643d" d="M139 166 L149 160 L151 160 L141 167 Z"/>
+    <path fill="#3a2c25" d="M138 164 L140 163 L143 168 L141 169 Z"/>
+    <path fill="#3a2c25" d="M142 162 L144 161 L147 166 L145 167 Z"/>
+    <path fill="#3a2c25" d="M146 160 L148 159 L151 164 L149 165 Z"/>
+    <path fill="#af824c" d="M139 165 L140 164 L141 165 L140 166 Z"/>
+    <path fill="#af824c" d="M143 163 L144 162 L145 163 L144 164 Z"/>
+    <path fill="#af824c" d="M147 161 L148 160 L149 161 L148 162 Z"/>
+  </g>
+  <!-- Compact pommel stays at the trailing, pinky-side end. -->
+  <g id="weapon.pommel">
+    <path fill="#493018" d="M134 166 L137 164 L141 170 L138 172 Z"/>
+    <path fill="#c18a3d" d="M135 166 L137 165 L140 170 L138 171 Z"/>
+    <path fill="#f0cb78" d="M135 166 L137 165 L138 167 L136 168 Z"/>
+    <path fill="#70471f" d="M138 170 L140 170 L139 172 L137 172 Z"/>
+  </g>
+</svg>

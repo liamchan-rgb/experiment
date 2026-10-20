@@ -1,0 +1,35 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "p1-battle-side-right-idle-face-blue-candidate-v1",
+  "status": "single-pose-art-candidate-awaiting-review",
+  "part": "face.features",
+  "direction": "battle-side-right",
+  "clip": "idle",
+  "frame": 0,
+  "canvasPx": [
+    256,
+    256
+  ],
+  "png": "face.png",
+  "editableSource": "face.svg",
+  "registration": "same full-canvas coordinates as the approved battle-side right idle r2 pose",
+  "coverage": "One blue eye, eyebrow, right-facing nose mark, and mouth only; no skin, ear, or hair pixels. Eye is placed on the right side of the face near x=148, y=109.",
+  "reviewComposite": "review-r2-with-hair.png",
+  "detailReview": "review-head-detail.png",
+  "provenance": {
+    "basePose": "Art/Templates/P1-Neutral/battle-side/right-idle-r2/00.png",
+    "hairReference": "../hair-chestnut/hair.png",
+    "sourceArtModified": false,
+    "sourceWasCroppedFromSceneComposite": false
+  },
+  "limits": [
+    "This is one unapproved static view; no walk frames or other directions are supplied.",
+    "The placement is a visual candidate and does not establish a reusable face profile or production head module."
+  ],
+  "alphaBoundsPx": [
+    145,
+    104,
+    156,
+    119
+  ]
+}
