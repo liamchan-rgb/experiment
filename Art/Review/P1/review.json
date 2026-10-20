@@ -1891,7 +1891,7 @@
       "approved neutral body pose r2",
       "P1 blue wardrobe colorway with original registered alpha",
       "chestnut hair",
-      "blue facial features v4",
+      "blue facial features v5",
       "short sword",
       "near hand foreground",
       "far hand foreground ownership correction",
@@ -1905,17 +1905,17 @@
     "limits": "One right-facing static idle fixture and one static enemy pose; no full hidden anatomy, animation, additional outfit or third-resource compatibility validation.",
     "releaseVersion": "1.6.8",
     "internalFaceReadabilityReview": {
-      "revision": "v4",
-      "status": "passed-feature-separation-at-256px",
-      "scope": "eye, brow, nose and mouth separation from one another and the profile edge",
+      "revision": "v5",
+      "status": "asset-level-pass-simulator-scale-pending",
+      "scope": "eye, brow, nose and mouth readability in the full registered 256px composite",
       "userArtApproval": null
     }
   },
   "battleSideFaceReview": {
-    "id": "p1-battle-side-right-idle-face-blue-v4",
+    "id": "p1-battle-side-right-idle-face-blue-v5",
     "status": "single-pose-art-candidate-awaiting-user-review",
     "source": "Art/Parts/P1-Battle/right-idle-v1/face-blue",
-    "reviewImage": "Art/Parts/P1-Battle/right-idle-v1/review-face-v4.png",
+    "reviewImage": "Art/Parts/P1-Battle/right-idle-v1/review-face-v5.png",
     "detailImage": "Art/Parts/P1-Battle/right-idle-v1/face-blue/review-head-detail.png",
     "runtimeImage": "Sources/Resources/Assets.xcassets/MeadowBattleHeroFace.imageset/MeadowBattleHeroFace.png",
     "basePoseApprovalReference": "p1-neutral-battle-side-right-idle-r2",
@@ -1926,17 +1926,17 @@
     "alphaBoundsPx": [
       138,
       105,
-      150,
-      120
+      148,
+      118
     ],
-    "scope": "Inset the nose and closed mouth from the profile edge, add a small warm nose highlight, and keep eye/brow clear at native registered scale.",
+    "scope": "Keep the blue eye/brow and make the nose mark and 3px mouth line distinct at native registered scale, both inset one pixel from v4.",
     "sourcePoseChanged": false,
     "userArtApproval": null,
     "runtimeScreenshotAvailable": false,
     "next": "Review the build34 iPad simulator screenshots before extending the face design to other directions or expressions.",
     "internalReadabilityReview": {
-      "status": "passed",
-      "scope": "Feature separation and profile clearance at enlarged and 256x256 recomposition scale",
+      "status": "asset-level-pass-simulator-scale-pending",
+      "scope": "Full registered 256x256 recomposition; enlarged detail is supporting evidence only",
       "userArtApproval": null
     }
   },

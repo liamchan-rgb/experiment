@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0.0",
-  "id": "p1-battle-side-right-idle-face-blue-candidate-v3",
+  "id": "p1-battle-side-right-idle-face-blue-candidate-v5",
   "status": "single-pose-art-candidate-awaiting-review",
   "part": "face.features",
   "direction": "battle-side-right",
@@ -26,6 +26,6 @@
     "This is one unapproved static view; no walk frames or other directions are supplied.",
     "The placement is a visual candidate and does not establish a reusable face profile or production head module."
   ],
-  "alphaBoundsPx": [140, 105, 152, 120],
-  "revision": "v3 moves the eye, brow, nose and mouth inward and increases eye contrast for native-size readability; requires user art review."
+  "alphaBoundsPx": [138, 105, 148, 118],
+  "revision": "v5 keeps the blue eye/brow, moves nose/mouth inward by one pixel, adds a three-tone nose mark and a continuous 3px mouth line; requires native simulator and user art review."
 }
