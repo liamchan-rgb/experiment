@@ -4,6 +4,8 @@
 
 ## 当前审核
 
+2026-10-20 新增 [build33 侧向待机运行候选](../Art/Parts/P1-Battle/right-idle-v1/README.md)：沿用已认可r2完整人体，独立叠放绿色衣物／棕色短发／蓝眼五官／短剑，脚底和画布固定。已通过局部自审与iPad专项验证，三态实图见[build33运行证据](../Media/Build33/README.md)；新部件和装配尚无用户美术认可。它只有一张静态待机，不代表下文的隐藏解剖、侧步态、完整换装或动作动画问题已完成。
+
 侧视待机向右中性人体 [r2](../Art/Templates/P1-Neutral/battle-side/right-idle-r2/README.md) 已获认可。用户回复“对了，继续下一步”，认可范围为单张注册后的空手侧视姿态和近侧右手方向。v1 八层静态分割仍作为历史候选保存；隐藏人体底层 [v2](../Art/Templates/P1-Neutral/battle-side/right-idle-parts-v2/README.md) 在原八层之下新增连续颈肩至骨盆皮肤核心。保持256×256共同注册，静态review与v1逐像素一致；新层暂未并入静态合成，因为现有抗锯齿切层边缘会让底层透出并改变外观。442个固定站姿补位像素仍保留；完整四肢底层与肢体移动接缝尚未通过，不能作为生产换装底模。
 
 当前回审焦点为[右向侧步态单帧测试 v1](../Art/Templates/P1-Neutral/battle-side/right-walk-pose-test-v1/README.md)：在256×256注册画布上制作一张小步候选并拆成八个语义层；静态重组逐像素一致，局部underlay新增14个皮肤像素，四个关节根部±1 px诊断均未露底。可查看[单帧对照](../Art/Templates/P1-Neutral/battle-side/right-walk-pose-test-v1/review.png)、[手脚细节](../Art/Templates/P1-Neutral/battle-side/right-walk-pose-test-v1/details.png)、[图层预览](../Art/Templates/P1-Neutral/battle-side/right-walk-pose-test-v1/parts-review.png)和[位移诊断](../Art/Templates/P1-Neutral/battle-side/right-walk-pose-test-v1/movement-test.png)。这只证明单帧轮廓、静态分层及一像素局部覆盖；姿势未获美术认可，完整隐藏解剖、较大幅度关节动作、动画、服装遮挡与运行时均未通过或未制作。认可的r2及其他已认可内容不由本项自动改变。

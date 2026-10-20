@@ -1,6 +1,6 @@
 # 安然 · 林间行旅
 
-[桌游战场试验包：1.6.7 build 32](Downloads/README.md) · [战斗场景与布局说明](docs/MEADOW_BATTLE_LAYOUT.md) · [稳定基线：1.6.3 build 28](Downloads/README.md) · [鞋向实机测试步骤](docs/GAIT_TEST.md) · [正常／慢速录像与抽帧](Media/Build26-Gait/README.md) · [分层动画原型](docs/OPEN_TOONZ_PROTOTYPE.md) · [可换装角色方案评估](docs/CHARACTER_RIG_EVALUATION.md) · [迭代日志](docs/ITERATION_STATUS.md)
+[桌游战场试验包：1.6.8 build 33](Downloads/README.md) · [战斗场景与布局说明](docs/MEADOW_BATTLE_LAYOUT.md) · [稳定基线：1.6.3 build 28](Downloads/README.md) · [鞋向实机测试步骤](docs/GAIT_TEST.md) · [正常／慢速录像与抽帧](Media/Build26-Gait/README.md) · [分层动画原型](docs/OPEN_TOONZ_PROTOTYPE.md) · [可换装角色方案评估](docs/CHARACTER_RIG_EVALUATION.md) · [迭代日志](docs/ITERATION_STATUS.md)
 
 以下为 build 9 的历史版本说明。
 
@@ -18,7 +18,7 @@
 
 ## 安装
 
-[直接下载最新 1.6.7 build 32 IPA](https://raw.githubusercontent.com/liamchan-rgb/experiment/feat/meadow-battle-scene-v0.1/Downloads/MeadowJourney-b32.ipa)。在 Safari 保存到“文件”，再打开 SideStore → My Apps → ＋，选择该文件重签安装。进入主地图后打开“战斗预览”，检查左侧 Meadow Journey 地图与右侧营地林地战场。
+[直接下载最新 1.6.8 build 33 IPA](https://raw.githubusercontent.com/liamchan-rgb/experiment/feat/meadow-battle-scene-v0.1/Downloads/MeadowJourney-b33.ipa)。在 Safari 保存到“文件”，再打开 SideStore → My Apps → ＋，选择该文件重签安装。进入主地图后打开“战斗预览”，检查左侧 Meadow Journey 地图与右侧营地林地战场。
 
 [安装与校验说明](Downloads/README.md) · [录像与截图](Media/README.md) · [迭代记录](docs/ITERATION_STATUS.md) · [PR #3](https://github.com/liamchan-rgb/experiment/pull/3)
 

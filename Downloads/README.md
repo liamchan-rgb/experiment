@@ -1,6 +1,16 @@
 # SideStore 安装与迭代包
 
-## Meadow Journey 战场布局试验包 · 1.6.7 build 32
+## Meadow Journey 战场观感试验包 · 1.6.8 build 33
+
+人物改为侧向持剑备战，独立叠放头发、五官、衣物和短剑；鹿灵改为四蹄落地的警戒站姿。调整双方像素尺度、逐脚接触影、轮廓投影与背景虚实；两种回合共用等比取景，修正怪物回合上下黑边。地图仍以原 Meadow Journey 为基准。
+
+[直接下载 MeadowJourney-b33.ipa](https://raw.githubusercontent.com/liamchan-rgb/experiment/feat/meadow-battle-scene-v0.1/Downloads/MeadowJourney-b33.ipa) · [真实 iPad 截图](../Media/Build33/README.md) · [构建校验元数据](MeadowJourney-build33.json) · [制作日志](../docs/ITERATION_STATUS.md)
+
+未签名，最低 iPadOS 15，arm64。Safari 下载并保存到“文件”，用 SideStore → My Apps → ＋ 重签安装；打开主地图 →“战斗预览”。IPA 23,079,780 字节，SHA-256 `b149816658ff8cf61f8a548f53320fbdea9b5d301d89c56b30099004f069d19d`。ZIP CRC、ZIP_STORED、无 Zip64／额外字段、版本号、设备平台、Metal 库与0755执行权限均已核验。
+
+[最终 iPad 专项 39421546572](https://github.com/liamchan-rgb/experiment/actions/runs/39421546572) 通过4项原生与2项 UI 检查（0失败），实际三态截图已导出并自审；[设备归档 39422558233](https://github.com/liamchan-rgb/experiment/actions/runs/39422558233) 来自同一源码 `cd86161fd817eda49e3750570060e5b644abcb01`。当前仍是静态美术／布局实验，真实战斗规则和完整动作未接入；新增美术未记为用户认可，未在物理 iPad 上验证安装。
+
+## 历史版本：Meadow Journey 战场布局试验包 · 1.6.7 build 32
 
 左侧继续显示 experiment 的 Meadow Journey 地图；右侧战场改为同一套营地林地环境，人物取自地图图集，并配套一只暖棕／苔绿的林地鹿灵样例。整体保持 build31 已确认的地图／战场三态布局和混合回合轨道。
 

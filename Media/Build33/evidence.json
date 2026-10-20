@@ -1,0 +1,60 @@
+{
+  "sourceCommit": "cd86161fd817eda49e3750570060e5b644abcb01",
+  "workflowRunId": 39421546572,
+  "stillsArtifactId": 12263897192,
+  "rawResultArtifactId": 12265085671,
+  "physicalDeviceTested": false,
+  "screenshots": [
+    {
+      "original": "original-attachments/meadow-layout-exploration.png",
+      "originalSHA256": "d0dde89dfb53474f9958b697e04547404210aff7ab7b34f0b4a16c08411305ff",
+      "originalPx": [
+        2064,
+        2752
+      ],
+      "originalOrientation": "LeftBottom / EXIF8",
+      "landscape": "meadow-layout-exploration.png",
+      "landscapeSHA256": "0604132079e3ab7b1bb327bfd38ae7c1e05751ac114693f9a9d12aed0eb407c7",
+      "landscapePx": [
+        2752,
+        2064
+      ],
+      "normalizedPixelSignature": "a9105364be4a13ee7ecea0a40fbd8f3ab00b17bb3c1815b071ea14e5f993c765",
+      "pixelsMatchAfterOrientation": true
+    },
+    {
+      "original": "original-attachments/meadow-layout-monster-turn.png",
+      "originalSHA256": "eebd664f226f8249e610ca5d96bdefe38d507cb3e30498b853460d814b8633d4",
+      "originalPx": [
+        2064,
+        2752
+      ],
+      "originalOrientation": "LeftBottom / EXIF8",
+      "landscape": "meadow-layout-monster-turn.png",
+      "landscapeSHA256": "6f15a57a27bd447377e764510e39ba5af59e4a424343afd48a5755fd3f394f6f",
+      "landscapePx": [
+        2752,
+        2064
+      ],
+      "normalizedPixelSignature": "6afea898445dcc3df4470ffb7754202f0ca27e77f28d604c0ebe750ad874a5f5",
+      "pixelsMatchAfterOrientation": true
+    },
+    {
+      "original": "original-attachments/meadow-layout-player-turn.png",
+      "originalSHA256": "ccbedbbab8b93cbdc200e0f4f1dd16d45f6545f6b3bd57f8af0b790ad38fc2d5",
+      "originalPx": [
+        2064,
+        2752
+      ],
+      "originalOrientation": "LeftBottom / EXIF8",
+      "landscape": "meadow-layout-player-turn.png",
+      "landscapeSHA256": "6756a9800979ee447cf54261d4277a59e5987f0d828cef3d50f838f808f0d312",
+      "landscapePx": [
+        2752,
+        2064
+      ],
+      "normalizedPixelSignature": "cf35200457109b12efa7d07f2bbff68f1775544ae8b835da3c1f1b12ba4c5601",
+      "pixelsMatchAfterOrientation": true
+    }
+  ]
+}

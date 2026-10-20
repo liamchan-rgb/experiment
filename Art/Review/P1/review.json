@@ -1859,5 +1859,36 @@
     "animationDelivered": false,
     "runtimeIntegrated": false,
     "next": "Review the candidate silhouette and layer assignment. If accepted, author actual articulated pose redraws with complete hidden anatomy and test seams across frames before building the walk animation."
+  },
+  "battleSideRuntimeFixture": {
+    "id": "p1-battle-side-right-idle-modular-fixture-v1",
+    "status": "art-candidate-in-tested-runtime-fixture",
+    "source": "Art/Parts/P1-Battle/right-idle-v1",
+    "reviewImage": "Art/Parts/P1-Battle/right-idle-v1/assembled.png",
+    "neutralPoseApprovalReference": "p1-neutral-battle-side-right-idle-r2",
+    "neutralBodySourceChanged": false,
+    "canvasPx": [
+      256,
+      256
+    ],
+    "footAnchorPx": [
+      123,
+      214
+    ],
+    "parts": [
+      "neutral body",
+      "forester wardrobe",
+      "chestnut hair",
+      "blue facial features",
+      "short sword",
+      "near hand foreground",
+      "far hand foreground ownership correction"
+    ],
+    "userArtApproval": null,
+    "runtimeSourceCommit": "cd86161fd817eda49e3750570060e5b644abcb01",
+    "build": 33,
+    "animationDelivered": false,
+    "productionWardrobeContractPassed": false,
+    "limits": "One right-facing static idle fixture; no full hidden anatomy, animation, additional outfit or third-resource compatibility validation."
   }
 }

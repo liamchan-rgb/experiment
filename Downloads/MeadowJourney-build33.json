@@ -1,0 +1,82 @@
+{
+  "schemaVersion": "1.0.0",
+  "application": "MeadowJourney",
+  "bundleIdentifier": "com.liamchan.experiment.meadow",
+  "version": "1.6.8",
+  "build": 33,
+  "file": "MeadowJourney-b33.ipa",
+  "bytes": 23079780,
+  "sha256": "b149816658ff8cf61f8a548f53320fbdea9b5d301d89c56b30099004f069d19d",
+  "source": {
+    "branch": "feat/meadow-battle-scene-v0.1",
+    "commit": "cd86161fd817eda49e3750570060e5b644abcb01"
+  },
+  "archive": {
+    "workflowRunId": 39422558233,
+    "workflowRun": "https://github.com/liamchan-rgb/experiment/actions/runs/39422558233",
+    "artifactId": 12264781729,
+    "artifactName": "MeadowJourney-shadow-lab-IPA",
+    "logsArtifactId": 12263733126,
+    "runner": "macos-14",
+    "xcode": "15.4 (15F31d)",
+    "packageMode": "unsigned SideStore re-signable IPA"
+  },
+  "validation": {
+    "ipaZipCRC": "passed",
+    "zipCompression": "ZIP_STORED",
+    "zip64": false,
+    "zipExtraFields": 0,
+    "bundleVersion": "passed",
+    "physicalDevicePlatform": "iPhoneOS",
+    "architectures": [
+      "arm64"
+    ],
+    "deviceFamilies": [
+      "iPhone",
+      "iPad"
+    ],
+    "minimumOSVersion": "15.0",
+    "metalLibrary": "present",
+    "executablePermission": "0755",
+    "localPackageInspection": "passed"
+  },
+  "uiReview": {
+    "workflowRunId": 39421546572,
+    "workflowRun": "https://github.com/liamchan-rgb/experiment/actions/runs/39421546572",
+    "tests": [
+      "testMeadowBattleUsesRegisteredCampLayersAndOneVisibleForestWarden",
+      "testBattleLayoutKeepsSharedRowsAndExpandsForExplorationAndMonsterTurns",
+      "testBattlePreviewCropsAroundTravellerAndKeepsTerrainAcrossViewport",
+      "testCapturedViewportKeepsGroundAndArtworkAlignedThroughZoomAndPan",
+      "testLayeredP1ColorwayPreviewRunsBesideOriginalInTheMapScene",
+      "testMeadowBattlePreviewKeepsReferenceMapBesideLandscapeScene"
+    ],
+    "result": "6 passed, 0 failures; 4 native checks and 2 iPad UI checks",
+    "device": "iPad Pro 13-inch (M4) simulator",
+    "runtime": "iOS 17.5",
+    "fullSuite": "not rerun; historical gait-suite status remains in docs/ITERATION_STATUS.md",
+    "rawResultArtifactId": 12265085671,
+    "rawResultArtifactName": "shadow-lab-smoke-logs-iPad-39421546572-1",
+    "screenshotExport": "Xcode15 legacy get/export --type file successfully exported all three battle-layout XCTAttachments",
+    "manualSceneReview": "Actual iPad player/monster/exploration screenshots reviewed: both combat poses, comparable source-pixel scale, foot contacts and ground plane, complete hero/blade/antlers/tail, shared camera and no letterbox bands. Original attachment bytes and lossless orientation-normalized PNGs retained.",
+    "stillsArtifactId": 12263897192,
+    "screenshots": "../Media/Build33/README.md"
+  },
+  "physicalIPadTested": false,
+  "artReviewStatus": "Approved r2 neutral pose and original Meadow environment preserved. New static wardrobe, hair, face, short sword, warden and runtime framing remain art candidates without user approval.",
+  "layoutPreview": {
+    "isSampleData": true,
+    "modes": [
+      "exploration",
+      "playerTurn",
+      "monsterTurn"
+    ],
+    "realGameCoreConnected": false,
+    "mapTravellers": 3,
+    "sampleQueuePlayers": 7,
+    "sampleQueueEnemies": 3,
+    "battleActors": "one modular right-facing static battle-idle hero and one left-facing alert forest warden",
+    "limits": "static art/layout fixture; no real battle settlement, save data, enemy/hero combat animation, complete party formation or production wardrobe compatibility approval",
+    "camera": "shared uniformly scaled centered cover; clips outer environment edges while protecting actor silhouettes"
+  }
+}
