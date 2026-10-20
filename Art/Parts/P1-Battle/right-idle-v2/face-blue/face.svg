@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="256" height="256" viewBox="0 0 256 256" image-rendering="pixelated">
+  <title>Right-facing feature cleanup v8</title>
+  <desc>The unrelated forehead fragment is removed from the v7 brow/eye selection; the existing nose, mouth and feature positions are retained.</desc>
+  <g id="face.brow"><image xlink:href="brow.png" width="256" height="256"/></g>
+  <g id="face.eye"><image xlink:href="eye.png" width="256" height="256"/></g>
+  <g id="face.nose"><image xlink:href="../../right-idle-v1/face-blue/source-v7/nose.png" width="256" height="256"/></g>
+  <g id="face.mouth"><image xlink:href="../../right-idle-v1/face-blue/source-v7/mouth.png" width="256" height="256"/></g>
+</svg>

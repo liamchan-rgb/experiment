@@ -6,7 +6,7 @@
 
 2026-10-20 的 [build33 侧向待机运行候选](../Art/Parts/P1-Battle/right-idle-v1/README.md)是历史包：沿用已认可r2完整人体，独立叠放衣物／棕色短发／蓝眼五官／短剑，脚底和画布固定。它只有一张静态待机，不代表下文的隐藏解剖、侧步态、完整换装或动作动画问题已完成。
 
-build34 战场修订候选仍在审核中：[蓝色衣物、像素鹿灵与独立投影](../Art/Parts/P1-Battle/right-idle-v1/README.md)沿用既有注册。v5 五官挤在眼睛附近；v6 的鼻子成块、嘴部脱节，用户再次否定，已归档为废稿。当前 face-blue v7 从整个人物生成稿中仅提取眉、眼、鼻、嘴四组，按固定画布比例注册，人体／头发／耳朵不取自生成稿。自审先看[原始尺寸全身图](../Art/Parts/P1-Battle/right-idle-v1/assembled.png)与[全身3倍预览](../Art/Parts/P1-Battle/right-idle-v1/review-face-v7.png)的比例和侧脸连续性。它们是素材组合图；IPA 交付后由用户实机运行并发截图，我按截图继续修。用户审美认可仍为空，也没有扩大到其他方向或动画。
+当前只审核[战场人物清理稿 v8](../Art/Parts/P1-Battle/right-idle-v2/README.md)：用户要求暂停打包，并用箭头指出额前和左肩多余像素、后脑勺过圆。已清掉五官提取误带的额前竖线和衣层重复黑边，保留原眉眼鼻口位置；后发收窄并向耳后／颈部收拢。另存共同中性头型 r3 候选，仅修后脑轮廓，r2 原图与姿势认可记录保留。先看[全身3倍图](../Art/Parts/P1-Battle/right-idle-v2/review.png)与[256原图](../Art/Parts/P1-Battle/right-idle-v2/assembled.png)。本稿尚未导入 App，也未打包；用户审美认可仍为空。此前 v5／v6 为废稿，v7 运行候选包已暂缓交付。实机运行及截图仍由用户负责。
 
 侧视待机向右中性人体 [r2](../Art/Templates/P1-Neutral/battle-side/right-idle-r2/README.md) 已获认可。用户回复“对了，继续下一步”，认可范围为单张注册后的空手侧视姿态和近侧右手方向。v1 八层静态分割仍作为历史候选保存；隐藏人体底层 [v2](../Art/Templates/P1-Neutral/battle-side/right-idle-parts-v2/README.md) 在原八层之下新增连续颈肩至骨盆皮肤核心。保持256×256共同注册，静态review与v1逐像素一致；新层暂未并入静态合成，因为现有抗锯齿切层边缘会让底层透出并改变外观。442个固定站姿补位像素仍保留；完整四肢底层与肢体移动接缝尚未通过，不能作为生产换装底模。
 

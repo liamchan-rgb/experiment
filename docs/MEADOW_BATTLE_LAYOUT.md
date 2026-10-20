@@ -43,3 +43,5 @@ build32 的 `testMeadowBattleUsesRegisteredCampLayersAndOneVisibleForestWarden` 
 用户指出 face-blue v5 的五官挤在一起，v6 的鼻口仍不像自然人脸，两版均已撤回。当前 v7 以[原始尺寸全身图](../Art/Parts/P1-Battle/right-idle-v1/assembled.png)与[全身3倍预览](../Art/Parts/P1-Battle/right-idle-v1/review-face-v7.png)审核比例和侧脸连续性；只提取生成稿中的眉眼鼻口，沿用原人体、头发、耳朵和服装。蓝色服装、鹿灵站姿与四点接触影保持原注册。
 
 build34 旧截图还暴露独立 aspect-fill 底图在锐利场景结束处形成错位横带。现在模糊底图用与锐利画布相同的宽度比例和顶端位置生成，超出原始场景的部分由模糊底边延展；锐利画布最后 12% 逐渐淡出。此修正尚未通过新运行截图目视验收。按用户要求，实机安装／运行和截图由用户执行；收到截图后再按实际画面迭代。
+
+用户随后要求先停打包，清理 v7 额前和肩部箭头处多余像素并收窄后脑轮廓。当前仅提交[独立 v8 全身美术候选](../Art/Parts/P1-Battle/right-idle-v2/review.png)；其素材、共同中性头型 r3 候选与像素变化范围见[说明](../Art/Parts/P1-Battle/right-idle-v2/README.md)。v8 未接入运行资产，上一轮归档已完成但不交付。
