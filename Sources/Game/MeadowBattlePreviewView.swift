@@ -272,13 +272,15 @@ struct MeadowBattleCanvasGeometry {
     static let sceneLayerOrder = ["MeadowCampFarForest", "MeadowCampGround", "MeadowCampMidground", "MeadowCampForeground"]
     static let enemyImageSize = CGSize(width: 384, height: 256)
     static let enemyAlphaBounds = CGRect(x: 13, y: 9, width: 331, height: 232)
-    static let enemyFoot = CGPoint(x: 0.70, y: 0.685)
+    static let enemyFoot = CGPoint(x: 0.65, y: 0.685)
     static let heroFoot = CGPoint(x: 0.29, y: 0.69)
     static let heroVisibleHeight: CGFloat = 0.17
     static let enemyVisibleHeight: CGFloat = 0.33
 
     static func fittedCanvas(in bounds: CGRect) -> CGRect {
-        let scale = min(bounds.width / sourceCanvas.width, bounds.height / sourceCanvas.height)
+        // One camera transform for every plate, actor and contact. Cover the
+        // viewport as the footer opens/closes; clip only the outer scene edges.
+        let scale = max(bounds.width / sourceCanvas.width, bounds.height / sourceCanvas.height)
         let size = CGSize(width: sourceCanvas.width * scale, height: sourceCanvas.height * scale)
         return CGRect(x: bounds.midX - size.width / 2, y: bounds.midY - size.height / 2,
                       width: size.width, height: size.height)

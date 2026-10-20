@@ -430,7 +430,7 @@ final class TrailTests: XCTestCase {
         XCTAssertEqual(view.sceneLayerOrder, MeadowBattleCanvasGeometry.sceneLayerOrder)
         XCTAssertEqual(view.heroLayerNames, actor.layers)
 
-        let expectedCanvas = CGRect(x: 177.518734388, y: 0, width: 544.962531224, height: 500)
+        let expectedCanvas = CGRect(x: 0, y: -162.872421696, width: 900, height: 825.744843392)
         XCTAssertEqual(view.sceneCanvasFrame.minX, expectedCanvas.minX, accuracy: 0.001)
         XCTAssertEqual(view.sceneCanvasFrame.minY, expectedCanvas.minY, accuracy: 0.001)
         XCTAssertEqual(view.sceneCanvasFrame.width, expectedCanvas.width, accuracy: 0.001)
@@ -487,6 +487,34 @@ final class TrailTests: XCTestCase {
                        "The scene sample should show one distinct enemy")
         XCTAssertTrue(subviewOrder.contains("meadowBattleHeroShadow"))
         XCTAssertTrue(subviewOrder.contains("meadowBattleForestWardenShadow"))
+
+        // Both reviewed iPad aspect ratios, with and without player details.
+        // The scene must cover the viewport, and both visible silhouettes must
+        // stay inside it after the shared camera crops outer environment edges.
+        for size in [CGSize(width: 1440, height: 1080), CGSize(width: 1920, height: 1080)] {
+            for mode in [MeadowBattlePreviewMode.playerTurn, .monsterTurn] {
+                let layout = MeadowBattleLayout(size: size, safeArea: .zero, mode: mode)
+                let viewport = CGRect(origin: .zero, size: layout.battlefield.size)
+                let canvas = MeadowBattleCanvasGeometry.fittedCanvas(in: viewport)
+                XCTAssertTrue(canvas.insetBy(dx: -0.01, dy: -0.01).contains(viewport), "Battle camera must leave no letterbox bands")
+                let localCanvas = CGRect(origin: .zero, size: canvas.size)
+                let hero = MeadowBattleCanvasGeometry.actorFrame(configuration: actor, canvas: localCanvas)
+                let enemy = MeadowBattleCanvasGeometry.registeredSpriteFrame(
+                    imageSize: MeadowBattleCanvasGeometry.enemyImageSize,
+                    alphaBounds: MeadowBattleCanvasGeometry.enemyAlphaBounds,
+                    foot: MeadowBattleCanvasGeometry.enemyFoot,
+                    visibleHeight: MeadowBattleCanvasGeometry.enemyVisibleHeight, canvas: localCanvas)
+                for (frame, ink) in [(hero, CGRect(x: 88, y: 82, width: 106, height: 132)),
+                                     (enemy, MeadowBattleCanvasGeometry.enemyAlphaBounds)] {
+                    let source = frame == hero ? actor.canvasSize : MeadowBattleCanvasGeometry.enemyImageSize
+                    let visible = CGRect(x: canvas.minX + frame.minX + ink.minX * frame.width / source.width,
+                                         y: canvas.minY + frame.minY + ink.minY * frame.height / source.height,
+                                         width: ink.width * frame.width / source.width,
+                                         height: ink.height * frame.height / source.height)
+                    XCTAssertTrue(viewport.insetBy(dx: -0.01, dy: -0.01).contains(visible), "Camera must preserve the hero, blade, antlers and tail")
+                }
+            }
+        }
     }
 
     func testOnlyTheTowerGetsAnAdditionalBanner() throws {
