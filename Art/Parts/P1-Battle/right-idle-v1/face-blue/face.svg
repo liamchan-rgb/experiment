@@ -1,24 +1,24 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256" shape-rendering="crispEdges" image-rendering="pixelated">
   <title>Blue eye and right-facing facial features for battle-side idle r2</title>
-  <desc>Independent feature-only pixel layer. The single visible blue eye is on the right side of the face; brow, nose mark, and mouth face toward the right.</desc>
+  <desc>Independent feature-only pixel layer. The brow, blue eye, nose and closed mouth sit several pixels inside the right-facing profile so they remain distinct at runtime scale.</desc>
   <g id="face.brow">
-    <rect x="145" y="104" width="4" height="2" fill="#553526"/>
-    <rect x="149" y="105" width="3" height="1" fill="#6d432d"/>
+    <rect x="140" y="105" width="5" height="2" fill="#553526"/>
+    <rect x="144" y="106" width="3" height="1" fill="#6d432d"/>
   </g>
   <g id="face.eye">
-    <path fill="#34231d" d="M145 107H147V106H151V107H153V109H152V111H149V112H146V110H145Z"/>
-    <path fill="#f2e4cf" d="M146 108H148V107H151V108H152V109H151V110H148V110H146Z"/>
-    <rect x="149" y="107" width="2" height="4" fill="#477fae"/>
-    <rect x="150" y="108" width="2" height="2" fill="#2d5274"/>
-    <rect x="149" y="107" width="1" height="1" fill="#fff0d5"/>
+    <path fill="#34231d" d="M140 109H142V107H147V108H149V110H148V113H146V114H142V112H140Z"/>
+    <path fill="#f2e4cf" d="M142 109H143V108H147V109H148V111H146V112H143V111H142Z"/>
+    <rect x="144" y="108" width="2" height="5" fill="#477fae"/>
+    <rect x="145" y="109" width="2" height="3" fill="#2d5274"/>
+    <rect x="144" y="108" width="1" height="1" fill="#fff0d5"/>
   </g>
   <g id="face.nose-mark">
-    <rect x="153" y="111" width="2" height="1" fill="#7a4836"/>
-    <rect x="154" y="112" width="2" height="1" fill="#523128"/>
+    <rect x="149" y="112" width="2" height="1" fill="#7a4836"/>
+    <rect x="150" y="113" width="2" height="1" fill="#523128"/>
   </g>
   <g id="face.mouth">
-    <rect x="150" y="116" width="2" height="1" fill="#714039"/>
-    <rect x="152" y="117" width="3" height="1" fill="#813c36"/>
-    <rect x="151" y="118" width="3" height="1" fill="#a8524b"/>
+    <rect x="146" y="117" width="3" height="1" fill="#714039"/>
+    <rect x="148" y="118" width="3" height="1" fill="#813c36"/>
+    <rect x="147" y="119" width="3" height="1" fill="#a8524b"/>
   </g>
 </svg>

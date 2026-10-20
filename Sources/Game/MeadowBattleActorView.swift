@@ -73,7 +73,10 @@ final class MeadowBattleGroundingView: UIView {
     private let contacts: [Contact]
 
     init(image: UIImage?, soleY: CGFloat, contacts: [Contact]) {
-        source = image?.withTintColor(UIColor(red: 0.07, green: 0.10, blue: 0.07, alpha: 0.16), renderingMode: .alwaysOriginal)
+        // The original 0.16 tint disappeared against the bright, detailed
+        // ground in actual iPad captures. Keep the cast restrained, but dark
+        // enough to read at the 1x battle-scene scale.
+        source = image?.withTintColor(UIColor(red: 0.035, green: 0.045, blue: 0.025, alpha: 0.34), renderingMode: .alwaysOriginal)
         self.soleY = soleY
         self.contacts = contacts
         super.init(frame: .zero)
@@ -93,16 +96,16 @@ final class MeadowBattleGroundingView: UIView {
         context.concatenate(CGAffineTransform(a: 1, b: 0, c: -0.38, d: -0.15,
                                               tx: soleY * 0.38, ty: soleY * 1.15))
         context.interpolationQuality = .high
-        context.setShadow(offset: .zero, blur: 2, color: UIColor.black.withAlphaComponent(0.10).cgColor)
+        context.setShadow(offset: .zero, blur: 3.5, color: UIColor.black.withAlphaComponent(0.18).cgColor)
         source.draw(at: .zero)
         context.restoreGState()
-        let colors = [UIColor(red: 0.05, green: 0.08, blue: 0.04, alpha: 0.42).cgColor,
+        let colors = [UIColor(red: 0.025, green: 0.035, blue: 0.018, alpha: 0.68).cgColor,
                       UIColor.black.withAlphaComponent(0).cgColor] as CFArray
         if let gradient = CGGradient(colorsSpace: CGColorSpaceCreateDeviceRGB(), colors: colors, locations: [0, 1]) {
             for contact in contacts {
                 context.saveGState()
                 context.translateBy(x: contact.point.x, y: contact.point.y)
-                context.scaleBy(x: 1, y: 0.25)
+                context.scaleBy(x: 1, y: 0.38)
                 context.drawRadialGradient(gradient, startCenter: .zero, startRadius: 0,
                                            endCenter: .zero, endRadius: contact.radius, options: [])
                 context.restoreGState()

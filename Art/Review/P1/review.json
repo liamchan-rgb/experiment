@@ -1890,5 +1890,29 @@
     "animationDelivered": false,
     "productionWardrobeContractPassed": false,
     "limits": "One right-facing static idle fixture; no full hidden anatomy, animation, additional outfit or third-resource compatibility validation."
+  },
+  "battleSideFaceReview": {
+    "id": "p1-battle-side-right-idle-face-blue-v3",
+    "status": "single-pose-art-candidate-awaiting-user-review",
+    "source": "Art/Parts/P1-Battle/right-idle-v1/face-blue",
+    "reviewImage": "Art/Parts/P1-Battle/right-idle-v1/review-face-v3.png",
+    "detailImage": "Art/Parts/P1-Battle/right-idle-v1/face-blue/review-head-detail.png",
+    "runtimeImage": "Sources/Resources/Assets.xcassets/MeadowBattleHeroFace.imageset/MeadowBattleHeroFace.png",
+    "basePoseApprovalReference": "p1-neutral-battle-side-right-idle-r2",
+    "canvasPx": [
+      256,
+      256
+    ],
+    "alphaBoundsPx": [
+      140,
+      105,
+      152,
+      120
+    ],
+    "scope": "Move the blue eye, brow, nose and closed mouth inward from the face outline for runtime readability; keep the approved neutral body, hair, outfit, pose and registration unchanged.",
+    "sourcePoseChanged": false,
+    "userArtApproval": null,
+    "runtimeScreenshotAvailable": false,
+    "next": "Review face-blue v3 in the registered full-body and enlarged-head candidate images before extending the feature design."
   }
 }
