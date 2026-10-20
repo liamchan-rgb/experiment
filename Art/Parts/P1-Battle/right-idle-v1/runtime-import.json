@@ -14,7 +14,7 @@
     {
       "asset": "MeadowBattleHeroWardrobe",
       "source": "Art/Parts/P1-Battle/right-idle-v1/outfit-forester/wardrobe.png",
-      "sha256": "b368b1d3a5e81487336c7f4ac60c047f9e503ad4f19055e1e9d9812cee1815f8"
+      "sha256": "2d5f2395ada1df4e1c9ecd340983ae7b83cd4c6bfa4fb6a29747ba2029bb555b"
     },
     {
       "asset": "MeadowBattleHeroHair",
@@ -24,7 +24,7 @@
     {
       "asset": "MeadowBattleHeroFace",
       "source": "Art/Parts/P1-Battle/right-idle-v1/face-blue/face.png",
-      "sha256": "a0b34f4037b86a34b7169f334ec4fe4c82dbd583a4e366ecb6b696210dc50a41"
+      "sha256": "344cb71635299c0f9fddae1aec8e81a028861255e532425e9f8616e58319339a"
     },
     {
       "asset": "MeadowBattleHeroNearHand",
@@ -39,7 +39,7 @@
     {
       "asset": "MeadowBattleForestWarden",
       "source": "Art/Scenes/MeadowBattle/enemies/forest-warden-v2/idle.png",
-      "sha256": "da3f906fc6e66633346474fda7b950f6087deb1fae5e0c98b71bf53a54c3ab64"
+      "sha256": "b604bf43409d7e124c71ed5b3c2c0479ccf40c792c6e9ac8834eb30fe7d67c0e"
     }
   ],
   "transformsAtImport": "none",

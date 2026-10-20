@@ -1784,10 +1784,22 @@
     "movementPreflight": {
       "status": "localized_joint_root_windows_passed",
       "translations": {
-        "nearArmAndHand": [3, 1],
-        "farArmAndHand": [-3, 1],
-        "nearLeg": [2, -2],
-        "farLeg": [-2, -2]
+        "nearArmAndHand": [
+          3,
+          1
+        ],
+        "farArmAndHand": [
+          -3,
+          1
+        ],
+        "nearLeg": [
+          2,
+          -2
+        ],
+        "farLeg": [
+          -2,
+          -2
+        ]
       },
       "zeroUncoveredSourcePixelsInJointWindows": {
         "nearArm": true,
@@ -1862,7 +1874,7 @@
   },
   "battleSideRuntimeFixture": {
     "id": "p1-battle-side-right-idle-modular-fixture-v1",
-    "status": "art-candidate-in-tested-runtime-fixture",
+    "status": "single-static-art-candidate-awaiting-build34-iPad-review",
     "source": "Art/Parts/P1-Battle/right-idle-v1",
     "reviewImage": "Art/Parts/P1-Battle/right-idle-v1/assembled.png",
     "neutralPoseApprovalReference": "p1-neutral-battle-side-right-idle-r2",
@@ -1876,26 +1888,34 @@
       214
     ],
     "parts": [
-      "neutral body",
-      "forester wardrobe",
+      "approved neutral body pose r2",
+      "P1 blue wardrobe colorway with original registered alpha",
       "chestnut hair",
-      "blue facial features",
+      "blue facial features v4",
       "short sword",
       "near hand foreground",
-      "far hand foreground ownership correction"
+      "far hand foreground ownership correction",
+      "transparent pixel-art forest warden with independent cast/contact shadows"
     ],
     "userArtApproval": null,
-    "runtimeSourceCommit": "cd86161fd817eda49e3750570060e5b644abcb01",
-    "build": 33,
+    "runtimeSourceCommit": null,
+    "build": 34,
     "animationDelivered": false,
     "productionWardrobeContractPassed": false,
-    "limits": "One right-facing static idle fixture; no full hidden anatomy, animation, additional outfit or third-resource compatibility validation."
+    "limits": "One right-facing static idle fixture and one static enemy pose; no full hidden anatomy, animation, additional outfit or third-resource compatibility validation.",
+    "releaseVersion": "1.6.8",
+    "internalFaceReadabilityReview": {
+      "revision": "v4",
+      "status": "passed-feature-separation-at-256px",
+      "scope": "eye, brow, nose and mouth separation from one another and the profile edge",
+      "userArtApproval": null
+    }
   },
   "battleSideFaceReview": {
-    "id": "p1-battle-side-right-idle-face-blue-v3",
+    "id": "p1-battle-side-right-idle-face-blue-v4",
     "status": "single-pose-art-candidate-awaiting-user-review",
     "source": "Art/Parts/P1-Battle/right-idle-v1/face-blue",
-    "reviewImage": "Art/Parts/P1-Battle/right-idle-v1/review-face-v3.png",
+    "reviewImage": "Art/Parts/P1-Battle/right-idle-v1/review-face-v4.png",
     "detailImage": "Art/Parts/P1-Battle/right-idle-v1/face-blue/review-head-detail.png",
     "runtimeImage": "Sources/Resources/Assets.xcassets/MeadowBattleHeroFace.imageset/MeadowBattleHeroFace.png",
     "basePoseApprovalReference": "p1-neutral-battle-side-right-idle-r2",
@@ -1904,15 +1924,45 @@
       256
     ],
     "alphaBoundsPx": [
-      140,
+      138,
       105,
-      152,
+      150,
       120
     ],
-    "scope": "Move the blue eye, brow, nose and closed mouth inward from the face outline for runtime readability; keep the approved neutral body, hair, outfit, pose and registration unchanged.",
+    "scope": "Inset the nose and closed mouth from the profile edge, add a small warm nose highlight, and keep eye/brow clear at native registered scale.",
     "sourcePoseChanged": false,
     "userArtApproval": null,
     "runtimeScreenshotAvailable": false,
-    "next": "Review face-blue v3 in the registered full-body and enlarged-head candidate images before extending the feature design."
+    "next": "Review the build34 iPad simulator screenshots before extending the face design to other directions or expressions.",
+    "internalReadabilityReview": {
+      "status": "passed",
+      "scope": "Feature separation and profile clearance at enlarged and 256x256 recomposition scale",
+      "userArtApproval": null
+    }
+  },
+  "battleSideVisualPolish": {
+    "build": 34,
+    "version": "1.6.8",
+    "heroWardrobe": "Brighter, more saturated P1 blue colorway; original 256x256 alpha, silhouette and foot registration retained",
+    "forestWarden": {
+      "id": "meadow-forest-warden-pixel-alert-idle-v1",
+      "asset": "Art/Scenes/MeadowBattle/enemies/forest-warden-v2/idle.png",
+      "canvasPx": [
+        384,
+        256
+      ],
+      "alphaBoundsXYWH": [
+        13,
+        9,
+        331,
+        232
+      ],
+      "hoofGroundY": 240,
+      "userArtApproval": null
+    },
+    "camera": "width-based stable scene scale with blurred environmental extension for taller monster-turn view",
+    "shadow": "independent cast silhouettes plus four hoof contacts aligned to pixel sprite",
+    "iPadScreenshotReview": "pending CI",
+    "ipa": "pending CI"
   }
 }

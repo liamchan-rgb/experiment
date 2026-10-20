@@ -337,10 +337,10 @@ final class MeadowBattleLandscapeView: UIView {
             .init(point: CGPoint(x: 146, y: 214), radius: 12)
         ])
         enemyShadow = MeadowBattleGroundingView(image: enemyImage, soleY: 241, contacts: [
-            .init(point: CGPoint(x: 83, y: 240), radius: 19),
-            .init(point: CGPoint(x: 175, y: 240), radius: 19),
-            .init(point: CGPoint(x: 236, y: 235), radius: 17),
-            .init(point: CGPoint(x: 320, y: 240), radius: 20)
+            .init(point: CGPoint(x: 84, y: 240), radius: 16),
+            .init(point: CGPoint(x: 172, y: 240), radius: 16),
+            .init(point: CGPoint(x: 230, y: 239), radius: 16),
+            .init(point: CGPoint(x: 314, y: 240), radius: 17)
         ])
         super.init(frame: frame)
         clipsToBounds = true

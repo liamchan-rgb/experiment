@@ -4,9 +4,9 @@
 
 ## 当前审核
 
-2026-10-20 新增 [build33 侧向待机运行候选](../Art/Parts/P1-Battle/right-idle-v1/README.md)：沿用已认可r2完整人体，独立叠放绿色衣物／棕色短发／蓝眼五官／短剑，脚底和画布固定。已通过局部自审与iPad专项验证，三态实图见[build33运行证据](../Media/Build33/README.md)；新部件和装配尚无用户美术认可。它只有一张静态待机，不代表下文的隐藏解剖、侧步态、完整换装或动作动画问题已完成。
+2026-10-20 的 [build33 侧向待机运行候选](../Art/Parts/P1-Battle/right-idle-v1/README.md)是历史包：沿用已认可r2完整人体，独立叠放衣物／棕色短发／蓝眼五官／短剑，脚底和画布固定。它只有一张静态待机，不代表下文的隐藏解剖、侧步态、完整换装或动作动画问题已完成。
 
-本次回审聚焦 face-blue v3：眼睛、眉、鼻和闭口向脸内收，避免贴在侧脸轮廓上；256×256注册和已认可r2身体、头发不变。请查看[更新后组合图](../Art/Parts/P1-Battle/right-idle-v1/review-face-v3.png)与[头部放大](../Art/Parts/P1-Battle/right-idle-v1/face-blue/review-head-detail.png)。这是素材重组预览，不是新的运行截图；v3仍待用户美术审核，尚未扩大为其他方向或动画。
+现在准备交付 [build34 战场修订候选](../Art/Parts/P1-Battle/right-idle-v1/README.md)：衣物改为 P1 蓝色识别配色，鹿灵简化为像素风并继续使用原画布与脚底范围，face-blue v4 将鼻口与侧脸边缘分开。v4 五官通过美术子审，整套外观仍待用户审核；最终 iPad 模拟器截图和 build34 IPA 待 CI 完成后补录。请查看[候选组合图](../Art/Parts/P1-Battle/right-idle-v1/review-face-v4.png)与[头部放大](../Art/Parts/P1-Battle/right-idle-v1/face-blue/review-head-detail.png)，它们是注册素材预览，不是运行截图。没有扩大到其他方向或动画。
 
 侧视待机向右中性人体 [r2](../Art/Templates/P1-Neutral/battle-side/right-idle-r2/README.md) 已获认可。用户回复“对了，继续下一步”，认可范围为单张注册后的空手侧视姿态和近侧右手方向。v1 八层静态分割仍作为历史候选保存；隐藏人体底层 [v2](../Art/Templates/P1-Neutral/battle-side/right-idle-parts-v2/README.md) 在原八层之下新增连续颈肩至骨盆皮肤核心。保持256×256共同注册，静态review与v1逐像素一致；新层暂未并入静态合成，因为现有抗锯齿切层边缘会让底层透出并改变外观。442个固定站姿补位像素仍保留；完整四肢底层与肢体移动接缝尚未通过，不能作为生产换装底模。
 
