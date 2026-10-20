@@ -134,7 +134,7 @@ jobs:
   build:
     name: Xcode compile, test and unsigned IPA
     if: ${{ github.event_name != 'workflow_dispatch' || (inputs.review_run == '' && !inputs.quick_lab) }}
-    runs-on: macos-15
+    runs-on: ${{ inputs.macos_runner || 'macos-15' }}
     timeout-minutes: 45
     defaults:
       run:
