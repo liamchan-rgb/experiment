@@ -1,7 +1,7 @@
 {
   "character": "P1",
   "format": 3,
-  "updated": "2026-10-19",
+  "updated": "2026-10-20",
   "workflow": "Review one direction at a time from fixed cardinal and diagonal baselines. Modify and resubmit the same direction until explicit user artwork approval, then advance. Record provenance, feedback and accepted revisions for the future character template.",
   "current": "p1-neutral-battle-side-right-walk-pose-test-v1",
   "templateStatus": "independent heads approved; the v5 down idle sword pose is approved as one art study only; modular wardrobe/weapon production and the full character template remain incomplete; the heavyStrike + trainingSword standalone effect prototype remains awaiting user art review; battle-side right idle pose and hand direction r2 approved; localized shoulder/hip-root underbody remains incomplete; a right-side walking pose test is now the current single-frame review candidate; complete anatomy, articulated movement and runtime integration remain incomplete",
@@ -1874,7 +1874,7 @@
   },
   "battleSideRuntimeFixture": {
     "id": "p1-battle-side-right-idle-modular-fixture-v1",
-    "status": "single-static-art-candidate-awaiting-build34-iPad-review",
+    "status": "single-static-art-candidate-awaiting-user-device-review",
     "source": "Art/Parts/P1-Battle/right-idle-v1",
     "reviewImage": "Art/Parts/P1-Battle/right-idle-v1/assembled.png",
     "neutralPoseApprovalReference": "p1-neutral-battle-side-right-idle-r2",
@@ -1891,7 +1891,7 @@
       "approved neutral body pose r2",
       "P1 blue wardrobe colorway with original registered alpha",
       "chestnut hair",
-      "blue facial features v5",
+      "blue facial features v7",
       "short sword",
       "near hand foreground",
       "far hand foreground ownership correction",
@@ -1905,18 +1905,18 @@
     "limits": "One right-facing static idle fixture and one static enemy pose; no full hidden anatomy, animation, additional outfit or third-resource compatibility validation.",
     "releaseVersion": "1.6.8",
     "internalFaceReadabilityReview": {
-      "revision": "v5",
-      "status": "asset-level-pass-simulator-scale-pending",
-      "scope": "eye, brow, nose and mouth readability in the full registered 256px composite",
+      "revision": "v7",
+      "status": "self-reviewed-full-sprite-candidate-awaiting-user-device-review",
+      "scope": "Full registered character at native 256x256 scale is primary; the enlarged head crop only checks pixel joins",
       "userArtApproval": null
     }
   },
   "battleSideFaceReview": {
-    "id": "p1-battle-side-right-idle-face-blue-v5",
-    "status": "single-pose-art-candidate-awaiting-user-review",
+    "id": "p1-battle-side-right-idle-face-blue-v7",
+    "status": "v5-v6-revision-requested-v7-candidate-awaiting-user-device-review",
     "source": "Art/Parts/P1-Battle/right-idle-v1/face-blue",
-    "reviewImage": "Art/Parts/P1-Battle/right-idle-v1/review-face-v5.png",
-    "detailImage": "Art/Parts/P1-Battle/right-idle-v1/face-blue/review-head-detail.png",
+    "reviewImage": "Art/Parts/P1-Battle/right-idle-v1/review-face-v7.png",
+    "nativeComposite": "Art/Parts/P1-Battle/right-idle-v1/assembled.png",
     "runtimeImage": "Sources/Resources/Assets.xcassets/MeadowBattleHeroFace.imageset/MeadowBattleHeroFace.png",
     "basePoseApprovalReference": "p1-neutral-battle-side-right-idle-r2",
     "canvasPx": [
@@ -1925,18 +1925,35 @@
     ],
     "alphaBoundsPx": [
       138,
-      105,
-      148,
-      118
+      106,
+      152,
+      129
     ],
-    "scope": "Keep the blue eye/brow and make the nose mark and 3px mouth line distinct at native registered scale, both inset one pixel from v4.",
+    "scope": "Import only brow, eye, nose and mouth groups from the retained generated whole-character profile study using one fixed canvas registration; inspect proportions in the native full-character composite.",
     "sourcePoseChanged": false,
     "userArtApproval": null,
     "runtimeScreenshotAvailable": false,
-    "next": "Review the build34 iPad simulator screenshots before extending the face design to other directions or expressions.",
+    "feedback": [
+      {
+        "date": "2026-10-20",
+        "reviewer": "user",
+        "revision": "v5",
+        "status": "revision_requested",
+        "statement": "五官全挤在眼睛的位置；先看整个人物比例，不要只以局部放大为准。"
+      },
+      {
+        "date": "2026-10-20",
+        "reviewer": "user",
+        "revision": "v6",
+        "status": "revision_requested",
+        "statement": "你现在这个是人脸？",
+        "archivedAt": "Art/Parts/P1-Battle/right-idle-v1/face-blue/revisions/v6"
+      }
+    ],
+    "next": "User installs and runs the IPA, then provides device screenshots for actual-scale review before any expansion to other directions or expressions.",
     "internalReadabilityReview": {
-      "status": "asset-level-pass-simulator-scale-pending",
-      "scope": "Full registered 256x256 recomposition; enlarged detail is supporting evidence only",
+      "status": "self-reviewed-full-sprite-candidate-device-scale-pending",
+      "scope": "Native 256x256 and 3x full-character compositions are the primary review; no local facial crop is used as the proportion standard",
       "userArtApproval": null
     }
   },
@@ -1960,9 +1977,9 @@
       "hoofGroundY": 240,
       "userArtApproval": null
     },
-    "camera": "width-based stable scene scale with blurred environmental extension for taller monster-turn view",
+    "camera": "width-locked top-anchored scene; blurred backdrop shares its transform, uses clamped edge extension, and feathers the sharp canvas bottom",
     "shadow": "independent cast silhouettes plus four hoof contacts aligned to pixel sprite",
-    "iPadScreenshotReview": "pending CI",
-    "ipa": "pending CI"
+    "iPadScreenshotReview": "awaiting user-provided physical-device screenshots",
+    "ipa": "pending package-only CI"
   }
 }

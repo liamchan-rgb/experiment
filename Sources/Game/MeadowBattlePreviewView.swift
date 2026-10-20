@@ -287,6 +287,14 @@ struct MeadowBattleCanvasGeometry {
                       width: size.width, height: size.height)
     }
 
+    static func backdropTransform(for outputSize: CGSize) -> CGAffineTransform {
+        let scale = outputSize.width / sourceCanvas.width
+        // Core Image's Y axis starts at the bottom. Align the source's top with
+        // the output top so any clamped extension appears below the scene.
+        return CGAffineTransform(a: scale, b: 0, c: 0, d: scale, tx: 0,
+                                 ty: outputSize.height - sourceCanvas.height * scale)
+    }
+
     static func registeredSpriteFrame(imageSize: CGSize, alphaBounds: CGRect, foot: CGPoint,
                                       visibleHeight: CGFloat, canvas: CGRect) -> CGRect {
         let scale = canvas.height * visibleHeight / alphaBounds.height
@@ -308,6 +316,8 @@ struct MeadowBattleCanvasGeometry {
 final class MeadowBattleLandscapeView: UIView {
     private let canvas = UIView()
     private let cameraBackdrop = UIImageView()
+    private let canvasFeatherMask = CAGradientLayer()
+    private var cameraBackdropRenderSize = CGSize.zero
     private let farForest = UIImageView(image: MeadowBattlePlateProcessor.image(named: "MeadowCampFarForest", role: .farForest))
     private let ground = UIImageView(image: MeadowBattlePlateProcessor.image(named: "MeadowCampGround", role: .ground))
     private let midground = UIImageView(image: MeadowBattlePlateProcessor.image(named: "MeadowCampMidground", role: .midground))
@@ -351,14 +361,18 @@ final class MeadowBattleLandscapeView: UIView {
         layer.borderWidth = 1
         layer.borderColor = UIColor(red: 0.91, green: 0.81, blue: 0.58, alpha: 0.7).cgColor
 
-        cameraBackdrop.image = Self.makeCameraBackdrop()
-        cameraBackdrop.contentMode = .scaleAspectFill
+        cameraBackdrop.contentMode = .scaleToFill
         cameraBackdrop.clipsToBounds = true
         cameraBackdrop.alpha = 0.82
         cameraBackdrop.accessibilityIdentifier = "meadowBattleCameraBackdrop"
         addSubview(cameraBackdrop)
 
         canvas.clipsToBounds = true
+        canvasFeatherMask.startPoint = CGPoint(x: 0.5, y: 0)
+        canvasFeatherMask.endPoint = CGPoint(x: 0.5, y: 1)
+        canvasFeatherMask.colors = [UIColor.white.cgColor, UIColor.white.cgColor, UIColor.clear.cgColor]
+        canvasFeatherMask.locations = [0, 0.88, 1]
+        canvas.layer.mask = canvasFeatherMask
         canvas.accessibilityIdentifier = "meadowBattleSceneCanvas"
         addSubview(canvas)
         for (index, imageView) in sceneLayers.enumerated() {
@@ -392,9 +406,7 @@ final class MeadowBattleLandscapeView: UIView {
 
     required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
 
-    /// Softly fills the extra vertical area exposed by the taller monster-turn
-    /// viewport while the sharp registered scene keeps its stable world scale.
-    private static func makeCameraBackdrop() -> UIImage? {
+    private static let blurredCameraPlate: CIImage? = {
         let size = MeadowBattleCanvasGeometry.sourceCanvas
         let format = UIGraphicsImageRendererFormat(); format.scale = 1
         let renderer = UIGraphicsImageRenderer(size: size, format: format)
@@ -404,20 +416,33 @@ final class MeadowBattleLandscapeView: UIView {
                 UIImage(named: name)?.draw(in: rect)
             }
         }
-        guard let cgImage = plate.cgImage else { return plate }
+        guard let cgImage = plate.cgImage else { return nil }
         let input = CIImage(cgImage: cgImage)
         let blur = CIFilter(name: "CIGaussianBlur")
         blur?.setValue(input.clampedToExtent(), forKey: kCIInputImageKey)
         blur?.setValue(18, forKey: kCIInputRadiusKey)
+        let blurred = blur?.outputImage?.cropped(to: input.extent)
         let controls = CIFilter(name: "CIColorControls")
-        controls?.setValue(blur?.outputImage?.cropped(to: input.extent), forKey: kCIInputImageKey)
+        controls?.setValue(blurred, forKey: kCIInputImageKey)
         controls?.setValue(0.75, forKey: kCIInputSaturationKey)
         controls?.setValue(0.92, forKey: kCIInputContrastKey)
-        guard let output = controls?.outputImage?.cropped(to: input.extent),
-              let result = CIContext(options: [.useSoftwareRenderer: false]).createCGImage(output, from: input.extent) else {
-            return plate
-        }
-        return UIImage(cgImage: result, scale: 1, orientation: .up)
+        return (controls?.outputImage?.cropped(to: input.extent) ?? blurred ?? input).clampedToExtent()
+    }()
+
+    private static let cameraBackdropContext = CIContext(options: [.useSoftwareRenderer: false])
+
+    /// Render the soft plate with the exact horizontal scale and top anchor of
+    /// the sharp canvas. Clamping its blurred lower edge fills any extra height
+    /// without stretching the scene or creating a second camera transform.
+    private static func makeCameraBackdrop(for viewport: CGSize) -> UIImage? {
+        guard viewport.width > 0, viewport.height > 0,
+              let plate = blurredCameraPlate else { return nil }
+        let outputRect = CGRect(x: 0, y: 0,
+                                width: viewport.width.rounded(.up), height: viewport.height.rounded(.up))
+        let transform = MeadowBattleCanvasGeometry.backdropTransform(for: outputRect.size)
+        let aligned = plate.transformed(by: transform)
+        guard let image = cameraBackdropContext.createCGImage(aligned, from: outputRect) else { return nil }
+        return UIImage(cgImage: image, scale: 1, orientation: .up)
     }
 
     private func configureShadow(_ shadow: UIView, identifier: String) {
@@ -428,9 +453,14 @@ final class MeadowBattleLandscapeView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         guard bounds.width > 0, bounds.height > 0 else { return }
+        if cameraBackdropRenderSize != bounds.size || cameraBackdrop.image == nil {
+            cameraBackdrop.image = Self.makeCameraBackdrop(for: bounds.size)
+            cameraBackdropRenderSize = bounds.size
+        }
         let fitted = MeadowBattleCanvasGeometry.fittedCanvas(in: bounds)
         cameraBackdrop.frame = bounds
         canvas.frame = fitted
+        canvasFeatherMask.frame = canvas.bounds
         let canvasBounds = canvas.bounds
         sceneLayers.forEach { $0.frame = canvasBounds }
 

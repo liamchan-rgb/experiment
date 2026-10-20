@@ -1,23 +1,8 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256" shape-rendering="crispEdges" image-rendering="pixelated">
-  <title>Blue eye and right-facing facial features for battle-side idle r2</title>
-  <desc>Independent feature-only pixel layer. Nose and closed mouth are inset from the profile edge; the eye remains distinct at runtime scale.</desc>
-  <g id="face.brow">
-    <rect x="138" y="105" width="5" height="2" fill="#553526"/>
-    <rect x="142" y="106" width="3" height="1" fill="#6d432d"/>
-  </g>
-  <g id="face.eye">
-    <path fill="#34231d" d="M138 109H140V107H145V108H147V110H146V113H144V114H140V112H138Z"/>
-    <path fill="#f2e4cf" d="M140 109H141V108H145V109H146V111H144V112H141V111H140Z"/>
-    <rect x="142" y="108" width="2" height="5" fill="#477fae"/>
-    <rect x="143" y="109" width="2" height="3" fill="#2d5274"/>
-    <rect x="142" y="108" width="1" height="1" fill="#fff0d5"/>
-  </g>
-  <g id="face.nose-mark">
-    <rect x="146" y="112" width="2" height="1" fill="#f1b27e"/>
-    <rect x="146" y="113" width="2" height="1" fill="#9a5b3e"/>
-    <rect x="147" y="114" width="1" height="1" fill="#523128"/>
-  </g>
-  <g id="face.mouth">
-    <rect x="143" y="117" width="3" height="1" fill="#59302a"/>
-  </g>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="256" height="256" viewBox="0 0 256 256" image-rendering="pixelated">
+  <title>Right-facing facial features v7 for battle-side idle r2</title>
+  <desc>Four editable raster feature groups from the retained generated whole-character study, with a fixed common registration. No body, ear or hair pixels are imported.</desc>
+  <g id="face.brow"><image xlink:href="source-v7/brow.png" width="256" height="256"/></g>
+  <g id="face.eye"><image xlink:href="source-v7/eye.png" width="256" height="256"/></g>
+  <g id="face.nose"><image xlink:href="source-v7/nose.png" width="256" height="256"/></g>
+  <g id="face.mouth"><image xlink:href="source-v7/mouth.png" width="256" height="256"/></g>
 </svg>

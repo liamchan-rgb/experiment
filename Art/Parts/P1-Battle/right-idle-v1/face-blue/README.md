@@ -1,5 +1,9 @@
-# Blue eye and right-facing features · battle idle candidate v5
+# Blue eye and right-facing profile · battle idle candidate v7
 
-This revision keeps the readable blue eye and brow, then moves the nose and mouth inward one pixel. The nose uses two skin-tone values and a dark lower pixel; the closed mouth is a continuous three-pixel dark line, with a skin-color gap between them. `face.svg` is the editable integer-pixel source and `face.png` is the transparent 256×256 feature-only export. It contains no ear or hair pixels.
+The user rejected v5's crowded features and v6's blocky nose/disconnected mouth. The v6 files and feedback are retained under `revisions/v6/`; that artwork is not used by the current sprite.
 
-The exact alpha bounding box is `[138, 105, 148, 118]` in `(left, top, right-exclusive, bottom-exclusive)` convention. See the [r2 overlay with separate hair](review-r2-with-hair.png) and [enlarged head detail](review-head-detail.png); use the [full 256×256 registered composite](../review-face-v5.png) to judge native-size readability. Independent art review found nose and mouth distinct in the full registered composite; actual battle-scale readability still needs simulator review. This remains one unapproved static candidate, with no other directions or production compatibility.
+v7 uses the face design from the retained generated **whole-character** study. `source-v7/extract.sh` registers that study with one fixed canvas scale and a -4 px feature translation, then selects only the brow, eye, nose and mouth into four transparent layers. The generated body, clothing, hair, ear and neck are not imported. `face.svg` exposes the four raster parts as named editable groups; the generated original, prompt and extraction source are retained. `face.png` is the 256×256 runtime export, with alpha bounds `[138, 106, 152, 129]` in right/bottom-exclusive convention.
+
+The primary self-review uses the [native full registered character](../assembled.png) and [whole-character 3× preview](../review-face-v7.png). The eyebrow and eye occupy the upper face; the nose leads the profile; the mouth sits below it with a visible chin. These are asset recompositions, not runtime screenshots.
+
+This is still one unapproved static candidate. It has no other directions or expressions, and actual battle-scale readability awaits the user's iPad screenshot.

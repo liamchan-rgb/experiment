@@ -430,8 +430,8 @@ final class TrailTests: XCTestCase {
         XCTAssertEqual(view.sceneLayerOrder, MeadowBattleCanvasGeometry.sceneLayerOrder)
         XCTAssertEqual(view.heroLayerNames, actor.layers)
 
-        // The sharp scene keeps a stable width-locked scale and top anchor;
-        // the aspect-filled backdrop covers any extra viewport area.
+        // The sharp scene and its blurred underlay share the same width-locked
+        // scale and top anchor; only the blurred plate extends below the scene.
         let expectedCanvas = CGRect(x: 0, y: 0, width: 900,
                                     height: 900 * MeadowBattleCanvasGeometry.sourceCanvas.height
                                         / MeadowBattleCanvasGeometry.sourceCanvas.width)
@@ -440,7 +440,7 @@ final class TrailTests: XCTestCase {
         XCTAssertEqual(view.sceneCanvasFrame.width, expectedCanvas.width, accuracy: 0.001)
         XCTAssertEqual(view.sceneCanvasFrame.height, expectedCanvas.height, accuracy: 0.001)
         XCTAssertEqual(view.cameraBackdropFrame, view.bounds)
-        XCTAssertEqual(view.cameraBackdropContentMode, .scaleAspectFill)
+        XCTAssertEqual(view.cameraBackdropContentMode, .scaleToFill)
         XCTAssertTrue(view.cameraBackdropClipsToBounds)
         for layerFrame in view.sceneLayerFrames {
             XCTAssertEqual(layerFrame.minX, 0, accuracy: 0.01)
@@ -505,8 +505,16 @@ final class TrailTests: XCTestCase {
                 view.frame = CGRect(origin: .zero, size: viewport.size)
                 view.layoutIfNeeded()
                 XCTAssertEqual(view.cameraBackdropFrame, viewport,
-                               "The blurred backdrop must fill the larger battlefield viewport")
+                               "The blurred backdrop must fill the battlefield viewport")
+                XCTAssertEqual(view.cameraBackdropContentMode, .scaleToFill,
+                               "The blurred backdrop must keep the sharp canvas camera transform")
                 let canvas = MeadowBattleCanvasGeometry.fittedCanvas(in: viewport)
+                let backdropSource = CGRect(origin: .zero, size: MeadowBattleCanvasGeometry.sourceCanvas)
+                    .applying(MeadowBattleCanvasGeometry.backdropTransform(for: viewport.size))
+                XCTAssertEqual(backdropSource.width, canvas.width, accuracy: 0.01)
+                XCTAssertEqual(backdropSource.height, canvas.height, accuracy: 0.01)
+                XCTAssertEqual(backdropSource.maxY, viewport.height, accuracy: 0.01,
+                               "Core Image must extend the bottom edge while preserving the top anchor")
                 XCTAssertEqual(canvas.minX, 0, accuracy: 0.01)
                 XCTAssertEqual(canvas.minY, 0, accuracy: 0.01,
                                "The sharp scene keeps its top anchor as the viewport grows")
