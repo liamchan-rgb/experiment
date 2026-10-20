@@ -321,6 +321,9 @@ final class MeadowBattleLandscapeView: UIView {
     var sceneLayerOrder: [String] { sceneLayers.compactMap(\.accessibilityIdentifier) }
     var sceneLayerFrames: [CGRect] { sceneLayers.map(\.frame) }
     var sceneCanvasFrame: CGRect { canvas.frame }
+    var cameraBackdropFrame: CGRect { cameraBackdrop.frame }
+    var cameraBackdropContentMode: UIView.ContentMode { cameraBackdrop.contentMode }
+    var cameraBackdropClipsToBounds: Bool { cameraBackdrop.clipsToBounds }
     var sceneCanvasSubviewOrder: [String] { canvas.subviews.compactMap(\.accessibilityIdentifier) }
     var heroViewFrame: CGRect { hero.frame }
     var heroLayerNames: [String] { hero.layerNames }

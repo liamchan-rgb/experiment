@@ -294,8 +294,13 @@ final class JourneyUITests: XCTestCase {
         XCTAssertEqual(state["automaticSun"] as? Bool, false)
         capture("11-shadow-lab-relayout")
         app.buttons["shadowLabClose"].tap()
-        XCTAssertTrue(app.buttons["openShadowLab"].waitForExistence(timeout: 15))
-        app.buttons["openShadowLab"].tap()
+        let openShadowLab = app.buttons["openShadowLab"]
+        XCTAssertTrue(openShadowLab.waitForExistence(timeout: 15))
+        let enabled = XCTNSPredicateExpectation(predicate: NSPredicate(format: "isEnabled == true"), object: openShadowLab)
+        XCTAssertEqual(XCTWaiter.wait(for: [enabled], timeout: 120), .completed,
+                       "The map must finish loading before the shadow lab can be reopened")
+        XCTAssertTrue(openShadowLab.isHittable)
+        openShadowLab.tap()
         XCTAssertTrue(surface.waitForExistence(timeout: 15))
     }
 
@@ -322,8 +327,11 @@ final class JourneyUITests: XCTestCase {
         let app = XCUIApplication()
         app.launchArguments = ["-visualReview"]
         app.launch()
+        let map = app.otherElements["meadowMap"]
+        waitForReady(app, map: map)
         let play = app.buttons["playButton"]
         XCTAssertTrue(play.waitForExistence(timeout: 15))
+        XCTAssertTrue(play.isHittable)
         capture("01-reference-layout")
         XCTAssertEqual(play.label, "开始行旅")
         play.tap()

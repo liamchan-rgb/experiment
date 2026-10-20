@@ -167,6 +167,9 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
         }
         if ProcessInfo.processInfo.arguments.contains("-gaitReview") {
             let review = GaitReviewScene(size: view.bounds.size)
+            review.onReviewAccessibilityValue = { [weak self] value in
+                DispatchQueue.main.async { self?.gameView.accessibilityValue = value }
+            }
             review.scaleMode = .resizeFill
             let reviewView = SKView(frame: gameView.bounds)
             reviewView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
