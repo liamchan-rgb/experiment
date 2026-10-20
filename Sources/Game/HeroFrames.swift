@@ -102,8 +102,17 @@ struct HeroPose {
         var result: [Float] = []
         for value in values.sorted() where result.last.map({ abs($0 - value) > 0.000001 }) ?? true { result.append(value) }
         while result.count < 9 {
-            let gap = (0..<(result.count - 1)).max { result[$0 + 1] - result[$0] < result[$1 + 1] - result[$1] }!
-            result.insert((result[gap] + result[gap + 1]) / 2, at: gap + 1)
+            var widestGapIndex = 0
+            var widestGapWidth: Float = -1
+            for index in 0..<(result.count - 1) {
+                let gapWidth = result[index + 1] - result[index]
+                if gapWidth > widestGapWidth {
+                    widestGapWidth = gapWidth
+                    widestGapIndex = index
+                }
+            }
+            let midpoint = (result[widestGapIndex] + result[widestGapIndex + 1]) * 0.5
+            result.insert(midpoint, at: widestGapIndex + 1)
         }
         return result
     }
