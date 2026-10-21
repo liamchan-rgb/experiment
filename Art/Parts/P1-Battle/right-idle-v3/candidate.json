@@ -1,6 +1,6 @@
 {
   "id": "p1-battle-side-right-idle-rear-shading-v9",
-  "status": "single-frame-candidate-awaiting-user-art-review",
+  "status": "approved-current-static-presentation",
   "date": "2026-10-20",
   "reviewImage": "review.png",
   "nativeComposite": "assembled.png",
@@ -36,7 +36,7 @@
   },
   "runtimeIntegrated": true,
   "packaging": "1.6.9 build35 archived in run 39530852893 and verified; user device review pending",
-  "userArtApproval": null,
+  "userArtApproval": "approval.json",
   "hashes": {
     "assembled.png": "b22fdc328e474a93cd7c060c4924d771109b5b23c4caf31305b061ca876012aa",
     "review.png": "00f237a2c8aa5cbee3b6993704ae795f98b4a061b0507f004a73a8f2fb1f98f3",

@@ -1,0 +1,17 @@
+{
+  "id": "p1-neutral-battle-side-right-step-contact-v1",
+  "canvasPx": [
+    256,
+    256
+  ],
+  "soleLinePx": 214,
+  "upperSource": "../right-idle-r3-head-contour/00.png",
+  "lowerSource": "../right-walk-pose-test-v1/frames/01.png",
+  "splitY": 180,
+  "selection": "action pose; shared across appearances",
+  "headTorsoHandsHipUnchanged": true,
+  "fullHiddenAnatomyComplete": false,
+  "runtimeIntegrated": false,
+  "userArtApproval": null,
+  "sha256": "ed7e75d399d4c1ab3592de7ca6e0d7212b15e9c9ffefe397d02a1a2c947ce40e"
+}

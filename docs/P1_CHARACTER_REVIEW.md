@@ -6,11 +6,11 @@
 
 2026-10-20 的 [build33 侧向待机运行候选](../Art/Parts/P1-Battle/right-idle-v1/README.md)是历史包：沿用已认可r2完整人体，独立叠放衣物／棕色短发／蓝眼五官／短剑，脚底和画布固定。它只有一张静态待机，不代表下文的隐藏解剖、侧步态、完整换装或动作动画问题已完成。
 
-当前只审核[战场人物层次稿 v9](../Art/Parts/P1-Battle/right-idle-v3/README.md)：用户指出 v8 左肩仍有黑边，建议参考已认可左右向步态的近远明暗。已将残留斜向肩缝和外侧黑条改为蓝色过渡，肩背铺连续冷蓝暗面，后侧袖子进一步压暗，前侧持剑臂保留亮面。v8 的额前清理、收窄后发及共同中性头型 r3 候选保留。先看[全身3倍图](../Art/Parts/P1-Battle/right-idle-v3/review.png)与[256原图](../Art/Parts/P1-Battle/right-idle-v3/assembled.png)。2026-10-21 用户撤回暂停打包要求，现已按原画布导入 App，已完成 1.6.9 build35 IPA 归档与完整性核对；打包授权不替代用户审美认可。此前 v5／v6 为废稿，旧 v7 包不再作为交付候选。实机运行及截图仍由用户负责。
+2026-10-21 用户允许战斗“按当前效果继续下一步”，已认可 build35 的 v9 静态战斗呈现。当前单项转入[侧向小步第一关键姿势](../Art/Parts/P1-Battle/right-step-contact-v1/README.md)：前脚支撑、后跟抬起，沿用当前头脸／上半身／持剑，按共同人体补齐裤腿与靴口遮挡。先看[全身图](../Art/Parts/P1-Battle/right-step-contact-v1/review.png)。这是新单帧候选，未导入App；完整步态、隐藏解剖和换装合同尚未完成。实机运行及截图仍由用户负责。
 
 侧视待机向右中性人体 [r2](../Art/Templates/P1-Neutral/battle-side/right-idle-r2/README.md) 已获认可。用户回复“对了，继续下一步”，认可范围为单张注册后的空手侧视姿态和近侧右手方向。v1 八层静态分割仍作为历史候选保存；隐藏人体底层 [v2](../Art/Templates/P1-Neutral/battle-side/right-idle-parts-v2/README.md) 在原八层之下新增连续颈肩至骨盆皮肤核心。保持256×256共同注册，静态review与v1逐像素一致；新层暂未并入静态合成，因为现有抗锯齿切层边缘会让底层透出并改变外观。442个固定站姿补位像素仍保留；完整四肢底层与肢体移动接缝尚未通过，不能作为生产换装底模。
 
-当前回审焦点为[右向侧步态单帧测试 v1](../Art/Templates/P1-Neutral/battle-side/right-walk-pose-test-v1/README.md)：在256×256注册画布上制作一张小步候选并拆成八个语义层；静态重组逐像素一致，局部underlay新增14个皮肤像素，四个关节根部±1 px诊断均未露底。可查看[单帧对照](../Art/Templates/P1-Neutral/battle-side/right-walk-pose-test-v1/review.png)、[手脚细节](../Art/Templates/P1-Neutral/battle-side/right-walk-pose-test-v1/details.png)、[图层预览](../Art/Templates/P1-Neutral/battle-side/right-walk-pose-test-v1/parts-review.png)和[位移诊断](../Art/Templates/P1-Neutral/battle-side/right-walk-pose-test-v1/movement-test.png)。这只证明单帧轮廓、静态分层及一像素局部覆盖；姿势未获美术认可，完整隐藏解剖、较大幅度关节动作、动画、服装遮挡与运行时均未通过或未制作。认可的r2及其他已认可内容不由本项自动改变。
+此前保留的[右向侧步态单帧测试 v1](../Art/Templates/P1-Neutral/battle-side/right-walk-pose-test-v1/README.md)：在256×256注册画布上制作一张小步候选并拆成八个语义层；静态重组逐像素一致，局部underlay新增14个皮肤像素，四个关节根部±1 px诊断均未露底。可查看[单帧对照](../Art/Templates/P1-Neutral/battle-side/right-walk-pose-test-v1/review.png)、[手脚细节](../Art/Templates/P1-Neutral/battle-side/right-walk-pose-test-v1/details.png)、[图层预览](../Art/Templates/P1-Neutral/battle-side/right-walk-pose-test-v1/parts-review.png)和[位移诊断](../Art/Templates/P1-Neutral/battle-side/right-walk-pose-test-v1/movement-test.png)。这只证明单帧轮廓、静态分层及一像素局部覆盖；姿势未获美术认可，完整隐藏解剖、较大幅度关节动作、动画、服装遮挡与运行时均未通过或未制作。认可的r2及其他已认可内容不由本项自动改变。
 
 ### 此前持剑与衣物审核记录
 
@@ -76,3 +76,7 @@ P1 原始素材有两张 4 × 4 图：`hero1-gait-v1.2.png` 和 `hero1-diagonal-
 该图按原像素提取自 build 28 正式 `Hero1Directions.png` 第一行，逐像素核对一致。用户随后明确这不是要找的图，最终确认的是上方所列的完整四方向图集。此单行保留作历史参考，不作为当前审核对象。
 
 2026-10-21 用户另要求把已认可步态接入 demo：已采用八方向当前认可稿（左上 r6、其余 r1），每方向站姿 1 张及步行 8 张，正常 120 ms／姿势，960 ms／周期。原始 RGBA 与方向顺序保留；P1 图集实际为 9 列，24 tick 距离时钟只做离散采样，不补画或烘焙重复帧。足底元数据另存，阴影与前景采样一致。P2／P3 图集及足底不变；旧24帧蓝靴分层对照保留源文件，入口暂隐以避免混用旧姿势。导入来源与摘要见 `Art/Integration/P1-approved-gait-v1/integration.json`。
+
+用户另要求对四个斜方向首尾接缝独立修订并合成正常速动图自行审核；该任务由单开智能体处理，原认可稿保留。今后安装包提供Downloads下的原始IPA直链，下载无需解ZIP。
+
+四斜向接缝修订现已完成内部复核并接入demo：右下／左下／左上loop-r1，右上loop-r2；均只重绘08，保持00–07，120ms／帧。右上r1因支撑腿不连续被退回并保留；r2已核对07→08→01的左腿支撑。四个08的单靴坐标同步更新到运行rig。当前运行选择由 `Art/Integration/P1-gait-selection.json` 单独记录，表中原r1／r6仍代表此前用户认可，不自动将自主修复稿记为用户认可。

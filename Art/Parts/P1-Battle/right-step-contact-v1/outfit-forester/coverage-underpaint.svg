@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256" shape-rendering="crispEdges">
+  <title>Pose-aligned trouser and boot coverage</title>
+  <defs>
+    <filter id="white-alpha" x="-5%" y="-5%" width="110%" height="110%">
+      <feColorMatrix type="matrix" values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 1 0"/>
+    </filter>
+    <filter id="outer-alpha" x="-5%" y="-5%" width="110%" height="110%">
+      <feColorMatrix type="matrix" values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 1 0"/>
+      <feMorphology operator="dilate" radius="1"/>
+    </filter>
+    <mask id="body" maskUnits="userSpaceOnUse" x="0" y="0" width="256" height="256">
+      <image href="../../../../Templates/P1-Neutral/battle-side/right-step-contact-v1/01.png" width="256" height="256" filter="url(#white-alpha)"/>
+    </mask>
+    <mask id="outline" maskUnits="userSpaceOnUse" x="0" y="0" width="256" height="256">
+      <image href="../../../../Templates/P1-Neutral/battle-side/right-step-contact-v1/01.png" width="256" height="256" filter="url(#outer-alpha)"/>
+    </mask>
+    <clipPath id="legs"><rect y="180" width="256" height="35"/></clipPath>
+  </defs>
+  <g clip-path="url(#legs)">
+    <rect width="256" height="256" fill="#20231e" mask="url(#outline)"/>
+    <g mask="url(#body)">
+      <rect width="256" height="256" fill="#373b32"/>
+      <path d="M128 178H165V219H128Z" fill="#41453c"/>
+      <path d="M81 202L94 192L110 200L117 218H81Z" fill="#754923"/>
+      <path d="M128 198H166V219H128Z" fill="#945d29"/>
+    </g>
+  </g>
+</svg>

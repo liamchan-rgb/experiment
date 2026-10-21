@@ -1,0 +1,253 @@
+{
+  "format": 1,
+  "checks": {
+    "frame_count": 9,
+    "all_frames_256_square": true,
+    "approved_source_frames_00_07_pixel_identical": {
+      "0": true,
+      "1": true,
+      "2": true,
+      "3": true,
+      "4": true,
+      "5": true,
+      "6": true,
+      "7": true
+    },
+    "strip_size": [
+      2304,
+      256
+    ],
+    "generated_08_alpha_bounds": [
+      68,
+      70,
+      180,
+      224
+    ],
+    "generated_08_height_pixels": 154,
+    "registered_sole_envelope_y": 224,
+    "registration_json_unchanged": true,
+    "gif_frame_count": 8,
+    "gif_durations_ms": [
+      120,
+      120,
+      120,
+      120,
+      120,
+      120,
+      120,
+      120
+    ],
+    "gif_total_cycle_ms": 960,
+    "gif_loop": 0,
+    "normal_speed_only": true
+  },
+  "frame_bounds": [
+    {
+      "frame": "00",
+      "canvas": [
+        256,
+        256
+      ],
+      "alpha_bbox": [
+        47,
+        67,
+        236,
+        247
+      ]
+    },
+    {
+      "frame": "01",
+      "canvas": [
+        256,
+        256
+      ],
+      "alpha_bbox": [
+        36,
+        51,
+        223,
+        239
+      ]
+    },
+    {
+      "frame": "02",
+      "canvas": [
+        256,
+        256
+      ],
+      "alpha_bbox": [
+        58,
+        64,
+        225,
+        235
+      ]
+    },
+    {
+      "frame": "03",
+      "canvas": [
+        256,
+        256
+      ],
+      "alpha_bbox": [
+        43,
+        51,
+        226,
+        240
+      ]
+    },
+    {
+      "frame": "04",
+      "canvas": [
+        256,
+        256
+      ],
+      "alpha_bbox": [
+        46,
+        47,
+        216,
+        225
+      ]
+    },
+    {
+      "frame": "05",
+      "canvas": [
+        256,
+        256
+      ],
+      "alpha_bbox": [
+        34,
+        47,
+        227,
+        229
+      ]
+    },
+    {
+      "frame": "06",
+      "canvas": [
+        256,
+        256
+      ],
+      "alpha_bbox": [
+        47,
+        57,
+        222,
+        236
+      ]
+    },
+    {
+      "frame": "07",
+      "canvas": [
+        256,
+        256
+      ],
+      "alpha_bbox": [
+        70,
+        70,
+        226,
+        229
+      ]
+    },
+    {
+      "frame": "08",
+      "canvas": [
+        256,
+        256
+      ],
+      "alpha_bbox": [
+        68,
+        70,
+        180,
+        224
+      ]
+    }
+  ],
+  "head_root_proxy": {
+    "definition": "mean x/y of warm hair-colored opaque pixels in upper 140 rows; approximate registration proxy, not a rig landmark",
+    "frame_08_vs_01_delta_px": [
+      -0.7,
+      0.5
+    ],
+    "frame_08_vs_01_silhouette_centroid_delta_px": [
+      -1.8,
+      1.7
+    ]
+  },
+  "foot_contact_review": {
+    "08": {
+      "reach": "right/back-view leading boot lifts into contact; opposite boot supports",
+      "bounds": "x103–130, y195–219; support x131–160, y195–223",
+      "compared_to_01": "01 leading boot x105–130, y195–223; opposite boot x139–164, y195–210"
+    },
+    "01": "right leading boot lands while opposite foot begins recovery"
+  },
+  "scope": "File and geometry checks plus internal visual loop review; this is not user art approval.",
+  "seam_landmark_measurements": [
+    {
+      "frame": "07",
+      "silhouette_bbox": [
+        71,
+        70,
+        175,
+        224
+      ],
+      "silhouette_centroid_xy": [
+        131.1,
+        143.7
+      ],
+      "warm_hair_centroid_xy": [
+        142.0,
+        99.8
+      ]
+    },
+    {
+      "frame": "08",
+      "silhouette_bbox": [
+        68,
+        70,
+        180,
+        224
+      ],
+      "silhouette_centroid_xy": [
+        132.2,
+        145.6
+      ],
+      "warm_hair_centroid_xy": [
+        142.4,
+        99.4
+      ]
+    },
+    {
+      "frame": "01",
+      "silhouette_bbox": [
+        77,
+        70,
+        174,
+        224
+      ],
+      "silhouette_centroid_xy": [
+        134.0,
+        143.9
+      ],
+      "warm_hair_centroid_xy": [
+        143.1,
+        98.9
+      ]
+    },
+    {
+      "frame": "02",
+      "silhouette_bbox": [
+        74,
+        72,
+        180,
+        223
+      ],
+      "silhouette_centroid_xy": [
+        133.7,
+        146.2
+      ],
+      "warm_hair_centroid_xy": [
+        142.8,
+        100.4
+      ]
+    }
+  ]
+}

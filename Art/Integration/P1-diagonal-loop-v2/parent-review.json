@@ -1,0 +1,138 @@
+{
+  "date": "2026-10-21",
+  "directions": {
+    "down-right": {
+      "baseRevision": "r1",
+      "revision": "loop-r1",
+      "frames00Through07Identical": true,
+      "frame08SolePixels": [
+        [
+          137,
+          209,
+          0
+        ],
+        [
+          168,
+          224,
+          0
+        ]
+      ],
+      "gifFrames": 8,
+      "gifFrameMs": [
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120
+      ],
+      "gifCycleMs": 960,
+      "gifSHA256": "67957388b3d7738c247db2e853d85a76217b2837c081092eaec0f0d4408b5011",
+      "headRootAndFootPhaseReview": "Whole-character 07→08→01→02 reviewed. UR r1 rejected for support-leg switch; r2 retains left support and right recovery.",
+      "userArtApproval": null
+    },
+    "down-left": {
+      "baseRevision": "r1",
+      "revision": "loop-r1",
+      "frames00Through07Identical": true,
+      "frame08SolePixels": [
+        [
+          113,
+          212,
+          0
+        ],
+        [
+          83,
+          224,
+          0
+        ]
+      ],
+      "gifFrames": 8,
+      "gifFrameMs": [
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120
+      ],
+      "gifCycleMs": 960,
+      "gifSHA256": "2548c1c69378915f3005f7dae06abbe0c90eb09f66560afbc680d25a88fe0868",
+      "headRootAndFootPhaseReview": "Whole-character 07→08→01→02 reviewed. UR r1 rejected for support-leg switch; r2 retains left support and right recovery.",
+      "userArtApproval": null
+    },
+    "up-left": {
+      "baseRevision": "r6",
+      "revision": "loop-r1",
+      "frames00Through07Identical": true,
+      "frame08SolePixels": [
+        [
+          111,
+          213,
+          0
+        ],
+        [
+          139,
+          224,
+          0
+        ]
+      ],
+      "gifFrames": 8,
+      "gifFrameMs": [
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120
+      ],
+      "gifCycleMs": 960,
+      "gifSHA256": "5eae44d11a77410ab2158bb83c3a6a9c0b3e0731a95af94ee8e8d0efc7ca8747",
+      "headRootAndFootPhaseReview": "Whole-character 07→08→01→02 reviewed. UR r1 rejected for support-leg switch; r2 retains left support and right recovery.",
+      "userArtApproval": null
+    },
+    "up-right": {
+      "baseRevision": "r1",
+      "revision": "loop-r2",
+      "frames00Through07Identical": true,
+      "frame08SolePixels": [
+        [
+          145,
+          214,
+          0
+        ],
+        [
+          119,
+          224,
+          0
+        ]
+      ],
+      "gifFrames": 8,
+      "gifFrameMs": [
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120
+      ],
+      "gifCycleMs": 960,
+      "gifSHA256": "8a62977c2a68a0364a1e599b8cf5088b5ad178f5a6e0aed8cf9262b55b4c3c89",
+      "headRootAndFootPhaseReview": "Whole-character 07→08→01→02 reviewed. UR r1 rejected for support-leg switch; r2 retains left support and right recovery.",
+      "userArtApproval": null
+    }
+  },
+  "normalSpeedOnly": true,
+  "runtimeFootPositionsUpdated": true,
+  "simulatorRunPerformed": false,
+  "physicalDeviceRunPerformed": false,
+  "userArtApproval": null
+}

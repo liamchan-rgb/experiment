@@ -3,8 +3,8 @@
   "format": 3,
   "updated": "2026-10-21",
   "workflow": "Review one direction at a time from fixed cardinal and diagonal baselines. Modify and resubmit the same direction until explicit user artwork approval, then advance. Record provenance, feedback and accepted revisions for the future character template.",
-  "current": "p1-battle-side-right-idle-rear-shading-v9",
-  "templateStatus": "independent heads approved; the v5 down idle sword pose is approved as one art study only; modular wardrobe/weapon production and the full character template remain incomplete; the heavyStrike + trainingSword standalone effect prototype remains awaiting user art review; battle-side right idle pose and hand direction r2 approved; localized shoulder/hip-root underbody remains incomplete; the right-side walking pose test remains pending; the current single-frame review is battle rear-shoulder shading v9; complete anatomy, articulated movement and runtime integration remain incomplete",
+  "current": "p1-battle-side-right-step-contact-v1",
+  "templateStatus": "Current static battle v9 presentation accepted; first battle side-step key pose remains current for artwork review. Four diagonal map loop repairs are self-reviewed and imported under the user task; original artwork approvals are preserved. Full battle walk/attack animation and interchangeable wardrobe completion remain pending.",
   "items": [
     {
       "id": "01-down-idle",
@@ -720,6 +720,29 @@
           ],
           "productionAssetsUpdated": true,
           "demoIntegration": "Art/Integration/P1-approved-gait-v1/integration.json"
+        },
+        {
+          "id": "loop-r1",
+          "date": "2026-10-21",
+          "status": "self-reviewed-runtime-candidate",
+          "strip": "directions/down-right/revisions/loop-r1/strip.png",
+          "normalLoop": "directions/down-right/revisions/loop-r1/walk.gif",
+          "validation": "directions/down-right/revisions/loop-r1/validation.json",
+          "artApproval": null,
+          "changedFrames": [
+            8
+          ],
+          "inheritedFrames": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "productionAssetsUpdated": true
         }
       ],
       "approval": {
@@ -748,7 +771,14 @@
         }
       ],
       "currentRevision": "r1",
-      "auditStatus": "user approved r1; build 28 remains historical baseline"
+      "auditStatus": "user approved r1; build 28 remains historical baseline",
+      "runtimeRevision": "loop-r1",
+      "loopRepairFeedback": {
+        "date": "2026-10-21",
+        "statement": "首帧与末尾帧衔接不好，有跳动；单开智能体自行修并合成正常速动图审核",
+        "status": "self-reviewed-and-imported-user-task-authorized",
+        "scope": "Original approval remains on r1; this new loop revision has no new user artwork approval"
+      }
     },
     {
       "id": "06-down-left-gait",
@@ -837,6 +867,29 @@
           ],
           "productionAssetsUpdated": true,
           "demoIntegration": "Art/Integration/P1-approved-gait-v1/integration.json"
+        },
+        {
+          "id": "loop-r1",
+          "date": "2026-10-21",
+          "status": "self-reviewed-runtime-candidate",
+          "strip": "directions/down-left/revisions/loop-r1/strip.png",
+          "normalLoop": "directions/down-left/revisions/loop-r1/walk.gif",
+          "validation": "directions/down-left/revisions/loop-r1/validation.json",
+          "artApproval": null,
+          "changedFrames": [
+            8
+          ],
+          "inheritedFrames": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "productionAssetsUpdated": true
         }
       ],
       "approval": {
@@ -864,7 +917,14 @@
           "scope": "down-right r1 approved; proceed to down-left, second diagonal, using the same sequential revision workflow"
         }
       ],
-      "auditStatus": "user approved down-left r1; historical build28 baseline unchanged"
+      "auditStatus": "user approved down-left r1; historical build28 baseline unchanged",
+      "runtimeRevision": "loop-r1",
+      "loopRepairFeedback": {
+        "date": "2026-10-21",
+        "statement": "首帧与末尾帧衔接不好，有跳动；单开智能体自行修并合成正常速动图审核",
+        "status": "self-reviewed-and-imported-user-task-authorized",
+        "scope": "Original approval remains on r1; this new loop revision has no new user artwork approval"
+      }
     },
     {
       "id": "07-up-left-gait",
@@ -1098,6 +1158,29 @@
           "inheritedPose04Approval": "directions/up-left/revisions/r5/pose04-approval.json",
           "assemblyRequest": "directions/up-left/revisions/r6/assembly-request.json",
           "demoIntegration": "Art/Integration/P1-approved-gait-v1/integration.json"
+        },
+        {
+          "id": "loop-r1",
+          "date": "2026-10-21",
+          "status": "self-reviewed-runtime-candidate",
+          "strip": "directions/up-left/revisions/loop-r1/strip.png",
+          "normalLoop": "directions/up-left/revisions/loop-r1/walk.gif",
+          "validation": "directions/up-left/revisions/loop-r1/validation.json",
+          "artApproval": null,
+          "changedFrames": [
+            8
+          ],
+          "inheritedFrames": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "productionAssetsUpdated": true
         }
       ],
       "approval": {
@@ -1173,6 +1256,13 @@
         ],
         "artApproval": null,
         "fullCycleUpdated": true
+      },
+      "runtimeRevision": "loop-r1",
+      "loopRepairFeedback": {
+        "date": "2026-10-21",
+        "statement": "首帧与末尾帧衔接不好，有跳动；单开智能体自行修并合成正常速动图审核",
+        "status": "self-reviewed-and-imported-user-task-authorized",
+        "scope": "Original approval remains on r6; this new loop revision has no new user artwork approval"
       }
     },
     {
@@ -1264,6 +1354,29 @@
           ],
           "productionAssetsUpdated": true,
           "demoIntegration": "Art/Integration/P1-approved-gait-v1/integration.json"
+        },
+        {
+          "id": "loop-r2",
+          "date": "2026-10-21",
+          "status": "self-reviewed-runtime-candidate",
+          "strip": "directions/up-right/revisions/loop-r2/strip.png",
+          "normalLoop": "directions/up-right/revisions/loop-r2/walk.gif",
+          "validation": "directions/up-right/revisions/loop-r2/validation.json",
+          "artApproval": null,
+          "changedFrames": [
+            8
+          ],
+          "inheritedFrames": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "productionAssetsUpdated": true
         }
       ],
       "approval": {
@@ -1291,7 +1404,14 @@
           "text": "好到下一个方向的修改了，你参考我们左上动画的制作过程，不要再犯错",
           "scope": "approve up-left r6; redraw final diagonal up-right with the continuity lessons from up-left"
         }
-      ]
+      ],
+      "runtimeRevision": "loop-r2",
+      "loopRepairFeedback": {
+        "date": "2026-10-21",
+        "statement": "首帧与末尾帧衔接不好，有跳动；单开智能体自行修并合成正常速动图审核",
+        "status": "self-reviewed-and-imported-user-task-authorized",
+        "scope": "Original approval remains on r1; this new loop revision has no new user artwork approval"
+      }
     }
   ],
   "directionOrder": [
@@ -1719,6 +1839,11 @@
       "previousCurrent": "p1-battle-side-right-idle-art-cleanup-v8",
       "newCurrent": "p1-battle-side-right-idle-rear-shading-v9",
       "reason": "User requested the remaining shoulder black edge be replaced with rear-plane shading based on approved left/right gait depth. Continue reviewing the same single static image; packaging stays paused."
+    },
+    {
+      "previousCurrent": "p1-battle-side-right-idle-rear-shading-v9",
+      "newCurrent": "p1-battle-side-right-step-contact-v1",
+      "reason": "User accepted the current battle effect and requested the next step; resume the original side-walk plan with one dressed small-step key pose."
     }
   ],
   "battleNeutralBodyReview": {
@@ -1912,7 +2037,15 @@
       "original registered short sword and foreground hands",
       "pixel-art forest warden and independent shadows"
     ],
-    "userArtApproval": null,
+    "userArtApproval": {
+      "date": "2026-10-21",
+      "reviewer": "user",
+      "statement": "战斗方面，可以继续按当前效果继续下一步",
+      "status": "approved",
+      "scope": "Current build35 static battle appearance and composition only; excludes new movement poses, attack animations, full hidden anatomy and wardrobe-template completion",
+      "build": 35,
+      "revision": "v9"
+    },
     "runtimeSourceCommit": "01cb73a66542443d3178ed82374383f6a4018bcf",
     "build": 35,
     "animationDelivered": false,
@@ -1948,7 +2081,15 @@
     ],
     "scope": "Remove the unrelated forehead fragment from the v7 brow/eye extraction; keep the main eye, nose and mouth positions. Review the full character together with the requested shoulder and rear-head corrections.",
     "sourcePoseChanged": false,
-    "userArtApproval": null,
+    "userArtApproval": {
+      "date": "2026-10-21",
+      "reviewer": "user",
+      "statement": "战斗方面，可以继续按当前效果继续下一步",
+      "status": "approved",
+      "scope": "Current build35 static battle appearance and composition only; excludes new movement poses, attack animations, full hidden anatomy and wardrobe-template completion",
+      "build": 35,
+      "revision": "v9"
+    },
     "runtimeScreenshotAvailable": false,
     "feedback": [
       {
@@ -1984,8 +2125,8 @@
     "previousRuntimeImage": "Sources/Resources/Assets.xcassets/MeadowBattleHeroFace.imageset/MeadowBattleHeroFace.png"
   },
   "battleSideVisualPolish": {
-    "build": 35,
-    "version": "1.6.9",
+    "build": 36,
+    "version": "1.6.10",
     "heroWardrobe": "Brighter, more saturated P1 blue colorway; original 256x256 alpha, silhouette and foot registration retained",
     "forestWarden": {
       "id": "meadow-forest-warden-pixel-alert-idle-v1",
@@ -2006,7 +2147,16 @@
     "camera": "width-locked top-anchored scene; blurred backdrop shares its transform, uses clamped edge extension, and feathers the sharp canvas bottom",
     "shadow": "independent cast silhouettes plus four hoof contacts aligned to pixel sprite",
     "iPadScreenshotReview": "Physical-device runs and screenshots remain the user responsibility.",
-    "ipa": "1.6.9 build35 device Release archive succeeded in run 39530852893 at 01cb73a; downloaded IPA passed CRC, arm64/iPhoneOS, version, bundled gait and remote checksum checks. Package provenance: Media/Build35/package.json. User performs physical-device runs and screenshots."
+    "ipa": "Build36 with four diagonal pose08 loop repairs is pending device Release archive; the accepted v9 static battle appearance remains unchanged.",
+    "staticPresentationApproval": {
+      "date": "2026-10-21",
+      "reviewer": "user",
+      "statement": "战斗方面，可以继续按当前效果继续下一步",
+      "status": "approved",
+      "scope": "Current build35 static battle appearance and composition only; excludes new movement poses, attack animations, full hidden anatomy and wardrobe-template completion",
+      "build": 35,
+      "revision": "v9"
+    }
   },
   "battleSideCleanupReview": {
     "id": "p1-battle-side-right-idle-art-cleanup-v8",
@@ -2028,7 +2178,7 @@
   },
   "battleSideShadingReview": {
     "id": "p1-battle-side-right-idle-rear-shading-v9",
-    "status": "single-frame-candidate-awaiting-user-art-review",
+    "status": "approved-current-static-battle-presentation",
     "source": "Art/Parts/P1-Battle/right-idle-v3",
     "reviewImage": "Art/Parts/P1-Battle/right-idle-v3/review.png",
     "nativeComposite": "Art/Parts/P1-Battle/right-idle-v3/assembled.png",
@@ -2062,27 +2212,31 @@
     "unchangedFaceSource": "Art/Parts/P1-Battle/right-idle-v2/face-blue",
     "runtimeIntegrated": true,
     "packaging": "1.6.9 build35 archived and verified; requested by user on 2026-10-21",
-    "userArtApproval": null,
+    "userArtApproval": {
+      "date": "2026-10-21",
+      "reviewer": "user",
+      "statement": "战斗方面，可以继续按当前效果继续下一步",
+      "status": "approved",
+      "scope": "Current build35 static battle appearance and composition only; excludes new movement poses, attack animations, full hidden anatomy and wardrobe-template completion",
+      "build": 35,
+      "revision": "v9"
+    },
     "runtimeImport": "Art/Parts/P1-Battle/right-idle-v3/runtime-import.json"
   },
   "gaitDemoIntegration": {
-    "status": "packaged-for-user-device-review",
+    "status": "loop-repairs-imported-device-archive-pending",
     "date": "2026-10-21",
-    "userRequest": "撤回刚才那个要求，要打包，然后把之前确认好的步态更新到demo里",
-    "source": "Art/Integration/P1-approved-gait-v1",
-    "manifest": "Art/Integration/P1-approved-gait-v1/integration.json",
-    "approvedDirections": 8,
-    "posesPerDirection": {
-      "idle": 1,
-      "walk": 8
-    },
+    "source": "Art/Integration/P1-diagonal-loop-v2",
+    "manifest": "Art/Integration/P1-diagonal-loop-v2/integration.json",
+    "activeSelection": "Art/Integration/P1-gait-selection.json",
     "normalFrameMs": 120,
     "cycleMs": 960,
-    "pixelChangesToApprovedArt": 0,
+    "changedSourceFrames": "Four diagonal frame08 poses only; cardinal and other diagonal poses retained",
+    "footData": "Four revised frame08 boot coordinates updated in the shared 24-tick sampling rig",
+    "parentReview": "Art/Integration/P1-diagonal-loop-v2/parent-review.json",
     "physicalDeviceVisualApproval": null,
-    "package": "Media/Build35/package.json",
-    "workflowRun": 39530852893,
-    "sourceCommit": "01cb73a66542443d3178ed82374383f6a4018bcf"
+    "build": 36,
+    "version": "1.6.10"
   },
   "battleSideRuntimeHistory": [
     {
@@ -2123,6 +2277,41 @@
         "scope": "Full registered character at native 256x256 scale is primary; the enlarged head crop only checks pixel joins",
         "userArtApproval": null
       }
+    }
+  ],
+  "battleSideStepReview": {
+    "id": "p1-battle-side-right-step-contact-v1",
+    "status": "first-key-pose-awaiting-user-art-review",
+    "source": "Art/Parts/P1-Battle/right-step-contact-v1",
+    "reviewImage": "Art/Parts/P1-Battle/right-step-contact-v1/review.png",
+    "nativeComposite": "Art/Parts/P1-Battle/right-step-contact-v1/assembled.png",
+    "commonBodyPose": "Art/Templates/P1-Neutral/battle-side/right-step-contact-v1",
+    "validation": "Art/Parts/P1-Battle/right-step-contact-v1/validation.json",
+    "acceptedAppearanceReference": "p1-battle-side-right-idle-rear-shading-v9",
+    "runtimeIntegrated": false,
+    "animationDelivered": false,
+    "userArtApproval": null,
+    "next": "After this pose is accepted, author separate passing and recovery poses on the same common module, check cloth/boot overlap, then assemble a full normal-speed battle-walk loop."
+  },
+  "gaitDemoIntegrationHistory": [
+    {
+      "status": "packaged-for-user-device-review",
+      "date": "2026-10-21",
+      "userRequest": "撤回刚才那个要求，要打包，然后把之前确认好的步态更新到demo里",
+      "source": "Art/Integration/P1-approved-gait-v1",
+      "manifest": "Art/Integration/P1-approved-gait-v1/integration.json",
+      "approvedDirections": 8,
+      "posesPerDirection": {
+        "idle": 1,
+        "walk": 8
+      },
+      "normalFrameMs": 120,
+      "cycleMs": 960,
+      "pixelChangesToApprovedArt": 0,
+      "physicalDeviceVisualApproval": null,
+      "package": "Media/Build35/package.json",
+      "workflowRun": 39530852893,
+      "sourceCommit": "01cb73a66542443d3178ed82374383f6a4018bcf"
     }
   ]
 }

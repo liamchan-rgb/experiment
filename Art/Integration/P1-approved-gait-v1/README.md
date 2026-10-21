@@ -1,5 +1,7 @@
 # Approved P1 walking artwork in the demo
 
+This records the build35 baseline. The user subsequently requested autonomous repair of the four diagonal loop seams; the active selection is recorded separately in `Art/Integration/P1-gait-selection.json`, and new import provenance lives in `Art/Integration/P1-diagonal-loop-v2`. The original approvals and this baseline remain preserved.
+
 The user requested the previously approved eight directions in the demo and a new IPA on 2026-10-21. Left-up uses r6; the other seven directions use r1. `integration.json` records each approved strip's SHA-256 and the emitted runtime resources. Originals remain untouched.
 
 Run `python3 scripts/import-approved-p1-gait.py` after any legacy asset regeneration. Each P1 atlas has nine actual columns: idle, then eight complete walking poses. The 24-tick distance clock samples each pose for three ticks; there are no interpolated or duplicated raster poses. Normal demo playback is 120 ms per pose, 960 ms per two-step cycle. Stepping advances one complete P1 pose. P2/P3 keep their existing 24 poses and footprint data.

@@ -453,8 +453,8 @@
 				"TARGETED_DEVICE_FAMILY" = "1,2";
 				"SUPPORTED_PLATFORMS" = "iphoneos iphonesimulator";
 				"CODE_SIGN_STYLE" = "Automatic";
-				"MARKETING_VERSION" = "1.6.9";
-				"CURRENT_PROJECT_VERSION" = "35";
+				"MARKETING_VERSION" = "1.6.10";
+				"CURRENT_PROJECT_VERSION" = "36";
 				"ASSETCATALOG_COMPILER_APPICON_NAME" = "AppIcon";
 				"LD_RUNPATH_SEARCH_PATHS" = (
 					"$(inherited)",
@@ -480,8 +480,8 @@
 				"TARGETED_DEVICE_FAMILY" = "1,2";
 				"SUPPORTED_PLATFORMS" = "iphoneos iphonesimulator";
 				"CODE_SIGN_STYLE" = "Automatic";
-				"MARKETING_VERSION" = "1.6.9";
-				"CURRENT_PROJECT_VERSION" = "35";
+				"MARKETING_VERSION" = "1.6.10";
+				"CURRENT_PROJECT_VERSION" = "36";
 				"ASSETCATALOG_COMPILER_APPICON_NAME" = "AppIcon";
 				"LD_RUNPATH_SEARCH_PATHS" = (
 					"$(inherited)",
