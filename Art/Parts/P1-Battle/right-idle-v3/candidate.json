@@ -35,7 +35,7 @@
     "head": "../../../Templates/P1-Neutral/battle-side/right-idle-r3-head-contour/00.png"
   },
   "runtimeIntegrated": true,
-  "packaging": "requested by user on 2026-10-21; device archive pending",
+  "packaging": "1.6.9 build35 archived in run 39530852893 and verified; user device review pending",
   "userArtApproval": null,
   "hashes": {
     "assembled.png": "b22fdc328e474a93cd7c060c4924d771109b5b23c4caf31305b061ca876012aa",
@@ -46,5 +46,6 @@
     "build-review.sh": "5f99dbacbe8139122fb546a4351bb159ee2d579a8137dfc89c8dfa89a8b9f13c",
     "reference/rear-shading-study.png": "1fdc3404c6657de064191ec5ba600a976ae9bedd71143aaf21eec879d93e17e3"
   },
-  "runtimeImport": "runtime-import.json"
+  "runtimeImport": "runtime-import.json",
+  "package": "../../../../Media/Build35/package.json"
 }

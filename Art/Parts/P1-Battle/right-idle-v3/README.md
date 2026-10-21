@@ -9,3 +9,5 @@ The old diagonal shoulder seam and hard outer strip are replaced by blue transit
 The depth references are the approved left/right r1 `frames/03.png`. They are used for the near/far value relationship, not copied as clothing or animation. `outfit-forester/rear-edge-tones.svg` and `rear-shade.svg` are the editable color sources; `build-review.sh` reproduces the composite. The retained imagegen study is a shading reference only, and its pixels are not imported.
 
 Mechanical checks in `validation.json` verify that the changes stay in the requested shoulder/rear-sleeve area. They do not constitute user art approval. This remains one static pose with user artwork approval pending, included for the requested physical-device review.
+
+Device Release archive run [39530852893](https://github.com/liamchan-rgb/experiment/actions/runs/39530852893) succeeded at source `01cb73a` for 1.6.9 build35. The downloaded IPA passed device-platform, arm64, version, CRC and remote-checksum verification. No simulator or physical-device run was performed; see `Media/Build35/package.json` for package provenance.

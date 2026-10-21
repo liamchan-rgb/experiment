@@ -1892,7 +1892,7 @@
   },
   "battleSideRuntimeFixture": {
     "id": "p1-battle-side-right-idle-modular-fixture-v9",
-    "status": "v9-imported-device-archive-pending",
+    "status": "v9-packaged-for-user-device-review",
     "source": "Art/Parts/P1-Battle/right-idle-v3",
     "reviewImage": "Art/Parts/P1-Battle/right-idle-v3/review.png",
     "neutralPoseApprovalReference": "p1-neutral-battle-side-right-idle-r2",
@@ -1913,7 +1913,7 @@
       "pixel-art forest warden and independent shadows"
     ],
     "userArtApproval": null,
-    "runtimeSourceCommit": null,
+    "runtimeSourceCommit": "01cb73a66542443d3178ed82374383f6a4018bcf",
     "build": 35,
     "animationDelivered": false,
     "productionWardrobeContractPassed": false,
@@ -1926,7 +1926,8 @@
       "userArtApproval": null
     },
     "neutralBodyChangeScope": "Common r3 rear-head contour only; approved r2 pose/registration retained",
-    "runtimeImport": "Art/Parts/P1-Battle/right-idle-v3/runtime-import.json"
+    "runtimeImport": "Art/Parts/P1-Battle/right-idle-v3/runtime-import.json",
+    "package": "Media/Build35/package.json"
   },
   "battleSideFaceReview": {
     "id": "p1-battle-side-right-idle-face-blue-v8",
@@ -2005,7 +2006,7 @@
     "camera": "width-locked top-anchored scene; blurred backdrop shares its transform, uses clamped edge extension, and feathers the sharp canvas bottom",
     "shadow": "independent cast silhouettes plus four hoof contacts aligned to pixel sprite",
     "iPadScreenshotReview": "Physical-device runs and screenshots remain the user responsibility.",
-    "ipa": "User withdrew packaging pause on 2026-10-21. A new v9 + approved eight-direction gait device Release archive is pending; prior v7 packages remain historical."
+    "ipa": "1.6.9 build35 device Release archive succeeded in run 39530852893 at 01cb73a; downloaded IPA passed CRC, arm64/iPhoneOS, version, bundled gait and remote checksum checks. Package provenance: Media/Build35/package.json. User performs physical-device runs and screenshots."
   },
   "battleSideCleanupReview": {
     "id": "p1-battle-side-right-idle-art-cleanup-v8",
@@ -2060,12 +2061,12 @@
     ],
     "unchangedFaceSource": "Art/Parts/P1-Battle/right-idle-v2/face-blue",
     "runtimeIntegrated": true,
-    "packaging": "requested by user on 2026-10-21; device archive pending",
+    "packaging": "1.6.9 build35 archived and verified; requested by user on 2026-10-21",
     "userArtApproval": null,
     "runtimeImport": "Art/Parts/P1-Battle/right-idle-v3/runtime-import.json"
   },
   "gaitDemoIntegration": {
-    "status": "imported-device-archive-pending",
+    "status": "packaged-for-user-device-review",
     "date": "2026-10-21",
     "userRequest": "撤回刚才那个要求，要打包，然后把之前确认好的步态更新到demo里",
     "source": "Art/Integration/P1-approved-gait-v1",
@@ -2078,7 +2079,10 @@
     "normalFrameMs": 120,
     "cycleMs": 960,
     "pixelChangesToApprovedArt": 0,
-    "physicalDeviceVisualApproval": null
+    "physicalDeviceVisualApproval": null,
+    "package": "Media/Build35/package.json",
+    "workflowRun": 39530852893,
+    "sourceCommit": "01cb73a66542443d3178ed82374383f6a4018bcf"
   },
   "battleSideRuntimeHistory": [
     {
