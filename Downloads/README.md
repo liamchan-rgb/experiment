@@ -1,6 +1,20 @@
 # SideStore 安装与迭代包
 
-## Meadow Journey 战场观感试验包 · 1.6.8 build 33
+## 当前版本：斜向步态首尾修订 · 1.6.10 build36
+
+四个斜向只替换08末帧，接顺07→08→01→02；右上修订保留同一支撑脚，另三个方向也检查完整人物过渡。站姿、01–07、四正交方向与P2／P3保持原稿，正常每姿势120ms；单靴足底坐标同步到前景／阴影数据。战斗维持已认可的v9静态呈现，下一张迈步关键帧美术单独审核。
+
+[直接下载 MeadowJourney-b36.ipa](https://raw.githubusercontent.com/liamchan-rgb/experiment/fix/build33-face-grounding-camera/Downloads/MeadowJourney-b36.ipa) · [构建校验](MeadowJourney-build36.json) · [动图与修订记录](../Art/Integration/P1-diagonal-loop-v2/README.md) · [战斗下一张关键帧](../Art/Parts/P1-Battle/right-step-contact-v1/review.png)
+
+可直接复制到Safari：
+
+```text
+https://raw.githubusercontent.com/liamchan-rgb/experiment/fix/build33-face-grounding-camera/Downloads/MeadowJourney-b36.ipa
+```
+
+已实际GET核对：HTTP200、application/octet-stream、23,592,463字节，文件SHA256与设备归档一致：`bd486f94ea64153e9fcf1ff593cf2b2495c48c1766862854ab6e818ac8738cec`。下载即原始IPA，无需解压。沿用SideStore重签安装，进入主地图的步态演示检查四斜向。设备Release归档39560271325通过，本轮未运行模拟器或物理设备，实机观感由用户截图验证。
+
+## 历史版本：Meadow Journey 战场观感试验包 · 1.6.8 build 33
 
 人物改为侧向持剑备战，独立叠放头发、五官、衣物和短剑；鹿灵改为四蹄落地的警戒站姿。调整双方像素尺度、逐脚接触影、轮廓投影与背景虚实；两种回合共用等比取景，修正怪物回合上下黑边。地图仍以原 Meadow Journey 为基准。
 

@@ -922,3 +922,5 @@ v7 改用整个人物生成稿中的脸部设计，仅以固定256/1254画布缩
 运行导入脚本现区分既有认可原件和本次用户授权的自主修复稿，原认可记录保留，不用伪造“已认可”状态接入新图。原稿摘要、各新横条／运行图集RGBA、GIF时长／序列、变化范围、未改角色资源与项目引用检查通过。版本升至1.6.10 build36，下一步执行设备Release归档，完成后将原始IPA置于Downloads并验证浏览器直链；战斗新的迈步单帧继续作为美术审核项，不混入已认可的运行待机。
 
 设备Release归档 `39560271325` 成功，源码 `94c00a15e6de982df69b8b5fde1f5fd1c46a6c5a`，Xcode15.4，1.6.10 build36。已核对GitHub artifact摘要、外／内CRC、arm64设备架构、iPhoneOS平台、可执行权限、版本号、编译资产、包内步态JSON及远程打包日志校验值，均通过；未运行模拟器或实机。IPA为23,592,463字节，SHA256 `bd486f94ea64153e9fcf1ff593cf2b2495c48c1766862854ab6e818ac8738cec`。原始IPA复制到 `Downloads/MeadowJourney-b36.ipa`，保留历史版本；来源与核验见 `Media/Build36/package.json`。上传后将实际GET原始IPA直链核对返回文件，不向用户交付外层ZIP。
+
+原始IPA直链上传完成后已实际GET：HTTP200、Content-Type application/octet-stream，读取23,592,463字节并计算SHA256，与本地IPA／远程归档日志完全一致。Downloads索引已更新为build36直接IPA地址，用户无需登录Actions或解压外层ZIP；版本、元数据、校验表和制作／审核记录均已同步。实机验证仍由用户执行。
