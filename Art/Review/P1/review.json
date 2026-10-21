@@ -1,7 +1,7 @@
 {
   "character": "P1",
   "format": 3,
-  "updated": "2026-10-20",
+  "updated": "2026-10-21",
   "workflow": "Review one direction at a time from fixed cardinal and diagonal baselines. Modify and resubmit the same direction until explicit user artwork approval, then advance. Record provenance, feedback and accepted revisions for the future character template.",
   "current": "p1-battle-side-right-idle-rear-shading-v9",
   "templateStatus": "independent heads approved; the v5 down idle sword pose is approved as one art study only; modular wardrobe/weapon production and the full character template remain incomplete; the heavyStrike + trainingSword standalone effect prototype remains awaiting user art review; battle-side right idle pose and hand direction r2 approved; localized shoulder/hip-root underbody remains incomplete; the right-side walking pose test remains pending; the current single-frame review is battle rear-shoulder shading v9; complete anatomy, articulated movement and runtime integration remain incomplete",
@@ -169,7 +169,8 @@
             "opposite arm swing",
             "matching idle boot design"
           ],
-          "productionAssetsUpdated": false
+          "productionAssetsUpdated": true,
+          "demoIntegration": "Art/Integration/P1-approved-gait-v1/integration.json"
         }
       ],
       "approval": {
@@ -289,7 +290,8 @@
             "near/far leg occlusion and shading",
             "consistent whole-pose review scale and sole envelope"
           ],
-          "productionAssetsUpdated": false
+          "productionAssetsUpdated": true,
+          "demoIntegration": "Art/Integration/P1-approved-gait-v1/integration.json"
         }
       ],
       "approval": {
@@ -409,7 +411,8 @@
             "reduced exaggerated depth and boot-size contrast",
             "idle heel/cuff volume matched to walking model"
           ],
-          "productionAssetsUpdated": false
+          "productionAssetsUpdated": true,
+          "demoIntegration": "Art/Integration/P1-approved-gait-v1/integration.json"
         }
       ],
       "approval": {
@@ -536,7 +539,8 @@
             "phase-by-phase stride and proportions coordinated with approved left r1",
             "same registration profile and normal/slow timing; synchronized review artifacts"
           ],
-          "productionAssetsUpdated": false
+          "productionAssetsUpdated": true,
+          "demoIntegration": "Art/Integration/P1-approved-gait-v1/integration.json"
         }
       ],
       "approval": {
@@ -714,7 +718,8 @@
             "opposite arm swing and near/far occlusion",
             "reduced oversized advancing sole/boot perspective"
           ],
-          "productionAssetsUpdated": false
+          "productionAssetsUpdated": true,
+          "demoIntegration": "Art/Integration/P1-approved-gait-v1/integration.json"
         }
       ],
       "approval": {
@@ -830,7 +835,8 @@
             "opposite arm swing and near/far occlusion",
             "phase-by-phase whole-pose correspondence with approved down-right r1"
           ],
-          "productionAssetsUpdated": false
+          "productionAssetsUpdated": true,
+          "demoIntegration": "Art/Integration/P1-approved-gait-v1/integration.json"
         }
       ],
       "approval": {
@@ -1075,7 +1081,7 @@
           "addressedInCandidate": [
             "assemble revised05 to review narrow leg spacing and04–05–06 continuity"
           ],
-          "productionAssetsUpdated": false,
+          "productionAssetsUpdated": true,
           "changedFrames": [
             5
           ],
@@ -1090,7 +1096,8 @@
             8
           ],
           "inheritedPose04Approval": "directions/up-left/revisions/r5/pose04-approval.json",
-          "assemblyRequest": "directions/up-left/revisions/r6/assembly-request.json"
+          "assemblyRequest": "directions/up-left/revisions/r6/assembly-request.json",
+          "demoIntegration": "Art/Integration/P1-approved-gait-v1/integration.json"
         }
       ],
       "approval": {
@@ -1255,7 +1262,8 @@
             "opposite arm swing, support and near/far occlusion",
             "08–01 cyclic heading continuity"
           ],
-          "productionAssetsUpdated": false
+          "productionAssetsUpdated": true,
+          "demoIntegration": "Art/Integration/P1-approved-gait-v1/integration.json"
         }
       ],
       "approval": {
@@ -1883,12 +1891,12 @@
     "next": "Review the candidate silhouette and layer assignment. If accepted, author actual articulated pose redraws with complete hidden anatomy and test seams across frames before building the walk animation."
   },
   "battleSideRuntimeFixture": {
-    "id": "p1-battle-side-right-idle-modular-fixture-v1",
-    "status": "v7-static-runtime-fixture-withheld-user-requested-cleanup",
-    "source": "Art/Parts/P1-Battle/right-idle-v1",
-    "reviewImage": "Art/Parts/P1-Battle/right-idle-v1/assembled.png",
+    "id": "p1-battle-side-right-idle-modular-fixture-v9",
+    "status": "v9-imported-device-archive-pending",
+    "source": "Art/Parts/P1-Battle/right-idle-v3",
+    "reviewImage": "Art/Parts/P1-Battle/right-idle-v3/review.png",
     "neutralPoseApprovalReference": "p1-neutral-battle-side-right-idle-r2",
-    "neutralBodySourceChanged": false,
+    "neutralBodySourceChanged": true,
     "canvasPx": [
       256,
       256
@@ -1898,28 +1906,27 @@
       214
     ],
     "parts": [
-      "approved neutral body pose r2",
-      "P1 blue wardrobe colorway with original registered alpha",
-      "chestnut hair",
-      "blue facial features v7",
-      "short sword",
-      "near hand foreground",
-      "far hand foreground ownership correction",
-      "transparent pixel-art forest warden with independent cast/contact shadows"
+      "common neutral r3 rear-head contour candidate on the r2 pose",
+      "v9 blue rear-shoulder and sleeve shading",
+      "v8 tapered chestnut hair and cleaned blue facial features",
+      "original registered short sword and foreground hands",
+      "pixel-art forest warden and independent shadows"
     ],
     "userArtApproval": null,
     "runtimeSourceCommit": null,
-    "build": 34,
+    "build": 35,
     "animationDelivered": false,
     "productionWardrobeContractPassed": false,
     "limits": "One right-facing static idle fixture and one static enemy pose; no full hidden anatomy, animation, additional outfit or third-resource compatibility validation.",
-    "releaseVersion": "1.6.8",
+    "releaseVersion": "1.6.9",
     "internalFaceReadabilityReview": {
-      "revision": "v7",
-      "status": "self-reviewed-full-sprite-candidate-awaiting-user-device-review",
-      "scope": "Full registered character at native 256x256 scale is primary; the enlarged head crop only checks pixel joins",
+      "revision": "v8 face with v9 wardrobe composition",
+      "status": "whole-character-self-review-user-device-review-pending",
+      "scope": "Native and 3x full-character artwork; no user art or device visual approval",
       "userArtApproval": null
-    }
+    },
+    "neutralBodyChangeScope": "Common r3 rear-head contour only; approved r2 pose/registration retained",
+    "runtimeImport": "Art/Parts/P1-Battle/right-idle-v3/runtime-import.json"
   },
   "battleSideFaceReview": {
     "id": "p1-battle-side-right-idle-face-blue-v8",
@@ -1966,18 +1973,18 @@
         "statement": "别急着打包；箭头处有多余像素，后脑勺太圆也要改。"
       }
     ],
-    "next": "Review the same static character with v9 shoulder shading; face pixels remain v8. Packaging stays paused; v8/v9 are not imported into the app.",
+    "next": "v8 face and v9 whole-character composition are now imported for the user-requested IPA. The user performs physical-device runs and supplies screenshots.",
     "internalReadabilityReview": {
       "status": "whole-character-cleanup-reviewed-user-review-pending",
       "scope": "Native and 3x full-character review, plus targeted pixel checks for the marked cleanup areas",
       "userArtApproval": null
     },
-    "runtimeCandidateImported": false,
+    "runtimeCandidateImported": true,
     "previousRuntimeImage": "Sources/Resources/Assets.xcassets/MeadowBattleHeroFace.imageset/MeadowBattleHeroFace.png"
   },
   "battleSideVisualPolish": {
-    "build": 34,
-    "version": "1.6.8",
+    "build": 35,
+    "version": "1.6.9",
     "heroWardrobe": "Brighter, more saturated P1 blue colorway; original 256x256 alpha, silhouette and foot registration retained",
     "forestWarden": {
       "id": "meadow-forest-warden-pixel-alert-idle-v1",
@@ -1997,8 +2004,8 @@
     },
     "camera": "width-locked top-anchored scene; blurred backdrop shares its transform, uses clamped edge extension, and feathers the sharp canvas bottom",
     "shadow": "independent cast silhouettes plus four hoof contacts aligned to pixel sprite",
-    "iPadScreenshotReview": "paused until the current artwork correction is reviewed; physical-device runs remain the user responsibility",
-    "ipa": "Run 39465865631 succeeded at d988299; its v7 package is withheld after the user paused packaging. The v8/v9 artwork is not imported or packaged."
+    "iPadScreenshotReview": "Physical-device runs and screenshots remain the user responsibility.",
+    "ipa": "User withdrew packaging pause on 2026-10-21. A new v9 + approved eight-direction gait device Release archive is pending; prior v7 packages remain historical."
   },
   "battleSideCleanupReview": {
     "id": "p1-battle-side-right-idle-art-cleanup-v8",
@@ -2052,8 +2059,66 @@
       168
     ],
     "unchangedFaceSource": "Art/Parts/P1-Battle/right-idle-v2/face-blue",
-    "runtimeIntegrated": false,
-    "packaging": "paused by user",
-    "userArtApproval": null
-  }
+    "runtimeIntegrated": true,
+    "packaging": "requested by user on 2026-10-21; device archive pending",
+    "userArtApproval": null,
+    "runtimeImport": "Art/Parts/P1-Battle/right-idle-v3/runtime-import.json"
+  },
+  "gaitDemoIntegration": {
+    "status": "imported-device-archive-pending",
+    "date": "2026-10-21",
+    "userRequest": "撤回刚才那个要求，要打包，然后把之前确认好的步态更新到demo里",
+    "source": "Art/Integration/P1-approved-gait-v1",
+    "manifest": "Art/Integration/P1-approved-gait-v1/integration.json",
+    "approvedDirections": 8,
+    "posesPerDirection": {
+      "idle": 1,
+      "walk": 8
+    },
+    "normalFrameMs": 120,
+    "cycleMs": 960,
+    "pixelChangesToApprovedArt": 0,
+    "physicalDeviceVisualApproval": null
+  },
+  "battleSideRuntimeHistory": [
+    {
+      "id": "p1-battle-side-right-idle-modular-fixture-v1",
+      "status": "v7-static-runtime-fixture-withheld-user-requested-cleanup",
+      "source": "Art/Parts/P1-Battle/right-idle-v1",
+      "reviewImage": "Art/Parts/P1-Battle/right-idle-v1/assembled.png",
+      "neutralPoseApprovalReference": "p1-neutral-battle-side-right-idle-r2",
+      "neutralBodySourceChanged": false,
+      "canvasPx": [
+        256,
+        256
+      ],
+      "footAnchorPx": [
+        123,
+        214
+      ],
+      "parts": [
+        "approved neutral body pose r2",
+        "P1 blue wardrobe colorway with original registered alpha",
+        "chestnut hair",
+        "blue facial features v7",
+        "short sword",
+        "near hand foreground",
+        "far hand foreground ownership correction",
+        "transparent pixel-art forest warden with independent cast/contact shadows"
+      ],
+      "userArtApproval": null,
+      "runtimeSourceCommit": null,
+      "build": 34,
+      "animationDelivered": false,
+      "productionWardrobeContractPassed": false,
+      "limits": "One right-facing static idle fixture and one static enemy pose; no full hidden anatomy, animation, additional outfit or third-resource compatibility validation.",
+      "releaseVersion": "1.6.8",
+      "internalFaceReadabilityReview": {
+        "revision": "v7",
+        "status": "self-reviewed-full-sprite-candidate-awaiting-user-device-review",
+        "scope": "Full registered character at native 256x256 scale is primary; the enlarged head crop only checks pixel joins",
+        "userArtApproval": null
+      }
+    }
+  ]
 }

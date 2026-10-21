@@ -20,7 +20,7 @@ struct GaitTest {
     }
     var phase: CGFloat { distance.truncatingRemainder(dividingBy: 24) / 24 }
     var frame: Int { WalkCycle.frame(at: distance) }
-    var speed: CGFloat { slow ? 10.5 : 42 }
+    var speed: CGFloat { HeroFrames.reviewSpeed * (slow ? 0.25 : 1) }
 
     mutating func select(_ facing: Int) {
         self.facing = min(7, max(0, facing)); distance = 0
@@ -31,7 +31,7 @@ struct GaitTest {
     }
     mutating func step() {
         paused = true
-        distance = (distance + 24 / CGFloat(HeroFrames.walkFrameCount)).truncatingRemainder(dividingBy: 144)
+        distance = (distance + 24 / CGFloat(HeroFrames.authoredFrameCount(heroIndex: 0))).truncatingRemainder(dividingBy: 144)
     }
     func point(for hero: Int) -> CGPoint {
         let direction = Self.directions[facing], travel = (distance - 72) * projection

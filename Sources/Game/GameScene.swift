@@ -308,7 +308,7 @@ final class GameScene: SKScene {
     }
 
     func toggleLayeredPreview() {
-        guard gaitTest != nil else { return }
+        guard gaitTest != nil, HeroFrames.layeredPrototypeAvailable else { return }
         if !layeredPreview {
             if layeredP1Frames == nil { layeredP1Frames = HeroFrames.loadLayeredP1BlueVariant() }
             layeredPreview = true
@@ -563,6 +563,8 @@ final class GameScene: SKScene {
             "mode": gaitTest != nil ? "gaitTest" : (simulation.mode == .patrol ? "patrol" : "destination"),
             "gaitFacing": gaitTest?.facing ?? -1, "gaitPhase": Double(gaitTest?.phase ?? 0),
             "gaitFrame": gaitTest?.frame ?? -1, "gaitPaused": gaitTest?.paused ?? false,
+            "gaitPoseCount": HeroFrames.authoredFrameCount(heroIndex: 0),
+            "gaitAuthoredPose": gaitTest.map { HeroFrames.sourceColumn(frame: $0.frame) } ?? -1,
             "layeredPreview": layeredPreview, "layeredPreviewFrameCount": layeredP1Frames?.count ?? 0,
             "goal": ["x": Double(goal.x), "y": Double(goal.y)],
             "heroTargets": heroTargets,

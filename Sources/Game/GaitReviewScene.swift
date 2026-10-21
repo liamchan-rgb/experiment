@@ -92,7 +92,7 @@ final class GaitReviewScene: SKScene {
         effects.update(time: elapsed)
         let direction = [0, 4, 3, 7, 2, 6, 1, 5][Int(elapsed / 3) % 8]
         let names = ["正面", "向左", "背面", "向右", "右下", "左下", "左上", "右上"]
-        let distance = CGFloat(elapsed) * 42
+        let distance = CGFloat(elapsed) * HeroFrames.reviewSpeed
         let frame = WalkCycle.frame(at: distance)
         let phase = distance.truncatingRemainder(dividingBy: 24) / 24
         let angle = CGFloat(Int(elapsed / 3) % 8) * .pi / 4

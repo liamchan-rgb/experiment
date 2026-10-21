@@ -478,7 +478,9 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
         gaitLayeredPreviewButton.addAction(UIAction { [weak self] _ in
             self?.scene.toggleLayeredPreview(); self?.refreshGaitControls()
         }, for: .touchUpInside)
-        gaitPanel.addArrangedSubview(gaitLayeredPreviewButton)
+        if HeroFrames.layeredPrototypeAvailable {
+            gaitPanel.addArrangedSubview(gaitLayeredPreviewButton)
+        }
         view.addSubview(gaitPanel)
     }
 

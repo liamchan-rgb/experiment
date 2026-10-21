@@ -100,9 +100,10 @@ final class JourneyUITests: XCTestCase {
             app.buttons["gaitDirection\(facing)"].tap()
             XCTAssertEqual(diagnostics(app)["gaitFacing"] as? Int, facing)
             XCTAssertEqual(diagnostics(app)["mode"] as? String, "gaitTest")
-            for frame in 1...24 {
-                XCTAssertEqual(diagnostics(app)["gaitFrame"] as? Int, frame)
-                if [1, 7, 13, 19].contains(frame) { capture("gait-hero-map-dir\(facing)-frame\(frame)") }
+            for pose in 1...8 {
+                XCTAssertEqual(diagnostics(app)["gaitAuthoredPose"] as? Int, pose)
+                XCTAssertEqual(diagnostics(app)["gaitFrame"] as? Int, 1 + (pose - 1) * 3)
+                if [1, 3, 5, 7].contains(pose) { capture("gait-hero-map-dir\(facing)-pose\(pose)") }
                 app.buttons["gaitStep"].tap()
             }
             XCTAssertEqual(diagnostics(app)["gaitFrame"] as? Int, 1)
@@ -113,7 +114,7 @@ final class JourneyUITests: XCTestCase {
         assertVisibleGround(map, name: "main-ground-after-gait-review")
     }
 
-    func testLayeredP1ColorwayPreviewRunsBesideOriginalInTheMapScene() {
+    func testApprovedP1GaitStepsWholePosesAndOmitsOutdatedLayeredComparison() {
         continueAfterFailure = false
         XCUIDevice.shared.orientation = .landscapeLeft
         let app = XCUIApplication(); app.launchArguments = ["-visualReview"]; app.launch()
@@ -121,19 +122,19 @@ final class JourneyUITests: XCTestCase {
         XCTAssertTrue(map.waitForExistence(timeout: 120)); waitForReady(app, map: map)
         app.buttons["openGaitTest"].tap()
         app.buttons["gaitPause"].tap()
-        app.buttons["gaitLayeredPreview"].tap()
+        app.buttons["gaitDirection0"].tap()
         var state = diagnostics(app)
-        XCTAssertEqual(state["layeredPreview"] as? Bool, true)
-        XCTAssertEqual(state["layeredPreviewFrameCount"] as? Int, 24)
+        XCTAssertFalse(app.buttons["gaitLayeredPreview"].exists)
+        XCTAssertEqual(state["layeredPreview"] as? Bool, false)
+        XCTAssertEqual(state["gaitPoseCount"] as? Int, 8)
+        XCTAssertEqual(state["gaitAuthoredPose"] as? Int, 1)
         XCTAssertEqual(state["gaitFacing"] as? Int, 0)
-        capture("layered-p1-original-versus-blue-boots")
         app.buttons["gaitStep"].tap()
         state = diagnostics(app)
-        XCTAssertEqual(state["gaitFrame"] as? Int, 2)
-        app.buttons["gaitLayeredPreview"].tap()
-        XCTAssertEqual(diagnostics(app)["layeredPreview"] as? Bool, false)
+        XCTAssertEqual(state["gaitAuthoredPose"] as? Int, 2)
+        XCTAssertEqual(state["gaitFrame"] as? Int, 4)
         app.buttons["openGaitTest"].tap()
-        assertVisibleGround(map, name: "main-ground-after-layered-preview")
+        assertVisibleGround(map, name: "main-ground-after-approved-gait-preview")
     }
 
     func testForegroundAndShadowReceiverStayAlignedAtEveryZoom() {

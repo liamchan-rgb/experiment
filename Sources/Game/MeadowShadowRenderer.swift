@@ -200,7 +200,7 @@ final class MeadowShadowRenderer: NSObject, MTKViewDelegate {
             let instance = ShadowLabInstance(asset: .hero, root: Self.root(foot), width: 64 / Self.units, aspect: 1, anchor: SIMD2(0.5, 0.125))
             mesh.imageCaster(instance, mirrored: HeroFrames.isMirrored(hero.facing), pose: pose)
             var item = try draw(mesh, texture: texture, kind: 2)
-            item.uvRect = HeroFrames.atlasRect(facing: hero.facing, frame: hero.frame)
+            item.uvRect = HeroFrames.atlasRect(facing: hero.facing, frame: hero.frame, heroIndex: hero.index)
             draws.append(item)
         }
         return draws

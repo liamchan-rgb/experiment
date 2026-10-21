@@ -30,6 +30,6 @@
   "nearArmLightSampleUnchanged": true,
   "svgSourcesParse": true,
   "selfReview": "Final native 256x256 and 3x whole-character views; mechanical checks do not establish art approval.",
-  "runtimeIntegrated": false,
+  "runtimeIntegrated": true,
   "userArtApproval": null
 }

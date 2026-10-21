@@ -136,7 +136,7 @@ enum ShadowLabMath {
         ]
     }
 
-    static func heroFrame(time: Float) -> Int { WalkCycle.frame(at: CGFloat(max(0, time) * 42)) }
+    static func heroFrame(time: Float) -> Int { WalkCycle.frame(at: CGFloat(max(0, time)) * HeroFrames.reviewSpeed) }
     static func heroMovingRight(time: Float) -> Bool { (time * 0.75).truncatingRemainder(dividingBy: 14) > 7 }
 }
 

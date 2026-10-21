@@ -149,7 +149,7 @@ jobs:
               -only-testing:MeadowJourneyTests/TrailTests/testBattleLayoutKeepsSharedRowsAndExpandsForExplorationAndMonsterTurns
               -only-testing:MeadowJourneyTests/TrailTests/testBattlePreviewCropsAroundTravellerAndKeepsTerrainAcrossViewport
               -only-testing:MeadowJourneyTests/TrailTests/testCapturedViewportKeepsGroundAndArtworkAlignedThroughZoomAndPan
-              -only-testing:MeadowJourneyUITests/JourneyUITests/testLayeredP1ColorwayPreviewRunsBesideOriginalInTheMapScene
+              -only-testing:MeadowJourneyUITests/JourneyUITests/testApprovedP1GaitStepsWholePosesAndOmitsOutdatedLayeredComparison
               -only-testing:MeadowJourneyUITests/JourneyUITests/testMeadowBattlePreviewKeepsReferenceMapBesideLandscapeScene
             )
           else
@@ -157,7 +157,7 @@ jobs:
               -only-testing:MeadowJourneyUITests/JourneyUITests/testMapContourRendererAndInteraction
               -only-testing:MeadowJourneyUITests/JourneyUITests/testForegroundAndShadowReceiverStayAlignedAtEveryZoom
               -only-testing:MeadowJourneyUITests/JourneyUITests/testActualMapGaitControlsCoverAllDirectionsAndEveryFrame
-              -only-testing:MeadowJourneyUITests/JourneyUITests/testLayeredP1ColorwayPreviewRunsBesideOriginalInTheMapScene
+              -only-testing:MeadowJourneyUITests/JourneyUITests/testApprovedP1GaitStepsWholePosesAndOmitsOutdatedLayeredComparison
             )
             for test in \
               testShadowLabCutoutPipelineSubmitsContourModes \
@@ -168,12 +168,13 @@ jobs:
               testReliefPreservesArtCoordinatesForEveryAsset \
               testRoadMaskUsesOneUnionAtJunctions \
               testOnlyTheTowerGetsAnAdditionalBanner \
-              testAuthoredWalkUses24WholeFramesAndNoLegWarp \
+              testAuthoredWalkMapsDistanceClockToWholePosesWithoutLegWarp \
               testFootprintGroundLineFollowsAlternatingFeet \
               testHeroCasterAnchorsEachPlantedFootAndTracksLift \
-              testHeroFramesBundlesAllDirectionsAndWholeMirroredRightProfile \
+              testHeroFramesBundlesAllApprovedDirectionsAndWholeRightProfile \
               testWalkCycleVisitsEveryFrameAndWrapsWithoutRepeatingPassingArt \
               testGaitTestCoversEightRoadIndependentHeadingsAndSupportsStepping \
+              testApprovedP1GaitKeepsNormalCadenceAndStepsBetweenAuthoredPoses \
               testGaitTestReturnsToTheSameMapCameraAndActorPositions \
               testHeroPoseSpriteKitRenderingKeepsAllHeroContoursConnected; do
               focused_tests+=("-only-testing:MeadowJourneyTests/TrailTests/$test")

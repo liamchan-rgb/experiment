@@ -604,15 +604,17 @@ final class TrailTests: XCTestCase {
         XCTAssertEqual(walk.lift, 0, accuracy: 0.001)
     }
 
-    func testAuthoredWalkUses24WholeFramesAndNoLegWarp() {
+    func testAuthoredWalkMapsDistanceClockToWholePosesWithoutLegWarp() {
         XCTAssertEqual(HeroFrames.walkFrameCount, 24)
         for hero in 0..<3 { for facing in 0..<8 { for frame in 0...24 {
             let pose = HeroPose(heroIndex: hero, facing: facing, frame: frame, phase: CGFloat(frame) / 24)
             XCTAssertEqual(pose.frame, frame)
             XCTAssertEqual(pose.sourcePositions, pose.destinationPositions())
             XCTAssertEqual(pose.bodyOffset(), .zero)
-            let rect = HeroFrames.atlasRect(facing: facing, frame: frame)
-            XCTAssertEqual(rect.x + rect.z / 2, (Float(frame) + 0.5) / 25, accuracy: 0.00001)
+            let rect = HeroFrames.atlasRect(facing: facing, frame: frame, heroIndex: hero)
+            let source = HeroFrames.sourceColumn(frame: frame, heroIndex: hero)
+            let columns = HeroFrames.authoredFrameCount(heroIndex: hero) + 1
+            XCTAssertEqual(rect.x + rect.z / 2, (Float(source) + 0.5) / Float(columns), accuracy: 0.00001)
             XCTAssertLessThanOrEqual(rect.x + rect.z, 1.00001)
         } } }
     }
@@ -636,11 +638,16 @@ final class TrailTests: XCTestCase {
         for hero in 0..<3 { for facing in [0, 2, 4, 5, 6, 7] {
             let a = HeroPose(heroIndex: hero, facing: facing, frame: 1, phase: 0)
             let b = HeroPose(heroIndex: hero, facing: facing, frame: 13, phase: 0.5)
+            var changes: [Float] = []
             for leg in 0..<2 {
                 let af = a.footLandmarks[leg], bf = b.footLandmarks[leg]
                 let change = abs(a.groundLine(at: SIMD2(af.x, af.y)) - b.groundLine(at: SIMD2(bf.x, bf.y)))
-                XCTAssertGreaterThan(change, 0.02, "Each anatomical boot must exchange ground depth, hero \(hero), facing \(facing), leg \(leg)")
+                changes.append(change)
+                if hero > 0 {
+                    XCTAssertGreaterThan(change, 0.02, "Legacy anatomical boot must exchange ground depth, hero \(hero), facing \(facing), leg \(leg)")
+                }
             }
+            XCTAssertGreaterThan(changes.max() ?? 0, 0.02, "Authored contacts must change ground depth")
         } }
     }
 
@@ -655,9 +662,24 @@ final class TrailTests: XCTestCase {
             let frozen = test.point(for: 0); test.advance(10)
             XCTAssertEqual(test.point(for: 0), frozen)
             let phase = test.phase; test.step()
-            XCTAssertEqual(test.phase - phase, 1.0 / 24, accuracy: 0.0001)
+            XCTAssertEqual(test.phase - phase, 1.0 / 8, accuracy: 0.0001)
             XCTAssertEqual(test.point(for: 1).x - test.point(for: 0).x, 110, accuracy: 0.0001)
         }
+    }
+
+    func testApprovedP1GaitKeepsNormalCadenceAndStepsBetweenAuthoredPoses() {
+        XCTAssertEqual(HeroFrames.authoredFrameCount(heroIndex: 0), 8)
+        var test = GaitTest()
+        test.select(0)
+        test.advance(0.119)
+        XCTAssertEqual(HeroFrames.sourceColumn(frame: test.frame), 1)
+        test.advance(0.002)
+        XCTAssertEqual(HeroFrames.sourceColumn(frame: test.frame), 2)
+        test.step()
+        XCTAssertEqual(HeroFrames.sourceColumn(frame: test.frame), 3)
+        let frozen = test.frame
+        test.advance(1)
+        XCTAssertEqual(test.frame, frozen)
     }
 
     func testNorthwestLegMeshNeverFoldsAcrossTheCycle() {
@@ -779,9 +801,9 @@ final class TrailTests: XCTestCase {
         }
     }
 
-    func testHeroFramesBundlesAllDirectionsAndWholeMirroredRightProfile() {
+    func testHeroFramesBundlesAllApprovedDirectionsAndWholeRightProfile() {
         XCTAssertEqual(HeroFrames.sourceFacing(3), 3)
-        XCTAssertFalse(HeroFrames.isMirrored(3), "Right art is mirrored once during packing, including its footprint data")
+        XCTAssertFalse(HeroFrames.isMirrored(3), "Right art has its own approved source row")
         for hero in 1...3 {
             let poses = HeroFrames.load(hero)
             XCTAssertEqual(poses.count, 8)
@@ -791,7 +813,8 @@ final class TrailTests: XCTestCase {
                     let image = poses[facing][frame].cgImage()
                     return UIImage(cgImage: image).pngData()!
                 })
-                XCTAssertEqual(hashes.count, 24, "Every walk pose must contain a distinct rasterized limb pose")
+                XCTAssertEqual(hashes.count, HeroFrames.authoredFrameCount(heroIndex: hero - 1),
+                               "Use exactly the authored poses; P1 has eight, P2/P3 retain 24")
             }
         }
     }
@@ -949,7 +972,7 @@ final class TrailTests: XCTestCase {
                                   "Gait attributes must not cut or replace the authored leg silhouette")
 
                 // The paired pose comes from the real atlas column instead.
-                node.texture = frames[direction][3]
+                node.texture = frames[direction][13]
                 let contactB = try renderedPixels(node, in: view)
                 // The full-canvas mean includes the transparent border and
                 // mostly stationary torso; 0.20 still requires a strong pose change.
@@ -971,10 +994,10 @@ final class TrailTests: XCTestCase {
                 node.texture = frames[direction][1]
                 let left = try renderedPixels(node, in: view)
                 effects.apply(effects.vegetation, to: node, origin: .zero, extent: node.size, gait: SIMD2(Float(direction), 2))
-                node.texture = frames[direction][2]
+                node.texture = frames[direction][7]
                 let passing = try renderedPixels(node, in: view)
                 effects.apply(effects.vegetation, to: node, origin: .zero, extent: node.size, gait: SIMD2(Float(direction), 3))
-                node.texture = frames[direction][3]
+                node.texture = frames[direction][13]
                 let right = try renderedPixels(node, in: view)
                 XCTAssertGreaterThan(pixelDifference(left, right), 0.20)
                 XCTAssertGreaterThan(pixelDifference(left, passing), 0.20)
@@ -1008,7 +1031,7 @@ final class TrailTests: XCTestCase {
                                      anchorY: 0.125, ratio: 0.82, softness: 1.2, opacity: 0.52, shader: effects.shadow)
         shadow.update(foot: .zero, texture: contacts[1], gait: SIMD2(0, 1))
         let left = try renderedPixels(shadow, in: view)
-        shadow.update(foot: .zero, texture: contacts[3], gait: SIMD2(0, 3))
+        shadow.update(foot: .zero, texture: contacts[13], gait: SIMD2(0, 13))
         let right = try renderedPixels(shadow, in: view)
         XCTAssertGreaterThan(pixelDifference(left, right), 0.05,
                              "The ground projection must use the currently selected full animation frame")

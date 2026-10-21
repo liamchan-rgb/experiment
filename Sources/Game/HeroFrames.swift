@@ -1,24 +1,60 @@
 import SpriteKit
 
 enum HeroFrames {
+    // Shared distance-clock resolution; artwork can contain fewer whole poses.
     static let walkFrameCount = 24
-    static let columns = walkFrameCount + 1 // idle, then a complete two-step cycle
+    static let columns = walkFrameCount + 1
     static let atlasRows = 4
+
+    private struct Layout: Decodable {
+        let authoredFrames: [Int]
+        let reviewFrameMs: Double
+    }
+    private static let layout: Layout = {
+        guard let url = Bundle.main.url(forResource: "hero-gait", withExtension: "json"),
+              let data = try? Data(contentsOf: url),
+              let value = try? JSONDecoder().decode(Layout.self, from: data) else {
+            fatalError("Missing authored gait layout")
+        }
+        precondition(value.authoredFrames.count == 3 && value.authoredFrames.allSatisfy { $0 > 0 && walkFrameCount % $0 == 0 })
+        return value
+    }()
+
+    static func authoredFrameCount(heroIndex: Int) -> Int {
+        layout.authoredFrames[min(2, max(0, heroIndex))]
+    }
+
+    static var reviewSpeed: CGFloat {
+        24 / (CGFloat(authoredFrameCount(heroIndex: 0)) * CGFloat(layout.reviewFrameMs) / 1000)
+    }
+
+    // The retained blue-boot prototype was baked from the older 24-pose P1.
+    // Offer its comparison only while the primary artwork uses that layout.
+    static var layeredPrototypeAvailable: Bool { authoredFrameCount(heroIndex: 0) == walkFrameCount }
+
+    static func sourceColumn(frame: Int, heroIndex: Int = 0) -> Int {
+        let frame = min(walkFrameCount, max(0, frame))
+        return frame == 0 ? 0 : 1 + (frame - 1) * authoredFrameCount(heroIndex: heroIndex) / walkFrameCount
+    }
 
     static func load(_ hero: Int) -> [[SKTexture]] {
         ["Directions", "Diagonals"].flatMap { suffix -> [[SKTexture]] in
             guard let atlas = UIImage(named: "Hero\(hero)\(suffix)")?.cgImage else {
                 fatalError("Missing hero atlas: \(hero)\(suffix)")
             }
-            let cell = atlas.width / columns
-            precondition(atlas.width == cell * columns && atlas.height == cell * atlasRows)
-            return (0..<atlasRows).map { row in (0..<columns).map { column in
-                let rect = CGRect(x: column * cell, y: row * cell, width: cell, height: cell)
-                guard let image = atlas.cropping(to: rect) else { fatalError("Invalid hero frame") }
-                let texture = SKTexture(cgImage: image)
-                texture.filteringMode = .nearest
-                return texture
-            } }
+            let cell = atlas.height / atlasRows
+            let sourceColumns = authoredFrameCount(heroIndex: hero - 1) + 1
+            precondition(atlas.width == cell * sourceColumns && atlas.height == cell * atlasRows)
+            return (0..<atlasRows).map { row in
+                let poses = (0..<sourceColumns).map { column -> SKTexture in
+                    let rect = CGRect(x: column * cell, y: row * cell, width: cell, height: cell)
+                    guard let image = atlas.cropping(to: rect) else { fatalError("Invalid hero frame") }
+                    let texture = SKTexture(cgImage: image)
+                    texture.filteringMode = .nearest
+                    return texture
+                }
+                return (0..<columns).map { poses[sourceColumn(frame: $0, heroIndex: hero - 1)] }
+            }
         }
     }
 
@@ -45,9 +81,11 @@ enum HeroFrames {
     static func isMirrored(_ facing: Int) -> Bool { false }
 
     /// Foreground and native alpha-depth pass address the same authored pose.
-    static func atlasRect(facing: Int, frame: Int) -> SIMD4<Float> {
-        SIMD4(Float(frame) / Float(columns), Float(sourceFacing(facing) % atlasRows) / Float(atlasRows),
-              1 / Float(columns), 1 / Float(atlasRows))
+    static func atlasRect(facing: Int, frame: Int, heroIndex: Int = 0) -> SIMD4<Float> {
+        let sourceColumns = authoredFrameCount(heroIndex: heroIndex) + 1
+        return SIMD4(Float(sourceColumn(frame: frame, heroIndex: heroIndex)) / Float(sourceColumns),
+                     Float(sourceFacing(facing) % atlasRows) / Float(atlasRows),
+                     1 / Float(sourceColumns), 1 / Float(atlasRows))
     }
 }
 

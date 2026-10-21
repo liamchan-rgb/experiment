@@ -38,6 +38,7 @@ assert not (root / 'Sources/Resources/Assets.xcassets/MapBackground.imageset').e
 assert 'Resources/hero-gait.json' in pbx
 rig = json.loads((root / 'Sources/Resources/hero-gait.json').read_text())
 assert rig['frames'] == 24 and rig['columns'] == 25 and len(rig['heroes']) == 3
+assert rig['authoredFrames'] == [8, 24, 24] and rig['reviewFrameMs'] == 120
 for hero in rig['heroes']:
     assert len(hero) == 8 and all(len(direction) == 25 for direction in hero)
     for direction in hero:
