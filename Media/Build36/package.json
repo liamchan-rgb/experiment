@@ -1,0 +1,37 @@
+{
+  "date": "2026-10-21",
+  "version": "1.6.10",
+  "build": 36,
+  "sourceCommit": "94c00a15e6de982df69b8b5fde1f5fd1c46a6c5a",
+  "workflowRun": 39560271325,
+  "workflowURL": "https://github.com/liamchan-rgb/experiment/actions/runs/39560271325",
+  "artifactId": 12326803759,
+  "artifactZIP_SHA256": "3f862ee8b964ff7a301e1a4654518e41584d31decdb2e70636383b32e96abc5c",
+  "ipaFilename": "MeadowJourney-b36.ipa",
+  "ipaBytes": 23592463,
+  "ipaSHA256": "bd486f94ea64153e9fcf1ff593cf2b2495c48c1766862854ab6e818ac8738cec",
+  "downloadURL": "https://raw.githubusercontent.com/liamchan-rgb/experiment/fix/build33-face-grounding-camera/Downloads/MeadowJourney-b36.ipa",
+  "xcode": "Xcode 15.4\nBuild version 15F31d",
+  "checks": {
+    "deviceReleaseArchive": true,
+    "physicalDevicePlatform": "iPhoneOS",
+    "architecture": "arm64",
+    "ipaCRC": true,
+    "artifactDigest": true,
+    "storedZipForSideStore": true,
+    "versionAndBuild": true,
+    "bundledGaitDataMatchesSource": true,
+    "compiledAssetsPresent": true,
+    "matchesRemotePackageChecksum": true
+  },
+  "content": [
+    "Four diagonal pose08 loop seam repairs; all other P1 poses and P2/P3 unchanged",
+    "Revised pose08 boot coordinates sampled by foreground and Metal depth caster",
+    "Accepted v9 static battle presentation retained; new battle step key pose is a separate art-review item, not runtime animation"
+  ],
+  "simulatorRunPerformed": false,
+  "physicalDeviceRunPerformed": false,
+  "repairedLoopUserArtApproval": null,
+  "battleStaticPresentationApproved": true,
+  "installation": "Unsigned physical-device IPA for the existing SideStore re-signing workflow; direct IPA download, no outer ZIP"
+}

@@ -134,5 +134,40 @@
   "runtimeFootPositionsUpdated": true,
   "simulatorRunPerformed": false,
   "physicalDeviceRunPerformed": false,
-  "userArtApproval": null
+  "userArtApproval": null,
+  "finalHeadProxyDiagnostics": [
+    {
+      "direction": "down-right",
+      "revision": "loop-r1",
+      "headProxyDelta08to01": [
+        -0.366,
+        -0.147
+      ]
+    },
+    {
+      "direction": "down-left",
+      "revision": "loop-r1",
+      "headProxyDelta08to01": [
+        -0.382,
+        -0.027
+      ]
+    },
+    {
+      "direction": "up-left",
+      "revision": "loop-r1",
+      "headProxyDelta08to01": [
+        0.572,
+        -0.266
+      ]
+    },
+    {
+      "direction": "up-right",
+      "revision": "loop-r2",
+      "headProxyDelta08to01": [
+        -0.247,
+        0.097
+      ]
+    }
+  ],
+  "headProxyMethod": "Warm-hair pixel centroid above y112 at alpha>128; diagnostic only, final approval uses whole-character support/stride continuity."
 }

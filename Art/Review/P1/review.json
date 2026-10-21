@@ -2147,7 +2147,7 @@
     "camera": "width-locked top-anchored scene; blurred backdrop shares its transform, uses clamped edge extension, and feathers the sharp canvas bottom",
     "shadow": "independent cast silhouettes plus four hoof contacts aligned to pixel sprite",
     "iPadScreenshotReview": "Physical-device runs and screenshots remain the user responsibility.",
-    "ipa": "Build36 with four diagonal pose08 loop repairs is pending device Release archive; the accepted v9 static battle appearance remains unchanged.",
+    "ipa": "Build36 Release archive 39560271325 succeeded at 94c00a1. Raw IPA verified locally and placed under Downloads for direct browser delivery; no simulator or physical-device run.",
     "staticPresentationApproval": {
       "date": "2026-10-21",
       "reviewer": "user",
@@ -2224,7 +2224,7 @@
     "runtimeImport": "Art/Parts/P1-Battle/right-idle-v3/runtime-import.json"
   },
   "gaitDemoIntegration": {
-    "status": "loop-repairs-imported-device-archive-pending",
+    "status": "packaged-for-user-device-review",
     "date": "2026-10-21",
     "source": "Art/Integration/P1-diagonal-loop-v2",
     "manifest": "Art/Integration/P1-diagonal-loop-v2/integration.json",
@@ -2236,7 +2236,10 @@
     "parentReview": "Art/Integration/P1-diagonal-loop-v2/parent-review.json",
     "physicalDeviceVisualApproval": null,
     "build": 36,
-    "version": "1.6.10"
+    "version": "1.6.10",
+    "workflowRun": 39560271325,
+    "sourceCommit": "94c00a15e6de982df69b8b5fde1f5fd1c46a6c5a",
+    "package": "Media/Build36/package.json"
   },
   "battleSideRuntimeHistory": [
     {
