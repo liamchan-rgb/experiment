@@ -23,7 +23,7 @@
     "productionPoseMathSwift": true,
     "logsArtifactDigest": true,
     "matchesRemotePackageChecksum": true,
-    "rawDirectDownload": false
+    "rawDirectDownload": true
   },
   "date": "2026-10-22",
   "sourceCommit": "06827e1d9f7a7654d0a6646442ed9b5a58671f83",
@@ -45,5 +45,13 @@
   "physicalDeviceRunPerformed": false,
   "uiTestsExecuted": false,
   "userNewMotionArtApproval": null,
-  "installation": "Unsigned iPhoneOS IPA for the existing SideStore re-signing workflow; direct IPA download, no outer artifact ZIP"
+  "installation": "Unsigned iPhoneOS IPA for the existing SideStore re-signing workflow; direct IPA download, no outer artifact ZIP",
+  "directDownloadVerification": {
+    "status": 200,
+    "contentType": "application/octet-stream",
+    "bytes": 24201944,
+    "sha256": "d36b0a78bb48345fd829ce3967d139faeb3d604020c4250cdabca485ae5673fe",
+    "directIPA": true,
+    "source": "anonymous public raw GitHub GET; no outer artifact ZIP"
+  }
 }

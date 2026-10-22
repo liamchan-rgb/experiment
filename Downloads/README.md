@@ -1,6 +1,20 @@
 # SideStore 安装与迭代包
 
-## 当前版本：道路步态修复与可交互战斗 · 1.6.11 build37
+## 当前版本：左上落脚过渡修订 · 1.6.12 build38
+
+P1左上动画第02姿势增加左脚下降接地前的过渡，右脚继续支撑，再接第03姿势承重。120ms正常节奏保持，运行图集与足底数据同步；只修改左上02，保留原稿与历史修订。build37的可交互林地战斗仍包含在包中。
+
+[直接下载 MeadowJourney-b38.ipa](https://raw.githubusercontent.com/liamchan-rgb/experiment/fix/build33-face-grounding-camera/Downloads/MeadowJourney-b38.ipa) · [构建校验](MeadowJourney-build38.json) · [美术与交付记录](../Media/Build38/README.md)
+
+可直接复制到浏览器：
+
+```text
+https://raw.githubusercontent.com/liamchan-rgb/experiment/fix/build33-face-grounding-camera/Downloads/MeadowJourney-b38.ipa
+```
+
+已实际匿名GET：HTTP200、application/octet-stream、24,201,944字节，SHA256 `d36b0a78bb48345fd829ce3967d139faeb3d604020c4250cdabca485ae5673fe`，与设备归档一致。下载即原始IPA，沿用SideStore重签安装。Xcode16.4设备Release归档39742884627、三项真实Swift检查和IPA完整性核对通过；完整人物、正常速循环及道路离线合成由主审检查。未运行模拟器／实机，实际运动和截图由用户复测。
+
+## 历史版本：道路步态修复与可交互战斗 · 1.6.11 build37
 
 P1道路步速对齐正常120ms姿势，移动投影同步脚底、停止清旧相位；四个斜向沿生产道路合成正常速动图复核。新增P1对鹿灵的完整局部遭遇，支持选靶、AP／生命／护盾、技能、敌方回合、胜负、重试；人物关节与鹿灵冲撞动作、命中／防护／回血反馈已接入。
 
