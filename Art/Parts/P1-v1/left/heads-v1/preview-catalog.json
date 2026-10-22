@@ -1,0 +1,28 @@
+{
+  "assets": [
+    {
+      "id": "p1-neutral-left-walk-r3-complete-transitions",
+      "manifest": "Art/Templates/P1-Neutral/left/walk-r3-complete-transitions/asset.json"
+    },
+    {
+      "id": "p1-hair-chestnut-left",
+      "manifest": "Art/Parts/P1-v1/left/heads-v1/hair-chestnut-left/asset.json"
+    },
+    {
+      "id": "p1-hair-silver-left",
+      "manifest": "Art/Parts/P1-v1/left/heads-v1/hair-silver-left/asset.json"
+    },
+    {
+      "id": "p1-hair-teal-left",
+      "manifest": "Art/Parts/P1-v1/left/heads-v1/hair-teal-left/asset.json"
+    },
+    {
+      "id": "p1-face-blue-left",
+      "manifest": "Art/Parts/P1-v1/left/heads-v1/face-blue-left/asset.json"
+    },
+    {
+      "id": "p1-face-amber-left",
+      "manifest": "Art/Parts/P1-v1/left/heads-v1/face-amber-left/asset.json"
+    }
+  ]
+}

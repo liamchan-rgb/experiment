@@ -1,5 +1,20 @@
 # 林间行旅迭代进度 · 2026-10-19
 
+## 2026-10-22 · 向左独立外观 v1 完成内部复核，提交正常动图
+
+在原r3向左13姿势上完成三发型、两五官、Forester绿短上衣、Wayfarer蓝长外套、共用灰裤棕靴和独立背剑，新增9资源包。三名Luna并行制作/复核，主线程负责实际装配、全身1×/2×与正常速序列审核。初审查出安全短裤/袖靴漏盖、蓝衣摆重复原袖口与裤色矩形、五官误带下颌、银发高光被删；逐项另存修订。最终又清除walk01/06袖旁、walk06靴旁孤立变形色块，未改身体与原动作。
+
+72组合×13姿势=936实际合成，3120项身体贡献无>5%漏盖（仅排除解剖颈口）；468组背剑开关无轮廓外/不透明手变化；26衣装姿势颈下孤立块为0。13裸身逐像素等于原帧；身体/动作/公共compositor摘要不变。10清单通过，264个PNG/ORA/SVG连续两轮由保留原稿重导一致；26合同与21装配器回归通过，原72认可帧摘要通过，没有跳过。
+
+[两衣型正常动图](../Art/Review/P1/modular-left-wardrobe-v1/outfits-comparison-120ms.gif)8×120ms；[正常起停对照](../Art/Review/P1/modular-left-wardrobe-v1/start-stop-comparison-120ms.gif)22帧、首末480ms其余120ms；[站姿](../Art/Review/P1/modular-left-wardrobe-v1/outfits-comparison-2x.png)、[完整复核](../Art/Review/P1/modular-left-wardrobe-v1/art-review.md)、[重导/清单核对](../Art/Review/P1/modular-left-wardrobe-v1/checks.json)。新增外观用户认可为空，仍只提交向左；其他方向和任意步相起停尚未完成，没有App/模拟器/设备或IPA工作。浏览器直链待发布后实测并另记交付回执。
+
+用户询问八方向与行业做法，已说明2/4/8方向因项目而异；本项目最终组合覆盖八方向，但不要求每件原始部件从零画八遍。头发/五官同向复用、刚性背剑多姿势共图、衣物按模板导出；左右镜像须检查非对称装备和遮挡。这是离线逐帧分层装配，不是已完成的运行时骨骼系统。
+
+
+## 2026-10-22 · 向左起停展示获认可，开始独立外观挂载
+
+用户回复“没问题，继续下一个工作”，随后“继续”。已保存r3展示的全身外观、八帧循环与指定起停路径的限定认可及交付物摘要；隐藏探针仍只是技术证据，不扩大为完整隐藏人体/任意步相中断。下一轮在同一13姿势身体与动作上制作独立向左发型、五官、Forester绿短上衣、Wayfarer蓝长外套、共用裤靴与背负武器；共用动作和分层规范，不按外观ID切换人体或新增渲染分支。用户另问八方向资源与行业做法，已说明方向覆盖需求和镜像/部件变形复用的区别，本轮仍只推进向左。当前制作中，完成后交付正常速度全身GIF、浏览器HTTPS直链及日志；不运行设备/模拟器。
+
 ## 2026-10-22 · 向左隐藏连接与起停过渡 r3 完成
 
 已提交GitHub `8b0c600cb3f3ca66fc157c40002d5543a43810c6`（开发分支）。[起停GIF浏览器直链](https://raw.githubusercontent.com/liamchan-rgb/experiment/8b0c600cb3f3ca66fc157c40002d5543a43810c6/Art/Review/P1/neutral-left-complete-transitions-v1/start-stop-120ms.gif)及原行走GIF均实测HTTP200、image/gif、SHA-256与本地一致；站姿PNG同样HTTP200且哈希一致。交付核对见 `Art/Review/P1/neutral-left-complete-transitions-v1/delivery.json`。

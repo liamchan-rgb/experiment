@@ -1,8 +1,13 @@
 # P1 人物素材逐张审核
 
-## 当前候选：向左底模r3，隐藏连接与起停过渡
+## 当前候选：向左独立外观 v1
 
-用户已认可r2展示的向左正常循环与轻微头动。本轮保留九张认可画面，补隐藏肩髋/腕口和四张起停关键姿势；[正常速全身起停动图](../Art/Review/P1/neutral-left-complete-transitions-v1/start-stop-120ms.gif)、[完整复核](../Art/Review/P1/neutral-left-complete-transitions-v1/art-review.md)。新增稿待用户审核，只覆盖idle00→walk01及walk08→idle00的指定起停路径；独立左向外观与App接入后续制作。
+在用户已认可展示的r3向左13姿势上完成三发型、两五官、两衣型、共用裤靴和背剑，身体/动作/公共compositor不变。[正常行走GIF](../Art/Review/P1/modular-left-wardrobe-v1/outfits-comparison-120ms.gif)、[正常起停GIF](../Art/Review/P1/modular-left-wardrobe-v1/start-stop-comparison-120ms.gif)、[整身站姿](../Art/Review/P1/modular-left-wardrobe-v1/outfits-comparison-2x.png)、[完整复核](../Art/Review/P1/modular-left-wardrobe-v1/art-review.md)。72组合936姿势与内部全身复核完成，新外观美术认可仍为空；不将离线检查扩大为其余方向、任意起停或App/设备验证。
+
+
+## 上一项：向左底模r3（展示与指定起停路径已认可）
+
+用户已认可r2展示的向左正常循环与轻微头动。本轮保留九张认可画面，补隐藏肩髋/腕口和四张起停关键姿势；[正常速全身起停动图](../Art/Review/P1/neutral-left-complete-transitions-v1/start-stop-120ms.gif)、[完整复核](../Art/Review/P1/neutral-left-complete-transitions-v1/art-review.md)。用户随后以“没问题，继续下一个工作”认可展示的全身与指定起停路径，见r3/approval.json；不扩大为完整隐藏解剖、任意步相中断、独立外观或App接入。
 
 ## 此前修订：向左中性人体r2，轻微头部运动
 

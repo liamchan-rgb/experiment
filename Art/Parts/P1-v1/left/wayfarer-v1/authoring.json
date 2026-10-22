@@ -1,0 +1,1623 @@
+{
+  "id": "p1-left-wayfarer-coat-v1",
+  "part": "outfit",
+  "mode": "pose-map",
+  "directions": [
+    "left"
+  ],
+  "compatibility": {
+    "rig": "p1-chibi-v1",
+    "bodyProfile": "p1-standard",
+    "actionSet": "locomotion-v1"
+  },
+  "canvas": [
+    256,
+    256
+  ],
+  "slots": [
+    "outfit.hem.back",
+    "outfit.sleeve.right",
+    "outfit.torso",
+    "outfit.hem.front",
+    "outfit.sleeve.left"
+  ],
+  "source": "source/generated-idle-coat.png",
+  "styleReference": "source/coat-style-reference.png",
+  "sourceCanvas": [
+    1254,
+    1254
+  ],
+  "registration": {
+    "sourceScale": 0.194,
+    "sourceTranslation": [
+      8.0,
+      25.0
+    ],
+    "method": "one fixed full-canvas affine, authored from head/shoulder/belt anchors; no alpha-bound fitting"
+  },
+  "referencePose": {
+    "source": "Art/Templates/P1-Neutral/left/walk-r3-complete-transitions/source/00.png",
+    "pose": "idle:00",
+    "scale": 0.194,
+    "translation": [
+      4.72,
+      6.4
+    ]
+  },
+  "partitionPolygonsCanvas": {
+    "outfit.torso": [
+      [
+        109,
+        125
+      ],
+      [
+        142,
+        125
+      ],
+      [
+        143,
+        142
+      ],
+      [
+        138,
+        149
+      ],
+      [
+        138,
+        174
+      ],
+      [
+        136,
+        181
+      ],
+      [
+        114,
+        181
+      ],
+      [
+        111,
+        160
+      ],
+      [
+        107,
+        148
+      ],
+      [
+        109,
+        139
+      ]
+    ],
+    "outfit.sleeve.left": [
+      [
+        114,
+        143
+      ],
+      [
+        120,
+        146
+      ],
+      [
+        117,
+        155
+      ],
+      [
+        113,
+        166
+      ],
+      [
+        108,
+        177
+      ],
+      [
+        104,
+        183
+      ],
+      [
+        98,
+        181
+      ],
+      [
+        94,
+        177
+      ],
+      [
+        96,
+        171
+      ],
+      [
+        101,
+        161
+      ],
+      [
+        107,
+        151
+      ]
+    ],
+    "outfit.sleeve.right": [
+      [
+        131,
+        139
+      ],
+      [
+        140,
+        141
+      ],
+      [
+        145,
+        147
+      ],
+      [
+        148,
+        168
+      ],
+      [
+        146,
+        179
+      ],
+      [
+        141,
+        183
+      ],
+      [
+        135,
+        181
+      ],
+      [
+        132,
+        174
+      ],
+      [
+        132,
+        160
+      ],
+      [
+        129,
+        150
+      ]
+    ],
+    "outfit.hem.front": [
+      [
+        114,
+        175
+      ],
+      [
+        137,
+        175
+      ],
+      [
+        140,
+        182
+      ],
+      [
+        138,
+        204
+      ],
+      [
+        134,
+        216
+      ],
+      [
+        118,
+        216
+      ],
+      [
+        114,
+        205
+      ]
+    ],
+    "outfit.hem.back": [
+      [
+        134,
+        175
+      ],
+      [
+        148,
+        176
+      ],
+      [
+        154,
+        186
+      ],
+      [
+        158,
+        207
+      ],
+      [
+        153,
+        216
+      ],
+      [
+        139,
+        214
+      ],
+      [
+        135,
+        198
+      ]
+    ]
+  },
+  "sleeveSourceBones": {
+    "outfit.sleeve.left": {
+      "sourceShoulder": [
+        115,
+        145
+      ],
+      "sourceWrist": [
+        103,
+        179
+      ],
+      "rigSlot": "body.arm.left",
+      "rigKey": "body.arm.left"
+    },
+    "outfit.sleeve.right": {
+      "sourceShoulder": [
+        135,
+        146
+      ],
+      "sourceWrist": [
+        134,
+        185
+      ],
+      "rigSlot": "body.arm.right",
+      "rigKey": "body.arm.right"
+    }
+  },
+  "tailPivot": [
+    128,
+    176
+  ],
+  "tailLengthScale": 0.68,
+  "tailSwingDegrees": [
+    0,
+    -3,
+    -4,
+    -2,
+    2,
+    3,
+    4,
+    2,
+    0,
+    0,
+    2,
+    2,
+    0
+  ],
+  "bodyMotionSource": "source/shared-hidden-geometry-reference.json",
+  "poses": [
+    {
+      "frame": 0,
+      "phase": "idle",
+      "shoulders": {
+        "near-left": [
+          129,
+          138
+        ],
+        "far-right": [
+          122,
+          140
+        ]
+      },
+      "arms": {
+        "body.arm.left": {
+          "shoulder": [
+            129,
+            138
+          ],
+          "elbow": [
+            131,
+            153
+          ],
+          "wrist": [
+            128,
+            170
+          ]
+        },
+        "body.arm.right": {
+          "shoulder": [
+            122,
+            140
+          ],
+          "elbow": [
+            139,
+            152
+          ],
+          "wrist": [
+            140,
+            166
+          ]
+        }
+      },
+      "hips": {
+        "near-left": [
+          129,
+          176
+        ],
+        "far-right": [
+          122,
+          176
+        ]
+      },
+      "legs": {
+        "body.leg.left": {
+          "hip": [
+            129,
+            176
+          ],
+          "root": [
+            129,
+            179
+          ],
+          "knee": [
+            128,
+            195
+          ],
+          "ankle": [
+            124,
+            211
+          ]
+        },
+        "body.leg.right": {
+          "hip": [
+            122,
+            176
+          ],
+          "root": [
+            122,
+            179
+          ],
+          "knee": [
+            119,
+            194
+          ],
+          "ankle": [
+            112,
+            208
+          ]
+        }
+      },
+      "soleMarkers": {
+        "left": [
+          124,
+          214
+        ],
+        "right": [
+          112,
+          211
+        ]
+      }
+    },
+    {
+      "frame": 1,
+      "phase": "left-near-contact",
+      "shoulders": {
+        "near-left": [
+          129,
+          138
+        ],
+        "far-right": [
+          122,
+          140
+        ]
+      },
+      "arms": {
+        "body.arm.left": {
+          "shoulder": [
+            129,
+            138
+          ],
+          "elbow": [
+            140,
+            155
+          ],
+          "wrist": [
+            147,
+            170
+          ]
+        },
+        "body.arm.right": {
+          "shoulder": [
+            122,
+            140
+          ],
+          "elbow": [
+            111,
+            155
+          ],
+          "wrist": [
+            97,
+            162
+          ]
+        }
+      },
+      "hips": {
+        "near-left": [
+          129,
+          176
+        ],
+        "far-right": [
+          122,
+          176
+        ]
+      },
+      "legs": {
+        "body.leg.left": {
+          "hip": [
+            129,
+            176
+          ],
+          "root": [
+            129,
+            179
+          ],
+          "knee": [
+            117,
+            198
+          ],
+          "ankle": [
+            111,
+            212
+          ]
+        },
+        "body.leg.right": {
+          "hip": [
+            122,
+            176
+          ],
+          "root": [
+            122,
+            179
+          ],
+          "knee": [
+            141,
+            190
+          ],
+          "ankle": [
+            153,
+            203
+          ]
+        }
+      },
+      "soleMarkers": {
+        "left": [
+          104,
+          215
+        ],
+        "right": [
+          141,
+          213
+        ]
+      }
+    },
+    {
+      "frame": 2,
+      "phase": "left-support",
+      "shoulders": {
+        "near-left": [
+          129,
+          138
+        ],
+        "far-right": [
+          122,
+          140
+        ]
+      },
+      "arms": {
+        "body.arm.left": {
+          "shoulder": [
+            129,
+            138
+          ],
+          "elbow": [
+            136,
+            155
+          ],
+          "wrist": [
+            142,
+            168
+          ]
+        },
+        "body.arm.right": {
+          "shoulder": [
+            122,
+            140
+          ],
+          "elbow": [
+            112,
+            155
+          ],
+          "wrist": [
+            103,
+            160
+          ]
+        }
+      },
+      "hips": {
+        "near-left": [
+          129,
+          176
+        ],
+        "far-right": [
+          122,
+          176
+        ]
+      },
+      "legs": {
+        "body.leg.left": {
+          "hip": [
+            129,
+            176
+          ],
+          "root": [
+            129,
+            179
+          ],
+          "knee": [
+            119,
+            197
+          ],
+          "ankle": [
+            113,
+            211
+          ]
+        },
+        "body.leg.right": {
+          "hip": [
+            122,
+            176
+          ],
+          "root": [
+            122,
+            179
+          ],
+          "knee": [
+            143,
+            189
+          ],
+          "ankle": [
+            151,
+            201
+          ]
+        }
+      },
+      "soleMarkers": {
+        "left": [
+          111,
+          214
+        ],
+        "right": [
+          146,
+          208
+        ]
+      }
+    },
+    {
+      "frame": 3,
+      "phase": "right-far-passing",
+      "shoulders": {
+        "near-left": [
+          129,
+          138
+        ],
+        "far-right": [
+          122,
+          140
+        ]
+      },
+      "arms": {
+        "body.arm.left": {
+          "shoulder": [
+            129,
+            138
+          ],
+          "elbow": [
+            132,
+            153
+          ],
+          "wrist": [
+            127,
+            170
+          ]
+        },
+        "body.arm.right": {
+          "shoulder": [
+            122,
+            140
+          ],
+          "elbow": [
+            114,
+            159
+          ],
+          "wrist": [
+            108,
+            164
+          ]
+        }
+      },
+      "hips": {
+        "near-left": [
+          129,
+          176
+        ],
+        "far-right": [
+          122,
+          176
+        ]
+      },
+      "legs": {
+        "body.leg.left": {
+          "hip": [
+            129,
+            176
+          ],
+          "root": [
+            129,
+            179
+          ],
+          "knee": [
+            122,
+            198
+          ],
+          "ankle": [
+            119,
+            207
+          ]
+        },
+        "body.leg.right": {
+          "hip": [
+            122,
+            176
+          ],
+          "root": [
+            122,
+            179
+          ],
+          "knee": [
+            137,
+            195
+          ],
+          "ankle": [
+            127,
+            215
+          ]
+        }
+      },
+      "soleMarkers": {
+        "left": [
+          126,
+          214
+        ],
+        "right": [
+          115,
+          204
+        ]
+      }
+    },
+    {
+      "frame": 4,
+      "phase": "right-far-late-swing",
+      "shoulders": {
+        "near-left": [
+          129,
+          138
+        ],
+        "far-right": [
+          122,
+          140
+        ]
+      },
+      "arms": {
+        "body.arm.left": {
+          "shoulder": [
+            129,
+            138
+          ],
+          "elbow": [
+            123,
+            153
+          ],
+          "wrist": [
+            99,
+            154
+          ]
+        },
+        "body.arm.right": {
+          "shoulder": [
+            122,
+            140
+          ],
+          "elbow": [
+            143,
+            155
+          ],
+          "wrist": [
+            148,
+            165
+          ]
+        }
+      },
+      "hips": {
+        "near-left": [
+          129,
+          176
+        ],
+        "far-right": [
+          122,
+          176
+        ]
+      },
+      "legs": {
+        "body.leg.left": {
+          "hip": [
+            129,
+            176
+          ],
+          "root": [
+            129,
+            179
+          ],
+          "knee": [
+            114,
+            191
+          ],
+          "ankle": [
+            111,
+            207
+          ]
+        },
+        "body.leg.right": {
+          "hip": [
+            122,
+            176
+          ],
+          "root": [
+            122,
+            179
+          ],
+          "knee": [
+            145,
+            196
+          ],
+          "ankle": [
+            158,
+            211
+          ]
+        }
+      },
+      "soleMarkers": {
+        "left": [
+          146,
+          213
+        ],
+        "right": [
+          108,
+          206
+        ]
+      }
+    },
+    {
+      "frame": 5,
+      "phase": "right-far-contact",
+      "shoulders": {
+        "near-left": [
+          129,
+          138
+        ],
+        "far-right": [
+          122,
+          140
+        ]
+      },
+      "arms": {
+        "body.arm.left": {
+          "shoulder": [
+            129,
+            138
+          ],
+          "elbow": [
+            124,
+            154
+          ],
+          "wrist": [
+            101,
+            160
+          ]
+        },
+        "body.arm.right": {
+          "shoulder": [
+            122,
+            140
+          ],
+          "elbow": [
+            140,
+            155
+          ],
+          "wrist": [
+            147,
+            165
+          ]
+        }
+      },
+      "hips": {
+        "near-left": [
+          129,
+          176
+        ],
+        "far-right": [
+          122,
+          176
+        ]
+      },
+      "legs": {
+        "body.leg.left": {
+          "hip": [
+            129,
+            176
+          ],
+          "root": [
+            129,
+            179
+          ],
+          "knee": [
+            116,
+            192
+          ],
+          "ankle": [
+            111,
+            207
+          ]
+        },
+        "body.leg.right": {
+          "hip": [
+            122,
+            176
+          ],
+          "root": [
+            122,
+            179
+          ],
+          "knee": [
+            145,
+            196
+          ],
+          "ankle": [
+            157,
+            211
+          ]
+        }
+      },
+      "soleMarkers": {
+        "left": [
+          148,
+          211
+        ],
+        "right": [
+          108,
+          214
+        ]
+      }
+    },
+    {
+      "frame": 6,
+      "phase": "right-far-support-left-recovery",
+      "shoulders": {
+        "near-left": [
+          129,
+          138
+        ],
+        "far-right": [
+          122,
+          140
+        ]
+      },
+      "arms": {
+        "body.arm.left": {
+          "shoulder": [
+            129,
+            138
+          ],
+          "elbow": [
+            124,
+            153
+          ],
+          "wrist": [
+            104,
+            161
+          ]
+        },
+        "body.arm.right": {
+          "shoulder": [
+            122,
+            140
+          ],
+          "elbow": [
+            141,
+            154
+          ],
+          "wrist": [
+            146,
+            166
+          ]
+        }
+      },
+      "hips": {
+        "near-left": [
+          129,
+          176
+        ],
+        "far-right": [
+          122,
+          176
+        ]
+      },
+      "legs": {
+        "body.leg.left": {
+          "hip": [
+            129,
+            176
+          ],
+          "root": [
+            129,
+            179
+          ],
+          "knee": [
+            119,
+            195
+          ],
+          "ankle": [
+            121,
+            211
+          ]
+        },
+        "body.leg.right": {
+          "hip": [
+            122,
+            176
+          ],
+          "root": [
+            122,
+            179
+          ],
+          "knee": [
+            147,
+            199
+          ],
+          "ankle": [
+            151,
+            214
+          ]
+        }
+      },
+      "soleMarkers": {
+        "left": [
+          142,
+          205
+        ],
+        "right": [
+          120,
+          215
+        ]
+      }
+    },
+    {
+      "frame": 7,
+      "phase": "left-near-passing",
+      "shoulders": {
+        "near-left": [
+          129,
+          138
+        ],
+        "far-right": [
+          122,
+          140
+        ]
+      },
+      "arms": {
+        "body.arm.left": {
+          "shoulder": [
+            129,
+            138
+          ],
+          "elbow": [
+            129,
+            155
+          ],
+          "wrist": [
+            116,
+            169
+          ]
+        },
+        "body.arm.right": {
+          "shoulder": [
+            122,
+            140
+          ],
+          "elbow": [
+            141,
+            155
+          ],
+          "wrist": [
+            142,
+            167
+          ]
+        }
+      },
+      "hips": {
+        "near-left": [
+          129,
+          176
+        ],
+        "far-right": [
+          122,
+          176
+        ]
+      },
+      "legs": {
+        "body.leg.left": {
+          "hip": [
+            129,
+            176
+          ],
+          "root": [
+            129,
+            179
+          ],
+          "knee": [
+            121,
+            198
+          ],
+          "ankle": [
+            124,
+            214
+          ]
+        },
+        "body.leg.right": {
+          "hip": [
+            122,
+            176
+          ],
+          "root": [
+            122,
+            179
+          ],
+          "knee": [
+            143,
+            194
+          ],
+          "ankle": [
+            138,
+            207
+          ]
+        }
+      },
+      "soleMarkers": {
+        "left": [
+          135,
+          210
+        ],
+        "right": [
+          119,
+          214
+        ]
+      }
+    },
+    {
+      "frame": 8,
+      "phase": "left-near-late-swing",
+      "shoulders": {
+        "near-left": [
+          129,
+          138
+        ],
+        "far-right": [
+          122,
+          140
+        ]
+      },
+      "arms": {
+        "body.arm.left": {
+          "shoulder": [
+            129,
+            138
+          ],
+          "elbow": [
+            139,
+            155
+          ],
+          "wrist": [
+            144,
+            168
+          ]
+        },
+        "body.arm.right": {
+          "shoulder": [
+            122,
+            140
+          ],
+          "elbow": [
+            111,
+            156
+          ],
+          "wrist": [
+            100,
+            160
+          ]
+        }
+      },
+      "hips": {
+        "near-left": [
+          129,
+          176
+        ],
+        "far-right": [
+          122,
+          176
+        ]
+      },
+      "legs": {
+        "body.leg.left": {
+          "hip": [
+            129,
+            176
+          ],
+          "root": [
+            129,
+            179
+          ],
+          "knee": [
+            119,
+            193
+          ],
+          "ankle": [
+            112,
+            208
+          ]
+        },
+        "body.leg.right": {
+          "hip": [
+            122,
+            176
+          ],
+          "root": [
+            122,
+            179
+          ],
+          "knee": [
+            140,
+            194
+          ],
+          "ankle": [
+            151,
+            211
+          ]
+        }
+      },
+      "soleMarkers": {
+        "left": [
+          110,
+          211
+        ],
+        "right": [
+          137,
+          213
+        ]
+      }
+    },
+    {
+      "frame": 9,
+      "phase": "walk-start-01",
+      "shoulders": {
+        "near-left": [
+          129,
+          138
+        ],
+        "far-right": [
+          122,
+          140
+        ]
+      },
+      "arms": {
+        "body.arm.left": {
+          "shoulder": [
+            129,
+            138
+          ],
+          "elbow": [
+            137,
+            151
+          ],
+          "wrist": [
+            136,
+            168
+          ]
+        },
+        "body.arm.right": {
+          "shoulder": [
+            122,
+            140
+          ],
+          "elbow": [
+            110,
+            151
+          ],
+          "wrist": [
+            113,
+            162
+          ]
+        }
+      },
+      "hips": {
+        "near-left": [
+          129,
+          176
+        ],
+        "far-right": [
+          122,
+          176
+        ]
+      },
+      "legs": {
+        "body.leg.left": {
+          "hip": [
+            129,
+            176
+          ],
+          "root": [
+            129,
+            179
+          ],
+          "knee": [
+            128,
+            195
+          ],
+          "ankle": [
+            127,
+            211
+          ]
+        },
+        "body.leg.right": {
+          "hip": [
+            122,
+            176
+          ],
+          "root": [
+            122,
+            179
+          ],
+          "knee": [
+            119,
+            194
+          ],
+          "ankle": [
+            112,
+            209
+          ]
+        }
+      },
+      "soleMarkers": {
+        "left": [
+          128,
+          214
+        ],
+        "right": [
+          112,
+          212
+        ]
+      }
+    },
+    {
+      "frame": 10,
+      "phase": "walk-start-02",
+      "shoulders": {
+        "near-left": [
+          129,
+          138
+        ],
+        "far-right": [
+          122,
+          140
+        ]
+      },
+      "arms": {
+        "body.arm.left": {
+          "shoulder": [
+            129,
+            138
+          ],
+          "elbow": [
+            141,
+            151
+          ],
+          "wrist": [
+            144,
+            165
+          ]
+        },
+        "body.arm.right": {
+          "shoulder": [
+            122,
+            140
+          ],
+          "elbow": [
+            108,
+            151
+          ],
+          "wrist": [
+            103,
+            161
+          ]
+        }
+      },
+      "hips": {
+        "near-left": [
+          129,
+          176
+        ],
+        "far-right": [
+          122,
+          176
+        ]
+      },
+      "legs": {
+        "body.leg.left": {
+          "hip": [
+            129,
+            176
+          ],
+          "root": [
+            129,
+            179
+          ],
+          "knee": [
+            118,
+            194
+          ],
+          "ankle": [
+            108,
+            209
+          ]
+        },
+        "body.leg.right": {
+          "hip": [
+            122,
+            176
+          ],
+          "root": [
+            122,
+            179
+          ],
+          "knee": [
+            131,
+            194
+          ],
+          "ankle": [
+            135,
+            208
+          ]
+        }
+      },
+      "soleMarkers": {
+        "left": [
+          109,
+          212
+        ],
+        "right": [
+          130,
+          211
+        ]
+      }
+    },
+    {
+      "frame": 11,
+      "phase": "walk-stop-01",
+      "shoulders": {
+        "near-left": [
+          129,
+          138
+        ],
+        "far-right": [
+          122,
+          140
+        ]
+      },
+      "arms": {
+        "body.arm.left": {
+          "shoulder": [
+            129,
+            138
+          ],
+          "elbow": [
+            137,
+            151
+          ],
+          "wrist": [
+            135,
+            166
+          ]
+        },
+        "body.arm.right": {
+          "shoulder": [
+            122,
+            140
+          ],
+          "elbow": [
+            109,
+            153
+          ],
+          "wrist": [
+            108,
+            162
+          ]
+        }
+      },
+      "hips": {
+        "near-left": [
+          129,
+          176
+        ],
+        "far-right": [
+          122,
+          176
+        ]
+      },
+      "legs": {
+        "body.leg.left": {
+          "hip": [
+            129,
+            176
+          ],
+          "root": [
+            129,
+            179
+          ],
+          "knee": [
+            119,
+            193
+          ],
+          "ankle": [
+            104,
+            208
+          ]
+        },
+        "body.leg.right": {
+          "hip": [
+            122,
+            176
+          ],
+          "root": [
+            122,
+            179
+          ],
+          "knee": [
+            130,
+            193
+          ],
+          "ankle": [
+            128,
+            207
+          ]
+        }
+      },
+      "soleMarkers": {
+        "left": [
+          109,
+          211
+        ],
+        "right": [
+          130,
+          210
+        ]
+      }
+    },
+    {
+      "frame": 12,
+      "phase": "walk-stop-02",
+      "shoulders": {
+        "near-left": [
+          129,
+          138
+        ],
+        "far-right": [
+          122,
+          140
+        ]
+      },
+      "arms": {
+        "body.arm.left": {
+          "shoulder": [
+            129,
+            138
+          ],
+          "elbow": [
+            136,
+            151
+          ],
+          "wrist": [
+            132,
+            168
+          ]
+        },
+        "body.arm.right": {
+          "shoulder": [
+            122,
+            140
+          ],
+          "elbow": [
+            147,
+            151
+          ],
+          "wrist": [
+            140,
+            163
+          ]
+        }
+      },
+      "hips": {
+        "near-left": [
+          129,
+          176
+        ],
+        "far-right": [
+          122,
+          176
+        ]
+      },
+      "legs": {
+        "body.leg.left": {
+          "hip": [
+            129,
+            176
+          ],
+          "root": [
+            129,
+            179
+          ],
+          "knee": [
+            127,
+            195
+          ],
+          "ankle": [
+            127,
+            211
+          ]
+        },
+        "body.leg.right": {
+          "hip": [
+            122,
+            176
+          ],
+          "root": [
+            122,
+            179
+          ],
+          "knee": [
+            121,
+            194
+          ],
+          "ankle": [
+            119,
+            211
+          ]
+        }
+      },
+      "soleMarkers": {
+        "left": [
+          126,
+          214
+        ],
+        "right": [
+          119,
+          214
+        ]
+      }
+    }
+  ],
+  "sourceFiles": [
+    "source/generated-idle-coat.png",
+    "source/generated-idle-coat-single-sleeve-original.png",
+    "source/prompt.txt",
+    "source/prompt-two-sleeves.txt",
+    "source/coat-style-reference.png",
+    "source/base-idle-reference.png",
+    "source/shared-hidden-geometry-reference.json"
+  ]
+}

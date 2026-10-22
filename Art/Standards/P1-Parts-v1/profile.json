@@ -127,6 +127,68 @@
           60
         ]
       ]
+    },
+    "left": {
+      "status": "candidate-independent-left-features; user art approval pending",
+      "neck": [
+        49,
+        71
+      ],
+      "eyes": {
+        "left": [
+          34,
+          51
+        ]
+      },
+      "skullGuide": [
+        27,
+        23,
+        72,
+        68
+      ],
+      "faceRegions": {
+        "face.brows": [
+          [
+            29,
+            40,
+            40,
+            46
+          ]
+        ],
+        "face.eyes": [
+          [
+            31,
+            46,
+            40,
+            55
+          ]
+        ],
+        "face.nose": [
+          [
+            25,
+            53,
+            31,
+            59
+          ]
+        ],
+        "face.mouth": [
+          [
+            28,
+            60,
+            33,
+            64
+          ]
+        ]
+      },
+      "hairFrontKeepClear": [
+        [
+          31,
+          46,
+          40,
+          55
+        ]
+      ],
+      "coordinateReview": "Feature ink reviewed on the original shared head: complete eyelid/brow kept, no skin/ear/jaw patch; mouth uses true connected lip mark, not jaw contour."
     }
   },
   "gripProfiles": [

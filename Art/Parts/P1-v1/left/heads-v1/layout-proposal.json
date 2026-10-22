@@ -1,0 +1,171 @@
+{
+  "direction": "left",
+  "status": "proposal-not-standard",
+  "headCanvas": [
+    96,
+    96
+  ],
+  "headLocalOriginOnIdleCanvas": [
+    76,
+    61
+  ],
+  "sourceRegistration": {
+    "canvas": [
+      1254,
+      1254
+    ],
+    "sourceToCanvas": [
+      0.194,
+      0,
+      0,
+      0.194,
+      4.72,
+      6.4
+    ]
+  },
+  "anatomyGuide": {
+    "skullAndFaceContour": "Inherited entirely from shared head.base; overlays own no skin, ear, neck or contour.",
+    "visibleEyeCentre": [
+      34,
+      51
+    ],
+    "browRegion": [
+      29,
+      40,
+      40,
+      46
+    ],
+    "eyeRegion": [
+      31,
+      46,
+      40,
+      55
+    ],
+    "noseRegion": [
+      25,
+      53,
+      31,
+      59
+    ],
+    "mouthRegion": [
+      28,
+      60,
+      33,
+      65
+    ]
+  },
+  "measuredOpaqueArtwork": {
+    "face.brows": [
+      30,
+      40,
+      39,
+      45
+    ],
+    "face.eyes": {
+      "blue": [
+        33,
+        46,
+        39,
+        54
+      ],
+      "amber": [
+        32,
+        46,
+        39,
+        55
+      ]
+    },
+    "face.nose": [
+      28,
+      58,
+      29,
+      59
+    ],
+    "face.mouth": {
+      "blue": [
+        30,
+        60,
+        33,
+        61
+      ],
+      "amber": [
+        30,
+        60,
+        33,
+        61
+      ]
+    },
+    "hair.front": {
+      "chestnut": [
+        24,
+        19,
+        73,
+        59
+      ],
+      "silver": [
+        22,
+        19,
+        73,
+        59
+      ],
+      "teal": [
+        25,
+        22,
+        73,
+        56
+      ]
+    }
+  },
+  "allowedRegions": {
+    "hair.front": [
+      [
+        18,
+        17,
+        76,
+        60
+      ]
+    ],
+    "face.brows": [
+      [
+        29,
+        40,
+        40,
+        46
+      ]
+    ],
+    "face.eyes": [
+      [
+        31,
+        46,
+        40,
+        55
+      ]
+    ],
+    "face.nose": [
+      [
+        25,
+        53,
+        31,
+        59
+      ]
+    ],
+    "face.mouth": [
+      [
+        28,
+        60,
+        33,
+        65
+      ]
+    ]
+  },
+  "hairFrontKeepClear": [
+    [
+      31,
+      46,
+      40,
+      55
+    ]
+  ],
+  "faceShapeSkinEarNeckPixelsAllowed": false,
+  "notes": "One side-profile eye only. The complete eye including upper lid is preserved; eye/brow are upper face, nose is a tiny mid-face contour accent and mouth is lower with a pixel of separation. Head shape/skin are owned only by base. The one-pixel region updates match measured generated feature pixels and never permit skin, head outline, ear or neck."
+}

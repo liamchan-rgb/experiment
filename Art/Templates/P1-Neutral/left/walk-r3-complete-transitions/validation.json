@@ -1,6 +1,18 @@
 {
-  "status": "internally-reviewed-left-joints-and-start-stop; user art approval pending",
-  "artApproval": null,
+  "status": "user-approved presented left neutral appearance and authored start/stop paths; independent appearances next",
+  "artApproval": {
+    "date": "2026-10-22",
+    "reviewer": "user",
+    "statement": "没问题，继续下一个工作",
+    "followup": "继续",
+    "status": "approved",
+    "scope": "Presented left-facing neutral full-body appearance and demonstrated idle00→start01/02→walk01 and walk08→stop01/02→idle00 paths, with retained walk/head motion. Does not approve arbitrary phase interruptions, complete hidden anatomy, new appearances, other directions or runtime integration.",
+    "artifacts": {
+      "start-stop-120ms.gif": "c6df0a6f9572ee1f86d033c86284733b84a8ce513629e31aea7463246a6fcc9f",
+      "walk-120ms.gif": "67d0de0d0b641fffe8a352b786b787d7f00db41cfa8884fe9d88e65e2b60d7d3",
+      "idle-review-2x.png": "61b0c58706bdd829ba67e061c31ae9a704e35271d27629a14274bd2f9e992184"
+    }
+  },
   "baseRevision": "Art/Templates/P1-Neutral/left/walk-r2-head-motion",
   "sourcePoses": 13,
   "semanticLayers": 104,
