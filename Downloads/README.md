@@ -1,6 +1,22 @@
 # SideStore 安装与迭代包
 
-## 当前版本：斜向步态首尾修订 · 1.6.10 build36
+## 当前版本：道路步态修复与可交互战斗 · 1.6.11 build37
+
+P1道路步速对齐正常120ms姿势，移动投影同步脚底、停止清旧相位；四个斜向沿生产道路合成正常速动图复核。新增P1对鹿灵的完整局部遭遇，支持选靶、AP／生命／护盾、技能、敌方回合、胜负、重试；人物关节与鹿灵冲撞动作、命中／防护／回血反馈已接入。
+
+[直接下载 MeadowJourney-b37.ipa](https://raw.githubusercontent.com/liamchan-rgb/experiment/fix/build33-face-grounding-camera/Downloads/MeadowJourney-b37.ipa) · [构建校验](MeadowJourney-build37.json) · [美术与交付记录](../Media/Build37/README.md)
+
+可直接复制到浏览器：
+
+```text
+https://raw.githubusercontent.com/liamchan-rgb/experiment/fix/build33-face-grounding-camera/Downloads/MeadowJourney-b37.ipa
+```
+
+已实际GET核对HTTP200、application/octet-stream、24,200,213字节，SHA256：`0bc40e083b12b0ee7f7ccd424cb2dc8c07a1c7381300697454c4c78d2e04ccfd`。下载即原始IPA，沿用SideStore重签安装。进入 **林地战斗 → 开始遭遇 → 点选鹿灵 → 点击下方技能**；行动点用尽后点结束回合。
+
+Xcode16.4设备Release归档39735185139、三项真实Swift逻辑／姿势回归与IPA完整性核验通过；完整人物／正常速动图由主审检查。未运行模拟器或实机，设备帧率、触控和实际观感由用户安装后反馈；这是独立简化遭遇，未连接桌游背包／存档。
+
+## 历史版本：斜向步态首尾修订 · 1.6.10 build36
 
 四个斜向只替换08末帧，接顺07→08→01→02；右上修订保留同一支撑脚，另三个方向也检查完整人物过渡。站姿、01–07、四正交方向与P2／P3保持原稿，正常每姿势120ms；单靴足底坐标同步到前景／阴影数据。战斗维持已认可的v9静态呈现，下一张迈步关键帧美术单独审核。
 

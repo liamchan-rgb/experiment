@@ -948,3 +948,5 @@ v7 改用整个人物生成稿中的脸部设计，仅以固定256/1254画布缩
 39734788361已通过真实战斗、道路和姿势数学全部回归；设备Release编译只报场景对非可空poseSilhouette误用?.的接线错误，已改为直接调用。无美术／时序变化，尚未产生IPA，继续相同设备归档。
 
 设备Release归档39735185139成功，实际编译源码dca8fd997ce78706ed82277c50eedfd85fc79093、Xcode 16.4 / Build version 16F6、1.6.11 build37。真实Swift战斗／道路／姿势数学三项全部通过，模拟器和实机均未运行。IPA已核对外层artifact摘要与CRC、内部CRC／ZIP_STORED／无额外字段、iPhoneOS平台、arm64可执行文件与权限、版本号、Metal库／编译资产、包内步态JSON逐字一致，以及远程打包日志SHA；全部通过。原始IPA为24,200,213字节，SHA256 0bc40e083b12b0ee7f7ccd424cb2dc8c07a1c7381300697454c4c78d2e04ccfd，现复制至Downloads/MeadowJourney-b37.ipa。来源／检查见Media/Build37/package.json，接下来上传并实际GET直链，不交付外层ZIP。
+
+原始IPA直链已实际匿名GET：HTTP200、application/octet-stream、24,200,213字节，SHA256 0bc40e083b12b0ee7f7ccd424cb2dc8c07a1c7381300697454c4c78d2e04ccfd，与本地／远程归档日志一致。Downloads当前索引、校验表、Media/Build37与交付元数据已同步；保留build36与历史原件。交付直接IPA，不使用外层ZIP。实机安装、帧率／触控与截图仍由用户验收，本轮没有设备／模拟器运行。

@@ -1,6 +1,6 @@
 # build37 · Road cadence and playable forest encounter
 
-Version1.6.11 build37. Source: `75c50ee68134b688d3b4d7aa916345b5667e3f49`.
+Version1.6.11 build37. Source: `dca8fd997ce78706ed82277c50eedfd85fc79093`.
 
 P1 road walking now follows the reviewed120ms authored-pose cadence; moving backdrop shadows follow the complete foot/pose state in the same submitted frame, and idle clears the stale walk phase. P2/P3 source art and speeds remain unchanged. [Four-direction road preview](../../Artifacts/Diagnostics/road-motion-four-directions-offline.gif) uses the production trail network/atlases in an offline composition; it does not establish GPU frame rate or actual iPad smoothness.
 
@@ -10,4 +10,10 @@ Open **林地战斗 → 开始遭遇**, tap the Forest Warden, then select a ski
 
 [Normal-speed full-scene GIF](battle-actions-offline.gif) samples40ms of elapsed time per frame with a shared palette; authored hero and road review GIFs remain120ms per pose. [Full-scene sheet](battle-scene-contact-sheet.png) shows composition, complete silhouettes, weapon reach, planted contacts and separate cast shadows. These are offline artwork renders, **not** UIKit/GPU screenshots. Color treatment/blur and vector HUD feedback are approximate or omitted. Real device operation and screenshots are left to the user; no simulator or physical-device run is performed this round.
 
-Three build-host checks compile actual Foundation encounter/road source and the actual pose sampler with a filesystem asset adapter. The archive uses generic iOS device Release only. Package metadata and a direct `.ipa` URL will be recorded after the archive and checksum verification.
+Three build-host checks compile actual Foundation encounter/road source and the actual pose sampler with a filesystem asset adapter. The archive uses generic iOS device Release only. [Package metadata](package.json) records successful device archive39735185139, Xcode16.4 and all three passing Swift checks. The24,200,213-byte IPA passed CRC, stored-ZIP/permissions, arm64/iPhoneOS, version/build, compiled assets/Metal library, bundled gait data and remote package-checksum verification. Anonymous raw HTTP GET returned200 and the same SHA256 `0bc40e083b12b0ee7f7ccd424cb2dc8c07a1c7381300697454c4c78d2e04ccfd`.
+
+Direct IPA:
+
+```text
+https://raw.githubusercontent.com/liamchan-rgb/experiment/fix/build33-face-grounding-camera/Downloads/MeadowJourney-b37.ipa
+```
