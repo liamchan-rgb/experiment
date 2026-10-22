@@ -63,9 +63,11 @@ jobs:
       - name: Check pure battle and road logic (no simulator)
         run: |
           set -euo pipefail
-          bash scripts/check-battle-encounter.sh 2>&1 | tee build/logs/battle-logic.log
-          bash scripts/check-road-motion.sh 2>&1 | tee build/logs/road-logic.log
-          bash scripts/check-battle-animation.sh 2>&1 | tee build/logs/battle-pose.log
+          check_failed=0
+          bash scripts/check-battle-encounter.sh 2>&1 | tee build/logs/battle-logic.log || check_failed=1
+          bash scripts/check-road-motion.sh 2>&1 | tee build/logs/road-logic.log || check_failed=1
+          bash scripts/check-battle-animation.sh 2>&1 | tee build/logs/battle-pose.log || check_failed=1
+          exit "$check_failed"
 
       - name: Archive device Release build
         run: |

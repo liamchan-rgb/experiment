@@ -383,8 +383,12 @@ final class MeadowBattleLandscapeView: UIView {
         }
         effects.setNeedsDisplay()
         let labelWidth = max(94, canvas.bounds.width * 0.15)
-        heroStatus.frame = CGRect(x: heroFoot.x - labelWidth / 2, y: heroFoot.y + 9, width: labelWidth, height: 23)
-        enemyStatus.frame = CGRect(x: enemyFoot.x - labelWidth / 2, y: enemyFoot.y + 9, width: labelWidth, height: 23)
+        heroStatus.frame = CGRect(x: heroFoot.x - labelWidth / 2,
+            y: max(48, heroFoot.y - canvas.bounds.height * MeadowBattleCanvasGeometry.heroVisibleHeight - 28),
+            width: labelWidth, height: 23)
+        enemyStatus.frame = CGRect(x: enemyFoot.x - labelWidth / 2,
+            y: max(48, enemyFoot.y - canvas.bounds.height * MeadowBattleCanvasGeometry.enemyVisibleHeight - 28),
+            width: labelWidth, height: 23)
     }
 
 }

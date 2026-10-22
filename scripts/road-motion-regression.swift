@@ -60,6 +60,13 @@ struct RoadMotionRegression {
         let adjacentPose = WalkCycle.frame(at: step)
         require(adjacentPose == 4, "The first 120ms sample advances to the next P1 source pose")
 
+        for (vector, expected) in [(CGPoint(x: 3, y: 3), 4), (CGPoint(x: -3, y: -3), 6),
+                                   (CGPoint(x: 3, y: -3), 7), (CGPoint(x: -3, y: 3), 5)] {
+            var walk = WalkCycle()
+            walk.advance(from: .zero, to: vector)
+            require(walk.facing == expected, "canonical diagonal must select its authored direction")
+        }
+
         let downRight = network.edges[3].trail
         let upRight = network.edges[1].trail
         for (name, trail, reverse, expectedFacing) in [("down-right", downRight, false, 4), ("up-left", downRight, true, 6),
@@ -72,7 +79,11 @@ struct RoadMotionRegression {
             walk.advance(from: p0, to: p1)
             let facing = walk.facing
             require(walk.frame > 0, "\(name) route must enter a walk pose")
-            require(facing == expectedFacing, "\(name) route must map to the corresponding authored direction")
+            // A smoothed production road can start/end on a cardinal tangent.
+            // Its quadrant is meaningful; assuming every endpoint is 45 degrees is not.
+            let quadrants = [4: Set([0, 3, 4]), 6: Set([1, 2, 6]),
+                             7: Set([2, 3, 7]), 5: Set([0, 1, 5])]
+            require(quadrants[expectedFacing]!.contains(facing), "\(name) route tangent must stay in its travel quadrant")
             print("\(name): facing=\(facing), frame=\(walk.frame), scale=\(WalkCycle.projectedScale(dx: p1.x - p0.x, dy: p1.y - p0.y))")
         }
 
