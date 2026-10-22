@@ -359,7 +359,7 @@ final class MeadowBattleLandscapeView: UIView {
         }
         let shadowKey = "\(clip)-\(Int((poseProgress * CGFloat(MeadowBattleAnimation.silhouetteBuckets)).rounded()))"
         if shadowKey != lastShadowPose {
-            heroFlash.image = hero.poseSilhouette?.withTintColor(.white, renderingMode: .alwaysOriginal)
+            heroFlash.image = hero.poseSilhouette.withTintColor(.white, renderingMode: .alwaysOriginal)
             heroShadow.update(image: hero.poseSilhouette, soleY: hero.poseFootAnchorPx.y,
                 contacts: hero.poseContacts.map { .init(point: $0, radius: 12) })
             lastShadowPose = shadowKey
