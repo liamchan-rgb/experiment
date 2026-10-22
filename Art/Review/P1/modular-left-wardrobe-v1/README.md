@@ -8,4 +8,4 @@
 
 [完整美术复核](art-review.md)、[全部组合/贡献](audit.json)、[清单/重导/时间核对](checks.json)、[来源与范围](../../../Templates/P1-Wardrobe/left/v1-independent/README.md)。`render-audit.py`复现全部72组合/936图；`verify.py`另检查10清单、264导出文件两轮一致与四个GIF帧时长。没有运行App、模拟器、设备或制作IPA。
 
-浏览器HTTPS直链与响应/哈希核对在发布后记入delivery.json。
+[浏览器正常行走直链](https://raw.githubusercontent.com/liamchan-rgb/experiment/1b9dffb1d7bef6f61e774614711b197e085c85bf/Art/Review/P1/modular-left-wardrobe-v1/outfits-comparison-120ms.gif) · [浏览器正常起停直链](https://raw.githubusercontent.com/liamchan-rgb/experiment/1b9dffb1d7bef6f61e774614711b197e085c85bf/Art/Review/P1/modular-left-wardrobe-v1/start-stop-comparison-120ms.gif)。四份交付物实测HTTP200，MIME和SHA-256均与本地一致；GIF帧序列与时长通过，见[交付回执](delivery.json)。

@@ -2,6 +2,8 @@
 
 ## 2026-10-22 · 向左独立外观 v1 完成内部复核，提交正常动图
 
+已提交GitHub `1b9dffb1d7bef6f61e774614711b197e085c85bf`。[正常行走浏览器直链](https://raw.githubusercontent.com/liamchan-rgb/experiment/1b9dffb1d7bef6f61e774614711b197e085c85bf/Art/Review/P1/modular-left-wardrobe-v1/outfits-comparison-120ms.gif)及[正常起停直链](https://raw.githubusercontent.com/liamchan-rgb/experiment/1b9dffb1d7bef6f61e774614711b197e085c85bf/Art/Review/P1/modular-left-wardrobe-v1/start-stop-comparison-120ms.gif)实测HTTP200、image/gif、SHA-256与本地一致；站姿同样HTTP200/哈希一致。四份交付核对见 `Art/Review/P1/modular-left-wardrobe-v1/delivery.json`。
+
 在原r3向左13姿势上完成三发型、两五官、Forester绿短上衣、Wayfarer蓝长外套、共用灰裤棕靴和独立背剑，新增9资源包。三名Luna并行制作/复核，主线程负责实际装配、全身1×/2×与正常速序列审核。初审查出安全短裤/袖靴漏盖、蓝衣摆重复原袖口与裤色矩形、五官误带下颌、银发高光被删；逐项另存修订。最终又清除walk01/06袖旁、walk06靴旁孤立变形色块，未改身体与原动作。
 
 72组合×13姿势=936实际合成，3120项身体贡献无>5%漏盖（仅排除解剖颈口）；468组背剑开关无轮廓外/不透明手变化；26衣装姿势颈下孤立块为0。13裸身逐像素等于原帧；身体/动作/公共compositor摘要不变。10清单通过，264个PNG/ORA/SVG连续两轮由保留原稿重导一致；26合同与21装配器回归通过，原72认可帧摘要通过，没有跳过。
