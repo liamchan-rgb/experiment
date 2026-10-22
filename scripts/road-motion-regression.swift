@@ -1,4 +1,5 @@
 import Foundation
+import CoreGraphics
 
 struct MapPoint: Decodable {
     let x: CGFloat

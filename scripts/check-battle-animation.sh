@@ -9,7 +9,7 @@ python3 - "$repo_root" "$check_dir" <<'PY'
 from pathlib import Path
 import sys
 root=Path(sys.argv[1]);out=Path(sys.argv[2]);source=(root/'Sources/Game/MeadowBattleActorView.swift').read_text()
-source=source[:source.index('/// A single registered pose')].replace('import UIKit','import Foundation',1)
+source=source[:source.index('/// A single registered pose')].replace('import UIKit','import Foundation\nimport CoreGraphics',1)
 adapter='''
 final class NSDataAsset {
     let data: Data
@@ -29,6 +29,7 @@ final class NSDataAsset {
 PY
 cat > "$check_dir/PoseCheck.swift" <<'SWIFT'
 import Foundation
+import CoreGraphics
 @main
 struct PoseCheck {
     static func main() {
