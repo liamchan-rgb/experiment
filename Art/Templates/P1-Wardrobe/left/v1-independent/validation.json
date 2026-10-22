@@ -1,6 +1,6 @@
 {
   "id": "p1-modular-left-wardrobe-v1",
-  "status": "internally-reviewed-pending-user-art-review",
+  "status": "revision-requested-user-rejected-v1",
   "artApproval": null,
   "direction": "left",
   "base": "Art/Templates/P1-Neutral/left/walk-r3-complete-transitions",
@@ -33,5 +33,8 @@
   "simulatorOrDeviceRun": false,
   "ipaBuilt": false,
   "arbitraryPhaseTransitionsComplete": false,
-  "eightDirectionProductionTemplateComplete": false
+  "eightDirectionProductionTemplateComplete": false,
+  "earlierInternalArtPassWithdrawn": true,
+  "userFeedback": "你检查了吗就发我，这么明显的瑕疵拿给我干嘛，智能体画的效果有问题你就自己修一下，把这个也同步到GitHub的提示词里面",
+  "technicalChecksDoNotEstablishArtQuality": true
 }

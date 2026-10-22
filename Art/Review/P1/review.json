@@ -2435,7 +2435,7 @@
   },
   "leftWardrobeReview": {
     "id": "p1-modular-left-wardrobe-v1",
-    "status": "internally-reviewed-pending-user-art-review",
+    "status": "revision-requested-user-rejected-v1",
     "base": "Art/Templates/P1-Neutral/left/walk-r3-complete-transitions",
     "artApproval": null,
     "scope": "Independent left hair, face, two upper outfits, shared trousers/boots and back-scabbard, covering 13 existing poses without body changes.",
@@ -2470,6 +2470,17 @@
     "ipaBuilt": false,
     "arbitraryPhaseTransitionsComplete": false,
     "eightDirectionProductionTemplateComplete": false,
-    "source": "Art/Templates/P1-Wardrobe/left/v1-independent"
+    "source": "Art/Templates/P1-Wardrobe/left/v1-independent",
+    "earlierInternalArtPassWithdrawn": true,
+    "userFeedback": {
+      "date": "2026-10-22",
+      "statement": "你检查了吗就发我，这么明显的瑕疵拿给我干嘛，智能体画的效果有问题你就自己修一下，把这个也同步到GitHub的提示词里面",
+      "approval": false
+    },
+    "identifiedDefects": [
+      "green shirt ink/trim lost during extraction",
+      "blocky trouser deformation and lost boot structure",
+      "rigid coat tails inconsistent with cloth"
+    ]
   }
 }

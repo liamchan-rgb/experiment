@@ -1,5 +1,12 @@
 # 林间行旅迭代进度 · 2026-10-19
 
+## 2026-10-22 · 用户判退向左外观v1，撤回内部美术通过并返修
+
+用户反馈“智能体画的效果有问题你就自己修一下”，明确要求同步GitHub提示词。已在AGENTS.md及人物审核说明置顶主线程责任：亲自检查1×/2×全身、全部当前动作和正常循环；发现问题自己修源稿/分层/变形，不能凭智能体结论或覆盖数字交付。原v1内部美术通过撤回，保留旧稿与原有限技术证据，不标用户认可。
+
+重新核对原稿与合成发现绿衣轮廓/镶边丢失、裤腿块状拉伸、靴子鞋面鞋底层次丢失，以及蓝外套硬片状下摆。当前由主线程返修部件提取和衣物动作，不改已认可人体/原步态；修后须再交实际正常速全身动图。未运行模拟器/设备。
+
+
 ## 2026-10-22 · 向左独立外观 v1 完成内部复核，提交正常动图
 
 已提交GitHub `1b9dffb1d7bef6f61e774614711b197e085c85bf`。[正常行走浏览器直链](https://raw.githubusercontent.com/liamchan-rgb/experiment/1b9dffb1d7bef6f61e774614711b197e085c85bf/Art/Review/P1/modular-left-wardrobe-v1/outfits-comparison-120ms.gif)及[正常起停直链](https://raw.githubusercontent.com/liamchan-rgb/experiment/1b9dffb1d7bef6f61e774614711b197e085c85bf/Art/Review/P1/modular-left-wardrobe-v1/start-stop-comparison-120ms.gif)实测HTTP200、image/gif、SHA-256与本地一致；站姿同样HTTP200/哈希一致。四份交付核对见 `Art/Review/P1/modular-left-wardrobe-v1/delivery.json`。
