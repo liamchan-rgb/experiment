@@ -2,6 +2,8 @@
 
 ## 2026-10-22 · 向左隐藏连接与起停过渡 r3 完成
 
+已提交GitHub `8b0c600cb3f3ca66fc157c40002d5543a43810c6`（开发分支）。[起停GIF浏览器直链](https://raw.githubusercontent.com/liamchan-rgb/experiment/8b0c600cb3f3ca66fc157c40002d5543a43810c6/Art/Review/P1/neutral-left-complete-transitions-v1/start-stop-120ms.gif)及原行走GIF均实测HTTP200、image/gif、SHA-256与本地一致；站姿PNG同样HTTP200且哈希一致。交付核对见 `Art/Review/P1/neutral-left-complete-transitions-v1/delivery.json`。
+
 用户认可r2展示后，已保存原话“没问题开始下一步工作”及限定范围。新r3另存共同底模13姿势：原idle00/walk01–08的可见RGBA逐点不变，新增两起步、两停步关键姿势和91张同槽隐藏肩腕/髋根补片；固定1254²源注册，不按透明包围框调整。起步只覆盖idle00接walk01，停步只覆盖walk08收至idle00，不代表任意行走相位中断。通用合同增加可选walk-start/walk-stop，每动作2姿势、120ms，旧资源继续使用9姿势；缺帧明确拒绝，没有按外观ID改引擎或回退另一身体。
 
 两名Luna并行完成源稿/隐藏连接，主线程整合与复核。首审漏检start01/stop02第三手，主审逐臂追踪发现后退回imagegen重画；原稿保留。主审另发现手脚深色轮廓误留躯干，已在固定作者归属中转归1676源像素，完整源RGBA不改。独立全身/分层复审确认新四姿势没有残留第三手、torso不再带整圈腿/拳头描边；短裤与腿交界、拳缘短轮廓作为后续衣物覆盖复核点。合入隐藏颈根时的6像素纹理覆盖差异已修正层序，未放宽像素检查。
