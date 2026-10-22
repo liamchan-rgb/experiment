@@ -6,4 +6,4 @@
 
 行走8帧×120ms；起停22帧，首末idle各480ms，其余20帧120ms。只覆盖原r3已经绘制的idle00→walk01和walk08→idle00路径，不扩大为任意步相起停。
 
-[主线程复核与返修依据](art-review.md)、[全部实际合成证据](audit.json)、[原稿重导/清单/时长核对](checks.json)、[衣物源稿及导出](../../../Parts/P1-v1/left/wardrobe-repair-v2/README.md)。verify.py可重导三包、检查十清单并调用实际compositor复核；技术检查不代替美术审阅。浏览器交付链接在发布实测后记入delivery.json。
+[主线程复核与返修依据](art-review.md)、[全部实际合成证据](audit.json)、[原稿重导/清单/时长核对](checks.json)、[衣物源稿及导出](../../../Parts/P1-v1/left/wardrobe-repair-v2/README.md)。verify.py可重导三包、检查十清单并调用实际compositor复核；技术检查不代替美术审阅。[浏览器正常行走直链](https://raw.githubusercontent.com/liamchan-rgb/experiment/cd71944fdc7b4c37cd1b8c344b1eaaf97c5082cf/Art/Review/P1/modular-left-wardrobe-v2/outfits-comparison-120ms.gif) · [浏览器正常起停直链](https://raw.githubusercontent.com/liamchan-rgb/experiment/cd71944fdc7b4c37cd1b8c344b1eaaf97c5082cf/Art/Review/P1/modular-left-wardrobe-v2/start-stop-comparison-120ms.gif)。四份交付物实测HTTP200，MIME和SHA-256均与本地一致；GIF帧序列与时长通过，见[交付回执](delivery.json)。

@@ -2,6 +2,8 @@
 
 ## 2026-10-22 · 向左衣物v2，主线程修正并重新合成
 
+已提交GitHub `cd71944fdc7b4c37cd1b8c344b1eaaf97c5082cf`。[正常行走浏览器直链](https://raw.githubusercontent.com/liamchan-rgb/experiment/cd71944fdc7b4c37cd1b8c344b1eaaf97c5082cf/Art/Review/P1/modular-left-wardrobe-v2/outfits-comparison-120ms.gif)及[正常起停直链](https://raw.githubusercontent.com/liamchan-rgb/experiment/cd71944fdc7b4c37cd1b8c344b1eaaf97c5082cf/Art/Review/P1/modular-left-wardrobe-v2/start-stop-comparison-120ms.gif)实测HTTP200、image/gif、SHA-256与本地一致；站姿同样HTTP200/哈希一致。四份交付核对见 `Art/Review/P1/modular-left-wardrobe-v2/delivery.json`。
+
 用户判退v1后，由主线程修正源稿提取、分层和变形，不沿用智能体/前轮内部通过结论。两张13姿势衣物原稿保留，固定整表注册，仅提取衣物；绿衣完整描边/金边恢复，灰裤改为每步相褶皱，棕靴保留鞋面/跟/底，蓝衣摆不再硬缩放成两块长条。复查另修金边被肤色分类误删、固定靴口把裤脚涂棕、较宽衣片覆盖后侧拳缘，头/手原像素归共同身体独占。
 
 主线程检查两衣型1×/2×整身、两组13姿势、六组头部整身、正常序列及08→01和指定起停衔接。实际72搭配936姿势，3120身体覆盖、624穿衣原手掌保留、468背剑切换、26衣物孤立块检查失败均0；13裸身与r3逐像素相同，原身体/动作/公共compositor摘要不变。10清单与221个PNG/ORA/SVG两轮重导通过，26合同/21装配器回归通过，没有跳过。
