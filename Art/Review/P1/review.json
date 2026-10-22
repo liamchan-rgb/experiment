@@ -2317,5 +2317,29 @@
       "workflowRun": 39530852893,
       "sourceCommit": "01cb73a66542443d3178ed82374383f6a4018bcf"
     }
-  ]
+  ],
+  "battleCombatAnimationReview": {
+    "date": "2026-10-22",
+    "status": "internally-reviewed-for-build37",
+    "userAuthorization": "下一轮除此之外还要有可以交互的战斗场景，动画要完善。这些都和你的智能体并行作业，你要检查到位效果符合预期（只查美术，不含实机模拟）再交付给我ipa",
+    "source": "Art/Scenes/MeadowBattle/hero-combat-v2",
+    "enemyMotion": "Art/Scenes/MeadowBattle/enemies/forest-warden-motion-v1",
+    "parentReview": "Media/Build37/art-review.json",
+    "userArtApproval": null,
+    "fullWardrobeTemplateApproved": false
+  },
+  "roadMotionRepairReview": {
+    "date": "2026-10-22",
+    "status": "offline-reviewed-pending-user-device-feedback",
+    "previewMs": 120,
+    "roadP1Speed": 25,
+    "repairs": [
+      "P1 normal cadence matches review",
+      "full foot/pose state invalidates moving-shadow backdrop",
+      "idle clears stale distance phase"
+    ],
+    "review": "Artifacts/Diagnostics/road-motion-four-directions-offline.gif",
+    "artPixelsChanged": 0,
+    "physicalDeviceVisualApproval": null
+  }
 }

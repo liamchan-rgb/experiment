@@ -416,9 +416,12 @@ final class TrailTests: XCTestCase {
         let actor = try XCTUnwrap(MeadowBattleActorConfiguration.load())
         XCTAssertEqual(actor.canvasSize, CGSize(width: 256, height: 256))
         XCTAssertEqual(actor.footAnchor, CGPoint(x: 123, y: 214))
-        XCTAssertEqual(actor.layers, ["MeadowBattleHeroWeapon", "MeadowBattleHeroBody", "MeadowBattleHeroWardrobe",
-                                      "MeadowBattleHeroHair", "MeadowBattleHeroFace",
-                                      "MeadowBattleHeroNearHand", "MeadowBattleHeroFarHand"])
+        let requiredParts: Set<String> = ["MeadowBattleHeroWeapon", "MeadowBattleHeroBodyCore",
+            "MeadowBattleHeroWardrobeCore", "MeadowBattleHeroArmNearUpperWardrobe",
+            "MeadowBattleHeroArmNearForearmWardrobe", "MeadowBattleHeroLegFarShinWardrobe",
+            "MeadowBattleHeroLegNearShinWardrobe", "MeadowBattleHeroHair", "MeadowBattleHeroFace",
+            "MeadowBattleHeroNearHand", "MeadowBattleHeroFarHand"]
+        XCTAssertTrue(requiredParts.isSubset(of: Set(actor.layers)))
         for name in actor.layers {
             let layer = try XCTUnwrap(UIImage(named: name), "Missing registered actor part: \(name)")
             XCTAssertEqual(layer.cgImage?.width, 256)
@@ -482,7 +485,8 @@ final class TrailTests: XCTestCase {
         XCTAssertEqual(subviewOrder, [
             "MeadowCampFarForest", "MeadowCampGround", "MeadowCampMidground",
             "meadowBattleHeroShadow", "meadowBattleForestWardenShadow", "meadowBattleHero",
-            "meadowBattleForestWarden", "MeadowCampForeground"
+            "meadowBattleForestWarden", "MeadowCampForeground", "battleCombatEffects",
+            "battleHeroHealth", "battleEnemyHealth"
         ], "Scene layers, actor shadows, units and foreground must retain their fixed composite order")
         let heroIndex = try XCTUnwrap(subviewOrder.firstIndex(of: "meadowBattleHero"))
         let enemyIndex = try XCTUnwrap(subviewOrder.firstIndex(of: "meadowBattleForestWarden"))

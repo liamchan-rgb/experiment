@@ -20,7 +20,7 @@ struct JourneySimulation {
     mutating func reset() {
         routes = Array(repeating: network.patrol, count: 3)
         travelers = [
-            Traveler(distance: network.patrol.distance(nearestTo: CGPoint(x: 440, y: 444)), direction: 1, speed: 42),
+            Traveler(distance: network.patrol.distance(nearestTo: CGPoint(x: 440, y: 444)), direction: 1, speed: HeroFrames.reviewSpeed),
             Traveler(distance: network.patrol.length, direction: -1, speed: 38),
             Traveler(distance: network.patrol.distance(nearestTo: CGPoint(x: 560, y: 441)), direction: 1, speed: 45)
         ]

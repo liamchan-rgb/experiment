@@ -486,13 +486,13 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
 
     private func configureBattlePreview() {
         var style = UIButton.Configuration.filled()
-        style.title = "战斗预览"
+        style.title = "林地战斗"
         style.baseBackgroundColor = UIColor(red: 0.97, green: 0.91, blue: 0.70, alpha: 0.96)
         style.baseForegroundColor = UIColor(red: 0.25, green: 0.28, blue: 0.14, alpha: 1)
         style.contentInsets = NSDirectionalEdgeInsets(top: 6, leading: 6, bottom: 6, trailing: 6)
         battlePreviewButton.configuration = style
         battlePreviewButton.accessibilityIdentifier = "openBattlePreview"
-        battlePreviewButton.accessibilityLabel = "打开 Meadow Journey 林地战斗场景预览"
+        battlePreviewButton.accessibilityLabel = "打开 Meadow Journey 可交互林地战斗"
         battlePreviewButton.addAction(UIAction { [weak self] _ in
             guard let self else { return }
             self.setBattlePreviewActive(!self.battlePreviewActive)
@@ -517,13 +517,14 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
         if active { scene.beginBattlePreviewCamera() }
         battlePreviewActive = active
         battlePreviewView?.isHidden = !active
+        battlePreviewView?.setActive(active)
         battlePreviewButton.isHidden = active
         shadowLabButton.isHidden = active
         gaitTestButton.isHidden = active
         for control in [titleButton, playButton, resetButton, zoomButton] { control.isHidden = active }
         metricsLabel.isHidden = active ? true : metricsHiddenBeforeBattlePreview
         discoveryLabel.isHidden = active
-        if active { gameView.accessibilityLabel = "Meadow Journey 林间地图，显示在左侧；右侧为横向战斗场景预览" }
+        if active { gameView.accessibilityLabel = "Meadow Journey 林间地图，显示在左侧；右侧为可交互林地战斗" }
         else { gameView.accessibilityLabel = "林间地图，已选择 P1" }
         view.setNeedsLayout()
         view.layoutIfNeeded()
