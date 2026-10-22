@@ -1,0 +1,22 @@
+[
+  {
+    "pose": "start01",
+    "reassignedVisiblePixels": 366,
+    "sourceRGBAChanged": false
+  },
+  {
+    "pose": "start02",
+    "reassignedVisiblePixels": 437,
+    "sourceRGBAChanged": false
+  },
+  {
+    "pose": "stop01",
+    "reassignedVisiblePixels": 531,
+    "sourceRGBAChanged": false
+  },
+  {
+    "pose": "stop02",
+    "reassignedVisiblePixels": 342,
+    "sourceRGBAChanged": false
+  }
+]

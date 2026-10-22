@@ -1,0 +1,67 @@
+{
+  "tool": "image_gen",
+  "references": [
+    "Art/Review/P1/directions/left/revisions/r1/frames/00..08.png",
+    "Art/Templates/P1-Neutral/down/walk-r6-relaxed-arms/frames/00.png"
+  ],
+  "sourceCanvas": [
+    1254,
+    1254
+  ],
+  "selected": [
+    {
+      "frame": 0,
+      "path": "source/00.png",
+      "sha256": "09288f3ac9bb836c16cff47d9b786e766e0710666eb48df8941a5b150a02129d"
+    },
+    {
+      "frame": 1,
+      "path": "source/01.png",
+      "sha256": "6ce17ed512668e2f7a080a3767f17c3748a130e1a0d7814dfc6296d3621a8819"
+    },
+    {
+      "frame": 2,
+      "path": "source/02.png",
+      "sha256": "e9c6dbd989877c94b83ed9ad2e63be7ad1a6cc383f951c64894c56e1fb4c1906"
+    },
+    {
+      "frame": 3,
+      "path": "source/03.png",
+      "sha256": "39f4f1823fc7f81ed063549958d36115d30db13e0d9938ba5116449bdf143ee8"
+    },
+    {
+      "frame": 4,
+      "path": "source/04.png",
+      "sha256": "2c29f72559d4d4a417e6a93ee974b51b4463b55080ab69d5b3082b13222311a7"
+    },
+    {
+      "frame": 5,
+      "path": "source/05.png",
+      "sha256": "13519f6da8a67f5850beac7e3cdb569c5d762436fbd047d18b81095bd795dd00"
+    },
+    {
+      "frame": 6,
+      "path": "source/06.png",
+      "sha256": "41d5f3ead4b979770705c1c8a4f02ca2001f608c1f0020f9e4ea25c1ecf7e813"
+    },
+    {
+      "frame": 7,
+      "path": "source/07.png",
+      "sha256": "af01b2f7e86de0a4494e6fdea0fc7857a9b854e647fc05ff308dd9487f20d586"
+    },
+    {
+      "frame": 8,
+      "path": "source/08.png",
+      "sha256": "1b9fd59fe7bd05cddd589de9520effec5076d69a11e1d63fa2b7f64ff677dfd0"
+    }
+  ],
+  "retainedRejected": "source/rejected",
+  "rejectedReasons": [
+    "nine-pose sheet had inaccurate phases/duplicate poses",
+    "03 had an extra rear hand",
+    "05/06 far-leg depth color mismatched",
+    "04/08 extended or landed too abruptly; replaced by late-swing poses"
+  ],
+  "sourceRegistration": "uniform .194 + (4.72,6.4), fixed full source canvas; no alpha bounds",
+  "artApproval": null
+}

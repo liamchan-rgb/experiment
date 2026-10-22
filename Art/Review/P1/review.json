@@ -3,7 +3,7 @@
   "format": 3,
   "updated": "2026-10-21",
   "workflow": "Review one direction at a time from fixed cardinal and diagonal baselines. Modify and resubmit the same direction until explicit user artwork approval, then advance. Record provenance, feedback and accepted revisions for the future character template.",
-  "current": "p1-battle-side-right-step-contact-v1",
+  "current": "p1-neutral-left-walk-r3-complete-transitions",
   "templateStatus": "Current static battle v9 presentation accepted; first battle side-step key pose remains current for artwork review. Four diagonal map loop repairs are self-reviewed and imported under the user task; original artwork approvals are preserved. Full battle walk/attack animation and interchangeable wardrobe completion remain pending.",
   "items": [
     {
@@ -2373,5 +2373,52 @@
     "review": "Artifacts/Diagnostics/road-motion-four-directions-offline.gif",
     "artPixelsChanged": 0,
     "physicalDeviceVisualApproval": null
+  },
+  "leftHeadMotionReview": {
+    "id": "p1-neutral-left-walk-r2-head-motion",
+    "status": "approved-presented-left-neutral-walk-and-head-motion",
+    "source": "Art/Templates/P1-Neutral/left/walk-r2-head-motion",
+    "reviewImage": "Art/Review/P1/neutral-left-walk-r2-head-motion/idle-review-2x.png",
+    "normalUserLoop": "Art/Review/P1/neutral-left-walk-r2-head-motion/walk-120ms.gif",
+    "comparison": "Art/Review/P1/neutral-left-walk-r2-head-motion/before-after-120ms.gif",
+    "artApproval": {
+      "date": "2026-10-22",
+      "reviewer": "user",
+      "statement": "没问题开始下一步工作",
+      "status": "approved",
+      "scope": "Presented left-facing r2 neutral full-body appearance, eight-frame normal walk and subtle head motion only. Excludes hidden anatomy, new start/stop key poses, independent left-facing appearances and runtime integration.",
+      "artifacts": {
+        "walk-120ms.gif": "67d0de0d0b641fffe8a352b786b787d7f00db41cfa8884fe9d88e65e2b60d7d3",
+        "before-after-120ms.gif": "cb5bf0a3c0eda7329aa532a068cd1e6fb7eb3ecfc115b396c88c3f048a9c5b92"
+      }
+    },
+    "feedback": "头太固定了，应该有轻微摆动才自然",
+    "runtimeIntegrated": false
+  },
+  "leftJointTransitionReview": {
+    "id": "p1-neutral-left-walk-r3-complete-transitions",
+    "status": "internally-reviewed-awaiting-user-art-review",
+    "sourceBody": "Art/Templates/P1-Neutral/left/walk-r2-head-motion",
+    "hiddenSource": "Art/Templates/P1-Neutral/left/hidden-joints-v1",
+    "transitionSource": "Art/Templates/P1-Neutral/left/start-stop-v1",
+    "artApproval": null,
+    "runtimeIntegrated": false,
+    "source": "Art/Templates/P1-Neutral/left/walk-r3-complete-transitions",
+    "reviewImage": "Art/Review/P1/neutral-left-complete-transitions-v1/idle-review-2x.png",
+    "normalUserLoop": "Art/Review/P1/neutral-left-complete-transitions-v1/start-stop-120ms.gif",
+    "walkLoop": "Art/Review/P1/neutral-left-complete-transitions-v1/walk-120ms.gif",
+    "poseReview": "Art/Review/P1/neutral-left-complete-transitions-v1/start-stop-keyposes-fullbody-1x.png",
+    "validation": "Art/Templates/P1-Neutral/left/walk-r3-complete-transitions/validation.json",
+    "visiblePoses": 13,
+    "semanticLayers": 104,
+    "hiddenUnderlays": 91,
+    "normalFrameMs": 120,
+    "approvedR2VisibleFramesUnchanged": 9,
+    "fullHiddenAnatomyComplete": false,
+    "authoredStartStopPaths": [
+      "idle00 to walk01",
+      "walk08 to idle00"
+    ],
+    "arbitraryPhaseStartStopComplete": false
   }
 }

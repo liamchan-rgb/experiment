@@ -1,8 +1,12 @@
 # P1 人物素材逐张审核
 
-## 当前修订：向左中性人体r2，轻微头部运动
+## 当前候选：向左底模r3，隐藏连接与起停过渡
 
-用户指出头部过于固定，现已补随步态轻微下沉/回升和颈根小幅点动；[正常全身动图](../Art/Review/P1/neutral-left-walk-r2-head-motion/walk-120ms.gif)、[前后同步对照](../Art/Review/P1/neutral-left-walk-r2-head-motion/before-after-120ms.gif)。当前新稿仍待用户审核；自然起停、完整隐藏关节与独立左向外观仍未完成。
+用户已认可r2展示的向左正常循环与轻微头动。本轮保留九张认可画面，补隐藏肩髋/腕口和四张起停关键姿势；[正常速全身起停动图](../Art/Review/P1/neutral-left-complete-transitions-v1/start-stop-120ms.gif)、[完整复核](../Art/Review/P1/neutral-left-complete-transitions-v1/art-review.md)。新增稿待用户审核，只覆盖idle00→walk01及walk08→idle00的指定起停路径；独立左向外观与App接入后续制作。
+
+## 此前修订：向左中性人体r2，轻微头部运动
+
+用户指出头部过于固定，现已补随步态轻微下沉/回升和颈根小幅点动；[正常全身动图](../Art/Review/P1/neutral-left-walk-r2-head-motion/walk-120ms.gif)、[前后同步对照](../Art/Review/P1/neutral-left-walk-r2-head-motion/before-after-120ms.gif)。用户随后认可这份r2展示；自然起停与隐藏连接已另存r3制作，独立左向外观后续进行。
 
 ## 必须执行：人物美术交付要发可播放动图
 

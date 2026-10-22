@@ -1,0 +1,36 @@
+{
+  "status": "internally-reviewed-left-joints-and-start-stop; user art approval pending",
+  "artApproval": null,
+  "baseRevision": "Art/Templates/P1-Neutral/left/walk-r2-head-motion",
+  "sourcePoses": 13,
+  "semanticLayers": 104,
+  "hiddenUnderlays": 91,
+  "actualCompositorPoses": 13,
+  "approvedR2FramesExact": 9,
+  "headAttachmentTransforms": 13,
+  "neckConnections": 13,
+  "soleMarkers": 26,
+  "editableORA": 13,
+  "editableSVG": 13,
+  "reexportFiles": 143,
+  "reexportByteDifferences": 0,
+  "normalActionFrameMs": 120,
+  "startStopGifFrames": 22,
+  "idleHoldsMs": [
+    480,
+    480
+  ],
+  "contractTests": 26,
+  "compositorTests": 21,
+  "originalApprovedMotionFramesUnchanged": 72,
+  "registrationDiscardOnlyAlphaAtMost": 8,
+  "registrationSpecksDiscarded": 26,
+  "checks": "Art/Review/P1/neutral-left-complete-transitions-v1/transition-checks.json",
+  "hiddenChecks": "source/hidden-verification.json",
+  "limits": [
+    "Left direction only; per-pose shoulder/wrist/hip-root underpaint, not complete arbitrary hidden anatomy.",
+    "Start only idle00 to walk01; stop only walk08 to idle00, not arbitrary phase interruption.",
+    "Small shorts/leg and fist ink boundaries require continued review with independent clothes.",
+    "No left-facing appearance packages, app integration, simulator/device execution, or IPA."
+  ]
+}

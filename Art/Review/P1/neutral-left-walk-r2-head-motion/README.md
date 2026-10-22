@@ -7,3 +7,5 @@
 [动图直开](walk-120ms.gif) · [全身站姿](idle-review-2x.png) · [修改前后同步对照（左旧右新）](before-after-120ms.gif)
 
 当前供审核人体比例与行走循环；发型/五官/外衣尚未挂载。自然起停和完整隐藏关节仍待补齐，未接入App或运行设备。
+
+用户于2026-10-22认可本页展示的向左外观/正常循环/轻微头动，范围见对应模板approval.json。已另存[隐藏连接与起停过渡r3](../neutral-left-complete-transitions-v1/)，新增稿单独等待审核。

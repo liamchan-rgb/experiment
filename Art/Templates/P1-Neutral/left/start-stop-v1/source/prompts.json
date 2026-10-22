@@ -1,0 +1,61 @@
+{
+  "tool": "image_gen",
+  "reference": "Art/Templates/P1-Neutral/left/walk-r2-head-motion/source/00.png",
+  "canvas": [
+    1254,
+    1254
+  ],
+  "selected": {
+    "start01": {
+      "prompt": "Make a very subtle LEFT-facing animation transition from the idle pose in this reference. Same chibi character and pixel art, same original blank bald head silhouette and proportions, no face marks, same cream sleeveless safety vest, charcoal fitted shorts, warm skin, bare feet and outline. Keep the whole figure exactly in place and the complete transparent 1254×1254 canvas unchanged: scalp y400, neck root y645, hip y855, soles y1070. No crop, zoom or recenter. This is START-01, the FIRST tiny movement into a walk: feet remain close together with only a tiny step difference, almost like idle; the near LEFT leg shifts just slightly forward to screen-left and far RIGHT leg stays nearly under the hip. The two feet should be side by side with only about 5 logical pixels of separation, both on the ground, toes pointing left. The torso leans a little forward from the ankles, shoulders and hip rotate subtly. Arms begin to swing in opposite directions but remain close to the sides: near LEFT empty fist a little behind the hip at about logical x134 y172, far RIGHT empty fist a little forward at x126 y166. Show a small anatomical knee and ankle adjustment, not a running stride. No raised foot, no long step, no dramatic arm swing. Exactly two legs/feet and two connected arms/hands, no overlapping limbs or detached parts. Preserve same head and body scale. No ground/shadow/text/grid/other pose.",
+      "generated": "/workspace/generated_images/exec-c09e4426-0fe2-460f-bb64-691f1f5d8f09.png",
+      "decision": "final repaired source selected after removing extra rear arm and tucking far hand behind shorts seam; near hanging hand retained",
+      "initialSelectedGenerated": "/workspace/generated_images/exec-96169303-f3a2-4d2c-a180-9ed85e468183.png",
+      "repairPrompt": "One final small correction to this exact full-body LEFT-facing pixel-art character: the far arm/hand at screen-left waist sticks out too far. Keep that far arm behind the body at the vest/shorts seam; only a tiny part of one fist may peek from the screen-left edge of the shorts, with most of the hand hidden. The near LEFT arm remains the obvious single hanging arm on screen-right. Exactly two connected arms and two hands, no extra rear arm. Keep head, torso, legs, feet, overall size, position, and pose unchanged. Transparent 1254x1254 full canvas, no crop or recenter."
+    },
+    "start02": {
+      "prompt": "Create a new single transparent full-body pixel art pose by editing this exact sprite. Preserve same character, strict LEFT-facing side profile, blank bald head silhouette and scale, cream sleeveless safety vest, charcoal safety shorts, warm skin, bare small feet, original crisp pixel clusters and outline. Keep the entire character in the original 1254×1254 square canvas at exactly the same full-source position and size, with scalp y400, neck root y645, hip y855 and sole line y1070. No crop, zoom, recentering, alpha-fit, background, shadow or text. Pose is WALK START 02, the second and last transition toward a leftward walk: a clear but controlled forward weight shift, about halfway into a normal walking stride. The near/character LEFT leg (lighter) reaches forward to screen-left with sole around logical 256-coordinate x112 y214; far/character RIGHT leg (slightly darker) remains under/behind the hips with foot around x136 y212. Both feet are distinct small bare feet with all toes pointing LEFT. Near/LEFT arm is swinging backward toward screen-right, with one empty relaxed closed fist centered around logical x142 y173. Far/RIGHT arm swings forward toward screen-left, its single empty fist centered x111 y166. Preserve connected shoulders, elbows, hips, knees, ankles; use a natural weight-bearing knee and slight hip/shoulder counter-swing. One head only, exactly same form and size as reference, no face details at all, no hair. Do not create extra limbs, detached fists, strange hands, or interpenetrating legs. Maintain same body proportions and restrained motion.",
+      "generated": "/workspace/generated_images/exec-2c746620-70b2-43eb-9aaa-e615941cc5e6.png",
+      "decision": "selected; establishes walk stride"
+    },
+    "stop01": {
+      "prompt": "Edit the referenced approved LEFT-facing pixel-art walk pose 08 to make ONE full-body walk-stop transition pose on the same transparent 1254×1254 square canvas. Preserve this exact character and art style: blank bald head with the same silhouette and proportions, no face marks or hair, cream sleeveless safety vest, charcoal fitted shorts, warm skin, small barefoot feet, crisp dark pixel outline. Keep full-source registration/size and figure position unchanged: scalp about y400, neck root y645, hip y855, soles y1070; do not crop, zoom, alpha-fit or recenter. STOP-01 is the first deceleration pose after walk08: the body is still moving screen-left, but the stride is closing. Plant the near character LEFT leg (lighter skin) with foot sole around logical x118 y212; bring the far character RIGHT leg forward under the pelvis with foot sole around x134 y212. Knees absorb weight with a small believable bend, no sliding or crossed legs. Retract the arm swings toward a relaxed neutral position: near/LEFT hand empty fist around logical x130 y173; far/RIGHT empty fist around logical x130 y166. Shoulders and wrists flow back from the walking swing, with connected elbows and natural counterbalance. Keep the two arms and hands distinct, exactly two legs and two feet. Both bare feet stay small and point toes LEFT. Same head form, no changes to clothing or body scale. No extra limbs, no shadow, ground, text, frame label, grid, or other pose.",
+      "generated": "/workspace/generated_images/exec-a4aa4bf4-76d8-4f90-a0e9-5ab8eb1be865.png",
+      "decision": "selected; stride closing"
+    },
+    "stop02": {
+      "prompt": "Edit the referenced neutral LEFT-facing pixel-art character into one new full-body STOP-02 pose. Preserve the same character, exact blank bald head silhouette and proportion, no face marks or hair, cream sleeveless safety vest, charcoal fitted safety shorts, same warm skin shades and crisp dark outline. Transparent square canvas 1254×1254, exact original full-source scale and registration: scalp about y400, neck root y645, hip y855, soles y1070; never crop, zoom, alpha-fit or recenter. STOP-02 is the final transition after walk-stop01, settling naturally into the idle pose while still facing screen LEFT. Legs are nearly together with a little weight settling: near character LEFT foot sole around logical x125 y213, far RIGHT foot sole around x124 y211. Feet are distinct small bare feet, toes both point LEFT. Knees and ankles relaxed, no crossed legs. Arms nearly at rest with only a little residual swing: near/LEFT empty fist around logical x129 y172, far/RIGHT empty fist around x137 y166. Hands are single natural loose closed fists, not gripping anything. Show a tiny believable settling motion in torso/shoulders and hips, same overall standing scale. Connected anatomy, two arms, two hands, two legs, two feet only; no detached parts, no extra limbs, no strange overlap, no elongated torso. Same head unchanged. No shadow, ground, text, grid, multiple views or labels.",
+      "generated": "/workspace/generated_images/exec-7858d32f-5238-472d-a09d-e3f75431df46.png",
+      "decision": "final repaired source selected after removing extra small waist fist and fragments; near down hand and far rear hand retained",
+      "initialSelectedGenerated": "/workspace/generated_images/exec-84b5aee0-6b80-48b6-882c-dc87ef1644fa.png",
+      "repairPrompt": "Repair this exact full-body LEFT-facing pixel-art character. The source has THREE hands/arms. Remove the extra small fist at screen-left beside the waist completely, including its arm and outline fragments, while preserving the main near-side arm down screen-right and the far-side rear arm/hand visible behind the back-right hip. Exactly two connected shoulders, arms, wrists and hands. Keep torso, head, legs, feet, character scale, position and pose unchanged. Preserve transparent 1254x1254 full canvas; no crop, recenter, shadow, text, or new pose."
+    }
+  },
+  "rejected": [
+    {
+      "id": "start01-overstride",
+      "generated": "/workspace/generated_images/exec-dd4c7c4f-7809-4132-8efb-a960f22f3af8.png",
+      "reason": "initial candidate had too much step separation for the first tiny transition; retained unchanged under source/rejected"
+    },
+    {
+      "id": "start01-three-hands-before-repair",
+      "generated": "/workspace/generated_images/exec-40d6f2b9-1d5e-4ed8-8705-009232d50206.png",
+      "reason": "three hands including extra rear arm; retained under source/rejected"
+    },
+    {
+      "id": "start01-repair-candidate1-far-hand-too-far",
+      "generated": "/workspace/generated_images/exec-0c91f47d-bd12-46dd-ab80-d706fc44b752.png",
+      "reason": "far fist protruded too far; retained under source/rejected"
+    },
+    {
+      "id": "start01-repair-candidate2-far-hand-still-forward",
+      "generated": "/workspace/generated_images/exec-79b27329-4811-41eb-b2fa-695271e25bcf.png",
+      "reason": "far fist still too far forward; retained under source/rejected"
+    },
+    {
+      "id": "stop02-three-hands-before-repair",
+      "generated": "/workspace/generated_images/exec-84b5aee0-6b80-48b6-882c-dc87ef1644fa.png",
+      "reason": "three hands including extra screen-left waist fist; retained under source/rejected"
+    }
+  ]
+}

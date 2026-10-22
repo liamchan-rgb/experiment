@@ -31,10 +31,20 @@
       6,
       7,
       8
+    ],
+    "walk-start": [
+      1,
+      2
+    ],
+    "walk-stop": [
+      1,
+      2
     ]
   },
   "frameMs": {
-    "walk": 120
+    "walk": 120,
+    "walk-start": 120,
+    "walk-stop": 120
   },
   "headCanvas": [
     96,
@@ -182,7 +192,11 @@
       ],
       "slots": [
         "weapon.right",
-        "weapon.left"
+        "weapon.left",
+        "weapon.back"
+      ],
+      "carryProfiles": [
+        "back-scabbard"
       ]
     }
   },
