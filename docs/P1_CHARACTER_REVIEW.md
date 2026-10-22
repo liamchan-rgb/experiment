@@ -9,7 +9,12 @@
 - 用户于2026-10-22明确要求：智能体画的效果有问题，由主线程自己修，并同步到GitHub提示词。
 
 
-## 当前候选：向左独立外观 v1
+## 当前返修：向左衣物 v2
+
+用户判退v1后由主线程修正，保留原人体/动作，换用逐姿势衣物原稿并修复部件提取。见[正常行走GIF](../Art/Review/P1/modular-left-wardrobe-v2/outfits-comparison-120ms.gif)、[起停GIF](../Art/Review/P1/modular-left-wardrobe-v2/start-stop-comparison-120ms.gif)、[站姿](../Art/Review/P1/modular-left-wardrobe-v2/outfits-comparison-2x.png)、[主线程具体复核](../Art/Review/P1/modular-left-wardrobe-v2/art-review.md)。新稿用户认可为空，仍只审核向左13作者姿势。
+
+
+## 已判退：向左独立外观 v1（原内部美术通过撤回）
 
 在用户已认可展示的r3向左13姿势上完成三发型、两五官、两衣型、共用裤靴和背剑，身体/动作/公共compositor不变。[正常行走GIF](../Art/Review/P1/modular-left-wardrobe-v1/outfits-comparison-120ms.gif)、[正常起停GIF](../Art/Review/P1/modular-left-wardrobe-v1/start-stop-comparison-120ms.gif)、[整身站姿](../Art/Review/P1/modular-left-wardrobe-v1/outfits-comparison-2x.png)、[完整复核](../Art/Review/P1/modular-left-wardrobe-v1/art-review.md)。72组合936姿势与内部全身复核完成，新外观美术认可仍为空；不将离线检查扩大为其余方向、任意起停或App/设备验证。
 

@@ -3,7 +3,7 @@
   "format": 3,
   "updated": "2026-10-21",
   "workflow": "Review one direction at a time from fixed cardinal and diagonal baselines. Modify and resubmit the same direction until explicit user artwork approval, then advance. Record provenance, feedback and accepted revisions for the future character template.",
-  "current": "p1-modular-left-wardrobe-v1",
+  "current": "p1-modular-left-wardrobe-v2",
   "templateStatus": "Current static battle v9 presentation accepted; first battle side-step key pose remains current for artwork review. Four diagonal map loop repairs are self-reviewed and imported under the user task; original artwork approvals are preserved. Full battle walk/attack animation and interchangeable wardrobe completion remain pending.",
   "items": [
     {
@@ -2482,5 +2482,38 @@
       "blocky trouser deformation and lost boot structure",
       "rigid coat tails inconsistent with cloth"
     ]
+  },
+  "leftWardrobeRepairReview": {
+    "id": "p1-modular-left-wardrobe-v2",
+    "status": "main-agent-repaired-awaiting-user-art-review",
+    "artApproval": null,
+    "rejectedPredecessor": "Art/Templates/P1-Wardrobe/left/v1-independent",
+    "base": "Art/Templates/P1-Neutral/left/walk-r3-complete-transitions",
+    "direction": "left",
+    "poses": 13,
+    "combinations": 72,
+    "renderedPoses": 936,
+    "newGarmentPackages": 3,
+    "bodyAndMotionAndCompositorUnchanged": true,
+    "visibleBodyContributionChecks": 3120,
+    "visibleHandPreservationChecks": 624,
+    "weaponToggleChecks": 468,
+    "clothingIslandChecks": 26,
+    "failures": 0,
+    "assetManifestsPassed": 10,
+    "twoReexportsByteIdentical": true,
+    "generatedArtFilesReexported": 221,
+    "regressionTests": {
+      "contract": 26,
+      "compositor": 21,
+      "skipped": 0
+    },
+    "normalUserLoop": "Art/Review/P1/modular-left-wardrobe-v2/outfits-comparison-120ms.gif",
+    "startStopLoop": "Art/Review/P1/modular-left-wardrobe-v2/start-stop-comparison-120ms.gif",
+    "reviewImage": "Art/Review/P1/modular-left-wardrobe-v2/outfits-comparison-2x.png",
+    "artReview": "Art/Review/P1/modular-left-wardrobe-v2/art-review.md",
+    "runtimeIntegrated": false,
+    "simulatorOrDeviceRun": false,
+    "ipaBuilt": false
   }
 }

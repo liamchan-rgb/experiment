@@ -1,0 +1,29 @@
+{
+  "base": "p1-neutral-left-walk-r3-complete-transitions",
+  "hair": {
+    "none": null,
+    "chestnut": "p1-hair-chestnut-left",
+    "silver": "p1-hair-silver-left",
+    "teal": "p1-hair-teal-left"
+  },
+  "face": {
+    "none": null,
+    "blue": "p1-face-blue-left",
+    "amber": "p1-face-amber-left"
+  },
+  "style": {
+    "plain": [],
+    "forester": [
+      "p1-left-traveler-lower-v2",
+      "p1-left-forester-v2"
+    ],
+    "wayfarer": [
+      "p1-left-traveler-lower-v2",
+      "p1-left-wayfarer-coat-v2"
+    ]
+  },
+  "weapon": {
+    "empty": null,
+    "back": "p1-weapon-back-scabbard-left-v1"
+  }
+}
