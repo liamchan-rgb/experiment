@@ -84,7 +84,7 @@ def main():
     rig['heroes'][0] = hero_rig
     rig_path.write_text(json.dumps(rig, separators=(',', ':')) + '\n')
     outputs[str(rig_path.relative_to(ROOT))] = sha(rig_path)
-    record = {'format': 2, 'status': 'imported-for-demo-device-review', 'date': '2026-10-21',
+    record = {'format': 2, 'status': 'imported-for-demo-device-review', 'date': selection.get('date', '2026-10-21'),
               'directions': provenance, 'authoredWalkPoses': 8, 'idlePosesPerDirection': 1,
               'frameMs': 120, 'cycleMs': 960, 'rasterColumns': 9, 'distanceClockTicks': 24,
               'pixelChangesDuringImport': 0, 'approvedOriginalsPreserved': True, 'interpolatedPoses': 0,

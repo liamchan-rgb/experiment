@@ -74,7 +74,7 @@ def trail_points(edge_index, reverse=False):
     return list(reversed(pts)) if reverse else pts
 
 
-def main():
+def main(output=None):
     width, height = 1280, 720
     ground = Image.open(ROOT / "Sources/Resources/Assets.xcassets/MeadowGround.imageset/MeadowGround.png").convert("RGB")
     canvas = ground.resize((width, height), Image.Resampling.BICUBIC).convert("RGBA")
@@ -152,7 +152,7 @@ def main():
                      font=review_font, fill=(245, 225, 180, 255))
         frames.append(image.convert("P", palette=Image.Palette.ADAPTIVE, colors=192))
 
-    output = ROOT / "Artifacts/Diagnostics/road-motion-four-directions-offline.gif"
+    output = Path(output).resolve() if output else ROOT / "Artifacts/Diagnostics/road-motion-four-directions-offline.gif"
     output.parent.mkdir(parents=True, exist_ok=True)
     frames[0].save(output, save_all=True, append_images=frames[1:], duration=FRAME_MS,
                    loop=0, optimize=False, disposal=2)
@@ -160,4 +160,7 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    import argparse
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--output", type=Path, help="Save a new review without replacing earlier evidence")
+    main(parser.parse_args().output)

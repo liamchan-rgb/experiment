@@ -1181,6 +1181,32 @@
             7
           ],
           "productionAssetsUpdated": true
+        },
+        {
+          "id": "contact-r1",
+          "date": "2026-10-22",
+          "status": "self-reviewed-runtime-candidate",
+          "strip": "directions/up-left/revisions/contact-r1/strip.png",
+          "normalLoop": "directions/up-left/revisions/contact-r1/walk.gif",
+          "reviewImage": "directions/up-left/revisions/contact-r1/review-2x.png",
+          "validation": "directions/up-left/revisions/contact-r1/validation.json",
+          "provenance": "directions/up-left/revisions/contact-r1/provenance.json",
+          "artApproval": null,
+          "changedFrames": [
+            2
+          ],
+          "inheritedFrames": [
+            0,
+            1,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8
+          ],
+          "productionAssetsUpdated": true,
+          "parentReview": "Media/Build38/art-review.json"
         }
       ],
       "approval": {
@@ -1257,12 +1283,18 @@
         "artApproval": null,
         "fullCycleUpdated": true
       },
-      "runtimeRevision": "loop-r1",
+      "runtimeRevision": "contact-r1",
       "loopRepairFeedback": {
         "date": "2026-10-21",
         "statement": "首帧与末尾帧衔接不好，有跳动；单开智能体自行修并合成正常速动图审核",
         "status": "self-reviewed-and-imported-user-task-authorized",
         "scope": "Original approval remains on r6; this new loop revision has no new user artwork approval"
+      },
+      "contactRepairFeedback": {
+        "date": "2026-10-22",
+        "statement": "左上左脚抬起后瞬间落地，缺少过渡",
+        "status": "internally-reviewed-and-imported-user-task-authorized",
+        "scope": "Only pose02 revised; original r6 approval and loop-r1 preserved; full-body normal-speed review does not constitute user approval."
       }
     },
     {

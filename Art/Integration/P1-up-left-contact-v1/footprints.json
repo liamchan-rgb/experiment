@@ -1,0 +1,1217 @@
+{
+  "format": 1,
+  "canvasPx": [
+    256,
+    256
+  ],
+  "coordinateConvention": "solePixels = [x, visible sole bottom y, lift in pixels]; ground y = visible y + lift * cos(30 degrees)",
+  "scope": "Boot sole landmarks and conservative recovery lift for the imported whole poses; no limb warp or physical-device visual approval.",
+  "directions": [
+    {
+      "direction": "down",
+      "revision": "r1",
+      "sourceStrip": "Art/Review/P1/directions/down/revisions/r1/strip.png",
+      "poses": [
+        {
+          "solePixels": [
+            [
+              115,
+              224,
+              0
+            ],
+            [
+              136,
+              224,
+              0
+            ]
+          ]
+        },
+        {
+          "solePixels": [
+            [
+              116,
+              222,
+              0
+            ],
+            [
+              136,
+              210,
+              0
+            ]
+          ]
+        },
+        {
+          "solePixels": [
+            [
+              112,
+              221,
+              0
+            ],
+            [
+              136,
+              210,
+              4
+            ]
+          ]
+        },
+        {
+          "solePixels": [
+            [
+              114,
+              218,
+              0
+            ],
+            [
+              134,
+              211,
+              8
+            ]
+          ]
+        },
+        {
+          "solePixels": [
+            [
+              115,
+              213,
+              0
+            ],
+            [
+              135,
+              224,
+              0
+            ]
+          ]
+        },
+        {
+          "solePixels": [
+            [
+              114,
+              206,
+              0
+            ],
+            [
+              134,
+              220,
+              0
+            ]
+          ]
+        },
+        {
+          "solePixels": [
+            [
+              116,
+              206,
+              4
+            ],
+            [
+              138,
+              219,
+              0
+            ]
+          ]
+        },
+        {
+          "solePixels": [
+            [
+              116,
+              207,
+              8
+            ],
+            [
+              136,
+              216,
+              0
+            ]
+          ]
+        },
+        {
+          "solePixels": [
+            [
+              115,
+              215,
+              0
+            ],
+            [
+              134,
+              207,
+              0
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "direction": "left",
+      "revision": "r1",
+      "sourceStrip": "Art/Review/P1/directions/left/revisions/r1/strip.png",
+      "poses": [
+        {
+          "solePixels": [
+            [
+              112,
+              224,
+              0
+            ],
+            [
+              131,
+              224,
+              0
+            ]
+          ]
+        },
+        {
+          "solePixels": [
+            [
+              106,
+              223,
+              0
+            ],
+            [
+              141,
+              221,
+              0
+            ]
+          ]
+        },
+        {
+          "solePixels": [
+            [
+              102,
+              224,
+              0
+            ],
+            [
+              143,
+              220,
+              4
+            ]
+          ]
+        },
+        {
+          "solePixels": [
+            [
+              118,
+              224,
+              0
+            ],
+            [
+              126,
+              211,
+              8
+            ]
+          ]
+        },
+        {
+          "solePixels": [
+            [
+              104,
+              223,
+              0
+            ],
+            [
+              151,
+              224,
+              0
+            ]
+          ]
+        },
+        {
+          "solePixels": [
+            [
+              152,
+              224,
+              0
+            ],
+            [
+              100,
+              223,
+              0
+            ]
+          ]
+        },
+        {
+          "solePixels": [
+            [
+              153,
+              217,
+              4
+            ],
+            [
+              107,
+              224,
+              0
+            ]
+          ]
+        },
+        {
+          "solePixels": [
+            [
+              122,
+              212,
+              8
+            ],
+            [
+              128,
+              224,
+              0
+            ]
+          ]
+        },
+        {
+          "solePixels": [
+            [
+              141,
+              222,
+              0
+            ],
+            [
+              104,
+              224,
+              0
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "direction": "up",
+      "revision": "r1",
+      "sourceStrip": "Art/Review/P1/directions/up/revisions/r1/strip.png",
+      "poses": [
+        {
+          "solePixels": [
+            [
+              116,
+              224,
+              0
+            ],
+            [
+              138,
+              224,
+              0
+            ]
+          ]
+        },
+        {
+          "solePixels": [
+            [
+              119,
+              206,
+              0
+            ],
+            [
+              138,
+              224,
+              0
+            ]
+          ]
+        },
+        {
+          "solePixels": [
+            [
+              120,
+              224,
+              0
+            ],
+            [
+              137,
+              216,
+              4
+            ]
+          ]
+        },
+        {
+          "solePixels": [
+            [
+              118,
+              224,
+              0
+            ],
+            [
+              136,
+              218,
+              8
+            ]
+          ]
+        },
+        {
+          "solePixels": [
+            [
+              118,
+              224,
+              0
+            ],
+            [
+              134,
+              212,
+              0
+            ]
+          ]
+        },
+        {
+          "solePixels": [
+            [
+              117,
+              223,
+              0
+            ],
+            [
+              136,
+              216,
+              0
+            ]
+          ]
+        },
+        {
+          "solePixels": [
+            [
+              116,
+              217,
+              4
+            ],
+            [
+              134,
+              223,
+              0
+            ]
+          ]
+        },
+        {
+          "solePixels": [
+            [
+              119,
+              215,
+              8
+            ],
+            [
+              136,
+              224,
+              0
+            ]
+          ]
+        },
+        {
+          "solePixels": [
+            [
+              119,
+              204,
+              0
+            ],
+            [
+              143,
+              224,
+              0
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "direction": "right",
+      "revision": "r1",
+      "sourceStrip": "Art/Review/P1/directions/right/revisions/r1/strip.png",
+      "poses": [
+        {
+          "solePixels": [
+            [
+              139,
+              224,
+              0
+            ],
+            [
+              121,
+              224,
+              0
+            ]
+          ]
+        },
+        {
+          "solePixels": [
+            [
+              148,
+              224,
+              0
+            ],
+            [
+              112,
+              222,
+              0
+            ]
+          ]
+        },
+        {
+          "solePixels": [
+            [
+              152,
+              224,
+              0
+            ],
+            [
+              111,
+              219,
+              4
+            ]
+          ]
+        },
+        {
+          "solePixels": [
+            [
+              137,
+              224,
+              0
+            ],
+            [
+              127,
+              211,
+              8
+            ]
+          ]
+        },
+        {
+          "solePixels": [
+            [
+              154,
+              223,
+              0
+            ],
+            [
+              104,
+              224,
+              0
+            ]
+          ]
+        },
+        {
+          "solePixels": [
+            [
+              103,
+              223,
+              0
+            ],
+            [
+              156,
+              223,
+              0
+            ]
+          ]
+        },
+        {
+          "solePixels": [
+            [
+              101,
+              217,
+              4
+            ],
+            [
+              147,
+              224,
+              0
+            ]
+          ]
+        },
+        {
+          "solePixels": [
+            [
+              132,
+              212,
+              8
+            ],
+            [
+              137,
+              224,
+              0
+            ]
+          ]
+        },
+        {
+          "solePixels": [
+            [
+              112,
+              222,
+              0
+            ],
+            [
+              150,
+              224,
+              0
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "direction": "down-right",
+      "revision": "loop-r1",
+      "sourceStrip": "Art/Review/P1/directions/down-right/revisions/loop-r1/strip.png",
+      "poses": [
+        {
+          "solePixels": [
+            [
+              150,
+              211,
+              0
+            ],
+            [
+              134,
+              224,
+              0
+            ]
+          ]
+        },
+        {
+          "solePixels": [
+            [
+              176,
+              224,
+              0
+            ],
+            [
+              139,
+              211,
+              0
+            ]
+          ]
+        },
+        {
+          "solePixels": [
+            [
+              166,
+              224,
+              0
+            ],
+            [
+              136,
+              208,
+              4
+            ]
+          ]
+        },
+        {
+          "solePixels": [
+            [
+              155,
+              224,
+              0
+            ],
+            [
+              145,
+              214,
+              8
+            ]
+          ]
+        },
+        {
+          "solePixels": [
+            [
+              172,
+              224,
+              0
+            ],
+            [
+              130,
+              217,
+              0
+            ]
+          ]
+        },
+        {
+          "solePixels": [
+            [
+              120,
+              217,
+              0
+            ],
+            [
+              169,
+              224,
+              0
+            ]
+          ]
+        },
+        {
+          "solePixels": [
+            [
+              130,
+              212,
+              4
+            ],
+            [
+              182,
+              224,
+              0
+            ]
+          ]
+        },
+        {
+          "solePixels": [
+            [
+              144,
+              214,
+              8
+            ],
+            [
+              155,
+              224,
+              0
+            ]
+          ]
+        },
+        {
+          "solePixels": [
+            [
+              137,
+              209,
+              0
+            ],
+            [
+              168,
+              224,
+              0
+            ]
+          ]
+        }
+      ],
+      "loopRepairFootUpdate": {
+        "previousFrame08": [
+          [
+            139,
+            213,
+            0
+          ],
+          [
+            171,
+            224,
+            0
+          ]
+        ],
+        "currentFrame08": [
+          [
+            137,
+            209,
+            0
+          ],
+          [
+            168,
+            224,
+            0
+          ]
+        ],
+        "method": "Registered opaque boot sole centroid over the lowest three rows, measured separately in the two boot regions; zero conservative late-swing lift preserved",
+        "groundLineUnchangedButFootPositionsUpdated": true
+      }
+    },
+    {
+      "direction": "down-left",
+      "revision": "loop-r1",
+      "sourceStrip": "Art/Review/P1/directions/down-left/revisions/loop-r1/strip.png",
+      "poses": [
+        {
+          "solePixels": [
+            [
+              88,
+              214,
+              0
+            ],
+            [
+              120,
+              224,
+              0
+            ]
+          ]
+        },
+        {
+          "solePixels": [
+            [
+              79,
+              224,
+              0
+            ],
+            [
+              116,
+              211,
+              0
+            ]
+          ]
+        },
+        {
+          "solePixels": [
+            [
+              84,
+              224,
+              0
+            ],
+            [
+              117,
+              207,
+              4
+            ]
+          ]
+        },
+        {
+          "solePixels": [
+            [
+              90,
+              224,
+              0
+            ],
+            [
+              104,
+              222,
+              8
+            ]
+          ]
+        },
+        {
+          "solePixels": [
+            [
+              78,
+              224,
+              0
+            ],
+            [
+              118,
+              216,
+              0
+            ]
+          ]
+        },
+        {
+          "solePixels": [
+            [
+              123,
+              216,
+              0
+            ],
+            [
+              75,
+              224,
+              0
+            ]
+          ]
+        },
+        {
+          "solePixels": [
+            [
+              118,
+              212,
+              4
+            ],
+            [
+              64,
+              224,
+              0
+            ]
+          ]
+        },
+        {
+          "solePixels": [
+            [
+              111,
+              216,
+              8
+            ],
+            [
+              96,
+              224,
+              0
+            ]
+          ]
+        },
+        {
+          "solePixels": [
+            [
+              113,
+              212,
+              0
+            ],
+            [
+              83,
+              224,
+              0
+            ]
+          ]
+        }
+      ],
+      "loopRepairFootUpdate": {
+        "previousFrame08": [
+          [
+            117,
+            212,
+            0
+          ],
+          [
+            84,
+            224,
+            0
+          ]
+        ],
+        "currentFrame08": [
+          [
+            113,
+            212,
+            0
+          ],
+          [
+            83,
+            224,
+            0
+          ]
+        ],
+        "method": "Registered opaque boot sole centroid over the lowest three rows, measured separately in the two boot regions; zero conservative late-swing lift preserved",
+        "groundLineUnchangedButFootPositionsUpdated": true
+      }
+    },
+    {
+      "direction": "up-left",
+      "revision": "contact-r1",
+      "sourceStrip": "Art/Review/P1/directions/up-left/revisions/contact-r1/strip.png",
+      "poses": [
+        {
+          "solePixels": [
+            [
+              137,
+              216,
+              0
+            ],
+            [
+              114,
+              224,
+              0
+            ]
+          ]
+        },
+        {
+          "solePixels": [
+            [
+              139,
+              224,
+              0
+            ],
+            [
+              112,
+              211,
+              0
+            ]
+          ]
+        },
+        {
+          "solePixels": [
+            [
+              142,
+              224,
+              0
+            ],
+            [
+              110,
+              216,
+              8
+            ]
+          ]
+        },
+        {
+          "solePixels": [
+            [
+              128,
+              224,
+              8
+            ],
+            [
+              121,
+              224,
+              0
+            ]
+          ]
+        },
+        {
+          "solePixels": [
+            [
+              130,
+              224,
+              0
+            ],
+            [
+              117,
+              220,
+              0
+            ]
+          ]
+        },
+        {
+          "solePixels": [
+            [
+              119,
+              221,
+              0
+            ],
+            [
+              131,
+              223,
+              0
+            ]
+          ]
+        },
+        {
+          "solePixels": [
+            [
+              125,
+              221,
+              4
+            ],
+            [
+              138,
+              223,
+              0
+            ]
+          ]
+        },
+        {
+          "solePixels": [
+            [
+              127,
+              224,
+              8
+            ],
+            [
+              137,
+              224,
+              0
+            ]
+          ]
+        },
+        {
+          "solePixels": [
+            [
+              111,
+              213,
+              0
+            ],
+            [
+              139,
+              224,
+              0
+            ]
+          ]
+        }
+      ],
+      "loopRepairFootUpdate": {
+        "previousFrame08": [
+          [
+            101,
+            212,
+            0
+          ],
+          [
+            138,
+            224,
+            0
+          ]
+        ],
+        "currentFrame08": [
+          [
+            111,
+            213,
+            0
+          ],
+          [
+            139,
+            224,
+            0
+          ]
+        ],
+        "method": "Registered opaque boot sole centroid over the lowest three rows, measured separately in the two boot regions; zero conservative late-swing lift preserved",
+        "groundLineUnchangedButFootPositionsUpdated": true
+      },
+      "contactRepairFootUpdate": {
+        "frame": 2,
+        "previous": [
+          [
+            140,
+            219,
+            4
+          ],
+          [
+            116,
+            224,
+            0
+          ]
+        ],
+        "current": [
+          [
+            142,
+            224,
+            0
+          ],
+          [
+            110,
+            216,
+            8
+          ]
+        ],
+        "measurement": "Art/Review/P1/directions/up-left/revisions/contact-r1/sole-measurements.json",
+        "method": "Boot last visible alpha row + 1 gives the boundary used by existing runtime metadata; screen-right support stays y224 with zero lift; descending screen-left sole boundary is y216 with conservative 8px lift. Ground y = 216 + 8*cos(30deg), near the support baseline. Other poses retain their existing landmarks."
+      }
+    },
+    {
+      "direction": "up-right",
+      "revision": "loop-r2",
+      "sourceStrip": "Art/Review/P1/directions/up-right/revisions/loop-r2/strip.png",
+      "poses": [
+        {
+          "solePixels": [
+            [
+              120,
+              216,
+              0
+            ],
+            [
+              144,
+              224,
+              0
+            ]
+          ]
+        },
+        {
+          "solePixels": [
+            [
+              120,
+              224,
+              0
+            ],
+            [
+              145,
+              211,
+              0
+            ]
+          ]
+        },
+        {
+          "solePixels": [
+            [
+              117,
+              219,
+              4
+            ],
+            [
+              140,
+              223,
+              0
+            ]
+          ]
+        },
+        {
+          "solePixels": [
+            [
+              130,
+              224,
+              8
+            ],
+            [
+              136,
+              224,
+              0
+            ]
+          ]
+        },
+        {
+          "solePixels": [
+            [
+              126,
+              224,
+              0
+            ],
+            [
+              140,
+              220,
+              0
+            ]
+          ]
+        },
+        {
+          "solePixels": [
+            [
+              138,
+              221,
+              0
+            ],
+            [
+              124,
+              224,
+              0
+            ]
+          ]
+        },
+        {
+          "solePixels": [
+            [
+              132,
+              222,
+              4
+            ],
+            [
+              120,
+              224,
+              0
+            ]
+          ]
+        },
+        {
+          "solePixels": [
+            [
+              131,
+              223,
+              8
+            ],
+            [
+              120,
+              224,
+              0
+            ]
+          ]
+        },
+        {
+          "solePixels": [
+            [
+              145,
+              214,
+              0
+            ],
+            [
+              119,
+              224,
+              0
+            ]
+          ]
+        }
+      ],
+      "loopRepairFootUpdate": {
+        "previousFrame08": [
+          [
+            155,
+            211,
+            0
+          ],
+          [
+            116,
+            224,
+            0
+          ]
+        ],
+        "currentFrame08": [
+          [
+            145,
+            214,
+            0
+          ],
+          [
+            119,
+            224,
+            0
+          ]
+        ],
+        "method": "Registered opaque boot sole centroid over the lowest three rows, measured separately in the two boot regions; zero conservative late-swing lift preserved",
+        "groundLineUnchangedButFootPositionsUpdated": true
+      }
+    }
+  ],
+  "authoring": "Build35 footprints retained for all unchanged poses. Repaired diagonal frame08 soles are remeasured from the final registered artwork; unchanged overall sole line does not imply unchanged individual foot coordinates."
+}
