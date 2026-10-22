@@ -1,5 +1,9 @@
 # 林间行旅迭代进度 · 2026-10-19
 
+## 2026-10-22 · 动图必须实际送达，提醒置顶并补发浏览器链接
+
+用户再次反馈聊天里没有看到动图，要求把提醒写进GitHub中经常读取的位置。已将“最终回复实际附正常速全身GIF＋浏览器HTTPS直链、发送前重读并验证链接、显示失败立即补直链”的规则置于AGENTS.md和人物审核说明顶部。补传当前向左中性人体walk-120ms.gif及站姿到开发分支；GIF核对为8帧、每帧120ms、循环播放。仅补交付与协作规则，没有修改美术像素、运行资源或认可状态。动图SHA-256：6881b9fded8f87621fc890518d1030ad958ac5fc575e7963453c048f84a24e57。
+
 **2026-10-19 最新进展：战场静态样板与独立环境四层重组已获认可；[向右侧视待机中性人体 r2](../Art/Templates/P1-Neutral/battle-side/right-idle-r2/README.md)的姿态与近侧右手方向已获认可。[隐藏人体底层 v2](../Art/Templates/P1-Neutral/battle-side/right-idle-parts-v2/README.md)已修复八层像素归属，静态重组与 r2 逐像素一致；肩髋四个局部根部窗口的小位移覆盖检查通过。整段肢体平移会改变外轮廓，因此全动作接缝、完整隐藏人体与运行时接入仍未完成。向下正手垂剑 v5 的单帧认可保留；[强击 × 训练短剑首组特效](../Art/Effects/P1-Boardgame/heavyStrike-trainingSword-v1/README.md)正常速度原型仍待独立审美审核。**
 
 最近通过完整 iPad UI 套件的正式基线仍为 [1.6.3 build 28](../Downloads/README.md)。最新布局／战场试验包为 [1.6.7 build32](../Downloads/MeadowJourney-build32.json)：新增 Meadow 营地战场层级，4 项原生和 2 项 iPad UI 专项检查通过；完整步态套件未重跑。专项测试使用 iPad Pro 13-inch（M4）模拟器、iOS 17.5／Xcode 15.4；未连接用户的物理 iPad。
