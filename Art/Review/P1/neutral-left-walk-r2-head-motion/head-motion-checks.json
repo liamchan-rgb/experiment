@@ -1,0 +1,220 @@
+{
+  "frames": [
+    {
+      "frame": 0,
+      "changedPixels": 0,
+      "outsideHeadNeck": 0,
+      "headNeckConnected": true
+    },
+    {
+      "frame": 1,
+      "changedPixels": 0,
+      "outsideHeadNeck": 0,
+      "headNeckConnected": true
+    },
+    {
+      "frame": 2,
+      "changedPixels": 1670,
+      "outsideHeadNeck": 0,
+      "headNeckConnected": true
+    },
+    {
+      "frame": 3,
+      "changedPixels": 0,
+      "outsideHeadNeck": 0,
+      "headNeckConnected": true
+    },
+    {
+      "frame": 4,
+      "changedPixels": 1659,
+      "outsideHeadNeck": 0,
+      "headNeckConnected": true
+    },
+    {
+      "frame": 5,
+      "changedPixels": 0,
+      "outsideHeadNeck": 0,
+      "headNeckConnected": true
+    },
+    {
+      "frame": 6,
+      "changedPixels": 1670,
+      "outsideHeadNeck": 0,
+      "headNeckConnected": true
+    },
+    {
+      "frame": 7,
+      "changedPixels": 0,
+      "outsideHeadNeck": 0,
+      "headNeckConnected": true
+    },
+    {
+      "frame": 8,
+      "changedPixels": 1659,
+      "outsideHeadNeck": 0,
+      "headNeckConnected": true
+    }
+  ],
+  "poseAndTimingOutsideHeadPreserved": true,
+  "futureHeadLocalAttachmentsUseSameAffine": true,
+  "reexportFiles": 99,
+  "reexportByteDifferences": 0,
+  "headMotion": {
+    "pivot": [
+      125,
+      129
+    ],
+    "angleDeg": [
+      0,
+      0.6,
+      1,
+      0,
+      -0.6,
+      0.6,
+      1,
+      0,
+      -0.6
+    ],
+    "translation": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        -1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        -1
+      ]
+    ],
+    "neckUnderlap": "source/neck-underlap.png",
+    "reason": "User requested slight natural head movement instead of a frozen head; compress on support02/06, rise on late swing04/08; retain shared head shape and neck pivot.",
+    "neckUnderlapAuthoring": {
+      "source": "source/00.png; registered row129 on existing neck",
+      "sourcePixels": [
+        [
+          120,
+          129
+        ],
+        [
+          121,
+          129
+        ],
+        [
+          122,
+          129
+        ],
+        [
+          123,
+          129
+        ],
+        [
+          124,
+          129
+        ],
+        [
+          125,
+          129
+        ],
+        [
+          126,
+          129
+        ],
+        [
+          127,
+          129
+        ],
+        [
+          128,
+          129
+        ],
+        [
+          129,
+          129
+        ]
+      ],
+      "targetPixels": [
+        [
+          120,
+          128
+        ],
+        [
+          121,
+          128
+        ],
+        [
+          122,
+          128
+        ],
+        [
+          123,
+          128
+        ],
+        [
+          124,
+          128
+        ],
+        [
+          125,
+          128
+        ],
+        [
+          126,
+          128
+        ],
+        [
+          127,
+          128
+        ],
+        [
+          128,
+          128
+        ],
+        [
+          129,
+          128
+        ]
+      ],
+      "rule": "fixed copy of existing opaque neck pixels one row upward, entirely behind opaque idle head; no painting or alpha-fit",
+      "newDrawing": false
+    },
+    "sourceDiscardPixels": [
+      [
+        80,
+        72
+      ],
+      [
+        81,
+        74
+      ]
+    ],
+    "registrationCleanup": "Two alpha1 black registration-gutter fragments outside the head removed before motion, so they cannot orbit with the head. Visible figure pixels retained."
+  },
+  "artApproval": null
+}
