@@ -1,5 +1,5 @@
 {
-  "status": "technical-composition-verified-visual-review-separate",
+  "status": "historical-technical-evidence-user-rejected-art",
   "artApproval": null,
   "actualCompositorPoses": 18,
   "semanticLayers": 144,
@@ -464,5 +464,17 @@
   "reexport": {
     "files": 216,
     "byteIdentical": true
+  },
+  "userRejection": {
+    "date": "2026-10-23",
+    "status": "user-rejected",
+    "statements": [
+      "\u8fd9\u8d70\u8d77\u6765\u624b\u90fd\u8981\u5265\u79bb\u8eab\u4f53\u4e86",
+      "\u817f\u90e8\u4e5f\u662f\u5728\u75af\u72c2\u95ea\u70c1"
+    ],
+    "artApproval": null,
+    "previousInternalArtPassWithdrawn": true,
+    "rootCause": "Per-frame independent limb shapes, incorrect same-side ownership and unstable joint lengths; whole-character alpha connectivity missed broken individual limbs.",
+    "replacement": "neutral-upper-diagonals-r2"
   }
 }

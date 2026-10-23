@@ -3,8 +3,8 @@
   "format": 3,
   "updated": "2026-10-23",
   "workflow": "Review one direction at a time from fixed cardinal and diagonal baselines. Modify and resubmit the same direction until explicit user artwork approval, then advance. Record provenance, feedback and accepted revisions for the future character template.",
-  "current": "p1-neutral-upper-diagonals-v1",
-  "templateStatus": "Left v2 displayed outfits accepted within recorded scope; simultaneous up-left/up-right neutral idle/walk candidates await user art review.",
+  "current": "p1-neutral-upper-diagonals-r2-fixed-limbs",
+  "templateStatus": "Upper diagonal r1 rejected for detached hands and flickering legs; r2 fixed-source continuous-limb candidate awaits user art review.",
   "items": [
     {
       "id": "01-down-idle",
@@ -2528,34 +2528,79 @@
     "ipaBuilt": false
   },
   "upperDiagonalNeutralReview": {
-    "id": "p1-neutral-upper-diagonals-v1",
-    "status": "candidate-awaiting-user-art-review",
+    "id": "p1-neutral-upper-diagonals-r2-fixed-limbs",
+    "status": "repair-candidate-awaiting-user-art-review",
+    "artApproval": null,
     "directions": [
       "up-left",
       "up-right"
     ],
-    "artApproval": null,
-    "scope": "Simultaneous neutral bodies, semantic layers and basic idle/walk coverage. New directions require review; no automatic appearance or runtime approval.",
-    "mainReview": "Root personally inspected all actual 1x/2x full-body frames and ordered 01-08-01 sequence. Viewer renders GIF as still, so continuous playback was not claimed.",
-    "artifacts": {
-      "normalGif": "Art/Review/P1/neutral-upper-diagonals-v1/walk-comparison-120ms.gif",
-      "idle": "Art/Review/P1/neutral-upper-diagonals-v1/idle-comparison-2x.png",
-      "validation": "Art/Review/P1/neutral-upper-diagonals-v1/validation.json"
-    },
+    "rejectedPredecessor": "p1-neutral-upper-diagonals-v1",
+    "method": "Fixed arm/hand source transform, fixed whole-leg skin with monotone row mesh and projected constant sagittal chains",
+    "mainReview": "Root actual full-body 1x/2x all 18 poses and 01-08-01 ordered sequence; no continuous player playback claimed by still-only viewer",
     "technical": {
-      "directions": 2,
-      "poses": 18,
-      "layers": 144,
-      "headLocalChecks": 18,
+      "actualCompositorPoses": 18,
+      "wristContacts": 36,
+      "wholeSameSideLegs": 36,
+      "shoulderHipAttachments": 72,
       "soleMarkers": 36,
+      "constantBoneChains": 16,
+      "byteIdenticalReexportedFiles": 198,
       "contractTests": 26,
-      "compositorTests": 21,
-      "reexportedFiles": 216,
-      "byteIdenticalReexport": true
+      "compositorTests": 21
     },
+    "artifacts": {
+      "normalGif": "Art/Review/P1/neutral-upper-diagonals-r2/walk-comparison-120ms.gif",
+      "idle": "Art/Review/P1/neutral-upper-diagonals-r2/idle-comparison-2x.png",
+      "artReview": "Art/Review/P1/neutral-upper-diagonals-r2/art-review.md",
+      "validation": "Art/Review/P1/neutral-upper-diagonals-r2/validation.json"
+    },
+    "runtimeIntegrated": false,
     "limits": [
-      "neutral visible idle/walk candidate only",
-      "no appearance combinations/start-stop/runtime approval"
+      "User art approval pending",
+      "Idle/walk neutral only",
+      "No apparel combinations, start-stop, hidden anatomy or device approval"
     ]
-  }
+  },
+  "upperDiagonalNeutralHistory": [
+    {
+      "id": "p1-neutral-upper-diagonals-v1",
+      "status": "user-rejected-art",
+      "directions": [
+        "up-left",
+        "up-right"
+      ],
+      "artApproval": null,
+      "scope": "Simultaneous neutral bodies, semantic layers and basic idle/walk coverage. New directions require review; no automatic appearance or runtime approval.",
+      "mainReview": "Root personally inspected all actual 1x/2x full-body frames and ordered 01-08-01 sequence. Viewer renders GIF as still, so continuous playback was not claimed.",
+      "artifacts": {
+        "normalGif": "Art/Review/P1/neutral-upper-diagonals-v1/walk-comparison-120ms.gif",
+        "idle": "Art/Review/P1/neutral-upper-diagonals-v1/idle-comparison-2x.png",
+        "validation": "Art/Review/P1/neutral-upper-diagonals-v1/validation.json"
+      },
+      "technical": {
+        "directions": 2,
+        "poses": 18,
+        "layers": 144,
+        "headLocalChecks": 18,
+        "soleMarkers": 36,
+        "contractTests": 26,
+        "compositorTests": 21,
+        "reexportedFiles": 216,
+        "byteIdenticalReexport": true
+      },
+      "limits": [
+        "neutral visible idle/walk candidate only",
+        "no appearance combinations/start-stop/runtime approval"
+      ],
+      "internalArtPassWithdrawn": true,
+      "userFeedback": {
+        "date": "2026-10-23",
+        "statements": [
+          "这走起来手都要剥离身体了",
+          "腿部也是在疯狂闪烁"
+        ]
+      }
+    }
+  ]
 }

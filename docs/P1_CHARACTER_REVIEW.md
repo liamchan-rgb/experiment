@@ -9,9 +9,13 @@
 - 用户于2026-10-22明确要求：智能体画的效果有问题，由主线程自己修，并同步到GitHub提示词。
 
 
-## 当前候选：左上／右上共同中性底模
+## 当前返修：左上／右上手臂与腿部r2
 
-按用户明确授权同时制作两个方向，每方向idle00+walk01–08。主线程已修复辅助源稿／分层的相位、躯干孔洞、跨背手臂及落脚问题，并检查最终实际装配1×/2×全身和全部帧序列。[正常120ms同屏GIF](../Art/Review/P1/neutral-upper-diagonals-v1/walk-comparison-120ms.gif)、[站姿](../Art/Review/P1/neutral-upper-diagonals-v1/idle-comparison-2x.png)、[主线程修订依据](../Art/Review/P1/neutral-upper-diagonals-v1/art-review.md)。新方向用户认可为空，独立外观/隐藏解剖/起停尚不在本轮完成范围。每次交付仍须实际附正常GIF和已验证HTTPS浏览器直链，不能凭智能体结论发图。
+用户指出旧r1脱手、腿闪烁，主线程撤回内部美术通过。r2改为固定源整腿的连续单调网格变形、固定骨长投影和臂手共用肩矩阵，逐侧核对关节及近远遮挡，不再只检查整身连通。[正常同屏GIF](../Art/Review/P1/neutral-upper-diagonals-r2/walk-comparison-120ms.gif)、[站姿](../Art/Review/P1/neutral-upper-diagonals-r2/idle-comparison-2x.png)、[具体漏检与返修](../Art/Review/P1/neutral-upper-diagonals-r2/art-review.md)。主线程亲自检查最终1×/2×全身全部姿势，GIF为8×120ms；新候选仍待用户美术审核，不扩大到App。每次必须实际附GIF及验证过的HTTPS直链。
+
+## 已判退：左上／右上共同中性底模r1（内部通过撤回）
+
+按用户明确授权同时制作两个方向，每方向idle00+walk01–08。主线程已修复辅助源稿／分层的相位、躯干孔洞、跨背手臂及落脚问题，并检查最终实际装配1×/2×全身和全部帧序列。[正常120ms同屏GIF](../Art/Review/P1/neutral-upper-diagonals-v1/walk-comparison-120ms.gif)、[站姿](../Art/Review/P1/neutral-upper-diagonals-v1/idle-comparison-2x.png)、[主线程修订依据](../Art/Review/P1/neutral-upper-diagonals-v1/art-review.md)。用户判退脱手与腿闪烁；原稿和技术记录保留，当前由主线程另存r2返修。独立外观/隐藏解剖/起停尚未完成。每次交付仍须实际附正常GIF和已验证HTTPS浏览器直链，不能凭智能体结论发图。
 
 ## 上一项：向左衣物 v2（展示已认可）
 
