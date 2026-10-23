@@ -2962,6 +2962,8 @@
       "New wardrobe has no user approval",
       "Original hidden anatomy not completed",
       "Specified start/stop paths only"
-    ]
+    ],
+    "artCommit": "719789d83e61466fafd19cdb9c01294001235807",
+    "delivery": "Art/Review/P1/modular-upper-wardrobe-v1/delivery.json"
   }
 }

@@ -10,3 +10,11 @@
 各方向/衣型目录包含全部13帧与1×/2×整身联系表。combinations/保存16种组合的208张实际装配结果。rejected-first-assembly/保留内部判退首稿，不作为最终预览。
 
 主线程亲自修复与逐帧检查，未使用智能体；当前查看器不能连续播放，未声称播放器验收。新外观未获用户认可，未接入App或打包IPA。
+
+## 已验证浏览器直链
+
+- [outfits-walk-120ms.gif](https://raw.githubusercontent.com/liamchan-rgb/experiment/719789d83e61466fafd19cdb9c01294001235807/Art/Review/P1/modular-upper-wardrobe-v1/outfits-walk-120ms.gif)
+- [outfits-start-stop-120ms.gif](https://raw.githubusercontent.com/liamchan-rgb/experiment/719789d83e61466fafd19cdb9c01294001235807/Art/Review/P1/modular-upper-wardrobe-v1/outfits-start-stop-120ms.gif)
+- [outfits-idle-2x.png](https://raw.githubusercontent.com/liamchan-rgb/experiment/719789d83e61466fafd19cdb9c01294001235807/Art/Review/P1/modular-upper-wardrobe-v1/outfits-idle-2x.png)
+
+三份文件HTTP200、MIME及哈希与本地一致，GIF时序与循环标志一致，见delivery.json。美术提交 `719789d83e61466fafd19cdb9c01294001235807`。
