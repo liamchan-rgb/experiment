@@ -1,5 +1,10 @@
 # 林间行旅迭代进度 · 2026-10-19
 
+## 2026-10-23 · 上斜起停展示获准继续，开始独立外观挂载
+
+用户回复“开始下一项”。记录对已展示左右上斜整身/正常步行及指定起停路径的认可并绑定交付哈希，不扩大到任意步相中断、隐藏解剖或新衣物。本轮由主线程独自制作、修复与审核上斜独立衣物、发型和背负装备；同一人体/步态保留，逐帧检查衣物覆盖、手脚边界、镜像语义与光照，再交付正常速度GIF和HTTPS直链。无App/实机/IPA范围。
+
+
 ## 2026-10-23 · 左上／右上r6指定起停过渡
 
 美术提交 `53e3a9b2077a1f218c21ecc1ac7f2d849a31b536` 已发布；[正常同屏起停GIF直链](https://raw.githubusercontent.com/liamchan-rgb/experiment/53e3a9b2077a1f218c21ecc1ac7f2d849a31b536/Art/Review/P1/neutral-upper-transitions-r6/start-stop-120ms.gif)、原行走GIF、站姿及两个方向单独起停GIF共五份交付实测HTTP200、MIME/哈希/时序一致，见 `Art/Review/P1/neutral-upper-transitions-r6/delivery.json`。
