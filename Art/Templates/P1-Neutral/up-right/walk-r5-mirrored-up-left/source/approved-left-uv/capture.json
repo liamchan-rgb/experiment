@@ -1,0 +1,12 @@
+{
+  "sourceTemplate": "Art/Templates/P1-Neutral/up-left/walk-r5-coupled-clothing",
+  "sourceManifestSHA256": "5fcbe815e964a50dd82c3f4ec83f5c88371b61fc51ff8ee27e48523797b188e4",
+  "frames": 9,
+  "sourcePixelsUnchanged": true,
+  "uvChannels": {
+    "R": "source x pixel centre",
+    "G": "source y pixel centre",
+    "A": "valid coordinate"
+  },
+  "sampling": "nearest identical to approved offline exporter"
+}

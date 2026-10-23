@@ -9,9 +9,13 @@
 - 用户于2026-10-22明确要求：智能体画的效果有问题，由主线程自己修，并同步到GitHub提示词。
 
 
-## 左上r5展示已认可；讨论右上镜像复用
+## 当前候选：右上r5镜像试版
 
-用户要求先修左上，右上暂缓。r4再次被指出拼接痕、运动间隙、残边和腿动裤子不动；主线程独自返修并审核，未使用智能体。r5独立短裤源，裤腰随骨盆、两裤口随各自大腿，肩/腰/裤口采用一致连接变形；恢复原稿宽上腿根，排除串入的肢体边线，并修近侧手的前后遮挡。见[正常120ms动图](../Art/Review/P1/neutral-up-left-r5/walk-120ms.gif)、[站姿](../Art/Review/P1/neutral-up-left-r5/idle-review-2x.png)、[具体修复及审核范围](../Art/Review/P1/neutral-up-left-r5/art-review.md)。主线程看最终1×/2×全身九姿势及首尾序列，当前工具不能连续播放，不将此写为连续播放器验收。用户已以“可以的”认可交付的左上r5整身站姿与正常步态，范围见[approval.json](../Art/Review/P1/neutral-up-left-r5/approval.json)。用户随后询问右上是否可镜像复用；此项仅为方案讨论，尚无右上新图或认可。
+用户明确授权开始右上镜像制作，由主线程独自完成及检查。基于已认可的左上r5逐层反射，交换左右语义、关节/支撑脚/脚底标记、近远遮挡与头部局部坐标；保持裤子跟随、接缝与手部效果。使用单一工具光照参考作固定源颜色绑定，校回左上光源，所有alpha和动作轮廓仍精确镜像认可版。见[正常动图](../Art/Review/P1/neutral-up-right-r5-mirror/walk-120ms.gif)、[站姿](../Art/Review/P1/neutral-up-right-r5-mirror/idle-review-2x.png)、[主线程检查](../Art/Review/P1/neutral-up-right-r5-mirror/art-review.md)。已看完整1×/2×整身九帧和首尾关系，工具不能连续播放，不声称实际观看连续播放器。新右上用户认可为空，左上原认可保持。
+
+## 已认可参考：左上r5展示
+
+用户要求先修左上，右上暂缓。r4再次被指出拼接痕、运动间隙、残边和腿动裤子不动；主线程独自返修并审核，未使用智能体。r5独立短裤源，裤腰随骨盆、两裤口随各自大腿，肩/腰/裤口采用一致连接变形；恢复原稿宽上腿根，排除串入的肢体边线，并修近侧手的前后遮挡。见[正常120ms动图](../Art/Review/P1/neutral-up-left-r5/walk-120ms.gif)、[站姿](../Art/Review/P1/neutral-up-left-r5/idle-review-2x.png)、[具体修复及审核范围](../Art/Review/P1/neutral-up-left-r5/art-review.md)。主线程看最终1×/2×全身九姿势及首尾序列，当前工具不能连续播放，不将此写为连续播放器验收。用户已以“可以的”认可交付的左上r5整身站姿与正常步态，范围见[approval.json](../Art/Review/P1/neutral-up-left-r5/approval.json)。用户随后明确授权开始右上镜像制作，现候选见上；左上的认可不自动扩大到右上。
 
 ## 已判退：上斜r4，拼接与短裤动作仍有问题
 
