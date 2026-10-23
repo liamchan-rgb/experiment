@@ -2,13 +2,15 @@
 
 ## 2026-10-23 · 仅左上r5：修连接裂缝/残边，短裤随骨盆和两侧腿运动
 
+美术提交 `a691986d986e96822903edb642bf875aa20b2655` 已发布。[正常动图直链](https://raw.githubusercontent.com/liamchan-rgb/experiment/a691986d986e96822903edb642bf875aa20b2655/Art/Review/P1/neutral-up-left-r5/walk-120ms.gif)与站姿均实测HTTP200、MIME/哈希一致；GIF为8×120ms无限循环。浏览器交付回执见 `Art/Review/P1/neutral-up-left-r5/delivery.json`。
+
 用户指出r4仍有拼接痕、运动间隙、左上残边，且腿动裤子不动，并要求先修左上。撤回r4内部修好结论，右上暂缓；本轮由主线程独自修复和审核，无智能体。
 
 根因复查：r4的pelvis源为空，短裤仍合在torso里；腿根从178行裁窄，肩口/裤口与肢体使用不同变形域，源区域还混有相邻肢体外缘。现独立短裤源，裤腰随骨盆，左右裤口跟随对应上腿；连接区域共用变形域，恢复更宽的原稿上腿根，清掉躯干/手里混入的边线。再修近侧手在首尾被短裤遮去部分像素的问题，保留肩部衣物覆盖和近远层次。
 
 主线程检查最终1×/2×全身九姿势及01→08→01顺序。当前查看器只显示GIF静帧，未宣称实际观看连续播放器；用户美术认可为空。公共装配九姿势逐像素一致，肩/髋源区域对照新增透明缺口0，72层无游离分量，18次臂手分区组合无像素差，九帧近侧手完整，八个短裤帧均独立变化；174份源/输出重导逐字节相同，契约26项、装配21项通过。隐藏源切口若被衣物完整覆盖不视为可见裂缝，但不将其称为完整隐藏人体。
 
-[正常8×120ms动图](../Art/Review/P1/neutral-up-left-r5/walk-120ms.gif)、[站姿](../Art/Review/P1/neutral-up-left-r5/idle-review-2x.png)、[主线程修复记录](../Art/Review/P1/neutral-up-left-r5/art-review.md)、[技术检查](../Art/Review/P1/neutral-up-left-r5/validation.json)。右上素材未变，公共运行装配器未变，没有App/设备/IPA工作。发布后验证HTTPS直链并记回执。
+[正常8×120ms动图](../Art/Review/P1/neutral-up-left-r5/walk-120ms.gif)、[站姿](../Art/Review/P1/neutral-up-left-r5/idle-review-2x.png)、[主线程修复记录](../Art/Review/P1/neutral-up-left-r5/art-review.md)、[技术检查](../Art/Review/P1/neutral-up-left-r5/validation.json)。右上素材未变，公共运行装配器未变，没有App/设备/IPA工作。HTTPS直链已验证并记录回执。
 
 
 ## 2026-10-23 · 上斜r4：主线程重做髋关节与连续轮廓，清理衣物/肢体归属
