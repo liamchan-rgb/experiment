@@ -4,7 +4,7 @@
   "updated": "2026-10-23",
   "workflow": "Review one direction at a time from fixed cardinal and diagonal baselines. Modify and resubmit the same direction until explicit user artwork approval, then advance. Record provenance, feedback and accepted revisions for the future character template.",
   "current": "p1-neutral-up-left-walk-r5-coupled-clothing",
-  "templateStatus": "Up-left r5 main-only seam/edge and articulated shorts repair candidate. User artwork approval is null; up-right remains deferred at rejected r4.",
+  "templateStatus": "User approved presented up-left r5 neutral full-body idle/walk. Up-right mirror-based reuse is being discussed; no up-right art approval.",
   "items": [
     {
       "id": "01-down-idle",
@@ -2529,8 +2529,20 @@
   },
   "upperDiagonalNeutralReview": {
     "id": "p1-neutral-up-left-walk-r5-coupled-clothing",
-    "status": "main-only-up-left-repair-candidate",
-    "artApproval": null,
+    "status": "user-approved-presented-up-left-r5",
+    "artApproval": {
+      "date": "2026-10-23",
+      "reviewer": "user",
+      "statement": "可以的，我在想右上的动作可以基于这个来镜像吗",
+      "status": "approved",
+      "scope": "Presented up-left r5 neutral full-body standing appearance and normal walking loop only. Excludes hidden complete anatomy, new outfits, start-stop, up-right and App/device/IPA integration.",
+      "sourceCommit": "a691986d986e96822903edb642bf875aa20b2655",
+      "artifacts": {
+        "walk-120ms.gif": "a1960994b1116ceaa89aac171c95c5ce04999ca799cdf0815a19190d6a00be22",
+        "idle-review-2x.png": "313c8b8dc43e18e56c64d3c51ce02a54e05cba53ecf29a77b693f4c0609d9649"
+      },
+      "nextDiscussion": "User asks whether up-right can be mirrored from this approved up-left version; no up-right artwork acceptance or new up-right asset is implied."
+    },
     "directions": [
       "up-left"
     ],
@@ -2564,10 +2576,15 @@
     "runtimeIntegrated": false,
     "ipaBuilt": false,
     "limits": [
-      "Up-left only; no up-right repair or approval",
-      "No continuous-player or user art acceptance",
-      "No complete hidden anatomy, wardrobe combinations, start-stop or device test"
-    ]
+      "Approval covers presented up-left r5 neutral full-body idle/walk only",
+      "Main continuous-player viewing was not performed; user approval does not change the historical audit scope",
+      "Up-right, full hidden anatomy, outfits, start-stop and device integration are not approved"
+    ],
+    "nextDiscussion": {
+      "direction": "up-right",
+      "method": "Mirror approved up-left motion and geometry; exchange anatomical side labels and occlusion; correct fixed lighting and future asymmetric assets",
+      "status": "feasibility-discussion-only-no-new-artwork"
+    }
   },
   "upperDiagonalNeutralHistory": [
     {
