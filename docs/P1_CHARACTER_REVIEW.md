@@ -9,9 +9,13 @@
 - 用户于2026-10-22明确要求：智能体画的效果有问题，由主线程自己修，并同步到GitHub提示词。
 
 
-## 当前候选：左上／右上r6指定起停
+## 当前候选：左上/右上独立外观 v1
 
-原两方向r5站姿与正常步态已获认可并保持不变。本轮由主线程独自添加每方向两起步、两停步姿势，明确落脚承重顺序，肩/腰/裤口继续共用变形域；右上沿用语义镜像与固定光照。见[左右同屏正常起停动图](../Art/Review/P1/neutral-upper-transitions-r6/start-stop-120ms.gif)、[站姿](../Art/Review/P1/neutral-upper-transitions-r6/idle-review-2x.png)、[主线程检查](../Art/Review/P1/neutral-upper-transitions-r6/art-review.md)。主线程亲自查看1×/2×整身全部26姿势及首尾/起停序列，无法观看连续播放器；新起停用户认可为空。只覆盖idle00接walk01和walk08回idle00，独立外观随后制作。
+同一r6底模上制作两衣型、共用裤靴、棕发/银发与背剑，共六包、两方向各13姿势。[正常行走GIF](../Art/Review/P1/modular-upper-wardrobe-v1/outfits-walk-120ms.gif)、[起停GIF](../Art/Review/P1/modular-upper-wardrobe-v1/outfits-start-stop-120ms.gif)、[整身站姿](../Art/Review/P1/modular-upper-wardrobe-v1/outfits-idle-2x.png)、[主线程修复与检查](../Art/Review/P1/modular-upper-wardrobe-v1/art-review.md)。主线程已亲自修复串腿黑边、衣物漏底/遮手、剑柄遮挡，并查看全部展示姿势1×/2×整身；16组合208图技术检查通过。查看器不能连续播放，不称连续播放器验收。新外观认可为空，未接入App。
+
+## 已认可参考：左上/右上r6指定起停
+
+用户以“开始下一项”要求从已交付r6继续，认可范围绑定[approval.json](../Art/Review/P1/neutral-upper-transitions-r6/approval.json)：左右上斜整身站姿/正常步行及idle00→walk01、walk08→idle00的指定起停路径。原帧保持；不扩大为新衣物、任意步相中断或完整隐藏解剖。
 
 ## 已认可参考：右上r5镜像版展示
 

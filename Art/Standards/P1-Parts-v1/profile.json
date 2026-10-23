@@ -189,6 +189,38 @@
         ]
       ],
       "coordinateReview": "Feature ink reviewed on the original shared head: complete eyelid/brow kept, no skin/ear/jaw patch; mouth uses true connected lip mark, not jaw contour."
+    },
+    "up-left": {
+      "status": "candidate-rear-three-quarter-hair-layout",
+      "neck": [
+        52,
+        71
+      ],
+      "eyes": {},
+      "faceRegions": {
+        "face.eyes": [],
+        "face.brows": [],
+        "face.nose": [],
+        "face.mouth": []
+      },
+      "hairFrontKeepClear": [],
+      "coordinateReview": "Rear three-quarter neutral head: facial features occluded. Hair-only local image; no skin/ear patch, no fabricated rear facial marks."
+    },
+    "up-right": {
+      "status": "candidate-rear-three-quarter-hair-layout",
+      "neck": [
+        44,
+        71
+      ],
+      "eyes": {},
+      "faceRegions": {
+        "face.eyes": [],
+        "face.brows": [],
+        "face.nose": [],
+        "face.mouth": []
+      },
+      "hairFrontKeepClear": [],
+      "coordinateReview": "Rear three-quarter neutral head: facial features occluded. Hair-only local image; no skin/ear patch, no fabricated rear facial marks."
     }
   },
   "gripProfiles": [

@@ -1,0 +1,291 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "p1-upper-hair-chestnut-v1",
+  "version": "1.0.0",
+  "part": "hair",
+  "compatibility": {
+    "rig": "p1-chibi-v1",
+    "bodyProfile": "p1-standard",
+    "actionSet": "locomotion-v1"
+  },
+  "mode": "head-local",
+  "slots": [
+    "hair.front"
+  ],
+  "directions": [
+    "up-left",
+    "up-right"
+  ],
+  "clips": [
+    "idle",
+    "walk",
+    "walk-start",
+    "walk-stop"
+  ],
+  "bindings": [
+    {
+      "direction": "up-left",
+      "clip": "idle",
+      "frame": 0,
+      "layers": {
+        "hair.front": "png/up-left/00/hair.front.png"
+      }
+    },
+    {
+      "direction": "up-left",
+      "clip": "walk",
+      "frame": 1,
+      "layers": {
+        "hair.front": "png/up-left/01/hair.front.png"
+      }
+    },
+    {
+      "direction": "up-left",
+      "clip": "walk",
+      "frame": 2,
+      "layers": {
+        "hair.front": "png/up-left/02/hair.front.png"
+      }
+    },
+    {
+      "direction": "up-left",
+      "clip": "walk",
+      "frame": 3,
+      "layers": {
+        "hair.front": "png/up-left/03/hair.front.png"
+      }
+    },
+    {
+      "direction": "up-left",
+      "clip": "walk",
+      "frame": 4,
+      "layers": {
+        "hair.front": "png/up-left/04/hair.front.png"
+      }
+    },
+    {
+      "direction": "up-left",
+      "clip": "walk",
+      "frame": 5,
+      "layers": {
+        "hair.front": "png/up-left/05/hair.front.png"
+      }
+    },
+    {
+      "direction": "up-left",
+      "clip": "walk",
+      "frame": 6,
+      "layers": {
+        "hair.front": "png/up-left/06/hair.front.png"
+      }
+    },
+    {
+      "direction": "up-left",
+      "clip": "walk",
+      "frame": 7,
+      "layers": {
+        "hair.front": "png/up-left/07/hair.front.png"
+      }
+    },
+    {
+      "direction": "up-left",
+      "clip": "walk",
+      "frame": 8,
+      "layers": {
+        "hair.front": "png/up-left/08/hair.front.png"
+      }
+    },
+    {
+      "direction": "up-left",
+      "clip": "walk-start",
+      "frame": 1,
+      "layers": {
+        "hair.front": "png/up-left/09/hair.front.png"
+      }
+    },
+    {
+      "direction": "up-left",
+      "clip": "walk-start",
+      "frame": 2,
+      "layers": {
+        "hair.front": "png/up-left/10/hair.front.png"
+      }
+    },
+    {
+      "direction": "up-left",
+      "clip": "walk-stop",
+      "frame": 1,
+      "layers": {
+        "hair.front": "png/up-left/11/hair.front.png"
+      }
+    },
+    {
+      "direction": "up-left",
+      "clip": "walk-stop",
+      "frame": 2,
+      "layers": {
+        "hair.front": "png/up-left/12/hair.front.png"
+      }
+    },
+    {
+      "direction": "up-right",
+      "clip": "idle",
+      "frame": 0,
+      "layers": {
+        "hair.front": "png/up-right/00/hair.front.png"
+      }
+    },
+    {
+      "direction": "up-right",
+      "clip": "walk",
+      "frame": 1,
+      "layers": {
+        "hair.front": "png/up-right/01/hair.front.png"
+      }
+    },
+    {
+      "direction": "up-right",
+      "clip": "walk",
+      "frame": 2,
+      "layers": {
+        "hair.front": "png/up-right/02/hair.front.png"
+      }
+    },
+    {
+      "direction": "up-right",
+      "clip": "walk",
+      "frame": 3,
+      "layers": {
+        "hair.front": "png/up-right/03/hair.front.png"
+      }
+    },
+    {
+      "direction": "up-right",
+      "clip": "walk",
+      "frame": 4,
+      "layers": {
+        "hair.front": "png/up-right/04/hair.front.png"
+      }
+    },
+    {
+      "direction": "up-right",
+      "clip": "walk",
+      "frame": 5,
+      "layers": {
+        "hair.front": "png/up-right/05/hair.front.png"
+      }
+    },
+    {
+      "direction": "up-right",
+      "clip": "walk",
+      "frame": 6,
+      "layers": {
+        "hair.front": "png/up-right/06/hair.front.png"
+      }
+    },
+    {
+      "direction": "up-right",
+      "clip": "walk",
+      "frame": 7,
+      "layers": {
+        "hair.front": "png/up-right/07/hair.front.png"
+      }
+    },
+    {
+      "direction": "up-right",
+      "clip": "walk",
+      "frame": 8,
+      "layers": {
+        "hair.front": "png/up-right/08/hair.front.png"
+      }
+    },
+    {
+      "direction": "up-right",
+      "clip": "walk-start",
+      "frame": 1,
+      "layers": {
+        "hair.front": "png/up-right/09/hair.front.png"
+      }
+    },
+    {
+      "direction": "up-right",
+      "clip": "walk-start",
+      "frame": 2,
+      "layers": {
+        "hair.front": "png/up-right/10/hair.front.png"
+      }
+    },
+    {
+      "direction": "up-right",
+      "clip": "walk-stop",
+      "frame": 1,
+      "layers": {
+        "hair.front": "png/up-right/11/hair.front.png"
+      }
+    },
+    {
+      "direction": "up-right",
+      "clip": "walk-stop",
+      "frame": 2,
+      "layers": {
+        "hair.front": "png/up-right/12/hair.front.png"
+      }
+    }
+  ],
+  "sourceFiles": [
+    "source/up-left-hair.front.png",
+    "source/up-right-hair.front.png",
+    "editable/up-left-00.ora",
+    "editable/up-left-00.svg",
+    "editable/up-left-01.ora",
+    "editable/up-left-01.svg",
+    "editable/up-left-02.ora",
+    "editable/up-left-02.svg",
+    "editable/up-left-03.ora",
+    "editable/up-left-03.svg",
+    "editable/up-left-04.ora",
+    "editable/up-left-04.svg",
+    "editable/up-left-05.ora",
+    "editable/up-left-05.svg",
+    "editable/up-left-06.ora",
+    "editable/up-left-06.svg",
+    "editable/up-left-07.ora",
+    "editable/up-left-07.svg",
+    "editable/up-left-08.ora",
+    "editable/up-left-08.svg",
+    "editable/up-left-09.ora",
+    "editable/up-left-09.svg",
+    "editable/up-left-10.ora",
+    "editable/up-left-10.svg",
+    "editable/up-left-11.ora",
+    "editable/up-left-11.svg",
+    "editable/up-left-12.ora",
+    "editable/up-left-12.svg",
+    "editable/up-right-00.ora",
+    "editable/up-right-00.svg",
+    "editable/up-right-01.ora",
+    "editable/up-right-01.svg",
+    "editable/up-right-02.ora",
+    "editable/up-right-02.svg",
+    "editable/up-right-03.ora",
+    "editable/up-right-03.svg",
+    "editable/up-right-04.ora",
+    "editable/up-right-04.svg",
+    "editable/up-right-05.ora",
+    "editable/up-right-05.svg",
+    "editable/up-right-06.ora",
+    "editable/up-right-06.svg",
+    "editable/up-right-07.ora",
+    "editable/up-right-07.svg",
+    "editable/up-right-08.ora",
+    "editable/up-right-08.svg",
+    "editable/up-right-09.ora",
+    "editable/up-right-09.svg",
+    "editable/up-right-10.ora",
+    "editable/up-right-10.svg",
+    "editable/up-right-11.ora",
+    "editable/up-right-11.svg",
+    "editable/up-right-12.ora",
+    "editable/up-right-12.svg"
+  ]
+}

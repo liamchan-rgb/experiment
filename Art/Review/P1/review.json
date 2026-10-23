@@ -3,8 +3,8 @@
   "format": 3,
   "updated": "2026-10-23",
   "workflow": "Review one direction at a time from fixed cardinal and diagonal baselines. Modify and resubmit the same direction until explicit user artwork approval, then advance. Record provenance, feedback and accepted revisions for the future character template.",
-  "current": "p1-neutral-upper-transitions-r6",
-  "templateStatus": "User asked to proceed from presented upper-diagonal r6 transitions. Begin independent upper-diagonal wardrobe, hair and back equipment.",
+  "current": "p1-upper-independent-wardrobe-v1",
+  "templateStatus": "Upper independent wardrobe candidate; main repaired and reviewed whole-body frames, awaiting user art feedback. Existing neutral approval retained.",
   "items": [
     {
       "id": "01-down-idle",
@@ -2581,12 +2581,11 @@
     "runtimeIntegrated": false,
     "ipaBuilt": false,
     "limits": [
-      "New transition art approval is null",
       "Only idle00 -> start01/02 -> walk01 and walk08 -> stop01/02 -> idle00; no arbitrary phase interrupts",
       "Main whole-body frame review does not claim continuous-player playback",
       "No full hidden anatomy, wardrobe combination, App/device or IPA validation"
     ],
-    "next": "Independent upper-diagonal hair/clothing and back-mounted equipment on these shared bodies and action maps after transition review"
+    "next": "Independent upper-diagonal wardrobe candidate now available; no inherited wardrobe approval."
   },
   "upperDiagonalNeutralHistory": [
     {
@@ -2839,6 +2838,66 @@
         "Presented up-right r5 idle/walk accepted; new transitions and outfits remain unapproved",
         "Historical main review was whole-body ordered frames, not continuous player viewing"
       ]
+    },
+    {
+      "id": "p1-neutral-upper-transitions-r6",
+      "status": "user-approved-presented-r6-transition-paths",
+      "artApproval": {
+        "date": "2026-10-23",
+        "statement": "开始下一项",
+        "reviewer": "user",
+        "status": "approved-to-proceed-from-presented-transition-review",
+        "scope": "Presented upper-left/right neutral whole-body idle, normal walk and specified idle-to-walk01/walk08-to-idle transitions. Does not cover new wardrobe, complete hidden anatomy, arbitrary-phase stopping or runtime.",
+        "sourceCommit": "53e3a9b2077a1f218c21ecc1ac7f2d849a31b536",
+        "artifacts": {
+          "start-stop-120ms.gif": "c8e791691a6df95aa2c295c37493e5b325f607f9068d9ebc4363c2b4c48d28d9",
+          "walk-120ms.gif": "3459f23007b2989b5848658e839e5642ce229a90a9e07f5b8225d27f50877e1f",
+          "idle-review-2x.png": "e2af630ecb83327ec9eff6ece94b9133256119ea413ea819f01b2a908ef1b3cc",
+          "up-left/start-stop-120ms.gif": "b466553f1273068b4a2428efe187836b364c404999d5bedb599767bfe38e61b0",
+          "up-right/start-stop-120ms.gif": "99f98e1a535b9f470ab3a2294cf3c6e934ae772170824ec716d9587b7f7ac22f"
+        }
+      },
+      "directions": [
+        "up-left",
+        "up-right"
+      ],
+      "repairAndReviewOwner": "root",
+      "subagentsUsed": false,
+      "userInstruction": {
+        "date": "2026-10-23",
+        "statement": "没问题，开始下一步"
+      },
+      "method": "Preserve 18 accepted neutral idle/walk frames, add 2 start and 2 stop poses per direction on shared clothing/joint domains; explicitly ground support feet; reflect right semantic pose maps and reuse fixed-lighting source UVs",
+      "mainReview": "Main personally inspected all26 whole-body poses at1x/2x and ordered transition boundary sequences; no continuous-player viewing claimed",
+      "technical": {
+        "actualCompositorPoses": 26,
+        "newTransitionPoses": 8,
+        "approvedFramesUnchanged": 18,
+        "approvedLayersUnchanged": 144,
+        "semanticLayersWithoutOrphans": 208,
+        "newJunctionAlphaHoles": 0,
+        "headLocalMirrorAttachments": 13,
+        "byteIdenticalReexportFiles": 600,
+        "approvedSourceFilesUnchanged": 432,
+        "normalSpeedGifs": 6,
+        "contractTests": 26,
+        "compositorTests": 21
+      },
+      "artifacts": {
+        "normalGif": "Art/Review/P1/neutral-upper-transitions-r6/start-stop-120ms.gif",
+        "walkGif": "Art/Review/P1/neutral-upper-transitions-r6/walk-120ms.gif",
+        "idle": "Art/Review/P1/neutral-upper-transitions-r6/idle-review-2x.png",
+        "artReview": "Art/Review/P1/neutral-upper-transitions-r6/art-review.md",
+        "validation": "Art/Review/P1/neutral-upper-transitions-r6/validation.json"
+      },
+      "runtimeIntegrated": false,
+      "ipaBuilt": false,
+      "limits": [
+        "Only idle00 -> start01/02 -> walk01 and walk08 -> stop01/02 -> idle00; no arbitrary phase interrupts",
+        "Main whole-body frame review does not claim continuous-player playback",
+        "No full hidden anatomy, wardrobe combination, App/device or IPA validation"
+      ],
+      "next": "Independent upper-diagonal wardrobe candidate now available; no inherited wardrobe approval."
     }
   ],
   "rejectedWorkInProgress": [
@@ -2870,5 +2929,39 @@
   "upperDiagonalTransitionApprovedReference": {
     "id": "p1-neutral-upper-transitions-r6",
     "approval": "Art/Review/P1/neutral-upper-transitions-r6/approval.json"
+  },
+  "upperWardrobeReview": {
+    "id": "p1-upper-independent-wardrobe-v1",
+    "status": "candidate-main-frame-review-complete",
+    "artApproval": null,
+    "repairAndReviewOwner": "root",
+    "subagentsUsed": false,
+    "directions": [
+      "up-left",
+      "up-right"
+    ],
+    "baseReference": "Art/Review/P1/neutral-upper-transitions-r6/approval.json",
+    "packages": 6,
+    "combinations": 16,
+    "actualCompositorPoses": 208,
+    "neutralPosesUnchanged": 26,
+    "coverageFailures": 0,
+    "handPreservationFailures": 0,
+    "contractTests": 26,
+    "compositorTests": 21,
+    "artifacts": {
+      "normalGif": "Art/Review/P1/modular-upper-wardrobe-v1/outfits-walk-120ms.gif",
+      "startStopGif": "Art/Review/P1/modular-upper-wardrobe-v1/outfits-start-stop-120ms.gif",
+      "idle": "Art/Review/P1/modular-upper-wardrobe-v1/outfits-idle-2x.png",
+      "artReview": "Art/Review/P1/modular-upper-wardrobe-v1/art-review.md"
+    },
+    "mainReview": "Whole-body 1x/2x all 13 poses per displayed outfit/direction plus crossed hair; ordered frame/timing audit, not continuous-player viewing",
+    "runtimeIntegrated": false,
+    "ipaBuilt": false,
+    "limits": [
+      "New wardrobe has no user approval",
+      "Original hidden anatomy not completed",
+      "Specified start/stop paths only"
+    ]
   }
 }
