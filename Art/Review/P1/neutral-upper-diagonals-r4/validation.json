@@ -1,5 +1,5 @@
 {
-  "status": "technical-composition-and-boundary-checks-pass-not-art-approval",
+  "status": "user-rejected-visible-junctions-and-static-shorts",
   "artApproval": null,
   "repairAndReviewOwner": "root",
   "subagentsUsed": false,
@@ -9725,5 +9725,16 @@
     "Technical checks do not establish natural walking or user artwork acceptance",
     "Current image viewer exposes GIF still only: no continuous-player playback claimed",
     "No start/stop, wardrobe combinations, runtime/device testing or IPA"
-  ]
+  ],
+  "internalArtPassWithdrawn": true,
+  "userFeedback": {
+    "date": "2026-10-23",
+    "defects": [
+      "limb splice traces",
+      "visible motion gaps",
+      "unclean up-left edges",
+      "shorts not following legs"
+    ],
+    "nextScope": "up-left only"
+  }
 }

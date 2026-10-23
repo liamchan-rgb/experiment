@@ -3,8 +3,8 @@
   "format": 3,
   "updated": "2026-10-23",
   "workflow": "Review one direction at a time from fixed cardinal and diagonal baselines. Modify and resubmit the same direction until explicit user artwork approval, then advance. Record provenance, feedback and accepted revisions for the future character template.",
-  "current": "p1-neutral-upper-diagonals-r4-continuous-contours",
-  "templateStatus": "r1/r2/r3 rejected; r4 main-only contour ownership and hip-joint repair, all full-body static poses reviewed. No continuous-player or user art acceptance.",
+  "current": "p1-neutral-up-left-walk-r5-coupled-clothing",
+  "templateStatus": "Up-left r5 main-only seam/edge and articulated shorts repair candidate. User artwork approval is null; up-right remains deferred at rejected r4.",
   "items": [
     {
       "id": "01-down-idle",
@@ -2528,41 +2528,45 @@
     "ipaBuilt": false
   },
   "upperDiagonalNeutralReview": {
-    "id": "p1-neutral-upper-diagonals-r4-continuous-contours",
-    "status": "candidate-main-frame-review-only",
+    "id": "p1-neutral-up-left-walk-r5-coupled-clothing",
+    "status": "main-only-up-left-repair-candidate",
     "artApproval": null,
     "directions": [
-      "up-left",
+      "up-left"
+    ],
+    "deferredDirections": [
       "up-right"
     ],
-    "rejectedPredecessor": "p1-neutral-upper-diagonals-r3-clean-joints",
+    "rejectedPredecessor": "p1-neutral-upper-diagonals-r4-continuous-contours",
     "repairAndReviewOwner": "root",
     "subagentsUsed": false,
-    "method": "Hip joints inside shorts; whole-limb contours through a continuous shared mesh; explicit spatial garment ownership without skin-colour erosion; hands share arm mesh domain",
-    "mainReview": "Root inspected actual 1x/2x full-body idle plus all eight walk frames for both directions, ordered 01-08-01. Still-only viewer: continuous playback is not claimed.",
+    "method": "Independent shorts source; shared shoulder/waist/hem domains; broad original thigh roots; near hand in front of shorts while shoulder overlap remains hidden",
+    "mainReview": "Root personally inspected actual 1x/2x whole-body idle and all eight walk frames including 01-08-01. No continuous-player playback claimed by still-only viewer.",
     "technical": {
-      "actualCompositorPoses": 18,
-      "layersWithoutOrphans": 144,
-      "sameSideWristContacts": 36,
-      "sameSideLegConnectivity": 36,
-      "armsAndHandsWithoutFabric": 72,
-      "solidHipCorridors": 36,
-      "byteIdenticalSourceAndPoseFiles": 226,
+      "actualCompositorPoses": 9,
+      "semanticLayersWithoutOrphans": 72,
+      "junctionReferenceComparisons": 9,
+      "newJunctionAlphaHoles": 0,
+      "completeArmPartitionChecks": 18,
+      "armsAndHandsWithoutFabric": 36,
+      "nearHandsPreserved": 9,
+      "independentPantsWalkFrames": 8,
+      "byteIdenticalSourceAndPoseFiles": 174,
       "contractTests": 26,
       "compositorTests": 21
     },
     "artifacts": {
-      "normalGif": "Art/Review/P1/neutral-upper-diagonals-r4/walk-comparison-120ms.gif",
-      "idle": "Art/Review/P1/neutral-upper-diagonals-r4/idle-comparison-2x.png",
-      "artReview": "Art/Review/P1/neutral-upper-diagonals-r4/art-review.md",
-      "validation": "Art/Review/P1/neutral-upper-diagonals-r4/validation.json"
+      "normalGif": "Art/Review/P1/neutral-up-left-r5/walk-120ms.gif",
+      "idle": "Art/Review/P1/neutral-up-left-r5/idle-review-2x.png",
+      "artReview": "Art/Review/P1/neutral-up-left-r5/art-review.md",
+      "validation": "Art/Review/P1/neutral-up-left-r5/validation.json"
     },
     "runtimeIntegrated": false,
     "ipaBuilt": false,
     "limits": [
-      "User art approval is null",
-      "Continuous player playback not available",
-      "Idle/walk neutral visible art only; no wardrobe, full hidden anatomy, start/stop or device acceptance"
+      "Up-left only; no up-right repair or approval",
+      "No continuous-player or user art acceptance",
+      "No complete hidden anatomy, wardrobe combinations, start-stop or device test"
     ]
   },
   "upperDiagonalNeutralHistory": [
@@ -2657,6 +2661,50 @@
       "repairAndReviewOwner": "root",
       "subagentsUsed": false,
       "artApproval": null
+    },
+    {
+      "id": "p1-neutral-upper-diagonals-r4-continuous-contours",
+      "status": "user-rejected-visible-junctions-and-static-shorts",
+      "artApproval": null,
+      "directions": [
+        "up-left",
+        "up-right"
+      ],
+      "rejectedPredecessor": "p1-neutral-upper-diagonals-r3-clean-joints",
+      "repairAndReviewOwner": "root",
+      "subagentsUsed": false,
+      "method": "Hip joints inside shorts; whole-limb contours through a continuous shared mesh; explicit spatial garment ownership without skin-colour erosion; hands share arm mesh domain",
+      "mainReview": "Root inspected actual 1x/2x full-body idle plus all eight walk frames for both directions, ordered 01-08-01. Still-only viewer: continuous playback is not claimed.",
+      "technical": {
+        "actualCompositorPoses": 18,
+        "layersWithoutOrphans": 144,
+        "sameSideWristContacts": 36,
+        "sameSideLegConnectivity": 36,
+        "armsAndHandsWithoutFabric": 72,
+        "solidHipCorridors": 36,
+        "byteIdenticalSourceAndPoseFiles": 226,
+        "contractTests": 26,
+        "compositorTests": 21
+      },
+      "artifacts": {
+        "normalGif": "Art/Review/P1/neutral-upper-diagonals-r4/walk-comparison-120ms.gif",
+        "idle": "Art/Review/P1/neutral-upper-diagonals-r4/idle-comparison-2x.png",
+        "artReview": "Art/Review/P1/neutral-upper-diagonals-r4/art-review.md",
+        "validation": "Art/Review/P1/neutral-upper-diagonals-r4/validation.json"
+      },
+      "runtimeIntegrated": false,
+      "ipaBuilt": false,
+      "limits": [
+        "User art approval is null",
+        "Continuous player playback not available",
+        "Idle/walk neutral visible art only; no wardrobe, full hidden anatomy, start/stop or device acceptance"
+      ],
+      "internalArtPassWithdrawn": true,
+      "userFeedback": {
+        "date": "2026-10-23",
+        "statement": "四肢还有一些拼接痕迹，动起来有很明显的间隙，你先修左上方向的，左上除了接痕还有边缘没有扣干净的情况，腿动但是裤子不动"
+      },
+      "nextScope": "Repair up-left first; up-right deferred, not approved"
     }
   ],
   "rejectedWorkInProgress": [
