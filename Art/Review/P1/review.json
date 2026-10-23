@@ -1,10 +1,10 @@
 {
   "character": "P1",
   "format": 3,
-  "updated": "2026-10-21",
+  "updated": "2026-10-23",
   "workflow": "Review one direction at a time from fixed cardinal and diagonal baselines. Modify and resubmit the same direction until explicit user artwork approval, then advance. Record provenance, feedback and accepted revisions for the future character template.",
-  "current": "p1-modular-left-wardrobe-v2",
-  "templateStatus": "Current static battle v9 presentation accepted; first battle side-step key pose remains current for artwork review. Four diagonal map loop repairs are self-reviewed and imported under the user task; original artwork approvals are preserved. Full battle walk/attack animation and interchangeable wardrobe completion remain pending.",
+  "current": "p1-neutral-upper-diagonals-v1",
+  "templateStatus": "Left v2 displayed outfits accepted within recorded scope; simultaneous up-left/up-right neutral idle/walk candidates await user art review.",
   "items": [
     {
       "id": "01-down-idle",
@@ -2485,8 +2485,19 @@
   },
   "leftWardrobeRepairReview": {
     "id": "p1-modular-left-wardrobe-v2",
-    "status": "main-agent-repaired-awaiting-user-art-review",
-    "artApproval": null,
+    "status": "approved-presented-left-v2-outfits-and-normal-loop",
+    "artApproval": {
+      "date": "2026-10-22",
+      "reviewer": "user",
+      "statement": "没问题，下一个直接同时做左上和右上的，你注意检查不要随便被智能体糊弄",
+      "status": "approved",
+      "scope": "Presented left-facing v2 two-outfit full-body appearance and normal walk/start-stop comparison only; excludes unshown combinations, other directions and runtime/device integration.",
+      "artifacts": {
+        "outfits-comparison-120ms.gif": "13b0d239ff2f4bfa4f04dbf3fdff8c0b177c92d8ad3e82d13e83a643949191eb",
+        "start-stop-comparison-120ms.gif": "73f4de5d6c44915bd46a410720c5479b47c8bc0463ea5a2d046dc47fae4d2470",
+        "outfits-comparison-2x.png": "93abe50ce71e519875d35b7ee1f7236c1aeccfd54b74a22e602ef221027e9f33"
+      }
+    },
     "rejectedPredecessor": "Art/Templates/P1-Wardrobe/left/v1-independent",
     "base": "Art/Templates/P1-Neutral/left/walk-r3-complete-transitions",
     "direction": "left",
@@ -2515,5 +2526,36 @@
     "runtimeIntegrated": false,
     "simulatorOrDeviceRun": false,
     "ipaBuilt": false
+  },
+  "upperDiagonalNeutralReview": {
+    "id": "p1-neutral-upper-diagonals-v1",
+    "status": "candidate-awaiting-user-art-review",
+    "directions": [
+      "up-left",
+      "up-right"
+    ],
+    "artApproval": null,
+    "scope": "Simultaneous neutral bodies, semantic layers and basic idle/walk coverage. New directions require review; no automatic appearance or runtime approval.",
+    "mainReview": "Root personally inspected all actual 1x/2x full-body frames and ordered 01-08-01 sequence. Viewer renders GIF as still, so continuous playback was not claimed.",
+    "artifacts": {
+      "normalGif": "Art/Review/P1/neutral-upper-diagonals-v1/walk-comparison-120ms.gif",
+      "idle": "Art/Review/P1/neutral-upper-diagonals-v1/idle-comparison-2x.png",
+      "validation": "Art/Review/P1/neutral-upper-diagonals-v1/validation.json"
+    },
+    "technical": {
+      "directions": 2,
+      "poses": 18,
+      "layers": 144,
+      "headLocalChecks": 18,
+      "soleMarkers": 36,
+      "contractTests": 26,
+      "compositorTests": 21,
+      "reexportedFiles": 216,
+      "byteIdenticalReexport": true
+    },
+    "limits": [
+      "neutral visible idle/walk candidate only",
+      "no appearance combinations/start-stop/runtime approval"
+    ]
   }
 }

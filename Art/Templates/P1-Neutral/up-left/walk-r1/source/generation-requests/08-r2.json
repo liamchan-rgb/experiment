@@ -1,0 +1,16 @@
+{
+  "direction": "up-left",
+  "frame": 8,
+  "artifact": "/workspace/generated_images/exec-8198b82d-4832-4efe-bcb2-f62f409e904f.png",
+  "prompt": "Render FIRST mandatory pose diagram in SECOND image's pixel-art neutral body appearance. ONE full transparent character UP-LEFT rear three-quarter AWAY, bald BACK of skull no face, left edge ear, white back-neck sleeveless shirt, charcoal short shorts, natural hands/bare feet. Green LEFT near side, blue RIGHT far. Anatomical RIGHT far leg supports late stance, foot x135213. LEFT near leg swings FORWARD LOW, heel about112198. Near LEFT arm swings BACK toward SCREEN RIGHT with wrist x132174 (partly over lower torso), NOT raised toward screen left. Far RIGHT arm forward, hand about120154 mostly hidden by torso. This bridges near-arm-neutral pose07 into near-arm-back/contact pose01. Exactly TWO arms and two hands, no third hanging arm. Preserve original full256-square registration headtop87 hips175, upper-left lighting and far limbs darker; no colored guides/skeleton/labels/gear/shadow. Match specified frame8 pose and limb opposition, do not substitute repeated generic walk.",
+  "references": [
+    "/workspace/experiment/Art/Templates/P1-Neutral/up-left/walk-r1/source/joint-guides/phase-r2/08.png",
+    "/workspace/experiment/Art/Templates/P1-Neutral/up-left/walk-r1/source/idle-selected-registered.png"
+  ],
+  "status": "generated-r2-pending-root-review",
+  "sourceScale": 0.20414673046251994,
+  "sourceTranslation": [
+    0,
+    0
+  ]
+}

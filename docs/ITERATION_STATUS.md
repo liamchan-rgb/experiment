@@ -1,5 +1,21 @@
 # 林间行旅迭代进度 · 2026-10-19
 
+## 2026-10-23 · 同时完成左上／右上中性底模与正常步态候选
+
+用户要求两个方向同时推进并由主线程亲自纠正智能体问题。三名Luna辅助制作／审核后，主线程判退侧脸、重复支撑、相位错位和不准的分层，修复第三手、跨背摆臂、躯干洞、交叉腿归属、落脚过渡及肩旁残边；原稿和判退记录均保留。每方向idle00+walk01–08，复用共同头／躯干，头部轻微摆动，离线组件注册显式记录。
+
+主线程检查实际装配的1×/2×全身及全部01→08→01序列。正常同屏GIF为8×120ms；当前查看器仅显示GIF静帧，未声称已实际观看连续播放。2清单、18实际装配、144层、18头变换、36足底标记、源所有权/作者合成零差及可见脱离组件0通过；重导字节一致，26合同/21装配器回归通过。技术证据不代替用户美术认可。
+
+[正常同屏GIF](../Art/Review/P1/neutral-upper-diagonals-v1/walk-comparison-120ms.gif)、[同屏站姿](../Art/Review/P1/neutral-upper-diagonals-v1/idle-comparison-2x.png)、[具体返修](../Art/Review/P1/neutral-upper-diagonals-v1/art-review.md)。新方向美术认可仍为空；独立外观、完整隐藏人体与起停后续继续，当前无App/模拟器/设备/IPA工作。发布后核对HTTPS直链并记录delivery.json。
+
+## 2026-10-22 · 左向衣物v2获认可，同时建立左上/右上中性底模
+
+用户回复“没问题，下一个直接同时做左上和右上的，你注意检查不要随便被智能体糊弄”。已按展示范围保存向左v2两衣型全身、正常循环及指定起停路径认可和交付摘要，不扩大到未展示组合/运行接入。同步记录本轮同时推进两个方向的授权，覆盖此前一次一个方向的顺序限制。
+
+当前两名Luna辅助各自方向的源稿/作者分层，一名只读复核相位与近远规则；主线程负责图像生成、统一导出与最终整身/正常速质检。先建立两个方向的中性人体、idle00+walk01–08分层及挂点，再按共同底模制作独立外观。左上采用contact-r1、右上采用loop-r2动作参照，保留原修订；最终逐稿按作者肩髋/足底标作显式固定注册，不按alpha边界各自适配；原导板仅作意图参考。当前新方向美术认可为空，未进行App/设备/IPA工作。
+
+
+
 ## 2026-10-22 · 向左衣物v2，主线程修正并重新合成
 
 已提交GitHub `cd71944fdc7b4c37cd1b8c344b1eaaf97c5082cf`。[正常行走浏览器直链](https://raw.githubusercontent.com/liamchan-rgb/experiment/cd71944fdc7b4c37cd1b8c344b1eaaf97c5082cf/Art/Review/P1/modular-left-wardrobe-v2/outfits-comparison-120ms.gif)及[正常起停直链](https://raw.githubusercontent.com/liamchan-rgb/experiment/cd71944fdc7b4c37cd1b8c344b1eaaf97c5082cf/Art/Review/P1/modular-left-wardrobe-v2/start-stop-comparison-120ms.gif)实测HTTP200、image/gif、SHA-256与本地一致；站姿同样HTTP200/哈希一致。四份交付核对见 `Art/Review/P1/modular-left-wardrobe-v2/delivery.json`。

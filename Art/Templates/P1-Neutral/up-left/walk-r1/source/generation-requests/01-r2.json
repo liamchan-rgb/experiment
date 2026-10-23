@@ -1,0 +1,12 @@
+{
+  "direction": "up-left",
+  "frame": 1,
+  "artifact": "/workspace/upper-left-r2-contact01-fixed.png",
+  "reason": "Replace crossed left contact; remove generated third arm; root reviewed full figure",
+  "status": "generated-r2-pending-root-review",
+  "sourceScale": 0.20414673046251994,
+  "sourceTranslation": [
+    0,
+    0
+  ]
+}

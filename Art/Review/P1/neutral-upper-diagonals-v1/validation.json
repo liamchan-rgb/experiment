@@ -1,0 +1,468 @@
+{
+  "status": "technical-composition-verified-visual-review-separate",
+  "artApproval": null,
+  "actualCompositorPoses": 18,
+  "semanticLayers": 144,
+  "editableORA": 18,
+  "editableSVG": 18,
+  "headLocalPlacements": 18,
+  "soleMarkers": 36,
+  "normalTimingMs": [
+    120,
+    120,
+    120,
+    120,
+    120,
+    120,
+    120,
+    120
+  ],
+  "alphaNoiseCleanup": {
+    "up-left": 8,
+    "up-right": 10
+  },
+  "newEngineOrAppearanceBranches": false,
+  "regression": {
+    "partContractTests": 26,
+    "compositorTests": 21,
+    "failures": 0
+  },
+  "directions": [
+    {
+      "direction": "up-left",
+      "assetChecks": 0,
+      "poses": [
+        {
+          "frame": 0,
+          "sha256": "2449cff39933bce8d9ef8b1517e44d4858de6d21a3a76c003bdc1ca4207d573c",
+          "compositorDifferencePixels": 0,
+          "headLocalDifferencePixels": 0,
+          "soleMarkers": {
+            "left": {
+              "position": [
+                116,
+                214
+              ],
+              "alpha": 255
+            },
+            "right": {
+              "position": [
+                143,
+                212
+              ],
+              "alpha": 255
+            }
+          },
+          "visibleDetachedComponents": []
+        },
+        {
+          "frame": 1,
+          "sha256": "1895754f2997837c579384db7ac097288aac981a8cc6df0b1c2e6eecf013434c",
+          "compositorDifferencePixels": 0,
+          "headLocalDifferencePixels": 0,
+          "soleMarkers": {
+            "left": {
+              "position": [
+                108,
+                210
+              ],
+              "alpha": 255
+            },
+            "right": {
+              "position": [
+                145,
+                221
+              ],
+              "alpha": 255
+            }
+          },
+          "visibleDetachedComponents": []
+        },
+        {
+          "frame": 2,
+          "sha256": "44664270617e34c031adb53955126c92c471f1624dd5e348a4c52315fe98926b",
+          "compositorDifferencePixels": 0,
+          "headLocalDifferencePixels": 0,
+          "soleMarkers": {
+            "left": {
+              "position": [
+                116,
+                209
+              ],
+              "alpha": 255
+            },
+            "right": {
+              "position": [
+                146,
+                205
+              ],
+              "alpha": 255
+            }
+          },
+          "visibleDetachedComponents": []
+        },
+        {
+          "frame": 3,
+          "sha256": "e101085ff10f29baeedd6b49dc04eff225a935412ca88254cd82dfcaf850d8c7",
+          "compositorDifferencePixels": 0,
+          "headLocalDifferencePixels": 0,
+          "soleMarkers": {
+            "left": {
+              "position": [
+                123,
+                215
+              ],
+              "alpha": 255
+            },
+            "right": {
+              "position": [
+                125,
+                202
+              ],
+              "alpha": 249
+            }
+          },
+          "visibleDetachedComponents": []
+        },
+        {
+          "frame": 4,
+          "sha256": "6dc812b9f3ed0da57bb8b3b3bfa8ed741cc2c0e5546963aebcbaa5c3a24d0a0b",
+          "compositorDifferencePixels": 0,
+          "headLocalDifferencePixels": 0,
+          "soleMarkers": {
+            "left": {
+              "position": [
+                131,
+                215
+              ],
+              "alpha": 255
+            },
+            "right": {
+              "position": [
+                124,
+                205
+              ],
+              "alpha": 246
+            }
+          },
+          "visibleDetachedComponents": []
+        },
+        {
+          "frame": 5,
+          "sha256": "0c236b81c3b06b9e25250c59d2a1e038742058471bf53afb5fe32016871570c7",
+          "compositorDifferencePixels": 0,
+          "headLocalDifferencePixels": 0,
+          "soleMarkers": {
+            "left": {
+              "position": [
+                141,
+                218
+              ],
+              "alpha": 255
+            },
+            "right": {
+              "position": [
+                119,
+                211
+              ],
+              "alpha": 255
+            }
+          },
+          "visibleDetachedComponents": []
+        },
+        {
+          "frame": 6,
+          "sha256": "4d0c801d7b36ac335528221763bd9e002999fa0c430ea6b8305aeea3a669e0c3",
+          "compositorDifferencePixels": 0,
+          "headLocalDifferencePixels": 0,
+          "soleMarkers": {
+            "left": {
+              "position": [
+                140,
+                207
+              ],
+              "alpha": 255
+            },
+            "right": {
+              "position": [
+                123,
+                208
+              ],
+              "alpha": 255
+            }
+          },
+          "visibleDetachedComponents": []
+        },
+        {
+          "frame": 7,
+          "sha256": "2ed8199fc0102b73d812204d60299d7eab2e4f6f417c29550b28b6b98de770ac",
+          "compositorDifferencePixels": 0,
+          "headLocalDifferencePixels": 0,
+          "soleMarkers": {
+            "left": {
+              "position": [
+                123,
+                202
+              ],
+              "alpha": 255
+            },
+            "right": {
+              "position": [
+                137,
+                211
+              ],
+              "alpha": 255
+            }
+          },
+          "visibleDetachedComponents": []
+        },
+        {
+          "frame": 8,
+          "sha256": "3607d3ab7c91a928ac58be61d97e6e3d25eaf6ac90340e1bb031b3695897b1f7",
+          "compositorDifferencePixels": 0,
+          "headLocalDifferencePixels": 0,
+          "soleMarkers": {
+            "left": {
+              "position": [
+                114,
+                206
+              ],
+              "alpha": 255
+            },
+            "right": {
+              "position": [
+                140,
+                220
+              ],
+              "alpha": 255
+            }
+          },
+          "visibleDetachedComponents": []
+        }
+      ]
+    },
+    {
+      "direction": "up-right",
+      "assetChecks": 0,
+      "poses": [
+        {
+          "frame": 0,
+          "sha256": "7cff798db7f084d931944e29ae44008ea4d3b2b990cd033f570205a21411d603",
+          "compositorDifferencePixels": 0,
+          "headLocalDifferencePixels": 0,
+          "soleMarkers": {
+            "left": {
+              "position": [
+                108,
+                206
+              ],
+              "alpha": 255
+            },
+            "right": {
+              "position": [
+                131,
+                213
+              ],
+              "alpha": 255
+            }
+          },
+          "visibleDetachedComponents": []
+        },
+        {
+          "frame": 1,
+          "sha256": "c173347d7ad6a11443f514d42c501ec6095da6db346bd44486a547abaabc531f",
+          "compositorDifferencePixels": 0,
+          "headLocalDifferencePixels": 0,
+          "soleMarkers": {
+            "left": {
+              "position": [
+                133,
+                205
+              ],
+              "alpha": 255
+            },
+            "right": {
+              "position": [
+                121,
+                223
+              ],
+              "alpha": 255
+            }
+          },
+          "visibleDetachedComponents": []
+        },
+        {
+          "frame": 2,
+          "sha256": "21dbf9bc12b17419b4ea38ebc3a1d831b7fce16fe8317534c14cd9bce37e6eee",
+          "compositorDifferencePixels": 0,
+          "headLocalDifferencePixels": 0,
+          "soleMarkers": {
+            "left": {
+              "position": [
+                130,
+                207
+              ],
+              "alpha": 255
+            },
+            "right": {
+              "position": [
+                120,
+                210
+              ],
+              "alpha": 255
+            }
+          },
+          "visibleDetachedComponents": []
+        },
+        {
+          "frame": 3,
+          "sha256": "b1204184a1faa76db9937e7c20556d47e20bedd2b2fbcb9a9a1cb20c6e901b2e",
+          "compositorDifferencePixels": 0,
+          "headLocalDifferencePixels": 0,
+          "soleMarkers": {
+            "left": {
+              "position": [
+                125,
+                213
+              ],
+              "alpha": 255
+            },
+            "right": {
+              "position": [
+                131,
+                195
+              ],
+              "alpha": 255
+            }
+          },
+          "visibleDetachedComponents": []
+        },
+        {
+          "frame": 4,
+          "sha256": "9818e0fed863769340c58062272ddad99ba5700cda0e527e59bc66b684220bba",
+          "compositorDifferencePixels": 0,
+          "headLocalDifferencePixels": 0,
+          "soleMarkers": {
+            "left": {
+              "position": [
+                117,
+                221
+              ],
+              "alpha": 255
+            },
+            "right": {
+              "position": [
+                145,
+                204
+              ],
+              "alpha": 253
+            }
+          },
+          "visibleDetachedComponents": []
+        },
+        {
+          "frame": 5,
+          "sha256": "f37dcafd238748fe80c7bf9c5ca1f615147cca1fd04e3d93f663b0ba153b26bd",
+          "compositorDifferencePixels": 0,
+          "headLocalDifferencePixels": 0,
+          "soleMarkers": {
+            "left": {
+              "position": [
+                110,
+                224
+              ],
+              "alpha": 255
+            },
+            "right": {
+              "position": [
+                144,
+                206
+              ],
+              "alpha": 255
+            }
+          },
+          "visibleDetachedComponents": []
+        },
+        {
+          "frame": 6,
+          "sha256": "7b675419f8ee0aa9fe5cf2e2646db30d96f9994ff94bdaa7d880b213aa1f721a",
+          "compositorDifferencePixels": 0,
+          "headLocalDifferencePixels": 0,
+          "soleMarkers": {
+            "left": {
+              "position": [
+                107,
+                206
+              ],
+              "alpha": 255
+            },
+            "right": {
+              "position": [
+                139,
+                213
+              ],
+              "alpha": 255
+            }
+          },
+          "visibleDetachedComponents": []
+        },
+        {
+          "frame": 7,
+          "sha256": "d2385506412ee70b7b99727e7650772ae967ffb87ecdb31441ee3c0d0badf810",
+          "compositorDifferencePixels": 0,
+          "headLocalDifferencePixels": 0,
+          "soleMarkers": {
+            "left": {
+              "position": [
+                119,
+                191
+              ],
+              "alpha": 249
+            },
+            "right": {
+              "position": [
+                131,
+                217
+              ],
+              "alpha": 253
+            }
+          },
+          "visibleDetachedComponents": []
+        },
+        {
+          "frame": 8,
+          "sha256": "f9fe6c1b260906a1ef6ae74395be95262b28130a40d7f84cd368e9218f3b0b6e",
+          "compositorDifferencePixels": 0,
+          "headLocalDifferencePixels": 0,
+          "soleMarkers": {
+            "left": {
+              "position": [
+                135,
+                204
+              ],
+              "alpha": 249
+            },
+            "right": {
+              "position": [
+                125,
+                220
+              ],
+              "alpha": 254
+            }
+          },
+          "visibleDetachedComponents": []
+        }
+      ]
+    }
+  ],
+  "detachedComponents": [],
+  "limits": [
+    "visible neutral idle/walk only",
+    "no full hidden anatomy or clothing combinations",
+    "no start-stop production or runtime approval"
+  ],
+  "reexport": {
+    "files": 216,
+    "byteIdentical": true
+  }
+}

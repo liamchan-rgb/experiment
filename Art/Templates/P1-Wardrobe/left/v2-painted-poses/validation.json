@@ -1,7 +1,18 @@
 {
   "id": "p1-modular-left-wardrobe-v2",
-  "status": "main-agent-repaired-awaiting-user-art-review",
-  "artApproval": null,
+  "status": "approved-presented-left-v2-outfits-and-normal-loop",
+  "artApproval": {
+    "date": "2026-10-22",
+    "reviewer": "user",
+    "statement": "没问题，下一个直接同时做左上和右上的，你注意检查不要随便被智能体糊弄",
+    "status": "approved",
+    "scope": "Presented left-facing v2 two-outfit full-body appearance and normal walk/start-stop comparison only; excludes unshown combinations, other directions and runtime/device integration.",
+    "artifacts": {
+      "outfits-comparison-120ms.gif": "13b0d239ff2f4bfa4f04dbf3fdff8c0b177c92d8ad3e82d13e83a643949191eb",
+      "start-stop-comparison-120ms.gif": "73f4de5d6c44915bd46a410720c5479b47c8bc0463ea5a2d046dc47fae4d2470",
+      "outfits-comparison-2x.png": "93abe50ce71e519875d35b7ee1f7236c1aeccfd54b74a22e602ef221027e9f33"
+    }
+  },
   "rejectedPredecessor": "Art/Templates/P1-Wardrobe/left/v1-independent",
   "base": "Art/Templates/P1-Neutral/left/walk-r3-complete-transitions",
   "direction": "left",

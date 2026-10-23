@@ -1,0 +1,13 @@
+{
+  "source": "selected-single/00.png",
+  "sourceCanvas": [
+    1254,
+    1254
+  ],
+  "sourceScale": 0.234,
+  "sourceTranslation": [
+    -35.4,
+    -25.8
+  ],
+  "method": "authored scalp/neck/pelvis/sole landmarks and common template scale; no automatic alpha bounds fitting"
+}

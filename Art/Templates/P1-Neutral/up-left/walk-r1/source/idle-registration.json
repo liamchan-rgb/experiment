@@ -1,0 +1,13 @@
+{
+  "source": "selected-single/00.png",
+  "sourceCanvas": [
+    1254,
+    1254
+  ],
+  "sourceScale": 0.22,
+  "sourceTranslation": [
+    -7.2,
+    -14
+  ],
+  "method": "fixed whole-source anatomical scalp/neck/sole registration, same neutral scale; not alpha-bounds fitting"
+}
