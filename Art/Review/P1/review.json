@@ -4,7 +4,7 @@
   "updated": "2026-10-23",
   "workflow": "Review one direction at a time from fixed cardinal and diagonal baselines. Modify and resubmit the same direction until explicit user artwork approval, then advance. Record provenance, feedback and accepted revisions for the future character template.",
   "current": "p1-neutral-up-right-walk-r5-mirrored-up-left",
-  "templateStatus": "Up-left r5 presented idle/walk approved and unchanged. Up-right r5 mirror candidate reproduces approved geometry with fixed top-left lighting; no up-right user approval.",
+  "templateStatus": "Both upper-diagonal r5 visible idle/walk accepted. Next: same-body start/stop transitions, before independent wardrobe.",
   "items": [
     {
       "id": "01-down-idle",
@@ -2529,8 +2529,19 @@
   },
   "upperDiagonalNeutralReview": {
     "id": "p1-neutral-up-right-walk-r5-mirrored-up-left",
-    "status": "main-only-up-right-mirror-candidate",
-    "artApproval": null,
+    "status": "user-approved-presented-up-right-r5",
+    "artApproval": {
+      "date": "2026-10-23",
+      "reviewer": "user",
+      "statement": "没问题，开始下一步",
+      "status": "approved",
+      "scope": "Presented up-right r5 mirrored neutral full-body idle and normal walk only; excludes new start-stop, full hidden anatomy, wardrobe and App/device integration.",
+      "sourceCommit": "a200c25458a200459b8efbb2b7de9e0c70a6710d",
+      "artifacts": {
+        "walk-120ms.gif": "fdddbe86c1e56938675d8a85140beb9594985869deff2351f239577797073c23",
+        "idle-review-2x.png": "b40b4770cdd0c5a08ae6e3dcb28fa901a06ae1f41a7b5c075985c20ee67b9f72"
+      }
+    },
     "directions": [
       "up-right"
     ],
@@ -2568,9 +2579,8 @@
     "runtimeIntegrated": false,
     "ipaBuilt": false,
     "limits": [
-      "Right-up new artwork has no user approval",
-      "No continuous-player viewing claimed",
-      "Neutral idle/walk only; no asymmetric outfits/weapon, hidden anatomy, start-stop or device acceptance"
+      "Presented up-right r5 idle/walk accepted; new transitions and outfits remain unapproved",
+      "Historical main review was whole-body ordered frames, not continuous player viewing"
     ]
   },
   "upperDiagonalNeutralHistory": [
@@ -2788,6 +2798,12 @@
     "id": "p1-neutral-up-left-walk-r5-coupled-clothing",
     "approval": "Art/Review/P1/neutral-up-left-r5/approval.json",
     "normalGif": "Art/Review/P1/neutral-up-left-r5/walk-120ms.gif",
+    "sourceUnchanged": true
+  },
+  "upperRightNeutralApprovedReference": {
+    "id": "p1-neutral-up-right-walk-r5-mirrored-up-left",
+    "approval": "Art/Review/P1/neutral-up-right-r5-mirror/approval.json",
+    "normalGif": "Art/Review/P1/neutral-up-right-r5-mirror/walk-120ms.gif",
     "sourceUnchanged": true
   }
 }
