@@ -9,7 +9,11 @@
 - 用户于2026-10-22明确要求：智能体画的效果有问题，由主线程自己修，并同步到GitHub提示词。
 
 
-## 当前工作：上斜起停过渡；右上r5展示已认可
+## 当前候选：左上／右上r6指定起停
+
+原两方向r5站姿与正常步态已获认可并保持不变。本轮由主线程独自添加每方向两起步、两停步姿势，明确落脚承重顺序，肩/腰/裤口继续共用变形域；右上沿用语义镜像与固定光照。见[左右同屏正常起停动图](../Art/Review/P1/neutral-upper-transitions-r6/start-stop-120ms.gif)、[站姿](../Art/Review/P1/neutral-upper-transitions-r6/idle-review-2x.png)、[主线程检查](../Art/Review/P1/neutral-upper-transitions-r6/art-review.md)。主线程亲自查看1×/2×整身全部26姿势及首尾/起停序列，无法观看连续播放器；新起停用户认可为空。只覆盖idle00接walk01和walk08回idle00，独立外观随后制作。
+
+## 已认可参考：右上r5镜像版展示
 
 用户明确授权开始右上镜像制作，由主线程独自完成及检查。基于已认可的左上r5逐层反射，交换左右语义、关节/支撑脚/脚底标记、近远遮挡与头部局部坐标；保持裤子跟随、接缝与手部效果。使用单一工具光照参考作固定源颜色绑定，校回左上光源，所有alpha和动作轮廓仍精确镜像认可版。见[正常动图](../Art/Review/P1/neutral-up-right-r5-mirror/walk-120ms.gif)、[站姿](../Art/Review/P1/neutral-up-right-r5-mirror/idle-review-2x.png)、[主线程检查](../Art/Review/P1/neutral-up-right-r5-mirror/art-review.md)。已看完整1×/2×整身九帧和首尾关系，工具不能连续播放，不声称实际观看连续播放器。用户以“没问题，开始下一步”认可交付的右上r5站姿/步态，见[approval.json](../Art/Review/P1/neutral-up-right-r5-mirror/approval.json)。左上原认可保持。当前继续指定起步/停步路径，独立衣物随后制作；新动作尚未认可。
 

@@ -37,8 +37,8 @@ def export(folder,review):
  review.mkdir(parents=True,exist_ok=True)
  for sub in ['layers','frames','editable','components']:(folder/sub).mkdir(exist_ok=True)
  frames=[];bindings=[];poses=[];audit=[]
- for binding,old in zip(asset['bindings'],motion['frames']):
-  assert binding['frame']==old['frame'];idx=old['frame'];layers={};paths={};directory=folder/'layers'/f'{idx:02}';directory.mkdir(exist_ok=True)
+ for idx,(binding,old) in enumerate(zip(asset['bindings'],motion['frames'])):
+  assert (binding['clip'],binding['frame'])==(old['clip'],old['frame']);layers={};paths={};directory=folder/'layers'/f'{idx:02}';directory.mkdir(exist_ok=True)
   for slot,path in binding['layers'].items():
    im=Image.open(src/path).convert('RGBA').transpose(Image.Transpose.FLIP_LEFT_RIGHT);im=retexture(im,slot,cfg,folder,idx);newslot=side(slot);q=directory/(newslot+'.png');im.save(q);layers[newslot]=im;paths[newslot]=str(q.relative_to(folder))
   order=[side(slot) for slot in old['drawOrder']];layers={slot:layers[slot] for slot in order};whole=editable.editable(folder/'editable',f'{idx:02}',layers);whole.save(folder/'frames'/f'{idx:02}.png');frames.append(whole)
@@ -51,10 +51,10 @@ def export(folder,review):
    v=copy.deepcopy(socket);v['position']=[canvas[0]-1-v['position'][0],v['position'][1]]
    if v.get('angleDeg') is not None:v['angleDeg']=(180-v['angleDeg'])%360
    pose['sockets'][side(name)]=v
-  poses.append(pose);bindings.append({'direction':cfg['direction'],'clip':old['clip'],'frame':idx,'layers':paths});audit.append({'frame':idx,'sourceDirection':old['direction'],'sourceFrame':idx,'unchangedFrameTimingMs':motion['durationMs'],'geometryMirrorAxisX':127.5,'semanticSidesExchanged':True,'relightingRGBOnly':bool(cfg.get('lighting')),'alphaDifferenceFromApprovedReflection':0,'support':pose['support'],'headLocalReflection':affine(localF)})
+  poses.append(pose);bindings.append({'direction':cfg['direction'],'clip':old['clip'],'frame':old['frame'],'layers':paths});audit.append({'frame':idx,'sourceDirection':old['direction'],'sourceFrame':old['frame'],'sourceClip':old['clip'],'sourcePoseIndex':idx,'unchangedFrameTimingMs':motion['durationMs'],'geometryMirrorAxisX':127.5,'semanticSidesExchanged':True,'relightingRGBOnly':bool(cfg.get('lighting')),'alphaDifferenceFromApprovedReflection':0,'support':pose['support'],'headLocalReflection':affine(localF)})
  new=copy.deepcopy(asset);new.update(id=cfg['id'],version='5.1.0',directions=[cfg['direction']],slots=[side(s) for s in asset['slots']],bindings=bindings,sourceFiles=['mirror-authoring.json']+[str(p.relative_to(folder)) for sub in ['source','editable'] for p in sorted((folder/sub).rglob('*')) if p.is_file()]);(folder/'asset.json').write_text(json.dumps(new,indent=2)+'\n');newmotion=copy.deepcopy(motion);newmotion.update(status='main-only-mirror-repair-candidate',artApproval=None,baseManifestSHA256=sha(folder/'asset.json'),frames=poses);(folder/'motion.json').write_text(json.dumps(newmotion,indent=2)+'\n')
- board=Image.new('RGB',(768,768),'#17372c');strip=Image.new('RGBA',(2304,256))
+ board=Image.new('RGB',(768,768),'#17372c');strip=Image.new('RGBA',(len(frames)*256,256))
  for i,im in enumerate(frames):x,y=i%3*256,i//3*256;board.paste(preview.flatten(im),(x,y));ImageDraw.Draw(board).text((x+5,y+5),f'{i:02}',fill='white');strip.alpha_composite(im,(i*256,0))
- board.save(review/'nine-poses-fullbody-1x.png');board.resize((1536,1536),Image.Resampling.NEAREST).save(review/'nine-poses-fullbody-2x.png');strip.save(folder/'strip.png');preview.flatten(frames[0],2).save(review/'idle-review-2x.png');preview.gif(frames[1:],review/'walk-120ms.gif');(review/'mirror-audit.json').write_text(json.dumps({'repairAndReviewOwner':'root','subagentsUsed':False,'artApproval':None,'sourceTemplate':cfg['sourceTemplate'],'sourceApproval':cfg['sourceApproval'],'sourceApprovalScope':approval['scope'],'poses':audit},indent=2)+'\n');print('Mirrored pose map exported:',cfg['direction'])
+ board.save(review/'nine-poses-fullbody-1x.png');board.resize((1536,1536),Image.Resampling.NEAREST).save(review/'nine-poses-fullbody-2x.png');strip.save(folder/'strip.png');preview.flatten(frames[0],2).save(review/'idle-review-2x.png');preview.gif(frames[1:9],review/'walk-120ms.gif');(review/'mirror-audit.json').write_text(json.dumps({'repairAndReviewOwner':'root','subagentsUsed':False,'artApproval':None,'sourceTemplate':cfg['sourceTemplate'],'sourceApproval':cfg['sourceApproval'],'sourceApprovalScope':approval['scope'],'transitionApprovalInherited':False,'poses':audit},indent=2)+'\n');print('Mirrored pose map exported:',cfg['direction'])
 if __name__=='__main__':
  p=argparse.ArgumentParser();p.add_argument('folder',type=Path);p.add_argument('--review',type=Path,required=True);a=p.parse_args();export(a.folder,a.review)

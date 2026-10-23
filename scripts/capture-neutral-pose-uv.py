@@ -27,12 +27,12 @@ def capture(source,output):
  exp.sampler=wrap
  with tempfile.TemporaryDirectory(prefix='p1-approved-uv-') as temp:
   clone=Path(temp)/'template';review=Path(temp)/'review';shutil.copytree(source,clone);exp.export(clone,review)
-  for i in range(9):assert sha(clone/'frames'/f'{i:02}.png')==sha(source/'frames'/f'{i:02}.png'),('capture changed approved pixels',i)
- assert state['frame']==8
+  for i in range(len(motion['frames'])):assert sha(clone/'frames'/f'{i:02}.png')==sha(source/'frames'/f'{i:02}.png'),('capture changed approved pixels',i)
+ assert state['frame']==len(motion['frames'])-1
  origin=cfg['headLocalOrigin'];base=Image.open(source/cfg['headSource']['image']).convert('RGBA');a=np.array(uv);a[:,:,3]=np.array(base)[:,:,3];headuv=Image.fromarray(a)
  for i,f in enumerate(motion['frames']):
   aa,b,c,d,x,y=f['headToCanvas'];full=np.array([[aa,c,x],[b,d,y],[0,0,1.]])@np.array([[1,0,-origin[0]],[0,1,-origin[1]],[0,0,1.]])
   exp.compose.place(headuv,exp.affine(full),(256,256)).save(output/f'{i:02}'/'head.base.png')
- (output/'capture.json').write_text(json.dumps({'sourceTemplate':str(source.relative_to(R)),'sourceManifestSHA256':sha(source/'asset.json'),'frames':9,'sourcePixelsUnchanged':True,'uvChannels':{'R':'source x pixel centre','G':'source y pixel centre','A':'valid coordinate'},'sampling':'nearest identical to approved offline exporter'},indent=2)+'\n');print('Captured approved pose UV coordinates')
+ (output/'capture.json').write_text(json.dumps({'sourceTemplate':str(source.relative_to(R)),'sourceManifestSHA256':sha(source/'asset.json'),'frames':len(motion['frames']),'sourcePixelsUnchanged':True,'uvChannels':{'R':'source x pixel centre','G':'source y pixel centre','A':'valid coordinate'},'sampling':'nearest identical to approved offline exporter'},indent=2)+'\n');print('Captured approved pose UV coordinates')
 if __name__=='__main__':
  p=argparse.ArgumentParser();p.add_argument('source',type=Path);p.add_argument('output',type=Path);a=p.parse_args();capture(a.source.resolve(),a.output.resolve())

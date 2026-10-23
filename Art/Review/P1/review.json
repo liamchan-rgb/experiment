@@ -3,8 +3,8 @@
   "format": 3,
   "updated": "2026-10-23",
   "workflow": "Review one direction at a time from fixed cardinal and diagonal baselines. Modify and resubmit the same direction until explicit user artwork approval, then advance. Record provenance, feedback and accepted revisions for the future character template.",
-  "current": "p1-neutral-up-right-walk-r5-mirrored-up-left",
-  "templateStatus": "Both upper-diagonal r5 visible idle/walk accepted. Next: same-body start/stop transitions, before independent wardrobe.",
+  "current": "p1-neutral-upper-transitions-r6",
+  "templateStatus": "Both upper-diagonal r5 idle/walk presentations approved and preserved. New r6 specified start/stop paths submitted for review; independent wardrobe next.",
   "items": [
     {
       "id": "01-down-idle",
@@ -2528,60 +2528,51 @@
     "ipaBuilt": false
   },
   "upperDiagonalNeutralReview": {
-    "id": "p1-neutral-up-right-walk-r5-mirrored-up-left",
-    "status": "user-approved-presented-up-right-r5",
-    "artApproval": {
-      "date": "2026-10-23",
-      "reviewer": "user",
-      "statement": "没问题，开始下一步",
-      "status": "approved",
-      "scope": "Presented up-right r5 mirrored neutral full-body idle and normal walk only; excludes new start-stop, full hidden anatomy, wardrobe and App/device integration.",
-      "sourceCommit": "a200c25458a200459b8efbb2b7de9e0c70a6710d",
-      "artifacts": {
-        "walk-120ms.gif": "fdddbe86c1e56938675d8a85140beb9594985869deff2351f239577797073c23",
-        "idle-review-2x.png": "b40b4770cdd0c5a08ae6e3dcb28fa901a06ae1f41a7b5c075985c20ee67b9f72"
-      }
-    },
+    "id": "p1-neutral-upper-transitions-r6",
+    "status": "main-reviewed-specified-transition-candidate",
+    "artApproval": null,
     "directions": [
+      "up-left",
       "up-right"
     ],
-    "sourceApprovedDirection": "up-left",
-    "sourceApproval": "Art/Review/P1/neutral-up-left-r5/approval.json",
-    "userInstruction": {
-      "date": "2026-10-23",
-      "statement": "那现在开始尝试镜像的方式做右上"
-    },
     "repairAndReviewOwner": "root",
     "subagentsUsed": false,
-    "method": "Offline approved-pose reflection with side/joint/support/occlusion/head-local coordinate conversion; single imagegen top-left-light reference baked through fixed source UV; approved mirrored alpha and silhouettes preserved",
-    "mainReview": "Root personally inspected all1x/2x full-body idle/walk frames and ordered01-08-01; still-only viewer, no continuous-player viewing claimed.",
+    "userInstruction": {
+      "date": "2026-10-23",
+      "statement": "没问题，开始下一步"
+    },
+    "method": "Preserve 18 accepted neutral idle/walk frames, add 2 start and 2 stop poses per direction on shared clothing/joint domains; explicitly ground support feet; reflect right semantic pose maps and reuse fixed-lighting source UVs",
+    "mainReview": "Main personally inspected all26 whole-body poses at1x/2x and ordered transition boundary sequences; no continuous-player viewing claimed",
     "technical": {
-      "actualCompositorPoses": 9,
-      "semanticLayerAlphaReflections": 72,
-      "headLocalAttachmentChecks": 9,
-      "anatomicalSideAndSupportMappingChecks": 9,
+      "actualCompositorPoses": 26,
+      "newTransitionPoses": 8,
+      "approvedFramesUnchanged": 18,
+      "approvedLayersUnchanged": 144,
+      "semanticLayersWithoutOrphans": 208,
       "newJunctionAlphaHoles": 0,
-      "completeArmPartitionChecks": 18,
-      "nearHandsPreserved": 9,
-      "independentPantsWalkFrames": 8,
-      "headHighlightsStayUpperLeft": 9,
-      "byteIdenticalSourceAndPoseFiles": 256,
-      "sourceApprovedArtifactsUnchanged": true,
+      "headLocalMirrorAttachments": 13,
+      "byteIdenticalReexportFiles": 600,
+      "approvedSourceFilesUnchanged": 432,
+      "normalSpeedGifs": 6,
       "contractTests": 26,
       "compositorTests": 21
     },
     "artifacts": {
-      "normalGif": "Art/Review/P1/neutral-up-right-r5-mirror/walk-120ms.gif",
-      "idle": "Art/Review/P1/neutral-up-right-r5-mirror/idle-review-2x.png",
-      "artReview": "Art/Review/P1/neutral-up-right-r5-mirror/art-review.md",
-      "validation": "Art/Review/P1/neutral-up-right-r5-mirror/validation.json"
+      "normalGif": "Art/Review/P1/neutral-upper-transitions-r6/start-stop-120ms.gif",
+      "walkGif": "Art/Review/P1/neutral-upper-transitions-r6/walk-120ms.gif",
+      "idle": "Art/Review/P1/neutral-upper-transitions-r6/idle-review-2x.png",
+      "artReview": "Art/Review/P1/neutral-upper-transitions-r6/art-review.md",
+      "validation": "Art/Review/P1/neutral-upper-transitions-r6/validation.json"
     },
     "runtimeIntegrated": false,
     "ipaBuilt": false,
     "limits": [
-      "Presented up-right r5 idle/walk accepted; new transitions and outfits remain unapproved",
-      "Historical main review was whole-body ordered frames, not continuous player viewing"
-    ]
+      "New transition art approval is null",
+      "Only idle00 -> start01/02 -> walk01 and walk08 -> stop01/02 -> idle00; no arbitrary phase interrupts",
+      "Main whole-body frame review does not claim continuous-player playback",
+      "No full hidden anatomy, wardrobe combination, App/device or IPA validation"
+    ],
+    "next": "Independent upper-diagonal hair/clothing and back-mounted equipment on these shared bodies and action maps after transition review"
   },
   "upperDiagonalNeutralHistory": [
     {
@@ -2778,6 +2769,62 @@
         "method": "Mirror approved up-left motion and geometry; exchange anatomical side labels and occlusion; correct fixed lighting and future asymmetric assets",
         "status": "feasibility-discussion-only-no-new-artwork"
       }
+    },
+    {
+      "id": "p1-neutral-up-right-walk-r5-mirrored-up-left",
+      "status": "user-approved-presented-up-right-r5",
+      "artApproval": {
+        "date": "2026-10-23",
+        "reviewer": "user",
+        "statement": "没问题，开始下一步",
+        "status": "approved",
+        "scope": "Presented up-right r5 mirrored neutral full-body idle and normal walk only; excludes new start-stop, full hidden anatomy, wardrobe and App/device integration.",
+        "sourceCommit": "a200c25458a200459b8efbb2b7de9e0c70a6710d",
+        "artifacts": {
+          "walk-120ms.gif": "fdddbe86c1e56938675d8a85140beb9594985869deff2351f239577797073c23",
+          "idle-review-2x.png": "b40b4770cdd0c5a08ae6e3dcb28fa901a06ae1f41a7b5c075985c20ee67b9f72"
+        }
+      },
+      "directions": [
+        "up-right"
+      ],
+      "sourceApprovedDirection": "up-left",
+      "sourceApproval": "Art/Review/P1/neutral-up-left-r5/approval.json",
+      "userInstruction": {
+        "date": "2026-10-23",
+        "statement": "那现在开始尝试镜像的方式做右上"
+      },
+      "repairAndReviewOwner": "root",
+      "subagentsUsed": false,
+      "method": "Offline approved-pose reflection with side/joint/support/occlusion/head-local coordinate conversion; single imagegen top-left-light reference baked through fixed source UV; approved mirrored alpha and silhouettes preserved",
+      "mainReview": "Root personally inspected all1x/2x full-body idle/walk frames and ordered01-08-01; still-only viewer, no continuous-player viewing claimed.",
+      "technical": {
+        "actualCompositorPoses": 9,
+        "semanticLayerAlphaReflections": 72,
+        "headLocalAttachmentChecks": 9,
+        "anatomicalSideAndSupportMappingChecks": 9,
+        "newJunctionAlphaHoles": 0,
+        "completeArmPartitionChecks": 18,
+        "nearHandsPreserved": 9,
+        "independentPantsWalkFrames": 8,
+        "headHighlightsStayUpperLeft": 9,
+        "byteIdenticalSourceAndPoseFiles": 256,
+        "sourceApprovedArtifactsUnchanged": true,
+        "contractTests": 26,
+        "compositorTests": 21
+      },
+      "artifacts": {
+        "normalGif": "Art/Review/P1/neutral-up-right-r5-mirror/walk-120ms.gif",
+        "idle": "Art/Review/P1/neutral-up-right-r5-mirror/idle-review-2x.png",
+        "artReview": "Art/Review/P1/neutral-up-right-r5-mirror/art-review.md",
+        "validation": "Art/Review/P1/neutral-up-right-r5-mirror/validation.json"
+      },
+      "runtimeIntegrated": false,
+      "ipaBuilt": false,
+      "limits": [
+        "Presented up-right r5 idle/walk accepted; new transitions and outfits remain unapproved",
+        "Historical main review was whole-body ordered frames, not continuous player viewing"
+      ]
     }
   ],
   "rejectedWorkInProgress": [

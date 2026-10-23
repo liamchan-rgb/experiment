@@ -44,8 +44,9 @@ def export(folder,review):
  j={k:np.array(v,float) for k,v in cfg['joints'].items()};w=cfg['walk'];couple=cfg['coupling'];dsgn=cfg['facing'][0];far,near=('right','left') if dsgn<0 else ('left','right');order=['body.leg.'+far,'body.leg.'+near,'body.arm.'+far,'body.hand.'+far,'body.torso','body.arm.'+near,'body.hand.'+near,'head.base']
  x0,y0,x1,y1=couple['domain'];gx,gy=np.meshgrid(np.arange(x0,x1+1,couple['gridStep']),np.arange(y0,y1+1,couple['gridStep']));src=np.c_[gx.ravel(),gy.ravel()].astype(float)
  frames=[];bindings=[];motion=[];audit=[]
- for idx in range(9):
-  walk=idx>0;p=(idx-1)/8 if walk else 0;theta=2*math.pi*p;bob=w['bodyBob']*math.cos(2*theta) if walk else 0;sway=-w['weightShift']*math.sin(theta) if walk else 0
+ schedule=[{'clip':'idle','frame':0,'phase':0,'amount':0}]+[{'clip':'walk','frame':i,'phase':(i-1)/8,'amount':1} for i in range(1,9)]+cfg.get('transitionPoses',[])
+ for idx,spec in enumerate(schedule):
+  walk=idx>0;p=spec['phase'];theta=2*math.pi*p;bob=w['bodyBob']*math.cos(2*theta) if walk else 0;sway=-w['weightShift']*math.sin(theta) if walk else 0
   upper=rotate(-w['torsoTurn']*math.sin(theta) if walk else 0,j['waist'],[sway,bob]);pelvis=rotate(w['pelvisTurn']*math.sin(theta) if walk else 0,j['pelvis'],[sway,bob]);joint={};contacts={};sole={};legmaps={};armmaps={};pantmaps={};transforms={}
   for side in ['left','right']:
    cap=side.title();phase=(p+(0 if side=='left' else .5))%1;H,K,A=[j[n+cap] for n in ['hip','knee','ankle']];hip=xy(pelvis,H)
@@ -60,6 +61,42 @@ def export(folder,review):
    S,E,W=[j[n+cap] for n in ['shoulder','elbow','wrist']];shoulder=xy(upper,S);a=dsgn*w['armSwing']*math.cos(2*math.pi*phase) if walk else 0;b=a+w['elbowFlex']*(.35+.65*math.sin(2*math.pi*phase+.7)) if walk else 0;elbow=shoulder+xy(rotate(a),E-S);wrist=elbow+xy(rotate(b),W-E);hm=rotate(b+(w['wristFollow']*math.sin(2*math.pi*phase-.5) if walk else 0),W,wrist-W);armmaps[side]=[chain(S,E,shoulder,elbow),chain(E,W,elbow,wrist),hm]
    for key,mat in zip(['upperarm','forearm','hand'],armmaps[side]):transforms[key+'.'+side]=affine(mat)
    for name,value in [('hip',hip),('knee',knee),('ankle',ankle),('shoulder',shoulder),('elbow',elbow),('wrist',wrist)]:joint[name+cap]=value.tolist()
+  if spec['clip'] in ('walk-start','walk-stop'):
+   amount=spec['amount']
+   # Interpolate joint targets and rigid rotations, never crossfade raster poses.
+   upper=rotate(-w['torsoTurn']*math.sin(theta)*amount,j['waist'],[sway*amount,bob*amount])
+   pelvis=rotate(w['pelvisTurn']*math.sin(theta)*amount,j['pelvis'],[sway*amount,bob*amount])
+   for side in ['left','right']:
+    cap=side.title();phase=(p+(0 if side=='left' else .5))%1
+    H,K,A=[j[n+cap] for n in ['hip','knee','ankle']];hip=xy(pelvis,H)
+    knee=K+(np.array(joint['knee'+cap])-K)*amount
+    ankle=A+(np.array(joint['ankle'+cap])-A)*amount
+    # Lift the advancing foot on the authored take-off/settle path.
+    extra=spec.get('footLift',{}).get(side,0);ankle[1]-=extra;knee[1]-=extra*.5
+    angle=contacts[side]['footAngleDeg']*amount;fm=rotate(angle,A)
+    anchor=max(cfg['footContacts.'+side]['contactPolygon'],key=lambda pt:xy(fm,pt)[1])
+    ground=cfg['footContacts.'+side]['flat'][1]+(contacts[side]['groundY']-cfg['footContacts.'+side]['flat'][1])*amount
+    support=spec['support'];grounded=support=='both' or support==side
+    if grounded:
+     correction=ground-(xy(fm,anchor)[1]+ankle[1]-A[1])
+     ankle[1]+=correction;knee[1]+=correction*.5
+    foot=fm.copy();foot[:2,2]+=ankle-A
+    legmaps[side]=[chain(H,K,hip,knee),chain(K,A,knee,ankle),foot]
+    turn=math.degrees(math.atan2(*(knee-hip)[::-1])-math.atan2(*(K-H)[::-1]))
+    pantmaps[side]=rotate(turn*couple['hemThighFollow'],H,hip-H)
+    fp=xy(foot,anchor);sole[side]=np.rint(fp).astype(int).tolist()
+    ground=cfg['footContacts.'+side]['flat'][1]+(contacts[side]['groundY']-cfg['footContacts.'+side]['flat'][1])*amount
+    contacts[side]={'type':'transition','point':fp.tolist(),'groundY':float(ground),'airborne':not grounded,'footAngleDeg':angle,'groundClearance':float(ground-fp[1])}
+    S,E,W=[j[n+cap] for n in ['shoulder','elbow','wrist']];shoulder=xy(upper,S)
+    a=dsgn*w['armSwing']*math.cos(2*math.pi*phase)*amount
+    b=a+w['elbowFlex']*(.35+.65*math.sin(2*math.pi*phase+.7))*amount
+    elbow=shoulder+xy(rotate(a),E-S);wrist=elbow+xy(rotate(b),W-E)
+    hm=rotate(b+w['wristFollow']*math.sin(2*math.pi*phase-.5)*amount,W,wrist-W)
+    armmaps[side]=[chain(S,E,shoulder,elbow),chain(E,W,elbow,wrist),hm]
+    for key,mat in zip(['thigh','shin','foot'],legmaps[side]):transforms[key+'.'+side]=affine(mat)
+    for key,mat in zip(['upperarm','forearm','hand'],armmaps[side]):transforms[key+'.'+side]=affine(mat)
+    for name,value in [('hip',hip),('knee',knee),('ankle',ankle),('shoulder',shoulder),('elbow',elbow),('wrist',wrist)]:joint[name+cap]=value.tolist()
+   bob*=amount;sway*=amount
   # Same spatial field is used for shoulders, shirt, belt, shorts and thigh roots.
   waist=smooth(src[:,1],*couple['waistY']);body=blend(transform(upper,src),transform(pelvis,src),waist)
   mid=(j['hipLeft'][0]+j['hipRight'][0])/2;sideweight=smooth(src[:,0],mid-3,mid+3);pantfield=blend(transform(pantmaps['left'],src),transform(pantmaps['right'],src),sideweight);body=blend(body,pantfield,smooth(src[:,1],*couple['hemFollowY']))
@@ -73,19 +110,19 @@ def export(folder,review):
     fa=np.array(full);ha=np.array(hand);yy,xx=np.mgrid[:256,:256];hide=(np.array(components['shirt'])[:,:,3]>128)&(yy<j['shoulder'+side.title()][1]+13);fa[hide]=0;ha[hide]=0;full=Image.fromarray(fa);hand=Image.fromarray(ha)
    fa=np.array(full);ha=np.array(hand);fa[ha[:,:,3]>0]=0;rendered['body.arm.'+side]=Image.fromarray(fa);rendered['body.hand.'+side]=hand;components['complete-arm.'+side]=full
    K,A=[j[n+side.title()] for n in ['knee','ankle']];legfield=segment_field(src,legmaps[side],[(K[1],4),(A[1],3)]);dst=blend(body,legfield,smooth(src[:,1],*couple['legIndependentY']));rendered['body.leg.'+side]=sampler(src,dst)(parts['leg.'+side])
-  headmat=upper@rotate(.45*math.sin(theta-.3) if walk else 0,j['neck']);rendered['head.base']=compose.place(head,affine(headmat),(256,256));joint['neck']=xy(upper,j['neck']).tolist();transforms.update(upper=affine(upper),pelvis=affine(pelvis),head=affine(headmat));rendered={slot:rendered[slot] for slot in order}
+  headmat=upper@rotate(.45*math.sin(theta-.3)*spec['amount'] if walk else 0,j['neck']);rendered['head.base']=compose.place(head,affine(headmat),(256,256));joint['neck']=xy(upper,j['neck']).tolist();transforms.update(upper=affine(upper),pelvis=affine(pelvis),head=affine(headmat));rendered={slot:rendered[slot] for slot in order}
   directory=folder/'layers'/f'{idx:02}';directory.mkdir(exist_ok=True);paths={}
   for slot,im in rendered.items():q=directory/(slot+'.png');im.save(q);paths[slot]=str(q.relative_to(folder))
   componentdir=folder/'components'/f'{idx:02}';componentdir.mkdir(exist_ok=True)
   for name,im in components.items():im.save(componentdir/(name+'.png'))
   shared(parts['junction-reference']).save(componentdir/'junction-reference.png');shared(Image.open(folder/cfg['junctionZones']).convert('RGBA')).save(componentdir/'junction-zones.png')
-  whole=editable.editable(folder/'editable',f'{idx:02}',rendered);whole.save(folder/'frames'/f'{idx:02}.png');frames.append(whole);clip='walk' if walk else 'idle';bindings.append({'direction':cfg['direction'],'clip':clip,'frame':idx,'layers':paths});origin=cfg['headLocalOrigin'];headlocal=headmat@np.array([[1,0,origin[0]],[0,1,origin[1]],[0,0,1]])
-  motion.append({'direction':cfg['direction'],'clip':clip,'frame':idx,'facing':cfg['facing'],'headToCanvas':affine(headlocal),'drawOrder':order,'joints':joint,'soleMarkers':sole,'support':'both' if not walk else ('left' if p<.5 else 'right'),'sockets':{},'artApproval':None});audit.append({'frame':idx,'partTransforms':transforms,'contacts':contacts,'bodyBob':bob,'weightShift':sway,'sharedJunctionFieldSHA256':hashlib.sha256(body.astype('<f8').tobytes()).hexdigest(),'pantsFollowBothThighs':True,'independentPantsSource':True,'rasterRepairs':[]})
+  whole=editable.editable(folder/'editable',f'{idx:02}',rendered);whole.save(folder/'frames'/f'{idx:02}.png');frames.append(whole);clip=spec['clip'];bindings.append({'direction':cfg['direction'],'clip':clip,'frame':spec['frame'],'layers':paths});origin=cfg['headLocalOrigin'];headlocal=headmat@np.array([[1,0,origin[0]],[0,1,origin[1]],[0,0,1]])
+  motion.append({'direction':cfg['direction'],'clip':clip,'frame':spec['frame'],'facing':cfg['facing'],'headToCanvas':affine(headlocal),'drawOrder':order,'joints':joint,'soleMarkers':sole,'support':spec.get('support','both' if not walk else ('left' if p<.5 else 'right')),'sockets':{},'artApproval':None});audit.append({'frame':idx,'partTransforms':transforms,'contacts':contacts,'bodyBob':bob,'weightShift':sway,'sharedJunctionFieldSHA256':hashlib.sha256(body.astype('<f8').tobytes()).hexdigest(),'pantsFollowBothThighs':True,'independentPantsSource':True,'rasterRepairs':[]})
   # Preserve exact shared maps at visible seam landmarks for auditing.
   probes=np.array([[116,138],[141,141],[128,162],[119,176],[137,176],[128,175]],float);inv=LinearNDInterpolator(src,body);audit[-1]['junctionLandmarks']=[{'source':p.tolist(),'destination':q.tolist()} for p,q in zip(probes,inv(probes))]
- asset={'schemaVersion':'1.0.0','id':cfg['id'],'version':'5.0.0','part':'base','compatibility':cfg['compatibility'],'mode':'pose-map','slots':order,'directions':[cfg['direction']],'clips':['idle','walk'],'bindings':bindings,'sourceFiles':['authoring.json']+[str(q.relative_to(folder)) for sub in ['source','editable'] for q in sorted((folder/sub).rglob('*')) if q.is_file()]};(folder/'asset.json').write_text(json.dumps(asset,indent=2)+'\n');(folder/'motion.json').write_text(json.dumps({'schemaVersion':'1.0.0','rig':'p1-chibi-v1','status':'main-only-repair-candidate','artApproval':None,'canvas':[256,256],'compatibility':cfg['compatibility'],'baseManifestSHA256':sha(folder/'asset.json'),'durationMs':120,'cycleFrames':list(range(1,9)),'alphaFitOrPerPartResize':False,'frames':motion},indent=2)+'\n');(review/'rig-audit.json').write_text(json.dumps({'repairAndReviewOwner':'root','subagentsUsed':False,'artApproval':None,'poses':audit},indent=2)+'\n')
- board=Image.new('RGB',(768,768),'#17372c');strip=Image.new('RGBA',(2304,256))
+ asset={'schemaVersion':'1.0.0','id':cfg['id'],'version':'5.0.0','part':'base','compatibility':cfg['compatibility'],'mode':'pose-map','slots':order,'directions':[cfg['direction']],'clips':list(dict.fromkeys(b['clip'] for b in bindings)),'bindings':bindings,'sourceFiles':['authoring.json']+[str(q.relative_to(folder)) for sub in ['source','editable'] for q in sorted((folder/sub).rglob('*')) if q.is_file()]};(folder/'asset.json').write_text(json.dumps(asset,indent=2)+'\n');(folder/'motion.json').write_text(json.dumps({'schemaVersion':'1.0.0','rig':'p1-chibi-v1','status':'main-only-repair-candidate','artApproval':None,'canvas':[256,256],'compatibility':cfg['compatibility'],'baseManifestSHA256':sha(folder/'asset.json'),'durationMs':120,'cycleFrames':list(range(1,9)),'alphaFitOrPerPartResize':False,'frames':motion},indent=2)+'\n');(review/'rig-audit.json').write_text(json.dumps({'repairAndReviewOwner':'root','subagentsUsed':False,'artApproval':None,'poses':audit},indent=2)+'\n')
+ board=Image.new('RGB',(768,768),'#17372c');strip=Image.new('RGBA',(len(frames)*256,256))
  for i,im in enumerate(frames):x,y=i%3*256,i//3*256;board.paste(preview.flatten(im),(x,y));ImageDraw.Draw(board).text((x+5,y+5),f'{i:02}',fill='white');strip.alpha_composite(im,(i*256,0))
- board.save(review/'nine-poses-fullbody-1x.png');board.resize((1536,1536),Image.Resampling.NEAREST).save(review/'nine-poses-fullbody-2x.png');strip.save(folder/'strip.png');preview.flatten(frames[0],2).save(review/'idle-review-2x.png');preview.gif(frames[1:],review/'walk-120ms.gif');print(cfg['direction'],'coupled clothing and junctions exported')
+ board.save(review/'nine-poses-fullbody-1x.png');board.resize((1536,1536),Image.Resampling.NEAREST).save(review/'nine-poses-fullbody-2x.png');strip.save(folder/'strip.png');preview.flatten(frames[0],2).save(review/'idle-review-2x.png');preview.gif(frames[1:9],review/'walk-120ms.gif');print(cfg['direction'],'coupled clothing and junctions exported')
 if __name__=='__main__':
  p=argparse.ArgumentParser();p.add_argument('folder',type=Path);p.add_argument('--review',type=Path,required=True);a=p.parse_args();export(a.folder,a.review)
