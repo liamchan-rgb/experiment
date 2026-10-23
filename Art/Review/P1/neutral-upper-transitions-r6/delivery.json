@@ -1,0 +1,166 @@
+{
+  "status": "verified-public-https-delivery",
+  "verifiedAtUTC": "2026-10-23T11:04:57.136155+00:00",
+  "sourceCommit": "53e3a9b2077a1f218c21ecc1ac7f2d849a31b536",
+  "branch": "fix/build33-face-grounding-camera",
+  "directions": [
+    "up-left",
+    "up-right"
+  ],
+  "artApproval": null,
+  "repairAndReviewOwner": "root",
+  "subagentsUsed": false,
+  "artifacts": [
+    {
+      "file": "start-stop-120ms.gif",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/53e3a9b2077a1f218c21ecc1ac7f2d849a31b536/Art/Review/P1/neutral-upper-transitions-r6/start-stop-120ms.gif",
+      "httpStatus": 200,
+      "contentType": "image/gif",
+      "sha256": "c8e791691a6df95aa2c295c37493e5b325f607f9068d9ebc4363c2b4c48d28d9",
+      "byteCount": 560436,
+      "dimensions": [
+        1024,
+        512
+      ],
+      "frames": 22,
+      "durationsMs": [
+        480,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        480
+      ],
+      "loop": 0
+    },
+    {
+      "file": "walk-120ms.gif",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/53e3a9b2077a1f218c21ecc1ac7f2d849a31b536/Art/Review/P1/neutral-upper-transitions-r6/walk-120ms.gif",
+      "httpStatus": 200,
+      "contentType": "image/gif",
+      "sha256": "3459f23007b2989b5848658e839e5642ce229a90a9e07f5b8225d27f50877e1f",
+      "byteCount": 203832,
+      "dimensions": [
+        1024,
+        512
+      ],
+      "frames": 8,
+      "durationsMs": [
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120
+      ],
+      "loop": 0
+    },
+    {
+      "file": "idle-review-2x.png",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/53e3a9b2077a1f218c21ecc1ac7f2d849a31b536/Art/Review/P1/neutral-upper-transitions-r6/idle-review-2x.png",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "sha256": "e2af630ecb83327ec9eff6ece94b9133256119ea413ea819f01b2a908ef1b3cc",
+      "byteCount": 33551,
+      "dimensions": [
+        1024,
+        512
+      ]
+    },
+    {
+      "file": "up-left/start-stop-120ms.gif",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/53e3a9b2077a1f218c21ecc1ac7f2d849a31b536/Art/Review/P1/neutral-upper-transitions-r6/up-left/start-stop-120ms.gif",
+      "httpStatus": 200,
+      "contentType": "image/gif",
+      "sha256": "b466553f1273068b4a2428efe187836b364c404999d5bedb599767bfe38e61b0",
+      "byteCount": 288635,
+      "dimensions": [
+        512,
+        512
+      ],
+      "frames": 22,
+      "durationsMs": [
+        480,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        480
+      ],
+      "loop": 0
+    },
+    {
+      "file": "up-right/start-stop-120ms.gif",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/53e3a9b2077a1f218c21ecc1ac7f2d849a31b536/Art/Review/P1/neutral-upper-transitions-r6/up-right/start-stop-120ms.gif",
+      "httpStatus": 200,
+      "contentType": "image/gif",
+      "sha256": "99f98e1a535b9f470ab3a2294cf3c6e934ae772170824ec716d9587b7f7ac22f",
+      "byteCount": 300206,
+      "dimensions": [
+        512,
+        512
+      ],
+      "frames": 22,
+      "durationsMs": [
+        480,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        480
+      ],
+      "loop": 0
+    }
+  ],
+  "scope": "New specified idle-to-walk01 and walk08-to-idle transition candidate. Accepted r5 idle/walk preserved; no inherited transition, wardrobe or runtime acceptance."
+}

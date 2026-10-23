@@ -10,3 +10,5 @@
 原18张认可帧及144张分层逐字节不变。每方向新增两起步、两停步姿势，保留同一身体/头部/裤口域；右上重用已校正光照源和镜像语义、挂点。当前指定idle00接walk01、walk08收至idle00，不代表任意步相急停或完整隐藏人体。当前工具不能连续播放，主线程检查的是1×/2×完整帧序列，未声称观看连续播放器。无App、设备测试或IPA工作。
 
 复现：在仓库根目录执行 `python scripts/reexport-upper-transitions.py`。新动作沿用公共pose-map合同，无外观ID运行分支；后续独立衣物须覆盖新增四姿势。
+
+[浏览器正常起停动图](https://raw.githubusercontent.com/liamchan-rgb/experiment/53e3a9b2077a1f218c21ecc1ac7f2d849a31b536/Art/Review/P1/neutral-upper-transitions-r6/start-stop-120ms.gif) · [整身站姿](https://raw.githubusercontent.com/liamchan-rgb/experiment/53e3a9b2077a1f218c21ecc1ac7f2d849a31b536/Art/Review/P1/neutral-upper-transitions-r6/idle-review-2x.png)。HTTP200、MIME/哈希及22帧时序均已核对；交付回执见delivery.json。

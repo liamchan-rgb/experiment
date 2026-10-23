@@ -2,13 +2,15 @@
 
 ## 2026-10-23 · 左上／右上r6指定起停过渡
 
+美术提交 `53e3a9b2077a1f218c21ecc1ac7f2d849a31b536` 已发布；[正常同屏起停GIF直链](https://raw.githubusercontent.com/liamchan-rgb/experiment/53e3a9b2077a1f218c21ecc1ac7f2d849a31b536/Art/Review/P1/neutral-upper-transitions-r6/start-stop-120ms.gif)、原行走GIF、站姿及两个方向单独起停GIF共五份交付实测HTTP200、MIME/哈希/时序一致，见 `Art/Review/P1/neutral-upper-transitions-r6/delivery.json`。
+
 用户认可右上r5并要求继续下一步。按此前向左的推进顺序，主线程独自补上斜起停过渡，未使用智能体。原两方向18张认可站姿/步行帧及144张分层逐字节保留，每方向新增两起步与两停步姿势；共同肩/腰/裤口域继续耦合，右上同步镜像左右语义/支撑足/头部局部挂点，复用原固定光照源。
 
 初版收步发现两脚同时悬空，主线程修正为先落脚承重再收回另一脚，末帧双足着地；起步后侧支撑足也按地面锚点校正。整身1×/2×全部26姿势及起停边界序列已亲自检查，未见新增肩髋孔隙、游离边线或近侧手裁切；当前查看器不能连续播放，不写作连续播放器验收。新起停用户认可为空。
 
 26帧公共装配逐像素一致、208语义层无孤立块，肩髋参考区新增透明洞0；右上13次头部局部挂载/左右语义与固定光源核对通过。起步相邻关节最大位移约2.99px（原直接切换7.33px），停步约3.19px（原8.52px）。600份文件两轮重导一致，原432份认可模板文件保持一致，6份GIF重导一致；合同26项、装配21项通过。
 
-[左右同屏正常起停GIF](../Art/Review/P1/neutral-upper-transitions-r6/start-stop-120ms.gif)为22帧：首末站姿各480ms，其余20帧各120ms；[原正常行走](../Art/Review/P1/neutral-upper-transitions-r6/walk-120ms.gif)仍8×120ms。[整身站姿](../Art/Review/P1/neutral-upper-transitions-r6/idle-review-2x.png)、[主线程检查](../Art/Review/P1/neutral-upper-transitions-r6/art-review.md)。发布后实测HTTPS直链并记录交付回执。
+[左右同屏正常起停GIF](../Art/Review/P1/neutral-upper-transitions-r6/start-stop-120ms.gif)为22帧：首末站姿各480ms，其余20帧各120ms；[原正常行走](../Art/Review/P1/neutral-upper-transitions-r6/walk-120ms.gif)仍8×120ms。[整身站姿](../Art/Review/P1/neutral-upper-transitions-r6/idle-review-2x.png)、[主线程检查](../Art/Review/P1/neutral-upper-transitions-r6/art-review.md)。HTTPS直链已实测并记录交付回执。
 
 此项只覆盖idle00接walk01、walk08收至idle00，不扩大为任意步相中断、完整隐藏人体或全外观组合。下一项继续两个上斜方向独立衣物/头部资源与背负装备。未改App运行资源、未运行模拟器或设备、未打包IPA。
 
