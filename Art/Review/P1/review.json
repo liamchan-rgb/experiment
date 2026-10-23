@@ -3,8 +3,8 @@
   "format": 3,
   "updated": "2026-10-23",
   "workflow": "Review one direction at a time from fixed cardinal and diagonal baselines. Modify and resubmit the same direction until explicit user artwork approval, then advance. Record provenance, feedback and accepted revisions for the future character template.",
-  "current": "p1-neutral-upper-diagonals-r2-fixed-limbs",
-  "templateStatus": "Upper diagonal r1 and r2 rejected. Current task is main-thread diagnosis of stiff body/arms, distorted knees, flat translated feet and unreadable gait; no art pass.",
+  "current": "p1-neutral-upper-diagonals-r3-rejected",
+  "templateStatus": "Upper diagonal r3 rejected by user for twisted leg angles and unclear limb/garment boundaries. Main-only re-authoring in progress; no art pass.",
   "items": [
     {
       "id": "01-down-idle",
@@ -2607,6 +2607,20 @@
           "腿部也是在疯狂闪烁"
         ]
       }
+    }
+  ],
+  "rejectedWorkInProgress": [
+    {
+      "id": "p1-neutral-upper-diagonals-r3-clean-joints",
+      "date": "2026-10-23",
+      "status": "rejected-by-user",
+      "reason": [
+        "twisted leg angles",
+        "unclear limb and clothing boundaries"
+      ],
+      "repairAndReviewOwner": "root",
+      "subagentsUsed": false,
+      "artApproval": null
     }
   ]
 }
