@@ -4,7 +4,7 @@
   "updated": "2026-10-23",
   "workflow": "Review one direction at a time from fixed cardinal and diagonal baselines. Modify and resubmit the same direction until explicit user artwork approval, then advance. Record provenance, feedback and accepted revisions for the future character template.",
   "current": "p1-neutral-upper-diagonals-r2-fixed-limbs",
-  "templateStatus": "Upper diagonal r1 rejected for detached hands and flickering legs; r2 fixed-source continuous-limb candidate awaits user art review.",
+  "templateStatus": "Upper diagonal r1 and r2 rejected. Current task is main-thread diagnosis of stiff body/arms, distorted knees, flat translated feet and unreadable gait; no art pass.",
   "items": [
     {
       "id": "01-down-idle",
@@ -2529,7 +2529,7 @@
   },
   "upperDiagonalNeutralReview": {
     "id": "p1-neutral-upper-diagonals-r2-fixed-limbs",
-    "status": "repair-candidate-awaiting-user-art-review",
+    "status": "user-rejected-reinspection-required",
     "artApproval": null,
     "directions": [
       "up-left",
@@ -2560,7 +2560,13 @@
       "User art approval pending",
       "Idle/walk neutral only",
       "No apparel combinations, start-stop, hidden anatomy or device approval"
-    ]
+    ],
+    "internalArtPassWithdrawn": true,
+    "userFeedback": {
+      "date": "2026-10-23",
+      "statement": "还是不行，你自己再检查一下有什么问题，自己描述一下"
+    },
+    "reinspection": "Art/Review/P1/neutral-upper-diagonals-r2/reinspection-r2-rejected.md"
   },
   "upperDiagonalNeutralHistory": [
     {

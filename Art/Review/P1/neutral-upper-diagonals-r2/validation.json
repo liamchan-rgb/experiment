@@ -1,5 +1,5 @@
 {
-  "status": "technical-limb-and-composition-checks-pass-user-art-review-pending",
+  "status": "historical-technical-evidence-user-rejected-r2-art",
   "artApproval": null,
   "actualCompositorPoses": 18,
   "layers": 144,
@@ -2000,5 +2000,8 @@
   "reexport": {
     "files": 198,
     "byteIdentical": true
-  }
+  },
+  "internalArtPassWithdrawn": true,
+  "userFeedback": "还是不行，你自己再检查一下有什么问题，自己描述一下",
+  "reinspection": "reinspection-r2-rejected.md"
 }

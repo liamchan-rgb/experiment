@@ -1,5 +1,12 @@
 # 林间行旅迭代进度 · 2026-10-19
 
+## 2026-10-23 · 上斜r2再次判退，主线程重新描述问题
+
+用户要求“还是不行，你自己再检查一下有什么问题，自己描述一下”。本次不改图、不调动作、不打包，只重新对照最终1×/2×整身全部八帧与作者机制。撤回r2内部美术通过/足够交付结论：上身站桩、臂手整块摆动、膝踝软管式变形、脚掌固定平移而无落跟蹬地、交叠姿态难读、右上远近脚朝向不一致。详细证据见 [主线程复查](../Art/Review/P1/neutral-upper-diagonals-r2/reinspection-r2-rejected.md)。
+
+此前连通、骨长与重导只说明有限技术性质，不能推出自然步态；查看器只显示GIF静帧，主线程实际未完成连续播放器观看，不再将逐帧检查称作完整动态验收。保留图、源与技术记录，新方向美术认可为空。
+
+
 ## 2026-10-23 · 用户判退上斜r1，返修同侧手臂连接与腿闪烁r2
 
 已发布美术提交 `850dab930f42d68800e03b3c5c9f0bf2824e22b1`。[正常同屏GIF直链](https://raw.githubusercontent.com/liamchan-rgb/experiment/850dab930f42d68800e03b3c5c9f0bf2824e22b1/Art/Review/P1/neutral-upper-diagonals-r2/walk-comparison-120ms.gif)及两方向GIF实测HTTP200、image/gif、8×120ms、循环开启、SHA-256与本地一致；站姿HTTP200/image/png/哈希一致，交付回执见 `Art/Review/P1/neutral-upper-diagonals-r2/delivery.json`。
