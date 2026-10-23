@@ -2,6 +2,8 @@
 
 ## 2026-10-23 · 用户判退上斜r1，返修同侧手臂连接与腿闪烁r2
 
+已发布美术提交 `850dab930f42d68800e03b3c5c9f0bf2824e22b1`。[正常同屏GIF直链](https://raw.githubusercontent.com/liamchan-rgb/experiment/850dab930f42d68800e03b3c5c9f0bf2824e22b1/Art/Review/P1/neutral-upper-diagonals-r2/walk-comparison-120ms.gif)及两方向GIF实测HTTP200、image/gif、8×120ms、循环开启、SHA-256与本地一致；站姿HTTP200/image/png/哈希一致，交付回执见 `Art/Review/P1/neutral-upper-diagonals-r2/delivery.json`。
+
 用户指出“这走起来手都要剥离身体了”“腿部也是在疯狂闪烁”。撤回此前内部美术通过结论；原图、作者数据和技术证据保留。根因是逐帧独立腿形/错误像素归属和不稳定关节链，整身连通检查掩盖了局部脱手/抽腿，属于主线程漏检。
 
 主线程重做：每侧臂/手共用固定肩旋转，一份完整腿用严格单调行网格连续变形；固定矢状骨长和连续投影，不逐帧换肢体或抢近远掩膜。清掉误归腿的旧短裤裆边；初次硬分段/过窄步幅方案另存判退，最终增加抬脚迈步量、收小摆臂并修同侧手腿相位。头/躯干原像素保留，公共运行装配器不变。

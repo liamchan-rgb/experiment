@@ -10,3 +10,5 @@
 [同屏正常GIF](walk-comparison-120ms.gif)、[站姿](idle-comparison-2x.png)、[主线程复核与漏检记录](art-review.md)、[技术核对](validation.json)。每方向实际装配1×/2×九姿势和正常循环见各方向目录。
 
 主线程亲自查看最终实际全身全部帧与01→08→01顺序。当前工具只显示GIF静帧，不能将逐帧和计时核对写成已观看播放器连续播放。实际正常GIF仍照常交付，用户美术认可为空。当前未接App，不包含衣装组合、起停、完整隐藏人体或实机验证。
+
+[浏览器正常同屏动图](https://raw.githubusercontent.com/liamchan-rgb/experiment/850dab930f42d68800e03b3c5c9f0bf2824e22b1/Art/Review/P1/neutral-upper-diagonals-r2/walk-comparison-120ms.gif) · [同屏站姿](https://raw.githubusercontent.com/liamchan-rgb/experiment/850dab930f42d68800e03b3c5c9f0bf2824e22b1/Art/Review/P1/neutral-upper-diagonals-r2/idle-comparison-2x.png)。同屏及两方向GIF、站姿均实测HTTP200，MIME/哈希与本地一致，GIF八帧各120ms；见delivery.json。
