@@ -2,13 +2,15 @@
 
 ## 2026-10-23 · 上斜r4：主线程重做髋关节与连续轮廓，清理衣物/肢体归属
 
+美术提交 `295e0ae27829a3b2f496eed11dc2be6cad8a4480` 已发布；[正常同屏GIF直链](https://raw.githubusercontent.com/liamchan-rgb/experiment/295e0ae27829a3b2f496eed11dc2be6cad8a4480/Art/Review/P1/neutral-upper-diagonals-r4/walk-comparison-120ms.gif)及两个单方向GIF、站姿已实测HTTP200，MIME/哈希与本地一致，GIF为8×120ms无限循环。交付验证不等于连续播放器美术验收。
+
 用户判退制作中的r3后继续要求工作。本次由主线程独自返修并审核，无智能体参与。将髋关节移入短裤内部，用整侧连续网格取代圆补片拼接；取消按肤色侵蚀边界，背心/裤口留给躯干，手部与手臂共用网格域。修掉臂上白边、髋根缺口、旧头层颈肩杂线，以及脚源混入另一侧像素。整套重画试稿仍有动作/风格问题，未采用，保留在rejected-probes。
 
 主线程亲自检查两方向实际装配1×/2×全部18姿势和01→08→01顺序。当前工具只显示GIF静帧，未宣称完成连续播放器观看；用户美术认可仍为空。此次是源轮廓/关节返修候选，不能把技术通过写成自然步态已获认可。
 
 公共装配18姿势逐像素一致，144层无游离分量，36同侧腕连接、36整腿连通、72臂/手无衣物灰白、36髋部3像素宽实体走廊通过；源与输出226文件重导逐字节一致；契约26项、装配21项检查通过。已认可方向和公共运行装配器未修改；没有App/设备/IPA工作。
 
-[正常8×120ms同屏GIF](../Art/Review/P1/neutral-upper-diagonals-r4/walk-comparison-120ms.gif)、[站姿](../Art/Review/P1/neutral-upper-diagonals-r4/idle-comparison-2x.png)、[主线程检查](../Art/Review/P1/neutral-upper-diagonals-r4/art-review.md)、[技术记录](../Art/Review/P1/neutral-upper-diagonals-r4/validation.json)。发布后验证HTTPS直链并记录回执。
+[正常8×120ms同屏GIF](../Art/Review/P1/neutral-upper-diagonals-r4/walk-comparison-120ms.gif)、[站姿](../Art/Review/P1/neutral-upper-diagonals-r4/idle-comparison-2x.png)、[主线程检查](../Art/Review/P1/neutral-upper-diagonals-r4/art-review.md)、[技术记录](../Art/Review/P1/neutral-upper-diagonals-r4/validation.json)。HTTPS直链已验证，回执见 `Art/Review/P1/neutral-upper-diagonals-r4/delivery.json`。
 
 
 ## 2026-10-23 · 制作中的上斜r3判退：腿部扭曲与衣物边界破碎
