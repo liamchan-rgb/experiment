@@ -3,8 +3,8 @@
   "format": 3,
   "updated": "2026-10-23",
   "workflow": "Review one direction at a time from fixed cardinal and diagonal baselines. Modify and resubmit the same direction until explicit user artwork approval, then advance. Record provenance, feedback and accepted revisions for the future character template.",
-  "current": "p1-neutral-upper-diagonals-r3-rejected",
-  "templateStatus": "Upper diagonal r3 rejected by user for twisted leg angles and unclear limb/garment boundaries. Main-only re-authoring in progress; no art pass.",
+  "current": "p1-neutral-upper-diagonals-r4-continuous-contours",
+  "templateStatus": "r1/r2/r3 rejected; r4 main-only contour ownership and hip-joint repair, all full-body static poses reviewed. No continuous-player or user art acceptance.",
   "items": [
     {
       "id": "01-down-idle",
@@ -2528,45 +2528,42 @@
     "ipaBuilt": false
   },
   "upperDiagonalNeutralReview": {
-    "id": "p1-neutral-upper-diagonals-r2-fixed-limbs",
-    "status": "user-rejected-reinspection-required",
+    "id": "p1-neutral-upper-diagonals-r4-continuous-contours",
+    "status": "candidate-main-frame-review-only",
     "artApproval": null,
     "directions": [
       "up-left",
       "up-right"
     ],
-    "rejectedPredecessor": "p1-neutral-upper-diagonals-v1",
-    "method": "Fixed arm/hand source transform, fixed whole-leg skin with monotone row mesh and projected constant sagittal chains",
-    "mainReview": "Root actual full-body 1x/2x all 18 poses and 01-08-01 ordered sequence; no continuous player playback claimed by still-only viewer",
+    "rejectedPredecessor": "p1-neutral-upper-diagonals-r3-clean-joints",
+    "repairAndReviewOwner": "root",
+    "subagentsUsed": false,
+    "method": "Hip joints inside shorts; whole-limb contours through a continuous shared mesh; explicit spatial garment ownership without skin-colour erosion; hands share arm mesh domain",
+    "mainReview": "Root inspected actual 1x/2x full-body idle plus all eight walk frames for both directions, ordered 01-08-01. Still-only viewer: continuous playback is not claimed.",
     "technical": {
       "actualCompositorPoses": 18,
-      "wristContacts": 36,
-      "wholeSameSideLegs": 36,
-      "shoulderHipAttachments": 72,
-      "soleMarkers": 36,
-      "constantBoneChains": 16,
-      "byteIdenticalReexportedFiles": 198,
+      "layersWithoutOrphans": 144,
+      "sameSideWristContacts": 36,
+      "sameSideLegConnectivity": 36,
+      "armsAndHandsWithoutFabric": 72,
+      "solidHipCorridors": 36,
+      "byteIdenticalSourceAndPoseFiles": 226,
       "contractTests": 26,
       "compositorTests": 21
     },
     "artifacts": {
-      "normalGif": "Art/Review/P1/neutral-upper-diagonals-r2/walk-comparison-120ms.gif",
-      "idle": "Art/Review/P1/neutral-upper-diagonals-r2/idle-comparison-2x.png",
-      "artReview": "Art/Review/P1/neutral-upper-diagonals-r2/art-review.md",
-      "validation": "Art/Review/P1/neutral-upper-diagonals-r2/validation.json"
+      "normalGif": "Art/Review/P1/neutral-upper-diagonals-r4/walk-comparison-120ms.gif",
+      "idle": "Art/Review/P1/neutral-upper-diagonals-r4/idle-comparison-2x.png",
+      "artReview": "Art/Review/P1/neutral-upper-diagonals-r4/art-review.md",
+      "validation": "Art/Review/P1/neutral-upper-diagonals-r4/validation.json"
     },
     "runtimeIntegrated": false,
+    "ipaBuilt": false,
     "limits": [
-      "User art approval pending",
-      "Idle/walk neutral only",
-      "No apparel combinations, start-stop, hidden anatomy or device approval"
-    ],
-    "internalArtPassWithdrawn": true,
-    "userFeedback": {
-      "date": "2026-10-23",
-      "statement": "还是不行，你自己再检查一下有什么问题，自己描述一下"
-    },
-    "reinspection": "Art/Review/P1/neutral-upper-diagonals-r2/reinspection-r2-rejected.md"
+      "User art approval is null",
+      "Continuous player playback not available",
+      "Idle/walk neutral visible art only; no wardrobe, full hidden anatomy, start/stop or device acceptance"
+    ]
   },
   "upperDiagonalNeutralHistory": [
     {
@@ -2607,6 +2604,59 @@
           "腿部也是在疯狂闪烁"
         ]
       }
+    },
+    {
+      "id": "p1-neutral-upper-diagonals-r2-fixed-limbs",
+      "status": "user-rejected-reinspection-required",
+      "artApproval": null,
+      "directions": [
+        "up-left",
+        "up-right"
+      ],
+      "rejectedPredecessor": "p1-neutral-upper-diagonals-v1",
+      "method": "Fixed arm/hand source transform, fixed whole-leg skin with monotone row mesh and projected constant sagittal chains",
+      "mainReview": "Root actual full-body 1x/2x all 18 poses and 01-08-01 ordered sequence; no continuous player playback claimed by still-only viewer",
+      "technical": {
+        "actualCompositorPoses": 18,
+        "wristContacts": 36,
+        "wholeSameSideLegs": 36,
+        "shoulderHipAttachments": 72,
+        "soleMarkers": 36,
+        "constantBoneChains": 16,
+        "byteIdenticalReexportedFiles": 198,
+        "contractTests": 26,
+        "compositorTests": 21
+      },
+      "artifacts": {
+        "normalGif": "Art/Review/P1/neutral-upper-diagonals-r2/walk-comparison-120ms.gif",
+        "idle": "Art/Review/P1/neutral-upper-diagonals-r2/idle-comparison-2x.png",
+        "artReview": "Art/Review/P1/neutral-upper-diagonals-r2/art-review.md",
+        "validation": "Art/Review/P1/neutral-upper-diagonals-r2/validation.json"
+      },
+      "runtimeIntegrated": false,
+      "limits": [
+        "User art approval pending",
+        "Idle/walk neutral only",
+        "No apparel combinations, start-stop, hidden anatomy or device approval"
+      ],
+      "internalArtPassWithdrawn": true,
+      "userFeedback": {
+        "date": "2026-10-23",
+        "statement": "还是不行，你自己再检查一下有什么问题，自己描述一下"
+      },
+      "reinspection": "Art/Review/P1/neutral-upper-diagonals-r2/reinspection-r2-rejected.md"
+    },
+    {
+      "id": "p1-neutral-upper-diagonals-r3-clean-joints",
+      "date": "2026-10-23",
+      "status": "rejected-by-user",
+      "reason": [
+        "twisted leg angles",
+        "unclear limb and clothing boundaries"
+      ],
+      "repairAndReviewOwner": "root",
+      "subagentsUsed": false,
+      "artApproval": null
     }
   ],
   "rejectedWorkInProgress": [

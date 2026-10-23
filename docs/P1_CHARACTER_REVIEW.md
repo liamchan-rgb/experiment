@@ -9,9 +9,13 @@
 - 用户于2026-10-22明确要求：智能体画的效果有问题，由主线程自己修，并同步到GitHub提示词。
 
 
-## 当前返修：左上／右上手臂与腿部r2
+## 当前返修：左上／右上r4连续轮廓与髋关节
 
-用户指出旧r1脱手、腿闪烁，主线程撤回内部美术通过。r2改为固定源整腿的连续单调网格变形、固定骨长投影和臂手共用肩矩阵，逐侧核对关节及近远遮挡，不再只检查整身连通。[正常同屏GIF](../Art/Review/P1/neutral-upper-diagonals-r2/walk-comparison-120ms.gif)、[站姿](../Art/Review/P1/neutral-upper-diagonals-r2/idle-comparison-2x.png)、[具体漏检与返修](../Art/Review/P1/neutral-upper-diagonals-r2/art-review.md)。主线程亲自检查最终1×/2×全身全部姿势，GIF为8×120ms；新候选仍待用户美术审核，不扩大到App。每次必须实际附GIF及验证过的HTTPS直链。
+r1/r2/r3均已判退，r3具体问题是腿部角度扭曲和四肢/衣物边界模糊。此次主线程独自修复及审核，不使用智能体。髋关节移入短裤内部，整侧轮廓连续驱动；衣物与肢体按空间边界归属，手与臂共用网格域；同时清理旧头层肩线和脚源串入。见[正常同屏GIF](../Art/Review/P1/neutral-upper-diagonals-r4/walk-comparison-120ms.gif)、[站姿](../Art/Review/P1/neutral-upper-diagonals-r4/idle-comparison-2x.png)、[具体修复/检查范围](../Art/Review/P1/neutral-upper-diagonals-r4/art-review.md)。已检查实际装配1×/2×全身全部18姿势，工具不能连续播放，未将逐帧审核称作连续播放验收；用户美术认可为空。
+
+## 已判退：左上／右上r2与r3
+
+r2仍存在僵硬上身/手臂、膝踝变形与不清晰步态，用户追加指出手型、背心白边、臀腿空缺和游离线；r3进一步被指出腿部角度扭曲、衣物/四肢边界模糊。旧候选及技术结果保留，但内部美术通过结论撤回。见[r2复查](../Art/Review/P1/neutral-upper-diagonals-r2/reinspection-r2-rejected.md)、[r3整身判退证据](../Art/Review/P1/neutral-upper-diagonals-r4/rejected-r3/README.md)。
 
 ## 已判退：左上／右上共同中性底模r1（内部通过撤回）
 
