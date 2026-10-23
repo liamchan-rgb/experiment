@@ -2,6 +2,8 @@
 
 ## 2026-10-23 · 右上r5镜像试版：复用认可左上步态，校正固定光照
 
+美术提交 `a200c25458a200459b8efbb2b7de9e0c70a6710d` 已发布；[正常动图直链](https://raw.githubusercontent.com/liamchan-rgb/experiment/a200c25458a200459b8efbb2b7de9e0c70a6710d/Art/Review/P1/neutral-up-right-r5-mirror/walk-120ms.gif)与站姿均实测HTTP200、MIME/哈希一致，GIF八帧各120ms无限循环。交付回执见 `Art/Review/P1/neutral-up-right-r5-mirror/delivery.json`。
+
 用户明确要求开始用镜像方式制作右上。主线程独自制作、修复及审核，未使用智能体。以已认可左上r5为源，逐层镜像并交换左右语义、关节、脚底标记、支撑脚、近远遮挡和头部96px局部挂点；原八帧/120ms时序、裤子跟随、接缝处理和近侧手遮挡均保留。左上认可画面和源清单哈希未改变，旧右上r4判退稿保留。
 
 直接翻图会反转头顶高光。本轮用imagegen提供一份左上方照明参考，主线程固定注册并将颜色绑定到同一源像素坐标，所有动作帧复用；原描边与所有alpha/轮廓保持认可版镜像，不采用参考图的形体或边缘。没有逐帧重新生成人物，也没有运行时拟合/重着色或外观ID分支。
@@ -10,7 +12,7 @@
 
 公共装配九帧逐像素一致，72层alpha精确等于认可左上各层反射；九次头部局部RGBA挂载一致，关节/支撑脚/层级转换通过，肩髋源参考区新增透明洞0，18次整臂/手分区组合一致，近侧手九帧完整。短裤八帧均独立变化，头顶高光九帧保持左上；256份源/输出重导逐字节相同，契约26项、装配21项通过。
 
-[正常8×120ms动图](../Art/Review/P1/neutral-up-right-r5-mirror/walk-120ms.gif)、[整身站姿](../Art/Review/P1/neutral-up-right-r5-mirror/idle-review-2x.png)、[主线程检查](../Art/Review/P1/neutral-up-right-r5-mirror/art-review.md)、[技术验证](../Art/Review/P1/neutral-up-right-r5-mirror/validation.json)。本次不扩大到非对称发型/衣物/背剑、完整隐藏人体、起停或App/设备/IPA。发布后验证HTTPS直链并记录回执。
+[正常8×120ms动图](../Art/Review/P1/neutral-up-right-r5-mirror/walk-120ms.gif)、[整身站姿](../Art/Review/P1/neutral-up-right-r5-mirror/idle-review-2x.png)、[主线程检查](../Art/Review/P1/neutral-up-right-r5-mirror/art-review.md)、[技术验证](../Art/Review/P1/neutral-up-right-r5-mirror/validation.json)。本次不扩大到非对称发型/衣物/背剑、完整隐藏人体、起停或App/设备/IPA。HTTPS直链已验证并记录回执。
 
 
 ## 2026-10-23 · 用户认可左上r5展示，讨论右上镜像复用
