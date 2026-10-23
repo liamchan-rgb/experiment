@@ -2,6 +2,8 @@
 
 ## 2026-10-23 · 同时完成左上／右上中性底模与正常步态候选
 
+已发布美术提交 `ee8b719d8ae477eddcd9579e27f3cd2b38993a33`。[正常同屏GIF直链](https://raw.githubusercontent.com/liamchan-rgb/experiment/ee8b719d8ae477eddcd9579e27f3cd2b38993a33/Art/Review/P1/neutral-upper-diagonals-v1/walk-comparison-120ms.gif)及两方向GIF实测HTTP200、image/gif、8×120ms、循环开启、SHA-256与本地一致；站姿HTTP200/image/png/哈希一致，交付回执见 `Art/Review/P1/neutral-upper-diagonals-v1/delivery.json`。
+
 用户要求两个方向同时推进并由主线程亲自纠正智能体问题。三名Luna辅助制作／审核后，主线程判退侧脸、重复支撑、相位错位和不准的分层，修复第三手、跨背摆臂、躯干洞、交叉腿归属、落脚过渡及肩旁残边；原稿和判退记录均保留。每方向idle00+walk01–08，复用共同头／躯干，头部轻微摆动，离线组件注册显式记录。
 
 主线程检查实际装配的1×/2×全身及全部01→08→01序列。正常同屏GIF为8×120ms；当前查看器仅显示GIF静帧，未声称已实际观看连续播放。2清单、18实际装配、144层、18头变换、36足底标记、源所有权/作者合成零差及可见脱离组件0通过；重导字节一致，26合同/21装配器回归通过。技术证据不代替用户美术认可。

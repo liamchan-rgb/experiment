@@ -23,3 +23,5 @@
 - 发布直链核对：`delivery.json`
 
 主线程已检查最终实际装配的1×/2×九姿势，按01→08→01核对序列；GIF为8×120ms。当前查看工具仅展示GIF静帧，未将其记录为已实际观看连续播放。技术核对通过不代替用户对动图的美术认可。
+
+[浏览器正常同屏动图](https://raw.githubusercontent.com/liamchan-rgb/experiment/ee8b719d8ae477eddcd9579e27f3cd2b38993a33/Art/Review/P1/neutral-upper-diagonals-v1/walk-comparison-120ms.gif) · [同屏站姿](https://raw.githubusercontent.com/liamchan-rgb/experiment/ee8b719d8ae477eddcd9579e27f3cd2b38993a33/Art/Review/P1/neutral-upper-diagonals-v1/idle-comparison-2x.png)。同屏及两方向GIF、站姿均实测HTTP200，MIME/哈希与本地一致，GIF八帧各120ms；见delivery.json。
