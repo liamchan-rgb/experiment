@@ -13,3 +13,6 @@ root独自制作、修复和审核。原左向外观逐层镜像并转换左右�
 当前正常行走8×120ms；起停22帧、首尾idle480ms/其余120ms。不生成新慢动作。全部实际组合见combinations，技术检查validation.json，重导reexport-validation.json，色稿登记及材质记录lighting-bake.json。
 
 当前为正右独立外观候选，八向基本资源已有逐方向成果，仍待统一组合、跨方向挂点/相位/起停及切向复核与运行时接入；不能把旧demo已有八向切换说成没做，也不能把当前新分层统一接入说成完成。指定起停仅idle→walk01及walk08→idle，任意相位中断未验收。女性延后，本轮无App/模拟器/设备或IPA。
+
+<!-- verified-delivery -->
+美术提交 `e4dc95a3fa69d7cb84da6c2ede3df5e46715c5fc`；正常行走/指定起停/站姿三份HTTPS均实测HTTP200、MIME/SHA256与本地一致，GIF时序/循环通过。远端1328条资源/源稿/公共依赖存在且全部字节一致；7公共依赖保持。[正常GIF直链](https://raw.githubusercontent.com/liamchan-rgb/experiment/e4dc95a3fa69d7cb84da6c2ede3df5e46715c5fc/Art/Review/P1/modular-right-appearance-v1/outfits-walk-120ms.gif)；回执见[delivery.json](delivery.json)。

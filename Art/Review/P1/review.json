@@ -3706,6 +3706,9 @@
       "normalGif": "Art/Review/P1/modular-right-appearance-v1/outfits-walk-120ms.gif",
       "startStopGif": "Art/Review/P1/modular-right-appearance-v1/outfits-start-stop-120ms.gif",
       "idle": "Art/Review/P1/modular-right-appearance-v1/outfits-idle-2x.png"
-    }
+    },
+    "artCommit": "e4dc95a3fa69d7cb84da6c2ede3df5e46715c5fc",
+    "delivery": "Art/Review/P1/modular-right-appearance-v1/delivery.json",
+    "remotePackageClosurePaths": 1328
   }
 }

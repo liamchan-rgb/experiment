@@ -2,6 +2,8 @@
 
 ## 2026-10-24 · 正右独立五官/发型/两衣型/裤靴/背剑
 
+美术提交 `e4dc95a3fa69d7cb84da6c2ede3df5e46715c5fc`；[正常GIF直链](https://raw.githubusercontent.com/liamchan-rgb/experiment/e4dc95a3fa69d7cb84da6c2ede3df5e46715c5fc/Art/Review/P1/modular-right-appearance-v1/outfits-walk-120ms.gif)、指定起停及站姿均HTTP200/MIME/SHA256与本地一致，GIF时序/循环正确；远端1328条资源/源稿/公共依赖字节一致，回执见 `Art/Review/P1/modular-right-appearance-v1/delivery.json`。
+
 用户“没问题，继续下一项”认可上一轮正右中性身体/13姿势的实际展示，范围见 `Art/Review/P1/neutral-right-r1-mirror/approval.json`。本轮沿同一身体/关节/头挂点/步相补正右独立外观：棕发/银发、蓝眼/琥珀眼、绿短衣/蓝长外套、共用裤靴与背剑，共8资源包。新外观待用户认可，不继承中性身体或左向的认可。
 
 root独自制作、修复和审核。原左向外观逐层镜像并转换左右槽位，头部96局部与右向导板对应；五官仍分眼/眉/鼻/口四层，不混入头皮/耳部，身体不替换。两张工具头发色稿提供固定左上光照，原头发轮廓保持；衣物用同一工具材质色阶及同衣型共享中值，裤腿逐侧保持色调，靴子用全13姿势共用锚点保留原鞋面/鞋底明暗。所有原衣物alpha、边界、镶边及墨线保持，RGBA的透明像素清零。背剑按左向侧视投影固定反射，对照柄/护手/鞘尖，不移到身体中轴去避让。
