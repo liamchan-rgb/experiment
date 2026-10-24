@@ -9,3 +9,6 @@
 技术结果见[validation.json](validation.json)、[足面源登记](foot-source-registration.json)、[重导](reexport-validation.json)、[具体复核](art-review.md)。371份文件重导一致，15478份旧文件保持；现有合同26与装配器21测试通过。头部96局部13姿势精确装配，原始站姿重组RGBA差异0。
 
 工具只能展示静帧，故确认完整帧序和GIF实际时长，不声称连续播放器或实机验收。新美术artApproval为空；没有正式衣物/头发/背剑新资源、App/设备或IPA改动。行走8×120ms，指定起停22帧首末480ms其余120ms，未制作新慢放。HTTPS发布实测回执见delivery.json。
+
+<!-- verified-delivery -->
+美术提交 `d09826aa8b84855874672a807a266ab6262d8954`；正常行走/指定起停/站姿三份HTTPS均实测HTTP200、MIME/SHA256与本地一致，GIF帧数/时序/循环正确。远端资源包253条声明依赖均存在，asset/motion字节一致；公共8依赖不改。[正常GIF直链](https://raw.githubusercontent.com/liamchan-rgb/experiment/d09826aa8b84855874672a807a266ab6262d8954/Art/Review/P1/neutral-up-layered-r1/walk-120ms.gif)；回执见[delivery.json](delivery.json)。

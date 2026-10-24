@@ -3472,6 +3472,9 @@
       "idle": "Art/Review/P1/neutral-up-layered-r1/idle-review-2x.png"
     },
     "runtimeIntegrated": false,
-    "ipaBuilt": false
+    "ipaBuilt": false,
+    "artCommit": "d09826aa8b84855874672a807a266ab6262d8954",
+    "delivery": "Art/Review/P1/neutral-up-layered-r1/delivery.json",
+    "remotePackageClosurePaths": 253
   }
 }
