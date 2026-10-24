@@ -7,3 +7,5 @@
 主线程亲自修复及查看四组全部52张完整1×/2×、站姿/首尾/起停和交叉搭配。蓝/琥珀眼包仅眉眼鼻嘴，棕/银发包不含脸皮；四包按公共合同真实装配，52张匹配，416次身体层比较不变，156次眼鼻嘴完整显示，13张空外观与旧中性图完全一致；7132份旧文件保持。profile只新增左下头导板，原字段保持，公共代码不改。合同26项、装配21项通过。
 
 工具只能返回静帧，检查的是完整帧序和GIF实际帧/时长，不声称连续播放器验收。新头部外观无用户认可；衣物、背剑、其它方向及App/设备不在本次范围。发布后HTTPS验证回执写delivery.json。
+
+美术提交 `c3359210e38d0c530fecfc12d5e55bb8f4ae2459`。三份HTTPS文件均已实测HTTP200、MIME及SHA256/本地字节一致；GIF帧数、120ms帧速与起停停留时长符合登记。[正常行走直链](https://raw.githubusercontent.com/liamchan-rgb/experiment/c3359210e38d0c530fecfc12d5e55bb8f4ae2459/Art/Review/P1/modular-down-left-heads-v1/walk-comparison-120ms.gif)；完整回执见[delivery.json](delivery.json)。135份重导文件逐字节一致。

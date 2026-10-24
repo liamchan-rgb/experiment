@@ -2,6 +2,8 @@
 
 ## 2026-10-24 · 左下独立头部外观 v1
 
+美术提交 `c3359210e38d0c530fecfc12d5e55bb8f4ae2459`；[正常行走HTTPS](https://raw.githubusercontent.com/liamchan-rgb/experiment/c3359210e38d0c530fecfc12d5e55bb8f4ae2459/Art/Review/P1/modular-down-left-heads-v1/walk-comparison-120ms.gif)、正常起停及站姿三份文件已实测HTTP200、MIME/哈希及GIF时序一致，回执见 `Art/Review/P1/modular-down-left-heads-v1/delivery.json`。135份文件重导逐字节一致。
+
 用户“没问题开始做下一步”，认可前次已展示右下中性站姿/正常行走/指定起停，认可单独记录在 `Art/Review/P1/neutral-down-right-r1-mirror/approval.json`。本轮先补左下独立头部：棕/银两发型、蓝/琥珀两五官，四组合×13姿势=52张。原中性身体/动作不变，新外观未获用户认可。
 
 主线程独自制作及修复：眉眼鼻嘴分层并校准纵向间距，修掉细嘴线漏采；棕发刘海单独重画以清远眼角，未改中性头皮/耳颈或身体。全部外观沿同一96px头部矩阵随步，四包只提供头发/五官。profile只增加左下头部导板数据，旧字段保持；公共装配器/合同无代码修改，未加外观ID分支。

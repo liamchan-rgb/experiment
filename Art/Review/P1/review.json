@@ -3279,6 +3279,8 @@
     "profileChange": "Only new down-left head layout data",
     "wardrobeVerified": false,
     "runtimeIntegrated": false,
-    "ipaBuilt": false
+    "ipaBuilt": false,
+    "artCommit": "c3359210e38d0c530fecfc12d5e55bb8f4ae2459",
+    "delivery": "Art/Review/P1/modular-down-left-heads-v1/delivery.json"
   }
 }
