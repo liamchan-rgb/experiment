@@ -1,0 +1,166 @@
+{
+  "status": "candidate",
+  "artApproval": null,
+  "authorAndReviewer": "root",
+  "subagentsUsed": false,
+  "sources": {
+    "base": "Art/Templates/P1-Neutral/down/walk-r6-relaxed-arms",
+    "forester": "Art/Parts/P1-v1/outfit-forester-cover-v2",
+    "wayfarer": "Art/Parts/P1-v1/outfit-wayfarer-coat-v1",
+    "back-scabbard": "Art/Parts/P1-v1/weapon-short-sword-back-v1",
+    "hair-chestnut": "Art/Parts/P1-v1/hair-chestnut",
+    "hair-silver": "Art/Parts/P1-v1/hair-silver",
+    "hair-teal-crop": "Art/Parts/P1-v1/hair-teal-crop",
+    "face-blue": "Art/Parts/P1-v1/face-blue",
+    "face-amber": "Art/Parts/P1-v1/face-amber"
+  },
+  "baseManifestSHA256": "633a09316795de136639cdaa737a421228475b7ea3927fc3b95e9b396aa6883b",
+  "oldMotion": "Art/Templates/P1-Wardrobe/down/v9-second-outfit/motion.json",
+  "oldCatalog": "Art/Templates/P1-Wardrobe/down/v9-second-outfit/catalog.json",
+  "oldMotionSHA256": "17ebc50999ed0042f0a2c58be8e740e918c9c3f045126bbd8444a5166facdd37",
+  "armAuthoring": "Art/Templates/P1-Neutral/down/walk-r6-relaxed-arms/arm-motion-authoring.json",
+  "armIdleJoints": {
+    "right": {
+      "shoulder": [
+        110,
+        137
+      ],
+      "elbow": [
+        104,
+        154
+      ],
+      "wrist": [
+        102,
+        168
+      ]
+    },
+    "left": {
+      "shoulder": [
+        140,
+        137
+      ],
+      "elbow": [
+        146,
+        154
+      ],
+      "wrist": [
+        148,
+        168
+      ]
+    }
+  },
+  "transitionPoses": [
+    {
+      "index": 9,
+      "clip": "walk-start",
+      "frame": 1,
+      "walkPose": 1,
+      "walkWeight": 0.3333333333333333
+    },
+    {
+      "index": 10,
+      "clip": "walk-start",
+      "frame": 2,
+      "walkPose": 1,
+      "walkWeight": 0.6666666666666666
+    },
+    {
+      "index": 11,
+      "clip": "walk-stop",
+      "frame": 1,
+      "walkPose": 8,
+      "walkWeight": 0.6666666666666666
+    },
+    {
+      "index": 12,
+      "clip": "walk-stop",
+      "frame": 2,
+      "walkPose": 8,
+      "walkWeight": 0.3333333333333333
+    }
+  ],
+  "legWarp": "Source idle0 hip/knee/ankle/sole row anchors, monotone piecewise-linear inverse field. Same exact UV for each side body leg/pants/boot; no alpha growth or image blending. Old9 output poses copied byte-identically.",
+  "legSourceRows": [
+    0,
+    165,
+    176,
+    188,
+    205,
+    214,
+    255
+  ],
+  "legSourceX": {
+    "right": [
+      117,
+      117,
+      117,
+      118,
+      116,
+      117,
+      117
+    ],
+    "left": [
+      135,
+      135,
+      135,
+      134,
+      134,
+      134,
+      134
+    ]
+  },
+  "sequence": [
+    0,
+    9,
+    10,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    11,
+    12,
+    0
+  ],
+  "durationsMs": [
+    480,
+    120,
+    120,
+    120,
+    120,
+    120,
+    120,
+    120,
+    120,
+    120,
+    120,
+    120,
+    120,
+    120,
+    120,
+    120,
+    120,
+    120,
+    120,
+    120,
+    120,
+    480
+  ],
+  "metadataCorrections": "New motion corrects old grip-era elbow/wrist fields to projected natural-arm anchors, without changing old9 pixels; support of walk4/8 follows visible planted sole. Old motion retained.",
+  "limits": [
+    "Specified idle->walk01 and walk08->idle only, not arbitrary phase interruptions",
+    "No new painting, source RGB and shapes reused through common recorded motion fields",
+    "No runtime/device/IPA"
+  ]
+}

@@ -3,8 +3,8 @@
   "format": 3,
   "updated": "2026-10-24",
   "workflow": "Review one direction at a time from fixed cardinal and diagonal baselines. Modify and resubmit the same direction until explicit user artwork approval, then advance. Record provenance, feedback and accepted revisions for the future character template.",
-  "current": "p1-up-independent-appearance-v1",
-  "templateStatus": "Up neutral shown13pose scope approved; new independent up appearances candidate. Down sync/start-stop, right adaptation and full8direction integration remain.",
+  "current": "p1-down-relaxed-start-stop-v1",
+  "templateStatus": "Up displayed appearance approved; down natural empty-hand13pose start-stop candidate on retained9poses, old down resource sync included. Right current-contract adaptation and full8direction unified integration remain.",
   "items": [
     {
       "id": "01-down-idle",
@@ -3308,15 +3308,15 @@
     "document": "docs/P1_DIRECTION_MODULES.md",
     "status": "in-progress",
     "next": [
-      "down relaxed-hand start-stop (audit/synchronize dependencies)",
-      "unified combinations and direction changes/integration"
+      "right current-contract layered adaptation as prerequisite",
+      "unified combinations and direction changes/runtime integration"
     ],
     "femaleResourcesStarted": false,
-    "repositorySyncPrerequisite": "Audit and synchronize existing local down r6/back-carry/second-outfit dependencies before claiming complete remote eight-direction modules",
-    "current": "up independent appearance v1 candidate",
+    "repositorySyncPrerequisite": "Current down r6/v9 source and old review sync included; verify current remote dependency closure in down transitions delivery receipt",
+    "current": "down relaxed-hand authored start-stop candidate",
     "remainingDependencies": [
       "right current-contract layered adaptation",
-      "synchronize existing local down r6/back-carry/second-outfit resources"
+      "new eight-direction unified review and runtime integration"
     ]
   },
   "downLeftWardrobeReview": {
@@ -3478,8 +3478,8 @@
   },
   "upAppearanceReview": {
     "id": "p1-up-independent-appearance-v1",
-    "status": "candidate-main-fullbody-frame-review-complete",
-    "artApproval": null,
+    "status": "approved-shown-scope",
+    "artApproval": "Art/Review/P1/modular-up-appearance-v1/approval.json",
     "authorAndReviewer": "root",
     "subagentsUsed": false,
     "source": "Art/Parts/P1-v1/up/appearance-v1/authoring.json",
@@ -3529,5 +3529,53 @@
     "artCommit": "f8381286801cfbf643898ee1c36ddbdcee49e84e",
     "delivery": "Art/Review/P1/modular-up-appearance-v1/delivery.json",
     "remotePackageClosurePaths": 564
+  },
+  "downStartStopReview": {
+    "id": "p1-down-relaxed-start-stop-v1",
+    "status": "candidate-main-fullbody-frame-review-complete",
+    "artApproval": null,
+    "authorAndReviewer": "root",
+    "subagentsUsed": false,
+    "source": "Art/Templates/P1-Neutral/down/walk-r7-transitions/authoring.json",
+    "catalog": "Art/Templates/P1-Wardrobe/down/v10-transitions/catalog.json",
+    "review": "Art/Review/P1/modular-down-transitions-v1",
+    "originalBody": "p1-neutral-down-walk-r6-relaxed-arms",
+    "old9PosePixelsChanged": false,
+    "newTransitionPoses": 4,
+    "technical": {
+      "status": "technical-checks-pass",
+      "artApproval": null,
+      "authorAndReviewer": "root",
+      "subagentsUsed": false,
+      "manifestsChecked": 9,
+      "actualCompositorPoses": 468,
+      "oldCompositePosesUnchanged": 324,
+      "oldLayerFilesByteUnchanged": 324,
+      "bodyLayerPreservationChecks": 3744,
+      "clothingCoverageChecks": 1560,
+      "weaponToggleChecks": 234,
+      "armHandChains": 26,
+      "legChains": 26,
+      "sharedLegUVChecks": 40,
+      "transitionPoseDistinctChecks": 4,
+      "combinations": 36,
+      "poses": 13,
+      "newTransitionPoses": 4,
+      "preservedFiles": 10314
+    },
+    "reexportByteIdenticalFiles": 984,
+    "existingTests": {
+      "contract": 26,
+      "compositor": 21
+    },
+    "mainReview": "主线程亲看三发型×两衣型、蓝眼、带剑共6组合的全13姿势整身1×/2×，中性全13姿势、起停整身边界图及实际GIF解码边界帧。逐侧追踪肩肘腕、髋膝踝足，检查袖口/裤口/靴底、手型、衣摆、后背剑柄/鞘尖、眉眼鼻口整体比例和首尾/起停相位。琥珀五官、内衣/空背等其余组合由实际装配及技术检查覆盖，不声称全部468张逐张2×美术审核。查看器只返回静帧，未称连续播放或设备验收。",
+    "metadataCorrections": "审查发现旧motion里的肘/腕挂点仍是握剑时期的记录，与r6自然空手源不符；新motion按实际自然空手源锚点及同一变换修正肩/肘/腕位置。另按可见落地脚修正walk04/08的支撑标签。原motion保留，这些元数据修正不改变原九姿势像素。",
+    "runtimeIntegrated": false,
+    "ipaBuilt": false,
+    "artifacts": {
+      "normalGif": "Art/Review/P1/modular-down-transitions-v1/outfits-start-stop-120ms.gif",
+      "walkGif": "Art/Review/P1/modular-down-transitions-v1/outfits-walk-120ms.gif",
+      "idle": "Art/Review/P1/modular-down-transitions-v1/outfits-idle-2x.png"
+    }
   }
 }

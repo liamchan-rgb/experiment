@@ -1,0 +1,40 @@
+{
+  "assets": [
+    {
+      "id": "p1-neutral-down-walk-r7-transitions",
+      "manifest": "Art/Templates/P1-Neutral/down/walk-r7-transitions/asset.json"
+    },
+    {
+      "id": "p1-down-forester-transitions-v1",
+      "manifest": "Art/Parts/P1-v1/down/transitions-v1/forester/asset.json"
+    },
+    {
+      "id": "p1-down-wayfarer-transitions-v1",
+      "manifest": "Art/Parts/P1-v1/down/transitions-v1/wayfarer/asset.json"
+    },
+    {
+      "id": "p1-down-back-scabbard-transitions-v1",
+      "manifest": "Art/Parts/P1-v1/down/transitions-v1/back-scabbard/asset.json"
+    },
+    {
+      "id": "p1-down-hair-chestnut-transitions-v1",
+      "manifest": "Art/Parts/P1-v1/down/transitions-v1/hair-chestnut/asset.json"
+    },
+    {
+      "id": "p1-down-hair-silver-transitions-v1",
+      "manifest": "Art/Parts/P1-v1/down/transitions-v1/hair-silver/asset.json"
+    },
+    {
+      "id": "p1-down-hair-teal-crop-transitions-v1",
+      "manifest": "Art/Parts/P1-v1/down/transitions-v1/hair-teal-crop/asset.json"
+    },
+    {
+      "id": "p1-down-face-blue-transitions-v1",
+      "manifest": "Art/Parts/P1-v1/down/transitions-v1/face-blue/asset.json"
+    },
+    {
+      "id": "p1-down-face-amber-transitions-v1",
+      "manifest": "Art/Parts/P1-v1/down/transitions-v1/face-amber/asset.json"
+    }
+  ]
+}

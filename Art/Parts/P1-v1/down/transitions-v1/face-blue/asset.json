@@ -1,0 +1,176 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "p1-down-face-blue-transitions-v1",
+  "version": "1.0.0",
+  "part": "face",
+  "compatibility": {
+    "rig": "p1-chibi-v1",
+    "bodyProfile": "p1-standard",
+    "actionSet": "locomotion-v1"
+  },
+  "mode": "head-local",
+  "slots": [
+    "face.eyes",
+    "face.brows",
+    "face.nose",
+    "face.mouth"
+  ],
+  "directions": [
+    "down"
+  ],
+  "clips": [
+    "idle",
+    "walk",
+    "walk-start",
+    "walk-stop"
+  ],
+  "sourceFiles": [
+    "source/manifest-original.json",
+    "source/provenance.json"
+  ],
+  "bindings": [
+    {
+      "direction": "down",
+      "clip": "idle",
+      "frame": 0,
+      "layers": {
+        "face.eyes": "png/face.eyes.png",
+        "face.brows": "png/face.brows.png",
+        "face.nose": "png/face.nose.png",
+        "face.mouth": "png/face.mouth.png"
+      }
+    },
+    {
+      "direction": "down",
+      "clip": "walk",
+      "frame": 1,
+      "layers": {
+        "face.eyes": "png/face.eyes.png",
+        "face.brows": "png/face.brows.png",
+        "face.nose": "png/face.nose.png",
+        "face.mouth": "png/face.mouth.png"
+      }
+    },
+    {
+      "direction": "down",
+      "clip": "walk",
+      "frame": 2,
+      "layers": {
+        "face.eyes": "png/face.eyes.png",
+        "face.brows": "png/face.brows.png",
+        "face.nose": "png/face.nose.png",
+        "face.mouth": "png/face.mouth.png"
+      }
+    },
+    {
+      "direction": "down",
+      "clip": "walk",
+      "frame": 3,
+      "layers": {
+        "face.eyes": "png/face.eyes.png",
+        "face.brows": "png/face.brows.png",
+        "face.nose": "png/face.nose.png",
+        "face.mouth": "png/face.mouth.png"
+      }
+    },
+    {
+      "direction": "down",
+      "clip": "walk",
+      "frame": 4,
+      "layers": {
+        "face.eyes": "png/face.eyes.png",
+        "face.brows": "png/face.brows.png",
+        "face.nose": "png/face.nose.png",
+        "face.mouth": "png/face.mouth.png"
+      }
+    },
+    {
+      "direction": "down",
+      "clip": "walk",
+      "frame": 5,
+      "layers": {
+        "face.eyes": "png/face.eyes.png",
+        "face.brows": "png/face.brows.png",
+        "face.nose": "png/face.nose.png",
+        "face.mouth": "png/face.mouth.png"
+      }
+    },
+    {
+      "direction": "down",
+      "clip": "walk",
+      "frame": 6,
+      "layers": {
+        "face.eyes": "png/face.eyes.png",
+        "face.brows": "png/face.brows.png",
+        "face.nose": "png/face.nose.png",
+        "face.mouth": "png/face.mouth.png"
+      }
+    },
+    {
+      "direction": "down",
+      "clip": "walk",
+      "frame": 7,
+      "layers": {
+        "face.eyes": "png/face.eyes.png",
+        "face.brows": "png/face.brows.png",
+        "face.nose": "png/face.nose.png",
+        "face.mouth": "png/face.mouth.png"
+      }
+    },
+    {
+      "direction": "down",
+      "clip": "walk",
+      "frame": 8,
+      "layers": {
+        "face.eyes": "png/face.eyes.png",
+        "face.brows": "png/face.brows.png",
+        "face.nose": "png/face.nose.png",
+        "face.mouth": "png/face.mouth.png"
+      }
+    },
+    {
+      "direction": "down",
+      "clip": "walk-start",
+      "frame": 1,
+      "layers": {
+        "face.eyes": "png/face.eyes.png",
+        "face.brows": "png/face.brows.png",
+        "face.nose": "png/face.nose.png",
+        "face.mouth": "png/face.mouth.png"
+      }
+    },
+    {
+      "direction": "down",
+      "clip": "walk-start",
+      "frame": 2,
+      "layers": {
+        "face.eyes": "png/face.eyes.png",
+        "face.brows": "png/face.brows.png",
+        "face.nose": "png/face.nose.png",
+        "face.mouth": "png/face.mouth.png"
+      }
+    },
+    {
+      "direction": "down",
+      "clip": "walk-stop",
+      "frame": 1,
+      "layers": {
+        "face.eyes": "png/face.eyes.png",
+        "face.brows": "png/face.brows.png",
+        "face.nose": "png/face.nose.png",
+        "face.mouth": "png/face.mouth.png"
+      }
+    },
+    {
+      "direction": "down",
+      "clip": "walk-stop",
+      "frame": 2,
+      "layers": {
+        "face.eyes": "png/face.eyes.png",
+        "face.brows": "png/face.brows.png",
+        "face.nose": "png/face.nose.png",
+        "face.mouth": "png/face.mouth.png"
+      }
+    }
+  ]
+}

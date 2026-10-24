@@ -1,0 +1,6 @@
+{
+  "source": "Art/Parts/P1-v1/outfit-forester-cover-v2",
+  "manifestSHA256": "849c603bf35563ec24b8c835622d4baba0d56ed457ef030167980c07b743d80f",
+  "operation": "old9 artwork byte-copy; four transition bindings share authored transforms",
+  "newArtworkApproval": null
+}

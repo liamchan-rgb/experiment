@@ -175,16 +175,17 @@
   ],
   "subsequentProgress": {
     "date": "2026-10-24",
-    "current": "up independent appearance v1 candidate",
-    "source": "Art/Templates/P1-Wardrobe/up/v1-independent/catalog.json",
-    "review": "Art/Review/P1/modular-up-appearance-v1",
+    "current": "down relaxed-hand start-stop candidate13poses",
+    "source": "Art/Templates/P1-Wardrobe/down/v10-transitions/catalog.json",
+    "review": "Art/Review/P1/modular-down-transitions-v1",
     "oldAuditRetained": true,
-    "neutralShownApproval": "Art/Review/P1/neutral-up-layered-r1/approval.json",
+    "upShownAppearanceApproved": "Art/Review/P1/modular-up-appearance-v1/approval.json",
     "newArtworkApproval": null,
-    "independentUpAppearancesComplete": "candidate, not user approved",
-    "combinations": 8,
-    "actualPoses": 104,
-    "downSyncGapResolved": false,
+    "downStartStopNewPoses": 4,
+    "old9CompositePosesUnchanged": 324,
+    "combinations": 36,
+    "actualPoses": 468,
+    "downSyncGapResolved": "included in this change; remote dependency verification to be recorded in delivery.json",
     "rightLayeredAdaptationComplete": false
   }
 }

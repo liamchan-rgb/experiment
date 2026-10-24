@@ -1,0 +1,111 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "p1-weapon-short-sword-back-v1",
+  "version": "1.0.0",
+  "part": "weapon",
+  "compatibility": {
+    "rig": "p1-chibi-v1",
+    "bodyProfile": "p1-standard",
+    "actionSet": "locomotion-v1"
+  },
+  "mode": "pose-map",
+  "slots": [
+    "weapon.back"
+  ],
+  "directions": [
+    "down"
+  ],
+  "clips": [
+    "idle",
+    "walk"
+  ],
+  "sourceFiles": [
+    "authoring.json",
+    "generation.json",
+    "source/imagegen-attempt-01-oversized.png",
+    "source/imagegen-original.png",
+    "source/prompt-back-scabbard-attempt1.txt",
+    "source/prompt-back-scabbard.txt",
+    "source/register-back-sword.py",
+    "source/registration-angle18-offset-minus8-superseded-v1.json",
+    "source/registration-angle22-superseded-v1.json",
+    "source/registration-rejected-bbox-fit-v1.json",
+    "source/registration.json",
+    "source/render-v8-composition-review.py"
+  ],
+  "bindings": [
+    {
+      "direction": "down",
+      "clip": "idle",
+      "frame": 0,
+      "layers": {
+        "weapon.back": "png/00/weapon.back.png"
+      }
+    },
+    {
+      "direction": "down",
+      "clip": "walk",
+      "frame": 1,
+      "layers": {
+        "weapon.back": "png/01/weapon.back.png"
+      }
+    },
+    {
+      "direction": "down",
+      "clip": "walk",
+      "frame": 2,
+      "layers": {
+        "weapon.back": "png/02/weapon.back.png"
+      }
+    },
+    {
+      "direction": "down",
+      "clip": "walk",
+      "frame": 3,
+      "layers": {
+        "weapon.back": "png/03/weapon.back.png"
+      }
+    },
+    {
+      "direction": "down",
+      "clip": "walk",
+      "frame": 4,
+      "layers": {
+        "weapon.back": "png/04/weapon.back.png"
+      }
+    },
+    {
+      "direction": "down",
+      "clip": "walk",
+      "frame": 5,
+      "layers": {
+        "weapon.back": "png/05/weapon.back.png"
+      }
+    },
+    {
+      "direction": "down",
+      "clip": "walk",
+      "frame": 6,
+      "layers": {
+        "weapon.back": "png/06/weapon.back.png"
+      }
+    },
+    {
+      "direction": "down",
+      "clip": "walk",
+      "frame": 7,
+      "layers": {
+        "weapon.back": "png/07/weapon.back.png"
+      }
+    },
+    {
+      "direction": "down",
+      "clip": "walk",
+      "frame": 8,
+      "layers": {
+        "weapon.back": "png/08/weapon.back.png"
+      }
+    }
+  ],
+  "carryProfile": "back-scabbard"
+}

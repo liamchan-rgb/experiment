@@ -1,0 +1,177 @@
+{
+  "status": "candidate; user approval pending",
+  "artApproval": null,
+  "packageChecks": true,
+  "sourceIdle00RGBAUnchanged": true,
+  "headTorsoLegsPerPoseUnchanged": true,
+  "changedLayers": [
+    {
+      "frame": 1,
+      "slot": "body.arm.right",
+      "sha256": "81516830772a0cfd641c8cde30458293baeb4f8fe8db1f6acf950195da2ab387"
+    },
+    {
+      "frame": 1,
+      "slot": "body.arm.left",
+      "sha256": "3d9b0c06409af893ea8a4255643b504d92a51f1db7c40129dcff908c3bfda3bc"
+    },
+    {
+      "frame": 1,
+      "slot": "body.hand.right",
+      "sha256": "1e9c0b0b0f03c5513940199974bc33657fc02fc1c61dd9a1fb24afe1f23073f2"
+    },
+    {
+      "frame": 1,
+      "slot": "body.hand.left",
+      "sha256": "4c949c3dc84612b2930cfca02f5fc3eb4d560c6e18cc65ea31e594ff65d8e072"
+    },
+    {
+      "frame": 2,
+      "slot": "body.arm.right",
+      "sha256": "4d949ee10515dddf412c84a46a11900a6a34b847b33c854c6d92586ff4f99f79"
+    },
+    {
+      "frame": 2,
+      "slot": "body.arm.left",
+      "sha256": "318a7f0da8044b5c15b2b5fa6448731a8260326e1f7434b6d72dd13211593b6a"
+    },
+    {
+      "frame": 2,
+      "slot": "body.hand.right",
+      "sha256": "8c925b151bc53ea142462f3bc0ce4ecabab502a2a8bdac7f380a21ff7c3e85f4"
+    },
+    {
+      "frame": 2,
+      "slot": "body.hand.left",
+      "sha256": "dda865e4066db0bbb0c12501b85d8596f117605e2cb4fafba7397abd4df44e36"
+    },
+    {
+      "frame": 3,
+      "slot": "body.arm.right",
+      "sha256": "163323e7f17bbb8e355e638ac8518759cef0dbd7ad3f19d30980065ed2d62522"
+    },
+    {
+      "frame": 3,
+      "slot": "body.arm.left",
+      "sha256": "4eec40af985a67bc8bd34b3f93434508c640295b280f83164b150fdb85e78a9d"
+    },
+    {
+      "frame": 3,
+      "slot": "body.hand.right",
+      "sha256": "a53b57a28322a1ca53e62968bad46ccb75a132dab9f37f3d8922d08e9c15cd5a"
+    },
+    {
+      "frame": 3,
+      "slot": "body.hand.left",
+      "sha256": "6af11d09032c62af75723cb23d76cce2d301cdc9698736e026e2743ca88eb2d1"
+    },
+    {
+      "frame": 4,
+      "slot": "body.arm.right",
+      "sha256": "be554f6aaeefaab9b485f47b856ad8416011b87ec1dd44c9d964ef5c7861f796"
+    },
+    {
+      "frame": 4,
+      "slot": "body.arm.left",
+      "sha256": "03d430fa67b7d4771341937a592f20100bb0c477e03724aefa5a9bdcb7b830b3"
+    },
+    {
+      "frame": 4,
+      "slot": "body.hand.right",
+      "sha256": "6f207875a796acc0263aecab3dfdced82904389722838dc34264f849d3794aba"
+    },
+    {
+      "frame": 4,
+      "slot": "body.hand.left",
+      "sha256": "8416af20005b7059f1b84aec84dd9471f4d7dd09a8ed7d0f249ce8e5fe8428f7"
+    },
+    {
+      "frame": 5,
+      "slot": "body.arm.right",
+      "sha256": "7a97411145a10ddb75b918e5ca7fbf90bdba00e905abeb7336b966481329c240"
+    },
+    {
+      "frame": 5,
+      "slot": "body.arm.left",
+      "sha256": "9a15ee3fe9b0cb59122ab7f8c55a4385daf5e4ea4937ecd7ba4c99be459d092e"
+    },
+    {
+      "frame": 5,
+      "slot": "body.hand.right",
+      "sha256": "fa9a23bf064ff31e26427421836d3beb9250846e0df6ab6b340d0e6b09fa9d12"
+    },
+    {
+      "frame": 5,
+      "slot": "body.hand.left",
+      "sha256": "9f3138c0c5b2570a654d6aecd2f4bb1f743104482c44f48c3571ea443673abdf"
+    },
+    {
+      "frame": 6,
+      "slot": "body.arm.right",
+      "sha256": "978dc218094cd76d7f4143ec3606a28ee0c4b48621f00c70cf2bdf8672d26c92"
+    },
+    {
+      "frame": 6,
+      "slot": "body.arm.left",
+      "sha256": "d6fad278599f1e1ed0f213d23af153491f7caf940bda6221a9f5ffd5e96b628c"
+    },
+    {
+      "frame": 6,
+      "slot": "body.hand.right",
+      "sha256": "b85676ba6c9bfcbf007667bd79648e08b1644635bf0610c8c9243b6a95353486"
+    },
+    {
+      "frame": 6,
+      "slot": "body.hand.left",
+      "sha256": "3fd3ea1f7703b6daead484386c7d1cc69f7401fceaafdb4c45c8254cad88f47d"
+    },
+    {
+      "frame": 7,
+      "slot": "body.arm.right",
+      "sha256": "76e0acf6adec9ff71fed0876e0312ab6489cc9f6daa03c94b2dad1cad8c6393e"
+    },
+    {
+      "frame": 7,
+      "slot": "body.arm.left",
+      "sha256": "4eec40af985a67bc8bd34b3f93434508c640295b280f83164b150fdb85e78a9d"
+    },
+    {
+      "frame": 7,
+      "slot": "body.hand.right",
+      "sha256": "141e41e8405dbfaf581c7387f1e968a65d6f35796e9e2780fa0ab39255d3d114"
+    },
+    {
+      "frame": 7,
+      "slot": "body.hand.left",
+      "sha256": "6af11d09032c62af75723cb23d76cce2d301cdc9698736e026e2743ca88eb2d1"
+    },
+    {
+      "frame": 8,
+      "slot": "body.arm.right",
+      "sha256": "79caf63ee4c5b95bbcfa1a3b8f2c3d27d2d4103ab012db09fa16494d1e54d0c6"
+    },
+    {
+      "frame": 8,
+      "slot": "body.arm.left",
+      "sha256": "36a8ca693586fd2bfa57b4d477c9c5b1e6c710221c545cd9c2cc5a4c827fd4ef"
+    },
+    {
+      "frame": 8,
+      "slot": "body.hand.right",
+      "sha256": "db6651e9d9061cdbea0d60b613ef2686416708aecde0066f79c154b4c178e040"
+    },
+    {
+      "frame": 8,
+      "slot": "body.hand.left",
+      "sha256": "8421c6da69c2345eb4c7b9d46204033dad639de22afc4e6ca81d82a996f43130"
+    }
+  ],
+  "otherLayersByteExact": 40,
+  "reexport": "all72 body layer PNGs re-exported byte-identically from current fixed recipe",
+  "review": "Art/Review/P1/modular-down-back-carry-v1/art-review.md",
+  "limits": [
+    "down only",
+    "small rigid shoulder transforms of complete natural arms; no new finger-gesture system",
+    "no runtime or device check"
+  ]
+}
