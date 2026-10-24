@@ -1,0 +1,24 @@
+{
+  "date": "2026-10-24",
+  "status": "approved",
+  "userStatement": "没问题",
+  "artCommit": "d09826aa8b84855874672a807a266ab6262d8954",
+  "scope": "Delivered up neutral whole-body standing,8-frame normal walk and specified idle->walk01/walk08->idle start/stop. No new appearance, arbitrary phase interruption or runtime approval.",
+  "files": [
+    {
+      "file": "Art/Review/P1/neutral-up-layered-r1/walk-120ms.gif",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/d09826aa8b84855874672a807a266ab6262d8954/Art/Review/P1/neutral-up-layered-r1/walk-120ms.gif",
+      "sha256": "50f034ff63802562bae8aa1906c549dcf9314a149f135d89b6662d27975b971d"
+    },
+    {
+      "file": "Art/Review/P1/neutral-up-layered-r1/start-stop-120ms.gif",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/d09826aa8b84855874672a807a266ab6262d8954/Art/Review/P1/neutral-up-layered-r1/start-stop-120ms.gif",
+      "sha256": "f285662d36b0e2955b2f2534bce535986b22e075fed9fad2ed3bada553b5b0c7"
+    },
+    {
+      "file": "Art/Review/P1/neutral-up-layered-r1/idle-review-2x.png",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/d09826aa8b84855874672a807a266ab6262d8954/Art/Review/P1/neutral-up-layered-r1/idle-review-2x.png",
+      "sha256": "903736dd3999136b013f4fe19cd203143c4553cb3526887743b3c58e85fc2012"
+    }
+  ]
+}

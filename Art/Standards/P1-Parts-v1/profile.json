@@ -387,6 +387,34 @@
       ],
       "sourceGuide": "Art/Parts/P1-v1/down-right/appearance-v1/source/head-layout-guide.json",
       "artApproval": null
+    },
+    "up": {
+      "status": "approved-neutral-back-guide; new independent hair art pending",
+      "headLocalOrigin": [
+        80,
+        61
+      ],
+      "neck": [
+        48,
+        69
+      ],
+      "eyes": {},
+      "skullGuide": [
+        25,
+        27,
+        71,
+        67
+      ],
+      "faceRegions": {
+        "face.eyes": [],
+        "face.brows": [],
+        "face.nose": [],
+        "face.mouth": []
+      },
+      "hairFrontKeepClear": [],
+      "sourceGuide": "Art/Templates/P1-Neutral/up/walk-r1-layered/source/head-layout-guide.json",
+      "faceVisibility": "none in strict back view",
+      "artApproval": null
     }
   },
   "gripProfiles": [

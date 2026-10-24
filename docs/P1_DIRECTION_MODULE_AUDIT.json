@@ -175,12 +175,16 @@
   ],
   "subsequentProgress": {
     "date": "2026-10-24",
-    "current": "up neutral13pose layered candidate",
-    "source": "Art/Templates/P1-Neutral/up/walk-r1-layered/asset.json",
-    "review": "Art/Review/P1/neutral-up-layered-r1",
+    "current": "up independent appearance v1 candidate",
+    "source": "Art/Templates/P1-Wardrobe/up/v1-independent/catalog.json",
+    "review": "Art/Review/P1/modular-up-appearance-v1",
     "oldAuditRetained": true,
+    "neutralShownApproval": "Art/Review/P1/neutral-up-layered-r1/approval.json",
     "newArtworkApproval": null,
-    "independentUpAppearancesComplete": false,
-    "downSyncGapResolved": false
+    "independentUpAppearancesComplete": "candidate, not user approved",
+    "combinations": 8,
+    "actualPoses": 104,
+    "downSyncGapResolved": false,
+    "rightLayeredAdaptationComplete": false
   }
 }

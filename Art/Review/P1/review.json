@@ -3,8 +3,8 @@
   "format": 3,
   "updated": "2026-10-24",
   "workflow": "Review one direction at a time from fixed cardinal and diagonal baselines. Modify and resubmit the same direction until explicit user artwork approval, then advance. Record provenance, feedback and accepted revisions for the future character template.",
-  "current": "p1-neutral-up-walk-r1-layered",
-  "templateStatus": "Current up-neutral layered body/motion candidate, prioritized by latest user table order. Old approved up whole-character art preserved; new source/rig not automatically approved. Up appearances, down sync/start-stop, right adaptation and complete8direction integration remain.",
+  "current": "p1-up-independent-appearance-v1",
+  "templateStatus": "Up neutral shown13pose scope approved; new independent up appearances candidate. Down sync/start-stop, right adaptation and full8direction integration remain.",
   "items": [
     {
       "id": "01-down-idle",
@@ -3308,13 +3308,12 @@
     "document": "docs/P1_DIRECTION_MODULES.md",
     "status": "in-progress",
     "next": [
-      "up independent appearances on current body after current review",
-      "down relaxed-hand start-stop",
-      "unified combination and direction-change review"
+      "down relaxed-hand start-stop (audit/synchronize dependencies)",
+      "unified combinations and direction changes/integration"
     ],
     "femaleResourcesStarted": false,
     "repositorySyncPrerequisite": "Audit and synchronize existing local down r6/back-carry/second-outfit dependencies before claiming complete remote eight-direction modules",
-    "current": "up neutral layered/motion per latest user table order",
+    "current": "up independent appearance v1 candidate",
     "remainingDependencies": [
       "right current-contract layered adaptation",
       "synchronize existing local down r6/back-carry/second-outfit resources"
@@ -3441,8 +3440,8 @@
   },
   "upLayeredNeutralReview": {
     "id": "p1-neutral-up-walk-r1-layered",
-    "status": "candidate-main-fullbody-frame-review-complete",
-    "artApproval": null,
+    "status": "approved-shown-scope",
+    "artApproval": "Art/Review/P1/neutral-up-layered-r1/approval.json",
     "authorAndReviewer": "root",
     "subagentsUsed": false,
     "source": "Art/Templates/P1-Neutral/up/walk-r1-layered/authoring.json",
@@ -3476,5 +3475,56 @@
     "artCommit": "d09826aa8b84855874672a807a266ab6262d8954",
     "delivery": "Art/Review/P1/neutral-up-layered-r1/delivery.json",
     "remotePackageClosurePaths": 253
+  },
+  "upAppearanceReview": {
+    "id": "p1-up-independent-appearance-v1",
+    "status": "candidate-main-fullbody-frame-review-complete",
+    "artApproval": null,
+    "authorAndReviewer": "root",
+    "subagentsUsed": false,
+    "source": "Art/Parts/P1-v1/up/appearance-v1/authoring.json",
+    "catalog": "Art/Templates/P1-Wardrobe/up/v1-independent/catalog.json",
+    "review": "Art/Review/P1/modular-up-appearance-v1",
+    "base": "p1-neutral-up-walk-r1-layered",
+    "baseChanged": false,
+    "newPackages": 6,
+    "hairScope": "Two independent RGB colourways share one tool-drawn aligned short back-hair silhouette; no face layer",
+    "technical": {
+      "status": "technical-checks-pass",
+      "artApproval": null,
+      "authorAndReviewer": "root",
+      "subagentsUsed": false,
+      "manifestsChecked": 7,
+      "combinations": 8,
+      "actualCompositorPoses": 104,
+      "bareBodyPosesUnchanged": 13,
+      "bodyLayerPreservationChecks": 832,
+      "clothingCoverageChecks": 624,
+      "handPreservationChecks": 208,
+      "crownCoverageChecks": 104,
+      "weaponToggleChecks": 52,
+      "guardVisibilityChecks": 52,
+      "preservedFiles": 15855,
+      "profileChange": "Only new up back-head guide data; all old entries unchanged",
+      "footRollSourceAlphaUnchanged": true
+    },
+    "reexportByteIdenticalFiles": 461,
+    "existingTests": {
+      "contract": 26,
+      "compositor": 21
+    },
+    "mainReview": "Four sword-on combinations all13 complete1x/2x, actual GIF8 decoded frames, full standing and specified start-stop sequence; still viewer only, no continuous playback claim",
+    "fixes": [
+      "crown alpha registration, common short hair silhouette and silver RGB gutter",
+      "back sword above all sleeve layers below head/hair, full guard visibility; placement preserved",
+      "grey trouser waist under blue coat vent, leg-owned pants/boot UV and original footArtState"
+    ],
+    "runtimeIntegrated": false,
+    "ipaBuilt": false,
+    "artifacts": {
+      "normalGif": "Art/Review/P1/modular-up-appearance-v1/outfits-walk-120ms.gif",
+      "startStopGif": "Art/Review/P1/modular-up-appearance-v1/outfits-start-stop-120ms.gif",
+      "idle": "Art/Review/P1/modular-up-appearance-v1/outfits-idle-2x.png"
+    }
   }
 }
