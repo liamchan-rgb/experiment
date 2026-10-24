@@ -3,8 +3,8 @@
   "format": 3,
   "updated": "2026-10-24",
   "workflow": "Review one direction at a time from fixed cardinal and diagonal baselines. Modify and resubmit the same direction until explicit user artwork approval, then advance. Record provenance, feedback and accepted revisions for the future character template.",
-  "current": "p1-upper-wardrobe-nape-repair-v3",
-  "templateStatus": "Nape seam repair v3 candidate; original geometry and v2 wardrobe retained, no user approval.",
+  "current": "p1-upper-nape-gradient-v4",
+  "templateStatus": "Continuous nape colour repair v4 candidate; previous v3 internal clearance withdrawn; no user approval.",
   "items": [
     {
       "id": "01-down-idle",
@@ -2931,38 +2931,29 @@
     "approval": "Art/Review/P1/neutral-upper-transitions-r6/approval.json"
   },
   "upperWardrobeReview": {
-    "id": "p1-upper-wardrobe-nape-repair-v3",
+    "id": "p1-upper-nape-gradient-v4",
     "status": "candidate-main-whole-body-frame-review-complete",
     "artApproval": null,
     "repairAndReviewOwner": "root",
     "subagentsUsed": false,
-    "feedback": "后颈有一条黑线",
-    "newCommonBases": [
-      "p1-neutral-up-left-r7-nape",
-      "p1-neutral-up-right-r7-nape"
-    ],
-    "method": "27 source neck/head dark pixels recoloured from independent nape painting; exact alpha and all original motion preserved; six appearance resources unchanged",
+    "method": "Contiguous artist-painted nape colour field and 2px source-edge compositing feather, original alpha and geometry retained",
     "technical": {
       "combinations": 16,
       "actualCompositorPoses": 208,
-      "originalGeometryPoses": 26,
+      "geometryPosesUnchanged": 26,
       "combinationsUnchangedOutsideNape": 208,
       "coverageFailures": 0,
-      "handPreservationFailures": 0,
-      "contractTests": 26,
-      "compositorTests": 21
+      "handPreservationFailures": 0
     },
     "artifacts": {
-      "normalGif": "Art/Review/P1/modular-upper-wardrobe-v3/outfits-walk-120ms.gif",
-      "startStopGif": "Art/Review/P1/modular-upper-wardrobe-v3/outfits-start-stop-120ms.gif",
-      "idle": "Art/Review/P1/modular-upper-wardrobe-v3/outfits-idle-2x.png",
-      "artReview": "Art/Review/P1/modular-upper-wardrobe-v3/art-review.md"
+      "normalGif": "Art/Review/P1/modular-upper-wardrobe-v4/outfits-walk-120ms.gif",
+      "startStopGif": "Art/Review/P1/modular-upper-wardrobe-v4/outfits-start-stop-120ms.gif",
+      "idle": "Art/Review/P1/modular-upper-wardrobe-v4/outfits-idle-2x.png",
+      "artReview": "Art/Review/P1/modular-upper-wardrobe-v4/art-review.md"
     },
-    "mainReview": "All displayed13 poses, both directions/two outfits, whole-body1x/2x plus ordered nape diagnostic and crossed hair; no continuous-player viewing claimed",
+    "mainReview": "Whole-body1x/2x all displayed poses and ordered nape comparison; no continuous-player viewing claimed",
     "runtimeIntegrated": false,
-    "ipaBuilt": false,
-    "artCommit": "eededb5c11a548cf9f0aad856782ba8e2b8b9b08",
-    "delivery": "Art/Review/P1/modular-upper-wardrobe-v3/delivery.json"
+    "ipaBuilt": false
   },
   "upperWardrobeHistory": [
     {
@@ -3047,6 +3038,43 @@
         "statement": "后颈有一条黑线",
         "finding": "Overlapping lower-head outline and torso nape cut edge; main missed seam in v2. Original art preserved."
       }
+    },
+    {
+      "id": "p1-upper-wardrobe-nape-repair-v3",
+      "status": "uneven-nape-colour-feedback-internal-clearance-withdrawn",
+      "artApproval": null,
+      "repairAndReviewOwner": "root",
+      "subagentsUsed": false,
+      "feedback": {
+        "statement": "还是改的那个地方色块不均匀",
+        "finding": "Isolated bright replacement pixels were not integrated with surrounding neck shading."
+      },
+      "newCommonBases": [
+        "p1-neutral-up-left-r7-nape",
+        "p1-neutral-up-right-r7-nape"
+      ],
+      "method": "27 source neck/head dark pixels recoloured from independent nape painting; exact alpha and all original motion preserved; six appearance resources unchanged",
+      "technical": {
+        "combinations": 16,
+        "actualCompositorPoses": 208,
+        "originalGeometryPoses": 26,
+        "combinationsUnchangedOutsideNape": 208,
+        "coverageFailures": 0,
+        "handPreservationFailures": 0,
+        "contractTests": 26,
+        "compositorTests": 21
+      },
+      "artifacts": {
+        "normalGif": "Art/Review/P1/modular-upper-wardrobe-v3/outfits-walk-120ms.gif",
+        "startStopGif": "Art/Review/P1/modular-upper-wardrobe-v3/outfits-start-stop-120ms.gif",
+        "idle": "Art/Review/P1/modular-upper-wardrobe-v3/outfits-idle-2x.png",
+        "artReview": "Art/Review/P1/modular-upper-wardrobe-v3/art-review.md"
+      },
+      "mainReview": "All displayed13 poses, both directions/two outfits, whole-body1x/2x plus ordered nape diagnostic and crossed hair; no continuous-player viewing claimed",
+      "runtimeIntegrated": false,
+      "ipaBuilt": false,
+      "artCommit": "eededb5c11a548cf9f0aad856782ba8e2b8b9b08",
+      "delivery": "Art/Review/P1/modular-upper-wardrobe-v3/delivery.json"
     }
   ]
 }

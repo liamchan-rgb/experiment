@@ -1,0 +1,260 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "p1-neutral-up-right-r8-nape-gradient",
+  "version": "8.0.0",
+  "part": "base",
+  "compatibility": {
+    "rig": "p1-chibi-v1",
+    "bodyProfile": "p1-standard",
+    "actionSet": "locomotion-v1"
+  },
+  "mode": "pose-map",
+  "slots": [
+    "body.leg.left",
+    "body.leg.right",
+    "body.arm.left",
+    "body.hand.left",
+    "body.torso",
+    "body.arm.right",
+    "body.hand.right",
+    "head.base"
+  ],
+  "directions": [
+    "up-right"
+  ],
+  "clips": [
+    "idle",
+    "walk",
+    "walk-start",
+    "walk-stop"
+  ],
+  "bindings": [
+    {
+      "direction": "up-right",
+      "clip": "idle",
+      "frame": 0,
+      "layers": {
+        "body.leg.left": "png/00/body.leg.left.png",
+        "body.leg.right": "png/00/body.leg.right.png",
+        "body.arm.left": "png/00/body.arm.left.png",
+        "body.hand.left": "png/00/body.hand.left.png",
+        "body.torso": "png/00/body.torso.png",
+        "body.arm.right": "png/00/body.arm.right.png",
+        "body.hand.right": "png/00/body.hand.right.png",
+        "head.base": "png/00/head.base.png"
+      }
+    },
+    {
+      "direction": "up-right",
+      "clip": "walk",
+      "frame": 1,
+      "layers": {
+        "body.leg.left": "png/01/body.leg.left.png",
+        "body.leg.right": "png/01/body.leg.right.png",
+        "body.arm.left": "png/01/body.arm.left.png",
+        "body.hand.left": "png/01/body.hand.left.png",
+        "body.torso": "png/01/body.torso.png",
+        "body.arm.right": "png/01/body.arm.right.png",
+        "body.hand.right": "png/01/body.hand.right.png",
+        "head.base": "png/01/head.base.png"
+      }
+    },
+    {
+      "direction": "up-right",
+      "clip": "walk",
+      "frame": 2,
+      "layers": {
+        "body.leg.left": "png/02/body.leg.left.png",
+        "body.leg.right": "png/02/body.leg.right.png",
+        "body.arm.left": "png/02/body.arm.left.png",
+        "body.hand.left": "png/02/body.hand.left.png",
+        "body.torso": "png/02/body.torso.png",
+        "body.arm.right": "png/02/body.arm.right.png",
+        "body.hand.right": "png/02/body.hand.right.png",
+        "head.base": "png/02/head.base.png"
+      }
+    },
+    {
+      "direction": "up-right",
+      "clip": "walk",
+      "frame": 3,
+      "layers": {
+        "body.leg.left": "png/03/body.leg.left.png",
+        "body.leg.right": "png/03/body.leg.right.png",
+        "body.arm.left": "png/03/body.arm.left.png",
+        "body.hand.left": "png/03/body.hand.left.png",
+        "body.torso": "png/03/body.torso.png",
+        "body.arm.right": "png/03/body.arm.right.png",
+        "body.hand.right": "png/03/body.hand.right.png",
+        "head.base": "png/03/head.base.png"
+      }
+    },
+    {
+      "direction": "up-right",
+      "clip": "walk",
+      "frame": 4,
+      "layers": {
+        "body.leg.left": "png/04/body.leg.left.png",
+        "body.leg.right": "png/04/body.leg.right.png",
+        "body.arm.left": "png/04/body.arm.left.png",
+        "body.hand.left": "png/04/body.hand.left.png",
+        "body.torso": "png/04/body.torso.png",
+        "body.arm.right": "png/04/body.arm.right.png",
+        "body.hand.right": "png/04/body.hand.right.png",
+        "head.base": "png/04/head.base.png"
+      }
+    },
+    {
+      "direction": "up-right",
+      "clip": "walk",
+      "frame": 5,
+      "layers": {
+        "body.leg.left": "png/05/body.leg.left.png",
+        "body.leg.right": "png/05/body.leg.right.png",
+        "body.arm.left": "png/05/body.arm.left.png",
+        "body.hand.left": "png/05/body.hand.left.png",
+        "body.torso": "png/05/body.torso.png",
+        "body.arm.right": "png/05/body.arm.right.png",
+        "body.hand.right": "png/05/body.hand.right.png",
+        "head.base": "png/05/head.base.png"
+      }
+    },
+    {
+      "direction": "up-right",
+      "clip": "walk",
+      "frame": 6,
+      "layers": {
+        "body.leg.left": "png/06/body.leg.left.png",
+        "body.leg.right": "png/06/body.leg.right.png",
+        "body.arm.left": "png/06/body.arm.left.png",
+        "body.hand.left": "png/06/body.hand.left.png",
+        "body.torso": "png/06/body.torso.png",
+        "body.arm.right": "png/06/body.arm.right.png",
+        "body.hand.right": "png/06/body.hand.right.png",
+        "head.base": "png/06/head.base.png"
+      }
+    },
+    {
+      "direction": "up-right",
+      "clip": "walk",
+      "frame": 7,
+      "layers": {
+        "body.leg.left": "png/07/body.leg.left.png",
+        "body.leg.right": "png/07/body.leg.right.png",
+        "body.arm.left": "png/07/body.arm.left.png",
+        "body.hand.left": "png/07/body.hand.left.png",
+        "body.torso": "png/07/body.torso.png",
+        "body.arm.right": "png/07/body.arm.right.png",
+        "body.hand.right": "png/07/body.hand.right.png",
+        "head.base": "png/07/head.base.png"
+      }
+    },
+    {
+      "direction": "up-right",
+      "clip": "walk",
+      "frame": 8,
+      "layers": {
+        "body.leg.left": "png/08/body.leg.left.png",
+        "body.leg.right": "png/08/body.leg.right.png",
+        "body.arm.left": "png/08/body.arm.left.png",
+        "body.hand.left": "png/08/body.hand.left.png",
+        "body.torso": "png/08/body.torso.png",
+        "body.arm.right": "png/08/body.arm.right.png",
+        "body.hand.right": "png/08/body.hand.right.png",
+        "head.base": "png/08/head.base.png"
+      }
+    },
+    {
+      "direction": "up-right",
+      "clip": "walk-start",
+      "frame": 1,
+      "layers": {
+        "body.leg.left": "png/09/body.leg.left.png",
+        "body.leg.right": "png/09/body.leg.right.png",
+        "body.arm.left": "png/09/body.arm.left.png",
+        "body.hand.left": "png/09/body.hand.left.png",
+        "body.torso": "png/09/body.torso.png",
+        "body.arm.right": "png/09/body.arm.right.png",
+        "body.hand.right": "png/09/body.hand.right.png",
+        "head.base": "png/09/head.base.png"
+      }
+    },
+    {
+      "direction": "up-right",
+      "clip": "walk-start",
+      "frame": 2,
+      "layers": {
+        "body.leg.left": "png/10/body.leg.left.png",
+        "body.leg.right": "png/10/body.leg.right.png",
+        "body.arm.left": "png/10/body.arm.left.png",
+        "body.hand.left": "png/10/body.hand.left.png",
+        "body.torso": "png/10/body.torso.png",
+        "body.arm.right": "png/10/body.arm.right.png",
+        "body.hand.right": "png/10/body.hand.right.png",
+        "head.base": "png/10/head.base.png"
+      }
+    },
+    {
+      "direction": "up-right",
+      "clip": "walk-stop",
+      "frame": 1,
+      "layers": {
+        "body.leg.left": "png/11/body.leg.left.png",
+        "body.leg.right": "png/11/body.leg.right.png",
+        "body.arm.left": "png/11/body.arm.left.png",
+        "body.hand.left": "png/11/body.hand.left.png",
+        "body.torso": "png/11/body.torso.png",
+        "body.arm.right": "png/11/body.arm.right.png",
+        "body.hand.right": "png/11/body.hand.right.png",
+        "head.base": "png/11/head.base.png"
+      }
+    },
+    {
+      "direction": "up-right",
+      "clip": "walk-stop",
+      "frame": 2,
+      "layers": {
+        "body.leg.left": "png/12/body.leg.left.png",
+        "body.leg.right": "png/12/body.leg.right.png",
+        "body.arm.left": "png/12/body.arm.left.png",
+        "body.hand.left": "png/12/body.hand.left.png",
+        "body.torso": "png/12/body.torso.png",
+        "body.arm.right": "png/12/body.arm.right.png",
+        "body.hand.right": "png/12/body.hand.right.png",
+        "head.base": "png/12/head.base.png"
+      }
+    }
+  ],
+  "sourceFiles": [
+    "source/body.torso-patch.png",
+    "source/head-local.png",
+    "source/head.base-patch.png",
+    "source/provenance.json",
+    "editable/00.ora",
+    "editable/00.svg",
+    "editable/01.ora",
+    "editable/01.svg",
+    "editable/02.ora",
+    "editable/02.svg",
+    "editable/03.ora",
+    "editable/03.svg",
+    "editable/04.ora",
+    "editable/04.svg",
+    "editable/05.ora",
+    "editable/05.svg",
+    "editable/06.ora",
+    "editable/06.svg",
+    "editable/07.ora",
+    "editable/07.svg",
+    "editable/08.ora",
+    "editable/08.svg",
+    "editable/09.ora",
+    "editable/09.svg",
+    "editable/10.ora",
+    "editable/10.svg",
+    "editable/11.ora",
+    "editable/11.svg",
+    "editable/12.ora",
+    "editable/12.svg"
+  ]
+}

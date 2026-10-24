@@ -9,7 +9,11 @@
 - 用户于2026-10-22明确要求：智能体画的效果有问题，由主线程自己修，并同步到GitHub提示词。
 
 
-## 当前候选：左上/右上v3后颈修正
+## 当前候选：上斜v4后颈连续肤色
+
+用户指出v3补色不均匀，撤回原内部美术通过。v4由主线程重新绘制连续肤色阴影，处理源区域边缘融合，保留原几何/动作/外观资源。[正常行走](../Art/Review/P1/modular-upper-wardrobe-v4/outfits-walk-120ms.gif)、[起停](../Art/Review/P1/modular-upper-wardrobe-v4/outfits-start-stop-120ms.gif)、[站姿](../Art/Review/P1/modular-upper-wardrobe-v4/outfits-idle-2x.png)、[复核](../Art/Review/P1/modular-upper-wardrobe-v4/art-review.md)。新美术未获认可，不能连续播放，不称播放器验收。
+
+## 旧问题版：左上/右上v3后颈修正
 
 用户指出v2后颈黑线，撤回原内部美术通过。主线程独自修共同底模头/颈交界的27枚源颜色像素，保留全部几何/动作及v2六个外观包；[正常行走GIF](../Art/Review/P1/modular-upper-wardrobe-v3/outfits-walk-120ms.gif)、[起停GIF](../Art/Review/P1/modular-upper-wardrobe-v3/outfits-start-stop-120ms.gif)、[整身站姿](../Art/Review/P1/modular-upper-wardrobe-v3/outfits-idle-2x.png)、[主线程具体复核](../Art/Review/P1/modular-upper-wardrobe-v3/art-review.md)。已看全部展示姿势整身1×/2×及后颈序列；不能连续播放，不称播放器验收。新修订未获用户认可。
 
