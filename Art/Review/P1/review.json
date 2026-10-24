@@ -4,7 +4,7 @@
   "updated": "2026-10-24",
   "workflow": "Review one direction at a time from fixed cardinal and diagonal baselines. Modify and resubmit the same direction until explicit user artwork approval, then advance. Record provenance, feedback and accepted revisions for the future character template.",
   "current": "p1-down-right-independent-appearance-v1",
-  "templateStatus": "Current right-down independent appearance candidate; existing-character eight-direction completion prioritized. Right/up modules and down relaxed-hand transitions remain; female deferred.",
+  "templateStatus": "Six current modular directions have presented versions; old whole-character eight-direction gait already exists/approved. Right/up current-contract layered/appearance/start-stop adaptations remain; reuse existing work, do not describe their walking art as never made.",
   "items": [
     {
       "id": "01-down-idle",
@@ -3341,8 +3341,8 @@
   },
   "downRightAppearanceReview": {
     "id": "p1-down-right-independent-appearance-v1",
-    "status": "candidate-main-full-body-review-complete",
-    "artApproval": null,
+    "status": "delivered-primary-combinations-approved",
+    "artApproval": "Art/Review/P1/modular-down-right-appearance-v1/approval.json",
     "authorAndReviewer": "root",
     "subagentsUsed": false,
     "source": "Art/Parts/P1-v1/down-right/appearance-v1/authoring.json",
@@ -3375,6 +3375,26 @@
     "ipaBuilt": false,
     "artCommit": "ccc65c7035412bf1c7d15b69e29573258ab4f985",
     "delivery": "Art/Review/P1/modular-down-right-appearance-v1/delivery.json",
-    "reexportByteIdenticalFiles": 593
+    "reexportByteIdenticalFiles": 593,
+    "approvalScope": "Delivered right-down primary forester/chestnut/blue and wayfarer/silver/amber whole-body standing, normal walk and specified start-stop. No approval inferred for undisplayed cross combinations, other directions or runtime."
+  },
+  "directionModuleAudit": {
+    "date": "2026-10-24",
+    "trigger": "检查一下仓库，我记得正右好像做过",
+    "remoteBranchesChecked": 7,
+    "remoteArtHead": "016b7c2b3d97d7e13a824b3bc0c1c144a84dd8d3",
+    "rightExisting": {
+      "approval": "Art/Review/P1/directions/right/revisions/r1/approval.json",
+      "approvedDate": "2026-10-18",
+      "idlePoses": 1,
+      "walkPoses": 8,
+      "normalFrameMs": 120,
+      "integration": "Art/Integration/P1-approved-gait-v1/integration.json",
+      "integrationDate": "2026-10-21",
+      "remoteDemoRightRowMatchesApprovedStrip": true
+    },
+    "remaining": "Current-contract right neutral layered/appearance packages and specified start-stop adaptation; existing right battle-side static and one-step studies are partial prior work",
+    "correction": "Right walking art already made/approved/integrated; do not duplicate or report as never made",
+    "artworkChanged": false
   }
 }

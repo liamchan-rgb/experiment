@@ -1,5 +1,9 @@
 # P1 人物素材逐张审核
 
+## 状态澄清：正右步态已有认可，当前缺分层适配
+
+仓库核查确认：正右完整人物r1站姿+八帧步态于2026-10-18获认可并已导入demo，见[认可记录](../Art/Review/P1/directions/right/revisions/r1/approval.json)及[导入清单](../Art/Integration/P1-approved-gait-v1/integration.json)。当前远端图集右行与认可strip像素一致。剩余是统一中性身体合同下的分层/挂载/指定起停，不应表述为“正右走路没做过”。旧正上r1也有认可。详见[P1_DIRECTION_MODULES.md](P1_DIRECTION_MODULES.md)。本轮仅核查记录，不改美术；右下上一轮主要展示认可见其approval.json。
+
 ## 当前：右下独立整身外观v1（候选）
 
 上一轮左下实际展示两组已获认可，范围见对应approval.json；本轮沿右下已确认身体/13姿势补头发/五官、两衣型、裤靴和同肩斜背。主线程亲自修复镜像光照与腿边剑尖闪线，查看8带剑组合全13帧整身1×/2×和实际GIF解码帧；不声称连续播放/设备验收。

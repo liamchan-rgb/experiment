@@ -1,5 +1,13 @@
 # 林间行旅迭代进度 · 2026-10-19
 
+## 2026-10-24 · 核查正右既有成果，更正“没做过”的表述
+
+用户提醒“检查一下仓库，我记得正右好像做过”。检查远端7个分支树（均未截断）、当前美术分支完整资源清单、历史审核及demo导入记录后确认：正右r1已有一张站姿和八张步态，2026-10-18由用户认可，2026-10-21导入demo。远端正右strip和正常GIF均与approval.json摘要相符，GIF8×120ms；当前远端Hero1Directions图集第4行与该认可strip逐像素相同。证据：`Art/Review/P1/directions/right/revisions/r1/approval.json`、该目录README、`Art/Integration/P1-approved-gait-v1/integration.json`。
+
+当前没有`Art/Templates/P1-Neutral/right/`及同合同右向Parts/Wardrobe包；另有战斗侧视待机、隐藏层与单步姿势研究，它们说明右向分层做过部分探索，不构成13姿势统一行走模块。正确缺口是“复用已有成果补齐当前分层/挂载/起停适配”，不是“正右走路从未制作”。正上旧r1步态同样已有认可。已更正八向进度表及AGENTS，避免重复重画已认可动作。
+
+用户此前“可以，我们的走路动作模组是不是做完了”同时认可右下实际展示两组合，已增加限定范围approval.json；未扩展到未展示组合、其他方向及运行时。本轮只核查并更新记录，不修改人物PNG/GIF、动作代码、App或IPA；无需新美术测试。
+
 ## 2026-10-24 · 右下独立头部/两衣型/裤靴/背剑v1
 
 美术提交 `ccc65c7035412bf1c7d15b69e29573258ab4f985`；[正常GIF直链](https://raw.githubusercontent.com/liamchan-rgb/experiment/ccc65c7035412bf1c7d15b69e29573258ab4f985/Art/Review/P1/modular-down-right-appearance-v1/outfits-walk-120ms.gif)、起停和站姿均实测HTTP200/MIME/SHA256与本地一致，GIF时序/循环通过；593文件重导逐字节一致。完整HTTPS回执见 `Art/Review/P1/modular-down-right-appearance-v1/delivery.json`。
