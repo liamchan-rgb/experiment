@@ -221,6 +221,89 @@
       },
       "hairFrontKeepClear": [],
       "coordinateReview": "Rear three-quarter neutral head: facial features occluded. Hair-only local image; no skin/ear patch, no fabricated rear facial marks."
+    },
+    "down-left": {
+      "status": "draft-independent-head-resource-candidate",
+      "headLocalOrigin": [
+        76,
+        61
+      ],
+      "neck": [
+        51,
+        70
+      ],
+      "eyes": {
+        "right": [
+          36,
+          55
+        ],
+        "left": [
+          47,
+          56
+        ]
+      },
+      "skullGuide": [
+        31,
+        27,
+        73,
+        69
+      ],
+      "faceRegions": {
+        "face.eyes": [
+          [
+            33,
+            51,
+            40,
+            59
+          ],
+          [
+            41,
+            52,
+            53,
+            60
+          ]
+        ],
+        "face.brows": [
+          [
+            33,
+            46,
+            52,
+            53
+          ]
+        ],
+        "face.nose": [
+          [
+            34,
+            59,
+            40,
+            63
+          ]
+        ],
+        "face.mouth": [
+          [
+            37,
+            62,
+            45,
+            66
+          ]
+        ]
+      },
+      "hairFrontKeepClear": [
+        [
+          34,
+          52,
+          39,
+          58
+        ],
+        [
+          42,
+          53,
+          52,
+          60
+        ]
+      ],
+      "sourceGuide": "Art/Templates/P1-Neutral/down-left/walk-r1/source/head-layout-guide.json",
+      "artApproval": null
     }
   },
   "gripProfiles": [

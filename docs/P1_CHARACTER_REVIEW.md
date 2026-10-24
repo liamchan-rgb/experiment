@@ -1,8 +1,14 @@
 # P1 人物素材逐张审核
 
-## 当前：右下中性动作模组r1镜像候选
+## 当前：左下独立头部外观v1（待用户审核）
 
-用户认可左下展示并授权镜像右下。已完成13姿势逐层反射与左右语义、关节/脚底/支撑/层序/头部挂点转换，固定左上光照，保留左下人体和步相；修复/全身审核均由主线程完成。左下原图保持，新右下不继承美术认可。
+右下已展示中性动作获用户认可。本轮先补左下棕发/银发、蓝眼/琥珀眼四个独立资源，原身体与动作保持；主线程修复刘海遮眼、五官间距和细嘴线登记，并查看四组合全13姿势完整1×/2×，不称连续播放器验收。
+
+[正常全身GIF](../Art/Review/P1/modular-down-left-heads-v1/walk-comparison-120ms.gif) · [起停GIF](../Art/Review/P1/modular-down-left-heads-v1/start-stop-comparison-120ms.gif) · [站姿](../Art/Review/P1/modular-down-left-heads-v1/idle-comparison-2x.png) · [复核与限制](../Art/Review/P1/modular-down-left-heads-v1/art-review.md)。新外观没有用户认可；衣物/背剑下一项再做。
+
+## 已认可参考：右下中性动作模组r1镜像展示
+
+用户认可左下展示并授权镜像右下。已完成13姿势逐层反射与左右语义、关节/脚底/支撑/层序/头部挂点转换，固定左上光照，保留左下人体和步相；修复/全身审核均由主线程完成。左下原图保持；右下该次展示随后获用户认可，见对应approval.json。
 
 [正常全身GIF](../Art/Review/P1/neutral-down-right-r1-mirror/walk-120ms.gif) · [起停GIF](../Art/Review/P1/neutral-down-right-r1-mirror/start-stop-120ms.gif) · [站姿](../Art/Review/P1/neutral-down-right-r1-mirror/idle-review-2x.png) · [主线程复核/限制](../Art/Review/P1/neutral-down-right-r1-mirror/art-review.md)。已查全13姿势1×/2×及首尾/起停帧序，工具只能逐帧；无App/设备/IPA工作。
 

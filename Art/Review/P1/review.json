@@ -3,8 +3,8 @@
   "format": 3,
   "updated": "2026-10-24",
   "workflow": "Review one direction at a time from fixed cardinal and diagonal baselines. Modify and resubmit the same direction until explicit user artwork approval, then advance. Record provenance, feedback and accepted revisions for the future character template.",
-  "current": "p1-neutral-down-right-walk-r1-mirrored-down-left",
-  "templateStatus": "Down-left shown neutral poses approved; down-right13-pose mirror with fixed lighting is candidate pending user art review",
+  "current": "p1-down-left-independent-heads-v1",
+  "templateStatus": "Right-down shown neutral poses approved. Left-down independent head resources candidate; clothes/weapon pending.",
   "items": [
     {
       "id": "01-down-idle",
@@ -1888,6 +1888,12 @@
       "userStatement": "没问题，可以试一下镜像来做右下的动画",
       "current": "p1-neutral-down-right-walk-r1-mirrored-down-left",
       "scope": "Mirror approved down-left neutral poses into down-right with semantic and fixed-light corrections; root-only repair/review and normal GIF delivery"
+    },
+    {
+      "date": "2026-10-24",
+      "userStatement": "没问题开始做下一步",
+      "current": "p1-down-left-independent-heads-v1",
+      "scope": "Root-only left-down independent head resources first, normal GIF/full-body review; clothes afterwards"
     }
   ],
   "battleNeutralBodyReview": {
@@ -3201,8 +3207,21 @@
   },
   "downRightNeutralReview": {
     "id": "p1-neutral-down-right-walk-r1-mirrored-down-left",
-    "status": "candidate-main-whole-body-frame-review-complete",
-    "artApproval": null,
+    "status": "user-approved-shown-neutral-r1-mirror",
+    "artApproval": {
+      "date": "2026-10-24",
+      "reviewer": "user",
+      "statement": "没问题开始做下一步",
+      "direction": "down-right",
+      "revision": "neutral-r1-mirror",
+      "status": "approved",
+      "scope": "Previously delivered neutral right-down whole-body standing, normal8-frame walk and specified start/stop preview only; no independent head/clothes/weapon resources, hidden anatomy, arbitrary phase interruption or runtime",
+      "artifacts": {
+        "walk-120ms.gif": "2ad918ccbe33faf7f371cb27d792a7fdbe80a734157be5a7f72494623e1ab1fb",
+        "start-stop-120ms.gif": "cd32f25fabfdd4ed78f61a8f2ed04a00d477c4263db1af987fc499b33861fedd",
+        "idle-review-2x.png": "ebd7f33711276e5e28ed1d7c54dfd275ae367bff87a2e217ead05de5beadf654"
+      }
+    },
     "sourceApproval": "Art/Review/P1/neutral-down-left-r1/approval.json",
     "authorAndReviewer": "root",
     "subagentsUsed": false,
@@ -3230,5 +3249,36 @@
     "ipaBuilt": false,
     "artCommit": "a950fb0b635bf6c1312572942702a699a07983eb",
     "delivery": "Art/Review/P1/neutral-down-right-r1-mirror/delivery.json"
+  },
+  "downLeftHeadReview": {
+    "id": "p1-down-left-independent-heads-v1",
+    "status": "candidate-main-full-body-review-complete",
+    "artApproval": null,
+    "authorAndReviewer": "root",
+    "subagentsUsed": false,
+    "source": "Art/Parts/P1-v1/down-left/heads-v1/authoring.json",
+    "review": "Art/Review/P1/modular-down-left-heads-v1",
+    "technical": {
+      "independentPackages": 4,
+      "combinations": 4,
+      "actualCompositorPoses": 52,
+      "unchangedBodyLayerChecks": 416,
+      "eyeNoseMouthVisibilityChecks": 156,
+      "baseOnlyPosesUnchanged": 13,
+      "preservedFiles": 7132,
+      "contractTestsPassed": 26,
+      "compositorTestsPassed": 21
+    },
+    "artifacts": {
+      "normalGif": "Art/Review/P1/modular-down-left-heads-v1/walk-comparison-120ms.gif",
+      "startStopGif": "Art/Review/P1/modular-down-left-heads-v1/start-stop-comparison-120ms.gif",
+      "idle": "Art/Review/P1/modular-down-left-heads-v1/idle-comparison-2x.png"
+    },
+    "mainReview": "All4combinations x13 complete1x/2x, paired idle and crossed appearances, ordered walk/start-stop; still viewer only, no continuous-playback claim",
+    "bodyAndMotionUnchanged": true,
+    "profileChange": "Only new down-left head layout data",
+    "wardrobeVerified": false,
+    "runtimeIntegrated": false,
+    "ipaBuilt": false
   }
 }

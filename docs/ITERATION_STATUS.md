@@ -1,5 +1,15 @@
 # 林间行旅迭代进度 · 2026-10-19
 
+## 2026-10-24 · 左下独立头部外观 v1
+
+用户“没问题开始做下一步”，认可前次已展示右下中性站姿/正常行走/指定起停，认可单独记录在 `Art/Review/P1/neutral-down-right-r1-mirror/approval.json`。本轮先补左下独立头部：棕/银两发型、蓝/琥珀两五官，四组合×13姿势=52张。原中性身体/动作不变，新外观未获用户认可。
+
+主线程独自制作及修复：眉眼鼻嘴分层并校准纵向间距，修掉细嘴线漏采；棕发刘海单独重画以清远眼角，未改中性头皮/耳颈或身体。全部外观沿同一96px头部矩阵随步，四包只提供头发/五官。profile只增加左下头部导板数据，旧字段保持；公共装配器/合同无代码修改，未加外观ID分支。
+
+主线程查看四组合全部52帧完整1×/2×、同屏站姿、首尾/起停与交叉搭配。52张公共装配匹配，416次中性层比较不变，13张空外观与原RGBA一致；156次眼鼻嘴完整显示，7132份旧文件保持。合同26项、装配21项通过，重导报告及HTTPS发布回执见审核目录。工具只能逐帧，不称连续播放验收；无App/设备/IPA工作。
+
+[正常行走](../Art/Review/P1/modular-down-left-heads-v1/walk-comparison-120ms.gif)、[正常起停](../Art/Review/P1/modular-down-left-heads-v1/start-stop-comparison-120ms.gif)、[整身站姿](../Art/Review/P1/modular-down-left-heads-v1/idle-comparison-2x.png)、[具体复核](../Art/Review/P1/modular-down-left-heads-v1/art-review.md)。衣物与背剑随后独立制作审核。
+
 ## 2026-10-24 · 右下r1镜像动作模组
 
 美术提交 `a950fb0b635bf6c1312572942702a699a07983eb`；[正常行走HTTPS](https://raw.githubusercontent.com/liamchan-rgb/experiment/a950fb0b635bf6c1312572942702a699a07983eb/Art/Review/P1/neutral-down-right-r1-mirror/walk-120ms.gif)、正常起停及站姿三份文件已实测HTTP200、MIME/哈希及GIF时序一致，回执见 `Art/Review/P1/neutral-down-right-r1-mirror/delivery.json`。386份文件重导逐字节一致。

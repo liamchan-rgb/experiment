@@ -1,0 +1,24 @@
+{
+  "assets": [
+    {
+      "id": "p1-neutral-down-left-walk-r1",
+      "manifest": "Art/Templates/P1-Neutral/down-left/walk-r1/asset.json"
+    },
+    {
+      "id": "p1-hair-chestnut-down-left-v1",
+      "manifest": "Art/Parts/P1-v1/down-left/heads-v1/hair-chestnut/asset.json"
+    },
+    {
+      "id": "p1-hair-silver-down-left-v1",
+      "manifest": "Art/Parts/P1-v1/down-left/heads-v1/hair-silver/asset.json"
+    },
+    {
+      "id": "p1-face-blue-down-left-v1",
+      "manifest": "Art/Parts/P1-v1/down-left/heads-v1/face-blue/asset.json"
+    },
+    {
+      "id": "p1-face-amber-down-left-v1",
+      "manifest": "Art/Parts/P1-v1/down-left/heads-v1/face-amber/asset.json"
+    }
+  ]
+}
