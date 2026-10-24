@@ -1,10 +1,16 @@
 # P1 人物素材逐张审核
 
-## 当前：左下中性动作模组 r1（待用户审核）
+## 当前：右下中性动作模组r1镜像候选
+
+用户认可左下展示并授权镜像右下。已完成13姿势逐层反射与左右语义、关节/脚底/支撑/层序/头部挂点转换，固定左上光照，保留左下人体和步相；修复/全身审核均由主线程完成。左下原图保持，新右下不继承美术认可。
+
+[正常全身GIF](../Art/Review/P1/neutral-down-right-r1-mirror/walk-120ms.gif) · [起停GIF](../Art/Review/P1/neutral-down-right-r1-mirror/start-stop-120ms.gif) · [站姿](../Art/Review/P1/neutral-down-right-r1-mirror/idle-review-2x.png) · [主线程复核/限制](../Art/Review/P1/neutral-down-right-r1-mirror/art-review.md)。已查全13姿势1×/2×及首尾/起停帧序，工具只能逐帧；无App/设备/IPA工作。
+
+## 已认可参考：左下中性动作模组 r1（展示范围）
 
 用户已要求开始左下。本轮先建立站姿、八帧行走和指定起停路径，共13姿势；按正面斜向重设左右近远、膝投影与裤口共同域。修复/复核由主线程完成，旧资源保留。已查整身全部1×/2×与首尾/起停帧序，不称连续播放器验收。
 
-[正常全身GIF](../Art/Review/P1/neutral-down-left-r1/walk-120ms.gif) · [起停GIF](../Art/Review/P1/neutral-down-left-r1/start-stop-120ms.gif) · [站姿](../Art/Review/P1/neutral-down-left-r1/idle-review-2x.png) · [具体复核/限制](../Art/Review/P1/neutral-down-left-r1/art-review.md)。新方向无美术认可，独立五官/发型/衣物/背剑待底模反馈后制作；不继承旧整张步态或上斜认可。无App/设备/IPA工作。
+[正常全身GIF](../Art/Review/P1/neutral-down-left-r1/walk-120ms.gif) · [起停GIF](../Art/Review/P1/neutral-down-left-r1/start-stop-120ms.gif) · [站姿](../Art/Review/P1/neutral-down-left-r1/idle-review-2x.png) · [具体复核/限制](../Art/Review/P1/neutral-down-left-r1/art-review.md)。用户已认可该次左下中性展示；独立五官/发型/衣物/背剑仍待后续单独制作审核，不扩大认可范围。无App/设备/IPA工作。
 
 ## 必须执行：主线程对智能体美术产物负责
 

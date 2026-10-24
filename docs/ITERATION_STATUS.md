@@ -1,5 +1,15 @@
 # 林间行旅迭代进度 · 2026-10-19
 
+## 2026-10-24 · 右下r1镜像动作模组
+
+用户“没问题，可以试一下镜像来做右下的动画”，认可左下已展示站姿、正常步态和指定起停；认可记录见 `Art/Review/P1/neutral-down-left-r1/approval.json`，不扩大到外观或任意动作中断。
+
+主线程独自将左下13姿势逐层反射，交换左右语义、关节、脚底、支撑、近远层级及96px头部局部坐标；源人体和动作保持，右下104层alpha精确等于左下反射。单张imagegen参考仅提供固定左上光照颜色，通过源UV绑定复用所有动作。修掉首轮肤色/衣料取色混杂、背心碎色及两帧头部仿射取整差异；后者离线采样相位登记最大0.0015px，实际头部UV/轮廓保持反射。
+
+主线程查看全部13姿势完整1×/2×、左右站姿和首尾/起停帧序；13张实际公共装配匹配、104层alpha镜像、13次头部局部RGBA匹配、26整臂分区一致，近手全保留，关节缺口0，8张裤片独立运动、13帧头顶高光左上。6019份旧文件保持；公共装配器/合同/profile不改。新右下无用户美术认可，工具只能逐帧，不称连续播放器验收，无App/设备/IPA工作。
+
+[正常行走](../Art/Review/P1/neutral-down-right-r1-mirror/walk-120ms.gif)、[起停](../Art/Review/P1/neutral-down-right-r1-mirror/start-stop-120ms.gif)、[站姿](../Art/Review/P1/neutral-down-right-r1-mirror/idle-review-2x.png)、[具体复核](../Art/Review/P1/neutral-down-right-r1-mirror/art-review.md)。重导及HTTPS回执见审核目录。
+
 ## 2026-10-24 · 左下中性动作模组 r1
 
 美术提交 `2b4f0e83185896c36a4377f4c2ca7dccfef74d76`；[正常行走HTTPS](https://raw.githubusercontent.com/liamchan-rgb/experiment/2b4f0e83185896c36a4377f4c2ca7dccfef74d76/Art/Review/P1/neutral-down-left-r1/walk-120ms.gif)、正常起停及站姿三份文件已实测HTTP200、MIME/哈希及GIF时序一致，回执见 `Art/Review/P1/neutral-down-left-r1/delivery.json`。265份文件重导逐字节一致。

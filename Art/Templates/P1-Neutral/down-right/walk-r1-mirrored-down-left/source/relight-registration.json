@@ -1,0 +1,11 @@
+{
+  "image": "relight-generated.png",
+  "scale": 0.20414673046251994,
+  "translation": [
+    0,
+    0
+  ],
+  "basis": "Whole reference canvas uniformly registered; source reflection owns all geometry and alpha",
+  "alphaOwner": "approved down-left reflection",
+  "inputSHA256": "b0f48fe40e187c14dcc6b26d69509df46815718ebae9cc27b362752dcf3beaf4"
+}

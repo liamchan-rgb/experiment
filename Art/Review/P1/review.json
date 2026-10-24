@@ -3,8 +3,8 @@
   "format": 3,
   "updated": "2026-10-24",
   "workflow": "Review one direction at a time from fixed cardinal and diagonal baselines. Modify and resubmit the same direction until explicit user artwork approval, then advance. Record provenance, feedback and accepted revisions for the future character template.",
-  "current": "p1-neutral-down-left-walk-r1",
-  "templateStatus": "Down-left neutral13-pose modular candidate; appearance resources and user artwork review pending",
+  "current": "p1-neutral-down-right-walk-r1-mirrored-down-left",
+  "templateStatus": "Down-left shown neutral poses approved; down-right13-pose mirror with fixed lighting is candidate pending user art review",
   "items": [
     {
       "id": "01-down-idle",
@@ -1882,6 +1882,12 @@
       "userStatement": "Ok开始左下方动作模组的制作",
       "current": "p1-neutral-down-left-walk-r1",
       "scope": "down-left neutral motion first; root-only repair/review and normal GIF delivery"
+    },
+    {
+      "date": "2026-10-24",
+      "userStatement": "没问题，可以试一下镜像来做右下的动画",
+      "current": "p1-neutral-down-right-walk-r1-mirrored-down-left",
+      "scope": "Mirror approved down-left neutral poses into down-right with semantic and fixed-light corrections; root-only repair/review and normal GIF delivery"
     }
   ],
   "battleNeutralBodyReview": {
@@ -3155,8 +3161,21 @@
   ],
   "downLeftNeutralReview": {
     "id": "p1-neutral-down-left-walk-r1",
-    "status": "candidate-main-whole-body-frame-review-complete",
-    "artApproval": null,
+    "status": "user-approved-shown-neutral-r1",
+    "artApproval": {
+      "date": "2026-10-24",
+      "reviewer": "user",
+      "statement": "没问题，可以试一下镜像来做右下的动画",
+      "direction": "down-left",
+      "revision": "neutral-r1",
+      "status": "approved",
+      "scope": "Delivered neutral down-left standing, eight-frame normal walk and specified start/stop preview only; not wardrobe, full hidden anatomy, arbitrary interruption or runtime",
+      "artifacts": {
+        "walk-120ms.gif": "18d12aa568b559834988a1e8f3b14a8280abd0dfcae6608dd808475b3221444d",
+        "start-stop-120ms.gif": "a172f73f2af0a94107ef5def854c5c1e52d6762c1be9cbd56a9703e9f787610d",
+        "idle-review-2x.png": "1bf0e759a84f090d1d66c133f3541acde59402df16998abd608296c46f2bba8f"
+      }
+    },
     "authorAndReviewer": "root",
     "subagentsUsed": false,
     "source": "Art/Templates/P1-Neutral/down-left/walk-r1/authoring.json",
@@ -3179,5 +3198,35 @@
     "ipaBuilt": false,
     "artCommit": "2b4f0e83185896c36a4377f4c2ca7dccfef74d76",
     "delivery": "Art/Review/P1/neutral-down-left-r1/delivery.json"
+  },
+  "downRightNeutralReview": {
+    "id": "p1-neutral-down-right-walk-r1-mirrored-down-left",
+    "status": "candidate-main-whole-body-frame-review-complete",
+    "artApproval": null,
+    "sourceApproval": "Art/Review/P1/neutral-down-left-r1/approval.json",
+    "authorAndReviewer": "root",
+    "subagentsUsed": false,
+    "source": "Art/Templates/P1-Neutral/down-right/walk-r1-mirrored-down-left/mirror-authoring.json",
+    "review": "Art/Review/P1/neutral-down-right-r1-mirror",
+    "artifacts": {
+      "normalGif": "Art/Review/P1/neutral-down-right-r1-mirror/walk-120ms.gif",
+      "startStopGif": "Art/Review/P1/neutral-down-right-r1-mirror/start-stop-120ms.gif",
+      "idle": "Art/Review/P1/neutral-down-right-r1-mirror/idle-review-2x.png"
+    },
+    "technical": {
+      "actualCompositorPoses": 13,
+      "semanticLayerAlphaReflections": 104,
+      "headLocalAttachmentChecks": 13,
+      "headSourceUVRegistrationChecks": 13,
+      "newJunctionAlphaHoles": 0,
+      "completeArmPartitionChecks": 26,
+      "nearHandsPreserved": 13,
+      "headHighlightsStayUpperLeft": 13,
+      "preservedFiles": 6019
+    },
+    "mainReview": "All13 whole-body1x/2x, paired idle and current ordered walk/start-stop; still-only viewer, no continuous-playback claim",
+    "wardrobeVerified": false,
+    "runtimeIntegrated": false,
+    "ipaBuilt": false
   }
 }
