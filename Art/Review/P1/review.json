@@ -3,8 +3,8 @@
   "format": 3,
   "updated": "2026-10-24",
   "workflow": "Review one direction at a time from fixed cardinal and diagonal baselines. Modify and resubmit the same direction until explicit user artwork approval, then advance. Record provenance, feedback and accepted revisions for the future character template.",
-  "current": "p1-right-independent-appearance-v1",
-  "templateStatus": "Right neutral shown13pose scope approved; right independent appearance8packages candidate on unchanged body. Per-direction basic resources exist; unified8direction combinations/phase/attachments/turning and runtime integration remain.",
+  "current": "p1-eight-way-v1-offline-unified-candidate",
+  "templateStatus": "Eight-direction offline unified candidate: one bodyID,9packages,16loadouts1664actual compositions; new long hems and right-up anatomical carry pending user approval. Runtime integration, arbitrary-phase stops, full rig marker normalization and third all8direction appearance acceptance remain.",
   "items": [
     {
       "id": "01-down-idle",
@@ -3308,15 +3308,17 @@
     "document": "docs/P1_DIRECTION_MODULES.md",
     "status": "in-progress",
     "next": [
-      "unified available8direction appearance combinations and attachment/phase/start-stop review",
-      "direction-change review and new layered runtime integration"
+      "integrate new unified layered resources and specified entry/exit transitions in demo",
+      "arbitrary phase interruption and third all8direction appearance acceptance"
     ],
     "femaleResourcesStarted": false,
     "repositorySyncPrerequisite": "Resolved for current down r6/v9 and13pose transition resources; remote closure verified in down transitions delivery receipt",
-    "current": "right independent appearances v1 candidate",
+    "current": "eight-direction offline unified candidate reviewed",
     "remainingDependencies": [
-      "unified available8direction resources/combination coverage",
-      "cross-direction attachment/phase/start-stop and runtime integration"
+      "new layered runtime integration with distance phase and direction hysteresis",
+      "arbitrary phase interruption",
+      "complete rig marker semantic normalization",
+      "third all8direction appearance zero engine change check"
     ]
   },
   "downLeftWardrobeReview": {
@@ -3663,7 +3665,7 @@
   },
   "rightAppearanceReview": {
     "id": "p1-right-independent-appearance-v1",
-    "status": "candidate-main-fullbody-frame-review-complete",
+    "status": "shown-main-loadouts-approved-other-combinations-not-inherited",
     "artApproval": null,
     "authorAndReviewer": "root",
     "subagentsUsed": false,
@@ -3709,6 +3711,62 @@
     },
     "artCommit": "e4dc95a3fa69d7cb84da6c2ede3df5e46715c5fc",
     "delivery": "Art/Review/P1/modular-right-appearance-v1/delivery.json",
-    "remotePackageClosurePaths": 1328
+    "remotePackageClosurePaths": 1328,
+    "shownApproval": "Art/Review/P1/modular-right-appearance-v1/approval.json"
+  },
+  "eightWayUnifiedReview": {
+    "id": "p1-eight-way-v1",
+    "status": "offline-candidate-main-frame-review-complete",
+    "artApproval": null,
+    "authorAndReviewer": "root",
+    "subagentsUsed": false,
+    "catalog": "Art/Integration/P1-modular-eight-way-v1/catalog.json",
+    "motion": "Art/Integration/P1-modular-eight-way-v1/motion.json",
+    "review": "Art/Review/P1/modular-eight-way-v1",
+    "singleBodyID": "p1-eight-way-base-v1",
+    "packages": 9,
+    "actualCompositions": 1664,
+    "mainHumanReviewedPoses": 208,
+    "technical": {
+      "status": "technical-pass-main-wholebody-frame-review-complete",
+      "artApproval": null,
+      "packages": 9,
+      "loadouts": 16,
+      "directions": 8,
+      "posesPerDirection": 13,
+      "actualCompositions": 1664,
+      "checks": {
+        "bodyLayerIdentity": 832,
+        "downCommonLowerProofs": 52,
+        "phaseMappings": 64,
+        "handContribution": 3328,
+        "weaponToggleIsolation": 832,
+        "adjacentTurnSupportCases": 2048,
+        "unchangedWholeCompositions": 1092,
+        "noNewUnderbodyExposure": 4992
+      },
+      "runtimeIntegrated": false,
+      "ipaBuilt": false,
+      "authorAndReviewer": "root",
+      "subagentsUsed": false,
+      "preservedExistingFiles": 11611,
+      "reexportByteIdenticalFiles": 5411,
+      "existingTests": {
+        "contract": 26,
+        "compositor": 21
+      },
+      "mainArtReview": "Art/Review/P1/modular-eight-way-v1/art-review.md",
+      "continuousPlaybackClaimed": false
+    },
+    "previousRightShownApproval": "Art/Review/P1/modular-right-appearance-v1/approval.json",
+    "newOfflineIntegrationComplete": true,
+    "runtimeIntegrated": false,
+    "ipaBuilt": false,
+    "remaining": [
+      "new unified parts and specified transitions in demo",
+      "arbitrary phase stop",
+      "complete rig marker semantic normalization",
+      "third all8direction appearance zero engine change check"
+    ]
   }
 }

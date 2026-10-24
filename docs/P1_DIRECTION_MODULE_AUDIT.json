@@ -174,16 +174,59 @@
     "本轮记录同步缺口，未批量发布未经复核的本地美术"
   ],
   "subsequentProgress": {
-    "date": "2026-10-24",
-    "current": "right independent appearance v1 candidate",
-    "source": "Art/Templates/P1-Wardrobe/right/v1-independent/catalog.json",
-    "review": "Art/Review/P1/modular-right-appearance-v1",
-    "oldAuditRetained": true,
-    "rightNeutralShownApproval": "Art/Review/P1/neutral-right-r1-mirror/approval.json",
-    "downSyncGapResolved": true,
-    "newArtworkApproval": null,
-    "rightIndependentAppearancesComplete": "candidate,16combinations208poses",
-    "full8DirectionIntegrationComplete": false
+    "id": "p1-eight-way-v1",
+    "status": "offline-candidate-main-frame-review-complete",
+    "artApproval": null,
+    "authorAndReviewer": "root",
+    "subagentsUsed": false,
+    "catalog": "Art/Integration/P1-modular-eight-way-v1/catalog.json",
+    "motion": "Art/Integration/P1-modular-eight-way-v1/motion.json",
+    "review": "Art/Review/P1/modular-eight-way-v1",
+    "singleBodyID": "p1-eight-way-base-v1",
+    "packages": 9,
+    "actualCompositions": 1664,
+    "mainHumanReviewedPoses": 208,
+    "technical": {
+      "status": "technical-pass-main-wholebody-frame-review-complete",
+      "artApproval": null,
+      "packages": 9,
+      "loadouts": 16,
+      "directions": 8,
+      "posesPerDirection": 13,
+      "actualCompositions": 1664,
+      "checks": {
+        "bodyLayerIdentity": 832,
+        "downCommonLowerProofs": 52,
+        "phaseMappings": 64,
+        "handContribution": 3328,
+        "weaponToggleIsolation": 832,
+        "adjacentTurnSupportCases": 2048,
+        "unchangedWholeCompositions": 1092,
+        "noNewUnderbodyExposure": 4992
+      },
+      "runtimeIntegrated": false,
+      "ipaBuilt": false,
+      "authorAndReviewer": "root",
+      "subagentsUsed": false,
+      "preservedExistingFiles": 11611,
+      "reexportByteIdenticalFiles": 5411,
+      "existingTests": {
+        "contract": 26,
+        "compositor": 21
+      },
+      "mainArtReview": "Art/Review/P1/modular-eight-way-v1/art-review.md",
+      "continuousPlaybackClaimed": false
+    },
+    "previousRightShownApproval": "Art/Review/P1/modular-right-appearance-v1/approval.json",
+    "newOfflineIntegrationComplete": true,
+    "runtimeIntegrated": false,
+    "ipaBuilt": false,
+    "remaining": [
+      "new unified parts and specified transitions in demo",
+      "arbitrary phase stop",
+      "complete rig marker semantic normalization",
+      "third all8direction appearance zero engine change check"
+    ]
   },
   "progressHistory": [
     {
@@ -216,6 +259,18 @@
       "newArtworkApproval": null,
       "rightNeutralAdaptation": "candidate,13poses104layers",
       "rightIndependentAppearancesComplete": false,
+      "full8DirectionIntegrationComplete": false
+    },
+    {
+      "date": "2026-10-24",
+      "current": "right independent appearance v1 candidate",
+      "source": "Art/Templates/P1-Wardrobe/right/v1-independent/catalog.json",
+      "review": "Art/Review/P1/modular-right-appearance-v1",
+      "oldAuditRetained": true,
+      "rightNeutralShownApproval": "Art/Review/P1/neutral-right-r1-mirror/approval.json",
+      "downSyncGapResolved": true,
+      "newArtworkApproval": null,
+      "rightIndependentAppearancesComplete": "candidate,16combinations208poses",
       "full8DirectionIntegrationComplete": false
     }
   ]

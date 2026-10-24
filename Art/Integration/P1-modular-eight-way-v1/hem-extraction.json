@@ -1,0 +1,360 @@
+{
+  "rule": "fixed whole atlas1254->1024 nearest; semantic matte, piping retained; no per-sprite fitting",
+  "nativeSources": [
+    {
+      "direction": "down-left",
+      "clip": "idle",
+      "frame": 0,
+      "source": "Art/Integration/P1-modular-eight-way-v1/source/down-left-coat-original.png",
+      "sourceCell": 0,
+      "torsoHandoffY": 162,
+      "hemPixelCount": 893
+    },
+    {
+      "direction": "down-left",
+      "clip": "walk",
+      "frame": 1,
+      "source": "Art/Integration/P1-modular-eight-way-v1/source/down-left-coat-original.png",
+      "sourceCell": 1,
+      "torsoHandoffY": 163,
+      "hemPixelCount": 920
+    },
+    {
+      "direction": "down-left",
+      "clip": "walk",
+      "frame": 2,
+      "source": "Art/Integration/P1-modular-eight-way-v1/source/down-left-coat-original.png",
+      "sourceCell": 2,
+      "torsoHandoffY": 162,
+      "hemPixelCount": 949
+    },
+    {
+      "direction": "down-left",
+      "clip": "walk",
+      "frame": 3,
+      "source": "Art/Integration/P1-modular-eight-way-v1/source/down-left-coat-original.png",
+      "sourceCell": 3,
+      "torsoHandoffY": 161,
+      "hemPixelCount": 924
+    },
+    {
+      "direction": "down-left",
+      "clip": "walk",
+      "frame": 4,
+      "source": "Art/Integration/P1-modular-eight-way-v1/source/down-left-coat-original.png",
+      "sourceCell": 4,
+      "torsoHandoffY": 162,
+      "hemPixelCount": 883
+    },
+    {
+      "direction": "down-left",
+      "clip": "walk",
+      "frame": 5,
+      "source": "Art/Integration/P1-modular-eight-way-v1/source/down-left-coat-original.png",
+      "sourceCell": 5,
+      "torsoHandoffY": 163,
+      "hemPixelCount": 909
+    },
+    {
+      "direction": "down-left",
+      "clip": "walk",
+      "frame": 6,
+      "source": "Art/Integration/P1-modular-eight-way-v1/source/down-left-coat-original.png",
+      "sourceCell": 6,
+      "torsoHandoffY": 162,
+      "hemPixelCount": 896
+    },
+    {
+      "direction": "down-left",
+      "clip": "walk",
+      "frame": 7,
+      "source": "Art/Integration/P1-modular-eight-way-v1/source/down-left-coat-original.png",
+      "sourceCell": 7,
+      "torsoHandoffY": 161,
+      "hemPixelCount": 950
+    },
+    {
+      "direction": "down-left",
+      "clip": "walk",
+      "frame": 8,
+      "source": "Art/Integration/P1-modular-eight-way-v1/source/down-left-coat-original.png",
+      "sourceCell": 8,
+      "torsoHandoffY": 162,
+      "hemPixelCount": 938
+    },
+    {
+      "direction": "down-left",
+      "clip": "walk-start",
+      "frame": 1,
+      "source": "Art/Integration/P1-modular-eight-way-v1/source/down-left-coat-original.png",
+      "sourceCell": 9,
+      "torsoHandoffY": 162,
+      "hemPixelCount": 935
+    },
+    {
+      "direction": "down-left",
+      "clip": "walk-start",
+      "frame": 2,
+      "source": "Art/Integration/P1-modular-eight-way-v1/source/down-left-coat-original.png",
+      "sourceCell": 10,
+      "torsoHandoffY": 162,
+      "hemPixelCount": 1051
+    },
+    {
+      "direction": "down-left",
+      "clip": "walk-stop",
+      "frame": 1,
+      "source": "Art/Integration/P1-modular-eight-way-v1/source/down-left-coat-original.png",
+      "sourceCell": 11,
+      "torsoHandoffY": 162,
+      "hemPixelCount": 939
+    },
+    {
+      "direction": "down-left",
+      "clip": "walk-stop",
+      "frame": 2,
+      "source": "Art/Integration/P1-modular-eight-way-v1/source/down-left-coat-original.png",
+      "sourceCell": 12,
+      "torsoHandoffY": 162,
+      "hemPixelCount": 943
+    },
+    {
+      "direction": "up-left",
+      "clip": "idle",
+      "frame": 0,
+      "source": "Art/Integration/P1-modular-eight-way-v1/source/up-left-coat-clean-original.png",
+      "sourceCell": 0,
+      "torsoHandoffY": 162,
+      "hemPixelCount": 1280
+    },
+    {
+      "direction": "up-left",
+      "clip": "walk",
+      "frame": 1,
+      "source": "Art/Integration/P1-modular-eight-way-v1/source/up-left-coat-clean-original.png",
+      "sourceCell": 1,
+      "torsoHandoffY": 163,
+      "hemPixelCount": 1285
+    },
+    {
+      "direction": "up-left",
+      "clip": "walk",
+      "frame": 2,
+      "source": "Art/Integration/P1-modular-eight-way-v1/source/up-left-coat-clean-original.png",
+      "sourceCell": 2,
+      "torsoHandoffY": 162,
+      "hemPixelCount": 1304
+    },
+    {
+      "direction": "up-left",
+      "clip": "walk",
+      "frame": 3,
+      "source": "Art/Integration/P1-modular-eight-way-v1/source/up-left-coat-clean-original.png",
+      "sourceCell": 3,
+      "torsoHandoffY": 161,
+      "hemPixelCount": 1368
+    },
+    {
+      "direction": "up-left",
+      "clip": "walk",
+      "frame": 4,
+      "source": "Art/Integration/P1-modular-eight-way-v1/source/up-left-coat-clean-original.png",
+      "sourceCell": 4,
+      "torsoHandoffY": 162,
+      "hemPixelCount": 1338
+    },
+    {
+      "direction": "up-left",
+      "clip": "walk",
+      "frame": 5,
+      "source": "Art/Integration/P1-modular-eight-way-v1/source/up-left-coat-clean-original.png",
+      "sourceCell": 5,
+      "torsoHandoffY": 163,
+      "hemPixelCount": 1366
+    },
+    {
+      "direction": "up-left",
+      "clip": "walk",
+      "frame": 6,
+      "source": "Art/Integration/P1-modular-eight-way-v1/source/up-left-coat-clean-original.png",
+      "sourceCell": 6,
+      "torsoHandoffY": 162,
+      "hemPixelCount": 1372
+    },
+    {
+      "direction": "up-left",
+      "clip": "walk",
+      "frame": 7,
+      "source": "Art/Integration/P1-modular-eight-way-v1/source/up-left-coat-clean-original.png",
+      "sourceCell": 7,
+      "torsoHandoffY": 161,
+      "hemPixelCount": 1311
+    },
+    {
+      "direction": "up-left",
+      "clip": "walk",
+      "frame": 8,
+      "source": "Art/Integration/P1-modular-eight-way-v1/source/up-left-coat-clean-original.png",
+      "sourceCell": 8,
+      "torsoHandoffY": 162,
+      "hemPixelCount": 1293
+    },
+    {
+      "direction": "up-left",
+      "clip": "walk-start",
+      "frame": 1,
+      "source": "Art/Integration/P1-modular-eight-way-v1/source/up-left-coat-clean-original.png",
+      "sourceCell": 9,
+      "torsoHandoffY": 162,
+      "hemPixelCount": 1336
+    },
+    {
+      "direction": "up-left",
+      "clip": "walk-start",
+      "frame": 2,
+      "source": "Art/Integration/P1-modular-eight-way-v1/source/up-left-coat-clean-original.png",
+      "sourceCell": 10,
+      "torsoHandoffY": 162,
+      "hemPixelCount": 1267
+    },
+    {
+      "direction": "up-left",
+      "clip": "walk-stop",
+      "frame": 1,
+      "source": "Art/Integration/P1-modular-eight-way-v1/source/up-left-coat-clean-original.png",
+      "sourceCell": 11,
+      "torsoHandoffY": 162,
+      "hemPixelCount": 1255
+    },
+    {
+      "direction": "up-left",
+      "clip": "walk-stop",
+      "frame": 2,
+      "source": "Art/Integration/P1-modular-eight-way-v1/source/up-left-coat-clean-original.png",
+      "sourceCell": 12,
+      "torsoHandoffY": 162,
+      "hemPixelCount": 1259
+    },
+    {
+      "direction": "up",
+      "clip": "idle",
+      "frame": 0,
+      "source": "Art/Integration/P1-modular-eight-way-v1/source/up-coat-clean-original.png",
+      "sourceCell": 0,
+      "torsoHandoffY": 162,
+      "hemPixelCount": 1351
+    },
+    {
+      "direction": "up",
+      "clip": "walk",
+      "frame": 1,
+      "source": "Art/Integration/P1-modular-eight-way-v1/source/up-coat-clean-original.png",
+      "sourceCell": 1,
+      "torsoHandoffY": 162,
+      "hemPixelCount": 1341
+    },
+    {
+      "direction": "up",
+      "clip": "walk",
+      "frame": 2,
+      "source": "Art/Integration/P1-modular-eight-way-v1/source/up-coat-clean-original.png",
+      "sourceCell": 2,
+      "torsoHandoffY": 162,
+      "hemPixelCount": 1340
+    },
+    {
+      "direction": "up",
+      "clip": "walk",
+      "frame": 3,
+      "source": "Art/Integration/P1-modular-eight-way-v1/source/up-coat-clean-original.png",
+      "sourceCell": 3,
+      "torsoHandoffY": 162,
+      "hemPixelCount": 1346
+    },
+    {
+      "direction": "up",
+      "clip": "walk",
+      "frame": 4,
+      "source": "Art/Integration/P1-modular-eight-way-v1/source/up-coat-clean-original.png",
+      "sourceCell": 4,
+      "torsoHandoffY": 162,
+      "hemPixelCount": 1322
+    },
+    {
+      "direction": "up",
+      "clip": "walk",
+      "frame": 5,
+      "source": "Art/Integration/P1-modular-eight-way-v1/source/up-coat-clean-original.png",
+      "sourceCell": 5,
+      "torsoHandoffY": 162,
+      "hemPixelCount": 1353
+    },
+    {
+      "direction": "up",
+      "clip": "walk",
+      "frame": 6,
+      "source": "Art/Integration/P1-modular-eight-way-v1/source/up-coat-clean-original.png",
+      "sourceCell": 6,
+      "torsoHandoffY": 162,
+      "hemPixelCount": 1332
+    },
+    {
+      "direction": "up",
+      "clip": "walk",
+      "frame": 7,
+      "source": "Art/Integration/P1-modular-eight-way-v1/source/up-coat-clean-original.png",
+      "sourceCell": 7,
+      "torsoHandoffY": 162,
+      "hemPixelCount": 1345
+    },
+    {
+      "direction": "up",
+      "clip": "walk",
+      "frame": 8,
+      "source": "Art/Integration/P1-modular-eight-way-v1/source/up-coat-clean-original.png",
+      "sourceCell": 8,
+      "torsoHandoffY": 162,
+      "hemPixelCount": 1352
+    },
+    {
+      "direction": "up",
+      "clip": "walk-start",
+      "frame": 1,
+      "source": "Art/Integration/P1-modular-eight-way-v1/source/up-coat-clean-original.png",
+      "sourceCell": 9,
+      "torsoHandoffY": 162,
+      "hemPixelCount": 1352
+    },
+    {
+      "direction": "up",
+      "clip": "walk-start",
+      "frame": 2,
+      "source": "Art/Integration/P1-modular-eight-way-v1/source/up-coat-clean-original.png",
+      "sourceCell": 10,
+      "torsoHandoffY": 162,
+      "hemPixelCount": 1352
+    },
+    {
+      "direction": "up",
+      "clip": "walk-stop",
+      "frame": 1,
+      "source": "Art/Integration/P1-modular-eight-way-v1/source/up-coat-clean-original.png",
+      "sourceCell": 11,
+      "torsoHandoffY": 162,
+      "hemPixelCount": 1354
+    },
+    {
+      "direction": "up",
+      "clip": "walk-stop",
+      "frame": 2,
+      "source": "Art/Integration/P1-modular-eight-way-v1/source/up-coat-clean-original.png",
+      "sourceCell": 12,
+      "torsoHandoffY": 162,
+      "hemPixelCount": 1336
+    }
+  ],
+  "reflections": {
+    "down-right": "down-left",
+    "up-right": "up-left"
+  }
+}
