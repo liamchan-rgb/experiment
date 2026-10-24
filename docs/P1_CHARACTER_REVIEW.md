@@ -2,6 +2,8 @@
 
 ## 当前：八向统一候选（新整合待认可）
 
+美术提交 `ecfb101846a50219797b9e7099ce2863bb8ea5b4`；[正常切向GIF直链](https://raw.githubusercontent.com/liamchan-rgb/experiment/ecfb101846a50219797b9e7099ce2863bb8ea5b4/Art/Review/P1/modular-eight-way-v1/turn-comparison-120ms.gif)及两套八向步行/指定起停、站姿共六份HTTPS均HTTP200/MIME/SHA256与本地一致，时序/循环通过；远端9864条资源/源稿/公共依赖字节一致，见 `Art/Review/P1/modular-eight-way-v1/delivery.json`。新整合仍待用户认可。
+
 用户“没问题，继续下一项”认可上一轮实际展示的正右独立外观，范围见 `Art/Review/P1/modular-right-appearance-v1/approval.json`。本轮完成八向离线统一候选：同一个身体ID、一个catalog/motion，九个完整八向包；两上衣、共用裤靴、两头发、两五官、背剑可使用同一选择跨八向装配。三种背向五官透明符合原导板，不记作缺脸。新整合和修订artApproval=null。
 
 root亲自发现并修复：正下裤靴拆入共用包；各向步行循环起点不一致，统一为同物理支撑脚，只旋转原八帧起点、不丢帧/重复/变速；原neck固定父平移注册，保留逐帧头部轻摆，不用定义不同的hip点或alpha边框适配。蓝色长外套四斜向/正上原为短下摆，工具绘制13姿势长摆后独立提取，返修初稿含剑污染，保留原身体/袖子/手脚。右上v6镜像造成换肩，新包复用原v1的右肩→左髋斜背13姿势并修遮挡，旧v6/认可不覆盖。

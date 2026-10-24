@@ -3767,6 +3767,9 @@
       "arbitrary phase stop",
       "complete rig marker semantic normalization",
       "third all8direction appearance zero engine change check"
-    ]
+    ],
+    "artCommit": "ecfb101846a50219797b9e7099ce2863bb8ea5b4",
+    "delivery": "Art/Review/P1/modular-eight-way-v1/delivery.json",
+    "remoteByteIdenticalClosurePaths": 9864
   }
 }

@@ -107,3 +107,6 @@ root独自制作、修复和审核。原左向外观逐层镜像并转换左右�
 [正常全身GIF](../Art/Review/P1/modular-right-appearance-v1/outfits-walk-120ms.gif) · [指定起停](../Art/Review/P1/modular-right-appearance-v1/outfits-start-stop-120ms.gif) · [站姿](../Art/Review/P1/modular-right-appearance-v1/outfits-idle-2x.png) · [主线程复核](../Art/Review/P1/modular-right-appearance-v1/art-review.md)
 
 当前为正右独立外观候选，八向基本资源已有逐方向成果，仍待统一组合、跨方向挂点/相位/起停及切向复核与运行时接入；不能把旧demo已有八向切换说成没做，也不能把当前新分层统一接入说成完成。指定起停仅idle→walk01及walk08→idle，任意相位中断未验收。女性延后，本轮无App/模拟器/设备或IPA。
+
+本轮远端回执：美术提交 `ecfb101846a50219797b9e7099ce2863bb8ea5b4`；[正常切向GIF直链](https://raw.githubusercontent.com/liamchan-rgb/experiment/ecfb101846a50219797b9e7099ce2863bb8ea5b4/Art/Review/P1/modular-eight-way-v1/turn-comparison-120ms.gif)及两套八向步行/指定起停、站姿共六份HTTPS均HTTP200/MIME/SHA256与本地一致，时序/循环通过；远端9864条资源/源稿/公共依赖字节一致，见 `Art/Review/P1/modular-eight-way-v1/delivery.json`。新整合仍待用户认可。
+
