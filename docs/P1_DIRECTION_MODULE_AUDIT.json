@@ -185,7 +185,11 @@
     "old9CompositePosesUnchanged": 324,
     "combinations": 36,
     "actualPoses": 468,
-    "downSyncGapResolved": "included in this change; remote dependency verification to be recorded in delivery.json",
-    "rightLayeredAdaptationComplete": false
+    "downSyncGapResolved": true,
+    "rightLayeredAdaptationComplete": false,
+    "artCommit": "6fef130da1e1cfbeb09f8d6fb2f6df5a863b994e",
+    "verification": "Art/Review/P1/modular-down-transitions-v1/delivery.json",
+    "remoteDependencyPaths": 1012,
+    "previouslyMissingSourcePathsResolved": 560
   }
 }

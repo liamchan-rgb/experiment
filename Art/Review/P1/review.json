@@ -3312,7 +3312,7 @@
       "unified combinations and direction changes/runtime integration"
     ],
     "femaleResourcesStarted": false,
-    "repositorySyncPrerequisite": "Current down r6/v9 source and old review sync included; verify current remote dependency closure in down transitions delivery receipt",
+    "repositorySyncPrerequisite": "Resolved for current down r6/v9 and13pose transition resources; remote closure verified in down transitions delivery receipt",
     "current": "down relaxed-hand authored start-stop candidate",
     "remainingDependencies": [
       "right current-contract layered adaptation",
@@ -3576,6 +3576,10 @@
       "normalGif": "Art/Review/P1/modular-down-transitions-v1/outfits-start-stop-120ms.gif",
       "walkGif": "Art/Review/P1/modular-down-transitions-v1/outfits-walk-120ms.gif",
       "idle": "Art/Review/P1/modular-down-transitions-v1/outfits-idle-2x.png"
-    }
+    },
+    "artCommit": "6fef130da1e1cfbeb09f8d6fb2f6df5a863b994e",
+    "delivery": "Art/Review/P1/modular-down-transitions-v1/delivery.json",
+    "remotePackageClosurePaths": 1012,
+    "downSourceSyncVerified": true
   }
 }

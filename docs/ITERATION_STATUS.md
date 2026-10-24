@@ -2,6 +2,8 @@
 
 ## 2026-10-24 · 正下自然空手专用起停及既有资源补同步
 
+美术提交 `6fef130da1e1cfbeb09f8d6fb2f6df5a863b994e`；[正常起停GIF直链](https://raw.githubusercontent.com/liamchan-rgb/experiment/6fef130da1e1cfbeb09f8d6fb2f6df5a863b994e/Art/Review/P1/modular-down-transitions-v1/outfits-start-stop-120ms.gif)、原步态循环和站姿均HTTP200/MIME/SHA256一致，GIF时序正确；远端1012条包/公共依赖字节一致，原缺失560条源路径已补齐，1242份旧资源/审核核对通过，正下此次同步缺口已解决。回执见 `Art/Review/P1/modular-down-transitions-v1/delivery.json`。
+
 用户“没问题，继续下一项”认可上一轮实际展示的正上两套外观，范围见 `Art/Review/P1/modular-up-appearance-v1/approval.json`。按既定顺序，本轮补正下自然空手专用起步/收步：idle→start01→start02→walk01，以及walk08→stop01→stop02→idle。原站姿与八帧循环像素保留，不重画已有衣物或头部。新过渡待用户认可。
 
 root独自制作/修复/审核。四个新姿势沿已保留的正下源图生成，同侧整条自然空手臂、手和袖子共用肩枢轴变换；人体腿、裤腿、靴子共用同一份单调UV场，髋/膝/踝/脚底逐段过渡，不把裤子固定在躯干上，也不混合两张半透明人物。蓝衣两尾片沿原腰下枢轴缓动，背剑随原躯干，不移动剑去躲衣摆。头部沿原挂点，回落过程中同步身体。

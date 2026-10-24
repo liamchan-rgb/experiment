@@ -17,3 +17,6 @@ root独自制作/修复/审核。四个新姿势沿已保留的正下源图生�
 补同步已有正下r6、绿衣覆盖v2、蓝长外套v1、背剑v1、v8/v9及既往审核材料；旧成果只作保留/复用，不把历史审核数字充当本轮新测试。原7分支库存与同步缺口审计保留为历史，本次资源依赖以当前提交及delivery.json回执核验为准。
 
 范围仅指定idle→walk01、walk08→idle，不代表任意步相中断/加减速已完成。正右当前合同分层适配仍是统一八向复核的前置依赖；新分层全八向组合、切向/运行时接入及女性资源未完成。本轮没有App、模拟器/设备或IPA。
+
+<!-- verified-delivery -->
+美术提交 `6fef130da1e1cfbeb09f8d6fb2f6df5a863b994e`；起停/步态/站姿三份HTTPS实测HTTP200、MIME/SHA256与本地一致，GIF帧数/时序/循环正确。远端1012条包/公共依赖字节一致，原缺失560条源路径已补齐，1242份旧资源/审核文件字节核对通过。[正常起停GIF直链](https://raw.githubusercontent.com/liamchan-rgb/experiment/6fef130da1e1cfbeb09f8d6fb2f6df5a863b994e/Art/Review/P1/modular-down-transitions-v1/outfits-start-stop-120ms.gif)；回执见[delivery.json](delivery.json)。
