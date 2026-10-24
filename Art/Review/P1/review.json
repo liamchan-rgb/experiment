@@ -3,8 +3,8 @@
   "format": 3,
   "updated": "2026-10-24",
   "workflow": "Review one direction at a time from fixed cardinal and diagonal baselines. Modify and resubmit the same direction until explicit user artwork approval, then advance. Record provenance, feedback and accepted revisions for the future character template.",
-  "current": "p1-upper-nape-gradient-v4",
-  "templateStatus": "Continuous nape colour repair v4 candidate; previous v3 internal clearance withdrawn; no user approval.",
+  "current": "p1-upper-back-carry-v5",
+  "templateStatus": "Right-view sword carry v5 candidate; main reviewed all right-view poses, no user art approval.",
   "items": [
     {
       "id": "01-down-idle",
@@ -2931,31 +2931,30 @@
     "approval": "Art/Review/P1/neutral-upper-transitions-r6/approval.json"
   },
   "upperWardrobeReview": {
-    "id": "p1-upper-nape-gradient-v4",
+    "id": "p1-upper-back-carry-v5",
     "status": "candidate-main-whole-body-frame-review-complete",
     "artApproval": null,
     "repairAndReviewOwner": "root",
     "subagentsUsed": false,
-    "method": "Contiguous artist-painted nape colour field and 2px source-edge compositing feather, original alpha and geometry retained",
+    "method": "Fixed torso-local right carry registration and original neck occlusion window; left unchanged",
     "technical": {
       "combinations": 16,
       "actualCompositorPoses": 208,
-      "geometryPosesUnchanged": 26,
-      "combinationsUnchangedOutsideNape": 208,
+      "rightSleeveIntersections": 0,
+      "visibleSheathComponents": 1,
+      "leftAndEmptyCombinationsUnchanged": true,
       "coverageFailures": 0,
       "handPreservationFailures": 0
     },
     "artifacts": {
-      "normalGif": "Art/Review/P1/modular-upper-wardrobe-v4/outfits-walk-120ms.gif",
-      "startStopGif": "Art/Review/P1/modular-upper-wardrobe-v4/outfits-start-stop-120ms.gif",
-      "idle": "Art/Review/P1/modular-upper-wardrobe-v4/outfits-idle-2x.png",
-      "artReview": "Art/Review/P1/modular-upper-wardrobe-v4/art-review.md"
+      "normalGif": "Art/Review/P1/modular-upper-wardrobe-v5/outfits-walk-120ms.gif",
+      "startStopGif": "Art/Review/P1/modular-upper-wardrobe-v5/outfits-start-stop-120ms.gif",
+      "idle": "Art/Review/P1/modular-upper-wardrobe-v5/outfits-idle-2x.png",
+      "artReview": "Art/Review/P1/modular-upper-wardrobe-v5/art-review.md"
     },
-    "mainReview": "Whole-body1x/2x all displayed poses and ordered nape comparison; no continuous-player viewing claimed",
+    "mainReview": "Whole-body1x/2x all13 right-view poses in both outfits, ordered boundaries and crossed hair; no continuous-player viewing claimed",
     "runtimeIntegrated": false,
-    "ipaBuilt": false,
-    "artCommit": "8a5a44025fe282ebcb01e8d377784b3d7bb3bb9c",
-    "delivery": "Art/Review/P1/modular-upper-wardrobe-v4/delivery.json"
+    "ipaBuilt": false
   },
   "upperWardrobeHistory": [
     {
@@ -3077,6 +3076,37 @@
       "ipaBuilt": false,
       "artCommit": "eededb5c11a548cf9f0aad856782ba8e2b8b9b08",
       "delivery": "Art/Review/P1/modular-upper-wardrobe-v3/delivery.json"
+    },
+    {
+      "id": "p1-upper-nape-gradient-v4",
+      "status": "right-sword-clipping-feedback-internal-clearance-withdrawn",
+      "artApproval": null,
+      "repairAndReviewOwner": "root",
+      "subagentsUsed": false,
+      "method": "Contiguous artist-painted nape colour field and 2px source-edge compositing feather, original alpha and geometry retained",
+      "technical": {
+        "combinations": 16,
+        "actualCompositorPoses": 208,
+        "geometryPosesUnchanged": 26,
+        "combinationsUnchangedOutsideNape": 208,
+        "coverageFailures": 0,
+        "handPreservationFailures": 0
+      },
+      "artifacts": {
+        "normalGif": "Art/Review/P1/modular-upper-wardrobe-v4/outfits-walk-120ms.gif",
+        "startStopGif": "Art/Review/P1/modular-upper-wardrobe-v4/outfits-start-stop-120ms.gif",
+        "idle": "Art/Review/P1/modular-upper-wardrobe-v4/outfits-idle-2x.png",
+        "artReview": "Art/Review/P1/modular-upper-wardrobe-v4/art-review.md"
+      },
+      "mainReview": "Whole-body1x/2x all displayed poses and ordered nape comparison; no continuous-player viewing claimed",
+      "runtimeIntegrated": false,
+      "ipaBuilt": false,
+      "artCommit": "8a5a44025fe282ebcb01e8d377784b3d7bb3bb9c",
+      "delivery": "Art/Review/P1/modular-upper-wardrobe-v4/delivery.json",
+      "feedback": {
+        "statement": "右上的动作里面剑穿模了",
+        "finding": "Sword sheath crosses near-shoulder sleeve and is occluded into a discontinuous segment during arm swing."
+      }
     }
   ]
 }

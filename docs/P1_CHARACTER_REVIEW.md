@@ -9,7 +9,11 @@
 - 用户于2026-10-22明确要求：智能体画的效果有问题，由主线程自己修，并同步到GitHub提示词。
 
 
-## 当前候选：上斜v4后颈连续肤色
+## 当前候选：上斜v5右上背剑
+
+用户指出右上剑穿模，撤回旧挂载内部美术通过。主线程重登右上背剑角度/位置与颈部遮挡，露出的剑鞘避开双袖并保持连续；左上、空背和人体/动作不变。[正常行走](../Art/Review/P1/modular-upper-wardrobe-v5/outfits-walk-120ms.gif)、[起停](../Art/Review/P1/modular-upper-wardrobe-v5/outfits-start-stop-120ms.gif)、[站姿](../Art/Review/P1/modular-upper-wardrobe-v5/outfits-idle-2x.png)、[主线程复核](../Art/Review/P1/modular-upper-wardrobe-v5/art-review.md)。新美术未获认可，不称连续播放器验收。
+
+## 旧问题版：上斜v4后颈连续肤色
 
 用户指出v3补色不均匀，撤回原内部美术通过。v4由主线程重新绘制连续肤色阴影，处理源区域边缘融合，保留原几何/动作/外观资源。[正常行走](../Art/Review/P1/modular-upper-wardrobe-v4/outfits-walk-120ms.gif)、[起停](../Art/Review/P1/modular-upper-wardrobe-v4/outfits-start-stop-120ms.gif)、[站姿](../Art/Review/P1/modular-upper-wardrobe-v4/outfits-idle-2x.png)、[复核](../Art/Review/P1/modular-upper-wardrobe-v4/art-review.md)。新美术未获认可，不能连续播放，不称播放器验收。
 

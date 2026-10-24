@@ -1,5 +1,13 @@
 # 林间行旅迭代进度 · 2026-10-19
 
+## 2026-10-24 · 上斜v5：右上背剑避让肩袖
+
+用户指出右上动作剑穿模。主线程分层确认原挂载中段与近侧肩袖投影重叠，摆臂造成剑鞘断口，原内部美术通过撤回。另存背剑v5：右上以躯干局部固定旋转/偏移重新登记，并排除原后颈遮挡区；剑柄由头部正常遮住，剑鞘保持在背部。左上和空背搭配不变，后颈肤色/裤靴/人体/动作保持。
+
+右上两衣型全部13姿势整身1×/2×、起停/首尾与换发站姿由主线程复核。16组合208图检查通过；右上武器与双袖无交集，露出剑鞘连续；改动只在武器范围，全部左上/空背组合与v4像素一致。工具只能逐帧，不称连续播放器验收，新美术未获认可。
+
+[正常行走GIF](../Art/Review/P1/modular-upper-wardrobe-v5/outfits-walk-120ms.gif)、[起停GIF](../Art/Review/P1/modular-upper-wardrobe-v5/outfits-start-stop-120ms.gif)、[站姿](../Art/Review/P1/modular-upper-wardrobe-v5/outfits-idle-2x.png)、[具体复核](../Art/Review/P1/modular-upper-wardrobe-v5/art-review.md)。原资源保留，无App/设备/IPA工作。
+
 ## 2026-10-24 · 上斜v4：后颈连续肤色与边缘过渡
 
 美术提交 `8a5a44025fe282ebcb01e8d377784b3d7bb3bb9c`；[正常行走HTTPS直链](https://raw.githubusercontent.com/liamchan-rgb/experiment/8a5a44025fe282ebcb01e8d377784b3d7bb3bb9c/Art/Review/P1/modular-upper-wardrobe-v4/outfits-walk-120ms.gif)、正常起停及站姿三份文件已实测HTTP200、MIME/哈希一致，正常GIF帧速正确，回执见 `Art/Review/P1/modular-upper-wardrobe-v4/delivery.json`。592份文件重导逐字节一致，1920份原中性及旧换装文件保持。
