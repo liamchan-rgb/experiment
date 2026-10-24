@@ -175,15 +175,14 @@
   ],
   "subsequentProgress": {
     "date": "2026-10-24",
-    "current": "right neutral13pose mirrored candidate",
-    "source": "Art/Templates/P1-Neutral/right/walk-r1-mirror/asset.json",
-    "review": "Art/Review/P1/neutral-right-r1-mirror",
+    "current": "right independent appearance v1 candidate",
+    "source": "Art/Templates/P1-Wardrobe/right/v1-independent/catalog.json",
+    "review": "Art/Review/P1/modular-right-appearance-v1",
     "oldAuditRetained": true,
-    "downStartStopShownApproval": "Art/Review/P1/modular-down-transitions-v1/approval.json",
+    "rightNeutralShownApproval": "Art/Review/P1/neutral-right-r1-mirror/approval.json",
     "downSyncGapResolved": true,
     "newArtworkApproval": null,
-    "rightNeutralAdaptation": "candidate,13poses104layers",
-    "rightIndependentAppearancesComplete": false,
+    "rightIndependentAppearancesComplete": "candidate,16combinations208poses",
     "full8DirectionIntegrationComplete": false
   },
   "progressHistory": [
@@ -205,6 +204,19 @@
       "verification": "Art/Review/P1/modular-down-transitions-v1/delivery.json",
       "remoteDependencyPaths": 1012,
       "previouslyMissingSourcePathsResolved": 560
+    },
+    {
+      "date": "2026-10-24",
+      "current": "right neutral13pose mirrored candidate",
+      "source": "Art/Templates/P1-Neutral/right/walk-r1-mirror/asset.json",
+      "review": "Art/Review/P1/neutral-right-r1-mirror",
+      "oldAuditRetained": true,
+      "downStartStopShownApproval": "Art/Review/P1/modular-down-transitions-v1/approval.json",
+      "downSyncGapResolved": true,
+      "newArtworkApproval": null,
+      "rightNeutralAdaptation": "candidate,13poses104layers",
+      "rightIndependentAppearancesComplete": false,
+      "full8DirectionIntegrationComplete": false
     }
   ]
 }

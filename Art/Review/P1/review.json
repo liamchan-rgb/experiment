@@ -3,8 +3,8 @@
   "format": 3,
   "updated": "2026-10-24",
   "workflow": "Review one direction at a time from fixed cardinal and diagonal baselines. Modify and resubmit the same direction until explicit user artwork approval, then advance. Record provenance, feedback and accepted revisions for the future character template.",
-  "current": "p1-neutral-right-walk-r1-mirror",
-  "templateStatus": "Down shown start-stop approved and source sync resolved. Right old whole-character gait preserved; new neutral13pose mirrored body/motion candidate. Right appearances and unified8direction review/integration remain.",
+  "current": "p1-right-independent-appearance-v1",
+  "templateStatus": "Right neutral shown13pose scope approved; right independent appearance8packages candidate on unchanged body. Per-direction basic resources exist; unified8direction combinations/phase/attachments/turning and runtime integration remain.",
   "items": [
     {
       "id": "01-down-idle",
@@ -3308,15 +3308,15 @@
     "document": "docs/P1_DIRECTION_MODULES.md",
     "status": "in-progress",
     "next": [
-      "right independent hair/face/clothes/lower/back-carry after neutral review",
-      "unified combinations and direction changes/runtime integration"
+      "unified available8direction appearance combinations and attachment/phase/start-stop review",
+      "direction-change review and new layered runtime integration"
     ],
     "femaleResourcesStarted": false,
     "repositorySyncPrerequisite": "Resolved for current down r6/v9 and13pose transition resources; remote closure verified in down transitions delivery receipt",
-    "current": "right common neutral13pose mirror candidate",
+    "current": "right independent appearances v1 candidate",
     "remainingDependencies": [
-      "right independent appearances on current neutral body",
-      "new eight-direction unified review and runtime integration"
+      "unified available8direction resources/combination coverage",
+      "cross-direction attachment/phase/start-stop and runtime integration"
     ]
   },
   "downLeftWardrobeReview": {
@@ -3584,8 +3584,8 @@
   },
   "rightNeutralReview": {
     "id": "p1-neutral-right-walk-r1-mirror",
-    "status": "candidate-main-fullbody-frame-review-complete",
-    "artApproval": null,
+    "status": "approved-shown-scope",
+    "artApproval": "Art/Review/P1/neutral-right-r1-mirror/approval.json",
     "authorAndReviewer": "root",
     "subagentsUsed": false,
     "source": "Art/Templates/P1-Neutral/right/walk-r1-mirror/mirror-authoring.json",
@@ -3660,5 +3660,52 @@
     "artCommit": "451778c0e599735976a9c52c741f57d5eea1a2b1",
     "delivery": "Art/Review/P1/neutral-right-r1-mirror/delivery.json",
     "remotePackageClosurePaths": 278
+  },
+  "rightAppearanceReview": {
+    "id": "p1-right-independent-appearance-v1",
+    "status": "candidate-main-fullbody-frame-review-complete",
+    "artApproval": null,
+    "authorAndReviewer": "root",
+    "subagentsUsed": false,
+    "source": "Art/Parts/P1-v1/right/appearance-v1/authoring.json",
+    "catalog": "Art/Templates/P1-Wardrobe/right/v1-independent/catalog.json",
+    "review": "Art/Review/P1/modular-right-appearance-v1",
+    "body": "p1-neutral-right-walk-r1-mirror",
+    "bodyAndMotionChanged": false,
+    "newPackages": 8,
+    "technical": {
+      "status": "technical-checks-pass",
+      "artApproval": null,
+      "authorAndReviewer": "root",
+      "subagentsUsed": false,
+      "manifestsChecked": 9,
+      "actualCompositorPoses": 208,
+      "bareBodyPosesUnchanged": 13,
+      "bodyLayerPreservationChecks": 1664,
+      "appearanceAlphaReflectionChecks": 286,
+      "wholeAlphaReflectionChecks": 208,
+      "clothingCoverageChecks": 1040,
+      "handPreservationChecks": 208,
+      "weaponToggleChecks": 104,
+      "weaponPoseReflectionChecks": 13,
+      "headFeatureChecks": 832,
+      "combinations": 16,
+      "poses": 13,
+      "preservedFiles": 10967,
+      "profileChange": "Only right head layout added; old profile data unchanged"
+    },
+    "reexportByteIdenticalFiles": 874,
+    "existingTests": {
+      "contract": 26,
+      "compositor": 21
+    },
+    "mainReview": "主线程亲看两衣型×两发型×两五官共8个带剑搭配的全部13姿势整身1×/2×、主展示站姿及正常GIF真实8解码帧，并核起停路径。重点检查整体脸部眉眼鼻口间距/耳颌关系、刘海遮挡、肩肘腕与髋膝踝足、袖口/裤口/靴筒/靴底、近远层次、衣摆运动和背剑位置。空背由实际装配和开关检查覆盖，不声称全部208张逐张2×复核。查看器仅静帧，不称连续播放或实机验收；数字通过不代表用户认可。",
+    "runtimeIntegrated": false,
+    "ipaBuilt": false,
+    "artifacts": {
+      "normalGif": "Art/Review/P1/modular-right-appearance-v1/outfits-walk-120ms.gif",
+      "startStopGif": "Art/Review/P1/modular-right-appearance-v1/outfits-start-stop-120ms.gif",
+      "idle": "Art/Review/P1/modular-right-appearance-v1/outfits-idle-2x.png"
+    }
   }
 }

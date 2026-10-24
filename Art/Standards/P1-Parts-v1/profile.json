@@ -415,6 +415,79 @@
       "sourceGuide": "Art/Templates/P1-Neutral/up/walk-r1-layered/source/head-layout-guide.json",
       "faceVisibility": "none in strict back view",
       "artApproval": null
+    },
+    "right": {
+      "status": "candidate-independent-right-features",
+      "headLocalCanvas": [
+        96,
+        96
+      ],
+      "headLocalOrigin": [
+        84,
+        61
+      ],
+      "neck": [
+        46,
+        71
+      ],
+      "eyes": {
+        "right": [
+          61,
+          51
+        ]
+      },
+      "skullGuide": [
+        24,
+        23,
+        69,
+        68
+      ],
+      "faceRegions": {
+        "face.brows": [
+          [
+            56,
+            40,
+            67,
+            46
+          ]
+        ],
+        "face.eyes": [
+          [
+            56,
+            46,
+            65,
+            55
+          ]
+        ],
+        "face.nose": [
+          [
+            65,
+            53,
+            71,
+            59
+          ]
+        ],
+        "face.mouth": [
+          [
+            63,
+            60,
+            68,
+            64
+          ]
+        ]
+      },
+      "hairFrontKeepClear": [
+        [
+          56,
+          46,
+          65,
+          55
+        ]
+      ],
+      "nearSide": "right",
+      "farSide": "left",
+      "artApproval": null,
+      "coordinateReview": "Reflected original left feature ink on approved right neutral head,96local; anatomical near eye right; keep separate eyes/brows/nose/mouth"
     }
   },
   "gripProfiles": [

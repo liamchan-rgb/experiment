@@ -1,0 +1,202 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "p1-left-wayfarer-coat-v2",
+  "version": "2.0.0",
+  "part": "outfit",
+  "compatibility": {
+    "rig": "p1-chibi-v1",
+    "bodyProfile": "p1-standard",
+    "actionSet": "locomotion-v1"
+  },
+  "mode": "pose-map",
+  "slots": [
+    "outfit.torso",
+    "outfit.sleeve.right",
+    "outfit.sleeve.left",
+    "outfit.hem.front"
+  ],
+  "directions": [
+    "left"
+  ],
+  "clips": [
+    "idle",
+    "walk",
+    "walk-start",
+    "walk-stop"
+  ],
+  "sourceFiles": [
+    "source/garment-13poses.png",
+    "authoring.json",
+    "editable/00.ora",
+    "editable/00.svg",
+    "editable/01.ora",
+    "editable/01.svg",
+    "editable/02.ora",
+    "editable/02.svg",
+    "editable/03.ora",
+    "editable/03.svg",
+    "editable/04.ora",
+    "editable/04.svg",
+    "editable/05.ora",
+    "editable/05.svg",
+    "editable/06.ora",
+    "editable/06.svg",
+    "editable/07.ora",
+    "editable/07.svg",
+    "editable/08.ora",
+    "editable/08.svg",
+    "editable/09.ora",
+    "editable/09.svg",
+    "editable/10.ora",
+    "editable/10.svg",
+    "editable/11.ora",
+    "editable/11.svg",
+    "editable/12.ora",
+    "editable/12.svg"
+  ],
+  "bindings": [
+    {
+      "direction": "left",
+      "clip": "idle",
+      "frame": 0,
+      "layers": {
+        "outfit.torso": "png/00/outfit.torso.png",
+        "outfit.sleeve.right": "png/00/outfit.sleeve.right.png",
+        "outfit.sleeve.left": "png/00/outfit.sleeve.left.png",
+        "outfit.hem.front": "png/00/outfit.hem.front.png"
+      }
+    },
+    {
+      "direction": "left",
+      "clip": "walk",
+      "frame": 1,
+      "layers": {
+        "outfit.torso": "png/01/outfit.torso.png",
+        "outfit.sleeve.right": "png/01/outfit.sleeve.right.png",
+        "outfit.sleeve.left": "png/01/outfit.sleeve.left.png",
+        "outfit.hem.front": "png/01/outfit.hem.front.png"
+      }
+    },
+    {
+      "direction": "left",
+      "clip": "walk",
+      "frame": 2,
+      "layers": {
+        "outfit.torso": "png/02/outfit.torso.png",
+        "outfit.sleeve.right": "png/02/outfit.sleeve.right.png",
+        "outfit.sleeve.left": "png/02/outfit.sleeve.left.png",
+        "outfit.hem.front": "png/02/outfit.hem.front.png"
+      }
+    },
+    {
+      "direction": "left",
+      "clip": "walk",
+      "frame": 3,
+      "layers": {
+        "outfit.torso": "png/03/outfit.torso.png",
+        "outfit.sleeve.right": "png/03/outfit.sleeve.right.png",
+        "outfit.sleeve.left": "png/03/outfit.sleeve.left.png",
+        "outfit.hem.front": "png/03/outfit.hem.front.png"
+      }
+    },
+    {
+      "direction": "left",
+      "clip": "walk",
+      "frame": 4,
+      "layers": {
+        "outfit.torso": "png/04/outfit.torso.png",
+        "outfit.sleeve.right": "png/04/outfit.sleeve.right.png",
+        "outfit.sleeve.left": "png/04/outfit.sleeve.left.png",
+        "outfit.hem.front": "png/04/outfit.hem.front.png"
+      }
+    },
+    {
+      "direction": "left",
+      "clip": "walk",
+      "frame": 5,
+      "layers": {
+        "outfit.torso": "png/05/outfit.torso.png",
+        "outfit.sleeve.right": "png/05/outfit.sleeve.right.png",
+        "outfit.sleeve.left": "png/05/outfit.sleeve.left.png",
+        "outfit.hem.front": "png/05/outfit.hem.front.png"
+      }
+    },
+    {
+      "direction": "left",
+      "clip": "walk",
+      "frame": 6,
+      "layers": {
+        "outfit.torso": "png/06/outfit.torso.png",
+        "outfit.sleeve.right": "png/06/outfit.sleeve.right.png",
+        "outfit.sleeve.left": "png/06/outfit.sleeve.left.png",
+        "outfit.hem.front": "png/06/outfit.hem.front.png"
+      }
+    },
+    {
+      "direction": "left",
+      "clip": "walk",
+      "frame": 7,
+      "layers": {
+        "outfit.torso": "png/07/outfit.torso.png",
+        "outfit.sleeve.right": "png/07/outfit.sleeve.right.png",
+        "outfit.sleeve.left": "png/07/outfit.sleeve.left.png",
+        "outfit.hem.front": "png/07/outfit.hem.front.png"
+      }
+    },
+    {
+      "direction": "left",
+      "clip": "walk",
+      "frame": 8,
+      "layers": {
+        "outfit.torso": "png/08/outfit.torso.png",
+        "outfit.sleeve.right": "png/08/outfit.sleeve.right.png",
+        "outfit.sleeve.left": "png/08/outfit.sleeve.left.png",
+        "outfit.hem.front": "png/08/outfit.hem.front.png"
+      }
+    },
+    {
+      "direction": "left",
+      "clip": "walk-start",
+      "frame": 1,
+      "layers": {
+        "outfit.torso": "png/09/outfit.torso.png",
+        "outfit.sleeve.right": "png/09/outfit.sleeve.right.png",
+        "outfit.sleeve.left": "png/09/outfit.sleeve.left.png",
+        "outfit.hem.front": "png/09/outfit.hem.front.png"
+      }
+    },
+    {
+      "direction": "left",
+      "clip": "walk-start",
+      "frame": 2,
+      "layers": {
+        "outfit.torso": "png/10/outfit.torso.png",
+        "outfit.sleeve.right": "png/10/outfit.sleeve.right.png",
+        "outfit.sleeve.left": "png/10/outfit.sleeve.left.png",
+        "outfit.hem.front": "png/10/outfit.hem.front.png"
+      }
+    },
+    {
+      "direction": "left",
+      "clip": "walk-stop",
+      "frame": 1,
+      "layers": {
+        "outfit.torso": "png/11/outfit.torso.png",
+        "outfit.sleeve.right": "png/11/outfit.sleeve.right.png",
+        "outfit.sleeve.left": "png/11/outfit.sleeve.left.png",
+        "outfit.hem.front": "png/11/outfit.hem.front.png"
+      }
+    },
+    {
+      "direction": "left",
+      "clip": "walk-stop",
+      "frame": 2,
+      "layers": {
+        "outfit.torso": "png/12/outfit.torso.png",
+        "outfit.sleeve.right": "png/12/outfit.sleeve.right.png",
+        "outfit.sleeve.left": "png/12/outfit.sleeve.left.png",
+        "outfit.hem.front": "png/12/outfit.hem.front.png"
+      }
+    }
+  ]
+}
