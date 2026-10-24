@@ -1,0 +1,293 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "p1-upper-back-carry-v5",
+  "version": "5.0.0",
+  "part": "weapon",
+  "compatibility": {
+    "rig": "p1-chibi-v1",
+    "bodyProfile": "p1-standard",
+    "actionSet": "locomotion-v1"
+  },
+  "mode": "pose-map",
+  "slots": [
+    "weapon.back"
+  ],
+  "directions": [
+    "up-left",
+    "up-right"
+  ],
+  "clips": [
+    "idle",
+    "walk",
+    "walk-start",
+    "walk-stop"
+  ],
+  "bindings": [
+    {
+      "direction": "up-left",
+      "clip": "idle",
+      "frame": 0,
+      "layers": {
+        "weapon.back": "png/up-left/00/weapon.back.png"
+      }
+    },
+    {
+      "direction": "up-left",
+      "clip": "walk",
+      "frame": 1,
+      "layers": {
+        "weapon.back": "png/up-left/01/weapon.back.png"
+      }
+    },
+    {
+      "direction": "up-left",
+      "clip": "walk",
+      "frame": 2,
+      "layers": {
+        "weapon.back": "png/up-left/02/weapon.back.png"
+      }
+    },
+    {
+      "direction": "up-left",
+      "clip": "walk",
+      "frame": 3,
+      "layers": {
+        "weapon.back": "png/up-left/03/weapon.back.png"
+      }
+    },
+    {
+      "direction": "up-left",
+      "clip": "walk",
+      "frame": 4,
+      "layers": {
+        "weapon.back": "png/up-left/04/weapon.back.png"
+      }
+    },
+    {
+      "direction": "up-left",
+      "clip": "walk",
+      "frame": 5,
+      "layers": {
+        "weapon.back": "png/up-left/05/weapon.back.png"
+      }
+    },
+    {
+      "direction": "up-left",
+      "clip": "walk",
+      "frame": 6,
+      "layers": {
+        "weapon.back": "png/up-left/06/weapon.back.png"
+      }
+    },
+    {
+      "direction": "up-left",
+      "clip": "walk",
+      "frame": 7,
+      "layers": {
+        "weapon.back": "png/up-left/07/weapon.back.png"
+      }
+    },
+    {
+      "direction": "up-left",
+      "clip": "walk",
+      "frame": 8,
+      "layers": {
+        "weapon.back": "png/up-left/08/weapon.back.png"
+      }
+    },
+    {
+      "direction": "up-left",
+      "clip": "walk-start",
+      "frame": 1,
+      "layers": {
+        "weapon.back": "png/up-left/09/weapon.back.png"
+      }
+    },
+    {
+      "direction": "up-left",
+      "clip": "walk-start",
+      "frame": 2,
+      "layers": {
+        "weapon.back": "png/up-left/10/weapon.back.png"
+      }
+    },
+    {
+      "direction": "up-left",
+      "clip": "walk-stop",
+      "frame": 1,
+      "layers": {
+        "weapon.back": "png/up-left/11/weapon.back.png"
+      }
+    },
+    {
+      "direction": "up-left",
+      "clip": "walk-stop",
+      "frame": 2,
+      "layers": {
+        "weapon.back": "png/up-left/12/weapon.back.png"
+      }
+    },
+    {
+      "direction": "up-right",
+      "clip": "idle",
+      "frame": 0,
+      "layers": {
+        "weapon.back": "png/up-right/00/weapon.back.png"
+      }
+    },
+    {
+      "direction": "up-right",
+      "clip": "walk",
+      "frame": 1,
+      "layers": {
+        "weapon.back": "png/up-right/01/weapon.back.png"
+      }
+    },
+    {
+      "direction": "up-right",
+      "clip": "walk",
+      "frame": 2,
+      "layers": {
+        "weapon.back": "png/up-right/02/weapon.back.png"
+      }
+    },
+    {
+      "direction": "up-right",
+      "clip": "walk",
+      "frame": 3,
+      "layers": {
+        "weapon.back": "png/up-right/03/weapon.back.png"
+      }
+    },
+    {
+      "direction": "up-right",
+      "clip": "walk",
+      "frame": 4,
+      "layers": {
+        "weapon.back": "png/up-right/04/weapon.back.png"
+      }
+    },
+    {
+      "direction": "up-right",
+      "clip": "walk",
+      "frame": 5,
+      "layers": {
+        "weapon.back": "png/up-right/05/weapon.back.png"
+      }
+    },
+    {
+      "direction": "up-right",
+      "clip": "walk",
+      "frame": 6,
+      "layers": {
+        "weapon.back": "png/up-right/06/weapon.back.png"
+      }
+    },
+    {
+      "direction": "up-right",
+      "clip": "walk",
+      "frame": 7,
+      "layers": {
+        "weapon.back": "png/up-right/07/weapon.back.png"
+      }
+    },
+    {
+      "direction": "up-right",
+      "clip": "walk",
+      "frame": 8,
+      "layers": {
+        "weapon.back": "png/up-right/08/weapon.back.png"
+      }
+    },
+    {
+      "direction": "up-right",
+      "clip": "walk-start",
+      "frame": 1,
+      "layers": {
+        "weapon.back": "png/up-right/09/weapon.back.png"
+      }
+    },
+    {
+      "direction": "up-right",
+      "clip": "walk-start",
+      "frame": 2,
+      "layers": {
+        "weapon.back": "png/up-right/10/weapon.back.png"
+      }
+    },
+    {
+      "direction": "up-right",
+      "clip": "walk-stop",
+      "frame": 1,
+      "layers": {
+        "weapon.back": "png/up-right/11/weapon.back.png"
+      }
+    },
+    {
+      "direction": "up-right",
+      "clip": "walk-stop",
+      "frame": 2,
+      "layers": {
+        "weapon.back": "png/up-right/12/weapon.back.png"
+      }
+    }
+  ],
+  "sourceFiles": [
+    "authoring.json",
+    "source/up-left-original.png",
+    "source/up-right-original.png",
+    "editable/up-left-00.ora",
+    "editable/up-left-00.svg",
+    "editable/up-left-01.ora",
+    "editable/up-left-01.svg",
+    "editable/up-left-02.ora",
+    "editable/up-left-02.svg",
+    "editable/up-left-03.ora",
+    "editable/up-left-03.svg",
+    "editable/up-left-04.ora",
+    "editable/up-left-04.svg",
+    "editable/up-left-05.ora",
+    "editable/up-left-05.svg",
+    "editable/up-left-06.ora",
+    "editable/up-left-06.svg",
+    "editable/up-left-07.ora",
+    "editable/up-left-07.svg",
+    "editable/up-left-08.ora",
+    "editable/up-left-08.svg",
+    "editable/up-left-09.ora",
+    "editable/up-left-09.svg",
+    "editable/up-left-10.ora",
+    "editable/up-left-10.svg",
+    "editable/up-left-11.ora",
+    "editable/up-left-11.svg",
+    "editable/up-left-12.ora",
+    "editable/up-left-12.svg",
+    "editable/up-right-00.ora",
+    "editable/up-right-00.svg",
+    "editable/up-right-01.ora",
+    "editable/up-right-01.svg",
+    "editable/up-right-02.ora",
+    "editable/up-right-02.svg",
+    "editable/up-right-03.ora",
+    "editable/up-right-03.svg",
+    "editable/up-right-04.ora",
+    "editable/up-right-04.svg",
+    "editable/up-right-05.ora",
+    "editable/up-right-05.svg",
+    "editable/up-right-06.ora",
+    "editable/up-right-06.svg",
+    "editable/up-right-07.ora",
+    "editable/up-right-07.svg",
+    "editable/up-right-08.ora",
+    "editable/up-right-08.svg",
+    "editable/up-right-09.ora",
+    "editable/up-right-09.svg",
+    "editable/up-right-10.ora",
+    "editable/up-right-10.svg",
+    "editable/up-right-11.ora",
+    "editable/up-right-11.svg",
+    "editable/up-right-12.ora",
+    "editable/up-right-12.svg"
+  ],
+  "carryProfile": "back-scabbard"
+}

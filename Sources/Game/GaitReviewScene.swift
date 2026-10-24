@@ -3,6 +3,7 @@ import SpriteKit
 /// Only launched by CI's -gaitReview argument; uses the production shaders,
 /// textures and distance-to-pose mapping at a size suitable for visual checking.
 final class GaitReviewScene: SKScene {
+    var onReviewAccessibilityValue: ((String) -> Void)?
     private let effects = EnvironmentShaders()
     private let content = SKNode()
     private let ground = SKSpriteNode(color: .white, size: CGSize(width: 1, height: 1))
@@ -91,7 +92,7 @@ final class GaitReviewScene: SKScene {
         effects.update(time: elapsed)
         let direction = [0, 4, 3, 7, 2, 6, 1, 5][Int(elapsed / 3) % 8]
         let names = ["正面", "向左", "背面", "向右", "右下", "左下", "左上", "右上"]
-        let distance = CGFloat(elapsed) * 42
+        let distance = CGFloat(elapsed) * HeroFrames.reviewSpeed
         let frame = WalkCycle.frame(at: distance)
         let phase = distance.truncatingRemainder(dividingBy: 24) / 24
         let angle = CGFloat(Int(elapsed / 3) % 8) * .pi / 4
@@ -110,7 +111,10 @@ final class GaitReviewScene: SKScene {
         }
         if let view, visible, content.xScale > 0, size.width > 100, size.height > 100 {
             let description = "步态验收：三位人物 · " + names[direction]
-            if view.accessibilityValue != description { view.accessibilityValue = description }
+            if view.accessibilityValue != description {
+                view.accessibilityValue = description
+                onReviewAccessibilityValue?(description)
+            }
         }
         for index in actors.indices {
             let texture = frames[index][direction][frame]

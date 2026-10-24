@@ -1,0 +1,32 @@
+{
+  "id": "p1-hair-chestnut-down-left-v1",
+  "source": {
+    "image": "source/chestnut-trimmed-original.png",
+    "canvas": [
+      1254,
+      1254
+    ],
+    "sha256": "96bf493b54c4204da4922f35e2e24c09e57a59f0a299506606ea86ae03c810d9",
+    "prompt": "source/prompt.txt"
+  },
+  "panel": 0,
+  "registration": {
+    "hair.front": [
+      {
+        "components": "all",
+        "scale": 0.07655502392344497,
+        "translation": [
+          0,
+          0
+        ]
+      }
+    ]
+  },
+  "headLocalOrigin": [
+    76,
+    61
+  ],
+  "authorAndReviewer": "root",
+  "subagentsUsed": false,
+  "artApproval": null
+}

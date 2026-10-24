@@ -1,0 +1,15 @@
+{
+  "date": "2026-10-23",
+  "statement": "开始下一项",
+  "reviewer": "user",
+  "status": "approved-to-proceed-from-presented-transition-review",
+  "scope": "Presented upper-left/right neutral whole-body idle, normal walk and specified idle-to-walk01/walk08-to-idle transitions. Does not cover new wardrobe, complete hidden anatomy, arbitrary-phase stopping or runtime.",
+  "sourceCommit": "53e3a9b2077a1f218c21ecc1ac7f2d849a31b536",
+  "artifacts": {
+    "start-stop-120ms.gif": "c8e791691a6df95aa2c295c37493e5b325f607f9068d9ebc4363c2b4c48d28d9",
+    "walk-120ms.gif": "3459f23007b2989b5848658e839e5642ce229a90a9e07f5b8225d27f50877e1f",
+    "idle-review-2x.png": "e2af630ecb83327ec9eff6ece94b9133256119ea413ea819f01b2a908ef1b3cc",
+    "up-left/start-stop-120ms.gif": "b466553f1273068b4a2428efe187836b364c404999d5bedb599767bfe38e61b0",
+    "up-right/start-stop-120ms.gif": "99f98e1a535b9f470ab3a2294cf3c6e934ae772170824ec716d9587b7f7ac22f"
+  }
+}

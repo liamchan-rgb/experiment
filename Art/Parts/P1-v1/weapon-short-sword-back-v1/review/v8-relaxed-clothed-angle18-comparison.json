@@ -1,0 +1,105 @@
+{
+  "renderedUsing": "scripts/compose-character-parts.py",
+  "catalog": "Art/Templates/P1-Wardrobe/down/v8-back-carry/catalog.json",
+  "motion": "Art/Templates/P1-Wardrobe/down/v8-back-carry/motion.json",
+  "selectedAssets": [
+    "p1-neutral-down-walk-r6-relaxed-arms",
+    "p1-hair-chestnut-v1",
+    "p1-face-blue-v1",
+    "p1-outfit-forester-cover-v2",
+    "p1-weapon-short-sword-back-v1"
+  ],
+  "comparison": "pixel differences versus the same actual v8 commonbase + hair + face + outfit composition with only weapon omitted",
+  "frames": [
+    {
+      "frame": 0,
+      "visibleWeaponPixelCount": 305,
+      "visibleBoundsAfterComposition": [
+        84,
+        125,
+        152,
+        188
+      ]
+    },
+    {
+      "frame": 1,
+      "visibleWeaponPixelCount": 294,
+      "visibleBoundsAfterComposition": [
+        84,
+        125,
+        152,
+        188
+      ]
+    },
+    {
+      "frame": 2,
+      "visibleWeaponPixelCount": 283,
+      "visibleBoundsAfterComposition": [
+        84,
+        127,
+        152,
+        190
+      ]
+    },
+    {
+      "frame": 3,
+      "visibleWeaponPixelCount": 309,
+      "visibleBoundsAfterComposition": [
+        84,
+        124,
+        152,
+        187
+      ]
+    },
+    {
+      "frame": 4,
+      "visibleWeaponPixelCount": 305,
+      "visibleBoundsAfterComposition": [
+        84,
+        123,
+        152,
+        186
+      ]
+    },
+    {
+      "frame": 5,
+      "visibleWeaponPixelCount": 304,
+      "visibleBoundsAfterComposition": [
+        84,
+        125,
+        152,
+        188
+      ]
+    },
+    {
+      "frame": 6,
+      "visibleWeaponPixelCount": 304,
+      "visibleBoundsAfterComposition": [
+        84,
+        127,
+        152,
+        190
+      ]
+    },
+    {
+      "frame": 7,
+      "visibleWeaponPixelCount": 299,
+      "visibleBoundsAfterComposition": [
+        84,
+        124,
+        152,
+        187
+      ]
+    },
+    {
+      "frame": 8,
+      "visibleWeaponPixelCount": 295,
+      "visibleBoundsAfterComposition": [
+        84,
+        123,
+        152,
+        186
+      ]
+    }
+  ]
+}

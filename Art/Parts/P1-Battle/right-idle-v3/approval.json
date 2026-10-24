@@ -1,0 +1,13 @@
+{
+  "date": "2026-10-21",
+  "reviewer": "user",
+  "statement": "战斗方面，可以继续按当前效果继续下一步",
+  "status": "approved",
+  "scope": "Current build35 static battle appearance and composition only; excludes new movement poses, attack animations, full hidden anatomy and wardrobe-template completion",
+  "build": 35,
+  "revision": "v9",
+  "artifacts": {
+    "assembled.png": "b22fdc328e474a93cd7c060c4924d771109b5b23c4caf31305b061ca876012aa",
+    "review.png": "00f237a2c8aa5cbee3b6993704ae795f98b4a061b0507f004a73a8f2fb1f98f3"
+  }
+}

@@ -1,0 +1,6 @@
+Image generation/edit prompt used for source/generated-idle-coat.png:
+Using the supplied pixel-art profile character only as a registration and pose guide, create an isolated standalone clothing overlay on transparent background: a side-view dark royal blue Wayfarer long coat with warm cream gold collar, piping and hem trim, plus slim brown belt and gold buckle. Keep the character's exact left-facing profile orientation and scale. Output ONLY the coat, with full covered sleeves from shoulders to wrists; leave hand silhouettes as transparent gaps so original empty hands show through. Long split tails begin below waist and reach just above knee with a modest natural curved hem and visible narrow split. No person, skin, body, head, hair, hands, legs, shorts, boots, weapon, mannequin, or background. Adapt color/material/detail from the second reference. Crisp outlined pixel art, same pixel scale and shading style, no 3D or blur. Preserve whole canvas and original placement, no crop, zoom, or recentering.
+
+References:
+- ../../../../../Templates/P1-Neutral/left/walk-r3-complete-transitions/source/00.png
+- ../../../outfit-wayfarer-coat-v1/source/generated-coat.png

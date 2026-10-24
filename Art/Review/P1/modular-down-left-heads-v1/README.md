@@ -1,0 +1,11 @@
+# 左下独立头部外观 v1 · 当前候选
+
+[正常行走GIF](walk-comparison-120ms.gif) · [正常起停GIF](start-stop-comparison-120ms.gif) · [全身站姿](idle-comparison-2x.png) · [四组合站姿](cross-combinations-2x.png) · [主线程美术复核](art-review.md) · [技术检查](validation.json) · [重导一致性](reexport-validation.json)
+
+同屏左为棕发/蓝眼，右为银发/琥珀眼；两发型和两五官可交叉替换。身体、动作、脚底和头部摆动保持已认可左下r1。每组13姿势和整身1×/2×帧板位于combinations目录。行走8×120ms；起停22帧，首尾480ms、其余120ms。没有新增慢速版本。
+
+主线程亲自修复及查看四组全部52张完整1×/2×、站姿/首尾/起停和交叉搭配。蓝/琥珀眼包仅眉眼鼻嘴，棕/银发包不含脸皮；四包按公共合同真实装配，52张匹配，416次身体层比较不变，156次眼鼻嘴完整显示，13张空外观与旧中性图完全一致；7132份旧文件保持。profile只新增左下头导板，原字段保持，公共代码不改。合同26项、装配21项通过。
+
+工具只能返回静帧，检查的是完整帧序和GIF实际帧/时长，不声称连续播放器验收。新头部外观无用户认可；衣物、背剑、其它方向及App/设备不在本次范围。发布后HTTPS验证回执写delivery.json。
+
+美术提交 `c3359210e38d0c530fecfc12d5e55bb8f4ae2459`。三份HTTPS文件均已实测HTTP200、MIME及SHA256/本地字节一致；GIF帧数、120ms帧速与起停停留时长符合登记。[正常行走直链](https://raw.githubusercontent.com/liamchan-rgb/experiment/c3359210e38d0c530fecfc12d5e55bb8f4ae2459/Art/Review/P1/modular-down-left-heads-v1/walk-comparison-120ms.gif)；完整回执见[delivery.json](delivery.json)。135份重导文件逐字节一致。

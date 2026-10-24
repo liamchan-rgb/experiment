@@ -1,0 +1,336 @@
+{
+  "repairAndReviewOwner": "root",
+  "subagentsUsed": false,
+  "artApproval": null,
+  "sourceTemplate": "Art/Templates/P1-Neutral/down-left/walk-r1",
+  "sourceApproval": "Art/Review/P1/neutral-down-left-r1/approval.json",
+  "sourceApprovalScope": "Delivered neutral down-left standing, eight-frame normal walk and specified start/stop preview only; not wardrobe, full hidden anatomy, arbitrary interruption or runtime",
+  "transitionApprovalInherited": false,
+  "poses": [
+    {
+      "frame": 0,
+      "sourceDirection": "down-left",
+      "sourceFrame": 0,
+      "sourceClip": "idle",
+      "sourcePoseIndex": 0,
+      "unchangedFrameTimingMs": 120,
+      "geometryMirrorAxisX": 127.5,
+      "semanticSidesExchanged": true,
+      "relightingRGBOnly": true,
+      "alphaDifferenceFromApprovedReflection": 0,
+      "support": "both",
+      "headLocalReflection": [
+        -1.0,
+        0.0,
+        0.0,
+        1.0,
+        95.0,
+        0.0
+      ],
+      "headRasterTranslationPixels": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "frame": 1,
+      "sourceDirection": "down-left",
+      "sourceFrame": 1,
+      "sourceClip": "walk",
+      "sourcePoseIndex": 1,
+      "unchangedFrameTimingMs": 120,
+      "geometryMirrorAxisX": 127.5,
+      "semanticSidesExchanged": true,
+      "relightingRGBOnly": true,
+      "alphaDifferenceFromApprovedReflection": 0,
+      "support": "right",
+      "headLocalReflection": [
+        -1.0,
+        0.0,
+        0.0,
+        1.0,
+        95.0,
+        0.0
+      ],
+      "headRasterTranslationPixels": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "frame": 2,
+      "sourceDirection": "down-left",
+      "sourceFrame": 2,
+      "sourceClip": "walk",
+      "sourcePoseIndex": 2,
+      "unchangedFrameTimingMs": 120,
+      "geometryMirrorAxisX": 127.5,
+      "semanticSidesExchanged": true,
+      "relightingRGBOnly": true,
+      "alphaDifferenceFromApprovedReflection": 0,
+      "support": "right",
+      "headLocalReflection": [
+        -1.0,
+        0.0,
+        0.0,
+        1.0,
+        95.0,
+        0.0
+      ],
+      "headRasterTranslationPixels": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "frame": 3,
+      "sourceDirection": "down-left",
+      "sourceFrame": 3,
+      "sourceClip": "walk",
+      "sourcePoseIndex": 3,
+      "unchangedFrameTimingMs": 120,
+      "geometryMirrorAxisX": 127.5,
+      "semanticSidesExchanged": true,
+      "relightingRGBOnly": true,
+      "alphaDifferenceFromApprovedReflection": 0,
+      "support": "right",
+      "headLocalReflection": [
+        -1.0,
+        0.0,
+        0.0,
+        1.0,
+        95.0,
+        0.0
+      ],
+      "headRasterTranslationPixels": [
+        0.0,
+        -0.0015
+      ]
+    },
+    {
+      "frame": 4,
+      "sourceDirection": "down-left",
+      "sourceFrame": 4,
+      "sourceClip": "walk",
+      "sourcePoseIndex": 4,
+      "unchangedFrameTimingMs": 120,
+      "geometryMirrorAxisX": 127.5,
+      "semanticSidesExchanged": true,
+      "relightingRGBOnly": true,
+      "alphaDifferenceFromApprovedReflection": 0,
+      "support": "right",
+      "headLocalReflection": [
+        -1.0,
+        0.0,
+        0.0,
+        1.0,
+        95.0,
+        0.0
+      ],
+      "headRasterTranslationPixels": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "frame": 5,
+      "sourceDirection": "down-left",
+      "sourceFrame": 5,
+      "sourceClip": "walk",
+      "sourcePoseIndex": 5,
+      "unchangedFrameTimingMs": 120,
+      "geometryMirrorAxisX": 127.5,
+      "semanticSidesExchanged": true,
+      "relightingRGBOnly": true,
+      "alphaDifferenceFromApprovedReflection": 0,
+      "support": "left",
+      "headLocalReflection": [
+        -1.0,
+        0.0,
+        0.0,
+        1.0,
+        95.0,
+        0.0
+      ],
+      "headRasterTranslationPixels": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "frame": 6,
+      "sourceDirection": "down-left",
+      "sourceFrame": 6,
+      "sourceClip": "walk",
+      "sourcePoseIndex": 6,
+      "unchangedFrameTimingMs": 120,
+      "geometryMirrorAxisX": 127.5,
+      "semanticSidesExchanged": true,
+      "relightingRGBOnly": true,
+      "alphaDifferenceFromApprovedReflection": 0,
+      "support": "left",
+      "headLocalReflection": [
+        -1.0,
+        0.0,
+        0.0,
+        1.0,
+        95.0,
+        0.0
+      ],
+      "headRasterTranslationPixels": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "frame": 7,
+      "sourceDirection": "down-left",
+      "sourceFrame": 7,
+      "sourceClip": "walk",
+      "sourcePoseIndex": 7,
+      "unchangedFrameTimingMs": 120,
+      "geometryMirrorAxisX": 127.5,
+      "semanticSidesExchanged": true,
+      "relightingRGBOnly": true,
+      "alphaDifferenceFromApprovedReflection": 0,
+      "support": "left",
+      "headLocalReflection": [
+        -1.0,
+        0.0,
+        0.0,
+        1.0,
+        95.0,
+        0.0
+      ],
+      "headRasterTranslationPixels": [
+        0.0,
+        0.0005
+      ]
+    },
+    {
+      "frame": 8,
+      "sourceDirection": "down-left",
+      "sourceFrame": 8,
+      "sourceClip": "walk",
+      "sourcePoseIndex": 8,
+      "unchangedFrameTimingMs": 120,
+      "geometryMirrorAxisX": 127.5,
+      "semanticSidesExchanged": true,
+      "relightingRGBOnly": true,
+      "alphaDifferenceFromApprovedReflection": 0,
+      "support": "left",
+      "headLocalReflection": [
+        -1.0,
+        0.0,
+        0.0,
+        1.0,
+        95.0,
+        0.0
+      ],
+      "headRasterTranslationPixels": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "frame": 9,
+      "sourceDirection": "down-left",
+      "sourceFrame": 1,
+      "sourceClip": "walk-start",
+      "sourcePoseIndex": 9,
+      "unchangedFrameTimingMs": 120,
+      "geometryMirrorAxisX": 127.5,
+      "semanticSidesExchanged": true,
+      "relightingRGBOnly": true,
+      "alphaDifferenceFromApprovedReflection": 0,
+      "support": "left",
+      "headLocalReflection": [
+        -1.0,
+        0.0,
+        0.0,
+        1.0,
+        95.0,
+        0.0
+      ],
+      "headRasterTranslationPixels": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "frame": 10,
+      "sourceDirection": "down-left",
+      "sourceFrame": 2,
+      "sourceClip": "walk-start",
+      "sourcePoseIndex": 10,
+      "unchangedFrameTimingMs": 120,
+      "geometryMirrorAxisX": 127.5,
+      "semanticSidesExchanged": true,
+      "relightingRGBOnly": true,
+      "alphaDifferenceFromApprovedReflection": 0,
+      "support": "left",
+      "headLocalReflection": [
+        -1.0,
+        0.0,
+        0.0,
+        1.0,
+        95.0,
+        0.0
+      ],
+      "headRasterTranslationPixels": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "frame": 11,
+      "sourceDirection": "down-left",
+      "sourceFrame": 1,
+      "sourceClip": "walk-stop",
+      "sourcePoseIndex": 11,
+      "unchangedFrameTimingMs": 120,
+      "geometryMirrorAxisX": 127.5,
+      "semanticSidesExchanged": true,
+      "relightingRGBOnly": true,
+      "alphaDifferenceFromApprovedReflection": 0,
+      "support": "right",
+      "headLocalReflection": [
+        -1.0,
+        0.0,
+        0.0,
+        1.0,
+        95.0,
+        0.0
+      ],
+      "headRasterTranslationPixels": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "frame": 12,
+      "sourceDirection": "down-left",
+      "sourceFrame": 2,
+      "sourceClip": "walk-stop",
+      "sourcePoseIndex": 12,
+      "unchangedFrameTimingMs": 120,
+      "geometryMirrorAxisX": 127.5,
+      "semanticSidesExchanged": true,
+      "relightingRGBOnly": true,
+      "alphaDifferenceFromApprovedReflection": 0,
+      "support": "both",
+      "headLocalReflection": [
+        -1.0,
+        0.0,
+        0.0,
+        1.0,
+        95.0,
+        0.0
+      ],
+      "headRasterTranslationPixels": [
+        0.0,
+        0.0
+      ]
+    }
+  ]
+}

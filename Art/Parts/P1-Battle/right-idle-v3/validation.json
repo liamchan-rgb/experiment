@@ -1,0 +1,35 @@
+{
+  "canvasPx": [
+    256,
+    256
+  ],
+  "comparedTo": "../right-idle-v2",
+  "wardrobeChangedPixels": 209,
+  "wardrobeChangedBoundsPx": [
+    102,
+    133,
+    119,
+    168
+  ],
+  "compositeChangedPixels": 209,
+  "compositeChangedBoundsPx": [
+    102,
+    133,
+    119,
+    168
+  ],
+  "boundsConvention": "[left, top, right exclusive, bottom exclusive]",
+  "wardrobeAlphaUnchanged": true,
+  "compositeAlphaUnchanged": true,
+  "allChangesRestrictedToRearShoulderAndSleeve": true,
+  "faceHairHeadHandsSwordLegsFeetUnchanged": true,
+  "nearArmLightSamplePx": [
+    124,
+    146
+  ],
+  "nearArmLightSampleUnchanged": true,
+  "svgSourcesParse": true,
+  "selfReview": "Final native 256x256 and 3x whole-character views; mechanical checks do not establish art approval.",
+  "runtimeIntegrated": true,
+  "userArtApproval": null
+}

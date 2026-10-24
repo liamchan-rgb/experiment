@@ -1,0 +1,9 @@
+# Left Forester short shirt
+
+Standalone pose-map asset for `p1-chibi-v1` / `p1-standard` / `locomotion-v1`, direction `left`. It contains only `outfit.torso`, `outfit.sleeve.right`, and `outfit.sleeve.left`. The grey trousers and brown boots are a separate shared package at `../traveler-lower-v1/`.
+
+The generated clothing source is `source/00-dressed-clean.png`; it is RGBA 1254×1254 with alpha 0 at the canvas corner. The earlier RGB checkerboard edit is retained as `source/00-dressed-checker-rejected.png`; the first transparent pass is retained as `source/00-dressed-clean-initial.png` and superseded by the final far-sleeve source. The exact image edit instructions are in `source/prompt-00.txt`. The authoring script uses the fixed source registration (scale 0.194, translation [4.72, 6.4]) and does not alpha-fit the character.
+
+`python3 export.py` reproduces both owned packages' PNG pose maps, manifests, ORA/SVG editable stacks, and the internal 13-frame review animation. The script follows the 13 authored poses in `Art/Templates/P1-Neutral/left/walk-r3-complete-transitions/`, at 120 ms each; start/stop poses are frames 09–12. Sleeve placement uses the body arm guides, then uses the corresponding visible arm layer silhouette for final coverage. The hand layers stay exposed. Sleeve and boot alpha components are retained only when they touch the matching visible body slot at alpha ≥32, preventing detached green/gold and boot pixels while preserving real body overlap. Pants and boots use each pose's labeled visible leg geometry and its matching `soleMarkers` so lifted feet stay lifted.
+
+Internal review artifacts are in `review/`: `registered-idle.png`, all 13 full-body renders, the contact sheet, and `forester-lower-13poses-120ms.gif`. These are candidate art and internal technical checks; they do not record user approval or device validation.

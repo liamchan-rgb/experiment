@@ -1,0 +1,14 @@
+{
+  "date": "2026-10-24",
+  "reviewer": "user",
+  "statement": "没问题，可以试一下镜像来做右下的动画",
+  "direction": "down-left",
+  "revision": "neutral-r1",
+  "status": "approved",
+  "scope": "Delivered neutral down-left standing, eight-frame normal walk and specified start/stop preview only; not wardrobe, full hidden anatomy, arbitrary interruption or runtime",
+  "artifacts": {
+    "walk-120ms.gif": "18d12aa568b559834988a1e8f3b14a8280abd0dfcae6608dd808475b3221444d",
+    "start-stop-120ms.gif": "a172f73f2af0a94107ef5def854c5c1e52d6762c1be9cbd56a9703e9f787610d",
+    "idle-review-2x.png": "1bf0e759a84f090d1d66c133f3541acde59402df16998abd608296c46f2bba8f"
+  }
+}

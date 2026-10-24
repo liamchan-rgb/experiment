@@ -1,0 +1,74 @@
+{
+  "base": "p1-neutral-down-walk-r6-relaxed-arms",
+  "assets": [
+    "p1-hair-chestnut-v1",
+    "p1-face-blue-v1",
+    "p1-outfit-wayfarer-coat-v1",
+    "p1-weapon-short-sword-back-v1"
+  ],
+  "direction": "down",
+  "motionSHA256": "17ebc50999ed0042f0a2c58be8e740e918c9c3f045126bbd8444a5166facdd37",
+  "assetManifestSHA256": {
+    "p1-neutral-down-walk-r6-relaxed-arms": "633a09316795de136639cdaa737a421228475b7ea3927fc3b95e9b396aa6883b",
+    "p1-hair-chestnut-v1": "8cb282d7b17d9026320c9b8ee7e2e62339dbb68adc18896a715fb0be806a91cd",
+    "p1-face-blue-v1": "44acc92dbdc081fc0678a3ca6131cb73cb28c48b506cf75f8c2c27d5ba8d3a86",
+    "p1-outfit-wayfarer-coat-v1": "42252502badc1489a31aec4ae5be609f0ae7f6ca36ef1eead6cb34f10d8e5395",
+    "p1-weapon-short-sword-back-v1": "87a92b48f35f516b386f4473f6d641c6aa390fa606c88a90b914770c539f550b"
+  },
+  "outputs": [
+    {
+      "clip": "idle",
+      "frame": 0,
+      "file": "idle-00.png",
+      "sha256": "1bc016861cfc7a4c7a3a8edcec0ef29144bd2405978e3b561fc4429a66327098"
+    },
+    {
+      "clip": "walk",
+      "frame": 1,
+      "file": "walk-01.png",
+      "sha256": "264d4c8b04a7611b866d5a914ff8cfb90dc2bcb21766c2a5ecae6e4c397499e5"
+    },
+    {
+      "clip": "walk",
+      "frame": 2,
+      "file": "walk-02.png",
+      "sha256": "6c964503553b60f140f3256a177c1fe89fad82c9e6970797b5ad2a8d4c77dd16"
+    },
+    {
+      "clip": "walk",
+      "frame": 3,
+      "file": "walk-03.png",
+      "sha256": "9c603e2a1f52079c07e5ec0d593dc0d2cb608325876a1987b892b9fe5f543711"
+    },
+    {
+      "clip": "walk",
+      "frame": 4,
+      "file": "walk-04.png",
+      "sha256": "445beaf468642dffc7530b6187731e316f2f876346aa8c7320238e6a2bc88d3b"
+    },
+    {
+      "clip": "walk",
+      "frame": 5,
+      "file": "walk-05.png",
+      "sha256": "ecc65a2b1f41e0670bb8f2cf3442b1c400b040c179d7e1085498d09df53ccdb7"
+    },
+    {
+      "clip": "walk",
+      "frame": 6,
+      "file": "walk-06.png",
+      "sha256": "e85a71d41edbc1d322ff8c1359ea6f970670aaaadcd51bcd88e8aaf69b58d422"
+    },
+    {
+      "clip": "walk",
+      "frame": 7,
+      "file": "walk-07.png",
+      "sha256": "99e26e69cffd9f52ed9114b4ff048a4825bb163d78435e0d81325c1a4b1c1257"
+    },
+    {
+      "clip": "walk",
+      "frame": 8,
+      "file": "walk-08.png",
+      "sha256": "7d7c51e0e751ea11933606f8fd3bb98ab0daf2ff1634378f7e18708770439b75"
+    }
+  ]
+}

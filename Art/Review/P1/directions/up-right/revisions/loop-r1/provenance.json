@@ -1,0 +1,49 @@
+{
+  "format": 1,
+  "source_revision": "r1",
+  "final_generation": {
+    "tool": "image_gen.imagegen",
+    "raw_image": "generated-08.png",
+    "raw_sha256": "8ea33d0cac2042e7fa6ab27d08c4bd4621e4f8c0ef8b2a8a4ac5dc3068b2635f",
+    "input_reference_order": [
+      "Art/Review/P1/directions/up-right/revisions/r1/strip.png#frame-08",
+      "Art/Review/P1/directions/up-right/revisions/r1/strip.png#frame-07",
+      "Art/Review/P1/directions/up-right/revisions/r1/strip.png#frame-01",
+      "Art/Review/P1/directions/up-right/revisions/r1/strip.png#frame-02"
+    ],
+    "prompt": "Revise the first reference (frame 08) into a corrected full-body pixel-art sprite frame 08 for a seamless walk-cycle loop. The other references are adjacent frames: frame 07, frame 01, frame 02. Output one complete character on transparent background. Preserve the established youthful character, chestnut spiky hair, blue scarf, blue tunic with gold trim, brown gloves, pants, detailed brown boots, exact three-quarter rear view facing diagonally up right, original palette, crisp dark outline, highlights, small 16-bit sprite style, proportions, and short stride. This is the late-swing step after frame 07 and immediately before frame 01: the right foot moves low into the upcoming contact while the left leg supports and begins recovery; arms swing naturally opposite the legs. Keep frame 08 distinct from 01 but make the whole pose transition smoothly 07→08→01→02. Keep the full character at the same scale and fixed square canvas, approximately 154 pixels from hair top to sole. Do not crop, add ground/shadow, change camera/clothing, enlarge boots, or stretch individual limbs.",
+    "accepted_for_assembly": true
+  },
+  "unselected_generation_attempt": {
+    "raw_image": "drafts/attempt-01-misordered.png",
+    "raw_source_path": "/workspace/generated_images/exec-74279c95-c0c6-49cb-941a-fdc3d2923727.png",
+    "raw_sha256": "efaa96427a2cc48763f6cd804b61a63dad2b2b8b942ab3f9bb44c34fcd008674",
+    "input_reference_order": [
+      "Art/Review/P1/directions/up-right/revisions/r1/strip.png#frame-01",
+      "Art/Review/P1/directions/up-right/revisions/r1/strip.png#frame-02",
+      "Art/Review/P1/directions/up-right/revisions/r1/strip.png#frame-07",
+      "Art/Review/P1/directions/up-right/revisions/r1/strip.png#frame-08"
+    ],
+    "prompt": "Redraw only the first reference as a corrected full-body pixel-art sprite frame 08 for a seamless loop; later references provide the same character and adjacent-pose context. Output exactly one complete character on transparent background on the same fixed square sprite canvas. Preserve the established youthful character, chestnut spiky hair, blue scarf, blue tunic with gold trim, brown gloves, pants, detailed brown boots, exact three-quarter rear view facing diagonally up right, palette, crisp dark outline, highlights, and original small 16-bit sprite style. This is the late-swing step after frame 07 and before frame 01: keep a compact short-step gait and natural opposing arm swing, with the right foot low and reaching forward into frame 01's contact phase, while the left leg supports and begins recovery. Keep head, torso, pelvis, and whole-body scale consistent with adjacent frames. Make the whole silhouette flow naturally from 07 through this late-swing frame into 01 and then 02. Keep this pose distinct from 01. Do not enlarge boots, stretch limbs, crop, change camera, add props, or add ground/shadow. Match the original crisp outlined 16-bit pixel-art rendering, palette, highlights, small sprite scale, and about 154-pixel full silhouette height and shared foot registration.",
+    "accepted_for_assembly": false,
+    "reason": "Reference order placed frame 01 first, so the model could treat the contact pose as the target; retained for audit, not assembled."
+  },
+  "whole_pose_registration": {
+    "method": "uniform whole-pose nearest-neighbor resize to 154 px opaque height, then horizontal translation to align the warm-hair centroid with the mean of source frames 08 and 01",
+    "x_offset_pixels": -4,
+    "vertical_bounds": [
+      70,
+      224
+    ],
+    "sole_envelope_y": 224
+  },
+  "source_frames": {
+    "00-07": "copied pixel-for-pixel from approved source strip",
+    "frames_08_target_and_neighbors": [
+      "Art/Review/P1/directions/up-right/revisions/r1/strip.png#frame-08",
+      "Art/Review/P1/directions/up-right/revisions/r1/strip.png#frame-07",
+      "Art/Review/P1/directions/up-right/revisions/r1/strip.png#frame-01",
+      "Art/Review/P1/directions/up-right/revisions/r1/strip.png#frame-02"
+    ]
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "tool": "image_gen.imagegen",
+  "sourceFile": "generated.png",
+  "sourceCanvasPx": [1254, 1254],
+  "sourceSHA256": "77348c224744ce62fe529ad482aecb234e743b885c6a034afa0a391486f89c5f",
+  "reference": "Art/Parts/P1-Battle/right-idle-v1/assembled.png at face v5",
+  "promptFile": "prompt.txt",
+  "registration": {
+    "fullCanvasScale": 0.20414673046251994,
+    "featureTranslationPx": [-4, 0],
+    "automaticAlphaFit": false,
+    "outputCanvasPx": [256, 256]
+  },
+  "extraction": "extract.sh selects only brow, eye, nose and mouth into four registered transparent layers; face.svg keeps them as named editable groups. No generated body, clothing, hair, ear or neck pixels are imported.",
+  "scope": "One static right-facing facial feature candidate; no other directions or expressions.",
+  "userArtApproval": null
+}

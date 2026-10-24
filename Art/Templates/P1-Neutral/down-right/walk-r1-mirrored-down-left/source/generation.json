@@ -1,0 +1,14 @@
+{
+  "tool": "image_gen.imagegen",
+  "date": "2026-10-24",
+  "authorAndReviewer": "root",
+  "subagentsUsed": false,
+  "reference": "source/relight-input-4x.png",
+  "referenceSHA256": "598824ea778c76d1a79844614aeff02e87e5216f4f86b73a0a61f04cc36d93d2",
+  "output": "source/relight-generated.png",
+  "outputSHA256": "b0f48fe40e187c14dcc6b26d69509df46815718ebae9cc27b362752dcf3beaf4",
+  "transparentBackground": false,
+  "prompt": "Edit only the LIGHTING/SHADING of this exact right-down-facing game mannequin reference. Keep the ENTIRE 1024x1024 canvas, green #17372c background, character placement, overall head silhouette, limbs, featureless face, neutral stance, ivory undershirt, charcoal shorts and bare feet EXACTLY as reference. Do not zoom, enlarge, crop, rotate, reposition, add facial features/hair/items or redraw anatomy. The sprite's head top must stay at y~352, feet at y~860, with exactly the same full-body outline in the same original position. This is a LIGHTING COLOUR REFERENCE ONLY. Light must come from UPPER LEFT of screen, matching all other game directions. Currently the head highlight is wrongly on UPPER RIGHT due to image reflection: move that highlight smoothly to UPPER LEFT of the bald head (head x~432..596; bright patch around x~463 y~389); shade the lower/right side with warm peach. Retain natural subtle skin modelling on ear and neck. Light the screen-left (near) shoulder/arm and thigh/calf from upper-left; shift bright patches on skin toward upper-left and subtle warmer shadows toward lower-right. Do the same on ivory tank and dark charcoal shorts with very subtle shading. No new black neck seam, no uneven colour patch, no ground shadow. Keep character identity, pixel-painted game style, clean simple outlines, cloth hems, hands and feet unchanged. The entire original green canvas and sprite registration MUST stay exact; only surface RGB lighting changes. One complete square image, no labels/panels.",
+  "use": "Single source-RGB lighting reference only; generated geometry/background/alpha excluded, exact mirrored source silhouette retained",
+  "artApproval": null
+}

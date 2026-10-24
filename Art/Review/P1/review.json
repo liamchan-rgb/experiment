@@ -1,10 +1,10 @@
 {
   "character": "P1",
   "format": 3,
-  "updated": "2026-10-19",
+  "updated": "2026-10-24",
   "workflow": "Review one direction at a time from fixed cardinal and diagonal baselines. Modify and resubmit the same direction until explicit user artwork approval, then advance. Record provenance, feedback and accepted revisions for the future character template.",
-  "current": "p1-neutral-battle-side-right-walk-pose-test-v1",
-  "templateStatus": "independent heads approved; the v5 down idle sword pose is approved as one art study only; modular wardrobe/weapon production and the full character template remain incomplete; the heavyStrike + trainingSword standalone effect prototype remains awaiting user art review; battle-side right idle pose and hand direction r2 approved; localized shoulder/hip-root underbody remains incomplete; a right-side walking pose test is now the current single-frame review candidate; complete anatomy, articulated movement and runtime integration remain incomplete",
+  "current": "p1-eight-way-v1-offline-unified-candidate",
+  "templateStatus": "Eight-direction offline unified candidate: one bodyID,9packages,16loadouts1664actual compositions; new long hems and right-up anatomical carry pending user approval. Runtime integration, arbitrary-phase stops, full rig marker normalization and third all8direction appearance acceptance remain.",
   "items": [
     {
       "id": "01-down-idle",
@@ -169,7 +169,8 @@
             "opposite arm swing",
             "matching idle boot design"
           ],
-          "productionAssetsUpdated": false
+          "productionAssetsUpdated": true,
+          "demoIntegration": "Art/Integration/P1-approved-gait-v1/integration.json"
         }
       ],
       "approval": {
@@ -289,7 +290,8 @@
             "near/far leg occlusion and shading",
             "consistent whole-pose review scale and sole envelope"
           ],
-          "productionAssetsUpdated": false
+          "productionAssetsUpdated": true,
+          "demoIntegration": "Art/Integration/P1-approved-gait-v1/integration.json"
         }
       ],
       "approval": {
@@ -409,7 +411,8 @@
             "reduced exaggerated depth and boot-size contrast",
             "idle heel/cuff volume matched to walking model"
           ],
-          "productionAssetsUpdated": false
+          "productionAssetsUpdated": true,
+          "demoIntegration": "Art/Integration/P1-approved-gait-v1/integration.json"
         }
       ],
       "approval": {
@@ -536,7 +539,8 @@
             "phase-by-phase stride and proportions coordinated with approved left r1",
             "same registration profile and normal/slow timing; synchronized review artifacts"
           ],
-          "productionAssetsUpdated": false
+          "productionAssetsUpdated": true,
+          "demoIntegration": "Art/Integration/P1-approved-gait-v1/integration.json"
         }
       ],
       "approval": {
@@ -714,7 +718,31 @@
             "opposite arm swing and near/far occlusion",
             "reduced oversized advancing sole/boot perspective"
           ],
-          "productionAssetsUpdated": false
+          "productionAssetsUpdated": true,
+          "demoIntegration": "Art/Integration/P1-approved-gait-v1/integration.json"
+        },
+        {
+          "id": "loop-r1",
+          "date": "2026-10-21",
+          "status": "self-reviewed-runtime-candidate",
+          "strip": "directions/down-right/revisions/loop-r1/strip.png",
+          "normalLoop": "directions/down-right/revisions/loop-r1/walk.gif",
+          "validation": "directions/down-right/revisions/loop-r1/validation.json",
+          "artApproval": null,
+          "changedFrames": [
+            8
+          ],
+          "inheritedFrames": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "productionAssetsUpdated": true
         }
       ],
       "approval": {
@@ -743,7 +771,14 @@
         }
       ],
       "currentRevision": "r1",
-      "auditStatus": "user approved r1; build 28 remains historical baseline"
+      "auditStatus": "user approved r1; build 28 remains historical baseline",
+      "runtimeRevision": "loop-r1",
+      "loopRepairFeedback": {
+        "date": "2026-10-21",
+        "statement": "首帧与末尾帧衔接不好，有跳动；单开智能体自行修并合成正常速动图审核",
+        "status": "self-reviewed-and-imported-user-task-authorized",
+        "scope": "Original approval remains on r1; this new loop revision has no new user artwork approval"
+      }
     },
     {
       "id": "06-down-left-gait",
@@ -830,7 +865,31 @@
             "opposite arm swing and near/far occlusion",
             "phase-by-phase whole-pose correspondence with approved down-right r1"
           ],
-          "productionAssetsUpdated": false
+          "productionAssetsUpdated": true,
+          "demoIntegration": "Art/Integration/P1-approved-gait-v1/integration.json"
+        },
+        {
+          "id": "loop-r1",
+          "date": "2026-10-21",
+          "status": "self-reviewed-runtime-candidate",
+          "strip": "directions/down-left/revisions/loop-r1/strip.png",
+          "normalLoop": "directions/down-left/revisions/loop-r1/walk.gif",
+          "validation": "directions/down-left/revisions/loop-r1/validation.json",
+          "artApproval": null,
+          "changedFrames": [
+            8
+          ],
+          "inheritedFrames": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "productionAssetsUpdated": true
         }
       ],
       "approval": {
@@ -858,7 +917,14 @@
           "scope": "down-right r1 approved; proceed to down-left, second diagonal, using the same sequential revision workflow"
         }
       ],
-      "auditStatus": "user approved down-left r1; historical build28 baseline unchanged"
+      "auditStatus": "user approved down-left r1; historical build28 baseline unchanged",
+      "runtimeRevision": "loop-r1",
+      "loopRepairFeedback": {
+        "date": "2026-10-21",
+        "statement": "首帧与末尾帧衔接不好，有跳动；单开智能体自行修并合成正常速动图审核",
+        "status": "self-reviewed-and-imported-user-task-authorized",
+        "scope": "Original approval remains on r1; this new loop revision has no new user artwork approval"
+      }
     },
     {
       "id": "07-up-left-gait",
@@ -1075,7 +1141,7 @@
           "addressedInCandidate": [
             "assemble revised05 to review narrow leg spacing and04–05–06 continuity"
           ],
-          "productionAssetsUpdated": false,
+          "productionAssetsUpdated": true,
           "changedFrames": [
             5
           ],
@@ -1090,7 +1156,57 @@
             8
           ],
           "inheritedPose04Approval": "directions/up-left/revisions/r5/pose04-approval.json",
-          "assemblyRequest": "directions/up-left/revisions/r6/assembly-request.json"
+          "assemblyRequest": "directions/up-left/revisions/r6/assembly-request.json",
+          "demoIntegration": "Art/Integration/P1-approved-gait-v1/integration.json"
+        },
+        {
+          "id": "loop-r1",
+          "date": "2026-10-21",
+          "status": "self-reviewed-runtime-candidate",
+          "strip": "directions/up-left/revisions/loop-r1/strip.png",
+          "normalLoop": "directions/up-left/revisions/loop-r1/walk.gif",
+          "validation": "directions/up-left/revisions/loop-r1/validation.json",
+          "artApproval": null,
+          "changedFrames": [
+            8
+          ],
+          "inheritedFrames": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "productionAssetsUpdated": true
+        },
+        {
+          "id": "contact-r1",
+          "date": "2026-10-22",
+          "status": "self-reviewed-runtime-candidate",
+          "strip": "directions/up-left/revisions/contact-r1/strip.png",
+          "normalLoop": "directions/up-left/revisions/contact-r1/walk.gif",
+          "reviewImage": "directions/up-left/revisions/contact-r1/review-2x.png",
+          "validation": "directions/up-left/revisions/contact-r1/validation.json",
+          "provenance": "directions/up-left/revisions/contact-r1/provenance.json",
+          "artApproval": null,
+          "changedFrames": [
+            2
+          ],
+          "inheritedFrames": [
+            0,
+            1,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8
+          ],
+          "productionAssetsUpdated": true,
+          "parentReview": "Media/Build38/art-review.json"
         }
       ],
       "approval": {
@@ -1166,6 +1282,19 @@
         ],
         "artApproval": null,
         "fullCycleUpdated": true
+      },
+      "runtimeRevision": "contact-r1",
+      "loopRepairFeedback": {
+        "date": "2026-10-21",
+        "statement": "首帧与末尾帧衔接不好，有跳动；单开智能体自行修并合成正常速动图审核",
+        "status": "self-reviewed-and-imported-user-task-authorized",
+        "scope": "Original approval remains on r6; this new loop revision has no new user artwork approval"
+      },
+      "contactRepairFeedback": {
+        "date": "2026-10-22",
+        "statement": "左上左脚抬起后瞬间落地，缺少过渡",
+        "status": "internally-reviewed-and-imported-user-task-authorized",
+        "scope": "Only pose02 revised; original r6 approval and loop-r1 preserved; full-body normal-speed review does not constitute user approval."
       }
     },
     {
@@ -1255,7 +1384,31 @@
             "opposite arm swing, support and near/far occlusion",
             "08–01 cyclic heading continuity"
           ],
-          "productionAssetsUpdated": false
+          "productionAssetsUpdated": true,
+          "demoIntegration": "Art/Integration/P1-approved-gait-v1/integration.json"
+        },
+        {
+          "id": "loop-r2",
+          "date": "2026-10-21",
+          "status": "self-reviewed-runtime-candidate",
+          "strip": "directions/up-right/revisions/loop-r2/strip.png",
+          "normalLoop": "directions/up-right/revisions/loop-r2/walk.gif",
+          "validation": "directions/up-right/revisions/loop-r2/validation.json",
+          "artApproval": null,
+          "changedFrames": [
+            8
+          ],
+          "inheritedFrames": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "productionAssetsUpdated": true
         }
       ],
       "approval": {
@@ -1283,7 +1436,14 @@
           "text": "好到下一个方向的修改了，你参考我们左上动画的制作过程，不要再犯错",
           "scope": "approve up-left r6; redraw final diagonal up-right with the continuity lessons from up-left"
         }
-      ]
+      ],
+      "runtimeRevision": "loop-r2",
+      "loopRepairFeedback": {
+        "date": "2026-10-21",
+        "statement": "首帧与末尾帧衔接不好，有跳动；单开智能体自行修并合成正常速动图审核",
+        "status": "self-reviewed-and-imported-user-task-authorized",
+        "scope": "Original approval remains on r1; this new loop revision has no new user artwork approval"
+      }
     }
   ],
   "directionOrder": [
@@ -1701,6 +1861,59 @@
       "previousCurrent": "p1-neutral-battle-side-right-idle-parts-v2",
       "newCurrent": "p1-neutral-battle-side-right-walk-pose-test-v1",
       "reason": "Continue the user-authorized next step with a first right-facing side-walk pose; test static semantic layers and localized joint-root coverage without claiming an animation."
+    },
+    {
+      "previousCurrent": "p1-neutral-battle-side-right-walk-pose-test-v1",
+      "newCurrent": "p1-battle-side-right-idle-art-cleanup-v8",
+      "reason": "User paused IPA packaging and requested one-image cleanup of marked forehead/shoulder pixels and the rounded rear head. The pending walking pose review is preserved."
+    },
+    {
+      "previousCurrent": "p1-battle-side-right-idle-art-cleanup-v8",
+      "newCurrent": "p1-battle-side-right-idle-rear-shading-v9",
+      "reason": "User requested the remaining shoulder black edge be replaced with rear-plane shading based on approved left/right gait depth. Continue reviewing the same single static image; packaging stays paused."
+    },
+    {
+      "previousCurrent": "p1-battle-side-right-idle-rear-shading-v9",
+      "newCurrent": "p1-battle-side-right-step-contact-v1",
+      "reason": "User accepted the current battle effect and requested the next step; resume the original side-walk plan with one dressed small-step key pose."
+    },
+    {
+      "date": "2026-10-24",
+      "userStatement": "Ok开始左下方动作模组的制作",
+      "current": "p1-neutral-down-left-walk-r1",
+      "scope": "down-left neutral motion first; root-only repair/review and normal GIF delivery"
+    },
+    {
+      "date": "2026-10-24",
+      "userStatement": "没问题，可以试一下镜像来做右下的动画",
+      "current": "p1-neutral-down-right-walk-r1-mirrored-down-left",
+      "scope": "Mirror approved down-left neutral poses into down-right with semantic and fixed-light corrections; root-only repair/review and normal GIF delivery"
+    },
+    {
+      "date": "2026-10-24",
+      "userStatement": "没问题开始做下一步",
+      "current": "p1-down-left-independent-heads-v1",
+      "scope": "Root-only left-down independent head resources first, normal GIF/full-body review; clothes afterwards"
+    },
+    {
+      "date": "2026-10-24",
+      "userStatement": "我们先把各方向的模组做完",
+      "current": "p1-down-left-independent-wardrobe-v1",
+      "scope": "Prioritize existing-character eight-direction modular completion; female character work deferred; current direction full wardrobe review"
+    },
+    {
+      "date": "2026-10-24",
+      "userStatement": "没问题下一步工作开始",
+      "acceptedScope": "Previous delivered left-down primary whole-body appearances only",
+      "current": "p1-down-right-independent-appearance-v1",
+      "scope": "Right-down independent appearance on unchanged approved base; fixed-light/semantic mirror and shoulder carry; no inherited approval for new direction"
+    },
+    {
+      "date": "2026-10-24",
+      "userStatement": "那按你的表格的先后顺序来工作，第一补齐正向步态的分层",
+      "interpretation": "First row of previous answer is up-facing gait; proceed up-neutral layering first",
+      "current": "p1-neutral-up-walk-r1-layered",
+      "scope": "New current-contract neutral back-body/13poses, old approved artwork retained; main-only repair/review and normal GIF delivery"
     }
   ],
   "battleNeutralBodyReview": {
@@ -1784,10 +1997,22 @@
     "movementPreflight": {
       "status": "localized_joint_root_windows_passed",
       "translations": {
-        "nearArmAndHand": [3, 1],
-        "farArmAndHand": [-3, 1],
-        "nearLeg": [2, -2],
-        "farLeg": [-2, -2]
+        "nearArmAndHand": [
+          3,
+          1
+        ],
+        "farArmAndHand": [
+          -3,
+          1
+        ],
+        "nearLeg": [
+          2,
+          -2
+        ],
+        "farLeg": [
+          -2,
+          -2
+        ]
       },
       "zeroUncoveredSourcePixelsInJointWindows": {
         "nearArm": true,
@@ -1861,12 +2086,12 @@
     "next": "Review the candidate silhouette and layer assignment. If accepted, author actual articulated pose redraws with complete hidden anatomy and test seams across frames before building the walk animation."
   },
   "battleSideRuntimeFixture": {
-    "id": "p1-battle-side-right-idle-modular-fixture-v1",
-    "status": "art-candidate-in-tested-runtime-fixture",
-    "source": "Art/Parts/P1-Battle/right-idle-v1",
-    "reviewImage": "Art/Parts/P1-Battle/right-idle-v1/assembled.png",
+    "id": "p1-battle-side-right-idle-modular-fixture-v9",
+    "status": "v9-packaged-for-user-device-review",
+    "source": "Art/Parts/P1-Battle/right-idle-v3",
+    "reviewImage": "Art/Parts/P1-Battle/right-idle-v3/review.png",
     "neutralPoseApprovalReference": "p1-neutral-battle-side-right-idle-r2",
-    "neutralBodySourceChanged": false,
+    "neutralBodySourceChanged": true,
     "canvasPx": [
       256,
       256
@@ -1876,19 +2101,1675 @@
       214
     ],
     "parts": [
-      "neutral body",
-      "forester wardrobe",
-      "chestnut hair",
-      "blue facial features",
-      "short sword",
-      "near hand foreground",
-      "far hand foreground ownership correction"
+      "common neutral r3 rear-head contour candidate on the r2 pose",
+      "v9 blue rear-shoulder and sleeve shading",
+      "v8 tapered chestnut hair and cleaned blue facial features",
+      "original registered short sword and foreground hands",
+      "pixel-art forest warden and independent shadows"
     ],
-    "userArtApproval": null,
-    "runtimeSourceCommit": "cd86161fd817eda49e3750570060e5b644abcb01",
-    "build": 33,
+    "userArtApproval": {
+      "date": "2026-10-21",
+      "reviewer": "user",
+      "statement": "战斗方面，可以继续按当前效果继续下一步",
+      "status": "approved",
+      "scope": "Current build35 static battle appearance and composition only; excludes new movement poses, attack animations, full hidden anatomy and wardrobe-template completion",
+      "build": 35,
+      "revision": "v9"
+    },
+    "runtimeSourceCommit": "01cb73a66542443d3178ed82374383f6a4018bcf",
+    "build": 35,
     "animationDelivered": false,
     "productionWardrobeContractPassed": false,
-    "limits": "One right-facing static idle fixture; no full hidden anatomy, animation, additional outfit or third-resource compatibility validation."
+    "limits": "One right-facing static idle fixture and one static enemy pose; no full hidden anatomy, animation, additional outfit or third-resource compatibility validation.",
+    "releaseVersion": "1.6.9",
+    "internalFaceReadabilityReview": {
+      "revision": "v8 face with v9 wardrobe composition",
+      "status": "whole-character-self-review-user-device-review-pending",
+      "scope": "Native and 3x full-character artwork; no user art or device visual approval",
+      "userArtApproval": null
+    },
+    "neutralBodyChangeScope": "Common r3 rear-head contour only; approved r2 pose/registration retained",
+    "runtimeImport": "Art/Parts/P1-Battle/right-idle-v3/runtime-import.json",
+    "package": "Media/Build35/package.json"
+  },
+  "battleSideFaceReview": {
+    "id": "p1-battle-side-right-idle-face-blue-v8",
+    "status": "pixel-cleanup-candidate-awaiting-user-art-review",
+    "source": "Art/Parts/P1-Battle/right-idle-v2/face-blue",
+    "reviewImage": "Art/Parts/P1-Battle/right-idle-v3/review.png",
+    "nativeComposite": "Art/Parts/P1-Battle/right-idle-v3/assembled.png",
+    "basePoseApprovalReference": "p1-neutral-battle-side-right-idle-r2",
+    "canvasPx": [
+      256,
+      256
+    ],
+    "alphaBoundsPx": [
+      138,
+      107,
+      152,
+      129
+    ],
+    "scope": "Remove the unrelated forehead fragment from the v7 brow/eye extraction; keep the main eye, nose and mouth positions. Review the full character together with the requested shoulder and rear-head corrections.",
+    "sourcePoseChanged": false,
+    "userArtApproval": {
+      "date": "2026-10-21",
+      "reviewer": "user",
+      "statement": "战斗方面，可以继续按当前效果继续下一步",
+      "status": "approved",
+      "scope": "Current build35 static battle appearance and composition only; excludes new movement poses, attack animations, full hidden anatomy and wardrobe-template completion",
+      "build": 35,
+      "revision": "v9"
+    },
+    "runtimeScreenshotAvailable": false,
+    "feedback": [
+      {
+        "date": "2026-10-20",
+        "reviewer": "user",
+        "revision": "v5",
+        "status": "revision_requested",
+        "statement": "五官全挤在眼睛的位置；先看整个人物比例，不要只以局部放大为准。"
+      },
+      {
+        "date": "2026-10-20",
+        "reviewer": "user",
+        "revision": "v6",
+        "status": "revision_requested",
+        "statement": "你现在这个是人脸？",
+        "archivedAt": "Art/Parts/P1-Battle/right-idle-v1/face-blue/revisions/v6"
+      },
+      {
+        "date": "2026-10-20",
+        "reviewer": "user",
+        "revision": "v7",
+        "status": "cleanup_requested",
+        "statement": "别急着打包；箭头处有多余像素，后脑勺太圆也要改。"
+      }
+    ],
+    "next": "v8 face and v9 whole-character composition are now imported for the user-requested IPA. The user performs physical-device runs and supplies screenshots.",
+    "internalReadabilityReview": {
+      "status": "whole-character-cleanup-reviewed-user-review-pending",
+      "scope": "Native and 3x full-character review, plus targeted pixel checks for the marked cleanup areas",
+      "userArtApproval": null
+    },
+    "runtimeCandidateImported": true,
+    "previousRuntimeImage": "Sources/Resources/Assets.xcassets/MeadowBattleHeroFace.imageset/MeadowBattleHeroFace.png"
+  },
+  "battleSideVisualPolish": {
+    "build": 36,
+    "version": "1.6.10",
+    "heroWardrobe": "Brighter, more saturated P1 blue colorway; original 256x256 alpha, silhouette and foot registration retained",
+    "forestWarden": {
+      "id": "meadow-forest-warden-pixel-alert-idle-v1",
+      "asset": "Art/Scenes/MeadowBattle/enemies/forest-warden-v2/idle.png",
+      "canvasPx": [
+        384,
+        256
+      ],
+      "alphaBoundsXYWH": [
+        13,
+        9,
+        331,
+        232
+      ],
+      "hoofGroundY": 240,
+      "userArtApproval": null
+    },
+    "camera": "width-locked top-anchored scene; blurred backdrop shares its transform, uses clamped edge extension, and feathers the sharp canvas bottom",
+    "shadow": "independent cast silhouettes plus four hoof contacts aligned to pixel sprite",
+    "iPadScreenshotReview": "Physical-device runs and screenshots remain the user responsibility.",
+    "ipa": "1.6.10 build36 archived and verified in run 39560271325 at source 94c00a1. Public raw IPA download returned HTTP200 and matching checksum; Downloads/MeadowJourney-b36.ipa. No simulator or physical-device run.",
+    "staticPresentationApproval": {
+      "date": "2026-10-21",
+      "reviewer": "user",
+      "statement": "战斗方面，可以继续按当前效果继续下一步",
+      "status": "approved",
+      "scope": "Current build35 static battle appearance and composition only; excludes new movement poses, attack animations, full hidden anatomy and wardrobe-template completion",
+      "build": 35,
+      "revision": "v9"
+    }
+  },
+  "battleSideCleanupReview": {
+    "id": "p1-battle-side-right-idle-art-cleanup-v8",
+    "status": "preserved-v8-candidate-continued-in-v9-rear-shading-review",
+    "source": "Art/Parts/P1-Battle/right-idle-v2",
+    "reviewImage": "Art/Parts/P1-Battle/right-idle-v2/review.png",
+    "candidateManifest": "Art/Parts/P1-Battle/right-idle-v2/candidate.json",
+    "validation": "Art/Parts/P1-Battle/right-idle-v2/validation.json",
+    "changes": [
+      "10 unrelated forehead fragment pixels removed from the brow/eye extraction",
+      "26 shoulder pixels repaired to remove the duplicate seam and warm fringe",
+      "rear hair narrowed and tapered with crown/front forelock retained",
+      "97-pixel common neutral rear-head contour candidate; r2 original and pose retained"
+    ],
+    "commonHeadContourCandidate": "Art/Templates/P1-Neutral/battle-side/right-idle-r3-head-contour",
+    "runtimeIntegrated": false,
+    "packaging": "paused by user",
+    "userArtApproval": null
+  },
+  "battleSideShadingReview": {
+    "id": "p1-battle-side-right-idle-rear-shading-v9",
+    "status": "approved-current-static-battle-presentation",
+    "source": "Art/Parts/P1-Battle/right-idle-v3",
+    "reviewImage": "Art/Parts/P1-Battle/right-idle-v3/review.png",
+    "nativeComposite": "Art/Parts/P1-Battle/right-idle-v3/assembled.png",
+    "candidateManifest": "Art/Parts/P1-Battle/right-idle-v3/candidate.json",
+    "validation": "Art/Parts/P1-Battle/right-idle-v3/validation.json",
+    "userFeedback": "左肩还有黑边；靠后的部分加阴影做出层次，参考之前行走动画左右方向的层次处理。",
+    "depthReferences": [
+      {
+        "path": "Art/Review/P1/directions/left/revisions/r1/frames/03.png",
+        "sha256": "ea816b3416c69958a5db45927b4c6dfa22bc20e5c5b917d488e55f0adabde8e0",
+        "approvalScope": "left/right r1 walking artwork approved 2026-10-18; shading relationship reference only"
+      },
+      {
+        "path": "Art/Review/P1/directions/right/revisions/r1/frames/03.png",
+        "sha256": "1edfe32f1d60d644c80edf814bbf0a75c404fe9c7f7288d4280ba5cfe22e39cb",
+        "approvalScope": "left/right r1 walking artwork approved 2026-10-18; shading relationship reference only"
+      }
+    ],
+    "changes": [
+      "Replace the remaining diagonal shoulder seam and outer black strip with blue transitions",
+      "Shade the rear shoulder/back as a continuous plane and deepen the trailing sleeve",
+      "Preserve the foreground sword arm light face, exact outfit alpha and all artwork outside the shoulder/rear-sleeve region"
+    ],
+    "changedCompositePixels": 209,
+    "changedCompositeBoundsPx": [
+      102,
+      133,
+      119,
+      168
+    ],
+    "unchangedFaceSource": "Art/Parts/P1-Battle/right-idle-v2/face-blue",
+    "runtimeIntegrated": true,
+    "packaging": "1.6.9 build35 archived and verified; requested by user on 2026-10-21",
+    "userArtApproval": {
+      "date": "2026-10-21",
+      "reviewer": "user",
+      "statement": "战斗方面，可以继续按当前效果继续下一步",
+      "status": "approved",
+      "scope": "Current build35 static battle appearance and composition only; excludes new movement poses, attack animations, full hidden anatomy and wardrobe-template completion",
+      "build": 35,
+      "revision": "v9"
+    },
+    "runtimeImport": "Art/Parts/P1-Battle/right-idle-v3/runtime-import.json"
+  },
+  "gaitDemoIntegration": {
+    "status": "packaged-for-user-device-review",
+    "date": "2026-10-21",
+    "source": "Art/Integration/P1-diagonal-loop-v2",
+    "manifest": "Art/Integration/P1-diagonal-loop-v2/integration.json",
+    "activeSelection": "Art/Integration/P1-gait-selection.json",
+    "normalFrameMs": 120,
+    "cycleMs": 960,
+    "changedSourceFrames": "Four diagonal frame08 poses only; cardinal and other diagonal poses retained",
+    "footData": "Four revised frame08 boot coordinates updated in the shared 24-tick sampling rig",
+    "parentReview": "Art/Integration/P1-diagonal-loop-v2/parent-review.json",
+    "physicalDeviceVisualApproval": null,
+    "build": 36,
+    "version": "1.6.10",
+    "workflowRun": 39560271325,
+    "sourceCommit": "94c00a15e6de982df69b8b5fde1f5fd1c46a6c5a",
+    "package": "Media/Build36/package.json",
+    "downloadURL": "https://raw.githubusercontent.com/liamchan-rgb/experiment/fix/build33-face-grounding-camera/Downloads/MeadowJourney-b36.ipa"
+  },
+  "battleSideRuntimeHistory": [
+    {
+      "id": "p1-battle-side-right-idle-modular-fixture-v1",
+      "status": "v7-static-runtime-fixture-withheld-user-requested-cleanup",
+      "source": "Art/Parts/P1-Battle/right-idle-v1",
+      "reviewImage": "Art/Parts/P1-Battle/right-idle-v1/assembled.png",
+      "neutralPoseApprovalReference": "p1-neutral-battle-side-right-idle-r2",
+      "neutralBodySourceChanged": false,
+      "canvasPx": [
+        256,
+        256
+      ],
+      "footAnchorPx": [
+        123,
+        214
+      ],
+      "parts": [
+        "approved neutral body pose r2",
+        "P1 blue wardrobe colorway with original registered alpha",
+        "chestnut hair",
+        "blue facial features v7",
+        "short sword",
+        "near hand foreground",
+        "far hand foreground ownership correction",
+        "transparent pixel-art forest warden with independent cast/contact shadows"
+      ],
+      "userArtApproval": null,
+      "runtimeSourceCommit": null,
+      "build": 34,
+      "animationDelivered": false,
+      "productionWardrobeContractPassed": false,
+      "limits": "One right-facing static idle fixture and one static enemy pose; no full hidden anatomy, animation, additional outfit or third-resource compatibility validation.",
+      "releaseVersion": "1.6.8",
+      "internalFaceReadabilityReview": {
+        "revision": "v7",
+        "status": "self-reviewed-full-sprite-candidate-awaiting-user-device-review",
+        "scope": "Full registered character at native 256x256 scale is primary; the enlarged head crop only checks pixel joins",
+        "userArtApproval": null
+      }
+    }
+  ],
+  "battleSideStepReview": {
+    "id": "p1-battle-side-right-step-contact-v1",
+    "status": "first-key-pose-awaiting-user-art-review",
+    "source": "Art/Parts/P1-Battle/right-step-contact-v1",
+    "reviewImage": "Art/Parts/P1-Battle/right-step-contact-v1/review.png",
+    "nativeComposite": "Art/Parts/P1-Battle/right-step-contact-v1/assembled.png",
+    "commonBodyPose": "Art/Templates/P1-Neutral/battle-side/right-step-contact-v1",
+    "validation": "Art/Parts/P1-Battle/right-step-contact-v1/validation.json",
+    "acceptedAppearanceReference": "p1-battle-side-right-idle-rear-shading-v9",
+    "runtimeIntegrated": false,
+    "animationDelivered": false,
+    "userArtApproval": null,
+    "next": "After this pose is accepted, author separate passing and recovery poses on the same common module, check cloth/boot overlap, then assemble a full normal-speed battle-walk loop."
+  },
+  "gaitDemoIntegrationHistory": [
+    {
+      "status": "packaged-for-user-device-review",
+      "date": "2026-10-21",
+      "userRequest": "撤回刚才那个要求，要打包，然后把之前确认好的步态更新到demo里",
+      "source": "Art/Integration/P1-approved-gait-v1",
+      "manifest": "Art/Integration/P1-approved-gait-v1/integration.json",
+      "approvedDirections": 8,
+      "posesPerDirection": {
+        "idle": 1,
+        "walk": 8
+      },
+      "normalFrameMs": 120,
+      "cycleMs": 960,
+      "pixelChangesToApprovedArt": 0,
+      "physicalDeviceVisualApproval": null,
+      "package": "Media/Build35/package.json",
+      "workflowRun": 39530852893,
+      "sourceCommit": "01cb73a66542443d3178ed82374383f6a4018bcf"
+    }
+  ],
+  "battleCombatAnimationReview": {
+    "date": "2026-10-22",
+    "status": "internally-reviewed-for-build37",
+    "userAuthorization": "下一轮除此之外还要有可以交互的战斗场景，动画要完善。这些都和你的智能体并行作业，你要检查到位效果符合预期（只查美术，不含实机模拟）再交付给我ipa",
+    "source": "Art/Scenes/MeadowBattle/hero-combat-v2",
+    "enemyMotion": "Art/Scenes/MeadowBattle/enemies/forest-warden-motion-v1",
+    "parentReview": "Media/Build37/art-review.json",
+    "userArtApproval": null,
+    "fullWardrobeTemplateApproved": false
+  },
+  "roadMotionRepairReview": {
+    "date": "2026-10-22",
+    "status": "offline-reviewed-pending-user-device-feedback",
+    "previewMs": 120,
+    "roadP1Speed": 25,
+    "repairs": [
+      "P1 normal cadence matches review",
+      "full foot/pose state invalidates moving-shadow backdrop",
+      "idle clears stale distance phase"
+    ],
+    "review": "Artifacts/Diagnostics/road-motion-four-directions-offline.gif",
+    "artPixelsChanged": 0,
+    "physicalDeviceVisualApproval": null
+  },
+  "leftHeadMotionReview": {
+    "id": "p1-neutral-left-walk-r2-head-motion",
+    "status": "approved-presented-left-neutral-walk-and-head-motion",
+    "source": "Art/Templates/P1-Neutral/left/walk-r2-head-motion",
+    "reviewImage": "Art/Review/P1/neutral-left-walk-r2-head-motion/idle-review-2x.png",
+    "normalUserLoop": "Art/Review/P1/neutral-left-walk-r2-head-motion/walk-120ms.gif",
+    "comparison": "Art/Review/P1/neutral-left-walk-r2-head-motion/before-after-120ms.gif",
+    "artApproval": {
+      "date": "2026-10-22",
+      "reviewer": "user",
+      "statement": "没问题开始下一步工作",
+      "status": "approved",
+      "scope": "Presented left-facing r2 neutral full-body appearance, eight-frame normal walk and subtle head motion only. Excludes hidden anatomy, new start/stop key poses, independent left-facing appearances and runtime integration.",
+      "artifacts": {
+        "walk-120ms.gif": "67d0de0d0b641fffe8a352b786b787d7f00db41cfa8884fe9d88e65e2b60d7d3",
+        "before-after-120ms.gif": "cb5bf0a3c0eda7329aa532a068cd1e6fb7eb3ecfc115b396c88c3f048a9c5b92"
+      }
+    },
+    "feedback": "头太固定了，应该有轻微摆动才自然",
+    "runtimeIntegrated": false
+  },
+  "leftJointTransitionReview": {
+    "id": "p1-neutral-left-walk-r3-complete-transitions",
+    "status": "approved-presented-left-neutral-and-authored-start-stop",
+    "sourceBody": "Art/Templates/P1-Neutral/left/walk-r2-head-motion",
+    "hiddenSource": "Art/Templates/P1-Neutral/left/hidden-joints-v1",
+    "transitionSource": "Art/Templates/P1-Neutral/left/start-stop-v1",
+    "artApproval": {
+      "date": "2026-10-22",
+      "reviewer": "user",
+      "statement": "没问题，继续下一个工作",
+      "followup": "继续",
+      "status": "approved",
+      "scope": "Presented left-facing neutral full-body appearance and demonstrated idle00→start01/02→walk01 and walk08→stop01/02→idle00 paths, with retained walk/head motion. Does not approve arbitrary phase interruptions, complete hidden anatomy, new appearances, other directions or runtime integration.",
+      "artifacts": {
+        "start-stop-120ms.gif": "c6df0a6f9572ee1f86d033c86284733b84a8ce513629e31aea7463246a6fcc9f",
+        "walk-120ms.gif": "67d0de0d0b641fffe8a352b786b787d7f00db41cfa8884fe9d88e65e2b60d7d3",
+        "idle-review-2x.png": "61b0c58706bdd829ba67e061c31ae9a704e35271d27629a14274bd2f9e992184"
+      }
+    },
+    "runtimeIntegrated": false,
+    "source": "Art/Templates/P1-Neutral/left/walk-r3-complete-transitions",
+    "reviewImage": "Art/Review/P1/neutral-left-complete-transitions-v1/idle-review-2x.png",
+    "normalUserLoop": "Art/Review/P1/neutral-left-complete-transitions-v1/start-stop-120ms.gif",
+    "walkLoop": "Art/Review/P1/neutral-left-complete-transitions-v1/walk-120ms.gif",
+    "poseReview": "Art/Review/P1/neutral-left-complete-transitions-v1/start-stop-keyposes-fullbody-1x.png",
+    "validation": "Art/Templates/P1-Neutral/left/walk-r3-complete-transitions/validation.json",
+    "visiblePoses": 13,
+    "semanticLayers": 104,
+    "hiddenUnderlays": 91,
+    "normalFrameMs": 120,
+    "approvedR2VisibleFramesUnchanged": 9,
+    "fullHiddenAnatomyComplete": false,
+    "authoredStartStopPaths": [
+      "idle00 to walk01",
+      "walk08 to idle00"
+    ],
+    "arbitraryPhaseStartStopComplete": false
+  },
+  "leftWardrobeReview": {
+    "id": "p1-modular-left-wardrobe-v1",
+    "status": "revision-requested-user-rejected-v1",
+    "base": "Art/Templates/P1-Neutral/left/walk-r3-complete-transitions",
+    "artApproval": null,
+    "scope": "Independent left hair, face, two upper outfits, shared trousers/boots and back-scabbard, covering 13 existing poses without body changes.",
+    "runtimeIntegrated": false,
+    "direction": "left",
+    "poseCount": 13,
+    "newAppearancePackages": 9,
+    "combinations": 72,
+    "renderedPoses": 936,
+    "bodyMotionAndCompositorUnchanged": true,
+    "bodyContributionChecks": 3120,
+    "bodyContributionFailures": 0,
+    "weaponToggleChecks": 468,
+    "weaponToggleFailures": 0,
+    "clothingIslandChecks": 26,
+    "clothingIslandFailures": 0,
+    "assetManifestsPassed": 10,
+    "generatedArtFilesReexportedTwice": 264,
+    "byteIdenticalReexports": true,
+    "regressionTests": {
+      "contractPassed": 26,
+      "compositorPassed": 21,
+      "skipped": 0
+    },
+    "normalWalk": "Art/Review/P1/modular-left-wardrobe-v1/outfits-comparison-120ms.gif",
+    "normalStartStop": "Art/Review/P1/modular-left-wardrobe-v1/start-stop-comparison-120ms.gif",
+    "reviewImage": "Art/Review/P1/modular-left-wardrobe-v1/outfits-comparison-2x.png",
+    "audit": "Art/Review/P1/modular-left-wardrobe-v1/audit.json",
+    "checks": "Art/Review/P1/modular-left-wardrobe-v1/checks.json",
+    "artReview": "Art/Review/P1/modular-left-wardrobe-v1/art-review.md",
+    "simulatorOrDeviceRun": false,
+    "ipaBuilt": false,
+    "arbitraryPhaseTransitionsComplete": false,
+    "eightDirectionProductionTemplateComplete": false,
+    "source": "Art/Templates/P1-Wardrobe/left/v1-independent",
+    "earlierInternalArtPassWithdrawn": true,
+    "userFeedback": {
+      "date": "2026-10-22",
+      "statement": "你检查了吗就发我，这么明显的瑕疵拿给我干嘛，智能体画的效果有问题你就自己修一下，把这个也同步到GitHub的提示词里面",
+      "approval": false
+    },
+    "identifiedDefects": [
+      "green shirt ink/trim lost during extraction",
+      "blocky trouser deformation and lost boot structure",
+      "rigid coat tails inconsistent with cloth"
+    ]
+  },
+  "leftWardrobeRepairReview": {
+    "id": "p1-modular-left-wardrobe-v2",
+    "status": "approved-presented-left-v2-outfits-and-normal-loop",
+    "artApproval": {
+      "date": "2026-10-22",
+      "reviewer": "user",
+      "statement": "没问题，下一个直接同时做左上和右上的，你注意检查不要随便被智能体糊弄",
+      "status": "approved",
+      "scope": "Presented left-facing v2 two-outfit full-body appearance and normal walk/start-stop comparison only; excludes unshown combinations, other directions and runtime/device integration.",
+      "artifacts": {
+        "outfits-comparison-120ms.gif": "13b0d239ff2f4bfa4f04dbf3fdff8c0b177c92d8ad3e82d13e83a643949191eb",
+        "start-stop-comparison-120ms.gif": "73f4de5d6c44915bd46a410720c5479b47c8bc0463ea5a2d046dc47fae4d2470",
+        "outfits-comparison-2x.png": "93abe50ce71e519875d35b7ee1f7236c1aeccfd54b74a22e602ef221027e9f33"
+      }
+    },
+    "rejectedPredecessor": "Art/Templates/P1-Wardrobe/left/v1-independent",
+    "base": "Art/Templates/P1-Neutral/left/walk-r3-complete-transitions",
+    "direction": "left",
+    "poses": 13,
+    "combinations": 72,
+    "renderedPoses": 936,
+    "newGarmentPackages": 3,
+    "bodyAndMotionAndCompositorUnchanged": true,
+    "visibleBodyContributionChecks": 3120,
+    "visibleHandPreservationChecks": 624,
+    "weaponToggleChecks": 468,
+    "clothingIslandChecks": 26,
+    "failures": 0,
+    "assetManifestsPassed": 10,
+    "twoReexportsByteIdentical": true,
+    "generatedArtFilesReexported": 221,
+    "regressionTests": {
+      "contract": 26,
+      "compositor": 21,
+      "skipped": 0
+    },
+    "normalUserLoop": "Art/Review/P1/modular-left-wardrobe-v2/outfits-comparison-120ms.gif",
+    "startStopLoop": "Art/Review/P1/modular-left-wardrobe-v2/start-stop-comparison-120ms.gif",
+    "reviewImage": "Art/Review/P1/modular-left-wardrobe-v2/outfits-comparison-2x.png",
+    "artReview": "Art/Review/P1/modular-left-wardrobe-v2/art-review.md",
+    "runtimeIntegrated": false,
+    "simulatorOrDeviceRun": false,
+    "ipaBuilt": false
+  },
+  "upperDiagonalNeutralReview": {
+    "id": "p1-neutral-upper-transitions-r6",
+    "status": "user-approved-presented-r6-transition-paths",
+    "artApproval": {
+      "date": "2026-10-23",
+      "statement": "开始下一项",
+      "reviewer": "user",
+      "status": "approved-to-proceed-from-presented-transition-review",
+      "scope": "Presented upper-left/right neutral whole-body idle, normal walk and specified idle-to-walk01/walk08-to-idle transitions. Does not cover new wardrobe, complete hidden anatomy, arbitrary-phase stopping or runtime.",
+      "sourceCommit": "53e3a9b2077a1f218c21ecc1ac7f2d849a31b536",
+      "artifacts": {
+        "start-stop-120ms.gif": "c8e791691a6df95aa2c295c37493e5b325f607f9068d9ebc4363c2b4c48d28d9",
+        "walk-120ms.gif": "3459f23007b2989b5848658e839e5642ce229a90a9e07f5b8225d27f50877e1f",
+        "idle-review-2x.png": "e2af630ecb83327ec9eff6ece94b9133256119ea413ea819f01b2a908ef1b3cc",
+        "up-left/start-stop-120ms.gif": "b466553f1273068b4a2428efe187836b364c404999d5bedb599767bfe38e61b0",
+        "up-right/start-stop-120ms.gif": "99f98e1a535b9f470ab3a2294cf3c6e934ae772170824ec716d9587b7f7ac22f"
+      }
+    },
+    "directions": [
+      "up-left",
+      "up-right"
+    ],
+    "repairAndReviewOwner": "root",
+    "subagentsUsed": false,
+    "userInstruction": {
+      "date": "2026-10-23",
+      "statement": "没问题，开始下一步"
+    },
+    "method": "Preserve 18 accepted neutral idle/walk frames, add 2 start and 2 stop poses per direction on shared clothing/joint domains; explicitly ground support feet; reflect right semantic pose maps and reuse fixed-lighting source UVs",
+    "mainReview": "Main personally inspected all26 whole-body poses at1x/2x and ordered transition boundary sequences; no continuous-player viewing claimed",
+    "technical": {
+      "actualCompositorPoses": 26,
+      "newTransitionPoses": 8,
+      "approvedFramesUnchanged": 18,
+      "approvedLayersUnchanged": 144,
+      "semanticLayersWithoutOrphans": 208,
+      "newJunctionAlphaHoles": 0,
+      "headLocalMirrorAttachments": 13,
+      "byteIdenticalReexportFiles": 600,
+      "approvedSourceFilesUnchanged": 432,
+      "normalSpeedGifs": 6,
+      "contractTests": 26,
+      "compositorTests": 21
+    },
+    "artifacts": {
+      "normalGif": "Art/Review/P1/neutral-upper-transitions-r6/start-stop-120ms.gif",
+      "walkGif": "Art/Review/P1/neutral-upper-transitions-r6/walk-120ms.gif",
+      "idle": "Art/Review/P1/neutral-upper-transitions-r6/idle-review-2x.png",
+      "artReview": "Art/Review/P1/neutral-upper-transitions-r6/art-review.md",
+      "validation": "Art/Review/P1/neutral-upper-transitions-r6/validation.json"
+    },
+    "runtimeIntegrated": false,
+    "ipaBuilt": false,
+    "limits": [
+      "Only idle00 -> start01/02 -> walk01 and walk08 -> stop01/02 -> idle00; no arbitrary phase interrupts",
+      "Main whole-body frame review does not claim continuous-player playback",
+      "No full hidden anatomy, wardrobe combination, App/device or IPA validation"
+    ],
+    "next": "Independent upper-diagonal wardrobe candidate now available; no inherited wardrobe approval."
+  },
+  "upperDiagonalNeutralHistory": [
+    {
+      "id": "p1-neutral-upper-diagonals-v1",
+      "status": "user-rejected-art",
+      "directions": [
+        "up-left",
+        "up-right"
+      ],
+      "artApproval": null,
+      "scope": "Simultaneous neutral bodies, semantic layers and basic idle/walk coverage. New directions require review; no automatic appearance or runtime approval.",
+      "mainReview": "Root personally inspected all actual 1x/2x full-body frames and ordered 01-08-01 sequence. Viewer renders GIF as still, so continuous playback was not claimed.",
+      "artifacts": {
+        "normalGif": "Art/Review/P1/neutral-upper-diagonals-v1/walk-comparison-120ms.gif",
+        "idle": "Art/Review/P1/neutral-upper-diagonals-v1/idle-comparison-2x.png",
+        "validation": "Art/Review/P1/neutral-upper-diagonals-v1/validation.json"
+      },
+      "technical": {
+        "directions": 2,
+        "poses": 18,
+        "layers": 144,
+        "headLocalChecks": 18,
+        "soleMarkers": 36,
+        "contractTests": 26,
+        "compositorTests": 21,
+        "reexportedFiles": 216,
+        "byteIdenticalReexport": true
+      },
+      "limits": [
+        "neutral visible idle/walk candidate only",
+        "no appearance combinations/start-stop/runtime approval"
+      ],
+      "internalArtPassWithdrawn": true,
+      "userFeedback": {
+        "date": "2026-10-23",
+        "statements": [
+          "这走起来手都要剥离身体了",
+          "腿部也是在疯狂闪烁"
+        ]
+      }
+    },
+    {
+      "id": "p1-neutral-upper-diagonals-r2-fixed-limbs",
+      "status": "user-rejected-reinspection-required",
+      "artApproval": null,
+      "directions": [
+        "up-left",
+        "up-right"
+      ],
+      "rejectedPredecessor": "p1-neutral-upper-diagonals-v1",
+      "method": "Fixed arm/hand source transform, fixed whole-leg skin with monotone row mesh and projected constant sagittal chains",
+      "mainReview": "Root actual full-body 1x/2x all 18 poses and 01-08-01 ordered sequence; no continuous player playback claimed by still-only viewer",
+      "technical": {
+        "actualCompositorPoses": 18,
+        "wristContacts": 36,
+        "wholeSameSideLegs": 36,
+        "shoulderHipAttachments": 72,
+        "soleMarkers": 36,
+        "constantBoneChains": 16,
+        "byteIdenticalReexportedFiles": 198,
+        "contractTests": 26,
+        "compositorTests": 21
+      },
+      "artifacts": {
+        "normalGif": "Art/Review/P1/neutral-upper-diagonals-r2/walk-comparison-120ms.gif",
+        "idle": "Art/Review/P1/neutral-upper-diagonals-r2/idle-comparison-2x.png",
+        "artReview": "Art/Review/P1/neutral-upper-diagonals-r2/art-review.md",
+        "validation": "Art/Review/P1/neutral-upper-diagonals-r2/validation.json"
+      },
+      "runtimeIntegrated": false,
+      "limits": [
+        "User art approval pending",
+        "Idle/walk neutral only",
+        "No apparel combinations, start-stop, hidden anatomy or device approval"
+      ],
+      "internalArtPassWithdrawn": true,
+      "userFeedback": {
+        "date": "2026-10-23",
+        "statement": "还是不行，你自己再检查一下有什么问题，自己描述一下"
+      },
+      "reinspection": "Art/Review/P1/neutral-upper-diagonals-r2/reinspection-r2-rejected.md"
+    },
+    {
+      "id": "p1-neutral-upper-diagonals-r3-clean-joints",
+      "date": "2026-10-23",
+      "status": "rejected-by-user",
+      "reason": [
+        "twisted leg angles",
+        "unclear limb and clothing boundaries"
+      ],
+      "repairAndReviewOwner": "root",
+      "subagentsUsed": false,
+      "artApproval": null
+    },
+    {
+      "id": "p1-neutral-upper-diagonals-r4-continuous-contours",
+      "status": "user-rejected-visible-junctions-and-static-shorts",
+      "artApproval": null,
+      "directions": [
+        "up-left",
+        "up-right"
+      ],
+      "rejectedPredecessor": "p1-neutral-upper-diagonals-r3-clean-joints",
+      "repairAndReviewOwner": "root",
+      "subagentsUsed": false,
+      "method": "Hip joints inside shorts; whole-limb contours through a continuous shared mesh; explicit spatial garment ownership without skin-colour erosion; hands share arm mesh domain",
+      "mainReview": "Root inspected actual 1x/2x full-body idle plus all eight walk frames for both directions, ordered 01-08-01. Still-only viewer: continuous playback is not claimed.",
+      "technical": {
+        "actualCompositorPoses": 18,
+        "layersWithoutOrphans": 144,
+        "sameSideWristContacts": 36,
+        "sameSideLegConnectivity": 36,
+        "armsAndHandsWithoutFabric": 72,
+        "solidHipCorridors": 36,
+        "byteIdenticalSourceAndPoseFiles": 226,
+        "contractTests": 26,
+        "compositorTests": 21
+      },
+      "artifacts": {
+        "normalGif": "Art/Review/P1/neutral-upper-diagonals-r4/walk-comparison-120ms.gif",
+        "idle": "Art/Review/P1/neutral-upper-diagonals-r4/idle-comparison-2x.png",
+        "artReview": "Art/Review/P1/neutral-upper-diagonals-r4/art-review.md",
+        "validation": "Art/Review/P1/neutral-upper-diagonals-r4/validation.json"
+      },
+      "runtimeIntegrated": false,
+      "ipaBuilt": false,
+      "limits": [
+        "User art approval is null",
+        "Continuous player playback not available",
+        "Idle/walk neutral visible art only; no wardrobe, full hidden anatomy, start/stop or device acceptance"
+      ],
+      "internalArtPassWithdrawn": true,
+      "userFeedback": {
+        "date": "2026-10-23",
+        "statement": "四肢还有一些拼接痕迹，动起来有很明显的间隙，你先修左上方向的，左上除了接痕还有边缘没有扣干净的情况，腿动但是裤子不动"
+      },
+      "nextScope": "Repair up-left first; up-right deferred, not approved"
+    },
+    {
+      "id": "p1-neutral-up-left-walk-r5-coupled-clothing",
+      "status": "user-approved-presented-up-left-r5",
+      "artApproval": {
+        "date": "2026-10-23",
+        "reviewer": "user",
+        "statement": "可以的，我在想右上的动作可以基于这个来镜像吗",
+        "status": "approved",
+        "scope": "Presented up-left r5 neutral full-body standing appearance and normal walking loop only. Excludes hidden complete anatomy, new outfits, start-stop, up-right and App/device/IPA integration.",
+        "sourceCommit": "a691986d986e96822903edb642bf875aa20b2655",
+        "artifacts": {
+          "walk-120ms.gif": "a1960994b1116ceaa89aac171c95c5ce04999ca799cdf0815a19190d6a00be22",
+          "idle-review-2x.png": "313c8b8dc43e18e56c64d3c51ce02a54e05cba53ecf29a77b693f4c0609d9649"
+        },
+        "nextDiscussion": "User asks whether up-right can be mirrored from this approved up-left version; no up-right artwork acceptance or new up-right asset is implied."
+      },
+      "directions": [
+        "up-left"
+      ],
+      "deferredDirections": [
+        "up-right"
+      ],
+      "rejectedPredecessor": "p1-neutral-upper-diagonals-r4-continuous-contours",
+      "repairAndReviewOwner": "root",
+      "subagentsUsed": false,
+      "method": "Independent shorts source; shared shoulder/waist/hem domains; broad original thigh roots; near hand in front of shorts while shoulder overlap remains hidden",
+      "mainReview": "Root personally inspected actual 1x/2x whole-body idle and all eight walk frames including 01-08-01. No continuous-player playback claimed by still-only viewer.",
+      "technical": {
+        "actualCompositorPoses": 9,
+        "semanticLayersWithoutOrphans": 72,
+        "junctionReferenceComparisons": 9,
+        "newJunctionAlphaHoles": 0,
+        "completeArmPartitionChecks": 18,
+        "armsAndHandsWithoutFabric": 36,
+        "nearHandsPreserved": 9,
+        "independentPantsWalkFrames": 8,
+        "byteIdenticalSourceAndPoseFiles": 174,
+        "contractTests": 26,
+        "compositorTests": 21
+      },
+      "artifacts": {
+        "normalGif": "Art/Review/P1/neutral-up-left-r5/walk-120ms.gif",
+        "idle": "Art/Review/P1/neutral-up-left-r5/idle-review-2x.png",
+        "artReview": "Art/Review/P1/neutral-up-left-r5/art-review.md",
+        "validation": "Art/Review/P1/neutral-up-left-r5/validation.json"
+      },
+      "runtimeIntegrated": false,
+      "ipaBuilt": false,
+      "limits": [
+        "Approval covers presented up-left r5 neutral full-body idle/walk only",
+        "Main continuous-player viewing was not performed; user approval does not change the historical audit scope",
+        "Up-right, full hidden anatomy, outfits, start-stop and device integration are not approved"
+      ],
+      "nextDiscussion": {
+        "direction": "up-right",
+        "method": "Mirror approved up-left motion and geometry; exchange anatomical side labels and occlusion; correct fixed lighting and future asymmetric assets",
+        "status": "feasibility-discussion-only-no-new-artwork"
+      }
+    },
+    {
+      "id": "p1-neutral-up-right-walk-r5-mirrored-up-left",
+      "status": "user-approved-presented-up-right-r5",
+      "artApproval": {
+        "date": "2026-10-23",
+        "reviewer": "user",
+        "statement": "没问题，开始下一步",
+        "status": "approved",
+        "scope": "Presented up-right r5 mirrored neutral full-body idle and normal walk only; excludes new start-stop, full hidden anatomy, wardrobe and App/device integration.",
+        "sourceCommit": "a200c25458a200459b8efbb2b7de9e0c70a6710d",
+        "artifacts": {
+          "walk-120ms.gif": "fdddbe86c1e56938675d8a85140beb9594985869deff2351f239577797073c23",
+          "idle-review-2x.png": "b40b4770cdd0c5a08ae6e3dcb28fa901a06ae1f41a7b5c075985c20ee67b9f72"
+        }
+      },
+      "directions": [
+        "up-right"
+      ],
+      "sourceApprovedDirection": "up-left",
+      "sourceApproval": "Art/Review/P1/neutral-up-left-r5/approval.json",
+      "userInstruction": {
+        "date": "2026-10-23",
+        "statement": "那现在开始尝试镜像的方式做右上"
+      },
+      "repairAndReviewOwner": "root",
+      "subagentsUsed": false,
+      "method": "Offline approved-pose reflection with side/joint/support/occlusion/head-local coordinate conversion; single imagegen top-left-light reference baked through fixed source UV; approved mirrored alpha and silhouettes preserved",
+      "mainReview": "Root personally inspected all1x/2x full-body idle/walk frames and ordered01-08-01; still-only viewer, no continuous-player viewing claimed.",
+      "technical": {
+        "actualCompositorPoses": 9,
+        "semanticLayerAlphaReflections": 72,
+        "headLocalAttachmentChecks": 9,
+        "anatomicalSideAndSupportMappingChecks": 9,
+        "newJunctionAlphaHoles": 0,
+        "completeArmPartitionChecks": 18,
+        "nearHandsPreserved": 9,
+        "independentPantsWalkFrames": 8,
+        "headHighlightsStayUpperLeft": 9,
+        "byteIdenticalSourceAndPoseFiles": 256,
+        "sourceApprovedArtifactsUnchanged": true,
+        "contractTests": 26,
+        "compositorTests": 21
+      },
+      "artifacts": {
+        "normalGif": "Art/Review/P1/neutral-up-right-r5-mirror/walk-120ms.gif",
+        "idle": "Art/Review/P1/neutral-up-right-r5-mirror/idle-review-2x.png",
+        "artReview": "Art/Review/P1/neutral-up-right-r5-mirror/art-review.md",
+        "validation": "Art/Review/P1/neutral-up-right-r5-mirror/validation.json"
+      },
+      "runtimeIntegrated": false,
+      "ipaBuilt": false,
+      "limits": [
+        "Presented up-right r5 idle/walk accepted; new transitions and outfits remain unapproved",
+        "Historical main review was whole-body ordered frames, not continuous player viewing"
+      ]
+    },
+    {
+      "id": "p1-neutral-upper-transitions-r6",
+      "status": "user-approved-presented-r6-transition-paths",
+      "artApproval": {
+        "date": "2026-10-23",
+        "statement": "开始下一项",
+        "reviewer": "user",
+        "status": "approved-to-proceed-from-presented-transition-review",
+        "scope": "Presented upper-left/right neutral whole-body idle, normal walk and specified idle-to-walk01/walk08-to-idle transitions. Does not cover new wardrobe, complete hidden anatomy, arbitrary-phase stopping or runtime.",
+        "sourceCommit": "53e3a9b2077a1f218c21ecc1ac7f2d849a31b536",
+        "artifacts": {
+          "start-stop-120ms.gif": "c8e791691a6df95aa2c295c37493e5b325f607f9068d9ebc4363c2b4c48d28d9",
+          "walk-120ms.gif": "3459f23007b2989b5848658e839e5642ce229a90a9e07f5b8225d27f50877e1f",
+          "idle-review-2x.png": "e2af630ecb83327ec9eff6ece94b9133256119ea413ea819f01b2a908ef1b3cc",
+          "up-left/start-stop-120ms.gif": "b466553f1273068b4a2428efe187836b364c404999d5bedb599767bfe38e61b0",
+          "up-right/start-stop-120ms.gif": "99f98e1a535b9f470ab3a2294cf3c6e934ae772170824ec716d9587b7f7ac22f"
+        }
+      },
+      "directions": [
+        "up-left",
+        "up-right"
+      ],
+      "repairAndReviewOwner": "root",
+      "subagentsUsed": false,
+      "userInstruction": {
+        "date": "2026-10-23",
+        "statement": "没问题，开始下一步"
+      },
+      "method": "Preserve 18 accepted neutral idle/walk frames, add 2 start and 2 stop poses per direction on shared clothing/joint domains; explicitly ground support feet; reflect right semantic pose maps and reuse fixed-lighting source UVs",
+      "mainReview": "Main personally inspected all26 whole-body poses at1x/2x and ordered transition boundary sequences; no continuous-player viewing claimed",
+      "technical": {
+        "actualCompositorPoses": 26,
+        "newTransitionPoses": 8,
+        "approvedFramesUnchanged": 18,
+        "approvedLayersUnchanged": 144,
+        "semanticLayersWithoutOrphans": 208,
+        "newJunctionAlphaHoles": 0,
+        "headLocalMirrorAttachments": 13,
+        "byteIdenticalReexportFiles": 600,
+        "approvedSourceFilesUnchanged": 432,
+        "normalSpeedGifs": 6,
+        "contractTests": 26,
+        "compositorTests": 21
+      },
+      "artifacts": {
+        "normalGif": "Art/Review/P1/neutral-upper-transitions-r6/start-stop-120ms.gif",
+        "walkGif": "Art/Review/P1/neutral-upper-transitions-r6/walk-120ms.gif",
+        "idle": "Art/Review/P1/neutral-upper-transitions-r6/idle-review-2x.png",
+        "artReview": "Art/Review/P1/neutral-upper-transitions-r6/art-review.md",
+        "validation": "Art/Review/P1/neutral-upper-transitions-r6/validation.json"
+      },
+      "runtimeIntegrated": false,
+      "ipaBuilt": false,
+      "limits": [
+        "Only idle00 -> start01/02 -> walk01 and walk08 -> stop01/02 -> idle00; no arbitrary phase interrupts",
+        "Main whole-body frame review does not claim continuous-player playback",
+        "No full hidden anatomy, wardrobe combination, App/device or IPA validation"
+      ],
+      "next": "Independent upper-diagonal wardrobe candidate now available; no inherited wardrobe approval."
+    }
+  ],
+  "rejectedWorkInProgress": [
+    {
+      "id": "p1-neutral-upper-diagonals-r3-clean-joints",
+      "date": "2026-10-23",
+      "status": "rejected-by-user",
+      "reason": [
+        "twisted leg angles",
+        "unclear limb and clothing boundaries"
+      ],
+      "repairAndReviewOwner": "root",
+      "subagentsUsed": false,
+      "artApproval": null
+    }
+  ],
+  "upperLeftNeutralApprovedReference": {
+    "id": "p1-neutral-up-left-walk-r5-coupled-clothing",
+    "approval": "Art/Review/P1/neutral-up-left-r5/approval.json",
+    "normalGif": "Art/Review/P1/neutral-up-left-r5/walk-120ms.gif",
+    "sourceUnchanged": true
+  },
+  "upperRightNeutralApprovedReference": {
+    "id": "p1-neutral-up-right-walk-r5-mirrored-up-left",
+    "approval": "Art/Review/P1/neutral-up-right-r5-mirror/approval.json",
+    "normalGif": "Art/Review/P1/neutral-up-right-r5-mirror/walk-120ms.gif",
+    "sourceUnchanged": true
+  },
+  "upperDiagonalTransitionApprovedReference": {
+    "id": "p1-neutral-upper-transitions-r6",
+    "approval": "Art/Review/P1/neutral-upper-transitions-r6/approval.json"
+  },
+  "upperWardrobeReview": {
+    "id": "p1-upper-matched-back-carry-v6",
+    "status": "user-accepted-shown-v6-and-authorized-next-direction",
+    "artApproval": {
+      "date": "2026-10-24",
+      "reviewer": "user",
+      "statement": "Ok开始左下方动作模组的制作",
+      "scope": "Previously delivered upper v6 full-body standing, normal walk and specified start/stop views only; no approval for unseen combinations, production rig or device behavior"
+    },
+    "repairAndReviewOwner": "root",
+    "subagentsUsed": false,
+    "method": "All13 right sword poses exactly mirror left reference; no extra rotation, translation or scale",
+    "technical": {
+      "combinations": 16,
+      "actualCompositorPoses": 208,
+      "rightWeaponMirrorMatches": 13,
+      "rightNearSleeveIntersections": 0,
+      "visibleSheathComponents": 1,
+      "leftAndEmptyCombinationsUnchanged": true
+    },
+    "artifacts": {
+      "normalGif": "Art/Review/P1/modular-upper-wardrobe-v6/outfits-walk-120ms.gif",
+      "startStopGif": "Art/Review/P1/modular-upper-wardrobe-v6/outfits-start-stop-120ms.gif",
+      "idle": "Art/Review/P1/modular-upper-wardrobe-v6/outfits-idle-2x.png",
+      "artReview": "Art/Review/P1/modular-upper-wardrobe-v6/art-review.md"
+    },
+    "mainReview": "All13 right poses in both outfits at whole-body1x/2x plus paired left reference and crossed hair; no continuous playback claim",
+    "runtimeIntegrated": false,
+    "ipaBuilt": false,
+    "artCommit": "2e92d5c562172cd42853946f9bbdac23e257b6a2",
+    "delivery": "Art/Review/P1/modular-upper-wardrobe-v6/delivery.json"
+  },
+  "upperWardrobeHistory": [
+    {
+      "id": "p1-upper-independent-wardrobe-v1",
+      "status": "needs-leg-art-repair-internal-clearance-withdrawn",
+      "artApproval": null,
+      "repairAndReviewOwner": "root",
+      "subagentsUsed": false,
+      "directions": [
+        "up-left",
+        "up-right"
+      ],
+      "baseReference": "Art/Review/P1/neutral-upper-transitions-r6/approval.json",
+      "packages": 6,
+      "combinations": 16,
+      "actualCompositorPoses": 208,
+      "neutralPosesUnchanged": 26,
+      "coverageFailures": 0,
+      "handPreservationFailures": 0,
+      "contractTests": 26,
+      "compositorTests": 21,
+      "artifacts": {
+        "normalGif": "Art/Review/P1/modular-upper-wardrobe-v1/outfits-walk-120ms.gif",
+        "startStopGif": "Art/Review/P1/modular-upper-wardrobe-v1/outfits-start-stop-120ms.gif",
+        "idle": "Art/Review/P1/modular-upper-wardrobe-v1/outfits-idle-2x.png",
+        "artReview": "Art/Review/P1/modular-upper-wardrobe-v1/art-review.md"
+      },
+      "mainReview": "Whole-body 1x/2x all 13 poses per displayed outfit/direction plus crossed hair; ordered frame/timing audit, not continuous-player viewing",
+      "runtimeIntegrated": false,
+      "ipaBuilt": false,
+      "limits": [
+        "New wardrobe has no user approval",
+        "Original hidden anatomy not completed",
+        "Specified start/stop paths only"
+      ],
+      "artCommit": "719789d83e61466fafd19cdb9c01294001235807",
+      "delivery": "Art/Review/P1/modular-upper-wardrobe-v1/delivery.json",
+      "feedback": {
+        "date": "2026-10-24",
+        "statement": "腿看起来怪怪的，你来说说咋回事",
+        "diagnosis": "Oversized high boot shafts hide knee/calf form; shoe perspective mismatches rear three-quarter torso; broadened/compressed garment fitting obscures near/far legs and weight bearing. Technical coverage is insufficient art evidence.",
+        "record": "Art/Review/P1/modular-upper-wardrobe-v1/leg-reinspection-2026-10-24.md"
+      }
+    },
+    {
+      "id": "p1-upper-wardrobe-leg-repair-v2",
+      "status": "nape-seam-feedback-internal-clearance-withdrawn",
+      "artApproval": null,
+      "repairAndReviewOwner": "root",
+      "subagentsUsed": false,
+      "userInstruction": "那你开始改",
+      "baseReference": "Art/Review/P1/neutral-upper-transitions-r6/approval.json",
+      "newResource": "Art/Parts/P1-v1/upper/lower-v2/asset.json",
+      "reuse": "Two original neutral bodies and five original upper appearance packages; original motion and public compositor unchanged",
+      "technical": {
+        "combinations": 16,
+        "actualCompositorPoses": 208,
+        "neutralPosesUnchanged": 26,
+        "coverageFailures": 0,
+        "handPreservationFailures": 0,
+        "contractTests": 26,
+        "compositorTests": 21
+      },
+      "artifacts": {
+        "normalGif": "Art/Review/P1/modular-upper-wardrobe-v2/outfits-walk-120ms.gif",
+        "startStopGif": "Art/Review/P1/modular-upper-wardrobe-v2/outfits-start-stop-120ms.gif",
+        "idle": "Art/Review/P1/modular-upper-wardrobe-v2/outfits-idle-2x.png",
+        "artReview": "Art/Review/P1/modular-upper-wardrobe-v2/art-review.md"
+      },
+      "mainReview": "All displayed13 poses in both directions/two outfits, whole-body1x/2x and ordered boundary frames; no continuous-player viewing claimed",
+      "runtimeIntegrated": false,
+      "ipaBuilt": false,
+      "limits": [
+        "New art has no user approval",
+        "Original hidden anatomy not completed",
+        "Specified start/stop paths only"
+      ],
+      "artCommit": "04ce1ac1ef23f06fe34c96c3c63ef5ce770c3418",
+      "delivery": "Art/Review/P1/modular-upper-wardrobe-v2/delivery.json",
+      "feedback": {
+        "date": "2026-10-24",
+        "statement": "后颈有一条黑线",
+        "finding": "Overlapping lower-head outline and torso nape cut edge; main missed seam in v2. Original art preserved."
+      }
+    },
+    {
+      "id": "p1-upper-wardrobe-nape-repair-v3",
+      "status": "uneven-nape-colour-feedback-internal-clearance-withdrawn",
+      "artApproval": null,
+      "repairAndReviewOwner": "root",
+      "subagentsUsed": false,
+      "feedback": {
+        "statement": "还是改的那个地方色块不均匀",
+        "finding": "Isolated bright replacement pixels were not integrated with surrounding neck shading."
+      },
+      "newCommonBases": [
+        "p1-neutral-up-left-r7-nape",
+        "p1-neutral-up-right-r7-nape"
+      ],
+      "method": "27 source neck/head dark pixels recoloured from independent nape painting; exact alpha and all original motion preserved; six appearance resources unchanged",
+      "technical": {
+        "combinations": 16,
+        "actualCompositorPoses": 208,
+        "originalGeometryPoses": 26,
+        "combinationsUnchangedOutsideNape": 208,
+        "coverageFailures": 0,
+        "handPreservationFailures": 0,
+        "contractTests": 26,
+        "compositorTests": 21
+      },
+      "artifacts": {
+        "normalGif": "Art/Review/P1/modular-upper-wardrobe-v3/outfits-walk-120ms.gif",
+        "startStopGif": "Art/Review/P1/modular-upper-wardrobe-v3/outfits-start-stop-120ms.gif",
+        "idle": "Art/Review/P1/modular-upper-wardrobe-v3/outfits-idle-2x.png",
+        "artReview": "Art/Review/P1/modular-upper-wardrobe-v3/art-review.md"
+      },
+      "mainReview": "All displayed13 poses, both directions/two outfits, whole-body1x/2x plus ordered nape diagnostic and crossed hair; no continuous-player viewing claimed",
+      "runtimeIntegrated": false,
+      "ipaBuilt": false,
+      "artCommit": "eededb5c11a548cf9f0aad856782ba8e2b8b9b08",
+      "delivery": "Art/Review/P1/modular-upper-wardrobe-v3/delivery.json"
+    },
+    {
+      "id": "p1-upper-nape-gradient-v4",
+      "status": "right-sword-clipping-feedback-internal-clearance-withdrawn",
+      "artApproval": null,
+      "repairAndReviewOwner": "root",
+      "subagentsUsed": false,
+      "method": "Contiguous artist-painted nape colour field and 2px source-edge compositing feather, original alpha and geometry retained",
+      "technical": {
+        "combinations": 16,
+        "actualCompositorPoses": 208,
+        "geometryPosesUnchanged": 26,
+        "combinationsUnchangedOutsideNape": 208,
+        "coverageFailures": 0,
+        "handPreservationFailures": 0
+      },
+      "artifacts": {
+        "normalGif": "Art/Review/P1/modular-upper-wardrobe-v4/outfits-walk-120ms.gif",
+        "startStopGif": "Art/Review/P1/modular-upper-wardrobe-v4/outfits-start-stop-120ms.gif",
+        "idle": "Art/Review/P1/modular-upper-wardrobe-v4/outfits-idle-2x.png",
+        "artReview": "Art/Review/P1/modular-upper-wardrobe-v4/art-review.md"
+      },
+      "mainReview": "Whole-body1x/2x all displayed poses and ordered nape comparison; no continuous-player viewing claimed",
+      "runtimeIntegrated": false,
+      "ipaBuilt": false,
+      "artCommit": "8a5a44025fe282ebcb01e8d377784b3d7bb3bb9c",
+      "delivery": "Art/Review/P1/modular-upper-wardrobe-v4/delivery.json",
+      "feedback": {
+        "statement": "右上的动作里面剑穿模了",
+        "finding": "Sword sheath crosses near-shoulder sleeve and is occluded into a discontinuous segment during arm swing."
+      }
+    },
+    {
+      "id": "p1-upper-back-carry-v5",
+      "status": "user-rejected-central-vertical-carry",
+      "artApproval": null,
+      "repairAndReviewOwner": "root",
+      "subagentsUsed": false,
+      "method": "Fixed torso-local right carry registration and original neck occlusion window; left unchanged",
+      "technical": {
+        "combinations": 16,
+        "actualCompositorPoses": 208,
+        "rightSleeveIntersections": 0,
+        "visibleSheathComponents": 1,
+        "leftAndEmptyCombinationsUnchanged": true,
+        "coverageFailures": 0,
+        "handPreservationFailures": 0
+      },
+      "artifacts": {
+        "normalGif": "Art/Review/P1/modular-upper-wardrobe-v5/outfits-walk-120ms.gif",
+        "startStopGif": "Art/Review/P1/modular-upper-wardrobe-v5/outfits-start-stop-120ms.gif",
+        "idle": "Art/Review/P1/modular-upper-wardrobe-v5/outfits-idle-2x.png",
+        "artReview": "Art/Review/P1/modular-upper-wardrobe-v5/art-review.md"
+      },
+      "mainReview": "Whole-body1x/2x all13 right-view poses in both outfits, ordered boundaries and crossed hair; no continuous-player viewing claimed",
+      "runtimeIntegrated": false,
+      "ipaBuilt": false,
+      "artCommit": "9899cac518a27d4e22f83deafe0cda2c4cbb6d2a",
+      "delivery": "Art/Review/P1/modular-upper-wardrobe-v5/delivery.json",
+      "feedback": {
+        "statement": "不是这个剑的位置要和左上的动作吻合匹配啊，你搞成脊椎一样的干嘛",
+        "finding": "Main wrongly prioritised zero sleeve overlap over matching the diagonal left-reference carry."
+      }
+    }
+  ],
+  "downLeftNeutralReview": {
+    "id": "p1-neutral-down-left-walk-r1",
+    "status": "user-approved-shown-neutral-r1",
+    "artApproval": {
+      "date": "2026-10-24",
+      "reviewer": "user",
+      "statement": "没问题，可以试一下镜像来做右下的动画",
+      "direction": "down-left",
+      "revision": "neutral-r1",
+      "status": "approved",
+      "scope": "Delivered neutral down-left standing, eight-frame normal walk and specified start/stop preview only; not wardrobe, full hidden anatomy, arbitrary interruption or runtime",
+      "artifacts": {
+        "walk-120ms.gif": "18d12aa568b559834988a1e8f3b14a8280abd0dfcae6608dd808475b3221444d",
+        "start-stop-120ms.gif": "a172f73f2af0a94107ef5def854c5c1e52d6762c1be9cbd56a9703e9f787610d",
+        "idle-review-2x.png": "1bf0e759a84f090d1d66c133f3541acde59402df16998abd608296c46f2bba8f"
+      }
+    },
+    "authorAndReviewer": "root",
+    "subagentsUsed": false,
+    "source": "Art/Templates/P1-Neutral/down-left/walk-r1/authoring.json",
+    "review": "Art/Review/P1/neutral-down-left-r1",
+    "artifacts": {
+      "normalGif": "Art/Review/P1/neutral-down-left-r1/walk-120ms.gif",
+      "startStopGif": "Art/Review/P1/neutral-down-left-r1/start-stop-120ms.gif",
+      "idle": "Art/Review/P1/neutral-down-left-r1/idle-review-2x.png"
+    },
+    "technical": {
+      "actualCompositorPoses": 13,
+      "layersWithoutOrphans": 104,
+      "junctionAlphaHoles": 0,
+      "completeArmPartitions": 26,
+      "preservedFiles": 6052
+    },
+    "mainReview": "All13 whole-body1x/2x, current ordered walk and specified start/stop frames; still-only viewer, no continuous-playback claim",
+    "wardrobeVerified": false,
+    "runtimeIntegrated": false,
+    "ipaBuilt": false,
+    "artCommit": "2b4f0e83185896c36a4377f4c2ca7dccfef74d76",
+    "delivery": "Art/Review/P1/neutral-down-left-r1/delivery.json"
+  },
+  "downRightNeutralReview": {
+    "id": "p1-neutral-down-right-walk-r1-mirrored-down-left",
+    "status": "user-approved-shown-neutral-r1-mirror",
+    "artApproval": {
+      "date": "2026-10-24",
+      "reviewer": "user",
+      "statement": "没问题开始做下一步",
+      "direction": "down-right",
+      "revision": "neutral-r1-mirror",
+      "status": "approved",
+      "scope": "Previously delivered neutral right-down whole-body standing, normal8-frame walk and specified start/stop preview only; no independent head/clothes/weapon resources, hidden anatomy, arbitrary phase interruption or runtime",
+      "artifacts": {
+        "walk-120ms.gif": "2ad918ccbe33faf7f371cb27d792a7fdbe80a734157be5a7f72494623e1ab1fb",
+        "start-stop-120ms.gif": "cd32f25fabfdd4ed78f61a8f2ed04a00d477c4263db1af987fc499b33861fedd",
+        "idle-review-2x.png": "ebd7f33711276e5e28ed1d7c54dfd275ae367bff87a2e217ead05de5beadf654"
+      }
+    },
+    "sourceApproval": "Art/Review/P1/neutral-down-left-r1/approval.json",
+    "authorAndReviewer": "root",
+    "subagentsUsed": false,
+    "source": "Art/Templates/P1-Neutral/down-right/walk-r1-mirrored-down-left/mirror-authoring.json",
+    "review": "Art/Review/P1/neutral-down-right-r1-mirror",
+    "artifacts": {
+      "normalGif": "Art/Review/P1/neutral-down-right-r1-mirror/walk-120ms.gif",
+      "startStopGif": "Art/Review/P1/neutral-down-right-r1-mirror/start-stop-120ms.gif",
+      "idle": "Art/Review/P1/neutral-down-right-r1-mirror/idle-review-2x.png"
+    },
+    "technical": {
+      "actualCompositorPoses": 13,
+      "semanticLayerAlphaReflections": 104,
+      "headLocalAttachmentChecks": 13,
+      "headSourceUVRegistrationChecks": 13,
+      "newJunctionAlphaHoles": 0,
+      "completeArmPartitionChecks": 26,
+      "nearHandsPreserved": 13,
+      "headHighlightsStayUpperLeft": 13,
+      "preservedFiles": 6019
+    },
+    "mainReview": "All13 whole-body1x/2x, paired idle and current ordered walk/start-stop; still-only viewer, no continuous-playback claim",
+    "wardrobeVerified": false,
+    "runtimeIntegrated": false,
+    "ipaBuilt": false,
+    "artCommit": "a950fb0b635bf6c1312572942702a699a07983eb",
+    "delivery": "Art/Review/P1/neutral-down-right-r1-mirror/delivery.json"
+  },
+  "downLeftHeadReview": {
+    "id": "p1-down-left-independent-heads-v1",
+    "status": "candidate-main-full-body-review-complete",
+    "artApproval": null,
+    "authorAndReviewer": "root",
+    "subagentsUsed": false,
+    "source": "Art/Parts/P1-v1/down-left/heads-v1/authoring.json",
+    "review": "Art/Review/P1/modular-down-left-heads-v1",
+    "technical": {
+      "independentPackages": 4,
+      "combinations": 4,
+      "actualCompositorPoses": 52,
+      "unchangedBodyLayerChecks": 416,
+      "eyeNoseMouthVisibilityChecks": 156,
+      "baseOnlyPosesUnchanged": 13,
+      "preservedFiles": 7132,
+      "contractTestsPassed": 26,
+      "compositorTestsPassed": 21
+    },
+    "artifacts": {
+      "normalGif": "Art/Review/P1/modular-down-left-heads-v1/walk-comparison-120ms.gif",
+      "startStopGif": "Art/Review/P1/modular-down-left-heads-v1/start-stop-comparison-120ms.gif",
+      "idle": "Art/Review/P1/modular-down-left-heads-v1/idle-comparison-2x.png"
+    },
+    "mainReview": "All4combinations x13 complete1x/2x, paired idle and crossed appearances, ordered walk/start-stop; still viewer only, no continuous-playback claim",
+    "bodyAndMotionUnchanged": true,
+    "profileChange": "Only new down-left head layout data",
+    "wardrobeVerified": false,
+    "runtimeIntegrated": false,
+    "ipaBuilt": false,
+    "artCommit": "c3359210e38d0c530fecfc12d5e55bb8f4ae2459",
+    "delivery": "Art/Review/P1/modular-down-left-heads-v1/delivery.json"
+  },
+  "directionModulePlan": {
+    "priority": "finish-current-character-eight-directions-before-female",
+    "document": "docs/P1_DIRECTION_MODULES.md",
+    "status": "in-progress",
+    "next": [
+      "integrate new unified layered resources and specified entry/exit transitions in demo",
+      "arbitrary phase interruption and third all8direction appearance acceptance"
+    ],
+    "femaleResourcesStarted": false,
+    "repositorySyncPrerequisite": "Resolved for current down r6/v9 and13pose transition resources; remote closure verified in down transitions delivery receipt",
+    "current": "eight-direction offline unified candidate reviewed",
+    "remainingDependencies": [
+      "new layered runtime integration with distance phase and direction hysteresis",
+      "arbitrary phase interruption",
+      "complete rig marker semantic normalization",
+      "third all8direction appearance zero engine change check"
+    ]
+  },
+  "downLeftWardrobeReview": {
+    "id": "p1-down-left-independent-wardrobe-v1",
+    "status": "delivered-primary-combinations-approved",
+    "artApproval": "Art/Review/P1/modular-down-left-wardrobe-v1/approval.json",
+    "authorAndReviewer": "root",
+    "subagentsUsed": false,
+    "source": "Art/Parts/P1-v1/down-left/wardrobe-v1/authoring.json",
+    "review": "Art/Review/P1/modular-down-left-wardrobe-v1",
+    "technical": {
+      "manifestsChecked": 9,
+      "combinations": 16,
+      "actualCompositorPoses": 208,
+      "coverageChecks": 1248,
+      "handPreservationChecks": 416,
+      "facePreservationChecks": 624,
+      "weaponToggleChecks": 104,
+      "preservedFiles": 8044
+    },
+    "artifacts": {
+      "normalGif": "Art/Review/P1/modular-down-left-wardrobe-v1/outfits-walk-120ms.gif",
+      "startStopGif": "Art/Review/P1/modular-down-left-wardrobe-v1/outfits-start-stop-120ms.gif",
+      "idle": "Art/Review/P1/modular-down-left-wardrobe-v1/outfits-idle-2x.png"
+    },
+    "mainReview": "Both primary outfits all13 whole-body1x/2x, paired standing, ordered gait/start-stop and shoulder carry; still viewer, no continuous playback claim",
+    "bodyAndMotionUnchanged": true,
+    "runtimeIntegrated": false,
+    "ipaBuilt": false,
+    "artCommit": "f4dfa7e2564500d46d65e966b4be4c25d6ee887f",
+    "delivery": "Art/Review/P1/modular-down-left-wardrobe-v1/delivery.json",
+    "approvalScope": "Only two delivered primary whole-body combinations, standing/walk/start-stop; no undisplayed cross combination or runtime approval"
+  },
+  "downRightAppearanceReview": {
+    "id": "p1-down-right-independent-appearance-v1",
+    "status": "delivered-primary-combinations-approved",
+    "artApproval": "Art/Review/P1/modular-down-right-appearance-v1/approval.json",
+    "authorAndReviewer": "root",
+    "subagentsUsed": false,
+    "source": "Art/Parts/P1-v1/down-right/appearance-v1/authoring.json",
+    "review": "Art/Review/P1/modular-down-right-appearance-v1",
+    "technical": {
+      "manifestsChecked": 9,
+      "combinations": 16,
+      "actualCompositorPoses": 208,
+      "bareBodyPosesUnchanged": 13,
+      "unchangedBodyLayerChecks": 1664,
+      "reflectedAppearanceAlphaChecks": 2496,
+      "coverageChecks": 1248,
+      "handPreservationChecks": 416,
+      "facePreservationChecks": 624,
+      "weaponToggleChecks": 104,
+      "preservedFiles": 14876
+    },
+    "existingTests": {
+      "contract": 26,
+      "compositor": 21
+    },
+    "artifacts": {
+      "normalGif": "Art/Review/P1/modular-down-right-appearance-v1/outfits-walk-120ms.gif",
+      "startStopGif": "Art/Review/P1/modular-down-right-appearance-v1/outfits-start-stop-120ms.gif",
+      "idle": "Art/Review/P1/modular-down-right-appearance-v1/outfits-idle-2x.png"
+    },
+    "mainReview": "All8 sword-on appearance combinations x13 whole-body1x/2x; primary paired standing and actual normal GIF decoded8 frames; still-viewer only, no continuous playback claim",
+    "bodyAndMotionUnchanged": true,
+    "runtimeIntegrated": false,
+    "ipaBuilt": false,
+    "artCommit": "ccc65c7035412bf1c7d15b69e29573258ab4f985",
+    "delivery": "Art/Review/P1/modular-down-right-appearance-v1/delivery.json",
+    "reexportByteIdenticalFiles": 593,
+    "approvalScope": "Delivered right-down primary forester/chestnut/blue and wayfarer/silver/amber whole-body standing, normal walk and specified start-stop. No approval inferred for undisplayed cross combinations, other directions or runtime."
+  },
+  "directionModuleAudit": {
+    "date": "2026-10-24",
+    "trigger": "检查一下仓库，我记得正右好像做过",
+    "remoteBranchesChecked": 7,
+    "remoteArtHead": "016b7c2b3d97d7e13a824b3bc0c1c144a84dd8d3",
+    "rightExisting": {
+      "approval": "Art/Review/P1/directions/right/revisions/r1/approval.json",
+      "approvedDate": "2026-10-18",
+      "idlePoses": 1,
+      "walkPoses": 8,
+      "normalFrameMs": 120,
+      "integration": "Art/Integration/P1-approved-gait-v1/integration.json",
+      "integrationDate": "2026-10-21",
+      "remoteDemoRightRowMatchesApprovedStrip": true
+    },
+    "remaining": "Current-contract right neutral layered/appearance packages and specified start-stop adaptation; existing right battle-side static and one-step studies are partial prior work",
+    "correction": "Right walking art already made/approved/integrated; do not duplicate or report as never made",
+    "artworkChanged": false
+  },
+  "remainingModuleAudit": {
+    "date": "2026-10-24",
+    "trigger": "其他的未完成项目是真的没做过吗",
+    "evidence": "docs/P1_DIRECTION_MODULE_AUDIT.json",
+    "finding": "未完成不等于未开始：部分已有完整旧版，部分做过分方向验证，部分只是未整合；另发现正下新资源只在工作区的同步遗漏",
+    "sourceHead": "13eeb0d7f5bfeaf2a8fd5c14670ff6b2ccd0dd7d",
+    "existing": [
+      "approved up gait and demo import",
+      "per-direction combination audits",
+      "old demo eight-direction switching and offline road review"
+    ],
+    "currentRemaining": [
+      "right/up complete current-contract layered adaptation",
+      "down relaxed-arm authored start/stop",
+      "unified new modular8direction review and integration"
+    ],
+    "syncGap": {
+      "status": "workspace-existing-not-on-any7remote-heads",
+      "source": "Art/Templates/P1-Wardrobe/down/v9-second-outfit/catalog.json",
+      "missingRemoteManifestDependencies": [
+        "Art/Templates/P1-Neutral/down/walk-r6-relaxed-arms/asset.json",
+        "Art/Parts/P1-v1/outfit-forester-cover-v2/asset.json",
+        "Art/Parts/P1-v1/weapon-short-sword-back-v1/asset.json",
+        "Art/Parts/P1-v1/outfit-wayfarer-coat-v1/asset.json"
+      ]
+    },
+    "artworkChanged": false,
+    "existingTestsRerun": false,
+    "deviceExecuted": false
+  },
+  "upLayeredNeutralReview": {
+    "id": "p1-neutral-up-walk-r1-layered",
+    "status": "approved-shown-scope",
+    "artApproval": "Art/Review/P1/neutral-up-layered-r1/approval.json",
+    "authorAndReviewer": "root",
+    "subagentsUsed": false,
+    "source": "Art/Templates/P1-Neutral/up/walk-r1-layered/authoring.json",
+    "review": "Art/Review/P1/neutral-up-layered-r1",
+    "oldReference": "Art/Review/P1/directions/up/revisions/r1/approval.json",
+    "referenceScope": "Camera, anatomical sides, support/arm phases; not identical old clothed pixels or inherited new artwork approval",
+    "technical": {
+      "actualCompositorPoses": 13,
+      "semanticLayersWithoutOrphans": 104,
+      "newJunctionAlphaHoles": 0,
+      "completeArmPartitionChecks": 26,
+      "headLocalPlacementChecks": 13,
+      "kneeAnkleMaterialChecks": 52,
+      "independentPantsWalkFrames": 7,
+      "preservedFiles": 15478
+    },
+    "sourceUVMaps": 91,
+    "reexportByteIdenticalFiles": 371,
+    "existingTests": {
+      "contract": 26,
+      "compositor": 21
+    },
+    "mainReview": "All13 complete1x/2x, standing, walk/start-stop order and actual normal GIF decoded8 frames; still viewer only, no continuous playback claim",
+    "artifacts": {
+      "normalGif": "Art/Review/P1/neutral-up-layered-r1/walk-120ms.gif",
+      "startStopGif": "Art/Review/P1/neutral-up-layered-r1/start-stop-120ms.gif",
+      "idle": "Art/Review/P1/neutral-up-layered-r1/idle-review-2x.png"
+    },
+    "runtimeIntegrated": false,
+    "ipaBuilt": false,
+    "artCommit": "d09826aa8b84855874672a807a266ab6262d8954",
+    "delivery": "Art/Review/P1/neutral-up-layered-r1/delivery.json",
+    "remotePackageClosurePaths": 253
+  },
+  "upAppearanceReview": {
+    "id": "p1-up-independent-appearance-v1",
+    "status": "approved-shown-scope",
+    "artApproval": "Art/Review/P1/modular-up-appearance-v1/approval.json",
+    "authorAndReviewer": "root",
+    "subagentsUsed": false,
+    "source": "Art/Parts/P1-v1/up/appearance-v1/authoring.json",
+    "catalog": "Art/Templates/P1-Wardrobe/up/v1-independent/catalog.json",
+    "review": "Art/Review/P1/modular-up-appearance-v1",
+    "base": "p1-neutral-up-walk-r1-layered",
+    "baseChanged": false,
+    "newPackages": 6,
+    "hairScope": "Two independent RGB colourways share one tool-drawn aligned short back-hair silhouette; no face layer",
+    "technical": {
+      "status": "technical-checks-pass",
+      "artApproval": null,
+      "authorAndReviewer": "root",
+      "subagentsUsed": false,
+      "manifestsChecked": 7,
+      "combinations": 8,
+      "actualCompositorPoses": 104,
+      "bareBodyPosesUnchanged": 13,
+      "bodyLayerPreservationChecks": 832,
+      "clothingCoverageChecks": 624,
+      "handPreservationChecks": 208,
+      "crownCoverageChecks": 104,
+      "weaponToggleChecks": 52,
+      "guardVisibilityChecks": 52,
+      "preservedFiles": 15855,
+      "profileChange": "Only new up back-head guide data; all old entries unchanged",
+      "footRollSourceAlphaUnchanged": true
+    },
+    "reexportByteIdenticalFiles": 461,
+    "existingTests": {
+      "contract": 26,
+      "compositor": 21
+    },
+    "mainReview": "Four sword-on combinations all13 complete1x/2x, actual GIF8 decoded frames, full standing and specified start-stop sequence; still viewer only, no continuous playback claim",
+    "fixes": [
+      "crown alpha registration, common short hair silhouette and silver RGB gutter",
+      "back sword above all sleeve layers below head/hair, full guard visibility; placement preserved",
+      "grey trouser waist under blue coat vent, leg-owned pants/boot UV and original footArtState"
+    ],
+    "runtimeIntegrated": false,
+    "ipaBuilt": false,
+    "artifacts": {
+      "normalGif": "Art/Review/P1/modular-up-appearance-v1/outfits-walk-120ms.gif",
+      "startStopGif": "Art/Review/P1/modular-up-appearance-v1/outfits-start-stop-120ms.gif",
+      "idle": "Art/Review/P1/modular-up-appearance-v1/outfits-idle-2x.png"
+    },
+    "artCommit": "f8381286801cfbf643898ee1c36ddbdcee49e84e",
+    "delivery": "Art/Review/P1/modular-up-appearance-v1/delivery.json",
+    "remotePackageClosurePaths": 564
+  },
+  "downStartStopReview": {
+    "id": "p1-down-relaxed-start-stop-v1",
+    "status": "approved-shown-scope",
+    "artApproval": "Art/Review/P1/modular-down-transitions-v1/approval.json",
+    "authorAndReviewer": "root",
+    "subagentsUsed": false,
+    "source": "Art/Templates/P1-Neutral/down/walk-r7-transitions/authoring.json",
+    "catalog": "Art/Templates/P1-Wardrobe/down/v10-transitions/catalog.json",
+    "review": "Art/Review/P1/modular-down-transitions-v1",
+    "originalBody": "p1-neutral-down-walk-r6-relaxed-arms",
+    "old9PosePixelsChanged": false,
+    "newTransitionPoses": 4,
+    "technical": {
+      "status": "technical-checks-pass",
+      "artApproval": null,
+      "authorAndReviewer": "root",
+      "subagentsUsed": false,
+      "manifestsChecked": 9,
+      "actualCompositorPoses": 468,
+      "oldCompositePosesUnchanged": 324,
+      "oldLayerFilesByteUnchanged": 324,
+      "bodyLayerPreservationChecks": 3744,
+      "clothingCoverageChecks": 1560,
+      "weaponToggleChecks": 234,
+      "armHandChains": 26,
+      "legChains": 26,
+      "sharedLegUVChecks": 40,
+      "transitionPoseDistinctChecks": 4,
+      "combinations": 36,
+      "poses": 13,
+      "newTransitionPoses": 4,
+      "preservedFiles": 10314
+    },
+    "reexportByteIdenticalFiles": 984,
+    "existingTests": {
+      "contract": 26,
+      "compositor": 21
+    },
+    "mainReview": "主线程亲看三发型×两衣型、蓝眼、带剑共6组合的全13姿势整身1×/2×，中性全13姿势、起停整身边界图及实际GIF解码边界帧。逐侧追踪肩肘腕、髋膝踝足，检查袖口/裤口/靴底、手型、衣摆、后背剑柄/鞘尖、眉眼鼻口整体比例和首尾/起停相位。琥珀五官、内衣/空背等其余组合由实际装配及技术检查覆盖，不声称全部468张逐张2×美术审核。查看器只返回静帧，未称连续播放或设备验收。",
+    "metadataCorrections": "审查发现旧motion里的肘/腕挂点仍是握剑时期的记录，与r6自然空手源不符；新motion按实际自然空手源锚点及同一变换修正肩/肘/腕位置。另按可见落地脚修正walk04/08的支撑标签。原motion保留，这些元数据修正不改变原九姿势像素。",
+    "runtimeIntegrated": false,
+    "ipaBuilt": false,
+    "artifacts": {
+      "normalGif": "Art/Review/P1/modular-down-transitions-v1/outfits-start-stop-120ms.gif",
+      "walkGif": "Art/Review/P1/modular-down-transitions-v1/outfits-walk-120ms.gif",
+      "idle": "Art/Review/P1/modular-down-transitions-v1/outfits-idle-2x.png"
+    },
+    "artCommit": "6fef130da1e1cfbeb09f8d6fb2f6df5a863b994e",
+    "delivery": "Art/Review/P1/modular-down-transitions-v1/delivery.json",
+    "remotePackageClosurePaths": 1012,
+    "downSourceSyncVerified": true
+  },
+  "rightNeutralReview": {
+    "id": "p1-neutral-right-walk-r1-mirror",
+    "status": "approved-shown-scope",
+    "artApproval": "Art/Review/P1/neutral-right-r1-mirror/approval.json",
+    "authorAndReviewer": "root",
+    "subagentsUsed": false,
+    "source": "Art/Templates/P1-Neutral/right/walk-r1-mirror/mirror-authoring.json",
+    "review": "Art/Review/P1/neutral-right-r1-mirror",
+    "geometryOwner": "Art/Templates/P1-Neutral/left/walk-r3-complete-transitions",
+    "oldRightApprovedReference": "Art/Review/P1/directions/right/revisions/r1/approval.json",
+    "oldRightPixelsChanged": false,
+    "technical": {
+      "status": "technical-checks-pass",
+      "artApproval": null,
+      "authorAndReviewer": "root",
+      "subagentsUsed": false,
+      "actualCompositorPoses": 13,
+      "semanticLayerAlphaReflections": 104,
+      "headLocalAttachmentChecks": 13,
+      "anatomicalRigAndSupportChecks": 13,
+      "retainedLimbChainChecks": 52,
+      "deterministicBodyPaletteChecks": 91,
+      "legMaterialToneChecks": 26,
+      "legMedianLuminanceBySide": {
+        "left": [
+          202.574,
+          202.574,
+          202.574,
+          202.574,
+          202.574,
+          202.574,
+          202.574,
+          202.574,
+          202.574,
+          202.574,
+          202.574,
+          202.574,
+          202.574
+        ],
+        "right": [
+          208.799,
+          208.799,
+          208.799,
+          208.799,
+          208.799,
+          208.799,
+          208.799,
+          208.799,
+          208.799,
+          208.799,
+          208.799,
+          208.799,
+          208.799
+        ]
+      },
+      "newJunctionAlphaHoles": 0,
+      "relitVisibleLayerPixels": 46032,
+      "preservedFiles": 10808,
+      "sourceApprovedArtifactsUnchanged": true,
+      "oldRightApprovedArtifactsUnchanged": true,
+      "safetyClothingInkAndBoundaryPixelsUnchanged": true
+    },
+    "reexportByteIdenticalFiles": 174,
+    "existingTests": {
+      "contract": 26,
+      "compositor": 21
+    },
+    "mainReview": "主线程亲看全13姿势整身1×/2×，逐侧追踪肩肘腕及髋膝踝足、背心/短裤边界、手型/脚趾、近远遮挡与站姿/首尾/指定起停；同时看实际GIF八个解码帧及左右整身协调图。查看器仅提供静帧，不称连续播放、任意相位起停或设备验收。数值检查只辅助美术判断，新中性稿artApproval=null。",
+    "runtimeIntegrated": false,
+    "ipaBuilt": false,
+    "artifacts": {
+      "normalGif": "Art/Review/P1/neutral-right-r1-mirror/walk-120ms.gif",
+      "startStopGif": "Art/Review/P1/neutral-right-r1-mirror/start-stop-120ms.gif",
+      "idle": "Art/Review/P1/neutral-right-r1-mirror/idle-review-2x.png"
+    },
+    "artCommit": "451778c0e599735976a9c52c741f57d5eea1a2b1",
+    "delivery": "Art/Review/P1/neutral-right-r1-mirror/delivery.json",
+    "remotePackageClosurePaths": 278
+  },
+  "rightAppearanceReview": {
+    "id": "p1-right-independent-appearance-v1",
+    "status": "shown-main-loadouts-approved-other-combinations-not-inherited",
+    "artApproval": null,
+    "authorAndReviewer": "root",
+    "subagentsUsed": false,
+    "source": "Art/Parts/P1-v1/right/appearance-v1/authoring.json",
+    "catalog": "Art/Templates/P1-Wardrobe/right/v1-independent/catalog.json",
+    "review": "Art/Review/P1/modular-right-appearance-v1",
+    "body": "p1-neutral-right-walk-r1-mirror",
+    "bodyAndMotionChanged": false,
+    "newPackages": 8,
+    "technical": {
+      "status": "technical-checks-pass",
+      "artApproval": null,
+      "authorAndReviewer": "root",
+      "subagentsUsed": false,
+      "manifestsChecked": 9,
+      "actualCompositorPoses": 208,
+      "bareBodyPosesUnchanged": 13,
+      "bodyLayerPreservationChecks": 1664,
+      "appearanceAlphaReflectionChecks": 286,
+      "wholeAlphaReflectionChecks": 208,
+      "clothingCoverageChecks": 1040,
+      "handPreservationChecks": 208,
+      "weaponToggleChecks": 104,
+      "weaponPoseReflectionChecks": 13,
+      "headFeatureChecks": 832,
+      "combinations": 16,
+      "poses": 13,
+      "preservedFiles": 10967,
+      "profileChange": "Only right head layout added; old profile data unchanged"
+    },
+    "reexportByteIdenticalFiles": 874,
+    "existingTests": {
+      "contract": 26,
+      "compositor": 21
+    },
+    "mainReview": "主线程亲看两衣型×两发型×两五官共8个带剑搭配的全部13姿势整身1×/2×、主展示站姿及正常GIF真实8解码帧，并核起停路径。重点检查整体脸部眉眼鼻口间距/耳颌关系、刘海遮挡、肩肘腕与髋膝踝足、袖口/裤口/靴筒/靴底、近远层次、衣摆运动和背剑位置。空背由实际装配和开关检查覆盖，不声称全部208张逐张2×复核。查看器仅静帧，不称连续播放或实机验收；数字通过不代表用户认可。",
+    "runtimeIntegrated": false,
+    "ipaBuilt": false,
+    "artifacts": {
+      "normalGif": "Art/Review/P1/modular-right-appearance-v1/outfits-walk-120ms.gif",
+      "startStopGif": "Art/Review/P1/modular-right-appearance-v1/outfits-start-stop-120ms.gif",
+      "idle": "Art/Review/P1/modular-right-appearance-v1/outfits-idle-2x.png"
+    },
+    "artCommit": "e4dc95a3fa69d7cb84da6c2ede3df5e46715c5fc",
+    "delivery": "Art/Review/P1/modular-right-appearance-v1/delivery.json",
+    "remotePackageClosurePaths": 1328,
+    "shownApproval": "Art/Review/P1/modular-right-appearance-v1/approval.json"
+  },
+  "eightWayUnifiedReview": {
+    "id": "p1-eight-way-v1",
+    "status": "offline-candidate-main-frame-review-complete",
+    "artApproval": null,
+    "authorAndReviewer": "root",
+    "subagentsUsed": false,
+    "catalog": "Art/Integration/P1-modular-eight-way-v1/catalog.json",
+    "motion": "Art/Integration/P1-modular-eight-way-v1/motion.json",
+    "review": "Art/Review/P1/modular-eight-way-v1",
+    "singleBodyID": "p1-eight-way-base-v1",
+    "packages": 9,
+    "actualCompositions": 1664,
+    "mainHumanReviewedPoses": 208,
+    "technical": {
+      "status": "technical-pass-main-wholebody-frame-review-complete",
+      "artApproval": null,
+      "packages": 9,
+      "loadouts": 16,
+      "directions": 8,
+      "posesPerDirection": 13,
+      "actualCompositions": 1664,
+      "checks": {
+        "bodyLayerIdentity": 832,
+        "downCommonLowerProofs": 52,
+        "phaseMappings": 64,
+        "handContribution": 3328,
+        "weaponToggleIsolation": 832,
+        "adjacentTurnSupportCases": 2048,
+        "unchangedWholeCompositions": 1092,
+        "noNewUnderbodyExposure": 4992
+      },
+      "runtimeIntegrated": false,
+      "ipaBuilt": false,
+      "authorAndReviewer": "root",
+      "subagentsUsed": false,
+      "preservedExistingFiles": 11611,
+      "reexportByteIdenticalFiles": 5411,
+      "existingTests": {
+        "contract": 26,
+        "compositor": 21
+      },
+      "mainArtReview": "Art/Review/P1/modular-eight-way-v1/art-review.md",
+      "continuousPlaybackClaimed": false
+    },
+    "previousRightShownApproval": "Art/Review/P1/modular-right-appearance-v1/approval.json",
+    "newOfflineIntegrationComplete": true,
+    "runtimeIntegrated": false,
+    "ipaBuilt": false,
+    "remaining": [
+      "new unified parts and specified transitions in demo",
+      "arbitrary phase stop",
+      "complete rig marker semantic normalization",
+      "third all8direction appearance zero engine change check"
+    ],
+    "artCommit": "ecfb101846a50219797b9e7099ce2863bb8ea5b4",
+    "delivery": "Art/Review/P1/modular-eight-way-v1/delivery.json",
+    "remoteByteIdenticalClosurePaths": 9864
   }
 }

@@ -1,0 +1,173 @@
+{
+  "format": 1,
+  "checks": {
+    "frame_count": 9,
+    "all_frames_256_square": true,
+    "approved_source_frames_00_07_pixel_identical": {
+      "0": true,
+      "1": true,
+      "2": true,
+      "3": true,
+      "4": true,
+      "5": true,
+      "6": true,
+      "7": true
+    },
+    "strip_size": [
+      2304,
+      256
+    ],
+    "registration_json_unchanged": true,
+    "gif_frame_count": 8,
+    "gif_durations_ms": [
+      120,
+      120,
+      120,
+      120,
+      120,
+      120,
+      120,
+      120
+    ],
+    "gif_total_cycle_ms": 960,
+    "gif_loop": 0,
+    "normal_speed_only": true
+  },
+  "frame_bounds": [
+    {
+      "frame": "00",
+      "canvas": [
+        256,
+        256
+      ],
+      "alpha_bbox": [
+        47,
+        67,
+        236,
+        247
+      ]
+    },
+    {
+      "frame": "01",
+      "canvas": [
+        256,
+        256
+      ],
+      "alpha_bbox": [
+        36,
+        51,
+        223,
+        239
+      ]
+    },
+    {
+      "frame": "02",
+      "canvas": [
+        256,
+        256
+      ],
+      "alpha_bbox": [
+        58,
+        64,
+        225,
+        235
+      ]
+    },
+    {
+      "frame": "03",
+      "canvas": [
+        256,
+        256
+      ],
+      "alpha_bbox": [
+        43,
+        51,
+        226,
+        240
+      ]
+    },
+    {
+      "frame": "04",
+      "canvas": [
+        256,
+        256
+      ],
+      "alpha_bbox": [
+        46,
+        47,
+        216,
+        225
+      ]
+    },
+    {
+      "frame": "05",
+      "canvas": [
+        256,
+        256
+      ],
+      "alpha_bbox": [
+        34,
+        47,
+        227,
+        229
+      ]
+    },
+    {
+      "frame": "06",
+      "canvas": [
+        256,
+        256
+      ],
+      "alpha_bbox": [
+        47,
+        57,
+        222,
+        236
+      ]
+    },
+    {
+      "frame": "07",
+      "canvas": [
+        256,
+        256
+      ],
+      "alpha_bbox": [
+        70,
+        70,
+        226,
+        229
+      ]
+    },
+    {
+      "frame": "08",
+      "canvas": [
+        256,
+        256
+      ],
+      "alpha_bbox": [
+        70,
+        70,
+        178,
+        224
+      ]
+    }
+  ],
+  "head_root_proxy": {
+    "definition": "mean x/y of warm hair-colored opaque pixels in upper 140 rows; approximate visual proxy only, not a rig landmark",
+    "frame_08_vs_source_07_01_mean_delta_px_approx": [
+      -0.3,
+      1.0
+    ],
+    "note": "Whole-pose registration favors the continuous support-foot baseline; frame 08 head proxy is approximately 1 px lower than the source-neighbor mean."
+  },
+  "foot_contact_review": {
+    "08": {
+      "screen_left_near_support_boot": "approx x110\u2013134, y195\u2013223; final opaque sole row y223 spans x113\u2013125 (ground/contact line y224)",
+      "screen_right_rear_recovery_boot": "approx x136\u2013161, y195\u2013213; lowest opaque row y213, x142\u2013148",
+      "relation": "left/near boot stays low and supports; right/rear boot is in low recovery, with only a modest sole glimpse. No support-leg swap."
+    },
+    "07_to_08_to_01": "Frames 07, 08, and 01 retain the same low screen-left/near support foot; screen-right/rear foot stays lifted. Frame 01 begins the next weight transfer. This avoids reproducing the loop-r1 08 reversal and its frame-02-like phase.",
+    "02": "Next distinct transfer pose; support relation differs from revised 08 as expected."
+  },
+  "scope": "Geometry and timing checks plus visual self-review of the full 07\u219208\u219201\u219202 progression in the normal-speed 120 ms GIF. Internal review only; not user art approval."
+}

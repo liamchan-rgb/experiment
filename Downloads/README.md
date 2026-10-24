@@ -1,6 +1,50 @@
 # SideStore 安装与迭代包
 
-## Meadow Journey 战场观感试验包 · 1.6.8 build 33
+## 当前版本：左上落脚过渡修订 · 1.6.12 build38
+
+P1左上动画第02姿势增加左脚下降接地前的过渡，右脚继续支撑，再接第03姿势承重。120ms正常节奏保持，运行图集与足底数据同步；只修改左上02，保留原稿与历史修订。build37的可交互林地战斗仍包含在包中。
+
+[直接下载 MeadowJourney-b38.ipa](https://raw.githubusercontent.com/liamchan-rgb/experiment/fix/build33-face-grounding-camera/Downloads/MeadowJourney-b38.ipa) · [构建校验](MeadowJourney-build38.json) · [美术与交付记录](../Media/Build38/README.md)
+
+可直接复制到浏览器：
+
+```text
+https://raw.githubusercontent.com/liamchan-rgb/experiment/fix/build33-face-grounding-camera/Downloads/MeadowJourney-b38.ipa
+```
+
+已实际匿名GET：HTTP200、application/octet-stream、24,201,944字节，SHA256 `d36b0a78bb48345fd829ce3967d139faeb3d604020c4250cdabca485ae5673fe`，与设备归档一致。下载即原始IPA，沿用SideStore重签安装。Xcode16.4设备Release归档39742884627、三项真实Swift检查和IPA完整性核对通过；完整人物、正常速循环及道路离线合成由主审检查。未运行模拟器／实机，实际运动和截图由用户复测。
+
+## 历史版本：道路步态修复与可交互战斗 · 1.6.11 build37
+
+P1道路步速对齐正常120ms姿势，移动投影同步脚底、停止清旧相位；四个斜向沿生产道路合成正常速动图复核。新增P1对鹿灵的完整局部遭遇，支持选靶、AP／生命／护盾、技能、敌方回合、胜负、重试；人物关节与鹿灵冲撞动作、命中／防护／回血反馈已接入。
+
+[直接下载 MeadowJourney-b37.ipa](https://raw.githubusercontent.com/liamchan-rgb/experiment/fix/build33-face-grounding-camera/Downloads/MeadowJourney-b37.ipa) · [构建校验](MeadowJourney-build37.json) · [美术与交付记录](../Media/Build37/README.md)
+
+可直接复制到浏览器：
+
+```text
+https://raw.githubusercontent.com/liamchan-rgb/experiment/fix/build33-face-grounding-camera/Downloads/MeadowJourney-b37.ipa
+```
+
+已实际GET核对HTTP200、application/octet-stream、24,200,213字节，SHA256：`0bc40e083b12b0ee7f7ccd424cb2dc8c07a1c7381300697454c4c78d2e04ccfd`。下载即原始IPA，沿用SideStore重签安装。进入 **林地战斗 → 开始遭遇 → 点选鹿灵 → 点击下方技能**；行动点用尽后点结束回合。
+
+Xcode16.4设备Release归档39735185139、三项真实Swift逻辑／姿势回归与IPA完整性核验通过；完整人物／正常速动图由主审检查。未运行模拟器或实机，设备帧率、触控和实际观感由用户安装后反馈；这是独立简化遭遇，未连接桌游背包／存档。
+
+## 历史版本：斜向步态首尾修订 · 1.6.10 build36
+
+四个斜向只替换08末帧，接顺07→08→01→02；右上修订保留同一支撑脚，另三个方向也检查完整人物过渡。站姿、01–07、四正交方向与P2／P3保持原稿，正常每姿势120ms；单靴足底坐标同步到前景／阴影数据。战斗维持已认可的v9静态呈现，下一张迈步关键帧美术单独审核。
+
+[直接下载 MeadowJourney-b36.ipa](https://raw.githubusercontent.com/liamchan-rgb/experiment/fix/build33-face-grounding-camera/Downloads/MeadowJourney-b36.ipa) · [构建校验](MeadowJourney-build36.json) · [动图与修订记录](../Art/Integration/P1-diagonal-loop-v2/README.md) · [战斗下一张关键帧](../Art/Parts/P1-Battle/right-step-contact-v1/review.png)
+
+可直接复制到Safari：
+
+```text
+https://raw.githubusercontent.com/liamchan-rgb/experiment/fix/build33-face-grounding-camera/Downloads/MeadowJourney-b36.ipa
+```
+
+已实际GET核对：HTTP200、application/octet-stream、23,592,463字节，文件SHA256与设备归档一致：`bd486f94ea64153e9fcf1ff593cf2b2495c48c1766862854ab6e818ac8738cec`。下载即原始IPA，无需解压。沿用SideStore重签安装，进入主地图的步态演示检查四斜向。设备Release归档39560271325通过，本轮未运行模拟器或物理设备，实机观感由用户截图验证。
+
+## 历史版本：Meadow Journey 战场观感试验包 · 1.6.8 build 33
 
 人物改为侧向持剑备战，独立叠放头发、五官、衣物和短剑；鹿灵改为四蹄落地的警戒站姿。调整双方像素尺度、逐脚接触影、轮廓投影与背景虚实；两种回合共用等比取景，修正怪物回合上下黑边。地图仍以原 Meadow Journey 为基准。
 

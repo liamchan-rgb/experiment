@@ -1,0 +1,26 @@
+{
+  "canvasPx": [
+    256,
+    256
+  ],
+  "faceChangedPixels": 10,
+  "faceChangedBoundsPx": [
+    147,
+    106,
+    149,
+    117
+  ],
+  "mainFacialFeaturesUnchanged": true,
+  "shoulderChangedPixels": 26,
+  "shoulderChangedBoundsPx": [
+    109,
+    137,
+    115,
+    147
+  ],
+  "frontHairAtAndBeyondX120Unchanged": true,
+  "allCompositeChangesRestrictedToRequestedRegions": true,
+  "bodyHeadValidation": "../../../Templates/P1-Neutral/battle-side/right-idle-r3-head-contour/validation.json",
+  "runtimeIntegrated": false,
+  "userArtApproval": null
+}

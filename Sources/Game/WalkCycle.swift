@@ -19,7 +19,14 @@ struct WalkCycle {
         let dx = new.x - old.x, dy = new.y - old.y
         let movement = hypot(dx, dy)
         moving = movement > 0.001
-        guard moving else { frame = 0; return }
+        guard moving else {
+            // Idle is pose 0. Clear the distance phase too, so resuming from
+            // idle begins at the first walk pose instead of jumping back into
+            // the stale mid-cycle pose from before the pause.
+            distance = 0
+            frame = 0
+            return
+        }
         distance += movement / Self.projectedScale(dx: dx, dy: dy)
         let angle = atan2(dx, dy)
         let sector = .pi / CGFloat(4)

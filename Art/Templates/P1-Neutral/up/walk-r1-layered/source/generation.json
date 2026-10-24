@@ -1,0 +1,36 @@
+{
+  "tool": "image_gen.imagegen",
+  "authorAndReviewer": "root",
+  "subagentsUsed": false,
+  "artApproval": null,
+  "sources": [
+    {
+      "image": "source/generated-idle-original.png",
+      "sha256": "2f7fc08ee918f913a7c35485cf4bba05794834c42ab1ce76dde1c6aec2c12d8f",
+      "prompt": "source/prompts/neutral-up.txt",
+      "promptSHA256": "81fe7034dcc680bcf3edce29c2e36ae65280ec9f1a7f26916bfc2674db6d58d4",
+      "usage": "Whole-canvas registration; neutral source geometry/pigment"
+    },
+    {
+      "image": "source/half-rolled-feet-original.png",
+      "sha256": "a4b94dc898c48b19417c69550692775762b938ae9eafd9132861aa51d7a46fd0",
+      "prompt": "source/prompts/half-rolled-feet.txt",
+      "promptSHA256": "cbb72a9af41cba762035ba75f9c8049cd117b9a28c2d828c20322f87e4986e9d",
+      "usage": "RGB only below original ankle/foot source threshold, original silhouette"
+    },
+    {
+      "image": "source/rolled-feet-original.png",
+      "sha256": "34a1532a2c707a3e503476ac9bc89d3a60923bd21b0011314da94e023e6d9d98",
+      "prompt": "source/prompts/rolled-feet.txt",
+      "promptSHA256": "7ef7f96cc7f7591d7285f139c05cca35b49baa9b136beaeeb39275a4abfd63e4",
+      "usage": "RGB only below original ankle/foot source threshold, original silhouette"
+    }
+  ],
+  "references": [
+    "source/current-neutral-reference-4x.png",
+    "source/approved-up-idle-reference-4x.png"
+  ],
+  "oldApprovedReference": "Art/Review/P1/directions/up/revisions/r1/approval.json",
+  "oldPixelsOverwritten": false,
+  "scope": "One new neutral standing source plus two source foot-roll surface colours; no whole-body per-pose generation"
+}

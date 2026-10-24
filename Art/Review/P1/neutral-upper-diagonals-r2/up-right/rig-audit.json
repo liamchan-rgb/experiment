@@ -1,0 +1,1203 @@
+{
+  "artApproval": null,
+  "method": "Single immutable whole-leg skin mesh with shared vertices, fixed-length IK and shoulder-pivot arms; no per-frame art swaps",
+  "frames": [
+    {
+      "frame": 0,
+      "segmentTransforms": {
+        "arm.rigid.left": [
+          1.0,
+          0.0,
+          -0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        "arm.rigid.right": [
+          1.0,
+          0.0,
+          -0.0,
+          1.0,
+          0.0,
+          0.0
+        ]
+      },
+      "bones": [
+        {
+          "segment": "thigh.left",
+          "length": 16,
+          "projectedLength": 13.56857734545756,
+          "root": [
+            116,
+            178
+          ],
+          "end": [
+            119.89865498180458,
+            190.99641414054332
+          ],
+          "sourceSHA256": "d2679974f5cb60f64362b8ea4155279a51e63fbf39564373c7f156053f5fdb96"
+        },
+        {
+          "segment": "shin.left",
+          "length": 13,
+          "projectedLength": 13.169870578809494,
+          "root": [
+            119.89865498180458,
+            190.99641414054332
+          ],
+          "end": [
+            116.0,
+            203.576
+          ],
+          "sourceSHA256": "d2679974f5cb60f64362b8ea4155279a51e63fbf39564373c7f156053f5fdb96"
+        },
+        {
+          "segment": "upperarm.left",
+          "length": 14.560219778561036,
+          "root": [
+            111,
+            137
+          ],
+          "end": [
+            107.0,
+            151.0
+          ],
+          "sourceSHA256": "0ec8f63c1e4e307e6a4c248eb26f982bb9b4fa173f9337c82f3dbdde00b8878b"
+        },
+        {
+          "segment": "forearm.left",
+          "length": 12.36931687685298,
+          "root": [
+            107.0,
+            151.0
+          ],
+          "end": [
+            104.0,
+            163.0
+          ],
+          "sourceSHA256": "0ec8f63c1e4e307e6a4c248eb26f982bb9b4fa173f9337c82f3dbdde00b8878b"
+        },
+        {
+          "segment": "thigh.right",
+          "length": 16,
+          "projectedLength": 13.56857734545756,
+          "root": [
+            136,
+            178
+          ],
+          "end": [
+            139.89865498180458,
+            190.99641414054332
+          ],
+          "sourceSHA256": "23c3d884631fa5808e12db3de7f46cf26ab3a304269ccc39084e10b368c8a2c9"
+        },
+        {
+          "segment": "shin.right",
+          "length": 13,
+          "projectedLength": 13.169870578809494,
+          "root": [
+            139.89865498180458,
+            190.99641414054332
+          ],
+          "end": [
+            136.0,
+            203.576
+          ],
+          "sourceSHA256": "23c3d884631fa5808e12db3de7f46cf26ab3a304269ccc39084e10b368c8a2c9"
+        },
+        {
+          "segment": "upperarm.right",
+          "length": 17.4928556845359,
+          "root": [
+            140,
+            136
+          ],
+          "end": [
+            149.0,
+            151.0
+          ],
+          "sourceSHA256": "59da966fb099877ec5b1deec2adc386a967a0d29cbf79b23d5bf794e35864309"
+        },
+        {
+          "segment": "forearm.right",
+          "length": 15.297058540778355,
+          "root": [
+            149.0,
+            151.0
+          ],
+          "end": [
+            152.0,
+            166.0
+          ],
+          "sourceSHA256": "59da966fb099877ec5b1deec2adc386a967a0d29cbf79b23d5bf794e35864309"
+        }
+      ],
+      "bodyBob": 0,
+      "shoulderAndHipAnchorsFixedToTorso": true
+    },
+    {
+      "frame": 1,
+      "segmentTransforms": {
+        "arm.rigid.left": [
+          0.992546151641322,
+          0.12186934340514748,
+          -0.12186934340514748,
+          0.992546151641322,
+          17.523477214318458,
+          -12.756319892832465
+        ],
+        "arm.rigid.right": [
+          0.992546151641322,
+          -0.12186934340514748,
+          0.12186934340514748,
+          0.992546151641322,
+          -15.530691932885134,
+          17.82543145350084
+        ]
+      },
+      "bones": [
+        {
+          "segment": "thigh.left",
+          "length": 16,
+          "projectedLength": 13.270175199082269,
+          "root": [
+            116,
+            177.75
+          ],
+          "end": [
+            121.12106795352014,
+            189.9922307129774
+          ],
+          "sourceSHA256": "d2679974f5cb60f64362b8ea4155279a51e63fbf39564373c7f156053f5fdb96"
+        },
+        {
+          "segment": "shin.left",
+          "length": 13,
+          "projectedLength": 11.211262859861202,
+          "root": [
+            121.12106795352014,
+            189.9922307129774
+          ],
+          "end": [
+            123.6,
+            200.926
+          ],
+          "sourceSHA256": "d2679974f5cb60f64362b8ea4155279a51e63fbf39564373c7f156053f5fdb96"
+        },
+        {
+          "segment": "upperarm.left",
+          "length": 14.560219778561056,
+          "root": [
+            111,
+            136.75
+          ],
+          "end": [
+            105.32364458576265,
+            150.15816874935794
+          ],
+          "sourceSHA256": "0ec8f63c1e4e307e6a4c248eb26f982bb9b4fa173f9337c82f3dbdde00b8878b"
+        },
+        {
+          "segment": "forearm.left",
+          "length": 12.369316876852997,
+          "root": [
+            105.32364458576265,
+            150.15816874935794
+          ],
+          "end": [
+            100.88357400997691,
+            161.70311453883838
+          ],
+          "sourceSHA256": "0ec8f63c1e4e307e6a4c248eb26f982bb9b4fa173f9337c82f3dbdde00b8878b"
+        },
+        {
+          "segment": "thigh.right",
+          "length": 16,
+          "projectedLength": 15.750841585553431,
+          "root": [
+            136,
+            177.75
+          ],
+          "end": [
+            132.7309527582618,
+            193.15786619829245
+          ],
+          "sourceSHA256": "23c3d884631fa5808e12db3de7f46cf26ab3a304269ccc39084e10b368c8a2c9"
+        },
+        {
+          "segment": "shin.right",
+          "length": 13,
+          "projectedLength": 13.293424654765195,
+          "root": [
+            132.7309527582618,
+            193.15786619829245
+          ],
+          "end": [
+            128.4,
+            205.726
+          ],
+          "sourceSHA256": "23c3d884631fa5808e12db3de7f46cf26ab3a304269ccc39084e10b368c8a2c9"
+        },
+        {
+          "segment": "upperarm.right",
+          "length": 17.492855684535876,
+          "root": [
+            140,
+            135.75
+          ],
+          "end": [
+            150.7609555158491,
+            149.54136818397347
+          ],
+          "sourceSHA256": "59da966fb099877ec5b1deec2adc386a967a0d29cbf79b23d5bf794e35864309"
+        },
+        {
+          "segment": "forearm.right",
+          "length": 15.29705854077836,
+          "root": [
+            150.7609555158491,
+            149.54136818397347
+          ],
+          "end": [
+            155.5666341218503,
+            164.06395242837786
+          ],
+          "sourceSHA256": "59da966fb099877ec5b1deec2adc386a967a0d29cbf79b23d5bf794e35864309"
+        }
+      ],
+      "bodyBob": -0.25,
+      "shoulderAndHipAnchorsFixedToTorso": true
+    },
+    {
+      "frame": 2,
+      "segmentTransforms": {
+        "arm.rigid.left": [
+          0.9962707567912439,
+          0.08628197472590758,
+          -0.08628197472590758,
+          0.9962707567912439,
+          12.23457653362127,
+          -9.066392874976145
+        ],
+        "arm.rigid.right": [
+          0.9962707567912439,
+          -0.0862819747259076,
+          0.0862819747259076,
+          0.9962707567912439,
+          -11.212254513497562,
+          12.586653538017885
+        ]
+      },
+      "bones": [
+        {
+          "segment": "thigh.left",
+          "length": 16,
+          "projectedLength": 13.133523979982765,
+          "root": [
+            116,
+            178.0
+          ],
+          "end": [
+            121.76073428767592,
+            189.80268582143816
+          ],
+          "sourceSHA256": "d2679974f5cb60f64362b8ea4155279a51e63fbf39564373c7f156053f5fdb96"
+        },
+        {
+          "segment": "shin.left",
+          "length": 13,
+          "projectedLength": 12.082448404313357,
+          "root": [
+            121.76073428767592,
+            189.80268582143816
+          ],
+          "end": [
+            121.37401153701776,
+            201.87894372515228
+          ],
+          "sourceSHA256": "d2679974f5cb60f64362b8ea4155279a51e63fbf39564373c7f156053f5fdb96"
+        },
+        {
+          "segment": "upperarm.left",
+          "length": 14.560219778561061,
+          "root": [
+            111,
+            137.0
+          ],
+          "end": [
+            105.80696932667232,
+            150.6026626961738
+          ],
+          "sourceSHA256": "0ec8f63c1e4e307e6a4c248eb26f982bb9b4fa173f9337c82f3dbdde00b8878b"
+        },
+        {
+          "segment": "forearm.left",
+          "length": 12.369316876852958,
+          "root": [
+            105.80696932667232,
+            150.6026626961738
+          ],
+          "end": [
+            101.7827733595877,
+            162.299065853491
+          ],
+          "sourceSHA256": "0ec8f63c1e4e307e6a4c248eb26f982bb9b4fa173f9337c82f3dbdde00b8878b"
+        },
+        {
+          "segment": "thigh.right",
+          "length": 16,
+          "projectedLength": 13.889593142284065,
+          "root": [
+            136,
+            178.0
+          ],
+          "end": [
+            138.7295529149124,
+            191.61874952199642
+          ],
+          "sourceSHA256": "23c3d884631fa5808e12db3de7f46cf26ab3a304269ccc39084e10b368c8a2c9"
+        },
+        {
+          "segment": "shin.right",
+          "length": 13,
+          "projectedLength": 14.137323642427598,
+          "root": [
+            138.7295529149124,
+            191.61874952199642
+          ],
+          "end": [
+            130.62598846298224,
+            203.2030562748477
+          ],
+          "sourceSHA256": "23c3d884631fa5808e12db3de7f46cf26ab3a304269ccc39084e10b368c8a2c9"
+        },
+        {
+          "segment": "upperarm.right",
+          "length": 17.492855684535915,
+          "root": [
+            140,
+            136.0
+          ],
+          "end": [
+            150.26066643200983,
+            150.1675235793355
+          ],
+          "sourceSHA256": "59da966fb099877ec5b1deec2adc386a967a0d29cbf79b23d5bf794e35864309"
+        },
+        {
+          "segment": "forearm.right",
+          "length": 15.297058540778325,
+          "root": [
+            150.26066643200983,
+            150.1675235793355
+          ],
+          "end": [
+            154.54370832327217,
+            164.8527390070264
+          ],
+          "sourceSHA256": "59da966fb099877ec5b1deec2adc386a967a0d29cbf79b23d5bf794e35864309"
+        }
+      ],
+      "bodyBob": -1.5308084989341915e-17,
+      "shoulderAndHipAnchorsFixedToTorso": true
+    },
+    {
+      "frame": 3,
+      "segmentTransforms": {
+        "arm.rigid.left": [
+          1.0,
+          7.48094158669585e-18,
+          -7.48094158669585e-18,
+          1.0,
+          1.0248889973773313e-15,
+          0.25
+        ],
+        "arm.rigid.right": [
+          1.0,
+          -2.2442824760087548e-17,
+          2.2442824760087548e-17,
+          1.0,
+          -3.0522241673719065e-15,
+          0.25
+        ]
+      },
+      "bones": [
+        {
+          "segment": "thigh.left",
+          "length": 16,
+          "projectedLength": 13.56857734545756,
+          "root": [
+            116,
+            178.25
+          ],
+          "end": [
+            119.89865498180458,
+            191.24641414054332
+          ],
+          "sourceSHA256": "d2679974f5cb60f64362b8ea4155279a51e63fbf39564373c7f156053f5fdb96"
+        },
+        {
+          "segment": "shin.left",
+          "length": 13,
+          "projectedLength": 13.169870578809494,
+          "root": [
+            119.89865498180458,
+            191.24641414054332
+          ],
+          "end": [
+            116.0,
+            203.826
+          ],
+          "sourceSHA256": "d2679974f5cb60f64362b8ea4155279a51e63fbf39564373c7f156053f5fdb96"
+        },
+        {
+          "segment": "upperarm.left",
+          "length": 14.560219778561036,
+          "root": [
+            111,
+            137.25
+          ],
+          "end": [
+            107.0,
+            151.25
+          ],
+          "sourceSHA256": "0ec8f63c1e4e307e6a4c248eb26f982bb9b4fa173f9337c82f3dbdde00b8878b"
+        },
+        {
+          "segment": "forearm.left",
+          "length": 12.36931687685298,
+          "root": [
+            107.0,
+            151.25
+          ],
+          "end": [
+            104.0,
+            163.25
+          ],
+          "sourceSHA256": "0ec8f63c1e4e307e6a4c248eb26f982bb9b4fa173f9337c82f3dbdde00b8878b"
+        },
+        {
+          "segment": "thigh.right",
+          "length": 16,
+          "projectedLength": 12.787068554033803,
+          "root": [
+            136,
+            178.25
+          ],
+          "end": [
+            144.1330202582517,
+            188.11727437970728
+          ],
+          "sourceSHA256": "23c3d884631fa5808e12db3de7f46cf26ab3a304269ccc39084e10b368c8a2c9"
+        },
+        {
+          "segment": "shin.right",
+          "length": 13,
+          "projectedLength": 14.141479095156548,
+          "root": [
+            144.1330202582517,
+            188.11727437970728
+          ],
+          "end": [
+            136.0,
+            199.686
+          ],
+          "sourceSHA256": "23c3d884631fa5808e12db3de7f46cf26ab3a304269ccc39084e10b368c8a2c9"
+        },
+        {
+          "segment": "upperarm.right",
+          "length": 17.4928556845359,
+          "root": [
+            140,
+            136.25
+          ],
+          "end": [
+            149.0,
+            151.25
+          ],
+          "sourceSHA256": "59da966fb099877ec5b1deec2adc386a967a0d29cbf79b23d5bf794e35864309"
+        },
+        {
+          "segment": "forearm.right",
+          "length": 15.297058540778355,
+          "root": [
+            149.0,
+            151.25
+          ],
+          "end": [
+            152.0,
+            166.25
+          ],
+          "sourceSHA256": "59da966fb099877ec5b1deec2adc386a967a0d29cbf79b23d5bf794e35864309"
+        }
+      ],
+      "bodyBob": 0.25,
+      "shoulderAndHipAnchorsFixedToTorso": true
+    },
+    {
+      "frame": 4,
+      "segmentTransforms": {
+        "arm.rigid.left": [
+          0.9962707567912439,
+          -0.08628197472590755,
+          0.08628197472590755,
+          0.9962707567912439,
+          -11.406684541277402,
+          10.088205514175343
+        ],
+        "arm.rigid.right": [
+          0.9962707567912439,
+          0.08628197472590755,
+          -0.08628197472590755,
+          0.9962707567912439,
+          12.256442611949298,
+          -11.57229938523622
+        ]
+      },
+      "bones": [
+        {
+          "segment": "thigh.left",
+          "length": 16,
+          "projectedLength": 14.781396358264692,
+          "root": [
+            116,
+            178.0
+          ],
+          "end": [
+            115.80581349699216,
+            192.78012076750966
+          ],
+          "sourceSHA256": "d2679974f5cb60f64362b8ea4155279a51e63fbf39564373c7f156053f5fdb96"
+        },
+        {
+          "segment": "shin.left",
+          "length": 13,
+          "projectedLength": 13.524201454188104,
+          "root": [
+            115.80581349699216,
+            192.78012076750966
+          ],
+          "end": [
+            110.62598846298224,
+            205.2730562748477
+          ],
+          "sourceSHA256": "d2679974f5cb60f64362b8ea4155279a51e63fbf39564373c7f156053f5fdb96"
+        },
+        {
+          "segment": "upperarm.left",
+          "length": 14.560219778561054,
+          "root": [
+            111,
+            137.0
+          ],
+          "end": [
+            108.22286461899773,
+            151.29291849398106
+          ],
+          "sourceSHA256": "0ec8f63c1e4e307e6a4c248eb26f982bb9b4fa173f9337c82f3dbdde00b8878b"
+        },
+        {
+          "segment": "forearm.left",
+          "length": 12.369316876852977,
+          "root": [
+            108.22286461899773,
+            151.29291849398106
+          ],
+          "end": [
+            106.2694360453349,
+            163.5070134996537
+          ],
+          "sourceSHA256": "0ec8f63c1e4e307e6a4c248eb26f982bb9b4fa173f9337c82f3dbdde00b8878b"
+        },
+        {
+          "segment": "thigh.right",
+          "length": 16,
+          "projectedLength": 12.748352694795022,
+          "root": [
+            136,
+            178.0
+          ],
+          "end": [
+            144.78629999060087,
+            187.23695993853252
+          ],
+          "sourceSHA256": "23c3d884631fa5808e12db3de7f46cf26ab3a304269ccc39084e10b368c8a2c9"
+        },
+        {
+          "segment": "shin.right",
+          "length": 13,
+          "projectedLength": 13.026837253204896,
+          "root": [
+            144.78629999060087,
+            187.23695993853252
+          ],
+          "end": [
+            141.37401153701776,
+            199.8089437251523
+          ],
+          "sourceSHA256": "23c3d884631fa5808e12db3de7f46cf26ab3a304269ccc39084e10b368c8a2c9"
+        },
+        {
+          "segment": "upperarm.right",
+          "length": 17.492855684535925,
+          "root": [
+            140,
+            136.0
+          ],
+          "end": [
+            147.6722071902326,
+            151.72059912440184
+          ],
+          "sourceSHA256": "59da966fb099877ec5b1deec2adc386a967a0d29cbf79b23d5bf794e35864309"
+        },
+        {
+          "segment": "forearm.right",
+          "length": 15.29705854077832,
+          "root": [
+            147.6722071902326,
+            151.72059912440184
+          ],
+          "end": [
+            149.3667898397177,
+            166.9235064004482
+          ],
+          "sourceSHA256": "59da966fb099877ec5b1deec2adc386a967a0d29cbf79b23d5bf794e35864309"
+        }
+      ],
+      "bodyBob": 4.592425496802574e-17,
+      "shoulderAndHipAnchorsFixedToTorso": true
+    },
+    {
+      "frame": 5,
+      "segmentTransforms": {
+        "arm.rigid.left": [
+          0.992546151641322,
+          -0.12186934340514748,
+          0.12186934340514748,
+          0.992546151641322,
+          -15.868722878691951,
+          14.298674343110264
+        ],
+        "arm.rigid.right": [
+          0.992546151641322,
+          0.12186934340514748,
+          -0.12186934340514748,
+          0.992546151641322,
+          17.61776947331498,
+          -16.297984699940443
+        ]
+      },
+      "bones": [
+        {
+          "segment": "thigh.left",
+          "length": 16,
+          "projectedLength": 15.750841585553431,
+          "root": [
+            116,
+            177.75
+          ],
+          "end": [
+            112.7309527582618,
+            193.15786619829245
+          ],
+          "sourceSHA256": "d2679974f5cb60f64362b8ea4155279a51e63fbf39564373c7f156053f5fdb96"
+        },
+        {
+          "segment": "shin.left",
+          "length": 13,
+          "projectedLength": 13.293424654765195,
+          "root": [
+            112.7309527582618,
+            193.15786619829245
+          ],
+          "end": [
+            108.4,
+            205.726
+          ],
+          "sourceSHA256": "d2679974f5cb60f64362b8ea4155279a51e63fbf39564373c7f156053f5fdb96"
+        },
+        {
+          "segment": "upperarm.left",
+          "length": 14.56021977856104,
+          "root": [
+            111,
+            136.75
+          ],
+          "end": [
+            108.73598620110675,
+            151.1331234965991
+          ],
+          "sourceSHA256": "0ec8f63c1e4e307e6a4c248eb26f982bb9b4fa173f9337c82f3dbdde00b8878b"
+        },
+        {
+          "segment": "forearm.left",
+          "length": 12.369316876852992,
+          "root": [
+            108.73598620110675,
+            151.1331234965991
+          ],
+          "end": [
+            107.22077986704457,
+            163.40928534651042
+          ],
+          "sourceSHA256": "0ec8f63c1e4e307e6a4c248eb26f982bb9b4fa173f9337c82f3dbdde00b8878b"
+        },
+        {
+          "segment": "thigh.right",
+          "length": 16,
+          "projectedLength": 13.270175199082269,
+          "root": [
+            136,
+            177.75
+          ],
+          "end": [
+            141.12106795352014,
+            189.9922307129774
+          ],
+          "sourceSHA256": "23c3d884631fa5808e12db3de7f46cf26ab3a304269ccc39084e10b368c8a2c9"
+        },
+        {
+          "segment": "shin.right",
+          "length": 13,
+          "projectedLength": 11.211262859861202,
+          "root": [
+            141.12106795352014,
+            189.9922307129774
+          ],
+          "end": [
+            143.6,
+            200.926
+          ],
+          "sourceSHA256": "23c3d884631fa5808e12db3de7f46cf26ab3a304269ccc39084e10b368c8a2c9"
+        },
+        {
+          "segment": "upperarm.right",
+          "length": 17.49285568453592,
+          "root": [
+            140,
+            135.75
+          ],
+          "end": [
+            147.1048752136947,
+            151.73501636526618
+          ],
+          "sourceSHA256": "59da966fb099877ec5b1deec2adc386a967a0d29cbf79b23d5bf794e35864309"
+        },
+        {
+          "segment": "forearm.right",
+          "length": 15.29705854077832,
+          "root": [
+            147.1048752136947,
+            151.73501636526618
+          ],
+          "end": [
+            148.25447351754144,
+            166.98881667010141
+          ],
+          "sourceSHA256": "59da966fb099877ec5b1deec2adc386a967a0d29cbf79b23d5bf794e35864309"
+        }
+      ],
+      "bodyBob": -0.25,
+      "shoulderAndHipAnchorsFixedToTorso": true
+    },
+    {
+      "frame": 6,
+      "segmentTransforms": {
+        "arm.rigid.left": [
+          0.9962707567912439,
+          -0.0862819747259076,
+          0.0862819747259076,
+          0.9962707567912439,
+          -11.406684541277407,
+          10.088205514175343
+        ],
+        "arm.rigid.right": [
+          0.9962707567912439,
+          0.08628197472590758,
+          -0.08628197472590758,
+          0.9962707567912439,
+          12.256442611949302,
+          -11.572299385236235
+        ]
+      },
+      "bones": [
+        {
+          "segment": "thigh.left",
+          "length": 16,
+          "projectedLength": 13.889593142284069,
+          "root": [
+            116,
+            178.0
+          ],
+          "end": [
+            118.72955291491242,
+            191.61874952199642
+          ],
+          "sourceSHA256": "d2679974f5cb60f64362b8ea4155279a51e63fbf39564373c7f156053f5fdb96"
+        },
+        {
+          "segment": "shin.left",
+          "length": 13,
+          "projectedLength": 14.137323642427605,
+          "root": [
+            118.72955291491242,
+            191.61874952199642
+          ],
+          "end": [
+            110.62598846298224,
+            203.2030562748477
+          ],
+          "sourceSHA256": "d2679974f5cb60f64362b8ea4155279a51e63fbf39564373c7f156053f5fdb96"
+        },
+        {
+          "segment": "upperarm.left",
+          "length": 14.560219778561054,
+          "root": [
+            111,
+            137.0
+          ],
+          "end": [
+            108.22286461899773,
+            151.29291849398106
+          ],
+          "sourceSHA256": "0ec8f63c1e4e307e6a4c248eb26f982bb9b4fa173f9337c82f3dbdde00b8878b"
+        },
+        {
+          "segment": "forearm.left",
+          "length": 12.36931687685298,
+          "root": [
+            108.22286461899773,
+            151.29291849398106
+          ],
+          "end": [
+            106.26943604533488,
+            163.5070134996537
+          ],
+          "sourceSHA256": "0ec8f63c1e4e307e6a4c248eb26f982bb9b4fa173f9337c82f3dbdde00b8878b"
+        },
+        {
+          "segment": "thigh.right",
+          "length": 16,
+          "projectedLength": 13.133523979982765,
+          "root": [
+            136,
+            178.0
+          ],
+          "end": [
+            141.76073428767592,
+            189.80268582143816
+          ],
+          "sourceSHA256": "23c3d884631fa5808e12db3de7f46cf26ab3a304269ccc39084e10b368c8a2c9"
+        },
+        {
+          "segment": "shin.right",
+          "length": 13,
+          "projectedLength": 12.082448404313357,
+          "root": [
+            141.76073428767592,
+            189.80268582143816
+          ],
+          "end": [
+            141.37401153701776,
+            201.87894372515228
+          ],
+          "sourceSHA256": "23c3d884631fa5808e12db3de7f46cf26ab3a304269ccc39084e10b368c8a2c9"
+        },
+        {
+          "segment": "upperarm.right",
+          "length": 17.492855684535897,
+          "root": [
+            140,
+            136.0
+          ],
+          "end": [
+            147.6722071902326,
+            151.72059912440182
+          ],
+          "sourceSHA256": "59da966fb099877ec5b1deec2adc386a967a0d29cbf79b23d5bf794e35864309"
+        },
+        {
+          "segment": "forearm.right",
+          "length": 15.297058540778377,
+          "root": [
+            147.6722071902326,
+            151.72059912440182
+          ],
+          "end": [
+            149.3667898397177,
+            166.92350640044822
+          ],
+          "sourceSHA256": "59da966fb099877ec5b1deec2adc386a967a0d29cbf79b23d5bf794e35864309"
+        }
+      ],
+      "bodyBob": -7.654042494670958e-17,
+      "shoulderAndHipAnchorsFixedToTorso": true
+    },
+    {
+      "frame": 7,
+      "segmentTransforms": {
+        "arm.rigid.left": [
+          1.0,
+          -2.2442824760087548e-17,
+          2.2442824760087548e-17,
+          1.0,
+          -3.074666992131994e-15,
+          0.25
+        ],
+        "arm.rigid.right": [
+          1.0,
+          7.48094158669585e-18,
+          -7.48094158669585e-18,
+          1.0,
+          1.0174080557906355e-15,
+          0.25
+        ]
+      },
+      "bones": [
+        {
+          "segment": "thigh.left",
+          "length": 16,
+          "projectedLength": 12.787068554033803,
+          "root": [
+            116,
+            178.25
+          ],
+          "end": [
+            124.13302025825169,
+            188.11727437970728
+          ],
+          "sourceSHA256": "d2679974f5cb60f64362b8ea4155279a51e63fbf39564373c7f156053f5fdb96"
+        },
+        {
+          "segment": "shin.left",
+          "length": 13,
+          "projectedLength": 14.141479095156548,
+          "root": [
+            124.13302025825169,
+            188.11727437970728
+          ],
+          "end": [
+            116.0,
+            199.686
+          ],
+          "sourceSHA256": "d2679974f5cb60f64362b8ea4155279a51e63fbf39564373c7f156053f5fdb96"
+        },
+        {
+          "segment": "upperarm.left",
+          "length": 14.560219778561036,
+          "root": [
+            111,
+            137.25
+          ],
+          "end": [
+            107.0,
+            151.25
+          ],
+          "sourceSHA256": "0ec8f63c1e4e307e6a4c248eb26f982bb9b4fa173f9337c82f3dbdde00b8878b"
+        },
+        {
+          "segment": "forearm.left",
+          "length": 12.36931687685298,
+          "root": [
+            107.0,
+            151.25
+          ],
+          "end": [
+            104.0,
+            163.25
+          ],
+          "sourceSHA256": "0ec8f63c1e4e307e6a4c248eb26f982bb9b4fa173f9337c82f3dbdde00b8878b"
+        },
+        {
+          "segment": "thigh.right",
+          "length": 16,
+          "projectedLength": 13.56857734545756,
+          "root": [
+            136,
+            178.25
+          ],
+          "end": [
+            139.89865498180458,
+            191.24641414054332
+          ],
+          "sourceSHA256": "23c3d884631fa5808e12db3de7f46cf26ab3a304269ccc39084e10b368c8a2c9"
+        },
+        {
+          "segment": "shin.right",
+          "length": 13,
+          "projectedLength": 13.169870578809494,
+          "root": [
+            139.89865498180458,
+            191.24641414054332
+          ],
+          "end": [
+            136.0,
+            203.826
+          ],
+          "sourceSHA256": "23c3d884631fa5808e12db3de7f46cf26ab3a304269ccc39084e10b368c8a2c9"
+        },
+        {
+          "segment": "upperarm.right",
+          "length": 17.4928556845359,
+          "root": [
+            140,
+            136.25
+          ],
+          "end": [
+            149.0,
+            151.25
+          ],
+          "sourceSHA256": "59da966fb099877ec5b1deec2adc386a967a0d29cbf79b23d5bf794e35864309"
+        },
+        {
+          "segment": "forearm.right",
+          "length": 15.297058540778355,
+          "root": [
+            149.0,
+            151.25
+          ],
+          "end": [
+            152.0,
+            166.25
+          ],
+          "sourceSHA256": "59da966fb099877ec5b1deec2adc386a967a0d29cbf79b23d5bf794e35864309"
+        }
+      ],
+      "bodyBob": 0.25,
+      "shoulderAndHipAnchorsFixedToTorso": true
+    },
+    {
+      "frame": 8,
+      "segmentTransforms": {
+        "arm.rigid.left": [
+          0.9962707567912439,
+          0.08628197472590755,
+          -0.08628197472590755,
+          0.9962707567912439,
+          12.234576533621267,
+          -9.066392874976145
+        ],
+        "arm.rigid.right": [
+          0.9962707567912439,
+          -0.08628197472590755,
+          0.08628197472590755,
+          0.9962707567912439,
+          -11.212254513497557,
+          12.586653538017885
+        ]
+      },
+      "bones": [
+        {
+          "segment": "thigh.left",
+          "length": 16,
+          "projectedLength": 12.748352694795033,
+          "root": [
+            116,
+            178.0
+          ],
+          "end": [
+            124.78629999060088,
+            187.23695993853252
+          ],
+          "sourceSHA256": "d2679974f5cb60f64362b8ea4155279a51e63fbf39564373c7f156053f5fdb96"
+        },
+        {
+          "segment": "shin.left",
+          "length": 13,
+          "projectedLength": 13.0268372532049,
+          "root": [
+            124.78629999060088,
+            187.23695993853252
+          ],
+          "end": [
+            121.37401153701776,
+            199.8089437251523
+          ],
+          "sourceSHA256": "d2679974f5cb60f64362b8ea4155279a51e63fbf39564373c7f156053f5fdb96"
+        },
+        {
+          "segment": "upperarm.left",
+          "length": 14.560219778561061,
+          "root": [
+            111,
+            137.0
+          ],
+          "end": [
+            105.80696932667232,
+            150.6026626961738
+          ],
+          "sourceSHA256": "0ec8f63c1e4e307e6a4c248eb26f982bb9b4fa173f9337c82f3dbdde00b8878b"
+        },
+        {
+          "segment": "forearm.left",
+          "length": 12.369316876852958,
+          "root": [
+            105.80696932667232,
+            150.6026626961738
+          ],
+          "end": [
+            101.7827733595877,
+            162.299065853491
+          ],
+          "sourceSHA256": "0ec8f63c1e4e307e6a4c248eb26f982bb9b4fa173f9337c82f3dbdde00b8878b"
+        },
+        {
+          "segment": "thigh.right",
+          "length": 16,
+          "projectedLength": 14.781396358264692,
+          "root": [
+            136,
+            178.0
+          ],
+          "end": [
+            135.80581349699216,
+            192.78012076750966
+          ],
+          "sourceSHA256": "23c3d884631fa5808e12db3de7f46cf26ab3a304269ccc39084e10b368c8a2c9"
+        },
+        {
+          "segment": "shin.right",
+          "length": 13,
+          "projectedLength": 13.524201454188104,
+          "root": [
+            135.80581349699216,
+            192.78012076750966
+          ],
+          "end": [
+            130.62598846298224,
+            205.2730562748477
+          ],
+          "sourceSHA256": "23c3d884631fa5808e12db3de7f46cf26ab3a304269ccc39084e10b368c8a2c9"
+        },
+        {
+          "segment": "upperarm.right",
+          "length": 17.492855684535915,
+          "root": [
+            140,
+            136.0
+          ],
+          "end": [
+            150.26066643200983,
+            150.1675235793355
+          ],
+          "sourceSHA256": "59da966fb099877ec5b1deec2adc386a967a0d29cbf79b23d5bf794e35864309"
+        },
+        {
+          "segment": "forearm.right",
+          "length": 15.297058540778353,
+          "root": [
+            150.26066643200983,
+            150.1675235793355
+          ],
+          "end": [
+            154.54370832327217,
+            164.85273900702643
+          ],
+          "sourceSHA256": "59da966fb099877ec5b1deec2adc386a967a0d29cbf79b23d5bf794e35864309"
+        }
+      ],
+      "bodyBob": 1.071565949253934e-16,
+      "shoulderAndHipAnchorsFixedToTorso": true
+    }
+  ]
+}

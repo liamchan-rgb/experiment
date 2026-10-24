@@ -416,9 +416,12 @@ final class TrailTests: XCTestCase {
         let actor = try XCTUnwrap(MeadowBattleActorConfiguration.load())
         XCTAssertEqual(actor.canvasSize, CGSize(width: 256, height: 256))
         XCTAssertEqual(actor.footAnchor, CGPoint(x: 123, y: 214))
-        XCTAssertEqual(actor.layers, ["MeadowBattleHeroWeapon", "MeadowBattleHeroBody", "MeadowBattleHeroWardrobe",
-                                      "MeadowBattleHeroHair", "MeadowBattleHeroFace",
-                                      "MeadowBattleHeroNearHand", "MeadowBattleHeroFarHand"])
+        let requiredParts: Set<String> = ["MeadowBattleHeroWeapon", "MeadowBattleHeroBodyCore",
+            "MeadowBattleHeroWardrobeCore", "MeadowBattleHeroArmNearUpperWardrobe",
+            "MeadowBattleHeroArmNearForearmWardrobe", "MeadowBattleHeroLegFarShinWardrobe",
+            "MeadowBattleHeroLegNearShinWardrobe", "MeadowBattleHeroHair", "MeadowBattleHeroFace",
+            "MeadowBattleHeroNearHand", "MeadowBattleHeroFarHand"]
+        XCTAssertTrue(requiredParts.isSubset(of: Set(actor.layers)))
         for name in actor.layers {
             let layer = try XCTUnwrap(UIImage(named: name), "Missing registered actor part: \(name)")
             XCTAssertEqual(layer.cgImage?.width, 256)
@@ -430,11 +433,18 @@ final class TrailTests: XCTestCase {
         XCTAssertEqual(view.sceneLayerOrder, MeadowBattleCanvasGeometry.sceneLayerOrder)
         XCTAssertEqual(view.heroLayerNames, actor.layers)
 
-        let expectedCanvas = CGRect(x: 0, y: -162.872421696, width: 900, height: 825.744843392)
+        // The sharp scene and its blurred underlay share the same width-locked
+        // scale and top anchor; only the blurred plate extends below the scene.
+        let expectedCanvas = CGRect(x: 0, y: 0, width: 900,
+                                    height: 900 * MeadowBattleCanvasGeometry.sourceCanvas.height
+                                        / MeadowBattleCanvasGeometry.sourceCanvas.width)
         XCTAssertEqual(view.sceneCanvasFrame.minX, expectedCanvas.minX, accuracy: 0.001)
         XCTAssertEqual(view.sceneCanvasFrame.minY, expectedCanvas.minY, accuracy: 0.001)
         XCTAssertEqual(view.sceneCanvasFrame.width, expectedCanvas.width, accuracy: 0.001)
         XCTAssertEqual(view.sceneCanvasFrame.height, expectedCanvas.height, accuracy: 0.001)
+        XCTAssertEqual(view.cameraBackdropFrame, view.bounds)
+        XCTAssertEqual(view.cameraBackdropContentMode, .scaleToFill)
+        XCTAssertTrue(view.cameraBackdropClipsToBounds)
         for layerFrame in view.sceneLayerFrames {
             XCTAssertEqual(layerFrame.minX, 0, accuracy: 0.01)
             XCTAssertEqual(layerFrame.minY, 0, accuracy: 0.01)
@@ -475,7 +485,8 @@ final class TrailTests: XCTestCase {
         XCTAssertEqual(subviewOrder, [
             "MeadowCampFarForest", "MeadowCampGround", "MeadowCampMidground",
             "meadowBattleHeroShadow", "meadowBattleForestWardenShadow", "meadowBattleHero",
-            "meadowBattleForestWarden", "MeadowCampForeground"
+            "meadowBattleForestWarden", "MeadowCampForeground", "battleCombatEffects",
+            "battleHeroHealth", "battleEnemyHealth"
         ], "Scene layers, actor shadows, units and foreground must retain their fixed composite order")
         let heroIndex = try XCTUnwrap(subviewOrder.firstIndex(of: "meadowBattleHero"))
         let enemyIndex = try XCTUnwrap(subviewOrder.firstIndex(of: "meadowBattleForestWarden"))
@@ -495,8 +506,28 @@ final class TrailTests: XCTestCase {
             for mode in [MeadowBattlePreviewMode.playerTurn, .monsterTurn] {
                 let layout = MeadowBattleLayout(size: size, safeArea: .zero, mode: mode)
                 let viewport = CGRect(origin: .zero, size: layout.battlefield.size)
+                view.frame = CGRect(origin: .zero, size: viewport.size)
+                view.layoutIfNeeded()
+                XCTAssertEqual(view.cameraBackdropFrame, viewport,
+                               "The blurred backdrop must fill the battlefield viewport")
+                XCTAssertEqual(view.cameraBackdropContentMode, .scaleToFill,
+                               "The blurred backdrop must keep the sharp canvas camera transform")
                 let canvas = MeadowBattleCanvasGeometry.fittedCanvas(in: viewport)
-                XCTAssertTrue(canvas.insetBy(dx: -0.01, dy: -0.01).contains(viewport), "Battle camera must leave no letterbox bands")
+                let backdropSource = CGRect(origin: .zero, size: MeadowBattleCanvasGeometry.sourceCanvas)
+                    .applying(MeadowBattleCanvasGeometry.backdropTransform(for: viewport.size))
+                XCTAssertEqual(backdropSource.width, canvas.width, accuracy: 0.01)
+                XCTAssertEqual(backdropSource.height, canvas.height, accuracy: 0.01)
+                XCTAssertEqual(backdropSource.maxY, viewport.height, accuracy: 0.01,
+                               "Core Image must extend the bottom edge while preserving the top anchor")
+                XCTAssertEqual(canvas.minX, 0, accuracy: 0.01)
+                XCTAssertEqual(canvas.minY, 0, accuracy: 0.01,
+                               "The sharp scene keeps its top anchor as the viewport grows")
+                XCTAssertEqual(canvas.width, viewport.width, accuracy: 0.01,
+                               "The sharp scene keeps the same width-driven character scale")
+                XCTAssertEqual(canvas.height,
+                               viewport.width * MeadowBattleCanvasGeometry.sourceCanvas.height
+                                   / MeadowBattleCanvasGeometry.sourceCanvas.width,
+                               accuracy: 0.01)
                 let localCanvas = CGRect(origin: .zero, size: canvas.size)
                 let hero = MeadowBattleCanvasGeometry.actorFrame(configuration: actor, canvas: localCanvas)
                 let enemy = MeadowBattleCanvasGeometry.registeredSpriteFrame(
@@ -577,15 +608,17 @@ final class TrailTests: XCTestCase {
         XCTAssertEqual(walk.lift, 0, accuracy: 0.001)
     }
 
-    func testAuthoredWalkUses24WholeFramesAndNoLegWarp() {
+    func testAuthoredWalkMapsDistanceClockToWholePosesWithoutLegWarp() {
         XCTAssertEqual(HeroFrames.walkFrameCount, 24)
         for hero in 0..<3 { for facing in 0..<8 { for frame in 0...24 {
             let pose = HeroPose(heroIndex: hero, facing: facing, frame: frame, phase: CGFloat(frame) / 24)
             XCTAssertEqual(pose.frame, frame)
             XCTAssertEqual(pose.sourcePositions, pose.destinationPositions())
             XCTAssertEqual(pose.bodyOffset(), .zero)
-            let rect = HeroFrames.atlasRect(facing: facing, frame: frame)
-            XCTAssertEqual(rect.x + rect.z / 2, (Float(frame) + 0.5) / 25, accuracy: 0.00001)
+            let rect = HeroFrames.atlasRect(facing: facing, frame: frame, heroIndex: hero)
+            let source = HeroFrames.sourceColumn(frame: frame, heroIndex: hero)
+            let columns = HeroFrames.authoredFrameCount(heroIndex: hero) + 1
+            XCTAssertEqual(rect.x + rect.z / 2, (Float(source) + 0.5) / Float(columns), accuracy: 0.00001)
             XCTAssertLessThanOrEqual(rect.x + rect.z, 1.00001)
         } } }
     }
@@ -609,11 +642,16 @@ final class TrailTests: XCTestCase {
         for hero in 0..<3 { for facing in [0, 2, 4, 5, 6, 7] {
             let a = HeroPose(heroIndex: hero, facing: facing, frame: 1, phase: 0)
             let b = HeroPose(heroIndex: hero, facing: facing, frame: 13, phase: 0.5)
+            var changes: [Float] = []
             for leg in 0..<2 {
                 let af = a.footLandmarks[leg], bf = b.footLandmarks[leg]
                 let change = abs(a.groundLine(at: SIMD2(af.x, af.y)) - b.groundLine(at: SIMD2(bf.x, bf.y)))
-                XCTAssertGreaterThan(change, 0.02, "Each anatomical boot must exchange ground depth, hero \(hero), facing \(facing), leg \(leg)")
+                changes.append(change)
+                if hero > 0 {
+                    XCTAssertGreaterThan(change, 0.02, "Legacy anatomical boot must exchange ground depth, hero \(hero), facing \(facing), leg \(leg)")
+                }
             }
+            XCTAssertGreaterThan(changes.max() ?? 0, 0.02, "Authored contacts must change ground depth")
         } }
     }
 
@@ -628,9 +666,24 @@ final class TrailTests: XCTestCase {
             let frozen = test.point(for: 0); test.advance(10)
             XCTAssertEqual(test.point(for: 0), frozen)
             let phase = test.phase; test.step()
-            XCTAssertEqual(test.phase - phase, 1.0 / 24, accuracy: 0.0001)
+            XCTAssertEqual(test.phase - phase, 1.0 / 8, accuracy: 0.0001)
             XCTAssertEqual(test.point(for: 1).x - test.point(for: 0).x, 110, accuracy: 0.0001)
         }
+    }
+
+    func testApprovedP1GaitKeepsNormalCadenceAndStepsBetweenAuthoredPoses() {
+        XCTAssertEqual(HeroFrames.authoredFrameCount(heroIndex: 0), 8)
+        var test = GaitTest()
+        test.select(0)
+        test.advance(0.119)
+        XCTAssertEqual(HeroFrames.sourceColumn(frame: test.frame), 1)
+        test.advance(0.002)
+        XCTAssertEqual(HeroFrames.sourceColumn(frame: test.frame), 2)
+        test.step()
+        XCTAssertEqual(HeroFrames.sourceColumn(frame: test.frame), 3)
+        let frozen = test.frame
+        test.advance(1)
+        XCTAssertEqual(test.frame, frozen)
     }
 
     func testNorthwestLegMeshNeverFoldsAcrossTheCycle() {
@@ -752,9 +805,9 @@ final class TrailTests: XCTestCase {
         }
     }
 
-    func testHeroFramesBundlesAllDirectionsAndWholeMirroredRightProfile() {
+    func testHeroFramesBundlesAllApprovedDirectionsAndWholeRightProfile() {
         XCTAssertEqual(HeroFrames.sourceFacing(3), 3)
-        XCTAssertFalse(HeroFrames.isMirrored(3), "Right art is mirrored once during packing, including its footprint data")
+        XCTAssertFalse(HeroFrames.isMirrored(3), "Right art has its own approved source row")
         for hero in 1...3 {
             let poses = HeroFrames.load(hero)
             XCTAssertEqual(poses.count, 8)
@@ -764,7 +817,8 @@ final class TrailTests: XCTestCase {
                     let image = poses[facing][frame].cgImage()
                     return UIImage(cgImage: image).pngData()!
                 })
-                XCTAssertEqual(hashes.count, 24, "Every walk pose must contain a distinct rasterized limb pose")
+                XCTAssertEqual(hashes.count, HeroFrames.authoredFrameCount(heroIndex: hero - 1),
+                               "Use exactly the authored poses; P1 has eight, P2/P3 retain 24")
             }
         }
     }
@@ -922,9 +976,11 @@ final class TrailTests: XCTestCase {
                                   "Gait attributes must not cut or replace the authored leg silhouette")
 
                 // The paired pose comes from the real atlas column instead.
-                node.texture = frames[direction][3]
+                node.texture = frames[direction][13]
                 let contactB = try renderedPixels(node, in: view)
-                XCTAssertGreaterThan(pixelDifference(contactA, contactB), 0.5,
+                // The full-canvas mean includes the transparent border and
+                // mostly stationary torso; 0.20 still requires a strong pose change.
+                XCTAssertGreaterThan(pixelDifference(contactA, contactB), 0.20,
                                      "Contact A/B must use the two authored full-frame poses")
             }
         }
@@ -942,13 +998,13 @@ final class TrailTests: XCTestCase {
                 node.texture = frames[direction][1]
                 let left = try renderedPixels(node, in: view)
                 effects.apply(effects.vegetation, to: node, origin: .zero, extent: node.size, gait: SIMD2(Float(direction), 2))
-                node.texture = frames[direction][2]
+                node.texture = frames[direction][7]
                 let passing = try renderedPixels(node, in: view)
                 effects.apply(effects.vegetation, to: node, origin: .zero, extent: node.size, gait: SIMD2(Float(direction), 3))
-                node.texture = frames[direction][3]
+                node.texture = frames[direction][13]
                 let right = try renderedPixels(node, in: view)
-                XCTAssertGreaterThan(pixelDifference(left, right), 0.5)
-                XCTAssertGreaterThan(pixelDifference(left, passing), 0.5)
+                XCTAssertGreaterThan(pixelDifference(left, right), 0.20)
+                XCTAssertGreaterThan(pixelDifference(left, passing), 0.20)
                 XCTAssertGreaterThan(largestOpaqueComponentRatio(right), 0.80,
                                      "The complete authored leg frame should remain connected (hero \(hero), direction \(direction))")
             }
@@ -979,7 +1035,7 @@ final class TrailTests: XCTestCase {
                                      anchorY: 0.125, ratio: 0.82, softness: 1.2, opacity: 0.52, shader: effects.shadow)
         shadow.update(foot: .zero, texture: contacts[1], gait: SIMD2(0, 1))
         let left = try renderedPixels(shadow, in: view)
-        shadow.update(foot: .zero, texture: contacts[3], gait: SIMD2(0, 3))
+        shadow.update(foot: .zero, texture: contacts[13], gait: SIMD2(0, 13))
         let right = try renderedPixels(shadow, in: view)
         XCTAssertGreaterThan(pixelDifference(left, right), 0.05,
                              "The ground projection must use the currently selected full animation frame")

@@ -1,0 +1,11 @@
+{
+  "image": "relight-generated.png",
+  "scale": 0.20414673046251994,
+  "translation": [
+    0,
+    0
+  ],
+  "basis": "fixed complete 1254px canvas maps to same256px source canvas; no per-pose fitting",
+  "alphaOwner": "approved left r5 reflected, not generator",
+  "inputSHA256": "a626e71c795c39ed08b009fedfb303b02074af25244ee9adcd130723279a9e49"
+}

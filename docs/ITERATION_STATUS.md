@@ -1,5 +1,423 @@
 # 林间行旅迭代进度 · 2026-10-19
 
+## 2026-10-24 · 八向统一组合、相位与离线切向复核
+
+美术提交 `ecfb101846a50219797b9e7099ce2863bb8ea5b4`；[正常切向GIF直链](https://raw.githubusercontent.com/liamchan-rgb/experiment/ecfb101846a50219797b9e7099ce2863bb8ea5b4/Art/Review/P1/modular-eight-way-v1/turn-comparison-120ms.gif)及两套八向步行/指定起停、站姿共六份HTTPS均HTTP200/MIME/SHA256与本地一致，时序/循环通过；远端9864条资源/源稿/公共依赖字节一致，见 `Art/Review/P1/modular-eight-way-v1/delivery.json`。新整合仍待用户认可。
+
+用户“没问题，继续下一项”认可上一轮实际展示的正右独立外观，范围见 `Art/Review/P1/modular-right-appearance-v1/approval.json`。本轮完成八向离线统一候选：同一个身体ID、一个catalog/motion，九个完整八向包；两上衣、共用裤靴、两头发、两五官、背剑可使用同一选择跨八向装配。三种背向五官透明符合原导板，不记作缺脸。新整合和修订artApproval=null。
+
+root亲自发现并修复：正下裤靴拆入共用包；各向步行循环起点不一致，统一为同物理支撑脚，只旋转原八帧起点、不丢帧/重复/变速；原neck固定父平移注册，保留逐帧头部轻摆，不用定义不同的hip点或alpha边框适配。蓝色长外套四斜向/正上原为短下摆，工具绘制13姿势长摆后独立提取，返修初稿含剑污染，保留原身体/袖子/手脚。右上v6镜像造成换肩，新包复用原v1的右肩→左髋斜背13姿势并修遮挡，旧v6/认可不覆盖。
+
+技术验证：9清单；16逻辑搭配×8方向×13姿势=1664真实装配；832身体层保持、52正下共用裤靴字节相同、64步行相位映射、2048邻向/相位/搭配支撑元数据检查；3328可见原手贡献、4992项无新增>5%底模暴露、832背剑开关、1092未涉修订的整身像素保持。11611旧文件未改，5411文件重导逐字节一致；本轮合同26/装配器21测试通过。
+
+主线程亲看两主搭配八向各13姿势1×/2×整身（208姿势），重点衣摆65姿势、逐侧四肢链/接缝/衣裤边/靴底、整体脸部比例、发际/后颈、背剑护手和近远遮挡；另亲看最终行走GIF各8个实际解码帧、切向GIF全部64实际解码帧，并核指定起停入口/出口。查看器静帧，不称连续播放或设备验收；其余交叉搭配实际装配和区域检查，不称1664张均2×人工逐张查看。
+
+[正常切向GIF](../Art/Review/P1/modular-eight-way-v1/turn-comparison-120ms.gif) · [绿衣八向步行](../Art/Review/P1/modular-eight-way-v1/forester-eight-way-walk-120ms.gif) · [蓝衣八向步行](../Art/Review/P1/modular-eight-way-v1/wayfarer-eight-way-walk-120ms.gif) · [站姿](../Art/Review/P1/modular-eight-way-v1/outfits-idle-2x.png) · [主线程复核](../Art/Review/P1/modular-eight-way-v1/art-review.md)
+
+旧demo八向切换已存在；本轮新统一分层包及指定起停尚未接入demo。下一阶段是新资源接入并保留既有距离相位/方向防抖。指定起停仍沿原walk01/08，entryPhase/exitPhase逐向记录；任意相位停车、完整统一骨架标记重定义、第三件全八向新外观零引擎修改验收仍单列，女性延后。本轮不运行设备或制作IPA。
+
+## 2026-10-24 · 正右独立五官/发型/两衣型/裤靴/背剑
+
+美术提交 `e4dc95a3fa69d7cb84da6c2ede3df5e46715c5fc`；[正常GIF直链](https://raw.githubusercontent.com/liamchan-rgb/experiment/e4dc95a3fa69d7cb84da6c2ede3df5e46715c5fc/Art/Review/P1/modular-right-appearance-v1/outfits-walk-120ms.gif)、指定起停及站姿均HTTP200/MIME/SHA256与本地一致，GIF时序/循环正确；远端1328条资源/源稿/公共依赖字节一致，回执见 `Art/Review/P1/modular-right-appearance-v1/delivery.json`。
+
+用户“没问题，继续下一项”认可上一轮正右中性身体/13姿势的实际展示，范围见 `Art/Review/P1/neutral-right-r1-mirror/approval.json`。本轮沿同一身体/关节/头挂点/步相补正右独立外观：棕发/银发、蓝眼/琥珀眼、绿短衣/蓝长外套、共用裤靴与背剑，共8资源包。新外观待用户认可，不继承中性身体或左向的认可。
+
+root独自制作、修复和审核。原左向外观逐层镜像并转换左右槽位，头部96局部与右向导板对应；五官仍分眼/眉/鼻/口四层，不混入头皮/耳部，身体不替换。两张工具头发色稿提供固定左上光照，原头发轮廓保持；衣物用同一工具材质色阶及同衣型共享中值，裤腿逐侧保持色调，靴子用全13姿势共用锚点保留原鞋面/鞋底明暗。所有原衣物alpha、边界、镶边及墨线保持，RGBA的透明像素清零。背剑按左向侧视投影固定反射，对照柄/护手/鞘尖，不移到身体中轴去避让。
+
+技术检查：9清单、16搭配×13姿势=208实际装配，13裸身体及1664身体层保持，286部件alpha映射、208整身alpha映射通过；1040衣物覆盖贡献检查无>5%漏底，208可见原手保持、104背剑开关、13背剑姿势映射、832五官可见贡献检查通过。覆盖只排除真实领口开口x123..135/y128..137，不把正常颈皮当漏衣；其余全量检查。10967旧部件/模板/图集/导入文件保持，874文件重导逐字节一致；本轮现有合同26、装配器21测试通过。
+
+主线程亲看两衣型×两发型×两五官共8个带剑搭配的全部13姿势整身1×/2×、主展示站姿及正常GIF真实8解码帧，并核起停路径。重点检查整体脸部眉眼鼻口间距/耳颌关系、刘海遮挡、肩肘腕与髋膝踝足、袖口/裤口/靴筒/靴底、近远层次、衣摆运动和背剑位置。空背由实际装配和开关检查覆盖，不声称全部208张逐张2×复核。查看器仅静帧，不称连续播放或实机验收；数字通过不代表用户认可。
+
+[正常全身GIF](../Art/Review/P1/modular-right-appearance-v1/outfits-walk-120ms.gif) · [指定起停](../Art/Review/P1/modular-right-appearance-v1/outfits-start-stop-120ms.gif) · [站姿](../Art/Review/P1/modular-right-appearance-v1/outfits-idle-2x.png) · [主线程复核](../Art/Review/P1/modular-right-appearance-v1/art-review.md)
+
+当前为正右独立外观候选，八向基本资源已有逐方向成果，仍待统一组合、跨方向挂点/相位/起停及切向复核与运行时接入；不能把旧demo已有八向切换说成没做，也不能把当前新分层统一接入说成完成。指定起停仅idle→walk01及walk08→idle，任意相位中断未验收。女性延后，本轮无App/模拟器/设备或IPA。
+
+## 2026-10-24 · 正右统一中性身体/步态/起停分层
+
+美术提交 `451778c0e599735976a9c52c741f57d5eea1a2b1`；[正常GIF直链](https://raw.githubusercontent.com/liamchan-rgb/experiment/451778c0e599735976a9c52c741f57d5eea1a2b1/Art/Review/P1/neutral-right-r1-mirror/walk-120ms.gif)、指定起停/站姿/左右协调四份HTTPS均实测HTTP200/MIME/SHA256一致，GIF时序/循环通过；远端278条资源/消耗源/公共依赖字节一致，回执见 `Art/Review/P1/neutral-right-r1-mirror/delivery.json`。
+
+用户“没问题继续下一项”认可上一轮实际展示的正下自然空手起停，限定范围见其approval.json。当前补正右统一中性身体/动作分层：复用已认可左向r3的13姿势，逐层反射并同时交换左右语义、近远遮挡、关节、支撑标签、脚底及96局部头挂点。旧正右完整人物r1与demo原图保持；旧步态已制作/已认可，不重新记作未制作，也不将旧认可自动扩展到当前新中性稿。
+
+root独自返修与审核。初始空间转色出现暖白衣料误采到皮肤及小腿色块，已拦截保留。仅固定色盘仍继承旧画稿的逐帧深浅差，继续修为：同一工具RGB源提供近/远肤色阶，原肤色中值锚定到共同中间色，同侧整臂/手共用锚点；保留原材质相对阴影边界，所有安全衣裤、墨线和alpha保持。头部固定一张96局部色稿按原反射headToCanvas轻摆，不逐帧生成头。工具原稿新形体/alpha/红色外缘不导入。
+
+技术检查：13实际compositor、104语义层alpha反射、13头局部投影、13左右/关节/支撑/脚底映射、52肢链保持、91固定色盘及26腿部色调检查通过；近/远腿13帧肤色亮度中值各自稳定，保留近远层次。新接缝孔洞0，10808旧部件/模板/图集/导入文件保持；左向认可原图及旧正右strip/正常GIF摘要通过。174文件重导逐字节一致；本轮现有合同26、装配器21测试通过。
+
+主线程亲看全13姿势整身1×/2×，逐侧追踪肩肘腕及髋膝踝足、背心/短裤边界、手型/脚趾、近远遮挡与站姿/首尾/指定起停；同时看实际GIF八个解码帧及左右整身协调图。查看器仅提供静帧，不称连续播放、任意相位起停或设备验收。数值检查只辅助美术判断，新中性稿artApproval=null。
+
+[正常全身步态](../Art/Review/P1/neutral-right-r1-mirror/walk-120ms.gif) · [指定起停](../Art/Review/P1/neutral-right-r1-mirror/start-stop-120ms.gif) · [站姿](../Art/Review/P1/neutral-right-r1-mirror/idle-review-2x.png) · [左右协调](../Art/Review/P1/neutral-right-r1-mirror/walk-comparison-120ms.gif) · [详细审核](../Art/Review/P1/neutral-right-r1-mirror/art-review.md)
+
+本轮先审正右共用中性身体，独立发型/五官/两衣型/裤靴/背剑为下一阶段；空白脸与安全衣裤属于中性底模，不是独立外观成品。全八向统一组合、切向与运行时接入仍待完成；原左向隐藏补片按既有范围保留，不声称完整隐藏人体已验收。女性延后，无App、设备运行或IPA。
+
+## 2026-10-24 · 正下自然空手专用起停及既有资源补同步
+
+美术提交 `6fef130da1e1cfbeb09f8d6fb2f6df5a863b994e`；[正常起停GIF直链](https://raw.githubusercontent.com/liamchan-rgb/experiment/6fef130da1e1cfbeb09f8d6fb2f6df5a863b994e/Art/Review/P1/modular-down-transitions-v1/outfits-start-stop-120ms.gif)、原步态循环和站姿均HTTP200/MIME/SHA256一致，GIF时序正确；远端1012条包/公共依赖字节一致，原缺失560条源路径已补齐，1242份旧资源/审核核对通过，正下此次同步缺口已解决。回执见 `Art/Review/P1/modular-down-transitions-v1/delivery.json`。
+
+用户“没问题，继续下一项”认可上一轮实际展示的正上两套外观，范围见 `Art/Review/P1/modular-up-appearance-v1/approval.json`。按既定顺序，本轮补正下自然空手专用起步/收步：idle→start01→start02→walk01，以及walk08→stop01→stop02→idle。原站姿与八帧循环像素保留，不重画已有衣物或头部。新过渡待用户认可。
+
+root独自制作/修复/审核。四个新姿势沿已保留的正下源图生成，同侧整条自然空手臂、手和袖子共用肩枢轴变换；人体腿、裤腿、靴子共用同一份单调UV场，髋/膝/踝/脚底逐段过渡，不把裤子固定在躯干上，也不混合两张半透明人物。蓝衣两尾片沿原腰下枢轴缓动，背剑随原躯干，不移动剑去躲衣摆。头部沿原挂点，回落过程中同步身体。
+
+审查发现旧motion里的肘/腕挂点仍是握剑时期的记录，与r6自然空手源不符；新motion按实际自然空手源锚点及同一变换修正肩/肘/腕位置。另按可见落地脚修正walk04/08的支撑标签。原motion保留，这些元数据修正不改变原九姿势像素。
+
+技术检查：9清单、36搭配×13姿势=468实际装配，原九姿势324张搭配结果逐像素不变，324项原层绑定文件字节检查保持；3744项身体层保持，1560项穿衣可见贡献检查无>5%漏底，234背剑开关不影响剑alpha之外及不透明头部/五官/手。26臂手链/26腿链、40同侧身体-裤靴UV一致与4新姿势不同于端点通过；10314旧部件/模板/图集/导入文件保持。984个资源/输出文件重导逐字节一致；本轮现有合同26、装配器21测试通过。步行GIF与旧已展示版本逐字节相同。
+
+主线程亲看三发型×两衣型、蓝眼、带剑共6组合的全13姿势整身1×/2×，中性全13姿势、起停整身边界图及实际GIF解码边界帧。逐侧追踪肩肘腕、髋膝踝足，检查袖口/裤口/靴底、手型、衣摆、后背剑柄/鞘尖、眉眼鼻口整体比例和首尾/起停相位。琥珀五官、内衣/空背等其余组合由实际装配及技术检查覆盖，不声称全部468张逐张2×美术审核。查看器只返回静帧，未称连续播放或设备验收。
+
+[正常速度起停GIF](../Art/Review/P1/modular-down-transitions-v1/outfits-start-stop-120ms.gif) · [原步态循环](../Art/Review/P1/modular-down-transitions-v1/outfits-walk-120ms.gif) · [站姿](../Art/Review/P1/modular-down-transitions-v1/outfits-idle-2x.png) · [主线程复核](../Art/Review/P1/modular-down-transitions-v1/art-review.md)
+
+补同步已有正下r6、绿衣覆盖v2、蓝长外套v1、背剑v1、v8/v9及既往审核材料；旧成果只作保留/复用，不把历史审核数字充当本轮新测试。原7分支库存与同步缺口审计保留为历史，本次资源依赖以当前提交及delivery.json回执核验为准。
+
+范围仅指定idle→walk01、walk08→idle，不代表任意步相中断/加减速已完成。正右当前合同分层适配仍是统一八向复核的前置依赖；新分层全八向组合、切向/运行时接入及女性资源未完成。本轮没有App、模拟器/设备或IPA。
+
+## 2026-10-24 · 正上独立头发/两衣型/裤靴/背剑分层
+
+美术提交 `f8381286801cfbf643898ee1c36ddbdcee49e84e`；[正常GIF直链](https://raw.githubusercontent.com/liamchan-rgb/experiment/f8381286801cfbf643898ee1c36ddbdcee49e84e/Art/Review/P1/modular-up-appearance-v1/outfits-walk-120ms.gif)、指定起停及站姿实测HTTP200/MIME/SHA256与本地一致，GIF时序/循环正确；远端564条包/公共依赖存在且字节一致。回执见 `Art/Review/P1/modular-up-appearance-v1/delivery.json`。
+
+用户“没问题”认可上一轮正上中性身体/步态的实际展示，限定范围见 `Art/Review/P1/neutral-up-layered-r1/approval.json`。本轮在同一身体、13姿势、关节/足底/头挂点及120ms步相上新增正后视独立外观：棕/银两配色短发（共用已对齐短发轮廓）、绿衣/蓝衣、裤靴和右肩至左髋斜背剑，六个独立资源包。纯背视不挂五官。新外观待用户认可，不能继承中性动作的认可。
+
+root独自完成返修与审核：修银发冠顶alpha缺口，采用同一工具绘制短发轮廓及独立银发RGB登记；保留耳根/后颈正常露肤。发现右臂后摆时袖子遮断剑护手，保持剑的位置/斜角，只将weapon.back放在两袖与衣服之后、头发之前，全部姿势的剑柄/护手连续。裤口/裤脚分别沿原腿UV，靴面滚动RGB跟随原footArtState；蓝衣背衩下使用灰裤腰，遮住原白背心/短裤。
+
+已亲看四个带剑组合全13姿势整身1×/2×、站姿及实际正常GIF八个解码帧，逐侧检查肩肘腕、髋膝踝足、衣袖/裤口/靴底、头发/颈部与剑的遮挡和首尾/起停帧序。查看器仅提供静帧，未称连续播放或设备验收。技术验证：7清单、8组合104实际装配、13原身体不变、832身体层保持、624衣物覆盖、208手部保持、104冠顶覆盖、52背剑开关及52护手可见；15855旧文件保持，461文件重导逐字节一致；现有合同26/装配器21测试通过。
+
+[正常行走](../Art/Review/P1/modular-up-appearance-v1/outfits-walk-120ms.gif) · [指定起停](../Art/Review/P1/modular-up-appearance-v1/outfits-start-stop-120ms.gif) · [站姿](../Art/Review/P1/modular-up-appearance-v1/outfits-idle-2x.png) · [主线程复核](../Art/Review/P1/modular-up-appearance-v1/art-review.md)
+
+正下r6/v9已有成果同步缺口、自然空手专用起停、正右当前合同分层适配及新分层八向统一组合/切向接入仍未完成。后续按用户顺序推进，女性角色延后；本轮无App、设备运行或IPA。
+
+## 2026-10-24 · 按用户表格首项，补正上中性步态分层
+
+美术提交 `d09826aa8b84855874672a807a266ab6262d8954`；[正常GIF直链](https://raw.githubusercontent.com/liamchan-rgb/experiment/d09826aa8b84855874672a807a266ab6262d8954/Art/Review/P1/neutral-up-layered-r1/walk-120ms.gif)、指定起停及站姿实测HTTP200/MIME/SHA256与本地一致，GIF时序/循环正确；远端253条包依赖存在，asset/motion字节一致，回执见 `Art/Review/P1/neutral-up-layered-r1/delivery.json`。
+
+用户明确按表格先后“第一补齐正向步态的分层”，结合上一答首项正上执行，覆盖此前正右优先/先处理正下同步的排程；同步漏项仍保留。本轮root独自沿旧正上背视角/左右语义/支撑相位制作当前统一规格中性身体分层，旧认可完整图集不改；新中性稿及投影运动单独待审，不声称逐像素复用旧衣物整人图。13姿势含站姿、8步态、指定2起步+2收步，8合同层共104张，91源UV与ORA/SVG/关节/头局部/足底留存。
+
+主线程修源衣边归属、初稿脚面固定、髋点偏低导致裤口跟随太弱；采用两张足面工具源的脚部RGB及原alpha/挂点，校回骨盆内髋点与膝踝跟随。亲看全13姿势整身1×/2×、站姿、首尾/起停及GIF实际8解码帧，无新游离边/肩腕髋孔洞。查看器仅静帧，不称连续播放器或设备验收。
+
+13真实compositor/104层、26臂手、13头局部、52膝踝材质点、接缝洞0、站姿RGBA重组差异0通过；8步相有7种裤子栅格，15478旧文件保持，371文件重导逐字节一致。公共装配器/合同/profile不改，8个远端公共依赖已核对字节一致；现有合同26/装配器21测试通过。新外观认可为空，独立正后视发型/衣物/裤靴/背剑尚待，没有App/设备/IPA。
+
+[正常行走](../Art/Review/P1/neutral-up-layered-r1/walk-120ms.gif) · [指定起停](../Art/Review/P1/neutral-up-layered-r1/start-stop-120ms.gif) · [站姿](../Art/Review/P1/neutral-up-layered-r1/idle-review-2x.png) · [主线程复核](../Art/Review/P1/neutral-up-layered-r1/art-review.md)。HTTPS实测回执见审核目录。
+
+## 2026-10-24 · 复核剩余项目，发现正下成果同步遗漏
+
+用户追问“其他的未完成项目是真的没做过吗”。已直接核对远端正上认可strip/GIF摘要、当前demo正上行、清单、既有组合审核与八向运行代码：正上旧步态确实已认可/导入；换装已做多轮逐方向实际装配；旧demo八向切换、防抖、距离相位和道路离线复核均已有，不能列作全新未制作。
+
+明确缺口：当前正右/正上完整统一分层包、正下自然空手walk-start/walk-stop专用帧、新分层八向统一组合/切方向记录及完整运行接入。工作区旧grip-transition仅修握手/臂像素，仍只有idle/walk，不是起停。
+
+另外查出同步遗漏：正下自然空手r6、v9第二衣型模板和36组合324姿势audit在工作区存在，7个远端分支tree均无对应文件；当前v9 catalog依赖的r6身体、forester-cover-v2、背剑、wayfarer-coat四个清单远端缺失。须作为“已做未同步”单列，不能误报成未制作或已完整在GitHub。逐方向既有组合证据：下36/324在工作区；左72/936、上斜双向16/208、左下和右下各16/208在远端。此项记录缺口，没有批量同步未经复核的旧本地素材。
+
+完整证据及7分支库存见 `docs/P1_DIRECTION_MODULE_AUDIT.json`，已更新路线、AGENTS和总review记录。只检查旧数据/代码及更正文档，无人物美术、App/IPA/设备改动，也未把旧技术验证记成重新测试或完整用户认可。后续先复用既有成果和处理同步依赖，再补实际空缺。
+
+## 2026-10-24 · 核查正右既有成果，更正“没做过”的表述
+
+用户提醒“检查一下仓库，我记得正右好像做过”。检查远端7个分支树（均未截断）、当前美术分支完整资源清单、历史审核及demo导入记录后确认：正右r1已有一张站姿和八张步态，2026-10-18由用户认可，2026-10-21导入demo。远端正右strip和正常GIF均与approval.json摘要相符，GIF8×120ms；当前远端Hero1Directions图集第4行与该认可strip逐像素相同。证据：`Art/Review/P1/directions/right/revisions/r1/approval.json`、该目录README、`Art/Integration/P1-approved-gait-v1/integration.json`。
+
+当前没有`Art/Templates/P1-Neutral/right/`及同合同右向Parts/Wardrobe包；另有战斗侧视待机、隐藏层与单步姿势研究，它们说明右向分层做过部分探索，不构成13姿势统一行走模块。正确缺口是“复用已有成果补齐当前分层/挂载/起停适配”，不是“正右走路从未制作”。正上旧r1步态同样已有认可。已更正八向进度表及AGENTS，避免重复重画已认可动作。
+
+用户此前“可以，我们的走路动作模组是不是做完了”同时认可右下实际展示两组合，已增加限定范围approval.json；未扩展到未展示组合、其他方向及运行时。本轮只核查并更新记录，不修改人物PNG/GIF、动作代码、App或IPA；无需新美术测试。
+
+## 2026-10-24 · 右下独立头部/两衣型/裤靴/背剑v1
+
+美术提交 `ccc65c7035412bf1c7d15b69e29573258ab4f985`；[正常GIF直链](https://raw.githubusercontent.com/liamchan-rgb/experiment/ccc65c7035412bf1c7d15b69e29573258ab4f985/Art/Review/P1/modular-down-right-appearance-v1/outfits-walk-120ms.gif)、起停和站姿均实测HTTP200/MIME/SHA256与本地一致，GIF时序/循环通过；593文件重导逐字节一致。完整HTTPS回执见 `Art/Review/P1/modular-down-right-appearance-v1/delivery.json`。
+
+用户“没问题下一步工作开始”认可上一轮实际展示的左下整身两组，新增限定范围approval.json；未把未展示交叉组合及其他方向自动认可。本轮root独自补右下8个独立资源，沿原右下r1身体/13姿势，16组合208图。镜像同时转换左右语义/头部局部/近远层序；头发和服装通过完整固定画布RGB参考校正左上光源，原alpha/形体/手/五官不变。背剑单独校正同一右肩斜背投影，修掉部分步态腿边鞘尖细线，保留试稿；不裁剑、不逐帧擦像素、不竖到脊柱。
+
+已亲看8种带剑组合全13帧整身1×/2×、主要站姿和实际正常GIF全部8解码帧，追踪肢链/袖裤/靴底/首尾与起停；工具只能静帧，不宣称连续播放器或设备验收。9清单、208实际装配、1664身体层、2496外观反射alpha、1248覆盖/416手/624五官/104武器切换检查通过，14876旧文件保持，合同26/装配器21既有测试通过。公共装配器/合同未改，仅新增右下头导板。新右下外观认可为空，无App/设备/IPA。
+
+[正常全身GIF](../Art/Review/P1/modular-down-right-appearance-v1/outfits-walk-120ms.gif) · [正常起停](../Art/Review/P1/modular-down-right-appearance-v1/outfits-start-stop-120ms.gif) · [站姿](../Art/Review/P1/modular-down-right-appearance-v1/outfits-idle-2x.png) · [主线程复核](../Art/Review/P1/modular-down-right-appearance-v1/art-review.md)。重导和HTTPS回执见审核目录。下一项正右，再正上/正下自然空手起停/八向统一复核，女性延后。
+
+## 2026-10-24 · 先完成八方向；左下衣物/裤靴/背剑v1
+
+美术提交 `f4dfa7e2564500d46d65e966b4be4c25d6ee887f`；[正常行走HTTPS](https://raw.githubusercontent.com/liamchan-rgb/experiment/f4dfa7e2564500d46d65e966b4be4c25d6ee887f/Art/Review/P1/modular-down-left-wardrobe-v1/outfits-walk-120ms.gif)、正常起停及站姿三份文件已实测HTTP200、MIME/哈希及GIF时序一致，回执见 `Art/Review/P1/modular-down-left-wardrobe-v1/delivery.json`。641份文件重导逐字节一致。
+
+用户明确先完成各方向模组，女性角色延后。真实分层八向现状与剩余顺序已记录 `docs/P1_DIRECTION_MODULES.md`：左下当前外观→右下外观→正右→正上→正下自然空手起停→八向统一复核。旧整张八向步态不算新模组完成。
+
+本轮root独自补左下绿短上衣、蓝分叉短外套、共用灰裤低靴、背剑四包，复用原头部四包、身体和13姿势，16搭配208图。首稿躯干比例失准已退回重画；背剑前视投影修掉下巴旁/腿边细线，保留同一右肩斜背与真实遮挡。衣物使用共同源UV和原人体matte，不缩放肢体、不改身体/动作、公共装配器/合同/profile保持。
+
+主线程查看主要两组全部13帧整身1×/2×、配对站姿、首尾/起停与挂点遮挡。9清单通过、208图真实装配匹配，1248覆盖/416手部/624五官/104背剑开关检查通过，8044旧文件保持。新外观无用户认可，工具只能逐帧，不称连续播放器验收，无App/设备/IPA工作。
+
+[正常行走](../Art/Review/P1/modular-down-left-wardrobe-v1/outfits-walk-120ms.gif)、[起停](../Art/Review/P1/modular-down-left-wardrobe-v1/outfits-start-stop-120ms.gif)、[站姿](../Art/Review/P1/modular-down-left-wardrobe-v1/outfits-idle-2x.png)、[具体复核](../Art/Review/P1/modular-down-left-wardrobe-v1/art-review.md)。重导与HTTPS发布回执见审核目录。
+
+## 2026-10-24 · 左下独立头部外观 v1
+
+美术提交 `c3359210e38d0c530fecfc12d5e55bb8f4ae2459`；[正常行走HTTPS](https://raw.githubusercontent.com/liamchan-rgb/experiment/c3359210e38d0c530fecfc12d5e55bb8f4ae2459/Art/Review/P1/modular-down-left-heads-v1/walk-comparison-120ms.gif)、正常起停及站姿三份文件已实测HTTP200、MIME/哈希及GIF时序一致，回执见 `Art/Review/P1/modular-down-left-heads-v1/delivery.json`。135份文件重导逐字节一致。
+
+用户“没问题开始做下一步”，认可前次已展示右下中性站姿/正常行走/指定起停，认可单独记录在 `Art/Review/P1/neutral-down-right-r1-mirror/approval.json`。本轮先补左下独立头部：棕/银两发型、蓝/琥珀两五官，四组合×13姿势=52张。原中性身体/动作不变，新外观未获用户认可。
+
+主线程独自制作及修复：眉眼鼻嘴分层并校准纵向间距，修掉细嘴线漏采；棕发刘海单独重画以清远眼角，未改中性头皮/耳颈或身体。全部外观沿同一96px头部矩阵随步，四包只提供头发/五官。profile只增加左下头部导板数据，旧字段保持；公共装配器/合同无代码修改，未加外观ID分支。
+
+主线程查看四组合全部52帧完整1×/2×、同屏站姿、首尾/起停与交叉搭配。52张公共装配匹配，416次中性层比较不变，13张空外观与原RGBA一致；156次眼鼻嘴完整显示，7132份旧文件保持。合同26项、装配21项通过，重导报告及HTTPS发布回执见审核目录。工具只能逐帧，不称连续播放验收；无App/设备/IPA工作。
+
+[正常行走](../Art/Review/P1/modular-down-left-heads-v1/walk-comparison-120ms.gif)、[正常起停](../Art/Review/P1/modular-down-left-heads-v1/start-stop-comparison-120ms.gif)、[整身站姿](../Art/Review/P1/modular-down-left-heads-v1/idle-comparison-2x.png)、[具体复核](../Art/Review/P1/modular-down-left-heads-v1/art-review.md)。衣物与背剑随后独立制作审核。
+
+## 2026-10-24 · 右下r1镜像动作模组
+
+美术提交 `a950fb0b635bf6c1312572942702a699a07983eb`；[正常行走HTTPS](https://raw.githubusercontent.com/liamchan-rgb/experiment/a950fb0b635bf6c1312572942702a699a07983eb/Art/Review/P1/neutral-down-right-r1-mirror/walk-120ms.gif)、正常起停及站姿三份文件已实测HTTP200、MIME/哈希及GIF时序一致，回执见 `Art/Review/P1/neutral-down-right-r1-mirror/delivery.json`。386份文件重导逐字节一致。
+
+用户“没问题，可以试一下镜像来做右下的动画”，认可左下已展示站姿、正常步态和指定起停；认可记录见 `Art/Review/P1/neutral-down-left-r1/approval.json`，不扩大到外观或任意动作中断。
+
+主线程独自将左下13姿势逐层反射，交换左右语义、关节、脚底、支撑、近远层级及96px头部局部坐标；源人体和动作保持，右下104层alpha精确等于左下反射。单张imagegen参考仅提供固定左上光照颜色，通过源UV绑定复用所有动作。修掉首轮肤色/衣料取色混杂、背心碎色及两帧头部仿射取整差异；后者离线采样相位登记最大0.0015px，实际头部UV/轮廓保持反射。
+
+主线程查看全部13姿势完整1×/2×、左右站姿和首尾/起停帧序；13张实际公共装配匹配、104层alpha镜像、13次头部局部RGBA匹配、26整臂分区一致，近手全保留，关节缺口0，8张裤片独立运动、13帧头顶高光左上。6019份旧文件保持；公共装配器/合同/profile不改。新右下无用户美术认可，工具只能逐帧，不称连续播放器验收，无App/设备/IPA工作。
+
+[正常行走](../Art/Review/P1/neutral-down-right-r1-mirror/walk-120ms.gif)、[起停](../Art/Review/P1/neutral-down-right-r1-mirror/start-stop-120ms.gif)、[站姿](../Art/Review/P1/neutral-down-right-r1-mirror/idle-review-2x.png)、[具体复核](../Art/Review/P1/neutral-down-right-r1-mirror/art-review.md)。重导及HTTPS回执见审核目录。
+
+## 2026-10-24 · 左下中性动作模组 r1
+
+美术提交 `2b4f0e83185896c36a4377f4c2ca7dccfef74d76`；[正常行走HTTPS](https://raw.githubusercontent.com/liamchan-rgb/experiment/2b4f0e83185896c36a4377f4c2ca7dccfef74d76/Art/Review/P1/neutral-down-left-r1/walk-120ms.gif)、正常起停及站姿三份文件已实测HTTP200、MIME/哈希及GIF时序一致，回执见 `Art/Review/P1/neutral-down-left-r1/delivery.json`。265份文件重导逐字节一致。
+
+用户“Ok开始左下方动作模组的制作”，认可上一项已展示的上斜v6并授权新方向；认可不扩大到未展示组合或完整模板。主线程独自制作左下正面斜向中性底模，站姿1、行走8、起步2、收步2，均可按共同合同装配。新左下美术认可为空。
+
+固定登记单张新源，明确近侧左肢（屏右）与远侧右肢；修掉裤边混入臂层、近脚像素混入远脚层及腿根一像素小孔，膝部改按本方向原姿态投影；背心/短裤/四肢共用肩腰裤口空间域，保留轻微头摆。原中性/上斜/旧左下6052份文件不变，公共装配器/合同/profile不变。
+
+主线程复核全13姿势整身1×/2×、首尾与起停帧序。13张实际装配匹配、104语义层无游离块、26臂手重组一致、关节透明缺口0、近手无削切、8张裤片各自运动。正常行走8×120ms，正常起停22帧，重导/回执见审核目录。工具只能逐帧，不称连续播放器验收；仅美术，无App/设备/IPA工作。
+
+[正常行走](../Art/Review/P1/neutral-down-left-r1/walk-120ms.gif)、[正常起停](../Art/Review/P1/neutral-down-left-r1/start-stop-120ms.gif)、[站姿](../Art/Review/P1/neutral-down-left-r1/idle-review-2x.png)、[具体复核](../Art/Review/P1/neutral-down-left-r1/art-review.md)。
+
+## 2026-10-24 · 上斜v6：撤销中轴竖背，匹配左上斜背
+
+美术提交 `2e92d5c562172cd42853946f9bbdac23e257b6a2`；[正常行走HTTPS直链](https://raw.githubusercontent.com/liamchan-rgb/experiment/2e92d5c562172cd42853946f9bbdac23e257b6a2/Art/Review/P1/modular-upper-wardrobe-v6/outfits-walk-120ms.gif)、正常起停及站姿三份文件已实测HTTP200、MIME/哈希一致，正常GIF帧速正确，回执见 `Art/Review/P1/modular-upper-wardrobe-v6/delivery.json`。372份文件重导逐字节一致，2312份原中性及旧换装文件保持。
+
+用户明确判退v5，要求右上剑的位置与左上动作吻合。主线程承认此前为零交集而破坏背负一致性，v5完整保留。v6右上13姿势严格镜像左上剑参考，无额外位移/旋转/缩放，保留斜角、长度、柄/护手/鞘尖和随身动作。近侧肩袖不截断剑鞘，远肩相叠沿用左上对应关系。
+
+主线程复核左右同屏站姿和右上两衣型全部13姿势整身1×/2×、首尾/起停与交叉发色。16搭配208图通过，13张右上武器层与左上镜像像素一致；左上、空背和非武器画面保持。新美术未获用户认可，工具只能逐帧，不称连续播放验收。
+
+[正常行走](../Art/Review/P1/modular-upper-wardrobe-v6/outfits-walk-120ms.gif)、[起停](../Art/Review/P1/modular-upper-wardrobe-v6/outfits-start-stop-120ms.gif)、[站姿](../Art/Review/P1/modular-upper-wardrobe-v6/outfits-idle-2x.png)、[具体复核](../Art/Review/P1/modular-upper-wardrobe-v6/art-review.md)。原资源保留，无App/设备/IPA工作。
+
+## 2026-10-24 · 上斜v5：右上背剑避让肩袖
+
+美术提交 `9899cac518a27d4e22f83deafe0cda2c4cbb6d2a`；[正常行走HTTPS直链](https://raw.githubusercontent.com/liamchan-rgb/experiment/9899cac518a27d4e22f83deafe0cda2c4cbb6d2a/Art/Review/P1/modular-upper-wardrobe-v5/outfits-walk-120ms.gif)、正常起停及站姿三份文件已实测HTTP200、MIME/哈希一致，正常GIF帧速正确，回执见 `Art/Review/P1/modular-upper-wardrobe-v5/delivery.json`。372份文件重导逐字节一致，2225份原中性及旧换装文件保持。
+
+用户指出右上动作剑穿模。主线程分层确认原挂载中段与近侧肩袖投影重叠，摆臂造成剑鞘断口，原内部美术通过撤回。另存背剑v5：右上以躯干局部固定旋转/偏移重新登记，并排除原后颈遮挡区；剑柄由头部正常遮住，剑鞘保持在背部。左上和空背搭配不变，后颈肤色/裤靴/人体/动作保持。
+
+右上两衣型全部13姿势整身1×/2×、起停/首尾与换发站姿由主线程复核。16组合208图检查通过；右上武器与双袖无交集，露出剑鞘连续；改动只在武器范围，全部左上/空背组合与v4像素一致。工具只能逐帧，不称连续播放器验收，新美术未获认可。
+
+[正常行走GIF](../Art/Review/P1/modular-upper-wardrobe-v5/outfits-walk-120ms.gif)、[起停GIF](../Art/Review/P1/modular-upper-wardrobe-v5/outfits-start-stop-120ms.gif)、[站姿](../Art/Review/P1/modular-upper-wardrobe-v5/outfits-idle-2x.png)、[具体复核](../Art/Review/P1/modular-upper-wardrobe-v5/art-review.md)。原资源保留，无App/设备/IPA工作。
+
+## 2026-10-24 · 上斜v4：后颈连续肤色与边缘过渡
+
+美术提交 `8a5a44025fe282ebcb01e8d377784b3d7bb3bb9c`；[正常行走HTTPS直链](https://raw.githubusercontent.com/liamchan-rgb/experiment/8a5a44025fe282ebcb01e8d377784b3d7bb3bb9c/Art/Review/P1/modular-upper-wardrobe-v4/outfits-walk-120ms.gif)、正常起停及站姿三份文件已实测HTTP200、MIME/哈希一致，正常GIF帧速正确，回执见 `Art/Review/P1/modular-upper-wardrobe-v4/delivery.json`。592份文件重导逐字节一致，1920份原中性及旧换装文件保持。
+
+用户指出v3后颈色块不均匀。主线程确认离散暗像素被较亮补色替换，缺乏与周围阴影的融合，撤回v3内部美术通过。另存v4，以连续绘制颈部肤色场处理整个交界，源边缘采用2px合成过渡，原alpha/头形/动作和六个外观包保持。
+
+最终两方向两衣型全部13姿势整身1×/2×和新旧颈部帧序复核；孤立亮点与硬补丁边界已不明显。16组合208姿势检查通过，后颈影响区外与v2像素一致，无漏底/新增可见游离块。工具只能逐帧，不称连续播放器验收；新修订未获用户认可。原v3和更早资源保留。
+
+[正常行走](../Art/Review/P1/modular-upper-wardrobe-v4/outfits-walk-120ms.gif)、[起停](../Art/Review/P1/modular-upper-wardrobe-v4/outfits-start-stop-120ms.gif)、[整身站姿](../Art/Review/P1/modular-upper-wardrobe-v4/outfits-idle-2x.png)、[具体检查](../Art/Review/P1/modular-upper-wardrobe-v4/art-review.md)。无App/设备/IPA工作。
+
+## 2026-10-24 · 上斜v3后颈接缝黑线修正
+
+美术提交 `eededb5c11a548cf9f0aad856782ba8e2b8b9b08`；[正常行走HTTPS直链](https://raw.githubusercontent.com/liamchan-rgb/experiment/eededb5c11a548cf9f0aad856782ba8e2b8b9b08/Art/Review/P1/modular-upper-wardrobe-v3/outfits-walk-120ms.gif)、正常起停及站姿三份文件已实测HTTP200、MIME/哈希一致，正常GIF帧速正确，回执见 `Art/Review/P1/modular-upper-wardrobe-v3/delivery.json`。595份文件重导逐字节一致，1613份原中性及旧换装文件保持。
+
+用户指出后颈黑线并要求继续。主线程定位为头部下缘与颈部底图的近黑切线重叠，上轮漏检，撤回v2内部美术通过并保留原稿。现单独登记共同底模r7，仅调整左上头4/颈10、右上头4/颈9枚源像素颜色，暖肤色阴影衔接；头部仍沿原矩阵轻微摆动，躯干补丁仍沿原共同场，未用发片遮盖或固定帧贴片。
+
+两方向两衣型13姿势最终整身1×/2×、后颈旧新序列与交叉发色站姿由主线程复核；16组合208图与v2相比仅后颈源补丁影响区变化，原alpha/轮廓/关节/支撑脚/脚底/时序保持，六个外观包保持。覆盖/手掌/背剑检查通过，合同26项、装配21项通过。当前工具只能逐帧，不称连续播放器验收；新修订无用户认可。
+
+[正常行走GIF](../Art/Review/P1/modular-upper-wardrobe-v3/outfits-walk-120ms.gif)、[指定起停GIF](../Art/Review/P1/modular-upper-wardrobe-v3/outfits-start-stop-120ms.gif)、[站姿](../Art/Review/P1/modular-upper-wardrobe-v3/outfits-idle-2x.png)、[具体复核与范围](../Art/Review/P1/modular-upper-wardrobe-v3/art-review.md)。无App/设备/IPA工作。
+
+## 2026-10-24 · 上斜裤靴 v2：重做低靴与腿部比例
+
+美术提交 `04ce1ac1ef23f06fe34c96c3c63ef5ce770c3418`；[正常行走HTTPS直链](https://raw.githubusercontent.com/liamchan-rgb/experiment/04ce1ac1ef23f06fe34c96c3c63ef5ce770c3418/Art/Review/P1/modular-upper-wardrobe-v2/outfits-walk-120ms.gif)、正常起停及站姿三份文件已实测HTTP200、MIME/哈希一致，正常GIF帧速正确，回执见 `Art/Review/P1/modular-upper-wardrobe-v2/delivery.json`。479份文件重导逐字节一致，1421份原中性及旧换装文件保持。
+
+用户要求“那你开始改”。主线程独自重画裤靴、修复并检查，未使用智能体。弃用横宽/纵压腿片适配，按原腿/骨盆几何登记衣物轮廓，加1px衣料厚度；保留原人体与动作。重画膝褶和小腿收束，靴层起点195→202、源宽31–35px→25px，原鞋底近远高度保持，远侧颜色更暗。源稿位移失准、边缘漏底及出血稿鞋底被裁等中间问题由主线程退回，保留中间稿；最终补齐腰侧三枚底模边缘。
+
+最终两方向×两衣型全部13姿势整身1×/2×、首尾与指定起停逐帧复核，16组合208实际装配检查无漏底/可见游离块；原可见手掌416次保持，背剑104次切换通过；26张原中性渲染像素一致，合同26项、装配21项通过。技术检查不能代表用户美术认可；当前查看器不能连续播放，不写作播放器验收。
+
+[正常行走GIF](../Art/Review/P1/modular-upper-wardrobe-v2/outfits-walk-120ms.gif)、[正常起停GIF](../Art/Review/P1/modular-upper-wardrobe-v2/outfits-start-stop-120ms.gif)、[整身站姿](../Art/Review/P1/modular-upper-wardrobe-v2/outfits-idle-2x.png)、[具体修复/范围](../Art/Review/P1/modular-upper-wardrobe-v2/art-review.md)。原问题版和内部通过撤回记录保留，新v2尚待用户评价。无App/设备/IPA工作。
+
+## 2026-10-24 · 上斜外观腿部复查，撤回内部美术通过
+
+用户指出腿部观感异常，要求说明原因。主线程重新查看整身全部姿势及裤靴源：靴筒粗高、膝踝轮廓被吞、鞋面透视偏侧面、近远腿层次不足；源片横向加宽/纵向压缩适配虽然避免漏底，却破坏服装比例与关节可读性。覆盖/重导检查不能代表腿型成立。撤回上一轮内部美术通过，新外观从未获用户认可；[具体复查](../Art/Review/P1/modular-upper-wardrobe-v1/leg-reinspection-2026-10-24.md)。本轮只诊断，无图片/动作/运行资源修改。
+
+## 2026-10-23 · 左上/右上独立外观 v1
+
+美术提交 `719789d83e61466fafd19cdb9c01294001235807`；[正常行走HTTPS直链](https://raw.githubusercontent.com/liamchan-rgb/experiment/719789d83e61466fafd19cdb9c01294001235807/Art/Review/P1/modular-upper-wardrobe-v1/outfits-walk-120ms.gif)、正常起停及站姿三份文件已实测HTTP200、MIME/哈希一致，正常GIF帧速正确，回执见 `Art/Review/P1/modular-upper-wardrobe-v1/delivery.json`。1110份文件重导逐字节一致，600份原中性模板文件保持。
+
+用户要求开始下一项并继续工作。主线程独自制作与修复六个独立资源包：绿短上衣、蓝分叉外套、共用裤靴、棕发、银发、背剑；原认可r6人体/动作保持。修掉首稿串入另一条腿的黑边、隐藏裤片不足、袖口/肩覆盖不足、衣物削手及右上剑柄遮挡，原判退首稿保留。
+
+两方向×两衣型全部13姿势整身1×/2×及交叉发色已由主线程查看；查看器只能逐帧，未宣称连续播放验收。16组合实际208姿势，1040次覆盖/416次手掌保持/104次背剑开关检查通过；26张无外观原底模渲染逐像素不变。合同26项、装配21项通过，重导及600份原模板保持记录见候选目录。新外观美术认可为空。
+
+[正常行走GIF](../Art/Review/P1/modular-upper-wardrobe-v1/outfits-walk-120ms.gif)、[指定起停GIF](../Art/Review/P1/modular-upper-wardrobe-v1/outfits-start-stop-120ms.gif)、[整身站姿](../Art/Review/P1/modular-upper-wardrobe-v1/outfits-idle-2x.png)、[具体检查与限制](../Art/Review/P1/modular-upper-wardrobe-v1/art-review.md)。行走8×120ms，起停首末480ms、其余120ms；没有App/设备测试或IPA。
+
+## 2026-10-23 · 上斜起停展示获准继续，开始独立外观挂载
+
+用户回复“开始下一项”。记录对已展示左右上斜整身/正常步行及指定起停路径的认可并绑定交付哈希，不扩大到任意步相中断、隐藏解剖或新衣物。本轮由主线程独自制作、修复与审核上斜独立衣物、发型和背负装备；同一人体/步态保留，逐帧检查衣物覆盖、手脚边界、镜像语义与光照，再交付正常速度GIF和HTTPS直链。无App/实机/IPA范围。
+
+
+## 2026-10-23 · 左上／右上r6指定起停过渡
+
+美术提交 `53e3a9b2077a1f218c21ecc1ac7f2d849a31b536` 已发布；[正常同屏起停GIF直链](https://raw.githubusercontent.com/liamchan-rgb/experiment/53e3a9b2077a1f218c21ecc1ac7f2d849a31b536/Art/Review/P1/neutral-upper-transitions-r6/start-stop-120ms.gif)、原行走GIF、站姿及两个方向单独起停GIF共五份交付实测HTTP200、MIME/哈希/时序一致，见 `Art/Review/P1/neutral-upper-transitions-r6/delivery.json`。
+
+用户认可右上r5并要求继续下一步。按此前向左的推进顺序，主线程独自补上斜起停过渡，未使用智能体。原两方向18张认可站姿/步行帧及144张分层逐字节保留，每方向新增两起步与两停步姿势；共同肩/腰/裤口域继续耦合，右上同步镜像左右语义/支撑足/头部局部挂点，复用原固定光照源。
+
+初版收步发现两脚同时悬空，主线程修正为先落脚承重再收回另一脚，末帧双足着地；起步后侧支撑足也按地面锚点校正。整身1×/2×全部26姿势及起停边界序列已亲自检查，未见新增肩髋孔隙、游离边线或近侧手裁切；当前查看器不能连续播放，不写作连续播放器验收。新起停用户认可为空。
+
+26帧公共装配逐像素一致、208语义层无孤立块，肩髋参考区新增透明洞0；右上13次头部局部挂载/左右语义与固定光源核对通过。起步相邻关节最大位移约2.99px（原直接切换7.33px），停步约3.19px（原8.52px）。600份文件两轮重导一致，原432份认可模板文件保持一致，6份GIF重导一致；合同26项、装配21项通过。
+
+[左右同屏正常起停GIF](../Art/Review/P1/neutral-upper-transitions-r6/start-stop-120ms.gif)为22帧：首末站姿各480ms，其余20帧各120ms；[原正常行走](../Art/Review/P1/neutral-upper-transitions-r6/walk-120ms.gif)仍8×120ms。[整身站姿](../Art/Review/P1/neutral-upper-transitions-r6/idle-review-2x.png)、[主线程检查](../Art/Review/P1/neutral-upper-transitions-r6/art-review.md)。HTTPS直链已实测并记录交付回执。
+
+此项只覆盖idle00接walk01、walk08收至idle00，不扩大为任意步相中断、完整隐藏人体或全外观组合。下一项继续两个上斜方向独立衣物/头部资源与背负装备。未改App运行资源、未运行模拟器或设备、未打包IPA。
+
+
+## 2026-10-23 · 右上r5展示获认可，继续上斜起停过渡
+
+用户表示“没问题，开始下一步”。已记录对右上r5镜像版整身站姿和正常步态的限定认可，绑定原美术提交及展示哈希；原左上认可不变。下一项按此前向左的顺序补两个上斜方向的指定起步/停步过渡，再进行独立衣物挂载。保留原18张认可画面，右上沿用同步语义镜像与固定光照，主线程独自制作、逐帧审核并交付正常速度动图。新起停尚未获得认可，不扩大为任意步相急停、完整隐藏解剖或App/设备测试。
+
+
+## 2026-10-23 · 右上r5镜像试版：复用认可左上步态，校正固定光照
+
+美术提交 `a200c25458a200459b8efbb2b7de9e0c70a6710d` 已发布；[正常动图直链](https://raw.githubusercontent.com/liamchan-rgb/experiment/a200c25458a200459b8efbb2b7de9e0c70a6710d/Art/Review/P1/neutral-up-right-r5-mirror/walk-120ms.gif)与站姿均实测HTTP200、MIME/哈希一致，GIF八帧各120ms无限循环。交付回执见 `Art/Review/P1/neutral-up-right-r5-mirror/delivery.json`。
+
+用户明确要求开始用镜像方式制作右上。主线程独自制作、修复及审核，未使用智能体。以已认可左上r5为源，逐层镜像并交换左右语义、关节、脚底标记、支撑脚、近远遮挡和头部96px局部挂点；原八帧/120ms时序、裤子跟随、接缝处理和近侧手遮挡均保留。左上认可画面和源清单哈希未改变，旧右上r4判退稿保留。
+
+直接翻图会反转头顶高光。本轮用imagegen提供一份左上方照明参考，主线程固定注册并将颜色绑定到同一源像素坐标，所有动作帧复用；原描边与所有alpha/轮廓保持认可版镜像，不采用参考图的形体或边缘。没有逐帧重新生成人物，也没有运行时拟合/重着色或外观ID分支。
+
+主线程亲自看最终1×/2×整身全部九姿势及01→08→01首尾序列，未发现新增拼接洞、游离边线或近侧手被衣物裁切；光照已回到左上。查看器仅显示GIF静帧，未声称实际观看连续播放器；右上用户美术认可仍为空。
+
+公共装配九帧逐像素一致，72层alpha精确等于认可左上各层反射；九次头部局部RGBA挂载一致，关节/支撑脚/层级转换通过，肩髋源参考区新增透明洞0，18次整臂/手分区组合一致，近侧手九帧完整。短裤八帧均独立变化，头顶高光九帧保持左上；256份源/输出重导逐字节相同，契约26项、装配21项通过。
+
+[正常8×120ms动图](../Art/Review/P1/neutral-up-right-r5-mirror/walk-120ms.gif)、[整身站姿](../Art/Review/P1/neutral-up-right-r5-mirror/idle-review-2x.png)、[主线程检查](../Art/Review/P1/neutral-up-right-r5-mirror/art-review.md)、[技术验证](../Art/Review/P1/neutral-up-right-r5-mirror/validation.json)。本次不扩大到非对称发型/衣物/背剑、完整隐藏人体、起停或App/设备/IPA。HTTPS直链已验证并记录回执。
+
+
+## 2026-10-23 · 用户认可左上r5展示，讨论右上镜像复用
+
+用户表示“可以的，我在想右上的动作可以基于这个来镜像吗”。已记录对交付左上r5整身站姿和正常步态动图的认可，绑定原美术提交及两份展示文件的SHA-256，见 `Art/Review/P1/neutral-up-left-r5/approval.json`。认可范围不扩大到完整隐藏人体、其他外观、起停、右上或App/设备；主线程原有逐帧审核范围也不改写为连续播放器观看。
+
+右上可以复用这套左右基本对称的中性底模步态：人物图层、动作关节点和裤口跟随一起镜像，左右语义与前后遮挡相应转换；固定光源及后续非对称头发/衣物/背剑需单独校正。当前仅回答方案并记录左上认可，没有生成右上新素材或默认认可镜像结果。本次未改图片、动作、App或安装包。
+
+
+## 2026-10-23 · 仅左上r5：修连接裂缝/残边，短裤随骨盆和两侧腿运动
+
+美术提交 `a691986d986e96822903edb642bf875aa20b2655` 已发布。[正常动图直链](https://raw.githubusercontent.com/liamchan-rgb/experiment/a691986d986e96822903edb642bf875aa20b2655/Art/Review/P1/neutral-up-left-r5/walk-120ms.gif)与站姿均实测HTTP200、MIME/哈希一致；GIF为8×120ms无限循环。浏览器交付回执见 `Art/Review/P1/neutral-up-left-r5/delivery.json`。
+
+用户指出r4仍有拼接痕、运动间隙、左上残边，且腿动裤子不动，并要求先修左上。撤回r4内部修好结论，右上暂缓；本轮由主线程独自修复和审核，无智能体。
+
+根因复查：r4的pelvis源为空，短裤仍合在torso里；腿根从178行裁窄，肩口/裤口与肢体使用不同变形域，源区域还混有相邻肢体外缘。现独立短裤源，裤腰随骨盆，左右裤口跟随对应上腿；连接区域共用变形域，恢复更宽的原稿上腿根，清掉躯干/手里混入的边线。再修近侧手在首尾被短裤遮去部分像素的问题，保留肩部衣物覆盖和近远层次。
+
+主线程检查最终1×/2×全身九姿势及01→08→01顺序。当前查看器只显示GIF静帧，未宣称实际观看连续播放器；用户美术认可为空。公共装配九姿势逐像素一致，肩/髋源区域对照新增透明缺口0，72层无游离分量，18次臂手分区组合无像素差，九帧近侧手完整，八个短裤帧均独立变化；174份源/输出重导逐字节相同，契约26项、装配21项通过。隐藏源切口若被衣物完整覆盖不视为可见裂缝，但不将其称为完整隐藏人体。
+
+[正常8×120ms动图](../Art/Review/P1/neutral-up-left-r5/walk-120ms.gif)、[站姿](../Art/Review/P1/neutral-up-left-r5/idle-review-2x.png)、[主线程修复记录](../Art/Review/P1/neutral-up-left-r5/art-review.md)、[技术检查](../Art/Review/P1/neutral-up-left-r5/validation.json)。右上素材未变，公共运行装配器未变，没有App/设备/IPA工作。HTTPS直链已验证并记录回执。
+
+
+## 2026-10-23 · 上斜r4：主线程重做髋关节与连续轮廓，清理衣物/肢体归属
+
+美术提交 `295e0ae27829a3b2f496eed11dc2be6cad8a4480` 已发布；[正常同屏GIF直链](https://raw.githubusercontent.com/liamchan-rgb/experiment/295e0ae27829a3b2f496eed11dc2be6cad8a4480/Art/Review/P1/neutral-upper-diagonals-r4/walk-comparison-120ms.gif)及两个单方向GIF、站姿已实测HTTP200，MIME/哈希与本地一致，GIF为8×120ms无限循环。交付验证不等于连续播放器美术验收。
+
+用户判退制作中的r3后继续要求工作。本次由主线程独自返修并审核，无智能体参与。将髋关节移入短裤内部，用整侧连续网格取代圆补片拼接；取消按肤色侵蚀边界，背心/裤口留给躯干，手部与手臂共用网格域。修掉臂上白边、髋根缺口、旧头层颈肩杂线，以及脚源混入另一侧像素。整套重画试稿仍有动作/风格问题，未采用，保留在rejected-probes。
+
+主线程亲自检查两方向实际装配1×/2×全部18姿势和01→08→01顺序。当前工具只显示GIF静帧，未宣称完成连续播放器观看；用户美术认可仍为空。此次是源轮廓/关节返修候选，不能把技术通过写成自然步态已获认可。
+
+公共装配18姿势逐像素一致，144层无游离分量，36同侧腕连接、36整腿连通、72臂/手无衣物灰白、36髋部3像素宽实体走廊通过；源与输出226文件重导逐字节一致；契约26项、装配21项检查通过。已认可方向和公共运行装配器未修改；没有App/设备/IPA工作。
+
+[正常8×120ms同屏GIF](../Art/Review/P1/neutral-upper-diagonals-r4/walk-comparison-120ms.gif)、[站姿](../Art/Review/P1/neutral-upper-diagonals-r4/idle-comparison-2x.png)、[主线程检查](../Art/Review/P1/neutral-upper-diagonals-r4/art-review.md)、[技术记录](../Art/Review/P1/neutral-upper-diagonals-r4/validation.json)。HTTPS直链已验证，回执见 `Art/Review/P1/neutral-upper-diagonals-r4/delivery.json`。
+
+
+## 2026-10-23 · 制作中的上斜r3判退：腿部扭曲与衣物边界破碎
+
+用户指出“你目前思考的这一版肯定不行，腿部角度扭曲，四肢和衣物边界模糊”。主线程复看全身九帧确认：投影关节驱动使数帧膝盖向外折，膝/踝/脚掌朝向不一致；按颜色筛肤色及关节补片造成裤口和肩口碎边。r3撤回交付候选，保留源与输出供追溯，不能用连通或骨长检查代替自然姿态。
+
+本次无智能体参与，返修和漏检由主线程负责。下一稿从完整、连贯的姿势及清楚的衣物轮廓重新制作，先检查源稿再分层；仍在返工，未完成美术验收，未更改App/已认可方向，也未打包。
+
+
+## 2026-10-23 · 用户指定主线程独自返修并审核，追加四处漏检
+
+用户进一步指出右上右手抠图不成形、臂上残留背心白边、左臀与大腿交界持续空缺，以及左上左臂有游离轮廓线。此前r2复查描述遗漏了这些具体源稿/分层问题，责任由主线程承担。
+
+用户明确禁止本次返修使用智能体，并要求以后智能体产物出错由主线程全权修复及审核。已将原话范围写入AGENTS.md，覆盖本次此前三名Luna返修授权。本轮由主线程亲自重审源稿、分层边界、完整九姿势与首尾序列，修订另存r3；当前制作中，不标美术通过，不运行设备或打包。完成后仍须实际交付正常120ms全身GIF和验证过的浏览器HTTPS直链。
+
+
+## 2026-10-23 · 上斜r2再次判退，主线程重新描述问题
+
+用户要求“还是不行，你自己再检查一下有什么问题，自己描述一下”。本次不改图、不调动作、不打包，只重新对照最终1×/2×整身全部八帧与作者机制。撤回r2内部美术通过/足够交付结论：上身站桩、臂手整块摆动、膝踝软管式变形、脚掌固定平移而无落跟蹬地、交叠姿态难读、右上远近脚朝向不一致。详细证据见 [主线程复查](../Art/Review/P1/neutral-upper-diagonals-r2/reinspection-r2-rejected.md)。
+
+此前连通、骨长与重导只说明有限技术性质，不能推出自然步态；查看器只显示GIF静帧，主线程实际未完成连续播放器观看，不再将逐帧检查称作完整动态验收。保留图、源与技术记录，新方向美术认可为空。
+
+
+## 2026-10-23 · 用户判退上斜r1，返修同侧手臂连接与腿闪烁r2
+
+已发布美术提交 `850dab930f42d68800e03b3c5c9f0bf2824e22b1`。[正常同屏GIF直链](https://raw.githubusercontent.com/liamchan-rgb/experiment/850dab930f42d68800e03b3c5c9f0bf2824e22b1/Art/Review/P1/neutral-upper-diagonals-r2/walk-comparison-120ms.gif)及两方向GIF实测HTTP200、image/gif、8×120ms、循环开启、SHA-256与本地一致；站姿HTTP200/image/png/哈希一致，交付回执见 `Art/Review/P1/neutral-upper-diagonals-r2/delivery.json`。
+
+用户指出“这走起来手都要剥离身体了”“腿部也是在疯狂闪烁”。撤回此前内部美术通过结论；原图、作者数据和技术证据保留。根因是逐帧独立腿形/错误像素归属和不稳定关节链，整身连通检查掩盖了局部脱手/抽腿，属于主线程漏检。
+
+主线程重做：每侧臂/手共用固定肩旋转，一份完整腿用严格单调行网格连续变形；固定矢状骨长和连续投影，不逐帧换肢体或抢近远掩膜。清掉误归腿的旧短裤裆边；初次硬分段/过窄步幅方案另存判退，最终增加抬脚迈步量、收小摆臂并修同侧手腿相位。头/躯干原像素保留，公共运行装配器不变。
+
+主线程查看最终1×/2×全身18姿势和01→08→01顺序；当前工具仅显示GIF静帧，未声称已实际观看连续播放。18公共装配零差、36同侧手腕连接、36完整腿、72肩髋连接、36足标、16固定骨长、198文件重导一致通过。正常GIF八帧×120ms，原版内部通过撤回，新版用户认可为空。
+
+[正常同屏GIF](../Art/Review/P1/neutral-upper-diagonals-r2/walk-comparison-120ms.gif)、[站姿](../Art/Review/P1/neutral-upper-diagonals-r2/idle-comparison-2x.png)、[主线程具体返修](../Art/Review/P1/neutral-upper-diagonals-r2/art-review.md)。本轮仅返修两方向idle/walk，没有App/模拟器/设备/IPA工作；发布后验证浏览器HTTPS直链并存delivery.json。
+
+
+## 2026-10-23 · 同时完成左上／右上中性底模与正常步态候选
+
+已发布美术提交 `ee8b719d8ae477eddcd9579e27f3cd2b38993a33`。[正常同屏GIF直链](https://raw.githubusercontent.com/liamchan-rgb/experiment/ee8b719d8ae477eddcd9579e27f3cd2b38993a33/Art/Review/P1/neutral-upper-diagonals-v1/walk-comparison-120ms.gif)及两方向GIF实测HTTP200、image/gif、8×120ms、循环开启、SHA-256与本地一致；站姿HTTP200/image/png/哈希一致，交付回执见 `Art/Review/P1/neutral-upper-diagonals-v1/delivery.json`。
+
+用户要求两个方向同时推进并由主线程亲自纠正智能体问题。三名Luna辅助制作／审核后，主线程判退侧脸、重复支撑、相位错位和不准的分层，修复第三手、跨背摆臂、躯干洞、交叉腿归属、落脚过渡及肩旁残边；原稿和判退记录均保留。每方向idle00+walk01–08，复用共同头／躯干，头部轻微摆动，离线组件注册显式记录。
+
+主线程检查实际装配的1×/2×全身及全部01→08→01序列。正常同屏GIF为8×120ms；当前查看器仅显示GIF静帧，未声称已实际观看连续播放。2清单、18实际装配、144层、18头变换、36足底标记、源所有权/作者合成零差及可见脱离组件0通过；重导字节一致，26合同/21装配器回归通过。技术证据不代替用户美术认可。
+
+[正常同屏GIF](../Art/Review/P1/neutral-upper-diagonals-v1/walk-comparison-120ms.gif)、[同屏站姿](../Art/Review/P1/neutral-upper-diagonals-v1/idle-comparison-2x.png)、[具体返修](../Art/Review/P1/neutral-upper-diagonals-v1/art-review.md)。新方向美术认可仍为空；独立外观、完整隐藏人体与起停后续继续，当前无App/模拟器/设备/IPA工作。发布后核对HTTPS直链并记录delivery.json。
+
+## 2026-10-22 · 左向衣物v2获认可，同时建立左上/右上中性底模
+
+用户回复“没问题，下一个直接同时做左上和右上的，你注意检查不要随便被智能体糊弄”。已按展示范围保存向左v2两衣型全身、正常循环及指定起停路径认可和交付摘要，不扩大到未展示组合/运行接入。同步记录本轮同时推进两个方向的授权，覆盖此前一次一个方向的顺序限制。
+
+当前两名Luna辅助各自方向的源稿/作者分层，一名只读复核相位与近远规则；主线程负责图像生成、统一导出与最终整身/正常速质检。先建立两个方向的中性人体、idle00+walk01–08分层及挂点，再按共同底模制作独立外观。左上采用contact-r1、右上采用loop-r2动作参照，保留原修订；最终逐稿按作者肩髋/足底标作显式固定注册，不按alpha边界各自适配；原导板仅作意图参考。当前新方向美术认可为空，未进行App/设备/IPA工作。
+
+
+
+## 2026-10-22 · 向左衣物v2，主线程修正并重新合成
+
+已提交GitHub `cd71944fdc7b4c37cd1b8c344b1eaaf97c5082cf`。[正常行走浏览器直链](https://raw.githubusercontent.com/liamchan-rgb/experiment/cd71944fdc7b4c37cd1b8c344b1eaaf97c5082cf/Art/Review/P1/modular-left-wardrobe-v2/outfits-comparison-120ms.gif)及[正常起停直链](https://raw.githubusercontent.com/liamchan-rgb/experiment/cd71944fdc7b4c37cd1b8c344b1eaaf97c5082cf/Art/Review/P1/modular-left-wardrobe-v2/start-stop-comparison-120ms.gif)实测HTTP200、image/gif、SHA-256与本地一致；站姿同样HTTP200/哈希一致。四份交付核对见 `Art/Review/P1/modular-left-wardrobe-v2/delivery.json`。
+
+用户判退v1后，由主线程修正源稿提取、分层和变形，不沿用智能体/前轮内部通过结论。两张13姿势衣物原稿保留，固定整表注册，仅提取衣物；绿衣完整描边/金边恢复，灰裤改为每步相褶皱，棕靴保留鞋面/跟/底，蓝衣摆不再硬缩放成两块长条。复查另修金边被肤色分类误删、固定靴口把裤脚涂棕、较宽衣片覆盖后侧拳缘，头/手原像素归共同身体独占。
+
+主线程检查两衣型1×/2×整身、两组13姿势、六组头部整身、正常序列及08→01和指定起停衔接。实际72搭配936姿势，3120身体覆盖、624穿衣原手掌保留、468背剑切换、26衣物孤立块检查失败均0；13裸身与r3逐像素相同，原身体/动作/公共compositor摘要不变。10清单与221个PNG/ORA/SVG两轮重导通过，26合同/21装配器回归通过，没有跳过。
+
+[两衣型正常动图](../Art/Review/P1/modular-left-wardrobe-v2/outfits-comparison-120ms.gif)8×120ms；[正常起停动图](../Art/Review/P1/modular-left-wardrobe-v2/start-stop-comparison-120ms.gif)22帧、首末480ms、其余120ms；[站姿](../Art/Review/P1/modular-left-wardrobe-v2/outfits-comparison-2x.png)、[具体返修依据](../Art/Review/P1/modular-left-wardrobe-v2/art-review.md)。新外观仍待用户审核，旧v1判退与撤回说明保留，没有App/模拟器/实机/IPA工作。GitHub主线程质检责任提示已另提交并实测，浏览器动图直链待本次发布核对后记录。
+
+
+## 2026-10-22 · 用户判退向左外观v1，撤回内部美术通过并返修
+
+用户反馈“智能体画的效果有问题你就自己修一下”，明确要求同步GitHub提示词。已在AGENTS.md及人物审核说明置顶主线程责任：亲自检查1×/2×全身、全部当前动作和正常循环；发现问题自己修源稿/分层/变形，不能凭智能体结论或覆盖数字交付。原v1内部美术通过撤回，保留旧稿与原有限技术证据，不标用户认可。
+
+重新核对原稿与合成发现绿衣轮廓/镶边丢失、裤腿块状拉伸、靴子鞋面鞋底层次丢失，以及蓝外套硬片状下摆。当前由主线程返修部件提取和衣物动作，不改已认可人体/原步态；修后须再交实际正常速全身动图。未运行模拟器/设备。
+
+
+## 2026-10-22 · 向左独立外观 v1 完成内部复核，提交正常动图
+
+已提交GitHub `1b9dffb1d7bef6f61e774614711b197e085c85bf`。[正常行走浏览器直链](https://raw.githubusercontent.com/liamchan-rgb/experiment/1b9dffb1d7bef6f61e774614711b197e085c85bf/Art/Review/P1/modular-left-wardrobe-v1/outfits-comparison-120ms.gif)及[正常起停直链](https://raw.githubusercontent.com/liamchan-rgb/experiment/1b9dffb1d7bef6f61e774614711b197e085c85bf/Art/Review/P1/modular-left-wardrobe-v1/start-stop-comparison-120ms.gif)实测HTTP200、image/gif、SHA-256与本地一致；站姿同样HTTP200/哈希一致。四份交付核对见 `Art/Review/P1/modular-left-wardrobe-v1/delivery.json`。
+
+在原r3向左13姿势上完成三发型、两五官、Forester绿短上衣、Wayfarer蓝长外套、共用灰裤棕靴和独立背剑，新增9资源包。三名Luna并行制作/复核，主线程负责实际装配、全身1×/2×与正常速序列审核。初审查出安全短裤/袖靴漏盖、蓝衣摆重复原袖口与裤色矩形、五官误带下颌、银发高光被删；逐项另存修订。最终又清除walk01/06袖旁、walk06靴旁孤立变形色块，未改身体与原动作。
+
+72组合×13姿势=936实际合成，3120项身体贡献无>5%漏盖（仅排除解剖颈口）；468组背剑开关无轮廓外/不透明手变化；26衣装姿势颈下孤立块为0。13裸身逐像素等于原帧；身体/动作/公共compositor摘要不变。10清单通过，264个PNG/ORA/SVG连续两轮由保留原稿重导一致；26合同与21装配器回归通过，原72认可帧摘要通过，没有跳过。
+
+[两衣型正常动图](../Art/Review/P1/modular-left-wardrobe-v1/outfits-comparison-120ms.gif)8×120ms；[正常起停对照](../Art/Review/P1/modular-left-wardrobe-v1/start-stop-comparison-120ms.gif)22帧、首末480ms其余120ms；[站姿](../Art/Review/P1/modular-left-wardrobe-v1/outfits-comparison-2x.png)、[完整复核](../Art/Review/P1/modular-left-wardrobe-v1/art-review.md)、[重导/清单核对](../Art/Review/P1/modular-left-wardrobe-v1/checks.json)。新增外观用户认可为空，仍只提交向左；其他方向和任意步相起停尚未完成，没有App/模拟器/设备或IPA工作。浏览器直链待发布后实测并另记交付回执。
+
+用户询问八方向与行业做法，已说明2/4/8方向因项目而异；本项目最终组合覆盖八方向，但不要求每件原始部件从零画八遍。头发/五官同向复用、刚性背剑多姿势共图、衣物按模板导出；左右镜像须检查非对称装备和遮挡。这是离线逐帧分层装配，不是已完成的运行时骨骼系统。
+
+
+## 2026-10-22 · 向左起停展示获认可，开始独立外观挂载
+
+用户回复“没问题，继续下一个工作”，随后“继续”。已保存r3展示的全身外观、八帧循环与指定起停路径的限定认可及交付物摘要；隐藏探针仍只是技术证据，不扩大为完整隐藏人体/任意步相中断。下一轮在同一13姿势身体与动作上制作独立向左发型、五官、Forester绿短上衣、Wayfarer蓝长外套、共用裤靴与背负武器；共用动作和分层规范，不按外观ID切换人体或新增渲染分支。用户另问八方向资源与行业做法，已说明方向覆盖需求和镜像/部件变形复用的区别，本轮仍只推进向左。当前制作中，完成后交付正常速度全身GIF、浏览器HTTPS直链及日志；不运行设备/模拟器。
+
+## 2026-10-22 · 向左隐藏连接与起停过渡 r3 完成
+
+已提交GitHub `8b0c600cb3f3ca66fc157c40002d5543a43810c6`（开发分支）。[起停GIF浏览器直链](https://raw.githubusercontent.com/liamchan-rgb/experiment/8b0c600cb3f3ca66fc157c40002d5543a43810c6/Art/Review/P1/neutral-left-complete-transitions-v1/start-stop-120ms.gif)及原行走GIF均实测HTTP200、image/gif、SHA-256与本地一致；站姿PNG同样HTTP200且哈希一致。交付核对见 `Art/Review/P1/neutral-left-complete-transitions-v1/delivery.json`。
+
+用户认可r2展示后，已保存原话“没问题开始下一步工作”及限定范围。新r3另存共同底模13姿势：原idle00/walk01–08的可见RGBA逐点不变，新增两起步、两停步关键姿势和91张同槽隐藏肩腕/髋根补片；固定1254²源注册，不按透明包围框调整。起步只覆盖idle00接walk01，停步只覆盖walk08收至idle00，不代表任意行走相位中断。通用合同增加可选walk-start/walk-stop，每动作2姿势、120ms，旧资源继续使用9姿势；缺帧明确拒绝，没有按外观ID改引擎或回退另一身体。
+
+两名Luna并行完成源稿/隐藏连接，主线程整合与复核。首审漏检start01/stop02第三手，主审逐臂追踪发现后退回imagegen重画；原稿保留。主审另发现手脚深色轮廓误留躯干，已在固定作者归属中转归1676源像素，完整源RGBA不改。独立全身/分层复审确认新四姿势没有残留第三手、torso不再带整圈腿/拳头描边；短裤与腿交界、拳缘短轮廓作为后续衣物覆盖复核点。合入隐藏颈根时的6像素纹理覆盖差异已修正层序，未放宽像素检查。
+
+实际公共compositor核对13姿势，13头部局部变换、13头颈连接、26足底标记及13份ORA通过；143份PNG/ORA/SVG重导字节一致。91补片的同侧材料色域正确、原可见RGBA不变，832次±1/±2局部接缝核心探针无新透明点；只证明当前肩腕/髋根范围，不宣称完整隐藏人体或任意骨骼动作。26合同检查、21装配器检查通过，原72认可动作哈希未变。正常全身GIF为22帧，首末idle各480ms，其余20动作帧均120ms；原行走循环仍8×120ms。
+
+证据：[正常起停动图](../Art/Review/P1/neutral-left-complete-transitions-v1/start-stop-120ms.gif)、[全身关键姿势](../Art/Review/P1/neutral-left-complete-transitions-v1/start-stop-keyposes-fullbody-1x.png)、[内部复核](../Art/Review/P1/neutral-left-complete-transitions-v1/art-review.md)、[可复现核对](../Art/Review/P1/neutral-left-complete-transitions-v1/verify.py)、[底模与源文件](../Art/Templates/P1-Neutral/left/walk-r3-complete-transitions/README.md)。新稿美术认可为空；独立左向发型/五官、两衣型及背剑后续制作。未改App运行资源、未运行模拟器/设备、未打包IPA。按规则实际交付全身正常动图和验证后的浏览器HTTPS直链。
+
+## 2026-10-22 · 向左头部轻微摆动 r2
+
+用户反馈“头太固定了，应该有轻微摆动才自然”。新r2保留同一头图，绕颈根(125,129)加入-0.6°至+1°点动与上下1px起伏：02/06承重下沉、04/08摆腿末段回升，正常8帧×120ms。10个原颈部不透明像素向上延一行作隐藏重叠，清除2处alpha1头外注册残片，头颈之外像素和腿臂步相保留；后续五官/发型挂载矩阵同步跟随头部。旧r1保留并记录头太固定的修订反馈。
+
+主审核与独立审核查看全身和正常速循环，头不再完全固定，幅度仍轻微，未见过度点头、首尾跳闪或颈根断缝。实际装配器9姿势、9个头部局部挂载矩阵、9头颈连通及18足底标记核对通过，99文件重导字节一致；旧r1重导99文件字节也保持一致。证据：[正常动图](../Art/Review/P1/neutral-left-walk-r2-head-motion/walk-120ms.gif)、[前后正常速对照](../Art/Review/P1/neutral-left-walk-r2-head-motion/before-after-120ms.gif)、[复核](../Art/Review/P1/neutral-left-walk-r2-head-motion/art-review.md)。
+
+当前新修订美术认可为空；自然起停、完整隐藏关节及独立外观仍待后续，没有App接入、模拟器/实机运行或IPA。按交付规则同时发布正常速全身GIF及浏览器HTTPS链接。
+
+## 2026-10-22 · 动图必须实际送达，提醒置顶并补发浏览器链接
+
+用户再次反馈聊天里没有看到动图，要求把提醒写进GitHub中经常读取的位置。已将“最终回复实际附正常速全身GIF＋浏览器HTTPS直链、发送前重读并验证链接、显示失败立即补直链”的规则置于AGENTS.md和人物审核说明顶部。补传当前向左中性人体walk-120ms.gif及站姿到开发分支；GIF核对为8帧、每帧120ms、循环播放。仅补交付与协作规则，没有修改美术像素、运行资源或认可状态。动图SHA-256：6881b9fded8f87621fc890518d1030ad958ac5fc575e7963453c048f84a24e57。
+
 **2026-10-19 最新进展：战场静态样板与独立环境四层重组已获认可；[向右侧视待机中性人体 r2](../Art/Templates/P1-Neutral/battle-side/right-idle-r2/README.md)的姿态与近侧右手方向已获认可。[隐藏人体底层 v2](../Art/Templates/P1-Neutral/battle-side/right-idle-parts-v2/README.md)已修复八层像素归属，静态重组与 r2 逐像素一致；肩髋四个局部根部窗口的小位移覆盖检查通过。整段肢体平移会改变外轮廓，因此全动作接缝、完整隐藏人体与运行时接入仍未完成。向下正手垂剑 v5 的单帧认可保留；[强击 × 训练短剑首组特效](../Art/Effects/P1-Boardgame/heavyStrike-trainingSword-v1/README.md)正常速度原型仍待独立审美审核。**
 
 最近通过完整 iPad UI 套件的正式基线仍为 [1.6.3 build 28](../Downloads/README.md)。最新布局／战场试验包为 [1.6.7 build32](../Downloads/MeadowJourney-build32.json)：新增 Meadow 营地战场层级，4 项原生和 2 项 iPad UI 专项检查通过；完整步态套件未重跑。专项测试使用 iPad Pro 13-inch（M4）模拟器、iOS 17.5／Xcode 15.4；未连接用户的物理 iPad。
@@ -844,3 +1262,121 @@ r5/04.png 原样复制进入 raw/04.png，00–03、05–08 从上一完整循�
 最终取景版 `cd86161fd817eda49e3750570060e5b644abcb01` 在专项 `39421546572` 通过4项原生和2项iPad UI检查（0失败），Xcode15.4／iOS17.5／iPad Pro13 M4。实际三态截图已导出（stills 12263897192、完整结果12265085671）；自审确认怪物回合上下黑边消失，人物、剑尖、鹿角与尾巴完整，脚底同处地面带且有接触影。`Media/Build33` 保存三份字节不变的XCTest原附件，并仅按EXIF方向转存为横屏PNG；三张转存后的像素签名与原附件方向归一化后完全一致。另提供缩小预览，未修图冒充实屏。设备归档39422558233已从同一源码开始；安装包待归档后本地校验。
 
 设备归档 `39422558233` 成功（同一源码cd86161，Xcode15.4，IPA工件12264781729、日志12263733126）。交付 `Downloads/MeadowJourney-b33.ipa`，1.6.8 build33，23,079,780字节，SHA-256 `b149816658ff8cf61f8a548f53320fbdea9b5d301d89c56b30099004f069d19d`。本地验证CRC、ZIP_STORED、无Zip64／额外字段、iPhoneOS arm64、最低15.0、iPhone／iPad设备族、Metal库、0755执行权限和无签名均通过。更新下载页、构建元数据、实际截图索引与人物审核状态。用户以SideStore重签安装；未在物理iPad测试，静态构图／换装候选不等于真实战斗、动画或通用换装生产合同通过。本次没有新增慢动作预览，也未修改桌游原仓库。
+
+## 2026-10-20 · 修复 build33 战场静态候选的五官、接地和回合缩放
+
+回看用户指出的 build33 iPad 图后确认：脸部图层本来就在头发上方，消失感来自特征只占11×15px、眼睛紧贴脸部右轮廓；将独立五官 SVG 修订为 face-blue v3，眼睛、眉、鼻和闭口整体内收，保持256×256注册及已认可r2身体／头发不变。新素材已复制到运行资产并机械重组全身候选图；相关更新图是素材预览，不冒充运行截图，美术认可仍为空。
+
+同时增强轮廓投影和靴底／四蹄接触影，使高亮地面上能辨认；固定战斗场景按视窗宽度缩放并顶端锚定，怪物回合打开后稳定角色尺度，额外的竖向空间用柔化环境填充。未改怪物图稿、服装或已认可人体。代码静态检查、SVG导出及PNG尺寸检查通过；本次未运行Xcode/iPad工作流，故实际运行截图和编译结果仍待确认。
+
+## 2026-10-20 · build34 战场画面补齐
+
+沿用 build33 认可的营地场景和 r2 人体注册，修完本次发现的三处观感问题：五官 v5 将鼻口各内收1px，鼻子加两阶肤色和暗点、嘴改为连续3px深色线；两位内部审核者在全幅256px素材图中确认鼻口分离，仍待模拟器中的实际显示尺寸确认。衣层只将绿色调映射为更明亮、饱和的 P1 蓝色，保留原 alpha、边缘、裤靴和脚底；鹿灵重绘为透明像素稿，按旧 bounds `(13,9)-(344,241)` 与 y=240 蹄底线注册，独立投影不烘进角色图。四个接触影中心改为新稿蹄位，固定宽度镜头和较高视窗的环境延展保留。
+
+版本号改为 1.6.8 build34。离线资产重组、两张 PNG 256×256/384×256、鹿灵透明边界及像素脚底核对通过。Xcode 编译、iPad 模拟器三态截图、接触影画面复核和 IPA 归档尚待 PR 工作流完成；新服装、五官组合与鹿灵仍是用户未审批的静态美术候选。
+
+PR 的 macos-15 任务持续排队时，发现工作流已有的 `macos_runner` 输入只传给快速工作流，没有作用于完整 IPA 任务。现让手动完整构建使用已声明的 macos-14/macOS-15 选择值，PR 默认仍走 macos-15；以相同提交在 macos-14 手动触发完整构建，以取得三态模拟器证据和 IPA。项目引用与资源清单离线校验通过，远程 Xcode 验证进行中。
+
+build34 首次远程编译在既有 `HeroFrames.stops` 的 `Sequence.max(by:)` 闭包触发 Xcode 15.4 类型检查超时，故未进入模拟器或归档。将最大相邻间隔查找拆成显式循环和 midpoint 计算，保持原网格点选择规则；同一完整构建重跑中。
+
+同一提交 `b06ef55` 的完整 iPad 运行 `39451005206` 编译与模拟器启动通过，但全套测试暴露旧问题：17 个整帧步态差异阈值失败与 build33 基线 `cd28a0b` 的既有结果相同；战场几何测试仍按先前的垂直居中／sharp canvas 单独铺满规则断言，与 build34 为保持角色尺度、由柔化 backdrop 填充额外空间的现行合同不符；两项地图交互 UI 用例在资源加载期间点击禁用按钮，步态预览状态则写在子 SpriteKit view 而测试读取父地图 accessibility value。Xcode 15.4 还不支持 `xcresulttool export attachments`，令截图导出步骤失败。现已更新几何断言与背景覆盖检查、收紧步态差异测量阈值到仍可分辨实际帧差的0.20、把步态预览状态同步到测试所读的地图元素、等待地图就绪后再点击，并让完整工作流在旧版 Xcode 调用已有兼容附件导出脚本。下一次完整 iPad 测试、截图检查与build34 IPA归档待验证；此次失败运行未产生IPA。
+
+## 2026-10-20 · face v5 撤回、v6 全身比例修订
+
+用户指出 v5 的鼻口判断不能只看局部放大，并指出眼、鼻、嘴挤在眼睛附近。撤回“v5 已清楚”的结论；尝试的 v6 又因鼻子成块、嘴部脱节被用户质疑“你现在这个是人脸？”，现已归档到 `face-blue/revisions/v6/` 并标为废稿，不打入安装包。
+
+修复build34旧图中锐利战场结束处的水平错位带：模糊底图改用锐利画布相同的宽度缩放与顶端锚点，超高区域从模糊底边延展，锐利画布最后12%渐隐到柔焦层。测试断言随之改为 `scaleToFill` 与统一相机变换。服装、鹿灵和接触影资产注册未改。按用户要求不做实机验收；由用户安装 IPA、运行并发截图。本轮编译、IPA与新画面目视结果待确认。
+
+## 2026-10-20 · v7 完整人物侧脸候选
+
+v7 改用整个人物生成稿中的脸部设计，仅以固定256/1254画布缩放和(-4,0)特征组注册提取眉、单只蓝眼、鼻和闭口。原始生成图、提示、四个独立透明部件、可编辑SVG分组及提取脚本均保留；生成图的人体、头发、耳朵、衣物和武器不进入运行资产。已从256原尺寸和3倍全身图检查眉眼、鼻口间距及侧脸轮廓连续性，不再以面部放大图作为比例判据；用户审美认可仍为空。
+
+相机底图另补充Core Image底部原点的顶边对齐变换，保证延展发生在画面下方，并增加相应几何断言。项目路径、JSON、SVG资源引用、PNG注册、运行复制与清单摘要校验已通过；SVG导出与当前PNG仅有5个像素的单通道1级渲染取整差异，运行图以提取脚本输出为准。
+
+此前 `e39ffca` 的完整运行 `39456061836` 已通过测试与归档，但其v5脸部与底图横带仍有问题，因此未交付。当前v7本轮只做设备编译归档和IPA完整性检查，实机运行／截图由用户完成。
+
+## 2026-10-20 · 按箭头清理额前／肩部，修改后脑，暂停打包
+
+用户明确“别急着打包”，指出额前和左肩多余像素、后脑勺过圆。包工作流 `39465865631` 已先于暂停请求完成（源码 `d988299`、设备归档成功），取消请求返回已完成；该v7包暂不交付。此后没有触发新打包或实机／模拟器运行。
+
+另存 `Art/Parts/P1-Battle/right-idle-v2/`，当前单张为清理稿v8：额前的10个像素来自v7五官提取框误带的轮廓碎片，已从眉眼层剔除；左肩26个像素清掉重复黑边与暖色残边，蓝色袖肩连成一个轮廓。后发最左边收窄3px、轮廓向耳后和颈部收拢，头顶高度及x≥120的前发像素不变。为避免收窄头发露出旧后脑凸起，另存共同中性头型r3轮廓候选，仅改后脑区域97个像素；r2原图未改，y≥128全身、脸／耳前区和脚底注册不变，没有按外观ID切换身体的代码。
+
+已核对完整256图与3倍全身图，像素差异仅落在此次头部／额前／肩部指定区域；脚本语法、SVG引用及变化范围检查通过。新稿尚未导入运行资源、未打IPA，用户审美认可为空；当前只提交同一张全身图继续审核。收到美术反馈后继续修，实机运行与截图仍由用户完成。
+
+## 2026-10-20 · v9 以肩背暗面和后侧袖子拉开层次
+
+用户指出v8左肩还有黑边，并建议参考之前左右向行走素材的近远明暗。已查看获认可的left/right r1第03帧及对应说明，采用其后侧肢体整块压暗、近侧肢体保留亮面的处理。另存 `Art/Parts/P1-Battle/right-idle-v3/`：去掉残留的斜向肩缝和外侧硬黑条，改用与肩背相连的蓝色过渡；肩背加入连续冷蓝暗面，后侧袖子进一步压暗，前侧持剑臂亮面保留。保留生成参考图与提示，实际衣层由可编辑SVG色面和乘色源构建，参考图像素未进入素材。
+
+只改v8衣层肩背／后袖区域RGB，共209个像素，变化边界为`[102,133,119,168)`；alpha与头脸、后脑轮廓、手、剑、姿势、脚底注册不变。已从原尺寸及3倍全身图自审层次，SVG／JSON／脚本语法及变化范围检查通过，重新构建的PNG摘要一致。本轮没有生成动作或新慢速图，没有接入App、运行设备或打包。新稿待用户审核，IPA仍暂停。
+
+## 2026-10-21 · 完成后无需打包交付
+
+用户明确“做完了之后不必打包发我，记日志”。本轮人物美术修订完成后只保留修改稿、自审记录及项目日志，不触发新的IPA构建、归档或交付；后续如需安装包，再按用户新指示执行。当前v9美术仍是单张待审核候选，本条指示不作为美术认可，也不推进下一张。
+
+本次仅更新协作约定与日志；未修改代码、运行资源或美术，未打包、未发送IPA，未运行实机／模拟器。
+
+## 2026-10-21 · 恢复打包，已认可八方向步态接入 demo
+
+用户撤回刚才“无需打包”要求，现要求打包，并把此前确认好的步态更新到demo。已同步AGENTS协作约定；此前暂停记录作为历史保留。P1使用已认可的下／左／上／右／右下／左下／右上r1与左上r6，逐条核对认可文件中的源PNG摘要。运行图集按原RGBA装入9列（站姿＋8张步行），不缩放、不改画、不插值或烘焙重复帧。共享24tick距离时钟离散映射8姿势；正常预览120ms／姿势、960ms／周期，单步按完整姿势前进，主地图Metal阴影与投影实验室同步采样。P2／P3原图与足底数据保持不变。
+
+足底记录另存 `Art/Integration/P1-approved-gait-v1/footprints.json`，从靴底位置初取并用全身标记图核对、修正重叠靴位置；抬脚数据为保守源像素设定，真实设备观感仍由用户截图验证。独立审核确认主前景／阴影的9列与24tick映射一致，同时发现旧24帧蓝靴分层对照已不适合与新步态并排，故保留素材并暂隐旧入口，不把该历史原型当作新换装模板。
+
+此前修好的v9肩背层次、v8额前清理／后发及共同r3后脑轮廓也已按固定画布复制到运行资源；导入不作裁切或重采样，原始各版保留，用户美术认可不因打包而自动改为通过。版本升至1.6.9 build35，并同步项目生成器，防止重新生成项目退回旧版本。
+
+目前已通过项目资源引用、原稿摘要、72张姿势RGBA一致、P2／P3资源保持、足底与图集采样映射的离线核验；更新了相应单测／UI断言，但本轮不执行模拟器或实机运行。下一步只触发设备Release归档与IPA完整性核对，完成后交付用户；远程编译和归档尚待结果。
+
+设备Release归档 `39530852893` 已成功，源码提交 `01cb73a66542443d3178ed82374383f6a4018bcf`，Xcode15.4，版本1.6.9 build35。已下载IPA并核对GitHub artifact摘要、外层／IPA内层CRC、iPhoneOS平台、arm64可执行文件、可执行权限、版本号、编译资产、打包后的步态JSON与源码一致，以及远程打包日志SHA256；全部通过。IPA为23,598,869字节，SHA256为`9bf3017cd69b65a60f1d669643f5671dbbcba57cb3911aebc91079e396d73214`，保留既有SideStore重签所需的stored-ZIP格式。交付记录见 `Media/Build35/package.json`，GitHub IPA artifact编号`12315013547`；安装包未提交Git仓库。本轮只执行设备编译／归档，模拟器任务跳过，实机安装运行与截图交由用户；美术与设备观感认可仍待用户反馈。
+
+## 2026-10-21 · 斜向首尾接缝修订、战斗认可并推进迈步关键姿势
+
+用户要求以后只给可复制到浏览器、直接下载`.ipa`的地址，不再提供ZIP链接；已更新AGENTS，后续采用本仓库既有Downloads原始IPA直链方式。用户指出四个斜方向08→01衔接跳动，明确要求单开智能体修并合成正常速度动图自审。已新开diagonal_loop_repair，负责右下／左下／左上／右上另存loop-r1修订，检查07→08→01→02和全循环；原r1／r6与认可记录保留，不把自审当作用户新美术认可。
+
+用户同时允许战斗按当前效果继续下一步，认可范围记录为build35的v9静态战斗呈现，不外推到新动作或完整模板。原计划的侧向步态现推进到第一张穿衣小步关键姿势：共同动作模组沿用r3头／躯干／手／髋根，y≥180腿部使用既有小步人体研究，前脚支撑、后跟抬起；衣层由生成参考、固定注册和可编辑的裤装／靴口覆盖层制作，按共同身体裁切材质，不按外观切换身体。首次试穿露底稿保留在drafts，已补齐遮挡。上半身y<180与认可v9逐像素一致，前脚可见落地线y=214不变；新增1665个可见像素变化仅在腿部区域，原尺寸及全身3倍图自审通过。该项是新单帧候选，未接入App，也不宣称完成战斗行走或攻击动画。
+
+斜向智能体修订与动图自审、运行元数据同步、新IPA设备归档及直链交付待完成；本轮仍由用户负责实机运行与截图，不运行模拟器。
+
+四向末帧已完成并导入：右下／左下／左上使用loop-r1，右上使用loop-r2。主审核退回了右上r1的错误换支撑脚，r2现让07／08／01保留同一左支撑脚、右脚低幅回收；失败稿和各次原始生成／提示均保留。已合成并解码检查8帧×120ms的正常速GIF，同时以完整人物检查07→08→01→02；不生成新慢动作。00–07保留原RGBA，四个斜向各只替换08，四个正交方向与P2／P3未改。新的08靴位已实测并更新12个共享时间采样的足底数据；注册线224保持不变并不等于单靴坐标未改。活动选择及来源摘要见 `Art/Integration/P1-gait-selection.json`、`Art/Integration/P1-diagonal-loop-v2/integration.json`。
+
+运行导入脚本现区分既有认可原件和本次用户授权的自主修复稿，原认可记录保留，不用伪造“已认可”状态接入新图。原稿摘要、各新横条／运行图集RGBA、GIF时长／序列、变化范围、未改角色资源与项目引用检查通过。版本升至1.6.10 build36，下一步执行设备Release归档，完成后将原始IPA置于Downloads并验证浏览器直链；战斗新的迈步单帧继续作为美术审核项，不混入已认可的运行待机。
+
+设备Release归档 `39560271325` 成功，源码 `94c00a15e6de982df69b8b5fde1f5fd1c46a6c5a`，Xcode15.4，1.6.10 build36。已核对GitHub artifact摘要、外／内CRC、arm64设备架构、iPhoneOS平台、可执行权限、版本号、编译资产、包内步态JSON及远程打包日志校验值，均通过；未运行模拟器或实机。IPA为23,592,463字节，SHA256 `bd486f94ea64153e9fcf1ff593cf2b2495c48c1766862854ab6e818ac8738cec`。原始IPA复制到 `Downloads/MeadowJourney-b36.ipa`，保留历史版本；来源与核验见 `Media/Build36/package.json`。上传后将实际GET原始IPA直链核对返回文件，不向用户交付外层ZIP。
+
+原始IPA直链上传完成后已实际GET：HTTP200、Content-Type application/octet-stream，读取23,592,463字节并计算SHA256，与本地IPA／远程归档日志完全一致。Downloads索引已更新为build36直接IPA地址，用户无需登录Actions或解压外层ZIP；版本、元数据、校验表和制作／审核记录均已同步。实机验证仍由用户执行。
+
+## 2026-10-22 · 道路动作与可交互战斗并行修复（进行中）
+
+用户反馈斜下方向只在道路上严重跳动、独立预览正常，斜上仍有抽帧。已开三个独立Luna6智能体，分别查道路运动／渲染采样、实现战斗状态与交互、制作分层角色动作；主审负责场景动画、投影同步与全身／正常速美术复核。现已确认道路P1原始姿势切换约71ms，而预览120ms，继续检查方向性跳动来源，不将降速当作完整修复。当前开始接入独立P1对鹿灵遭遇，目标选择、AP、技能、敌方回合、胜负／重试与动作反馈都需闭环。原图与历史修订保留；新稿仅内部审核，用户审美认可不自动扩展。本轮只做离线美术／逻辑核对及设备Release归档，不运行模拟器或实机。
+
+战斗交互已改由真实局部状态驱动：P1对一只18HP鹿灵，3AP／回合，5点固定伤害强击、各限2次的回血／护盾、结束回合后可见预备与敌方行动、胜负／重试。不会把旧7玩家／3怪物装饰队列当作真实参战者；关闭取消延迟并使回调失效。主审移出独立Landscape文件，接入同一30Hz战斗时钟、目标点击、AP控制、动作与投影同步、命中斩弧／回血／防护反馈和脚下生命条；入口改为“林地战斗”。首版攻击因全体倾斜、缺少关节发力被主审退回，另做v2分区关节动作；其研究稿保留。鹿灵正在从原始角色参考生成8姿势冲撞动画并修正sheet边缘裁切；不以生成原图直接视为运行美术通过。
+
+本轮完成并准备1.6.11 build37：P1道路速度从42降到按图集120ms导出的25单位／秒，P2／P3保持38／45；Renderer改用完整hero索引、脚底、方向、帧、相位状态比较，移动时前景与投影同帧更新，消除旧方向×4缓存别名及同姿势内影子30Hz拖后；停止时清旧距离相位。四向道路正常速离线合成使用生产路网／图集，不作为GPU或设备运行证据。没有证据证明斜下方向存在独有的投影公式错误，故记录为消除已证实的预览／道路差异，实机跳动是否完全消失仍由用户截图确认。
+
+战斗v2增加近臂上／下段、两腿大／小腿的共同注册分区和数据姿势，运行与正常GIF同源JSON。主审退回整体倾斜v1，修完关节缝、原靴残片、剑被躯干吞掉／挡脸、错误支撑脚地平面和重复接触影。原v9脸／后脑／肩背保留，idle与build35七层运行合成一致；旧assembled对runtime的630像素差为最大单通道1级的合成舍入，头脸无新增差异。鹿灵新增8姿势完整蓄势／冲撞／回收，原站姿与三轮生成源均保留；统一缩放、脚底和接触点，不逐姿势重新拟合体量。完整人物／全场景正常速GIF、脚底、遮挡与缩放自审见Media/Build37/art-review.json；不把内部审核扩展为用户美术认可或完整换装模组完成。
+
+交互与场景时序已联通：AP／目标／HP／护盾、强击／喘息／防护、敌方预备与攻击、胜负／重试，动作中禁重复输入；关闭取消延迟与旧回调。命中位置跟实际剑尖，落脚／轮廓影同姿势更新，护盾与HP在命中阶段更新；敌方动作后保留完整受击／格挡恢复时长。原UI与布局单测源码已适配新遭遇，未执行模拟器；设备归档前将在macOS仅编译运行生产Foundation状态机、道路逻辑和提取的生产姿势数学三个回归脚本，再做设备Release编译。工程生成器／项目版本均为1.6.11 build37。
+
+源码75c50ee已推送，手动设备归档39733557955已排队；package_only=true，所有模拟器任务跳过。补充Media/Build37阅读索引，明确正常25fps全场景合成为离线美术检查（使用同源动作JSON与固定palette），不是UIKit／GPU运行截图；原始120ms动作／步态GIF同时保留。归档与真实Swift检查待构建机执行，尚未交付IPA。
+
+设备构建macOS14通道39733557955长时间排队后增开macOS15通道39733975860（Xcode16.4）。后者已通过项目检查和真实战斗状态机回归，但macOS命令行道路测试缺少CoreGraphics导入，CGPoint.zero／Equatable无法解析，故在归档前停止、无IPA。已给道路harness及提取的姿势数学harness明确导入CoreGraphics；不改iOS运行代码或美术。修正后重跑全部三项和设备归档。
+
+最终布局几何复核发现16:9窄高战场的脚下HP标签会接近视窗底边，已移到完整角色／鹿角上方，并保留48pt标题安全线；不改获认可的世界相机、角色尺度或落脚位置。此为静态布局检查发现的问题，须包含到最终设备归档，未跑模拟器。
+
+重跑39734301977的状态机再次通过，道路测试发现harness将反向道路端点固定当45°斜向，实际平滑曲线端点可能是正交切线，故断言失败、未归档。现以四个标准斜向向量严格验证朝向映射，生产曲线则验证端点切线所属行进象限／连续性；未改生产方向分类。三个脚本改为全部执行后汇总退出，后续失败时能同时看到姿势数学结果，避免前项断言遮蔽后项；任何失败仍禁止归档。
+
+39734788361已通过真实战斗、道路和姿势数学全部回归；设备Release编译只报场景对非可空poseSilhouette误用?.的接线错误，已改为直接调用。无美术／时序变化，尚未产生IPA，继续相同设备归档。
+
+设备Release归档39735185139成功，实际编译源码dca8fd997ce78706ed82277c50eedfd85fc79093、Xcode 16.4 / Build version 16F6、1.6.11 build37。真实Swift战斗／道路／姿势数学三项全部通过，模拟器和实机均未运行。IPA已核对外层artifact摘要与CRC、内部CRC／ZIP_STORED／无额外字段、iPhoneOS平台、arm64可执行文件与权限、版本号、Metal库／编译资产、包内步态JSON逐字一致，以及远程打包日志SHA；全部通过。原始IPA为24,200,213字节，SHA256 0bc40e083b12b0ee7f7ccd424cb2dc8c07a1c7381300697454c4c78d2e04ccfd，现复制至Downloads/MeadowJourney-b37.ipa。来源／检查见Media/Build37/package.json，接下来上传并实际GET直链，不交付外层ZIP。
+
+原始IPA直链已实际匿名GET：HTTP200、application/octet-stream、24,200,213字节，SHA256 0bc40e083b12b0ee7f7ccd424cb2dc8c07a1c7381300697454c4c78d2e04ccfd，与本地／远程归档日志一致。Downloads当前索引、校验表、Media/Build37与交付元数据已同步；保留build36与历史原件。交付直接IPA，不使用外层ZIP。实机安装、帧率／触控与截图仍由用户验收，本轮没有设备／模拟器运行。
+
+## 2026-10-22 · build38 左上左脚落地过渡修订（已交付）
+
+用户反馈左上移动时左脚从抬起到落地没有过渡。本轮沿用自主美术审核、记日志与IPA直链交付约定，开独立Luna6高强度智能体up_left_contact_repair与主审并行。已从完整人物定位为01→02左侧靴可见鞋底末行约210→223（接触边界224）的一帧突降；不以08首尾修订代替此次中段问题。拟另存contact-r1，02增加下降接地前姿势、保留右脚支撑，再衔接03承重，整组120ms正常循环和道路合成自审。原r6／loop-r1与认可记录保留，不改标用户认可；实机／模拟器仍不运行，设备编译与归档完成后交IPA。
+
+contact-r1完成并由主审接入：01→02→03左靴最后可见行210→215→223，右靴223→223→213，02保持右脚支撑、左脚下降后03接触承重；120ms节奏不变。完整人物比例／注册、全循环与07→08→01→02→03逐姿势顺序已自审，另存48帧正常速道路离线合成。最初两个生成稿因头／上身漂移退回，最终完整02统一注册，生成源与精确提示保留。发现继承单帧与旧strip透明区域隐藏RGB有细微差异，改从原始strip裁切未改8帧，确保运行图集RGBA仅左上02改变。
+
+新足底使用既有边界口径：右支撑[142,224,0]，左下降[110,216,8]，同步到映射02的三个距离时钟采样。八原认可strip摘要、新strip到运行RGBA、其余角色／方向、旧认可记录、GIF8×120ms、道路48×120ms与项目资源检查通过。原r6／loop-r1及build37审核证据保留；新修订仍为内部审核，不记用户新认可。版本1.6.12 build38，下一步仅跑构建机真实Swift逻辑／姿势回归与generic iOS设备Release归档，无模拟器／实机运行。
+
+设备Release归档39742884627成功，实际编译源码06827e1d9f7a7654d0a6646442ed9b5a58671f83、Xcode16.4／16F6、版本1.6.12 build38。真实Swift战斗／道路／姿势三项回归通过；无模拟器或实机运行。已核对外层artifact摘要与CRC、IPA内部CRC／ZIP_STORED／无额外字段、iPhoneOS平台、arm64与可执行权限、版本、Metal／编译资产、包内hero-gait逐字一致、远程归档成功与打包SHA。原始IPA24,201,944字节，SHA256 d36b0a78bb48345fd829ce3967d139faeb3d604020c4250cdabca485ae5673fe，复制到Downloads/MeadowJourney-b38.ipa；来源见Media/Build38/package.json。下一步上传并实际匿名GET直链；尚未把未验证地址记为交付成功。
+
+原始IPA直链已实际匿名GET通过：HTTP200、application/octet-stream、24,201,944字节，SHA256 d36b0a78bb48345fd829ce3967d139faeb3d604020c4250cdabca485ae5673fe，与本地IPA／远程打包日志一致。Downloads当前索引、校验表、Media/Build38审核及交付元数据同步；保留build37历史包。用户复制链接即可下载IPA；未进行模拟器或实机运行，实际步态仍由用户安装反馈。

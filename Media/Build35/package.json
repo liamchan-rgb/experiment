@@ -1,0 +1,37 @@
+{
+  "date": "2026-10-21",
+  "version": "1.6.9",
+  "build": 35,
+  "sourceCommit": "01cb73a66542443d3178ed82374383f6a4018bcf",
+  "workflowRun": 39530852893,
+  "workflowURL": "https://github.com/liamchan-rgb/experiment/actions/runs/39530852893",
+  "artifactId": 12315013547,
+  "artifactURL": "https://github.com/liamchan-rgb/experiment/actions/runs/39530852893/artifacts/12315013547",
+  "artifactExpiresAt": "2026-11-20T02:05:14Z",
+  "ipaFilename": "MeadowJourney-1.6.9-build35.ipa",
+  "ipaBytes": 23598869,
+  "ipaSHA256": "9bf3017cd69b65a60f1d669643f5671dbbcba57cb3911aebc91079e396d73214",
+  "artifactZIP_SHA256": "db9c5c07eeb274b88c1910c561f03f84653e49b8ba9c9f080fcc5bd6fe9f78ff",
+  "xcode": "Xcode 15.4\nBuild version 15F31d",
+  "checks": {
+    "deviceReleaseArchive": true,
+    "physicalDevicePlatform": "iPhoneOS",
+    "architecture": "arm64",
+    "ipaCRC": true,
+    "artifactDigest": true,
+    "storedZipForSideStore": true,
+    "versionAndBuild": true,
+    "bundledGaitDataMatchesSource": true,
+    "compiledAssetsPresent": true,
+    "matchesRemotePackageChecksum": true
+  },
+  "content": [
+    "Previously approved P1 gait: eight directions, idle plus eight unchanged walking poses, normal 120ms per pose",
+    "Battle hero v9 rear shoulder shading with v8 face/hair cleanup and common r3 rear-head contour",
+    "Existing independent hero/warden contact shadows and aligned battle backdrop"
+  ],
+  "simulatorRunPerformed": false,
+  "physicalDeviceRunPerformed": false,
+  "userVisualApproval": null,
+  "installation": "Unsigned device IPA, for the existing SideStore re-signing workflow"
+}

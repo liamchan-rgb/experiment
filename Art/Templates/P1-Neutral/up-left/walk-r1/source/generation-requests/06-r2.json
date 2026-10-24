@@ -1,0 +1,16 @@
+{
+  "direction": "up-left",
+  "frame": 6,
+  "artifact": "/workspace/generated_images/exec-85912d16-cb35-4da1-9ef4-f285edda8c3e.png",
+  "prompt": "Image ONE is the mandatory pose blocking diagram; image TWO supplies ONLY character appearance/style. Render exactly ONE complete transparent pixel-art neutral up-left AWAY rear-three-quarter WALK frame 6. Match the diagram positions of arms/legs and cross-over order; replace all guide colors with warm skin/white back-neckline undershirt/charcoal short shorts. GREEN anatomicalLEFT, BLUE anatomicalRIGHT. Near side=LEFT, far side=RIGHT. Exact intended hip,knee,ankle,foot positions in256 coordinates: {\"left\":[[121,176],[136,189],[141,200],[139,204]],\"right\":[[135,174],[130,190],[123,202],[123,205]]}. Shoulder,elbow,wrist positions: {\"left\":[[117,137],[107,148],[105,157]],\"right\":[[138,136],[147,156],[154,174]]}. Follow these limb paths, not a repeated generic walking pose. The near arm may project across the lower back in the backward swing; far arm is occluded behind torso except the appropriate visible part. EXACTLY TWO arms/hands and TWO legs/feet, no third hanging arm. Keep same body scale/registration as appearance image: bald BACK of skull headtop87, tiny edge ear NO FACE profile, neck130, hips175, foot area198..218. Preserve natural hands/thumbs and complete feet. Upper-left light, farther limbs slightly darker. Clean thin pixel-art contours. No guide labels, colored strokes, weapon, hair, gear or shadow. Full transparent256-square framing, do not enlarge/crop sprite.",
+  "references": [
+    "/workspace/experiment/Art/Templates/P1-Neutral/up-left/walk-r1/source/joint-guides/phase-r2/06.png",
+    "/workspace/experiment/Art/Templates/P1-Neutral/up-left/walk-r1/source/idle-selected-registered.png"
+  ],
+  "status": "generated-r2-pending-root-review",
+  "sourceScale": 0.20414673046251994,
+  "sourceTranslation": [
+    0,
+    0
+  ]
+}

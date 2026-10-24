@@ -5,28 +5,6 @@
 	};
 	"objectVersion" = 56;
 	"objects" = {
-		B217EEA1CB4EF22985425BB2 = {
-			"isa" = "PBXFileReference";
-			"lastKnownFileType" = "sourcecode.swift";
-			"path" = "Game/MeadowBattlePlateProcessor.swift";
-			"sourceTree" = "<group>";
-		};
-		9910A53B021F669F4D9E0E1F = {
-			"isa" = "PBXBuildFile";
-			"fileRef" = B217EEA1CB4EF22985425BB2;
-		};
-
-		5EADEF7BC61668410BB220B2 = {
-			"isa" = "PBXFileReference";
-			"lastKnownFileType" = "sourcecode.swift";
-			"path" = "Game/MeadowBattleActorView.swift";
-			"sourceTree" = "<group>";
-		};
-		33B0A1139BC37E21E47728FD = {
-			"isa" = "PBXBuildFile";
-			"fileRef" = 5EADEF7BC61668410BB220B2;
-		};
-
 		12BE6F43C250EA1C0ABFBF32 = {
 			"isa" = "PBXFileReference";
 			"lastKnownFileType" = "sourcecode.swift";
@@ -107,6 +85,36 @@
 			"isa" = "PBXBuildFile";
 			"fileRef" = 99D30FA4C024C21330B21291;
 		};
+		A25803CABA4AFEDD00F70343 = {
+			"isa" = "PBXFileReference";
+			"lastKnownFileType" = "sourcecode.swift";
+			"path" = "Game/MeadowBattleActorView.swift";
+			"sourceTree" = "<group>";
+		};
+		818B9B29404202FA9BCBFA3C = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = A25803CABA4AFEDD00F70343;
+		};
+		FAB1D591E0D5250C716F5F4F = {
+			"isa" = "PBXFileReference";
+			"lastKnownFileType" = "sourcecode.swift";
+			"path" = "Game/MeadowBattleEncounter.swift";
+			"sourceTree" = "<group>";
+		};
+		F92ECF9C4FBCAFD3609A7669 = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = FAB1D591E0D5250C716F5F4F;
+		};
+		7E6967D24C9A10A40DC007E3 = {
+			"isa" = "PBXFileReference";
+			"lastKnownFileType" = "sourcecode.swift";
+			"path" = "Game/MeadowBattleLandscapeView.swift";
+			"sourceTree" = "<group>";
+		};
+		C2AD5CEC7C96E46813F4C71B = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = 7E6967D24C9A10A40DC007E3;
+		};
 		8EFD7CF8F563E8A8463AC361 = {
 			"isa" = "PBXFileReference";
 			"lastKnownFileType" = "sourcecode.swift";
@@ -117,6 +125,16 @@
 			"isa" = "PBXBuildFile";
 			"fileRef" = 8EFD7CF8F563E8A8463AC361;
 		};
+		9D6C163C4585DA5FA457B1A7 = {
+			"isa" = "PBXFileReference";
+			"lastKnownFileType" = "sourcecode.swift";
+			"path" = "Game/MeadowBattlePlateProcessor.swift";
+			"sourceTree" = "<group>";
+		};
+		197CC7E7A5538308178245BF = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = 9D6C163C4585DA5FA457B1A7;
+		};
 		A88E06DD939AD52F7D2C7057 = {
 			"isa" = "PBXFileReference";
 			"lastKnownFileType" = "sourcecode.swift";
@@ -126,6 +144,16 @@
 		CF211C75D5201DDCF2CD9806 = {
 			"isa" = "PBXBuildFile";
 			"fileRef" = A88E06DD939AD52F7D2C7057;
+		};
+		14EFF4E0E624BAB2D9029C01 = {
+			"isa" = "PBXFileReference";
+			"lastKnownFileType" = "sourcecode.swift";
+			"path" = "Game/MeadowBattleScenePresentation.swift";
+			"sourceTree" = "<group>";
+		};
+		7AE9411C915D75232612814F = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = 14EFF4E0E624BAB2D9029C01;
 		};
 		8C885855554D55514A170921 = {
 			"isa" = "PBXFileReference";
@@ -367,10 +395,13 @@
 				405E9001CFA240D228B75EB7,
 				A05AAE886C1A644A2AF1E17A,
 				99D30FA4C024C21330B21291,
+				A25803CABA4AFEDD00F70343,
+				FAB1D591E0D5250C716F5F4F,
+				7E6967D24C9A10A40DC007E3,
 				8EFD7CF8F563E8A8463AC361,
+				9D6C163C4585DA5FA457B1A7,
 				A88E06DD939AD52F7D2C7057,
-				B217EEA1CB4EF22985425BB2,
-				5EADEF7BC61668410BB220B2,
+				14EFF4E0E624BAB2D9029C01,
 				8C885855554D55514A170921,
 				66DEAFD22FF432D6B57BB5F0,
 				8DCCE6164BBE625A6E8C5618,
@@ -453,8 +484,8 @@
 				"TARGETED_DEVICE_FAMILY" = "1,2";
 				"SUPPORTED_PLATFORMS" = "iphoneos iphonesimulator";
 				"CODE_SIGN_STYLE" = "Automatic";
-				"MARKETING_VERSION" = "1.6.8";
-				"CURRENT_PROJECT_VERSION" = "33";
+				"MARKETING_VERSION" = "1.6.12";
+				"CURRENT_PROJECT_VERSION" = "38";
 				"ASSETCATALOG_COMPILER_APPICON_NAME" = "AppIcon";
 				"LD_RUNPATH_SEARCH_PATHS" = (
 					"$(inherited)",
@@ -480,8 +511,8 @@
 				"TARGETED_DEVICE_FAMILY" = "1,2";
 				"SUPPORTED_PLATFORMS" = "iphoneos iphonesimulator";
 				"CODE_SIGN_STYLE" = "Automatic";
-				"MARKETING_VERSION" = "1.6.8";
-				"CURRENT_PROJECT_VERSION" = "33";
+				"MARKETING_VERSION" = "1.6.12";
+				"CURRENT_PROJECT_VERSION" = "38";
 				"ASSETCATALOG_COMPILER_APPICON_NAME" = "AppIcon";
 				"LD_RUNPATH_SEARCH_PATHS" = (
 					"$(inherited)",
@@ -514,10 +545,13 @@
 				44DBFB4339E402F99158D5D2,
 				EAE0075545ABB42C40815692,
 				9230100C79CFE05C6D40D51A,
+				818B9B29404202FA9BCBFA3C,
+				F92ECF9C4FBCAFD3609A7669,
+				C2AD5CEC7C96E46813F4C71B,
 				A62920F6DCC8E1607595BD95,
+				197CC7E7A5538308178245BF,
 				CF211C75D5201DDCF2CD9806,
-				9910A53B021F669F4D9E0E1F,
-				33B0A1139BC37E21E47728FD,
+				7AE9411C915D75232612814F,
 				A41D7E7DC7582CFD98977811,
 				6F13D5561D7427A98E0DED30,
 				2A6A97E3A2291053F11B3878,

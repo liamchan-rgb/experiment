@@ -1,0 +1,49 @@
+{
+  "status": "verified-public-https-delivery",
+  "verifiedAtUTC": "2026-10-23T09:14:45.686062+00:00",
+  "sourceCommit": "a691986d986e96822903edb642bf875aa20b2655",
+  "branch": "fix/build33-face-grounding-camera",
+  "artApproval": null,
+  "repairAndReviewOwner": "root",
+  "subagentsUsed": false,
+  "direction": "up-left",
+  "artifacts": [
+    {
+      "file": "walk-120ms.gif",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/a691986d986e96822903edb642bf875aa20b2655/Art/Review/P1/neutral-up-left-r5/walk-120ms.gif",
+      "httpStatus": 200,
+      "contentType": "image/gif",
+      "sha256": "a1960994b1116ceaa89aac171c95c5ce04999ca799cdf0815a19190d6a00be22",
+      "byteCount": 104917,
+      "dimensions": [
+        512,
+        512
+      ],
+      "frames": 8,
+      "durationsMs": [
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120
+      ],
+      "loop": 0
+    },
+    {
+      "file": "idle-review-2x.png",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/a691986d986e96822903edb642bf875aa20b2655/Art/Review/P1/neutral-up-left-r5/idle-review-2x.png",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "sha256": "313c8b8dc43e18e56c64d3c51ce02a54e05cba53ecf29a77b693f4c0609d9649",
+      "byteCount": 17436,
+      "dimensions": [
+        512,
+        512
+      ]
+    }
+  ],
+  "scope": "Up-left r5 only. Main whole-body frame review; no continuous-player, up-right, wardrobe, device or IPA acceptance."
+}

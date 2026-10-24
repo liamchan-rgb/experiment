@@ -1,0 +1,28 @@
+{
+  "tool": "image_gen.imagegen",
+  "prompt": "source/prompt-back-scabbard.txt",
+  "reference": "Art/Review/P1/modular-down-grip-v4-transition/nine-poses-fullbody-2x.png (style/scale reference only; no character content copied)",
+  "raw": "source/imagegen-original.png",
+  "rawSHA256": "46bfa9347fc99f4ed44b295a3c77464613bfd8eccb76bbcae0758a3b29b0c619",
+  "sourceCanvas": [
+    1254,
+    1254
+  ],
+  "transparentBackgroundRequested": true,
+  "iterationNote": "The first generated attempt was oversized and is retained as rejected history. Current candidate is rebuilt from the full 1254\u00d71254 second raw image with source/register-back-sword.py: fixed scale 0.12, Pillow positive 18 degrees, source anchor (460,340) to cell (90,130), and no additional translation. No source alpha threshold/crop/fit is used. Four disconnected one-pixel low-alpha artifacts are removed only after transform. The former 22-degree registration and intermediate 18-degree/-8px trial are retained as superseded history. The final placement was checked through the actual v8 commonbase+outfit compositor using source/render-v8-composition-review.py.",
+  "artApproval": null,
+  "rejectedFirstAttempt": {
+    "raw": "source/imagegen-attempt-01-oversized.png",
+    "prompt": "source/prompt-back-scabbard-attempt1.txt",
+    "reason": "the first render was much too large within the generated canvas"
+  },
+  "registrationScript": "source/register-back-sword.py",
+  "registrationRecord": "source/registration.json",
+  "rejectedPriorRegistration": "source/registration-rejected-bbox-fit-v1.json",
+  "registrationHistory": [
+    "source/registration-rejected-bbox-fit-v1.json",
+    "source/registration-angle22-superseded-v1.json",
+    "source/registration-angle18-offset-minus8-superseded-v1.json"
+  ],
+  "compositionReviewScript": "source/render-v8-composition-review.py"
+}

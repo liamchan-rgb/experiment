@@ -1,0 +1,14 @@
+{
+  "originalBase": "Art/Templates/P1-Neutral/up-right/walk-r6-transitions",
+  "originalManifestSHA256": "cf622e30e8867b2d97ef8f39018580c26bf29a9d07c7010cd86def0f33f31c4e",
+  "paintSHA256": "1bda18f6f8ab05ee9ce71270a512e94d69195aefd063a973b0ba1b579b3caf81",
+  "repairROI": [
+    114,
+    122,
+    132,
+    132
+  ],
+  "featherPixels": 2,
+  "geometryAndAlphaUnchanged": true,
+  "artApproval": null
+}

@@ -1,0 +1,119 @@
+{
+  "canvas": [
+    256,
+    256
+  ],
+  "reference": "Art/Review/P1/modular-down-grip-v4-transition/combinations/chestnut__blue__forester__empty/{idle-00.png,walk-01.png,...,walk-08.png}; read-only local composition previews",
+  "source": "source/imagegen-original.png",
+  "sourceCanvas": [
+    1254,
+    1254
+  ],
+  "sourceSHA256": "46bfa9347fc99f4ed44b295a3c77464613bfd8eccb76bbcae0758a3b29b0c619",
+  "registrationMethod": "Apply one fixed affine transform to the entire original 1254x1254 RGBA source canvas. No source alpha threshold, alpha-bound crop, connected-solid crop, alpha-bounds resize, or content-dependent fit. Pillow nearest-neighbor sampling. After transform, remove only disconnected one-pixel components with alpha < 8.",
+  "postTransformCleanup": {
+    "removedIsolatedPixels": [
+      [
+        108,
+        197,
+        1
+      ],
+      [
+        96,
+        212,
+        1
+      ]
+    ],
+    "purpose": "two disconnected low-alpha edge specks only; source image and main connected sword structure are retained without alpha-bound fitting"
+  },
+  "sourceToCellAffine": {
+    "convention": "x_cell=a*x_source+c*y_source+tx; y_cell=b*x_source+d*y_source+ty",
+    "a": 0.11126206254801449,
+    "b": -0.04495279120990944,
+    "c": 0.04495279120990944,
+    "d": 0.11126206254801449,
+    "tx": 25.535502216544124,
+    "ty": 94.84918269023342,
+    "scale": 0.12,
+    "pillowPositiveAngleDegrees": 22.0
+  },
+  "inverseCoefficientsUsedByPillow": [
+    7.726532121389895,
+    -3.1217216117992668,
+    98.79186535364752,
+    3.1217216117992668,
+    7.726532121389895,
+    -812.5699858812008
+  ],
+  "landmarkAnchor": {
+    "source": [
+      460.0,
+      340.0
+    ],
+    "cell": [
+      92.0,
+      112.0
+    ],
+    "mapped": [
+      [
+        92.0,
+        112.0
+      ]
+    ]
+  },
+  "tipLandmarkApprox": {
+    "source": [
+      790,
+      920
+    ],
+    "cell": [
+      154.78909954259225,
+      161.6975751785783
+    ],
+    "targetIntent": [
+      154,
+      162
+    ]
+  },
+  "bodyTranslationByPose": {
+    "0": [
+      0,
+      0
+    ],
+    "1": [
+      0,
+      0
+    ],
+    "2": [
+      0,
+      2
+    ],
+    "3": [
+      0,
+      -1
+    ],
+    "4": [
+      0,
+      -2
+    ],
+    "5": [
+      0,
+      0
+    ],
+    "6": [
+      0,
+      2
+    ],
+    "7": [
+      0,
+      -1
+    ],
+    "8": [
+      0,
+      -2
+    ]
+  },
+  "poseRegistration": "Same fixed 256x256 idle transform and integer body-bob translation only; no per-pose rotate, scale, crop, or fit.",
+  "rejectedPriorRegistration": "source/registration-rejected-bbox-fit-v1.json (retained only as rejected history; not used to build current PNGs)",
+  "editable": "editable/00.svg and editable/00.ora are registered-output wrappers; source image remains the editable artwork origin."
+}

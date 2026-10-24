@@ -1,0 +1,90 @@
+{
+  "date": "2026-10-24",
+  "artCommit": "d09826aa8b84855874672a807a266ab6262d8954",
+  "verified": true,
+  "artApproval": null,
+  "direction": "up",
+  "authorAndReviewer": "root",
+  "subagentsUsed": false,
+  "reviewScope": "All13 complete1x/2x, standing, ordered walk/start-stop and actual GIF8 decoded frames; still viewer only, no continuous-playback claim",
+  "reexportByteIdenticalFiles": 371,
+  "remotePackageClosurePaths": 253,
+  "publicOfflineDependenciesUnchanged": 8,
+  "existingTests": {
+    "contract": 26,
+    "compositor": 21
+  },
+  "files": [
+    {
+      "file": "Art/Review/P1/neutral-up-layered-r1/walk-120ms.gif",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/d09826aa8b84855874672a807a266ab6262d8954/Art/Review/P1/neutral-up-layered-r1/walk-120ms.gif",
+      "httpStatus": 200,
+      "mime": "image/gif",
+      "bytes": 111724,
+      "sha256": "50f034ff63802562bae8aa1906c549dcf9314a149f135d89b6662d27975b971d",
+      "dimensions": [
+        512,
+        512
+      ],
+      "durationsMs": [
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120
+      ]
+    },
+    {
+      "file": "Art/Review/P1/neutral-up-layered-r1/start-stop-120ms.gif",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/d09826aa8b84855874672a807a266ab6262d8954/Art/Review/P1/neutral-up-layered-r1/start-stop-120ms.gif",
+      "httpStatus": 200,
+      "mime": "image/gif",
+      "bytes": 306957,
+      "sha256": "f285662d36b0e2955b2f2534bce535986b22e075fed9fad2ed3bada553b5b0c7",
+      "dimensions": [
+        512,
+        512
+      ],
+      "durationsMs": [
+        480,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        480
+      ]
+    },
+    {
+      "file": "Art/Review/P1/neutral-up-layered-r1/idle-review-2x.png",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/d09826aa8b84855874672a807a266ab6262d8954/Art/Review/P1/neutral-up-layered-r1/idle-review-2x.png",
+      "httpStatus": 200,
+      "mime": "image/png",
+      "bytes": 17970,
+      "sha256": "903736dd3999136b013f4fe19cd203143c4553cb3526887743b3c58e85fc2012",
+      "dimensions": [
+        512,
+        512
+      ],
+      "durationsMs": null
+    }
+  ]
+}

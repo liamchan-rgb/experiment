@@ -1,0 +1,16 @@
+{
+  "date": "2026-10-23",
+  "commands": [
+    {
+      "command": "python scripts/test-character-part-contract.py",
+      "passed": 26,
+      "failed": 0
+    },
+    {
+      "command": "python scripts/test-character-compositor.py",
+      "passed": 21,
+      "failed": 0
+    }
+  ],
+  "scope": "Offline contract/compositor checks; no simulator or device run"
+}

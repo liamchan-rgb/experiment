@@ -1,0 +1,394 @@
+import UIKit
+import CoreImage
+
+final class MeadowBattleLandscapeView: UIView {
+    private let canvas = UIView()
+    private let cameraBackdrop = UIImageView()
+    private let canvasFeatherMask = CAGradientLayer()
+    private var cameraBackdropRenderSize = CGSize.zero
+    private let farForest = UIImageView(image: MeadowBattlePlateProcessor.image(named: "MeadowCampFarForest", role: .farForest))
+    private let ground = UIImageView(image: MeadowBattlePlateProcessor.image(named: "MeadowCampGround", role: .ground))
+    private let midground = UIImageView(image: MeadowBattlePlateProcessor.image(named: "MeadowCampMidground", role: .midground))
+    private let foreground = UIImageView(image: UIImage(named: "MeadowCampForeground"))
+    private let hero: MeadowBattleActorView
+    private let enemy: MeadowBattleEnemyTargetView
+    private let heroShadow: MeadowBattleGroundingView
+    private let enemyShadow: MeadowBattleGroundingView
+    private let heroFlash = UIImageView()
+    private let enemyFlash = UIImageView()
+    var onEnemySelected: (() -> Void)?
+    private let clock = MeadowBattleSceneClock()
+    private let effects = MeadowBattleEffectsView()
+    private let heroStatus = UILabel()
+    private let enemyStatus = UILabel()
+    private var baseHeroFrame = CGRect.zero
+    private var baseEnemyFrame = CGRect.zero
+    private var cue: MeadowBattleAnimationCue?
+    private var cueElapsed: TimeInterval = 0
+    private var cueDuration: TimeInterval = 1.2
+    private var completion: (() -> Void)?
+    private var idleElapsed: TimeInterval = 0
+    private var terminalClip: String?
+    private var heroHP = 12
+    private var enemyHP = 18
+    private var shieldValue = 0
+    private var shownHeroHP = 12
+    private var shownEnemyHP = 18
+    private var shownShieldValue = 0
+    private var selected = false
+    private var lastShadowPose = ""
+    private var lastEnemyPose = -1
+    private var hitWasBlocked = false
+    private var enemyMotionDuration: TimeInterval { Double(MeadowBattleEnemyFrames.attack.count) * 0.12 }
+
+    private var sceneLayers: [UIImageView] { [farForest, ground, midground, foreground] }
+
+    var sceneLayerOrder: [String] { sceneLayers.compactMap(\.accessibilityIdentifier) }
+    var sceneLayerFrames: [CGRect] { sceneLayers.map(\.frame) }
+    var sceneCanvasFrame: CGRect { canvas.frame }
+    var cameraBackdropFrame: CGRect { cameraBackdrop.frame }
+    var cameraBackdropContentMode: UIView.ContentMode { cameraBackdrop.contentMode }
+    var cameraBackdropClipsToBounds: Bool { cameraBackdrop.clipsToBounds }
+    var sceneCanvasSubviewOrder: [String] { canvas.subviews.compactMap(\.accessibilityIdentifier) }
+    var heroViewFrame: CGRect { hero.frame }
+    var heroLayerNames: [String] { hero.layerNames }
+    var enemyViewFrame: CGRect { enemy.frame }
+    var enemyIsMirrored: Bool { enemy.transform.a < 0 }
+
+    override init(frame: CGRect) {
+        let actor = MeadowBattleActorView(frame: .zero)
+        hero = actor
+        let enemyImage = UIImage(named: "MeadowBattleForestWarden")
+        enemy = MeadowBattleEnemyTargetView(image: enemyImage)
+        heroShadow = MeadowBattleGroundingView(image: actor.silhouette, soleY: 214, contacts: [
+            .init(point: CGPoint(x: 98, y: 214), radius: 12),
+            .init(point: CGPoint(x: 146, y: 214), radius: 12)
+        ])
+        enemyShadow = MeadowBattleGroundingView(image: enemyImage, soleY: 241, contacts: [
+            .init(point: CGPoint(x: 84, y: 240), radius: 16),
+            .init(point: CGPoint(x: 172, y: 240), radius: 16),
+            .init(point: CGPoint(x: 230, y: 239), radius: 16),
+            .init(point: CGPoint(x: 314, y: 240), radius: 17)
+        ])
+        super.init(frame: frame)
+        clipsToBounds = true
+        layer.cornerRadius = 14
+        layer.borderWidth = 1
+        layer.borderColor = UIColor(red: 0.91, green: 0.81, blue: 0.58, alpha: 0.7).cgColor
+
+        cameraBackdrop.contentMode = .scaleToFill
+        cameraBackdrop.clipsToBounds = true
+        cameraBackdrop.alpha = 0.82
+        cameraBackdrop.accessibilityIdentifier = "meadowBattleCameraBackdrop"
+        addSubview(cameraBackdrop)
+
+        canvas.clipsToBounds = true
+        canvasFeatherMask.startPoint = CGPoint(x: 0.5, y: 0)
+        canvasFeatherMask.endPoint = CGPoint(x: 0.5, y: 1)
+        canvasFeatherMask.colors = [UIColor.white.cgColor, UIColor.white.cgColor, UIColor.clear.cgColor]
+        canvasFeatherMask.locations = [0, 0.88, 1]
+        canvas.layer.mask = canvasFeatherMask
+        canvas.accessibilityIdentifier = "meadowBattleSceneCanvas"
+        addSubview(canvas)
+        for (index, imageView) in sceneLayers.enumerated() {
+            imageView.accessibilityIdentifier = MeadowBattleCanvasGeometry.sceneLayerOrder[index]
+            imageView.contentMode = .scaleToFill
+            imageView.isAccessibilityElement = false
+            imageView.layer.minificationFilter = .linear
+            imageView.layer.magnificationFilter = .linear
+            canvas.addSubview(imageView)
+        }
+        configureShadow(heroShadow, identifier: "meadowBattleHeroShadow")
+        configureShadow(enemyShadow, identifier: "meadowBattleForestWardenShadow")
+        canvas.addSubview(heroShadow)
+        canvas.addSubview(enemyShadow)
+
+        hero.accessibilityIdentifier = "meadowBattleHero"
+        hero.isAccessibilityElement = true
+        hero.accessibilityLabel = "Meadow Journey 冒险者，向右侧向备战，独立头发、五官、衣物与短剑"
+        canvas.addSubview(hero)
+        canvas.addSubview(heroFlash)
+
+        enemy.accessibilityIdentifier = "meadowBattleForestWarden"
+        enemy.isAccessibilityElement = true
+        enemy.accessibilityLabel = "林地鹿灵敌方单位示意，朝左站立警戒"
+        enemy.contentMode = .scaleToFill
+        enemy.layer.minificationFilter = .nearest
+        enemy.layer.magnificationFilter = .nearest
+        canvas.addSubview(enemy)
+        canvas.addSubview(enemyFlash)
+        for flash in [heroFlash, enemyFlash] {
+            flash.isUserInteractionEnabled = false; flash.isAccessibilityElement = false
+            flash.contentMode = .scaleToFill; flash.alpha = 0
+            flash.layer.magnificationFilter = .nearest
+        }
+
+        canvas.addSubview(foreground)
+        effects.accessibilityIdentifier = "battleCombatEffects"
+        canvas.addSubview(effects)
+        for label in [heroStatus, enemyStatus] {
+            label.font = .monospacedDigitSystemFont(ofSize: 13, weight: .semibold)
+            label.textAlignment = .center; label.textColor = .white
+            label.backgroundColor = UIColor(red: 0.06, green: 0.13, blue: 0.08, alpha: 0.85)
+            label.layer.cornerRadius = 6; label.clipsToBounds = true
+            label.isUserInteractionEnabled = false; canvas.addSubview(label)
+        }
+        heroStatus.accessibilityIdentifier = "battleHeroHealth"
+        enemyStatus.accessibilityIdentifier = "battleEnemyHealth"
+        enemy.isUserInteractionEnabled = true
+        enemy.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(selectEnemy)))
+        enemy.onActivate = { [weak self] in self?.onEnemySelected?() }
+        enemy.accessibilityTraits = .button
+        clock.onTick = { [weak self] delta in self?.advanceAnimation(delta) }
+    }
+
+    required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
+
+    private static let blurredCameraPlate: CIImage? = {
+        let size = MeadowBattleCanvasGeometry.sourceCanvas
+        let format = UIGraphicsImageRendererFormat(); format.scale = 1
+        let renderer = UIGraphicsImageRenderer(size: size, format: format)
+        let plate = renderer.image { _ in
+            let rect = CGRect(origin: .zero, size: size)
+            for name in MeadowBattleCanvasGeometry.sceneLayerOrder {
+                UIImage(named: name)?.draw(in: rect)
+            }
+        }
+        guard let cgImage = plate.cgImage else { return nil }
+        let input = CIImage(cgImage: cgImage)
+        let blur = CIFilter(name: "CIGaussianBlur")
+        blur?.setValue(input.clampedToExtent(), forKey: kCIInputImageKey)
+        blur?.setValue(18, forKey: kCIInputRadiusKey)
+        let blurred = blur?.outputImage?.cropped(to: input.extent)
+        let controls = CIFilter(name: "CIColorControls")
+        controls?.setValue(blurred, forKey: kCIInputImageKey)
+        controls?.setValue(0.75, forKey: kCIInputSaturationKey)
+        controls?.setValue(0.92, forKey: kCIInputContrastKey)
+        return (controls?.outputImage?.cropped(to: input.extent) ?? blurred ?? input).clampedToExtent()
+    }()
+
+    private static let cameraBackdropContext = CIContext(options: [.useSoftwareRenderer: false])
+
+    /// Render the soft plate with the exact horizontal scale and top anchor of
+    /// the sharp canvas. Clamping its blurred lower edge fills any extra height
+    /// without stretching the scene or creating a second camera transform.
+    private static func makeCameraBackdrop(for viewport: CGSize) -> UIImage? {
+        guard viewport.width > 0, viewport.height > 0,
+              let plate = blurredCameraPlate else { return nil }
+        let outputRect = CGRect(x: 0, y: 0,
+                                width: viewport.width.rounded(.up), height: viewport.height.rounded(.up))
+        let transform = MeadowBattleCanvasGeometry.backdropTransform(for: outputRect.size)
+        let aligned = plate.transformed(by: transform)
+        guard let image = cameraBackdropContext.createCGImage(aligned, from: outputRect) else { return nil }
+        return UIImage(cgImage: image, scale: 1, orientation: .up)
+    }
+
+    private func configureShadow(_ shadow: UIView, identifier: String) {
+        shadow.accessibilityIdentifier = identifier
+        shadow.isUserInteractionEnabled = false
+    }
+
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        guard bounds.width > 0, bounds.height > 0 else { return }
+        if cameraBackdropRenderSize != bounds.size || cameraBackdrop.image == nil {
+            cameraBackdrop.image = Self.makeCameraBackdrop(for: bounds.size)
+            cameraBackdropRenderSize = bounds.size
+        }
+        let fitted = MeadowBattleCanvasGeometry.fittedCanvas(in: bounds)
+        cameraBackdrop.frame = bounds
+        canvas.frame = fitted
+        canvasFeatherMask.frame = canvas.bounds
+        let canvasBounds = canvas.bounds
+        sceneLayers.forEach { $0.frame = canvasBounds }
+
+        if let configuration = hero.configuration {
+            baseHeroFrame = MeadowBattleCanvasGeometry.actorFrame(configuration: configuration, canvas: canvasBounds)
+        }
+        let enemyFrame = MeadowBattleCanvasGeometry.registeredSpriteFrame(
+            imageSize: MeadowBattleCanvasGeometry.enemyImageSize,
+            alphaBounds: MeadowBattleCanvasGeometry.enemyAlphaBounds,
+            foot: MeadowBattleCanvasGeometry.enemyFoot, visibleHeight: MeadowBattleCanvasGeometry.enemyVisibleHeight,
+            canvas: canvasBounds)
+        baseEnemyFrame = enemyFrame
+
+        heroShadow.frame = canvasBounds
+        heroShadow.spriteFrame = baseHeroFrame
+        enemyShadow.frame = canvasBounds
+        enemyShadow.spriteFrame = enemyFrame
+        effects.frame = canvasBounds
+        renderAnimation()
+    }
+
+    @objc private func selectEnemy() { onEnemySelected?() }
+
+    func setEncounter(heroHP: Int, enemyHP: Int, shield: Int, selected: Bool) {
+        let healthChanged = heroHP != self.heroHP || enemyHP != self.enemyHP || shield != shieldValue
+        let reset = enemyHP > self.enemyHP || (self.heroHP == 0 && heroHP > 0)
+        self.heroHP = heroHP; self.enemyHP = enemyHP; shieldValue = shield; self.selected = selected
+        if reset { terminalClip = nil; shownHeroHP = heroHP; shownEnemyHP = enemyHP; enemy.alpha = 1; enemyShadow.alpha = 1; hero.alpha = 1 }
+        if reset || (!healthChanged && cue == nil && heroHP == shownHeroHP && enemyHP == shownEnemyHP) { refreshHealth() }
+        effects.selected = selected; effects.shield = shownShieldValue; effects.setNeedsDisplay()
+        enemy.accessibilityValue = "生命 \(enemyHP)/18，\(selected ? "已选中" : "点击选择目标")"
+        if !isHidden, window != nil { clock.start() }
+    }
+
+    func play(_ value: MeadowBattleAnimationCue, completion: @escaping () -> Void) {
+        self.completion = nil
+        cue = value; cueElapsed = 0; self.completion = completion; terminalClip = nil
+        switch value {
+        case .strike: cueDuration = Double(MeadowBattleAnimation.durationMs(for: "attack")) / 1000; effects.message = "−\(max(0, shownEnemyHP - enemyHP))"; effects.messageColor = .white
+        case .enemyStrike:
+            let loss = shownHeroHP - heroHP
+            hitWasBlocked = loss == 0
+            let response = hitWasBlocked ? "guard" : "hit"
+            let recovery = enemyMotionDuration * 0.46 + Double(MeadowBattleAnimation.durationMs(for: response)) / 1000
+            cueDuration = ceil(max(enemyMotionDuration, recovery) / 0.04) * 0.04
+            effects.message = loss > 0 ? "−\(loss)" : "格挡"
+            effects.messageColor = loss > 0 ? .systemOrange : .systemCyan
+        case .guardPose: cueDuration = Double(MeadowBattleAnimation.durationMs(for: "guard")) / 1000; effects.message = "护盾 +4"; effects.messageColor = .systemCyan
+        case .heal: cueDuration = 0.96; effects.message = "+\(max(0, heroHP - shownHeroHP))"; effects.messageColor = .systemGreen
+        case .victory: cueDuration = Double(MeadowBattleAnimation.durationMs(for: "victory")) / 1000; effects.message = ""
+        case .defeat: cueDuration = Double(MeadowBattleAnimation.durationMs(for: "defeat")) / 1000; effects.message = ""
+        }
+        renderAnimation(); clock.start()
+    }
+
+    func cancelAnimations() {
+        clock.stop(); cue = nil; completion = nil; terminalClip = nil
+        cueElapsed = 0; idleElapsed = 0; effects.cue = nil; effects.message = ""
+        hero.setPose(clip: "idle", progress: 0); hero.alpha = 1; enemy.alpha = 1
+        enemy.image = MeadowBattleEnemyFrames.image(progress: 0)
+        lastEnemyPose = -1; lastShadowPose = ""
+        refreshHealth(); renderAnimation()
+    }
+
+    private func refreshHealth() {
+        shownHeroHP = heroHP; shownEnemyHP = enemyHP; shownShieldValue = shieldValue
+        heroStatus.text = "P1  \(shownHeroHP)/12  盾\(shieldValue)"
+        enemyStatus.text = "鹿灵  \(shownEnemyHP)/18"
+    }
+
+    private func advanceAnimation(_ delta: TimeInterval) {
+        guard !isHidden, window != nil else { clock.stop(); return }
+        idleElapsed += delta
+        if cue != nil {
+            cueElapsed = min(cueDuration, cueElapsed + delta)
+            let impactTime = cue == .enemyStrike ? enemyMotionDuration * 0.48 : cueDuration * 0.48
+            if cueElapsed >= impactTime { refreshHealth() }
+        }
+        renderAnimation()
+        if let value = cue, cueElapsed >= cueDuration {
+            switch value {
+            case .victory: terminalClip = "victory"
+            case .defeat: terminalClip = "defeat"
+            default: break
+            }
+            cue = nil; effects.cue = nil; effects.message = ""; refreshHealth()
+            let finished = completion; completion = nil; finished?()
+        }
+    }
+
+    private func renderAnimation() {
+        guard baseHeroFrame.width > 0, baseEnemyFrame.width > 0 else { return }
+        let visualDuration = cue == .enemyStrike ? enemyMotionDuration : cueDuration
+        let p = CGFloat(min(1, cueElapsed / max(0.01, visualDuration)))
+        var clip = terminalClip ?? "idle"
+        var poseProgress = terminalClip == nil ? CGFloat(idleElapsed.truncatingRemainder(dividingBy: 2.4) / 2.4) : 1
+        var heroTravel: CGFloat = 0, enemyTravel: CGFloat = 0
+        var monsterProgress: CGFloat = 0
+        var enemyRecoil: CGFloat = 0
+        func transformPoint(_ point: CGPoint, part: MeadowBattleLayerPose) -> CGPoint {
+            let dx = point.x - part.pivot.x, dy = point.y - part.pivot.y
+            let c = cos(part.rotation) * part.scale, s = sin(part.rotation) * part.scale
+            return CGPoint(x: part.pivot.x + part.offset.x + dx * c - dy * s,
+                           y: part.pivot.y + part.offset.y + dx * s + dy * c)
+        }
+        func approach() -> CGFloat {
+            if p < 0.12 || p >= 1 { return 0 }
+            if p >= 0.40, p <= 0.66 { return 1 }
+            let t = p < 0.40 ? (p - 0.12) / 0.28 : (1 - p) / 0.34
+            return t * t * (3 - 2 * t)
+        }
+        func pulse(_ start: CGFloat, _ peak: CGFloat, _ end: CGFloat) -> CGFloat {
+            if p < start || p > end { return 0 }
+            let t = p < peak ? (p - start) / (peak - start) : (end - p) / (end - peak)
+            return t * t * (3 - 2 * t)
+        }
+        if let cue {
+            switch cue {
+            case .strike:
+                clip = "attack"; poseProgress = p
+                let contact = MeadowBattleAnimation.sample(clip: "attack", progress: 0.54)
+                let tip = transformPoint(CGPoint(x: 191, y: 142), part: contact.layers["MeadowBattleHeroWeapon"] ?? .init())
+                let heroReach = baseHeroFrame.minX + (tip.x + contact.rootOffset.x) / 256 * baseHeroFrame.width
+                let enemyFront = baseEnemyFrame.minX + 54 / 384 * baseEnemyFrame.width
+                heroTravel = min(canvas.bounds.width * 0.22, max(0, enemyFront - heroReach + canvas.bounds.width * 0.018)) * approach()
+                enemyRecoil = canvas.bounds.width * 0.017 * pulse(0.48, 0.58, 0.86)
+            case .enemyStrike:
+                monsterProgress = p
+                let enemyFront = baseEnemyFrame.minX + 42 / 384 * baseEnemyFrame.width
+                let heroCenter = baseHeroFrame.minX + 128 / 256 * baseHeroFrame.width
+                enemyTravel = -max(0, enemyFront - heroCenter - canvas.bounds.width * 0.015) * pulse(0.08, 0.48, 0.98)
+                if p >= 0.46 {
+                    clip = hitWasBlocked ? "guard" : "hit"
+                    let duration = Double(MeadowBattleAnimation.durationMs(for: clip)) / 1000
+                    poseProgress = CGFloat(min(1, (cueElapsed - enemyMotionDuration * 0.46) / duration))
+                }
+            case .guardPose: clip = "guard"; poseProgress = p
+            case .heal: clip = "idle"; poseProgress = p
+            case .victory: clip = "victory"; poseProgress = p; enemy.alpha = 1 - p * 0.8; enemyShadow.alpha = 1 - p * 0.7
+            case .defeat: clip = "defeat"; poseProgress = p; hero.alpha = 1 - p * 0.35
+            }
+        }
+        hero.setPose(clip: clip, progress: poseProgress)
+        let unit = baseHeroFrame.width / 256
+        let offset = hero.poseRootOffset
+        hero.transform = .identity
+        hero.frame = baseHeroFrame.offsetBy(dx: heroTravel + offset.x * unit, dy: offset.y * unit)
+        enemy.transform = .identity
+        enemy.frame = baseEnemyFrame.offsetBy(dx: enemyTravel + enemyRecoil, dy: 0)
+        let enemyPose = min(7, max(0, Int(monsterProgress * 8)))
+        if enemyPose != lastEnemyPose {
+            enemy.image = MeadowBattleEnemyFrames.image(progress: monsterProgress)
+            enemyFlash.image = enemy.image?.withTintColor(.white, renderingMode: .alwaysOriginal)
+            let contacts = MeadowBattleEnemyFrames.feet(progress: monsterProgress)
+            enemyShadow.update(image: enemy.image, soleY: 240,
+                contacts: contacts.map { .init(point: $0, radius: 14) })
+            lastEnemyPose = enemyPose
+        }
+        let shadowKey = "\(clip)-\(Int((poseProgress * CGFloat(MeadowBattleAnimation.silhouetteBuckets)).rounded()))"
+        if shadowKey != lastShadowPose {
+            heroFlash.image = hero.poseSilhouette.withTintColor(.white, renderingMode: .alwaysOriginal)
+            heroShadow.update(image: hero.poseSilhouette, soleY: hero.poseFootAnchorPx.y,
+                contacts: hero.poseContacts.map { .init(point: $0, radius: 12) })
+            lastShadowPose = shadowKey
+        }
+        heroShadow.spriteFrame = hero.frame; enemyShadow.spriteFrame = enemy.frame
+        heroFlash.frame = hero.frame; enemyFlash.frame = enemy.frame
+        heroFlash.alpha = cue == .enemyStrike && !hitWasBlocked ? 0.25 * pulse(0.46, 0.51, 0.66) : 0
+        enemyFlash.alpha = cue == .strike ? 0.28 * pulse(0.48, 0.54, 0.68) : 0
+        let heroFoot = CGPoint(x: hero.frame.minX + hero.poseFootAnchorPx.x * unit,
+                               y: hero.frame.minY + hero.poseFootAnchorPx.y * unit)
+        let enemyFoot = CGPoint(x: enemy.frame.minX + 178.5 / 384 * enemy.frame.width,
+                               y: enemy.frame.minY + 240 / 256 * enemy.frame.height)
+        effects.heroFoot = heroFoot; effects.enemyFoot = enemyFoot
+        effects.cue = cue; effects.progress = p; effects.selected = selected; effects.shield = shownShieldValue
+        if cue == .enemyStrike {
+            effects.impact = CGPoint(x: heroFoot.x + 8 * unit, y: heroFoot.y - 70 * unit)
+        } else {
+            let blade = transformPoint(CGPoint(x: 184, y: 145), part: hero.currentPose.layers["MeadowBattleHeroWeapon"] ?? .init())
+            effects.impact = CGPoint(x: hero.frame.minX + blade.x * unit,
+                                     y: hero.frame.minY + blade.y * unit)
+        }
+        effects.setNeedsDisplay()
+        let labelWidth = max(94, canvas.bounds.width * 0.15)
+        heroStatus.frame = CGRect(x: heroFoot.x - labelWidth / 2,
+            y: max(48, heroFoot.y - canvas.bounds.height * MeadowBattleCanvasGeometry.heroVisibleHeight - 28),
+            width: labelWidth, height: 23)
+        enemyStatus.frame = CGRect(x: enemyFoot.x - labelWidth / 2,
+            y: max(48, enemyFoot.y - canvas.bounds.height * MeadowBattleCanvasGeometry.enemyVisibleHeight - 28),
+            width: labelWidth, height: 23)
+    }
+
+}

@@ -1,0 +1,226 @@
+{
+  "source": "source/generated-sleeve-plate.png",
+  "sourceCanvas": [
+    1254,
+    1254
+  ],
+  "targetPlateCanvas": [
+    192,
+    192
+  ],
+  "uniformRegistration": "entire source plate resized to 192x192 nearest-neighbor; no alpha fitting",
+  "grid": [
+    3,
+    3
+  ],
+  "cellCanvas": [
+    64,
+    64
+  ],
+  "cellToPoseTranslation": [
+    92,
+    125
+  ],
+  "splitX": 32,
+  "preservedOutfit": "outfit-forester-v1; all non-sleeve layers byte-identical",
+  "base": "walk-r2 natural arms and hands",
+  "generator": "image_gen",
+  "artApproval": null,
+  "coverageConstruction": {
+    "pattern": "patterns/FRAME/sleeve.SIDE.png",
+    "provenance": "walk-r2 anatomical arm silhouette at alpha>=128, with a one-pixel garment allowance. Stored as fixed authoring pattern, never inferred at runtime.",
+    "underlapMaterial": "source/cloth-underlap-material.png",
+    "materialRegistration": "whole source image resized uniformly to256x256; pattern supplies alpha",
+    "sleeveArt": "generated 3x3 plate registered exactly as above, clipped to the fixed garment pattern over the material underlap",
+    "bodyModified": false
+  },
+  "lowerCoverage": {
+    "material": "source/lower-materials.png; fixed left/right halves for charcoal trouser cloth and dark leather",
+    "bootCuffYByPose": [
+      [
+        199,
+        199
+      ],
+      [
+        200,
+        190
+      ],
+      [
+        200,
+        186
+      ],
+      [
+        196,
+        187
+      ],
+      [
+        188,
+        201
+      ],
+      [
+        191,
+        201
+      ],
+      [
+        189,
+        198
+      ],
+      [
+        186,
+        196
+      ],
+      [
+        199,
+        188
+      ]
+    ],
+    "bodyBobY": [
+      0,
+      0,
+      2,
+      -1,
+      -2,
+      0,
+      2,
+      -1,
+      -2
+    ],
+    "torsoJacketY": [
+      136,
+      171
+    ],
+    "jacketPantsOverlapY": [
+      170,
+      172
+    ],
+    "rightHipPartitionX": 125,
+    "underlapMasks": "patterns/FRAME/torso.png,pants.SIDE.png,boot.SIDE.png",
+    "principle": "fixed authoring patterns add actual opaque cloth/leather underpaint; neutral body layers remain unchanged. Shoe sole is clipped to the greater of authored boot sole and neutral foot sole.",
+    "materialRegistration": "fixed 627x627 top-left square of each half of the opaque material atlas, uniformly resampled to256x256"
+  },
+  "acceptedSleeveMotion": {
+    "source": "generated-sleeve-plate.png idle00 cell plus its fixed cloth underlap and garment patterns; no derived PNG feedback",
+    "commonBase": "walk-r6-relaxed-arms",
+    "bodyBobY": [
+      0,
+      0,
+      2,
+      -1,
+      -2,
+      0,
+      2,
+      -1,
+      -2
+    ],
+    "rightRelativeXY": [
+      [
+        0,
+        0
+      ],
+      [
+        -1,
+        -2
+      ],
+      [
+        -1,
+        -1
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        0,
+        3
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        -1
+      ],
+      [
+        -1,
+        -2
+      ]
+    ],
+    "leftRelativeXY": [
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        1,
+        3
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        -1
+      ],
+      [
+        0,
+        -2
+      ],
+      [
+        0,
+        -1
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        2
+      ]
+    ],
+    "otherGeneratedSleevePoses": "retained as source attempts only; not selected in final sleeve maps",
+    "rightAngleDeg": [
+      0,
+      4,
+      2,
+      -2,
+      -4,
+      -6,
+      -2,
+      2,
+      4
+    ],
+    "leftAngleDeg": [
+      0,
+      4,
+      6,
+      2,
+      -2,
+      -4,
+      -2,
+      2,
+      4
+    ],
+    "shoulderPivots": {
+      "right": [
+        110,
+        137
+      ],
+      "left": [
+        140,
+        137
+      ]
+    }
+  },
+  "exportCommand": "python3 scripts/export-forester-cover-v2.py Art/Parts/P1-v1/outfit-forester-cover-v2"
+}

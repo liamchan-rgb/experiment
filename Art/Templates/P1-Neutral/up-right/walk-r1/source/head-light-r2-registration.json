@@ -1,0 +1,15 @@
+{
+  "source": "/workspace/up-right-head-light-r2.png",
+  "method": "image-tool lighting edit; authored uniform scalp/ear registration; original lower neck/body retained through fixed semantic seam y125",
+  "sourceCanvas": [
+    1254,
+    1254
+  ],
+  "uniformResize": 0.20414673046251994,
+  "registeredScale": 1.08,
+  "translation": [
+    -11,
+    -12
+  ],
+  "artApproval": null
+}

@@ -1,0 +1,100 @@
+{
+  "schemaVersion": "1.0.0",
+  "sourceRegistration": {
+    "scale": 0.194,
+    "translation": [
+      4.72,
+      6.4
+    ],
+    "registeredCanvas": [
+      256,
+      256
+    ]
+  },
+  "pngSlotFiles": 91,
+  "poseCount": 13,
+  "frameDurationMs": 120,
+  "coverageAlphaThreshold": 128,
+  "poseCoverage": [
+    {
+      "storagePose": 0,
+      "torsoUncovered": 0,
+      "legUncovered": 0,
+      "armUncovered": 0
+    },
+    {
+      "storagePose": 1,
+      "torsoUncovered": 0,
+      "legUncovered": 0,
+      "armUncovered": 0
+    },
+    {
+      "storagePose": 2,
+      "torsoUncovered": 0,
+      "legUncovered": 0,
+      "armUncovered": 0
+    },
+    {
+      "storagePose": 3,
+      "torsoUncovered": 0,
+      "legUncovered": 0,
+      "armUncovered": 0
+    },
+    {
+      "storagePose": 4,
+      "torsoUncovered": 0,
+      "legUncovered": 0,
+      "armUncovered": 0
+    },
+    {
+      "storagePose": 5,
+      "torsoUncovered": 0,
+      "legUncovered": 0,
+      "armUncovered": 0
+    },
+    {
+      "storagePose": 6,
+      "torsoUncovered": 0,
+      "legUncovered": 0,
+      "armUncovered": 0
+    },
+    {
+      "storagePose": 7,
+      "torsoUncovered": 0,
+      "legUncovered": 0,
+      "armUncovered": 0
+    },
+    {
+      "storagePose": 8,
+      "torsoUncovered": 0,
+      "legUncovered": 0,
+      "armUncovered": 0
+    },
+    {
+      "storagePose": 9,
+      "torsoUncovered": 0,
+      "legUncovered": 0,
+      "armUncovered": 0
+    },
+    {
+      "storagePose": 10,
+      "torsoUncovered": 0,
+      "legUncovered": 0,
+      "armUncovered": 0
+    },
+    {
+      "storagePose": 11,
+      "torsoUncovered": 0,
+      "legUncovered": 0,
+      "armUncovered": 0
+    },
+    {
+      "storagePose": 12,
+      "torsoUncovered": 0,
+      "legUncovered": 0,
+      "armUncovered": 0
+    }
+  ],
+  "allTorsoLegArmPixelsCovered": true,
+  "scope": "internal semantic body-layer mask audit; hands are retained from the base template above sleeves"
+}

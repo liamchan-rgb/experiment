@@ -92,7 +92,8 @@
           "outfit.boot.right",
           "outfit.boot.left",
           "weapon.right",
-          "weapon.left"
+          "weapon.left",
+          "weapon.back"
         ]
       },
       "minItems": 1,
@@ -120,7 +121,9 @@
       "items": {
         "enum": [
           "idle",
-          "walk"
+          "walk",
+          "walk-start",
+          "walk-stop"
         ]
       },
       "minItems": 1,
@@ -171,6 +174,11 @@
         "one-hand-closed"
       ]
     },
+    "carryProfile": {
+      "enum": [
+        "back-scabbard"
+      ]
+    },
     "bindings": {
       "type": "array",
       "minItems": 1,
@@ -199,7 +207,9 @@
           "clip": {
             "enum": [
               "idle",
-              "walk"
+              "walk",
+              "walk-start",
+              "walk-stop"
             ]
           },
           "frame": {
@@ -252,6 +262,52 @@
             {
               "required": [
                 "socket"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "part": {
+            "const": "weapon"
+          },
+          "carryProfile": {
+            "const": "back-scabbard"
+          }
+        },
+        "required": [
+          "carryProfile"
+        ]
+      },
+      "then": {
+        "required": [
+          "carryProfile"
+        ],
+        "properties": {
+          "mode": {
+            "const": "pose-map"
+          },
+          "slots": {
+            "contains": {
+              "const": "weapon.back"
+            },
+            "minItems": 1,
+            "maxItems": 1
+          }
+        },
+        "not": {
+          "anyOf": [
+            {
+              "required": [
+                "socket"
+              ]
+            },
+            {
+              "required": [
+                "gripProfile"
               ]
             }
           ]

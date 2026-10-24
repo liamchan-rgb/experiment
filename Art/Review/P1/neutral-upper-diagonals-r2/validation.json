@@ -1,0 +1,2007 @@
+{
+  "status": "historical-technical-evidence-user-rejected-r2-art",
+  "artApproval": null,
+  "actualCompositorPoses": 18,
+  "layers": 144,
+  "sameSideWristContacts": 36,
+  "sameSideLegConnectivity": 36,
+  "shoulderHipAttachments": 72,
+  "soleMarkers": 36,
+  "constantBoneChains": 16,
+  "normalFrameDurationsMs": [
+    120,
+    120,
+    120,
+    120,
+    120,
+    120,
+    120,
+    120
+  ],
+  "directions": [
+    {
+      "direction": "up-left",
+      "assetErrors": 0,
+      "fixedSourceLegHashes": {
+        "left": "80066ab7abbd0247ef8dde3744ecac96d0dcf606724bb0abfbd2736481132b08",
+        "right": "bf1679b68518add819c98bcc6ff8afa988500ce0eeaaae8a78443d079e7cf0c9"
+      },
+      "boneLengths": {
+        "thigh.left": 18,
+        "shin.left": 14,
+        "upperarm.left": 17.46424919657298,
+        "forearm.left": 17.46424919657298,
+        "thigh.right": 18,
+        "shin.right": 14,
+        "upperarm.right": 15.652475842498529,
+        "forearm.right": 13.038404810405298
+      },
+      "silhouetteArea": {
+        "left": {
+          "walkAreaPixels": [
+            654,
+            668,
+            687,
+            702,
+            697,
+            669,
+            620,
+            650
+          ],
+          "maxAdjacentRelativeAreaChange": 0.07324364723467862,
+          "wrapRelativeAreaChange": 0.006153846153846154
+        },
+        "right": {
+          "walkAreaPixels": [
+            543,
+            514,
+            471,
+            500,
+            503,
+            514,
+            543,
+            543
+          ],
+          "maxAdjacentRelativeAreaChange": 0.08365758754863813,
+          "wrapRelativeAreaChange": 0.0
+        }
+      },
+      "poses": [
+        {
+          "frame": 0,
+          "actualCompositorDifferencePixels": 0,
+          "sides": {
+            "left": {
+              "wristContactPixels": 19,
+              "legConnectedComponents": 1,
+              "legArea": 682,
+              "sole": [
+                124,
+                214
+              ],
+              "joints": {
+                "shoulder": {
+                  "point": [
+                    119,
+                    138
+                  ],
+                  "probeRadius": 3,
+                  "limbPixels": 37,
+                  "hipRootOccludedByShorts": false,
+                  "torsoContactWithin9": 33
+                },
+                "hip": {
+                  "point": [
+                    120,
+                    175
+                  ],
+                  "probeRadius": 9,
+                  "limbPixels": 117,
+                  "hipRootOccludedByShorts": true,
+                  "torsoContactWithin9": 67
+                },
+                "knee": {
+                  "point": [
+                    115.91144017362217,
+                    189.78856415599003
+                  ],
+                  "probeRadius": 3,
+                  "limbPixels": 49,
+                  "hipRootOccludedByShorts": false
+                },
+                "ankle": {
+                  "point": [
+                    120.0,
+                    203.336
+                  ],
+                  "probeRadius": 3,
+                  "limbPixels": 49,
+                  "hipRootOccludedByShorts": false
+                }
+              }
+            },
+            "right": {
+              "wristContactPixels": 11,
+              "legConnectedComponents": 1,
+              "legArea": 527,
+              "sole": [
+                140,
+                213
+              ],
+              "joints": {
+                "shoulder": {
+                  "point": [
+                    141,
+                    138
+                  ],
+                  "probeRadius": 3,
+                  "limbPixels": 20,
+                  "hipRootOccludedByShorts": false,
+                  "torsoContactWithin9": 61
+                },
+                "hip": {
+                  "point": [
+                    141,
+                    175
+                  ],
+                  "probeRadius": 9,
+                  "limbPixels": 77,
+                  "hipRootOccludedByShorts": true,
+                  "torsoContactWithin9": 47
+                },
+                "knee": {
+                  "point": [
+                    136.91144017362217,
+                    189.78856415599003
+                  ],
+                  "probeRadius": 3,
+                  "limbPixels": 49,
+                  "hipRootOccludedByShorts": false
+                },
+                "ankle": {
+                  "point": [
+                    141.0,
+                    203.336
+                  ],
+                  "probeRadius": 3,
+                  "limbPixels": 44,
+                  "hipRootOccludedByShorts": false
+                }
+              }
+            }
+          }
+        },
+        {
+          "frame": 1,
+          "actualCompositorDifferencePixels": 0,
+          "sides": {
+            "left": {
+              "wristContactPixels": 20,
+              "legConnectedComponents": 1,
+              "legArea": 654,
+              "sole": [
+                116,
+                212
+              ],
+              "joints": {
+                "shoulder": {
+                  "point": [
+                    119,
+                    137.75
+                  ],
+                  "probeRadius": 3,
+                  "limbPixels": 39,
+                  "hipRootOccludedByShorts": false,
+                  "torsoContactWithin9": 40
+                },
+                "hip": {
+                  "point": [
+                    120,
+                    174.75
+                  ],
+                  "probeRadius": 9,
+                  "limbPixels": 110,
+                  "hipRootOccludedByShorts": true,
+                  "torsoContactWithin9": 66
+                },
+                "knee": {
+                  "point": [
+                    114.18241049252462,
+                    188.48505448311374
+                  ],
+                  "probeRadius": 3,
+                  "limbPixels": 49,
+                  "hipRootOccludedByShorts": false
+                },
+                "ankle": {
+                  "point": [
+                    112.4,
+                    200.686
+                  ],
+                  "probeRadius": 3,
+                  "limbPixels": 49,
+                  "hipRootOccludedByShorts": false
+                }
+              }
+            },
+            "right": {
+              "wristContactPixels": 11,
+              "legConnectedComponents": 1,
+              "legArea": 543,
+              "sole": [
+                148,
+                215
+              ],
+              "joints": {
+                "shoulder": {
+                  "point": [
+                    141,
+                    137.75
+                  ],
+                  "probeRadius": 3,
+                  "limbPixels": 20,
+                  "hipRootOccludedByShorts": false,
+                  "torsoContactWithin9": 69
+                },
+                "hip": {
+                  "point": [
+                    141,
+                    174.75
+                  ],
+                  "probeRadius": 9,
+                  "limbPixels": 95,
+                  "hipRootOccludedByShorts": true,
+                  "torsoContactWithin9": 36
+                },
+                "knee": {
+                  "point": [
+                    143.74306778435587,
+                    191.96177879133936
+                  ],
+                  "probeRadius": 3,
+                  "limbPixels": 49,
+                  "hipRootOccludedByShorts": false
+                },
+                "ankle": {
+                  "point": [
+                    148.6,
+                    205.48600000000002
+                  ],
+                  "probeRadius": 3,
+                  "limbPixels": 41,
+                  "hipRootOccludedByShorts": false
+                }
+              }
+            }
+          }
+        },
+        {
+          "frame": 2,
+          "actualCompositorDifferencePixels": 0,
+          "sides": {
+            "left": {
+              "wristContactPixels": 19,
+              "legConnectedComponents": 1,
+              "legArea": 668,
+              "sole": [
+                119,
+                213
+              ],
+              "joints": {
+                "shoulder": {
+                  "point": [
+                    119,
+                    138.0
+                  ],
+                  "probeRadius": 3,
+                  "limbPixels": 37,
+                  "hipRootOccludedByShorts": false,
+                  "torsoContactWithin9": 38
+                },
+                "hip": {
+                  "point": [
+                    120,
+                    175.0
+                  ],
+                  "probeRadius": 9,
+                  "limbPixels": 105,
+                  "hipRootOccludedByShorts": true,
+                  "torsoContactWithin9": 62
+                },
+                "knee": {
+                  "point": [
+                    113.91112842910682,
+                    188.55181669125633
+                  ],
+                  "probeRadius": 3,
+                  "limbPixels": 49,
+                  "hipRootOccludedByShorts": false
+                },
+                "ankle": {
+                  "point": [
+                    114.62598846298224,
+                    201.6389437251523
+                  ],
+                  "probeRadius": 3,
+                  "limbPixels": 49,
+                  "hipRootOccludedByShorts": false
+                }
+              }
+            },
+            "right": {
+              "wristContactPixels": 11,
+              "legConnectedComponents": 1,
+              "legArea": 514,
+              "sole": [
+                145,
+                213
+              ],
+              "joints": {
+                "shoulder": {
+                  "point": [
+                    141,
+                    138.0
+                  ],
+                  "probeRadius": 3,
+                  "limbPixels": 20,
+                  "hipRootOccludedByShorts": false,
+                  "torsoContactWithin9": 66
+                },
+                "hip": {
+                  "point": [
+                    141,
+                    175.0
+                  ],
+                  "probeRadius": 9,
+                  "limbPixels": 71,
+                  "hipRootOccludedByShorts": true,
+                  "torsoContactWithin9": 34
+                },
+                "knee": {
+                  "point": [
+                    137.95466768329982,
+                    190.33359248519707
+                  ],
+                  "probeRadius": 3,
+                  "limbPixels": 49,
+                  "hipRootOccludedByShorts": false
+                },
+                "ankle": {
+                  "point": [
+                    146.37401153701776,
+                    202.9630562748477
+                  ],
+                  "probeRadius": 3,
+                  "limbPixels": 43,
+                  "hipRootOccludedByShorts": false
+                }
+              }
+            }
+          }
+        },
+        {
+          "frame": 3,
+          "actualCompositorDifferencePixels": 0,
+          "sides": {
+            "left": {
+              "wristContactPixels": 19,
+              "legConnectedComponents": 1,
+              "legArea": 687,
+              "sole": [
+                124,
+                215
+              ],
+              "joints": {
+                "shoulder": {
+                  "point": [
+                    119,
+                    138.25
+                  ],
+                  "probeRadius": 3,
+                  "limbPixels": 37,
+                  "hipRootOccludedByShorts": false,
+                  "torsoContactWithin9": 33
+                },
+                "hip": {
+                  "point": [
+                    120,
+                    175.25
+                  ],
+                  "probeRadius": 9,
+                  "limbPixels": 105,
+                  "hipRootOccludedByShorts": true,
+                  "torsoContactWithin9": 53
+                },
+                "knee": {
+                  "point": [
+                    115.91144017362217,
+                    190.03856415599003
+                  ],
+                  "probeRadius": 3,
+                  "limbPixels": 49,
+                  "hipRootOccludedByShorts": false
+                },
+                "ankle": {
+                  "point": [
+                    120.0,
+                    203.586
+                  ],
+                  "probeRadius": 3,
+                  "limbPixels": 49,
+                  "hipRootOccludedByShorts": false
+                }
+              }
+            },
+            "right": {
+              "wristContactPixels": 11,
+              "legConnectedComponents": 1,
+              "legArea": 471,
+              "sole": [
+                140,
+                209
+              ],
+              "joints": {
+                "shoulder": {
+                  "point": [
+                    141,
+                    138.25
+                  ],
+                  "probeRadius": 3,
+                  "limbPixels": 20,
+                  "hipRootOccludedByShorts": false,
+                  "torsoContactWithin9": 61
+                },
+                "hip": {
+                  "point": [
+                    141,
+                    175.25
+                  ],
+                  "probeRadius": 9,
+                  "limbPixels": 47,
+                  "hipRootOccludedByShorts": true,
+                  "torsoContactWithin9": 32
+                },
+                "knee": {
+                  "point": [
+                    132.44178264574867,
+                    186.88418831598787
+                  ],
+                  "probeRadius": 3,
+                  "limbPixels": 49,
+                  "hipRootOccludedByShorts": false
+                },
+                "ankle": {
+                  "point": [
+                    141.0,
+                    199.446
+                  ],
+                  "probeRadius": 3,
+                  "limbPixels": 40,
+                  "hipRootOccludedByShorts": false
+                }
+              }
+            }
+          }
+        },
+        {
+          "frame": 4,
+          "actualCompositorDifferencePixels": 0,
+          "sides": {
+            "left": {
+              "wristContactPixels": 18,
+              "legConnectedComponents": 1,
+              "legArea": 702,
+              "sole": [
+                129,
+                216
+              ],
+              "joints": {
+                "shoulder": {
+                  "point": [
+                    119,
+                    138.0
+                  ],
+                  "probeRadius": 3,
+                  "limbPixels": 37,
+                  "hipRootOccludedByShorts": false,
+                  "torsoContactWithin9": 31
+                },
+                "hip": {
+                  "point": [
+                    120,
+                    175.0
+                  ],
+                  "probeRadius": 9,
+                  "limbPixels": 117,
+                  "hipRootOccludedByShorts": true,
+                  "torsoContactWithin9": 51
+                },
+                "knee": {
+                  "point": [
+                    119.98659358492279,
+                    191.55576130587485
+                  ],
+                  "probeRadius": 3,
+                  "limbPixels": 49,
+                  "hipRootOccludedByShorts": false
+                },
+                "ankle": {
+                  "point": [
+                    125.37401153701776,
+                    205.03305627484772
+                  ],
+                  "probeRadius": 3,
+                  "limbPixels": 49,
+                  "hipRootOccludedByShorts": false
+                }
+              }
+            },
+            "right": {
+              "wristContactPixels": 12,
+              "legConnectedComponents": 1,
+              "legArea": 500,
+              "sole": [
+                135,
+                210
+              ],
+              "joints": {
+                "shoulder": {
+                  "point": [
+                    141,
+                    138.0
+                  ],
+                  "probeRadius": 3,
+                  "limbPixels": 20,
+                  "hipRootOccludedByShorts": false,
+                  "torsoContactWithin9": 57
+                },
+                "hip": {
+                  "point": [
+                    141,
+                    175.0
+                  ],
+                  "probeRadius": 9,
+                  "limbPixels": 52,
+                  "hipRootOccludedByShorts": true,
+                  "torsoContactWithin9": 43
+                },
+                "knee": {
+                  "point": [
+                    131.76862516214698,
+                    186.0244324229712
+                  ],
+                  "probeRadius": 3,
+                  "limbPixels": 49,
+                  "hipRootOccludedByShorts": false
+                },
+                "ankle": {
+                  "point": [
+                    135.62598846298224,
+                    199.56894372515228
+                  ],
+                  "probeRadius": 3,
+                  "limbPixels": 44,
+                  "hipRootOccludedByShorts": false
+                }
+              }
+            }
+          }
+        },
+        {
+          "frame": 5,
+          "actualCompositorDifferencePixels": 0,
+          "sides": {
+            "left": {
+              "wristContactPixels": 19,
+              "legConnectedComponents": 1,
+              "legArea": 697,
+              "sole": [
+                132,
+                216
+              ],
+              "joints": {
+                "shoulder": {
+                  "point": [
+                    119,
+                    137.75
+                  ],
+                  "probeRadius": 3,
+                  "limbPixels": 39,
+                  "hipRootOccludedByShorts": false,
+                  "torsoContactWithin9": 34
+                },
+                "hip": {
+                  "point": [
+                    120,
+                    174.75
+                  ],
+                  "probeRadius": 9,
+                  "limbPixels": 116,
+                  "hipRootOccludedByShorts": true,
+                  "torsoContactWithin9": 51
+                },
+                "knee": {
+                  "point": [
+                    122.74306778435587,
+                    191.96177879133936
+                  ],
+                  "probeRadius": 3,
+                  "limbPixels": 49,
+                  "hipRootOccludedByShorts": false
+                },
+                "ankle": {
+                  "point": [
+                    127.6,
+                    205.48600000000002
+                  ],
+                  "probeRadius": 3,
+                  "limbPixels": 49,
+                  "hipRootOccludedByShorts": false
+                }
+              }
+            },
+            "right": {
+              "wristContactPixels": 12,
+              "legConnectedComponents": 1,
+              "legArea": 503,
+              "sole": [
+                132,
+                211
+              ],
+              "joints": {
+                "shoulder": {
+                  "point": [
+                    141,
+                    137.75
+                  ],
+                  "probeRadius": 3,
+                  "limbPixels": 22,
+                  "hipRootOccludedByShorts": false,
+                  "torsoContactWithin9": 58
+                },
+                "hip": {
+                  "point": [
+                    141,
+                    174.75
+                  ],
+                  "probeRadius": 9,
+                  "limbPixels": 79,
+                  "hipRootOccludedByShorts": true,
+                  "torsoContactWithin9": 47
+                },
+                "knee": {
+                  "point": [
+                    135.1824104925246,
+                    188.48505448311374
+                  ],
+                  "probeRadius": 3,
+                  "limbPixels": 49,
+                  "hipRootOccludedByShorts": false
+                },
+                "ankle": {
+                  "point": [
+                    133.4,
+                    200.686
+                  ],
+                  "probeRadius": 3,
+                  "limbPixels": 49,
+                  "hipRootOccludedByShorts": false
+                }
+              }
+            }
+          }
+        },
+        {
+          "frame": 6,
+          "actualCompositorDifferencePixels": 0,
+          "sides": {
+            "left": {
+              "wristContactPixels": 18,
+              "legConnectedComponents": 1,
+              "legArea": 669,
+              "sole": [
+                129,
+                214
+              ],
+              "joints": {
+                "shoulder": {
+                  "point": [
+                    119,
+                    138.0
+                  ],
+                  "probeRadius": 3,
+                  "limbPixels": 37,
+                  "hipRootOccludedByShorts": false,
+                  "torsoContactWithin9": 31
+                },
+                "hip": {
+                  "point": [
+                    120,
+                    175.0
+                  ],
+                  "probeRadius": 9,
+                  "limbPixels": 109,
+                  "hipRootOccludedByShorts": true,
+                  "torsoContactWithin9": 51
+                },
+                "knee": {
+                  "point": [
+                    116.95466768329982,
+                    190.33359248519707
+                  ],
+                  "probeRadius": 3,
+                  "limbPixels": 49,
+                  "hipRootOccludedByShorts": false
+                },
+                "ankle": {
+                  "point": [
+                    125.37401153701776,
+                    202.9630562748477
+                  ],
+                  "probeRadius": 3,
+                  "limbPixels": 49,
+                  "hipRootOccludedByShorts": false
+                }
+              }
+            },
+            "right": {
+              "wristContactPixels": 12,
+              "legConnectedComponents": 1,
+              "legArea": 514,
+              "sole": [
+                135,
+                212
+              ],
+              "joints": {
+                "shoulder": {
+                  "point": [
+                    141,
+                    138.0
+                  ],
+                  "probeRadius": 3,
+                  "limbPixels": 20,
+                  "hipRootOccludedByShorts": false,
+                  "torsoContactWithin9": 57
+                },
+                "hip": {
+                  "point": [
+                    141,
+                    175.0
+                  ],
+                  "probeRadius": 9,
+                  "limbPixels": 69,
+                  "hipRootOccludedByShorts": true,
+                  "torsoContactWithin9": 44
+                },
+                "knee": {
+                  "point": [
+                    134.91112842910684,
+                    188.55181669125633
+                  ],
+                  "probeRadius": 3,
+                  "limbPixels": 49,
+                  "hipRootOccludedByShorts": false
+                },
+                "ankle": {
+                  "point": [
+                    135.62598846298224,
+                    201.6389437251523
+                  ],
+                  "probeRadius": 3,
+                  "limbPixels": 47,
+                  "hipRootOccludedByShorts": false
+                }
+              }
+            }
+          }
+        },
+        {
+          "frame": 7,
+          "actualCompositorDifferencePixels": 0,
+          "sides": {
+            "left": {
+              "wristContactPixels": 19,
+              "legConnectedComponents": 1,
+              "legArea": 620,
+              "sole": [
+                124,
+                210
+              ],
+              "joints": {
+                "shoulder": {
+                  "point": [
+                    119,
+                    138.25
+                  ],
+                  "probeRadius": 3,
+                  "limbPixels": 37,
+                  "hipRootOccludedByShorts": false,
+                  "torsoContactWithin9": 33
+                },
+                "hip": {
+                  "point": [
+                    120,
+                    175.25
+                  ],
+                  "probeRadius": 9,
+                  "limbPixels": 88,
+                  "hipRootOccludedByShorts": true,
+                  "torsoContactWithin9": 54
+                },
+                "knee": {
+                  "point": [
+                    111.44178264574867,
+                    186.88418831598787
+                  ],
+                  "probeRadius": 3,
+                  "limbPixels": 49,
+                  "hipRootOccludedByShorts": false
+                },
+                "ankle": {
+                  "point": [
+                    120.0,
+                    199.446
+                  ],
+                  "probeRadius": 3,
+                  "limbPixels": 49,
+                  "hipRootOccludedByShorts": false
+                }
+              }
+            },
+            "right": {
+              "wristContactPixels": 11,
+              "legConnectedComponents": 1,
+              "legArea": 543,
+              "sole": [
+                140,
+                214
+              ],
+              "joints": {
+                "shoulder": {
+                  "point": [
+                    141,
+                    138.25
+                  ],
+                  "probeRadius": 3,
+                  "limbPixels": 20,
+                  "hipRootOccludedByShorts": false,
+                  "torsoContactWithin9": 61
+                },
+                "hip": {
+                  "point": [
+                    141,
+                    175.25
+                  ],
+                  "probeRadius": 9,
+                  "limbPixels": 78,
+                  "hipRootOccludedByShorts": true,
+                  "torsoContactWithin9": 47
+                },
+                "knee": {
+                  "point": [
+                    136.91144017362217,
+                    190.03856415599003
+                  ],
+                  "probeRadius": 3,
+                  "limbPixels": 49,
+                  "hipRootOccludedByShorts": false
+                },
+                "ankle": {
+                  "point": [
+                    141.0,
+                    203.586
+                  ],
+                  "probeRadius": 3,
+                  "limbPixels": 46,
+                  "hipRootOccludedByShorts": false
+                }
+              }
+            }
+          }
+        },
+        {
+          "frame": 8,
+          "actualCompositorDifferencePixels": 0,
+          "sides": {
+            "left": {
+              "wristContactPixels": 19,
+              "legConnectedComponents": 1,
+              "legArea": 650,
+              "sole": [
+                119,
+                211
+              ],
+              "joints": {
+                "shoulder": {
+                  "point": [
+                    119,
+                    138.0
+                  ],
+                  "probeRadius": 3,
+                  "limbPixels": 37,
+                  "hipRootOccludedByShorts": false,
+                  "torsoContactWithin9": 38
+                },
+                "hip": {
+                  "point": [
+                    120,
+                    175.0
+                  ],
+                  "probeRadius": 9,
+                  "limbPixels": 90,
+                  "hipRootOccludedByShorts": true,
+                  "torsoContactWithin9": 64
+                },
+                "knee": {
+                  "point": [
+                    110.76862516214699,
+                    186.0244324229712
+                  ],
+                  "probeRadius": 3,
+                  "limbPixels": 49,
+                  "hipRootOccludedByShorts": false
+                },
+                "ankle": {
+                  "point": [
+                    114.62598846298224,
+                    199.56894372515228
+                  ],
+                  "probeRadius": 3,
+                  "limbPixels": 49,
+                  "hipRootOccludedByShorts": false
+                }
+              }
+            },
+            "right": {
+              "wristContactPixels": 11,
+              "legConnectedComponents": 1,
+              "legArea": 543,
+              "sole": [
+                145,
+                215
+              ],
+              "joints": {
+                "shoulder": {
+                  "point": [
+                    141,
+                    138.0
+                  ],
+                  "probeRadius": 3,
+                  "limbPixels": 20,
+                  "hipRootOccludedByShorts": false,
+                  "torsoContactWithin9": 66
+                },
+                "hip": {
+                  "point": [
+                    141,
+                    175.0
+                  ],
+                  "probeRadius": 9,
+                  "limbPixels": 86,
+                  "hipRootOccludedByShorts": true,
+                  "torsoContactWithin9": 35
+                },
+                "knee": {
+                  "point": [
+                    140.9865935849228,
+                    191.55576130587485
+                  ],
+                  "probeRadius": 3,
+                  "limbPixels": 49,
+                  "hipRootOccludedByShorts": false
+                },
+                "ankle": {
+                  "point": [
+                    146.37401153701776,
+                    205.03305627484772
+                  ],
+                  "probeRadius": 3,
+                  "limbPixels": 45,
+                  "hipRootOccludedByShorts": false
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "direction": "up-right",
+      "assetErrors": 0,
+      "fixedSourceLegHashes": {
+        "left": "d2679974f5cb60f64362b8ea4155279a51e63fbf39564373c7f156053f5fdb96",
+        "right": "23c3d884631fa5808e12db3de7f46cf26ab3a304269ccc39084e10b368c8a2c9"
+      },
+      "boneLengths": {
+        "thigh.left": 16,
+        "shin.left": 13,
+        "upperarm.left": 14.560219778561036,
+        "forearm.left": 12.36931687685298,
+        "thigh.right": 16,
+        "shin.right": 13,
+        "upperarm.right": 17.4928556845359,
+        "forearm.right": 15.297058540778355
+      },
+      "silhouetteArea": {
+        "left": {
+          "walkAreaPixels": [
+            443,
+            463,
+            493,
+            509,
+            527,
+            476,
+            428,
+            428
+          ],
+          "maxAdjacentRelativeAreaChange": 0.10084033613445378,
+          "wrapRelativeAreaChange": 0.035046728971962614
+        },
+        "right": {
+          "walkAreaPixels": [
+            667,
+            614,
+            570,
+            568,
+            582,
+            602,
+            634,
+            646
+          ],
+          "maxAdjacentRelativeAreaChange": 0.07946026986506746,
+          "wrapRelativeAreaChange": 0.032507739938080496
+        }
+      },
+      "poses": [
+        {
+          "frame": 0,
+          "actualCompositorDifferencePixels": 0,
+          "sides": {
+            "left": {
+              "wristContactPixels": 9,
+              "legConnectedComponents": 1,
+              "legArea": 495,
+              "sole": [
+                116,
+                208
+              ],
+              "joints": {
+                "shoulder": {
+                  "point": [
+                    111,
+                    137
+                  ],
+                  "probeRadius": 3,
+                  "limbPixels": 6,
+                  "hipRootOccludedByShorts": false,
+                  "torsoContactWithin9": 44
+                },
+                "hip": {
+                  "point": [
+                    116,
+                    178
+                  ],
+                  "probeRadius": 9,
+                  "limbPixels": 137,
+                  "hipRootOccludedByShorts": true,
+                  "torsoContactWithin9": 17
+                },
+                "knee": {
+                  "point": [
+                    119.89865498180458,
+                    190.99641414054332
+                  ],
+                  "probeRadius": 3,
+                  "limbPixels": 49,
+                  "hipRootOccludedByShorts": false
+                },
+                "ankle": {
+                  "point": [
+                    116.0,
+                    203.576
+                  ],
+                  "probeRadius": 3,
+                  "limbPixels": 49,
+                  "hipRootOccludedByShorts": false
+                }
+              }
+            },
+            "right": {
+              "wristContactPixels": 12,
+              "legConnectedComponents": 1,
+              "legArea": 635,
+              "sole": [
+                130,
+                214
+              ],
+              "joints": {
+                "shoulder": {
+                  "point": [
+                    140,
+                    136
+                  ],
+                  "probeRadius": 3,
+                  "limbPixels": 43,
+                  "hipRootOccludedByShorts": false,
+                  "torsoContactWithin9": 57
+                },
+                "hip": {
+                  "point": [
+                    136,
+                    178
+                  ],
+                  "probeRadius": 9,
+                  "limbPixels": 145,
+                  "hipRootOccludedByShorts": true,
+                  "torsoContactWithin9": 56
+                },
+                "knee": {
+                  "point": [
+                    139.89865498180458,
+                    190.99641414054332
+                  ],
+                  "probeRadius": 3,
+                  "limbPixels": 43,
+                  "hipRootOccludedByShorts": false
+                },
+                "ankle": {
+                  "point": [
+                    136.0,
+                    203.576
+                  ],
+                  "probeRadius": 3,
+                  "limbPixels": 49,
+                  "hipRootOccludedByShorts": false
+                }
+              }
+            }
+          }
+        },
+        {
+          "frame": 1,
+          "actualCompositorDifferencePixels": 0,
+          "sides": {
+            "left": {
+              "wristContactPixels": 10,
+              "legConnectedComponents": 1,
+              "legArea": 443,
+              "sole": [
+                124,
+                205
+              ],
+              "joints": {
+                "shoulder": {
+                  "point": [
+                    111,
+                    136.75
+                  ],
+                  "probeRadius": 3,
+                  "limbPixels": 7,
+                  "hipRootOccludedByShorts": false,
+                  "torsoContactWithin9": 44
+                },
+                "hip": {
+                  "point": [
+                    116,
+                    177.75
+                  ],
+                  "probeRadius": 9,
+                  "limbPixels": 137,
+                  "hipRootOccludedByShorts": true,
+                  "torsoContactWithin9": 17
+                },
+                "knee": {
+                  "point": [
+                    121.12106795352014,
+                    189.9922307129774
+                  ],
+                  "probeRadius": 3,
+                  "limbPixels": 49,
+                  "hipRootOccludedByShorts": false
+                },
+                "ankle": {
+                  "point": [
+                    123.6,
+                    200.926
+                  ],
+                  "probeRadius": 3,
+                  "limbPixels": 49,
+                  "hipRootOccludedByShorts": false
+                }
+              }
+            },
+            "right": {
+              "wristContactPixels": 13,
+              "legConnectedComponents": 1,
+              "legArea": 667,
+              "sole": [
+                122,
+                216
+              ],
+              "joints": {
+                "shoulder": {
+                  "point": [
+                    140,
+                    135.75
+                  ],
+                  "probeRadius": 3,
+                  "limbPixels": 43,
+                  "hipRootOccludedByShorts": false,
+                  "torsoContactWithin9": 53
+                },
+                "hip": {
+                  "point": [
+                    136,
+                    177.75
+                  ],
+                  "probeRadius": 9,
+                  "limbPixels": 124,
+                  "hipRootOccludedByShorts": true,
+                  "torsoContactWithin9": 54
+                },
+                "knee": {
+                  "point": [
+                    132.7309527582618,
+                    193.15786619829245
+                  ],
+                  "probeRadius": 3,
+                  "limbPixels": 40,
+                  "hipRootOccludedByShorts": false
+                },
+                "ankle": {
+                  "point": [
+                    128.4,
+                    205.726
+                  ],
+                  "probeRadius": 3,
+                  "limbPixels": 49,
+                  "hipRootOccludedByShorts": false
+                }
+              }
+            }
+          }
+        },
+        {
+          "frame": 2,
+          "actualCompositorDifferencePixels": 0,
+          "sides": {
+            "left": {
+              "wristContactPixels": 10,
+              "legConnectedComponents": 1,
+              "legArea": 463,
+              "sole": [
+                121,
+                206
+              ],
+              "joints": {
+                "shoulder": {
+                  "point": [
+                    111,
+                    137.0
+                  ],
+                  "probeRadius": 3,
+                  "limbPixels": 6,
+                  "hipRootOccludedByShorts": false,
+                  "torsoContactWithin9": 45
+                },
+                "hip": {
+                  "point": [
+                    116,
+                    178.0
+                  ],
+                  "probeRadius": 9,
+                  "limbPixels": 129,
+                  "hipRootOccludedByShorts": true,
+                  "torsoContactWithin9": 17
+                },
+                "knee": {
+                  "point": [
+                    121.76073428767592,
+                    189.80268582143816
+                  ],
+                  "probeRadius": 3,
+                  "limbPixels": 49,
+                  "hipRootOccludedByShorts": false
+                },
+                "ankle": {
+                  "point": [
+                    121.37401153701776,
+                    201.87894372515228
+                  ],
+                  "probeRadius": 3,
+                  "limbPixels": 49,
+                  "hipRootOccludedByShorts": false
+                }
+              }
+            },
+            "right": {
+              "wristContactPixels": 12,
+              "legConnectedComponents": 1,
+              "legArea": 614,
+              "sole": [
+                125,
+                213
+              ],
+              "joints": {
+                "shoulder": {
+                  "point": [
+                    140,
+                    136.0
+                  ],
+                  "probeRadius": 3,
+                  "limbPixels": 43,
+                  "hipRootOccludedByShorts": false,
+                  "torsoContactWithin9": 54
+                },
+                "hip": {
+                  "point": [
+                    136,
+                    178.0
+                  ],
+                  "probeRadius": 9,
+                  "limbPixels": 144,
+                  "hipRootOccludedByShorts": true,
+                  "torsoContactWithin9": 55
+                },
+                "knee": {
+                  "point": [
+                    138.7295529149124,
+                    191.61874952199642
+                  ],
+                  "probeRadius": 3,
+                  "limbPixels": 41,
+                  "hipRootOccludedByShorts": false
+                },
+                "ankle": {
+                  "point": [
+                    130.62598846298224,
+                    203.2030562748477
+                  ],
+                  "probeRadius": 3,
+                  "limbPixels": 49,
+                  "hipRootOccludedByShorts": false
+                }
+              }
+            }
+          }
+        },
+        {
+          "frame": 3,
+          "actualCompositorDifferencePixels": 0,
+          "sides": {
+            "left": {
+              "wristContactPixels": 9,
+              "legConnectedComponents": 1,
+              "legArea": 493,
+              "sole": [
+                116,
+                208
+              ],
+              "joints": {
+                "shoulder": {
+                  "point": [
+                    111,
+                    137.25
+                  ],
+                  "probeRadius": 3,
+                  "limbPixels": 6,
+                  "hipRootOccludedByShorts": false,
+                  "torsoContactWithin9": 44
+                },
+                "hip": {
+                  "point": [
+                    116,
+                    178.25
+                  ],
+                  "probeRadius": 9,
+                  "limbPixels": 138,
+                  "hipRootOccludedByShorts": true,
+                  "torsoContactWithin9": 17
+                },
+                "knee": {
+                  "point": [
+                    119.89865498180458,
+                    191.24641414054332
+                  ],
+                  "probeRadius": 3,
+                  "limbPixels": 49,
+                  "hipRootOccludedByShorts": false
+                },
+                "ankle": {
+                  "point": [
+                    116.0,
+                    203.826
+                  ],
+                  "probeRadius": 3,
+                  "limbPixels": 49,
+                  "hipRootOccludedByShorts": false
+                }
+              }
+            },
+            "right": {
+              "wristContactPixels": 12,
+              "legConnectedComponents": 1,
+              "legArea": 570,
+              "sole": [
+                130,
+                210
+              ],
+              "joints": {
+                "shoulder": {
+                  "point": [
+                    140,
+                    136.25
+                  ],
+                  "probeRadius": 3,
+                  "limbPixels": 43,
+                  "hipRootOccludedByShorts": false,
+                  "torsoContactWithin9": 57
+                },
+                "hip": {
+                  "point": [
+                    136,
+                    178.25
+                  ],
+                  "probeRadius": 9,
+                  "limbPixels": 134,
+                  "hipRootOccludedByShorts": true,
+                  "torsoContactWithin9": 57
+                },
+                "knee": {
+                  "point": [
+                    144.1330202582517,
+                    188.11727437970728
+                  ],
+                  "probeRadius": 3,
+                  "limbPixels": 42,
+                  "hipRootOccludedByShorts": false
+                },
+                "ankle": {
+                  "point": [
+                    136.0,
+                    199.686
+                  ],
+                  "probeRadius": 3,
+                  "limbPixels": 49,
+                  "hipRootOccludedByShorts": false
+                }
+              }
+            }
+          }
+        },
+        {
+          "frame": 4,
+          "actualCompositorDifferencePixels": 0,
+          "sides": {
+            "left": {
+              "wristContactPixels": 10,
+              "legConnectedComponents": 1,
+              "legArea": 509,
+              "sole": [
+                111,
+                209
+              ],
+              "joints": {
+                "shoulder": {
+                  "point": [
+                    111,
+                    137.0
+                  ],
+                  "probeRadius": 3,
+                  "limbPixels": 6,
+                  "hipRootOccludedByShorts": false,
+                  "torsoContactWithin9": 45
+                },
+                "hip": {
+                  "point": [
+                    116,
+                    178.0
+                  ],
+                  "probeRadius": 9,
+                  "limbPixels": 153,
+                  "hipRootOccludedByShorts": true,
+                  "torsoContactWithin9": 17
+                },
+                "knee": {
+                  "point": [
+                    115.80581349699216,
+                    192.78012076750966
+                  ],
+                  "probeRadius": 3,
+                  "limbPixels": 49,
+                  "hipRootOccludedByShorts": false
+                },
+                "ankle": {
+                  "point": [
+                    110.62598846298224,
+                    205.2730562748477
+                  ],
+                  "probeRadius": 3,
+                  "limbPixels": 49,
+                  "hipRootOccludedByShorts": false
+                }
+              }
+            },
+            "right": {
+              "wristContactPixels": 13,
+              "legConnectedComponents": 1,
+              "legArea": 568,
+              "sole": [
+                135,
+                210
+              ],
+              "joints": {
+                "shoulder": {
+                  "point": [
+                    140,
+                    136.0
+                  ],
+                  "probeRadius": 3,
+                  "limbPixels": 43,
+                  "hipRootOccludedByShorts": false,
+                  "torsoContactWithin9": 63
+                },
+                "hip": {
+                  "point": [
+                    136,
+                    178.0
+                  ],
+                  "probeRadius": 9,
+                  "limbPixels": 131,
+                  "hipRootOccludedByShorts": true,
+                  "torsoContactWithin9": 57
+                },
+                "knee": {
+                  "point": [
+                    144.78629999060087,
+                    187.23695993853252
+                  ],
+                  "probeRadius": 3,
+                  "limbPixels": 41,
+                  "hipRootOccludedByShorts": false
+                },
+                "ankle": {
+                  "point": [
+                    141.37401153701776,
+                    199.8089437251523
+                  ],
+                  "probeRadius": 3,
+                  "limbPixels": 49,
+                  "hipRootOccludedByShorts": false
+                }
+              }
+            }
+          }
+        },
+        {
+          "frame": 5,
+          "actualCompositorDifferencePixels": 0,
+          "sides": {
+            "left": {
+              "wristContactPixels": 10,
+              "legConnectedComponents": 1,
+              "legArea": 527,
+              "sole": [
+                108,
+                210
+              ],
+              "joints": {
+                "shoulder": {
+                  "point": [
+                    111,
+                    136.75
+                  ],
+                  "probeRadius": 3,
+                  "limbPixels": 6,
+                  "hipRootOccludedByShorts": false,
+                  "torsoContactWithin9": 50
+                },
+                "hip": {
+                  "point": [
+                    116,
+                    177.75
+                  ],
+                  "probeRadius": 9,
+                  "limbPixels": 151,
+                  "hipRootOccludedByShorts": true,
+                  "torsoContactWithin9": 17
+                },
+                "knee": {
+                  "point": [
+                    112.7309527582618,
+                    193.15786619829245
+                  ],
+                  "probeRadius": 3,
+                  "limbPixels": 49,
+                  "hipRootOccludedByShorts": false
+                },
+                "ankle": {
+                  "point": [
+                    108.4,
+                    205.726
+                  ],
+                  "probeRadius": 3,
+                  "limbPixels": 49,
+                  "hipRootOccludedByShorts": false
+                }
+              }
+            },
+            "right": {
+              "wristContactPixels": 13,
+              "legConnectedComponents": 1,
+              "legArea": 582,
+              "sole": [
+                138,
+                211
+              ],
+              "joints": {
+                "shoulder": {
+                  "point": [
+                    140,
+                    135.75
+                  ],
+                  "probeRadius": 3,
+                  "limbPixels": 44,
+                  "hipRootOccludedByShorts": false,
+                  "torsoContactWithin9": 62
+                },
+                "hip": {
+                  "point": [
+                    136,
+                    177.75
+                  ],
+                  "probeRadius": 9,
+                  "limbPixels": 145,
+                  "hipRootOccludedByShorts": true,
+                  "torsoContactWithin9": 56
+                },
+                "knee": {
+                  "point": [
+                    141.12106795352014,
+                    189.9922307129774
+                  ],
+                  "probeRadius": 3,
+                  "limbPixels": 44,
+                  "hipRootOccludedByShorts": false
+                },
+                "ankle": {
+                  "point": [
+                    143.6,
+                    200.926
+                  ],
+                  "probeRadius": 3,
+                  "limbPixels": 49,
+                  "hipRootOccludedByShorts": false
+                }
+              }
+            }
+          }
+        },
+        {
+          "frame": 6,
+          "actualCompositorDifferencePixels": 0,
+          "sides": {
+            "left": {
+              "wristContactPixels": 10,
+              "legConnectedComponents": 1,
+              "legArea": 476,
+              "sole": [
+                111,
+                207
+              ],
+              "joints": {
+                "shoulder": {
+                  "point": [
+                    111,
+                    137.0
+                  ],
+                  "probeRadius": 3,
+                  "limbPixels": 6,
+                  "hipRootOccludedByShorts": false,
+                  "torsoContactWithin9": 45
+                },
+                "hip": {
+                  "point": [
+                    116,
+                    178.0
+                  ],
+                  "probeRadius": 9,
+                  "limbPixels": 143,
+                  "hipRootOccludedByShorts": true,
+                  "torsoContactWithin9": 17
+                },
+                "knee": {
+                  "point": [
+                    118.72955291491242,
+                    191.61874952199642
+                  ],
+                  "probeRadius": 3,
+                  "limbPixels": 49,
+                  "hipRootOccludedByShorts": false
+                },
+                "ankle": {
+                  "point": [
+                    110.62598846298224,
+                    203.2030562748477
+                  ],
+                  "probeRadius": 3,
+                  "limbPixels": 48,
+                  "hipRootOccludedByShorts": false
+                }
+              }
+            },
+            "right": {
+              "wristContactPixels": 13,
+              "legConnectedComponents": 1,
+              "legArea": 602,
+              "sole": [
+                135,
+                212
+              ],
+              "joints": {
+                "shoulder": {
+                  "point": [
+                    140,
+                    136.0
+                  ],
+                  "probeRadius": 3,
+                  "limbPixels": 43,
+                  "hipRootOccludedByShorts": false,
+                  "torsoContactWithin9": 63
+                },
+                "hip": {
+                  "point": [
+                    136,
+                    178.0
+                  ],
+                  "probeRadius": 9,
+                  "limbPixels": 145,
+                  "hipRootOccludedByShorts": true,
+                  "torsoContactWithin9": 56
+                },
+                "knee": {
+                  "point": [
+                    141.76073428767592,
+                    189.80268582143816
+                  ],
+                  "probeRadius": 3,
+                  "limbPixels": 42,
+                  "hipRootOccludedByShorts": false
+                },
+                "ankle": {
+                  "point": [
+                    141.37401153701776,
+                    201.87894372515228
+                  ],
+                  "probeRadius": 3,
+                  "limbPixels": 49,
+                  "hipRootOccludedByShorts": false
+                }
+              }
+            }
+          }
+        },
+        {
+          "frame": 7,
+          "actualCompositorDifferencePixels": 0,
+          "sides": {
+            "left": {
+              "wristContactPixels": 9,
+              "legConnectedComponents": 1,
+              "legArea": 428,
+              "sole": [
+                116,
+                204
+              ],
+              "joints": {
+                "shoulder": {
+                  "point": [
+                    111,
+                    137.25
+                  ],
+                  "probeRadius": 3,
+                  "limbPixels": 6,
+                  "hipRootOccludedByShorts": false,
+                  "torsoContactWithin9": 44
+                },
+                "hip": {
+                  "point": [
+                    116,
+                    178.25
+                  ],
+                  "probeRadius": 9,
+                  "limbPixels": 104,
+                  "hipRootOccludedByShorts": true,
+                  "torsoContactWithin9": 17
+                },
+                "knee": {
+                  "point": [
+                    124.13302025825169,
+                    188.11727437970728
+                  ],
+                  "probeRadius": 3,
+                  "limbPixels": 49,
+                  "hipRootOccludedByShorts": false
+                },
+                "ankle": {
+                  "point": [
+                    116.0,
+                    199.686
+                  ],
+                  "probeRadius": 3,
+                  "limbPixels": 49,
+                  "hipRootOccludedByShorts": false
+                }
+              }
+            },
+            "right": {
+              "wristContactPixels": 12,
+              "legConnectedComponents": 1,
+              "legArea": 634,
+              "sole": [
+                130,
+                214
+              ],
+              "joints": {
+                "shoulder": {
+                  "point": [
+                    140,
+                    136.25
+                  ],
+                  "probeRadius": 3,
+                  "limbPixels": 43,
+                  "hipRootOccludedByShorts": false,
+                  "torsoContactWithin9": 57
+                },
+                "hip": {
+                  "point": [
+                    136,
+                    178.25
+                  ],
+                  "probeRadius": 9,
+                  "limbPixels": 144,
+                  "hipRootOccludedByShorts": true,
+                  "torsoContactWithin9": 55
+                },
+                "knee": {
+                  "point": [
+                    139.89865498180458,
+                    191.24641414054332
+                  ],
+                  "probeRadius": 3,
+                  "limbPixels": 43,
+                  "hipRootOccludedByShorts": false
+                },
+                "ankle": {
+                  "point": [
+                    136.0,
+                    203.826
+                  ],
+                  "probeRadius": 3,
+                  "limbPixels": 49,
+                  "hipRootOccludedByShorts": false
+                }
+              }
+            }
+          }
+        },
+        {
+          "frame": 8,
+          "actualCompositorDifferencePixels": 0,
+          "sides": {
+            "left": {
+              "wristContactPixels": 10,
+              "legConnectedComponents": 1,
+              "legArea": 428,
+              "sole": [
+                121,
+                204
+              ],
+              "joints": {
+                "shoulder": {
+                  "point": [
+                    111,
+                    137.0
+                  ],
+                  "probeRadius": 3,
+                  "limbPixels": 6,
+                  "hipRootOccludedByShorts": false,
+                  "torsoContactWithin9": 45
+                },
+                "hip": {
+                  "point": [
+                    116,
+                    178.0
+                  ],
+                  "probeRadius": 9,
+                  "limbPixels": 96,
+                  "hipRootOccludedByShorts": true,
+                  "torsoContactWithin9": 17
+                },
+                "knee": {
+                  "point": [
+                    124.78629999060088,
+                    187.23695993853252
+                  ],
+                  "probeRadius": 3,
+                  "limbPixels": 49,
+                  "hipRootOccludedByShorts": false
+                },
+                "ankle": {
+                  "point": [
+                    121.37401153701776,
+                    199.8089437251523
+                  ],
+                  "probeRadius": 3,
+                  "limbPixels": 49,
+                  "hipRootOccludedByShorts": false
+                }
+              }
+            },
+            "right": {
+              "wristContactPixels": 12,
+              "legConnectedComponents": 1,
+              "legArea": 646,
+              "sole": [
+                125,
+                215
+              ],
+              "joints": {
+                "shoulder": {
+                  "point": [
+                    140,
+                    136.0
+                  ],
+                  "probeRadius": 3,
+                  "limbPixels": 43,
+                  "hipRootOccludedByShorts": false,
+                  "torsoContactWithin9": 54
+                },
+                "hip": {
+                  "point": [
+                    136,
+                    178.0
+                  ],
+                  "probeRadius": 9,
+                  "limbPixels": 135,
+                  "hipRootOccludedByShorts": true,
+                  "torsoContactWithin9": 54
+                },
+                "knee": {
+                  "point": [
+                    135.80581349699216,
+                    192.78012076750966
+                  ],
+                  "probeRadius": 3,
+                  "limbPixels": 41,
+                  "hipRootOccludedByShorts": false
+                },
+                "ankle": {
+                  "point": [
+                    130.62598846298224,
+                    205.2730562748477
+                  ],
+                  "probeRadius": 3,
+                  "limbPixels": 49,
+                  "hipRootOccludedByShorts": false
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "No user art approval",
+    "No player playback claimed; current image viewer exposes GIF still only",
+    "No start-stop, clothing combinations or runtime/device testing"
+  ],
+  "reexport": {
+    "files": 198,
+    "byteIdentical": true
+  },
+  "internalArtPassWithdrawn": true,
+  "userFeedback": "还是不行，你自己再检查一下有什么问题，自己描述一下",
+  "reinspection": "reinspection-r2-rejected.md"
+}

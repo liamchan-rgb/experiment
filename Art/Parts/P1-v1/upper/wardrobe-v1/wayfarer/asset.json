@@ -1,0 +1,349 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "p1-upper-wayfarer-v1",
+  "version": "1.0.0",
+  "part": "outfit",
+  "compatibility": {
+    "rig": "p1-chibi-v1",
+    "bodyProfile": "p1-standard",
+    "actionSet": "locomotion-v1"
+  },
+  "mode": "pose-map",
+  "slots": [
+    "outfit.torso",
+    "outfit.sleeve.left",
+    "outfit.sleeve.right"
+  ],
+  "directions": [
+    "up-left",
+    "up-right"
+  ],
+  "clips": [
+    "idle",
+    "walk",
+    "walk-start",
+    "walk-stop"
+  ],
+  "bindings": [
+    {
+      "direction": "up-left",
+      "clip": "idle",
+      "frame": 0,
+      "layers": {
+        "outfit.torso": "png/up-left/00/outfit.torso.png",
+        "outfit.sleeve.left": "png/up-left/00/outfit.sleeve.left.png",
+        "outfit.sleeve.right": "png/up-left/00/outfit.sleeve.right.png"
+      }
+    },
+    {
+      "direction": "up-left",
+      "clip": "walk",
+      "frame": 1,
+      "layers": {
+        "outfit.torso": "png/up-left/01/outfit.torso.png",
+        "outfit.sleeve.left": "png/up-left/01/outfit.sleeve.left.png",
+        "outfit.sleeve.right": "png/up-left/01/outfit.sleeve.right.png"
+      }
+    },
+    {
+      "direction": "up-left",
+      "clip": "walk",
+      "frame": 2,
+      "layers": {
+        "outfit.torso": "png/up-left/02/outfit.torso.png",
+        "outfit.sleeve.left": "png/up-left/02/outfit.sleeve.left.png",
+        "outfit.sleeve.right": "png/up-left/02/outfit.sleeve.right.png"
+      }
+    },
+    {
+      "direction": "up-left",
+      "clip": "walk",
+      "frame": 3,
+      "layers": {
+        "outfit.torso": "png/up-left/03/outfit.torso.png",
+        "outfit.sleeve.left": "png/up-left/03/outfit.sleeve.left.png",
+        "outfit.sleeve.right": "png/up-left/03/outfit.sleeve.right.png"
+      }
+    },
+    {
+      "direction": "up-left",
+      "clip": "walk",
+      "frame": 4,
+      "layers": {
+        "outfit.torso": "png/up-left/04/outfit.torso.png",
+        "outfit.sleeve.left": "png/up-left/04/outfit.sleeve.left.png",
+        "outfit.sleeve.right": "png/up-left/04/outfit.sleeve.right.png"
+      }
+    },
+    {
+      "direction": "up-left",
+      "clip": "walk",
+      "frame": 5,
+      "layers": {
+        "outfit.torso": "png/up-left/05/outfit.torso.png",
+        "outfit.sleeve.left": "png/up-left/05/outfit.sleeve.left.png",
+        "outfit.sleeve.right": "png/up-left/05/outfit.sleeve.right.png"
+      }
+    },
+    {
+      "direction": "up-left",
+      "clip": "walk",
+      "frame": 6,
+      "layers": {
+        "outfit.torso": "png/up-left/06/outfit.torso.png",
+        "outfit.sleeve.left": "png/up-left/06/outfit.sleeve.left.png",
+        "outfit.sleeve.right": "png/up-left/06/outfit.sleeve.right.png"
+      }
+    },
+    {
+      "direction": "up-left",
+      "clip": "walk",
+      "frame": 7,
+      "layers": {
+        "outfit.torso": "png/up-left/07/outfit.torso.png",
+        "outfit.sleeve.left": "png/up-left/07/outfit.sleeve.left.png",
+        "outfit.sleeve.right": "png/up-left/07/outfit.sleeve.right.png"
+      }
+    },
+    {
+      "direction": "up-left",
+      "clip": "walk",
+      "frame": 8,
+      "layers": {
+        "outfit.torso": "png/up-left/08/outfit.torso.png",
+        "outfit.sleeve.left": "png/up-left/08/outfit.sleeve.left.png",
+        "outfit.sleeve.right": "png/up-left/08/outfit.sleeve.right.png"
+      }
+    },
+    {
+      "direction": "up-left",
+      "clip": "walk-start",
+      "frame": 1,
+      "layers": {
+        "outfit.torso": "png/up-left/09/outfit.torso.png",
+        "outfit.sleeve.left": "png/up-left/09/outfit.sleeve.left.png",
+        "outfit.sleeve.right": "png/up-left/09/outfit.sleeve.right.png"
+      }
+    },
+    {
+      "direction": "up-left",
+      "clip": "walk-start",
+      "frame": 2,
+      "layers": {
+        "outfit.torso": "png/up-left/10/outfit.torso.png",
+        "outfit.sleeve.left": "png/up-left/10/outfit.sleeve.left.png",
+        "outfit.sleeve.right": "png/up-left/10/outfit.sleeve.right.png"
+      }
+    },
+    {
+      "direction": "up-left",
+      "clip": "walk-stop",
+      "frame": 1,
+      "layers": {
+        "outfit.torso": "png/up-left/11/outfit.torso.png",
+        "outfit.sleeve.left": "png/up-left/11/outfit.sleeve.left.png",
+        "outfit.sleeve.right": "png/up-left/11/outfit.sleeve.right.png"
+      }
+    },
+    {
+      "direction": "up-left",
+      "clip": "walk-stop",
+      "frame": 2,
+      "layers": {
+        "outfit.torso": "png/up-left/12/outfit.torso.png",
+        "outfit.sleeve.left": "png/up-left/12/outfit.sleeve.left.png",
+        "outfit.sleeve.right": "png/up-left/12/outfit.sleeve.right.png"
+      }
+    },
+    {
+      "direction": "up-right",
+      "clip": "idle",
+      "frame": 0,
+      "layers": {
+        "outfit.torso": "png/up-right/00/outfit.torso.png",
+        "outfit.sleeve.left": "png/up-right/00/outfit.sleeve.left.png",
+        "outfit.sleeve.right": "png/up-right/00/outfit.sleeve.right.png"
+      }
+    },
+    {
+      "direction": "up-right",
+      "clip": "walk",
+      "frame": 1,
+      "layers": {
+        "outfit.torso": "png/up-right/01/outfit.torso.png",
+        "outfit.sleeve.left": "png/up-right/01/outfit.sleeve.left.png",
+        "outfit.sleeve.right": "png/up-right/01/outfit.sleeve.right.png"
+      }
+    },
+    {
+      "direction": "up-right",
+      "clip": "walk",
+      "frame": 2,
+      "layers": {
+        "outfit.torso": "png/up-right/02/outfit.torso.png",
+        "outfit.sleeve.left": "png/up-right/02/outfit.sleeve.left.png",
+        "outfit.sleeve.right": "png/up-right/02/outfit.sleeve.right.png"
+      }
+    },
+    {
+      "direction": "up-right",
+      "clip": "walk",
+      "frame": 3,
+      "layers": {
+        "outfit.torso": "png/up-right/03/outfit.torso.png",
+        "outfit.sleeve.left": "png/up-right/03/outfit.sleeve.left.png",
+        "outfit.sleeve.right": "png/up-right/03/outfit.sleeve.right.png"
+      }
+    },
+    {
+      "direction": "up-right",
+      "clip": "walk",
+      "frame": 4,
+      "layers": {
+        "outfit.torso": "png/up-right/04/outfit.torso.png",
+        "outfit.sleeve.left": "png/up-right/04/outfit.sleeve.left.png",
+        "outfit.sleeve.right": "png/up-right/04/outfit.sleeve.right.png"
+      }
+    },
+    {
+      "direction": "up-right",
+      "clip": "walk",
+      "frame": 5,
+      "layers": {
+        "outfit.torso": "png/up-right/05/outfit.torso.png",
+        "outfit.sleeve.left": "png/up-right/05/outfit.sleeve.left.png",
+        "outfit.sleeve.right": "png/up-right/05/outfit.sleeve.right.png"
+      }
+    },
+    {
+      "direction": "up-right",
+      "clip": "walk",
+      "frame": 6,
+      "layers": {
+        "outfit.torso": "png/up-right/06/outfit.torso.png",
+        "outfit.sleeve.left": "png/up-right/06/outfit.sleeve.left.png",
+        "outfit.sleeve.right": "png/up-right/06/outfit.sleeve.right.png"
+      }
+    },
+    {
+      "direction": "up-right",
+      "clip": "walk",
+      "frame": 7,
+      "layers": {
+        "outfit.torso": "png/up-right/07/outfit.torso.png",
+        "outfit.sleeve.left": "png/up-right/07/outfit.sleeve.left.png",
+        "outfit.sleeve.right": "png/up-right/07/outfit.sleeve.right.png"
+      }
+    },
+    {
+      "direction": "up-right",
+      "clip": "walk",
+      "frame": 8,
+      "layers": {
+        "outfit.torso": "png/up-right/08/outfit.torso.png",
+        "outfit.sleeve.left": "png/up-right/08/outfit.sleeve.left.png",
+        "outfit.sleeve.right": "png/up-right/08/outfit.sleeve.right.png"
+      }
+    },
+    {
+      "direction": "up-right",
+      "clip": "walk-start",
+      "frame": 1,
+      "layers": {
+        "outfit.torso": "png/up-right/09/outfit.torso.png",
+        "outfit.sleeve.left": "png/up-right/09/outfit.sleeve.left.png",
+        "outfit.sleeve.right": "png/up-right/09/outfit.sleeve.right.png"
+      }
+    },
+    {
+      "direction": "up-right",
+      "clip": "walk-start",
+      "frame": 2,
+      "layers": {
+        "outfit.torso": "png/up-right/10/outfit.torso.png",
+        "outfit.sleeve.left": "png/up-right/10/outfit.sleeve.left.png",
+        "outfit.sleeve.right": "png/up-right/10/outfit.sleeve.right.png"
+      }
+    },
+    {
+      "direction": "up-right",
+      "clip": "walk-stop",
+      "frame": 1,
+      "layers": {
+        "outfit.torso": "png/up-right/11/outfit.torso.png",
+        "outfit.sleeve.left": "png/up-right/11/outfit.sleeve.left.png",
+        "outfit.sleeve.right": "png/up-right/11/outfit.sleeve.right.png"
+      }
+    },
+    {
+      "direction": "up-right",
+      "clip": "walk-stop",
+      "frame": 2,
+      "layers": {
+        "outfit.torso": "png/up-right/12/outfit.torso.png",
+        "outfit.sleeve.left": "png/up-right/12/outfit.sleeve.left.png",
+        "outfit.sleeve.right": "png/up-right/12/outfit.sleeve.right.png"
+      }
+    }
+  ],
+  "sourceFiles": [
+    "source/up-left-outfit.sleeve.left.png",
+    "source/up-left-outfit.sleeve.right.png",
+    "source/up-left-outfit.torso.png",
+    "source/up-right-outfit.sleeve.left.png",
+    "source/up-right-outfit.sleeve.right.png",
+    "source/up-right-outfit.torso.png",
+    "editable/up-left-00.ora",
+    "editable/up-left-00.svg",
+    "editable/up-left-01.ora",
+    "editable/up-left-01.svg",
+    "editable/up-left-02.ora",
+    "editable/up-left-02.svg",
+    "editable/up-left-03.ora",
+    "editable/up-left-03.svg",
+    "editable/up-left-04.ora",
+    "editable/up-left-04.svg",
+    "editable/up-left-05.ora",
+    "editable/up-left-05.svg",
+    "editable/up-left-06.ora",
+    "editable/up-left-06.svg",
+    "editable/up-left-07.ora",
+    "editable/up-left-07.svg",
+    "editable/up-left-08.ora",
+    "editable/up-left-08.svg",
+    "editable/up-left-09.ora",
+    "editable/up-left-09.svg",
+    "editable/up-left-10.ora",
+    "editable/up-left-10.svg",
+    "editable/up-left-11.ora",
+    "editable/up-left-11.svg",
+    "editable/up-left-12.ora",
+    "editable/up-left-12.svg",
+    "editable/up-right-00.ora",
+    "editable/up-right-00.svg",
+    "editable/up-right-01.ora",
+    "editable/up-right-01.svg",
+    "editable/up-right-02.ora",
+    "editable/up-right-02.svg",
+    "editable/up-right-03.ora",
+    "editable/up-right-03.svg",
+    "editable/up-right-04.ora",
+    "editable/up-right-04.svg",
+    "editable/up-right-05.ora",
+    "editable/up-right-05.svg",
+    "editable/up-right-06.ora",
+    "editable/up-right-06.svg",
+    "editable/up-right-07.ora",
+    "editable/up-right-07.svg",
+    "editable/up-right-08.ora",
+    "editable/up-right-08.svg",
+    "editable/up-right-09.ora",
+    "editable/up-right-09.svg",
+    "editable/up-right-10.ora",
+    "editable/up-right-10.svg",
+    "editable/up-right-11.ora",
+    "editable/up-right-11.svg",
+    "editable/up-right-12.ora",
+    "editable/up-right-12.svg"
+  ]
+}

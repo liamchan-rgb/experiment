@@ -1,14 +1,217 @@
 # P1 人物素材逐张审核
 
+## 当前：八向统一候选（新整合待认可）
+
+美术提交 `ecfb101846a50219797b9e7099ce2863bb8ea5b4`；[正常切向GIF直链](https://raw.githubusercontent.com/liamchan-rgb/experiment/ecfb101846a50219797b9e7099ce2863bb8ea5b4/Art/Review/P1/modular-eight-way-v1/turn-comparison-120ms.gif)及两套八向步行/指定起停、站姿共六份HTTPS均HTTP200/MIME/SHA256与本地一致，时序/循环通过；远端9864条资源/源稿/公共依赖字节一致，见 `Art/Review/P1/modular-eight-way-v1/delivery.json`。新整合仍待用户认可。
+
+用户“没问题，继续下一项”认可上一轮实际展示的正右独立外观，范围见 `Art/Review/P1/modular-right-appearance-v1/approval.json`。本轮完成八向离线统一候选：同一个身体ID、一个catalog/motion，九个完整八向包；两上衣、共用裤靴、两头发、两五官、背剑可使用同一选择跨八向装配。三种背向五官透明符合原导板，不记作缺脸。新整合和修订artApproval=null。
+
+root亲自发现并修复：正下裤靴拆入共用包；各向步行循环起点不一致，统一为同物理支撑脚，只旋转原八帧起点、不丢帧/重复/变速；原neck固定父平移注册，保留逐帧头部轻摆，不用定义不同的hip点或alpha边框适配。蓝色长外套四斜向/正上原为短下摆，工具绘制13姿势长摆后独立提取，返修初稿含剑污染，保留原身体/袖子/手脚。右上v6镜像造成换肩，新包复用原v1的右肩→左髋斜背13姿势并修遮挡，旧v6/认可不覆盖。
+
+技术验证：9清单；16逻辑搭配×8方向×13姿势=1664真实装配；832身体层保持、52正下共用裤靴字节相同、64步行相位映射、2048邻向/相位/搭配支撑元数据检查；3328可见原手贡献、4992项无新增>5%底模暴露、832背剑开关、1092未涉修订的整身像素保持。11611旧文件未改，5411文件重导逐字节一致；本轮合同26/装配器21测试通过。
+
+主线程亲看两主搭配八向各13姿势1×/2×整身（208姿势），重点衣摆65姿势、逐侧四肢链/接缝/衣裤边/靴底、整体脸部比例、发际/后颈、背剑护手和近远遮挡；另亲看最终行走GIF各8个实际解码帧、切向GIF全部64实际解码帧，并核指定起停入口/出口。查看器静帧，不称连续播放或设备验收；其余交叉搭配实际装配和区域检查，不称1664张均2×人工逐张查看。
+
+[正常切向GIF](../Art/Review/P1/modular-eight-way-v1/turn-comparison-120ms.gif) · [绿衣八向步行](../Art/Review/P1/modular-eight-way-v1/forester-eight-way-walk-120ms.gif) · [蓝衣八向步行](../Art/Review/P1/modular-eight-way-v1/wayfarer-eight-way-walk-120ms.gif) · [站姿](../Art/Review/P1/modular-eight-way-v1/outfits-idle-2x.png) · [主线程复核](../Art/Review/P1/modular-eight-way-v1/art-review.md)
+
+旧demo八向切换已存在；本轮新统一分层包及指定起停尚未接入demo。下一阶段是新资源接入并保留既有距离相位/方向防抖。指定起停仍沿原walk01/08，entryPhase/exitPhase逐向记录；任意相位停车、完整统一骨架标记重定义、第三件全八向新外观零引擎修改验收仍单列，女性延后。本轮不运行设备或制作IPA。
+
+## 上一项：正右独立外观 v1（其已展示范围随后获认可）
+
+用户“没问题，继续下一项”认可上一轮正右中性身体/13姿势的实际展示，范围见 `Art/Review/P1/neutral-right-r1-mirror/approval.json`。本轮沿同一身体/关节/头挂点/步相补正右独立外观：棕发/银发、蓝眼/琥珀眼、绿短衣/蓝长外套、共用裤靴与背剑，共8资源包。新外观待用户认可，不继承中性身体或左向的认可。
+
+root独自制作、修复和审核。原左向外观逐层镜像并转换左右槽位，头部96局部与右向导板对应；五官仍分眼/眉/鼻/口四层，不混入头皮/耳部，身体不替换。两张工具头发色稿提供固定左上光照，原头发轮廓保持；衣物用同一工具材质色阶及同衣型共享中值，裤腿逐侧保持色调，靴子用全13姿势共用锚点保留原鞋面/鞋底明暗。所有原衣物alpha、边界、镶边及墨线保持，RGBA的透明像素清零。背剑按左向侧视投影固定反射，对照柄/护手/鞘尖，不移到身体中轴去避让。
+
+技术检查：9清单、16搭配×13姿势=208实际装配，13裸身体及1664身体层保持，286部件alpha映射、208整身alpha映射通过；1040衣物覆盖贡献检查无>5%漏底，208可见原手保持、104背剑开关、13背剑姿势映射、832五官可见贡献检查通过。覆盖只排除真实领口开口x123..135/y128..137，不把正常颈皮当漏衣；其余全量检查。10967旧部件/模板/图集/导入文件保持，874文件重导逐字节一致；本轮现有合同26、装配器21测试通过。
+
+主线程亲看两衣型×两发型×两五官共8个带剑搭配的全部13姿势整身1×/2×、主展示站姿及正常GIF真实8解码帧，并核起停路径。重点检查整体脸部眉眼鼻口间距/耳颌关系、刘海遮挡、肩肘腕与髋膝踝足、袖口/裤口/靴筒/靴底、近远层次、衣摆运动和背剑位置。空背由实际装配和开关检查覆盖，不声称全部208张逐张2×复核。查看器仅静帧，不称连续播放或实机验收；数字通过不代表用户认可。
+
+[正常全身GIF](../Art/Review/P1/modular-right-appearance-v1/outfits-walk-120ms.gif) · [指定起停](../Art/Review/P1/modular-right-appearance-v1/outfits-start-stop-120ms.gif) · [站姿](../Art/Review/P1/modular-right-appearance-v1/outfits-idle-2x.png) · [主线程复核](../Art/Review/P1/modular-right-appearance-v1/art-review.md)
+
+当前为正右独立外观候选，八向基本资源已有逐方向成果，仍待统一组合、跨方向挂点/相位/起停及切向复核与运行时接入；不能把旧demo已有八向切换说成没做，也不能把当前新分层统一接入说成完成。指定起停仅idle→walk01及walk08→idle，任意相位中断未验收。女性延后，本轮无App/模拟器/设备或IPA。
+
+## 当前：正右中性13姿势镜像适配（待认可）
+
+用户“没问题继续下一项”认可上一轮实际展示的正下自然空手起停，限定范围见其approval.json。当前补正右统一中性身体/动作分层：复用已认可左向r3的13姿势，逐层反射并同时交换左右语义、近远遮挡、关节、支撑标签、脚底及96局部头挂点。旧正右完整人物r1与demo原图保持；旧步态已制作/已认可，不重新记作未制作，也不将旧认可自动扩展到当前新中性稿。
+
+root独自返修与审核。初始空间转色出现暖白衣料误采到皮肤及小腿色块，已拦截保留。仅固定色盘仍继承旧画稿的逐帧深浅差，继续修为：同一工具RGB源提供近/远肤色阶，原肤色中值锚定到共同中间色，同侧整臂/手共用锚点；保留原材质相对阴影边界，所有安全衣裤、墨线和alpha保持。头部固定一张96局部色稿按原反射headToCanvas轻摆，不逐帧生成头。工具原稿新形体/alpha/红色外缘不导入。
+
+技术检查：13实际compositor、104语义层alpha反射、13头局部投影、13左右/关节/支撑/脚底映射、52肢链保持、91固定色盘及26腿部色调检查通过；近/远腿13帧肤色亮度中值各自稳定，保留近远层次。新接缝孔洞0，10808旧部件/模板/图集/导入文件保持；左向认可原图及旧正右strip/正常GIF摘要通过。174文件重导逐字节一致；本轮现有合同26、装配器21测试通过。
+
+主线程亲看全13姿势整身1×/2×，逐侧追踪肩肘腕及髋膝踝足、背心/短裤边界、手型/脚趾、近远遮挡与站姿/首尾/指定起停；同时看实际GIF八个解码帧及左右整身协调图。查看器仅提供静帧，不称连续播放、任意相位起停或设备验收。数值检查只辅助美术判断，新中性稿artApproval=null。
+
+[正常全身步态](../Art/Review/P1/neutral-right-r1-mirror/walk-120ms.gif) · [指定起停](../Art/Review/P1/neutral-right-r1-mirror/start-stop-120ms.gif) · [站姿](../Art/Review/P1/neutral-right-r1-mirror/idle-review-2x.png) · [左右协调](../Art/Review/P1/neutral-right-r1-mirror/walk-comparison-120ms.gif) · [详细审核](../Art/Review/P1/neutral-right-r1-mirror/art-review.md)
+
+本轮先审正右共用中性身体，独立发型/五官/两衣型/裤靴/背剑为下一阶段；空白脸与安全衣裤属于中性底模，不是独立外观成品。全八向统一组合、切向与运行时接入仍待完成；原左向隐藏补片按既有范围保留，不声称完整隐藏人体已验收。女性延后，无App、设备运行或IPA。
+
+## 当前：正下自然空手起停 v1（待认可）
+
+用户“没问题，继续下一项”认可上一轮实际展示的正上两套外观，范围见 `Art/Review/P1/modular-up-appearance-v1/approval.json`。按既定顺序，本轮补正下自然空手专用起步/收步：idle→start01→start02→walk01，以及walk08→stop01→stop02→idle。原站姿与八帧循环像素保留，不重画已有衣物或头部。新过渡待用户认可。
+
+root独自制作/修复/审核。四个新姿势沿已保留的正下源图生成，同侧整条自然空手臂、手和袖子共用肩枢轴变换；人体腿、裤腿、靴子共用同一份单调UV场，髋/膝/踝/脚底逐段过渡，不把裤子固定在躯干上，也不混合两张半透明人物。蓝衣两尾片沿原腰下枢轴缓动，背剑随原躯干，不移动剑去躲衣摆。头部沿原挂点，回落过程中同步身体。
+
+审查发现旧motion里的肘/腕挂点仍是握剑时期的记录，与r6自然空手源不符；新motion按实际自然空手源锚点及同一变换修正肩/肘/腕位置。另按可见落地脚修正walk04/08的支撑标签。原motion保留，这些元数据修正不改变原九姿势像素。
+
+技术检查：9清单、36搭配×13姿势=468实际装配，原九姿势324张搭配结果逐像素不变，324项原层绑定文件字节检查保持；3744项身体层保持，1560项穿衣可见贡献检查无>5%漏底，234背剑开关不影响剑alpha之外及不透明头部/五官/手。26臂手链/26腿链、40同侧身体-裤靴UV一致与4新姿势不同于端点通过；10314旧部件/模板/图集/导入文件保持。984个资源/输出文件重导逐字节一致；本轮现有合同26、装配器21测试通过。步行GIF与旧已展示版本逐字节相同。
+
+主线程亲看三发型×两衣型、蓝眼、带剑共6组合的全13姿势整身1×/2×，中性全13姿势、起停整身边界图及实际GIF解码边界帧。逐侧追踪肩肘腕、髋膝踝足，检查袖口/裤口/靴底、手型、衣摆、后背剑柄/鞘尖、眉眼鼻口整体比例和首尾/起停相位。琥珀五官、内衣/空背等其余组合由实际装配及技术检查覆盖，不声称全部468张逐张2×美术审核。查看器只返回静帧，未称连续播放或设备验收。
+
+[正常速度起停GIF](../Art/Review/P1/modular-down-transitions-v1/outfits-start-stop-120ms.gif) · [原步态循环](../Art/Review/P1/modular-down-transitions-v1/outfits-walk-120ms.gif) · [站姿](../Art/Review/P1/modular-down-transitions-v1/outfits-idle-2x.png) · [主线程复核](../Art/Review/P1/modular-down-transitions-v1/art-review.md)
+
+补同步已有正下r6、绿衣覆盖v2、蓝长外套v1、背剑v1、v8/v9及既往审核材料；旧成果只作保留/复用，不把历史审核数字充当本轮新测试。原7分支库存与同步缺口审计保留为历史，本次资源依赖以当前提交及delivery.json回执核验为准。
+
+范围仅指定idle→walk01、walk08→idle，不代表任意步相中断/加减速已完成。正右当前合同分层适配仍是统一八向复核的前置依赖；新分层全八向组合、切向/运行时接入及女性资源未完成。本轮没有App、模拟器/设备或IPA。
+
+## 当前：正上独立外观 v1（待认可）
+
+用户“没问题”认可上一轮正上中性身体/步态的实际展示，限定范围见 `Art/Review/P1/neutral-up-layered-r1/approval.json`。本轮在同一身体、13姿势、关节/足底/头挂点及120ms步相上新增正后视独立外观：棕/银两配色短发（共用已对齐短发轮廓）、绿衣/蓝衣、裤靴和右肩至左髋斜背剑，六个独立资源包。纯背视不挂五官。新外观待用户认可，不能继承中性动作的认可。
+
+root独自完成返修与审核：修银发冠顶alpha缺口，采用同一工具绘制短发轮廓及独立银发RGB登记；保留耳根/后颈正常露肤。发现右臂后摆时袖子遮断剑护手，保持剑的位置/斜角，只将weapon.back放在两袖与衣服之后、头发之前，全部姿势的剑柄/护手连续。裤口/裤脚分别沿原腿UV，靴面滚动RGB跟随原footArtState；蓝衣背衩下使用灰裤腰，遮住原白背心/短裤。
+
+已亲看四个带剑组合全13姿势整身1×/2×、站姿及实际正常GIF八个解码帧，逐侧检查肩肘腕、髋膝踝足、衣袖/裤口/靴底、头发/颈部与剑的遮挡和首尾/起停帧序。查看器仅提供静帧，未称连续播放或设备验收。技术验证：7清单、8组合104实际装配、13原身体不变、832身体层保持、624衣物覆盖、208手部保持、104冠顶覆盖、52背剑开关及52护手可见；15855旧文件保持，461文件重导逐字节一致；现有合同26/装配器21测试通过。
+
+[正常行走](../Art/Review/P1/modular-up-appearance-v1/outfits-walk-120ms.gif) · [指定起停](../Art/Review/P1/modular-up-appearance-v1/outfits-start-stop-120ms.gif) · [站姿](../Art/Review/P1/modular-up-appearance-v1/outfits-idle-2x.png) · [主线程复核](../Art/Review/P1/modular-up-appearance-v1/art-review.md)
+
+正下r6/v9已有成果同步缺口、自然空手专用起停、正右当前合同分层适配及新分层八向统一组合/切向接入仍未完成。后续按用户顺序推进，女性角色延后；本轮无App、设备运行或IPA。
+
+## 当前：正上中性步态分层r1候选
+
+按用户表格第一项先补正上，旧认可步态只作视角/相位参照、原像素保持；新统一中性身体与13姿势另审。root亲自修足面滚动、衣边归属和裤口随腿，检查完整1×/2×全部13姿势及GIF实际解码帧。13实际图/104层/91UV及源/ORA/SVG已留存；新中性分层尚无用户认可，独立头发/衣物/裤靴/背剑后续挂载，无App/设备/IPA。
+
+[正常GIF](../Art/Review/P1/neutral-up-layered-r1/walk-120ms.gif) · [指定起停](../Art/Review/P1/neutral-up-layered-r1/start-stop-120ms.gif) · [站姿](../Art/Review/P1/neutral-up-layered-r1/idle-review-2x.png) · [复核说明](../Art/Review/P1/neutral-up-layered-r1/art-review.md)。只核完整帧序与时长，不称连续播放器验收。
+
+## 剩余项复核及同步缺口
+
+正上旧步态已认可/导入，逐方向换装组合和旧demo八向切换已做；剩余是当前分层适配及统一整合。正下自然空手确实缺专用起停，但r6/第二衣型/背剑等已有本地成果同时尚未完整同步远端。7分支库存、具体清单、旧审核数量与实际增量见[P1_DIRECTION_MODULE_AUDIT.json](P1_DIRECTION_MODULE_AUDIT.json)及[P1_DIRECTION_MODULES.md](P1_DIRECTION_MODULES.md)。本次只核查，不改美术、不运行设备或重跑测试。
+
+## 状态澄清：正右步态已有认可，当前缺分层适配
+
+仓库核查确认：正右完整人物r1站姿+八帧步态于2026-10-18获认可并已导入demo，见[认可记录](../Art/Review/P1/directions/right/revisions/r1/approval.json)及[导入清单](../Art/Integration/P1-approved-gait-v1/integration.json)。当前远端图集右行与认可strip像素一致。剩余是统一中性身体合同下的分层/挂载/指定起停，不应表述为“正右走路没做过”。旧正上r1也有认可。详见[P1_DIRECTION_MODULES.md](P1_DIRECTION_MODULES.md)。本轮仅核查记录，不改美术；右下上一轮主要展示认可见其approval.json。
+
+## 当前：右下独立整身外观v1（候选）
+
+上一轮左下实际展示两组已获认可，范围见对应approval.json；本轮沿右下已确认身体/13姿势补头发/五官、两衣型、裤靴和同肩斜背。主线程亲自修复镜像光照与腿边剑尖闪线，查看8带剑组合全13帧整身1×/2×和实际GIF解码帧；不声称连续播放/设备验收。
+
+[正常GIF](../Art/Review/P1/modular-down-right-appearance-v1/outfits-walk-120ms.gif) · [起停](../Art/Review/P1/modular-down-right-appearance-v1/outfits-start-stop-120ms.gif) · [站姿](../Art/Review/P1/modular-down-right-appearance-v1/outfits-idle-2x.png) · [详细审核](../Art/Review/P1/modular-down-right-appearance-v1/art-review.md)。新右下外观待认可；八向路线见[P1_DIRECTION_MODULES.md](P1_DIRECTION_MODULES.md)，女性延后，无App/IPA。
+
+## 当前：左下衣物/裤靴/背剑v1（候选）
+
+用户先完成八方向，女性角色延后；路线见[P1_DIRECTION_MODULES.md](P1_DIRECTION_MODULES.md)。本轮沿同一左下身体/13姿势补两衣型、共用裤靴和背剑，现有头部保持。主线程修复原稿比例与背剑前视投影，查看主要两组全13帧完整1×/2×；新整身外观无用户认可，八向尚未完成。
+
+[正常全身GIF](../Art/Review/P1/modular-down-left-wardrobe-v1/outfits-walk-120ms.gif) · [起停](../Art/Review/P1/modular-down-left-wardrobe-v1/outfits-start-stop-120ms.gif) · [站姿](../Art/Review/P1/modular-down-left-wardrobe-v1/outfits-idle-2x.png) · [复核](../Art/Review/P1/modular-down-left-wardrobe-v1/art-review.md)。工具只能逐帧，不称连续播放器验收；无App/设备/IPA。
+
+## 上一项：左下独立头部外观v1（未单独获认可）
+
+右下已展示中性动作获用户认可。本轮先补左下棕发/银发、蓝眼/琥珀眼四个独立资源，原身体与动作保持；主线程修复刘海遮眼、五官间距和细嘴线登记，并查看四组合全13姿势完整1×/2×，不称连续播放器验收。
+
+[正常全身GIF](../Art/Review/P1/modular-down-left-heads-v1/walk-comparison-120ms.gif) · [起停GIF](../Art/Review/P1/modular-down-left-heads-v1/start-stop-comparison-120ms.gif) · [站姿](../Art/Review/P1/modular-down-left-heads-v1/idle-comparison-2x.png) · [复核与限制](../Art/Review/P1/modular-down-left-heads-v1/art-review.md)。新外观没有用户认可；衣物/背剑下一项再做。
+
+## 已认可参考：右下中性动作模组r1镜像展示
+
+用户认可左下展示并授权镜像右下。已完成13姿势逐层反射与左右语义、关节/脚底/支撑/层序/头部挂点转换，固定左上光照，保留左下人体和步相；修复/全身审核均由主线程完成。左下原图保持；右下该次展示随后获用户认可，见对应approval.json。
+
+[正常全身GIF](../Art/Review/P1/neutral-down-right-r1-mirror/walk-120ms.gif) · [起停GIF](../Art/Review/P1/neutral-down-right-r1-mirror/start-stop-120ms.gif) · [站姿](../Art/Review/P1/neutral-down-right-r1-mirror/idle-review-2x.png) · [主线程复核/限制](../Art/Review/P1/neutral-down-right-r1-mirror/art-review.md)。已查全13姿势1×/2×及首尾/起停帧序，工具只能逐帧；无App/设备/IPA工作。
+
+## 已认可参考：左下中性动作模组 r1（展示范围）
+
+用户已要求开始左下。本轮先建立站姿、八帧行走和指定起停路径，共13姿势；按正面斜向重设左右近远、膝投影与裤口共同域。修复/复核由主线程完成，旧资源保留。已查整身全部1×/2×与首尾/起停帧序，不称连续播放器验收。
+
+[正常全身GIF](../Art/Review/P1/neutral-down-left-r1/walk-120ms.gif) · [起停GIF](../Art/Review/P1/neutral-down-left-r1/start-stop-120ms.gif) · [站姿](../Art/Review/P1/neutral-down-left-r1/idle-review-2x.png) · [具体复核/限制](../Art/Review/P1/neutral-down-left-r1/art-review.md)。用户已认可该次左下中性展示；独立五官/发型/衣物/背剑仍待后续单独制作审核，不扩大认可范围。无App/设备/IPA工作。
+
+## 必须执行：主线程对智能体美术产物负责
+
+- 智能体生成、绘制或审核通过，都不等于可直接交付。主线程必须亲自检查实际装配后的1×/2×全身、全部当前动作帧及正常速度循环，不能只看局部放大、源稿、覆盖数字或智能体结论。
+- 发现智能体产物有问题，主线程必须自己修正源稿、部件边界、遮挡和动作变形；必要时重画并重新装配。不得把明显瑕疵转交用户充当第一轮质检，也不得因智能体声称完成而停止返修。
+- 检查须包含：衣物轮廓/镶边是否被提取丢失，裤腿是否块状拉伸，袖口是否重复或断开，靴筒/鞋面/鞋底是否完整，衣摆是否像硬片，五官整体比例、残余像素、近远层次和首尾动作衔接。
+- 用户指出漏检时，撤回该版内部美术通过结论，记录具体问题及修正依据，保留旧稿。技术检查只能作为补充，修订后仍须实际交付正常速度全身GIF和已验证的浏览器HTTPS直链。
+- 用户于2026-10-22明确要求：智能体画的效果有问题，由主线程自己修，并同步到GitHub提示词。
+
+
+## 当前候选：上斜v6匹配斜背剑
+
+用户判退v5中轴竖背，要求右上与左上位置吻合。v6按原左上13姿势逐帧镜像，保持斜角/柄/护手/鞘尖一致并查真实遮挡。[正常行走](../Art/Review/P1/modular-upper-wardrobe-v6/outfits-walk-120ms.gif)、[起停](../Art/Review/P1/modular-upper-wardrobe-v6/outfits-start-stop-120ms.gif)、[站姿](../Art/Review/P1/modular-upper-wardrobe-v6/outfits-idle-2x.png)、[复核](../Art/Review/P1/modular-upper-wardrobe-v6/art-review.md)。新美术无用户认可，未称连续播放器验收。
+
+## 已判退：上斜v5右上背剑
+
+用户指出右上剑穿模，撤回旧挂载内部美术通过。主线程重登右上背剑角度/位置与颈部遮挡，露出的剑鞘避开双袖并保持连续；左上、空背和人体/动作不变。[正常行走](../Art/Review/P1/modular-upper-wardrobe-v5/outfits-walk-120ms.gif)、[起停](../Art/Review/P1/modular-upper-wardrobe-v5/outfits-start-stop-120ms.gif)、[站姿](../Art/Review/P1/modular-upper-wardrobe-v5/outfits-idle-2x.png)、[主线程复核](../Art/Review/P1/modular-upper-wardrobe-v5/art-review.md)。新美术未获认可，不称连续播放器验收。
+
+## 旧问题版：上斜v4后颈连续肤色
+
+用户指出v3补色不均匀，撤回原内部美术通过。v4由主线程重新绘制连续肤色阴影，处理源区域边缘融合，保留原几何/动作/外观资源。[正常行走](../Art/Review/P1/modular-upper-wardrobe-v4/outfits-walk-120ms.gif)、[起停](../Art/Review/P1/modular-upper-wardrobe-v4/outfits-start-stop-120ms.gif)、[站姿](../Art/Review/P1/modular-upper-wardrobe-v4/outfits-idle-2x.png)、[复核](../Art/Review/P1/modular-upper-wardrobe-v4/art-review.md)。新美术未获认可，不能连续播放，不称播放器验收。
+
+## 旧问题版：左上/右上v3后颈修正
+
+用户指出v2后颈黑线，撤回原内部美术通过。主线程独自修共同底模头/颈交界的27枚源颜色像素，保留全部几何/动作及v2六个外观包；[正常行走GIF](../Art/Review/P1/modular-upper-wardrobe-v3/outfits-walk-120ms.gif)、[起停GIF](../Art/Review/P1/modular-upper-wardrobe-v3/outfits-start-stop-120ms.gif)、[整身站姿](../Art/Review/P1/modular-upper-wardrobe-v3/outfits-idle-2x.png)、[主线程具体复核](../Art/Review/P1/modular-upper-wardrobe-v3/art-review.md)。已看全部展示姿势整身1×/2×及后颈序列；不能连续播放，不称播放器验收。新修订未获用户认可。
+
+## 旧问题版：左上/右上裤靴 v2，后颈漏检
+
+用户指出v1腿部粗短/透视异常后，由主线程独自重画低靴和灰裤，按原腿轴/膝位/脚掌几何控制最终轮廓，修正近远层次及腰侧漏底；原底模/动作/五个其他外观包保持。[正常行走](../Art/Review/P1/modular-upper-wardrobe-v2/outfits-walk-120ms.gif)、[起停](../Art/Review/P1/modular-upper-wardrobe-v2/outfits-start-stop-120ms.gif)、[站姿](../Art/Review/P1/modular-upper-wardrobe-v2/outfits-idle-2x.png)、[主线程具体复核](../Art/Review/P1/modular-upper-wardrobe-v2/art-review.md)。已看两方向两衣型全部13姿势整身1×/2×与帧序，16组合208图检查通过；无法连续播放，不称播放器验收。新外观未获用户认可。
+
+## 旧问题版：左上/右上独立外观 v1
+
+2026-10-24用户指出腿部怪异。主线程复查确认裤靴比例、膝踝读法、鞋掌透视和近远层次有问题，撤回此前内部美术通过；原技术检查保留但不构成美术通过。见[腿部具体复查](../Art/Review/P1/modular-upper-wardrobe-v1/leg-reinspection-2026-10-24.md)。下文为原交付记录。
+
+同一r6底模上制作两衣型、共用裤靴、棕发/银发与背剑，共六包、两方向各13姿势。[正常行走GIF](../Art/Review/P1/modular-upper-wardrobe-v1/outfits-walk-120ms.gif)、[起停GIF](../Art/Review/P1/modular-upper-wardrobe-v1/outfits-start-stop-120ms.gif)、[整身站姿](../Art/Review/P1/modular-upper-wardrobe-v1/outfits-idle-2x.png)、[主线程修复与检查](../Art/Review/P1/modular-upper-wardrobe-v1/art-review.md)。主线程已亲自修复串腿黑边、衣物漏底/遮手、剑柄遮挡，并查看全部展示姿势1×/2×整身；16组合208图技术检查通过。查看器不能连续播放，不称连续播放器验收。新外观认可为空，未接入App。
+
+## 已认可参考：左上/右上r6指定起停
+
+用户以“开始下一项”要求从已交付r6继续，认可范围绑定[approval.json](../Art/Review/P1/neutral-upper-transitions-r6/approval.json)：左右上斜整身站姿/正常步行及idle00→walk01、walk08→idle00的指定起停路径。原帧保持；不扩大为新衣物、任意步相中断或完整隐藏解剖。
+
+## 已认可参考：右上r5镜像版展示
+
+用户明确授权开始右上镜像制作，由主线程独自完成及检查。基于已认可的左上r5逐层反射，交换左右语义、关节/支撑脚/脚底标记、近远遮挡与头部局部坐标；保持裤子跟随、接缝与手部效果。使用单一工具光照参考作固定源颜色绑定，校回左上光源，所有alpha和动作轮廓仍精确镜像认可版。见[正常动图](../Art/Review/P1/neutral-up-right-r5-mirror/walk-120ms.gif)、[站姿](../Art/Review/P1/neutral-up-right-r5-mirror/idle-review-2x.png)、[主线程检查](../Art/Review/P1/neutral-up-right-r5-mirror/art-review.md)。已看完整1×/2×整身九帧和首尾关系，工具不能连续播放，不声称实际观看连续播放器。用户以“没问题，开始下一步”认可交付的右上r5站姿/步态，见[approval.json](../Art/Review/P1/neutral-up-right-r5-mirror/approval.json)。左上原认可保持。当前继续指定起步/停步路径，独立衣物随后制作；新动作尚未认可。
+
+## 已认可参考：左上r5展示
+
+用户要求先修左上，右上暂缓。r4再次被指出拼接痕、运动间隙、残边和腿动裤子不动；主线程独自返修并审核，未使用智能体。r5独立短裤源，裤腰随骨盆、两裤口随各自大腿，肩/腰/裤口采用一致连接变形；恢复原稿宽上腿根，排除串入的肢体边线，并修近侧手的前后遮挡。见[正常120ms动图](../Art/Review/P1/neutral-up-left-r5/walk-120ms.gif)、[站姿](../Art/Review/P1/neutral-up-left-r5/idle-review-2x.png)、[具体修复及审核范围](../Art/Review/P1/neutral-up-left-r5/art-review.md)。主线程看最终1×/2×全身九姿势及首尾序列，当前工具不能连续播放，不将此写为连续播放器验收。用户已以“可以的”认可交付的左上r5整身站姿与正常步态，范围见[approval.json](../Art/Review/P1/neutral-up-left-r5/approval.json)。用户随后明确授权开始右上镜像制作，现候选见上；左上的认可不自动扩大到右上。
+
+## 已判退：上斜r4，拼接与短裤动作仍有问题
+
+用户指出四肢仍有拼接痕与运动间隙、左上边缘残留，且腿动裤子不动。保留r4源与输出，撤回内部修好结论。现仅左上另存r5，右上保留原状态，未自动获得认可。旧版见[r4记录](../Art/Review/P1/neutral-upper-diagonals-r4/README.md)。
+
+## 已判退：左上／右上r2与r3
+
+r2仍存在僵硬上身/手臂、膝踝变形与不清晰步态，用户追加指出手型、背心白边、臀腿空缺和游离线；r3进一步被指出腿部角度扭曲、衣物/四肢边界模糊。旧候选及技术结果保留，但内部美术通过结论撤回。见[r2复查](../Art/Review/P1/neutral-upper-diagonals-r2/reinspection-r2-rejected.md)、[r3整身判退证据](../Art/Review/P1/neutral-upper-diagonals-r4/rejected-r3/README.md)。
+
+## 已判退：左上／右上共同中性底模r1（内部通过撤回）
+
+按用户明确授权同时制作两个方向，每方向idle00+walk01–08。主线程已修复辅助源稿／分层的相位、躯干孔洞、跨背手臂及落脚问题，并检查最终实际装配1×/2×全身和全部帧序列。[正常120ms同屏GIF](../Art/Review/P1/neutral-upper-diagonals-v1/walk-comparison-120ms.gif)、[站姿](../Art/Review/P1/neutral-upper-diagonals-v1/idle-comparison-2x.png)、[主线程修订依据](../Art/Review/P1/neutral-upper-diagonals-v1/art-review.md)。用户判退脱手与腿闪烁；原稿和技术记录保留，当前由主线程另存r2返修。独立外观/隐藏解剖/起停尚未完成。每次交付仍须实际附正常GIF和已验证HTTPS浏览器直链，不能凭智能体结论发图。
+
+## 上一项：向左衣物 v2（展示已认可）
+
+用户判退v1后由主线程修正，保留原人体/动作，换用逐姿势衣物原稿并修复部件提取。见[正常行走GIF](../Art/Review/P1/modular-left-wardrobe-v2/outfits-comparison-120ms.gif)、[起停GIF](../Art/Review/P1/modular-left-wardrobe-v2/start-stop-comparison-120ms.gif)、[站姿](../Art/Review/P1/modular-left-wardrobe-v2/outfits-comparison-2x.png)、[主线程具体复核](../Art/Review/P1/modular-left-wardrobe-v2/art-review.md)。用户已认可展示的向左v2两衣型、正常循环及指定起停路径，范围见approval.json；不扩大到未展示组合和App。
+
+
+## 已判退：向左独立外观 v1（原内部美术通过撤回）
+
+在用户已认可展示的r3向左13姿势上完成三发型、两五官、两衣型、共用裤靴和背剑，身体/动作/公共compositor不变。[正常行走GIF](../Art/Review/P1/modular-left-wardrobe-v1/outfits-comparison-120ms.gif)、[正常起停GIF](../Art/Review/P1/modular-left-wardrobe-v1/start-stop-comparison-120ms.gif)、[整身站姿](../Art/Review/P1/modular-left-wardrobe-v1/outfits-comparison-2x.png)、[完整复核](../Art/Review/P1/modular-left-wardrobe-v1/art-review.md)。72组合936姿势与内部全身复核完成，新外观美术认可仍为空；不将离线检查扩大为其余方向、任意起停或App/设备验证。
+
+
+## 上一项：向左底模r3（展示与指定起停路径已认可）
+
+用户已认可r2展示的向左正常循环与轻微头动。本轮保留九张认可画面，补隐藏肩髋/腕口和四张起停关键姿势；[正常速全身起停动图](../Art/Review/P1/neutral-left-complete-transitions-v1/start-stop-120ms.gif)、[完整复核](../Art/Review/P1/neutral-left-complete-transitions-v1/art-review.md)。用户随后以“没问题，继续下一个工作”认可展示的全身与指定起停路径，见r3/approval.json；不扩大为完整隐藏解剖、任意步相中断、独立外观或App接入。
+
+## 此前修订：向左中性人体r2，轻微头部运动
+
+用户指出头部过于固定，现已补随步态轻微下沉/回升和颈根小幅点动；[正常全身动图](../Art/Review/P1/neutral-left-walk-r2-head-motion/walk-120ms.gif)、[前后同步对照](../Art/Review/P1/neutral-left-walk-r2-head-motion/before-after-120ms.gif)。用户随后认可这份r2展示；自然起停与隐藏连接已另存r3制作，独立左向外观后续进行。
+
+## 必须执行：人物美术交付要发可播放动图
+
+- 每次人物、换装挂载或动作修订，最终回复必须实际附上**正常速度的全身 GIF**，并同时给出**可复制到浏览器打开的 HTTPS 动图直链**。不能只发静态图、本机文件路径、内部审核结果或“已合成”的说明。
+- 发送前重新核对本条并打开交付链接，确认能取到 GIF；若聊天里未显示或未播放，立即补发浏览器直链，不能重复只给本机路径。当前步行为8帧×120ms；不生成新的慢动作预览。
+- 本条优先于此前“只提交一张静态图”的展示限制。用户于2026-10-22再次明确提醒：**“动图呢，别每次都搞忘啊，你在GitHub里面经常读的地方也把这个提醒写进去。”**
+
 开始日期：2026-10-18。用户要求 P1 原始素材按方向逐张审核，修改后确认再推进下一张，最终以认可结果建立支持换装备、自定义人物的人物模板。
 
 ## 当前审核
 
-2026-10-20 新增 [build33 侧向待机运行候选](../Art/Parts/P1-Battle/right-idle-v1/README.md)：沿用已认可r2完整人体，独立叠放绿色衣物／棕色短发／蓝眼五官／短剑，脚底和画布固定。已通过局部自审与iPad专项验证，三态实图见[build33运行证据](../Media/Build33/README.md)；新部件和装配尚无用户美术认可。它只有一张静态待机，不代表下文的隐藏解剖、侧步态、完整换装或动作动画问题已完成。
+2026-10-20 的 [build33 侧向待机运行候选](../Art/Parts/P1-Battle/right-idle-v1/README.md)是历史包：沿用已认可r2完整人体，独立叠放衣物／棕色短发／蓝眼五官／短剑，脚底和画布固定。它只有一张静态待机，不代表下文的隐藏解剖、侧步态、完整换装或动作动画问题已完成。
+
+2026-10-21 用户允许战斗“按当前效果继续下一步”，已认可 build35 的 v9 静态战斗呈现。当前单项转入[侧向小步第一关键姿势](../Art/Parts/P1-Battle/right-step-contact-v1/README.md)：前脚支撑、后跟抬起，沿用当前头脸／上半身／持剑，按共同人体补齐裤腿与靴口遮挡。先看[全身图](../Art/Parts/P1-Battle/right-step-contact-v1/review.png)。这是新单帧候选，未导入App；完整步态、隐藏解剖和换装合同尚未完成。实机运行及截图仍由用户负责。
 
 侧视待机向右中性人体 [r2](../Art/Templates/P1-Neutral/battle-side/right-idle-r2/README.md) 已获认可。用户回复“对了，继续下一步”，认可范围为单张注册后的空手侧视姿态和近侧右手方向。v1 八层静态分割仍作为历史候选保存；隐藏人体底层 [v2](../Art/Templates/P1-Neutral/battle-side/right-idle-parts-v2/README.md) 在原八层之下新增连续颈肩至骨盆皮肤核心。保持256×256共同注册，静态review与v1逐像素一致；新层暂未并入静态合成，因为现有抗锯齿切层边缘会让底层透出并改变外观。442个固定站姿补位像素仍保留；完整四肢底层与肢体移动接缝尚未通过，不能作为生产换装底模。
 
-当前回审焦点为[右向侧步态单帧测试 v1](../Art/Templates/P1-Neutral/battle-side/right-walk-pose-test-v1/README.md)：在256×256注册画布上制作一张小步候选并拆成八个语义层；静态重组逐像素一致，局部underlay新增14个皮肤像素，四个关节根部±1 px诊断均未露底。可查看[单帧对照](../Art/Templates/P1-Neutral/battle-side/right-walk-pose-test-v1/review.png)、[手脚细节](../Art/Templates/P1-Neutral/battle-side/right-walk-pose-test-v1/details.png)、[图层预览](../Art/Templates/P1-Neutral/battle-side/right-walk-pose-test-v1/parts-review.png)和[位移诊断](../Art/Templates/P1-Neutral/battle-side/right-walk-pose-test-v1/movement-test.png)。这只证明单帧轮廓、静态分层及一像素局部覆盖；姿势未获美术认可，完整隐藏解剖、较大幅度关节动作、动画、服装遮挡与运行时均未通过或未制作。认可的r2及其他已认可内容不由本项自动改变。
+此前保留的[右向侧步态单帧测试 v1](../Art/Templates/P1-Neutral/battle-side/right-walk-pose-test-v1/README.md)：在256×256注册画布上制作一张小步候选并拆成八个语义层；静态重组逐像素一致，局部underlay新增14个皮肤像素，四个关节根部±1 px诊断均未露底。可查看[单帧对照](../Art/Templates/P1-Neutral/battle-side/right-walk-pose-test-v1/review.png)、[手脚细节](../Art/Templates/P1-Neutral/battle-side/right-walk-pose-test-v1/details.png)、[图层预览](../Art/Templates/P1-Neutral/battle-side/right-walk-pose-test-v1/parts-review.png)和[位移诊断](../Art/Templates/P1-Neutral/battle-side/right-walk-pose-test-v1/movement-test.png)。这只证明单帧轮廓、静态分层及一像素局部覆盖；姿势未获美术认可，完整隐藏解剖、较大幅度关节动作、动画、服装遮挡与运行时均未通过或未制作。认可的r2及其他已认可内容不由本项自动改变。
 
 ### 此前持剑与衣物审核记录
 
@@ -72,3 +275,9 @@ P1 原始素材有两张 4 × 4 图：`hero1-gait-v1.2.png` 和 `hero1-diagonal-
 用户询问此前看到的一张很宽、包含一个方向所有动作的图。现提供 [P1 向下完整步态横图](../Art/Review/P1/reference-down-build28-strip.png)，尺寸 6400 × 256，最左格为站姿，随后 24 格是行走帧 01–24。
 
 该图按原像素提取自 build 28 正式 `Hero1Directions.png` 第一行，逐像素核对一致。用户随后明确这不是要找的图，最终确认的是上方所列的完整四方向图集。此单行保留作历史参考，不作为当前审核对象。
+
+2026-10-21 用户另要求把已认可步态接入 demo：已采用八方向当前认可稿（左上 r6、其余 r1），每方向站姿 1 张及步行 8 张，正常 120 ms／姿势，960 ms／周期。原始 RGBA 与方向顺序保留；P1 图集实际为 9 列，24 tick 距离时钟只做离散采样，不补画或烘焙重复帧。足底元数据另存，阴影与前景采样一致。P2／P3 图集及足底不变；旧24帧蓝靴分层对照保留源文件，入口暂隐以避免混用旧姿势。导入来源与摘要见 `Art/Integration/P1-approved-gait-v1/integration.json`。
+
+用户另要求对四个斜方向首尾接缝独立修订并合成正常速动图自行审核；该任务由单开智能体处理，原认可稿保留。今后安装包提供Downloads下的原始IPA直链，下载无需解ZIP。
+
+四斜向接缝修订现已完成内部复核并接入demo：右下／左下／左上loop-r1，右上loop-r2；均只重绘08，保持00–07，120ms／帧。右上r1因支撑腿不连续被退回并保留；r2已核对07→08→01的左腿支撑。四个08的单靴坐标同步更新到运行rig。当前运行选择由 `Art/Integration/P1-gait-selection.json` 单独记录，表中原r1／r6仍代表此前用户认可，不自动将自主修复稿记为用户认可。

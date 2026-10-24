@@ -1,0 +1,49 @@
+{
+  "id": "p1-weapon-back-scabbard-left-v1",
+  "version": "1.0.0",
+  "compatibility": {
+    "rig": "p1-chibi-v1",
+    "bodyProfile": "p1-standard",
+    "actionSet": "locomotion-v1"
+  },
+  "source": "source/imagegen-original.png",
+  "sourceCanvas": [
+    1254,
+    1254
+  ],
+  "canvas": [
+    256,
+    256
+  ],
+  "sourceToCanvas": [
+    0.05140126746214138,
+    0.04460710107453333,
+    -0.03096968665949424,
+    0.07634423559552414,
+    128.885110431643,
+    81.52369340323646
+  ],
+  "registration": "Fixed full-source affine using hilt and sheath-tip landmarks, transverse projection .060; no alpha-bounds fit or mirror. Candidate must be reviewed with both outfits.",
+  "landmarks": {
+    "sourceHilt": [
+      460,
+      340
+    ],
+    "sourceTip": [
+      790,
+      920
+    ],
+    "targetHilt": [
+      142,
+      128
+    ],
+    "targetTip": [
+      141,
+      187
+    ]
+  },
+  "discardPixels": [],
+  "rigidAttachment": "One left-facing back-scabbard image shared by all 13 bindings; torso neck/hip anchors do not translate. Weapon never follows head bob or requires a hand.",
+  "drawOrder": "weapon.back before all body/outfit/head; back-scabbard carryProfile only",
+  "artApproval": null
+}

@@ -1,0 +1,345 @@
+{
+  "status": "technical checks only; visual review required",
+  "artApproval": null,
+  "checks": [
+    {
+      "frame": 0,
+      "sourceOwnershipDifferencePixels": 0,
+      "authoredCompositionDifferencePixels": 0,
+      "reuseIdleTorso": true,
+      "partTranslations": {
+        "body.torso": [
+          0,
+          0
+        ],
+        "body.arm.left": [
+          0,
+          0
+        ],
+        "body.hand.left": [
+          0,
+          0
+        ],
+        "body.leg.left": [
+          0,
+          0
+        ],
+        "body.arm.right": [
+          0,
+          0
+        ],
+        "body.hand.right": [
+          0,
+          0
+        ],
+        "body.leg.right": [
+          0,
+          0
+        ]
+      },
+      "sha256": "2449cff39933bce8d9ef8b1517e44d4858de6d21a3a76c003bdc1ca4207d573c"
+    },
+    {
+      "frame": 1,
+      "sourceOwnershipDifferencePixels": 0,
+      "authoredCompositionDifferencePixels": 0,
+      "reuseIdleTorso": true,
+      "partTranslations": {
+        "body.torso": [
+          0,
+          1
+        ],
+        "body.arm.left": [
+          0,
+          1
+        ],
+        "body.hand.left": [
+          0,
+          1
+        ],
+        "body.leg.left": [
+          1,
+          3
+        ],
+        "body.arm.right": [
+          1,
+          1
+        ],
+        "body.hand.right": [
+          1,
+          1
+        ],
+        "body.leg.right": [
+          0,
+          3
+        ]
+      },
+      "sha256": "1895754f2997837c579384db7ac097288aac981a8cc6df0b1c2e6eecf013434c"
+    },
+    {
+      "frame": 2,
+      "sourceOwnershipDifferencePixels": 0,
+      "authoredCompositionDifferencePixels": 0,
+      "reuseIdleTorso": true,
+      "partTranslations": {
+        "body.torso": [
+          0,
+          0
+        ],
+        "body.arm.left": [
+          4,
+          0
+        ],
+        "body.hand.left": [
+          4,
+          0
+        ],
+        "body.leg.left": [
+          1,
+          3
+        ],
+        "body.arm.right": [
+          0,
+          0
+        ],
+        "body.hand.right": [
+          0,
+          0
+        ],
+        "body.leg.right": [
+          0,
+          3
+        ]
+      },
+      "sha256": "44664270617e34c031adb53955126c92c471f1624dd5e348a4c52315fe98926b"
+    },
+    {
+      "frame": 3,
+      "sourceOwnershipDifferencePixels": 0,
+      "authoredCompositionDifferencePixels": 0,
+      "reuseIdleTorso": true,
+      "partTranslations": {
+        "body.torso": [
+          0,
+          -1
+        ],
+        "body.arm.left": [
+          0,
+          -2
+        ],
+        "body.hand.left": [
+          0,
+          -2
+        ],
+        "body.leg.left": [
+          -1,
+          0
+        ],
+        "body.arm.right": [
+          1,
+          -2
+        ],
+        "body.hand.right": [
+          1,
+          -2
+        ],
+        "body.leg.right": [
+          -1,
+          0
+        ]
+      },
+      "sha256": "e101085ff10f29baeedd6b49dc04eff225a935412ca88254cd82dfcaf850d8c7"
+    },
+    {
+      "frame": 4,
+      "sourceOwnershipDifferencePixels": 0,
+      "authoredCompositionDifferencePixels": 0,
+      "reuseIdleTorso": true,
+      "partTranslations": {
+        "body.torso": [
+          0,
+          0
+        ],
+        "body.arm.left": [
+          3,
+          0
+        ],
+        "body.hand.left": [
+          3,
+          0
+        ],
+        "body.leg.left": [
+          1,
+          3
+        ],
+        "body.arm.right": [
+          0,
+          0
+        ],
+        "body.hand.right": [
+          0,
+          0
+        ],
+        "body.leg.right": [
+          0,
+          3
+        ]
+      },
+      "sha256": "6dc812b9f3ed0da57bb8b3b3bfa8ed741cc2c0e5546963aebcbaa5c3a24d0a0b"
+    },
+    {
+      "frame": 5,
+      "sourceOwnershipDifferencePixels": 0,
+      "authoredCompositionDifferencePixels": 0,
+      "reuseIdleTorso": true,
+      "partTranslations": {
+        "body.torso": [
+          0,
+          1
+        ],
+        "body.arm.left": [
+          0,
+          1
+        ],
+        "body.hand.left": [
+          0,
+          1
+        ],
+        "body.leg.left": [
+          1,
+          2
+        ],
+        "body.arm.right": [
+          0,
+          1
+        ],
+        "body.hand.right": [
+          0,
+          1
+        ],
+        "body.leg.right": [
+          0,
+          2
+        ]
+      },
+      "sha256": "0c236b81c3b06b9e25250c59d2a1e038742058471bf53afb5fe32016871570c7"
+    },
+    {
+      "frame": 6,
+      "sourceOwnershipDifferencePixels": 0,
+      "authoredCompositionDifferencePixels": 0,
+      "reuseIdleTorso": true,
+      "partTranslations": {
+        "body.torso": [
+          0,
+          0
+        ],
+        "body.arm.left": [
+          3,
+          0
+        ],
+        "body.hand.left": [
+          3,
+          0
+        ],
+        "body.leg.left": [
+          1,
+          3
+        ],
+        "body.arm.right": [
+          0,
+          0
+        ],
+        "body.hand.right": [
+          0,
+          0
+        ],
+        "body.leg.right": [
+          0,
+          3
+        ]
+      },
+      "sha256": "4d0c801d7b36ac335528221763bd9e002999fa0c430ea6b8305aeea3a669e0c3"
+    },
+    {
+      "frame": 7,
+      "sourceOwnershipDifferencePixels": 0,
+      "authoredCompositionDifferencePixels": 0,
+      "reuseIdleTorso": true,
+      "partTranslations": {
+        "body.torso": [
+          0,
+          -1
+        ],
+        "body.arm.left": [
+          0,
+          -1
+        ],
+        "body.hand.left": [
+          0,
+          -1
+        ],
+        "body.leg.left": [
+          1,
+          0
+        ],
+        "body.arm.right": [
+          0,
+          -1
+        ],
+        "body.hand.right": [
+          0,
+          -1
+        ],
+        "body.leg.right": [
+          0,
+          0
+        ]
+      },
+      "sha256": "2ed8199fc0102b73d812204d60299d7eab2e4f6f417c29550b28b6b98de770ac"
+    },
+    {
+      "frame": 8,
+      "sourceOwnershipDifferencePixels": 0,
+      "authoredCompositionDifferencePixels": 0,
+      "reuseIdleTorso": true,
+      "partTranslations": {
+        "body.torso": [
+          0,
+          0
+        ],
+        "body.arm.left": [
+          1,
+          0
+        ],
+        "body.hand.left": [
+          1,
+          0
+        ],
+        "body.leg.left": [
+          1,
+          2
+        ],
+        "body.arm.right": [
+          0,
+          0
+        ],
+        "body.hand.right": [
+          0,
+          0
+        ],
+        "body.leg.right": [
+          0,
+          2
+        ]
+      },
+      "sha256": "3607d3ab7c91a928ac58be61d97e6e3d25eaf6ac90340e1bb031b3695897b1f7"
+    }
+  ],
+  "headSource": "idle00 shared artwork; authored neck-pivot motion",
+  "limits": [
+    "up-left neutral candidate only",
+    "ownership masks do not establish full hidden anatomy",
+    "no apparel or runtime integration"
+  ]
+}

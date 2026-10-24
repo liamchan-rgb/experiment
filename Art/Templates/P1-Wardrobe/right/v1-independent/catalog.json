@@ -1,0 +1,40 @@
+{
+  "assets": [
+    {
+      "id": "p1-neutral-right-walk-r1-mirror",
+      "manifest": "Art/Templates/P1-Neutral/right/walk-r1-mirror/asset.json"
+    },
+    {
+      "id": "p1-right-forester-v1",
+      "manifest": "Art/Parts/P1-v1/right/appearance-v1/forester/asset.json"
+    },
+    {
+      "id": "p1-right-wayfarer-v1",
+      "manifest": "Art/Parts/P1-v1/right/appearance-v1/wayfarer/asset.json"
+    },
+    {
+      "id": "p1-right-lower-v1",
+      "manifest": "Art/Parts/P1-v1/right/appearance-v1/lower/asset.json"
+    },
+    {
+      "id": "p1-right-back-scabbard-v1",
+      "manifest": "Art/Parts/P1-v1/right/appearance-v1/back-scabbard/asset.json"
+    },
+    {
+      "id": "p1-right-hair-chestnut-v1",
+      "manifest": "Art/Parts/P1-v1/right/appearance-v1/hair-chestnut/asset.json"
+    },
+    {
+      "id": "p1-right-hair-silver-v1",
+      "manifest": "Art/Parts/P1-v1/right/appearance-v1/hair-silver/asset.json"
+    },
+    {
+      "id": "p1-right-face-blue-v1",
+      "manifest": "Art/Parts/P1-v1/right/appearance-v1/face-blue/asset.json"
+    },
+    {
+      "id": "p1-right-face-amber-v1",
+      "manifest": "Art/Parts/P1-v1/right/appearance-v1/face-amber/asset.json"
+    }
+  ]
+}

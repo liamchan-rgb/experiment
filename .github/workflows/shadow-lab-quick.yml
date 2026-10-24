@@ -60,6 +60,15 @@ jobs:
           xcodebuild -list -project "$PROJECT" 2>&1 | tee build/logs/project.log
           python3 scripts/validate-project.py 2>&1 | tee build/logs/project-validation.log
 
+      - name: Check pure battle and road logic (no simulator)
+        run: |
+          set -euo pipefail
+          check_failed=0
+          bash scripts/check-battle-encounter.sh 2>&1 | tee build/logs/battle-logic.log || check_failed=1
+          bash scripts/check-road-motion.sh 2>&1 | tee build/logs/road-logic.log || check_failed=1
+          bash scripts/check-battle-animation.sh 2>&1 | tee build/logs/battle-pose.log || check_failed=1
+          exit "$check_failed"
+
       - name: Archive device Release build
         run: |
           set -euo pipefail
@@ -149,7 +158,7 @@ jobs:
               -only-testing:MeadowJourneyTests/TrailTests/testBattleLayoutKeepsSharedRowsAndExpandsForExplorationAndMonsterTurns
               -only-testing:MeadowJourneyTests/TrailTests/testBattlePreviewCropsAroundTravellerAndKeepsTerrainAcrossViewport
               -only-testing:MeadowJourneyTests/TrailTests/testCapturedViewportKeepsGroundAndArtworkAlignedThroughZoomAndPan
-              -only-testing:MeadowJourneyUITests/JourneyUITests/testLayeredP1ColorwayPreviewRunsBesideOriginalInTheMapScene
+              -only-testing:MeadowJourneyUITests/JourneyUITests/testApprovedP1GaitStepsWholePosesAndOmitsOutdatedLayeredComparison
               -only-testing:MeadowJourneyUITests/JourneyUITests/testMeadowBattlePreviewKeepsReferenceMapBesideLandscapeScene
             )
           else
@@ -157,7 +166,7 @@ jobs:
               -only-testing:MeadowJourneyUITests/JourneyUITests/testMapContourRendererAndInteraction
               -only-testing:MeadowJourneyUITests/JourneyUITests/testForegroundAndShadowReceiverStayAlignedAtEveryZoom
               -only-testing:MeadowJourneyUITests/JourneyUITests/testActualMapGaitControlsCoverAllDirectionsAndEveryFrame
-              -only-testing:MeadowJourneyUITests/JourneyUITests/testLayeredP1ColorwayPreviewRunsBesideOriginalInTheMapScene
+              -only-testing:MeadowJourneyUITests/JourneyUITests/testApprovedP1GaitStepsWholePosesAndOmitsOutdatedLayeredComparison
             )
             for test in \
               testShadowLabCutoutPipelineSubmitsContourModes \
@@ -168,12 +177,13 @@ jobs:
               testReliefPreservesArtCoordinatesForEveryAsset \
               testRoadMaskUsesOneUnionAtJunctions \
               testOnlyTheTowerGetsAnAdditionalBanner \
-              testAuthoredWalkUses24WholeFramesAndNoLegWarp \
+              testAuthoredWalkMapsDistanceClockToWholePosesWithoutLegWarp \
               testFootprintGroundLineFollowsAlternatingFeet \
               testHeroCasterAnchorsEachPlantedFootAndTracksLift \
-              testHeroFramesBundlesAllDirectionsAndWholeMirroredRightProfile \
+              testHeroFramesBundlesAllApprovedDirectionsAndWholeRightProfile \
               testWalkCycleVisitsEveryFrameAndWrapsWithoutRepeatingPassingArt \
               testGaitTestCoversEightRoadIndependentHeadingsAndSupportsStepping \
+              testApprovedP1GaitKeepsNormalCadenceAndStepsBetweenAuthoredPoses \
               testGaitTestReturnsToTheSameMapCameraAndActorPositions \
               testHeroPoseSpriteKitRenderingKeepsAllHeroContoursConnected; do
               focused_tests+=("-only-testing:MeadowJourneyTests/TrailTests/$test")

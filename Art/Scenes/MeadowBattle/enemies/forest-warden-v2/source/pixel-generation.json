@@ -1,0 +1,12 @@
+{
+  "tool": "OpenAI image generation",
+  "date": "2026-10-20",
+  "retainedOriginal": "idle-pixel-generation.png",
+  "sha256": "6e1ee32dc01929e2a4d70851441144f14325f98b7f47b006824a8906b8a95ffa",
+  "reference": "Art/Scenes/MeadowBattle/enemies/forest-warden-v2/source/idle-v2-reference.png",
+  "referenceSHA256": "da3f906fc6e66633346474fda7b950f6087deb1fae5e0c98b71bf53a54c3ab64",
+  "prompt": "pixel-art-prompt.txt",
+  "promptSHA256": "0f1bfc22d36c0ca6c5630481d0bc406d1ae657f8506f43cc0bf23bb272d2f679",
+  "processing": "process.sh thresholds alpha at 50 percent, nearest-resizes the whole 3:2 canvas to 384x256, then registers the figure at 364x245 plus (3,3) to preserve existing bounds and ground line.",
+  "status": "new static art candidate, no user approval"
+}

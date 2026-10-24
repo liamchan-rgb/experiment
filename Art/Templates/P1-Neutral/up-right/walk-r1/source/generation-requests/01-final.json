@@ -1,0 +1,18 @@
+{
+  "direction": "up-right",
+  "frame": 1,
+  "artifact": "/workspace/generated_images/exec-df0ec3d2-29aa-441e-9eb4-a598a4e8af8e.png",
+  "prompt": "Image ONE is the mandatory pose blocking diagram; image TWO supplies ONLY character appearance/style. Render exactly ONE complete transparent pixel-art neutral up-right AWAY rear-three-quarter WALK frame 5. Match the diagram positions of arms/legs and cross-over order; replace all guide colors with warm skin/white back-neckline undershirt/charcoal short shorts. GREEN anatomicalLEFT, BLUE anatomicalRIGHT. Near side=RIGHT, far side=LEFT. Exact intended hip,knee,ankle,foot positions in256 coordinates: {\"left\":[[121,174],[131,186],[139,198],[139,201]],\"right\":[[135,176],[123,195],[117,215],[117,218]]}. Shoulder,elbow,wrist positions: {\"left\":[[118,136],[106,156],[98,177]],\"right\":[[139,137],[150,146],[153,154]]}. Follow these limb paths, not a repeated generic walking pose. The near arm may project across the lower back in the backward swing; far arm is occluded behind torso except the appropriate visible part. EXACTLY TWO arms/hands and TWO legs/feet, no third hanging arm. Keep same body scale/registration as appearance image: bald BACK of skull headtop87, tiny edge ear NO FACE profile, neck130, hips175, foot area198..218. Preserve natural hands/thumbs and complete feet. Upper-left light, farther limbs slightly darker. Clean thin pixel-art contours. No guide labels, colored strokes, weapon, hair, gear or shadow. Full transparent256-square framing, do not enlarge/crop sprite.",
+  "references": [
+    "/workspace/experiment/Art/Templates/P1-Neutral/up-right/walk-r1/source/joint-guides/phase-r2/05.png",
+    "/workspace/experiment/Art/Templates/P1-Neutral/up-right/walk-r1/source/idle-selected-registered.png"
+  ],
+  "status": "generated-remapped-pending-root-review",
+  "sourceScale": 0.20414673046251994,
+  "sourceTranslation": [
+    0,
+    0
+  ],
+  "generatedIndex": 5,
+  "sourceArtifact": "/workspace/experiment/Art/Templates/P1-Neutral/up-right/walk-r1/source/r2-guide-before-common-phase/05.png"
+}

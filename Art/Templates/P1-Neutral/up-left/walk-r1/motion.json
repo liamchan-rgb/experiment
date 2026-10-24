@@ -1,0 +1,876 @@
+{
+  "schemaVersion": "1.0.0",
+  "rig": "p1-chibi-v1",
+  "status": "neutral-direction-candidate-awaiting-user-review",
+  "artApproval": null,
+  "canvas": [
+    256,
+    256
+  ],
+  "compatibility": {
+    "rig": "p1-chibi-v1",
+    "bodyProfile": "p1-standard",
+    "actionSet": "locomotion-v1"
+  },
+  "baseManifestSHA256": "615717119101222261d05f12e6b5469980c80213c5806e7f16bfa6eb7e64b7f9",
+  "durationMs": 120,
+  "cycleFrames": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8
+  ],
+  "alphaFitOrPerPartResize": false,
+  "frames": [
+    {
+      "direction": "up-left",
+      "clip": "idle",
+      "frame": 0,
+      "facing": [
+        -1,
+        -1
+      ],
+      "headToCanvas": [
+        1.0,
+        -0.0,
+        0.0,
+        1.0,
+        76.0,
+        61.0
+      ],
+      "drawOrder": [
+        "body.leg.right",
+        "body.leg.left",
+        "body.arm.right",
+        "body.hand.right",
+        "body.torso",
+        "head.base",
+        "body.arm.left",
+        "body.hand.left"
+      ],
+      "joints": {
+        "neck": [
+          127,
+          132
+        ],
+        "shoulderLeft": [
+          119,
+          138
+        ],
+        "shoulderRight": [
+          141,
+          138
+        ],
+        "elbowLeft": [
+          113,
+          151
+        ],
+        "elbowRight": [
+          148,
+          152
+        ],
+        "wristLeft": [
+          108,
+          166
+        ],
+        "wristRight": [
+          149,
+          165
+        ],
+        "hipLeft": [
+          120,
+          175
+        ],
+        "hipRight": [
+          141,
+          175
+        ],
+        "kneeLeft": [
+          120,
+          193
+        ],
+        "kneeRight": [
+          142,
+          193
+        ],
+        "ankleLeft": [
+          116,
+          208
+        ],
+        "ankleRight": [
+          143,
+          208
+        ]
+      },
+      "soleMarkers": {
+        "left": [
+          116,
+          214
+        ],
+        "right": [
+          143,
+          212
+        ]
+      },
+      "support": "both",
+      "sockets": {},
+      "artApproval": null
+    },
+    {
+      "direction": "up-left",
+      "clip": "walk",
+      "frame": 1,
+      "facing": [
+        -1,
+        -1
+      ],
+      "headToCanvas": [
+        0.9999619230641713,
+        0.008726535498373935,
+        -0.008726535498373935,
+        0.9999619230641713,
+        76.62152594411182,
+        61.55765015202676
+      ],
+      "drawOrder": [
+        "body.leg.right",
+        "body.leg.left",
+        "body.arm.right",
+        "body.hand.right",
+        "body.torso",
+        "head.base",
+        "body.arm.left",
+        "body.hand.left"
+      ],
+      "joints": {
+        "neck": [
+          127,
+          133
+        ],
+        "shoulderLeft": [
+          119,
+          139
+        ],
+        "shoulderRight": [
+          141,
+          139
+        ],
+        "elbowLeft": [
+          118,
+          155
+        ],
+        "elbowRight": [
+          131,
+          150
+        ],
+        "wristLeft": [
+          121,
+          174
+        ],
+        "wristRight": [
+          112,
+          165
+        ],
+        "hipLeft": [
+          120,
+          176
+        ],
+        "hipRight": [
+          141,
+          176
+        ],
+        "kneeLeft": [
+          110,
+          194
+        ],
+        "kneeRight": [
+          139,
+          197
+        ],
+        "ankleLeft": [
+          104,
+          205
+        ],
+        "ankleRight": [
+          145,
+          212
+        ]
+      },
+      "soleMarkers": {
+        "left": [
+          108,
+          210
+        ],
+        "right": [
+          145,
+          221
+        ]
+      },
+      "support": "left",
+      "sockets": {},
+      "artApproval": null
+    },
+    {
+      "direction": "up-left",
+      "clip": "walk",
+      "frame": 2,
+      "facing": [
+        -1,
+        -1
+      ],
+      "headToCanvas": [
+        1.0,
+        -0.0,
+        0.0,
+        1.0,
+        76.0,
+        61.0
+      ],
+      "drawOrder": [
+        "body.leg.right",
+        "body.leg.left",
+        "body.arm.right",
+        "body.hand.right",
+        "body.torso",
+        "head.base",
+        "body.arm.left",
+        "body.hand.left"
+      ],
+      "joints": {
+        "neck": [
+          127,
+          132
+        ],
+        "shoulderLeft": [
+          119,
+          138
+        ],
+        "shoulderRight": [
+          141,
+          138
+        ],
+        "elbowLeft": [
+          118,
+          153
+        ],
+        "elbowRight": [
+          143,
+          150
+        ],
+        "wristLeft": [
+          122,
+          171
+        ],
+        "wristRight": [
+          141,
+          160
+        ],
+        "hipLeft": [
+          120,
+          175
+        ],
+        "hipRight": [
+          141,
+          175
+        ],
+        "kneeLeft": [
+          119,
+          190
+        ],
+        "kneeRight": [
+          145,
+          190
+        ],
+        "ankleLeft": [
+          116,
+          203
+        ],
+        "ankleRight": [
+          146,
+          200
+        ]
+      },
+      "soleMarkers": {
+        "left": [
+          116,
+          209
+        ],
+        "right": [
+          146,
+          205
+        ]
+      },
+      "support": "left",
+      "sockets": {},
+      "artApproval": null
+    },
+    {
+      "direction": "up-left",
+      "clip": "walk",
+      "frame": 3,
+      "facing": [
+        -1,
+        -1
+      ],
+      "headToCanvas": [
+        0.9999756307053947,
+        -0.0069812602979615525,
+        0.0069812602979615525,
+        0.9999756307053947,
+        75.50557335286959,
+        60.35777449511301
+      ],
+      "drawOrder": [
+        "body.leg.right",
+        "body.leg.left",
+        "body.arm.right",
+        "body.hand.right",
+        "body.torso",
+        "head.base",
+        "body.arm.left",
+        "body.hand.left"
+      ],
+      "joints": {
+        "neck": [
+          127,
+          131
+        ],
+        "shoulderLeft": [
+          119,
+          137
+        ],
+        "shoulderRight": [
+          141,
+          137
+        ],
+        "elbowLeft": [
+          110,
+          156
+        ],
+        "elbowRight": [
+          151,
+          151
+        ],
+        "wristLeft": [
+          106,
+          172
+        ],
+        "wristRight": [
+          154,
+          167
+        ],
+        "hipLeft": [
+          120,
+          174
+        ],
+        "hipRight": [
+          141,
+          174
+        ],
+        "kneeLeft": [
+          121,
+          193
+        ],
+        "kneeRight": [
+          132,
+          186
+        ],
+        "ankleLeft": [
+          119,
+          207
+        ],
+        "ankleRight": [
+          135,
+          199
+        ]
+      },
+      "soleMarkers": {
+        "left": [
+          123,
+          215
+        ],
+        "right": [
+          125,
+          202
+        ]
+      },
+      "support": "left",
+      "sockets": {},
+      "artApproval": null
+    },
+    {
+      "direction": "up-left",
+      "clip": "walk",
+      "frame": 4,
+      "facing": [
+        -1,
+        -1
+      ],
+      "headToCanvas": [
+        0.9999619230641713,
+        -0.008726535498373935,
+        0.008726535498373935,
+        0.9999619230641713,
+        75.38235790334272,
+        61.44775677286089
+      ],
+      "drawOrder": [
+        "body.leg.right",
+        "body.leg.left",
+        "body.arm.right",
+        "body.hand.right",
+        "body.torso",
+        "head.base",
+        "body.arm.left",
+        "body.hand.left"
+      ],
+      "joints": {
+        "neck": [
+          127,
+          132
+        ],
+        "shoulderLeft": [
+          119,
+          138
+        ],
+        "shoulderRight": [
+          141,
+          138
+        ],
+        "elbowLeft": [
+          111,
+          151
+        ],
+        "elbowRight": [
+          148,
+          153
+        ],
+        "wristLeft": [
+          106,
+          164
+        ],
+        "wristRight": [
+          155,
+          169
+        ],
+        "hipLeft": [
+          120,
+          175
+        ],
+        "hipRight": [
+          141,
+          175
+        ],
+        "kneeLeft": [
+          129,
+          193
+        ],
+        "kneeRight": [
+          126,
+          191
+        ],
+        "ankleLeft": [
+          131,
+          211
+        ],
+        "ankleRight": [
+          123,
+          202
+        ]
+      },
+      "soleMarkers": {
+        "left": [
+          131,
+          215
+        ],
+        "right": [
+          124,
+          205
+        ]
+      },
+      "support": "left",
+      "sockets": {},
+      "artApproval": null
+    },
+    {
+      "direction": "up-left",
+      "clip": "walk",
+      "frame": 5,
+      "facing": [
+        -1,
+        -1
+      ],
+      "headToCanvas": [
+        0.9999756307053947,
+        -0.0069812602979615525,
+        0.0069812602979615525,
+        0.9999756307053947,
+        75.50557335286959,
+        62.35777449511301
+      ],
+      "drawOrder": [
+        "body.leg.right",
+        "body.leg.left",
+        "body.arm.right",
+        "body.hand.right",
+        "body.torso",
+        "head.base",
+        "body.arm.left",
+        "body.hand.left"
+      ],
+      "joints": {
+        "neck": [
+          127,
+          133
+        ],
+        "shoulderLeft": [
+          119,
+          139
+        ],
+        "shoulderRight": [
+          141,
+          139
+        ],
+        "elbowLeft": [
+          111,
+          153
+        ],
+        "elbowRight": [
+          148,
+          154
+        ],
+        "wristLeft": [
+          101,
+          161
+        ],
+        "wristRight": [
+          151,
+          169
+        ],
+        "hipLeft": [
+          120,
+          176
+        ],
+        "hipRight": [
+          141,
+          176
+        ],
+        "kneeLeft": [
+          132,
+          196
+        ],
+        "kneeRight": [
+          121,
+          195
+        ],
+        "ankleLeft": [
+          141,
+          212
+        ],
+        "ankleRight": [
+          117,
+          206
+        ]
+      },
+      "soleMarkers": {
+        "left": [
+          141,
+          218
+        ],
+        "right": [
+          119,
+          211
+        ]
+      },
+      "support": "right",
+      "sockets": {},
+      "artApproval": null
+    },
+    {
+      "direction": "up-left",
+      "clip": "walk",
+      "frame": 6,
+      "facing": [
+        -1,
+        -1
+      ],
+      "headToCanvas": [
+        1.0,
+        -0.0,
+        0.0,
+        1.0,
+        76.0,
+        61.0
+      ],
+      "drawOrder": [
+        "body.leg.right",
+        "body.leg.left",
+        "body.arm.right",
+        "body.hand.right",
+        "body.torso",
+        "head.base",
+        "body.arm.left",
+        "body.hand.left"
+      ],
+      "joints": {
+        "neck": [
+          127,
+          132
+        ],
+        "shoulderLeft": [
+          119,
+          138
+        ],
+        "shoulderRight": [
+          141,
+          138
+        ],
+        "elbowLeft": [
+          111,
+          150
+        ],
+        "elbowRight": [
+          149,
+          154
+        ],
+        "wristLeft": [
+          106,
+          163
+        ],
+        "wristRight": [
+          155,
+          170
+        ],
+        "hipLeft": [
+          120,
+          175
+        ],
+        "hipRight": [
+          141,
+          175
+        ],
+        "kneeLeft": [
+          137,
+          193
+        ],
+        "kneeRight": [
+          131,
+          193
+        ],
+        "ankleLeft": [
+          143,
+          203
+        ],
+        "ankleRight": [
+          124,
+          204
+        ]
+      },
+      "soleMarkers": {
+        "left": [
+          140,
+          207
+        ],
+        "right": [
+          123,
+          208
+        ]
+      },
+      "support": "right",
+      "sockets": {},
+      "artApproval": null
+    },
+    {
+      "direction": "up-left",
+      "clip": "walk",
+      "frame": 7,
+      "facing": [
+        -1,
+        -1
+      ],
+      "headToCanvas": [
+        0.9999756307053947,
+        0.0069812602979615525,
+        -0.0069812602979615525,
+        0.9999756307053947,
+        76.49691231518014,
+        59.64568594472092
+      ],
+      "drawOrder": [
+        "body.leg.right",
+        "body.leg.left",
+        "body.arm.right",
+        "body.hand.right",
+        "body.torso",
+        "head.base",
+        "body.arm.left",
+        "body.hand.left"
+      ],
+      "joints": {
+        "neck": [
+          127,
+          131
+        ],
+        "shoulderLeft": [
+          119,
+          137
+        ],
+        "shoulderRight": [
+          141,
+          137
+        ],
+        "elbowLeft": [
+          111,
+          152
+        ],
+        "elbowRight": [
+          149,
+          152
+        ],
+        "wristLeft": [
+          103,
+          164
+        ],
+        "wristRight": [
+          153,
+          167
+        ],
+        "hipLeft": [
+          120,
+          174
+        ],
+        "hipRight": [
+          141,
+          174
+        ],
+        "kneeLeft": [
+          129,
+          190
+        ],
+        "kneeRight": [
+          141,
+          193
+        ],
+        "ankleLeft": [
+          124,
+          200
+        ],
+        "ankleRight": [
+          140,
+          207
+        ]
+      },
+      "soleMarkers": {
+        "left": [
+          123,
+          202
+        ],
+        "right": [
+          137,
+          211
+        ]
+      },
+      "support": "right",
+      "sockets": {},
+      "artApproval": null
+    },
+    {
+      "direction": "up-left",
+      "clip": "walk",
+      "frame": 8,
+      "facing": [
+        -1,
+        -1
+      ],
+      "headToCanvas": [
+        0.9999619230641713,
+        0.008726535498373935,
+        -0.008726535498373935,
+        0.9999619230641713,
+        76.62152594411182,
+        60.55765015202676
+      ],
+      "drawOrder": [
+        "body.leg.right",
+        "body.leg.left",
+        "body.arm.right",
+        "body.hand.right",
+        "body.torso",
+        "head.base",
+        "body.arm.left",
+        "body.hand.left"
+      ],
+      "joints": {
+        "neck": [
+          127,
+          132
+        ],
+        "shoulderLeft": [
+          119,
+          138
+        ],
+        "shoulderRight": [
+          141,
+          138
+        ],
+        "elbowLeft": [
+          118,
+          153
+        ],
+        "elbowRight": [
+          130,
+          147
+        ],
+        "wristLeft": [
+          119,
+          169
+        ],
+        "wristRight": [
+          119,
+          155
+        ],
+        "hipLeft": [
+          120,
+          175
+        ],
+        "hipRight": [
+          141,
+          175
+        ],
+        "kneeLeft": [
+          116,
+          189
+        ],
+        "kneeRight": [
+          141,
+          192
+        ],
+        "ankleLeft": [
+          109,
+          198
+        ],
+        "ankleRight": [
+          140,
+          210
+        ]
+      },
+      "soleMarkers": {
+        "left": [
+          114,
+          206
+        ],
+        "right": [
+          140,
+          220
+        ]
+      },
+      "support": "right",
+      "sockets": {},
+      "artApproval": null
+    }
+  ]
+}

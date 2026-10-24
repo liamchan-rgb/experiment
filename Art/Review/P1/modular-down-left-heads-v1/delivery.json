@@ -1,0 +1,83 @@
+{
+  "date": "2026-10-24",
+  "artCommit": "c3359210e38d0c530fecfc12d5e55bb8f4ae2459",
+  "verified": true,
+  "artApproval": null,
+  "direction": "down-left",
+  "authorAndReviewer": "root",
+  "subagentsUsed": false,
+  "reviewScope": "All4 independent combinations x13 whole-body1x/2x poses, paired standing and specified ordered transitions; still-only viewer, no continuous-playback claim",
+  "files": [
+    {
+      "file": "Art/Review/P1/modular-down-left-heads-v1/walk-comparison-120ms.gif",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/c3359210e38d0c530fecfc12d5e55bb8f4ae2459/Art/Review/P1/modular-down-left-heads-v1/walk-comparison-120ms.gif",
+      "httpStatus": 200,
+      "mime": "image/gif",
+      "bytes": 192725,
+      "sha256": "5eff07a96981f6c32f5244ac3e3993639678349a138eca1ca4c3e9d6629bad90",
+      "dimensions": [
+        1024,
+        512
+      ],
+      "durationsMs": [
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120
+      ]
+    },
+    {
+      "file": "Art/Review/P1/modular-down-left-heads-v1/start-stop-comparison-120ms.gif",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/c3359210e38d0c530fecfc12d5e55bb8f4ae2459/Art/Review/P1/modular-down-left-heads-v1/start-stop-comparison-120ms.gif",
+      "httpStatus": 200,
+      "mime": "image/gif",
+      "bytes": 531949,
+      "sha256": "521a2c20c7afc4e575f6ef6f4726e132cb01dfb1c583a45ef9134ac348ecc121",
+      "dimensions": [
+        1024,
+        512
+      ],
+      "durationsMs": [
+        480,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        480
+      ]
+    },
+    {
+      "file": "Art/Review/P1/modular-down-left-heads-v1/idle-comparison-2x.png",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/c3359210e38d0c530fecfc12d5e55bb8f4ae2459/Art/Review/P1/modular-down-left-heads-v1/idle-comparison-2x.png",
+      "httpStatus": 200,
+      "mime": "image/png",
+      "bytes": 25488,
+      "sha256": "529ee5baa585cb264b16438b97425a516d7e25de0732e832234336ca108fdda7",
+      "dimensions": [
+        1024,
+        512
+      ],
+      "durationsMs": null
+    }
+  ]
+}

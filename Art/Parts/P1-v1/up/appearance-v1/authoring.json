@@ -1,0 +1,176 @@
+{
+  "status": "candidate-authoring",
+  "artApproval": null,
+  "authorAndReviewer": "root",
+  "subagentsUsed": false,
+  "baseTemplate": "Art/Templates/P1-Neutral/up/walk-r1-layered",
+  "baseManifestSHA256": "7120a643c11556383fe833863dec61558bc034243238698942eaf948a0df4ca5",
+  "baseMotionSHA256": "96cf8c23d3bd28ff4526856c12aeadcf94dcb3e5b1e6b9493fb739c335873495",
+  "sourceUV": "Art/Templates/P1-Neutral/up/walk-r1-layered/source-uv",
+  "rigAudit": "Art/Review/P1/neutral-up-layered-r1/rig-audit.json",
+  "headLocalOrigin": [
+    80,
+    61
+  ],
+  "sourceLight": "upper-left",
+  "paintSources": {
+    "forester": {
+      "image": "source/forester-original.png",
+      "sha256": "1379e03b8136947a24cd4410d9cebe7e0dc8f742094184f8cda8cc06c6392a2b",
+      "canvas": [
+        1254,
+        1254
+      ],
+      "targetCanvas": [
+        256,
+        256
+      ],
+      "scale": 0.20414673046251994,
+      "translation": [
+        0,
+        -1
+      ],
+      "prompt": "source/prompts/forester.txt"
+    },
+    "wayfarer": {
+      "image": "source/wayfarer-original.png",
+      "sha256": "78361b11d23fa5e4758ef36f7300e1b31e10f46d5869c8c7d403a1354b0777f2",
+      "canvas": [
+        1254,
+        1254
+      ],
+      "targetCanvas": [
+        256,
+        256
+      ],
+      "scale": 0.20414673046251994,
+      "translation": [
+        0,
+        0
+      ],
+      "prompt": "source/prompts/wayfarer.txt"
+    },
+    "boot-roll": {
+      "image": "source/boot-roll-original.png",
+      "sha256": "19cd1ea0681394f3f2dd6d98fdcb7d8be6a53787f90d71f8b2244666cb720bbe",
+      "canvas": [
+        1254,
+        1254
+      ],
+      "targetCanvas": [
+        256,
+        256
+      ],
+      "scale": 0.20414673046251994,
+      "translation": [
+        0,
+        -1
+      ],
+      "prompt": "source/prompts/boot-roll.txt"
+    },
+    "hair-chestnut": {
+      "image": "source/hair-chestnut-original.png",
+      "sha256": "059b8b1f11b18f50ea15c2a62d75d9a6a0e7d21f0e4eb237a609dbf8f9ef4ddf",
+      "canvas": [
+        1254,
+        1254
+      ],
+      "targetCanvas": [
+        96,
+        96
+      ],
+      "scale": 0.07655502392344497,
+      "translation": [
+        0,
+        0
+      ],
+      "prompt": "source/prompts/hair-chestnut.txt"
+    },
+    "hair-silver": {
+      "image": "source/hair-silver-filled-original.png",
+      "sha256": "296162cc25fe582fb012d80028e06c11b5b6032eacc92d53ec0d805e7b1bf269",
+      "canvas": [
+        1254,
+        1254
+      ],
+      "targetCanvas": [
+        96,
+        96
+      ],
+      "scale": 0.07655502392344497,
+      "translation": [
+        0,
+        -1
+      ],
+      "prompt": "source/prompts/hair-silver-filled.txt"
+    }
+  },
+  "matteSources": {
+    "forester": {
+      "outfit.torso": "source/mattes/forester-outfit.torso.png",
+      "outfit.sleeve.left": "source/mattes/forester-outfit.sleeve.left.png",
+      "outfit.sleeve.right": "source/mattes/forester-outfit.sleeve.right.png"
+    },
+    "wayfarer": {
+      "outfit.torso": "source/mattes/wayfarer-outfit.torso.png",
+      "outfit.sleeve.left": "source/mattes/wayfarer-outfit.sleeve.left.png",
+      "outfit.sleeve.right": "source/mattes/wayfarer-outfit.sleeve.right.png"
+    },
+    "lower": {
+      "outfit.pants.left": "source/mattes/lower-outfit.pants.left.png",
+      "outfit.boot.left": "source/mattes/lower-outfit.boot.left.png",
+      "outfit.pants.right": "source/mattes/lower-outfit.pants.right.png",
+      "outfit.boot.right": "source/mattes/lower-outfit.boot.right.png"
+    }
+  },
+  "maxPaintGutterPixels": 3,
+  "pantsWaistbandUnderlap": "Source y158..167 is hidden waistband; RGB from nearest original same-grey trouser material, not jacket RGB. No matte or body geometry fitting.",
+  "bootRoll": "Original footArtState, same UV/silhouette; half below y214, full below y208; generated source only contributes RGB",
+  "weapon": {
+    "source": "source/sword-original.png",
+    "sha256": "46bfa9347fc99f4ed44b295a3c77464613bfd8eccb76bbcae0758a3b29b0c619",
+    "sourceLandmarks": [
+      [
+        460,
+        340
+      ],
+      [
+        790,
+        920
+      ]
+    ],
+    "targetLandmarks": [
+      [
+        154,
+        122
+      ],
+      [
+        111,
+        187
+      ]
+    ],
+    "transverseScale": 0.05,
+    "attachment": "Physical right shoulder to left hip, diagonal carry following original torso; over rear jacket and both sleeves, beneath head/hair; guard remains continuous through both arm phases",
+    "guardVisibilityBox": [
+      140,
+      132,
+      151,
+      143
+    ]
+  },
+  "hairMattePaintSource": {
+    "hair-chestnut": "hair-chestnut",
+    "hair-silver": "hair-chestnut"
+  },
+  "hairRGBGutterPixels": 3,
+  "hairShapeScope": "Two colourways of the same registered short back haircut. Tool-painted brown hair owns common alpha, corrected silver source supplies RGB only after fixed1px nape/crown alignment. No base-head/ear/skin pixels imported.",
+  "rearScalpCoverageRegions": [
+    [
+      30,
+      29,
+      67,
+      58
+    ]
+  ],
+  "rearScalpCoverageScope": "Crown region above the tapered posterior hairline only; preserve visible ear roots and lower nape skin. The body head mask includes ears and lower nape, so it is not itself a whole-hair coverage stencil."
+}
