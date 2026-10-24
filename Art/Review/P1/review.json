@@ -3,8 +3,8 @@
   "format": 3,
   "updated": "2026-10-24",
   "workflow": "Review one direction at a time from fixed cardinal and diagonal baselines. Modify and resubmit the same direction until explicit user artwork approval, then advance. Record provenance, feedback and accepted revisions for the future character template.",
-  "current": "p1-upper-back-carry-v5",
-  "templateStatus": "Right-view sword carry v5 candidate; main reviewed all right-view poses, no user art approval.",
+  "current": "p1-upper-matched-back-carry-v6",
+  "templateStatus": "Matched diagonal sword carry v6 candidate; v5 central placement user-rejected, no new approval.",
   "items": [
     {
       "id": "01-down-idle",
@@ -2931,32 +2931,29 @@
     "approval": "Art/Review/P1/neutral-upper-transitions-r6/approval.json"
   },
   "upperWardrobeReview": {
-    "id": "p1-upper-back-carry-v5",
+    "id": "p1-upper-matched-back-carry-v6",
     "status": "candidate-main-whole-body-frame-review-complete",
     "artApproval": null,
     "repairAndReviewOwner": "root",
     "subagentsUsed": false,
-    "method": "Fixed torso-local right carry registration and original neck occlusion window; left unchanged",
+    "method": "All13 right sword poses exactly mirror left reference; no extra rotation, translation or scale",
     "technical": {
       "combinations": 16,
       "actualCompositorPoses": 208,
-      "rightSleeveIntersections": 0,
+      "rightWeaponMirrorMatches": 13,
+      "rightNearSleeveIntersections": 0,
       "visibleSheathComponents": 1,
-      "leftAndEmptyCombinationsUnchanged": true,
-      "coverageFailures": 0,
-      "handPreservationFailures": 0
+      "leftAndEmptyCombinationsUnchanged": true
     },
     "artifacts": {
-      "normalGif": "Art/Review/P1/modular-upper-wardrobe-v5/outfits-walk-120ms.gif",
-      "startStopGif": "Art/Review/P1/modular-upper-wardrobe-v5/outfits-start-stop-120ms.gif",
-      "idle": "Art/Review/P1/modular-upper-wardrobe-v5/outfits-idle-2x.png",
-      "artReview": "Art/Review/P1/modular-upper-wardrobe-v5/art-review.md"
+      "normalGif": "Art/Review/P1/modular-upper-wardrobe-v6/outfits-walk-120ms.gif",
+      "startStopGif": "Art/Review/P1/modular-upper-wardrobe-v6/outfits-start-stop-120ms.gif",
+      "idle": "Art/Review/P1/modular-upper-wardrobe-v6/outfits-idle-2x.png",
+      "artReview": "Art/Review/P1/modular-upper-wardrobe-v6/art-review.md"
     },
-    "mainReview": "Whole-body1x/2x all13 right-view poses in both outfits, ordered boundaries and crossed hair; no continuous-player viewing claimed",
+    "mainReview": "All13 right poses in both outfits at whole-body1x/2x plus paired left reference and crossed hair; no continuous playback claim",
     "runtimeIntegrated": false,
-    "ipaBuilt": false,
-    "artCommit": "9899cac518a27d4e22f83deafe0cda2c4cbb6d2a",
-    "delivery": "Art/Review/P1/modular-upper-wardrobe-v5/delivery.json"
+    "ipaBuilt": false
   },
   "upperWardrobeHistory": [
     {
@@ -3108,6 +3105,38 @@
       "feedback": {
         "statement": "右上的动作里面剑穿模了",
         "finding": "Sword sheath crosses near-shoulder sleeve and is occluded into a discontinuous segment during arm swing."
+      }
+    },
+    {
+      "id": "p1-upper-back-carry-v5",
+      "status": "user-rejected-central-vertical-carry",
+      "artApproval": null,
+      "repairAndReviewOwner": "root",
+      "subagentsUsed": false,
+      "method": "Fixed torso-local right carry registration and original neck occlusion window; left unchanged",
+      "technical": {
+        "combinations": 16,
+        "actualCompositorPoses": 208,
+        "rightSleeveIntersections": 0,
+        "visibleSheathComponents": 1,
+        "leftAndEmptyCombinationsUnchanged": true,
+        "coverageFailures": 0,
+        "handPreservationFailures": 0
+      },
+      "artifacts": {
+        "normalGif": "Art/Review/P1/modular-upper-wardrobe-v5/outfits-walk-120ms.gif",
+        "startStopGif": "Art/Review/P1/modular-upper-wardrobe-v5/outfits-start-stop-120ms.gif",
+        "idle": "Art/Review/P1/modular-upper-wardrobe-v5/outfits-idle-2x.png",
+        "artReview": "Art/Review/P1/modular-upper-wardrobe-v5/art-review.md"
+      },
+      "mainReview": "Whole-body1x/2x all13 right-view poses in both outfits, ordered boundaries and crossed hair; no continuous-player viewing claimed",
+      "runtimeIntegrated": false,
+      "ipaBuilt": false,
+      "artCommit": "9899cac518a27d4e22f83deafe0cda2c4cbb6d2a",
+      "delivery": "Art/Review/P1/modular-upper-wardrobe-v5/delivery.json",
+      "feedback": {
+        "statement": "不是这个剑的位置要和左上的动作吻合匹配啊，你搞成脊椎一样的干嘛",
+        "finding": "Main wrongly prioritised zero sleeve overlap over matching the diagonal left-reference carry."
       }
     }
   ]

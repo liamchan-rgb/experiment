@@ -1,5 +1,13 @@
 # 林间行旅迭代进度 · 2026-10-19
 
+## 2026-10-24 · 上斜v6：撤销中轴竖背，匹配左上斜背
+
+用户明确判退v5，要求右上剑的位置与左上动作吻合。主线程承认此前为零交集而破坏背负一致性，v5完整保留。v6右上13姿势严格镜像左上剑参考，无额外位移/旋转/缩放，保留斜角、长度、柄/护手/鞘尖和随身动作。近侧肩袖不截断剑鞘，远肩相叠沿用左上对应关系。
+
+主线程复核左右同屏站姿和右上两衣型全部13姿势整身1×/2×、首尾/起停与交叉发色。16搭配208图通过，13张右上武器层与左上镜像像素一致；左上、空背和非武器画面保持。新美术未获用户认可，工具只能逐帧，不称连续播放验收。
+
+[正常行走](../Art/Review/P1/modular-upper-wardrobe-v6/outfits-walk-120ms.gif)、[起停](../Art/Review/P1/modular-upper-wardrobe-v6/outfits-start-stop-120ms.gif)、[站姿](../Art/Review/P1/modular-upper-wardrobe-v6/outfits-idle-2x.png)、[具体复核](../Art/Review/P1/modular-upper-wardrobe-v6/art-review.md)。原资源保留，无App/设备/IPA工作。
+
 ## 2026-10-24 · 上斜v5：右上背剑避让肩袖
 
 美术提交 `9899cac518a27d4e22f83deafe0cda2c4cbb6d2a`；[正常行走HTTPS直链](https://raw.githubusercontent.com/liamchan-rgb/experiment/9899cac518a27d4e22f83deafe0cda2c4cbb6d2a/Art/Review/P1/modular-upper-wardrobe-v5/outfits-walk-120ms.gif)、正常起停及站姿三份文件已实测HTTP200、MIME/哈希一致，正常GIF帧速正确，回执见 `Art/Review/P1/modular-upper-wardrobe-v5/delivery.json`。372份文件重导逐字节一致，2225份原中性及旧换装文件保持。
