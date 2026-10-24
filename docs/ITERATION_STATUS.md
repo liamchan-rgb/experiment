@@ -1,5 +1,9 @@
 # 林间行旅迭代进度 · 2026-10-19
 
+## 2026-10-24 · 上斜外观腿部复查，撤回内部美术通过
+
+用户指出腿部观感异常，要求说明原因。主线程重新查看整身全部姿势及裤靴源：靴筒粗高、膝踝轮廓被吞、鞋面透视偏侧面、近远腿层次不足；源片横向加宽/纵向压缩适配虽然避免漏底，却破坏服装比例与关节可读性。覆盖/重导检查不能代表腿型成立。撤回上一轮内部美术通过，新外观从未获用户认可；[具体复查](../Art/Review/P1/modular-upper-wardrobe-v1/leg-reinspection-2026-10-24.md)。本轮只诊断，无图片/动作/运行资源修改。
+
 ## 2026-10-23 · 左上/右上独立外观 v1
 
 美术提交 `719789d83e61466fafd19cdb9c01294001235807`；[正常行走HTTPS直链](https://raw.githubusercontent.com/liamchan-rgb/experiment/719789d83e61466fafd19cdb9c01294001235807/Art/Review/P1/modular-upper-wardrobe-v1/outfits-walk-120ms.gif)、正常起停及站姿三份文件已实测HTTP200、MIME/哈希一致，正常GIF帧速正确，回执见 `Art/Review/P1/modular-upper-wardrobe-v1/delivery.json`。1110份文件重导逐字节一致，600份原中性模板文件保持。

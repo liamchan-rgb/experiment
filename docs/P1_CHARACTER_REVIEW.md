@@ -9,7 +9,9 @@
 - 用户于2026-10-22明确要求：智能体画的效果有问题，由主线程自己修，并同步到GitHub提示词。
 
 
-## 当前候选：左上/右上独立外观 v1
+## 当前待修：左上/右上独立外观 v1
+
+2026-10-24用户指出腿部怪异。主线程复查确认裤靴比例、膝踝读法、鞋掌透视和近远层次有问题，撤回此前内部美术通过；原技术检查保留但不构成美术通过。见[腿部具体复查](../Art/Review/P1/modular-upper-wardrobe-v1/leg-reinspection-2026-10-24.md)。下文为原交付记录。
 
 同一r6底模上制作两衣型、共用裤靴、棕发/银发与背剑，共六包、两方向各13姿势。[正常行走GIF](../Art/Review/P1/modular-upper-wardrobe-v1/outfits-walk-120ms.gif)、[起停GIF](../Art/Review/P1/modular-upper-wardrobe-v1/outfits-start-stop-120ms.gif)、[整身站姿](../Art/Review/P1/modular-upper-wardrobe-v1/outfits-idle-2x.png)、[主线程修复与检查](../Art/Review/P1/modular-upper-wardrobe-v1/art-review.md)。主线程已亲自修复串腿黑边、衣物漏底/遮手、剑柄遮挡，并查看全部展示姿势1×/2×整身；16组合208图技术检查通过。查看器不能连续播放，不称连续播放器验收。新外观认可为空，未接入App。
 

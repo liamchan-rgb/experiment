@@ -1,10 +1,10 @@
 {
   "character": "P1",
   "format": 3,
-  "updated": "2026-10-23",
+  "updated": "2026-10-24",
   "workflow": "Review one direction at a time from fixed cardinal and diagonal baselines. Modify and resubmit the same direction until explicit user artwork approval, then advance. Record provenance, feedback and accepted revisions for the future character template.",
   "current": "p1-upper-independent-wardrobe-v1",
-  "templateStatus": "Upper independent wardrobe candidate; main repaired and reviewed whole-body frames, awaiting user art feedback. Existing neutral approval retained.",
+  "templateStatus": "Upper wardrobe requires leg art repair after main reinspection; internal clearance withdrawn. Original approved neutral remains unchanged.",
   "items": [
     {
       "id": "01-down-idle",
@@ -2932,7 +2932,7 @@
   },
   "upperWardrobeReview": {
     "id": "p1-upper-independent-wardrobe-v1",
-    "status": "candidate-main-frame-review-complete",
+    "status": "needs-leg-art-repair-internal-clearance-withdrawn",
     "artApproval": null,
     "repairAndReviewOwner": "root",
     "subagentsUsed": false,
@@ -2964,6 +2964,12 @@
       "Specified start/stop paths only"
     ],
     "artCommit": "719789d83e61466fafd19cdb9c01294001235807",
-    "delivery": "Art/Review/P1/modular-upper-wardrobe-v1/delivery.json"
+    "delivery": "Art/Review/P1/modular-upper-wardrobe-v1/delivery.json",
+    "feedback": {
+      "date": "2026-10-24",
+      "statement": "腿看起来怪怪的，你来说说咋回事",
+      "diagnosis": "Oversized high boot shafts hide knee/calf form; shoe perspective mismatches rear three-quarter torso; broadened/compressed garment fitting obscures near/far legs and weight bearing. Technical coverage is insufficient art evidence.",
+      "record": "Art/Review/P1/modular-upper-wardrobe-v1/leg-reinspection-2026-10-24.md"
+    }
   }
 }
