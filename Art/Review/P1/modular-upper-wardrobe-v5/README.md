@@ -7,3 +7,11 @@
 - [整身站姿](outfits-idle-2x.png)、[复核记录](art-review.md)、[验证](validation.json)、[重导](reexport-validation.json)。
 
 右上两衣型各13姿势整身1×/2×见对应目录；combinations保存16组合208张装配。左上及空背组合与v4相同。工具只能逐帧，不称连续播放器验收，新美术未获认可。无App/设备/IPA范围。
+
+## 已验证浏览器直链
+
+- [outfits-walk-120ms.gif](https://raw.githubusercontent.com/liamchan-rgb/experiment/9899cac518a27d4e22f83deafe0cda2c4cbb6d2a/Art/Review/P1/modular-upper-wardrobe-v5/outfits-walk-120ms.gif)
+- [outfits-start-stop-120ms.gif](https://raw.githubusercontent.com/liamchan-rgb/experiment/9899cac518a27d4e22f83deafe0cda2c4cbb6d2a/Art/Review/P1/modular-upper-wardrobe-v5/outfits-start-stop-120ms.gif)
+- [outfits-idle-2x.png](https://raw.githubusercontent.com/liamchan-rgb/experiment/9899cac518a27d4e22f83deafe0cda2c4cbb6d2a/Art/Review/P1/modular-upper-wardrobe-v5/outfits-idle-2x.png)
+
+三份文件HTTP200、MIME及哈希与本地一致，GIF时序与循环标志一致，见delivery.json。美术提交 `9899cac518a27d4e22f83deafe0cda2c4cbb6d2a`。

@@ -2,6 +2,8 @@
 
 ## 2026-10-24 · 上斜v5：右上背剑避让肩袖
 
+美术提交 `9899cac518a27d4e22f83deafe0cda2c4cbb6d2a`；[正常行走HTTPS直链](https://raw.githubusercontent.com/liamchan-rgb/experiment/9899cac518a27d4e22f83deafe0cda2c4cbb6d2a/Art/Review/P1/modular-upper-wardrobe-v5/outfits-walk-120ms.gif)、正常起停及站姿三份文件已实测HTTP200、MIME/哈希一致，正常GIF帧速正确，回执见 `Art/Review/P1/modular-upper-wardrobe-v5/delivery.json`。372份文件重导逐字节一致，2225份原中性及旧换装文件保持。
+
 用户指出右上动作剑穿模。主线程分层确认原挂载中段与近侧肩袖投影重叠，摆臂造成剑鞘断口，原内部美术通过撤回。另存背剑v5：右上以躯干局部固定旋转/偏移重新登记，并排除原后颈遮挡区；剑柄由头部正常遮住，剑鞘保持在背部。左上和空背搭配不变，后颈肤色/裤靴/人体/动作保持。
 
 右上两衣型全部13姿势整身1×/2×、起停/首尾与换发站姿由主线程复核。16组合208图检查通过；右上武器与双袖无交集，露出剑鞘连续；改动只在武器范围，全部左上/空背组合与v4像素一致。工具只能逐帧，不称连续播放器验收，新美术未获认可。

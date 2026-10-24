@@ -2954,7 +2954,9 @@
     },
     "mainReview": "Whole-body1x/2x all13 right-view poses in both outfits, ordered boundaries and crossed hair; no continuous-player viewing claimed",
     "runtimeIntegrated": false,
-    "ipaBuilt": false
+    "ipaBuilt": false,
+    "artCommit": "9899cac518a27d4e22f83deafe0cda2c4cbb6d2a",
+    "delivery": "Art/Review/P1/modular-upper-wardrobe-v5/delivery.json"
   },
   "upperWardrobeHistory": [
     {
