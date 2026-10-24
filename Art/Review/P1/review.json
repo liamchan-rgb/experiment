@@ -3176,6 +3176,8 @@
     "mainReview": "All13 whole-body1x/2x, current ordered walk and specified start/stop frames; still-only viewer, no continuous-playback claim",
     "wardrobeVerified": false,
     "runtimeIntegrated": false,
-    "ipaBuilt": false
+    "ipaBuilt": false,
+    "artCommit": "2b4f0e83185896c36a4377f4c2ca7dccfef74d76",
+    "delivery": "Art/Review/P1/neutral-down-left-r1/delivery.json"
   }
 }

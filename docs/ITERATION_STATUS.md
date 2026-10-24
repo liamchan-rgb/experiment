@@ -2,6 +2,8 @@
 
 ## 2026-10-24 · 左下中性动作模组 r1
 
+美术提交 `2b4f0e83185896c36a4377f4c2ca7dccfef74d76`；[正常行走HTTPS](https://raw.githubusercontent.com/liamchan-rgb/experiment/2b4f0e83185896c36a4377f4c2ca7dccfef74d76/Art/Review/P1/neutral-down-left-r1/walk-120ms.gif)、正常起停及站姿三份文件已实测HTTP200、MIME/哈希及GIF时序一致，回执见 `Art/Review/P1/neutral-down-left-r1/delivery.json`。265份文件重导逐字节一致。
+
 用户“Ok开始左下方动作模组的制作”，认可上一项已展示的上斜v6并授权新方向；认可不扩大到未展示组合或完整模板。主线程独自制作左下正面斜向中性底模，站姿1、行走8、起步2、收步2，均可按共同合同装配。新左下美术认可为空。
 
 固定登记单张新源，明确近侧左肢（屏右）与远侧右肢；修掉裤边混入臂层、近脚像素混入远脚层及腿根一像素小孔，膝部改按本方向原姿态投影；背心/短裤/四肢共用肩腰裤口空间域，保留轻微头摆。原中性/上斜/旧左下6052份文件不变，公共装配器/合同/profile不变。
