@@ -2,6 +2,8 @@
 
 ## 2026-10-24 · 右下r1镜像动作模组
 
+美术提交 `a950fb0b635bf6c1312572942702a699a07983eb`；[正常行走HTTPS](https://raw.githubusercontent.com/liamchan-rgb/experiment/a950fb0b635bf6c1312572942702a699a07983eb/Art/Review/P1/neutral-down-right-r1-mirror/walk-120ms.gif)、正常起停及站姿三份文件已实测HTTP200、MIME/哈希及GIF时序一致，回执见 `Art/Review/P1/neutral-down-right-r1-mirror/delivery.json`。386份文件重导逐字节一致。
+
 用户“没问题，可以试一下镜像来做右下的动画”，认可左下已展示站姿、正常步态和指定起停；认可记录见 `Art/Review/P1/neutral-down-left-r1/approval.json`，不扩大到外观或任意动作中断。
 
 主线程独自将左下13姿势逐层反射，交换左右语义、关节、脚底、支撑、近远层级及96px头部局部坐标；源人体和动作保持，右下104层alpha精确等于左下反射。单张imagegen参考仅提供固定左上光照颜色，通过源UV绑定复用所有动作。修掉首轮肤色/衣料取色混杂、背心碎色及两帧头部仿射取整差异；后者离线采样相位登记最大0.0015px，实际头部UV/轮廓保持反射。

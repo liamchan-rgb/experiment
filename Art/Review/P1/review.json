@@ -3227,6 +3227,8 @@
     "mainReview": "All13 whole-body1x/2x, paired idle and current ordered walk/start-stop; still-only viewer, no continuous-playback claim",
     "wardrobeVerified": false,
     "runtimeIntegrated": false,
-    "ipaBuilt": false
+    "ipaBuilt": false,
+    "artCommit": "a950fb0b635bf6c1312572942702a699a07983eb",
+    "delivery": "Art/Review/P1/neutral-down-right-r1-mirror/delivery.json"
   }
 }

@@ -9,3 +9,5 @@
 13张实际公共装配器图与导出完全一致，104层alpha精确匹配源反射，13次头部局部挂载RGBA匹配，左右/脚底/支撑/层序正确；关节透明缺口0、26次整臂分区一致、近手全保留、短裤8张行走独立变化。6019份旧文件保持。源/重导/发布回执详见JSON，HTTPS发布后写delivery.json。
 
 主线程亲自检查完整1×/2×全部13姿势与帧序。查看器只能显示静帧，不声称连续播放器验收；本轮没有智能体、App、模拟器、实机或IPA工作。
+
+美术提交 `a950fb0b635bf6c1312572942702a699a07983eb`。三份HTTPS文件均已实测HTTP200、MIME及SHA256/本地字节一致；GIF帧数、120ms帧速与起停停留时长符合登记。[正常行走直链](https://raw.githubusercontent.com/liamchan-rgb/experiment/a950fb0b635bf6c1312572942702a699a07983eb/Art/Review/P1/neutral-down-right-r1-mirror/walk-120ms.gif)；完整回执见[delivery.json](delivery.json)。386份重导文件逐字节一致。
