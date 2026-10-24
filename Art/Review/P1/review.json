@@ -3,8 +3,8 @@
   "format": 3,
   "updated": "2026-10-24",
   "workflow": "Review one direction at a time from fixed cardinal and diagonal baselines. Modify and resubmit the same direction until explicit user artwork approval, then advance. Record provenance, feedback and accepted revisions for the future character template.",
-  "current": "p1-down-relaxed-start-stop-v1",
-  "templateStatus": "Up displayed appearance approved; down natural empty-hand13pose start-stop candidate on retained9poses, old down resource sync included. Right current-contract adaptation and full8direction unified integration remain.",
+  "current": "p1-neutral-right-walk-r1-mirror",
+  "templateStatus": "Down shown start-stop approved and source sync resolved. Right old whole-character gait preserved; new neutral13pose mirrored body/motion candidate. Right appearances and unified8direction review/integration remain.",
   "items": [
     {
       "id": "01-down-idle",
@@ -3308,14 +3308,14 @@
     "document": "docs/P1_DIRECTION_MODULES.md",
     "status": "in-progress",
     "next": [
-      "right current-contract layered adaptation as prerequisite",
+      "right independent hair/face/clothes/lower/back-carry after neutral review",
       "unified combinations and direction changes/runtime integration"
     ],
     "femaleResourcesStarted": false,
     "repositorySyncPrerequisite": "Resolved for current down r6/v9 and13pose transition resources; remote closure verified in down transitions delivery receipt",
-    "current": "down relaxed-hand authored start-stop candidate",
+    "current": "right common neutral13pose mirror candidate",
     "remainingDependencies": [
-      "right current-contract layered adaptation",
+      "right independent appearances on current neutral body",
       "new eight-direction unified review and runtime integration"
     ]
   },
@@ -3532,8 +3532,8 @@
   },
   "downStartStopReview": {
     "id": "p1-down-relaxed-start-stop-v1",
-    "status": "candidate-main-fullbody-frame-review-complete",
-    "artApproval": null,
+    "status": "approved-shown-scope",
+    "artApproval": "Art/Review/P1/modular-down-transitions-v1/approval.json",
     "authorAndReviewer": "root",
     "subagentsUsed": false,
     "source": "Art/Templates/P1-Neutral/down/walk-r7-transitions/authoring.json",
@@ -3581,5 +3581,81 @@
     "delivery": "Art/Review/P1/modular-down-transitions-v1/delivery.json",
     "remotePackageClosurePaths": 1012,
     "downSourceSyncVerified": true
+  },
+  "rightNeutralReview": {
+    "id": "p1-neutral-right-walk-r1-mirror",
+    "status": "candidate-main-fullbody-frame-review-complete",
+    "artApproval": null,
+    "authorAndReviewer": "root",
+    "subagentsUsed": false,
+    "source": "Art/Templates/P1-Neutral/right/walk-r1-mirror/mirror-authoring.json",
+    "review": "Art/Review/P1/neutral-right-r1-mirror",
+    "geometryOwner": "Art/Templates/P1-Neutral/left/walk-r3-complete-transitions",
+    "oldRightApprovedReference": "Art/Review/P1/directions/right/revisions/r1/approval.json",
+    "oldRightPixelsChanged": false,
+    "technical": {
+      "status": "technical-checks-pass",
+      "artApproval": null,
+      "authorAndReviewer": "root",
+      "subagentsUsed": false,
+      "actualCompositorPoses": 13,
+      "semanticLayerAlphaReflections": 104,
+      "headLocalAttachmentChecks": 13,
+      "anatomicalRigAndSupportChecks": 13,
+      "retainedLimbChainChecks": 52,
+      "deterministicBodyPaletteChecks": 91,
+      "legMaterialToneChecks": 26,
+      "legMedianLuminanceBySide": {
+        "left": [
+          202.574,
+          202.574,
+          202.574,
+          202.574,
+          202.574,
+          202.574,
+          202.574,
+          202.574,
+          202.574,
+          202.574,
+          202.574,
+          202.574,
+          202.574
+        ],
+        "right": [
+          208.799,
+          208.799,
+          208.799,
+          208.799,
+          208.799,
+          208.799,
+          208.799,
+          208.799,
+          208.799,
+          208.799,
+          208.799,
+          208.799,
+          208.799
+        ]
+      },
+      "newJunctionAlphaHoles": 0,
+      "relitVisibleLayerPixels": 46032,
+      "preservedFiles": 10808,
+      "sourceApprovedArtifactsUnchanged": true,
+      "oldRightApprovedArtifactsUnchanged": true,
+      "safetyClothingInkAndBoundaryPixelsUnchanged": true
+    },
+    "reexportByteIdenticalFiles": 174,
+    "existingTests": {
+      "contract": 26,
+      "compositor": 21
+    },
+    "mainReview": "主线程亲看全13姿势整身1×/2×，逐侧追踪肩肘腕及髋膝踝足、背心/短裤边界、手型/脚趾、近远遮挡与站姿/首尾/指定起停；同时看实际GIF八个解码帧及左右整身协调图。查看器仅提供静帧，不称连续播放、任意相位起停或设备验收。数值检查只辅助美术判断，新中性稿artApproval=null。",
+    "runtimeIntegrated": false,
+    "ipaBuilt": false,
+    "artifacts": {
+      "normalGif": "Art/Review/P1/neutral-right-r1-mirror/walk-120ms.gif",
+      "startStopGif": "Art/Review/P1/neutral-right-r1-mirror/start-stop-120ms.gif",
+      "idle": "Art/Review/P1/neutral-right-r1-mirror/idle-review-2x.png"
+    }
   }
 }

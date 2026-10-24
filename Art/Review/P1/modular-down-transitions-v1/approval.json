@@ -1,0 +1,24 @@
+{
+  "date": "2026-10-24",
+  "status": "approved-shown-scope",
+  "userStatement": "没问题继续下一项",
+  "artCommit": "6fef130da1e1cfbeb09f8d6fb2f6df5a863b994e",
+  "scope": "Presented down-facing chestnut/blue eye forester and wayfarer back-carry whole-body normal start/stop on specified idle->walk01 and walk08->idle paths, standing and retained walk only. Excludes other unshown combinations, arbitrary phase interruption and runtime.",
+  "files": [
+    {
+      "file": "Art/Review/P1/modular-down-transitions-v1/outfits-start-stop-120ms.gif",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/6fef130da1e1cfbeb09f8d6fb2f6df5a863b994e/Art/Review/P1/modular-down-transitions-v1/outfits-start-stop-120ms.gif",
+      "sha256": "5b5acdae3ce59f9ae20478f493873f242f18b309117e02c2fb81fc2a14638adb"
+    },
+    {
+      "file": "Art/Review/P1/modular-down-transitions-v1/outfits-walk-120ms.gif",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/6fef130da1e1cfbeb09f8d6fb2f6df5a863b994e/Art/Review/P1/modular-down-transitions-v1/outfits-walk-120ms.gif",
+      "sha256": "da9eeb97d3dd4e741d4f1eeb11cd079e3c31267e6b839cf8dded7ce5e66638f7"
+    },
+    {
+      "file": "Art/Review/P1/modular-down-transitions-v1/outfits-idle-2x.png",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/6fef130da1e1cfbeb09f8d6fb2f6df5a863b994e/Art/Review/P1/modular-down-transitions-v1/outfits-idle-2x.png",
+      "sha256": "00b6b574d219b11f415bb6ac771c8e20d0f5ee8b41db5103972ddea5c1b86500"
+    }
+  ]
+}

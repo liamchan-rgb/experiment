@@ -1,0 +1,18 @@
+{
+  "remoteHead": "f3bcaf6651c9b0ef01f8b47c620c9edf5162f9f4",
+  "files": [
+    {
+      "name": "strip.png",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/f3bcaf6651c9b0ef01f8b47c620c9edf5162f9f4/Art/Review/P1/directions/right/revisions/r1/strip.png",
+      "httpStatus": 200,
+      "sha256": "048ba38d0b48277ef34bf77575e00a508cab3a6f254e48ac724aa5de1a1f8b61"
+    },
+    {
+      "name": "walk.gif",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/f3bcaf6651c9b0ef01f8b47c620c9edf5162f9f4/Art/Review/P1/directions/right/revisions/r1/walk.gif",
+      "httpStatus": 200,
+      "sha256": "d211b7717ed0167cf821f371d268cfeffef08eac5ec5d3a5b9f9006cee3e3d19"
+    }
+  ],
+  "scope": "Only approved original strip and normal GIF references; old files remain unchanged"
+}

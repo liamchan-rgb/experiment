@@ -175,21 +175,36 @@
   ],
   "subsequentProgress": {
     "date": "2026-10-24",
-    "current": "down relaxed-hand start-stop candidate13poses",
-    "source": "Art/Templates/P1-Wardrobe/down/v10-transitions/catalog.json",
-    "review": "Art/Review/P1/modular-down-transitions-v1",
+    "current": "right neutral13pose mirrored candidate",
+    "source": "Art/Templates/P1-Neutral/right/walk-r1-mirror/asset.json",
+    "review": "Art/Review/P1/neutral-right-r1-mirror",
     "oldAuditRetained": true,
-    "upShownAppearanceApproved": "Art/Review/P1/modular-up-appearance-v1/approval.json",
-    "newArtworkApproval": null,
-    "downStartStopNewPoses": 4,
-    "old9CompositePosesUnchanged": 324,
-    "combinations": 36,
-    "actualPoses": 468,
+    "downStartStopShownApproval": "Art/Review/P1/modular-down-transitions-v1/approval.json",
     "downSyncGapResolved": true,
-    "rightLayeredAdaptationComplete": false,
-    "artCommit": "6fef130da1e1cfbeb09f8d6fb2f6df5a863b994e",
-    "verification": "Art/Review/P1/modular-down-transitions-v1/delivery.json",
-    "remoteDependencyPaths": 1012,
-    "previouslyMissingSourcePathsResolved": 560
-  }
+    "newArtworkApproval": null,
+    "rightNeutralAdaptation": "candidate,13poses104layers",
+    "rightIndependentAppearancesComplete": false,
+    "full8DirectionIntegrationComplete": false
+  },
+  "progressHistory": [
+    {
+      "date": "2026-10-24",
+      "current": "down relaxed-hand start-stop candidate13poses",
+      "source": "Art/Templates/P1-Wardrobe/down/v10-transitions/catalog.json",
+      "review": "Art/Review/P1/modular-down-transitions-v1",
+      "oldAuditRetained": true,
+      "upShownAppearanceApproved": "Art/Review/P1/modular-up-appearance-v1/approval.json",
+      "newArtworkApproval": null,
+      "downStartStopNewPoses": 4,
+      "old9CompositePosesUnchanged": 324,
+      "combinations": 36,
+      "actualPoses": 468,
+      "downSyncGapResolved": true,
+      "rightLayeredAdaptationComplete": false,
+      "artCommit": "6fef130da1e1cfbeb09f8d6fb2f6df5a863b994e",
+      "verification": "Art/Review/P1/modular-down-transitions-v1/delivery.json",
+      "remoteDependencyPaths": 1012,
+      "previouslyMissingSourcePathsResolved": 560
+    }
+  ]
 }

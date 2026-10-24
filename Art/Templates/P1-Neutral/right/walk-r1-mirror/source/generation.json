@@ -1,0 +1,9 @@
+{
+  "tool": "image_gen.imagegen",
+  "imagegenArtifact": "exec-744c9262-da66-4baf-953e-e637f9dc4548.png",
+  "image": "relight-generated.png",
+  "sha256": "f7052705042e5a1fe5fa15b6b8bcc14196be27a4b460cefe13af8df24879a658",
+  "geometryUsed": false,
+  "prompt": "prompt.txt",
+  "role": "Tool RGB source; idle0 head lighting and fixed near/far skin ramps only. Other generated poses/shapes/alpha not imported."
+}
