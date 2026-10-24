@@ -3372,6 +3372,9 @@
     "mainReview": "All8 sword-on appearance combinations x13 whole-body1x/2x; primary paired standing and actual normal GIF decoded8 frames; still-viewer only, no continuous playback claim",
     "bodyAndMotionUnchanged": true,
     "runtimeIntegrated": false,
-    "ipaBuilt": false
+    "ipaBuilt": false,
+    "artCommit": "ccc65c7035412bf1c7d15b69e29573258ab4f985",
+    "delivery": "Art/Review/P1/modular-down-right-appearance-v1/delivery.json",
+    "reexportByteIdenticalFiles": 593
   }
 }

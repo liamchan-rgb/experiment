@@ -9,3 +9,6 @@ root独自制作、修复、审核，无智能体。主线程实际查看8个带
 技术：9清单，208真实组合、1664身体层/2496反射外观alpha、1248覆盖/416手部/624五官、104武器开关检查通过，14876旧文件保持；12个源槽位只变RGB，左上光源取样与源UV留存，公共装配器/合同未改，仅新增右下头导板。合同26和装配器21个现有测试通过。
 
 正常行走8×120ms；起停22帧，首尾480ms其余120ms，不新增慢放。当前右下新外观认可为空；上一轮左下主要展示获用户“没问题下一步工作开始”认可，范围见对应approval.json，未扩展到所有未展示组合。八方向尚未全部完成，无女性/App/设备/IPA工作。HTTPS发布实测回执见delivery.json。
+
+<!-- verified-delivery -->
+美术提交 `ccc65c7035412bf1c7d15b69e29573258ab4f985`；三份HTTPS均实测HTTP200、MIME及SHA256/本地字节一致，GIF帧数/时序/循环已核对。593份重导文件字节一致。[正常GIF直链](https://raw.githubusercontent.com/liamchan-rgb/experiment/ccc65c7035412bf1c7d15b69e29573258ab4f985/Art/Review/P1/modular-down-right-appearance-v1/outfits-walk-120ms.gif)；回执见[delivery.json](delivery.json)。
