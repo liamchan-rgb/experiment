@@ -3,8 +3,8 @@
   "format": 3,
   "updated": "2026-10-24",
   "workflow": "Review one direction at a time from fixed cardinal and diagonal baselines. Modify and resubmit the same direction until explicit user artwork approval, then advance. Record provenance, feedback and accepted revisions for the future character template.",
-  "current": "p1-upper-matched-back-carry-v6",
-  "templateStatus": "Matched diagonal sword carry v6 candidate; v5 central placement user-rejected, no new approval.",
+  "current": "p1-neutral-down-left-walk-r1",
+  "templateStatus": "Down-left neutral13-pose modular candidate; appearance resources and user artwork review pending",
   "items": [
     {
       "id": "01-down-idle",
@@ -1876,6 +1876,12 @@
       "previousCurrent": "p1-battle-side-right-idle-rear-shading-v9",
       "newCurrent": "p1-battle-side-right-step-contact-v1",
       "reason": "User accepted the current battle effect and requested the next step; resume the original side-walk plan with one dressed small-step key pose."
+    },
+    {
+      "date": "2026-10-24",
+      "userStatement": "Ok开始左下方动作模组的制作",
+      "current": "p1-neutral-down-left-walk-r1",
+      "scope": "down-left neutral motion first; root-only repair/review and normal GIF delivery"
     }
   ],
   "battleNeutralBodyReview": {
@@ -2932,8 +2938,13 @@
   },
   "upperWardrobeReview": {
     "id": "p1-upper-matched-back-carry-v6",
-    "status": "candidate-main-whole-body-frame-review-complete",
-    "artApproval": null,
+    "status": "user-accepted-shown-v6-and-authorized-next-direction",
+    "artApproval": {
+      "date": "2026-10-24",
+      "reviewer": "user",
+      "statement": "Ok开始左下方动作模组的制作",
+      "scope": "Previously delivered upper v6 full-body standing, normal walk and specified start/stop views only; no approval for unseen combinations, production rig or device behavior"
+    },
     "repairAndReviewOwner": "root",
     "subagentsUsed": false,
     "method": "All13 right sword poses exactly mirror left reference; no extra rotation, translation or scale",
@@ -3141,5 +3152,30 @@
         "finding": "Main wrongly prioritised zero sleeve overlap over matching the diagonal left-reference carry."
       }
     }
-  ]
+  ],
+  "downLeftNeutralReview": {
+    "id": "p1-neutral-down-left-walk-r1",
+    "status": "candidate-main-whole-body-frame-review-complete",
+    "artApproval": null,
+    "authorAndReviewer": "root",
+    "subagentsUsed": false,
+    "source": "Art/Templates/P1-Neutral/down-left/walk-r1/authoring.json",
+    "review": "Art/Review/P1/neutral-down-left-r1",
+    "artifacts": {
+      "normalGif": "Art/Review/P1/neutral-down-left-r1/walk-120ms.gif",
+      "startStopGif": "Art/Review/P1/neutral-down-left-r1/start-stop-120ms.gif",
+      "idle": "Art/Review/P1/neutral-down-left-r1/idle-review-2x.png"
+    },
+    "technical": {
+      "actualCompositorPoses": 13,
+      "layersWithoutOrphans": 104,
+      "junctionAlphaHoles": 0,
+      "completeArmPartitions": 26,
+      "preservedFiles": 6052
+    },
+    "mainReview": "All13 whole-body1x/2x, current ordered walk and specified start/stop frames; still-only viewer, no continuous-playback claim",
+    "wardrobeVerified": false,
+    "runtimeIntegrated": false,
+    "ipaBuilt": false
+  }
 }

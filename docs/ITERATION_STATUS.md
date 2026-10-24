@@ -1,5 +1,15 @@
 # 林间行旅迭代进度 · 2026-10-19
 
+## 2026-10-24 · 左下中性动作模组 r1
+
+用户“Ok开始左下方动作模组的制作”，认可上一项已展示的上斜v6并授权新方向；认可不扩大到未展示组合或完整模板。主线程独自制作左下正面斜向中性底模，站姿1、行走8、起步2、收步2，均可按共同合同装配。新左下美术认可为空。
+
+固定登记单张新源，明确近侧左肢（屏右）与远侧右肢；修掉裤边混入臂层、近脚像素混入远脚层及腿根一像素小孔，膝部改按本方向原姿态投影；背心/短裤/四肢共用肩腰裤口空间域，保留轻微头摆。原中性/上斜/旧左下6052份文件不变，公共装配器/合同/profile不变。
+
+主线程复核全13姿势整身1×/2×、首尾与起停帧序。13张实际装配匹配、104语义层无游离块、26臂手重组一致、关节透明缺口0、近手无削切、8张裤片各自运动。正常行走8×120ms，正常起停22帧，重导/回执见审核目录。工具只能逐帧，不称连续播放器验收；仅美术，无App/设备/IPA工作。
+
+[正常行走](../Art/Review/P1/neutral-down-left-r1/walk-120ms.gif)、[正常起停](../Art/Review/P1/neutral-down-left-r1/start-stop-120ms.gif)、[站姿](../Art/Review/P1/neutral-down-left-r1/idle-review-2x.png)、[具体复核](../Art/Review/P1/neutral-down-left-r1/art-review.md)。
+
 ## 2026-10-24 · 上斜v6：撤销中轴竖背，匹配左上斜背
 
 美术提交 `2e92d5c562172cd42853946f9bbdac23e257b6a2`；[正常行走HTTPS直链](https://raw.githubusercontent.com/liamchan-rgb/experiment/2e92d5c562172cd42853946f9bbdac23e257b6a2/Art/Review/P1/modular-upper-wardrobe-v6/outfits-walk-120ms.gif)、正常起停及站姿三份文件已实测HTTP200、MIME/哈希一致，正常GIF帧速正确，回执见 `Art/Review/P1/modular-upper-wardrobe-v6/delivery.json`。372份文件重导逐字节一致，2312份原中性及旧换装文件保持。
