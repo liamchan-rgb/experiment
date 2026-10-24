@@ -2962,7 +2962,9 @@
       "New art has no user approval",
       "Original hidden anatomy not completed",
       "Specified start/stop paths only"
-    ]
+    ],
+    "artCommit": "04ce1ac1ef23f06fe34c96c3c63ef5ce770c3418",
+    "delivery": "Art/Review/P1/modular-upper-wardrobe-v2/delivery.json"
   },
   "upperWardrobeHistory": [
     {
