@@ -2,6 +2,8 @@
 
 ## 2026-10-24 · 先完成八方向；左下衣物/裤靴/背剑v1
 
+美术提交 `f4dfa7e2564500d46d65e966b4be4c25d6ee887f`；[正常行走HTTPS](https://raw.githubusercontent.com/liamchan-rgb/experiment/f4dfa7e2564500d46d65e966b4be4c25d6ee887f/Art/Review/P1/modular-down-left-wardrobe-v1/outfits-walk-120ms.gif)、正常起停及站姿三份文件已实测HTTP200、MIME/哈希及GIF时序一致，回执见 `Art/Review/P1/modular-down-left-wardrobe-v1/delivery.json`。641份文件重导逐字节一致。
+
 用户明确先完成各方向模组，女性角色延后。真实分层八向现状与剩余顺序已记录 `docs/P1_DIRECTION_MODULES.md`：左下当前外观→右下外观→正右→正上→正下自然空手起停→八向统一复核。旧整张八向步态不算新模组完成。
 
 本轮root独自补左下绿短上衣、蓝分叉短外套、共用灰裤低靴、背剑四包，复用原头部四包、身体和13姿势，16搭配208图。首稿躯干比例失准已退回重画；背剑前视投影修掉下巴旁/腿边细线，保留同一右肩斜背与真实遮挡。衣物使用共同源UV和原人体matte，不缩放肢体、不改身体/动作、公共装配器/合同/profile保持。

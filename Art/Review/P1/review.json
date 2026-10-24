@@ -3328,6 +3328,8 @@
     "mainReview": "Both primary outfits all13 whole-body1x/2x, paired standing, ordered gait/start-stop and shoulder carry; still viewer, no continuous playback claim",
     "bodyAndMotionUnchanged": true,
     "runtimeIntegrated": false,
-    "ipaBuilt": false
+    "ipaBuilt": false,
+    "artCommit": "f4dfa7e2564500d46d65e966b4be4c25d6ee887f",
+    "delivery": "Art/Review/P1/modular-down-left-wardrobe-v1/delivery.json"
   }
 }
