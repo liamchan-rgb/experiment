@@ -13,3 +13,6 @@ root独自返修与审核。初始空间转色出现暖白衣料误采到皮肤�
 正常步行为8×120ms，不生成新的慢动作。头发/五官/衣装/背剑不在本次中性展示中，新美术认可为空。失败稿见rejected-probes，原工具色稿及prompt在模板source里保留。
 
 本轮先审正右共用中性身体，独立发型/五官/两衣型/裤靴/背剑为下一阶段；空白脸与安全衣裤属于中性底模，不是独立外观成品。全八向统一组合、切向与运行时接入仍待完成；原左向隐藏补片按既有范围保留，不声称完整隐藏人体已验收。女性延后，无App、设备运行或IPA。
+
+<!-- verified-delivery -->
+美术提交 `451778c0e599735976a9c52c741f57d5eea1a2b1`；正常行走/指定起停/站姿/左右协调四份HTTPS均实测HTTP200、MIME/SHA256与本地一致，GIF时序/循环正确。远端278条包/消耗源/公共依赖存在且全部字节一致；6公共依赖保持。[正常GIF直链](https://raw.githubusercontent.com/liamchan-rgb/experiment/451778c0e599735976a9c52c741f57d5eea1a2b1/Art/Review/P1/neutral-right-r1-mirror/walk-120ms.gif)；回执见[delivery.json](delivery.json)。

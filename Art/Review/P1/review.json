@@ -3656,6 +3656,9 @@
       "normalGif": "Art/Review/P1/neutral-right-r1-mirror/walk-120ms.gif",
       "startStopGif": "Art/Review/P1/neutral-right-r1-mirror/start-stop-120ms.gif",
       "idle": "Art/Review/P1/neutral-right-r1-mirror/idle-review-2x.png"
-    }
+    },
+    "artCommit": "451778c0e599735976a9c52c741f57d5eea1a2b1",
+    "delivery": "Art/Review/P1/neutral-right-r1-mirror/delivery.json",
+    "remotePackageClosurePaths": 278
   }
 }
