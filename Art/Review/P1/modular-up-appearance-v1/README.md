@@ -11,3 +11,6 @@ root独自完成返修与审核：修银发冠顶alpha缺口，采用同一工�
 正常行走8×120ms；起停22帧，首尾480ms、其余120ms；不制作新慢动作。技术检查见validation.json，重导见reexport-validation.json；工具原稿与失败试稿留存。两套主展示以外组合不自动获得用户认可。
 
 正下r6/v9已有成果同步缺口、自然空手专用起停、正右当前合同分层适配及新分层八向统一组合/切向接入仍未完成。后续按用户顺序推进，女性角色延后；本轮无App、设备运行或IPA。
+
+<!-- verified-delivery -->
+美术提交 `f8381286801cfbf643898ee1c36ddbdcee49e84e`；正常行走/指定起停/站姿三份HTTPS实测HTTP200、MIME/SHA256与本地一致，GIF帧数/时序/循环正确。远端7清单共564条声明/公共依赖存在且全部字节一致；9个原公共依赖保持。[正常GIF直链](https://raw.githubusercontent.com/liamchan-rgb/experiment/f8381286801cfbf643898ee1c36ddbdcee49e84e/Art/Review/P1/modular-up-appearance-v1/outfits-walk-120ms.gif)；回执见[delivery.json](delivery.json)。

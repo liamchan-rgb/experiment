@@ -2,6 +2,8 @@
 
 ## 2026-10-24 · 正上独立头发/两衣型/裤靴/背剑分层
 
+美术提交 `f8381286801cfbf643898ee1c36ddbdcee49e84e`；[正常GIF直链](https://raw.githubusercontent.com/liamchan-rgb/experiment/f8381286801cfbf643898ee1c36ddbdcee49e84e/Art/Review/P1/modular-up-appearance-v1/outfits-walk-120ms.gif)、指定起停及站姿实测HTTP200/MIME/SHA256与本地一致，GIF时序/循环正确；远端564条包/公共依赖存在且字节一致。回执见 `Art/Review/P1/modular-up-appearance-v1/delivery.json`。
+
 用户“没问题”认可上一轮正上中性身体/步态的实际展示，限定范围见 `Art/Review/P1/neutral-up-layered-r1/approval.json`。本轮在同一身体、13姿势、关节/足底/头挂点及120ms步相上新增正后视独立外观：棕/银两配色短发（共用已对齐短发轮廓）、绿衣/蓝衣、裤靴和右肩至左髋斜背剑，六个独立资源包。纯背视不挂五官。新外观待用户认可，不能继承中性动作的认可。
 
 root独自完成返修与审核：修银发冠顶alpha缺口，采用同一工具绘制短发轮廓及独立银发RGB登记；保留耳根/后颈正常露肤。发现右臂后摆时袖子遮断剑护手，保持剑的位置/斜角，只将weapon.back放在两袖与衣服之后、头发之前，全部姿势的剑柄/护手连续。裤口/裤脚分别沿原腿UV，靴面滚动RGB跟随原footArtState；蓝衣背衩下使用灰裤腰，遮住原白背心/短裤。
