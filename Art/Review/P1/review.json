@@ -3306,7 +3306,8 @@
       "down relaxed-hand start-stop",
       "all-direction combinations and direction changes"
     ],
-    "femaleResourcesStarted": false
+    "femaleResourcesStarted": false,
+    "repositorySyncPrerequisite": "Audit and synchronize existing local down r6/back-carry/second-outfit dependencies before claiming complete remote eight-direction modules"
   },
   "downLeftWardrobeReview": {
     "id": "p1-down-left-independent-wardrobe-v1",
@@ -3396,5 +3397,35 @@
     "remaining": "Current-contract right neutral layered/appearance packages and specified start-stop adaptation; existing right battle-side static and one-step studies are partial prior work",
     "correction": "Right walking art already made/approved/integrated; do not duplicate or report as never made",
     "artworkChanged": false
+  },
+  "remainingModuleAudit": {
+    "date": "2026-10-24",
+    "trigger": "其他的未完成项目是真的没做过吗",
+    "evidence": "docs/P1_DIRECTION_MODULE_AUDIT.json",
+    "finding": "未完成不等于未开始：部分已有完整旧版，部分做过分方向验证，部分只是未整合；另发现正下新资源只在工作区的同步遗漏",
+    "sourceHead": "13eeb0d7f5bfeaf2a8fd5c14670ff6b2ccd0dd7d",
+    "existing": [
+      "approved up gait and demo import",
+      "per-direction combination audits",
+      "old demo eight-direction switching and offline road review"
+    ],
+    "currentRemaining": [
+      "right/up complete current-contract layered adaptation",
+      "down relaxed-arm authored start/stop",
+      "unified new modular8direction review and integration"
+    ],
+    "syncGap": {
+      "status": "workspace-existing-not-on-any7remote-heads",
+      "source": "Art/Templates/P1-Wardrobe/down/v9-second-outfit/catalog.json",
+      "missingRemoteManifestDependencies": [
+        "Art/Templates/P1-Neutral/down/walk-r6-relaxed-arms/asset.json",
+        "Art/Parts/P1-v1/outfit-forester-cover-v2/asset.json",
+        "Art/Parts/P1-v1/weapon-short-sword-back-v1/asset.json",
+        "Art/Parts/P1-v1/outfit-wayfarer-coat-v1/asset.json"
+      ]
+    },
+    "artworkChanged": false,
+    "existingTestsRerun": false,
+    "deviceExecuted": false
   }
 }

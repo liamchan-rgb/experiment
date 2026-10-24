@@ -1,5 +1,9 @@
 # P1 人物素材逐张审核
 
+## 剩余项复核及同步缺口
+
+正上旧步态已认可/导入，逐方向换装组合和旧demo八向切换已做；剩余是当前分层适配及统一整合。正下自然空手确实缺专用起停，但r6/第二衣型/背剑等已有本地成果同时尚未完整同步远端。7分支库存、具体清单、旧审核数量与实际增量见[P1_DIRECTION_MODULE_AUDIT.json](P1_DIRECTION_MODULE_AUDIT.json)及[P1_DIRECTION_MODULES.md](P1_DIRECTION_MODULES.md)。本次只核查，不改美术、不运行设备或重跑测试。
+
 ## 状态澄清：正右步态已有认可，当前缺分层适配
 
 仓库核查确认：正右完整人物r1站姿+八帧步态于2026-10-18获认可并已导入demo，见[认可记录](../Art/Review/P1/directions/right/revisions/r1/approval.json)及[导入清单](../Art/Integration/P1-approved-gait-v1/integration.json)。当前远端图集右行与认可strip像素一致。剩余是统一中性身体合同下的分层/挂载/指定起停，不应表述为“正右走路没做过”。旧正上r1也有认可。详见[P1_DIRECTION_MODULES.md](P1_DIRECTION_MODULES.md)。本轮仅核查记录，不改美术；右下上一轮主要展示认可见其approval.json。
