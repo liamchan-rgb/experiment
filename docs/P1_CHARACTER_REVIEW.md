@@ -1,6 +1,12 @@
 # P1 人物素材逐张审核
 
-## 当前：左下独立头部外观v1（待用户审核）
+## 当前：左下衣物/裤靴/背剑v1（候选）
+
+用户先完成八方向，女性角色延后；路线见[P1_DIRECTION_MODULES.md](P1_DIRECTION_MODULES.md)。本轮沿同一左下身体/13姿势补两衣型、共用裤靴和背剑，现有头部保持。主线程修复原稿比例与背剑前视投影，查看主要两组全13帧完整1×/2×；新整身外观无用户认可，八向尚未完成。
+
+[正常全身GIF](../Art/Review/P1/modular-down-left-wardrobe-v1/outfits-walk-120ms.gif) · [起停](../Art/Review/P1/modular-down-left-wardrobe-v1/outfits-start-stop-120ms.gif) · [站姿](../Art/Review/P1/modular-down-left-wardrobe-v1/outfits-idle-2x.png) · [复核](../Art/Review/P1/modular-down-left-wardrobe-v1/art-review.md)。工具只能逐帧，不称连续播放器验收；无App/设备/IPA。
+
+## 上一项：左下独立头部外观v1（未单独获认可）
 
 右下已展示中性动作获用户认可。本轮先补左下棕发/银发、蓝眼/琥珀眼四个独立资源，原身体与动作保持；主线程修复刘海遮眼、五官间距和细嘴线登记，并查看四组合全13姿势完整1×/2×，不称连续播放器验收。
 

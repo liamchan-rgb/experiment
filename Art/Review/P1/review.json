@@ -3,8 +3,8 @@
   "format": 3,
   "updated": "2026-10-24",
   "workflow": "Review one direction at a time from fixed cardinal and diagonal baselines. Modify and resubmit the same direction until explicit user artwork approval, then advance. Record provenance, feedback and accepted revisions for the future character template.",
-  "current": "p1-down-left-independent-heads-v1",
-  "templateStatus": "Right-down shown neutral poses approved. Left-down independent head resources candidate; clothes/weapon pending.",
+  "current": "p1-down-left-independent-wardrobe-v1",
+  "templateStatus": "Existing-character eight-direction modules prioritized; current left-down wardrobe candidate. Right-down appearances, right/up modules and down transitions remain; female work deferred.",
   "items": [
     {
       "id": "01-down-idle",
@@ -1894,6 +1894,12 @@
       "userStatement": "没问题开始做下一步",
       "current": "p1-down-left-independent-heads-v1",
       "scope": "Root-only left-down independent head resources first, normal GIF/full-body review; clothes afterwards"
+    },
+    {
+      "date": "2026-10-24",
+      "userStatement": "我们先把各方向的模组做完",
+      "current": "p1-down-left-independent-wardrobe-v1",
+      "scope": "Prioritize existing-character eight-direction modular completion; female character work deferred; current direction full wardrobe review"
     }
   ],
   "battleNeutralBodyReview": {
@@ -3282,5 +3288,46 @@
     "ipaBuilt": false,
     "artCommit": "c3359210e38d0c530fecfc12d5e55bb8f4ae2459",
     "delivery": "Art/Review/P1/modular-down-left-heads-v1/delivery.json"
+  },
+  "directionModulePlan": {
+    "priority": "finish-current-character-eight-directions-before-female",
+    "document": "docs/P1_DIRECTION_MODULES.md",
+    "status": "in-progress",
+    "next": [
+      "right-down independent appearance",
+      "right neutral/motion/appearance",
+      "up neutral/motion/appearance",
+      "down relaxed-hand start-stop",
+      "all-direction combinations and direction changes"
+    ],
+    "femaleResourcesStarted": false
+  },
+  "downLeftWardrobeReview": {
+    "id": "p1-down-left-independent-wardrobe-v1",
+    "status": "candidate-main-whole-body-review-complete",
+    "artApproval": null,
+    "authorAndReviewer": "root",
+    "subagentsUsed": false,
+    "source": "Art/Parts/P1-v1/down-left/wardrobe-v1/authoring.json",
+    "review": "Art/Review/P1/modular-down-left-wardrobe-v1",
+    "technical": {
+      "manifestsChecked": 9,
+      "combinations": 16,
+      "actualCompositorPoses": 208,
+      "coverageChecks": 1248,
+      "handPreservationChecks": 416,
+      "facePreservationChecks": 624,
+      "weaponToggleChecks": 104,
+      "preservedFiles": 8044
+    },
+    "artifacts": {
+      "normalGif": "Art/Review/P1/modular-down-left-wardrobe-v1/outfits-walk-120ms.gif",
+      "startStopGif": "Art/Review/P1/modular-down-left-wardrobe-v1/outfits-start-stop-120ms.gif",
+      "idle": "Art/Review/P1/modular-down-left-wardrobe-v1/outfits-idle-2x.png"
+    },
+    "mainReview": "Both primary outfits all13 whole-body1x/2x, paired standing, ordered gait/start-stop and shoulder carry; still viewer, no continuous playback claim",
+    "bodyAndMotionUnchanged": true,
+    "runtimeIntegrated": false,
+    "ipaBuilt": false
   }
 }
