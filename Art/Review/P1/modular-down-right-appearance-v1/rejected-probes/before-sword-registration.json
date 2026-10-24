@@ -1,0 +1,87 @@
+{
+  "status": "authoring-candidate",
+  "artApproval": null,
+  "authorAndReviewer": "root",
+  "subagentsUsed": false,
+  "baseTemplate": "Art/Templates/P1-Neutral/down-right/walk-r1-mirrored-down-left",
+  "baseManifestSHA256": "4593dc8abea12f51b22c0ef782d1640704b60b567b26c6342a9b67fcf5e56738",
+  "baseMotionSHA256": "b8f6878aa4c660083b061ecc38187b1daebc02301dc9e1e9faf8a98bc014daf8",
+  "headSource": "Art/Parts/P1-v1/down-left/heads-v1",
+  "wardrobeSource": "Art/Parts/P1-v1/down-left/wardrobe-v1",
+  "sourceUV": "Art/Templates/P1-Neutral/down-right/walk-r1-mirrored-down-left/source/approved-left-uv",
+  "sourceRigAudit": "Art/Review/P1/neutral-down-left-r1/rig-audit.json",
+  "headLocalOrigin": [
+    84,
+    61
+  ],
+  "mirrorAxisX": 127.5,
+  "nearSide": "right",
+  "farSide": "left",
+  "sourceLight": "upper-left",
+  "relightEnabled": true,
+  "relight": {
+    "textureRoot": "source/relit-textures",
+    "maxReferenceDistancePixels": 2.5,
+    "outlineMaxRGB": 55,
+    "scope": "RGB from fixed full-canvas imagegen edits only; original matte, body, facial features and motion retained; original occluded/unmatched/outline colours retained",
+    "sources": {
+      "forester": {
+        "image": "source/forester-relight-original.png",
+        "sha256": "d32a95071eef3f528c4a756b67ef0ea5a0af4c68ac44ec71c49870b36dfbcf1b",
+        "canvas": [
+          1254,
+          1254
+        ],
+        "scale": 0.20414673046251994,
+        "translation": [
+          0,
+          0
+        ],
+        "prompt": "source/prompts/forester-relight.txt",
+        "reference": "source/forester-mirror-reference-4x.png"
+      },
+      "wayfarer": {
+        "image": "source/wayfarer-relight-original.png",
+        "sha256": "b3c84f18cb90238f737d7115d99100d52c6f9eadda80fa0da1b9f1272162a3b8",
+        "canvas": [
+          1254,
+          1254
+        ],
+        "scale": 0.20414673046251994,
+        "translation": [
+          0,
+          0
+        ],
+        "prompt": "source/prompts/wayfarer-relight.txt",
+        "reference": "source/wayfarer-mirror-reference-4x.png"
+      }
+    }
+  },
+  "weapon": {
+    "source": "Art/Parts/P1-v1/down-left/wardrobe-v1/source/sword-original.png",
+    "sha256": "46bfa9347fc99f4ed44b295a3c77464613bfd8eccb76bbcae0758a3b29b0c619",
+    "sourceLandmarks": [
+      [
+        460,
+        340
+      ],
+      [
+        790,
+        920
+      ]
+    ],
+    "targetLandmarks": [
+      [
+        108,
+        122
+      ],
+      [
+        143,
+        181
+      ]
+    ],
+    "transverseScale": 0.05,
+    "attachment": "Physical anatomical right shoulder remains right, rigid torso motion; behind body, clothes and head; front-down-right projection calibrated independently, no central vertical carry",
+    "projectionBasis": "Same anatomical right-shoulder diagonal as accepted up-left carry; front view exchanges screen-side projection, hilt outside face, sheath behind torso/legs"
+  }
+}

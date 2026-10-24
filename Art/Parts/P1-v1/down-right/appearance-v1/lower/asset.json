@@ -1,0 +1,211 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "p1-down-right-lower-v1",
+  "version": "1.0.0",
+  "part": "outfit",
+  "compatibility": {
+    "rig": "p1-chibi-v1",
+    "bodyProfile": "p1-standard",
+    "actionSet": "locomotion-v1"
+  },
+  "mode": "pose-map",
+  "slots": [
+    "outfit.pants.right",
+    "outfit.boot.right",
+    "outfit.pants.left",
+    "outfit.boot.left"
+  ],
+  "directions": [
+    "down-right"
+  ],
+  "clips": [
+    "idle",
+    "walk",
+    "walk-start",
+    "walk-stop"
+  ],
+  "bindings": [
+    {
+      "direction": "down-right",
+      "clip": "idle",
+      "frame": 0,
+      "layers": {
+        "outfit.pants.right": "png/00/outfit.pants.right.png",
+        "outfit.boot.right": "png/00/outfit.boot.right.png",
+        "outfit.pants.left": "png/00/outfit.pants.left.png",
+        "outfit.boot.left": "png/00/outfit.boot.left.png"
+      }
+    },
+    {
+      "direction": "down-right",
+      "clip": "walk",
+      "frame": 1,
+      "layers": {
+        "outfit.pants.right": "png/01/outfit.pants.right.png",
+        "outfit.boot.right": "png/01/outfit.boot.right.png",
+        "outfit.pants.left": "png/01/outfit.pants.left.png",
+        "outfit.boot.left": "png/01/outfit.boot.left.png"
+      }
+    },
+    {
+      "direction": "down-right",
+      "clip": "walk",
+      "frame": 2,
+      "layers": {
+        "outfit.pants.right": "png/02/outfit.pants.right.png",
+        "outfit.boot.right": "png/02/outfit.boot.right.png",
+        "outfit.pants.left": "png/02/outfit.pants.left.png",
+        "outfit.boot.left": "png/02/outfit.boot.left.png"
+      }
+    },
+    {
+      "direction": "down-right",
+      "clip": "walk",
+      "frame": 3,
+      "layers": {
+        "outfit.pants.right": "png/03/outfit.pants.right.png",
+        "outfit.boot.right": "png/03/outfit.boot.right.png",
+        "outfit.pants.left": "png/03/outfit.pants.left.png",
+        "outfit.boot.left": "png/03/outfit.boot.left.png"
+      }
+    },
+    {
+      "direction": "down-right",
+      "clip": "walk",
+      "frame": 4,
+      "layers": {
+        "outfit.pants.right": "png/04/outfit.pants.right.png",
+        "outfit.boot.right": "png/04/outfit.boot.right.png",
+        "outfit.pants.left": "png/04/outfit.pants.left.png",
+        "outfit.boot.left": "png/04/outfit.boot.left.png"
+      }
+    },
+    {
+      "direction": "down-right",
+      "clip": "walk",
+      "frame": 5,
+      "layers": {
+        "outfit.pants.right": "png/05/outfit.pants.right.png",
+        "outfit.boot.right": "png/05/outfit.boot.right.png",
+        "outfit.pants.left": "png/05/outfit.pants.left.png",
+        "outfit.boot.left": "png/05/outfit.boot.left.png"
+      }
+    },
+    {
+      "direction": "down-right",
+      "clip": "walk",
+      "frame": 6,
+      "layers": {
+        "outfit.pants.right": "png/06/outfit.pants.right.png",
+        "outfit.boot.right": "png/06/outfit.boot.right.png",
+        "outfit.pants.left": "png/06/outfit.pants.left.png",
+        "outfit.boot.left": "png/06/outfit.boot.left.png"
+      }
+    },
+    {
+      "direction": "down-right",
+      "clip": "walk",
+      "frame": 7,
+      "layers": {
+        "outfit.pants.right": "png/07/outfit.pants.right.png",
+        "outfit.boot.right": "png/07/outfit.boot.right.png",
+        "outfit.pants.left": "png/07/outfit.pants.left.png",
+        "outfit.boot.left": "png/07/outfit.boot.left.png"
+      }
+    },
+    {
+      "direction": "down-right",
+      "clip": "walk",
+      "frame": 8,
+      "layers": {
+        "outfit.pants.right": "png/08/outfit.pants.right.png",
+        "outfit.boot.right": "png/08/outfit.boot.right.png",
+        "outfit.pants.left": "png/08/outfit.pants.left.png",
+        "outfit.boot.left": "png/08/outfit.boot.left.png"
+      }
+    },
+    {
+      "direction": "down-right",
+      "clip": "walk-start",
+      "frame": 1,
+      "layers": {
+        "outfit.pants.right": "png/09/outfit.pants.right.png",
+        "outfit.boot.right": "png/09/outfit.boot.right.png",
+        "outfit.pants.left": "png/09/outfit.pants.left.png",
+        "outfit.boot.left": "png/09/outfit.boot.left.png"
+      }
+    },
+    {
+      "direction": "down-right",
+      "clip": "walk-start",
+      "frame": 2,
+      "layers": {
+        "outfit.pants.right": "png/10/outfit.pants.right.png",
+        "outfit.boot.right": "png/10/outfit.boot.right.png",
+        "outfit.pants.left": "png/10/outfit.pants.left.png",
+        "outfit.boot.left": "png/10/outfit.boot.left.png"
+      }
+    },
+    {
+      "direction": "down-right",
+      "clip": "walk-stop",
+      "frame": 1,
+      "layers": {
+        "outfit.pants.right": "png/11/outfit.pants.right.png",
+        "outfit.boot.right": "png/11/outfit.boot.right.png",
+        "outfit.pants.left": "png/11/outfit.pants.left.png",
+        "outfit.boot.left": "png/11/outfit.boot.left.png"
+      }
+    },
+    {
+      "direction": "down-right",
+      "clip": "walk-stop",
+      "frame": 2,
+      "layers": {
+        "outfit.pants.right": "png/12/outfit.pants.right.png",
+        "outfit.boot.right": "png/12/outfit.boot.right.png",
+        "outfit.pants.left": "png/12/outfit.pants.left.png",
+        "outfit.boot.left": "png/12/outfit.boot.left.png"
+      }
+    }
+  ],
+  "sourceFiles": [
+    "authoring.json",
+    "source/original.png",
+    "source/outfit.boot.left-mirrored.png",
+    "source/outfit.boot.left.png",
+    "source/outfit.boot.right-mirrored.png",
+    "source/outfit.boot.right.png",
+    "source/outfit.pants.left-mirrored.png",
+    "source/outfit.pants.left.png",
+    "source/outfit.pants.right-mirrored.png",
+    "source/outfit.pants.right.png",
+    "source/prompt.txt",
+    "editable/00.ora",
+    "editable/00.svg",
+    "editable/01.ora",
+    "editable/01.svg",
+    "editable/02.ora",
+    "editable/02.svg",
+    "editable/03.ora",
+    "editable/03.svg",
+    "editable/04.ora",
+    "editable/04.svg",
+    "editable/05.ora",
+    "editable/05.svg",
+    "editable/06.ora",
+    "editable/06.svg",
+    "editable/07.ora",
+    "editable/07.svg",
+    "editable/08.ora",
+    "editable/08.svg",
+    "editable/09.ora",
+    "editable/09.svg",
+    "editable/10.ora",
+    "editable/10.svg",
+    "editable/11.ora",
+    "editable/11.svg",
+    "editable/12.ora",
+    "editable/12.svg"
+  ]
+}

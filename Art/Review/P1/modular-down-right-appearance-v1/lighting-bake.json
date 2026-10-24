@@ -1,0 +1,227 @@
+{
+  "status": "tool-colour-source-bake",
+  "authorAndReviewer": "root",
+  "subagentsUsed": false,
+  "alphaOwner": "original reflected source mattes",
+  "sourceLight": "upper-left",
+  "noPerFrameRelight": true,
+  "faceFeaturesNotRepainted": true,
+  "records": [
+    {
+      "package": "hair-chestnut",
+      "slot": "hair.front",
+      "alphaDifferencePixels": 0,
+      "rgbChangedPixels": 846,
+      "samplesByMaterial": {
+        "hair": 846,
+        "cloth": 0,
+        "gold": 0,
+        "belt": 0,
+        "pants": 0,
+        "boots": 0
+      },
+      "maxReferenceDistance": 1.0,
+      "outlinePixelsKept": 128,
+      "unmatchedOrHiddenSourceColoursRetained": true,
+      "sha256": "3a47c1805d55303c9380fad61c6b05c7cfd81f69e9a1cab24787cfd46a1883af"
+    },
+    {
+      "package": "hair-silver",
+      "slot": "hair.front",
+      "alphaDifferencePixels": 0,
+      "rgbChangedPixels": 818,
+      "samplesByMaterial": {
+        "hair": 818,
+        "cloth": 0,
+        "gold": 0,
+        "belt": 0,
+        "pants": 0,
+        "boots": 0
+      },
+      "maxReferenceDistance": 1.4142135623730951,
+      "outlinePixelsKept": 121,
+      "unmatchedOrHiddenSourceColoursRetained": true,
+      "sha256": "2b6ea20eebf083d87f5ce5afe453dfc098e977c4aad72edf1c4ad6f8626a11cb"
+    },
+    {
+      "package": "forester",
+      "slot": "outfit.sleeve.left",
+      "alphaDifferencePixels": 0,
+      "rgbChangedPixels": 105,
+      "samplesByMaterial": {
+        "hair": 0,
+        "cloth": 63,
+        "gold": 34,
+        "belt": 8,
+        "pants": 0,
+        "boots": 0
+      },
+      "maxReferenceDistance": 1.0,
+      "outlinePixelsKept": 193,
+      "unmatchedOrHiddenSourceColoursRetained": true,
+      "sha256": "0d7e33972552e196dc9bf7ec57899cfedfcfdf8eeb18915bff4003b1002008e8"
+    },
+    {
+      "package": "forester",
+      "slot": "outfit.sleeve.right",
+      "alphaDifferencePixels": 0,
+      "rgbChangedPixels": 221,
+      "samplesByMaterial": {
+        "hair": 0,
+        "cloth": 190,
+        "gold": 28,
+        "belt": 3,
+        "pants": 0,
+        "boots": 0
+      },
+      "maxReferenceDistance": 2.0,
+      "outlinePixelsKept": 249,
+      "unmatchedOrHiddenSourceColoursRetained": true,
+      "sha256": "079b35c095da6f39d638b235264e343813efd59721813d6adc06436af65238fc"
+    },
+    {
+      "package": "forester",
+      "slot": "outfit.torso",
+      "alphaDifferencePixels": 0,
+      "rgbChangedPixels": 601,
+      "samplesByMaterial": {
+        "hair": 0,
+        "cloth": 373,
+        "gold": 148,
+        "belt": 80,
+        "pants": 0,
+        "boots": 0
+      },
+      "maxReferenceDistance": 2.23606797749979,
+      "outlinePixelsKept": 400,
+      "unmatchedOrHiddenSourceColoursRetained": true,
+      "sha256": "8673c04da64d607096d68d814f97c9092e61889308051d80afb6816814c432ec"
+    },
+    {
+      "package": "wayfarer",
+      "slot": "outfit.sleeve.left",
+      "alphaDifferencePixels": 0,
+      "rgbChangedPixels": 193,
+      "samplesByMaterial": {
+        "hair": 0,
+        "cloth": 146,
+        "gold": 26,
+        "belt": 21,
+        "pants": 0,
+        "boots": 0
+      },
+      "maxReferenceDistance": 2.23606797749979,
+      "outlinePixelsKept": 105,
+      "unmatchedOrHiddenSourceColoursRetained": true,
+      "sha256": "0a8a53f66f4a7a44751b9154cc83070273c4a271bb96a5a6297113a96229edff"
+    },
+    {
+      "package": "wayfarer",
+      "slot": "outfit.sleeve.right",
+      "alphaDifferencePixels": 0,
+      "rgbChangedPixels": 307,
+      "samplesByMaterial": {
+        "hair": 0,
+        "cloth": 273,
+        "gold": 29,
+        "belt": 6,
+        "pants": 0,
+        "boots": 0
+      },
+      "maxReferenceDistance": 2.23606797749979,
+      "outlinePixelsKept": 160,
+      "unmatchedOrHiddenSourceColoursRetained": true,
+      "sha256": "b946ad29d6f11f63fafbb0dbfe47ba93c33833befc789d3fa5e6841d7200e721"
+    },
+    {
+      "package": "wayfarer",
+      "slot": "outfit.torso",
+      "alphaDifferencePixels": 0,
+      "rgbChangedPixels": 842,
+      "samplesByMaterial": {
+        "hair": 0,
+        "cloth": 613,
+        "gold": 165,
+        "belt": 65,
+        "pants": 0,
+        "boots": 0
+      },
+      "maxReferenceDistance": 2.23606797749979,
+      "outlinePixelsKept": 290,
+      "unmatchedOrHiddenSourceColoursRetained": true,
+      "sha256": "063db1f3801d681c47f678a22ca03e287b36370389c3c0b608b18a2a4b0c68e2"
+    },
+    {
+      "package": "lower",
+      "slot": "outfit.boot.left",
+      "alphaDifferencePixels": 0,
+      "rgbChangedPixels": 159,
+      "samplesByMaterial": {
+        "hair": 0,
+        "cloth": 0,
+        "gold": 0,
+        "belt": 0,
+        "pants": 0,
+        "boots": 159
+      },
+      "maxReferenceDistance": 1.0,
+      "outlinePixelsKept": 133,
+      "unmatchedOrHiddenSourceColoursRetained": true,
+      "sha256": "b27c243b8e51bf5a35dee11f66ae5cf5c0cc289bde335969f886e2dcc0a1275d"
+    },
+    {
+      "package": "lower",
+      "slot": "outfit.boot.right",
+      "alphaDifferencePixels": 0,
+      "rgbChangedPixels": 171,
+      "samplesByMaterial": {
+        "hair": 0,
+        "cloth": 0,
+        "gold": 0,
+        "belt": 0,
+        "pants": 0,
+        "boots": 171
+      },
+      "maxReferenceDistance": 1.0,
+      "outlinePixelsKept": 98,
+      "unmatchedOrHiddenSourceColoursRetained": true,
+      "sha256": "eb1ca58e0d06b73128f1e738bfe766a10fa18903e3b3063e3a467f4511ff337c"
+    },
+    {
+      "package": "lower",
+      "slot": "outfit.pants.left",
+      "alphaDifferencePixels": 0,
+      "rgbChangedPixels": 282,
+      "samplesByMaterial": {
+        "hair": 0,
+        "cloth": 0,
+        "gold": 0,
+        "belt": 0,
+        "pants": 282,
+        "boots": 0
+      },
+      "maxReferenceDistance": 2.23606797749979,
+      "outlinePixelsKept": 252,
+      "unmatchedOrHiddenSourceColoursRetained": true,
+      "sha256": "86d7f10ffe0472ebdca8fac29ded6a90007ab2b0e31e40959570c1b5d6837583"
+    },
+    {
+      "package": "lower",
+      "slot": "outfit.pants.right",
+      "alphaDifferencePixels": 0,
+      "rgbChangedPixels": 435,
+      "samplesByMaterial": {
+        "hair": 0,
+        "cloth": 0,
+        "gold": 0,
+        "belt": 0,
+        "pants": 436,
+        "boots": 0
+      },
+      "maxReferenceDistance": 2.23606797749979,
+      "outlinePixelsKept": 283,
+      "unmatchedOrHiddenSourceColoursRetained": true,
+      "sha256": "64a23e2c61dbfc71206bd7283ea541fb71892fbaf2c30e7a782c4a705a2e4945"
+    }
+  ]
+}

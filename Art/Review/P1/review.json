@@ -3,8 +3,8 @@
   "format": 3,
   "updated": "2026-10-24",
   "workflow": "Review one direction at a time from fixed cardinal and diagonal baselines. Modify and resubmit the same direction until explicit user artwork approval, then advance. Record provenance, feedback and accepted revisions for the future character template.",
-  "current": "p1-down-left-independent-wardrobe-v1",
-  "templateStatus": "Existing-character eight-direction modules prioritized; current left-down wardrobe candidate. Right-down appearances, right/up modules and down transitions remain; female work deferred.",
+  "current": "p1-down-right-independent-appearance-v1",
+  "templateStatus": "Current right-down independent appearance candidate; existing-character eight-direction completion prioritized. Right/up modules and down relaxed-hand transitions remain; female deferred.",
   "items": [
     {
       "id": "01-down-idle",
@@ -1900,6 +1900,13 @@
       "userStatement": "我们先把各方向的模组做完",
       "current": "p1-down-left-independent-wardrobe-v1",
       "scope": "Prioritize existing-character eight-direction modular completion; female character work deferred; current direction full wardrobe review"
+    },
+    {
+      "date": "2026-10-24",
+      "userStatement": "没问题下一步工作开始",
+      "acceptedScope": "Previous delivered left-down primary whole-body appearances only",
+      "current": "p1-down-right-independent-appearance-v1",
+      "scope": "Right-down independent appearance on unchanged approved base; fixed-light/semantic mirror and shoulder carry; no inherited approval for new direction"
     }
   ],
   "battleNeutralBodyReview": {
@@ -3294,7 +3301,6 @@
     "document": "docs/P1_DIRECTION_MODULES.md",
     "status": "in-progress",
     "next": [
-      "right-down independent appearance",
       "right neutral/motion/appearance",
       "up neutral/motion/appearance",
       "down relaxed-hand start-stop",
@@ -3304,8 +3310,8 @@
   },
   "downLeftWardrobeReview": {
     "id": "p1-down-left-independent-wardrobe-v1",
-    "status": "candidate-main-whole-body-review-complete",
-    "artApproval": null,
+    "status": "delivered-primary-combinations-approved",
+    "artApproval": "Art/Review/P1/modular-down-left-wardrobe-v1/approval.json",
     "authorAndReviewer": "root",
     "subagentsUsed": false,
     "source": "Art/Parts/P1-v1/down-left/wardrobe-v1/authoring.json",
@@ -3330,6 +3336,42 @@
     "runtimeIntegrated": false,
     "ipaBuilt": false,
     "artCommit": "f4dfa7e2564500d46d65e966b4be4c25d6ee887f",
-    "delivery": "Art/Review/P1/modular-down-left-wardrobe-v1/delivery.json"
+    "delivery": "Art/Review/P1/modular-down-left-wardrobe-v1/delivery.json",
+    "approvalScope": "Only two delivered primary whole-body combinations, standing/walk/start-stop; no undisplayed cross combination or runtime approval"
+  },
+  "downRightAppearanceReview": {
+    "id": "p1-down-right-independent-appearance-v1",
+    "status": "candidate-main-full-body-review-complete",
+    "artApproval": null,
+    "authorAndReviewer": "root",
+    "subagentsUsed": false,
+    "source": "Art/Parts/P1-v1/down-right/appearance-v1/authoring.json",
+    "review": "Art/Review/P1/modular-down-right-appearance-v1",
+    "technical": {
+      "manifestsChecked": 9,
+      "combinations": 16,
+      "actualCompositorPoses": 208,
+      "bareBodyPosesUnchanged": 13,
+      "unchangedBodyLayerChecks": 1664,
+      "reflectedAppearanceAlphaChecks": 2496,
+      "coverageChecks": 1248,
+      "handPreservationChecks": 416,
+      "facePreservationChecks": 624,
+      "weaponToggleChecks": 104,
+      "preservedFiles": 14876
+    },
+    "existingTests": {
+      "contract": 26,
+      "compositor": 21
+    },
+    "artifacts": {
+      "normalGif": "Art/Review/P1/modular-down-right-appearance-v1/outfits-walk-120ms.gif",
+      "startStopGif": "Art/Review/P1/modular-down-right-appearance-v1/outfits-start-stop-120ms.gif",
+      "idle": "Art/Review/P1/modular-down-right-appearance-v1/outfits-idle-2x.png"
+    },
+    "mainReview": "All8 sword-on appearance combinations x13 whole-body1x/2x; primary paired standing and actual normal GIF decoded8 frames; still-viewer only, no continuous playback claim",
+    "bodyAndMotionUnchanged": true,
+    "runtimeIntegrated": false,
+    "ipaBuilt": false
   }
 }

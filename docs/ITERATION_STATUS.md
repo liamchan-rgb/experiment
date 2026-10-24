@@ -1,5 +1,13 @@
 # 林间行旅迭代进度 · 2026-10-19
 
+## 2026-10-24 · 右下独立头部/两衣型/裤靴/背剑v1
+
+用户“没问题下一步工作开始”认可上一轮实际展示的左下整身两组，新增限定范围approval.json；未把未展示交叉组合及其他方向自动认可。本轮root独自补右下8个独立资源，沿原右下r1身体/13姿势，16组合208图。镜像同时转换左右语义/头部局部/近远层序；头发和服装通过完整固定画布RGB参考校正左上光源，原alpha/形体/手/五官不变。背剑单独校正同一右肩斜背投影，修掉部分步态腿边鞘尖细线，保留试稿；不裁剑、不逐帧擦像素、不竖到脊柱。
+
+已亲看8种带剑组合全13帧整身1×/2×、主要站姿和实际正常GIF全部8解码帧，追踪肢链/袖裤/靴底/首尾与起停；工具只能静帧，不宣称连续播放器或设备验收。9清单、208实际装配、1664身体层、2496外观反射alpha、1248覆盖/416手/624五官/104武器切换检查通过，14876旧文件保持，合同26/装配器21既有测试通过。公共装配器/合同未改，仅新增右下头导板。新右下外观认可为空，无App/设备/IPA。
+
+[正常全身GIF](../Art/Review/P1/modular-down-right-appearance-v1/outfits-walk-120ms.gif) · [正常起停](../Art/Review/P1/modular-down-right-appearance-v1/outfits-start-stop-120ms.gif) · [站姿](../Art/Review/P1/modular-down-right-appearance-v1/outfits-idle-2x.png) · [主线程复核](../Art/Review/P1/modular-down-right-appearance-v1/art-review.md)。重导和HTTPS回执见审核目录。下一项正右，再正上/正下自然空手起停/八向统一复核，女性延后。
+
 ## 2026-10-24 · 先完成八方向；左下衣物/裤靴/背剑v1
 
 美术提交 `f4dfa7e2564500d46d65e966b4be4c25d6ee887f`；[正常行走HTTPS](https://raw.githubusercontent.com/liamchan-rgb/experiment/f4dfa7e2564500d46d65e966b4be4c25d6ee887f/Art/Review/P1/modular-down-left-wardrobe-v1/outfits-walk-120ms.gif)、正常起停及站姿三份文件已实测HTTP200、MIME/哈希及GIF时序一致，回执见 `Art/Review/P1/modular-down-left-wardrobe-v1/delivery.json`。641份文件重导逐字节一致。
