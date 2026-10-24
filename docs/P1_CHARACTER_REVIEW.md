@@ -9,7 +9,11 @@
 - 用户于2026-10-22明确要求：智能体画的效果有问题，由主线程自己修，并同步到GitHub提示词。
 
 
-## 当前候选：左上/右上裤靴 v2
+## 当前候选：左上/右上v3后颈修正
+
+用户指出v2后颈黑线，撤回原内部美术通过。主线程独自修共同底模头/颈交界的27枚源颜色像素，保留全部几何/动作及v2六个外观包；[正常行走GIF](../Art/Review/P1/modular-upper-wardrobe-v3/outfits-walk-120ms.gif)、[起停GIF](../Art/Review/P1/modular-upper-wardrobe-v3/outfits-start-stop-120ms.gif)、[整身站姿](../Art/Review/P1/modular-upper-wardrobe-v3/outfits-idle-2x.png)、[主线程具体复核](../Art/Review/P1/modular-upper-wardrobe-v3/art-review.md)。已看全部展示姿势整身1×/2×及后颈序列；不能连续播放，不称播放器验收。新修订未获用户认可。
+
+## 旧问题版：左上/右上裤靴 v2，后颈漏检
 
 用户指出v1腿部粗短/透视异常后，由主线程独自重画低靴和灰裤，按原腿轴/膝位/脚掌几何控制最终轮廓，修正近远层次及腰侧漏底；原底模/动作/五个其他外观包保持。[正常行走](../Art/Review/P1/modular-upper-wardrobe-v2/outfits-walk-120ms.gif)、[起停](../Art/Review/P1/modular-upper-wardrobe-v2/outfits-start-stop-120ms.gif)、[站姿](../Art/Review/P1/modular-upper-wardrobe-v2/outfits-idle-2x.png)、[主线程具体复核](../Art/Review/P1/modular-upper-wardrobe-v2/art-review.md)。已看两方向两衣型全部13姿势整身1×/2×与帧序，16组合208图检查通过；无法连续播放，不称播放器验收。新外观未获用户认可。
 

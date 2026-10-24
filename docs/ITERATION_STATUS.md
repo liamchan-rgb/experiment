@@ -1,5 +1,13 @@
 # 林间行旅迭代进度 · 2026-10-19
 
+## 2026-10-24 · 上斜v3后颈接缝黑线修正
+
+用户指出后颈黑线并要求继续。主线程定位为头部下缘与颈部底图的近黑切线重叠，上轮漏检，撤回v2内部美术通过并保留原稿。现单独登记共同底模r7，仅调整左上头4/颈10、右上头4/颈9枚源像素颜色，暖肤色阴影衔接；头部仍沿原矩阵轻微摆动，躯干补丁仍沿原共同场，未用发片遮盖或固定帧贴片。
+
+两方向两衣型13姿势最终整身1×/2×、后颈旧新序列与交叉发色站姿由主线程复核；16组合208图与v2相比仅后颈源补丁影响区变化，原alpha/轮廓/关节/支撑脚/脚底/时序保持，六个外观包保持。覆盖/手掌/背剑检查通过，合同26项、装配21项通过。当前工具只能逐帧，不称连续播放器验收；新修订无用户认可。
+
+[正常行走GIF](../Art/Review/P1/modular-upper-wardrobe-v3/outfits-walk-120ms.gif)、[指定起停GIF](../Art/Review/P1/modular-upper-wardrobe-v3/outfits-start-stop-120ms.gif)、[站姿](../Art/Review/P1/modular-upper-wardrobe-v3/outfits-idle-2x.png)、[具体复核与范围](../Art/Review/P1/modular-upper-wardrobe-v3/art-review.md)。无App/设备/IPA工作。
+
 ## 2026-10-24 · 上斜裤靴 v2：重做低靴与腿部比例
 
 美术提交 `04ce1ac1ef23f06fe34c96c3c63ef5ce770c3418`；[正常行走HTTPS直链](https://raw.githubusercontent.com/liamchan-rgb/experiment/04ce1ac1ef23f06fe34c96c3c63ef5ce770c3418/Art/Review/P1/modular-upper-wardrobe-v2/outfits-walk-120ms.gif)、正常起停及站姿三份文件已实测HTTP200、MIME/哈希一致，正常GIF帧速正确，回执见 `Art/Review/P1/modular-upper-wardrobe-v2/delivery.json`。479份文件重导逐字节一致，1421份原中性及旧换装文件保持。

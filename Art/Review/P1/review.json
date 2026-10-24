@@ -3,8 +3,8 @@
   "format": 3,
   "updated": "2026-10-24",
   "workflow": "Review one direction at a time from fixed cardinal and diagonal baselines. Modify and resubmit the same direction until explicit user artwork approval, then advance. Record provenance, feedback and accepted revisions for the future character template.",
-  "current": "p1-upper-wardrobe-leg-repair-v2",
-  "templateStatus": "Upper wardrobe leg repair v2: main repaired and inspected whole-body frames; awaiting user art feedback. Old v1 internal clearance remains withdrawn.",
+  "current": "p1-upper-wardrobe-nape-repair-v3",
+  "templateStatus": "Nape seam repair v3 candidate; original geometry and v2 wardrobe retained, no user approval.",
   "items": [
     {
       "id": "01-down-idle",
@@ -2931,40 +2931,36 @@
     "approval": "Art/Review/P1/neutral-upper-transitions-r6/approval.json"
   },
   "upperWardrobeReview": {
-    "id": "p1-upper-wardrobe-leg-repair-v2",
+    "id": "p1-upper-wardrobe-nape-repair-v3",
     "status": "candidate-main-whole-body-frame-review-complete",
     "artApproval": null,
     "repairAndReviewOwner": "root",
     "subagentsUsed": false,
-    "userInstruction": "那你开始改",
-    "baseReference": "Art/Review/P1/neutral-upper-transitions-r6/approval.json",
-    "newResource": "Art/Parts/P1-v1/upper/lower-v2/asset.json",
-    "reuse": "Two original neutral bodies and five original upper appearance packages; original motion and public compositor unchanged",
+    "feedback": "后颈有一条黑线",
+    "newCommonBases": [
+      "p1-neutral-up-left-r7-nape",
+      "p1-neutral-up-right-r7-nape"
+    ],
+    "method": "27 source neck/head dark pixels recoloured from independent nape painting; exact alpha and all original motion preserved; six appearance resources unchanged",
     "technical": {
       "combinations": 16,
       "actualCompositorPoses": 208,
-      "neutralPosesUnchanged": 26,
+      "originalGeometryPoses": 26,
+      "combinationsUnchangedOutsideNape": 208,
       "coverageFailures": 0,
       "handPreservationFailures": 0,
       "contractTests": 26,
       "compositorTests": 21
     },
     "artifacts": {
-      "normalGif": "Art/Review/P1/modular-upper-wardrobe-v2/outfits-walk-120ms.gif",
-      "startStopGif": "Art/Review/P1/modular-upper-wardrobe-v2/outfits-start-stop-120ms.gif",
-      "idle": "Art/Review/P1/modular-upper-wardrobe-v2/outfits-idle-2x.png",
-      "artReview": "Art/Review/P1/modular-upper-wardrobe-v2/art-review.md"
+      "normalGif": "Art/Review/P1/modular-upper-wardrobe-v3/outfits-walk-120ms.gif",
+      "startStopGif": "Art/Review/P1/modular-upper-wardrobe-v3/outfits-start-stop-120ms.gif",
+      "idle": "Art/Review/P1/modular-upper-wardrobe-v3/outfits-idle-2x.png",
+      "artReview": "Art/Review/P1/modular-upper-wardrobe-v3/art-review.md"
     },
-    "mainReview": "All displayed13 poses in both directions/two outfits, whole-body1x/2x and ordered boundary frames; no continuous-player viewing claimed",
+    "mainReview": "All displayed13 poses, both directions/two outfits, whole-body1x/2x plus ordered nape diagnostic and crossed hair; no continuous-player viewing claimed",
     "runtimeIntegrated": false,
-    "ipaBuilt": false,
-    "limits": [
-      "New art has no user approval",
-      "Original hidden anatomy not completed",
-      "Specified start/stop paths only"
-    ],
-    "artCommit": "04ce1ac1ef23f06fe34c96c3c63ef5ce770c3418",
-    "delivery": "Art/Review/P1/modular-upper-wardrobe-v2/delivery.json"
+    "ipaBuilt": false
   },
   "upperWardrobeHistory": [
     {
@@ -3007,6 +3003,47 @@
         "statement": "腿看起来怪怪的，你来说说咋回事",
         "diagnosis": "Oversized high boot shafts hide knee/calf form; shoe perspective mismatches rear three-quarter torso; broadened/compressed garment fitting obscures near/far legs and weight bearing. Technical coverage is insufficient art evidence.",
         "record": "Art/Review/P1/modular-upper-wardrobe-v1/leg-reinspection-2026-10-24.md"
+      }
+    },
+    {
+      "id": "p1-upper-wardrobe-leg-repair-v2",
+      "status": "nape-seam-feedback-internal-clearance-withdrawn",
+      "artApproval": null,
+      "repairAndReviewOwner": "root",
+      "subagentsUsed": false,
+      "userInstruction": "那你开始改",
+      "baseReference": "Art/Review/P1/neutral-upper-transitions-r6/approval.json",
+      "newResource": "Art/Parts/P1-v1/upper/lower-v2/asset.json",
+      "reuse": "Two original neutral bodies and five original upper appearance packages; original motion and public compositor unchanged",
+      "technical": {
+        "combinations": 16,
+        "actualCompositorPoses": 208,
+        "neutralPosesUnchanged": 26,
+        "coverageFailures": 0,
+        "handPreservationFailures": 0,
+        "contractTests": 26,
+        "compositorTests": 21
+      },
+      "artifacts": {
+        "normalGif": "Art/Review/P1/modular-upper-wardrobe-v2/outfits-walk-120ms.gif",
+        "startStopGif": "Art/Review/P1/modular-upper-wardrobe-v2/outfits-start-stop-120ms.gif",
+        "idle": "Art/Review/P1/modular-upper-wardrobe-v2/outfits-idle-2x.png",
+        "artReview": "Art/Review/P1/modular-upper-wardrobe-v2/art-review.md"
+      },
+      "mainReview": "All displayed13 poses in both directions/two outfits, whole-body1x/2x and ordered boundary frames; no continuous-player viewing claimed",
+      "runtimeIntegrated": false,
+      "ipaBuilt": false,
+      "limits": [
+        "New art has no user approval",
+        "Original hidden anatomy not completed",
+        "Specified start/stop paths only"
+      ],
+      "artCommit": "04ce1ac1ef23f06fe34c96c3c63ef5ce770c3418",
+      "delivery": "Art/Review/P1/modular-upper-wardrobe-v2/delivery.json",
+      "feedback": {
+        "date": "2026-10-24",
+        "statement": "后颈有一条黑线",
+        "finding": "Overlapping lower-head outline and torso nape cut edge; main missed seam in v2. Original art preserved."
       }
     }
   ]
