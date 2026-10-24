@@ -3,8 +3,8 @@
   "format": 3,
   "updated": "2026-10-24",
   "workflow": "Review one direction at a time from fixed cardinal and diagonal baselines. Modify and resubmit the same direction until explicit user artwork approval, then advance. Record provenance, feedback and accepted revisions for the future character template.",
-  "current": "p1-upper-independent-wardrobe-v1",
-  "templateStatus": "Upper wardrobe requires leg art repair after main reinspection; internal clearance withdrawn. Original approved neutral remains unchanged.",
+  "current": "p1-upper-wardrobe-leg-repair-v2",
+  "templateStatus": "Upper wardrobe leg repair v2: main repaired and inspected whole-body frames; awaiting user art feedback. Old v1 internal clearance remains withdrawn.",
   "items": [
     {
       "id": "01-down-idle",
@@ -2931,45 +2931,81 @@
     "approval": "Art/Review/P1/neutral-upper-transitions-r6/approval.json"
   },
   "upperWardrobeReview": {
-    "id": "p1-upper-independent-wardrobe-v1",
-    "status": "needs-leg-art-repair-internal-clearance-withdrawn",
+    "id": "p1-upper-wardrobe-leg-repair-v2",
+    "status": "candidate-main-whole-body-frame-review-complete",
     "artApproval": null,
     "repairAndReviewOwner": "root",
     "subagentsUsed": false,
-    "directions": [
-      "up-left",
-      "up-right"
-    ],
+    "userInstruction": "那你开始改",
     "baseReference": "Art/Review/P1/neutral-upper-transitions-r6/approval.json",
-    "packages": 6,
-    "combinations": 16,
-    "actualCompositorPoses": 208,
-    "neutralPosesUnchanged": 26,
-    "coverageFailures": 0,
-    "handPreservationFailures": 0,
-    "contractTests": 26,
-    "compositorTests": 21,
-    "artifacts": {
-      "normalGif": "Art/Review/P1/modular-upper-wardrobe-v1/outfits-walk-120ms.gif",
-      "startStopGif": "Art/Review/P1/modular-upper-wardrobe-v1/outfits-start-stop-120ms.gif",
-      "idle": "Art/Review/P1/modular-upper-wardrobe-v1/outfits-idle-2x.png",
-      "artReview": "Art/Review/P1/modular-upper-wardrobe-v1/art-review.md"
+    "newResource": "Art/Parts/P1-v1/upper/lower-v2/asset.json",
+    "reuse": "Two original neutral bodies and five original upper appearance packages; original motion and public compositor unchanged",
+    "technical": {
+      "combinations": 16,
+      "actualCompositorPoses": 208,
+      "neutralPosesUnchanged": 26,
+      "coverageFailures": 0,
+      "handPreservationFailures": 0,
+      "contractTests": 26,
+      "compositorTests": 21
     },
-    "mainReview": "Whole-body 1x/2x all 13 poses per displayed outfit/direction plus crossed hair; ordered frame/timing audit, not continuous-player viewing",
+    "artifacts": {
+      "normalGif": "Art/Review/P1/modular-upper-wardrobe-v2/outfits-walk-120ms.gif",
+      "startStopGif": "Art/Review/P1/modular-upper-wardrobe-v2/outfits-start-stop-120ms.gif",
+      "idle": "Art/Review/P1/modular-upper-wardrobe-v2/outfits-idle-2x.png",
+      "artReview": "Art/Review/P1/modular-upper-wardrobe-v2/art-review.md"
+    },
+    "mainReview": "All displayed13 poses in both directions/two outfits, whole-body1x/2x and ordered boundary frames; no continuous-player viewing claimed",
     "runtimeIntegrated": false,
     "ipaBuilt": false,
     "limits": [
-      "New wardrobe has no user approval",
+      "New art has no user approval",
       "Original hidden anatomy not completed",
       "Specified start/stop paths only"
-    ],
-    "artCommit": "719789d83e61466fafd19cdb9c01294001235807",
-    "delivery": "Art/Review/P1/modular-upper-wardrobe-v1/delivery.json",
-    "feedback": {
-      "date": "2026-10-24",
-      "statement": "腿看起来怪怪的，你来说说咋回事",
-      "diagnosis": "Oversized high boot shafts hide knee/calf form; shoe perspective mismatches rear three-quarter torso; broadened/compressed garment fitting obscures near/far legs and weight bearing. Technical coverage is insufficient art evidence.",
-      "record": "Art/Review/P1/modular-upper-wardrobe-v1/leg-reinspection-2026-10-24.md"
+    ]
+  },
+  "upperWardrobeHistory": [
+    {
+      "id": "p1-upper-independent-wardrobe-v1",
+      "status": "needs-leg-art-repair-internal-clearance-withdrawn",
+      "artApproval": null,
+      "repairAndReviewOwner": "root",
+      "subagentsUsed": false,
+      "directions": [
+        "up-left",
+        "up-right"
+      ],
+      "baseReference": "Art/Review/P1/neutral-upper-transitions-r6/approval.json",
+      "packages": 6,
+      "combinations": 16,
+      "actualCompositorPoses": 208,
+      "neutralPosesUnchanged": 26,
+      "coverageFailures": 0,
+      "handPreservationFailures": 0,
+      "contractTests": 26,
+      "compositorTests": 21,
+      "artifacts": {
+        "normalGif": "Art/Review/P1/modular-upper-wardrobe-v1/outfits-walk-120ms.gif",
+        "startStopGif": "Art/Review/P1/modular-upper-wardrobe-v1/outfits-start-stop-120ms.gif",
+        "idle": "Art/Review/P1/modular-upper-wardrobe-v1/outfits-idle-2x.png",
+        "artReview": "Art/Review/P1/modular-upper-wardrobe-v1/art-review.md"
+      },
+      "mainReview": "Whole-body 1x/2x all 13 poses per displayed outfit/direction plus crossed hair; ordered frame/timing audit, not continuous-player viewing",
+      "runtimeIntegrated": false,
+      "ipaBuilt": false,
+      "limits": [
+        "New wardrobe has no user approval",
+        "Original hidden anatomy not completed",
+        "Specified start/stop paths only"
+      ],
+      "artCommit": "719789d83e61466fafd19cdb9c01294001235807",
+      "delivery": "Art/Review/P1/modular-upper-wardrobe-v1/delivery.json",
+      "feedback": {
+        "date": "2026-10-24",
+        "statement": "腿看起来怪怪的，你来说说咋回事",
+        "diagnosis": "Oversized high boot shafts hide knee/calf form; shoe perspective mismatches rear three-quarter torso; broadened/compressed garment fitting obscures near/far legs and weight bearing. Technical coverage is insufficient art evidence.",
+        "record": "Art/Review/P1/modular-upper-wardrobe-v1/leg-reinspection-2026-10-24.md"
+      }
     }
-  }
+  ]
 }

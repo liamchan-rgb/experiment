@@ -9,7 +9,11 @@
 - 用户于2026-10-22明确要求：智能体画的效果有问题，由主线程自己修，并同步到GitHub提示词。
 
 
-## 当前待修：左上/右上独立外观 v1
+## 当前候选：左上/右上裤靴 v2
+
+用户指出v1腿部粗短/透视异常后，由主线程独自重画低靴和灰裤，按原腿轴/膝位/脚掌几何控制最终轮廓，修正近远层次及腰侧漏底；原底模/动作/五个其他外观包保持。[正常行走](../Art/Review/P1/modular-upper-wardrobe-v2/outfits-walk-120ms.gif)、[起停](../Art/Review/P1/modular-upper-wardrobe-v2/outfits-start-stop-120ms.gif)、[站姿](../Art/Review/P1/modular-upper-wardrobe-v2/outfits-idle-2x.png)、[主线程具体复核](../Art/Review/P1/modular-upper-wardrobe-v2/art-review.md)。已看两方向两衣型全部13姿势整身1×/2×与帧序，16组合208图检查通过；无法连续播放，不称播放器验收。新外观未获用户认可。
+
+## 旧问题版：左上/右上独立外观 v1
 
 2026-10-24用户指出腿部怪异。主线程复查确认裤靴比例、膝踝读法、鞋掌透视和近远层次有问题，撤回此前内部美术通过；原技术检查保留但不构成美术通过。见[腿部具体复查](../Art/Review/P1/modular-upper-wardrobe-v1/leg-reinspection-2026-10-24.md)。下文为原交付记录。
 
