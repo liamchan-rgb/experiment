@@ -3,8 +3,8 @@
   "format": 3,
   "updated": "2026-10-24",
   "workflow": "Review one direction at a time from fixed cardinal and diagonal baselines. Modify and resubmit the same direction until explicit user artwork approval, then advance. Record provenance, feedback and accepted revisions for the future character template.",
-  "current": "p1-down-right-independent-appearance-v1",
-  "templateStatus": "Six current modular directions have presented versions; old whole-character eight-direction gait already exists/approved. Right/up current-contract layered/appearance/start-stop adaptations remain; reuse existing work, do not describe their walking art as never made.",
+  "current": "p1-neutral-up-walk-r1-layered",
+  "templateStatus": "Current up-neutral layered body/motion candidate, prioritized by latest user table order. Old approved up whole-character art preserved; new source/rig not automatically approved. Up appearances, down sync/start-stop, right adaptation and complete8direction integration remain.",
   "items": [
     {
       "id": "01-down-idle",
@@ -1907,6 +1907,13 @@
       "acceptedScope": "Previous delivered left-down primary whole-body appearances only",
       "current": "p1-down-right-independent-appearance-v1",
       "scope": "Right-down independent appearance on unchanged approved base; fixed-light/semantic mirror and shoulder carry; no inherited approval for new direction"
+    },
+    {
+      "date": "2026-10-24",
+      "userStatement": "那按你的表格的先后顺序来工作，第一补齐正向步态的分层",
+      "interpretation": "First row of previous answer is up-facing gait; proceed up-neutral layering first",
+      "current": "p1-neutral-up-walk-r1-layered",
+      "scope": "New current-contract neutral back-body/13poses, old approved artwork retained; main-only repair/review and normal GIF delivery"
     }
   ],
   "battleNeutralBodyReview": {
@@ -3301,13 +3308,17 @@
     "document": "docs/P1_DIRECTION_MODULES.md",
     "status": "in-progress",
     "next": [
-      "right neutral/motion/appearance",
-      "up neutral/motion/appearance",
+      "up independent appearances on current body after current review",
       "down relaxed-hand start-stop",
-      "all-direction combinations and direction changes"
+      "unified combination and direction-change review"
     ],
     "femaleResourcesStarted": false,
-    "repositorySyncPrerequisite": "Audit and synchronize existing local down r6/back-carry/second-outfit dependencies before claiming complete remote eight-direction modules"
+    "repositorySyncPrerequisite": "Audit and synchronize existing local down r6/back-carry/second-outfit dependencies before claiming complete remote eight-direction modules",
+    "current": "up neutral layered/motion per latest user table order",
+    "remainingDependencies": [
+      "right current-contract layered adaptation",
+      "synchronize existing local down r6/back-carry/second-outfit resources"
+    ]
   },
   "downLeftWardrobeReview": {
     "id": "p1-down-left-independent-wardrobe-v1",
@@ -3427,5 +3438,40 @@
     "artworkChanged": false,
     "existingTestsRerun": false,
     "deviceExecuted": false
+  },
+  "upLayeredNeutralReview": {
+    "id": "p1-neutral-up-walk-r1-layered",
+    "status": "candidate-main-fullbody-frame-review-complete",
+    "artApproval": null,
+    "authorAndReviewer": "root",
+    "subagentsUsed": false,
+    "source": "Art/Templates/P1-Neutral/up/walk-r1-layered/authoring.json",
+    "review": "Art/Review/P1/neutral-up-layered-r1",
+    "oldReference": "Art/Review/P1/directions/up/revisions/r1/approval.json",
+    "referenceScope": "Camera, anatomical sides, support/arm phases; not identical old clothed pixels or inherited new artwork approval",
+    "technical": {
+      "actualCompositorPoses": 13,
+      "semanticLayersWithoutOrphans": 104,
+      "newJunctionAlphaHoles": 0,
+      "completeArmPartitionChecks": 26,
+      "headLocalPlacementChecks": 13,
+      "kneeAnkleMaterialChecks": 52,
+      "independentPantsWalkFrames": 7,
+      "preservedFiles": 15478
+    },
+    "sourceUVMaps": 91,
+    "reexportByteIdenticalFiles": 371,
+    "existingTests": {
+      "contract": 26,
+      "compositor": 21
+    },
+    "mainReview": "All13 complete1x/2x, standing, walk/start-stop order and actual normal GIF decoded8 frames; still viewer only, no continuous playback claim",
+    "artifacts": {
+      "normalGif": "Art/Review/P1/neutral-up-layered-r1/walk-120ms.gif",
+      "startStopGif": "Art/Review/P1/neutral-up-layered-r1/start-stop-120ms.gif",
+      "idle": "Art/Review/P1/neutral-up-layered-r1/idle-review-2x.png"
+    },
+    "runtimeIntegrated": false,
+    "ipaBuilt": false
   }
 }

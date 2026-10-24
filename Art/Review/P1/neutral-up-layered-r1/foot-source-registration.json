@@ -1,0 +1,53 @@
+{
+  "method": "Two source-paint RGB variants through the unchanged foot silhouette/ankle/UV. Flat -> half -> rolled -> half -> flat; no generated body/limb geometry imported.",
+  "records": [
+    {
+      "state": "half-rolled",
+      "side": "left",
+      "changedRegionSourceYAtLeast": 210,
+      "RGBSamples": 76,
+      "maxSourceGutterDistance": 1.4142135623730951,
+      "alphaChanges": 0,
+      "retainedUnmatchedSourcePixels": 0,
+      "source": "source/half-rolled-feet-original.png",
+      "sourceSHA256": "a4b94dc898c48b19417c69550692775762b938ae9eafd9132861aa51d7a46fd0",
+      "registrationScale": 0.20414673046251994
+    },
+    {
+      "state": "half-rolled",
+      "side": "right",
+      "changedRegionSourceYAtLeast": 210,
+      "RGBSamples": 78,
+      "maxSourceGutterDistance": 2.0,
+      "alphaChanges": 0,
+      "retainedUnmatchedSourcePixels": 1,
+      "source": "source/half-rolled-feet-original.png",
+      "sourceSHA256": "a4b94dc898c48b19417c69550692775762b938ae9eafd9132861aa51d7a46fd0",
+      "registrationScale": 0.20414673046251994
+    },
+    {
+      "state": "rolled",
+      "side": "left",
+      "changedRegionSourceYAtLeast": 208,
+      "RGBSamples": 102,
+      "maxSourceGutterDistance": 1.0,
+      "alphaChanges": 0,
+      "retainedUnmatchedSourcePixels": 0,
+      "source": "source/rolled-feet-original.png",
+      "sourceSHA256": "34a1532a2c707a3e503476ac9bc89d3a60923bd21b0011314da94e023e6d9d98",
+      "registrationScale": 0.20414673046251994
+    },
+    {
+      "state": "rolled",
+      "side": "right",
+      "changedRegionSourceYAtLeast": 208,
+      "RGBSamples": 105,
+      "maxSourceGutterDistance": 2.0,
+      "alphaChanges": 0,
+      "retainedUnmatchedSourcePixels": 0,
+      "source": "source/rolled-feet-original.png",
+      "sourceSHA256": "34a1532a2c707a3e503476ac9bc89d3a60923bd21b0011314da94e023e6d9d98",
+      "registrationScale": 0.20414673046251994
+    }
+  ]
+}

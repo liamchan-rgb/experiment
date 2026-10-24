@@ -172,5 +172,15 @@
     "本次检查既有数据和代码，不新增美术验收或把旧验证称为重新执行",
     "未找到当前完整包/记录，不等于历史上没有相关工作",
     "本轮记录同步缺口，未批量发布未经复核的本地美术"
-  ]
+  ],
+  "subsequentProgress": {
+    "date": "2026-10-24",
+    "current": "up neutral13pose layered candidate",
+    "source": "Art/Templates/P1-Neutral/up/walk-r1-layered/asset.json",
+    "review": "Art/Review/P1/neutral-up-layered-r1",
+    "oldAuditRetained": true,
+    "newArtworkApproval": null,
+    "independentUpAppearancesComplete": false,
+    "downSyncGapResolved": false
+  }
 }

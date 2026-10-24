@@ -1,0 +1,19 @@
+{
+  "direction": "up",
+  "headCanvas": [
+    96,
+    96
+  ],
+  "headLocalOrigin": [
+    80,
+    61
+  ],
+  "neck": [
+    48,
+    69
+  ],
+  "headSourceInCanvas": "source/head.base.png",
+  "faceVisibility": "none in strict back view",
+  "headBaseRasterOwner": "Same96local placement as motion.headToCanvas; future hair can follow exact source UV",
+  "status": "guide-only; no independent hair/outfit resource acceptance"
+}

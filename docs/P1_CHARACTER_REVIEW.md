@@ -1,5 +1,11 @@
 # P1 人物素材逐张审核
 
+## 当前：正上中性步态分层r1候选
+
+按用户表格第一项先补正上，旧认可步态只作视角/相位参照、原像素保持；新统一中性身体与13姿势另审。root亲自修足面滚动、衣边归属和裤口随腿，检查完整1×/2×全部13姿势及GIF实际解码帧。13实际图/104层/91UV及源/ORA/SVG已留存；新中性分层尚无用户认可，独立头发/衣物/裤靴/背剑后续挂载，无App/设备/IPA。
+
+[正常GIF](../Art/Review/P1/neutral-up-layered-r1/walk-120ms.gif) · [指定起停](../Art/Review/P1/neutral-up-layered-r1/start-stop-120ms.gif) · [站姿](../Art/Review/P1/neutral-up-layered-r1/idle-review-2x.png) · [复核说明](../Art/Review/P1/neutral-up-layered-r1/art-review.md)。只核完整帧序与时长，不称连续播放器验收。
+
 ## 剩余项复核及同步缺口
 
 正上旧步态已认可/导入，逐方向换装组合和旧demo八向切换已做；剩余是当前分层适配及统一整合。正下自然空手确实缺专用起停，但r6/第二衣型/背剑等已有本地成果同时尚未完整同步远端。7分支库存、具体清单、旧审核数量与实际增量见[P1_DIRECTION_MODULE_AUDIT.json](P1_DIRECTION_MODULE_AUDIT.json)及[P1_DIRECTION_MODULES.md](P1_DIRECTION_MODULES.md)。本次只核查，不改美术、不运行设备或重跑测试。
