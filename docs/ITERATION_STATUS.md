@@ -2,6 +2,8 @@
 
 ## 2026-10-24 · 上斜v4：后颈连续肤色与边缘过渡
 
+美术提交 `8a5a44025fe282ebcb01e8d377784b3d7bb3bb9c`；[正常行走HTTPS直链](https://raw.githubusercontent.com/liamchan-rgb/experiment/8a5a44025fe282ebcb01e8d377784b3d7bb3bb9c/Art/Review/P1/modular-upper-wardrobe-v4/outfits-walk-120ms.gif)、正常起停及站姿三份文件已实测HTTP200、MIME/哈希一致，正常GIF帧速正确，回执见 `Art/Review/P1/modular-upper-wardrobe-v4/delivery.json`。592份文件重导逐字节一致，1920份原中性及旧换装文件保持。
+
 用户指出v3后颈色块不均匀。主线程确认离散暗像素被较亮补色替换，缺乏与周围阴影的融合，撤回v3内部美术通过。另存v4，以连续绘制颈部肤色场处理整个交界，源边缘采用2px合成过渡，原alpha/头形/动作和六个外观包保持。
 
 最终两方向两衣型全部13姿势整身1×/2×和新旧颈部帧序复核；孤立亮点与硬补丁边界已不明显。16组合208姿势检查通过，后颈影响区外与v2像素一致，无漏底/新增可见游离块。工具只能逐帧，不称连续播放器验收；新修订未获用户认可。原v3和更早资源保留。

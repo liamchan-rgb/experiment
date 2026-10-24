@@ -2953,7 +2953,9 @@
     },
     "mainReview": "Whole-body1x/2x all displayed poses and ordered nape comparison; no continuous-player viewing claimed",
     "runtimeIntegrated": false,
-    "ipaBuilt": false
+    "ipaBuilt": false,
+    "artCommit": "8a5a44025fe282ebcb01e8d377784b3d7bb3bb9c",
+    "delivery": "Art/Review/P1/modular-upper-wardrobe-v4/delivery.json"
   },
   "upperWardrobeHistory": [
     {
