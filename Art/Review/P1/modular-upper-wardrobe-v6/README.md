@@ -7,3 +7,11 @@ v5中轴竖背被用户判退。主线程撤销该移位，右上逐帧镜像左
 - [整身站姿](outfits-idle-2x.png)、[主线程复核](art-review.md)、[技术验证](validation.json)、[重导证明](reexport-validation.json)。
 
 13姿势整身1×/2×见方向/衣型目录；combinations为16搭配208图。查看器只能逐帧，不称连续播放器验收。新美术未获认可，无App/设备/IPA范围。
+
+## 已验证浏览器直链
+
+- [outfits-walk-120ms.gif](https://raw.githubusercontent.com/liamchan-rgb/experiment/2e92d5c562172cd42853946f9bbdac23e257b6a2/Art/Review/P1/modular-upper-wardrobe-v6/outfits-walk-120ms.gif)
+- [outfits-start-stop-120ms.gif](https://raw.githubusercontent.com/liamchan-rgb/experiment/2e92d5c562172cd42853946f9bbdac23e257b6a2/Art/Review/P1/modular-upper-wardrobe-v6/outfits-start-stop-120ms.gif)
+- [outfits-idle-2x.png](https://raw.githubusercontent.com/liamchan-rgb/experiment/2e92d5c562172cd42853946f9bbdac23e257b6a2/Art/Review/P1/modular-upper-wardrobe-v6/outfits-idle-2x.png)
+
+三份文件HTTP200、MIME及哈希与本地一致，GIF时序与循环标志一致，见delivery.json。美术提交 `2e92d5c562172cd42853946f9bbdac23e257b6a2`。

@@ -2953,7 +2953,9 @@
     },
     "mainReview": "All13 right poses in both outfits at whole-body1x/2x plus paired left reference and crossed hair; no continuous playback claim",
     "runtimeIntegrated": false,
-    "ipaBuilt": false
+    "ipaBuilt": false,
+    "artCommit": "2e92d5c562172cd42853946f9bbdac23e257b6a2",
+    "delivery": "Art/Review/P1/modular-upper-wardrobe-v6/delivery.json"
   },
   "upperWardrobeHistory": [
     {
