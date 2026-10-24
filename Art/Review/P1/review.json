@@ -2960,7 +2960,9 @@
     },
     "mainReview": "All displayed13 poses, both directions/two outfits, whole-body1x/2x plus ordered nape diagnostic and crossed hair; no continuous-player viewing claimed",
     "runtimeIntegrated": false,
-    "ipaBuilt": false
+    "ipaBuilt": false,
+    "artCommit": "eededb5c11a548cf9f0aad856782ba8e2b8b9b08",
+    "delivery": "Art/Review/P1/modular-upper-wardrobe-v3/delivery.json"
   },
   "upperWardrobeHistory": [
     {
