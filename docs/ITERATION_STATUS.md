@@ -1506,3 +1506,10 @@ contact-r1完成并由主审接入：01→02→03左靴最后可见行210→215�
 主线程退回离线HUD重叠稿，重排三技能卡、状态条与大粗衬线字；保留drafts/overlap-review-hud。已看最终三GIF23页/880实际解码帧与原尺寸关键帧（静态序列不称连续播放），正常50fps：强击330帧6.6s，盾360帧7.2s，回血190帧3.8s；无损压缩与等比缩放，不改时间。另做整身1×/2×图。产物Art/Review/Battle/smooth-status-demo-v1、Art/Integration/Battle-smooth-status-demo-v1与Media/Build44。原素材/行走/动作JSON/相机代码保持，505姿态圆盾覆盖继续通过。运行目标60Hz而非设备性能实测；新图集解码约83.6MiB，GPU/实机性能由用户反馈。buff当前仅已有护盾，未添加其他机制。新美术认可null。
 
 交付提交f8822c9dd6faef9422283371b6048d618a95617b已发布；86个选定交付路径与11个归档输入路径逐字节核对，17882旧美术/步态远端路径保持。8个HTTPS（含不可变与分支IPA、三GIF、三PNG）均实际GET200、MIME/完整字节核对，GIF全部20ms/帧且正常时长。回执Art/Review/Battle/smooth-status-demo-v1/delivery.json。IPA直接链接https://raw.githubusercontent.com/liamchan-rgb/experiment/fix/build33-face-grounding-camera/Downloads/MeadowJourney-b44.ipa。
+
+
+## 2026-10-25 build44 安装兼容重封装 r1
+
+用户截图SideStore“Archive appears to be corrupt: MeadowJourney-b44.ipa”。本轮重新GET原公开IPA，30,292,842字节/SHA b2f158...与本地/设备归档相同；CRC通过，原43与44除版本号外Info.plist无变更，同arm64/iOS15最低版本，无加密，未复现设备错误，不能断言已定位根因或安装通过。
+
+复用scripts/repack-ipa.py经典ZIP2.0重封装为Downloads/MeadowJourney-b44-r1.ipa，清除扩展/注释，无压缩/无ZIP64；逐文件确认全部App内容、路径和权限不变，本地头与中央目录CRC/大小/版本字段一致。仍1.6.18/build44、同源码1236b901/归档40182000958，无新功能/素材变化或App/设备/模拟器运行。新包30,292,842字节，SHA256 945bdd2f930f4944a30e4e76a07d33d3e159944e26c6af7d61222f16ac103449，旧包保留。后续package-ipa.sh自动走同一规范化步骤，bash语法检查；真实SideStore安装待用户复测。新文件名用于避开原下载缓存；待实际GET新链接后记录回执。

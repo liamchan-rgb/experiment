@@ -1,5 +1,8 @@
 # 项目协作规则
 
+## build44 安装兼容候选 r1
+用户SideStore报Archive appears to be corrupt。原公开下载与归档一致/CRC通过但未复现设备错误，不能声称已确定根因或安装成功。当前优先下载Downloads/MeadowJourney-b44-r1.ipa：经典ZIP2.0无压缩重封装，全部App字节/权限不变，仍1.6.18/build44；详细校验MeadowJourney-build44-r1.json。后续package-ipa.sh走相同规范化步骤，真实安装由用户复测。旧包/美术审核不覆盖、不扩大认可；仅封装变更无需重复制作动图。
+
 ## 当前返修 build44（已交付候选，待用户实机反馈）
 用户指出build43回血抽帧/护盾突现/粒子低帧感。当前smooth-status-v1：目标60Hz、死亡真60Hz采样、连续回血光缕/稳定星点、护盾施法渐入；保留直接hero挂载和原规则。统一大粗字/状态条/方形buff悬停详情（触屏点按）；不得声称设备已达60FPS，实机指标见Documents/BattleFrameTiming.json。主线程已查看23页/880实际GIF解码帧和原尺寸关键帧，另核整身1×/2×；五纯Swift与设备归档40182000958通过，无App或模拟器执行。交付目录Art/Review/Battle/smooth-status-demo-v1、Media/Build44；正常三GIF/站姿/HTTPS/直接IPA仍须实际发出，不能省略，新认可null。
 

@@ -33,6 +33,10 @@ ditto "$app_path" "$stage_dir/Payload/MeadowJourney.app"
   # SideStore's archive reader; Assets.car is already internally compressed.
   /usr/bin/zip -q -0 -r -X -y "$output_dir/$output_name" Payload
 )
+# Normalize both local and central headers to classic ZIP 2.0, as used by
+# the compatibility rewrap. Keep all application bytes and Unix permissions.
+python3 "$(dirname "$0")/repack-ipa.py" "$output_dir/$output_name" "$stage_dir/classic.ipa"
+mv "$stage_dir/classic.ipa" "$output_dir/$output_name"
 unzip -t "$output_dir/$output_name"
 shasum -a 256 "$output_dir/$output_name"
 echo "Unsigned IPA ready for SideStore re-signing: $output_dir/$output_name"

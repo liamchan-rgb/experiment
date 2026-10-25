@@ -1,6 +1,18 @@
 # SideStore 安装与迭代包
 
-## 当前版本：连续特效、状态条与 buff 说明 · 1.6.18 build44
+## 当前安装兼容重封装：1.6.18 build44-r1
+
+用户SideStore报“Archive appears to be corrupt”。原公开IPA重新下载与归档字节一致、CRC通过，未本地复现设备错误。现用经典ZIP2.0无压缩重新封装，所有App文件/权限逐字节保持，版本仍build44，不是美术改版；真实安装待用户确认。
+
+[直接下载 MeadowJourney-b44-r1.ipa](https://raw.githubusercontent.com/liamchan-rgb/experiment/fix/build33-face-grounding-camera/Downloads/MeadowJourney-b44-r1.ipa) · [完整校验/说明](MeadowJourney-build44-r1.json)
+
+```text
+https://raw.githubusercontent.com/liamchan-rgb/experiment/fix/build33-face-grounding-camera/Downloads/MeadowJourney-b44-r1.ipa
+```
+
+30,292,842字节；SHA256 `945bdd2f930f4944a30e4e76a07d33d3e159944e26c6af7d61222f16ac103449`。重新下载这个新文件名再导入SideStore，勿复用旧文件。
+
+## build44 原归档与美术预览
 
 护盾施法渐入，回血光缕连续转向、星点稳定；目标更新60Hz，死亡粒子重新60Hz采样。减少逐帧光池/投影重算，记录真实帧间隔供后续实机判断。深绿金边与米白大粗字，HP/盾/AP条；护盾小方框hover/focus/tap看说明。原战斗数值/人物/行走/运镜保持。
 

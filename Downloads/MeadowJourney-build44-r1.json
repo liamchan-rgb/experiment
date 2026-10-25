@@ -1,0 +1,103 @@
+{
+  "original": "MeadowJourney-b44.ipa",
+  "file": "MeadowJourney-b44-r1.ipa",
+  "build": 44,
+  "version": "1.6.18",
+  "bytes": 30292842,
+  "sha256": "945bdd2f930f4944a30e4e76a07d33d3e159944e26c6af7d61222f16ac103449",
+  "originalSHA256": "b2f1587658e56e6019c3b448310da16297a453ce1f4cb13bd648c02e5736791c",
+  "sourceCommit": "1236b9010352db5417665432066b079c7ff6b7fc",
+  "workflowRun": 40182000958,
+  "change": "Rewrapped only ZIP headers as classic version2.0 stored ZIP; file names and all application bytes/permissions unchanged",
+  "reason": "User SideStore screenshot: Archive appears to be corrupt: MeadowJourney-b44.ipa",
+  "checks": {
+    "crc": true,
+    "allPayloadBytesIdentical": true,
+    "allPermissionsIdentical": true,
+    "classicZIP20LocalAndCentral": true,
+    "noExtraNoCommentsNoZIP64": true,
+    "publicOriginalDownloadedAndByteMatched": true
+  },
+  "files": [
+    {
+      "path": "Payload/",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "mode": "0o40755",
+      "localAndCentralHeadersMatch": true
+    },
+    {
+      "path": "Payload/MeadowJourney.app/",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "mode": "0o40755",
+      "localAndCentralHeadersMatch": true
+    },
+    {
+      "path": "Payload/MeadowJourney.app/SceneMap.json",
+      "bytes": 18140,
+      "sha256": "b5d8e7c74e6038a4d6b3e266cf1c6f7184eee56cfb2c2f462b7e048ab6cd0ea5",
+      "mode": "0o100644",
+      "localAndCentralHeadersMatch": true
+    },
+    {
+      "path": "Payload/MeadowJourney.app/default.metallib",
+      "bytes": 60719,
+      "sha256": "dabf5608f5f43f80037ff652cf782c2923a9b95b8c423748f3ca51c7ea9b20a9",
+      "mode": "0o100644",
+      "localAndCentralHeadersMatch": true
+    },
+    {
+      "path": "Payload/MeadowJourney.app/AppIcon60x60@2x.png",
+      "bytes": 48184,
+      "sha256": "f85732164a8bef2696fd363f8b3e35d269d1a345d4b2fcfc4c996347b1cd5f93",
+      "mode": "0o100644",
+      "localAndCentralHeadersMatch": true
+    },
+    {
+      "path": "Payload/MeadowJourney.app/Assets.car",
+      "bytes": 29151135,
+      "sha256": "975585e8dcf6bf0df0cb391906e55e83ac0a0aaa6483097f13d5a8bd2b78a65f",
+      "mode": "0o100644",
+      "localAndCentralHeadersMatch": true
+    },
+    {
+      "path": "Payload/MeadowJourney.app/AppIcon76x76@2x~ipad.png",
+      "bytes": 77240,
+      "sha256": "14958a48d7903b50d966033a4573fbdb7c2c9d87e1d475bc00dacf1c973e1011",
+      "mode": "0o100644",
+      "localAndCentralHeadersMatch": true
+    },
+    {
+      "path": "Payload/MeadowJourney.app/MeadowJourney",
+      "bytes": 882368,
+      "sha256": "17367b03530c9fd67fb4d441639201dc4918ee4dc7b7e68ab6ef57a7645733cd",
+      "mode": "0o100755",
+      "localAndCentralHeadersMatch": true
+    },
+    {
+      "path": "Payload/MeadowJourney.app/Info.plist",
+      "bytes": 1380,
+      "sha256": "e2d4eb8c9fb35271b3194da3cef200057a9aa1a488161c979159e50e96381934",
+      "mode": "0o100644",
+      "localAndCentralHeadersMatch": true
+    },
+    {
+      "path": "Payload/MeadowJourney.app/hero-gait.json",
+      "bytes": 52022,
+      "sha256": "038b27250c07c3df3497c41bfba98505a145f46bf129eee64e685272ef3de9d3",
+      "mode": "0o100644",
+      "localAndCentralHeadersMatch": true
+    },
+    {
+      "path": "Payload/MeadowJourney.app/PkgInfo",
+      "bytes": 8,
+      "sha256": "82502191c9484b04d685374f9879a0066069c49b8acae7a04b01d38d07e8eca0",
+      "mode": "0o100644",
+      "localAndCentralHeadersMatch": true
+    }
+  ],
+  "rootCauseConfirmed": false,
+  "deviceInstallationConfirmed": false,
+  "simulatorOrDeviceRunPerformed": false
+}
