@@ -34,13 +34,13 @@ final class MeadowPartyStageView:UIView {
     var isPlaying:Bool { intent != nil }
     override init(frame:CGRect) {
         super.init(frame:frame);backgroundColor=MeadowPreviewPalette.panel;clipsToBounds=true;layer.cornerRadius=12
-        addSubview(world);world.bounds=CGRect(x:0,y:0,width:1000,height:600);world.clipsToBounds=true
+        addSubview(world);world.bounds=CGRect(x:0,y:0,width:1000,height:600);world.clipsToBounds=false
         for (i,name) in MeadowBattleCanvasGeometry.sceneLayerOrder.enumerated() {
             let image=MeadowBattlePlateProcessor.image(named:name,role:[.farForest,.ground,.midground,.foreground][i])
-            let view=UIImageView(image:image);view.frame=CGRect(x:0,y:-200,width:1000,height:1000*1201/1309)
+            let view=UIImageView(image:image);view.frame=CGRect(x:0,y:-159,width:1000,height:1000*1201/1309)
             view.layer.zPosition=i==3 ? 900:CGFloat(-100+i);world.addSubview(view)
         }
-        dim.backgroundColor = .black;dim.frame=world.bounds;dim.layer.zPosition=100;dim.isUserInteractionEnabled=false;world.addSubview(dim)
+        dim.backgroundColor = .black;dim.frame=CGRect(x:0,y:-500,width:1000,height:1600);dim.layer.zPosition=100;dim.isUserInteractionEnabled=false;world.addSubview(dim)
         for id in ["p1","p2","m1","m2"] {
             let shadow:MeadowBattleGroundingView
             if id.hasPrefix("p") {
@@ -200,7 +200,7 @@ final class MeadowPartyStageView:UIView {
         fx.messages=messages;fx.particles=emissions.flatMap { e in MeadowBattleLightField.sample(e.kind,age:sceneTime-e.startedAt,originX:e.x,originY:e.y,groundY:e.groundY) }
         fx.setNeedsDisplay()
     }
-    override func layoutSubviews() { super.layoutSubviews();let scale=min(bounds.width/1000,bounds.height/600);world.center=CGPoint(x:bounds.midX,y:bounds.midY);world.transform=CGAffineTransform(scaleX:scale,y:scale) }
+    override func layoutSubviews() { super.layoutSubviews();let scale=bounds.width/1000;world.center=CGPoint(x:bounds.midX,y:bounds.midY);world.transform=CGAffineTransform(scaleX:scale,y:scale) }
 }
 struct MeadowPartyMessage { let text:String;let point:CGPoint;let at:Double;let color:UIColor }
 
