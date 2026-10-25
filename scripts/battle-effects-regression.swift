@@ -128,6 +128,25 @@ import Foundation
                 precondition(before.map(\.x)==after.map(\.x) && before.map(\.y)==after.map(\.y))
             }
         }
+        // Check the actual attachment formulas around former flip / spawn boundaries.
+        for index in 0..<2 {
+            for frame in 1..<180 {
+                let a=MeadowBattleVisualMotion.wisp(Double(frame-1)/100,index:index)
+                let b=MeadowBattleVisualMotion.wisp(Double(frame)/100,index:index)
+                precondition(b.scaleX>=0.64 && b.scaleX<=1.001)
+                precondition(abs(a.x-b.x)<0.5 && abs(a.scaleX-b.scaleX)<0.008)
+            }
+        }
+        func ward(_ t:Double)->Double {
+            MeadowBattleVisualMotion.shieldOpacity(shield:t<0.46 ? 0:4,time:t,formation:t<0.46 ? t:nil,birth:t<0.46 ? nil:t-0.46,contact:nil,broken:nil)
+        }
+        precondition(ward(0)==0 && ward(0.23)>0 && ward(0.23)<0.68)
+        precondition(abs(ward(0.46-0.00001)-ward(0.46+0.00001))<0.0001)
+        for frame in 0..<116 { precondition(MeadowBattleVisualMotion.windFrame((Double(frame)+0.01)/60)==frame) }
+        for age in [0.01,0.4,0.7,1.1,1.6] {
+            let motes=MeadowBattleRecoveryField.sample(age)
+            precondition(Set(motes.map(\.id)).count==motes.count)
+        }
         let out = URL(fileURLWithPath: CommandLine.arguments[1])
         try FileManager.default.createDirectory(at: out.deletingLastPathComponent(), withIntermediateDirectories: true)
         try JSONSerialization.data(withJSONObject: ["scope":"production model and one-shot impact clock; no UI/device execution", "lastStrike":traces,"shieldSequence":shieldTraces,"lightParticles":particleTraces,"healSequence":healTraces], options:[.prettyPrinted,.sortedKeys]).write(to:out)

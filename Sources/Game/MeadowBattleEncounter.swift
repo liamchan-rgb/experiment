@@ -303,6 +303,7 @@ enum MeadowBattleShieldGeometry {
 }
 
 struct MeadowBattleRecoveryMote {
+    let id: Int
     let x: Double
     let y: Double
     let size: Double
@@ -332,8 +333,33 @@ enum MeadowBattleRecoveryField {
             let y: Double = -8.0 - progress * 155.0
             let size: Double = 5.0 + Double(i % 4) * 3.0
             let alpha: Double = sin(Double.pi * progress) * 0.95
-            result.append(MeadowBattleRecoveryMote(x:x,y:y,size:size,alpha:alpha))
+            result.append(MeadowBattleRecoveryMote(id:i,x:x,y:y,size:size,alpha:alpha))
         }
         return result
+    }
+}
+
+/// Continuous visual envelopes, shared with offline review and regression checks.
+enum MeadowBattleVisualMotion {
+    static let fps = 60.0
+    static let deathDuration = 116.0 / fps
+    static func bodyFrame(_ age: Double) -> Int { min(47,max(0,Int(age*fps))) }
+    static func windFrame(_ age: Double) -> Int { min(115,max(0,Int(age*fps))) }
+    static func shieldOpacity(shield: Int, time: Double, formation: Double?, birth: Double?, contact: Double?, broken: Double?) -> Double {
+        let smooth = MeadowBattleRecoveryField.smooth
+        var alpha = formation.map { 0.68*smooth($0/0.46) } ?? 0
+        if shield > 0 {
+            let spawn = birth.map { $0 < 0.12 ? smooth($0/0.12) : 1-smooth(($0-0.12)/0.28) } ?? 0
+            let hit = contact.map { 1-smooth($0/0.32) } ?? 0
+            let breathing = birth.map { smooth($0/0.4) } ?? 1
+            alpha = max(alpha,0.68+spawn*0.14+hit*0.22+sin(time*3)*0.025*breathing)
+        }
+        if let broken, broken < 0.25 { alpha=max(alpha,0.95*(1-smooth(broken/0.25))) }
+        return min(1,max(0,alpha))
+    }
+    static func wisp(_ age: Double, index: Int) -> (x: Double, y: Double, rotation: Double, scaleX: Double, alpha: Double) {
+        let turn = age*4+Double(index)*Double.pi
+        return ((index == 0 ? -26.0 : 26.0)+sin(turn)*12, -(76+age*15), sin(turn)*0.22,
+            0.82+0.18*cos(turn), MeadowBattleRecoveryField.pulse(age)*(index == 0 ? 0.85 : 0.65))
     }
 }

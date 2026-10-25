@@ -15,14 +15,17 @@ final class MeadowBattleSceneClock {
         guard link == nil else { return }
         previous = 0; target.clock = self
         let value = CADisplayLink(target: target, selector: #selector(MeadowBattleClockTarget.tick(_:)))
-        value.preferredFramesPerSecond = 30
+        value.preferredFramesPerSecond = 60
         value.add(to: .main, forMode: .common); link = value
     }
-    func stop() { link?.invalidate(); link = nil; previous = 0 }
+    func stop() { link?.invalidate(); link = nil; previous = 0; MeadowBattleFrameTiming.flush() }
     fileprivate func tick(_ link: CADisplayLink) {
         defer { previous = link.timestamp }
         guard previous > 0, UIApplication.shared.applicationState == .active else { return }
-        onTick?(min(1.0 / 15, max(0, link.timestamp - previous)))
+        let delta=max(0,link.timestamp-previous)
+        let begin=CACurrentMediaTime()
+        onTick?(min(0.25,delta))
+        MeadowBattleFrameTiming.record(interval:delta,cpu:CACurrentMediaTime()-begin)
     }
     deinit { stop() }
 }
@@ -71,15 +74,15 @@ enum MeadowBattleVFXAssets {
     static let burst = UIImage(named: "BattleVFXBurst")!
     static let ring = UIImage(named: "BattleVFXRing")!
     static let mote = UIImage(named: "BattleVFXMote")!
-    static let body = frames("BattleVFXDeathBody", width: 384, height: 256)
-    static let wind = frames("BattleVFXDeathWindHeavy", width: 640, height: 320)
-    private static func frames(_ name: String, width: Int, height: Int) -> [UIImage] {
-        guard let sheet = UIImage(named: name)?.cgImage else { fatalError("Missing battle VFX atlas") }
-        return (0..<48).map { i in
+    static let body = frames("BattleVFXDeathBody60", width: 384, height: 256,count:48)
+    static let wind = frames("BattleVFXDeathWind60", width: 448, height: 320,count:116)
+    private static func frames(_ name: String, width: Int, height: Int, count: Int) -> [UIImage] {
+        guard let sheet = UIImage(named: name)?.preparingForDisplay()?.cgImage else { fatalError("Missing battle VFX atlas") }
+        return (0..<count).map { i in
             UIImage(cgImage: sheet.cropping(to: CGRect(x: (i % 8) * width, y: (i / 8) * height, width: width, height: height))!)
         }
     }
-    static func deathFrame(_ age: Double) -> Int { min(47, max(0, Int(age / 0.04))) }
+    static func prewarm() { DispatchQueue.global(qos:.userInitiated).async { _ = body; _ = wind } }
 }
 
 final class MeadowBattleEffectsView: UIView {
@@ -106,7 +109,7 @@ final class MeadowBattleEffectsView: UIView {
     var shieldContactAge: Double?
     var shieldBreakAge: Double?
     var deathAge: Double?
-    var lightEmissions: [MeadowBattleLightEmission] = []
+    var particles: [MeadowBattleLightParticle] = []
     override init(frame: CGRect) { super.init(frame: frame); isOpaque = false; isUserInteractionEnabled = false }
     required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
     override func draw(_ rect: CGRect) {
@@ -122,18 +125,13 @@ final class MeadowBattleEffectsView: UIView {
         }
         func light(_ center: CGPoint, _ rx: CGFloat, _ ry: CGFloat, _ alpha: CGFloat, _ color: UIColor = UIColor(red:1,green:0.75,blue:0.27,alpha:1)) {
             guard alpha > 0 else { return }
-            ctx.saveGState(); ctx.translateBy(x: center.x, y: center.y); ctx.scaleBy(x: rx*unit, y: ry*unit)
-            let colors = [color.withAlphaComponent(alpha).cgColor, UIColor.clear.cgColor] as CFArray
-            let gradient = CGGradient(colorsSpace: CGColorSpaceCreateDeviceRGB(), colors: colors, locations: [0, 1])!
-            ctx.setBlendMode(.plusLighter); ctx.drawRadialGradient(gradient, startCenter: .zero, startRadius: 0, endCenter: .zero, endRadius: 1, options: [])
-            ctx.restoreGState()
+            let glow=MeadowBattleGlowCache.image(color)
+            glow.draw(in:CGRect(x:center.x-rx*unit,y:center.y-ry*unit,width:rx*unit*2,height:ry*unit*2),blendMode:.plusLighter,alpha:alpha)
         }
         let burst = impactAge.map { pulse($0, -0.035, 0.035, 0.52) } ?? 0
         let wardSpawn=shieldBirthAge.map { pulse($0,0,0.10,0.45) } ?? 0
         let wardContact=shieldContactAge.map { pulse($0,-0.02,0.025,0.38) } ?? 0
-        let debris = lightEmissions.flatMap { e in
-            MeadowBattleLightField.sample(e.kind,age:time-e.startedAt,originX:e.x,originY:e.y,groundY:e.groundY)
-        }
+        let debris = particles
         let recovery=recoveryAge.map { CGFloat(MeadowBattleRecoveryField.pulse($0)) } ?? 0
         if groundOnly {
             if recovery>0 {
@@ -232,18 +230,16 @@ final class MeadowBattleAttachedSkillsView: UIView {
         layer.zPosition=100
     }
     required init?(coder:NSCoder) { fatalError("init(coder:) has not been implemented") }
-    func update(shield:Int,preview:Bool,time:Double,birth:Double?,contact:Double?,broken:Double?,recovery:Double?) {
+    func update(shield:Int,preview:Double,time:Double,formation:Double?,formationBase:Double,birth:Double?,contact:Double?,broken:Double?,recovery:Double?) {
         let unit=bounds.width/256
         func smooth(_ x:Double)->CGFloat { CGFloat(MeadowBattleRecoveryField.smooth(x)) }
         UIView.performWithoutAnimation {
             CATransaction.begin();CATransaction.setDisableActions(true)
             defer { CATransaction.commit() }
             let center=CGPoint(x:MeadowBattleShieldGeometry.centerX*Double(unit),y:MeadowBattleShieldGeometry.centerY*Double(unit))
-            let spawn=birth.map { 1-smooth($0/0.45) } ?? 0
-            let hit=contact.map { 1-smooth($0/0.32) } ?? 0
-            var alpha:CGFloat=shield>0 ? 0.68+spawn*0.25+hit*0.25+sin(CGFloat(time)*3)*0.035 : 0
-            if preview { alpha=max(alpha,0.18) }
-            if let broken,broken<0.25 { alpha=max(alpha,0.95*(1-smooth(broken/0.25))) }
+            var alpha=CGFloat(MeadowBattleVisualMotion.shieldOpacity(shield:shield,time:time,formation:formation,birth:birth,contact:contact,broken:broken))
+            alpha=max(alpha,CGFloat(preview)*0.18)
+            if let formation { alpha=max(alpha,CGFloat(formationBase)*(1-smooth(formation/0.46))) }
             let size=CGFloat(MeadowBattleShieldGeometry.diameter)*unit
             rim.frame=CGRect(x:center.x-size/2,y:center.y-size/2,width:size,height:size)
             rim.alpha=alpha
@@ -271,16 +267,16 @@ final class MeadowBattleAttachedSkillsView: UIView {
             wave.alpha=power*0.8
             for (i,wisp) in wisps.enumerated() {
                 wisp.isHidden = !active
-                let turn=CGFloat(age)*4+CGFloat(i) * .pi
+                let pose=MeadowBattleVisualMotion.wisp(age,index:i)
                 wisp.bounds=CGRect(x:0,y:0,width:85*unit,height:180*unit)
-                wisp.center=CGPoint(x:foot.x+(CGFloat(i==0 ? -26 : 26)+sin(turn)*12)*unit,y:foot.y-(76+CGFloat(age)*15)*unit)
-                wisp.transform=CGAffineTransform(rotationAngle:sin(turn)*0.22).scaledBy(x:cos(turn)>=0 ? 1 : -1,y:1)
-                wisp.alpha=power*(i==0 ? 0.85 : 0.65)
+                wisp.center=CGPoint(x:foot.x+(CGFloat(pose.x))*unit,y:foot.y-(-CGFloat(pose.y))*unit)
+                wisp.transform=CGAffineTransform(rotationAngle:CGFloat(pose.rotation)).scaledBy(x:CGFloat(pose.scaleX),y:1)
+                wisp.alpha=CGFloat(pose.alpha)
             }
-            let motes=MeadowBattleRecoveryField.sample(age)
+            let motes=Dictionary(uniqueKeysWithValues:MeadowBattleRecoveryField.sample(age).map { ($0.id,$0) })
             for (i,star) in stars.enumerated() {
-                guard i<motes.count else { star.isHidden=true;continue }
-                let p=motes[i];star.isHidden=false
+                guard let p=motes[i] else { star.isHidden=true;continue }
+                star.isHidden=false
                 star.frame=CGRect(x:foot.x+CGFloat(p.x-p.size/2)*unit,y:foot.y+CGFloat(p.y-p.size/2)*unit,width:CGFloat(p.size)*unit,height:CGFloat(p.size)*unit)
                 star.alpha=CGFloat(p.alpha)
             }
@@ -291,4 +287,91 @@ final class MeadowBattleAttachedSkillsView: UIView {
 final class MeadowBattleEnemyTargetView: UIImageView {
     var onActivate: (() -> Void)?
     override func accessibilityActivate() -> Bool { onActivate?(); return onActivate != nil }
+}
+
+/// Cached optical masks avoid constructing gradients for every particle every frame.
+private enum MeadowBattleGlowCache {
+    private static var cache: [UIColor:UIImage] = [:]
+    static func image(_ color: UIColor) -> UIImage {
+        if let found=cache[color] { return found }
+        let image=UIGraphicsImageRenderer(size:CGSize(width:96,height:96),format:{ let f=UIGraphicsImageRendererFormat();f.scale=1;return f }()).image { context in
+            let colors=[color.cgColor,color.withAlphaComponent(0).cgColor] as CFArray
+            let g=CGGradient(colorsSpace:CGColorSpaceCreateDeviceRGB(),colors:colors,locations:[0,1])!
+            context.cgContext.drawRadialGradient(g,startCenter:CGPoint(x:48,y:48),startRadius:0,endCenter:CGPoint(x:48,y:48),endRadius:48,options:[])
+        }
+        cache[color]=image;return image
+    }
+}
+
+/// Actual display-link intervals and update CPU time, never inferred device FPS.
+enum MeadowBattleFrameTiming {
+    private static var count=0, over25=0, over50=0
+    private static var intervalTotal=0.0, cpuTotal=0.0, maxInterval=0.0, maxCPU=0.0
+    private static let queue=DispatchQueue(label:"battle.frame-timing",qos:.utility)
+    static func record(interval:Double,cpu:Double) {
+        count += 1;intervalTotal += interval;cpuTotal += cpu
+        maxInterval=max(maxInterval,interval);maxCPU=max(maxCPU,cpu)
+        if interval>0.025 { over25 += 1 };if interval>0.050 { over50 += 1 }
+    }
+    static func flush() {
+        guard count>0 else { return }
+        let values:[String:Any]=["build":44,"samples":count,"targetHz":60,"meanIntervalMs":intervalTotal/Double(count)*1000,"maxIntervalMs":maxInterval*1000,"meanUpdateCPUMs":cpuTotal/Double(count)*1000,"maxUpdateCPUMs":maxCPU*1000,"intervalsOver25ms":over25,"intervalsOver50ms":over50,"scope":"display-link interval and main-thread update CPU; not GPU timing"]
+        queue.async {
+            guard let folder=FileManager.default.urls(for:.documentDirectory,in:.userDomainMask).first,
+                  let data=try? JSONSerialization.data(withJSONObject:values,options:[.sortedKeys,.prettyPrinted]) else { return }
+            try? data.write(to:folder.appendingPathComponent("BattleFrameTiming.json"),options:.atomic)
+        }
+    }
+}
+
+/// The same bars are used in the action panel and actor status headers.
+final class MeadowBattleResourceBar: UIView {
+    private let caption=UILabel()
+    private let track=UIView()
+    private let fill=UIView()
+    private var fraction:CGFloat=0
+    override init(frame:CGRect) {
+        super.init(frame:frame);isAccessibilityElement=true
+        caption.font=MeadowPreviewPalette.font(17);caption.textColor=MeadowPreviewPalette.ink
+        track.backgroundColor=UIColor(red:0.03,green:0.07,blue:0.05,alpha:0.95)
+        track.layer.borderColor=MeadowPreviewPalette.border.cgColor;track.layer.borderWidth=1;track.layer.cornerRadius=3;track.clipsToBounds=true
+        addSubview(caption);addSubview(track);track.addSubview(fill)
+    }
+    required init?(coder:NSCoder) { fatalError("init(coder:) has not been implemented") }
+    func show(_ name:String,value:Int,maximum:Int,color:UIColor) {
+        caption.text="\(name)  \(value)/\(maximum)";fill.backgroundColor=color
+        fraction=CGFloat(max(0,min(value,maximum)))/CGFloat(max(1,maximum))
+        accessibilityLabel=name;accessibilityValue="\(value)/\(maximum)";setNeedsLayout()
+    }
+    override func layoutSubviews() {
+        super.layoutSubviews();caption.frame=CGRect(x:0,y:0,width:bounds.width,height:23)
+        track.frame=CGRect(x:0,y:27,width:bounds.width,height:max(8,bounds.height-29))
+        fill.frame=CGRect(x:1,y:1,width:max(0,(track.bounds.width-2)*fraction),height:max(0,track.bounds.height-2))
+    }
+}
+
+final class MeadowBattleVitalsView: UIView {
+    private let title=UILabel()
+    private let track=UIView(),fill=UIView(),shieldTrack=UIView(),shieldFill=UIView()
+    private var hp:CGFloat=1,ward:CGFloat=0
+    override init(frame:CGRect) {
+        super.init(frame:frame);isUserInteractionEnabled=false;isAccessibilityElement=true
+        backgroundColor=MeadowPreviewPalette.panel;layer.cornerRadius=5
+        title.font=MeadowPreviewPalette.font(17);title.textColor=MeadowPreviewPalette.ink
+        title.textAlignment = .center
+        for bar in [track,shieldTrack] { bar.backgroundColor=UIColor.black.withAlphaComponent(0.7);addSubview(bar) }
+        fill.backgroundColor = .systemGreen;shieldFill.backgroundColor = .systemCyan
+        track.addSubview(fill);shieldTrack.addSubview(shieldFill);addSubview(title)
+    }
+    required init?(coder:NSCoder) { fatalError("init(coder:) has not been implemented") }
+    func show(name:String,hp:Int,maximum:Int,shield:Int) {
+        title.text="\(name)  \(hp)/\(maximum)";self.hp=CGFloat(hp)/CGFloat(maximum);ward=CGFloat(min(8,shield))/8
+        shieldTrack.isHidden=shield==0
+        accessibilityLabel=name;accessibilityValue="生命\(hp)/\(maximum)，护盾\(shield)";setNeedsLayout()
+    }
+    override func layoutSubviews() {
+        super.layoutSubviews();title.frame=CGRect(x:3,y:1,width:bounds.width-6,height:23)
+        track.frame=CGRect(x:6,y:27,width:bounds.width-12,height:7);fill.frame=CGRect(x:0,y:0,width:track.bounds.width*hp,height:7)
+        shieldTrack.frame=CGRect(x:6,y:36,width:bounds.width-12,height:4);shieldFill.frame=CGRect(x:0,y:0,width:shieldTrack.bounds.width*ward,height:4)
+    }
 }

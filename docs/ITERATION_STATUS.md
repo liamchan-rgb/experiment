@@ -1489,3 +1489,11 @@ contact-r1完成并由主审接入：01→02→03左靴最后可见行210→215�
 设备Release归档39742884627成功，实际编译源码06827e1d9f7a7654d0a6646442ed9b5a58671f83、Xcode16.4／16F6、版本1.6.12 build38。真实Swift战斗／道路／姿势三项回归通过；无模拟器或实机运行。已核对外层artifact摘要与CRC、IPA内部CRC／ZIP_STORED／无额外字段、iPhoneOS平台、arm64与可执行权限、版本、Metal／编译资产、包内hero-gait逐字一致、远程归档成功与打包SHA。原始IPA24,201,944字节，SHA256 d36b0a78bb48345fd829ce3967d139faeb3d604020c4250cdabca485ae5673fe，复制到Downloads/MeadowJourney-b38.ipa；来源见Media/Build38/package.json。下一步上传并实际匿名GET直链；尚未把未验证地址记为交付成功。
 
 原始IPA直链已实际匿名GET通过：HTTP200、application/octet-stream、24,201,944字节，SHA256 d36b0a78bb48345fd829ce3967d139faeb3d604020c4250cdabca485ae5673fe，与本地IPA／远程打包日志一致。Downloads当前索引、校验表、Media/Build38审核及交付元数据同步；保留build37历史包。用户复制链接即可下载IPA；未进行模拟器或实机运行，实际步态仍由用户安装反馈。
+
+
+## 2026-10-25 build44 返修进行中：连续特效与状态栏
+
+用户指出回血抽帧、护盾突然出现、攻击粒子采样偏低，并要求更大更粗的统一字形、血条与可悬停说明的方形buff。
+主线程独自修复：30Hz更新改目标60Hz；实际时间推进仅对超过250ms的长停顿封顶；死亡原650颗同UV粒子重新60Hz采样，体48帧/风116帧，风图集只裁屏幕右侧不可见余量；异步预热解码。回血取消cos过零瞬间翻面，连续缩放与旋转，26星点稳定ID。护盾从施法开始0.46s渐入，生效点亮度连续，完整包裹/直接随hero和破碎事件保持。前后景共用粒子计算，光池缓存遮罩、投影阴影缓存小图，减少逐帧梯度/模糊开销。记录真实display-link间隔和更新CPU到Documents/BattleFrameTiming.json（只写动作完成/退出，不虚构GPU/设备测量）。
+界面沿深绿/金边/米白，较大粗衬线字体（系统中文回退）；HP/护盾/AP条，移除说明占位卡保留三技能卡。护盾buff以方框展示，hover/键盘焦点/点按显示剩余值、吸收优先与耗尽移除，不添加假buff或改变规则。
+目前新增连续性纯Swift回归已通过；正常50fps GIF正在离线合成（正常时长，runtime目标60Hz）；美术审核、Xcode设备Release归档和IPA交付待完成。无App/模拟器/实机运行，性能最终由用户实机反馈；artApproval=null。旧角色/动作JSON/行走资源和相机参数不变，历史文件保留。

@@ -243,7 +243,8 @@ final class MeadowBattleActorView: UIView {
             silhouette = nil
         }
         super.init(frame: frame)
-        silhouetteCache.countLimit = 48
+        silhouetteCache.countLimit = 96
+        silhouetteCache.totalCostLimit = 24*1024*1024
         images.forEach(addSubview)
     }
 
@@ -337,7 +338,7 @@ final class MeadowBattleActorView: UIView {
                 renderer.cgContext.restoreGState()
             }
         }
-        silhouetteCache.setObject(rendered, forKey: key)
+        silhouetteCache.setObject(rendered, forKey: key,cost:256*256*4)
         return rendered
     }
 }
@@ -349,8 +350,20 @@ final class MeadowBattleGroundingView: UIView {
         let point: CGPoint
         let radius: CGFloat
     }
-    var spriteFrame: CGRect = .zero { didSet { setNeedsDisplay() } }
-    private var source: UIImage?
+    var spriteFrame: CGRect = .zero { didSet { if oldValue != spriteFrame { setNeedsDisplay() } } }
+    private final class CachedTile: NSObject { let source:UIImage;let image:UIImage;init(source:UIImage,image:UIImage) { self.source=source;self.image=image } }
+    private static let cache: NSCache<NSString,CachedTile> = { let c=NSCache<NSString,CachedTile>();c.totalCostLimit=8*1024*1024;return c }()
+    private var tile:UIImage?
+    private var sourceSize=CGSize(width:256,height:256)
+    private var tileOrigin=CGPoint.zero
+    private static let contactMask:UIImage = {
+        let f=UIGraphicsImageRendererFormat();f.scale=1
+        return UIGraphicsImageRenderer(size:CGSize(width:64,height:64),format:f).image { ctx in
+            let colors=[UIColor(red:0.025,green:0.035,blue:0.018,alpha:0.68).cgColor,UIColor.clear.cgColor] as CFArray
+            let g=CGGradient(colorsSpace:CGColorSpaceCreateDeviceRGB(),colors:colors,locations:[0,1])!
+            ctx.cgContext.drawRadialGradient(g,startCenter:CGPoint(x:32,y:32),startRadius:0,endCenter:CGPoint(x:32,y:32),endRadius:32,options:[])
+        }
+    }()
     private var soleY: CGFloat
     private var contacts: [Contact]
 
@@ -358,13 +371,13 @@ final class MeadowBattleGroundingView: UIView {
         // The original 0.16 tint disappeared against the bright, detailed
         // ground in actual iPad captures. Keep the cast restrained, but dark
         // enough to read at the 1x battle-scene scale.
-        source = image?.withTintColor(UIColor(red: 0.035, green: 0.045, blue: 0.025, alpha: 0.34), renderingMode: .alwaysOriginal)
         self.soleY = soleY
         self.contacts = contacts
         super.init(frame: .zero)
         isOpaque = false
         isUserInteractionEnabled = false
         contentMode = .redraw
+        update(image:image,soleY:soleY,contacts:contacts)
     }
 
     required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
@@ -372,35 +385,36 @@ final class MeadowBattleGroundingView: UIView {
     /// Update the projected registered pose. The actor caches silhouettes by
     /// clip and quantized progress, avoiding a render on every display tick.
     func update(image: UIImage?, soleY: CGFloat, contacts: [Contact]) {
-        source = image?.withTintColor(UIColor(red: 0.035, green: 0.045, blue: 0.025, alpha: 0.34), renderingMode: .alwaysOriginal)
+        if let image {
+            sourceSize=image.size;tileOrigin=CGPoint(x:-8,y:soleY-8)
+            let key="\(ObjectIdentifier(image))-\(Int(soleY*10))" as NSString
+            if let found=Self.cache.object(forKey:key) { tile=found.image } else {
+                let tint=image.withTintColor(UIColor(red:0.035,green:0.045,blue:0.025,alpha:0.34),renderingMode:.alwaysOriginal)
+                let size=CGSize(width:image.size.width+ceil(image.size.height*0.38)+16,height:ceil(image.size.height*0.15)+16)
+                let format=UIGraphicsImageRendererFormat();format.scale=1
+                let rendered=UIGraphicsImageRenderer(size:size,format:format).image { ctx in
+                    let c=ctx.cgContext;c.translateBy(x:8,y:8-soleY)
+                    c.concatenate(CGAffineTransform(a:1,b:0,c:-0.38,d:-0.15,tx:soleY*0.38,ty:soleY*1.15))
+                    c.setShadow(offset:.zero,blur:3.5,color:UIColor.black.withAlphaComponent(0.18).cgColor)
+                    tint.draw(at:.zero)
+                }
+                tile=rendered;Self.cache.setObject(CachedTile(source:image,image:rendered),forKey:key,cost:Int(size.width*size.height)*4)
+            }
+        } else { tile=nil }
         self.soleY = soleY
         self.contacts = contacts
         setNeedsDisplay()
     }
 
     override func draw(_ rect: CGRect) {
-        guard let source, let context = UIGraphicsGetCurrentContext(), spriteFrame.width > 0 else { return }
+        guard let tile, let context=UIGraphicsGetCurrentContext(),spriteFrame.width>0 else { return }
         context.saveGState()
-        context.translateBy(x: spriteFrame.minX, y: spriteFrame.minY)
-        context.scaleBy(x: spriteFrame.width / source.size.width, y: spriteFrame.height / source.size.height)
-        context.saveGState()
-        context.concatenate(CGAffineTransform(a: 1, b: 0, c: -0.38, d: -0.15,
-                                              tx: soleY * 0.38, ty: soleY * 1.15))
-        context.interpolationQuality = .high
-        context.setShadow(offset: .zero, blur: 3.5, color: UIColor.black.withAlphaComponent(0.18).cgColor)
-        source.draw(at: .zero)
-        context.restoreGState()
-        let colors = [UIColor(red: 0.025, green: 0.035, blue: 0.018, alpha: 0.68).cgColor,
-                      UIColor.black.withAlphaComponent(0).cgColor] as CFArray
-        if let gradient = CGGradient(colorsSpace: CGColorSpaceCreateDeviceRGB(), colors: colors, locations: [0, 1]) {
-            for contact in contacts {
-                context.saveGState()
-                context.translateBy(x: contact.point.x, y: contact.point.y)
-                context.scaleBy(x: 1, y: 0.38)
-                context.drawRadialGradient(gradient, startCenter: .zero, startRadius: 0,
-                                           endCenter: .zero, endRadius: contact.radius, options: [])
-                context.restoreGState()
-            }
+        context.translateBy(x:spriteFrame.minX,y:spriteFrame.minY)
+        context.scaleBy(x:spriteFrame.width/sourceSize.width,y:spriteFrame.height/sourceSize.height)
+        tile.draw(at:tileOrigin)
+        for contact in contacts {
+            let r=contact.radius
+            Self.contactMask.draw(in:CGRect(x:contact.point.x-r,y:contact.point.y-r*0.38,width:r*2,height:r*0.76))
         }
         context.restoreGState()
     }

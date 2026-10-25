@@ -1,13 +1,17 @@
 import UIKit
 import CoreImage
 
-private enum MeadowPreviewPalette {
+enum MeadowPreviewPalette {
     static let panel = UIColor(red: 0.10, green: 0.17, blue: 0.13, alpha: 0.97)
     static let card = UIColor(red: 0.17, green: 0.25, blue: 0.19, alpha: 1)
     static let ink = UIColor(red: 0.98, green: 0.93, blue: 0.77, alpha: 1)
     static let muted = UIColor(red: 0.72, green: 0.79, blue: 0.66, alpha: 1)
     static let gold = UIColor(red: 0.92, green: 0.77, blue: 0.42, alpha: 1)
     static let border = UIColor(red: 0.60, green: 0.57, blue: 0.34, alpha: 0.65)
+    static func font(_ size:CGFloat,_ weight:UIFont.Weight = .bold)->UIFont {
+        let base=UIFont.systemFont(ofSize:size,weight:weight)
+        return UIFont(descriptor:base.fontDescriptor.withDesign(.serif) ?? base.fontDescriptor,size:size)
+    }
     static func stylePanel(_ view: UIView) {
         view.backgroundColor = panel
         view.layer.cornerRadius = 14
@@ -16,13 +20,13 @@ private enum MeadowPreviewPalette {
     }
     static func label(_ text: String, size: CGFloat, weight: UIFont.Weight = .medium) -> UILabel {
         let label = UILabel(); label.text = text
-        label.font = .systemFont(ofSize: size, weight: weight)
-        label.textColor = ink; label.adjustsFontSizeToFitWidth = true; label.minimumScaleFactor = 0.85
+        label.font = font(size,weight)
+        label.textColor = ink; label.adjustsFontSizeToFitWidth = true; label.minimumScaleFactor = 1
         return label
     }
     static func button(_ title: String) -> UIButton {
         var style = UIButton.Configuration.filled(); style.title = title
-        style.baseBackgroundColor = gold; style.baseForegroundColor = panel
+        style.titleTextAttributesTransformer=UIConfigurationTextAttributesTransformer { value in var v=value;v.font=font(18);return v }; style.baseBackgroundColor = gold; style.baseForegroundColor = panel
         style.contentInsets = NSDirectionalEdgeInsets(top: 5, leading: 8, bottom: 5, trailing: 8)
         let button = UIButton(type: .system); button.configuration = style
         return button
@@ -43,14 +47,14 @@ final class MeadowBattlePreviewView: UIView {
     var mapFrame: CGRect { MeadowBattleLayout(size: bounds.size, safeArea: safeAreaInsets, mode: mode).map }
 
     private let header = UIView()
-    private let actor = MeadowPreviewPalette.label("", size: 23, weight: .bold)
-    private let subtitle = MeadowPreviewPalette.label("", size: 13)
+    private let actor = MeadowPreviewPalette.label("", size: 26, weight: .heavy)
+    private let subtitle = MeadowPreviewPalette.label("", size: 16, weight: .semibold)
     private let primaryButton = MeadowPreviewPalette.button("开始遭遇")
     private let closeButton = MeadowPreviewPalette.button("返回地图")
     private let landscape = MeadowBattleLandscapeView()
     private let mapBorder = UIView()
-    private let mapTitle = MeadowPreviewPalette.label("Meadow Journey", size: 15, weight: .semibold)
-    private let stageTitle = MeadowPreviewPalette.label("Meadow Journey · 林地", size: 17, weight: .semibold)
+    private let mapTitle = MeadowPreviewPalette.label("Meadow Journey", size: 18, weight: .bold)
+    private let stageTitle = MeadowPreviewPalette.label("Meadow Journey · 林地", size: 19, weight: .bold)
     private let track = MeadowTurnTrackView()
     private let details = MeadowPlayerDetailsView()
 
@@ -258,18 +262,18 @@ final class MeadowBattlePreviewView: UIView {
         let layout = MeadowBattleLayout(size: bounds.size, safeArea: safeAreaInsets, mode: mode)
         header.frame = layout.header
         mapBorder.frame = mapFrame
-        mapTitle.frame = CGRect(x: mapFrame.minX + 12, y: mapFrame.minY + 12, width: 154, height: 28)
+        mapTitle.frame = CGRect(x: mapFrame.minX + 12, y: mapFrame.minY + 12, width: 180, height: 32)
         landscape.frame = layout.battlefield; track.frame = layout.track; details.frame = layout.details
-        stageTitle.frame = CGRect(x: 16, y: 12, width: min(246, max(1, landscape.bounds.width - 32)), height: 26)
-        let buttonWidth: CGFloat = 116
-        let closeWidth: CGFloat = 104
+        stageTitle.frame = CGRect(x: 16, y: 12, width: min(300, max(1, landscape.bounds.width - 32)), height: 32)
+        let buttonWidth: CGFloat = 178
+        let closeWidth: CGFloat = 112
         closeButton.frame = CGRect(x: header.bounds.width - closeWidth - 12, y: (header.bounds.height - 44) / 2,
                                    width: closeWidth, height: 44)
         primaryButton.frame = CGRect(x: closeButton.frame.minX - buttonWidth - 8, y: closeButton.frame.minY,
                                      width: buttonWidth, height: 44)
         let textWidth = max(1, primaryButton.frame.minX - 28)
-        actor.frame = CGRect(x: 16, y: 9, width: textWidth, height: 27)
-        subtitle.frame = CGRect(x: 16, y: 38, width: textWidth, height: 18)
+        actor.frame = CGRect(x: 16, y: 8, width: textWidth, height: 32)
+        subtitle.frame = CGRect(x: 16, y: 43, width: textWidth, height: 23)
     }
     override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
         if mapFrame.contains(point) { return nil }
@@ -327,7 +331,7 @@ private final class MeadowTurnTokenView: UIView {
         return atlas.cropping(to: CGRect(x: 0, y: 0, width: cell, height: cell)).map { UIImage(cgImage: $0) }
     }
     init(id: String) {
-        self.id = id; name = MeadowPreviewPalette.label(id == "敌1" ? "鹿灵" : id, size: 12, weight: .semibold)
+        self.id = id; name = MeadowPreviewPalette.label(id == "敌1" ? "鹿灵" : id, size: 15, weight: .bold)
         super.init(frame: .zero); isAccessibilityElement = true
         accessibilityIdentifier = "previewQueue\(id)"
         accessibilityLabel = id
@@ -364,11 +368,16 @@ private final class MeadowPlayerDetailsView: UIView {
     var onAction: ((MeadowBattleAction) -> Void)?
     var onPreview: ((MeadowBattleAction?) -> Void)?
     private var focusedAction: MeadowBattleAction?
-    private let resources = MeadowPreviewPalette.label("P1    生命 12/12    盾 0    行动点 3/3", size: 16, weight: .semibold)
+    private let health=MeadowBattleResourceBar()
+    private let ward=MeadowBattleResourceBar()
+    private let actions=MeadowBattleResourceBar()
+    private let buff=MeadowBattleBuffTile(type:.system)
     private var cards: [MeadowPreviewCard] = []
     override init(frame: CGRect) {
         super.init(frame: frame); MeadowPreviewPalette.stylePanel(self)
-        resources.accessibilityIdentifier = "previewResourceValues"; addSubview(resources)
+        health.accessibilityIdentifier="previewHealthBar";ward.accessibilityIdentifier="previewShieldBar";actions.accessibilityIdentifier="previewActionBar"
+        [health,ward,actions,buff].forEach(addSubview)
+        buff.layer.zPosition=200
         let definitions: [(String, MeadowBattleAction)] = [("强击", .strike), ("喘息", .breathe), ("简易防护", .protection)]
         for (title, action) in definitions {
             let card = MeadowPreviewCard(title: title, text: "")
@@ -383,25 +392,28 @@ private final class MeadowPlayerDetailsView: UIView {
             card.button.accessibilityIdentifier = "battleAction\(title)"
             addSubview(card); cards.append(card)
         }
-        let note = MeadowPreviewCard(title: "遭遇说明", text: "P1 对阵一只鹿灵\n简化演示规则")
-        note.button.isHidden = true; addSubview(note); cards.append(note)
     }
     required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
     func show(encounter: MeadowBattleEncounter, enabled: Bool) {
-        resources.text = "P1    生命 \(encounter.playerHP)/\(encounter.playerMaxHP)    盾 \(encounter.shield)    行动点 \(encounter.actionPoints)/3"
+        health.show("生命",value:encounter.playerHP,maximum:encounter.playerMaxHP,color:.systemGreen)
+        ward.show("护盾",value:encounter.shield,maximum:8,color:.systemCyan)
+        actions.show("行动",value:encounter.actionPoints,maximum:3,color:MeadowPreviewPalette.gold)
+        buff.show(shield:encounter.shield)
         let canAct = enabled && encounter.isPlayerActionEnabled
         if !canAct { focusedAction = nil; onPreview?(nil) }
         cards[0].update(title: "强击 · 1 AP", detail: "选中鹿灵造成5点伤害", enabled: canAct && encounter.enemySelected && encounter.enemyHP > 0)
         cards[1].update(title: "喘息 · 1 AP", detail: "恢复4生命 · 余\(encounter.breathUses)次", enabled: canAct && encounter.breathUses > 0 && encounter.playerHP < encounter.playerMaxHP)
         cards[2].update(title: "简易防护 · 1 AP", detail: "获得4护盾 · 余\(encounter.guardUses)次", enabled: canAct && encounter.guardUses > 0)
-        cards[3].update(title: "遭遇说明", detail: "固定伤害的简化演示\n可持续结束回合", enabled: false)
     }
     override func layoutSubviews() {
         super.layoutSubviews(); guard bounds.width > 0, bounds.height > 0 else { return }
-        resources.frame = CGRect(x: 14, y: 8, width: max(1, bounds.width - 28), height: 23)
-        let gap: CGFloat = 8; let width = max(1, (bounds.width - 28 - gap * 3) / 4)
-        for (index, card) in cards.enumerated() {
-            card.frame = CGRect(x: 14 + CGFloat(index) * (width + gap), y: 37, width: width, height: max(1, bounds.height - 47))
+        let gap:CGFloat=10
+        let barWidth=max(1,(bounds.width-28-54-gap*3)/3)
+        for (i,bar) in [health,ward,actions].enumerated() { bar.frame=CGRect(x:14+CGFloat(i)*(barWidth+gap),y:9,width:barWidth,height:43) }
+        buff.frame=CGRect(x:bounds.width-58,y:8,width:44,height:44)
+        let width=max(1,(bounds.width-28-gap*2)/3)
+        for (index,card) in cards.enumerated() {
+            card.frame=CGRect(x:14+CGFloat(index)*(width+gap),y:62,width:width,height:max(1,bounds.height-72))
         }
     }
 }
@@ -426,8 +438,8 @@ private final class MeadowSkillButton: UIButton {
 }
 
 private final class MeadowPreviewCard: UIView {
-    private let title = MeadowPreviewPalette.label("", size: 16, weight: .bold)
-    private let detail = MeadowPreviewPalette.label("", size: 14)
+    private let title = MeadowPreviewPalette.label("", size: 20, weight: .heavy)
+    private let detail = MeadowPreviewPalette.label("", size: 17, weight: .semibold)
     let button = MeadowSkillButton(type: .system)
     var onFocus: ((Bool) -> Void)?
     var previewStrength: Float = 0.9
@@ -460,8 +472,8 @@ private final class MeadowPreviewCard: UIView {
     }
     override func layoutSubviews() {
         super.layoutSubviews(); guard bounds.width > 0, bounds.height > 0 else { return }
-        title.frame = CGRect(x: 10, y: 6, width: max(1, bounds.width - 20), height: 22)
-        detail.frame = CGRect(x: 10, y: 30, width: max(1, bounds.width - 20), height: max(1, bounds.height - 35))
+        title.frame = CGRect(x: 10, y: 6, width: max(1, bounds.width - 20), height: 27)
+        detail.frame = CGRect(x: 10, y: 35, width: max(1, bounds.width - 20), height: max(1, bounds.height - 40))
         button.frame = bounds
     }
 }
@@ -509,4 +521,38 @@ struct MeadowBattleCanvasGeometry {
                       y: canvas.minY + canvas.height * heroFoot.y - configuration.footAnchor.y * scale,
                       width: configuration.canvasSize.width * scale, height: configuration.canvasSize.height * scale)
     }
+}
+
+/// A square status token: details are disclosed on pointer hover, focus or tap.
+final class MeadowBattleBuffTile: UIButton {
+    private let tip=UILabel()
+    private var amount=0
+    private var pinned=false
+    private var hovering=false
+    override init(frame:CGRect) {
+        super.init(frame:frame)
+        backgroundColor=MeadowPreviewPalette.card;layer.cornerRadius=6;layer.borderWidth=2;layer.borderColor=UIColor.systemCyan.cgColor
+        setImage(UIImage(systemName:"shield.fill"),for:.normal);tintColor = .systemCyan
+        setPreferredSymbolConfiguration(UIImage.SymbolConfiguration(pointSize:24,weight:.bold),forImageIn:.normal)
+        accessibilityLabel="防护状态";accessibilityHint="点按显示或隐藏详情"
+        isPointerInteractionEnabled=true
+        addGestureRecognizer(UIHoverGestureRecognizer(target:self,action:#selector(hover(_:))))
+        addAction(UIAction { [weak self] _ in guard let self else { return }; self.pinned.toggle();self.refreshTip() },for:.touchUpInside)
+        tip.numberOfLines=0;tip.font=MeadowPreviewPalette.font(18);tip.textColor=MeadowPreviewPalette.ink
+        tip.backgroundColor=MeadowPreviewPalette.panel;tip.layer.cornerRadius=8;tip.layer.borderWidth=1;tip.layer.borderColor=MeadowPreviewPalette.gold.cgColor;tip.clipsToBounds=true
+        tip.isUserInteractionEnabled=false;tip.isHidden=true;addSubview(tip)
+    }
+    required init?(coder:NSCoder) { fatalError("init(coder:) has not been implemented") }
+    func show(shield:Int) {
+        amount=shield;isHidden=shield<=0
+        if isHidden { pinned=false;hovering=false }
+        accessibilityValue="剩余\(shield)点，优先抵挡伤害，耗尽时破碎"
+        tip.text="  防护 · 剩余 \(shield) 点\n  优先抵挡伤害\n  持续至耗尽，破碎后移除"
+        refreshTip()
+    }
+    @objc private func hover(_ r:UIHoverGestureRecognizer) { hovering=r.state == .began || r.state == .changed;refreshTip() }
+    private func refreshTip() { tip.isHidden=amount<=0 || !(hovering || pinned || isFocused) }
+    override func didUpdateFocus(in context:UIFocusUpdateContext,with coordinator:UIFocusAnimationCoordinator) { super.didUpdateFocus(in:context,with:coordinator);refreshTip() }
+    override func layoutSubviews() { super.layoutSubviews();tip.frame=CGRect(x:bounds.width-288,y:-100,width:288,height:90) }
+    override func didMoveToWindow() { super.didMoveToWindow();if window==nil { pinned=false;hovering=false;refreshTip() } }
 }
