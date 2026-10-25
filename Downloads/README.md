@@ -1,6 +1,18 @@
 # SideStore 安装与迭代包
 
-## 当前安装兼容重封装：1.6.18 build44-r1
+## 当前版本：统一60帧目标 · 1.6.19 build45
+
+地图/步态/战斗显式60，移除静止地图动态光影/雾的30Hz门控；动态背景随每次提交样本刷新。移动/动作速度与美术保持。目标60不是实机测量结果；地图长按左上“安然”查看更新FPS，战斗诊断写Documents/BattleFrameTiming.json。
+
+[直接下载 MeadowJourney-b45.ipa](https://raw.githubusercontent.com/liamchan-rgb/experiment/fix/build33-face-grounding-camera/Downloads/MeadowJourney-b45.ipa) · [来源与校验](MeadowJourney-build45.json) · [构建说明](../Media/Build45/README.md)
+
+```text
+https://raw.githubusercontent.com/liamchan-rgb/experiment/fix/build33-face-grounding-camera/Downloads/MeadowJourney-b45.ipa
+```
+
+30,293,018字节，SHA256 `67a5ad78757864506d53f7b8477ec80b90ea340ceaa7ebf0b08ff3bafe9a3d07`。归档40201819354/五项纯Swift/包完整性通过；经典ZIP2.0无压缩封装。未运行App/模拟器/实机，实际FPS与安装待用户测试；此前SideStore错误未确认根因。原美术预览见下方build44链接，不把离线GIF称为实机60fps录像。
+
+## 历史安装兼容重封装：1.6.18 build44-r1
 
 用户SideStore报“Archive appears to be corrupt”。原公开IPA重新下载与归档字节一致、CRC通过，未本地复现设备错误。现用经典ZIP2.0无压缩重新封装，所有App文件/权限逐字节保持，版本仍build44，不是美术改版；真实安装待用户确认。
 
