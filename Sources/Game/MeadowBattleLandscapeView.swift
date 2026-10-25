@@ -284,7 +284,7 @@ final class MeadowBattleLandscapeView: UIView {
 
     private func smooth(_ x: Double) -> CGFloat { let t = min(1,max(0,x)); return CGFloat(t*t*(3-2*t)) }
     private func darkness() -> CGFloat {
-        let supportDim=recoveryStartedAt.map { CGFloat(MeadowBattleRecoveryField.pulse(sceneTime-$0))*0.18 } ?? 0
+        let supportDim=recoveryStartedAt.map { CGFloat(MeadowBattleRecoveryField.pulse(sceneTime-$0))*0.30 } ?? 0
         if let at = castLightAt, sceneTime-at < 3.36 {
             let t=sceneTime-at
             let envelope=(castInitialDim+(0.64-castInitialDim)*smooth(t/0.44))*(1-smooth((t-2)/1.36))
@@ -295,7 +295,7 @@ final class MeadowBattleLandscapeView: UIView {
             } ?? 0
             return max(supportDim,max(envelope,0.82*peak))
         }
-        let target: CGFloat = focusedAction == .strike ? 0.45 : focusedAction == .breathe ? 0.18 : 0
+        let target: CGFloat = focusedAction == .strike ? 0.45 : focusedAction == .breathe ? 0.24 : 0
         let fade=smooth((sceneTime-focusStartedAt)/0.28)
         return max(supportDim,previewExitDim+(target-previewExitDim)*fade)
     }

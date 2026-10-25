@@ -95,7 +95,7 @@ import Foundation
             precondition(hits==1 && healed.playerHP==12 && healed.resolveActionImpact()==nil)
         }
         precondition(MeadowBattleRecoveryField.sample(-0.1).isEmpty && MeadowBattleRecoveryField.sample(2).isEmpty)
-        for tick in 0..<160 {
+        for tick in 0..<Int(MeadowBattleRecoveryField.duration*100) {
             let particles=MeadowBattleRecoveryField.sample(Double(tick)/100)
             for p in particles { precondition(p.x.isFinite && p.y.isFinite && p.alpha>=0 && p.alpha<=1 && p.y<=0) }
         }

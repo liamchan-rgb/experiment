@@ -319,17 +319,21 @@ enum MeadowBattleRecoveryField {
     /// In actor-native pixels, relative to the stable canvas sole at (128,214).
     static func sample(_ age: Double) -> [MeadowBattleRecoveryMote] {
         guard age >= 0, age < duration else { return [] }
-        return (0..<26).compactMap { i in
-            let birth=Double(i%7)*0.065
-            let elapsed=age-birth
-            let life=1.04+Double(i%4)*0.10
-            guard elapsed>=0, elapsed<life else { return nil }
-            let p=elapsed/life
-            let angle=Double(i)*2.399+elapsed*4.5
-            let radius=(20+Double(i%5)*5)*(1-p*0.35)
-            return .init(x:cos(angle)*radius,y:-8-p*155,
-                         size:5+Double(i%4)*2,
-                         alpha:sin(Double.pi*p)*0.95)
+        var result: [MeadowBattleRecoveryMote] = []
+        for i in 0..<26 {
+            let birth: Double = Double(i % 7) * 0.065
+            let elapsed: Double = age - birth
+            let life: Double = 1.04 + Double(i % 4) * 0.10
+            guard elapsed >= 0, elapsed < life else { continue }
+            let progress: Double = elapsed / life
+            let angle: Double = Double(i) * 2.399 + elapsed * 4.5
+            let radius: Double = (34.0 + Double(i % 5) * 7.0) * (1.0 - progress * 0.35)
+            let x: Double = cos(angle) * radius
+            let y: Double = -8.0 - progress * 155.0
+            let size: Double = 5.0 + Double(i % 4) * 3.0
+            let alpha: Double = sin(Double.pi * progress) * 0.95
+            result.append(MeadowBattleRecoveryMote(x:x,y:y,size:size,alpha:alpha))
         }
+        return result
     }
 }

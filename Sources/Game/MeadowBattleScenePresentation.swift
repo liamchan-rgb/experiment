@@ -137,8 +137,8 @@ final class MeadowBattleEffectsView: UIView {
         let recovery=recoveryAge.map { CGFloat(MeadowBattleRecoveryField.pulse($0)) } ?? 0
         if groundOnly {
             if recovery>0 {
-                light(heroFoot,135,42,recovery*0.58,UIColor(red:0.15,green:1,blue:0.52,alpha:1))
-                light(CGPoint(x:heroFoot.x,y:heroFoot.y-65*unit),75,110,recovery*0.18,UIColor(red:0.35,green:1,blue:0.60,alpha:1))
+                light(heroFoot,135,42,recovery*0.85,UIColor(red:0.15,green:1,blue:0.52,alpha:1))
+                light(CGPoint(x:heroFoot.x,y:heroFoot.y-65*unit),75,110,recovery*0.28,UIColor(red:0.35,green:1,blue:0.60,alpha:1))
             }
 
             let cyan = UIColor(red:0.05,green:0.55,blue:1,alpha:1)
@@ -221,13 +221,14 @@ final class MeadowBattleEffectsView: UIView {
 final class MeadowBattleAttachedSkillsView: UIView {
     private let rim=UIImageView(image:MeadowBattleVFXAssets.barrier)
     private let orbiters=(0..<6).map { _ in UIImageView(image:MeadowBattleVFXAssets.mote.withTintColor(.systemCyan,renderingMode:.alwaysOriginal)) }
+    private let core=UIImageView(image:MeadowBattleVFXAssets.burst.withTintColor(UIColor(red:0.82,green:1,blue:0.85,alpha:1),renderingMode:.alwaysOriginal))
     private let shaft=UIImageView(image:MeadowBattleVFXAssets.healShaft)
     private let wave=UIImageView(image:MeadowBattleVFXAssets.healWave)
     private let wisps=(0..<2).map { _ in UIImageView(image:MeadowBattleVFXAssets.healWisp) }
     private let stars=(0..<26).map { _ in UIImageView(image:MeadowBattleVFXAssets.healStar) }
     override init(frame:CGRect) {
         super.init(frame:frame);isUserInteractionEnabled=false;clipsToBounds=false
-        ([shaft,wave]+wisps+stars+[rim]+orbiters).forEach { $0.contentMode = .scaleToFill;addSubview($0) }
+        ([shaft,wave,core]+wisps+stars+[rim]+orbiters).forEach { $0.contentMode = .scaleToFill;addSubview($0) }
         layer.zPosition=100
     }
     required init?(coder:NSCoder) { fatalError("init(coder:) has not been implemented") }
@@ -259,17 +260,22 @@ final class MeadowBattleAttachedSkillsView: UIView {
             let foot=CGPoint(x:128*unit,y:214*unit)
             shaft.isHidden = !active;wave.isHidden = !active
             shaft.frame=CGRect(x:foot.x-55*unit,y:foot.y-175*unit,width:110*unit,height:185*unit)
-            shaft.alpha=power*0.26
+            shaft.alpha=power*0.50
+            core.isHidden = !active
+            let coreSize:CGFloat=110*unit
+            core.frame=CGRect(x:foot.x-coreSize/2,y:foot.y-64*unit-coreSize/2,width:coreSize,height:coreSize)
+            let corePulse:CGFloat=age<0.47 ? smooth((age-0.34)/0.13) : 1-smooth((age-0.47)/0.23)
+            core.alpha=corePulse*0.70
             let expansion=CGFloat(0.65+0.65*MeadowBattleRecoveryField.smooth(age/1.1))
             wave.frame=CGRect(x:foot.x-82*unit*expansion,y:foot.y-12*unit,width:164*unit*expansion,height:28*unit)
             wave.alpha=power*0.8
             for (i,wisp) in wisps.enumerated() {
                 wisp.isHidden = !active
                 let turn=CGFloat(age)*4+CGFloat(i) * .pi
-                wisp.bounds=CGRect(x:0,y:0,width:75*unit,height:120*unit)
-                wisp.center=CGPoint(x:foot.x+sin(turn)*18*unit,y:foot.y-(66+CGFloat(age)*15)*unit)
+                wisp.bounds=CGRect(x:0,y:0,width:85*unit,height:180*unit)
+                wisp.center=CGPoint(x:foot.x+(CGFloat(i==0 ? -26 : 26)+sin(turn)*12)*unit,y:foot.y-(76+CGFloat(age)*15)*unit)
                 wisp.transform=CGAffineTransform(rotationAngle:sin(turn)*0.22).scaledBy(x:cos(turn)>=0 ? 1 : -1,y:1)
-                wisp.alpha=power*(i==0 ? 0.55 : 0.35)
+                wisp.alpha=power*(i==0 ? 0.85 : 0.65)
             }
             let motes=MeadowBattleRecoveryField.sample(age)
             for (i,star) in stars.enumerated() {

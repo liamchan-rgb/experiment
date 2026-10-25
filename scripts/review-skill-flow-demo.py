@@ -166,12 +166,14 @@ def attached_shield(f,kind,t,shield):
 def attached_recovery(f,kind,t,row):
  age=t-HEAL_START;power=row['recoveryPower'];_,_,tx,root=pose_state(kind,t);foot=(hx+tx+(root[0]+128)*hs,hy+(root[1]+214)*hs)
  if not 0<=age<1.8:return
- rotate_sprite(f,'HealShaft',(foot[0],foot[1]-82.5*hs),110*hs,185*hs,power*.26,add=False)
+ rotate_sprite(f,'HealShaft',(foot[0],foot[1]-82.5*hs),110*hs,185*hs,power*.50,add=False)
+ core=assets['Burst'].copy();rgb=np.asarray(core).copy();rgb[:,:,:3]=[209,255,217];core=Image.fromarray(rgb)
+ compose(f,core,(foot[0],foot[1]-64*hs),(110*hs,110*hs),pulse(age,.34,.47,.70)*.70,False)
  expand=.65+.65*smooth(age/1.1)
  rotate_sprite(f,'HealWave',(foot[0],foot[1]+2*hs),164*hs*expand,28*hs,power*.8,add=False)
  for i in range(2):
-  turn=age*4+i*math.pi;c=(foot[0]+math.sin(turn)*18*hs,foot[1]-(66+age*15)*hs)
-  rotate_sprite(f,'HealWisp',c,75*hs,120*hs,power*(.55 if i==0 else .35),math.sin(turn)*.22,False,math.cos(turn)<0)
+  turn=age*4+i*math.pi;c=(foot[0]+((-26 if i==0 else 26)+math.sin(turn)*12)*hs,foot[1]-(76+age*15)*hs)
+  rotate_sprite(f,'HealWisp',c,85*hs,180*hs,power*(.85 if i==0 else .65),math.sin(turn)*.22,False,math.cos(turn)<0)
  for q in row['recovery']:rotate_sprite(f,'HealStar',(foot[0]+q['x']*hs,foot[1]+q['y']*hs),q['size']*hs,q['size']*hs,q['alpha'],add=False)
 
 # Clear, compact review captions; actual product cards retain their existing text.
@@ -197,7 +199,7 @@ for kind,count in COUNTS.items():
   cast_start=2.6 if kind=='attack' else SHIELD_ATTACK if kind=='shield' else 100
   elapsed=t-cast_start
   dim=.45*smooth((t-1.6)/.28) if focus else (.45+(.64-.45)*smooth(elapsed/.44))*(1-smooth((elapsed-2)/1.36)) if elapsed>=0 else 0
-  if kind=='heal':dim=.18*row['recoveryPower']
+  if kind=='heal':dim=.30*row['recoveryPower']
   if 0<=age<.225:dim=max(dim,.82*pulse(age,0,.035,.225))
   f=ImageEnhance.Brightness(plate).enhance(1-dim)
   if age>=0:strike_ground(f,age,ef)
@@ -206,7 +208,7 @@ for kind,count in COUNTS.items():
    colored_light(f,(impact[0]+age*95,ef[1]),180,42,.38*(1-smooth(age/1.4)))
    colored_light(f,(impact[0]+age*90,impact[1]),115,95,.18*(1-smooth(age/1.4)))
   if kind=='heal':
-   power=row['recoveryPower'];colored_light(f,fo,135,42,power*.58,(38,255,133));colored_light(f,(fo[0],fo[1]-65),75,110,power*.18,(89,255,153))
+   power=row['recoveryPower'];colored_light(f,fo,135,42,power*.85,(38,255,133));colored_light(f,(fo[0],fo[1]-65),75,110,power*.28,(89,255,153))
   enemy_tx=0;monster=bodies[min(47,int(age/.04))] if dead else enemy
   recoil=W*.025*pulse(age,-.02,.14,.52) if age>=0 else 0
   if kind=='shield' and 4<=t<5.44:
