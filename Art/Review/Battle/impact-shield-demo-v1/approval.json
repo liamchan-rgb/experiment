@@ -1,0 +1,12 @@
+{
+  "status": "accepted-by-user",
+  "date": "2026-10-25",
+  "evidenceQuote": "是我搞错了，这个特效可以",
+  "scope": "build41 strong strike and shield effects as viewed by user; excludes new build42 particles and round shield",
+  "agentDeviceExecution": false,
+  "newRequestedChanges": [
+    "luminous impact and death particles",
+    "environment light and ground collisions",
+    "round brighter shield and stronger break"
+  ]
+}

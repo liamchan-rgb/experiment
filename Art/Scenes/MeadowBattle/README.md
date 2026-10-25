@@ -12,4 +12,4 @@
 
 这些要求从本次记录起约束后续制作。本次仅记录要求，不重画或调整已有怪物，不将现有鹿灵/光效候选自动标记为符合标准或已获用户认可。修改美术时仍由主线程负责修复与最终审核，并按AGENTS.md交付正常整场GIF、已验证HTTPS直链和站姿。
 
-当前build41强击/护盾集成见 [接入说明](../../Integration/Battle-impact-shield-demo-v1/README.md)，强击强化胸腹爆光/开放弧/方向喷射、命中停顿/世界轻震；护盾透明中心，展开/持续/受击涟漪/最后盾值耗尽碎裂分开，仍有盾值不得提前破盾。此前 [build40](../../Integration/Battle-effects-demo-v1/README.md)保留。设备测试仍由用户反馈；此前已展示的离线v3及原范围见 [effects-v3说明](effects-v3/README.md)；[v2](effects-v2/README.md)与[v1](effects-v1/README.md)保留为历史。怪物HP归零时，伤害数字与向屏幕右方吹散的粒子由同一命中事件同时触发，不等待攻击收尾，非致死不消散。脚下提示光圈在施放开始时消失，强技能悬浮发光时同步压暗战场，确认后连续衔接释放压暗。技能没有蓄力层级，悬浮提示按技能固有强度显示。
+当前build42粒子/圆盾集成见 [接入说明](../../Integration/Battle-particles-round-shield-demo-v1/README.md)：发光粒子配合受击与死亡，落地反弹/溅亮并照亮环境；透明中心圆盾用鲜明蓝青边缘和较大破裂碎片，冲撞停在盾面。此前[build41](../../Integration/Battle-impact-shield-demo-v1/README.md)已获用户认可，强击强化胸腹爆光/开放弧/方向喷射、命中停顿/世界轻震；护盾透明中心，展开/持续/受击涟漪/最后盾值耗尽碎裂分开，仍有盾值不得提前破盾。此前 [build40](../../Integration/Battle-effects-demo-v1/README.md)保留。设备测试仍由用户反馈；此前已展示的离线v3及原范围见 [effects-v3说明](effects-v3/README.md)；[v2](effects-v2/README.md)与[v1](effects-v1/README.md)保留为历史。怪物HP归零时，伤害数字与向屏幕右方吹散的粒子由同一命中事件同时触发，不等待攻击收尾，非致死不消散。脚下提示光圈在施放开始时消失，强技能悬浮发光时同步压暗战场，确认后连续衔接释放压暗。技能没有蓄力层级，悬浮提示按技能固有强度显示。

@@ -1,6 +1,18 @@
 # SideStore 安装与迭代包
 
-## 当前版本：强击冲击与护盾演出 · 1.6.15 build41
+## 当前版本：发光粒子、地面碰撞与圆盾 · 1.6.16 build42
+
+受击/怪物死亡增加发光粒子、局部环境暖光与落地反弹/溅光；圆盾颜色更鲜明、破裂蓝碎片更明显，鹿灵撞在盾前。数值、原强击与致死同事件右吹保持。
+
+[直接下载 MeadowJourney-b42.ipa](https://raw.githubusercontent.com/liamchan-rgb/experiment/fix/build33-face-grounding-camera/Downloads/MeadowJourney-b42.ipa) · [来源校验](MeadowJourney-build42.json) · [正常受击/死亡GIF](../Art/Review/Battle/particles-round-shield-demo-v1/heavy-strike-normal.gif) · [正常圆盾GIF](../Art/Review/Battle/particles-round-shield-demo-v1/shield-normal.gif) · [说明](../Media/Build42/README.md)
+
+```text
+https://raw.githubusercontent.com/liamchan-rgb/experiment/fix/build33-face-grounding-camera/Downloads/MeadowJourney-b42.ipa
+```
+
+27,661,018字节，SHA256 `128f620175ec552817ec17779c52f8b8df6e2461066ab8e6dfd1a0934fd71de5`。设备归档40175880891/五项纯Swift/包完整性通过，无App/模拟器/实机执行；动图为共享素材/生产粒子轨迹的离线照明近似，用户测试实际画面/输入/帧率，沿用SideStore重签。[实际下载回执](../Art/Review/Battle/particles-round-shield-demo-v1/delivery.json)。
+
+## 历史版本：强击冲击与护盾演出 · 1.6.15 build41
 
 强击强化胸腹爆光、开放冲击弧/方向喷射/地面光浪，加深暗场、100ms停顿和世界轻震/短推近，HUD固定。护盾透明中心分展开/持续/格挡涟漪/耗尽碎裂；仍有盾值时保持。原数值、致死同帧右吹和出招无脚下环保持。
 
