@@ -1505,4 +1505,4 @@ contact-r1完成并由主审接入：01→02→03左靴最后可见行210→215�
 
 主线程退回离线HUD重叠稿，重排三技能卡、状态条与大粗衬线字；保留drafts/overlap-review-hud。已看最终三GIF23页/880实际解码帧与原尺寸关键帧（静态序列不称连续播放），正常50fps：强击330帧6.6s，盾360帧7.2s，回血190帧3.8s；无损压缩与等比缩放，不改时间。另做整身1×/2×图。产物Art/Review/Battle/smooth-status-demo-v1、Art/Integration/Battle-smooth-status-demo-v1与Media/Build44。原素材/行走/动作JSON/相机代码保持，505姿态圆盾覆盖继续通过。运行目标60Hz而非设备性能实测；新图集解码约83.6MiB，GPU/实机性能由用户反馈。buff当前仅已有护盾，未添加其他机制。新美术认可null。
 
-直接IPA/三正常GIF/站姿HTTPS和远端精确文件校验回执待发布后记录到delivery.json。
+交付提交f8822c9dd6faef9422283371b6048d618a95617b已发布；86个选定交付路径与11个归档输入路径逐字节核对，17882旧美术/步态远端路径保持。8个HTTPS（含不可变与分支IPA、三GIF、三PNG）均实际GET200、MIME/完整字节核对，GIF全部20ms/帧且正常时长。回执Art/Review/Battle/smooth-status-demo-v1/delivery.json。IPA直接链接https://raw.githubusercontent.com/liamchan-rgb/experiment/fix/build33-face-grounding-camera/Downloads/MeadowJourney-b44.ipa。
