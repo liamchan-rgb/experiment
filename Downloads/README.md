@@ -1,6 +1,18 @@
 # SideStore 安装与迭代包
 
-## 当前版本：统一60帧目标 · 1.6.19 build45
+## 当前版本：小队支援 · 1.6.20 build46
+
+本轮B0/B1小队支援已接入：援护、振奋、三种药水与复活石，2玩家/2敌目标、真实buff/AP/次数/库存与一次结算。入口为林地战斗→左上“小队支援”，原单人演练保留。正式盾max、buff轮数、救援2AP/半血/下轮行动由原GameCore执行。角色/步态与原资源10806路径保持，原13核心源文件/目录SHA匹配；两个P1与训练鹿灵复用不算新职业皮肤/正式怪完成。
+
+[直接下载 MeadowJourney-b46.ipa](https://raw.githubusercontent.com/liamchan-rgb/experiment/fix/build33-face-grounding-camera/Downloads/MeadowJourney-b46.ipa) · [来源与校验](MeadowJourney-build46.json) · [五正常GIF/站姿](../Art/Review/Battle/party-support-demo-v1/README.md)
+
+```text
+https://raw.githubusercontent.com/liamchan-rgb/experiment/fix/build33-face-grounding-camera/Downloads/MeadowJourney-b46.ipa
+```
+
+31,740,108字节，SHA256 `3cd7c942e82d91a238ba9f11f4921c88f24a640734fbb38154f1e008f04e855d`。79规则测试/五既有检查/设备Release归档40212372613与包结构通过，经典ZIP2.0封装。目标60，未运行App/模拟器/实机，安装、操作与真实性能待用户反馈。
+
+## 历史版本：统一60帧目标 · 1.6.19 build45
 
 地图/步态/战斗显式60，移除静止地图动态光影/雾的30Hz门控；动态背景随每次提交样本刷新。移动/动作速度与美术保持。目标60不是实机测量结果；地图长按左上“安然”查看更新FPS，战斗诊断写Documents/BattleFrameTiming.json。
 

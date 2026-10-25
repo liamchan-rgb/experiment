@@ -1874,5 +1874,20 @@
     "only three demo actions, not inventory/equip or full catalog",
     "multi-unit, node groups, buff duration, rescue/downed-state and result adapters needed"
   ],
-  "status": "proposed-plan; no new skill/item art made or device run"
+  "status": "proposed-plan; no new skill/item art made or device run",
+  "execution": {
+    "date": "2026-10-25",
+    "authorizedByUser": true,
+    "build": 46,
+    "batches": [
+      "B0",
+      "B1"
+    ],
+    "status": "controlled demo candidate archived; art approval and device test pending",
+    "sourceCommit": "cf245fe98d2234941423e487bacc8be0f67685be",
+    "reviewPath": "Art/Review/Battle/party-support-demo-v1",
+    "newArtApproval": null,
+    "fullInventoryEquipmentAndSaveUICompleted": false,
+    "laterBatchesCompleted": false
+  }
 }

@@ -1,6 +1,10 @@
 # 桌游技能与物品制作计划 v1
 
-核对日期：2026-10-25。来源：[classroom-boardgame正式内容表](https://github.com/liamchan-rgb/classroom-boardgame/blob/1e9100c4c18364ea64b3ec974fe957ba4ef42f6f/native/Packages/GameCore/Sources/ClassroomGameCore/Resources/initial-content.json)（main `1e9100c4c18364ea64b3ec974fe957ba4ef42f6f`），并检查战斗分支 `a0427b83d9233f1a83178b3c47d3fab39eed664e`。8个源码分支的内容表Git blob均相同，archive-assets为归档二进制分支；共19技能、18物品、2套装。原始目录快照与校验见本目录JSON。本次只读桌游仓库；计划与审计保存在experiment，不修改桌游规则/原开发步骤，不开始制作或打IPA。
+核对日期：2026-10-25。来源：[classroom-boardgame正式内容表](https://github.com/liamchan-rgb/classroom-boardgame/blob/1e9100c4c18364ea64b3ec974fe957ba4ef42f6f/native/Packages/GameCore/Sources/ClassroomGameCore/Resources/initial-content.json)（main `1e9100c4c18364ea64b3ec974fe957ba4ef42f6f`），并检查战斗分支 `a0427b83d9233f1a83178b3c47d3fab39eed664e`。8个源码分支的内容表Git blob均相同，archive-assets为归档二进制分支；共19技能、18物品、2套装。原始目录快照与校验见本目录JSON。初次核查时只读桌游仓库并保存计划；之后用户已授权执行，最新进展见下段，原桌游仓库保持只读。
+
+## 2026-10-25执行进展：B0/B1候选build46
+
+本轮B0/B1小队支援已接入：援护、振奋、三种药水与复活石，2玩家/2敌目标、真实buff/AP/次数/库存与一次结算。入口为林地战斗→左上“小队支援”，原单人演练保留。正式盾max、buff轮数、救援2AP/半血/下轮行动由原GameCore执行。角色/步态与原资源10806路径保持，原13核心源文件/目录SHA匹配；两个P1与训练鹿灵复用不算新职业皮肤/正式怪完成。 源码cf245fe98d2234941423e487bacc8be0f67685be；79规则与原五项检查、设备Release通过。五正常GIF/站姿/主线程审核与IPA见[本轮交付](../../../Media/Build46/README.md)。B0/B1为受控小队演练集成候选，用户认可null、实机待用户；完整背包装备/桌游存档未迁移。下批按B2突袭→基础装备小批推进，B2—B6尚未交付。下方“已有成果/缺口”保留核查当时快照，旧单人演练数值仍保持，新小队接原规则。
 
 ## 已有成果和真实缺口
 
