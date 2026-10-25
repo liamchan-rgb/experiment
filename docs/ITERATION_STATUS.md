@@ -1513,3 +1513,12 @@ contact-r1完成并由主审接入：01→02→03左靴最后可见行210→215�
 用户截图SideStore“Archive appears to be corrupt: MeadowJourney-b44.ipa”。本轮重新GET原公开IPA，30,292,842字节/SHA b2f158...与本地/设备归档相同；CRC通过，原43与44除版本号外Info.plist无变更，同arm64/iOS15最低版本，无加密，未复现设备错误，不能断言已定位根因或安装通过。
 
 复用scripts/repack-ipa.py经典ZIP2.0重封装为Downloads/MeadowJourney-b44-r1.ipa，清除扩展/注释，无压缩/无ZIP64；逐文件确认全部App内容、路径和权限不变，本地头与中央目录CRC/大小/版本字段一致。仍1.6.18/build44、同源码1236b901/归档40182000958，无新功能/素材变化或App/设备/模拟器运行。新包30,292,842字节，SHA256 945bdd2f930f4944a30e4e76a07d33d3e159944e26c6af7d61222f16ac103449，旧包保留。后续package-ipa.sh自动走同一规范化步骤，bash语法检查；真实SideStore安装待用户复测。新文件名用于避开原下载缓存；重封装提交7b86b0d731ddb21e7749905cd8ecfb96ac40d51c；新不可变链接实际GET200、全部30,292,842字节与SHA验证通过，下载回执见Downloads/MeadowJourney-build44-r1.json。实际安装仍待用户反馈。
+
+
+## 2026-10-25 build45 统一60帧目标（进行中）
+
+用户要求帧率提升到60。核查build44已有地图MTKView输出60与战斗display-link60请求，但静止地图的光影/雾背景重绘仍30Hz；步态审核SKView此前用系统默认值。本轮明确战斗CADisplayLink的minimum/maximum/preferred均60，地图/步态SKView显式60；取消环境30Hz门控，让动态环境跟随每次提交的scene时间样本，静态无环境的步态底图仍可复用。角色位移、步相、光影均按真实时间推进，不加快已认可动作/改画角色或重设技能数值。战斗诊断build号改读取实际Bundle，避免固定44。
+
+只设60目标不等于实机稳定60；不运行App/模拟器/实机，待用户反馈。沿用build44-r1的经典ZIP2.0无压缩规范化打包，安装问题根因和设备结果仍未确认，旧包保留。计划1.6.19/build45，纯Swift/设备归档和新下载核验待完成。本轮无美术源或动作数据变更，不生成冒充实机60fps的离线GIF。
+
+另外核对到build44三份元数据复制了build43的sourceCommit（0c9f1e7），已更正为其真实归档40182000958输入1236b901。IPA内容/摘要/实际CI输入和先前交付源码核验均未变；这是元数据纠错，和安装报错未建立因果。

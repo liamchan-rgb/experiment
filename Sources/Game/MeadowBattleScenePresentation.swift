@@ -16,6 +16,7 @@ final class MeadowBattleSceneClock {
         previous = 0; target.clock = self
         let value = CADisplayLink(target: target, selector: #selector(MeadowBattleClockTarget.tick(_:)))
         value.preferredFramesPerSecond = 60
+        value.preferredFrameRateRange = CAFrameRateRange(minimum:60,maximum:60,preferred:60)
         value.add(to: .main, forMode: .common); link = value
     }
     func stop() { link?.invalidate(); link = nil; previous = 0; MeadowBattleFrameTiming.flush() }
@@ -315,7 +316,7 @@ enum MeadowBattleFrameTiming {
     }
     static func flush() {
         guard count>0 else { return }
-        let values:[String:Any]=["build":44,"samples":count,"targetHz":60,"meanIntervalMs":intervalTotal/Double(count)*1000,"maxIntervalMs":maxInterval*1000,"meanUpdateCPUMs":cpuTotal/Double(count)*1000,"maxUpdateCPUMs":maxCPU*1000,"intervalsOver25ms":over25,"intervalsOver50ms":over50,"scope":"display-link interval and main-thread update CPU; not GPU timing"]
+        let values:[String:Any]=["build":Bundle.main.object(forInfoDictionaryKey:"CFBundleVersion") as? String ?? "unknown","samples":count,"targetHz":60,"meanIntervalMs":intervalTotal/Double(count)*1000,"maxIntervalMs":maxInterval*1000,"meanUpdateCPUMs":cpuTotal/Double(count)*1000,"maxUpdateCPUMs":maxCPU*1000,"intervalsOver25ms":over25,"intervalsOver50ms":over50,"scope":"display-link interval and main-thread update CPU; not GPU timing"]
         queue.async {
             guard let folder=FileManager.default.urls(for:.documentDirectory,in:.userDomainMask).first,
                   let data=try? JSONSerialization.data(withJSONObject:values,options:[.sortedKeys,.prettyPrinted]) else { return }

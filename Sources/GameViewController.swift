@@ -75,6 +75,7 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
         }
         if !ProcessInfo.processInfo.arguments.contains("-gaitReview"), let device = MTLCreateSystemDefaultDevice() {
             let ground = MTKView(frame: view.bounds, device: device)
+            ground.preferredFramesPerSecond = 60
             ground.autoResizeDrawable = true
             ground.colorPixelFormat = .bgra8Unorm
             ground.isOpaque = true
@@ -173,6 +174,7 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
             }
             review.scaleMode = .resizeFill
             let reviewView = SKView(frame: gameView.bounds)
+            reviewView.preferredFramesPerSecond = 60
             reviewView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
             gameView.addSubview(reviewView); gaitView = reviewView
             reviewView.presentScene(review)

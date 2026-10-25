@@ -346,9 +346,11 @@ final class MeadowShadowRenderer: NSObject, MTKViewDelegate {
         // Moving casters are part of this cached backdrop, including their
         // shadows. Track foot roots as well as poses so a stationary gait frame
         // cannot leave the shadow behind while the SpriteKit actor advances.
-        // With no moving hero, the 30 Hz clock still updates the environment.
+        // Time-varying lighting and fog follow each submitted 60 Hz scene sample.
+        // Reuse a static gait-test backdrop; never gate animated scenery at 30 Hz.
+        let environmentAdvanced = frame.includeEnvironment && frame.time != lastRenderTime
         if forceBackground || recreated || frame.camera != lastCamera || environmentChanged
-            || heroChanged || frame.time - lastRenderTime >= 1.0 / 30 {
+            || heroChanged || environmentAdvanced {
             let backdrop = MTLRenderPassDescriptor(); backdrop.colorAttachments[0].texture = backgroundTarget
             try encode(command: command, target: backdrop, camera: frame.camera, time: frame.time,
                        sunCast: frame.world.effects.currentCast, heroes: frame.heroes, alignment: alignmentReview, includeEnvironment: frame.includeEnvironment)
