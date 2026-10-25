@@ -194,3 +194,101 @@ struct MeadowBattleImpactClock {
         return max(0, action - min(0.10, max(0, action - 0.648)))
     }
 }
+
+/// Deterministic, presentation-only light debris. Positive Y points down.
+/// Analytic flights keep floor contacts identical at every render cadence.
+enum MeadowBattleLightKind: String, CaseIterable {
+    case strike, death, shieldContact, shieldBreak
+}
+
+struct MeadowBattleLightEmission {
+    let kind: MeadowBattleLightKind
+    let startedAt: Double
+    let x: Double
+    let y: Double
+    let groundY: Double
+}
+
+struct MeadowBattleLightParticle {
+    let id: Int
+    let x: Double
+    let y: Double
+    let angle: Double
+    let size: Double
+    let alpha: Double
+    let cyan: Bool
+    let groundX: Double
+    let groundY: Double
+    let groundAge: Double?
+    let bounces: Int
+}
+
+enum MeadowBattleLightField {
+    static func sample(_ kind: MeadowBattleLightKind, age: Double,
+                       originX: Double, originY: Double, groundY: Double) -> [MeadowBattleLightParticle] {
+        guard age >= 0, age < 3 else { return [] }
+        let count: Int
+        switch kind {
+        case .strike: count = 34
+        case .death: count = 52
+        case .shieldContact: count = 12
+        case .shieldBreak: count = 32
+        }
+        func fraction(_ i: Int, _ salt: Int) -> Double { Double((i * 73 + salt * 37) % 101) / 100 }
+        return (0..<count).compactMap { i in
+            let cyan = kind == .shieldContact || kind == .shieldBreak
+            let birth = kind == .death && i != 0 ? fraction(i, 2) * 0.65 : 0
+            let localAge = age - birth
+            let life = (kind == .death ? 1.45 : cyan ? 1.08 : 1.22) + fraction(i, 5) * 0.4
+            guard localAge >= 0, localAge < life else { return nil }
+            let floor = groundY + Double(i % 5 - 2) * 2.5
+            let spread = fraction(i, 3)
+            var x = originX, y = originY
+            var vx: Double, vy: Double
+            if kind == .death {
+                x += (spread - 0.25) * 120
+                y += (fraction(i, 7) - 0.5) * 105
+                vx = 75 + fraction(i, 11) * 105
+                vy = -60 - fraction(i, 13) * 120
+            } else if kind == .shieldBreak {
+                let a = Double(i) * 2.399
+                x += cos(a) * 63; y += sin(a) * 63
+                vx = cos(a) * (55 + spread * 60)
+                vy = sin(a) * 65 - 95
+            } else {
+                let a = Double(i) * 2.399
+                vx = (kind == .shieldContact ? 45 : 20) + cos(a) * (85 + spread * 95)
+                vy = -80 - fraction(i, 13) * 170
+            }
+            y = min(y, floor - 2)
+            let gravity = 340.0
+            var remaining = localAge, contacts = 0
+            var lastContactAge: Double?, lastContactX = x
+            // At most two rebounds. After the second landing debris settles.
+            for bounce in 0..<3 {
+                let flight = (-vy + sqrt(vy * vy + 2 * gravity * (floor - y))) / gravity
+                if remaining < flight {
+                    x += vx * remaining
+                    y += vy * remaining + gravity * remaining * remaining / 2
+                    vy += gravity * remaining
+                    if let elapsed = lastContactAge { lastContactAge = elapsed + remaining }
+                    break
+                }
+                x += vx * flight; y = floor
+                remaining -= flight; contacts += 1
+                lastContactX = x; lastContactAge = remaining
+                if bounce == 2 { break }
+                vx *= 0.62; vy = -(vy + gravity * flight) * 0.32
+                // The next arc starts on the plane and rises before falling.
+                if remaining == 0 { break }
+                lastContactAge = 0
+            }
+            let fade = pow(max(0, 1 - localAge / life), 0.65)
+            return MeadowBattleLightParticle(id: i, x: x, y: min(y, floor),
+                angle: atan2(vy, vx) + (cyan ? localAge * (3 + spread * 5) : 0),
+                size: (cyan ? 8 : 6) + fraction(i, 17) * (cyan ? 10 : 7),
+                alpha: fade, cyan: cyan, groundX: lastContactX, groundY: floor,
+                groundAge: contacts > 0 ? lastContactAge : nil, bounces: contacts)
+        }
+    }
+}

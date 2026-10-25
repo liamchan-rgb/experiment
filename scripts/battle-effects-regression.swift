@@ -82,9 +82,35 @@ import Foundation
         precondition(abs(MeadowBattleImpactClock.strikePoseTime(1.048)-0.648) < 1e-8)
         precondition(abs(MeadowBattleImpactClock.strikePoseTime(1.148)-0.648) < 1e-8)
         precondition(abs(MeadowBattleImpactClock.strikePoseTime(MeadowBattleImpactClock.strikeDuration)-1.2) < 1e-8)
+        var particleTraces: [[String: Any]] = []
+        for kind in MeadowBattleLightKind.allCases {
+            precondition(MeadowBattleLightField.sample(kind,age:-0.01,originX:0,originY:-100,groundY:0).isEmpty)
+            precondition(MeadowBattleLightField.sample(kind,age:3,originX:0,originY:-100,groundY:0).isEmpty)
+            precondition(!MeadowBattleLightField.sample(kind,age:0,originX:0,originY:-100,groundY:0).isEmpty)
+            var sawContact=false, sawRebound=false
+            for frame in 0..<75 {
+                let particles=MeadowBattleLightField.sample(kind,age:Double(frame)*0.04,originX:0,originY:-100,groundY:0)
+                precondition(particles.count <= 52)
+                for p in particles {
+                    precondition(p.x.isFinite && p.y.isFinite && p.alpha.isFinite)
+                    precondition(p.y <= p.groundY + 1e-8 && p.alpha >= 0 && p.alpha <= 1)
+                    if p.groundAge != nil { sawContact=true }
+                    if p.bounces>0 && p.y < p.groundY-1 { sawRebound=true }
+                    particleTraces.append(["kind":kind.rawValue,"frame":frame,"id":p.id,"x":p.x,"y":p.y,"angle":p.angle,"size":p.size,"alpha":p.alpha,"cyan":p.cyan,"groundX":p.groundX,"groundY":p.groundY,"groundAge":p.groundAge as Any? ?? NSNull(),"bounces":p.bounces])
+                }
+            }
+            precondition(sawContact && sawRebound)
+            // Exact same sample after different caller cadences: no hidden integrator state.
+            let before=MeadowBattleLightField.sample(kind,age:0.8,originX:0,originY:-100,groundY:0)
+            for fps in [15,30,60,120] {
+                for tick in 0..<fps { _=MeadowBattleLightField.sample(kind,age:Double(tick)/Double(fps),originX:0,originY:-100,groundY:0) }
+                let after=MeadowBattleLightField.sample(kind,age:0.8,originX:0,originY:-100,groundY:0)
+                precondition(before.map(\.x)==after.map(\.x) && before.map(\.y)==after.map(\.y))
+            }
+        }
         let out = URL(fileURLWithPath: CommandLine.arguments[1])
         try FileManager.default.createDirectory(at: out.deletingLastPathComponent(), withIntermediateDirectories: true)
-        try JSONSerialization.data(withJSONObject: ["scope":"production model and one-shot impact clock; no UI/device execution", "lastStrike":traces,"shieldSequence":shieldTraces], options:[.prettyPrinted,.sortedKeys]).write(to:out)
-        print("Battle VFX checks passed: deferred HP/AP, single impact, lethal same-event transition, nonlethal survival, cancel/retry, shield, contact hold at 15/30/60/120Hz.")
+        try JSONSerialization.data(withJSONObject: ["scope":"production model and one-shot impact clock; no UI/device execution", "lastStrike":traces,"shieldSequence":shieldTraces,"lightParticles":particleTraces], options:[.prettyPrinted,.sortedKeys]).write(to:out)
+        print("Battle VFX checks passed: deferred HP/AP, single impact, lethal same-event transition, nonlethal survival, cancel/retry, shield, contact hold and deterministic ground-bouncing light debris at 15/30/60/120Hz.")
     }
 }

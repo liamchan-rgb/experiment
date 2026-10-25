@@ -58,7 +58,10 @@ enum MeadowBattleEnemyFrames {
 enum MeadowBattleVFXAssets {
     static let heavyArc = UIImage(named: "BattleVFXHeavyArc")!
     static let spray = UIImage(named: "BattleVFXHeavySpray")!
-    static let barrier = UIImage(named: "BattleVFXBarrier")!
+    static let barrier = UIImage(named: "BattleVFXRoundBarrier")!
+    static let shard = UIImage(named: "BattleVFXCyanShard")!
+    static let ember = UIImage(named: "BattleVFXGoldEmber")!
+    static let groundSpark = UIImage(named: "BattleVFXGroundSpark")!
     static let wardHit = UIImage(named: "BattleVFXWardHit")!
     static let slash = UIImage(named: "BattleVFXSlash")!
     static let burst = UIImage(named: "BattleVFXBurst")!
@@ -97,6 +100,8 @@ final class MeadowBattleEffectsView: UIView {
     var shieldBirthAge: Double?
     var shieldContactAge: Double?
     var shieldBreakAge: Double?
+    var deathAge: Double?
+    var lightEmissions: [MeadowBattleLightEmission] = []
     override init(frame: CGRect) { super.init(frame: frame); isOpaque = false; isUserInteractionEnabled = false }
     required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
     override func draw(_ rect: CGRect) {
@@ -121,7 +126,27 @@ final class MeadowBattleEffectsView: UIView {
         let burst = impactAge.map { pulse($0, -0.035, 0.035, 0.52) } ?? 0
         let wardSpawn=shieldBirthAge.map { pulse($0,0,0.10,0.45) } ?? 0
         let wardContact=shieldContactAge.map { pulse($0,-0.02,0.025,0.38) } ?? 0
+        let debris = lightEmissions.flatMap { e in
+            MeadowBattleLightField.sample(e.kind,age:time-e.startedAt,originX:e.x,originY:e.y,groundY:e.groundY)
+        }
         if groundOnly {
+            let cyan = UIColor(red:0.05,green:0.55,blue:1,alpha:1)
+            var pools = 0
+            for p in debris {
+                if p.id % 6 == 0 { light(CGPoint(x:p.x*Double(unit),y:p.y*Double(unit)),24,20,CGFloat(p.alpha)*0.25,p.cyan ? cyan : .orange) }
+                if let age=p.groundAge, age<0.24, pools<12 {
+                    let center=CGPoint(x:p.groundX*Double(unit),y:p.groundY*Double(unit))
+                    let fade=CGFloat(1-age/0.24)*CGFloat(p.alpha)
+                    light(center,36,10,fade*0.65,p.cyan ? cyan : .orange)
+                    sprite(p.cyan ? MeadowBattleVFXAssets.wardHit : MeadowBattleVFXAssets.groundSpark,center,30,12,fade*0.9)
+                    pools += 1
+                }
+            }
+            if let age=deathAge,age<1.4 {
+                light(CGPoint(x:impact.x+CGFloat(age)*95*unit,y:enemyFoot.y),180,42,0.38*(1-smooth(CGFloat(age/1.4))))
+                light(CGPoint(x:impact.x+CGFloat(age)*90*unit,y:impact.y),115,95,0.18*(1-smooth(CGFloat(age/1.4))))
+            }
+
             light(CGPoint(x: impact.x+20*unit, y: enemyFoot.y), 235, 55, burst*0.76)
             light(impact, 195, 190, burst*0.48)
             light(heroFoot,95,32,(wardSpawn*0.28+wardContact*0.38),.cyan)
@@ -156,23 +181,24 @@ final class MeadowBattleEffectsView: UIView {
                 sprite(MeadowBattleVFXAssets.mote,CGPoint(x:impact.x+cos(angle)*distance,y:impact.y+sin(angle)*distance),CGFloat(i%4==0 ? 22 : 10),CGFloat(i%4==0 ? 7 : 10),burst*0.9)
             }
         }
-        let wardCenter=CGPoint(x:heroFoot.x+15*unit,y:heroFoot.y-65*unit)
+        let wardCenter=CGPoint(x:heroFoot.x+6*unit,y:heroFoot.y-66*unit)
         let wardScale=shieldBirthAge.map { 0.68+0.32*smooth(CGFloat($0/0.28)) } ?? 1
-        var wardAlpha: CGFloat = shield > 0 ? 0.30+wardSpawn*0.5+wardContact*0.38 : 0
+        var wardAlpha: CGFloat = shield > 0 ? 0.60+wardSpawn*0.4+wardContact*0.4 : 0
         if shieldPreview { wardAlpha=max(wardAlpha,previewEnvelope*0.12) }
-        if let age=shieldBreakAge, age<0.25 { wardAlpha=max(wardAlpha,0.55*(1-smooth(CGFloat(age/0.25)))) }
-        sprite(MeadowBattleVFXAssets.barrier,wardCenter,88*wardScale,150*wardScale,wardAlpha)
+        if let age=shieldBreakAge, age<0.25 { wardAlpha=max(wardAlpha,0.95*(1-smooth(CGFloat(age/0.25)))) }
+        sprite(MeadowBattleVFXAssets.barrier,wardCenter,132*wardScale,132*wardScale,wardAlpha)
         if let age=shieldContactAge, age<0.4 {
-            let contact=CGPoint(x:heroFoot.x+38*unit,y:heroFoot.y-65*unit)
+            let contact=CGPoint(x:heroFoot.x+65*unit,y:heroFoot.y-66*unit)
             let size=80+CGFloat(age)*150
             sprite(MeadowBattleVFXAssets.wardHit,CGPoint(x:contact.x+size*0.33*unit,y:contact.y),size,size,wardContact*0.9)
         }
-        if let age=shieldBreakAge, age<0.65 {
-            for i in 0..<16 {
-                let angle=CGFloat(i)*2.399, spread=CGFloat(age)*75*unit
-                let center=CGPoint(x:wardCenter.x+cos(angle)*(30*unit+spread),y:wardCenter.y+sin(angle)*(55*unit+spread*0.6))
-                sprite(MeadowBattleVFXAssets.wardHit,center,CGFloat(i%3==0 ? 18 : 10),8,1-smooth(CGFloat(age/0.65)))
-            }
+        for p in debris {
+            ctx.saveGState()
+            ctx.translateBy(x:CGFloat(p.x)*unit,y:CGFloat(p.y)*unit)
+            ctx.rotate(by:CGFloat(p.angle + (p.cyan ? Double.pi/4 : -Double.pi*0.75)))
+            let size=CGFloat(p.size)*unit
+            (p.cyan ? MeadowBattleVFXAssets.shard : MeadowBattleVFXAssets.ember).draw(in:CGRect(x:-size/2,y:-size/3,width:size,height:size*0.67),blendMode:.plusLighter,alpha:CGFloat(p.alpha))
+            ctx.restoreGState()
         }
         if cue == .heal {
             for i in 0..<5 {
