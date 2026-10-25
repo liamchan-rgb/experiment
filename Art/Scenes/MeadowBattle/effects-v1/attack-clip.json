@@ -1,0 +1,150 @@
+{
+  "durationMs": 1200,
+  "loop": false,
+  "keys": [
+    {
+      "t": 0,
+      "root": [
+        0,
+        0
+      ],
+      "lean": 0,
+      "crouch": 0,
+      "shoulder": 0,
+      "elbow": 0,
+      "wrist": 0,
+      "nearHip": 0,
+      "nearKnee": 0,
+      "farHip": 0,
+      "farKnee": 0,
+      "flash": 0,
+      "recoil": 0
+    },
+    {
+      "t": 0.14,
+      "root": [
+        -1,
+        0
+      ],
+      "lean": -0.04,
+      "crouch": 2,
+      "shoulder": -0.34,
+      "elbow": -0.62,
+      "wrist": -0.08,
+      "nearHip": -0.1,
+      "nearKnee": 0.24,
+      "farHip": 0.08,
+      "farKnee": -0.12,
+      "flash": 0,
+      "recoil": 0
+    },
+    {
+      "t": 0.28,
+      "root": [
+        0,
+        -1
+      ],
+      "lean": -0.08,
+      "crouch": 4,
+      "shoulder": -0.58,
+      "elbow": -0.72,
+      "wrist": -0.12,
+      "nearHip": -0.34,
+      "nearKnee": 0.3,
+      "farHip": 0.18,
+      "farKnee": -0.2,
+      "flash": 0,
+      "recoil": 0
+    },
+    {
+      "t": 0.45,
+      "root": [
+        1,
+        -1
+      ],
+      "lean": 0.05,
+      "crouch": 2,
+      "shoulder": -0.2,
+      "elbow": 0.05,
+      "wrist": 0.02,
+      "nearHip": -0.4,
+      "nearKnee": 0.32,
+      "farHip": 0.12,
+      "farKnee": -0.1,
+      "flash": 0.25,
+      "recoil": 0
+    },
+    {
+      "t": 0.54,
+      "root": [
+        2,
+        -1
+      ],
+      "lean": 0.08,
+      "crouch": 1,
+      "shoulder": -0.12,
+      "elbow": 0.1,
+      "wrist": 0.02,
+      "nearHip": -0.4,
+      "nearKnee": 0.32,
+      "farHip": 0.08,
+      "farKnee": 0.02,
+      "flash": 1,
+      "recoil": 0
+    },
+    {
+      "t": 0.62,
+      "root": [
+        2,
+        -1
+      ],
+      "lean": 0.04,
+      "crouch": 2,
+      "shoulder": 0.0,
+      "elbow": 0.12,
+      "wrist": 0.02,
+      "nearHip": -0.4,
+      "nearKnee": 0.24,
+      "farHip": 0.04,
+      "farKnee": 0.02,
+      "flash": 0.55,
+      "recoil": 0
+    },
+    {
+      "t": 0.82,
+      "root": [
+        1,
+        0
+      ],
+      "lean": 0.01,
+      "crouch": 1,
+      "shoulder": 0.02,
+      "elbow": 0.2,
+      "wrist": 0.15,
+      "nearHip": -0.12,
+      "nearKnee": 0.08,
+      "farHip": 0,
+      "farKnee": 0,
+      "flash": 0,
+      "recoil": 0
+    },
+    {
+      "t": 1,
+      "root": [
+        0,
+        0
+      ],
+      "lean": 0,
+      "crouch": 0,
+      "shoulder": 0,
+      "elbow": 0,
+      "wrist": 0,
+      "nearHip": 0,
+      "nearKnee": 0,
+      "farHip": 0,
+      "farKnee": 0,
+      "flash": 0,
+      "recoil": 0
+    }
+  ]
+}
