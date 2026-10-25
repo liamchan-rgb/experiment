@@ -1,7 +1,21 @@
 import Foundation
+#if canImport(CoreGraphics)
+import CoreGraphics
+#endif
 
 // Pure production controller check: no SpriteKit, app, device or simulator.
-enum HeroFrames { static let walkFrameCount = 24 }
+enum HeroFrames {
+    static let walkFrameCount = 24
+    static let reviewSpeed: CGFloat = 25
+}
+struct MapPoint: Decodable {
+    let x: CGFloat; let y: CGFloat
+    var point: CGPoint { CGPoint(x:x,y:y) }
+}
+enum SceneDefinition {
+    struct Road: Decodable { let from: Int; let to: Int; let width: CGFloat; let points: [MapPoint] }
+}
+private struct MapFile: Decodable { let roads: [SceneDefinition.Road] }
 
 @main
 struct ModularLocomotionRegression {
@@ -32,9 +46,14 @@ struct ModularLocomotionRegression {
                 actor.advance(from:.zero,to:next,seconds:seconds,requested:requested,headingHint:hint)
             }
             func sample(_ actor: AuthoredLocomotion) -> [String:Any] {
-                ["facing":actor.facing,"frame":actor.frame,"column":column(actor.frame),"phase":actor.phase,"state":actor.state.rawValue]
+                ["facing":actor.facing,"frame":actor.frame,"column":column(actor.frame),"phase":Double(actor.phase),"state":actor.state.rawValue]
             }
-            var actor = AuthoredLocomotion(plan:plan), sequence = [sample(actor)]
+            var actor = AuthoredLocomotion(plan:plan)
+            // Reach a real standing pose in this direction before recording;
+            // a newly constructed actor faces down and is not this idle path.
+            tick(&actor,true,0,travel:false);tick(&actor,true);tick(&actor,true);tick(&actor,false,0)
+            while actor.state != .idle { tick(&actor,false) }
+            var sequence = [sample(actor)]
             tick(&actor,true,0,travel:false);sequence.append(sample(actor))
             require(actor.frame == 25 && actor.facing == d,"direction/start01")
             require(!actor.allowsTravel(requested:true),"start must not slide on the road")
@@ -98,10 +117,33 @@ struct ModularLocomotionRegression {
                 turns.advance(from:.zero,to:CGPoint(x:vector.x*factor,y:vector.y*factor),seconds:0.12,requested:true)
                 require(abs(turns.distance-distance-3)<0.000001,"turn preserves global distance phase")
                 require(turns.facing == direction,"turn heading")
-                turnTrace.append(["facing":turns.facing,"frame":turns.frame,"column":column(turns.frame),"phase":turns.phase])
+                turnTrace.append(["facing":turns.facing,"frame":turns.frame,"column":column(turns.frame),"phase":Double(turns.phase)])
             }
         }
-        let report:[String:Any] = ["status":"pass","specifiedPaths":8,"stopCommandPhases":stopCases,"renderCadenceCases":cadenceCases,"phasePreservingTurns":turnTrace,"directions":traces,"deviceExecuted":false,"simulatorExecuted":false]
+        let map = try JSONDecoder().decode(MapFile.self,from:Data(contentsOf:root.appendingPathComponent("Sources/Resources/SceneMap.json")))
+        let network = TrailNetwork(roads:map.roads)
+        var simulation = JourneySimulation(network:network), traveller = AuthoredLocomotion(plan:plan)
+        simulation.orderSelected(to:network.edges[1].trail.points.last!)
+        var mapTrace: [[String:Any]] = []
+        for step in 0..<1200 {
+            if step == 270 || step == 420 { simulation.togglePlayback() }
+            if step == 720 { simulation.orderSelected(to:network.edges[3].trail.points.last!) }
+            let before = simulation.point(for:0)
+            let requested = simulation.isPlaying && !simulation.travelers[0].isWaiting
+            let allowed = traveller.allowsTravel(requested:requested)
+            simulation.advance(0.01,p1CanTravel:allowed)
+            let after = simulation.point(for:0)
+            let nextRequested = simulation.isPlaying && !simulation.travelers[0].isWaiting
+            traveller.advance(from:before,to:after,seconds:0.01,requested:nextRequested,headingHint:simulation.heading(for:0))
+            if !allowed { require(before == after,"entry/stop gate must hold route position") }
+            if step % 12 == 0 {
+                mapTrace.append(["time":Double(step)*0.01,"x":Double(after.x),"y":Double(after.y),"facing":traveller.facing,"frame":traveller.frame,"column":column(traveller.frame),"phase":Double(traveller.phase),"state":traveller.state.rawValue])
+            }
+        }
+        require(mapTrace.contains { $0["state"] as? String == "starting" },"real road enters start")
+        require(mapTrace.contains { $0["state"] as? String == "stopping" },"real road pause reaches stop")
+        require(mapTrace.contains { $0["state"] as? String == "idle" },"real road pause reaches idle")
+        let report:[String:Any] = ["status":"pass","specifiedPaths":8,"stopCommandPhases":stopCases,"renderCadenceCases":cadenceCases,"phasePreservingTurns":turnTrace,"directions":traces,"mapTrace":mapTrace,"mapSimulationSteps":1200,"deviceExecuted":false,"simulatorExecuted":false]
         let target = URL(fileURLWithPath:CommandLine.arguments[2]);try FileManager.default.createDirectory(at:target.deletingLastPathComponent(),withIntermediateDirectories:true)
         try JSONSerialization.data(withJSONObject:report,options:[.prettyPrinted,.sortedKeys]).write(to:target)
         print("PASS:8specified paths,\(stopCases)command phases via designated exit,\(cadenceCases)render cadence cases,64phase-preserving turn samples")

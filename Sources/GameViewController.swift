@@ -239,6 +239,9 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
         zoomButton.frame = CGRect(x: right - button, y: top + 2, width: button, height: button)
         resetButton.frame = zoomButton.frame.offsetBy(dx: -spacing, dy: 0)
         playButton.frame = resetButton.frame.offsetBy(dx: -spacing, dy: 0)
+        if scene.gaitTest == nil && p1AppearanceButton.frame.maxX > playButton.frame.minX - 8 {
+            p1AppearanceButton.frame.origin = CGPoint(x: titleButton.frame.minX, y: top + button + 10)
+        }
         metricsLabel.frame = CGRect(x: right - 225, y: view.bounds.height - max(inset.bottom, 10) - 50, width: 225, height: 48)
         discoveryLabel.frame = CGRect(x: view.bounds.midX - 110, y: view.bounds.height - max(inset.bottom, 10) - 44, width: 220, height: 34)
     }
@@ -438,12 +441,14 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
         p1AppearanceButton.configuration = style
         p1AppearanceButton.configuration?.title = "P1 衣装"
         p1AppearanceButton.accessibilityIdentifier = "p1Appearance"
+        p1AppearanceButton.accessibilityValue = HeroFrames.appearanceTitles.first
         p1AppearanceButton.showsMenuAsPrimaryAction = true
         p1AppearanceButton.menu = UIMenu(children: HeroFrames.appearanceTitles.enumerated().map { index, title in
             UIAction(title: title) { [weak self] _ in
                 guard let self else { return }
                 self.scene.selectP1Appearance(index)
                 self.p1AppearanceButton.configuration?.title = title
+                self.p1AppearanceButton.accessibilityValue = title
             }
         })
         p1AppearanceButton.isHidden = HeroFrames.appearanceTitles.isEmpty

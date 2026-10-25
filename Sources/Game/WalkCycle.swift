@@ -1,4 +1,7 @@
 import Foundation
+#if canImport(CoreGraphics)
+import CoreGraphics
+#endif
 
 /// Distance, rather than the atmospheric clock, drives planted-foot cadence.
 struct WalkCycle {
