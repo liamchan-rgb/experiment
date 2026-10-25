@@ -94,6 +94,65 @@ import ClassroomGameCore
         }
         try JSONSerialization.data(withJSONObject:rows,options:[.sortedKeys]).write(to:out.appendingPathComponent("party-frames.json"))
         try JSONSerialization.data(withJSONObject:requests,options:[.sortedKeys]).write(to:out.appendingPathComponent("legacy-light-requests.json"))
+        try exportDice(out:out)
         print("Exported \(rows.count) actual GameCore support/item frames and \(requests.count) attachment samples")
+    }
+}
+
+extension Export {
+    static func exportDice(out:URL) throws {
+        var rows:[[String:Any]]=[]
+        for scenario in ["attack-buff","support","shield","heal","lethal"] {
+            let p=try PartyEncounter(seed:47,sessionID:"dice-review-"+scenario)
+            let action:PartyAction=scenario=="support" ? .support:scenario=="shield" ? .simpleGuard:scenario=="heal" ? .largePotion:.attack
+            if scenario=="attack-buff" || scenario=="lethal" {
+                let rally=p.prepare(.rally,target:"p1")!;_ = try p.commit(rally.id)
+            }
+            if scenario != "support" && scenario != "heal" { try p.engine.apply(.endTurn(actor:"p2",timedOut:false)) }
+            if scenario=="lethal" { try p.engine.apply(.editResources(unit:"m1",value:ResourcePatch(health:3))) }
+            let target=action == .attack ? "m1":"p1"
+            var intent:PartyIntent?,receipt:OperationReceipt?,activeAction=action,start=1.0,hitAt:Double?,fired=false
+            var dieActor=p.current!,dieTarget=target,dieActorUnit=p.state.units[p.current!]!,dieTargetUnit=p.state.units[target]!
+            var hurt:[String:Double]=[:],death:[String:Double]=[:]
+            var dice=BattleDice.channels(action,actor:dieActorUnit,target:dieTargetUnit,catalog:p.engine.catalog)
+            let count=scenario=="attack-buff" ? 300:190
+            for frame in 0..<count {
+                let time=Double(frame)*0.02
+                if frame==50 || scenario=="attack-buff" && frame==190 {
+                    if frame==190 {
+                        try p.engine.apply(.endTurn(actor:"p1",timedOut:false));activeAction = .attack
+                        dieActor=p.current!;dieTarget="p1";dieActorUnit=p.state.units[dieActor]!;dieTargetUnit=p.state.units[dieTarget]!
+                        dice=BattleDice.channels(activeAction,actor:dieActorUnit,target:dieTargetUnit,catalog:p.engine.catalog)
+                    }
+                    intent=p.prepare(activeAction,target:dieTarget)!;start=time;fired=false;hitAt=nil;receipt=nil
+                }
+                let age=time-start
+                if let i=intent,!fired,age+1e-8 >= (i.enemy ? 0.46:i.action.impact) {
+                    receipt=try p.commit(i.id);fired=true;hitAt=time
+                    if let r=receipt {
+                        dice=BattleDice.channels(activeAction,actor:dieActorUnit,target:dieTargetUnit,catalog:p.engine.catalog,receipt:r)
+                        for id in ["p1","p2","m1","m2"] {
+                            if r.after.units[id]!.health<r.before.units[id]!.health { hurt[id]=time }
+                            if r.before.units[id]!.isAlive && !r.after.units[id]!.isAlive { death[id]=time }
+                        }
+                    }
+                }
+                let showing=intent.flatMap { age<($0.enemy ? 1.10:$0.action.duration) ? $0:nil }
+                let travel=PartyVisual.travel(showing,age:age,shielded:dieTargetUnit.shield>0)
+                var units:[[String:Any]]=[]
+                for id in ["p1","p2","m1","m2"] {
+                    let u=p.state.units[id]!,pose=PartyVisual.pose(unit:u,intent:showing,age:age,time:time,hurtAge:hurt[id].map { time-$0 },blocked:u.shield>0)
+                    let monster=PartyVisual.monster(time:time+(id=="m2" ? 0.7:0),attackAge:showing?.actor==id ? age:nil,hurtAge:hurt[id].map { time-$0 },preparing:p.current==id && showing==nil)
+                    units.append(["id":id,"hp":u.health,"maxHP":u.baseAttributes.maximumHealth,"shield":u.shield,"ap":u.ap,"buff":u.damageBuff?.amount ?? 0,"clip":pose.clip,"progress":pose.progress,"monster":try JSONSerialization.jsonObject(with:JSONEncoder().encode(monster)),"deathAge":death[id].map { time-$0 } as Any? ?? NSNull()])
+                }
+                let diePose=dice.indices.map { index in BattleDice.pose(time:time,index:index,resolvedAge:hitAt.map { time-$0 },visibleAge:frame>=190 && scenario=="attack-buff" ? time-3.8:time) }
+                let hover=time<1
+                let initial=BattleDice.darkness(action)
+                let dim=hover ? initial*PartyVisual.smooth(time/0.28):showing != nil ? (initial+(max(initial,activeAction.visual=="attack" ? 0.58:0.32)-initial)*PartyVisual.smooth(age/0.4))*(1-PartyVisual.smooth((age-1.2)/0.6)):0
+                rows.append(["scenario":scenario,"frame":frame,"time":time,"hover":hover,"darkness":dim,"actor":dieActor,"target":dieTarget,"action":activeAction.rawValue,"age":age,"playing":showing != nil,"enemy":showing?.enemy ?? false,"impact":hitAt as Any? ?? NSNull(),"receiptDice":try JSONSerialization.jsonObject(with:JSONEncoder().encode(receipt?.dice ?? [])),"dice":try JSONSerialization.jsonObject(with:JSONEncoder().encode(dice)),"dicePose":try JSONSerialization.jsonObject(with:JSONEncoder().encode(diePose)),"travel":try JSONSerialization.jsonObject(with:JSONEncoder().encode(travel)),"current":(showing?.actor ?? p.current) as Any? ?? NSNull(),"acted":Array(p.state.battle?.acted ?? []),"units":units])
+            }
+        }
+        try JSONSerialization.data(withJSONObject:rows,options:[.sortedKeys]).write(to:out.appendingPathComponent("dice-frames.json"))
+        print("Exported \(rows.count) receipt-bound dice / monster / queue frames")
     }
 }

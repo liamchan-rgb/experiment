@@ -97,3 +97,53 @@ final class PartyTests:XCTestCase {
     }
 
 }
+
+extension PartyTests {
+    func testDicePreviewDoesNotRollAndCommitShowsReceiptPlusBuff() throws {
+        let p=try PartyEncounter(seed:47)
+        let rally=try XCTUnwrap(p.prepare(.rally,target:"p1"));_ = try p.commit(rally.id)
+        try p.engine.apply(.endTurn(actor:"p2",timedOut:false))
+        let before=p.state,actor=before.units["p1"]!,target=before.units["m1"]!
+        for _ in 0..<120 {
+            let dice=BattleDice.channels(.attack,actor:actor,target:target,catalog:p.engine.catalog)
+            XCTAssertEqual(dice.map(\.color),["red","yellow"]);XCTAssertTrue(dice.allSatisfy { $0.value==nil })
+        }
+        XCTAssertEqual(p.state,before)
+        let intent=try XCTUnwrap(p.prepare(.attack,target:"m1"));let r=try XCTUnwrap(p.commit(intent.id))
+        let result=BattleDice.channels(.attack,actor:actor,target:target,catalog:p.engine.catalog,receipt:r)
+        XCTAssertEqual(result.first?.value,r.dice.first?.values.first);XCTAssertEqual(result.last?.value,2)
+        XCTAssertEqual(result.first!.value!+result.last!.value!,r.events.first(where: { $0.kind=="damage" })?.amount)
+    }
+    func testFixedDiceSupportAndItemsKeepOriginalValues() throws {
+        let p=try PartyEncounter(seed:48),before=p.state
+        let i=try XCTUnwrap(p.prepare(.support,target:"p1"));let r=try XCTUnwrap(p.commit(i.id))
+        let channels=BattleDice.channels(.support,actor:before.units["p2"]!,target:before.units["p1"]!,catalog:p.engine.catalog,receipt:r)
+        XCTAssertEqual(channels.map(\.color),["green","blue"]);XCTAssertEqual(channels.compactMap(\.value),[6,4]);XCTAssertTrue(channels.allSatisfy { $0.sides==0 })
+        let shield=BattleDice.channels(.shieldPotion,actor:before.units["p2"]!,target:before.units["p1"]!,catalog:p.engine.catalog,receipt:r)
+        XCTAssertEqual(shield.map(\.color),["blue"]);XCTAssertEqual(shield.first?.value,8)
+        let large=BattleDice.channels(.largePotion,actor:before.units["p2"]!,target:before.units["p1"]!,catalog:p.engine.catalog,receipt:r)
+        XCTAssertEqual(large.first?.value,12)
+        XCTAssertEqual(BattleDice.channels(.revivalStone,actor:before.units["p2"]!,target:before.units["p1"]!,catalog:p.engine.catalog,receipt:r).first?.value,6)
+    }
+    func testDiceShakeSettlesContinuouslyWithoutChangingValues() {
+        let a=BattleDice.pose(time:0.5,index:0,resolvedAge:nil,visibleAge:0.5)
+        let b=BattleDice.pose(time:0.501,index:0,resolvedAge:0,visibleAge:0.501)
+        XCTAssertEqual(a.angle,b.angle,accuracy:0.01);XCTAssertEqual(b.resultMix,0)
+        let mid=BattleDice.pose(time:0.68,index:0,resolvedAge:0.18,visibleAge:0.68)
+        XCTAssertEqual(mid.resultMix,0.5,accuracy:1e-8)
+        let settled=BattleDice.pose(time:0.9,index:0,resolvedAge:0.4,visibleAge:0.9)
+        XCTAssertEqual(settled.angle,0);XCTAssertEqual(settled.offsetY,0);XCTAssertEqual(settled.resultMix,1)
+        XCTAssertNotEqual(a.angle,BattleDice.pose(time:6.8,index:0,resolvedAge:nil,visibleAge:6.8).angle)
+        XCTAssertEqual(BattleDice.pose(time:3,index:0,resolvedAge:2,visibleAge:3).alpha,0)
+        XCTAssertGreaterThan(BattleDice.darkness(.heavyStrike),BattleDice.darkness(.attack))
+    }
+    func testMonsterIdleHitPreparationAndRecovery() {
+        let idle=PartyVisual.monster(time:0,attackAge:nil),breath=PartyVisual.monster(time:0.4,attackAge:nil)
+        XCTAssertNotEqual(idle.scaleY,breath.scaleY)
+        let hit=PartyVisual.monster(time:0.4,attackAge:nil,hurtAge:0.055)
+        XCTAssertEqual(hit.recoil,14,accuracy:1e-8);XCTAssertGreaterThan(hit.flash,0.6)
+        let recovered=PartyVisual.monster(time:1,attackAge:nil,hurtAge:0.6)
+        XCTAssertEqual(recovered.recoil,0);XCTAssertEqual(recovered.flash,0)
+        XCTAssertEqual(PartyVisual.monster(time:1,attackAge:0.96).progress,1)
+    }
+}

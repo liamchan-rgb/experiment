@@ -48,7 +48,7 @@ final class MeadowBattlePreviewView: UIView {
     private var pendingEnemyAction: DispatchWorkItem?
     private var lastPrimaryActionTime = 0.0
     private var mode: MeadowBattlePreviewMode { encounter.phase == .exploration ? .exploration : .playerTurn }
-    var mapFrame: CGRect { MeadowBattleLayout(size: bounds.size, safeArea: safeAreaInsets, mode: mode).map }
+    var mapFrame: CGRect { MeadowBattleLayout(size: bounds.size, safeArea: safeAreaInsets, mode: partyMode ? .playerTurn:mode).map }
 
     private let header = UIView()
     private let actor = MeadowPreviewPalette.label("", size: 26, weight: .heavy)
@@ -277,6 +277,7 @@ final class MeadowBattlePreviewView: UIView {
         super.layoutSubviews()
         guard bounds.width > 0, bounds.height > 0 else { return }
         party.frame=bounds
+        partyButton.isHidden=partyMode
         let layout = MeadowBattleLayout(size: bounds.size, safeArea: safeAreaInsets, mode: mode)
         header.frame = layout.header
         mapBorder.frame = mapFrame
@@ -295,15 +296,15 @@ final class MeadowBattlePreviewView: UIView {
         subtitle.frame = CGRect(x: 16, y: 43, width: textWidth, height: 23)
     }
     override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
-        if !partyMode,mapFrame.contains(point),!partyButton.frame.contains(point) { return nil }
+        if mapFrame.contains(point),(partyMode || !partyButton.frame.contains(point)) { return nil }
         return super.hitTest(point, with: event)
     }
 }
 
-private final class MeadowTurnTrackView: UIView {
+final class MeadowTurnTrackView: UIView {
     private let line = CAShapeLayer()
     private let completed = CAShapeLayer()
-    private let ids = ["P1", "敌1"]
+    private var ids = ["P1", "敌1"]
     private var tokens: [MeadowTurnTokenView] = []
     private var current = 0
     override init(frame: CGRect) {
@@ -323,6 +324,18 @@ private final class MeadowTurnTrackView: UIView {
             token.show(current: index == current, done: index == 0 && donePlayer,
                        badge: index == 1 && phase == .victory ? "✓" : index == 1 && phase == .defeat ? "!" : "")
             token.accessibilityLabel = index == 0 ? "P1，第\(round)轮" : "鹿灵，第\(round)轮"
+        }
+        setNeedsLayout()
+    }
+    func show(ids:[String],names:[String:String],current:String?,done:Set<String>,down:Set<String>) {
+        if self.ids != ids {
+            tokens.forEach { $0.removeFromSuperview() };self.ids=ids
+            tokens=ids.map { MeadowTurnTokenView(id:$0) };tokens.forEach(addSubview)
+        }
+        self.current=ids.firstIndex(of:current ?? "") ?? 0
+        for (i,id) in ids.enumerated() {
+            tokens[i].setName(names[id] ?? id)
+            tokens[i].show(current:id==current,done:done.contains(id),badge:down.contains(id) ? "!":"")
         }
         setNeedsLayout()
     }
@@ -359,10 +372,11 @@ private final class MeadowTurnTokenView: UIView {
         name.textAlignment = .center; marker.textAlignment = .center; badge.textAlignment = .center
         marker.textColor = MeadowPreviewPalette.gold
         portrait.contentMode = .scaleAspectFit; portrait.layer.magnificationFilter = .nearest
-        if id.hasPrefix("P"), let number = Int(id.dropFirst()) { portrait.image = Self.portraits[(number - 1) % Self.portraits.count] }
+        if id.lowercased().hasPrefix("p"), let number = Int(id.dropFirst()) { portrait.image = Self.portraits[(number - 1) % Self.portraits.count] }
         else { portrait.image = UIImage(systemName: "pawprint.fill"); portrait.tintColor = MeadowPreviewPalette.gold }
     }
     required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
+    func setName(_ value:String) { name.text=value }
     func show(current: Bool, done: Bool, badge value: String) {
         marker.isHidden = !current
         circle.layer.borderColor = (current || done ? MeadowPreviewPalette.gold : MeadowPreviewPalette.muted).cgColor
@@ -437,7 +451,7 @@ private final class MeadowPlayerDetailsView: UIView {
     }
 }
 
-private final class MeadowSkillButton: UIButton {
+final class MeadowSkillButton: UIButton {
     var onFocus: ((Bool) -> Void)?
     private var hovering = false
     override var isHighlighted: Bool { didSet { updatePreview() } }
@@ -456,7 +470,7 @@ private final class MeadowSkillButton: UIButton {
     private func updatePreview() { onFocus?(isEnabled && (hovering || isHighlighted || isFocused)) }
 }
 
-private final class MeadowPreviewCard: UIView {
+final class MeadowPreviewCard: UIView {
     private let title = MeadowPreviewPalette.label("", size: 20, weight: .heavy)
     private let detail = MeadowPreviewPalette.label("", size: 17, weight: .semibold)
     let button = MeadowSkillButton(type: .system)

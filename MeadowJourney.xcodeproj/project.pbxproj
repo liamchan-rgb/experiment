@@ -5,6 +5,8 @@
 	};
 	"objectVersion" = 56;
 	"objects" = {
+A47847D1CE00000000000001 = { "isa" = "PBXFileReference"; "lastKnownFileType" = "sourcecode.swift"; "path" = "Game/MeadowBattleDiceView.swift"; "sourceTree" = "<group>"; };
+A47847D1CE00000000000002 = { "isa" = "PBXBuildFile"; "fileRef" = A47847D1CE00000000000001; };
 		1874E8D5B0102E34718206F7 = { "isa" = "PBXFileReference"; "lastKnownFileType" = "sourcecode.swift"; "path" = "Game/MeadowPartyBattleView.swift"; "sourceTree" = "<group>"; };
 		90100A4191C8B72CC9236E3E = { "isa" = "PBXBuildFile"; "fileRef" = 1874E8D5B0102E34718206F7; };
 		F961EA11DCA10F5C7F4CFA41 = { "isa" = "PBXFileReference"; "lastKnownFileType" = "sourcecode.swift"; "path" = "Game/MeadowPartyStageView.swift"; "sourceTree" = "<group>"; };
@@ -394,7 +396,8 @@
 			"path" = "Sources";
 			"sourceTree" = "<group>";
 			"children" = (
-				1874E8D5B0102E34718206F7,
+				A47847D1CE00000000000001,
+1874E8D5B0102E34718206F7,
 				F961EA11DCA10F5C7F4CFA41,
 
 				12BE6F43C250EA1C0ABFBF32,
@@ -494,8 +497,8 @@
 				"TARGETED_DEVICE_FAMILY" = "1,2";
 				"SUPPORTED_PLATFORMS" = "iphoneos iphonesimulator";
 				"CODE_SIGN_STYLE" = "Automatic";
-				"MARKETING_VERSION" = "1.6.20";
-				"CURRENT_PROJECT_VERSION" = "46";
+				"MARKETING_VERSION" = "1.6.21";
+				"CURRENT_PROJECT_VERSION" = "47";
 				"ASSETCATALOG_COMPILER_APPICON_NAME" = "AppIcon";
 				"LD_RUNPATH_SEARCH_PATHS" = (
 					"$(inherited)",
@@ -521,8 +524,8 @@
 				"TARGETED_DEVICE_FAMILY" = "1,2";
 				"SUPPORTED_PLATFORMS" = "iphoneos iphonesimulator";
 				"CODE_SIGN_STYLE" = "Automatic";
-				"MARKETING_VERSION" = "1.6.20";
-				"CURRENT_PROJECT_VERSION" = "46";
+				"MARKETING_VERSION" = "1.6.21";
+				"CURRENT_PROJECT_VERSION" = "47";
 				"ASSETCATALOG_COMPILER_APPICON_NAME" = "AppIcon";
 				"LD_RUNPATH_SEARCH_PATHS" = (
 					"$(inherited)",
@@ -547,7 +550,8 @@
 			"isa" = "PBXSourcesBuildPhase";
 			"buildActionMask" = 2147483647;
 			"files" = (
-				90100A4191C8B72CC9236E3E,
+				A47847D1CE00000000000002,
+90100A4191C8B72CC9236E3E,
 				24CBEABFE4CB02099C3CDE6C,
 
 				A9B47589F1C47027677602E0,

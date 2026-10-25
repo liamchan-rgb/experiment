@@ -12,27 +12,34 @@ final class MeadowPartyBattleView:UIView {
     private var friend="p1",foe="m1"
     private let title=MeadowPreviewPalette.label("小队支援",size:26,weight:.heavy)
     private let hint=MeadowPreviewPalette.label("",size:17,weight:.semibold)
-    private let header=UIView(),panel=UIScrollView()
+    private let header=UIView(),panel=UIView()
+    private let track=MeadowTurnTrackView(frame:.zero)
+    private let health=MeadowBattleResourceBar(),ward=MeadowBattleResourceBar(),ap=MeadowBattleResourceBar()
+    private let buff=MeadowPartyBuffButton(type:.system),shieldBuff=MeadowPartyBuffButton(type:.system)
+    private let skillScroll=UIScrollView()
+    private let mapBorder=UIView(),mapTitle=MeadowPreviewPalette.label("Meadow Journey",size:18)
     private let back=MeadowPreviewPalette.button("返回单人")
     private let reset=MeadowPreviewPalette.button("重置演练")
     private let end=MeadowPreviewPalette.button("结束行动")
     private let items=MeadowPreviewPalette.button("道具")
     private let stage=MeadowPartyStageView()
-    private var cards:[String:MeadowPartyUnitCard]=[:]
-    private var skills:[MeadowPartySkillButton]=[]
+    
+    private var skills:[MeadowPreviewCard]=[]
+    private var focusedAction:PartyAction?
     override init(frame:CGRect) {
-        super.init(frame:frame);backgroundColor=MeadowPreviewPalette.panel
+        super.init(frame:frame);backgroundColor = .clear
         MeadowPreviewPalette.stylePanel(header);MeadowPreviewPalette.stylePanel(panel)
-        [header,stage,panel].forEach(addSubview)
+        [header,stage,track,panel,mapBorder,mapTitle].forEach(addSubview)
+        mapBorder.layer.cornerRadius=14;mapBorder.layer.borderWidth=1;mapBorder.layer.borderColor=MeadowPreviewPalette.border.cgColor;mapBorder.isUserInteractionEnabled=false
+        mapTitle.backgroundColor=MeadowPreviewPalette.panel;mapTitle.textAlignment = .center;mapTitle.layer.cornerRadius=8;mapTitle.clipsToBounds=true;mapTitle.isUserInteractionEnabled=false
+        [health,ward,ap,buff,shieldBuff,skillScroll].forEach(panel.addSubview)
+        skillScroll.showsHorizontalScrollIndicator=true
         [title,hint,back,reset,end].forEach(header.addSubview)
         back.addAction(UIAction { [weak self] _ in self?.setActive(false);self?.onClose?() },for:.touchUpInside)
         reset.addAction(UIAction { [weak self] _ in self?.restart() },for:.touchUpInside)
         end.addAction(UIAction { [weak self] _ in self?.perform(.endTurn) },for:.touchUpInside)
-        for id in ["p1","p2","m1","m2"] {
-            let card=MeadowPartyUnitCard();card.onChoose={ [weak self] in self?.choose(id) };cards[id]=card;panel.addSubview(card)
-        }
-        for _ in 0..<4 { let b=MeadowPartySkillButton(type:.system);skills.append(b);panel.addSubview(b) }
-        panel.addSubview(items);items.showsMenuAsPrimaryAction=true
+        for _ in 0..<4 { let card=MeadowPreviewCard(title:"",text:"");skills.append(card);skillScroll.addSubview(card) }
+        skillScroll.addSubview(items);items.showsMenuAsPrimaryAction=true
         stage.onChoose={ [weak self] id in self?.choose(id) }
         accessibilityIdentifier="meadowPartySupportEncounter"
     }
@@ -92,22 +99,34 @@ final class MeadowPartyBattleView:UIView {
         let showing=busy ? (stage.actorInAction ?? model.pending?.actor ?? current):current
         let name=showing.flatMap { state.units[$0]?.name } ?? "演练结束"
         hint.text=busy ? "\(name) · 动作进行中" : "\(name)行动 · 友方 \(friend.uppercased()) / 敌方 \(foe=="m1" ? "甲":"乙") · 点角色选目标"
-        for (id,card) in cards {
-            guard let unit=state.units[id] else { continue }
-            card.show(unit:unit,selected:id==friend || id==foe,current:id==current)
+        let displayActor=showing ?? "p1"
+        if let unit=state.units[displayActor] {
+            health.show("生命",value:unit.health,maximum:unit.baseAttributes.maximumHealth,color:.systemGreen)
+            ward.show("护盾",value:unit.shield,maximum:8,color:.systemCyan)
+            ap.show("行动",value:unit.ap,maximum:unit.baseAttributes.baseAP,color:MeadowPreviewPalette.gold)
+            if let b=unit.damageBuff { buff.show(title:"振奋 · 增伤＋\(b.amount)",detail:"剩余 \(b.roundsLeft) 轮\n普攻和伤害技能生效",symbol:"arrow.up",color:MeadowPreviewPalette.gold) } else { buff.hide() }
+            if unit.shield>0 { shieldBuff.show(title:"护盾 · \(unit.shield)",detail:"优先抵挡伤害\n新旧授盾取较高值",symbol:"shield.fill",color:.systemCyan) } else { shieldBuff.hide() }
         }
+        track.show(ids:["p2","p1","m1","m2"],names:["p1":"P1","p2":"P2","m1":"鹿灵甲","m2":"鹿灵乙"],current:showing,done:state.battle?.acted.subtracting(Set([showing ?? ""])) ?? [],down:Set(state.units.values.filter { !$0.isAlive }.map(\.id)))
         stage.show(state,friend:friend,foe:foe,current:current)
-        let actions=model.playerActions()
+        let actions:[PartyAction]=busy ? (showing=="p2" ? [.attack,.support,.rally]:showing=="p1" ? [.attack,.heavyStrike,.breather,.simpleGuard]:[]):model.playerActions()
+        if busy { focusedAction=nil }
         for (i,b) in skills.enumerated() {
-            b.clearHandlers();b.isHidden=i>=actions.count
+            b.isHidden=i>=actions.count
             guard i<actions.count else { continue }
             let a=actions[i];let result=model.preview(a,target:target(a))
-            b.setTitle(a.title,for:.normal);b.subtitle.text=detail(a,model:model)
-            b.isEnabled=active && !busy && result.allowed
-            b.onActivate={ [weak self] in self?.perform(a) }
-            b.onFocus={ [weak self] focused in self?.stage.preview(focused ? a:nil,target:self?.target(a) ?? "p1") }
-            b.accessibilityLabel=a.title+"，"+b.subtitle.text!
-            b.accessibilityHint=result.allowed ? "执行技能":result.message
+            let allowed=active && !busy && result.allowed
+            b.update(title:a.title+" · 1 AP",detail:detail(a,model:model,actor:displayActor),enabled:allowed)
+            b.previewStrength=0;b.previewColor = .clear
+            b.button.removeTarget(nil,action:nil,for:.touchUpInside)
+            b.button.removeAction(identifiedBy:UIAction.Identifier("party-skill"),for:.touchUpInside)
+            b.button.addAction(UIAction(identifier:UIAction.Identifier("party-skill"),handler:{ [weak self] _ in self?.perform(a) }),for:.touchUpInside)
+            b.onFocus={ [weak self] focused in
+                guard let self else { return }
+                if focused { self.focusedAction=a;self.stage.preview(a,target:self.target(a)) }
+                else if self.focusedAction==a { self.focusedAction=nil;self.stage.preview(nil,target:self.target(a)) }
+            }
+            b.button.accessibilityHint=result.allowed ? "执行技能":result.message
         }
         end.isEnabled=active && !busy && current?.hasPrefix("p")==true && !model.terminal
         var menu:[UIAction]=[]
@@ -120,9 +139,9 @@ final class MeadowPartyBattleView:UIView {
         items.isEnabled=active && !busy && current?.hasPrefix("p")==true && !model.terminal
         setNeedsLayout()
     }
-    private func detail(_ a:PartyAction,model:PartyEncounter)->String {
+    private func detail(_ a:PartyAction,model:PartyEncounter,actor:String)->String {
         guard a != .attack else { return "1 AP · 1D6＋当前增伤" }
-        let uses=model.current.flatMap { model.state.units[$0]?.skillUses[a.rawValue] } ?? 0
+        let uses=model.state.units[actor]?.skillUses[a.rawValue] ?? 0
         let rest=max(0,2-uses)
         switch a {
         case .support:return "1 AP · 治疗6 / 盾4 · 余\(rest)"
@@ -133,89 +152,28 @@ final class MeadowPartyBattleView:UIView {
         }
     }
     override func layoutSubviews() {
-        super.layoutSubviews();let inset=safeAreaInsets
-        let margin:CGFloat=16;let left=max(margin,inset.left+8),right=max(margin,inset.right+8)
-        let top=max(12,inset.top+8),bottom=max(12,inset.bottom+8),w=max(1,bounds.width-left-right)
-        let compact=bounds.height<600
-        header.frame=CGRect(x:left,y:top,width:w,height:compact ? 72:82)
-        if compact {
-            let sidebar:CGFloat=min(250,w*0.34)
-            panel.frame=CGRect(x:left+w-sidebar,y:header.frame.maxY+8,width:sidebar,height:max(1,bounds.height-bottom-header.frame.maxY-8))
-            stage.frame=CGRect(x:left,y:panel.frame.minY,width:w-sidebar-8,height:panel.frame.height)
-            panel.isScrollEnabled=true;panel.contentSize=CGSize(width:sidebar,height:820)
-            for (i,id) in ["p1","p2","m1","m2"].enumerated() { cards[id]?.frame=CGRect(x:8,y:8+CGFloat(i)*90,width:sidebar-16,height:84) }
-            for (i,b) in skills.enumerated() { b.frame=CGRect(x:8,y:378+CGFloat(i)*88,width:sidebar-16,height:80) }
-            items.frame=CGRect(x:8,y:736,width:sidebar-16,height:68)
-        } else {
-            panel.frame=CGRect(x:left,y:bounds.height-bottom-196,width:w,height:196)
-            stage.frame=CGRect(x:left,y:header.frame.maxY+10,width:w,height:max(1,panel.frame.minY-header.frame.maxY-20))
-            panel.isScrollEnabled=false;panel.contentSize=panel.bounds.size
-            let cw=(w-32-24)/4
-            for (i,id) in ["p1","p2","m1","m2"].enumerated() { cards[id]?.frame=CGRect(x:16+CGFloat(i)*(cw+8),y:9,width:cw,height:86) }
-            let itemWidth:CGFloat=100;let visible=skills.filter { !$0.isHidden };let count=CGFloat(max(1,visible.count))
-            let bw=(w-32-itemWidth-10-8*(count-1))/count
-            for (i,b) in visible.enumerated() { b.frame=CGRect(x:16+CGFloat(i)*(bw+8),y:108,width:bw,height:76) }
-            items.frame=CGRect(x:w-itemWidth-16,y:108,width:itemWidth,height:76)
-        }
-        back.frame=CGRect(x:w-124,y:10,width:112,height:34);reset.frame=back.frame.offsetBy(dx:-124,dy:0)
-        end.frame=CGRect(x:w-248,y:46,width:236,height:26)
-        title.frame=CGRect(x:14,y:6,width:max(1,w-276),height:35)
-        hint.frame=CGRect(x:14,y:42,width:max(1,w-276),height:28)
+        super.layoutSubviews()
+        let layout=MeadowBattleLayout(size:bounds.size,safeArea:safeAreaInsets,mode:.playerTurn)
+        header.frame=layout.header;stage.frame=layout.battlefield;track.frame=layout.track;panel.frame=layout.details
+        mapBorder.frame=layout.map;mapTitle.frame=CGRect(x:layout.map.minX+12,y:layout.map.minY+12,width:180,height:32)
+        let w=header.bounds.width
+        back.frame=CGRect(x:w-124,y:16,width:112,height:44)
+        end.frame=CGRect(x:w-310,y:16,width:178,height:44)
+        reset.frame=CGRect(x:w-414,y:20,width:96,height:36)
+        title.frame=CGRect(x:16,y:8,width:max(1,w-446),height:32)
+        hint.frame=CGRect(x:16,y:43,width:max(1,w-446),height:23)
+        let pw=panel.bounds.width,gap:CGFloat=10,bw=max(1,(pw-28-98-gap*3)/3)
+        for (i,bar) in [health,ward,ap].enumerated() { bar.frame=CGRect(x:14+CGFloat(i)*(bw+gap),y:9,width:bw,height:43) }
+        buff.frame=CGRect(x:pw-100,y:8,width:38,height:38);shieldBuff.frame=CGRect(x:pw-55,y:8,width:38,height:38)
+        skillScroll.frame=CGRect(x:14,y:62,width:max(1,pw-28),height:max(1,panel.bounds.height-72))
+        let visible=skills.filter { !$0.isHidden };let n=CGFloat(visible.count)
+        let cw=max(190,(skillScroll.bounds.width-110-n*10)/max(1,n))
+        for (i,card) in visible.enumerated() { card.frame=CGRect(x:CGFloat(i)*(cw+10),y:0,width:cw,height:skillScroll.bounds.height) }
+        items.frame=CGRect(x:n*(cw+10),y:0,width:100,height:skillScroll.bounds.height)
+        skillScroll.contentSize=CGSize(width:items.frame.maxX,height:skillScroll.bounds.height)
     }
 }
 
-private final class MeadowPartySkillButton:UIButton {
-    let subtitle=UILabel()
-    var onActivate:(()->Void)?
-    var onFocus:((Bool)->Void)?
-    private var hover=false
-    override init(frame:CGRect) {
-        super.init(frame:frame);backgroundColor=MeadowPreviewPalette.card;layer.cornerRadius=8;layer.borderWidth=1;layer.borderColor=MeadowPreviewPalette.border.cgColor
-        titleLabel?.font=MeadowPreviewPalette.font(21,.heavy);setTitleColor(MeadowPreviewPalette.ink,for:.normal)
-        subtitle.font=MeadowPreviewPalette.font(15);subtitle.textColor=MeadowPreviewPalette.muted;subtitle.numberOfLines=2;addSubview(subtitle)
-        addAction(UIAction { [weak self] _ in self?.onActivate?() },for:.touchUpInside)
-        addGestureRecognizer(UIHoverGestureRecognizer(target:self,action:#selector(hovered(_:))));isPointerInteractionEnabled=true
-    }
-    required init?(coder:NSCoder) { fatalError("init(coder:) has not been implemented") }
-    func clearHandlers() { onFocus?(false);onActivate=nil;onFocus=nil }
-    override var isEnabled:Bool { didSet { alpha=isEnabled ? 1:0.48;if !isEnabled { hover=false };updateFocus() } }
-    override var isHighlighted:Bool { didSet { updateFocus() } }
-    override func didUpdateFocus(in context:UIFocusUpdateContext,with coordinator:UIFocusAnimationCoordinator) { super.didUpdateFocus(in:context,with:coordinator);updateFocus() }
-    @objc private func hovered(_ r:UIHoverGestureRecognizer) { hover=r.state == .began || r.state == .changed;updateFocus() }
-    private func updateFocus() { onFocus?(isEnabled && (hover || isHighlighted || isFocused)) }
-    override func layoutSubviews() { super.layoutSubviews();titleLabel?.frame=CGRect(x:10,y:5,width:bounds.width-20,height:28);subtitle.frame=CGRect(x:10,y:36,width:bounds.width-20,height:36) }
-}
-private final class MeadowPartyUnitCard:UIView {
-    var onChoose:(()->Void)?
-    private let name=UILabel(),hp=MeadowBattleResourceBar(),ward=MeadowBattleResourceBar(),buff=MeadowPartyBuffButton(type:.system),shieldBuff=MeadowPartyBuffButton(type:.system)
-    override init(frame:CGRect) {
-        super.init(frame:frame);backgroundColor=MeadowPreviewPalette.card;layer.cornerRadius=7;layer.borderWidth=1
-        name.font=MeadowPreviewPalette.font(17);name.textColor=MeadowPreviewPalette.ink
-        [name,hp,ward,buff,shieldBuff].forEach(addSubview)
-        let choose=UITapGestureRecognizer(target:self,action:#selector(chosen));choose.cancelsTouchesInView=false;addGestureRecognizer(choose)
-        isAccessibilityElement=false;buff.layer.zPosition=100;shieldBuff.layer.zPosition=100
-    }
-    required init?(coder:NSCoder) { fatalError("init(coder:) has not been implemented") }
-    @objc private func chosen() { onChoose?() }
-    func show(unit:GameUnit,selected:Bool,current:Bool) {
-        name.text=(current ? "▶ ":"")+unit.name+" · \(unit.ap)AP"
-        layer.borderColor=(selected ? MeadowPreviewPalette.gold:MeadowPreviewPalette.border).cgColor;layer.borderWidth=selected ? 2:1
-        hp.show("HP",value:unit.health,maximum:unit.baseAttributes.maximumHealth,color:.systemGreen)
-        ward.show("盾",value:unit.shield,maximum:8,color:.systemCyan)
-        if let b=unit.damageBuff { buff.show(title:"振奋 · 增伤＋\(b.amount)",detail:"剩余 \(b.roundsLeft) 轮\n普攻和伤害技能生效\n按回合结算移除",symbol:"arrow.up",color:MeadowPreviewPalette.gold) }
-        else { buff.hide() }
-        if unit.shield>0 { shieldBuff.show(title:"防护 · 剩余 \(unit.shield) 点",detail:"优先抵挡伤害\n新授盾与旧值取较高者\n耗尽后移除",symbol:"shield.fill",color:.systemCyan) }
-        else { shieldBuff.hide() }
-        accessibilityLabel="\(unit.name)，生命\(unit.health)/\(unit.baseAttributes.maximumHealth)，盾\(unit.shield)，\(unit.ap)行动点"
-    }
-    override func layoutSubviews() {
-        super.layoutSubviews();name.frame=CGRect(x:9,y:4,width:bounds.width-18,height:22)
-        let width=(bounds.width-104)/2
-        hp.frame=CGRect(x:9,y:31,width:width,height:44);ward.frame=CGRect(x:18+width,y:31,width:width,height:44)
-        buff.frame=CGRect(x:bounds.width-73,y:39,width:30,height:30)
-        shieldBuff.frame=CGRect(x:bounds.width-39,y:39,width:30,height:30)
-    }
-}
 private final class MeadowPartyBuffButton:UIButton {
     private let tip=UILabel();private var pinned=false,hover=false
     override init(frame:CGRect) {
