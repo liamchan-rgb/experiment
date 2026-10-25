@@ -373,7 +373,7 @@ private final class MeadowPlayerDetailsView: UIView {
         for (title, action) in definitions {
             let card = MeadowPreviewCard(title: title, text: "")
             card.previewStrength = action == .strike ? 0.9 : 0.28
-            card.previewColor = action == .protection ? .systemCyan : MeadowPreviewPalette.gold
+            card.previewColor = action == .protection ? .systemCyan : action == .breathe ? .systemGreen : MeadowPreviewPalette.gold
             card.button.addAction(UIAction { [weak self] _ in self?.onAction?(action) }, for: .touchUpInside)
             card.onFocus = { [weak self] active in
                 guard let self else { return }

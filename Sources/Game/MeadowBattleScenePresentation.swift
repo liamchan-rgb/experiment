@@ -56,6 +56,10 @@ enum MeadowBattleEnemyFrames {
 /// Vector combat feedback is registered to the same battlefield canvas as the
 /// sprites: target ring, short impact arc, ward and healing motes.
 enum MeadowBattleVFXAssets {
+    static let healStar = UIImage(named:"BattleVFXHealStar")!
+    static let healWisp = UIImage(named:"BattleVFXHealWisp")!
+    static let healShaft = UIImage(named:"BattleVFXHealShaft")!
+    static let healWave = UIImage(named:"BattleVFXHealWave")!
     static let heavyArc = UIImage(named: "BattleVFXHeavyArc")!
     static let spray = UIImage(named: "BattleVFXHeavySpray")!
     static let barrier = UIImage(named: "BattleVFXRoundBarrier")!
@@ -79,6 +83,7 @@ enum MeadowBattleVFXAssets {
 }
 
 final class MeadowBattleEffectsView: UIView {
+    var recoveryAge: Double?
     var heroFoot = CGPoint.zero
     var enemyFoot = CGPoint.zero
     var impact = CGPoint.zero
@@ -129,7 +134,13 @@ final class MeadowBattleEffectsView: UIView {
         let debris = lightEmissions.flatMap { e in
             MeadowBattleLightField.sample(e.kind,age:time-e.startedAt,originX:e.x,originY:e.y,groundY:e.groundY)
         }
+        let recovery=recoveryAge.map { CGFloat(MeadowBattleRecoveryField.pulse($0)) } ?? 0
         if groundOnly {
+            if recovery>0 {
+                light(heroFoot,135,42,recovery*0.58,UIColor(red:0.15,green:1,blue:0.52,alpha:1))
+                light(CGPoint(x:heroFoot.x,y:heroFoot.y-65*unit),75,110,recovery*0.18,UIColor(red:0.35,green:1,blue:0.60,alpha:1))
+            }
+
             let cyan = UIColor(red:0.05,green:0.55,blue:1,alpha:1)
             var pools = 0
             for p in debris {
@@ -152,7 +163,7 @@ final class MeadowBattleEffectsView: UIView {
             light(heroFoot,95,32,(wardSpawn*0.28+wardContact*0.38),.cyan)
             if let age=impactAge, age<0.5 {
                 let spread=1+CGFloat(max(0,age))*2
-                sprite(MeadowBattleVFXAssets.spray,CGPoint(x:impact.x+45*unit,y:enemyFoot.y-3*unit),260*spread,35,burst*0.55)
+                sprite(MeadowBattleVFXAssets.spray,CGPoint(x:impact.x+45*unit,y:enemyFoot.y-3*unit),260*spread,22+CGFloat(max(0,age))*70,burst*0.55)
             }
             light(heroFoot, 90, 26, previewPower*previewEnvelope*0.16)
             return
@@ -168,11 +179,16 @@ final class MeadowBattleEffectsView: UIView {
                 sprite(MeadowBattleVFXAssets.mote, CGPoint(x: heroFoot.x+cos(angle)*(18+previewPower*15)*unit,y:heroFoot.y-58*unit+sin(angle)*24*unit),12,12,previewPower*previewEnvelope*0.9)
             }
         }
-        if let age=impactAge, burst > 0 {
+        if let age=impactAge, age<0.70 {
             let slash=pulse(age,-0.06,0,0.25)
             let spread=CGFloat(max(0,age))
             sprite(MeadowBattleVFXAssets.slash,impact,225,225,slash)
-            sprite(MeadowBattleVFXAssets.heavyArc,impact,245+spread*220,245+spread*220,burst*0.95)
+            ctx.saveGState();ctx.translateBy(x:impact.x,y:impact.y);ctx.rotate(by:-0.65+spread*3.8)
+            let arc=(225+spread*300)*unit
+            MeadowBattleVFXAssets.heavyArc.draw(in:CGRect(x:-arc/2,y:-arc/2,width:arc,height:arc),blendMode:.plusLighter,alpha:burst*0.9)
+            ctx.restoreGState()
+            let echo=pulse(age,0.10,0.19,0.65)
+            sprite(MeadowBattleVFXAssets.heavyArc,CGPoint(x:impact.x+spread*22*unit,y:impact.y),285+spread*160,225+spread*170,echo*0.38)
             sprite(MeadowBattleVFXAssets.burst,impact,205+spread*145,205+spread*145,burst)
             sprite(MeadowBattleVFXAssets.spray,CGPoint(x:impact.x+(95+spread*75)*unit,y:impact.y-15*unit),250+spread*180,160,burst*0.9)
             for i in 0..<26 {
@@ -181,16 +197,9 @@ final class MeadowBattleEffectsView: UIView {
                 sprite(MeadowBattleVFXAssets.mote,CGPoint(x:impact.x+cos(angle)*distance,y:impact.y+sin(angle)*distance),CGFloat(i%4==0 ? 22 : 10),CGFloat(i%4==0 ? 7 : 10),burst*0.9)
             }
         }
-        let wardCenter=CGPoint(x:heroFoot.x+6*unit,y:heroFoot.y-66*unit)
-        let wardScale=shieldBirthAge.map { 0.68+0.32*smooth(CGFloat($0/0.28)) } ?? 1
-        var wardAlpha: CGFloat = shield > 0 ? 0.60+wardSpawn*0.4+wardContact*0.4 : 0
-        if shieldPreview { wardAlpha=max(wardAlpha,previewEnvelope*0.12) }
-        if let age=shieldBreakAge, age<0.25 { wardAlpha=max(wardAlpha,0.95*(1-smooth(CGFloat(age/0.25)))) }
-        sprite(MeadowBattleVFXAssets.barrier,wardCenter,132*wardScale,132*wardScale,wardAlpha)
         if let age=shieldContactAge, age<0.4 {
-            let contact=CGPoint(x:heroFoot.x+65*unit,y:heroFoot.y-66*unit)
             let size=80+CGFloat(age)*150
-            sprite(MeadowBattleVFXAssets.wardHit,CGPoint(x:contact.x+size*0.33*unit,y:contact.y),size,size,wardContact*0.9)
+            sprite(MeadowBattleVFXAssets.wardHit,CGPoint(x:impact.x+size*0.33*unit,y:impact.y),size,size,wardContact*0.9)
         }
         for p in debris {
             ctx.saveGState()
@@ -200,18 +209,75 @@ final class MeadowBattleEffectsView: UIView {
             (p.cyan ? MeadowBattleVFXAssets.shard : MeadowBattleVFXAssets.ember).draw(in:CGRect(x:-size/2,y:-size/3,width:size,height:size*0.67),blendMode:.plusLighter,alpha:CGFloat(p.alpha))
             ctx.restoreGState()
         }
-        if cue == .heal {
-            for i in 0..<5 {
-                let center=CGPoint(x:heroFoot.x+CGFloat(i-2)*10*unit,y:heroFoot.y-(18+progress*72)*unit)
-                UIColor.green.withAlphaComponent(sin(progress * .pi)).setFill()
-                UIBezierPath(ovalIn:CGRect(x:center.x,y:center.y,width:3*unit,height:8*unit)).fill()
-            }
-        }
         if let age=messageAge, age < 0.7, !message.isEmpty {
             let center=messageAtHero ? heroFoot : impact
             let attrs:[NSAttributedString.Key:Any]=[.font:UIFont.boldSystemFont(ofSize:max(16,23*unit)),.foregroundColor:messageColor,.strokeColor:UIColor(red:0.15,green:0.1,blue:0.04,alpha:1),.strokeWidth:-3]
             let label=NSAttributedString(string:message,attributes:attrs)
             label.draw(at:CGPoint(x:center.x+20*unit,y:center.y-(40+CGFloat(age)*30)*unit))
+        }
+    }
+}
+
+final class MeadowBattleAttachedSkillsView: UIView {
+    private let rim=UIImageView(image:MeadowBattleVFXAssets.barrier)
+    private let orbiters=(0..<6).map { _ in UIImageView(image:MeadowBattleVFXAssets.mote.withTintColor(.systemCyan,renderingMode:.alwaysOriginal)) }
+    private let shaft=UIImageView(image:MeadowBattleVFXAssets.healShaft)
+    private let wave=UIImageView(image:MeadowBattleVFXAssets.healWave)
+    private let wisps=(0..<2).map { _ in UIImageView(image:MeadowBattleVFXAssets.healWisp) }
+    private let stars=(0..<26).map { _ in UIImageView(image:MeadowBattleVFXAssets.healStar) }
+    override init(frame:CGRect) {
+        super.init(frame:frame);isUserInteractionEnabled=false;clipsToBounds=false
+        ([shaft,wave]+wisps+stars+[rim]+orbiters).forEach { $0.contentMode = .scaleToFill;addSubview($0) }
+        layer.zPosition=100
+    }
+    required init?(coder:NSCoder) { fatalError("init(coder:) has not been implemented") }
+    func update(shield:Int,preview:Bool,time:Double,birth:Double?,contact:Double?,broken:Double?,recovery:Double?) {
+        let unit=bounds.width/256
+        func smooth(_ x:Double)->CGFloat { CGFloat(MeadowBattleRecoveryField.smooth(x)) }
+        UIView.performWithoutAnimation {
+            CATransaction.begin();CATransaction.setDisableActions(true)
+            defer { CATransaction.commit() }
+            let center=CGPoint(x:MeadowBattleShieldGeometry.centerX*Double(unit),y:MeadowBattleShieldGeometry.centerY*Double(unit))
+            let spawn=birth.map { 1-smooth($0/0.45) } ?? 0
+            let hit=contact.map { 1-smooth($0/0.32) } ?? 0
+            var alpha:CGFloat=shield>0 ? 0.68+spawn*0.25+hit*0.25+sin(CGFloat(time)*3)*0.035 : 0
+            if preview { alpha=max(alpha,0.18) }
+            if let broken,broken<0.25 { alpha=max(alpha,0.95*(1-smooth(broken/0.25))) }
+            let size=CGFloat(MeadowBattleShieldGeometry.diameter)*unit
+            rim.frame=CGRect(x:center.x-size/2,y:center.y-size/2,width:size,height:size)
+            rim.alpha=alpha
+            for (i,orb) in orbiters.enumerated() {
+                let angle=CGFloat(time)*1.25+CGFloat(i)*2.399
+                let radius=size*0.41
+                let s=(i%2==0 ? CGFloat(9) : 6)*unit
+                orb.frame=CGRect(x:center.x+cos(angle)*radius-s/2,y:center.y+sin(angle)*radius-s/2,width:s,height:s)
+                orb.alpha=alpha*0.65
+            }
+            let age=recovery ?? -1
+            let power=CGFloat(MeadowBattleRecoveryField.pulse(age))
+            let active=age>=0 && age<MeadowBattleRecoveryField.duration
+            let foot=CGPoint(x:128*unit,y:214*unit)
+            shaft.isHidden = !active;wave.isHidden = !active
+            shaft.frame=CGRect(x:foot.x-55*unit,y:foot.y-175*unit,width:110*unit,height:185*unit)
+            shaft.alpha=power*0.26
+            let expansion=CGFloat(0.65+0.65*MeadowBattleRecoveryField.smooth(age/1.1))
+            wave.frame=CGRect(x:foot.x-82*unit*expansion,y:foot.y-12*unit,width:164*unit*expansion,height:28*unit)
+            wave.alpha=power*0.8
+            for (i,wisp) in wisps.enumerated() {
+                wisp.isHidden = !active
+                let turn=CGFloat(age)*4+CGFloat(i) * .pi
+                wisp.bounds=CGRect(x:0,y:0,width:75*unit,height:120*unit)
+                wisp.center=CGPoint(x:foot.x+sin(turn)*18*unit,y:foot.y-(66+CGFloat(age)*15)*unit)
+                wisp.transform=CGAffineTransform(rotationAngle:sin(turn)*0.22).scaledBy(x:cos(turn)>=0 ? 1 : -1,y:1)
+                wisp.alpha=power*(i==0 ? 0.55 : 0.35)
+            }
+            let motes=MeadowBattleRecoveryField.sample(age)
+            for (i,star) in stars.enumerated() {
+                guard i<motes.count else { star.isHidden=true;continue }
+                let p=motes[i];star.isHidden=false
+                star.frame=CGRect(x:foot.x+CGFloat(p.x-p.size/2)*unit,y:foot.y+CGFloat(p.y-p.size/2)*unit,width:CGFloat(p.size)*unit,height:CGFloat(p.size)*unit)
+                star.alpha=CGFloat(p.alpha)
+            }
         }
     }
 }

@@ -1,0 +1,18 @@
+{
+  "filename": "1-ScreenRecording_10-25-2026-16-31-30_1-compressed.mp4",
+  "sha256": "f27df86c4ee39c090c37935af686abc1edd025e767419d44cc541b7081b61efc",
+  "durationSeconds": 73.933333,
+  "width": 854,
+  "height": 392,
+  "fps": 60,
+  "scope": [
+    "skill dynamics",
+    "local environment light",
+    "distinct elemental motion language"
+  ],
+  "cameraReferenceExcluded": true,
+  "videoIsThirdPartyReferenceNotDemoCapture": true,
+  "sourceVideoOrFramesPublished": false,
+  "reviewSampling": "148 overview frames at 2fps; healing and gold impact dense samples at 12fps",
+  "artApproval": null
+}

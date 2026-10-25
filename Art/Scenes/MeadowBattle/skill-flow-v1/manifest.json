@@ -1,0 +1,87 @@
+{
+  "source": "source/healing-atlas.png",
+  "sourceSHA256": "e974ed23d7bf6ad153a742e9e30897757cf0a752e6746c212e3294f1e1348e97",
+  "cuts": {
+    "HealStar": {
+      "region": [
+        0,
+        0,
+        627,
+        627
+      ],
+      "contentCrop": [
+        212,
+        187,
+        446,
+        468
+      ],
+      "size": [
+        234,
+        281
+      ]
+    },
+    "HealWisp": {
+      "region": [
+        627,
+        0,
+        1254,
+        627
+      ],
+      "contentCrop": [
+        216,
+        35,
+        431,
+        616
+      ],
+      "size": [
+        215,
+        581
+      ]
+    },
+    "HealShaft": {
+      "region": [
+        0,
+        627,
+        627,
+        1254
+      ],
+      "contentCrop": [
+        226,
+        25,
+        432,
+        566
+      ],
+      "size": [
+        206,
+        541
+      ]
+    },
+    "HealWave": {
+      "region": [
+        627,
+        627,
+        1254,
+        1254
+      ],
+      "contentCrop": [
+        39,
+        266,
+        592,
+        455
+      ],
+      "size": [
+        553,
+        189
+      ]
+    }
+  },
+  "shieldNativeCenter": [
+    128,
+    144
+  ],
+  "shieldNativeDiameter": 240,
+  "shieldAttachment": "direct child of hero, non-animated layer transaction",
+  "healing": "26 staggered upward spiral motes, two winding ribbons, soft shaft and temporary expanding wave",
+  "cameraChanged": false,
+  "artApproval": null
+}

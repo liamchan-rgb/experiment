@@ -4,6 +4,7 @@ import Foundation
     static func main() throws {
         var traces: [[String: Any]] = []
         var shieldTraces: [[String: Any]] = []
+        var healTraces: [[String: Any]] = []
         for fps in [15, 30, 60, 120] {
             var battle = MeadowBattleEncounter(); battle.begin(); battle.selectEnemy()
             for attack in 0..<4 {
@@ -79,6 +80,25 @@ import Foundation
                 shieldTraces.append(["fps":fps,"phase":"blockBreak","time":2+contact.elapsed,"shield":ward.shield,"hp":ward.playerHP,"gained":0,"absorbed":absorbed])
             }
         }
+        for fps in [15,30,60,120] {
+            var healed=MeadowBattleEncounter();healed.begin();healed.endPlayerTurn();_=healed.resolveEnemyAction();healed.completeEnemyTurn()
+            precondition(healed.playerHP==8)
+            _=healed.beginAction(.breathe)
+            var clock=MeadowBattleImpactClock(duration:1.20,impactTime:MeadowBattleRecoveryField.impactTime)
+            var hits=0
+            while clock.elapsed<clock.duration {
+                var amount=0
+                if clock.advance(1/Double(fps)) { amount=healed.resolveActionImpact()!.healed;hits+=1 }
+                healTraces.append(["fps":fps,"elapsed":clock.elapsed,"hp":healed.playerHP,"healed":amount])
+                if clock.elapsed<MeadowBattleRecoveryField.impactTime { precondition(healed.playerHP==8) }
+            }
+            precondition(hits==1 && healed.playerHP==12 && healed.resolveActionImpact()==nil)
+        }
+        precondition(MeadowBattleRecoveryField.sample(-0.1).isEmpty && MeadowBattleRecoveryField.sample(2).isEmpty)
+        for tick in 0..<160 {
+            let particles=MeadowBattleRecoveryField.sample(Double(tick)/100)
+            for p in particles { precondition(p.x.isFinite && p.y.isFinite && p.alpha>=0 && p.alpha<=1 && p.y<=0) }
+        }
         precondition(abs(MeadowBattleImpactClock.strikePoseTime(1.048)-0.648) < 1e-8)
         precondition(abs(MeadowBattleImpactClock.strikePoseTime(1.148)-0.648) < 1e-8)
         precondition(abs(MeadowBattleImpactClock.strikePoseTime(MeadowBattleImpactClock.strikeDuration)-1.2) < 1e-8)
@@ -110,7 +130,7 @@ import Foundation
         }
         let out = URL(fileURLWithPath: CommandLine.arguments[1])
         try FileManager.default.createDirectory(at: out.deletingLastPathComponent(), withIntermediateDirectories: true)
-        try JSONSerialization.data(withJSONObject: ["scope":"production model and one-shot impact clock; no UI/device execution", "lastStrike":traces,"shieldSequence":shieldTraces,"lightParticles":particleTraces], options:[.prettyPrinted,.sortedKeys]).write(to:out)
-        print("Battle VFX checks passed: deferred HP/AP, single impact, lethal same-event transition, nonlethal survival, cancel/retry, shield, contact hold and deterministic ground-bouncing light debris at 15/30/60/120Hz.")
+        try JSONSerialization.data(withJSONObject: ["scope":"production model and one-shot impact clock; no UI/device execution", "lastStrike":traces,"shieldSequence":shieldTraces,"lightParticles":particleTraces,"healSequence":healTraces], options:[.prettyPrinted,.sortedKeys]).write(to:out)
+        print("Battle VFX checks passed: deferred HP/AP, single impact, lethal same-event transition, nonlethal survival, cancel/retry, shield, contact hold and deterministic ground-bouncing light debris and one-shot recovery at 15/30/60/120Hz.")
     }
 }

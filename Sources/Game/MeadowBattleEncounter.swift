@@ -252,7 +252,7 @@ enum MeadowBattleLightField {
                 vy = -60 - fraction(i, 13) * 120
             } else if kind == .shieldBreak {
                 let a = Double(i) * 2.399
-                x += cos(a) * 63; y += sin(a) * 63
+                x += cos(a) * 90; y += sin(a) * 90
                 vx = cos(a) * (55 + spread * 60)
                 vy = sin(a) * 65 - 95
             } else {
@@ -289,6 +289,47 @@ enum MeadowBattleLightField {
                 size: (cyan ? 8 : 6) + fraction(i, 17) * (cyan ? 10 : 7),
                 alpha: fade, cyan: cyan, groundX: lastContactX, groundY: floor,
                 groundAge: contacts > 0 ? lastContactAge : nil, bounces: contacts)
+        }
+    }
+}
+
+/// Shield is registered to the actor canvas, never to the alternating sole.
+enum MeadowBattleShieldGeometry {
+    static let centerX = 128.0
+    static let centerY = 144.0
+    static let diameter = 240.0
+    static let contactX = centerX + diameter * 0.41
+    static let contactY = centerY
+}
+
+struct MeadowBattleRecoveryMote {
+    let x: Double
+    let y: Double
+    let size: Double
+    let alpha: Double
+}
+
+enum MeadowBattleRecoveryField {
+    static let duration = 1.80
+    static let impactTime = 0.46
+    static func smooth(_ x: Double) -> Double { let t=min(1,max(0,x)); return t*t*(3-2*t) }
+    static func pulse(_ age: Double) -> Double {
+        age < impactTime ? smooth(age/impactTime) : 1-smooth((age-impactTime)/0.90)
+    }
+    /// In actor-native pixels, relative to the stable canvas sole at (128,214).
+    static func sample(_ age: Double) -> [MeadowBattleRecoveryMote] {
+        guard age >= 0, age < duration else { return [] }
+        return (0..<26).compactMap { i in
+            let birth=Double(i%7)*0.065
+            let elapsed=age-birth
+            let life=1.04+Double(i%4)*0.10
+            guard elapsed>=0, elapsed<life else { return nil }
+            let p=elapsed/life
+            let angle=Double(i)*2.399+elapsed*4.5
+            let radius=(20+Double(i%5)*5)*(1-p*0.35)
+            return .init(x:cos(angle)*radius,y:-8-p*155,
+                         size:5+Double(i%4)*2,
+                         alpha:sin(Double.pi*p)*0.95)
         }
     }
 }
