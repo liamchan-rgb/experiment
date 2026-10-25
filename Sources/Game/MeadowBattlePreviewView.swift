@@ -36,6 +36,10 @@ enum MeadowPreviewPalette {
 /// A compact, playable P1 versus one Forest Warden encounter layered over the map.
 final class MeadowBattlePreviewView: UIView {
     var onClose: (() -> Void)?
+    var onPartyActiveChanged: ((Bool)->Void)?
+    private var partyMode=false
+    private let party=MeadowPartyBattleView(frame:.zero)
+    private let partyButton=MeadowPreviewPalette.button("小队支援")
     var onLayoutChanged: (() -> Void)?
     private var encounter = MeadowBattleEncounter()
     private var isActive = false
@@ -98,6 +102,18 @@ final class MeadowBattlePreviewView: UIView {
         details.onAction = { [weak self] action in self?.perform(action) }
         details.onPreview = { [weak self] action in self?.landscape.preview(action) }
         landscape.onEnemySelected = { [weak self] in self?.selectEnemy() }
+        partyButton.addAction(UIAction { [weak self] _ in
+            guard let self else { return }
+            self.setActive(false);self.partyMode=true;self.party.isHidden=false
+            self.party.setActive(true);self.onPartyActiveChanged?(true);self.setNeedsLayout()
+        },for:.touchUpInside)
+        addSubview(partyButton)
+        party.isHidden=true
+        party.onClose={ [weak self] in
+            guard let self else { return };self.partyMode=false;self.party.isHidden=true
+            self.setActive(true);self.onPartyActiveChanged?(false)
+        }
+        addSubview(party)
         updatePresentation()
     }
     required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
@@ -109,6 +125,7 @@ final class MeadowBattlePreviewView: UIView {
             updatePresentation()
             return
         }
+        if partyMode { party.setActive(false);party.isHidden=true;partyMode=false;onPartyActiveChanged?(false) }
         isActive = false
         generation &+= 1
         pendingEnemyAction?.cancel()
@@ -259,9 +276,11 @@ final class MeadowBattlePreviewView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         guard bounds.width > 0, bounds.height > 0 else { return }
+        party.frame=bounds
         let layout = MeadowBattleLayout(size: bounds.size, safeArea: safeAreaInsets, mode: mode)
         header.frame = layout.header
         mapBorder.frame = mapFrame
+        partyButton.frame=CGRect(x:mapFrame.maxX-150,y:mapFrame.minY+12,width:136,height:34)
         mapTitle.frame = CGRect(x: mapFrame.minX + 12, y: mapFrame.minY + 12, width: 180, height: 32)
         landscape.frame = layout.battlefield; track.frame = layout.track; details.frame = layout.details
         stageTitle.frame = CGRect(x: 16, y: 12, width: min(300, max(1, landscape.bounds.width - 32)), height: 32)
@@ -276,7 +295,7 @@ final class MeadowBattlePreviewView: UIView {
         subtitle.frame = CGRect(x: 16, y: 43, width: textWidth, height: 23)
     }
     override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
-        if mapFrame.contains(point) { return nil }
+        if !partyMode,mapFrame.contains(point),!partyButton.frame.contains(point) { return nil }
         return super.hitTest(point, with: event)
     }
 }

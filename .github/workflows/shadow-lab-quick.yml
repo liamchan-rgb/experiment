@@ -64,6 +64,7 @@ jobs:
         run: |
           set -euo pipefail
           check_failed=0
+          swift test --package-path Vendor/ClassroomGameCore 2>&1 | tee build/logs/party-rules.log || check_failed=1
           bash scripts/check-battle-encounter.sh 2>&1 | tee build/logs/battle-logic.log || check_failed=1
           bash scripts/check-battle-effects.sh build/logs/battle-effects-trace.json 2>&1 | tee build/logs/battle-effects.log || check_failed=1
           bash scripts/check-road-motion.sh 2>&1 | tee build/logs/road-logic.log || check_failed=1

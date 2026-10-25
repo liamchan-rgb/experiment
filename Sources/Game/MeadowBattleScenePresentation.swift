@@ -291,7 +291,7 @@ final class MeadowBattleEnemyTargetView: UIImageView {
 }
 
 /// Cached optical masks avoid constructing gradients for every particle every frame.
-private enum MeadowBattleGlowCache {
+enum MeadowBattleGlowCache {
     private static var cache: [UIColor:UIImage] = [:]
     static func image(_ color: UIColor) -> UIImage {
         if let found=cache[color] { return found }

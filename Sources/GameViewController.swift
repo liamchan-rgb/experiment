@@ -524,6 +524,9 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
 
         let preview = MeadowBattlePreviewView(frame: .zero)
         preview.isHidden = true
+        preview.onPartyActiveChanged={ [weak self] active in
+            guard let self else { return };self.groundView?.isPaused=active || !self.mapPresented || self.loadingFailed
+        }
         preview.onClose = { [weak self] in self?.setBattlePreviewActive(false) }
         preview.onLayoutChanged = { [weak self] in
             guard let self else { return }
