@@ -36,5 +36,8 @@
   "uiTestsExecuted": false,
   "partySupportAndItemsDemoIntegrated": true,
   "sourceCharacterAndGaitPixelsChanged": false,
-  "installation": "Unsigned IPA for existing SideStore re-signing; classic ZIP2.0 compatibility wrapping; actual installation pending user"
+  "installation": "Unsigned IPA for existing SideStore re-signing; classic ZIP2.0 compatibility wrapping; actual installation pending user",
+  "deliveryCommit": "5b5114ed751e7020f1bb7823805cb76b179cc254",
+  "directIPAURL": "https://raw.githubusercontent.com/liamchan-rgb/experiment/5b5114ed751e7020f1bb7823805cb76b179cc254/Downloads/MeadowJourney-b46.ipa",
+  "publicDownloadVerified": true
 }

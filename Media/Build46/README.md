@@ -7,3 +7,5 @@
 直接IPA：1.6.20/build46，31,740,108字节，SHA256 `3cd7c942e82d91a238ba9f11f4921c88f24a640734fbb38154f1e008f04e855d`；arm64/iPhone+iPad/iOS15、经典ZIP2.0本地头/中央头、CRC/权限/Metal/资源与原目录打包均核验。沿用SideStore重签；实际安装及60FPS由用户测试，未宣称之前安装报错根因已确认。
 
 [直接下载IPA](../../Downloads/MeadowJourney-b46.ipa) · [五正常GIF与站姿](../../Art/Review/Battle/party-support-demo-v1/README.md) · [包校验](package.json)。主线程独自查看31页1190实际GIF解码帧、12完整人物1×/2×及原尺寸关键帧，浮字遮脸首稿已退回修正。离线预览不称UIKit/实机画面，新美术认可null。完整装备/背包与B2后续不在本轮完成范围。
+
+公开交付提交 `5b5114ed751e7020f1bb7823805cb76b179cc254`，13个公开链接完整GET200/摘要通过；105选定路径与241编译输入已核。下载核验回执：[delivery.json](../../Art/Review/Battle/party-support-demo-v1/delivery.json)。

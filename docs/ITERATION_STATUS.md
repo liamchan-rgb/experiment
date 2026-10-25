@@ -1564,3 +1564,6 @@ IPA1.6.19/build45、arm64/Phone+Pad/最低iOS15、可执行权限/Metal/现有60
 首稿浮字遮脸/倒地突变与新盾面穿入问题由主线程自己修复，旧稿关键图保留；最终亲看五正常GIF全部1190解码帧/31页、12完整人物1×/2×共4板与关键帧。援护连流、振奋上升、三药水与复活连续起身、增伤击杀/盾面接触均有独立预览；每帧20ms，正常总时长3.2/3.2/7.4/3.6/6.4秒。只有离线合成/静态序列检查，非UIKit/连续播放/设备录制。复活和致死预览用受控初始状态，默认App仍两敌18HP，不虚称倒地新平躺美术。新artApproval=null。
 
 最终源码cf245fe98d2234941423e487bacc8be0f67685be，归档40212372613通过79纯GameCore/适配测试、原五纯Swift、iPhoneOS Release；Mac/Linux审核导出逐字段匹配1e-6。IPA1.6.20/build46，31,740,108字节/SHA256 3cd7c942e82d91a238ba9f11f4921c88f24a640734fbb38154f1e008f04e855d。经典ZIP2.0/CRC/平台/版本/权限/Metal/图标/VFX/行走及原内容表入包已核，元数据sourceCommit明确为本次输入。目标60Hz，原地图在小队全场时停渲染；无App/模拟器/实机执行，安装/输入/稳定FPS由用户反馈。正常五GIF/站姿/审核/包见party-support-demo-v1、Media/Build46；直接IPA与公开下载待本次发布核验回执。
+
+
+build46公开交付核验完成：提交 5b5114ed751e7020f1bb7823805cb76b179cc254，105条选定交付路径Git blob核对；241编译输入与最终归档源码逐字节一致。固定提交/分支两个直接IPA、五正常GIF、六关键PNG共13个HTTPS完整GET200，MIME/完整长度/SHA256与本地一致，五GIF分别160/160/370/180/320帧且均20ms。回执Art/Review/Battle/party-support-demo-v1/delivery.json。直接IPA和正常动图实际交付，不发ZIP；真实安装/输入/稳定60FPS和用户美术认可仍待反馈。
