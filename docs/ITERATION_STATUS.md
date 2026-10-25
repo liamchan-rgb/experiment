@@ -1528,4 +1528,4 @@ contact-r1完成并由主审接入：01→02→03左靴最后可见行210→215�
 
 源码abcaa88f41787630c6c63d0460f6b96de2d7e935，归档40201819354五项纯Swift和iPhoneOS Release通过，无App/模拟器/实机执行。Linux/macOS控制轨迹逐字段相符（浮点1e-6）；10806旧美术/资源路径和动作/移动/技能模型、相机代码保持。未生成新美术/动作图集或用离线GIF声称实机60fps。
 
-IPA1.6.19/build45、arm64/Phone+Pad/最低iOS15、可执行权限/Metal/现有60HzVFX/两套P1外观/步态字节已核；经典ZIP2.0中央与本地头、无压缩/无扩展/注释/ZIP64、全部CRC通过，30,293,018字节，SHA256 67a5ad78757864506d53f7b8477ec80b90ea340ceaa7ebf0b08ff3bafe9a3d07。沿用SideStore重签，真实安装和稳定FPS仍待用户测试。实际公开下载验证回执待记录Media/Build45/delivery.json。
+IPA1.6.19/build45、arm64/Phone+Pad/最低iOS15、可执行权限/Metal/现有60HzVFX/两套P1外观/步态字节已核；经典ZIP2.0中央与本地头、无压缩/无扩展/注释/ZIP64、全部CRC通过，30,293,018字节，SHA256 67a5ad78757864506d53f7b8477ec80b90ea340ceaa7ebf0b08ff3bafe9a3d07。沿用SideStore重签，真实安装和稳定FPS仍待用户测试。交付提交3ada1140013b75947c2b1a4969c57797c769c7e1，17个选定交付文件与6个运行/打包输入逐字节核对；不可变与分支两个直接IPA链接均实际GET200、完整字节/摘要一致。回执Media/Build45/delivery.json。真实安装与稳定60fps仍待用户反馈。
