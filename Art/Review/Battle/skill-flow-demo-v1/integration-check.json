@@ -1,0 +1,70 @@
+{
+  "scope": "offline art, actual production Swift fields and source/compiled-input verification; not UIKit/device",
+  "oldArtAndWalkRemotePaths": 17813,
+  "localFilesMatched": 17395,
+  "allActorClipsUnchanged": true,
+  "originalCameraCodeUnchanged": true,
+  "shieldDirectChildOfHero": true,
+  "shieldNativeCenter": [
+    128,
+    144
+  ],
+  "shieldNativeDiameter": 240,
+  "coveragePoses": 505,
+  "coverageAlphaThreshold": 2,
+  "legacyFringeOutsideCoreMaxAlpha": 1,
+  "maxCharacterRadiusNativePixels": 84.02444076505611,
+  "shieldCoreRadius": 98.4,
+  "minimumCoreMarginNativePixels": 14.375559234943893,
+  "includesBladeHairAndBoots": true,
+  "shieldRelativeCenterVariationIn180Frames": 0,
+  "shieldActorTravelWorldUnits": 162.34394541309825,
+  "firstImpactFrames": {
+    "deathActive": 92,
+    "damageVisible": 92,
+    "hpZero": 92
+  },
+  "firstRecoveryFrame": 27,
+  "HPRecovery": "+4 once, 8 -> 12",
+  "noCastRingAfterActionStarts": true,
+  "transparentRGBEmpty": true,
+  "normalGIFsVerified": [
+    {
+      "frames": 165,
+      "frameDurationMs": 40,
+      "durationMs": 6600,
+      "file": "strike-death-normal.gif",
+      "bytes": 17845695,
+      "exportScale": 1,
+      "decodedDimensions": [
+        760,
+        809
+      ]
+    },
+    {
+      "frames": 180,
+      "frameDurationMs": 40,
+      "durationMs": 7200,
+      "file": "shield-follow-normal.gif",
+      "bytes": 16770379,
+      "exportScale": 1,
+      "decodedDimensions": [
+        760,
+        809
+      ]
+    },
+    {
+      "frames": 95,
+      "frameDurationMs": 40,
+      "durationMs": 3800,
+      "file": "recovery-normal.gif",
+      "bytes": 8307099,
+      "exportScale": 1,
+      "decodedDimensions": [
+        760,
+        809
+      ]
+    }
+  ],
+  "artApproval": null
+}

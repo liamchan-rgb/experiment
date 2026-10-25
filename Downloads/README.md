@@ -1,6 +1,18 @@
 # SideStore 安装与迭代包
 
-## 当前版本：发光粒子、地面碰撞与圆盾 · 1.6.16 build42
+## 当前版本：圆盾跟随、回血与技能动态 · 1.6.17 build43
+
+大圆盾完整包住人物/持剑，直接挂人物同步移动；回血增加绿金盘旋、上升粒子、恢复短亮核和地面绿光；强击改扫动主弧/回声/光浪分阶段。依据用户视频的技能/光影参考，运镜和原数值/动作/行走保持。
+
+[直接下载 MeadowJourney-b43.ipa](https://raw.githubusercontent.com/liamchan-rgb/experiment/fix/build33-face-grounding-camera/Downloads/MeadowJourney-b43.ipa) · [来源校验](MeadowJourney-build43.json) · [圆盾正常GIF](../Art/Review/Battle/skill-flow-demo-v1/shield-follow-normal.gif) · [回血正常GIF](../Art/Review/Battle/skill-flow-demo-v1/recovery-normal.gif) · [强击正常GIF](../Art/Review/Battle/skill-flow-demo-v1/strike-death-normal.gif) · [说明](../Media/Build43/README.md)
+
+```text
+https://raw.githubusercontent.com/liamchan-rgb/experiment/fix/build33-face-grounding-camera/Downloads/MeadowJourney-b43.ipa
+```
+
+28,133,914字节，SHA256 `40092768e150fd663d62181b95347be7d8ff95a2e6817b118e177cc98c33957f`。归档40179386404/五项纯Swift/包完整性通过；无App/模拟器/实机执行，用户复测。动图为同源素材/生产轨迹的离线照明近似，非设备录屏。沿用SideStore重签。[实际下载回执](../Art/Review/Battle/skill-flow-demo-v1/delivery.json)。
+
+## 历史版本：发光粒子、地面碰撞与圆盾 · 1.6.16 build42
 
 受击/怪物死亡增加发光粒子、局部环境暖光与落地反弹/溅光；圆盾颜色更鲜明、破裂蓝碎片更明显，鹿灵撞在盾前。数值、原强击与致死同事件右吹保持。
 

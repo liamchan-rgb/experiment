@@ -1,0 +1,10 @@
+Run 40178762700, source 94e2fe7e7d3e287711c0358e709fc0cba6ef9b64.
+Xcode 16.4, pure checks failed before device archive.
+Recovery compactMap expression exceeded Swift type-checker budget; rewritten as typed Double expressions and an explicit result array.
+No simulator or device execution.
+2026-10-25T09:00:29.4880390Z /Users/runner/work/experiment/experiment/Sources/Game/MeadowBattleEncounter.swift:322:16: error: the compiler is unable to type-check this expression in reasonable time; try breaking up the expression into distinct sub-expressions
+2026-10-25T09:00:29.4886720Z 322 |         return (0..<26).compactMap { i in
+2026-10-25T09:00:29.4888840Z     |                `- error: the compiler is unable to type-check this expression in reasonable time; try breaking up the expression into distinct sub-expressions
+2026-10-25T09:00:47.1124610Z /Users/runner/work/experiment/experiment/Sources/Game/MeadowBattleEncounter.swift:322:16: error: the compiler is unable to type-check this expression in reasonable time; try breaking up the expression into distinct sub-expressions
+2026-10-25T09:00:47.1127220Z 322 |         return (0..<26).compactMap { i in
+2026-10-25T09:00:47.1127970Z     |                `- error: the compiler is unable to type-check this expression in reasonable time; try breaking up the expression into distinct sub-expressions
