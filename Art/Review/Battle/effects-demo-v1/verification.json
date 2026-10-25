@@ -1,0 +1,19 @@
+{
+  "scope": "offline composited art study; not runtime input or GPU/device capture",
+  "frames": 180,
+  "frameDurationMs": 40,
+  "totalDurationMs": 7200,
+  "hoverPowerIsTimeIndependent": true,
+  "oldArtModified": false,
+  "artApproval": null,
+  "deviceExecution": false,
+  "sources": {
+    "Art/Scenes/MeadowBattle/hero-combat-v2/render-review.py": "b7d4f874175889cad5a29dc625e80fd373a2aaebccd901510998f53ebc5ad354",
+    "Art/Integration/Battle-effects-demo-v1/effect.json": "295686dbb8c65a5299c4c072145b68dd5a4cf771e09892e6b015ce890baab349",
+    "Art/Scenes/MeadowBattle/effects-v1/attack-clip.json": "7375ae164d24cfeff80a67d44083deda123afc1622cd71c6422a5c6af9064f58",
+    "Art/Scenes/MeadowBattle/effects-v1/slash.png": "87e154bc5ea620b2a6331d7e0329b0a5f833b5ecaebfccfbd8c2731140a9959b",
+    "Art/Scenes/MeadowBattle/effects-v1/burst.png": "49e110cce4d4ad1ba50115e13f31cb8533d8f95d6de218b963f1941b2728e579",
+    "Art/Scenes/MeadowBattle/effects-v1/ring.png": "e9d0d5507219cdb6dd6e2c2c9e2f6f6c15ee1c81b722090d535d67a4edeef927",
+    "Art/Scenes/MeadowBattle/effects-v1/mote.png": "8f1be9af15f8785e7e9c51f5ab3ed7d925e418058ab3c5ad20a017e5a0d4cfc4"
+  }
+}

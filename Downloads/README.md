@@ -1,6 +1,18 @@
 # SideStore 安装与迭代包
 
-## 当前版本：新分层八向人物接入 · 1.6.13 build39
+## 当前版本：战斗光效接入 · 1.6.14 build40
+
+技能卡固定强度预示，强击发光同步压暗；接触时统一扣血/数字/HP0向右吹散，不等动作收尾，施放后光圈退出。强击仍为5伤害/1AP，键鼠焦点/悬浮与触屏按住预示已接线。
+
+[直接下载 MeadowJourney-b40.ipa](https://raw.githubusercontent.com/liamchan-rgb/experiment/fix/build33-face-grounding-camera/Downloads/MeadowJourney-b40.ipa) · [来源与校验](MeadowJourney-build40.json) · [正常离线GIF](../Art/Review/Battle/effects-demo-v1/battle-demo-normal.gif) · [交付说明](../Media/Build40/README.md)
+
+```text
+https://raw.githubusercontent.com/liamchan-rgb/experiment/fix/build33-face-grounding-camera/Downloads/MeadowJourney-b40.ipa
+```
+
+25,176,986字节，SHA256 `2ed99a131c16c1030d22dc9a90070945009c04c6c2c76a9c56268d84a27267be`。进入“林地战斗 → 开始遭遇 → 选中鹿灵 → 强击”；三次后结束回合，下一轮第四次致死。最终设备归档40167117136及五项纯Swift检查通过，未运行模拟器/App/实机；实际光效、输入和性能由用户反馈。下载链接实取核对见 [回执](../Art/Review/Battle/effects-demo-v1/delivery.json)。
+
+## 历史版本：新分层八向人物接入 · 1.6.13 build39
 
 主地图点“P1 衣装”切换“林间绿衣”/“行旅蓝衣”，同一身体、显示与阴影同步，转向保留步相。起步/收步采用专用帧；停步会先在原地完成到指定出口的循环余段，再收脚。
 
