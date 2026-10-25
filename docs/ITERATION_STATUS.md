@@ -1512,4 +1512,4 @@ contact-r1完成并由主审接入：01→02→03左靴最后可见行210→215�
 
 用户截图SideStore“Archive appears to be corrupt: MeadowJourney-b44.ipa”。本轮重新GET原公开IPA，30,292,842字节/SHA b2f158...与本地/设备归档相同；CRC通过，原43与44除版本号外Info.plist无变更，同arm64/iOS15最低版本，无加密，未复现设备错误，不能断言已定位根因或安装通过。
 
-复用scripts/repack-ipa.py经典ZIP2.0重封装为Downloads/MeadowJourney-b44-r1.ipa，清除扩展/注释，无压缩/无ZIP64；逐文件确认全部App内容、路径和权限不变，本地头与中央目录CRC/大小/版本字段一致。仍1.6.18/build44、同源码1236b901/归档40182000958，无新功能/素材变化或App/设备/模拟器运行。新包30,292,842字节，SHA256 945bdd2f930f4944a30e4e76a07d33d3e159944e26c6af7d61222f16ac103449，旧包保留。后续package-ipa.sh自动走同一规范化步骤，bash语法检查；真实SideStore安装待用户复测。新文件名用于避开原下载缓存；待实际GET新链接后记录回执。
+复用scripts/repack-ipa.py经典ZIP2.0重封装为Downloads/MeadowJourney-b44-r1.ipa，清除扩展/注释，无压缩/无ZIP64；逐文件确认全部App内容、路径和权限不变，本地头与中央目录CRC/大小/版本字段一致。仍1.6.18/build44、同源码1236b901/归档40182000958，无新功能/素材变化或App/设备/模拟器运行。新包30,292,842字节，SHA256 945bdd2f930f4944a30e4e76a07d33d3e159944e26c6af7d61222f16ac103449，旧包保留。后续package-ipa.sh自动走同一规范化步骤，bash语法检查；真实SideStore安装待用户复测。新文件名用于避开原下载缓存；重封装提交7b86b0d731ddb21e7749905cd8ecfb96ac40d51c；新不可变链接实际GET200、全部30,292,842字节与SHA验证通过，下载回执见Downloads/MeadowJourney-build44-r1.json。实际安装仍待用户反馈。

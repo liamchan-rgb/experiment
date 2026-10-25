@@ -99,5 +99,13 @@
   ],
   "rootCauseConfirmed": false,
   "deviceInstallationConfirmed": false,
-  "simulatorOrDeviceRunPerformed": false
+  "simulatorOrDeviceRunPerformed": false,
+  "publicDownload": {
+    "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/7b86b0d731ddb21e7749905cd8ecfb96ac40d51c/Downloads/MeadowJourney-b44-r1.ipa",
+    "status": 200,
+    "mime": "application/octet-stream",
+    "bytes": 30292842,
+    "fullBytesMatch": true
+  },
+  "packageCommit": "7b86b0d731ddb21e7749905cd8ecfb96ac40d51c"
 }
