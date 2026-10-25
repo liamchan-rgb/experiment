@@ -92,6 +92,7 @@ final class MeadowBattlePreviewView: UIView {
         track.accessibilityIdentifier = "previewTurnTrack"; addSubview(track)
         details.accessibilityIdentifier = "previewPlayerDetails"; addSubview(details)
         details.onAction = { [weak self] action in self?.perform(action) }
+        details.onPreview = { [weak self] action in self?.landscape.preview(action) }
         landscape.onEnemySelected = { [weak self] in self?.selectEnemy() }
         updatePresentation()
     }
@@ -136,11 +137,16 @@ final class MeadowBattlePreviewView: UIView {
     }
 
     private func perform(_ action: MeadowBattleAction) {
-        guard isActive, !isAnimating, let result = encounter.perform(action) else { return }
+        guard isActive, !isAnimating, let cue = encounter.beginAction(action) else { return }
         isAnimating = true
         let token = generation
         updatePresentation()
-        play(result.cue, generation: token) { [weak self] in
+        landscape.play(cue, onImpact: { [weak self] in
+            guard let self, self.isActive, self.generation == token else { return nil }
+            let result = self.encounter.resolveActionImpact()
+            self.updatePresentation()
+            return result
+        }) { [weak self] in
             guard let self, self.isActive, self.generation == token else { return }
             if self.encounter.phase == .victory {
                 self.play(.victory, generation: token) { [weak self] in self?.finishAnimation() }
@@ -166,10 +172,15 @@ final class MeadowBattlePreviewView: UIView {
         // A clear wind-up window lets the player see the Forest Warden prepare.
         let work = DispatchWorkItem { [weak self] in
             guard let self, self.isActive, self.generation == token,
-                  let result = self.encounter.resolveEnemyAction() else { return }
+                  self.encounter.beginEnemyAction() else { return }
             self.pendingEnemyAction = nil
             self.updatePresentation()
-            self.play(result.cue, generation: token) { [weak self] in
+            self.landscape.play(.enemyStrike, onImpact: { [weak self] in
+                guard let self, self.isActive, self.generation == token else { return nil }
+                let result = self.encounter.resolveEnemyImpact()
+                self.updatePresentation()
+                return result
+            }) { [weak self] in
                 guard let self, self.isActive, self.generation == token else { return }
                 if self.encounter.phase == .defeat {
                     self.play(.defeat, generation: token) { [weak self] in self?.finishAnimation() }
@@ -351,6 +362,8 @@ private final class MeadowTurnTokenView: UIView {
 
 private final class MeadowPlayerDetailsView: UIView {
     var onAction: ((MeadowBattleAction) -> Void)?
+    var onPreview: ((MeadowBattleAction?) -> Void)?
+    private var focusedAction: MeadowBattleAction?
     private let resources = MeadowPreviewPalette.label("P1    生命 12/12    盾 0    行动点 3/3", size: 16, weight: .semibold)
     private var cards: [MeadowPreviewCard] = []
     override init(frame: CGRect) {
@@ -359,7 +372,13 @@ private final class MeadowPlayerDetailsView: UIView {
         let definitions: [(String, MeadowBattleAction)] = [("强击", .strike), ("喘息", .breathe), ("简易防护", .protection)]
         for (title, action) in definitions {
             let card = MeadowPreviewCard(title: title, text: "")
+            card.previewStrength = action == .strike ? 0.9 : 0.28
             card.button.addAction(UIAction { [weak self] _ in self?.onAction?(action) }, for: .touchUpInside)
+            card.onFocus = { [weak self] active in
+                guard let self else { return }
+                if active { self.focusedAction = action; self.onPreview?(action) }
+                else if self.focusedAction == action { self.focusedAction = nil; self.onPreview?(nil) }
+            }
             card.button.accessibilityIdentifier = "battleAction\(title)"
             addSubview(card); cards.append(card)
         }
@@ -370,6 +389,7 @@ private final class MeadowPlayerDetailsView: UIView {
     func show(encounter: MeadowBattleEncounter, enabled: Bool) {
         resources.text = "P1    生命 \(encounter.playerHP)/\(encounter.playerMaxHP)    盾 \(encounter.shield)    行动点 \(encounter.actionPoints)/3"
         let canAct = enabled && encounter.isPlayerActionEnabled
+        if !canAct { focusedAction = nil; onPreview?(nil) }
         cards[0].update(title: "强击 · 1 AP", detail: "选中鹿灵造成5点伤害", enabled: canAct && encounter.enemySelected && encounter.enemyHP > 0)
         cards[1].update(title: "喘息 · 1 AP", detail: "恢复4生命 · 余\(encounter.breathUses)次", enabled: canAct && encounter.breathUses > 0 && encounter.playerHP < encounter.playerMaxHP)
         cards[2].update(title: "简易防护 · 1 AP", detail: "获得4护盾 · 余\(encounter.guardUses)次", enabled: canAct && encounter.guardUses > 0)
@@ -385,13 +405,42 @@ private final class MeadowPlayerDetailsView: UIView {
     }
 }
 
+private final class MeadowSkillButton: UIButton {
+    var onFocus: ((Bool) -> Void)?
+    private var hovering = false
+    override var isHighlighted: Bool { didSet { updatePreview() } }
+    override var isEnabled: Bool { didSet { if !isEnabled { hovering = false }; updatePreview() } }
+    override func didUpdateFocus(in context: UIFocusUpdateContext, with coordinator: UIFocusAnimationCoordinator) {
+        super.didUpdateFocus(in: context, with: coordinator); updatePreview()
+    }
+    func installHover() {
+        isPointerInteractionEnabled = true
+        addGestureRecognizer(UIHoverGestureRecognizer(target: self, action: #selector(hover(_:))))
+    }
+    @objc private func hover(_ recognizer: UIHoverGestureRecognizer) {
+        hovering = recognizer.state == .began || recognizer.state == .changed
+        updatePreview()
+    }
+    private func updatePreview() { onFocus?(isEnabled && (hovering || isHighlighted || isFocused)) }
+}
+
 private final class MeadowPreviewCard: UIView {
     private let title = MeadowPreviewPalette.label("", size: 16, weight: .bold)
     private let detail = MeadowPreviewPalette.label("", size: 14)
-    let button = UIButton(type: .system)
+    let button = MeadowSkillButton(type: .system)
+    var onFocus: ((Bool) -> Void)?
+    var previewStrength: Float = 0.9
     init(title titleText: String, text: String) {
         super.init(frame: .zero); backgroundColor = MeadowPreviewPalette.card
         layer.cornerRadius = 9; detail.numberOfLines = 2
+        button.installHover()
+        button.onFocus = { [weak self] active in
+            guard let self else { return }
+            self.layer.shadowColor = MeadowPreviewPalette.gold.cgColor
+            self.layer.shadowRadius = 12; self.layer.shadowOpacity = active ? self.previewStrength * 0.85 : 0
+            self.layer.shadowOffset = .zero
+            self.onFocus?(active)
+        }
         title.text = titleText; detail.text = text
         addSubview(title); addSubview(detail); addSubview(button)
     }

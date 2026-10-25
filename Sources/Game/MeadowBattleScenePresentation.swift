@@ -55,6 +55,22 @@ enum MeadowBattleEnemyFrames {
 
 /// Vector combat feedback is registered to the same battlefield canvas as the
 /// sprites: target ring, short impact arc, ward and healing motes.
+enum MeadowBattleVFXAssets {
+    static let slash = UIImage(named: "BattleVFXSlash")!
+    static let burst = UIImage(named: "BattleVFXBurst")!
+    static let ring = UIImage(named: "BattleVFXRing")!
+    static let mote = UIImage(named: "BattleVFXMote")!
+    static let body = frames("BattleVFXDeathBody", width: 384, height: 256)
+    static let wind = frames("BattleVFXDeathWind", width: 640, height: 320)
+    private static func frames(_ name: String, width: Int, height: Int) -> [UIImage] {
+        guard let sheet = UIImage(named: name)?.cgImage else { fatalError("Missing battle VFX atlas") }
+        return (0..<48).map { i in
+            UIImage(cgImage: sheet.cropping(to: CGRect(x: (i % 8) * width, y: (i / 8) * height, width: width, height: height))!)
+        }
+    }
+    static func deathFrame(_ age: Double) -> Int { min(47, max(0, Int(age / 0.04))) }
+}
+
 final class MeadowBattleEffectsView: UIView {
     var heroFoot = CGPoint.zero
     var enemyFoot = CGPoint.zero
@@ -65,65 +81,78 @@ final class MeadowBattleEffectsView: UIView {
     var shield = 0
     var message = ""
     var messageColor = UIColor.white
+    var previewPower: CGFloat = 0
+    var previewEnvelope: CGFloat = 0
+    var ringAlpha: CGFloat = 0
+    var impactAge: Double?
+    var messageAge: Double?
+    var messageAtHero = false
+    var time: Double = 0
+    var groundOnly = false
     override init(frame: CGRect) { super.init(frame: frame); isOpaque = false; isUserInteractionEnabled = false }
     required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
     override func draw(_ rect: CGRect) {
         guard let ctx = UIGraphicsGetCurrentContext() else { return }
-        let unit = bounds.width / 700
-        let gold = UIColor(red: 1, green: 0.84, blue: 0.35, alpha: 1)
-        func ellipse(_ point: CGPoint, radius: CGFloat, color: UIColor) {
-            color.setStroke(); let path = UIBezierPath(ovalIn: CGRect(x: point.x - radius, y: point.y - radius * 0.25,
-                width: radius * 2, height: radius * 0.5)); path.lineWidth = max(1.5, 2 * unit); path.stroke()
+        let unit = bounds.width / 760
+        func smooth(_ x: CGFloat) -> CGFloat { let t = min(1, max(0, x)); return t*t*(3-2*t) }
+        func pulse(_ age: Double, _ start: Double, _ peak: Double, _ end: Double) -> CGFloat {
+            age <= peak ? smooth(CGFloat((age-start)/(peak-start))) : 1-smooth(CGFloat((age-peak)/(end-peak)))
         }
-        if selected { ellipse(enemyFoot, radius: 51 * unit, color: gold) }
-        if shield > 0 {
-            let path = UIBezierPath(arcCenter: CGPoint(x: heroFoot.x, y: heroFoot.y - 34 * unit), radius: 43 * unit,
-                                    startAngle: -.pi * 0.60, endAngle: .pi * 0.60, clockwise: true)
-            UIColor(red: 0.35, green: 0.85, blue: 1, alpha: 0.75).setStroke(); path.lineWidth = 3 * unit; path.stroke()
+        func sprite(_ image: UIImage, _ center: CGPoint, _ width: CGFloat, _ height: CGFloat, _ alpha: CGFloat) {
+            guard alpha > 0 else { return }
+            image.draw(in: CGRect(x: center.x-width*unit/2, y: center.y-height*unit/2, width: width*unit, height: height*unit), blendMode: .plusLighter, alpha: alpha)
         }
-        if let cue {
-            switch cue {
-            case .strike, .enemyStrike:
-                let intensity = max(0, 1 - abs(progress - 0.52) / 0.12)
-                if intensity > 0 {
-                    ctx.saveGState(); ctx.setAlpha(intensity)
-                    let arc = UIBezierPath()
-                    arc.move(to: CGPoint(x: impact.x - 28 * unit, y: impact.y - 35 * unit))
-                    arc.addQuadCurve(to: CGPoint(x: impact.x + 22 * unit, y: impact.y + 24 * unit),
-                                     controlPoint: CGPoint(x: impact.x + 35 * unit, y: impact.y - 25 * unit))
-                    gold.setStroke(); arc.lineWidth = 8 * unit; arc.stroke()
-                    UIColor.white.setStroke(); arc.lineWidth = 3 * unit; arc.stroke()
-                    for index in 0..<6 {
-                        let angle = CGFloat(index) * .pi / 3
-                        let ray = UIBezierPath(); let start: CGFloat = 10 * unit, end: CGFloat = 23 * unit
-                        ray.move(to: CGPoint(x: impact.x + cos(angle) * start, y: impact.y + sin(angle) * start))
-                        ray.addLine(to: CGPoint(x: impact.x + cos(angle) * end, y: impact.y + sin(angle) * end))
-                        ray.lineWidth = 2 * unit; ray.stroke()
-                    }
-                    ctx.restoreGState()
-                }
-            case .heal:
-                for index in 0..<5 {
-                    let x = heroFoot.x + CGFloat(index - 2) * 10 * unit
-                    let y = heroFoot.y - (18 + progress * 72 + CGFloat(index % 2) * 8) * unit
-                    let opacity = sin(progress * .pi)
-                    UIColor(red: 0.45, green: 1, blue: 0.60, alpha: opacity).setFill()
-                    UIBezierPath(roundedRect: CGRect(x: x, y: y, width: 3 * unit, height: 10 * unit), cornerRadius: unit).fill()
-                }
-            case .guardPose:
-                ellipse(heroFoot, radius: (25 + 18 * sin(progress * .pi)) * unit,
-                        color: UIColor(red: 0.4, green: 0.85, blue: 1, alpha: sin(progress * .pi)))
-            case .victory, .defeat: break
+        func light(_ center: CGPoint, _ rx: CGFloat, _ ry: CGFloat, _ alpha: CGFloat) {
+            guard alpha > 0 else { return }
+            ctx.saveGState(); ctx.translateBy(x: center.x, y: center.y); ctx.scaleBy(x: rx*unit, y: ry*unit)
+            let colors = [UIColor(red: 1, green: 0.75, blue: 0.27, alpha: alpha).cgColor, UIColor.clear.cgColor] as CFArray
+            let gradient = CGGradient(colorsSpace: CGColorSpaceCreateDeviceRGB(), colors: colors, locations: [0, 1])!
+            ctx.setBlendMode(.plusLighter); ctx.drawRadialGradient(gradient, startCenter: .zero, startRadius: 0, endCenter: .zero, endRadius: 1, options: [])
+            ctx.restoreGState()
+        }
+        let burst = impactAge.map { pulse($0, -0.04, 0.04, 0.4) } ?? 0
+        if groundOnly {
+            light(CGPoint(x: impact.x+15*unit, y: enemyFoot.y), 150, 38, burst*0.48)
+            light(impact, 125, 140, burst*0.25)
+            light(heroFoot, 90, 26, previewPower*previewEnvelope*0.16)
+            return
+        }
+        if selected, cue == nil {
+            UIColor(red: 1, green: 0.84, blue: 0.35, alpha: 0.65).setStroke()
+            let p=UIBezierPath(ovalIn: CGRect(x: enemyFoot.x-48*unit,y:enemyFoot.y-10*unit,width:96*unit,height:20*unit));p.lineWidth=1.5;p.stroke()
+        }
+        sprite(MeadowBattleVFXAssets.ring, heroFoot, 110, 46, ringAlpha)
+        if previewPower > 0 {
+            for i in 0..<(previewPower > 0.5 ? 7 : 3) {
+                let angle=CGFloat(i)*2.399+CGFloat(time)*1.7
+                sprite(MeadowBattleVFXAssets.mote, CGPoint(x: heroFoot.x+cos(angle)*(18+previewPower*15)*unit,y:heroFoot.y-58*unit+sin(angle)*24*unit),12,12,previewPower*previewEnvelope*0.9)
             }
         }
-        if !message.isEmpty, progress > 0.46, progress < 0.95 {
-            let center = (cue == .enemyStrike || cue == .heal || cue == .guardPose) ? heroFoot : enemyFoot
-            let font = UIFont.boldSystemFont(ofSize: max(17, 24 * unit))
-            let attrs: [NSAttributedString.Key: Any] = [.font: font, .foregroundColor: messageColor,
-                .strokeColor: UIColor(red: 0.12, green: 0.15, blue: 0.10, alpha: 1), .strokeWidth: -3]
-            let label = NSAttributedString(string: message, attributes: attrs)
-            let size = label.size()
-            label.draw(at: CGPoint(x: center.x - size.width / 2, y: center.y - (95 + 30 * (progress - 0.46)) * unit))
+        if let age=impactAge, burst > 0 {
+            let slash=pulse(age,-0.08,0,0.28)
+            sprite(MeadowBattleVFXAssets.slash, impact,155,155,slash)
+            sprite(MeadowBattleVFXAssets.burst,impact,160+CGFloat(max(0,age))*180,160+CGFloat(max(0,age))*180,burst)
+            for i in 0..<14 {
+                let angle=CGFloat(i)*2.399, distance=CGFloat(max(0,age))*CGFloat(80+(i%4)*24)*unit
+                sprite(MeadowBattleVFXAssets.mote,CGPoint(x:impact.x+cos(angle)*distance,y:impact.y+sin(angle)*distance),10,10,burst*0.9)
+            }
+        }
+        if shield > 0 {
+            let path=UIBezierPath(arcCenter: CGPoint(x:heroFoot.x,y:heroFoot.y-34*unit), radius:43*unit,startAngle:-.pi*0.6,endAngle:.pi*0.6,clockwise:true)
+            UIColor.cyan.withAlphaComponent(0.65).setStroke();path.lineWidth=2*unit;path.stroke()
+        }
+        if cue == .heal {
+            for i in 0..<5 {
+                let center=CGPoint(x:heroFoot.x+CGFloat(i-2)*10*unit,y:heroFoot.y-(18+progress*72)*unit)
+                UIColor.green.withAlphaComponent(sin(progress * .pi)).setFill()
+                UIBezierPath(ovalIn:CGRect(x:center.x,y:center.y,width:3*unit,height:8*unit)).fill()
+            }
+        }
+        if let age=messageAge, age < 0.7, !message.isEmpty {
+            let center=messageAtHero ? heroFoot : impact
+            let attrs:[NSAttributedString.Key:Any]=[.font:UIFont.boldSystemFont(ofSize:max(16,23*unit)),.foregroundColor:messageColor,.strokeColor:UIColor(red:0.15,green:0.1,blue:0.04,alpha:1),.strokeWidth:-3]
+            let label=NSAttributedString(string:message,attributes:attrs)
+            label.draw(at:CGPoint(x:center.x+20*unit,y:center.y-(40+CGFloat(age)*30)*unit))
         }
     }
 }
