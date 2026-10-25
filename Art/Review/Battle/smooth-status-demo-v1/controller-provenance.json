@@ -1,0 +1,8 @@
+{
+  "sourceCommit": "0c9f1e7a9397f26e64824412fc2d20a4472fa23f",
+  "workflowRun": 40182000958,
+  "source": "macOS pure executable using production encounter and impact clock; not UIKit/device",
+  "linuxComparison": "all fields match, floats within1e-6",
+  "simulatorExecuted": false,
+  "deviceExecuted": false
+}

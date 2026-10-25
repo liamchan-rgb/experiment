@@ -8,6 +8,9 @@ ROOT=Path(__file__).resolve().parents[1];OUT=ROOT/'Art/Review/Battle/smooth-stat
 base=ROOT/'scripts/review-battle-effects-demo.py';env={'__file__':str(base)}
 exec(compile(base.read_text().split('\nframes=[]; traces=[]')[0],str(base),'exec'),env)
 W,H,UI=env['W'],env['H'],env['UI'];plate,foreground=env['plate'],env['foreground'];render,sample=env['render'],env['sample'];asset=env['asset'];smooth,pulse=env['smooth'],env['pulse'];hs,es,hx,hy,ex,ey=[env[k] for k in ['hs','es','hx','hy','ex','ey']];point=env['point'];shadow=env['shadow'];light=env['light'];font,small,large=[env[k] for k in ['font','small','large']]
+UI=160
+font=ImageFont.truetype('/usr/share/fonts/opentype/noto/NotoSerifCJK-Bold.ttc',20)
+small=ImageFont.truetype('/usr/share/fonts/opentype/noto/NotoSerifCJK-Bold.ttc',17)
 assets={n:asset('BattleVFX'+n) for n in ['HeavyArc','HeavySpray','Barrier','WardHit','HeavyHitMask','HealStar','HealWisp','HealShaft','HealWave','RoundBarrier','CyanShard','GoldEmber','GroundSpark','Slash','Burst','Mote','Ring']}
 body=asset('BattleVFXDeathBody60');wind=asset('BattleVFXDeathWind60')
 bodies=[body.crop(((i%8)*384,(i//8)*256,(i%8+1)*384,(i//8+1)*256)) for i in range(48)]
@@ -181,22 +184,29 @@ def attached_recovery(f,kind,t,row):
 # Clear, compact review captions; actual product cards retain their existing text.
 def review_ui(scene,t,kind,hero_hp,enemy_hp,shield,stage):
  f=Image.new('RGBA',(W,H+UI),(15,24,22,255));f.alpha_composite(scene);d=ImageDraw.Draw(f)
- d.rectangle((0,0,W,35),fill=(12,23,22,235));d.text((16,6),'build44 · 技能动态 / 圆盾跟随 / 回血',font=font,fill='#f5e8c7');d.text((W-190,10),f'离线  {t:.2f}s',font=small,fill='#bbc5bc')
- d.text((18,H-35),stage,font=font,fill='#ffe9b8');d.text((18,H+8),'固定强度 · 原伤害/恢复规则',font=small,fill='#becbbf')
- for x,title,detail in [(18,'强击','5点伤害 · 1AP'),(270,'简易防护 / 喘息','+4护盾 / +4生命')]:
-  d.rounded_rectangle((x,H+34,x+234,H+96),8,fill='#29372b',outline='#82e7bd' if kind=='heal' else '#e4d1a0',width=1)
-  d.text((x+13,H+39),title,font=font,fill='#ffe5b2');d.text((x+13,H+68),detail,font=small,fill='#aabb9f')
- for x,name,v,m,col in [(18,'生命',hero_hp,12,'#79db95'),(270,'护盾',shield,8,'#5ce4ff'),(530,'鹿灵',enemy_hp,18,'#79db95')]:
-  d.text((x,H+5),f'{name} {v}/{m}',font=font,fill='#fff1cd',stroke_width=1)
-  d.rectangle((x,H+29,x+210,H+37),fill='#080f0b',outline='#8c8054')
-  if v:d.rectangle((x+1,H+30,x+1+208*v/m,H+36),fill=col)
+ d.rectangle((0,0,W,38),fill=(12,23,22,235));d.text((16,5),'build44 · 连续技能 / 状态条',font=font,fill='#f5e8c7');d.text((W-190,8),f'离线 {t:.2f}s',font=small,fill='#bbc5bc')
+ d.text((18,H-35),stage,font=small,fill='#ffe9b8')
+ for x,name,v,m,col,width in [(18,'生命',hero_hp,12,'#79db95',210),(270,'护盾',shield,8,'#5ce4ff',210),(522,'行动',2,3,'#e8ca79',162)]:
+  d.text((x,H+7),f'{name} {v}/{m}',font=font,fill='#fff1cd')
+  d.rectangle((x,H+34,x+width,H+43),fill='#080f0b',outline='#8c8054')
+  if v:d.rectangle((x+1,H+35,x+1+(width-2)*v/m,H+42),fill=col)
+ for i,(title,detail) in enumerate([('强击 · 1 AP','造成5点伤害'),('喘息 · 1 AP','恢复4点生命'),('简易防护 · 1 AP','获得4点护盾')]):
+  x=18+i*248
+  d.rounded_rectangle((x,H+62,x+234,H+148),8,fill='#29372b',outline='#e4d1a0',width=1)
+  d.text((x+12,H+71),title,font=font,fill='#ffe5b2');d.text((x+12,H+111),detail,font=small,fill='#c7d6bc')
+ # Actor HP presentation is outside the camera transform, as in production.
+ for x,y,name,v,m in [(W*.29-68,H*.69-H*.17-49,'P1',hero_hp,12),(W*.65-68,H*.685-H*.33-49,'鹿灵',enemy_hp,18)]:
+  d.rounded_rectangle((x,y,x+136,y+43),5,fill='#13281e')
+  d.text((x+7,y+1),f'{name} {v}/{m}',font=small,fill='#fff1cd')
+  d.rectangle((x+7,y+29,x+129,y+36),fill='#07110b')
+  if v:d.rectangle((x+7,y+29,x+7+122*v/m,y+36),fill='#79db95')
  if shield:
-  d.rounded_rectangle((W-58,H+53,W-14,H+97),5,fill='#233e39',outline='#5ce4ff',width=2)
-  d.text((W-49,H+61),'盾',font=font,fill='#7beaff')
+  d.rounded_rectangle((W-58,H+6,W-14,H+50),5,fill='#233e39',outline='#5ce4ff',width=2)
+  d.text((W-49,H+13),'盾',font=font,fill='#7beaff')
   if kind=='shield' and 1.05<=t<1.4:
-   d.rounded_rectangle((W-316,H-42,W-14,H+46),7,fill='#162b20',outline='#ecd492')
-   d.text((W-305,H-34),f'防护 · 剩余 {shield} 点',font=font,fill='#fff1cd')
-   d.text((W-305,H-3),'优先抵挡伤害，耗尽时破碎',font=small,fill='#b9e7e5')
+   d.rounded_rectangle((W-316,H-96,W-14,H-6),7,fill='#162b20',outline='#ecd492')
+   d.text((W-305,H-88),f'防护 · 剩余 {shield} 点',font=font,fill='#fff1cd')
+   d.text((W-305,H-49),'优先抵挡伤害，耗尽时破碎',font=small,fill='#b9e7e5')
  return f.convert('RGB')
 
 reports={}
@@ -254,13 +264,25 @@ for kind,count in COUNTS.items():
  def encode(scale):
   size=(round(W*scale),round((H+UI)*scale));encoded=[f.resize(size,Image.Resampling.LANCZOS).quantize(palette=pal,dither=Image.Dither.NONE) for f in frames]
   encoded[0].save(OUT/name,save_all=True,append_images=encoded[1:],duration=20,loop=0,disposal=1,optimize=True)
- encode(.8);scale=.8
- if (OUT/name).stat().st_size>19500000:scale=.7;encode(scale)
+ encode(.9);scale=.9
+ # Lossless transparent-pixel delta optimization, preserving every 20ms frame.
+ import subprocess
+ import os,shutil
+ binary=os.environ.get('GIFSICLE') or shutil.which('gifsicle') or '/workspace/gifsicle-1.96/src/gifsicle'
+ if Path(binary).exists():
+  subprocess.run([binary,'-O3',str(OUT/name),'-o',str(OUT/(name+'.tmp'))],check=True)
+  (OUT/(name+'.tmp')).replace(OUT/name)
+ while (OUT/name).stat().st_size>19500000:
+  scale=round(scale-.1,2);assert scale>=.4
+  encode(scale)
+  if Path(binary).exists():
+   subprocess.run([binary,'-O3',str(OUT/name),'-o',str(OUT/(name+'.tmp'))],check=True)
+   (OUT/(name+'.tmp')).replace(OUT/name)
  gif=Image.open(OUT/name);assert gif.n_frames==count
  for page in range(math.ceil(count/40)):
-  sheet=Image.new('RGB',(1520,4040),'#111a15')
+  sheet=Image.new('RGB',(1520,2744),'#111a15')
   for j,k in enumerate(range(page*40,min(count,(page+1)*40))):
-   gif.seek(k);assert gif.info['duration']==20;sheet.paste(gif.convert('RGB').resize((380,404)),(j%4*380,j//4*404))
+   gif.seek(k);assert gif.info['duration']==20;sheet.paste(gif.convert('RGB').resize((304,343)),(j%5*304,j//5*343))
   sheet.save(OUT/f'{kind}-decoded-{page+1:02}.jpg',quality=88)
  frames[0].save(OUT/f'{kind}-standing.png')
  print('Finished',kind,flush=True)

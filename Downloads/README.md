@@ -1,6 +1,18 @@
 # SideStore 安装与迭代包
 
-## 当前版本：圆盾跟随、回血与技能动态 · 1.6.17 build43
+## 当前版本：连续特效、状态条与 buff 说明 · 1.6.18 build44
+
+护盾施法渐入，回血光缕连续转向、星点稳定；目标更新60Hz，死亡粒子重新60Hz采样。减少逐帧光池/投影重算，记录真实帧间隔供后续实机判断。深绿金边与米白大粗字，HP/盾/AP条；护盾小方框hover/focus/tap看说明。原战斗数值/人物/行走/运镜保持。
+
+[直接下载 MeadowJourney-b44.ipa](https://raw.githubusercontent.com/liamchan-rgb/experiment/fix/build33-face-grounding-camera/Downloads/MeadowJourney-b44.ipa) · [来源校验](MeadowJourney-build44.json) · [圆盾正常GIF](../Art/Review/Battle/smooth-status-demo-v1/shield-follow-normal.gif) · [回血正常GIF](../Art/Review/Battle/smooth-status-demo-v1/recovery-normal.gif) · [强击正常GIF](../Art/Review/Battle/smooth-status-demo-v1/strike-death-normal.gif)
+
+```text
+https://raw.githubusercontent.com/liamchan-rgb/experiment/fix/build33-face-grounding-camera/Downloads/MeadowJourney-b44.ipa
+```
+
+30,292,842字节，SHA256 `b2f1587658e56e6019c3b448310da16297a453ce1f4cb13bd648c02e5736791c`。归档40182000958/五项纯Swift/包完整性通过；无App/模拟器/实机执行，用户测试帧率与操作。正常50fps动图为生产轨迹/素材的离线光照及UI近似，非UIKit录屏，不能作为实机60fps测量。沿用SideStore重签。[交付回执](../Art/Review/Battle/smooth-status-demo-v1/delivery.json)。
+
+## 历史版本：圆盾跟随、回血与技能动态 · 1.6.17 build43
 
 大圆盾完整包住人物/持剑，直接挂人物同步移动；回血增加绿金盘旋、上升粒子、恢复短亮核和地面绿光；强击改扫动主弧/回声/光浪分阶段。依据用户视频的技能/光影参考，运镜和原数值/动作/行走保持。
 
