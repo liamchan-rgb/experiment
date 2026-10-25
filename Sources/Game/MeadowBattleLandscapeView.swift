@@ -299,7 +299,8 @@ final class MeadowBattleLandscapeView: UIView {
             contact = MeadowBattleImpactClock.strikeContact
             castInitialDim = initial; castLightAt = sceneTime
         case .enemyStrike:
-            cueDuration = ceil(max(enemyMotionDuration,enemyMotionDuration*0.46+0.84)/0.04)*0.04
+            hitWasBlocked = shieldValue >= 4
+            cueDuration = ceil(max(enemyMotionDuration,enemyMotionDuration*0.46+(hitWasBlocked ? 0.96 : 0.84))/0.04)*0.04
             contact = enemyMotionDuration*0.46
         case .guardPose: cueDuration = 0.96; contact = 0.46
         case .heal: cueDuration = 0.96; contact = 0.46
@@ -395,7 +396,9 @@ final class MeadowBattleLandscapeView: UIView {
                 let heroReach = baseHeroFrame.minX + (tip.x + contact.rootOffset.x) / 256 * baseHeroFrame.width
                 let enemyFront = baseEnemyFrame.minX + 110 / 384 * baseEnemyFrame.width
                 heroTravel = min(canvas.bounds.width * 0.22, max(0, enemyFront - heroReach)) * approach()
-                enemyRecoil = canvas.bounds.width * 0.017 * pulse(0.48, 0.58, 0.86)
+                let age=cueElapsed-MeadowBattleImpactClock.strikeContact
+                let recoil=age <= 0.14 ? smooth((age+0.02)/0.16) : 1-smooth((age-0.14)/0.38)
+                enemyRecoil = canvas.bounds.width * 0.017 * recoil
             case .enemyStrike:
                 monsterProgress = p
                 let enemyFront = baseEnemyFrame.minX + 42 / 384 * baseEnemyFrame.width

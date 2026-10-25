@@ -20,7 +20,7 @@ body_sheet=Image.new('RGBA',(384*columns,256*rows));wind_sheet=Image.new('RGBA',
 np=scope['np'];ep=scope['ep'];threshold=scope['threshold'];smooth=scope['smooth'];stamp=scope['stamp'];spec=scope['spec'];enemy=scope['enemy'];particles=scope['particles'];es=scope['es'];ex=scope['ex'];ey=scope['ey'];W=scope['W'];recoil=scope['pulse'];duration=.76;birthhold=.032
 for i in range(count):
  age=i*.04+birthhold;dissolve=.08+.92*smooth(age/duration);keep=threshold>=dissolve
- pixels=ep.copy();pixels[:,:,3]=(ep[:,:,3]*keep).astype('uint8');edge=keep&(threshold<dissolve+.065);pixels[edge,:3]=[255,244,195]
+ pixels=ep.copy();pixels[:,:,3]=(ep[:,:,3]*keep).astype('uint8');edge=keep&(threshold<dissolve+.065);pixels[edge,:3]=[255,244,195];pixels[pixels[:,:,3]==0,:3]=0
  body=Image.fromarray(pixels);wind=Image.new('RGBA',wind_size)
  for j,(px,py,birth,vx,vy,life,tile) in enumerate(particles):
   a=age-birth
