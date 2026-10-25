@@ -1,0 +1,60 @@
+{
+  "templateOnly": true,
+  "standard": "Art/Standards/P1-Locomotion-Delivery-v1/README.md",
+  "status": "incomplete",
+  "date": null,
+  "userTask": null,
+  "authorAndMainReviewer": null,
+  "baselineCommit": null,
+  "baseId": "p1-eight-way-base-v1",
+  "inputSHA256": {},
+  "newResourceIds": [],
+  "newManifests": [],
+  "catalog": null,
+  "motion": "Art/Integration/P1-modular-eight-way-v1/motion.json",
+  "declaredCoverage": {
+    "directions": [],
+    "clips": {},
+    "bindingsPerAsset": null
+  },
+  "sourcesAndEditableFiles": [],
+  "reexportCommand": null,
+  "verification": {
+    "packageChecks": [],
+    "combinationChoices": {},
+    "expectedCompositions": null,
+    "actualCompositions": null,
+    "compositionIndex": null,
+    "frozenBaselinePreserved": null,
+    "existingCombinationsUnchanged": null,
+    "independentRemovalAndCoverageChecks": null,
+    "reexportByteOrPixelIdentity": null
+  },
+  "mainHumanReview": {
+    "completed": false,
+    "fullBodyScales": [],
+    "reviewedCombinations": [],
+    "reviewedPoseCount": null,
+    "reviewedActualGifFrames": null,
+    "repairs": [],
+    "remainingIssues": [],
+    "continuousPlaybackActuallyViewed": false,
+    "viewerLimit": null
+  },
+  "artifacts": {
+    "idlePng": null,
+    "normalWalkGif": null,
+    "specifiedStartStopGif": null,
+    "turnGif": null
+  },
+  "httpsChecks": [],
+  "remoteDependencyClosure": null,
+  "deliveryReceipt": null,
+  "iterationLogUpdated": false,
+  "artApproval": null,
+  "artApprovalScope": null,
+  "simulatorExecuted": false,
+  "physicalDeviceExecuted": false,
+  "ipa": null,
+  "limits": []
+}

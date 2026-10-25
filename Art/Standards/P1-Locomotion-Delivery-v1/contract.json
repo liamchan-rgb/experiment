@@ -1,0 +1,435 @@
+{
+  "standardId": "p1-locomotion-appearance-delivery-v1",
+  "version": "1.0.0",
+  "date": "2026-10-25",
+  "kind": "authoring-and-handoff-requirements",
+  "notAValidatorOrApproval": true,
+  "baseline": {
+    "repository": "liamchan-rgb/experiment",
+    "branch": "fix/build33-face-grounding-camera",
+    "referenceCommit": "1acda18ee8df14d3a2f50f8a481561cbfa4a1c01",
+    "build": 39,
+    "version": "1.6.13",
+    "baseId": "p1-eight-way-base-v1",
+    "compiledSourceCommit": "d5d0457ea6da51a97ede591eb7376da2bb932cc7",
+    "profileStatus": "draft-down-head-resources-awaiting-review",
+    "productionRigLocked": false,
+    "frozenFileSHA256": {
+      "Art/Parts/P1-v1/eight-way-v1/base/asset.json": "c98464ddadd4571a3300cee3bfebd98f8f9d69eee1f9287f94f2c2172be955e8",
+      "Art/Integration/P1-modular-eight-way-v1/motion.json": "f1926c10a4eb1cb8f1935157663bd22155e8444eae37ce64562453fc075e96ba",
+      "Art/Standards/P1-Parts-v1/profile.json": "1539b2bd25a0c2130b3d64387f5d83d5d1b7e38926ae2de50baec6082ae293e8",
+      "Art/Standards/P1-Parts-v1/asset.schema.json": "bfdefa6de26b5182d7cff9cee7281eaaa56f2f52b372dd90a01151e060568a4f",
+      "scripts/compose-character-parts.py": "828fc63caf84a4d706083a7768023671d65bb7ef8d2ff6397ef63e23a0c5f403"
+    },
+    "additiveRegistrationSnapshotSHA256": {
+      "Art/Integration/P1-modular-eight-way-v1/catalog.json": "bf85b8a6712f73ad2a8b62bf5b4e0a3b038c3a355186659f70a3da2d065a846d",
+      "Art/Integration/P1-modular-demo-v1/selection.json": "3c007fcbc59561e96ab9d88922b71a7beba497d83918ec935a100165c46ed756"
+    },
+    "registrationRule": "Add new catalog/selection entries only when in scope; keep old entries. No body/motion/profile/compositor changes to fit a new appearance.",
+    "frozenDirectoryTreeSHA256": {
+      "Art/Parts/P1-v1/eight-way-v1": {
+        "sha256": "4b1c6d1c53aef8ffa42b1309c32a3acb240707f91c772ffc28b194dacf07f1be",
+        "files": 5114
+      }
+    },
+    "directoryHashAlgorithm": "SHA256 of concatenated sorted relative POSIX file path + NUL + file SHA256 hex + LF, UTF-8; all regular files under the named directory"
+  },
+  "compatibility": {
+    "rig": "p1-chibi-v1",
+    "bodyProfile": "p1-standard",
+    "actionSet": "locomotion-v1"
+  },
+  "manifestSchemaVersion": "1.0.0",
+  "coverage": {
+    "completeAssetDirections": [
+      "down",
+      "down-left",
+      "left",
+      "up-left",
+      "up",
+      "up-right",
+      "right",
+      "down-right"
+    ],
+    "clips": {
+      "idle": [
+        0
+      ],
+      "walk": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "walk-start": [
+        1,
+        2
+      ],
+      "walk-stop": [
+        1,
+        2
+      ]
+    },
+    "posesPerDirection": 13,
+    "bindingsPerCompleteAsset": 104,
+    "pngReuseAllowed": true,
+    "missingBindingFallbackAllowed": false,
+    "partialAssetsMustDeclarePartialCoverage": true
+  },
+  "images": {
+    "format": "PNG",
+    "mode": "RGBA",
+    "poseMapCanvas": [
+      256,
+      256
+    ],
+    "headLocalCanvas": [
+      96,
+      96
+    ],
+    "origin": "top-left",
+    "xDirection": "right",
+    "yDirection": "down",
+    "preserveTransparentPadding": true,
+    "zeroRGBWhereAlphaIsZero": true,
+    "contentBasedFittingAllowed": false,
+    "perPartOrFrameAutoResizeAllowed": false,
+    "headPlacementAuthority": "motion.frames[].headToCanvas",
+    "fixedLight": "upper-left",
+    "groundShadowBakedInArtAllowed": false,
+    "note": "Canonical templates already include historical registration and cyclic phase normalization; do not apply them again."
+  },
+  "currentSlotSets": {
+    "readOnlyBase": [
+      "body.leg.right",
+      "body.leg.left",
+      "body.arm.right",
+      "body.arm.left",
+      "body.torso",
+      "head.base",
+      "body.hand.right",
+      "body.hand.left"
+    ],
+    "shortHair": [
+      "hair.front"
+    ],
+    "face": [
+      "face.eyes",
+      "face.brows",
+      "face.nose",
+      "face.mouth"
+    ],
+    "top": [
+      "outfit.torso",
+      "outfit.sleeve.left",
+      "outfit.sleeve.right",
+      "outfit.hem.front"
+    ],
+    "lower": [
+      "outfit.pants.right",
+      "outfit.boot.right",
+      "outfit.pants.left",
+      "outfit.boot.left"
+    ],
+    "backWeapon": [
+      "weapon.back"
+    ]
+  },
+  "slotRules": {
+    "currentCommonDrawOrderSlots": [
+      "body.arm.left",
+      "body.arm.right",
+      "body.hand.left",
+      "body.hand.right",
+      "body.leg.left",
+      "body.leg.right",
+      "body.torso",
+      "face.brows",
+      "face.eyes",
+      "face.mouth",
+      "face.nose",
+      "hair.front",
+      "head.base",
+      "outfit.boot.left",
+      "outfit.boot.right",
+      "outfit.hem.front",
+      "outfit.pants.left",
+      "outfit.pants.right",
+      "outfit.sleeve.left",
+      "outfit.sleeve.right",
+      "outfit.torso",
+      "weapon.back"
+    ],
+    "hairBackAndHemBackSupportedInAllPoses": false,
+    "faceHiddenDirections": [
+      "up-left",
+      "up",
+      "up-right"
+    ],
+    "hiddenFaceUsesExplicitTransparent96Bindings": true,
+    "unusedHemMayUseTransparent256": true,
+    "layerKeysMustEqualDeclaredSlots": true,
+    "duplicateSelectedSlotOwnersAllowed": false,
+    "anatomicalLeftRight": true,
+    "weaponCarryProfile": "back-scabbard",
+    "weaponPhysicalCarry": "right shoulder to left hip, diagonal; preserve anatomical side across views"
+  },
+  "phase": {
+    "walkDurationMs": 120,
+    "walkFrames": 8,
+    "cycleMs": 960,
+    "rightSupportCanonicalFrames": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "leftSupportCanonicalFrames": [
+      5,
+      6,
+      7,
+      8
+    ],
+    "entryAndExitPhaseZeroBased": true,
+    "directions": {
+      "down": {
+        "runtimeFacing": 0,
+        "atlas": "Directions",
+        "atlasRowZeroBased": 0,
+        "entryPhase": 1,
+        "exitPhase": 0,
+        "historicalToUnifiedTranslationOnlyForMigration": [
+          4,
+          -1
+        ]
+      },
+      "down-left": {
+        "runtimeFacing": 5,
+        "atlas": "Diagonals",
+        "atlasRowZeroBased": 1,
+        "entryPhase": 4,
+        "exitPhase": 3,
+        "historicalToUnifiedTranslationOnlyForMigration": [
+          1,
+          1
+        ]
+      },
+      "left": {
+        "runtimeFacing": 1,
+        "atlas": "Directions",
+        "atlasRowZeroBased": 1,
+        "entryPhase": 4,
+        "exitPhase": 3,
+        "historicalToUnifiedTranslationOnlyForMigration": [
+          3,
+          0
+        ]
+      },
+      "up-left": {
+        "runtimeFacing": 6,
+        "atlas": "Diagonals",
+        "atlasRowZeroBased": 2,
+        "entryPhase": 4,
+        "exitPhase": 3,
+        "historicalToUnifiedTranslationOnlyForMigration": [
+          0,
+          0
+        ]
+      },
+      "up": {
+        "runtimeFacing": 2,
+        "atlas": "Directions",
+        "atlasRowZeroBased": 2,
+        "entryPhase": 4,
+        "exitPhase": 3,
+        "historicalToUnifiedTranslationOnlyForMigration": [
+          0,
+          2
+        ]
+      },
+      "up-right": {
+        "runtimeFacing": 7,
+        "atlas": "Diagonals",
+        "atlasRowZeroBased": 3,
+        "entryPhase": 0,
+        "exitPhase": 7,
+        "historicalToUnifiedTranslationOnlyForMigration": [
+          1,
+          0
+        ]
+      },
+      "right": {
+        "runtimeFacing": 3,
+        "atlas": "Directions",
+        "atlasRowZeroBased": 3,
+        "entryPhase": 0,
+        "exitPhase": 7,
+        "historicalToUnifiedTranslationOnlyForMigration": [
+          -2,
+          0
+        ]
+      },
+      "down-right": {
+        "runtimeFacing": 4,
+        "atlas": "Diagonals",
+        "atlasRowZeroBased": 0,
+        "entryPhase": 0,
+        "exitPhase": 7,
+        "historicalToUnifiedTranslationOnlyForMigration": [
+          0,
+          1
+        ]
+      }
+    },
+    "standingStartPath": "idle0 -> walk-start1 -> walk-start2 -> walk(entryPhase+1)",
+    "standingStopPath": "walk(exitPhase+1) -> walk-stop1 -> walk-stop2 -> idle0",
+    "turnRule": "Keep global distance phase during moving direction changes",
+    "currentRuntimeStopPolicy": "finish remaining cycle at current root position to designated exit,then two authored stop poses; no new arbitrary-phase braking art"
+  },
+  "runtimeAtlas": {
+    "cell": [
+      256,
+      256
+    ],
+    "sourceColumns": 13,
+    "rowsPerAtlas": 4,
+    "atlasPixels": [
+      3328,
+      1024
+    ],
+    "directionOrder": [
+      "down",
+      "left",
+      "up",
+      "right",
+      "down-right",
+      "down-left",
+      "up-left",
+      "up-right"
+    ],
+    "sourceColumnsZeroBased": {
+      "idle": [
+        0
+      ],
+      "walk": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "walk-start": [
+        9,
+        10
+      ],
+      "walk-stop": [
+        11,
+        12
+      ]
+    },
+    "distanceClockTicks": 24,
+    "transitionVirtualFrames": [
+      25,
+      26,
+      27,
+      28
+    ],
+    "foregroundShadowAndFootprintsMustMatch": true,
+    "p2P3ResourcesUnchanged": true
+  },
+  "verification": {
+    "packageCheck": "python scripts/check-character-part.py <new-asset.json>",
+    "compositor": "scripts/compose-character-parts.py",
+    "schemaOnlyIsArtAcceptance": false,
+    "mustActuallySelectNewId": true,
+    "mustRenderAllDeclaredCompatibleCombinations": true,
+    "currentBaselineCombinationCount": 16,
+    "currentBaselineCompositionCount": 1664,
+    "compositionFormula": "product of all declared compatible appearance-choice counts *8directions*13poses; count executed renders,not a copied historical number",
+    "mustCheckIndependentRemovalAndVisibleContributions": true,
+    "mustPreserveFrozenAndExistingArt": true,
+    "mustVerifyReexport": true,
+    "mainAgentOwnsRepairAndFinalReview": true,
+    "fullBodyReviewScales": [
+      1,
+      2
+    ],
+    "mustReviewAllCurrentAffectedPosesAndActualGifFrames": true,
+    "viewerLimitMustBeStated": true
+  },
+  "delivery": {
+    "required": [
+      "independent RGBA parts and104bindings",
+      "original sources and prompts",
+      "editable semantic layers",
+      "authoring/export recipe and input hashes",
+      "catalog actually containing new resource",
+      "combination/composition/validation records",
+      "whole-body idle PNG",
+      "normal walk GIF",
+      "specified start-stop and turn GIFs",
+      "verified browser HTTPS URLs",
+      "remote dependency closure and delivery receipt",
+      "iteration log and current review record"
+    ],
+    "normalWalkGifDurationsMs": [
+      120,
+      120,
+      120,
+      120,
+      120,
+      120,
+      120,
+      120
+    ],
+    "specifiedStartStopDemoFrameCount": 22,
+    "specifiedStartStopDemoDurationsMs": [
+      480,
+      120,
+      120,
+      120,
+      120,
+      120,
+      120,
+      120,
+      120,
+      120,
+      120,
+      120,
+      120,
+      120,
+      120,
+      120,
+      120,
+      120,
+      120,
+      120,
+      120,
+      480
+    ],
+    "newSlowPreviewsAllowed": false,
+    "embedNormalFullBodyGifInFinal": true,
+    "copyableHttpsInFinal": true,
+    "verifyHttpStatus": 200,
+    "verifyMimeShaFrameTimingLoop": true,
+    "artApprovalDefault": null,
+    "packageOnlyWhenTaskIncludesDemoOrBuild": true,
+    "installationDelivery": "direct .ipa HTTPS,not outer ZIP",
+    "deviceReview": "user; compile-only permitted within integration task; never invent simulator/device execution"
+  },
+  "notAutomaticallyCompleted": [
+    "arbitrary-phase braking art",
+    "full rig marker normalization and hidden body completion",
+    "third all8direction resource acceptance",
+    "runtime free mixing of any parts",
+    "female body variants",
+    "battle/held weapon action sets"
+  ]
+}

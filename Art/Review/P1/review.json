@@ -4213,5 +4213,22 @@
     "deliveryCommit": "56f9887ff57e917d028cade1d2693bf01932d754",
     "verifiedHttpsFiles": 5,
     "remoteByteIdenticalPaths": 97
+  },
+  "locomotionAppearanceDeliveryStandard": {
+    "date": "2026-10-25",
+    "status": "documented-baseline-consistency-pass",
+    "userTask": "没问题，把目前的行走动作需要的美术资源要求做一个交付标准保存在github，方便之后的agent生成新的外观",
+    "document": "Art/Standards/P1-Locomotion-Delivery-v1/README.md",
+    "agentBrief": "Art/Standards/P1-Locomotion-Delivery-v1/AGENT_BRIEF.md",
+    "contract": "Art/Standards/P1-Locomotion-Delivery-v1/contract.json",
+    "handoffTemplate": "Art/Standards/P1-Locomotion-Delivery-v1/handoff-template.json",
+    "baselineBuild": 39,
+    "posesPerDirection": 13,
+    "bindingsPerCompleteAsset": 104,
+    "artworkChanged": false,
+    "runtimeChanged": false,
+    "existingApprovalsChanged": false,
+    "testsRerun": false,
+    "verification": "Art/Standards/P1-Locomotion-Delivery-v1/verification.json"
   }
 }

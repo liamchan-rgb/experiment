@@ -1,5 +1,7 @@
 # P1 独立外观资源包 v1
 
+当前新增行走外观入口：[交付标准v1](../../Standards/P1-Locomotion-Delivery-v1/README.md) · [agent任务书](../../Standards/P1-Locomotion-Delivery-v1/AGENT_BRIEF.md)。当前共用基线在 [eight-way-v1](eight-way-v1/)，每包八向104绑定，包含指定起停。下面的向下头部/握剑修订说明为历史记录，不代表当前身体、武器或资源覆盖仍停留在该阶段。
+
 持握反馈修订见[短柄剑v2](weapon-short-sword-v2/README.md)及[共同闭拳手型](../../Templates/P1-Neutral/down/walk-r3/README.md)，当前组合统一使用新公共r3；旧剑与公共r2保留历史。
 
 当前五个向下头部包已获用户认可；新增两个[衣物／短剑候选包](../../Templates/P1-Wardrobe/down/v1/README.md)待审核。全部面向同一中性人体，不依赖另一件外观运行。首版曾采用仅修腿层归属的r2；当前握持修订统一采用r3公共闭拳，其余63层身体不变，新手型仍待美术认可。

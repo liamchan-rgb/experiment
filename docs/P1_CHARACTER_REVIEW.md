@@ -1,5 +1,13 @@
 # P1 人物素材逐张审核
 
+## 当前补充：新外观制作与交付标准（仅文档）
+
+用户要求将当前行走美术资源要求保存到GitHub，供后续agent生成新外观。新增 [交付标准v1](../Art/Standards/P1-Locomotion-Delivery-v1/README.md)、[可复制agent任务书](../Art/Standards/P1-Locomotion-Delivery-v1/AGENT_BRIEF.md)、机器可读contract与未填写的handoff模板。以当前build39实际身体、motion、schema/profile、部件与导入格式为依据，固化八向各13姿势/104绑定、256整画布/96头局部、独立槽位、固定坐标与相位、左右/近远/背剑、源稿与可编辑分层、全组合/开关/原像素保护、主线程整身1×/2×与正常GIF检查及HTTPS交付要求。
+
+明确已统一模板不再重复做旧平移/步相旋转；当前motion的hair.back/hem.back不全向支持，不能偷偷改动作合同；只换鞋不能与包含靴槽的完整lower重复占槽。指定起停与runtime13源列/25..28虚拟帧及前景/阴影一致性有表，当前在原地补循环尾部的收步限制如实保留。仅美术任务不自动打IPA，demo/打包任务才导入；女性新体型/实时自由混搭/新制动等不自动扩展。
+
+在AGENTS、旧标准README、部件README和方向进度加必读入口，标明旧草案72条/向下九帧/持握说明是历史要求；旧记录保留，draft profile和已有认可不改。仅更新文档/规格与索引，没有改PNG、动作、运行源码或安装包，没有新增美术候选、动图或构建，也不把本次文档核对算作重跑美术/设备测试。核对相对链接、JSON、基线摘要、104覆盖/槽位/相位/运行映射及远端发布；具体结果见标准目录verification.json。
+
 ## 当前：新八向模组demo接入（build39，实机待用户反馈）
 
 交付提交 `56f9887ff57e917d028cade1d2693bf01932d754`：[IPA直链](https://raw.githubusercontent.com/liamchan-rgb/experiment/56f9887ff57e917d028cade1d2693bf01932d754/Downloads/MeadowJourney-b39.ipa)、正常八向起停/切向/道路采样GIF和站姿共五份HTTPS均已实际GET，HTTP200/MIME/长度/SHA256一致，GIF帧数/时序/循环与IPA CRC通过；本次97条源与交付路径远端字节一致。回执 `Art/Review/P1/modular-demo-v1/delivery.json`。

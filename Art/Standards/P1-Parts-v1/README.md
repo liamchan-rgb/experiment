@@ -1,5 +1,7 @@
 # P1 可复用换装美术标准 v1 · 制作合同草案
 
+> **当前新增行走外观请先读 [P1行走外观交付标准v1](../P1-Locomotion-Delivery-v1/README.md) 和 [agent任务书](../P1-Locomotion-Delivery-v1/AGENT_BRIEF.md)。** 本文件保留早期草案及历史反馈；其中72姿势、先制作向下九帧、持握武器和当时缺口不是build39的现状。当前是八方向各13姿势、104绑定，默认背剑、同一统一身体与motion。新标准针对当前行走外观交付，并未把本目录draft profile改为locked。
+
 ## 当前补充 · 2026-10-24 · 左下头部导板与独立资源
 
 已在原profile中仅增加down-left局部头布局，使用认可中性r1的96px局部原点[76,61]与颈根[51,70]。四个独立发型/五官包按同一身体与动作组合，4组合52姿势，原字段/身体/动作保持，不为外观ID修改装配代码。见 `Art/Parts/P1-v1/down-left/heads-v1/` 与 `Art/Review/P1/modular-down-left-heads-v1/`。新头部外观尚待用户审核，完整衣物、武器、八方向及生产锁定仍不能据此认定完成。
