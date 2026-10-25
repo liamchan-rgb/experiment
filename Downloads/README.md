@@ -1,6 +1,18 @@
 # SideStore 安装与迭代包
 
-## 当前版本：战斗光效接入 · 1.6.14 build40
+## 当前版本：强击冲击与护盾演出 · 1.6.15 build41
+
+强击强化胸腹爆光、开放冲击弧/方向喷射/地面光浪，加深暗场、100ms停顿和世界轻震/短推近，HUD固定。护盾透明中心分展开/持续/格挡涟漪/耗尽碎裂；仍有盾值时保持。原数值、致死同帧右吹和出招无脚下环保持。
+
+[直接下载 MeadowJourney-b41.ipa](https://raw.githubusercontent.com/liamchan-rgb/experiment/fix/build33-face-grounding-camera/Downloads/MeadowJourney-b41.ipa) · [来源校验](MeadowJourney-build41.json) · [强击正常GIF](../Art/Review/Battle/impact-shield-demo-v1/heavy-strike-normal.gif) · [护盾正常GIF](../Art/Review/Battle/impact-shield-demo-v1/shield-normal.gif) · [交付说明](../Media/Build41/README.md)
+
+```text
+https://raw.githubusercontent.com/liamchan-rgb/experiment/fix/build33-face-grounding-camera/Downloads/MeadowJourney-b41.ipa
+```
+
+26,986,898字节，SHA256 `c5361f015e4edaaa261992306ee3833d872a37ccc737f58b3c684a05f167e4cd`。设备归档40173101137与五项纯Swift检查/包完整性通过；无App/模拟器/实机运行。动图是同源素材/生产时钟的离线美术审核，用户复测实际画面与操作。安装沿用SideStore重签。实际GET核对见 [回执](../Art/Review/Battle/impact-shield-demo-v1/delivery.json)。
+
+## 历史版本：战斗光效接入 · 1.6.14 build40
 
 技能卡固定强度预示，强击发光同步压暗；接触时统一扣血/数字/HP0向右吹散，不等动作收尾，施放后光圈退出。强击仍为5伤害/1AP，键鼠焦点/悬浮与触屏按住预示已接线。
 
