@@ -29,6 +29,8 @@ final class PartyTests:XCTestCase {
         XCTAssertFalse(p.preview(.smallPotion,target:"m1").allowed)
         let i=try XCTUnwrap(p.prepare(.largePotion,target:"p1"));let r=try XCTUnwrap(p.commit(i.id))
         XCTAssertEqual(r.after.units["p1"]?.health,12);XCTAssertEqual(r.after.units["p2"]?.inventory["largePotion"],nil)
+        let small=try XCTUnwrap(p.prepare(.smallPotion,target:"p2"));let healed=try XCTUnwrap(p.commit(small.id))
+        XCTAssertEqual(healed.after.units["p2"]?.health,18);XCTAssertEqual(healed.after.units["p2"]?.inventory["smallPotion"],1)
     }
     func testRevivalConsumesOnceAndRetainsDownedPlayer() throws {
         let p=try PartyEncounter(seed:21)
@@ -79,6 +81,19 @@ final class PartyTests:XCTestCase {
             let other=try XCTUnwrap(p.prepare(.support,target:"p1"));let snapshot=p.state;p.cancel()
             XCTAssertNil(try p.commit(other.id));XCTAssertEqual(p.state,snapshot)
         }
+    }
+
+    func testEnemyStopsAtActualCircleSurface() throws {
+        let p=try PartyEncounter(seed:24)
+        try p.engine.apply(.endTurn(actor:"p2",timedOut:false))
+        let guardIntent=try XCTUnwrap(p.prepare(.simpleGuard,target:"p1"));_ = try p.commit(guardIntent.id)
+        try p.engine.apply(.endTurn(actor:"p1",timedOut:false))
+        let enemy=try XCTUnwrap(p.prepare(.attack,target:"p1"));XCTAssertTrue(enemy.enemy)
+        let motion=PartyVisual.travel(enemy,age:0.46,shielded:true)
+        let leading=PartyVisual.feet[enemy.actor]!.x+motion.x-(178.5-42)*PartyVisual.enemyScale
+        let barrier=PartyVisual.feet[enemy.target]!.x+(5+240*0.41)*PartyVisual.heroScale
+        XCTAssertEqual(leading,barrier,accuracy:1e-8)
+        XCTAssertLessThan(PartyVisual.travel(enemy,age:0.46).x,motion.x)
     }
 
 }

@@ -30,11 +30,11 @@ public enum PartyVisual {
             return PartyParticle(id:i,x:at.x+cos(angle)*(24+13*t),y:at.y+30-t*125,size:Double(i%4==0 ? 12:6),alpha:sin(Double.pi*t)*0.9,angle:-Double.pi/2)
         }
     }
-    public static func travel(_ intent:PartyIntent?,age:Double)->PartyPoint {
+    public static func travel(_ intent:PartyIntent?,age:Double,shielded:Bool=false)->PartyPoint {
         guard let intent,intent.action.visual=="attack",let from=feet[intent.actor],let to=feet[intent.target] else { return PartyPoint(0,0) }
         let t=intent.enemy ? age/0.96 : max(0,age-0.4-min(0.1,max(0,age-1.048)))/1.2
         let p=t<0.4 ? smooth((t-0.12)/0.28) : t<0.66 ? 1:1-smooth((t-0.66)/0.34)
-        if intent.enemy { let move=pulse(age,0.08,0.46,0.96);return PartyPoint((to.x+110-from.x)*move,(to.y-from.y)*move) }
+        if intent.enemy { let move=pulse(age,0.08,0.46,0.96);return PartyPoint((to.x+(178.5-42)*enemyScale+(shielded ? (5+240*0.41)*heroScale:0)-from.x)*move,(to.y-from.y)*move) }
         return PartyPoint((to.x-140-from.x)*p,(to.y-12-from.y)*p)
     }
 }

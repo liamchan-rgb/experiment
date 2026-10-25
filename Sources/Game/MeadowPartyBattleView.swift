@@ -86,9 +86,11 @@ final class MeadowPartyBattleView:UIView {
     private func refresh() {
         guard let model else { return }
         let state=model.state;let current=model.current
+        if state.units[foe]?.isAlive != true,let live=["m1","m2"].first(where:{ state.units[$0]?.isAlive==true }) { foe=live }
         let busy=stage.isPlaying || model.pending != nil
         title.text=model.terminal ? (state.players.contains(where: \.isAlive) ? "小队胜利":"小队倒地") : "小队支援 · 第\(model.round)轮"
-        let name=current.flatMap { state.units[$0]?.name } ?? "演练结束"
+        let showing=busy ? (stage.actorInAction ?? model.pending?.actor ?? current):current
+        let name=showing.flatMap { state.units[$0]?.name } ?? "演练结束"
         hint.text=busy ? "\(name) · 动作进行中" : "\(name)行动 · 友方 \(friend.uppercased()) / 敌方 \(foe=="m1" ? "甲":"乙") · 点角色选目标"
         for (id,card) in cards {
             guard let unit=state.units[id] else { continue }
@@ -150,8 +152,9 @@ final class MeadowPartyBattleView:UIView {
             panel.isScrollEnabled=false;panel.contentSize=panel.bounds.size
             let cw=(w-32-24)/4
             for (i,id) in ["p1","p2","m1","m2"].enumerated() { cards[id]?.frame=CGRect(x:16+CGFloat(i)*(cw+8),y:9,width:cw,height:86) }
-            let itemWidth:CGFloat=100;let bw=(w-32-itemWidth-10-24)/4
-            for (i,b) in skills.enumerated() { b.frame=CGRect(x:16+CGFloat(i)*(bw+8),y:108,width:bw,height:76) }
+            let itemWidth:CGFloat=100;let visible=skills.filter { !$0.isHidden };let count=CGFloat(max(1,visible.count))
+            let bw=(w-32-itemWidth-10-8*(count-1))/count
+            for (i,b) in visible.enumerated() { b.frame=CGRect(x:16+CGFloat(i)*(bw+8),y:108,width:bw,height:76) }
             items.frame=CGRect(x:w-itemWidth-16,y:108,width:itemWidth,height:76)
         }
         back.frame=CGRect(x:w-124,y:10,width:112,height:34);reset.frame=back.frame.offsetBy(dx:-124,dy:0)

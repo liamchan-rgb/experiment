@@ -6,19 +6,29 @@ import ClassroomGameCore
     static func main() throws {
         let out=URL(fileURLWithPath:CommandLine.arguments[1]);try FileManager.default.createDirectory(at:out,withIntermediateDirectories:true)
         var rows:[[String:Any]]=[],requests:[[String:Any]]=[]
-        for scenario in ["support","rally","items","revive"] {
+        for scenario in ["support","rally","items","revive","combat"] {
             let model=try PartyEncounter(seed:17,sessionID:"review-"+scenario)
             if scenario=="rally" { let i=model.prepare(.support,target:"p1")!;_ = try model.commit(i.id) }
             if scenario=="revive" { try model.engine.apply(.editResources(unit:"p1",value:ResourcePatch(health:0))) }
-            let count=scenario=="items" ? 270:scenario=="revive" ? 180:160
+            if scenario=="combat" {
+                let i=model.prepare(.rally,target:"p1")!;_ = try model.commit(i.id)
+                try model.engine.apply(.endTurn(actor:"p2",timedOut:false))
+                let guardIntent=model.prepare(.simpleGuard,target:"p1")!;_ = try model.commit(guardIntent.id)
+                try model.engine.apply(.editResources(unit:"m1",value:ResourcePatch(health:3)))
+            }
+            let count=scenario=="combat" ? 320:scenario=="items" ? 370:scenario=="revive" ? 180:160
             var current:PartyIntent?,start=0.0,fired=false
             var births:[String:Double]=[:],heals:[String:Double]=[:],forms:[String:Double]=[:]
             var messages:[[String:Any]]=[]
+            var death:[String:Double]=[:],hurt:[String:Double]=[:]
+            var emitters:[[String:Any]]=[];var shielded=false
             for frame in 0..<count {
                 let time=Double(frame)*0.02
-                if frame==20 || (scenario=="items" && frame==140) {
-                    let action:PartyAction=scenario=="support" ? .support:scenario=="rally" ? .rally:scenario=="revive" ? .revivalStone:frame==20 ? .largePotion:.shieldPotion
-                    let target=scenario=="items" && frame==20 ? "p2":"p1"
+                if frame==20 || (scenario=="items" && (frame==140 || frame==260)) || (scenario=="combat" && frame==140) {
+                    let action:PartyAction=scenario=="combat" ? .attack:scenario=="support" ? .support:scenario=="rally" ? .rally:scenario=="revive" ? .revivalStone:frame==20 ? .smallPotion:frame==140 ? .largePotion:.shieldPotion
+                    if scenario=="combat" && frame==140 { try model.engine.apply(.endTurn(actor:"p1",timedOut:false)) }
+                    let target=scenario=="combat" && frame==20 ? "m1":scenario=="items" && frame==140 ? "p2":"p1"
+                    shielded=(model.state.units[target]?.shield ?? 0)>0
                     current=model.prepare(action,target:target)!;start=time;fired=false
                     let offset=max(0,action.impact-0.46)
                     for id in current!.targets {
@@ -28,11 +38,24 @@ import ClassroomGameCore
                 }
                 var receipt:OperationReceipt?
                 let age=time-start
-                if let intent=current,!fired,age+1e-9>=intent.action.impact {
+                if let intent=current,!fired,age+1e-9>=(intent.enemy ? 0.46:intent.action.impact) {
                     fired=true;receipt=try model.commit(intent.id)
                     if let receipt {
-                        for id in ["p1","p2"] {
+                        for id in ["p1","p2","m1","m2"] {
                             let before=receipt.before.units[id]!,after=receipt.after.units[id]!
+                            let foot=PartyVisual.feet[id]!
+                            let damage=max(0,before.health-after.health),absorbed=max(0,before.shield-after.shield)
+                            if damage>0 || absorbed>0 {
+                                hurt[id]=time
+                                let x=foot.x+(absorbed>0 ? (5+240*0.41)*PartyVisual.heroScale:(id.hasPrefix("m") ? -80:0))
+                                let y=foot.y-(id.hasPrefix("p") ? 65:72)
+                                emitters.append(["kind":absorbed>0 ? "shieldContact":"strike","at":time,"x":x,"y":y,"floor":foot.y])
+                                if absorbed>0 && after.shield==0 { emitters.append(["kind":"shieldBreak","at":time,"x":foot.x,"y":foot.y-60,"floor":foot.y]) }
+                                messages.append(["id":id,"text":damage>0 ? "−\(damage)":"格挡","at":time,"kind":"damage"])
+                            }
+                            if before.isAlive && !after.isAlive && after.kind == .monster {
+                                death[id]=time;emitters.append(["kind":"death","at":time,"x":foot.x-80,"y":foot.y-72,"floor":foot.y])
+                            }
                             if after.shield>before.shield { births[id]=time }
                             if after.health>before.health { messages.append(["id":id,"text":"＋\(after.health-before.health)","at":time,"kind":"heal"]) }
                             if after.shield>before.shield { messages.append(["id":id,"text":"盾 ＋\(after.shield-before.shield)","at":time,"kind":"shield"]) }
@@ -40,11 +63,11 @@ import ClassroomGameCore
                         }
                     }
                 }
-                if let intent=current,age>=intent.action.duration { current=nil }
+                if let intent=current,age>=(intent.enemy ? 1.10:intent.action.duration) { current=nil }
                 var units:[[String:Any]]=[]
                 for id in ["p1","p2","m1","m2"] {
-                    let u=model.state.units[id]!,pose=PartyVisual.pose(unit:u,intent:current,age:age,time:time)
-                    units.append(["id":id,"name":u.name,"hp":u.health,"maxHP":u.baseAttributes.maximumHealth,"shield":u.shield,"ap":u.ap,"buff":u.damageBuff?.amount ?? 0,"buffRounds":u.damageBuff?.roundsLeft ?? 0,"clip":pose.clip,"progress":pose.progress])
+                    let u=model.state.units[id]!,pose=PartyVisual.pose(unit:u,intent:current,age:age,time:time,hurtAge:hurt[id].map { time-$0 },blocked:id=="p1" && shielded && hurt[id] != nil)
+                    units.append(["id":id,"name":u.name,"hp":u.health,"maxHP":u.baseAttributes.maximumHealth,"shield":u.shield,"ap":u.ap,"buff":u.damageBuff?.amount ?? 0,"buffRounds":u.damageBuff?.roundsLeft ?? 0,"clip":pose.clip,"progress":pose.progress,"deathAge":death[id].map { time-$0 } as Any? ?? NSNull()])
                     if id.hasPrefix("p") {
                         var r:[String:Any]=["kind":scenario+"-"+id,"frame":frame,"time":time,"shield":u.shield,"emitters":[]]
                         if let at=heals[id],u.isAlive { r["recoveryAge"]=time-at }
@@ -53,8 +76,13 @@ import ClassroomGameCore
                         requests.append(r)
                     }
                 }
+                let activeEmitters=emitters.compactMap { e -> [String:Any]? in
+                    let age=time-(e["at"] as! Double);guard age<3 else { return nil }
+                    return ["kind":e["kind"]!,"age":age,"x":e["x"]!,"y":e["y"]!,"floor":e["floor"]!]
+                }
+                requests.append(["kind":scenario+"-fx","frame":frame,"time":time,"emitters":activeEmitters,"shield":0])
                 var action:[String:Any]=[:]
-                if let i=current { action=["actor":i.actor,"target":i.target,"targets":i.targets,"action":i.action.rawValue,"visual":i.action.visual,"age":age] }
+                if let i=current { action=["actor":i.actor,"target":i.target,"targets":i.targets,"action":i.action.rawValue,"visual":i.action.visual,"age":age,"enemy":i.enemy,"shielded":shielded,"travel":try JSONSerialization.jsonObject(with:JSONEncoder().encode(PartyVisual.travel(i,age:age,shielded:shielded)))] }
                 let from=current.map { PartyVisual.chest($0.actor) } ?? PartyPoint(0,0),to=current.map { PartyVisual.chest($0.target) } ?? PartyPoint(0,0)
                 let trail=PartyVisual.trail(age:age,from:from,to:to)
                 let rally=["p1","p2"].map { id -> [String:Any] in

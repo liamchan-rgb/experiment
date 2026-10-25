@@ -17,7 +17,8 @@ final class MeadowPartyStageView:UIView {
     private var intent:PartyIntent?
     private var impact:(()->OperationReceipt?)?
     private var completion:(()->Void)?
-    private var fired=false
+    private var fired=false,meetsShield=false
+    var actorInAction:String? { intent?.actor }
     private var focus:PartyAction?,focusTarget="p1",focusAt=0.0
     private var recovery:[String:Double]=[:],formation:[String:Double]=[:],birth:[String:Double]=[:],contact:[String:Double]=[:],broken:[String:Double]=[:],deaths:[String:Double]=[:],hurt:[String:Double]=[:]
     private var fallen:[String:Double]=[:]
@@ -65,7 +66,7 @@ final class MeadowPartyStageView:UIView {
     }
     func preview(_ action:PartyAction?,target:String) { guard !isPlaying else { return };focus=action;focusTarget=target;focusAt=sceneTime }
     func play(_ value:PartyIntent,before:GameState,onImpact:@escaping ()->OperationReceipt?,completion:@escaping ()->Void) {
-        intent=value;state=before;startAt=sceneTime;self.impact=onImpact;self.completion=completion;fired=false;focus=nil
+        intent=value;state=before;startAt=sceneTime;self.impact=onImpact;self.completion=completion;fired=false;focus=nil;meetsShield=(before.units[value.target]?.shield ?? 0)>0
         let delayed=sceneTime+max(0,value.action.impact-0.46)
         for id in value.targets {
             guard let unit=before.units[id] else { continue }
@@ -95,13 +96,14 @@ final class MeadowPartyStageView:UIView {
         for id in ["p1","p2","m1","m2"] {
             guard let before=receipt.before.units[id],let after=receipt.after.units[id],let foot=PartyVisual.feet[id] else { continue }
             let heal=max(0,after.health-before.health),damage=max(0,before.health-after.health),gain=max(0,after.shield-before.shield),absorbed=max(0,before.shield-after.shield)
-            let point=CGPoint(x:foot.x,y:foot.y-(id.hasPrefix("p") ? 65:90))
+            let shieldHit=absorbed>0 && id.hasPrefix("p")
+            let point=CGPoint(x:foot.x+(shieldHit ? (5+240*0.41)*PartyVisual.heroScale:(id.hasPrefix("m") ? -80:0)),y:foot.y-(id.hasPrefix("p") ? 65:72))
             if heal>0 { messages.append(.init(text:"＋\(heal)",point:point,at:sceneTime,color:.systemGreen)) }
             if gain>0 { birth[id]=sceneTime;messages.append(.init(text:"盾 ＋\(gain)",point:CGPoint(x:point.x,y:point.y+24),at:sceneTime,color:.systemCyan)) }
             if after.damageBuff != before.damageBuff,let b=after.damageBuff { messages.append(.init(text:"伤害 ＋\(b.amount)",point:point,at:sceneTime,color:MeadowPreviewPalette.gold)) }
             if damage>0 || absorbed>0 {
                 hurt[id]=sceneTime
-                messages.append(.init(text:damage>0 ? "−\(damage)":"格挡",point:point,at:sceneTime,color:damage>0 ? .white:.systemCyan))
+                messages.append(.init(text:damage>0 ? "−\(damage)":"格挡",point:CGPoint(x:foot.x,y:foot.y-65),at:sceneTime,color:damage>0 ? .white:.systemCyan))
                 let p=CGPoint(x:point.x,y:point.y)
                 emissions.append(.init(kind:absorbed>0 ? .shieldContact:.strike,startedAt:sceneTime,x:Double(p.x),y:Double(p.y),groundY:foot.y))
             }
@@ -113,7 +115,7 @@ final class MeadowPartyStageView:UIView {
     private func render() {
         guard let state else { return }
         CATransaction.begin();CATransaction.setDisableActions(true);defer { CATransaction.commit() }
-        let age=sceneTime-startAt;let moving=PartyVisual.travel(intent,age:age)
+        let age=sceneTime-startAt;let moving=PartyVisual.travel(intent,age:age,shielded:meetsShield)
         for id in ["p1","p2","m1","m2"] {
             guard let unit=state.units[id],let f=PartyVisual.feet[id] else { continue }
             let offset=intent?.actor==id ? moving:PartyPoint(0,0)
@@ -152,7 +154,7 @@ final class MeadowPartyStageView:UIView {
         }
         let envelope=PartyVisual.pulse(age,0,0.4,1.8)
         dim.alpha=intent == nil ? (focus==nil ? 0:CGFloat(0.2*PartyVisual.smooth((sceneTime-focusAt)/0.25))) : CGFloat(envelope*(intent?.action.visual=="attack" ? 0.58:0.32))
-        fx.intent=intent;fx.age=age;fx.time=sceneTime;fx.focus=focus;fx.focusTarget=focusTarget
+        fx.intent=intent;fx.meetsShield=meetsShield;fx.age=age;fx.time=sceneTime;fx.focus=focus;fx.focusTarget=focusTarget
         fx.messages=messages;fx.particles=emissions.flatMap { e in MeadowBattleLightField.sample(e.kind,age:sceneTime-e.startedAt,originX:e.x,originY:e.y,groundY:e.groundY) }
         fx.setNeedsDisplay()
     }
@@ -163,6 +165,7 @@ struct MeadowPartyMessage { let text:String;let point:CGPoint;let at:Double;let 
 private final class MeadowPartyEffectsView:UIView {
     var intent:PartyIntent?,focus:PartyAction?
     var friend="p1",foe="m1",focusTarget="p1"
+    var meetsShield=false
     var age=0.0,time=0.0
     var messages:[MeadowPartyMessage]=[]
     var particles:[MeadowBattleLightParticle]=[]
@@ -213,7 +216,7 @@ private final class MeadowPartyEffectsView:UIView {
                 for p in PartyVisual.rally(age:age,at:PartyPoint(foot.x,foot.y-60)) { sprite(MeadowBattleVFXAssets.healStar,PartyPoint(p.x,p.y),p.size,p.size,p.alpha) }
             }
             if visual=="attack",let foot=PartyVisual.feet[intent.target] {
-                let a=age-(intent.enemy ? 0.46:1.048),p=PartyPoint(foot.x-(intent.enemy ? -10:80),foot.y-(intent.enemy ? 65:72))
+                let a=age-(intent.enemy ? 0.46:1.048),p=PartyPoint(foot.x+(intent.enemy ? (meetsShield ? (5+240*0.41)*PartyVisual.heroScale:10): -80),foot.y-(intent.enemy ? 65:72))
                 let power=PartyVisual.pulse(a,-0.035,0.035,0.52)
                 glow(p,140,140,power*0.48,.orange);glow(foot,170,30,power*0.65,.orange)
                 if a>=0,a<0.7 {

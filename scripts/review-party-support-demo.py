@@ -16,6 +16,10 @@ plate=env['plate'].resize((1000,918),Image.Resampling.LANCZOS).crop((0,200,1000,
 assets={n:asset('BattleVFX'+n) for n in ['HealStar','HealWisp','HealShaft','HealWave','RoundBarrier','Mote','Burst','GoldEmber']}
 items={n:asset('MeadowParty'+n[0].upper()+n[1:]) for n in ['smallPotion','largePotion','shieldPotion','revivalStone']}
 enemy=asset('MeadowBattleForestWarden')
+attack=asset('MeadowBattleWardenAttackSheet');enemy_attacks=[attack.crop((i*384,0,(i+1)*384,256)) for i in range(8)]
+body=asset('BattleVFXDeathBody60');wind=asset('BattleVFXDeathWind60')
+bodies=[body.crop(((i%8)*384,(i//8)*256,(i%8+1)*384,(i//8+1)*256)) for i in range(48)]
+winds=[wind.crop(((i%8)*448,(i//8)*320,(i%8+1)*448,(i//8+1)*320)) for i in range(116)]
 rows=json.loads((D/'party-frames.json').read_text());legacy=json.loads((D/'legacy-attachment-samples.json').read_text());attached={(r['kind'],r['frame']):r for r in legacy['frames']}
 def smooth(x):t=min(1,max(0,x));return t*t*(3-2*t)
 def pulse(t,s,p,e):return smooth((t-s)/(p-s)) if t<p else 1-smooth((t-p)/(e-p))
@@ -36,11 +40,11 @@ def glow(f,c,rx,ry,a,color):
   im=Image.new('RGBA',(96,96));arr=np.zeros((96,96,4),dtype=np.uint8);yy,xx=np.indices((96,96));v=np.maximum(0,1-np.sqrt(((xx-48)/48)**2+((yy-48)/48)**2));arr[:,:,:3]=color;arr[:,:,3]=np.round(v*255);glow.cache[key]=Image.fromarray(arr)
  compose(f,glow.cache[key],c,(rx*2,ry*2),a,True)
 glow.cache={}
-def hero_at(u):
- x,y=feet[u['id']];return x-123*hs,y-214*hs
+def hero_at(u,row):
+ x,y=feet[u['id']];a=row['action'];v=a.get('travel',{}) if a.get('actor')==u['id'] else {};return x+v.get('x',0)-123*hs,y+v.get('y',0)-214*hs
 
 def attachments(f,u,row,scene_row):
- x,y=hero_at(u);root=sample(u['clip'],u['progress'])[1];cx=x+(root[0]+128)*hs;cy=y+(root[1]+144)*hs;foot=(cx,y+(root[1]+214)*hs)
+ x,y=hero_at(u,scene_row);root=sample(u['clip'],u['progress'])[1];cx=x+(root[0]+128)*hs;cy=y+(root[1]+144)*hs;foot=(cx,y+(root[1]+214)*hs)
  power=row['recoveryPower'];action=scene_row['action'];a=action.get('age',-1)
  recovery_age=None
  # The legacy requests are the same ages passed to the runtime attachment view.
@@ -61,7 +65,7 @@ def attachments(f,u,row,scene_row):
 REQUESTS={(r['kind'],r['frame']):r for r in json.loads((D/'legacy-light-requests.json').read_text())}
 def ui(scene,row):
  f=Image.new('RGBA',(W,HEADER+H+FOOTER),'#14251c');f.alpha_composite(scene,(0,HEADER));d=ImageDraw.Draw(f)
- scenario=row['scenario'];titles={'support':'援护 · 友方恢复与授盾','rally':'振奋 · 节点队友增伤','items':'道具 · 实际恢复与授盾','revive':'复活石 · 同节点救援与起身'}
+ scenario=row['scenario'];titles={'support':'援护 · 友方恢复与授盾','rally':'振奋 · 节点队友增伤','items':'道具 · 实际恢复与授盾','revive':'复活石 · 同节点救援与起身','combat':'真实增伤 / 致死右吹 / 圆盾接触'}
  d.text((18,7),'build46 · 小队支援 / '+titles[scenario],font=font,fill='#f8e9c4');d.text((18,40),'正常速度离线美术预览 · 生产规则/轨迹 · 非UIKit/实机录屏',font=small,fill='#b5cdb7');d.text((W-155,12),f'{row["time"]:.2f}s',font=small,fill='#c8d6bd')
  for i,u in enumerate(row['units']):
   x=16+i*246;y=HEADER+H+10;sel=u['id'] in ['p1','m1']
@@ -81,18 +85,22 @@ def ui(scene,row):
   x=220;y=HEADER+H-100;d.rounded_rectangle((x,y,x+292,y+88),6,fill='#172c20',outline='#e2c573');d.text((x+12,y+8),'振奋 · 伤害＋2',font=font,fill='#ffe7a9');d.text((x+12,y+43),'剩余1轮 · 普攻与伤害技能生效',font=small,fill='#d2dfbf')
  return f.convert('RGB')
 reports={}
-for scenario in ['support','rally','items','revive']:
+for scenario in ['support','rally','items','revive','combat']:
  print('Rendering',scenario,flush=True);group=[r for r in rows if r['scenario']==scenario];frames=[]
  for row in group:
-  a=row['action'];age=a.get('age',0);dim=pulse(age,0,.4,1.8)*.32 if a else 0
+  a=row['action'];age=a.get('age',0);dim=pulse(age,0,.4,1.8)*(.58 if a.get('visual')=='attack' else .32) if a else 0
   f=ImageEnhance.Brightness(plate).enhance(1-dim)
   ordered=sorted(row['units'],key=lambda u:feet[u['id']][1])
   for u in ordered:
    if u['id'].startswith('p'):
-    im=render(u['clip'],u['progress']);x,y=hero_at(u);shadow(f,im,x,y,hs);f.alpha_composite(im.resize((round(256*hs),round(256*hs)),Image.Resampling.NEAREST),(round(x),round(y)))
+    im=render(u['clip'],u['progress']);x,y=hero_at(u,row);shadow(f,im,x,y,hs);f.alpha_composite(im.resize((round(256*hs),round(256*hs)),Image.Resampling.NEAREST),(round(x),round(y)))
     attachments(f,u,attached[(scenario+'-'+u['id'],row['frame'])],row)
    else:
-    x,y=feet[u['id']];ex,ey=x-178.5*es,y-240*es;shadow(f,enemy,ex,ey,es);f.alpha_composite(enemy.resize((round(384*es),round(256*es)),Image.Resampling.NEAREST),(round(ex),round(ey)))
+    x,y=feet[u['id']];v=a.get('travel',{}) if a.get('actor')==u['id'] else {};ex,ey=x+v.get('x',0)-178.5*es,y+v.get('y',0)-240*es
+    da=u.get('deathAge');im=bodies[min(47,int(da*60))] if da is not None else enemy_attacks[min(7,int(min(1,age/.96)*8))] if a.get('actor')==u['id'] else enemy
+    shadow(f,enemy,ex,ey,es,1-smooth(da/.75) if da is not None else 1)
+    f.alpha_composite(im.resize((round(384*es),round(256*es)),Image.Resampling.NEAREST),(round(ex),round(ey)))
+    if da is not None and da<116/60: f.alpha_composite(winds[min(115,int(da*60))].resize((round(448*es),round(320*es)),Image.Resampling.NEAREST),(round(x-178.5*es),round(y-272*es)))
   f.alpha_composite(foreground)
   if a.get('visual')=='support':
    start=feet[a['actor']];end=feet[a['target']];start=(start[0]+5*hs,start[1]-70*hs);end=(end[0]+5*hs,end[1]-70*hs)
@@ -117,6 +125,18 @@ for scenario in ['support','rally','items','revive']:
    for g in row['rally']:
     if g['id']==a['target']:
      for q in g['particles']:compose(f,assets['HealStar'],(q['x'],q['y']),(q['size'],q['size']),q['alpha'],True)
+  if a.get('visual')=='attack':
+   pp=feet[a['target']];is_enemy=a['enemy'];elapsed=age-(.46 if is_enemy else 1.048);xx=pp[0]+((5+240*.41)*hs if a.get('shielded') else 10) if is_enemy else pp[0]-80;at=(xx,pp[1]-(65 if is_enemy else 72));power=pulse(elapsed,-.035,.035,.52)
+   glow(f,at,140,140,power*.48,(255,175,45));glow(f,pp,170,30,power*.65,(255,175,45))
+   if 0<=elapsed<.7:
+    compose(f,assets['Burst'],at,(150+elapsed*140,150+elapsed*140),power,True)
+    if not is_enemy:compose(f,asset('BattleVFXHeavyArc'),at,(210+elapsed*240,210+elapsed*240),power*.9,True)
+  for q in attached[(scenario+'-fx',row['frame'])]['particles']:
+   at=(q['x'],q['y']);col=(30,200,255) if q['cyan'] else (255,175,45)
+   if q['id']%6==0:glow(f,at,22,20,q['alpha']*.2,col)
+   if q['groundAge'] is not None and q['groundAge']<.24:
+    a1=(1-q['groundAge']/.24)*q['alpha'];glow(f,(q['groundX'],q['groundY']),34,10,a1*.6,col)
+   compose(f,asset('BattleVFXCyanShard') if q['cyan'] else assets['GoldEmber'],at,(q['size'],q['size']*.67),q['alpha'],True,q['angle'])
   for m in row['messages']:
    t=row['time']-m['at'];p=feet[m['id']];col='#c4ffc4' if m['kind']=='heal' else '#80edff' if m['kind']=='shield' else '#ffe7a9';y=p[1]-120-t*26+(24 if m['kind']=='shield' else 0);ImageDraw.Draw(f).text((p[0]+90,y),m['text'],font=large,fill=col,stroke_width=2,stroke_fill='#19311d')
   for u in row['units']:
@@ -141,7 +161,9 @@ for scenario in ['support','rally','items','revive']:
  for sec,label in [(0,'standing'),(.64,'gather'),(1.06,'impact'),(1.5,'tail'),(2.4,'settled')]:frames[min(len(frames)-1,round(sec/.02))].save(D/(scenario+'-'+label+'.png'))
  if scenario=='revive':
   for sec,label in [(1.12,'half-health'),(1.42,'rising')]:frames[round(sec/.02)].save(D/(scenario+'-'+label+'.png'))
- if scenario=='items':frames[round(3.5/.02)].save(D/'items-shield.png')
+ if scenario=='items':frames[round(5.9/.02)].save(D/'items-shield.png')
+ if scenario=='combat':
+  for sec,label in [(1.5,'lethal'),(2.1,'wind'),(3.26,'shield-contact')]:frames[round(sec/.02)].save(D/('combat-'+label+'.png'))
  reports[scenario]={'file':name,'frames':gif.n_frames,'frameDurationMs':20,'durationMs':len(frames)*20,'bytes':(D/name).stat().st_size,'dimensions':size,'scale':scale}
  print(scenario,reports[scenario],flush=True)
 (D/'review-render.json').write_text(json.dumps({'scope':'actual original GameCore states and production Swift fields; offline light/UI approximation, not UIKit or device capture','animations':reports,'newArtApproval':None},indent=2)+'\n')
