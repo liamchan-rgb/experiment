@@ -1,0 +1,1878 @@
+{
+  "version": 1,
+  "date": "2026-10-25",
+  "task": "Read-only source audit and proposed production plan; no implementation authorization implied",
+  "sources": {
+    "repository": "liamchan-rgb/classroom-boardgame",
+    "mainCommit": "1e9100c4c18364ea64b3ec974fe957ba4ef42f6f",
+    "battleBranch": "feat/side-view-battle-scene-v0.11",
+    "battleCommit": "a0427b83d9233f1a83178b3c47d3fab39eed664e",
+    "catalogPath": "native/Packages/GameCore/Sources/ClassroomGameCore/Resources/initial-content.json",
+    "catalogSHA256": "aaab980fd5f3154ac813a02dc907a835ee0e0181c4149f2b7803d9594795f34a",
+    "catalogGitBlob": "8d1de78b54fc049dbe579026e5afcf0a79f36a11",
+    "experimentBaseline": "5d4d694d2bd9f74e390304357786f9860c195982",
+    "allEightSourceBranchesHaveSameCatalog": true
+  },
+  "counts": {
+    "skills": 19,
+    "classSkills": 12,
+    "setSkills": 2,
+    "monsterSkills": 5,
+    "items": 18,
+    "weapons": 6,
+    "armors": 4,
+    "accessories": 4,
+    "consumablesIncludingRevival": 4,
+    "existingVerifiedItemIcons": 18,
+    "legacyGenericEffectSheets": 12
+  },
+  "batches": [
+    {
+      "id": "B0",
+      "title": "复用现有冒险者演出，建立完整表现契约",
+      "skills": [
+        "heavyStrike",
+        "breather",
+        "simpleGuard"
+      ],
+      "items": [],
+      "dependsOn": [],
+      "deliverables": [
+        "现有强击/喘息/圆盾的ID映射与结算回执契约；不重画已存在的候选",
+        "补两友方/两敌方受控展示与世界/人物挂点，验证单体/节点群体/施法者附带效果",
+        "通用buff小方框/hover、focus、触屏详情及剩余轮数、护盾实际增量反馈；职业/套装/普通物品分开",
+        "列出简化demo与正式GameCore差异；准备只读完整结果的适配方案，不由特效重掷骰或重复结算"
+      ]
+    },
+    {
+      "id": "B1",
+      "title": "援护、振奋与四种消耗品",
+      "skills": [
+        "support",
+        "rally"
+      ],
+      "items": [
+        "smallPotion",
+        "largePotion",
+        "shieldPotion",
+        "revivalStone"
+      ],
+      "dependsOn": [
+        "B0"
+      ],
+      "deliverables": [
+        "援护：施法者到友方的绿金引导，目标恢复/成盾；振奋：节点友方短促金光与增伤buff",
+        "三药水复用已核图标/回血/护盾，补使用动作、目标选择、库存数量及实际结果绑定",
+        "复活石：玩家保留倒地形体，晶体聚光→起身→半血恢复；同节点2AP救援，下轮行动，不做怪物同款消散",
+        "本批优先演示援护+振奋，再逐项接药水和复活，避免一次塞入所有演出"
+      ]
+    },
+    {
+      "id": "B2",
+      "title": "突袭、普通攻击与八件基础装备",
+      "skills": [
+        "ambush"
+      ],
+      "items": [
+        "trainingSword",
+        "huntingBow",
+        "greatSword",
+        "legendaryStaff",
+        "leatherArmor",
+        "runeArmor",
+        "powerBadge",
+        "actionRing"
+      ],
+      "dependsOn": [
+        "B0",
+        "B1"
+      ],
+      "deliverables": [
+        "突袭用清晰突进/残影/命中/回位，并把施法者回血3单独注册到本人；不强行规定游侠只能用弓",
+        "训练短剑先建立itemID映射；随后猎弓箭矢/拉弓释放、重剑重量感、权杖投射及真实自然20反馈",
+        "皮甲/符文甲按同一身体分层；徽章/戒指先图标、装备槽、常驻属性与短装备反馈，不强制做细小整身饰品",
+        "每件可见武器/护甲独立完成八方向13姿势行走绑定与战斗持握/层序；实际工作拆成小批，不把8图标视为完成装备"
+      ]
+    },
+    {
+      "id": "B3",
+      "title": "魔剑士三技能",
+      "skills": [
+        "runeSlash",
+        "runeWard",
+        "battleRune"
+      ],
+      "items": [],
+      "dependsOn": [
+        "B0",
+        "B1",
+        "B2"
+      ],
+      "deliverables": [
+        "符文斩：刻印/斩裂，受击目标与施法者回血4/盾4分通道",
+        "符文庇护：目标节点队友符文展开、恢复8/盾6；战斗符文：盾4+增伤3/2轮",
+        "符文形状和运动方向独立设计，不只把强击改色；高强度预示同步压暗，施放前圈及时撤去"
+      ]
+    },
+    {
+      "id": "B4",
+      "title": "龙骑士三技能",
+      "skills": [
+        "dragonFlame",
+        "dragonScaleWard",
+        "dragonOrder"
+      ],
+      "items": [],
+      "dependsOn": [
+        "B0",
+        "B1",
+        "B2",
+        "B3"
+      ],
+      "deliverables": [
+        "龙焰：目标节点定向火流、分层爆发、受击与地面火星；自己回血6/盾6/增伤2两轮分开",
+        "龙鳞庇护：鳞片围合/恢复12/盾10/增伤2一轮；龙之号令：有方向的号令光波、恢复6/盾8/增伤4两轮",
+        "多目标同一次伤害骰、不同实际扣盾/扣血/死亡同时可读；控制环境光与粒子预算，不增加蓄力层级/运镜"
+      ]
+    },
+    {
+      "id": "B5",
+      "title": "两套套装与两个套装技能",
+      "skills": [
+        "starlightPulse",
+        "dragonSoulWard"
+      ],
+      "items": [
+        "starlightBlade",
+        "starlightArmor",
+        "starlightCharm",
+        "dragonFangSword",
+        "dragonArmor",
+        "dragonCharm"
+      ],
+      "dependsOn": [
+        "B0",
+        "B1",
+        "B2",
+        "B3",
+        "B4"
+      ],
+      "deliverables": [
+        "星辉三件：星屑/折射/脉冲；龙纹三件：龙牙/鳞片/龙魂轮廓，两套不得同爆光换色",
+        "星辉脉冲目标节点群伤+施法者回血6/盾6；龙魂庇护节点队友回血10/盾10/增伤3两轮",
+        "2件与3件套状态、技能解锁与次数来自规则；反复穿脱不刷新每场次数，套装件不误进商店",
+        "同样补可见武器/护甲的八向与战斗挂载，饰品优先UI表达，复核新长武器的圆盾覆盖"
+      ]
+    },
+    {
+      "id": "B6",
+      "title": "五个怪物技能与双向交互验收",
+      "skills": [
+        "stoneSkin",
+        "regeneration",
+        "sweep",
+        "monsterDragonScale",
+        "monsterDragonFlame"
+      ],
+      "items": [],
+      "dependsOn": [
+        "B0",
+        "B1",
+        "B2",
+        "B3",
+        "B4",
+        "B5"
+      ],
+      "deliverables": [
+        "石肤：石质附着/盾6；再生：巨魔自身恢复8的收拢光，不添加持续回血机制；横扫：横向多目标受击",
+        "魔龙龙鳞：大体型鳞盾10；魔龙龙焰：从怪物侧向我方节点喷吐、1D20，与玩家龙焰独立ID/效果",
+        "先有石像守卫/洞穴巨魔/遗迹魔龙的完整身体、施法挂点和攻击方向；现demo鹿灵不算这三种已完成",
+        "六种正式怪物的普通攻击/受击/死亡另列依赖，三个无主动技能的怪仍需要普攻；按种类比主角更大、比例合理、有压迫感"
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "id": "heavyStrike",
+      "name": "强击",
+      "group": "职业技能",
+      "ownerID": "adventurer",
+      "ownerName": "冒险者",
+      "definition": {
+        "id": "heavyStrike",
+        "name": "强击",
+        "cost": 1,
+        "target": "enemy",
+        "range": 0,
+        "stage": "battle",
+        "uses": 2,
+        "effects": [
+          {
+            "kind": "damage",
+            "scope": "targets",
+            "amount": 0,
+            "rounds": 0,
+            "dice": {
+              "sides": 6,
+              "count": 1,
+              "flat": 2
+            }
+          }
+        ],
+        "priority": 0,
+        "condition": "always",
+        "oncePerTurn": false
+      },
+      "batch": "B0",
+      "legacyGenericCasterEffect": "projectile",
+      "legacySpecificSkillIconBinding": false,
+      "currentDemo": {
+        "hasRelatedPlayableVisual": true,
+        "action": "strike",
+        "fullRuleParity": false
+      },
+      "productionStatus": "reuse-existing-demo-candidate-and-close-integration-gaps",
+      "newArtApproval": null
+    },
+    {
+      "id": "breather",
+      "name": "喘息",
+      "group": "职业技能",
+      "ownerID": "adventurer",
+      "ownerName": "冒险者",
+      "definition": {
+        "id": "breather",
+        "name": "喘息",
+        "cost": 1,
+        "target": "selfOnly",
+        "range": 0,
+        "stage": "both",
+        "uses": 2,
+        "effects": [
+          {
+            "kind": "heal",
+            "scope": "targets",
+            "amount": 4,
+            "rounds": 0,
+            "dice": null
+          }
+        ],
+        "priority": 0,
+        "condition": "always",
+        "oncePerTurn": false
+      },
+      "batch": "B0",
+      "legacyGenericCasterEffect": "rune",
+      "legacySpecificSkillIconBinding": false,
+      "currentDemo": {
+        "hasRelatedPlayableVisual": true,
+        "action": "breathe",
+        "fullRuleParity": false
+      },
+      "productionStatus": "reuse-existing-demo-candidate-and-close-integration-gaps",
+      "newArtApproval": null
+    },
+    {
+      "id": "simpleGuard",
+      "name": "简易防护",
+      "group": "职业技能",
+      "ownerID": "adventurer",
+      "ownerName": "冒险者",
+      "definition": {
+        "id": "simpleGuard",
+        "name": "简易防护",
+        "cost": 1,
+        "target": "selfOnly",
+        "range": 0,
+        "stage": "both",
+        "uses": 2,
+        "effects": [
+          {
+            "kind": "shield",
+            "scope": "targets",
+            "amount": 4,
+            "rounds": 0,
+            "dice": null
+          }
+        ],
+        "priority": 0,
+        "condition": "always",
+        "oncePerTurn": false
+      },
+      "batch": "B0",
+      "legacyGenericCasterEffect": "rune",
+      "legacySpecificSkillIconBinding": false,
+      "currentDemo": {
+        "hasRelatedPlayableVisual": true,
+        "action": "protection",
+        "fullRuleParity": false
+      },
+      "productionStatus": "reuse-existing-demo-candidate-and-close-integration-gaps",
+      "newArtApproval": null
+    },
+    {
+      "id": "ambush",
+      "name": "突袭",
+      "group": "职业技能",
+      "ownerID": "ranger",
+      "ownerName": "游侠",
+      "definition": {
+        "id": "ambush",
+        "name": "突袭",
+        "cost": 2,
+        "target": "enemy",
+        "range": 1,
+        "stage": "battle",
+        "uses": 2,
+        "effects": [
+          {
+            "kind": "damage",
+            "scope": "targets",
+            "amount": 0,
+            "rounds": 0,
+            "dice": {
+              "sides": 8,
+              "count": 2,
+              "flat": 2
+            }
+          },
+          {
+            "kind": "heal",
+            "scope": "caster",
+            "amount": 3,
+            "rounds": 0,
+            "dice": null
+          }
+        ],
+        "priority": 0,
+        "condition": "always",
+        "oncePerTurn": false
+      },
+      "batch": "B2",
+      "legacyGenericCasterEffect": "projectile",
+      "legacySpecificSkillIconBinding": false,
+      "currentDemo": {
+        "hasRelatedPlayableVisual": false,
+        "action": null,
+        "fullRuleParity": null
+      },
+      "productionStatus": "new-distinct-current-style-presentation-needed",
+      "newArtApproval": null
+    },
+    {
+      "id": "support",
+      "name": "援护",
+      "group": "职业技能",
+      "ownerID": "ranger",
+      "ownerName": "游侠",
+      "definition": {
+        "id": "support",
+        "name": "援护",
+        "cost": 1,
+        "target": "ally",
+        "range": 1,
+        "stage": "both",
+        "uses": 2,
+        "effects": [
+          {
+            "kind": "heal",
+            "scope": "targets",
+            "amount": 6,
+            "rounds": 0,
+            "dice": null
+          },
+          {
+            "kind": "shield",
+            "scope": "targets",
+            "amount": 4,
+            "rounds": 0,
+            "dice": null
+          }
+        ],
+        "priority": 0,
+        "condition": "always",
+        "oncePerTurn": false
+      },
+      "batch": "B1",
+      "legacyGenericCasterEffect": "rune",
+      "legacySpecificSkillIconBinding": false,
+      "currentDemo": {
+        "hasRelatedPlayableVisual": false,
+        "action": null,
+        "fullRuleParity": null
+      },
+      "productionStatus": "new-distinct-current-style-presentation-needed",
+      "newArtApproval": null
+    },
+    {
+      "id": "rally",
+      "name": "振奋",
+      "group": "职业技能",
+      "ownerID": "ranger",
+      "ownerName": "游侠",
+      "definition": {
+        "id": "rally",
+        "name": "振奋",
+        "cost": 1,
+        "target": "alliesAtNode",
+        "range": 0,
+        "stage": "both",
+        "uses": 2,
+        "effects": [
+          {
+            "kind": "damageBuff",
+            "scope": "targets",
+            "amount": 2,
+            "rounds": 1,
+            "dice": null
+          }
+        ],
+        "priority": 0,
+        "condition": "always",
+        "oncePerTurn": false
+      },
+      "batch": "B1",
+      "legacyGenericCasterEffect": "rune",
+      "legacySpecificSkillIconBinding": false,
+      "currentDemo": {
+        "hasRelatedPlayableVisual": false,
+        "action": null,
+        "fullRuleParity": null
+      },
+      "productionStatus": "new-distinct-current-style-presentation-needed",
+      "newArtApproval": null
+    },
+    {
+      "id": "runeSlash",
+      "name": "符文斩",
+      "group": "职业技能",
+      "ownerID": "spellblade",
+      "ownerName": "魔剑士",
+      "definition": {
+        "id": "runeSlash",
+        "name": "符文斩",
+        "cost": 2,
+        "target": "enemy",
+        "range": 1,
+        "stage": "battle",
+        "uses": 2,
+        "effects": [
+          {
+            "kind": "damage",
+            "scope": "targets",
+            "amount": 0,
+            "rounds": 0,
+            "dice": {
+              "sides": 12,
+              "count": 2,
+              "flat": 2
+            }
+          },
+          {
+            "kind": "heal",
+            "scope": "caster",
+            "amount": 4,
+            "rounds": 0,
+            "dice": null
+          },
+          {
+            "kind": "shield",
+            "scope": "caster",
+            "amount": 4,
+            "rounds": 0,
+            "dice": null
+          }
+        ],
+        "priority": 0,
+        "condition": "always",
+        "oncePerTurn": false
+      },
+      "batch": "B3",
+      "legacyGenericCasterEffect": "projectile",
+      "legacySpecificSkillIconBinding": false,
+      "currentDemo": {
+        "hasRelatedPlayableVisual": false,
+        "action": null,
+        "fullRuleParity": null
+      },
+      "productionStatus": "new-distinct-current-style-presentation-needed",
+      "newArtApproval": null
+    },
+    {
+      "id": "runeWard",
+      "name": "符文庇护",
+      "group": "职业技能",
+      "ownerID": "spellblade",
+      "ownerName": "魔剑士",
+      "definition": {
+        "id": "runeWard",
+        "name": "符文庇护",
+        "cost": 2,
+        "target": "alliesAtNode",
+        "range": 1,
+        "stage": "both",
+        "uses": 2,
+        "effects": [
+          {
+            "kind": "heal",
+            "scope": "targets",
+            "amount": 8,
+            "rounds": 0,
+            "dice": null
+          },
+          {
+            "kind": "shield",
+            "scope": "targets",
+            "amount": 6,
+            "rounds": 0,
+            "dice": null
+          }
+        ],
+        "priority": 0,
+        "condition": "always",
+        "oncePerTurn": false
+      },
+      "batch": "B3",
+      "legacyGenericCasterEffect": "rune",
+      "legacySpecificSkillIconBinding": false,
+      "currentDemo": {
+        "hasRelatedPlayableVisual": false,
+        "action": null,
+        "fullRuleParity": null
+      },
+      "productionStatus": "new-distinct-current-style-presentation-needed",
+      "newArtApproval": null
+    },
+    {
+      "id": "battleRune",
+      "name": "战斗符文",
+      "group": "职业技能",
+      "ownerID": "spellblade",
+      "ownerName": "魔剑士",
+      "definition": {
+        "id": "battleRune",
+        "name": "战斗符文",
+        "cost": 1,
+        "target": "alliesAtNode",
+        "range": 1,
+        "stage": "both",
+        "uses": 2,
+        "effects": [
+          {
+            "kind": "shield",
+            "scope": "targets",
+            "amount": 4,
+            "rounds": 0,
+            "dice": null
+          },
+          {
+            "kind": "damageBuff",
+            "scope": "targets",
+            "amount": 3,
+            "rounds": 2,
+            "dice": null
+          }
+        ],
+        "priority": 0,
+        "condition": "always",
+        "oncePerTurn": false
+      },
+      "batch": "B3",
+      "legacyGenericCasterEffect": "rune",
+      "legacySpecificSkillIconBinding": false,
+      "currentDemo": {
+        "hasRelatedPlayableVisual": false,
+        "action": null,
+        "fullRuleParity": null
+      },
+      "productionStatus": "new-distinct-current-style-presentation-needed",
+      "newArtApproval": null
+    },
+    {
+      "id": "dragonFlame",
+      "name": "龙焰",
+      "group": "职业技能",
+      "ownerID": "dragonKnight",
+      "ownerName": "龙骑士",
+      "definition": {
+        "id": "dragonFlame",
+        "name": "龙焰",
+        "cost": 2,
+        "target": "enemiesAtNode",
+        "range": 1,
+        "stage": "battle",
+        "uses": 1,
+        "effects": [
+          {
+            "kind": "damage",
+            "scope": "targets",
+            "amount": 0,
+            "rounds": 0,
+            "dice": {
+              "sides": 20,
+              "count": 1,
+              "flat": 6
+            }
+          },
+          {
+            "kind": "heal",
+            "scope": "caster",
+            "amount": 6,
+            "rounds": 0,
+            "dice": null
+          },
+          {
+            "kind": "shield",
+            "scope": "caster",
+            "amount": 6,
+            "rounds": 0,
+            "dice": null
+          },
+          {
+            "kind": "damageBuff",
+            "scope": "caster",
+            "amount": 2,
+            "rounds": 2,
+            "dice": null
+          }
+        ],
+        "priority": 0,
+        "condition": "always",
+        "oncePerTurn": false
+      },
+      "batch": "B4",
+      "legacyGenericCasterEffect": "flame",
+      "legacySpecificSkillIconBinding": false,
+      "currentDemo": {
+        "hasRelatedPlayableVisual": false,
+        "action": null,
+        "fullRuleParity": null
+      },
+      "productionStatus": "new-distinct-current-style-presentation-needed",
+      "newArtApproval": null
+    },
+    {
+      "id": "dragonScaleWard",
+      "name": "龙鳞庇护",
+      "group": "职业技能",
+      "ownerID": "dragonKnight",
+      "ownerName": "龙骑士",
+      "definition": {
+        "id": "dragonScaleWard",
+        "name": "龙鳞庇护",
+        "cost": 2,
+        "target": "alliesAtNode",
+        "range": 1,
+        "stage": "both",
+        "uses": 2,
+        "effects": [
+          {
+            "kind": "heal",
+            "scope": "targets",
+            "amount": 12,
+            "rounds": 0,
+            "dice": null
+          },
+          {
+            "kind": "shield",
+            "scope": "targets",
+            "amount": 10,
+            "rounds": 0,
+            "dice": null
+          },
+          {
+            "kind": "damageBuff",
+            "scope": "targets",
+            "amount": 2,
+            "rounds": 1,
+            "dice": null
+          }
+        ],
+        "priority": 0,
+        "condition": "always",
+        "oncePerTurn": false
+      },
+      "batch": "B4",
+      "legacyGenericCasterEffect": "rune",
+      "legacySpecificSkillIconBinding": false,
+      "currentDemo": {
+        "hasRelatedPlayableVisual": false,
+        "action": null,
+        "fullRuleParity": null
+      },
+      "productionStatus": "new-distinct-current-style-presentation-needed",
+      "newArtApproval": null
+    },
+    {
+      "id": "dragonOrder",
+      "name": "龙之号令",
+      "group": "职业技能",
+      "ownerID": "dragonKnight",
+      "ownerName": "龙骑士",
+      "definition": {
+        "id": "dragonOrder",
+        "name": "龙之号令",
+        "cost": 2,
+        "target": "alliesAtNode",
+        "range": 1,
+        "stage": "both",
+        "uses": 1,
+        "effects": [
+          {
+            "kind": "heal",
+            "scope": "targets",
+            "amount": 6,
+            "rounds": 0,
+            "dice": null
+          },
+          {
+            "kind": "shield",
+            "scope": "targets",
+            "amount": 8,
+            "rounds": 0,
+            "dice": null
+          },
+          {
+            "kind": "damageBuff",
+            "scope": "targets",
+            "amount": 4,
+            "rounds": 2,
+            "dice": null
+          }
+        ],
+        "priority": 0,
+        "condition": "always",
+        "oncePerTurn": false
+      },
+      "batch": "B4",
+      "legacyGenericCasterEffect": "rune",
+      "legacySpecificSkillIconBinding": false,
+      "currentDemo": {
+        "hasRelatedPlayableVisual": false,
+        "action": null,
+        "fullRuleParity": null
+      },
+      "productionStatus": "new-distinct-current-style-presentation-needed",
+      "newArtApproval": null
+    },
+    {
+      "id": "starlightPulse",
+      "name": "星辉脉冲",
+      "group": "套装技能",
+      "ownerID": "starlight",
+      "ownerName": "星辉",
+      "definition": {
+        "id": "starlightPulse",
+        "name": "星辉脉冲",
+        "cost": 2,
+        "target": "enemiesAtNode",
+        "range": 1,
+        "stage": "battle",
+        "uses": 1,
+        "effects": [
+          {
+            "kind": "damage",
+            "scope": "targets",
+            "amount": 0,
+            "rounds": 0,
+            "dice": {
+              "sides": 12,
+              "count": 1,
+              "flat": 4
+            }
+          },
+          {
+            "kind": "heal",
+            "scope": "caster",
+            "amount": 6,
+            "rounds": 0,
+            "dice": null
+          },
+          {
+            "kind": "shield",
+            "scope": "caster",
+            "amount": 6,
+            "rounds": 0,
+            "dice": null
+          }
+        ],
+        "priority": 0,
+        "condition": "always",
+        "oncePerTurn": false
+      },
+      "batch": "B5",
+      "legacyGenericCasterEffect": "projectile",
+      "legacySpecificSkillIconBinding": false,
+      "currentDemo": {
+        "hasRelatedPlayableVisual": false,
+        "action": null,
+        "fullRuleParity": null
+      },
+      "productionStatus": "new-distinct-current-style-presentation-needed",
+      "newArtApproval": null
+    },
+    {
+      "id": "dragonSoulWard",
+      "name": "龙魂庇护",
+      "group": "套装技能",
+      "ownerID": "dragonMark",
+      "ownerName": "龙纹",
+      "definition": {
+        "id": "dragonSoulWard",
+        "name": "龙魂庇护",
+        "cost": 2,
+        "target": "alliesAtNode",
+        "range": 1,
+        "stage": "battle",
+        "uses": 1,
+        "effects": [
+          {
+            "kind": "heal",
+            "scope": "targets",
+            "amount": 10,
+            "rounds": 0,
+            "dice": null
+          },
+          {
+            "kind": "shield",
+            "scope": "targets",
+            "amount": 10,
+            "rounds": 0,
+            "dice": null
+          },
+          {
+            "kind": "damageBuff",
+            "scope": "targets",
+            "amount": 3,
+            "rounds": 2,
+            "dice": null
+          }
+        ],
+        "priority": 0,
+        "condition": "always",
+        "oncePerTurn": false
+      },
+      "batch": "B5",
+      "legacyGenericCasterEffect": "rune",
+      "legacySpecificSkillIconBinding": false,
+      "currentDemo": {
+        "hasRelatedPlayableVisual": false,
+        "action": null,
+        "fullRuleParity": null
+      },
+      "productionStatus": "new-distinct-current-style-presentation-needed",
+      "newArtApproval": null
+    },
+    {
+      "id": "stoneSkin",
+      "name": "石肤",
+      "group": "怪物技能",
+      "ownerID": "stoneGuardian",
+      "ownerName": "石像守卫",
+      "definition": {
+        "id": "stoneSkin",
+        "name": "石肤",
+        "cost": 1,
+        "target": "selfOnly",
+        "range": 0,
+        "stage": "battle",
+        "uses": 2,
+        "effects": [
+          {
+            "kind": "shield",
+            "scope": "targets",
+            "amount": 6,
+            "rounds": 0,
+            "dice": null
+          }
+        ],
+        "priority": 1,
+        "condition": "shieldEmpty",
+        "oncePerTurn": true
+      },
+      "batch": "B6",
+      "legacyGenericCasterEffect": "rune",
+      "legacySpecificSkillIconBinding": false,
+      "currentDemo": {
+        "hasRelatedPlayableVisual": false,
+        "action": null,
+        "fullRuleParity": null
+      },
+      "productionStatus": "new-distinct-current-style-presentation-needed",
+      "newArtApproval": null
+    },
+    {
+      "id": "regeneration",
+      "name": "再生",
+      "group": "怪物技能",
+      "ownerID": "caveTroll",
+      "ownerName": "洞穴巨魔",
+      "definition": {
+        "id": "regeneration",
+        "name": "再生",
+        "cost": 1,
+        "target": "selfOnly",
+        "range": 0,
+        "stage": "battle",
+        "uses": 2,
+        "effects": [
+          {
+            "kind": "heal",
+            "scope": "targets",
+            "amount": 8,
+            "rounds": 0,
+            "dice": null
+          }
+        ],
+        "priority": 1,
+        "condition": "healthHalfOrLess",
+        "oncePerTurn": true
+      },
+      "batch": "B6",
+      "legacyGenericCasterEffect": "rune",
+      "legacySpecificSkillIconBinding": false,
+      "currentDemo": {
+        "hasRelatedPlayableVisual": false,
+        "action": null,
+        "fullRuleParity": null
+      },
+      "productionStatus": "new-distinct-current-style-presentation-needed",
+      "newArtApproval": null
+    },
+    {
+      "id": "sweep",
+      "name": "横扫",
+      "group": "怪物技能",
+      "ownerID": "caveTroll",
+      "ownerName": "洞穴巨魔",
+      "definition": {
+        "id": "sweep",
+        "name": "横扫",
+        "cost": 2,
+        "target": "enemiesAtNode",
+        "range": 0,
+        "stage": "battle",
+        "uses": 2,
+        "effects": [
+          {
+            "kind": "damage",
+            "scope": "targets",
+            "amount": 0,
+            "rounds": 0,
+            "dice": {
+              "sides": 12,
+              "count": 1,
+              "flat": 0
+            }
+          }
+        ],
+        "priority": 2,
+        "condition": "twoEnemiesAtNode",
+        "oncePerTurn": false
+      },
+      "batch": "B6",
+      "legacyGenericCasterEffect": "projectile",
+      "legacySpecificSkillIconBinding": false,
+      "currentDemo": {
+        "hasRelatedPlayableVisual": false,
+        "action": null,
+        "fullRuleParity": null
+      },
+      "productionStatus": "new-distinct-current-style-presentation-needed",
+      "newArtApproval": null
+    },
+    {
+      "id": "monsterDragonScale",
+      "name": "龙鳞",
+      "group": "怪物技能",
+      "ownerID": "ruinDragon",
+      "ownerName": "遗迹魔龙",
+      "definition": {
+        "id": "monsterDragonScale",
+        "name": "龙鳞",
+        "cost": 1,
+        "target": "selfOnly",
+        "range": 0,
+        "stage": "battle",
+        "uses": 2,
+        "effects": [
+          {
+            "kind": "shield",
+            "scope": "targets",
+            "amount": 10,
+            "rounds": 0,
+            "dice": null
+          }
+        ],
+        "priority": 1,
+        "condition": "shieldEmpty",
+        "oncePerTurn": true
+      },
+      "batch": "B6",
+      "legacyGenericCasterEffect": "rune",
+      "legacySpecificSkillIconBinding": false,
+      "currentDemo": {
+        "hasRelatedPlayableVisual": false,
+        "action": null,
+        "fullRuleParity": null
+      },
+      "productionStatus": "new-distinct-current-style-presentation-needed",
+      "newArtApproval": null
+    },
+    {
+      "id": "monsterDragonFlame",
+      "name": "龙焰",
+      "group": "怪物技能",
+      "ownerID": "ruinDragon",
+      "ownerName": "遗迹魔龙",
+      "definition": {
+        "id": "monsterDragonFlame",
+        "name": "龙焰",
+        "cost": 2,
+        "target": "enemiesAtNode",
+        "range": 1,
+        "stage": "battle",
+        "uses": 1,
+        "effects": [
+          {
+            "kind": "damage",
+            "scope": "targets",
+            "amount": 0,
+            "rounds": 0,
+            "dice": {
+              "sides": 20,
+              "count": 1,
+              "flat": 0
+            }
+          }
+        ],
+        "priority": 2,
+        "condition": "twoEnemiesAtNode",
+        "oncePerTurn": false
+      },
+      "batch": "B6",
+      "legacyGenericCasterEffect": "flame",
+      "legacySpecificSkillIconBinding": false,
+      "currentDemo": {
+        "hasRelatedPlayableVisual": false,
+        "action": null,
+        "fullRuleParity": null
+      },
+      "productionStatus": "new-distinct-current-style-presentation-needed",
+      "newArtApproval": null
+    }
+  ],
+  "items": [
+    {
+      "id": "trainingSword",
+      "name": "训练短剑",
+      "definition": {
+        "id": "trainingSword",
+        "name": "训练短剑",
+        "kind": "equipment",
+        "slot": "weapon",
+        "attributes": {
+          "maximumHealth": 0,
+          "damage": 0,
+          "baseAP": 0,
+          "maximumAP": 0,
+          "range": 0
+        },
+        "attack": {
+          "dice": {
+            "sides": 6,
+            "count": 1,
+            "flat": 0
+          },
+          "range": 0
+        },
+        "purchasePrice": 10,
+        "sellPrice": 5,
+        "setID": null,
+        "heal": 0,
+        "shield": 0,
+        "range": 0
+      },
+      "batch": "B2",
+      "existingIcon": {
+        "file": "native/ClassroomProbe/Resources/Art/item_training_sword.png",
+        "sha256": "0a9adb9c988f637e8cfe0ccf398ba569b007703d4c904f6bfe1aad0b1c01d75a",
+        "fileDownloadedAndHashMatched": true,
+        "manifestStatus": "production-candidate-awaiting-art-review",
+        "review": "Root inspected all18 actual icons; reuse shapes/icon art first, inspect small-size legibility in new UI before repainting"
+      },
+      "newProductionNeeds": [
+        "ID binding",
+        "inventory/equip/use presentation",
+        "eight-direction13-pose world attachment",
+        "separate battle hold/pose binding"
+      ],
+      "fullCurrentDemoItemIntegration": false,
+      "newArtApproval": null
+    },
+    {
+      "id": "huntingBow",
+      "name": "猎弓",
+      "definition": {
+        "id": "huntingBow",
+        "name": "猎弓",
+        "kind": "equipment",
+        "slot": "weapon",
+        "attributes": {
+          "maximumHealth": 0,
+          "damage": 0,
+          "baseAP": 0,
+          "maximumAP": 0,
+          "range": 0
+        },
+        "attack": {
+          "dice": {
+            "sides": 8,
+            "count": 1,
+            "flat": 0
+          },
+          "range": 1
+        },
+        "purchasePrice": 50,
+        "sellPrice": 25,
+        "setID": null,
+        "heal": 0,
+        "shield": 0,
+        "range": 0
+      },
+      "batch": "B2",
+      "existingIcon": {
+        "file": "native/ClassroomProbe/Resources/Art/item_hunting_bow.png",
+        "sha256": "3fee4deeb573172ebac211a2d2bf01425e36baae1bf11e6099deeb5152b832f5",
+        "fileDownloadedAndHashMatched": true,
+        "manifestStatus": "production-candidate-awaiting-art-review",
+        "review": "Root inspected all18 actual icons; reuse shapes/icon art first, inspect small-size legibility in new UI before repainting"
+      },
+      "newProductionNeeds": [
+        "ID binding",
+        "inventory/equip/use presentation",
+        "eight-direction13-pose world attachment",
+        "separate battle hold/pose binding"
+      ],
+      "fullCurrentDemoItemIntegration": false,
+      "newArtApproval": null
+    },
+    {
+      "id": "greatSword",
+      "name": "重剑",
+      "definition": {
+        "id": "greatSword",
+        "name": "重剑",
+        "kind": "equipment",
+        "slot": "weapon",
+        "attributes": {
+          "maximumHealth": 0,
+          "damage": 0,
+          "baseAP": 0,
+          "maximumAP": 0,
+          "range": 0
+        },
+        "attack": {
+          "dice": {
+            "sides": 12,
+            "count": 1,
+            "flat": 0
+          },
+          "range": 0
+        },
+        "purchasePrice": 100,
+        "sellPrice": 50,
+        "setID": null,
+        "heal": 0,
+        "shield": 0,
+        "range": 0
+      },
+      "batch": "B2",
+      "existingIcon": {
+        "file": "native/ClassroomProbe/Resources/Art/item_great_sword.png",
+        "sha256": "4346576b8de25b1ef4ef7ec78fcafb063ad52f28b3a0c2bca8611d72961bafcd",
+        "fileDownloadedAndHashMatched": true,
+        "manifestStatus": "production-candidate-awaiting-art-review",
+        "review": "Root inspected all18 actual icons; reuse shapes/icon art first, inspect small-size legibility in new UI before repainting"
+      },
+      "newProductionNeeds": [
+        "ID binding",
+        "inventory/equip/use presentation",
+        "eight-direction13-pose world attachment",
+        "separate battle hold/pose binding"
+      ],
+      "fullCurrentDemoItemIntegration": false,
+      "newArtApproval": null
+    },
+    {
+      "id": "legendaryStaff",
+      "name": "传奇权杖",
+      "definition": {
+        "id": "legendaryStaff",
+        "name": "传奇权杖",
+        "kind": "equipment",
+        "slot": "weapon",
+        "attributes": {
+          "maximumHealth": 0,
+          "damage": 0,
+          "baseAP": 0,
+          "maximumAP": 0,
+          "range": 0
+        },
+        "attack": {
+          "dice": {
+            "sides": 20,
+            "count": 1,
+            "flat": 0
+          },
+          "range": 1
+        },
+        "purchasePrice": 200,
+        "sellPrice": 100,
+        "setID": null,
+        "heal": 0,
+        "shield": 0,
+        "range": 0
+      },
+      "batch": "B2",
+      "existingIcon": {
+        "file": "native/ClassroomProbe/Resources/Art/item_legendary_staff.png",
+        "sha256": "58c5ec4a1f53d6667bffbb46536d000a36020ae85331ab30c3c2a8329ef8d7e1",
+        "fileDownloadedAndHashMatched": true,
+        "manifestStatus": "production-candidate-awaiting-art-review",
+        "review": "Root inspected all18 actual icons; reuse shapes/icon art first, inspect small-size legibility in new UI before repainting"
+      },
+      "newProductionNeeds": [
+        "ID binding",
+        "inventory/equip/use presentation",
+        "eight-direction13-pose world attachment",
+        "separate battle hold/pose binding"
+      ],
+      "fullCurrentDemoItemIntegration": false,
+      "newArtApproval": null
+    },
+    {
+      "id": "leatherArmor",
+      "name": "皮甲",
+      "definition": {
+        "id": "leatherArmor",
+        "name": "皮甲",
+        "kind": "equipment",
+        "slot": "armor",
+        "attributes": {
+          "maximumHealth": 4,
+          "damage": 0,
+          "baseAP": 0,
+          "maximumAP": 0,
+          "range": 0
+        },
+        "attack": null,
+        "purchasePrice": 30,
+        "sellPrice": 15,
+        "setID": null,
+        "heal": 0,
+        "shield": 0,
+        "range": 0
+      },
+      "batch": "B2",
+      "existingIcon": {
+        "file": "native/ClassroomProbe/Resources/Art/item_leather_armor.png",
+        "sha256": "4f70408011bd6151b490ec1f577162d6ec17c78fa93cac7f8bee705c8d57d837",
+        "fileDownloadedAndHashMatched": true,
+        "manifestStatus": "production-candidate-awaiting-art-review",
+        "review": "Root inspected all18 actual icons; reuse shapes/icon art first, inspect small-size legibility in new UI before repainting"
+      },
+      "newProductionNeeds": [
+        "ID binding",
+        "inventory/equip/use presentation",
+        "eight-direction13-pose world attachment",
+        "separate battle hold/pose binding"
+      ],
+      "fullCurrentDemoItemIntegration": false,
+      "newArtApproval": null
+    },
+    {
+      "id": "runeArmor",
+      "name": "符文甲",
+      "definition": {
+        "id": "runeArmor",
+        "name": "符文甲",
+        "kind": "equipment",
+        "slot": "armor",
+        "attributes": {
+          "maximumHealth": 8,
+          "damage": 0,
+          "baseAP": 0,
+          "maximumAP": 0,
+          "range": 0
+        },
+        "attack": null,
+        "purchasePrice": 60,
+        "sellPrice": 30,
+        "setID": null,
+        "heal": 0,
+        "shield": 0,
+        "range": 0
+      },
+      "batch": "B2",
+      "existingIcon": {
+        "file": "native/ClassroomProbe/Resources/Art/item_rune_armor.png",
+        "sha256": "0f5004f8b2b835c07afc3f4c57a1aaf8e7e2a38dcaf8224f9aadc2cc2de4cec4",
+        "fileDownloadedAndHashMatched": true,
+        "manifestStatus": "production-candidate-awaiting-art-review",
+        "review": "Root inspected all18 actual icons; reuse shapes/icon art first, inspect small-size legibility in new UI before repainting"
+      },
+      "newProductionNeeds": [
+        "ID binding",
+        "inventory/equip/use presentation",
+        "eight-direction13-pose world attachment",
+        "separate battle hold/pose binding"
+      ],
+      "fullCurrentDemoItemIntegration": false,
+      "newArtApproval": null
+    },
+    {
+      "id": "powerBadge",
+      "name": "力量徽章",
+      "definition": {
+        "id": "powerBadge",
+        "name": "力量徽章",
+        "kind": "equipment",
+        "slot": "accessory",
+        "attributes": {
+          "maximumHealth": 0,
+          "damage": 2,
+          "baseAP": 0,
+          "maximumAP": 0,
+          "range": 0
+        },
+        "attack": null,
+        "purchasePrice": 50,
+        "sellPrice": 25,
+        "setID": null,
+        "heal": 0,
+        "shield": 0,
+        "range": 0
+      },
+      "batch": "B2",
+      "existingIcon": {
+        "file": "native/ClassroomProbe/Resources/Art/item_power_badge.png",
+        "sha256": "f34fffcdee2946e9d8810e6267c83748eece205f733027fbdd2a0d40fd29fed2",
+        "fileDownloadedAndHashMatched": true,
+        "manifestStatus": "production-candidate-awaiting-art-review",
+        "review": "Root inspected all18 actual icons; reuse shapes/icon art first, inspect small-size legibility in new UI before repainting"
+      },
+      "newProductionNeeds": [
+        "ID binding",
+        "inventory/equip/use presentation",
+        "UI/status presentation; no automatic eight-direction sprite requirement"
+      ],
+      "fullCurrentDemoItemIntegration": false,
+      "newArtApproval": null
+    },
+    {
+      "id": "actionRing",
+      "name": "行动戒指",
+      "definition": {
+        "id": "actionRing",
+        "name": "行动戒指",
+        "kind": "equipment",
+        "slot": "accessory",
+        "attributes": {
+          "maximumHealth": 0,
+          "damage": 0,
+          "baseAP": 1,
+          "maximumAP": 0,
+          "range": 0
+        },
+        "attack": null,
+        "purchasePrice": 100,
+        "sellPrice": 50,
+        "setID": null,
+        "heal": 0,
+        "shield": 0,
+        "range": 0
+      },
+      "batch": "B2",
+      "existingIcon": {
+        "file": "native/ClassroomProbe/Resources/Art/item_action_ring.png",
+        "sha256": "092378d8b93850065d65812f225ec15fd347e3aaf1790d5912223eb464df70da",
+        "fileDownloadedAndHashMatched": true,
+        "manifestStatus": "production-candidate-awaiting-art-review",
+        "review": "Root inspected all18 actual icons; reuse shapes/icon art first, inspect small-size legibility in new UI before repainting"
+      },
+      "newProductionNeeds": [
+        "ID binding",
+        "inventory/equip/use presentation",
+        "UI/status presentation; no automatic eight-direction sprite requirement"
+      ],
+      "fullCurrentDemoItemIntegration": false,
+      "newArtApproval": null
+    },
+    {
+      "id": "smallPotion",
+      "name": "小治疗药水",
+      "definition": {
+        "id": "smallPotion",
+        "name": "小治疗药水",
+        "kind": "consumable",
+        "slot": null,
+        "attributes": {
+          "maximumHealth": 0,
+          "damage": 0,
+          "baseAP": 0,
+          "maximumAP": 0,
+          "range": 0
+        },
+        "attack": null,
+        "purchasePrice": 10,
+        "sellPrice": 5,
+        "setID": null,
+        "heal": 6,
+        "shield": 0,
+        "range": 1
+      },
+      "batch": "B1",
+      "existingIcon": {
+        "file": "native/ClassroomProbe/Resources/Art/item_small_potion.png",
+        "sha256": "cbca94a567e6175d1dfee79b20f66029c48458287fbe5b50b2907ba822d5934e",
+        "fileDownloadedAndHashMatched": true,
+        "manifestStatus": "production-candidate-awaiting-art-review",
+        "review": "Root inspected all18 actual icons; reuse shapes/icon art first, inspect small-size legibility in new UI before repainting"
+      },
+      "newProductionNeeds": [
+        "ID binding",
+        "inventory/equip/use presentation",
+        "UI/status presentation; no automatic eight-direction sprite requirement"
+      ],
+      "fullCurrentDemoItemIntegration": false,
+      "newArtApproval": null
+    },
+    {
+      "id": "largePotion",
+      "name": "大治疗药水",
+      "definition": {
+        "id": "largePotion",
+        "name": "大治疗药水",
+        "kind": "consumable",
+        "slot": null,
+        "attributes": {
+          "maximumHealth": 0,
+          "damage": 0,
+          "baseAP": 0,
+          "maximumAP": 0,
+          "range": 0
+        },
+        "attack": null,
+        "purchasePrice": 20,
+        "sellPrice": 10,
+        "setID": null,
+        "heal": 12,
+        "shield": 0,
+        "range": 1
+      },
+      "batch": "B1",
+      "existingIcon": {
+        "file": "native/ClassroomProbe/Resources/Art/item_large_potion.png",
+        "sha256": "9641bb5def250456414108822f279cc9e90a7775e27e756947f8b103cc2e8c72",
+        "fileDownloadedAndHashMatched": true,
+        "manifestStatus": "production-candidate-awaiting-art-review",
+        "review": "Root inspected all18 actual icons; reuse shapes/icon art first, inspect small-size legibility in new UI before repainting"
+      },
+      "newProductionNeeds": [
+        "ID binding",
+        "inventory/equip/use presentation",
+        "UI/status presentation; no automatic eight-direction sprite requirement"
+      ],
+      "fullCurrentDemoItemIntegration": false,
+      "newArtApproval": null
+    },
+    {
+      "id": "shieldPotion",
+      "name": "护盾药水",
+      "definition": {
+        "id": "shieldPotion",
+        "name": "护盾药水",
+        "kind": "consumable",
+        "slot": null,
+        "attributes": {
+          "maximumHealth": 0,
+          "damage": 0,
+          "baseAP": 0,
+          "maximumAP": 0,
+          "range": 0
+        },
+        "attack": null,
+        "purchasePrice": 15,
+        "sellPrice": 7,
+        "setID": null,
+        "heal": 0,
+        "shield": 8,
+        "range": 1
+      },
+      "batch": "B1",
+      "existingIcon": {
+        "file": "native/ClassroomProbe/Resources/Art/item_shield_potion.png",
+        "sha256": "c57f86636af263cf8d22931d0e13630ca959dde5806865c6296df3f3f035ca22",
+        "fileDownloadedAndHashMatched": true,
+        "manifestStatus": "production-candidate-awaiting-art-review",
+        "review": "Root inspected all18 actual icons; reuse shapes/icon art first, inspect small-size legibility in new UI before repainting"
+      },
+      "newProductionNeeds": [
+        "ID binding",
+        "inventory/equip/use presentation",
+        "UI/status presentation; no automatic eight-direction sprite requirement"
+      ],
+      "fullCurrentDemoItemIntegration": false,
+      "newArtApproval": null
+    },
+    {
+      "id": "revivalStone",
+      "name": "复活石",
+      "definition": {
+        "id": "revivalStone",
+        "name": "复活石",
+        "kind": "revivalStone",
+        "slot": null,
+        "attributes": {
+          "maximumHealth": 0,
+          "damage": 0,
+          "baseAP": 0,
+          "maximumAP": 0,
+          "range": 0
+        },
+        "attack": null,
+        "purchasePrice": 30,
+        "sellPrice": 15,
+        "setID": null,
+        "heal": 0,
+        "shield": 0,
+        "range": 0
+      },
+      "batch": "B1",
+      "existingIcon": {
+        "file": "native/ClassroomProbe/Resources/Art/item_revival_stone.png",
+        "sha256": "1d3d594fb9fdb46781eaa6434b3d409cd3195b4ffa0fd03ed3cb22eef29c5803",
+        "fileDownloadedAndHashMatched": true,
+        "manifestStatus": "production-candidate-awaiting-art-review",
+        "review": "Root inspected all18 actual icons; reuse shapes/icon art first, inspect small-size legibility in new UI before repainting"
+      },
+      "newProductionNeeds": [
+        "ID binding",
+        "inventory/equip/use presentation",
+        "UI/status presentation; no automatic eight-direction sprite requirement"
+      ],
+      "fullCurrentDemoItemIntegration": false,
+      "newArtApproval": null
+    },
+    {
+      "id": "starlightBlade",
+      "name": "星辉刃",
+      "definition": {
+        "id": "starlightBlade",
+        "name": "星辉刃",
+        "kind": "equipment",
+        "slot": "weapon",
+        "attributes": {
+          "maximumHealth": 0,
+          "damage": 0,
+          "baseAP": 0,
+          "maximumAP": 0,
+          "range": 0
+        },
+        "attack": {
+          "dice": {
+            "sides": 12,
+            "count": 1,
+            "flat": 0
+          },
+          "range": 1
+        },
+        "purchasePrice": null,
+        "sellPrice": 80,
+        "setID": "starlight",
+        "heal": 0,
+        "shield": 0,
+        "range": 0
+      },
+      "batch": "B5",
+      "existingIcon": {
+        "file": "native/ClassroomProbe/Resources/Art/item_starlight_blade.png",
+        "sha256": "18bc18bf6774b211b239d2a09c16cdd30634073fe2cb9b0102e4a22da3b30b97",
+        "fileDownloadedAndHashMatched": true,
+        "manifestStatus": "production-candidate-awaiting-art-review",
+        "review": "Root inspected all18 actual icons; reuse shapes/icon art first, inspect small-size legibility in new UI before repainting"
+      },
+      "newProductionNeeds": [
+        "ID binding",
+        "inventory/equip/use presentation",
+        "eight-direction13-pose world attachment",
+        "separate battle hold/pose binding"
+      ],
+      "fullCurrentDemoItemIntegration": false,
+      "newArtApproval": null
+    },
+    {
+      "id": "starlightArmor",
+      "name": "星辉甲",
+      "definition": {
+        "id": "starlightArmor",
+        "name": "星辉甲",
+        "kind": "equipment",
+        "slot": "armor",
+        "attributes": {
+          "maximumHealth": 8,
+          "damage": 0,
+          "baseAP": 0,
+          "maximumAP": 0,
+          "range": 0
+        },
+        "attack": null,
+        "purchasePrice": null,
+        "sellPrice": 45,
+        "setID": "starlight",
+        "heal": 0,
+        "shield": 0,
+        "range": 0
+      },
+      "batch": "B5",
+      "existingIcon": {
+        "file": "native/ClassroomProbe/Resources/Art/item_starlight_armor.png",
+        "sha256": "3b4f924992683ea05d4157e15ea9e453b2e2e65481b40248b00d03233ec18296",
+        "fileDownloadedAndHashMatched": true,
+        "manifestStatus": "production-candidate-awaiting-art-review",
+        "review": "Root inspected all18 actual icons; reuse shapes/icon art first, inspect small-size legibility in new UI before repainting"
+      },
+      "newProductionNeeds": [
+        "ID binding",
+        "inventory/equip/use presentation",
+        "eight-direction13-pose world attachment",
+        "separate battle hold/pose binding"
+      ],
+      "fullCurrentDemoItemIntegration": false,
+      "newArtApproval": null
+    },
+    {
+      "id": "starlightCharm",
+      "name": "星辉饰品",
+      "definition": {
+        "id": "starlightCharm",
+        "name": "星辉饰品",
+        "kind": "equipment",
+        "slot": "accessory",
+        "attributes": {
+          "maximumHealth": 0,
+          "damage": 2,
+          "baseAP": 0,
+          "maximumAP": 0,
+          "range": 0
+        },
+        "attack": null,
+        "purchasePrice": null,
+        "sellPrice": 45,
+        "setID": "starlight",
+        "heal": 0,
+        "shield": 0,
+        "range": 0
+      },
+      "batch": "B5",
+      "existingIcon": {
+        "file": "native/ClassroomProbe/Resources/Art/item_starlight_charm.png",
+        "sha256": "d8571049fa8d39aaabbccb6046c9f6038f6ef5c66cede038ad06ae168b9ed5ca",
+        "fileDownloadedAndHashMatched": true,
+        "manifestStatus": "production-candidate-awaiting-art-review",
+        "review": "Root inspected all18 actual icons; reuse shapes/icon art first, inspect small-size legibility in new UI before repainting"
+      },
+      "newProductionNeeds": [
+        "ID binding",
+        "inventory/equip/use presentation",
+        "UI/status presentation; no automatic eight-direction sprite requirement"
+      ],
+      "fullCurrentDemoItemIntegration": false,
+      "newArtApproval": null
+    },
+    {
+      "id": "dragonFangSword",
+      "name": "龙牙剑",
+      "definition": {
+        "id": "dragonFangSword",
+        "name": "龙牙剑",
+        "kind": "equipment",
+        "slot": "weapon",
+        "attributes": {
+          "maximumHealth": 0,
+          "damage": 0,
+          "baseAP": 0,
+          "maximumAP": 0,
+          "range": 0
+        },
+        "attack": {
+          "dice": {
+            "sides": 20,
+            "count": 1,
+            "flat": 0
+          },
+          "range": 0
+        },
+        "purchasePrice": null,
+        "sellPrice": 130,
+        "setID": "dragonMark",
+        "heal": 0,
+        "shield": 0,
+        "range": 0
+      },
+      "batch": "B5",
+      "existingIcon": {
+        "file": "native/ClassroomProbe/Resources/Art/item_dragon_fang_sword.png",
+        "sha256": "8f90a4816e2cf0c89bfc7bb93c5b51cc09b4a44e3fcfe1ae7040a615c3f230ac",
+        "fileDownloadedAndHashMatched": true,
+        "manifestStatus": "production-candidate-awaiting-art-review",
+        "review": "Root inspected all18 actual icons; reuse shapes/icon art first, inspect small-size legibility in new UI before repainting"
+      },
+      "newProductionNeeds": [
+        "ID binding",
+        "inventory/equip/use presentation",
+        "eight-direction13-pose world attachment",
+        "separate battle hold/pose binding"
+      ],
+      "fullCurrentDemoItemIntegration": false,
+      "newArtApproval": null
+    },
+    {
+      "id": "dragonArmor",
+      "name": "龙纹甲",
+      "definition": {
+        "id": "dragonArmor",
+        "name": "龙纹甲",
+        "kind": "equipment",
+        "slot": "armor",
+        "attributes": {
+          "maximumHealth": 12,
+          "damage": 0,
+          "baseAP": 0,
+          "maximumAP": 0,
+          "range": 0
+        },
+        "attack": null,
+        "purchasePrice": null,
+        "sellPrice": 75,
+        "setID": "dragonMark",
+        "heal": 0,
+        "shield": 0,
+        "range": 0
+      },
+      "batch": "B5",
+      "existingIcon": {
+        "file": "native/ClassroomProbe/Resources/Art/item_dragon_armor.png",
+        "sha256": "6873c458dcc6e9cc4764f6177b8e2c696ec8886fd1b93faa2adfdea53b35fbc9",
+        "fileDownloadedAndHashMatched": true,
+        "manifestStatus": "production-candidate-awaiting-art-review",
+        "review": "Root inspected all18 actual icons; reuse shapes/icon art first, inspect small-size legibility in new UI before repainting"
+      },
+      "newProductionNeeds": [
+        "ID binding",
+        "inventory/equip/use presentation",
+        "eight-direction13-pose world attachment",
+        "separate battle hold/pose binding"
+      ],
+      "fullCurrentDemoItemIntegration": false,
+      "newArtApproval": null
+    },
+    {
+      "id": "dragonCharm",
+      "name": "龙纹饰品",
+      "definition": {
+        "id": "dragonCharm",
+        "name": "龙纹饰品",
+        "kind": "equipment",
+        "slot": "accessory",
+        "attributes": {
+          "maximumHealth": 0,
+          "damage": 3,
+          "baseAP": 0,
+          "maximumAP": 0,
+          "range": 0
+        },
+        "attack": null,
+        "purchasePrice": null,
+        "sellPrice": 75,
+        "setID": "dragonMark",
+        "heal": 0,
+        "shield": 0,
+        "range": 0
+      },
+      "batch": "B5",
+      "existingIcon": {
+        "file": "native/ClassroomProbe/Resources/Art/item_dragon_charm.png",
+        "sha256": "c7f2d5c529b7295b0419d48e879b5ba1fb88030edc244b633315daab0a94d677",
+        "fileDownloadedAndHashMatched": true,
+        "manifestStatus": "production-candidate-awaiting-art-review",
+        "review": "Root inspected all18 actual icons; reuse shapes/icon art first, inspect small-size legibility in new UI before repainting"
+      },
+      "newProductionNeeds": [
+        "ID binding",
+        "inventory/equip/use presentation",
+        "UI/status presentation; no automatic eight-direction sprite requirement"
+      ],
+      "fullCurrentDemoItemIntegration": false,
+      "newArtApproval": null
+    }
+  ],
+  "sets": [
+    {
+      "id": "starlight",
+      "name": "星辉",
+      "items": [
+        "starlightBlade",
+        "starlightArmor",
+        "starlightCharm"
+      ],
+      "twoPieces": {
+        "maximumHealth": 4,
+        "damage": 1,
+        "baseAP": 0,
+        "maximumAP": 0,
+        "range": 0
+      },
+      "threePieces": {
+        "maximumHealth": 0,
+        "damage": 0,
+        "baseAP": 1,
+        "maximumAP": 0,
+        "range": 0
+      },
+      "skill": "starlightPulse"
+    },
+    {
+      "id": "dragonMark",
+      "name": "龙纹",
+      "items": [
+        "dragonFangSword",
+        "dragonArmor",
+        "dragonCharm"
+      ],
+      "twoPieces": {
+        "maximumHealth": 6,
+        "damage": 0,
+        "baseAP": 0,
+        "maximumAP": 2,
+        "range": 0
+      },
+      "threePieces": {
+        "maximumHealth": 0,
+        "damage": 0,
+        "baseAP": 1,
+        "maximumAP": 0,
+        "range": 0
+      },
+      "skill": "dragonSoulWard"
+    }
+  ],
+  "integrationGaps": [
+    "current demo heavyStrike fixed5/unlimited vs source1D6+2/2uses",
+    "current demo shield +=4 vs source max(old,new)",
+    "only three demo actions, not inventory/equip or full catalog",
+    "multi-unit, node groups, buff duration, rescue/downed-state and result adapters needed"
+  ],
+  "status": "proposed-plan; no new skill/item art made or device run"
+}
