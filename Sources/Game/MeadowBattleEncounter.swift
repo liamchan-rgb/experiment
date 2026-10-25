@@ -29,6 +29,11 @@ struct MeadowBattleActionResult: Equatable {
     let damage: Int
     let healed: Int
     let shieldGained: Int
+    let shieldAbsorbed: Int
+    init(cue: MeadowBattleAnimationCue, damage: Int, healed: Int, shieldGained: Int, shieldAbsorbed: Int = 0) {
+        self.cue = cue; self.damage = damage; self.healed = healed
+        self.shieldGained = shieldGained; self.shieldAbsorbed = shieldAbsorbed
+    }
 }
 
 /// Small, deterministic encounter used by the preview. This models only P1 and
@@ -139,7 +144,7 @@ struct MeadowBattleEncounter {
         incoming -= absorbed
         playerHP = max(0, playerHP - incoming)
         if playerHP == 0 { phase = .defeat }
-        return MeadowBattleActionResult(cue: .enemyStrike, damage: incoming, healed: 0, shieldGained: 0)
+        return MeadowBattleActionResult(cue: .enemyStrike, damage: incoming, healed: 0, shieldGained: 0, shieldAbsorbed: absorbed)
     }
 
     mutating func completeEnemyTurn() {
@@ -183,9 +188,9 @@ struct MeadowBattleImpactClock {
     }
     static let anticipation = 0.4
     static let strikeContact = 1.048
-    static let strikeDuration = 1.68
+    static let strikeDuration = 1.70
     static func strikePoseTime(_ elapsed: Double) -> Double {
         let action = max(0, elapsed - anticipation)
-        return max(0, action - min(0.08, max(0, action - 0.648)))
+        return max(0, action - min(0.10, max(0, action - 0.648)))
     }
 }

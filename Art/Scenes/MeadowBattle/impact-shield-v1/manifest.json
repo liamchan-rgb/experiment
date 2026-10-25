@@ -1,0 +1,97 @@
+{
+  "status": "candidate",
+  "artApproval": null,
+  "sourceAtlas": "source/atlas-clean.png",
+  "sourceSHA256": "1d846b16f62336b4028c66f76250fa07d8f0f0759c5234e441bfa7061230587e",
+  "cuts": {
+    "HeavyArc": {
+      "gridCell": [
+        0,
+        0,
+        627,
+        627
+      ],
+      "contentCrop": [
+        77,
+        112,
+        593,
+        615
+      ],
+      "size": [
+        516,
+        503
+      ]
+    },
+    "HeavySpray": {
+      "gridCell": [
+        627,
+        0,
+        1254,
+        627
+      ],
+      "contentCrop": [
+        61,
+        178,
+        610,
+        565
+      ],
+      "size": [
+        549,
+        387
+      ]
+    },
+    "Barrier": {
+      "gridCell": [
+        0,
+        627,
+        627,
+        1254
+      ],
+      "contentCrop": [
+        200,
+        51,
+        440,
+        567
+      ],
+      "size": [
+        240,
+        516
+      ]
+    },
+    "WardHit": {
+      "gridCell": [
+        627,
+        627,
+        1254,
+        1254
+      ],
+      "contentCrop": [
+        77,
+        88,
+        569,
+        543
+      ],
+      "size": [
+        492,
+        455
+      ]
+    }
+  },
+  "strikeContactNativeEnemy": [
+    125,
+    164
+  ],
+  "previewDarken": 0.45,
+  "castDarken": 0.64,
+  "impactDarkenPeak": 0.82,
+  "hitHoldMs": 100,
+  "shieldStages": [
+    "generation",
+    "sustain",
+    "contact-ripple",
+    "last-point-break"
+  ],
+  "noChargeTiers": true,
+  "deathTiming": "same impact event as HP0 and number",
+  "oldVersionsPreserved": true
+}

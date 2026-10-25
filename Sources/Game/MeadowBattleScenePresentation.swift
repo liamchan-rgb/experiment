@@ -56,12 +56,16 @@ enum MeadowBattleEnemyFrames {
 /// Vector combat feedback is registered to the same battlefield canvas as the
 /// sprites: target ring, short impact arc, ward and healing motes.
 enum MeadowBattleVFXAssets {
+    static let heavyArc = UIImage(named: "BattleVFXHeavyArc")!
+    static let spray = UIImage(named: "BattleVFXHeavySpray")!
+    static let barrier = UIImage(named: "BattleVFXBarrier")!
+    static let wardHit = UIImage(named: "BattleVFXWardHit")!
     static let slash = UIImage(named: "BattleVFXSlash")!
     static let burst = UIImage(named: "BattleVFXBurst")!
     static let ring = UIImage(named: "BattleVFXRing")!
     static let mote = UIImage(named: "BattleVFXMote")!
     static let body = frames("BattleVFXDeathBody", width: 384, height: 256)
-    static let wind = frames("BattleVFXDeathWind", width: 640, height: 320)
+    static let wind = frames("BattleVFXDeathWindHeavy", width: 640, height: 320)
     private static func frames(_ name: String, width: Int, height: Int) -> [UIImage] {
         guard let sheet = UIImage(named: name)?.cgImage else { fatalError("Missing battle VFX atlas") }
         return (0..<48).map { i in
@@ -89,6 +93,10 @@ final class MeadowBattleEffectsView: UIView {
     var messageAtHero = false
     var time: Double = 0
     var groundOnly = false
+    var shieldPreview = false
+    var shieldBirthAge: Double?
+    var shieldContactAge: Double?
+    var shieldBreakAge: Double?
     override init(frame: CGRect) { super.init(frame: frame); isOpaque = false; isUserInteractionEnabled = false }
     required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
     override func draw(_ rect: CGRect) {
@@ -102,18 +110,25 @@ final class MeadowBattleEffectsView: UIView {
             guard alpha > 0 else { return }
             image.draw(in: CGRect(x: center.x-width*unit/2, y: center.y-height*unit/2, width: width*unit, height: height*unit), blendMode: .plusLighter, alpha: alpha)
         }
-        func light(_ center: CGPoint, _ rx: CGFloat, _ ry: CGFloat, _ alpha: CGFloat) {
+        func light(_ center: CGPoint, _ rx: CGFloat, _ ry: CGFloat, _ alpha: CGFloat, _ color: UIColor = UIColor(red:1,green:0.75,blue:0.27,alpha:1)) {
             guard alpha > 0 else { return }
             ctx.saveGState(); ctx.translateBy(x: center.x, y: center.y); ctx.scaleBy(x: rx*unit, y: ry*unit)
-            let colors = [UIColor(red: 1, green: 0.75, blue: 0.27, alpha: alpha).cgColor, UIColor.clear.cgColor] as CFArray
+            let colors = [color.withAlphaComponent(alpha).cgColor, UIColor.clear.cgColor] as CFArray
             let gradient = CGGradient(colorsSpace: CGColorSpaceCreateDeviceRGB(), colors: colors, locations: [0, 1])!
             ctx.setBlendMode(.plusLighter); ctx.drawRadialGradient(gradient, startCenter: .zero, startRadius: 0, endCenter: .zero, endRadius: 1, options: [])
             ctx.restoreGState()
         }
-        let burst = impactAge.map { pulse($0, -0.04, 0.04, 0.4) } ?? 0
+        let burst = impactAge.map { pulse($0, -0.035, 0.035, 0.52) } ?? 0
+        let wardSpawn=shieldBirthAge.map { pulse($0,0,0.10,0.45) } ?? 0
+        let wardContact=shieldContactAge.map { pulse($0,-0.02,0.025,0.38) } ?? 0
         if groundOnly {
-            light(CGPoint(x: impact.x+15*unit, y: enemyFoot.y), 150, 38, burst*0.48)
-            light(impact, 125, 140, burst*0.25)
+            light(CGPoint(x: impact.x+20*unit, y: enemyFoot.y), 235, 55, burst*0.76)
+            light(impact, 195, 190, burst*0.48)
+            light(heroFoot,95,32,(wardSpawn*0.28+wardContact*0.38),.cyan)
+            if let age=impactAge, age<0.5 {
+                let spread=1+CGFloat(max(0,age))*2
+                sprite(MeadowBattleVFXAssets.spray,CGPoint(x:impact.x+45*unit,y:enemyFoot.y-3*unit),260*spread,35,burst*0.55)
+            }
             light(heroFoot, 90, 26, previewPower*previewEnvelope*0.16)
             return
         }
@@ -129,17 +144,35 @@ final class MeadowBattleEffectsView: UIView {
             }
         }
         if let age=impactAge, burst > 0 {
-            let slash=pulse(age,-0.08,0,0.28)
-            sprite(MeadowBattleVFXAssets.slash, impact,155,155,slash)
-            sprite(MeadowBattleVFXAssets.burst,impact,160+CGFloat(max(0,age))*180,160+CGFloat(max(0,age))*180,burst)
-            for i in 0..<14 {
-                let angle=CGFloat(i)*2.399, distance=CGFloat(max(0,age))*CGFloat(80+(i%4)*24)*unit
-                sprite(MeadowBattleVFXAssets.mote,CGPoint(x:impact.x+cos(angle)*distance,y:impact.y+sin(angle)*distance),10,10,burst*0.9)
+            let slash=pulse(age,-0.06,0,0.25)
+            let spread=CGFloat(max(0,age))
+            sprite(MeadowBattleVFXAssets.slash,impact,225,225,slash)
+            sprite(MeadowBattleVFXAssets.heavyArc,impact,245+spread*220,245+spread*220,burst*0.95)
+            sprite(MeadowBattleVFXAssets.burst,impact,205+spread*145,205+spread*145,burst)
+            sprite(MeadowBattleVFXAssets.spray,CGPoint(x:impact.x+(95+spread*75)*unit,y:impact.y-15*unit),250+spread*180,160,burst*0.9)
+            for i in 0..<26 {
+                let angle=CGFloat(i)*2.399
+                let distance=spread*CGFloat(150+(i%5)*38)*unit
+                sprite(MeadowBattleVFXAssets.mote,CGPoint(x:impact.x+cos(angle)*distance,y:impact.y+sin(angle)*distance),CGFloat(i%4==0 ? 22 : 10),CGFloat(i%4==0 ? 7 : 10),burst*0.9)
             }
         }
-        if shield > 0 {
-            let path=UIBezierPath(arcCenter: CGPoint(x:heroFoot.x,y:heroFoot.y-34*unit), radius:43*unit,startAngle:-.pi*0.6,endAngle:.pi*0.6,clockwise:true)
-            UIColor.cyan.withAlphaComponent(0.65).setStroke();path.lineWidth=2*unit;path.stroke()
+        let wardCenter=CGPoint(x:heroFoot.x+15*unit,y:heroFoot.y-65*unit)
+        let wardScale=shieldBirthAge.map { 0.68+0.32*smooth(CGFloat($0/0.28)) } ?? 1
+        var wardAlpha: CGFloat = shield > 0 ? 0.30+wardSpawn*0.5+wardContact*0.38 : 0
+        if shieldPreview { wardAlpha=max(wardAlpha,previewEnvelope*0.12) }
+        if let age=shieldBreakAge, age<0.25 { wardAlpha=max(wardAlpha,0.55*(1-smooth(CGFloat(age/0.25)))) }
+        sprite(MeadowBattleVFXAssets.barrier,wardCenter,88*wardScale,150*wardScale,wardAlpha)
+        if let age=shieldContactAge, age<0.4 {
+            let contact=CGPoint(x:heroFoot.x+38*unit,y:heroFoot.y-65*unit)
+            let size=80+CGFloat(age)*150
+            sprite(MeadowBattleVFXAssets.wardHit,CGPoint(x:contact.x+size*0.33*unit,y:contact.y),size,size,wardContact*0.9)
+        }
+        if let age=shieldBreakAge, age<0.65 {
+            for i in 0..<16 {
+                let angle=CGFloat(i)*2.399, spread=CGFloat(age)*75*unit
+                let center=CGPoint(x:wardCenter.x+cos(angle)*(30*unit+spread),y:wardCenter.y+sin(angle)*(55*unit+spread*0.6))
+                sprite(MeadowBattleVFXAssets.wardHit,center,CGFloat(i%3==0 ? 18 : 10),8,1-smooth(CGFloat(age/0.65)))
+            }
         }
         if cue == .heal {
             for i in 0..<5 {

@@ -373,6 +373,7 @@ private final class MeadowPlayerDetailsView: UIView {
         for (title, action) in definitions {
             let card = MeadowPreviewCard(title: title, text: "")
             card.previewStrength = action == .strike ? 0.9 : 0.28
+            card.previewColor = action == .protection ? .systemCyan : MeadowPreviewPalette.gold
             card.button.addAction(UIAction { [weak self] _ in self?.onAction?(action) }, for: .touchUpInside)
             card.onFocus = { [weak self] active in
                 guard let self else { return }
@@ -430,13 +431,14 @@ private final class MeadowPreviewCard: UIView {
     let button = MeadowSkillButton(type: .system)
     var onFocus: ((Bool) -> Void)?
     var previewStrength: Float = 0.9
+    var previewColor = MeadowPreviewPalette.gold
     init(title titleText: String, text: String) {
         super.init(frame: .zero); backgroundColor = MeadowPreviewPalette.card
         layer.cornerRadius = 9; detail.numberOfLines = 2
         button.installHover()
         button.onFocus = { [weak self] active in
             guard let self else { return }
-            self.layer.shadowColor = MeadowPreviewPalette.gold.cgColor
+            self.layer.shadowColor = self.previewColor.cgColor
             self.layer.shadowRadius = 12; self.layer.shadowOpacity = active ? self.previewStrength * 0.85 : 0
             self.layer.shadowOffset = .zero
             self.onFocus?(active)
