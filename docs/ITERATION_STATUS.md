@@ -2,6 +2,8 @@
 
 ## 2026-10-25 · 新八向模组demo接入 · build39
 
+交付提交 `56f9887ff57e917d028cade1d2693bf01932d754`：[IPA直链](https://raw.githubusercontent.com/liamchan-rgb/experiment/56f9887ff57e917d028cade1d2693bf01932d754/Downloads/MeadowJourney-b39.ipa)、正常八向起停/切向/道路采样GIF和站姿共五份HTTPS均已实际GET，HTTP200/MIME/长度/SHA256一致，GIF帧数/时序/循环与IPA CRC通过；本次97条源与交付路径远端字节一致。回执 `Art/Review/P1/modular-demo-v1/delivery.json`。
+
 新统一八向分层资源已接入demo，build39 /1.6.13。用户“开始下一项工作”授权集成，不扩大新美术认可。当前提供两套已展示预设“林间绿衣”“行旅蓝衣”，同一baseID，主地图/步态测试可从“P1 衣装”选择；位置/方向/距离相位不重置。部件仍由通用装配器离线烘焙，不宣称任意部件实时自由混搭已完成。
 
 新增13列源图集、起停运行帧25..28与足点，前景与Metal阴影使用相同UV/外观快照，阴影图集预传而非逐帧上传。P2/P3保持原资源/足点；旧P1图集和footJSON备份在 `Art/Integration/P1-modular-demo-v1/source/`。同一208格实际装配/导入逐像素保持，16894既有美术文件不改，11个导入输出重导逐字节一致。原五度方向防抖、投影距离度量和24刻度采样保留，浮点刻度边界加1e-9容差。

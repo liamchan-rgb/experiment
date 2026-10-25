@@ -10,7 +10,7 @@
 https://raw.githubusercontent.com/liamchan-rgb/experiment/fix/build33-face-grounding-camera/Downloads/MeadowJourney-b39.ipa
 ```
 
-23,616,706字节，SHA256 `9d68ac09c8e46c592a4a5fa9f1ddad837c57c06b430506fc34ada2449b5e112d`。Xcode16.4设备Release归档/四项纯Swift检查与包完整性通过，沿用SideStore重签安装；未运行模拟器或实机，实际显示/阴影/操作由用户反馈。下载直链GET回执见本轮审核目录。
+23,616,706字节，SHA256 `9d68ac09c8e46c592a4a5fa9f1ddad837c57c06b430506fc34ada2449b5e112d`。Xcode16.4设备Release归档/四项纯Swift检查与包完整性通过，沿用SideStore重签安装；未运行模拟器或实机，实际显示/阴影/操作由用户反馈。已匿名GET直接IPA，HTTP200/application/octet-stream/23,616,706字节/SHA256一致；[回执](../Art/Review/P1/modular-demo-v1/delivery.json)。
 
 ## 历史版本：左上落脚过渡修订 · 1.6.12 build38
 

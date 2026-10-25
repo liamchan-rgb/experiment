@@ -605,7 +605,11 @@
       "third all8direction appearance zero engine change acceptance",
       "complete rig marker normalization",
       "runtime free part mixing"
-    ]
+    ],
+    "delivery": "Art/Review/P1/modular-demo-v1/delivery.json",
+    "deliveryCommit": "56f9887ff57e917d028cade1d2693bf01932d754",
+    "verifiedHttpsFiles": 5,
+    "remoteByteIdenticalPaths": 97
   },
   "progressHistory": [
     {

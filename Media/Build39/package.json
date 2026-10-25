@@ -33,12 +33,23 @@
     "productionPoseMathSwift": true,
     "modularLocomotionSwift": true,
     "logsArtifactDigest": true,
-    "matchesRemotePackageChecksum": true
+    "matchesRemotePackageChecksum": true,
+    "rawDirectDownload": true
   },
   "review": "Art/Review/P1/modular-demo-v1",
   "installation": "Unsigned iPhoneOS IPA for existing SideStore re-signing workflow; direct IPA delivery",
   "simulatorRunPerformed": false,
   "physicalDeviceRunPerformed": false,
   "uiTestsExecuted": false,
-  "userNewMotionArtApproval": null
+  "userNewMotionArtApproval": null,
+  "downloadURL": "https://raw.githubusercontent.com/liamchan-rgb/experiment/56f9887ff57e917d028cade1d2693bf01932d754/Downloads/MeadowJourney-b39.ipa",
+  "directDownloadVerification": {
+    "file": "Downloads/MeadowJourney-b39.ipa",
+    "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/56f9887ff57e917d028cade1d2693bf01932d754/Downloads/MeadowJourney-b39.ipa",
+    "status": 200,
+    "contentType": "application/octet-stream",
+    "bytes": 23616706,
+    "sha256": "9d68ac09c8e46c592a4a5fa9f1ddad837c57c06b430506fc34ada2449b5e112d",
+    "directIPA": true
+  }
 }
