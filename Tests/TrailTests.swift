@@ -389,14 +389,11 @@ final class TrailTests: XCTestCase {
 
     func testIndependentRetinaAssetsAreBundledWithoutFlattenedMap() {
         XCTAssertNil(UIImage(named: "MapBackground"))
-        for name in ["Hero1Directions", "Hero2Directions", "Hero3Directions"] {
-            XCTAssertEqual(UIImage(named: name)?.cgImage?.width, 6400)
+        for hero in 0..<3 { for diagonal in [false, true] {
+            let name = HeroFrames.atlasName(heroIndex: hero, diagonal: diagonal)
+            XCTAssertEqual(UIImage(named: name)?.cgImage?.width, HeroFrames.rasterColumns(heroIndex: hero) * 256)
             XCTAssertEqual(UIImage(named: name)?.cgImage?.height, 1024)
-        }
-        for name in ["Hero1Diagonals", "Hero2Diagonals", "Hero3Diagonals"] {
-            XCTAssertEqual(UIImage(named: name)?.cgImage?.width, 6400)
-            XCTAssertEqual(UIImage(named: name)?.cgImage?.height, 1024)
-        }
+        } }
         for name in ["OakA", "OakB", "WatchTower", "CampTent", "MeadowGround", "Banner"] {
             XCTAssertNotNil(UIImage(named: name))
         }
@@ -617,7 +614,7 @@ final class TrailTests: XCTestCase {
             XCTAssertEqual(pose.bodyOffset(), .zero)
             let rect = HeroFrames.atlasRect(facing: facing, frame: frame, heroIndex: hero)
             let source = HeroFrames.sourceColumn(frame: frame, heroIndex: hero)
-            let columns = HeroFrames.authoredFrameCount(heroIndex: hero) + 1
+            let columns = HeroFrames.rasterColumns(heroIndex: hero)
             XCTAssertEqual(rect.x + rect.z / 2, (Float(source) + 0.5) / Float(columns), accuracy: 0.00001)
             XCTAssertLessThanOrEqual(rect.x + rect.z, 1.00001)
         } } }
@@ -651,7 +648,13 @@ final class TrailTests: XCTestCase {
                     XCTAssertGreaterThan(change, 0.02, "Legacy anatomical boot must exchange ground depth, hero \(hero), facing \(facing), leg \(leg)")
                 }
             }
-            XCTAssertGreaterThan(changes.max() ?? 0, 0.02, "Authored contacts must change ground depth")
+            if hero > 0 {
+                XCTAssertGreaterThan(changes.max() ?? 0, 0.02, "Legacy contacts must change ground depth")
+            } else {
+                // New P1 supplies registered2D sole markers. Do not require the
+                // old full-character atlas's invented3D lift/depth amplitude.
+                XCTAssertNotEqual(a.footLandmarks, b.footLandmarks, "Authored P1 support phases must have different sole registration")
+            }
         } }
     }
 
@@ -811,7 +814,7 @@ final class TrailTests: XCTestCase {
         for hero in 1...3 {
             let poses = HeroFrames.load(hero)
             XCTAssertEqual(poses.count, 8)
-            XCTAssertTrue(poses.allSatisfy { $0.count == 25 })
+            XCTAssertTrue(poses.allSatisfy { $0.count == HeroFrames.columns })
             for facing in 0..<8 {
                 let hashes = Set((1...24).map { frame -> Data in
                     let image = poses[facing][frame].cgImage()
@@ -820,6 +823,26 @@ final class TrailTests: XCTestCase {
                 XCTAssertEqual(hashes.count, HeroFrames.authoredFrameCount(heroIndex: hero - 1),
                                "Use exactly the authored poses; P1 has eight, P2/P3 retain 24")
             }
+        }
+    }
+
+    func testModularP1SharesTransitionSamplingAcrossBothAppearancesAndShadowUVs() throws {
+        XCTAssertEqual(HeroFrames.appearanceTitles.count, 2)
+        XCTAssertEqual(HeroFrames.rasterColumns(heroIndex: 0), 13)
+        let plan = try XCTUnwrap(HeroFrames.locomotionPlan)
+        XCTAssertEqual(plan.startFrames, [25, 26]); XCTAssertEqual(plan.stopFrames, [27, 28])
+        for appearance in HeroFrames.appearanceTitles.indices {
+            let poses = HeroFrames.load(1, appearanceIndex: appearance)
+            for facing in 0..<8 { for frame in 25...28 {
+                XCTAssertEqual(HeroFrames.sourceColumn(frame: frame), frame - 16)
+                XCTAssertEqual(HeroFrames.sourceColumn(frame: frame, heroIndex: 1), 0)
+                let rect = HeroFrames.atlasRect(facing: facing, frame: frame)
+                XCTAssertEqual(rect.x, Float(frame - 16) / 13, accuracy: 0.00001)
+                XCTAssertNotNil(poses[facing][frame].cgImage())
+                let pose = HeroPose(heroIndex: 0, facing: facing, frame: frame, phase: 0)
+                XCTAssertEqual(pose.frame, frame)
+                XCTAssertEqual(pose.sourcePositions, pose.destinationPositions())
+            } }
         }
     }
 

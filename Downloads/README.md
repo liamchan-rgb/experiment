@@ -1,6 +1,18 @@
 # SideStore 安装与迭代包
 
-## 当前版本：左上落脚过渡修订 · 1.6.12 build38
+## 当前版本：新分层八向人物接入 · 1.6.13 build39
+
+主地图点“P1 衣装”切换“林间绿衣”/“行旅蓝衣”，同一身体、显示与阴影同步，转向保留步相。起步/收步采用专用帧；停步会先在原地完成到指定出口的循环余段，再收脚。
+
+[直接下载 MeadowJourney-b39.ipa](https://raw.githubusercontent.com/liamchan-rgb/experiment/fix/build33-face-grounding-camera/Downloads/MeadowJourney-b39.ipa) · [来源校验](MeadowJourney-build39.json) · [正常八向起停GIF](../Art/Review/P1/modular-demo-v1/demo-eight-way-start-stop-120ms.gif) · [交付记录](../Media/Build39/README.md)
+
+```text
+https://raw.githubusercontent.com/liamchan-rgb/experiment/fix/build33-face-grounding-camera/Downloads/MeadowJourney-b39.ipa
+```
+
+23,616,706字节，SHA256 `9d68ac09c8e46c592a4a5fa9f1ddad837c57c06b430506fc34ada2449b5e112d`。Xcode16.4设备Release归档/四项纯Swift检查与包完整性通过，沿用SideStore重签安装；未运行模拟器或实机，实际显示/阴影/操作由用户反馈。下载直链GET回执见本轮审核目录。
+
+## 历史版本：左上落脚过渡修订 · 1.6.12 build38
 
 P1左上动画第02姿势增加左脚下降接地前的过渡，右脚继续支撑，再接第03姿势承重。120ms正常节奏保持，运行图集与足底数据同步；只修改左上02，保留原稿与历史修订。build37的可交互林地战斗仍包含在包中。
 
