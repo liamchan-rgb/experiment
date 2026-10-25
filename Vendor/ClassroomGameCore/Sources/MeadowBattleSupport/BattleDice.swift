@@ -65,3 +65,14 @@ extension PartyVisual {
         return PartyMonsterPose(progress:p,scaleY:1+breathing-prepare-hit*0.012,recoil:hit*14,flash:hit*0.65)
     }
 }
+
+extension PartyVisual {
+    public static func diceAnchor(actor:String,intent:PartyIntent?,age:Double,shielded:Bool=false)->PartyPoint {
+        let foot=feet[actor]!,moving=intent?.actor==actor ? travel(intent,age:age,shielded:shielded):PartyPoint(0,0)
+        var inset=0.0
+        if let intent,!intent.enemy,intent.action.visual=="attack",intent.actor==actor,let to=feet[intent.target] {
+            inset=18*min(1,abs(moving.x)/max(1,abs(to.x-140-foot.x)))
+        }
+        return PartyPoint(foot.x+moving.x-inset,foot.y+moving.y-(actor.hasPrefix("m") ? 337:267))
+    }
+}

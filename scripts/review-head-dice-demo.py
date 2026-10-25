@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
 """Receipt-bound dice/monster review; offline composition, not UIKit/device capture."""
 from pathlib import Path
-import sys,json,math,os,subprocess
+import sys,json,math,os,subprocess,functools
 from PIL import Image,ImageDraw,ImageFont,ImageChops
 R=Path(__file__).resolve().parents[1];D=R/'Art/Review/Battle/dice-party-demo-v1';D.mkdir(exist_ok=True,parents=True)
 p=R/'scripts/review-party-support-demo.py';env={'__file__':str(p)};exec(compile(p.read_text().split('\nreports={}')[0],str(p),'exec'),env)
 asset,render,sample,shadow,compose,glow=[env[k] for k in ['asset','render','sample','shadow','compose','glow']]
+asset=functools.lru_cache(None)(asset)
 feet,hs,es=env['feet'],env['hs'],env['es'];rows=json.loads((D/'dice-frames.json').read_text());requests=[]
 # Request production attachment/particle fields from exact receipt transitions.
 for scenario in dict.fromkeys(r['scenario'] for r in rows):
@@ -53,6 +54,8 @@ plate=env['env']['plate'].resize((1000,918),Image.Resampling.LANCZOS) if 'env' i
 # Use source four layers, not a recropped old preview.
 scene_layers=[asset(n).resize((1000,918),Image.Resampling.LANCZOS) for n in ['MeadowCampFarForest','MeadowCampGround','MeadowCampMidground','MeadowCampForeground']]
 world_h=round(stage[3]/scene_scale);oy=(world_h-600)/2
+env['compose'].__globals__['H']=world_h
+shadow.__globals__['W']=1000;shadow.__globals__['H']=world_h
 back=Image.new('RGBA',(1000,world_h),'#1a2b20')
 for im in scene_layers[:3]:back.alpha_composite(im,(0,round(oy-159)))
 fg=Image.new('RGBA',back.size);fg.alpha_composite(scene_layers[3],(0,round(oy-159)))
@@ -88,7 +91,7 @@ def scene(row):
   else:
    motion=u['monster'];dage=u['deathAge'];im=bodies[min(47,max(0,int(dage*60)))] if dage is not None else attacks[min(7,int(motion['progress']*8))]
    sy=1 if dage is not None else motion['scaleY'];recoil=0 if dage is not None else motion['recoil'];xx=x+dx-178.5*es+recoil;yy=y+dy-240*es*sy
-   shadow(f,im,xx,yy+oy,es);size=(round(384*es),round(256*es*sy));im=im.resize(size,Image.Resampling.NEAREST)
+   shadow(f,im,xx,yy+oy,es,alpha=1 if dage is None else 1-env['smooth'](dage/.75));size=(round(384*es),round(256*es*sy));im=im.resize(size,Image.Resampling.NEAREST)
    if dage is None and motion['flash']>0:
     white=Image.new('RGBA',size,'white');white.putalpha(im.getchannel('A').point(lambda a:round(a*motion['flash'])));im.alpha_composite(white)
    f.alpha_composite(im,(round(xx),round(yy+oy)))
@@ -119,10 +122,10 @@ def scene(row):
   dd.rectangle((x-80,yy+27,x+80,yy+34),fill='#06110a')
   if u['hp']>0:dd.rectangle((x-80,yy+27,x-80+160*u['hp']/u['maxHP'],yy+34),fill='#43d177')
   if u['shield']>0:dd.rectangle((x-80,yy+36,x-80+160*u['shield']/8,yy+40),fill='#41cfee')
- x,y=feet[row['actor']];dx=travel['x'] if row['playing'] else 0;dy=travel['y'] if row['playing'] else 0
+ x=row['diceAnchor']['x'];y=row['diceAnchor']['y'];dx=0;dy=0
  for i,(die,pose) in enumerate(zip(row['dice'],row['dicePose'])):
   im=die_image(die,pose);im=im.resize((round(100*pose['scale']),round(110*pose['scale'])),Image.Resampling.BICUBIC).rotate(-math.degrees(pose['angle']),Image.Resampling.BICUBIC,expand=True);im.putalpha(im.getchannel('A').point(lambda a:round(a*pose['alpha'])))
-  cx=x+dx+(i-(len(row['dice'])-1)/2)*62;cy=y+dy-(337 if row['actor'].startswith('m') else 267)+43+oy+pose['offsetY']
+  cx=x+dx+(i-(len(row['dice'])-1)/2)*62;cy=y+43+oy+pose['offsetY']
   f.alpha_composite(im,(round(cx-im.width/2),round(cy-50)))
  return f
 
@@ -141,7 +144,10 @@ def ui(row,world):
  if cur:d.line((xs[0],y,xs[cur],y),fill='#eac668',width=5)
  for uid,x in zip(ids,xs):
   current=uid==row['current'];d.ellipse((x-22,y-22,x+22,y+22),fill='#293c2d',outline='#eac668' if current or uid in row['acted'] else '#829476',width=3 if current else 2)
-  text(d,(x-14,y-16),'♟' if uid.startswith('p') else '♞',24)
+  if uid.startswith('p'):
+   im=asset('Hero'+uid[1:]+'Directions');cell=im.height//4;im=im.crop((0,0,cell,cell)).resize((40,40),Image.Resampling.NEAREST);f.paste(im,(x-20,y-20),im)
+  else:
+   for px,py,rx,ry in [(-9,-7,4,6),(0,-12,4,6),(9,-7,4,6),(0,6,10,8)]:d.ellipse((x+px-rx,y+py-ry,x+px+rx,y+py+ry),fill='#eac668')
   text(d,(x-25,y+25),uid.upper() if uid.startswith('p') else '鹿灵'+('甲' if uid=='m1' else '乙'),16)
   if current:text(d,(x-8,y-34),'▼',14)
  u=next(u for u in row['units'] if u['id']==row['current'])
@@ -160,8 +166,9 @@ def ui(row,world):
 
 if '--still' in sys.argv:
  row=next(r for r in rows if r['scenario']=='support' and r['frame']==25);ui(row,scene(row)).save(D/'layout-first.png');sys.exit(0)
-reports={}
+reports=json.loads((D/'review-render.json').read_text())['animations'] if (D/'review-render.json').exists() else {}
 for scenario in dict.fromkeys(r['scenario'] for r in rows):
+ if '--only' in sys.argv and scenario not in sys.argv[sys.argv.index('--only')+1:]:continue
  group=[r for r in rows if r['scenario']==scenario];frames=[ui(row,scene(row)) for row in group]
  pal=Image.new('RGB',(CW*3,CH*3))
  for j,k in enumerate([0,15,40,55,70,85,100,len(frames)//2,len(frames)-1]):pal.paste(frames[k],(j%3*CW,j//3*CH))

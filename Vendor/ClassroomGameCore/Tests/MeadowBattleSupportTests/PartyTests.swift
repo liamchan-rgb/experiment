@@ -147,3 +147,15 @@ extension PartyTests {
         XCTAssertEqual(PartyVisual.monster(time:1,attackAge:0.96).progress,1)
     }
 }
+extension PartyTests {
+    func testHeadDiceClearEnemyBarDuringForwardStrike() throws {
+        let p=try PartyEncounter(seed:49)
+        try p.engine.apply(.endTurn(actor:"p2",timedOut:false))
+        let i=try XCTUnwrap(p.prepare(.attack,target:"m1"))
+        let anchor=PartyVisual.diceAnchor(actor:i.actor,intent:i,age:1.048)
+        let rightFace=anchor.x+31+27
+        XCTAssertLessThan(rightFace,PartyVisual.feet[i.target]!.x-84-10)
+        let idle=PartyVisual.diceAnchor(actor:i.actor,intent:nil,age:0)
+        XCTAssertEqual(idle.x,PartyVisual.feet[i.actor]!.x)
+    }
+}

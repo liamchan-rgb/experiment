@@ -546,7 +546,7 @@ final class MeadowBattleLandscapeView: UIView {
         let dieUnit=canvas.bounds.width/760
         let dieFoot=diceAtEnemy ? enemyFoot:heroFoot
         diceView.bounds=CGRect(x:0,y:0,width:220,height:100)
-        diceView.center=CGPoint(x:dieFoot.x,y:dieFoot.y-(diceAtEnemy ? 287:217)*dieUnit)
+        diceView.center=CGPoint(x:dieFoot.x-(cue == .strike ? 18*approach()*dieUnit:0),y:dieFoot.y-(diceAtEnemy ? 287:217)*dieUnit)
         diceView.transform=CGAffineTransform(scaleX:dieUnit,y:dieUnit)
         diceView.time=sceneTime;diceView.visibleAge=sceneTime-diceVisibleAt;diceView.resolvedAge=diceSettledAt.map { sceneTime-$0 };diceView.exitAge=diceExitAt.map { sceneTime-$0 };diceView.setNeedsDisplay()
         let contact = MeadowBattleAnimation.sample(clip: "attack", progress: 0.54)

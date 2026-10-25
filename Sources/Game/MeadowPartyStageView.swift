@@ -190,10 +190,8 @@ final class MeadowPartyStageView:UIView {
             let build=castDim+(peak-castDim)*PartyVisual.smooth(age/0.4)
             dim.alpha=CGFloat(build*(1-PartyVisual.smooth((age-1.2)/0.6)))
         } else { dim.alpha=CGFloat(previewDarkness()) }
-        if let foot=PartyVisual.feet[diceActor] {
-            let offset=intent?.actor==diceActor ? moving:PartyPoint(0,0)
-            diceView.frame=CGRect(x:foot.x+offset.x-110,y:foot.y+offset.y-(diceActor.hasPrefix("m") ? 337:267),width:220,height:100)
-        }
+        let anchor=PartyVisual.diceAnchor(actor:diceActor,intent:intent,age:age,shielded:meetsShield)
+        diceView.frame=CGRect(x:anchor.x-110,y:anchor.y,width:220,height:100)
         diceView.time=sceneTime;diceView.visibleAge=sceneTime-diceVisibleAt
         diceView.resolvedAge=diceSettledAt.map { sceneTime-$0 };diceView.exitAge=diceExitAt.map { sceneTime-$0 };diceView.setNeedsDisplay()
         fx.intent=intent;fx.meetsShield=meetsShield;fx.age=age;fx.time=sceneTime;fx.focus=focus;fx.focusTarget=focusTarget
