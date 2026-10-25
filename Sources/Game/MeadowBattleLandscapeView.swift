@@ -323,7 +323,7 @@ final class MeadowBattleLandscapeView: UIView {
             if diceView.dice.isEmpty || diceAtEnemy != (value == .enemyStrike) { diceVisibleAt=sceneTime }
             diceAtEnemy=value == .enemyStrike;diceSettledAt=nil;diceExitAt=nil;diceCastAt=sceneTime;diceCastFrom=initial
             diceView.dice=[BattleDie(value == .heal ? "green":value == .guardPose ? "blue":"red",label:"定值")]
-        } else { diceView.dice=[] }
+        } else { diceExitAt=sceneTime }
         self.completion = nil; cue = value; cueElapsed = 0
         self.completion = completion; impactHandler = onImpact; terminalClip = nil
         shieldFormationBase = 0
