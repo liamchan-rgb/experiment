@@ -1,0 +1,55 @@
+{
+  "date": "2026-10-25",
+  "status": "imported-for-offline-review",
+  "artApproval": null,
+  "source": "Art/Integration/P1-modular-eight-way-v1",
+  "body": "p1-eight-way-base-v1",
+  "loadouts": [
+    {
+      "id": "forester",
+      "title": "林间绿衣",
+      "atlasNames": [
+        "Hero1Directions",
+        "Hero1Diagonals"
+      ]
+    },
+    {
+      "id": "wayfarer",
+      "title": "行旅蓝衣",
+      "atlasNames": [
+        "P1WayfarerDirections",
+        "P1WayfarerDiagonals"
+      ]
+    }
+  ],
+  "actualComposedCells": 208,
+  "rasterColumns": 13,
+  "distanceClockTicks": 24,
+  "transitionVirtualFrames": [
+    25,
+    26,
+    27,
+    28
+  ],
+  "directionOrder": [
+    "down",
+    "left",
+    "up",
+    "right",
+    "down-right",
+    "down-left",
+    "up-left",
+    "up-right"
+  ],
+  "pixelChangesDuringImport": 0,
+  "contentFit": false,
+  "originalAtlasBackup": "source/",
+  "outputs": {
+    "Sources/Resources/Assets.xcassets/Hero1Directions.imageset/Hero1Directions.png": "6f4c3dc116974b24799243d87f70ed483dc398aefc0d5ee81e214a9255a3b702",
+    "Sources/Resources/Assets.xcassets/Hero1Diagonals.imageset/Hero1Diagonals.png": "c5853ac0bfe8ed7fc9d8b7d0a6891638d0e2656d893d2243ecc5c39705ba19dd",
+    "Sources/Resources/Assets.xcassets/P1WayfarerDirections.imageset/P1WayfarerDirections.png": "d54ff95577a8d8399b323f4e53206f1dff93a660ac98cd7259978bfa7c499711",
+    "Sources/Resources/Assets.xcassets/P1WayfarerDiagonals.imageset/P1WayfarerDiagonals.png": "aba51ecb542cdf5317be32fcb3894ace607ea6198e435665e983cc4a06c7803a",
+    "Sources/Resources/hero-gait.json": "038b27250c07c3df3497c41bfba98505a145f46bf129eee64e685272ef3de9d3"
+  },
+  "deviceExecuted": false
+}

@@ -11,6 +11,7 @@ final class MeadowShadowRenderer: NSObject, MTKViewDelegate {
         let facing: Int
         let frame: Int
         let phase: CGFloat
+        let appearanceIndex: Int
 
         init(_ hero: MeadowHeroCaster) {
             index = hero.index
@@ -18,6 +19,7 @@ final class MeadowShadowRenderer: NSObject, MTKViewDelegate {
             facing = hero.facing
             frame = hero.frame
             phase = hero.phase
+            appearanceIndex = hero.appearanceIndex
         }
     }
 
@@ -145,12 +147,11 @@ final class MeadowShadowRenderer: NSObject, MTKViewDelegate {
         }
         // Upload each hero atlas once during loading. Changing a walk frame
         // only changes UV bounds; it never decodes/crops/uploads on a live frame.
-        for hero in 1...3 { for suffix in ["Directions", "Diagonals"] {
-            let name = "Hero\(hero)\(suffix)"
+        for (index, name) in HeroFrames.atlasNames.enumerated() {
             guard let atlas = assetImage(name) else { throw ShadowLabError.setup("人物投影素材缺失") }
             textures[name] = try upload(atlas)
-            progress?(0.85 + Double((hero - 1) * 2 + (suffix == "Directions" ? 1 : 2)) / 6 * 0.13, "上传人物投影图集")
-        } }
+            progress?(0.85 + Double(index + 1) / Double(HeroFrames.atlasNames.count) * 0.13, "上传人物投影图集")
+        }
         guard let grass = assetImage("MeadowGround") else { throw ShadowLabError.setup("地表素材缺失") }
         textures["MeadowGround"] = try upload(grass)
         textures["RoadMask"] = try upload(roadMask)
@@ -190,8 +191,8 @@ final class MeadowShadowRenderer: NSObject, MTKViewDelegate {
     }
 
     private func heroTexture(_ hero: MeadowHeroCaster) throws -> MTLTexture {
-        let suffix = hero.facing < 4 ? "Directions" : "Diagonals"
-        let name = "Hero\(hero.index + 1)\(suffix)"
+        let name = HeroFrames.atlasName(heroIndex: hero.index, diagonal: hero.facing >= 4,
+                                       appearanceIndex: hero.appearanceIndex)
         guard let texture = textures[name] else { throw ShadowLabError.setup("人物投影图集未加载") }
         return texture
     }
@@ -431,6 +432,7 @@ struct MeadowHeroCaster {
     let facing: Int
     let frame: Int
     var phase: CGFloat = 0
+    var appearanceIndex: Int = 0
 }
 
 struct MeadowFrameState {

@@ -45,6 +45,7 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
     private let gaitSlowButton = UIButton(type: .system)
     private let gaitStepButton = UIButton(type: .system)
     private let gaitLayeredPreviewButton = UIButton(type: .system)
+    private let p1AppearanceButton = UIButton(type: .system)
     private var gaitDirectionButtons: [UIButton] = []
     private var gaitCaptureTimer: Timer?
     private var gestureZoom: CGFloat = 1
@@ -230,6 +231,7 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
                                       y: top + 2, width: 100, height: button)
         let battleX = battlePreviewActive ? titleButton.frame.maxX + 8 : gaitTestButton.frame.maxX + 8
         battlePreviewButton.frame = CGRect(x: battleX, y: top + 2, width: 104, height: button)
+        p1AppearanceButton.frame = CGRect(x: battlePreviewButton.frame.maxX + 8, y: top + 2, width: 112, height: button)
         let panelWidth = min(960, max(1, mapWidth - 32))
         gaitPanel.frame = CGRect(x: (view.bounds.width - panelWidth) / 2,
                                  y: view.bounds.height - max(inset.bottom, 12) - 194, width: panelWidth, height: 194)
@@ -392,6 +394,7 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
         shadowLabButton.isEnabled = enabled
         gaitTestButton.isEnabled = enabled
         battlePreviewButton.isEnabled = enabled
+        p1AppearanceButton.isEnabled = enabled
         gaitPanel.isUserInteractionEnabled = enabled
     }
 
@@ -432,6 +435,19 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
             self?.scene.toggleGaitTest(); self?.refreshGaitControls()
         }, for: .touchUpInside)
         view.addSubview(gaitTestButton)
+        p1AppearanceButton.configuration = style
+        p1AppearanceButton.configuration?.title = "P1 衣装"
+        p1AppearanceButton.accessibilityIdentifier = "p1Appearance"
+        p1AppearanceButton.showsMenuAsPrimaryAction = true
+        p1AppearanceButton.menu = UIMenu(children: HeroFrames.appearanceTitles.enumerated().map { index, title in
+            UIAction(title: title) { [weak self] _ in
+                guard let self else { return }
+                self.scene.selectP1Appearance(index)
+                self.p1AppearanceButton.configuration?.title = title
+            }
+        })
+        p1AppearanceButton.isHidden = HeroFrames.appearanceTitles.isEmpty
+        view.addSubview(p1AppearanceButton)
         gaitPanel.axis = .vertical; gaitPanel.spacing = 6
         gaitPanel.isLayoutMarginsRelativeArrangement = true
         gaitPanel.layoutMargins = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
@@ -513,6 +529,7 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
     private func setBattlePreviewActive(_ active: Bool) {
         guard active != battlePreviewActive else { return }
         guard scene.gaitTest == nil else { return }
+        p1AppearanceButton.isHidden = active || HeroFrames.appearanceTitles.isEmpty
         if active { metricsHiddenBeforeBattlePreview = metricsLabel.isHidden }
         if active { scene.beginBattlePreviewCamera() }
         battlePreviewActive = active

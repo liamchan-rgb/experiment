@@ -99,6 +99,10 @@ struct RoadMotionRegression {
         simulation.advance(0.12)
         require(simulation.point(for: 0) != beforePlayback,
                 "P1 route must advance while playback is active")
+        let beforeGate = simulation.point(for: 0), otherBefore = simulation.point(for: 1)
+        simulation.advance(0.12, p1CanTravel: false)
+        require(simulation.point(for: 0) == beforeGate, "authored entry gate holds P1 route")
+        require(simulation.point(for: 1) != otherBefore, "P1 entry must not pause P2/P3")
         simulation.togglePlayback()
         let pausedPoint = simulation.point(for: 0)
         simulation.advance(0.12)

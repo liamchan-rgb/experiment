@@ -66,6 +66,7 @@ jobs:
           check_failed=0
           bash scripts/check-battle-encounter.sh 2>&1 | tee build/logs/battle-logic.log || check_failed=1
           bash scripts/check-road-motion.sh 2>&1 | tee build/logs/road-logic.log || check_failed=1
+          bash scripts/check-modular-locomotion.sh build/logs/modular-locomotion-trace.json 2>&1 | tee build/logs/modular-locomotion.log || check_failed=1
           bash scripts/check-battle-animation.sh 2>&1 | tee build/logs/battle-pose.log || check_failed=1
           exit "$check_failed"
 

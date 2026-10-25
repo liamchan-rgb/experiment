@@ -11,6 +11,9 @@ final class GameScene: SKScene {
     private var layeredP1Frames: [SKTexture]?
     private(set) var layeredPreview = false
     private var walks = [WalkCycle(), WalkCycle(), WalkCycle()]
+    private var p1Locomotion = AuthoredLocomotion(plan: HeroFrames.locomotionPlan)
+    private(set) var p1AppearanceIndex = 0
+    private var p1AppearanceFrames: [Int: [[SKTexture]]] = [:]
     private(set) var gaitTest: GaitTest?
     private var gaitHiddenNodes: [(SKNode, Bool)] = []
     private var gaitMapCamera: (CGPoint, CGFloat)?
@@ -320,6 +323,16 @@ final class GameScene: SKScene {
         publishDiagnostics()
     }
     func toggleGaitPause() { gaitTest?.paused.toggle(); publishDiagnostics() }
+    func selectP1Appearance(_ index: Int) {
+        guard HeroFrames.appearanceTitles.indices.contains(index), index != p1AppearanceIndex else { return }
+        if p1AppearanceFrames[p1AppearanceIndex] == nil { p1AppearanceFrames[p1AppearanceIndex] = frames[0] }
+        if p1AppearanceFrames[index] == nil { p1AppearanceFrames[index] = HeroFrames.load(1, appearanceIndex: index) }
+        p1AppearanceIndex = index
+        frames[0] = p1AppearanceFrames[index]!
+        // The cast snapshot carries the same appearance as this foreground frame.
+        // Selection does not reset the actor's route, facing or distance phase.
+        updateActors(before: nil); publishDiagnostics()
+    }
     func toggleGaitSlow() { gaitTest?.slow.toggle(); publishDiagnostics() }
     func stepGait() {
         guard gaitTest != nil else { return }
@@ -340,6 +353,7 @@ final class GameScene: SKScene {
         selectionRing.isHidden = true
         destinationRing.isHidden = true
         walks = [WalkCycle(), WalkCycle(), WalkCycle()]
+        p1Locomotion.reset()
         cameraCenter = CGPoint(x: 640, y: 360)
         zoom = 1
         layoutWorld()
@@ -366,8 +380,9 @@ final class GameScene: SKScene {
         } else {
             let previous = actors.indices.map { simulation.point(for: $0) }
             let wasPlaying = simulation.isPlaying
-            simulation.advance(delta)
-            updateActors(before: previous)
+            let requested = simulation.isPlaying && !simulation.travelers[0].isWaiting
+            simulation.advance(delta, p1CanTravel: p1Locomotion.allowsTravel(requested: requested))
+            updateActors(before: previous, seconds: delta)
             if wasPlaying != simulation.isPlaying { onPlaybackChanged?(simulation.isPlaying) }
             if let discovery = pendingDiscovery, simulation.travelers[simulation.selected].isWaiting {
                 completeDiscovery(discovery)
@@ -396,22 +411,31 @@ final class GameScene: SKScene {
         let heroIndices = layeredPreview ? [0, 1] : Array(actors.indices)
         let heroes = heroIndices.map { index -> MeadowHeroCaster in
             let pose = actorPose(index)
-            return MeadowHeroCaster(index: layeredPreview ? 0 : index, foot: actorPoint(index), facing: pose.facing, frame: pose.frame, phase: pose.phase)
+            return MeadowHeroCaster(index: layeredPreview ? 0 : index, foot: actorPoint(index), facing: pose.facing,
+                                    frame: pose.frame, phase: pose.phase, appearanceIndex: index == 0 ? p1AppearanceIndex : 0)
         }
         return MeadowFrameState(world: world, camera: MeadowViewport(world: world, scene: self, viewSize: viewSize), time: environmentTime, heroes: heroes, includeEnvironment: gaitTest == nil)
     }
 
     private func actorPoint(_ index: Int) -> CGPoint { gaitTest?.point(for: index) ?? simulation.point(for: index) }
     private func actorPose(_ index: Int) -> HeroPose {
-        HeroPose(heroIndex: layeredPreview && index < 2 ? 0 : index, facing: gaitTest?.facing ?? walks[index].facing,
-                 frame: gaitTest?.frame ?? walks[index].frame, phase: gaitTest?.phase ?? walks[index].phase)
+        let modular = index == 0 && HeroFrames.locomotionPlan != nil
+        return HeroPose(heroIndex: layeredPreview && index < 2 ? 0 : index,
+                        facing: gaitTest?.facing ?? (modular ? p1Locomotion.facing : walks[index].facing),
+                        frame: gaitTest?.frame ?? (modular ? p1Locomotion.frame : walks[index].frame),
+                        phase: gaitTest?.phase ?? (modular ? p1Locomotion.phase : walks[index].phase))
     }
 
-    private func updateActors(before: [CGPoint]?) {
+    private func updateActors(before: [CGPoint]?, seconds: TimeInterval = 0) {
         for index in actors.indices {
             let point = actorPoint(index)
             if gaitTest == nil, let before {
                 walks[index].advance(from: before[index], to: point)
+                if index == 0 {
+                    p1Locomotion.advance(from: before[index], to: point, seconds: seconds,
+                        requested: simulation.isPlaying && !simulation.travelers[0].isWaiting,
+                        headingHint: simulation.heading(for: 0))
+                }
             }
             let pose = actorPose(index)
             let visible = !layeredPreview || index < 2

@@ -3,12 +3,18 @@ import SpriteKit
 enum HeroFrames {
     // Shared distance-clock resolution; artwork can contain fewer whole poses.
     static let walkFrameCount = 24
-    static let columns = walkFrameCount + 1
+    static let columns = walkFrameCount + 5
     static let atlasRows = 4
 
     private struct Layout: Decodable {
         let authoredFrames: [Int]
         let reviewFrameMs: Double
+        let modularP1: ModularLayout?
+    }
+    private struct ModularLayout: Decodable {
+        struct Loadout: Decodable { let id: String; let title: String; let atlasNames: [String] }
+        let rasterColumns: Int
+        let loadouts: [Loadout]
     }
     private static let layout: Layout = {
         guard let url = Bundle.main.url(forResource: "hero-gait", withExtension: "json"),
@@ -24,6 +30,36 @@ enum HeroFrames {
         layout.authoredFrames[min(2, max(0, heroIndex))]
     }
 
+    static let locomotionPlan: AuthoredLocomotion.Plan? = {
+        guard layout.modularP1 != nil,
+              let url = Bundle.main.url(forResource: "hero-gait", withExtension: "json"),
+              let data = try? Data(contentsOf: url),
+              let object = try? JSONSerialization.jsonObject(with: data) as? [String: Any],
+              let plan = object["modularP1"], let encoded = try? JSONSerialization.data(withJSONObject: plan),
+              let decoded = try? JSONDecoder().decode(AuthoredLocomotion.Plan.self, from: encoded) else { return nil }
+        return decoded
+    }()
+
+    static var appearanceTitles: [String] { layout.modularP1?.loadouts.map(\.title) ?? [] }
+
+    static func atlasName(heroIndex: Int, diagonal: Bool, appearanceIndex: Int = 0) -> String {
+        if heroIndex == 0, let presets = layout.modularP1?.loadouts {
+            precondition(presets.indices.contains(appearanceIndex))
+            return presets[appearanceIndex].atlasNames[diagonal ? 1 : 0]
+        }
+        return "Hero\(heroIndex + 1)\(diagonal ? "Diagonals" : "Directions")"
+    }
+
+    static var atlasNames: [String] {
+        let defaults = (0..<3).flatMap { hero in [false, true].map { atlasName(heroIndex: hero, diagonal: $0) } }
+        return Array(Set(defaults + (layout.modularP1?.loadouts.flatMap(\.atlasNames) ?? []))).sorted()
+    }
+
+    static func rasterColumns(heroIndex: Int) -> Int {
+        heroIndex == 0 ? layout.modularP1?.rasterColumns ?? authoredFrameCount(heroIndex: 0) + 1
+            : authoredFrameCount(heroIndex: heroIndex) + 1
+    }
+
     static var reviewSpeed: CGFloat {
         24 / (CGFloat(authoredFrameCount(heroIndex: 0)) * CGFloat(layout.reviewFrameMs) / 1000)
     }
@@ -33,17 +69,19 @@ enum HeroFrames {
     static var layeredPrototypeAvailable: Bool { authoredFrameCount(heroIndex: 0) == walkFrameCount }
 
     static func sourceColumn(frame: Int, heroIndex: Int = 0) -> Int {
-        let frame = min(walkFrameCount, max(0, frame))
+        let frame = min(columns - 1, max(0, frame))
+        if frame > walkFrameCount { return heroIndex == 0 && layout.modularP1 != nil ? frame - walkFrameCount + 8 : 0 }
         return frame == 0 ? 0 : 1 + (frame - 1) * authoredFrameCount(heroIndex: heroIndex) / walkFrameCount
     }
 
-    static func load(_ hero: Int) -> [[SKTexture]] {
-        ["Directions", "Diagonals"].flatMap { suffix -> [[SKTexture]] in
-            guard let atlas = UIImage(named: "Hero\(hero)\(suffix)")?.cgImage else {
-                fatalError("Missing hero atlas: \(hero)\(suffix)")
+    static func load(_ hero: Int, appearanceIndex: Int = 0) -> [[SKTexture]] {
+        [false, true].flatMap { diagonal -> [[SKTexture]] in
+            let name = atlasName(heroIndex: hero - 1, diagonal: diagonal, appearanceIndex: appearanceIndex)
+            guard let atlas = UIImage(named: name)?.cgImage else {
+                fatalError("Missing hero atlas: \(name)")
             }
             let cell = atlas.height / atlasRows
-            let sourceColumns = authoredFrameCount(heroIndex: hero - 1) + 1
+            let sourceColumns = rasterColumns(heroIndex: hero - 1)
             precondition(atlas.width == cell * sourceColumns && atlas.height == cell * atlasRows)
             return (0..<atlasRows).map { row in
                 let poses = (0..<sourceColumns).map { column -> SKTexture in
@@ -82,7 +120,7 @@ enum HeroFrames {
 
     /// Foreground and native alpha-depth pass address the same authored pose.
     static func atlasRect(facing: Int, frame: Int, heroIndex: Int = 0) -> SIMD4<Float> {
-        let sourceColumns = authoredFrameCount(heroIndex: heroIndex) + 1
+        let sourceColumns = rasterColumns(heroIndex: heroIndex)
         return SIMD4(Float(sourceColumn(frame: frame, heroIndex: heroIndex)) / Float(sourceColumns),
                      Float(sourceFacing(facing) % atlasRows) / Float(atlasRows),
                      1 / Float(sourceColumns), 1 / Float(atlasRows))
@@ -113,7 +151,7 @@ struct HeroPose {
 
     init(heroIndex: Int, facing: Int, frame: Int, phase: CGFloat) {
         let hero = min(2, max(0, heroIndex)), direction = HeroFrames.sourceFacing(facing)
-        let column = min(HeroFrames.walkFrameCount, max(0, frame))
+        let column = min(Self.rig.heroes[hero][direction].count - 1, max(0, frame))
         self.heroIndex = hero
         self.facing = direction
         self.frame = column

@@ -17,6 +17,13 @@ struct JourneySimulation {
 
     func point(for index: Int) -> CGPoint { routes[index].point(at: travelers[index].distance) }
 
+    func heading(for index: Int) -> CGPoint {
+        let traveler = travelers[index], trail = routes[index]
+        let here = point(for: index)
+        let ahead = trail.point(at: max(0, min(trail.length, traveler.distance + traveler.direction)))
+        return CGPoint(x: ahead.x - here.x, y: ahead.y - here.y)
+    }
+
     mutating func reset() {
         routes = Array(repeating: network.patrol, count: 3)
         travelers = [
@@ -65,9 +72,10 @@ struct JourneySimulation {
         if !userPaused { isPlaying = !travelers[selected].isWaiting }
     }
 
-    mutating func advance(_ seconds: TimeInterval) {
+    mutating func advance(_ seconds: TimeInterval, p1CanTravel: Bool = true) {
         guard isPlaying else { return }
         for index in travelers.indices {
+            if index == 0 && !p1CanTravel { continue }
             let trail = routes[index], traveler = travelers[index]
             let here = trail.point(at: traveler.distance)
             let ahead = trail.point(at: max(0, min(trail.length, traveler.distance + traveler.direction * 1)))

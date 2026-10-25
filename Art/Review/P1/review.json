@@ -1,9 +1,9 @@
 {
   "character": "P1",
   "format": 3,
-  "updated": "2026-10-24",
+  "updated": "2026-10-25",
   "workflow": "Review one direction at a time from fixed cardinal and diagonal baselines. Modify and resubmit the same direction until explicit user artwork approval, then advance. Record provenance, feedback and accepted revisions for the future character template.",
-  "current": "p1-eight-way-v1-offline-unified-candidate",
+  "current": "p1-modular-demo-v1",
   "templateStatus": "Eight-direction offline unified candidate: one bodyID,9packages,16loadouts1664actual compositions; new long hems and right-up anatomical carry pending user approval. Runtime integration, arbitrary-phase stops, full rig marker normalization and third all8direction appearance acceptance remain.",
   "items": [
     {
@@ -3771,5 +3771,18 @@
     "artCommit": "ecfb101846a50219797b9e7099ce2863bb8ea5b4",
     "delivery": "Art/Review/P1/modular-eight-way-v1/delivery.json",
     "remoteByteIdenticalClosurePaths": 9864
+  },
+  "modularDemoReview": {
+    "date": "2026-10-25",
+    "status": "runtime-integration-in-progress",
+    "artApproval": null,
+    "userAuthorization": "开始下一项工作",
+    "integration": "Art/Integration/P1-modular-demo-v1",
+    "review": "Art/Review/P1/modular-demo-v1",
+    "compiled": false,
+    "deviceExecuted": false,
+    "simulatorExecuted": false,
+    "build": 39,
+    "version": "1.6.13"
   }
 }
