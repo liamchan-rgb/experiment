@@ -41,9 +41,9 @@ public enum PartyVisual {
 
 public struct PartyActorPose:Codable { public let clip:String;public let progress:Double }
 extension PartyVisual {
-    public static func pose(unit:GameUnit,intent:PartyIntent?,age:Double,time:Double,hurtAge:Double?=nil,blocked:Bool=false)->PartyActorPose {
+    public static func pose(unit:GameUnit,intent:PartyIntent?,age:Double,time:Double,hurtAge:Double?=nil,blocked:Bool=false,downAge:Double?=nil)->PartyActorPose {
         var clip=unit.isAlive ? "idle":"defeat"
-        var progress=unit.isAlive ? time.truncatingRemainder(dividingBy:2.4)/2.4:1
+        var progress=unit.isAlive ? time.truncatingRemainder(dividingBy:2.4)/2.4:(downAge.map { smooth($0/0.6) } ?? 1)
         if let intent,intent.actor==unit.id,unit.isAlive {
             if intent.action.visual=="attack" {
                 clip="attack";let action=max(0,age-0.4);progress=min(1,max(0,action-min(0.1,max(0,action-0.648)))/1.2)

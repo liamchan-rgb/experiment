@@ -20,6 +20,7 @@ final class MeadowPartyStageView:UIView {
     private var fired=false
     private var focus:PartyAction?,focusTarget="p1",focusAt=0.0
     private var recovery:[String:Double]=[:],formation:[String:Double]=[:],birth:[String:Double]=[:],contact:[String:Double]=[:],broken:[String:Double]=[:],deaths:[String:Double]=[:],hurt:[String:Double]=[:]
+    private var fallen:[String:Double]=[:]
     private var poseKeys:[String:String]=[:]
     private var messages:[MeadowPartyMessage]=[]
     private var emissions:[MeadowBattleLightEmission]=[]
@@ -55,7 +56,7 @@ final class MeadowPartyStageView:UIView {
     }
     required init?(coder:NSCoder) { fatalError("init(coder:) has not been implemented") }
     @objc private func tapped(_ r:UITapGestureRecognizer) { if !isPlaying,let id=r.view?.accessibilityIdentifier { onChoose?(id) } }
-    func start() { sceneTime=0;recovery=[:];formation=[:];birth=[:];contact=[:];broken=[:];deaths=[:];hurt=[:];messages=[];emissions=[];poseKeys=[:];clock.start() }
+    func start() { sceneTime=0;recovery=[:];formation=[:];birth=[:];contact=[:];broken=[:];deaths=[:];hurt=[:];messages=[];emissions=[];poseKeys=[:];fallen=[:];clock.start() }
     func stop() { clock.stop();intent=nil;impact=nil;completion=nil;focus=nil }
     func show(_ value:GameState,friend:String,foe:String,current:String?) {
         state=value;fx.friend=friend;fx.foe=foe
@@ -96,7 +97,7 @@ final class MeadowPartyStageView:UIView {
             let heal=max(0,after.health-before.health),damage=max(0,before.health-after.health),gain=max(0,after.shield-before.shield),absorbed=max(0,before.shield-after.shield)
             let point=CGPoint(x:foot.x,y:foot.y-(id.hasPrefix("p") ? 65:90))
             if heal>0 { messages.append(.init(text:"＋\(heal)",point:point,at:sceneTime,color:.systemGreen)) }
-            if gain>0 { birth[id]=sceneTime;messages.append(.init(text:"盾 ＋\(gain)",point:CGPoint(x:point.x+35,y:point.y+24),at:sceneTime,color:.systemCyan)) }
+            if gain>0 { birth[id]=sceneTime;messages.append(.init(text:"盾 ＋\(gain)",point:CGPoint(x:point.x,y:point.y+24),at:sceneTime,color:.systemCyan)) }
             if after.damageBuff != before.damageBuff,let b=after.damageBuff { messages.append(.init(text:"伤害 ＋\(b.amount)",point:point,at:sceneTime,color:MeadowPreviewPalette.gold)) }
             if damage>0 || absorbed>0 {
                 hurt[id]=sceneTime
@@ -106,7 +107,7 @@ final class MeadowPartyStageView:UIView {
             }
             if absorbed>0 { contact[id]=sceneTime;if after.shield==0 { broken[id]=sceneTime;emissions.append(.init(kind:.shieldBreak,startedAt:sceneTime,x:foot.x,y:foot.y-60,groundY:foot.y)) } }
             if before.isAlive && !after.isAlive && after.kind == .monster { deaths[id]=sceneTime;emissions.append(.init(kind:.death,startedAt:sceneTime,x:Double(point.x),y:Double(point.y),groundY:foot.y)) }
-            if before.isAlive && !after.isAlive && after.kind == .player { recovery[id]=nil }
+            if before.isAlive && !after.isAlive && after.kind == .player { recovery[id]=nil;fallen[id]=sceneTime }
         }
     }
     private func render() {
@@ -118,7 +119,7 @@ final class MeadowPartyStageView:UIView {
             let offset=intent?.actor==id ? moving:PartyPoint(0,0)
             let foot=CGPoint(x:f.x+offset.x,y:f.y+offset.y)
             if let actor=actors[id] {
-                let pose=PartyVisual.pose(unit:unit,intent:intent,age:age,time:sceneTime,hurtAge:hurt[id].map { sceneTime-$0 },blocked:unit.shield>0 || (hurt[id] != nil && broken[id]==hurt[id]))
+                let pose=PartyVisual.pose(unit:unit,intent:intent,age:age,time:sceneTime,hurtAge:hurt[id].map { sceneTime-$0 },blocked:unit.shield>0 || (hurt[id] != nil && broken[id]==hurt[id]),downAge:fallen[id].map { sceneTime-$0 })
                 let clip=pose.clip,progress=pose.progress
                 actor.setPose(clip:clip,progress:CGFloat(progress))
                 let s=CGFloat(PartyVisual.heroScale),root=actor.poseRootOffset
@@ -236,7 +237,7 @@ private final class MeadowPartyEffectsView:UIView {
         for m in messages {
             let age=time-m.at,alpha=1-PartyVisual.smooth((age-0.65)/0.35)
             let attrs:[NSAttributedString.Key:Any]=[.font:MeadowPreviewPalette.font(24,.heavy),.foregroundColor:m.color.withAlphaComponent(CGFloat(alpha)),.strokeColor:UIColor.black.withAlphaComponent(CGFloat(alpha)),.strokeWidth:-3]
-            NSAttributedString(string:m.text,attributes:attrs).draw(at:CGPoint(x:m.point.x+10,y:m.point.y-30-age*26))
+            NSAttributedString(string:m.text,attributes:attrs).draw(at:CGPoint(x:m.point.x+90,y:m.point.y-55-age*26))
         }
     }
 }
