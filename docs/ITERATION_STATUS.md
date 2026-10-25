@@ -2,7 +2,9 @@
 
 ## 2026-10-25 · 战斗光效接入demo · build40
 
-最终源码 `2f1d2475b119eb57e96c69200a2fc25468c8c2c8`、设备归档40167117136通过（Xcode16.4），五项纯Swift检查/项目校验完成；未执行模拟器/App/实机。build40/1.6.14 IPA25,176,986字节，SHA256 `2ed99a131c16c1030d22dc9a90070945009c04c6c2c76a9c56268d84a27267be`，外层工件摘要/CRC、IPA/版本/权限/Metal/VFX与两P1预设资源名/gait一致性通过。正常离线动图180帧×40ms已由root亲看最终解码联系页及命中关键帧，导入48实体/粒子单元及末帧为空核对；16姿势整身1×/2×联系页与v3相同，5307旧美术/行走文件不变。macOS生产模型trace与Linux字段/浮点一致范围见controller-provenance；审核详见effects-demo-v1/art-review.md。包已准备，最终HTTPS实取与交付回执继续记录。
+交付提交 `bc25464ea739b4b64be909c4d4618b92d7f99756`：直接IPA、正常整场GIF、站姿与命中图四个HTTPS均实际GET200，MIME/长度/SHA256与本地一致；GIF180×40ms/7200ms。46条选定交付路径与22条最终编译源码/资源路径已核对远端字节，回执 `Art/Review/Battle/effects-demo-v1/delivery.json`。IPA直接下载，无外层ZIP；用户实机验证输入/光效/安装。
+
+最终源码 `2f1d2475b119eb57e96c69200a2fc25468c8c2c8`、设备归档40167117136通过（Xcode16.4），五项纯Swift检查/项目校验完成；未执行模拟器/App/实机。build40/1.6.14 IPA25,176,986字节，SHA256 `2ed99a131c16c1030d22dc9a90070945009c04c6c2c76a9c56268d84a27267be`，外层工件摘要/CRC、IPA/版本/权限/Metal/VFX与两P1预设资源名/gait一致性通过。正常离线动图180帧×40ms已由root亲看最终解码联系页及命中关键帧，导入48实体/粒子单元及末帧为空核对；16姿势整身1×/2×联系页与v3相同，5307旧美术/行走文件不变。macOS生产模型trace与Linux字段/浮点一致范围见controller-provenance；审核详见effects-demo-v1/art-review.md。包与四个HTTPS已实取核对，最终回执见本条顶部。
 
 首轮40166836747（源码5754bb0）设备Release归档及五项纯Swift检查通过，无模拟器执行；收尾补完整格挡恢复时长、接触相对受击回弹，以及图集alpha0隐藏RGB清理，最终归档另行重跑，不把首轮包当最终交付。
 
