@@ -1,0 +1,33 @@
+{
+  "reviewer": "root, no subagents",
+  "date": "2026-10-26",
+  "resourceRevisionSHA256": "a431585ffeee05d2736ac20bc48fabf12feb238f02e91fb754e00da1cadea4f8",
+  "sourceUserFeedback": "../b2-batch-v1/user-feedback-2026-10-26.json",
+  "oldApprovalScope": "../b2-batch-v1/user-approval.json",
+  "newTwoArmorArtApproval": null,
+  "manualScope": {
+    "primaryNewArmorWholeBodyPoses": 208,
+    "primaryPoseBoards": 16,
+    "secondaryCollisionSamples": 32,
+    "secondaryBoards": 2,
+    "actualDecodedBattleGIFFRames": 120,
+    "battleGIFPages": 4,
+    "otherClipWholeBodyKeySamples": 50,
+    "otherClipBoards": 2,
+    "overviewDecodedFrames": 8,
+    "view": "native whole-body boards and 2x browser views; static decoded sequence review, not continuous playback approval"
+  },
+  "repairs": [
+    "rejected old-coat recolor and flat chest patches replaced with independent shaped cuirass/pauldrons/short tassets",
+    "shoulder/elbow source registration aligned to original rigid bones",
+    "source profile chest gem removed from far-sleeve partition",
+    "original actual trouser coverage retained, old blue-white coat edge retired",
+    "battle hip plates moved from torso into each thigh layer, preventing pants overlap from hiding the armor",
+    "hidden RGB cleared in new garment layers"
+  ],
+  "browserQA": "browser-qa/result.json",
+  "technicalQA": "verification.json",
+  "runtimeModified": false,
+  "appSimulatorOrDeviceRun": false,
+  "fourApprovedItemsModified": false
+}

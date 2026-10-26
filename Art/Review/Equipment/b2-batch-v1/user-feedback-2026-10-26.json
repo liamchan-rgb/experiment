@@ -1,0 +1,56 @@
+{
+  "schemaVersion": 1,
+  "batch": "b2-batch-v1",
+  "resourceRevisionSHA256": "d0979a710bd2413811d27ed94e86bcda3422bae823a046405db50b3a26d6e09f",
+  "exportedAt": "2026-10-26T14:59:39.861Z",
+  "items": [
+    {
+      "itemID": "greatSword",
+      "name": "重剑",
+      "status": "pass",
+      "note": "",
+      "pins": [],
+      "updatedAt": "2026-10-26T14:56:14.464Z"
+    },
+    {
+      "itemID": "legendaryStaff",
+      "name": "传奇权杖",
+      "status": "pass",
+      "note": "",
+      "pins": [],
+      "updatedAt": "2026-10-26T14:57:21.051Z"
+    },
+    {
+      "itemID": "leatherArmor",
+      "name": "皮甲",
+      "status": "fix",
+      "note": "只是简单换色，而且观感很奇怪",
+      "pins": [],
+      "updatedAt": "2026-10-26T14:58:28.868Z"
+    },
+    {
+      "itemID": "runeArmor",
+      "name": "符文甲",
+      "status": "fix",
+      "note": "观点同皮甲",
+      "pins": [],
+      "updatedAt": "2026-10-26T14:58:47.826Z"
+    },
+    {
+      "itemID": "powerBadge",
+      "name": "力量徽章",
+      "status": "pass",
+      "note": "",
+      "pins": [],
+      "updatedAt": "2026-10-26T14:58:53.583Z"
+    },
+    {
+      "itemID": "actionRing",
+      "name": "行动戒指",
+      "status": "pass",
+      "note": "",
+      "pins": [],
+      "updatedAt": "2026-10-26T14:58:58.233Z"
+    }
+  ]
+}

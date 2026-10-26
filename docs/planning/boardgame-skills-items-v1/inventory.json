@@ -1215,10 +1215,13 @@
       "fullCurrentDemoItemIntegration": false,
       "newArtApproval": null,
       "batchArtReview": {
-        "status": "candidate-awaiting-user-review",
+        "status": "user-approved-presented-art-only",
         "directory": "Art/Review/Equipment/b2-batch-v1",
         "runtimeIntegrated": false,
-        "newArtApproval": null
+        "newArtApproval": {
+          "source": "Art/Review/Equipment/b2-batch-v1/user-approval.json",
+          "revision": "d0979a710bd2413811d27ed94e86bcda3422bae823a046405db50b3a26d6e09f"
+        }
       }
     },
     {
@@ -1268,10 +1271,13 @@
       "fullCurrentDemoItemIntegration": false,
       "newArtApproval": null,
       "batchArtReview": {
-        "status": "candidate-awaiting-user-review",
+        "status": "user-approved-presented-art-only",
         "directory": "Art/Review/Equipment/b2-batch-v1",
         "runtimeIntegrated": false,
-        "newArtApproval": null
+        "newArtApproval": {
+          "source": "Art/Review/Equipment/b2-batch-v1/user-approval.json",
+          "revision": "d0979a710bd2413811d27ed94e86bcda3422bae823a046405db50b3a26d6e09f"
+        }
       }
     },
     {
@@ -1314,8 +1320,8 @@
       "fullCurrentDemoItemIntegration": false,
       "newArtApproval": null,
       "batchArtReview": {
-        "status": "candidate-awaiting-user-review",
-        "directory": "Art/Review/Equipment/b2-batch-v1",
+        "status": "r1-rejected-r2-awaiting-user-review",
+        "directory": "Art/Review/Equipment/b2-batch-v2",
         "runtimeIntegrated": false,
         "newArtApproval": null
       }
@@ -1360,8 +1366,8 @@
       "fullCurrentDemoItemIntegration": false,
       "newArtApproval": null,
       "batchArtReview": {
-        "status": "candidate-awaiting-user-review",
-        "directory": "Art/Review/Equipment/b2-batch-v1",
+        "status": "r1-rejected-r2-awaiting-user-review",
+        "directory": "Art/Review/Equipment/b2-batch-v2",
         "runtimeIntegrated": false,
         "newArtApproval": null
       }
@@ -1405,10 +1411,13 @@
       "fullCurrentDemoItemIntegration": false,
       "newArtApproval": null,
       "batchArtReview": {
-        "status": "candidate-awaiting-user-review",
+        "status": "user-approved-presented-art-only",
         "directory": "Art/Review/Equipment/b2-batch-v1",
         "runtimeIntegrated": false,
-        "newArtApproval": null
+        "newArtApproval": {
+          "source": "Art/Review/Equipment/b2-batch-v1/user-approval.json",
+          "revision": "d0979a710bd2413811d27ed94e86bcda3422bae823a046405db50b3a26d6e09f"
+        }
       }
     },
     {
@@ -1450,10 +1459,13 @@
       "fullCurrentDemoItemIntegration": false,
       "newArtApproval": null,
       "batchArtReview": {
-        "status": "candidate-awaiting-user-review",
+        "status": "user-approved-presented-art-only",
         "directory": "Art/Review/Equipment/b2-batch-v1",
         "runtimeIntegrated": false,
-        "newArtApproval": null
+        "newArtApproval": {
+          "source": "Art/Review/Equipment/b2-batch-v1/user-approval.json",
+          "revision": "d0979a710bd2413811d27ed94e86bcda3422bae823a046405db50b3a26d6e09f"
+        }
       }
     },
     {
