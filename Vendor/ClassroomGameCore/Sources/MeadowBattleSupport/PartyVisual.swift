@@ -12,6 +12,13 @@ public enum PartyVisual {
     public static func smooth(_ x:Double)->Double { let t=min(1,max(0,x));return t*t*(3-2*t) }
     public static func pulse(_ age:Double,_ start:Double,_ peak:Double,_ end:Double)->Double { age<peak ? smooth((age-start)/(peak-start)):1-smooth((age-peak)/(end-peak)) }
     public static func chest(_ id:String)->PartyPoint { let p=feet[id]!;return PartyPoint(p.x+5*heroScale,p.y-70*heroScale) }
+    public static func hitPoint(target:String,shielded:Bool=false)->PartyPoint {
+        let foot=feet[target]!
+        return PartyPoint(foot.x+(target.hasPrefix("m") ? -80:shielded ? (5+240*0.41)*heroScale:10),foot.y-(target.hasPrefix("m") ? 72:65))
+    }
+    public static func damageLabelOrigin(at:PartyPoint,width:Double,height:Double,age:Double)->PartyPoint {
+        PartyPoint(at.x-width/2,at.y-height/2-max(0,age)*26)
+    }
     public static func beam(_ from:PartyPoint,_ to:PartyPoint,_ t:Double)->PartyPoint {
         let u=1-t;return PartyPoint(u*u*from.x+2*u*t*((from.x+to.x)/2)+t*t*to.x,u*u*from.y+2*u*t*(min(from.y,to.y)-90)+t*t*to.y)
     }

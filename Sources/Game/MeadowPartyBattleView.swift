@@ -63,7 +63,7 @@ final class MeadowPartyBattleView:UIView {
     private func perform(_ action:PartyAction) {
         guard active,let model,let intent=model.prepare(action,target:target(action)) else { return }
         let token=generation;refresh()
-        stage.play(intent,before:model.state,onImpact:{ [weak self] in
+        stage.play(intent,before:model.state,confirmed:model.confirmedReceipt,onImpact:{ [weak self] in
             guard let self,self.active,self.generation==token else { return nil }
             do { let receipt=try model.commit(intent.id);self.refresh();return receipt }
             catch { self.hint.text=error.localizedDescription;return nil }
@@ -85,7 +85,7 @@ final class MeadowPartyBattleView:UIView {
     private func performEnemy(target:String) {
         guard let model,let intent=model.prepare(.attack,target:target) else { return }
         let token=generation;refresh()
-        stage.play(intent,before:model.state,onImpact:{ [weak self] in
+        stage.play(intent,before:model.state,confirmed:model.confirmedReceipt,onImpact:{ [weak self] in
             guard let self,self.active,self.generation==token else { return nil }
             do { let r=try model.commit(intent.id);self.refresh();return r } catch { self.hint.text=error.localizedDescription;return nil }
         },completion:{ [weak self] in guard let self,self.active,self.generation==token else { return };self.refresh();self.scheduleEnemy() })
@@ -108,7 +108,7 @@ final class MeadowPartyBattleView:UIView {
             if unit.shield>0 { shieldBuff.show(title:"护盾 · \(unit.shield)",detail:"优先抵挡伤害\n新旧授盾取较高值",symbol:"shield.fill",color:.systemCyan) } else { shieldBuff.hide() }
         }
         track.show(ids:["p2","p1","m1","m2"],names:["p1":"P1","p2":"P2","m1":"鹿灵甲","m2":"鹿灵乙"],current:showing,done:state.battle?.acted.subtracting(Set([showing ?? ""])) ?? [],down:Set(state.units.values.filter { !$0.isAlive }.map(\.id)))
-        stage.show(state,friend:friend,foe:foe,current:current)
+        stage.show(state,friend:friend,foe:foe,current:current,catalog:model.engine.catalog)
         let actions:[PartyAction]=busy ? (showing=="p2" ? [.attack,.ambush,.support,.rally]:showing=="p1" ? [.attack,.heavyStrike,.breather,.simpleGuard]:[]):model.playerActions()
         if busy { focusedAction=nil }
         for (i,b) in skills.enumerated() {

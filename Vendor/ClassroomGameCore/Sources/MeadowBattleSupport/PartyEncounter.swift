@@ -49,6 +49,8 @@ public struct PartyIntent {
 public final class PartyEncounter {
     public private(set) var engine:GameEngine
     public private(set) var pending:PartyIntent?
+    public private(set) var confirmedReceipt:OperationReceipt?
+    private var confirmedEngine:GameEngine?
     public let sessionID:String
     private var serial=0
     public var state:GameState { engine.state }
@@ -107,14 +109,21 @@ public final class PartyEncounter {
         else if action == .breather || action == .simpleGuard { targets=[actor] }
         else { targets=[target] }
         let intent=PartyIntent(id:sessionID+"/"+String(serial),action:action,actor:actor,target:target,targets:targets,command:command,enemy:state.units[actor]?.kind == .monster)
-        pending=intent;return intent
+        // Resolve once in an isolated transaction at confirmation. Live HP/AP,
+        // RNG and history remain unchanged until the visible impact commits it.
+        guard let staged=try? GameEngine(catalog:engine.catalog,state:state,history:engine.history),
+              let receipt=try? staged.apply(command,id:intent.id) else { return nil }
+        confirmedEngine=staged;confirmedReceipt=receipt;pending=intent;return intent
     }
     /// Exactly one atomic result at the visible contact; no duplicate effects on replay.
     public func commit(_ id:String) throws -> OperationReceipt? {
         guard let intent=pending,intent.id==id else { return nil }
-        pending=nil;return try engine.apply(intent.command,id:id)
+        guard let staged=confirmedEngine,let receipt=confirmedReceipt else { return nil }
+        defer { cancel() }
+        guard state==receipt.before else { throw GameError("动作确认后状态已变化，请重新选择。") }
+        engine=staged;return receipt
     }
-    public func cancel() { pending=nil }
+    public func cancel() { pending=nil;confirmedEngine=nil;confirmedReceipt=nil }
     public func playerActions()->[PartyAction] {
         guard let current, state.units[current]?.kind == .player else { return [] }
         return current=="p2" ? [.attack,.ambush,.support,.rally] : [.attack,.heavyStrike,.breather,.simpleGuard]

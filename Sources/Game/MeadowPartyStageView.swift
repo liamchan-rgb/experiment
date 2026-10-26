@@ -15,7 +15,7 @@ final class MeadowPartyStageView:UIView {
     private var labels:[String:MeadowBattleVitalsView]=[:]
     private var monsterFlash:[String:UIImageView]=[:]
     private let diceView=MeadowBattleDiceView()
-    private let catalog=try? GameCatalog.initial()
+    private var catalog=try? GameCatalog.initial()
     private var current:String?
     private var diceActor="p1",diceAction:PartyAction?,diceVisibleAt=0.0,diceSettledAt:Double?,diceExitAt:Double?
     private var dimFrom=0.0,dimTarget=0.0,dimChangedAt=0.0,castDim=0.0
@@ -69,8 +69,8 @@ final class MeadowPartyStageView:UIView {
     @objc private func tapped(_ r:UITapGestureRecognizer) { if !isPlaying,let id=r.view?.accessibilityIdentifier { onChoose?(id) } }
     func start() { sceneTime=0;recovery=[:];formation=[:];birth=[:];contact=[:];broken=[:];deaths=[:];hurt=[:];messages=[];emissions=[];poseKeys=[:];fallen=[:];diceAction=nil;diceView.dice=[];diceSettledAt=nil;diceExitAt=nil;dimFrom=0;dimTarget=0;clock.start() }
     func stop() { clock.stop();intent=nil;impact=nil;completion=nil;focus=nil }
-    func show(_ value:GameState,friend:String,foe:String,current:String?) {
-        state=value;self.current=current;fx.friend=friend;fx.foe=foe
+    func show(_ value:GameState,friend:String,foe:String,current:String?,catalog:GameCatalog) {
+        state=value;self.current=current;self.catalog=catalog;fx.friend=friend;fx.foe=foe
         for (id,label) in labels {
             guard let u=value.units[id] else { continue }
             label.show(name:(id==current ? "▶ ":"")+u.name,hp:u.health,maximum:u.baseAttributes.maximumHealth,shield:u.shield)
@@ -84,15 +84,16 @@ final class MeadowPartyStageView:UIView {
         focus=action;focusTarget=target;focusAt=sceneTime
         if let action,let state,let actorID=current,let actor=state.units[actorID],let targetUnit=state.units[target],let catalog {
             diceActor=actorID;diceAction=action;diceVisibleAt=sceneTime;diceSettledAt=nil;diceExitAt=nil
+            diceView.locked=false
             diceView.dice=BattleDice.channels(action,actor:actor,target:targetUnit,catalog:catalog)
         } else { diceExitAt=sceneTime }
     }
-    func play(_ value:PartyIntent,before:GameState,onImpact:@escaping ()->OperationReceipt?,completion:@escaping ()->Void) {
+    func play(_ value:PartyIntent,before:GameState,confirmed:OperationReceipt?,onImpact:@escaping ()->OperationReceipt?,completion:@escaping ()->Void) {
         castDim=previewDarkness();dimFrom=0;dimTarget=0;dimChangedAt=sceneTime
         if let actor=before.units[value.actor],let target=before.units[value.target],let catalog {
             if diceAction != value.action || diceActor != value.actor { diceVisibleAt=sceneTime }
             diceAction=value.action;diceActor=value.actor;diceSettledAt=nil;diceExitAt=nil
-            diceView.dice=BattleDice.channels(value.action,actor:actor,target:target,catalog:catalog)
+            diceView.dice=BattleDice.channels(value.action,actor:actor,target:target,catalog:catalog,receipt:confirmed);diceView.locked=confirmed != nil
         }
         intent=value;state=before;startAt=sceneTime;self.impact=onImpact;self.completion=completion;fired=false;focus=nil;meetsShield=(before.units[value.target]?.shield ?? 0)>0
         let delayed=sceneTime+max(0,value.action.impact-0.46)
@@ -138,7 +139,8 @@ final class MeadowPartyStageView:UIView {
             if after.damageBuff != before.damageBuff,let b=after.damageBuff { messages.append(.init(text:"伤害 ＋\(b.amount)",point:point,at:sceneTime,color:MeadowPreviewPalette.gold)) }
             if damage>0 || absorbed>0 {
                 hurt[id]=sceneTime
-                messages.append(.init(text:damage>0 ? "−\(damage)":"格挡",point:CGPoint(x:foot.x,y:foot.y-65),at:sceneTime,color:damage>0 ? .white:.systemCyan))
+                let hit=PartyVisual.hitPoint(target:id,shielded:absorbed>0)
+                messages.append(.init(text:damage>0 ? "−\(damage)":"格挡",point:CGPoint(x:hit.x,y:hit.y),at:sceneTime,color:damage>0 ? .white:.systemCyan,atImpact:true))
                 let p=CGPoint(x:point.x,y:point.y)
                 emissions.append(.init(kind:absorbed>0 ? .shieldContact:.strike,startedAt:sceneTime,x:Double(p.x),y:Double(p.y),groundY:foot.y))
             }
@@ -218,7 +220,7 @@ final class MeadowPartyStageView:UIView {
     }
     override func layoutSubviews() { super.layoutSubviews();let scale=bounds.width/1000;world.center=CGPoint(x:bounds.midX,y:bounds.midY);world.transform=CGAffineTransform(scaleX:scale,y:scale) }
 }
-struct MeadowPartyMessage { let text:String;let point:CGPoint;let at:Double;let color:UIColor }
+struct MeadowPartyMessage { let text:String;let point:CGPoint;let at:Double;let color:UIColor;var atImpact=false }
 
 private final class MeadowPartyEffectsView:UIView {
     var intent:PartyIntent?,focus:PartyAction?
@@ -312,7 +314,9 @@ private final class MeadowPartyEffectsView:UIView {
         for m in messages {
             let age=time-m.at,alpha=1-PartyVisual.smooth((age-0.65)/0.35)
             let attrs:[NSAttributedString.Key:Any]=[.font:MeadowPreviewPalette.font(24,.heavy),.foregroundColor:m.color.withAlphaComponent(CGFloat(alpha)),.strokeColor:UIColor.black.withAlphaComponent(CGFloat(alpha)),.strokeWidth:-3]
-            NSAttributedString(string:m.text,attributes:attrs).draw(at:CGPoint(x:m.point.x+90,y:m.point.y-55-age*26))
+            let label=NSAttributedString(string:m.text,attributes:attrs),size=label.size()
+            let p=m.atImpact ? PartyVisual.damageLabelOrigin(at:PartyPoint(m.point.x,m.point.y),width:size.width,height:size.height,age:age):PartyPoint(m.point.x+90,m.point.y-55-age*26)
+            label.draw(at:CGPoint(x:p.x,y:p.y))
         }
     }
 }

@@ -7,6 +7,7 @@ final class MeadowBattleDiceView:UIView {
     var dice:[BattleDie]=[]
     var time=0.0,visibleAge=0.0
     var resolvedAge:Double?,exitAge:Double?
+    var locked=false
     private static var glyphs:[String:UIImage]=[:]
     override init(frame:CGRect) { super.init(frame:frame);backgroundColor = .clear;isOpaque=false;isUserInteractionEnabled=false;accessibilityIdentifier="battleHeadDice" }
     required init?(coder:NSCoder) { fatalError("init(coder:) has not been implemented") }
@@ -25,7 +26,7 @@ final class MeadowBattleDiceView:UIView {
     override func draw(_ rect:CGRect) {
         guard let ctx=UIGraphicsGetCurrentContext(),!dice.isEmpty else { return }
         for (index,die) in dice.enumerated() {
-            let p=PolyhedralDice.sample(die:die,time:time,index:index,count:dice.count,resolvedAge:resolvedAge,visibleAge:visibleAge,exitAge:exitAge)
+            let p=PolyhedralDice.sample(die:die,time:time,index:index,count:dice.count,resolvedAge:resolvedAge,visibleAge:visibleAge,exitAge:exitAge,locked:locked)
             guard p.alpha>0 else { continue }
             let colors:[String:UIColor]=["red":UIColor(red:0.78,green:0.16,blue:0.14,alpha:1),"yellow":UIColor(red:0.85,green:0.63,blue:0.16,alpha:1),"green":UIColor(red:0.13,green:0.58,blue:0.32,alpha:1),"blue":UIColor(red:0.12,green:0.44,blue:0.8,alpha:1)]
             let color=colors[die.color] ?? .gray
@@ -42,7 +43,6 @@ final class MeadowBattleDiceView:UIView {
                 color.setFill();plate.fill();MeadowPreviewPalette.ink.setStroke();plate.lineWidth=1.5;plate.stroke()
                 let size=min(30,h*0.8)
                 if let value=die.value { text((die.color=="yellow" && value>0 ? "+":"")+String(value),-size*0.67,size) }
-                text(die.label.replacingOccurrences(of:"固定",with:""),48,14)
             } else {
                 var red:CGFloat=0,green:CGFloat=0,blue:CGFloat=0,alpha:CGFloat=0;color.getRed(&red,green:&green,blue:&blue,alpha:&alpha)
                 for face in p.faces {

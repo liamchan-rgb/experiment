@@ -212,7 +212,7 @@ final class MeadowBattleEffectsView: UIView {
             let center=messageAtHero ? heroFoot : impact
             let attrs:[NSAttributedString.Key:Any]=[.font:UIFont.boldSystemFont(ofSize:max(16,23*unit)),.foregroundColor:messageColor,.strokeColor:UIColor(red:0.15,green:0.1,blue:0.04,alpha:1),.strokeWidth:-3]
             let label=NSAttributedString(string:message,attributes:attrs)
-            label.draw(at:CGPoint(x:center.x+20*unit,y:center.y-(40+CGFloat(age)*30)*unit))
+            label.draw(at:messageAtHero ? CGPoint(x:center.x+20*unit,y:center.y-(40+CGFloat(age)*30)*unit):CGPoint(x:center.x-label.size().width/2,y:center.y-label.size().height/2-CGFloat(age)*30*unit))
         }
     }
 }

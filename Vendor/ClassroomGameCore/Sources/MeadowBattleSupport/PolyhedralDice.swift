@@ -138,9 +138,9 @@ public enum PolyhedralDice {
         let target=DieQuaternion.axis(.init(0,1,0),tiltY)*DieQuaternion.axis(.init(1,0,0),tiltX)*upright
         return .slerp(base,target,PartyVisual.smooth(t))
     }
-    public static func sample(die:BattleDie,time:Double,index:Int,count:Int,resolvedAge:Double?,visibleAge:Double,exitAge:Double?=nil)->DiePolySample {
+    public static func sample(die:BattleDie,time:Double,index:Int,count:Int,resolvedAge:Double?,visibleAge:Double,exitAge:Double?=nil,locked:Bool=false)->DiePolySample {
         let envelope=BattleDice.pose(time:time,index:index,resolvedAge:resolvedAge,visibleAge:visibleAge,exitAge:exitAge)
-        let q=orientation(sides:die.sides,value:die.value,time:time,index:index,resolvedAge:resolvedAge)
+        let q=orientation(sides:die.sides,value:die.value,time:time,index:index,resolvedAge:locked ? settleDuration:resolvedAge)
         func project(_ p:DieVector)->DieProjectedPoint { let d=4.2/(4.2-p.z);return .init(x:p.x*d,y:-p.y*d) }
         let faces=(mesh(die.sides)?.faces ?? []).compactMap { face -> DieProjectedFace? in
             let c=q.rotate(face.center),n=q.rotate(face.normal)
@@ -148,6 +148,6 @@ public enum PolyhedralDice {
             let light=DieVector(-0.4,0.7,1).unit
             return DieProjectedFace(value:face.value,points:face.indices.map { project(q.rotate(mesh(die.sides)!.vertices[$0])) },center:project(c),right:project(c+q.rotate(face.right)*face.labelRadius),up:project(c+q.rotate(face.up)*face.labelRadius),shade:0.45+0.55*max(0,n.dot(light)),depth:c.z)
         }.sorted { $0.depth<$1.depth }
-        return DiePolySample(faces:faces,alpha:envelope.alpha,offsetY:envelope.offsetY,radius:radius(count:count),resultMix:envelope.resultMix,orientation:q)
+        return DiePolySample(faces:faces,alpha:envelope.alpha,offsetY:locked ? 0:envelope.offsetY,radius:radius(count:count),resultMix:locked ? 1:envelope.resultMix,orientation:q)
     }
 }

@@ -119,6 +119,7 @@ extension Export {
             var intent:PartyIntent?,receipt:OperationReceipt?,activeAction=action,start=1.0,hitAt:Double?,fired=false
             var dieActor=p.current!,dieTarget=target,dieActorUnit=p.state.units[p.current!]!,dieTargetUnit=p.state.units[target]!
             var hurt:[String:Double]=[:],death:[String:Double]=scenario=="ambush-last" ? ["m2":-3.0]:[:]
+            var damageLabels:[[String:Any]]=[]
             var dice=BattleDice.channels(action,actor:dieActorUnit,target:dieTargetUnit,catalog:p.engine.catalog)
             let count=scenario=="attack-buff" ? 300:scenario.hasPrefix("ambush") ? 220:190
             for frame in 0..<count {
@@ -130,6 +131,7 @@ extension Export {
                         dice=BattleDice.channels(activeAction,actor:dieActorUnit,target:dieTargetUnit,catalog:p.engine.catalog)
                     }
                     intent=p.prepare(activeAction,target:dieTarget)!;start=time;fired=false;hitAt=nil;receipt=nil
+                    dice=BattleDice.channels(activeAction,actor:dieActorUnit,target:dieTargetUnit,catalog:p.engine.catalog,receipt:p.confirmedReceipt)
                 }
                 let age=time-start
                 if let i=intent,!fired,age+1e-8 >= (i.enemy ? 0.46:i.action.impact) {
@@ -137,7 +139,11 @@ extension Export {
                     if let r=receipt {
                         dice=BattleDice.channels(activeAction,actor:dieActorUnit,target:dieTargetUnit,catalog:p.engine.catalog,receipt:r)
                         for id in ["p1","p2","m1","m2"] {
-                            if r.after.units[id]!.health<r.before.units[id]!.health { hurt[id]=time }
+                            let damage=max(0,r.before.units[id]!.health-r.after.units[id]!.health),absorbed=max(0,r.before.units[id]!.shield-r.after.units[id]!.shield)
+                            if damage>0 || absorbed>0 {
+                                hurt[id]=time;let point=PartyVisual.hitPoint(target:id,shielded:absorbed>0)
+                                damageLabels.append(["text":damage>0 ? "−\(damage)":"格挡","x":point.x,"y":point.y,"at":time])
+                            }
                             if r.before.units[id]!.isAlive && !r.after.units[id]!.isAlive { death[id]=time }
                         }
                     }
@@ -154,7 +160,7 @@ extension Export {
                 let hover=time<1
                 let initial=BattleDice.darkness(action)
                 let dim=hover ? initial*PartyVisual.smooth(time/0.28):showing != nil ? (initial+(max(initial,activeAction.isOffensive ? 0.58:0.32)-initial)*PartyVisual.smooth(age/0.4))*(1-PartyVisual.smooth((age-1.2)/0.6)):0
-                rows.append(["scenario":scenario,"frame":frame,"time":time,"hover":hover,"darkness":dim,"actor":dieActor,"target":dieTarget,"action":activeAction.rawValue,"age":age,"playing":showing != nil,"enemy":showing?.enemy ?? false,"impact":hitAt as Any? ?? NSNull(),"afterimages":try JSONSerialization.jsonObject(with:JSONEncoder().encode(PartyVisual.afterimages(showing,age:age))),"ambushSlashes":try JSONSerialization.jsonObject(with:JSONEncoder().encode(activeAction == .ambush ? PartyVisual.ambushSlashes(age:age,at:PartyPoint(PartyVisual.feet[dieTarget]!.x-80,PartyVisual.feet[dieTarget]!.y-72)):[])),"receiptDice":try JSONSerialization.jsonObject(with:JSONEncoder().encode(receipt?.dice ?? [])),"dice":try JSONSerialization.jsonObject(with:JSONEncoder().encode(dice)),"diceAnchor":try JSONSerialization.jsonObject(with:JSONEncoder().encode(PartyVisual.diceAnchor(actor:dieActor,intent:showing,age:age,shielded:dieTargetUnit.shield>0,diceCount:dice.count))),"poly":try JSONSerialization.jsonObject(with:JSONEncoder().encode(dice.enumerated().map { index,die in PolyhedralDice.sample(die:die,time:time,index:index,count:dice.count,resolvedAge:hitAt.map { time-$0 },visibleAge:frame>=190 && scenario=="attack-buff" ? time-3.8:time) })),"dicePose":try JSONSerialization.jsonObject(with:JSONEncoder().encode(diePose)),"travel":try JSONSerialization.jsonObject(with:JSONEncoder().encode(travel)),"current":(showing?.actor ?? p.current) as Any? ?? NSNull(),"acted":Array(p.state.battle?.acted ?? []),"units":units])
+                rows.append(["scenario":scenario,"frame":frame,"time":time,"damageLabels":damageLabels.filter { time-($0["at"] as! Double)<1 },"locked":!hover,"hover":hover,"darkness":dim,"actor":dieActor,"target":dieTarget,"action":activeAction.rawValue,"age":age,"playing":showing != nil,"enemy":showing?.enemy ?? false,"impact":hitAt as Any? ?? NSNull(),"afterimages":try JSONSerialization.jsonObject(with:JSONEncoder().encode(PartyVisual.afterimages(showing,age:age))),"ambushSlashes":try JSONSerialization.jsonObject(with:JSONEncoder().encode(activeAction == .ambush ? PartyVisual.ambushSlashes(age:age,at:PartyPoint(PartyVisual.feet[dieTarget]!.x-80,PartyVisual.feet[dieTarget]!.y-72)):[])),"receiptDice":try JSONSerialization.jsonObject(with:JSONEncoder().encode(receipt?.dice ?? [])),"dice":try JSONSerialization.jsonObject(with:JSONEncoder().encode(dice)),"diceAnchor":try JSONSerialization.jsonObject(with:JSONEncoder().encode(PartyVisual.diceAnchor(actor:dieActor,intent:showing,age:age,shielded:dieTargetUnit.shield>0,diceCount:dice.count))),"poly":try JSONSerialization.jsonObject(with:JSONEncoder().encode(dice.enumerated().map { index,die in PolyhedralDice.sample(die:die,time:time,index:index,count:dice.count,resolvedAge:hitAt.map { time-$0 },visibleAge:frame>=190 && scenario=="attack-buff" ? time-3.8:time,locked:!hover) })),"dicePose":try JSONSerialization.jsonObject(with:JSONEncoder().encode(diePose)),"travel":try JSONSerialization.jsonObject(with:JSONEncoder().encode(travel)),"current":(showing?.actor ?? p.current) as Any? ?? NSNull(),"acted":Array(p.state.battle?.acted ?? []),"units":units])
             }
         }
         try JSONSerialization.data(withJSONObject:rows,options:[.sortedKeys]).write(to:out.appendingPathComponent("dice-frames.json"))
