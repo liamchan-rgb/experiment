@@ -15,3 +15,11 @@
 主线程只审核新两甲：标准人物全部208姿势、另一组合碰撞抽样、正常GIF实际解码及六动作关键姿势；技术依据见verification.json，实际查看范围见review.json。浏览器有桌面/手机/平板和状态继承/导出导入/逐帧检查；页面使用同一个私有Sites地址。站姿、两甲正常行走GIF和战斗GIF齐全，链接核验后记delivery.json。
 
 这是素材返修审核，不是新IPA或已接入demo。无App/模拟器/实机运行，不把离线采样称实机/GPU/FPS验收；新两甲用户认可null。
+
+## 已发布审核页
+
+https://meadow-equipment-review.smokytide.chatgpt.site
+
+Sites私有部署appgdep_6adf7312e1008191828e08c52cb5b007成功，站点源码a3019b691bd2ce597d7e2982e10711c824ddf859。打开后应显示“护甲重做，集中复审”和4/6已审核，重剑/权杖/徽章/戒指保持原版通过；仅两件新甲待审。页面媒体与本轮最终revision逐字节匹配。
+
+GitHub候选43dd163821f1d1a50463991aa534f66a8ca12d1d，1758选定路径与本地一致。五正常GIF（三步态含总览/两战斗）、三站姿PNG、一清单共9公开HTTPS完整GET200并核MIME/长度/SHA256，详见delivery.json。新两甲认可null，demo仍build53，未运行App/模拟器/实机。
