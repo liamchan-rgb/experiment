@@ -29,5 +29,9 @@
   "technicalQA": "verification.json",
   "runtimeModified": false,
   "appSimulatorOrDeviceRun": false,
-  "fourApprovedItemsModified": false
+  "fourApprovedItemsModified": false,
+  "userDisposition": "rejected",
+  "currentVisualApproval": false,
+  "priorInternalVisualPassWithdrawn": true,
+  "feedbackSource": "user-rejection.json"
 }

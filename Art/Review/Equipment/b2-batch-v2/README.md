@@ -1,4 +1,6 @@
-# B2第二轮：皮甲、符文甲结构重做
+# B2第二轮：皮甲、符文甲结构重做（已被用户判退）
+
+**最新结论：用户明确否定本轮两甲，指出共性错位和动作不自然。此前root内部美术放行结论撤回；文件与技术检查不代表视觉合格。此目录仅保留失败历史，不得接入demo。详见user-rejection.json。**
 
 原用户审核：重剑greatSword、传奇权杖legendaryStaff、力量徽章powerBadge、行动戒指actionRing通过；皮甲“只是简单换色，而且观感很奇怪”，符文甲“观点同皮甲”。原JSON及精确版本认可范围见../b2-batch-v1/user-feedback-2026-10-26.json和user-approval.json。认可不扩大到专用权杖施法、demo接入、规则/装备/存档或本次两甲。
 

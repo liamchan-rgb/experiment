@@ -1,0 +1,23 @@
+{
+  "reviewer": "root",
+  "subagentsUsed": false,
+  "status": "replacement-candidate-for-user-review",
+  "previousR2InternalVisualPassWithdrawn": true,
+  "walkWholeBody1xPosesViewed": 208,
+  "walkWholeBody2xPosesViewed": 208,
+  "secondaryAppearanceCollisionPosesViewed": 32,
+  "attackActualDecodedGIFFramesViewed": 120,
+  "otherBattleClipsKeyPositionsViewed": 50,
+  "continuousPlaybackVisualClaim": false,
+  "repairs": [
+    "real five-view garment sources",
+    "once-only native pattern fitting",
+    "shared chest-waist-tasset-root motion",
+    "continuous angular elbow deformation",
+    "fixed shoulder plates over moving sleeves",
+    "far sleeve depth shadow",
+    "battle-specific anatomy registration"
+  ],
+  "artApproval": null,
+  "appSimulatorDeviceRun": false
+}
