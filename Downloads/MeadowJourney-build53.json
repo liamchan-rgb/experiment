@@ -69,5 +69,8 @@
   "monsterVitalsHiddenAtZeroHP": true,
   "soloAndPartyGoldDiamondAP": true,
   "sourceCharacterAndGaitPixelsChanged": false,
-  "installation": "Unsigned IPA for existing SideStore re-signing; classic ZIP2.0 compatibility wrapping; actual installation pending user"
+  "installation": "Unsigned IPA for existing SideStore re-signing; classic ZIP2.0 compatibility wrapping; actual installation pending user",
+  "deliveryCommit": "7a9fb088b699754c05df9362e6e7bbef663df09e",
+  "directIPAURL": "https://raw.githubusercontent.com/liamchan-rgb/experiment/7a9fb088b699754c05df9362e6e7bbef663df09e/Downloads/MeadowJourney-b53.ipa",
+  "publicDownloadVerified": true
 }

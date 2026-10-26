@@ -9,3 +9,19 @@
 来源：生产Swift输出dice-frames/bow-poses，生产光场dice-light-samples，与原规则实际回执；离线Pillow合成，字体/混合/地图/光影/UI近似，不是UIKit或实机录屏，不证明设备60FPS。没有App/模拟器/实机运行。击杀夹具目标3HP，默认敌人仍18HP；旧单人保持固定5伤简化演练，不宣称已迁移正式规则。完整背包/装备/存档UI、其余6基础装备仍待做。
 
 复现：Swift Package MeadowSupportReviewExport→本目录；review-hunting-bow-demo.py --prepare；export-smooth-status-review.swift生成字段；review-hunting-bow-demo.py与--stills。新部件导出命令scripts/import-hunting-bow-demo.py。详情见review.json/preservation.json，归档与包验收Media/Build53。
+
+公开交付：13个完整GET200，195选定路径/278编译输入已核。[回执](delivery.json)。浏览器动图：
+
+[bow](https://cdn.jsdelivr.net/gh/liamchan-rgb/experiment@7a9fb088b699754c05df9362e6e7bbef663df09e/Art/Review/Battle/hunting-bow-demo-v1/bow-normal.gif)
+
+[bow-heavy](https://cdn.jsdelivr.net/gh/liamchan-rgb/experiment@7a9fb088b699754c05df9362e6e7bbef663df09e/Art/Review/Battle/hunting-bow-demo-v1/bow-heavy-normal.gif)
+
+[bow-lethal](https://cdn.jsdelivr.net/gh/liamchan-rgb/experiment@7a9fb088b699754c05df9362e6e7bbef663df09e/Art/Review/Battle/hunting-bow-demo-v1/bow-lethal-normal.gif)
+
+[bow-body](https://cdn.jsdelivr.net/gh/liamchan-rgb/experiment@7a9fb088b699754c05df9362e6e7bbef663df09e/Art/Review/Battle/hunting-bow-demo-v1/bow-body-normal.gif)
+
+[walk](https://cdn.jsdelivr.net/gh/liamchan-rgb/experiment@7a9fb088b699754c05df9362e6e7bbef663df09e/Art/Review/P1/hunting-bow-v1/walk-normal.gif)
+
+[transitions](https://cdn.jsdelivr.net/gh/liamchan-rgb/experiment@7a9fb088b699754c05df9362e6e7bbef663df09e/Art/Review/P1/hunting-bow-v1/transitions-normal.gif)
+
+[固定提交直接IPA](https://raw.githubusercontent.com/liamchan-rgb/experiment/7a9fb088b699754c05df9362e6e7bbef663df09e/Downloads/MeadowJourney-b53.ipa)

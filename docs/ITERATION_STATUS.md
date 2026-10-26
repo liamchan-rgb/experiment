@@ -1729,3 +1729,8 @@ build53第二次CI40289536584：106纯测试和五独立检查全部通过；设
 IPA1.6.27/build53，33933808字节，SHA256 184e795912bc14f65b4fdab318bd1acf70baac32073ff037da2a257e873ab832，经典ZIP2.0/CRC/arm64/iPhoneOS/Phone+Pad/Metal/新四方向图集与弓资源/权限/目录唯一绑定全部通过。直接Downloads/MeadowJourney-b53.ipa，不发ZIP；四战斗/整身GIF、两行走GIF/站姿/HTTPS直链交付。新认可null，实际安装/输入/阴影/FPS由用户测试。
 
 营地P1菜单→武器→猎弓；林地战斗→小队支援，结束P2行动后操作P1，普攻真实1D8/射程1，强击原1D6+2（1AP/2次）；旧单人仅固定5伤练习但姿态与远射随选中武器。只暴露P1受控借弓，没有完整背包/装备/存档迁移。其余6基础件仍未完成，下件greatSword重剑；不把本轮算作B3—B6完成。
+
+
+### 2026-10-26 build53公开交付校验
+
+交付提交7a9fb088b699754c05df9362e6e7bbef663df09e，195条选定路径Git blob与本地一致，278编译输入与最终归档源码相同。固定提交和分支直接IPA、四战斗/整身GIF、两行走GIF、五关键PNG共13个公开HTTPS完整GET200，MIME/长度/SHA256一致；战斗/整身GIF四段各190帧/20ms，行走8/13帧均120ms。root已查看570整场+190整身+21行走实际解码帧、208新背弓整身1×/2×及30六clip关键姿势/六全场1×/2×。回执Art/Review/Battle/hunting-bow-demo-v1/delivery.json，正常GIF/浏览器直链/站姿/直接IPA实际交付，不发ZIP。无App/模拟器/实机，新认可null。

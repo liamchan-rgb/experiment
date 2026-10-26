@@ -7,3 +7,5 @@
 包校验[package.json](package.json)：33933808字节，SHA256 `184e795912bc14f65b4fdab318bd1acf70baac32073ff037da2a257e873ab832`。原GameCore/目录13摘要、既有美术资源10824路径保护、重导214新源稿/绑定路径与278编译输入核对见preservation/reproducibility/source-verification。Mac/Linux1190party/3570requests/2260dice-monster-projectile/360poly/3606bowposes按字段≤1e-6一致。实际安装、输入、阴影表现和设备FPS由用户测试。
 
 下载[直接IPA](../../Downloads/MeadowJourney-b53.ipa)，经典ZIP2.0兼容封装，用户沿用SideStore重签流程。
+
+公开交付提交`7a9fb088b699754c05df9362e6e7bbef663df09e`，195选定路径、278编译输入一致；13个公开完整GET200及长度/摘要已核。[回执](../../Art/Review/Battle/hunting-bow-demo-v1/delivery.json)。
