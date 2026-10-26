@@ -54,5 +54,8 @@
   "knownFixedAmountsVisibleOnSelection": true,
   "diceTypeLabelsHiddenInAnimation": true,
   "sourceCharacterAndGaitPixelsChanged": false,
-  "installation": "Unsigned IPA for existing SideStore re-signing; classic ZIP2.0 compatibility wrapping; actual installation pending user"
+  "installation": "Unsigned IPA for existing SideStore re-signing; classic ZIP2.0 compatibility wrapping; actual installation pending user",
+  "deliveryCommit": "a947bce4a124a79c2750db8ce83c0a06c57a4f4b",
+  "directIPAURL": "https://raw.githubusercontent.com/liamchan-rgb/experiment/a947bce4a124a79c2750db8ce83c0a06c57a4f4b/Downloads/MeadowJourney-b49.ipa",
+  "publicDownloadVerified": true
 }

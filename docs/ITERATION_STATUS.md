@@ -1632,3 +1632,8 @@ build47主审再修：整场比例发现前冲末端双骰贴近敌HP条，现�
 最终源码`a5547de7ad20b5737443960bacc89d80f52ee2eb`，设备Release [40268729691](https://github.com/liamchan-rgb/experiment/actions/runs/40268729691)通过94规则/适配/几何测试及五项旧纯Swift检查。Mac/Linux1190小队帧、3570请求、1500骰子/怪物/突袭帧与360公式图库逐字段比较在1e-6内一致，仅acted集合无序。双链镜像深度/连续性由生产纯数学检查覆盖；4500离线光场样本不是实机捕获。
 
 IPA1.6.23/build49、31878244字节，SHA256 c4dae118ee027eb2c6e595ad34bede6bd734f84ddb65b05a09f844cdc2d1d65d，包工件摘要/CRC/经典ZIP2.0本地中央头/权限/平台/Metal/当前资源/原目录已核。正常四GIF/站姿/整身与审核在Art/Review/Battle/ambush-helix-demo-v1，集成与包分别Art/Integration/Battle-ambush-helix-demo-v1、Media/Build49。无App/模拟器/实机/UI执行，实际安装/输入/FPS由用户反馈，新认可null；B2八件基础装备下一小批，B3—B6未做。
+
+
+### 2026-10-26 build49公开交付核验完成
+
+交付提交a947bce4a124a79c2750db8ce83c0a06c57a4f4b，118条选定交付路径Git blob与本地逐字节一致，245编译输入与最终归档源码一致。固定提交/分支两个直接IPA、四正常GIF、六关键PNG共12个HTTPS完整GET200，MIME/长度/SHA256一致；GIF220/220/190/190帧均20ms。公开回执Art/Review/Battle/ambush-helix-demo-v1/delivery.json。正常GIF/浏览器直链/站姿/直接IPA一并交付，不给ZIP；未运行App/模拟器/实机，安装与实际FPS等待用户反馈，新认可null。

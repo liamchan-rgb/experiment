@@ -22,3 +22,15 @@
 IPA1.6.23/build49，31,878,244字节，SHA256 `c4dae118ee027eb2c6e595ad34bede6bd734f84ddb65b05a09f844cdc2d1d65d`，经典ZIP2.0/CRC/arm64/权限/资源/Metal/原目录校验通过。[直接IPA](https://raw.githubusercontent.com/liamchan-rgb/experiment/fix/build33-face-grounding-camera/Downloads/MeadowJourney-b49.ipa) · [包记录](../../../../Media/Build49/package.json)。入口：林地战斗→左上小队支援→P2突袭。无App/模拟器/实机执行，安装、操作及稳定60FPS由用户反馈。
 
 B2本轮仅突袭候选；基础装备下一件为训练短剑itemID与完整挂载，再猎弓/重剑/权杖/两甲/两饰品。B3—B6未因本轮公式图库而完成。
+
+公开交付：12个完整GET200，118选定路径/245编译输入摘要匹配。[回执](delivery.json)。浏览器动图直链：
+
+[ambush](https://cdn.jsdelivr.net/gh/liamchan-rgb/experiment@a947bce4a124a79c2750db8ce83c0a06c57a4f4b/Art/Review/Battle/ambush-helix-demo-v1/ambush-normal.gif)
+
+[ambush-last](https://cdn.jsdelivr.net/gh/liamchan-rgb/experiment@a947bce4a124a79c2750db8ce83c0a06c57a4f4b/Art/Review/Battle/ambush-helix-demo-v1/ambush-last-normal.gif)
+
+[heal](https://cdn.jsdelivr.net/gh/liamchan-rgb/experiment@a947bce4a124a79c2750db8ce83c0a06c57a4f4b/Art/Review/Battle/ambush-helix-demo-v1/heal-normal.gif)
+
+[support](https://cdn.jsdelivr.net/gh/liamchan-rgb/experiment@a947bce4a124a79c2750db8ce83c0a06c57a4f4b/Art/Review/Battle/ambush-helix-demo-v1/support-normal.gif)
+
+[固定提交直接IPA](https://raw.githubusercontent.com/liamchan-rgb/experiment/a947bce4a124a79c2750db8ce83c0a06c57a4f4b/Downloads/MeadowJourney-b49.ipa)

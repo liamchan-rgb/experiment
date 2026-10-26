@@ -11,3 +11,5 @@
 [直接IPA](https://raw.githubusercontent.com/liamchan-rgb/experiment/fix/build33-face-grounding-camera/Downloads/MeadowJourney-b49.ipa)，版本1.6.23/build49，31,878,244字节，SHA256 `c4dae118ee027eb2c6e595ad34bede6bd734f84ddb65b05a09f844cdc2d1d65d`。经典ZIP2.0、本地/中央头无extra/comment/ZIP64、无压缩、CRC/arm64/Phone+Pad/iOS15/权限/Metal/原目录与当前资源均已核。[包记录](package.json) · [四正常GIF/站姿/整身与主审](../../Art/Review/Battle/ambush-helix-demo-v1/README.md)。
 
 无App/模拟器/实机/UI运行，目标60非实测；SideStore重签及真实安装/操作由用户测试，新认可null。
+
+公开交付提交`a947bce4a124a79c2750db8ce83c0a06c57a4f4b`，118选定路径、245编译输入已核；12个公开HTTPS完整GET200及长度/摘要一致。[公开回执](../../Art/Review/Battle/ambush-helix-demo-v1/delivery.json)。
