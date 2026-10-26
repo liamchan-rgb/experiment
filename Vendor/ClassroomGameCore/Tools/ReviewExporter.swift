@@ -103,20 +103,24 @@ import ClassroomGameCore
 extension Export {
     static func exportDice(out:URL) throws {
         var rows:[[String:Any]]=[]
-        for scenario in ["attack-buff","support","shield","heal","lethal"] {
+        for scenario in ["attack-buff","support","shield","heal","lethal","ambush","ambush-last"] {
             let p=try PartyEncounter(seed:47,sessionID:"dice-review-"+scenario)
-            let action:PartyAction=scenario=="support" ? .support:scenario=="shield" ? .simpleGuard:scenario=="heal" ? .largePotion:.attack
-            if scenario=="attack-buff" || scenario=="lethal" {
+            let action:PartyAction=scenario.hasPrefix("ambush") ? .ambush:scenario=="support" ? .support:scenario=="shield" ? .simpleGuard:scenario=="heal" ? .largePotion:.attack
+            if scenario=="attack-buff" || scenario=="lethal" || scenario=="ambush-last" {
                 let rally=p.prepare(.rally,target:"p1")!;_ = try p.commit(rally.id)
             }
-            if scenario != "support" && scenario != "heal" { try p.engine.apply(.endTurn(actor:"p2",timedOut:false)) }
+            if scenario != "support" && scenario != "heal" && !scenario.hasPrefix("ambush") { try p.engine.apply(.endTurn(actor:"p2",timedOut:false)) }
             if scenario=="lethal" { try p.engine.apply(.editResources(unit:"m1",value:ResourcePatch(health:3))) }
-            let target=action == .attack ? "m1":"p1"
+            if scenario=="ambush-last" {
+                try p.engine.apply(.editResources(unit:"m2",value:ResourcePatch(health:0)))
+                try p.engine.apply(.editResources(unit:"m1",value:ResourcePatch(health:3)))
+            }
+            let target=action.isOffensive ? "m1":"p1"
             var intent:PartyIntent?,receipt:OperationReceipt?,activeAction=action,start=1.0,hitAt:Double?,fired=false
             var dieActor=p.current!,dieTarget=target,dieActorUnit=p.state.units[p.current!]!,dieTargetUnit=p.state.units[target]!
-            var hurt:[String:Double]=[:],death:[String:Double]=[:]
+            var hurt:[String:Double]=[:],death:[String:Double]=scenario=="ambush-last" ? ["m2":-3.0]:[:]
             var dice=BattleDice.channels(action,actor:dieActorUnit,target:dieTargetUnit,catalog:p.engine.catalog)
-            let count=scenario=="attack-buff" ? 300:190
+            let count=scenario=="attack-buff" ? 300:scenario.hasPrefix("ambush") ? 220:190
             for frame in 0..<count {
                 let time=Double(frame)*0.02
                 if frame==50 || scenario=="attack-buff" && frame==190 {
@@ -149,8 +153,8 @@ extension Export {
                 let diePose=dice.indices.map { index in BattleDice.pose(time:time,index:index,resolvedAge:hitAt.map { time-$0 },visibleAge:frame>=190 && scenario=="attack-buff" ? time-3.8:time) }
                 let hover=time<1
                 let initial=BattleDice.darkness(action)
-                let dim=hover ? initial*PartyVisual.smooth(time/0.28):showing != nil ? (initial+(max(initial,activeAction.visual=="attack" ? 0.58:0.32)-initial)*PartyVisual.smooth(age/0.4))*(1-PartyVisual.smooth((age-1.2)/0.6)):0
-                rows.append(["scenario":scenario,"frame":frame,"time":time,"hover":hover,"darkness":dim,"actor":dieActor,"target":dieTarget,"action":activeAction.rawValue,"age":age,"playing":showing != nil,"enemy":showing?.enemy ?? false,"impact":hitAt as Any? ?? NSNull(),"receiptDice":try JSONSerialization.jsonObject(with:JSONEncoder().encode(receipt?.dice ?? [])),"dice":try JSONSerialization.jsonObject(with:JSONEncoder().encode(dice)),"diceAnchor":try JSONSerialization.jsonObject(with:JSONEncoder().encode(PartyVisual.diceAnchor(actor:dieActor,intent:showing,age:age,shielded:dieTargetUnit.shield>0,diceCount:dice.count))),"poly":try JSONSerialization.jsonObject(with:JSONEncoder().encode(dice.enumerated().map { index,die in PolyhedralDice.sample(die:die,time:time,index:index,count:dice.count,resolvedAge:hitAt.map { time-$0 },visibleAge:frame>=190 && scenario=="attack-buff" ? time-3.8:time) })),"dicePose":try JSONSerialization.jsonObject(with:JSONEncoder().encode(diePose)),"travel":try JSONSerialization.jsonObject(with:JSONEncoder().encode(travel)),"current":(showing?.actor ?? p.current) as Any? ?? NSNull(),"acted":Array(p.state.battle?.acted ?? []),"units":units])
+                let dim=hover ? initial*PartyVisual.smooth(time/0.28):showing != nil ? (initial+(max(initial,activeAction.isOffensive ? 0.58:0.32)-initial)*PartyVisual.smooth(age/0.4))*(1-PartyVisual.smooth((age-1.2)/0.6)):0
+                rows.append(["scenario":scenario,"frame":frame,"time":time,"hover":hover,"darkness":dim,"actor":dieActor,"target":dieTarget,"action":activeAction.rawValue,"age":age,"playing":showing != nil,"enemy":showing?.enemy ?? false,"impact":hitAt as Any? ?? NSNull(),"afterimages":try JSONSerialization.jsonObject(with:JSONEncoder().encode(PartyVisual.afterimages(showing,age:age))),"ambushSlashes":try JSONSerialization.jsonObject(with:JSONEncoder().encode(activeAction == .ambush ? PartyVisual.ambushSlashes(age:age,at:PartyPoint(PartyVisual.feet[dieTarget]!.x-80,PartyVisual.feet[dieTarget]!.y-72)):[])),"receiptDice":try JSONSerialization.jsonObject(with:JSONEncoder().encode(receipt?.dice ?? [])),"dice":try JSONSerialization.jsonObject(with:JSONEncoder().encode(dice)),"diceAnchor":try JSONSerialization.jsonObject(with:JSONEncoder().encode(PartyVisual.diceAnchor(actor:dieActor,intent:showing,age:age,shielded:dieTargetUnit.shield>0,diceCount:dice.count))),"poly":try JSONSerialization.jsonObject(with:JSONEncoder().encode(dice.enumerated().map { index,die in PolyhedralDice.sample(die:die,time:time,index:index,count:dice.count,resolvedAge:hitAt.map { time-$0 },visibleAge:frame>=190 && scenario=="attack-buff" ? time-3.8:time) })),"dicePose":try JSONSerialization.jsonObject(with:JSONEncoder().encode(diePose)),"travel":try JSONSerialization.jsonObject(with:JSONEncoder().encode(travel)),"current":(showing?.actor ?? p.current) as Any? ?? NSNull(),"acted":Array(p.state.battle?.acted ?? []),"units":units])
             }
         }
         try JSONSerialization.data(withJSONObject:rows,options:[.sortedKeys]).write(to:out.appendingPathComponent("dice-frames.json"))

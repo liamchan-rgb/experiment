@@ -8,6 +8,7 @@ final class MeadowPartyStageView:UIView {
     private let clock=MeadowBattleSceneClock()
     private let fx=MeadowPartyEffectsView()
     private var actors:[String:MeadowBattleActorView]=[:]
+    private let afterimages=(0..<3).map { _ in UIImageView() }
     private var monsters:[String:UIImageView]=[:],winds:[String:UIImageView]=[:]
     private var shadows:[String:MeadowBattleGroundingView]=[:]
     private var attached:[String:MeadowBattleAttachedSkillsView]=[:]
@@ -60,6 +61,7 @@ final class MeadowPartyStageView:UIView {
             let label=MeadowBattleVitalsView();label.layer.zPosition=1100;labels[id]=label;world.addSubview(label)
         }
         diceView.layer.zPosition=1200;world.addSubview(diceView)
+        for ghost in afterimages { ghost.isHidden=true;ghost.isUserInteractionEnabled=false;ghost.layer.magnificationFilter = .nearest;world.addSubview(ghost) }
         fx.frame=world.bounds;fx.layer.zPosition=1000;world.addSubview(fx)
         clock.onTick={ [weak self] delta in self?.advance(delta) }
     }
@@ -127,7 +129,11 @@ final class MeadowPartyStageView:UIView {
             let heal=max(0,after.health-before.health),damage=max(0,before.health-after.health),gain=max(0,after.shield-before.shield),absorbed=max(0,before.shield-after.shield)
             let shieldHit=absorbed>0 && id.hasPrefix("p")
             let point=CGPoint(x:foot.x+(shieldHit ? (5+240*0.41)*PartyVisual.heroScale:(id.hasPrefix("m") ? -80:0)),y:foot.y-(id.hasPrefix("p") ? 65:72))
-            if heal>0 { messages.append(.init(text:"＋\(heal)",point:point,at:sceneTime,color:.systemGreen)) }
+            if heal>0 {
+                let shift=intent.actor==id ? PartyVisual.travel(intent,age:sceneTime-startAt):PartyPoint(0,0)
+                if intent.action == .ambush { recovery[id]=sceneTime }
+                messages.append(.init(text:"＋\(heal)",point:CGPoint(x:point.x+shift.x,y:point.y+shift.y),at:sceneTime,color:.systemGreen))
+            }
             if gain>0 { birth[id]=sceneTime;messages.append(.init(text:"盾 ＋\(gain)",point:CGPoint(x:point.x,y:point.y+24),at:sceneTime,color:.systemCyan)) }
             if after.damageBuff != before.damageBuff,let b=after.damageBuff { messages.append(.init(text:"伤害 ＋\(b.amount)",point:point,at:sceneTime,color:MeadowPreviewPalette.gold)) }
             if damage>0 || absorbed>0 {
@@ -145,6 +151,13 @@ final class MeadowPartyStageView:UIView {
         guard let state else { return }
         CATransaction.begin();CATransaction.setDisableActions(true);defer { CATransaction.commit() }
         let age=sceneTime-startAt;let moving=PartyVisual.travel(intent,age:age,shielded:meetsShield)
+        let trails=PartyVisual.afterimages(intent,age:age)
+        for (i,ghost) in afterimages.enumerated() {
+            guard i<trails.count,let intent,let actor=actors[intent.actor],let foot=PartyVisual.feet[intent.actor] else { ghost.isHidden=true;continue }
+            let trail=trails[i],pose=MeadowBattleAnimation.sample(clip:"attack",progress:CGFloat(trail.progress)),s=PartyVisual.heroScale
+            ghost.image=actor.trailImage(progress:CGFloat(trail.progress));ghost.alpha=trail.alpha;ghost.isHidden=false;ghost.layer.zPosition=foot.y-1
+            ghost.frame=CGRect(x:foot.x+trail.offset.x+(Double(pose.rootOffset.x)-123)*s,y:foot.y+trail.offset.y+(Double(pose.rootOffset.y)-214)*s,width:256*s,height:256*s)
+        }
         for id in ["p1","p2","m1","m2"] {
             guard let unit=state.units[id],let f=PartyVisual.feet[id] else { continue }
             let offset=intent?.actor==id ? moving:PartyPoint(0,0)
@@ -186,7 +199,7 @@ final class MeadowPartyStageView:UIView {
             }
         }
         if let value=intent {
-            let peak=max(BattleDice.darkness(value.action),value.action.visual=="attack" ? 0.58:0.32)
+            let peak=max(BattleDice.darkness(value.action),value.action.isOffensive ? 0.58:0.32)
             let build=castDim+(peak-castDim)*PartyVisual.smooth(age/0.4)
             dim.alpha=CGFloat(build*(1-PartyVisual.smooth((age-1.2)/0.6)))
         } else { dim.alpha=CGFloat(previewDarkness()) }
@@ -196,6 +209,11 @@ final class MeadowPartyStageView:UIView {
         diceView.resolvedAge=diceSettledAt.map { sceneTime-$0 };diceView.exitAge=diceExitAt.map { sceneTime-$0 };diceView.setNeedsDisplay()
         fx.intent=intent;fx.meetsShield=meetsShield;fx.age=age;fx.time=sceneTime;fx.focus=focus;fx.focusTarget=focusTarget
         fx.messages=messages;fx.particles=emissions.flatMap { e in MeadowBattleLightField.sample(e.kind,age:sceneTime-e.startedAt,originX:e.x,originY:e.y,groundY:e.groundY) }
+        fx.recoveryLights=state.players.compactMap { unit in
+            guard unit.isAlive,let at=recovery[unit.id],let foot=PartyVisual.feet[unit.id] else { return nil }
+            let power=MeadowBattleRecoveryField.pulse(sceneTime-at),shift=intent?.actor==unit.id ? moving:PartyPoint(0,0)
+            return (PartyPoint(foot.x+shift.x,foot.y+shift.y),power)
+        }
         fx.setNeedsDisplay()
     }
     override func layoutSubviews() { super.layoutSubviews();let scale=bounds.width/1000;world.center=CGPoint(x:bounds.midX,y:bounds.midY);world.transform=CGAffineTransform(scaleX:scale,y:scale) }
@@ -209,12 +227,14 @@ private final class MeadowPartyEffectsView:UIView {
     var age=0.0,time=0.0
     var messages:[MeadowPartyMessage]=[]
     var particles:[MeadowBattleLightParticle]=[]
+    var recoveryLights:[(PartyPoint,Double)]=[]
     override init(frame:CGRect) { super.init(frame:frame);isOpaque=false;isUserInteractionEnabled=false }
     required init?(coder:NSCoder) { fatalError("init(coder:) has not been implemented") }
     override func draw(_ rect:CGRect) {
         guard let ctx=UIGraphicsGetCurrentContext() else { return }
         func sprite(_ im:UIImage,_ p:PartyPoint,_ w:Double,_ h:Double,_ alpha:Double) { guard alpha>0 else { return };im.draw(in:CGRect(x:p.x-w/2,y:p.y-h/2,width:w,height:h),blendMode:.plusLighter,alpha:CGFloat(alpha)) }
         func glow(_ p:PartyPoint,_ rx:Double,_ ry:Double,_ alpha:Double,_ color:UIColor) { guard alpha>0 else { return };MeadowBattleGlowCache.image(color).draw(in:CGRect(x:p.x-rx,y:p.y-ry,width:rx*2,height:ry*2),blendMode:.plusLighter,alpha:CGFloat(alpha)) }
+        for (foot,power) in recoveryLights { glow(foot,105,27,power*0.65,.systemGreen);glow(PartyPoint(foot.x,foot.y-70),42,85,power*0.12,.systemGreen) }
         if intent==nil {
             for (id,color) in [(friend,UIColor.systemGreen),(foe,MeadowPreviewPalette.gold)] {
                 if let p=PartyVisual.feet[id] { ctx.setStrokeColor(color.withAlphaComponent(0.65).cgColor);ctx.setLineWidth(2);ctx.strokeEllipse(in:CGRect(x:p.x-36,y:p.y-7,width:72,height:14)) }
@@ -262,6 +282,18 @@ private final class MeadowPartyEffectsView:UIView {
                 if a>=0,a<0.7 {
                     sprite(MeadowBattleVFXAssets.burst,p,150+a*140,150+a*140,power)
                     if !intent.enemy { sprite(MeadowBattleVFXAssets.heavyArc,p,210+a*240,210+a*240,power*0.9) }
+                }
+            }
+            if visual=="ambush",let foot=PartyVisual.feet[intent.target] {
+                let at=PartyPoint(foot.x-80,foot.y-72),power=PartyVisual.pulse(age,0.72,0.755,1.14)
+                glow(at,128,115,power*0.52,.systemYellow);glow(foot,170,27,power*0.70,.systemGreen)
+                sprite(MeadowBattleVFXAssets.burst,at,130,130,power*0.72)
+                sprite(MeadowBattleVFXAssets.groundSpark,PartyPoint(foot.x-40,foot.y-3),170,22,power*0.70)
+                for slash in PartyVisual.ambushSlashes(age:age,at:at) {
+                    let path=UIBezierPath();for (j,p) in slash.points.enumerated() { if j==0 { path.move(to:CGPoint(x:p.x,y:p.y)) } else { path.addLine(to:CGPoint(x:p.x,y:p.y)) } }
+                    ctx.saveGState();ctx.setBlendMode(.plusLighter);ctx.setLineCap(.round)
+                    UIColor.systemGreen.withAlphaComponent(slash.alpha*0.35).setStroke();path.lineWidth=12;path.stroke()
+                    MeadowPreviewPalette.ink.withAlphaComponent(slash.alpha).setStroke();path.lineWidth=3;path.stroke();ctx.restoreGState()
                 }
             }
         }

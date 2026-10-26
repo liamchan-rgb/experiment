@@ -16,7 +16,8 @@ import Foundation
                 let p=MeadowBattleVisualMotion.wisp(age,index:i)
                 return ["x":p.x,"y":p.y,"rotation":p.rotation,"scaleX":p.scaleX,"alpha":p.alpha]
             }
-            return ["shieldOpacity":alpha,"wisps":wisps,"kind":r["kind"]!,"frame":r["frame"]!,"particles":particles,"recovery":motes,"recoveryPower":MeadowBattleRecoveryField.pulse(age)]
+            let ribbons=(0..<2).map { MeadowBattleRecoveryField.ribbon(age,strand:$0).map { ["x":$0.x,"y":$0.y,"depth":$0.depth,"alpha":$0.alpha] } }
+            return ["ribbons":ribbons,"shieldOpacity":alpha,"wisps":wisps,"kind":r["kind"]!,"frame":r["frame"]!,"particles":particles,"recovery":motes,"recoveryPower":MeadowBattleRecoveryField.pulse(age)]
         }
         let geometry:[String:Any]=["centerX":MeadowBattleShieldGeometry.centerX,"centerY":MeadowBattleShieldGeometry.centerY,"diameter":MeadowBattleShieldGeometry.diameter,"contactX":MeadowBattleShieldGeometry.contactX,"contactY":MeadowBattleShieldGeometry.contactY]
         try JSONSerialization.data(withJSONObject:["geometry":geometry,"frames":frames,"scope":"actual production Swift fields for offline composition; not UIKit/device"],options:[.sortedKeys]).write(to:URL(fileURLWithPath:CommandLine.arguments[2]))

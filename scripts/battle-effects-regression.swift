@@ -99,6 +99,18 @@ import Foundation
             let particles=MeadowBattleRecoveryField.sample(Double(tick)/100)
             for p in particles { precondition(p.x.isFinite && p.y.isFinite && p.alpha>=0 && p.alpha<=1 && p.y<=0) }
         }
+        // Two opposed helix strands cross in screen space and alternate depth.
+        for tick in 1..<180 {
+            let age=Double(tick)/100
+            let a=MeadowBattleRecoveryField.ribbon(age,strand:0),b=MeadowBattleRecoveryField.ribbon(age,strand:1)
+            precondition(a.count==97 && b.count==97)
+            for j in a.indices {
+                precondition(abs(a[j].x+b[j].x)<1e-8 && abs(a[j].depth+b[j].depth)<1e-8)
+                precondition(a[j].y<0 && a[j].alpha>=0 && a[j].alpha<=1)
+            }
+            let previous=MeadowBattleRecoveryField.ribbon(age-0.01,strand:0)
+            for j in a.indices { precondition(abs(a[j].x-previous[j].x)<1.5 && abs(a[j].y-previous[j].y)<0.2) }
+        }
         precondition(abs(MeadowBattleImpactClock.strikePoseTime(1.048)-0.648) < 1e-8)
         precondition(abs(MeadowBattleImpactClock.strikePoseTime(1.148)-0.648) < 1e-8)
         precondition(abs(MeadowBattleImpactClock.strikePoseTime(MeadowBattleImpactClock.strikeDuration)-1.2) < 1e-8)

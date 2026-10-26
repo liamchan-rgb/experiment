@@ -106,7 +106,7 @@ extension PartyTests {
         let before=p.state,actor=before.units["p1"]!,target=before.units["m1"]!
         for _ in 0..<120 {
             let dice=BattleDice.channels(.attack,actor:actor,target:target,catalog:p.engine.catalog)
-            XCTAssertEqual(dice.map(\.color),["red","yellow"]);XCTAssertTrue(dice.allSatisfy { $0.value==nil })
+            XCTAssertEqual(dice.map(\.color),["red","yellow"]);XCTAssertNil(dice.first?.value);XCTAssertEqual(dice.last?.value,2)
         }
         XCTAssertEqual(p.state,before)
         let intent=try XCTUnwrap(p.prepare(.attack,target:"m1"));let r=try XCTUnwrap(p.commit(intent.id))

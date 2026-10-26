@@ -223,14 +223,20 @@ final class MeadowBattleAttachedSkillsView: UIView {
     private let core=UIImageView(image:MeadowBattleVFXAssets.burst.withTintColor(UIColor(red:0.82,green:1,blue:0.85,alpha:1),renderingMode:.alwaysOriginal))
     private let shaft=UIImageView(image:MeadowBattleVFXAssets.healShaft)
     private let wave=UIImageView(image:MeadowBattleVFXAssets.healWave)
-    private let wisps=(0..<2).map { _ in UIImageView(image:MeadowBattleVFXAssets.healWisp) }
+    private let ribbon=MeadowBattleRecoveryRibbonView(front:true)
+    private let rearRibbon=MeadowBattleRecoveryRibbonView(front:false)
     private let stars=(0..<26).map { _ in UIImageView(image:MeadowBattleVFXAssets.healStar) }
     override init(frame:CGRect) {
         super.init(frame:frame);isUserInteractionEnabled=false;clipsToBounds=false
-        ([shaft,wave,core]+wisps+stars+[rim]+orbiters).forEach { $0.contentMode = .scaleToFill;addSubview($0) }
+        ([shaft,wave,core,ribbon]+stars+[rim]+orbiters).forEach { $0.contentMode = .scaleToFill;addSubview($0) }
         layer.zPosition=100
     }
     required init?(coder:NSCoder) { fatalError("init(coder:) has not been implemented") }
+    override func didMoveToSuperview() {
+        super.didMoveToSuperview()
+        rearRibbon.removeFromSuperview()
+        if let host=superview { rearRibbon.layer.zPosition = -1;host.addSubview(rearRibbon) }
+    }
     func update(shield:Int,preview:Double,time:Double,formation:Double?,formationBase:Double,birth:Double?,contact:Double?,broken:Double?,recovery:Double?) {
         let unit=bounds.width/256
         func smooth(_ x:Double)->CGFloat { CGFloat(MeadowBattleRecoveryField.smooth(x)) }
@@ -257,23 +263,17 @@ final class MeadowBattleAttachedSkillsView: UIView {
             let foot=CGPoint(x:128*unit,y:214*unit)
             shaft.isHidden = !active;wave.isHidden = !active
             shaft.frame=CGRect(x:foot.x-55*unit,y:foot.y-175*unit,width:110*unit,height:185*unit)
-            shaft.alpha=power*0.50
+            shaft.alpha=power*0.10
             core.isHidden = !active
             let coreSize:CGFloat=110*unit
             core.frame=CGRect(x:foot.x-coreSize/2,y:foot.y-64*unit-coreSize/2,width:coreSize,height:coreSize)
             let corePulse:CGFloat=age<0.47 ? smooth((age-0.34)/0.13) : 1-smooth((age-0.47)/0.23)
-            core.alpha=corePulse*0.70
+            core.alpha=corePulse*0.25
             let expansion=CGFloat(0.65+0.65*MeadowBattleRecoveryField.smooth(age/1.1))
             wave.frame=CGRect(x:foot.x-82*unit*expansion,y:foot.y-12*unit,width:164*unit*expansion,height:28*unit)
-            wave.alpha=power*0.8
-            for (i,wisp) in wisps.enumerated() {
-                wisp.isHidden = !active
-                let pose=MeadowBattleVisualMotion.wisp(age,index:i)
-                wisp.bounds=CGRect(x:0,y:0,width:85*unit,height:180*unit)
-                wisp.center=CGPoint(x:foot.x+(CGFloat(pose.x))*unit,y:foot.y-(-CGFloat(pose.y))*unit)
-                wisp.transform=CGAffineTransform(rotationAngle:CGFloat(pose.rotation)).scaledBy(x:CGFloat(pose.scaleX),y:1)
-                wisp.alpha=CGFloat(pose.alpha)
-            }
+            wave.alpha=power*0.35
+            ribbon.frame=bounds;ribbon.age=age;ribbon.setNeedsDisplay()
+            rearRibbon.frame=frame;rearRibbon.age=age;rearRibbon.setNeedsDisplay()
             let motes=Dictionary(uniqueKeysWithValues:MeadowBattleRecoveryField.sample(age).map { ($0.id,$0) })
             for (i,star) in stars.enumerated() {
                 guard let p=motes[i] else { star.isHidden=true;continue }
@@ -282,6 +282,36 @@ final class MeadowBattleAttachedSkillsView: UIView {
                 star.alpha=CGFloat(p.alpha)
             }
         }
+    }
+}
+
+private final class MeadowBattleRecoveryRibbonView:UIView {
+    let front:Bool
+    var age = -1.0
+    init(front:Bool) { self.front=front;super.init(frame:.zero);isOpaque=false;isUserInteractionEnabled=false }
+    required init?(coder:NSCoder) { fatalError("init(coder:) has not been implemented") }
+    override func draw(_ rect:CGRect) {
+        guard let ctx=UIGraphicsGetCurrentContext() else { return }
+        let scale=bounds.width/256
+        ctx.saveGState();ctx.scaleBy(x:scale,y:scale);ctx.translateBy(x:128,y:214)
+        ctx.setBlendMode(.plusLighter);ctx.setLineCap(.round);ctx.setLineJoin(.round)
+        for strand in 0..<2 {
+            let points=MeadowBattleRecoveryField.ribbon(age,strand:strand)
+            for start in stride(from:0,to:max(0,points.count-1),by:3) {
+                let end=min(points.count-1,start+3)
+                let path=UIBezierPath();var alpha=0.0,count=0
+                for j in start..<end {
+                    let a=points[j],b=points[j+1]
+                    guard ((a.depth+b.depth)/2>=0)==front else { continue }
+                    path.move(to:CGPoint(x:a.x,y:a.y));path.addLine(to:CGPoint(x:b.x,y:b.y));alpha += (a.alpha+b.alpha)/2;count += 1
+                }
+                guard count>0 else { continue };alpha=alpha/Double(count)*(front ? 1:0.58)
+                UIColor(red:0.08,green:0.95,blue:0.40,alpha:alpha*0.20).setStroke();path.lineWidth=9;path.stroke()
+                UIColor(red:0.40,green:1,blue:0.64,alpha:alpha*0.90).setStroke();path.lineWidth=3.2;path.stroke()
+                UIColor(red:0.86,green:1,blue:0.81,alpha:alpha*0.85).setStroke();path.lineWidth=1.1;path.stroke()
+            }
+        }
+        ctx.restoreGState()
     }
 }
 

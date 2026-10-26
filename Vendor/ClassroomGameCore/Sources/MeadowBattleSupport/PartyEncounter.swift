@@ -2,11 +2,12 @@ import Foundation
 import ClassroomGameCore
 
 public enum PartyAction:String,CaseIterable,Codable {
-    case attack,heavyStrike,breather,simpleGuard,support,rally,smallPotion,largePotion,shieldPotion,revivalStone,endTurn
+    case attack,heavyStrike,ambush,breather,simpleGuard,support,rally,smallPotion,largePotion,shieldPotion,revivalStone,endTurn
     public var title:String {
         switch self {
         case .attack:return "普通攻击"
         case .heavyStrike:return "强击"
+        case .ambush:return "突袭"
         case .breather:return "喘息"
         case .simpleGuard:return "简易防护"
         case .support:return "援护"
@@ -20,6 +21,7 @@ public enum PartyAction:String,CaseIterable,Codable {
     }
     public var visual:String {
         switch self {
+        case .ambush:return "ambush"
         case .support:return "support"
         case .rally:return "rally"
         case .breather,.smallPotion,.largePotion:return "heal"
@@ -29,8 +31,9 @@ public enum PartyAction:String,CaseIterable,Codable {
         default:return "attack"
         }
     }
-    public var impact:Double { if self == .endTurn { return 0 };return visual == "attack" ? 1.048 : visual == "support" ? 0.56 : visual == "revive" ? 0.72 : 0.46 }
-    public var duration:Double { if self == .endTurn { return 0.25 };return visual == "attack" ? 1.70 : visual == "revive" ? 2.10 : 1.80 }
+    public var impact:Double { if self == .endTurn { return 0 };if self == .ambush { return 0.72 };return visual == "attack" ? 1.048 : visual == "support" ? 0.56 : visual == "revive" ? 0.72 : 0.46 }
+    public var duration:Double { if self == .endTurn { return 0.25 };if self == .ambush { return 2.10 };return visual == "attack" ? 1.70 : visual == "revive" ? 2.10 : 1.80 }
+    public var isOffensive:Bool { [.attack,.heavyStrike,.ambush].contains(self) }
     public var isItem:Bool { [.smallPotion,.largePotion,.shieldPotion,.revivalStone].contains(self) }
 }
 public struct PartyIntent {
@@ -114,7 +117,11 @@ public final class PartyEncounter {
     public func cancel() { pending=nil }
     public func playerActions()->[PartyAction] {
         guard let current, state.units[current]?.kind == .player else { return [] }
-        return current=="p2" ? [.attack,.support,.rally] : [.attack,.heavyStrike,.breather,.simpleGuard]
+        return current=="p2" ? [.attack,.ambush,.support,.rally] : [.attack,.heavyStrike,.breather,.simpleGuard]
+    }
+    public func cost(_ action:PartyAction)->Int {
+        if action == .endTurn { return 0 };if action == .revivalStone { return 2 }
+        return (try? engine.catalog.skill(action.rawValue).cost) ?? 1
     }
     public func nextEnemyTarget()->String? { state.players.filter(\.isAlive).min { a,b in Double(a.health)/Double(a.baseAttributes.maximumHealth)<Double(b.health)/Double(b.baseAttributes.maximumHealth) }?.id }
 }

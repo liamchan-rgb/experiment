@@ -310,32 +310,36 @@ struct MeadowBattleRecoveryMote {
     let alpha: Double
 }
 
+struct MeadowBattleRecoveryRibbonPoint: Codable {
+    let x:Double,y:Double,depth:Double,alpha:Double
+}
 enum MeadowBattleRecoveryField {
     static let duration = 1.80
     static let impactTime = 0.46
     static func smooth(_ x: Double) -> Double { let t=min(1,max(0,x)); return t*t*(3-2*t) }
     static func pulse(_ age: Double) -> Double {
-        age < impactTime ? smooth(age/impactTime) : 1-smooth((age-impactTime)/0.90)
+        age < impactTime ? smooth(age/0.24) : 1-smooth((age-impactTime)/(duration-impactTime))
     }
-    /// In actor-native pixels, relative to the stable canvas sole at (128,214).
-    static func sample(_ age: Double) -> [MeadowBattleRecoveryMote] {
-        guard age >= 0, age < duration else { return [] }
-        var result: [MeadowBattleRecoveryMote] = []
-        for i in 0..<26 {
-            let birth: Double = Double(i % 7) * 0.065
-            let elapsed: Double = age - birth
-            let life: Double = 1.04 + Double(i % 4) * 0.10
-            guard elapsed >= 0, elapsed < life else { continue }
-            let progress: Double = elapsed / life
-            let angle: Double = Double(i) * 2.399 + elapsed * 4.5
-            let radius: Double = (34.0 + Double(i % 5) * 7.0) * (1.0 - progress * 0.35)
-            let x: Double = cos(angle) * radius
-            let y: Double = -8.0 - progress * 155.0
-            let size: Double = 5.0 + Double(i % 4) * 3.0
-            let alpha: Double = sin(Double.pi * progress) * 0.95
-            result.append(MeadowBattleRecoveryMote(id:i,x:x,y:y,size:size,alpha:alpha))
+    /// Opposed strands wind around the same body. Phase travels upward with time;
+    /// signed depth lets the actual actor occlude the far half of each strand.
+    static func ribbon(_ age:Double,strand:Int)->[MeadowBattleRecoveryRibbonPoint] {
+        guard age>=0,age<duration else { return [] }
+        let front=min(1.12,max(0,age/0.62)),power=pulse(age)
+        return (0...96).map { i in
+            let u=Double(i)/96,angle=u*Double.pi*4-age*3.4+Double(strand)*Double.pi,radius=42-u*12
+            let fade=smooth(u/0.06)*(1-smooth((u-0.93)/0.07))*smooth((front-u)/0.12)
+            return .init(x:cos(angle)*radius,y:-14-u*156+sin(angle)*4,depth:sin(angle),alpha:power*fade)
         }
-        return result
+    }
+    /// Persistent motes follow the same helix, without randomly replacing stars.
+    static func sample(_ age: Double) -> [MeadowBattleRecoveryMote] {
+        guard age>=0,age<duration else { return [] }
+        return (0..<26).compactMap { i in
+            let birth=Double((i/2)%7)*0.065,elapsed=age-birth,life=1.12+Double((i/2)%4)*0.10
+            guard elapsed>=0,elapsed<life else { return nil }
+            let u=elapsed/life,angle=u*Double.pi*4-age*3.4+Double(i%2)*Double.pi,radius=42-u*12
+            return MeadowBattleRecoveryMote(id:i,x:cos(angle)*radius,y:-14-u*156+sin(angle)*4,size:i%6==0 ? 8:4,alpha:sin(Double.pi*u)*pulse(age)*0.9)
+        }
     }
 }
 

@@ -40,9 +40,9 @@ final class MeadowBattleDiceView:UIView {
                 let w=min(52,p.radius*1.6),h=min(40,p.radius*1.25)
                 let plate=UIBezierPath(roundedRect:CGRect(x:-w/2,y:-h/2,width:w,height:h),cornerRadius:6)
                 color.setFill();plate.fill();MeadowPreviewPalette.ink.setStroke();plate.lineWidth=1.5;plate.stroke()
-                text("?",-19,min(30,h*0.8),1-p.resultMix)
-                if let value=die.value { text((die.color=="yellow" && value>0 ? "+":"")+String(value),-19,min(30,h*0.8),p.resultMix) }
-                text(die.label,48,14)
+                let size=min(30,h*0.8)
+                if let value=die.value { text((die.color=="yellow" && value>0 ? "+":"")+String(value),-size*0.67,size) }
+                text(die.label.replacingOccurrences(of:"固定",with:""),48,14)
             } else {
                 var red:CGFloat=0,green:CGFloat=0,blue:CGFloat=0,alpha:CGFloat=0;color.getRed(&red,green:&green,blue:&blue,alpha:&alpha)
                 for face in p.faces {
@@ -56,8 +56,7 @@ final class MeadowBattleDiceView:UIView {
                     ctx.concatenate(CGAffineTransform(a:(r.x-c.x)*p.radius*2,b:(r.y-c.y)*p.radius*2,c:(c.x-u.x)*p.radius*2,d:(c.y-u.y)*p.radius*2,tx:c.x*p.radius,ty:c.y*p.radius))
                     Self.glyph(face.value).draw(in:CGRect(x:-0.5,y:-0.5,width:1,height:1));ctx.restoreGState()
                 }
-                text(die.label,48,14,1-p.resultMix)
-                if let value=die.value { text("D\(die.sides) · \(value)",46,18,p.resultMix) }
+                if let value=die.value { text(String(value),46,18,p.resultMix) }
             }
             ctx.restoreGState()
         }

@@ -267,6 +267,9 @@ final class MeadowBattleActorView: UIView {
         currentPose = pose
         applyPose(pose)
     }
+    func trailImage(progress:CGFloat)->UIImage {
+        silhouette(for:MeadowBattleAnimation.sample(clip:"attack",progress:progress))
+    }
 
     private func applyPose(_ pose: MeadowBattlePoseSample) {
         guard !images.isEmpty else { return }

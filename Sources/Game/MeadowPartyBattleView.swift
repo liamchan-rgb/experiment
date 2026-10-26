@@ -59,7 +59,7 @@ final class MeadowPartyBattleView:UIView {
         guard model?.pending==nil else { return }
         if id.hasPrefix("p") { friend=id } else { foe=id };refresh()
     }
-    private func target(_ action:PartyAction)->String { [.attack,.heavyStrike].contains(action) ? foe:friend }
+    private func target(_ action:PartyAction)->String { action.isOffensive ? foe:friend }
     private func perform(_ action:PartyAction) {
         guard active,let model,let intent=model.prepare(action,target:target(action)) else { return }
         let token=generation;refresh()
@@ -109,14 +109,14 @@ final class MeadowPartyBattleView:UIView {
         }
         track.show(ids:["p2","p1","m1","m2"],names:["p1":"P1","p2":"P2","m1":"鹿灵甲","m2":"鹿灵乙"],current:showing,done:state.battle?.acted.subtracting(Set([showing ?? ""])) ?? [],down:Set(state.units.values.filter { !$0.isAlive }.map(\.id)))
         stage.show(state,friend:friend,foe:foe,current:current)
-        let actions:[PartyAction]=busy ? (showing=="p2" ? [.attack,.support,.rally]:showing=="p1" ? [.attack,.heavyStrike,.breather,.simpleGuard]:[]):model.playerActions()
+        let actions:[PartyAction]=busy ? (showing=="p2" ? [.attack,.ambush,.support,.rally]:showing=="p1" ? [.attack,.heavyStrike,.breather,.simpleGuard]:[]):model.playerActions()
         if busy { focusedAction=nil }
         for (i,b) in skills.enumerated() {
             b.isHidden=i>=actions.count
             guard i<actions.count else { continue }
             let a=actions[i];let result=model.preview(a,target:target(a))
             let allowed=active && !busy && result.allowed
-            b.update(title:a.title+" · 1 AP",detail:detail(a,model:model,actor:displayActor),enabled:allowed)
+            b.update(title:a.title+" · \(model.cost(a)) AP",detail:detail(a,model:model,actor:displayActor),enabled:allowed)
             b.previewStrength=0;b.previewColor = .clear
             b.button.removeTarget(nil,action:nil,for:.touchUpInside)
             b.button.removeAction(identifiedBy:UIAction.Identifier("party-skill"),for:.touchUpInside)
@@ -144,6 +144,7 @@ final class MeadowPartyBattleView:UIView {
         let uses=model.state.units[actor]?.skillUses[a.rawValue] ?? 0
         let rest=max(0,2-uses)
         switch a {
+        case .ambush:return "2D8＋2 · 自身恢复3 · 余\(rest)"
         case .support:return "1 AP · 治疗6 / 盾4 · 余\(rest)"
         case .rally:return "1 AP · 节点友方增伤2 / 1轮 · 余\(rest)"
         case .heavyStrike:return "1 AP · 1D6＋2 · 余\(rest)"

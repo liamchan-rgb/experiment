@@ -311,7 +311,7 @@ final class MeadowBattleLandscapeView: UIView {
         if let action {
             diceVisibleAt=sceneTime;diceSettledAt=nil;diceExitAt=nil;diceAtEnemy=false
             let color=action == .strike ? "red":action == .breathe ? "green":"blue"
-            diceView.dice=[BattleDie(color,label:action == .strike ? "伤害":"定值")]
+            diceView.dice=[BattleDie(color,value:action == .strike ? 5:4,label:action == .strike ? "固定伤害":"固定值")]
         } else { diceExitAt=sceneTime }
         if !isHidden, window != nil { clock.start() }
         renderAnimation()
@@ -322,7 +322,7 @@ final class MeadowBattleLandscapeView: UIView {
         if [.strike,.enemyStrike,.guardPose,.heal].contains(value) {
             if diceView.dice.isEmpty || diceAtEnemy != (value == .enemyStrike) { diceVisibleAt=sceneTime }
             diceAtEnemy=value == .enemyStrike;diceSettledAt=nil;diceExitAt=nil;diceCastAt=sceneTime;diceCastFrom=initial
-            diceView.dice=[BattleDie(value == .heal ? "green":value == .guardPose ? "blue":"red",label:"定值")]
+            diceView.dice=[BattleDie(value == .heal ? "green":value == .guardPose ? "blue":"red",value:value == .strike ? 5:4,label:"固定值")]
         } else { diceExitAt=sceneTime }
         self.completion = nil; cue = value; cueElapsed = 0
         self.completion = completion; impactHandler = onImpact; terminalClip = nil
