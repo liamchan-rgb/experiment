@@ -1,0 +1,17 @@
+{
+  "reviewer": "root",
+  "subagentsUsed": false,
+  "status": "replacement-candidate-for-user-review",
+  "previousFeedback": "../b2-batch-v3/user-feedback-shoulders.json",
+  "newArmorsApproval": null,
+  "oldFourApprovalsRetained": true,
+  "wholeBodyWalkingPosesViewed": 128,
+  "wholeBodyIdleStartStopAndEntryExitPosesViewed": 80,
+  "frontAndLeftActualNormalGifFramesViewed": 16,
+  "battleActualAttackGifFramesViewed": 120,
+  "otherBattleClipKeyPositionsViewed": 50,
+  "reviewMethod": "full-body 1x/2x contact sheets and actual decoded frames",
+  "continuousPlaybackVisualClaim": false,
+  "deviceRun": false,
+  "runtimeIntegrated": false
+}

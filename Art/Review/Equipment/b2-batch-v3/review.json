@@ -19,5 +19,8 @@
     "battle-specific anatomy registration"
   ],
   "artApproval": null,
-  "appSimulatorDeviceRun": false
+  "appSimulatorDeviceRun": false,
+  "userDisposition": "needs-changes",
+  "feedbackSource": "user-feedback-shoulders.json",
+  "currentArtApproval": null
 }

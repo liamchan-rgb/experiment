@@ -1,0 +1,123 @@
+{
+  "shoulderSleeveContactProblems": [],
+  "frontTorsoMaxAbsTiltDegrees": 0.0,
+  "relativePauldronMotionByDirection": {
+    "down": {
+      "Left": {
+        "tiltRangeDegrees": 3.8,
+        "offsetRangePixels": 1.563
+      },
+      "Right": {
+        "tiltRangeDegrees": 3.8,
+        "offsetRangePixels": 1.122
+      }
+    },
+    "down-left": {
+      "Left": {
+        "tiltRangeDegrees": 4.56,
+        "offsetRangePixels": 1.26
+      },
+      "Right": {
+        "tiltRangeDegrees": 4.56,
+        "offsetRangePixels": 1.1
+      }
+    },
+    "left": {
+      "Left": {
+        "tiltRangeDegrees": 18.0,
+        "offsetRangePixels": 1.6
+      },
+      "Right": {
+        "tiltRangeDegrees": 8.878,
+        "offsetRangePixels": 1.6
+      }
+    },
+    "up-left": {
+      "Left": {
+        "tiltRangeDegrees": 5.32,
+        "offsetRangePixels": 1.566
+      },
+      "Right": {
+        "tiltRangeDegrees": 5.32,
+        "offsetRangePixels": 1.508
+      }
+    },
+    "up": {
+      "Left": {
+        "tiltRangeDegrees": 0.677,
+        "offsetRangePixels": 1.035
+      },
+      "Right": {
+        "tiltRangeDegrees": 0.75,
+        "offsetRangePixels": 1.035
+      }
+    },
+    "up-right": {
+      "Left": {
+        "tiltRangeDegrees": 5.32,
+        "offsetRangePixels": 1.508
+      },
+      "Right": {
+        "tiltRangeDegrees": 5.32,
+        "offsetRangePixels": 1.566
+      }
+    },
+    "right": {
+      "Left": {
+        "tiltRangeDegrees": 8.878,
+        "offsetRangePixels": 1.6
+      },
+      "Right": {
+        "tiltRangeDegrees": 18.0,
+        "offsetRangePixels": 1.6
+      }
+    },
+    "down-right": {
+      "Left": {
+        "tiltRangeDegrees": 4.56,
+        "offsetRangePixels": 1.1
+      },
+      "Right": {
+        "tiltRangeDegrees": 4.56,
+        "offsetRangePixels": 1.26
+      }
+    }
+  },
+  "note": "geometric checks supplement, not replace, normal-speed whole-body art inspection",
+  "capRasterUniquePosesByDirection": {
+    "down": {
+      "Left": 4,
+      "Right": 4
+    },
+    "down-left": {
+      "Left": 5,
+      "Right": 5
+    },
+    "left": {
+      "Left": 6,
+      "Right": 6
+    },
+    "up-left": {
+      "Left": 8,
+      "Right": 6
+    },
+    "up": {
+      "Left": 2,
+      "Right": 2
+    },
+    "up-right": {
+      "Left": 6,
+      "Right": 8
+    },
+    "right": {
+      "Left": 6,
+      "Right": 6
+    },
+    "down-right": {
+      "Left": 5,
+      "Right": 5
+    }
+  },
+  "surfaceCodeSHA256": "3a94ccf1a204dec8ddaa2add2cfec08e2705149a973076c332446ddc55f0d9d5",
+  "bodyAndMotionNotModified": true
+}

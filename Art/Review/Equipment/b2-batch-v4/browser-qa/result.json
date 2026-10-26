@@ -1,0 +1,13 @@
+{
+  "pageErrors": [],
+  "sixItems": true,
+  "all24BattleClipSourcesDraw": true,
+  "pauseStepAndGrid": true,
+  "perItemNotesAndPinsPersistAcrossReload": true,
+  "bulkStatusExportImport": true,
+  "fourExactUserApprovalsCarriedAndTwoNewArmorsPending": true,
+  "mobileAndTabletNoHorizontalOverflow": true,
+  "onlyBrowserReviewNotGameApp": true,
+  "frontAndSideFocusedGIFLinksReturnedGIF": true,
+  "canvasAdvancedDuringPlayback": true
+}
