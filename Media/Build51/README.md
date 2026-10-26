@@ -7,3 +7,5 @@
 [三正常GIF/站姿/整身审核](../../Art/Review/Battle/upright-dice-hud-demo-v1/README.md)。直接IPA：Downloads/MeadowJourney-b51.ipa，1.6.25/build51，31,878,628字节，SHA256 `0121c60bd65e150dd4b02e913ad76a9fd82dbe1a75d24da9fa68e2ae4a0e9523`。包结构/CRC/arm64/Phone+Pad/iOS15/权限/Metal/原目录/当前资源通过。仅设备编译归档与纯逻辑、离线美术检查，无App/模拟器/实机，新认可null。
 
 后续治疗强度标准继续按Art/Standards/BattleHealing-v1，不新增蓄力层级。本轮未推进装备美术、全部治疗技能分级或新怪资源。
+
+公开交付提交`07168742de9643f3b7163a98e361f97d7e0dea61`，97选定路径、246编译输入一致；10个公开完整GET200及长度/摘要已核。[回执](../../Art/Review/Battle/upright-dice-hud-demo-v1/delivery.json)。

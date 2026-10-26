@@ -15,3 +15,13 @@
 源码`850ea80801ee4ab0e57cbed4cd37b93f9febe942`，设备Release [40278764694](https://github.com/liamchan-rgb/experiment/actions/runs/40278764694)成功；98纯规则/事务/几何测试及五旧纯Swift检查通过。Mac/Linux1190小队帧、3570请求、1500骰子/怪物帧与360骰型/公式帧逐字段在1e-6内一致，acted集合按无序比较。原10814美术/资源路径、13原核心/清单摘要与单人模型/时钟前缀保持。
 
 [直接IPA](https://raw.githubusercontent.com/liamchan-rgb/experiment/fix/build33-face-grounding-camera/Downloads/MeadowJourney-b51.ipa) · [包记录](../../../../Media/Build51/package.json)。1.6.25/build51，31,878,628字节，SHA256 `0121c60bd65e150dd4b02e913ad76a9fd82dbe1a75d24da9fa68e2ae4a0e9523`。经典ZIP2.0/CRC/平台/权限/原目录与资源已核，无App/模拟器/实机执行。入口：林地战斗→小队支援；原单人演练同步AP菱形和死亡隐条。
+
+公开交付：10个完整GET200，97选定路径/246编译输入已核。[回执](delivery.json)。浏览器动图：
+
+[ambush](https://cdn.jsdelivr.net/gh/liamchan-rgb/experiment@07168742de9643f3b7163a98e361f97d7e0dea61/Art/Review/Battle/upright-dice-hud-demo-v1/ambush-normal.gif)
+
+[attack-buff](https://cdn.jsdelivr.net/gh/liamchan-rgb/experiment@07168742de9643f3b7163a98e361f97d7e0dea61/Art/Review/Battle/upright-dice-hud-demo-v1/attack-buff-normal.gif)
+
+[lethal](https://cdn.jsdelivr.net/gh/liamchan-rgb/experiment@07168742de9643f3b7163a98e361f97d7e0dea61/Art/Review/Battle/upright-dice-hud-demo-v1/lethal-normal.gif)
+
+[固定提交直接IPA](https://raw.githubusercontent.com/liamchan-rgb/experiment/07168742de9643f3b7163a98e361f97d7e0dea61/Downloads/MeadowJourney-b51.ipa)

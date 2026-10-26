@@ -1681,3 +1681,8 @@ IPA1.6.25/build51，31878628字节，SHA256 0121c60bd65e150dd4b02e913ad76a9fd82d
 
 
 build51公开链接核验发现交付脚本继承旧的b50文件名；立即恢复原build50字节，build51原始归档字节另存Downloads/MeadowJourney-b51.ipa并修正包元数据。不改App或归档内容，不复用先前错误路径的下载回执。重新完整GET验证b51固定提交/分支直链后再交付。
+
+
+### 2026-10-26 build51公开交付校验
+
+交付提交07168742de9643f3b7163a98e361f97d7e0dea61，97条选定路径Git blob与本地一致，246编译输入与最终源码相同。固定提交和分支直接IPA、三正常GIF、五关键PNG共10个公开HTTPS完整GET200，MIME/长度/SHA256一致；GIF220/300/190帧均20ms。回执Art/Review/Battle/upright-dice-hud-demo-v1/delivery.json，正常GIF/浏览器直链/站姿/直接IPA实际交付，不发ZIP。无App/模拟器/实机，新认可null。
