@@ -365,6 +365,7 @@ final class MeadowBattleLandscapeView: UIView {
         shownHeroHP = heroHP; shownEnemyHP = enemyHP; shownShieldValue = shieldValue
         heroStatus.show(name:"P1",hp:shownHeroHP,maximum:12,shield:shownShieldValue)
         enemyStatus.show(name:"鹿灵",hp:shownEnemyHP,maximum:18,shield:0)
+        enemyStatus.isHidden=shownEnemyHP<=0
     }
 
     private func applyImpact(_ result: MeadowBattleActionResult) {

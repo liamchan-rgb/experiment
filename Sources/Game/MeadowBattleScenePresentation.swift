@@ -381,6 +381,36 @@ final class MeadowBattleResourceBar: UIView {
     }
 }
 
+/// Discrete AP uses the same panel slot in solo and party scenes.
+final class MeadowBattleActionPointsView:UIView {
+    private let caption=UILabel()
+    private var remaining=0,maximum=0
+    override init(frame:CGRect) {
+        super.init(frame:frame);isOpaque=false;isAccessibilityElement=true
+        caption.font=MeadowPreviewPalette.font(17);caption.textColor=MeadowPreviewPalette.ink;caption.text="行动"
+        addSubview(caption);accessibilityLabel="行动点数"
+    }
+    required init?(coder:NSCoder) { fatalError("init(coder:) has not been implemented") }
+    func show(value:Int,maximum:Int) {
+        self.maximum=max(0,maximum);remaining=max(0,min(value,self.maximum))
+        accessibilityValue="剩余\(remaining)，上限\(self.maximum)";setNeedsDisplay()
+    }
+    override func layoutSubviews() {
+        super.layoutSubviews();caption.frame=CGRect(x:0,y:0,width:bounds.width,height:23);setNeedsDisplay()
+    }
+    override func draw(_ rect:CGRect) {
+        guard maximum>0 else { return }
+        let side=min(18,max(1,bounds.height-25),bounds.width/CGFloat(maximum)),gap=min(9,max(0,(bounds.width-side*CGFloat(maximum))/CGFloat(maximum)))
+        let cy=CGFloat(26)+side/2
+        for i in 0..<maximum {
+            let cx=side/2+CGFloat(i)*(side+gap),h=side/2
+            let path=UIBezierPath();path.move(to:CGPoint(x:cx,y:cy-h));path.addLine(to:CGPoint(x:cx+h,y:cy));path.addLine(to:CGPoint(x:cx,y:cy+h));path.addLine(to:CGPoint(x:cx-h,y:cy));path.close()
+            (i<remaining ? MeadowPreviewPalette.gold:MeadowPreviewPalette.gold.withAlphaComponent(0.10)).setFill();path.fill()
+            MeadowPreviewPalette.gold.withAlphaComponent(i<remaining ? 1:0.45).setStroke();path.lineWidth=1.25;path.stroke()
+        }
+    }
+}
+
 final class MeadowBattleVitalsView: UIView {
     private let title=UILabel()
     private let track=UIView(),fill=UIView(),shieldTrack=UIView(),shieldFill=UIView()

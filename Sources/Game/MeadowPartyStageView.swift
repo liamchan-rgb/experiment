@@ -162,6 +162,7 @@ final class MeadowPartyStageView:UIView {
         }
         for id in ["p1","p2","m1","m2"] {
             guard let unit=state.units[id],let f=PartyVisual.feet[id] else { continue }
+            labels[id]?.isHidden=unit.kind == .monster && !unit.isAlive
             let offset=intent?.actor==id ? moving:PartyPoint(0,0)
             let foot=CGPoint(x:f.x+offset.x,y:f.y+offset.y)
             if let actor=actors[id] {

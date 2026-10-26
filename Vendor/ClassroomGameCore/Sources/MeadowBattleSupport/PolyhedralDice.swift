@@ -117,7 +117,13 @@ public enum PolyhedralDice {
         }
         let faces=f.enumerated().map { i,ids -> DieMeshFace in
             let c=ids.reduce(DieVector(0,0,0)) { $0+v[$1] }*(1/Double(ids.count)),n=normals[i]
-            let seed=abs(n.y)<0.9 ? DieVector(0,1,0):DieVector(0,0,1),up=(seed-n*seed.dot(n)).unit,right=up.cross(n)
+            // Canonical top: triangular/pentagonal faces stand on an edge;
+            // square faces have a horizontal top edge. Labels share that basis.
+            let top:DieVector
+            if ids.count % 2 == 1 { top=v[ids[0]]-c }
+            else if sides==10 { top=ids.map { v[$0]-c }.max { $0.length<$1.length }! }
+            else { top=(v[ids[0]]+v[ids[1]])*0.5-c }
+            let up=(top-n*top.dot(n)).unit,right=up.cross(n)
             let inradius=ids.indices.map { k -> Double in let a=v[ids[k]],b=v[ids[(k+1)%ids.count]];return (a-c).cross(b-a).length/(b-a).length }.min()!
             return DieMeshFace(indices:ids,value:values[i],center:c,normal:n,up:up,right:right,labelRadius:inradius*0.78)
         }
@@ -133,9 +139,10 @@ public enum PolyhedralDice {
         let integrated=impact+settleDuration*(1-pow(1-t,3))/3
         let base=rolling(integrated,index),align=DieQuaternion.align(face.normal,.init(0,0,1)),u=align.rotate(face.up)
         let upright=DieQuaternion.axis(.init(0,0,1),atan2(u.x,u.y))*align
-        let tiltY=sides==4 ? 0.80:sides==6 ? 0.34:sides==8 ? 0.20:0.13
-        let tiltX=sides==4 ? -0.40:sides==6 ? -0.26:sides==8 ? -0.13:-0.10
-        let target=DieQuaternion.axis(.init(0,1,0),tiltY)*DieQuaternion.axis(.init(1,0,0),tiltX)*upright
+        // The resolved face and its numeral face the screen squarely. Rolling
+        // retains all three axes; stopping never leaves a skewed result face.
+        let target=upright
+        if t>=1 { return target }
         return .slerp(base,target,PartyVisual.smooth(t))
     }
     public static func sample(die:BattleDie,time:Double,index:Int,count:Int,resolvedAge:Double?,visibleAge:Double,exitAge:Double?=nil,locked:Bool=false)->DiePolySample {

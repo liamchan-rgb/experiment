@@ -403,7 +403,7 @@ private final class MeadowPlayerDetailsView: UIView {
     private var focusedAction: MeadowBattleAction?
     private let health=MeadowBattleResourceBar()
     private let ward=MeadowBattleResourceBar()
-    private let actions=MeadowBattleResourceBar()
+    private let actions=MeadowBattleActionPointsView()
     private let buff=MeadowBattleBuffTile(type:.system)
     private var cards: [MeadowPreviewCard] = []
     override init(frame: CGRect) {
@@ -430,7 +430,7 @@ private final class MeadowPlayerDetailsView: UIView {
     func show(encounter: MeadowBattleEncounter, enabled: Bool) {
         health.show("生命",value:encounter.playerHP,maximum:encounter.playerMaxHP,color:.systemGreen)
         ward.show("护盾",value:encounter.shield,maximum:8,color:.systemCyan)
-        actions.show("行动",value:encounter.actionPoints,maximum:3,color:MeadowPreviewPalette.gold)
+        actions.show(value:encounter.actionPoints,maximum:3)
         buff.show(shield:encounter.shield)
         let canAct = enabled && encounter.isPlayerActionEnabled
         if !canAct { focusedAction = nil; onPreview?(nil) }

@@ -56,7 +56,6 @@ final class MeadowBattleDiceView:UIView {
                     ctx.concatenate(CGAffineTransform(a:(r.x-c.x)*p.radius*2,b:(r.y-c.y)*p.radius*2,c:(c.x-u.x)*p.radius*2,d:(c.y-u.y)*p.radius*2,tx:c.x*p.radius,ty:c.y*p.radius))
                     Self.glyph(face.value).draw(in:CGRect(x:-0.5,y:-0.5,width:1,height:1));ctx.restoreGState()
                 }
-                if let value=die.value { text(String(value),46,18,p.resultMix) }
             }
             ctx.restoreGState()
         }

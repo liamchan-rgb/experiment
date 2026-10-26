@@ -67,7 +67,7 @@ import ClassroomGameCore
                 var units:[[String:Any]]=[]
                 for id in ["p1","p2","m1","m2"] {
                     let u=model.state.units[id]!,pose=PartyVisual.pose(unit:u,intent:current,age:age,time:time,hurtAge:hurt[id].map { time-$0 },blocked:id=="p1" && shielded && hurt[id] != nil)
-                    units.append(["id":id,"name":u.name,"hp":u.health,"maxHP":u.baseAttributes.maximumHealth,"shield":u.shield,"ap":u.ap,"buff":u.damageBuff?.amount ?? 0,"buffRounds":u.damageBuff?.roundsLeft ?? 0,"clip":pose.clip,"progress":pose.progress,"deathAge":death[id].map { time-$0 } as Any? ?? NSNull()])
+                    units.append(["id":id,"name":u.name,"vitalsVisible":u.kind != .monster || u.isAlive,"hp":u.health,"maxHP":u.baseAttributes.maximumHealth,"shield":u.shield,"ap":u.ap,"buff":u.damageBuff?.amount ?? 0,"buffRounds":u.damageBuff?.roundsLeft ?? 0,"clip":pose.clip,"progress":pose.progress,"deathAge":death[id].map { time-$0 } as Any? ?? NSNull()])
                     if id.hasPrefix("p") {
                         var r:[String:Any]=["kind":scenario+"-"+id,"frame":frame,"time":time,"shield":u.shield,"emitters":[]]
                         if let at=heals[id],u.isAlive { r["recoveryAge"]=time-at }
@@ -154,7 +154,7 @@ extension Export {
                 for id in ["p1","p2","m1","m2"] {
                     let u=p.state.units[id]!,pose=PartyVisual.pose(unit:u,intent:showing,age:age,time:time,hurtAge:hurt[id].map { time-$0 },blocked:u.shield>0)
                     let monster=PartyVisual.monster(time:time+(id=="m2" ? 0.7:0),attackAge:showing?.actor==id ? age:nil,hurtAge:hurt[id].map { time-$0 },preparing:p.current==id && showing==nil)
-                    units.append(["id":id,"hp":u.health,"maxHP":u.baseAttributes.maximumHealth,"shield":u.shield,"ap":u.ap,"buff":u.damageBuff?.amount ?? 0,"clip":pose.clip,"progress":pose.progress,"monster":try JSONSerialization.jsonObject(with:JSONEncoder().encode(monster)),"deathAge":death[id].map { time-$0 } as Any? ?? NSNull()])
+                    units.append(["id":id,"vitalsVisible":u.kind != .monster || u.isAlive,"hp":u.health,"maxHP":u.baseAttributes.maximumHealth,"shield":u.shield,"ap":u.ap,"buff":u.damageBuff?.amount ?? 0,"clip":pose.clip,"progress":pose.progress,"monster":try JSONSerialization.jsonObject(with:JSONEncoder().encode(monster)),"deathAge":death[id].map { time-$0 } as Any? ?? NSNull()])
                 }
                 let diePose=dice.indices.map { index in BattleDice.pose(time:time,index:index,resolvedAge:hitAt.map { time-$0 },visibleAge:frame>=190 && scenario=="attack-buff" ? time-3.8:time) }
                 let hover=time<1

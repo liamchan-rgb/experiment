@@ -14,7 +14,8 @@ final class MeadowPartyBattleView:UIView {
     private let hint=MeadowPreviewPalette.label("",size:17,weight:.semibold)
     private let header=UIView(),panel=UIView()
     private let track=MeadowTurnTrackView(frame:.zero)
-    private let health=MeadowBattleResourceBar(),ward=MeadowBattleResourceBar(),ap=MeadowBattleResourceBar()
+    private let health=MeadowBattleResourceBar(),ward=MeadowBattleResourceBar()
+    private let ap=MeadowBattleActionPointsView()
     private let buff=MeadowPartyBuffButton(type:.system),shieldBuff=MeadowPartyBuffButton(type:.system)
     private let skillScroll=UIScrollView()
     private let mapBorder=UIView(),mapTitle=MeadowPreviewPalette.label("Meadow Journey",size:18)
@@ -103,7 +104,7 @@ final class MeadowPartyBattleView:UIView {
         if let unit=state.units[displayActor] {
             health.show("生命",value:unit.health,maximum:unit.baseAttributes.maximumHealth,color:.systemGreen)
             ward.show("护盾",value:unit.shield,maximum:8,color:.systemCyan)
-            ap.show("行动",value:unit.ap,maximum:unit.baseAttributes.baseAP,color:MeadowPreviewPalette.gold)
+            ap.show(value:unit.ap,maximum:unit.baseAttributes.baseAP)
             if let b=unit.damageBuff { buff.show(title:"振奋 · 增伤＋\(b.amount)",detail:"剩余 \(b.roundsLeft) 轮\n普攻和伤害技能生效",symbol:"arrow.up",color:MeadowPreviewPalette.gold) } else { buff.hide() }
             if unit.shield>0 { shieldBuff.show(title:"护盾 · \(unit.shield)",detail:"优先抵挡伤害\n新旧授盾取较高值",symbol:"shield.fill",color:.systemCyan) } else { shieldBuff.hide() }
         }
