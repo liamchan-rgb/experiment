@@ -1775,3 +1775,5 @@ B2两甲r3交付回执：候选 `fb72eb5f773d178dece199d0069cbf4b34ad245c`，资
 ### 2026-10-26 B2两甲r4正下与护肩动作返修
 
 用户反馈r3正下肩部像在扭，其他方向手动但护肩静止；记录Art/Review/Equipment/b2-batch-v3/user-feedback-shoulders.json。r4正下胸甲按原颈/髋驱动而不跟左右肩高度差拧转；护肩随对应手臂小幅旋转/平移，保留肩袖搭接及后侧阴影，其他八向都应有可辨随动，禁止再简单固定肩甲或让整个胸甲跟肩扭。离线战斗预览加小幅随动层，未集成demo。新两甲仍待用户审核，四件原通过仅沿用原素材范围；全身/正常GIF/起收/战斗和GitHub日志见Art/Review/Equipment/b2-batch-v4。不运行App/模拟器/实机，不委派智能体。
+
+B2两甲r4交付回执：候选 `ef010664bdfb31e632bc599231c8cd08100c5321`，资源 `2be82f5fa68e9591ece08e2108d7e66874fb3e7e4921f3f70cad7b75690b2913`；原私有审核页部署成功 `appgdep_6adfd29e5b1081918a87d142ba2321cc`，四通过/两待审。13个媒体/清单HTTPS GET200、1816路径对象一致；正下与正左整身正常GIF见Art/Review/Equipment/b2-batch-v4/delivery.json。无demo集成、IPA或设备运行。
