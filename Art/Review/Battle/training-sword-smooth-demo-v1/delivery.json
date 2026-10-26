@@ -1,0 +1,118 @@
+{
+  "date": "2026-10-26",
+  "deliveryCommit": "37e1becb3d1232eb7f3454ca1324b528899a59b8",
+  "sourceCommit": "0da70730b77038c9eb08c6eee4dd521ebca3b311",
+  "selectedPathsChecked": 141,
+  "compiledInputsChecked": 258,
+  "publicCompleteGETs": [
+    {
+      "path": "Downloads/MeadowJourney-b52.ipa",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/37e1becb3d1232eb7f3454ca1324b528899a59b8/Downloads/MeadowJourney-b52.ipa",
+      "status": 200,
+      "mime": "application/octet-stream",
+      "bytes": 32901808,
+      "sha256": "5c1bf5b2c1053cbabc05c9c168797f8f08fdf99db5982ab333052b7147eb767c"
+    },
+    {
+      "path": "Downloads/MeadowJourney-b52.ipa",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/fix/build33-face-grounding-camera/Downloads/MeadowJourney-b52.ipa",
+      "status": 200,
+      "mime": "application/octet-stream",
+      "bytes": 32901808,
+      "sha256": "5c1bf5b2c1053cbabc05c9c168797f8f08fdf99db5982ab333052b7147eb767c"
+    },
+    {
+      "path": "Art/Review/Battle/training-sword-smooth-demo-v1/ambush-normal.gif",
+      "url": "https://cdn.jsdelivr.net/gh/liamchan-rgb/experiment@37e1becb3d1232eb7f3454ca1324b528899a59b8/Art/Review/Battle/training-sword-smooth-demo-v1/ambush-normal.gif",
+      "status": 200,
+      "mime": "image/gif",
+      "bytes": 10290050,
+      "sha256": "40091c59f0047bb109ce4d45f205f998f7717cf33f7d9cea10399b27d4dbb9b6",
+      "frames": 220,
+      "durationMs": 4400
+    },
+    {
+      "path": "Art/Review/Battle/training-sword-smooth-demo-v1/unarmed-normal.gif",
+      "url": "https://cdn.jsdelivr.net/gh/liamchan-rgb/experiment@37e1becb3d1232eb7f3454ca1324b528899a59b8/Art/Review/Battle/training-sword-smooth-demo-v1/unarmed-normal.gif",
+      "status": 200,
+      "mime": "image/gif",
+      "bytes": 7328235,
+      "sha256": "a298ca81147c2b942ecdbc5eb3a230f1a74b68f91e82c72c83a583ad0f24ef2b",
+      "frames": 190,
+      "durationMs": 3800
+    },
+    {
+      "path": "Art/Review/Battle/training-sword-smooth-demo-v1/lethal-normal.gif",
+      "url": "https://cdn.jsdelivr.net/gh/liamchan-rgb/experiment@37e1becb3d1232eb7f3454ca1324b528899a59b8/Art/Review/Battle/training-sword-smooth-demo-v1/lethal-normal.gif",
+      "status": 200,
+      "mime": "image/gif",
+      "bytes": 8886870,
+      "sha256": "518a4f4b0a4258b7a730f1235469ab3c4a8e9eb8d832ee82200b316b7b6aa78a",
+      "frames": 190,
+      "durationMs": 3800
+    },
+    {
+      "path": "Art/Review/P1/training-sword-v1/walk-normal.gif",
+      "url": "https://cdn.jsdelivr.net/gh/liamchan-rgb/experiment@37e1becb3d1232eb7f3454ca1324b528899a59b8/Art/Review/P1/training-sword-v1/walk-normal.gif",
+      "status": 200,
+      "mime": "image/gif",
+      "bytes": 1593610,
+      "sha256": "821c1c88f726123a2fe6fc797609ac9fbbbfe41baa42cf188d0cc15589a42c00",
+      "frames": 8,
+      "durationMs": 960
+    },
+    {
+      "path": "Art/Review/P1/training-sword-v1/transitions-normal.gif",
+      "url": "https://cdn.jsdelivr.net/gh/liamchan-rgb/experiment@37e1becb3d1232eb7f3454ca1324b528899a59b8/Art/Review/P1/training-sword-v1/transitions-normal.gif",
+      "status": 200,
+      "mime": "image/gif",
+      "bytes": 2580584,
+      "sha256": "1aecd5f8e3cd106b7fa6b31b1b1d17968f0e9e816d5a2730de1485463e18f3de",
+      "frames": 13,
+      "durationMs": 1560
+    },
+    {
+      "path": "Art/Review/Battle/training-sword-smooth-demo-v1/ambush-standing.png",
+      "url": "https://cdn.jsdelivr.net/gh/liamchan-rgb/experiment@37e1becb3d1232eb7f3454ca1324b528899a59b8/Art/Review/Battle/training-sword-smooth-demo-v1/ambush-standing.png",
+      "status": 200,
+      "mime": "image/png",
+      "bytes": 1847562,
+      "sha256": "0ff88aad87079240d0a41b29d68430909b0c87d034dcf07edc21758cdffed4b2"
+    },
+    {
+      "path": "Art/Review/Battle/training-sword-smooth-demo-v1/unarmed-selected.png",
+      "url": "https://cdn.jsdelivr.net/gh/liamchan-rgb/experiment@37e1becb3d1232eb7f3454ca1324b528899a59b8/Art/Review/Battle/training-sword-smooth-demo-v1/unarmed-selected.png",
+      "status": 200,
+      "mime": "image/png",
+      "bytes": 1797593,
+      "sha256": "dd1b6e681872147ff673dabdb065f90163d152705c71087708445d0561d21b29"
+    },
+    {
+      "path": "Art/Review/Battle/training-sword-smooth-demo-v1/smooth-stop-timeline.png",
+      "url": "https://cdn.jsdelivr.net/gh/liamchan-rgb/experiment@37e1becb3d1232eb7f3454ca1324b528899a59b8/Art/Review/Battle/training-sword-smooth-demo-v1/smooth-stop-timeline.png",
+      "status": 200,
+      "mime": "image/png",
+      "bytes": 6062561,
+      "sha256": "381f436c98dcbf6447f99ad292653dd1238b42d413d55df9e55338f7068908f4"
+    },
+    {
+      "path": "Art/Review/Battle/training-sword-smooth-demo-v1/lethal-impact.png",
+      "url": "https://cdn.jsdelivr.net/gh/liamchan-rgb/experiment@37e1becb3d1232eb7f3454ca1324b528899a59b8/Art/Review/Battle/training-sword-smooth-demo-v1/lethal-impact.png",
+      "status": 200,
+      "mime": "image/png",
+      "bytes": 1748006,
+      "sha256": "131f3e5e1c51811d2ad71e0df51ac135c89463271cf2756348b195f477e1b8dd"
+    },
+    {
+      "path": "Art/Review/P1/training-sword-v1/standing.png",
+      "url": "https://cdn.jsdelivr.net/gh/liamchan-rgb/experiment@37e1becb3d1232eb7f3454ca1324b528899a59b8/Art/Review/P1/training-sword-v1/standing.png",
+      "status": 200,
+      "mime": "image/png",
+      "bytes": 461643,
+      "sha256": "a61ef1dec4704080cc62ad802217624a2a69242a89580a3fe09f7fdc80b7e240"
+    }
+  ],
+  "simulatorRun": false,
+  "deviceRun": false,
+  "newArtApproval": null
+}

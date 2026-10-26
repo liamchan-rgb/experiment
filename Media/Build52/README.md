@@ -7,3 +7,5 @@
 源码`0da70730b77038c9eb08c6eee4dd521ebca3b311`；[设备Release40281675931](https://github.com/liamchan-rgb/experiment/actions/runs/40281675931)成功，103纯测试（原98+装备3+连续落面2）和五旧纯Swift检查通过。Mac/Linux1190小队帧/3570请求/1690骰子与怪物帧/360公式图库在1e-6内逐字段一致，面数组仍按绘制顺序比较，只有acted集合按无序。原10814资源/美术路径中10813字节保持；hero-gait.json仅新增装备映射，删除新增字段后与旧JSON完全相同。原13核心/目录摘要、身体/动作/脚点/已存在人物PNG保持。
 
 [三战斗GIF/两八向GIF与站姿](../../Art/Review/Battle/training-sword-smooth-demo-v1/README.md)。版本1.6.26/build52，32,901,808字节，SHA256 `5c1bf5b2c1053cbabc05c9c168797f8f08fdf99db5982ab333052b7147eb767c`。包CRC/经典ZIP2.0/无压缩、extra/comment/ZIP64/arm64/iPhone+iPad/iOS15/权限/Metal/新空槽图集/图标/原目录资源通过。无App/模拟器/实机，新认可null。完整背包/装备/存档UI未完成，其余装备按猎弓→重剑→权杖→皮甲→符文甲→两饰品推进。
+
+公开交付提交`37e1becb3d1232eb7f3454ca1324b528899a59b8`，141选定路径、258编译输入一致；12个公开完整GET200及长度/摘要已核。[回执](../../Art/Review/Battle/training-sword-smooth-demo-v1/delivery.json)。

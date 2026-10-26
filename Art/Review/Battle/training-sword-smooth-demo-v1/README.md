@@ -15,3 +15,17 @@
 IPA1.6.26/build52，32,901,808字节，SHA256 `5c1bf5b2c1053cbabc05c9c168797f8f08fdf99db5982ab333052b7147eb767c`。[包记录](../../../../Media/Build52/package.json) · [直接IPA](https://raw.githubusercontent.com/liamchan-rgb/experiment/fix/build33-face-grounding-camera/Downloads/MeadowJourney-b52.ipa)。无App/模拟器/实机，安装/实际表现由用户测试。
 
 使用：地图顶部P1 · 短剑/空手→武器→装备训练短剑/卸下；衣装仍在同一菜单。随后林地战斗→小队支援读取本次装备。此为会话内受控装备体验，不包含完整背包、商店/存档或其他装备。
+
+公开交付：12个完整GET200，141选定路径/258编译输入已核。[回执](delivery.json)。浏览器动图：
+
+[ambush](https://cdn.jsdelivr.net/gh/liamchan-rgb/experiment@37e1becb3d1232eb7f3454ca1324b528899a59b8/Art/Review/Battle/training-sword-smooth-demo-v1/ambush-normal.gif)
+
+[unarmed](https://cdn.jsdelivr.net/gh/liamchan-rgb/experiment@37e1becb3d1232eb7f3454ca1324b528899a59b8/Art/Review/Battle/training-sword-smooth-demo-v1/unarmed-normal.gif)
+
+[lethal](https://cdn.jsdelivr.net/gh/liamchan-rgb/experiment@37e1becb3d1232eb7f3454ca1324b528899a59b8/Art/Review/Battle/training-sword-smooth-demo-v1/lethal-normal.gif)
+
+[walk](https://cdn.jsdelivr.net/gh/liamchan-rgb/experiment@37e1becb3d1232eb7f3454ca1324b528899a59b8/Art/Review/P1/training-sword-v1/walk-normal.gif)
+
+[transitions](https://cdn.jsdelivr.net/gh/liamchan-rgb/experiment@37e1becb3d1232eb7f3454ca1324b528899a59b8/Art/Review/P1/training-sword-v1/transitions-normal.gif)
+
+[固定提交直接IPA](https://raw.githubusercontent.com/liamchan-rgb/experiment/37e1becb3d1232eb7f3454ca1324b528899a59b8/Downloads/MeadowJourney-b52.ipa)
