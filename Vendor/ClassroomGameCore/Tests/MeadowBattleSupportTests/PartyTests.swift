@@ -129,9 +129,9 @@ extension PartyTests {
         let a=BattleDice.pose(time:0.5,index:0,resolvedAge:nil,visibleAge:0.5)
         let b=BattleDice.pose(time:0.501,index:0,resolvedAge:0,visibleAge:0.501)
         XCTAssertEqual(a.angle,b.angle,accuracy:0.01);XCTAssertEqual(b.resultMix,0)
-        let mid=BattleDice.pose(time:0.68,index:0,resolvedAge:0.18,visibleAge:0.68)
+        let mid=BattleDice.pose(time:0.68,index:0,resolvedAge:0.325,visibleAge:0.68)
         XCTAssertEqual(mid.resultMix,0.5,accuracy:1e-8)
-        let settled=BattleDice.pose(time:0.9,index:0,resolvedAge:0.4,visibleAge:0.9)
+        let settled=BattleDice.pose(time:0.9,index:0,resolvedAge:0.7,visibleAge:0.9)
         XCTAssertEqual(settled.angle,0);XCTAssertEqual(settled.offsetY,0);XCTAssertEqual(settled.resultMix,1)
         XCTAssertNotEqual(a.angle,BattleDice.pose(time:6.8,index:0,resolvedAge:nil,visibleAge:6.8).angle)
         XCTAssertEqual(BattleDice.pose(time:3,index:0,resolvedAge:2,visibleAge:3).alpha,0)
@@ -153,7 +153,7 @@ extension PartyTests {
         try p.engine.apply(.endTurn(actor:"p2",timedOut:false))
         let i=try XCTUnwrap(p.prepare(.attack,target:"m1"))
         let anchor=PartyVisual.diceAnchor(actor:i.actor,intent:i,age:1.048)
-        let rightFace=anchor.x+31+27
+        let rightFace=anchor.x+PolyhedralDice.spacing(count:2)/2+PolyhedralDice.radius(count:2)*1.3
         XCTAssertLessThan(rightFace,PartyVisual.feet[i.target]!.x-84-10)
         let idle=PartyVisual.diceAnchor(actor:i.actor,intent:nil,age:0)
         XCTAssertEqual(idle.x,PartyVisual.feet[i.actor]!.x)

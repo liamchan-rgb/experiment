@@ -95,6 +95,7 @@ import ClassroomGameCore
         try JSONSerialization.data(withJSONObject:rows,options:[.sortedKeys]).write(to:out.appendingPathComponent("party-frames.json"))
         try JSONSerialization.data(withJSONObject:requests,options:[.sortedKeys]).write(to:out.appendingPathComponent("legacy-light-requests.json"))
         try exportDice(out:out)
+        try exportPoly(out:out)
         print("Exported \(rows.count) actual GameCore support/item frames and \(requests.count) attachment samples")
     }
 }
@@ -149,10 +150,52 @@ extension Export {
                 let hover=time<1
                 let initial=BattleDice.darkness(action)
                 let dim=hover ? initial*PartyVisual.smooth(time/0.28):showing != nil ? (initial+(max(initial,activeAction.visual=="attack" ? 0.58:0.32)-initial)*PartyVisual.smooth(age/0.4))*(1-PartyVisual.smooth((age-1.2)/0.6)):0
-                rows.append(["scenario":scenario,"frame":frame,"time":time,"hover":hover,"darkness":dim,"actor":dieActor,"target":dieTarget,"action":activeAction.rawValue,"age":age,"playing":showing != nil,"enemy":showing?.enemy ?? false,"impact":hitAt as Any? ?? NSNull(),"receiptDice":try JSONSerialization.jsonObject(with:JSONEncoder().encode(receipt?.dice ?? [])),"dice":try JSONSerialization.jsonObject(with:JSONEncoder().encode(dice)),"diceAnchor":try JSONSerialization.jsonObject(with:JSONEncoder().encode(PartyVisual.diceAnchor(actor:dieActor,intent:showing,age:age,shielded:dieTargetUnit.shield>0))),"dicePose":try JSONSerialization.jsonObject(with:JSONEncoder().encode(diePose)),"travel":try JSONSerialization.jsonObject(with:JSONEncoder().encode(travel)),"current":(showing?.actor ?? p.current) as Any? ?? NSNull(),"acted":Array(p.state.battle?.acted ?? []),"units":units])
+                rows.append(["scenario":scenario,"frame":frame,"time":time,"hover":hover,"darkness":dim,"actor":dieActor,"target":dieTarget,"action":activeAction.rawValue,"age":age,"playing":showing != nil,"enemy":showing?.enemy ?? false,"impact":hitAt as Any? ?? NSNull(),"receiptDice":try JSONSerialization.jsonObject(with:JSONEncoder().encode(receipt?.dice ?? [])),"dice":try JSONSerialization.jsonObject(with:JSONEncoder().encode(dice)),"diceAnchor":try JSONSerialization.jsonObject(with:JSONEncoder().encode(PartyVisual.diceAnchor(actor:dieActor,intent:showing,age:age,shielded:dieTargetUnit.shield>0,diceCount:dice.count))),"poly":try JSONSerialization.jsonObject(with:JSONEncoder().encode(dice.enumerated().map { index,die in PolyhedralDice.sample(die:die,time:time,index:index,count:dice.count,resolvedAge:hitAt.map { time-$0 },visibleAge:frame>=190 && scenario=="attack-buff" ? time-3.8:time) })),"dicePose":try JSONSerialization.jsonObject(with:JSONEncoder().encode(diePose)),"travel":try JSONSerialization.jsonObject(with:JSONEncoder().encode(travel)),"current":(showing?.actor ?? p.current) as Any? ?? NSNull(),"acted":Array(p.state.battle?.acted ?? []),"units":units])
             }
         }
         try JSONSerialization.data(withJSONObject:rows,options:[.sortedKeys]).write(to:out.appendingPathComponent("dice-frames.json"))
         print("Exported \(rows.count) receipt-bound dice / monster / queue frames")
+    }
+}
+
+extension Export {
+    static func exportPoly(out:URL) throws {
+        var rows:[[String:Any]]=[]
+        for group in ["types","bonus"] {
+            let p=try PartyEncounter(seed:48,sessionID:"poly-review-"+group)
+            var sources:[(GameEngine,GameCommand,String)]=[]
+            if group=="types" {
+                for sides in [4,6,8,12,20,10] {
+                    var catalog=p.engine.catalog,state=p.state
+                    var weapon=try catalog.item("trainingSword")
+                    let id=[6:"trainingSword",8:"huntingBow",12:"greatSword",20:"legendaryStaff"][sides]
+                    if let id { weapon=try catalog.item(id) }
+                    else { weapon.id="offlineReviewD\(sides)";weapon.name="离线骰型D\(sides)";weapon.attack?.dice=DiceFormula(sides:sides);catalog.items.append(weapon) }
+                    state.units["p1"]?.equipment.weapon=weapon.id;state.battle?.queue=["p1","p2","m1","m2"];state.battle?.current="p1"
+                    sources.append((try GameEngine(catalog:catalog,state:state),.attack(actor:"p1",target:"m1"),"D\(sides)"))
+                }
+            } else {
+                let rally=p.prepare(.rally,target:"p1")!;_ = try p.commit(rally.id)
+                sources.append((p.engine,.cast(actor:"p2",skill:"ambush",target:.unit("m1")),"突袭 · 2D8＋2 / 增伤＋2"))
+                var state=p.state;var actor=try GameFactory.player(id:"p1",name:"符文公式审核",classID:"spellblade",teamID:"party",nodeID:1,catalog:p.engine.catalog)
+                actor.health=6;actor.damageBuff=state.units["p1"]?.damageBuff;state.units["p1"]=actor;state.battle?.queue=["p1","p2","m1","m2"];state.battle?.current="p1"
+                sources.append((try GameEngine(catalog:p.engine.catalog,state:state),.cast(actor:"p1",skill:"runeSlash",target:.unit("m1")),"符文斩 · 2D12＋2 / 增伤＋2"))
+            }
+            var receipts:[OperationReceipt]=[]
+            for (engine,command,_) in sources { receipts.append(try engine.apply(command)) }
+            for frame in 0..<180 {
+                let time=Double(frame)*0.02,at=1.2,resolved=time>=at
+                var entries:[[String:Any]]=[]
+                for (i,source) in sources.enumerated() {
+                    let receipt=receipts[i],actorID=group=="bonus" && i==0 ? "p2":"p1",actor=receipt.before.units[actorID]!,target=receipt.before.units["m1"]!
+                    let dice=group=="types" ? BattleDice.channels(.attack,actor:actor,target:target,catalog:source.0.catalog,receipt:resolved ? receipt:nil):BattleDice.skillChannels(i==0 ? "ambush":"runeSlash",actor:actor,catalog:source.0.catalog,receipt:resolved ? receipt:nil)
+                    let samples=dice.enumerated().map { index,die in PolyhedralDice.sample(die:die,time:time,index:index+i*3,count:dice.count,resolvedAge:resolved ? time-at:nil,visibleAge:time) }
+                    entries.append(["title":source.2,"dice":try JSONSerialization.jsonObject(with:JSONEncoder().encode(dice)),"samples":try JSONSerialization.jsonObject(with:JSONEncoder().encode(samples)),"receiptDice":try JSONSerialization.jsonObject(with:JSONEncoder().encode(resolved ? receipt.dice:[]))])
+                }
+                rows.append(["group":group,"frame":frame,"time":time,"entries":entries])
+            }
+        }
+        try JSONSerialization.data(withJSONObject:rows,options:[.sortedKeys]).write(to:out.appendingPathComponent("poly-frames.json"))
+        print("Exported \(rows.count) polyhedron gallery and source-formula bonus frames")
     }
 }
