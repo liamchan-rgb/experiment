@@ -1678,3 +1678,6 @@ IPA1.6.24/build50，31878612字节，SHA256 ee3e6dcd9c253a374ed117aa2aeabe294cfb
 主线程亲看25页710实际GIF解码帧及六人物/六全场1×/2×四板、六骰型。最初图库取3.58秒已淡出的空白帧，改取2.0秒有效落面后重新亲看；无源美术返工。离线正常20ms帧，非UIKit/实机与连续播放验收。致死夹具HP3，2.04秒仍有血条，2.06秒HP0/死亡age0/数字/隐条同时，默认怪仍18HP。起初Linux缓存挂载路径不匹配，恢复原/repo挂载后通过；新增检查发现停稳四元数等价正负表示随时间变，改为满停时直接返回统一目标四元数后98项全通过，不放松方向判定。
 
 IPA1.6.25/build51，31878628字节，SHA256 0121c60bd65e150dd4b02e913ad76a9fd82dbe1a75d24da9fa68e2ae4a0e9523；工件摘要/经典ZIP2.0头/无压缩/无extra/comment/ZIP64/CRC/平台/权限/Metal/当前资源/原目录已核。GitHub工作流使用已有ios.yml的quick_lab=true/package_only=true，未运行App/模拟器/实机；安装/输入/FPS用户测试。正常三GIF/站姿/图库见Art/Review/Battle/upright-dice-hud-demo-v1，包见Media/Build51，新认可null。
+
+
+build51公开链接核验发现交付脚本继承旧的b50文件名；立即恢复原build50字节，build51原始归档字节另存Downloads/MeadowJourney-b51.ipa并修正包元数据。不改App或归档内容，不复用先前错误路径的下载回执。重新完整GET验证b51固定提交/分支直链后再交付。
