@@ -44,6 +44,8 @@ public struct PartyIntent {
     public let targets:[String]
     public let command:GameCommand
     public let enemy:Bool
+    public let weaponID:String?
+    public var ranged:Bool { weaponID=="huntingBow" && !enemy && action.isOffensive }
 }
 /// Uses the original atomic rule engine. Pending visual actions do not mutate it.
 public final class PartyEncounter {
@@ -112,7 +114,7 @@ public final class PartyEncounter {
         if action == .rally { targets=state.players.filter { $0.isAlive && $0.nodeID==state.units[target]?.nodeID }.map(\.id) }
         else if action == .breather || action == .simpleGuard { targets=[actor] }
         else { targets=[target] }
-        let intent=PartyIntent(id:sessionID+"/"+String(serial),action:action,actor:actor,target:target,targets:targets,command:command,enemy:state.units[actor]?.kind == .monster)
+        let intent=PartyIntent(id:sessionID+"/"+String(serial),action:action,actor:actor,target:target,targets:targets,command:command,enemy:state.units[actor]?.kind == .monster,weaponID:state.units[actor]?.equipment.weapon)
         // Resolve once in an isolated transaction at confirmation. Live HP/AP,
         // RNG and history remain unchanged until the visible impact commits it.
         guard let staged=try? GameEngine(catalog:engine.catalog,state:state,history:engine.history),

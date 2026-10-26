@@ -67,6 +67,7 @@ public enum PartyVisual {
     }
     public static func travel(_ intent:PartyIntent?,age:Double,shielded:Bool=false)->PartyPoint {
         guard let intent,intent.action.isOffensive,let from=feet[intent.actor],let to=feet[intent.target] else { return PartyPoint(0,0) }
+        if intent.ranged { return PartyPoint(0,0) }
         if intent.action == .ambush {
             let p=age<0.72 ? smooth((age-0.22)/0.50):1-smooth((age-0.84)/0.58)
             return PartyPoint((to.x-140-from.x)*p,(to.y-12-from.y)*p)

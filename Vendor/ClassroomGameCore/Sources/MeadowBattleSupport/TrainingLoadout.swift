@@ -8,9 +8,11 @@ public final class TrainingLoadout {
     public var units:[String:GameUnit] { engine.state.units }
     public init(seed:UInt64=52) throws {
         let catalog=try GameCatalog.initial()
-        let p1=try GameFactory.player(id:"p1",name:"P1",classID:"adventurer",teamID:"party",nodeID:0,catalog:catalog)
+        var p1=try GameFactory.player(id:"p1",name:"P1",classID:"adventurer",teamID:"party",nodeID:0,catalog:catalog)
         let p2=try GameFactory.player(id:"p2",name:"P2",classID:"ranger",teamID:"party",nodeID:0,catalog:catalog)
         let map=GameMap(nodes:[MapNode(id:0,name:"营地",kind:.start)],roads:[],revealed:[0])
+        // One demo loan bow in the camp inventory, no catalog/price changes.
+        p1.inventory["huntingBow"]=1
         var state=GameState(units:["p1":p1,"p2":p2],teams:[GameTeam(id:"party",name:"旅人小队")],map:map,random:RandomState(seed:seed))
         state.pauseReasons=[]
         engine=try GameEngine(catalog:catalog,state:state)

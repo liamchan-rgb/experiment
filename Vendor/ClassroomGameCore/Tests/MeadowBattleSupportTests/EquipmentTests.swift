@@ -8,7 +8,7 @@ final class EquipmentTests:XCTestCase {
         let off=try gear.equip(nil);XCTAssertNil(off.after.units["p1"]?.equipment.weapon);XCTAssertEqual(off.after.units["p1"]?.inventory["trainingSword"],1)
         let on=try gear.equip("trainingSword");XCTAssertEqual(on.after.units["p1"]?.equipment.weapon,"trainingSword");XCTAssertNil(on.after.units["p1"]?.inventory["trainingSword"])
         XCTAssertEqual(before.units,on.after.units);XCTAssertEqual(before.random,on.after.random)
-        let same=gear.engine.state;XCTAssertThrowsError(try gear.equip("huntingBow"));XCTAssertEqual(same,gear.engine.state)
+        let same=gear.engine.state;XCTAssertThrowsError(try gear.equip("legendaryScepter"));XCTAssertEqual(same,gear.engine.state)
     }
     func testBattleCopiesEquipmentAndRespectsUnarmedAttackAndBattleEquipRestrictions() throws {
         let gear=try TrainingLoadout();try gear.equip(nil)
@@ -32,7 +32,7 @@ final class EquipmentTests:XCTestCase {
         let json=try JSONSerialization.jsonObject(with:data) as! [String:Any],modular=json["modularP1"] as! [String:Any]
         for preset in modular["loadouts"] as! [[String:Any]] {
             let names=preset["weaponAtlasNames"] as! [String:[String]]
-            for state in ["trainingSword","none"] {
+            for state in ["trainingSword","huntingBow","none"] {
                 XCTAssertEqual(names[state]?.count,2)
                 for name in names[state] ?? [] { XCTAssertTrue(FileManager.default.fileExists(atPath:root.appendingPathComponent("Sources/Resources/Assets.xcassets/\(name).imageset/Contents.json").path)) }
             }

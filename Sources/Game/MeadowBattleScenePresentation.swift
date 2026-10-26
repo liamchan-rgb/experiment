@@ -100,6 +100,7 @@ final class MeadowBattleEffectsView: UIView {
     var previewPower: CGFloat = 0
     var previewEnvelope: CGFloat = 0
     var ringAlpha: CGFloat = 0
+    var rangedImpact=false
     var impactAge: Double?
     var messageAge: Double?
     var messageAtHero = false
@@ -181,13 +182,13 @@ final class MeadowBattleEffectsView: UIView {
         if let age=impactAge, age<0.70 {
             let slash=pulse(age,-0.06,0,0.25)
             let spread=CGFloat(max(0,age))
-            sprite(MeadowBattleVFXAssets.slash,impact,225,225,slash)
+            if !rangedImpact { sprite(MeadowBattleVFXAssets.slash,impact,225,225,slash) }
             ctx.saveGState();ctx.translateBy(x:impact.x,y:impact.y);ctx.rotate(by:-0.65+spread*3.8)
             let arc=(225+spread*300)*unit
-            MeadowBattleVFXAssets.heavyArc.draw(in:CGRect(x:-arc/2,y:-arc/2,width:arc,height:arc),blendMode:.plusLighter,alpha:burst*0.9)
+            MeadowBattleVFXAssets.heavyArc.draw(in:CGRect(x:-arc/2,y:-arc/2,width:arc,height:arc),blendMode:.plusLighter,alpha:rangedImpact ? 0:burst*0.9)
             ctx.restoreGState()
             let echo=pulse(age,0.10,0.19,0.65)
-            sprite(MeadowBattleVFXAssets.heavyArc,CGPoint(x:impact.x+spread*22*unit,y:impact.y),285+spread*160,225+spread*170,echo*0.38)
+            sprite(MeadowBattleVFXAssets.heavyArc,CGPoint(x:impact.x+spread*22*unit,y:impact.y),285+spread*160,225+spread*170,rangedImpact ? 0:echo*0.38)
             sprite(MeadowBattleVFXAssets.burst,impact,205+spread*145,205+spread*145,burst)
             sprite(MeadowBattleVFXAssets.spray,CGPoint(x:impact.x+(95+spread*75)*unit,y:impact.y-15*unit),250+spread*180,160,burst*0.9)
             for i in 0..<26 {

@@ -55,6 +55,8 @@ final class MeadowBattleLandscapeView: UIView {
     private var lastDeathFrame = -1
     private var savedImpact = CGPoint.zero
     private var attackContactPoint = CGPoint.zero
+    private var usesBow=false
+    private let bowArrow=CAShapeLayer()
     private var lightEmissions: [MeadowBattleLightEmission] = []
     private var shieldFormationBase=0.0
     private var shieldFormationAt: Double?
@@ -267,7 +269,7 @@ final class MeadowBattleLandscapeView: UIView {
         renderAnimation()
     }
 
-    func configureWeapon(_ asset:String?) { hero.setWeaponAsset(asset);lastShadowPose="";renderAnimation() }
+    func configureWeapon(_ asset:String?) { usesBow=asset=="MeadowBattleHuntingBow";if bowArrow.superlayer==nil { world.layer.addSublayer(bowArrow);bowArrow.zPosition=1000;bowArrow.strokeColor=MeadowPreviewPalette.ink.cgColor;bowArrow.lineWidth=2;bowArrow.shadowColor=MeadowPreviewPalette.gold.cgColor;bowArrow.shadowOpacity=0.7;bowArrow.shadowRadius=5 };hero.setWeaponAsset(asset);lastShadowPose="";renderAnimation() }
     @objc private func selectEnemy() { onEnemySelected?() }
 
     func setEncounter(heroHP: Int, enemyHP: Int, shield: Int, selected: Bool) {
@@ -463,7 +465,7 @@ final class MeadowBattleLandscapeView: UIView {
                 let tip = transformPoint(CGPoint(x: 191, y: 142), part: contact.layers["MeadowBattleHeroWeapon"] ?? .init())
                 let heroReach = baseHeroFrame.minX + (tip.x + contact.rootOffset.x) / 256 * baseHeroFrame.width
                 let enemyFront = baseEnemyFrame.minX + 125 / 384 * baseEnemyFrame.width
-                heroTravel = min(canvas.bounds.width * 0.22, max(0, enemyFront - heroReach)) * approach()
+                heroTravel = usesBow ? 0:min(canvas.bounds.width * 0.22, max(0, enemyFront - heroReach)) * approach()
                 let age=cueElapsed-MeadowBattleImpactClock.strikeContact
                 let recoil=age <= 0.14 ? smooth((age+0.02)/0.16) : 1-smooth((age-0.14)/0.38)
                 enemyRecoil = canvas.bounds.width * 0.025 * recoil
@@ -481,6 +483,15 @@ final class MeadowBattleLandscapeView: UIView {
             case .heal: clip = "idle"; poseProgress = p
             case .victory: clip = "victory"; poseProgress = p
             case .defeat: clip = "defeat"; poseProgress = p; hero.alpha = 1 - p * 0.35
+            }
+        }
+        bowArrow.path=nil
+        if usesBow,cue == .strike {
+            let unit=baseHeroFrame.width/256
+            let from=PartyPoint(Double(baseHeroFrame.minX+180*unit),Double(baseHeroFrame.minY+137*unit))
+            let to=PartyPoint(Double(attackContactPoint.x),Double(attackContactPoint.y))
+            if let arrow=BowRig.projectile(age:cueElapsed,from:from,to:to,impact:MeadowBattleImpactClock.strikeContact) {
+                let path=UIBezierPath();path.move(to:CGPoint(x:arrow.tail.x,y:arrow.tail.y));path.addLine(to:CGPoint(x:arrow.tip.x,y:arrow.tip.y));bowArrow.path=path.cgPath
             }
         }
         hero.setPose(clip: clip, progress: poseProgress)
@@ -564,6 +575,7 @@ final class MeadowBattleLandscapeView: UIView {
         let ring: CGFloat = cue == .strike ? 0.65*(1-smooth((cueElapsed-0.24)/0.16)) : cue == nil && focusedAction != .protection ? power*0.7*focusEnvelope : 0
         let particles=lightEmissions.flatMap { e in MeadowBattleLightField.sample(e.kind,age:sceneTime-e.startedAt,originX:e.x,originY:e.y,groundY:e.groundY) }
         for renderer in [effects,groundEffects] {
+            renderer.rangedImpact=usesBow
             renderer.heroFoot=heroFoot; renderer.enemyFoot=enemyFoot; renderer.impact=savedImpact
             renderer.cue=cue; renderer.progress=p; renderer.selected=selected; renderer.shield=shownShieldValue
             renderer.previewPower=0; renderer.previewEnvelope=0; renderer.ringAlpha=0

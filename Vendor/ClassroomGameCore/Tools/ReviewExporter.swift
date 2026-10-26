@@ -96,6 +96,7 @@ import ClassroomGameCore
         try JSONSerialization.data(withJSONObject:requests,options:[.sortedKeys]).write(to:out.appendingPathComponent("legacy-light-requests.json"))
         try exportDice(out:out)
         try exportPoly(out:out)
+        try exportBow(out:out)
         print("Exported \(rows.count) actual GameCore support/item frames and \(requests.count) attachment samples")
     }
 }
@@ -103,16 +104,16 @@ import ClassroomGameCore
 extension Export {
     static func exportDice(out:URL) throws {
         var rows:[[String:Any]]=[]
-        for scenario in ["attack-buff","support","shield","heal","lethal","ambush","ambush-last","unarmed"] {
+        for scenario in ["attack-buff","support","shield","heal","lethal","ambush","ambush-last","unarmed","bow","bow-heavy","bow-lethal"] {
             let gear=try TrainingLoadout()
-            if scenario=="unarmed" { try gear.equip(nil) }
-            let p=try PartyEncounter(seed:47,sessionID:"dice-review-"+scenario,loadouts:scenario=="unarmed" ? gear.units:nil)
-            let action:PartyAction=scenario.hasPrefix("ambush") ? .ambush:["support","unarmed"].contains(scenario) ? .support:scenario=="shield" ? .simpleGuard:scenario=="heal" ? .largePotion:.attack
+            if scenario=="unarmed" { try gear.equip(nil) };if scenario.hasPrefix("bow") { try gear.equip("huntingBow") }
+            let p=try PartyEncounter(seed:47,sessionID:"dice-review-"+scenario,loadouts:scenario=="unarmed" || scenario.hasPrefix("bow") ? gear.units:nil)
+            let action:PartyAction=scenario=="bow-heavy" ? .heavyStrike:scenario.hasPrefix("ambush") ? .ambush:["support","unarmed"].contains(scenario) ? .support:scenario=="shield" ? .simpleGuard:scenario=="heal" ? .largePotion:.attack
             if scenario=="attack-buff" || scenario=="lethal" || scenario=="ambush-last" {
                 let rally=p.prepare(.rally,target:"p1")!;_ = try p.commit(rally.id)
             }
             if scenario != "support" && scenario != "unarmed" && scenario != "heal" && !scenario.hasPrefix("ambush") { try p.engine.apply(.endTurn(actor:"p2",timedOut:false)) }
-            if scenario=="lethal" { try p.engine.apply(.editResources(unit:"m1",value:ResourcePatch(health:3))) }
+            if scenario=="lethal" || scenario=="bow-lethal" { try p.engine.apply(.editResources(unit:"m1",value:ResourcePatch(health:3))) }
             if scenario=="ambush-last" {
                 try p.engine.apply(.editResources(unit:"m2",value:ResourcePatch(health:0)))
                 try p.engine.apply(.editResources(unit:"m1",value:ResourcePatch(health:3)))
@@ -158,11 +159,15 @@ extension Export {
                     let monster=PartyVisual.monster(time:time+(id=="m2" ? 0.7:0),attackAge:showing?.actor==id ? age:nil,hurtAge:hurt[id].map { time-$0 },preparing:p.current==id && showing==nil)
                     units.append(["id":id,"weaponID":u.equipment.weapon as Any? ?? NSNull(),"vitalsVisible":u.kind != .monster || u.isAlive,"hp":u.health,"maxHP":u.baseAttributes.maximumHealth,"shield":u.shield,"ap":u.ap,"buff":u.damageBuff?.amount ?? 0,"clip":pose.clip,"progress":pose.progress,"monster":try JSONSerialization.jsonObject(with:JSONEncoder().encode(monster)),"deathAge":death[id].map { time-$0 } as Any? ?? NSNull()])
                 }
+                let bowProjectile=showing.flatMap { i -> BowProjectile? in
+                    guard i.ranged,let f=PartyVisual.feet[i.actor] else { return nil }
+                    return BowRig.projectile(age:age,from:PartyPoint(f.x+57*PartyVisual.heroScale,f.y-77*PartyVisual.heroScale),to:PartyVisual.hitPoint(target:i.target,shielded:dieTargetUnit.shield>0),impact:i.action.impact)
+                }
                 let diePose=dice.indices.map { index in BattleDice.pose(time:time,index:index,resolvedAge:hitAt.map { time-$0 },visibleAge:frame>=190 && scenario=="attack-buff" ? time-3.8:time) }
                 let hover=time<1
                 let initial=BattleDice.darkness(action)
                 let dim=hover ? initial*PartyVisual.smooth(time/0.28):showing != nil ? (initial+(max(initial,activeAction.isOffensive ? 0.58:0.32)-initial)*PartyVisual.smooth(age/0.4))*(1-PartyVisual.smooth((age-1.2)/0.6)):0
-                rows.append(["scenario":scenario,"frame":frame,"time":time,"damageLabels":damageLabels.filter { time-($0["at"] as! Double)<1 },"locked":!hover,"confirmationAge":hover ? NSNull():age,"hover":hover,"darkness":dim,"actor":dieActor,"target":dieTarget,"action":activeAction.rawValue,"age":age,"playing":showing != nil,"enemy":showing?.enemy ?? false,"impact":hitAt as Any? ?? NSNull(),"afterimages":try JSONSerialization.jsonObject(with:JSONEncoder().encode(PartyVisual.afterimages(showing,age:age))),"ambushSlashes":try JSONSerialization.jsonObject(with:JSONEncoder().encode(activeAction == .ambush ? PartyVisual.ambushSlashes(age:age,at:PartyPoint(PartyVisual.feet[dieTarget]!.x-80,PartyVisual.feet[dieTarget]!.y-72)):[])),"receiptDice":try JSONSerialization.jsonObject(with:JSONEncoder().encode(receipt?.dice ?? [])),"dice":try JSONSerialization.jsonObject(with:JSONEncoder().encode(dice)),"diceAnchor":try JSONSerialization.jsonObject(with:JSONEncoder().encode(PartyVisual.diceAnchor(actor:dieActor,intent:showing,age:age,shielded:dieTargetUnit.shield>0,diceCount:dice.count))),"poly":try JSONSerialization.jsonObject(with:JSONEncoder().encode(dice.enumerated().map { index,die in PolyhedralDice.sample(die:die,time:time,index:index,count:dice.count,resolvedAge:hitAt.map { time-$0 },visibleAge:frame>=190 && scenario=="attack-buff" ? time-3.8:time,locked:!hover,confirmationAge:hover ? nil:age) })),"dicePose":try JSONSerialization.jsonObject(with:JSONEncoder().encode(diePose)),"travel":try JSONSerialization.jsonObject(with:JSONEncoder().encode(travel)),"current":(showing?.actor ?? p.current) as Any? ?? NSNull(),"acted":Array(p.state.battle?.acted ?? []),"units":units])
+                rows.append(["scenario":scenario,"frame":frame,"time":time,"damageLabels":damageLabels.filter { time-($0["at"] as! Double)<1 },"ranged":showing?.ranged ?? false,"projectile":bowProjectile.map { try! JSONSerialization.jsonObject(with:JSONEncoder().encode($0)) } as Any? ?? NSNull(),"locked":!hover,"confirmationAge":hover ? NSNull():age,"hover":hover,"darkness":dim,"actor":dieActor,"target":dieTarget,"action":activeAction.rawValue,"age":age,"playing":showing != nil,"enemy":showing?.enemy ?? false,"impact":hitAt as Any? ?? NSNull(),"afterimages":try JSONSerialization.jsonObject(with:JSONEncoder().encode(PartyVisual.afterimages(showing,age:age))),"ambushSlashes":try JSONSerialization.jsonObject(with:JSONEncoder().encode(activeAction == .ambush ? PartyVisual.ambushSlashes(age:age,at:PartyPoint(PartyVisual.feet[dieTarget]!.x-80,PartyVisual.feet[dieTarget]!.y-72)):[])),"receiptDice":try JSONSerialization.jsonObject(with:JSONEncoder().encode(receipt?.dice ?? [])),"dice":try JSONSerialization.jsonObject(with:JSONEncoder().encode(dice)),"diceAnchor":try JSONSerialization.jsonObject(with:JSONEncoder().encode(PartyVisual.diceAnchor(actor:dieActor,intent:showing,age:age,shielded:dieTargetUnit.shield>0,diceCount:dice.count))),"poly":try JSONSerialization.jsonObject(with:JSONEncoder().encode(dice.enumerated().map { index,die in PolyhedralDice.sample(die:die,time:time,index:index,count:dice.count,resolvedAge:hitAt.map { time-$0 },visibleAge:frame>=190 && scenario=="attack-buff" ? time-3.8:time,locked:!hover,confirmationAge:hover ? nil:age) })),"dicePose":try JSONSerialization.jsonObject(with:JSONEncoder().encode(diePose)),"travel":try JSONSerialization.jsonObject(with:JSONEncoder().encode(travel)),"current":(showing?.actor ?? p.current) as Any? ?? NSNull(),"acted":Array(p.state.battle?.acted ?? []),"units":units])
             }
         }
         try JSONSerialization.data(withJSONObject:rows,options:[.sortedKeys]).write(to:out.appendingPathComponent("dice-frames.json"))
@@ -209,5 +214,26 @@ extension Export {
         }
         try JSONSerialization.data(withJSONObject:rows,options:[.sortedKeys]).write(to:out.appendingPathComponent("poly-frames.json"))
         print("Exported \(rows.count) polyhedron gallery and source-formula bonus frames")
+    }
+}
+
+extension Export {
+    static func exportBow(out:URL) throws {
+        let root=URL(fileURLWithPath:#filePath).deletingLastPathComponent().deletingLastPathComponent().deletingLastPathComponent().deletingLastPathComponent()
+        let data=try Data(contentsOf:root.appendingPathComponent("Sources/Resources/Assets.xcassets/MeadowBattleHeroAnimationV2.dataset/animation.json"))
+        let json=try JSONSerialization.jsonObject(with:data) as! [String:Any],clips=json["clips"] as! [String:[String:Any]]
+        var rows:[[String:Any]]=[]
+        for clip in ["idle","attack","guard","hit","victory","defeat"] {
+            let keys=clips[clip]!["keys"] as! [[String:Any]]
+            for i in 0...600 {
+                let p=Double(i)/600,u=keys.firstIndex { ($0["t"] as! Double)>=p } ?? keys.count-1,a=keys[max(0,u-1)],b=keys[u]
+                let at=a["t"] as! Double,bt=b["t"] as! Double,f=bt==at ? 0:(p-at)/(bt-at)
+                func value(_ key:String)->Double { let x=a[key] as! Double,y=b[key] as! Double;return x+(y-x)*f }
+                let sample=BowRig.sample(clip:clip,progress:p,lean:clip=="attack" ? 0:value("lean"),crouch:clip=="attack" ? 0:value("crouch"))
+                rows.append(["clip":clip,"progress":p,"sample":try JSONSerialization.jsonObject(with:JSONEncoder().encode(sample))])
+            }
+        }
+        try JSONSerialization.data(withJSONObject:rows,options:[.sortedKeys]).write(to:out.appendingPathComponent("bow-poses.json"))
+        print("Exported \(rows.count) shared bow/arm/string poses")
     }
 }

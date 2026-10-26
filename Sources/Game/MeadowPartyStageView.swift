@@ -280,13 +280,26 @@ private final class MeadowPartyEffectsView:UIView {
                 sprite(MeadowBattleVFXAssets.healShaft,PartyPoint(foot.x,foot.y-80),120,220,a)
                 for p in PartyVisual.rally(age:age,at:PartyPoint(foot.x,foot.y-60)) { sprite(MeadowBattleVFXAssets.healStar,PartyPoint(p.x,p.y),p.size,p.size,p.alpha) }
             }
+            if intent.ranged,let foot=PartyVisual.feet[intent.actor] {
+                let from=PartyPoint(foot.x+(180-123)*PartyVisual.heroScale,foot.y+(137-214)*PartyVisual.heroScale)
+                let to=PartyVisual.hitPoint(target:intent.target,shielded:meetsShield)
+                if let arrow=BowRig.projectile(age:age,from:from,to:to,impact:intent.action.impact) {
+                    let a=arrow.tail,b=arrow.tip
+                    ctx.saveGState();ctx.setLineCap(.round)
+                    ctx.setShadow(offset:.zero,blur:8,color:MeadowPreviewPalette.gold.cgColor)
+                    ctx.setStrokeColor(MeadowPreviewPalette.gold.withAlphaComponent(0.5).cgColor);ctx.setLineWidth(5)
+                    ctx.move(to:CGPoint(x:a.x,y:a.y));ctx.addLine(to:CGPoint(x:b.x,y:b.y));ctx.strokePath()
+                    ctx.setStrokeColor(MeadowPreviewPalette.ink.cgColor);ctx.setLineWidth(2)
+                    ctx.move(to:CGPoint(x:a.x,y:a.y));ctx.addLine(to:CGPoint(x:b.x,y:b.y));ctx.strokePath();ctx.restoreGState()
+                }
+            }
             if visual=="attack",let foot=PartyVisual.feet[intent.target] {
                 let a=age-(intent.enemy ? 0.46:1.048),p=PartyPoint(foot.x+(intent.enemy ? (meetsShield ? (5+240*0.41)*PartyVisual.heroScale:10): -80),foot.y-(intent.enemy ? 65:72))
                 let power=PartyVisual.pulse(a,-0.035,0.035,0.52)
                 glow(p,140,140,power*0.48,.orange);glow(foot,170,30,power*0.65,.orange)
                 if a>=0,a<0.7 {
                     sprite(MeadowBattleVFXAssets.burst,p,150+a*140,150+a*140,power)
-                    if !intent.enemy { sprite(MeadowBattleVFXAssets.heavyArc,p,210+a*240,210+a*240,power*0.9) }
+                    if !intent.enemy && !intent.ranged { sprite(MeadowBattleVFXAssets.heavyArc,p,210+a*240,210+a*240,power*0.9) }
                 }
             }
             if visual=="ambush",let foot=PartyVisual.feet[intent.target] {

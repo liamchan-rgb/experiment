@@ -557,7 +557,8 @@
         "weapon.back"
       ],
       "carryProfiles": [
-        "back-scabbard"
+        "back-scabbard",
+        "back-bow"
       ]
     }
   },

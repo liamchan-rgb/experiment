@@ -510,17 +510,18 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
             }
         }
         let sword=UIAction(title:"训练短剑 · 1D6",image:UIImage(named:HeroFrames.weaponVisual("trainingSword")?.iconAsset ?? ""),state:unit.equipment.weapon=="trainingSword" ? .on:.off) { [weak self] _ in self?.equipP1Weapon("trainingSword") }
+        let bow=UIAction(title:"猎弓 · 1D8",image:UIImage(named:HeroFrames.weaponVisual("huntingBow")?.iconAsset ?? ""),state:unit.equipment.weapon=="huntingBow" ? .on:.off) { [weak self] _ in self?.equipP1Weapon("huntingBow") }
         let remove=UIAction(title:"卸下武器",state:unit.equipment.weapon==nil ? .on:.off) { [weak self] _ in self?.equipP1Weapon(nil) }
-        p1AppearanceButton.menu=UIMenu(children:[UIMenu(title:"衣装",children:clothes),UIMenu(title:"武器 · 背包短剑 ×\(unit.inventory["trainingSword"] ?? 0)",children:[sword,remove])])
-        p1AppearanceButton.configuration?.title=unit.equipment.weapon==nil ? "P1 · 空手":"P1 · 短剑"
-        p1AppearanceButton.accessibilityValue=unit.equipment.weapon==nil ? "未装备武器":"训练短剑已装备"
+        p1AppearanceButton.menu=UIMenu(children:[UIMenu(title:"衣装",children:clothes),UIMenu(title:"武器 · 短剑×\(unit.inventory["trainingSword"] ?? 0) / 猎弓×\(unit.inventory["huntingBow"] ?? 0)",children:[sword,bow,remove])])
+        p1AppearanceButton.configuration?.title=unit.equipment.weapon==nil ? "P1 · 空手":unit.equipment.weapon=="huntingBow" ? "P1 · 猎弓":"P1 · 短剑"
+        p1AppearanceButton.accessibilityValue=unit.equipment.weapon==nil ? "未装备武器":unit.equipment.weapon=="huntingBow" ? "猎弓已装备":"训练短剑已装备"
     }
     private func equipP1Weapon(_ id:String?) {
         guard ready,!battlePreviewActive,let model=equipmentModel else { return }
         if model.units["p1"]?.equipment.weapon==id { return }
         do {
             try model.equip(id);scene.selectP1Weapon(id);refreshEquipmentMenu()
-            discoveryLabel.text=id==nil ? "已卸下训练短剑 · 普通攻击不可用":"已装备训练短剑 · 普通攻击1D6"
+            discoveryLabel.text=id==nil ? "已卸下武器 · 普通攻击不可用":id=="huntingBow" ? "已装备猎弓 · 普通攻击1D8":"已装备训练短剑 · 普通攻击1D6"
             UIAccessibility.post(notification:.announcement,argument:discoveryLabel.text)
         } catch { discoveryLabel.text=error.localizedDescription }
     }
