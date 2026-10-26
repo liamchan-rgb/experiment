@@ -1213,7 +1213,13 @@
         "separate battle hold/pose binding"
       ],
       "fullCurrentDemoItemIntegration": false,
-      "newArtApproval": null
+      "newArtApproval": null,
+      "batchArtReview": {
+        "status": "candidate-awaiting-user-review",
+        "directory": "Art/Review/Equipment/b2-batch-v1",
+        "runtimeIntegrated": false,
+        "newArtApproval": null
+      }
     },
     {
       "id": "legendaryStaff",
@@ -1260,7 +1266,13 @@
         "separate battle hold/pose binding"
       ],
       "fullCurrentDemoItemIntegration": false,
-      "newArtApproval": null
+      "newArtApproval": null,
+      "batchArtReview": {
+        "status": "candidate-awaiting-user-review",
+        "directory": "Art/Review/Equipment/b2-batch-v1",
+        "runtimeIntegrated": false,
+        "newArtApproval": null
+      }
     },
     {
       "id": "leatherArmor",
@@ -1300,7 +1312,13 @@
         "separate battle hold/pose binding"
       ],
       "fullCurrentDemoItemIntegration": false,
-      "newArtApproval": null
+      "newArtApproval": null,
+      "batchArtReview": {
+        "status": "candidate-awaiting-user-review",
+        "directory": "Art/Review/Equipment/b2-batch-v1",
+        "runtimeIntegrated": false,
+        "newArtApproval": null
+      }
     },
     {
       "id": "runeArmor",
@@ -1340,7 +1358,13 @@
         "separate battle hold/pose binding"
       ],
       "fullCurrentDemoItemIntegration": false,
-      "newArtApproval": null
+      "newArtApproval": null,
+      "batchArtReview": {
+        "status": "candidate-awaiting-user-review",
+        "directory": "Art/Review/Equipment/b2-batch-v1",
+        "runtimeIntegrated": false,
+        "newArtApproval": null
+      }
     },
     {
       "id": "powerBadge",
@@ -1379,7 +1403,13 @@
         "UI/status presentation; no automatic eight-direction sprite requirement"
       ],
       "fullCurrentDemoItemIntegration": false,
-      "newArtApproval": null
+      "newArtApproval": null,
+      "batchArtReview": {
+        "status": "candidate-awaiting-user-review",
+        "directory": "Art/Review/Equipment/b2-batch-v1",
+        "runtimeIntegrated": false,
+        "newArtApproval": null
+      }
     },
     {
       "id": "actionRing",
@@ -1418,7 +1448,13 @@
         "UI/status presentation; no automatic eight-direction sprite requirement"
       ],
       "fullCurrentDemoItemIntegration": false,
-      "newArtApproval": null
+      "newArtApproval": null,
+      "batchArtReview": {
+        "status": "candidate-awaiting-user-review",
+        "directory": "Art/Review/Equipment/b2-batch-v1",
+        "runtimeIntegrated": false,
+        "newArtApproval": null
+      }
     },
     {
       "id": "smallPotion",

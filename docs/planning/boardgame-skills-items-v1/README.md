@@ -2,6 +2,10 @@
 
 核对日期：2026-10-25。来源：[classroom-boardgame正式内容表](https://github.com/liamchan-rgb/classroom-boardgame/blob/1e9100c4c18364ea64b3ec974fe957ba4ef42f6f/native/Packages/GameCore/Sources/ClassroomGameCore/Resources/initial-content.json)（main `1e9100c4c18364ea64b3ec974fe957ba4ef42f6f`），并检查战斗分支 `a0427b83d9233f1a83178b3c47d3fab39eed664e`。8个源码分支的内容表Git blob均相同，archive-assets为归档二进制分支；共19技能、18物品、2套装。原始目录快照与校验见本目录JSON。初次核查时只读桌游仓库并保存计划；之后用户已授权执行，最新进展见下段，原桌游仓库保持只读。
 
+## 2026-10-26最新安排：B2剩余六件集中素材审核
+
+用户要求素材尽量一次做完并提供批量审核界面，覆盖下文按件打包的旧执行安排。集中制作重剑、传奇权杖、皮甲、符文甲及两饰品素材候选；四可见件完整104八向绑定/侧向六动作挂载，两饰品复用图标与原信息。审核页和限制见[本批记录](../../../Art/Review/Equipment/b2-batch-v1/README.md)，新认可null。专用权杖施法、原规则装备/属性与完整背包/存档/demo整合随后完成，六件fullCurrentDemoItemIntegration仍false，不算B2完整完成；不扩大到B3—B6。
+
 ## 2026-10-26最新进展：B2猎弓候选build53
 
 训练短剑之后接入huntingBow，营地原.equip切换和库存、两衣装完整104八向背弓绑定、战斗原地持弓/拉弦/放箭/收势及D8真实普攻。强击仍1D6+2，不把武器公式覆盖技能。独立弦/手释放、原命中时点、当前平滑停骰/菱形AP/死亡隐条保持。[build53交付](../../../Media/Build53/README.md)，主线程亲自修复并审核208背弓整身1×/2×、570整场/190整身/21行走解码帧。受控P1借弓菜单，旧单人固定5伤练习和完整背包/存档范围见交付说明；新候选认可null，实际设备用户测。下一件重剑，然后权杖/两甲/两饰品；B3—B6未完成。

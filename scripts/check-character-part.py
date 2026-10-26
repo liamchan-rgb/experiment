@@ -65,7 +65,7 @@ def check_asset(path, schema_only=False, production=False):
         if carry is not None:
             if carry not in spec.get('carryProfiles',[]):
                 errors.append(f'unsupported weapon carry profile: {carry}')
-            if carry in ['back-scabbard','back-bow']:
+            if carry in ['back-scabbard','back-bow','back-staff']:
                 if mode!='pose-map':
                     errors.append('back-scabbard weapons require pose-map mode')
                 if asset['slots']!=['weapon.back']:

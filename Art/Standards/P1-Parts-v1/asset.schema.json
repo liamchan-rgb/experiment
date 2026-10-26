@@ -177,7 +177,8 @@
     "carryProfile": {
       "enum": [
         "back-scabbard",
-        "back-bow"
+        "back-bow",
+        "back-staff"
       ]
     },
     "bindings": {
@@ -278,7 +279,8 @@
           "carryProfile": {
             "enum": [
               "back-scabbard",
-              "back-bow"
+              "back-bow",
+              "back-staff"
             ]
           }
         },

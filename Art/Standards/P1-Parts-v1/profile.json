@@ -558,7 +558,8 @@
       ],
       "carryProfiles": [
         "back-scabbard",
-        "back-bow"
+        "back-bow",
+        "back-staff"
       ]
     }
   },
