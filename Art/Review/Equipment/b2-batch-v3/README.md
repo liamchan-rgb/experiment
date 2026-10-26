@@ -25,3 +25,5 @@ r2把大导板按统一比例缩小，再将肩袖、前臂、胸甲和护裙分
 运行python3 scripts/build-b2-armor-r3.py；依赖Pillow/NumPy/SciPy。源版型、分区、控制点与变形都在scripts/armor-shared-surface.py，原生成稿与提示词在本轮parts目录。实际HTTPS/私有Sites发布与摘要核验记录在delivery.json/deployment.json。
 
 审核地址沿用https://meadow-equipment-review.smokytide.chatgpt.site，保留四件已通过状态，只有两甲新候选待审。新两甲采用带revision的URL，防止旧缓存。反馈保存在当前浏览器，导出JSON后发回聊天；不假称已自动写回GitHub。
+
+最终候选提交 `fb72eb5f773d178dece199d0069cbf4b34ad245c`；资源revision `065f0efc4faa649090f899f4a2b1317c3cf422efc0373e19adb5da387c9d99b9`。同一私有审核页部署成功，Sites源码 `372a0abfaa04fe9b1954522cbf82bbdc42bef2b0`，部署ID `appgdep_6adf842cbe788191bb55f292fad931b7`。九个固定提交HTTPS实际GET200，MIME/完整字节/SHA256一致，五GIF循环和时长核对；1785发布路径与提交对象逐字节匹配。回执见delivery.json/deployment.json。四件认可保持，两甲待用户复审。
