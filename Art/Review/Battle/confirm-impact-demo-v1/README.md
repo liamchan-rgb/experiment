@@ -17,3 +17,13 @@
 源码`a47f5d1ccf852337a784e3373e42a655ce1b2e54`、设备Release [40272222309](https://github.com/liamchan-rgb/experiment/actions/runs/40272222309)，97纯规则/适配/几何/事务测试与五旧纯Swift检查通过。Mac/Linux1190小队帧/3570请求/1500骰子与怪物帧/360公式图库在1e-6内一致，只有acted集合按无序比较。原10814美术/资源路径、13原核心/清单摘要与单人模型/时钟前缀保持。
 
 [直接IPA](https://raw.githubusercontent.com/liamchan-rgb/experiment/fix/build33-face-grounding-camera/Downloads/MeadowJourney-b50.ipa) · [包记录](../../../../Media/Build50/package.json)，1.6.24/build50，31,878,612字节，SHA256 `ee3e6dcd9c253a374ed117aa2aeabe294cfbe68dabbbf432c28a8f9041c05cc9`。经典ZIP2.0/CRC/arm64/资源与权限已核。无App/模拟器/实机运行，安装、操作与实际FPS由用户测试。入口：林地战斗→小队支援。
+
+公开交付：10个完整GET200，96选定路径/246编译输入摘要匹配。[回执](delivery.json)。浏览器动图直链：
+
+[ambush](https://cdn.jsdelivr.net/gh/liamchan-rgb/experiment@4858744e4dbcc24b9e9144ad38c71e3adbd4767f/Art/Review/Battle/confirm-impact-demo-v1/ambush-normal.gif)
+
+[attack-buff](https://cdn.jsdelivr.net/gh/liamchan-rgb/experiment@4858744e4dbcc24b9e9144ad38c71e3adbd4767f/Art/Review/Battle/confirm-impact-demo-v1/attack-buff-normal.gif)
+
+[lethal](https://cdn.jsdelivr.net/gh/liamchan-rgb/experiment@4858744e4dbcc24b9e9144ad38c71e3adbd4767f/Art/Review/Battle/confirm-impact-demo-v1/lethal-normal.gif)
+
+[固定提交直接IPA](https://raw.githubusercontent.com/liamchan-rgb/experiment/4858744e4dbcc24b9e9144ad38c71e3adbd4767f/Downloads/MeadowJourney-b50.ipa)

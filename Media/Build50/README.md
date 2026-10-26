@@ -7,3 +7,5 @@
 源码`a47f5d1ccf852337a784e3373e42a655ce1b2e54`、设备Release [40272222309](https://github.com/liamchan-rgb/experiment/actions/runs/40272222309)，97纯规则/适配/几何/事务测试与五旧纯Swift检查通过。Mac/Linux1190小队帧/3570请求/1500骰子与怪物帧/360公式图库在1e-6内一致，只有acted集合按无序比较。原10814美术/资源路径、13原核心/清单摘要与单人模型/时钟前缀保持。
 
 [三正常GIF/站姿/整身审核](../../Art/Review/Battle/confirm-impact-demo-v1/README.md)（集成目录请从仓库根进入该路径）。直接IPA：Downloads/MeadowJourney-b50.ipa；版本1.6.24/build50，31878612字节，SHA256 `ee3e6dcd9c253a374ed117aa2aeabe294cfbe68dabbbf432c28a8f9041c05cc9`。经典ZIP2.0/CRC/arm64/Phone+Pad/iOS15/权限/Metal/原目录/当前资源通过。无App/模拟器/实机，新认可null，真实安装/FPS由用户反馈。
+
+公开交付提交`4858744e4dbcc24b9e9144ad38c71e3adbd4767f`，96选定路径、246编译输入已核；10个公开HTTPS完整GET200及长度/摘要一致。[公开回执](../../Art/Review/Battle/confirm-impact-demo-v1/delivery.json)。

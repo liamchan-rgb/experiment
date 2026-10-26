@@ -1653,3 +1653,8 @@ IPA1.6.23/build49、31878244字节，SHA256 c4dae118ee027eb2c6e595ad34bede6bd734
 主线程亲看25页710实际解码帧及六完整人物/六全场1×/2×四板；确认停骰、未提前扣值、击打数字中心/上浮/致死同事件和方块无字幕复核。离线字体/混合/地图/光照/UI近似，静态序列检查不称连续播放或实机。源码`a47f5d1ccf852337a784e3373e42a655ce1b2e54`、设备Release [40272222309](https://github.com/liamchan-rgb/experiment/actions/runs/40272222309)，97纯规则/适配/几何/事务测试与五旧纯Swift检查通过。Mac/Linux1190小队帧/3570请求/1500骰子与怪物帧/360公式图库在1e-6内一致，只有acted集合按无序比较。原10814美术/资源路径、13原核心/清单摘要与单人模型/时钟前缀保持。
 
 IPA1.6.24/build50，31878612字节，SHA256 ee3e6dcd9c253a374ed117aa2aeabe294cfbe68dabbbf432c28a8f9041c05cc9，工件摘要/经典ZIP2.0本地中央头/无压缩/无extra/comment/ZIP64/CRC/平台/权限/Metal/当前资源/原目录已核。无App/模拟器/实机执行，安装/输入/FPS用户测试，新认可null；正常三GIF/站姿/整身见Art/Review/Battle/confirm-impact-demo-v1，包见Media/Build50。
+
+
+### 2026-10-26 build50公开交付核验完成
+
+交付提交4858744e4dbcc24b9e9144ad38c71e3adbd4767f，96条选定交付路径Git blob与本地逐字节一致，246编译输入与最终归档源码一致。固定提交/分支两个直接IPA、三正常GIF、五关键PNG共10个HTTPS完整GET200，MIME/长度/SHA256一致；GIF220/300/190帧均20ms。公开回执Art/Review/Battle/confirm-impact-demo-v1/delivery.json。正常GIF/浏览器直链/站姿/直接IPA一并交付，不给ZIP；未运行App/模拟器/实机，安装与实际FPS等待用户反馈，新认可null。
