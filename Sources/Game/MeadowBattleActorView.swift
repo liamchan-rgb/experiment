@@ -1,5 +1,4 @@
 import UIKit
-import MeadowBattleSupport
 
 /// Per-layer transform in registered 256 px artwork coordinates. Every part
 /// uses the same canvas and pivots, so appearance assets can use this rig too.
@@ -208,6 +207,8 @@ struct MeadowBattleActorConfiguration: Decodable {
     var canvasSize: CGSize { CGSize(width: canvasPx[0], height: canvasPx[1]) }
     var footAnchor: CGPoint { CGPoint(x: footAnchorPx[0], y: footAnchorPx[1]) }
 }
+
+import MeadowBattleSupport
 
 final class MeadowBattleActorView: UIView {
     let configuration: MeadowBattleActorConfiguration?
