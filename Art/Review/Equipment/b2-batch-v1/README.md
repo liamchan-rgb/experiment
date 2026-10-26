@@ -24,3 +24,9 @@ root独立制作、返修和审核，无智能体。人工检查标准人物32�
 重剑初稿侧向剑尖过低、武器初稿沿短剑抬手挡脸、护甲胸片太平，均root自查后返修；旧生产身体/发型/五官/衣物/动画和短剑/猎弓保持。26项既有部件合同测试通过，四包完整文件/区域/姿势校验和基础资源保留检查见verification.json。
 
 生成入口：scripts/build-b2-equipment-review.py。独立部件和SVG：Art/Parts/P1-v1/b2-equipment-v1；新组合目录：Art/Integration/Equipment-b2-batch-v1；界面源：Tools/ArtReview/b2-batch-v1。正常GIF文件在各itemID子目录。发布信息随后记入deployment.json。
+
+## 审核入口与交付回执
+
+[私有批量审核页](https://meadow-equipment-review.smokytide.chatgpt.site)已由Sites成功发布，源码提交`4fc54307c3640d3366b19cc51e539b597b784385`，部署`appgdep_6adf65397a908191ad19f8a3699a6c03`；保持owner-private。页面资源清单与本批最终revision逐字节匹配，用户反馈仅浏览器本地。
+
+GitHub候选提交`e941d32e3f9f831a0547b544bfee64609f14455d`，2232选定路径与本地一致；9正常GIF、5站姿PNG、1清单共15个公开HTTPS完整GET200，类型/字节数/SHA256匹配。详见delivery.json与deployment.json。没有新IPA或App/模拟器/实机执行，不自动认可美术。
