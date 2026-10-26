@@ -1,6 +1,18 @@
 # SideStore 安装与迭代包
 
-## 当前版本：小队支援 · 1.6.20 build46
+## 当前版本：共享UI与头顶骰子 · 1.6.21 build47
+
+多人战斗已恢复单人同款左右地图/战场、回合进度条、技能卡与生命/护盾/AP条；四单位进度token与当前行动者状态同步。预备人物光效改头顶持续摇动骰子，仍按技能固定强度压暗。红伤害、黄增伤、绿恢复、蓝护盾，援护绿蓝同时出现；确认后沿人物前冲跟随，命中回执到达后0.36s平滑停稳，保持可读后淡出。
+
+[直接下载 MeadowJourney-b47.ipa](https://raw.githubusercontent.com/liamchan-rgb/experiment/fix/build33-face-grounding-camera/Downloads/MeadowJourney-b47.ipa) · [包校验](MeadowJourney-build47.json) · [五正常GIF/站姿](../Art/Review/Battle/dice-party-demo-v1/README.md)
+
+```text
+https://raw.githubusercontent.com/liamchan-rgb/experiment/fix/build33-face-grounding-camera/Downloads/MeadowJourney-b47.ipa
+```
+
+31,791,196字节，SHA256 `be893efe718c77d250d4b323b268fb5791dc00b730f68c44fc0b2e45daf6525e`。84规则/适配测试、旧五检查/设备Release40217822252与包完整性通过；经典ZIP2.0兼容封装。目标60，未运行App/模拟器/实机，真实安装/输入/FPS由用户反馈。
+
+## 历史版本：小队支援 · 1.6.20 build46
 
 本轮B0/B1小队支援已接入：援护、振奋、三种药水与复活石，2玩家/2敌目标、真实buff/AP/次数/库存与一次结算。入口为林地战斗→左上“小队支援”，原单人演练保留。正式盾max、buff轮数、救援2AP/半血/下轮行动由原GameCore执行。角色/步态与原资源10806路径保持，原13核心源文件/目录SHA匹配；两个P1与训练鹿灵复用不算新职业皮肤/正式怪完成。
 
