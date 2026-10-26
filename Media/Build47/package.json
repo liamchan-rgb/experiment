@@ -40,5 +40,8 @@
   "sharedUILayoutAndTurnTrack": true,
   "receiptBoundHeadDiceAndMonsterFeedback": true,
   "sourceCharacterAndGaitPixelsChanged": false,
-  "installation": "Unsigned IPA for existing SideStore re-signing; classic ZIP2.0 compatibility wrapping; actual installation pending user"
+  "installation": "Unsigned IPA for existing SideStore re-signing; classic ZIP2.0 compatibility wrapping; actual installation pending user",
+  "deliveryCommit": "4c8879729872f9a5e331ac264515a50796d135f9",
+  "directIPAURL": "https://raw.githubusercontent.com/liamchan-rgb/experiment/4c8879729872f9a5e331ac264515a50796d135f9/Downloads/MeadowJourney-b47.ipa",
+  "publicDownloadVerified": true
 }
