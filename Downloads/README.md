@@ -1,6 +1,18 @@
 # SideStore 安装与迭代包
 
-## 当前版本：突袭与交叉螺旋回血 · 1.6.23 build49
+## 当前版本：确认停骰与击打点数字 · 1.6.24 build50
+
+确认技能立即停稳本次骰值，命中才扣血/提交；固定方块去下方字幕，伤害数字从击打点出现。治疗强度与粗细/华丽层次标准已记录，原螺旋保持。
+
+[直接IPA](https://raw.githubusercontent.com/liamchan-rgb/experiment/fix/build33-face-grounding-camera/Downloads/MeadowJourney-b50.ipa) · [包校验](MeadowJourney-build50.json) · [正常动图/站姿](../Art/Review/Battle/confirm-impact-demo-v1/README.md)
+
+```text
+https://raw.githubusercontent.com/liamchan-rgb/experiment/fix/build33-face-grounding-camera/Downloads/MeadowJourney-b50.ipa
+```
+
+31,878,612字节，SHA256 `ee3e6dcd9c253a374ed117aa2aeabe294cfbe68dabbbf432c28a8f9041c05cc9`。97纯测试/五旧检查/设备Release40272222309及包结构/CRC通过，无App/模拟器/实机，安装/操作/FPS由用户测试。
+
+## 历史版本：突袭与交叉螺旋回血 · 1.6.23 build49
 
 突袭已接入游侠技能栏：按原规则2AP、每场2次，伤害2D8＋2、自身恢复3。演出为预备→快速突进/三道淡残影→双斩痕/受击局部爆光与落地光粒→回位；两道斩痕仅一次原核心结算，目标受击与施法者回血分开注册。最后敌人死亡时仍完成本人回血与回位，满血不额外触发回血光效。原身体/攻击姿势重定时复用，不声称重绘人物或已完成八件装备。
 

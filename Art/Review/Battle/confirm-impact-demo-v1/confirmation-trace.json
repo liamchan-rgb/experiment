@@ -1,0 +1,69 @@
+[
+  {
+    "time": 0.98,
+    "locked": false,
+    "values": [
+      null,
+      null,
+      2,
+      3
+    ],
+    "enemyHP": 18,
+    "damageLabels": []
+  },
+  {
+    "time": 1,
+    "locked": true,
+    "values": [
+      6,
+      4,
+      2,
+      3
+    ],
+    "enemyHP": 18,
+    "damageLabels": []
+  },
+  {
+    "time": 1.02,
+    "locked": true,
+    "values": [
+      6,
+      4,
+      2,
+      3
+    ],
+    "enemyHP": 18,
+    "damageLabels": []
+  },
+  {
+    "time": 1.7,
+    "locked": true,
+    "values": [
+      6,
+      4,
+      2,
+      3
+    ],
+    "enemyHP": 18,
+    "damageLabels": []
+  },
+  {
+    "time": 1.72,
+    "locked": true,
+    "values": [
+      6,
+      4,
+      2,
+      3
+    ],
+    "enemyHP": 6,
+    "damageLabels": [
+      {
+        "at": 1.72,
+        "text": "−12",
+        "x": 570,
+        "y": 323
+      }
+    ]
+  }
+]
