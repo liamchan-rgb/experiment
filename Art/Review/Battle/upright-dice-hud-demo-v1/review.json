@@ -1,0 +1,65 @@
+{
+  "date": "2026-10-26",
+  "reviewer": "root",
+  "delegated": false,
+  "sourceCommit": "850ea80801ee4ab0e57cbed4cd37b93f9febe942",
+  "decodedFramesInspected": 710,
+  "decodedContactPagesInspected": 25,
+  "nativeFullBodySamples": 6,
+  "wholeSceneSamples": 6,
+  "scales": [
+    1,
+    2
+  ],
+  "boardsInspected": 4,
+  "animations": {
+    "ambush": {
+      "file": "ambush-normal.gif",
+      "frames": 220,
+      "frameDurationMs": 20,
+      "durationMs": 4400,
+      "dimensions": [
+        1224,
+        918
+      ],
+      "bytes": 10279492
+    },
+    "attack-buff": {
+      "file": "attack-buff-normal.gif",
+      "frames": 300,
+      "frameDurationMs": 20,
+      "durationMs": 6000,
+      "dimensions": [
+        1224,
+        918
+      ],
+      "bytes": 12940670
+    },
+    "lethal": {
+      "file": "lethal-normal.gif",
+      "frames": 190,
+      "frameDurationMs": 20,
+      "durationMs": 3800,
+      "dimensions": [
+        1224,
+        918
+      ],
+      "bytes": 8878633
+    }
+  },
+  "findings": [
+    "All supported dice and all result faces face forward with upright label axes; quaternions become time-independent at full settle. Actual gallery at2.00s checked; an initial expired-envelope empty gallery was corrected before delivery.",
+    "No duplicate result captions below random dice; fixed values remain inside plates only. True3D rotation during hover remains.",
+    "Lethal fixture at2.04s still has live vitals; at2.06s HP0, damage label, death age0 and hidden monster vitals coincide. Full death sequence checked with surviving M2 bar retained.",
+    "Gold filled and dark outlined AP diamonds reflect current resources in shared solo/party panel slot. Whole-scene placements checked at1x/2x.",
+    "Root personally inspected25decoded pages/710actual GIFframes,6full-body poses and6whole-scene poses at1x/2x; source character and gait pixels unchanged."
+  ],
+  "limitations": [
+    "Normal50fps offline Pillow composition from production Swift samples and original-core transactions; fonts/blending/map/lighting/UI approximated; not UIKit/device capture.",
+    "Static decoded sequence inspection, not continuous playback or measured60FPS.",
+    "Lethal fixture uses target3HP only for death timing; default app enemies remain18HP. D4/D10 gallery are offline formula fixtures, not new weapons.",
+    "Healing-strength standard remains a future art requirement; this round does not author all healing tiers or gear.",
+    "No App/simulator/device/UI execution; actual installation, input and FPS are user-tested; new art approval remains null."
+  ],
+  "newArtApproval": null
+}

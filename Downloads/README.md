@@ -1,6 +1,18 @@
 # SideStore 安装与迭代包
 
-## 当前版本：确认停骰与击打点数字 · 1.6.24 build50
+## 当前版本：停骰摆正与战斗状态 · 1.6.25 build51
+
+确认骰子正向停稳、移除下方重复数字；怪物死亡同刻隐藏血条；单人/小队行动点统一黄色菱形（亮起可用、暗空心已耗）。
+
+[直接IPA](https://raw.githubusercontent.com/liamchan-rgb/experiment/fix/build33-face-grounding-camera/Downloads/MeadowJourney-b51.ipa) · [包校验](MeadowJourney-build51.json) · [正常动图/站姿](../Art/Review/Battle/upright-dice-hud-demo-v1/README.md)
+
+```text
+https://raw.githubusercontent.com/liamchan-rgb/experiment/fix/build33-face-grounding-camera/Downloads/MeadowJourney-b51.ipa
+```
+
+31,878,628字节，SHA256 `0121c60bd65e150dd4b02e913ad76a9fd82dbe1a75d24da9fa68e2ae4a0e9523`。98纯测试、五旧检查、设备Release40278764694与包结构/CRC通过；安装/实机操作/FPS由用户测试。
+
+## 历史版本：确认停骰与击打点数字 · 1.6.24 build50
 
 确认技能立即停稳本次骰值，命中才扣血/提交；固定方块去下方字幕，伤害数字从击打点出现。治疗强度与粗细/华丽层次标准已记录，原螺旋保持。
 
