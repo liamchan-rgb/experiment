@@ -264,7 +264,7 @@ final class MeadowBattleActorView: UIView {
 
     override func layoutSubviews() {
         super.layoutSubviews()
-        (images+Array(bowImages.values())).forEach {
+        (images+Array(bowImages.values)).forEach {
             $0.layer.anchorPoint = .zero
             $0.bounds = CGRect(origin: .zero, size: bounds.size)
             $0.layer.position = bounds.origin

@@ -1715,3 +1715,6 @@ IPA1.6.26/build52，32901808字节，SHA256 5c1bf5b2c1053cbabc05c9c168797f8f08fd
 
 
 build53第一次CI40288475250：106纯测试/其余纯检查通过，独立Foundation姿势检查因提取前缀误包含MeadowBattleSupport import而失败，未执行归档。把仅Actor使用的import移到采样器前缀之外，保留原独立检查与所有断言；重新提交归档。无美术/规则变更。
+
+
+build53第二次CI40289536584：106纯测试和五独立检查全部通过；设备编译发现Dictionary.values是属性、不能按函数调用。修正Array(bowImages.values)，不改美术/规则/采样；第三次归档继续。
