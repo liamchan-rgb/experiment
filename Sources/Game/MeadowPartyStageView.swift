@@ -17,7 +17,7 @@ final class MeadowPartyStageView:UIView {
     private let diceView=MeadowBattleDiceView()
     private var catalog=try? GameCatalog.initial()
     private var current:String?
-    private var diceActor="p1",diceAction:PartyAction?,diceVisibleAt=0.0,diceSettledAt:Double?,diceExitAt:Double?
+    private var diceActor="p1",diceAction:PartyAction?,diceVisibleAt=0.0,diceSettledAt:Double?,diceExitAt:Double?,diceConfirmedAt:Double?
     private var dimFrom=0.0,dimTarget=0.0,dimChangedAt=0.0,castDim=0.0
     private var state:GameState?
     private var sceneTime=0.0,startAt=0.0
@@ -67,7 +67,7 @@ final class MeadowPartyStageView:UIView {
     }
     required init?(coder:NSCoder) { fatalError("init(coder:) has not been implemented") }
     @objc private func tapped(_ r:UITapGestureRecognizer) { if !isPlaying,let id=r.view?.accessibilityIdentifier { onChoose?(id) } }
-    func start() { sceneTime=0;recovery=[:];formation=[:];birth=[:];contact=[:];broken=[:];deaths=[:];hurt=[:];messages=[];emissions=[];poseKeys=[:];fallen=[:];diceAction=nil;diceView.dice=[];diceSettledAt=nil;diceExitAt=nil;dimFrom=0;dimTarget=0;clock.start() }
+    func start() { sceneTime=0;recovery=[:];formation=[:];birth=[:];contact=[:];broken=[:];deaths=[:];hurt=[:];messages=[];emissions=[];poseKeys=[:];fallen=[:];diceAction=nil;diceConfirmedAt=nil;diceView.confirmationAge=nil;diceView.dice=[];diceSettledAt=nil;diceExitAt=nil;dimFrom=0;dimTarget=0;clock.start() }
     func stop() { clock.stop();intent=nil;impact=nil;completion=nil;focus=nil }
     func show(_ value:GameState,friend:String,foe:String,current:String?,catalog:GameCatalog) {
         state=value;self.current=current;self.catalog=catalog;fx.friend=friend;fx.foe=foe
@@ -84,7 +84,7 @@ final class MeadowPartyStageView:UIView {
         focus=action;focusTarget=target;focusAt=sceneTime
         if let action,let state,let actorID=current,let actor=state.units[actorID],let targetUnit=state.units[target],let catalog {
             diceActor=actorID;diceAction=action;diceVisibleAt=sceneTime;diceSettledAt=nil;diceExitAt=nil
-            diceView.locked=false
+            diceView.locked=false;diceConfirmedAt=nil
             diceView.dice=BattleDice.channels(action,actor:actor,target:targetUnit,catalog:catalog)
         } else { diceExitAt=sceneTime }
     }
@@ -93,7 +93,7 @@ final class MeadowPartyStageView:UIView {
         if let actor=before.units[value.actor],let target=before.units[value.target],let catalog {
             if diceAction != value.action || diceActor != value.actor { diceVisibleAt=sceneTime }
             diceAction=value.action;diceActor=value.actor;diceSettledAt=nil;diceExitAt=nil
-            diceView.dice=BattleDice.channels(value.action,actor:actor,target:target,catalog:catalog,receipt:confirmed);diceView.locked=confirmed != nil
+            diceView.dice=BattleDice.channels(value.action,actor:actor,target:target,catalog:catalog,receipt:confirmed);diceView.locked=confirmed != nil;diceConfirmedAt=confirmed == nil ? nil:sceneTime
         }
         intent=value;state=before;startAt=sceneTime;self.impact=onImpact;self.completion=completion;fired=false;focus=nil;meetsShield=(before.units[value.target]?.shield ?? 0)>0
         let delayed=sceneTime+max(0,value.action.impact-0.46)
@@ -167,12 +167,13 @@ final class MeadowPartyStageView:UIView {
             let foot=CGPoint(x:f.x+offset.x,y:f.y+offset.y)
             if let actor=actors[id] {
                 let pose=PartyVisual.pose(unit:unit,intent:intent,age:age,time:sceneTime,hurtAge:hurt[id].map { sceneTime-$0 },blocked:unit.shield>0 || (hurt[id] != nil && broken[id]==hurt[id]),downAge:fallen[id].map { sceneTime-$0 })
+                actor.setWeaponAsset(HeroFrames.weaponVisual(unit.equipment.weapon)?.battleAsset)
                 let clip=pose.clip,progress=pose.progress
                 actor.setPose(clip:clip,progress:CGFloat(progress))
                 let s=CGFloat(PartyVisual.heroScale),root=actor.poseRootOffset
                 actor.frame=CGRect(x:foot.x-123*s+root.x*s,y:foot.y-214*s+root.y*s,width:256*s,height:256*s)
                 actor.layer.zPosition=CGFloat(f.y)
-                let key="\(clip)-\(Int((progress*24).rounded()))"
+                let key="\(clip)-\(Int((progress*24).rounded()))-\(unit.equipment.weapon ?? "none")"
                 if key != poseKeys[id] { shadows[id]?.update(image:actor.poseSilhouette,soleY:actor.poseFootAnchorPx.y,contacts:actor.poseContacts.map { .init(point:$0,radius:12) });poseKeys[id]=key }
                 attached[id]?.frame=actor.bounds
                 attached[id]?.update(shield:unit.shield,preview:0,time:sceneTime,formation:unit.shield==0 ? formation[id].flatMap { sceneTime-$0<1.0 ? sceneTime-$0:nil }:nil,formationBase:0,birth:birth[id].map { sceneTime-$0 },contact:contact[id].map { sceneTime-$0 },broken:broken[id].map { sceneTime-$0 },recovery:unit.isAlive ? recovery[id].map { sceneTime-$0 }:nil)
@@ -209,6 +210,7 @@ final class MeadowPartyStageView:UIView {
         let anchor=PartyVisual.diceAnchor(actor:diceActor,intent:intent,age:age,shielded:meetsShield,diceCount:diceView.dice.count)
         diceView.frame=CGRect(x:anchor.x-110,y:anchor.y,width:220,height:100)
         diceView.time=sceneTime;diceView.visibleAge=sceneTime-diceVisibleAt
+        diceView.confirmationAge=diceConfirmedAt.map { sceneTime-$0 }
         diceView.resolvedAge=diceSettledAt.map { sceneTime-$0 };diceView.exitAge=diceExitAt.map { sceneTime-$0 };diceView.setNeedsDisplay()
         fx.intent=intent;fx.meetsShield=meetsShield;fx.age=age;fx.time=sceneTime;fx.focus=focus;fx.focusTarget=focusTarget
         fx.messages=messages;fx.particles=emissions.flatMap { e in MeadowBattleLightField.sample(e.kind,age:sceneTime-e.startedAt,originX:e.x,originY:e.y,groundY:e.groundY) }

@@ -267,6 +267,7 @@ final class MeadowBattleLandscapeView: UIView {
         renderAnimation()
     }
 
+    func configureWeapon(_ asset:String?) { hero.setWeaponAsset(asset);lastShadowPose="";renderAnimation() }
     @objc private func selectEnemy() { onEnemySelected?() }
 
     func setEncounter(heroHP: Int, enemyHP: Int, shield: Int, selected: Bool) {

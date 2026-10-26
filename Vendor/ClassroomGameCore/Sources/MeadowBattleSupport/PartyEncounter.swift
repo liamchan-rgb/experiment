@@ -57,7 +57,7 @@ public final class PartyEncounter {
     public var current:String? { state.battle?.current }
     public var round:Int { state.battle?.round ?? 0 }
     public var terminal:Bool { state.battle == nil || state.pauseReasons.contains(.allPlayersDown) }
-    public init(seed:UInt64=UInt64.random(in:1...UInt64.max),sessionID:String=UUID().uuidString) throws {
+    public init(seed:UInt64=UInt64.random(in:1...UInt64.max),sessionID:String=UUID().uuidString,loadouts:[String:GameUnit]?=nil) throws {
         self.sessionID=sessionID
         var catalog=try GameCatalog.initial()
         // A local training creature using the existing deer art. The six formal
@@ -73,6 +73,10 @@ public final class PartyEncounter {
         units["p2"]=try GameFactory.player(id:"p2",name:"P2 · 游侠",classID:"ranger",teamID:"party",nodeID:1,catalog:catalog)
         for id in ["p1","p2"] {
             units[id]?.inventory=["smallPotion":2,"largePotion":1,"shieldPotion":1,"revivalStone":1]
+            if let source=loadouts?[id] {
+                units[id]?.equipment=source.equipment
+                for (item,count) in source.inventory where (try? catalog.item(item).slot) != nil { units[id]?.inventory[item]=count }
+            }
         }
         units["p1"]?.health=6;units["p2"]?.health=12
         for (i,id) in ["m1","m2"].enumerated() {

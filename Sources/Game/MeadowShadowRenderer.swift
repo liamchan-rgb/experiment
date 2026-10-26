@@ -12,6 +12,7 @@ final class MeadowShadowRenderer: NSObject, MTKViewDelegate {
         let frame: Int
         let phase: CGFloat
         let appearanceIndex: Int
+        let weaponID:String?
 
         init(_ hero: MeadowHeroCaster) {
             index = hero.index
@@ -20,6 +21,7 @@ final class MeadowShadowRenderer: NSObject, MTKViewDelegate {
             frame = hero.frame
             phase = hero.phase
             appearanceIndex = hero.appearanceIndex
+            weaponID=hero.weaponID
         }
     }
 
@@ -192,7 +194,7 @@ final class MeadowShadowRenderer: NSObject, MTKViewDelegate {
 
     private func heroTexture(_ hero: MeadowHeroCaster) throws -> MTLTexture {
         let name = HeroFrames.atlasName(heroIndex: hero.index, diagonal: hero.facing >= 4,
-                                       appearanceIndex: hero.appearanceIndex)
+                                       appearanceIndex: hero.appearanceIndex,weaponID:hero.weaponID)
         guard let texture = textures[name] else { throw ShadowLabError.setup("人物投影图集未加载") }
         return texture
     }
@@ -435,6 +437,7 @@ struct MeadowHeroCaster {
     let frame: Int
     var phase: CGFloat = 0
     var appearanceIndex: Int = 0
+    var weaponID:String?="trainingSword"
 }
 
 struct MeadowFrameState {

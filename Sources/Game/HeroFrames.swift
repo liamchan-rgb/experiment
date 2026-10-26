@@ -1,4 +1,5 @@
 import SpriteKit
+import MeadowBattleSupport
 
 enum HeroFrames {
     // Shared distance-clock resolution; artwork can contain fewer whole poses.
@@ -10,9 +11,10 @@ enum HeroFrames {
         let authoredFrames: [Int]
         let reviewFrameMs: Double
         let modularP1: ModularLayout?
+        let equipmentVisuals:[String:EquipmentVisualBinding]?
     }
     private struct ModularLayout: Decodable {
-        struct Loadout: Decodable { let id: String; let title: String; let atlasNames: [String] }
+        struct Loadout: Decodable { let id: String; let title: String; let atlasNames: [String];let weaponAtlasNames:[String:[String]]? }
         let rasterColumns: Int
         let loadouts: [Loadout]
     }
@@ -40,19 +42,22 @@ enum HeroFrames {
         return decoded
     }()
 
+    static func weaponVisual(_ id:String?)->EquipmentVisualBinding? { id.flatMap { layout.equipmentVisuals?[$0] } }
+
     static var appearanceTitles: [String] { layout.modularP1?.loadouts.map(\.title) ?? [] }
 
-    static func atlasName(heroIndex: Int, diagonal: Bool, appearanceIndex: Int = 0) -> String {
+    static func atlasName(heroIndex: Int, diagonal: Bool, appearanceIndex: Int = 0,weaponID:String?="trainingSword") -> String {
         if heroIndex == 0, let presets = layout.modularP1?.loadouts {
             precondition(presets.indices.contains(appearanceIndex))
-            return presets[appearanceIndex].atlasNames[diagonal ? 1 : 0]
+            let preset=presets[appearanceIndex]
+            return (preset.weaponAtlasNames?[weaponID ?? "none"] ?? preset.atlasNames)[diagonal ? 1 : 0]
         }
         return "Hero\(heroIndex + 1)\(diagonal ? "Diagonals" : "Directions")"
     }
 
     static var atlasNames: [String] {
         let defaults = (0..<3).flatMap { hero in [false, true].map { atlasName(heroIndex: hero, diagonal: $0) } }
-        return Array(Set(defaults + (layout.modularP1?.loadouts.flatMap(\.atlasNames) ?? []))).sorted()
+        return Array(Set(defaults + (layout.modularP1?.loadouts.flatMap { $0.atlasNames+($0.weaponAtlasNames?.values.flatMap { $0 } ?? []) } ?? []))).sorted()
     }
 
     static func rasterColumns(heroIndex: Int) -> Int {
@@ -74,9 +79,9 @@ enum HeroFrames {
         return frame == 0 ? 0 : 1 + (frame - 1) * authoredFrameCount(heroIndex: heroIndex) / walkFrameCount
     }
 
-    static func load(_ hero: Int, appearanceIndex: Int = 0) -> [[SKTexture]] {
+    static func load(_ hero: Int, appearanceIndex: Int = 0,weaponID:String?="trainingSword") -> [[SKTexture]] {
         [false, true].flatMap { diagonal -> [[SKTexture]] in
-            let name = atlasName(heroIndex: hero - 1, diagonal: diagonal, appearanceIndex: appearanceIndex)
+            let name = atlasName(heroIndex: hero - 1, diagonal: diagonal, appearanceIndex: appearanceIndex,weaponID:weaponID)
             guard let atlas = UIImage(named: name)?.cgImage else {
                 fatalError("Missing hero atlas: \(name)")
             }

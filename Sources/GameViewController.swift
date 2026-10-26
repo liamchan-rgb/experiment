@@ -1,6 +1,7 @@
 import UIKit
 import SpriteKit
 import MetalKit
+import MeadowBattleSupport
 
 final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
     private let gameView = UIView()
@@ -46,6 +47,7 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
     private let gaitStepButton = UIButton(type: .system)
     private let gaitLayeredPreviewButton = UIButton(type: .system)
     private let p1AppearanceButton = UIButton(type: .system)
+    private let equipmentModel=try? TrainingLoadout()
     private var gaitDirectionButtons: [UIButton] = []
     private var gaitCaptureTimer: Timer?
     private var gestureZoom: CGFloat = 1
@@ -445,14 +447,7 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
         p1AppearanceButton.accessibilityIdentifier = "p1Appearance"
         p1AppearanceButton.accessibilityValue = HeroFrames.appearanceTitles.first
         p1AppearanceButton.showsMenuAsPrimaryAction = true
-        p1AppearanceButton.menu = UIMenu(children: HeroFrames.appearanceTitles.enumerated().map { index, title in
-            UIAction(title: title) { [weak self] _ in
-                guard let self else { return }
-                self.scene.selectP1Appearance(index)
-                self.p1AppearanceButton.configuration?.title = title
-                self.p1AppearanceButton.accessibilityValue = title
-            }
-        })
+        refreshEquipmentMenu()
         p1AppearanceButton.isHidden = HeroFrames.appearanceTitles.isEmpty
         view.addSubview(p1AppearanceButton)
         gaitPanel.axis = .vertical; gaitPanel.spacing = 6
@@ -507,6 +502,29 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
         view.addSubview(gaitPanel)
     }
 
+    private func refreshEquipmentMenu() {
+        guard let model=equipmentModel,let unit=model.units["p1"] else { return }
+        let clothes=HeroFrames.appearanceTitles.enumerated().map { index,title in
+            UIAction(title:title,state:scene.p1AppearanceIndex==index ? .on:.off) { [weak self] _ in
+                self?.scene.selectP1Appearance(index);self?.refreshEquipmentMenu()
+            }
+        }
+        let sword=UIAction(title:"训练短剑 · 1D6",image:UIImage(named:HeroFrames.weaponVisual("trainingSword")?.iconAsset ?? ""),state:unit.equipment.weapon=="trainingSword" ? .on:.off) { [weak self] _ in self?.equipP1Weapon("trainingSword") }
+        let remove=UIAction(title:"卸下武器",state:unit.equipment.weapon==nil ? .on:.off) { [weak self] _ in self?.equipP1Weapon(nil) }
+        p1AppearanceButton.menu=UIMenu(children:[UIMenu(title:"衣装",children:clothes),UIMenu(title:"武器 · 背包短剑 ×\(unit.inventory["trainingSword"] ?? 0)",children:[sword,remove])])
+        p1AppearanceButton.configuration?.title=unit.equipment.weapon==nil ? "P1 · 空手":"P1 · 短剑"
+        p1AppearanceButton.accessibilityValue=unit.equipment.weapon==nil ? "未装备武器":"训练短剑已装备"
+    }
+    private func equipP1Weapon(_ id:String?) {
+        guard ready,!battlePreviewActive,let model=equipmentModel else { return }
+        if model.units["p1"]?.equipment.weapon==id { return }
+        do {
+            try model.equip(id);scene.selectP1Weapon(id);refreshEquipmentMenu()
+            discoveryLabel.text=id==nil ? "已卸下训练短剑 · 普通攻击不可用":"已装备训练短剑 · 普通攻击1D6"
+            UIAccessibility.post(notification:.announcement,argument:discoveryLabel.text)
+        } catch { discoveryLabel.text=error.localizedDescription }
+    }
+
     private func configureBattlePreview() {
         var style = UIButton.Configuration.filled()
         style.title = "林地战斗"
@@ -545,6 +563,7 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
         if active { scene.beginBattlePreviewCamera() }
         battlePreviewActive = active
         battlePreviewView?.isHidden = !active
+        if active,let units=equipmentModel?.units { battlePreviewView?.configureEquipment(units) }
         battlePreviewView?.setActive(active)
         battlePreviewButton.isHidden = active
         shadowLabButton.isHidden = active

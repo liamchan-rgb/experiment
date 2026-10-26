@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "itemID": "trainingSword",
+  "sourceArtwork": "reused existing candidate; no new drawing or automatic art approval",
+  "walking": {
+    "asset": "p1-eight-way-weapon-v1",
+    "manifest": "Art/Parts/P1-v1/eight-way-v1/weapon/asset.json",
+    "bindingCountPerAppearance": 104,
+    "appearances": 2,
+    "all208EquippedCellsUnchanged": true,
+    "emptySlotCellsNew": 208,
+    "motionSHA256": "f1926c10a4eb1cb8f1935157663bd22155e8444eae37ce64562453fc075e96ba",
+    "baseSHA256": "c98464ddadd4571a3300cee3bfebd98f8f9d69eee1f9287f94f2c2172be955e8"
+  },
+  "battle": {
+    "asset": "MeadowBattleHeroWeapon",
+    "configuration": "MeadowBattleHeroConfigurationV2",
+    "animation": "MeadowBattleHeroAnimationV2",
+    "gripPx": [
+      145.6,
+      163.7
+    ],
+    "clips": [
+      "idle",
+      "attack",
+      "guard",
+      "hit",
+      "victory",
+      "defeat"
+    ],
+    "emptySlotOmitsSameLayerFromActorAndSilhouette": true
+  },
+  "icon": {
+    "sourceURL": "https://raw.githubusercontent.com/liamchan-rgb/classroom-boardgame/1e9100c4c18364ea64b3ec974fe957ba4ef42f6f/native/ClassroomProbe/Resources/Art/item_training_sword.png",
+    "sha256": "0a9adb9c988f637e8cfe0ccf398ba569b007703d4c904f6bfe1aad0b1c01d75a"
+  },
+  "runtimeBinding": "Sources/Resources/hero-gait.json equipmentVisuals / modularP1.loadouts.weaponAtlasNames",
+  "newArtApproval": null
+}

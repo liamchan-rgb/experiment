@@ -6,6 +6,7 @@ import MeadowBattleSupport
 final class MeadowPartyBattleView:UIView {
     var onClose:(()->Void)?
     private var model:PartyEncounter?
+    var loadoutUnits:[String:GameUnit]?
     private var active=false
     private var generation=0
     private var scheduled:DispatchWorkItem?
@@ -53,7 +54,7 @@ final class MeadowPartyBattleView:UIView {
     }
     private func restart() {
         generation += 1;scheduled?.cancel();scheduled=nil;stage.stop()
-        do { model=try PartyEncounter() } catch { hint.text="演练加载失败：\(error.localizedDescription)";return }
+        do { model=try PartyEncounter(loadouts:loadoutUnits) } catch { hint.text="演练加载失败：\(error.localizedDescription)";return }
         friend="p1";foe="m1";stage.start();refresh()
     }
     private func choose(_ id:String) {
@@ -141,7 +142,10 @@ final class MeadowPartyBattleView:UIView {
         setNeedsLayout()
     }
     private func detail(_ a:PartyAction,model:PartyEncounter,actor:String)->String {
-        guard a != .attack else { return "1 AP · 1D6＋当前增伤" }
+        guard a != .attack else {
+            guard let unit=model.state.units[actor],let weapon=unit.equipment.weapon,let item=try? model.engine.catalog.item(weapon),let dice=item.attack?.dice else { return "未装备武器 · 请回营地装备" }
+            return "\(item.name) · \(dice.count)D\(dice.sides)＋当前增伤"
+        }
         let uses=model.state.units[actor]?.skillUses[a.rawValue] ?? 0
         let rest=max(0,2-uses)
         switch a {

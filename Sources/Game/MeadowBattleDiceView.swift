@@ -6,7 +6,7 @@ import MeadowBattleSupport
 final class MeadowBattleDiceView:UIView {
     var dice:[BattleDie]=[]
     var time=0.0,visibleAge=0.0
-    var resolvedAge:Double?,exitAge:Double?
+    var resolvedAge:Double?,exitAge:Double?,confirmationAge:Double?
     var locked=false
     private static var glyphs:[String:UIImage]=[:]
     override init(frame:CGRect) { super.init(frame:frame);backgroundColor = .clear;isOpaque=false;isUserInteractionEnabled=false;accessibilityIdentifier="battleHeadDice" }
@@ -26,7 +26,7 @@ final class MeadowBattleDiceView:UIView {
     override func draw(_ rect:CGRect) {
         guard let ctx=UIGraphicsGetCurrentContext(),!dice.isEmpty else { return }
         for (index,die) in dice.enumerated() {
-            let p=PolyhedralDice.sample(die:die,time:time,index:index,count:dice.count,resolvedAge:resolvedAge,visibleAge:visibleAge,exitAge:exitAge,locked:locked)
+            let p=PolyhedralDice.sample(die:die,time:time,index:index,count:dice.count,resolvedAge:resolvedAge,visibleAge:visibleAge,exitAge:exitAge,locked:locked,confirmationAge:confirmationAge)
             guard p.alpha>0 else { continue }
             let colors:[String:UIColor]=["red":UIColor(red:0.78,green:0.16,blue:0.14,alpha:1),"yellow":UIColor(red:0.85,green:0.63,blue:0.16,alpha:1),"green":UIColor(red:0.13,green:0.58,blue:0.32,alpha:1),"blue":UIColor(red:0.12,green:0.44,blue:0.8,alpha:1)]
             let color=colors[die.color] ?? .gray

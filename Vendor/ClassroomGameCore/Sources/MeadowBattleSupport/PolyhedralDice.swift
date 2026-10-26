@@ -54,6 +54,7 @@ public struct DiePolySample:Codable {
 public enum PolyhedralDice {
     public static let supported=[4,6,8,10,12,20]
     public static let settleDuration=0.65
+    public static let confirmationDuration=0.32
     private static let meshes=Dictionary(uniqueKeysWithValues:supported.map { ($0,makeMesh($0)) })
     public static func mesh(_ sides:Int)->DieMesh? { meshes[sides] }
     public static func spacing(count:Int)->Double { min(82,200/Double(max(1,count))) }
@@ -133,10 +134,10 @@ public enum PolyhedralDice {
         let phase=Double(index)*1.17
         return (DieQuaternion.axis(.init(0,0,1),time*1.18+phase)*DieQuaternion.axis(.init(0,1,0),time*4.1+phase+0.4)*DieQuaternion.axis(.init(1,0,0),time*3.0+0.65)).unit
     }
-    public static func orientation(sides:Int,value:Int?,time:Double,index:Int,resolvedAge:Double?)->DieQuaternion {
+    public static func orientation(sides:Int,value:Int?,time:Double,index:Int,resolvedAge:Double?,duration:Double=settleDuration)->DieQuaternion {
         guard let mesh=mesh(sides),let age=resolvedAge,let value,let face=mesh.faces.first(where: { $0.value==value }) else { return rolling(time,index) }
-        let t=min(1,max(0,age/settleDuration)),impact=time-max(0,age)
-        let integrated=impact+settleDuration*(1-pow(1-t,3))/3
+        let t=min(1,max(0,age/duration)),impact=time-max(0,age)
+        let integrated=impact+duration*(1-pow(1-t,3))/3
         let base=rolling(integrated,index),align=DieQuaternion.align(face.normal,.init(0,0,1)),u=align.rotate(face.up)
         let upright=DieQuaternion.axis(.init(0,0,1),atan2(u.x,u.y))*align
         // The resolved face and its numeral face the screen squarely. Rolling
@@ -145,9 +146,16 @@ public enum PolyhedralDice {
         if t>=1 { return target }
         return .slerp(base,target,PartyVisual.smooth(t))
     }
-    public static func sample(die:BattleDie,time:Double,index:Int,count:Int,resolvedAge:Double?,visibleAge:Double,exitAge:Double?=nil,locked:Bool=false)->DiePolySample {
+    public static func sample(die:BattleDie,time:Double,index:Int,count:Int,resolvedAge:Double?,visibleAge:Double,exitAge:Double?=nil,locked:Bool=false,confirmationAge:Double?=nil)->DiePolySample {
         let envelope=BattleDice.pose(time:time,index:index,resolvedAge:resolvedAge,visibleAge:visibleAge,exitAge:exitAge)
-        let q=orientation(sides:die.sides,value:die.value,time:time,index:index,resolvedAge:locked ? settleDuration:resolvedAge)
+        let landing=confirmationAge.map { PartyVisual.smooth($0/confirmationDuration) }
+        let q=orientation(sides:die.sides,value:die.value,time:time,index:index,resolvedAge:confirmationAge ?? (locked ? settleDuration:resolvedAge),duration:confirmationAge == nil ? settleDuration:confirmationDuration)
+        let offset:Double
+        if let age=confirmationAge {
+            let t=min(1,max(0,age/confirmationDuration)),start=time-max(0,age)
+            let travelTime=start+confirmationDuration*(1-pow(1-t,3))/3
+            offset=BattleDice.pose(time:travelTime,index:index,resolvedAge:nil,visibleAge:visibleAge).offsetY*(1-(landing ?? 0))
+        } else { offset=locked ? 0:envelope.offsetY }
         func project(_ p:DieVector)->DieProjectedPoint { let d=4.2/(4.2-p.z);return .init(x:p.x*d,y:-p.y*d) }
         let faces=(mesh(die.sides)?.faces ?? []).compactMap { face -> DieProjectedFace? in
             let c=q.rotate(face.center),n=q.rotate(face.normal)
@@ -160,6 +168,6 @@ public enum PolyhedralDice {
             let a=Int64(($0.depth*1e9).rounded()),b=Int64(($1.depth*1e9).rounded())
             return a==b ? $0.value<$1.value:a<b
         }
-        return DiePolySample(faces:faces,alpha:envelope.alpha,offsetY:locked ? 0:envelope.offsetY,radius:radius(count:count),resultMix:locked ? 1:envelope.resultMix,orientation:q)
+        return DiePolySample(faces:faces,alpha:envelope.alpha,offsetY:offset,radius:radius(count:count),resultMix:landing ?? (locked ? 1:envelope.resultMix),orientation:q)
     }
 }

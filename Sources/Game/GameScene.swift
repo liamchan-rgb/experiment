@@ -13,7 +13,8 @@ final class GameScene: SKScene {
     private var walks = [WalkCycle(), WalkCycle(), WalkCycle()]
     private var p1Locomotion = AuthoredLocomotion(plan: HeroFrames.locomotionPlan)
     private(set) var p1AppearanceIndex = 0
-    private var p1AppearanceFrames: [Int: [[SKTexture]]] = [:]
+    private var p1AppearanceFrames: [String: [[SKTexture]]] = [:]
+    private(set) var p1WeaponID:String?="trainingSword"
     private(set) var gaitTest: GaitTest?
     private var gaitHiddenNodes: [(SKNode, Bool)] = []
     private var gaitMapCamera: (CGPoint, CGFloat)?
@@ -323,15 +324,17 @@ final class GameScene: SKScene {
         publishDiagnostics()
     }
     func toggleGaitPause() { gaitTest?.paused.toggle(); publishDiagnostics() }
-    func selectP1Appearance(_ index: Int) {
-        guard HeroFrames.appearanceTitles.indices.contains(index), index != p1AppearanceIndex else { return }
-        if p1AppearanceFrames[p1AppearanceIndex] == nil { p1AppearanceFrames[p1AppearanceIndex] = frames[0] }
-        if p1AppearanceFrames[index] == nil { p1AppearanceFrames[index] = HeroFrames.load(1, appearanceIndex: index) }
-        p1AppearanceIndex = index
-        frames[0] = p1AppearanceFrames[index]!
-        // The cast snapshot carries the same appearance as this foreground frame.
-        // Selection does not reset the actor's route, facing or distance phase.
-        updateActors(before: nil); publishDiagnostics()
+    func selectP1Appearance(_ index:Int) {
+        guard HeroFrames.appearanceTitles.indices.contains(index) else { return }
+        p1AppearanceIndex=index;refreshP1EquipmentFrames()
+    }
+    func selectP1Weapon(_ id:String?) { p1WeaponID=id;refreshP1EquipmentFrames() }
+    private func refreshP1EquipmentFrames() {
+        let key="\(p1AppearanceIndex)-\(p1WeaponID ?? "none")"
+        if p1AppearanceFrames[key]==nil { p1AppearanceFrames[key]=HeroFrames.load(1,appearanceIndex:p1AppearanceIndex,weaponID:p1WeaponID) }
+        frames[0]=p1AppearanceFrames[key]!
+        // Same route, facing, distance phase and sole markers; only the texture changes.
+        updateActors(before:nil);publishDiagnostics()
     }
     func toggleGaitSlow() { gaitTest?.slow.toggle(); publishDiagnostics() }
     func stepGait() {
@@ -412,7 +415,7 @@ final class GameScene: SKScene {
         let heroes = heroIndices.map { index -> MeadowHeroCaster in
             let pose = actorPose(index)
             return MeadowHeroCaster(index: layeredPreview ? 0 : index, foot: actorPoint(index), facing: pose.facing,
-                                    frame: pose.frame, phase: pose.phase, appearanceIndex: index == 0 ? p1AppearanceIndex : 0)
+                                    frame: pose.frame, phase: pose.phase, appearanceIndex: index == 0 ? p1AppearanceIndex : 0,weaponID:index == 0 ? p1WeaponID:"trainingSword")
         }
         return MeadowFrameState(world: world, camera: MeadowViewport(world: world, scene: self, viewSize: viewSize), time: environmentTime, heroes: heroes, includeEnvironment: gaitTest == nil)
     }

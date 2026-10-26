@@ -56,3 +56,32 @@ final class LockedDiceTests:XCTestCase {
         }
     }
 }
+
+extension LockedDiceTests {
+    func testConfirmationLandingStartsAtExactHoverPoseAndFinishesUprightBeforeImpact() throws {
+        for sides in PolyhedralDice.supported { for value in 1...sides {
+            let die=BattleDie("red",sides:sides,value:value),t=7.31
+            let hover=PolyhedralDice.sample(die:die,time:t,index:1,count:2,resolvedAge:nil,visibleAge:1)
+            let first=PolyhedralDice.sample(die:die,time:t,index:1,count:2,resolvedAge:nil,visibleAge:1,locked:true,confirmationAge:0)
+            XCTAssertEqual(hover.orientation.w,first.orientation.w,accuracy:1e-10);XCTAssertEqual(hover.offsetY,first.offsetY,accuracy:1e-10)
+            let finished=PolyhedralDice.sample(die:die,time:t+0.32,index:1,count:2,resolvedAge:nil,visibleAge:2,locked:true,confirmationAge:0.32)
+            let held=PolyhedralDice.sample(die:die,time:t+0.6,index:1,count:2,resolvedAge:nil,visibleAge:2,locked:true,confirmationAge:0.6)
+            let face=try XCTUnwrap(PolyhedralDice.mesh(sides)?.faces.first { $0.value==value })
+            XCTAssertEqual(finished.orientation.rotate(face.normal).z,1,accuracy:1e-9);XCTAssertEqual(finished.orientation.rotate(face.up).y,1,accuracy:1e-9)
+            XCTAssertEqual(finished.orientation.w,held.orientation.w,accuracy:1e-9);XCTAssertEqual(finished.offsetY,0);XCTAssertEqual(held.alpha,1)
+        } }
+    }
+    func testConfirmationLandingHasContinuousRotationWithNoFinalJump() {
+        func distance(_ a:DieQuaternion,_ b:DieQuaternion)->Double { 2*acos(min(1,abs(a.w*b.w+a.x*b.x+a.y*b.y+a.z*b.z))) }
+        for sides in PolyhedralDice.supported {
+            let die=BattleDie("red",sides:sides,value:sides)
+            var prior=PolyhedralDice.sample(die:die,time:4,index:0,count:1,resolvedAge:nil,visibleAge:1,locked:true,confirmationAge:0).orientation
+            var moved=0.0
+            for frame in 1...40 {
+                let age=Double(frame)*0.01,q=PolyhedralDice.sample(die:die,time:4+age,index:0,count:1,resolvedAge:nil,visibleAge:1+age,locked:true,confirmationAge:age).orientation
+                let delta=distance(prior,q);XCTAssertLessThan(delta,0.22);moved+=delta;prior=q
+            }
+            XCTAssertGreaterThan(moved,0.05)
+        }
+    }
+}

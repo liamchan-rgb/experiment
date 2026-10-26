@@ -1,4 +1,5 @@
 import UIKit
+import ClassroomGameCore
 import CoreImage
 
 enum MeadowPreviewPalette {
@@ -35,6 +36,12 @@ enum MeadowPreviewPalette {
 
 /// A compact, playable P1 versus one Forest Warden encounter layered over the map.
 final class MeadowBattlePreviewView: UIView {
+    private var equipmentWeaponID:String?="trainingSword"
+    func configureEquipment(_ units:[String:GameUnit]) {
+        party.loadoutUnits=units;equipmentWeaponID=units["p1"]?.equipment.weapon
+        details.hasWeapon=equipmentWeaponID != nil
+        landscape.configureWeapon(HeroFrames.weaponVisual(equipmentWeaponID)?.battleAsset)
+    }
     var onClose: (() -> Void)?
     var onPartyActiveChanged: ((Bool)->Void)?
     private var partyMode=false
@@ -158,6 +165,7 @@ final class MeadowBattlePreviewView: UIView {
     }
 
     private func perform(_ action: MeadowBattleAction) {
+        if action == .strike && equipmentWeaponID == nil { return }
         guard isActive, !isAnimating, let cue = encounter.beginAction(action) else { return }
         isAnimating = true
         let token = generation
@@ -398,6 +406,7 @@ private final class MeadowTurnTokenView: UIView {
 }
 
 private final class MeadowPlayerDetailsView: UIView {
+    var hasWeapon=true
     var onAction: ((MeadowBattleAction) -> Void)?
     var onPreview: ((MeadowBattleAction?) -> Void)?
     private var focusedAction: MeadowBattleAction?
@@ -434,7 +443,7 @@ private final class MeadowPlayerDetailsView: UIView {
         buff.show(shield:encounter.shield)
         let canAct = enabled && encounter.isPlayerActionEnabled
         if !canAct { focusedAction = nil; onPreview?(nil) }
-        cards[0].update(title: "强击 · 1 AP", detail: "选中鹿灵造成5点伤害", enabled: canAct && encounter.enemySelected && encounter.enemyHP > 0)
+        cards[0].update(title: "强击 · 1 AP", detail: "选中鹿灵造成5点伤害", enabled: canAct && hasWeapon && encounter.enemySelected && encounter.enemyHP > 0)
         cards[1].update(title: "喘息 · 1 AP", detail: "恢复4生命 · 余\(encounter.breathUses)次", enabled: canAct && encounter.breathUses > 0 && encounter.playerHP < encounter.playerMaxHP)
         cards[2].update(title: "简易防护 · 1 AP", detail: "获得4护盾 · 余\(encounter.guardUses)次", enabled: canAct && encounter.guardUses > 0)
     }

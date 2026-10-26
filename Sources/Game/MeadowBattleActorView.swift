@@ -211,6 +211,7 @@ struct MeadowBattleActorConfiguration: Decodable {
 final class MeadowBattleActorView: UIView {
     let configuration: MeadowBattleActorConfiguration?
     private let images: [UIImageView]
+    private var weaponAsset:String?="MeadowBattleHeroWeapon"
     var layerNames: [String] { configuration?.layers ?? [] }
     let silhouette: UIImage?
     private(set) var currentPose = MeadowBattleAnimation.sample(clip: "idle", progress: 0)
@@ -267,6 +268,10 @@ final class MeadowBattleActorView: UIView {
         currentPose = pose
         applyPose(pose)
     }
+    func setWeaponAsset(_ asset:String?) {
+        guard asset != weaponAsset else { return };weaponAsset=asset;silhouetteCache.removeAllObjects()
+        if let i=layerNames.firstIndex(of:"MeadowBattleHeroWeapon") { images[i].image=asset.flatMap { UIImage(named:$0) };images[i].isHidden=asset==nil }
+    }
     func trailImage(progress:CGFloat)->UIImage {
         silhouette(for:MeadowBattleAnimation.sample(clip:"attack",progress:progress))
     }
@@ -317,7 +322,7 @@ final class MeadowBattleActorView: UIView {
 
     private func silhouette(for pose: MeadowBattlePoseSample) -> UIImage {
         let bucket = Int((pose.progress * CGFloat(MeadowBattleAnimation.silhouetteBuckets)).rounded())
-        let key = "\(pose.clip)-\(bucket)" as NSString
+        let key = "\(pose.clip)-\(bucket)-\(weaponAsset ?? "none")" as NSString
         if let cached = silhouetteCache.object(forKey: key) { return cached }
         let renderPose = MeadowBattleAnimation.sample(clip: pose.clip,
                                                       progress: CGFloat(bucket) / CGFloat(MeadowBattleAnimation.silhouetteBuckets))
@@ -326,7 +331,7 @@ final class MeadowBattleActorView: UIView {
         let rendered = UIGraphicsImageRenderer(size: size, format: format).image { renderer in
             for name in orderedLayerNames(for: pose.clip) {
                 if name == "MeadowBattleHeroJointUnderlay" && pose.clip == "idle" { continue }
-                guard let image = UIImage(named: name) else { continue }
+                guard let asset=(name=="MeadowBattleHeroWeapon" ? weaponAsset:name),let image = UIImage(named: asset) else { continue }
                 let part = renderPose.layers[name] ?? MeadowBattleLayerPose()
                 let sx = size.width / 256, sy = size.height / 256
                 let px = part.pivot.x * sx, py = part.pivot.y * sy
