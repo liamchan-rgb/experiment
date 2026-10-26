@@ -20,3 +20,15 @@ D4、D6、D8、D12、D20 采用真实多面体顶点/面法线、三轴旋转与
 归档源码`4bc9855e4fe71b39022095741e64a95b05b3e133`，90规则/几何测试、既有五检查、设备Release [40264624021](https://github.com/liamchan-rgb/experiment/actions/runs/40264624021) 与包结构/CRC/摘要检查通过。Mac/Linux的1190小队、3570原光效请求、1060骰子怪物、360多面骰对照帧逐项比较，浮点容差1e-6（仅acted集合按无序比较）。无App/模拟器/实机执行，真实安装、输入与稳定60FPS由用户反馈。
 
 [直接IPA](https://raw.githubusercontent.com/liamchan-rgb/experiment/fix/build33-face-grounding-camera/Downloads/MeadowJourney-b48.ipa) · [包校验](../../../../Media/Build48/package.json)。入口：林地战斗→左上“小队支援”。
+
+公开交付：12个完整GET200，104选定路径/244编译输入摘要匹配。[回执](delivery.json)。浏览器动图直链：
+
+[types](https://cdn.jsdelivr.net/gh/liamchan-rgb/experiment@ca7f285b5140dcc9c438fe81dd5b45041b78a6d9/Art/Review/Battle/poly-dice-demo-v1/types-normal.gif)
+
+[bonus](https://cdn.jsdelivr.net/gh/liamchan-rgb/experiment@ca7f285b5140dcc9c438fe81dd5b45041b78a6d9/Art/Review/Battle/poly-dice-demo-v1/bonus-normal.gif)
+
+[attack-buff](https://cdn.jsdelivr.net/gh/liamchan-rgb/experiment@ca7f285b5140dcc9c438fe81dd5b45041b78a6d9/Art/Review/Battle/poly-dice-demo-v1/attack-buff-normal.gif)
+
+[support](https://cdn.jsdelivr.net/gh/liamchan-rgb/experiment@ca7f285b5140dcc9c438fe81dd5b45041b78a6d9/Art/Review/Battle/poly-dice-demo-v1/support-normal.gif)
+
+[固定提交直接IPA](https://raw.githubusercontent.com/liamchan-rgb/experiment/ca7f285b5140dcc9c438fe81dd5b45041b78a6d9/Downloads/MeadowJourney-b48.ipa)

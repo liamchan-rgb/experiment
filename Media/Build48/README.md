@@ -7,3 +7,5 @@
 90纯测试、五旧检查与设备归档通过；Mac/Linux1190小队帧/3570请求/1060骰子怪物/360多面骰对照在1e-6内一致（仅acted是无序集合）。[四正常GIF/站姿/整身审核](../../Art/Review/Battle/poly-dice-demo-v1/README.md)。根线程独自返修审核，保留原10814美术/资源路径与13核心/目录摘要。D4/D10及多骰图库为受控离线公式展示，不代表新装备或B2/B3完成。
 
 无App/模拟器/实机/UI运行，目标60未测实机FPS。SideStore仍需用户重签，安装与输入由用户测试；新美术认可null。
+
+公开交付提交`ca7f285b5140dcc9c438fe81dd5b45041b78a6d9`，104选定路径、244编译输入已核；12个公开HTTPS完整GET200及长度/摘要一致。[公开回执](../../Art/Review/Battle/poly-dice-demo-v1/delivery.json)。
