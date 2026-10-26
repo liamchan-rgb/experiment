@@ -1107,8 +1107,17 @@
         "eight-direction13-pose world attachment",
         "separate battle hold/pose binding"
       ],
-      "fullCurrentDemoItemIntegration": false,
-      "newArtApproval": null
+      "fullCurrentDemoItemIntegration": true,
+      "newArtApproval": null,
+      "currentDemoItemIntegrationStatus": "controlled candidate; existing artwork reused; art/device feedback pending",
+      "integrationBuild": 52,
+      "implementedInControlledDemo": [
+        "formal ID binding",
+        "exploration .equip/inventory feedback",
+        "104walking bindings×2appearances",
+        "6battle clips with weapon/empty silhouettes",
+        "original icon reused"
+      ]
     },
     {
       "id": "huntingBow",
@@ -1874,7 +1883,7 @@
     "only three demo actions, not inventory/equip or full catalog",
     "multi-unit, node groups, buff duration, rescue/downed-state and result adapters needed"
   ],
-  "status": "proposed-plan; no new skill/item art made or device run",
+  "status": "controlled-demo candidates: B0/B1, ambush and trainingSword integrated; remaining B2 items and B3–B6 pending",
   "execution": {
     "date": "2026-10-25",
     "authorizedByUser": true,
@@ -1898,6 +1907,18 @@
       "next": "trainingSword itemID mapping and full walking/battle attachment",
       "newArtApproval": null,
       "appOrSimulatorOrDeviceRun": false
+    },
+    "trainingSwordIteration": {
+      "date": "2026-10-26",
+      "build": 52,
+      "sourceCommit": "0da70730b77038c9eb08c6eee4dd521ebca3b311",
+      "status": "controlled exploration equip/unequip and104walking/6battle clip binding candidate archived",
+      "reviewPath": "Art/Review/P1/training-sword-v1",
+      "battleReviewPath": "Art/Review/Battle/training-sword-smooth-demo-v1",
+      "newArtApproval": null,
+      "deviceExecuted": false,
+      "fullInventoryEquipmentAndSaveUICompleted": false,
+      "nextItem": "huntingBow"
     }
   }
 }

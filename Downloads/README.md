@@ -1,6 +1,18 @@
 # SideStore 安装与迭代包
 
-## 当前版本：停骰摆正与战斗状态 · 1.6.25 build51
+## 当前版本：训练短剑与连续停骰 · 1.6.26 build52
+
+地图P1菜单可装备/卸下训练短剑，八向背负与战斗剑层/阴影同步；空手禁用普攻。骰子确认锁值后0.32秒连续减速转正，保留无字幕、黄色菱形与死亡隐条。
+
+[直接IPA](https://raw.githubusercontent.com/liamchan-rgb/experiment/fix/build33-face-grounding-camera/Downloads/MeadowJourney-b52.ipa) · [包校验](MeadowJourney-build52.json) · [正常动图/站姿](../Art/Review/Battle/training-sword-smooth-demo-v1/README.md)
+
+```text
+https://raw.githubusercontent.com/liamchan-rgb/experiment/fix/build33-face-grounding-camera/Downloads/MeadowJourney-b52.ipa
+```
+
+32,901,808字节，SHA256 `5c1bf5b2c1053cbabc05c9c168797f8f08fdf99db5982ab333052b7147eb767c`。103纯测试、五旧检查、设备Release40281675931与包校验通过；安装/实机操作/FPS由用户测试。
+
+## 历史版本：停骰摆正与战斗状态 · 1.6.25 build51
 
 确认骰子正向停稳、移除下方重复数字；怪物死亡同刻隐藏血条；单人/小队行动点统一黄色菱形（亮起可用、暗空心已耗）。
 
