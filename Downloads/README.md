@@ -1,6 +1,18 @@
 # SideStore 安装与迭代包
 
-## 当前版本：共享UI与头顶骰子 · 1.6.21 build47
+## 当前版本：多面骰真实翻面 · 1.6.22 build48
+
+D4/D6/D8/D12/D20与兼容D10按各自面形三轴翻转，数字随面旋转/遮挡，回执到达后减速落面；实际公式决定骰型/颗数，固定加值单独标记。入口：林地战斗→小队支援。D4/D10离线图库不是新增默认武器，多骰图只审公式。
+
+[直接下载 MeadowJourney-b48.ipa](https://raw.githubusercontent.com/liamchan-rgb/experiment/fix/build33-face-grounding-camera/Downloads/MeadowJourney-b48.ipa) · [包校验](MeadowJourney-build48.json) · [四正常GIF/站姿](../Art/Review/Battle/poly-dice-demo-v1/README.md)
+
+```text
+https://raw.githubusercontent.com/liamchan-rgb/experiment/fix/build33-face-grounding-camera/Downloads/MeadowJourney-b48.ipa
+```
+
+31,844,500字节，SHA256 `2f4bf3dbf66522c5dea71e55b93343f3734241d04c3148ce1d93ae2b3b7d155f`。90规则/几何测试、旧五检查、设备Release40264624021与包结构/CRC通过；经典ZIP2.0兼容封装。未运行App/模拟器/实机，实际安装/输入/FPS由用户测试。
+
+## 历史版本：共享UI与头顶骰子 · 1.6.21 build47
 
 多人战斗已恢复单人同款左右地图/战场、回合进度条、技能卡与生命/护盾/AP条；四单位进度token与当前行动者状态同步。预备人物光效改头顶持续摇动骰子，仍按技能固定强度压暗。红伤害、黄增伤、绿恢复、蓝护盾，援护绿蓝同时出现；确认后沿人物前冲跟随，命中回执到达后0.36s平滑停稳，保持可读后淡出。
 

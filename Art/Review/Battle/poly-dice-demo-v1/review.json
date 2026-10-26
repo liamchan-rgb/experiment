@@ -1,0 +1,80 @@
+{
+  "date": "2026-10-26",
+  "reviewer": "root",
+  "delegated": false,
+  "sourceCommit": "4bc9855e4fe71b39022095741e64a95b05b3e133",
+  "decodedFramesInspected": 850,
+  "decodedContactPagesInspected": 29,
+  "animations": {
+    "types": {
+      "file": "types-normal.gif",
+      "frames": 180,
+      "frameDurationMs": 20,
+      "durationMs": 3600,
+      "dimensions": [
+        1020,
+        722
+      ],
+      "bytes": 3276659
+    },
+    "bonus": {
+      "file": "bonus-normal.gif",
+      "frames": 180,
+      "frameDurationMs": 20,
+      "durationMs": 3600,
+      "dimensions": [
+        1020,
+        722
+      ],
+      "bytes": 2053344
+    },
+    "attack-buff": {
+      "file": "attack-buff-normal.gif",
+      "frames": 300,
+      "frameDurationMs": 20,
+      "durationMs": 6000,
+      "dimensions": [
+        1224,
+        918
+      ],
+      "bytes": 13279318
+    },
+    "support": {
+      "file": "support-normal.gif",
+      "frames": 190,
+      "frameDurationMs": 20,
+      "durationMs": 3800,
+      "dimensions": [
+        1224,
+        918
+      ],
+      "bytes": 7628023
+    }
+  },
+  "newWholeWorldSamples": 6,
+  "newWholeWorldBoardsInspected": 2,
+  "wholeWorldScales": [
+    1,
+    2
+  ],
+  "retainedFullBodySamples": 12,
+  "retainedFullBodyBoardsReusedAndInspectedAgain": 4,
+  "retainedBodySource": "../dice-party-demo-v1/body-samples.json",
+  "findings": [
+    "D4/D6/D8/D10/D12/D20 have actual distinct polyhedron vertices, moving silhouettes and fixed numbered faces; intermediate face visibility and perspective change continuously.",
+    "First draft rejected: D4/D6 landing looked flat, D10 stretched, bonus labels overflowed panels. Drafts retained. Tilted final landing, normalized D10 and panel label positions inspected after correction.",
+    "All four final decoded sequences inspected: reveal, rolling, receipt transition, slowing, stable result and fade-out. No continuous playback claim.",
+    "Two actual dice appear for2D8 and2D12; formula flat values and fixed healing/shield/buff are separate counter plates, not fake random rolls.",
+    "Whole-scene layout, whole bodies, head HUD clearances and forward-follow inset inspected, alongside stationary full-scene and final D6=4 +fixedbuff2 receipt.",
+    "Twelve retained body poses re-inspected at1x/2x; original character, gait and monster source pixels unchanged."
+  ],
+  "limitations": [
+    "Offline Pillow scene composition from production Swift projected faces/pose math and original GameCore receipts; UIKit fonts, blending, map and lights are approximations.",
+    "Static decoded sequences and complete-body stills inspected; no App/simulator/device/UI tests or measured FPS.",
+    "D4/D10 gallery equipment exists only as controlled offline fixture, not new default weapons or weapon art. Existing weapon formulas includeD6/D8/D12/D20; selection reads actual formula.",
+    "Ambush2D8 and runeSlash2D12 gallery reviews formulas only; B2/B3 full skill animation/equipment UI remains pending. Current playable B0/B1 head layout has up to three channels; future many-channel combat layout needs its own integration review.",
+    "Original fixed support6/shield4, recovery4 and rally2 remain fixed; nominal amounts can differ from capped actual gains. The legacy single encounter still uses its fixed rules.",
+    "Target60 remains configured; GIF50fps/20ms is normal speed review format, not real-device performance evidence."
+  ],
+  "newArtApproval": null
+}
