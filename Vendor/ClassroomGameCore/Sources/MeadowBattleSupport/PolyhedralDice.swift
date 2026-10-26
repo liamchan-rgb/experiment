@@ -154,7 +154,12 @@ public enum PolyhedralDice {
             guard n.dot(DieVector(0,0,4.2)-c)>0.001 else { return nil }
             let light=DieVector(-0.4,0.7,1).unit
             return DieProjectedFace(value:face.value,points:face.indices.map { project(q.rotate(mesh(die.sides)!.vertices[$0])) },center:project(c),right:project(c+q.rotate(face.right)*face.labelRadius),up:project(c+q.rotate(face.up)*face.labelRadius),shade:0.45+0.55*max(0,n.dot(light)),depth:c.z)
-        }.sorted { $0.depth<$1.depth }
+        }.sorted {
+            // Coplanar-depth side faces of a square-on polyhedron must have
+            // one draw order on arm64/macOS and Linux despite rounding noise.
+            let a=Int64(($0.depth*1e9).rounded()),b=Int64(($1.depth*1e9).rounded())
+            return a==b ? $0.value<$1.value:a<b
+        }
         return DiePolySample(faces:faces,alpha:envelope.alpha,offsetY:locked ? 0:envelope.offsetY,radius:radius(count:count),resultMix:locked ? 1:envelope.resultMix,orientation:q)
     }
 }
