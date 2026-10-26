@@ -1,0 +1,17 @@
+{
+  "date": "2026-10-26",
+  "reviewer": "root",
+  "delegated": false,
+  "sourceCommit": "d420e5dd623c08a1df96adf5d90f8e9ac5edd74f",
+  "walkingGIFDecodedFramesInspected": 21,
+  "walkingDecodedPagesInspected": 11,
+  "newBowWalkingWholeBodyPoses": 208,
+  "nativeWalkingPoseBoards": 16,
+  "nativeWalkingBoardScales": [
+    1,
+    2
+  ],
+  "nativeWalkingBoardFilesInspected": 32,
+  "emptyWalkingStates": "all208 cells byte-identical to build52 previously reviewed states",
+  "newArtApproval": null
+}

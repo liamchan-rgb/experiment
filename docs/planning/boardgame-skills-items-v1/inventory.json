@@ -1163,8 +1163,10 @@
         "eight-direction13-pose world attachment",
         "separate battle hold/pose binding"
       ],
-      "fullCurrentDemoItemIntegration": false,
-      "newArtApproval": null
+      "fullCurrentDemoItemIntegration": true,
+      "newArtApproval": null,
+      "integrationScope": "controlled P1 camp loan/equip/unequip,104bindings/two appearances, shared bow battle rig and real D8 party attack; full inventory/save pending",
+      "reviewPath": "Art/Review/Battle/hunting-bow-demo-v1"
     },
     {
       "id": "greatSword",
@@ -1883,7 +1885,7 @@
     "only three demo actions, not inventory/equip or full catalog",
     "multi-unit, node groups, buff duration, rescue/downed-state and result adapters needed"
   ],
-  "status": "controlled-demo candidates: B0/B1, ambush and trainingSword integrated; remaining B2 items and B3–B6 pending",
+  "status": "B0/B1 + B2ambush/trainingSword/huntingBow controlled candidates; remaining B2items and B3-B6 pending",
   "execution": {
     "date": "2026-10-25",
     "authorizedByUser": true,
@@ -1919,6 +1921,18 @@
       "deviceExecuted": false,
       "fullInventoryEquipmentAndSaveUICompleted": false,
       "nextItem": "huntingBow"
+    },
+    "huntingBowIteration": {
+      "date": "2026-10-26",
+      "build": 53,
+      "sourceCommit": "d420e5dd623c08a1df96adf5d90f8e9ac5edd74f",
+      "status": "controlled P1 loan/equip/unequip,104walking/two appearances/6battle-clip binding candidate archived; actual device pending",
+      "reviewPath": "Art/Review/P1/hunting-bow-v1",
+      "battleReviewPath": "Art/Review/Battle/hunting-bow-demo-v1",
+      "fullInventoryEquipmentAndSaveUICompleted": false,
+      "newArtApproval": null,
+      "deviceExecuted": false,
+      "nextItem": "greatSword"
     }
   }
 }

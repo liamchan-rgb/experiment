@@ -1,0 +1,23 @@
+{
+  "baseline": "731566448f28d281e85211167928760d512468e8",
+  "sourceCommit": "d420e5dd623c08a1df96adf5d90f8e9ac5edd74f",
+  "existingArtAndResourcePathsChecked": 10824,
+  "existingArtAndResourcePathsByteUnchanged": 10823,
+  "existingChangedResourcePaths": [
+    "Sources/Resources/hero-gait.json"
+  ],
+  "gaitJSONOnlyAddsBowEquipmentBindings": true,
+  "oldBodyMotionPhaseSolesAndClipsUnchanged": true,
+  "originalCoreSourceAndCatalogHashesMatched": 13,
+  "oldSwordAndEmptyAtlasFilesByteExact": true,
+  "newBowAtlasCells": 208,
+  "sourceAssetsRepainted": false,
+  "newSemanticBowCopies": [
+    "MeadowBattleBowBodyCore",
+    "MeadowBattleBowWardrobeCore",
+    "MeadowBattleBowLegFarThighWardrobe"
+  ],
+  "semanticCopiesRemoveOnlyOldRearArmAndMisassignedCuff": "original assets retained unchanged",
+  "carryContractExtension": "back-bow added to schema/profile; same strict pose-map/back-only checks; no threshold relaxation",
+  "newArtApproval": null
+}

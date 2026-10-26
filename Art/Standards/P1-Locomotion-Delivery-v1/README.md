@@ -146,3 +146,8 @@ python scripts/compose-character-parts.py --root . \
 - [ ] 日志、当前审核记录和交付回执同步到GitHub，原稿/旧认可/失败版本保留。
 
 仅美术任务交资源与预览，不自动打IPA。用户任务包含demo/打包时再导入、核前景/阴影与运行索引，交**直接 `.ipa` HTTPS**，不交外层ZIP；设备编译可做，模拟器/实机运行仍按用户授权，当前由用户实机反馈。女性新体型、完整骨架重建、实时自由混搭、持握战斗和新制动动作不借新增行走外观之名自动扩展。
+
+
+## 2026-10-26 猎弓携带合同扩展
+
+新增carryProfile: back-bow，仍仅weapon.back、pose-map、完整八向104绑定、同一物理右肩到左髋、沿原drawOrder/身体动作。asset.schema.json与profile.json明确增加枚举，check-character-part.py对两种背负类型执行同一严格检查；没有删检查或放宽几何阈值。原冻结身体/动作/旧部件不改。猎弓可编辑SVG/PNG与导出源记录在新包hunting-bow-v1；这是一项明确的携带合同扩展，不将其误称为profile字节未变。新美术认可仍null。

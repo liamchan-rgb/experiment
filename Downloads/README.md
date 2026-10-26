@@ -1,3 +1,7 @@
+## 当前交付：build53 猎弓
+
+[MeadowJourney-b53.ipa](MeadowJourney-b53.ipa) · 1.6.27/build53，直接IPA。[校验记录](MeadowJourney-build53.json)。营地P1→武器→猎弓；林地战斗→小队支援查看真实1D8普通攻击（P2先行动）。旧单人保留简化固定5伤练习。设备归档/包校验通过，实机安装与运行由用户测试。美术正常GIF见Art/Review/Battle/hunting-bow-demo-v1与Art/Review/P1/hunting-bow-v1。
+
 # SideStore 安装与迭代包
 
 ## 当前版本：训练短剑与连续停骰 · 1.6.26 build52
