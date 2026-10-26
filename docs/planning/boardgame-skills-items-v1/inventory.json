@@ -1888,6 +1888,16 @@
     "reviewPath": "Art/Review/Battle/party-support-demo-v1",
     "newArtApproval": null,
     "fullInventoryEquipmentAndSaveUICompleted": false,
-    "laterBatchesCompleted": false
+    "laterBatchesCompleted": false,
+    "ambushIteration": {
+      "date": "2026-10-26",
+      "build": 49,
+      "sourceCommit": "a5547de7ad20b5737443960bacc89d80f52ee2eb",
+      "status": "B2 ambush interactive candidate archived; basic equipment pending",
+      "reviewPath": "Art/Review/Battle/ambush-helix-demo-v1",
+      "next": "trainingSword itemID mapping and full walking/battle attachment",
+      "newArtApproval": null,
+      "appOrSimulatorOrDeviceRun": false
+    }
   }
 }

@@ -1,6 +1,20 @@
 # SideStore 安装与迭代包
 
-## 当前版本：多面骰真实翻面 · 1.6.22 build48
+## 当前版本：突袭与交叉螺旋回血 · 1.6.23 build49
+
+突袭已接入游侠技能栏：按原规则2AP、每场2次，伤害2D8＋2、自身恢复3。演出为预备→快速突进/三道淡残影→双斩痕/受击局部爆光与落地光粒→回位；两道斩痕仅一次原核心结算，目标受击与施法者回血分开注册。最后敌人死亡时仍完成本人回血与回位，满血不额外触发回血光效。原身体/攻击姿势重定时复用，不声称重绘人物或已完成八件装备。
+
+回血双螺旋绕身上升，固定值选中即显，骰子动画隐藏类型文字。入口林地战斗→小队支援→P2突袭。
+
+[直接下载 MeadowJourney-b49.ipa](https://raw.githubusercontent.com/liamchan-rgb/experiment/fix/build33-face-grounding-camera/Downloads/MeadowJourney-b49.ipa) · [包校验](MeadowJourney-build49.json) · [四正常GIF/站姿](../Art/Review/Battle/ambush-helix-demo-v1/README.md)
+
+```text
+https://raw.githubusercontent.com/liamchan-rgb/experiment/fix/build33-face-grounding-camera/Downloads/MeadowJourney-b49.ipa
+```
+
+31,878,244字节，SHA256 `c4dae118ee027eb2c6e595ad34bede6bd734f84ddb65b05a09f844cdc2d1d65d`。94规则/适配/几何测试、五旧检查、设备Release40268729691与包CRC/资源校验通过，经典ZIP2.0封装。未运行App/模拟器/实机，真实安装、操作、稳定FPS由用户测试。
+
+## 历史版本：多面骰真实翻面 · 1.6.22 build48
 
 D4/D6/D8/D12/D20与兼容D10按各自面形三轴翻转，数字随面旋转/遮挡，回执到达后减速落面；实际公式决定骰型/颗数，固定加值单独标记。入口：林地战斗→小队支援。D4/D10离线图库不是新增默认武器，多骰图只审公式。
 

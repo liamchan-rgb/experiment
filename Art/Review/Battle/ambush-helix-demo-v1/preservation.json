@@ -1,0 +1,10 @@
+{
+  "baseline": "637799478027eb9f1c279a5343404140b5a94f59",
+  "sourceCommit": "a5547de7ad20b5737443960bacc89d80f52ee2eb",
+  "oldArtAndResourcePathsUnchanged": 10814,
+  "originalCoreSourceAndCatalogHashesMatched": 13,
+  "actorAndGaitPixelsAndPoseJSONChanged": false,
+  "originalSingleEncounterModelAndImpactClockPrefixUnchanged": true,
+  "newFullBodyPosesInspectedAt1xAnd2x": 6,
+  "newWholeScenePosesInspectedAt1xAnd2x": 6
+}
