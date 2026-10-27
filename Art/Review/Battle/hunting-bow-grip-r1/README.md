@@ -13,3 +13,7 @@
 源码 `50e555778208b2b823d1e7a208d552f3bfeb69e2`，设备 Release [归档](https://github.com/liamchan-rgb/experiment/actions/runs/40447896365)成功；107 项纯测试和五项独立检查通过。IPA 为 1.6.28/build54，已检查 CRC、经典 ZIP2.0 结构与 iPhoneOS 资源；macOS 与 Linux 导出的3606个弓姿及场景数据逐字段一致。详见 `Media/Build54/package.json`。整身和场景预览使用相同战斗动作数据，视频每秒50帧为离线预览帧率，不是设备实测。
 
 同一私人审核页已更新为猎弓持弓复审，默认整身预览并可切换整场；原四件装备及此前通过的重剑/权杖演出保留，旧反馈按 revision 迁移。审核页浏览器检查和部署记录见 `browser-qa/result.json`、`deployment.json`。
+
+## 交付核验
+
+交付提交 `62d105042220070606aa56ba3957ab3e518108f7`：直接 IPA、整身 GIF、整场 GIF 与关键画面共五条链接已完整下载并与仓库内容比较，IPA 再次检查 CRC，两个 GIF 均在浏览器成功加载；74 个选定路径的提交对象已核对。回执见 `delivery.json`。用户仍需实际安装并审核修正效果。
