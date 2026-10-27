@@ -13,5 +13,7 @@
   "reviewMethod": "full-body 1x/2x contact sheets and actual decoded frames",
   "continuousPlaybackVisualClaim": false,
   "deviceRun": false,
-  "runtimeIntegrated": false
+  "runtimeIntegrated": false,
+  "laterUserFeedback": "user-feedback-profile-wrists.json",
+  "affectedInternalArtConclusion": "runeArmor left/right sleeve-wrist alignment needs changes"
 }

@@ -21,3 +21,5 @@ geometry.json：两甲所有姿势的肩甲与袖面接触检查未发现断开�
 本轮是素材修订候选，不打IPA；不运行App/模拟器/实机。两甲artApproval=null，只有用户明确认可才记录通过。
 
 候选提交 `ef010664bdfb31e632bc599231c8cd08100c5321`，资源revision `2be82f5fa68e9591ece08e2108d7e66874fb3e7e4921f3f70cad7b75690b2913`。同一私有审核页部署成功，源码 `77113355813c86658514a99e77c4ef3dbe3b9893`，部署ID `appgdep_6adfd29e5b1081918a87d142ba2321cc`。13个固定提交HTTPS资源完整GET200，MIME/字节/SHA256、GIF循环与时长核对；1816发布路径与提交对象逐字节匹配。回执见delivery.json/deployment.json。四件认可保持，两甲待用户审核。
+
+2026-10-27 用户指出符文甲正左、正右袖子与手腕错位；对应部位的内部放行撤回，记录见 user-feedback-profile-wrists.json。该反馈仅针对符文甲侧向袖腕；r5 候选见 ../b2-batch-v5。

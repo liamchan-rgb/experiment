@@ -1367,11 +1367,11 @@
       "fullCurrentDemoItemIntegration": false,
       "newArtApproval": null,
       "batchArtReview": {
-        "status": "r3-shoulders-needs-changes-r4-awaiting-user-review",
-        "directory": "Art/Review/Equipment/b2-batch-v4",
+        "status": "r4-profile-wrists-needs-changes-r5-awaiting-user-review",
+        "directory": "Art/Review/Equipment/b2-batch-v5",
         "runtimeIntegrated": false,
         "newArtApproval": null,
-        "feedbackSource": "Art/Review/Equipment/b2-batch-v3/user-feedback-shoulders.json"
+        "feedbackSource": "Art/Review/Equipment/b2-batch-v4/user-feedback-profile-wrists.json"
       }
     },
     {
