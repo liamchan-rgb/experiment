@@ -1,0 +1,18 @@
+{
+  "date": "2026-10-27",
+  "reviewer": "root",
+  "subagentsUsed": false,
+  "trigger": "用户指出猎弓战斗时手和弓对不上",
+  "status": "repair-candidate-awaiting-user-review",
+  "newArtApproval": null,
+  "sixClipsSampled": true,
+  "gripGeometrySamples": 3606,
+  "engagedHandStringSamples": 103,
+  "completeBodyGifDecodedFramesViewed": 190,
+  "completeSceneGifDecodedFramesViewed": 190,
+  "sixClipsWholeBodyKeyPosesViewed": 30,
+  "worldKeyPosesViewed": 6,
+  "continuousPlaybackVisualClaim": false,
+  "appSimulatorOrDeviceRun": false,
+  "preexistingHeavySwordAndStaffApproval": "Art/Review/Battle/b2-weapons-v1/user-approval.json"
+}

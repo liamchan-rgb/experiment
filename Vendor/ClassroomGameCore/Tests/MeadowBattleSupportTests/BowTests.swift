@@ -36,4 +36,29 @@ final class BowTests:XCTestCase {
         XCTAssertTrue(held.arrowVisible);XCTAssertLessThan(held.stringHand.x,held.upperTip.x)
         XCTAssertFalse(BowRig.sample(clip:"attack",progress:0.5).arrowVisible)
     }
+    func testDrawingHandMeetsStringBeforeArrowAppearsAndBowSharesHoldingWrist() {
+        func position(_ p:BowPartPose)->PartyPoint { PartyPoint(p.pivot.x+p.offset.x,p.pivot.y+p.offset.y) }
+        for clip in ["idle","attack","guard","hit","victory","defeat"] {
+            for i in 0...600 {
+                let p=Double(i)/600,pose=BowRig.sample(clip:clip,progress:p)
+                let grip=position(pose.parts["nearHand"]!),bow=position(pose.parts["bow"]!)
+                XCTAssertEqual(grip.x,bow.x,accuracy:1e-9);XCTAssertEqual(grip.y,bow.y,accuracy:1e-9)
+                if pose.arrowVisible {
+                    let hand=position(pose.parts["farHand"]!)
+                    XCTAssertEqual(hand.x,pose.stringHand.x,accuracy:1e-8)
+                    XCTAssertEqual(hand.y,pose.stringHand.y,accuracy:1e-8)
+                    XCTAssertEqual(pose.arrowTail.x,pose.stringHand.x,accuracy:1e-8)
+                    XCTAssertEqual(pose.arrowTail.y,pose.stringHand.y,accuracy:1e-8)
+                }
+                if clip=="attack" && p<=0.21 { XCTAssertFalse(pose.arrowVisible) }
+            }
+        }
+        let release=BowRig.sample(clip:"attack",progress:BowRig.releaseProgress)
+        XCTAssertEqual(BowRig.releaseArrowTip.x,release.arrowTip.x,accuracy:1e-9)
+        XCTAssertEqual(BowRig.releaseArrowTip.y,release.arrowTip.y,accuracy:1e-9)
+        let after=BowRig.sample(clip:"attack",progress:BowRig.releaseProgress+0.07)
+        XCTAssertLessThan(position(after.parts["farHand"]!).x,position(release.parts["farHand"]!).x)
+        XCTAssertGreaterThan(after.stringHand.x,release.stringHand.x)
+    }
+
 }

@@ -161,7 +161,8 @@ extension Export {
                 }
                 let bowProjectile=showing.flatMap { i -> BowProjectile? in
                     guard i.ranged,let f=PartyVisual.feet[i.actor] else { return nil }
-                    return BowRig.projectile(age:age,from:PartyPoint(f.x+57*PartyVisual.heroScale,f.y-77*PartyVisual.heroScale),to:PartyVisual.hitPoint(target:i.target,shielded:dieTargetUnit.shield>0),impact:i.action.impact)
+                    let tip=BowRig.releaseArrowTip
+                    return BowRig.projectile(age:age,from:PartyPoint(f.x+(tip.x-123)*PartyVisual.heroScale,f.y+(tip.y-214)*PartyVisual.heroScale),to:PartyVisual.hitPoint(target:i.target,shielded:dieTargetUnit.shield>0),impact:i.action.impact)
                 }
                 let diePose=dice.indices.map { index in BattleDice.pose(time:time,index:index,resolvedAge:hitAt.map { time-$0 },visibleAge:frame>=190 && scenario=="attack-buff" ? time-3.8:time) }
                 let hover=time<1

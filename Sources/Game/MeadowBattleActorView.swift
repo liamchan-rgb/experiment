@@ -317,7 +317,7 @@ final class MeadowBattleActorView: UIView {
     private func applyPose(_ rawPose: MeadowBattlePoseSample) {
         let pose=resolvedPose(rawPose)
         for (name,view) in bowImages { view.isHidden = !isBow;view.layer.zPosition=CGFloat(orderedLayerNames(for:pose.clip).firstIndex(of:name) ?? 0) }
-        bowGeometry.isHidden = !isBow;bowGeometry.sample=isBow ? bowSample(rawPose):nil;bowGeometry.layer.zPosition=CGFloat(orderedLayerNames(for:pose.clip).firstIndex(of:"MeadowBattleHeroNearHand") ?? 30)-0.5
+        bowGeometry.isHidden = !isBow;bowGeometry.sample=isBow ? bowSample(rawPose):nil;bowGeometry.layer.zPosition=CGFloat(orderedLayerNames(for:pose.clip).firstIndex(of:"MeadowBattleHeroWeapon") ?? 28)+0.5
         guard !images.isEmpty else { return }
         let orderedNames = orderedLayerNames(for: pose.clip)
         let depth = Dictionary(uniqueKeysWithValues: orderedNames.enumerated().map { ($0.element, CGFloat($0.offset)) })
@@ -347,9 +347,11 @@ final class MeadowBattleActorView: UIView {
     private func orderedLayerNames(for clip: String) -> [String] {
         let names = configuration?.layers ?? []
         if isBow {
-            let far=["BowFarUpperBody","BowFarUpperWardrobe","BowFarForeBody","BowFarForeWardrobe"]
+            let upper=["BowFarUpperBody","BowFarUpperWardrobe"]
+            let fore=["BowFarForeBody","BowFarForeWardrobe"]
             let base=names.filter { !["MeadowBattleHeroWeapon","MeadowBattleHeroFarHand","MeadowBattleHeroNearHand"].contains($0) }
-            return far+base+["MeadowBattleHeroWeapon","BowFarHand","MeadowBattleHeroNearHand"]
+            let insertion=base.firstIndex(of:"MeadowBattleHeroArmNearUpperWardrobe") ?? base.endIndex
+            return upper+Array(base[..<insertion])+fore+Array(base[insertion...])+["MeadowBattleHeroWeapon","BowFarHand","MeadowBattleHeroNearHand"]
         }
         guard clip != "idle" else { return names }
         let animated = [
@@ -377,6 +379,7 @@ final class MeadowBattleActorView: UIView {
         let format = UIGraphicsImageRendererFormat(); format.scale = 1
         let rendered = UIGraphicsImageRenderer(size: size, format: format).image { renderer in
             for name in orderedLayerNames(for: pose.clip) {
+                if isBow && name == "BowFarHand" { MeadowBowGeometryView.paint(renderer.cgContext,sample:bowSample(renderPose)) }
                 if name == "MeadowBattleHeroJointUnderlay" && pose.clip == "idle" { continue }
                 guard let asset=sourceAsset(name),let image = UIImage(named: asset) else { continue }
                 let part = renderPose.layers[name] ?? MeadowBattleLayerPose()
@@ -392,7 +395,6 @@ final class MeadowBattleActorView: UIView {
                 image.draw(in: CGRect(origin: .zero, size: size))
                 renderer.cgContext.restoreGState()
             }
-            if isBow { MeadowBowGeometryView.paint(renderer.cgContext,sample:bowSample(renderPose)) }
         }
         silhouetteCache.setObject(rendered, forKey: key,cost:256*256*4)
         return rendered

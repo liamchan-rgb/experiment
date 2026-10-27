@@ -1,8 +1,11 @@
 {
   "reviewer": "root",
   "subagentsUsed": false,
-  "status": "new-offline-candidates-awaiting-user-review",
-  "userArtApproval": null,
+  "status": "presented-offline-action-scenes-approved",
+  "userArtApproval": {
+    "source": "user-approval.json",
+    "scope": "两段已展示离线演出"
+  },
   "scope": [
     "greatSword action scene",
     "legendaryStaff action scene"

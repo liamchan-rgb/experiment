@@ -281,7 +281,8 @@ private final class MeadowPartyEffectsView:UIView {
                 for p in PartyVisual.rally(age:age,at:PartyPoint(foot.x,foot.y-60)) { sprite(MeadowBattleVFXAssets.healStar,PartyPoint(p.x,p.y),p.size,p.size,p.alpha) }
             }
             if intent.ranged,let foot=PartyVisual.feet[intent.actor] {
-                let from=PartyPoint(foot.x+(180-123)*PartyVisual.heroScale,foot.y+(137-214)*PartyVisual.heroScale)
+                let tip=BowRig.releaseArrowTip
+                let from=PartyPoint(foot.x+(tip.x-123)*PartyVisual.heroScale,foot.y+(tip.y-214)*PartyVisual.heroScale)
                 let to=PartyVisual.hitPoint(target:intent.target,shielded:meetsShield)
                 if let arrow=BowRig.projectile(age:age,from:from,to:to,impact:intent.action.impact) {
                     let a=arrow.tail,b=arrow.tip

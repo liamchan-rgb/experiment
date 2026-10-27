@@ -16,3 +16,7 @@
 ## 发布核验
 
 候选提交 `a26ff2a066099fdca958fdcd07552ffcabc3b18b`；两份正常 GIF 用固定提交的 jsDelivr GitHub CDN 链接交付，完整下载后与仓库文件逐字节一致、MIME 为 image/gif，浏览器实际加载尺寸为 800×480。GitHub raw 对这两份大图返回 application/octet-stream，因此不作为内嵌播放地址。7 条公开素材链接完整下载、55 个选定提交路径逐一核验；60 帧视频可在审核页播放。私有审核页部署成功，131 个归档文件与推送的站点源码逐字节对应；详见 delivery.json、deployment.json。
+
+## 后续用户反馈
+
+用户回复“没问题，之前的弓箭战斗持弓姿势需要改一下，手和弓对不上”，仅将本轮展示的重剑和权杖两段离线演出记为认可；未将其扩展到 demo 或其他装备。猎弓持弓问题作为独立返修，见 `Art/Review/Battle/hunting-bow-grip-r1`。
