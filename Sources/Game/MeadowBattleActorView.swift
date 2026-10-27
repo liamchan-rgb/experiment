@@ -528,6 +528,18 @@ private final class MeadowBowSurfaceView:UIImageView {
         let format=UIGraphicsImageRendererFormat();format.scale=1
         return UIGraphicsImageRenderer(size:CGSize(width:256,height:256),format:format).image { renderer in
             let c=renderer.cgContext;c.setAllowsAntialiasing(false);c.interpolationQuality = .none
+            if (group=="nearHand" || group=="farHand"),let pose=sample.parts[group],
+               let hand=UIImage(named:group=="nearHand" ? "MeadowBattleBowDrawingHand":"MeadowBattleBowGripHand") {
+                // Both hands use their own consistent silhouettes: the near
+                // fingertips meet the nock; the far hand wraps the bow grip.
+                c.saveGState()
+                c.translateBy(x:CGFloat((pose.pivot.x+pose.offset.x).rounded()),y:CGFloat((pose.pivot.y+pose.offset.y).rounded()))
+                c.rotate(by:CGFloat(pose.rotation))
+                let bounds=group=="nearHand" ? CGRect(x:-14,y:-6,width:16,height:12):CGRect(x:-8,y:-6,width:14,height:12)
+                hand.draw(in:bounds)
+                c.restoreGState()
+                return
+            }
             for surface in sample.surfaces where surface.group==group {
                 guard let first=surface.points.first else { continue }
                 let color=surface.color

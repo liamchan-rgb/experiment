@@ -30,47 +30,56 @@ public enum BowRig {
         let p=min(1,max(0,progress)),attack=clip=="attack"
         let aim=attack ? PartyVisual.smooth(p/0.19)*(1-PartyVisual.smooth((p-0.65)/0.35)):0
         let draw=attack ? PartyVisual.smooth((p-0.19)/0.14):0
-        let follow=attack ? PartyVisual.smooth((p-releaseProgress)/0.09)*(1-PartyVisual.smooth((p-0.55)/0.20)):0
-        let recoil=attack && p>=releaseProgress ? sin((p-releaseProgress)*100)*exp(-(p-releaseProgress)*45)*0.8:0
+        // The reviewed release takes 0.32 seconds; retain the recovered pose
+        // until the whole actor lowers the bow instead of bouncing back to aim.
+        let follow=attack ? PartyVisual.smooth((p-releaseProgress)/(0.32/1.2)):0
         func body(_ q:PartyPoint)->PartyPoint {
             let dx=q.x-132,dy=q.y-167,c=cos(lean),s=sin(lean)
             return PartyPoint(132+dx*c-dy*s,167+dx*s+dy*c+crouch)
         }
         // Pose A: the FAR arm holds the bow, the NEAR arm draws toward the cheek.
         // These are authored bow sleeves, not rotated cutouts of the sword arm.
-        let grip=blend(PartyPoint(163,165),PartyPoint(174,144),aim)
+        let grip=blend(PartyPoint(163,165),PartyPoint(190,148),aim)
         let angle=mix(0.18,0,aim)
-        let nearShoulder=PartyPoint(134,155)
-        let farShoulder=PartyPoint(136,141)
-        func elbow(_ shoulder:PartyPoint,_ hand:PartyPoint,upper:Double=20,fore:Double=19,bend:Double=1)->PartyPoint {
+        let nearShoulder=PartyPoint(130,145)
+        let farShoulder=PartyPoint(141,143)
+        func solveElbow(_ shoulder:PartyPoint,_ hand:PartyPoint,_ upper:Double,_ fore:Double)->PartyPoint {
             let dx=hand.x-shoulder.x,dy=hand.y-shoulder.y
-            let dist=min(upper+fore-0.001,max(abs(upper-fore)+1e-10,hypot(dx,dy)))
-            let a=atan2(dy,dx)+bend*acos(min(1,max(-1,(upper*upper+dist*dist-fore*fore)/(2*upper*dist))))
+            let distance=min(upper+fore-0.001,max(abs(upper-fore)+0.001,hypot(dx,dy)))
+            let cosine=min(1,max(-1,(upper*upper+distance*distance-fore*fore)/(2*upper*distance)))
+            let a=atan2(dy,dx)+acos(cosine)
             return PartyPoint(shoulder.x+upper*cos(a),shoulder.y+upper*sin(a))
         }
-        func angles(_ hand:PartyPoint,_ bend:Double)->(Double,Double) {
-            let el=elbow(nearShoulder,hand,upper:22,fore:34,bend:bend)
-            return (atan2(el.y-nearShoulder.y,el.x-nearShoulder.x),atan2(hand.y-el.y,hand.x-el.x))
-        }
-        let rest=angles(PartyPoint(147,159),1),reach=angles(PartyPoint(164,138),-1),full=angles(PartyPoint(147,138),-1),after=angles(PartyPoint(144,138),-1)
         let lift=attack ? PartyVisual.smooth(p/0.19):0
         let retire=attack ? PartyVisual.smooth((p-0.65)/0.35):0
-        func angleBlend(_ a:Double,_ b:Double,_ t:Double)->Double { a+atan2(sin(b-a),cos(b-a))*t }
-        func joint(_ r:Double,_ a:Double,_ b:Double,_ c:Double)->Double {
-            let raised=angleBlend(r,a,lift),pulled=angleBlend(raised,b,draw),released=angleBlend(pulled,c,follow)
-            return angleBlend(released,r,retire)
+        func joint(_ rest:PartyPoint,_ reach:PartyPoint,_ held:PartyPoint,_ recovered:PartyPoint)->PartyPoint {
+            let raised=blend(rest,reach,lift),pulled=blend(raised,held,draw),released=blend(pulled,recovered,follow)
+            return blend(released,rest,retire)
         }
-        // Interpolate joint angles, not wrist positions: the elbow follows a
-        // continuous arc and both bone lengths stay constant during approach.
-        let ua=joint(rest.0,reach.0,full.0,after.0),fa=joint(rest.1,reach.1,full.1,after.1)
-        let nearElbow=PartyPoint(nearShoulder.x+22*cos(ua),nearShoulder.y+22*sin(ua))
-        let near=PartyPoint(nearElbow.x+34*cos(fa),nearElbow.y+34*sin(fa))
-        let straight=PartyPoint(grip.x-10+recoil,grip.y-6)
-        let engaged=attack && p>=0.19 && p<=releaseProgress
-        let spring=attack ? PartyVisual.smooth((p-releaseProgress)/0.055):1
-        let nock = !attack || p<0.19 ? straight:engaged ? near:blend(near,straight,spring)
+        // The foreground drawing elbow stays behind the shoulder.  Author both
+        // joints together so the sleeve remains connected throughout release.
+        // The resting drawing hand already touches the string.  It lifts and
+        // draws the string toward the cheek as the far arm raises the bow.
+        let restHand=PartyPoint(153,159)
+        let elbowGuide=joint(solveElbow(nearShoulder,restHand,32,44),PartyPoint(102,134),PartyPoint(99,134),PartyPoint(100,150))
+        let handGuide=joint(restHand,PartyPoint(147,137),PartyPoint(143,137),PartyPoint(143,160))
+        func pointAlong(_ origin:PartyPoint,_ target:PartyPoint,_ length:Double)->PartyPoint {
+            let dx=target.x-origin.x,dy=target.y-origin.y,d=max(0.001,hypot(dx,dy))
+            return PartyPoint(origin.x+dx*length/d,origin.y+dy*length/d)
+        }
+        // Preserve the two visible limb lengths while following the authored
+        // elbow and hand paths; the sleeve must not grow while it is raised.
+        let nearElbow=pointAlong(nearShoulder,elbowGuide,32)
+        let near=pointAlong(nearElbow,handGuide,44)
+        let straight=PartyPoint(grip.x-10,grip.y-6)
+        let engaged = !attack || p<=releaseProgress
+        // On release the string returns to its resting line immediately; do
+        // not leave a floating V-shaped bend detached from the hand.
+        let nock = engaged ? near:straight
         let tail=engaged ? near:straight
-        let farElbow=elbow(farShoulder,grip)
+        // Solve the far arm with constant lengths.  In the held pose the
+        // almost-straight arm and the grip are one continuous silhouette.
+        let farElbow=solveElbow(farShoulder,grip,25,25)
         var parts:[String:BowPartPose]=[:]
         for (prefix,sh,el,hand) in [("near",nearShoulder,nearElbow,near),("far",farShoulder,farElbow,grip)] {
             parts[prefix+"Upper"]=BowPartPose(sh,body(sh),lean+atan2(el.y-sh.y,el.x-sh.x))
