@@ -1172,9 +1172,11 @@
         "build": 54,
         "sourceCommit": "50e555778208b2b823d1e7a208d552f3bfeb69e2",
         "reviewDirectory": "Art/Review/Battle/hunting-bow-grip-r1",
-        "status": "device-build-passed-user-art-review-pending",
+        "status": "user-rejected-hand-roles-and-stray-pixels",
         "userArtApproval": null,
-        "deviceRun": false
+        "deviceRun": false,
+        "feedback": "Art/Review/Battle/hunting-bow-pose-concepts-v1/user-rejection.json",
+        "nextArtReview": "Art/Review/Battle/hunting-bow-pose-concepts-v1"
       }
     },
     {
