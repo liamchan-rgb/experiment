@@ -1,0 +1,12 @@
+{
+  "site": "https://meadow-equipment-review.smokytide.chatgpt.site",
+  "siteSourceCommit": "b17a9594a8be4340bd3356ea80106659e59bcefc",
+  "deploymentId": "appgdep_6ae013331a2881918c64b8b18fbcc8c3",
+  "versionId": "appgprj_6adf5ffe0ee88191a0d7a2ad3a0686b4~appgver_cc626d4243a881919bbd0f1439b34ccd",
+  "status": "succeeded",
+  "access": "pre-existing owner-private; audience unchanged",
+  "archiveFilesMatchedPushedSource": 131,
+  "localBrowserQA": "Art/Review/Battle/b2-weapons-v1/browser-qa/result.json",
+  "candidateCommit": "a26ff2a066099fdca958fdcd07552ffcabc3b18b",
+  "resourceRevisionSHA256": "b2db514f0ee2a5a8ebce86ff6e5ad078ae1203603c3527d5a9cbc7ce3410c915"
+}

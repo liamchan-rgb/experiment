@@ -12,3 +12,7 @@
 源关键帧为 `Art/Scenes/MeadowBattle/b2-weapon-actions-v1/action-poses.json`，可执行 `python3 scripts/review-b2-weapons-actions.py --media` 生成预览，`python3 scripts/verify-b2-weapons-actions.py` 检查指定几何关系；依赖 Pillow、NumPy、SciPy、ffmpeg，GIF 优化依赖可选的 gifsicle。环境参考用户录屏的既有文字分析 `Art/Scenes/MeadowBattle/skill-flow-v1/reference-notes.md`，没有上传或复制录屏。
 
 审核页使用两个独立条目，旧四件已认可资源保留、两甲其余范围待审；浏览器结果可导出，不会自动写回 GitHub。未修改原战斗运行逻辑，未执行 App、模拟器、实机，未制作 IPA。
+
+## 发布核验
+
+候选提交 `a26ff2a066099fdca958fdcd07552ffcabc3b18b`；两份正常 GIF 用固定提交的 jsDelivr GitHub CDN 链接交付，完整下载后与仓库文件逐字节一致、MIME 为 image/gif，浏览器实际加载尺寸为 800×480。GitHub raw 对这两份大图返回 application/octet-stream，因此不作为内嵌播放地址。7 条公开素材链接完整下载、55 个选定提交路径逐一核验；60 帧视频可在审核页播放。私有审核页部署成功，131 个归档文件与推送的站点源码逐字节对应；详见 delivery.json、deployment.json。

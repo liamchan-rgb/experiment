@@ -5,3 +5,5 @@
 视频可播放、暂停、拖动并按播放时间记录问题；页面可导出或导入本批 JSON。旧 v5 反馈仅在资源 revision 严格相同时迁移原六项，新两项保持待审。反馈只保存于当前浏览器，需用户导出发回，页面不会写 GitHub。
 
 正常 GIF 和 60 fps 视频是离线样片，不代表设备性能或 demo 实现。原装备规则、背包/存档与运行集成仍待后续工作。资源 revision `b2db514f0ee2a5a8ebce86ff6e5ad078ae1203603c3527d5a9cbc7ce3410c915`。
+
+审核页已部署： https://meadow-equipment-review.smokytide.chatgpt.site 。站点维持原来的私有访问范围；部署和公开动图回执见 `Art/Review/Battle/b2-weapons-v1/deployment.json` 与 `delivery.json`。

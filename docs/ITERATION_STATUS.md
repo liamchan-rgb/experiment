@@ -2,7 +2,7 @@
 
 ## 2026-10-27 · B2 重剑与传奇权杖离线动作候选
 
-上轮“没问题继续下一步工作”仅记为符文甲正左、正右袖腕修正及已展示行走预览认可，见 Art/Review/Equipment/b2-batch-v5/user-approval-profile.json。继续B2，新增重剑近身挥击/回位与传奇权杖投射两段独立待审场景；命中位置对准怪物身体，包含环境照明、受击与落地粒子。旧四件通过素材、人物和装备素材保持；两甲其他范围待审。本人检查正常GIF实际解码帧的整场/整身联系页及视频抽帧，另做60Hz几何交叠核验；[审核记录](../Art/Review/Battle/b2-weapons-v1/README.md)、[批量审核](../Art/Review/Equipment/b2-batch-v6/README.md)。两段视频均为离线60fps，不表示设备测得60fps；未接demo、未运行App/模拟器/实机、未制作IPA，新动作的用户认可为空。
+上轮“没问题继续下一步工作”仅记为符文甲正左、正右袖腕修正及已展示行走预览认可，见 Art/Review/Equipment/b2-batch-v5/user-approval-profile.json。继续B2，新增重剑近身挥击/回位与传奇权杖投射两段独立待审场景；命中位置对准怪物身体，包含环境照明、受击与落地粒子。旧四件通过素材、人物和装备素材保持；两甲其他范围待审。本人检查正常GIF实际解码帧的整场/整身联系页及视频抽帧，另做60Hz几何交叠核验；[审核记录](../Art/Review/Battle/b2-weapons-v1/README.md)、[批量审核](../Art/Review/Equipment/b2-batch-v6/README.md)。候选提交 `a26ff2a066099fdca958fdcd07552ffcabc3b18b`，原私有审核页已部署；七条公开资源完整下载、55条提交路径核验，固定版本正常GIF浏览器加载通过，见 delivery.json / deployment.json。两段视频均为离线60fps，不表示设备测得60fps；未接demo、未运行App/模拟器/实机、未制作IPA，新动作的用户认可为空。
 
 ## 2026-10-25 · build43护盾跟随、回血与技能动态
 
