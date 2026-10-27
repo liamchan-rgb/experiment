@@ -1,0 +1,28 @@
+SideStore package metadata verified: MeadowJourney 1.6.29 build 55
+{
+  "file": "/var/folders/nj/vtw8zd2j31d1gdrtntc5y4600000gn/T/tmp.GQ9qhsd5WM/classic.ipa",
+  "version": "1.6.29",
+  "build": "55",
+  "bytes": 33970800,
+  "sha256": "a90f6702ff297404b7e12f70f10d70fe93fd98d3c37ce8433191df437d1103ba",
+  "compression": "stored",
+  "payloadBytesIdentical": true
+}
+Archive:  /Users/runner/work/experiment/experiment/build/MeadowJourney-shadow-lab.ipa
+    testing: Payload/                 OK
+    testing: Payload/MeadowJourney.app/   OK
+    testing: Payload/MeadowJourney.app/SceneMap.json   OK
+    testing: Payload/MeadowJourney.app/default.metallib   OK
+    testing: Payload/MeadowJourney.app/AppIcon60x60@2x.png   OK
+    testing: Payload/MeadowJourney.app/Assets.car   OK
+    testing: Payload/MeadowJourney.app/AppIcon76x76@2x~ipad.png   OK
+    testing: Payload/MeadowJourney.app/MeadowJourney   OK
+    testing: Payload/MeadowJourney.app/Info.plist   OK
+    testing: Payload/MeadowJourney.app/ClassroomGameCore_ClassroomGameCore.bundle/   OK
+    testing: Payload/MeadowJourney.app/ClassroomGameCore_ClassroomGameCore.bundle/initial-content.json   OK
+    testing: Payload/MeadowJourney.app/ClassroomGameCore_ClassroomGameCore.bundle/Info.plist   OK
+    testing: Payload/MeadowJourney.app/hero-gait.json   OK
+    testing: Payload/MeadowJourney.app/PkgInfo   OK
+No errors detected in compressed data of /Users/runner/work/experiment/experiment/build/MeadowJourney-shadow-lab.ipa.
+a90f6702ff297404b7e12f70f10d70fe93fd98d3c37ce8433191df437d1103ba  /Users/runner/work/experiment/experiment/build/MeadowJourney-shadow-lab.ipa
+Unsigned IPA ready for SideStore re-signing: /Users/runner/work/experiment/experiment/build/MeadowJourney-shadow-lab.ipa

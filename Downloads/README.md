@@ -1,3 +1,7 @@
+## build55 · A 图猎弓动作接入（待用户实机审核）
+
+[MeadowJourney-b55.ipa](MeadowJourney-b55.ipa) · 1.6.29/build55，直接 IPA。P1 营地装备猎弓，在战斗及小队支援中查看持弓、拉弦、放箭与收手。保留项目原头部；近侧手拉弦，远侧手握弓。设备 Release 归档、包完整性和动作数据一致性已检查；实机安装与运行由用户测试。[包校验](MeadowJourney-build55.json) · [正常动图与审核](../Art/Review/Battle/hunting-bow-a-project-r1/README.md)。
+
 ## build54 猎弓持弓候选（用户指出动作问题，待返修）
 
 用户已指出此版持弓手/拉弦手做反且有杂色像素，动作未获认可；先审阅新姿势草图。历史文件 [MeadowJourney-b54.ipa](MeadowJourney-b54.ipa) · 1.6.28/build54。P1 营地菜单选择猎弓，林地战斗 / 小队支援查看持弓、拉弦及放箭。设备 Release 归档与包检查通过；安装和实机画面由用户测试。[包校验](MeadowJourney-build54.json) · [正常动图与审核](../Art/Review/Battle/hunting-bow-grip-r1/README.md)。
