@@ -185,7 +185,7 @@ def gear_render(clip,progress,weapon_id):
   names=list(base['config']['layers'])
   skip=['MeadowBattleHeroWeapon','MeadowBattleHeroFarHand','MeadowBattleHeroNearHand','MeadowBattleHeroArmNearUpperBody','MeadowBattleHeroArmNearForearmBody','MeadowBattleHeroArmNearUpperWardrobe','MeadowBattleHeroArmNearForearmWardrobe','MeadowBattleHeroJointUnderlay','MeadowBattleHeroWardrobeCore']
   torso=[n for n in names if n not in skip]
-  insert=torso.index('MeadowBattleHeroHair');order=torso[:insert]+['torso','farArm','nearArm']+torso[insert:]+['MeadowBattleHeroWeapon','geometry','farHand','nearHand']
+  insert=torso.index('MeadowBattleHeroHair');order=torso[:insert]+['torso','farArm','nearArm','head']+torso[insert:]+['MeadowBattleHeroWeapon','geometry','farHand','nearHand']
   out=Image.new('RGBA',(256,256))
   def geometry():
    d=ImageDraw.Draw(out);pts=[(round(rig[k]['x']+root[0]),round(rig[k]['y']+root[1])) for k in ['upperTip','stringHand','lowerTip']];d.line(pts,fill='#e1c78c',width=1)
@@ -206,10 +206,14 @@ def gear_render(clip,progress,weapon_id):
      import PIL.ImageChops
      im.putalpha(PIL.ImageChops.multiply(im.getchannel('A'),mask));pivot,offset,angle=transforms['MeadowBattleHeroWardrobeCore'];im=im.rotate(-math.degrees(angle),resample=Image.Resampling.NEAREST,center=pivot);out.alpha_composite(im,(round(offset[0]+root[0]),round(offset[1]+root[1])))
     continue
-   assetname='MeadowBattleHuntingBow' if name=='MeadowBattleHeroWeapon' else 'MeadowBattleBowBodyCore' if name=='MeadowBattleHeroBodyCore' else 'MeadowBattleBowWardrobeCore' if name=='MeadowBattleHeroWardrobeCore' else 'MeadowBattleBowLegFarThighWardrobe' if name=='MeadowBattleHeroLegFarThighWardrobe' else name
+   if name=='head':
+    im=namespace['asset']('MeadowBattleBowBodyCore').copy();mask=Image.new('L',(256,256));ImageDraw.Draw(mask).rectangle((100,75,156,136),fill=255)
+    import PIL.ImageChops
+    im.putalpha(PIL.ImageChops.multiply(im.getchannel('A'),mask));pivot,offset,angle=transforms['MeadowBattleHeroBodyCore'];im=im.rotate(-math.degrees(angle),resample=Image.Resampling.NEAREST,center=pivot);out.alpha_composite(im,(round(offset[0]+root[0]),round(offset[1]+root[1])));continue
+   assetname='MeadowBattleHuntingBow'  if name=='MeadowBattleHeroWeapon' else 'MeadowBattleBowBodyCore' if name=='MeadowBattleHeroBodyCore' else 'MeadowBattleBowWardrobeCore' if name=='MeadowBattleHeroWardrobeCore' else 'MeadowBattleBowLegFarThighWardrobe' if name=='MeadowBattleHeroLegFarThighWardrobe' else name
    im=namespace['asset'](assetname).copy()
    if name=='MeadowBattleHeroBodyCore':
-    mask=Image.new('L',(256,256));dd=ImageDraw.Draw(mask);dd.rectangle((100,75,156,136),fill=255);dd.rectangle((100,174,152,190),fill=255)
+    mask=Image.new('L',(256,256));dd=ImageDraw.Draw(mask);dd.rectangle((100,174,152,190),fill=255)
     import PIL.ImageChops
     im.putalpha(PIL.ImageChops.multiply(im.getchannel('A'),mask))
    if name=='MeadowBattleHeroWeapon':

@@ -43,5 +43,10 @@
     "Only static concept A selected by user; finished animation still pending.",
     "Original lower-body transforms have 64 isolated single-pixel instances across sampled hit/defeat poses (min y184); idle and attack scan clean. See pixel-components.json.",
     "UIKit implementation has not yet had full Xcode compile."
+  ],
+  "finalInternalCorrections": [
+    "Filled missing cloth under original sword sleeve.",
+    "Replaced wrist-position blending with fixed-length joint-angle arcs after intermediate limb-length check failed.",
+    "Original head composited once above sleeves so raising elbow cannot cover jaw."
   ]
 }
