@@ -1,5 +1,9 @@
 # 林间行旅迭代进度 · 2026-10-19
 
+## 2026-10-27 · A 图收手与头部配准 r5
+
+用户认可 r4 速度，反馈手略抖、鼻子以上错位。主线程统一上脸像素，重新生成并配准收手及袖口姿势，保留 0.32 秒收手/收稳时段；[r5 动图](../Art/Review/Battle/hunting-bow-a-followthrough-r5/README.md)待用户审核。没有接 demo、打包或运行设备。
+
 ## 2026-10-27 · A 图放箭收手再次加快 r4
 
 用户反馈 r3 仍慢；主线程保留收手姿势顺序，将收手段由 0.64 秒缩短至 0.32 秒，[r4 动图](../Art/Review/Battle/hunting-bow-a-followthrough-r4/README.md)待审核。未新增中间姿势、未接 demo、无 IPA 和设备运行。
