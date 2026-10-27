@@ -2,7 +2,10 @@
   "reviewer": "root",
   "subagentsUsed": false,
   "method": "generated static pose concepts from existing character and geometric guide",
-  "userArtApproval": null,
+  "userArtApproval": {
+    "scope": "static concept A only",
+    "message": "那你按a来做"
+  },
   "concepts": [
     "pose-a-balanced.png",
     "pose-b-braced.png",
@@ -16,5 +19,7 @@
   ],
   "noGameModification": true,
   "noIpaCreated": true,
-  "deviceRun": false
+  "deviceRun": false,
+  "selectedConcept": "A",
+  "selectionRecord": "user-selection.json"
 }

@@ -5,6 +5,7 @@ import ClassroomGameCore
 @main struct Export {
     static func main() throws {
         let out=URL(fileURLWithPath:CommandLine.arguments[1]);try FileManager.default.createDirectory(at:out,withIntermediateDirectories:true)
+        if CommandLine.arguments.contains("--bow-only") { try exportBow(out:out);return }
         var rows:[[String:Any]]=[],requests:[[String:Any]]=[]
         for scenario in ["support","rally","items","revive","combat"] {
             let model=try PartyEncounter(seed:17,sessionID:"review-"+scenario)

@@ -1169,14 +1169,24 @@
       "reviewPath": "Art/Review/Battle/hunting-bow-demo-v1",
       "battleGripRepair": {
         "date": "2026-10-27",
-        "build": 54,
-        "sourceCommit": "50e555778208b2b823d1e7a208d552f3bfeb69e2",
-        "reviewDirectory": "Art/Review/Battle/hunting-bow-grip-r1",
-        "status": "user-rejected-hand-roles-and-stray-pixels",
+        "status": "pose-a-animation-candidate-pending-user-review",
+        "build": null,
+        "reviewDirectory": "Art/Review/Battle/hunting-bow-pose-a-r1",
+        "selectionRecord": "Art/Review/Battle/hunting-bow-pose-concepts-v1/user-selection.json",
         "userArtApproval": null,
         "deviceRun": false,
-        "feedback": "Art/Review/Battle/hunting-bow-pose-concepts-v1/user-rejection.json",
-        "nextArtReview": "Art/Review/Battle/hunting-bow-pose-concepts-v1"
+        "fullXcodeBuild": false,
+        "previousRejectedRepair": {
+          "date": "2026-10-27",
+          "build": 54,
+          "sourceCommit": "50e555778208b2b823d1e7a208d552f3bfeb69e2",
+          "reviewDirectory": "Art/Review/Battle/hunting-bow-grip-r1",
+          "status": "user-rejected-hand-roles-and-stray-pixels",
+          "userArtApproval": null,
+          "deviceRun": false,
+          "feedback": "Art/Review/Battle/hunting-bow-pose-concepts-v1/user-rejection.json",
+          "nextArtReview": "Art/Review/Battle/hunting-bow-pose-concepts-v1"
+        }
       }
     },
     {
