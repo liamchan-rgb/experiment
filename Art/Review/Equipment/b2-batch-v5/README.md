@@ -13,3 +13,7 @@
 可执行 `python3 scripts/build-b2-rune-wrist-r5.py`、`python3 scripts/review-b2-rune-wrist-r5.py` 和 `python3 scripts/verify-b2-rune-wrist-r5.py` 重建和核验；需要 Pillow、NumPy、SciPy。未运行 App、模拟器或实机，未制作 IPA。
 
 候选提交 `daad0934269e9810c65616ad685ade3101ab4013`，资源 revision `1712316d3fc209b10f2a40ff2daac99706de1bee87d2440cf9a68d864ecdc2ef`；同一私有审核页已更新，部署 `appgdep_6adffa9c4e088191a176ea5931fd41d3`。8 个固定提交 HTTPS 资源完整下载并核对字节、MIME 和 GIF 时长，905 个发布路径与提交对象一致。回执见 delivery.json 和 deployment.json。
+
+## 后续用户反馈（2026-10-27）
+
+用户回复“没问题继续下一步工作”，按本轮实际展示范围记录为正左、正右袖腕修正及两组人物行走预览认可，详见 user-approval-profile.json；不能据此把其他六方向、皮甲、两甲战斗预览或 demo 整体标为通过。

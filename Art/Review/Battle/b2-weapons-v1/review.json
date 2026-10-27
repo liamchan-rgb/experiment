@@ -1,0 +1,21 @@
+{
+  "reviewer": "root",
+  "subagentsUsed": false,
+  "status": "new-offline-candidates-awaiting-user-review",
+  "userArtApproval": null,
+  "scope": [
+    "greatSword action scene",
+    "legendaryStaff action scene"
+  ],
+  "actualDecodedGifFramesViewed": {
+    "greatSword": 103,
+    "legendaryStaff": 115
+  },
+  "gifFullSceneAndWholeBodyViewed": true,
+  "mp4SamplesViewedPerAction": 29,
+  "continuousPlaybackVisualClaim": false,
+  "appSimulatorOrDeviceRun": false,
+  "runtimeIntegrated": false,
+  "ipaCreated": false,
+  "resourceRevisionSHA256": "b2db514f0ee2a5a8ebce86ff6e5ad078ae1203603c3527d5a9cbc7ce3410c915"
+}

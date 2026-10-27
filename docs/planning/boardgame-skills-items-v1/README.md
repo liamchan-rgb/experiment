@@ -2,6 +2,10 @@
 
 核对日期：2026-10-25。来源：[classroom-boardgame正式内容表](https://github.com/liamchan-rgb/classroom-boardgame/blob/1e9100c4c18364ea64b3ec974fe957ba4ef42f6f/native/Packages/GameCore/Sources/ClassroomGameCore/Resources/initial-content.json)（main `1e9100c4c18364ea64b3ec974fe957ba4ef42f6f`），并检查战斗分支 `a0427b83d9233f1a83178b3c47d3fab39eed664e`。8个源码分支的内容表Git blob均相同，archive-assets为归档二进制分支；共19技能、18物品、2套装。原始目录快照与校验见本目录JSON。初次核查时只读桌游仓库并保存计划；之后用户已授权执行，最新进展见下段，原桌游仓库保持只读。
 
+## 2026-10-27：B2 重剑与传奇权杖演出候选
+
+用户认可上轮符文甲正左、正右袖腕修正及所展示的两组行走预览，其他方向和其他装备不自动扩大认可。按 B2 计划制作重剑贴近挥击/回位，以及传奇权杖杖头投射两段独立的离线战斗美术候选，含受击高光与落地粒子；见[演出记录](../../../Art/Review/Battle/b2-weapons-v1/README.md)和[批量审核](../../../Art/Review/Equipment/b2-batch-v6/README.md)。两段新演出待用户审核，原四件已通过的素材不变。此批尚未绑定 demo、正式规则、完整背包或存档，B2 不能标为完整。视频为离线 60 帧预览，不等于设备实测帧率。
+
 ## 2026-10-26最新安排：B2剩余六件集中素材审核
 
 用户要求素材尽量一次做完并提供批量审核界面，覆盖下文按件打包的旧执行安排。集中制作重剑、传奇权杖、皮甲、符文甲及两饰品素材候选；四可见件完整104八向绑定/侧向六动作挂载，两饰品复用图标与原信息。审核页和限制见[本批记录](../../../Art/Review/Equipment/b2-batch-v1/README.md)，新认可null。专用权杖施法、原规则装备/属性与完整背包/存档/demo整合随后完成，六件fullCurrentDemoItemIntegration仍false，不算B2完整完成；不扩大到B3—B6。

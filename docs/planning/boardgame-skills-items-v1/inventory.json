@@ -1222,6 +1222,13 @@
           "source": "Art/Review/Equipment/b2-batch-v1/user-approval.json",
           "revision": "d0979a710bd2413811d27ed94e86bcda3422bae823a046405db50b3a26d6e09f"
         }
+      },
+      "weaponActionStudy": {
+        "directory": "Art/Review/Battle/b2-weapons-v1",
+        "status": "candidate-awaiting-user-review",
+        "userArtApproval": null,
+        "runtimeIntegrated": false,
+        "resourceRevisionSHA256": "b2db514f0ee2a5a8ebce86ff6e5ad078ae1203603c3527d5a9cbc7ce3410c915"
       }
     },
     {
@@ -1278,6 +1285,13 @@
           "source": "Art/Review/Equipment/b2-batch-v1/user-approval.json",
           "revision": "d0979a710bd2413811d27ed94e86bcda3422bae823a046405db50b3a26d6e09f"
         }
+      },
+      "weaponActionStudy": {
+        "directory": "Art/Review/Battle/b2-weapons-v1",
+        "status": "candidate-awaiting-user-review",
+        "userArtApproval": null,
+        "runtimeIntegrated": false,
+        "resourceRevisionSHA256": "b2db514f0ee2a5a8ebce86ff6e5ad078ae1203603c3527d5a9cbc7ce3410c915"
       }
     },
     {
@@ -1367,11 +1381,16 @@
       "fullCurrentDemoItemIntegration": false,
       "newArtApproval": null,
       "batchArtReview": {
-        "status": "r4-profile-wrists-needs-changes-r5-awaiting-user-review",
+        "status": "profile-wrist-revision-approved-other-armor-scopes-awaiting-user-review",
         "directory": "Art/Review/Equipment/b2-batch-v5",
         "runtimeIntegrated": false,
         "newArtApproval": null,
-        "feedbackSource": "Art/Review/Equipment/b2-batch-v4/user-feedback-profile-wrists.json"
+        "feedbackSource": "Art/Review/Equipment/b2-batch-v4/user-feedback-profile-wrists.json",
+        "approvedSubscope": {
+          "source": "Art/Review/Equipment/b2-batch-v5/user-approval-profile.json",
+          "revision": "1712316d3fc209b10f2a40ff2daac99706de1bee87d2440cf9a68d864ecdc2ef",
+          "scope": "正左、正右袖腕修正及两组人物行走预览"
+        }
       }
     },
     {

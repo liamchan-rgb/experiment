@@ -1,0 +1,32 @@
+{
+  "initialStatuses": {
+    "greatSword": "已通过",
+    "legendaryStaff": "已通过",
+    "powerBadge": "已通过",
+    "actionRing": "已通过",
+    "leatherArmor": "待审核",
+    "runeArmor": "待审核",
+    "greatSwordAction": "待审核",
+    "legendaryStaffAction": "待审核"
+  },
+  "video": {
+    "width": 800,
+    "height": 480,
+    "duration": 2.4,
+    "paused": false,
+    "time": 1.189115,
+    "hidden": false
+  },
+  "playbackAdvances": true,
+  "scenePinAndReload": true,
+  "switchToEquipmentAndBattle": true,
+  "exportImport": true,
+  "v5MatchingRevisionMigration": true,
+  "newScenesRemainPendingAfterMigration": true,
+  "noHorizontalOverflowAt": [
+    390,
+    1024,
+    1440
+  ],
+  "pageErrors": []
+}
