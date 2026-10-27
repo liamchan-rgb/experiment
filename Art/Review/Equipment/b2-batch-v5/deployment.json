@@ -1,0 +1,9 @@
+{
+  "site": "https://meadow-equipment-review.smokytide.chatgpt.site",
+  "id": "appgdep_6adffa9c4e088191a176ea5931fd41d3",
+  "version_id": "appgprj_6adf5ffe0ee88191a0d7a2ad3a0686b4~appgver_d99ad3eab7848191940102b18b440a85",
+  "status": "succeeded",
+  "sourceCommit": "93fef05771416c79ae90ea91e2b179e8ab180bc6",
+  "siteAudience": "owner-private",
+  "browserQA": "browser-qa/result.json"
+}
