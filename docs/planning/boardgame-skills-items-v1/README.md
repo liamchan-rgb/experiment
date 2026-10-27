@@ -2,6 +2,10 @@
 
 核对日期：2026-10-25。来源：[classroom-boardgame正式内容表](https://github.com/liamchan-rgb/classroom-boardgame/blob/1e9100c4c18364ea64b3ec974fe957ba4ef42f6f/native/Packages/GameCore/Sources/ClassroomGameCore/Resources/initial-content.json)（main `1e9100c4c18364ea64b3ec974fe957ba4ef42f6f`），并检查战斗分支 `a0427b83d9233f1a83178b3c47d3fab39eed664e`。8个源码分支的内容表Git blob均相同，archive-assets为归档二进制分支；共19技能、18物品、2套装。原始目录快照与校验见本目录JSON。初次核查时只读桌游仓库并保存计划；之后用户已授权执行，最新进展见下段，原桌游仓库保持只读。
 
+## 2026-10-27：猎弓持弓返修 build54
+
+用户认可前次展示的重剑和权杖离线演出后，指出旧猎弓手与弓错位。已修复握弓、接弦、搭箭、放弦跟手与放箭起点，并保留猎弓 D8、现有命中时机及背弓步态。设备 Release 构建与包核验通过，正常 GIF 和[审核记录](../../../Art/Review/Battle/hunting-bow-grip-r1/README.md)待用户复审；实机由用户测试。重剑和权杖此前认可仅限已展示的离线演出，尚未表示 demo 集成完成。
+
 ## 2026-10-27：B2 重剑与传奇权杖演出候选
 
 用户认可上轮符文甲正左、正右袖腕修正及所展示的两组行走预览，其他方向和其他装备不自动扩大认可。按 B2 计划制作重剑贴近挥击/回位，以及传奇权杖杖头投射两段独立的离线战斗美术候选，含受击高光与落地粒子；见[演出记录](../../../Art/Review/Battle/b2-weapons-v1/README.md)和[批量审核](../../../Art/Review/Equipment/b2-batch-v6/README.md)。两段新演出待用户审核，原四件已通过的素材不变。此批尚未绑定 demo、正式规则、完整背包或存档，B2 不能标为完整。视频为离线 60 帧预览，不等于设备实测帧率。

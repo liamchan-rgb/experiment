@@ -7,3 +7,9 @@
 本人查看正常速度整身和整场 GIF 的全部实际解码帧（各190帧、20ms），以及六个动作各5个整身姿势和整场关键样本；这不等于设备体验验收。另检查六动作共3606个导出姿势的持弓手与弓柄像素接触，搭箭的103个采样里拉弦手与弦均有接触（见 grip-geometry.json），技术接触不能取代美术审核。GIF 为离线近似合成，并非 App 录屏。
 
 生成数据：`swift run --package-path Vendor/ClassroomGameCore MeadowSupportReviewExport Art/Review/Battle/hunting-bow-grip-r1`；`python3 scripts/review-hunting-bow-grip-r1.py --prepare` 后使用 `scripts/export-smooth-status-review.swift` 和生产光场生成 `dice-light-samples.json`；执行两个 review 脚本生成整身与整场，`python3 scripts/verify-hunting-bow-grip-r1.py` 做像素接触检查。未运行 App、模拟器或实机。
+
+## 构建与核验
+
+源码 `50e555778208b2b823d1e7a208d552f3bfeb69e2`，设备 Release [归档](https://github.com/liamchan-rgb/experiment/actions/runs/40447896365)成功；107 项纯测试和五项独立检查通过。IPA 为 1.6.28/build54，已检查 CRC、经典 ZIP2.0 结构与 iPhoneOS 资源；macOS 与 Linux 导出的3606个弓姿及场景数据逐字段一致。详见 `Media/Build54/package.json`。整身和场景预览使用相同战斗动作数据，视频每秒50帧为离线预览帧率，不是设备实测。
+
+同一私人审核页已更新为猎弓持弓复审，默认整身预览并可切换整场；原四件装备及此前通过的重剑/权杖演出保留，旧反馈按 revision 迁移。审核页浏览器检查和部署记录见 `browser-qa/result.json`、`deployment.json`。

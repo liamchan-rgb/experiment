@@ -1166,7 +1166,16 @@
       "fullCurrentDemoItemIntegration": true,
       "newArtApproval": null,
       "integrationScope": "controlled P1 camp loan/equip/unequip,104bindings/two appearances, shared bow battle rig and real D8 party attack; full inventory/save pending",
-      "reviewPath": "Art/Review/Battle/hunting-bow-demo-v1"
+      "reviewPath": "Art/Review/Battle/hunting-bow-demo-v1",
+      "battleGripRepair": {
+        "date": "2026-10-27",
+        "build": 54,
+        "sourceCommit": "50e555778208b2b823d1e7a208d552f3bfeb69e2",
+        "reviewDirectory": "Art/Review/Battle/hunting-bow-grip-r1",
+        "status": "device-build-passed-user-art-review-pending",
+        "userArtApproval": null,
+        "deviceRun": false
+      }
     },
     {
       "id": "greatSword",
