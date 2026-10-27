@@ -40,7 +40,7 @@ public enum BowRig {
         // These are authored bow sleeves, not rotated cutouts of the sword arm.
         let grip=blend(PartyPoint(163,165),PartyPoint(174,144),aim)
         let angle=mix(0.18,0,aim)
-        let nearShoulder=PartyPoint(129,150)
+        let nearShoulder=PartyPoint(134,155)
         let farShoulder=PartyPoint(136,141)
         func elbow(_ shoulder:PartyPoint,_ hand:PartyPoint,upper:Double=20,fore:Double=19,bend:Double=1)->PartyPoint {
             let dx=hand.x-shoulder.x,dy=hand.y-shoulder.y
@@ -52,7 +52,7 @@ public enum BowRig {
             let el=elbow(nearShoulder,hand,upper:22,fore:34,bend:bend)
             return (atan2(el.y-nearShoulder.y,el.x-nearShoulder.x),atan2(hand.y-el.y,hand.x-el.x))
         }
-        let rest=angles(PartyPoint(142,156),1),reach=angles(PartyPoint(164,134),-1),full=angles(PartyPoint(143,134),-1),after=angles(PartyPoint(140,134),-1)
+        let rest=angles(PartyPoint(147,159),1),reach=angles(PartyPoint(164,138),-1),full=angles(PartyPoint(147,138),-1),after=angles(PartyPoint(144,138),-1)
         let lift=attack ? PartyVisual.smooth(p/0.19):0
         let retire=attack ? PartyVisual.smooth((p-0.65)/0.35):0
         func angleBlend(_ a:Double,_ b:Double,_ t:Double)->Double { a+atan2(sin(b-a),cos(b-a))*t }
@@ -65,7 +65,7 @@ public enum BowRig {
         let ua=joint(rest.0,reach.0,full.0,after.0),fa=joint(rest.1,reach.1,full.1,after.1)
         let nearElbow=PartyPoint(nearShoulder.x+22*cos(ua),nearShoulder.y+22*sin(ua))
         let near=PartyPoint(nearElbow.x+34*cos(fa),nearElbow.y+34*sin(fa))
-        let straight=PartyPoint(grip.x-10+recoil,grip.y-10)
+        let straight=PartyPoint(grip.x-10+recoil,grip.y-6)
         let engaged=attack && p>=0.19 && p<=releaseProgress
         let spring=attack ? PartyVisual.smooth((p-releaseProgress)/0.055):1
         let nock = !attack || p<0.19 ? straight:engaged ? near:blend(near,straight,spring)
@@ -97,7 +97,7 @@ public enum BowRig {
             // Paint one continuous outline, then all fills, so no joint seam.
             strip(group,outer,sh,el,6,6);disc(group,outer,el,6)
             strip(group,outer,el,cuff,6,4.5);disc(group,outer,sh,6)
-            strip(group,base,sh,el,5,5);disc(group,base,el,5)
+            strip(group,far ? base:0x315785,sh,el,5,5);disc(group,base,el,5)
             strip(group,base,el,cuff,5,3.5);disc(group,base,sh,5)
             strip(group,shade,sh,el,1.3,1.3,3.5);strip(group,shade,el,cuff,1,1,3)
             strip(group,light,blend(sh,el,0.35),blend(sh,el,0.80),0.8,0.8,-2.5)
@@ -106,18 +106,40 @@ public enum BowRig {
             strip(group,0xc9b781,blend(cuff,wrist,0.14),wrist,3.7,3.7)
             strip(group,0xf0e4b6,blend(cuff,wrist,0.14),wrist,1.1,1.1,-2)
         }
-        func hand(_ group:String,_ q:PartyPoint,_ holding:Bool) {
-            func poly(_ color:UInt32,_ pairs:[(Double,Double)]) { polygon(group,color,pairs.map { PartyPoint(q.x+$0.0,q.y+$0.1) }) }
-            poly(0x55301e,[(-4,-5),(3,-5),(5,-3),(5,5),(2,7),(-4,5),(-5,1)])
-            poly(0xf3b27b,[(-3,-4),(2,-4),(4,-2),(4,4),(1,5),(-3,4),(-4,0)])
-            poly(0xffcd99,[(-3,-3),(1,-3),(2,-1),(-1,0),(-3,2)])
+        // Hands are different silhouettes. The near drawing hand extends
+        // forward from its cuff and hooks the string at its fingertips; the
+        // far holding hand wraps around the grip.
+        func wrist(_ elbow:PartyPoint,_ contact:PartyPoint,_ length:Double)->PartyPoint {
+            let dx=contact.x-elbow.x,dy=contact.y-elbow.y,l=max(1,hypot(dx,dy))
+            return PartyPoint(contact.x-length*dx/l,contact.y-length*dy/l)
+        }
+        func hand(_ group:String,_ q:PartyPoint,_ elbow:PartyPoint,_ holding:Bool) {
+            let dx=q.x-elbow.x,dy=q.y-elbow.y,l=max(1,hypot(dx,dy)),ux=dx/l,uy=dy/l,nx = -uy,ny=ux
+            func poly(_ color:UInt32,_ pairs:[(Double,Double)]) {
+                polygon(group,color,pairs.map { PartyPoint(q.x+ux*$0.0+nx*$0.1,q.y+uy*$0.0+ny*$0.1) })
+            }
             if holding {
-                poly(0x98502c,[(0,-2),(4,-2),(4,-1),(0,-1)])
-                poly(0xb46c3d,[(0,1),(4,1),(4,2),(0,2)])
-                poly(0xffcf9a,[(-4,-2),(-2,-2),(0,1),(-1,3),(-3,2)])
+                poly(0x55301e,[(-7,-4),(-4,-6),(1,-6),(4,-5),(5,-3),(5,4),(3,6),(-3,6),(-6,4),(-7,1)])
+                poly(0xeea36e,[(-6,-3),(-3,-5),(1,-5),(3,-4),(4,-2),(4,3),(2,5),(-3,5),(-5,3)])
+                // Palm and thumb curl around the rear side of the bow grip.
+                poly(0xffc993,[(-5,-3),(-3,-4),(0,-4),(0,-1),(-2,0),(-2,3),(-4,3),(-5,1)])
+                poly(0xffc993,[(-3,0),(-1,-1),(1,0),(1,2),(-1,3),(-3,2)])
+                // Separate curled fingers on the front of the grip.
+                poly(0x8f4d2c,[(1,-3),(4,-3),(4,-2),(1,-2)])
+                poly(0x9f5932,[(1,0),(4,0),(4,1),(1,1)])
+                poly(0xd47d4b,[(1,3),(4,3),(3,4),(1,4)])
             } else {
-                poly(0xb46c3d,[(1,-2),(4,-2),(4,-1),(1,-1)])
-                poly(0xd58b53,[(1,1),(4,1),(4,2),(1,2)])
+                // q is the nock at the fingertips, not the middle of a fist.
+                poly(0x55301e,[(-14,-3),(-12,-5),(-4,-5),(0,-4),(2,-3),(2,-1),(0,0),(1,2),(-1,4),(-6,5),(-13,4),(-14,2)])
+                poly(0xefaa75,[(-13,-2),(-11,-4),(-4,-4),(0,-3),(1,-2),(0,-1),(-2,0),(0,2),(-2,3),(-6,4),(-12,3),(-13,1)])
+                poly(0xffcc99,[(-12,-2),(-10,-3),(-4,-3),(-2,-2),(-2,-1),(-5,0),(-12,0)])
+                // Two bent fingertips point toward the string, with a thumb
+                // beneath the nock. Short dark pixels suggest the separations.
+                poly(0xffc893,[(-4,-3),(0,-3),(1,-2),(0,-1),(-4,-1)])
+                poly(0xa65e37,[(-3,-1),(0,-1),(0,0),(-3,0)])
+                poly(0xffc28c,[(-4,0),(0,0),(1,1),(0,2),(-4,2)])
+                poly(0xc17a49,[(-5,2),(-2,2),(-2,3),(-5,3)])
+                poly(0xfac08a,[(-11,1),(-7,1),(-3,2),(-4,4),(-9,4),(-12,3)])
             }
         }
         // Reconstruct the cloth concealed by the old sword sleeve. Original
@@ -132,9 +154,9 @@ public enum BowRig {
         polygon("torso",0xf3e6b4,[(140.0,151.0),(141,151),(141,164),(140,164)].map { PartyPoint($0.0,$0.1) })
         polygon("torso",0x244474,[(123.0,157.0),(128,159),(129,161),(124,160)].map { PartyPoint($0.0,$0.1) })
         polygon("torso",0x3e6ba3,[(128.0,154.0),(134,155),(135,157),(130,157)].map { PartyPoint($0.0,$0.1) })
-        sleeve("farArm",farShoulder,farElbow,grip,true)
-        sleeve("nearArm",nearShoulder,nearElbow,near,false)
-        hand("farHand",grip,true);hand("nearHand",near,false)
+        sleeve("farArm",farShoulder,farElbow,wrist(farElbow,grip,5),true)
+        sleeve("nearArm",nearShoulder,nearElbow,wrist(nearElbow,near,13),false)
+        hand("farHand",grip,farElbow,true);hand("nearHand",near,nearElbow,false)
         func limb(_ y:Double)->PartyPoint { let c=cos(angle),s=sin(angle);return body(PartyPoint(grip.x-10*c-y*s,grip.y-10*s+y*c)) }
         return BowRigSample(surfaces:surfaces,parts:parts,upperTip:limb(-36),lowerTip:limb(36),stringHand:body(nock),arrowTail:body(tail),arrowTip:body(PartyPoint(grip.x+30,tail.y)),arrowVisible:attack && p>0.24 && p<releaseProgress,arrowAlpha:PartyVisual.smooth((p-0.24)/0.035))
     }
