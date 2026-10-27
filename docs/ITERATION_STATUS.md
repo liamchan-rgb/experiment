@@ -1,5 +1,9 @@
 # 林间行旅迭代进度 · 2026-10-19
 
+## 2026-10-27 · A 图放箭收手再次加快 r4
+
+用户反馈 r3 仍慢；主线程保留收手姿势顺序，将收手段由 0.64 秒缩短至 0.32 秒，[r4 动图](../Art/Review/Battle/hunting-bow-a-followthrough-r4/README.md)待审核。未新增中间姿势、未接 demo、无 IPA 和设备运行。
+
 ## 2026-10-27 · A 图放箭收手加快 r3
 
 用户要求放手更快、更连贯；主线程统一收手的姿势切换节奏，由 0.96 秒缩短至 0.64 秒，[r3 正常动图](../Art/Review/Battle/hunting-bow-a-followthrough-r3/README.md)待审核。未新增中间姿势、未接 demo、无 IPA 和设备运行；编码帧率并非设备实测帧率。
