@@ -1,6 +1,6 @@
 {
   "date": "2026-10-27",
-  "status": "candidate-pending-user-review",
+  "status": "user-rejected-hand-form-and-arm-continuity",
   "reviewer": "root",
   "subagentsUsed": false,
   "selection": {
@@ -48,5 +48,6 @@
     "Filled missing cloth under original sword sleeve.",
     "Replaced wrist-position blending with fixed-length joint-angle arcs after intermediate limb-length check failed.",
     "Original head composited once above sleeves so raising elbow cannot cover jaw."
-  ]
+  ],
+  "rejection": "user-rejection.json"
 }
