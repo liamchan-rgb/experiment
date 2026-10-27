@@ -1,5 +1,9 @@
 # 林间行旅迭代进度 · 2026-10-19
 
+## 2026-10-27 · 用户明确沿用 A 动作
+
+用户纠正，应直接基于先前选定的 A 动作，未采用另外生成的空手人物；A 为姿势参考，现有非像素草稿弓弦与箭尾的接触仍需解决，见 Art/Review/Battle/hunting-bow-nonpixel-study-v1/user-direction.json。
+
 ## 2026-10-27 · 非像素化猎弓姿势草稿
 
 用户希望先做非像素化原型，确定结构后再像素化。[草稿](../Art/Review/Battle/hunting-bow-nonpixel-study-v1/README.md)的上下弓弦与指尖/箭尾交汇不够清楚，未获认可。图形工具进一步调整弓弦和箭尾时被自动审核以 violence 类别拒绝；未改游戏或打包。
