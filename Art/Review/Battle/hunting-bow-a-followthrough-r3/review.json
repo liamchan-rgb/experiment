@@ -1,0 +1,31 @@
+{
+  "status": "draft_pending_user_review",
+  "feedback": "放手动作快一点，连贯一点",
+  "source": "../hunting-bow-a-followthrough-r2/",
+  "change": "统一收势姿势停留时间，加快从放箭到收势的节奏",
+  "recovery_duration_before_ms": 960,
+  "recovery_duration_after_ms": 640,
+  "recovery_frame_order": [
+    "002",
+    "003",
+    "004",
+    "006",
+    "007",
+    "008",
+    "009",
+    "010",
+    "011"
+  ],
+  "new_inbetweens": false,
+  "gif": {
+    "frames": 54,
+    "frame_duration_ms": 40,
+    "duration_ms": 2160,
+    "loop": "once",
+    "sha256": "d0a79462915adf4d91d3f2a159c02570106495c41f24e87b940dcdb85d71c2e5"
+  },
+  "demo_integrated": false,
+  "ipa_built": false,
+  "device_run": false,
+  "user_approval": null
+}
