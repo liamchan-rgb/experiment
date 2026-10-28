@@ -130,7 +130,8 @@ final class MeadowPartyStageView:UIView {
             guard let before=receipt.before.units[id],let after=receipt.after.units[id],let foot=PartyVisual.feet[id] else { continue }
             let heal=max(0,after.health-before.health),damage=max(0,before.health-after.health),gain=max(0,after.shield-before.shield),absorbed=max(0,before.shield-after.shield)
             let shieldHit=absorbed>0 && id.hasPrefix("p")
-            let point=CGPoint(x:foot.x+(shieldHit ? (5+240*0.41)*PartyVisual.heroScale:(id.hasPrefix("m") ? -80:0)),y:foot.y-(id.hasPrefix("p") ? 65:72))
+            let registered=PartyVisual.hitPoint(target:id,shielded:shieldHit,weaponID:intent.weaponID)
+            let point=intent.weaponID=="greatSword" && id.hasPrefix("m") ? CGPoint(x:registered.x,y:registered.y):CGPoint(x:foot.x+(shieldHit ? (5+240*0.41)*PartyVisual.heroScale:(id.hasPrefix("m") ? -80:0)),y:foot.y-(id.hasPrefix("p") ? 65:72))
             if heal>0 {
                 let shift=intent.actor==id ? PartyVisual.travel(intent,age:sceneTime-startAt):PartyPoint(0,0)
                 if intent.action == .ambush { recovery[id]=sceneTime }
@@ -140,7 +141,7 @@ final class MeadowPartyStageView:UIView {
             if after.damageBuff != before.damageBuff,let b=after.damageBuff { messages.append(.init(text:"伤害 ＋\(b.amount)",point:point,at:sceneTime,color:MeadowPreviewPalette.gold)) }
             if damage>0 || absorbed>0 {
                 hurt[id]=sceneTime
-                let hit=PartyVisual.hitPoint(target:id,shielded:absorbed>0)
+                let hit=PartyVisual.hitPoint(target:id,shielded:absorbed>0,weaponID:intent.weaponID)
                 messages.append(.init(text:damage>0 ? "−\(damage)":"格挡",point:CGPoint(x:hit.x,y:hit.y),at:sceneTime,color:damage>0 ? .white:.systemCyan,atImpact:true))
                 let p=CGPoint(x:point.x,y:point.y)
                 emissions.append(.init(kind:absorbed>0 ? .shieldContact:.strike,startedAt:sceneTime,x:Double(p.x),y:Double(p.y),groundY:foot.y))
@@ -299,8 +300,20 @@ private final class MeadowPartyEffectsView:UIView {
                     ctx.move(to:CGPoint(x:a.x,y:a.y));ctx.addLine(to:CGPoint(x:b.x,y:b.y));ctx.strokePath();ctx.restoreGState()
                 }
             }
+            if intent.weaponID=="greatSword",!intent.enemy,visual=="attack",let from=PartyVisual.feet[intent.actor] {
+                let points=GreatSwordRig.trail(age:age,from:from,to:PartyVisual.hitPoint(target:intent.target,shielded:meetsShield,weaponID:intent.weaponID),scale:PartyVisual.heroScale)
+                if points.count>1 {
+                    let power=PartyVisual.pulse(GreatSwordRig.artTime(age:age),0.86,1.0275,1.20)
+                    ctx.saveGState();ctx.setBlendMode(.plusLighter);ctx.setLineCap(.round)
+                    ctx.setShadow(offset:.zero,blur:7,color:MeadowPreviewPalette.gold.cgColor)
+                    for (width,alpha) in [(10.0,0.22),(4.0,0.70),(1.5,0.95)] {
+                        ctx.setLineWidth(width);ctx.setStrokeColor(MeadowPreviewPalette.ink.withAlphaComponent(CGFloat(power*alpha)).cgColor)
+                        ctx.beginPath();ctx.move(to:CGPoint(x:points[0].x,y:points[0].y));for p in points.dropFirst() { ctx.addLine(to:CGPoint(x:p.x,y:p.y)) };ctx.strokePath()
+                    };ctx.restoreGState()
+                }
+            }
             if visual=="attack",let foot=PartyVisual.feet[intent.target] {
-                let a=age-(intent.enemy ? 0.46:1.048),p=PartyPoint(foot.x+(intent.enemy ? (meetsShield ? (5+240*0.41)*PartyVisual.heroScale:10): -80),foot.y-(intent.enemy ? 65:72))
+                let a=age-(intent.enemy ? 0.46:1.048),p=PartyVisual.hitPoint(target:intent.target,shielded:meetsShield,weaponID:intent.weaponID)
                 let power=PartyVisual.pulse(a,-0.035,0.035,0.52)
                 glow(p,140,140,power*0.48,.orange);glow(foot,170,30,power*0.65,.orange)
                 if a>=0,a<0.7 {

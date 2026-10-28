@@ -19,13 +19,13 @@ for scenario in dict.fromkeys(r['scenario'] for r in rows):
    if kind in ['support','simpleGuard']:forms[target]=time+max(0,hit-.46)
   if prior:
    for uid,u in units.items():
-    old=prior[uid];foot=feet[uid];absorbed=old['shield']-u['shield']
+    old=prior[uid];foot=feet[uid];absorbed=old['shield']-u['shield'];registered=row.get('hitPoints',{}).get(uid) if scenario.startswith('great-sword') and uid.startswith('m') else None
     if u['shield']>old['shield']:births[uid]=time
     if absorbed>0:contacts[uid]=time
     if absorbed>0 and u['shield']==0:breaks[uid]=time
     if u['hp']<old['hp'] or absorbed>0:
-     emit.append({'kind':'shieldContact' if absorbed>0 else 'strike','at':time,'x':foot[0]+((5+240*.41)*hs if absorbed>0 else -80 if uid.startswith('m') else 0),'y':foot[1]-(65 if uid.startswith('p') else 72),'floor':foot[1]})
-    if old['hp']>0 and u['hp']==0:emit.append({'kind':'death','at':time,'x':foot[0]-80,'y':foot[1]-72,'floor':foot[1]})
+     emit.append({'kind':'shieldContact' if absorbed>0 else 'strike','at':time,'x':registered['x'] if registered else foot[0]+((5+240*.41)*hs if absorbed>0 else -80 if uid.startswith('m') else 0),'y':registered['y'] if registered else foot[1]-(65 if uid.startswith('p') else 72),'floor':foot[1]})
+    if old['hp']>0 and u['hp']==0:emit.append({'kind':'death','at':time,'x':registered['x'] if registered else foot[0]-80,'y':registered['y'] if registered else foot[1]-72,'floor':foot[1]})
   for uid in ['p1','p2']:
    r={'kind':scenario+'-'+uid,'frame':row['frame'],'time':time,'shield':units[uid]['shield'],'emitters':[]}
    for key,source in [('recoveryAge',heals),('formation',forms),('birth',births),('contact',contacts),('broken',breaks)]:

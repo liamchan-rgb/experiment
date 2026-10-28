@@ -509,19 +509,25 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
                 self?.scene.selectP1Appearance(index);self?.refreshEquipmentMenu()
             }
         }
-        let sword=UIAction(title:"训练短剑 · 1D6",image:UIImage(named:HeroFrames.weaponVisual("trainingSword")?.iconAsset ?? ""),state:unit.equipment.weapon=="trainingSword" ? .on:.off) { [weak self] _ in self?.equipP1Weapon("trainingSword") }
-        let bow=UIAction(title:"猎弓 · 1D8",image:UIImage(named:HeroFrames.weaponVisual("huntingBow")?.iconAsset ?? ""),state:unit.equipment.weapon=="huntingBow" ? .on:.off) { [weak self] _ in self?.equipP1Weapon("huntingBow") }
+        let weapons=[("trainingSword","训练短剑","1D6"),("huntingBow","猎弓","1D8"),("greatSword","重剑","1D12")]
+        let actions=weapons.map { id,title,formula in
+            UIAction(title:title+" · "+formula,image:UIImage(named:HeroFrames.weaponVisual(id)?.iconAsset ?? ""),state:unit.equipment.weapon==id ? .on:.off) { [weak self] _ in self?.equipP1Weapon(id) }
+        }
         let remove=UIAction(title:"卸下武器",state:unit.equipment.weapon==nil ? .on:.off) { [weak self] _ in self?.equipP1Weapon(nil) }
-        p1AppearanceButton.menu=UIMenu(children:[UIMenu(title:"衣装",children:clothes),UIMenu(title:"武器 · 短剑×\(unit.inventory["trainingSword"] ?? 0) / 猎弓×\(unit.inventory["huntingBow"] ?? 0)",children:[sword,bow,remove])])
-        p1AppearanceButton.configuration?.title=unit.equipment.weapon==nil ? "P1 · 空手":unit.equipment.weapon=="huntingBow" ? "P1 · 猎弓":"P1 · 短剑"
-        p1AppearanceButton.accessibilityValue=unit.equipment.weapon==nil ? "未装备武器":unit.equipment.weapon=="huntingBow" ? "猎弓已装备":"训练短剑已装备"
+        let counts=weapons.map { id,title,_ in title+"×"+String(unit.inventory[id] ?? 0) }.joined(separator:" / ")
+        p1AppearanceButton.menu=UIMenu(children:[UIMenu(title:"衣装",children:clothes),UIMenu(title:"武器 · "+counts,children:actions+[remove])])
+        let title=weapons.first { $0.0==unit.equipment.weapon }?.1 ?? "空手"
+        p1AppearanceButton.configuration?.title="P1 · "+title
+        p1AppearanceButton.accessibilityValue=unit.equipment.weapon==nil ? "未装备武器":title+"已装备"
     }
     private func equipP1Weapon(_ id:String?) {
         guard ready,!battlePreviewActive,let model=equipmentModel else { return }
         if model.units["p1"]?.equipment.weapon==id { return }
         do {
             try model.equip(id);scene.selectP1Weapon(id);refreshEquipmentMenu()
-            discoveryLabel.text=id==nil ? "已卸下武器 · 普通攻击不可用":id=="huntingBow" ? "已装备猎弓 · 普通攻击1D8":"已装备训练短剑 · 普通攻击1D6"
+            if let id,let item=try? model.engine.catalog.item(id),let dice=item.attack?.dice {
+                discoveryLabel.text="已装备"+item.name+" · 普通攻击\(dice.count)D\(dice.sides)"
+            } else { discoveryLabel.text="已卸下武器 · 普通攻击不可用" }
             UIAccessibility.post(notification:.announcement,argument:discoveryLabel.text)
         } catch { discoveryLabel.text=error.localizedDescription }
     }

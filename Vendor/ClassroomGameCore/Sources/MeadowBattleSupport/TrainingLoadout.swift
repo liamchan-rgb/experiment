@@ -11,8 +11,9 @@ public final class TrainingLoadout {
         var p1=try GameFactory.player(id:"p1",name:"P1",classID:"adventurer",teamID:"party",nodeID:0,catalog:catalog)
         let p2=try GameFactory.player(id:"p2",name:"P2",classID:"ranger",teamID:"party",nodeID:0,catalog:catalog)
         let map=GameMap(nodes:[MapNode(id:0,name:"营地",kind:.start)],roads:[],revealed:[0])
-        // One demo loan bow in the camp inventory, no catalog/price changes.
+        // Demo loan weapons in the camp inventory; catalog and prices stay original.
         p1.inventory["huntingBow"]=1
+        p1.inventory["greatSword"]=1
         var state=GameState(units:["p1":p1,"p2":p2],teams:[GameTeam(id:"party",name:"旅人小队")],map:map,random:RandomState(seed:seed))
         state.pauseReasons=[]
         engine=try GameEngine(catalog:catalog,state:state)

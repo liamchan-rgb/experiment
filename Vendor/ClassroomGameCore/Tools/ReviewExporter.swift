@@ -68,7 +68,7 @@ import ClassroomGameCore
                 var units:[[String:Any]]=[]
                 for id in ["p1","p2","m1","m2"] {
                     let u=model.state.units[id]!,pose=PartyVisual.pose(unit:u,intent:current,age:age,time:time,hurtAge:hurt[id].map { time-$0 },blocked:id=="p1" && shielded && hurt[id] != nil)
-                    units.append(["id":id,"name":u.name,"weaponID":u.equipment.weapon as Any? ?? NSNull(),"vitalsVisible":u.kind != .monster || u.isAlive,"hp":u.health,"maxHP":u.baseAttributes.maximumHealth,"shield":u.shield,"ap":u.ap,"buff":u.damageBuff?.amount ?? 0,"buffRounds":u.damageBuff?.roundsLeft ?? 0,"clip":pose.clip,"progress":pose.progress,"deathAge":death[id].map { time-$0 } as Any? ?? NSNull()])
+                    units.append(["id":id,"name":u.name,"weaponID":u.equipment.weapon as Any? ?? NSNull(),"weaponPose":u.equipment.weapon=="greatSword" ? try JSONSerialization.jsonObject(with:JSONEncoder().encode(GreatSwordRig.pose(progress:pose.progress,clip:pose.clip))) : NSNull(),"vitalsVisible":u.kind != .monster || u.isAlive,"hp":u.health,"maxHP":u.baseAttributes.maximumHealth,"shield":u.shield,"ap":u.ap,"buff":u.damageBuff?.amount ?? 0,"buffRounds":u.damageBuff?.roundsLeft ?? 0,"clip":pose.clip,"progress":pose.progress,"deathAge":death[id].map { time-$0 } as Any? ?? NSNull()])
                     if id.hasPrefix("p") {
                         var r:[String:Any]=["kind":scenario+"-"+id,"frame":frame,"time":time,"shield":u.shield,"emitters":[]]
                         if let at=heals[id],u.isAlive { r["recoveryAge"]=time-at }
@@ -98,6 +98,7 @@ import ClassroomGameCore
         try exportDice(out:out)
         try exportPoly(out:out)
         try exportBow(out:out)
+        try exportGreatSword(out:out)
         print("Exported \(rows.count) actual GameCore support/item frames and \(requests.count) attachment samples")
     }
 }
@@ -105,16 +106,16 @@ import ClassroomGameCore
 extension Export {
     static func exportDice(out:URL) throws {
         var rows:[[String:Any]]=[]
-        for scenario in ["attack-buff","support","shield","heal","lethal","ambush","ambush-last","unarmed","bow","bow-heavy","bow-lethal"] {
+        for scenario in ["attack-buff","support","shield","heal","lethal","ambush","ambush-last","unarmed","bow","bow-heavy","bow-lethal","great-sword","great-sword-heavy","great-sword-lethal"] {
             let gear=try TrainingLoadout()
-            if scenario=="unarmed" { try gear.equip(nil) };if scenario.hasPrefix("bow") { try gear.equip("huntingBow") }
-            let p=try PartyEncounter(seed:47,sessionID:"dice-review-"+scenario,loadouts:scenario=="unarmed" || scenario.hasPrefix("bow") ? gear.units:nil)
-            let action:PartyAction=scenario=="bow-heavy" ? .heavyStrike:scenario.hasPrefix("ambush") ? .ambush:["support","unarmed"].contains(scenario) ? .support:scenario=="shield" ? .simpleGuard:scenario=="heal" ? .largePotion:.attack
+            if scenario=="unarmed" { try gear.equip(nil) };if scenario.hasPrefix("bow") { try gear.equip("huntingBow") };if scenario.hasPrefix("great-sword") { try gear.equip("greatSword") }
+            let p=try PartyEncounter(seed:47,sessionID:"dice-review-"+scenario,loadouts:scenario=="unarmed" || scenario.hasPrefix("bow") || scenario.hasPrefix("great-sword") ? gear.units:nil)
+            let action:PartyAction=["bow-heavy","great-sword-heavy"].contains(scenario) ? .heavyStrike:scenario.hasPrefix("ambush") ? .ambush:["support","unarmed"].contains(scenario) ? .support:scenario=="shield" ? .simpleGuard:scenario=="heal" ? .largePotion:.attack
             if scenario=="attack-buff" || scenario=="lethal" || scenario=="ambush-last" {
                 let rally=p.prepare(.rally,target:"p1")!;_ = try p.commit(rally.id)
             }
             if scenario != "support" && scenario != "unarmed" && scenario != "heal" && !scenario.hasPrefix("ambush") { try p.engine.apply(.endTurn(actor:"p2",timedOut:false)) }
-            if scenario=="lethal" || scenario=="bow-lethal" { try p.engine.apply(.editResources(unit:"m1",value:ResourcePatch(health:3))) }
+            if scenario=="lethal" || scenario=="bow-lethal" || scenario=="great-sword-lethal" { try p.engine.apply(.editResources(unit:"m1",value:ResourcePatch(health:3))) }
             if scenario=="ambush-last" {
                 try p.engine.apply(.editResources(unit:"m2",value:ResourcePatch(health:0)))
                 try p.engine.apply(.editResources(unit:"m1",value:ResourcePatch(health:3)))
@@ -145,7 +146,7 @@ extension Export {
                         for id in ["p1","p2","m1","m2"] {
                             let damage=max(0,r.before.units[id]!.health-r.after.units[id]!.health),absorbed=max(0,r.before.units[id]!.shield-r.after.units[id]!.shield)
                             if damage>0 || absorbed>0 {
-                                hurt[id]=time;let point=PartyVisual.hitPoint(target:id,shielded:absorbed>0)
+                                hurt[id]=time;let point=PartyVisual.hitPoint(target:id,shielded:absorbed>0,weaponID:i.weaponID)
                                 damageLabels.append(["text":damage>0 ? "−\(damage)":"格挡","x":point.x,"y":point.y,"at":time])
                             }
                             if r.before.units[id]!.isAlive && !r.after.units[id]!.isAlive { death[id]=time }
@@ -158,7 +159,7 @@ extension Export {
                 for id in ["p1","p2","m1","m2"] {
                     let u=p.state.units[id]!,pose=PartyVisual.pose(unit:u,intent:showing,age:age,time:time,hurtAge:hurt[id].map { time-$0 },blocked:u.shield>0)
                     let monster=PartyVisual.monster(time:time+(id=="m2" ? 0.7:0),attackAge:showing?.actor==id ? age:nil,hurtAge:hurt[id].map { time-$0 },preparing:p.current==id && showing==nil)
-                    units.append(["id":id,"weaponID":u.equipment.weapon as Any? ?? NSNull(),"vitalsVisible":u.kind != .monster || u.isAlive,"hp":u.health,"maxHP":u.baseAttributes.maximumHealth,"shield":u.shield,"ap":u.ap,"buff":u.damageBuff?.amount ?? 0,"clip":pose.clip,"progress":pose.progress,"monster":try JSONSerialization.jsonObject(with:JSONEncoder().encode(monster)),"deathAge":death[id].map { time-$0 } as Any? ?? NSNull()])
+                    units.append(["id":id,"weaponID":u.equipment.weapon as Any? ?? NSNull(),"weaponPose":u.equipment.weapon=="greatSword" ? try JSONSerialization.jsonObject(with:JSONEncoder().encode(GreatSwordRig.pose(progress:pose.progress,clip:pose.clip))) : NSNull(),"vitalsVisible":u.kind != .monster || u.isAlive,"hp":u.health,"maxHP":u.baseAttributes.maximumHealth,"shield":u.shield,"ap":u.ap,"buff":u.damageBuff?.amount ?? 0,"clip":pose.clip,"progress":pose.progress,"monster":try JSONSerialization.jsonObject(with:JSONEncoder().encode(monster)),"deathAge":death[id].map { time-$0 } as Any? ?? NSNull()])
                 }
                 let bowProjectile=showing.flatMap { i -> BowProjectile? in
                     guard i.ranged,let f=PartyVisual.feet[i.actor] else { return nil }
@@ -169,7 +170,7 @@ extension Export {
                 let hover=time<1
                 let initial=BattleDice.darkness(action)
                 let dim=hover ? initial*PartyVisual.smooth(time/0.28):showing != nil ? (initial+(max(initial,activeAction.isOffensive ? 0.58:0.32)-initial)*PartyVisual.smooth(age/0.4))*(1-PartyVisual.smooth((age-1.2)/0.6)):0
-                rows.append(["scenario":scenario,"frame":frame,"time":time,"damageLabels":damageLabels.filter { time-($0["at"] as! Double)<1 },"ranged":showing?.ranged ?? false,"projectile":bowProjectile.map { try! JSONSerialization.jsonObject(with:JSONEncoder().encode($0)) } as Any? ?? NSNull(),"locked":!hover,"confirmationAge":hover ? NSNull():age,"hover":hover,"darkness":dim,"actor":dieActor,"target":dieTarget,"action":activeAction.rawValue,"age":age,"playing":showing != nil,"enemy":showing?.enemy ?? false,"impact":hitAt as Any? ?? NSNull(),"afterimages":try JSONSerialization.jsonObject(with:JSONEncoder().encode(PartyVisual.afterimages(showing,age:age))),"ambushSlashes":try JSONSerialization.jsonObject(with:JSONEncoder().encode(activeAction == .ambush ? PartyVisual.ambushSlashes(age:age,at:PartyPoint(PartyVisual.feet[dieTarget]!.x-80,PartyVisual.feet[dieTarget]!.y-72)):[])),"receiptDice":try JSONSerialization.jsonObject(with:JSONEncoder().encode(receipt?.dice ?? [])),"dice":try JSONSerialization.jsonObject(with:JSONEncoder().encode(dice)),"diceAnchor":try JSONSerialization.jsonObject(with:JSONEncoder().encode(PartyVisual.diceAnchor(actor:dieActor,intent:showing,age:age,shielded:dieTargetUnit.shield>0,diceCount:dice.count))),"poly":try JSONSerialization.jsonObject(with:JSONEncoder().encode(dice.enumerated().map { index,die in PolyhedralDice.sample(die:die,time:time,index:index,count:dice.count,resolvedAge:hitAt.map { time-$0 },visibleAge:frame>=190 && scenario=="attack-buff" ? time-3.8:time,locked:!hover,confirmationAge:hover ? nil:age) })),"dicePose":try JSONSerialization.jsonObject(with:JSONEncoder().encode(diePose)),"travel":try JSONSerialization.jsonObject(with:JSONEncoder().encode(travel)),"current":(showing?.actor ?? p.current) as Any? ?? NSNull(),"acted":Array(p.state.battle?.acted ?? []),"units":units])
+                rows.append(["scenario":scenario,"frame":frame,"time":time,"hitPoints":try JSONSerialization.jsonObject(with:JSONEncoder().encode(Dictionary(uniqueKeysWithValues:["p1","p2","m1","m2"].map { ($0,PartyVisual.hitPoint(target:$0,weaponID:showing?.weaponID)) }))),"damageLabels":damageLabels.filter { time-($0["at"] as! Double)<1 },"ranged":showing?.ranged ?? false,"weaponTrail":try JSONSerialization.jsonObject(with:JSONEncoder().encode(showing.flatMap { i in i.weaponID=="greatSword" && !i.enemy && i.action.visual=="attack" ? GreatSwordRig.trail(age:age,from:PartyVisual.feet[i.actor]!,to:PartyVisual.hitPoint(target:i.target,shielded:dieTargetUnit.shield>0,weaponID:i.weaponID),scale:PartyVisual.heroScale):nil } ?? [])),"projectile":bowProjectile.map { try! JSONSerialization.jsonObject(with:JSONEncoder().encode($0)) } as Any? ?? NSNull(),"locked":!hover,"confirmationAge":hover ? NSNull():age,"hover":hover,"darkness":dim,"actor":dieActor,"target":dieTarget,"action":activeAction.rawValue,"age":age,"playing":showing != nil,"enemy":showing?.enemy ?? false,"impact":hitAt as Any? ?? NSNull(),"afterimages":try JSONSerialization.jsonObject(with:JSONEncoder().encode(PartyVisual.afterimages(showing,age:age))),"ambushSlashes":try JSONSerialization.jsonObject(with:JSONEncoder().encode(activeAction == .ambush ? PartyVisual.ambushSlashes(age:age,at:PartyPoint(PartyVisual.feet[dieTarget]!.x-80,PartyVisual.feet[dieTarget]!.y-72)):[])),"receiptDice":try JSONSerialization.jsonObject(with:JSONEncoder().encode(receipt?.dice ?? [])),"dice":try JSONSerialization.jsonObject(with:JSONEncoder().encode(dice)),"diceAnchor":try JSONSerialization.jsonObject(with:JSONEncoder().encode(PartyVisual.diceAnchor(actor:dieActor,intent:showing,age:age,shielded:dieTargetUnit.shield>0,diceCount:dice.count))),"poly":try JSONSerialization.jsonObject(with:JSONEncoder().encode(dice.enumerated().map { index,die in PolyhedralDice.sample(die:die,time:time,index:index,count:dice.count,resolvedAge:hitAt.map { time-$0 },visibleAge:frame>=190 && scenario=="attack-buff" ? time-3.8:time,locked:!hover,confirmationAge:hover ? nil:age) })),"dicePose":try JSONSerialization.jsonObject(with:JSONEncoder().encode(diePose)),"travel":try JSONSerialization.jsonObject(with:JSONEncoder().encode(travel)),"current":(showing?.actor ?? p.current) as Any? ?? NSNull(),"acted":Array(p.state.battle?.acted ?? []),"units":units])
             }
         }
         try JSONSerialization.data(withJSONObject:rows,options:[.sortedKeys]).write(to:out.appendingPathComponent("dice-frames.json"))
@@ -238,5 +239,24 @@ extension Export {
         }
         try JSONSerialization.data(withJSONObject:rows,options:[.sortedKeys]).write(to:out.appendingPathComponent("bow-poses.json"))
         print("Exported \(rows.count) shared bow/arm/string poses")
+    }
+}
+
+
+extension Export {
+    static func exportGreatSword(out:URL) throws {
+        let poses=["idle","attack","guard","hit","victory","defeat"].flatMap { clip in (0...600).map { i -> [String:Any] in
+            let p=Double(i)/600
+            return ["clip":clip,"progress":p,"sample":try! JSONSerialization.jsonObject(with:JSONEncoder().encode(GreatSwordRig.pose(progress:p,clip:clip)))]
+        } }
+
+        try JSONSerialization.data(withJSONObject:poses,options:[.sortedKeys]).write(to:out.appendingPathComponent("great-sword-poses.json"))
+        let clock=(0...200).map { i -> [String:Any] in
+            let age=Double(i)/100
+            let target=PartyVisual.hitPoint(target:"m1",weaponID:"greatSword"),from=PartyVisual.feet["p1"]!
+            return ["age":age,"progress":GreatSwordRig.progress(age:age),"tip":try! JSONSerialization.jsonObject(with:JSONEncoder().encode(GreatSwordRig.tip(progress:GreatSwordRig.progress(age:age)))),"travel":try! JSONSerialization.jsonObject(with:JSONEncoder().encode(GreatSwordRig.travel(age:age,from:from,to:target,scale:PartyVisual.heroScale)))]
+        }
+        try JSONSerialization.data(withJSONObject:clock,options:[.sortedKeys]).write(to:out.appendingPathComponent("great-sword-clock.json"))
+        print("Exported3606 shared heavy-sword poses and201 contact-clock samples")
     }
 }
