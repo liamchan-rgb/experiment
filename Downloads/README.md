@@ -1,3 +1,9 @@
+## build61 · 皮甲／符文甲装备与战斗挂载 · 1.6.35
+
+[直接下载 MeadowJourney-b61.ipa](MeadowJourney-b61.ipa) · [正常动图／站姿](../Art/Review/Battle/armor-demo-v1/README.md) · [包校验](MeadowJourney-build61.json)
+
+营地P1→护甲切换皮甲／符文甲／原衣装。八向行走、四武器战斗挂载、原生命上限＋4／＋8；穿戴不回血、卸下截断。132纯测试／五旧检查、Intel Release 40742600629、九组导出和包校验通过。48,929,910字节，SHA256 `f63797f5ebb4abc9c213b4189f99121c427fa136087dca5970529656134300fe`。美术由主线程审核，安装与实机运行由用户测试。
+
 ## build60 · 权杖首帧与腿部遮挡修正 · 1.6.34
 
 [直接下载 MeadowJourney-b60.ipa](MeadowJourney-b60.ipa) · [正常动图/首帧对照/站姿](../Art/Review/Battle/legendary-staff-layering-r1/README.md) · [包校验](MeadowJourney-build60.json)
