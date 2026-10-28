@@ -1,0 +1,46 @@
+{
+  "baseline": "Art/Parts/P1-Battle/hunting-bow-aim-project-r7",
+  "baselinePoseSHA256": "748a73150725c38ca6f9c12263d126ae952f7e07e88340b05a3ba68ac8dacae3",
+  "baselineCompositeSHA256": "f8271d3916d83eea3b8c83501a120b3429eb215b33d9a9d0aae4c060d7b4dbb6",
+  "sharedLayers": {
+    "torso": "torso.png",
+    "bodyCore": "body-core-clean.png",
+    "farHand": "grip-hand.png"
+  },
+  "nearHandVariants": [
+    "drawing-hand-held.png",
+    "drawing-hand-open.png",
+    "drawing-hand-relaxed.png"
+  ],
+  "nearHandDrawBounds": [
+    -14,
+    -6,
+    16,
+    12
+  ],
+  "farHandDrawBounds": [
+    -8,
+    -6,
+    14,
+    12
+  ],
+  "layerOrder": [
+    "farArm",
+    "nearUpperArm",
+    "torso",
+    "nearShoulderUpper",
+    "nearForeArm",
+    "head",
+    "hair",
+    "face",
+    "bow",
+    "stringAndArrow",
+    "farHand",
+    "nearHand"
+  ],
+  "sourceClothingCleanup": "same legacy waist fragment masks as r7; neutral undershirt pixels completely hidden by the baseline drawing palm removed for recovery exposure",
+  "script": "scripts/author-bow-followthrough-r7-v2.py",
+  "imageGenerationUsed": false,
+  "runtimeImported": false,
+  "userApproved": false
+}

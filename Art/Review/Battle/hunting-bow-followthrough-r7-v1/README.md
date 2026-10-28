@@ -1,5 +1,7 @@
 # r7 后续动作 · 放箭 → 收手 → 放低弓
 
+**用户已指出 v1 收手时右侧肩部与大臂缺失，本版不能当作美术通过。修正版见 hunting-bow-followthrough-r7-v2。**
+
 [正常速度 GIF，单次播放](bow-release-normal.gif) · [整身关键帧总览](keyframes.png) · [原生分层帧及坐标](../../../Parts/P1-Battle/hunting-bow-followthrough-r7-v1/README.md)。首次打开播放到停稳；重开动图链接可重播。
 
 以用户选定的 r7 为首帧，首个原生合成逐字节一致；85 个原生 20ms 采样帧、总计 1.70 秒。GIF 全局调色板编码，实际 43 个解码画面（停留合并），总时长保持。它是离线正常速度美术合成，编码速率不是实机测得帧率。
