@@ -1,3 +1,11 @@
+## build58 · 重剑动作与装备切换 · 1.6.32
+
+[直接下载 MeadowJourney-b58.ipa](MeadowJourney-b58.ipa) · [正常整身/战斗/状态/站姿](../Art/Review/Battle/great-sword-demo-v1/README.md) · [八向背负](../Art/Review/P1/great-sword-demo-v1/README.md) · [包校验](MeadowJourney-build58.json)
+
+营地P1武器菜单选择重剑，进入林地战斗；小队先结束P2行动再操作P1，可用原规则1D12普攻和原1D6+2强击。短跳贴近、握点挥击、接触停顿、回跳复位、宽剑不遮脸；两衣装完整八向背负及短剑/猎弓/重剑切换。旧单人仍固定5伤演练，本轮不虚称迁移正式规则。
+
+36,838,157字节，SHA256 `d82ac2d6da8fa5ec8980c64532ee320919b154843d08f56c2b4a45eb5f2dabe3`。120纯测试、五旧检查、设备Release 40684811523、七组Mac/Linux数据及资源/经典ZIP2.0/CRC校验通过。未运行App/模拟器/实机，由用户安装验收。
+
 ## build57 · 猎弓完整状态动作 · 1.6.31
 
 [直接下载 MeadowJourney-b57.ipa](MeadowJourney-b57.ipa) · [正常速度新动作/射击/战斗/站姿](../Art/Review/Battle/bow-actions-r7-demo-v1/README.md) · [包校验](MeadowJourney-build57.json)
