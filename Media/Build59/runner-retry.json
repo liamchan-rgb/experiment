@@ -1,0 +1,10 @@
+{
+  "firstRun": 40708585095,
+  "failure": "Hosted runner not acquired after multiple attempts",
+  "annotation": "Due to capacity constraints, jobs targeting macOS arm64 runners may experience longer queue times.",
+  "alternateRun": 40709515448,
+  "oldMediaSource": "5da456a15ab8e8489fb51385063b92542392ff16",
+  "retryRunner": "macos-15-intel",
+  "officialLabelSource": "https://github.com/actions/runner-images/blob/main/README.md",
+  "runtimeArtOrRulesChanged": false
+}

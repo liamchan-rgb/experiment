@@ -11,7 +11,7 @@ on:
         description: 'Hosted macOS runner for the focused build (alternate pool if queued)'
         required: false
         type: choice
-        options: [macos-15, macos-14]
+        options: [macos-15, macos-15-intel, macos-14]
         default: macos-15
       quick_lab:
         description: 'Build IPA and optionally run focused iPad map, contour, gait and interaction checks'
