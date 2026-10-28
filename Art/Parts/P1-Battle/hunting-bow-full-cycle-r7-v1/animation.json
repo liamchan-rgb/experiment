@@ -1,0 +1,2637 @@
+{
+  "frameDurationMs": 20,
+  "durationMs": 2860,
+  "releaseSeconds": 1.34,
+  "newPreparationFrames": 58,
+  "approvedFollowthroughFrames": 85,
+  "playback": "once",
+  "frames": [
+    {
+      "frame": 0,
+      "time": 0.0,
+      "phase": "ready",
+      "pose": "frames/000/pose.json",
+      "nearSleeve": "frames/000/nearSleeveConnected.png",
+      "handVariant": "relaxed",
+      "projectile": null
+    },
+    {
+      "frame": 1,
+      "time": 0.02,
+      "phase": "ready",
+      "pose": "frames/001/pose.json",
+      "nearSleeve": "frames/001/nearSleeveConnected.png",
+      "handVariant": "relaxed",
+      "projectile": null
+    },
+    {
+      "frame": 2,
+      "time": 0.04,
+      "phase": "ready",
+      "pose": "frames/002/pose.json",
+      "nearSleeve": "frames/002/nearSleeveConnected.png",
+      "handVariant": "relaxed",
+      "projectile": null
+    },
+    {
+      "frame": 3,
+      "time": 0.06,
+      "phase": "ready",
+      "pose": "frames/003/pose.json",
+      "nearSleeve": "frames/003/nearSleeveConnected.png",
+      "handVariant": "relaxed",
+      "projectile": null
+    },
+    {
+      "frame": 4,
+      "time": 0.08,
+      "phase": "ready",
+      "pose": "frames/004/pose.json",
+      "nearSleeve": "frames/004/nearSleeveConnected.png",
+      "handVariant": "relaxed",
+      "projectile": null
+    },
+    {
+      "frame": 5,
+      "time": 0.1,
+      "phase": "ready",
+      "pose": "frames/005/pose.json",
+      "nearSleeve": "frames/005/nearSleeveConnected.png",
+      "handVariant": "relaxed",
+      "projectile": null
+    },
+    {
+      "frame": 6,
+      "time": 0.12,
+      "phase": "ready",
+      "pose": "frames/006/pose.json",
+      "nearSleeve": "frames/006/nearSleeveConnected.png",
+      "handVariant": "relaxed",
+      "projectile": null
+    },
+    {
+      "frame": 7,
+      "time": 0.14,
+      "phase": "ready",
+      "pose": "frames/007/pose.json",
+      "nearSleeve": "frames/007/nearSleeveConnected.png",
+      "handVariant": "relaxed",
+      "projectile": null
+    },
+    {
+      "frame": 8,
+      "time": 0.16,
+      "phase": "ready",
+      "pose": "frames/008/pose.json",
+      "nearSleeve": "frames/008/nearSleeveConnected.png",
+      "handVariant": "relaxed",
+      "projectile": null
+    },
+    {
+      "frame": 9,
+      "time": 0.18,
+      "phase": "ready",
+      "pose": "frames/009/pose.json",
+      "nearSleeve": "frames/009/nearSleeveConnected.png",
+      "handVariant": "relaxed",
+      "projectile": null
+    },
+    {
+      "frame": 10,
+      "time": 0.2,
+      "phase": "ready",
+      "pose": "frames/010/pose.json",
+      "nearSleeve": "frames/010/nearSleeveConnected.png",
+      "handVariant": "relaxed",
+      "projectile": null
+    },
+    {
+      "frame": 11,
+      "time": 0.22,
+      "phase": "ready",
+      "pose": "frames/011/pose.json",
+      "nearSleeve": "frames/011/nearSleeveConnected.png",
+      "handVariant": "relaxed",
+      "projectile": null
+    },
+    {
+      "frame": 12,
+      "time": 0.24,
+      "phase": "ready",
+      "pose": "frames/012/pose.json",
+      "nearSleeve": "frames/012/nearSleeveConnected.png",
+      "handVariant": "relaxed",
+      "projectile": null
+    },
+    {
+      "frame": 13,
+      "time": 0.26,
+      "phase": "ready",
+      "pose": "frames/013/pose.json",
+      "nearSleeve": "frames/013/nearSleeveConnected.png",
+      "handVariant": "relaxed",
+      "projectile": null
+    },
+    {
+      "frame": 14,
+      "time": 0.28,
+      "phase": "nock",
+      "pose": "frames/014/pose.json",
+      "nearSleeve": "frames/014/nearSleeveConnected.png",
+      "handVariant": "relaxed",
+      "projectile": null
+    },
+    {
+      "frame": 15,
+      "time": 0.3,
+      "phase": "nock",
+      "pose": "frames/015/pose.json",
+      "nearSleeve": "frames/015/nearSleeveConnected.png",
+      "handVariant": "held",
+      "projectile": null
+    },
+    {
+      "frame": 16,
+      "time": 0.32,
+      "phase": "nock",
+      "pose": "frames/016/pose.json",
+      "nearSleeve": "frames/016/nearSleeveConnected.png",
+      "handVariant": "held",
+      "projectile": null
+    },
+    {
+      "frame": 17,
+      "time": 0.34,
+      "phase": "nock",
+      "pose": "frames/017/pose.json",
+      "nearSleeve": "frames/017/nearSleeveConnected.png",
+      "handVariant": "held",
+      "projectile": null
+    },
+    {
+      "frame": 18,
+      "time": 0.36,
+      "phase": "nock",
+      "pose": "frames/018/pose.json",
+      "nearSleeve": "frames/018/nearSleeveConnected.png",
+      "handVariant": "held",
+      "projectile": null
+    },
+    {
+      "frame": 19,
+      "time": 0.38,
+      "phase": "nock",
+      "pose": "frames/019/pose.json",
+      "nearSleeve": "frames/019/nearSleeveConnected.png",
+      "handVariant": "held",
+      "projectile": null
+    },
+    {
+      "frame": 20,
+      "time": 0.4,
+      "phase": "nock",
+      "pose": "frames/020/pose.json",
+      "nearSleeve": "frames/020/nearSleeveConnected.png",
+      "handVariant": "held",
+      "projectile": null
+    },
+    {
+      "frame": 21,
+      "time": 0.42,
+      "phase": "nock",
+      "pose": "frames/021/pose.json",
+      "nearSleeve": "frames/021/nearSleeveConnected.png",
+      "handVariant": "held",
+      "projectile": null
+    },
+    {
+      "frame": 22,
+      "time": 0.44,
+      "phase": "nock",
+      "pose": "frames/022/pose.json",
+      "nearSleeve": "frames/022/nearSleeveConnected.png",
+      "handVariant": "held",
+      "projectile": null
+    },
+    {
+      "frame": 23,
+      "time": 0.46,
+      "phase": "nock",
+      "pose": "frames/023/pose.json",
+      "nearSleeve": "frames/023/nearSleeveConnected.png",
+      "handVariant": "held",
+      "projectile": null
+    },
+    {
+      "frame": 24,
+      "time": 0.48,
+      "phase": "nock",
+      "pose": "frames/024/pose.json",
+      "nearSleeve": "frames/024/nearSleeveConnected.png",
+      "handVariant": "held",
+      "projectile": null
+    },
+    {
+      "frame": 25,
+      "time": 0.5,
+      "phase": "nock",
+      "pose": "frames/025/pose.json",
+      "nearSleeve": "frames/025/nearSleeveConnected.png",
+      "handVariant": "held",
+      "projectile": null
+    },
+    {
+      "frame": 26,
+      "time": 0.52,
+      "phase": "nock",
+      "pose": "frames/026/pose.json",
+      "nearSleeve": "frames/026/nearSleeveConnected.png",
+      "handVariant": "held",
+      "projectile": null
+    },
+    {
+      "frame": 27,
+      "time": 0.54,
+      "phase": "nock",
+      "pose": "frames/027/pose.json",
+      "nearSleeve": "frames/027/nearSleeveConnected.png",
+      "handVariant": "held",
+      "projectile": null
+    },
+    {
+      "frame": 28,
+      "time": 0.56,
+      "phase": "nock",
+      "pose": "frames/028/pose.json",
+      "nearSleeve": "frames/028/nearSleeveConnected.png",
+      "handVariant": "held",
+      "projectile": null
+    },
+    {
+      "frame": 29,
+      "time": 0.58,
+      "phase": "nock",
+      "pose": "frames/029/pose.json",
+      "nearSleeve": "frames/029/nearSleeveConnected.png",
+      "handVariant": "held",
+      "projectile": null
+    },
+    {
+      "frame": 30,
+      "time": 0.6,
+      "phase": "nock",
+      "pose": "frames/030/pose.json",
+      "nearSleeve": "frames/030/nearSleeveConnected.png",
+      "handVariant": "held",
+      "projectile": null
+    },
+    {
+      "frame": 31,
+      "time": 0.62,
+      "phase": "nock",
+      "pose": "frames/031/pose.json",
+      "nearSleeve": "frames/031/nearSleeveConnected.png",
+      "handVariant": "held",
+      "projectile": null
+    },
+    {
+      "frame": 32,
+      "time": 0.64,
+      "phase": "nock",
+      "pose": "frames/032/pose.json",
+      "nearSleeve": "frames/032/nearSleeveConnected.png",
+      "handVariant": "held",
+      "projectile": null
+    },
+    {
+      "frame": 33,
+      "time": 0.66,
+      "phase": "nock",
+      "pose": "frames/033/pose.json",
+      "nearSleeve": "frames/033/nearSleeveConnected.png",
+      "handVariant": "held",
+      "projectile": null
+    },
+    {
+      "frame": 34,
+      "time": 0.68,
+      "phase": "nock",
+      "pose": "frames/034/pose.json",
+      "nearSleeve": "frames/034/nearSleeveConnected.png",
+      "handVariant": "held",
+      "projectile": null
+    },
+    {
+      "frame": 35,
+      "time": 0.7,
+      "phase": "nock",
+      "pose": "frames/035/pose.json",
+      "nearSleeve": "frames/035/nearSleeveConnected.png",
+      "handVariant": "held",
+      "projectile": null
+    },
+    {
+      "frame": 36,
+      "time": 0.72,
+      "phase": "nock",
+      "pose": "frames/036/pose.json",
+      "nearSleeve": "frames/036/nearSleeveConnected.png",
+      "handVariant": "held",
+      "projectile": null
+    },
+    {
+      "frame": 37,
+      "time": 0.74,
+      "phase": "nock",
+      "pose": "frames/037/pose.json",
+      "nearSleeve": "frames/037/nearSleeveConnected.png",
+      "handVariant": "held",
+      "projectile": null
+    },
+    {
+      "frame": 38,
+      "time": 0.76,
+      "phase": "draw",
+      "pose": "frames/038/pose.json",
+      "nearSleeve": "frames/038/nearSleeveConnected.png",
+      "handVariant": "held",
+      "projectile": null
+    },
+    {
+      "frame": 39,
+      "time": 0.78,
+      "phase": "draw",
+      "pose": "frames/039/pose.json",
+      "nearSleeve": "frames/039/nearSleeveConnected.png",
+      "handVariant": "held",
+      "projectile": null
+    },
+    {
+      "frame": 40,
+      "time": 0.8,
+      "phase": "draw",
+      "pose": "frames/040/pose.json",
+      "nearSleeve": "frames/040/nearSleeveConnected.png",
+      "handVariant": "held",
+      "projectile": null
+    },
+    {
+      "frame": 41,
+      "time": 0.82,
+      "phase": "draw",
+      "pose": "frames/041/pose.json",
+      "nearSleeve": "frames/041/nearSleeveConnected.png",
+      "handVariant": "held",
+      "projectile": null
+    },
+    {
+      "frame": 42,
+      "time": 0.84,
+      "phase": "draw",
+      "pose": "frames/042/pose.json",
+      "nearSleeve": "frames/042/nearSleeveConnected.png",
+      "handVariant": "held",
+      "projectile": null
+    },
+    {
+      "frame": 43,
+      "time": 0.86,
+      "phase": "draw",
+      "pose": "frames/043/pose.json",
+      "nearSleeve": "frames/043/nearSleeveConnected.png",
+      "handVariant": "held",
+      "projectile": null
+    },
+    {
+      "frame": 44,
+      "time": 0.88,
+      "phase": "draw",
+      "pose": "frames/044/pose.json",
+      "nearSleeve": "frames/044/nearSleeveConnected.png",
+      "handVariant": "held",
+      "projectile": null
+    },
+    {
+      "frame": 45,
+      "time": 0.9,
+      "phase": "draw",
+      "pose": "frames/045/pose.json",
+      "nearSleeve": "frames/045/nearSleeveConnected.png",
+      "handVariant": "held",
+      "projectile": null
+    },
+    {
+      "frame": 46,
+      "time": 0.92,
+      "phase": "draw",
+      "pose": "frames/046/pose.json",
+      "nearSleeve": "frames/046/nearSleeveConnected.png",
+      "handVariant": "held",
+      "projectile": null
+    },
+    {
+      "frame": 47,
+      "time": 0.94,
+      "phase": "draw",
+      "pose": "frames/047/pose.json",
+      "nearSleeve": "frames/047/nearSleeveConnected.png",
+      "handVariant": "held",
+      "projectile": null
+    },
+    {
+      "frame": 48,
+      "time": 0.96,
+      "phase": "draw",
+      "pose": "frames/048/pose.json",
+      "nearSleeve": "frames/048/nearSleeveConnected.png",
+      "handVariant": "held",
+      "projectile": null
+    },
+    {
+      "frame": 49,
+      "time": 0.98,
+      "phase": "draw",
+      "pose": "frames/049/pose.json",
+      "nearSleeve": "frames/049/nearSleeveConnected.png",
+      "handVariant": "held",
+      "projectile": null
+    },
+    {
+      "frame": 50,
+      "time": 1.0,
+      "phase": "draw",
+      "pose": "frames/050/pose.json",
+      "nearSleeve": "frames/050/nearSleeveConnected.png",
+      "handVariant": "held",
+      "projectile": null
+    },
+    {
+      "frame": 51,
+      "time": 1.02,
+      "phase": "draw",
+      "pose": "frames/051/pose.json",
+      "nearSleeve": "frames/051/nearSleeveConnected.png",
+      "handVariant": "held",
+      "projectile": null
+    },
+    {
+      "frame": 52,
+      "time": 1.04,
+      "phase": "draw",
+      "pose": "frames/052/pose.json",
+      "nearSleeve": "frames/052/nearSleeveConnected.png",
+      "handVariant": "held",
+      "projectile": null
+    },
+    {
+      "frame": 53,
+      "time": 1.06,
+      "phase": "draw",
+      "pose": "frames/053/pose.json",
+      "nearSleeve": "frames/053/nearSleeveConnected.png",
+      "handVariant": "held",
+      "projectile": null
+    },
+    {
+      "frame": 54,
+      "time": 1.08,
+      "phase": "draw",
+      "pose": "frames/054/pose.json",
+      "nearSleeve": "frames/054/nearSleeveConnected.png",
+      "handVariant": "held",
+      "projectile": null
+    },
+    {
+      "frame": 55,
+      "time": 1.1,
+      "phase": "draw",
+      "pose": "frames/055/pose.json",
+      "nearSleeve": "frames/055/nearSleeveConnected.png",
+      "handVariant": "held",
+      "projectile": null
+    },
+    {
+      "frame": 56,
+      "time": 1.12,
+      "phase": "draw",
+      "pose": "frames/056/pose.json",
+      "nearSleeve": "frames/056/nearSleeveConnected.png",
+      "handVariant": "held",
+      "projectile": null
+    },
+    {
+      "frame": 57,
+      "time": 1.14,
+      "phase": "draw",
+      "pose": "frames/057/pose.json",
+      "nearSleeve": "frames/057/nearSleeveConnected.png",
+      "handVariant": "held",
+      "projectile": null
+    },
+    {
+      "frame": 58,
+      "time": 1.16,
+      "pose": "frames/058/pose.json",
+      "nearSleeve": "frames/058/nearSleeveConnected.png",
+      "handVariant": "held",
+      "projectile": null,
+      "nearHand": {
+        "x": 141.0,
+        "y": 139.0
+      },
+      "nearElbow": {
+        "x": 104,
+        "y": 136
+      },
+      "farHand": {
+        "x": 184.0,
+        "y": 152.0
+      },
+      "nearForeRotation": 0.0,
+      "bowRotation": 0.0,
+      "phase": "approved-followthrough",
+      "sourceFrame": 0
+    },
+    {
+      "frame": 59,
+      "time": 1.18,
+      "pose": "frames/059/pose.json",
+      "nearSleeve": "frames/059/nearSleeveConnected.png",
+      "handVariant": "held",
+      "projectile": null,
+      "nearHand": {
+        "x": 141.0,
+        "y": 139.0
+      },
+      "nearElbow": {
+        "x": 104,
+        "y": 136
+      },
+      "farHand": {
+        "x": 184.0,
+        "y": 152.0
+      },
+      "nearForeRotation": 0.0,
+      "bowRotation": 0.0,
+      "phase": "approved-followthrough",
+      "sourceFrame": 1
+    },
+    {
+      "frame": 60,
+      "time": 1.2,
+      "pose": "frames/060/pose.json",
+      "nearSleeve": "frames/060/nearSleeveConnected.png",
+      "handVariant": "held",
+      "projectile": null,
+      "nearHand": {
+        "x": 141.0,
+        "y": 139.0
+      },
+      "nearElbow": {
+        "x": 104,
+        "y": 136
+      },
+      "farHand": {
+        "x": 184.0,
+        "y": 152.0
+      },
+      "nearForeRotation": 0.0,
+      "bowRotation": 0.0,
+      "phase": "approved-followthrough",
+      "sourceFrame": 2
+    },
+    {
+      "frame": 61,
+      "time": 1.22,
+      "pose": "frames/061/pose.json",
+      "nearSleeve": "frames/061/nearSleeveConnected.png",
+      "handVariant": "held",
+      "projectile": null,
+      "nearHand": {
+        "x": 141.0,
+        "y": 139.0
+      },
+      "nearElbow": {
+        "x": 104,
+        "y": 136
+      },
+      "farHand": {
+        "x": 184.0,
+        "y": 152.0
+      },
+      "nearForeRotation": 0.0,
+      "bowRotation": 0.0,
+      "phase": "approved-followthrough",
+      "sourceFrame": 3
+    },
+    {
+      "frame": 62,
+      "time": 1.24,
+      "pose": "frames/062/pose.json",
+      "nearSleeve": "frames/062/nearSleeveConnected.png",
+      "handVariant": "held",
+      "projectile": null,
+      "nearHand": {
+        "x": 141.0,
+        "y": 139.0
+      },
+      "nearElbow": {
+        "x": 104,
+        "y": 136
+      },
+      "farHand": {
+        "x": 184.0,
+        "y": 152.0
+      },
+      "nearForeRotation": 0.0,
+      "bowRotation": 0.0,
+      "phase": "approved-followthrough",
+      "sourceFrame": 4
+    },
+    {
+      "frame": 63,
+      "time": 1.26,
+      "pose": "frames/063/pose.json",
+      "nearSleeve": "frames/063/nearSleeveConnected.png",
+      "handVariant": "held",
+      "projectile": null,
+      "nearHand": {
+        "x": 141.0,
+        "y": 139.0
+      },
+      "nearElbow": {
+        "x": 104,
+        "y": 136
+      },
+      "farHand": {
+        "x": 184.0,
+        "y": 152.0
+      },
+      "nearForeRotation": 0.0,
+      "bowRotation": 0.0,
+      "phase": "approved-followthrough",
+      "sourceFrame": 5
+    },
+    {
+      "frame": 64,
+      "time": 1.28,
+      "pose": "frames/064/pose.json",
+      "nearSleeve": "frames/064/nearSleeveConnected.png",
+      "handVariant": "held",
+      "projectile": null,
+      "nearHand": {
+        "x": 141.0,
+        "y": 139.0
+      },
+      "nearElbow": {
+        "x": 104,
+        "y": 136
+      },
+      "farHand": {
+        "x": 184.0,
+        "y": 152.0
+      },
+      "nearForeRotation": 0.0,
+      "bowRotation": 0.0,
+      "phase": "approved-followthrough",
+      "sourceFrame": 6
+    },
+    {
+      "frame": 65,
+      "time": 1.3,
+      "pose": "frames/065/pose.json",
+      "nearSleeve": "frames/065/nearSleeveConnected.png",
+      "handVariant": "held",
+      "projectile": null,
+      "nearHand": {
+        "x": 141.0,
+        "y": 139.0
+      },
+      "nearElbow": {
+        "x": 104,
+        "y": 136
+      },
+      "farHand": {
+        "x": 184.0,
+        "y": 152.0
+      },
+      "nearForeRotation": 0.0,
+      "bowRotation": 0.0,
+      "phase": "approved-followthrough",
+      "sourceFrame": 7
+    },
+    {
+      "frame": 66,
+      "time": 1.32,
+      "pose": "frames/066/pose.json",
+      "nearSleeve": "frames/066/nearSleeveConnected.png",
+      "handVariant": "held",
+      "projectile": null,
+      "nearHand": {
+        "x": 141.0,
+        "y": 139.0
+      },
+      "nearElbow": {
+        "x": 104,
+        "y": 136
+      },
+      "farHand": {
+        "x": 184.0,
+        "y": 152.0
+      },
+      "nearForeRotation": 0.0,
+      "bowRotation": 0.0,
+      "phase": "approved-followthrough",
+      "sourceFrame": 8
+    },
+    {
+      "frame": 67,
+      "time": 1.34,
+      "pose": "frames/067/pose.json",
+      "nearSleeve": "frames/067/nearSleeveConnected.png",
+      "handVariant": "open",
+      "projectile": {
+        "tail": {
+          "x": 141.0,
+          "y": 139.0
+        },
+        "tip": {
+          "x": 214.0,
+          "y": 139.0
+        }
+      },
+      "nearHand": {
+        "x": 141.0,
+        "y": 139.0
+      },
+      "nearElbow": {
+        "x": 104,
+        "y": 136
+      },
+      "farHand": {
+        "x": 184.0,
+        "y": 152.0
+      },
+      "nearForeRotation": 0.0,
+      "bowRotation": 0.0,
+      "phase": "approved-followthrough",
+      "sourceFrame": 9
+    },
+    {
+      "frame": 68,
+      "time": 1.36,
+      "pose": "frames/068/pose.json",
+      "nearSleeve": "frames/068/nearSleeveConnected.png",
+      "handVariant": "open",
+      "projectile": {
+        "tail": {
+          "x": 174.0,
+          "y": 139.0
+        },
+        "tip": {
+          "x": 247.0,
+          "y": 139.0
+        }
+      },
+      "nearHand": {
+        "x": 141.0,
+        "y": 139.0
+      },
+      "nearElbow": {
+        "x": 104,
+        "y": 136
+      },
+      "farHand": {
+        "x": 184.0,
+        "y": 152.0
+      },
+      "nearForeRotation": 0.0,
+      "bowRotation": 0.0,
+      "phase": "approved-followthrough",
+      "sourceFrame": 10
+    },
+    {
+      "frame": 69,
+      "time": 1.38,
+      "pose": "frames/069/pose.json",
+      "nearSleeve": "frames/069/nearSleeveConnected.png",
+      "handVariant": "open",
+      "projectile": {
+        "tail": {
+          "x": 190.0,
+          "y": 139.0
+        },
+        "tip": {
+          "x": 263.0,
+          "y": 139.0
+        }
+      },
+      "nearHand": {
+        "x": 141.0280694296482,
+        "y": 139.3014250857764
+      },
+      "nearElbow": {
+        "x": 104.08984375,
+        "y": 136.25830078125
+      },
+      "farHand": {
+        "x": 184.0,
+        "y": 152.0
+      },
+      "nearForeRotation": 0.0013476562499999986,
+      "bowRotation": 0.0,
+      "phase": "approved-followthrough",
+      "sourceFrame": 11
+    },
+    {
+      "frame": 70,
+      "time": 1.4,
+      "pose": "frames/070/pose.json",
+      "nearSleeve": "frames/070/nearSleeveConnected.png",
+      "handVariant": "open",
+      "projectile": {
+        "tail": {
+          "x": 206.0,
+          "y": 139.0
+        },
+        "tip": {
+          "x": 279.0,
+          "y": 139.0
+        }
+      },
+      "nearHand": {
+        "x": 141.1071326008131,
+        "y": 140.15240776108837
+      },
+      "nearElbow": {
+        "x": 104.34375,
+        "y": 136.98828125
+      },
+      "farHand": {
+        "x": 184.0,
+        "y": 152.0
+      },
+      "nearForeRotation": 0.005156249999999994,
+      "bowRotation": 0.0,
+      "phase": "approved-followthrough",
+      "sourceFrame": 12
+    },
+    {
+      "frame": 71,
+      "time": 1.42,
+      "pose": "frames/071/pose.json",
+      "nearSleeve": "frames/071/nearSleeveConnected.png",
+      "handVariant": "open",
+      "projectile": {
+        "tail": {
+          "x": 222.0,
+          "y": 139.0
+        },
+        "tip": {
+          "x": 295.0,
+          "y": 139.0
+        }
+      },
+      "nearHand": {
+        "x": 141.22922629467703,
+        "y": 141.47214914300594
+      },
+      "nearElbow": {
+        "x": 104.73828125,
+        "y": 138.12255859375
+      },
+      "farHand": {
+        "x": 184.0,
+        "y": 152.0
+      },
+      "nearForeRotation": 0.01107421875,
+      "bowRotation": 0.0,
+      "phase": "approved-followthrough",
+      "sourceFrame": 13
+    },
+    {
+      "frame": 72,
+      "time": 1.44,
+      "pose": "frames/072/pose.json",
+      "nearSleeve": "frames/072/nearSleeveConnected.png",
+      "handVariant": "relaxed",
+      "projectile": {
+        "tail": {
+          "x": 238.00000000000003,
+          "y": 139.0
+        },
+        "tip": {
+          "x": 311.0,
+          "y": 139.0
+        }
+      },
+      "nearHand": {
+        "x": 141.38625066911632,
+        "y": 143.1792556007911
+      },
+      "nearElbow": {
+        "x": 105.25,
+        "y": 139.59375
+      },
+      "farHand": {
+        "x": 184.0,
+        "y": 152.0
+      },
+      "nearForeRotation": 0.018750000000000006,
+      "bowRotation": 0.0,
+      "phase": "approved-followthrough",
+      "sourceFrame": 14
+    },
+    {
+      "frame": 73,
+      "time": 1.46,
+      "pose": "frames/073/pose.json",
+      "nearSleeve": "frames/073/nearSleeveConnected.png",
+      "handVariant": "relaxed",
+      "projectile": {
+        "tail": {
+          "x": 254.0,
+          "y": 139.0
+        },
+        "tip": {
+          "x": 327.0,
+          "y": 139.0
+        }
+      },
+      "nearHand": {
+        "x": 141.5701717119067,
+        "y": 145.19233918303303
+      },
+      "nearElbow": {
+        "x": 105.85546875,
+        "y": 141.33447265625
+      },
+      "farHand": {
+        "x": 184.0,
+        "y": 152.0
+      },
+      "nearForeRotation": 0.027832031249999993,
+      "bowRotation": 0.0,
+      "phase": "approved-followthrough",
+      "sourceFrame": 15
+    },
+    {
+      "frame": 74,
+      "time": 1.48,
+      "pose": "frames/074/pose.json",
+      "nearSleeve": "frames/074/nearSleeveConnected.png",
+      "handVariant": "relaxed",
+      "projectile": null,
+      "nearHand": {
+        "x": 141.77317128079468,
+        "y": 147.4305119826665
+      },
+      "nearElbow": {
+        "x": 106.53125,
+        "y": 143.27734375
+      },
+      "farHand": {
+        "x": 184.0,
+        "y": 152.0
+      },
+      "nearForeRotation": 0.037968749999999996,
+      "bowRotation": 0.0,
+      "phase": "approved-followthrough",
+      "sourceFrame": 16
+    },
+    {
+      "frame": 75,
+      "time": 1.5,
+      "pose": "frames/075/pose.json",
+      "nearSleeve": "frames/075/nearSleeveConnected.png",
+      "handVariant": "relaxed",
+      "projectile": null,
+      "nearHand": {
+        "x": 141.9877408033085,
+        "y": 149.81377446564647
+      },
+      "nearElbow": {
+        "x": 107.25390625,
+        "y": 145.35498046875
+      },
+      "farHand": {
+        "x": 184.0,
+        "y": 152.0
+      },
+      "nearForeRotation": 0.04880859375000001,
+      "bowRotation": 0.0,
+      "phase": "approved-followthrough",
+      "sourceFrame": 17
+    },
+    {
+      "frame": 76,
+      "time": 1.52,
+      "pose": "frames/076/pose.json",
+      "nearSleeve": "frames/076/nearSleeveConnected.png",
+      "handVariant": "relaxed",
+      "projectile": null,
+      "nearHand": {
+        "x": 142.20672111052127,
+        "y": 152.26329654205995
+      },
+      "nearElbow": {
+        "x": 108.0,
+        "y": 147.5
+      },
+      "farHand": {
+        "x": 184.0,
+        "y": 152.0
+      },
+      "nearForeRotation": 0.05999999999999997,
+      "bowRotation": 0.0,
+      "phase": "approved-followthrough",
+      "sourceFrame": 18
+    },
+    {
+      "frame": 77,
+      "time": 1.54,
+      "pose": "frames/077/pose.json",
+      "nearSleeve": "frames/077/nearSleeveConnected.png",
+      "handVariant": "relaxed",
+      "projectile": null,
+      "nearHand": {
+        "x": 142.42329571661756,
+        "y": 154.7015895426923
+      },
+      "nearElbow": {
+        "x": 108.74609375,
+        "y": 149.64501953125
+      },
+      "farHand": {
+        "x": 184.0,
+        "y": 152.0
+      },
+      "nearForeRotation": 0.07119140624999999,
+      "bowRotation": 0.0,
+      "phase": "approved-followthrough",
+      "sourceFrame": 19
+    },
+    {
+      "frame": 78,
+      "time": 1.56,
+      "pose": "frames/078/pose.json",
+      "nearSleeve": "frames/078/nearSleeveConnected.png",
+      "handVariant": "relaxed",
+      "projectile": null,
+      "nearHand": {
+        "x": 142.6309481101573,
+        "y": 157.0525672431593
+      },
+      "nearElbow": {
+        "x": 109.46875,
+        "y": 151.72265625
+      },
+      "farHand": {
+        "x": 184.0,
+        "y": 152.0
+      },
+      "nearForeRotation": 0.08203125,
+      "bowRotation": 0.0,
+      "phase": "approved-followthrough",
+      "sourceFrame": 20
+    },
+    {
+      "frame": 79,
+      "time": 1.58,
+      "pose": "frames/079/pose.json",
+      "nearSleeve": "frames/079/nearSleeveConnected.png",
+      "handVariant": "relaxed",
+      "projectile": null,
+      "nearHand": {
+        "x": 142.82339526778813,
+        "y": 159.24149451202484
+      },
+      "nearElbow": {
+        "x": 110.14453125,
+        "y": 153.66552734375
+      },
+      "farHand": {
+        "x": 184.0,
+        "y": 152.0
+      },
+      "nearForeRotation": 0.09216796874999998,
+      "bowRotation": 0.0,
+      "phase": "approved-followthrough",
+      "sourceFrame": 21
+    },
+    {
+      "frame": 80,
+      "time": 1.6,
+      "pose": "frames/080/pose.json",
+      "nearSleeve": "frames/080/nearSleeveConnected.png",
+      "handVariant": "relaxed",
+      "projectile": null,
+      "nearHand": {
+        "x": 142.99450961769642,
+        "y": 161.1948228469862
+      },
+      "nearElbow": {
+        "x": 110.75,
+        "y": 155.40625
+      },
+      "farHand": {
+        "x": 184.0,
+        "y": 152.0
+      },
+      "nearForeRotation": 0.10124999999999999,
+      "bowRotation": 0.0,
+      "phase": "approved-followthrough",
+      "sourceFrame": 22
+    },
+    {
+      "frame": 81,
+      "time": 1.62,
+      "pose": "frames/081/pose.json",
+      "nearSleeve": "frames/081/nearSleeveConnected.png",
+      "handVariant": "relaxed",
+      "projectile": null,
+      "nearHand": {
+        "x": 143.13824006299302,
+        "y": 162.83991278169043
+      },
+      "nearElbow": {
+        "x": 111.26171875,
+        "y": 156.87744140625
+      },
+      "farHand": {
+        "x": 184.0,
+        "y": 152.0
+      },
+      "nearForeRotation": 0.10892578124999999,
+      "bowRotation": 0.0,
+      "phase": "approved-followthrough",
+      "sourceFrame": 23
+    },
+    {
+      "frame": 82,
+      "time": 1.64,
+      "pose": "frames/082/pose.json",
+      "nearSleeve": "frames/082/nearSleeveConnected.png",
+      "handVariant": "relaxed",
+      "projectile": null,
+      "nearHand": {
+        "x": 143.24853943395624,
+        "y": 164.10464369361543
+      },
+      "nearElbow": {
+        "x": 111.65625,
+        "y": 158.01171875
+      },
+      "farHand": {
+        "x": 184.0,
+        "y": 152.0
+      },
+      "nearForeRotation": 0.11484374999999998,
+      "bowRotation": 0.0,
+      "phase": "approved-followthrough",
+      "sourceFrame": 24
+    },
+    {
+      "frame": 83,
+      "time": 1.66,
+      "pose": "frames/083/pose.json",
+      "nearSleeve": "frames/083/nearSleeveConnected.png",
+      "handVariant": "relaxed",
+      "projectile": null,
+      "nearHand": {
+        "x": 143.31930089142938,
+        "y": 164.91691178174435
+      },
+      "nearElbow": {
+        "x": 111.91015625,
+        "y": 158.74169921875
+      },
+      "farHand": {
+        "x": 184.0,
+        "y": 152.0
+      },
+      "nearForeRotation": 0.11865234375,
+      "bowRotation": 0.0,
+      "phase": "approved-followthrough",
+      "sourceFrame": 25
+    },
+    {
+      "frame": 84,
+      "time": 1.68,
+      "pose": "frames/084/pose.json",
+      "nearSleeve": "frames/084/nearSleeveConnected.png",
+      "handVariant": "relaxed",
+      "projectile": null,
+      "nearHand": {
+        "x": 143.34429936972109,
+        "y": 165.20401687568352
+      },
+      "nearElbow": {
+        "x": 112,
+        "y": 159
+      },
+      "farHand": {
+        "x": 184.0,
+        "y": 152.0
+      },
+      "nearForeRotation": 0.12,
+      "bowRotation": 0.0,
+      "phase": "approved-followthrough",
+      "sourceFrame": 26
+    },
+    {
+      "frame": 85,
+      "time": 1.7,
+      "pose": "frames/085/pose.json",
+      "nearSleeve": "frames/085/nearSleeveConnected.png",
+      "handVariant": "relaxed",
+      "projectile": null,
+      "nearHand": {
+        "x": 143.34429936972109,
+        "y": 165.20401687568352
+      },
+      "nearElbow": {
+        "x": 112,
+        "y": 159
+      },
+      "farHand": {
+        "x": 184.0,
+        "y": 152.0
+      },
+      "nearForeRotation": 0.12,
+      "bowRotation": 0.0,
+      "phase": "approved-followthrough",
+      "sourceFrame": 27
+    },
+    {
+      "frame": 86,
+      "time": 1.72,
+      "pose": "frames/086/pose.json",
+      "nearSleeve": "frames/086/nearSleeveConnected.png",
+      "handVariant": "relaxed",
+      "projectile": null,
+      "nearHand": {
+        "x": 143.34429936972109,
+        "y": 165.20401687568352
+      },
+      "nearElbow": {
+        "x": 112,
+        "y": 159
+      },
+      "farHand": {
+        "x": 184.0,
+        "y": 152.0
+      },
+      "nearForeRotation": 0.12,
+      "bowRotation": 0.0,
+      "phase": "approved-followthrough",
+      "sourceFrame": 28
+    },
+    {
+      "frame": 87,
+      "time": 1.74,
+      "pose": "frames/087/pose.json",
+      "nearSleeve": "frames/087/nearSleeveConnected.png",
+      "handVariant": "relaxed",
+      "projectile": null,
+      "nearHand": {
+        "x": 143.34429936972109,
+        "y": 165.20401687568352
+      },
+      "nearElbow": {
+        "x": 112,
+        "y": 159
+      },
+      "farHand": {
+        "x": 183.99529864615795,
+        "y": 152.05370231402608
+      },
+      "nearForeRotation": 0.12,
+      "bowRotation": 0.00038916704597177613,
+      "phase": "approved-followthrough",
+      "sourceFrame": 29
+    },
+    {
+      "frame": 88,
+      "time": 1.76,
+      "pose": "frames/088/pose.json",
+      "nearSleeve": "frames/088/nearSleeveConnected.png",
+      "handVariant": "relaxed",
+      "projectile": null,
+      "nearHand": {
+        "x": 143.34429936972109,
+        "y": 165.20401687568352
+      },
+      "nearElbow": {
+        "x": 112,
+        "y": 159
+      },
+      "farHand": {
+        "x": 183.98133607196584,
+        "y": 152.20912497283376
+      },
+      "nearForeRotation": 0.12,
+      "bowRotation": 0.0015157032316795572,
+      "phase": "approved-followthrough",
+      "sourceFrame": 30
+    },
+    {
+      "frame": 89,
+      "time": 1.78,
+      "pose": "frames/089/pose.json",
+      "nearSleeve": "frames/089/nearSleeveConnected.png",
+      "handVariant": "relaxed",
+      "projectile": null,
+      "nearHand": {
+        "x": 143.34429936972109,
+        "y": 165.20401687568352
+      },
+      "nearElbow": {
+        "x": 112,
+        "y": 159
+      },
+      "farHand": {
+        "x": 183.95790363286744,
+        "y": 152.45770049151682
+      },
+      "nearForeRotation": 0.12,
+      "bowRotation": 0.0033181611288120097,
+      "phase": "approved-followthrough",
+      "sourceFrame": 31
+    },
+    {
+      "frame": 90,
+      "time": 1.8,
+      "pose": "frames/090/pose.json",
+      "nearSleeve": "frames/090/nearSleeveConnected.png",
+      "handVariant": "relaxed",
+      "projectile": null,
+      "nearHand": {
+        "x": 143.34429936972109,
+        "y": 165.20401687568352
+      },
+      "nearElbow": {
+        "x": 112,
+        "y": 159
+      },
+      "farHand": {
+        "x": 183.92437394549873,
+        "y": 152.79081180114582
+      },
+      "nearForeRotation": 0.12,
+      "bowRotation": 0.005735093309057801,
+      "phase": "approved-followthrough",
+      "sourceFrame": 32
+    },
+    {
+      "frame": 91,
+      "time": 1.82,
+      "pose": "frames/091/pose.json",
+      "nearSleeve": "frames/091/nearSleeveConnected.png",
+      "handVariant": "relaxed",
+      "projectile": null,
+      "nearHand": {
+        "x": 143.34429936972109,
+        "y": 165.20401687568352
+      },
+      "nearElbow": {
+        "x": 112,
+        "y": 159
+      },
+      "farHand": {
+        "x": 183.8798661038363,
+        "y": 153.19979675507162
+      },
+      "nearForeRotation": 0.12,
+      "bowRotation": 0.008705052344105594,
+      "phase": "approved-followthrough",
+      "sourceFrame": 33
+    },
+    {
+      "frame": 92,
+      "time": 1.84,
+      "pose": "frames/092/pose.json",
+      "nearSleeve": "frames/092/nearSleeveConnected.png",
+      "handVariant": "relaxed",
+      "projectile": null,
+      "nearHand": {
+        "x": 143.34429936972109,
+        "y": 165.20401687568352
+      },
+      "nearElbow": {
+        "x": 112,
+        "y": 159
+      },
+      "farHand": {
+        "x": 183.8233953593974,
+        "y": 153.67595258404768
+      },
+      "nearForeRotation": 0.12,
+      "bowRotation": 0.012166590805644058,
+      "phase": "approved-followthrough",
+      "sourceFrame": 34
+    },
+    {
+      "frame": 93,
+      "time": 1.86,
+      "pose": "frames/093/pose.json",
+      "nearSleeve": "frames/093/nearSleeveConnected.png",
+      "handVariant": "relaxed",
+      "projectile": null,
+      "nearHand": {
+        "x": 143.34429936972109,
+        "y": 165.20401687568352
+      },
+      "nearElbow": {
+        "x": 112,
+        "y": 159
+      },
+      "farHand": {
+        "x": 183.75400708992063,
+        "y": 154.21054226420623
+      },
+      "nearForeRotation": 0.12,
+      "bowRotation": 0.01605826126536186,
+      "phase": "approved-followthrough",
+      "sourceFrame": 35
+    },
+    {
+      "frame": 94,
+      "time": 1.88,
+      "pose": "frames/094/pose.json",
+      "nearSleeve": "frames/094/nearSleeveConnected.png",
+      "handVariant": "relaxed",
+      "projectile": null,
+      "nearHand": {
+        "x": 143.34429936972109,
+        "y": 165.20401687568352
+      },
+      "nearElbow": {
+        "x": 112,
+        "y": 159
+      },
+      "farHand": {
+        "x": 183.6708948697752,
+        "y": 154.79480402910508
+      },
+      "nearForeRotation": 0.12,
+      "bowRotation": 0.02031861629494764,
+      "phase": "approved-followthrough",
+      "sourceFrame": 36
+    },
+    {
+      "frame": 95,
+      "time": 1.9,
+      "pose": "frames/095/pose.json",
+      "nearSleeve": "frames/095/nearSleeveConnected.png",
+      "handVariant": "relaxed",
+      "projectile": null,
+      "nearHand": {
+        "x": 143.34429936972109,
+        "y": 165.20401687568352
+      },
+      "nearElbow": {
+        "x": 112,
+        "y": 159
+      },
+      "farHand": {
+        "x": 183.57350244697363,
+        "y": 155.41996460339868
+      },
+      "nearForeRotation": 0.12,
+      "bowRotation": 0.024886208466090107,
+      "phase": "approved-followthrough",
+      "sourceFrame": 37
+    },
+    {
+      "frame": 96,
+      "time": 1.92,
+      "pose": "frames/096/pose.json",
+      "nearSleeve": "frames/096/nearSleeveConnected.png",
+      "handVariant": "relaxed",
+      "projectile": null,
+      "nearHand": {
+        "x": 143.34429936972109,
+        "y": 165.20401687568352
+      },
+      "nearElbow": {
+        "x": 112,
+        "y": 159
+      },
+      "farHand": {
+        "x": 183.46160944012075,
+        "y": 156.07725616245537
+      },
+      "nearForeRotation": 0.12,
+      "bowRotation": 0.029699590350477905,
+      "phase": "approved-followthrough",
+      "sourceFrame": 38
+    },
+    {
+      "frame": 97,
+      "time": 1.94,
+      "pose": "frames/097/pose.json",
+      "nearSleeve": "frames/097/nearSleeveConnected.png",
+      "handVariant": "relaxed",
+      "projectile": null,
+      "nearHand": {
+        "x": 143.34429936972109,
+        "y": 165.20401687568352
+      },
+      "nearElbow": {
+        "x": 112,
+        "y": 159
+      },
+      "farHand": {
+        "x": 183.3354006017208,
+        "y": 156.75793653102676
+      },
+      "nearForeRotation": 0.12,
+      "bowRotation": 0.034697314519799724,
+      "phase": "approved-followthrough",
+      "sourceFrame": 39
+    },
+    {
+      "frame": 98,
+      "time": 1.96,
+      "pose": "frames/098/pose.json",
+      "nearSleeve": "frames/098/nearSleeveConnected.png",
+      "handVariant": "relaxed",
+      "projectile": null,
+      "nearHand": {
+        "x": 143.34429936972109,
+        "y": 165.20401687568352
+      },
+      "nearElbow": {
+        "x": 112,
+        "y": 159
+      },
+      "farHand": {
+        "x": 183.19551855438053,
+        "y": 157.45331172661975
+      },
+      "nearForeRotation": 0.12,
+      "bowRotation": 0.03981793354574419,
+      "phase": "approved-followthrough",
+      "sourceFrame": 40
+    },
+    {
+      "frame": 99,
+      "time": 1.98,
+      "pose": "frames/099/pose.json",
+      "nearSleeve": "frames/099/nearSleeveConnected.png",
+      "handVariant": "relaxed",
+      "projectile": null,
+      "nearHand": {
+        "x": 143.34429936972109,
+        "y": 165.20401687568352
+      },
+      "nearElbow": {
+        "x": 112,
+        "y": 159
+      },
+      "farHand": {
+        "x": 183.04309999137982,
+        "y": 158.15475963115622
+      },
+      "nearForeRotation": 0.12,
+      "bowRotation": 0.045,
+      "phase": "approved-followthrough",
+      "sourceFrame": 41
+    },
+    {
+      "frame": 100,
+      "time": 2.0,
+      "pose": "frames/100/pose.json",
+      "nearSleeve": "frames/100/nearSleeveConnected.png",
+      "handVariant": "relaxed",
+      "projectile": null,
+      "nearHand": {
+        "x": 143.34429936972109,
+        "y": 165.20401687568352
+      },
+      "nearElbow": {
+        "x": 112,
+        "y": 159
+      },
+      "farHand": {
+        "x": 182.87979543687945,
+        "y": 158.85375333900004
+      },
+      "nearForeRotation": 0.12,
+      "bowRotation": 0.05018206645425578,
+      "phase": "approved-followthrough",
+      "sourceFrame": 42
+    },
+    {
+      "frame": 101,
+      "time": 2.02,
+      "pose": "frames/101/pose.json",
+      "nearSleeve": "frames/101/nearSleeveConnected.png",
+      "handVariant": "relaxed",
+      "projectile": null,
+      "nearHand": {
+        "x": 143.34429936972109,
+        "y": 165.20401687568352
+      },
+      "nearElbow": {
+        "x": 112,
+        "y": 159
+      },
+      "farHand": {
+        "x": 182.70777277486073,
+        "y": 159.541882580906
+      },
+      "nearForeRotation": 0.12,
+      "bowRotation": 0.05530268548020025,
+      "phase": "approved-followthrough",
+      "sourceFrame": 43
+    },
+    {
+      "frame": 102,
+      "time": 2.04,
+      "pose": "frames/102/pose.json",
+      "nearSleeve": "frames/102/nearSleeveConnected.png",
+      "handVariant": "relaxed",
+      "projectile": null,
+      "nearHand": {
+        "x": 143.34429936972109,
+        "y": 165.20401687568352
+      },
+      "nearElbow": {
+        "x": 112,
+        "y": 159
+      },
+      "farHand": {
+        "x": 182.52970486891684,
+        "y": 160.21087156132458
+      },
+      "nearForeRotation": 0.12,
+      "bowRotation": 0.06030040964952205,
+      "phase": "approved-followthrough",
+      "sourceFrame": 44
+    },
+    {
+      "frame": 103,
+      "time": 2.06,
+      "pose": "frames/103/pose.json",
+      "nearSleeve": "frames/103/nearSleeveConnected.png",
+      "handVariant": "relaxed",
+      "projectile": null,
+      "nearHand": {
+        "x": 143.34429936972109,
+        "y": 165.20401687568352
+      },
+      "nearElbow": {
+        "x": 112,
+        "y": 159
+      },
+      "farHand": {
+        "x": 182.34874169531417,
+        "y": 160.8525915691079
+      },
+      "nearForeRotation": 0.12,
+      "bowRotation": 0.06511379153390986,
+      "phase": "approved-followthrough",
+      "sourceFrame": 45
+    },
+    {
+      "frame": 104,
+      "time": 2.08,
+      "pose": "frames/104/pose.json",
+      "nearSleeve": "frames/104/nearSleeveConnected.png",
+      "handVariant": "relaxed",
+      "projectile": null,
+      "nearHand": {
+        "x": 143.34429936972109,
+        "y": 165.20401687568352
+      },
+      "nearElbow": {
+        "x": 112,
+        "y": 159
+      },
+      "farHand": {
+        "x": 182.16846748717873,
+        "y": 161.45906682627128
+      },
+      "nearForeRotation": 0.12,
+      "bowRotation": 0.06968138370505234,
+      "phase": "approved-followthrough",
+      "sourceFrame": 46
+    },
+    {
+      "frame": 105,
+      "time": 2.1,
+      "pose": "frames/105/pose.json",
+      "nearSleeve": "frames/105/nearSleeveConnected.png",
+      "handVariant": "relaxed",
+      "projectile": null,
+      "nearHand": {
+        "x": 143.34429936972109,
+        "y": 165.20401687568352
+      },
+      "nearElbow": {
+        "x": 112,
+        "y": 159
+      },
+      "farHand": {
+        "x": 181.99284342674682,
+        "y": 162.02247222246274
+      },
+      "nearForeRotation": 0.12,
+      "bowRotation": 0.07394173873463813,
+      "phase": "approved-followthrough",
+      "sourceFrame": 47
+    },
+    {
+      "frame": 106,
+      "time": 2.12,
+      "pose": "frames/106/pose.json",
+      "nearSleeve": "frames/106/nearSleeveConnected.png",
+      "handVariant": "relaxed",
+      "projectile": null,
+      "nearHand": {
+        "x": 143.34429936972109,
+        "y": 165.20401687568352
+      },
+      "nearElbow": {
+        "x": 112,
+        "y": 159
+      },
+      "farHand": {
+        "x": 181.82613641532632,
+        "y": 162.53512184005376
+      },
+      "nearForeRotation": 0.12,
+      "bowRotation": 0.07783340919435591,
+      "phase": "approved-followthrough",
+      "sourceFrame": 48
+    },
+    {
+      "frame": 107,
+      "time": 2.14,
+      "pose": "frames/107/pose.json",
+      "nearSleeve": "frames/107/nearSleeveConnected.png",
+      "handVariant": "relaxed",
+      "projectile": null,
+      "nearHand": {
+        "x": 143.34429936972109,
+        "y": 165.20401687568352
+      },
+      "nearElbow": {
+        "x": 112,
+        "y": 159
+      },
+      "farHand": {
+        "x": 181.67283438913915,
+        "y": 162.98944750212038
+      },
+      "nearForeRotation": 0.12,
+      "bowRotation": 0.08129494765589439,
+      "phase": "approved-followthrough",
+      "sourceFrame": 49
+    },
+    {
+      "frame": 108,
+      "time": 2.16,
+      "pose": "frames/108/pose.json",
+      "nearSleeve": "frames/108/nearSleeveConnected.png",
+      "handVariant": "relaxed",
+      "projectile": null,
+      "nearHand": {
+        "x": 143.34429936972109,
+        "y": 165.20401687568352
+      },
+      "nearElbow": {
+        "x": 112,
+        "y": 159
+      },
+      "farHand": {
+        "x": 181.53754852868423,
+        "y": 163.37796696941655
+      },
+      "nearForeRotation": 0.12,
+      "bowRotation": 0.08426490669094218,
+      "phase": "approved-followthrough",
+      "sourceFrame": 50
+    },
+    {
+      "frame": 109,
+      "time": 2.18,
+      "pose": "frames/109/pose.json",
+      "nearSleeve": "frames/109/nearSleeveConnected.png",
+      "handVariant": "relaxed",
+      "projectile": null,
+      "nearHand": {
+        "x": 143.34429936972109,
+        "y": 165.20401687568352
+      },
+      "nearElbow": {
+        "x": 112,
+        "y": 159
+      },
+      "farHand": {
+        "x": 181.4249025283765,
+        "y": 163.69324187034027
+      },
+      "nearForeRotation": 0.12,
+      "bowRotation": 0.08668183887118797,
+      "phase": "approved-followthrough",
+      "sourceFrame": 51
+    },
+    {
+      "frame": 110,
+      "time": 2.2,
+      "pose": "frames/110/pose.json",
+      "nearSleeve": "frames/110/nearSleeveConnected.png",
+      "handVariant": "relaxed",
+      "projectile": null,
+      "nearHand": {
+        "x": 143.34429936972109,
+        "y": 165.20401687568352
+      },
+      "nearElbow": {
+        "x": 112,
+        "y": 159
+      },
+      "farHand": {
+        "x": 181.33940885489403,
+        "y": 163.9278259693008
+      },
+      "nearForeRotation": 0.12,
+      "bowRotation": 0.08848429676832044,
+      "phase": "approved-followthrough",
+      "sourceFrame": 52
+    },
+    {
+      "frame": 111,
+      "time": 2.22,
+      "pose": "frames/111/pose.json",
+      "nearSleeve": "frames/111/nearSleeveConnected.png",
+      "handVariant": "relaxed",
+      "projectile": null,
+      "nearHand": {
+        "x": 143.34429936972109,
+        "y": 165.20401687568352
+      },
+      "nearElbow": {
+        "x": 112,
+        "y": 159
+      },
+      "farHand": {
+        "x": 181.28533163462595,
+        "y": 164.07420496573474
+      },
+      "nearForeRotation": 0.12,
+      "bowRotation": 0.0896108329540282,
+      "phase": "approved-followthrough",
+      "sourceFrame": 53
+    },
+    {
+      "frame": 112,
+      "time": 2.24,
+      "pose": "frames/112/pose.json",
+      "nearSleeve": "frames/112/nearSleeveConnected.png",
+      "handVariant": "relaxed",
+      "projectile": null,
+      "nearHand": {
+        "x": 143.34429936972109,
+        "y": 165.20401687568352
+      },
+      "nearElbow": {
+        "x": 112,
+        "y": 159
+      },
+      "farHand": {
+        "x": 181.26653548607564,
+        "y": 164.1247296731498
+      },
+      "nearForeRotation": 0.12,
+      "bowRotation": 0.09,
+      "phase": "approved-followthrough",
+      "sourceFrame": 54
+    },
+    {
+      "frame": 113,
+      "time": 2.26,
+      "pose": "frames/113/pose.json",
+      "nearSleeve": "frames/113/nearSleeveConnected.png",
+      "handVariant": "relaxed",
+      "projectile": null,
+      "nearHand": {
+        "x": 143.34429936972109,
+        "y": 165.20401687568352
+      },
+      "nearElbow": {
+        "x": 112,
+        "y": 159
+      },
+      "farHand": {
+        "x": 181.26653548607564,
+        "y": 164.1247296731498
+      },
+      "nearForeRotation": 0.12,
+      "bowRotation": 0.09,
+      "phase": "approved-followthrough",
+      "sourceFrame": 55
+    },
+    {
+      "frame": 114,
+      "time": 2.28,
+      "pose": "frames/114/pose.json",
+      "nearSleeve": "frames/114/nearSleeveConnected.png",
+      "handVariant": "relaxed",
+      "projectile": null,
+      "nearHand": {
+        "x": 143.34429936972109,
+        "y": 165.20401687568352
+      },
+      "nearElbow": {
+        "x": 112,
+        "y": 159
+      },
+      "farHand": {
+        "x": 181.26653548607564,
+        "y": 164.1247296731498
+      },
+      "nearForeRotation": 0.12,
+      "bowRotation": 0.09,
+      "phase": "approved-followthrough",
+      "sourceFrame": 56
+    },
+    {
+      "frame": 115,
+      "time": 2.3,
+      "pose": "frames/115/pose.json",
+      "nearSleeve": "frames/115/nearSleeveConnected.png",
+      "handVariant": "relaxed",
+      "projectile": null,
+      "nearHand": {
+        "x": 143.34429936972109,
+        "y": 165.20401687568352
+      },
+      "nearElbow": {
+        "x": 112,
+        "y": 159
+      },
+      "farHand": {
+        "x": 181.26653548607564,
+        "y": 164.1247296731498
+      },
+      "nearForeRotation": 0.12,
+      "bowRotation": 0.09,
+      "phase": "approved-followthrough",
+      "sourceFrame": 57
+    },
+    {
+      "frame": 116,
+      "time": 2.32,
+      "pose": "frames/116/pose.json",
+      "nearSleeve": "frames/116/nearSleeveConnected.png",
+      "handVariant": "relaxed",
+      "projectile": null,
+      "nearHand": {
+        "x": 143.34429936972109,
+        "y": 165.20401687568352
+      },
+      "nearElbow": {
+        "x": 112,
+        "y": 159
+      },
+      "farHand": {
+        "x": 181.26653548607564,
+        "y": 164.1247296731498
+      },
+      "nearForeRotation": 0.12,
+      "bowRotation": 0.09,
+      "phase": "approved-followthrough",
+      "sourceFrame": 58
+    },
+    {
+      "frame": 117,
+      "time": 2.34,
+      "pose": "frames/117/pose.json",
+      "nearSleeve": "frames/117/nearSleeveConnected.png",
+      "handVariant": "relaxed",
+      "projectile": null,
+      "nearHand": {
+        "x": 143.34429936972109,
+        "y": 165.20401687568352
+      },
+      "nearElbow": {
+        "x": 112,
+        "y": 159
+      },
+      "farHand": {
+        "x": 181.26653548607564,
+        "y": 164.1247296731498
+      },
+      "nearForeRotation": 0.12,
+      "bowRotation": 0.09,
+      "phase": "approved-followthrough",
+      "sourceFrame": 59
+    },
+    {
+      "frame": 118,
+      "time": 2.36,
+      "pose": "frames/118/pose.json",
+      "nearSleeve": "frames/118/nearSleeveConnected.png",
+      "handVariant": "relaxed",
+      "projectile": null,
+      "nearHand": {
+        "x": 143.34429936972109,
+        "y": 165.20401687568352
+      },
+      "nearElbow": {
+        "x": 112,
+        "y": 159
+      },
+      "farHand": {
+        "x": 181.26653548607564,
+        "y": 164.1247296731498
+      },
+      "nearForeRotation": 0.12,
+      "bowRotation": 0.09,
+      "phase": "approved-followthrough",
+      "sourceFrame": 60
+    },
+    {
+      "frame": 119,
+      "time": 2.38,
+      "pose": "frames/119/pose.json",
+      "nearSleeve": "frames/119/nearSleeveConnected.png",
+      "handVariant": "relaxed",
+      "projectile": null,
+      "nearHand": {
+        "x": 143.34429936972109,
+        "y": 165.20401687568352
+      },
+      "nearElbow": {
+        "x": 112,
+        "y": 159
+      },
+      "farHand": {
+        "x": 181.26653548607564,
+        "y": 164.1247296731498
+      },
+      "nearForeRotation": 0.12,
+      "bowRotation": 0.09,
+      "phase": "approved-followthrough",
+      "sourceFrame": 61
+    },
+    {
+      "frame": 120,
+      "time": 2.4,
+      "pose": "frames/120/pose.json",
+      "nearSleeve": "frames/120/nearSleeveConnected.png",
+      "handVariant": "relaxed",
+      "projectile": null,
+      "nearHand": {
+        "x": 143.34429936972109,
+        "y": 165.20401687568352
+      },
+      "nearElbow": {
+        "x": 112,
+        "y": 159
+      },
+      "farHand": {
+        "x": 181.26653548607564,
+        "y": 164.1247296731498
+      },
+      "nearForeRotation": 0.12,
+      "bowRotation": 0.09,
+      "phase": "approved-followthrough",
+      "sourceFrame": 62
+    },
+    {
+      "frame": 121,
+      "time": 2.42,
+      "pose": "frames/121/pose.json",
+      "nearSleeve": "frames/121/nearSleeveConnected.png",
+      "handVariant": "relaxed",
+      "projectile": null,
+      "nearHand": {
+        "x": 143.34429936972109,
+        "y": 165.20401687568352
+      },
+      "nearElbow": {
+        "x": 112,
+        "y": 159
+      },
+      "farHand": {
+        "x": 181.26653548607564,
+        "y": 164.1247296731498
+      },
+      "nearForeRotation": 0.12,
+      "bowRotation": 0.09,
+      "phase": "approved-followthrough",
+      "sourceFrame": 63
+    },
+    {
+      "frame": 122,
+      "time": 2.44,
+      "pose": "frames/122/pose.json",
+      "nearSleeve": "frames/122/nearSleeveConnected.png",
+      "handVariant": "relaxed",
+      "projectile": null,
+      "nearHand": {
+        "x": 143.34429936972109,
+        "y": 165.20401687568352
+      },
+      "nearElbow": {
+        "x": 112,
+        "y": 159
+      },
+      "farHand": {
+        "x": 181.26653548607564,
+        "y": 164.1247296731498
+      },
+      "nearForeRotation": 0.12,
+      "bowRotation": 0.09,
+      "phase": "approved-followthrough",
+      "sourceFrame": 64
+    },
+    {
+      "frame": 123,
+      "time": 2.46,
+      "pose": "frames/123/pose.json",
+      "nearSleeve": "frames/123/nearSleeveConnected.png",
+      "handVariant": "relaxed",
+      "projectile": null,
+      "nearHand": {
+        "x": 143.34429936972109,
+        "y": 165.20401687568352
+      },
+      "nearElbow": {
+        "x": 112,
+        "y": 159
+      },
+      "farHand": {
+        "x": 181.26653548607564,
+        "y": 164.1247296731498
+      },
+      "nearForeRotation": 0.12,
+      "bowRotation": 0.09,
+      "phase": "approved-followthrough",
+      "sourceFrame": 65
+    },
+    {
+      "frame": 124,
+      "time": 2.48,
+      "pose": "frames/124/pose.json",
+      "nearSleeve": "frames/124/nearSleeveConnected.png",
+      "handVariant": "relaxed",
+      "projectile": null,
+      "nearHand": {
+        "x": 143.34429936972109,
+        "y": 165.20401687568352
+      },
+      "nearElbow": {
+        "x": 112,
+        "y": 159
+      },
+      "farHand": {
+        "x": 181.26653548607564,
+        "y": 164.1247296731498
+      },
+      "nearForeRotation": 0.12,
+      "bowRotation": 0.09,
+      "phase": "approved-followthrough",
+      "sourceFrame": 66
+    },
+    {
+      "frame": 125,
+      "time": 2.5,
+      "pose": "frames/125/pose.json",
+      "nearSleeve": "frames/125/nearSleeveConnected.png",
+      "handVariant": "relaxed",
+      "projectile": null,
+      "nearHand": {
+        "x": 143.34429936972109,
+        "y": 165.20401687568352
+      },
+      "nearElbow": {
+        "x": 112,
+        "y": 159
+      },
+      "farHand": {
+        "x": 181.26653548607564,
+        "y": 164.1247296731498
+      },
+      "nearForeRotation": 0.12,
+      "bowRotation": 0.09,
+      "phase": "approved-followthrough",
+      "sourceFrame": 67
+    },
+    {
+      "frame": 126,
+      "time": 2.52,
+      "pose": "frames/126/pose.json",
+      "nearSleeve": "frames/126/nearSleeveConnected.png",
+      "handVariant": "relaxed",
+      "projectile": null,
+      "nearHand": {
+        "x": 143.34429936972109,
+        "y": 165.20401687568352
+      },
+      "nearElbow": {
+        "x": 112,
+        "y": 159
+      },
+      "farHand": {
+        "x": 181.26653548607564,
+        "y": 164.1247296731498
+      },
+      "nearForeRotation": 0.12,
+      "bowRotation": 0.09,
+      "phase": "approved-followthrough",
+      "sourceFrame": 68
+    },
+    {
+      "frame": 127,
+      "time": 2.54,
+      "pose": "frames/127/pose.json",
+      "nearSleeve": "frames/127/nearSleeveConnected.png",
+      "handVariant": "relaxed",
+      "projectile": null,
+      "nearHand": {
+        "x": 143.34429936972109,
+        "y": 165.20401687568352
+      },
+      "nearElbow": {
+        "x": 112,
+        "y": 159
+      },
+      "farHand": {
+        "x": 181.26653548607564,
+        "y": 164.1247296731498
+      },
+      "nearForeRotation": 0.12,
+      "bowRotation": 0.09,
+      "phase": "approved-followthrough",
+      "sourceFrame": 69
+    },
+    {
+      "frame": 128,
+      "time": 2.56,
+      "pose": "frames/128/pose.json",
+      "nearSleeve": "frames/128/nearSleeveConnected.png",
+      "handVariant": "relaxed",
+      "projectile": null,
+      "nearHand": {
+        "x": 143.34429936972109,
+        "y": 165.20401687568352
+      },
+      "nearElbow": {
+        "x": 112,
+        "y": 159
+      },
+      "farHand": {
+        "x": 181.26653548607564,
+        "y": 164.1247296731498
+      },
+      "nearForeRotation": 0.12,
+      "bowRotation": 0.09,
+      "phase": "approved-followthrough",
+      "sourceFrame": 70
+    },
+    {
+      "frame": 129,
+      "time": 2.58,
+      "pose": "frames/129/pose.json",
+      "nearSleeve": "frames/129/nearSleeveConnected.png",
+      "handVariant": "relaxed",
+      "projectile": null,
+      "nearHand": {
+        "x": 143.34429936972109,
+        "y": 165.20401687568352
+      },
+      "nearElbow": {
+        "x": 112,
+        "y": 159
+      },
+      "farHand": {
+        "x": 181.26653548607564,
+        "y": 164.1247296731498
+      },
+      "nearForeRotation": 0.12,
+      "bowRotation": 0.09,
+      "phase": "approved-followthrough",
+      "sourceFrame": 71
+    },
+    {
+      "frame": 130,
+      "time": 2.6,
+      "pose": "frames/130/pose.json",
+      "nearSleeve": "frames/130/nearSleeveConnected.png",
+      "handVariant": "relaxed",
+      "projectile": null,
+      "nearHand": {
+        "x": 143.34429936972109,
+        "y": 165.20401687568352
+      },
+      "nearElbow": {
+        "x": 112,
+        "y": 159
+      },
+      "farHand": {
+        "x": 181.26653548607564,
+        "y": 164.1247296731498
+      },
+      "nearForeRotation": 0.12,
+      "bowRotation": 0.09,
+      "phase": "approved-followthrough",
+      "sourceFrame": 72
+    },
+    {
+      "frame": 131,
+      "time": 2.62,
+      "pose": "frames/131/pose.json",
+      "nearSleeve": "frames/131/nearSleeveConnected.png",
+      "handVariant": "relaxed",
+      "projectile": null,
+      "nearHand": {
+        "x": 143.34429936972109,
+        "y": 165.20401687568352
+      },
+      "nearElbow": {
+        "x": 112,
+        "y": 159
+      },
+      "farHand": {
+        "x": 181.26653548607564,
+        "y": 164.1247296731498
+      },
+      "nearForeRotation": 0.12,
+      "bowRotation": 0.09,
+      "phase": "approved-followthrough",
+      "sourceFrame": 73
+    },
+    {
+      "frame": 132,
+      "time": 2.64,
+      "pose": "frames/132/pose.json",
+      "nearSleeve": "frames/132/nearSleeveConnected.png",
+      "handVariant": "relaxed",
+      "projectile": null,
+      "nearHand": {
+        "x": 143.34429936972109,
+        "y": 165.20401687568352
+      },
+      "nearElbow": {
+        "x": 112,
+        "y": 159
+      },
+      "farHand": {
+        "x": 181.26653548607564,
+        "y": 164.1247296731498
+      },
+      "nearForeRotation": 0.12,
+      "bowRotation": 0.09,
+      "phase": "approved-followthrough",
+      "sourceFrame": 74
+    },
+    {
+      "frame": 133,
+      "time": 2.66,
+      "pose": "frames/133/pose.json",
+      "nearSleeve": "frames/133/nearSleeveConnected.png",
+      "handVariant": "relaxed",
+      "projectile": null,
+      "nearHand": {
+        "x": 143.34429936972109,
+        "y": 165.20401687568352
+      },
+      "nearElbow": {
+        "x": 112,
+        "y": 159
+      },
+      "farHand": {
+        "x": 181.26653548607564,
+        "y": 164.1247296731498
+      },
+      "nearForeRotation": 0.12,
+      "bowRotation": 0.09,
+      "phase": "approved-followthrough",
+      "sourceFrame": 75
+    },
+    {
+      "frame": 134,
+      "time": 2.68,
+      "pose": "frames/134/pose.json",
+      "nearSleeve": "frames/134/nearSleeveConnected.png",
+      "handVariant": "relaxed",
+      "projectile": null,
+      "nearHand": {
+        "x": 143.34429936972109,
+        "y": 165.20401687568352
+      },
+      "nearElbow": {
+        "x": 112,
+        "y": 159
+      },
+      "farHand": {
+        "x": 181.26653548607564,
+        "y": 164.1247296731498
+      },
+      "nearForeRotation": 0.12,
+      "bowRotation": 0.09,
+      "phase": "approved-followthrough",
+      "sourceFrame": 76
+    },
+    {
+      "frame": 135,
+      "time": 2.7,
+      "pose": "frames/135/pose.json",
+      "nearSleeve": "frames/135/nearSleeveConnected.png",
+      "handVariant": "relaxed",
+      "projectile": null,
+      "nearHand": {
+        "x": 143.34429936972109,
+        "y": 165.20401687568352
+      },
+      "nearElbow": {
+        "x": 112,
+        "y": 159
+      },
+      "farHand": {
+        "x": 181.26653548607564,
+        "y": 164.1247296731498
+      },
+      "nearForeRotation": 0.12,
+      "bowRotation": 0.09,
+      "phase": "approved-followthrough",
+      "sourceFrame": 77
+    },
+    {
+      "frame": 136,
+      "time": 2.72,
+      "pose": "frames/136/pose.json",
+      "nearSleeve": "frames/136/nearSleeveConnected.png",
+      "handVariant": "relaxed",
+      "projectile": null,
+      "nearHand": {
+        "x": 143.34429936972109,
+        "y": 165.20401687568352
+      },
+      "nearElbow": {
+        "x": 112,
+        "y": 159
+      },
+      "farHand": {
+        "x": 181.26653548607564,
+        "y": 164.1247296731498
+      },
+      "nearForeRotation": 0.12,
+      "bowRotation": 0.09,
+      "phase": "approved-followthrough",
+      "sourceFrame": 78
+    },
+    {
+      "frame": 137,
+      "time": 2.74,
+      "pose": "frames/137/pose.json",
+      "nearSleeve": "frames/137/nearSleeveConnected.png",
+      "handVariant": "relaxed",
+      "projectile": null,
+      "nearHand": {
+        "x": 143.34429936972109,
+        "y": 165.20401687568352
+      },
+      "nearElbow": {
+        "x": 112,
+        "y": 159
+      },
+      "farHand": {
+        "x": 181.26653548607564,
+        "y": 164.1247296731498
+      },
+      "nearForeRotation": 0.12,
+      "bowRotation": 0.09,
+      "phase": "approved-followthrough",
+      "sourceFrame": 79
+    },
+    {
+      "frame": 138,
+      "time": 2.76,
+      "pose": "frames/138/pose.json",
+      "nearSleeve": "frames/138/nearSleeveConnected.png",
+      "handVariant": "relaxed",
+      "projectile": null,
+      "nearHand": {
+        "x": 143.34429936972109,
+        "y": 165.20401687568352
+      },
+      "nearElbow": {
+        "x": 112,
+        "y": 159
+      },
+      "farHand": {
+        "x": 181.26653548607564,
+        "y": 164.1247296731498
+      },
+      "nearForeRotation": 0.12,
+      "bowRotation": 0.09,
+      "phase": "approved-followthrough",
+      "sourceFrame": 80
+    },
+    {
+      "frame": 139,
+      "time": 2.78,
+      "pose": "frames/139/pose.json",
+      "nearSleeve": "frames/139/nearSleeveConnected.png",
+      "handVariant": "relaxed",
+      "projectile": null,
+      "nearHand": {
+        "x": 143.34429936972109,
+        "y": 165.20401687568352
+      },
+      "nearElbow": {
+        "x": 112,
+        "y": 159
+      },
+      "farHand": {
+        "x": 181.26653548607564,
+        "y": 164.1247296731498
+      },
+      "nearForeRotation": 0.12,
+      "bowRotation": 0.09,
+      "phase": "approved-followthrough",
+      "sourceFrame": 81
+    },
+    {
+      "frame": 140,
+      "time": 2.8,
+      "pose": "frames/140/pose.json",
+      "nearSleeve": "frames/140/nearSleeveConnected.png",
+      "handVariant": "relaxed",
+      "projectile": null,
+      "nearHand": {
+        "x": 143.34429936972109,
+        "y": 165.20401687568352
+      },
+      "nearElbow": {
+        "x": 112,
+        "y": 159
+      },
+      "farHand": {
+        "x": 181.26653548607564,
+        "y": 164.1247296731498
+      },
+      "nearForeRotation": 0.12,
+      "bowRotation": 0.09,
+      "phase": "approved-followthrough",
+      "sourceFrame": 82
+    },
+    {
+      "frame": 141,
+      "time": 2.82,
+      "pose": "frames/141/pose.json",
+      "nearSleeve": "frames/141/nearSleeveConnected.png",
+      "handVariant": "relaxed",
+      "projectile": null,
+      "nearHand": {
+        "x": 143.34429936972109,
+        "y": 165.20401687568352
+      },
+      "nearElbow": {
+        "x": 112,
+        "y": 159
+      },
+      "farHand": {
+        "x": 181.26653548607564,
+        "y": 164.1247296731498
+      },
+      "nearForeRotation": 0.12,
+      "bowRotation": 0.09,
+      "phase": "approved-followthrough",
+      "sourceFrame": 83
+    },
+    {
+      "frame": 142,
+      "time": 2.84,
+      "pose": "frames/142/pose.json",
+      "nearSleeve": "frames/142/nearSleeveConnected.png",
+      "handVariant": "relaxed",
+      "projectile": null,
+      "nearHand": {
+        "x": 143.34429936972109,
+        "y": 165.20401687568352
+      },
+      "nearElbow": {
+        "x": 112,
+        "y": 159
+      },
+      "farHand": {
+        "x": 181.26653548607564,
+        "y": 164.1247296731498
+      },
+      "nearForeRotation": 0.12,
+      "bowRotation": 0.09,
+      "phase": "approved-followthrough",
+      "sourceFrame": 84
+    }
+  ],
+  "runtimeImported": false,
+  "userApproved": false
+}

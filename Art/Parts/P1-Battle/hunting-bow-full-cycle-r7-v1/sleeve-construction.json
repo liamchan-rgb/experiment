@@ -1,0 +1,41 @@
+{
+  "readyElbow": {
+    "x": 112,
+    "y": 159
+  },
+  "nockElbow": {
+    "x": 137,
+    "y": 157
+  },
+  "drawElbowControl": {
+    "x": 112,
+    "y": 163
+  },
+  "drawnElbow": {
+    "x": 104,
+    "y": 136
+  },
+  "nockHand": "straight string center, bow-local (174,139)",
+  "drawnHand": {
+    "x": 141.0,
+    "y": 139.0
+  },
+  "nearShoulder": {
+    "x": 117,
+    "y": 141
+  },
+  "readyArrow": "already carried in drawing hand; this clip does not depict quiver retrieval",
+  "approachSeconds": [
+    0.28,
+    0.66
+  ],
+  "contactHoldSeconds": [
+    0.66,
+    0.76
+  ],
+  "drawSeconds": [
+    0.76,
+    1.16
+  ],
+  "baselineSurfaces": "Art/Parts/P1-Battle/hunting-bow-aim-project-r7/pose.json"
+}
