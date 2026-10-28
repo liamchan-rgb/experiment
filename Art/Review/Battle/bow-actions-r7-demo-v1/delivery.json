@@ -1,0 +1,64 @@
+{
+  "https": [
+    {
+      "file": "all-actions-normal.gif",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/63cb4363420bdb9f507c1f41eec8051a9a3cdf34/Art/Review/Battle/bow-actions-r7-demo-v1/all-actions-normal.gif",
+      "bytes": 1347895,
+      "sha256": "99b58f0574e1b17b0ec1ed14cf8c049e3aaa2d5a499be26479ed15b9fa800c30",
+      "matchesLocal": true
+    },
+    {
+      "file": "bow-normal.gif",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/63cb4363420bdb9f507c1f41eec8051a9a3cdf34/Art/Review/Battle/bow-actions-r7-demo-v1/bow-normal.gif",
+      "bytes": 5555417,
+      "sha256": "71ced4e627dab1453ac81456ac1994fa3b3b64498139baa3105486789e6db5f4",
+      "matchesLocal": true
+    },
+    {
+      "file": "body-standing.png",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/63cb4363420bdb9f507c1f41eec8051a9a3cdf34/Art/Review/Battle/bow-actions-r7-demo-v1/body-standing.png",
+      "bytes": 19781,
+      "sha256": "24ce5ea9fdaaaf79e3caf6ffe9065b41a1b6ab00bdfef4b9ddbc63ca977ea8b2",
+      "matchesLocal": true
+    },
+    {
+      "file": "body-normal.gif",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/63cb4363420bdb9f507c1f41eec8051a9a3cdf34/Art/Review/Battle/bow-actions-r7-demo-v1/body-normal.gif",
+      "bytes": 220691,
+      "sha256": "a7b9a190522ca994e1bd9a5105c7f47cdc886c88dced4f488526bc1b048cd09c",
+      "matchesLocal": true
+    },
+    {
+      "file": "bow-lethal-normal.gif",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/63cb4363420bdb9f507c1f41eec8051a9a3cdf34/Art/Review/Battle/bow-actions-r7-demo-v1/bow-lethal-normal.gif",
+      "bytes": 5111382,
+      "sha256": "93b88dd8078d022f68e0f1ae61203f6054ab104be659d218d8638b320788677d",
+      "matchesLocal": true
+    }
+  ],
+  "browserImageCheck": {
+    "scope": "Only standalone GIF images loaded in browser; no game/App executed.",
+    "dimensions": [
+      [
+        768,
+        840
+      ],
+      [
+        1020,
+        765
+      ]
+    ],
+    "bodyGifVisiblyAdvanced": true
+  },
+  "version": "1.6.31",
+  "build": 57,
+  "sourceCommit": "63cb4363420bdb9f507c1f41eec8051a9a3cdf34",
+  "workflowRun": 40667152183,
+  "ipaFilename": "Downloads/MeadowJourney-b57.ipa",
+  "ipaBytes": 35465853,
+  "ipaSHA256": "2351cc1a16b4fd801866d80a52d33e895d2548e17a8905bd35b1be6cbbce478b",
+  "all345NativeCompositesByteExact": true,
+  "pureTestsPassed": 114,
+  "macLinuxFiveExportSetsMatched": true,
+  "newUserArtApproval": null
+}

@@ -1,5 +1,9 @@
 # 桌游技能与物品制作计划 v1
 
+## 2026-10-28：猎弓整套状态 build57
+
+防御、受击、胜利、倒地与复起专属动作已接入单人/小队，保留认可射击；1.6.31/build57设备Release 40667152183、114纯测试和包校验通过。主线程正常整身/GIF实际解码亲审，新美术待用户实机反馈。[交付依据](../../../Media/Build57/README.md)。下一项重剑动作与装备切换接入demo，随后传奇权杖施法/投射接入；已有离线素材复用，但尚未因此算集成完成。B2其余装备/完整背包/存档和B3—B6仍按原计划，不自动标完。
+
 核对日期：2026-10-25。来源：[classroom-boardgame正式内容表](https://github.com/liamchan-rgb/classroom-boardgame/blob/1e9100c4c18364ea64b3ec974fe957ba4ef42f6f/native/Packages/GameCore/Sources/ClassroomGameCore/Resources/initial-content.json)（main `1e9100c4c18364ea64b3ec974fe957ba4ef42f6f`），并检查战斗分支 `a0427b83d9233f1a83178b3c47d3fab39eed664e`。8个源码分支的内容表Git blob均相同，archive-assets为归档二进制分支；共19技能、18物品、2套装。原始目录快照与校验见本目录JSON。初次核查时只读桌游仓库并保存计划；之后用户已授权执行，最新进展见下段，原桌游仓库保持只读。
 
 ## 2026-10-27：猎弓持弓返修 build54

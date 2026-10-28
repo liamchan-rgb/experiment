@@ -1,3 +1,9 @@
+## build57 · 猎弓完整状态动作 · 1.6.31
+
+[直接下载 MeadowJourney-b57.ipa](MeadowJourney-b57.ipa) · [正常速度新动作/射击/战斗/站姿](../Art/Review/Battle/bow-actions-r7-demo-v1/README.md) · [包校验](MeadowJourney-build57.json)
+
+新增防御、受击、胜利、跪地撑地和反向复起，保留认可版射击；单人与小队共用独立部件。营地武器选择猎弓后进入林地战斗；小队先结束P2行动，再操作P1。35,465,853字节，SHA256 `2351cc1a16b4fd801866d80a52d33e895d2548e17a8905bd35b1be6cbbce478b`。114纯测试、五旧检查、设备Release 40667152183、资源和经典ZIP2.0/CRC核验通过；无App/模拟器/实机运行，由用户安装验收。
+
 ## build56 · 认可版猎弓完整射击接入 · 1.6.30
 
 [直接下载 MeadowJourney-b56.ipa](MeadowJourney-b56.ipa) · [包校验](MeadowJourney-build56.json) · [正常整身/整场动图与站姿](../Art/Review/Battle/reviewed-bow-r7-demo-v1/README.md)
