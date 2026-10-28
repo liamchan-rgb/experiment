@@ -1,6 +1,6 @@
 # Build61 皮甲／符文甲挂载
 
-[皮甲正常整身](leatherArmor-attack-normal.gif) · [符文甲正常整身](runeArmor-attack-normal.gif) · [皮甲站姿](leatherArmor-standing.png) · [符文甲站姿](runeArmor-standing.png) · [场景动图](battle-normal.gif)
+[两甲同动作比较](armors-body-normal.gif) · [比较站姿](armors-standing.png) · [皮甲正常整身](leatherArmor-attack-normal.gif) · [符文甲正常整身](runeArmor-attack-normal.gif) · [皮甲站姿](leatherArmor-standing.png) · [符文甲站姿](runeArmor-standing.png) · [场景动图](battle-normal.gif)
 
 短剑、猎弓、重剑、权杖同屏比较。复用 r4 皮甲／r5 符文甲的原生独立衣片；通用骨架新增独立护肩，按原 r4 的有限随动角度挂载。新猎弓沿用已认可的手／肘／肩、轮廓和345原生采样，另用原胸甲纹样映射到持弓胸部的衣片内部，衣袖材质分离；不把旧通用袖口强套过去。持弓款保留既有合身袖形及较短衣摆，不声称与通用甲同轮廓。头脸、手、武器、骨架及时钟不改。原蓝衣没有装备护甲时仍保留。
 
