@@ -1,0 +1,36 @@
+{
+  "ipa": {
+    "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/a5f047480a5eaf302124744fe9f1848e02119f4b/Downloads/MeadowJourney-b56.ipa",
+    "bytes": 34539875,
+    "sha256": "5f41b1dcf96f3e855bc87595b66f901f2a1166ad7495fbec22c7591e21f58247",
+    "matchesLocalVerifiedIPA": true,
+    "headers": {
+      "contentType": "application/octet-stream",
+      "contentLength": "34539875"
+    }
+  },
+  "normalGIFsAndStanding": [
+    {
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/309ed4f11ae013d043d792a822aa541a78095cbf/Art/Review/Battle/reviewed-bow-r7-demo-v1/body-normal.gif",
+      "bytes": 220691,
+      "sha256": "a7b9a190522ca994e1bd9a5105c7f47cdc886c88dced4f488526bc1b048cd09c"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/309ed4f11ae013d043d792a822aa541a78095cbf/Art/Review/Battle/reviewed-bow-r7-demo-v1/bow-normal.gif",
+      "bytes": 5550895,
+      "sha256": "0505f0d13805373c5a2dd911ca278ea703d523fb83a71e4f7c9d94f4b581a5a3"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/309ed4f11ae013d043d792a822aa541a78095cbf/Art/Review/Battle/reviewed-bow-r7-demo-v1/bow-lethal-normal.gif",
+      "bytes": 5110138,
+      "sha256": "c4881a512b0a0e888c0918d47633ae8afaf2eda62af3216f6977443c4c4e82c7"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/309ed4f11ae013d043d792a822aa541a78095cbf/Art/Review/Battle/reviewed-bow-r7-demo-v1/body-standing.png",
+      "bytes": 19781,
+      "sha256": "24ce5ea9fdaaaf79e3caf6ffe9065b41a1b6ab00bdfef4b9ddbc63ca977ea8b2"
+    }
+  ],
+  "verifiedCompleteGET": true,
+  "scope": "All public bytes match local audited files; not an installation/device check."
+}

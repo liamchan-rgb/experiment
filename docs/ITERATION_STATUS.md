@@ -2,7 +2,7 @@
 
 ## 2026-10-28 · Build56 猎弓接入归档与包校验完成
 
-Release40656603531成功，源eaee324ab7e8f14c42878fcfc8aa11c726bf5310，1.6.30/build56。111纯测试/五原检查通过，Mac/Linux五组导出一致，IPA内新动作JSON逐字节保持；包34,539,875字节，SHA256 5f41b1dcf96f3e855bc87595b66f901f2a1166ad7495fbec22c7591e21f58247，CRC/经典ZIP2.0/平台/权限/原目录与步态均核验。主线程审核三GIF570帧及30整身关键帧，GIF无损优化前后逐帧RGB/时长保持，远程独立GIF浏览器可推进。[包证据](../Media/Build56/package.json)、[正常动图/站姿](../Art/Review/Battle/reviewed-bow-r7-demo-v1/README.md)。待上传IPA并完整GET核验直链，随后实际交付；无App/模拟器/实机运行。后两步：用户实机验收本包；再完善猎弓防御/受击/倒地专属动作。
+Release40656603531成功，源eaee324ab7e8f14c42878fcfc8aa11c726bf5310，1.6.30/build56。111纯测试/五原检查通过，Mac/Linux五组导出一致，IPA内新动作JSON逐字节保持；包34,539,875字节，SHA256 5f41b1dcf96f3e855bc87595b66f901f2a1166ad7495fbec22c7591e21f58247，CRC/经典ZIP2.0/平台/权限/原目录与步态均核验。主线程审核三GIF570帧及30整身关键帧，GIF无损优化前后逐帧RGB/时长保持，远程独立GIF浏览器可推进。[包证据](../Media/Build56/package.json)、[正常动图/站姿](../Art/Review/Battle/reviewed-bow-r7-demo-v1/README.md)。IPA已发布并完整GET核验匹配本地包，直接链接见 Media/Build56/public-downloads.json；无App/模拟器/实机运行。后两步：用户实机验收本包；再完善猎弓防御/受击/倒地专属动作。
 
 ## 2026-10-28 · Build56 认可版猎弓接入进行中
 
