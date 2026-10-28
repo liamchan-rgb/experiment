@@ -1,5 +1,8 @@
 # 项目协作规则
 
+## Build59 包校验拦截版本号并重归档（2026-10-28）
+Intel归档40711626440成功、128纯测试/五旧检查及九组Mac/Linux导出一致，经典ZIP/CRC/资源检查也通过。但主线程包校验发现CFBundleVersion仍58，MARKETING_VERSION已1.6.33：前次修改漏了带引号的CURRENT_PROJECT_VERSION。未发布该IPA，修正Debug/Release两处为59后重新设备Release归档，运行时/美术资源不改，最终包仍须完整校验与公开GET后交付。仍不运行App/模拟器/实机。
+
 ## Build59 归档运行器重试（2026-10-28）
 首轮40708585095在15分钟后返回“The job was not acquired by Runner of type hosted even after multiple attempts”，并提示ARM运行器容量不足，未进入编译；备用macos-14也是ARM池。依据actions/runner-images官方README，给ios.yml可选运行器增加macos-15-intel，使用官方x64池重试。只改调度选项，人物/效果/规则/资源和已审动图不变，仍仅设备Release，不运行App/模拟器/实机。旧运行美术源5da456a15ab8e8489fb51385063b92542392ff16有效，最终归档SHA和包校验另记。
 

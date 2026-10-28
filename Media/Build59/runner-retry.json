@@ -6,5 +6,14 @@
   "oldMediaSource": "5da456a15ab8e8489fb51385063b92542392ff16",
   "retryRunner": "macos-15-intel",
   "officialLabelSource": "https://github.com/actions/runner-images/blob/main/README.md",
-  "runtimeArtOrRulesChanged": false
+  "runtimeArtOrRulesChanged": false,
+  "successfulDispatchRun": 40711626440,
+  "sourceCommit": "41e08284c100cef92121e2b569c6526baf4b485c",
+  "intelRunnerAcquired": true,
+  "alternateQueueCancelled": true,
+  "rejectedArchiveRun": 40711626440,
+  "rejectedReason": "CFBundleVersion58 while intended59; quoted project settings missed",
+  "rejectedPackagePublished": false,
+  "allOtherPackageChecksAndNineExportSetsPassed": true,
+  "buildNumberCorrectedTo59": true
 }
