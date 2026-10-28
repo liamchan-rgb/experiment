@@ -13,6 +13,7 @@ final class MeadowShadowRenderer: NSObject, MTKViewDelegate {
         let phase: CGFloat
         let appearanceIndex: Int
         let weaponID:String?
+        let armorID:String?
 
         init(_ hero: MeadowHeroCaster) {
             index = hero.index
@@ -21,7 +22,7 @@ final class MeadowShadowRenderer: NSObject, MTKViewDelegate {
             frame = hero.frame
             phase = hero.phase
             appearanceIndex = hero.appearanceIndex
-            weaponID=hero.weaponID
+            weaponID=hero.weaponID;armorID=hero.armorID
         }
     }
 
@@ -192,9 +193,21 @@ final class MeadowShadowRenderer: NSObject, MTKViewDelegate {
         return texture
     }
 
+    // Equipment changes prewarm only the selected two atlases, outside combat.
+    // Do not preload the entire armor x appearance x weapon Cartesian product.
+    func prepareP1Equipment(appearance:Int,weapon:String?,armor:String?) throws {
+        let names=[false,true].map { HeroFrames.atlasName(heroIndex:0,diagonal:$0,appearanceIndex:appearance,weaponID:weapon,armorID:armor) }
+        var prepared:[String:MTLTexture]=[:]
+        for name in names where textures[name]==nil {
+            guard let image=assetImage(name) else { throw ShadowLabError.setup("护甲投影素材缺失") }
+            prepared[name]=try upload(image)
+        }
+        for name in Array(textures.keys) where HeroFrames.armorAtlasNames.contains(name) && !names.contains(name) { textures.removeValue(forKey:name) }
+        for (name,texture) in prepared { textures[name]=texture }
+    }
     private func heroTexture(_ hero: MeadowHeroCaster) throws -> MTLTexture {
         let name = HeroFrames.atlasName(heroIndex: hero.index, diagonal: hero.facing >= 4,
-                                       appearanceIndex: hero.appearanceIndex,weaponID:hero.weaponID)
+                                       appearanceIndex: hero.appearanceIndex,weaponID:hero.weaponID,armorID:hero.armorID)
         guard let texture = textures[name] else { throw ShadowLabError.setup("人物投影图集未加载") }
         return texture
     }
@@ -438,6 +451,7 @@ struct MeadowHeroCaster {
     var phase: CGFloat = 0
     var appearanceIndex: Int = 0
     var weaponID:String?="trainingSword"
+    var armorID:String?
 }
 
 struct MeadowFrameState {

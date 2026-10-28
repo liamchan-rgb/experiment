@@ -103,7 +103,7 @@ final class MeadowPartyBattleView:UIView {
         hint.text=busy ? "\(name) · 动作进行中" : "\(name)行动 · 友方 \(friend.uppercased()) / 敌方 \(foe=="m1" ? "甲":"乙") · 点角色选目标"
         let displayActor=showing ?? "p1"
         if let unit=state.units[displayActor] {
-            health.show("生命",value:unit.health,maximum:unit.baseAttributes.maximumHealth,color:.systemGreen)
+            health.show("生命",value:unit.health,maximum:(try? GameRules.attributes(unit,catalog:model.engine.catalog).maximumHealth) ?? unit.baseAttributes.maximumHealth,color:.systemGreen)
             ward.show("护盾",value:unit.shield,maximum:8,color:.systemCyan)
             ap.show(value:unit.ap,maximum:unit.baseAttributes.baseAP)
             if let b=unit.damageBuff { buff.show(title:"振奋 · 增伤＋\(b.amount)",detail:"剩余 \(b.roundsLeft) 轮\n普攻和伤害技能生效",symbol:"arrow.up",color:MeadowPreviewPalette.gold) } else { buff.hide() }

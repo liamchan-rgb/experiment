@@ -16,7 +16,7 @@ public enum BattleDice {
     /// No RNG is used here: only the engine receipt may supply a rolled result.
     public static func channels(_ action:PartyAction,actor:GameUnit,target:GameUnit,catalog:GameCatalog,receipt:OperationReceipt?=nil)->[BattleDie] {
         if action == .endTurn { return [] }
-        if action == .revivalStone { return [BattleDie("green",value:(target.baseAttributes.maximumHealth+1)/2,label:"固定复活")] }
+        if action == .revivalStone { let maximum=(try? GameRules.attributes(target,catalog:catalog).maximumHealth) ?? target.baseAttributes.maximumHealth;return [BattleDie("green",value:(maximum+1)/2,label:"固定复活")] }
         if action == .attack {
             guard let attack=try? GameRules.attack(actor,catalog:catalog) else { return [] }
             let roll=receipt?.dice.first { $0.source=="damage" }

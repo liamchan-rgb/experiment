@@ -15,9 +15,14 @@ public final class TrainingLoadout {
         p1.inventory["huntingBow"]=1
         p1.inventory["greatSword"]=1
         p1.inventory["legendaryStaff"]=1
+        p1.inventory["leatherArmor"]=1
+        p1.inventory["runeArmor"]=1
         var state=GameState(units:["p1":p1,"p2":p2],teams:[GameTeam(id:"party",name:"旅人小队")],map:map,random:RandomState(seed:seed))
         state.pauseReasons=[]
         engine=try GameEngine(catalog:catalog,state:state)
+    }
+    @discardableResult public func equipArmor(_ item:String?,actor:String="p1") throws -> OperationReceipt {
+        try engine.apply(.equip(unit:actor,slot:.armor,item:item))
     }
     @discardableResult public func equip(_ item:String?,actor:String="p1") throws -> OperationReceipt {
         try engine.apply(.equip(unit:actor,slot:.weapon,item:item))

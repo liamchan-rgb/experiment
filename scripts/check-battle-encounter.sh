@@ -40,6 +40,11 @@ struct BattleEncounterCheck {
         encounter.retry()
         precondition(encounter.phase == .playerTurn && encounter.playerHP == 12 && encounter.enemyHP == 18)
 
+        var armored=MeadowBattleEncounter(maximumHealth:20)
+        armored.begin();precondition(armored.playerMaxHP==20 && armored.playerHP==20)
+        armored.endPlayerTurn();_ = armored.resolveEnemyAction();armored.completeEnemyTurn()
+        precondition(armored.playerHP==16 && armored.perform(.breathe)?.healed==4 && armored.playerHP==20)
+        armored.retry();precondition(armored.playerHP==20 && armored.playerMaxHP==20)
         var healing = MeadowBattleEncounter()
         healing.begin()
         let fullHealthAP = healing.actionPoints

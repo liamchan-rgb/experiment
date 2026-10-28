@@ -506,7 +506,7 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
         guard let model=equipmentModel,let unit=model.units["p1"] else { return }
         let clothes=HeroFrames.appearanceTitles.enumerated().map { index,title in
             UIAction(title:title,state:scene.p1AppearanceIndex==index ? .on:.off) { [weak self] _ in
-                self?.scene.selectP1Appearance(index);self?.refreshEquipmentMenu()
+                guard let self else { return };do { try self.groundRenderer?.prepareP1Equipment(appearance:index,weapon:self.scene.p1WeaponID,armor:self.scene.p1ArmorID);self.scene.selectP1Appearance(index);self.refreshEquipmentMenu() } catch { self.discoveryLabel.text=error.localizedDescription }
             }
         }
         let weapons=[("trainingSword","训练短剑","1D6"),("huntingBow","猎弓","1D8"),("greatSword","重剑","1D12"),("legendaryStaff","传奇权杖","1D20")]
@@ -515,15 +515,23 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
         }
         let remove=UIAction(title:"卸下武器",state:unit.equipment.weapon==nil ? .on:.off) { [weak self] _ in self?.equipP1Weapon(nil) }
         let counts=weapons.map { id,title,_ in title+"×"+String(unit.inventory[id] ?? 0) }.joined(separator:" / ")
-        p1AppearanceButton.menu=UIMenu(children:[UIMenu(title:"衣装",children:clothes),UIMenu(title:"武器 · "+counts,children:actions+[remove])])
+        let armorChoices=[("leatherArmor","皮甲","生命上限＋4"),("runeArmor","符文甲","生命上限＋8")]
+        let armorActions=armorChoices.map { id,title,bonus in
+            UIAction(title:title+" · "+bonus,image:UIImage(named:HeroFrames.armorVisual(id)?.iconAsset ?? ""),state:unit.equipment.armor==id ? .on:.off) { [weak self] _ in self?.equipP1Armor(id) }
+        }
+        let removeArmor=UIAction(title:"卸下护甲",state:unit.equipment.armor==nil ? .on:.off) { [weak self] _ in self?.equipP1Armor(nil) }
+        let armorCounts=armorChoices.map { id,title,_ in title+"×"+String(unit.inventory[id] ?? 0) }.joined(separator:" / ")
+        p1AppearanceButton.menu=UIMenu(children:[UIMenu(title:"衣装",children:clothes),UIMenu(title:"武器 · "+counts,children:actions+[remove]),UIMenu(title:"护甲 · "+armorCounts,children:armorActions+[removeArmor])])
         let title=weapons.first { $0.0==unit.equipment.weapon }?.1 ?? "空手"
-        p1AppearanceButton.configuration?.title="P1 · "+title
+        let armorTitle=armorChoices.first { $0.0==unit.equipment.armor }?.1
+        p1AppearanceButton.configuration?.title="P1 · "+title+(armorTitle.map { " / "+$0 } ?? "")
         p1AppearanceButton.accessibilityValue=unit.equipment.weapon==nil ? "未装备武器":title+"已装备"
     }
     private func equipP1Weapon(_ id:String?) {
         guard ready,!battlePreviewActive,let model=equipmentModel else { return }
         if model.units["p1"]?.equipment.weapon==id { return }
         do {
+            try groundRenderer?.prepareP1Equipment(appearance:scene.p1AppearanceIndex,weapon:id,armor:scene.p1ArmorID)
             try model.equip(id);scene.selectP1Weapon(id);refreshEquipmentMenu()
             if let id,let item=try? model.engine.catalog.item(id),let dice=item.attack?.dice {
                 discoveryLabel.text="已装备"+item.name+" · 普通攻击\(dice.count)D\(dice.sides)"
@@ -532,6 +540,18 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
         } catch { discoveryLabel.text=error.localizedDescription }
     }
 
+    private func equipP1Armor(_ id:String?) {
+        guard ready,!battlePreviewActive,let model=equipmentModel,model.units["p1"]?.equipment.armor != id else { return }
+        do {
+            try groundRenderer?.prepareP1Equipment(appearance:scene.p1AppearanceIndex,weapon:scene.p1WeaponID,armor:id)
+            try model.equipArmor(id);scene.selectP1Armor(id);refreshEquipmentMenu()
+            if let unit=model.units["p1"],let stats=try? GameRules.attributes(unit,catalog:model.engine.catalog) {
+                let title=id.flatMap { try? model.engine.catalog.item($0).name } ?? "原衣装"
+                discoveryLabel.text="已切换"+title+" · 生命 \(unit.health)/\(stats.maximumHealth)"
+            }
+            UIAccessibility.post(notification:.announcement,argument:discoveryLabel.text)
+        } catch { discoveryLabel.text=error.localizedDescription }
+    }
     private func configureBattlePreview() {
         var style = UIButton.Configuration.filled()
         style.title = "林地战斗"

@@ -15,6 +15,7 @@ final class GameScene: SKScene {
     private(set) var p1AppearanceIndex = 0
     private var p1AppearanceFrames: [String: [[SKTexture]]] = [:]
     private(set) var p1WeaponID:String?="trainingSword"
+    private(set) var p1ArmorID:String?
     private(set) var gaitTest: GaitTest?
     private var gaitHiddenNodes: [(SKNode, Bool)] = []
     private var gaitMapCamera: (CGPoint, CGFloat)?
@@ -328,11 +329,13 @@ final class GameScene: SKScene {
         guard HeroFrames.appearanceTitles.indices.contains(index) else { return }
         p1AppearanceIndex=index;refreshP1EquipmentFrames()
     }
+    func selectP1Armor(_ id:String?) { p1ArmorID=id;refreshP1EquipmentFrames() }
     func selectP1Weapon(_ id:String?) { p1WeaponID=id;refreshP1EquipmentFrames() }
     private func refreshP1EquipmentFrames() {
-        let key="\(p1AppearanceIndex)-\(p1WeaponID ?? "none")"
-        if p1AppearanceFrames[key]==nil { p1AppearanceFrames[key]=HeroFrames.load(1,appearanceIndex:p1AppearanceIndex,weaponID:p1WeaponID) }
+        let key="\(p1AppearanceIndex)-\(p1WeaponID ?? "none")-\(p1ArmorID ?? "none")"
+        if p1AppearanceFrames[key]==nil { p1AppearanceFrames[key]=HeroFrames.load(1,appearanceIndex:p1AppearanceIndex,weaponID:p1WeaponID,armorID:p1ArmorID) }
         frames[0]=p1AppearanceFrames[key]!
+        p1AppearanceFrames=p1AppearanceFrames.filter { $0.key==key }
         // Same route, facing, distance phase and sole markers; only the texture changes.
         updateActors(before:nil);publishDiagnostics()
     }
@@ -415,7 +418,7 @@ final class GameScene: SKScene {
         let heroes = heroIndices.map { index -> MeadowHeroCaster in
             let pose = actorPose(index)
             return MeadowHeroCaster(index: layeredPreview ? 0 : index, foot: actorPoint(index), facing: pose.facing,
-                                    frame: pose.frame, phase: pose.phase, appearanceIndex: index == 0 ? p1AppearanceIndex : 0,weaponID:index == 0 ? p1WeaponID:"trainingSword")
+                                    frame: pose.frame, phase: pose.phase, appearanceIndex: index == 0 ? p1AppearanceIndex : 0,weaponID:index == 0 ? p1WeaponID:"trainingSword",armorID:index == 0 ? p1ArmorID:nil)
         }
         return MeadowFrameState(world: world, camera: MeadowViewport(world: world, scene: self, viewSize: viewSize), time: environmentTime, heroes: heroes, includeEnvironment: gaitTest == nil)
     }

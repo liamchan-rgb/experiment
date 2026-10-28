@@ -70,6 +70,7 @@ final class MeadowBattleLandscapeView: UIView {
     private var idleElapsed: TimeInterval = 0
     private var terminalClip: String?
     private var heroHP = 12
+    private var heroMaxHP = 12
     private var enemyHP = 18
     private var shieldValue = 0
     private var shownHeroHP = 12
@@ -273,12 +274,13 @@ final class MeadowBattleLandscapeView: UIView {
         renderAnimation()
     }
 
+    func configureArmor(_ id:String?) { hero.setArmor(id);lastShadowPose="";renderAnimation() }
     func configureWeapon(_ asset:String?) { usesStaff=asset=="MeadowBattleLegendaryStaff";usesGreatSword=asset=="MeadowBattleGreatSword";usesBow=asset=="MeadowBattleHuntingBow";if bowArrow.superlayer==nil { world.layer.addSublayer(bowArrow);bowArrow.zPosition=1000;bowArrow.strokeColor=MeadowPreviewPalette.ink.cgColor;bowArrow.lineWidth=2;bowArrow.shadowColor=MeadowPreviewPalette.gold.cgColor;bowArrow.shadowOpacity=0.7;bowArrow.shadowRadius=5 };if greatSwordTrail.superlayer==nil { world.layer.addSublayer(greatSwordTrail);greatSwordTrail.zPosition=999;greatSwordTrail.fillColor=UIColor.clear.cgColor;greatSwordTrail.strokeColor=MeadowPreviewPalette.ink.cgColor;greatSwordTrail.lineWidth=2.5;greatSwordTrail.lineCap = .round;greatSwordTrail.shadowColor=MeadowPreviewPalette.gold.cgColor;greatSwordTrail.shadowRadius=6;greatSwordTrail.shadowOpacity=0.8 };if staffEffects.superview==nil { world.addSubview(staffEffects);staffEffects.layer.zPosition=1000 };hero.setWeaponAsset(asset);lastShadowPose="";renderAnimation() }
     @objc private func selectEnemy() { onEnemySelected?() }
 
-    func setEncounter(heroHP: Int, enemyHP: Int, shield: Int, selected: Bool) {
+    func setEncounter(heroHP: Int, enemyHP: Int, shield: Int, selected: Bool,maximumHP:Int=12) {
         let reset = enemyHP > self.enemyHP || (self.heroHP == 0 && heroHP > 0)
-        self.heroHP = heroHP; self.enemyHP = enemyHP; shieldValue = shield
+        self.heroHP = heroHP;self.heroMaxHP=maximumHP; self.enemyHP = enemyHP; shieldValue = shield
         self.selected = selected && enemyHP > 0
         if reset {
             terminalClip = nil; deathStartedAt = nil; lastDeathFrame = -1
@@ -370,7 +372,7 @@ final class MeadowBattleLandscapeView: UIView {
 
     private func refreshHealth() {
         shownHeroHP = heroHP; shownEnemyHP = enemyHP; shownShieldValue = shieldValue
-        heroStatus.show(name:"P1",hp:shownHeroHP,maximum:12,shield:shownShieldValue)
+        heroStatus.show(name:"P1",hp:shownHeroHP,maximum:heroMaxHP,shield:shownShieldValue)
         enemyStatus.show(name:"鹿灵",hp:shownEnemyHP,maximum:18,shield:0)
         enemyStatus.isHidden=shownEnemyHP<=0
     }

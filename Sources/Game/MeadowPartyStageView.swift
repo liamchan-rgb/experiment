@@ -75,9 +75,12 @@ final class MeadowPartyStageView:UIView {
         state=value;self.current=current;self.catalog=catalog;fx.friend=friend;fx.foe=foe
         for (id,label) in labels {
             guard let u=value.units[id] else { continue }
-            label.show(name:(id==current ? "▶ ":"")+u.name,hp:u.health,maximum:u.baseAttributes.maximumHealth,shield:u.shield)
+            label.show(name:(id==current ? "▶ ":"")+u.name,hp:u.health,maximum:(try? GameRules.attributes(u,catalog:catalog).maximumHealth) ?? u.baseAttributes.maximumHealth,shield:u.shield)
         }
         render()
+    }
+    private func maximumHealth(_ unit:GameUnit)->Int {
+        guard let catalog else { return unit.baseAttributes.maximumHealth };return (try? GameRules.attributes(unit,catalog:catalog).maximumHealth) ?? unit.baseAttributes.maximumHealth
     }
     private func previewDarkness()->Double { dimFrom+(dimTarget-dimFrom)*PartyVisual.smooth((sceneTime-dimChangedAt)/0.28) }
     func preview(_ action:PartyAction?,target:String) {
@@ -102,7 +105,7 @@ final class MeadowPartyStageView:UIView {
         let delayed=sceneTime+max(0,value.action.impact-0.46)
         for id in value.targets {
             guard let unit=before.units[id] else { continue }
-            if ["support","heal","revive"].contains(value.action.visual),unit.health<unit.baseAttributes.maximumHealth { recovery[id]=delayed }
+            if ["support","heal","revive"].contains(value.action.visual),unit.health<maximumHealth(unit) { recovery[id]=delayed }
             if ["support","guard"].contains(value.action.visual),unit.shield<([PartyAction.shieldPotion].contains(value.action) ? 8:4) { formation[id]=delayed }
         }
         render()
@@ -177,12 +180,13 @@ final class MeadowPartyStageView:UIView {
             if let actor=actors[id] {
                 let pose=PartyVisual.pose(unit:unit,intent:intent,age:age,time:sceneTime,hurtAge:hurt[id].map { sceneTime-$0 },blocked:unit.shield>0 || (hurt[id] != nil && broken[id]==hurt[id]),downAge:fallen[id].map { sceneTime-$0 },victoryAge:victoryAt.map { sceneTime-$0 })
                 actor.setWeaponAsset(HeroFrames.weaponVisual(unit.equipment.weapon)?.battleAsset)
+                actor.setArmor(unit.equipment.armor)
                 let clip=pose.clip,progress=pose.progress
                 actor.setPose(clip:clip,progress:CGFloat(progress))
                 let s=CGFloat(PartyVisual.heroScale),root=actor.poseRootOffset
                 actor.frame=CGRect(x:foot.x-123*s+root.x*s,y:foot.y-214*s+root.y*s,width:256*s,height:256*s)
                 actor.layer.zPosition=CGFloat(f.y)
-                let key="\(clip)-\(Int((progress*24).rounded()))-\(unit.equipment.weapon ?? "none")"
+                let key="\(clip)-\(Int((progress*24).rounded()))-\(unit.equipment.weapon ?? "none")-\(unit.equipment.armor ?? "none")"
                 if key != poseKeys[id] { shadows[id]?.update(image:actor.poseSilhouette,soleY:actor.poseFootAnchorPx.y,contacts:actor.poseContacts.map { .init(point:$0,radius:12) });poseKeys[id]=key }
                 attached[id]?.frame=actor.bounds
                 attached[id]?.update(shield:unit.shield,preview:0,time:sceneTime,formation:unit.shield==0 ? formation[id].flatMap { sceneTime-$0<1.0 ? sceneTime-$0:nil }:nil,formationBase:0,birth:birth[id].map { sceneTime-$0 },contact:contact[id].map { sceneTime-$0 },broken:broken[id].map { sceneTime-$0 },recovery:unit.isAlive ? recovery[id].map { sceneTime-$0 }:nil)

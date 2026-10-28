@@ -1,0 +1,5 @@
+down-right: facing=4, frame=6, scale=0.5305825275653279
+up-left: facing=1, frame=4, scale=0.9859097158124583
+up-right: facing=7, frame=6, scale=0.5956414377755788
+down-left: facing=5, frame=6, scale=0.5592669475786144
+PASS: production WalkCycle, Trail, TrailNetwork, JourneySimulation; P1 speed=25.0, pause/reset and four road directions

@@ -42,7 +42,8 @@ struct MeadowBattleEncounter {
     private(set) var phase: MeadowBattlePhase = .exploration
     private(set) var round = 0
     private(set) var playerHP = 12
-    let playerMaxHP = 12
+    let playerMaxHP:Int
+    init(maximumHealth:Int=12) { playerMaxHP=max(1,maximumHealth);playerHP=playerMaxHP }
     private(set) var enemyHP = 18
     let enemyMaxHP = 18
     private(set) var shield = 0

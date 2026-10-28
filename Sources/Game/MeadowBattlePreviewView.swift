@@ -39,8 +39,10 @@ final class MeadowBattlePreviewView: UIView {
     private var equipmentWeaponID:String?="trainingSword"
     func configureEquipment(_ units:[String:GameUnit]) {
         party.loadoutUnits=units;equipmentWeaponID=units["p1"]?.equipment.weapon
+        if encounter.phase == .exploration,let unit=units["p1"],let catalog=try? GameCatalog.initial(),let stats=try? GameRules.attributes(unit,catalog:catalog) { encounter=MeadowBattleEncounter(maximumHealth:stats.maximumHealth) }
         details.hasWeapon=equipmentWeaponID != nil
         landscape.configureWeapon(HeroFrames.weaponVisual(equipmentWeaponID)?.battleAsset)
+        landscape.configureArmor(units["p1"]?.equipment.armor)
     }
     var onClose: (() -> Void)?
     var onPartyActiveChanged: ((Bool)->Void)?
@@ -275,7 +277,7 @@ final class MeadowBattlePreviewView: UIView {
         track.show(phase: phase, round: encounter.round)
         details.show(encounter: encounter, enabled: isActive && !isAnimating)
         landscape.setEncounter(heroHP: encounter.playerHP, enemyHP: encounter.enemyHP,
-                               shield: encounter.shield, selected: encounter.enemySelected)
+                               shield: encounter.shield, selected: encounter.enemySelected,maximumHP:encounter.playerMaxHP)
         stageTitle.text = phase == .exploration ? "Meadow Journey · 林地地图" : "Meadow Journey · 鹿灵遭遇"
         setNeedsLayout()
         onLayoutChanged?()
