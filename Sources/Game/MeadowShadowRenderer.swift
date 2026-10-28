@@ -199,7 +199,7 @@ final class MeadowShadowRenderer: NSObject, MTKViewDelegate {
         let names=[false,true].map { HeroFrames.atlasName(heroIndex:0,diagonal:$0,appearanceIndex:appearance,weaponID:weapon,armorID:armor) }
         var prepared:[String:MTLTexture]=[:]
         for name in names where textures[name]==nil {
-            guard let image=assetImage(name) else { throw ShadowLabError.setup("护甲投影素材缺失") }
+            guard let image=UIImage(named:name)?.cgImage else { throw ShadowLabError.setup("护甲投影素材缺失") }
             prepared[name]=try upload(image)
         }
         for name in Array(textures.keys) where HeroFrames.armorAtlasNames.contains(name) && !names.contains(name) { textures.removeValue(forKey:name) }

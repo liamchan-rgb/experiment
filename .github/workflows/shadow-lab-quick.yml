@@ -50,6 +50,17 @@ jobs:
 
     steps:
       - uses: actions/checkout@v7
+        with:
+          # Device builds need production inputs, not the historical IPA and
+          # offline art-review archives, which made this checkout take 7 min.
+          sparse-checkout: |
+            .github
+            Sources
+            Vendor
+            scripts
+            Tests
+            UITests
+            MeadowJourney.xcodeproj
 
       - name: Validate project and record Xcode details
         run: |

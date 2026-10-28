@@ -1,0 +1,14 @@
+{
+  "run": 40735963209,
+  "source": "216482f94200619fb27749dffb1fc79276ce95dc",
+  "conclusion": "failure",
+  "pureTests132Passed": true,
+  "error": "MeadowShadowRenderer.swift:202: cannot find assetImage in scope",
+  "cause": "assetImage is a local initializer helper; new equipment prewarm method cannot call it",
+  "fix": "Load armor asset via UIImage(named:)?.cgImage in prewarm; geometry/art unchanged",
+  "ipaGenerated": false,
+  "ipaPublished": false,
+  "appOrSimulatorRun": false,
+  "checkoutSeconds": 414,
+  "checkoutRemediation": "Sparse checkout keeps all production/validation inputs and excludes historical IPA/art-review archives"
+}
