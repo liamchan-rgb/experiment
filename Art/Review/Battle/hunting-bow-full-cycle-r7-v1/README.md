@@ -1,3 +1,5 @@
+> 2026-10-28：用户“没问题”认可已展示的当前猎弓完整射击离线动画，范围见审核目录 approval.json。运行时接入、其他衣装/弓及未展示动作不在该认可范围。以下“待审”为交付时记录。
+
 # r7 猎弓完整射击动画 v1 · 新前段待审核
 
 [正常速度完整 GIF](bow-full-cycle-normal.gif) · [整身关键帧](keyframes.png) · [持箭待发](ready.png) · [原生独立分层](../../../Parts/P1-Battle/hunting-bow-full-cycle-r7-v1/README.md)
