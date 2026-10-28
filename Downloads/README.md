@@ -1,3 +1,9 @@
+## build60 · 权杖首帧与腿部遮挡修正 · 1.6.34
+
+[直接下载 MeadowJourney-b60.ipa](MeadowJourney-b60.ipa) · [正常动图/首帧对照/站姿](../Art/Review/Battle/legendary-staff-layering-r1/README.md) · [包校验](MeadowJourney-build60.json)
+
+修正待机杖杆被裤腿挡断、下端宝石悬空，以及起手/收势时层序和补底闪动。人物、握点、动作曲线和玩法保持。128纯测试/五旧检查、设备Release 40721530191、九组导出和包校验通过。38,263,628字节，SHA256 `c9719a152b96c9b64231542b16a6fb1c2b24305d6d2b0f8d35467299d57c938d`。主线程只做美术和包检查，实机交给用户。
+
 ## build59 · 传奇权杖施法与投射 · 1.6.33
 
 [直接下载 MeadowJourney-b59.ipa](MeadowJourney-b59.ipa) · [正常整身/战斗/状态/站姿](../Art/Review/Battle/legendary-staff-demo-v1/README.md) · [八向背负](../Art/Review/P1/legendary-staff-demo-v1/README.md) · [包校验](MeadowJourney-build59.json)
