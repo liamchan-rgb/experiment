@@ -1,4 +1,12 @@
-## build55 · A 图猎弓动作接入（待用户实机审核）
+## build56 · 认可版猎弓完整射击接入 · 1.6.30
+
+[直接下载 MeadowJourney-b56.ipa](MeadowJourney-b56.ipa) · [包校验](MeadowJourney-build56.json) · [正常整身/整场动图与站姿](../Art/Review/Battle/reviewed-bow-r7-demo-v1/README.md)
+
+P1 营地菜单→武器→猎弓；进入林地战斗，单人或“小队支援”查看抬弓搭箭、拉弦、放箭和收势。小队先结束 P2 行动再操作 P1。单人与小队共用用户已认可的 r7 原生独立部件，保留原规则和结算时刻；飞行箭长与人物尺度一致，影子随当前姿势。实机安装/运行由用户测试。
+
+34,539,875 字节，SHA256 `5f41b1dcf96f3e855bc87595b66f901f2a1166ad7495fbec22c7591e21f58247`。设备 Release 40656603531、111 纯测试/五原检查、资源/经典 ZIP2.0/CRC/平台与权限核验通过；Mac/Linux 五组导出数据一致，包内新版动作 JSON 逐字节一致。未运行 App/模拟器/实机，不宣称设备 FPS 已测。
+
+## 历史 build55 · 旧猎弓动作（用户已判退）
 
 [MeadowJourney-b55.ipa](MeadowJourney-b55.ipa) · 1.6.29/build55，直接 IPA。P1 营地装备猎弓，在战斗及小队支援中查看持弓、拉弦、放箭与收手。保留项目原头部；近侧手拉弦，远侧手握弓。设备 Release 归档、包完整性和动作数据一致性已检查；实机安装与运行由用户测试。[包校验](MeadowJourney-build55.json) · [正常动图与审核](../Art/Review/Battle/hunting-bow-a-project-r1/README.md)。
 

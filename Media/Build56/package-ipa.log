@@ -1,0 +1,31 @@
+SideStore package metadata verified: MeadowJourney 1.6.30 build 56
+{
+  "file": "/var/folders/nj/vtw8zd2j31d1gdrtntc5y4600000gn/T/tmp.tL9ueHDJsb/classic.ipa",
+  "version": "1.6.30",
+  "build": "56",
+  "bytes": 34539875,
+  "sha256": "5f41b1dcf96f3e855bc87595b66f901f2a1166ad7495fbec22c7591e21f58247",
+  "compression": "stored",
+  "payloadBytesIdentical": true
+}
+Archive:  /Users/runner/work/experiment/experiment/build/MeadowJourney-shadow-lab.ipa
+    testing: Payload/                 OK
+    testing: Payload/MeadowJourney.app/   OK
+    testing: Payload/MeadowJourney.app/SceneMap.json   OK
+    testing: Payload/MeadowJourney.app/default.metallib   OK
+    testing: Payload/MeadowJourney.app/AppIcon60x60@2x.png   OK
+    testing: Payload/MeadowJourney.app/Assets.car   OK
+    testing: Payload/MeadowJourney.app/AppIcon76x76@2x~ipad.png   OK
+    testing: Payload/MeadowJourney.app/ClassroomGameCore_MeadowBattleSupport.bundle/   OK
+    testing: Payload/MeadowJourney.app/ClassroomGameCore_MeadowBattleSupport.bundle/reviewed-bow-r7.json   OK
+    testing: Payload/MeadowJourney.app/ClassroomGameCore_MeadowBattleSupport.bundle/Info.plist   OK
+    testing: Payload/MeadowJourney.app/MeadowJourney   OK
+    testing: Payload/MeadowJourney.app/Info.plist   OK
+    testing: Payload/MeadowJourney.app/ClassroomGameCore_ClassroomGameCore.bundle/   OK
+    testing: Payload/MeadowJourney.app/ClassroomGameCore_ClassroomGameCore.bundle/initial-content.json   OK
+    testing: Payload/MeadowJourney.app/ClassroomGameCore_ClassroomGameCore.bundle/Info.plist   OK
+    testing: Payload/MeadowJourney.app/hero-gait.json   OK
+    testing: Payload/MeadowJourney.app/PkgInfo   OK
+No errors detected in compressed data of /Users/runner/work/experiment/experiment/build/MeadowJourney-shadow-lab.ipa.
+5f41b1dcf96f3e855bc87595b66f901f2a1166ad7495fbec22c7591e21f58247  /Users/runner/work/experiment/experiment/build/MeadowJourney-shadow-lab.ipa
+Unsigned IPA ready for SideStore re-signing: /Users/runner/work/experiment/experiment/build/MeadowJourney-shadow-lab.ipa
