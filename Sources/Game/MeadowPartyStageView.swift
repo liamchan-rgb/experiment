@@ -24,6 +24,7 @@ final class MeadowPartyStageView:UIView {
     private var intent:PartyIntent?
     private var impact:(()->OperationReceipt?)?
     private var completion:(()->Void)?
+    private var naturalTwenty=false
     private var fired=false,meetsShield=false
     var actorInAction:String? { intent?.actor }
     private var focus:PartyAction?,focusTarget="p1",focusAt=0.0
@@ -96,6 +97,7 @@ final class MeadowPartyStageView:UIView {
             diceAction=value.action;diceActor=value.actor;diceSettledAt=nil;diceExitAt=nil
             diceView.dice=BattleDice.channels(value.action,actor:actor,target:target,catalog:catalog,receipt:confirmed);diceView.locked=confirmed != nil;diceConfirmedAt=confirmed == nil ? nil:sceneTime
         }
+        naturalTwenty=confirmed?.dice.contains { $0.naturalTwenty } ?? false
         intent=value;state=before;startAt=sceneTime;self.impact=onImpact;self.completion=completion;fired=false;focus=nil;meetsShield=(before.units[value.target]?.shield ?? 0)>0
         let delayed=sceneTime+max(0,value.action.impact-0.46)
         for id in value.targets {
@@ -123,6 +125,7 @@ final class MeadowPartyStageView:UIView {
     }
     private func apply(_ receipt:OperationReceipt,intent:PartyIntent) {
         state=receipt.after
+        if receipt.dice.contains(where: { $0.naturalTwenty }) { let p=PartyVisual.hitPoint(target:intent.target,weaponID:intent.weaponID);messages.append(.init(text:"自然20",point:CGPoint(x:p.x,y:p.y-55),at:sceneTime,color:.systemCyan,atImpact:true)) }
         if let actor=receipt.before.units[intent.actor],let target=receipt.before.units[intent.target],let catalog {
             diceView.dice=BattleDice.channels(intent.action,actor:actor,target:target,catalog:catalog,receipt:receipt);diceSettledAt=sceneTime
         }
@@ -131,7 +134,7 @@ final class MeadowPartyStageView:UIView {
             let heal=max(0,after.health-before.health),damage=max(0,before.health-after.health),gain=max(0,after.shield-before.shield),absorbed=max(0,before.shield-after.shield)
             let shieldHit=absorbed>0 && id.hasPrefix("p")
             let registered=PartyVisual.hitPoint(target:id,shielded:shieldHit,weaponID:intent.weaponID)
-            let point=intent.weaponID=="greatSword" && id.hasPrefix("m") ? CGPoint(x:registered.x,y:registered.y):CGPoint(x:foot.x+(shieldHit ? (5+240*0.41)*PartyVisual.heroScale:(id.hasPrefix("m") ? -80:0)),y:foot.y-(id.hasPrefix("p") ? 65:72))
+            let point=["greatSword","legendaryStaff"].contains(intent.weaponID ?? "") && id.hasPrefix("m") ? CGPoint(x:registered.x,y:registered.y):CGPoint(x:foot.x+(shieldHit ? (5+240*0.41)*PartyVisual.heroScale:(id.hasPrefix("m") ? -80:0)),y:foot.y-(id.hasPrefix("p") ? 65:72))
             if heal>0 {
                 let shift=intent.actor==id ? PartyVisual.travel(intent,age:sceneTime-startAt):PartyPoint(0,0)
                 if intent.action == .ambush { recovery[id]=sceneTime }
@@ -218,7 +221,7 @@ final class MeadowPartyStageView:UIView {
         diceView.time=sceneTime;diceView.visibleAge=sceneTime-diceVisibleAt
         diceView.confirmationAge=diceConfirmedAt.map { sceneTime-$0 }
         diceView.resolvedAge=diceSettledAt.map { sceneTime-$0 };diceView.exitAge=diceExitAt.map { sceneTime-$0 };diceView.setNeedsDisplay()
-        fx.intent=intent;fx.meetsShield=meetsShield;fx.age=age;fx.time=sceneTime;fx.focus=focus;fx.focusTarget=focusTarget
+        fx.naturalTwenty=naturalTwenty;fx.intent=intent;fx.meetsShield=meetsShield;fx.age=age;fx.time=sceneTime;fx.focus=focus;fx.focusTarget=focusTarget
         fx.messages=messages;fx.particles=emissions.flatMap { e in MeadowBattleLightField.sample(e.kind,age:sceneTime-e.startedAt,originX:e.x,originY:e.y,groundY:e.groundY) }
         fx.recoveryLights=state.players.compactMap { unit in
             guard unit.isAlive,let at=recovery[unit.id],let foot=PartyVisual.feet[unit.id] else { return nil }
@@ -237,6 +240,7 @@ private final class MeadowPartyEffectsView:UIView {
     var meetsShield=false
     var age=0.0,time=0.0
     var messages:[MeadowPartyMessage]=[]
+    var naturalTwenty=false
     var particles:[MeadowBattleLightParticle]=[]
     var recoveryLights:[(PartyPoint,Double)]=[]
     override init(frame:CGRect) { super.init(frame:frame);isOpaque=false;isUserInteractionEnabled=false }
@@ -312,7 +316,11 @@ private final class MeadowPartyEffectsView:UIView {
                     };ctx.restoreGState()
                 }
             }
-            if visual=="attack",let foot=PartyVisual.feet[intent.target] {
+            if intent.magical,let foot=PartyVisual.feet[intent.actor],let targetFoot=PartyVisual.feet[intent.target] {
+                let sample=LegendaryStaffRig.effect(age:age,foot:foot,target:PartyVisual.hitPoint(target:intent.target,shielded:meetsShield,weaponID:intent.weaponID),groundY:targetFoot.y,scale:PartyVisual.heroScale,naturalTwenty:naturalTwenty)
+                MeadowStaffEffectPainter.draw(sample,in:ctx)
+            }
+            if visual=="attack",!intent.magical,let foot=PartyVisual.feet[intent.target] {
                 let a=age-(intent.enemy ? 0.46:1.048),p=PartyVisual.hitPoint(target:intent.target,shielded:meetsShield,weaponID:intent.weaponID)
                 let power=PartyVisual.pulse(a,-0.035,0.035,0.52)
                 glow(p,140,140,power*0.48,.orange);glow(foot,170,30,power*0.65,.orange)
@@ -354,4 +362,49 @@ private final class MeadowPartyEffectsView:UIView {
             label.draw(at:CGPoint(x:p.x,y:p.y))
         }
     }
+}
+
+/// Both battle layouts draw the same continuously sampled staff geometry.
+enum MeadowStaffEffectPainter {
+    static func draw(_ q:StaffEffectSample,in ctx:CGContext) {
+        func glow(_ p:PartyPoint,_ rx:Double,_ ry:Double,_ alpha:Double) {
+            guard alpha>0 else { return }
+            MeadowBattleGlowCache.image(.systemCyan).draw(in:CGRect(x:p.x-rx,y:p.y-ry,width:rx*2,height:ry*2),blendMode:.plusLighter,alpha:CGFloat(min(1,alpha)))
+        }
+        let s=q.scale,p=q.impactPower
+        ctx.saveGState();ctx.setBlendMode(.plusLighter);ctx.setLineCap(.round)
+        glow(q.gem,48*s,40*s,q.charge*0.36)
+        if let head=q.head {
+            glow(head,40*s,30*s,0.45)
+            for (w,a) in [(13.0,0.41),(5.0,0.73),(2.0,0.98)] {
+                ctx.setStrokeColor((w==2 ? UIColor.white:UIColor.systemCyan).withAlphaComponent(a).cgColor);ctx.setLineWidth(w*s)
+                ctx.beginPath();for (i,p) in q.trail.enumerated() { if i==0 { ctx.move(to:CGPoint(x:p.x,y:p.y)) } else { ctx.addLine(to:CGPoint(x:p.x,y:p.y)) } };ctx.strokePath()
+            }
+            ctx.setFillColor(UIColor.white.withAlphaComponent(0.94).cgColor);ctx.fillEllipse(in:CGRect(x:head.x-5*s,y:head.y-5*s,width:10*s,height:10*s))
+        }
+        glow(q.impact,108*s,100*s,p*0.58);glow(q.ground,112*s,22*s,p*0.52)
+        if p>0 {
+            let r=q.burstRadius,x=q.impact.x,y=q.impact.y
+            let path=UIBezierPath();let pts=[CGPoint(x:x,y:y-r*1.4),CGPoint(x:x+r*0.23,y:y-r*0.2),CGPoint(x:x+r,y:y),CGPoint(x:x+r*0.23,y:y+r*0.2),CGPoint(x:x,y:y+r*1.4),CGPoint(x:x-r*0.23,y:y+r*0.2),CGPoint(x:x-r,y:y),CGPoint(x:x-r*0.23,y:y-r*0.2)]
+            path.move(to:pts[0]);for v in pts.dropFirst() { path.addLine(to:v) };path.close();UIColor.systemCyan.withAlphaComponent(min(0.8,p*0.78)).setFill();path.fill()
+            ctx.setFillColor(UIColor.white.withAlphaComponent(min(1,p)).cgColor);ctx.fillEllipse(in:CGRect(x:x-r*0.18,y:y-r*0.18,width:r*0.36,height:r*0.36))
+        }
+        for ray in q.rays {
+            ctx.setStrokeColor(UIColor.systemCyan.withAlphaComponent(ray.alpha).cgColor);ctx.setLineWidth(2*s);ctx.beginPath()
+            for (i,p) in ray.points.enumerated() { if i==0 { ctx.move(to:CGPoint(x:p.x,y:p.y)) } else { ctx.addLine(to:CGPoint(x:p.x,y:p.y)) } };ctx.strokePath()
+        }
+        for mote in q.motes {
+            let p=PartyPoint(mote.x,mote.y)
+            if mote.id%6==0 { glow(p,18*s,14*s,mote.alpha*0.2) }
+            ctx.setFillColor((mote.id%3==0 ? UIColor.white:UIColor.systemCyan).withAlphaComponent(mote.alpha).cgColor);ctx.fillEllipse(in:CGRect(x:p.x-mote.size/2,y:p.y-mote.size/2,width:mote.size,height:mote.size))
+            if abs(p.y-q.ground.y)<5*s { glow(p,24*s,6*s,mote.alpha*0.25) }
+        }
+        ctx.restoreGState()
+    }
+}
+final class MeadowStaffEffectsView:UIView {
+    var sample:StaffEffectSample?
+    override init(frame:CGRect) { super.init(frame:frame);isOpaque=false;isUserInteractionEnabled=false }
+    required init?(coder:NSCoder) { fatalError("init(coder:) has not been implemented") }
+    override func draw(_ rect:CGRect) { if let q=sample,let ctx=UIGraphicsGetCurrentContext() { MeadowStaffEffectPainter.draw(q,in:ctx) } }
 }

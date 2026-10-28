@@ -509,7 +509,7 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
                 self?.scene.selectP1Appearance(index);self?.refreshEquipmentMenu()
             }
         }
-        let weapons=[("trainingSword","训练短剑","1D6"),("huntingBow","猎弓","1D8"),("greatSword","重剑","1D12")]
+        let weapons=[("trainingSword","训练短剑","1D6"),("huntingBow","猎弓","1D8"),("greatSword","重剑","1D12"),("legendaryStaff","传奇权杖","1D20")]
         let actions=weapons.map { id,title,formula in
             UIAction(title:title+" · "+formula,image:UIImage(named:HeroFrames.weaponVisual(id)?.iconAsset ?? ""),state:unit.equipment.weapon==id ? .on:.off) { [weak self] _ in self?.equipP1Weapon(id) }
         }

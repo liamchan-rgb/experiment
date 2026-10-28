@@ -1,0 +1,18 @@
+{
+  "reviewer": "primary agent",
+  "nativeWalkingCellsViewed": 208,
+  "nativeBoardsViewed": 16,
+  "enlargedWalkingBoardsViewed": 4,
+  "walkingActualDecodedFramesViewed": 22,
+  "battleAndBodyActualDecodedFramesViewed": 950,
+  "battleAndBodySheetsViewed": 50,
+  "stateActualDecodedFramesViewed": 202,
+  "stateSheetsViewed": 11,
+  "sixStateWholeBodyPosesViewed": 30,
+  "sourceAttackCurvesPreserved": true,
+  "repairedFindings": [
+    "debris lifetime exceeded action duration, changed to land/bounce/fade before action close"
+  ],
+  "scope": "Whole-body and decoded-image art review, not UIKit/App/simulator/device run",
+  "newRuntimeArtApproval": null
+}

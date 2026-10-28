@@ -14,6 +14,7 @@ public final class TrainingLoadout {
         // Demo loan weapons in the camp inventory; catalog and prices stay original.
         p1.inventory["huntingBow"]=1
         p1.inventory["greatSword"]=1
+        p1.inventory["legendaryStaff"]=1
         var state=GameState(units:["p1":p1,"p2":p2],teams:[GameTeam(id:"party",name:"旅人小队")],map:map,random:RandomState(seed:seed))
         state.pauseReasons=[]
         engine=try GameEngine(catalog:catalog,state:state)

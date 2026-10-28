@@ -45,6 +45,7 @@ public struct PartyIntent {
     public let command:GameCommand
     public let enemy:Bool
     public let weaponID:String?
+    public var magical:Bool { weaponID=="legendaryStaff" && !enemy && action.visual=="attack" }
     public var ranged:Bool { weaponID=="huntingBow" && !enemy && action.isOffensive }
 }
 /// Uses the original atomic rule engine. Pending visual actions do not mutate it.

@@ -1,0 +1,341 @@
+[0/1] Planning build
+Building for debugging...
+[0/4] Write sources
+[1/4] Write swift-version--6CC1FD8C7F4CAE66.txt
+[3/6] Compiling MeadowBattleSupport LegendaryStaffEffects.swift
+[4/6] Emitting module MeadowBattleSupport
+[5/16] Wrapping AST for MeadowBattleSupport for debugging
+[7/20] Compiling MeadowBattleSupportTests LegendaryStaffTests.swift
+[8/20] Emitting module MeadowBattleSupportTests
+[9/20] /workspace/bow-r7-runtime-build/x86_64-unknown-linux-gnu/debug/ClassroomGameCorePackageDiscoveredTests.derived/all-discovered-tests.swift
+[10/21] Write sources
+[12/24] Compiling ClassroomGameCorePackageDiscoveredTests MeadowBattleSupportTests.swift
+[13/25] Compiling ClassroomGameCorePackageDiscoveredTests all-discovered-tests.swift
+[14/25] Compiling ClassroomGameCorePackageDiscoveredTests ClassroomGameCoreTests.swift
+[15/25] Emitting module ClassroomGameCorePackageDiscoveredTests
+[16/23] Write Objects.LinkFileList
+[18/23] Emitting module MeadowSupportReviewExport
+[19/23] Compiling MeadowSupportReviewExport ReviewExporter.swift
+[20/23] Write Objects.LinkFileList
+[21/23] Linking MeadowSupportReviewExport
+[22/23] Linking ClassroomGameCorePackageTests.xctest
+Build complete! (4.81s)
+Test Suite 'All tests' started at 2026-10-28 14:31:48.987
+Test Suite 'debug.xctest' started at 2026-10-28 14:31:48.989
+Test Suite 'AmbushTests' started at 2026-10-28 14:31:48.989
+Test Case 'AmbushTests.testAmbushMotionContactReturnAndHeadGroupAreContinuous' started at 2026-10-28 14:31:48.989
+Test Case 'AmbushTests.testAmbushMotionContactReturnAndHeadGroupAreContinuous' passed (0.039 seconds)
+Test Case 'AmbushTests.testAmbushOneReceiptDamagesEnemyHealsCasterAndCostsTwoAP' started at 2026-10-28 14:31:49.028
+Test Case 'AmbushTests.testAmbushOneReceiptDamagesEnemyHealsCasterAndCostsTwoAP' passed (0.003 seconds)
+Test Case 'AmbushTests.testFinalEnemyDefeatStillHealsCasterAndFullHealthDoesNotOverheal' started at 2026-10-28 14:31:49.031
+Test Case 'AmbushTests.testFinalEnemyDefeatStillHealsCasterAndFullHealthDoesNotOverheal' passed (0.007 seconds)
+Test Case 'AmbushTests.testSelectionExposesFixedAmountsButNeverRollsOrMutates' started at 2026-10-28 14:31:49.038
+Test Case 'AmbushTests.testSelectionExposesFixedAmountsButNeverRollsOrMutates' passed (0.108 seconds)
+Test Suite 'AmbushTests' passed at 2026-10-28 14:31:49.146
+	 Executed 4 tests, with 0 failures (0 unexpected) in 0.157 (0.157) seconds
+Test Suite 'BowTests' started at 2026-10-28 14:31:49.146
+Test Case 'BowTests.testBowInventoryTransferAndRealD8SingleAtomicHit' started at 2026-10-28 14:31:49.146
+Test Case 'BowTests.testBowInventoryTransferAndRealD8SingleAtomicHit' passed (0.006 seconds)
+Test Case 'BowTests.testCollapsedPoseSupportsHandAndReversesThroughSameRevivalFrames' started at 2026-10-28 14:31:49.152
+Test Case 'BowTests.testCollapsedPoseSupportsHandAndReversesThroughSameRevivalFrames' passed (0.085 seconds)
+Test Case 'BowTests.testDedicatedStatesKeepGripAndCanvasRegistrationWithoutDoubleRecoil' started at 2026-10-28 14:31:49.237
+Test Case 'BowTests.testDedicatedStatesKeepGripAndCanvasRegistrationWithoutDoubleRecoil' passed (0.013 seconds)
+Test Case 'BowTests.testGuardAndRecoilReturnToApprovedIdleWithoutArmReset' started at 2026-10-28 14:31:49.250
+Test Case 'BowTests.testGuardAndRecoilReturnToApprovedIdleWithoutArmReset' passed (0.0 seconds)
+Test Case 'BowTests.testNativePartsKeepTheirRegistrationsAndDrawingContactThroughAllSamples' started at 2026-10-28 14:31:49.251
+Test Case 'BowTests.testNativePartsKeepTheirRegistrationsAndDrawingContactThroughAllSamples' passed (0.004 seconds)
+Test Case 'BowTests.testPreparationBeginsAtConfirmationWithoutMovingReleaseOrImpactHold' started at 2026-10-28 14:31:49.255
+Test Case 'BowTests.testPreparationBeginsAtConfirmationWithoutMovingReleaseOrImpactHold' passed (0.0 seconds)
+Test Case 'BowTests.testProjectileDoesNotShrinkAtReleaseOrOvershootTheHit' started at 2026-10-28 14:31:49.255
+Test Case 'BowTests.testProjectileDoesNotShrinkAtReleaseOrOvershootTheHit' passed (0.0 seconds)
+Test Case 'BowTests.testProjectileVisibleOnlyAfterReleaseAndArrivesAtAtomicHitPoint' started at 2026-10-28 14:31:49.255
+Test Case 'BowTests.testProjectileVisibleOnlyAfterReleaseAndArrivesAtAtomicHitPoint' passed (0.0 seconds)
+Test Case 'BowTests.testReleaseClockAndRecoveryKeepTheReviewedPace' started at 2026-10-28 14:31:49.255
+Test Case 'BowTests.testReleaseClockAndRecoveryKeepTheReviewedPace' passed (0.0 seconds)
+Test Case 'BowTests.testReviewedFullDrawAndRelaxedShoulderReachRuntimeWithoutLegacyGeometry' started at 2026-10-28 14:31:49.255
+Test Case 'BowTests.testReviewedFullDrawAndRelaxedShoulderReachRuntimeWithoutLegacyGeometry' passed (0.0 seconds)
+Test Case 'BowTests.testVictoryWaitsForRecoveryAndLeavesFallenPlayersDown' started at 2026-10-28 14:31:49.255
+Test Case 'BowTests.testVictoryWaitsForRecoveryAndLeavesFallenPlayersDown' passed (0.003 seconds)
+Test Suite 'BowTests' passed at 2026-10-28 14:31:49.258
+	 Executed 11 tests, with 0 failures (0 unexpected) in 0.111 (0.111) seconds
+Test Suite 'EquipmentTests' started at 2026-10-28 14:31:49.258
+Test Case 'EquipmentTests.testBattleCopiesEquipmentAndRespectsUnarmedAttackAndBattleEquipRestrictions' started at 2026-10-28 14:31:49.258
+Test Case 'EquipmentTests.testBattleCopiesEquipmentAndRespectsUnarmedAttackAndBattleEquipRestrictions' passed (0.005 seconds)
+Test Case 'EquipmentTests.testEquipUnequipUsesOriginalInventoryTransferWithoutRefreshingResources' started at 2026-10-28 14:31:49.263
+Test Case 'EquipmentTests.testEquipUnequipUsesOriginalInventoryTransferWithoutRefreshingResources' passed (0.001 seconds)
+Test Case 'EquipmentTests.testVisualMappingIsAnActualCatalogItemAndBothAppearancesSupplyArmedAndEmptyAtlases' started at 2026-10-28 14:31:49.264
+Test Case 'EquipmentTests.testVisualMappingIsAnActualCatalogItemAndBothAppearancesSupplyArmedAndEmptyAtlases' passed (0.006 seconds)
+Test Suite 'EquipmentTests' passed at 2026-10-28 14:31:49.271
+	 Executed 3 tests, with 0 failures (0 unexpected) in 0.013 (0.013) seconds
+Test Suite 'GreatSwordTests' started at 2026-10-28 14:31:49.271
+Test Case 'GreatSwordTests.testContactTravelActuallyPutsTheBladeOnTheSameDamagePoint' started at 2026-10-28 14:31:49.271
+Test Case 'GreatSwordTests.testContactTravelActuallyPutsTheBladeOnTheSameDamagePoint' passed (0.003 seconds)
+Test Case 'GreatSwordTests.testContinuousProfileKeepsGripFaceAndGroundingRegistered' started at 2026-10-28 14:31:49.274
+Test Case 'GreatSwordTests.testContinuousProfileKeepsGripFaceAndGroundingRegistered' passed (0.008 seconds)
+Test Case 'GreatSwordTests.testD12AttackIsLockedOnceAndCommitsAtTheExistingSingleHit' started at 2026-10-28 14:31:49.282
+Test Case 'GreatSwordTests.testD12AttackIsLockedOnceAndCommitsAtTheExistingSingleHit' passed (0.004 seconds)
+Test Case 'GreatSwordTests.testEquipSwitchesTransferExactlyOneItemWithoutDuplicatingAnyWeapon' started at 2026-10-28 14:31:49.285
+Test Case 'GreatSwordTests.testEquipSwitchesTransferExactlyOneItemWithoutDuplicatingAnyWeapon' passed (0.102 seconds)
+Test Case 'GreatSwordTests.testHeavyStrikeKeepsItsSkillD6PlusTwoRatherThanUsingWeaponD12' started at 2026-10-28 14:31:49.387
+Test Case 'GreatSwordTests.testHeavyStrikeKeepsItsSkillD6PlusTwoRatherThanUsingWeaponD12' passed (0.004 seconds)
+Test Case 'GreatSwordTests.testMotionClockKeepsTheHitHoldAndReturnsToItsRestPose' started at 2026-10-28 14:31:49.391
+Test Case 'GreatSwordTests.testMotionClockKeepsTheHitHoldAndReturnsToItsRestPose' passed (0.001 seconds)
+Test Suite 'GreatSwordTests' passed at 2026-10-28 14:31:49.392
+	 Executed 6 tests, with 0 failures (0 unexpected) in 0.121 (0.121) seconds
+Test Suite 'LegendaryStaffTests' started at 2026-10-28 14:31:49.392
+Test Case 'LegendaryStaffTests.testClockGripAndRestContinuity' started at 2026-10-28 14:31:49.392
+Test Case 'LegendaryStaffTests.testClockGripAndRestContinuity' passed (0.012 seconds)
+Test Case 'LegendaryStaffTests.testD20LockedOnceWithNoPrematureDamage' started at 2026-10-28 14:31:49.405
+Test Case 'LegendaryStaffTests.testD20LockedOnceWithNoPrematureDamage' passed (0.004 seconds)
+Test Case 'LegendaryStaffTests.testDebrisLandsThenFadesBeforeActionCloses' started at 2026-10-28 14:31:49.408
+Test Case 'LegendaryStaffTests.testDebrisLandsThenFadesBeforeActionCloses' passed (0.003 seconds)
+Test Case 'LegendaryStaffTests.testHeavyStrikeRetainsSkillFormula' started at 2026-10-28 14:31:49.412
+Test Case 'LegendaryStaffTests.testHeavyStrikeRetainsSkillFormula' passed (0.004 seconds)
+Test Case 'LegendaryStaffTests.testInventoryAndSwitchingConserveFourWeapons' started at 2026-10-28 14:31:49.416
+Test Case 'LegendaryStaffTests.testInventoryAndSwitchingConserveFourWeapons' passed (0.002 seconds)
+Test Case 'LegendaryStaffTests.testNaturalTwentyComesFromOriginalRuleAndClearsHealthThroughShield' started at 2026-10-28 14:31:49.417
+Test Case 'LegendaryStaffTests.testNaturalTwentyComesFromOriginalRuleAndClearsHealthThroughShield' passed (0.044 seconds)
+Test Case 'LegendaryStaffTests.testParticleGroundContactsAreFiniteAndDoNotFallThroughFloor' started at 2026-10-28 14:31:49.461
+Test Case 'LegendaryStaffTests.testParticleGroundContactsAreFiniteAndDoNotFallThroughFloor' passed (0.012 seconds)
+Test Case 'LegendaryStaffTests.testProjectileStartsAtRealGemAndEndsAtDamagePointWithoutTeleporting' started at 2026-10-28 14:31:49.473
+Test Case 'LegendaryStaffTests.testProjectileStartsAtRealGemAndEndsAtDamagePointWithoutTeleporting' passed (0.001 seconds)
+Test Suite 'LegendaryStaffTests' passed at 2026-10-28 14:31:49.474
+	 Executed 8 tests, with 0 failures (0 unexpected) in 0.081 (0.081) seconds
+Test Suite 'LockedDiceTests' started at 2026-10-28 14:31:49.474
+Test Case 'LockedDiceTests.testCancelAndStaleReservationDoNotConsumeOrOverwriteState' started at 2026-10-28 14:31:49.474
+Test Case 'LockedDiceTests.testCancelAndStaleReservationDoNotConsumeOrOverwriteState' passed (0.003 seconds)
+Test Case 'LockedDiceTests.testConfirmationLandingHasContinuousRotationWithNoFinalJump' started at 2026-10-28 14:31:49.477
+Test Case 'LockedDiceTests.testConfirmationLandingHasContinuousRotationWithNoFinalJump' passed (0.005 seconds)
+Test Case 'LockedDiceTests.testConfirmationLandingStartsAtExactHoverPoseAndFinishesUprightBeforeImpact' started at 2026-10-28 14:31:49.482
+Test Case 'LockedDiceTests.testConfirmationLandingStartsAtExactHoverPoseAndFinishesUprightBeforeImpact' passed (0.005 seconds)
+Test Case 'LockedDiceTests.testConfirmationResolvesOnceWithoutApplyingDamageUntilImpact' started at 2026-10-28 14:31:49.487
+Test Case 'LockedDiceTests.testConfirmationResolvesOnceWithoutApplyingDamageUntilImpact' passed (0.003 seconds)
+Test Case 'LockedDiceTests.testEveryResolvedFaceAndNumeralAreUprightWithoutTimeDependentSkew' started at 2026-10-28 14:31:49.490
+Test Case 'LockedDiceTests.testEveryResolvedFaceAndNumeralAreUprightWithoutTimeDependentSkew' passed (0.003 seconds)
+Test Case 'LockedDiceTests.testLockedDiceAreImmediatelyStationaryAndDamageIsCenteredOnContact' started at 2026-10-28 14:31:49.493
+Test Case 'LockedDiceTests.testLockedDiceAreImmediatelyStationaryAndDamageIsCenteredOnContact' passed (0.0 seconds)
+Test Suite 'LockedDiceTests' passed at 2026-10-28 14:31:49.493
+	 Executed 6 tests, with 0 failures (0 unexpected) in 0.02 (0.02) seconds
+Test Suite 'PartyTests' started at 2026-10-28 14:31:49.493
+Test Case 'PartyTests.testBuffDamageAndActualRoundExpiry' started at 2026-10-28 14:31:49.493
+Test Case 'PartyTests.testBuffDamageAndActualRoundExpiry' passed (0.005 seconds)
+Test Case 'PartyTests.testDicePreviewDoesNotRollAndCommitShowsReceiptPlusBuff' started at 2026-10-28 14:31:49.498
+Test Case 'PartyTests.testDicePreviewDoesNotRollAndCommitShowsReceiptPlusBuff' passed (0.005 seconds)
+Test Case 'PartyTests.testDiceShakeSettlesContinuouslyWithoutChangingValues' started at 2026-10-28 14:31:49.503
+Test Case 'PartyTests.testDiceShakeSettlesContinuouslyWithoutChangingValues' passed (0.0 seconds)
+Test Case 'PartyTests.testEnemyStopsAtActualCircleSurface' started at 2026-10-28 14:31:49.503
+Test Case 'PartyTests.testEnemyStopsAtActualCircleSurface' passed (0.003 seconds)
+Test Case 'PartyTests.testFixedDiceSupportAndItemsKeepOriginalValues' started at 2026-10-28 14:31:49.506
+Test Case 'PartyTests.testFixedDiceSupportAndItemsKeepOriginalValues' passed (0.002 seconds)
+Test Case 'PartyTests.testGroupBuffAndMaxShieldAndCancellation' started at 2026-10-28 14:31:49.509
+Test Case 'PartyTests.testGroupBuffAndMaxShieldAndCancellation' passed (0.004 seconds)
+Test Case 'PartyTests.testHeadDiceClearEnemyBarDuringForwardStrike' started at 2026-10-28 14:31:49.512
+Test Case 'PartyTests.testHeadDiceClearEnemyBarDuringForwardStrike' passed (0.002 seconds)
+Test Case 'PartyTests.testImpactCadencesAndStaleCancellation' started at 2026-10-28 14:31:49.515
+Test Case 'PartyTests.testImpactCadencesAndStaleCancellation' passed (0.01 seconds)
+Test Case 'PartyTests.testMonsterIdleHitPreparationAndRecovery' started at 2026-10-28 14:31:49.525
+Test Case 'PartyTests.testMonsterIdleHitPreparationAndRecovery' passed (0.0 seconds)
+Test Case 'PartyTests.testRevivalConsumesOnceAndRetainsDownedPlayer' started at 2026-10-28 14:31:49.525
+Test Case 'PartyTests.testRevivalConsumesOnceAndRetainsDownedPlayer' passed (0.002 seconds)
+Test Case 'PartyTests.testSourceDefinitionsAndItems' started at 2026-10-28 14:31:49.527
+Test Case 'PartyTests.testSourceDefinitionsAndItems' passed (0.003 seconds)
+Test Case 'PartyTests.testSupportAtomicAndReplay' started at 2026-10-28 14:31:49.530
+Test Case 'PartyTests.testSupportAtomicAndReplay' passed (0.003 seconds)
+Test Suite 'PartyTests' passed at 2026-10-28 14:31:49.533
+	 Executed 12 tests, with 0 failures (0 unexpected) in 0.04 (0.04) seconds
+Test Suite 'PolyDiceTests' started at 2026-10-28 14:31:49.533
+Test Case 'PolyDiceTests.testClosedConvexPolyhedraHaveCorrectFacesAndNumbers' started at 2026-10-28 14:31:49.533
+Test Case 'PolyDiceTests.testClosedConvexPolyhedraHaveCorrectFacesAndNumbers' passed (0.0 seconds)
+Test Case 'PolyDiceTests.testEveryResultLandsOnItsOwnFaceAndNumbersStayAttached' started at 2026-10-28 14:31:49.534
+Test Case 'PolyDiceTests.testEveryResultLandsOnItsOwnFaceAndNumbersStayAttached' passed (0.001 seconds)
+Test Case 'PolyDiceTests.testPreviewUsesActualWeaponDiceAndAllSkillDiceRatherThanD6Fallback' started at 2026-10-28 14:31:49.535
+Test Case 'PolyDiceTests.testPreviewUsesActualWeaponDiceAndAllSkillDiceRatherThanD6Fallback' passed (0.002 seconds)
+Test Case 'PolyDiceTests.testRolledHealingUsesItsOwnD4FormulaWithoutInventingD6' started at 2026-10-28 14:31:49.537
+Test Case 'PolyDiceTests.testRolledHealingUsesItsOwnD4FormulaWithoutInventingD6' passed (0.003 seconds)
+Test Case 'PolyDiceTests.testRotationFlipsFacesAndContinuesThroughReceiptWithoutJump' started at 2026-10-28 14:31:49.540
+Test Case 'PolyDiceTests.testRotationFlipsFacesAndContinuesThroughReceiptWithoutJump' passed (0.0 seconds)
+Test Case 'PolyDiceTests.testWeaponReceiptValuesAndFixedBuffRemainSeparate' started at 2026-10-28 14:31:49.540
+Test Case 'PolyDiceTests.testWeaponReceiptValuesAndFixedBuffRemainSeparate' passed (0.002 seconds)
+Test Suite 'PolyDiceTests' passed at 2026-10-28 14:31:49.542
+	 Executed 6 tests, with 0 failures (0 unexpected) in 0.009 (0.009) seconds
+Test Suite 'CatalogTests' started at 2026-10-28 14:31:49.542
+Test Case 'CatalogTests.testAllPricesMonsterStatsAndIndependentRareDrops' started at 2026-10-28 14:31:49.542
+Test Case 'CatalogTests.testAllPricesMonsterStatsAndIndependentRareDrops' passed (0.001 seconds)
+Test Case 'CatalogTests.testAllTwelveClassSkillsAndBothSetSkillsMatchTheSpecification' started at 2026-10-28 14:31:49.543
+Test Case 'CatalogTests.testAllTwelveClassSkillsAndBothSetSkillsMatchTheSpecification' passed (0.002 seconds)
+Test Case 'CatalogTests.testConfirmedInitialCountsAndClassProfiles' started at 2026-10-28 14:31:49.545
+Test Case 'CatalogTests.testConfirmedInitialCountsAndClassProfiles' passed (0.002 seconds)
+Test Case 'CatalogTests.testInvalidReferencesAndProbabilitiesAreRejected' started at 2026-10-28 14:31:49.546
+Test Case 'CatalogTests.testInvalidReferencesAndProbabilitiesAreRejected' passed (0.004 seconds)
+Test Suite 'CatalogTests' passed at 2026-10-28 14:31:49.551
+	 Executed 4 tests, with 0 failures (0 unexpected) in 0.009 (0.009) seconds
+Test Suite 'CombatTests' started at 2026-10-28 14:31:49.551
+Test Case 'CombatTests.testAPRefillPreservesStoredPointsAndSkillUses' started at 2026-10-28 14:31:49.551
+Test Case 'CombatTests.testAPRefillPreservesStoredPointsAndSkillUses' passed (0.002 seconds)
+Test Case 'CombatTests.testAllPlayersDownPausesWithoutPenaltiesAndTeacherCanRevive' started at 2026-10-28 14:31:49.553
+Test Case 'CombatTests.testAllPlayersDownPausesWithoutPenaltiesAndTeacherCanRevive' passed (0.002 seconds)
+Test Case 'CombatTests.testBuffLifetimeRefreshAndNewBattleSkillReset' started at 2026-10-28 14:31:49.555
+Test Case 'CombatTests.testBuffLifetimeRefreshAndNewBattleSkillReset' passed (0.004 seconds)
+Test Case 'CombatTests.testGroupTwentyAllRewardsSelfEffectsAndUndoAreOneTransaction' started at 2026-10-28 14:31:49.559
+Test Case 'CombatTests.testGroupTwentyAllRewardsSelfEffectsAndUndoAreOneTransaction' passed (0.002 seconds)
+Test Case 'CombatTests.testInvalidActionAndPersistenceFailureNeverConsumeResourcesOrRandom' started at 2026-10-28 14:31:49.561
+Test Case 'CombatTests.testInvalidActionAndPersistenceFailureNeverConsumeResourcesOrRandom' passed (0.002 seconds)
+Test Case 'CombatTests.testInvalidRescueCasesAreAtomic' started at 2026-10-28 14:31:49.563
+Test Case 'CombatTests.testInvalidRescueCasesAreAtomic' passed (0.002 seconds)
+Test Case 'CombatTests.testLateMonsterIsImmediatelyAttackableButWaitsForNextRound' started at 2026-10-28 14:31:49.565
+Test Case 'CombatTests.testLateMonsterIsImmediatelyAttackableButWaitsForNextRound' passed (0.002 seconds)
+Test Case 'CombatTests.testManualEndKeepsAPButTimeoutClearsItAndAdvances' started at 2026-10-28 14:31:49.567
+Test Case 'CombatTests.testManualEndKeepsAPButTimeoutClearsItAndAdvances' passed (0.002 seconds)
+Test Case 'CombatTests.testMinimumDamageStillHitsAndShieldAbsorbsFirst' started at 2026-10-28 14:31:49.569
+Test Case 'CombatTests.testMinimumDamageStillHitsAndShieldAbsorbsFirst' passed (0.002 seconds)
+Test Case 'CombatTests.testMonsterRecoveryCanOnlyBeUsedOncePerTurn' started at 2026-10-28 14:31:49.570
+Test Case 'CombatTests.testMonsterRecoveryCanOnlyBeUsedOncePerTurn' passed (0.002 seconds)
+Test Case 'CombatTests.testMovementAttackMovementConsumesActualAPAndResetsDecisionClock' started at 2026-10-28 14:31:49.572
+Test Case 'CombatTests.testMovementAttackMovementConsumesActualAPAndResetsDecisionClock' passed (0.002 seconds)
+Test Case 'CombatTests.testNaturalTwentyKillsBossButEighteenPlusTwoDoesNot' started at 2026-10-28 14:31:49.574
+Test Case 'CombatTests.testNaturalTwentyKillsBossButEighteenPlusTwoDoesNot' passed (0.002 seconds)
+Test Case 'CombatTests.testPauseReasonsStackAndRemainingTimeIsExact' started at 2026-10-28 14:31:49.576
+Test Case 'CombatTests.testPauseReasonsStackAndRemainingTimeIsExact' passed (0.001 seconds)
+Test Case 'CombatTests.testRescueHalfHealthAndEligibilityStartsNextRound' started at 2026-10-28 14:31:49.577
+Test Case 'CombatTests.testRescueHalfHealthAndEligibilityStartsNextRound' passed (0.002 seconds)
+Test Suite 'CombatTests' passed at 2026-10-28 14:31:49.579
+	 Executed 14 tests, with 0 failures (0 unexpected) in 0.028 (0.028) seconds
+Test Suite 'EdgeRuleTests' started at 2026-10-28 14:31:49.579
+Test Case 'EdgeRuleTests.testAnyDamageD20CanTriggerInstantKillButHealingTwentyCannot' started at 2026-10-28 14:31:49.579
+Test Case 'EdgeRuleTests.testAnyDamageD20CanTriggerInstantKillButHealingTwentyCannot' passed (0.002 seconds)
+Test Case 'EdgeRuleTests.testLastLivingPvPFactionWinsAfterKnockoutPointsAreIncluded' started at 2026-10-28 14:31:49.581
+Test Case 'EdgeRuleTests.testLastLivingPvPFactionWinsAfterKnockoutPointsAreIncluded' passed (0.001 seconds)
+Test Case 'EdgeRuleTests.testNaturalTwentyAlsoDefeatsShieldedPvPPlayer' started at 2026-10-28 14:31:49.582
+Test Case 'EdgeRuleTests.testNaturalTwentyAlsoDefeatsShieldedPvPPlayer' passed (0.001 seconds)
+Test Case 'EdgeRuleTests.testShieldTakesMaximumPersistsAfterBattleAndClearsOnDown' started at 2026-10-28 14:31:49.583
+Test Case 'EdgeRuleTests.testShieldTakesMaximumPersistsAfterBattleAndClearsOnDown' passed (0.002 seconds)
+Test Case 'EdgeRuleTests.testSpendingLastActionPointAdvancesOnlyAfterDamageResolves' started at 2026-10-28 14:31:49.585
+Test Case 'EdgeRuleTests.testSpendingLastActionPointAdvancesOnlyAfterDamageResolves' passed (0.002 seconds)
+Test Case 'EdgeRuleTests.testWeakerBuffDoesNotReplaceOrRefreshStrongerBuff' started at 2026-10-28 14:31:49.587
+Test Case 'EdgeRuleTests.testWeakerBuffDoesNotReplaceOrRefreshStrongerBuff' passed (0.001 seconds)
+Test Suite 'EdgeRuleTests' passed at 2026-10-28 14:31:49.588
+	 Executed 6 tests, with 0 failures (0 unexpected) in 0.009 (0.009) seconds
+Test Suite 'ExampleTests' started at 2026-10-28 14:31:49.588
+Test Case 'ExampleTests.testAllTeacherExamplesRunTheRealEngineAndMeetTheirChecks' started at 2026-10-28 14:31:49.588
+Test Case 'ExampleTests.testAllTeacherExamplesRunTheRealEngineAndMeetTheirChecks' passed (0.008 seconds)
+Test Suite 'ExampleTests' passed at 2026-10-28 14:31:49.595
+	 Executed 1 test, with 0 failures (0 unexpected) in 0.008 (0.008) seconds
+Test Suite 'IntegrationBoundaryTests' started at 2026-10-28 14:31:49.596
+Test Case 'IntegrationBoundaryTests.testFailedUnpauseKeepsClockFrozenAndShortcutSevenAlwaysMeansHost' started at 2026-10-28 14:31:49.596
+Test Case 'IntegrationBoundaryTests.testFailedUnpauseKeepsClockFrozenAndShortcutSevenAlwaysMeansHost' passed (0.002 seconds)
+Test Case 'IntegrationBoundaryTests.testMovementActivatesMonsterImmediatelyButItsAutomaticTurnWaitsNextRound' started at 2026-10-28 14:31:49.597
+Test Case 'IntegrationBoundaryTests.testMovementActivatesMonsterImmediatelyButItsAutomaticTurnWaitsNextRound' passed (0.002 seconds)
+Test Case 'IntegrationBoundaryTests.testThreeClassesCompleteMixedBattleUsingInteractionAndAutomaticSteps' started at 2026-10-28 14:31:49.599
+Test Case 'IntegrationBoundaryTests.testThreeClassesCompleteMixedBattleUsingInteractionAndAutomaticSteps' passed (0.016 seconds)
+Test Suite 'IntegrationBoundaryTests' passed at 2026-10-28 14:31:49.614
+	 Executed 3 tests, with 0 failures (0 unexpected) in 0.019 (0.019) seconds
+Test Suite 'MapPresentationTests' started at 2026-10-28 14:31:49.615
+Test Case 'MapPresentationTests.testAvailabilityAndInventoryReadActualStateWithoutPrivateSelectionOrDice' started at 2026-10-28 14:31:49.615
+Test Case 'MapPresentationTests.testAvailabilityAndInventoryReadActualStateWithoutPrivateSelectionOrDice' passed (0.002 seconds)
+Test Case 'MapPresentationTests.testCameraDoesNotRevealHiddenNodesOrChangeSaveData' started at 2026-10-28 14:31:49.617
+Test Case 'MapPresentationTests.testCameraDoesNotRevealHiddenNodesOrChangeSaveData' passed (0.001 seconds)
+Test Case 'MapPresentationTests.testCameraKeepsFocusAndClampsOnlyDisplayCoordinates' started at 2026-10-28 14:31:49.618
+Test Case 'MapPresentationTests.testCameraKeepsFocusAndClampsOnlyDisplayCoordinates' passed (0.0 seconds)
+Test Case 'MapPresentationTests.testCoincidentOffscreenPlayersStaySeparateAndPointTowardTheirPosition' started at 2026-10-28 14:31:49.618
+Test Case 'MapPresentationTests.testCoincidentOffscreenPlayersStaySeparateAndPointTowardTheirPosition' passed (0.0 seconds)
+Test Case 'MapPresentationTests.testCommittedGroupMoveUsesActualEncounterStopsAndNeverReplays' started at 2026-10-28 14:31:49.619
+Test Case 'MapPresentationTests.testCommittedGroupMoveUsesActualEncounterStopsAndNeverReplays' passed (0.002 seconds)
+Test Case 'MapPresentationTests.testCommittedRoundTripStillAnimatesEveryActualStop' started at 2026-10-28 14:31:49.621
+Test Case 'MapPresentationTests.testCommittedRoundTripStillAnimatesEveryActualStop' passed (0.002 seconds)
+Test Case 'MapPresentationTests.testSmallTeacherViewportGroupsCrowdedMarkersWithoutLosingPlayers' started at 2026-10-28 14:31:49.622
+Test Case 'MapPresentationTests.testSmallTeacherViewportGroupsCrowdedMarkersWithoutLosingPlayers' passed (0.001 seconds)
+Test Suite 'MapPresentationTests' passed at 2026-10-28 14:31:49.623
+	 Executed 7 tests, with 0 failures (0 unexpected) in 0.008 (0.008) seconds
+Test Suite 'MonsterAITests' started at 2026-10-28 14:31:49.623
+Test Case 'MonsterAITests.testAIContinuesOrdinaryAttacksAndEndsWhenAPIsExhausted' started at 2026-10-28 14:31:49.623
+Test Case 'MonsterAITests.testAIContinuesOrdinaryAttacksAndEndsWhenAPIsExhausted' passed (0.002 seconds)
+Test Case 'MonsterAITests.testMonsterNaturalTwentyPausesAllDownAndNoMoreAutoStepsRun' started at 2026-10-28 14:31:49.625
+Test Case 'MonsterAITests.testMonsterNaturalTwentyPausesAllDownAndNoMoreAutoStepsRun' passed (0.002 seconds)
+Test Case 'MonsterAITests.testNearestEnemyMovesThenAttacksWithoutDecisionClock' started at 2026-10-28 14:31:49.626
+Test Case 'MonsterAITests.testNearestEnemyMovesThenAttacksWithoutDecisionClock' passed (0.002 seconds)
+Test Case 'MonsterAITests.testNearestTieDrawRecordedAndEntireAIStepUndoRestoresRandom' started at 2026-10-28 14:31:49.628
+Test Case 'MonsterAITests.testNearestTieDrawRecordedAndEntireAIStepUndoRestoresRandom' passed (0.001 seconds)
+Test Case 'MonsterAITests.testPausedAIAndFailedSaveDoNotSelectTargetsOrSpendPoints' started at 2026-10-28 14:31:49.629
+Test Case 'MonsterAITests.testPausedAIAndFailedSaveDoNotSelectTargetsOrSpendPoints' passed (0.002 seconds)
+Test Case 'MonsterAITests.testRandomTargetIsSavedAcrossMovementAndRestoreAndRetargetsOnlyWhenInvalid' started at 2026-10-28 14:31:49.631
+Test Case 'MonsterAITests.testRandomTargetIsSavedAcrossMovementAndRestoreAndRetargetsOnlyWhenInvalid' passed (0.01 seconds)
+Test Case 'MonsterAITests.testRecoveryPriorityOnceThenAttackAndRoundRefill' started at 2026-10-28 14:31:49.641
+Test Case 'MonsterAITests.testRecoveryPriorityOnceThenAttackAndRoundRefill' passed (0.002 seconds)
+Test Suite 'MonsterAITests' passed at 2026-10-28 14:31:49.642
+	 Executed 7 tests, with 0 failures (0 unexpected) in 0.019 (0.019) seconds
+Test Suite 'PVEFlowTests' started at 2026-10-28 14:31:49.642
+Test Case 'PVEFlowTests.testAllCompleteEffectsAndVictoryViaPlayerInteractionInTwentyScenario' started at 2026-10-28 14:31:49.642
+Test Case 'PVEFlowTests.testAllCompleteEffectsAndVictoryViaPlayerInteractionInTwentyScenario' passed (0.002 seconds)
+Test Case 'PVEFlowTests.testContinuousPathStopsAtFirstEnemyAndAllPlayersJoinAtOriginalPositions' started at 2026-10-28 14:31:49.644
+Test Case 'PVEFlowTests.testContinuousPathStopsAtFirstEnemyAndAllPlayersJoinAtOriginalPositions' passed (0.002 seconds)
+Test Case 'PVEFlowTests.testGroupMovementCannotPartlySpendAndRewardTargetsAreSeparate' started at 2026-10-28 14:31:49.646
+Test Case 'PVEFlowTests.testGroupMovementCannotPartlySpendAndRewardTargetsAreSeparate' passed (0.001 seconds)
+Test Case 'PVEFlowTests.testMovingAttackMovingUsesActualActorAndDoesNotChangeRewardSelection' started at 2026-10-28 14:31:49.647
+Test Case 'PVEFlowTests.testMovingAttackMovingUsesActualActorAndDoesNotChangeRewardSelection' passed (0.002 seconds)
+Test Case 'PVEFlowTests.testPreviewSelectionsAndInvalidCommandsNeverRollSaveOrResetClock' started at 2026-10-28 14:31:49.649
+Test Case 'PVEFlowTests.testPreviewSelectionsAndInvalidCommandsNeverRollSaveOrResetClock' passed (0.002 seconds)
+Test Case 'PVEFlowTests.testPublicPlayProjectionAndLogHideUndiscoveredMonsterNamesAndDropChecks' started at 2026-10-28 14:31:49.651
+Test Case 'PVEFlowTests.testPublicPlayProjectionAndLogHideUndiscoveredMonsterNamesAndDropChecks' passed (0.003 seconds)
+Test Case 'PVEFlowTests.testRescueAndPersonalPotionThroughInteractionController' started at 2026-10-28 14:31:49.653
+Test Case 'PVEFlowTests.testRescueAndPersonalPotionThroughInteractionController' passed (0.002 seconds)
+Test Case 'PVEFlowTests.testResourceEditingIsOneAtomicOperationAndDoesNotAwardTeacherMonsterKills' started at 2026-10-28 14:31:49.655
+Test Case 'PVEFlowTests.testResourceEditingIsOneAtomicOperationAndDoesNotAwardTeacherMonsterKills' passed (0.002 seconds)
+Test Case 'PVEFlowTests.testSetupSixStudentsAndHostAndRejectsInvalidParticipation' started at 2026-10-28 14:31:49.657
+Test Case 'PVEFlowTests.testSetupSixStudentsAndHostAndRejectsInvalidParticipation' passed (0.003 seconds)
+Test Case 'PVEFlowTests.testTimeoutClearsPendingTargetsInsteadOfAttackingAsNextPlayer' started at 2026-10-28 14:31:49.659
+Test Case 'PVEFlowTests.testTimeoutClearsPendingTargetsInsteadOfAttackingAsNextPlayer' passed (0.001 seconds)
+Test Suite 'PVEFlowTests' passed at 2026-10-28 14:31:49.661
+	 Executed 10 tests, with 0 failures (0 unexpected) in 0.018 (0.018) seconds
+Test Suite 'PresentationTests' started at 2026-10-28 14:31:49.661
+Test Case 'PresentationTests.testActualRewardDeltasNoAPAndNoTurnChange' started at 2026-10-28 14:31:49.661
+Test Case 'PresentationTests.testActualRewardDeltasNoAPAndNoTurnChange' passed (0.002 seconds)
+Test Case 'PresentationTests.testExplorationDoesNotPublishUncommittedActorOrSkillSelection' started at 2026-10-28 14:31:49.662
+Test Case 'PresentationTests.testExplorationDoesNotPublishUncommittedActorOrSkillSelection' passed (0.002 seconds)
+Test Case 'PresentationTests.testNaturalTwentyPresentationNeverReexecutesAndRestoresSuppressed' started at 2026-10-28 14:31:49.664
+Test Case 'PresentationTests.testNaturalTwentyPresentationNeverReexecutesAndRestoresSuppressed' passed (0.002 seconds)
+Test Case 'PresentationTests.testPausePanelsAndReadOnlyLegalityPreserveRemainingAndRandom' started at 2026-10-28 14:31:49.666
+Test Case 'PresentationTests.testPausePanelsAndReadOnlyLegalityPreserveRemainingAndRandom' passed (0.002 seconds)
+Test Case 'PresentationTests.testRescueProjectionKeepsNextRoundAndOneResultGroup' started at 2026-10-28 14:31:49.668
+Test Case 'PresentationTests.testRescueProjectionKeepsNextRoundAndOneResultGroup' passed (0.002 seconds)
+Test Case 'PresentationTests.testSevenPlayersMixedQueueAndLiveSkillDefinitions' started at 2026-10-28 14:31:49.670
+Test Case 'PresentationTests.testSevenPlayersMixedQueueAndLiveSkillDefinitions' passed (0.002 seconds)
+Test Case 'PresentationTests.testUnknownBossAndRewardProduceIdenticalPublicProjection' started at 2026-10-28 14:31:49.672
+Test Case 'PresentationTests.testUnknownBossAndRewardProduceIdenticalPublicProjection' passed (0.002 seconds)
+Test Suite 'PresentationTests' passed at 2026-10-28 14:31:49.673
+	 Executed 7 tests, with 0 failures (0 unexpected) in 0.012 (0.012) seconds
+Test Suite 'StateAndScoringTests' started at 2026-10-28 14:31:49.673
+Test Case 'StateAndScoringTests.testArchiveAndAtomicStoreRestoreCompleteStatePausedAndDoNotMutateTemplates' started at 2026-10-28 14:31:49.673
+Test Case 'StateAndScoringTests.testArchiveAndAtomicStoreRestoreCompleteStatePausedAndDoNotMutateTemplates' passed (0.006 seconds)
+Test Case 'StateAndScoringTests.testBothSetThresholdsAccumulateWithoutHealingOrRefilling' started at 2026-10-28 14:31:49.679
+Test Case 'StateAndScoringTests.testBothSetThresholdsAccumulateWithoutHealingOrRefilling' passed (0.002 seconds)
+Test Case 'StateAndScoringTests.testGroupMoveFailureAndEncounterStopAreAtomic' started at 2026-10-28 14:31:49.681
+Test Case 'StateAndScoringTests.testGroupMoveFailureAndEncounterStopAreAtomic' passed (0.002 seconds)
+Test Case 'StateAndScoringTests.testMultipleRewardsRespectCapWithoutChangingCurrentActor' started at 2026-10-28 14:31:49.683
+Test Case 'StateAndScoringTests.testMultipleRewardsRespectCapWithoutChangingCurrentActor' passed (0.002 seconds)
+Test Case 'StateAndScoringTests.testNoSurvivingPvPFactionWaitsForTeacherAndScoreTiesArePreserved' started at 2026-10-28 14:31:49.685
+Test Case 'StateAndScoringTests.testNoSurvivingPvPFactionWaitsForTeacherAndScoreTiesArePreserved' passed (0.002 seconds)
+Test Case 'StateAndScoringTests.testPublicProjectionOmitsUnrevealedContentsAndPrivateSimulationState' started at 2026-10-28 14:31:49.686
+Test Case 'StateAndScoringTests.testPublicProjectionOmitsUnrevealedContentsAndPrivateSimulationState' passed (0.001 seconds)
+Test Case 'StateAndScoringTests.testPvPKnockoutCanScoreAgainAfterReviveWithoutDroppingAssets' started at 2026-10-28 14:31:49.688
+Test Case 'StateAndScoringTests.testPvPKnockoutCanScoreAgainAfterReviveWithoutDroppingAssets' passed (0.002 seconds)
+Test Case 'StateAndScoringTests.testRollbackDropsFutureBranchAndRestoresRandomAndWholeOperations' started at 2026-10-28 14:31:49.690
+Test Case 'StateAndScoringTests.testRollbackDropsFutureBranchAndRestoresRandomAndWholeOperations' passed (0.002 seconds)
+Test Case 'StateAndScoringTests.testSetSkillUsageDoesNotResetWhenUnequippingAndReequipping' started at 2026-10-28 14:31:49.691
+Test Case 'StateAndScoringTests.testSetSkillUsageDoesNotResetWhenUnequippingAndReequipping' passed (0.002 seconds)
+Test Case 'StateAndScoringTests.testSevenPlayersIncludingHostHaveIndependentResourcesAndRankingTies' started at 2026-10-28 14:31:49.693
+Test Case 'StateAndScoringTests.testSevenPlayersIncludingHostHaveIndependentResourcesAndRankingTies' passed (0.002 seconds)
+Test Case 'StateAndScoringTests.testSharedNodeRewardIsClaimedOnceAndUndoRestoresAllArrivalEffects' started at 2026-10-28 14:31:49.695
+Test Case 'StateAndScoringTests.testSharedNodeRewardIsClaimedOnceAndUndoRestoresAllArrivalEffects' passed (0.002 seconds)
+Test Case 'StateAndScoringTests.testTeacherKillWithoutOwnerDoesNotAutoPayButExplicitAttributionCan' started at 2026-10-28 14:31:49.697
+Test Case 'StateAndScoringTests.testTeacherKillWithoutOwnerDoesNotAutoPayButExplicitAttributionCan' passed (0.002 seconds)
+Test Case 'StateAndScoringTests.testTeamSupportAndRescueUseCurrentBattleFaction' started at 2026-10-28 14:31:49.698
+Test Case 'StateAndScoringTests.testTeamSupportAndRescueUseCurrentBattleFaction' passed (0.002 seconds)
+Test Suite 'StateAndScoringTests' passed at 2026-10-28 14:31:49.700
+	 Executed 13 tests, with 0 failures (0 unexpected) in 0.027 (0.027) seconds
+Test Suite 'debug.xctest' passed at 2026-10-28 14:31:49.700
+	 Executed 128 tests, with 0 failures (0 unexpected) in 0.708 (0.708) seconds
+Test Suite 'All tests' passed at 2026-10-28 14:31:49.700
+	 Executed 128 tests, with 0 failures (0 unexpected) in 0.708 (0.708) seconds
+◇ Test run started.
+↳ Testing Library Version: 6.0.3 (18c42c19cac3faf)
+✔ Test run with 0 tests passed after 0.001 seconds.

@@ -55,6 +55,8 @@ final class MeadowBattleLandscapeView: UIView {
     private var lastDeathFrame = -1
     private var savedImpact = CGPoint.zero
     private var attackContactPoint = CGPoint.zero
+    private var usesStaff=false
+    private let staffEffects=MeadowStaffEffectsView(frame:.zero)
     private var usesBow=false
     private var usesGreatSword=false
     private let greatSwordTrail=CAShapeLayer()
@@ -271,7 +273,7 @@ final class MeadowBattleLandscapeView: UIView {
         renderAnimation()
     }
 
-    func configureWeapon(_ asset:String?) { usesGreatSword=asset=="MeadowBattleGreatSword";usesBow=asset=="MeadowBattleHuntingBow";if bowArrow.superlayer==nil { world.layer.addSublayer(bowArrow);bowArrow.zPosition=1000;bowArrow.strokeColor=MeadowPreviewPalette.ink.cgColor;bowArrow.lineWidth=2;bowArrow.shadowColor=MeadowPreviewPalette.gold.cgColor;bowArrow.shadowOpacity=0.7;bowArrow.shadowRadius=5 };if greatSwordTrail.superlayer==nil { world.layer.addSublayer(greatSwordTrail);greatSwordTrail.zPosition=999;greatSwordTrail.fillColor=UIColor.clear.cgColor;greatSwordTrail.strokeColor=MeadowPreviewPalette.ink.cgColor;greatSwordTrail.lineWidth=2.5;greatSwordTrail.lineCap = .round;greatSwordTrail.shadowColor=MeadowPreviewPalette.gold.cgColor;greatSwordTrail.shadowRadius=6;greatSwordTrail.shadowOpacity=0.8 };hero.setWeaponAsset(asset);lastShadowPose="";renderAnimation() }
+    func configureWeapon(_ asset:String?) { usesStaff=asset=="MeadowBattleLegendaryStaff";usesGreatSword=asset=="MeadowBattleGreatSword";usesBow=asset=="MeadowBattleHuntingBow";if bowArrow.superlayer==nil { world.layer.addSublayer(bowArrow);bowArrow.zPosition=1000;bowArrow.strokeColor=MeadowPreviewPalette.ink.cgColor;bowArrow.lineWidth=2;bowArrow.shadowColor=MeadowPreviewPalette.gold.cgColor;bowArrow.shadowOpacity=0.7;bowArrow.shadowRadius=5 };if greatSwordTrail.superlayer==nil { world.layer.addSublayer(greatSwordTrail);greatSwordTrail.zPosition=999;greatSwordTrail.fillColor=UIColor.clear.cgColor;greatSwordTrail.strokeColor=MeadowPreviewPalette.ink.cgColor;greatSwordTrail.lineWidth=2.5;greatSwordTrail.lineCap = .round;greatSwordTrail.shadowColor=MeadowPreviewPalette.gold.cgColor;greatSwordTrail.shadowRadius=6;greatSwordTrail.shadowOpacity=0.8 };if staffEffects.superview==nil { world.addSubview(staffEffects);staffEffects.layer.zPosition=1000 };hero.setWeaponAsset(asset);lastShadowPose="";renderAnimation() }
     @objc private func selectEnemy() { onEnemySelected?() }
 
     func setEncounter(heroHP: Int, enemyHP: Int, shield: Int, selected: Bool) {
@@ -462,12 +464,12 @@ final class MeadowBattleLandscapeView: UIView {
         if let cue {
             switch cue {
             case .strike:
-                clip = "attack"; poseProgress = usesBow ? CGFloat(BowRig.progress(age:cueElapsed)):usesGreatSword ? CGFloat(GreatSwordRig.progress(age:cueElapsed)):p
+                clip = "attack"; poseProgress = usesBow ? CGFloat(BowRig.progress(age:cueElapsed)):usesGreatSword ? CGFloat(GreatSwordRig.progress(age:cueElapsed)):usesStaff ? CGFloat(LegendaryStaffRig.progress(age:cueElapsed)):p
                 let contact = MeadowBattleAnimation.sample(clip: "attack", progress: 0.54)
                 let tip = transformPoint(CGPoint(x: 191, y: 142), part: contact.layers["MeadowBattleHeroWeapon"] ?? .init())
                 let heroReach = baseHeroFrame.minX + (tip.x + contact.rootOffset.x) / 256 * baseHeroFrame.width
                 let enemyFront = baseEnemyFrame.minX + 125 / 384 * baseEnemyFrame.width
-                heroTravel = usesBow ? 0:min(canvas.bounds.width * 0.22, max(0, enemyFront - heroReach)) * approach()
+                heroTravel = usesBow || usesStaff ? 0:min(canvas.bounds.width * 0.22, max(0, enemyFront - heroReach)) * approach()
                 if usesGreatSword {
                     let s=Double(baseHeroFrame.width/256)
                     let from=PartyPoint(Double(baseHeroFrame.minX+123*baseHeroFrame.width/256),Double(baseHeroFrame.minY+214*baseHeroFrame.height/256))
@@ -493,6 +495,15 @@ final class MeadowBattleLandscapeView: UIView {
             case .defeat: clip = "defeat"; poseProgress = p; hero.alpha = 1 - p * 0.35
             }
         }
+        staffEffects.frame=world.bounds
+        staffEffects.sample=nil
+        if usesStaff,cue == .strike {
+            let s=Double(baseHeroFrame.width/256)
+            let from=PartyPoint(Double(baseHeroFrame.minX+123*baseHeroFrame.width/256),Double(baseHeroFrame.minY+214*baseHeroFrame.height/256))
+            let to=PartyPoint(Double(baseEnemyFrame.minX+94*baseEnemyFrame.width/384),Double(baseEnemyFrame.minY+152*baseEnemyFrame.height/256))
+            staffEffects.sample=LegendaryStaffRig.effect(age:cueElapsed,foot:from,target:to,groundY:Double(baseEnemyFrame.minY+240*baseEnemyFrame.height/256),scale:s)
+        }
+        staffEffects.setNeedsDisplay()
         greatSwordTrail.path=nil
         if usesGreatSword,cue == .strike {
             let s=Double(baseHeroFrame.width/256)
@@ -586,7 +597,7 @@ final class MeadowBattleLandscapeView: UIView {
         let blade=transformPoint(CGPoint(x:191,y:142),part:contact.layers["MeadowBattleHeroWeapon"] ?? .init())
         let reach=baseHeroFrame.minX+(blade.x+contact.rootOffset.x)*unit
         let fullTravel=min(canvas.bounds.width*0.22,max(0,baseEnemyFrame.minX+125/384*baseEnemyFrame.width-reach))
-        let contactPoint=usesGreatSword ? CGPoint(x:baseEnemyFrame.minX+94*baseEnemyFrame.width/384,y:baseEnemyFrame.minY+152*baseEnemyFrame.height/256):CGPoint(x:reach+fullTravel,y:baseHeroFrame.minY+(blade.y+contact.rootOffset.y)*unit)
+        let contactPoint=usesGreatSword || usesStaff ? CGPoint(x:baseEnemyFrame.minX+94*baseEnemyFrame.width/384,y:baseEnemyFrame.minY+152*baseEnemyFrame.height/256):CGPoint(x:reach+fullTravel,y:baseHeroFrame.minY+(blade.y+contact.rootOffset.y)*unit)
         attackContactPoint = contactPoint
         let wardPoint=CGPoint(x:hero.frame.minX+CGFloat(MeadowBattleShieldGeometry.contactX)*unit,y:hero.frame.minY+CGFloat(MeadowBattleShieldGeometry.contactY)*unit)
         savedImpact = lastImpactCue == .enemyStrike ? shieldContactAt == lastImpactAt ? wardPoint : CGPoint(x:heroFoot.x+8*unit,y:heroFoot.y-65*unit) : contactPoint
@@ -595,7 +606,7 @@ final class MeadowBattleLandscapeView: UIView {
         let ring: CGFloat = cue == .strike ? 0.65*(1-smooth((cueElapsed-0.24)/0.16)) : cue == nil && focusedAction != .protection ? power*0.7*focusEnvelope : 0
         let particles=lightEmissions.flatMap { e in MeadowBattleLightField.sample(e.kind,age:sceneTime-e.startedAt,originX:e.x,originY:e.y,groundY:e.groundY) }
         for renderer in [effects,groundEffects] {
-            renderer.rangedImpact=usesBow
+            renderer.rangedImpact=usesBow || usesStaff
             renderer.heroFoot=heroFoot; renderer.enemyFoot=enemyFoot; renderer.impact=savedImpact
             renderer.cue=cue; renderer.progress=p; renderer.selected=selected; renderer.shield=shownShieldValue
             renderer.previewPower=0; renderer.previewEnvelope=0; renderer.ringAlpha=0

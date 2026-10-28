@@ -1,0 +1,18 @@
+{
+  "scope": "208 native modular cells; two original appearances; gait timing preserved",
+  "animations": [
+    {
+      "file": "walk-normal.gif",
+      "frames": 8,
+      "frameDurationMs": 120,
+      "bytes": 750478
+    },
+    {
+      "file": "transitions-normal.gif",
+      "frames": 14,
+      "frameDurationMs": 120,
+      "bytes": 1306449
+    }
+  ],
+  "userApproval": null
+}

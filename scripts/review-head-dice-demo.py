@@ -19,7 +19,7 @@ for scenario in dict.fromkeys(r['scenario'] for r in rows):
    if kind in ['support','simpleGuard']:forms[target]=time+max(0,hit-.46)
   if prior:
    for uid,u in units.items():
-    old=prior[uid];foot=feet[uid];absorbed=old['shield']-u['shield'];registered=row.get('hitPoints',{}).get(uid) if scenario.startswith('great-sword') and uid.startswith('m') else None
+    old=prior[uid];foot=feet[uid];absorbed=old['shield']-u['shield'];registered=row.get('hitPoints',{}).get(uid) if scenario.startswith(('great-sword','legendary-staff')) and uid.startswith('m') else None
     if u['shield']>old['shield']:births[uid]=time
     if absorbed>0:contacts[uid]=time
     if absorbed>0 and u['shield']==0:breaks[uid]=time

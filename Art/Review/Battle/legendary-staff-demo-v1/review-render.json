@@ -1,0 +1,36 @@
+{
+  "scope": "Exact production Swift poses and rules receipts, offline independent-layer art composition; not UIKit or device capture",
+  "animations": [
+    {
+      "file": "body-normal.gif",
+      "nativeSamples": 190,
+      "decodedFrames": 190,
+      "durationMs": 3800
+    },
+    {
+      "file": "legendary-staff-normal.gif",
+      "nativeSamples": 190,
+      "decodedFrames": 190,
+      "durationMs": 3800
+    },
+    {
+      "file": "legendary-staff-heavy-normal.gif",
+      "nativeSamples": 190,
+      "decodedFrames": 190,
+      "durationMs": 3800
+    },
+    {
+      "file": "legendary-staff-lethal-normal.gif",
+      "nativeSamples": 190,
+      "decodedFrames": 190,
+      "durationMs": 3800
+    },
+    {
+      "file": "legendary-staff-natural20-normal.gif",
+      "nativeSamples": 190,
+      "decodedFrames": 190,
+      "durationMs": 3800
+    }
+  ],
+  "newRuntimeArtApproval": null
+}

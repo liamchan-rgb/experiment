@@ -218,6 +218,7 @@ final class MeadowBattleActorView: UIView {
     private var bowNativeGroups:[String] {
         ["torso","head","farArm","farHand","nearUpperArm","nearSleeveConnected","nearHand"] + layerNames.filter { $0 == "MeadowBattleHeroBodyCore" || $0 == "MeadowBattleHeroHair" || $0 == "MeadowBattleHeroFace" || $0.contains("Leg") }
     }
+    private var isStaff:Bool { weaponAsset=="MeadowBattleLegendaryStaff" }
     private var isGreatSword:Bool { weaponAsset=="MeadowBattleGreatSword" }
     private var isBow:Bool { weaponAsset=="MeadowBattleHuntingBow" }
     private var weaponAsset:String?="MeadowBattleHeroWeapon"
@@ -283,8 +284,8 @@ final class MeadowBattleActorView: UIView {
         applyPose(pose)
     }
     private func bodyPose(clip:String,progress:CGFloat)->MeadowBattlePoseSample {
-        if isGreatSword {
-            let q=GreatSwordRig.pose(progress:Double(progress),clip:clip)
+        if isGreatSword || isStaff {
+            let q=isStaff ? LegendaryStaffRig.pose(progress:Double(progress),clip:clip):GreatSwordRig.pose(progress:Double(progress),clip:clip)
             return MeadowBattlePoseSample(clip:clip,progress:progress,rootOffset:CGPoint(x:q.rootOffset.x,y:q.rootOffset.y),footAnchorPx:CGPoint(x:q.footAnchorPx.x,y:q.footAnchorPx.y),contacts:q.contacts.map { CGPoint(x:$0.x,y:$0.y) },layers:q.layers.mapValues { .init(offset:CGPoint(x:$0.offset.x,y:$0.offset.y),pivot:CGPoint(x:$0.pivot.x,y:$0.pivot.y),rotation:CGFloat($0.rotation)) },hitFlash:CGFloat(q.hitFlash),recoil:CGFloat(q.recoil))
         }
         if isBow && ["attack","idle"].contains(clip) { var p=MeadowBattleAnimation.sample(clip:"idle",progress:0);p.clip=clip;p.progress=progress;return p }

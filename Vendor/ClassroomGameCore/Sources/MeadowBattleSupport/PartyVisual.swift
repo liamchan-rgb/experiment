@@ -14,7 +14,7 @@ public enum PartyVisual {
     public static func chest(_ id:String)->PartyPoint { let p=feet[id]!;return PartyPoint(p.x+5*heroScale,p.y-70*heroScale) }
     public static func hitPoint(target:String,shielded:Bool=false,weaponID:String?=nil)->PartyPoint {
         let foot=feet[target]!
-        if weaponID=="greatSword",target.hasPrefix("m") { return PartyPoint(foot.x+(94-178.5)*enemyScale,foot.y+(152-240)*enemyScale) }
+        if ["greatSword","legendaryStaff"].contains(weaponID ?? ""),target.hasPrefix("m") { return PartyPoint(foot.x+(94-178.5)*enemyScale,foot.y+(152-240)*enemyScale) }
         return PartyPoint(foot.x+(target.hasPrefix("m") ? -80:shielded ? (5+240*0.41)*heroScale:10),foot.y-(target.hasPrefix("m") ? 72:65))
     }
     public static func damageLabelOrigin(at:PartyPoint,width:Double,height:Double,age:Double)->PartyPoint {
@@ -68,7 +68,7 @@ public enum PartyVisual {
     }
     public static func travel(_ intent:PartyIntent?,age:Double,shielded:Bool=false)->PartyPoint {
         guard let intent,intent.action.isOffensive,let from=feet[intent.actor],let to=feet[intent.target] else { return PartyPoint(0,0) }
-        if intent.ranged { return PartyPoint(0,0) }
+        if intent.ranged || intent.magical { return PartyPoint(0,0) }
         if intent.weaponID=="greatSword",!intent.enemy,intent.action != .ambush {
             return GreatSwordRig.travel(age:age,from:from,to:hitPoint(target:intent.target,shielded:shielded,weaponID:intent.weaponID),scale:heroScale)
         }
@@ -94,6 +94,7 @@ extension PartyVisual {
             } else if intent.action.visual=="attack" {
                 clip="attack"
                 if intent.ranged && unit.equipment.weapon=="huntingBow" { progress=BowRig.progress(age:age) }
+                else if intent.magical { progress=LegendaryStaffRig.progress(age:age) }
                 else if intent.weaponID=="greatSword" { progress=GreatSwordRig.progress(age:age) }
                 else { let action=max(0,age-0.4);progress=min(1,max(0,action-min(0.1,max(0,action-0.648)))/1.2) }
             } else if ["support","rally","guard"].contains(intent.action.visual) { clip="guard";progress=min(1,age/1.4) }
