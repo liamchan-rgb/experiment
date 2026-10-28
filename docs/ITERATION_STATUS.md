@@ -1,5 +1,8 @@
 # 林间行旅迭代进度 · 2026-10-19
 
+## Build61 补齐规则模块显式导入（2026-10-28）
+第二轮40739168820中图集预热已编译通过，但GameViewController新生命上限提示用GameRules时漏写ClassroomGameCore导入，Xcode再次拦截；主线程补齐import并复查本轮其余使用GameRules的三文件均已导入。132纯测试／五旧检查仍通过，未生成／发布IPA。失败回执Media/Build61/rejected-40739168820。设备稀疏拉取11秒完成，包含全部生产输入；继续同一美术／规则／1.6.35/build61重新归档，禁止App/模拟器/实机。
+
 ## Build61 设备编译拦截并修正（2026-10-28）
 首轮Intel归档40735963209的132纯测试／五旧检查通过，但新护甲图集预热方法错误调用初始化器内的局部assetImage，Xcode报cannot find assetImage in scope。主线程已改为UIImage(named:)?.cgImage；不改变美术／骨架／规则。无IPA生成或发布，失败证据保留Media/Build61/rejected-40735963209。首轮拉取历史包和审核档耗414秒；设备归档工作流改为只拉Sources/Vendor/scripts/Tests/UITests/项目/.github及根文件，所需编译／原检查输入完整，排除Downloads/Art/Media历史大档，重新全量检查和归档。仍仅设备Release，禁止App／模拟器／实机。
 

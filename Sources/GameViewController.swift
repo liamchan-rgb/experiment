@@ -2,6 +2,7 @@ import UIKit
 import SpriteKit
 import MetalKit
 import MeadowBattleSupport
+import ClassroomGameCore
 
 final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
     private let gameView = UIView()
