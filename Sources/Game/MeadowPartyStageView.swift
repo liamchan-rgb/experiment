@@ -29,6 +29,7 @@ final class MeadowPartyStageView:UIView {
     private var focus:PartyAction?,focusTarget="p1",focusAt=0.0
     private var recovery:[String:Double]=[:],formation:[String:Double]=[:],birth:[String:Double]=[:],contact:[String:Double]=[:],broken:[String:Double]=[:],deaths:[String:Double]=[:],hurt:[String:Double]=[:]
     private var fallen:[String:Double]=[:]
+    private var victoryAt:Double?
     private var poseKeys:[String:String]=[:]
     private var messages:[MeadowPartyMessage]=[]
     private var emissions:[MeadowBattleLightEmission]=[]
@@ -67,7 +68,7 @@ final class MeadowPartyStageView:UIView {
     }
     required init?(coder:NSCoder) { fatalError("init(coder:) has not been implemented") }
     @objc private func tapped(_ r:UITapGestureRecognizer) { if !isPlaying,let id=r.view?.accessibilityIdentifier { onChoose?(id) } }
-    func start() { sceneTime=0;recovery=[:];formation=[:];birth=[:];contact=[:];broken=[:];deaths=[:];hurt=[:];messages=[];emissions=[];poseKeys=[:];fallen=[:];diceAction=nil;diceConfirmedAt=nil;diceView.confirmationAge=nil;diceView.dice=[];diceSettledAt=nil;diceExitAt=nil;dimFrom=0;dimTarget=0;clock.start() }
+    func start() { victoryAt=nil;sceneTime=0;recovery=[:];formation=[:];birth=[:];contact=[:];broken=[:];deaths=[:];hurt=[:];messages=[];emissions=[];poseKeys=[:];fallen=[:];diceAction=nil;diceConfirmedAt=nil;diceView.confirmationAge=nil;diceView.dice=[];diceSettledAt=nil;diceExitAt=nil;dimFrom=0;dimTarget=0;clock.start() }
     func stop() { clock.stop();intent=nil;impact=nil;completion=nil;focus=nil }
     func show(_ value:GameState,friend:String,foe:String,current:String?,catalog:GameCatalog) {
         state=value;self.current=current;self.catalog=catalog;fx.friend=friend;fx.foe=foe
@@ -151,6 +152,10 @@ final class MeadowPartyStageView:UIView {
     }
     private func render() {
         guard let state else { return }
+        let defeated=state.units.values.filter { $0.kind == .monster }
+        let won = !defeated.isEmpty && defeated.allSatisfy { !$0.isAlive } && state.players.contains { $0.isAlive }
+        if won && intent == nil { if victoryAt == nil { victoryAt=sceneTime } }
+        else if !won { victoryAt=nil }
         CATransaction.begin();CATransaction.setDisableActions(true);defer { CATransaction.commit() }
         let age=sceneTime-startAt;let moving=PartyVisual.travel(intent,age:age,shielded:meetsShield)
         let trails=PartyVisual.afterimages(intent,age:age)
@@ -166,7 +171,7 @@ final class MeadowPartyStageView:UIView {
             let offset=intent?.actor==id ? moving:PartyPoint(0,0)
             let foot=CGPoint(x:f.x+offset.x,y:f.y+offset.y)
             if let actor=actors[id] {
-                let pose=PartyVisual.pose(unit:unit,intent:intent,age:age,time:sceneTime,hurtAge:hurt[id].map { sceneTime-$0 },blocked:unit.shield>0 || (hurt[id] != nil && broken[id]==hurt[id]),downAge:fallen[id].map { sceneTime-$0 })
+                let pose=PartyVisual.pose(unit:unit,intent:intent,age:age,time:sceneTime,hurtAge:hurt[id].map { sceneTime-$0 },blocked:unit.shield>0 || (hurt[id] != nil && broken[id]==hurt[id]),downAge:fallen[id].map { sceneTime-$0 },victoryAge:victoryAt.map { sceneTime-$0 })
                 actor.setWeaponAsset(HeroFrames.weaponVisual(unit.equipment.weapon)?.battleAsset)
                 let clip=pose.clip,progress=pose.progress
                 actor.setPose(clip:clip,progress:CGFloat(progress))

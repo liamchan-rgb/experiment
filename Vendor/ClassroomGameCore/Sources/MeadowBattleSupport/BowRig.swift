@@ -18,12 +18,18 @@ public struct BowRigSample:Codable {
     public var sleeveTile:Int? = nil
     public var nativeTiles:[String:Int]? = nil
     public var drawingHandVariant:String? = nil
+    /// Native state tiles already contain their own authored canvas transforms.
+    public var canvasBaked:Bool? = nil
+    public var rootOffset:PartyPoint? = nil
+    public var groundY:Double? = nil
+    public var contacts:[PartyPoint]? = nil
 }
 public struct BowNativeTile:Codable { public let x:Int,y:Int,width:Int,height:Int,canvasX:Int,canvasY:Int }
 private struct ReviewedBowLibrary:Decodable {
     let schemaVersion:Int,frameDurationMs:Int
     let releaseArtTime:Double,recoveredArtTime:Double,restArtTime:Double
     let tiles:[BowNativeTile],frames:[BowRigSample]
+    let clips:[String:[Int]]
 }
 public struct BowProjectile:Codable { public let tail:PartyPoint,tip:PartyPoint,alpha:Double }
 public enum BowRig {
@@ -32,7 +38,7 @@ public enum BowRig {
     private static let library:ReviewedBowLibrary = {
         guard let url=Bundle.module.url(forResource:"reviewed-bow-r7",withExtension:"json"),
               let data=try? Data(contentsOf:url),let sheet=try? JSONDecoder().decode(ReviewedBowLibrary.self,from:data),
-              sheet.schemaVersion==1,sheet.frames.count==143 else { fatalError("Missing reviewed modular bow r7 library") }
+              sheet.schemaVersion==1,sheet.frames.count==345,Set(sheet.clips.keys)==Set(["guard","hit","victory","defeat"]) else { fatalError("Missing reviewed modular bow r7 library") }
         return sheet
     }()
     public static func nativeTile(_ sample:BowRigSample,group:String="nearSleeveConnected")->BowNativeTile { library.tiles[sample.nativeTiles![group]!] }
@@ -52,9 +58,15 @@ public enum BowRig {
         return library.recoveredArtTime+(library.restArtTime-library.recoveredArtTime)*(p-recovered)/(1-recovered)
     }
     public static func sample(clip:String,progress:Double,lean:Double=0,crouch:Double=0)->BowRigSample {
-        let index=clip=="attack" ? min(library.frames.count-1,Int((artTime(progress:progress)*1000/Double(library.frameDurationMs)+1e-7).rounded(.down))):library.frames.count-1
+        let p=min(1,max(0,progress))
+        let index:Int
+        if let clipFrames=library.clips[clip] {
+            index=clipFrames[min(clipFrames.count-1,Int((p*Double(clipFrames.count-1)+1e-7).rounded(.down)))]
+        } else if clip=="attack" {
+            index=min(142,Int((artTime(progress:p)*1000/Double(library.frameDurationMs)+1e-7).rounded(.down)))
+        } else { index=142 }
         let source=library.frames[index]
-        guard lean != 0 || crouch != 0 else { return source }
+        guard source.canvasBaked != true,lean != 0 || crouch != 0 else { return source }
         func body(_ q:PartyPoint)->PartyPoint {
             let x=q.x-132,y=q.y-167,c=cos(lean),s=sin(lean)
             return PartyPoint(132+x*c-y*s,167+x*s+y*c+crouch)

@@ -215,6 +215,9 @@ final class MeadowBattleActorView: UIView {
     private var images: [UIImageView]
     private let bowGeometry=MeadowBowGeometryView()
     private var bowSurfaces:[String:MeadowBowSurfaceView]=[:]
+    private var bowNativeGroups:[String] {
+        ["torso","head","farArm","farHand","nearUpperArm","nearSleeveConnected","nearHand"] + layerNames.filter { $0 == "MeadowBattleHeroBodyCore" || $0 == "MeadowBattleHeroHair" || $0 == "MeadowBattleHeroFace" || $0.contains("Leg") }
+    }
     private var isBow:Bool { weaponAsset=="MeadowBattleHuntingBow" }
     private var weaponAsset:String?="MeadowBattleHeroWeapon"
     var layerNames: [String] { configuration?.layers ?? [] }
@@ -252,7 +255,7 @@ final class MeadowBattleActorView: UIView {
         silhouetteCache.countLimit = 96
         silhouetteCache.totalCostLimit = 24*1024*1024
         images.forEach(addSubview)
-        for group in ["torso","head","farArm","farHand","nearUpperArm","nearSleeveConnected","nearHand"] {
+        for group in bowNativeGroups {
             let view=MeadowBowSurfaceView(frame:.zero);view.group=group;bowSurfaces[group]=view;addSubview(view);view.isHidden=true
         }
         addSubview(bowGeometry);bowGeometry.isHidden=true
@@ -280,11 +283,23 @@ final class MeadowBattleActorView: UIView {
     }
     private func bodyPose(clip:String,progress:CGFloat)->MeadowBattlePoseSample {
         if isBow && ["attack","idle"].contains(clip) { var p=MeadowBattleAnimation.sample(clip:"idle",progress:0);p.clip=clip;p.progress=progress;return p }
-        return MeadowBattleAnimation.sample(clip:clip,progress:progress)
+        var pose=MeadowBattleAnimation.sample(clip:clip,progress:progress)
+        if isBow {
+            let rig=BowRig.sample(clip:clip,progress:Double(progress))
+            if rig.canvasBaked == true {
+                pose.layers=pose.layers.mapValues { _ in MeadowBattleLayerPose() }
+                if let root=rig.rootOffset { pose.rootOffset=CGPoint(x:root.x,y:root.y) }
+                pose.contacts=(rig.contacts ?? []).map { CGPoint(x:$0.x,y:$0.y) }
+                let ground=CGFloat(rig.groundY ?? 214)
+                let x=pose.contacts.isEmpty ? 123:pose.contacts.map(\.x).reduce(0,+)/CGFloat(pose.contacts.count)
+                pose.footAnchorPx=CGPoint(x:x,y:ground)
+            }
+        }
+        return pose
     }
     func setWeaponAsset(_ asset:String?) {
         guard asset != weaponAsset else { return };weaponAsset=asset;silhouetteCache.removeAllObjects()
-        if let i=layerNames.firstIndex(of:"MeadowBattleHeroWeapon") { images[i].image=asset.flatMap { UIImage(named:$0) };images[i].isHidden=asset==nil };applyPose(currentPose)
+        if let i=layerNames.firstIndex(of:"MeadowBattleHeroWeapon") { images[i].image=asset.flatMap { UIImage(named:$0) };images[i].isHidden=asset==nil };currentPose=bodyPose(clip:currentPose.clip,progress:currentPose.progress);applyPose(currentPose)
     }
     func trailImage(progress:CGFloat)->UIImage {
         silhouette(for:MeadowBattleAnimation.sample(clip:"attack",progress:progress))
@@ -333,7 +348,7 @@ final class MeadowBattleActorView: UIView {
         UIView.performWithoutAnimation {
             let orderedImages=images.enumerated().map { (configuration?.layers[$0.offset] ?? "",$0.element) }
             for (name,image) in orderedImages {
-                image.image=(isBow && name=="MeadowBattleHeroBodyCore") ? Self.bowBodyCore:sourceAsset(name).flatMap { UIImage(named:$0) };image.isHidden=sourceAsset(name)==nil
+                image.image=(isBow && name=="MeadowBattleHeroBodyCore") ? Self.bowBodyCore:sourceAsset(name).flatMap { UIImage(named:$0) };image.isHidden=sourceAsset(name)==nil || rig?.nativeTiles?[name] != nil
                 image.layer.zPosition = depth[name] ?? 0
                 image.alpha = (name == "MeadowBattleHeroJointUnderlay" && pose.clip == "idle") ? 0 : name.hasPrefix("BowFar") ? 0.86:1
                 guard let part = pose.layers[name] else { image.transform = .identity; continue }
@@ -392,7 +407,7 @@ final class MeadowBattleActorView: UIView {
         let rendered = UIGraphicsImageRenderer(size: size, format: format).image { renderer in
             for name in orderedLayerNames(for: pose.clip) {
                 if isBow && name == "farHand" { MeadowBowGeometryView.paint(renderer.cgContext,sample:bowSample(poseForBowSilhouette)) }
-                if isBow && ["torso","head","farArm","farHand","nearUpperArm","nearSleeveConnected","nearHand"].contains(name) {
+                if isBow && bowNativeGroups.contains(name) && (bowSample(poseForBowSilhouette).nativeTiles?[name] != nil || ["torso","head","farArm","farHand","nearUpperArm","nearSleeveConnected","nearHand"].contains(name)) {
                     MeadowBowSurfaceView.render(sample:bowSample(poseForBowSilhouette),group:name).draw(at:.zero);continue
                 }
                 if name == "MeadowBattleHeroJointUnderlay" && pose.clip == "idle" { continue }
@@ -519,7 +534,7 @@ private final class MeadowBowSurfaceView:UIImageView {
     private var lastSignature:Int?
     func update(_ sample:BowRigSample?) {
         guard let sample else { image=nil;lastSignature=nil;return }
-        var h=Hasher();h.combine(group);h.combine(sample.nativeTiles?[group])
+        var h=Hasher();h.combine(group);h.combine(sample.nativeTiles?[group]);h.combine(sample.canvasBaked)
         if let pose=sample.parts["torso"] { h.combine(pose.offset.x);h.combine(pose.offset.y);h.combine(pose.rotation) }
         let signature=h.finalize();guard signature != lastSignature else { return }
         lastSignature=signature;image=Self.render(sample:sample,group:group)
@@ -528,7 +543,7 @@ private final class MeadowBowSurfaceView:UIImageView {
         let format=UIGraphicsImageRendererFormat();format.scale=1
         return UIGraphicsImageRenderer(size:CGSize(width:256,height:256),format:format).image { renderer in
             let c=renderer.cgContext;c.setAllowsAntialiasing(false);c.interpolationQuality = .none
-            if let pose=sample.parts["torso"] {
+            if sample.canvasBaked != true, let pose=sample.parts["torso"] {
                 let px=pose.pivot.x,py=pose.pivot.y,co=cos(pose.rotation),si=sin(pose.rotation)
                 c.concatenate(CGAffineTransform(a:co,b:si,c:-si,d:co,tx:px+pose.offset.x-co*px+si*py,ty:py+pose.offset.y-si*px-co*py))
             }
