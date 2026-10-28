@@ -4,7 +4,7 @@ Does not run UIKit, an app, simulator or device.
 """
 from pathlib import Path
 from PIL import Image,ImageDraw,ImageChops,ImageFont
-import sys,json,math,functools
+import sys,json,math,functools,subprocess
 R=Path(__file__).resolve().parents[1];NAME='reviewed-bow-r7-demo-v1';D=R/'Art/Review/Battle'/NAME;A=R/'Sources/Resources/Assets.xcassets'
 old=R/'scripts/review-hunting-bow-a-project-r1.py';S={'__file__':str(old)}
 code=old.read_text().split("if '--stills' in sys.argv:")[0].replace('hunting-bow-a-project-r1',NAME).replace('pose A','Build56 · r7')
@@ -67,6 +67,10 @@ def save_normal(name,frames,size):
  palette=pal.quantize(colors=256,method=Image.Quantize.MEDIANCUT)
  encoded=[im.resize(size,Image.Resampling.NEAREST).quantize(palette=palette,dither=Image.Dither.NONE) for im in frames]
  encoded[0].save(D/(name+'-normal.gif'),save_all=True,append_images=encoded[1:],duration=20,disposal=2,optimize=False)
+ optimizer=Path('/workspace/gifsicle-1.96/src/gifsicle')
+ if optimizer.exists():
+  path=D/(name+'-normal.gif');temporary=path.with_suffix('.optimized.gif')
+  subprocess.run([str(optimizer),'-O3',str(path),'-o',str(temporary)],check=True);temporary.replace(path)
  gif=Image.open(D/(name+'-normal.gif'));total=0;decoded=[]
  for i in range(gif.n_frames):
   gif.seek(i);dur=gif.info['duration'];decoded.append((gif.convert('RGB').copy(),total,dur));total+=dur
