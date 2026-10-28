@@ -1,0 +1,29 @@
+{
+  "animations": [
+    {
+      "file": "body-normal.gif",
+      "nativeSamples": 190,
+      "decodedFrames": 190,
+      "durationMs": 3800
+    },
+    {
+      "file": "battle-normal.gif",
+      "nativeSamples": 190,
+      "decodedFrames": 190,
+      "durationMs": 3800
+    }
+  ],
+  "restCastAndReturnedRestByteExact": true,
+  "jointCurvesAndTimingUnchanged": true,
+  "nonIdleLayerOrderUnchanged": true,
+  "repair": "One shared staff layer order keeps shaft in front of legs during idle/cast/recovery; actual native resources, no anatomy or weapon pixel edits",
+  "userApproval": null,
+  "appRunPerformed": false,
+  "firstFrameComparisonMatchesDeliveredBuild59": true,
+  "idleJointUnderlayNowVisibleLikeCast": true,
+  "primaryReviewer": "root",
+  "actualDecodedFramesViewed": 380,
+  "decodedSheetsViewed": 20,
+  "wholeBodyStatePosesViewed": 30,
+  "enlargedWholeBodyReviewed": true
+}

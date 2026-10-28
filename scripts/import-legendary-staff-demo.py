@@ -18,7 +18,7 @@ for clip,desired in [('guard',.14),('hit',.18),('victory',.12)]:
  for key in state_keys[clip]:
   if key['t']==0 or clip in ['guard','hit'] and key['t']==1:continue
   key['wrist']=desired-key['lean']-key['shoulder']-key['elbow']
-dump(resource,{'schemaVersion':1,'keys':m.motion_keys['legendaryStaff'],'clips':state_keys,'approvedSource':'Art/Scenes/MeadowBattle/b2-weapon-actions-v1/action-poses.json','sourceImpactAt':1.25,'sourceReleaseAt':1.0,'sourceMotionStartsAt':.12,'sourceMotionDuration':1.65})
+dump(resource,{'schemaVersion':1,'layerOrder':m.ns['ordered_layers']('attack'),'keys':m.motion_keys['legendaryStaff'],'clips':state_keys,'approvedSource':'Art/Scenes/MeadowBattle/b2-weapon-actions-v1/action-poses.json','sourceImpactAt':1.25,'sourceReleaseAt':1.0,'sourceMotionStartsAt':.12,'sourceMotionDuration':1.65})
 S=R/'Art/Integration/P1-modular-eight-way-v1';catalog=json.loads((S/'catalog.json').read_text());part=json.loads((source/'asset.json').read_text());catalog['assets']=[x for x in catalog['assets'] if x['id']!=part['id']]+[{'id':part['id'],'manifest':str((source/'asset.json').relative_to(R))}];dump(D/'catalog.json',catalog)
 p=R/'scripts/compose-character-parts.py';spec=importlib.util.spec_from_file_location('great_sword_compositor',p);mod=importlib.util.module_from_spec(spec);spec.loader.exec_module(mod);C=mod.Compositor(R,D/'catalog.json',S/'motion.json')
 selection=json.loads((R/'Art/Integration/P1-modular-demo-v1/selection.json').read_text());gait=R/'Sources/Resources/hero-gait.json';rig=json.loads(gait.read_text());records=[]

@@ -18,13 +18,15 @@ private struct LegendaryStaffKey: Decodable {
 }
 
 
-private struct LegendaryStaffLibrary:Decodable { let schemaVersion:Int;let keys:[LegendaryStaffKey];let clips:[String:[LegendaryStaffKey]] }
+private struct LegendaryStaffLibrary:Decodable { let schemaVersion:Int;let keys:[LegendaryStaffKey];let clips:[String:[LegendaryStaffKey]];let layerOrder:[String] }
 /// Approved legendary-staff joint curves; equipment is still an independent layer.
 public enum LegendaryStaffRig {
     private static let library:LegendaryStaffLibrary = {
         guard let url=Bundle.module.url(forResource:"legendary-staff-v1",withExtension:"json"),let data=try? Data(contentsOf:url),let value=try? JSONDecoder().decode(LegendaryStaffLibrary.self,from:data),value.schemaVersion==1,value.keys.count==241 else { fatalError("Missing legendary staff motion profile") }
         return value
     }()
+    /// The held staff stays in front of the legs through idle, cast and recovery.
+    public static var layerOrder:[String] { library.layerOrder }
     public static let impactAge=1.048
     public static let releaseAge=1.0*impactAge/1.25
     public static func artTime(age:Double)->Double {

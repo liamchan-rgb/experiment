@@ -19,7 +19,7 @@ def state_sample(clip,p):
 
 def composite(clip,p,weapon='legendaryStaff'):
  q=state_sample(clip,p);root=q['rootOffset'];out=Image.new('RGBA',(256,256))
- for n in base['ordered_layers'](clip):
+ for n in json.loads((R/'Vendor/ClassroomGameCore/Sources/MeadowBattleSupport/Resources/legendary-staff-v1.json').read_text())['layerOrder']:
   im=asset('MeadowBattleLegendaryStaff' if n=='MeadowBattleHeroWeapon' else n);t=q['layers'].get(n)
   pivot=(t['pivot']['x'],t['pivot']['y']) if t else (0,0);off=(t['offset']['x'],t['offset']['y']) if t else (0,0);a=t['rotation'] if t else 0
   im=im.rotate(-math.degrees(a),Image.Resampling.NEAREST,center=pivot);out.alpha_composite(im,(round(off[0]+root['x']),round(off[1]+root['y'])))

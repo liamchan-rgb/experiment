@@ -356,7 +356,7 @@ final class MeadowBattleActorView: UIView {
             for (name,image) in orderedImages {
                 image.image=(isBow && name=="MeadowBattleHeroBodyCore") ? Self.bowBodyCore:sourceAsset(name).flatMap { UIImage(named:$0) };image.isHidden=sourceAsset(name)==nil || rig?.nativeTiles?[name] != nil
                 image.layer.zPosition = depth[name] ?? 0
-                image.alpha = (name == "MeadowBattleHeroJointUnderlay" && pose.clip == "idle") ? 0 : name.hasPrefix("BowFar") ? 0.86:1
+                image.alpha = (name == "MeadowBattleHeroJointUnderlay" && pose.clip == "idle" && !isStaff) ? 0 : name.hasPrefix("BowFar") ? 0.86:1
                 guard let part = pose.layers[name] else { image.transform = .identity; continue }
                 let sx = bounds.width / (configuration?.canvasSize.width ?? 256)
                 let sy = bounds.height / (configuration?.canvasSize.height ?? 256)
@@ -383,6 +383,7 @@ final class MeadowBattleActorView: UIView {
             return Array(base[..<insertion])+["farArm","nearUpperArm","torso","nearSleeveConnected","head"]+Array(base[insertion...])+["MeadowBattleHeroWeapon","farHand","nearHand"]
 
         }
+        if isStaff { return LegendaryStaffRig.layerOrder.filter { names.contains($0) } }
         guard clip != "idle" else { return names }
         let animated = [
             "MeadowBattleHeroJointUnderlay", "MeadowBattleHeroBodyCore",
@@ -416,7 +417,7 @@ final class MeadowBattleActorView: UIView {
                 if isBow && bowNativeGroups.contains(name) && (bowSample(poseForBowSilhouette).nativeTiles?[name] != nil || ["torso","head","farArm","farHand","nearUpperArm","nearSleeveConnected","nearHand"].contains(name)) {
                     MeadowBowSurfaceView.render(sample:bowSample(poseForBowSilhouette),group:name).draw(at:.zero);continue
                 }
-                if name == "MeadowBattleHeroJointUnderlay" && pose.clip == "idle" { continue }
+                if name == "MeadowBattleHeroJointUnderlay" && pose.clip == "idle" && !isStaff { continue }
                 guard let asset=sourceAsset(name),let image = (isBow && name=="MeadowBattleHeroBodyCore") ? Self.bowBodyCore:UIImage(named: asset) else { continue }
                 let part = renderPose.layers[name] ?? MeadowBattleLayerPose()
                 let sx = size.width / 256, sy = size.height / 256
