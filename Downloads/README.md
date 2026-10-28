@@ -1,3 +1,11 @@
+## build59 · 传奇权杖施法与投射 · 1.6.33
+
+[直接下载 MeadowJourney-b59.ipa](MeadowJourney-b59.ipa) · [正常整身/战斗/状态/站姿](../Art/Review/Battle/legendary-staff-demo-v1/README.md) · [八向背负](../Art/Review/P1/legendary-staff-demo-v1/README.md) · [包校验](MeadowJourney-build59.json)
+
+营地 P1 武器菜单选择传奇权杖，进入林地战斗；小队先结束P2行动再操作P1。小队普攻原1D20、强击仍1D6+2、自然20原规则，蓝白弧线投射与落地碎光；两衣装八向背负及四武器切换。单人保留旧固定5伤练习。
+
+38,262,895字节，SHA256 `a83dd2d3dd8c01a0a62c779902c18ac0eda9af4e33d07ee146afd46246fc9c9a`。128纯测试、五旧检查、Release 40714973471、九组Mac/Linux数据和资源/经典ZIP2.0/CRC校验通过。未运行App/模拟器/实机，由用户安装验收。
+
 ## build58 · 重剑动作与装备切换 · 1.6.32
 
 [直接下载 MeadowJourney-b58.ipa](MeadowJourney-b58.ipa) · [正常整身/战斗/状态/站姿](../Art/Review/Battle/great-sword-demo-v1/README.md) · [八向背负](../Art/Review/P1/great-sword-demo-v1/README.md) · [包校验](MeadowJourney-build58.json)

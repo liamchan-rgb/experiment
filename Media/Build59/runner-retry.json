@@ -15,5 +15,10 @@
   "rejectedReason": "CFBundleVersion58 while intended59; quoted project settings missed",
   "rejectedPackagePublished": false,
   "allOtherPackageChecksAndNineExportSetsPassed": true,
-  "buildNumberCorrectedTo59": true
+  "buildNumberCorrectedTo59": true,
+  "finalRun": 40714973471,
+  "finalSourceCommit": "5850bfa0138454873965747a1002cd709d6a1f91",
+  "finalBuildNumberVerified": "59",
+  "finalMarketingVersionVerified": "1.6.33",
+  "finalPackageChecksPassed": true
 }
