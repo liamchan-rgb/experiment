@@ -163,7 +163,7 @@ extension Export {
                 let bowProjectile=showing.flatMap { i -> BowProjectile? in
                     guard i.ranged,let f=PartyVisual.feet[i.actor] else { return nil }
                     let tip=BowRig.releaseArrowTip
-                    return BowRig.projectile(age:age,from:PartyPoint(f.x+(tip.x-123)*PartyVisual.heroScale,f.y+(tip.y-214)*PartyVisual.heroScale),to:PartyVisual.hitPoint(target:i.target,shielded:dieTargetUnit.shield>0),impact:i.action.impact)
+                    return BowRig.projectile(age:age,from:PartyPoint(f.x+(tip.x-123)*PartyVisual.heroScale,f.y+(tip.y-214)*PartyVisual.heroScale),to:PartyVisual.hitPoint(target:i.target,shielded:dieTargetUnit.shield>0),impact:i.action.impact,scale:PartyVisual.heroScale)
                 }
                 let diePose=dice.indices.map { index in BattleDice.pose(time:time,index:index,resolvedAge:hitAt.map { time-$0 },visibleAge:frame>=190 && scenario=="attack-buff" ? time-3.8:time) }
                 let hover=time<1
@@ -231,7 +231,8 @@ extension Export {
                 let p=Double(i)/600,u=keys.firstIndex { ($0["t"] as! Double)>=p } ?? keys.count-1,a=keys[max(0,u-1)],b=keys[u]
                 let at=a["t"] as! Double,bt=b["t"] as! Double,f=bt==at ? 0:(p-at)/(bt-at)
                 func value(_ key:String)->Double { let x=a[key] as! Double,y=b[key] as! Double;return x+(y-x)*f }
-                let sample=BowRig.sample(clip:clip,progress:p,lean:clip=="attack" ? 0:value("lean"),crouch:clip=="attack" ? 0:value("crouch"))
+                let fixed=["attack","idle"].contains(clip)
+                let sample=BowRig.sample(clip:clip,progress:p,lean:fixed ? 0:value("lean"),crouch:fixed ? 0:value("crouch"))
                 rows.append(["clip":clip,"progress":p,"sample":try JSONSerialization.jsonObject(with:JSONEncoder().encode(sample))])
             }
         }

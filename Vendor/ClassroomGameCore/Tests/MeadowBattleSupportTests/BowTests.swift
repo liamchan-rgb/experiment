@@ -22,88 +22,82 @@ final class BowTests:XCTestCase {
         XCTAssertEqual(last.tip.x,to.x,accuracy:0.00001);XCTAssertEqual(last.tip.y,to.y,accuracy:0.00001)
         XCTAssertNil(BowRig.projectile(age:1.048,from:from,to:to,impact:1.048))
     }
-    func testBowSleevesHaveStableJointsThroughDrawReleaseAndReturn() {
-        func position(_ p:BowPartPose)->PartyPoint { PartyPoint(p.pivot.x+p.offset.x,p.pivot.y+p.offset.y) }
+    private func position(_ p:BowPartPose)->PartyPoint { PartyPoint(p.pivot.x+p.offset.x,p.pivot.y+p.offset.y) }
+    func testReviewedFullDrawAndRelaxedShoulderReachRuntimeWithoutLegacyGeometry() {
+        let held=BowRig.sample(clip:"attack",progress:BowRig.releaseProgress-0.001)
+        XCTAssertEqual(position(held.parts["nearUpper"]!).x,117)
+        XCTAssertEqual(position(held.parts["nearUpper"]!).y,141)
+        XCTAssertEqual(position(held.parts["nearFore"]!).x,104)
+        XCTAssertEqual(position(held.parts["nearFore"]!).y,136)
+        XCTAssertEqual(position(held.parts["nearHand"]!).x,141)
+        XCTAssertEqual(position(held.parts["nearHand"]!).y,139)
+        XCTAssertEqual(position(held.parts["farHand"]!).x,184)
+        XCTAssertTrue(held.arrowVisible)
+        let idle=BowRig.sample(clip:"idle",progress:0),returned=BowRig.sample(clip:"attack",progress:1)
+        let elbow=position(idle.parts["nearFore"]!)
+        XCTAssertEqual(elbow.x,112);XCTAssertEqual(elbow.y,159,"The approved upper arm unfolds down from the shoulder")
+        for key in ["nearUpper","nearFore","nearHand","farHand","bow"] {
+            XCTAssertEqual(position(idle.parts[key]!).x,position(returned.parts[key]!).x,accuracy:1e-8)
+            XCTAssertEqual(position(idle.parts[key]!).y,position(returned.parts[key]!).y,accuracy:1e-8)
+        }
+        XCTAssertFalse(idle.arrowVisible);XCTAssertFalse(returned.arrowVisible)
+    }
+    func testNativePartsKeepTheirRegistrationsAndDrawingContactThroughAllSamples() {
         var last:[String:PartyPoint]=[:]
         for i in 0...600 {
-            let s=BowRig.sample(clip:"attack",progress:Double(i)/600)
+            let p=BowRig.sample(clip:"attack",progress:Double(i)/600)
+            XCTAssertEqual(Set(p.nativeTiles!.keys),Set(["nearUpperArm","nearSleeveConnected","farArm","nearHand","farHand"]))
+            for group in p.nativeTiles!.keys { let tile=BowRig.nativeTile(p,group:group);XCTAssertGreaterThan(tile.width,0);XCTAssertGreaterThan(tile.height,0) }
             for key in ["nearUpper","nearFore","nearHand","farUpper","farFore","farHand"] {
-                let q=position(s.parts[key]!)
-                if let old=last[key] { XCTAssertLessThan(hypot(q.x-old.x,q.y-old.y),1.0,"No sudden joint jumps") }
-                last[key]=q
+                let at=position(p.parts[key]!);XCTAssertTrue(at.x.isFinite && at.y.isFinite)
+                if let before=last[key] { XCTAssertLessThan(hypot(at.x-before.x,at.y-before.y),6,"No branch flip or frame reset") }
+                last[key]=at
             }
-            func dist(_ a:PartyPoint,_ b:PartyPoint)->Double { hypot(a.x-b.x,a.y-b.y) }
-            let ns=position(s.parts["nearUpper"]!),ne=position(s.parts["nearFore"]!),nh=position(s.parts["nearHand"]!)
-            XCTAssertEqual(dist(ns,ne),32,accuracy:1e-8);XCTAssertEqual(dist(ne,nh),44,accuracy:1e-8)
-            let fs=position(s.parts["farUpper"]!),fe=position(s.parts["farFore"]!),fh=position(s.parts["farHand"]!)
-            XCTAssertEqual(dist(fs,fe),25,accuracy:1e-8);XCTAssertEqual(dist(fe,fh),25,accuracy:1e-8)
-            XCTAssertEqual(Set(s.surfaces.map(\.group)),Set(["torso","farArm","nearArm","farHand","nearHand"]))
-            for surface in s.surfaces { for p in surface.points {
-                XCTAssertEqual(p.x,p.x.rounded());XCTAssertEqual(p.y,p.y.rounded())
-                XCTAssertTrue((75...215).contains(p.x));XCTAssertTrue((75...215).contains(p.y))
-            } }
-        }
-        let held=BowRig.sample(clip:"attack",progress:0.35)
-        let nearElbow=position(held.parts["nearFore"]!),nearShoulder=position(held.parts["nearUpper"]!)
-        XCTAssertLessThan(nearElbow.x,nearShoulder.x-25,"Foreground drawing elbow must point backward")
-        let nearHand=position(held.parts["nearHand"]!),farShoulder=position(held.parts["farUpper"]!),farHand=position(held.parts["farHand"]!)
-        XCTAssertGreaterThan(farHand.x-nearHand.x,40,"The far hand holds the bow ahead of the drawing hand")
-        XCTAssertGreaterThan(farHand.y-nearHand.y,8,"The extended bow arm stays below the drawing hand")
-        XCTAssertGreaterThan(hypot(farHand.x-farShoulder.x,farHand.y-farShoulder.y),48,"The held bow arm is almost straight")
-        XCTAssertTrue(held.arrowVisible);XCTAssertFalse(BowRig.sample(clip:"attack",progress:0.5).arrowVisible)
-    }
-    func testReleasedDrawingHandReturnsDownWhileTheBowHandStaysPlanted() {
-        func position(_ p:BowPartPose)->PartyPoint { PartyPoint(p.pivot.x+p.offset.x,p.pivot.y+p.offset.y) }
-        let start=BowRig.releaseProgress,end=start+0.32/1.2
-        let first=BowRig.sample(clip:"attack",progress:start)
-        let initialHand=position(first.parts["nearHand"]!),initialGrip=position(first.parts["farHand"]!)
-        var previousY=initialHand.y
-        for i in 1...120 {
-            let sample=BowRig.sample(clip:"attack",progress:start+(end-start)*Double(i)/120)
-            let hand=position(sample.parts["nearHand"]!),grip=position(sample.parts["farHand"]!)
-            XCTAssertGreaterThanOrEqual(hand.y+1e-8,previousY,"The drawing hand should not bounce upward during recovery")
-            XCTAssertEqual(grip.x,initialGrip.x,accuracy:1e-8);XCTAssertEqual(grip.y,initialGrip.y,accuracy:1e-8)
-            previousY=hand.y
-        }
-        XCTAssertGreaterThan(previousY-initialHand.y,18)
-    }
-    func testDrawingHandMeetsStringBeforeArrowAppearsAndBowSharesHoldingWrist() {
-        func position(_ p:BowPartPose)->PartyPoint { PartyPoint(p.pivot.x+p.offset.x,p.pivot.y+p.offset.y) }
-        for clip in ["idle","attack","guard","hit","victory","defeat"] {
-            for i in 0...600 {
-                let p=Double(i)/600,pose=BowRig.sample(clip:clip,progress:p)
-                let grip=position(pose.parts["farHand"]!),bow=position(pose.parts["bow"]!)
-                XCTAssertEqual(grip.x,bow.x,accuracy:1e-9);XCTAssertEqual(grip.y,bow.y,accuracy:1e-9)
-                if pose.arrowVisible {
-                    let hand=position(pose.parts["nearHand"]!)
-                    XCTAssertEqual(hand.x,pose.stringHand.x,accuracy:1e-8)
-                    XCTAssertEqual(hand.y,pose.stringHand.y,accuracy:1e-8)
-                    XCTAssertEqual(pose.arrowTail.x,pose.stringHand.x,accuracy:1e-8)
-                    XCTAssertEqual(pose.arrowTail.y,pose.stringHand.y,accuracy:1e-8)
+            let hand=position(p.parts["nearHand"]!),grip=position(p.parts["farHand"]!),bow=position(p.parts["bow"]!)
+            XCTAssertEqual(grip.x,bow.x,accuracy:1e-9);XCTAssertEqual(grip.y,bow.y,accuracy:1e-9)
+            if p.arrowVisible {
+                XCTAssertEqual(p.arrowTail.x,hand.x,accuracy:1e-8);XCTAssertEqual(p.arrowTail.y,hand.y,accuracy:1e-8)
+                if p.nativeFrame!>=33 {
+                    XCTAssertEqual(p.stringHand.x,hand.x,accuracy:1e-8);XCTAssertEqual(p.stringHand.y,hand.y,accuracy:1e-8)
                 }
-                if clip=="attack" && p<=0.21 { XCTAssertFalse(pose.arrowVisible) }
             }
         }
-        let release=BowRig.sample(clip:"attack",progress:BowRig.releaseProgress)
-        XCTAssertEqual(BowRig.releaseArrowTip.x,release.arrowTip.x,accuracy:1e-9)
-        XCTAssertEqual(BowRig.releaseArrowTip.y,release.arrowTip.y,accuracy:1e-9)
-        let beforeTouch=BowRig.sample(clip:"attack",progress:0.19-1e-7)
-        let atTouch=BowRig.sample(clip:"attack",progress:0.19)
-        XCTAssertEqual(beforeTouch.stringHand.x,atTouch.stringHand.x,accuracy:1e-3)
-        XCTAssertEqual(beforeTouch.stringHand.y,atTouch.stringHand.y,accuracy:1e-3)
-        let justReleased=BowRig.sample(clip:"attack",progress:BowRig.releaseProgress+1e-7)
-        let releasedGrip=position(justReleased.parts["farHand"]!)
-        XCTAssertEqual(justReleased.stringHand.x,releasedGrip.x-10,accuracy:1e-6)
-        XCTAssertEqual(justReleased.stringHand.y,releasedGrip.y-6,accuracy:1e-6)
-        let returned=BowRig.sample(clip:"attack",progress:1)
-        let idle=BowRig.sample(clip:"idle",progress:0)
-        XCTAssertEqual(returned.stringHand.x,idle.stringHand.x,accuracy:1e-8)
-        XCTAssertEqual(returned.stringHand.y,idle.stringHand.y,accuracy:1e-8)
-        XCTAssertEqual(position(returned.parts["nearHand"]!).x,position(idle.parts["nearHand"]!).x,accuracy:1e-8)
-        XCTAssertEqual(position(returned.parts["nearHand"]!).y,position(idle.parts["nearHand"]!).y,accuracy:1e-8)
-        let after=BowRig.sample(clip:"attack",progress:BowRig.releaseProgress+0.07)
-        XCTAssertLessThan(position(after.parts["nearHand"]!).x,position(release.parts["nearHand"]!).x)
-        XCTAssertGreaterThan(after.stringHand.x,release.stringHand.x)
     }
-
+    func testReleaseClockAndRecoveryKeepTheReviewedPace() {
+        XCTAssertEqual(BowRig.releaseAge,0.86)
+        XCTAssertEqual(BowRig.artTime(progress:BowRig.releaseProgress),1.34,accuracy:1e-9)
+        let first=BowRig.sample(clip:"attack",progress:BowRig.releaseProgress)
+        XCTAssertFalse(first.arrowVisible)
+        let initial=position(first.parts["nearHand"]!),grip=position(first.parts["farHand"]!)
+        var y=initial.y
+        for i in 1...120 {
+            let q=BowRig.sample(clip:"attack",progress:BowRig.releaseProgress+0.34/1.2*Double(i)/120)
+            let hand=position(q.parts["nearHand"]!),holding=position(q.parts["farHand"]!)
+            XCTAssertGreaterThanOrEqual(hand.y+1e-8,y);y=hand.y
+            XCTAssertEqual(holding.x,grip.x,accuracy:1e-8);XCTAssertEqual(holding.y,grip.y,accuracy:1e-8)
+        }
+        XCTAssertGreaterThan(y-initial.y,20)
+        XCTAssertEqual(BowRig.releaseArrowTip.x,214);XCTAssertEqual(BowRig.releaseArrowTip.y,139)
+        XCTAssertEqual(BowRig.releaseArrowLength,73)
+    }
+    func testProjectileDoesNotShrinkAtReleaseOrOvershootTheHit() {
+        let scale=PartyVisual.heroScale,from=PartyPoint(200,300),to=PartyPoint(450,310)
+        for age in [0.86,0.90,1.047] {
+            let arrow=BowRig.projectile(age:age,from:from,to:to,impact:1.048,scale:scale)!
+            XCTAssertEqual(hypot(arrow.tip.x-arrow.tail.x,arrow.tip.y-arrow.tail.y),73*scale,accuracy:1e-8)
+        }
+        XCTAssertNil(BowRig.projectile(age:0.86,from:from,to:to,impact:0.86))
+    }
+    func testOtherBattleStatesKeepReviewedPartsAndFollowBodyRecoil() {
+        for clip in ["idle","guard","hit","victory","defeat"] {
+            let source=BowRig.sample(clip:clip,progress:0.5)
+            let moved=BowRig.sample(clip:clip,progress:0.5,lean:0.1,crouch:4)
+            XCTAssertEqual(source.nativeFrame,142);XCTAssertEqual(source.nativeTiles,moved.nativeTiles)
+            let before=position(source.parts["farHand"]!),after=position(moved.parts["farHand"]!)
+            let x=before.x-132,y=before.y-167
+            XCTAssertEqual(after.x,132+x*cos(0.1)-y*sin(0.1),accuracy:1e-8)
+            XCTAssertEqual(after.y,171+x*sin(0.1)+y*cos(0.1),accuracy:1e-8)
+            XCTAssertFalse(moved.arrowVisible)
+        }
+    }
 }

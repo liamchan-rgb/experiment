@@ -491,7 +491,7 @@ final class MeadowBattleLandscapeView: UIView {
             let tip=BowRig.releaseArrowTip
             let from=PartyPoint(Double(baseHeroFrame.minX+CGFloat(tip.x)*unit),Double(baseHeroFrame.minY+CGFloat(tip.y)*unit))
             let to=PartyPoint(Double(attackContactPoint.x),Double(attackContactPoint.y))
-            if let arrow=BowRig.projectile(age:cueElapsed,from:from,to:to,impact:MeadowBattleImpactClock.strikeContact) {
+            if let arrow=BowRig.projectile(age:cueElapsed,from:from,to:to,impact:MeadowBattleImpactClock.strikeContact,scale:Double(unit)) {
                 let path=UIBezierPath();path.move(to:CGPoint(x:arrow.tail.x,y:arrow.tail.y));path.addLine(to:CGPoint(x:arrow.tip.x,y:arrow.tip.y));bowArrow.path=path.cgPath
             }
         }

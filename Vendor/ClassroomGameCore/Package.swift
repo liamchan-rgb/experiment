@@ -6,7 +6,7 @@ let package = Package(name:"ClassroomGameCore",platforms:[.iOS(.v15),.macOS(.v13
     .executable(name:"MeadowSupportReviewExport",targets:["MeadowSupportReviewExport"])
 ],targets:[
     .target(name:"ClassroomGameCore",resources:[.process("Resources")]),
-    .target(name:"MeadowBattleSupport",dependencies:["ClassroomGameCore"]),
+    .target(name:"MeadowBattleSupport",dependencies:["ClassroomGameCore"],resources:[.process("Resources")]),
     .executableTarget(name:"MeadowSupportReviewExport",dependencies:["MeadowBattleSupport","ClassroomGameCore"],path:"Tools"),
     .testTarget(name:"ClassroomGameCoreTests",dependencies:["ClassroomGameCore"]),
     .testTarget(name:"MeadowBattleSupportTests",dependencies:["MeadowBattleSupport","ClassroomGameCore"])

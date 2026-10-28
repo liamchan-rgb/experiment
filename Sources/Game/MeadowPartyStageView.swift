@@ -284,7 +284,7 @@ private final class MeadowPartyEffectsView:UIView {
                 let tip=BowRig.releaseArrowTip
                 let from=PartyPoint(foot.x+(tip.x-123)*PartyVisual.heroScale,foot.y+(tip.y-214)*PartyVisual.heroScale)
                 let to=PartyVisual.hitPoint(target:intent.target,shielded:meetsShield)
-                if let arrow=BowRig.projectile(age:age,from:from,to:to,impact:intent.action.impact) {
+                if let arrow=BowRig.projectile(age:age,from:from,to:to,impact:intent.action.impact,scale:PartyVisual.heroScale) {
                     let a=arrow.tail,b=arrow.tip
                     ctx.saveGState();ctx.setLineCap(.round)
                     ctx.setShadow(offset:.zero,blur:8,color:MeadowPreviewPalette.gold.cgColor)

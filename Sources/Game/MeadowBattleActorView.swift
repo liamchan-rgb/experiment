@@ -252,7 +252,7 @@ final class MeadowBattleActorView: UIView {
         silhouetteCache.countLimit = 96
         silhouetteCache.totalCostLimit = 24*1024*1024
         images.forEach(addSubview)
-        for group in ["torso","head","farArm","farHand","nearArm","nearHand"] {
+        for group in ["torso","head","farArm","farHand","nearUpperArm","nearSleeveConnected","nearHand"] {
             let view=MeadowBowSurfaceView(frame:.zero);view.group=group;bowSurfaces[group]=view;addSubview(view);view.isHidden=true
         }
         addSubview(bowGeometry);bowGeometry.isHidden=true
@@ -279,7 +279,7 @@ final class MeadowBattleActorView: UIView {
         applyPose(pose)
     }
     private func bodyPose(clip:String,progress:CGFloat)->MeadowBattlePoseSample {
-        if isBow && clip=="attack" { var p=MeadowBattleAnimation.sample(clip:"idle",progress:0);p.clip=clip;p.progress=progress;return p }
+        if isBow && ["attack","idle"].contains(clip) { var p=MeadowBattleAnimation.sample(clip:"idle",progress:0);p.clip=clip;p.progress=progress;return p }
         return MeadowBattleAnimation.sample(clip:clip,progress:progress)
     }
     func setWeaponAsset(_ asset:String?) {
@@ -297,7 +297,7 @@ final class MeadowBattleActorView: UIView {
         return UIGraphicsImageRenderer(size:CGSize(width:256,height:256),format:f).image { renderer in
             let c=renderer.cgContext;c.setAllowsAntialiasing(false);c.interpolationQuality = .none
             c.addRect(CGRect(x:100,y:174,width:53,height:17));c.clip()
-            UIImage(named:"MeadowBattleBowBodyCore")?.draw(in:CGRect(x:0,y:0,width:256,height:256))
+            UIImage(named:"MeadowBattleBowReviewedBodyCore")?.draw(in:CGRect(x:0,y:0,width:256,height:256))
         }
     }()
     private func bowSample(_ pose:MeadowBattlePoseSample)->BowRigSample {
@@ -313,9 +313,10 @@ final class MeadowBattleActorView: UIView {
     }
     private func sourceAsset(_ name:String)->String? {
         if name=="MeadowBattleHeroWeapon" { return weaponAsset }
-        if isBow && name=="MeadowBattleHeroBodyCore" { return "MeadowBattleBowBodyCore" }
+        if isBow && name=="MeadowBattleHeroBodyCore" { return "MeadowBattleBowReviewedBodyCore" }
         if isBow && ["MeadowBattleHeroWardrobeCore","MeadowBattleHeroNearHand","MeadowBattleHeroJointUnderlay","MeadowBattleHeroArmNearUpperBody","MeadowBattleHeroArmNearForearmBody","MeadowBattleHeroArmNearUpperWardrobe","MeadowBattleHeroArmNearForearmWardrobe"].contains(name) { return nil }
-        if isBow && name=="MeadowBattleHeroLegFarThighWardrobe" { return "MeadowBattleBowLegFarThighWardrobe" }
+        if isBow && name=="MeadowBattleHeroLegFarThighWardrobe" { return "MeadowBattleBowReviewedLegFarThighWardrobe" }
+        if isBow && name=="MeadowBattleHeroLegNearThighWardrobe" { return "MeadowBattleBowReviewedLegNearThighWardrobe" }
         if isBow && name=="MeadowBattleHeroFarHand" { return nil }
         return name
     }
@@ -358,7 +359,7 @@ final class MeadowBattleActorView: UIView {
             let skip=["MeadowBattleHeroWeapon","MeadowBattleHeroFarHand","MeadowBattleHeroNearHand","MeadowBattleHeroJointUnderlay","MeadowBattleHeroWardrobeCore","MeadowBattleHeroArmNearUpperBody","MeadowBattleHeroArmNearForearmBody","MeadowBattleHeroArmNearUpperWardrobe","MeadowBattleHeroArmNearForearmWardrobe"]
             let base=names.filter { !skip.contains($0) }
             let insertion=base.firstIndex(of:"MeadowBattleHeroHair") ?? base.endIndex
-            return Array(base[..<insertion])+["torso","farArm","nearArm","head"]+Array(base[insertion...])+["MeadowBattleHeroWeapon","farHand","nearHand"]
+            return Array(base[..<insertion])+["farArm","nearUpperArm","torso","nearSleeveConnected","head"]+Array(base[insertion...])+["MeadowBattleHeroWeapon","farHand","nearHand"]
 
         }
         guard clip != "idle" else { return names }
@@ -378,17 +379,20 @@ final class MeadowBattleActorView: UIView {
     }
 
     private func silhouette(for pose: MeadowBattlePoseSample) -> UIImage {
-        let bucket = Int((pose.progress * CGFloat(MeadowBattleAnimation.silhouetteBuckets)).rounded())
-        let key = "\(pose.clip)-\(bucket)-\(weaponAsset ?? "none")" as NSString
+        let bowPose=bodyPose(clip:pose.clip,progress:pose.progress)
+        let bucket = isBow ? (bowSample(bowPose).nativeFrame ?? 0):Int((pose.progress * CGFloat(MeadowBattleAnimation.silhouetteBuckets)).rounded())
+        let body=bowPose.layers["MeadowBattleHeroBodyCore"] ?? .init()
+        let bodyKey=isBow ? "-\(Int(body.rotation*1000))-\(Int(body.offset.y*100))":""
+        let key = "\(pose.clip)-\(bucket)-\(weaponAsset ?? "none")\(bodyKey)" as NSString
         if let cached = silhouetteCache.object(forKey: key) { return cached }
-        let poseForBowSilhouette=bodyPose(clip:pose.clip,progress:CGFloat(bucket)/CGFloat(MeadowBattleAnimation.silhouetteBuckets))
+        let poseForBowSilhouette=isBow ? bowPose:bodyPose(clip:pose.clip,progress:CGFloat(bucket)/CGFloat(MeadowBattleAnimation.silhouetteBuckets))
         let renderPose = resolvedPose(poseForBowSilhouette)
         let size = configuration?.canvasSize ?? CGSize(width: 256, height: 256)
         let format = UIGraphicsImageRendererFormat(); format.scale = 1
         let rendered = UIGraphicsImageRenderer(size: size, format: format).image { renderer in
             for name in orderedLayerNames(for: pose.clip) {
                 if isBow && name == "farHand" { MeadowBowGeometryView.paint(renderer.cgContext,sample:bowSample(poseForBowSilhouette)) }
-                if isBow && ["torso","head","farArm","farHand","nearArm","nearHand"].contains(name) {
+                if isBow && ["torso","head","farArm","farHand","nearUpperArm","nearSleeveConnected","nearHand"].contains(name) {
                     MeadowBowSurfaceView.render(sample:bowSample(poseForBowSilhouette),group:name).draw(at:.zero);continue
                 }
                 if name == "MeadowBattleHeroJointUnderlay" && pose.clip == "idle" { continue }
@@ -506,21 +510,17 @@ private final class MeadowBowGeometryView:UIView {
     }
 }
 
-/// Dedicated bow sleeves in a fixed palette and native pixel grid. The complete
-/// continuous sleeve silhouette avoids seams from rotating old sword cutouts.
+/// Each limb/hand remains a separate native layer. The compact atlas preserves
+/// approved pixel outlines and avoids rerasterizing sleeve seams on each tick.
 private final class MeadowBowSurfaceView:UIImageView {
-    var group="nearArm"
+    var group="nearSleeveConnected"
     override init(frame:CGRect) { super.init(frame:frame);isUserInteractionEnabled=false;layer.minificationFilter = .nearest;layer.magnificationFilter = .nearest }
     required init?(coder:NSCoder) { fatalError() }
     private var lastSignature:Int?
     func update(_ sample:BowRigSample?) {
-        guard let sample else { if image != nil { image=nil };lastSignature=nil;return }
-        var h=Hasher();h.combine(group)
-        for surface in sample.surfaces where surface.group==group {
-            h.combine(surface.color)
-            for p in surface.points { h.combine(p.x);h.combine(p.y) }
-        }
-        if ["torso","head"].contains(group),let pose=sample.parts["torso"] { h.combine(pose.offset.x);h.combine(pose.offset.y);h.combine(pose.rotation) }
+        guard let sample else { image=nil;lastSignature=nil;return }
+        var h=Hasher();h.combine(group);h.combine(sample.nativeTiles?[group])
+        if let pose=sample.parts["torso"] { h.combine(pose.offset.x);h.combine(pose.offset.y);h.combine(pose.rotation) }
         let signature=h.finalize();guard signature != lastSignature else { return }
         lastSignature=signature;image=Self.render(sample:sample,group:group)
     }
@@ -528,34 +528,29 @@ private final class MeadowBowSurfaceView:UIImageView {
         let format=UIGraphicsImageRendererFormat();format.scale=1
         return UIGraphicsImageRenderer(size:CGSize(width:256,height:256),format:format).image { renderer in
             let c=renderer.cgContext;c.setAllowsAntialiasing(false);c.interpolationQuality = .none
-            if (group=="nearHand" || group=="farHand"),let pose=sample.parts[group],
-               let hand=UIImage(named:group=="nearHand" ? "MeadowBattleBowDrawingHand":"MeadowBattleBowGripHand") {
-                // Both hands use their own consistent silhouettes: the near
-                // fingertips meet the nock; the far hand wraps the bow grip.
-                c.saveGState()
-                c.translateBy(x:CGFloat((pose.pivot.x+pose.offset.x).rounded()),y:CGFloat((pose.pivot.y+pose.offset.y).rounded()))
-                c.rotate(by:CGFloat(pose.rotation))
-                let bounds=group=="nearHand" ? CGRect(x:-14,y:-6,width:16,height:12):CGRect(x:-8,y:-6,width:14,height:12)
-                hand.draw(in:bounds)
-                c.restoreGState()
-                return
-            }
-            for surface in sample.surfaces where surface.group==group {
-                guard let first=surface.points.first else { continue }
-                let color=surface.color
-                c.setFillColor(UIColor(red:CGFloat((color>>16)&255)/255,green:CGFloat((color>>8)&255)/255,blue:CGFloat(color&255)/255,alpha:1).cgColor)
-                c.move(to:CGPoint(x:first.x,y:first.y))
-                for p in surface.points.dropFirst() { c.addLine(to:CGPoint(x:p.x,y:p.y)) }
-                c.closePath();c.fillPath()
-            }
-            if ["torso","head"].contains(group),let pose=sample.parts["torso"] {
+            if let pose=sample.parts["torso"] {
                 let px=pose.pivot.x,py=pose.pivot.y,co=cos(pose.rotation),si=sin(pose.rotation)
-                c.saveGState()
                 c.concatenate(CGAffineTransform(a:co,b:si,c:-si,d:co,tx:px+pose.offset.x-co*px+si*py,ty:py+pose.offset.y-si*px-co*py))
-                if group=="head" { c.addRect(CGRect(x:100,y:75,width:57,height:62)) }
-                else { c.addRects([CGRect(x:104,y:125,width:44,height:18),CGRect(x:138,y:139,width:9,height:13),CGRect(x:104,y:158,width:42,height:18)]) }
-                c.clip();UIImage(named:group=="head" ? "MeadowBattleBowBodyCore":"MeadowBattleBowWardrobeCore")?.draw(in:CGRect(x:0,y:0,width:256,height:256));c.restoreGState()
+            }
+            if sample.nativeTiles?[group] != nil {
+                let tile=BowRig.nativeTile(sample,group:group)
+                Self.nativeImage(tile).draw(in:CGRect(x:CGFloat(tile.canvasX),y:CGFloat(tile.canvasY),width:CGFloat(tile.width),height:CGFloat(tile.height)))
+            } else if group=="head" {
+                c.addRect(CGRect(x:100,y:75,width:57,height:58))
+                c.move(to:CGPoint(x:121,y:126));c.addLine(to:CGPoint(x:135,y:130));c.addLine(to:CGPoint(x:134,y:138));c.addLine(to:CGPoint(x:125,y:138));c.addLine(to:CGPoint(x:119,y:134));c.closePath();c.clip()
+                UIImage(named:"MeadowBattleBowReviewedBodyCore")?.draw(in:CGRect(x:0,y:0,width:256,height:256))
+            } else if group=="torso" {
+                UIImage(named:"MeadowBattleBowReviewedTorso")?.draw(in:CGRect(x:0,y:0,width:256,height:256))
             }
         }
+    }
+    private static let nativeAtlas=UIImage(named:"MeadowBattleBowReviewedSleeves")!.cgImage!
+    private static var nativeImages:[String:UIImage]=[:]
+    private static func nativeImage(_ tile:BowNativeTile)->UIImage {
+        let key="\(tile.x)-\(tile.y)"
+        if let image=nativeImages[key] { return image }
+        let rectangle=CGRect(x:CGFloat(tile.x),y:CGFloat(tile.y),width:CGFloat(tile.width),height:CGFloat(tile.height))
+        let image=UIImage(cgImage:nativeAtlas.cropping(to:rectangle)!,scale:1,orientation:.up)
+        nativeImages[key]=image;return image
     }
 }
