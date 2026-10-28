@@ -7,7 +7,7 @@ from PIL import Image,ImageDraw,ImageChops,ImageFont
 import sys,json,math,functools
 R=Path(__file__).resolve().parents[1];NAME='reviewed-bow-r7-demo-v1';D=R/'Art/Review/Battle'/NAME;A=R/'Sources/Resources/Assets.xcassets'
 old=R/'scripts/review-hunting-bow-a-project-r1.py';S={'__file__':str(old)}
-code=old.read_text().split("if '--stills' in sys.argv:")[0].replace('hunting-bow-a-project-r1',NAME)
+code=old.read_text().split("if '--stills' in sys.argv:")[0].replace('hunting-bow-a-project-r1',NAME).replace('pose A','Build56 · r7')
 exec(compile(code,str(old),'exec'),S)
 world=S['namespace'];base=world['render'].__globals__
 lib=json.loads((R/'Vendor/ClassroomGameCore/Sources/MeadowBattleSupport/Resources/reviewed-bow-r7.json').read_text())
@@ -84,6 +84,7 @@ for scenario in ['bow','bow-lethal']:
  for row in rs:
   u=next(u for u in row['units'] if u['id']=='p1');sprite=gear_render(u['clip'],u['progress'],'huntingBow');im=Image.new('RGB',(256,280),'#20372a');im.paste(sprite,(0,0),sprite);ImageDraw.Draw(im).text((6,258),f'{row["time"]:.2f}s',font=font(14),fill='#f0e4b6');body.append(im)
  if scenario=='bow':reports.append(save_normal('body',body,(768,840)))
+ if scenario=='bow':body[0].resize((768,840),Image.Resampling.NEAREST).save(D/'body-standing.png')
  rendered=[]
  for row in rs:
   im=S['ui'](row,S['scene'](row)).convert('RGB');rendered.append(im.resize((1020,math.floor(im.height*1020/im.width)),Image.Resampling.LANCZOS))

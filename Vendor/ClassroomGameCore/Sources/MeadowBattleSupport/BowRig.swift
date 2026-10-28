@@ -36,6 +36,14 @@ public enum BowRig {
         return sheet
     }()
     public static func nativeTile(_ sample:BowRigSample,group:String="nearSleeveConnected")->BowNativeTile { library.tiles[sample.nativeTiles![group]!] }
+    /// Let the reviewed preparation start when the skill is confirmed. Keeping
+    /// the old 0.4 s sword windup would squeeze all bow setup into 0.46 s.
+    /// Recovery still observes the existing 0.1 s impact hold.
+    public static func progress(age:Double)->Double {
+        if age<=releaseAge { return max(0,age)/releaseAge*releaseProgress }
+        let impactHold=min(0.1,max(0,age-1.048))
+        return min(1,max(0,(age-0.4-impactHold)/1.2))
+    }
     /// Keep the release/contact clock. Omit offline holds and preserve recovery.
     public static func artTime(progress:Double)->Double {
         let p=min(1,max(0,progress)),recovered=releaseProgress+0.34/1.2

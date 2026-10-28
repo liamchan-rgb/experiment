@@ -88,7 +88,9 @@ extension PartyVisual {
             if intent.action == .ambush {
                 clip="attack";progress=ambushProgress(age)
             } else if intent.action.visual=="attack" {
-                clip="attack";let action=max(0,age-0.4);progress=min(1,max(0,action-min(0.1,max(0,action-0.648)))/1.2)
+                clip="attack"
+                if intent.ranged && unit.equipment.weapon=="huntingBow" { progress=BowRig.progress(age:age) }
+                else { let action=max(0,age-0.4);progress=min(1,max(0,action-min(0.1,max(0,action-0.648)))/1.2) }
             } else if ["support","rally","guard"].contains(intent.action.visual) { clip="guard";progress=min(1,age/1.4) }
         }
         if let intent,intent.action == .revivalStone,intent.target==unit.id,age>=intent.action.impact { clip="defeat";progress=1-smooth((age-intent.action.impact)/0.6) }

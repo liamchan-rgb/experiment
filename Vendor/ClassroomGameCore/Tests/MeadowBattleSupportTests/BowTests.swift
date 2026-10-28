@@ -80,6 +80,12 @@ final class BowTests:XCTestCase {
         XCTAssertEqual(BowRig.releaseArrowTip.x,214);XCTAssertEqual(BowRig.releaseArrowTip.y,139)
         XCTAssertEqual(BowRig.releaseArrowLength,73)
     }
+    func testPreparationBeginsAtConfirmationWithoutMovingReleaseOrImpactHold() {
+        XCTAssertGreaterThan(BowRig.sample(clip:"attack",progress:BowRig.progress(age:0.3)).nativeFrame!,14)
+        XCTAssertEqual(BowRig.progress(age:0.86),BowRig.releaseProgress,accuracy:1e-9)
+        XCTAssertEqual(BowRig.progress(age:1.048),BowRig.progress(age:1.148),accuracy:1e-9)
+        XCTAssertEqual(BowRig.progress(age:1.8),1)
+    }
     func testProjectileDoesNotShrinkAtReleaseOrOvershootTheHit() {
         let scale=PartyVisual.heroScale,from=PartyPoint(200,300),to=PartyPoint(450,310)
         for age in [0.86,0.90,1.047] {

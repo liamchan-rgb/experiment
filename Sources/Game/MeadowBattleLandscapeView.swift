@@ -460,7 +460,7 @@ final class MeadowBattleLandscapeView: UIView {
         if let cue {
             switch cue {
             case .strike:
-                clip = "attack"; poseProgress = p
+                clip = "attack"; poseProgress = usesBow ? CGFloat(BowRig.progress(age:cueElapsed)):p
                 let contact = MeadowBattleAnimation.sample(clip: "attack", progress: 0.54)
                 let tip = transformPoint(CGPoint(x: 191, y: 142), part: contact.layers["MeadowBattleHeroWeapon"] ?? .init())
                 let heroReach = baseHeroFrame.minX + (tip.x + contact.rootOffset.x) / 256 * baseHeroFrame.width
