@@ -2,7 +2,7 @@
 from pathlib import Path
 from PIL import Image,ImageDraw,ImageFont
 import json,copy,subprocess,math
-R=Path(__file__).resolve().parents[1];D=R/'Art/Review/Battle/armor-fit-r1'
+R=Path(__file__).resolve().parents[1];D=R/'Art/Review/Battle/armor-fit-r2'
 p=R/'scripts/review-armor-demo.py';N={'__file__':str(p)};exec(compile(p.read_text().split('for item in armors:\n frames=[]')[0],str(p),'exec'),N)
 p=R/'scripts/review-legendary-staff-demo.py';Q={'__file__':str(p)};exec(compile(p.read_text().split("reports=[]\nfor scenario")[0],str(p),'exec'),Q)
 original=Q['gear'];Q['S']['gear_render']=Q['world']['gear_render']=lambda c,p,w:N['actor']('runeArmor',w,c,p) if w=='legendaryStaff' else original(c,p,w)
@@ -12,7 +12,7 @@ for row in Q['rows']:
  row=copy.deepcopy(row)
  for u in row['units']:
   if u['id']=='p1':u['maxHP']+=8
- im=Q['ui'](row,Q['S']['scene'](row)).convert('RGB').resize((1020,765),Image.Resampling.LANCZOS);dd=ImageDraw.Draw(im);dd.rectangle((0,737,1019,764),fill='#0b1811');dd.text((35,741),'Build62 · 护甲挂载 · 正常速度离线美术合成 · 非 UIKit／实机录屏',font=ImageFont.truetype('/usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc',12),fill='#c7d5b4');frames.append(im)
+ im=Q['ui'](row,Q['S']['scene'](row)).convert('RGB').resize((1020,765),Image.Resampling.LANCZOS);dd=ImageDraw.Draw(im);dd.rectangle((0,737,1019,764),fill='#0b1811');dd.text((35,741),'Build63 · 护甲挂载 · 正常速度离线美术合成 · 非 UIKit／实机录屏',font=ImageFont.truetype('/usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc',12),fill='#c7d5b4');frames.append(im)
 frames[0].save(D/'battle-standing.png');palette=Image.new('RGB',(4080,3060))
 for i in range(16):palette.paste(frames[round(i*(len(frames)-1)/15)],(i%4*1020,i//4*765))
 pal=palette.quantize(colors=256);encoded=[x.quantize(palette=pal,dither=Image.Dither.NONE) for x in frames];p=D/'battle-normal.gif';encoded[0].save(p,save_all=True,append_images=encoded[1:],duration=20,loop=0,disposal=2,optimize=False)

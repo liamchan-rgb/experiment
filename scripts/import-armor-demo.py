@@ -76,3 +76,5 @@ dump(R/'Sources/Resources/hero-gait.json',rig);dump(D/'walking-bindings.json',re
 # Apply the registered battle repairs after importing the historical patterns.
 import subprocess
 subprocess.run([__import__("sys").executable,str(R/"scripts/repair-armor-fit-r1.py")],check=True)
+
+subprocess.run([__import__("sys").executable,str(R/"scripts/repair-armor-fit-r2.py")],check=True)

@@ -5,7 +5,7 @@ Offline layers, not UIKit capture or a game run.
 from pathlib import Path
 from PIL import Image,ImageDraw,ImageFont,ImageChops
 import json,math,functools,subprocess
-R=Path(__file__).resolve().parents[1];A=R/'Sources/Resources/Assets.xcassets';D=R/'Art/Review/Battle/armor-fit-r1';D.mkdir(parents=True,exist_ok=True)
+R=Path(__file__).resolve().parents[1];A=R/'Sources/Resources/Assets.xcassets';D=R/'Art/Review/Battle/armor-fit-r2';D.mkdir(parents=True,exist_ok=True)
 p=R/'scripts/review-bow-actions-r7-demo.py';N={'__file__':str(p)};exec(compile(p.read_text().split('# Check every registered frame')[0],str(p),'exec'),N)
 base=N['base'];world=N['world'];rigdata=N['lib'];native_bow=N['composite'];origasset=N['asset'];oldtile=N['painted_tile'];gait=json.loads((R/'Sources/Resources/hero-gait.json').read_text());font=ImageFont.truetype('/usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc',14)
 weapons=['trainingSword','huntingBow','greatSword','legendaryStaff'];armors=['leatherArmor','runeArmor'];pauldron='MeadowBattleHeroPauldronNearWardrobe';names={'leatherArmor':'皮甲','runeArmor':'符文甲','trainingSword':'短剑','huntingBow':'猎弓','greatSword':'重剑','legendaryStaff':'权杖'}

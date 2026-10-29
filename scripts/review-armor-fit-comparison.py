@@ -1,7 +1,7 @@
 from pathlib import Path
 from PIL import Image,ImageDraw,ImageFont
 import json,math
-R=Path(__file__).resolve().parents[1];D=R/'Art/Review/Battle/armor-fit-r1'
+R=Path(__file__).resolve().parents[1];D=R/'Art/Review/Battle/armor-fit-r2'
 # Comparison decodes the actual delivery GIFs, preserving all recorded holds.
 gifs=[Image.open(D/(x+'-attack-normal.gif')) for x in ['leatherArmor','runeArmor']];frames=[];dur=[]
 for i in range(gifs[0].n_frames):
