@@ -50,6 +50,7 @@ final class MeadowInventoryViewController:UIViewController,UIDocumentPickerDeleg
         walk.addAction(UIAction { [weak self] _ in guard let self else{return};self.walking.toggle();self.refreshHero() },for:.touchUpInside)
         clothes.addTarget(self,action:#selector(changeClothes),for:.valueChanged)
         clothes.setTitleTextAttributes([.font:MeadowPreviewPalette.font(16),.foregroundColor:MeadowPreviewPalette.ink],for:.normal)
+        clothes.setTitleTextAttributes([.font:MeadowPreviewPalette.font(16),.foregroundColor:MeadowPreviewPalette.ink],for:.selected)
         clothes.selectedSegmentTintColor=UIColor(red:0.40,green:0.35,blue:0.19,alpha:1)
         for (index,button) in slots.enumerated() {
             left.addSubview(button);button.titleLabel?.font=MeadowPreviewPalette.font(17);button.titleLabel?.numberOfLines=2;button.contentHorizontalAlignment = .left
@@ -58,6 +59,7 @@ final class MeadowInventoryViewController:UIViewController,UIDocumentPickerDeleg
         }
         middle.addSubview(filterButton);middle.addSubview(list);list.addSubview(empty)
         filterButton.showsMenuAsPrimaryAction=true;list.alwaysBounceVertical=true;left.alwaysBounceVertical=true;detailScroll.alwaysBounceVertical=true
+        for scroll in [left,list,detailScroll] { scroll.indicatorStyle = .white }
         refresh()
     }
     func refresh() {
@@ -141,6 +143,8 @@ final class MeadowInventoryViewController:UIViewController,UIDocumentPickerDeleg
             text(d.summary,18);text(d.category=="supplies" ? "使用效果":"换装对比",18,.bold)
             if d.category=="supplies" {
                 let targets=UISegmentedControl(items:["P1","P2"]);targets.selectedSegmentIndex=target=="p1" ? 0:1
+                for state in [UIControl.State.normal,.selected] { targets.setTitleTextAttributes([.font:MeadowPreviewPalette.font(16),.foregroundColor:MeadowPreviewPalette.ink],for:state) }
+                targets.selectedSegmentTintColor=UIColor(red:0.40,green:0.35,blue:0.19,alpha:1)
                 targets.addAction(UIAction { [weak self,weak targets] _ in self?.target=targets?.selectedSegmentIndex==1 ? "p2":"p1";self?.view.setNeedsLayout() },for:.valueChanged)
                 targets.frame=CGRect(x:12,y:y,width:w-24,height:36);detailContent.addSubview(targets);y+=46
             }
