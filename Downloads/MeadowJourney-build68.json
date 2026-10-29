@@ -45,5 +45,18 @@
   ],
   "userInstallationPending": true,
   "userRuntimeArtApproval": null,
-  "change": "Integrates Dragon Flame V2 as a Dragon Knight node-target skill. The authored 20-frame RGBA sequence begins on the damage receipt; red/orange/gold embers, body/ground/scene light, multi-target hit response and lethal dissolve follow the same receipt."
+  "change": "Integrates Dragon Flame V2 as a Dragon Knight node-target skill. The authored 20-frame RGBA sequence begins on the damage receipt; red/orange/gold embers, body/ground/scene light, multi-target hit response and lethal dissolve follow the same receipt.",
+  "deliveryCommit": "1488ec5d700f47350603df8b1aed217bcc478ca5",
+  "publicRawGET": {
+    "status": 200,
+    "bytes": 51210069,
+    "sha256": "ab20f5ae7f646ff594ac0d07d986aa86fc0841cc74c31f863b69c62867ecec39",
+    "matchesLocal": true
+  },
+  "reviewGIFRawGET": {
+    "status": 200,
+    "bytes": 5002251,
+    "sha256": "be6e950aca6c2f17b21d0282fba028abd076b58a9515eac96dd3ad7a9778b358",
+    "matchesLocal": true
+  }
 }
