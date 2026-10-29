@@ -126,7 +126,10 @@ def numbers(f,row):
 world['draw_damage']=numbers
 old_ui=Q['ui']
 def ui(row):
- f=old_ui(row,S['scene'](row));d=ImageDraw.Draw(f);u=next(x for x in row['units'] if x['id']=='p1')
+ # Keep the current gameplay dice in the scene; the exporter supplies the
+ # same projected polyhedral faces consumed by the UIKit renderer.
+ scene_row=dict(row,poly=row['poly'])
+ f=old_ui(scene_row,S['scene'](scene_row));d=ImageDraw.Draw(f);u=next(x for x in row['units'] if x['id']=='p1')
  d.rounded_rectangle((954,70,1050,114),8,fill='#eac668');d.text((962,81),'演练设置',font=font(18),fill='#192b21')
  d.rectangle((80,58,660,135),fill='#192b21');d.text((88,66),'小队战斗 · P1 龙骑士',font=font(25),fill='#f9edc4');d.text((88,103),'龙焰'+(' · 悬停预示' if row['hover'] else ' · 动作进行中' if row['playing'] else ' · 命中结算'),font=font(18),fill='#bbcba9')
  d.rectangle((80,853,1356,905),fill='#192b21')
