@@ -66,7 +66,7 @@ world['draw_recovery_lights']=recovery_lights
 def draw_runes(f,row):
  q=row['runes']
  if q.get('spriteFrame') is not None:
-  im=asset(f'MeadowRuneSlash{q["spriteFrame"]+1:02}');a=q.get('spriteAlpha',1);im.putalpha(im.getchannel('A').point(lambda v:round(v*a)))
+  im=asset(f'MeadowRuneSlash{q["spriteFrame"]+1:02}').copy();a=q.get('spriteAlpha',1);im.putalpha(im.getchannel('A').point(lambda v:round(v*a)))
   c=q['spriteCenter'];size=q.get('spriteSize',256)
   for v in q['glows']:glow(f,(v['point']['x'],v['point']['y']+oy),v['rx'],v['ry'],v['alpha'],colors[v['color']])
   im=im.resize((round(size*hs),round(size*hs)),Image.Resampling.NEAREST)

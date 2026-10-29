@@ -102,11 +102,60 @@ jobs:
             build/MeadowJourney-shadow-lab.xcarchive build/MeadowJourney-shadow-lab.ipa \
             2>&1 | tee build/logs/package-ipa.log
 
-      - name: Upload shadow lab IPA
+      - name: Split unsigned IPA for reliable download
+        run: |
+          set -euo pipefail
+          python3 - <<'PYTHON'
+          from pathlib import Path
+          import hashlib, json
+          source = Path('build/MeadowJourney-shadow-lab.ipa')
+          output = Path('build/ipa-parts')
+          output.mkdir(parents=True, exist_ok=True)
+          data = source.read_bytes()
+          chunk_size = 20 * 1024 * 1024
+          parts = []
+          for index, start in enumerate(range(0, len(data), chunk_size)):
+              name = f'part-{index:02d}'
+              payload = data[start:start + chunk_size]
+              (output / name).write_bytes(payload)
+              parts.append({'name': name, 'size_bytes': len(payload), 'sha256': hashlib.sha256(payload).hexdigest()})
+          assert len(parts) == 3, f'Expected three Build67 IPA parts, found {len(parts)}'
+          manifest = {
+              'file': source.name,
+              'size_bytes': len(data),
+              'sha256': hashlib.sha256(data).hexdigest(),
+              'chunk_size_bytes': chunk_size,
+              'parts': parts,
+          }
+          (output / 'manifest.json').write_text(json.dumps(manifest, indent=2) + '\n')
+          print(json.dumps(manifest, indent=2))
+          PYTHON
+      - name: Upload unsigned IPA part 00
         uses: actions/upload-artifact@v7
         with:
-          name: MeadowJourney-shadow-lab-IPA
-          path: build/MeadowJourney-shadow-lab.ipa
+          name: MeadowJourney-build67-ipa-part-00
+          path: build/ipa-parts/part-00
+          if-no-files-found: error
+          retention-days: 30
+      - name: Upload unsigned IPA part 01
+        uses: actions/upload-artifact@v7
+        with:
+          name: MeadowJourney-build67-ipa-part-01
+          path: build/ipa-parts/part-01
+          if-no-files-found: error
+          retention-days: 30
+      - name: Upload unsigned IPA part 02
+        uses: actions/upload-artifact@v7
+        with:
+          name: MeadowJourney-build67-ipa-part-02
+          path: build/ipa-parts/part-02
+          if-no-files-found: error
+          retention-days: 30
+      - name: Upload IPA part manifest
+        uses: actions/upload-artifact@v7
+        with:
+          name: MeadowJourney-build67-ipa-manifest
+          path: build/ipa-parts/manifest.json
           if-no-files-found: error
           retention-days: 30
 
