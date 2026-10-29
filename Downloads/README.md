@@ -1,3 +1,15 @@
+## build65 · P1行囊、装备与存档 · 1.6.39
+
+[直接下载 MeadowJourney-b65.ipa](MeadowJourney-b65.ipa) · [正常GIF／界面](../Art/Review/Equipment/camp-inventory-v1/README.md) · [包校验](MeadowJourney-build65.json)
+
+地图顶部“行囊装备”进入P1原生三栏界面：当前衣装／站姿与8帧正常步态、血条与黄色菱形AP、三装备槽；背包五类筛选／实际数量；详情原规则换装比较或P1/P2道具目标，主按钮固定底部。原.useItem／.rescue执行道具与AP，换装不补HP/AP。营地初建一次性补给，读档不重发。原人物／武器／护甲／动作像素及hero-gait、原规则目录不改。
+
+Application Support/MeadowCamp/camp-v1.json保存三槽、两衣装、营地库存／资源／原操作档案。原子写入成功后原GameEngine才提交，写失败不改变装备／物品／衣装；重启在地图首帧前恢复并一次同步图集。JSON导入校验营地／目录／版本／外观并保留旧配置，导出可分享；坏档原文件保留，明确临时试装，点按保留旧档后才启用保存。
+
+当前行囊仅P1，P2可作道具目标且地图外观保持。林地单人／小队仍独立演练，HP与补给每场重置，不扣营地库存；旧单人仍固定5伤＋装备增伤。存档不含道路位置或战斗中途续战，不冒称正式桌游全进度迁移。Build64无持久配置，不能恢复此前未保存的会话选择。
+
+源90eb1f675d0cb9b1e5c8bcf2bc2421e74c7d912e，Intel设备Release 40843673369成功，1.6.39/build65；150纯测试／五原检查及11组Mac/Linux导出在1e-6内一致（含7营地投影／安全区布局）。新UIKit控制器／CampInventorySession已编入，原66护甲资源与两饰品图标、三武器JSON／当前步态／原目录、版本／经典ZIP2.0／CRC／权限／arm64／Metal已核。IPA 49391101字节，SHA256 5dd41203ba5264c5dfc138ddafa7412d3613dc658a5b8aa9e1cf218c941d561a。
+
 ## build64 · 两饰品接入 · 1.6.38
 
 [直接下载 MeadowJourney-b64.ipa](MeadowJourney-b64.ipa) · [正常GIF／站姿](../Art/Review/Battle/accessories-demo-v1/README.md) · [包校验](MeadowJourney-build64.json)

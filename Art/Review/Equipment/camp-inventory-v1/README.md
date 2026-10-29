@@ -11,3 +11,7 @@
 150纯测试通过，402原资源／核心／武器Rig路径字节保持。11组导出含7营地状态，设备Release／包内检查／公开完整GET回执随后补齐。无智能体、图像生成或App／模拟器／实机。新UI认可null，实机交用户。
 
 后两项：B3魔剑士三技能（符文斩／符文庇护／战斗符文）；B4龙骑士三技能（龙焰／龙鳞庇护／龙之号令）。
+
+源90eb1f675d0cb9b1e5c8bcf2bc2421e74c7d912e，Intel设备Release 40843673369成功，1.6.39/build65；150纯测试／五原检查及11组Mac/Linux导出在1e-6内一致（含7营地投影／安全区布局）。新UIKit控制器／CampInventorySession已编入，原66护甲资源与两饰品图标、三武器JSON／当前步态／原目录、版本／经典ZIP2.0／CRC／权限／arm64／Metal已核。IPA 49391101字节，SHA256 5dd41203ba5264c5dfc138ddafa7412d3613dc658a5b8aa9e1cf218c941d561a。
+
+八个公开媒体／数据完整GET和独立GIF浏览器推进已核；直接IPA公开GET回执见Media/Build65/public-downloads.json。
