@@ -1,5 +1,6 @@
 import UIKit
 import ClassroomGameCore
+import MeadowBattleSupport
 import CoreImage
 
 enum MeadowPreviewPalette {
@@ -39,7 +40,11 @@ final class MeadowBattlePreviewView: UIView {
     private var equipmentWeaponID:String?="trainingSword"
     func configureEquipment(_ units:[String:GameUnit]) {
         party.loadoutUnits=units;equipmentWeaponID=units["p1"]?.equipment.weapon
-        if encounter.phase == .exploration,let unit=units["p1"],let catalog=try? GameCatalog.initial(),let stats=try? GameRules.attributes(unit,catalog:catalog) { encounter=MeadowBattleEncounter(maximumHealth:stats.maximumHealth) }
+        if encounter.phase == .exploration,let unit=units["p1"],let catalog=try? GameCatalog.initial(),let stats=try? GameRules.attributes(unit,catalog:catalog) { encounter=MeadowBattleEncounter(maximumHealth:stats.maximumHealth,baseAP:min(stats.baseAP,stats.maximumAP),damageBonus:stats.damage) }
+        if let unit=units["p1"],let catalog=try? GameCatalog.initial() {
+            details.accessoryReadout=try? AccessoryReadout.make(unit,catalog:catalog)
+        }
+        details.accessoryHost=self
         details.hasWeapon=equipmentWeaponID != nil
         landscape.configureWeapon(HeroFrames.weaponVisual(equipmentWeaponID)?.battleAsset)
         landscape.configureArmor(units["p1"]?.equipment.armor)
@@ -136,6 +141,7 @@ final class MeadowBattlePreviewView: UIView {
         }
         if partyMode { party.setActive(false);party.isHidden=true;partyMode=false;onPartyActiveChanged?(false) }
         isActive = false
+        details.dismissAccessory()
         generation &+= 1
         pendingEnemyAction?.cancel()
         pendingEnemyAction = nil
@@ -416,11 +422,15 @@ private final class MeadowPlayerDetailsView: UIView {
     private let ward=MeadowBattleResourceBar()
     private let actions=MeadowBattleActionPointsView()
     private let buff=MeadowBattleBuffTile(type:.system)
+    private let accessory=MeadowAccessoryBadge(type:.system)
+    func dismissAccessory() { accessory.dismiss() }
+    var accessoryReadout:AccessoryReadout?
+    weak var accessoryHost:UIView?
     private var cards: [MeadowPreviewCard] = []
     override init(frame: CGRect) {
         super.init(frame: frame); MeadowPreviewPalette.stylePanel(self)
         health.accessibilityIdentifier="previewHealthBar";ward.accessibilityIdentifier="previewShieldBar";actions.accessibilityIdentifier="previewActionBar"
-        [health,ward,actions,buff].forEach(addSubview)
+        [health,ward,actions,buff,accessory].forEach(addSubview)
         buff.layer.zPosition=200
         let definitions: [(String, MeadowBattleAction)] = [("强击", .strike), ("喘息", .breathe), ("简易防护", .protection)]
         for (title, action) in definitions {
@@ -441,20 +451,22 @@ private final class MeadowPlayerDetailsView: UIView {
     func show(encounter: MeadowBattleEncounter, enabled: Bool) {
         health.show("生命",value:encounter.playerHP,maximum:encounter.playerMaxHP,color:.systemGreen)
         ward.show("护盾",value:encounter.shield,maximum:8,color:.systemCyan)
-        actions.show(value:encounter.actionPoints,maximum:3)
+        actions.show(value:encounter.actionPoints,maximum:encounter.playerTurnAP)
+        accessory.show(accessoryReadout,host:accessoryHost)
         buff.show(shield:encounter.shield)
         let canAct = enabled && encounter.isPlayerActionEnabled
         if !canAct { focusedAction = nil; onPreview?(nil) }
-        cards[0].update(title: "强击 · 1 AP", detail: "选中鹿灵造成5点伤害", enabled: canAct && hasWeapon && encounter.enemySelected && encounter.enemyHP > 0)
+        cards[0].update(title: "强击 · 1 AP", detail: "选中鹿灵造成\(encounter.strikeDamage)点伤害", enabled: canAct && hasWeapon && encounter.enemySelected && encounter.enemyHP > 0)
         cards[1].update(title: "喘息 · 1 AP", detail: "恢复4生命 · 余\(encounter.breathUses)次", enabled: canAct && encounter.breathUses > 0 && encounter.playerHP < encounter.playerMaxHP)
         cards[2].update(title: "简易防护 · 1 AP", detail: "获得4护盾 · 余\(encounter.guardUses)次", enabled: canAct && encounter.guardUses > 0)
     }
     override func layoutSubviews() {
         super.layoutSubviews(); guard bounds.width > 0, bounds.height > 0 else { return }
         let gap:CGFloat=10
-        let barWidth=max(1,(bounds.width-28-54-gap*3)/3)
+        let barWidth=max(1,(bounds.width-28-100-gap*3)/3)
         for (i,bar) in [health,ward,actions].enumerated() { bar.frame=CGRect(x:14+CGFloat(i)*(barWidth+gap),y:9,width:barWidth,height:43) }
         buff.frame=CGRect(x:bounds.width-58,y:8,width:44,height:44)
+        accessory.frame=CGRect(x:bounds.width-100,y:10,width:38,height:38)
         let width=max(1,(bounds.width-28-gap*2)/3)
         for (index,card) in cards.enumerated() {
             card.frame=CGRect(x:14+CGFloat(index)*(width+gap),y:62,width:width,height:max(1,bounds.height-72))

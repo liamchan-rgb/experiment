@@ -43,7 +43,13 @@ struct MeadowBattleEncounter {
     private(set) var round = 0
     private(set) var playerHP = 12
     let playerMaxHP:Int
-    init(maximumHealth:Int=12) { playerMaxHP=max(1,maximumHealth);playerHP=playerMaxHP }
+    let playerTurnAP:Int
+    let equipmentDamageBonus:Int
+    var strikeDamage:Int { 5+equipmentDamageBonus }
+    init(maximumHealth:Int=12,baseAP:Int=3,damageBonus:Int=0) {
+        playerMaxHP=max(1,maximumHealth);playerHP=playerMaxHP
+        playerTurnAP=max(1,baseAP);equipmentDamageBonus=max(0,damageBonus)
+    }
     private(set) var enemyHP = 18
     let enemyMaxHP = 18
     private(set) var shield = 0
@@ -60,7 +66,7 @@ struct MeadowBattleEncounter {
         playerHP = playerMaxHP
         enemyHP = enemyMaxHP
         shield = 0
-        actionPoints = 3
+        actionPoints = playerTurnAP
         breathUses = 2
         guardUses = 2
         enemySelected = false
@@ -97,9 +103,9 @@ struct MeadowBattleEncounter {
         switch action {
         case .strike:
             guard enemySelected, enemyHP > 0 else { return nil }
-            // A fixed five damage keeps this small demo deterministic; the result
+            // A fixed five plus the actual permanent equipment bonus keeps this demo deterministic; the result
             // reports actual HP removed when the target has fewer than five left.
-            let damage = min(5, enemyHP)
+            let damage = min(strikeDamage, enemyHP)
             enemyHP -= damage
             if enemyHP == 0 { phase = .victory }
             return MeadowBattleActionResult(cue: .strike, damage: damage, healed: 0, shieldGained: 0)
@@ -151,7 +157,7 @@ struct MeadowBattleEncounter {
     mutating func completeEnemyTurn() {
         guard phase == .enemyTurn, !enemyImpactPending else { return }
         round += 1
-        actionPoints = 3
+        actionPoints = playerTurnAP
         phase = .playerTurn
     }
 

@@ -7,6 +7,8 @@ final class MeadowPartyBattleView:UIView {
     var onClose:(()->Void)?
     private var model:PartyEncounter?
     var loadoutUnits:[String:GameUnit]?
+    private var actionPointCapacity:[String:Int]=[:]
+    private var apRound=0
     private var active=false
     private var generation=0
     private var scheduled:DispatchWorkItem?
@@ -18,6 +20,7 @@ final class MeadowPartyBattleView:UIView {
     private let health=MeadowBattleResourceBar(),ward=MeadowBattleResourceBar()
     private let ap=MeadowBattleActionPointsView()
     private let buff=MeadowPartyBuffButton(type:.system),shieldBuff=MeadowPartyBuffButton(type:.system)
+    private let accessory=MeadowAccessoryBadge(type:.system)
     private let skillScroll=UIScrollView()
     private let mapBorder=UIView(),mapTitle=MeadowPreviewPalette.label("Meadow Journey",size:18)
     private let back=MeadowPreviewPalette.button("返回单人")
@@ -34,7 +37,7 @@ final class MeadowPartyBattleView:UIView {
         [header,stage,track,panel,mapBorder,mapTitle].forEach(addSubview)
         mapBorder.layer.cornerRadius=14;mapBorder.layer.borderWidth=1;mapBorder.layer.borderColor=MeadowPreviewPalette.border.cgColor;mapBorder.isUserInteractionEnabled=false
         mapTitle.backgroundColor=MeadowPreviewPalette.panel;mapTitle.textAlignment = .center;mapTitle.layer.cornerRadius=8;mapTitle.clipsToBounds=true;mapTitle.isUserInteractionEnabled=false
-        [health,ward,ap,buff,shieldBuff,skillScroll].forEach(panel.addSubview)
+        [health,ward,ap,buff,shieldBuff,accessory,skillScroll].forEach(panel.addSubview)
         skillScroll.showsHorizontalScrollIndicator=true
         [title,hint,back,reset,end].forEach(header.addSubview)
         back.addAction(UIAction { [weak self] _ in self?.setActive(false);self?.onClose?() },for:.touchUpInside)
@@ -49,13 +52,13 @@ final class MeadowPartyBattleView:UIView {
     func setActive(_ value:Bool) {
         active=value
         if value { restart() } else {
-            generation += 1;scheduled?.cancel();scheduled=nil;model?.cancel();stage.stop()
+            generation += 1;scheduled?.cancel();scheduled=nil;model?.cancel();stage.stop();accessory.dismiss()
         }
     }
     private func restart() {
-        generation += 1;scheduled?.cancel();scheduled=nil;stage.stop()
+        generation += 1;scheduled?.cancel();scheduled=nil;stage.stop();accessory.dismiss()
         do { model=try PartyEncounter(loadouts:loadoutUnits) } catch { hint.text="演练加载失败：\(error.localizedDescription)";return }
-        friend="p1";foe="m1";stage.start();refresh()
+        friend="p1";foe="m1";actionPointCapacity=[:];apRound=0;stage.start();refresh()
     }
     private func choose(_ id:String) {
         guard model?.pending==nil else { return }
@@ -105,7 +108,12 @@ final class MeadowPartyBattleView:UIView {
         if let unit=state.units[displayActor] {
             health.show("生命",value:unit.health,maximum:(try? GameRules.attributes(unit,catalog:model.engine.catalog).maximumHealth) ?? unit.baseAttributes.maximumHealth,color:.systemGreen)
             ward.show("护盾",value:unit.shield,maximum:8,color:.systemCyan)
-            ap.show(value:unit.ap,maximum:unit.baseAttributes.baseAP)
+            let stats=(try? GameRules.attributes(unit,catalog:model.engine.catalog)) ?? unit.baseAttributes
+            if apRound != model.round { apRound=model.round;actionPointCapacity=[:] }
+            let capacity=max(stats.baseAP,max(unit.ap,actionPointCapacity[displayActor] ?? 0))
+            actionPointCapacity[displayActor]=capacity
+            ap.show(value:unit.ap,maximum:capacity)
+            accessory.show(try? AccessoryReadout.make(unit,catalog:model.engine.catalog),host:self)
             if let b=unit.damageBuff { buff.show(title:"振奋 · 增伤＋\(b.amount)",detail:"剩余 \(b.roundsLeft) 轮\n普攻和伤害技能生效",symbol:"arrow.up",color:MeadowPreviewPalette.gold) } else { buff.hide() }
             if unit.shield>0 { shieldBuff.show(title:"护盾 · \(unit.shield)",detail:"优先抵挡伤害\n新旧授盾取较高值",symbol:"shield.fill",color:.systemCyan) } else { shieldBuff.hide() }
         }
@@ -144,15 +152,18 @@ final class MeadowPartyBattleView:UIView {
     private func detail(_ a:PartyAction,model:PartyEncounter,actor:String)->String {
         guard a != .attack else {
             guard let unit=model.state.units[actor],let weapon=unit.equipment.weapon,let item=try? model.engine.catalog.item(weapon),let dice=item.attack?.dice else { return "未装备武器 · 请回营地装备" }
-            return "\(item.name) · \(dice.count)D\(dice.sides)＋当前增伤"
+            let damage=(try? GameRules.attributes(unit,catalog:model.engine.catalog).damage) ?? 0
+            return "\(item.name) · \(dice.count)D\(dice.sides)"+(damage>0 ? "＋\(damage)":"")
         }
+        let damage=model.state.units[actor].flatMap { try? GameRules.attributes($0,catalog:model.engine.catalog).damage } ?? 0
+        let modifier=damage>0 ? " · 增伤＋\(damage)":""
         let uses=model.state.units[actor]?.skillUses[a.rawValue] ?? 0
         let rest=max(0,2-uses)
         switch a {
-        case .ambush:return "2D8＋2 · 自身恢复3 · 余\(rest)"
+        case .ambush:return "2D8＋2"+modifier+" · 自身恢复3 · 余\(rest)"
         case .support:return "1 AP · 治疗6 / 盾4 · 余\(rest)"
         case .rally:return "1 AP · 节点友方增伤2 / 1轮 · 余\(rest)"
-        case .heavyStrike:return "1 AP · 1D6＋2 · 余\(rest)"
+        case .heavyStrike:return "1D6＋2"+modifier+" · 余\(rest)"
         case .breather:return "1 AP · 自身恢复4 · 余\(rest)"
         default:return "1 AP · 自身护盾4 · 余\(rest)"
         }
@@ -168,8 +179,9 @@ final class MeadowPartyBattleView:UIView {
         reset.frame=CGRect(x:w-414,y:20,width:96,height:36)
         title.frame=CGRect(x:16,y:8,width:max(1,w-446),height:32)
         hint.frame=CGRect(x:16,y:43,width:max(1,w-446),height:23)
-        let pw=panel.bounds.width,gap:CGFloat=10,bw=max(1,(pw-28-98-gap*3)/3)
+        let pw=panel.bounds.width,gap:CGFloat=10,bw=max(1,(pw-28-143-gap*3)/3)
         for (i,bar) in [health,ward,ap].enumerated() { bar.frame=CGRect(x:14+CGFloat(i)*(bw+gap),y:9,width:bw,height:43) }
+        accessory.frame=CGRect(x:pw-145,y:8,width:38,height:38)
         buff.frame=CGRect(x:pw-100,y:8,width:38,height:38);shieldBuff.frame=CGRect(x:pw-55,y:8,width:38,height:38)
         skillScroll.frame=CGRect(x:14,y:62,width:max(1,pw-28),height:max(1,panel.bounds.height-72))
         let visible=skills.filter { !$0.isHidden };let n=CGFloat(visible.count)

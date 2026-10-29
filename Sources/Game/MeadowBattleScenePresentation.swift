@@ -1,4 +1,5 @@
 import UIKit
+import MeadowBattleSupport
 
 /// A weak display-link target avoids retaining the battle view after it closes.
 private final class MeadowBattleClockTarget: NSObject {
@@ -394,7 +395,7 @@ final class MeadowBattleActionPointsView:UIView {
     required init?(coder:NSCoder) { fatalError("init(coder:) has not been implemented") }
     func show(value:Int,maximum:Int) {
         self.maximum=max(0,maximum);remaining=max(0,min(value,self.maximum))
-        accessibilityValue="剩余\(remaining)，上限\(self.maximum)";setNeedsDisplay()
+        accessibilityValue="剩余\(remaining)，共\(self.maximum)个行动点标记";setNeedsDisplay()
     }
     override func layoutSubviews() {
         super.layoutSubviews();caption.frame=CGRect(x:0,y:0,width:bounds.width,height:23);setNeedsDisplay()
@@ -436,4 +437,42 @@ final class MeadowBattleVitalsView: UIView {
         track.frame=CGRect(x:6,y:27,width:bounds.width-12,height:7);fill.frame=CGRect(x:0,y:0,width:track.bounds.width*hp,height:7)
         shieldTrack.frame=CGRect(x:6,y:36,width:bounds.width-12,height:4);shieldFill.frame=CGRect(x:0,y:0,width:shieldTrack.bounds.width*ward,height:4)
     }
+}
+
+/// Permanent accessory feedback shares the compact status-row design in both modes.
+final class MeadowAccessoryBadge:UIButton {
+    private let tip=UILabel()
+    private weak var tooltipHost:UIView?
+    private var pinned=false,hover=false,key:String?
+    override init(frame:CGRect) {
+        super.init(frame:frame);layer.borderWidth=1.5;layer.cornerRadius=4
+        layer.borderColor=MeadowPreviewPalette.gold.cgColor;backgroundColor=MeadowPreviewPalette.panel
+        imageView?.contentMode = .scaleAspectFit;imageView?.layer.magnificationFilter = .nearest
+        tip.font=MeadowPreviewPalette.font(17);tip.numberOfLines=0;tip.textColor=MeadowPreviewPalette.ink
+        tip.backgroundColor=MeadowPreviewPalette.panel;tip.layer.borderWidth=1;tip.layer.borderColor=MeadowPreviewPalette.gold.cgColor;tip.isHidden=true;tip.isUserInteractionEnabled=false
+        addGestureRecognizer(UIHoverGestureRecognizer(target:self,action:#selector(hovered(_:))))
+        addAction(UIAction { [weak self] _ in guard let self else { return };self.pinned.toggle();self.disclose() },for:.touchUpInside)
+        isPointerInteractionEnabled=true;accessibilityIdentifier="equippedAccessory"
+    }
+    required init?(coder:NSCoder) { fatalError("init(coder:) has not been implemented") }
+    func dismiss() { pinned=false;hover=false;tip.isHidden=true }
+    func show(_ readout:AccessoryReadout?,host:UIView?) {
+        tooltipHost=host
+        guard let readout else { isHidden=true;key=nil;pinned=false;hover=false;tip.isHidden=true;return }
+        if key != readout.itemID { pinned=false;hover=false };key=readout.itemID;isHidden=false
+        setImage(UIImage(named:HeroFrames.accessoryVisual(readout.itemID)?.iconAsset ?? "")?.withRenderingMode(.alwaysOriginal),for:.normal)
+        tip.text=" \(readout.name) · \(readout.summary)\n \(readout.detail.replacingOccurrences(of:"\n",with:"\n "))"
+        accessibilityLabel=readout.name+"，"+readout.summary+"，"+readout.detail;disclose()
+    }
+    @objc private func hovered(_ r:UIHoverGestureRecognizer) { hover=r.state == .began || r.state == .changed;disclose() }
+    private func disclose() {
+        guard let host=tooltipHost,!isHidden,pinned || hover || isFocused else { tip.isHidden=true;return }
+        if tip.superview !== host { tip.removeFromSuperview();host.addSubview(tip);tip.layer.zPosition=2000 }
+        let r=convert(bounds,to:host),width=min(300,max(1,host.bounds.width-24))
+        tip.frame=CGRect(x:max(12,min(host.bounds.width-width-12,r.maxX-width)),y:max(12,r.minY-126),width:width,height:116);tip.isHidden=false
+    }
+    override func layoutSubviews() { super.layoutSubviews();imageView?.frame=bounds.insetBy(dx:4,dy:4);disclose() }
+    override func didUpdateFocus(in context:UIFocusUpdateContext,with coordinator:UIFocusAnimationCoordinator) { super.didUpdateFocus(in:context,with:coordinator);disclose() }
+    override func didMoveToWindow() { super.didMoveToWindow();if window==nil { pinned=false;hover=false;tip.isHidden=true } }
+    deinit { tip.removeFromSuperview() }
 }

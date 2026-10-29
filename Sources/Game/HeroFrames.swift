@@ -13,6 +13,7 @@ enum HeroFrames {
         let modularP1: ModularLayout?
         let equipmentVisuals:[String:EquipmentVisualBinding]?
         let armorVisuals:[String:ArmorVisualBinding]?
+        let accessoryVisuals:[String:AccessoryVisualBinding]?
     }
     private struct ModularLayout: Decodable {
         struct Loadout: Decodable { let id: String; let title: String; let atlasNames: [String];let weaponAtlasNames:[String:[String]]?;let armorAtlasNames:[String:[String:[String]]]? }
@@ -52,6 +53,8 @@ enum HeroFrames {
     static func armorVisual(_ id:String?)->ArmorVisualBinding? { id.flatMap { layout.armorVisuals?[$0] } }
     static var armorAtlasNames:Set<String> { Set(layout.modularP1?.loadouts.flatMap { $0.armorAtlasNames?.values.flatMap { $0.values.flatMap { $0 } } ?? [] } ?? []) }
     static func weaponVisual(_ id:String?)->EquipmentVisualBinding? { id.flatMap { layout.equipmentVisuals?[$0] } }
+
+    static func accessoryVisual(_ id:String?)->AccessoryVisualBinding? { id.flatMap { layout.accessoryVisuals?[$0] } }
 
     static var appearanceTitles: [String] { layout.modularP1?.loadouts.map(\.title) ?? [] }
 

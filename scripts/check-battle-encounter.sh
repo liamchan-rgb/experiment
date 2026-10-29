@@ -91,6 +91,14 @@ struct BattleEncounterCheck {
         precondition(defeat.phase == .defeat && defeat.playerHP == 0)
         defeat.returnToMap()
         precondition(defeat.phase == .exploration && defeat.round == 0 && defeat.actionPoints == 0)
+        var badge=MeadowBattleEncounter(maximumHealth:16,baseAP:3,damageBonus:2)
+        badge.begin();badge.selectEnemy()
+        let badgeHit=badge.perform(.strike)
+        precondition(badgeHit?.damage == 7 && badge.enemyHP == 11 && badge.actionPoints == 2)
+        var ring=MeadowBattleEncounter(baseAP:4)
+        ring.begin();precondition(ring.actionPoints == 4)
+        ring.endPlayerTurn();_ = ring.resolveEnemyAction();ring.completeEnemyTurn()
+        precondition(ring.actionPoints == 4);ring.retry();precondition(ring.actionPoints == 4)
         print("MeadowBattleEncounter checks passed: target/AP, victory across rounds, shield/heal uses, defeat, retry and map return.")
     }
 }

@@ -1,0 +1,38 @@
+{
+  "scope": "Actual original-core equipment and receipts; current production pose/dice exports; approximate offline stage/light/UI composition; no App/simulator/device",
+  "animations": [
+    {
+      "file": "accessory-actionRing-normal.gif",
+      "actualDecodedFrames": 190,
+      "durationMs": 3800
+    },
+    {
+      "file": "accessory-none-normal.gif",
+      "actualDecodedFrames": 190,
+      "durationMs": 3800
+    },
+    {
+      "file": "accessory-powerBadge-normal.gif",
+      "actualDecodedFrames": 190,
+      "durationMs": 3800
+    }
+  ],
+  "characterArtChanged": false,
+  "newArtApproval": null,
+  "rootReview": {
+    "reviewer": "root",
+    "wholeSceneKeyframes": [
+      "none contact and rest",
+      "badge hover, lock, contact",
+      "ring hover and recovery"
+    ],
+    "standingPNGsViewed": [
+      "powerBadge",
+      "actionRing"
+    ],
+    "legacyCharacterArtUnchanged": true,
+    "all570FramesVisuallyReviewed": false,
+    "continuousPlaybackClaimed": false,
+    "scope": "Offline production-field composition; not UIKit or game run"
+  }
+}

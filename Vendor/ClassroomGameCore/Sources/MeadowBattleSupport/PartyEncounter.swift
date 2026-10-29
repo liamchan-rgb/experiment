@@ -78,8 +78,13 @@ public final class PartyEncounter {
             units[id]?.inventory=["smallPotion":2,"largePotion":1,"shieldPotion":1,"revivalStone":1]
             if let source=loadouts?[id] {
                 units[id]?.equipment=source.equipment
+                units[id]?.ap=source.ap
                 for (item,count) in source.inventory where (try? catalog.item(item).slot) != nil { units[id]?.inventory[item]=count }
             }
+        }
+        // Same battle-entry refill as GameEngine.start, including equipped AP.
+        for id in ["p1","p2"] {
+            if var unit=units[id] { try GameRules.refill(&unit,catalog:catalog);units[id]=unit }
         }
         units["p1"]?.health=6;units["p2"]?.health=12
         for (i,id) in ["m1","m2"].enumerated() {

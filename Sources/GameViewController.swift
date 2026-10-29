@@ -522,11 +522,21 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
         }
         let removeArmor=UIAction(title:"卸下护甲",state:unit.equipment.armor==nil ? .on:.off) { [weak self] _ in self?.equipP1Armor(nil) }
         let armorCounts=armorChoices.map { id,title,_ in title+"×"+String(unit.inventory[id] ?? 0) }.joined(separator:" / ")
-        p1AppearanceButton.menu=UIMenu(children:[UIMenu(title:"衣装",children:clothes),UIMenu(title:"武器 · "+counts,children:actions+[remove]),UIMenu(title:"护甲 · "+armorCounts,children:armorActions+[removeArmor])])
+        let accessoryChoices=["powerBadge","actionRing"]
+        let accessoryActions=accessoryChoices.compactMap { id -> UIAction? in
+            guard let item=try? model.engine.catalog.item(id) else { return nil }
+            let bonus=item.attributes.damage>0 ? "伤害＋\(item.attributes.damage)":"基础行动＋\(item.attributes.baseAP)"
+            return UIAction(title:item.name+" · "+bonus+" · 背包×\(unit.inventory[id] ?? 0)",image:UIImage(named:HeroFrames.accessoryVisual(id)?.iconAsset ?? ""),state:unit.equipment.accessory==id ? .on:.off) { [weak self] _ in self?.equipP1Accessory(id) }
+        }
+        let removeAccessory=UIAction(title:"卸下饰品",state:unit.equipment.accessory==nil ? .on:.off) { [weak self] _ in self?.equipP1Accessory(nil) }
+        let accessoryName=unit.equipment.accessory.flatMap { try? model.engine.catalog.item($0).name } ?? "未装备"
+        let stats=try? GameRules.attributes(unit,catalog:model.engine.catalog)
+        let summary=UIAction(title:"生命 \(unit.health)/\(stats?.maximumHealth ?? 12) · 伤害＋\(stats?.damage ?? 0) · 基础AP \(stats?.baseAP ?? 3)",attributes:.disabled) { _ in }
+        p1AppearanceButton.menu=UIMenu(children:[UIMenu(title:"衣装",children:clothes),UIMenu(title:"武器 · "+counts,children:actions+[remove]),UIMenu(title:"护甲 · "+armorCounts,children:armorActions+[removeArmor]),UIMenu(title:"饰品 · "+accessoryName+"（单槽）",children:accessoryActions+[removeAccessory]),summary])
         let title=weapons.first { $0.0==unit.equipment.weapon }?.1 ?? "空手"
         let armorTitle=armorChoices.first { $0.0==unit.equipment.armor }?.1
-        p1AppearanceButton.configuration?.title="P1 · "+title+(armorTitle.map { " / "+$0 } ?? "")
-        p1AppearanceButton.accessibilityValue=unit.equipment.weapon==nil ? "未装备武器":title+"已装备"
+        p1AppearanceButton.configuration?.title="P1 装备"
+        p1AppearanceButton.accessibilityValue=title+" / "+(armorTitle ?? "原衣装")+" / "+accessoryName
     }
     private func equipP1Weapon(_ id:String?) {
         guard ready,!battlePreviewActive,let model=equipmentModel else { return }
@@ -537,6 +547,18 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
             if let id,let item=try? model.engine.catalog.item(id),let dice=item.attack?.dice {
                 discoveryLabel.text="已装备"+item.name+" · 普通攻击\(dice.count)D\(dice.sides)"
             } else { discoveryLabel.text="已卸下武器 · 普通攻击不可用" }
+            UIAccessibility.post(notification:.announcement,argument:discoveryLabel.text)
+        } catch { discoveryLabel.text=error.localizedDescription }
+    }
+
+    private func equipP1Accessory(_ id:String?) {
+        guard ready,!battlePreviewActive,let model=equipmentModel,model.units["p1"]?.equipment.accessory != id else { return }
+        do {
+            try model.equipAccessory(id);refreshEquipmentMenu()
+            if let unit=model.units["p1"],let stats=try? GameRules.attributes(unit,catalog:model.engine.catalog) {
+                let title=unit.equipment.accessory.flatMap { try? model.engine.catalog.item($0).name } ?? "未装备饰品"
+                discoveryLabel.text=title+" · 伤害＋\(stats.damage) · 基础行动 \(stats.baseAP) / 上限 \(stats.maximumAP)"
+            }
             UIAccessibility.post(notification:.announcement,argument:discoveryLabel.text)
         } catch { discoveryLabel.text=error.localizedDescription }
     }
