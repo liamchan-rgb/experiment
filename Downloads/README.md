@@ -1,3 +1,9 @@
+## build63 · 上臂衣片贴合／蓝布残角返修 · 1.6.37
+
+[直接下载 MeadowJourney-b63.ipa](MeadowJourney-b63.ipa) · [正常全身动图／站姿](../Art/Review/Battle/armor-fit-r2/README.md) · [包校验](MeadowJourney-build63.json)
+
+两张上臂衣片重新贴合原肩肘轴，修正皮甲错位与符文甲蓝布残角。132纯测试／五旧检查、Intel Release 40826021957、九组导出与包校验通过。48,938,928字节，SHA256 `1926d4db68de0748dd111ebf37b047631396785045d53eb19c297b4684717fec`。主线程返修／美术审核，实机由用户测试。
+
 ## build62 · 护甲手腕／袖口／下摆返修 · 1.6.36
 
 [直接下载 MeadowJourney-b62.ipa](MeadowJourney-b62.ipa) · [正常动图／站姿](../Art/Review/Battle/armor-fit-r1/README.md) · [包校验](MeadowJourney-build62.json)
