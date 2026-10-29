@@ -72,3 +72,7 @@ for item,rev,prefix in [('leatherArmor','r4','MeadowLeatherArmor'),('runeArmor',
    target['armorAtlasNames'][item][weapon]=names
  dump(D/(item+'-bow-material.json'),{'sourceAtlas':'MeadowBattleBowReviewedSleeves','silhouetteChanged':False,'handsHeadUnchanged':True,'motionChanged':False,'scope':'Existing cuirass texture mapped inside accepted native bow torso; material-only fitted sleeves variant on accepted independent bow sleeves/torso; not copying generic armor pieces across incompatible arm joints','newArtApproval':None})
 dump(R/'Sources/Resources/hero-gait.json',rig);dump(D/'walking-bindings.json',records);dump(D/'binding.json',{'walkingCells':len(records),'appearances':2,'armors':2,'weaponOptions':5,'bodyAndMotionChanged':False,'genericSource':['b2-armor-r4/leatherArmor','b2-armor-r5/runeArmor'],'bowUsesIndependentClothTiles':True,'artApproval':None});print(len(records),'native armor walking bindings exported',flush=True)
+
+# Apply the registered battle repairs after importing the historical patterns.
+import subprocess
+subprocess.run([__import__("sys").executable,str(R/"scripts/repair-armor-fit-r1.py")],check=True)

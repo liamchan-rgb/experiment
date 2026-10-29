@@ -225,7 +225,8 @@ final class MeadowBattleActorView: UIView {
     private var armorID:String?
     private var armor:HeroFrames.ArmorVisualBinding? { HeroFrames.armorVisual(armorID) }
     private static let pauldron="MeadowBattleHeroPauldronNearWardrobe"
-    var layerNames: [String] { (configuration?.layers ?? [])+[Self.pauldron] }
+    private static let armorExtras=[pauldron,"MeadowBattleHeroHemFarWardrobe","MeadowBattleHeroHemNearWardrobe"]
+    var layerNames: [String] { (configuration?.layers ?? [])+Self.armorExtras }
     let silhouette: UIImage?
     private(set) var currentPose = MeadowBattleAnimation.sample(clip: "idle", progress: 0)
     private let silhouetteCache = NSCache<NSString, UIImage>()
@@ -237,7 +238,7 @@ final class MeadowBattleActorView: UIView {
     override init(frame: CGRect) {
         let configuration = MeadowBattleActorConfiguration.load()
         self.configuration = configuration
-        images = ((configuration?.layers ?? [])+[Self.pauldron]).map { name in
+        images = ((configuration?.layers ?? [])+Self.armorExtras).map { name in
             let view = UIImageView(image: UIImage(named: name))
             view.accessibilityIdentifier = name
             view.layer.minificationFilter = .nearest
@@ -340,6 +341,14 @@ final class MeadowBattleActorView: UIView {
             let body=pose.layers["MeadowBattleHeroWardrobeCore"] ?? .init()
             let delta=atan2(sin(arm.rotation-body.rotation),cos(arm.rotation-body.rotation))
             value.layers[Self.pauldron] = .init(offset:arm.offset,pivot:arm.pivot,rotation:body.rotation+min(.pi/15,max(-.pi/15,delta*0.38)))
+            // The skirt overlaps the belt, follows each hip by a restrained
+            // fraction, and stays above trousers instead of being baked in.
+            for side in ["Far","Near"] {
+                if let thigh=pose.layers["MeadowBattleHeroLeg\(side)ThighWardrobe"] {
+                    let angle=atan2(sin(thigh.rotation-body.rotation),cos(thigh.rotation-body.rotation))
+                    value.layers["MeadowBattleHeroHem\(side)Wardrobe"] = .init(offset:thigh.offset,pivot:thigh.pivot,rotation:body.rotation+min(.pi/22.5,max(-.pi/22.5,angle*0.35)))
+                }
+            }
         }
         guard isBow else { return value }
         let sample=bowSample(pose)
@@ -354,8 +363,9 @@ final class MeadowBattleActorView: UIView {
         if isBow && name=="MeadowBattleHeroLegFarThighWardrobe" { return "MeadowBattleBowReviewedLegFarThighWardrobe" }
         if isBow && name=="MeadowBattleHeroLegNearThighWardrobe" { return "MeadowBattleBowReviewedLegNearThighWardrobe" }
         if isBow && name=="MeadowBattleHeroFarHand" { return nil }
+        if isBow && Self.armorExtras.contains(name) { return nil }
         if let replacement=armor?.battleLayers[name] { return replacement }
-        if name==Self.pauldron { return nil }
+        if Self.armorExtras.contains(name) { return nil }
         return name
     }
     private func applyPose(_ rawPose: MeadowBattlePoseSample) {
@@ -395,18 +405,19 @@ final class MeadowBattleActorView: UIView {
         let names = layerNames
         if isBow {
             let skip=["MeadowBattleHeroWeapon","MeadowBattleHeroFarHand","MeadowBattleHeroNearHand","MeadowBattleHeroJointUnderlay","MeadowBattleHeroWardrobeCore","MeadowBattleHeroArmNearUpperBody","MeadowBattleHeroArmNearForearmBody","MeadowBattleHeroArmNearUpperWardrobe","MeadowBattleHeroArmNearForearmWardrobe"]
-            let base=names.filter { !skip.contains($0) && $0 != Self.pauldron }
+            let base=names.filter { !skip.contains($0) && !Self.armorExtras.contains($0) }
             let insertion=base.firstIndex(of:"MeadowBattleHeroHair") ?? base.endIndex
             return Array(base[..<insertion])+["farArm","nearUpperArm","torso","nearSleeveConnected","head"]+Array(base[insertion...])+["MeadowBattleHeroWeapon","farHand","nearHand"]
 
         }
+        if let order=armor?.battleLayerOrder { return order.filter { names.contains($0) } }
         if isStaff {
             var order=LegendaryStaffRig.layerOrder.filter { names.contains($0) }
             if armor != nil,let i=order.firstIndex(of:"MeadowBattleHeroArmNearUpperWardrobe") { order.insert(Self.pauldron,at:i+1) }
             return order
         }
         guard clip != "idle" else {
-            var order=names.filter { $0 != Self.pauldron }
+            var order=names.filter { !Self.armorExtras.contains($0) }
             if armor != nil,let i=order.firstIndex(of:"MeadowBattleHeroArmNearUpperWardrobe") { order.insert(Self.pauldron,at:i+1) }
             return order
         }

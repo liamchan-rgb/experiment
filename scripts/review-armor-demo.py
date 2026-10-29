@@ -5,7 +5,7 @@ Offline layers, not UIKit capture or a game run.
 from pathlib import Path
 from PIL import Image,ImageDraw,ImageFont,ImageChops
 import json,math,functools,subprocess
-R=Path(__file__).resolve().parents[1];A=R/'Sources/Resources/Assets.xcassets';D=R/'Art/Review/Battle/armor-demo-v1';D.mkdir(parents=True,exist_ok=True)
+R=Path(__file__).resolve().parents[1];A=R/'Sources/Resources/Assets.xcassets';D=R/'Art/Review/Battle/armor-fit-r1';D.mkdir(parents=True,exist_ok=True)
 p=R/'scripts/review-bow-actions-r7-demo.py';N={'__file__':str(p)};exec(compile(p.read_text().split('# Check every registered frame')[0],str(p),'exec'),N)
 base=N['base'];world=N['world'];rigdata=N['lib'];native_bow=N['composite'];origasset=N['asset'];oldtile=N['painted_tile'];gait=json.loads((R/'Sources/Resources/hero-gait.json').read_text());font=ImageFont.truetype('/usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc',14)
 weapons=['trainingSword','huntingBow','greatSword','legendaryStaff'];armors=['leatherArmor','runeArmor'];pauldron='MeadowBattleHeroPauldronNearWardrobe';names={'leatherArmor':'皮甲','runeArmor':'符文甲','trainingSword':'短剑','huntingBow':'猎弓','greatSword':'重剑','legendaryStaff':'权杖'}
@@ -22,8 +22,11 @@ def actor(item,w,clip,p):
  if w in poses:
   q=poses[w][(clip,round(p*600))];root=(q['rootOffset']['x'],q['rootOffset']['y']);ts={n:((t['pivot']['x'],t['pivot']['y']),(t['offset']['x'],t['offset']['y']),t['rotation']) for n,t in q['layers'].items()};order=list(stafforder) if w=='legendaryStaff' else list(base['ordered_layers'](clip))
  else:ts,root,*_=world['sample'](clip,p);order=list(base['ordered_layers'](clip))
+ order=list(v['battleLayerOrder'])
  if pauldron not in order:order.insert(order.index('MeadowBattleHeroArmNearUpperWardrobe')+1,pauldron)
  a=ts.get('MeadowBattleHeroArmNearUpperWardrobe',((0,0),(0,0),0));b=ts.get('MeadowBattleHeroWardrobeCore',((0,0),(0,0),0));delta=math.atan2(math.sin(a[2]-b[2]),math.cos(a[2]-b[2]));ts[pauldron]=(a[0],a[1],b[2]+min(math.pi/15,max(-math.pi/15,delta*.38)))
+ for side in ['Far','Near']:
+  t=ts['MeadowBattleHeroLeg'+side+'ThighWardrobe'];delta=math.atan2(math.sin(t[2]-b[2]),math.cos(t[2]-b[2]));ts['MeadowBattleHeroHem'+side+'Wardrobe']=(t[0],t[1],b[2]+min(math.pi/22.5,max(-math.pi/22.5,delta*.35)))
  out=Image.new('RGBA',(256,256))
  for name in order:
   if name=='MeadowBattleHeroJointUnderlay' and clip=='idle' and w!='legendaryStaff':continue
@@ -83,22 +86,4 @@ for item in armors:
  save(item+'-states',frames,[20]*len(frames))
  # For staff first and last cast whole image must equal idle, including clothing.
  assert actor(item,'legendaryStaff','idle',0).tobytes()==actor(item,'legendaryStaff','attack',0).tobytes()==actor(item,'legendaryStaff','attack',1).tobytes()
-# Walking whole-body normal-speed eight-direction overview and all13 source poses.
-W=R/'Art/Review/P1/armor-demo-v1';W.mkdir(parents=True,exist_ok=True)
-for item in armors:
- for appearance in ['forester','wayfarer']:
-  load=next(x for x in gait['modularP1']['loadouts'] if x['id']==appearance);atlases=load['armorAtlasNames'][item]['trainingSword'];frames=[]
-  for n in range(1,9):
-   out=Image.new('RGB',(1024,560),'#20372a')
-   for row in range(8):
-    sp=origasset(atlases[row//4]).crop((n*256,row%4*256,(n+1)*256,row%4*256+256));out.paste(sp,(row%4*256,row//4*280),sp)
-   frames.append(out)
-  frames[0].save(W/f'{item}-{appearance}-standing.png');frames[0].save(W/f'{item}-{appearance}-walk-normal.gif',save_all=True,append_images=frames[1:],duration=120,loop=0,disposal=2,optimize=True)
-  for half in range(4):
-   out=Image.new('RGB',(1792,1120),'#20372a')
-   for row in range(2):
-    idx=half*2+row;atlas=origasset(atlases[idx//4])
-    for n in range(13):
-     sp=atlas.crop((n*256,idx%4*256,(n+1)*256,idx%4*256+256));x=n%7*256;y=(row*2+n//7)*280;out.paste(sp,(x,y),sp);ImageDraw.Draw(out).text((x+4,y+258),f'{idx} / {n}',font=font,fill='#f0e4b6')
-   out.save(W/f'{item}-{appearance}-poses-{half+1}.png')
-(D/'review.json').write_text(json.dumps({'animations':reports,'scope':'Production weapon pose exports; current armor atlas and layer mapping; offline, no device capture','walkingBindings':2080,'bowScope':'Material-only garment adaptation, original silhouette and grips retained','userApproval':None},indent=2)+'\n');print(reports,flush=True)
+(D/'review.json').write_text(json.dumps({'animations':reports,'scope':'Production weapon pose exports; repaired armor sources and data layer order; offline, no device capture','walkingUnchanged':True,'bowUnchanged':True,'userApproval':None},indent=2)+'\n');print(reports,flush=True)

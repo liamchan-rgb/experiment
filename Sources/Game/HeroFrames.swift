@@ -46,6 +46,7 @@ enum HeroFrames {
     struct ArmorVisualBinding:Decodable {
         let itemID:String,iconAsset:String
         let battleLayers:[String:String]
+        let battleLayerOrder:[String]?
         let bowAtlas:String,bowTorso:String
     }
     static func armorVisual(_ id:String?)->ArmorVisualBinding? { id.flatMap { layout.armorVisuals?[$0] } }
