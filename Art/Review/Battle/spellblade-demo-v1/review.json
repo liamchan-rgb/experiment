@@ -1,0 +1,95 @@
+{
+  "scope": "Production original-rule receipts, pose/dice/rune fields; unchanged original parts; approximate offline scene/light/UI. Not UIKit/game/device.",
+  "animations": [
+    {
+      "file": "runeSlash-normal.gif",
+      "decodedFrames": 235,
+      "durationMs": 4700,
+      "size": [
+        1020,
+        765
+      ]
+    },
+    {
+      "file": "runeWard-normal.gif",
+      "decodedFrames": 235,
+      "durationMs": 4700,
+      "size": [
+        1020,
+        765
+      ]
+    },
+    {
+      "file": "battleRune-normal.gif",
+      "decodedFrames": 235,
+      "durationMs": 4700,
+      "size": [
+        1020,
+        765
+      ]
+    },
+    {
+      "file": "runeSlash-lethal-normal.gif",
+      "decodedFrames": 235,
+      "durationMs": 4700,
+      "size": [
+        1020,
+        765
+      ]
+    },
+    {
+      "file": "three-skills-normal.gif",
+      "decodedFrames": 705,
+      "durationMs": 14100,
+      "size": [
+        1020,
+        765
+      ]
+    }
+  ],
+  "keyframePNGs": 35,
+  "newCharacterArt": false,
+  "userArtApproval": null,
+  "rootReview": {
+    "reviewer": "root",
+    "decodedContactSheetPagesViewed": 40,
+    "uniqueDecodedFramesRepresented": 940,
+    "contactThumbnailSize": [
+      256,
+      192
+    ],
+    "wholeSceneKeyframePNGsViewed": [
+      "runeSlash-standing.png",
+      "runeSlash-hover.png",
+      "runeSlash-unfold.png",
+      "runeSlash-impact.png",
+      "runeSlash-rest.png",
+      "runeWard-hover.png",
+      "runeWard-unfold.png",
+      "runeWard-recovery.png",
+      "runeWard-rest.png",
+      "battleRune-hover.png",
+      "battleRune-unfold.png",
+      "battleRune-impact.png",
+      "battleRune-rest.png",
+      "runeSlash-buffed-impact.png",
+      "runeSlash-lethal-impact.png",
+      "runeSlash-lethal-recovery.png",
+      "runeSlash-lethal-tail.png",
+      "runeSlash-lethal-rest.png"
+    ],
+    "fullBodyMountPosesViewed": 25,
+    "fullBodyMountBoardsViewed": [
+      "cast-mounts-1x.png",
+      "cast-mounts-2x.png"
+    ],
+    "rejectedDraft": "draft-label-overlap",
+    "correction": "Recipient support labels placed below headers to the left; damage stays at registered hit point. Rebuilt with 162 tests.",
+    "scope": "Offline original assets and production fields with approximate scene/light/UI; not a UIKit capture, game playback or device assessment. All 940 frames reviewed as contact sheets, with 18 whole-scene stills and full-body mounting boards.",
+    "appRunPerformed": false,
+    "simulatorRunPerformed": false,
+    "physicalDeviceRunPerformed": false,
+    "newCharacterArt": false,
+    "userRuntimeApproval": null
+  }
+}

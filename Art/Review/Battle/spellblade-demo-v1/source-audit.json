@@ -1,0 +1,56 @@
+{
+  "baseline": "a4cd5af0c4180136b14136fd1524ebc7fe32b71c",
+  "unchangedOriginalResourceCoreAndWeaponPaths": 402,
+  "ruleCatalogAndGaitUnchanged": true,
+  "characterOrWeaponImagesRegenerated": false,
+  "originalCampSaveFormatUnchanged": true,
+  "actualReceiptChecks": [
+    {
+      "scenario": "runeSlash",
+      "hitTime": 2.06,
+      "actorAPBefore": 3,
+      "actorAPAfter": 1,
+      "casterHeal": 4,
+      "targetDamage": 12,
+      "correctEffectScopes": true
+    },
+    {
+      "scenario": "runeSlash-lethal",
+      "hitTime": 2.06,
+      "actorAPBefore": 3,
+      "actorAPAfter": 1,
+      "casterHeal": 4,
+      "targetDamage": 3,
+      "correctEffectScopes": true
+    },
+    {
+      "scenario": "runeWard",
+      "hitTime": 1.72,
+      "actorAPBefore": 3,
+      "actorAPAfter": 1,
+      "casterHeal": 8,
+      "targetDamage": 0,
+      "correctEffectScopes": true
+    },
+    {
+      "scenario": "battleRune",
+      "hitTime": 1.56,
+      "actorAPBefore": 3,
+      "actorAPAfter": 2,
+      "casterHeal": 0,
+      "targetDamage": 0,
+      "correctEffectScopes": true
+    },
+    {
+      "scenario": "runeSlash-buffed",
+      "hitTime": 2.06,
+      "actorAPBefore": 2,
+      "actorAPAfter": 0,
+      "casterHeal": 4,
+      "targetDamage": 18,
+      "correctEffectScopes": true
+    }
+  ],
+  "frames": 1175,
+  "newArtApproval": null
+}
