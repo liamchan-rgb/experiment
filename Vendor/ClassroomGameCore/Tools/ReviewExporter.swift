@@ -426,7 +426,7 @@ extension Export {
             let probe=try PartyEncounter(seed:seed,sessionID:"dragon-flame-seed-\(seed)",playerClassID:"dragonKnight")
             try probe.engine.apply(.endTurn(actor:"p2",timedOut:false))
             try probe.engine.apply(.editResources(unit:"m1",value:ResourcePatch(health:3)))
-            guard let intent=probe.prepare(.dragonFlame,target:"m1"),let roll=probe.confirmedReceipt?.dice.first(where:{$0.source=="damage"}) else { continue }
+            guard probe.prepare(.dragonFlame,target:"m1") != nil,let roll=probe.confirmedReceipt?.dice.first(where:{$0.source=="damage"}) else { continue }
             if !roll.naturalTwenty && roll.total<18 { chosen=seed;break }
         }
         guard chosen != 0 else { throw NSError(domain:"DragonFlameReview",code:1,userInfo:[NSLocalizedDescriptionKey:"Unable to find a review roll that preserves one node target."]) }

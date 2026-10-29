@@ -77,8 +77,7 @@ for row in rows:
   age=row['time']-hit_time
   q['recoveryPower']=helpers['smooth'](age/.34)*(1-helpers['smooth']((age-.62)/.90)) if uid=='p1' else 0
   world['attached'][('dragonFlame-'+uid,row['frame'])]=q
- source=world['attached'].get(('runeSlash-fx',row['frame']%235)) or world['attached'][('runeSlash-fx',0)]
- world['attached'][('dragonFlame-fx',row['frame'])]=copy.deepcopy(source)
+ world['attached'][('dragonFlame-fx',row['frame'])]={'particles':[]}
 
 def draw_runes(f,row):
  q=row['runes']

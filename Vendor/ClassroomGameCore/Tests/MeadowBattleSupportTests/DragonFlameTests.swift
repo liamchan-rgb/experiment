@@ -80,6 +80,6 @@ final class DragonFlameTests:XCTestCase {
         let finished=SpellbladeEffects.sample(action:.dragonFlame,age:PartyAction.dragonFlame.impact+1.95,actor:"p1",target:"m1",recipients:cues,targets:intent.targets)
         XCTAssertTrue(finished.spriteLayers.isEmpty && finished.glows.isEmpty && finished.motes.isEmpty)
         XCTAssertEqual(PartyVisual.travel(intent,age:1).x,0)
-        XCTAssertEqual(PartyVisual.pose(unit:before.units["p1"]!,intent:intent,age:0.4,time:0).clip,"guard")
+        XCTAssertEqual(PartyVisual.pose(unit:model.state.units["p1"]!,intent:intent,age:0.4,time:0).clip,"guard")
     }
 }
