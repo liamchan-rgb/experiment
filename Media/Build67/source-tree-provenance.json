@@ -14,5 +14,7 @@
   "appVersion": "1.6.41",
   "build": "67",
   "ipaSHA256": "2cfe07cfd90ef1f3b0ae36ee7154763d420a2d96ac37b16dcce1380d67090816",
-  "ipaBytes": 49938573
+  "ipaBytes": 49938573,
+  "ipaCommit": "b046d5f15b62dad77638f48ad108639f14404235",
+  "ipaURL": "https://raw.githubusercontent.com/liamchan-rgb/experiment/b046d5f15b62dad77638f48ad108639f14404235/Downloads/MeadowJourney-b67.ipa"
 }

@@ -65,5 +65,12 @@
       "sha256": "b1c5ef714174b3082ef64ef92d02562ad35ad82d164159902ccac5fe3bf3cdff"
     }
   ],
-  "actionRunConclusion": "success"
+  "actionRunConclusion": "success",
+  "directDownloadURL": "https://raw.githubusercontent.com/liamchan-rgb/experiment/b046d5f15b62dad77638f48ad108639f14404235/Downloads/MeadowJourney-b67.ipa",
+  "publicRawGET": {
+    "status": 200,
+    "bytes": 49938573,
+    "sha256": "2cfe07cfd90ef1f3b0ae36ee7154763d420a2d96ac37b16dcce1380d67090816",
+    "matchesLocal": true
+  }
 }

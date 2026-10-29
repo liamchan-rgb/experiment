@@ -28,5 +28,8 @@
   "appRunPerformed": false,
   "simulatorRunPerformed": false,
   "physicalDeviceRunPerformed": false,
-  "userRuntimeArtApproval": null
+  "userRuntimeArtApproval": null,
+  "ipaURL": "https://raw.githubusercontent.com/liamchan-rgb/experiment/b046d5f15b62dad77638f48ad108639f14404235/Downloads/MeadowJourney-b67.ipa",
+  "ipaCommit": "b046d5f15b62dad77638f48ad108639f14404235",
+  "standaloneGIFBrowserURL": "Media/Build67/standalone-gif-browser.json"
 }
