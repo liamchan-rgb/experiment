@@ -1,3 +1,15 @@
+## build68 · 龙焰特效 V2 · 1.6.42
+
+[直接下载 MeadowJourney-b68.ipa](https://raw.githubusercontent.com/liamchan-rgb/experiment/fix/build33-face-grounding-camera/Downloads/MeadowJourney-b68.ipa) · [正常速度全场战斗 GIF](https://raw.githubusercontent.com/liamchan-rgb/experiment/fix/build33-face-grounding-camera/Art/Review/Battle/dragon-flame-demo-v1/dragon-flame-normal.gif) · [包校验记录](MeadowJourney-build68.json)
+
+接入新提供的龙焰 20 帧 RGBA 精灵表，不裁切完整画布，固定中心锚点逐帧播放。火焰从真实命中回执出现，对同节点目标分别定位；目标受击、伤害数字、场景与地面暖光、红橙金余烬和落地火星同步。击杀目标同时进入既有向右粒子消散，存活目标留在受击状态。龙骑士训练选项可操作。
+
+正常速度整场景 GIF 为 225 帧×20ms＝4.5 秒；其战斗状态按生产逻辑 60Hz 取样，骰面使用生产投影结果。GIF 的 10ms 时间单位无法精确编码 1/60 秒。完整 GIF 与七张关键整场图是离线合成的美术审核，不是 UIKit、模拟器或实机录屏。Build68 设备 Release archive 成功；164 项纯 Swift 测试、龙焰源资源／App 资源逐像素检查和 270 帧导出均通过。IPA 51,210,069 字节，SHA-256 `ab20f5ae7f646ff594ac0d07d986aa86fc0841cc74c31f863b69c62867ecec39`。未运行模拟器或实机；用户安装与运行验收待完成。
+
+[GIF 与整场美术审核文件](../Art/Review/Battle/dragon-flame-demo-v1/README.md) · [源精灵表和拆帧说明](../Art/Parts/BattleVFX/dragon-flame-v2/README.md) · [交付日志](../docs/dragon-flame-delivery.md)
+
+下一步两项：龙鳞守护的圆形护盾和破碎特效；龙之号令的增益反馈。
+
 ## build67 · 符文斩用户精灵表接入 · 1.6.41
 
 [直接下载 MeadowJourney-b67.ipa](https://raw.githubusercontent.com/liamchan-rgb/experiment/b046d5f15b62dad77638f48ad108639f14404235/Downloads/MeadowJourney-b67.ipa) · [正常速度战斗GIF与美术审核](../Art/Review/Battle/spellblade-demo-v1/README.md) · [IPA校验记录](MeadowJourney-build67.json)
