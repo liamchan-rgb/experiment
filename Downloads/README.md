@@ -1,3 +1,11 @@
+## build64 · 两饰品接入 · 1.6.38
+
+[直接下载 MeadowJourney-b64.ipa](MeadowJourney-b64.ipa) · [正常GIF／站姿](../Art/Review/Battle/accessories-demo-v1/README.md) · [包校验](MeadowJourney-build64.json)
+
+营地→P1装备→饰品。力量徽章伤害＋2；行动戒指基础AP＋1（冒险者3→4），上限仍8；两件共用原单一accessory槽，换装不补HP/AP。共用单人／小队常驻小图标及悬停／点按详情，小队黄色加值与真实回执一致，行动菱形读实际属性且保留本轮容量。原人物／武器／动作／原规则目录不改，图标复用原B2素材。旧单人仍固定5伤＋永久装备增伤，非完整骰子规则迁移。仅P1营地借用，完整背包／存档待下项。
+
+源221af86cf549dddd125b5c3c8dca7a230427074d，Intel设备Release 40838235939成功，1.6.38/build64；140纯测试／五旧检查及10组Mac/Linux导出一致，两新饰品图标与66护甲资源名编入，包内三武器JSON／当前步态／原目录逐字节匹配，版本／经典ZIP2.0／CRC／权限／arm64／Metal已核。IPA 49302869字节，SHA256 fee9d7d9ae5206aa3955fce1366d3476d7fc18700129cfa9cdf76ceed23caaec。
+
 ## build63 · 上臂衣片贴合／蓝布残角返修 · 1.6.37
 
 [直接下载 MeadowJourney-b63.ipa](MeadowJourney-b63.ipa) · [正常全身动图／站姿](../Art/Review/Battle/armor-fit-r2/README.md) · [包校验](MeadowJourney-build63.json)
