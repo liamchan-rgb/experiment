@@ -1,3 +1,11 @@
+## build67 · 符文斩用户精灵表接入 · 1.6.41
+
+[直接下载 MeadowJourney-b67.ipa](MeadowJourney-b67.ipa) · [正常速度战斗GIF与美术审核](../Art/Review/Battle/spellblade-demo-v1/README.md) · [IPA校验记录](MeadowJourney-build67.json)
+
+符文斩使用用户提供的8帧RGBA序列，原尺寸拆帧且未重绘；攻击者接敌挥击，命中帧与原伤害／回血／护盾回执同步。离线整场GIF为235帧×20ms。原始素材是概念裁切初版，透明边界通过审计，整体美术仍待用户审阅。设备Release构建成功；unsigned IPA已验证经典ZIP 2.0头、CRC、arm64、iPhoneOS／iPhone+iPad、Metal、八张帧资源。162项纯测试和13组跨平台导出比对通过。无App／模拟器／实机运行，安装由用户验收。
+
+IPA大小 49938573 字节，SHA-256 `2cfe07cfd90ef1f3b0ae36ee7154763d420a2d96ac37b16dcce1380d67090816`。构建日志与分片清单见 `../Media/Build67/`。
+
 ## build66 · 魔剑士三技能 · 1.6.40
 
 [直接下载 MeadowJourney-b66.ipa](MeadowJourney-b66.ipa) · [正常GIF／站姿](../Art/Review/Battle/spellblade-demo-v1/README.md) · [包校验](MeadowJourney-build66.json)
