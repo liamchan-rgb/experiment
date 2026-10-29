@@ -6,9 +6,19 @@ R=Path(__file__).resolve().parents[1];D=R/'Art/Review/Battle/armor-fit-r2'
 gifs=[Image.open(D/(x+'-attack-normal.gif')) for x in ['leatherArmor','runeArmor']];frames=[];dur=[]
 for i in range(gifs[0].n_frames):
  out=Image.new('RGB',(1024,560),'#20372a')
- for j,g in enumerate(gifs):g.seek(i);out.paste(g.convert('RGB').crop((768,0,1024,280)).resize((512,560),Image.Resampling.NEAREST),(j*512,0))
+ for j,g in enumerate(gifs):g.seek(i);out.paste(g.convert('RGB').crop((0,0,256,280)).resize((512,560),Image.Resampling.NEAREST),(j*512,0))
  frames.append(out);dur.append(gifs[0].info['duration'])
-frames[0].save(D/'armors-standing.png');frames[0].save(D/'armors-body-normal.gif',save_all=True,append_images=frames[1:],duration=dur,loop=0,disposal=2,optimize=True)
+frames[0].save(D/'armors-standing.png')
+# Keep one palette throughout the comparison, avoiding secondary quantization
+# flicker. The original per-weapon GIF timings and held poses remain intact.
+sample=Image.new('RGB',(4096,2240))
+for j in range(16):sample.paste(frames[round(j*(len(frames)-1)/15)],(j%4*1024,j//4*560))
+palette=sample.quantize(colors=256,method=Image.Quantize.MEDIANCUT)
+encoded=[im.quantize(palette=palette,dither=Image.Dither.NONE) for im in frames]
+encoded[0].save(D/'armors-body-normal.gif',save_all=True,append_images=encoded[1:],duration=dur,loop=0,disposal=2,optimize=True)
+gif=Image.open(D/'armors-body-normal.gif')
+assert sum((gif.seek(i) or gif.info['duration']) for i in range(gif.n_frames))==sum(dur)
+
 # Compact whole-body contact sheets of every decoded frame, unchanged bow
 # column omitted. All pixels are at native scale; no torso-only crops.
 for item in ['leatherArmor','runeArmor']:
