@@ -1,3 +1,9 @@
+## build62 · 护甲手腕／袖口／下摆返修 · 1.6.36
+
+[直接下载 MeadowJourney-b62.ipa](MeadowJourney-b62.ipa) · [正常动图／站姿](../Art/Review/Battle/armor-fit-r1/README.md) · [包校验](MeadowJourney-build62.json)
+
+皮甲前臂和手腕补齐、符文甲袖口收窄、两甲独立下摆覆盖裤腿。132纯测试／五旧检查、Intel Release 40810525755、九组跨平台导出和包校验通过。48,940,192字节，SHA256 `cbce9fa2caeb669f4c427b054d5e0562192449d70beeeebacb7fa9a4f8a777ad`。主线程自行返修与美术审核，实机由用户测试。
+
 ## build61 · 皮甲／符文甲装备与战斗挂载 · 1.6.35
 
 [直接下载 MeadowJourney-b61.ipa](MeadowJourney-b61.ipa) · [正常动图／站姿](../Art/Review/Battle/armor-demo-v1/README.md) · [包校验](MeadowJourney-build61.json)
