@@ -34,7 +34,8 @@ final class DragonFlameTests:XCTestCase {
         XCTAssertEqual(receipt.after.units["p1"]?.ap,1)
         XCTAssertEqual(receipt.after.units["p1"]?.skillUses["dragonFlame"],1)
         for id in ["m1","m2"] {
-            XCTAssertEqual(before.units[id]!.health-receipt.after.units[id]!.health,min(18,roll.total+6))
+            // The staged roll total already includes the skill's +6 flat bonus.
+            XCTAssertEqual(before.units[id]!.health-receipt.after.units[id]!.health,min(18,roll.total))
             XCTAssertEqual(receipt.after.units[id]?.shield,0)
         }
         XCTAssertNil(try model.commit(intent.id),"one confirmed action must never commit twice")
@@ -58,8 +59,10 @@ final class DragonFlameTests:XCTestCase {
             XCTAssertEqual(layer.center.x,expected.x)
             XCTAssertEqual(layer.center.y,expected.y)
         }
-        XCTAssertEqual(hit.glows.count,8)
-        XCTAssertTrue(hit.glows.allSatisfy{$0.color.hasPrefix("fire") && $0.alpha.isFinite})
+        XCTAssertTrue(hit.glows.isEmpty,"light should fade in smoothly from the exact hit frame")
+        let lit=SpellbladeEffects.sample(action:.dragonFlame,age:PartyAction.dragonFlame.impact+0.06,actor:"p1",target:"m1",recipients:cues,targets:intent.targets)
+        XCTAssertEqual(lit.glows.count,8)
+        XCTAssertTrue(lit.glows.allSatisfy{$0.color.hasPrefix("fire") && $0.alpha.isFinite && $0.alpha>0})
 
         let burst=SpellbladeEffects.sample(action:.dragonFlame,age:PartyAction.dragonFlame.impact+0.74,actor:"p1",target:"m1",recipients:cues,targets:intent.targets)
         XCTAssertTrue(burst.spriteLayers.contains{$0.asset=="MeadowDragonFlame12" || $0.asset=="MeadowDragonFlame13"})
