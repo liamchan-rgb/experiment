@@ -6,7 +6,7 @@ Application Support/MeadowCamp/camp-v1.json保存三槽、两衣装、营地库�
 当前行囊仅P1，P2可作道具目标且地图外观保持。林地单人／小队仍独立演练，HP与补给每场重置，不扣营地库存；旧单人仍固定5伤＋装备增伤。存档不含道路位置或战斗中途续战，不冒称正式桌游全进度迁移。Build64无持久配置，不能恢复此前未保存的会话选择。
 源90eb1f675d0cb9b1e5c8bcf2bc2421e74c7d912e，Intel设备Release 40843673369成功，1.6.39/build65；150纯测试／五原检查及11组Mac/Linux导出在1e-6内一致（含7营地投影／安全区布局）。新UIKit控制器／CampInventorySession已编入，原66护甲资源与两饰品图标、三武器JSON／当前步态／原目录、版本／经典ZIP2.0／CRC／权限／arm64／Metal已核。IPA 49391101字节，SHA256 5dd41203ba5264c5dfc138ddafa7412d3613dc658a5b8aa9e1cf218c941d561a。
 主线程亲看14整页平板／手机PNG、正常GIF实际解码全部8整页和原生8格全身1×/2×。人物不重合成；离线预览用生产状态／几何和原图集，8×120ms=960ms，不是UIKit／设备录屏。402原资源／核心／武器Rig路径字节保持，704构建相关路径与源码一致。八个公开媒体／数据完整GET匹配，独立GIF浏览器加载／推进已核且截图已亲看。无App／模拟器／实机、智能体或图像生成，新UI与运行时美术认可null。实际触控与安装由用户测试。
-直接IPA完整GET回执待此提交后写Media/Build65/public-downloads.json。
+直接IPA完整GET的字节数与SHA256已和本地审核包匹配，回执见Media/Build65/public-downloads.json。
 后两项：B3魔剑士符文斩／符文庇护／战斗符文；B4龙骑士龙焰／龙鳞庇护／龙之号令，不自动开始。
 
 
