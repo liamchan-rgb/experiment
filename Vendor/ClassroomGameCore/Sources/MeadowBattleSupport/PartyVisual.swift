@@ -68,7 +68,7 @@ public enum PartyVisual {
     }
     public static func travel(_ intent:PartyIntent?,age:Double,shielded:Bool=false)->PartyPoint {
         guard let intent,intent.action.isOffensive,let from=feet[intent.actor],let to=feet[intent.target] else { return PartyPoint(0,0) }
-        if intent.ranged || intent.magical { return PartyPoint(0,0) }
+        if intent.ranged || intent.magical || intent.action.isRune { return PartyPoint(0,0) }
         if intent.weaponID=="greatSword",!intent.enemy,intent.action != .ambush {
             return GreatSwordRig.travel(age:age,from:from,to:hitPoint(target:intent.target,shielded:shielded,weaponID:intent.weaponID),scale:heroScale)
         }
@@ -89,7 +89,9 @@ extension PartyVisual {
         var clip=unit.isAlive ? "idle":"defeat"
         var progress=unit.isAlive ? time.truncatingRemainder(dividingBy:2.4)/2.4:(downAge.map { smooth($0/0.6) } ?? 1)
         if let intent,intent.actor==unit.id,unit.isAlive {
-            if intent.action == .ambush {
+            if intent.action.isRune {
+                clip="guard";progress=smooth(age/intent.action.duration)
+            } else if intent.action == .ambush {
                 clip="attack";progress=ambushProgress(age)
             } else if intent.action.visual=="attack" {
                 clip="attack"

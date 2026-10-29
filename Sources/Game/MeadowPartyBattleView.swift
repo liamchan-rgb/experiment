@@ -9,6 +9,7 @@ final class MeadowPartyBattleView:UIView {
     var loadoutUnits:[String:GameUnit]?
     private var actionPointCapacity:[String:Int]=[:]
     private var apRound=0
+    private var playerClassID="spellblade"
     private var active=false
     private var generation=0
     private var scheduled:DispatchWorkItem?
@@ -41,7 +42,8 @@ final class MeadowPartyBattleView:UIView {
         skillScroll.showsHorizontalScrollIndicator=true
         [title,hint,back,reset,end].forEach(header.addSubview)
         back.addAction(UIAction { [weak self] _ in self?.setActive(false);self?.onClose?() },for:.touchUpInside)
-        reset.addAction(UIAction { [weak self] _ in self?.restart() },for:.touchUpInside)
+        reset.configuration?.title="演练设置";reset.showsMenuAsPrimaryAction=true
+        configureTrainingMenu()
         end.addAction(UIAction { [weak self] _ in self?.perform(.endTurn) },for:.touchUpInside)
         for _ in 0..<4 { let card=MeadowPreviewCard(title:"",text:"");skills.append(card);skillScroll.addSubview(card) }
         skillScroll.addSubview(items);items.showsMenuAsPrimaryAction=true
@@ -55,9 +57,17 @@ final class MeadowPartyBattleView:UIView {
             generation += 1;scheduled?.cancel();scheduled=nil;model?.cancel();stage.stop();accessory.dismiss()
         }
     }
+    private func configureTrainingMenu() {
+        let choices=[("adventurer","冒险者"),("spellblade","魔剑士")]
+        let classes=choices.map { id,name in UIAction(title:"P1 · "+name,state:playerClassID==id ? .on:.off) { [weak self] _ in
+            guard let self else{return};self.playerClassID=id;self.configureTrainingMenu();self.restart()
+        } }
+        let again=UIAction(title:"重置当前演练") { [weak self] _ in self?.restart() }
+        reset.menu=UIMenu(children:[again,UIMenu(title:"P1职业",children:classes)])
+    }
     private func restart() {
         generation += 1;scheduled?.cancel();scheduled=nil;stage.stop();accessory.dismiss()
-        do { model=try PartyEncounter(loadouts:loadoutUnits) } catch { hint.text="演练加载失败：\(error.localizedDescription)";return }
+        do { model=try PartyEncounter(loadouts:loadoutUnits,playerClassID:playerClassID) } catch { hint.text="演练加载失败：\(error.localizedDescription)";return }
         friend="p1";foe="m1";actionPointCapacity=[:];apRound=0;stage.start();refresh()
     }
     private func choose(_ id:String) {
@@ -114,12 +124,12 @@ final class MeadowPartyBattleView:UIView {
             actionPointCapacity[displayActor]=capacity
             ap.show(value:unit.ap,maximum:capacity)
             accessory.show(try? AccessoryReadout.make(unit,catalog:model.engine.catalog),host:self)
-            if let b=unit.damageBuff { buff.show(title:"振奋 · 增伤＋\(b.amount)",detail:"剩余 \(b.roundsLeft) 轮\n普攻和伤害技能生效",symbol:"arrow.up",color:MeadowPreviewPalette.gold) } else { buff.hide() }
+            if let b=unit.damageBuff { buff.show(title:"增伤＋\(b.amount)",detail:"剩余 \(b.roundsLeft) 轮\n普攻和伤害技能生效",symbol:"arrow.up",color:MeadowPreviewPalette.gold) } else { buff.hide() }
             if unit.shield>0 { shieldBuff.show(title:"护盾 · \(unit.shield)",detail:"优先抵挡伤害\n新旧授盾取较高值",symbol:"shield.fill",color:.systemCyan) } else { shieldBuff.hide() }
         }
         track.show(ids:["p2","p1","m1","m2"],names:["p1":"P1","p2":"P2","m1":"鹿灵甲","m2":"鹿灵乙"],current:showing,done:state.battle?.acted.subtracting(Set([showing ?? ""])) ?? [],down:Set(state.units.values.filter { !$0.isAlive }.map(\.id)))
         stage.show(state,friend:friend,foe:foe,current:current,catalog:model.engine.catalog)
-        let actions:[PartyAction]=busy ? (showing=="p2" ? [.attack,.ambush,.support,.rally]:showing=="p1" ? [.attack,.heavyStrike,.breather,.simpleGuard]:[]):model.playerActions()
+        let actions:[PartyAction]=busy ? showing.map { model.actions(for:$0) } ?? []:model.playerActions()
         if busy { focusedAction=nil }
         for (i,b) in skills.enumerated() {
             b.isHidden=i>=actions.count
@@ -158,8 +168,12 @@ final class MeadowPartyBattleView:UIView {
         let damage=model.state.units[actor].flatMap { try? GameRules.attributes($0,catalog:model.engine.catalog).damage } ?? 0
         let modifier=damage>0 ? " · 增伤＋\(damage)":""
         let uses=model.state.units[actor]?.skillUses[a.rawValue] ?? 0
-        let rest=max(0,2-uses)
+        let limit=(try? model.engine.catalog.skill(a.rawValue).uses) ?? 2
+        let rest=max(0,limit-uses)
         switch a {
+        case .runeSlash:return "2D12＋2"+modifier+" · 自身恢复4 / 盾4 · 余\(rest)"
+        case .runeWard:return "目标地点：队友恢复8 / 盾6 · 余\(rest)"
+        case .battleRune:return "目标地点：盾4 / 增伤3 · 2轮 · 余\(rest)"
         case .ambush:return "2D8＋2"+modifier+" · 自身恢复3 · 余\(rest)"
         case .support:return "1 AP · 治疗6 / 盾4 · 余\(rest)"
         case .rally:return "1 AP · 节点友方增伤2 / 1轮 · 余\(rest)"

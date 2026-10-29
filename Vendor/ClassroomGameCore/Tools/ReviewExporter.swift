@@ -5,6 +5,7 @@ import ClassroomGameCore
 @main struct Export {
     static func main() throws {
         let out=URL(fileURLWithPath:CommandLine.arguments[1]);try FileManager.default.createDirectory(at:out,withIntermediateDirectories:true)
+        if CommandLine.arguments.contains("--rune-only") { try exportRunes(out:out);return }
         if CommandLine.arguments.contains("--inventory-only") { try exportInventory(out:out);return }
         if CommandLine.arguments.contains("--accessory-only") { try exportAccessories(out:out);return }
         if CommandLine.arguments.contains("--bow-only") { try exportBow(out:out);return }
@@ -104,6 +105,7 @@ import ClassroomGameCore
         try exportLegendaryStaff(out:out)
         try exportAccessories(out:out)
         try exportInventory(out:out)
+        try exportRunes(out:out)
         print("Exported \(rows.count) actual GameCore support/item frames and \(requests.count) attachment samples")
     }
 }
@@ -410,5 +412,81 @@ extension Export {
         try capture("rune-sword-badge","powerBadge")
         let dataOut=try JSONSerialization.data(withJSONObject:rows,options:[.sortedKeys]);try dataOut.write(to:out.appendingPathComponent("inventory-frames.json"))
         print("Exported \(rows.count) actual camp inventory, equipment, import and layout states")
+    }
+}
+
+extension Export {
+    static func exportRunes(out:URL) throws {
+        var rows:[[String:Any]]=[],requests:[[String:Any]]=[]
+        func object<T:Encodable>(_ value:T)throws->Any { try JSONSerialization.jsonObject(with:JSONEncoder().encode(value)) }
+        for scenario in ["runeSlash","runeSlash-lethal","runeWard","battleRune","runeSlash-buffed"] {
+            let gear=try TrainingLoadout();try gear.equip("greatSword");try gear.equipArmor("runeArmor");try gear.equipAccessory("powerBadge")
+            let action:PartyAction=scenario.hasPrefix("runeSlash") ? .runeSlash:scenario=="runeWard" ? .runeWard:.battleRune
+            var seed:UInt64=47
+            if scenario=="runeSlash" {
+                for n in UInt64(1)...100 {
+                    let probe=try PartyEncounter(seed:n,loadouts:gear.units,playerClassID:"spellblade");try probe.engine.apply(.endTurn(actor:"p2",timedOut:false))
+                    _=probe.prepare(.runeSlash,target:"m1")
+                    if (probe.confirmedReceipt?.after.units["m1"]?.health ?? 0)>0 { seed=n;break }
+                }
+            }
+            let p=try PartyEncounter(seed:seed,sessionID:"rune-review-"+scenario,loadouts:gear.units,playerClassID:"spellblade")
+            try p.engine.apply(.endTurn(actor:"p2",timedOut:false))
+            if scenario=="runeSlash-buffed" { let i=p.prepare(.battleRune,target:"p1")!;_=try p.commit(i.id) }
+            if scenario=="runeSlash-lethal" { try p.engine.apply(.editResources(unit:"m1",value:ResourcePatch(health:3)));try p.engine.apply(.editResources(unit:"m2",value:ResourcePatch(health:0))) }
+            let target=action.isOffensive ? "m1":"p1",actor="p1",original=p.state
+            let actorUnit=original.units[actor]!,targetUnit=original.units[target]!
+            var dice=BattleDice.channels(action,actor:actorUnit,target:targetUnit,catalog:p.engine.catalog),intent:PartyIntent?,receipt:OperationReceipt?,hitAt:Double?
+            var hurts:[String:Double]=[:],deaths:[String:Double]=scenario=="runeSlash-lethal" ? ["m2":-3]:[:],births:[String:Double]=[:],heals:[String:Double]=[:],strengths:[String:Double]=[:]
+            var emitters:[[String:Any]]=[],labels:[[String:Any]]=[];let start=1.0,count=235
+            for frame in 0..<count {
+                let time=Double(frame)*0.02,age=time-start
+                if frame==50 {
+                    intent=p.prepare(action,target:target)!
+                    dice=BattleDice.channels(action,actor:actorUnit,target:targetUnit,catalog:p.engine.catalog,receipt:p.confirmedReceipt)
+                }
+                let cues=intent.map { SpellbladeEffects.recipients($0,catalog:p.engine.catalog) } ?? []
+                if let i=intent,receipt==nil,age+1e-8>=action.impact {
+                    receipt=try p.commit(i.id);hitAt=time
+                    if let r=receipt {
+                        dice=BattleDice.channels(action,actor:actorUnit,target:targetUnit,catalog:p.engine.catalog,receipt:r)
+                        for id in ["p1","p2","m1","m2"] {
+                            let a=r.before.units[id]!,b=r.after.units[id]!,foot=PartyVisual.feet[id]!,point=PartyVisual.hitPoint(target:id,weaponID:i.weaponID)
+                            let damage=max(0,a.health-b.health),gain=max(0,b.shield-a.shield),heal=max(0,b.health-a.health)
+                            if damage>0 { hurts[id]=time;labels.append(["text":"−\(damage)","x":point.x,"y":point.y,"at":time]);emitters.append(["kind":"strike","at":time,"x":point.x,"y":point.y,"floor":foot.y]) }
+                            if heal>0 { heals[id]=time;let amount=cues.first { $0.unitID==id }?.heal ?? heal;strengths[id]=SpellbladeEffects.healingStrength(amount);labels.append(["text":"＋\(heal)","x":foot.x+90,"y":foot.y-120,"at":time]) }
+                            if gain>0 { births[id]=time;labels.append(["text":"盾 ＋\(gain)","x":foot.x+90,"y":foot.y-84,"at":time]) }
+                            if b.damageBuff != a.damageBuff,let buff=b.damageBuff { labels.append(["text":"伤害 ＋\(buff.amount)","x":foot.x+90,"y":foot.y-156,"at":time]) }
+                            if a.isAlive && !b.isAlive { deaths[id]=time;emitters.append(["kind":"death","at":time,"x":point.x,"y":point.y,"floor":foot.y]) }
+                        }
+                    }
+                }
+                let showing=intent.flatMap { age<action.duration ? $0:nil },victory=(p.state.battle==nil && time>=start+action.duration) ? time-(start+action.duration):nil
+                var units:[[String:Any]]=[]
+                for id in ["p1","p2","m1","m2"] {
+                    let u=p.state.units[id]!,stats=try GameRules.attributes(u,catalog:p.engine.catalog)
+                    let pose=PartyVisual.pose(unit:u,intent:showing,age:age,time:time,hurtAge:hurts[id].map { time-$0 },victoryAge:victory)
+                    let monster=PartyVisual.monster(time:time+(id=="m2" ? 0.7:0),attackAge:nil,hurtAge:hurts[id].map { time-$0 },preparing:p.current==id && showing==nil)
+                    units.append(["id":id,"name":u.name,"weaponID":u.equipment.weapon as Any? ?? NSNull(),"armorID":u.equipment.armor as Any? ?? NSNull(),"weaponPose":u.equipment.weapon=="greatSword" ? try object(GreatSwordRig.pose(progress:pose.progress,clip:pose.clip)):NSNull(),"vitalsVisible":u.kind != .monster || u.isAlive,"hp":u.health,"maxHP":stats.maximumHealth,"baseAP":stats.baseAP,"maximumAP":stats.maximumAP,"attributeDamage":stats.damage,"accessory":try AccessoryReadout.make(u,catalog:p.engine.catalog).map { try object($0) } as Any? ?? NSNull(),"shield":u.shield,"ap":u.ap,"buff":u.damageBuff?.amount ?? 0,"buffRounds":u.damageBuff?.roundsLeft ?? 0,"clip":pose.clip,"progress":pose.progress,"monster":try object(monster),"deathAge":deaths[id].map { time-$0 } as Any? ?? NSNull()])
+                    if id.hasPrefix("p") {
+                        var q:[String:Any]=["kind":scenario+"-"+id,"frame":frame,"time":time,"shield":u.shield,"emitters":[],"recoveryStrength":strengths[id] ?? 1]
+                        if let at=heals[id] { q["recoveryAge"]=time-at }
+                        if let at=births[id] { q["birth"]=time-at }
+                        if let cue=cues.first(where:{$0.unitID==id}),cue.shield>original.units[id]!.shield,u.shield==0,age>=0 { q["formation"]=age-max(0,action.impact-0.46) }
+                        requests.append(q)
+                    }
+                }
+                let hovering=time<start,geometry=showing.map { SpellbladeEffects.sample(action:action,age:age,actor:actor,target:target,recipients:cues,weaponID:$0.weaponID) } ?? RuneEffectSample()
+                let dark=hovering ? BattleDice.darkness(action)*PartyVisual.smooth(time/0.28):showing != nil ? SpellbladeEffects.darkness(action,age:age,from:BattleDice.darkness(action)):0
+                rows.append(["scenario":scenario,"frame":frame,"time":time,"hitPoints":try object(Dictionary(uniqueKeysWithValues:["p1","p2","m1","m2"].map { ($0,PartyVisual.hitPoint(target:$0,weaponID:"greatSword")) })),"damageLabels":labels.filter { time-($0["at"] as! Double)<1 },"staff":NSNull(),"ranged":false,"weaponTrail":[],"projectile":NSNull(),"locked":!hovering,"confirmationAge":hovering ? NSNull():age,"hover":hovering,"darkness":dark,"actor":actor,"target":target,"action":action.rawValue,"age":age,"playing":showing != nil,"enemy":false,"impact":hitAt as Any? ?? NSNull(),"afterimages":[],"ambushSlashes":[],"receiptDice":try object(receipt?.dice ?? []),"dice":try object(dice),"diceAnchor":try object(PartyVisual.diceAnchor(actor:actor,intent:showing,age:age,diceCount:dice.count)),"poly":try object(dice.enumerated().map { index,die in PolyhedralDice.sample(die:die,time:time,index:index,count:dice.count,resolvedAge:hitAt.map { time-$0 },visibleAge:time,locked:!hovering,confirmationAge:hovering ? nil:age) }),"dicePose":try object(dice.indices.map { BattleDice.pose(time:time,index:$0,resolvedAge:hitAt.map { time-$0 },visibleAge:time) }),"travel":try object(PartyVisual.travel(showing,age:age)),"current":(showing?.actor ?? p.current) as Any? ?? NSNull(),"acted":Array(p.state.battle?.acted ?? []),"units":units,"runes":try object(geometry),"recipients":try object(cues)])
+                let emissions=emitters.compactMap { e -> [String:Any]? in
+                    let t=time-(e["at"] as! Double);guard t<3 else{return nil};return ["kind":e["kind"]!,"age":t,"x":e["x"]!,"y":e["y"]!,"floor":e["floor"]!]
+                }
+                requests.append(["kind":scenario+"-fx","frame":frame,"time":time,"shield":0,"emitters":emissions])
+            }
+        }
+        try JSONSerialization.data(withJSONObject:rows,options:[.sortedKeys]).write(to:out.appendingPathComponent("spellblade-frames.json"))
+        try JSONSerialization.data(withJSONObject:requests,options:[.sortedKeys]).write(to:out.appendingPathComponent("spellblade-light-requests.json"))
+        print("Exported \(rows.count) spellblade receipt, dice, pose and rune frames plus \(requests.count) light requests")
     }
 }

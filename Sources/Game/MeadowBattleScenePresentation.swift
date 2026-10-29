@@ -239,7 +239,7 @@ final class MeadowBattleAttachedSkillsView: UIView {
         rearRibbon.removeFromSuperview()
         if let host=superview { rearRibbon.layer.zPosition = -1;host.addSubview(rearRibbon) }
     }
-    func update(shield:Int,preview:Double,time:Double,formation:Double?,formationBase:Double,birth:Double?,contact:Double?,broken:Double?,recovery:Double?) {
+    func update(shield:Int,preview:Double,time:Double,formation:Double?,formationBase:Double,birth:Double?,contact:Double?,broken:Double?,recovery:Double?,recoveryStrength:Double=1) {
         let unit=bounds.width/256
         func smooth(_ x:Double)->CGFloat { CGFloat(MeadowBattleRecoveryField.smooth(x)) }
         UIView.performWithoutAnimation {
@@ -259,29 +259,31 @@ final class MeadowBattleAttachedSkillsView: UIView {
                 orb.frame=CGRect(x:center.x+cos(angle)*radius-s/2,y:center.y+sin(angle)*radius-s/2,width:s,height:s)
                 orb.alpha=alpha*0.65
             }
+            let intensity=CGFloat(min(2.2,max(1,recoveryStrength)))
             let age=recovery ?? -1
             let power=CGFloat(MeadowBattleRecoveryField.pulse(age))
             let active=age>=0 && age<MeadowBattleRecoveryField.duration
             let foot=CGPoint(x:128*unit,y:214*unit)
             shaft.isHidden = !active;wave.isHidden = !active
             shaft.frame=CGRect(x:foot.x-55*unit,y:foot.y-175*unit,width:110*unit,height:185*unit)
-            shaft.alpha=power*0.10
+            shaft.alpha=power*0.10*intensity
             core.isHidden = !active
             let coreSize:CGFloat=110*unit
             core.frame=CGRect(x:foot.x-coreSize/2,y:foot.y-64*unit-coreSize/2,width:coreSize,height:coreSize)
             let corePulse:CGFloat=age<0.47 ? smooth((age-0.34)/0.13) : 1-smooth((age-0.47)/0.23)
-            core.alpha=corePulse*0.25
+            core.alpha=corePulse*0.25*min(1.5,intensity)
             let expansion=CGFloat(0.65+0.65*MeadowBattleRecoveryField.smooth(age/1.1))
             wave.frame=CGRect(x:foot.x-82*unit*expansion,y:foot.y-12*unit,width:164*unit*expansion,height:28*unit)
-            wave.alpha=power*0.35
-            ribbon.frame=bounds;ribbon.age=age;ribbon.setNeedsDisplay()
-            rearRibbon.frame=frame;rearRibbon.age=age;rearRibbon.setNeedsDisplay()
+            wave.alpha=power*0.35*min(1.5,intensity)
+            ribbon.frame=bounds;ribbon.age=age;ribbon.strength=Double(intensity);ribbon.setNeedsDisplay()
+            rearRibbon.frame=frame;rearRibbon.age=age;rearRibbon.strength=Double(intensity);rearRibbon.setNeedsDisplay()
             let motes=Dictionary(uniqueKeysWithValues:MeadowBattleRecoveryField.sample(age).map { ($0.id,$0) })
             for (i,star) in stars.enumerated() {
                 guard let p=motes[i] else { star.isHidden=true;continue }
                 star.isHidden=false
-                star.frame=CGRect(x:foot.x+CGFloat(p.x-p.size/2)*unit,y:foot.y+CGFloat(p.y-p.size/2)*unit,width:CGFloat(p.size)*unit,height:CGFloat(p.size)*unit)
-                star.alpha=CGFloat(p.alpha)
+                let size=CGFloat(p.size)*(1+(intensity-1)*0.35)
+                star.frame=CGRect(x:foot.x+CGFloat(p.x)*unit-size*unit/2,y:foot.y+CGFloat(p.y)*unit-size*unit/2,width:size*unit,height:size*unit)
+                star.alpha=min(1,CGFloat(p.alpha)*intensity)
             }
         }
     }
@@ -290,6 +292,7 @@ final class MeadowBattleAttachedSkillsView: UIView {
 private final class MeadowBattleRecoveryRibbonView:UIView {
     let front:Bool
     var age = -1.0
+    var strength=1.0
     init(front:Bool) { self.front=front;super.init(frame:.zero);isOpaque=false;isUserInteractionEnabled=false }
     required init?(coder:NSCoder) { fatalError("init(coder:) has not been implemented") }
     override func draw(_ rect:CGRect) {
@@ -308,9 +311,9 @@ private final class MeadowBattleRecoveryRibbonView:UIView {
                     path.move(to:CGPoint(x:a.x,y:a.y));path.addLine(to:CGPoint(x:b.x,y:b.y));alpha += (a.alpha+b.alpha)/2;count += 1
                 }
                 guard count>0 else { continue };alpha=alpha/Double(count)*(front ? 1:0.58)
-                UIColor(red:0.08,green:0.95,blue:0.40,alpha:alpha*0.20).setStroke();path.lineWidth=9;path.stroke()
-                UIColor(red:0.40,green:1,blue:0.64,alpha:alpha*0.90).setStroke();path.lineWidth=3.2;path.stroke()
-                UIColor(red:0.86,green:1,blue:0.81,alpha:alpha*0.85).setStroke();path.lineWidth=1.1;path.stroke()
+                UIColor(red:0.08,green:0.95,blue:0.40,alpha:alpha*0.20).setStroke();path.lineWidth=CGFloat(9*strength);path.stroke()
+                UIColor(red:0.40,green:1,blue:0.64,alpha:alpha*0.90).setStroke();path.lineWidth=CGFloat(3.2*strength);path.stroke()
+                UIColor(red:0.86,green:1,blue:0.81,alpha:alpha*0.85).setStroke();path.lineWidth=CGFloat(1.1*sqrt(strength));path.stroke()
             }
         }
         ctx.restoreGState()
