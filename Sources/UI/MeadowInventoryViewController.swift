@@ -45,7 +45,7 @@ final class MeadowInventoryViewController:UIViewController,UIDocumentPickerDeleg
         close.addAction(UIAction { [weak self] _ in guard let self else{return};self.hero.stopAnimating();self.dismiss(animated:true) { self.onClose?() } },for:.touchUpInside)
         exportButton.addAction(UIAction { [weak self] _ in self?.exportSave() },for:.touchUpInside)
         importButton.addAction(UIAction { [weak self] _ in self?.openImport() },for:.touchUpInside)
-        hero.contentMode = .scaleAspectFit;hero.layer.magnificationFilter = .nearest;hero.isAccessibilityElement=true;hero.accessibilityLabel="P1当前衣装与装备预览"
+        hero.contentMode = .scaleAspectFit;hero.layer.magnificationFilter = .nearest;hero.layer.minificationFilter = .nearest;hero.isAccessibilityElement=true;hero.accessibilityLabel="P1当前衣装与装备预览"
         [hero,walk,clothes,vitals,actions,statsLabel].forEach(left.addSubview)
         walk.addAction(UIAction { [weak self] _ in guard let self else{return};self.walking.toggle();self.refreshHero() },for:.touchUpInside)
         clothes.addTarget(self,action:#selector(changeClothes),for:.valueChanged)
@@ -100,12 +100,13 @@ final class MeadowInventoryViewController:UIViewController,UIDocumentPickerDeleg
         header.frame=rect(layout.header);left.frame=rect(layout.equipment);middle.frame=rect(layout.bag);right.frame=rect(layout.detail);footer.frame=rect(layout.footer)
         let w=header.bounds.width;titleLabel.frame=CGRect(x:12,y:2,width:max(1,w-284),height:29);saveLabel.frame=CGRect(x:12,y:31,width:max(1,w-284),height:22)
         close.frame=CGRect(x:w-118,y:9,width:108,height:38);exportButton.frame=CGRect(x:w-184,y:9,width:60,height:38);importButton.frame=CGRect(x:w-250,y:9,width:60,height:38)
-        let lw=left.bounds.width;hero.frame=CGRect(x:12,y:9,width:lw-24,height:133)
-        walk.frame=CGRect(x:12,y:147,width:lw-24,height:36);clothes.frame=CGRect(x:12,y:191,width:lw-24,height:32)
-        vitals.frame=CGRect(x:12,y:232,width:lw-24,height:43)
-        actions.frame=CGRect(x:12,y:282,width:lw-24,height:43);statsLabel.frame=CGRect(x:12,y:335,width:lw-24,height:26)
-        for (i,button) in slots.enumerated() { button.frame=CGRect(x:12,y:370+CGFloat(i)*61,width:lw-24,height:54) }
-        left.contentSize=CGSize(width:lw,height:564)
+        let lw=left.bounds.width,heroHeight=min(240,max(133,left.bounds.height*0.30)),shift=heroHeight-133
+        hero.frame=CGRect(x:12,y:9,width:lw-24,height:heroHeight)
+        walk.frame=CGRect(x:12,y:147+shift,width:lw-24,height:36);clothes.frame=CGRect(x:12,y:191+shift,width:lw-24,height:32)
+        vitals.frame=CGRect(x:12,y:232+shift,width:lw-24,height:43)
+        actions.frame=CGRect(x:12,y:282+shift,width:lw-24,height:43);statsLabel.frame=CGRect(x:12,y:335+shift,width:lw-24,height:26)
+        for (i,button) in slots.enumerated() { button.frame=CGRect(x:12,y:370+shift+CGFloat(i)*61,width:lw-24,height:54) }
+        left.contentSize=CGSize(width:lw,height:564+shift)
         filterButton.frame=CGRect(x:10,y:9,width:middle.bounds.width-20,height:38)
         list.frame=CGRect(x:8,y:55,width:middle.bounds.width-16,height:max(1,middle.bounds.height-63))
         for (i,row) in rows.enumerated() {
