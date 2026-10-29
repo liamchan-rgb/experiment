@@ -454,9 +454,9 @@ extension Export {
                             let a=r.before.units[id]!,b=r.after.units[id]!,foot=PartyVisual.feet[id]!,point=PartyVisual.hitPoint(target:id,weaponID:i.weaponID)
                             let damage=max(0,a.health-b.health),gain=max(0,b.shield-a.shield),heal=max(0,b.health-a.health)
                             if damage>0 { hurts[id]=time;labels.append(["text":"−\(damage)","x":point.x,"y":point.y,"at":time]);emitters.append(["kind":"strike","at":time,"x":point.x,"y":point.y,"floor":foot.y]) }
-                            if heal>0 { heals[id]=time;let amount=cues.first { $0.unitID==id }?.heal ?? heal;strengths[id]=SpellbladeEffects.healingStrength(amount);labels.append(["text":"＋\(heal)","x":foot.x+90,"y":foot.y-120,"at":time]) }
-                            if gain>0 { births[id]=time;labels.append(["text":"盾 ＋\(gain)","x":foot.x+90,"y":foot.y-84,"at":time]) }
-                            if b.damageBuff != a.damageBuff,let buff=b.damageBuff { labels.append(["text":"伤害 ＋\(buff.amount)","x":foot.x+90,"y":foot.y-156,"at":time]) }
+                            if heal>0 { heals[id]=time;let amount=cues.first { $0.unitID==id }?.heal ?? heal;strengths[id]=SpellbladeEffects.healingStrength(amount);labels.append(["text":"＋\(heal)","x":foot.x,"y":foot.y,"at":time,"supportUnit":id,"supportLine":0]) }
+                            if gain>0 { births[id]=time;labels.append(["text":"盾 ＋\(gain)","x":foot.x,"y":foot.y,"at":time,"supportUnit":id,"supportLine":1]) }
+                            if b.damageBuff != a.damageBuff,let buff=b.damageBuff { labels.append(["text":"伤害 ＋\(buff.amount)","x":foot.x,"y":foot.y,"at":time,"supportUnit":id,"supportLine":0]) }
                             if a.isAlive && !b.isAlive { deaths[id]=time;emitters.append(["kind":"death","at":time,"x":point.x,"y":point.y,"floor":foot.y]) }
                         }
                     }

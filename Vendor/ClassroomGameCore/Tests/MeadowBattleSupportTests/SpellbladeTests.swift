@@ -88,6 +88,22 @@ final class SpellbladeTests:XCTestCase {
         let j=try XCTUnwrap(p.prepare(.battleRune,target:"p1"));try p.engine.apply(.editResources(unit:"p1",value:ResourcePatch(health:10)))
         XCTAssertThrowsError(try p.commit(j.id));XCTAssertNil(p.state.units["p1"]?.damageBuff);XCTAssertEqual(p.state.units["p1"]?.ap,3)
     }
+    func testTrainingClassAndCastsNeverMutateTheSavedCampProfile() throws {
+        let camp=try CampInventorySession(store:nil);try camp.equip(slot:.armor,item:"runeArmor")
+        let saved=try camp.exportData(),p=try ready(camp.loadout)
+        XCTAssertEqual(try GameRules.attributes(p.state.units["p1"]!,catalog:p.engine.catalog).maximumHealth,32)
+        _=try cast(p,.runeWard)
+        XCTAssertEqual(try camp.exportData(),saved);XCTAssertEqual(camp.loadout.units["p1"]?.templateID,"adventurer")
+        XCTAssertEqual(try GameRules.attributes(camp.loadout.units["p1"]!,catalog:camp.loadout.engine.catalog).maximumHealth,20)
+    }
+    func testSupportNumbersStayBelowHeadersAndBesideTheCorrectActor() {
+        for id in ["p1","p2"] { for width in [36.0,90.0,110.0] { for line in [0,1] { for age in [0.0,0.5,1.0] {
+            let foot=PartyVisual.feet[id]!,p=PartyVisual.supportLabelOrigin(at:foot,width:width,line:line,age:age)
+            XCTAssertGreaterThanOrEqual(p.x,4);XCTAssertLessThanOrEqual(p.x+width,foot.x-14)
+            XCTAssertGreaterThan(p.y,foot.y-170+44+2)
+            if id=="p1" { XCTAssertLessThan(p.x+width,PartyVisual.feet["p2"]!.x-88) }
+        } } } }
+    }
     func testContinuousGeometryFadesBeforeEndAndHealingGrowsWithPower() throws {
         let p=try ready();let unit=p.state.units["p1"]!
         for action in [PartyAction.runeSlash,.runeWard,.battleRune] {

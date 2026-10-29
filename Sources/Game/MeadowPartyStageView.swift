@@ -152,10 +152,10 @@ final class MeadowPartyStageView:UIView {
                     let amount=SpellbladeEffects.recipients(intent,catalog:catalog).first { $0.unitID==id }?.heal ?? heal
                     recovery[id]=sceneTime;recoveryStrength[id]=SpellbladeEffects.healingStrength(amount)
                 }
-                messages.append(.init(text:"＋\(heal)",point:CGPoint(x:point.x+shift.x,y:point.y+shift.y),at:sceneTime,color:.systemGreen))
+                messages.append(.init(text:"＋\(heal)",point:CGPoint(x:point.x+shift.x,y:point.y+shift.y),at:sceneTime,color:.systemGreen,supportUnit:intent.action.isRune ? id:nil))
             }
-            if gain>0 { birth[id]=sceneTime;messages.append(.init(text:"盾 ＋\(gain)",point:CGPoint(x:point.x,y:point.y+(intent.action.isRune ? 36:24)),at:sceneTime,color:.systemCyan)) }
-            if after.damageBuff != before.damageBuff,let b=after.damageBuff { messages.append(.init(text:"伤害 ＋\(b.amount)",point:CGPoint(x:point.x,y:point.y-(intent.action.isRune ? 36:0)),at:sceneTime,color:MeadowPreviewPalette.gold)) }
+            if gain>0 { birth[id]=sceneTime;messages.append(.init(text:"盾 ＋\(gain)",point:CGPoint(x:point.x,y:point.y+(intent.action.isRune ? 36:24)),at:sceneTime,color:.systemCyan,supportUnit:intent.action.isRune ? id:nil,supportLine:1)) }
+            if after.damageBuff != before.damageBuff,let b=after.damageBuff { messages.append(.init(text:"伤害 ＋\(b.amount)",point:CGPoint(x:point.x,y:point.y-(intent.action.isRune ? 36:0)),at:sceneTime,color:MeadowPreviewPalette.gold,supportUnit:intent.action.isRune ? id:nil)) }
             if damage>0 || absorbed>0 {
                 hurt[id]=sceneTime
                 let hit=PartyVisual.hitPoint(target:id,shielded:absorbed>0,weaponID:intent.weaponID)
@@ -250,7 +250,7 @@ final class MeadowPartyStageView:UIView {
     }
     override func layoutSubviews() { super.layoutSubviews();let scale=bounds.width/1000;world.center=CGPoint(x:bounds.midX,y:bounds.midY);world.transform=CGAffineTransform(scaleX:scale,y:scale) }
 }
-struct MeadowPartyMessage { let text:String;let point:CGPoint;let at:Double;let color:UIColor;var atImpact=false }
+struct MeadowPartyMessage { let text:String;let point:CGPoint;let at:Double;let color:UIColor;var atImpact=false;var supportUnit:String?=nil;var supportLine=0 }
 
 private final class MeadowPartyEffectsView:UIView {
     var intent:PartyIntent?,focus:PartyAction?
@@ -378,7 +378,9 @@ private final class MeadowPartyEffectsView:UIView {
             let age=time-m.at,alpha=1-PartyVisual.smooth((age-0.65)/0.35)
             let attrs:[NSAttributedString.Key:Any]=[.font:MeadowPreviewPalette.font(24,.heavy),.foregroundColor:m.color.withAlphaComponent(CGFloat(alpha)),.strokeColor:UIColor.black.withAlphaComponent(CGFloat(alpha)),.strokeWidth:-3]
             let label=NSAttributedString(string:m.text,attributes:attrs),size=label.size()
-            let p=m.atImpact ? PartyVisual.damageLabelOrigin(at:PartyPoint(m.point.x,m.point.y),width:size.width,height:size.height,age:age):PartyPoint(m.point.x+90,m.point.y-55-age*26)
+            let p:PartyPoint
+            if let id=m.supportUnit,let foot=PartyVisual.feet[id] { p=PartyVisual.supportLabelOrigin(at:foot,width:size.width,line:m.supportLine,age:age) }
+            else { p=m.atImpact ? PartyVisual.damageLabelOrigin(at:PartyPoint(m.point.x,m.point.y),width:size.width,height:size.height,age:age):PartyPoint(m.point.x+90,m.point.y-55-age*26) }
             label.draw(at:CGPoint(x:p.x,y:p.y))
         }
     }

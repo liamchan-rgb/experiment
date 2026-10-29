@@ -20,6 +20,10 @@ public enum PartyVisual {
     public static func damageLabelOrigin(at:PartyPoint,width:Double,height:Double,age:Double)->PartyPoint {
         PartyPoint(at.x-width/2,at.y-height/2-max(0,age)*26)
     }
+    /// Non-damage effect numbers remain beside their owner and below every HP header.
+    public static func supportLabelOrigin(at:PartyPoint,width:Double,line:Int,age:Double)->PartyPoint {
+        PartyPoint(max(4,at.x-14-width),at.y-86+Double(line)*36-max(0,age)*26)
+    }
     public static func beam(_ from:PartyPoint,_ to:PartyPoint,_ t:Double)->PartyPoint {
         let u=1-t;return PartyPoint(u*u*from.x+2*u*t*((from.x+to.x)/2)+t*t*to.x,u*u*from.y+2*u*t*(min(from.y,to.y)-90)+t*t*to.y)
     }
