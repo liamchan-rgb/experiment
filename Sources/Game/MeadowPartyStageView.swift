@@ -433,6 +433,7 @@ final class MeadowStaffEffectsView:UIView {
 
 /// The offline renderer consumes the exact same points, widths and envelopes.
 enum MeadowRuneEffectPainter {
+    private static let slashFrames:[UIImage]=((1...8).compactMap { UIImage(named:String(format:"MeadowRuneSlash%02d",$0)) })
     static func color(_ name:String)->UIColor {
         switch name {
         case "violet":return UIColor(red:0.36,green:0.25,blue:1,alpha:1)
@@ -447,6 +448,16 @@ enum MeadowRuneEffectPainter {
         func glow(_ p:PartyPoint,_ rx:Double,_ ry:Double,_ alpha:Double,_ name:String) {
             guard alpha>0 else{return}
             MeadowBattleGlowCache.image(color(name)).draw(in:CGRect(x:p.x-rx,y:p.y-ry,width:rx*2,height:ry*2),blendMode:.plusLighter,alpha:CGFloat(min(1,alpha)))
+        }
+        if let index=q.spriteFrame,slashFrames.indices.contains(index),let center=q.spriteCenter {
+            let size=q.spriteSize ?? 256,alpha=q.spriteAlpha ?? 1
+            for v in q.glows { glow(v.point,v.rx,v.ry,v.alpha,v.color) }
+            if alpha>0 {
+                ctx.saveGState();ctx.interpolationQuality = .none
+                slashFrames[index].draw(in:CGRect(x:center.x-size/2,y:center.y-size/2,width:size,height:size),blendMode:.plusLighter,alpha:CGFloat(alpha))
+                ctx.restoreGState()
+            }
+            return
         }
         for v in q.glows { glow(v.point,v.rx,v.ry,v.alpha,v.color) }
         for s in q.strokes where s.points.count>1 {

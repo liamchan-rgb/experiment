@@ -72,6 +72,10 @@ public enum PartyVisual {
     }
     public static func travel(_ intent:PartyIntent?,age:Double,shielded:Bool=false)->PartyPoint {
         guard let intent,intent.action.isOffensive,let from=feet[intent.actor],let to=feet[intent.target] else { return PartyPoint(0,0) }
+        if intent.action == .runeSlash {
+            let approach=smooth(age/0.82),retreat=1-smooth((age-1.25)/0.52),p=min(approach,retreat)
+            return PartyPoint((to.x-155-from.x)*p,(to.y-12-from.y)*p)
+        }
         if intent.ranged || intent.magical || intent.action.isRune { return PartyPoint(0,0) }
         if intent.weaponID=="greatSword",!intent.enemy,intent.action != .ambush {
             return GreatSwordRig.travel(age:age,from:from,to:hitPoint(target:intent.target,shielded:shielded,weaponID:intent.weaponID),scale:heroScale)
@@ -93,7 +97,13 @@ extension PartyVisual {
         var clip=unit.isAlive ? "idle":"defeat"
         var progress=unit.isAlive ? time.truncatingRemainder(dividingBy:2.4)/2.4:(downAge.map { smooth($0/0.6) } ?? 1)
         if let intent,intent.actor==unit.id,unit.isAlive {
-            if intent.action.isRune {
+            if intent.action == .runeSlash {
+                clip="attack"
+                if unit.equipment.weapon=="greatSword" { progress=GreatSwordRig.progress(age:age) }
+                else if unit.equipment.weapon=="legendaryStaff" { progress=LegendaryStaffRig.progress(age:age) }
+                else if unit.equipment.weapon=="huntingBow" { progress=BowRig.progress(age:age) }
+                else { let action=max(0,age-0.28);progress=min(1,max(0,action-min(0.1,max(0,action-0.648)))/1.2) }
+            } else if intent.action.isRune {
                 clip="guard";progress=smooth(age/intent.action.duration)
             } else if intent.action == .ambush {
                 clip="attack";progress=ambushProgress(age)

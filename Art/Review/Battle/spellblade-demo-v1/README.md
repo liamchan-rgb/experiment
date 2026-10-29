@@ -1,3 +1,17 @@
+# Build67 符文斩精灵表接入审核
+
+[符文斩正常速度全场动图](runeSlash-normal.gif) · [命中帧](runeSlash-impact.png) · [斩痕展开](runeSlash-unfold.png) · [悬停站位](runeSlash-hover.png) · [淡出余波](runeSlash-tail.png) · [原始精灵表](../../../Parts/BattleVFX/rune-slash-v1/source-spritesheet.png) · [八帧与时序](../../../Parts/BattleVFX/rune-slash-v1/frames/frame-manifest.json) · [Alpha／回执审计](source-audit.json)
+
+源图是2048×256 RGBA横向八格，逐格精确拆成256×256，未重采样、抠边或重绘。八格的Alpha画布四边均透明，范围与源格逐像素一致；具体alpha bounds见source-audit.json。输入图由用户注明是概念裁切初版，因此不标成最终逐像素生产素材；待用户按动图审核视觉中心、弧线连续性及爆发节奏。
+
+符文斩现在使用上传的八帧顺序：凝聚→弧斩→符文→全力斩出→命中爆发→余波→消散→淡出。施法者以重剑攻击动作接近怪物，挥击后回到原位；爆发帧从原规则1.048秒命中时刻开始，亮核锚在目标躯干，落地光跟脚下走。骰值与恢复／护盾仅沿既有一次命中回执提交。符文庇护和战斗符文保持原视觉。
+
+动图235帧、每帧20ms、1020×765；真实生产状态、动作与命中数据离线合成，不是UIKit／App／实机录屏。当前美术认可仍为null，安装与实机操作交用户测试。Build67直接IPA待设备Release和归档包核验。
+
+后两项：B4龙骑士三技能（龙焰、龙鳞庇护、龙之号令）；B5星辉／龙纹两套装及其套装技能，不自动开始。
+
+---
+
 # Build66 魔剑士三技能
 
 [三技能正常速度合辑](three-skills-normal.gif) · [全身站姿场景](runeSlash-standing.png) · [短剑／重剑／杖／弓／空手全身挂载](cast-mounts-1x.png) · [2倍挂载](cast-mounts-2x.png) · [直接IPA](../../../../Downloads/MeadowJourney-b66.ipa)

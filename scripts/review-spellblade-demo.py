@@ -65,6 +65,13 @@ world['draw_recovery_lights']=recovery_lights
 
 def draw_runes(f,row):
  q=row['runes']
+ if q.get('spriteFrame') is not None:
+  im=asset(f'MeadowRuneSlash{q["spriteFrame"]+1:02}');a=q.get('spriteAlpha',1);im.putalpha(im.getchannel('A').point(lambda v:round(v*a)))
+  c=q['spriteCenter'];size=q.get('spriteSize',256)
+  for v in q['glows']:glow(f,(v['point']['x'],v['point']['y']+oy),v['rx'],v['ry'],v['alpha'],colors[v['color']])
+  im=im.resize((round(size*hs),round(size*hs)),Image.Resampling.NEAREST)
+  compose(f,im,(c['x'],c['y']+oy),(size*hs,size*hs),1)
+  return
  for v in q['glows']:glow(f,(v['point']['x'],v['point']['y']+oy),v['rx'],v['ry'],v['alpha'],colors[v['color']])
  # Every stroke adds independently, just like CGContext plusLighter.
  for stroke in q['strokes']:
@@ -115,11 +122,11 @@ def ui(row):
  for i,(name,desc,cost) in enumerate(titles):
   x=86+i*(cw+10);d.rounded_rectangle((round(x),914,round(x+cw),1016),8,fill='#2b4030',outline='#b8a568');d.text((round(x+9),921),name+f' · {cost} AP',font=font(20),fill='#f9edc4');d.text((round(x+9),964),desc,font=font(16),fill='#bbcba9')
  x=86+4*(cw+10);d.rounded_rectangle((round(x),914,round(x+100),1016),8,fill='#eac668');d.text((round(x+25),950),'道具',font=font(20),fill='#192b21')
- d.rectangle((0,f.height-50,f.width,f.height),fill='#0b1811');d.text((35,f.height-29),'Build66 · 正常速度离线美术合成 · 生产规则／符文几何 · 非UIKit／实机录屏',font=font(18),fill='#bbcba9')
+ d.rectangle((0,f.height-50,f.width,f.height),fill='#0b1811');d.text((35,f.height-29),'Build67 · 正常速度离线美术合成 · 上传精灵帧／生产动作字段 · 非UIKit／实机录屏',font=font(18),fill='#bbcba9')
  return f.convert('RGB').resize((1020,765),Image.Resampling.LANCZOS)
 
-def stills():
- for scenario in dict.fromkeys(r['scenario'] for r in rows):
+def stills(selected=None):
+ for scenario in (selected or dict.fromkeys(r['scenario'] for r in rows)):
   group=[r for r in rows if r['scenario']==scenario];impact=next(r['time'] for r in group if r['impact'] is not None)
   for tm,label in [(0,'standing'),(.6,'hover'),(1.45,'unfold'),(impact+.06,'impact'),(impact+.36,'recovery'),(3.50,'tail'),(4.6,'rest')]:
    row=min(group,key=lambda r:abs(r['time']-tm));ui(row).save(D/(scenario+'-'+label+'.png'))
@@ -143,6 +150,11 @@ def save(name,frames):
   sheet.save(D/f'{name}-decoded-{page+1:02}.png')
  assert duration==len(frames)*20
  info={'file':path.name,'decodedFrames':gif.n_frames,'durationMs':duration,'size':[1020,765]};reports.append(info);print(info,flush=True)
+if '--rune-slash-only' in sys.argv:
+ save('runeSlash',[ui(r) for r in rows if r['scenario']=='runeSlash'])
+ stills(['runeSlash'])
+ (D/'review.json').write_text(json.dumps({'scope':'Normal-speed offline Rune Slash preview using production combat receipts, actor movement and the supplied eight RGBA sprite frames. Not UIKit/game/device capture.','animations':reports,'keyframePNGs':7,'newCharacterArt':False,'userArtApproval':None},ensure_ascii=False,indent=2)+'\n')
+ print('Rune Slash normal-speed animation and seven scene keyframes rendered');sys.exit(0)
 for scenario in ['runeSlash','runeWard','battleRune','runeSlash-lethal']:
  save(scenario,[ui(r) for r in rows if r['scenario']==scenario])
 overview=[]

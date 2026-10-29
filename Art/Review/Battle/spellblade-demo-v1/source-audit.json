@@ -1,9 +1,111 @@
 {
-  "baseline": "a4cd5af0c4180136b14136fd1524ebc7fe32b71c",
+  "baseline": "6371e680b640e83be57c50e0dd01814d82f98eed",
   "unchangedOriginalResourceCoreAndWeaponPaths": 402,
-  "ruleCatalogAndGaitUnchanged": true,
+  "eightSpriteCellsExactRGBAExtractions": true,
+  "spriteSheetSize": [
+    2048,
+    256
+  ],
+  "frameAlphaAudit": [
+    {
+      "frame": 1,
+      "alphaBounds": [
+        46,
+        29,
+        210,
+        237
+      ],
+      "nonTransparentPixels": 24148,
+      "transparentCanvasBorder": true,
+      "exactSourceCrop": true
+    },
+    {
+      "frame": 2,
+      "alphaBounds": [
+        42,
+        28,
+        214,
+        237
+      ],
+      "nonTransparentPixels": 24609,
+      "transparentCanvasBorder": true,
+      "exactSourceCrop": true
+    },
+    {
+      "frame": 3,
+      "alphaBounds": [
+        37,
+        18,
+        219,
+        237
+      ],
+      "nonTransparentPixels": 30563,
+      "transparentCanvasBorder": true,
+      "exactSourceCrop": true
+    },
+    {
+      "frame": 4,
+      "alphaBounds": [
+        29,
+        18,
+        226,
+        237
+      ],
+      "nonTransparentPixels": 33360,
+      "transparentCanvasBorder": true,
+      "exactSourceCrop": true
+    },
+    {
+      "frame": 5,
+      "alphaBounds": [
+        36,
+        48,
+        220,
+        237
+      ],
+      "nonTransparentPixels": 26079,
+      "transparentCanvasBorder": true,
+      "exactSourceCrop": true
+    },
+    {
+      "frame": 6,
+      "alphaBounds": [
+        40,
+        45,
+        216,
+        237
+      ],
+      "nonTransparentPixels": 24176,
+      "transparentCanvasBorder": true,
+      "exactSourceCrop": true
+    },
+    {
+      "frame": 7,
+      "alphaBounds": [
+        41,
+        18,
+        220,
+        237
+      ],
+      "nonTransparentPixels": 21380,
+      "transparentCanvasBorder": true,
+      "exactSourceCrop": true
+    },
+    {
+      "frame": 8,
+      "alphaBounds": [
+        43,
+        51,
+        213,
+        237
+      ],
+      "nonTransparentPixels": 11201,
+      "transparentCanvasBorder": true,
+      "exactSourceCrop": true
+    }
+  ],
+  "ruleCatalogAndCampSaveFormatUnchanged": true,
   "characterOrWeaponImagesRegenerated": false,
-  "originalCampSaveFormatUnchanged": true,
   "actualReceiptChecks": [
     {
       "scenario": "runeSlash",
