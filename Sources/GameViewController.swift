@@ -48,7 +48,9 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
     private let gaitStepButton = UIButton(type: .system)
     private let gaitLayeredPreviewButton = UIButton(type: .system)
     private let p1AppearanceButton = UIButton(type: .system)
-    private let equipmentModel=try? TrainingLoadout()
+    private var campSession:CampInventorySession?
+    private var equipmentModel:TrainingLoadout? { campSession?.loadout }
+    private var inventoryStartupIssue:String?
     private var gaitDirectionButtons: [UIButton] = []
     private var gaitCaptureTimer: Timer?
     private var gestureZoom: CGFloat = 1
@@ -112,6 +114,7 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
         shadowLabButton.accessibilityIdentifier = "openShadowLab"
         shadowLabButton.addTarget(self, action: #selector(openShadowLab), for: .touchUpInside)
         view.addSubview(shadowLabButton)
+        configureCampSave()
         configureGaitControls()
         configureBattlePreview()
         for label in [metricsLabel, discoveryLabel] {
@@ -342,6 +345,12 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
                 self.showLoadingFailure(ShadowLabError.setup("单视图地图渲染器缺失")); return
             }
             MeadowGPUDiagnostics.shared.beginStage("C02 实际单视图地图", kind: "one MTKView; native backdrop + SKRenderer in one submitted command buffer")
+            do {
+                if let session=self.campSession,let unit=session.loadout.units["p1"] {
+                    try self.prepareCampVisuals(unit,appearance:session.appearanceID,retaining:false)
+                    self.applyCampVisuals()
+                }
+            } catch { self.showLoadingFailure(error);return }
             self.scene.activateForMetalRenderer()
             self.mapPresented = true
             renderer.start(in: surface, scene: self.scene)
@@ -447,7 +456,7 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
         p1AppearanceButton.configuration?.title = "P1 衣装"
         p1AppearanceButton.accessibilityIdentifier = "p1Appearance"
         p1AppearanceButton.accessibilityValue = HeroFrames.appearanceTitles.first
-        p1AppearanceButton.showsMenuAsPrimaryAction = true
+        p1AppearanceButton.addAction(UIAction { [weak self] _ in self?.openInventory() },for:.touchUpInside)
         refreshEquipmentMenu()
         p1AppearanceButton.isHidden = HeroFrames.appearanceTitles.isEmpty
         view.addSubview(p1AppearanceButton)
@@ -503,77 +512,63 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
         view.addSubview(gaitPanel)
     }
 
+    private func configureCampSave() {
+        let directory=FileManager.default.urls(for:.applicationSupportDirectory,in:.userDomainMask)[0]
+        let store=CampSaveStore(url:directory.appendingPathComponent("MeadowCamp/camp-v1.json"))
+        do { campSession=try CampInventorySession(store:store,appearances:HeroFrames.appearanceIDs) }
+        catch {
+            inventoryStartupIssue="暂时无法保存营地配置，可导出当前配置留存。"
+            campSession=try? CampInventorySession(store:nil,appearances:HeroFrames.appearanceIDs)
+        }
+    }
     private func refreshEquipmentMenu() {
-        guard let model=equipmentModel,let unit=model.units["p1"] else { return }
-        let clothes=HeroFrames.appearanceTitles.enumerated().map { index,title in
-            UIAction(title:title,state:scene.p1AppearanceIndex==index ? .on:.off) { [weak self] _ in
-                guard let self else { return };do { try self.groundRenderer?.prepareP1Equipment(appearance:index,weapon:self.scene.p1WeaponID,armor:self.scene.p1ArmorID);self.scene.selectP1Appearance(index);self.refreshEquipmentMenu() } catch { self.discoveryLabel.text=error.localizedDescription }
-            }
-        }
-        let weapons=[("trainingSword","训练短剑","1D6"),("huntingBow","猎弓","1D8"),("greatSword","重剑","1D12"),("legendaryStaff","传奇权杖","1D20")]
-        let actions=weapons.map { id,title,formula in
-            UIAction(title:title+" · "+formula,image:UIImage(named:HeroFrames.weaponVisual(id)?.iconAsset ?? ""),state:unit.equipment.weapon==id ? .on:.off) { [weak self] _ in self?.equipP1Weapon(id) }
-        }
-        let remove=UIAction(title:"卸下武器",state:unit.equipment.weapon==nil ? .on:.off) { [weak self] _ in self?.equipP1Weapon(nil) }
-        let counts=weapons.map { id,title,_ in title+"×"+String(unit.inventory[id] ?? 0) }.joined(separator:" / ")
-        let armorChoices=[("leatherArmor","皮甲","生命上限＋4"),("runeArmor","符文甲","生命上限＋8")]
-        let armorActions=armorChoices.map { id,title,bonus in
-            UIAction(title:title+" · "+bonus,image:UIImage(named:HeroFrames.armorVisual(id)?.iconAsset ?? ""),state:unit.equipment.armor==id ? .on:.off) { [weak self] _ in self?.equipP1Armor(id) }
-        }
-        let removeArmor=UIAction(title:"卸下护甲",state:unit.equipment.armor==nil ? .on:.off) { [weak self] _ in self?.equipP1Armor(nil) }
-        let armorCounts=armorChoices.map { id,title,_ in title+"×"+String(unit.inventory[id] ?? 0) }.joined(separator:" / ")
-        let accessoryChoices=["powerBadge","actionRing"]
-        let accessoryActions=accessoryChoices.compactMap { id -> UIAction? in
-            guard let item=try? model.engine.catalog.item(id) else { return nil }
-            let bonus=item.attributes.damage>0 ? "伤害＋\(item.attributes.damage)":"基础行动＋\(item.attributes.baseAP)"
-            return UIAction(title:item.name+" · "+bonus+" · 背包×\(unit.inventory[id] ?? 0)",image:UIImage(named:HeroFrames.accessoryVisual(id)?.iconAsset ?? ""),state:unit.equipment.accessory==id ? .on:.off) { [weak self] _ in self?.equipP1Accessory(id) }
-        }
-        let removeAccessory=UIAction(title:"卸下饰品",state:unit.equipment.accessory==nil ? .on:.off) { [weak self] _ in self?.equipP1Accessory(nil) }
-        let accessoryName=unit.equipment.accessory.flatMap { try? model.engine.catalog.item($0).name } ?? "未装备"
-        let stats=try? GameRules.attributes(unit,catalog:model.engine.catalog)
-        let summary=UIAction(title:"生命 \(unit.health)/\(stats?.maximumHealth ?? 12) · 伤害＋\(stats?.damage ?? 0) · 基础AP \(stats?.baseAP ?? 3)",attributes:.disabled) { _ in }
-        p1AppearanceButton.menu=UIMenu(children:[UIMenu(title:"衣装",children:clothes),UIMenu(title:"武器 · "+counts,children:actions+[remove]),UIMenu(title:"护甲 · "+armorCounts,children:armorActions+[removeArmor]),UIMenu(title:"饰品 · "+accessoryName+"（单槽）",children:accessoryActions+[removeAccessory]),summary])
-        let title=weapons.first { $0.0==unit.equipment.weapon }?.1 ?? "空手"
-        let armorTitle=armorChoices.first { $0.0==unit.equipment.armor }?.1
-        p1AppearanceButton.configuration?.title="P1 装备"
-        p1AppearanceButton.accessibilityValue=title+" / "+(armorTitle ?? "原衣装")+" / "+accessoryName
+        guard let unit=equipmentModel?.units["p1"],let catalog=equipmentModel?.engine.catalog else{return}
+        p1AppearanceButton.configuration?.title="行囊装备"
+        p1AppearanceButton.accessibilityLabel="打开P1行囊与装备"
+        p1AppearanceButton.accessibilityValue=unit.equipment.itemIDs.compactMap { try? catalog.item($0).name }.joined(separator:"、")
     }
-    private func equipP1Weapon(_ id:String?) {
-        guard ready,!battlePreviewActive,let model=equipmentModel else { return }
-        if model.units["p1"]?.equipment.weapon==id { return }
-        do {
-            try groundRenderer?.prepareP1Equipment(appearance:scene.p1AppearanceIndex,weapon:id,armor:scene.p1ArmorID)
-            try model.equip(id);scene.selectP1Weapon(id);refreshEquipmentMenu()
-            if let id,let item=try? model.engine.catalog.item(id),let dice=item.attack?.dice {
-                discoveryLabel.text="已装备"+item.name+" · 普通攻击\(dice.count)D\(dice.sides)"
-            } else { discoveryLabel.text="已卸下武器 · 普通攻击不可用" }
-            UIAccessibility.post(notification:.announcement,argument:discoveryLabel.text)
-        } catch { discoveryLabel.text=error.localizedDescription }
+    private func prepareCampVisuals(_ unit:GameUnit,appearance:String,retaining:Bool) throws {
+        guard let index=HeroFrames.appearanceIDs.firstIndex(of:appearance) else { throw GameError("衣装不受支持。") }
+        try groundRenderer?.prepareP1Equipment(appearance:index,weapon:unit.equipment.weapon,armor:unit.equipment.armor,retainingCurrent:retaining)
     }
-
-    private func equipP1Accessory(_ id:String?) {
-        guard ready,!battlePreviewActive,let model=equipmentModel,model.units["p1"]?.equipment.accessory != id else { return }
-        do {
-            try model.equipAccessory(id);refreshEquipmentMenu()
-            if let unit=model.units["p1"],let stats=try? GameRules.attributes(unit,catalog:model.engine.catalog) {
-                let title=unit.equipment.accessory.flatMap { try? model.engine.catalog.item($0).name } ?? "未装备饰品"
-                discoveryLabel.text=title+" · 伤害＋\(stats.damage) · 基础行动 \(stats.baseAP) / 上限 \(stats.maximumAP)"
-            }
-            UIAccessibility.post(notification:.announcement,argument:discoveryLabel.text)
-        } catch { discoveryLabel.text=error.localizedDescription }
+    private func applyCampVisuals() {
+        guard let session=campSession,let unit=session.loadout.units["p1"],let index=HeroFrames.appearanceIDs.firstIndex(of:session.appearanceID) else{return}
+        scene.selectP1Loadout(appearance:index,weapon:unit.equipment.weapon,armor:unit.equipment.armor)
+        refreshEquipmentMenu()
     }
-
-    private func equipP1Armor(_ id:String?) {
-        guard ready,!battlePreviewActive,let model=equipmentModel,model.units["p1"]?.equipment.armor != id else { return }
-        do {
-            try groundRenderer?.prepareP1Equipment(appearance:scene.p1AppearanceIndex,weapon:scene.p1WeaponID,armor:id)
-            try model.equipArmor(id);scene.selectP1Armor(id);refreshEquipmentMenu()
-            if let unit=model.units["p1"],let stats=try? GameRules.attributes(unit,catalog:model.engine.catalog) {
-                let title=id.flatMap { try? model.engine.catalog.item($0).name } ?? "原衣装"
-                discoveryLabel.text="已切换"+title+" · 生命 \(unit.health)/\(stats.maximumHealth)"
-            }
-            UIAccessibility.post(notification:.announcement,argument:discoveryLabel.text)
-        } catch { discoveryLabel.text=error.localizedDescription }
+    private func openInventory() {
+        guard ready,!battlePreviewActive,scene.gaitTest==nil,presentedViewController==nil,let session=campSession else{return}
+        let wasRunning=scene.isRunning;if wasRunning { scene.togglePlayback() };groundView?.isPaused=true
+        let screen=MeadowInventoryViewController(session:session);screen.startupIssue=inventoryStartupIssue
+        screen.performEquip={ [weak self] slot,item in
+            guard let self else{return}
+            let candidate=try session.candidateEquipment(slot:slot,item:item)
+            try self.prepareCampVisuals(candidate,appearance:session.appearanceID,retaining:true)
+            do { try session.equip(slot:slot,item:item) }
+            catch { if let old=session.loadout.units["p1"] { try? self.prepareCampVisuals(old,appearance:session.appearanceID,retaining:false) };throw error }
+            self.applyCampVisuals();try? self.prepareCampVisuals(candidate,appearance:session.appearanceID,retaining:false)
+        }
+        screen.performAppearance={ [weak self] id in
+            guard let self,let unit=session.loadout.units["p1"] else{return}
+            try self.prepareCampVisuals(unit,appearance:id,retaining:true)
+            do { try session.setAppearance(id) }
+            catch { try? self.prepareCampVisuals(unit,appearance:session.appearanceID,retaining:false);throw error }
+            self.applyCampVisuals();try? self.prepareCampVisuals(unit,appearance:id,retaining:false)
+        }
+        screen.performImport={ [weak self] data in
+            guard let self else{return}
+            let save=try session.inspectImport(data),candidate=save.archive.state.units["p1"]!
+            try self.prepareCampVisuals(candidate,appearance:save.appearanceID,retaining:true)
+            do { try session.importData(data) }
+            catch { if let old=session.loadout.units["p1"] { try? self.prepareCampVisuals(old,appearance:session.appearanceID,retaining:false) };throw error }
+            self.applyCampVisuals();try? self.prepareCampVisuals(candidate,appearance:session.appearanceID,retaining:false)
+        }
+        screen.onChange={ [weak self] in self?.refreshEquipmentMenu() }
+        screen.onClose={ [weak self] in
+            guard let self else{return};self.groundView?.isPaused = !self.mapPresented || self.loadingFailed
+            if wasRunning && !self.scene.isRunning { self.scene.togglePlayback() }
+        }
+        present(screen,animated:true)
     }
     private func configureBattlePreview() {
         var style = UIButton.Configuration.filled()

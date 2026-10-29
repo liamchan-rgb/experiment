@@ -56,6 +56,8 @@ enum HeroFrames {
 
     static func accessoryVisual(_ id:String?)->AccessoryVisualBinding? { id.flatMap { layout.accessoryVisuals?[$0] } }
 
+    static var appearanceIDs:[String] { layout.modularP1?.loadouts.map(\.id) ?? [] }
+
     static var appearanceTitles: [String] { layout.modularP1?.loadouts.map(\.title) ?? [] }
 
     static func atlasName(heroIndex: Int, diagonal: Bool, appearanceIndex: Int = 0,weaponID:String?="trainingSword",armorID:String?=nil) -> String {
@@ -71,6 +73,16 @@ enum HeroFrames {
     static var atlasNames: [String] {
         let defaults = (0..<3).flatMap { hero in [false, true].map { atlasName(heroIndex: hero, diagonal: $0) } }
         return Array(Set(defaults + (layout.modularP1?.loadouts.flatMap { $0.atlasNames+($0.weaponAtlasNames?.values.flatMap { $0 } ?? []) } ?? []))).sorted()
+    }
+
+    /// Exact idle + eight authored front-walk cells, without re-synthesizing art.
+    static func inventoryImages(appearanceIndex:Int,weaponID:String?,armorID:String?) -> [UIImage] {
+        let name=atlasName(heroIndex:0,diagonal:false,appearanceIndex:appearanceIndex,weaponID:weaponID,armorID:armorID)
+        guard let image=UIImage(named:name)?.cgImage else { return [] }
+        let cell=image.height/atlasRows
+        return (0...8).compactMap { index in
+            image.cropping(to:CGRect(x:index*cell,y:0,width:cell,height:cell)).map { UIImage(cgImage:$0) }
+        }
     }
 
     static func rasterColumns(heroIndex: Int) -> Int {

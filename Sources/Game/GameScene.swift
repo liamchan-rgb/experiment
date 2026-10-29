@@ -329,6 +329,11 @@ final class GameScene: SKScene {
         guard HeroFrames.appearanceTitles.indices.contains(index) else { return }
         p1AppearanceIndex=index;refreshP1EquipmentFrames()
     }
+    func selectP1Loadout(appearance:Int,weapon:String?,armor:String?) {
+        guard HeroFrames.appearanceIDs.indices.contains(appearance) else { return }
+        p1AppearanceIndex=appearance;p1WeaponID=weapon;p1ArmorID=armor
+        if world != nil { refreshP1EquipmentFrames() }
+    }
     func selectP1Armor(_ id:String?) { p1ArmorID=id;refreshP1EquipmentFrames() }
     func selectP1Weapon(_ id:String?) { p1WeaponID=id;refreshP1EquipmentFrames() }
     private func refreshP1EquipmentFrames() {

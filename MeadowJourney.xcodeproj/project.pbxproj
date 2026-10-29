@@ -5,6 +5,8 @@
 	};
 	"objectVersion" = 56;
 	"objects" = {
+C26C692E47A2909C63823E67 = { "isa" = "PBXFileReference"; "lastKnownFileType" = "sourcecode.swift"; "path" = "UI/MeadowInventoryViewController.swift"; "sourceTree" = "<group>"; };
+E231858EBB758E69C5FBB40B = { "isa" = "PBXBuildFile"; "fileRef" = C26C692E47A2909C63823E67; };
 A47847D1CE00000000000001 = { "isa" = "PBXFileReference"; "lastKnownFileType" = "sourcecode.swift"; "path" = "Game/MeadowBattleDiceView.swift"; "sourceTree" = "<group>"; };
 A47847D1CE00000000000002 = { "isa" = "PBXBuildFile"; "fileRef" = A47847D1CE00000000000001; };
 		1874E8D5B0102E34718206F7 = { "isa" = "PBXFileReference"; "lastKnownFileType" = "sourcecode.swift"; "path" = "Game/MeadowPartyBattleView.swift"; "sourceTree" = "<group>"; };
@@ -396,6 +398,7 @@ A47847D1CE00000000000002 = { "isa" = "PBXBuildFile"; "fileRef" = A47847D1CE00000
 			"path" = "Sources";
 			"sourceTree" = "<group>";
 			"children" = (
+C26C692E47A2909C63823E67,
 				A47847D1CE00000000000001,
 1874E8D5B0102E34718206F7,
 				F961EA11DCA10F5C7F4CFA41,
@@ -497,8 +500,8 @@ A47847D1CE00000000000002 = { "isa" = "PBXBuildFile"; "fileRef" = A47847D1CE00000
 				"TARGETED_DEVICE_FAMILY" = "1,2";
 				"SUPPORTED_PLATFORMS" = "iphoneos iphonesimulator";
 				"CODE_SIGN_STYLE" = "Automatic";
-				"MARKETING_VERSION" = "1.6.38";
-				"CURRENT_PROJECT_VERSION" = "64";
+				"MARKETING_VERSION" = "1.6.39";
+				"CURRENT_PROJECT_VERSION" = "65";
 				"ASSETCATALOG_COMPILER_APPICON_NAME" = "AppIcon";
 				"LD_RUNPATH_SEARCH_PATHS" = (
 					"$(inherited)",
@@ -524,8 +527,8 @@ A47847D1CE00000000000002 = { "isa" = "PBXBuildFile"; "fileRef" = A47847D1CE00000
 				"TARGETED_DEVICE_FAMILY" = "1,2";
 				"SUPPORTED_PLATFORMS" = "iphoneos iphonesimulator";
 				"CODE_SIGN_STYLE" = "Automatic";
-				"MARKETING_VERSION" = "1.6.38";
-				"CURRENT_PROJECT_VERSION" = "64";
+				"MARKETING_VERSION" = "1.6.39";
+				"CURRENT_PROJECT_VERSION" = "65";
 				"ASSETCATALOG_COMPILER_APPICON_NAME" = "AppIcon";
 				"LD_RUNPATH_SEARCH_PATHS" = (
 					"$(inherited)",
@@ -550,6 +553,7 @@ A47847D1CE00000000000002 = { "isa" = "PBXBuildFile"; "fileRef" = A47847D1CE00000
 			"isa" = "PBXSourcesBuildPhase";
 			"buildActionMask" = 2147483647;
 			"files" = (
+E231858EBB758E69C5FBB40B,
 				A47847D1CE00000000000002,
 90100A4191C8B72CC9236E3E,
 				24CBEABFE4CB02099C3CDE6C,

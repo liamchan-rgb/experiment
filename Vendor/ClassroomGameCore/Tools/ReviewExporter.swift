@@ -5,6 +5,7 @@ import ClassroomGameCore
 @main struct Export {
     static func main() throws {
         let out=URL(fileURLWithPath:CommandLine.arguments[1]);try FileManager.default.createDirectory(at:out,withIntermediateDirectories:true)
+        if CommandLine.arguments.contains("--inventory-only") { try exportInventory(out:out);return }
         if CommandLine.arguments.contains("--accessory-only") { try exportAccessories(out:out);return }
         if CommandLine.arguments.contains("--bow-only") { try exportBow(out:out);return }
         var rows:[[String:Any]]=[],requests:[[String:Any]]=[]
@@ -102,6 +103,7 @@ import ClassroomGameCore
         try exportGreatSword(out:out)
         try exportLegendaryStaff(out:out)
         try exportAccessories(out:out)
+        try exportInventory(out:out)
         print("Exported \(rows.count) actual GameCore support/item frames and \(requests.count) attachment samples")
     }
 }
@@ -381,5 +383,32 @@ extension Export {
         }
         try JSONSerialization.data(withJSONObject:rows,options:[.sortedKeys]).write(to:out.appendingPathComponent("accessory-frames.json"))
         print("Exported \(rows.count) accessory equipment / dice / AP frames")
+    }
+}
+
+extension Export {
+    static func exportInventory(out:URL) throws {
+        let session=try CampInventorySession(store:nil)
+        var rows:[[String:Any]]=[]
+        func capture(_ id:String,_ selected:String,_ filter:String="all") throws {
+            let unit=session.loadout.units["p1"]!,stats=try GameRules.attributes(unit,catalog:session.loadout.engine.catalog)
+            func object<T:Encodable>(_ value:T)throws->Any { try JSONSerialization.jsonObject(with:JSONEncoder().encode(value)) }
+            rows.append(["id":id,"appearanceID":session.appearanceID,"unit":try object(unit),"stats":try object(stats),"filter":filter,"selected":selected,"entries":try object(CampInventoryProjection.entries(unit,catalog:session.loadout.engine.catalog,filter:filter)),"detail":try object(CampInventoryProjection.detail(selected,session:session)),"pad":try object(CampInventoryLayout(width:1194,height:834,bottom:20)),"phone":try object(CampInventoryLayout(width:844,height:390,left:47,right:47,bottom:21))])
+        }
+        try capture("initial","huntingBow")
+        try session.equip(slot:.weapon,item:"huntingBow");try session.equip(slot:.armor,item:"leatherArmor");try session.setAppearance("wayfarer")
+        try capture("equipped-bow","huntingBow","weapon")
+        try session.equip(slot:.accessory,item:"actionRing")
+        try capture("ring","actionRing","accessory")
+        try session.use(item:"shieldPotion",target:"p1");try session.use(item:"smallPotion",target:"p1")
+        try capture("supplies","smallPotion","supplies")
+        let data=try session.exportData();try session.importData(data)
+        try capture("restored","actionRing")
+        for slot in ItemSlot.allCases { try session.equip(slot:slot,item:nil) }
+        try capture("empty-slots","trainingSword")
+        try session.equip(slot:.weapon,item:"greatSword");try session.equip(slot:.armor,item:"runeArmor");try session.equip(slot:.accessory,item:"powerBadge")
+        try capture("rune-sword-badge","powerBadge")
+        let dataOut=try JSONSerialization.data(withJSONObject:rows,options:[.sortedKeys]);try dataOut.write(to:out.appendingPathComponent("inventory-frames.json"))
+        print("Exported \(rows.count) actual camp inventory, equipment, import and layout states")
     }
 }
