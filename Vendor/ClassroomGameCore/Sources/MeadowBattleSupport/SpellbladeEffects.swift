@@ -4,8 +4,10 @@ import ClassroomGameCore
 public struct RuneStroke:Codable { public let points:[PartyPoint];public let width:Double,alpha:Double;public let color:String }
 public struct RuneGlow:Codable { public let point:PartyPoint;public let rx:Double,ry:Double,alpha:Double;public let color:String }
 public struct RuneMote:Codable { public let id:Int;public let point:PartyPoint;public let size:Double,angle:Double,alpha:Double;public let color:String;public let groundAge:Double?;public let ground:PartyPoint }
+public struct BattleEffectSpriteLayer:Codable { public let asset:String;public let center:PartyPoint;public let size:Double;public let alpha:Double }
 public struct RuneEffectSample:Codable {
     public var strokes:[RuneStroke]=[];public var glows:[RuneGlow]=[];public var motes:[RuneMote]=[]
+    public var spriteLayers:[BattleEffectSpriteLayer]=[]
     public var spriteFrame:Int?=nil;public var spriteCenter:PartyPoint?=nil;public var spriteSize:Double?=nil;public var spriteAlpha:Double?=nil
     public init() {}
 }
@@ -14,7 +16,7 @@ public struct RuneRecipient:Codable,Equatable { public let unitID:String;public 
 /// Catalog scopes, rather than the clicked target, own each effect channel.
 public enum SpellbladeEffects {
     public static func recipients(_ intent:PartyIntent,catalog:GameCatalog)->[RuneRecipient] {
-        guard intent.action.isRune,let skill=try? catalog.skill(intent.action.rawValue) else { return [] }
+        guard (intent.action.isRune || intent.action == .dragonFlame),let skill=try? catalog.skill(intent.action.rawValue) else { return [] }
         var values:[String:RuneRecipient]=[:]
         for effect in skill.effects where effect.kind != .damage {
             let ids=effect.scope == .caster ? [intent.actor]:intent.targets
@@ -32,9 +34,11 @@ public enum SpellbladeEffects {
         let peak=BattleDice.darkness(action),hold=action.impact+0.28
         return (from+(peak-from)*PartyVisual.smooth(age/0.30))*(1-PartyVisual.smooth((age-hold)/0.78))
     }
-    public static func sample(action:PartyAction,age:Double,actor:String,target:String,recipients:[RuneRecipient],weaponID:String?=nil)->RuneEffectSample {
+    public static func sample(action:PartyAction,age:Double,actor:String,target:String,recipients:[RuneRecipient],weaponID:String?=nil,targets:[String]=[])->RuneEffectSample {
         var result=RuneEffectSample()
-        guard action.isRune,age>=0,age<action.duration,let actorFoot=PartyVisual.feet[actor],let targetFoot=PartyVisual.feet[target] else { return result }
+        guard age>=0,age<action.duration else { return result }
+        if action == .dragonFlame { return dragonFlame(age:age,targetIDs:targets.isEmpty ? [target]:targets) }
+        guard action.isRune,let actorFoot=PartyVisual.feet[actor],let targetFoot=PartyVisual.feet[target] else { return result }
         let hit=action.impact,at=PartyVisual.hitPoint(target:target,weaponID:weaponID),source=PartyPoint(actorFoot.x+42,actorFoot.y-73)
         if action == .runeSlash {
             let frame:Int?
@@ -105,6 +109,71 @@ public enum SpellbladeEffects {
                     let u=t/life,a=Double(i)*2.399+u*2.8,r=(isWard ? 42.0:30.0)*(1-u*0.35),p=PartyPoint(chest.x+cos(a)*r,chest.y+40-u*135)
                     result.motes.append(.init(id:100+index*30+i,point:p,size:i%5==0 ? 8:4,angle:a,alpha:sin(Double.pi*u)*0.88,color:i%4==0 ? "gold":color,groundAge:nil,ground:foot))
                 }
+        }
+        return result
+    }
+
+    /// The source sequence begins at the exact damage receipt. Fractional frame
+    /// blending keeps its 20 authored poses smooth at the requested 60 Hz.
+    private static func dragonFlame(age:Double,targetIDs:[String])->RuneEffectSample {
+        var result=RuneEffectSample()
+        let hit=PartyAction.dragonFlame.impact,elapsed=age-hit
+        guard elapsed>=0,elapsed<1.95 else { return result }
+        // 15 FPS base with a short authored hold across the 11–13 impact burst.
+        let durations=(0..<20).map { (10...12).contains($0) ? 0.10:1.0/15.0 }
+        let sequenceDuration=durations.reduce(0,+)
+        var frameTime=elapsed,lower=0
+        while lower<19 && frameTime>=durations[lower] { frameTime-=durations[lower];lower+=1 }
+        let upper=min(19,lower+1),mix=lower==19 ? 0:frameTime/durations[lower]
+        let tail=elapsed>sequenceDuration ? 1-PartyVisual.smooth((elapsed-sequenceDuration)/0.15):1
+        for (index,id) in targetIDs.enumerated() {
+            guard let foot=PartyVisual.feet[id] else { continue }
+            let body=PartyVisual.hitPoint(target:id)
+            let center=body,spriteSize=280.0
+            let lowerWeight=(lower==upper ? 1:1-mix)*tail
+            if lowerWeight>0.001 { result.spriteLayers.append(.init(asset:String(format:"MeadowDragonFlame%02d",lower+1),center:center,size:spriteSize,alpha:lowerWeight)) }
+            if upper != lower,mix*tail>0.001 { result.spriteLayers.append(.init(asset:String(format:"MeadowDragonFlame%02d",upper+1),center:center,size:spriteSize,alpha:mix*tail)) }
+
+            func glow(_ point:PartyPoint,_ rx:Double,_ ry:Double,_ alpha:Double,_ color:String) {
+                if alpha>0.001 { result.glows.append(.init(point:point,rx:rx,ry:ry,alpha:min(1,alpha),color:color)) }
+            }
+            // Broad warm spill lifts the monster, grass and nearby scene over
+            // the skill's deliberate screen dim; a tighter pulse marks contact.
+            let bodyFlash=PartyVisual.pulse(age,hit,hit+0.045,hit+0.82)
+            let sceneSpill=PartyVisual.pulse(age,hit,hit+0.18,hit+1.05)
+            let groundFlash=PartyVisual.pulse(age,hit+0.04,hit+0.26,hit+1.12)
+            glow(body,124,106,bodyFlash*0.72,"fireGold")
+            glow(PartyPoint(body.x,body.y-16),190,152,sceneSpill*0.33,"fireOrange")
+            glow(PartyPoint(foot.x,foot.y-4),188,32,groundFlash*0.70,"fireRed")
+            glow(PartyPoint(foot.x,foot.y-4),120,18,groundFlash*0.48,"fireGold")
+
+            // Warm embers fly out from the body, arc under gravity, then make
+            // a short visible ground contact with a colored spark and light.
+            for i in 0..<36 {
+                let delay=Double(i%8)*0.026,local=elapsed-delay
+                let life=1.36+Double(i%5)*0.075
+                guard local>=0,local<life else { continue }
+                let spread=Double(i%13)-6
+                let vx=spread*12.5+(i%2==0 ? -18:18)
+                let vy = -(92+Double((i*7)%8)*17)
+                let gravity=330.0,offsetX=Double((i*5)%9-4)*2.8,offsetY = -Double(i%5)*3.0
+                let start=PartyPoint(body.x+offsetX,body.y+8+offsetY),groundY=foot.y-4
+                let gap=max(0,groundY-start.y)
+                let impactTime=(-vy+sqrt(vy*vy+2*gravity*gap))/gravity
+                let x=start.x+vx*local
+                var y=start.y+vy*local+0.5*gravity*local*local
+                var groundAge:Double?=nil
+                let groundX=start.x+vx*impactTime
+                if local>=impactTime {
+                    let bounce=local-impactTime
+                    groundAge=bounce<0.23 ? bounce:nil
+                    if bounce<0.23 { y=groundY-(31*bounce-0.5*185*bounce*bounce) }
+                    else { y=groundY }
+                }
+                let alpha=0.90*(1-PartyVisual.smooth(local/life))
+                let color:[String] = ["fireOrange","fireGold","fireRed","fireGold","fireWhite"]
+                result.motes.append(.init(id:700+index*40+i,point:PartyPoint(x,y),size:i%9==0 ? 10:i%3==0 ? 7:4,angle:Double(i)*2.399+local*2.4,alpha:alpha,color:color[i%color.count],groundAge:groundAge,ground:PartyPoint(groundX,groundY)))
+            }
         }
         return result
     }

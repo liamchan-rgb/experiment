@@ -2,7 +2,7 @@ import Foundation
 import ClassroomGameCore
 
 public enum PartyAction:String,CaseIterable,Codable {
-    case attack,heavyStrike,ambush,breather,simpleGuard,support,rally,runeSlash,runeWard,battleRune,smallPotion,largePotion,shieldPotion,revivalStone,endTurn
+    case attack,heavyStrike,ambush,breather,simpleGuard,support,rally,runeSlash,runeWard,battleRune,dragonFlame,smallPotion,largePotion,shieldPotion,revivalStone,endTurn
     public var title:String {
         switch self {
         case .attack:return "普通攻击"
@@ -15,6 +15,7 @@ public enum PartyAction:String,CaseIterable,Codable {
         case .runeSlash:return "符文斩"
         case .runeWard:return "符文庇护"
         case .battleRune:return "战斗符文"
+        case .dragonFlame:return "龙焰"
         case .smallPotion:return "小治疗药水"
         case .largePotion:return "大治疗药水"
         case .shieldPotion:return "护盾药水"
@@ -24,7 +25,7 @@ public enum PartyAction:String,CaseIterable,Codable {
     }
     public var visual:String {
         switch self {
-        case .runeSlash,.runeWard,.battleRune:return rawValue
+        case .runeSlash,.runeWard,.battleRune,.dragonFlame:return rawValue
         case .ambush:return "ambush"
         case .support:return "support"
         case .rally:return "rally"
@@ -36,9 +37,9 @@ public enum PartyAction:String,CaseIterable,Codable {
         }
     }
     public var isRune:Bool { [.runeSlash,.runeWard,.battleRune].contains(self) }
-    public var impact:Double { if self == .runeSlash { return 1.048 };if self == .runeWard { return 0.72 };if self == .battleRune { return 0.56 };if self == .endTurn { return 0 };if self == .ambush { return 0.72 };return visual == "attack" ? 1.048 : visual == "support" ? 0.56 : visual == "revive" ? 0.72 : 0.46 }
-    public var duration:Double { if self == .runeSlash { return 3.0 };if self == .runeWard { return 2.65 };if self == .battleRune { return 2.30 };if self == .endTurn { return 0.25 };if self == .ambush { return 2.10 };return visual == "attack" ? 1.70 : visual == "revive" ? 2.10 : 1.80 }
-    public var isOffensive:Bool { [.attack,.heavyStrike,.ambush,.runeSlash].contains(self) }
+    public var impact:Double { if self == .runeSlash { return 1.048 };if self == .runeWard { return 0.72 };if self == .battleRune { return 0.56 };if self == .endTurn { return 0 };if self == .ambush { return 0.72 };if self == .dragonFlame { return 0.46 };return visual == "attack" ? 1.048 : visual == "support" ? 0.56 : visual == "revive" ? 0.72 : 0.46 }
+    public var duration:Double { if self == .runeSlash { return 3.0 };if self == .runeWard { return 2.65 };if self == .battleRune { return 2.30 };if self == .dragonFlame { return 2.75 };if self == .endTurn { return 0.25 };if self == .ambush { return 2.10 };return visual == "attack" ? 1.70 : visual == "revive" ? 2.10 : 1.80 }
+    public var isOffensive:Bool { [.attack,.heavyStrike,.ambush,.runeSlash,.dragonFlame].contains(self) }
     public var isItem:Bool { [.smallPotion,.largePotion,.shieldPotion,.revivalStone].contains(self) }
 }
 public struct PartyIntent {
@@ -51,7 +52,7 @@ public struct PartyIntent {
     public let enemy:Bool
     public let weaponID:String?
     public var magical:Bool { weaponID=="legendaryStaff" && !enemy && action.visual=="attack" }
-    public var ranged:Bool { weaponID=="huntingBow" && !enemy && action.isOffensive && !action.isRune }
+    public var ranged:Bool { weaponID=="huntingBow" && !enemy && action.isOffensive && !action.isRune && action != .dragonFlame }
 }
 /// Uses the original atomic rule engine. Pending visual actions do not mutate it.
 public final class PartyEncounter {
@@ -66,7 +67,7 @@ public final class PartyEncounter {
     public var round:Int { state.battle?.round ?? 0 }
     public var terminal:Bool { state.battle == nil || state.pauseReasons.contains(.allPlayersDown) }
     public init(seed:UInt64=UInt64.random(in:1...UInt64.max),sessionID:String=UUID().uuidString,loadouts:[String:GameUnit]?=nil,playerClassID:String="adventurer") throws {
-        guard ["adventurer","spellblade"].contains(playerClassID) else { throw GameError("该职业尚未接入演练。") }
+        guard ["adventurer","spellblade","dragonKnight"].contains(playerClassID) else { throw GameError("该职业尚未接入演练。") }
         self.sessionID=sessionID
         var catalog=try GameCatalog.initial()
         // A local training creature using the existing deer art. The six formal
@@ -92,7 +93,7 @@ public final class PartyEncounter {
         for id in ["p1","p2"] {
             if var unit=units[id] { try GameRules.refill(&unit,catalog:catalog);units[id]=unit }
         }
-        units["p1"]?.health=playerClassID=="spellblade" ? 12:6;units["p2"]?.health=12
+        units["p1"]?.health=playerClassID=="spellblade" ? 12:playerClassID=="dragonKnight" ? 20:6;units["p2"]?.health=12
         for (i,id) in ["m1","m2"].enumerated() {
             units[id]=try GameFactory.monster(id:id,templateID:warden.id,nodeID:1,catalog:catalog)
             units[id]?.active=true;units[id]?.name="鹿灵\(i==0 ? "甲":"乙")"
@@ -110,7 +111,7 @@ public final class PartyEncounter {
         case .endTurn:return .endTurn(actor:actor,timedOut:false)
         case .revivalStone:return .rescue(actor:actor,target:target)
         case .smallPotion,.largePotion,.shieldPotion:return .useItem(actor:actor,item:action.rawValue,target:target)
-        case .rally,.runeWard,.battleRune:return .cast(actor:actor,skill:action.rawValue,target:.node(state.units[target]?.nodeID ?? 1))
+        case .rally,.runeWard,.battleRune,.dragonFlame:return .cast(actor:actor,skill:action.rawValue,target:.node(state.units[target]?.nodeID ?? 1))
         case .breather,.simpleGuard:return .cast(actor:actor,skill:action.rawValue,target:.unit(actor))
         default:return .cast(actor:actor,skill:action.rawValue,target:.unit(target))
         }
@@ -124,6 +125,7 @@ public final class PartyEncounter {
         serial += 1
         let targets:[String]
         if [.rally,.runeWard,.battleRune].contains(action) { targets=state.players.filter { $0.isAlive && $0.nodeID==state.units[target]?.nodeID }.map(\.id) }
+        else if action == .dragonFlame { targets=state.units.values.filter { $0.kind == .monster && $0.isAlive && $0.nodeID==state.units[target]?.nodeID }.map(\.id).sorted() }
         else if action == .breather || action == .simpleGuard { targets=[actor] }
         else { targets=[target] }
         let intent=PartyIntent(id:sessionID+"/"+String(serial),action:action,actor:actor,target:target,targets:targets,command:command,enemy:state.units[actor]?.kind == .monster,weaponID:state.units[actor]?.equipment.weapon)
@@ -149,6 +151,7 @@ public final class PartyEncounter {
         case "adventurer":return [.attack,.heavyStrike,.breather,.simpleGuard]
         case "ranger":return [.attack,.ambush,.support,.rally]
         case "spellblade":return [.attack,.runeSlash,.runeWard,.battleRune]
+        case "dragonKnight":return [.attack,.dragonFlame]
         default:return [.attack]
         }
     }

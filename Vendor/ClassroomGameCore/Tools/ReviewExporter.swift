@@ -5,6 +5,7 @@ import ClassroomGameCore
 @main struct Export {
     static func main() throws {
         let out=URL(fileURLWithPath:CommandLine.arguments[1]);try FileManager.default.createDirectory(at:out,withIntermediateDirectories:true)
+        if CommandLine.arguments.contains("--dragon-flame-only") { try exportDragonFlame(out:out);return }
         if CommandLine.arguments.contains("--rune-only") { try exportRunes(out:out);return }
         if CommandLine.arguments.contains("--inventory-only") { try exportInventory(out:out);return }
         if CommandLine.arguments.contains("--accessory-only") { try exportAccessories(out:out);return }
@@ -416,6 +417,88 @@ extension Export {
 }
 
 extension Export {
+    /// Whole-scene, receipt-bound Dragon Flame frames for offline art review.
+    /// The scenario deliberately leaves one node target alive so the review
+    /// shows both the immediate death dissolve and a surviving hit reaction.
+    static func exportDragonFlame(out:URL) throws {
+        var chosen:UInt64=0
+        for seed in UInt64(1)...1000 {
+            let probe=try PartyEncounter(seed:seed,sessionID:"dragon-flame-seed-\(seed)",playerClassID:"dragonKnight")
+            try probe.engine.apply(.endTurn(actor:"p2",timedOut:false))
+            try probe.engine.apply(.editResources(unit:"m1",value:ResourcePatch(health:3)))
+            guard let intent=probe.prepare(.dragonFlame,target:"m1"),let roll=probe.confirmedReceipt?.dice.first(where:{$0.source=="damage"}) else { continue }
+            if !roll.naturalTwenty && roll.total<18 { chosen=seed;break }
+        }
+        guard chosen != 0 else { throw NSError(domain:"DragonFlameReview",code:1,userInfo:[NSLocalizedDescriptionKey:"Unable to find a review roll that preserves one node target."]) }
+        let model=try PartyEncounter(seed:chosen,sessionID:"dragon-flame-review",playerClassID:"dragonKnight")
+        try model.engine.apply(.endTurn(actor:"p2",timedOut:false))
+        try model.engine.apply(.editResources(unit:"m1",value:ResourcePatch(health:3)))
+        let actor="p1",target="m1",action=PartyAction.dragonFlame
+        let baseline=model.state,actorUnit=baseline.units[actor]!,targetUnit=baseline.units[target]!
+        var dice=BattleDice.channels(action,actor:actorUnit,target:targetUnit,catalog:model.engine.catalog)
+        let start=0.75,step=1.0/60.0,count=270
+        var intent:PartyIntent?,receipt:OperationReceipt?,hitAt:Double?
+        var hurts:[String:Double]=[:],deaths:[String:Double]=[:],supportStarts:[String:Double]=[:],supportStrength:[String:Double]=[:],labels:[[String:Any]]=[],emitters:[[String:Any]]=[]
+        var rows:[[String:Any]]=[],requests:[[String:Any]]=[]
+        func object<T:Encodable>(_ value:T)throws->Any { try JSONSerialization.jsonObject(with:JSONEncoder().encode(value)) }
+        for frame in 0..<count {
+            let time=Double(frame)*step,hover=time>=0.20 && time<start
+            if frame==45 {
+                intent=model.prepare(action,target:target)
+                guard let staged=model.confirmedReceipt else { throw NSError(domain:"DragonFlameReview",code:2,userInfo:[NSLocalizedDescriptionKey:"Dragon Flame could not be staged."]) }
+                dice=BattleDice.channels(action,actor:actorUnit,target:targetUnit,catalog:model.engine.catalog,receipt:staged)
+            }
+            let age=time-start
+            var committed:OperationReceipt?
+            if let intent,receipt==nil,age+1e-9>=action.impact {
+                receipt=try model.commit(intent.id);committed=receipt;hitAt=time
+                if let value=receipt {
+                    dice=BattleDice.channels(action,actor:actorUnit,target:targetUnit,catalog:model.engine.catalog,receipt:value)
+                    let cues=SpellbladeEffects.recipients(intent,catalog:model.engine.catalog)
+                    for id in ["p1","p2","m1","m2"] {
+                        let before=value.before.units[id]!,after=value.after.units[id]!,foot=PartyVisual.feet[id]!,point=PartyVisual.hitPoint(target:id)
+                        let damage=max(0,before.health-after.health),heal=max(0,after.health-before.health),gain=max(0,after.shield-before.shield)
+                        if damage>0 {
+                            hurts[id]=time;labels.append(["text":"−\(damage)","x":point.x,"y":point.y,"at":time])
+                            emitters.append(["kind":"strike","at":time,"x":point.x,"y":point.y,"floor":foot.y])
+                        }
+                        if before.isAlive && !after.isAlive && after.kind == .monster {
+                            deaths[id]=time;emitters.append(["kind":"death","at":time,"x":point.x,"y":point.y,"floor":foot.y])
+                        }
+                        if heal>0 { let amount=cues.first{$0.unitID==id}?.heal ?? heal;supportStarts[id]=time;supportStrength[id]=SpellbladeEffects.healingStrength(amount);labels.append(["text":"＋\(heal)","x":foot.x,"y":foot.y,"at":time,"supportUnit":id,"supportLine":0,"recoveryStrength":supportStrength[id]!]) }
+                        if gain>0 { labels.append(["text":"盾 ＋\(gain)","x":foot.x,"y":foot.y,"at":time,"supportUnit":id,"supportLine":1]) }
+                        if after.damageBuff != before.damageBuff,let buff=after.damageBuff { labels.append(["text":"增伤 ＋\(buff.amount)","x":foot.x,"y":foot.y,"at":time,"supportUnit":id,"supportLine":0]) }
+                    }
+                }
+            }
+            let visible=intent.flatMap { age<action.duration ? $0:nil }
+            let cues=intent.map { SpellbladeEffects.recipients($0,catalog:model.engine.catalog) } ?? []
+            var units:[[String:Any]]=[]
+            for id in ["p1","p2","m1","m2"] {
+                let unit=model.state.units[id]!,stats=try GameRules.attributes(unit,catalog:model.engine.catalog)
+                let pose=PartyVisual.pose(unit:unit,intent:visible,age:age,time:time,hurtAge:hurts[id].map{time-$0})
+                let monster=PartyVisual.monster(time:time+(id=="m2" ? 0.7:0),attackAge:nil,hurtAge:hurts[id].map{time-$0},preparing:model.current==id && visible==nil)
+                units.append(["id":id,"name":unit.name,"weaponID":unit.equipment.weapon as Any? ?? NSNull(),"armorID":unit.equipment.armor as Any? ?? NSNull(),"weaponPose":NSNull(),"vitalsVisible":unit.kind != .monster || unit.isAlive,"hp":unit.health,"maxHP":stats.maximumHealth,"baseAP":stats.baseAP,"maximumAP":stats.maximumAP,"attributeDamage":stats.damage,"shield":unit.shield,"ap":unit.ap,"buff":unit.damageBuff?.amount ?? 0,"buffRounds":unit.damageBuff?.roundsLeft ?? 0,"clip":pose.clip,"progress":pose.progress,"monster":try object(monster),"deathAge":deaths[id].map{time-$0} as Any? ?? NSNull()])
+                if id.hasPrefix("p") {
+                    var request:[String:Any]=["kind":"dragonFlame-\(id)","frame":frame,"time":time,"shield":unit.shield,"emitters":[]]
+                    if let at=supportStarts[id],time-at<1.8 { request["recoveryAge"]=time-at;request["recoveryStrength"]=supportStrength[id] ?? 1 }
+                    requests.append(request)
+                }
+            }
+            let geometry=visible.map { SpellbladeEffects.sample(action:action,age:age,actor:actor,target:target,recipients:cues,weaponID:$0.weaponID,targets:$0.targets) } ?? RuneEffectSample()
+            let dark=hover ? BattleDice.darkness(action)*PartyVisual.smooth((time-0.20)/0.28):visible != nil ? SpellbladeEffects.darkness(action,age:age,from:BattleDice.darkness(action)):0
+            let travel=PartyVisual.travel(visible,age:age)
+            let anchor=PartyVisual.diceAnchor(actor:actor,intent:visible,age:age,diceCount:dice.count)
+            let diePose=dice.indices.map { BattleDice.pose(time:time,index:$0,resolvedAge:hitAt.map{time-$0},visibleAge:max(0,time-0.20)) }
+            rows.append(["scenario":"dragonFlame","frame":frame,"time":time,"hitPoints":try object(Dictionary(uniqueKeysWithValues:["p1","p2","m1","m2"].map{($0,PartyVisual.hitPoint(target:$0))})),"damageLabels":labels.filter{time-($0["at"] as! Double)<1},"staff":NSNull(),"ranged":false,"weaponTrail":[],"projectile":NSNull(),"locked":!hover,"confirmationAge":hover ? NSNull():age,"hover":hover,"darkness":dark,"actor":actor,"target":target,"action":action.rawValue,"age":age,"playing":visible != nil,"enemy":false,"impact":hitAt as Any? ?? NSNull(),"afterimages":[],"ambushSlashes":[],"receiptDice":try object(receipt?.dice ?? []),"dice":try object(dice),"diceAnchor":try object(anchor),"dicePose":try object(diePose),"travel":try object(travel),"current":(visible?.actor ?? model.current) as Any? ?? NSNull(),"acted":Array(model.state.battle?.acted ?? []),"units":units,"runes":try object(geometry),"recipients":try object(cues),"committed":committed != nil])
+            let active=emitters.compactMap { e -> [String:Any]? in let elapsed=time-(e["at"] as! Double);guard elapsed<3 else{return nil};return ["kind":e["kind"]!,"age":elapsed,"x":e["x"]!,"y":e["y"]!,"floor":e["floor"]!] }
+            requests.append(["kind":"dragonFlame-fx","frame":frame,"time":time,"shield":0,"emitters":active])
+        }
+        try JSONSerialization.data(withJSONObject:rows,options:[.sortedKeys]).write(to:out.appendingPathComponent("dragon-flame-frames.json"))
+        try JSONSerialization.data(withJSONObject:requests,options:[.sortedKeys]).write(to:out.appendingPathComponent("dragon-flame-light-requests.json"))
+        print("Exported \(rows.count) 60 Hz full-scene Dragon Flame frames; one atomic node-wide receipt, impact and layered light included (seed \(chosen))")
+    }
+
     static func exportRunes(out:URL) throws {
         var rows:[[String:Any]]=[],requests:[[String:Any]]=[]
         func object<T:Encodable>(_ value:T)throws->Any { try JSONSerialization.jsonObject(with:JSONEncoder().encode(value)) }

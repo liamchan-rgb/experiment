@@ -58,7 +58,7 @@ final class MeadowPartyBattleView:UIView {
         }
     }
     private func configureTrainingMenu() {
-        let choices=[("adventurer","冒险者"),("spellblade","魔剑士")]
+        let choices=[("adventurer","冒险者"),("spellblade","魔剑士"),("dragonKnight","龙骑士")]
         let classes=choices.map { id,name in UIAction(title:"P1 · "+name,state:playerClassID==id ? .on:.off) { [weak self] _ in
             guard let self else{return};self.playerClassID=id;self.configureTrainingMenu();self.restart()
         } }
@@ -174,6 +174,7 @@ final class MeadowPartyBattleView:UIView {
         case .runeSlash:return "2D12＋2"+modifier+" · 自身恢复4 / 盾4 · 余\(rest)"
         case .runeWard:return "目标地点：队友恢复8 / 盾6 · 余\(rest)"
         case .battleRune:return "目标地点：盾4 / 增伤3 · 2轮 · 余\(rest)"
+        case .dragonFlame:return "目标地点：1D20＋6\(modifier) · 自身恢复6 / 盾6 / 增伤＋2 · 余\(rest)"
         case .ambush:return "2D8＋2"+modifier+" · 自身恢复3 · 余\(rest)"
         case .support:return "1 AP · 治疗6 / 盾4 · 余\(rest)"
         case .rally:return "1 AP · 节点友方增伤2 / 1轮 · 余\(rest)"

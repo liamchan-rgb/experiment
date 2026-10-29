@@ -104,7 +104,7 @@ final class MeadowPartyStageView:UIView {
         naturalTwenty=confirmed?.dice.contains { $0.naturalTwenty } ?? false
         intent=value;state=before;startAt=sceneTime;self.impact=onImpact;self.completion=completion;fired=false;focus=nil;meetsShield=(before.units[value.target]?.shield ?? 0)>0
         let delayed=sceneTime+max(0,value.action.impact-0.46)
-        if value.action.isRune,let catalog {
+        if (value.action.isRune || value.action == .dragonFlame),let catalog {
             for cue in SpellbladeEffects.recipients(value,catalog:catalog) {
                 guard let unit=before.units[cue.unitID] else { continue }
                 if cue.shield>unit.shield { formation[cue.unitID]=delayed }
@@ -148,14 +148,14 @@ final class MeadowPartyStageView:UIView {
             if heal>0 {
                 let shift=intent.actor==id ? PartyVisual.travel(intent,age:sceneTime-startAt):PartyPoint(0,0)
                 if intent.action == .ambush { recovery[id]=sceneTime;recoveryStrength[id]=1 }
-                if intent.action.isRune,let catalog {
+                if intent.action.isRune || intent.action == .dragonFlame,let catalog {
                     let amount=SpellbladeEffects.recipients(intent,catalog:catalog).first { $0.unitID==id }?.heal ?? heal
                     recovery[id]=sceneTime;recoveryStrength[id]=SpellbladeEffects.healingStrength(amount)
                 }
-                messages.append(.init(text:"＋\(heal)",point:CGPoint(x:point.x+shift.x,y:point.y+shift.y),at:sceneTime,color:.systemGreen,supportUnit:intent.action.isRune ? id:nil))
+                messages.append(.init(text:"＋\(heal)",point:CGPoint(x:point.x+shift.x,y:point.y+shift.y),at:sceneTime,color:.systemGreen,supportUnit:(intent.action.isRune || intent.action == .dragonFlame) ? id:nil))
             }
-            if gain>0 { birth[id]=sceneTime;messages.append(.init(text:"盾 ＋\(gain)",point:CGPoint(x:point.x,y:point.y+(intent.action.isRune ? 36:24)),at:sceneTime,color:.systemCyan,supportUnit:intent.action.isRune ? id:nil,supportLine:1)) }
-            if after.damageBuff != before.damageBuff,let b=after.damageBuff { messages.append(.init(text:"伤害 ＋\(b.amount)",point:CGPoint(x:point.x,y:point.y-(intent.action.isRune ? 36:0)),at:sceneTime,color:MeadowPreviewPalette.gold,supportUnit:intent.action.isRune ? id:nil)) }
+            if gain>0 { birth[id]=sceneTime;messages.append(.init(text:"盾 ＋\(gain)",point:CGPoint(x:point.x,y:point.y+(intent.action.isRune || intent.action == .dragonFlame ? 36:24)),at:sceneTime,color:.systemCyan,supportUnit:(intent.action.isRune || intent.action == .dragonFlame) ? id:nil,supportLine:1)) }
+            if after.damageBuff != before.damageBuff,let b=after.damageBuff { messages.append(.init(text:"伤害 ＋\(b.amount)",point:CGPoint(x:point.x,y:point.y-(intent.action.isRune || intent.action == .dragonFlame ? 36:0)),at:sceneTime,color:MeadowPreviewPalette.gold,supportUnit:(intent.action.isRune || intent.action == .dragonFlame) ? id:nil)) }
             if damage>0 || absorbed>0 {
                 hurt[id]=sceneTime
                 let hit=PartyVisual.hitPoint(target:id,shielded:absorbed>0,weaponID:intent.weaponID)
@@ -229,7 +229,7 @@ final class MeadowPartyStageView:UIView {
         if let value=intent {
             let peak=max(BattleDice.darkness(value.action),value.action.isOffensive ? 0.58:0.32)
             let build=castDim+(peak-castDim)*PartyVisual.smooth(age/0.4)
-            dim.alpha=CGFloat(value.action.isRune ? SpellbladeEffects.darkness(value.action,age:age,from:castDim):build*(1-PartyVisual.smooth((age-1.2)/0.6)))
+            dim.alpha=CGFloat((value.action.isRune || value.action == .dragonFlame) ? SpellbladeEffects.darkness(value.action,age:age,from:castDim):build*(1-PartyVisual.smooth((age-1.2)/0.6)))
         } else { dim.alpha=CGFloat(previewDarkness()) }
         let anchor=PartyVisual.diceAnchor(actor:diceActor,intent:intent,age:age,shielded:meetsShield,diceCount:diceView.dice.count)
         diceView.frame=CGRect(x:anchor.x-110,y:anchor.y,width:220,height:100)
@@ -243,8 +243,8 @@ final class MeadowPartyStageView:UIView {
             let power=MeadowBattleRecoveryField.pulse(sceneTime-at)*(recoveryStrength[unit.id] ?? 1),shift=intent?.actor==unit.id ? moving:PartyPoint(0,0)
             return (PartyPoint(foot.x+shift.x,foot.y+shift.y),power)
         }
-        if let intent,intent.action.isRune,let catalog {
-            fx.runes=SpellbladeEffects.sample(action:intent.action,age:age,actor:intent.actor,target:intent.target,recipients:SpellbladeEffects.recipients(intent,catalog:catalog),weaponID:intent.weaponID)
+        if let intent,(intent.action.isRune || intent.action == .dragonFlame),let catalog {
+            fx.runes=SpellbladeEffects.sample(action:intent.action,age:age,actor:intent.actor,target:intent.target,recipients:SpellbladeEffects.recipients(intent,catalog:catalog),weaponID:intent.weaponID,targets:intent.targets)
         } else { fx.runes=nil }
         fx.setNeedsDisplay()
     }
@@ -439,6 +439,10 @@ enum MeadowRuneEffectPainter {
         case "violet":return UIColor(red:0.36,green:0.25,blue:1,alpha:1)
         case "cyan":return UIColor(red:0.12,green:0.75,blue:1,alpha:1)
         case "gold":return UIColor(red:0.99,green:0.78,blue:0.27,alpha:1)
+        case "fireRed":return UIColor(red:1.00,green:0.18,blue:0.08,alpha:1)
+        case "fireOrange":return UIColor(red:1.00,green:0.39,blue:0.10,alpha:1)
+        case "fireGold":return UIColor(red:1.00,green:0.73,blue:0.23,alpha:1)
+        case "fireWhite":return UIColor(red:1.00,green:0.91,blue:0.61,alpha:1)
         case "green":return UIColor(red:0.16,green:1,blue:0.48,alpha:1)
         default:return UIColor(red:0.96,green:0.98,blue:1,alpha:1)
         }
@@ -460,13 +464,24 @@ enum MeadowRuneEffectPainter {
             return
         }
         for v in q.glows { glow(v.point,v.rx,v.ry,v.alpha,v.color) }
+        for layer in q.spriteLayers {
+            guard let image=UIImage(named:layer.asset),layer.alpha>0 else { continue }
+            let size=layer.size,center=layer.center
+            ctx.saveGState();ctx.interpolationQuality = .high
+            image.draw(in:CGRect(x:center.x-size/2,y:center.y-size/2,width:size,height:size),blendMode:.plusLighter,alpha:CGFloat(layer.alpha*0.92))
+            ctx.restoreGState()
+        }
         for s in q.strokes where s.points.count>1 {
             ctx.setStrokeColor(color(s.color).withAlphaComponent(CGFloat(s.alpha)).cgColor);ctx.setLineWidth(s.width)
             ctx.beginPath();ctx.move(to:CGPoint(x:s.points[0].x,y:s.points[0].y));for p in s.points.dropFirst() { ctx.addLine(to:CGPoint(x:p.x,y:p.y)) };ctx.strokePath()
         }
         for m in q.motes {
             if m.id%6==0 { glow(m.point,18,14,m.alpha*0.20,m.color) }
-            if let age=m.groundAge,age<0.25 { glow(m.ground,28,8,m.alpha*(1-age/0.25)*0.55,m.color) }
+            if let age=m.groundAge,age<0.23 {
+                let a=m.alpha*(1-age/0.23)
+                glow(m.ground,34,9,a*0.72,m.color)
+                if m.id%3==0 { MeadowBattleVFXAssets.groundSpark.draw(in:CGRect(x:m.ground.x-23,y:m.ground.y-6,width:46,height:12),blendMode:.plusLighter,alpha:CGFloat(a*0.78)) }
+            }
             ctx.saveGState();ctx.translateBy(x:m.point.x,y:m.point.y);ctx.rotate(by:m.angle)
             ctx.setFillColor(color(m.color).withAlphaComponent(CGFloat(m.alpha)).cgColor)
             ctx.move(to:CGPoint(x:0,y:-m.size/2));ctx.addLine(to:CGPoint(x:m.size/3,y:0));ctx.addLine(to:CGPoint(x:0,y:m.size/2));ctx.addLine(to:CGPoint(x:-m.size/3,y:0));ctx.closePath();ctx.fillPath();ctx.restoreGState()
