@@ -19,7 +19,8 @@ public enum SpellbladeEffects {
     private static let runeWardDurations:[Double]=[0.100,0.070,0.070,0.070,0.070,0.070,0.070,0.060,0.060,0.080,0.060,0.050,0.090,0.070,0.070,0.070,0.070,0.070,0.070,0.100]
 
     private static func authoredFrames(prefix:String,elapsed:Double,durations:[Double],center:PartyPoint,size:Double)->[BattleEffectSpriteLayer] {
-        guard elapsed>=0,elapsed<durations.reduce(0,+) else { return [] }
+        let total=durations.reduce(0,+)
+        guard elapsed>=0,elapsed<total-1e-9 else { return [] }
         var local=elapsed,index=0
         while index<durations.count-1 && local>=durations[index]-1e-9 { local=max(0,local-durations[index]);index+=1 }
         let next=min(durations.count-1,index+1),progress=PartyVisual.smooth(local/durations[index])
