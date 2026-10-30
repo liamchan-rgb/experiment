@@ -6,8 +6,10 @@ from pathlib import Path
 from PIL import Image,ImageDraw,ImageFont
 import json,math,functools,subprocess,sys
 R=Path(__file__).resolve().parents[1];D=R/'Art/Review/Battle/spellblade-demo-v1';D.mkdir(parents=True,exist_ok=True)
+review_args=sys.argv[1:];sys.argv=sys.argv[:1]
 p=R/'scripts/review-armor-demo.py';N={'__file__':str(p)};exec(compile(p.read_text().split('for item in armors:\n frames=[]')[0],str(p),'exec'),N)
 p=R/'scripts/review-legendary-staff-demo.py';Q={'__file__':str(p)};exec(compile(p.read_text().split('reports=[]\nfor scenario')[0],str(p),'exec'),Q)
+sys.argv += review_args
 world=Q['world'];S=Q['S'];oldgear=Q['gear'];font=Q['font'];hs=world['hs'];oy=world['oy'];compose=world['compose'];glow=world['glow'];asset=Q['asset'];helpers=world['env']
 rows=json.loads((D/'spellblade-frames.json').read_text());requests={(q['kind'],q['frame']):q for q in json.loads((D/'spellblade-light-requests.json').read_text())}
 for q in json.loads((D/'spellblade-light-samples.json').read_text())['frames']:world['attached'][(q['kind'],q['frame'])]=q
@@ -130,7 +132,7 @@ def ui(row):
  for i,(name,desc,cost) in enumerate(titles):
   x=86+i*(cw+10);d.rounded_rectangle((round(x),914,round(x+cw),1016),8,fill='#2b4030',outline='#b8a568');d.text((round(x+9),921),name+f' · {cost} AP',font=font(20),fill='#f9edc4');d.text((round(x+9),964),desc,font=font(16),fill='#bbcba9')
  x=86+4*(cw+10);d.rounded_rectangle((round(x),914,round(x+100),1016),8,fill='#eac668');d.text((round(x+25),950),'道具',font=font(20),fill='#192b21')
- d.rectangle((0,f.height-50,f.width,f.height),fill='#0b1811');d.text((35,f.height-29),'Build70 · 符文特效／命中粒子 · 正常速度离线全场合成 · 非UIKit／实机录屏',font=font(18),fill='#bbcba9')
+ d.rectangle((0,f.height-50,f.width,f.height),fill='#0b1811');d.text((35,f.height-29),'Build70 · 符文斩／符文庇护 · 命中粒子与地面光效 · 正常速度离线全场合成',font=font(18),fill='#bbcba9')
  return f.convert('RGB').resize((1020,765),Image.Resampling.LANCZOS)
 
 def stills(selected=None):
@@ -168,6 +170,11 @@ if '--rune-pair-only' in sys.argv:
  stills(selected)
  (D/'review.json').write_text(json.dumps({'scope':'Normal-speed full-scene offline review of the supplied 20-frame Rune Slash attack and 20-frame node-level Rune Ward cast, with production receipts, character motion, hit particles, ground collision/light, healing and shield feedback. Not UIKit/game/device capture.','animations':reports,'keyframePNGs':14,'sourceFrameAssets':40,'newCharacterArt':False,'userArtApproval':None},ensure_ascii=False,indent=2)+'\n')
  print('Rune Slash and Rune Ward normal-speed scene animations and fourteen keyframes rendered');sys.exit(0)
+if '--rune-slash-lethal-only' in sys.argv:
+ save('runeSlash-lethal',[ui(r) for r in rows if r['scenario']=='runeSlash-lethal'])
+ stills(['runeSlash-lethal'])
+ (D/'runeSlash-lethal-review.json').write_text(json.dumps({'scope':'Normal-speed full-scene lethal Rune Slash preview; damage receipt, death start, disappearing vitals and ground-bouncing hit particles are from the same production event. Offline composition, not UIKit/game/device capture.','animations':reports,'keyframePNGs':7,'userArtApproval':None},ensure_ascii=False,indent=2)+'\n')
+ print('Lethal Rune Slash normal-speed animation and seven scene keyframes rendered');sys.exit(0)
 if '--rune-slash-only' in sys.argv:
  save('runeSlash',[ui(r) for r in rows if r['scenario']=='runeSlash'])
  stills(['runeSlash'])

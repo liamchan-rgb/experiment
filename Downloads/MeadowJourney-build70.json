@@ -1,0 +1,54 @@
+{
+  "application": "MeadowJourney",
+  "version": "1.6.44",
+  "build": 70,
+  "bundleIdentifier": "com.liamchan.experiment.meadow",
+  "platform": "iPhoneOS",
+  "architecture": "arm64",
+  "artifact": "Downloads/MeadowJourney-build70.ipa",
+  "bytes": 53106285,
+  "sha256": "798c72abbc1b69075ea046b22f2cd0c6e4f9b5286ebbc75c458e89fbb5968075",
+  "compression": "stored",
+  "codeSigning": "unsigned; SideStore can re-sign",
+  "sourceCommit": "0f19a79b37b5ef754cd728323fe04f84dc730808",
+  "workflowRun": {
+    "id": 41005079116,
+    "url": "https://github.com/liamchan-rgb/experiment/actions/runs/41005079116",
+    "conclusion": "success"
+  },
+  "verification": {
+    "packageLogSha256AndSizeMatch": true,
+    "zipCrc": "pass",
+    "supportedPlatform": "iPhoneOS",
+    "arm64MachO": true,
+    "swiftTests": {
+      "passed": 168,
+      "failed": 0
+    },
+    "runeVFXAssets": {
+      "sourcePacks": 2,
+      "runtimeFrames": 40,
+      "sourceToCatalogPixelExact": true,
+      "transparentFinalFrames": true
+    },
+    "receiptScenarios": 5,
+    "battleParticleCollisionAndCadenceChecks": "pass",
+    "simulatorOrDeviceRun": false
+  },
+  "artReview": {
+    "files": [
+      "Art/Review/Battle/spellblade-demo-v1/runeSlash-normal.gif",
+      "Art/Review/Battle/spellblade-demo-v1/runeSlash-lethal-normal.gif",
+      "Art/Review/Battle/spellblade-demo-v1/runeWard-normal.gif"
+    ],
+    "framesEach": 235,
+    "durationMsEach": 4700,
+    "resolution": [
+      1020,
+      765
+    ],
+    "offlineFullScene": true,
+    "userArtApproval": null
+  },
+  "directDownloadUrl": "https://raw.githubusercontent.com/liamchan-rgb/experiment/fix/build33-face-grounding-camera/Downloads/MeadowJourney-build70.ipa"
+}

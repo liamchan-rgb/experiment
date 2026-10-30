@@ -1,3 +1,17 @@
+## build70 · 符文战斗特效与命中粒子 · 1.6.44
+
+[直接下载 MeadowJourney-build70.ipa](https://raw.githubusercontent.com/liamchan-rgb/experiment/fix/build33-face-grounding-camera/Downloads/MeadowJourney-build70.ipa) · [符文斩正常速度全场GIF](https://raw.githubusercontent.com/liamchan-rgb/experiment/fix/build33-face-grounding-camera/Art/Review/Battle/spellblade-demo-v1/runeSlash-normal.gif) · [符文斩致死命中GIF](https://raw.githubusercontent.com/liamchan-rgb/experiment/fix/build33-face-grounding-camera/Art/Review/Battle/spellblade-demo-v1/runeSlash-lethal-normal.gif) · [符文庇护正常速度全场GIF](https://raw.githubusercontent.com/liamchan-rgb/experiment/fix/build33-face-grounding-camera/Art/Review/Battle/spellblade-demo-v1/runeWard-normal.gif) · [构建校验记录](MeadowJourney-build70.json)
+
+接入用户提供的符文斩20帧和符文庇护20帧素材。斩痕在真实命中回执处爆发，配蓝白、青蓝和金色粒子；粒子有环境照亮、重力散射、地面碰撞与短促反弹，致死时与伤害数字、怪物死亡和血条隐藏同步。符文庇护在节点中心播放，队友治疗和护盾仍走各自的原有结算。原始ZIP、精灵表和40张RGBA帧保存在 `Art/Parts/BattleVFX/`，素材与运行时图集逐像素校验通过。
+
+三段正常速度全场动图各235帧×20ms＝4.7秒；均由本次构建的战斗回执和素材离线合成。168项纯Swift测试、战斗／道路／姿势逻辑检查及设备Release归档通过。IPA为SideStore可重签的unsigned包，53,106,285字节，SHA-256 `798c72abbc1b69075ea046b22f2cd0c6e4f9b5286ebbc75c458e89fbb5968075`。校验记录见[构建JSON](MeadowJourney-build70.json)，GitHub Actions [运行 #41005079116](https://github.com/liamchan-rgb/experiment/actions/runs/41005079116)。未运行模拟器或实机；安装与实机效果由用户验收。
+
+[完整全场景动图与关键帧](../Art/Review/Battle/spellblade-demo-v1/README.md) · [符文斩原包](../Art/Parts/BattleVFX/rune-slash-v2/README.md) · [符文庇护原包](../Art/Parts/BattleVFX/rune-ward-v1/README.md)
+
+下一步两项：龙鳞守护的圆形护盾／破碎反馈；龙之号令的增益特效。
+
+---
+
 ## build69 · 三档治疗特效接入 · 1.6.43
 
 [直接下载 MeadowJourney-b69.ipa](https://raw.githubusercontent.com/liamchan-rgb/experiment/fix/build33-face-grounding-camera/Downloads/MeadowJourney-b69.ipa) · [正常速度全场治疗 GIF](https://raw.githubusercontent.com/liamchan-rgb/experiment/fix/build33-face-grounding-camera/Art/Review/Battle/healing-effects-v1/healing-tiers-normal.gif) · [三档峰值对照](https://raw.githubusercontent.com/liamchan-rgb/experiment/fix/build33-face-grounding-camera/Art/Review/Battle/healing-effects-v1/healing-three-tiers-peak-overview.jpg) · [包校验记录](MeadowJourney-build69.json)

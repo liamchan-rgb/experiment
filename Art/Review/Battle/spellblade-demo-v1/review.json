@@ -1,5 +1,5 @@
 {
-  "scope": "Normal-speed offline Rune Slash preview using production combat receipts, actor movement and the supplied eight RGBA sprite frames. Not UIKit/game/device capture.",
+  "scope": "Normal-speed offline full-scene review of the supplied 20-frame Rune Slash and 20-frame Rune Ward assets. Includes nonlethal hit, lethal hit with same-receipt death, hit particles and ground collisions, and node-level ward casting with healing/shield feedback. Not UIKit/game/device capture.",
   "animations": [
     {
       "file": "runeSlash-normal.gif",
@@ -9,9 +9,42 @@
         1020,
         765
       ]
+    },
+    {
+      "file": "runeSlash-lethal-normal.gif",
+      "decodedFrames": 235,
+      "durationMs": 4700,
+      "size": [
+        1020,
+        765
+      ]
+    },
+    {
+      "file": "runeWard-normal.gif",
+      "decodedFrames": 235,
+      "durationMs": 4700,
+      "size": [
+        1020,
+        765
+      ]
     }
   ],
   "keyframePNGs": 7,
+  "sourceFrameAssets": 40,
+  "sourceZipSHA256": {
+    "runeSlash": "1deda544b19ca5102603363f968b648b19015d4bae9642178af72bdd35732f2f",
+    "runeWard": "98036771fc2d8b67772902e625a3d3998a115aeff257be7d12f46f74c80b740c"
+  },
+  "auditScenarios": 5,
   "newCharacterArt": false,
-  "userArtApproval": null
+  "userArtApproval": null,
+  "keyframeFiles": [
+    "runeSlash-gather.png",
+    "runeSlash-impact.png",
+    "runeSlash-settling.png",
+    "runeSlash-lethal-impact.png",
+    "runeSlash-lethal-tail.png",
+    "runeWard-peak.png",
+    "runeWard-impact.png"
+  ]
 }

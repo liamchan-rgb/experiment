@@ -1,3 +1,15 @@
+# Build70 符文斩／符文庇护全场景美术审核
+
+[符文斩命中动图](runeSlash-normal.gif) · [符文斩致死动图](runeSlash-lethal-normal.gif) · [符文庇护动图](runeWard-normal.gif) · [命中关键帧](runeSlash-impact.png) · [余波关键帧](runeSlash-settling.png) · [庇护峰值](runeWard-peak.png) · [回执与素材审计](source-audit.json)
+
+本次输入保存在 [符文斩V2原包与帧图](../../../Parts/BattleVFX/rune-slash-v2/README.md) 和 [符文庇护原包与帧图](../../../Parts/BattleVFX/rune-ward-v1/README.md)。原包SHA-256分别为 `1deda544b19ca5102603363f968b648b19015d4bae9642178af72bdd35732f2f`、`98036771fc2d8b67772902e625a3d3998a115aeff257be7d12f46f74c80b740c`。两套各20张256×256 RGBA帧，输入图集、逐帧拷贝与Xcode运行时catalog逐像素一致；两个收尾帧完全透明。
+
+符文斩在动作发起后先蓄势再接敌挥击，攻击核心与1.048秒伤害回执对齐。命中时蓝白斩痕、青蓝／白／金色粒子、受击亮光和地面光同时出现；粒子沿重力轨迹飞散，碰地后短促反弹并留下火花。致死场景中伤害数字、怪物血条隐藏、死亡粒子消散在同一回执触发。符文庇护的20帧蓝白符文阵在队伍节点中心播放一次，实际治疗／护盾仍由原回执规则结算。
+
+三段动图均为235帧×20ms（4.7秒）、1020×765的正常速度全场景离线合成，采用本次构建的真实战斗帧与回执；不是UIKit、模拟器或实机录屏。五种战斗场景回执审计、40帧资源校验通过；新美术认可仍待用户确认。
+
+---
+
 # Build67 符文斩精灵表接入审核
 
 [符文斩正常速度全场动图](runeSlash-normal.gif) · [命中帧](runeSlash-impact.png) · [斩痕展开](runeSlash-unfold.png) · [悬停站位](runeSlash-hover.png) · [淡出余波](runeSlash-tail.png) · [原始精灵表](../../../Parts/BattleVFX/rune-slash-v1/source-spritesheet.png) · [八帧与时序](../../../Parts/BattleVFX/rune-slash-v1/frames/frame-manifest.json) · [Alpha／回执审计](source-audit.json)

@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 from pathlib import Path
-import json,subprocess,hashlib
-from PIL import Image,ImageChops
-R=Path(__file__).resolve().parents[1];D=R/'Art/Review/Battle/spellblade-demo-v1';B='/workspace/left-transitions-publish.git';baseline='6371e680b640e83be57c50e0dd01814d82f98eed'
+import json,subprocess,hashlib,sys
+R=Path(__file__).resolve().parents[1];D=R/'Art/Review/Battle/spellblade-demo-v1';B=R;baseline='6371e680b640e83be57c50e0dd01814d82f98eed'
+asset_audit=json.loads(subprocess.check_output([sys.executable,str(R/'scripts/verify-rune-vfx-assets.py')]))
+assert asset_audit['totalFrames']==40 and asset_audit['allChecksPassed']
 count=0
 for row in subprocess.check_output(['git','-C',B,'ls-tree','-r','-z',baseline,'--','Sources/Resources','Vendor/ClassroomGameCore/Sources/ClassroomGameCore','Vendor/ClassroomGameCore/Sources/MeadowBattleSupport/Resources','Vendor/ClassroomGameCore/Sources/MeadowBattleSupport/BowRig.swift','Vendor/ClassroomGameCore/Sources/MeadowBattleSupport/GreatSwordRig.swift','Vendor/ClassroomGameCore/Sources/MeadowBattleSupport/LegendaryStaffRig.swift']).split(b'\0'):
  if not row:continue
@@ -10,18 +11,6 @@ for row in subprocess.check_output(['git','-C',B,'ls-tree','-r','-z',baseline,'-
  if rel.startswith('Sources/Resources/Assets.xcassets/MeadowRuneSlash') and rel.split('/')[3].startswith('MeadowRuneSlash'):
   continue
  data=(R/rel).read_bytes();assert hashlib.sha1(b'blob '+str(len(data)).encode()+b'\0'+data).hexdigest()==meta.decode().split()[-1],rel;count+=1
-sheet=Image.open(R/'Art/Parts/BattleVFX/rune-slash-v1/source-spritesheet.png').convert('RGBA')
-assert sheet.size==(2048,256)
-frame_audit=[]
-for i in range(8):
- name=f'MeadowRuneSlash{i+1:02}';f=Image.open(R/f'Sources/Resources/Assets.xcassets/{name}.imageset/{name}.png').convert('RGBA')
- assert f.size==(256,256) and ImageChops.difference(f,sheet.crop((i*256,0,(i+1)*256,256))).getbbox() is None,name
- canonical=Image.open(R/f'Art/Parts/BattleVFX/rune-slash-v1/frames/rune_slash_{i+1:02}.png').convert('RGBA')
- assert canonical.size==(256,256) and ImageChops.difference(canonical,f).getbbox() is None,name+' source frame copy'
- alpha=f.getchannel('A');bbox=alpha.getbbox();assert bbox is not None,name
- edge_alpha=any(alpha.getpixel((x,y)) for x,y in [(x,0) for x in range(256)]+[(x,255) for x in range(256)]+[(0,y) for y in range(1,255)]+[(255,y) for y in range(1,255)])
- assert not edge_alpha,name
- frame_audit.append({'frame':i+1,'alphaBounds':list(bbox),'nonTransparentPixels':sum(alpha.histogram()[1:]),'transparentCanvasBorder':True,'exactSourceCrop':True})
 rows=json.loads((D/'spellblade-frames.json').read_text());reports=[]
 for scenario in dict.fromkeys(r['scenario'] for r in rows):
  group=[r for r in rows if r['scenario']==scenario];before=next(r for r in group if r['frame']==49);hit=next(r for r in group if r['impact'] is not None);pre=group[group.index(hit)-1]
@@ -36,6 +25,8 @@ for scenario in dict.fromkeys(r['scenario'] for r in rows):
   layers=hit['runes'].get('spriteLayers',[])
   assert any(v['asset']=='MeadowRuneSlashAttack11' for v in layers) and hit['travel']['x']>0,'Authored attack peak must coincide with the melee receipt'
   assert hit['runes']['motes'] and hit['runes']['glows'],'Hit particles and contact light must start with the receipt'
+  assert {'white','cyan','blue','gold'} <= {m['color'] for r in group for m in r['runes']['motes']},'Rune Slash hit debris must use the authored palette'
+  assert any(m.get('groundAge') is not None for r in group for m in r['runes']['motes']),'Rune Slash particles must reach the ground'
   peak=next(v for v in layers if v['asset']=='MeadowRuneSlashAttack11')
   point=hit['hitPoints']['m1'];assert abs(peak['center']['x']-(point['x']-52))<1e-6 and abs(peak['center']['y']-(point['y']-20))<1e-6
   assert len(roll['values'])==2;bonus=2+(3 if scenario.endswith('buffed') else 0)
@@ -54,5 +45,5 @@ for scenario in dict.fromkeys(r['scenario'] for r in rows):
   assert b['m1']['hp']==0 and not b['m1']['vitalsVisible'];assert b['m1']['deathAge']==0
   assert any(label['text']=='−3' and label['at']==hit['time'] for label in hit['damageLabels'])
  reports.append({'scenario':scenario,'hitTime':hit['time'],'actorAPBefore':a['p1']['ap'],'actorAPAfter':b['p1']['ap'],'casterHeal':b['p1']['hp']-a['p1']['hp'],'targetDamage':a['m1']['hp']-b['m1']['hp'],'correctEffectScopes':True})
-report={'baseline':baseline,'unchangedOriginalResourceCoreAndWeaponPaths':count,'eightSpriteCellsExactRGBAExtractions':True,'spriteSheetSize':[2048,256],'frameAlphaAudit':frame_audit,'ruleCatalogAndCampSaveFormatUnchanged':True,'characterOrWeaponImagesRegenerated':False,'actualReceiptChecks':reports,'frames':len(rows),'newArtApproval':None}
+report={'baseline':baseline,'unchangedOriginalResourceCoreAndWeaponPaths':count,'sourcePacks':asset_audit['sourcePacks'],'runtimeFrameAssets':asset_audit['totalFrames'],'sourceAndRuntimeFramesPixelExact':asset_audit['allChecksPassed'],'ruleCatalogAndCampSaveFormatUnchanged':True,'characterOrWeaponImagesRegenerated':False,'actualReceiptChecks':reports,'frames':len(rows),'allChecksPassed':True,'newArtApproval':None}
 (D/'source-audit.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n');print(report)
