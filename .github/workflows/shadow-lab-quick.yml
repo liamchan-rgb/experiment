@@ -81,7 +81,7 @@ jobs:
           set -euo pipefail
           check_failed=0
           python3 -m venv build/art-tools
-          build/art-tools/bin/python -m pip install --disable-pip-version-check --no-input Pillow 2>&1 | tee build/logs/art-tools-install.log
+          build/art-tools/bin/python -m pip install --disable-pip-version-check --no-input Pillow numpy 2>&1 | tee build/logs/art-tools-install.log
           build/art-tools/bin/python scripts/verify-dragon-flame-assets.py 2>&1 | tee build/logs/dragon-flame-assets.log || check_failed=1
           build/art-tools/bin/python scripts/verify-healing-assets.py 2>&1 | tee build/logs/healing-assets.log || check_failed=1
           swift test --package-path Vendor/ClassroomGameCore 2>&1 | tee build/logs/party-rules.log || check_failed=1
