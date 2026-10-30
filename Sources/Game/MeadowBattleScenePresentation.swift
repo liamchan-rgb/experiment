@@ -309,14 +309,14 @@ final class MeadowBattleAttachedSkillsView: UIView {
             }
             let age=recovery ?? -1
             let foot=CGPoint(x:128*unit,y:214*unit)
-            let size:CGSize
+            let healingSize:CGSize
             switch recoveryTier {
-            case .some(.micro): size=CGSize(width:208,height:208)
-            case .some(.standard): size=CGSize(width:248,height:207)
-            case .some(.strong): size=CGSize(width:258,height:258)
-            case .none: size = .zero
+            case .some(.micro): healingSize=CGSize(width:208,height:208)
+            case .some(.standard): healingSize=CGSize(width:248,height:207)
+            case .some(.strong): healingSize=CGSize(width:258,height:258)
+            case .none: healingSize = .zero
             }
-            healing.frame=CGRect(x:foot.x-size.width*unit/2,y:foot.y-size.height*unit*CGFloat(recoveryTier?.canvasGroundAnchorY ?? 1),width:size.width*unit,height:size.height*unit)
+            healing.frame=CGRect(x:foot.x-healingSize.width*unit/2,y:foot.y-healingSize.height*unit*CGFloat(recoveryTier?.canvasGroundAnchorY ?? 1),width:healingSize.width*unit,height:healingSize.height*unit)
             healing.update(tier:recoveryTier,age:age)
         }
     }
