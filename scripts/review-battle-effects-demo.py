@@ -21,7 +21,13 @@ namespace = {'__file__': str(source)}
 exec(compile(source.read_text().split('\nfor clip,data in lib[\'clips\'].items():')[0], str(source), 'exec'), namespace)
 namespace['lib'] = json.loads((ASSETS / 'MeadowBattleHeroAnimationV2.dataset/animation.json').read_text())
 render, sample = namespace['render'], namespace['sample']
-fontfile = '/usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc'
+fontfile = next((p for p in [
+    '/usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc',
+    '/System/Library/Fonts/PingFang.ttc',
+    '/System/Library/Fonts/AppleSDGothicNeo.ttc',
+] if Path(p).exists()), None)
+if fontfile is None:
+    raise RuntimeError('A Chinese-capable review font is required')
 font = ImageFont.truetype(fontfile, 17)
 small = ImageFont.truetype(fontfile, 12)
 large = ImageFont.truetype(fontfile, 23)
