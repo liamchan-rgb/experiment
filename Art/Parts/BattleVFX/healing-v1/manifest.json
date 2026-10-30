@@ -28,7 +28,7 @@
     "strong": "9+ HP",
     "zero": "no effect"
   },
-  "anchor": "full frame canvas bottom-center aligned to recipient feet; keep source canvas and alpha intact",
+  "anchor": "micro: full-frame bottom-center at recipient feet; standard: original ground ellipse at y=0.90 aligned to recipient feet; strong: original ground ellipse at y=0.66 aligned to recipient feet; keep source canvas and alpha intact",
   "environmentLight": "mint-green body spill and ground pool use the same one-second recovery window; tier brightness scales micro < standard < strong",
   "review": "Art/Review/Battle/healing-effects-v1/healing-tiers-normal.gif"
 }

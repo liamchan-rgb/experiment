@@ -219,7 +219,7 @@ final class MeadowBattleEffectsView: UIView {
             case .standard: size=CGSize(width:248,height:207)
             case .strong: size=CGSize(width:258,height:258)
             }
-            let frame=CGRect(x:heroFoot.x-size.width*unit/2,y:heroFoot.y-size.height*unit,width:size.width*unit,height:size.height*unit)
+            let frame=CGRect(x:heroFoot.x-size.width*unit/2,y:heroFoot.y-size.height*unit*CGFloat(tier.canvasGroundAnchorY),width:size.width*unit,height:size.height*unit)
             let frames=MeadowBattleVFXAssets.healingFrames(for:tier),mix=CGFloat(blend.upperWeight)
             if frames.count==HealingEffectTier.frameCount {
                 let opacity=CGFloat(tier.artOpacity)
@@ -316,7 +316,7 @@ final class MeadowBattleAttachedSkillsView: UIView {
             case .some(.strong): size=CGSize(width:258,height:258)
             case .none: size = .zero
             }
-            healing.frame=CGRect(x:foot.x-size.width*unit/2,y:foot.y-size.height*unit,width:size.width*unit,height:size.height*unit)
+            healing.frame=CGRect(x:foot.x-size.width*unit/2,y:foot.y-size.height*unit*CGFloat(recoveryTier?.canvasGroundAnchorY ?? 1),width:size.width*unit,height:size.height*unit)
             healing.update(tier:recoveryTier,age:age)
         }
     }

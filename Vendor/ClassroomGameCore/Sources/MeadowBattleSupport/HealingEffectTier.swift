@@ -47,6 +47,17 @@ public enum HealingEffectTier: String, CaseIterable, Codable, Equatable {
     }
 
     /// Keeps authored white-green cores readable over the actor sprite.
+    /// Vertical anchor measured from the top of the original cell.
+    /// The strong variant's ellipse is authored near y=0.66, so that ring
+    /// registers to the ground while its branches rise over the recipient.
+    public var canvasGroundAnchorY: Double {
+        switch self {
+        case .micro: return 1.0
+        case .standard: return 0.90
+        case .strong: return 0.66
+        }
+    }
+
     public var artOpacity: Double {
         switch self {
         case .micro: return 0.92

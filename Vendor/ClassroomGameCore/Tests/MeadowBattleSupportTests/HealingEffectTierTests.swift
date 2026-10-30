@@ -33,6 +33,12 @@ final class HealingEffectTierTests: XCTestCase {
         XCTAssertNil(tier.frameBlend(at: -.01))
     }
 
+    func testStrongTierPlacesItsAuthoredGroundEllipseAtRecipientFeet() {
+        XCTAssertEqual(HealingEffectTier.micro.canvasGroundAnchorY, 1.0, accuracy: 1e-9)
+        XCTAssertEqual(HealingEffectTier.standard.canvasGroundAnchorY, 0.90, accuracy: 1e-9)
+        XCTAssertEqual(HealingEffectTier.strong.canvasGroundAnchorY, 0.66, accuracy: 1e-9)
+    }
+
     func testLargerTierProducesMoreEnvironmentalLightAndAllTiersFadeOut() {
         let micro = HealingEffectTier.micro.lightEnvelope(at: 0.30)
         let standard = HealingEffectTier.standard.lightEnvelope(at: 0.30)

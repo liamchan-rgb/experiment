@@ -66,7 +66,8 @@ def attachments(f,u,row,scene_row):
   position=age*20;lower=min(19,int(position));upper=min(19,lower+1);t=position-lower;mix=t*t*(3-2*t)
   size={'micro':(208*hs,208*hs),'standard':(248*hs,207*hs),'strong':(258*hs,258*hs)}[tier]
   opacity={'micro':.92,'standard':.48,'strong':.62}[tier]
-  center=(foot[0],foot[1]-size[1]/2)
+  anchor={'micro':1.0,'standard':.90,'strong':.66}[tier]
+  center=(foot[0],foot[1]-(anchor-.5)*size[1])
   compose(f,healing[tier][lower],center,size,opacity*(1-mix),True)
   if upper!=lower and mix>0:compose(f,healing[tier][upper],center,size,opacity*mix,True)
  alpha=row['shieldOpacity'];compose(f,assets['RoundBarrier'],(cx,cy),(240*hs,240*hs),alpha)
