@@ -1,0 +1,37 @@
+{
+  "scope": "actual GameCore healing receipts and production Swift fields, with source frames and original battle art composited offline; not UIKit, simulator or device capture",
+  "tierPolicy": "actual HP gained after max-health clamping: 1-3 micro, 4-8 standard, 9+ strong, 0 none",
+  "animations": {
+    "healing-micro": {
+      "frames": 118,
+      "frameDurationMs": 20,
+      "durationMs": 2360,
+      "peakPreview": "same full-scene composition as combined GIF"
+    },
+    "healing-standard": {
+      "frames": 118,
+      "frameDurationMs": 20,
+      "durationMs": 2360,
+      "peakPreview": "same full-scene composition as combined GIF"
+    },
+    "healing-strong": {
+      "frames": 118,
+      "frameDurationMs": 20,
+      "durationMs": 2360,
+      "peakPreview": "same full-scene composition as combined GIF"
+    },
+    "combined": {
+      "file": "healing-tiers-normal.gif",
+      "frames": 354,
+      "frameDurationMs": 20,
+      "durationMs": 7080,
+      "bytes": 14876230,
+      "dimensions": [
+        650,
+        566
+      ],
+      "scale": 0.65
+    }
+  },
+  "newArtApproval": null
+}

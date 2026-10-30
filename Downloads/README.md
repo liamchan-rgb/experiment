@@ -1,3 +1,17 @@
+## build69 · 三档治疗特效接入 · 1.6.43
+
+[直接下载 MeadowJourney-b69.ipa](https://raw.githubusercontent.com/liamchan-rgb/experiment/fix/build33-face-grounding-camera/Downloads/MeadowJourney-b69.ipa) · [正常速度全场治疗 GIF](https://raw.githubusercontent.com/liamchan-rgb/experiment/fix/build33-face-grounding-camera/Art/Review/Battle/healing-effects-v1/healing-tiers-normal.gif) · [三档峰值对照](https://raw.githubusercontent.com/liamchan-rgb/experiment/fix/build33-face-grounding-camera/Art/Review/Battle/healing-effects-v1/healing-three-tiers-peak-overview.jpg) · [包校验记录](MeadowJourney-build69.json)
+
+接入用户更新的微量、标准、强效三套治疗素材。按最大生命值截断后的实际恢复量选档：1–3 为微量、4–8 为标准、9 以上为强效；实际恢复 0 不显示治疗特效。每档 20 帧素材按原透明画布播放，在 60Hz 显示时钟上交叉淡化；人物绿光与地面光照随档位增强，三个图集各用对应的脚底锚点。治疗回执通过全队／战斗演练视图显示，预热放在后台。
+
+全场 GIF 为 354 帧×20ms＝7.08 秒，依次展示实际恢复 3、6、11 HP 的三档战斗状态；每帧均为原速。它由 GameCore 实际回执、生产动画字段和原战斗素材离线合成，并非 UIKit、模拟器或实机录屏。素材资源校验、治疗分档／锚点／60Hz 淡化测试及 168 项纯 Swift 测试通过；build69 设备 Release 归档成功。IPA 51,813,621 字节，SHA-256 `b94dac28fa4d3ed3ea3b4a73eb30c5610d7a257984889e9d085ac9c6e86fbbde`。未运行模拟器或实机；安装和实机效果由用户验收。
+
+[治疗特效审核文件与说明](../Art/Review/Battle/healing-effects-v1/README.md) · [原始素材包与图集规范](../Art/Parts/BattleVFX/healing-v1/README.md)
+
+下一步两项：龙鳞守护的圆形护盾／破碎特效；龙之号令的增益反馈。
+
+---
+
 ## build68 · 龙焰特效 V2 · 1.6.42
 
 [直接下载 MeadowJourney-b68.ipa](https://raw.githubusercontent.com/liamchan-rgb/experiment/fix/build33-face-grounding-camera/Downloads/MeadowJourney-b68.ipa) · [正常速度全场战斗 GIF](https://raw.githubusercontent.com/liamchan-rgb/experiment/fix/build33-face-grounding-camera/Art/Review/Battle/dragon-flame-demo-v1/dragon-flame-normal.gif) · [包校验记录](MeadowJourney-build68.json)

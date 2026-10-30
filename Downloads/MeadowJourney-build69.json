@@ -1,0 +1,84 @@
+{
+  "version": "1.6.43",
+  "build": 69,
+  "bundleIdentifier": "com.liamchan.experiment.meadow",
+  "date": "2026-10-30",
+  "sourceCommit": "f4e7365139fa1fda04f519bfbbdc3b3e02fef544",
+  "workflowHead": "f4e7365139fa1fda04f519bfbbdc3b3e02fef544",
+  "workflowRun": 40997932520,
+  "workflowURL": "https://github.com/liamchan-rgb/experiment/actions/runs/40997932520",
+  "ipaFilename": "MeadowJourney-b69.ipa",
+  "ipaBytes": 51813621,
+  "ipaSHA256": "b94dac28fa4d3ed3ea3b4a73eb30c5610d7a257984889e9d085ac9c6e86fbbde",
+  "checks": {
+    "workflowSucceeded": true,
+    "deviceReleaseArchiveSucceeded": true,
+    "unsignedForSideStore": true,
+    "outerArtifactCRC": true,
+    "ipaCRC": true,
+    "arm64IOSExecutable": true,
+    "iPhoneOSPlatform": true,
+    "versionAndBuildMatch": true,
+    "assetCatalogCompiled": true,
+    "healingSourceAtlasesPassCRCAndRGBA": true,
+    "healing20FramesPerTierPixelMatchAppAssets": true,
+    "healingActualHPGainTiering": true,
+    "healing60HzCrossfadeAndGroundAnchorsTests": true,
+    "pureSwiftTests168Passed": true,
+    "simulatorTestPerformed": false,
+    "physicalDeviceTestPerformed": false
+  },
+  "healingReview": {
+    "gif": "Art/Review/Battle/healing-effects-v1/healing-tiers-normal.gif",
+    "gifBytes": 14876230,
+    "gifSHA256": "dbd9e4b5e0e6deb4495fc9d4fbef2ed0828c9f605a272fcdc608b872202c2127",
+    "overview": "Art/Review/Battle/healing-effects-v1/healing-three-tiers-peak-overview.jpg",
+    "overviewBytes": 420263,
+    "overviewSHA256": "cd691ff385bd4d4a6f30d9c1b2da61f0af8587fbd771a56011773465fe0aebdc",
+    "dimensions": [
+      650,
+      566
+    ],
+    "frames": 354,
+    "frameDurationMs": 20,
+    "durationMs": 7080,
+    "scenarios": [
+      {
+        "tier": "micro",
+        "actualHPGained": 3,
+        "frames": 118
+      },
+      {
+        "tier": "standard",
+        "actualHPGained": 6,
+        "frames": 118
+      },
+      {
+        "tier": "strong",
+        "actualHPGained": 11,
+        "frames": 118
+      }
+    ],
+    "scope": "Offline composition from actual GameCore healing receipts, production Swift fields and source battle art; not UIKit or device capture."
+  },
+  "directDownloadURL": "https://raw.githubusercontent.com/liamchan-rgb/experiment/fix/build33-face-grounding-camera/Downloads/MeadowJourney-b69.ipa",
+  "reviewGIFURL": "https://raw.githubusercontent.com/liamchan-rgb/experiment/fix/build33-face-grounding-camera/Art/Review/Battle/healing-effects-v1/healing-tiers-normal.gif",
+  "actionArtifacts": [
+    {
+      "name": "MeadowJourney-shadow-lab-IPA",
+      "id": 12952347712,
+      "size_bytes": 48499440
+    },
+    {
+      "name": "healing-effects-review-40997932520-1",
+      "id": 12952054849,
+      "size_bytes": 15013324
+    }
+  ],
+  "userInstallationPending": true,
+  "userRuntimeArtApproval": null,
+  "change": "Integrates the supplied micro, standard and strong healing atlases into battle. The tier follows actual HP gained after max-HP clamping (1-3, 4-8, 9+); zero gain has no healing VFX. Authored 20-frame sequences crossfade at 60 Hz, share the receiver ground anchor, and add tier-scaled green body/ground light.",
+  "deliveryCommit": null,
+  "publicRawGET": null,
+  "reviewGIFRawGET": null
+}
