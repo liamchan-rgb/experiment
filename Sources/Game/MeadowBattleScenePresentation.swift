@@ -78,9 +78,9 @@ enum MeadowBattleVFXAssets {
     static let mote = UIImage(named: "BattleVFXMote")!
     static let body = frames("BattleVFXDeathBody60", width: 384, height: 256,count:48)
     static let wind = frames("BattleVFXDeathWind60", width: 448, height: 320,count:116)
-    static let healingMicro = frames("BattleVFXHealingMicroSheet", width: 280, height: 280,count:20)
-    static let healingStandard = frames("BattleVFXHealingStandardSheet", width: 614, height: 512,count:20)
-    static let healingStrong = frames("BattleVFXHealingStrongSheet", width: 512, height: 512,count:20)
+    static let healingMicro = frames("BattleVFXHealingMicroSheet", width: 280, height: 280, columns: 5, count: 20)
+    static let healingStandard = frames("BattleVFXHealingStandardSheet", width: 614, height: 512, columns: 5, count: 20)
+    static let healingStrong = frames("BattleVFXHealingStrongSheet", width: 512, height: 512, columns: 5, count: 20)
     static func healingFrames(for tier: HealingEffectTier) -> [UIImage] {
         switch tier {
         case .micro: return healingMicro
@@ -88,10 +88,12 @@ enum MeadowBattleVFXAssets {
         case .strong: return healingStrong
         }
     }
-    private static func frames(_ name: String, width: Int, height: Int, count: Int) -> [UIImage] {
+    private static func frames(_ name: String, width: Int, height: Int, columns: Int = 8, count: Int) -> [UIImage] {
         guard let sheet = UIImage(named: name)?.preparingForDisplay()?.cgImage else { fatalError("Missing battle VFX atlas") }
         return (0..<count).map { i in
-            UIImage(cgImage: sheet.cropping(to: CGRect(x: (i % 8) * width, y: (i / 8) * height, width: width, height: height))!)
+            let rect = CGRect(x: (i % columns) * width, y: (i / columns) * height, width: width, height: height)
+            guard let frame = sheet.cropping(to: rect) else { fatalError("Invalid frame grid for \(name) at index \(i)") }
+            return UIImage(cgImage: frame)
         }
     }
     static func prewarm() { DispatchQueue.global(qos:.userInitiated).async { _ = body; _ = wind } }
