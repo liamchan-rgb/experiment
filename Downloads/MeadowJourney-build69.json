@@ -78,7 +78,27 @@
   "userInstallationPending": true,
   "userRuntimeArtApproval": null,
   "change": "Integrates the supplied micro, standard and strong healing atlases into battle. The tier follows actual HP gained after max-HP clamping (1-3, 4-8, 9+); zero gain has no healing VFX. Authored 20-frame sequences crossfade at 60 Hz, share the receiver ground anchor, and add tier-scaled green body/ground light.",
-  "deliveryCommit": null,
-  "publicRawGET": null,
-  "reviewGIFRawGET": null
+  "deliveryCommit": "3176b292861189dd61687bcdd553fa1422e930c0",
+  "publicRawGET": {
+    "status": 200,
+    "bytes": 51813621,
+    "sha256": "b94dac28fa4d3ed3ea3b4a73eb30c5610d7a257984889e9d085ac9c6e86fbbde",
+    "matchesLocal": true
+  },
+  "reviewGIFRawGET": {
+    "status": 200,
+    "bytes": 14876230,
+    "sha256": "dbd9e4b5e0e6deb4495fc9d4fbef2ed0828c9f605a272fcdc608b872202c2127",
+    "matchesLocal": true,
+    "frameCount": 354,
+    "allFrameDurationsMs": [
+      20
+    ]
+  },
+  "overviewRawGET": {
+    "status": 200,
+    "bytes": 420263,
+    "sha256": "cd691ff385bd4d4a6f30d9c1b2da61f0af8587fbd771a56011773465fe0aebdc",
+    "matchesLocal": true
+  }
 }
