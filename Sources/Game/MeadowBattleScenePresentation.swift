@@ -96,7 +96,12 @@ enum MeadowBattleVFXAssets {
             return UIImage(cgImage: frame)
         }
     }
-    static func prewarm() { DispatchQueue.global(qos:.userInitiated).async { _ = body; _ = wind } }
+    static func prewarm() {
+        DispatchQueue.global(qos:.userInitiated).async {
+            _ = body; _ = wind
+            _ = healingMicro; _ = healingStandard; _ = healingStrong
+        }
+    }
 }
 
 /// Draws the complete authored frame canvas, crossfading adjacent 20 FPS art
