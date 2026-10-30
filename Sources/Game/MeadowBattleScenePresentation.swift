@@ -81,6 +81,13 @@ enum MeadowBattleVFXAssets {
     static let healingMicro = frames("BattleVFXHealingMicroSheet", width: 280, height: 280, columns: 5, count: 20)
     static let healingStandard = frames("BattleVFXHealingStandardSheet", width: 614, height: 512, columns: 5, count: 20)
     static let healingStrong = frames("BattleVFXHealingStrongSheet", width: 512, height: 512, columns: 5, count: 20)
+    static let runeSlashAttack = namedFrames("MeadowRuneSlashAttack", count: 20)
+    static let runeWardCast = namedFrames("MeadowRuneWardCast", count: 20)
+    static func effectImage(named name:String)->UIImage? {
+        if name.hasPrefix("MeadowRuneSlashAttack"),let index=Int(name.dropFirst("MeadowRuneSlashAttack".count)),(1...runeSlashAttack.count).contains(index) { return runeSlashAttack[index-1] }
+        if name.hasPrefix("MeadowRuneWardCast"),let index=Int(name.dropFirst("MeadowRuneWardCast".count)),(1...runeWardCast.count).contains(index) { return runeWardCast[index-1] }
+        return UIImage(named:name)
+    }
     static func healingFrames(for tier: HealingEffectTier) -> [UIImage] {
         switch tier {
         case .micro: return healingMicro
@@ -96,10 +103,19 @@ enum MeadowBattleVFXAssets {
             return UIImage(cgImage: frame)
         }
     }
+    private static func namedFrames(_ prefix:String,count:Int)->[UIImage] {
+        let frames=(1...count).map { index -> UIImage in
+            let name=String(format:"%@%02d",prefix,index)
+            guard let image=UIImage(named:name) else { fatalError("Missing battle VFX frame \(name)") }
+            return image
+        }
+        return frames
+    }
     static func prewarm() {
         DispatchQueue.global(qos:.userInitiated).async {
             _ = body; _ = wind
             _ = healingMicro; _ = healingStandard; _ = healingStrong
+            _ = runeSlashAttack; _ = runeWardCast
         }
     }
 }

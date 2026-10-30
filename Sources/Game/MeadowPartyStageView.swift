@@ -429,6 +429,7 @@ enum MeadowRuneEffectPainter {
         switch name {
         case "violet":return UIColor(red:0.36,green:0.25,blue:1,alpha:1)
         case "cyan":return UIColor(red:0.12,green:0.75,blue:1,alpha:1)
+        case "blue":return UIColor(red:0.14,green:0.38,blue:1,alpha:1)
         case "gold":return UIColor(red:0.99,green:0.78,blue:0.27,alpha:1)
         case "fireRed":return UIColor(red:1.00,green:0.18,blue:0.08,alpha:1)
         case "fireOrange":return UIColor(red:1.00,green:0.39,blue:0.10,alpha:1)
@@ -456,9 +457,9 @@ enum MeadowRuneEffectPainter {
         }
         for v in q.glows { glow(v.point,v.rx,v.ry,v.alpha,v.color) }
         for layer in q.spriteLayers {
-            guard let image=UIImage(named:layer.asset),layer.alpha>0 else { continue }
+            guard let image=MeadowBattleVFXAssets.effectImage(named:layer.asset),layer.alpha>0 else { continue }
             let size=layer.size,center=layer.center
-            ctx.saveGState();ctx.interpolationQuality = .high
+            ctx.saveGState();ctx.interpolationQuality = .none
             image.draw(in:CGRect(x:center.x-size/2,y:center.y-size/2,width:size,height:size),blendMode:.plusLighter,alpha:CGFloat(layer.alpha*0.92))
             ctx.restoreGState()
         }

@@ -15,6 +15,51 @@ public struct RuneRecipient:Codable,Equatable { public let unitID:String;public 
 
 /// Catalog scopes, rather than the clicked target, own each effect channel.
 public enum SpellbladeEffects {
+    private static let runeSlashDurations:[Double]=[0.040,0.040,0.045,0.045,0.045,0.040,0.035,0.035,0.035,0.045,0.050,0.040,0.045,0.045,0.050,0.055,0.055,0.060,0.070,0.080]
+    private static let runeWardDurations:[Double]=[0.100,0.070,0.070,0.070,0.070,0.070,0.070,0.060,0.060,0.080,0.060,0.050,0.090,0.070,0.070,0.070,0.070,0.070,0.070,0.100]
+
+    private static func authoredFrames(prefix:String,elapsed:Double,durations:[Double],center:PartyPoint,size:Double)->[BattleEffectSpriteLayer] {
+        guard elapsed>=0,elapsed<durations.reduce(0,+) else { return [] }
+        var local=elapsed,index=0
+        while index<durations.count-1 && local>=durations[index]-1e-9 { local=max(0,local-durations[index]);index+=1 }
+        let next=min(durations.count-1,index+1),progress=PartyVisual.smooth(local/durations[index])
+        let currentAsset=prefix+String(format:"%02d",index+1),nextAsset=prefix+String(format:"%02d",next+1)
+        if next==index || progress<0.001 { return [.init(asset:currentAsset,center:center,size:size,alpha:1)] }
+        if progress>0.999 { return [.init(asset:nextAsset,center:center,size:size,alpha:1)] }
+        return [
+            .init(asset:currentAsset,center:center,size:size,alpha:1-progress),
+            .init(asset:nextAsset,center:center,size:size,alpha:progress)
+        ]
+    }
+
+    /// Impact debris stays tied to the true receipt and arcs down to the ground.
+    private static func runeSlashImpact(age:Double,hit:Double,at:PartyPoint,foot:PartyPoint)->([RuneMote],Double) {
+        let elapsed=age-hit
+        guard elapsed>=0,elapsed<0.95 else { return ([],0) }
+        let gravity=310.0,groundY=foot.y-5.0
+        let colors=["white","cyan","blue","gold","cyan","white"]
+        var motes:[RuneMote]=[]
+        for i in 0..<32 {
+            let delay=i<12 ? 0.0:Double(i%5)*0.018,local=elapsed-delay,life=0.48+Double(i%5)*0.085
+            guard local>=0,local<life else { continue }
+            let angle=Double(i)*2.399963229728653,speed=72.0+Double((i*7)%6)*16.0
+            let start=PartyPoint(at.x+cos(angle)*5,at.y+sin(angle)*5)
+            let vx=cos(angle)*speed+12.0,vy = -45.0+Double((i*11)%7)*22.0
+            let gap=max(1,groundY-start.y),impactTime=(-vy+sqrt(vy*vy+2*gravity*gap))/gravity
+            let x=start.x+vx*local
+            var y=start.y+vy*local+0.5*gravity*local*local,groundAge:Double?=nil
+            let groundX=start.x+vx*impactTime
+            if local>=impactTime {
+                let bounce=local-impactTime
+                groundAge=bounce
+                y=bounce<0.18 ? groundY-10.0*sin(Double.pi*bounce/0.18):groundY
+            }
+            let fade=1-PartyVisual.smooth(max(0,(local-life*0.30)/(life*0.70)))
+            motes.append(.init(id:900+i,point:PartyPoint(x,y),size:i%7==0 ? 9:i%3==0 ? 6:4,angle:angle+local*3.4,alpha:fade,color:colors[i%colors.count],groundAge:groundAge,ground:PartyPoint(groundX,groundY)))
+        }
+        return (motes,1-PartyVisual.smooth(elapsed/0.38))
+    }
+
     public static func recipients(_ intent:PartyIntent,catalog:GameCatalog)->[RuneRecipient] {
         guard (intent.action.isRune || intent.action == .dragonFlame),let skill=try? catalog.skill(intent.action.rawValue) else { return [] }
         var values:[String:RuneRecipient]=[:]
@@ -41,23 +86,27 @@ public enum SpellbladeEffects {
         guard action.isRune,let actorFoot=PartyVisual.feet[actor],let targetFoot=PartyVisual.feet[target] else { return result }
         let hit=action.impact,at=PartyVisual.hitPoint(target:target,weaponID:weaponID),source=PartyPoint(actorFoot.x+42,actorFoot.y-73)
         if action == .runeSlash {
-            let frame:Int?
-            switch age {
-            case ..<0.14:frame=0
-            case ..<0.31:frame=1
-            case ..<0.53:frame=2
-            case ..<1.048:frame=3
-            case ..<1.338:frame=4 // impact burst begins on the existing 1.048s receipt
-            case ..<1.628:frame=5
-            case ..<1.978:frame=6
-            case ..<2.388:frame=7
-            default:frame=nil
+            // Frame 010 begins exactly at the authoritative 1.048s damage receipt.
+            // Its authored burst center is offset inside the 256px canvas, so
+            // shift the canvas to land the white core on the struck body part.
+            let hitCoreOffset=PartyPoint(52,20),canvasCenter=PartyPoint(at.x-hitCoreOffset.x,at.y-hitCoreOffset.y)
+            let onset=hit-runeSlashDurations.prefix(10).reduce(0,+)
+            result.spriteLayers=authoredFrames(prefix:"MeadowRuneSlashAttack",elapsed:age-onset,durations:runeSlashDurations,center:canvasCenter,size:256)
+            let (debris,flash)=runeSlashImpact(age:age,hit:hit,at:at,foot:targetFoot)
+            result.motes=debris
+            if flash>0.001 {
+                result.glows.append(.init(point:at,rx:112,ry:84,alpha:flash*0.62,color:"cyan"))
+                result.glows.append(.init(point:PartyPoint(targetFoot.x,targetFoot.y-4),rx:120,ry:21,alpha:flash*0.50,color:"gold"))
             }
-            guard let frame else { return result }
-            result.spriteFrame=frame;result.spriteCenter=PartyPoint(at.x,at.y-32);result.spriteSize=256
-            result.spriteAlpha=frame==7 ? 1-PartyVisual.smooth((age-1.978)/0.41):1
-            let impact=PartyVisual.pulse(age,hit-0.045,hit+0.025,hit+0.34)
-            if impact>0.001 { result.glows.append(.init(point:targetFoot,rx:92,ry:22,alpha:impact*0.42,color:"cyan")) }
+            return result
+        }
+        if action == .runeWard {
+            let points=recipients.compactMap { PartyVisual.feet[$0.unitID] }
+            let node=points.isEmpty ? targetFoot:PartyPoint(points.map(\.x).reduce(0,+)/Double(points.count),points.map(\.y).reduce(0,+)/Double(points.count))
+            let center=PartyPoint(node.x,node.y-65)
+            result.spriteLayers=authoredFrames(prefix:"MeadowRuneWardCast",elapsed:age,durations:runeWardDurations,center:center,size:270)
+            let glow=PartyVisual.pulse(age,0.12,0.84,1.50)
+            if glow>0.001 { result.glows.append(.init(point:center,rx:142,ry:112,alpha:glow*0.22,color:"cyan")) }
             return result
         }
         func stroke(_ points:[PartyPoint],_ width:Double,_ alpha:Double,_ color:String) { if alpha>0.00001 { result.strokes.append(.init(points:points,width:width,alpha:min(1,alpha),color:color)) } }
@@ -80,21 +129,16 @@ public enum SpellbladeEffects {
                 rune(.init(p.x+cos(a)*radius*0.74,p.y+sin(a)*radius*0.65),9,a+Double.pi/2,alpha,color,i)
             }
         }
-        let isWard=action == .runeWard,color=isWard ? "cyan":"gold"
+        let color="gold"
         for (index,v) in recipients.enumerated() {
                 guard let foot=PartyVisual.feet[v.unitID] else { continue }
                 let chest=PartyPoint(foot.x+5,foot.y-69),build=PartyVisual.smooth(age/hit)
                 let opacity=PartyVisual.smooth(age/0.25)*(1-PartyVisual.smooth((age-hit-0.18)/0.85))
-                let radius=(isWard ? 42.0:33.0)+(isWard ? 20.0:17.0)*build
+                let radius=33.0+17.0*build
                 seal(chest,radius,-age*0.75+Double(index)*0.4,opacity*0.68,color)
-                if isWard {
-                    let diamond=[PartyPoint(chest.x,chest.y-radius*0.8),.init(chest.x+radius*0.63,chest.y),.init(chest.x,chest.y+radius*0.8),.init(chest.x-radius*0.63,chest.y),.init(chest.x,chest.y-radius*0.8)]
-                    stroke(diamond,2.2,opacity*0.65,"gold")
-                } else {
-                    for sign in [-1.0,1.0] {
-                        let rise=PartyVisual.smooth((age-0.12)/0.74),p=PartyPoint(chest.x+sign*(48-28*rise),chest.y+26-63*rise)
-                        rune(p,19,-sign*age*0.5,opacity,"gold",2)
-                    }
+                for sign in [-1.0,1.0] {
+                    let rise=PartyVisual.smooth((age-0.12)/0.74),p=PartyPoint(chest.x+sign*(48-28*rise),chest.y+26-63*rise)
+                    rune(p,19,-sign*age*0.5,opacity,"gold",2)
                 }
                 glow(chest,72,100,opacity*0.16,color)
                 let contact=PartyVisual.pulse(age,hit,hit+0.06,hit+0.70)
@@ -106,7 +150,7 @@ public enum SpellbladeEffects {
                 for i in 0..<22 {
                     let t=age-hit-Double(i%6)*0.025,life=1.15+Double(i%4)*0.09
                     guard t>0,t<life else { continue }
-                    let u=t/life,a=Double(i)*2.399+u*2.8,r=(isWard ? 42.0:30.0)*(1-u*0.35),p=PartyPoint(chest.x+cos(a)*r,chest.y+40-u*135)
+                    let u=t/life,a=Double(i)*2.399+u*2.8,r=30.0*(1-u*0.35),p=PartyPoint(chest.x+cos(a)*r,chest.y+40-u*135)
                     result.motes.append(.init(id:100+index*30+i,point:p,size:i%5==0 ? 8:4,angle:a,alpha:sin(Double.pi*u)*0.88,color:i%4==0 ? "gold":color,groundAge:nil,ground:foot))
                 }
         }

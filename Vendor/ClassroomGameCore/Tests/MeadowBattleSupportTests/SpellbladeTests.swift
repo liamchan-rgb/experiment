@@ -107,25 +107,37 @@ final class SpellbladeTests:XCTestCase {
             if id=="p1" { XCTAssertLessThan(p.x+width,PartyVisual.feet["p2"]!.x-88) }
         } } } }
     }
-    func testSlashSpriteSequenceHitsAtReceiptAndLungesWhileSupportsFade() throws {
+    func testRuneSpriteSequencesHitAtReceiptAreNodeScopedAndParticlesStrikeTheGround() throws {
         let p=try ready();let unit=p.state.units["p1"]!
         let slash=try XCTUnwrap(p.prepare(.runeSlash,target:"m1")),cues=SpellbladeEffects.recipients(slash,catalog:p.engine.catalog)
-        let phases:[(Double,Int)]=[(0,0),(0.14,1),(0.31,2),(0.53,3),(1.048,4),(1.338,5),(1.628,6),(1.978,7)]
-        XCTAssertTrue(SpellbladeEffects.sample(action:.runeSlash,age:-0.001,actor:"p1",target:"m1",recipients:cues).spriteFrame==nil)
-        for (age,frame) in phases {
-            let sample=SpellbladeEffects.sample(action:.runeSlash,age:age,actor:"p1",target:"m1",recipients:cues)
-            XCTAssertEqual(sample.spriteFrame,frame)
-            let center=try XCTUnwrap(sample.spriteCenter),hitPoint=PartyVisual.hitPoint(target:"m1",weaponID:slash.weaponID)
-            XCTAssertEqual(center.x,hitPoint.x);XCTAssertEqual(center.y,hitPoint.y-32)
-            XCTAssertEqual(sample.spriteSize,256)
-        }
+        let before=SpellbladeEffects.sample(action:.runeSlash,age:0.642,actor:"p1",target:"m1",recipients:cues)
+        XCTAssertTrue(before.spriteLayers.isEmpty)
+        let onset=SpellbladeEffects.sample(action:.runeSlash,age:0.643,actor:"p1",target:"m1",recipients:cues)
+        XCTAssertEqual(onset.spriteLayers.first?.asset,"MeadowRuneSlashAttack01")
         let hit=SpellbladeEffects.sample(action:.runeSlash,age:PartyAction.runeSlash.impact,actor:"p1",target:"m1",recipients:cues)
-        XCTAssertEqual(hit.spriteFrame,4);XCTAssertTrue((0...1).contains(hit.spriteAlpha ?? -1))
-        XCTAssertNil(SpellbladeEffects.sample(action:.runeSlash,age:2.388,actor:"p1",target:"m1",recipients:cues).spriteFrame)
+        XCTAssertEqual(hit.spriteLayers.map(\.asset),["MeadowRuneSlashAttack11"])
+        let hitPoint=PartyVisual.hitPoint(target:"m1",weaponID:slash.weaponID)
+        XCTAssertEqual(hit.spriteLayers[0].center.x,hitPoint.x-52);XCTAssertEqual(hit.spriteLayers[0].center.y,hitPoint.y-20)
+        XCTAssertEqual(hit.spriteLayers[0].size,256);XCTAssertEqual(hit.spriteLayers[0].alpha,1)
+        XCTAssertGreaterThan(hit.motes.count,0);XCTAssertTrue(hit.motes.contains{$0.color=="gold" || $0.color=="cyan"})
+        let debris=SpellbladeEffects.sample(action:.runeSlash,age:PartyAction.runeSlash.impact+0.5,actor:"p1",target:"m1",recipients:cues)
+        XCTAssertTrue(debris.motes.contains{$0.groundAge != nil})
+        XCTAssertTrue(debris.motes.allSatisfy{(0...1).contains($0.alpha) && $0.point.x.isFinite && $0.point.y.isFinite})
+        XCTAssertTrue(SpellbladeEffects.sample(action:.runeSlash,age:1.598,actor:"p1",target:"m1",recipients:cues).spriteLayers.isEmpty)
         XCTAssertEqual(PartyVisual.travel(slash,age:0).x,0)
         XCTAssertGreaterThan(PartyVisual.travel(slash,age:0.9).x,0)
         XCTAssertEqual(PartyVisual.travel(slash,age:PartyAction.runeSlash.duration).x,0)
         XCTAssertEqual(PartyVisual.pose(unit:unit,intent:slash,age:0,time:0).clip,"attack")
+        p.cancel()
+
+        let wardIntent=try XCTUnwrap(p.prepare(.runeWard,target:"p1")),wardRecipients=SpellbladeEffects.recipients(wardIntent,catalog:p.engine.catalog)
+        let wardStart=SpellbladeEffects.sample(action:.runeWard,age:0.001,actor:"p1",target:"p1",recipients:wardRecipients)
+        XCTAssertEqual(wardStart.spriteLayers.first?.asset,"MeadowRuneWardCast01")
+        XCTAssertTrue(wardStart.strokes.isEmpty && wardStart.motes.isEmpty)
+        let wardPeak=SpellbladeEffects.sample(action:.runeWard,age:0.831,actor:"p1",target:"p1",recipients:wardRecipients)
+        XCTAssertEqual(wardPeak.spriteLayers.first?.asset,"MeadowRuneWardCast13")
+        XCTAssertTrue(wardPeak.spriteLayers.count<=2);XCTAssertEqual(Set(wardPeak.spriteLayers.map(\.center).map { "\($0.x),\($0.y)" }).count,1)
+        XCTAssertTrue(SpellbladeEffects.sample(action:.runeWard,age:1.44,actor:"p1",target:"p1",recipients:wardRecipients).spriteLayers.isEmpty)
         p.cancel()
 
         for action in [PartyAction.runeWard,.battleRune] {
@@ -136,7 +148,7 @@ final class SpellbladeTests:XCTestCase {
                 for s in q.strokes { XCTAssertTrue((0...1).contains(s.alpha));XCTAssertTrue(s.points.allSatisfy{$0.x.isFinite && $0.y.isFinite}) }
                 for m in q.motes { XCTAssertTrue((0...1).contains(m.alpha));XCTAssertTrue(m.point.x.isFinite && m.point.y.isFinite);if m.groundAge != nil { XCTAssertLessThanOrEqual(m.point.y,m.ground.y+0.001) } }
             }
-            let final=SpellbladeEffects.sample(action:action,age:action.duration,actor:"p1",target:target,recipients:recipients);XCTAssertTrue(final.strokes.isEmpty && final.glows.isEmpty && final.motes.isEmpty)
+            let final=SpellbladeEffects.sample(action:action,age:action.duration,actor:"p1",target:target,recipients:recipients);XCTAssertTrue(final.strokes.isEmpty && final.glows.isEmpty && final.motes.isEmpty && final.spriteLayers.isEmpty)
             XCTAssertEqual(SpellbladeEffects.darkness(action,age:action.duration,from:0),0,accuracy:0.00001)
             XCTAssertEqual(PartyVisual.travel(i,age:0.9).x,0)
             let start=PartyVisual.pose(unit:unit,intent:i,age:0,time:0),end=PartyVisual.pose(unit:unit,intent:i,age:action.duration,time:action.duration)

@@ -33,7 +33,11 @@ for scenario in dict.fromkeys(r['scenario'] for r in rows):
  assert before['hover'] and not hit['hover'];assert all(d.get('value') is not None for d in group[50]['dice'])
  if scenario.startswith('runeSlash'):
   roll=next(d for d in hit['receiptDice'] if d['source']=='damage');assert roll['formula']=={'sides':12,'count':2,'flat':2}
-  assert hit['runes']['spriteFrame']==4 and hit['travel']['x']>0,'Impact sprite must coincide with the melee receipt'
+  layers=hit['runes'].get('spriteLayers',[])
+  assert any(v['asset']=='MeadowRuneSlashAttack11' for v in layers) and hit['travel']['x']>0,'Authored attack peak must coincide with the melee receipt'
+  assert hit['runes']['motes'] and hit['runes']['glows'],'Hit particles and contact light must start with the receipt'
+  peak=next(v for v in layers if v['asset']=='MeadowRuneSlashAttack11')
+  point=hit['hitPoints']['m1'];assert abs(peak['center']['x']-(point['x']-52))<1e-6 and abs(peak['center']['y']-(point['y']-20))<1e-6
   assert len(roll['values'])==2;bonus=2+(3 if scenario.endswith('buffed') else 0)
   assert a['m1']['hp']-b['m1']['hp']==min(a['m1']['hp'],roll['total']+bonus)
   assert b['p1']['hp']-a['p1']['hp']==4 and b['p1']['shield']==4
@@ -42,6 +46,7 @@ for scenario in dict.fromkeys(r['scenario'] for r in rows):
  elif scenario=='runeWard':
   assert not hit['receiptDice'];assert b['p1']['hp']-a['p1']['hp']==8 and b['p2']['hp']==18
   assert b['p1']['shield']==b['p2']['shield']==6
+  assert hit['runes'].get('spriteLayers') and not hit['runes']['strokes'],'Rune Ward cast art plays once at node level; received shield/healing stay in their existing feedback channels'
  else:
   assert not hit['receiptDice'];assert b['p1']['buff']==b['p2']['buff']==3
   assert b['p1']['shield']==b['p2']['shield']==4 and b['p1']['buffRounds']==b['p2']['buffRounds']==2
