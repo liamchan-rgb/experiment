@@ -11,7 +11,11 @@ import ClassroomGameCore
         if CommandLine.arguments.contains("--accessory-only") { try exportAccessories(out:out);return }
         if CommandLine.arguments.contains("--bow-only") { try exportBow(out:out);return }
         var rows:[[String:Any]]=[],requests:[[String:Any]]=[]
-        for scenario in ["support","rally","items","revive","combat","healing-micro","healing-standard","healing-strong"] {
+        let healingOnly = CommandLine.arguments.contains("--healing-only")
+        let scenarios = healingOnly
+            ? ["healing-micro", "healing-standard", "healing-strong"]
+            : ["support", "rally", "items", "revive", "combat", "healing-micro", "healing-standard", "healing-strong"]
+        for scenario in scenarios {
             let model=try PartyEncounter(seed:17,sessionID:"review-"+scenario)
             if scenario=="rally" { let i=model.prepare(.support,target:"p1")!;_ = try model.commit(i.id) }
             if scenario=="revive" { try model.engine.apply(.editResources(unit:"p1",value:ResourcePatch(health:0))) }
@@ -113,24 +117,24 @@ import ClassroomGameCore
         }
         try JSONSerialization.data(withJSONObject:rows,options:[.sortedKeys]).write(to:out.appendingPathComponent("party-frames.json"))
         try JSONSerialization.data(withJSONObject:requests,options:[.sortedKeys]).write(to:out.appendingPathComponent("legacy-light-requests.json"))
-        let attachments=requests.map { r -> [String:Any] in
-            let particles=(r["emitters"] as? [[String:Any]] ?? []).flatMap { e -> [[String:Any]] in
-                MeadowBattleLightField.sample(MeadowBattleLightKind(rawValue:e["kind"] as! String)!,age:e["age"] as! Double,originX:e["x"] as! Double,originY:e["y"] as! Double,groundY:e["floor"] as! Double).map { p in
-                    ["id":p.id,"x":p.x,"y":p.y,"angle":p.angle,"size":p.size,"alpha":p.alpha,"cyan":p.cyan,"groundX":p.groundX,"groundY":p.groundY,"groundAge":p.groundAge as Any? ?? NSNull(),"bounces":p.bounces]
-                }
-            }
-            let age=r["recoveryAge"] as? Double ?? -1
-            let motes=MeadowBattleRecoveryField.sample(age).map { ["id":Double($0.id),"x":$0.x,"y":$0.y,"size":$0.size,"alpha":$0.alpha] }
-            let time=r["time"] as? Double ?? 0
-            let alpha=MeadowBattleVisualMotion.shieldOpacity(shield:r["shield"] as? Int ?? 0,time:time,formation:r["formation"] as? Double,birth:r["birth"] as? Double,contact:r["contact"] as? Double,broken:r["broken"] as? Double)
-            let wisps=(0..<2).map { i -> [String:Double] in
-                let p=MeadowBattleVisualMotion.wisp(age,index:i)
-                return ["x":p.x,"y":p.y,"rotation":p.rotation,"scaleX":p.scaleX,"alpha":p.alpha]
-            }
-            let ribbons=(0..<2).map { MeadowBattleRecoveryField.ribbon(age,strand:$0).map { ["x":$0.x,"y":$0.y,"depth":$0.depth,"alpha":$0.alpha] } }
-            return ["ribbons":ribbons,"shieldOpacity":alpha,"wisps":wisps,"kind":r["kind"]!,"frame":r["frame"]!,"particles":particles,"recovery":motes,"recoveryPower":MeadowBattleRecoveryField.pulse(age)]
+        // Healing review fixtures have no active shield or hit-particle layers.
+        // Keep only the inactive attachment defaults; treatment age and tier are
+        // already exported with each production frame above.
+        let attachments: [[String: Any]] = requests.map { request in
+            let kind = request["kind"] as? String ?? ""
+            let frame = request["frame"] as? Int ?? 0
+            return [
+                "kind": kind, "frame": frame, "shieldOpacity": 0.0,
+                "particles": [[String: Any]](), "wisps": [[String: Double]](),
+                "recovery": [[String: Double]]()
+            ]
         }
-        try JSONSerialization.data(withJSONObject:["frames":attachments,"scope":"actual production Swift light/shield fields for offline composition; not UIKit/device"],options:[.sortedKeys]).write(to:out.appendingPathComponent("legacy-attachment-samples.json"))
+        let attachmentDocument: [String: Any] = [
+            "frames": attachments,
+            "scope": "healing review; shield and hit-particle layers are inactive in these fixtures"
+        ]
+        try JSONSerialization.data(withJSONObject: attachmentDocument, options: [.sortedKeys])
+            .write(to: out.appendingPathComponent("legacy-attachment-samples.json"))
         try exportDice(out:out)
         try exportPoly(out:out)
         try exportBow(out:out)
