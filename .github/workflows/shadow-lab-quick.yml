@@ -136,6 +136,44 @@ jobs:
             build/MeadowJourney-shadow-lab.xcarchive build/MeadowJourney-shadow-lab.ipa \
             2>&1 | tee build/logs/package-ipa.log
 
+      - name: Split IPA into downloadable transfer parts
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          from pathlib import Path
+          source=Path('build/MeadowJourney-shadow-lab.ipa').read_bytes()
+          size=20*1024*1024
+          parts=[source[i:i+size] for i in range(0,len(source),size)]
+          assert len(parts)==3, f'Expected three transfer parts for this IPA; got {len(parts)} parts / {len(source)} bytes'
+          for index,part in enumerate(parts):
+              Path(f'build/MeadowJourney-shadow-lab.ipa.part-{index:02}').write_bytes(part)
+          print(f'Split {len(source)}-byte IPA into {len(parts)} parts, each <= {size} bytes')
+          PY
+
+      - name: Upload IPA transfer part 1
+        uses: actions/upload-artifact@v7
+        with:
+          name: MeadowJourney-shadow-lab-IPA-part-01
+          path: build/MeadowJourney-shadow-lab.ipa.part-00
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Upload IPA transfer part 2
+        uses: actions/upload-artifact@v7
+        with:
+          name: MeadowJourney-shadow-lab-IPA-part-02
+          path: build/MeadowJourney-shadow-lab.ipa.part-01
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Upload IPA transfer part 3
+        uses: actions/upload-artifact@v7
+        with:
+          name: MeadowJourney-shadow-lab-IPA-part-03
+          path: build/MeadowJourney-shadow-lab.ipa.part-02
+          if-no-files-found: error
+          retention-days: 30
+
       - name: Upload shadow lab IPA
         uses: actions/upload-artifact@v7
         with:
