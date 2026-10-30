@@ -1,0 +1,27 @@
+{
+  "fps": 60,
+  "bodyCount": 48,
+  "windCount": 116,
+  "columns": 8,
+  "bodyCell": [
+    384,
+    256
+  ],
+  "windCell": [
+    448,
+    320
+  ],
+  "windOffset": [
+    0,
+    -32
+  ],
+  "firstSampleSeconds": 0.012,
+  "durationSeconds": 1.9333333333333333,
+  "windCrop": "760-reference viewport clips at native x~448; only offscreen transparent tail margin removed",
+  "sameMonsterUVsAnd650Particles": true,
+  "bodyAlphaMonotonic": true,
+  "lastBodyAndWindEmpty": true,
+  "firstWindNonempty": true,
+  "decodedAtlasBytes": 87687168,
+  "artApproval": null
+}

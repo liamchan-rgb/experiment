@@ -1,0 +1,33 @@
+{
+  "initialStatuses": {
+    "greatSword": "已通过",
+    "legendaryStaff": "已通过",
+    "powerBadge": "已通过",
+    "actionRing": "已通过",
+    "greatSwordAction": "已通过",
+    "legendaryStaffAction": "已通过",
+    "leatherArmor": "待审核",
+    "runeArmor": "待审核",
+    "huntingBowGrip": "待审核"
+  },
+  "video": {
+    "width": 512,
+    "height": 560,
+    "duration": 3.8,
+    "time": 1.080133
+  },
+  "bodySceneVideoToggle": true,
+  "timePinAndReload": true,
+  "oldSceneFPSAndLinks": true,
+  "switchToArmorAndBack": true,
+  "exportImport": true,
+  "v6NotesAndArmorFeedbackMigrated": true,
+  "explicitlyApprovedScenesPassed": true,
+  "bowRepairRemainsPending": true,
+  "noHorizontalOverflowAt": [
+    390,
+    1024,
+    1440
+  ],
+  "pageErrors": []
+}

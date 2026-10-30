@@ -1,0 +1,10 @@
+{
+  "schemaVersion": "1.0.0",
+  "assets": [
+    {
+      "id": "p1-neutral-left-walk-r2-head-motion",
+      "manifest": "Art/Templates/P1-Neutral/left/walk-r2-head-motion/asset.json",
+      "label": "LEFT NECK-PIVOT HEAD MOTION"
+    }
+  ]
+}

@@ -50,6 +50,24 @@ jobs:
 
     steps:
       - uses: actions/checkout@v7
+        with:
+          # Device builds need production inputs, not the historical IPA and
+          # offline art-review archives, which made this checkout take 7 min.
+          sparse-checkout: |
+            .github
+            Art/Parts/BattleVFX/dragon-flame-v2
+            Art/Parts/BattleVFX/healing-v1
+            Art/Parts/BattleVFX/rune-slash-v2
+            Art/Parts/BattleVFX/rune-ward-v1
+            Art/Integration/Battle-effects-demo-v1
+            Art/Scenes/MeadowBattle/effects-v1
+            Art/Scenes/MeadowBattle/hero-combat-v2
+            Sources
+            Vendor
+            scripts
+            Tests
+            UITests
+            MeadowJourney.xcodeproj
 
       - name: Validate project and record Xcode details
         run: |
@@ -59,6 +77,46 @@ jobs:
           xcodebuild -version 2>&1 | tee build/logs/xcode-version.log
           xcodebuild -list -project "$PROJECT" 2>&1 | tee build/logs/project.log
           python3 scripts/validate-project.py 2>&1 | tee build/logs/project-validation.log
+
+      - name: Check pure battle and road logic (no simulator)
+        run: |
+          set -euo pipefail
+          check_failed=0
+          python3 -m venv build/art-tools
+          build/art-tools/bin/python -m pip install --disable-pip-version-check --no-input Pillow numpy 2>&1 | tee build/logs/art-tools-install.log
+          build/art-tools/bin/python scripts/verify-dragon-flame-assets.py 2>&1 | tee build/logs/dragon-flame-assets.log || check_failed=1
+          build/art-tools/bin/python scripts/verify-healing-assets.py 2>&1 | tee build/logs/healing-assets.log || check_failed=1
+          build/art-tools/bin/python scripts/verify-rune-vfx-assets.py 2>&1 | tee build/logs/rune-vfx-assets.log || check_failed=1
+          swift test --package-path Vendor/ClassroomGameCore 2>&1 | tee build/logs/party-rules.log || check_failed=1
+          swift run --package-path Vendor/ClassroomGameCore MeadowSupportReviewExport build/logs/rune-review --rune-only 2>&1 | tee build/logs/rune-export.log || check_failed=1
+          swift run --package-path Vendor/ClassroomGameCore MeadowSupportReviewExport build/logs/party-review --healing-only 2>&1 | tee build/logs/party-export.log || check_failed=1
+          swift run --package-path Vendor/ClassroomGameCore MeadowSupportReviewExport build/logs/dragon-flame-review --dragon-flame-only 2>&1 | tee build/logs/dragon-flame-export.log || check_failed=1
+          bash scripts/check-battle-encounter.sh 2>&1 | tee build/logs/battle-logic.log || check_failed=1
+          bash scripts/check-battle-effects.sh build/logs/battle-effects-trace.json 2>&1 | tee build/logs/battle-effects.log || check_failed=1
+          bash scripts/check-road-motion.sh 2>&1 | tee build/logs/road-logic.log || check_failed=1
+          bash scripts/check-modular-locomotion.sh build/logs/modular-locomotion-trace.json 2>&1 | tee build/logs/modular-locomotion.log || check_failed=1
+          bash scripts/check-battle-animation.sh 2>&1 | tee build/logs/battle-pose.log || check_failed=1
+          exit "$check_failed"
+
+      - name: Install GIF optimizer for full-scene preview
+        run: |
+          if ! command -v gifsicle >/dev/null 2>&1; then brew install gifsicle; fi
+          gifsicle --version
+
+      - name: Compose normal-speed healing art review (offline)
+        run: |
+          set -euo pipefail
+          build/art-tools/bin/python scripts/review-party-support-demo.py \
+            --healing-only --input build/logs/party-review \
+            2>&1 | tee build/logs/healing-review-render.log
+
+      - name: Upload offline healing art review
+        uses: actions/upload-artifact@v7
+        with:
+          name: healing-effects-review-${{ github.run_id }}-${{ github.run_attempt }}
+          path: Art/Review/Battle/healing-effects-v1/
+          if-no-files-found: error
+          retention-days: 30
 
       - name: Archive device Release build
         run: |
@@ -77,6 +135,44 @@ jobs:
           bash scripts/package-ipa.sh \
             build/MeadowJourney-shadow-lab.xcarchive build/MeadowJourney-shadow-lab.ipa \
             2>&1 | tee build/logs/package-ipa.log
+
+      - name: Split IPA into downloadable transfer parts
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          from pathlib import Path
+          source=Path('build/MeadowJourney-shadow-lab.ipa').read_bytes()
+          size=20*1024*1024
+          parts=[source[i:i+size] for i in range(0,len(source),size)]
+          assert len(parts)==3, f'Expected three transfer parts for this IPA; got {len(parts)} parts / {len(source)} bytes'
+          for index,part in enumerate(parts):
+              Path(f'build/MeadowJourney-shadow-lab.ipa.part-{index:02}').write_bytes(part)
+          print(f'Split {len(source)}-byte IPA into {len(parts)} parts, each <= {size} bytes')
+          PY
+
+      - name: Upload IPA transfer part 1
+        uses: actions/upload-artifact@v7
+        with:
+          name: MeadowJourney-shadow-lab-IPA-part-01
+          path: build/MeadowJourney-shadow-lab.ipa.part-00
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Upload IPA transfer part 2
+        uses: actions/upload-artifact@v7
+        with:
+          name: MeadowJourney-shadow-lab-IPA-part-02
+          path: build/MeadowJourney-shadow-lab.ipa.part-01
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Upload IPA transfer part 3
+        uses: actions/upload-artifact@v7
+        with:
+          name: MeadowJourney-shadow-lab-IPA-part-03
+          path: build/MeadowJourney-shadow-lab.ipa.part-02
+          if-no-files-found: error
+          retention-days: 30
 
       - name: Upload shadow lab IPA
         uses: actions/upload-artifact@v7
@@ -149,7 +245,7 @@ jobs:
               -only-testing:MeadowJourneyTests/TrailTests/testBattleLayoutKeepsSharedRowsAndExpandsForExplorationAndMonsterTurns
               -only-testing:MeadowJourneyTests/TrailTests/testBattlePreviewCropsAroundTravellerAndKeepsTerrainAcrossViewport
               -only-testing:MeadowJourneyTests/TrailTests/testCapturedViewportKeepsGroundAndArtworkAlignedThroughZoomAndPan
-              -only-testing:MeadowJourneyUITests/JourneyUITests/testLayeredP1ColorwayPreviewRunsBesideOriginalInTheMapScene
+              -only-testing:MeadowJourneyUITests/JourneyUITests/testApprovedP1GaitStepsWholePosesAndOmitsOutdatedLayeredComparison
               -only-testing:MeadowJourneyUITests/JourneyUITests/testMeadowBattlePreviewKeepsReferenceMapBesideLandscapeScene
             )
           else
@@ -157,7 +253,7 @@ jobs:
               -only-testing:MeadowJourneyUITests/JourneyUITests/testMapContourRendererAndInteraction
               -only-testing:MeadowJourneyUITests/JourneyUITests/testForegroundAndShadowReceiverStayAlignedAtEveryZoom
               -only-testing:MeadowJourneyUITests/JourneyUITests/testActualMapGaitControlsCoverAllDirectionsAndEveryFrame
-              -only-testing:MeadowJourneyUITests/JourneyUITests/testLayeredP1ColorwayPreviewRunsBesideOriginalInTheMapScene
+              -only-testing:MeadowJourneyUITests/JourneyUITests/testApprovedP1GaitStepsWholePosesAndOmitsOutdatedLayeredComparison
             )
             for test in \
               testShadowLabCutoutPipelineSubmitsContourModes \
@@ -168,12 +264,13 @@ jobs:
               testReliefPreservesArtCoordinatesForEveryAsset \
               testRoadMaskUsesOneUnionAtJunctions \
               testOnlyTheTowerGetsAnAdditionalBanner \
-              testAuthoredWalkUses24WholeFramesAndNoLegWarp \
+              testAuthoredWalkMapsDistanceClockToWholePosesWithoutLegWarp \
               testFootprintGroundLineFollowsAlternatingFeet \
               testHeroCasterAnchorsEachPlantedFootAndTracksLift \
-              testHeroFramesBundlesAllDirectionsAndWholeMirroredRightProfile \
+              testHeroFramesBundlesAllApprovedDirectionsAndWholeRightProfile \
               testWalkCycleVisitsEveryFrameAndWrapsWithoutRepeatingPassingArt \
               testGaitTestCoversEightRoadIndependentHeadingsAndSupportsStepping \
+              testApprovedP1GaitKeepsNormalCadenceAndStepsBetweenAuthoredPoses \
               testGaitTestReturnsToTheSameMapCameraAndActorPositions \
               testHeroPoseSpriteKitRenderingKeepsAllHeroContoursConnected; do
               focused_tests+=("-only-testing:MeadowJourneyTests/TrailTests/$test")

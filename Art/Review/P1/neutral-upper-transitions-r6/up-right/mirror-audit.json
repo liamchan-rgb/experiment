@@ -1,0 +1,284 @@
+{
+  "repairAndReviewOwner": "root",
+  "subagentsUsed": false,
+  "artApproval": null,
+  "sourceTemplate": "Art/Templates/P1-Neutral/up-left/walk-r6-transitions",
+  "sourceApproval": "Art/Review/P1/neutral-up-left-r5/approval.json",
+  "sourceApprovalScope": "Presented up-left r5 neutral full-body standing appearance and normal walking loop only. Excludes hidden complete anatomy, new outfits, start-stop, up-right and App/device/IPA integration.",
+  "transitionApprovalInherited": false,
+  "poses": [
+    {
+      "frame": 0,
+      "sourceDirection": "up-left",
+      "sourceFrame": 0,
+      "sourceClip": "idle",
+      "sourcePoseIndex": 0,
+      "unchangedFrameTimingMs": 120,
+      "geometryMirrorAxisX": 127.5,
+      "semanticSidesExchanged": true,
+      "relightingRGBOnly": true,
+      "alphaDifferenceFromApprovedReflection": 0,
+      "support": "both",
+      "headLocalReflection": [
+        -1.0,
+        0.0,
+        0.0,
+        1.0,
+        95.0,
+        0.0
+      ]
+    },
+    {
+      "frame": 1,
+      "sourceDirection": "up-left",
+      "sourceFrame": 1,
+      "sourceClip": "walk",
+      "sourcePoseIndex": 1,
+      "unchangedFrameTimingMs": 120,
+      "geometryMirrorAxisX": 127.5,
+      "semanticSidesExchanged": true,
+      "relightingRGBOnly": true,
+      "alphaDifferenceFromApprovedReflection": 0,
+      "support": "right",
+      "headLocalReflection": [
+        -1.0,
+        0.0,
+        0.0,
+        1.0,
+        95.0,
+        0.0
+      ]
+    },
+    {
+      "frame": 2,
+      "sourceDirection": "up-left",
+      "sourceFrame": 2,
+      "sourceClip": "walk",
+      "sourcePoseIndex": 2,
+      "unchangedFrameTimingMs": 120,
+      "geometryMirrorAxisX": 127.5,
+      "semanticSidesExchanged": true,
+      "relightingRGBOnly": true,
+      "alphaDifferenceFromApprovedReflection": 0,
+      "support": "right",
+      "headLocalReflection": [
+        -1.0,
+        0.0,
+        0.0,
+        1.0,
+        95.0,
+        0.0
+      ]
+    },
+    {
+      "frame": 3,
+      "sourceDirection": "up-left",
+      "sourceFrame": 3,
+      "sourceClip": "walk",
+      "sourcePoseIndex": 3,
+      "unchangedFrameTimingMs": 120,
+      "geometryMirrorAxisX": 127.5,
+      "semanticSidesExchanged": true,
+      "relightingRGBOnly": true,
+      "alphaDifferenceFromApprovedReflection": 0,
+      "support": "right",
+      "headLocalReflection": [
+        -1.0,
+        0.0,
+        0.0,
+        1.0,
+        95.0,
+        0.0
+      ]
+    },
+    {
+      "frame": 4,
+      "sourceDirection": "up-left",
+      "sourceFrame": 4,
+      "sourceClip": "walk",
+      "sourcePoseIndex": 4,
+      "unchangedFrameTimingMs": 120,
+      "geometryMirrorAxisX": 127.5,
+      "semanticSidesExchanged": true,
+      "relightingRGBOnly": true,
+      "alphaDifferenceFromApprovedReflection": 0,
+      "support": "right",
+      "headLocalReflection": [
+        -1.0,
+        0.0,
+        0.0,
+        1.0,
+        95.0,
+        0.0
+      ]
+    },
+    {
+      "frame": 5,
+      "sourceDirection": "up-left",
+      "sourceFrame": 5,
+      "sourceClip": "walk",
+      "sourcePoseIndex": 5,
+      "unchangedFrameTimingMs": 120,
+      "geometryMirrorAxisX": 127.5,
+      "semanticSidesExchanged": true,
+      "relightingRGBOnly": true,
+      "alphaDifferenceFromApprovedReflection": 0,
+      "support": "left",
+      "headLocalReflection": [
+        -1.0,
+        0.0,
+        0.0,
+        1.0,
+        95.0,
+        0.0
+      ]
+    },
+    {
+      "frame": 6,
+      "sourceDirection": "up-left",
+      "sourceFrame": 6,
+      "sourceClip": "walk",
+      "sourcePoseIndex": 6,
+      "unchangedFrameTimingMs": 120,
+      "geometryMirrorAxisX": 127.5,
+      "semanticSidesExchanged": true,
+      "relightingRGBOnly": true,
+      "alphaDifferenceFromApprovedReflection": 0,
+      "support": "left",
+      "headLocalReflection": [
+        -1.0,
+        0.0,
+        0.0,
+        1.0,
+        95.0,
+        0.0
+      ]
+    },
+    {
+      "frame": 7,
+      "sourceDirection": "up-left",
+      "sourceFrame": 7,
+      "sourceClip": "walk",
+      "sourcePoseIndex": 7,
+      "unchangedFrameTimingMs": 120,
+      "geometryMirrorAxisX": 127.5,
+      "semanticSidesExchanged": true,
+      "relightingRGBOnly": true,
+      "alphaDifferenceFromApprovedReflection": 0,
+      "support": "left",
+      "headLocalReflection": [
+        -1.0,
+        0.0,
+        0.0,
+        1.0,
+        95.0,
+        0.0
+      ]
+    },
+    {
+      "frame": 8,
+      "sourceDirection": "up-left",
+      "sourceFrame": 8,
+      "sourceClip": "walk",
+      "sourcePoseIndex": 8,
+      "unchangedFrameTimingMs": 120,
+      "geometryMirrorAxisX": 127.5,
+      "semanticSidesExchanged": true,
+      "relightingRGBOnly": true,
+      "alphaDifferenceFromApprovedReflection": 0,
+      "support": "left",
+      "headLocalReflection": [
+        -1.0,
+        0.0,
+        0.0,
+        1.0,
+        95.0,
+        0.0
+      ]
+    },
+    {
+      "frame": 9,
+      "sourceDirection": "up-left",
+      "sourceFrame": 1,
+      "sourceClip": "walk-start",
+      "sourcePoseIndex": 9,
+      "unchangedFrameTimingMs": 120,
+      "geometryMirrorAxisX": 127.5,
+      "semanticSidesExchanged": true,
+      "relightingRGBOnly": true,
+      "alphaDifferenceFromApprovedReflection": 0,
+      "support": "left",
+      "headLocalReflection": [
+        -1.0,
+        0.0,
+        0.0,
+        1.0,
+        95.0,
+        0.0
+      ]
+    },
+    {
+      "frame": 10,
+      "sourceDirection": "up-left",
+      "sourceFrame": 2,
+      "sourceClip": "walk-start",
+      "sourcePoseIndex": 10,
+      "unchangedFrameTimingMs": 120,
+      "geometryMirrorAxisX": 127.5,
+      "semanticSidesExchanged": true,
+      "relightingRGBOnly": true,
+      "alphaDifferenceFromApprovedReflection": 0,
+      "support": "left",
+      "headLocalReflection": [
+        -1.0,
+        0.0,
+        0.0,
+        1.0,
+        95.0,
+        0.0
+      ]
+    },
+    {
+      "frame": 11,
+      "sourceDirection": "up-left",
+      "sourceFrame": 1,
+      "sourceClip": "walk-stop",
+      "sourcePoseIndex": 11,
+      "unchangedFrameTimingMs": 120,
+      "geometryMirrorAxisX": 127.5,
+      "semanticSidesExchanged": true,
+      "relightingRGBOnly": true,
+      "alphaDifferenceFromApprovedReflection": 0,
+      "support": "right",
+      "headLocalReflection": [
+        -1.0,
+        0.0,
+        0.0,
+        1.0,
+        95.0,
+        0.0
+      ]
+    },
+    {
+      "frame": 12,
+      "sourceDirection": "up-left",
+      "sourceFrame": 2,
+      "sourceClip": "walk-stop",
+      "sourcePoseIndex": 12,
+      "unchangedFrameTimingMs": 120,
+      "geometryMirrorAxisX": 127.5,
+      "semanticSidesExchanged": true,
+      "relightingRGBOnly": true,
+      "alphaDifferenceFromApprovedReflection": 0,
+      "support": "both",
+      "headLocalReflection": [
+        -1.0,
+        0.0,
+        0.0,
+        1.0,
+        95.0,
+        0.0
+      ]
+    }
+  ]
+}

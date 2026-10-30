@@ -1,0 +1,66 @@
+{
+  "scope": "actual original GameCore states and production Swift fields; offline light/UI approximation, not UIKit or device capture",
+  "animations": {
+    "support": {
+      "file": "support-normal.gif",
+      "frames": 160,
+      "frameDurationMs": 20,
+      "durationMs": 3200,
+      "bytes": 8633035,
+      "dimensions": [
+        850,
+        740
+      ],
+      "scale": 0.85
+    },
+    "rally": {
+      "file": "rally-normal.gif",
+      "frames": 160,
+      "frameDurationMs": 20,
+      "durationMs": 3200,
+      "bytes": 8571726,
+      "dimensions": [
+        850,
+        740
+      ],
+      "scale": 0.85
+    },
+    "items": {
+      "file": "items-normal.gif",
+      "frames": 370,
+      "frameDurationMs": 20,
+      "durationMs": 7400,
+      "bytes": 19495706,
+      "dimensions": [
+        750,
+        652
+      ],
+      "scale": 0.75
+    },
+    "revive": {
+      "file": "revive-normal.gif",
+      "frames": 180,
+      "frameDurationMs": 20,
+      "durationMs": 3600,
+      "bytes": 8673125,
+      "dimensions": [
+        850,
+        740
+      ],
+      "scale": 0.85
+    },
+    "combat": {
+      "file": "combat-normal.gif",
+      "frames": 320,
+      "frameDurationMs": 20,
+      "durationMs": 6400,
+      "bytes": 14307444,
+      "dimensions": [
+        550,
+        479
+      ],
+      "scale": 0.55
+    }
+  },
+  "newArtApproval": null
+}

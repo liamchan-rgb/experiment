@@ -1,0 +1,34 @@
+{
+  "id": "p1-left-wayfarer-coat-v2",
+  "source": "source/garment-13poses.png",
+  "sourceSHA256": "f3540458069a4d9c94d6b7308568de7c9f65081479084404d41b76ec6989ea18",
+  "sourceCanvas": [
+    1254,
+    1254
+  ],
+  "fixedSheetRegistration": {
+    "scale": 0.8165869218500797,
+    "output": [
+      1024,
+      1024
+    ],
+    "grid": [
+      4,
+      4
+    ],
+    "cell": [
+      256,
+      256
+    ],
+    "poses": 13
+  },
+  "bodyTemplate": "Art/Templates/P1-Neutral/left/walk-r3-complete-transitions",
+  "artMethod": "pose-specific imagegen paint; source ink retained; no idle texture warped across the gait",
+  "underlap": "same material only, inside original body coverage; no body changes",
+  "slots": [
+    "outfit.torso",
+    "outfit.sleeve.right",
+    "outfit.sleeve.left",
+    "outfit.hem.front"
+  ]
+}

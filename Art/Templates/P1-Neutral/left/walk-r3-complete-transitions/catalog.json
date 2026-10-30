@@ -1,0 +1,10 @@
+{
+  "schemaVersion": "1.0.0",
+  "assets": [
+    {
+      "id": "p1-neutral-left-walk-r3-complete-transitions",
+      "manifest": "Art/Templates/P1-Neutral/left/walk-r3-complete-transitions/asset.json",
+      "label": "LEFT NEUTRAL WITH START/STOP"
+    }
+  ]
+}

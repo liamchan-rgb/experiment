@@ -1,6 +1,8 @@
 import UIKit
 import SpriteKit
 import MetalKit
+import MeadowBattleSupport
+import ClassroomGameCore
 
 final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
     private let gameView = UIView()
@@ -45,6 +47,10 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
     private let gaitSlowButton = UIButton(type: .system)
     private let gaitStepButton = UIButton(type: .system)
     private let gaitLayeredPreviewButton = UIButton(type: .system)
+    private let p1AppearanceButton = UIButton(type: .system)
+    private var campSession:CampInventorySession?
+    private var equipmentModel:TrainingLoadout? { campSession?.loadout }
+    private var inventoryStartupIssue:String?
     private var gaitDirectionButtons: [UIButton] = []
     private var gaitCaptureTimer: Timer?
     private var gestureZoom: CGFloat = 1
@@ -74,6 +80,7 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
         }
         if !ProcessInfo.processInfo.arguments.contains("-gaitReview"), let device = MTLCreateSystemDefaultDevice() {
             let ground = MTKView(frame: view.bounds, device: device)
+            ground.preferredFramesPerSecond = 60
             ground.autoResizeDrawable = true
             ground.colorPixelFormat = .bgra8Unorm
             ground.isOpaque = true
@@ -107,6 +114,7 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
         shadowLabButton.accessibilityIdentifier = "openShadowLab"
         shadowLabButton.addTarget(self, action: #selector(openShadowLab), for: .touchUpInside)
         view.addSubview(shadowLabButton)
+        configureCampSave()
         configureGaitControls()
         configureBattlePreview()
         for label in [metricsLabel, discoveryLabel] {
@@ -167,8 +175,12 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
         }
         if ProcessInfo.processInfo.arguments.contains("-gaitReview") {
             let review = GaitReviewScene(size: view.bounds.size)
+            review.onReviewAccessibilityValue = { [weak self] value in
+                DispatchQueue.main.async { self?.gameView.accessibilityValue = value }
+            }
             review.scaleMode = .resizeFill
             let reviewView = SKView(frame: gameView.bounds)
+            reviewView.preferredFramesPerSecond = 60
             reviewView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
             gameView.addSubview(reviewView); gaitView = reviewView
             reviewView.presentScene(review)
@@ -227,6 +239,7 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
                                       y: top + 2, width: 100, height: button)
         let battleX = battlePreviewActive ? titleButton.frame.maxX + 8 : gaitTestButton.frame.maxX + 8
         battlePreviewButton.frame = CGRect(x: battleX, y: top + 2, width: 104, height: button)
+        p1AppearanceButton.frame = CGRect(x: battlePreviewButton.frame.maxX + 8, y: top + 2, width: 112, height: button)
         let panelWidth = min(960, max(1, mapWidth - 32))
         gaitPanel.frame = CGRect(x: (view.bounds.width - panelWidth) / 2,
                                  y: view.bounds.height - max(inset.bottom, 12) - 194, width: panelWidth, height: 194)
@@ -234,6 +247,9 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
         zoomButton.frame = CGRect(x: right - button, y: top + 2, width: button, height: button)
         resetButton.frame = zoomButton.frame.offsetBy(dx: -spacing, dy: 0)
         playButton.frame = resetButton.frame.offsetBy(dx: -spacing, dy: 0)
+        if scene.gaitTest == nil && p1AppearanceButton.frame.maxX > playButton.frame.minX - 8 {
+            p1AppearanceButton.frame.origin = CGPoint(x: titleButton.frame.minX, y: top + button + 10)
+        }
         metricsLabel.frame = CGRect(x: right - 225, y: view.bounds.height - max(inset.bottom, 10) - 50, width: 225, height: 48)
         discoveryLabel.frame = CGRect(x: view.bounds.midX - 110, y: view.bounds.height - max(inset.bottom, 10) - 44, width: 220, height: 34)
     }
@@ -329,6 +345,12 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
                 self.showLoadingFailure(ShadowLabError.setup("单视图地图渲染器缺失")); return
             }
             MeadowGPUDiagnostics.shared.beginStage("C02 实际单视图地图", kind: "one MTKView; native backdrop + SKRenderer in one submitted command buffer")
+            do {
+                if let session=self.campSession,let unit=session.loadout.units["p1"] {
+                    try self.prepareCampVisuals(unit,appearance:session.appearanceID,retaining:false)
+                    self.applyCampVisuals()
+                }
+            } catch { self.showLoadingFailure(error);return }
             self.scene.activateForMetalRenderer()
             self.mapPresented = true
             renderer.start(in: surface, scene: self.scene)
@@ -389,6 +411,7 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
         shadowLabButton.isEnabled = enabled
         gaitTestButton.isEnabled = enabled
         battlePreviewButton.isEnabled = enabled
+        p1AppearanceButton.isEnabled = enabled
         gaitPanel.isUserInteractionEnabled = enabled
     }
 
@@ -429,6 +452,14 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
             self?.scene.toggleGaitTest(); self?.refreshGaitControls()
         }, for: .touchUpInside)
         view.addSubview(gaitTestButton)
+        p1AppearanceButton.configuration = style
+        p1AppearanceButton.configuration?.title = "P1 衣装"
+        p1AppearanceButton.accessibilityIdentifier = "p1Appearance"
+        p1AppearanceButton.accessibilityValue = HeroFrames.appearanceTitles.first
+        p1AppearanceButton.addAction(UIAction { [weak self] _ in self?.openInventory() },for:.touchUpInside)
+        refreshEquipmentMenu()
+        p1AppearanceButton.isHidden = HeroFrames.appearanceTitles.isEmpty
+        view.addSubview(p1AppearanceButton)
         gaitPanel.axis = .vertical; gaitPanel.spacing = 6
         gaitPanel.isLayoutMarginsRelativeArrangement = true
         gaitPanel.layoutMargins = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
@@ -475,19 +506,79 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
         gaitLayeredPreviewButton.addAction(UIAction { [weak self] _ in
             self?.scene.toggleLayeredPreview(); self?.refreshGaitControls()
         }, for: .touchUpInside)
-        gaitPanel.addArrangedSubview(gaitLayeredPreviewButton)
+        if HeroFrames.layeredPrototypeAvailable {
+            gaitPanel.addArrangedSubview(gaitLayeredPreviewButton)
+        }
         view.addSubview(gaitPanel)
     }
 
+    private func configureCampSave() {
+        let directory=FileManager.default.urls(for:.applicationSupportDirectory,in:.userDomainMask)[0]
+        let store=CampSaveStore(url:directory.appendingPathComponent("MeadowCamp/camp-v1.json"))
+        do { campSession=try CampInventorySession(store:store,appearances:HeroFrames.appearanceIDs) }
+        catch {
+            inventoryStartupIssue="暂时无法保存营地配置，可导出当前配置留存。"
+            campSession=try? CampInventorySession(store:nil,appearances:HeroFrames.appearanceIDs)
+        }
+    }
+    private func refreshEquipmentMenu() {
+        guard let unit=equipmentModel?.units["p1"],let catalog=equipmentModel?.engine.catalog else{return}
+        p1AppearanceButton.configuration?.title="行囊装备"
+        p1AppearanceButton.accessibilityLabel="打开P1行囊与装备"
+        p1AppearanceButton.accessibilityValue=unit.equipment.itemIDs.compactMap { try? catalog.item($0).name }.joined(separator:"、")
+    }
+    private func prepareCampVisuals(_ unit:GameUnit,appearance:String,retaining:Bool) throws {
+        guard let index=HeroFrames.appearanceIDs.firstIndex(of:appearance) else { throw GameError("衣装不受支持。") }
+        try groundRenderer?.prepareP1Equipment(appearance:index,weapon:unit.equipment.weapon,armor:unit.equipment.armor,retainingCurrent:retaining)
+    }
+    private func applyCampVisuals() {
+        guard let session=campSession,let unit=session.loadout.units["p1"],let index=HeroFrames.appearanceIDs.firstIndex(of:session.appearanceID) else{return}
+        scene.selectP1Loadout(appearance:index,weapon:unit.equipment.weapon,armor:unit.equipment.armor)
+        refreshEquipmentMenu()
+    }
+    private func openInventory() {
+        guard ready,!battlePreviewActive,scene.gaitTest==nil,presentedViewController==nil,let session=campSession else{return}
+        let wasRunning=scene.isRunning;if wasRunning { scene.togglePlayback() };groundView?.isPaused=true
+        let screen=MeadowInventoryViewController(session:session);screen.startupIssue=inventoryStartupIssue
+        screen.performEquip={ [weak self] slot,item in
+            guard let self else{return}
+            let candidate=try session.candidateEquipment(slot:slot,item:item)
+            try self.prepareCampVisuals(candidate,appearance:session.appearanceID,retaining:true)
+            do { try session.equip(slot:slot,item:item) }
+            catch { if let old=session.loadout.units["p1"] { try? self.prepareCampVisuals(old,appearance:session.appearanceID,retaining:false) };throw error }
+            self.applyCampVisuals();try? self.prepareCampVisuals(candidate,appearance:session.appearanceID,retaining:false)
+        }
+        screen.performAppearance={ [weak self] id in
+            guard let self,let unit=session.loadout.units["p1"] else{return}
+            try self.prepareCampVisuals(unit,appearance:id,retaining:true)
+            do { try session.setAppearance(id) }
+            catch { try? self.prepareCampVisuals(unit,appearance:session.appearanceID,retaining:false);throw error }
+            self.applyCampVisuals();try? self.prepareCampVisuals(unit,appearance:id,retaining:false)
+        }
+        screen.performImport={ [weak self] data in
+            guard let self else{return}
+            let save=try session.inspectImport(data),candidate=save.archive.state.units["p1"]!
+            try self.prepareCampVisuals(candidate,appearance:save.appearanceID,retaining:true)
+            do { try session.importData(data) }
+            catch { if let old=session.loadout.units["p1"] { try? self.prepareCampVisuals(old,appearance:session.appearanceID,retaining:false) };throw error }
+            self.applyCampVisuals();try? self.prepareCampVisuals(candidate,appearance:session.appearanceID,retaining:false)
+        }
+        screen.onChange={ [weak self] in self?.refreshEquipmentMenu() }
+        screen.onClose={ [weak self] in
+            guard let self else{return};self.groundView?.isPaused = !self.mapPresented || self.loadingFailed
+            if wasRunning && !self.scene.isRunning { self.scene.togglePlayback() }
+        }
+        present(screen,animated:true)
+    }
     private func configureBattlePreview() {
         var style = UIButton.Configuration.filled()
-        style.title = "战斗预览"
+        style.title = "林地战斗"
         style.baseBackgroundColor = UIColor(red: 0.97, green: 0.91, blue: 0.70, alpha: 0.96)
         style.baseForegroundColor = UIColor(red: 0.25, green: 0.28, blue: 0.14, alpha: 1)
         style.contentInsets = NSDirectionalEdgeInsets(top: 6, leading: 6, bottom: 6, trailing: 6)
         battlePreviewButton.configuration = style
         battlePreviewButton.accessibilityIdentifier = "openBattlePreview"
-        battlePreviewButton.accessibilityLabel = "打开 Meadow Journey 林地战斗场景预览"
+        battlePreviewButton.accessibilityLabel = "打开 Meadow Journey 可交互林地战斗"
         battlePreviewButton.addAction(UIAction { [weak self] _ in
             guard let self else { return }
             self.setBattlePreviewActive(!self.battlePreviewActive)
@@ -496,6 +587,10 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
 
         let preview = MeadowBattlePreviewView(frame: .zero)
         preview.isHidden = true
+        preview.onPartyActiveChanged={ [weak self] active in
+            guard let self else { return };self.groundView?.isPaused = !self.mapPresented || self.loadingFailed
+            self.view.setNeedsLayout()
+        }
         preview.onClose = { [weak self] in self?.setBattlePreviewActive(false) }
         preview.onLayoutChanged = { [weak self] in
             guard let self else { return }
@@ -508,17 +603,20 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
     private func setBattlePreviewActive(_ active: Bool) {
         guard active != battlePreviewActive else { return }
         guard scene.gaitTest == nil else { return }
+        p1AppearanceButton.isHidden = active || HeroFrames.appearanceTitles.isEmpty
         if active { metricsHiddenBeforeBattlePreview = metricsLabel.isHidden }
         if active { scene.beginBattlePreviewCamera() }
         battlePreviewActive = active
         battlePreviewView?.isHidden = !active
+        if active,let units=equipmentModel?.units { battlePreviewView?.configureEquipment(units) }
+        battlePreviewView?.setActive(active)
         battlePreviewButton.isHidden = active
         shadowLabButton.isHidden = active
         gaitTestButton.isHidden = active
         for control in [titleButton, playButton, resetButton, zoomButton] { control.isHidden = active }
         metricsLabel.isHidden = active ? true : metricsHiddenBeforeBattlePreview
         discoveryLabel.isHidden = active
-        if active { gameView.accessibilityLabel = "Meadow Journey 林间地图，显示在左侧；右侧为横向战斗场景预览" }
+        if active { gameView.accessibilityLabel = "Meadow Journey 林间地图，显示在左侧；右侧为可交互林地战斗" }
         else { gameView.accessibilityLabel = "林间地图，已选择 P1" }
         view.setNeedsLayout()
         view.layoutIfNeeded()

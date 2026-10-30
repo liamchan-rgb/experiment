@@ -1,0 +1,1 @@
+Existing independent sword reused; fixed physical right-shoulder diagonal landmarks in parent authoring.json. No new sword drawing.

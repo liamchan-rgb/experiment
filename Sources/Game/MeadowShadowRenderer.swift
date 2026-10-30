@@ -5,6 +5,27 @@ import simd
 /// One MTKView, one queue and one submitted frame own both the native backdrop
 /// and SKRenderer foreground. No rendering is submitted from an SKScene callback.
 final class MeadowShadowRenderer: NSObject, MTKViewDelegate {
+    private struct HeroState: Equatable {
+        let index: Int
+        let foot: CGPoint
+        let facing: Int
+        let frame: Int
+        let phase: CGFloat
+        let appearanceIndex: Int
+        let weaponID:String?
+        let armorID:String?
+
+        init(_ hero: MeadowHeroCaster) {
+            index = hero.index
+            foot = hero.foot
+            facing = hero.facing
+            frame = hero.frame
+            phase = hero.phase
+            appearanceIndex = hero.appearanceIndex
+            weaponID=hero.weaponID;armorID=hero.armorID
+        }
+    }
+
     private struct Draw {
         let buffer: MTLBuffer
         let count: Int
@@ -40,7 +61,8 @@ final class MeadowShadowRenderer: NSObject, MTKViewDelegate {
     private(set) var textureUploadCount = 0
     private var lastRenderTime: TimeInterval = -.infinity
     private var lastCamera: MeadowViewport?
-    private var lastPoses: [Int] = []
+    private var lastHeroes: [HeroState] = []
+    private var lastIncludesEnvironment: Bool?
     private var firstFrameReported = false
     private var gpuStopped = false
 
@@ -128,12 +150,11 @@ final class MeadowShadowRenderer: NSObject, MTKViewDelegate {
         }
         // Upload each hero atlas once during loading. Changing a walk frame
         // only changes UV bounds; it never decodes/crops/uploads on a live frame.
-        for hero in 1...3 { for suffix in ["Directions", "Diagonals"] {
-            let name = "Hero\(hero)\(suffix)"
+        for (index, name) in HeroFrames.atlasNames.enumerated() {
             guard let atlas = assetImage(name) else { throw ShadowLabError.setup("人物投影素材缺失") }
             textures[name] = try upload(atlas)
-            progress?(0.85 + Double((hero - 1) * 2 + (suffix == "Directions" ? 1 : 2)) / 6 * 0.13, "上传人物投影图集")
-        } }
+            progress?(0.85 + Double(index + 1) / Double(HeroFrames.atlasNames.count) * 0.13, "上传人物投影图集")
+        }
         guard let grass = assetImage("MeadowGround") else { throw ShadowLabError.setup("地表素材缺失") }
         textures["MeadowGround"] = try upload(grass)
         textures["RoadMask"] = try upload(roadMask)
@@ -172,9 +193,21 @@ final class MeadowShadowRenderer: NSObject, MTKViewDelegate {
         return texture
     }
 
+    // Equipment changes prewarm only the selected two atlases, outside combat.
+    // Do not preload the entire armor x appearance x weapon Cartesian product.
+    func prepareP1Equipment(appearance:Int,weapon:String?,armor:String?,retainingCurrent:Bool=false) throws {
+        let names=[false,true].map { HeroFrames.atlasName(heroIndex:0,diagonal:$0,appearanceIndex:appearance,weaponID:weapon,armorID:armor) }
+        var prepared:[String:MTLTexture]=[:]
+        for name in names where textures[name]==nil {
+            guard let image=UIImage(named:name)?.cgImage else { throw ShadowLabError.setup("护甲投影素材缺失") }
+            prepared[name]=try upload(image)
+        }
+        for name in Array(textures.keys) where !retainingCurrent && HeroFrames.armorAtlasNames.contains(name) && !names.contains(name) { textures.removeValue(forKey:name) }
+        for (name,texture) in prepared { textures[name]=texture }
+    }
     private func heroTexture(_ hero: MeadowHeroCaster) throws -> MTLTexture {
-        let suffix = hero.facing < 4 ? "Directions" : "Diagonals"
-        let name = "Hero\(hero.index + 1)\(suffix)"
+        let name = HeroFrames.atlasName(heroIndex: hero.index, diagonal: hero.facing >= 4,
+                                       appearanceIndex: hero.appearanceIndex,weaponID:hero.weaponID,armorID:hero.armorID)
         guard let texture = textures[name] else { throw ShadowLabError.setup("人物投影图集未加载") }
         return texture
     }
@@ -200,7 +233,7 @@ final class MeadowShadowRenderer: NSObject, MTKViewDelegate {
             let instance = ShadowLabInstance(asset: .hero, root: Self.root(foot), width: 64 / Self.units, aspect: 1, anchor: SIMD2(0.5, 0.125))
             mesh.imageCaster(instance, mirrored: HeroFrames.isMirrored(hero.facing), pose: pose)
             var item = try draw(mesh, texture: texture, kind: 2)
-            item.uvRect = HeroFrames.atlasRect(facing: hero.facing, frame: hero.frame)
+            item.uvRect = HeroFrames.atlasRect(facing: hero.facing, frame: hero.frame, heroIndex: hero.index)
             draws.append(item)
         }
         return draws
@@ -259,7 +292,7 @@ final class MeadowShadowRenderer: NSObject, MTKViewDelegate {
         let foreground = SKRenderer(device: device)
         foreground.scene = scene
         foregroundRenderer = foreground
-        lastCamera = nil; lastRenderTime = -.infinity; lastPoses = []
+        lastCamera = nil; lastRenderTime = -.infinity; lastHeroes = []; lastIncludesEnvironment = nil
         view.delegate = self
         view.preferredFramesPerSecond = 60
         view.isPaused = false
@@ -322,12 +355,22 @@ final class MeadowShadowRenderer: NSObject, MTKViewDelegate {
             texture.label = "Meadow point-resolution backdrop"
             backgroundTarget = texture; recreated = true
         }
-        let poses = [frame.includeEnvironment ? 1 : 0] + frame.heroes.map { $0.facing * 4 + $0.frame }
-        if forceBackground || recreated || frame.camera != lastCamera || poses != lastPoses || frame.time - lastRenderTime >= 1.0 / 30 {
+        let heroes = frame.heroes.map(HeroState.init)
+        let heroChanged = heroes != lastHeroes
+        let environmentChanged = frame.includeEnvironment != lastIncludesEnvironment
+        // Moving casters are part of this cached backdrop, including their
+        // shadows. Track foot roots as well as poses so a stationary gait frame
+        // cannot leave the shadow behind while the SpriteKit actor advances.
+        // Time-varying lighting and fog follow each submitted 60 Hz scene sample.
+        // Reuse a static gait-test backdrop; never gate animated scenery at 30 Hz.
+        let environmentAdvanced = frame.includeEnvironment && frame.time != lastRenderTime
+        if forceBackground || recreated || frame.camera != lastCamera || environmentChanged
+            || heroChanged || environmentAdvanced {
             let backdrop = MTLRenderPassDescriptor(); backdrop.colorAttachments[0].texture = backgroundTarget
             try encode(command: command, target: backdrop, camera: frame.camera, time: frame.time,
                        sunCast: frame.world.effects.currentCast, heroes: frame.heroes, alignment: alignmentReview, includeEnvironment: frame.includeEnvironment)
-            lastRenderTime = frame.time; lastCamera = frame.camera; lastPoses = poses
+            lastRenderTime = frame.time; lastCamera = frame.camera
+            lastHeroes = heroes; lastIncludesEnvironment = frame.includeEnvironment
         }
         target.colorAttachments[0].loadAction = .clear; target.colorAttachments[0].storeAction = .store
         guard let present = command.makeRenderCommandEncoder(descriptor: target), let output = target.colorAttachments[0].texture else { throw ShadowLabError.setup("组合背景呈现编码失败") }
@@ -406,6 +449,9 @@ struct MeadowHeroCaster {
     let facing: Int
     let frame: Int
     var phase: CGFloat = 0
+    var appearanceIndex: Int = 0
+    var weaponID:String?="trainingSword"
+    var armorID:String?
 }
 
 struct MeadowFrameState {

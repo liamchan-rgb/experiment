@@ -32,7 +32,7 @@ enum MeadowLoader {
                 var images: [String: CGImage] = [:]
                 var textures: [String: SKTexture] = [:]
                 let names = Set(props.map(\.asset) + ["MeadowGround", "Banner"]
-                    + (1...3).flatMap { ["Hero\($0)Directions", "Hero\($0)Diagonals"] }).sorted()
+                    + HeroFrames.atlasNames).sorted()
                 for (index, name) in names.enumerated() {
                     guard let image = UIImage(named: name)?.cgImage else { throw ShadowLabError.setup("素材缺失：\(name)") }
                     images[name] = image
@@ -55,7 +55,7 @@ enum MeadowLoader {
                 } else { renderer = nil }
                 // Construct/preload SpriteKit resources only after the native
                 // probes, so a prior SpriteKit fault cannot poison A01...A04.
-                for name in names where !name.hasPrefix("Hero") {
+                for name in names where !HeroFrames.atlasNames.contains(name) {
                     let texture = SKTexture(cgImage: images[name]!); texture.filteringMode = .linear
                     textures[name] = texture
                 }

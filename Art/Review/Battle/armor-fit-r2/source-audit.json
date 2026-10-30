@@ -1,0 +1,14 @@
+{
+  "baseline": "a919621b09fd2608b569a0e64592d8b1bde68909",
+  "changedRuntimeImages": [
+    "Sources/Resources/Assets.xcassets/MeadowLeatherArmorArmNearUpperWardrobe.imageset/MeadowLeatherArmorArmNearUpperWardrobe.png",
+    "Sources/Resources/Assets.xcassets/MeadowRuneArmorArmNearUpperWardrobe.imageset/MeadowRuneArmorArmNearUpperWardrobe.png"
+  ],
+  "allOtherMappedArmorPartsAndBowTexturesByteExact": 22,
+  "gaitManifestByteExact": true,
+  "runtimeLayerOrderAndBonesByteExact": true,
+  "weaponRigsAndJSONByteExact": true,
+  "upperSkinInsideSleeveAlongBone": true,
+  "noUpperSleevePixelsOutsideFittedArmSilhouette": true,
+  "artApprovalSeparate": true
+}

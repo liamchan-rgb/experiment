@@ -1,0 +1,117 @@
+{
+  "schemaVersion": 1,
+  "status": "offline-art-candidate",
+  "artApproval": null,
+  "noChargeTiers": true,
+  "focusDoesNotCastOrDamage": true,
+  "hoverDurationDoesNotIncreasePower": true,
+  "skills": {
+    "ordinary": {
+      "title": "普通斩击",
+      "visualPower": 0.28
+    },
+    "heavy": {
+      "title": "裂光斩",
+      "visualPower": 0.9
+    }
+  },
+  "timelineMs": {
+    "ordinaryHover": [
+      600,
+      1600
+    ],
+    "heavyHover": [
+      1600,
+      2600
+    ],
+    "confirmation": 2600,
+    "attack": 3000,
+    "contact": 3648,
+    "contactHold": 80,
+    "death": [
+      4280,
+      5400
+    ],
+    "end": 7200
+  },
+  "provenance": {
+    "tool": "image_gen.imagegen",
+    "raw": "source/generated-atlas.png",
+    "rawSHA256": "b11cd35aa284476d6520121f24a63f784a4e5c0ec490024be4e62262217e897a",
+    "slicing": {
+      "slash": {
+        "cell": [
+          0,
+          0,
+          627,
+          627
+        ],
+        "alphaContentCrop": [
+          59,
+          46,
+          605,
+          603
+        ],
+        "size": [
+          546,
+          557
+        ]
+      },
+      "burst": {
+        "cell": [
+          627,
+          0,
+          1254,
+          627
+        ],
+        "alphaContentCrop": [
+          109,
+          96,
+          562,
+          553
+        ],
+        "size": [
+          453,
+          457
+        ]
+      },
+      "ring": {
+        "cell": [
+          0,
+          627,
+          627,
+          1254
+        ],
+        "alphaContentCrop": [
+          27,
+          208,
+          600,
+          404
+        ],
+        "size": [
+          573,
+          196
+        ]
+      },
+      "mote": {
+        "cell": [
+          627,
+          627,
+          1254,
+          1254
+        ],
+        "alphaContentCrop": [
+          234,
+          230,
+          390,
+          388
+        ],
+        "size": [
+          156,
+          158
+        ]
+      }
+    }
+  },
+  "scope": "Skill labels and power are study presets, not new gameplay mechanics or integrated selectable skills."
+}

@@ -1,0 +1,35 @@
+{
+  "scope": "60 Hz production combat receipts, node-wide targets, 20 delivered RGBA frames and live stage attachments composed offline at normal speed. Not UIKit/game/device capture.",
+  "animations": [
+    {
+      "file": "dragon-flame-normal.gif",
+      "decodedFrames": 225,
+      "durationMs": 4500,
+      "effectiveFPS": 50,
+      "sourceSampleFPS": 60,
+      "size": [
+        1020,
+        765
+      ]
+    }
+  ],
+  "sourceFrameCount": 20,
+  "sourceFrameSize": [
+    280,
+    280
+  ],
+  "keyframePNGs": 7,
+  "codexArtReview": {
+    "status": "pass",
+    "checks": [
+      "whole-scene normal-speed timing and stage composition",
+      "cast darkness, exact impact start, warm body and ground light",
+      "both node targets, damage labels, immediate lethal dissolve and surviving hit reaction",
+      "ember motion and visible ground contacts",
+      "production polyhedral dice and fixed-value channels",
+      "sequence tail, scene-light return and clear final state"
+    ],
+    "runtimeDeviceReview": "not performed; user tests installation and runtime"
+  },
+  "userArtApproval": null
+}

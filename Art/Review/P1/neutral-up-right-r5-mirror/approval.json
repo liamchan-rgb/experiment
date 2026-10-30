@@ -1,0 +1,12 @@
+{
+  "date": "2026-10-23",
+  "reviewer": "user",
+  "statement": "没问题，开始下一步",
+  "status": "approved",
+  "scope": "Presented up-right r5 mirrored neutral full-body idle and normal walk only; excludes new start-stop, full hidden anatomy, wardrobe and App/device integration.",
+  "sourceCommit": "a200c25458a200459b8efbb2b7de9e0c70a6710d",
+  "artifacts": {
+    "walk-120ms.gif": "fdddbe86c1e56938675d8a85140beb9594985869deff2351f239577797073c23",
+    "idle-review-2x.png": "b40b4770cdd0c5a08ae6e3dcb28fa901a06ae1f41a7b5c075985c20ee67b9f72"
+  }
+}

@@ -1,0 +1,912 @@
+[
+  {
+    "storageIndex": 0,
+    "package": "forester",
+    "slot": "outfit.torso",
+    "underlapPixels": 156,
+    "maxSourceDistance": 7.810249675906654
+  },
+  {
+    "storageIndex": 0,
+    "package": "forester",
+    "slot": "outfit.sleeve.right",
+    "underlapPixels": 19,
+    "maxSourceDistance": 3.0
+  },
+  {
+    "storageIndex": 0,
+    "package": "forester",
+    "slot": "outfit.sleeve.left",
+    "underlapPixels": 44,
+    "maxSourceDistance": 7.0710678118654755
+  },
+  {
+    "storageIndex": 0,
+    "package": "lower",
+    "slot": "outfit.pants.right",
+    "underlapPixels": 6,
+    "maxSourceDistance": 0.0
+  },
+  {
+    "storageIndex": 0,
+    "package": "lower",
+    "slot": "outfit.boot.right",
+    "underlapPixels": 13,
+    "maxSourceDistance": 1.4142135623730951
+  },
+  {
+    "storageIndex": 0,
+    "package": "lower",
+    "slot": "outfit.pants.left",
+    "underlapPixels": 127,
+    "maxSourceDistance": 11.313708498984761
+  },
+  {
+    "storageIndex": 0,
+    "package": "lower",
+    "slot": "outfit.boot.left",
+    "underlapPixels": 1,
+    "maxSourceDistance": 1.0
+  },
+  {
+    "storageIndex": 0,
+    "package": "wayfarer",
+    "slot": "outfit.torso",
+    "underlapPixels": 138,
+    "maxSourceDistance": 7.0
+  },
+  {
+    "storageIndex": 0,
+    "package": "wayfarer",
+    "slot": "outfit.sleeve.right",
+    "underlapPixels": 27,
+    "maxSourceDistance": 2.23606797749979
+  },
+  {
+    "storageIndex": 0,
+    "package": "wayfarer",
+    "slot": "outfit.sleeve.left",
+    "underlapPixels": 23,
+    "maxSourceDistance": 3.605551275463989
+  },
+  {
+    "storageIndex": 1,
+    "package": "forester",
+    "slot": "outfit.torso",
+    "underlapPixels": 102,
+    "maxSourceDistance": 7.810249675906654
+  },
+  {
+    "storageIndex": 1,
+    "package": "forester",
+    "slot": "outfit.sleeve.right",
+    "underlapPixels": 127,
+    "maxSourceDistance": 14.317821063276353
+  },
+  {
+    "storageIndex": 1,
+    "package": "forester",
+    "slot": "outfit.sleeve.left",
+    "underlapPixels": 118,
+    "maxSourceDistance": 12.083045973594572
+  },
+  {
+    "storageIndex": 1,
+    "package": "lower",
+    "slot": "outfit.pants.right",
+    "underlapPixels": 4,
+    "maxSourceDistance": 1.0
+  },
+  {
+    "storageIndex": 1,
+    "package": "lower",
+    "slot": "outfit.boot.right",
+    "underlapPixels": 11,
+    "maxSourceDistance": 2.0
+  },
+  {
+    "storageIndex": 1,
+    "package": "lower",
+    "slot": "outfit.pants.left",
+    "underlapPixels": 172,
+    "maxSourceDistance": 12.041594578792296
+  },
+  {
+    "storageIndex": 1,
+    "package": "lower",
+    "slot": "outfit.boot.left",
+    "underlapPixels": 6,
+    "maxSourceDistance": 1.0
+  },
+  {
+    "storageIndex": 1,
+    "package": "wayfarer",
+    "slot": "outfit.torso",
+    "underlapPixels": 163,
+    "maxSourceDistance": 10.295630140987
+  },
+  {
+    "storageIndex": 1,
+    "package": "wayfarer",
+    "slot": "outfit.sleeve.right",
+    "underlapPixels": 114,
+    "maxSourceDistance": 11.704699910719626
+  },
+  {
+    "storageIndex": 1,
+    "package": "wayfarer",
+    "slot": "outfit.sleeve.left",
+    "underlapPixels": 42,
+    "maxSourceDistance": 5.830951894845301
+  },
+  {
+    "storageIndex": 2,
+    "package": "forester",
+    "slot": "outfit.torso",
+    "underlapPixels": 119,
+    "maxSourceDistance": 7.0710678118654755
+  },
+  {
+    "storageIndex": 2,
+    "package": "forester",
+    "slot": "outfit.sleeve.right",
+    "underlapPixels": 66,
+    "maxSourceDistance": 8.54400374531753
+  },
+  {
+    "storageIndex": 2,
+    "package": "forester",
+    "slot": "outfit.sleeve.left",
+    "underlapPixels": 59,
+    "maxSourceDistance": 8.94427190999916
+  },
+  {
+    "storageIndex": 2,
+    "package": "lower",
+    "slot": "outfit.pants.right",
+    "underlapPixels": 5,
+    "maxSourceDistance": 0.0
+  },
+  {
+    "storageIndex": 2,
+    "package": "lower",
+    "slot": "outfit.boot.right",
+    "underlapPixels": 9,
+    "maxSourceDistance": 2.23606797749979
+  },
+  {
+    "storageIndex": 2,
+    "package": "lower",
+    "slot": "outfit.pants.left",
+    "underlapPixels": 142,
+    "maxSourceDistance": 8.94427190999916
+  },
+  {
+    "storageIndex": 2,
+    "package": "lower",
+    "slot": "outfit.boot.left",
+    "underlapPixels": 6,
+    "maxSourceDistance": 1.0
+  },
+  {
+    "storageIndex": 2,
+    "package": "wayfarer",
+    "slot": "outfit.torso",
+    "underlapPixels": 115,
+    "maxSourceDistance": 5.385164807134504
+  },
+  {
+    "storageIndex": 2,
+    "package": "wayfarer",
+    "slot": "outfit.sleeve.right",
+    "underlapPixels": 59,
+    "maxSourceDistance": 8.0
+  },
+  {
+    "storageIndex": 2,
+    "package": "wayfarer",
+    "slot": "outfit.sleeve.left",
+    "underlapPixels": 5,
+    "maxSourceDistance": 3.0
+  },
+  {
+    "storageIndex": 3,
+    "package": "forester",
+    "slot": "outfit.torso",
+    "underlapPixels": 138,
+    "maxSourceDistance": 7.0710678118654755
+  },
+  {
+    "storageIndex": 3,
+    "package": "forester",
+    "slot": "outfit.sleeve.right",
+    "underlapPixels": 39,
+    "maxSourceDistance": 5.0
+  },
+  {
+    "storageIndex": 3,
+    "package": "forester",
+    "slot": "outfit.sleeve.left",
+    "underlapPixels": 31,
+    "maxSourceDistance": 6.324555320336759
+  },
+  {
+    "storageIndex": 3,
+    "package": "lower",
+    "slot": "outfit.pants.right",
+    "underlapPixels": 2,
+    "maxSourceDistance": 0.0
+  },
+  {
+    "storageIndex": 3,
+    "package": "lower",
+    "slot": "outfit.boot.right",
+    "underlapPixels": 24,
+    "maxSourceDistance": 1.4142135623730951
+  },
+  {
+    "storageIndex": 3,
+    "package": "lower",
+    "slot": "outfit.pants.left",
+    "underlapPixels": 269,
+    "maxSourceDistance": 12.206555615733702
+  },
+  {
+    "storageIndex": 3,
+    "package": "lower",
+    "slot": "outfit.boot.left",
+    "underlapPixels": 0,
+    "maxSourceDistance": 0
+  },
+  {
+    "storageIndex": 3,
+    "package": "wayfarer",
+    "slot": "outfit.torso",
+    "underlapPixels": 135,
+    "maxSourceDistance": 5.830951894845301
+  },
+  {
+    "storageIndex": 3,
+    "package": "wayfarer",
+    "slot": "outfit.sleeve.right",
+    "underlapPixels": 43,
+    "maxSourceDistance": 7.810249675906654
+  },
+  {
+    "storageIndex": 3,
+    "package": "wayfarer",
+    "slot": "outfit.sleeve.left",
+    "underlapPixels": 13,
+    "maxSourceDistance": 3.1622776601683795
+  },
+  {
+    "storageIndex": 4,
+    "package": "forester",
+    "slot": "outfit.torso",
+    "underlapPixels": 188,
+    "maxSourceDistance": 8.94427190999916
+  },
+  {
+    "storageIndex": 4,
+    "package": "forester",
+    "slot": "outfit.sleeve.right",
+    "underlapPixels": 95,
+    "maxSourceDistance": 10.0
+  },
+  {
+    "storageIndex": 4,
+    "package": "forester",
+    "slot": "outfit.sleeve.left",
+    "underlapPixels": 27,
+    "maxSourceDistance": 7.0
+  },
+  {
+    "storageIndex": 4,
+    "package": "lower",
+    "slot": "outfit.pants.right",
+    "underlapPixels": 0,
+    "maxSourceDistance": 0
+  },
+  {
+    "storageIndex": 4,
+    "package": "lower",
+    "slot": "outfit.boot.right",
+    "underlapPixels": 1,
+    "maxSourceDistance": 1.0
+  },
+  {
+    "storageIndex": 4,
+    "package": "lower",
+    "slot": "outfit.pants.left",
+    "underlapPixels": 160,
+    "maxSourceDistance": 14.422205101855956
+  },
+  {
+    "storageIndex": 4,
+    "package": "lower",
+    "slot": "outfit.boot.left",
+    "underlapPixels": 0,
+    "maxSourceDistance": 0
+  },
+  {
+    "storageIndex": 4,
+    "package": "wayfarer",
+    "slot": "outfit.torso",
+    "underlapPixels": 161,
+    "maxSourceDistance": 8.06225774829855
+  },
+  {
+    "storageIndex": 4,
+    "package": "wayfarer",
+    "slot": "outfit.sleeve.right",
+    "underlapPixels": 24,
+    "maxSourceDistance": 4.47213595499958
+  },
+  {
+    "storageIndex": 4,
+    "package": "wayfarer",
+    "slot": "outfit.sleeve.left",
+    "underlapPixels": 20,
+    "maxSourceDistance": 5.0
+  },
+  {
+    "storageIndex": 5,
+    "package": "forester",
+    "slot": "outfit.torso",
+    "underlapPixels": 152,
+    "maxSourceDistance": 7.810249675906654
+  },
+  {
+    "storageIndex": 5,
+    "package": "forester",
+    "slot": "outfit.sleeve.right",
+    "underlapPixels": 81,
+    "maxSourceDistance": 8.06225774829855
+  },
+  {
+    "storageIndex": 5,
+    "package": "forester",
+    "slot": "outfit.sleeve.left",
+    "underlapPixels": 51,
+    "maxSourceDistance": 8.602325267042627
+  },
+  {
+    "storageIndex": 5,
+    "package": "lower",
+    "slot": "outfit.pants.right",
+    "underlapPixels": 1,
+    "maxSourceDistance": 1.0
+  },
+  {
+    "storageIndex": 5,
+    "package": "lower",
+    "slot": "outfit.boot.right",
+    "underlapPixels": 0,
+    "maxSourceDistance": 0
+  },
+  {
+    "storageIndex": 5,
+    "package": "lower",
+    "slot": "outfit.pants.left",
+    "underlapPixels": 197,
+    "maxSourceDistance": 14.142135623730951
+  },
+  {
+    "storageIndex": 5,
+    "package": "lower",
+    "slot": "outfit.boot.left",
+    "underlapPixels": 15,
+    "maxSourceDistance": 2.23606797749979
+  },
+  {
+    "storageIndex": 5,
+    "package": "wayfarer",
+    "slot": "outfit.torso",
+    "underlapPixels": 179,
+    "maxSourceDistance": 8.94427190999916
+  },
+  {
+    "storageIndex": 5,
+    "package": "wayfarer",
+    "slot": "outfit.sleeve.right",
+    "underlapPixels": 14,
+    "maxSourceDistance": 1.0
+  },
+  {
+    "storageIndex": 5,
+    "package": "wayfarer",
+    "slot": "outfit.sleeve.left",
+    "underlapPixels": 50,
+    "maxSourceDistance": 8.06225774829855
+  },
+  {
+    "storageIndex": 6,
+    "package": "forester",
+    "slot": "outfit.torso",
+    "underlapPixels": 150,
+    "maxSourceDistance": 5.830951894845301
+  },
+  {
+    "storageIndex": 6,
+    "package": "forester",
+    "slot": "outfit.sleeve.right",
+    "underlapPixels": 104,
+    "maxSourceDistance": 10.0
+  },
+  {
+    "storageIndex": 6,
+    "package": "forester",
+    "slot": "outfit.sleeve.left",
+    "underlapPixels": 86,
+    "maxSourceDistance": 10.770329614269007
+  },
+  {
+    "storageIndex": 6,
+    "package": "lower",
+    "slot": "outfit.pants.right",
+    "underlapPixels": 34,
+    "maxSourceDistance": 1.0
+  },
+  {
+    "storageIndex": 6,
+    "package": "lower",
+    "slot": "outfit.boot.right",
+    "underlapPixels": 0,
+    "maxSourceDistance": 0
+  },
+  {
+    "storageIndex": 6,
+    "package": "lower",
+    "slot": "outfit.pants.left",
+    "underlapPixels": 136,
+    "maxSourceDistance": 9.899494936611665
+  },
+  {
+    "storageIndex": 6,
+    "package": "lower",
+    "slot": "outfit.boot.left",
+    "underlapPixels": 3,
+    "maxSourceDistance": 1.0
+  },
+  {
+    "storageIndex": 6,
+    "package": "wayfarer",
+    "slot": "outfit.torso",
+    "underlapPixels": 144,
+    "maxSourceDistance": 6.708203932499369
+  },
+  {
+    "storageIndex": 6,
+    "package": "wayfarer",
+    "slot": "outfit.sleeve.right",
+    "underlapPixels": 19,
+    "maxSourceDistance": 2.8284271247461903
+  },
+  {
+    "storageIndex": 6,
+    "package": "wayfarer",
+    "slot": "outfit.sleeve.left",
+    "underlapPixels": 40,
+    "maxSourceDistance": 6.4031242374328485
+  },
+  {
+    "storageIndex": 7,
+    "package": "forester",
+    "slot": "outfit.torso",
+    "underlapPixels": 151,
+    "maxSourceDistance": 8.94427190999916
+  },
+  {
+    "storageIndex": 7,
+    "package": "forester",
+    "slot": "outfit.sleeve.right",
+    "underlapPixels": 49,
+    "maxSourceDistance": 6.4031242374328485
+  },
+  {
+    "storageIndex": 7,
+    "package": "forester",
+    "slot": "outfit.sleeve.left",
+    "underlapPixels": 62,
+    "maxSourceDistance": 8.06225774829855
+  },
+  {
+    "storageIndex": 7,
+    "package": "lower",
+    "slot": "outfit.pants.right",
+    "underlapPixels": 0,
+    "maxSourceDistance": 0
+  },
+  {
+    "storageIndex": 7,
+    "package": "lower",
+    "slot": "outfit.boot.right",
+    "underlapPixels": 0,
+    "maxSourceDistance": 0
+  },
+  {
+    "storageIndex": 7,
+    "package": "lower",
+    "slot": "outfit.pants.left",
+    "underlapPixels": 92,
+    "maxSourceDistance": 9.219544457292887
+  },
+  {
+    "storageIndex": 7,
+    "package": "lower",
+    "slot": "outfit.boot.left",
+    "underlapPixels": 0,
+    "maxSourceDistance": 0
+  },
+  {
+    "storageIndex": 7,
+    "package": "wayfarer",
+    "slot": "outfit.torso",
+    "underlapPixels": 150,
+    "maxSourceDistance": 6.4031242374328485
+  },
+  {
+    "storageIndex": 7,
+    "package": "wayfarer",
+    "slot": "outfit.sleeve.right",
+    "underlapPixels": 30,
+    "maxSourceDistance": 1.0
+  },
+  {
+    "storageIndex": 7,
+    "package": "wayfarer",
+    "slot": "outfit.sleeve.left",
+    "underlapPixels": 40,
+    "maxSourceDistance": 6.708203932499369
+  },
+  {
+    "storageIndex": 8,
+    "package": "forester",
+    "slot": "outfit.torso",
+    "underlapPixels": 94,
+    "maxSourceDistance": 6.4031242374328485
+  },
+  {
+    "storageIndex": 8,
+    "package": "forester",
+    "slot": "outfit.sleeve.right",
+    "underlapPixels": 113,
+    "maxSourceDistance": 11.40175425099138
+  },
+  {
+    "storageIndex": 8,
+    "package": "forester",
+    "slot": "outfit.sleeve.left",
+    "underlapPixels": 95,
+    "maxSourceDistance": 10.295630140987
+  },
+  {
+    "storageIndex": 8,
+    "package": "lower",
+    "slot": "outfit.pants.right",
+    "underlapPixels": 9,
+    "maxSourceDistance": 1.0
+  },
+  {
+    "storageIndex": 8,
+    "package": "lower",
+    "slot": "outfit.boot.right",
+    "underlapPixels": 2,
+    "maxSourceDistance": 1.0
+  },
+  {
+    "storageIndex": 8,
+    "package": "lower",
+    "slot": "outfit.pants.left",
+    "underlapPixels": 144,
+    "maxSourceDistance": 10.0
+  },
+  {
+    "storageIndex": 8,
+    "package": "lower",
+    "slot": "outfit.boot.left",
+    "underlapPixels": 14,
+    "maxSourceDistance": 2.0
+  },
+  {
+    "storageIndex": 8,
+    "package": "wayfarer",
+    "slot": "outfit.torso",
+    "underlapPixels": 133,
+    "maxSourceDistance": 6.324555320336759
+  },
+  {
+    "storageIndex": 8,
+    "package": "wayfarer",
+    "slot": "outfit.sleeve.right",
+    "underlapPixels": 99,
+    "maxSourceDistance": 10.04987562112089
+  },
+  {
+    "storageIndex": 8,
+    "package": "wayfarer",
+    "slot": "outfit.sleeve.left",
+    "underlapPixels": 36,
+    "maxSourceDistance": 5.0990195135927845
+  },
+  {
+    "storageIndex": 9,
+    "package": "forester",
+    "slot": "outfit.torso",
+    "underlapPixels": 105,
+    "maxSourceDistance": 7.0710678118654755
+  },
+  {
+    "storageIndex": 9,
+    "package": "forester",
+    "slot": "outfit.sleeve.right",
+    "underlapPixels": 13,
+    "maxSourceDistance": 2.23606797749979
+  },
+  {
+    "storageIndex": 9,
+    "package": "forester",
+    "slot": "outfit.sleeve.left",
+    "underlapPixels": 74,
+    "maxSourceDistance": 9.0
+  },
+  {
+    "storageIndex": 9,
+    "package": "lower",
+    "slot": "outfit.pants.right",
+    "underlapPixels": 16,
+    "maxSourceDistance": 1.0
+  },
+  {
+    "storageIndex": 9,
+    "package": "lower",
+    "slot": "outfit.boot.right",
+    "underlapPixels": 9,
+    "maxSourceDistance": 1.4142135623730951
+  },
+  {
+    "storageIndex": 9,
+    "package": "lower",
+    "slot": "outfit.pants.left",
+    "underlapPixels": 176,
+    "maxSourceDistance": 9.486832980505138
+  },
+  {
+    "storageIndex": 9,
+    "package": "lower",
+    "slot": "outfit.boot.left",
+    "underlapPixels": 0,
+    "maxSourceDistance": 0
+  },
+  {
+    "storageIndex": 9,
+    "package": "wayfarer",
+    "slot": "outfit.torso",
+    "underlapPixels": 139,
+    "maxSourceDistance": 6.324555320336759
+  },
+  {
+    "storageIndex": 9,
+    "package": "wayfarer",
+    "slot": "outfit.sleeve.right",
+    "underlapPixels": 20,
+    "maxSourceDistance": 5.656854249492381
+  },
+  {
+    "storageIndex": 9,
+    "package": "wayfarer",
+    "slot": "outfit.sleeve.left",
+    "underlapPixels": 13,
+    "maxSourceDistance": 3.0
+  },
+  {
+    "storageIndex": 10,
+    "package": "forester",
+    "slot": "outfit.torso",
+    "underlapPixels": 90,
+    "maxSourceDistance": 5.0
+  },
+  {
+    "storageIndex": 10,
+    "package": "forester",
+    "slot": "outfit.sleeve.right",
+    "underlapPixels": 49,
+    "maxSourceDistance": 7.211102550927978
+  },
+  {
+    "storageIndex": 10,
+    "package": "forester",
+    "slot": "outfit.sleeve.left",
+    "underlapPixels": 44,
+    "maxSourceDistance": 8.246211251235321
+  },
+  {
+    "storageIndex": 10,
+    "package": "lower",
+    "slot": "outfit.pants.right",
+    "underlapPixels": 19,
+    "maxSourceDistance": 2.23606797749979
+  },
+  {
+    "storageIndex": 10,
+    "package": "lower",
+    "slot": "outfit.boot.right",
+    "underlapPixels": 28,
+    "maxSourceDistance": 3.0
+  },
+  {
+    "storageIndex": 10,
+    "package": "lower",
+    "slot": "outfit.pants.left",
+    "underlapPixels": 216,
+    "maxSourceDistance": 14.866068747318506
+  },
+  {
+    "storageIndex": 10,
+    "package": "lower",
+    "slot": "outfit.boot.left",
+    "underlapPixels": 4,
+    "maxSourceDistance": 1.0
+  },
+  {
+    "storageIndex": 10,
+    "package": "wayfarer",
+    "slot": "outfit.torso",
+    "underlapPixels": 110,
+    "maxSourceDistance": 7.810249675906654
+  },
+  {
+    "storageIndex": 10,
+    "package": "wayfarer",
+    "slot": "outfit.sleeve.right",
+    "underlapPixels": 33,
+    "maxSourceDistance": 4.47213595499958
+  },
+  {
+    "storageIndex": 10,
+    "package": "wayfarer",
+    "slot": "outfit.sleeve.left",
+    "underlapPixels": 4,
+    "maxSourceDistance": 3.0
+  },
+  {
+    "storageIndex": 11,
+    "package": "forester",
+    "slot": "outfit.torso",
+    "underlapPixels": 141,
+    "maxSourceDistance": 7.0710678118654755
+  },
+  {
+    "storageIndex": 11,
+    "package": "forester",
+    "slot": "outfit.sleeve.right",
+    "underlapPixels": 60,
+    "maxSourceDistance": 9.486832980505138
+  },
+  {
+    "storageIndex": 11,
+    "package": "forester",
+    "slot": "outfit.sleeve.left",
+    "underlapPixels": 48,
+    "maxSourceDistance": 7.0
+  },
+  {
+    "storageIndex": 11,
+    "package": "lower",
+    "slot": "outfit.pants.right",
+    "underlapPixels": 17,
+    "maxSourceDistance": 0.0
+  },
+  {
+    "storageIndex": 11,
+    "package": "lower",
+    "slot": "outfit.boot.right",
+    "underlapPixels": 11,
+    "maxSourceDistance": 1.4142135623730951
+  },
+  {
+    "storageIndex": 11,
+    "package": "lower",
+    "slot": "outfit.pants.left",
+    "underlapPixels": 146,
+    "maxSourceDistance": 11.313708498984761
+  },
+  {
+    "storageIndex": 11,
+    "package": "lower",
+    "slot": "outfit.boot.left",
+    "underlapPixels": 0,
+    "maxSourceDistance": 0
+  },
+  {
+    "storageIndex": 11,
+    "package": "wayfarer",
+    "slot": "outfit.torso",
+    "underlapPixels": 180,
+    "maxSourceDistance": 7.211102550927978
+  },
+  {
+    "storageIndex": 11,
+    "package": "wayfarer",
+    "slot": "outfit.sleeve.right",
+    "underlapPixels": 31,
+    "maxSourceDistance": 4.47213595499958
+  },
+  {
+    "storageIndex": 11,
+    "package": "wayfarer",
+    "slot": "outfit.sleeve.left",
+    "underlapPixels": 5,
+    "maxSourceDistance": 2.0
+  },
+  {
+    "storageIndex": 12,
+    "package": "forester",
+    "slot": "outfit.torso",
+    "underlapPixels": 136,
+    "maxSourceDistance": 7.0710678118654755
+  },
+  {
+    "storageIndex": 12,
+    "package": "forester",
+    "slot": "outfit.sleeve.right",
+    "underlapPixels": 24,
+    "maxSourceDistance": 3.0
+  },
+  {
+    "storageIndex": 12,
+    "package": "forester",
+    "slot": "outfit.sleeve.left",
+    "underlapPixels": 26,
+    "maxSourceDistance": 5.0
+  },
+  {
+    "storageIndex": 12,
+    "package": "lower",
+    "slot": "outfit.pants.right",
+    "underlapPixels": 20,
+    "maxSourceDistance": 0.0
+  },
+  {
+    "storageIndex": 12,
+    "package": "lower",
+    "slot": "outfit.boot.right",
+    "underlapPixels": 7,
+    "maxSourceDistance": 1.0
+  },
+  {
+    "storageIndex": 12,
+    "package": "lower",
+    "slot": "outfit.pants.left",
+    "underlapPixels": 238,
+    "maxSourceDistance": 11.40175425099138
+  },
+  {
+    "storageIndex": 12,
+    "package": "lower",
+    "slot": "outfit.boot.left",
+    "underlapPixels": 0,
+    "maxSourceDistance": 0
+  },
+  {
+    "storageIndex": 12,
+    "package": "wayfarer",
+    "slot": "outfit.torso",
+    "underlapPixels": 189,
+    "maxSourceDistance": 6.708203932499369
+  },
+  {
+    "storageIndex": 12,
+    "package": "wayfarer",
+    "slot": "outfit.sleeve.right",
+    "underlapPixels": 32,
+    "maxSourceDistance": 2.8284271247461903
+  },
+  {
+    "storageIndex": 12,
+    "package": "wayfarer",
+    "slot": "outfit.sleeve.left",
+    "underlapPixels": 5,
+    "maxSourceDistance": 1.0
+  }
+]

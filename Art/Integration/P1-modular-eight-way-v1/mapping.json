@@ -1,0 +1,1267 @@
+{
+  "poses": [
+    {
+      "direction": "down",
+      "clip": "idle",
+      "frame": 0,
+      "sourceFrame": 0,
+      "registration": [
+        4,
+        -1
+      ],
+      "support": "both"
+    },
+    {
+      "direction": "down",
+      "clip": "walk",
+      "frame": 1,
+      "sourceFrame": 8,
+      "registration": [
+        4,
+        -1
+      ],
+      "support": "right"
+    },
+    {
+      "direction": "down",
+      "clip": "walk",
+      "frame": 2,
+      "sourceFrame": 1,
+      "registration": [
+        4,
+        -1
+      ],
+      "support": "right"
+    },
+    {
+      "direction": "down",
+      "clip": "walk",
+      "frame": 3,
+      "sourceFrame": 2,
+      "registration": [
+        4,
+        -1
+      ],
+      "support": "right"
+    },
+    {
+      "direction": "down",
+      "clip": "walk",
+      "frame": 4,
+      "sourceFrame": 3,
+      "registration": [
+        4,
+        -1
+      ],
+      "support": "right"
+    },
+    {
+      "direction": "down",
+      "clip": "walk",
+      "frame": 5,
+      "sourceFrame": 4,
+      "registration": [
+        4,
+        -1
+      ],
+      "support": "left"
+    },
+    {
+      "direction": "down",
+      "clip": "walk",
+      "frame": 6,
+      "sourceFrame": 5,
+      "registration": [
+        4,
+        -1
+      ],
+      "support": "left"
+    },
+    {
+      "direction": "down",
+      "clip": "walk",
+      "frame": 7,
+      "sourceFrame": 6,
+      "registration": [
+        4,
+        -1
+      ],
+      "support": "left"
+    },
+    {
+      "direction": "down",
+      "clip": "walk",
+      "frame": 8,
+      "sourceFrame": 7,
+      "registration": [
+        4,
+        -1
+      ],
+      "support": "left"
+    },
+    {
+      "direction": "down",
+      "clip": "walk-start",
+      "frame": 1,
+      "sourceFrame": 1,
+      "registration": [
+        4,
+        -1
+      ],
+      "support": "right"
+    },
+    {
+      "direction": "down",
+      "clip": "walk-start",
+      "frame": 2,
+      "sourceFrame": 2,
+      "registration": [
+        4,
+        -1
+      ],
+      "support": "right"
+    },
+    {
+      "direction": "down",
+      "clip": "walk-stop",
+      "frame": 1,
+      "sourceFrame": 1,
+      "registration": [
+        4,
+        -1
+      ],
+      "support": "right"
+    },
+    {
+      "direction": "down",
+      "clip": "walk-stop",
+      "frame": 2,
+      "sourceFrame": 2,
+      "registration": [
+        4,
+        -1
+      ],
+      "support": "right"
+    },
+    {
+      "direction": "down-left",
+      "clip": "idle",
+      "frame": 0,
+      "sourceFrame": 0,
+      "registration": [
+        1,
+        1
+      ],
+      "support": "both"
+    },
+    {
+      "direction": "down-left",
+      "clip": "walk",
+      "frame": 1,
+      "sourceFrame": 5,
+      "registration": [
+        1,
+        1
+      ],
+      "support": "right"
+    },
+    {
+      "direction": "down-left",
+      "clip": "walk",
+      "frame": 2,
+      "sourceFrame": 6,
+      "registration": [
+        1,
+        1
+      ],
+      "support": "right"
+    },
+    {
+      "direction": "down-left",
+      "clip": "walk",
+      "frame": 3,
+      "sourceFrame": 7,
+      "registration": [
+        1,
+        1
+      ],
+      "support": "right"
+    },
+    {
+      "direction": "down-left",
+      "clip": "walk",
+      "frame": 4,
+      "sourceFrame": 8,
+      "registration": [
+        1,
+        1
+      ],
+      "support": "right"
+    },
+    {
+      "direction": "down-left",
+      "clip": "walk",
+      "frame": 5,
+      "sourceFrame": 1,
+      "registration": [
+        1,
+        1
+      ],
+      "support": "left"
+    },
+    {
+      "direction": "down-left",
+      "clip": "walk",
+      "frame": 6,
+      "sourceFrame": 2,
+      "registration": [
+        1,
+        1
+      ],
+      "support": "left"
+    },
+    {
+      "direction": "down-left",
+      "clip": "walk",
+      "frame": 7,
+      "sourceFrame": 3,
+      "registration": [
+        1,
+        1
+      ],
+      "support": "left"
+    },
+    {
+      "direction": "down-left",
+      "clip": "walk",
+      "frame": 8,
+      "sourceFrame": 4,
+      "registration": [
+        1,
+        1
+      ],
+      "support": "left"
+    },
+    {
+      "direction": "down-left",
+      "clip": "walk-start",
+      "frame": 1,
+      "sourceFrame": 1,
+      "registration": [
+        1,
+        1
+      ],
+      "support": "right"
+    },
+    {
+      "direction": "down-left",
+      "clip": "walk-start",
+      "frame": 2,
+      "sourceFrame": 2,
+      "registration": [
+        1,
+        1
+      ],
+      "support": "right"
+    },
+    {
+      "direction": "down-left",
+      "clip": "walk-stop",
+      "frame": 1,
+      "sourceFrame": 1,
+      "registration": [
+        1,
+        1
+      ],
+      "support": "left"
+    },
+    {
+      "direction": "down-left",
+      "clip": "walk-stop",
+      "frame": 2,
+      "sourceFrame": 2,
+      "registration": [
+        1,
+        1
+      ],
+      "support": "both"
+    },
+    {
+      "direction": "left",
+      "clip": "idle",
+      "frame": 0,
+      "sourceFrame": 0,
+      "registration": [
+        3,
+        0
+      ],
+      "support": "both"
+    },
+    {
+      "direction": "left",
+      "clip": "walk",
+      "frame": 1,
+      "sourceFrame": 5,
+      "registration": [
+        3,
+        0
+      ],
+      "support": "right"
+    },
+    {
+      "direction": "left",
+      "clip": "walk",
+      "frame": 2,
+      "sourceFrame": 6,
+      "registration": [
+        3,
+        0
+      ],
+      "support": "right"
+    },
+    {
+      "direction": "left",
+      "clip": "walk",
+      "frame": 3,
+      "sourceFrame": 7,
+      "registration": [
+        3,
+        0
+      ],
+      "support": "right"
+    },
+    {
+      "direction": "left",
+      "clip": "walk",
+      "frame": 4,
+      "sourceFrame": 8,
+      "registration": [
+        3,
+        0
+      ],
+      "support": "right"
+    },
+    {
+      "direction": "left",
+      "clip": "walk",
+      "frame": 5,
+      "sourceFrame": 1,
+      "registration": [
+        3,
+        0
+      ],
+      "support": "left"
+    },
+    {
+      "direction": "left",
+      "clip": "walk",
+      "frame": 6,
+      "sourceFrame": 2,
+      "registration": [
+        3,
+        0
+      ],
+      "support": "left"
+    },
+    {
+      "direction": "left",
+      "clip": "walk",
+      "frame": 7,
+      "sourceFrame": 3,
+      "registration": [
+        3,
+        0
+      ],
+      "support": "left"
+    },
+    {
+      "direction": "left",
+      "clip": "walk",
+      "frame": 8,
+      "sourceFrame": 4,
+      "registration": [
+        3,
+        0
+      ],
+      "support": "left"
+    },
+    {
+      "direction": "left",
+      "clip": "walk-start",
+      "frame": 1,
+      "sourceFrame": 1,
+      "registration": [
+        3,
+        0
+      ],
+      "support": "both"
+    },
+    {
+      "direction": "left",
+      "clip": "walk-start",
+      "frame": 2,
+      "sourceFrame": 2,
+      "registration": [
+        3,
+        0
+      ],
+      "support": "left"
+    },
+    {
+      "direction": "left",
+      "clip": "walk-stop",
+      "frame": 1,
+      "sourceFrame": 1,
+      "registration": [
+        3,
+        0
+      ],
+      "support": "both"
+    },
+    {
+      "direction": "left",
+      "clip": "walk-stop",
+      "frame": 2,
+      "sourceFrame": 2,
+      "registration": [
+        3,
+        0
+      ],
+      "support": "both"
+    },
+    {
+      "direction": "up-left",
+      "clip": "idle",
+      "frame": 0,
+      "sourceFrame": 0,
+      "registration": [
+        0,
+        0
+      ],
+      "support": "both"
+    },
+    {
+      "direction": "up-left",
+      "clip": "walk",
+      "frame": 1,
+      "sourceFrame": 5,
+      "registration": [
+        0,
+        0
+      ],
+      "support": "right"
+    },
+    {
+      "direction": "up-left",
+      "clip": "walk",
+      "frame": 2,
+      "sourceFrame": 6,
+      "registration": [
+        0,
+        0
+      ],
+      "support": "right"
+    },
+    {
+      "direction": "up-left",
+      "clip": "walk",
+      "frame": 3,
+      "sourceFrame": 7,
+      "registration": [
+        0,
+        0
+      ],
+      "support": "right"
+    },
+    {
+      "direction": "up-left",
+      "clip": "walk",
+      "frame": 4,
+      "sourceFrame": 8,
+      "registration": [
+        0,
+        0
+      ],
+      "support": "right"
+    },
+    {
+      "direction": "up-left",
+      "clip": "walk",
+      "frame": 5,
+      "sourceFrame": 1,
+      "registration": [
+        0,
+        0
+      ],
+      "support": "left"
+    },
+    {
+      "direction": "up-left",
+      "clip": "walk",
+      "frame": 6,
+      "sourceFrame": 2,
+      "registration": [
+        0,
+        0
+      ],
+      "support": "left"
+    },
+    {
+      "direction": "up-left",
+      "clip": "walk",
+      "frame": 7,
+      "sourceFrame": 3,
+      "registration": [
+        0,
+        0
+      ],
+      "support": "left"
+    },
+    {
+      "direction": "up-left",
+      "clip": "walk",
+      "frame": 8,
+      "sourceFrame": 4,
+      "registration": [
+        0,
+        0
+      ],
+      "support": "left"
+    },
+    {
+      "direction": "up-left",
+      "clip": "walk-start",
+      "frame": 1,
+      "sourceFrame": 1,
+      "registration": [
+        0,
+        0
+      ],
+      "support": "right"
+    },
+    {
+      "direction": "up-left",
+      "clip": "walk-start",
+      "frame": 2,
+      "sourceFrame": 2,
+      "registration": [
+        0,
+        0
+      ],
+      "support": "right"
+    },
+    {
+      "direction": "up-left",
+      "clip": "walk-stop",
+      "frame": 1,
+      "sourceFrame": 1,
+      "registration": [
+        0,
+        0
+      ],
+      "support": "left"
+    },
+    {
+      "direction": "up-left",
+      "clip": "walk-stop",
+      "frame": 2,
+      "sourceFrame": 2,
+      "registration": [
+        0,
+        0
+      ],
+      "support": "both"
+    },
+    {
+      "direction": "up",
+      "clip": "idle",
+      "frame": 0,
+      "sourceFrame": 0,
+      "registration": [
+        0,
+        2
+      ],
+      "support": "both"
+    },
+    {
+      "direction": "up",
+      "clip": "walk",
+      "frame": 1,
+      "sourceFrame": 5,
+      "registration": [
+        0,
+        2
+      ],
+      "support": "right"
+    },
+    {
+      "direction": "up",
+      "clip": "walk",
+      "frame": 2,
+      "sourceFrame": 6,
+      "registration": [
+        0,
+        2
+      ],
+      "support": "right"
+    },
+    {
+      "direction": "up",
+      "clip": "walk",
+      "frame": 3,
+      "sourceFrame": 7,
+      "registration": [
+        0,
+        2
+      ],
+      "support": "right"
+    },
+    {
+      "direction": "up",
+      "clip": "walk",
+      "frame": 4,
+      "sourceFrame": 8,
+      "registration": [
+        0,
+        2
+      ],
+      "support": "right"
+    },
+    {
+      "direction": "up",
+      "clip": "walk",
+      "frame": 5,
+      "sourceFrame": 1,
+      "registration": [
+        0,
+        2
+      ],
+      "support": "left"
+    },
+    {
+      "direction": "up",
+      "clip": "walk",
+      "frame": 6,
+      "sourceFrame": 2,
+      "registration": [
+        0,
+        2
+      ],
+      "support": "left"
+    },
+    {
+      "direction": "up",
+      "clip": "walk",
+      "frame": 7,
+      "sourceFrame": 3,
+      "registration": [
+        0,
+        2
+      ],
+      "support": "left"
+    },
+    {
+      "direction": "up",
+      "clip": "walk",
+      "frame": 8,
+      "sourceFrame": 4,
+      "registration": [
+        0,
+        2
+      ],
+      "support": "left"
+    },
+    {
+      "direction": "up",
+      "clip": "walk-start",
+      "frame": 1,
+      "sourceFrame": 1,
+      "registration": [
+        0,
+        2
+      ],
+      "support": "right"
+    },
+    {
+      "direction": "up",
+      "clip": "walk-start",
+      "frame": 2,
+      "sourceFrame": 2,
+      "registration": [
+        0,
+        2
+      ],
+      "support": "right"
+    },
+    {
+      "direction": "up",
+      "clip": "walk-stop",
+      "frame": 1,
+      "sourceFrame": 1,
+      "registration": [
+        0,
+        2
+      ],
+      "support": "left"
+    },
+    {
+      "direction": "up",
+      "clip": "walk-stop",
+      "frame": 2,
+      "sourceFrame": 2,
+      "registration": [
+        0,
+        2
+      ],
+      "support": "both"
+    },
+    {
+      "direction": "up-right",
+      "clip": "idle",
+      "frame": 0,
+      "sourceFrame": 0,
+      "registration": [
+        1,
+        0
+      ],
+      "support": "both"
+    },
+    {
+      "direction": "up-right",
+      "clip": "walk",
+      "frame": 1,
+      "sourceFrame": 1,
+      "registration": [
+        1,
+        0
+      ],
+      "support": "right"
+    },
+    {
+      "direction": "up-right",
+      "clip": "walk",
+      "frame": 2,
+      "sourceFrame": 2,
+      "registration": [
+        1,
+        0
+      ],
+      "support": "right"
+    },
+    {
+      "direction": "up-right",
+      "clip": "walk",
+      "frame": 3,
+      "sourceFrame": 3,
+      "registration": [
+        1,
+        0
+      ],
+      "support": "right"
+    },
+    {
+      "direction": "up-right",
+      "clip": "walk",
+      "frame": 4,
+      "sourceFrame": 4,
+      "registration": [
+        1,
+        0
+      ],
+      "support": "right"
+    },
+    {
+      "direction": "up-right",
+      "clip": "walk",
+      "frame": 5,
+      "sourceFrame": 5,
+      "registration": [
+        1,
+        0
+      ],
+      "support": "left"
+    },
+    {
+      "direction": "up-right",
+      "clip": "walk",
+      "frame": 6,
+      "sourceFrame": 6,
+      "registration": [
+        1,
+        0
+      ],
+      "support": "left"
+    },
+    {
+      "direction": "up-right",
+      "clip": "walk",
+      "frame": 7,
+      "sourceFrame": 7,
+      "registration": [
+        1,
+        0
+      ],
+      "support": "left"
+    },
+    {
+      "direction": "up-right",
+      "clip": "walk",
+      "frame": 8,
+      "sourceFrame": 8,
+      "registration": [
+        1,
+        0
+      ],
+      "support": "left"
+    },
+    {
+      "direction": "up-right",
+      "clip": "walk-start",
+      "frame": 1,
+      "sourceFrame": 1,
+      "registration": [
+        1,
+        0
+      ],
+      "support": "left"
+    },
+    {
+      "direction": "up-right",
+      "clip": "walk-start",
+      "frame": 2,
+      "sourceFrame": 2,
+      "registration": [
+        1,
+        0
+      ],
+      "support": "left"
+    },
+    {
+      "direction": "up-right",
+      "clip": "walk-stop",
+      "frame": 1,
+      "sourceFrame": 1,
+      "registration": [
+        1,
+        0
+      ],
+      "support": "right"
+    },
+    {
+      "direction": "up-right",
+      "clip": "walk-stop",
+      "frame": 2,
+      "sourceFrame": 2,
+      "registration": [
+        1,
+        0
+      ],
+      "support": "both"
+    },
+    {
+      "direction": "right",
+      "clip": "idle",
+      "frame": 0,
+      "sourceFrame": 0,
+      "registration": [
+        -2,
+        0
+      ],
+      "support": "both"
+    },
+    {
+      "direction": "right",
+      "clip": "walk",
+      "frame": 1,
+      "sourceFrame": 1,
+      "registration": [
+        -2,
+        0
+      ],
+      "support": "right"
+    },
+    {
+      "direction": "right",
+      "clip": "walk",
+      "frame": 2,
+      "sourceFrame": 2,
+      "registration": [
+        -2,
+        0
+      ],
+      "support": "right"
+    },
+    {
+      "direction": "right",
+      "clip": "walk",
+      "frame": 3,
+      "sourceFrame": 3,
+      "registration": [
+        -2,
+        0
+      ],
+      "support": "right"
+    },
+    {
+      "direction": "right",
+      "clip": "walk",
+      "frame": 4,
+      "sourceFrame": 4,
+      "registration": [
+        -2,
+        0
+      ],
+      "support": "right"
+    },
+    {
+      "direction": "right",
+      "clip": "walk",
+      "frame": 5,
+      "sourceFrame": 5,
+      "registration": [
+        -2,
+        0
+      ],
+      "support": "left"
+    },
+    {
+      "direction": "right",
+      "clip": "walk",
+      "frame": 6,
+      "sourceFrame": 6,
+      "registration": [
+        -2,
+        0
+      ],
+      "support": "left"
+    },
+    {
+      "direction": "right",
+      "clip": "walk",
+      "frame": 7,
+      "sourceFrame": 7,
+      "registration": [
+        -2,
+        0
+      ],
+      "support": "left"
+    },
+    {
+      "direction": "right",
+      "clip": "walk",
+      "frame": 8,
+      "sourceFrame": 8,
+      "registration": [
+        -2,
+        0
+      ],
+      "support": "left"
+    },
+    {
+      "direction": "right",
+      "clip": "walk-start",
+      "frame": 1,
+      "sourceFrame": 1,
+      "registration": [
+        -2,
+        0
+      ],
+      "support": "both"
+    },
+    {
+      "direction": "right",
+      "clip": "walk-start",
+      "frame": 2,
+      "sourceFrame": 2,
+      "registration": [
+        -2,
+        0
+      ],
+      "support": "right"
+    },
+    {
+      "direction": "right",
+      "clip": "walk-stop",
+      "frame": 1,
+      "sourceFrame": 1,
+      "registration": [
+        -2,
+        0
+      ],
+      "support": "both"
+    },
+    {
+      "direction": "right",
+      "clip": "walk-stop",
+      "frame": 2,
+      "sourceFrame": 2,
+      "registration": [
+        -2,
+        0
+      ],
+      "support": "both"
+    },
+    {
+      "direction": "down-right",
+      "clip": "idle",
+      "frame": 0,
+      "sourceFrame": 0,
+      "registration": [
+        0,
+        1
+      ],
+      "support": "both"
+    },
+    {
+      "direction": "down-right",
+      "clip": "walk",
+      "frame": 1,
+      "sourceFrame": 1,
+      "registration": [
+        0,
+        1
+      ],
+      "support": "right"
+    },
+    {
+      "direction": "down-right",
+      "clip": "walk",
+      "frame": 2,
+      "sourceFrame": 2,
+      "registration": [
+        0,
+        1
+      ],
+      "support": "right"
+    },
+    {
+      "direction": "down-right",
+      "clip": "walk",
+      "frame": 3,
+      "sourceFrame": 3,
+      "registration": [
+        0,
+        1
+      ],
+      "support": "right"
+    },
+    {
+      "direction": "down-right",
+      "clip": "walk",
+      "frame": 4,
+      "sourceFrame": 4,
+      "registration": [
+        0,
+        1
+      ],
+      "support": "right"
+    },
+    {
+      "direction": "down-right",
+      "clip": "walk",
+      "frame": 5,
+      "sourceFrame": 5,
+      "registration": [
+        0,
+        1
+      ],
+      "support": "left"
+    },
+    {
+      "direction": "down-right",
+      "clip": "walk",
+      "frame": 6,
+      "sourceFrame": 6,
+      "registration": [
+        0,
+        1
+      ],
+      "support": "left"
+    },
+    {
+      "direction": "down-right",
+      "clip": "walk",
+      "frame": 7,
+      "sourceFrame": 7,
+      "registration": [
+        0,
+        1
+      ],
+      "support": "left"
+    },
+    {
+      "direction": "down-right",
+      "clip": "walk",
+      "frame": 8,
+      "sourceFrame": 8,
+      "registration": [
+        0,
+        1
+      ],
+      "support": "left"
+    },
+    {
+      "direction": "down-right",
+      "clip": "walk-start",
+      "frame": 1,
+      "sourceFrame": 1,
+      "registration": [
+        0,
+        1
+      ],
+      "support": "left"
+    },
+    {
+      "direction": "down-right",
+      "clip": "walk-start",
+      "frame": 2,
+      "sourceFrame": 2,
+      "registration": [
+        0,
+        1
+      ],
+      "support": "left"
+    },
+    {
+      "direction": "down-right",
+      "clip": "walk-stop",
+      "frame": 1,
+      "sourceFrame": 1,
+      "registration": [
+        0,
+        1
+      ],
+      "support": "right"
+    },
+    {
+      "direction": "down-right",
+      "clip": "walk-stop",
+      "frame": 2,
+      "sourceFrame": 2,
+      "registration": [
+        0,
+        1
+      ],
+      "support": "both"
+    }
+  ],
+  "downCommonLowerLayerProofs": 52,
+  "singleBodyID": "p1-eight-way-base-v1",
+  "swordOverride": "UR uses original anatomical right-shoulder diagonal13poses, not reflected left shoulder; later in drawOrder before head",
+  "registration": {
+    "down": [
+      4,
+      -1
+    ],
+    "down-left": [
+      1,
+      1
+    ],
+    "left": [
+      3,
+      0
+    ],
+    "up-left": [
+      0,
+      0
+    ],
+    "up": [
+      0,
+      2
+    ],
+    "up-right": [
+      1,
+      0
+    ],
+    "right": [
+      -2,
+      0
+    ],
+    "down-right": [
+      0,
+      1
+    ]
+  },
+  "walkSourceOrder": {
+    "down": [
+      8,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "down-left": [
+      5,
+      6,
+      7,
+      8,
+      1,
+      2,
+      3,
+      4
+    ],
+    "left": [
+      5,
+      6,
+      7,
+      8,
+      1,
+      2,
+      3,
+      4
+    ],
+    "up-left": [
+      5,
+      6,
+      7,
+      8,
+      1,
+      2,
+      3,
+      4
+    ],
+    "up": [
+      5,
+      6,
+      7,
+      8,
+      1,
+      2,
+      3,
+      4
+    ],
+    "up-right": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "right": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "down-right": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ]
+  }
+}

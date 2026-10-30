@@ -1,0 +1,1652 @@
+[
+  {
+    "frame": 0,
+    "timeMs": 0,
+    "hp": 3,
+    "damageVisible": false,
+    "deathActive": false,
+    "ringAlpha": 0,
+    "darken": 0.0,
+    "cameraAge": null
+  },
+  {
+    "frame": 1,
+    "timeMs": 40,
+    "hp": 3,
+    "damageVisible": false,
+    "deathActive": false,
+    "ringAlpha": 0,
+    "darken": 0.0,
+    "cameraAge": null
+  },
+  {
+    "frame": 2,
+    "timeMs": 80,
+    "hp": 3,
+    "damageVisible": false,
+    "deathActive": false,
+    "ringAlpha": 0,
+    "darken": 0.0,
+    "cameraAge": null
+  },
+  {
+    "frame": 3,
+    "timeMs": 120,
+    "hp": 3,
+    "damageVisible": false,
+    "deathActive": false,
+    "ringAlpha": 0,
+    "darken": 0.0,
+    "cameraAge": null
+  },
+  {
+    "frame": 4,
+    "timeMs": 160,
+    "hp": 3,
+    "damageVisible": false,
+    "deathActive": false,
+    "ringAlpha": 0,
+    "darken": 0.0,
+    "cameraAge": null
+  },
+  {
+    "frame": 5,
+    "timeMs": 200,
+    "hp": 3,
+    "damageVisible": false,
+    "deathActive": false,
+    "ringAlpha": 0,
+    "darken": 0.0,
+    "cameraAge": null
+  },
+  {
+    "frame": 6,
+    "timeMs": 240,
+    "hp": 3,
+    "damageVisible": false,
+    "deathActive": false,
+    "ringAlpha": 0,
+    "darken": 0.0,
+    "cameraAge": null
+  },
+  {
+    "frame": 7,
+    "timeMs": 280,
+    "hp": 3,
+    "damageVisible": false,
+    "deathActive": false,
+    "ringAlpha": 0,
+    "darken": 0.0,
+    "cameraAge": null
+  },
+  {
+    "frame": 8,
+    "timeMs": 320,
+    "hp": 3,
+    "damageVisible": false,
+    "deathActive": false,
+    "ringAlpha": 0,
+    "darken": 0.0,
+    "cameraAge": null
+  },
+  {
+    "frame": 9,
+    "timeMs": 360,
+    "hp": 3,
+    "damageVisible": false,
+    "deathActive": false,
+    "ringAlpha": 0,
+    "darken": 0.0,
+    "cameraAge": null
+  },
+  {
+    "frame": 10,
+    "timeMs": 400,
+    "hp": 3,
+    "damageVisible": false,
+    "deathActive": false,
+    "ringAlpha": 0,
+    "darken": 0.0,
+    "cameraAge": null
+  },
+  {
+    "frame": 11,
+    "timeMs": 440,
+    "hp": 3,
+    "damageVisible": false,
+    "deathActive": false,
+    "ringAlpha": 0,
+    "darken": 0.0,
+    "cameraAge": null
+  },
+  {
+    "frame": 12,
+    "timeMs": 480,
+    "hp": 3,
+    "damageVisible": false,
+    "deathActive": false,
+    "ringAlpha": 0,
+    "darken": 0.0,
+    "cameraAge": null
+  },
+  {
+    "frame": 13,
+    "timeMs": 520,
+    "hp": 3,
+    "damageVisible": false,
+    "deathActive": false,
+    "ringAlpha": 0,
+    "darken": 0.0,
+    "cameraAge": null
+  },
+  {
+    "frame": 14,
+    "timeMs": 560,
+    "hp": 3,
+    "damageVisible": false,
+    "deathActive": false,
+    "ringAlpha": 0,
+    "darken": 0.0,
+    "cameraAge": null
+  },
+  {
+    "frame": 15,
+    "timeMs": 600,
+    "hp": 3,
+    "damageVisible": false,
+    "deathActive": false,
+    "ringAlpha": 0,
+    "darken": 0.0,
+    "cameraAge": null
+  },
+  {
+    "frame": 16,
+    "timeMs": 640,
+    "hp": 3,
+    "damageVisible": false,
+    "deathActive": false,
+    "ringAlpha": 0,
+    "darken": 0.0,
+    "cameraAge": null
+  },
+  {
+    "frame": 17,
+    "timeMs": 680,
+    "hp": 3,
+    "damageVisible": false,
+    "deathActive": false,
+    "ringAlpha": 0,
+    "darken": 0.0,
+    "cameraAge": null
+  },
+  {
+    "frame": 18,
+    "timeMs": 720,
+    "hp": 3,
+    "damageVisible": false,
+    "deathActive": false,
+    "ringAlpha": 0,
+    "darken": 0.0,
+    "cameraAge": null
+  },
+  {
+    "frame": 19,
+    "timeMs": 760,
+    "hp": 3,
+    "damageVisible": false,
+    "deathActive": false,
+    "ringAlpha": 0,
+    "darken": 0.0,
+    "cameraAge": null
+  },
+  {
+    "frame": 20,
+    "timeMs": 800,
+    "hp": 3,
+    "damageVisible": false,
+    "deathActive": false,
+    "ringAlpha": 0,
+    "darken": 0.0,
+    "cameraAge": null
+  },
+  {
+    "frame": 21,
+    "timeMs": 840,
+    "hp": 3,
+    "damageVisible": false,
+    "deathActive": false,
+    "ringAlpha": 0,
+    "darken": 0.0,
+    "cameraAge": null
+  },
+  {
+    "frame": 22,
+    "timeMs": 880,
+    "hp": 3,
+    "damageVisible": false,
+    "deathActive": false,
+    "ringAlpha": 0,
+    "darken": 0.0,
+    "cameraAge": null
+  },
+  {
+    "frame": 23,
+    "timeMs": 920,
+    "hp": 3,
+    "damageVisible": false,
+    "deathActive": false,
+    "ringAlpha": 0,
+    "darken": 0.0,
+    "cameraAge": null
+  },
+  {
+    "frame": 24,
+    "timeMs": 960,
+    "hp": 3,
+    "damageVisible": false,
+    "deathActive": false,
+    "ringAlpha": 0,
+    "darken": 0.0,
+    "cameraAge": null
+  },
+  {
+    "frame": 25,
+    "timeMs": 1000,
+    "hp": 3,
+    "damageVisible": false,
+    "deathActive": false,
+    "ringAlpha": 0,
+    "darken": 0.0,
+    "cameraAge": null
+  },
+  {
+    "frame": 26,
+    "timeMs": 1040,
+    "hp": 3,
+    "damageVisible": false,
+    "deathActive": false,
+    "ringAlpha": 0,
+    "darken": 0.0,
+    "cameraAge": null
+  },
+  {
+    "frame": 27,
+    "timeMs": 1080,
+    "hp": 3,
+    "damageVisible": false,
+    "deathActive": false,
+    "ringAlpha": 0,
+    "darken": 0.0,
+    "cameraAge": null
+  },
+  {
+    "frame": 28,
+    "timeMs": 1120,
+    "hp": 3,
+    "damageVisible": false,
+    "deathActive": false,
+    "ringAlpha": 0,
+    "darken": 0.0,
+    "cameraAge": null
+  },
+  {
+    "frame": 29,
+    "timeMs": 1160,
+    "hp": 3,
+    "damageVisible": false,
+    "deathActive": false,
+    "ringAlpha": 0,
+    "darken": 0.0,
+    "cameraAge": null
+  },
+  {
+    "frame": 30,
+    "timeMs": 1200,
+    "hp": 3,
+    "damageVisible": false,
+    "deathActive": false,
+    "ringAlpha": 0,
+    "darken": 0.0,
+    "cameraAge": null
+  },
+  {
+    "frame": 31,
+    "timeMs": 1240,
+    "hp": 3,
+    "damageVisible": false,
+    "deathActive": false,
+    "ringAlpha": 0,
+    "darken": 0.0,
+    "cameraAge": null
+  },
+  {
+    "frame": 32,
+    "timeMs": 1280,
+    "hp": 3,
+    "damageVisible": false,
+    "deathActive": false,
+    "ringAlpha": 0,
+    "darken": 0.0,
+    "cameraAge": null
+  },
+  {
+    "frame": 33,
+    "timeMs": 1320,
+    "hp": 3,
+    "damageVisible": false,
+    "deathActive": false,
+    "ringAlpha": 0,
+    "darken": 0.0,
+    "cameraAge": null
+  },
+  {
+    "frame": 34,
+    "timeMs": 1360,
+    "hp": 3,
+    "damageVisible": false,
+    "deathActive": false,
+    "ringAlpha": 0,
+    "darken": 0.0,
+    "cameraAge": null
+  },
+  {
+    "frame": 35,
+    "timeMs": 1400,
+    "hp": 3,
+    "damageVisible": false,
+    "deathActive": false,
+    "ringAlpha": 0,
+    "darken": 0.0,
+    "cameraAge": null
+  },
+  {
+    "frame": 36,
+    "timeMs": 1440,
+    "hp": 3,
+    "damageVisible": false,
+    "deathActive": false,
+    "ringAlpha": 0,
+    "darken": 0.0,
+    "cameraAge": null
+  },
+  {
+    "frame": 37,
+    "timeMs": 1480,
+    "hp": 3,
+    "damageVisible": false,
+    "deathActive": false,
+    "ringAlpha": 0,
+    "darken": 0.0,
+    "cameraAge": null
+  },
+  {
+    "frame": 38,
+    "timeMs": 1520,
+    "hp": 3,
+    "damageVisible": false,
+    "deathActive": false,
+    "ringAlpha": 0,
+    "darken": 0.0,
+    "cameraAge": null
+  },
+  {
+    "frame": 39,
+    "timeMs": 1560,
+    "hp": 3,
+    "damageVisible": false,
+    "deathActive": false,
+    "ringAlpha": 0,
+    "darken": 0.0,
+    "cameraAge": null
+  },
+  {
+    "frame": 40,
+    "timeMs": 1600,
+    "hp": 3,
+    "damageVisible": false,
+    "deathActive": false,
+    "ringAlpha": 0.0,
+    "darken": 0.0,
+    "cameraAge": null
+  },
+  {
+    "frame": 41,
+    "timeMs": 1640,
+    "hp": 3,
+    "damageVisible": false,
+    "deathActive": false,
+    "ringAlpha": 0.03489795918367351,
+    "darken": 0.02492711370262394,
+    "cameraAge": null
+  },
+  {
+    "frame": 42,
+    "timeMs": 1680,
+    "hp": 3,
+    "damageVisible": false,
+    "deathActive": false,
+    "ringAlpha": 0.12489795918367304,
+    "darken": 0.08921282798833788,
+    "cameraAge": null
+  },
+  {
+    "frame": 43,
+    "timeMs": 1720,
+    "hp": 3,
+    "damageVisible": false,
+    "deathActive": false,
+    "ringAlpha": 0.24795918367346895,
+    "darken": 0.17711370262390638,
+    "cameraAge": null
+  },
+  {
+    "frame": 44,
+    "timeMs": 1760,
+    "hp": 3,
+    "damageVisible": false,
+    "deathActive": false,
+    "ringAlpha": 0.3820408163265303,
+    "darken": 0.27288629737609305,
+    "cameraAge": null
+  },
+  {
+    "frame": 45,
+    "timeMs": 1800,
+    "hp": 3,
+    "damageVisible": false,
+    "deathActive": false,
+    "ringAlpha": 0.5051020408163264,
+    "darken": 0.3607871720116617,
+    "cameraAge": null
+  },
+  {
+    "frame": 46,
+    "timeMs": 1840,
+    "hp": 3,
+    "damageVisible": false,
+    "deathActive": false,
+    "ringAlpha": 0.5951020408163264,
+    "darken": 0.42507288629737605,
+    "cameraAge": null
+  },
+  {
+    "frame": 47,
+    "timeMs": 1880,
+    "hp": 3,
+    "damageVisible": false,
+    "deathActive": false,
+    "ringAlpha": 0.63,
+    "darken": 0.45,
+    "cameraAge": null
+  },
+  {
+    "frame": 48,
+    "timeMs": 1920,
+    "hp": 3,
+    "damageVisible": false,
+    "deathActive": false,
+    "ringAlpha": 0.63,
+    "darken": 0.45,
+    "cameraAge": null
+  },
+  {
+    "frame": 49,
+    "timeMs": 1960,
+    "hp": 3,
+    "damageVisible": false,
+    "deathActive": false,
+    "ringAlpha": 0.63,
+    "darken": 0.45,
+    "cameraAge": null
+  },
+  {
+    "frame": 50,
+    "timeMs": 2000,
+    "hp": 3,
+    "damageVisible": false,
+    "deathActive": false,
+    "ringAlpha": 0.63,
+    "darken": 0.45,
+    "cameraAge": null
+  },
+  {
+    "frame": 51,
+    "timeMs": 2040,
+    "hp": 3,
+    "damageVisible": false,
+    "deathActive": false,
+    "ringAlpha": 0.63,
+    "darken": 0.45,
+    "cameraAge": null
+  },
+  {
+    "frame": 52,
+    "timeMs": 2080,
+    "hp": 3,
+    "damageVisible": false,
+    "deathActive": false,
+    "ringAlpha": 0.63,
+    "darken": 0.45,
+    "cameraAge": null
+  },
+  {
+    "frame": 53,
+    "timeMs": 2120,
+    "hp": 3,
+    "damageVisible": false,
+    "deathActive": false,
+    "ringAlpha": 0.63,
+    "darken": 0.45,
+    "cameraAge": null
+  },
+  {
+    "frame": 54,
+    "timeMs": 2160,
+    "hp": 3,
+    "damageVisible": false,
+    "deathActive": false,
+    "ringAlpha": 0.63,
+    "darken": 0.45,
+    "cameraAge": null
+  },
+  {
+    "frame": 55,
+    "timeMs": 2200,
+    "hp": 3,
+    "damageVisible": false,
+    "deathActive": false,
+    "ringAlpha": 0.63,
+    "darken": 0.45,
+    "cameraAge": null
+  },
+  {
+    "frame": 56,
+    "timeMs": 2240,
+    "hp": 3,
+    "damageVisible": false,
+    "deathActive": false,
+    "ringAlpha": 0.63,
+    "darken": 0.45,
+    "cameraAge": null
+  },
+  {
+    "frame": 57,
+    "timeMs": 2280,
+    "hp": 3,
+    "damageVisible": false,
+    "deathActive": false,
+    "ringAlpha": 0.63,
+    "darken": 0.45,
+    "cameraAge": null
+  },
+  {
+    "frame": 58,
+    "timeMs": 2320,
+    "hp": 3,
+    "damageVisible": false,
+    "deathActive": false,
+    "ringAlpha": 0.63,
+    "darken": 0.45,
+    "cameraAge": null
+  },
+  {
+    "frame": 59,
+    "timeMs": 2360,
+    "hp": 3,
+    "damageVisible": false,
+    "deathActive": false,
+    "ringAlpha": 0.63,
+    "darken": 0.45,
+    "cameraAge": null
+  },
+  {
+    "frame": 60,
+    "timeMs": 2400,
+    "hp": 3,
+    "damageVisible": false,
+    "deathActive": false,
+    "ringAlpha": 0.63,
+    "darken": 0.45,
+    "cameraAge": null
+  },
+  {
+    "frame": 61,
+    "timeMs": 2440,
+    "hp": 3,
+    "damageVisible": false,
+    "deathActive": false,
+    "ringAlpha": 0.63,
+    "darken": 0.45,
+    "cameraAge": null
+  },
+  {
+    "frame": 62,
+    "timeMs": 2480,
+    "hp": 3,
+    "damageVisible": false,
+    "deathActive": false,
+    "ringAlpha": 0.63,
+    "darken": 0.45,
+    "cameraAge": null
+  },
+  {
+    "frame": 63,
+    "timeMs": 2520,
+    "hp": 3,
+    "damageVisible": false,
+    "deathActive": false,
+    "ringAlpha": 0.63,
+    "darken": 0.45,
+    "cameraAge": null
+  },
+  {
+    "frame": 64,
+    "timeMs": 2560,
+    "hp": 3,
+    "damageVisible": false,
+    "deathActive": false,
+    "ringAlpha": 0.63,
+    "darken": 0.45,
+    "cameraAge": null
+  },
+  {
+    "frame": 65,
+    "timeMs": 2600,
+    "hp": 3,
+    "damageVisible": false,
+    "deathActive": false,
+    "ringAlpha": 0.65,
+    "darken": 0.45,
+    "cameraAge": null
+  },
+  {
+    "frame": 66,
+    "timeMs": 2640,
+    "hp": 3,
+    "damageVisible": false,
+    "deathActive": false,
+    "ringAlpha": 0.65,
+    "darken": 0.45442524417731034,
+    "cameraAge": null
+  },
+  {
+    "frame": 67,
+    "timeMs": 2680,
+    "hp": 3,
+    "damageVisible": false,
+    "deathActive": false,
+    "ringAlpha": 0.65,
+    "darken": 0.4665589782118708,
+    "cameraAge": null
+  },
+  {
+    "frame": 68,
+    "timeMs": 2720,
+    "hp": 3,
+    "damageVisible": false,
+    "deathActive": false,
+    "ringAlpha": 0.65,
+    "darken": 0.48468820435762594,
+    "cameraAge": null
+  },
+  {
+    "frame": 69,
+    "timeMs": 2760,
+    "hp": 3,
+    "damageVisible": false,
+    "deathActive": false,
+    "ringAlpha": 0.65,
+    "darken": 0.50709992486852,
+    "cameraAge": null
+  },
+  {
+    "frame": 70,
+    "timeMs": 2800,
+    "hp": 3,
+    "damageVisible": false,
+    "deathActive": false,
+    "ringAlpha": 0.65,
+    "darken": 0.5320811419984975,
+    "cameraAge": null
+  },
+  {
+    "frame": 71,
+    "timeMs": 2840,
+    "hp": 3,
+    "damageVisible": false,
+    "deathActive": false,
+    "ringAlpha": 0.65,
+    "darken": 0.5579188580015025,
+    "cameraAge": null
+  },
+  {
+    "frame": 72,
+    "timeMs": 2880,
+    "hp": 3,
+    "damageVisible": false,
+    "deathActive": false,
+    "ringAlpha": 0.5484375000000009,
+    "darken": 0.58290007513148,
+    "cameraAge": null
+  },
+  {
+    "frame": 73,
+    "timeMs": 2920,
+    "hp": 3,
+    "damageVisible": false,
+    "deathActive": false,
+    "ringAlpha": 0.32500000000000095,
+    "darken": 0.6053117956423741,
+    "cameraAge": null
+  },
+  {
+    "frame": 74,
+    "timeMs": 2960,
+    "hp": 3,
+    "damageVisible": false,
+    "deathActive": false,
+    "ringAlpha": 0.10156250000000051,
+    "darken": 0.6234410217881292,
+    "cameraAge": null
+  },
+  {
+    "frame": 75,
+    "timeMs": 3000,
+    "hp": 3,
+    "damageVisible": false,
+    "deathActive": false,
+    "ringAlpha": 0,
+    "darken": 0.6355747558226897,
+    "cameraAge": null
+  },
+  {
+    "frame": 76,
+    "timeMs": 3040,
+    "hp": 3,
+    "damageVisible": false,
+    "deathActive": false,
+    "ringAlpha": 0,
+    "darken": 0.64,
+    "cameraAge": null
+  },
+  {
+    "frame": 77,
+    "timeMs": 3080,
+    "hp": 3,
+    "damageVisible": false,
+    "deathActive": false,
+    "ringAlpha": 0,
+    "darken": 0.64,
+    "cameraAge": null
+  },
+  {
+    "frame": 78,
+    "timeMs": 3120,
+    "hp": 3,
+    "damageVisible": false,
+    "deathActive": false,
+    "ringAlpha": 0,
+    "darken": 0.64,
+    "cameraAge": null
+  },
+  {
+    "frame": 79,
+    "timeMs": 3160,
+    "hp": 3,
+    "damageVisible": false,
+    "deathActive": false,
+    "ringAlpha": 0,
+    "darken": 0.64,
+    "cameraAge": null
+  },
+  {
+    "frame": 80,
+    "timeMs": 3200,
+    "hp": 3,
+    "damageVisible": false,
+    "deathActive": false,
+    "ringAlpha": 0,
+    "darken": 0.64,
+    "cameraAge": null
+  },
+  {
+    "frame": 81,
+    "timeMs": 3240,
+    "hp": 3,
+    "damageVisible": false,
+    "deathActive": false,
+    "ringAlpha": 0,
+    "darken": 0.64,
+    "cameraAge": null
+  },
+  {
+    "frame": 82,
+    "timeMs": 3280,
+    "hp": 3,
+    "damageVisible": false,
+    "deathActive": false,
+    "ringAlpha": 0,
+    "darken": 0.64,
+    "cameraAge": null
+  },
+  {
+    "frame": 83,
+    "timeMs": 3320,
+    "hp": 3,
+    "damageVisible": false,
+    "deathActive": false,
+    "ringAlpha": 0,
+    "darken": 0.64,
+    "cameraAge": null
+  },
+  {
+    "frame": 84,
+    "timeMs": 3360,
+    "hp": 3,
+    "damageVisible": false,
+    "deathActive": false,
+    "ringAlpha": 0,
+    "darken": 0.64,
+    "cameraAge": null
+  },
+  {
+    "frame": 85,
+    "timeMs": 3400,
+    "hp": 3,
+    "damageVisible": false,
+    "deathActive": false,
+    "ringAlpha": 0,
+    "darken": 0.64,
+    "cameraAge": null
+  },
+  {
+    "frame": 86,
+    "timeMs": 3440,
+    "hp": 3,
+    "damageVisible": false,
+    "deathActive": false,
+    "ringAlpha": 0,
+    "darken": 0.64,
+    "cameraAge": null
+  },
+  {
+    "frame": 87,
+    "timeMs": 3480,
+    "hp": 3,
+    "damageVisible": false,
+    "deathActive": false,
+    "ringAlpha": 0,
+    "darken": 0.64,
+    "cameraAge": null
+  },
+  {
+    "frame": 88,
+    "timeMs": 3520,
+    "hp": 3,
+    "damageVisible": false,
+    "deathActive": false,
+    "ringAlpha": 0,
+    "darken": 0.64,
+    "cameraAge": null
+  },
+  {
+    "frame": 89,
+    "timeMs": 3560,
+    "hp": 3,
+    "damageVisible": false,
+    "deathActive": false,
+    "ringAlpha": 0,
+    "darken": 0.64,
+    "cameraAge": null
+  },
+  {
+    "frame": 90,
+    "timeMs": 3600,
+    "hp": 3,
+    "damageVisible": false,
+    "deathActive": false,
+    "ringAlpha": 0,
+    "darken": 0.64,
+    "cameraAge": null
+  },
+  {
+    "frame": 91,
+    "timeMs": 3640,
+    "hp": 3,
+    "damageVisible": false,
+    "deathActive": false,
+    "ringAlpha": 0,
+    "darken": 0.64,
+    "cameraAge": null
+  },
+  {
+    "frame": 92,
+    "timeMs": 3680,
+    "hp": 0,
+    "damageVisible": true,
+    "deathActive": true,
+    "ringAlpha": 0,
+    "darken": 0.64,
+    "cameraAge": 0.013333333333333197
+  },
+  {
+    "frame": 93,
+    "timeMs": 3720,
+    "hp": 0,
+    "damageVisible": true,
+    "deathActive": true,
+    "ringAlpha": 0,
+    "darken": 0.7985693843719798,
+    "cameraAge": 0.05333333333333323
+  },
+  {
+    "frame": 94,
+    "timeMs": 3760,
+    "hp": 0,
+    "damageVisible": true,
+    "deathActive": true,
+    "ringAlpha": 0,
+    "darken": 0.64,
+    "cameraAge": 0.09333333333333327
+  },
+  {
+    "frame": 95,
+    "timeMs": 3800,
+    "hp": 0,
+    "damageVisible": true,
+    "deathActive": true,
+    "ringAlpha": 0,
+    "darken": 0.64,
+    "cameraAge": 0.1333333333333333
+  },
+  {
+    "frame": 96,
+    "timeMs": 3840,
+    "hp": 0,
+    "damageVisible": true,
+    "deathActive": true,
+    "ringAlpha": 0,
+    "darken": 0.64,
+    "cameraAge": 0.1733333333333329
+  },
+  {
+    "frame": 97,
+    "timeMs": 3880,
+    "hp": 0,
+    "damageVisible": true,
+    "deathActive": true,
+    "ringAlpha": 0,
+    "darken": 0.64,
+    "cameraAge": 0.21333333333333293
+  },
+  {
+    "frame": 98,
+    "timeMs": 3920,
+    "hp": 0,
+    "damageVisible": true,
+    "deathActive": true,
+    "ringAlpha": 0,
+    "darken": 0.64,
+    "cameraAge": 0.25333333333333297
+  },
+  {
+    "frame": 99,
+    "timeMs": 3960,
+    "hp": 0,
+    "damageVisible": true,
+    "deathActive": true,
+    "ringAlpha": 0,
+    "darken": 0.64,
+    "cameraAge": 0.293333333333333
+  },
+  {
+    "frame": 100,
+    "timeMs": 4000,
+    "hp": 0,
+    "damageVisible": true,
+    "deathActive": true,
+    "ringAlpha": 0,
+    "darken": 0.64,
+    "cameraAge": 0.33333333333333304
+  },
+  {
+    "frame": 101,
+    "timeMs": 4040,
+    "hp": 0,
+    "damageVisible": true,
+    "deathActive": true,
+    "ringAlpha": 0,
+    "darken": 0.64,
+    "cameraAge": 0.3733333333333331
+  },
+  {
+    "frame": 102,
+    "timeMs": 4080,
+    "hp": 0,
+    "damageVisible": true,
+    "deathActive": true,
+    "ringAlpha": 0,
+    "darken": 0.64,
+    "cameraAge": 0.4133333333333331
+  },
+  {
+    "frame": 103,
+    "timeMs": 4120,
+    "hp": 0,
+    "damageVisible": true,
+    "deathActive": true,
+    "ringAlpha": 0,
+    "darken": 0.64,
+    "cameraAge": 0.45333333333333314
+  },
+  {
+    "frame": 104,
+    "timeMs": 4160,
+    "hp": 0,
+    "damageVisible": true,
+    "deathActive": true,
+    "ringAlpha": 0,
+    "darken": 0.64,
+    "cameraAge": 0.4933333333333332
+  },
+  {
+    "frame": 105,
+    "timeMs": 4200,
+    "hp": 0,
+    "damageVisible": true,
+    "deathActive": true,
+    "ringAlpha": 0,
+    "darken": 0.64,
+    "cameraAge": 0.5333333333333332
+  },
+  {
+    "frame": 106,
+    "timeMs": 4240,
+    "hp": 0,
+    "damageVisible": true,
+    "deathActive": true,
+    "ringAlpha": 0,
+    "darken": 0.64,
+    "cameraAge": 0.5733333333333333
+  },
+  {
+    "frame": 107,
+    "timeMs": 4280,
+    "hp": 0,
+    "damageVisible": true,
+    "deathActive": true,
+    "ringAlpha": 0,
+    "darken": 0.64,
+    "cameraAge": 0.6133333333333333
+  },
+  {
+    "frame": 108,
+    "timeMs": 4320,
+    "hp": 0,
+    "damageVisible": true,
+    "deathActive": true,
+    "ringAlpha": 0,
+    "darken": 0.64,
+    "cameraAge": 0.6533333333333333
+  },
+  {
+    "frame": 109,
+    "timeMs": 4360,
+    "hp": 0,
+    "damageVisible": true,
+    "deathActive": true,
+    "ringAlpha": 0,
+    "darken": 0.64,
+    "cameraAge": 0.6933333333333334
+  },
+  {
+    "frame": 110,
+    "timeMs": 4400,
+    "hp": 0,
+    "damageVisible": false,
+    "deathActive": true,
+    "ringAlpha": 0,
+    "darken": 0.64,
+    "cameraAge": 0.7333333333333334
+  },
+  {
+    "frame": 111,
+    "timeMs": 4440,
+    "hp": 0,
+    "damageVisible": false,
+    "deathActive": true,
+    "ringAlpha": 0,
+    "darken": 0.64,
+    "cameraAge": 0.7733333333333334
+  },
+  {
+    "frame": 112,
+    "timeMs": 4480,
+    "hp": 0,
+    "damageVisible": false,
+    "deathActive": true,
+    "ringAlpha": 0,
+    "darken": 0.64,
+    "cameraAge": 0.8133333333333335
+  },
+  {
+    "frame": 113,
+    "timeMs": 4520,
+    "hp": 0,
+    "damageVisible": false,
+    "deathActive": true,
+    "ringAlpha": 0,
+    "darken": 0.64,
+    "cameraAge": 0.8533333333333335
+  },
+  {
+    "frame": 114,
+    "timeMs": 4560,
+    "hp": 0,
+    "damageVisible": false,
+    "deathActive": true,
+    "ringAlpha": 0,
+    "darken": 0.64,
+    "cameraAge": 0.8933333333333335
+  },
+  {
+    "frame": 115,
+    "timeMs": 4600,
+    "hp": 0,
+    "damageVisible": false,
+    "deathActive": true,
+    "ringAlpha": 0,
+    "darken": 0.64,
+    "cameraAge": 0.9333333333333336
+  },
+  {
+    "frame": 116,
+    "timeMs": 4640,
+    "hp": 0,
+    "damageVisible": false,
+    "deathActive": true,
+    "ringAlpha": 0,
+    "darken": 0.6383716670059028,
+    "cameraAge": 0.9733333333333327
+  },
+  {
+    "frame": 117,
+    "timeMs": 4680,
+    "hp": 0,
+    "damageVisible": false,
+    "deathActive": true,
+    "ringAlpha": 0,
+    "darken": 0.6336169346631387,
+    "cameraAge": 1.0133333333333328
+  },
+  {
+    "frame": 118,
+    "timeMs": 4720,
+    "hp": 0,
+    "damageVisible": false,
+    "deathActive": true,
+    "ringAlpha": 0,
+    "darken": 0.6259312029309995,
+    "cameraAge": 1.0533333333333328
+  },
+  {
+    "frame": 119,
+    "timeMs": 4760,
+    "hp": 0,
+    "damageVisible": false,
+    "deathActive": true,
+    "ringAlpha": 0,
+    "darken": 0.6155098717687768,
+    "cameraAge": 1.0933333333333328
+  },
+  {
+    "frame": 120,
+    "timeMs": 4800,
+    "hp": 0,
+    "damageVisible": false,
+    "deathActive": true,
+    "ringAlpha": 0,
+    "darken": 0.6025483411357624,
+    "cameraAge": 1.1333333333333329
+  },
+  {
+    "frame": 121,
+    "timeMs": 4840,
+    "hp": 0,
+    "damageVisible": false,
+    "deathActive": true,
+    "ringAlpha": 0,
+    "darken": 0.5872420109912478,
+    "cameraAge": 1.173333333333333
+  },
+  {
+    "frame": 122,
+    "timeMs": 4880,
+    "hp": 0,
+    "damageVisible": false,
+    "deathActive": true,
+    "ringAlpha": 0,
+    "darken": 0.5697862812945248,
+    "cameraAge": 1.213333333333333
+  },
+  {
+    "frame": 123,
+    "timeMs": 4920,
+    "hp": 0,
+    "damageVisible": false,
+    "deathActive": true,
+    "ringAlpha": 0,
+    "darken": 0.5503765520048851,
+    "cameraAge": 1.253333333333333
+  },
+  {
+    "frame": 124,
+    "timeMs": 4960,
+    "hp": 0,
+    "damageVisible": false,
+    "deathActive": true,
+    "ringAlpha": 0,
+    "darken": 0.5292082230816203,
+    "cameraAge": 1.293333333333333
+  },
+  {
+    "frame": 125,
+    "timeMs": 5000,
+    "hp": 0,
+    "damageVisible": false,
+    "deathActive": true,
+    "ringAlpha": 0,
+    "darken": 0.5064766944840221,
+    "cameraAge": 1.333333333333333
+  },
+  {
+    "frame": 126,
+    "timeMs": 5040,
+    "hp": 0,
+    "damageVisible": false,
+    "deathActive": true,
+    "ringAlpha": 0,
+    "darken": 0.4823773661713821,
+    "cameraAge": 1.373333333333333
+  },
+  {
+    "frame": 127,
+    "timeMs": 5080,
+    "hp": 0,
+    "damageVisible": false,
+    "deathActive": true,
+    "ringAlpha": 0,
+    "darken": 0.4571056381029921,
+    "cameraAge": 1.413333333333333
+  },
+  {
+    "frame": 128,
+    "timeMs": 5120,
+    "hp": 0,
+    "damageVisible": false,
+    "deathActive": true,
+    "ringAlpha": 0,
+    "darken": 0.4308569102381437,
+    "cameraAge": 1.4533333333333331
+  },
+  {
+    "frame": 129,
+    "timeMs": 5160,
+    "hp": 0,
+    "damageVisible": false,
+    "deathActive": true,
+    "ringAlpha": 0,
+    "darken": 0.40382658253612863,
+    "cameraAge": 1.4933333333333332
+  },
+  {
+    "frame": 130,
+    "timeMs": 5200,
+    "hp": 0,
+    "damageVisible": false,
+    "deathActive": true,
+    "ringAlpha": 0,
+    "darken": 0.3762100549562385,
+    "cameraAge": 1.5333333333333332
+  },
+  {
+    "frame": 131,
+    "timeMs": 5240,
+    "hp": 0,
+    "damageVisible": false,
+    "deathActive": true,
+    "ringAlpha": 0,
+    "darken": 0.3482027274577651,
+    "cameraAge": 1.5733333333333333
+  },
+  {
+    "frame": 132,
+    "timeMs": 5280,
+    "hp": 0,
+    "damageVisible": false,
+    "deathActive": true,
+    "ringAlpha": 0,
+    "darken": 0.31999999999999995,
+    "cameraAge": 1.6133333333333333
+  },
+  {
+    "frame": 133,
+    "timeMs": 5320,
+    "hp": 0,
+    "damageVisible": false,
+    "deathActive": true,
+    "ringAlpha": 0,
+    "darken": 0.2917972725422348,
+    "cameraAge": 1.6533333333333333
+  },
+  {
+    "frame": 134,
+    "timeMs": 5360,
+    "hp": 0,
+    "damageVisible": false,
+    "deathActive": true,
+    "ringAlpha": 0,
+    "darken": 0.2637899450437614,
+    "cameraAge": 1.6933333333333334
+  },
+  {
+    "frame": 135,
+    "timeMs": 5400,
+    "hp": 0,
+    "damageVisible": false,
+    "deathActive": true,
+    "ringAlpha": 0,
+    "darken": 0.23617341746387127,
+    "cameraAge": 1.7333333333333334
+  },
+  {
+    "frame": 136,
+    "timeMs": 5440,
+    "hp": 0,
+    "damageVisible": false,
+    "deathActive": true,
+    "ringAlpha": 0,
+    "darken": 0.20914308976185617,
+    "cameraAge": 1.7733333333333334
+  },
+  {
+    "frame": 137,
+    "timeMs": 5480,
+    "hp": 0,
+    "damageVisible": false,
+    "deathActive": true,
+    "ringAlpha": 0,
+    "darken": 0.18289436189700772,
+    "cameraAge": 1.8133333333333335
+  },
+  {
+    "frame": 138,
+    "timeMs": 5520,
+    "hp": 0,
+    "damageVisible": false,
+    "deathActive": true,
+    "ringAlpha": 0,
+    "darken": 0.15762263382861774,
+    "cameraAge": 1.8533333333333335
+  },
+  {
+    "frame": 139,
+    "timeMs": 5560,
+    "hp": 0,
+    "damageVisible": false,
+    "deathActive": true,
+    "ringAlpha": 0,
+    "darken": 0.13352330551597782,
+    "cameraAge": 1.8933333333333335
+  },
+  {
+    "frame": 140,
+    "timeMs": 5600,
+    "hp": 0,
+    "damageVisible": false,
+    "deathActive": true,
+    "ringAlpha": 0,
+    "darken": 0.11079177691837956,
+    "cameraAge": 1.9333333333333336
+  },
+  {
+    "frame": 141,
+    "timeMs": 5640,
+    "hp": 0,
+    "damageVisible": false,
+    "deathActive": true,
+    "ringAlpha": 0,
+    "darken": 0.08962344799511528,
+    "cameraAge": 1.9733333333333327
+  },
+  {
+    "frame": 142,
+    "timeMs": 5680,
+    "hp": 0,
+    "damageVisible": false,
+    "deathActive": true,
+    "ringAlpha": 0,
+    "darken": 0.07021371870547555,
+    "cameraAge": 2.0133333333333328
+  },
+  {
+    "frame": 143,
+    "timeMs": 5720,
+    "hp": 0,
+    "damageVisible": false,
+    "deathActive": true,
+    "ringAlpha": 0,
+    "darken": 0.05275798900875238,
+    "cameraAge": 2.053333333333333
+  },
+  {
+    "frame": 144,
+    "timeMs": 5760,
+    "hp": 0,
+    "damageVisible": false,
+    "deathActive": true,
+    "ringAlpha": 0,
+    "darken": 0.03745165886423784,
+    "cameraAge": 2.093333333333333
+  },
+  {
+    "frame": 145,
+    "timeMs": 5800,
+    "hp": 0,
+    "damageVisible": false,
+    "deathActive": true,
+    "ringAlpha": 0,
+    "darken": 0.02449012823122338,
+    "cameraAge": 2.133333333333333
+  },
+  {
+    "frame": 146,
+    "timeMs": 5840,
+    "hp": 0,
+    "damageVisible": false,
+    "deathActive": true,
+    "ringAlpha": 0,
+    "darken": 0.014068797069000638,
+    "cameraAge": 2.173333333333333
+  },
+  {
+    "frame": 147,
+    "timeMs": 5880,
+    "hp": 0,
+    "damageVisible": false,
+    "deathActive": true,
+    "ringAlpha": 0,
+    "darken": 0.006383065336861407,
+    "cameraAge": 2.213333333333333
+  },
+  {
+    "frame": 148,
+    "timeMs": 5920,
+    "hp": 0,
+    "damageVisible": false,
+    "deathActive": true,
+    "ringAlpha": 0,
+    "darken": 0.0016283329940972636,
+    "cameraAge": 2.253333333333333
+  },
+  {
+    "frame": 149,
+    "timeMs": 5960,
+    "hp": 0,
+    "damageVisible": false,
+    "deathActive": true,
+    "ringAlpha": 0,
+    "darken": 0.0,
+    "cameraAge": 2.293333333333333
+  },
+  {
+    "frame": 150,
+    "timeMs": 6000,
+    "hp": 0,
+    "damageVisible": false,
+    "deathActive": true,
+    "ringAlpha": 0,
+    "darken": 0.0,
+    "cameraAge": 2.333333333333333
+  },
+  {
+    "frame": 151,
+    "timeMs": 6040,
+    "hp": 0,
+    "damageVisible": false,
+    "deathActive": true,
+    "ringAlpha": 0,
+    "darken": 0.0,
+    "cameraAge": 2.373333333333333
+  },
+  {
+    "frame": 152,
+    "timeMs": 6080,
+    "hp": 0,
+    "damageVisible": false,
+    "deathActive": true,
+    "ringAlpha": 0,
+    "darken": 0.0,
+    "cameraAge": 2.413333333333333
+  },
+  {
+    "frame": 153,
+    "timeMs": 6120,
+    "hp": 0,
+    "damageVisible": false,
+    "deathActive": true,
+    "ringAlpha": 0,
+    "darken": 0.0,
+    "cameraAge": 2.453333333333333
+  },
+  {
+    "frame": 154,
+    "timeMs": 6160,
+    "hp": 0,
+    "damageVisible": false,
+    "deathActive": true,
+    "ringAlpha": 0,
+    "darken": 0.0,
+    "cameraAge": 2.493333333333333
+  },
+  {
+    "frame": 155,
+    "timeMs": 6200,
+    "hp": 0,
+    "damageVisible": false,
+    "deathActive": true,
+    "ringAlpha": 0,
+    "darken": 0.0,
+    "cameraAge": 2.533333333333333
+  },
+  {
+    "frame": 156,
+    "timeMs": 6240,
+    "hp": 0,
+    "damageVisible": false,
+    "deathActive": true,
+    "ringAlpha": 0,
+    "darken": 0.0,
+    "cameraAge": 2.5733333333333333
+  },
+  {
+    "frame": 157,
+    "timeMs": 6280,
+    "hp": 0,
+    "damageVisible": false,
+    "deathActive": true,
+    "ringAlpha": 0,
+    "darken": 0.0,
+    "cameraAge": 2.6133333333333333
+  },
+  {
+    "frame": 158,
+    "timeMs": 6320,
+    "hp": 0,
+    "damageVisible": false,
+    "deathActive": true,
+    "ringAlpha": 0,
+    "darken": 0.0,
+    "cameraAge": 2.6533333333333333
+  },
+  {
+    "frame": 159,
+    "timeMs": 6360,
+    "hp": 0,
+    "damageVisible": false,
+    "deathActive": true,
+    "ringAlpha": 0,
+    "darken": 0.0,
+    "cameraAge": 2.6933333333333334
+  },
+  {
+    "frame": 160,
+    "timeMs": 6400,
+    "hp": 0,
+    "damageVisible": false,
+    "deathActive": true,
+    "ringAlpha": 0,
+    "darken": 0.0,
+    "cameraAge": 2.7333333333333334
+  },
+  {
+    "frame": 161,
+    "timeMs": 6440,
+    "hp": 0,
+    "damageVisible": false,
+    "deathActive": true,
+    "ringAlpha": 0,
+    "darken": 0.0,
+    "cameraAge": 2.7733333333333334
+  },
+  {
+    "frame": 162,
+    "timeMs": 6480,
+    "hp": 0,
+    "damageVisible": false,
+    "deathActive": true,
+    "ringAlpha": 0,
+    "darken": 0.0,
+    "cameraAge": 2.8133333333333335
+  },
+  {
+    "frame": 163,
+    "timeMs": 6520,
+    "hp": 0,
+    "damageVisible": false,
+    "deathActive": true,
+    "ringAlpha": 0,
+    "darken": 0.0,
+    "cameraAge": 2.8533333333333335
+  },
+  {
+    "frame": 164,
+    "timeMs": 6560,
+    "hp": 0,
+    "damageVisible": false,
+    "deathActive": true,
+    "ringAlpha": 0,
+    "darken": 0.0,
+    "cameraAge": 2.8933333333333335
+  }
+]

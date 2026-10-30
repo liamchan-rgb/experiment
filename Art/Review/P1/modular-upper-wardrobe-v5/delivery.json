@@ -1,0 +1,81 @@
+{
+  "date": "2026-10-24",
+  "artCommit": "9899cac518a27d4e22f83deafe0cda2c4cbb6d2a",
+  "status": "verified-https-delivery",
+  "artApproval": null,
+  "continuousPlayerViewed": false,
+  "artifacts": [
+    {
+      "file": "outfits-walk-120ms.gif",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/9899cac518a27d4e22f83deafe0cda2c4cbb6d2a/Art/Review/P1/modular-upper-wardrobe-v5/outfits-walk-120ms.gif",
+      "httpStatus": 200,
+      "mime": "image/gif",
+      "bytes": 428240,
+      "sha256": "528cf72a5588c59c887f6a1263b2b040828d4935be1e7a9dfd6a26db567641c1",
+      "size": [
+        1024,
+        1024
+      ],
+      "durationsMs": [
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120
+      ],
+      "loop": 0
+    },
+    {
+      "file": "outfits-start-stop-120ms.gif",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/9899cac518a27d4e22f83deafe0cda2c4cbb6d2a/Art/Review/P1/modular-upper-wardrobe-v5/outfits-start-stop-120ms.gif",
+      "httpStatus": 200,
+      "mime": "image/gif",
+      "bytes": 1177910,
+      "sha256": "f3f2bafe0543f44345ad191995d1e74d0c45798bf420bc108fca9d6b0d9924a9",
+      "size": [
+        1024,
+        1024
+      ],
+      "durationsMs": [
+        480,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        480
+      ],
+      "loop": 0
+    },
+    {
+      "file": "outfits-idle-2x.png",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/9899cac518a27d4e22f83deafe0cda2c4cbb6d2a/Art/Review/P1/modular-upper-wardrobe-v5/outfits-idle-2x.png",
+      "httpStatus": 200,
+      "mime": "image/png",
+      "bytes": 78157,
+      "sha256": "fee8c053d07a8c5642018a921f39d25e91120e525f2f28b3b7cc6a14c4da9864",
+      "size": [
+        1024,
+        1024
+      ]
+    }
+  ]
+}

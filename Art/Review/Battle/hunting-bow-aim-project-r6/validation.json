@@ -1,0 +1,29 @@
+{
+  "nativeCanvas": [
+    256,
+    256
+  ],
+  "independentSleevePNGsMatchCompositedSurfaces": true,
+  "nativeHandLayersHaveTransparency": true,
+  "stringAndArrowMeetDrawingFinger": true,
+  "farHandAnchoredAtBowGrip": true,
+  "originalSourceAssetsListedWithSHA256": true,
+  "imageGenerationUsed": false,
+  "runtimeImported": false,
+  "userApproved": false,
+  "faceAndHairAboveNeckUnchanged": true,
+  "legsAndBootsUnchanged": true,
+  "visibleOpaqueHandPixelsUnchanged": true,
+  "centralWaistJoinHasNoTransparentPixels": true,
+  "handArmFilesUnchanged": true,
+  "allJointPosesUnchanged": true,
+  "allNonTorsoSurfacesUnchanged": true,
+  "changedCompositePixels": 719,
+  "changedCompositeBounds": [
+    113,
+    144,
+    144,
+    173
+  ],
+  "outsideJacketUnchanged": true
+}

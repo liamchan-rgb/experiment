@@ -1,0 +1,24 @@
+{
+  "method": "shorten native arm reach about fixed shoulder roots; preserve sleeve height, hands, torso and layer order",
+  "nominalHorizontalScale": 0.9,
+  "fixedShoulders": {
+    "near": {
+      "x": 117,
+      "y": 141
+    },
+    "far": {
+      "x": 138,
+      "y": 148
+    }
+  },
+  "script": "scripts/author-bow-arms-r7.py",
+  "frozenFrom": "Art/Parts/P1-Battle/hunting-bow-aim-project-r6",
+  "frozenFiles": [
+    "drawing-hand.png",
+    "grip-hand.png",
+    "torso.png"
+  ],
+  "holdingHandAndBowTranslationX": -5.0,
+  "runtimeImported": false,
+  "userApproved": false
+}

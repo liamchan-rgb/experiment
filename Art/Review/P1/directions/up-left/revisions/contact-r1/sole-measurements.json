@@ -1,0 +1,199 @@
+{
+  "format": 1,
+  "method": "Manual visual annotation of each visible boot sole on the last visible alpha row. Coordinates are cell-local pixel centers; xRange is the inclusive span of visible pixels in that row. Ground baseline is y=223 (lowest row of grounded source boots); liftPxFromBaseline=223-y. At crossover frames 03-05 the two shoes overlap, so x attribution follows visible screen-left/right shoe silhouette.",
+  "frameMeasurements": {
+    "01": {
+      "screen_left": {
+        "solePixel": [
+          113,
+          210
+        ],
+        "xRange": [
+          108,
+          117
+        ],
+        "liftPxFromBaseline": 13
+      },
+      "screen_right": {
+        "solePixel": [
+          139,
+          223
+        ],
+        "xRange": [
+          131,
+          147
+        ],
+        "liftPxFromBaseline": 0
+      }
+    },
+    "02": {
+      "screen_left": {
+        "solePixel": [
+          110,
+          215
+        ],
+        "xRange": [
+          105,
+          114
+        ],
+        "liftPxFromBaseline": 8
+      },
+      "screen_right": {
+        "solePixel": [
+          142,
+          223
+        ],
+        "xRange": [
+          137,
+          147
+        ],
+        "liftPxFromBaseline": 0
+      }
+    },
+    "03": {
+      "screen_left": {
+        "solePixel": [
+          122,
+          223
+        ],
+        "xRange": [
+          119,
+          125
+        ],
+        "liftPxFromBaseline": 0
+      },
+      "screen_right": {
+        "solePixel": [
+          135,
+          213
+        ],
+        "xRange": [
+          130,
+          140
+        ],
+        "liftPxFromBaseline": 10
+      }
+    },
+    "04": {
+      "screen_left": {
+        "solePixel": [
+          111,
+          206
+        ],
+        "xRange": [
+          109,
+          113
+        ],
+        "liftPxFromBaseline": 17
+      },
+      "screen_right": {
+        "solePixel": [
+          130,
+          223
+        ],
+        "xRange": [
+          126,
+          134
+        ],
+        "liftPxFromBaseline": 0
+      }
+    },
+    "05": {
+      "screen_left": {
+        "solePixel": [
+          112,
+          206
+        ],
+        "xRange": [
+          108,
+          117
+        ],
+        "liftPxFromBaseline": 17
+      },
+      "screen_right": {
+        "solePixel": [
+          131,
+          223
+        ],
+        "xRange": [
+          130,
+          131
+        ],
+        "liftPxFromBaseline": 0
+      }
+    },
+    "06": {
+      "screen_left": {
+        "solePixel": [
+          111,
+          212
+        ],
+        "xRange": [
+          107,
+          115
+        ],
+        "liftPxFromBaseline": 11
+      },
+      "screen_right": {
+        "solePixel": [
+          138,
+          223
+        ],
+        "xRange": [
+          136,
+          140
+        ],
+        "liftPxFromBaseline": 0
+      }
+    },
+    "07": {
+      "screen_left": {
+        "solePixel": [
+          118,
+          214
+        ],
+        "xRange": [
+          114,
+          121
+        ],
+        "liftPxFromBaseline": 9
+      },
+      "screen_right": {
+        "solePixel": [
+          137,
+          223
+        ],
+        "xRange": [
+          132,
+          143
+        ],
+        "liftPxFromBaseline": 0
+      }
+    },
+    "08": {
+      "screen_left": {
+        "solePixel": [
+          111,
+          212
+        ],
+        "xRange": [
+          108,
+          114
+        ],
+        "liftPxFromBaseline": 11
+      },
+      "screen_right": {
+        "solePixel": [
+          139,
+          223
+        ],
+        "xRange": [
+          132,
+          145
+        ],
+        "liftPxFromBaseline": 0
+      }
+    }
+  },
+  "frame02Sha256": "64e81fc1671b420f27f00fa64d2e0cb002b5d5e1fcb3257b666c686c2e74076d"
+}

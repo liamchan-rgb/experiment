@@ -1,0 +1,139 @@
+{
+  "canvas": [
+    256,
+    256
+  ],
+  "reference": "Art/Review/P1/modular-down-grip-v4-transition/combinations/chestnut__blue__forester__empty/idle-00.png; used only for the 256×256 character scale/pose registration",
+  "spriteSolidSourceBounds": [
+    412,
+    302,
+    809,
+    952
+  ],
+  "spriteSourceSolidSize": [
+    397,
+    650
+  ],
+  "registeredSpriteSize": [
+    96,
+    78
+  ],
+  "position00": [
+    76,
+    96
+  ],
+  "bodyTranslationByPose": {
+    "0": [
+      0,
+      0
+    ],
+    "1": [
+      0,
+      0
+    ],
+    "2": [
+      0,
+      2
+    ],
+    "3": [
+      0,
+      -1
+    ],
+    "4": [
+      0,
+      -2
+    ],
+    "5": [
+      0,
+      0
+    ],
+    "6": [
+      0,
+      2
+    ],
+    "7": [
+      0,
+      -1
+    ],
+    "8": [
+      0,
+      -2
+    ]
+  },
+  "positionByPose": {
+    "0": [
+      76,
+      96
+    ],
+    "1": [
+      76,
+      96
+    ],
+    "2": [
+      76,
+      98
+    ],
+    "3": [
+      76,
+      95
+    ],
+    "4": [
+      76,
+      94
+    ],
+    "5": [
+      76,
+      96
+    ],
+    "6": [
+      76,
+      98
+    ],
+    "7": [
+      76,
+      95
+    ],
+    "8": [
+      76,
+      94
+    ]
+  },
+  "visualAnchorIntent": "pommel/grip projects over screen-left shoulder; scabbard tip lands toward screen-right waist; all content is weapon.back and must render behind body/outfit/head",
+  "imagegenRawSHA256": "46bfa9347fc99f4ed44b295a3c77464613bfd8eccb76bbcae0758a3b29b0c619",
+  "registrationMethod": "Alpha threshold 128 removes generated fringe; crop solid source; apply one fixed 22-degree nearest-neighbor pose-map rotation; tightly trim rotated alpha; uniformly scale to 96x78; place at (76,96); create nine fixed-canvas maps by the integer body-bob offsets. No per-frame fit/rotation or hand/socket transform.",
+  "firstImagegenAttemptSHA256": "5c1c5539d1df222afc639efe987da3dc19c8516badc3ecc743f6614a67bb2b4f",
+  "generationPrompts": [
+    "source/prompt-back-scabbard-attempt1.txt",
+    "source/prompt-back-scabbard.txt"
+  ],
+  "spriteSourceSolidBounds": [
+    412,
+    302,
+    809,
+    952
+  ],
+  "rotationDeg": 22,
+  "rotationMethod": "nearest-neighbor about source solid crop center, expanded and then tightly trimmed to solid alpha",
+  "rotatedSizeBeforeUniformResize": [
+    669,
+    762
+  ],
+  "registeredNontransparentBounds00": [
+    76,
+    96,
+    172,
+    174
+  ],
+  "sourceSolidThreshold": 128,
+  "rotationConvention": "Pillow positive angle; fixed orientation for down-facing back carry",
+  "rotatedTightBounds": [
+    12,
+    124,
+    609,
+    611
+  ],
+  "rotatedTightSize": [
+    597,
+    487
+  ]
+}

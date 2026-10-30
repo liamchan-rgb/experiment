@@ -1,0 +1,34 @@
+{
+  "date": "2026-10-26",
+  "reviewer": "root, no subagents",
+  "resourceRevisionSHA256": "d0979a710bd2413811d27ed94e86bcda3422bae823a046405db50b3a26d6e09f",
+  "scope": "new attachment art on one standard body; secondary appearance only collision extremes, no repeated full baseline review",
+  "primaryWalkingWholeBodyPoses": 416,
+  "primaryWalkingBoards": 32,
+  "secondaryCollisionWholeBodySamples": 64,
+  "secondaryBoards": 4,
+  "attackGIFActualDecodedFrames": 266,
+  "attackGIFPages": 9,
+  "otherClipWholeBodyKeySamples": 100,
+  "otherClipBoards": 4,
+  "montageActualDecodedFrames": 8,
+  "views": "whole body at native board scale and 2x browser views; static decoded sequences, not continuous playback approval",
+  "selfFoundAndRepaired": [
+    "new long sword and staff along original short-sword lift crossed face; candidate-only attack/guard/hit/victory arm keys corrected",
+    "sword back carry too close to floor in profile; fixed whole-source size and shoulder registration corrected",
+    "flat armor chest fill; added upper-left-lit facets and separate panels/strap/pauldron details",
+    "web battle-to-accessory switch attempted to read absent clip frameMs; guarded and rechecked"
+  ],
+  "originalRuntimeAndBodyMotionUnchanged": true,
+  "browserInteractionQA": "browser-qa/result.json",
+  "technicalVerification": "verification.json",
+  "userArtApproval": null,
+  "notClaimed": [
+    "all gear fully integrated in demo",
+    "dedicated legendary staff casting/projectile and natural20",
+    "gear stat logic/UI/save migration",
+    "game App, simulator or device run",
+    "UIKit/Metal match or measured game FPS",
+    "continuous playback art approval"
+  ]
+}

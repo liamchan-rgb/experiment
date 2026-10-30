@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-28",
+  "userMessage": "可以了，下一步工作是什么",
+  "approvedCommit": "a21cb1de721a175bf054b511d4b5bbbb5f87f20a",
+  "approvedPresentation": "r7 v3 已展示的满弓→放箭→收手→放低弓正常速度动画",
+  "gifSHA256": "6f99ea9edcfde714125518317f416e9c620e7e4b9e20d8c5a27a67c1521444b8",
+  "artApproved": true,
+  "scopeExcludes": [
+    "新版抬弓、搭箭和拉弦前段",
+    "其他战斗动作与衣装组合",
+    "运行时接入",
+    "设备效果"
+  ],
+  "nextWork": "按当前通过的首帧与收势补齐待机、抬弓、搭箭和拉弦，然后审核完整射击流程并接入 demo。",
+  "deviceRunPerformed": false
+}

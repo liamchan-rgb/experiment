@@ -1,0 +1,24 @@
+[
+  {
+    "file": "bow-body-normal.gif",
+    "frames": 190,
+    "durationMs": 3800,
+    "bytes": 2850720,
+    "dimensions": [
+      512,
+      560
+    ],
+    "sha256": "7a4f10875a3df5c6d281ec80c559d0dd0e7ba6fbd7c85e61d20d694b3142ba87"
+  },
+  {
+    "file": "bow-normal.gif",
+    "frames": 190,
+    "durationMs": 3800,
+    "bytes": 9048410,
+    "dimensions": [
+      1224,
+      918
+    ],
+    "sha256": "fd49549a2a40b91873ad225f67f9990d359e10435a2c1b1fb8d6608c6791102d"
+  }
+]

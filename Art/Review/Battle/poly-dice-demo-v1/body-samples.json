@@ -1,0 +1,83 @@
+{
+  "source": "production world scale, six complete scenes; offline composition, no device execution",
+  "samples": [
+    {
+      "scenario": "attack-buff",
+      "time": 0.5,
+      "frame": 25,
+      "diceAnchor": {
+        "x": 165,
+        "y": 133
+      },
+      "wholeWorldDimensions": [
+        1000,
+        866
+      ]
+    },
+    {
+      "scenario": "attack-buff",
+      "time": 1.8,
+      "frame": 90,
+      "diceAnchor": {
+        "x": 418.4789763524458,
+        "y": 101.29370478350069
+      },
+      "wholeWorldDimensions": [
+        1000,
+        866
+      ]
+    },
+    {
+      "scenario": "attack-buff",
+      "time": 2.7600000000000002,
+      "frame": 138,
+      "diceAnchor": {
+        "x": 165,
+        "y": 133
+      },
+      "wholeWorldDimensions": [
+        1000,
+        866
+      ]
+    },
+    {
+      "scenario": "support",
+      "time": 0.5,
+      "frame": 25,
+      "diceAnchor": {
+        "x": 315,
+        "y": 218
+      },
+      "wholeWorldDimensions": [
+        1000,
+        866
+      ]
+    },
+    {
+      "scenario": "support",
+      "time": 1.8,
+      "frame": 90,
+      "diceAnchor": {
+        "x": 315,
+        "y": 218
+      },
+      "wholeWorldDimensions": [
+        1000,
+        866
+      ]
+    },
+    {
+      "scenario": "support",
+      "time": 2.24,
+      "frame": 112,
+      "diceAnchor": {
+        "x": 315,
+        "y": 218
+      },
+      "wholeWorldDimensions": [
+        1000,
+        866
+      ]
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "sourceModularSamples": 202,
+  "approvedShotSamplesPreserved": 143,
+  "independentNativeTiles": true,
+  "wholeCharacterRuntimeFrames": false,
+  "sourceToImportedAll345CompositesByteExact": true,
+  "returnEndpointsMatchApprovedIdleWholeImage": true,
+  "wristOverlapAll202Samples": true,
+  "transparentFringeNotUsedAsSupportPlane": true,
+  "newUserArtApproval": null,
+  "appRunPerformed": false,
+  "simulatorRunPerformed": false,
+  "physicalDeviceRunPerformed": false,
+  "subagentsUsed": false
+}

@@ -1,0 +1,709 @@
+{
+  "status": "independent-head-resource-checks-pass",
+  "artApproval": null,
+  "authorAndReviewer": "root",
+  "subagentsUsed": false,
+  "assetManifests": 4,
+  "independentCombinations": 4,
+  "actualCompositorPoses": 52,
+  "bareBodyPosesUnchanged": 13,
+  "originalBodyLayerComparisons": 416,
+  "eyeNoseMouthVisibilityChecks": 156,
+  "originalMotionGeometryUnchanged": true,
+  "profileChange": "Only a new down-left head-layout data entry; existing entries unchanged",
+  "crownAndRearScalpGaps": 0,
+  "preservedFiles": 7132,
+  "normalWalkDurationsMs": [
+    120,
+    120,
+    120,
+    120,
+    120,
+    120,
+    120,
+    120
+  ],
+  "poses": [
+    {
+      "pose": 0,
+      "hair": "hair-chestnut",
+      "face": "face-blue",
+      "actualCompositorDifferencePixels": 0,
+      "originalBodyLayerDifferences": 0,
+      "pixelsChangedOutsideHeadResourceFootprint": 0,
+      "fullyVisibleFeaturePixels": {
+        "face.eyes": 41,
+        "face.nose": 1,
+        "face.mouth": 3
+      }
+    },
+    {
+      "pose": 0,
+      "hair": "hair-chestnut",
+      "face": "face-amber",
+      "actualCompositorDifferencePixels": 0,
+      "originalBodyLayerDifferences": 0,
+      "pixelsChangedOutsideHeadResourceFootprint": 0,
+      "fullyVisibleFeaturePixels": {
+        "face.eyes": 36,
+        "face.nose": 2,
+        "face.mouth": 4
+      }
+    },
+    {
+      "pose": 0,
+      "hair": "hair-silver",
+      "face": "face-blue",
+      "actualCompositorDifferencePixels": 0,
+      "originalBodyLayerDifferences": 0,
+      "pixelsChangedOutsideHeadResourceFootprint": 0,
+      "fullyVisibleFeaturePixels": {
+        "face.eyes": 41,
+        "face.nose": 1,
+        "face.mouth": 3
+      }
+    },
+    {
+      "pose": 0,
+      "hair": "hair-silver",
+      "face": "face-amber",
+      "actualCompositorDifferencePixels": 0,
+      "originalBodyLayerDifferences": 0,
+      "pixelsChangedOutsideHeadResourceFootprint": 0,
+      "fullyVisibleFeaturePixels": {
+        "face.eyes": 36,
+        "face.nose": 2,
+        "face.mouth": 4
+      }
+    },
+    {
+      "pose": 1,
+      "hair": "hair-chestnut",
+      "face": "face-blue",
+      "actualCompositorDifferencePixels": 0,
+      "originalBodyLayerDifferences": 0,
+      "pixelsChangedOutsideHeadResourceFootprint": 0,
+      "fullyVisibleFeaturePixels": {
+        "face.eyes": 41,
+        "face.nose": 1,
+        "face.mouth": 3
+      }
+    },
+    {
+      "pose": 1,
+      "hair": "hair-chestnut",
+      "face": "face-amber",
+      "actualCompositorDifferencePixels": 0,
+      "originalBodyLayerDifferences": 0,
+      "pixelsChangedOutsideHeadResourceFootprint": 0,
+      "fullyVisibleFeaturePixels": {
+        "face.eyes": 36,
+        "face.nose": 2,
+        "face.mouth": 4
+      }
+    },
+    {
+      "pose": 1,
+      "hair": "hair-silver",
+      "face": "face-blue",
+      "actualCompositorDifferencePixels": 0,
+      "originalBodyLayerDifferences": 0,
+      "pixelsChangedOutsideHeadResourceFootprint": 0,
+      "fullyVisibleFeaturePixels": {
+        "face.eyes": 41,
+        "face.nose": 1,
+        "face.mouth": 3
+      }
+    },
+    {
+      "pose": 1,
+      "hair": "hair-silver",
+      "face": "face-amber",
+      "actualCompositorDifferencePixels": 0,
+      "originalBodyLayerDifferences": 0,
+      "pixelsChangedOutsideHeadResourceFootprint": 0,
+      "fullyVisibleFeaturePixels": {
+        "face.eyes": 36,
+        "face.nose": 2,
+        "face.mouth": 4
+      }
+    },
+    {
+      "pose": 2,
+      "hair": "hair-chestnut",
+      "face": "face-blue",
+      "actualCompositorDifferencePixels": 0,
+      "originalBodyLayerDifferences": 0,
+      "pixelsChangedOutsideHeadResourceFootprint": 0,
+      "fullyVisibleFeaturePixels": {
+        "face.eyes": 41,
+        "face.nose": 1,
+        "face.mouth": 3
+      }
+    },
+    {
+      "pose": 2,
+      "hair": "hair-chestnut",
+      "face": "face-amber",
+      "actualCompositorDifferencePixels": 0,
+      "originalBodyLayerDifferences": 0,
+      "pixelsChangedOutsideHeadResourceFootprint": 0,
+      "fullyVisibleFeaturePixels": {
+        "face.eyes": 36,
+        "face.nose": 2,
+        "face.mouth": 4
+      }
+    },
+    {
+      "pose": 2,
+      "hair": "hair-silver",
+      "face": "face-blue",
+      "actualCompositorDifferencePixels": 0,
+      "originalBodyLayerDifferences": 0,
+      "pixelsChangedOutsideHeadResourceFootprint": 0,
+      "fullyVisibleFeaturePixels": {
+        "face.eyes": 41,
+        "face.nose": 1,
+        "face.mouth": 3
+      }
+    },
+    {
+      "pose": 2,
+      "hair": "hair-silver",
+      "face": "face-amber",
+      "actualCompositorDifferencePixels": 0,
+      "originalBodyLayerDifferences": 0,
+      "pixelsChangedOutsideHeadResourceFootprint": 0,
+      "fullyVisibleFeaturePixels": {
+        "face.eyes": 36,
+        "face.nose": 2,
+        "face.mouth": 4
+      }
+    },
+    {
+      "pose": 3,
+      "hair": "hair-chestnut",
+      "face": "face-blue",
+      "actualCompositorDifferencePixels": 0,
+      "originalBodyLayerDifferences": 0,
+      "pixelsChangedOutsideHeadResourceFootprint": 0,
+      "fullyVisibleFeaturePixels": {
+        "face.eyes": 41,
+        "face.nose": 1,
+        "face.mouth": 3
+      }
+    },
+    {
+      "pose": 3,
+      "hair": "hair-chestnut",
+      "face": "face-amber",
+      "actualCompositorDifferencePixels": 0,
+      "originalBodyLayerDifferences": 0,
+      "pixelsChangedOutsideHeadResourceFootprint": 0,
+      "fullyVisibleFeaturePixels": {
+        "face.eyes": 36,
+        "face.nose": 2,
+        "face.mouth": 4
+      }
+    },
+    {
+      "pose": 3,
+      "hair": "hair-silver",
+      "face": "face-blue",
+      "actualCompositorDifferencePixels": 0,
+      "originalBodyLayerDifferences": 0,
+      "pixelsChangedOutsideHeadResourceFootprint": 0,
+      "fullyVisibleFeaturePixels": {
+        "face.eyes": 41,
+        "face.nose": 1,
+        "face.mouth": 3
+      }
+    },
+    {
+      "pose": 3,
+      "hair": "hair-silver",
+      "face": "face-amber",
+      "actualCompositorDifferencePixels": 0,
+      "originalBodyLayerDifferences": 0,
+      "pixelsChangedOutsideHeadResourceFootprint": 0,
+      "fullyVisibleFeaturePixels": {
+        "face.eyes": 36,
+        "face.nose": 2,
+        "face.mouth": 4
+      }
+    },
+    {
+      "pose": 4,
+      "hair": "hair-chestnut",
+      "face": "face-blue",
+      "actualCompositorDifferencePixels": 0,
+      "originalBodyLayerDifferences": 0,
+      "pixelsChangedOutsideHeadResourceFootprint": 0,
+      "fullyVisibleFeaturePixels": {
+        "face.eyes": 41,
+        "face.nose": 1,
+        "face.mouth": 3
+      }
+    },
+    {
+      "pose": 4,
+      "hair": "hair-chestnut",
+      "face": "face-amber",
+      "actualCompositorDifferencePixels": 0,
+      "originalBodyLayerDifferences": 0,
+      "pixelsChangedOutsideHeadResourceFootprint": 0,
+      "fullyVisibleFeaturePixels": {
+        "face.eyes": 36,
+        "face.nose": 2,
+        "face.mouth": 4
+      }
+    },
+    {
+      "pose": 4,
+      "hair": "hair-silver",
+      "face": "face-blue",
+      "actualCompositorDifferencePixels": 0,
+      "originalBodyLayerDifferences": 0,
+      "pixelsChangedOutsideHeadResourceFootprint": 0,
+      "fullyVisibleFeaturePixels": {
+        "face.eyes": 41,
+        "face.nose": 1,
+        "face.mouth": 3
+      }
+    },
+    {
+      "pose": 4,
+      "hair": "hair-silver",
+      "face": "face-amber",
+      "actualCompositorDifferencePixels": 0,
+      "originalBodyLayerDifferences": 0,
+      "pixelsChangedOutsideHeadResourceFootprint": 0,
+      "fullyVisibleFeaturePixels": {
+        "face.eyes": 36,
+        "face.nose": 2,
+        "face.mouth": 4
+      }
+    },
+    {
+      "pose": 5,
+      "hair": "hair-chestnut",
+      "face": "face-blue",
+      "actualCompositorDifferencePixels": 0,
+      "originalBodyLayerDifferences": 0,
+      "pixelsChangedOutsideHeadResourceFootprint": 0,
+      "fullyVisibleFeaturePixels": {
+        "face.eyes": 41,
+        "face.nose": 1,
+        "face.mouth": 3
+      }
+    },
+    {
+      "pose": 5,
+      "hair": "hair-chestnut",
+      "face": "face-amber",
+      "actualCompositorDifferencePixels": 0,
+      "originalBodyLayerDifferences": 0,
+      "pixelsChangedOutsideHeadResourceFootprint": 0,
+      "fullyVisibleFeaturePixels": {
+        "face.eyes": 36,
+        "face.nose": 2,
+        "face.mouth": 4
+      }
+    },
+    {
+      "pose": 5,
+      "hair": "hair-silver",
+      "face": "face-blue",
+      "actualCompositorDifferencePixels": 0,
+      "originalBodyLayerDifferences": 0,
+      "pixelsChangedOutsideHeadResourceFootprint": 0,
+      "fullyVisibleFeaturePixels": {
+        "face.eyes": 41,
+        "face.nose": 1,
+        "face.mouth": 3
+      }
+    },
+    {
+      "pose": 5,
+      "hair": "hair-silver",
+      "face": "face-amber",
+      "actualCompositorDifferencePixels": 0,
+      "originalBodyLayerDifferences": 0,
+      "pixelsChangedOutsideHeadResourceFootprint": 0,
+      "fullyVisibleFeaturePixels": {
+        "face.eyes": 36,
+        "face.nose": 2,
+        "face.mouth": 4
+      }
+    },
+    {
+      "pose": 6,
+      "hair": "hair-chestnut",
+      "face": "face-blue",
+      "actualCompositorDifferencePixels": 0,
+      "originalBodyLayerDifferences": 0,
+      "pixelsChangedOutsideHeadResourceFootprint": 0,
+      "fullyVisibleFeaturePixels": {
+        "face.eyes": 41,
+        "face.nose": 1,
+        "face.mouth": 3
+      }
+    },
+    {
+      "pose": 6,
+      "hair": "hair-chestnut",
+      "face": "face-amber",
+      "actualCompositorDifferencePixels": 0,
+      "originalBodyLayerDifferences": 0,
+      "pixelsChangedOutsideHeadResourceFootprint": 0,
+      "fullyVisibleFeaturePixels": {
+        "face.eyes": 36,
+        "face.nose": 2,
+        "face.mouth": 4
+      }
+    },
+    {
+      "pose": 6,
+      "hair": "hair-silver",
+      "face": "face-blue",
+      "actualCompositorDifferencePixels": 0,
+      "originalBodyLayerDifferences": 0,
+      "pixelsChangedOutsideHeadResourceFootprint": 0,
+      "fullyVisibleFeaturePixels": {
+        "face.eyes": 41,
+        "face.nose": 1,
+        "face.mouth": 3
+      }
+    },
+    {
+      "pose": 6,
+      "hair": "hair-silver",
+      "face": "face-amber",
+      "actualCompositorDifferencePixels": 0,
+      "originalBodyLayerDifferences": 0,
+      "pixelsChangedOutsideHeadResourceFootprint": 0,
+      "fullyVisibleFeaturePixels": {
+        "face.eyes": 36,
+        "face.nose": 2,
+        "face.mouth": 4
+      }
+    },
+    {
+      "pose": 7,
+      "hair": "hair-chestnut",
+      "face": "face-blue",
+      "actualCompositorDifferencePixels": 0,
+      "originalBodyLayerDifferences": 0,
+      "pixelsChangedOutsideHeadResourceFootprint": 0,
+      "fullyVisibleFeaturePixels": {
+        "face.eyes": 41,
+        "face.nose": 1,
+        "face.mouth": 3
+      }
+    },
+    {
+      "pose": 7,
+      "hair": "hair-chestnut",
+      "face": "face-amber",
+      "actualCompositorDifferencePixels": 0,
+      "originalBodyLayerDifferences": 0,
+      "pixelsChangedOutsideHeadResourceFootprint": 0,
+      "fullyVisibleFeaturePixels": {
+        "face.eyes": 36,
+        "face.nose": 2,
+        "face.mouth": 4
+      }
+    },
+    {
+      "pose": 7,
+      "hair": "hair-silver",
+      "face": "face-blue",
+      "actualCompositorDifferencePixels": 0,
+      "originalBodyLayerDifferences": 0,
+      "pixelsChangedOutsideHeadResourceFootprint": 0,
+      "fullyVisibleFeaturePixels": {
+        "face.eyes": 41,
+        "face.nose": 1,
+        "face.mouth": 3
+      }
+    },
+    {
+      "pose": 7,
+      "hair": "hair-silver",
+      "face": "face-amber",
+      "actualCompositorDifferencePixels": 0,
+      "originalBodyLayerDifferences": 0,
+      "pixelsChangedOutsideHeadResourceFootprint": 0,
+      "fullyVisibleFeaturePixels": {
+        "face.eyes": 36,
+        "face.nose": 2,
+        "face.mouth": 4
+      }
+    },
+    {
+      "pose": 8,
+      "hair": "hair-chestnut",
+      "face": "face-blue",
+      "actualCompositorDifferencePixels": 0,
+      "originalBodyLayerDifferences": 0,
+      "pixelsChangedOutsideHeadResourceFootprint": 0,
+      "fullyVisibleFeaturePixels": {
+        "face.eyes": 41,
+        "face.nose": 1,
+        "face.mouth": 3
+      }
+    },
+    {
+      "pose": 8,
+      "hair": "hair-chestnut",
+      "face": "face-amber",
+      "actualCompositorDifferencePixels": 0,
+      "originalBodyLayerDifferences": 0,
+      "pixelsChangedOutsideHeadResourceFootprint": 0,
+      "fullyVisibleFeaturePixels": {
+        "face.eyes": 36,
+        "face.nose": 2,
+        "face.mouth": 4
+      }
+    },
+    {
+      "pose": 8,
+      "hair": "hair-silver",
+      "face": "face-blue",
+      "actualCompositorDifferencePixels": 0,
+      "originalBodyLayerDifferences": 0,
+      "pixelsChangedOutsideHeadResourceFootprint": 0,
+      "fullyVisibleFeaturePixels": {
+        "face.eyes": 41,
+        "face.nose": 1,
+        "face.mouth": 3
+      }
+    },
+    {
+      "pose": 8,
+      "hair": "hair-silver",
+      "face": "face-amber",
+      "actualCompositorDifferencePixels": 0,
+      "originalBodyLayerDifferences": 0,
+      "pixelsChangedOutsideHeadResourceFootprint": 0,
+      "fullyVisibleFeaturePixels": {
+        "face.eyes": 36,
+        "face.nose": 2,
+        "face.mouth": 4
+      }
+    },
+    {
+      "pose": 9,
+      "hair": "hair-chestnut",
+      "face": "face-blue",
+      "actualCompositorDifferencePixels": 0,
+      "originalBodyLayerDifferences": 0,
+      "pixelsChangedOutsideHeadResourceFootprint": 0,
+      "fullyVisibleFeaturePixels": {
+        "face.eyes": 41,
+        "face.nose": 1,
+        "face.mouth": 3
+      }
+    },
+    {
+      "pose": 9,
+      "hair": "hair-chestnut",
+      "face": "face-amber",
+      "actualCompositorDifferencePixels": 0,
+      "originalBodyLayerDifferences": 0,
+      "pixelsChangedOutsideHeadResourceFootprint": 0,
+      "fullyVisibleFeaturePixels": {
+        "face.eyes": 36,
+        "face.nose": 2,
+        "face.mouth": 4
+      }
+    },
+    {
+      "pose": 9,
+      "hair": "hair-silver",
+      "face": "face-blue",
+      "actualCompositorDifferencePixels": 0,
+      "originalBodyLayerDifferences": 0,
+      "pixelsChangedOutsideHeadResourceFootprint": 0,
+      "fullyVisibleFeaturePixels": {
+        "face.eyes": 41,
+        "face.nose": 1,
+        "face.mouth": 3
+      }
+    },
+    {
+      "pose": 9,
+      "hair": "hair-silver",
+      "face": "face-amber",
+      "actualCompositorDifferencePixels": 0,
+      "originalBodyLayerDifferences": 0,
+      "pixelsChangedOutsideHeadResourceFootprint": 0,
+      "fullyVisibleFeaturePixels": {
+        "face.eyes": 36,
+        "face.nose": 2,
+        "face.mouth": 4
+      }
+    },
+    {
+      "pose": 10,
+      "hair": "hair-chestnut",
+      "face": "face-blue",
+      "actualCompositorDifferencePixels": 0,
+      "originalBodyLayerDifferences": 0,
+      "pixelsChangedOutsideHeadResourceFootprint": 0,
+      "fullyVisibleFeaturePixels": {
+        "face.eyes": 41,
+        "face.nose": 1,
+        "face.mouth": 3
+      }
+    },
+    {
+      "pose": 10,
+      "hair": "hair-chestnut",
+      "face": "face-amber",
+      "actualCompositorDifferencePixels": 0,
+      "originalBodyLayerDifferences": 0,
+      "pixelsChangedOutsideHeadResourceFootprint": 0,
+      "fullyVisibleFeaturePixels": {
+        "face.eyes": 36,
+        "face.nose": 2,
+        "face.mouth": 4
+      }
+    },
+    {
+      "pose": 10,
+      "hair": "hair-silver",
+      "face": "face-blue",
+      "actualCompositorDifferencePixels": 0,
+      "originalBodyLayerDifferences": 0,
+      "pixelsChangedOutsideHeadResourceFootprint": 0,
+      "fullyVisibleFeaturePixels": {
+        "face.eyes": 41,
+        "face.nose": 1,
+        "face.mouth": 3
+      }
+    },
+    {
+      "pose": 10,
+      "hair": "hair-silver",
+      "face": "face-amber",
+      "actualCompositorDifferencePixels": 0,
+      "originalBodyLayerDifferences": 0,
+      "pixelsChangedOutsideHeadResourceFootprint": 0,
+      "fullyVisibleFeaturePixels": {
+        "face.eyes": 36,
+        "face.nose": 2,
+        "face.mouth": 4
+      }
+    },
+    {
+      "pose": 11,
+      "hair": "hair-chestnut",
+      "face": "face-blue",
+      "actualCompositorDifferencePixels": 0,
+      "originalBodyLayerDifferences": 0,
+      "pixelsChangedOutsideHeadResourceFootprint": 0,
+      "fullyVisibleFeaturePixels": {
+        "face.eyes": 41,
+        "face.nose": 1,
+        "face.mouth": 3
+      }
+    },
+    {
+      "pose": 11,
+      "hair": "hair-chestnut",
+      "face": "face-amber",
+      "actualCompositorDifferencePixels": 0,
+      "originalBodyLayerDifferences": 0,
+      "pixelsChangedOutsideHeadResourceFootprint": 0,
+      "fullyVisibleFeaturePixels": {
+        "face.eyes": 36,
+        "face.nose": 2,
+        "face.mouth": 4
+      }
+    },
+    {
+      "pose": 11,
+      "hair": "hair-silver",
+      "face": "face-blue",
+      "actualCompositorDifferencePixels": 0,
+      "originalBodyLayerDifferences": 0,
+      "pixelsChangedOutsideHeadResourceFootprint": 0,
+      "fullyVisibleFeaturePixels": {
+        "face.eyes": 41,
+        "face.nose": 1,
+        "face.mouth": 3
+      }
+    },
+    {
+      "pose": 11,
+      "hair": "hair-silver",
+      "face": "face-amber",
+      "actualCompositorDifferencePixels": 0,
+      "originalBodyLayerDifferences": 0,
+      "pixelsChangedOutsideHeadResourceFootprint": 0,
+      "fullyVisibleFeaturePixels": {
+        "face.eyes": 36,
+        "face.nose": 2,
+        "face.mouth": 4
+      }
+    },
+    {
+      "pose": 12,
+      "hair": "hair-chestnut",
+      "face": "face-blue",
+      "actualCompositorDifferencePixels": 0,
+      "originalBodyLayerDifferences": 0,
+      "pixelsChangedOutsideHeadResourceFootprint": 0,
+      "fullyVisibleFeaturePixels": {
+        "face.eyes": 41,
+        "face.nose": 1,
+        "face.mouth": 3
+      }
+    },
+    {
+      "pose": 12,
+      "hair": "hair-chestnut",
+      "face": "face-amber",
+      "actualCompositorDifferencePixels": 0,
+      "originalBodyLayerDifferences": 0,
+      "pixelsChangedOutsideHeadResourceFootprint": 0,
+      "fullyVisibleFeaturePixels": {
+        "face.eyes": 36,
+        "face.nose": 2,
+        "face.mouth": 4
+      }
+    },
+    {
+      "pose": 12,
+      "hair": "hair-silver",
+      "face": "face-blue",
+      "actualCompositorDifferencePixels": 0,
+      "originalBodyLayerDifferences": 0,
+      "pixelsChangedOutsideHeadResourceFootprint": 0,
+      "fullyVisibleFeaturePixels": {
+        "face.eyes": 41,
+        "face.nose": 1,
+        "face.mouth": 3
+      }
+    },
+    {
+      "pose": 12,
+      "hair": "hair-silver",
+      "face": "face-amber",
+      "actualCompositorDifferencePixels": 0,
+      "originalBodyLayerDifferences": 0,
+      "pixelsChangedOutsideHeadResourceFootprint": 0,
+      "fullyVisibleFeaturePixels": {
+        "face.eyes": 36,
+        "face.nose": 2,
+        "face.mouth": 4
+      }
+    }
+  ],
+  "limits": [
+    "Main full-body artwork review separate; no user approval inferred",
+    "Still viewer; no continuous playback review claimed",
+    "Down-left head resources only, no new clothes/weapon, other-direction art, hidden anatomy, App or IPA"
+  ]
+}

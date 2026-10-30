@@ -1,0 +1,35 @@
+{
+  "tool": "image_gen.imagegen",
+  "imagegenArtifact": "exec-de96875f-7524-431b-a293-f043f2a07fe6.png",
+  "bootstrapPath": "/workspace/generated_images/exec-de96875f-7524-431b-a293-f043f2a07fe6.png",
+  "source": "source/imagegen-full-reference.png",
+  "sourceSHA256": "af386ee12ce2d87e52efd34d31cb57bac31e3d880276ef874080a914bf68c39a",
+  "prompt": "source/prompt.txt",
+  "sharedReference": "Art/Templates/P1-Neutral/left/walk-r3-complete-transitions/source/00.png",
+  "sharedReferenceSHA256": "09288f3ac9bb836c16cff47d9b786e766e0710666eb48df8941a5b150a02129d",
+  "sourceCanvas": [
+    1254,
+    1254
+  ],
+  "sourceToCanvas": [
+    0.194,
+    0,
+    0,
+    0.194,
+    4.72,
+    6.4
+  ],
+  "headLocalOrigin": [
+    76,
+    61
+  ],
+  "registration": "fixed affine from full source plate; no alpha-bbox crop or fit",
+  "headLocalCanvas": [
+    96,
+    96
+  ],
+  "directions": [
+    "left"
+  ],
+  "poseCoverage": "same local art on idle 00, walk 01-08, walk-start 01-02, walk-stop 01-02; headToCanvas from common motion"
+}

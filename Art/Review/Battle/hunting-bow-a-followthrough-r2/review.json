@@ -1,0 +1,30 @@
+{
+  "status": "draft_pending_user_review",
+  "feedback": "放箭后拉弦手收势太抽搐",
+  "source": "../hunting-bow-a-followthrough-v1/",
+  "change": "去除反向回弹的005帧，调整收势停留时间",
+  "recovery_frames": [
+    "002",
+    "003",
+    "004",
+    "006",
+    "007",
+    "008",
+    "009",
+    "010",
+    "011"
+  ],
+  "new_inbetweens": false,
+  "remaining": "关键姿势之间仍有离散变化；需要真正补画中间帧",
+  "gif": {
+    "frames": 62,
+    "frame_duration_ms": 40,
+    "duration_ms": 2480,
+    "loop": "once",
+    "sha256": "f6f200b835786ffe80b6f730f462e6ecfe125e38d0b1e819963acae90120a54f"
+  },
+  "demo_integrated": false,
+  "ipa_built": false,
+  "device_run": false,
+  "user_approval": null
+}

@@ -1,0 +1,434 @@
+{
+  "upperarm.left": {
+    "length": 16,
+    "pivot": [
+      128,
+      100
+    ],
+    "end": [
+      128,
+      116
+    ],
+    "image": "source/upperarm.left.png",
+    "sha256": "cfc36a815f77af089fa2e992bd3eebde6e1254de677d4378214c83fd76fdabd4",
+    "source": "source/upperarm.left-split.png",
+    "registrationMatrix": [
+      0.9161573349021892,
+      -0.3672131147540984,
+      0.4008188340197078,
+      0.8393442622950821,
+      -36.3357219480802,
+      27.86885245901638
+    ],
+    "sourceChain": [
+      [
+        119.0,
+        138.0
+      ],
+      [
+        112.0,
+        154.0
+      ],
+      [
+        105.0,
+        170.0
+      ]
+    ],
+    "overlapPixels": 3
+  },
+  "forearm.left": {
+    "length": 16,
+    "pivot": [
+      128,
+      100
+    ],
+    "end": [
+      128,
+      116
+    ],
+    "image": "source/forearm.left.png",
+    "sha256": "42d14db7c42310e7914987d5b6e5fcd8939494d5bfab58f418c6a1f76db4306b",
+    "source": "source/forearm.left-split.png",
+    "registrationMatrix": [
+      0.9161573349021892,
+      -0.3672131147540984,
+      0.4008188340197078,
+      0.8393442622950821,
+      -36.335721948080185,
+      11.86885245901638
+    ],
+    "sourceChain": [
+      [
+        119.0,
+        138.0
+      ],
+      [
+        112.0,
+        154.0
+      ],
+      [
+        105.0,
+        170.0
+      ]
+    ],
+    "overlapPixels": 3
+  },
+  "hand.left": {
+    "pivot": [
+      128,
+      100
+    ],
+    "image": "source/hand.left.png",
+    "sha256": "0d89c35f789c8788cf673ae3209bd18980ba3a2e110eae5db53a7e03bae21dba",
+    "source": "source/hand.left-split.png",
+    "registrationMatrix": [
+      1,
+      0,
+      0,
+      1,
+      23.0,
+      -70.0
+    ],
+    "sourceChain": [
+      [
+        119.0,
+        138.0
+      ],
+      [
+        112.0,
+        154.0
+      ],
+      [
+        105.0,
+        170.0
+      ]
+    ],
+    "overlapPixels": 3
+  },
+  "thigh.left": {
+    "length": 18,
+    "pivot": [
+      128,
+      100
+    ],
+    "end": [
+      128,
+      118
+    ],
+    "image": "source/thigh.left.png",
+    "sha256": "3e5482f24ba45a9c6459502241389bbd0fefa7cc50ed3399a897158d36cd784c",
+    "source": "source/thigh.left-split.png",
+    "registrationMatrix": [
+      1.0,
+      0.0,
+      -0.0,
+      1.0,
+      8.0,
+      -75.0
+    ],
+    "sourceChain": [
+      [
+        120.0,
+        175.0
+      ],
+      [
+        120.0,
+        193.0
+      ],
+      [
+        116.0,
+        203.0
+      ]
+    ],
+    "overlapPixels": 3
+  },
+  "shin.left": {
+    "length": 14,
+    "pivot": [
+      128,
+      100
+    ],
+    "end": [
+      128,
+      114
+    ],
+    "image": "source/shin.left.png",
+    "sha256": "a5d32e7785cadc30f4a5197d8fafd16d7fd688b6ba13c652ec93cababcd7cccb",
+    "source": "source/shin.left-split.png",
+    "registrationMatrix": [
+      0.9284766908852594,
+      -0.48275862068965514,
+      0.3713906763541037,
+      1.2068965517241381,
+      -55.09560344257315,
+      -75.00000000000006
+    ],
+    "sourceChain": [
+      [
+        120.0,
+        175.0
+      ],
+      [
+        120.0,
+        193.0
+      ],
+      [
+        116.0,
+        203.0
+      ]
+    ],
+    "overlapPixels": 3
+  },
+  "foot.left": {
+    "pivot": [
+      128,
+      100
+    ],
+    "sole": [
+      132,
+      111
+    ],
+    "image": "source/foot.left.png",
+    "sha256": "4050f00c278f560a5654095275689d29f9f99f8190564bfa0dee67c948575a6a",
+    "source": "source/foot.left-split.png",
+    "registrationMatrix": [
+      1,
+      0,
+      0,
+      1,
+      12.0,
+      -103.0
+    ],
+    "sourceChain": [
+      [
+        120.0,
+        175.0
+      ],
+      [
+        120.0,
+        193.0
+      ],
+      [
+        116.0,
+        203.0
+      ]
+    ],
+    "overlapPixels": 3
+  },
+  "upperarm.right": {
+    "length": 16,
+    "pivot": [
+      128,
+      100
+    ],
+    "end": [
+      128,
+      116
+    ],
+    "image": "source/upperarm.right.png",
+    "sha256": "418aa81870e95ac0125e9b6b995f9ff1a16d6828ccac0945dbbe58c4f94ef936",
+    "source": "source/upperarm.right-split.png",
+    "registrationMatrix": [
+      0.8944271909999159,
+      0.45714285714285713,
+      -0.4472135954999579,
+      0.9142857142857143,
+      63.60124224800606,
+      -90.62857142857142
+    ],
+    "sourceChain": [
+      [
+        141.0,
+        138.0
+      ],
+      [
+        148.0,
+        152.0
+      ],
+      [
+        149.0,
+        165.0
+      ]
+    ],
+    "overlapPixels": 3
+  },
+  "forearm.right": {
+    "length": 16,
+    "pivot": [
+      128,
+      100
+    ],
+    "end": [
+      128,
+      116
+    ],
+    "image": "source/forearm.right.png",
+    "sha256": "85313bb1fe778e83a561aa6f5c3c263b6b7a22d9b32ee125ccb4f2cfaaca74d1",
+    "source": "source/forearm.right-split.png",
+    "registrationMatrix": [
+      0.9970544855015815,
+      0.09411764705882351,
+      -0.07669649888473704,
+      1.2235294117647058,
+      -7.906196023754035,
+      -99.90588235294116
+    ],
+    "sourceChain": [
+      [
+        141.0,
+        138.0
+      ],
+      [
+        148.0,
+        152.0
+      ],
+      [
+        149.0,
+        165.0
+      ]
+    ],
+    "overlapPixels": 3
+  },
+  "hand.right": {
+    "pivot": [
+      128,
+      100
+    ],
+    "image": "source/hand.right.png",
+    "sha256": "b7b1fd4510bcb35d970274136ecc6cf09b7180f212275333225f53f1039bc70b",
+    "source": "source/hand.right-split.png",
+    "registrationMatrix": [
+      1,
+      0,
+      0,
+      1,
+      -21.0,
+      -65.0
+    ],
+    "sourceChain": [
+      [
+        141.0,
+        138.0
+      ],
+      [
+        148.0,
+        152.0
+      ],
+      [
+        149.0,
+        165.0
+      ]
+    ],
+    "overlapPixels": 3
+  },
+  "thigh.right": {
+    "length": 18,
+    "pivot": [
+      128,
+      100
+    ],
+    "end": [
+      128,
+      118
+    ],
+    "image": "source/thigh.right.png",
+    "sha256": "e243e3d2e60924d489523be9acd778bdbf8cedc52ac7e6ac21d65f4baaa13e12",
+    "source": "source/thigh.right-split.png",
+    "registrationMatrix": [
+      0.9984603532054125,
+      0.055384615384615386,
+      -0.05547001962252291,
+      0.996923076923077,
+      -3.0756563680216615,
+      -82.27076923076925
+    ],
+    "sourceChain": [
+      [
+        141.0,
+        175.0
+      ],
+      [
+        142.0,
+        193.0
+      ],
+      [
+        143.0,
+        202.0
+      ]
+    ],
+    "overlapPixels": 3
+  },
+  "shin.right": {
+    "length": 14,
+    "pivot": [
+      128,
+      100
+    ],
+    "end": [
+      128,
+      114
+    ],
+    "image": "source/shin.right.png",
+    "sha256": "69c1713822d996c51b9cc7bb573821b9d71bdaa81405edc6188511517f37fdf3",
+    "source": "source/shin.right-split.png",
+    "registrationMatrix": [
+      0.9938837346736188,
+      0.17073170731707313,
+      -0.11043152607484653,
+      1.5365853658536583,
+      8.181794208791501,
+      -220.80487804878044
+    ],
+    "sourceChain": [
+      [
+        141.0,
+        175.0
+      ],
+      [
+        142.0,
+        193.0
+      ],
+      [
+        143.0,
+        202.0
+      ]
+    ],
+    "overlapPixels": 3
+  },
+  "foot.right": {
+    "pivot": [
+      128,
+      100
+    ],
+    "sole": [
+      127,
+      110
+    ],
+    "image": "source/foot.right.png",
+    "sha256": "2b94d00eeac6093c332ae5396b09b764b7549815c4053bfdcac81351e8f5b432",
+    "source": "source/foot.right-split.png",
+    "registrationMatrix": [
+      1,
+      0,
+      0,
+      1,
+      -15.0,
+      -102.0
+    ],
+    "sourceChain": [
+      [
+        141.0,
+        175.0
+      ],
+      [
+        142.0,
+        193.0
+      ],
+      [
+        143.0,
+        202.0
+      ]
+    ],
+    "overlapPixels": 3
+  }
+}

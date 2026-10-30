@@ -1,0 +1,102 @@
+{
+  "mattesOwnedByNeutral": true,
+  "originalBodyOrRigChanged": false,
+  "records": [
+    {
+      "pack": "forester",
+      "slot": "outfit.torso",
+      "alphaOwner": "source/mattes/forester-outfit.torso.png",
+      "gutterPixels": 27,
+      "maxGutterDistance": 1.0,
+      "originalBodyGeometryChanged": false
+    },
+    {
+      "pack": "forester",
+      "slot": "outfit.sleeve.left",
+      "alphaOwner": "source/mattes/forester-outfit.sleeve.left.png",
+      "gutterPixels": 53,
+      "maxGutterDistance": 2.23606797749979,
+      "originalBodyGeometryChanged": false
+    },
+    {
+      "pack": "forester",
+      "slot": "outfit.sleeve.right",
+      "alphaOwner": "source/mattes/forester-outfit.sleeve.right.png",
+      "gutterPixels": 53,
+      "maxGutterDistance": 2.0,
+      "originalBodyGeometryChanged": false
+    },
+    {
+      "pack": "wayfarer",
+      "slot": "outfit.torso",
+      "alphaOwner": "source/mattes/wayfarer-outfit.torso.png",
+      "gutterPixels": 10,
+      "maxGutterDistance": 1.0,
+      "originalBodyGeometryChanged": false
+    },
+    {
+      "pack": "wayfarer",
+      "slot": "outfit.sleeve.left",
+      "alphaOwner": "source/mattes/wayfarer-outfit.sleeve.left.png",
+      "gutterPixels": 43,
+      "maxGutterDistance": 2.23606797749979,
+      "originalBodyGeometryChanged": false
+    },
+    {
+      "pack": "wayfarer",
+      "slot": "outfit.sleeve.right",
+      "alphaOwner": "source/mattes/wayfarer-outfit.sleeve.right.png",
+      "gutterPixels": 40,
+      "maxGutterDistance": 2.0,
+      "originalBodyGeometryChanged": false
+    },
+    {
+      "pack": "lower",
+      "slot": "outfit.pants.left",
+      "alphaOwner": "source/mattes/lower-outfit.pants.left.png",
+      "gutterPixels": 91,
+      "maxGutterDistance": 2.8284271247461903,
+      "originalBodyGeometryChanged": false
+    },
+    {
+      "pack": "lower",
+      "slot": "outfit.boot.left",
+      "alphaOwner": "source/mattes/lower-outfit.boot.left.png",
+      "gutterPixels": 42,
+      "maxGutterDistance": 2.8284271247461903,
+      "originalBodyGeometryChanged": false
+    },
+    {
+      "pack": "lower",
+      "slot": "outfit.pants.right",
+      "alphaOwner": "source/mattes/lower-outfit.pants.right.png",
+      "gutterPixels": 93,
+      "maxGutterDistance": 2.23606797749979,
+      "originalBodyGeometryChanged": false
+    },
+    {
+      "pack": "lower",
+      "slot": "outfit.boot.right",
+      "alphaOwner": "source/mattes/lower-outfit.boot.right.png",
+      "gutterPixels": 45,
+      "maxGutterDistance": 2.8284271247461903,
+      "originalBodyGeometryChanged": false
+    },
+    {
+      "pack": "hair-chestnut",
+      "slot": "hair.front",
+      "alphaOwner": "hair-chestnut",
+      "RGBGutterPixels": 0,
+      "maxRGBGutterDistance": 0.0,
+      "bodyHeadChanged": false
+    },
+    {
+      "pack": "hair-silver",
+      "slot": "hair.front",
+      "alphaOwner": "hair-chestnut",
+      "RGBGutterPixels": 120,
+      "maxRGBGutterDistance": 3.0,
+      "bodyHeadChanged": false
+    }
+  ]
+}

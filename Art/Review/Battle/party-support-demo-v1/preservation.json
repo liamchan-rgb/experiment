@@ -1,0 +1,8 @@
+{
+  "baseline": "5ccbd38b8114128672bfe01566b31eadaaf32816",
+  "sourceCommit": "cf245fe98d2234941423e487bacc8be0f67685be",
+  "oldArtAndResourcePathsUnchanged": 10806,
+  "originalGameCoreSourcesAndCatalogSHA256Matched": 13,
+  "oldSingleEncounterActorGaitAndLayoutUnchanged": true,
+  "characterPixelsOrPoseJSONChanged": false
+}

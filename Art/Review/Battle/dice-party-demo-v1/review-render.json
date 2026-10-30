@@ -1,0 +1,61 @@
+{
+  "scope": "offline composition from production dice/monster and actual core receipts; not UIKit/device; map/lighting/UI approximated",
+  "animations": {
+    "attack-buff": {
+      "file": "attack-buff-normal.gif",
+      "frames": 300,
+      "frameDurationMs": 20,
+      "durationMs": 6000,
+      "bytes": 9666504,
+      "dimensions": [
+        1080,
+        810
+      ]
+    },
+    "support": {
+      "file": "support-normal.gif",
+      "frames": 190,
+      "frameDurationMs": 20,
+      "durationMs": 3800,
+      "bytes": 4019790,
+      "dimensions": [
+        1080,
+        810
+      ]
+    },
+    "shield": {
+      "file": "shield-normal.gif",
+      "frames": 190,
+      "frameDurationMs": 20,
+      "durationMs": 3800,
+      "bytes": 5931712,
+      "dimensions": [
+        1080,
+        810
+      ]
+    },
+    "heal": {
+      "file": "heal-normal.gif",
+      "frames": 190,
+      "frameDurationMs": 20,
+      "durationMs": 3800,
+      "bytes": 5156037,
+      "dimensions": [
+        1080,
+        810
+      ]
+    },
+    "lethal": {
+      "file": "lethal-normal.gif",
+      "frames": 190,
+      "frameDurationMs": 20,
+      "durationMs": 3800,
+      "bytes": 6573120,
+      "dimensions": [
+        1080,
+        810
+      ]
+    }
+  },
+  "newArtApproval": null
+}

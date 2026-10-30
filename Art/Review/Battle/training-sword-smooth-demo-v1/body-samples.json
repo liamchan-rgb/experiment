@@ -1,0 +1,140 @@
+[
+  {
+    "scenario": "ambush",
+    "time": 0.5,
+    "unit": {
+      "ap": 3,
+      "buff": 0,
+      "clip": "idle",
+      "deathAge": null,
+      "hp": 12,
+      "id": "p2",
+      "maxHP": 18,
+      "monster": {
+        "flash": 0,
+        "progress": 0,
+        "recoil": 0,
+        "scaleY": 0.9996775535534114
+      },
+      "progress": 0.20833333333333334,
+      "shield": 0,
+      "vitalsVisible": true,
+      "weaponID": "trainingSword"
+    }
+  },
+  {
+    "scenario": "ambush",
+    "time": 1.5,
+    "unit": {
+      "ap": 3,
+      "buff": 0,
+      "clip": "attack",
+      "deathAge": null,
+      "hp": 12,
+      "id": "p2",
+      "maxHP": 18,
+      "monster": {
+        "flash": 0,
+        "progress": 0.5208333333333334,
+        "recoil": 0,
+        "scaleY": 0.9969023568969361
+      },
+      "progress": 0.38244791666666667,
+      "shield": 0,
+      "vitalsVisible": true,
+      "weaponID": "trainingSword"
+    }
+  },
+  {
+    "scenario": "ambush",
+    "time": 1.72,
+    "unit": {
+      "ap": 1,
+      "buff": 0,
+      "clip": "attack",
+      "deathAge": null,
+      "hp": 15,
+      "id": "p2",
+      "maxHP": 18,
+      "monster": {
+        "flash": 0,
+        "progress": 0.75,
+        "recoil": 0,
+        "scaleY": 0.9941616546557762
+      },
+      "progress": 0.54,
+      "shield": 0,
+      "vitalsVisible": true,
+      "weaponID": "trainingSword"
+    }
+  },
+  {
+    "scenario": "ambush",
+    "time": 2.0,
+    "unit": {
+      "ap": 1,
+      "buff": 0,
+      "clip": "attack",
+      "deathAge": null,
+      "hp": 15,
+      "id": "p2",
+      "maxHP": 18,
+      "monster": {
+        "flash": 0,
+        "progress": 1,
+        "recoil": 0,
+        "scaleY": 0.9930268477381491
+      },
+      "progress": 0.7070728607158966,
+      "shield": 0,
+      "vitalsVisible": true,
+      "weaponID": "trainingSword"
+    }
+  },
+  {
+    "scenario": "ambush",
+    "time": 2.4,
+    "unit": {
+      "ap": 1,
+      "buff": 0,
+      "clip": "attack",
+      "deathAge": null,
+      "hp": 15,
+      "id": "p2",
+      "maxHP": 18,
+      "monster": {
+        "flash": 0,
+        "progress": 1,
+        "recoil": 0,
+        "scaleY": 0.9965025068181816
+      },
+      "progress": 0.9987453360121367,
+      "shield": 0,
+      "vitalsVisible": true,
+      "weaponID": "trainingSword"
+    }
+  },
+  {
+    "scenario": "unarmed",
+    "time": 1.5,
+    "unit": {
+      "ap": 3,
+      "buff": 0,
+      "clip": "idle",
+      "deathAge": null,
+      "hp": 6,
+      "id": "p1",
+      "maxHP": 12,
+      "monster": {
+        "flash": 0,
+        "progress": 0,
+        "recoil": 0,
+        "scaleY": 0.9969023568969361
+      },
+      "progress": 0.625,
+      "shield": 0,
+      "vitalsVisible": true,
+      "weaponID": null
+    }
+  }
+]

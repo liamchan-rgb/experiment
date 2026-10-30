@@ -38,8 +38,19 @@ assert not (root / 'Sources/Resources/Assets.xcassets/MapBackground.imageset').e
 assert 'Resources/hero-gait.json' in pbx
 rig = json.loads((root / 'Sources/Resources/hero-gait.json').read_text())
 assert rig['frames'] == 24 and rig['columns'] == 25 and len(rig['heroes']) == 3
-for hero in rig['heroes']:
-    assert len(hero) == 8 and all(len(direction) == 25 for direction in hero)
+assert rig['authoredFrames'] == [8, 24, 24] and rig['reviewFrameMs'] == 120
+modular = rig.get('modularP1')
+if modular:
+    assert modular['rasterColumns'] == 13 and modular['walkPhaseCount'] == 8
+    assert modular['startFrames'] == [25,26] and modular['stopFrames'] == [27,28]
+    assert len(modular['directions']) == 8
+    assert all(0 <= d['entryPhase'] < 8 and 0 <= d['exitPhase'] < 8 for d in modular['directions'])
+    for preset in modular['loadouts']:
+        assert len(preset['atlasNames']) == 2
+        for name in preset['atlasNames']:
+            assert (root/'Sources/Resources/Assets.xcassets'/(name+'.imageset')/(name+'.png')).is_file()
+for index,hero in enumerate(rig['heroes']):
+    assert len(hero) == 8 and all(len(direction) == (29 if index == 0 and modular else 25) for direction in hero)
     for direction in hero:
         for pose in direction:
             assert len(pose['feet']) == 2

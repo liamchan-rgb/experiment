@@ -54,4 +54,12 @@ magick "$WORK/underlap.png" "$WORK/no-boots.png" -compose over -composite \
   "$WORK/boot-underlap.png" -compose over -composite \
   "$WORK/boots-registered.png" -compose over -composite \
   "$WORK/sole-line-alpha.png" \
-  -compose DstIn -composite -depth 8 -strip "PNG32:$HERE/wardrobe.png"
+  -compose DstIn -composite "$WORK/wardrobe-green.png"
+
+# Match the map P1's blue signature palette while retaining the original green
+# layer's exact alpha, outlines, trim, boots, and registered coordinates.
+magick "$WORK/wardrobe-green.png" -colorspace HSL \
+  -channel R -fx 'if(r>0.26 && r<0.42 && g>0.15 && b>0.12, 0.60, r)' +channel \
+  -channel G -fx 'if(r>0.59 && r<0.61 && g>0.15, min(1,g*1.60), g)' +channel \
+  -channel B -fx 'if(r>0.59 && r<0.61 && g>0.15, min(1,b*1.30), b)' +channel \
+  -colorspace sRGB -depth 8 -strip "PNG32:$HERE/wardrobe.png"

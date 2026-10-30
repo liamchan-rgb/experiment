@@ -1,0 +1,28 @@
+{
+  "direction": "down-right",
+  "status": "mirrored-neutral-source-registration-only",
+  "headCanvas": [
+    96,
+    96
+  ],
+  "headLocalOrigin": [
+    84,
+    61
+  ],
+  "neckLocal": [
+    44,
+    70
+  ],
+  "sourceHeadBoundsLocal": [
+    23,
+    27,
+    65,
+    69
+  ],
+  "featureArtSupplied": false,
+  "hairArtSupplied": false,
+  "artApproval": null,
+  "fixedLight": "upper-left",
+  "headCoordinateTransform": "F256 * down-left local-to-canvas * F96; source-UV raster phase registration in mirror-authoring.json",
+  "note": "Future features and hair use headToCanvas; no shared profile or engine changes"
+}

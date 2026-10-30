@@ -1,0 +1,27 @@
+{
+  "canvas": [
+    512,
+    256
+  ],
+  "inputCanvas": [
+    1774,
+    887
+  ],
+  "fixedWholeCanvasScale": 0.28861330326944756,
+  "tiles": {
+    "up-left": [
+      0,
+      0,
+      256,
+      256
+    ],
+    "up-right": [
+      256,
+      0,
+      512,
+      256
+    ]
+  },
+  "alphaBoundsFitting": false,
+  "sourceOwner": "imagegen, main author registration/semantic partitions"
+}

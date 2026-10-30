@@ -61,10 +61,25 @@ def check_asset(path, schema_only=False, production=False):
     if part=='base' and set(asset['slots'])!=set(spec['slots']):
         errors.append('base body must supply every body/head/hand/leg slot')
     if part=='weapon':
-        if 'gripProfile' not in asset:
-            errors.append('weapon must declare its grip profile')
+        carry=asset.get('carryProfile')
+        if carry is not None:
+            if carry not in spec.get('carryProfiles',[]):
+                errors.append(f'unsupported weapon carry profile: {carry}')
+            if carry in ['back-scabbard','back-bow','back-staff']:
+                if mode!='pose-map':
+                    errors.append('back-scabbard weapons require pose-map mode')
+                if asset['slots']!=['weapon.back']:
+                    errors.append('back-scabbard weapons must own only weapon.back')
+                if 'socket' in asset or 'gripProfile' in asset:
+                    errors.append('back-scabbard weapons cannot depend on a grip socket/profile')
+        elif 'gripProfile' not in asset:
+            errors.append('weapon must declare its grip profile or carryProfile')
+        elif 'weapon.back' in asset['slots']:
+            errors.append('weapon.back requires carryProfile: back-scabbard')
     elif 'gripProfile' in asset:
         errors.append('gripProfile only belongs to weapons')
+    elif 'carryProfile' in asset:
+        errors.append('carryProfile only belongs to weapons')
     if mode=='socket':
         if part!='weapon':
             errors.append('socket mode is reserved for rigid weapons')
@@ -87,7 +102,7 @@ def check_asset(path, schema_only=False, production=False):
     if production:
         if profile['status']!='locked':
             errors.append('production rejected: neutral body/head profile is not locked')
-        if set(asset['directions'])!=set(profile['directions']) or set(asset['clips'])!={'idle','walk'}:
+        if set(asset['directions'])!=set(profile['directions']) or not {'idle','walk'} <= set(asset['clips']):
             errors.append('production requires all eight directions and idle/walk coverage')
     if schema_only or errors:
         return errors

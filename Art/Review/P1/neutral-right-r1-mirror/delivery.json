@@ -1,0 +1,117 @@
+{
+  "date": "2026-10-24",
+  "artCommit": "451778c0e599735976a9c52c741f57d5eea1a2b1",
+  "verified": true,
+  "artApproval": null,
+  "direction": "right",
+  "authorAndReviewer": "root",
+  "subagentsUsed": false,
+  "reviewScope": "All13 complete1x/2x, standing, head/near-far/limb chains and specified start-stop, actual normal GIF8 decoded frames; still viewer only, no continuous playback claim",
+  "reexportByteIdenticalFiles": 174,
+  "remotePackageClosurePaths": 278,
+  "allDeclaredAndConsumedDependenciesByteMatched": true,
+  "publicOfflineDependenciesUnchanged": 6,
+  "existingTests": {
+    "contract": 26,
+    "compositor": 21
+  },
+  "oldRightWholeCharacterGaitPreserved": true,
+  "rightIndependentAppearancesComplete": false,
+  "runtimeIntegrated": false,
+  "ipaBuilt": false,
+  "files": [
+    {
+      "file": "Art/Review/P1/neutral-right-r1-mirror/walk-120ms.gif",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/451778c0e599735976a9c52c741f57d5eea1a2b1/Art/Review/P1/neutral-right-r1-mirror/walk-120ms.gif",
+      "httpStatus": 200,
+      "mime": "image/gif",
+      "bytes": 75774,
+      "sha256": "b6a4d62cd2bc33d4f3229b319238d1d9141a86dc6c64eb9f0d9cc9f4af5eeb84",
+      "dimensions": [
+        512,
+        512
+      ],
+      "durationsMs": [
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120
+      ]
+    },
+    {
+      "file": "Art/Review/P1/neutral-right-r1-mirror/start-stop-120ms.gif",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/451778c0e599735976a9c52c741f57d5eea1a2b1/Art/Review/P1/neutral-right-r1-mirror/start-stop-120ms.gif",
+      "httpStatus": 200,
+      "mime": "image/gif",
+      "bytes": 198557,
+      "sha256": "837651850195457b0bb5ed8cfb9118dd285f63be07a6106d0f44d84f708d0460",
+      "dimensions": [
+        512,
+        512
+      ],
+      "durationsMs": [
+        480,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        480
+      ]
+    },
+    {
+      "file": "Art/Review/P1/neutral-right-r1-mirror/idle-review-2x.png",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/451778c0e599735976a9c52c741f57d5eea1a2b1/Art/Review/P1/neutral-right-r1-mirror/idle-review-2x.png",
+      "httpStatus": 200,
+      "mime": "image/png",
+      "bytes": 11696,
+      "sha256": "0370d3dec334089ddc42e888fc77cf9c65be8fd1e87ca373a6545f5e00f0f433",
+      "dimensions": [
+        512,
+        512
+      ],
+      "durationsMs": null
+    },
+    {
+      "file": "Art/Review/P1/neutral-right-r1-mirror/walk-comparison-120ms.gif",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/451778c0e599735976a9c52c741f57d5eea1a2b1/Art/Review/P1/neutral-right-r1-mirror/walk-comparison-120ms.gif",
+      "httpStatus": 200,
+      "mime": "image/gif",
+      "bytes": 153996,
+      "sha256": "64a1d95addab40d867cf4888faa5530279d11f5a77bf9055f724fea2605b7b70",
+      "dimensions": [
+        1024,
+        512
+      ],
+      "durationsMs": [
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120
+      ]
+    }
+  ]
+}

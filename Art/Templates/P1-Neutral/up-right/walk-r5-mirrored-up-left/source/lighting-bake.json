@@ -1,0 +1,136 @@
+{
+  "status": "single-reference-tool-colour-bake-review-pending",
+  "sourceReference": "source/relight-generated.png",
+  "registration": "source/relight-registration.json",
+  "uvMaps": "source/approved-left-uv",
+  "shapeOwner": "approved up-left r5 reflected",
+  "scope": "visible source pixels only; hidden skin/outline retained; no per-frame image generation or silhouette changes",
+  "textures": [
+    {
+      "texture": "shirt",
+      "file": "source/relit-textures/shirt.png",
+      "sha256": "99cb6a2005afa7c1bc103b6dea6f505298be0440b1c6603269f3e9c09e9c24fc",
+      "visibleSourcePixels": 840,
+      "keptOriginalOutlinePixels": 57,
+      "toolColourSamplesByMaterial": {
+        "skin": 131,
+        "white": 638,
+        "gray": 14
+      },
+      "maxReferenceSampleDistancePixels": 1.4142135623730951,
+      "alphaDifferencePixels": 0
+    },
+    {
+      "texture": "pants",
+      "file": "source/relit-textures/pants.png",
+      "sha256": "ef402c40fe141a41d0e96522574627b19ea3150bf4a07347ce9c2c87a646eda4",
+      "visibleSourcePixels": 519,
+      "keptOriginalOutlinePixels": 84,
+      "toolColourSamplesByMaterial": {
+        "skin": 9,
+        "white": 32,
+        "gray": 394
+      },
+      "maxReferenceSampleDistancePixels": 1.0,
+      "alphaDifferencePixels": 0
+    },
+    {
+      "texture": "arm.right",
+      "file": "source/relit-textures/arm.right.png",
+      "sha256": "186dd708839be554a143326ea926d6d06e0632d8f87efe4c90f4ae7542ab6a51",
+      "visibleSourcePixels": 504,
+      "keptOriginalOutlinePixels": 76,
+      "toolColourSamplesByMaterial": {
+        "skin": 428,
+        "white": 0,
+        "gray": 0
+      },
+      "maxReferenceSampleDistancePixels": 1.0,
+      "alphaDifferencePixels": 0
+    },
+    {
+      "texture": "hand.right",
+      "file": "source/relit-textures/hand.right.png",
+      "sha256": "24bc97f9ca05ca8749f980f2b52abb3c4ade07bb123d559930f3de6bd39ece49",
+      "visibleSourcePixels": 105,
+      "keptOriginalOutlinePixels": 29,
+      "toolColourSamplesByMaterial": {
+        "skin": 76,
+        "white": 0,
+        "gray": 0
+      },
+      "maxReferenceSampleDistancePixels": 1.0,
+      "alphaDifferencePixels": 0
+    },
+    {
+      "texture": "leg.right",
+      "file": "source/relit-textures/leg.right.png",
+      "sha256": "63062167ff1f10befa4da78ae9b994a0741742d890410610e2355eb83dce521a",
+      "visibleSourcePixels": 622,
+      "keptOriginalOutlinePixels": 111,
+      "toolColourSamplesByMaterial": {
+        "skin": 511,
+        "white": 0,
+        "gray": 0
+      },
+      "maxReferenceSampleDistancePixels": 1.0,
+      "alphaDifferencePixels": 0
+    },
+    {
+      "texture": "arm.left",
+      "file": "source/relit-textures/arm.left.png",
+      "sha256": "26b79b2e34453fc0af33bda22285960340107749b0c877672c0725e7de71c31a",
+      "visibleSourcePixels": 280,
+      "keptOriginalOutlinePixels": 49,
+      "toolColourSamplesByMaterial": {
+        "skin": 231,
+        "white": 0,
+        "gray": 0
+      },
+      "maxReferenceSampleDistancePixels": 1.0,
+      "alphaDifferencePixels": 0
+    },
+    {
+      "texture": "hand.left",
+      "file": "source/relit-textures/hand.left.png",
+      "sha256": "f387cf84328ef9e5ad5c1ce3f15109bec88c2e395b7464937486d906ccaba94f",
+      "visibleSourcePixels": 59,
+      "keptOriginalOutlinePixels": 13,
+      "toolColourSamplesByMaterial": {
+        "skin": 46,
+        "white": 0,
+        "gray": 0
+      },
+      "maxReferenceSampleDistancePixels": 1.0,
+      "alphaDifferencePixels": 0
+    },
+    {
+      "texture": "leg.left",
+      "file": "source/relit-textures/leg.left.png",
+      "sha256": "d826b16834bed21a90f79dfcf782539450b4e191faad55a093f00aa9210bb9a5",
+      "visibleSourcePixels": 504,
+      "keptOriginalOutlinePixels": 67,
+      "toolColourSamplesByMaterial": {
+        "skin": 437,
+        "white": 0,
+        "gray": 0
+      },
+      "maxReferenceSampleDistancePixels": 1.0,
+      "alphaDifferencePixels": 0
+    },
+    {
+      "texture": "head.base",
+      "file": "source/relit-textures/head.base.png",
+      "sha256": "0d5e7ade1319c1240f09277d07729a6e59bbb022c75578813897fca5b03c5542",
+      "visibleSourcePixels": 1489,
+      "keptOriginalOutlinePixels": 142,
+      "toolColourSamplesByMaterial": {
+        "skin": 1347,
+        "white": 0,
+        "gray": 0
+      },
+      "maxReferenceSampleDistancePixels": 1.4142135623730951,
+      "alphaDifferencePixels": 0
+    }
+  ]
+}

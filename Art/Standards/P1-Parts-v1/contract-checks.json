@@ -1,10 +1,12 @@
 {
-  "tests": 19,
+  "tests": 26,
   "failures": 0,
   "errors": 0,
   "scope": "synthetic declaration/geometry/file probes; no character art approval",
   "artApproval": null,
-  "neutralBodyCompleted": false,
-  "genericRendererCompleted": false,
-  "thirdResourceZeroCodeIntegrationPassed": false
+  "notAssessedHere": [
+    "anatomy or clothing visual approval",
+    "separate third-resource integration evidence",
+    "complete production template or App runtime"
+  ]
 }

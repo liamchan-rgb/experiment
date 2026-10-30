@@ -1,0 +1,16 @@
+{
+  "baseline": "61887482700cdb92c1f2d6e07405913e2c0441e0",
+  "sourceCommit": "0da70730b77038c9eb08c6eee4dd521ebca3b311",
+  "existingArtAndResourcePathsChecked": 10814,
+  "existingArtAndResourcePathsByteUnchanged": 10813,
+  "existingChangedResourcePaths": [
+    "Sources/Resources/hero-gait.json"
+  ],
+  "gaitJSONOnlyAddsEquipmentBindings": true,
+  "oldBodyMotionPhaseSolesAndClipsUnchanged": true,
+  "originalCoreSourceAndCatalogHashesMatched": 13,
+  "old208EquippedAtlasCellsPixelExact": true,
+  "new208EmptySlotCellsFromSameCompositor": true,
+  "sourceCharacterOrGaitPixelsRepainted": false,
+  "newArtApproval": null
+}

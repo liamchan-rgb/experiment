@@ -1,0 +1,30 @@
+{
+  "tool": "image_gen.imagegen",
+  "sources": {
+    "hair-chestnut": {
+      "image": "source/hair-chestnut-relight-original.png",
+      "imagegenArtifact": "exec-d6c944a0-aa8c-41b8-961b-25f74556e76d.png",
+      "sha256": "79c45e4045ef7f985ac40eb8e07def39b071c4f5d1eda9e6f85a0bcdc430bcc1",
+      "prompt": "source/hair-chestnut-prompt.txt",
+      "promptSHA256": "849255357b18ef03a9cac04594364eb6183988242cac13ba7a0df7c18cc1f13e"
+    },
+    "hair-silver": {
+      "image": "source/hair-silver-relight-original.png",
+      "imagegenArtifact": "exec-a9d66975-6a7a-4faa-b9f0-014d9d9d7749.png",
+      "sha256": "f771a9c48f77960276fcd9ff7719e3ef376c773d0e2eb3d46e67649c0fd88011",
+      "prompt": "source/hair-silver-prompt.txt",
+      "promptSHA256": "8e0aed0196aac7883c72d02efcfcca79344a9841e0e593b2105b0129be813b49"
+    },
+    "outfits": {
+      "image": "source/outfits-relight-original.png",
+      "imagegenArtifact": "exec-baf1d5e1-7559-4396-aeac-737d10e71bd4.png",
+      "sha256": "15dd78c6854aed68692a9ac3038003f994267215d66dba702d662446fdeafeb0",
+      "prompt": "source/outfits-prompt.txt",
+      "promptSHA256": "53d010720fadd753bc58596fcc71eaf21e1335bbd394be6d8f7b223b8c348b59"
+    }
+  },
+  "shapeOwner": "Reflected original left appearance mattes on unchanged approved right neutral body",
+  "generatedReferenceGeometryImported": false,
+  "authorAndReviewer": "root",
+  "subagentsUsed": false
+}

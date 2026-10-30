@@ -1,14 +1,4 @@
-.DS_Store
-build/
-DerivedData/
-*.xcuserstate
-xcuserdata/
-*.ipa
-*.xcarchive
-.build/
-__pycache__/
-*.pyc
 
-
-# Keep the review IPA directly downloadable on iPad.
-!Downloads/*.ipa
+# Local pure Swift package products
+Vendor/**/.build/
+Vendor/**/.swiftpm/

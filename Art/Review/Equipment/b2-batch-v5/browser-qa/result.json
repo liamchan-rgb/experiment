@@ -1,0 +1,16 @@
+{
+  "pageErrors": [],
+  "sixCards": true,
+  "fourApprovedMediaByteChecked": 26,
+  "runeAndLeatherPendingByDefault": true,
+  "runeCanvasCheckedAgainstAtlasFrames": 32,
+  "gifLinksReachable": true,
+  "notesPinsAndReload": true,
+  "exportImport": true,
+  "responsiveWidths": [
+    390,
+    1024,
+    1440
+  ],
+  "onlyBrowserReviewNotGameApp": true
+}

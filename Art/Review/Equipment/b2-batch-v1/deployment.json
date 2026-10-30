@@ -1,0 +1,19 @@
+{
+  "id": "appgdep_6adf65397a908191ad19f8a3699a6c03",
+  "project_id": "appgprj_6adf5ffe0ee88191a0d7a2ad3a0686b4",
+  "title": "Meadow Journey · 装备美术审核",
+  "version_id": "appgprj_6adf5ffe0ee88191a0d7a2ad3a0686b4~appgver_20a1acde36948191a243480f6c7d2478",
+  "type": "publish",
+  "status": "succeeded",
+  "url": "https://meadow-equipment-review.smokytide.chatgpt.site",
+  "has_mcp": false,
+  "screenshot_asset_pointer": null,
+  "provider_deployment_id": "site---6adf5ffe0ee88191a0d7a2ad3a0686b4",
+  "failure_message": null,
+  "env_set_revision": 0,
+  "updated_at": "2026-10-26T14:36:07.869599+00:00",
+  "sourceCommit": "4fc54307c3640d3366b19cc51e539b597b784385",
+  "audience": "owner-private",
+  "runtimeIntegrated": false,
+  "resourceRevisionSHA256": "d0979a710bd2413811d27ed94e86bcda3422bae823a046405db50b3a26d6e09f"
+}

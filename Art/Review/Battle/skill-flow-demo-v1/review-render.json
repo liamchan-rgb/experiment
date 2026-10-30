@@ -1,0 +1,53 @@
+{
+  "scope": "shared assets, actor poses and production Swift fields; offline light approximation, no UIKit/device capture",
+  "animations": {
+    "attack": {
+      "frames": 165,
+      "frameDurationMs": 40,
+      "durationMs": 6600,
+      "file": "strike-death-normal.gif",
+      "bytes": 17845695,
+      "exportScale": 1,
+      "decodedDimensions": [
+        760,
+        809
+      ]
+    },
+    "shield": {
+      "frames": 180,
+      "frameDurationMs": 40,
+      "durationMs": 7200,
+      "file": "shield-follow-normal.gif",
+      "bytes": 16770379,
+      "exportScale": 1,
+      "decodedDimensions": [
+        760,
+        809
+      ]
+    },
+    "heal": {
+      "frames": 95,
+      "frameDurationMs": 40,
+      "durationMs": 3800,
+      "file": "recovery-normal.gif",
+      "bytes": 8307099,
+      "exportScale": 1,
+      "decodedDimensions": [
+        760,
+        809
+      ]
+    }
+  },
+  "hitTime": 3.666666666666667,
+  "shieldHitTime": 2.466666666666667,
+  "shieldBreakTime": 4.466666666666667,
+  "healTime": 1.0666666666666667,
+  "shieldGeometry": {
+    "centerX": 128,
+    "centerY": 144,
+    "contactX": 226.39999999999998,
+    "contactY": 144,
+    "diameter": 240
+  },
+  "artApproval": null
+}

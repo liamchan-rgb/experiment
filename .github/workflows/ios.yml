@@ -11,7 +11,7 @@ on:
         description: 'Hosted macOS runner for the focused build (alternate pool if queued)'
         required: false
         type: choice
-        options: [macos-15, macos-14]
+        options: [macos-15, macos-15-intel, macos-14]
         default: macos-15
       quick_lab:
         description: 'Build IPA and optionally run focused iPad map, contour, gait and interaction checks'
@@ -134,7 +134,7 @@ jobs:
   build:
     name: Xcode compile, test and unsigned IPA
     if: ${{ github.event_name != 'workflow_dispatch' || (inputs.review_run == '' && !inputs.quick_lab) }}
-    runs-on: macos-15
+    runs-on: ${{ inputs.macos_runner || 'macos-15' }}
     timeout-minutes: 45
     defaults:
       run:
@@ -203,9 +203,19 @@ jobs:
         run: |
           set -euo pipefail
           if [ -d build/TestResults.xcresult ]; then
-            xcrun xcresulttool export attachments \
-              --path build/TestResults.xcresult --output-path build/screenshots \
-              2>&1 | tee build/logs/screenshot-export.log
+            mkdir -p build/screenshots
+            if xcrun xcresulttool export attachments --help >/dev/null 2>&1; then
+              xcrun xcresulttool export attachments \
+                --path build/TestResults.xcresult --output-path build/screenshots \
+                2>&1 | tee build/logs/screenshot-export.log
+            else
+              python3 scripts/export-xcresult-attachments.py \
+                build/TestResults.xcresult build/screenshots \
+                --name meadow-layout-player-turn \
+                --name meadow-layout-monster-turn \
+                --name meadow-layout-exploration \
+                2>&1 | tee build/logs/screenshot-export.log
+            fi
           fi
 
       - name: Record a native-resolution iPad dynamic scene

@@ -1,0 +1,86 @@
+{
+  "date": "2026-10-26",
+  "reviewer": "root",
+  "delegated": false,
+  "sourceCommit": "0da70730b77038c9eb08c6eee4dd521ebca3b311",
+  "battleGIFDecodedFramesInspected": 600,
+  "battleDecodedPagesInspected": 22,
+  "walkingGIFDecodedFramesInspected": 21,
+  "walkingDecodedPagesInspected": 2,
+  "walkingWholeBodyPoseBoardsInspected": 16,
+  "walkingBoardScales": [
+    1,
+    2
+  ],
+  "walkingBoardFilesInspected": 32,
+  "walkingWholeBodyPoses": 416,
+  "battleEquipmentKeyPoses": 36,
+  "battleEquipmentBoardScales": [
+    1,
+    2
+  ],
+  "wholeSceneAndNativeBodySamples": 6,
+  "wholeSceneAndBodyBoardScales": [
+    1,
+    2
+  ],
+  "smoothStopWholeSceneTimelineSamples": [
+    0.98,
+    1,
+    1.08,
+    1.16,
+    1.24,
+    1.32
+  ],
+  "animations": {
+    "ambush": {
+      "file": "ambush-normal.gif",
+      "frames": 220,
+      "frameDurationMs": 20,
+      "durationMs": 4400,
+      "dimensions": [
+        1224,
+        918
+      ],
+      "bytes": 10290050
+    },
+    "unarmed": {
+      "file": "unarmed-normal.gif",
+      "frames": 190,
+      "frameDurationMs": 20,
+      "durationMs": 3800,
+      "dimensions": [
+        1224,
+        918
+      ],
+      "bytes": 7328235
+    },
+    "lethal": {
+      "file": "lethal-normal.gif",
+      "frames": 190,
+      "frameDurationMs": 20,
+      "durationMs": 3800,
+      "dimensions": [
+        1224,
+        918
+      ],
+      "bytes": 8886870
+    }
+  },
+  "findings": [
+    "Confirmed result visually approaches upright over0.32s with no initial orientation/float jump; holds before impact; all die faces tested.",
+    "Armed/empty figures reviewed across all104bindings and2appearances; no ghost sword in empty backs, no body/clothing/pose pixels repainted.",
+    "Battle gear toggles the weapon layer and corresponding silhouette;36full-body samples across6clips checked at1x/2x, plus empty-P1 support normalGIF.",
+    "Damage and immediate monster vitals retirement retained in lethal sequence; fixed amounts and AP diamonds remain legible.",
+    "Initial transition GIF repeated an identical exit pose and Pillow merged it to240ms; removed duplicate exit hold, added review timestamp, regenerated13authored frames and rechecked120ms timing."
+  ],
+  "limitations": [
+    "Offline normal50fps battle composition from actual production Swift projections, fields and original GameCore receipts; UIKit fonts/blending/map/lighting/UI approximated.",
+    "Native walking GIFs use source atlas cells at120ms; no character painting or motion retiming.",
+    "Root inspected decoded sequences and complete pose boards, not continuous playback or device capture.",
+    "Exploration equipment staging is session-scoped and only exposes trainingSword/P1; full inventory/equipment/save UI and the other7basic items remain pending.",
+    "Existing character/sword candidates are reused; no automatic new art approval. Lethal fixture target3HP is for timing review only, default enemies18HP.",
+    "No App/simulator/device/UI execution; actual installation/input/shadow behaviour/FPS remain user-tested."
+  ],
+  "newArtApproval": null
+}

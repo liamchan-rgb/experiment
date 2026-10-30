@@ -1,0 +1,594 @@
+{
+  "baseline": "6371e680b640e83be57c50e0dd01814d82f98eed",
+  "unchangedOriginalResourceCoreAndWeaponPaths": 402,
+  "sourcePacks": [
+    {
+      "kind": "slash",
+      "sourceArchiveSHA256": "1deda544b19ca5102603363f968b648b19015d4bae9642178af72bdd35732f2f",
+      "frames": [
+        {
+          "asset": "MeadowRuneSlashAttack01",
+          "size": [
+            256,
+            256
+          ],
+          "alphaBounds": [
+            89,
+            93,
+            171,
+            173
+          ]
+        },
+        {
+          "asset": "MeadowRuneSlashAttack02",
+          "size": [
+            256,
+            256
+          ],
+          "alphaBounds": [
+            77,
+            81,
+            179,
+            181
+          ]
+        },
+        {
+          "asset": "MeadowRuneSlashAttack03",
+          "size": [
+            256,
+            256
+          ],
+          "alphaBounds": [
+            67,
+            84,
+            180,
+            192
+          ]
+        },
+        {
+          "asset": "MeadowRuneSlashAttack04",
+          "size": [
+            256,
+            256
+          ],
+          "alphaBounds": [
+            35,
+            47,
+            222,
+            213
+          ]
+        },
+        {
+          "asset": "MeadowRuneSlashAttack05",
+          "size": [
+            256,
+            256
+          ],
+          "alphaBounds": [
+            24,
+            44,
+            230,
+            218
+          ]
+        },
+        {
+          "asset": "MeadowRuneSlashAttack06",
+          "size": [
+            256,
+            256
+          ],
+          "alphaBounds": [
+            25,
+            45,
+            231,
+            221
+          ]
+        },
+        {
+          "asset": "MeadowRuneSlashAttack07",
+          "size": [
+            256,
+            256
+          ],
+          "alphaBounds": [
+            16,
+            45,
+            240,
+            222
+          ]
+        },
+        {
+          "asset": "MeadowRuneSlashAttack08",
+          "size": [
+            256,
+            256
+          ],
+          "alphaBounds": [
+            11,
+            35,
+            247,
+            223
+          ]
+        },
+        {
+          "asset": "MeadowRuneSlashAttack09",
+          "size": [
+            256,
+            256
+          ],
+          "alphaBounds": [
+            10,
+            36,
+            248,
+            223
+          ]
+        },
+        {
+          "asset": "MeadowRuneSlashAttack10",
+          "size": [
+            256,
+            256
+          ],
+          "alphaBounds": [
+            11,
+            35,
+            251,
+            224
+          ]
+        },
+        {
+          "asset": "MeadowRuneSlashAttack11",
+          "size": [
+            256,
+            256
+          ],
+          "alphaBounds": [
+            6,
+            39,
+            249,
+            235
+          ]
+        },
+        {
+          "asset": "MeadowRuneSlashAttack12",
+          "size": [
+            256,
+            256
+          ],
+          "alphaBounds": [
+            9,
+            46,
+            245,
+            221
+          ]
+        },
+        {
+          "asset": "MeadowRuneSlashAttack13",
+          "size": [
+            256,
+            256
+          ],
+          "alphaBounds": [
+            18,
+            52,
+            239,
+            221
+          ]
+        },
+        {
+          "asset": "MeadowRuneSlashAttack14",
+          "size": [
+            256,
+            256
+          ],
+          "alphaBounds": [
+            26,
+            57,
+            235,
+            220
+          ]
+        },
+        {
+          "asset": "MeadowRuneSlashAttack15",
+          "size": [
+            256,
+            256
+          ],
+          "alphaBounds": [
+            24,
+            57,
+            233,
+            218
+          ]
+        },
+        {
+          "asset": "MeadowRuneSlashAttack16",
+          "size": [
+            256,
+            256
+          ],
+          "alphaBounds": [
+            37,
+            55,
+            213,
+            200
+          ]
+        },
+        {
+          "asset": "MeadowRuneSlashAttack17",
+          "size": [
+            256,
+            256
+          ],
+          "alphaBounds": [
+            29,
+            60,
+            200,
+            194
+          ]
+        },
+        {
+          "asset": "MeadowRuneSlashAttack18",
+          "size": [
+            256,
+            256
+          ],
+          "alphaBounds": [
+            45,
+            75,
+            177,
+            192
+          ]
+        },
+        {
+          "asset": "MeadowRuneSlashAttack19",
+          "size": [
+            256,
+            256
+          ],
+          "alphaBounds": [
+            74,
+            88,
+            161,
+            181
+          ]
+        },
+        {
+          "asset": "MeadowRuneSlashAttack20",
+          "size": [
+            256,
+            256
+          ],
+          "alphaBounds": null
+        }
+      ],
+      "sheetSize": [
+        1280,
+        1024
+      ],
+      "runtimeCatalogPixelExact": true,
+      "finalFrameTransparent": true
+    },
+    {
+      "kind": "ward",
+      "sourceArchiveSHA256": "98036771fc2d8b67772902e625a3d3998a115aeff257be7d12f46f74c80b740c",
+      "frames": [
+        {
+          "asset": "MeadowRuneWardCast01",
+          "size": [
+            256,
+            256
+          ],
+          "alphaBounds": [
+            120,
+            127,
+            135,
+            140
+          ]
+        },
+        {
+          "asset": "MeadowRuneWardCast02",
+          "size": [
+            256,
+            256
+          ],
+          "alphaBounds": [
+            23,
+            58,
+            203,
+            195
+          ]
+        },
+        {
+          "asset": "MeadowRuneWardCast03",
+          "size": [
+            256,
+            256
+          ],
+          "alphaBounds": [
+            16,
+            55,
+            189,
+            221
+          ]
+        },
+        {
+          "asset": "MeadowRuneWardCast04",
+          "size": [
+            256,
+            256
+          ],
+          "alphaBounds": [
+            11,
+            34,
+            197,
+            225
+          ]
+        },
+        {
+          "asset": "MeadowRuneWardCast05",
+          "size": [
+            256,
+            256
+          ],
+          "alphaBounds": [
+            18,
+            36,
+            225,
+            227
+          ]
+        },
+        {
+          "asset": "MeadowRuneWardCast06",
+          "size": [
+            256,
+            256
+          ],
+          "alphaBounds": [
+            25,
+            35,
+            233,
+            227
+          ]
+        },
+        {
+          "asset": "MeadowRuneWardCast07",
+          "size": [
+            256,
+            256
+          ],
+          "alphaBounds": [
+            15,
+            34,
+            219,
+            227
+          ]
+        },
+        {
+          "asset": "MeadowRuneWardCast08",
+          "size": [
+            256,
+            256
+          ],
+          "alphaBounds": [
+            18,
+            35,
+            229,
+            227
+          ]
+        },
+        {
+          "asset": "MeadowRuneWardCast09",
+          "size": [
+            256,
+            256
+          ],
+          "alphaBounds": [
+            19,
+            35,
+            228,
+            227
+          ]
+        },
+        {
+          "asset": "MeadowRuneWardCast10",
+          "size": [
+            256,
+            256
+          ],
+          "alphaBounds": [
+            10,
+            28,
+            242,
+            227
+          ]
+        },
+        {
+          "asset": "MeadowRuneWardCast11",
+          "size": [
+            256,
+            256
+          ],
+          "alphaBounds": [
+            20,
+            34,
+            246,
+            227
+          ]
+        },
+        {
+          "asset": "MeadowRuneWardCast12",
+          "size": [
+            256,
+            256
+          ],
+          "alphaBounds": [
+            10,
+            32,
+            238,
+            227
+          ]
+        },
+        {
+          "asset": "MeadowRuneWardCast13",
+          "size": [
+            256,
+            256
+          ],
+          "alphaBounds": [
+            10,
+            31,
+            246,
+            227
+          ]
+        },
+        {
+          "asset": "MeadowRuneWardCast14",
+          "size": [
+            256,
+            256
+          ],
+          "alphaBounds": [
+            18,
+            29,
+            242,
+            227
+          ]
+        },
+        {
+          "asset": "MeadowRuneWardCast15",
+          "size": [
+            256,
+            256
+          ],
+          "alphaBounds": [
+            14,
+            28,
+            237,
+            227
+          ]
+        },
+        {
+          "asset": "MeadowRuneWardCast16",
+          "size": [
+            256,
+            256
+          ],
+          "alphaBounds": [
+            36,
+            28,
+            237,
+            225
+          ]
+        },
+        {
+          "asset": "MeadowRuneWardCast17",
+          "size": [
+            256,
+            256
+          ],
+          "alphaBounds": [
+            27,
+            28,
+            222,
+            225
+          ]
+        },
+        {
+          "asset": "MeadowRuneWardCast18",
+          "size": [
+            256,
+            256
+          ],
+          "alphaBounds": [
+            36,
+            29,
+            220,
+            211
+          ]
+        },
+        {
+          "asset": "MeadowRuneWardCast19",
+          "size": [
+            256,
+            256
+          ],
+          "alphaBounds": [
+            74,
+            29,
+            190,
+            159
+          ]
+        },
+        {
+          "asset": "MeadowRuneWardCast20",
+          "size": [
+            256,
+            256
+          ],
+          "alphaBounds": null
+        }
+      ],
+      "sheetSize": [
+        1280,
+        1024
+      ],
+      "runtimeCatalogPixelExact": true,
+      "finalFrameTransparent": true
+    }
+  ],
+  "runtimeFrameAssets": 40,
+  "sourceAndRuntimeFramesPixelExact": true,
+  "ruleCatalogAndCampSaveFormatUnchanged": true,
+  "characterOrWeaponImagesRegenerated": false,
+  "actualReceiptChecks": [
+    {
+      "scenario": "runeSlash",
+      "hitTime": 2.06,
+      "actorAPBefore": 3,
+      "actorAPAfter": 1,
+      "casterHeal": 4,
+      "targetDamage": 12,
+      "correctEffectScopes": true
+    },
+    {
+      "scenario": "runeSlash-lethal",
+      "hitTime": 2.06,
+      "actorAPBefore": 3,
+      "actorAPAfter": 1,
+      "casterHeal": 4,
+      "targetDamage": 3,
+      "correctEffectScopes": true
+    },
+    {
+      "scenario": "runeWard",
+      "hitTime": 1.72,
+      "actorAPBefore": 3,
+      "actorAPAfter": 1,
+      "casterHeal": 8,
+      "targetDamage": 0,
+      "correctEffectScopes": true
+    },
+    {
+      "scenario": "battleRune",
+      "hitTime": 1.56,
+      "actorAPBefore": 3,
+      "actorAPAfter": 2,
+      "casterHeal": 0,
+      "targetDamage": 0,
+      "correctEffectScopes": true
+    },
+    {
+      "scenario": "runeSlash-buffed",
+      "hitTime": 2.06,
+      "actorAPBefore": 2,
+      "actorAPAfter": 0,
+      "casterHeal": 4,
+      "targetDamage": 18,
+      "correctEffectScopes": true
+    }
+  ],
+  "frames": 1175,
+  "allChecksPassed": true,
+  "newArtApproval": null
+}

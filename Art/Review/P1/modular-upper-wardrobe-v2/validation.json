@@ -1,0 +1,2031 @@
+{
+  "status": "offline-combination-checks-pass",
+  "artApproval": null,
+  "repairAndReviewOwner": "root",
+  "subagentsUsed": false,
+  "assetManifests": [
+    {
+      "id": "p1-neutral-up-left-r6-transitions",
+      "manifestSHA256": "a3a48d8729aeb29bb11c3ebcd4a3d814af841cf89dfbb6153279a8c368fa5920"
+    },
+    {
+      "id": "p1-neutral-up-right-r6-transitions",
+      "manifestSHA256": "cf622e30e8867b2d97ef8f39018580c26bf29a9d07c7010cd86def0f33f31c4e"
+    },
+    {
+      "id": "p1-upper-forester-v1",
+      "manifestSHA256": "30566f4ace518f301cf82d72795ce12cd446c99087171ba1ab705551523e24bf"
+    },
+    {
+      "id": "p1-upper-wayfarer-v1",
+      "manifestSHA256": "650b75bca76ff7e0acf474a1d5a72bc920ead832186931ea124ceb2674918f4b"
+    },
+    {
+      "id": "p1-upper-lower-v2",
+      "manifestSHA256": "30b4297504095a2c66372e537b4bf8f1703a9e5546c94c4da16bb0e7bf6e49b0"
+    },
+    {
+      "id": "p1-upper-hair-chestnut-v1",
+      "manifestSHA256": "58d5d872a266b52b62be43dbc9e44629827e9a482970555a253f571e5f90565c"
+    },
+    {
+      "id": "p1-upper-hair-silver-v1",
+      "manifestSHA256": "aaa9d64f502f7de7a7096d2dce44ea52720fce11f6279ac038a1a1c11c023f7b"
+    },
+    {
+      "id": "p1-upper-back-scabbard-v1",
+      "manifestSHA256": "2eedef3bb8e473dcb32eec69b088ec03bab3b87c9c95910fce6155da6df170cf"
+    }
+  ],
+  "combinations": 16,
+  "actualCompositorPoses": 208,
+  "neutralPosesUnchanged": 26,
+  "coverageChecks": 1040,
+  "coverageFailures": 0,
+  "originalVisibleHandChecks": 416,
+  "handPreservationFailures": 0,
+  "backWeaponToggleChecks": 104,
+  "visibleClothingOrphans": 0,
+  "fullyHiddenOcclusionFragments": [
+    {
+      "direction": "up-left",
+      "outfit": "wayfarer",
+      "index": 8,
+      "slot": "outfit.torso",
+      "hiddenPixels": 1
+    },
+    {
+      "direction": "up-left",
+      "outfit": "wayfarer",
+      "index": 8,
+      "slot": "outfit.torso",
+      "hiddenPixels": 1
+    },
+    {
+      "direction": "up-left",
+      "outfit": "wayfarer",
+      "index": 8,
+      "slot": "outfit.torso",
+      "hiddenPixels": 1
+    },
+    {
+      "direction": "up-left",
+      "outfit": "wayfarer",
+      "index": 8,
+      "slot": "outfit.torso",
+      "hiddenPixels": 1
+    },
+    {
+      "direction": "up-right",
+      "outfit": "wayfarer",
+      "index": 8,
+      "slot": "outfit.torso",
+      "hiddenPixels": 1
+    },
+    {
+      "direction": "up-right",
+      "outfit": "wayfarer",
+      "index": 8,
+      "slot": "outfit.torso",
+      "hiddenPixels": 1
+    },
+    {
+      "direction": "up-right",
+      "outfit": "wayfarer",
+      "index": 8,
+      "slot": "outfit.torso",
+      "hiddenPixels": 1
+    },
+    {
+      "direction": "up-right",
+      "outfit": "wayfarer",
+      "index": 8,
+      "slot": "outfit.torso",
+      "hiddenPixels": 1
+    }
+  ],
+  "normalGifTiming": [
+    {
+      "file": "outfits-walk-120ms.gif",
+      "durationsMs": [
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120
+      ],
+      "sha256": "690a7baced5d254b3722b2d6ca66d8deea17a54e2973f0b7010083ad2f742c61"
+    },
+    {
+      "file": "outfits-start-stop-120ms.gif",
+      "durationsMs": [
+        480,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        480
+      ],
+      "sha256": "6ff77242cae60b6252faba59dc1ecd016a6b2c0a70c63d96b580bfd4c3cb7904"
+    }
+  ],
+  "records": [
+    {
+      "direction": "up-left",
+      "outfit": "forester",
+      "hair": "hair-chestnut",
+      "sword": false,
+      "index": 0,
+      "path": "combinations/up-left/forester-hair-chestnut-empty/00.png",
+      "sha256": "c876982aa191874f356e1dd841e634653342801f97d39d918f2806b9bba676a4"
+    },
+    {
+      "direction": "up-left",
+      "outfit": "forester",
+      "hair": "hair-chestnut",
+      "sword": true,
+      "index": 0,
+      "path": "combinations/up-left/forester-hair-chestnut-sword/00.png",
+      "sha256": "a4bcf7406b2385b8acac9a5e444e7dcf435d128e8a1b74202f076f05d79fbe78"
+    },
+    {
+      "direction": "up-left",
+      "outfit": "forester",
+      "hair": "hair-silver",
+      "sword": false,
+      "index": 0,
+      "path": "combinations/up-left/forester-hair-silver-empty/00.png",
+      "sha256": "ac8ea8c55b5162726bf843388844630482d5becdf2493a637d7572bd5bd8b299"
+    },
+    {
+      "direction": "up-left",
+      "outfit": "forester",
+      "hair": "hair-silver",
+      "sword": true,
+      "index": 0,
+      "path": "combinations/up-left/forester-hair-silver-sword/00.png",
+      "sha256": "183df046b0865f28e2996cc5a679795400202b08f92240805a7a82c8e9ac6b3a"
+    },
+    {
+      "direction": "up-left",
+      "outfit": "wayfarer",
+      "hair": "hair-chestnut",
+      "sword": false,
+      "index": 0,
+      "path": "combinations/up-left/wayfarer-hair-chestnut-empty/00.png",
+      "sha256": "430b2540e5f76a041f5eb8d3ee039f446e7c51a85da53d694e20950c1c1c6b87"
+    },
+    {
+      "direction": "up-left",
+      "outfit": "wayfarer",
+      "hair": "hair-chestnut",
+      "sword": true,
+      "index": 0,
+      "path": "combinations/up-left/wayfarer-hair-chestnut-sword/00.png",
+      "sha256": "6ac1bd041b1339dd06c7aec6de0b0f75d2561d03004c55782d14a7f626ba0138"
+    },
+    {
+      "direction": "up-left",
+      "outfit": "wayfarer",
+      "hair": "hair-silver",
+      "sword": false,
+      "index": 0,
+      "path": "combinations/up-left/wayfarer-hair-silver-empty/00.png",
+      "sha256": "4a03212334cba6a5094c7256c1710b88d6b9679e570723eaacf46a5311154ba0"
+    },
+    {
+      "direction": "up-left",
+      "outfit": "wayfarer",
+      "hair": "hair-silver",
+      "sword": true,
+      "index": 0,
+      "path": "combinations/up-left/wayfarer-hair-silver-sword/00.png",
+      "sha256": "e8cfae3fa81055173b2db6370713b455252b2156aed72dad67ce8abae720422a"
+    },
+    {
+      "direction": "up-left",
+      "outfit": "forester",
+      "hair": "hair-chestnut",
+      "sword": false,
+      "index": 1,
+      "path": "combinations/up-left/forester-hair-chestnut-empty/01.png",
+      "sha256": "35b6321f176bd3be2edd6572d4ec29f675665c007ebec99a76228c35ecb3ad42"
+    },
+    {
+      "direction": "up-left",
+      "outfit": "forester",
+      "hair": "hair-chestnut",
+      "sword": true,
+      "index": 1,
+      "path": "combinations/up-left/forester-hair-chestnut-sword/01.png",
+      "sha256": "e0f7a418bc8acfb628ffac2dd16dfab0f4431dfa965e1bb56830738612e3ec93"
+    },
+    {
+      "direction": "up-left",
+      "outfit": "forester",
+      "hair": "hair-silver",
+      "sword": false,
+      "index": 1,
+      "path": "combinations/up-left/forester-hair-silver-empty/01.png",
+      "sha256": "a802ee68518a76143b1ac740d1a4915468d795b240228a6cb6228e5dd7670338"
+    },
+    {
+      "direction": "up-left",
+      "outfit": "forester",
+      "hair": "hair-silver",
+      "sword": true,
+      "index": 1,
+      "path": "combinations/up-left/forester-hair-silver-sword/01.png",
+      "sha256": "ec3afe4047d11a015f991f03e96e4a5a537b24bab18a5edfa5a1ded91d99772b"
+    },
+    {
+      "direction": "up-left",
+      "outfit": "wayfarer",
+      "hair": "hair-chestnut",
+      "sword": false,
+      "index": 1,
+      "path": "combinations/up-left/wayfarer-hair-chestnut-empty/01.png",
+      "sha256": "5c63338d0e9eccaf6ec39db96c77f1b0046ae647aa81e35506829a0b0ba33373"
+    },
+    {
+      "direction": "up-left",
+      "outfit": "wayfarer",
+      "hair": "hair-chestnut",
+      "sword": true,
+      "index": 1,
+      "path": "combinations/up-left/wayfarer-hair-chestnut-sword/01.png",
+      "sha256": "fcbdf12a29aa82c0377a58280fe7652d1841a2fbdd4e8b6bc96f472b252b153c"
+    },
+    {
+      "direction": "up-left",
+      "outfit": "wayfarer",
+      "hair": "hair-silver",
+      "sword": false,
+      "index": 1,
+      "path": "combinations/up-left/wayfarer-hair-silver-empty/01.png",
+      "sha256": "95801a7e011cef8a20b539ca5c550a6901cd652db8dac83cacc1d410ffbe7a0d"
+    },
+    {
+      "direction": "up-left",
+      "outfit": "wayfarer",
+      "hair": "hair-silver",
+      "sword": true,
+      "index": 1,
+      "path": "combinations/up-left/wayfarer-hair-silver-sword/01.png",
+      "sha256": "bd8e674d2ff0dbfd5bf16fbf6b2d0b6e72028c51bb1cef47b9fc5f14ac93f6d7"
+    },
+    {
+      "direction": "up-left",
+      "outfit": "forester",
+      "hair": "hair-chestnut",
+      "sword": false,
+      "index": 2,
+      "path": "combinations/up-left/forester-hair-chestnut-empty/02.png",
+      "sha256": "214fea2b58194ef4389740a3fa080a213c09227b356e1b6d7b08012b75c7200c"
+    },
+    {
+      "direction": "up-left",
+      "outfit": "forester",
+      "hair": "hair-chestnut",
+      "sword": true,
+      "index": 2,
+      "path": "combinations/up-left/forester-hair-chestnut-sword/02.png",
+      "sha256": "3187742ad487d304ea1e45b5d26e8987d9810c30241d2b670e487f563266814d"
+    },
+    {
+      "direction": "up-left",
+      "outfit": "forester",
+      "hair": "hair-silver",
+      "sword": false,
+      "index": 2,
+      "path": "combinations/up-left/forester-hair-silver-empty/02.png",
+      "sha256": "5b415186dc6fdfe7d42d2fabb5969aa6b12dc5e3008c5cb9c5f874ac75d2d424"
+    },
+    {
+      "direction": "up-left",
+      "outfit": "forester",
+      "hair": "hair-silver",
+      "sword": true,
+      "index": 2,
+      "path": "combinations/up-left/forester-hair-silver-sword/02.png",
+      "sha256": "4366af5dcb16c7cadfd1de5d3ee15b030688fdd19d243fa0c4a43dc24ba71326"
+    },
+    {
+      "direction": "up-left",
+      "outfit": "wayfarer",
+      "hair": "hair-chestnut",
+      "sword": false,
+      "index": 2,
+      "path": "combinations/up-left/wayfarer-hair-chestnut-empty/02.png",
+      "sha256": "3fbd10657abdfe7adfcf9e9a704095b7cbcf5188b1d80d718fedd8832e6c01cd"
+    },
+    {
+      "direction": "up-left",
+      "outfit": "wayfarer",
+      "hair": "hair-chestnut",
+      "sword": true,
+      "index": 2,
+      "path": "combinations/up-left/wayfarer-hair-chestnut-sword/02.png",
+      "sha256": "82fd587aac8c3013de925170c01f9d492c0e117fbaadea4b9c896a3be41d68c7"
+    },
+    {
+      "direction": "up-left",
+      "outfit": "wayfarer",
+      "hair": "hair-silver",
+      "sword": false,
+      "index": 2,
+      "path": "combinations/up-left/wayfarer-hair-silver-empty/02.png",
+      "sha256": "147a87ce17585094a6017255075ef5df0e56130d9130a6e50918955730232e2a"
+    },
+    {
+      "direction": "up-left",
+      "outfit": "wayfarer",
+      "hair": "hair-silver",
+      "sword": true,
+      "index": 2,
+      "path": "combinations/up-left/wayfarer-hair-silver-sword/02.png",
+      "sha256": "b6f4505e01aaca9c97a2c78bf4dc3808141c6347d9595820449dc4f92a5fcda7"
+    },
+    {
+      "direction": "up-left",
+      "outfit": "forester",
+      "hair": "hair-chestnut",
+      "sword": false,
+      "index": 3,
+      "path": "combinations/up-left/forester-hair-chestnut-empty/03.png",
+      "sha256": "ebf2443fefb482184799b90e5b3525565cc4de1ced22851a9ec0098eb703753d"
+    },
+    {
+      "direction": "up-left",
+      "outfit": "forester",
+      "hair": "hair-chestnut",
+      "sword": true,
+      "index": 3,
+      "path": "combinations/up-left/forester-hair-chestnut-sword/03.png",
+      "sha256": "711af05a2345563767459a63207b21131fda314510b3d84673db494f4e78a16b"
+    },
+    {
+      "direction": "up-left",
+      "outfit": "forester",
+      "hair": "hair-silver",
+      "sword": false,
+      "index": 3,
+      "path": "combinations/up-left/forester-hair-silver-empty/03.png",
+      "sha256": "e2f9f5e61a91dde9e3f75a813b490781d85dcfbf3b0c4a2828822fc92b4a68e5"
+    },
+    {
+      "direction": "up-left",
+      "outfit": "forester",
+      "hair": "hair-silver",
+      "sword": true,
+      "index": 3,
+      "path": "combinations/up-left/forester-hair-silver-sword/03.png",
+      "sha256": "07fab0db72e50c8414ac63182fcea2f0095bf83f32688fa2cd9bb41a20472471"
+    },
+    {
+      "direction": "up-left",
+      "outfit": "wayfarer",
+      "hair": "hair-chestnut",
+      "sword": false,
+      "index": 3,
+      "path": "combinations/up-left/wayfarer-hair-chestnut-empty/03.png",
+      "sha256": "9828a7b946b8c54791d468c45fb60dbe96004a94335a2a85c1a5a8c15f439a70"
+    },
+    {
+      "direction": "up-left",
+      "outfit": "wayfarer",
+      "hair": "hair-chestnut",
+      "sword": true,
+      "index": 3,
+      "path": "combinations/up-left/wayfarer-hair-chestnut-sword/03.png",
+      "sha256": "8b196112943d3e76543c5ad42911cd17a25fe47feb8de932f446067974865008"
+    },
+    {
+      "direction": "up-left",
+      "outfit": "wayfarer",
+      "hair": "hair-silver",
+      "sword": false,
+      "index": 3,
+      "path": "combinations/up-left/wayfarer-hair-silver-empty/03.png",
+      "sha256": "813eeba6c3a027b71de87ad12a81be84574ff3452de3baae34a3f44d32936244"
+    },
+    {
+      "direction": "up-left",
+      "outfit": "wayfarer",
+      "hair": "hair-silver",
+      "sword": true,
+      "index": 3,
+      "path": "combinations/up-left/wayfarer-hair-silver-sword/03.png",
+      "sha256": "db09385a75cf1d35e0209752683b9904e10d81314ae1d7802515bb81e79d403f"
+    },
+    {
+      "direction": "up-left",
+      "outfit": "forester",
+      "hair": "hair-chestnut",
+      "sword": false,
+      "index": 4,
+      "path": "combinations/up-left/forester-hair-chestnut-empty/04.png",
+      "sha256": "84c625cd0c864f2fde25b4983bf11f2f015a7156444303539f45014fe63b5128"
+    },
+    {
+      "direction": "up-left",
+      "outfit": "forester",
+      "hair": "hair-chestnut",
+      "sword": true,
+      "index": 4,
+      "path": "combinations/up-left/forester-hair-chestnut-sword/04.png",
+      "sha256": "fc63f9412dd9c26fc6e543b8ad4a39cc2db75e14df4ce0eebec980b0464b40f7"
+    },
+    {
+      "direction": "up-left",
+      "outfit": "forester",
+      "hair": "hair-silver",
+      "sword": false,
+      "index": 4,
+      "path": "combinations/up-left/forester-hair-silver-empty/04.png",
+      "sha256": "cbde04e0f761c4c472cfda383174936abbb617b09fac9f6bd97f290a64f9f15a"
+    },
+    {
+      "direction": "up-left",
+      "outfit": "forester",
+      "hair": "hair-silver",
+      "sword": true,
+      "index": 4,
+      "path": "combinations/up-left/forester-hair-silver-sword/04.png",
+      "sha256": "a410ae70374248cee3681984f1d91183222a40dcbbf11ed9a6fb96e671d7064c"
+    },
+    {
+      "direction": "up-left",
+      "outfit": "wayfarer",
+      "hair": "hair-chestnut",
+      "sword": false,
+      "index": 4,
+      "path": "combinations/up-left/wayfarer-hair-chestnut-empty/04.png",
+      "sha256": "0cb8158d465a5aaf0adb69fe48c199db73828ca2921004b36d599e5e829822bf"
+    },
+    {
+      "direction": "up-left",
+      "outfit": "wayfarer",
+      "hair": "hair-chestnut",
+      "sword": true,
+      "index": 4,
+      "path": "combinations/up-left/wayfarer-hair-chestnut-sword/04.png",
+      "sha256": "ec2538128c34fa0617b93b4fef0590b19d0876cbca7b5a704ae9b29c577e1184"
+    },
+    {
+      "direction": "up-left",
+      "outfit": "wayfarer",
+      "hair": "hair-silver",
+      "sword": false,
+      "index": 4,
+      "path": "combinations/up-left/wayfarer-hair-silver-empty/04.png",
+      "sha256": "6560bffa3dc0d40d1493bf7f9b6f1a41f580677505f5500aea5c64aa440d509e"
+    },
+    {
+      "direction": "up-left",
+      "outfit": "wayfarer",
+      "hair": "hair-silver",
+      "sword": true,
+      "index": 4,
+      "path": "combinations/up-left/wayfarer-hair-silver-sword/04.png",
+      "sha256": "5836253d61bbee71a623878d0954270695a0819aa6618868d963b1b19a296f39"
+    },
+    {
+      "direction": "up-left",
+      "outfit": "forester",
+      "hair": "hair-chestnut",
+      "sword": false,
+      "index": 5,
+      "path": "combinations/up-left/forester-hair-chestnut-empty/05.png",
+      "sha256": "7b07ea72d6c3fcfbce88b4751b09be670dbc7b3ce9148c00dc8f4de28cb32818"
+    },
+    {
+      "direction": "up-left",
+      "outfit": "forester",
+      "hair": "hair-chestnut",
+      "sword": true,
+      "index": 5,
+      "path": "combinations/up-left/forester-hair-chestnut-sword/05.png",
+      "sha256": "d652b79f5e067f78a29a0efa6fc1967cdc11689922d611147e379252aa30d668"
+    },
+    {
+      "direction": "up-left",
+      "outfit": "forester",
+      "hair": "hair-silver",
+      "sword": false,
+      "index": 5,
+      "path": "combinations/up-left/forester-hair-silver-empty/05.png",
+      "sha256": "107545e0589c9884340b28415bda6a1e3ad9ac9c29de07d6a223784c4ece14cd"
+    },
+    {
+      "direction": "up-left",
+      "outfit": "forester",
+      "hair": "hair-silver",
+      "sword": true,
+      "index": 5,
+      "path": "combinations/up-left/forester-hair-silver-sword/05.png",
+      "sha256": "5eb76cd9f87eb272b17877d60bfc7793cc50d8e5e74ea0bcb174f93eab1cc4f7"
+    },
+    {
+      "direction": "up-left",
+      "outfit": "wayfarer",
+      "hair": "hair-chestnut",
+      "sword": false,
+      "index": 5,
+      "path": "combinations/up-left/wayfarer-hair-chestnut-empty/05.png",
+      "sha256": "58c23d591c63e8d489a05e28ef9a9a6c1c0616c93bdcfcbc24705190a9796100"
+    },
+    {
+      "direction": "up-left",
+      "outfit": "wayfarer",
+      "hair": "hair-chestnut",
+      "sword": true,
+      "index": 5,
+      "path": "combinations/up-left/wayfarer-hair-chestnut-sword/05.png",
+      "sha256": "9894a300d2a8bf3f64b28f8077ad4873e5fcb8eb51e9d43d29c4d00f9e4768d6"
+    },
+    {
+      "direction": "up-left",
+      "outfit": "wayfarer",
+      "hair": "hair-silver",
+      "sword": false,
+      "index": 5,
+      "path": "combinations/up-left/wayfarer-hair-silver-empty/05.png",
+      "sha256": "24ce703b485e49090ac11b73822973847df1e3b77b9a456e7e03140f74a908fc"
+    },
+    {
+      "direction": "up-left",
+      "outfit": "wayfarer",
+      "hair": "hair-silver",
+      "sword": true,
+      "index": 5,
+      "path": "combinations/up-left/wayfarer-hair-silver-sword/05.png",
+      "sha256": "ae1c4449b652d14dd123c934ceefe7ee57d01768d994a8288995ed027b8b2b9f"
+    },
+    {
+      "direction": "up-left",
+      "outfit": "forester",
+      "hair": "hair-chestnut",
+      "sword": false,
+      "index": 6,
+      "path": "combinations/up-left/forester-hair-chestnut-empty/06.png",
+      "sha256": "8950c1e9570e6156bd442d8f44d33b86566cf0c1dc0e60a18292f78974523b0b"
+    },
+    {
+      "direction": "up-left",
+      "outfit": "forester",
+      "hair": "hair-chestnut",
+      "sword": true,
+      "index": 6,
+      "path": "combinations/up-left/forester-hair-chestnut-sword/06.png",
+      "sha256": "49e1d2203c3b126d9f3bb48f88e1483b4a396e25c626327ca371e31d1f4aac3d"
+    },
+    {
+      "direction": "up-left",
+      "outfit": "forester",
+      "hair": "hair-silver",
+      "sword": false,
+      "index": 6,
+      "path": "combinations/up-left/forester-hair-silver-empty/06.png",
+      "sha256": "4fa12ddda0c7e63676b3d1095c647e50e57b2f3c9ae63e3f5be32a36c65a2f4d"
+    },
+    {
+      "direction": "up-left",
+      "outfit": "forester",
+      "hair": "hair-silver",
+      "sword": true,
+      "index": 6,
+      "path": "combinations/up-left/forester-hair-silver-sword/06.png",
+      "sha256": "dec0fd747daa6368a74af3f1ead5eabdc657724e71c34dadc7dc1175d75ce4d3"
+    },
+    {
+      "direction": "up-left",
+      "outfit": "wayfarer",
+      "hair": "hair-chestnut",
+      "sword": false,
+      "index": 6,
+      "path": "combinations/up-left/wayfarer-hair-chestnut-empty/06.png",
+      "sha256": "4af4139c0bf4dfbc19bf08a7f88acc677c24efc101c47bc4998d753bc6a2dee8"
+    },
+    {
+      "direction": "up-left",
+      "outfit": "wayfarer",
+      "hair": "hair-chestnut",
+      "sword": true,
+      "index": 6,
+      "path": "combinations/up-left/wayfarer-hair-chestnut-sword/06.png",
+      "sha256": "9543151af1ffb3644e7083a0c72c00ad9201d49ff4c7fd8d44a9a217574a8324"
+    },
+    {
+      "direction": "up-left",
+      "outfit": "wayfarer",
+      "hair": "hair-silver",
+      "sword": false,
+      "index": 6,
+      "path": "combinations/up-left/wayfarer-hair-silver-empty/06.png",
+      "sha256": "7cfa9ea5f92feb700fef149566477c96b2304d1a2f77af02562c3b14ba4247f4"
+    },
+    {
+      "direction": "up-left",
+      "outfit": "wayfarer",
+      "hair": "hair-silver",
+      "sword": true,
+      "index": 6,
+      "path": "combinations/up-left/wayfarer-hair-silver-sword/06.png",
+      "sha256": "662b3a16f8c069442f6c1c2840c9db8904eae04abadd13a09963214746036aa6"
+    },
+    {
+      "direction": "up-left",
+      "outfit": "forester",
+      "hair": "hair-chestnut",
+      "sword": false,
+      "index": 7,
+      "path": "combinations/up-left/forester-hair-chestnut-empty/07.png",
+      "sha256": "6d9d624f9d4dd025623f395d4024f45e1ea3c47dcbca858fd19f25a98c006834"
+    },
+    {
+      "direction": "up-left",
+      "outfit": "forester",
+      "hair": "hair-chestnut",
+      "sword": true,
+      "index": 7,
+      "path": "combinations/up-left/forester-hair-chestnut-sword/07.png",
+      "sha256": "1139dd91c64ee6129e1282c73e08a18753322eef1ab48dee8780159e5de2aa8a"
+    },
+    {
+      "direction": "up-left",
+      "outfit": "forester",
+      "hair": "hair-silver",
+      "sword": false,
+      "index": 7,
+      "path": "combinations/up-left/forester-hair-silver-empty/07.png",
+      "sha256": "923011d5cb8fc967c2b0e61656900342491d6078cf9b83c2d637808112a18486"
+    },
+    {
+      "direction": "up-left",
+      "outfit": "forester",
+      "hair": "hair-silver",
+      "sword": true,
+      "index": 7,
+      "path": "combinations/up-left/forester-hair-silver-sword/07.png",
+      "sha256": "8b90640811f6467647c6379075d880e9588960244942f097c9eb09dc00a49c43"
+    },
+    {
+      "direction": "up-left",
+      "outfit": "wayfarer",
+      "hair": "hair-chestnut",
+      "sword": false,
+      "index": 7,
+      "path": "combinations/up-left/wayfarer-hair-chestnut-empty/07.png",
+      "sha256": "782924de6bffaed35e98f85373a2efce316b40971d0ca85098648fd8bc4502a8"
+    },
+    {
+      "direction": "up-left",
+      "outfit": "wayfarer",
+      "hair": "hair-chestnut",
+      "sword": true,
+      "index": 7,
+      "path": "combinations/up-left/wayfarer-hair-chestnut-sword/07.png",
+      "sha256": "24b6fcc9eaa0d2c52e9c6c75f6f99a8227dc4fd43e5602bc52024c3d1438ef83"
+    },
+    {
+      "direction": "up-left",
+      "outfit": "wayfarer",
+      "hair": "hair-silver",
+      "sword": false,
+      "index": 7,
+      "path": "combinations/up-left/wayfarer-hair-silver-empty/07.png",
+      "sha256": "90899edcc3a23e794ce099c0645a7236e2b938f34e5003774bcc889121cfd426"
+    },
+    {
+      "direction": "up-left",
+      "outfit": "wayfarer",
+      "hair": "hair-silver",
+      "sword": true,
+      "index": 7,
+      "path": "combinations/up-left/wayfarer-hair-silver-sword/07.png",
+      "sha256": "aeefd246e8b810b38f6ca3e6d6cd02dcb55414099391ec3232e14921c3a9f2e8"
+    },
+    {
+      "direction": "up-left",
+      "outfit": "forester",
+      "hair": "hair-chestnut",
+      "sword": false,
+      "index": 8,
+      "path": "combinations/up-left/forester-hair-chestnut-empty/08.png",
+      "sha256": "680c03f1e41c614fe5c256e25375213d36111a77f189057f1046dc11ec68c1dd"
+    },
+    {
+      "direction": "up-left",
+      "outfit": "forester",
+      "hair": "hair-chestnut",
+      "sword": true,
+      "index": 8,
+      "path": "combinations/up-left/forester-hair-chestnut-sword/08.png",
+      "sha256": "9e6ebdd9eeeb6bd968e97aa3bce40d5004b0bb141ccb0d0ca24bb991383ef863"
+    },
+    {
+      "direction": "up-left",
+      "outfit": "forester",
+      "hair": "hair-silver",
+      "sword": false,
+      "index": 8,
+      "path": "combinations/up-left/forester-hair-silver-empty/08.png",
+      "sha256": "c2843dec3852ae13d370300bf7d8172c14f5e6960667262af76a4067c927214b"
+    },
+    {
+      "direction": "up-left",
+      "outfit": "forester",
+      "hair": "hair-silver",
+      "sword": true,
+      "index": 8,
+      "path": "combinations/up-left/forester-hair-silver-sword/08.png",
+      "sha256": "d02a3a3e211ebbf76e6785d8c9b20a83ceaeeff900731c11e83914d73f1db2d9"
+    },
+    {
+      "direction": "up-left",
+      "outfit": "wayfarer",
+      "hair": "hair-chestnut",
+      "sword": false,
+      "index": 8,
+      "path": "combinations/up-left/wayfarer-hair-chestnut-empty/08.png",
+      "sha256": "36610feae59bf8bb0f5fd3fcd8064e635f3699f9166ac802ace3e435f9d3009b"
+    },
+    {
+      "direction": "up-left",
+      "outfit": "wayfarer",
+      "hair": "hair-chestnut",
+      "sword": true,
+      "index": 8,
+      "path": "combinations/up-left/wayfarer-hair-chestnut-sword/08.png",
+      "sha256": "7e274039233af156bfc86935a662656985f74e7bf70796bdad8646b8424d9a1c"
+    },
+    {
+      "direction": "up-left",
+      "outfit": "wayfarer",
+      "hair": "hair-silver",
+      "sword": false,
+      "index": 8,
+      "path": "combinations/up-left/wayfarer-hair-silver-empty/08.png",
+      "sha256": "e490cedec8f603276d0f4241b7dc53ca561feeb05acad9e1623bd3459dcd618a"
+    },
+    {
+      "direction": "up-left",
+      "outfit": "wayfarer",
+      "hair": "hair-silver",
+      "sword": true,
+      "index": 8,
+      "path": "combinations/up-left/wayfarer-hair-silver-sword/08.png",
+      "sha256": "4a0894be7ac51165c5d1bb97e3b351816a83b62c8f00af56b0a01d995902929a"
+    },
+    {
+      "direction": "up-left",
+      "outfit": "forester",
+      "hair": "hair-chestnut",
+      "sword": false,
+      "index": 9,
+      "path": "combinations/up-left/forester-hair-chestnut-empty/09.png",
+      "sha256": "ded47b4535be57bdbb31c64b22ac0d22d419351bd77b9204028e3ffeae806c9d"
+    },
+    {
+      "direction": "up-left",
+      "outfit": "forester",
+      "hair": "hair-chestnut",
+      "sword": true,
+      "index": 9,
+      "path": "combinations/up-left/forester-hair-chestnut-sword/09.png",
+      "sha256": "2bf76bdcfcbbdde48817c75d481751cf1ea2afc861a01c078692dbd1b15845b1"
+    },
+    {
+      "direction": "up-left",
+      "outfit": "forester",
+      "hair": "hair-silver",
+      "sword": false,
+      "index": 9,
+      "path": "combinations/up-left/forester-hair-silver-empty/09.png",
+      "sha256": "00670c2f7ea44295372d480aef69f31cd3fc22a22239cf3c635417cebad65a1e"
+    },
+    {
+      "direction": "up-left",
+      "outfit": "forester",
+      "hair": "hair-silver",
+      "sword": true,
+      "index": 9,
+      "path": "combinations/up-left/forester-hair-silver-sword/09.png",
+      "sha256": "0fb116fa7128cd37368496c876f451bac5b97603122fa18c46e1b9e83c8fe3b8"
+    },
+    {
+      "direction": "up-left",
+      "outfit": "wayfarer",
+      "hair": "hair-chestnut",
+      "sword": false,
+      "index": 9,
+      "path": "combinations/up-left/wayfarer-hair-chestnut-empty/09.png",
+      "sha256": "30207bd297e35028fc674769988728e6062edef4af8e0df9db2f863b15ee62d7"
+    },
+    {
+      "direction": "up-left",
+      "outfit": "wayfarer",
+      "hair": "hair-chestnut",
+      "sword": true,
+      "index": 9,
+      "path": "combinations/up-left/wayfarer-hair-chestnut-sword/09.png",
+      "sha256": "df644b77835c8f65f01b2a034a7df749bc70cb098f238e3146bc29278c1bc00f"
+    },
+    {
+      "direction": "up-left",
+      "outfit": "wayfarer",
+      "hair": "hair-silver",
+      "sword": false,
+      "index": 9,
+      "path": "combinations/up-left/wayfarer-hair-silver-empty/09.png",
+      "sha256": "8f108ac77a5cb1b72d4a7275a40bc37c0e04901c92735f0f3b9f34d695ee8454"
+    },
+    {
+      "direction": "up-left",
+      "outfit": "wayfarer",
+      "hair": "hair-silver",
+      "sword": true,
+      "index": 9,
+      "path": "combinations/up-left/wayfarer-hair-silver-sword/09.png",
+      "sha256": "0037053d4ba0649c676fd297ca4fc713e81852e2d7f0c1a5bf35ef47e1bbd568"
+    },
+    {
+      "direction": "up-left",
+      "outfit": "forester",
+      "hair": "hair-chestnut",
+      "sword": false,
+      "index": 10,
+      "path": "combinations/up-left/forester-hair-chestnut-empty/10.png",
+      "sha256": "a452c6c3bff144a47627f8be0185b32038252a1d0bc36651f5cdd68a896e543d"
+    },
+    {
+      "direction": "up-left",
+      "outfit": "forester",
+      "hair": "hair-chestnut",
+      "sword": true,
+      "index": 10,
+      "path": "combinations/up-left/forester-hair-chestnut-sword/10.png",
+      "sha256": "73edcc5860f630f7131ea83de85b36d87d45ad8bb21d8ec14e5709ee6a55c85c"
+    },
+    {
+      "direction": "up-left",
+      "outfit": "forester",
+      "hair": "hair-silver",
+      "sword": false,
+      "index": 10,
+      "path": "combinations/up-left/forester-hair-silver-empty/10.png",
+      "sha256": "491e5df3e5d7f420596edf7f32b86fe5e5e921d1535c588492aa423ed8ace6f2"
+    },
+    {
+      "direction": "up-left",
+      "outfit": "forester",
+      "hair": "hair-silver",
+      "sword": true,
+      "index": 10,
+      "path": "combinations/up-left/forester-hair-silver-sword/10.png",
+      "sha256": "099e33acbab4ba63280b759b0678ac5f896de5f03005770976a9f74caf64db7c"
+    },
+    {
+      "direction": "up-left",
+      "outfit": "wayfarer",
+      "hair": "hair-chestnut",
+      "sword": false,
+      "index": 10,
+      "path": "combinations/up-left/wayfarer-hair-chestnut-empty/10.png",
+      "sha256": "70bed9b0892846c510af1ff227c79b6ed9bd22f18471a02ffc190d0d166ff505"
+    },
+    {
+      "direction": "up-left",
+      "outfit": "wayfarer",
+      "hair": "hair-chestnut",
+      "sword": true,
+      "index": 10,
+      "path": "combinations/up-left/wayfarer-hair-chestnut-sword/10.png",
+      "sha256": "a831655a43c82dbc2c443645507d901e105ae3bbe187598ba997c9f430f44e47"
+    },
+    {
+      "direction": "up-left",
+      "outfit": "wayfarer",
+      "hair": "hair-silver",
+      "sword": false,
+      "index": 10,
+      "path": "combinations/up-left/wayfarer-hair-silver-empty/10.png",
+      "sha256": "5604245f8165b6f6bbe197071eede2a898f7aa596d158cac741b09600fd8522f"
+    },
+    {
+      "direction": "up-left",
+      "outfit": "wayfarer",
+      "hair": "hair-silver",
+      "sword": true,
+      "index": 10,
+      "path": "combinations/up-left/wayfarer-hair-silver-sword/10.png",
+      "sha256": "16a42b5b971ef049bcd6ca2fb9e172a660b3ef4e36767e5765e06875ee7ff263"
+    },
+    {
+      "direction": "up-left",
+      "outfit": "forester",
+      "hair": "hair-chestnut",
+      "sword": false,
+      "index": 11,
+      "path": "combinations/up-left/forester-hair-chestnut-empty/11.png",
+      "sha256": "255e7e92588ec0e08bc6998e687ac104bffc75f5f344515e05a2d9443d8177ef"
+    },
+    {
+      "direction": "up-left",
+      "outfit": "forester",
+      "hair": "hair-chestnut",
+      "sword": true,
+      "index": 11,
+      "path": "combinations/up-left/forester-hair-chestnut-sword/11.png",
+      "sha256": "fcbc530d3e85042044ca5dd5ffcd7ca180240e2780d20f7667a10c54a39b077f"
+    },
+    {
+      "direction": "up-left",
+      "outfit": "forester",
+      "hair": "hair-silver",
+      "sword": false,
+      "index": 11,
+      "path": "combinations/up-left/forester-hair-silver-empty/11.png",
+      "sha256": "ed42909e08663ede0c7db67b4c1dd5c850a370bc76f2b2340bf7bd4b3d839f1e"
+    },
+    {
+      "direction": "up-left",
+      "outfit": "forester",
+      "hair": "hair-silver",
+      "sword": true,
+      "index": 11,
+      "path": "combinations/up-left/forester-hair-silver-sword/11.png",
+      "sha256": "5663e87e7e07993aede72b68e359d4c3c172477b63f39c5b01e04d46fe2ec0df"
+    },
+    {
+      "direction": "up-left",
+      "outfit": "wayfarer",
+      "hair": "hair-chestnut",
+      "sword": false,
+      "index": 11,
+      "path": "combinations/up-left/wayfarer-hair-chestnut-empty/11.png",
+      "sha256": "e1975a857bf9db80b4dcb30748410168b8f64ac001db1a7cd76fec57bd71df73"
+    },
+    {
+      "direction": "up-left",
+      "outfit": "wayfarer",
+      "hair": "hair-chestnut",
+      "sword": true,
+      "index": 11,
+      "path": "combinations/up-left/wayfarer-hair-chestnut-sword/11.png",
+      "sha256": "7d479af43d5254a48d3145a74c7fbefd079762016b999377ad3450080923cc2a"
+    },
+    {
+      "direction": "up-left",
+      "outfit": "wayfarer",
+      "hair": "hair-silver",
+      "sword": false,
+      "index": 11,
+      "path": "combinations/up-left/wayfarer-hair-silver-empty/11.png",
+      "sha256": "26580fe433ea11f76d59218d002e5120fe64088d196268eb1e594882d3a73bce"
+    },
+    {
+      "direction": "up-left",
+      "outfit": "wayfarer",
+      "hair": "hair-silver",
+      "sword": true,
+      "index": 11,
+      "path": "combinations/up-left/wayfarer-hair-silver-sword/11.png",
+      "sha256": "21015ad5f9ee29ac084f3f03197e7e35b1d688392c2d31b7a15c2b8d4f3548bc"
+    },
+    {
+      "direction": "up-left",
+      "outfit": "forester",
+      "hair": "hair-chestnut",
+      "sword": false,
+      "index": 12,
+      "path": "combinations/up-left/forester-hair-chestnut-empty/12.png",
+      "sha256": "beeb1e396e0d2dae764eb89eac7c7ba4406e007bf550aff0d49039874f2c2967"
+    },
+    {
+      "direction": "up-left",
+      "outfit": "forester",
+      "hair": "hair-chestnut",
+      "sword": true,
+      "index": 12,
+      "path": "combinations/up-left/forester-hair-chestnut-sword/12.png",
+      "sha256": "c65a5ada095cd3d39a3abccf04bd77cb85c72a6b754acb89ca21ebee942a7788"
+    },
+    {
+      "direction": "up-left",
+      "outfit": "forester",
+      "hair": "hair-silver",
+      "sword": false,
+      "index": 12,
+      "path": "combinations/up-left/forester-hair-silver-empty/12.png",
+      "sha256": "157ba04ffcaaa7b56e00105bd56058260d71ac8a438e7ac8f191416c01b7bc2f"
+    },
+    {
+      "direction": "up-left",
+      "outfit": "forester",
+      "hair": "hair-silver",
+      "sword": true,
+      "index": 12,
+      "path": "combinations/up-left/forester-hair-silver-sword/12.png",
+      "sha256": "5f69defcaaf4cd7085d99e5305ba9d2fb26f6e6123db852cf0bb6ec964782698"
+    },
+    {
+      "direction": "up-left",
+      "outfit": "wayfarer",
+      "hair": "hair-chestnut",
+      "sword": false,
+      "index": 12,
+      "path": "combinations/up-left/wayfarer-hair-chestnut-empty/12.png",
+      "sha256": "20cb292dbe1ddb8c63b7f146c60dcdad75d40a89099cdf1d3c94e335cfaafb94"
+    },
+    {
+      "direction": "up-left",
+      "outfit": "wayfarer",
+      "hair": "hair-chestnut",
+      "sword": true,
+      "index": 12,
+      "path": "combinations/up-left/wayfarer-hair-chestnut-sword/12.png",
+      "sha256": "c6d7aebf17bd7a9dd42a90d39caefaf0fe03d1513a333432fb9cd3f007e44109"
+    },
+    {
+      "direction": "up-left",
+      "outfit": "wayfarer",
+      "hair": "hair-silver",
+      "sword": false,
+      "index": 12,
+      "path": "combinations/up-left/wayfarer-hair-silver-empty/12.png",
+      "sha256": "cdb5c2664b7adb7b1eee56a6e14431d89bf1dbec4eebfe2a9375caf2a69cb677"
+    },
+    {
+      "direction": "up-left",
+      "outfit": "wayfarer",
+      "hair": "hair-silver",
+      "sword": true,
+      "index": 12,
+      "path": "combinations/up-left/wayfarer-hair-silver-sword/12.png",
+      "sha256": "f79a81a57682fa57c8d3f99be6b68ba14939d819cc7525286e15aa24425b7c60"
+    },
+    {
+      "direction": "up-right",
+      "outfit": "forester",
+      "hair": "hair-chestnut",
+      "sword": false,
+      "index": 0,
+      "path": "combinations/up-right/forester-hair-chestnut-empty/00.png",
+      "sha256": "bf887d3ec787792ad5391a5ac93c4f286baaa50f10d90f4d60d1eba43dd1efe7"
+    },
+    {
+      "direction": "up-right",
+      "outfit": "forester",
+      "hair": "hair-chestnut",
+      "sword": true,
+      "index": 0,
+      "path": "combinations/up-right/forester-hair-chestnut-sword/00.png",
+      "sha256": "7e52e8b68af35a959c5ed92d0c0c503b26f1e7ebb5cb0a9d6a63867a8a2be7ba"
+    },
+    {
+      "direction": "up-right",
+      "outfit": "forester",
+      "hair": "hair-silver",
+      "sword": false,
+      "index": 0,
+      "path": "combinations/up-right/forester-hair-silver-empty/00.png",
+      "sha256": "e0f38d13553c13f2abf7b94d52629ec97aefa07f3f5682911f7efe5062e062a3"
+    },
+    {
+      "direction": "up-right",
+      "outfit": "forester",
+      "hair": "hair-silver",
+      "sword": true,
+      "index": 0,
+      "path": "combinations/up-right/forester-hair-silver-sword/00.png",
+      "sha256": "2e017b0ee85c14c27cb645348ab69890660f45f1a86001070d2740df25df1964"
+    },
+    {
+      "direction": "up-right",
+      "outfit": "wayfarer",
+      "hair": "hair-chestnut",
+      "sword": false,
+      "index": 0,
+      "path": "combinations/up-right/wayfarer-hair-chestnut-empty/00.png",
+      "sha256": "9a9844b7e233aee3b0aa9a8d754f92d93adf6096508b8d8d9795eebb2c6f32a2"
+    },
+    {
+      "direction": "up-right",
+      "outfit": "wayfarer",
+      "hair": "hair-chestnut",
+      "sword": true,
+      "index": 0,
+      "path": "combinations/up-right/wayfarer-hair-chestnut-sword/00.png",
+      "sha256": "4a2b7752737654a8ca21de409345ca0f2d3171f75603842d2c195151d51a43b6"
+    },
+    {
+      "direction": "up-right",
+      "outfit": "wayfarer",
+      "hair": "hair-silver",
+      "sword": false,
+      "index": 0,
+      "path": "combinations/up-right/wayfarer-hair-silver-empty/00.png",
+      "sha256": "28c7c3ff3793727fd940d05e19bdd40a88b43a5a1ed2861b47ee57eb8cf75ca7"
+    },
+    {
+      "direction": "up-right",
+      "outfit": "wayfarer",
+      "hair": "hair-silver",
+      "sword": true,
+      "index": 0,
+      "path": "combinations/up-right/wayfarer-hair-silver-sword/00.png",
+      "sha256": "3b5603c9d92c189ac1862f95bd5efd28456b5e5eb98e4629a73b2dc042138056"
+    },
+    {
+      "direction": "up-right",
+      "outfit": "forester",
+      "hair": "hair-chestnut",
+      "sword": false,
+      "index": 1,
+      "path": "combinations/up-right/forester-hair-chestnut-empty/01.png",
+      "sha256": "af1ca643c19d28ef6cd5cba42959acf05092bc91b2632cc57d1e2e2b471b41d5"
+    },
+    {
+      "direction": "up-right",
+      "outfit": "forester",
+      "hair": "hair-chestnut",
+      "sword": true,
+      "index": 1,
+      "path": "combinations/up-right/forester-hair-chestnut-sword/01.png",
+      "sha256": "3484d30c0926e39e6a80fb276f3ecfff6be94940188a1302d17ea1310ac85f5d"
+    },
+    {
+      "direction": "up-right",
+      "outfit": "forester",
+      "hair": "hair-silver",
+      "sword": false,
+      "index": 1,
+      "path": "combinations/up-right/forester-hair-silver-empty/01.png",
+      "sha256": "c8fb4c23ffba1b866e583c3d58712e27f1593305c305c0f61e9a25aea497cd08"
+    },
+    {
+      "direction": "up-right",
+      "outfit": "forester",
+      "hair": "hair-silver",
+      "sword": true,
+      "index": 1,
+      "path": "combinations/up-right/forester-hair-silver-sword/01.png",
+      "sha256": "8bbaeaa7aba2f2dcda30a76ba282fc7fba9167b46c69b66af720861b8385e5e5"
+    },
+    {
+      "direction": "up-right",
+      "outfit": "wayfarer",
+      "hair": "hair-chestnut",
+      "sword": false,
+      "index": 1,
+      "path": "combinations/up-right/wayfarer-hair-chestnut-empty/01.png",
+      "sha256": "3cd6acf7dc0dc221f32b026c8ae153854921b4e5f2252e3e055c2982b08f1524"
+    },
+    {
+      "direction": "up-right",
+      "outfit": "wayfarer",
+      "hair": "hair-chestnut",
+      "sword": true,
+      "index": 1,
+      "path": "combinations/up-right/wayfarer-hair-chestnut-sword/01.png",
+      "sha256": "0632871b9ef28fa1f6eade4ea9a667508270afbe4ed236ba386d87118ca75218"
+    },
+    {
+      "direction": "up-right",
+      "outfit": "wayfarer",
+      "hair": "hair-silver",
+      "sword": false,
+      "index": 1,
+      "path": "combinations/up-right/wayfarer-hair-silver-empty/01.png",
+      "sha256": "511474098fb832a28fb2083b737e3cd25400423dc8a6337387b02f46082013e3"
+    },
+    {
+      "direction": "up-right",
+      "outfit": "wayfarer",
+      "hair": "hair-silver",
+      "sword": true,
+      "index": 1,
+      "path": "combinations/up-right/wayfarer-hair-silver-sword/01.png",
+      "sha256": "f3f4abdb9b8697f29c322779461812a1840050a096bf02e050cb13ebf02268e3"
+    },
+    {
+      "direction": "up-right",
+      "outfit": "forester",
+      "hair": "hair-chestnut",
+      "sword": false,
+      "index": 2,
+      "path": "combinations/up-right/forester-hair-chestnut-empty/02.png",
+      "sha256": "6bf3afc9f429c80cbb901c37e8723e2a8af2329a75a6203dde5f2bdffd8b1411"
+    },
+    {
+      "direction": "up-right",
+      "outfit": "forester",
+      "hair": "hair-chestnut",
+      "sword": true,
+      "index": 2,
+      "path": "combinations/up-right/forester-hair-chestnut-sword/02.png",
+      "sha256": "19f3ba9919ce0a14cb5f93e1f13f1561345c3271a038adc21473d15d80e981c6"
+    },
+    {
+      "direction": "up-right",
+      "outfit": "forester",
+      "hair": "hair-silver",
+      "sword": false,
+      "index": 2,
+      "path": "combinations/up-right/forester-hair-silver-empty/02.png",
+      "sha256": "abbabe3c2d65c0cd04c61bcc7af4afa834eb96db646387b8a60f21329f3e88aa"
+    },
+    {
+      "direction": "up-right",
+      "outfit": "forester",
+      "hair": "hair-silver",
+      "sword": true,
+      "index": 2,
+      "path": "combinations/up-right/forester-hair-silver-sword/02.png",
+      "sha256": "827e1eb7435bc2e09afb2b70ad083963bcfcc4e51a2a807b3b07ed2eaecb14a9"
+    },
+    {
+      "direction": "up-right",
+      "outfit": "wayfarer",
+      "hair": "hair-chestnut",
+      "sword": false,
+      "index": 2,
+      "path": "combinations/up-right/wayfarer-hair-chestnut-empty/02.png",
+      "sha256": "67ea13751182c6c788128e87860412606ea89117998053f8dfd95e8a76c1af23"
+    },
+    {
+      "direction": "up-right",
+      "outfit": "wayfarer",
+      "hair": "hair-chestnut",
+      "sword": true,
+      "index": 2,
+      "path": "combinations/up-right/wayfarer-hair-chestnut-sword/02.png",
+      "sha256": "fb7313ca2290c2ac283626f1d1cc7bcc86875af6baf9b9de37aa3b90e3afc15e"
+    },
+    {
+      "direction": "up-right",
+      "outfit": "wayfarer",
+      "hair": "hair-silver",
+      "sword": false,
+      "index": 2,
+      "path": "combinations/up-right/wayfarer-hair-silver-empty/02.png",
+      "sha256": "a517f171adcb1e28a9ece6975f930a88ae8d62ffdd6341a2aced1ad469614ea2"
+    },
+    {
+      "direction": "up-right",
+      "outfit": "wayfarer",
+      "hair": "hair-silver",
+      "sword": true,
+      "index": 2,
+      "path": "combinations/up-right/wayfarer-hair-silver-sword/02.png",
+      "sha256": "2ef1e262e9cfa8f903f44da43dd5b42ba8cbaff6cc0ffb84fc87e4287b61f466"
+    },
+    {
+      "direction": "up-right",
+      "outfit": "forester",
+      "hair": "hair-chestnut",
+      "sword": false,
+      "index": 3,
+      "path": "combinations/up-right/forester-hair-chestnut-empty/03.png",
+      "sha256": "f21a02c8e1f71bb9a00a69675638d498bfc8dc414590333d09be184567da0762"
+    },
+    {
+      "direction": "up-right",
+      "outfit": "forester",
+      "hair": "hair-chestnut",
+      "sword": true,
+      "index": 3,
+      "path": "combinations/up-right/forester-hair-chestnut-sword/03.png",
+      "sha256": "33e1806e5e6bc130f2fc880610355a55afb090a903037698a3cad154dca62ab1"
+    },
+    {
+      "direction": "up-right",
+      "outfit": "forester",
+      "hair": "hair-silver",
+      "sword": false,
+      "index": 3,
+      "path": "combinations/up-right/forester-hair-silver-empty/03.png",
+      "sha256": "7243447ffac61eeecd47c1f9f55900148e9cd6bab938d2f20e9aefe025a5d047"
+    },
+    {
+      "direction": "up-right",
+      "outfit": "forester",
+      "hair": "hair-silver",
+      "sword": true,
+      "index": 3,
+      "path": "combinations/up-right/forester-hair-silver-sword/03.png",
+      "sha256": "f863159765e3e278adf2cd5e227a8c77d37d92902a739485eac73c539d6d9c6f"
+    },
+    {
+      "direction": "up-right",
+      "outfit": "wayfarer",
+      "hair": "hair-chestnut",
+      "sword": false,
+      "index": 3,
+      "path": "combinations/up-right/wayfarer-hair-chestnut-empty/03.png",
+      "sha256": "cf0da8186288586413577938bd11be574ab696be03dbd991a2c6c29fb53c9471"
+    },
+    {
+      "direction": "up-right",
+      "outfit": "wayfarer",
+      "hair": "hair-chestnut",
+      "sword": true,
+      "index": 3,
+      "path": "combinations/up-right/wayfarer-hair-chestnut-sword/03.png",
+      "sha256": "dfb4fc56e82b22e45b0f08cd544333313e999620695aa417dfffbf3d2b6c276b"
+    },
+    {
+      "direction": "up-right",
+      "outfit": "wayfarer",
+      "hair": "hair-silver",
+      "sword": false,
+      "index": 3,
+      "path": "combinations/up-right/wayfarer-hair-silver-empty/03.png",
+      "sha256": "ad8a784351ef0dfef99a0f8bc0ce07ed8110e83c2004aaad7459dc9084cd6dbd"
+    },
+    {
+      "direction": "up-right",
+      "outfit": "wayfarer",
+      "hair": "hair-silver",
+      "sword": true,
+      "index": 3,
+      "path": "combinations/up-right/wayfarer-hair-silver-sword/03.png",
+      "sha256": "18fc77f0214472422abaca729337d1a1fc2f436b24905d878c7ebc03062f665b"
+    },
+    {
+      "direction": "up-right",
+      "outfit": "forester",
+      "hair": "hair-chestnut",
+      "sword": false,
+      "index": 4,
+      "path": "combinations/up-right/forester-hair-chestnut-empty/04.png",
+      "sha256": "08e9edbbc6ce8019178ae13283ef0dc83abe2780fc9b88b801f1a051c00f3c38"
+    },
+    {
+      "direction": "up-right",
+      "outfit": "forester",
+      "hair": "hair-chestnut",
+      "sword": true,
+      "index": 4,
+      "path": "combinations/up-right/forester-hair-chestnut-sword/04.png",
+      "sha256": "584bebd5b6d3971177a86b1a9b3cbc4d9f65bd18f9b6f2943c9f6ef109bc8059"
+    },
+    {
+      "direction": "up-right",
+      "outfit": "forester",
+      "hair": "hair-silver",
+      "sword": false,
+      "index": 4,
+      "path": "combinations/up-right/forester-hair-silver-empty/04.png",
+      "sha256": "108bbef0a450f53a119219eaf5505b35cd0228dafb4fa503f017b3deebb9fc7f"
+    },
+    {
+      "direction": "up-right",
+      "outfit": "forester",
+      "hair": "hair-silver",
+      "sword": true,
+      "index": 4,
+      "path": "combinations/up-right/forester-hair-silver-sword/04.png",
+      "sha256": "d0e40f62a1ff484137ad8adcc18994ab4dbd3e7af4aa2d408469fe744b0e3ba1"
+    },
+    {
+      "direction": "up-right",
+      "outfit": "wayfarer",
+      "hair": "hair-chestnut",
+      "sword": false,
+      "index": 4,
+      "path": "combinations/up-right/wayfarer-hair-chestnut-empty/04.png",
+      "sha256": "4f41dee6688b03b3398e1cc1162694bf540e8fbdde98682c43572af2578b4010"
+    },
+    {
+      "direction": "up-right",
+      "outfit": "wayfarer",
+      "hair": "hair-chestnut",
+      "sword": true,
+      "index": 4,
+      "path": "combinations/up-right/wayfarer-hair-chestnut-sword/04.png",
+      "sha256": "311b217e545cace7807e31eef914d720af8b4a664e9c3c73e1c915ef0053c2c0"
+    },
+    {
+      "direction": "up-right",
+      "outfit": "wayfarer",
+      "hair": "hair-silver",
+      "sword": false,
+      "index": 4,
+      "path": "combinations/up-right/wayfarer-hair-silver-empty/04.png",
+      "sha256": "e34354be7bfb7613af3e847e4443b65ff8a99d7b4af3b9639a37f23afe633054"
+    },
+    {
+      "direction": "up-right",
+      "outfit": "wayfarer",
+      "hair": "hair-silver",
+      "sword": true,
+      "index": 4,
+      "path": "combinations/up-right/wayfarer-hair-silver-sword/04.png",
+      "sha256": "9ad1310ac19ee426ec5f50717daa945e79adb65e8381f82dc93f75b2fff313d0"
+    },
+    {
+      "direction": "up-right",
+      "outfit": "forester",
+      "hair": "hair-chestnut",
+      "sword": false,
+      "index": 5,
+      "path": "combinations/up-right/forester-hair-chestnut-empty/05.png",
+      "sha256": "18e2d4d23b6d12fc5f6bce33a0590a7bece189350ee8f54b68a8b9eacacd17ea"
+    },
+    {
+      "direction": "up-right",
+      "outfit": "forester",
+      "hair": "hair-chestnut",
+      "sword": true,
+      "index": 5,
+      "path": "combinations/up-right/forester-hair-chestnut-sword/05.png",
+      "sha256": "4eeee98778d6c28a51b871eb6ea89e27767026297dca43dd7b0acaa88ea5a0dd"
+    },
+    {
+      "direction": "up-right",
+      "outfit": "forester",
+      "hair": "hair-silver",
+      "sword": false,
+      "index": 5,
+      "path": "combinations/up-right/forester-hair-silver-empty/05.png",
+      "sha256": "a9af515f2de844308344c08449efe7fdd3867414cc0b9777588543d947bbd4d9"
+    },
+    {
+      "direction": "up-right",
+      "outfit": "forester",
+      "hair": "hair-silver",
+      "sword": true,
+      "index": 5,
+      "path": "combinations/up-right/forester-hair-silver-sword/05.png",
+      "sha256": "fa908b1c5a4671edae0dcdae94b0f23736027d0bd907d050607cb84913558a0e"
+    },
+    {
+      "direction": "up-right",
+      "outfit": "wayfarer",
+      "hair": "hair-chestnut",
+      "sword": false,
+      "index": 5,
+      "path": "combinations/up-right/wayfarer-hair-chestnut-empty/05.png",
+      "sha256": "55c79798d88edf2968e18bf42c49dface66b5b85a01cbd48d17bd81290de0004"
+    },
+    {
+      "direction": "up-right",
+      "outfit": "wayfarer",
+      "hair": "hair-chestnut",
+      "sword": true,
+      "index": 5,
+      "path": "combinations/up-right/wayfarer-hair-chestnut-sword/05.png",
+      "sha256": "9f7a7340bfc6cb780d68317bb0334038c2953b1d8dc09a3d26d9153cd85db727"
+    },
+    {
+      "direction": "up-right",
+      "outfit": "wayfarer",
+      "hair": "hair-silver",
+      "sword": false,
+      "index": 5,
+      "path": "combinations/up-right/wayfarer-hair-silver-empty/05.png",
+      "sha256": "3f322839095181b7c238c3567c3cab3f47eed1bf394c87c4fb66c48dd1a24cab"
+    },
+    {
+      "direction": "up-right",
+      "outfit": "wayfarer",
+      "hair": "hair-silver",
+      "sword": true,
+      "index": 5,
+      "path": "combinations/up-right/wayfarer-hair-silver-sword/05.png",
+      "sha256": "3cd7c5e6d57979abd969d5f7411ad87ae63adf7cdb44eb5c86846b22fa626a4d"
+    },
+    {
+      "direction": "up-right",
+      "outfit": "forester",
+      "hair": "hair-chestnut",
+      "sword": false,
+      "index": 6,
+      "path": "combinations/up-right/forester-hair-chestnut-empty/06.png",
+      "sha256": "16d011ae2e83814614f9bb31485528e16924d18c6ffca25b1eaab559f84944c6"
+    },
+    {
+      "direction": "up-right",
+      "outfit": "forester",
+      "hair": "hair-chestnut",
+      "sword": true,
+      "index": 6,
+      "path": "combinations/up-right/forester-hair-chestnut-sword/06.png",
+      "sha256": "7caf11193a86635e9b7e9341360f9f07a43e11b104597e4add554aed7ed5f8cc"
+    },
+    {
+      "direction": "up-right",
+      "outfit": "forester",
+      "hair": "hair-silver",
+      "sword": false,
+      "index": 6,
+      "path": "combinations/up-right/forester-hair-silver-empty/06.png",
+      "sha256": "2c78335283e7d191124ba344069cbe6af9b1fc517a7e87800537f1cc469c4e29"
+    },
+    {
+      "direction": "up-right",
+      "outfit": "forester",
+      "hair": "hair-silver",
+      "sword": true,
+      "index": 6,
+      "path": "combinations/up-right/forester-hair-silver-sword/06.png",
+      "sha256": "170f98fb3fadc43f37a2099893f7e25d8f51a32cd8fb474b28936aa7e1141a6d"
+    },
+    {
+      "direction": "up-right",
+      "outfit": "wayfarer",
+      "hair": "hair-chestnut",
+      "sword": false,
+      "index": 6,
+      "path": "combinations/up-right/wayfarer-hair-chestnut-empty/06.png",
+      "sha256": "3f7aa6d3d8a9cc588c7534e2ab9ee18c687942950d72201612ebc9beb281559b"
+    },
+    {
+      "direction": "up-right",
+      "outfit": "wayfarer",
+      "hair": "hair-chestnut",
+      "sword": true,
+      "index": 6,
+      "path": "combinations/up-right/wayfarer-hair-chestnut-sword/06.png",
+      "sha256": "6560ec59ed94f9e50f24d6e34180a2c827d70b7af22693beda97fe0ccde3f96a"
+    },
+    {
+      "direction": "up-right",
+      "outfit": "wayfarer",
+      "hair": "hair-silver",
+      "sword": false,
+      "index": 6,
+      "path": "combinations/up-right/wayfarer-hair-silver-empty/06.png",
+      "sha256": "dfbcc239853d05c64c3671e569ef003acc8e56e3aa558c27bff124d3553d3b7d"
+    },
+    {
+      "direction": "up-right",
+      "outfit": "wayfarer",
+      "hair": "hair-silver",
+      "sword": true,
+      "index": 6,
+      "path": "combinations/up-right/wayfarer-hair-silver-sword/06.png",
+      "sha256": "f85d5501d3c881e2edf2978815223e0fce9c6d48f8e2da3ab74f50d03496508b"
+    },
+    {
+      "direction": "up-right",
+      "outfit": "forester",
+      "hair": "hair-chestnut",
+      "sword": false,
+      "index": 7,
+      "path": "combinations/up-right/forester-hair-chestnut-empty/07.png",
+      "sha256": "44d2b8446ffaacf1d5970123baa8612d11927104b054b94bfd0f699d54353a7d"
+    },
+    {
+      "direction": "up-right",
+      "outfit": "forester",
+      "hair": "hair-chestnut",
+      "sword": true,
+      "index": 7,
+      "path": "combinations/up-right/forester-hair-chestnut-sword/07.png",
+      "sha256": "23ff20e423787a87b234d9e0e938d4a4cb903d9b8ac2f610575260d55803a3b0"
+    },
+    {
+      "direction": "up-right",
+      "outfit": "forester",
+      "hair": "hair-silver",
+      "sword": false,
+      "index": 7,
+      "path": "combinations/up-right/forester-hair-silver-empty/07.png",
+      "sha256": "27e898f3f6953455ef25bba68836db940b47682bbca5ab4c253d29aba4fe966b"
+    },
+    {
+      "direction": "up-right",
+      "outfit": "forester",
+      "hair": "hair-silver",
+      "sword": true,
+      "index": 7,
+      "path": "combinations/up-right/forester-hair-silver-sword/07.png",
+      "sha256": "f11bb00396104ef1317095a87c0f8d4f80c00657a92b520b29b20243e50cd392"
+    },
+    {
+      "direction": "up-right",
+      "outfit": "wayfarer",
+      "hair": "hair-chestnut",
+      "sword": false,
+      "index": 7,
+      "path": "combinations/up-right/wayfarer-hair-chestnut-empty/07.png",
+      "sha256": "8fcdef9ec6251157e3c69f43c00143760b63671c365f76159b50514b17c3723b"
+    },
+    {
+      "direction": "up-right",
+      "outfit": "wayfarer",
+      "hair": "hair-chestnut",
+      "sword": true,
+      "index": 7,
+      "path": "combinations/up-right/wayfarer-hair-chestnut-sword/07.png",
+      "sha256": "d0f219e5b09fdd1eab1ed02fffb9675e3b80459275de823f4a2338e6f159308a"
+    },
+    {
+      "direction": "up-right",
+      "outfit": "wayfarer",
+      "hair": "hair-silver",
+      "sword": false,
+      "index": 7,
+      "path": "combinations/up-right/wayfarer-hair-silver-empty/07.png",
+      "sha256": "b34ec6eb4476c95a511c052923cf65014d50e308707a723e3e68b4d41f62f2fa"
+    },
+    {
+      "direction": "up-right",
+      "outfit": "wayfarer",
+      "hair": "hair-silver",
+      "sword": true,
+      "index": 7,
+      "path": "combinations/up-right/wayfarer-hair-silver-sword/07.png",
+      "sha256": "353bf1fd5160c7544a2f52eb3da8bd8257cb0db5208f8e33fe1a1d7c4e6ee171"
+    },
+    {
+      "direction": "up-right",
+      "outfit": "forester",
+      "hair": "hair-chestnut",
+      "sword": false,
+      "index": 8,
+      "path": "combinations/up-right/forester-hair-chestnut-empty/08.png",
+      "sha256": "a14584c94e801165e4b57bab524bb1414beb448de51e91a77dbe8396c854bb31"
+    },
+    {
+      "direction": "up-right",
+      "outfit": "forester",
+      "hair": "hair-chestnut",
+      "sword": true,
+      "index": 8,
+      "path": "combinations/up-right/forester-hair-chestnut-sword/08.png",
+      "sha256": "a932d9201722b0126c4d2d6600ddcf4323c2cfdd4a70bf11a670a44056a96830"
+    },
+    {
+      "direction": "up-right",
+      "outfit": "forester",
+      "hair": "hair-silver",
+      "sword": false,
+      "index": 8,
+      "path": "combinations/up-right/forester-hair-silver-empty/08.png",
+      "sha256": "ce81cd6a9d8a4618de8da46f3923023522ad5da0fcbe0f39877550b51dd401ce"
+    },
+    {
+      "direction": "up-right",
+      "outfit": "forester",
+      "hair": "hair-silver",
+      "sword": true,
+      "index": 8,
+      "path": "combinations/up-right/forester-hair-silver-sword/08.png",
+      "sha256": "b379aae27a607881c8768ec02dcf4860f204cf665ebd07ab757f113ea0593dcd"
+    },
+    {
+      "direction": "up-right",
+      "outfit": "wayfarer",
+      "hair": "hair-chestnut",
+      "sword": false,
+      "index": 8,
+      "path": "combinations/up-right/wayfarer-hair-chestnut-empty/08.png",
+      "sha256": "f5160e887d8122cb814ae4b91b32286a7a379528b02ae8aa9492f2837862f6a7"
+    },
+    {
+      "direction": "up-right",
+      "outfit": "wayfarer",
+      "hair": "hair-chestnut",
+      "sword": true,
+      "index": 8,
+      "path": "combinations/up-right/wayfarer-hair-chestnut-sword/08.png",
+      "sha256": "c38659ea2b23e53f2b401a585f5136b581a20d9c088b25160f4b0326d5dba233"
+    },
+    {
+      "direction": "up-right",
+      "outfit": "wayfarer",
+      "hair": "hair-silver",
+      "sword": false,
+      "index": 8,
+      "path": "combinations/up-right/wayfarer-hair-silver-empty/08.png",
+      "sha256": "d724f96c403b66ccb9318fb7a3fa529821a00ecf33918b4106a0ffaeb0c5c3b0"
+    },
+    {
+      "direction": "up-right",
+      "outfit": "wayfarer",
+      "hair": "hair-silver",
+      "sword": true,
+      "index": 8,
+      "path": "combinations/up-right/wayfarer-hair-silver-sword/08.png",
+      "sha256": "a4fc860ea0010342d91ade5890880ddf7007fc39481aba97d35e786b46a24641"
+    },
+    {
+      "direction": "up-right",
+      "outfit": "forester",
+      "hair": "hair-chestnut",
+      "sword": false,
+      "index": 9,
+      "path": "combinations/up-right/forester-hair-chestnut-empty/09.png",
+      "sha256": "7e364aa723a7b2f0edf25a4828d9d789023049d876461ea1ec9302ef8c0dd130"
+    },
+    {
+      "direction": "up-right",
+      "outfit": "forester",
+      "hair": "hair-chestnut",
+      "sword": true,
+      "index": 9,
+      "path": "combinations/up-right/forester-hair-chestnut-sword/09.png",
+      "sha256": "c953b62ec65cd8ed2b8281de407b514f554551907ff7d90d7bb450b9f178cae2"
+    },
+    {
+      "direction": "up-right",
+      "outfit": "forester",
+      "hair": "hair-silver",
+      "sword": false,
+      "index": 9,
+      "path": "combinations/up-right/forester-hair-silver-empty/09.png",
+      "sha256": "fa8919a4aaec3975892196308fe3df508a62bf8f1146d5a781462e1f128a32a9"
+    },
+    {
+      "direction": "up-right",
+      "outfit": "forester",
+      "hair": "hair-silver",
+      "sword": true,
+      "index": 9,
+      "path": "combinations/up-right/forester-hair-silver-sword/09.png",
+      "sha256": "0f3de6b0b9544a060e052aa6122c40c2ffb1fb30de6a2ea1ed5b2a7d2b5813eb"
+    },
+    {
+      "direction": "up-right",
+      "outfit": "wayfarer",
+      "hair": "hair-chestnut",
+      "sword": false,
+      "index": 9,
+      "path": "combinations/up-right/wayfarer-hair-chestnut-empty/09.png",
+      "sha256": "7c784226318aba70dce16cd838489cedd4d8c9241445b2efab1f0a2bdfa3ad66"
+    },
+    {
+      "direction": "up-right",
+      "outfit": "wayfarer",
+      "hair": "hair-chestnut",
+      "sword": true,
+      "index": 9,
+      "path": "combinations/up-right/wayfarer-hair-chestnut-sword/09.png",
+      "sha256": "a0efa9e4d3b605b37e88a822f6a5e8304ec71a5c63c4a5f8af321f1fadf52ae8"
+    },
+    {
+      "direction": "up-right",
+      "outfit": "wayfarer",
+      "hair": "hair-silver",
+      "sword": false,
+      "index": 9,
+      "path": "combinations/up-right/wayfarer-hair-silver-empty/09.png",
+      "sha256": "eb1f02dab4f35fe9ad52edcec10e1358e420e933419a02a23ee4bfcef4f0b57e"
+    },
+    {
+      "direction": "up-right",
+      "outfit": "wayfarer",
+      "hair": "hair-silver",
+      "sword": true,
+      "index": 9,
+      "path": "combinations/up-right/wayfarer-hair-silver-sword/09.png",
+      "sha256": "e7eeaf3ed53e85b260136294ee9d8891c7b991643472c04a8e444e124ee11757"
+    },
+    {
+      "direction": "up-right",
+      "outfit": "forester",
+      "hair": "hair-chestnut",
+      "sword": false,
+      "index": 10,
+      "path": "combinations/up-right/forester-hair-chestnut-empty/10.png",
+      "sha256": "30998438f470755b46fc2b79596b977f2a407b16f24ec18b345e759dc42192f7"
+    },
+    {
+      "direction": "up-right",
+      "outfit": "forester",
+      "hair": "hair-chestnut",
+      "sword": true,
+      "index": 10,
+      "path": "combinations/up-right/forester-hair-chestnut-sword/10.png",
+      "sha256": "c0e278da75d3fc0c7ff5f3e852a3faa837639ea5c7816b94c89eef2b7f801c32"
+    },
+    {
+      "direction": "up-right",
+      "outfit": "forester",
+      "hair": "hair-silver",
+      "sword": false,
+      "index": 10,
+      "path": "combinations/up-right/forester-hair-silver-empty/10.png",
+      "sha256": "1f3c2c2e4cc7b599dbe3d20446f85abe144b1da05943faed5fddd15c7add346f"
+    },
+    {
+      "direction": "up-right",
+      "outfit": "forester",
+      "hair": "hair-silver",
+      "sword": true,
+      "index": 10,
+      "path": "combinations/up-right/forester-hair-silver-sword/10.png",
+      "sha256": "4845b3ab9e8016263abcf0a0fc11e0743102558e3e9e2ba3e3c07765d6a70637"
+    },
+    {
+      "direction": "up-right",
+      "outfit": "wayfarer",
+      "hair": "hair-chestnut",
+      "sword": false,
+      "index": 10,
+      "path": "combinations/up-right/wayfarer-hair-chestnut-empty/10.png",
+      "sha256": "4048838bf055e1487b29faeb0a8013aba1d1f9bb9476fb95133a8f8da90b3a7f"
+    },
+    {
+      "direction": "up-right",
+      "outfit": "wayfarer",
+      "hair": "hair-chestnut",
+      "sword": true,
+      "index": 10,
+      "path": "combinations/up-right/wayfarer-hair-chestnut-sword/10.png",
+      "sha256": "ce3a9b0fe8bfa1c0f55620db7cfb848913ad0626f2a0d54aa676c25a34e352e8"
+    },
+    {
+      "direction": "up-right",
+      "outfit": "wayfarer",
+      "hair": "hair-silver",
+      "sword": false,
+      "index": 10,
+      "path": "combinations/up-right/wayfarer-hair-silver-empty/10.png",
+      "sha256": "ddb760b7b13d4aa707505ad1b8ea90c673413ecd6baadd6d557db171ea7a44af"
+    },
+    {
+      "direction": "up-right",
+      "outfit": "wayfarer",
+      "hair": "hair-silver",
+      "sword": true,
+      "index": 10,
+      "path": "combinations/up-right/wayfarer-hair-silver-sword/10.png",
+      "sha256": "21a85643d9cb1cac13e64f2eaf24a8a74cf926d77d2c4315396a4310fff837f2"
+    },
+    {
+      "direction": "up-right",
+      "outfit": "forester",
+      "hair": "hair-chestnut",
+      "sword": false,
+      "index": 11,
+      "path": "combinations/up-right/forester-hair-chestnut-empty/11.png",
+      "sha256": "30bd16b7d6a5c2d901b1f609d403c99bcc74766e10a38d75ba845fdcd064b2ca"
+    },
+    {
+      "direction": "up-right",
+      "outfit": "forester",
+      "hair": "hair-chestnut",
+      "sword": true,
+      "index": 11,
+      "path": "combinations/up-right/forester-hair-chestnut-sword/11.png",
+      "sha256": "638d3401aec5dcf94f85ab6657443065c1b61892f1c598f93541acb6012c3be5"
+    },
+    {
+      "direction": "up-right",
+      "outfit": "forester",
+      "hair": "hair-silver",
+      "sword": false,
+      "index": 11,
+      "path": "combinations/up-right/forester-hair-silver-empty/11.png",
+      "sha256": "8eb6c8b32c92df02a2767fec6bd2de32a6eba41e68404f48b987fa20fd11baa2"
+    },
+    {
+      "direction": "up-right",
+      "outfit": "forester",
+      "hair": "hair-silver",
+      "sword": true,
+      "index": 11,
+      "path": "combinations/up-right/forester-hair-silver-sword/11.png",
+      "sha256": "7bc4265a4f40d5cc4170346d2f70fbbc364774c170e5d8053c0c71cd7a6e32c3"
+    },
+    {
+      "direction": "up-right",
+      "outfit": "wayfarer",
+      "hair": "hair-chestnut",
+      "sword": false,
+      "index": 11,
+      "path": "combinations/up-right/wayfarer-hair-chestnut-empty/11.png",
+      "sha256": "abf8e067e81309e39fb8951196a81829b2d8f284015b895e4ba20b98e65fcbe0"
+    },
+    {
+      "direction": "up-right",
+      "outfit": "wayfarer",
+      "hair": "hair-chestnut",
+      "sword": true,
+      "index": 11,
+      "path": "combinations/up-right/wayfarer-hair-chestnut-sword/11.png",
+      "sha256": "e9bac97f920584a05df7f15b8c67e45ed7c9f1170f72eea7a44f470a6153be3a"
+    },
+    {
+      "direction": "up-right",
+      "outfit": "wayfarer",
+      "hair": "hair-silver",
+      "sword": false,
+      "index": 11,
+      "path": "combinations/up-right/wayfarer-hair-silver-empty/11.png",
+      "sha256": "11f1f04481b93144c590a6706d9718dcccdbd6342e985a8095aafbcc915c85cd"
+    },
+    {
+      "direction": "up-right",
+      "outfit": "wayfarer",
+      "hair": "hair-silver",
+      "sword": true,
+      "index": 11,
+      "path": "combinations/up-right/wayfarer-hair-silver-sword/11.png",
+      "sha256": "bbdae021c4ba4ac1c641491254538bc6572b9482bf229c8c17c4e4d6b6e3cd9f"
+    },
+    {
+      "direction": "up-right",
+      "outfit": "forester",
+      "hair": "hair-chestnut",
+      "sword": false,
+      "index": 12,
+      "path": "combinations/up-right/forester-hair-chestnut-empty/12.png",
+      "sha256": "2e014f6d97520d6c633e606839d1ad588df480e61c9099bb96136e4231134dcd"
+    },
+    {
+      "direction": "up-right",
+      "outfit": "forester",
+      "hair": "hair-chestnut",
+      "sword": true,
+      "index": 12,
+      "path": "combinations/up-right/forester-hair-chestnut-sword/12.png",
+      "sha256": "270517e1eecb2e7ac94a0be97e447b1e7dcddaa4224f049dd2a841d8fe729e55"
+    },
+    {
+      "direction": "up-right",
+      "outfit": "forester",
+      "hair": "hair-silver",
+      "sword": false,
+      "index": 12,
+      "path": "combinations/up-right/forester-hair-silver-empty/12.png",
+      "sha256": "1bac16a73cb80f9e7cc249a85d79bc20db6ee1ad2ffdc62e61ce05d1de8361c8"
+    },
+    {
+      "direction": "up-right",
+      "outfit": "forester",
+      "hair": "hair-silver",
+      "sword": true,
+      "index": 12,
+      "path": "combinations/up-right/forester-hair-silver-sword/12.png",
+      "sha256": "eac585f1981e6f5892fa108b7c8a0d3a2dd02da546f968b506f720a6891c6f82"
+    },
+    {
+      "direction": "up-right",
+      "outfit": "wayfarer",
+      "hair": "hair-chestnut",
+      "sword": false,
+      "index": 12,
+      "path": "combinations/up-right/wayfarer-hair-chestnut-empty/12.png",
+      "sha256": "0dda44b4e726d34bce83ff6298b0d919774d2b3030176dcef0222704ff8d01c9"
+    },
+    {
+      "direction": "up-right",
+      "outfit": "wayfarer",
+      "hair": "hair-chestnut",
+      "sword": true,
+      "index": 12,
+      "path": "combinations/up-right/wayfarer-hair-chestnut-sword/12.png",
+      "sha256": "1792ef434a432d2d2f7fdf64901f82fbaf74dd25956da2c9fee54e8e9a725601"
+    },
+    {
+      "direction": "up-right",
+      "outfit": "wayfarer",
+      "hair": "hair-silver",
+      "sword": false,
+      "index": 12,
+      "path": "combinations/up-right/wayfarer-hair-silver-empty/12.png",
+      "sha256": "2b7fafac238e1c8740cd3a9b9e32bdebd631d6c2986b6b19e365317d5066d515"
+    },
+    {
+      "direction": "up-right",
+      "outfit": "wayfarer",
+      "hair": "hair-silver",
+      "sword": true,
+      "index": 12,
+      "path": "combinations/up-right/wayfarer-hair-silver-sword/12.png",
+      "sha256": "861db5c030ca6765c01e39e3f05ae4927ea16fdbd6ff9e23614f5e7d3bd8341d"
+    }
+  ],
+  "limits": [
+    "Main still-frame review does not imply continuous-player viewing",
+    "No user wardrobe approval or App/device/IPA test",
+    "Two upper rear directions; facial features are occluded, not invented",
+    "Existing neutral hidden anatomy is not claimed complete"
+  ]
+}

@@ -1,0 +1,112 @@
+{
+  "sheet": "source-spritesheet.png",
+  "sheetSize": [
+    2048,
+    256
+  ],
+  "cellSize": [
+    256,
+    256
+  ],
+  "background": "transparent RGBA",
+  "extraction": "Exact integer crop per 256px cell; no resampling, edge cleanup, or repainting.",
+  "runtimeAssetNames": [
+    "MeadowRuneSlash01",
+    "MeadowRuneSlash02",
+    "MeadowRuneSlash03",
+    "MeadowRuneSlash04",
+    "MeadowRuneSlash05",
+    "MeadowRuneSlash06",
+    "MeadowRuneSlash07",
+    "MeadowRuneSlash08"
+  ],
+  "actionTimeSeconds": {
+    "charge": [
+      0,
+      0.14
+    ],
+    "slashAppears": [
+      0.14,
+      0.31
+    ],
+    "runesIgnite": [
+      0.31,
+      0.53
+    ],
+    "fullRelease": [
+      0.53,
+      1.048
+    ],
+    "impactBurst": [
+      1.048,
+      1.338
+    ],
+    "aftershock": [
+      1.338,
+      1.628
+    ],
+    "dissipate": [
+      1.628,
+      1.978
+    ],
+    "fadeOut": [
+      1.978,
+      2.388
+    ]
+  },
+  "impactReceiptAgeSeconds": 1.048,
+  "frames": [
+    {
+      "index": 1,
+      "file": "rune_slash_01.png",
+      "asset": "MeadowRuneSlash01",
+      "phase": "凝聚"
+    },
+    {
+      "index": 2,
+      "file": "rune_slash_02.png",
+      "asset": "MeadowRuneSlash02",
+      "phase": "斩痕显现"
+    },
+    {
+      "index": 3,
+      "file": "rune_slash_03.png",
+      "asset": "MeadowRuneSlash03",
+      "phase": "符文点亮"
+    },
+    {
+      "index": 4,
+      "file": "rune_slash_04.png",
+      "asset": "MeadowRuneSlash04",
+      "phase": "全力斩出"
+    },
+    {
+      "index": 5,
+      "file": "rune_slash_05.png",
+      "asset": "MeadowRuneSlash05",
+      "phase": "命中爆发"
+    },
+    {
+      "index": 6,
+      "file": "rune_slash_06.png",
+      "asset": "MeadowRuneSlash06",
+      "phase": "余波扩散"
+    },
+    {
+      "index": 7,
+      "file": "rune_slash_07.png",
+      "asset": "MeadowRuneSlash07",
+      "phase": "能量消散"
+    },
+    {
+      "index": 8,
+      "file": "rune_slash_08.png",
+      "asset": "MeadowRuneSlash08",
+      "phase": "完全消散"
+    }
+  ],
+  "displayAnchorOffsetLogicalPoints": [
+    0,
+    -32
+  ]
+}

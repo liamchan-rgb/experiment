@@ -48,6 +48,22 @@ class ContractTests(unittest.TestCase):
                 p=self.folder/value;p.parent.mkdir(parents=True,exist_ok=True);im.save(p)
         return a
 
+    def back_weapon_package(self):
+        a=self.package('weapon')
+        a['mode']='pose-map'
+        a['slots']=['weapon.back']
+        for key in ('canvas','pivot','socket','gripProfile'):
+            a.pop(key,None)
+        a['carryProfile']='back-scabbard'
+        im=Image.new('RGBA',(256,256))
+        ImageDraw.Draw(im).polygon([(96,90),(101,86),(148,170),(141,176)],fill='#8a5538')
+        ImageDraw.Draw(im).rectangle((93,85,102,91),fill='#aa8844')
+        (self.folder/'png').mkdir(exist_ok=True)
+        im.save(self.folder/'png/back.png')
+        for binding in a['bindings']:
+            binding['layers']={'weapon.back':'png/back.png'}
+        return a
+
     def check(self,a,**kwargs):
         path=self.folder/'asset.json';path.write_text(json.dumps(a))
         return checker.check_asset(path,**kwargs)
@@ -68,6 +84,31 @@ class ContractTests(unittest.TestCase):
     def test_valid_coordinate_probes_for_each_part(self):
         for part in ['hair','face','outfit','weapon']:
             with self.subTest(part=part):self.assertEqual(self.check(self.package(part)),[])
+
+    def test_back_scabbard_is_a_valid_pose_map_without_grip_contract(self):
+        a=self.back_weapon_package()
+        self.assertNotIn('gripProfile',a)
+        self.assertNotIn('socket',a)
+        self.assertEqual(self.check(a),[])
+
+    def test_back_slot_requires_back_scabbard_profile(self):
+        a=self.back_weapon_package();a.pop('carryProfile')
+        self.assert_reject(a,'carryProfile')
+
+    def test_back_and_hand_slots_cannot_share_a_hand_grip_profile(self):
+        a=self.back_weapon_package();a.pop('carryProfile')
+        a['gripProfile']='one-hand-closed'
+        a['slots'].append('weapon.right')
+        for binding in a['bindings']:
+            binding['layers']['weapon.right']='png/back.png'
+        self.assert_reject(a,'carryProfile')
+
+    def test_back_scabbard_rejects_grip_or_wrong_weapon_slot(self):
+        a=self.back_weapon_package();a['gripProfile']='one-hand-closed'
+        self.assertTrue(self.check(a))
+        a=self.back_weapon_package();a['slots']=['weapon.right']
+        for b in a['bindings']:b['layers']={'weapon.right':'png/back.png'}
+        self.assertTrue(any('does not contain' in e for e in self.check(a)))
 
     def test_face_dependency_rejected(self):
         a=self.package('hair');a['compatibility']['requiresFace']='amber'
@@ -102,6 +143,33 @@ class ContractTests(unittest.TestCase):
     def test_duplicate_frame_rejected(self):
         a=self.package('hair');a['bindings'].append(copy.deepcopy(a['bindings'][0]))
         self.assert_reject(a,'duplicate binding')
+
+    def transition_package(self):
+        a=self.package('outfit')
+        original=copy.deepcopy(a['bindings'][0])
+        for clip in ['walk-start','walk-stop']:
+            a['clips'].append(clip)
+            for frame in [1,2]:
+                b=copy.deepcopy(original)
+                b.update(clip=clip,frame=frame)
+                a['bindings'].append(b)
+        return a
+
+    def test_optional_start_stop_clips_are_complete_independent_pose_maps(self):
+        self.assertEqual(self.check(self.transition_package()),[])
+
+    def test_transition_clip_cannot_fall_back_to_walk_or_idle(self):
+        a=self.transition_package()
+        a['bindings']=[b for b in a['bindings'] if not (b['clip']=='walk-stop' and b['frame']==2)]
+        self.assert_reject(a,'coverage mismatch')
+
+    def test_transition_clip_rejects_undeclared_and_wrong_frame_coverage(self):
+        a=self.transition_package()
+        a['clips'].remove('walk-start')
+        self.assert_reject(a,'coverage mismatch')
+        a=self.transition_package()
+        next(b for b in a['bindings'] if b['clip']=='walk-start' and b['frame']==1)['frame']=0
+        self.assert_reject(a,'coverage mismatch')
 
     def test_undeclared_view_rejected(self):
         a=self.package('hair');a['bindings'][0]['direction']='up'
@@ -150,7 +218,9 @@ if __name__=='__main__':
     result=unittest.TextTestRunner(verbosity=2).run(suite)
     report={'tests':result.testsRun,'failures':len(result.failures),'errors':len(result.errors),
             'scope':'synthetic declaration/geometry/file probes; no character art approval',
-            'artApproval':None,'neutralBodyCompleted':False,'genericRendererCompleted':False,
-            'thirdResourceZeroCodeIntegrationPassed':False}
+            'artApproval':None,
+            'notAssessedHere':['anatomy or clothing visual approval',
+                               'separate third-resource integration evidence',
+                               'complete production template or App runtime']}
     (STANDARD/'contract-checks.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n')
     raise SystemExit(not result.wasSuccessful())

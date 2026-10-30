@@ -1,0 +1,48 @@
+{
+  "status": "user-approved presented left neutral appearance and authored start/stop paths; independent appearances next",
+  "artApproval": {
+    "date": "2026-10-22",
+    "reviewer": "user",
+    "statement": "没问题，继续下一个工作",
+    "followup": "继续",
+    "status": "approved",
+    "scope": "Presented left-facing neutral full-body appearance and demonstrated idle00→start01/02→walk01 and walk08→stop01/02→idle00 paths, with retained walk/head motion. Does not approve arbitrary phase interruptions, complete hidden anatomy, new appearances, other directions or runtime integration.",
+    "artifacts": {
+      "start-stop-120ms.gif": "c6df0a6f9572ee1f86d033c86284733b84a8ce513629e31aea7463246a6fcc9f",
+      "walk-120ms.gif": "67d0de0d0b641fffe8a352b786b787d7f00db41cfa8884fe9d88e65e2b60d7d3",
+      "idle-review-2x.png": "61b0c58706bdd829ba67e061c31ae9a704e35271d27629a14274bd2f9e992184"
+    }
+  },
+  "baseRevision": "Art/Templates/P1-Neutral/left/walk-r2-head-motion",
+  "sourcePoses": 13,
+  "semanticLayers": 104,
+  "hiddenUnderlays": 91,
+  "actualCompositorPoses": 13,
+  "approvedR2FramesExact": 9,
+  "headAttachmentTransforms": 13,
+  "neckConnections": 13,
+  "soleMarkers": 26,
+  "editableORA": 13,
+  "editableSVG": 13,
+  "reexportFiles": 143,
+  "reexportByteDifferences": 0,
+  "normalActionFrameMs": 120,
+  "startStopGifFrames": 22,
+  "idleHoldsMs": [
+    480,
+    480
+  ],
+  "contractTests": 26,
+  "compositorTests": 21,
+  "originalApprovedMotionFramesUnchanged": 72,
+  "registrationDiscardOnlyAlphaAtMost": 8,
+  "registrationSpecksDiscarded": 26,
+  "checks": "Art/Review/P1/neutral-left-complete-transitions-v1/transition-checks.json",
+  "hiddenChecks": "source/hidden-verification.json",
+  "limits": [
+    "Left direction only; per-pose shoulder/wrist/hip-root underpaint, not complete arbitrary hidden anatomy.",
+    "Start only idle00 to walk01; stop only walk08 to idle00, not arbitrary phase interruption.",
+    "Small shorts/leg and fist ink boundaries require continued review with independent clothes.",
+    "No left-facing appearance packages, app integration, simulator/device execution, or IPA."
+  ]
+}

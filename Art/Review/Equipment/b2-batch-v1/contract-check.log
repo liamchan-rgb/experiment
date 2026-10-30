@@ -1,0 +1,31 @@
+test_asset_id_does_not_change_validation (__main__.ContractTests.test_asset_id_does_not_change_validation) ... ok
+test_back_and_hand_slots_cannot_share_a_hand_grip_profile (__main__.ContractTests.test_back_and_hand_slots_cannot_share_a_hand_grip_profile) ... ok
+test_back_scabbard_is_a_valid_pose_map_without_grip_contract (__main__.ContractTests.test_back_scabbard_is_a_valid_pose_map_without_grip_contract) ... ok
+test_back_scabbard_rejects_grip_or_wrong_weapon_slot (__main__.ContractTests.test_back_scabbard_rejects_grip_or_wrong_weapon_slot) ... ok
+test_back_slot_requires_back_scabbard_profile (__main__.ContractTests.test_back_slot_requires_back_scabbard_profile) ... ok
+test_duplicate_frame_rejected (__main__.ContractTests.test_duplicate_frame_rejected) ... ok
+test_face_dependency_rejected (__main__.ContractTests.test_face_dependency_rejected) ... ok
+test_foreign_part_in_frame_rejected (__main__.ContractTests.test_foreign_part_in_frame_rejected) ... ok
+test_front_hair_cannot_move_or_cover_eye_windows (__main__.ContractTests.test_front_hair_cannot_move_or_cover_eye_windows) ... ok
+test_hair_cannot_own_head_base (__main__.ContractTests.test_hair_cannot_own_head_base) ... ok
+test_handle_must_contain_pivot (__main__.ContractTests.test_handle_must_contain_pivot) ... ok
+test_missing_frame_rejected (__main__.ContractTests.test_missing_frame_rejected) ... ok
+test_no_auto_resize_of_old_silver_hair_canvas (__main__.ContractTests.test_no_auto_resize_of_old_silver_hair_canvas) ... ok
+test_opaque_rgb_export_rejected (__main__.ContractTests.test_opaque_rgb_export_rejected) ... ok
+test_optional_start_stop_clips_are_complete_independent_pose_maps (__main__.ContractTests.test_optional_start_stop_clips_are_complete_independent_pose_maps) ... ok
+test_original_approved_motion_hashes_unchanged (__main__.ContractTests.test_original_approved_motion_hashes_unchanged) ... ok
+test_path_escape_rejected (__main__.ContractTests.test_path_escape_rejected) ... ok
+test_schema_and_four_examples (__main__.ContractTests.test_schema_and_four_examples) ... ok
+test_socket_clipping_rejected (__main__.ContractTests.test_socket_clipping_rejected) ... ok
+test_transition_clip_cannot_fall_back_to_walk_or_idle (__main__.ContractTests.test_transition_clip_cannot_fall_back_to_walk_or_idle) ... ok
+test_transition_clip_rejects_undeclared_and_wrong_frame_coverage (__main__.ContractTests.test_transition_clip_rejects_undeclared_and_wrong_frame_coverage) ... ok
+test_undeclared_view_rejected (__main__.ContractTests.test_undeclared_view_rejected) ... ok
+test_unlocked_partial_rig_not_production_ready (__main__.ContractTests.test_unlocked_partial_rig_not_production_ready) ... ok
+test_valid_coordinate_probes_for_each_part (__main__.ContractTests.test_valid_coordinate_probes_for_each_part) ... ok
+test_whole_face_skin_patch_rejected (__main__.ContractTests.test_whole_face_skin_patch_rejected) ... ok
+test_wrong_anatomical_hand_rejected (__main__.ContractTests.test_wrong_anatomical_hand_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 26 tests in 0.614s
+
+OK

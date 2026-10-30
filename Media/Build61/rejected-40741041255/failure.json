@@ -1,0 +1,11 @@
+{
+  "run": 40741041255,
+  "source": "bd9d8156bc761c4efbfd7561c67aa5620a592d26",
+  "conclusion": "failure",
+  "stage": "checkout",
+  "error": "RPC failed; curl56 Recv failure: Operation timed out; early EOF; invalid index-pack output; could not fetch promisor blob",
+  "ipaGenerated": false,
+  "cancellationAttempt": "Already complete when cancellation requested",
+  "replacementRun": 40742600629,
+  "replacementUsesIdenticalSource": true
+}

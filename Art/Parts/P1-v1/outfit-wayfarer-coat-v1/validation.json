@@ -1,0 +1,7 @@
+{
+  "status": "package checks and full-combination offline audit passed; user art review pending",
+  "artApproval": null,
+  "manifestSHA256": "734b96515c9976a2a4506e005607d0096b78e4cb75bee5afb29a54c8c018fed0",
+  "audit": "Art/Review/P1/modular-down-second-outfit-v1/audit.json",
+  "verification": "Art/Templates/P1-Wardrobe/down/v9-second-outfit/validation.json"
+}

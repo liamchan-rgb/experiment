@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#17261f"><title>装备美术审核 · Meadow Journey</title><link rel="stylesheet" href="style.css"></head>
+<body>
+<header><a class="brand" href="#"><span class="crest">✦</span><span>MEADOW JOURNEY<small>美术工作台 / 装备素材</small></span></a><div class="header-right"><span id="saveState" role="status">反馈保存在此浏览器</span><button id="export" class="gold">导出审核结果 ↗</button></div></header>
+<main>
+<section class="intro"><div><p class="eyebrow">EQUIPMENT REVIEW · B2 / 03</p><h1>两件护甲，重新贴合。</h1><p class="sub">本轮修正肩袖、胸腰与护裙错位。四件已通过装备保留，可逐帧检查新两甲。</p></div><div class="progress"><strong id="progress">0 <span>/ 6</span></strong><span>已审核</span><div><i id="progressFill"></i></div></div></section>
+<div class="batchbar"><label><input id="selectAll" type="checkbox"> 全选本批</label><span id="selectedCount">未选择</span><div class="batchactions"><button id="batchPass">所选通过</button><button id="batchFix">所选需修改</button><button id="batchReset" class="quiet">所选重置</button><label class="button quiet">导入反馈<input id="import" type="file" accept="application/json" hidden></label></div></div>
+<div id="cards" class="cards" aria-label="装备列表"></div>
+<section class="workspace">
+<div class="workhead"><div><p class="eyebrow" id="category">武器 / 新挂载候选</p><h2 id="itemName">载入中…</h2></div><span id="itemStatus" class="status">待审核</span></div>
+<p id="itemScope" class="scope"></p>
+<div class="workbody">
+<div class="previewarea"><div class="previewtools"><div class="segmented" id="modeButtons"><button data-mode="walk" class="active">行走</button><button data-mode="idle">站姿</button><button data-mode="transition">起步 / 收步</button><button data-mode="battle">战斗挂载</button></div><div class="viewtools"><button id="gridToggle" aria-pressed="false">八向同看</button><button id="zoom" aria-label="切换原尺寸与两倍尺寸">2×</button><label class="sr-only" for="background">背景</label><select id="background"><option value="forest">林地</option><option value="dark">深色</option><option value="light">浅色</option></select></div></div>
+<div class="stage forest" id="stage"><div class="stagecaption"><span id="stageLabel">正下 · 行走</span><span id="dimensions">完整人物 / 2×</span></div><canvas id="preview" width="512" height="512" aria-label="完整人物装备预览"></canvas><div id="loading" role="status">加载素材…</div><div id="accessoryDetail" hidden></div><span class="stagewatermark">MEADOW JOURNEY · ART CANDIDATE</span></div>
+<div id="directions" class="directions" aria-label="查看方向"></div>
+<div class="timeline"><button id="play" aria-label="暂停动画">Ⅱ</button><button id="previous" aria-label="上一帧">‹</button><input id="scrub" aria-label="动画帧" type="range" min="0" max="7" value="0"><button id="next" aria-label="下一帧">›</button><span id="frameLabel">01 / 08</span><span id="speed">120 ms</span></div>
+<div class="secondary"><label>人物组合 <select id="appearance"><option value="forester">棕发 · 蓝眼 · 原裤靴</option><option value="wayfarer">银发 · 琥珀眼 · 原裤靴</option></select></label><label id="clipLabel" hidden>动作 <select id="battleClip"><option value="attack">攻击</option><option value="idle">待机</option><option value="guard">防护</option><option value="hit">受击</option><option value="victory">胜利</option><option value="defeat">倒地</option></select></label><a id="gifLink" href="#" target="_blank" rel="noopener">正常速度 GIF ↗</a><a id="stillLink" href="#" target="_blank" rel="noopener">八向站姿 ↗</a></div>
+</div>
+<aside class="reviewpanel"><p class="eyebrow">YOUR REVIEW</p><h3>这件素材怎么样？</h3><div id="decisions" class="decisions"><button data-status="pass">✓ 通过</button><button data-status="fix">↺ 需修改</button><button data-status="pending">稍后再看</button></div><label class="noteLabel" for="note">问题与修改建议</label><textarea id="note" placeholder="例如：左上走路时，剑柄压住了头发。"></textarea><button id="pin" class="pin">＋ 记录当前方向与帧</button><ul id="pins" class="pins"></ul><div class="spec"><h4>原清单 / 制作范围</h4><dl id="specs"></dl></div><p class="savehint">选择与文字自动保存在当前浏览器。导出结果后可发回聊天；页面不会自动将反馈提交到 GitHub。</p></aside>
+</div>
+</section>
+<section class="footer-note"><span>✧</span><p>本轮复审皮甲和符文甲。两件武器、两件饰品沿用你已通过的原版。上一轮两甲已判退；本轮重新校准版型与动作衔接，身体与步态保持。战斗页用于检查持握及遮挡，专用权杖施法与 demo 整合随后处理。审核选择仅在你明确操作后记录。</p><a href="https://github.com/liamchan-rgb/experiment/tree/fix/build33-face-grounding-camera/Art/Review/Equipment/b2-batch-v3" target="_blank" rel="noopener">仓库记录 ↗</a></section>
+<footer><span>同一身体 · 独立装备 · 正常速度</span><span id="revision">B2 / 素材批次 01</span></footer>
+</main><div class="toast" id="toast" role="status"></div><script src="app.js"></script></body></html>

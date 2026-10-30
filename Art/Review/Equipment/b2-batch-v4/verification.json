@@ -1,0 +1,99 @@
+{
+  "baseline": "7f0c3a53c1f13a22ec684f495e85f1f9980abbe7",
+  "packages": {
+    "leatherArmor": {
+      "bindings": 104,
+      "fileRegionChecks": true,
+      "manifestSHA256": "c543bd158e470fec0dd426db9fd23f8ca8e039d03bb76dc366b4ff32f4421f5a"
+    },
+    "runeArmor": {
+      "bindings": 104,
+      "fileRegionChecks": true,
+      "manifestSHA256": "d06cc66e6d4ec638edbdcc7d4216205a0e365375a553d8b0e426712c7a153904"
+    }
+  },
+  "changedGarmentAlphaLayers": 832,
+  "checkedGarmentLayers": 832,
+  "hiddenRGBZero": true,
+  "preservedExistingRuntimeBodyMotionCatalogAndOldB2SourcePaths": 9203,
+  "approvedItemMediaUnchangedInSite": 26,
+  "media": {
+    "batch-down-start-stop-normal.gif": {
+      "frames": 22,
+      "durationMs": 3360,
+      "encodedFrameMs": [
+        120,
+        480
+      ],
+      "SHA256": "dff2adeb7966383522bf8fa797172d65b371e4524ad1a5c89949c420e4a096fa"
+    },
+    "batch-walk-normal.gif": {
+      "frames": 8,
+      "durationMs": 960,
+      "encodedFrameMs": [
+        120
+      ],
+      "SHA256": "70d5b903c1f657d2ae46f3818dd26e7ea28abc5ac4775a677a7c403a11829399"
+    },
+    "batch-front-walk-normal.gif": {
+      "frames": 8,
+      "durationMs": 960,
+      "encodedFrameMs": [
+        120
+      ],
+      "SHA256": "4209fbe71aea6906bbc8fd63e7cf16ab7a6e51139bcd0ae34cdeff9d09f62025"
+    },
+    "batch-left-walk-normal.gif": {
+      "frames": 8,
+      "durationMs": 960,
+      "encodedFrameMs": [
+        120
+      ],
+      "SHA256": "584a377b97c48b5deb3fceaa25b5a98122fa9ee6c9536e75996b8eb625348491"
+    },
+    "batch-left-start-stop-normal.gif": {
+      "frames": 22,
+      "durationMs": 3360,
+      "encodedFrameMs": [
+        120,
+        480
+      ],
+      "SHA256": "b7aacc0a460de883fdde89ad4359f3c1dadcfe01f8cc5a9379c559a4fef873bb"
+    },
+    "runeArmor/battle-normal.gif": {
+      "frames": 60,
+      "durationMs": 1200,
+      "encodedFrameMs": [
+        20
+      ],
+      "SHA256": "b47955e7b4ebe39f27afb78cf4363f4378521080bcfb58becada3986948f53bb"
+    },
+    "runeArmor/walk-normal.gif": {
+      "frames": 8,
+      "durationMs": 960,
+      "encodedFrameMs": [
+        120
+      ],
+      "SHA256": "49280db51dd71e0080ed747cc5383b4866c8dc498f050f97fa4cae3789acc801"
+    },
+    "leatherArmor/battle-normal.gif": {
+      "frames": 60,
+      "durationMs": 1200,
+      "encodedFrameMs": [
+        20
+      ],
+      "SHA256": "074e63c220ccebc2e74fa2154aaf752ab609d699c24a6aef907d863250c74ed4"
+    },
+    "leatherArmor/walk-normal.gif": {
+      "frames": 8,
+      "durationMs": 960,
+      "encodedFrameMs": [
+        120
+      ],
+      "SHA256": "e85caea29f27eb9f2f48380477503b5a1485ad8bfca21d95716efbb370bad109"
+    }
+  },
+  "fourCarriedApprovalsMatchUserFeedback": true,
+  "newTwoArmorArtApproval": null,
+  "appSimulatorOrDeviceRun": false
+}

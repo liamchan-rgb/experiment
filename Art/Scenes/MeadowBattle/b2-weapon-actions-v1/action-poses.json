@@ -1,0 +1,40 @@
+{
+  "version": 1,
+  "scope": "offline art studies; not an execution or damage contract",
+  "durationSeconds": 2.4,
+  "motionStartsAt": 0.12,
+  "motionDuration": 1.65,
+  "heroFoot": [170, 340],
+  "enemyFoot": [650, 340],
+  "actorScale": 0.9,
+  "enemyScale": 0.85,
+  "targetContactX": 578,
+  "swordImpactAt": 1.0275,
+  "staffReleaseAt": 1.0,
+  "staffImpactAt": 1.25,
+  "swordTipRest": [191, 102],
+  "staffGemRest": [165, 132],
+  "poseKeys": {
+    "greatSword": [
+      {"t":0,"root":[0,0],"lean":0,"crouch":0,"shoulder":0,"elbow":0,"wrist":0,"nearHip":0,"nearKnee":0,"farHip":0,"farKnee":0,"flash":0,"recoil":0},
+      {"t":0.12,"root":[-1,0],"lean":-0.05,"crouch":1,"shoulder":-0.05,"elbow":-0.04,"wrist":0.12,"nearHip":-0.1,"nearKnee":0.12,"farHip":0.1,"farKnee":-0.1,"flash":0,"recoil":0},
+      {"t":0.25,"root":[-2,0],"lean":-0.09,"crouch":3,"shoulder":-0.07,"elbow":-0.1,"wrist":0.26,"nearHip":-0.24,"nearKnee":0.22,"farHip":0.16,"farKnee":-0.18,"flash":0,"recoil":0},
+      {"t":0.39,"root":[-2,0],"lean":-0.09,"crouch":3,"shoulder":-0.09,"elbow":-0.12,"wrist":0.31,"nearHip":-0.24,"nearKnee":0.22,"farHip":0.16,"farKnee":-0.18,"flash":0,"recoil":0},
+      {"t":0.49,"root":[1,-1],"lean":0.04,"crouch":2,"shoulder":0.08,"elbow":0.15,"wrist":0.22,"nearHip":-0.35,"nearKnee":0.28,"farHip":0.13,"farKnee":-0.08,"flash":0,"recoil":0},
+      {"t":0.55,"root":[2,-1],"lean":0.1,"crouch":1,"shoulder":0.16,"elbow":0.17,"wrist":-0.04,"nearHip":-0.38,"nearKnee":0.3,"farHip":0.08,"farKnee":0.02,"flash":0,"recoil":0},
+      {"t":0.64,"root":[2,0],"lean":0.08,"crouch":2,"shoulder":0.3,"elbow":0.34,"wrist":0.25,"nearHip":-0.33,"nearKnee":0.28,"farHip":0.08,"farKnee":0.02,"flash":0,"recoil":0},
+      {"t":0.78,"root":[1,0],"lean":0.04,"crouch":2,"shoulder":0.12,"elbow":0.17,"wrist":0.1,"nearHip":-0.18,"nearKnee":0.16,"farHip":0.03,"farKnee":0,"flash":0,"recoil":0},
+      {"t":1,"root":[0,0],"lean":0,"crouch":0,"shoulder":0,"elbow":0,"wrist":0,"nearHip":0,"nearKnee":0,"farHip":0,"farKnee":0,"flash":0,"recoil":0}
+    ],
+    "legendaryStaff": [
+      {"t":0,"root":[0,0],"lean":0,"crouch":0,"shoulder":0,"elbow":0,"wrist":0,"nearHip":0,"nearKnee":0,"farHip":0,"farKnee":0,"flash":0,"recoil":0},
+      {"t":0.16,"root":[-1,0],"lean":-0.035,"crouch":1,"shoulder":0.05,"elbow":0.08,"wrist":0.02,"nearHip":-0.06,"nearKnee":0.09,"farHip":0.05,"farKnee":-0.06,"flash":0,"recoil":0},
+      {"t":0.32,"root":[-1,0],"lean":-0.055,"crouch":2,"shoulder":0.07,"elbow":0.1,"wrist":0.05,"nearHip":-0.12,"nearKnee":0.14,"farHip":0.08,"farKnee":-0.1,"flash":0,"recoil":0},
+      {"t":0.42,"root":[0,0],"lean":-0.02,"crouch":2,"shoulder":0.1,"elbow":0.12,"wrist":0.06,"nearHip":-0.14,"nearKnee":0.16,"farHip":0.06,"farKnee":-0.08,"flash":0,"recoil":0},
+      {"t":0.56,"root":[1,0],"lean":0.025,"crouch":1,"shoulder":0.22,"elbow":0.24,"wrist":0.12,"nearHip":-0.18,"nearKnee":0.16,"farHip":0.04,"farKnee":-0.04,"flash":0,"recoil":0},
+      {"t":0.67,"root":[1,0],"lean":0.03,"crouch":1,"shoulder":0.25,"elbow":0.24,"wrist":0.12,"nearHip":-0.14,"nearKnee":0.14,"farHip":0.04,"farKnee":-0.04,"flash":0,"recoil":0},
+      {"t":0.82,"root":[0,0],"lean":0.01,"crouch":1,"shoulder":0.1,"elbow":0.08,"wrist":0.03,"nearHip":-0.06,"nearKnee":0.08,"farHip":0.02,"farKnee":-0.02,"flash":0,"recoil":0},
+      {"t":1,"root":[0,0],"lean":0,"crouch":0,"shoulder":0,"elbow":0,"wrist":0,"nearHip":0,"nearKnee":0,"farHip":0,"farKnee":0,"flash":0,"recoil":0}
+    ]
+  }
+}

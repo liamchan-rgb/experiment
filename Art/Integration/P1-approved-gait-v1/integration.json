@@ -1,0 +1,70 @@
+{
+  "format": 1,
+  "status": "imported-for-demo-device-review",
+  "date": "2026-10-21",
+  "directions": [
+    {
+      "direction": "down",
+      "revision": "r1",
+      "source": "Art/Review/P1/directions/down/revisions/r1/strip.png",
+      "sha256": "19d934db5e3ce02fd8054759300e5c115ab1a440c17c48f954eb48a0e23987e3"
+    },
+    {
+      "direction": "left",
+      "revision": "r1",
+      "source": "Art/Review/P1/directions/left/revisions/r1/strip.png",
+      "sha256": "91b94ac7d5037e0155ed480d5afda807c5ab29597b54bf239ab9745cc8d4d039"
+    },
+    {
+      "direction": "up",
+      "revision": "r1",
+      "source": "Art/Review/P1/directions/up/revisions/r1/strip.png",
+      "sha256": "baaf947de7d5a16d0e4c1a8fbdddd7b46effb03c33d7f195097857beab6a3df8"
+    },
+    {
+      "direction": "right",
+      "revision": "r1",
+      "source": "Art/Review/P1/directions/right/revisions/r1/strip.png",
+      "sha256": "048ba38d0b48277ef34bf77575e00a508cab3a6f254e48ac724aa5de1a1f8b61"
+    },
+    {
+      "direction": "down-right",
+      "revision": "r1",
+      "source": "Art/Review/P1/directions/down-right/revisions/r1/strip.png",
+      "sha256": "f1e8f8f77ace3e5e779efe0655f011393bf42b24dc4c5552eefe1835a5dacb94"
+    },
+    {
+      "direction": "down-left",
+      "revision": "r1",
+      "source": "Art/Review/P1/directions/down-left/revisions/r1/strip.png",
+      "sha256": "57a865920a720dbd5c3e755f9c3c199c2641c7ce86cbde115be4934d4b2fa206"
+    },
+    {
+      "direction": "up-left",
+      "revision": "r6",
+      "source": "Art/Review/P1/directions/up-left/revisions/r6/strip.png",
+      "sha256": "5a6282612299914da5b829cff5f3c86085731088bc2a17be08b43c34eba6ff96"
+    },
+    {
+      "direction": "up-right",
+      "revision": "r1",
+      "source": "Art/Review/P1/directions/up-right/revisions/r1/strip.png",
+      "sha256": "ab21948e2e6d1a94220c2cfa32626c50a2baf3e9a0782152130595c610c4b34c"
+    }
+  ],
+  "authoredWalkPoses": 8,
+  "idlePosesPerDirection": 1,
+  "frameMs": 120,
+  "cycleMs": 960,
+  "rasterColumns": 9,
+  "distanceClockTicks": 24,
+  "pixelChangesToApprovedArtwork": 0,
+  "interpolatedPoses": 0,
+  "footprints": "footprints.json",
+  "outputs": {
+    "Sources/Resources/Assets.xcassets/Hero1Directions.imageset/Hero1Directions.png": "61d4c4ba5b0bc49bb37f2dfaa50b9c7788e484fcd81789dbc4a18a6e9502b88a",
+    "Sources/Resources/Assets.xcassets/Hero1Diagonals.imageset/Hero1Diagonals.png": "06b9e105b3859495ea639c84660828b06ebd72c6c248a167b57cb2748fda1898",
+    "Sources/Resources/hero-gait.json": "bd9d82e887143ab455e27c2c1f6e7fe220caa5caae208ea88bd08c84822ffce4"
+  },
+  "physicalDeviceVisualApproval": null
+}

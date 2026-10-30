@@ -1,0 +1,122 @@
+{
+  "sourceIntegration": "Art/Integration/P1-modular-eight-way-v1",
+  "role": "forester",
+  "registration": {
+    "down": [
+      4,
+      -1
+    ],
+    "down-left": [
+      1,
+      1
+    ],
+    "left": [
+      3,
+      0
+    ],
+    "up-left": [
+      0,
+      0
+    ],
+    "up": [
+      0,
+      2
+    ],
+    "up-right": [
+      1,
+      0
+    ],
+    "right": [
+      -2,
+      0
+    ],
+    "down-right": [
+      0,
+      1
+    ]
+  },
+  "cyclicWalkSourceOrder": {
+    "down": [
+      8,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "down-left": [
+      5,
+      6,
+      7,
+      8,
+      1,
+      2,
+      3,
+      4
+    ],
+    "left": [
+      5,
+      6,
+      7,
+      8,
+      1,
+      2,
+      3,
+      4
+    ],
+    "up-left": [
+      5,
+      6,
+      7,
+      8,
+      1,
+      2,
+      3,
+      4
+    ],
+    "up": [
+      5,
+      6,
+      7,
+      8,
+      1,
+      2,
+      3,
+      4
+    ],
+    "up-right": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "right": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "down-right": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ]
+  },
+  "artApproval": null,
+  "method": "source pixels plus fixed parent translation; head local unchanged; new hem/UR weapon overrides in integration provenance"
+}

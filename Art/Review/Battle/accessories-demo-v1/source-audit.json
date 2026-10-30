@@ -1,0 +1,44 @@
+{
+  "baseline": "dd5e5a75d6b483e8f3354eeeda6e1efa9b85df99",
+  "unchangedExistingAssetAndOriginalCoreFiles": 389,
+  "oldGaitBindingsByteSemanticsUnchanged": true,
+  "iconsByteExactFromExistingB2Sources": true,
+  "ruleAndCatalogUnchanged": true,
+  "actualReceiptComparison": [
+    {
+      "scenario": "accessory-actionRing",
+      "APBefore": 4,
+      "APAfter": 3,
+      "cap": 8,
+      "damage": 6,
+      "rolledIncludingSkillFlat": 6,
+      "fixedYellowValuesAtSelection": [
+        2
+      ]
+    },
+    {
+      "scenario": "accessory-none",
+      "APBefore": 3,
+      "APAfter": 2,
+      "cap": 8,
+      "damage": 6,
+      "rolledIncludingSkillFlat": 6,
+      "fixedYellowValuesAtSelection": [
+        2
+      ]
+    },
+    {
+      "scenario": "accessory-powerBadge",
+      "APBefore": 3,
+      "APAfter": 2,
+      "cap": 8,
+      "damage": 8,
+      "rolledIncludingSkillFlat": 6,
+      "fixedYellowValuesAtSelection": [
+        2,
+        2
+      ]
+    }
+  ],
+  "noNewCharacterArt": true
+}

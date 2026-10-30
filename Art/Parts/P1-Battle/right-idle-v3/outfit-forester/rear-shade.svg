@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256" shape-rendering="crispEdges">
+  <title>Rear shoulder and far sleeve color multiplier</title>
+  <rect width="256" height="256" fill="white"/>
+  <g fill="#8da5c8">
+    <path id="back-shoulder-plane" opacity="0.46" d="M117 133H119V136H118V139H116V145H115V150H113V153H110V151H108V147H109V139H110V138H112V136H114V134H117Z"/>
+    <path id="far-sleeve-plane" opacity="0.78" d="M108 150H114V155H113V158H111V162H110V165H108V168H104V167H102V165H103V161H104V158H106V154H108Z"/>
+    <path id="underarm-occlusion" opacity="0.62" d="M111 148H115V151H116V153H114V155H111V153H109V151H111Z"/>
+  </g>
+</svg>

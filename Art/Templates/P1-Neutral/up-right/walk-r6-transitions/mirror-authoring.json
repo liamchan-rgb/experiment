@@ -1,0 +1,31 @@
+{
+  "id": "p1-neutral-up-right-r6-transitions",
+  "direction": "up-right",
+  "sourceTemplate": "Art/Templates/P1-Neutral/up-left/walk-r6-transitions",
+  "sourceApproval": "Art/Review/P1/neutral-up-left-r5/approval.json",
+  "sourceManifestSHA256": "a3a48d8729aeb29bb11c3ebcd4a3d814af841cf89dfbb6153279a8c368fa5920",
+  "sourceMotionSHA256": "c9980dfdd8f83084cbf52c3f64c19d8d0898e7d53198adc7d62d70c7f3799e88",
+  "headLocalCanvas": [
+    96,
+    96
+  ],
+  "mirrorAxisX": 127.5,
+  "status": "candidate-specified-start-stop-path",
+  "artApproval": null,
+  "repairAndReviewOwner": "root",
+  "subagentsUsed": false,
+  "lighting": {
+    "mode": "static-source-uv-colours",
+    "textures": "source/relit-textures",
+    "uv": "source/approved-left-uv",
+    "bakeRecord": "source/lighting-bake.json",
+    "reference": "source/relight-generated.png",
+    "alphaOwner": "approved reflection"
+  },
+  "headLocalOriginMirrored": [
+    84,
+    61
+  ],
+  "headLocalTexture": "source/relit-textures/head-local.png",
+  "sourceApprovalLimitation": "Approval covers preserved r5 idle/walk only, not these new transitions"
+}

@@ -1,0 +1,31 @@
+{
+  "date": "2026-10-27",
+  "status": "candidate-pending-user-review",
+  "reviewer": "root",
+  "subagentsUsed": false,
+  "feedback": "../hunting-bow-pose-a-r1/user-rejection.json",
+  "selectedConcept": "A",
+  "changes": [
+    "near drawing hand extends from visible cuff and the string/arrow nock meets the fingertips",
+    "far bow hand has distinct thumb/finger shadows and visible cuff",
+    "near sleeve now ends at wrist rather than fingertip",
+    "adjusted shoulder, wrist and nock away from jaw",
+    "scene projectile origin regenerated from updated release pose"
+  ],
+  "inspection": [
+    "full-body 1x/2x, attack keyposes and decoded GIF frames",
+    "six clips keyposes and scene samples",
+    "real Swift rig and rule export"
+  ],
+  "tests": "107 Swift package tests, 3 applicable existing checks and project validation",
+  "userApproval": null,
+  "ipaCreated": false,
+  "appSimulatorOrDeviceRun": false,
+  "xcodeCompile": false,
+  "oldPrivateReviewSiteUpdated": false,
+  "limitations": [
+    "offline render, not actual device",
+    "unchanged old hit/defeat leg transformations contain isolated single pixels; see pixel-components.json",
+    "drafts/discarded-hand-reference.png is a generated study, discarded because its string crosses the face and it changes source artwork"
+  ]
+}

@@ -1,0 +1,100 @@
+{
+  "scope": "Standalone remote GIFs only; no game/App/simulator/device run",
+  "dimensions": [
+    [
+      1024,
+      280
+    ],
+    [
+      1024,
+      280
+    ],
+    [
+      1020,
+      765
+    ]
+  ],
+  "allThreeGIFsAdvanceVisibly": true,
+  "fullGETVerified": [
+    {
+      "path": "Art/Review/Battle/armor-demo-v1/leatherArmor-attack-normal.gif",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/216482f94200619fb27749dffb1fc79276ce95dc/Art/Review/Battle/armor-demo-v1/leatherArmor-attack-normal.gif",
+      "bytes": 679038,
+      "sha256": "f86176c7cdaa4b0ca1975cb480241c19617ab9e551086620bcb7d023f3402081",
+      "contentType": "image/gif",
+      "fullGETMatchesLocal": true
+    },
+    {
+      "path": "Art/Review/Battle/armor-demo-v1/runeArmor-attack-normal.gif",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/216482f94200619fb27749dffb1fc79276ce95dc/Art/Review/Battle/armor-demo-v1/runeArmor-attack-normal.gif",
+      "bytes": 688800,
+      "sha256": "a31f9648d96a93e760d8cf83a4cdd1cb725700985e6dff828aef53bfdb380d73",
+      "contentType": "image/gif",
+      "fullGETMatchesLocal": true
+    },
+    {
+      "path": "Art/Review/Battle/armor-demo-v1/leatherArmor-states-normal.gif",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/216482f94200619fb27749dffb1fc79276ce95dc/Art/Review/Battle/armor-demo-v1/leatherArmor-states-normal.gif",
+      "bytes": 1284100,
+      "sha256": "e00fcf9b7f666950d1779a0eaed966e0bd5fc2928ba37d943047f38504a78974",
+      "contentType": "image/gif",
+      "fullGETMatchesLocal": true
+    },
+    {
+      "path": "Art/Review/Battle/armor-demo-v1/runeArmor-states-normal.gif",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/216482f94200619fb27749dffb1fc79276ce95dc/Art/Review/Battle/armor-demo-v1/runeArmor-states-normal.gif",
+      "bytes": 1286942,
+      "sha256": "1e61db4d8180eee1a9b56b1f1655066bc4a15f3c749379ec9fb4d3606e2729f8",
+      "contentType": "image/gif",
+      "fullGETMatchesLocal": true
+    },
+    {
+      "path": "Art/Review/Battle/armor-demo-v1/leatherArmor-standing.png",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/216482f94200619fb27749dffb1fc79276ce95dc/Art/Review/Battle/armor-demo-v1/leatherArmor-standing.png",
+      "bytes": 32676,
+      "sha256": "7912d86c3035c27e37594eaf48e1f4412c2929b347324c2a4531ddd1f0a58fd1",
+      "contentType": "image/png",
+      "fullGETMatchesLocal": true
+    },
+    {
+      "path": "Art/Review/Battle/armor-demo-v1/runeArmor-standing.png",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/216482f94200619fb27749dffb1fc79276ce95dc/Art/Review/Battle/armor-demo-v1/runeArmor-standing.png",
+      "bytes": 33222,
+      "sha256": "07b927566b22d70f966e422df0dae7a3f8653184c6fa368424cf31842083a1e2",
+      "contentType": "image/png",
+      "fullGETMatchesLocal": true
+    },
+    {
+      "path": "Art/Review/Battle/armor-demo-v1/battle-normal.gif",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/216482f94200619fb27749dffb1fc79276ce95dc/Art/Review/Battle/armor-demo-v1/battle-normal.gif",
+      "bytes": 5992480,
+      "sha256": "123e39afa903e5b22ec33dc7302a57c9ca58423be98c72d82fbab89e7c90f622",
+      "contentType": "image/gif",
+      "fullGETMatchesLocal": true
+    },
+    {
+      "path": "Art/Review/Battle/armor-demo-v1/battle-standing.png",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/216482f94200619fb27749dffb1fc79276ce95dc/Art/Review/Battle/armor-demo-v1/battle-standing.png",
+      "bytes": 1019643,
+      "sha256": "e8b035008beeea74de0fbfaf57cbb69e0c2c890cc4ea2f41e3b6c2ef8408b9d5",
+      "contentType": "image/png",
+      "fullGETMatchesLocal": true
+    },
+    {
+      "path": "Art/Review/P1/armor-demo-v1/leatherArmor-forester-walk-normal.gif",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/216482f94200619fb27749dffb1fc79276ce95dc/Art/Review/P1/armor-demo-v1/leatherArmor-forester-walk-normal.gif",
+      "bytes": 391420,
+      "sha256": "8f4f8882fdbc51d8f8a65c6807e0530480587a840c40e32c9d051cb29a8a9912",
+      "contentType": "image/gif",
+      "fullGETMatchesLocal": true
+    },
+    {
+      "path": "Art/Review/P1/armor-demo-v1/runeArmor-forester-walk-normal.gif",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/216482f94200619fb27749dffb1fc79276ce95dc/Art/Review/P1/armor-demo-v1/runeArmor-forester-walk-normal.gif",
+      "bytes": 379051,
+      "sha256": "0fc699a9b67d450d64943f54c3af98522ac47d5261f838ea02c4fc84a049852c",
+      "contentType": "image/gif",
+      "fullGETMatchesLocal": true
+    }
+  ]
+}

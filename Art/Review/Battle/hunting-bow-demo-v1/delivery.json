@@ -1,0 +1,128 @@
+{
+  "date": "2026-10-26",
+  "deliveryCommit": "7a9fb088b699754c05df9362e6e7bbef663df09e",
+  "sourceCommit": "d420e5dd623c08a1df96adf5d90f8e9ac5edd74f",
+  "selectedPathsChecked": 195,
+  "compiledInputsChecked": 278,
+  "publicCompleteGETs": [
+    {
+      "path": "Downloads/MeadowJourney-b53.ipa",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/7a9fb088b699754c05df9362e6e7bbef663df09e/Downloads/MeadowJourney-b53.ipa",
+      "status": 200,
+      "mime": "application/octet-stream",
+      "bytes": 33933808,
+      "sha256": "184e795912bc14f65b4fdab318bd1acf70baac32073ff037da2a257e873ab832"
+    },
+    {
+      "path": "Downloads/MeadowJourney-b53.ipa",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/fix/build33-face-grounding-camera/Downloads/MeadowJourney-b53.ipa",
+      "status": 200,
+      "mime": "application/octet-stream",
+      "bytes": 33933808,
+      "sha256": "184e795912bc14f65b4fdab318bd1acf70baac32073ff037da2a257e873ab832"
+    },
+    {
+      "path": "Art/Review/Battle/hunting-bow-demo-v1/bow-normal.gif",
+      "url": "https://cdn.jsdelivr.net/gh/liamchan-rgb/experiment@7a9fb088b699754c05df9362e6e7bbef663df09e/Art/Review/Battle/hunting-bow-demo-v1/bow-normal.gif",
+      "status": 200,
+      "mime": "image/gif",
+      "bytes": 9848415,
+      "sha256": "8feadd6c196a63a384a1eb7e00a692dccf46e6ea84cab21251de4c33c5daa1d3",
+      "frames": 190,
+      "durationMs": 3800
+    },
+    {
+      "path": "Art/Review/Battle/hunting-bow-demo-v1/bow-heavy-normal.gif",
+      "url": "https://cdn.jsdelivr.net/gh/liamchan-rgb/experiment@7a9fb088b699754c05df9362e6e7bbef663df09e/Art/Review/Battle/hunting-bow-demo-v1/bow-heavy-normal.gif",
+      "status": 200,
+      "mime": "image/gif",
+      "bytes": 8051233,
+      "sha256": "af2899781283888ad5932d0f0248a0734d5918862ff8c577936a21c7bccb71ae",
+      "frames": 190,
+      "durationMs": 3800
+    },
+    {
+      "path": "Art/Review/Battle/hunting-bow-demo-v1/bow-lethal-normal.gif",
+      "url": "https://cdn.jsdelivr.net/gh/liamchan-rgb/experiment@7a9fb088b699754c05df9362e6e7bbef663df09e/Art/Review/Battle/hunting-bow-demo-v1/bow-lethal-normal.gif",
+      "status": 200,
+      "mime": "image/gif",
+      "bytes": 8297694,
+      "sha256": "d9f4b4b5ee612c0e887a1aa259344c7d3878b19c9fc73d1737ac96abd4b2b661",
+      "frames": 190,
+      "durationMs": 3800
+    },
+    {
+      "path": "Art/Review/Battle/hunting-bow-demo-v1/bow-body-normal.gif",
+      "url": "https://cdn.jsdelivr.net/gh/liamchan-rgb/experiment@7a9fb088b699754c05df9362e6e7bbef663df09e/Art/Review/Battle/hunting-bow-demo-v1/bow-body-normal.gif",
+      "status": 200,
+      "mime": "image/gif",
+      "bytes": 3140266,
+      "sha256": "a06ef17738d0cd3f7ba0a51c2acaae066e7d22c74e5dc4183cf1171abce1a38f",
+      "frames": 190,
+      "durationMs": 3800
+    },
+    {
+      "path": "Art/Review/P1/hunting-bow-v1/walk-normal.gif",
+      "url": "https://cdn.jsdelivr.net/gh/liamchan-rgb/experiment@7a9fb088b699754c05df9362e6e7bbef663df09e/Art/Review/P1/hunting-bow-v1/walk-normal.gif",
+      "status": 200,
+      "mime": "image/gif",
+      "bytes": 1553564,
+      "sha256": "de66bc76a8531500af64cc5d9c522da433abf93491c8d55f8a201ce469779456",
+      "frames": 8,
+      "durationMs": 960
+    },
+    {
+      "path": "Art/Review/P1/hunting-bow-v1/transitions-normal.gif",
+      "url": "https://cdn.jsdelivr.net/gh/liamchan-rgb/experiment@7a9fb088b699754c05df9362e6e7bbef663df09e/Art/Review/P1/hunting-bow-v1/transitions-normal.gif",
+      "status": 200,
+      "mime": "image/gif",
+      "bytes": 2515042,
+      "sha256": "8bc6d5319bcc0a58ad20ccb68c050c25ee4454d7103e49ef309e951ca14eb589",
+      "frames": 13,
+      "durationMs": 1560
+    },
+    {
+      "path": "Art/Review/Battle/hunting-bow-demo-v1/bow-standing.png",
+      "url": "https://cdn.jsdelivr.net/gh/liamchan-rgb/experiment@7a9fb088b699754c05df9362e6e7bbef663df09e/Art/Review/Battle/hunting-bow-demo-v1/bow-standing.png",
+      "status": 200,
+      "mime": "image/png",
+      "bytes": 1846294,
+      "sha256": "0b6a4e321e32b768992e171986aedaddf737316906ffb5e4ff6f3f03a372ff48"
+    },
+    {
+      "path": "Art/Review/Battle/hunting-bow-demo-v1/bow-selected.png",
+      "url": "https://cdn.jsdelivr.net/gh/liamchan-rgb/experiment@7a9fb088b699754c05df9362e6e7bbef663df09e/Art/Review/Battle/hunting-bow-demo-v1/bow-selected.png",
+      "status": 200,
+      "mime": "image/png",
+      "bytes": 1812411,
+      "sha256": "8a50e014839d30ec3e118cfb9e5c69539ed50e76741ce414a71ba8590df8a3a5"
+    },
+    {
+      "path": "Art/Review/Battle/hunting-bow-demo-v1/bow-heavy-impact.png",
+      "url": "https://cdn.jsdelivr.net/gh/liamchan-rgb/experiment@7a9fb088b699754c05df9362e6e7bbef663df09e/Art/Review/Battle/hunting-bow-demo-v1/bow-heavy-impact.png",
+      "status": 200,
+      "mime": "image/png",
+      "bytes": 1758403,
+      "sha256": "b1ce0fd6d1e068c851eebd2db17c8cffc3efd3a1c3ebc1d0b8c7c5923def6612"
+    },
+    {
+      "path": "Art/Review/Battle/hunting-bow-demo-v1/bow-lethal-impact.png",
+      "url": "https://cdn.jsdelivr.net/gh/liamchan-rgb/experiment@7a9fb088b699754c05df9362e6e7bbef663df09e/Art/Review/Battle/hunting-bow-demo-v1/bow-lethal-impact.png",
+      "status": 200,
+      "mime": "image/png",
+      "bytes": 1782085,
+      "sha256": "e65f18ff1334f474ae86d05448757a872e1a281d9af2bbbabbcbb4e51d2986ba"
+    },
+    {
+      "path": "Art/Review/P1/hunting-bow-v1/standing.png",
+      "url": "https://cdn.jsdelivr.net/gh/liamchan-rgb/experiment@7a9fb088b699754c05df9362e6e7bbef663df09e/Art/Review/P1/hunting-bow-v1/standing.png",
+      "status": 200,
+      "mime": "image/png",
+      "bytes": 449807,
+      "sha256": "bdc3f17d7863648049edd0446cabe4521388afda53ac399554cb9cbacda4705e"
+    }
+  ],
+  "simulatorRun": false,
+  "deviceRun": false,
+  "newArtApproval": null
+}

@@ -1,0 +1,19 @@
+{
+  "reviewer": "primary agent",
+  "nativeWalkingCellsViewed": 208,
+  "nativeBoardsViewed": 16,
+  "enlargedWalkingBoardsViewed": 4,
+  "walkingActualDecodedFramesViewed": 22,
+  "battleAndBodyActualDecodedFramesViewed": 760,
+  "battleAndBodySheetsViewed": 40,
+  "sixStateWholeBodyPosesViewed": 30,
+  "sourceAttackCurvesPreserved": true,
+  "repairedFindings": [
+    "generic impact point outside monster",
+    "broad blade covered face in guard hit victory"
+  ],
+  "scope": "Whole-body and decoded-image art review, no UIKit/App/simulator/device run",
+  "newRuntimeArtApproval": null,
+  "additionalStateDecodedFramesViewed": 202,
+  "additionalStateSheetsViewed": 11
+}

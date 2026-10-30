@@ -1,0 +1,82 @@
+{
+  "date": "2026-10-26",
+  "reviewer": "root",
+  "delegated": false,
+  "sourceCommit": "a5547de7ad20b5737443960bacc89d80f52ee2eb",
+  "decodedGIFFramesInspected": 820,
+  "decodedContactPagesInspected": 30,
+  "wholeBodySamplesInspected": 6,
+  "wholeBodyScales": [
+    1,
+    2
+  ],
+  "wholeBodyBoards": 2,
+  "wholeSceneBoards": 2,
+  "animations": {
+    "ambush": {
+      "file": "ambush-normal.gif",
+      "frames": 220,
+      "frameDurationMs": 20,
+      "durationMs": 4400,
+      "dimensions": [
+        1224,
+        918
+      ],
+      "bytes": 10489061
+    },
+    "ambush-last": {
+      "file": "ambush-last-normal.gif",
+      "frames": 220,
+      "frameDurationMs": 20,
+      "durationMs": 4400,
+      "dimensions": [
+        1224,
+        918
+      ],
+      "bytes": 11578939
+    },
+    "heal": {
+      "file": "heal-normal.gif",
+      "frames": 190,
+      "frameDurationMs": 20,
+      "durationMs": 3800,
+      "dimensions": [
+        1224,
+        918
+      ],
+      "bytes": 5142037
+    },
+    "support": {
+      "file": "support-normal.gif",
+      "frames": 190,
+      "frameDurationMs": 20,
+      "durationMs": 3800,
+      "dimensions": [
+        1224,
+        918
+      ],
+      "bytes": 7376063
+    }
+  },
+  "findings": [
+    "Ambush advance, original attack pose retiming, three fading afterimages, two visual stroke sweeps at one receipt, return and caster recovery inspected.",
+    "Four-channel group overlapped P1 HP header after P2 returned. Root rejected and corrected full group anchoring; five-channel buff case and enemy header clearance rechecked.",
+    "Fixed amounts visible during selection, random results withheld until receipt, no die type labels in animation.",
+    "Opposed rising helical paths alternate in front/behind body; body occludes far strand. Stable stars, soft reveal/retirement, reduced static shaft/core and local green ground light inspected.",
+    "Last enemy death and caster healing share the original receipt; rightward dissolve and healing continue through return and terminal transition.",
+    "All820 decoded frames of four normal50fps GIFs inspected; six native complete-body and complete-scene samples reviewed at1x/2x."
+  ],
+  "drafts": [
+    "drafts/wide-group-overlaps-hp",
+    "drafts/preview-compositing-r1"
+  ],
+  "limitations": [
+    "Offline Pillow composition using production Swift geometry/motion and actual GameCore receipts; UIKit fonts/blending/map/light/UI are approximations; not a device capture.",
+    "Static decoded sequence inspection, not continuous playback or App/simulator/device/UI testing.",
+    "Original body pixels and authored attack poses reused with new timing; no newly painted hero rig or weapon/equipment set claimed.",
+    "Ambush-last is a controlled terminal fixture: M2 was already defeated, M1 starts3HP and P2 has original rally buff2; default demo still starts with two18HP enemies.",
+    "Healing preview uses existing large potion12 nominal amount with capped actual recovery6; support6 and shield4 remain original fixed rules.",
+    "B2 basic equipment and remaining B3-B6 skills are pending; target60 has not been measured on a physical device."
+  ],
+  "newArtApproval": null
+}

@@ -1,0 +1,25 @@
+{
+  "scope": "offline shared art and production Swift events; not UIKit/GPU/device capture",
+  "productionTrace": "Art/Review/Battle/particles-round-shield-demo-v1/controller-trace-linux.json",
+  "hitTime": 3.666666666666667,
+  "shieldBirth": 0.4666666666666666,
+  "shieldBlockBreak": 2.466666666666667,
+  "animations": {
+    "attack": {
+      "frames": 165,
+      "frameDurationMs": 40,
+      "durationMs": 6600,
+      "gifBytes": 17909909,
+      "file": "heavy-strike-normal.gif"
+    },
+    "shield": {
+      "frames": 120,
+      "frameDurationMs": 40,
+      "durationMs": 4800,
+      "gifBytes": 16821491,
+      "file": "shield-normal.gif"
+    }
+  },
+  "lightTrajectories": "production-light-trajectories.json",
+  "artApproval": null
+}

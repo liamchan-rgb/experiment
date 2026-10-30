@@ -1,0 +1,22 @@
+{
+  "nativeFrameCount": 85,
+  "durationMs": 1700,
+  "decodedGIFFrames": 43,
+  "firstNativeFrameExactlyMatchesR7": true,
+  "headNativeAndDecodedPixelsStable": true,
+  "torsoSurfacesUnchanged": true,
+  "shoulderPivotsUnchanged": true,
+  "nearArm2DProjectionUnfolds": true,
+  "opaqueFaceAndMouthNativeAndDecodedPixelsStable": true,
+  "allFramesSleeveWristOverlap": true,
+  "allFramesElbowOverlap": true,
+  "shoulderToElbowVisibleSleevePathContinuous": true,
+  "farArmAndBowPosesUnchangedFromV2": true,
+  "globalGIFPalette": true,
+  "singlePlaybackNoLoopSnap": true,
+  "releaseRecoverySeconds": 0.32,
+  "imageGenerationUsed": false,
+  "runtimeImported": false,
+  "deviceRunPerformed": false,
+  "userApproved": false
+}

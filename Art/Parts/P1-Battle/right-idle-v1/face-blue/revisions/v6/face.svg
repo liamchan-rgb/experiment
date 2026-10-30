@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256" shape-rendering="crispEdges" image-rendering="pixelated">
+  <title>Balanced right-facing profile for battle-side idle r2</title>
+  <desc>Registered face-only pixel layer. The single near-side eye sits back and high; a projecting nose, nostril and lower closed mouth descend in a clear profile rhythm.</desc>
+  <g id="face.brow">
+    <path fill="#553526" d="M132 110H134V109H138V110H140V111H138V112H134V111H132Z"/>
+    <rect x="135" y="110" width="3" height="1" fill="#6d432d"/>
+  </g>
+  <g id="face.eye">
+    <path fill="#34231d" d="M133 114H134V112H138V113H140V115H139V117H134V116H133Z"/>
+    <path fill="#f2e4cf" d="M134 114H135V113H138V114H139V115H138V116H134Z"/>
+    <rect x="136" y="113" width="2" height="4" fill="#477fae"/>
+    <rect x="137" y="114" width="1" height="2" fill="#2d5274"/>
+    <rect x="136" y="113" width="1" height="1" fill="#fff0d5"/>
+  </g>
+  <g id="face.profile-nose">
+    <path fill="#e9a170" d="M143 114H145V115H147V116H149V117H151V118H153V120H151V121H148V120H146V118H145V116H143Z"/>
+    <path fill="#ffd0a5" d="M144 114H146V115H148V116H150V117H151V118H149V118H147V117H145Z"/>
+    <rect x="152" y="119" width="1" height="1" fill="#583526"/>
+    <path fill="#9a5b3e" d="M150 120H152V121H150Z"/>
+    <rect x="150" y="121" width="2" height="1" fill="#523128"/>
+  </g>
+  <g id="face.mouth">
+    <path fill="#59302a" d="M145 124H147V123H149V124H151V125H148V126H146V125H145Z"/>
+    <rect x="147" y="126" width="2" height="1" fill="#d98c67"/>
+    <path fill="#e9a170" d="M144 129H147V128H150V129H148V130H145Z"/>
+  </g>
+</svg>

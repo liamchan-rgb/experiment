@@ -1,0 +1,23 @@
+{
+  "file": "MeadowJourney-shadow-lab.ipa",
+  "size_bytes": 49938573,
+  "sha256": "2cfe07cfd90ef1f3b0ae36ee7154763d420a2d96ac37b16dcce1380d67090816",
+  "chunk_size_bytes": 20971520,
+  "parts": [
+    {
+      "name": "part-00",
+      "size_bytes": 20971520,
+      "sha256": "94e85a62b3984fd0a3130f8abf89450cfeb2710c476f4cebd8061ca92ac97ff6"
+    },
+    {
+      "name": "part-01",
+      "size_bytes": 20971520,
+      "sha256": "6889af9bce988367fbf908047c68aa44020b220c03629ec1153278ac3e806473"
+    },
+    {
+      "name": "part-02",
+      "size_bytes": 7995533,
+      "sha256": "d58441997f12893575ccdf0e427e01435b3dc4f98e41b7de0408889a080eda6c"
+    }
+  ]
+}

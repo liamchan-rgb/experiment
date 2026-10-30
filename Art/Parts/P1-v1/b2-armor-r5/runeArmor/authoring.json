@@ -1,0 +1,19 @@
+{
+  "sourceSHA256": "c94812aae001ef772e2d0b27c2bb2eabd655544abc8f642d723b40289b5caa2b",
+  "exporter": "scripts/build-b2-rune-wrist-r5.py",
+  "surface": "scripts/armor-profile-wrist-r5.py",
+  "sourceViews": [
+    "front",
+    "front-quarter-left",
+    "profile-left",
+    "rear-quarter-left",
+    "back"
+  ],
+  "method": "r4 preserved except side-view rune sleeves; original approved pose sleeve contour and actual hand silhouette locate wrist armor",
+  "profileWrists": "five nearest solid original hand marker pixels to its elbow; frozen per pose, not garment alpha fitting",
+  "bodyMotionModified": false,
+  "oldApprovedArtModified": false,
+  "artApproval": null,
+  "profileReference": "Art/Parts/P1-v1/eight-way-v1/forester/asset.json",
+  "farArm": "paint exact body arm silhouette beneath the far sleeve and torso"
+}

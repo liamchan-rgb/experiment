@@ -1,0 +1,16 @@
+{
+  "date": "2026-10-28",
+  "userMessage": "没问题，下一项工作是？",
+  "approvedCommit": "737ba88a861a85019672e49a3fb2fd2ec849999e",
+  "gifSHA256": "41d7e074daa406de57f07f6d25062ae40799f08be9c4aa63b41ebf8d1d3735ff",
+  "artApproved": true,
+  "scope": "当前猎弓已展示的持箭待发、抬弓搭箭、拉弦、放箭和收势完整离线动画",
+  "scopeExcludes": [
+    "其他衣装/其他弓的适配",
+    "运行时接入和设备表现",
+    "未展示的受击/防御/倒地动作"
+  ],
+  "nextWork": "接入单人/小队共用演出，核对箭矢发射/命中及状态切换，主线程审核整场GIF，再交付直接IPA。",
+  "runtimeImported": false,
+  "deviceRunPerformed": false
+}

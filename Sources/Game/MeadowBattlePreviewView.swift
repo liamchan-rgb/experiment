@@ -1,12 +1,19 @@
 import UIKit
+import ClassroomGameCore
+import MeadowBattleSupport
+import CoreImage
 
-private enum MeadowPreviewPalette {
+enum MeadowPreviewPalette {
     static let panel = UIColor(red: 0.10, green: 0.17, blue: 0.13, alpha: 0.97)
     static let card = UIColor(red: 0.17, green: 0.25, blue: 0.19, alpha: 1)
     static let ink = UIColor(red: 0.98, green: 0.93, blue: 0.77, alpha: 1)
     static let muted = UIColor(red: 0.72, green: 0.79, blue: 0.66, alpha: 1)
     static let gold = UIColor(red: 0.92, green: 0.77, blue: 0.42, alpha: 1)
     static let border = UIColor(red: 0.60, green: 0.57, blue: 0.34, alpha: 0.65)
+    static func font(_ size:CGFloat,_ weight:UIFont.Weight = .bold)->UIFont {
+        let base=UIFont.systemFont(ofSize:size,weight:weight)
+        return UIFont(descriptor:base.fontDescriptor.withDesign(.serif) ?? base.fontDescriptor,size:size)
+    }
     static func stylePanel(_ view: UIView) {
         view.backgroundColor = panel
         view.layer.cornerRadius = 14
@@ -15,32 +22,57 @@ private enum MeadowPreviewPalette {
     }
     static func label(_ text: String, size: CGFloat, weight: UIFont.Weight = .medium) -> UILabel {
         let label = UILabel(); label.text = text
-        label.font = .systemFont(ofSize: size, weight: weight)
-        label.textColor = ink; label.adjustsFontSizeToFitWidth = true; label.minimumScaleFactor = 0.85
+        label.font = font(size,weight)
+        label.textColor = ink; label.adjustsFontSizeToFitWidth = true; label.minimumScaleFactor = 1
         return label
+    }
+    static func button(_ title: String) -> UIButton {
+        var style = UIButton.Configuration.filled(); style.title = title
+        style.titleTextAttributesTransformer=UIConfigurationTextAttributesTransformer { value in var v=value;v.font=font(18);return v }; style.baseBackgroundColor = gold; style.baseForegroundColor = panel
+        style.contentInsets = NSDirectionalEdgeInsets(top: 5, leading: 8, bottom: 5, trailing: 8)
+        let button = UIButton(type: .system); button.configuration = style
+        return button
     }
 }
 
-/// Presentation-only fixture. It does not drive turns, damage, inventory or map movement.
-/// The small header badge distinguishes the layout sample from a real battle.
+/// A compact, playable P1 versus one Forest Warden encounter layered over the map.
 final class MeadowBattlePreviewView: UIView {
-    var onClose: (() -> Void)?
-    var onLayoutChanged: (() -> Void)?
-    private(set) var mode: MeadowBattlePreviewMode = .playerTurn
-    // Query the current mode directly. UIViewController's layout callback may
-    // precede this child's layout pass when a footer is hidden or revealed.
-    var mapFrame: CGRect {
-        MeadowBattleLayout(size: bounds.size, safeArea: safeAreaInsets, mode: mode).map
+    private var equipmentWeaponID:String?="trainingSword"
+    func configureEquipment(_ units:[String:GameUnit]) {
+        party.loadoutUnits=units;equipmentWeaponID=units["p1"]?.equipment.weapon
+        if encounter.phase == .exploration,let unit=units["p1"],let catalog=try? GameCatalog.initial(),let stats=try? GameRules.attributes(unit,catalog:catalog) { encounter=MeadowBattleEncounter(maximumHealth:stats.maximumHealth,baseAP:min(stats.baseAP,stats.maximumAP),damageBonus:stats.damage) }
+        if let unit=units["p1"],let catalog=try? GameCatalog.initial() {
+            details.accessoryReadout=try? AccessoryReadout.make(unit,catalog:catalog)
+        }
+        details.accessoryHost=self
+        details.hasWeapon=equipmentWeaponID != nil
+        landscape.configureWeapon(HeroFrames.weaponVisual(equipmentWeaponID)?.battleAsset)
+        landscape.configureArmor(units["p1"]?.equipment.armor)
     }
+    var onClose: (() -> Void)?
+    var onPartyActiveChanged: ((Bool)->Void)?
+    private var partyMode=false
+    private let party=MeadowPartyBattleView(frame:.zero)
+    private let partyButton=MeadowPreviewPalette.button("小队支援")
+    var onLayoutChanged: (() -> Void)?
+    private var encounter = MeadowBattleEncounter()
+    private var isActive = false
+    private var isAnimating = false
+    private var generation: UInt = 0
+    private var pendingEnemyAction: DispatchWorkItem?
+    private var lastPrimaryActionTime = 0.0
+    private var mode: MeadowBattlePreviewMode { encounter.phase == .exploration ? .exploration : .playerTurn }
+    var mapFrame: CGRect { MeadowBattleLayout(size: bounds.size, safeArea: safeAreaInsets, mode: partyMode ? .playerTurn:mode).map }
+
     private let header = UIView()
-    private let actor = MeadowPreviewPalette.label("", size: 23, weight: .bold)
-    private let subtitle = MeadowPreviewPalette.label("", size: 13)
-    private let modeControl = UISegmentedControl(items: ["探索", "玩家回合", "怪物回合"])
-    private let closeButton = UIButton(type: .system)
+    private let actor = MeadowPreviewPalette.label("", size: 26, weight: .heavy)
+    private let subtitle = MeadowPreviewPalette.label("", size: 16, weight: .semibold)
+    private let primaryButton = MeadowPreviewPalette.button("开始遭遇")
+    private let closeButton = MeadowPreviewPalette.button("返回地图")
     private let landscape = MeadowBattleLandscapeView()
     private let mapBorder = UIView()
-    private let mapTitle = MeadowPreviewPalette.label("Meadow Journey", size: 15, weight: .semibold)
-    private let stageTitle = MeadowPreviewPalette.label("Meadow Journey · 林地", size: 17, weight: .semibold)
+    private let mapTitle = MeadowPreviewPalette.label("Meadow Journey", size: 18, weight: .bold)
+    private let stageTitle = MeadowPreviewPalette.label("Meadow Journey · 林地", size: 19, weight: .bold)
     private let track = MeadowTurnTrackView()
     private let details = MeadowPlayerDetailsView()
 
@@ -54,19 +86,15 @@ final class MeadowBattlePreviewView: UIView {
         actor.accessibilityIdentifier = "previewCurrentActor"
         header.addSubview(actor); header.addSubview(subtitle)
         subtitle.textColor = MeadowPreviewPalette.muted
-        modeControl.accessibilityIdentifier = "battlePreviewMode"
-        modeControl.selectedSegmentIndex = mode.rawValue
-        modeControl.selectedSegmentTintColor = MeadowPreviewPalette.gold
-        modeControl.setTitleTextAttributes([.foregroundColor: MeadowPreviewPalette.ink], for: .normal)
-        modeControl.setTitleTextAttributes([.foregroundColor: MeadowPreviewPalette.panel], for: .selected)
-        modeControl.addTarget(self, action: #selector(changeMode), for: .valueChanged)
-        header.addSubview(modeControl)
-        var style = UIButton.Configuration.filled(); style.title = "返回地图"
-        style.baseBackgroundColor = MeadowPreviewPalette.gold
-        style.baseForegroundColor = MeadowPreviewPalette.panel
-        closeButton.configuration = style
+        primaryButton.accessibilityIdentifier = "battlePreviewPrimaryAction"
+        primaryButton.addAction(UIAction { [weak self] _ in self?.performPrimaryAction() }, for: .touchUpInside)
+        header.addSubview(primaryButton)
         closeButton.accessibilityIdentifier = "closeBattlePreview"
-        closeButton.addAction(UIAction { [weak self] _ in self?.onClose?() }, for: .touchUpInside)
+        closeButton.addAction(UIAction { [weak self] _ in
+            guard let self else { return }
+            self.setActive(false)
+            self.onClose?()
+        }, for: .touchUpInside)
         header.addSubview(closeButton)
         mapBorder.layer.cornerRadius = 14; mapBorder.layer.borderWidth = 1
         mapBorder.layer.borderColor = MeadowPreviewPalette.border.cgColor
@@ -75,82 +103,255 @@ final class MeadowBattlePreviewView: UIView {
         mapTitle.textAlignment = .center; mapTitle.layer.cornerRadius = 8; mapTitle.clipsToBounds = true
         mapTitle.isUserInteractionEnabled = false; addSubview(mapTitle)
         landscape.accessibilityIdentifier = "battleLandscape"
-        landscape.isAccessibilityElement = true
-        landscape.accessibilityLabel = "Meadow Journey 营地林地场景，显示一名冒险者与一只林地鹿灵敌方美术样例；尚未接入真实战斗。"
+        landscape.isAccessibilityElement = false
+        landscape.accessibilityLabel = "Meadow Journey 林地战场，P1 冒险者与一只林地鹿灵。"
         addSubview(landscape)
-        stageTitle.text = "Meadow Journey · 营地林地"
+        stageTitle.text = "Meadow Journey · 林地遭遇"
         stageTitle.textAlignment = .center
         stageTitle.backgroundColor = MeadowPreviewPalette.panel.withAlphaComponent(0.88)
-        stageTitle.layer.cornerRadius = 8
-        stageTitle.clipsToBounds = true
+        stageTitle.layer.cornerRadius = 8; stageTitle.clipsToBounds = true
         stageTitle.isUserInteractionEnabled = false; landscape.addSubview(stageTitle)
         track.accessibilityIdentifier = "previewTurnTrack"; addSubview(track)
         details.accessibilityIdentifier = "previewPlayerDetails"; addSubview(details)
-        updateMode()
+        details.onAction = { [weak self] action in self?.perform(action) }
+        details.onPreview = { [weak self] action in self?.landscape.preview(action) }
+        landscape.onEnemySelected = { [weak self] in self?.selectEnemy() }
+        partyButton.addAction(UIAction { [weak self] _ in
+            guard let self else { return }
+            self.setActive(false);self.partyMode=true;self.party.isHidden=false
+            self.party.setActive(true);self.onPartyActiveChanged?(true);self.setNeedsLayout()
+        },for:.touchUpInside)
+        addSubview(partyButton)
+        party.isHidden=true
+        party.onClose={ [weak self] in
+            guard let self else { return };self.partyMode=false;self.party.isHidden=true
+            self.setActive(true);self.onPartyActiveChanged?(false)
+        }
+        addSubview(party)
+        updatePresentation()
     }
     required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
 
-    @objc private func changeMode() {
-        mode = MeadowBattlePreviewMode(rawValue: modeControl.selectedSegmentIndex) ?? .playerTurn
-        updateMode(); setNeedsLayout(); onLayoutChanged?()
+    /// Called by the owner when the overlay appears or disappears.
+    func setActive(_ active: Bool) {
+        if active {
+            isActive = true
+            updatePresentation()
+            return
+        }
+        if partyMode { party.setActive(false);party.isHidden=true;partyMode=false;onPartyActiveChanged?(false) }
+        isActive = false
+        details.dismissAccessory()
+        generation &+= 1
+        pendingEnemyAction?.cancel()
+        pendingEnemyAction = nil
+        isAnimating = false
+        landscape.cancelAnimations()
+        encounter.returnToMap()
+        updatePresentation()
     }
-    private func updateMode() {
-        actor.text = mode == .exploration ? "探索 · Meadow Journey"
-            : mode == .playerTurn ? "第1轮 · 行动中：P1 冒险者" : "第1轮 · 行动中：敌1"
-        subtitle.text = mode == .exploration ? "布局演示 · 地图查看" : "布局演示 · 已暂停 · 人物与敌方美术样例"
-        landscape.isHidden = !mode.showsBattle
-        track.isHidden = !mode.showsBattle
-        details.isHidden = !mode.showsDetails
-        track.show(monsterTurn: mode == .monsterTurn)
+
+    private func performPrimaryAction() {
+        guard isActive, !isAnimating else { return }
+        let inputTime = ProcessInfo.processInfo.systemUptime
+        guard inputTime - lastPrimaryActionTime > 0.18 else { return }
+        lastPrimaryActionTime = inputTime
+        switch encounter.phase {
+        case .exploration:
+            generation &+= 1
+            encounter.begin()
+            updatePresentation()
+        case .playerTurn:
+            endPlayerTurn()
+        case .victory, .defeat:
+            generation &+= 1
+            encounter.retry()
+            updatePresentation()
+        case .enemyPreparing, .enemyTurn:
+            break
+        }
     }
+
+    private func perform(_ action: MeadowBattleAction) {
+        if action == .strike && equipmentWeaponID == nil { return }
+        guard isActive, !isAnimating, let cue = encounter.beginAction(action) else { return }
+        isAnimating = true
+        let token = generation
+        updatePresentation()
+        landscape.play(cue, onImpact: { [weak self] in
+            guard let self, self.isActive, self.generation == token else { return nil }
+            let result = self.encounter.resolveActionImpact()
+            self.updatePresentation()
+            return result
+        }) { [weak self] in
+            guard let self, self.isActive, self.generation == token else { return }
+            if self.encounter.phase == .victory {
+                self.play(.victory, generation: token) { [weak self] in self?.finishAnimation() }
+            } else {
+                self.finishAnimation()
+            }
+        }
+    }
+
+    private func selectEnemy() {
+        guard isActive, !isAnimating else { return }
+        encounter.selectEnemy()
+        updatePresentation()
+    }
+
+    private func endPlayerTurn() {
+        guard encounter.phase == .playerTurn else { return }
+        encounter.endPlayerTurn()
+        isAnimating = true
+        generation &+= 1
+        let token = generation
+        updatePresentation()
+        // A clear wind-up window lets the player see the Forest Warden prepare.
+        let work = DispatchWorkItem { [weak self] in
+            guard let self, self.isActive, self.generation == token,
+                  self.encounter.beginEnemyAction() else { return }
+            self.pendingEnemyAction = nil
+            self.updatePresentation()
+            self.landscape.play(.enemyStrike, onImpact: { [weak self] in
+                guard let self, self.isActive, self.generation == token else { return nil }
+                let result = self.encounter.resolveEnemyImpact()
+                self.updatePresentation()
+                return result
+            }) { [weak self] in
+                guard let self, self.isActive, self.generation == token else { return }
+                if self.encounter.phase == .defeat {
+                    self.play(.defeat, generation: token) { [weak self] in self?.finishAnimation() }
+                } else {
+                    self.encounter.completeEnemyTurn()
+                    self.updatePresentation()
+                    self.finishAnimation()
+                }
+            }
+        }
+        pendingEnemyAction = work
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.7, execute: work)
+    }
+
+    private func play(_ cue: MeadowBattleAnimationCue, generation token: UInt, completion: @escaping () -> Void) {
+        landscape.play(cue) { [weak self] in
+            guard let self, self.isActive, self.generation == token else { return }
+            completion()
+        }
+    }
+
+    private func finishAnimation() {
+        isAnimating = false
+        updatePresentation()
+    }
+
+    private func updatePresentation() {
+        let phase = encounter.phase
+        let activeBattle = encounter.isEncounterActive
+        let status: String
+        switch phase {
+        case .exploration: status = "探索 · 林地"
+        case .playerTurn: status = "第\(encounter.round)轮 · P1 行动"
+        case .enemyPreparing: status = "第\(encounter.round)轮 · 鹿灵蓄势"
+        case .enemyTurn: status = "第\(encounter.round)轮 · 鹿灵行动"
+        case .victory: status = "遭遇胜利 · 鹿灵退去"
+        case .defeat: status = "遭遇失败 · P1 力竭"
+        }
+        actor.text = status
+        switch phase {
+        case .exploration: subtitle.text = "在林地地图开始一场局部遭遇"
+        case .playerTurn:
+            subtitle.text = isAnimating ? "动作进行中…" : encounter.actionPoints == 0
+                ? "行动点用尽 · 点击结束回合" : encounter.enemySelected
+                ? "鹿灵已选中 · 点击下方技能行动" : "点选右侧鹿灵作为目标 · 或使用防护"
+        case .enemyPreparing: subtitle.text = "鹿灵蓄势 · 即将冲撞"
+        case .enemyTurn: subtitle.text = "鹿灵冲撞 · 护盾优先抵挡伤害"
+        case .victory: subtitle.text = "可以重试遭遇，或返回地图"
+        case .defeat: subtitle.text = "可以重试 · 试试防护和喘息"
+        }
+        primaryButton.isHidden = phase == .enemyPreparing || phase == .enemyTurn
+        switch phase {
+        case .exploration: primaryButton.configuration?.title = "开始遭遇"
+        case .playerTurn: primaryButton.configuration?.title = "结束回合 · 鹿灵行动"
+        case .victory, .defeat: primaryButton.configuration?.title = "重试遭遇"
+        default: break
+        }
+        primaryButton.isEnabled = isActive && !isAnimating && phase != .enemyPreparing && phase != .enemyTurn
+        closeButton.configuration?.title = "返回地图"
+        landscape.isHidden = !activeBattle
+        track.isHidden = !activeBattle
+        details.isHidden = !activeBattle
+        track.show(phase: phase, round: encounter.round)
+        details.show(encounter: encounter, enabled: isActive && !isAnimating)
+        landscape.setEncounter(heroHP: encounter.playerHP, enemyHP: encounter.enemyHP,
+                               shield: encounter.shield, selected: encounter.enemySelected,maximumHP:encounter.playerMaxHP)
+        stageTitle.text = phase == .exploration ? "Meadow Journey · 林地地图" : "Meadow Journey · 鹿灵遭遇"
+        setNeedsLayout()
+        onLayoutChanged?()
+    }
+
     override func layoutSubviews() {
         super.layoutSubviews()
         guard bounds.width > 0, bounds.height > 0 else { return }
+        party.frame=bounds
+        partyButton.isHidden=partyMode
         let layout = MeadowBattleLayout(size: bounds.size, safeArea: safeAreaInsets, mode: mode)
         header.frame = layout.header
         mapBorder.frame = mapFrame
-        mapTitle.frame = CGRect(x: mapFrame.minX + 12, y: mapFrame.minY + 12, width: 154, height: 28)
+        partyButton.frame=CGRect(x:mapFrame.maxX-150,y:mapFrame.minY+12,width:136,height:34)
+        mapTitle.frame = CGRect(x: mapFrame.minX + 12, y: mapFrame.minY + 12, width: 180, height: 32)
         landscape.frame = layout.battlefield; track.frame = layout.track; details.frame = layout.details
-        stageTitle.frame = CGRect(x: 16, y: 12, width: min(246, max(1, landscape.bounds.width - 32)), height: 26)
-        let buttonWidth: CGFloat = 104
-        let selectorWidth = min(292, header.bounds.width * 0.29)
-        closeButton.frame = CGRect(x: header.bounds.width - buttonWidth - 12, y: (header.bounds.height - 44) / 2,
-                                   width: buttonWidth, height: 44)
-        modeControl.frame = CGRect(x: closeButton.frame.minX - selectorWidth - 12, y: closeButton.frame.minY,
-                                   width: selectorWidth, height: 44)
-        let textWidth = max(1, modeControl.frame.minX - 28)
-        actor.frame = CGRect(x: 16, y: 9, width: textWidth, height: 27)
-        subtitle.frame = CGRect(x: 16, y: 38, width: textWidth, height: 18)
+        stageTitle.frame = CGRect(x: 16, y: 12, width: min(300, max(1, landscape.bounds.width - 32)), height: 32)
+        let buttonWidth: CGFloat = 178
+        let closeWidth: CGFloat = 112
+        closeButton.frame = CGRect(x: header.bounds.width - closeWidth - 12, y: (header.bounds.height - 44) / 2,
+                                   width: closeWidth, height: 44)
+        primaryButton.frame = CGRect(x: closeButton.frame.minX - buttonWidth - 8, y: closeButton.frame.minY,
+                                     width: buttonWidth, height: 44)
+        let textWidth = max(1, primaryButton.frame.minX - 28)
+        actor.frame = CGRect(x: 16, y: 8, width: textWidth, height: 32)
+        subtitle.frame = CGRect(x: 16, y: 43, width: textWidth, height: 23)
     }
     override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
-        // The live map sits below this shell; leave its gestures in the real renderer.
-        if mapFrame.contains(point) { return nil }
+        if mapFrame.contains(point),(partyMode || !partyButton.frame.contains(point)) { return nil }
         return super.hitTest(point, with: event)
     }
 }
 
-private final class MeadowTurnTrackView: UIView {
+final class MeadowTurnTrackView: UIView {
     private let line = CAShapeLayer()
     private let completed = CAShapeLayer()
-    private let ids = ["P2", "敌2", "P3", "P1", "敌1", "P4", "P5", "P6", "敌3", "P7"]
+    private var ids = ["P1", "敌1"]
     private var tokens: [MeadowTurnTokenView] = []
-    private var current = 3
+    private var current = 0
     override init(frame: CGRect) {
         super.init(frame: frame); MeadowPreviewPalette.stylePanel(self)
         line.strokeColor = MeadowPreviewPalette.muted.withAlphaComponent(0.35).cgColor; line.lineWidth = 5
         completed.strokeColor = MeadowPreviewPalette.gold.cgColor; completed.lineWidth = 5
         layer.addSublayer(line); layer.addSublayer(completed)
-        for id in ids {
-            let token = MeadowTurnTokenView(id: id); tokens.append(token); addSubview(token)
-        }
-        show(monsterTurn: false)
+        for id in ids { let token = MeadowTurnTokenView(id: id); tokens.append(token); addSubview(token) }
+        show(phase: .playerTurn, round: 1)
     }
     required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
-    func show(monsterTurn: Bool) {
-        current = monsterTurn ? 4 : 3
+    func show(phase: MeadowBattlePhase, round: Int) {
+        let player = phase == .playerTurn || phase == .victory || phase == .defeat
+        current = player ? 0 : 1
+        let donePlayer = phase == .enemyPreparing || phase == .enemyTurn
         for (index, token) in tokens.enumerated() {
-            token.show(current: index == current, done: index < current,
-                       badge: ids[index] == "P5" ? "×" : ids[index] == "P6" ? "◷" : "")
+            token.show(current: index == current, done: index == 0 && donePlayer,
+                       badge: index == 1 && phase == .victory ? "✓" : index == 1 && phase == .defeat ? "!" : "")
+            token.accessibilityLabel = index == 0 ? "P1，第\(round)轮" : "鹿灵，第\(round)轮"
+        }
+        setNeedsLayout()
+    }
+    func show(ids:[String],names:[String:String],current:String?,done:Set<String>,down:Set<String>) {
+        if self.ids != ids {
+            tokens.forEach { $0.removeFromSuperview() };self.ids=ids
+            tokens=ids.map { MeadowTurnTokenView(id:$0) };tokens.forEach(addSubview)
+        }
+        self.current=ids.firstIndex(of:current ?? "") ?? 0
+        for (i,id) in ids.enumerated() {
+            tokens[i].setName(names[id] ?? id)
+            tokens[i].show(current:id==current,done:done.contains(id),badge:down.contains(id) ? "!":"")
         }
         setNeedsLayout()
     }
@@ -159,13 +360,9 @@ private final class MeadowTurnTrackView: UIView {
         let step = bounds.width / CGFloat(tokens.count)
         guard bounds.width > 0, bounds.height > 0 else { return }
         let y = min(34, bounds.height * 0.46)
-        let path = UIBezierPath(); path.move(to: CGPoint(x: step / 2, y: y))
-        path.addLine(to: CGPoint(x: bounds.width - step / 2, y: y)); line.path = path.cgPath
-        let done = UIBezierPath(); done.move(to: CGPoint(x: step / 2, y: y))
-        done.addLine(to: CGPoint(x: step * (CGFloat(current) + 0.5), y: y)); completed.path = done.cgPath
-        for (index, token) in tokens.enumerated() {
-            token.frame = CGRect(x: CGFloat(index) * step, y: 0, width: step, height: bounds.height)
-        }
+        let path = UIBezierPath(); path.move(to: CGPoint(x: step / 2, y: y)); path.addLine(to: CGPoint(x: bounds.width - step / 2, y: y)); line.path = path.cgPath
+        let done = UIBezierPath(); done.move(to: CGPoint(x: step / 2, y: y)); done.addLine(to: CGPoint(x: step * (CGFloat(current) + 0.5), y: y)); completed.path = done.cgPath
+        for (index, token) in tokens.enumerated() { token.frame = CGRect(x: CGFloat(index) * step, y: 0, width: step, height: bounds.height) }
     }
 }
 
@@ -178,42 +375,38 @@ private final class MeadowTurnTokenView: UIView {
     private let id: String
     private static let portraits: [UIImage?] = (1...3).map { index in
         guard let atlas = UIImage(named: "Hero\(index)Directions")?.cgImage else { return nil }
-        let cell = atlas.width / HeroFrames.columns
+        let cell = atlas.height / HeroFrames.atlasRows
         return atlas.cropping(to: CGRect(x: 0, y: 0, width: cell, height: cell)).map { UIImage(cgImage: $0) }
     }
     init(id: String) {
-        self.id = id; name = MeadowPreviewPalette.label(id, size: 12, weight: .semibold)
-        super.init(frame: .zero)
-        isAccessibilityElement = true; accessibilityIdentifier = "previewQueue\(id)"
+        self.id = id; name = MeadowPreviewPalette.label(id == "敌1" ? "鹿灵" : id, size: 15, weight: .bold)
+        super.init(frame: .zero); isAccessibilityElement = true
+        accessibilityIdentifier = "previewQueue\(id)"
         accessibilityLabel = id
         circle.backgroundColor = MeadowPreviewPalette.card; circle.layer.borderWidth = 1.5
         addSubview(circle); addSubview(portrait); addSubview(name); addSubview(marker); addSubview(badge)
         name.textAlignment = .center; marker.textAlignment = .center; badge.textAlignment = .center
         marker.textColor = MeadowPreviewPalette.gold
         portrait.contentMode = .scaleAspectFit; portrait.layer.magnificationFilter = .nearest
-        if id.hasPrefix("P"), let number = Int(id.dropFirst()) {
-            portrait.image = Self.portraits[(number - 1) % Self.portraits.count]
-        } else {
-            portrait.image = UIImage(systemName: "pawprint.fill"); portrait.tintColor = MeadowPreviewPalette.gold
-        }
+        if id.lowercased().hasPrefix("p"), let number = Int(id.dropFirst()) { portrait.image = Self.portraits[(number - 1) % Self.portraits.count] }
+        else { portrait.image = UIImage(systemName: "pawprint.fill"); portrait.tintColor = MeadowPreviewPalette.gold }
     }
     required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
+    func setName(_ value:String) { name.text=value }
     func show(current: Bool, done: Bool, badge value: String) {
         marker.isHidden = !current
         circle.layer.borderColor = (current || done ? MeadowPreviewPalette.gold : MeadowPreviewPalette.muted).cgColor
         circle.layer.borderWidth = current ? 3 : 1.5
         badge.text = value.isEmpty && done ? "✓" : value
-        badge.textColor = value == "×" ? .systemRed : MeadowPreviewPalette.gold
-        portrait.alpha = value == "×" ? 0.38 : 1
-        accessibilityValue = current ? "当前行动" : value == "×" ? "倒地" : value == "◷" ? "下轮资格" : done ? "已行动" : "待行动"
+        badge.textColor = value == "!" ? .systemRed : MeadowPreviewPalette.gold
+        portrait.alpha = value == "!" ? 0.38 : 1
+        accessibilityValue = current ? "当前行动" : done ? "已行动" : "待行动"
     }
     override func layoutSubviews() {
-        super.layoutSubviews()
-        let side = min(44, bounds.height - 25)
+        super.layoutSubviews(); let side = min(44, bounds.height - 25)
         guard bounds.width > 0, bounds.height > 25 else { return }
         circle.frame = CGRect(x: (bounds.width - side) / 2, y: 12, width: side, height: side)
-        circle.layer.cornerRadius = side / 2
-        portrait.frame = circle.frame.insetBy(dx: 5, dy: 4)
+        circle.layer.cornerRadius = side / 2; portrait.frame = circle.frame.insetBy(dx: 5, dy: 4)
         marker.frame = CGRect(x: circle.frame.midX - 8, y: 0, width: 16, height: 13)
         badge.frame = CGRect(x: circle.frame.maxX - 10, y: 8, width: 20, height: 20)
         name.frame = CGRect(x: 0, y: circle.frame.maxY + 2, width: bounds.width, height: 16)
@@ -221,49 +414,123 @@ private final class MeadowTurnTokenView: UIView {
 }
 
 private final class MeadowPlayerDetailsView: UIView {
-    private let resources = MeadowPreviewPalette.label("冒险者    生命 12/12    盾 0    金币 0    积分 0    ● 蓝队", size: 16, weight: .semibold)
-    private var cards: [UIView] = []
+    var hasWeapon=true
+    var onAction: ((MeadowBattleAction) -> Void)?
+    var onPreview: ((MeadowBattleAction?) -> Void)?
+    private var focusedAction: MeadowBattleAction?
+    private let health=MeadowBattleResourceBar()
+    private let ward=MeadowBattleResourceBar()
+    private let actions=MeadowBattleActionPointsView()
+    private let buff=MeadowBattleBuffTile(type:.system)
+    private let accessory=MeadowAccessoryBadge(type:.system)
+    func dismissAccessory() { accessory.dismiss() }
+    var accessoryReadout:AccessoryReadout?
+    weak var accessoryHost:UIView?
+    private var cards: [MeadowPreviewCard] = []
     override init(frame: CGRect) {
         super.init(frame: frame); MeadowPreviewPalette.stylePanel(self)
-        resources.accessibilityIdentifier = "previewResourceValues"; addSubview(resources)
-        // Read-only catalog fixture, not the map simulation's inventory or skill state.
-        for (title, text) in [
-            ("强击 · 1 AP", "射程0 · 1D6+2伤害\n余2次 · 可用"),
-            ("喘息 · 1 AP", "自身 · 恢复4生命\n余2次 · 可用"),
-            ("简易防护 · 1 AP", "自身 · 获得4护盾\n余2次 · 可用"),
-            ("个人物品", "空背包\n尚未持有可用道具")
-        ] {
-            let card = MeadowPreviewCard(title: title, text: text); addSubview(card); cards.append(card)
+        health.accessibilityIdentifier="previewHealthBar";ward.accessibilityIdentifier="previewShieldBar";actions.accessibilityIdentifier="previewActionBar"
+        [health,ward,actions,buff,accessory].forEach(addSubview)
+        buff.layer.zPosition=200
+        let definitions: [(String, MeadowBattleAction)] = [("强击", .strike), ("喘息", .breathe), ("简易防护", .protection)]
+        for (title, action) in definitions {
+            let card = MeadowPreviewCard(title: title, text: "")
+            card.previewStrength = action == .strike ? 0.9 : 0.28
+            card.previewColor = action == .protection ? .systemCyan : action == .breathe ? .systemGreen : MeadowPreviewPalette.gold
+            card.button.addAction(UIAction { [weak self] _ in self?.onAction?(action) }, for: .touchUpInside)
+            card.onFocus = { [weak self] active in
+                guard let self else { return }
+                if active { self.focusedAction = action; self.onPreview?(action) }
+                else if self.focusedAction == action { self.focusedAction = nil; self.onPreview?(nil) }
+            }
+            card.button.accessibilityIdentifier = "battleAction\(title)"
+            addSubview(card); cards.append(card)
         }
     }
     required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
+    func show(encounter: MeadowBattleEncounter, enabled: Bool) {
+        health.show("生命",value:encounter.playerHP,maximum:encounter.playerMaxHP,color:.systemGreen)
+        ward.show("护盾",value:encounter.shield,maximum:8,color:.systemCyan)
+        actions.show(value:encounter.actionPoints,maximum:encounter.playerTurnAP)
+        accessory.show(accessoryReadout,host:accessoryHost)
+        buff.show(shield:encounter.shield)
+        let canAct = enabled && encounter.isPlayerActionEnabled
+        if !canAct { focusedAction = nil; onPreview?(nil) }
+        cards[0].update(title: "强击 · 1 AP", detail: "选中鹿灵造成\(encounter.strikeDamage)点伤害", enabled: canAct && hasWeapon && encounter.enemySelected && encounter.enemyHP > 0)
+        cards[1].update(title: "喘息 · 1 AP", detail: "恢复4生命 · 余\(encounter.breathUses)次", enabled: canAct && encounter.breathUses > 0 && encounter.playerHP < encounter.playerMaxHP)
+        cards[2].update(title: "简易防护 · 1 AP", detail: "获得4护盾 · 余\(encounter.guardUses)次", enabled: canAct && encounter.guardUses > 0)
+    }
     override func layoutSubviews() {
-        super.layoutSubviews()
-        guard bounds.width > 0, bounds.height > 0 else { return }
-        resources.frame = CGRect(x: 14, y: 8, width: max(1, bounds.width - 28), height: 23)
-        let gap: CGFloat = 8; let width = max(1, (bounds.width - 28 - gap * 3) / 4)
-        for (index, card) in cards.enumerated() {
-            card.frame = CGRect(x: 14 + CGFloat(index) * (width + gap), y: 37, width: width, height: max(1, bounds.height - 47))
+        super.layoutSubviews(); guard bounds.width > 0, bounds.height > 0 else { return }
+        let gap:CGFloat=10
+        let barWidth=max(1,(bounds.width-28-100-gap*3)/3)
+        for (i,bar) in [health,ward,actions].enumerated() { bar.frame=CGRect(x:14+CGFloat(i)*(barWidth+gap),y:9,width:barWidth,height:43) }
+        buff.frame=CGRect(x:bounds.width-58,y:8,width:44,height:44)
+        accessory.frame=CGRect(x:bounds.width-100,y:10,width:38,height:38)
+        let width=max(1,(bounds.width-28-gap*2)/3)
+        for (index,card) in cards.enumerated() {
+            card.frame=CGRect(x:14+CGFloat(index)*(width+gap),y:62,width:width,height:max(1,bounds.height-72))
         }
     }
 }
 
-private final class MeadowPreviewCard: UIView {
-    private let title: UILabel
-    private let detail: UILabel
-    init(title: String, text: String) {
-        self.title = MeadowPreviewPalette.label(title, size: 17, weight: .bold)
-        self.detail = MeadowPreviewPalette.label(text, size: 15)
+final class MeadowSkillButton: UIButton {
+    var onFocus: ((Bool) -> Void)?
+    private var hovering = false
+    override var isHighlighted: Bool { didSet { updatePreview() } }
+    override var isEnabled: Bool { didSet { if !isEnabled { hovering = false }; updatePreview() } }
+    override func didUpdateFocus(in context: UIFocusUpdateContext, with coordinator: UIFocusAnimationCoordinator) {
+        super.didUpdateFocus(in: context, with: coordinator); updatePreview()
+    }
+    func installHover() {
+        isPointerInteractionEnabled = true
+        addGestureRecognizer(UIHoverGestureRecognizer(target: self, action: #selector(hover(_:))))
+    }
+    @objc private func hover(_ recognizer: UIHoverGestureRecognizer) {
+        hovering = recognizer.state == .began || recognizer.state == .changed
+        updatePreview()
+    }
+    private func updatePreview() { onFocus?(isEnabled && (hovering || isHighlighted || isFocused)) }
+}
+
+final class MeadowPreviewCard: UIView {
+    private let title = MeadowPreviewPalette.label("", size: 20, weight: .heavy)
+    private let detail = MeadowPreviewPalette.label("", size: 17, weight: .semibold)
+    let button = MeadowSkillButton(type: .system)
+    var onFocus: ((Bool) -> Void)?
+    var previewStrength: Float = 0.9
+    var previewColor = MeadowPreviewPalette.gold
+    init(title titleText: String, text: String) {
         super.init(frame: .zero); backgroundColor = MeadowPreviewPalette.card
         layer.cornerRadius = 9; detail.numberOfLines = 2
-        addSubview(self.title); addSubview(detail)
+        button.installHover()
+        button.onFocus = { [weak self] active in
+            guard let self else { return }
+            self.layer.shadowColor = self.previewColor.cgColor
+            self.layer.shadowRadius = 12; self.layer.shadowOpacity = active ? self.previewStrength * 0.85 : 0
+            self.layer.shadowOffset = .zero
+            self.onFocus?(active)
+        }
+        title.text = titleText; detail.text = text
+        addSubview(title); addSubview(detail); addSubview(button)
     }
     required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
+    func update(title titleText: String, detail detailText: String, enabled: Bool) {
+        title.text = titleText; detail.text = detailText
+        button.isEnabled = enabled
+        alpha = enabled || button.isHidden ? 1 : 0.46
+        layer.borderWidth = enabled ? 1 : 0
+        layer.borderColor = MeadowPreviewPalette.gold.withAlphaComponent(0.65).cgColor
+        button.accessibilityLabel = "\(titleText). \(detailText)"
+        button.accessibilityValue = enabled ? "可用" : "不可用"
+        button.backgroundColor = enabled ? UIColor.white.withAlphaComponent(0.03) : .clear
+        button.isUserInteractionEnabled = enabled
+    }
     override func layoutSubviews() {
-        super.layoutSubviews()
-        guard bounds.width > 0, bounds.height > 0 else { return }
-        title.frame = CGRect(x: 10, y: 6, width: max(1, bounds.width - 20), height: 22)
-        detail.frame = CGRect(x: 10, y: 30, width: max(1, bounds.width - 20), height: max(1, bounds.height - 35))
+        super.layoutSubviews(); guard bounds.width > 0, bounds.height > 0 else { return }
+        title.frame = CGRect(x: 10, y: 6, width: max(1, bounds.width - 20), height: 27)
+        detail.frame = CGRect(x: 10, y: 35, width: max(1, bounds.width - 20), height: max(1, bounds.height - 40))
+        button.frame = bounds
     }
 }
 
@@ -278,12 +545,20 @@ struct MeadowBattleCanvasGeometry {
     static let enemyVisibleHeight: CGFloat = 0.33
 
     static func fittedCanvas(in bounds: CGRect) -> CGRect {
-        // One camera transform for every plate, actor and contact. Cover the
-        // viewport as the footer opens/closes; clip only the outer scene edges.
-        let scale = max(bounds.width / sourceCanvas.width, bounds.height / sourceCanvas.height)
+        // The battle card gets taller on monster turns. Fit the world to its
+        // stable width so actor scale and camera zoom do not jump with height.
+        let scale = bounds.width / sourceCanvas.width
         let size = CGSize(width: sourceCanvas.width * scale, height: sourceCanvas.height * scale)
-        return CGRect(x: bounds.midX - size.width / 2, y: bounds.midY - size.height / 2,
+        return CGRect(x: bounds.midX - size.width / 2, y: bounds.minY,
                       width: size.width, height: size.height)
+    }
+
+    static func backdropTransform(for outputSize: CGSize) -> CGAffineTransform {
+        let scale = outputSize.width / sourceCanvas.width
+        // Core Image's Y axis starts at the bottom. Align the source's top with
+        // the output top so any clamped extension appears below the scene.
+        return CGAffineTransform(a: scale, b: 0, c: 0, d: scale, tx: 0,
+                                 ty: outputSize.height - sourceCanvas.height * scale)
     }
 
     static func registeredSpriteFrame(imageSize: CGSize, alphaBounds: CGRect, foot: CGPoint,
@@ -304,108 +579,36 @@ struct MeadowBattleCanvasGeometry {
     }
 }
 
-final class MeadowBattleLandscapeView: UIView {
-    private let canvas = UIView()
-    private let farForest = UIImageView(image: MeadowBattlePlateProcessor.image(named: "MeadowCampFarForest", role: .farForest))
-    private let ground = UIImageView(image: MeadowBattlePlateProcessor.image(named: "MeadowCampGround", role: .ground))
-    private let midground = UIImageView(image: MeadowBattlePlateProcessor.image(named: "MeadowCampMidground", role: .midground))
-    private let foreground = UIImageView(image: UIImage(named: "MeadowCampForeground"))
-    private let hero: MeadowBattleActorView
-    private let enemy: UIImageView
-    private let heroShadow: MeadowBattleGroundingView
-    private let enemyShadow: MeadowBattleGroundingView
-    private var sceneLayers: [UIImageView] { [farForest, ground, midground, foreground] }
-
-    var sceneLayerOrder: [String] { sceneLayers.compactMap(\.accessibilityIdentifier) }
-    var sceneLayerFrames: [CGRect] { sceneLayers.map(\.frame) }
-    var sceneCanvasFrame: CGRect { canvas.frame }
-    var sceneCanvasSubviewOrder: [String] { canvas.subviews.compactMap(\.accessibilityIdentifier) }
-    var heroViewFrame: CGRect { hero.frame }
-    var heroLayerNames: [String] { hero.layerNames }
-    var enemyViewFrame: CGRect { enemy.frame }
-    var enemyIsMirrored: Bool { enemy.transform.a < 0 }
-
-    override init(frame: CGRect) {
-        let actor = MeadowBattleActorView(frame: .zero)
-        hero = actor
-        let enemyImage = UIImage(named: "MeadowBattleForestWarden")
-        enemy = UIImageView(image: enemyImage)
-        heroShadow = MeadowBattleGroundingView(image: actor.silhouette, soleY: 214, contacts: [
-            .init(point: CGPoint(x: 98, y: 214), radius: 12),
-            .init(point: CGPoint(x: 146, y: 214), radius: 12)
-        ])
-        enemyShadow = MeadowBattleGroundingView(image: enemyImage, soleY: 241, contacts: [
-            .init(point: CGPoint(x: 83, y: 240), radius: 19),
-            .init(point: CGPoint(x: 175, y: 240), radius: 19),
-            .init(point: CGPoint(x: 236, y: 235), radius: 17),
-            .init(point: CGPoint(x: 320, y: 240), radius: 20)
-        ])
-        super.init(frame: frame)
-        clipsToBounds = true
-        layer.cornerRadius = 14
-        layer.borderWidth = 1
-        layer.borderColor = UIColor(red: 0.91, green: 0.81, blue: 0.58, alpha: 0.7).cgColor
-
-        canvas.clipsToBounds = true
-        canvas.accessibilityIdentifier = "meadowBattleSceneCanvas"
-        addSubview(canvas)
-        for (index, imageView) in sceneLayers.enumerated() {
-            imageView.accessibilityIdentifier = MeadowBattleCanvasGeometry.sceneLayerOrder[index]
-            imageView.contentMode = .scaleToFill
-            imageView.isAccessibilityElement = false
-            imageView.layer.minificationFilter = .linear
-            imageView.layer.magnificationFilter = .linear
-            canvas.addSubview(imageView)
-        }
-        configureShadow(heroShadow, identifier: "meadowBattleHeroShadow")
-        configureShadow(enemyShadow, identifier: "meadowBattleForestWardenShadow")
-        canvas.addSubview(heroShadow)
-        canvas.addSubview(enemyShadow)
-
-        hero.accessibilityIdentifier = "meadowBattleHero"
-        hero.isAccessibilityElement = true
-        hero.accessibilityLabel = "Meadow Journey 冒险者，向右侧向备战，独立头发、五官、衣物与短剑"
-        canvas.addSubview(hero)
-
-        enemy.accessibilityIdentifier = "meadowBattleForestWarden"
-        enemy.isAccessibilityElement = true
-        enemy.accessibilityLabel = "林地鹿灵敌方单位示意，朝左站立警戒"
-        enemy.contentMode = .scaleToFill
-        enemy.layer.minificationFilter = .nearest
-        enemy.layer.magnificationFilter = .nearest
-        canvas.addSubview(enemy)
-
-        canvas.addSubview(foreground)
+/// A square status token: details are disclosed on pointer hover, focus or tap.
+final class MeadowBattleBuffTile: UIButton {
+    private let tip=UILabel()
+    private var amount=0
+    private var pinned=false
+    private var hovering=false
+    override init(frame:CGRect) {
+        super.init(frame:frame)
+        backgroundColor=MeadowPreviewPalette.card;layer.cornerRadius=6;layer.borderWidth=2;layer.borderColor=UIColor.systemCyan.cgColor
+        setImage(UIImage(systemName:"shield.fill"),for:.normal);tintColor = .systemCyan
+        setPreferredSymbolConfiguration(UIImage.SymbolConfiguration(pointSize:24,weight:.bold),forImageIn:.normal)
+        accessibilityLabel="防护状态";accessibilityHint="点按显示或隐藏详情"
+        isPointerInteractionEnabled=true
+        addGestureRecognizer(UIHoverGestureRecognizer(target:self,action:#selector(hover(_:))))
+        addAction(UIAction { [weak self] _ in guard let self else { return }; self.pinned.toggle();self.refreshTip() },for:.touchUpInside)
+        tip.numberOfLines=0;tip.font=MeadowPreviewPalette.font(18);tip.textColor=MeadowPreviewPalette.ink
+        tip.backgroundColor=MeadowPreviewPalette.panel;tip.layer.cornerRadius=8;tip.layer.borderWidth=1;tip.layer.borderColor=MeadowPreviewPalette.gold.cgColor;tip.clipsToBounds=true
+        tip.isUserInteractionEnabled=false;tip.isHidden=true;addSubview(tip)
     }
-
-    required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
-
-    private func configureShadow(_ shadow: UIView, identifier: String) {
-        shadow.accessibilityIdentifier = identifier
-        shadow.isUserInteractionEnabled = false
+    required init?(coder:NSCoder) { fatalError("init(coder:) has not been implemented") }
+    func show(shield:Int) {
+        amount=shield;isHidden=shield<=0
+        if isHidden { pinned=false;hovering=false }
+        accessibilityValue="剩余\(shield)点，优先抵挡伤害，耗尽时破碎"
+        tip.text="  防护 · 剩余 \(shield) 点\n  优先抵挡伤害\n  持续至耗尽，破碎后移除"
+        refreshTip()
     }
-
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        guard bounds.width > 0, bounds.height > 0 else { return }
-        let fitted = MeadowBattleCanvasGeometry.fittedCanvas(in: bounds)
-        canvas.frame = fitted
-        let canvasBounds = canvas.bounds
-        sceneLayers.forEach { $0.frame = canvasBounds }
-
-        if let configuration = hero.configuration {
-            hero.frame = MeadowBattleCanvasGeometry.actorFrame(configuration: configuration, canvas: canvasBounds)
-        }
-        let enemyFrame = MeadowBattleCanvasGeometry.registeredSpriteFrame(
-            imageSize: MeadowBattleCanvasGeometry.enemyImageSize,
-            alphaBounds: MeadowBattleCanvasGeometry.enemyAlphaBounds,
-            foot: MeadowBattleCanvasGeometry.enemyFoot, visibleHeight: MeadowBattleCanvasGeometry.enemyVisibleHeight,
-            canvas: canvasBounds)
-        enemy.frame = enemyFrame
-
-        heroShadow.frame = canvasBounds
-        heroShadow.spriteFrame = hero.frame
-        enemyShadow.frame = canvasBounds
-        enemyShadow.spriteFrame = enemyFrame
-    }
+    @objc private func hover(_ r:UIHoverGestureRecognizer) { hovering=r.state == .began || r.state == .changed;refreshTip() }
+    private func refreshTip() { tip.isHidden=amount<=0 || !(hovering || pinned || isFocused) }
+    override func didUpdateFocus(in context:UIFocusUpdateContext,with coordinator:UIFocusAnimationCoordinator) { super.didUpdateFocus(in:context,with:coordinator);refreshTip() }
+    override func layoutSubviews() { super.layoutSubviews();tip.frame=CGRect(x:bounds.width-288,y:-100,width:288,height:90) }
+    override func didMoveToWindow() { super.didMoveToWindow();if window==nil { pinned=false;hovering=false;refreshTip() } }
 }

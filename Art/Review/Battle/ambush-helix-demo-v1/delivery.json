@@ -1,0 +1,116 @@
+{
+  "date": "2026-10-26",
+  "deliveryCommit": "a947bce4a124a79c2750db8ce83c0a06c57a4f4b",
+  "sourceCommit": "a5547de7ad20b5737443960bacc89d80f52ee2eb",
+  "selectedPathsChecked": 118,
+  "compiledInputsChecked": 245,
+  "publicCompleteGETs": [
+    {
+      "path": "Downloads/MeadowJourney-b49.ipa",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/a947bce4a124a79c2750db8ce83c0a06c57a4f4b/Downloads/MeadowJourney-b49.ipa",
+      "status": 200,
+      "mime": "application/octet-stream",
+      "bytes": 31878244,
+      "sha256": "c4dae118ee027eb2c6e595ad34bede6bd734f84ddb65b05a09f844cdc2d1d65d"
+    },
+    {
+      "path": "Downloads/MeadowJourney-b49.ipa",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/fix/build33-face-grounding-camera/Downloads/MeadowJourney-b49.ipa",
+      "status": 200,
+      "mime": "application/octet-stream",
+      "bytes": 31878244,
+      "sha256": "c4dae118ee027eb2c6e595ad34bede6bd734f84ddb65b05a09f844cdc2d1d65d"
+    },
+    {
+      "path": "Art/Review/Battle/ambush-helix-demo-v1/ambush-normal.gif",
+      "url": "https://cdn.jsdelivr.net/gh/liamchan-rgb/experiment@a947bce4a124a79c2750db8ce83c0a06c57a4f4b/Art/Review/Battle/ambush-helix-demo-v1/ambush-normal.gif",
+      "status": 200,
+      "mime": "image/gif",
+      "bytes": 10489061,
+      "sha256": "0964b76d421a88b4040fe967189998ba64b60a789ab41be8791956f8f921ef1a",
+      "frames": 220,
+      "durationMs": 4400
+    },
+    {
+      "path": "Art/Review/Battle/ambush-helix-demo-v1/ambush-last-normal.gif",
+      "url": "https://cdn.jsdelivr.net/gh/liamchan-rgb/experiment@a947bce4a124a79c2750db8ce83c0a06c57a4f4b/Art/Review/Battle/ambush-helix-demo-v1/ambush-last-normal.gif",
+      "status": 200,
+      "mime": "image/gif",
+      "bytes": 11578939,
+      "sha256": "44614b1a5ce72195210f92930cf0574e9e044a4a75fd097772a4d4c44acaf31e",
+      "frames": 220,
+      "durationMs": 4400
+    },
+    {
+      "path": "Art/Review/Battle/ambush-helix-demo-v1/heal-normal.gif",
+      "url": "https://cdn.jsdelivr.net/gh/liamchan-rgb/experiment@a947bce4a124a79c2750db8ce83c0a06c57a4f4b/Art/Review/Battle/ambush-helix-demo-v1/heal-normal.gif",
+      "status": 200,
+      "mime": "image/gif",
+      "bytes": 5142037,
+      "sha256": "70d22a4a491a4dd6fad78d49bb22b62c56a6e238f8982210dda2d7ea6d67d50e",
+      "frames": 190,
+      "durationMs": 3800
+    },
+    {
+      "path": "Art/Review/Battle/ambush-helix-demo-v1/support-normal.gif",
+      "url": "https://cdn.jsdelivr.net/gh/liamchan-rgb/experiment@a947bce4a124a79c2750db8ce83c0a06c57a4f4b/Art/Review/Battle/ambush-helix-demo-v1/support-normal.gif",
+      "status": 200,
+      "mime": "image/gif",
+      "bytes": 7376063,
+      "sha256": "8d4c94cb82e492258af44137c543b5a9cbf0934b762df2661e1ab5670607290d",
+      "frames": 190,
+      "durationMs": 3800
+    },
+    {
+      "path": "Art/Review/Battle/ambush-helix-demo-v1/ambush-standing.png",
+      "url": "https://cdn.jsdelivr.net/gh/liamchan-rgb/experiment@a947bce4a124a79c2750db8ce83c0a06c57a4f4b/Art/Review/Battle/ambush-helix-demo-v1/ambush-standing.png",
+      "status": 200,
+      "mime": "image/png",
+      "bytes": 1847776,
+      "sha256": "07bdb15bf29f8759185260b14b7a0b87eb31048cf48c30ba6e09dc857be72a36"
+    },
+    {
+      "path": "Art/Review/Battle/ambush-helix-demo-v1/ambush-selected.png",
+      "url": "https://cdn.jsdelivr.net/gh/liamchan-rgb/experiment@a947bce4a124a79c2750db8ce83c0a06c57a4f4b/Art/Review/Battle/ambush-helix-demo-v1/ambush-selected.png",
+      "status": 200,
+      "mime": "image/png",
+      "bytes": 1761244,
+      "sha256": "c37747774912d2e9de9ccd9ff972596e30d9c4c782022d25d5f5da29b9217116"
+    },
+    {
+      "path": "Art/Review/Battle/ambush-helix-demo-v1/ambush-impact.png",
+      "url": "https://cdn.jsdelivr.net/gh/liamchan-rgb/experiment@a947bce4a124a79c2750db8ce83c0a06c57a4f4b/Art/Review/Battle/ambush-helix-demo-v1/ambush-impact.png",
+      "status": 200,
+      "mime": "image/png",
+      "bytes": 1742661,
+      "sha256": "d198112584e16f216eefc3f71fbeb7968b72c641ce98d62f4f22691ed3c78f96"
+    },
+    {
+      "path": "Art/Review/Battle/ambush-helix-demo-v1/ambush-recovery.png",
+      "url": "https://cdn.jsdelivr.net/gh/liamchan-rgb/experiment@a947bce4a124a79c2750db8ce83c0a06c57a4f4b/Art/Review/Battle/ambush-helix-demo-v1/ambush-recovery.png",
+      "status": 200,
+      "mime": "image/png",
+      "bytes": 1780745,
+      "sha256": "7a2fdef085883307aa9313f223a681193b0ea8c365d07bc1f85eb151fb6f559b"
+    },
+    {
+      "path": "Art/Review/Battle/ambush-helix-demo-v1/heal-dash.png",
+      "url": "https://cdn.jsdelivr.net/gh/liamchan-rgb/experiment@a947bce4a124a79c2750db8ce83c0a06c57a4f4b/Art/Review/Battle/ambush-helix-demo-v1/heal-dash.png",
+      "status": 200,
+      "mime": "image/png",
+      "bytes": 1796876,
+      "sha256": "6d30a2cc3d3b6e939a6e7bd2f8f0ef06228eb7ffa08ffe71461016fd32ac98e8"
+    },
+    {
+      "path": "Art/Review/Battle/ambush-helix-demo-v1/ambush-last-recovery.png",
+      "url": "https://cdn.jsdelivr.net/gh/liamchan-rgb/experiment@a947bce4a124a79c2750db8ce83c0a06c57a4f4b/Art/Review/Battle/ambush-helix-demo-v1/ambush-last-recovery.png",
+      "status": 200,
+      "mime": "image/png",
+      "bytes": 1779712,
+      "sha256": "7aff7c18371040d3dda04931d2f64b7caa764d832d7e68183b1211816caeb81f"
+    }
+  ],
+  "simulatorRun": false,
+  "deviceRun": false,
+  "newArtApproval": null
+}
