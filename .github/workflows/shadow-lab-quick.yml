@@ -94,6 +94,11 @@ jobs:
           bash scripts/check-battle-animation.sh 2>&1 | tee build/logs/battle-pose.log || check_failed=1
           exit "$check_failed"
 
+      - name: Install GIF optimizer for full-scene preview
+        run: |
+          if ! command -v gifsicle >/dev/null 2>&1; then brew install gifsicle; fi
+          gifsicle --version
+
       - name: Compose normal-speed healing art review (offline)
         run: |
           set -euo pipefail
