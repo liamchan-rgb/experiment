@@ -78,6 +78,16 @@ enum MeadowBattleVFXAssets {
     static let mote = UIImage(named: "BattleVFXMote")!
     static let body = frames("BattleVFXDeathBody60", width: 384, height: 256,count:48)
     static let wind = frames("BattleVFXDeathWind60", width: 448, height: 320,count:116)
+    static let healingMicro = frames("BattleVFXHealingMicroSheet", width: 280, height: 280,count:20)
+    static let healingStandard = frames("BattleVFXHealingStandardSheet", width: 614, height: 512,count:20)
+    static let healingStrong = frames("BattleVFXHealingStrongSheet", width: 512, height: 512,count:20)
+    static func healingFrames(for tier: HealingEffectTier) -> [UIImage] {
+        switch tier {
+        case .micro: return healingMicro
+        case .standard: return healingStandard
+        case .strong: return healingStrong
+        }
+    }
     private static func frames(_ name: String, width: Int, height: Int, count: Int) -> [UIImage] {
         guard let sheet = UIImage(named: name)?.preparingForDisplay()?.cgImage else { fatalError("Missing battle VFX atlas") }
         return (0..<count).map { i in
@@ -87,8 +97,34 @@ enum MeadowBattleVFXAssets {
     static func prewarm() { DispatchQueue.global(qos:.userInitiated).async { _ = body; _ = wind } }
 }
 
+/// Draws the complete authored frame canvas, crossfading adjacent 20 FPS art
+/// samples on the display-link clock. The canvas bottom stays registered to
+/// the receiver's feet across all three asset sizes.
+private final class MeadowBattleHealingArtworkView: UIView {
+    private var tier: HealingEffectTier?
+    private var age = -1.0
+    override init(frame: CGRect) { super.init(frame: frame); isOpaque = false; isUserInteractionEnabled = false }
+    required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
+    func update(tier: HealingEffectTier?, age: Double) {
+        self.tier = tier; self.age = age
+        isHidden = tier == nil || tier?.frameBlend(at: age) == nil
+        setNeedsDisplay()
+    }
+    override func draw(_ rect: CGRect) {
+        guard let tier, let blend = tier.frameBlend(at: age) else { return }
+        let frames = MeadowBattleVFXAssets.healingFrames(for: tier)
+        guard frames.count == HealingEffectTier.frameCount else { return }
+        let upperWeight = CGFloat(blend.upperWeight),opacity=CGFloat(tier.artOpacity)
+        frames[blend.lower].draw(in: rect, blendMode: .plusLighter, alpha: opacity*(1-upperWeight))
+        if blend.upper != blend.lower, upperWeight > 0 {
+            frames[blend.upper].draw(in: rect, blendMode: .plusLighter, alpha: opacity*upperWeight)
+        }
+    }
+}
+
 final class MeadowBattleEffectsView: UIView {
     var recoveryAge: Double?
+    var recoveryTier: HealingEffectTier?
     var heroFoot = CGPoint.zero
     var enemyFoot = CGPoint.zero
     var impact = CGPoint.zero
@@ -135,11 +171,11 @@ final class MeadowBattleEffectsView: UIView {
         let wardSpawn=shieldBirthAge.map { pulse($0,0,0.10,0.45) } ?? 0
         let wardContact=shieldContactAge.map { pulse($0,-0.02,0.025,0.38) } ?? 0
         let debris = particles
-        let recovery=recoveryAge.map { CGFloat(MeadowBattleRecoveryField.pulse($0)) } ?? 0
+        let recovery=recoveryAge.map { CGFloat(recoveryTier?.lightEnvelope(at:$0) ?? 0) } ?? 0
         if groundOnly {
             if recovery>0 {
-                light(heroFoot,135,42,recovery*0.85,UIColor(red:0.15,green:1,blue:0.52,alpha:1))
-                light(CGPoint(x:heroFoot.x,y:heroFoot.y-65*unit),75,110,recovery*0.28,UIColor(red:0.35,green:1,blue:0.60,alpha:1))
+                light(heroFoot,135,42,recovery*0.92,UIColor(red:0.15,green:1,blue:0.52,alpha:1))
+                light(CGPoint(x:heroFoot.x,y:heroFoot.y-65*unit),75,110,recovery*0.36,UIColor(red:0.35,green:1,blue:0.60,alpha:1))
             }
 
             let cyan = UIColor(red:0.05,green:0.55,blue:1,alpha:1)
@@ -168,6 +204,21 @@ final class MeadowBattleEffectsView: UIView {
             }
             light(heroFoot, 90, 26, previewPower*previewEnvelope*0.16)
             return
+        }
+        if let tier=recoveryTier,let age=recoveryAge,let blend=tier.frameBlend(at:age) {
+            let size:CGSize
+            switch tier {
+            case .micro: size=CGSize(width:208,height:208)
+            case .standard: size=CGSize(width:248,height:207)
+            case .strong: size=CGSize(width:258,height:258)
+            }
+            let frame=CGRect(x:heroFoot.x-size.width*unit/2,y:heroFoot.y-size.height*unit,width:size.width*unit,height:size.height*unit)
+            let frames=MeadowBattleVFXAssets.healingFrames(for:tier),mix=CGFloat(blend.upperWeight)
+            if frames.count==HealingEffectTier.frameCount {
+                let opacity=CGFloat(tier.artOpacity)
+                frames[blend.lower].draw(in:frame,blendMode:.plusLighter,alpha:opacity*(1-mix))
+                if blend.upper != blend.lower,mix>0 { frames[blend.upper].draw(in:frame,blendMode:.plusLighter,alpha:opacity*mix) }
+            }
         }
         if selected, cue == nil {
             UIColor(red: 1, green: 0.84, blue: 0.35, alpha: 0.65).setStroke()
@@ -222,24 +273,14 @@ final class MeadowBattleEffectsView: UIView {
 final class MeadowBattleAttachedSkillsView: UIView {
     private let rim=UIImageView(image:MeadowBattleVFXAssets.barrier)
     private let orbiters=(0..<6).map { _ in UIImageView(image:MeadowBattleVFXAssets.mote.withTintColor(.systemCyan,renderingMode:.alwaysOriginal)) }
-    private let core=UIImageView(image:MeadowBattleVFXAssets.burst.withTintColor(UIColor(red:0.82,green:1,blue:0.85,alpha:1),renderingMode:.alwaysOriginal))
-    private let shaft=UIImageView(image:MeadowBattleVFXAssets.healShaft)
-    private let wave=UIImageView(image:MeadowBattleVFXAssets.healWave)
-    private let ribbon=MeadowBattleRecoveryRibbonView(front:true)
-    private let rearRibbon=MeadowBattleRecoveryRibbonView(front:false)
-    private let stars=(0..<26).map { _ in UIImageView(image:MeadowBattleVFXAssets.healStar) }
+    private let healing=MeadowBattleHealingArtworkView(frame:.zero)
     override init(frame:CGRect) {
         super.init(frame:frame);isUserInteractionEnabled=false;clipsToBounds=false
-        ([shaft,wave,core,ribbon]+stars+[rim]+orbiters).forEach { $0.contentMode = .scaleToFill;addSubview($0) }
+        addSubview(healing);addSubview(rim);orbiters.forEach(addSubview)
         layer.zPosition=100
     }
     required init?(coder:NSCoder) { fatalError("init(coder:) has not been implemented") }
-    override func didMoveToSuperview() {
-        super.didMoveToSuperview()
-        rearRibbon.removeFromSuperview()
-        if let host=superview { rearRibbon.layer.zPosition = -1;host.addSubview(rearRibbon) }
-    }
-    func update(shield:Int,preview:Double,time:Double,formation:Double?,formationBase:Double,birth:Double?,contact:Double?,broken:Double?,recovery:Double?,recoveryStrength:Double=1) {
+    func update(shield:Int,preview:Double,time:Double,formation:Double?,formationBase:Double,birth:Double?,contact:Double?,broken:Double?,recovery:Double?,recoveryTier:HealingEffectTier?) {
         let unit=bounds.width/256
         func smooth(_ x:Double)->CGFloat { CGFloat(MeadowBattleRecoveryField.smooth(x)) }
         UIView.performWithoutAnimation {
@@ -259,32 +300,17 @@ final class MeadowBattleAttachedSkillsView: UIView {
                 orb.frame=CGRect(x:center.x+cos(angle)*radius-s/2,y:center.y+sin(angle)*radius-s/2,width:s,height:s)
                 orb.alpha=alpha*0.65
             }
-            let intensity=CGFloat(min(2.2,max(1,recoveryStrength)))
             let age=recovery ?? -1
-            let power=CGFloat(MeadowBattleRecoveryField.pulse(age))
-            let active=age>=0 && age<MeadowBattleRecoveryField.duration
             let foot=CGPoint(x:128*unit,y:214*unit)
-            shaft.isHidden = !active;wave.isHidden = !active
-            shaft.frame=CGRect(x:foot.x-55*unit,y:foot.y-175*unit,width:110*unit,height:185*unit)
-            shaft.alpha=power*0.10*intensity
-            core.isHidden = !active
-            let coreSize:CGFloat=110*unit
-            core.frame=CGRect(x:foot.x-coreSize/2,y:foot.y-64*unit-coreSize/2,width:coreSize,height:coreSize)
-            let corePulse:CGFloat=age<0.47 ? smooth((age-0.34)/0.13) : 1-smooth((age-0.47)/0.23)
-            core.alpha=corePulse*0.25*min(1.5,intensity)
-            let expansion=CGFloat(0.65+0.65*MeadowBattleRecoveryField.smooth(age/1.1))
-            wave.frame=CGRect(x:foot.x-82*unit*expansion,y:foot.y-12*unit,width:164*unit*expansion,height:28*unit)
-            wave.alpha=power*0.35*min(1.5,intensity)
-            ribbon.frame=bounds;ribbon.age=age;ribbon.strength=Double(intensity);ribbon.setNeedsDisplay()
-            rearRibbon.frame=frame;rearRibbon.age=age;rearRibbon.strength=Double(intensity);rearRibbon.setNeedsDisplay()
-            let motes=Dictionary(uniqueKeysWithValues:MeadowBattleRecoveryField.sample(age).map { ($0.id,$0) })
-            for (i,star) in stars.enumerated() {
-                guard let p=motes[i] else { star.isHidden=true;continue }
-                star.isHidden=false
-                let size=CGFloat(p.size)*(1+(intensity-1)*0.35)
-                star.frame=CGRect(x:foot.x+CGFloat(p.x)*unit-size*unit/2,y:foot.y+CGFloat(p.y)*unit-size*unit/2,width:size*unit,height:size*unit)
-                star.alpha=min(1,CGFloat(p.alpha)*intensity)
+            let size:CGSize
+            switch recoveryTier {
+            case .some(.micro): size=CGSize(width:208,height:208)
+            case .some(.standard): size=CGSize(width:248,height:207)
+            case .some(.strong): size=CGSize(width:258,height:258)
+            case .none: size = .zero
             }
+            healing.frame=CGRect(x:foot.x-size.width*unit/2,y:foot.y-size.height*unit,width:size.width*unit,height:size.height*unit)
+            healing.update(tier:recoveryTier,age:age)
         }
     }
 }

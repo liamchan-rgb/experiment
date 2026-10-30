@@ -56,6 +56,10 @@ jobs:
           sparse-checkout: |
             .github
             Art/Parts/BattleVFX/dragon-flame-v2
+            Art/Parts/BattleVFX/healing-v1
+            Art/Integration/Battle-effects-demo-v1
+            Art/Scenes/MeadowBattle/effects-v1
+            Art/Scenes/MeadowBattle/hero-combat-v2
             Sources
             Vendor
             scripts
@@ -79,6 +83,7 @@ jobs:
           python3 -m venv build/art-tools
           build/art-tools/bin/python -m pip install --disable-pip-version-check --no-input Pillow 2>&1 | tee build/logs/art-tools-install.log
           build/art-tools/bin/python scripts/verify-dragon-flame-assets.py 2>&1 | tee build/logs/dragon-flame-assets.log || check_failed=1
+          build/art-tools/bin/python scripts/verify-healing-assets.py 2>&1 | tee build/logs/healing-assets.log || check_failed=1
           swift test --package-path Vendor/ClassroomGameCore 2>&1 | tee build/logs/party-rules.log || check_failed=1
           swift run --package-path Vendor/ClassroomGameCore MeadowSupportReviewExport build/logs/party-review 2>&1 | tee build/logs/party-export.log || check_failed=1
           swift run --package-path Vendor/ClassroomGameCore MeadowSupportReviewExport build/logs/dragon-flame-review --dragon-flame-only 2>&1 | tee build/logs/dragon-flame-export.log || check_failed=1
@@ -88,6 +93,21 @@ jobs:
           bash scripts/check-modular-locomotion.sh build/logs/modular-locomotion-trace.json 2>&1 | tee build/logs/modular-locomotion.log || check_failed=1
           bash scripts/check-battle-animation.sh 2>&1 | tee build/logs/battle-pose.log || check_failed=1
           exit "$check_failed"
+
+      - name: Compose normal-speed healing art review (offline)
+        run: |
+          set -euo pipefail
+          build/art-tools/bin/python scripts/review-party-support-demo.py \
+            --healing-only --input build/logs/party-review \
+            2>&1 | tee build/logs/healing-review-render.log
+
+      - name: Upload offline healing art review
+        uses: actions/upload-artifact@v7
+        with:
+          name: healing-effects-review-${{ github.run_id }}-${{ github.run_attempt }}
+          path: Art/Review/Battle/healing-effects-v1/
+          if-no-files-found: error
+          retention-days: 30
 
       - name: Archive device Release build
         run: |

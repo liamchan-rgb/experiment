@@ -11,10 +11,13 @@ import ClassroomGameCore
         if CommandLine.arguments.contains("--accessory-only") { try exportAccessories(out:out);return }
         if CommandLine.arguments.contains("--bow-only") { try exportBow(out:out);return }
         var rows:[[String:Any]]=[],requests:[[String:Any]]=[]
-        for scenario in ["support","rally","items","revive","combat"] {
+        for scenario in ["support","rally","items","revive","combat","healing-micro","healing-standard","healing-strong"] {
             let model=try PartyEncounter(seed:17,sessionID:"review-"+scenario)
             if scenario=="rally" { let i=model.prepare(.support,target:"p1")!;_ = try model.commit(i.id) }
             if scenario=="revive" { try model.engine.apply(.editResources(unit:"p1",value:ResourcePatch(health:0))) }
+            if scenario=="healing-micro" { try model.engine.apply(.editResources(unit:"p1",value:ResourcePatch(health:9))) }
+            if scenario=="healing-standard" { try model.engine.apply(.editResources(unit:"p1",value:ResourcePatch(health:6))) }
+            if scenario=="healing-strong" { try model.engine.apply(.editResources(unit:"p1",value:ResourcePatch(health:1))) }
             if scenario=="combat" {
                 let i=model.prepare(.rally,target:"p1")!;_ = try model.commit(i.id)
                 try model.engine.apply(.endTurn(actor:"p2",timedOut:false))
@@ -23,21 +26,27 @@ import ClassroomGameCore
             }
             let count=scenario=="combat" ? 320:scenario=="items" ? 370:scenario=="revive" ? 180:160
             var current:PartyIntent?,start=0.0,fired=false
-            var births:[String:Double]=[:],heals:[String:Double]=[:],forms:[String:Double]=[:]
+            var births:[String:Double]=[:],heals:[String:Double]=[:],healingTiers:[String:HealingEffectTier]=[:],forms:[String:Double]=[:]
             var messages:[[String:Any]]=[]
             var death:[String:Double]=[:],hurt:[String:Double]=[:]
             var emitters:[[String:Any]]=[];var shielded=false
             for frame in 0..<count {
                 let time=Double(frame)*0.02
                 if frame==20 || (scenario=="items" && (frame==140 || frame==260)) || (scenario=="combat" && frame==140) {
-                    let action:PartyAction=scenario=="combat" ? .attack:["support","unarmed"].contains(scenario) ? .support:scenario=="rally" ? .rally:scenario=="revive" ? .revivalStone:frame==20 ? .smallPotion:frame==140 ? .largePotion:.shieldPotion
+                    let action:PartyAction
+                    if scenario=="combat" { action = .attack }
+                    else if scenario=="healing-strong" { action = .largePotion }
+                    else if scenario.hasPrefix("healing-") { action = .smallPotion }
+                    else if ["support","unarmed"].contains(scenario) { action = .support }
+                    else if scenario=="rally" { action = .rally }
+                    else if scenario=="revive" { action = .revivalStone }
+                    else { action = frame==20 ? .smallPotion:frame==140 ? .largePotion:.shieldPotion }
                     if scenario=="combat" && frame==140 { try model.engine.apply(.endTurn(actor:"p1",timedOut:false)) }
                     let target=scenario=="combat" && frame==20 ? "m1":scenario=="items" && frame==140 ? "p2":"p1"
                     shielded=(model.state.units[target]?.shield ?? 0)>0
                     current=model.prepare(action,target:target)!;start=time;fired=false
                     let offset=max(0,action.impact-0.46)
                     for id in current!.targets {
-                        if ["support","heal","revive"].contains(action.visual) { heals[id]=time+offset }
                         if ["support","guard"].contains(action.visual) { forms[id]=time+offset }
                     }
                 }
@@ -62,7 +71,12 @@ import ClassroomGameCore
                                 death[id]=time;emitters.append(["kind":"death","at":time,"x":foot.x-80,"y":foot.y-72,"floor":foot.y])
                             }
                             if after.shield>before.shield { births[id]=time }
-                            if after.health>before.health { messages.append(["id":id,"text":"＋\(after.health-before.health)","at":time,"kind":"heal"]) }
+                            if after.health>before.health {
+                                let amount=after.health-before.health
+                                heals[id]=time
+                                healingTiers[id]=HealingEffectTier.classify(actualHPGained:amount)
+                                messages.append(["id":id,"text":"＋\(amount)","at":time,"kind":"heal"])
+                            }
                             if after.shield>before.shield { messages.append(["id":id,"text":"盾 ＋\(after.shield-before.shield)","at":time,"kind":"shield"]) }
                             if after.damageBuff != before.damageBuff { messages.append(["id":id,"text":"伤害 ＋2","at":time,"kind":"buff"]) }
                         }
@@ -75,7 +89,7 @@ import ClassroomGameCore
                     units.append(["id":id,"name":u.name,"weaponID":u.equipment.weapon as Any? ?? NSNull(),"weaponPose":u.equipment.weapon=="legendaryStaff" ? try JSONSerialization.jsonObject(with:JSONEncoder().encode(LegendaryStaffRig.pose(progress:pose.progress,clip:pose.clip))) : u.equipment.weapon=="greatSword" ? try JSONSerialization.jsonObject(with:JSONEncoder().encode(GreatSwordRig.pose(progress:pose.progress,clip:pose.clip))) : NSNull(),"vitalsVisible":u.kind != .monster || u.isAlive,"hp":u.health,"maxHP":u.baseAttributes.maximumHealth,"shield":u.shield,"ap":u.ap,"buff":u.damageBuff?.amount ?? 0,"buffRounds":u.damageBuff?.roundsLeft ?? 0,"clip":pose.clip,"progress":pose.progress,"deathAge":death[id].map { time-$0 } as Any? ?? NSNull()])
                     if id.hasPrefix("p") {
                         var r:[String:Any]=["kind":scenario+"-"+id,"frame":frame,"time":time,"shield":u.shield,"emitters":[]]
-                        if let at=heals[id],u.isAlive { r["recoveryAge"]=time-at }
+                        if let at=heals[id],u.isAlive,let tier=healingTiers[id] { r["recoveryAge"]=time-at;r["recoveryTier"]=tier.rawValue }
                         if let at=forms[id],u.shield==0,time-at<1 { r["formation"]=time-at }
                         if let at=births[id] { r["birth"]=time-at }
                         requests.append(r)
@@ -99,6 +113,24 @@ import ClassroomGameCore
         }
         try JSONSerialization.data(withJSONObject:rows,options:[.sortedKeys]).write(to:out.appendingPathComponent("party-frames.json"))
         try JSONSerialization.data(withJSONObject:requests,options:[.sortedKeys]).write(to:out.appendingPathComponent("legacy-light-requests.json"))
+        let attachments=requests.map { r -> [String:Any] in
+            let particles=(r["emitters"] as? [[String:Any]] ?? []).flatMap { e -> [[String:Any]] in
+                MeadowBattleLightField.sample(MeadowBattleLightKind(rawValue:e["kind"] as! String)!,age:e["age"] as! Double,originX:e["x"] as! Double,originY:e["y"] as! Double,groundY:e["floor"] as! Double).map { p in
+                    ["id":p.id,"x":p.x,"y":p.y,"angle":p.angle,"size":p.size,"alpha":p.alpha,"cyan":p.cyan,"groundX":p.groundX,"groundY":p.groundY,"groundAge":p.groundAge as Any? ?? NSNull(),"bounces":p.bounces]
+                }
+            }
+            let age=r["recoveryAge"] as? Double ?? -1
+            let motes=MeadowBattleRecoveryField.sample(age).map { ["id":Double($0.id),"x":$0.x,"y":$0.y,"size":$0.size,"alpha":$0.alpha] }
+            let time=r["time"] as? Double ?? 0
+            let alpha=MeadowBattleVisualMotion.shieldOpacity(shield:r["shield"] as? Int ?? 0,time:time,formation:r["formation"] as? Double,birth:r["birth"] as? Double,contact:r["contact"] as? Double,broken:r["broken"] as? Double)
+            let wisps=(0..<2).map { i -> [String:Double] in
+                let p=MeadowBattleVisualMotion.wisp(age,index:i)
+                return ["x":p.x,"y":p.y,"rotation":p.rotation,"scaleX":p.scaleX,"alpha":p.alpha]
+            }
+            let ribbons=(0..<2).map { MeadowBattleRecoveryField.ribbon(age,strand:$0).map { ["x":$0.x,"y":$0.y,"depth":$0.depth,"alpha":$0.alpha] } }
+            return ["ribbons":ribbons,"shieldOpacity":alpha,"wisps":wisps,"kind":r["kind"]!,"frame":r["frame"]!,"particles":particles,"recovery":motes,"recoveryPower":MeadowBattleRecoveryField.pulse(age)]
+        }
+        try JSONSerialization.data(withJSONObject:["frames":attachments,"scope":"actual production Swift light/shield fields for offline composition; not UIKit/device"],options:[.sortedKeys]).write(to:out.appendingPathComponent("legacy-attachment-samples.json"))
         try exportDice(out:out)
         try exportPoly(out:out)
         try exportBow(out:out)
@@ -523,7 +555,7 @@ extension Export {
             let target=action.isOffensive ? "m1":"p1",actor="p1",original=p.state
             let actorUnit=original.units[actor]!,targetUnit=original.units[target]!
             var dice=BattleDice.channels(action,actor:actorUnit,target:targetUnit,catalog:p.engine.catalog),intent:PartyIntent?,receipt:OperationReceipt?,hitAt:Double?
-            var hurts:[String:Double]=[:],deaths:[String:Double]=scenario=="runeSlash-lethal" ? ["m2":-3]:[:],births:[String:Double]=[:],heals:[String:Double]=[:],strengths:[String:Double]=[:]
+            var hurts:[String:Double]=[:],deaths:[String:Double]=scenario=="runeSlash-lethal" ? ["m2":-3]:[:],births:[String:Double]=[:],heals:[String:Double]=[:],strengths:[String:Double]=[:],healingTiers:[String:HealingEffectTier]=[:]
             var emitters:[[String:Any]]=[],labels:[[String:Any]]=[];let start=1.0,count=235
             for frame in 0..<count {
                 let time=Double(frame)*0.02,age=time-start
@@ -540,7 +572,7 @@ extension Export {
                             let a=r.before.units[id]!,b=r.after.units[id]!,foot=PartyVisual.feet[id]!,point=PartyVisual.hitPoint(target:id,weaponID:i.weaponID)
                             let damage=max(0,a.health-b.health),gain=max(0,b.shield-a.shield),heal=max(0,b.health-a.health)
                             if damage>0 { hurts[id]=time;labels.append(["text":"−\(damage)","x":point.x,"y":point.y,"at":time]);emitters.append(["kind":"strike","at":time,"x":point.x,"y":point.y,"floor":foot.y]) }
-                            if heal>0 { heals[id]=time;let amount=cues.first { $0.unitID==id }?.heal ?? heal;strengths[id]=SpellbladeEffects.healingStrength(amount);labels.append(["text":"＋\(heal)","x":foot.x,"y":foot.y,"at":time,"supportUnit":id,"supportLine":0]) }
+                            if heal>0 { heals[id]=time;healingTiers[id]=HealingEffectTier.classify(actualHPGained:heal);strengths[id]=SpellbladeEffects.healingStrength(heal);labels.append(["text":"＋\(heal)","x":foot.x,"y":foot.y,"at":time,"supportUnit":id,"supportLine":0]) }
                             if gain>0 { births[id]=time;labels.append(["text":"盾 ＋\(gain)","x":foot.x,"y":foot.y,"at":time,"supportUnit":id,"supportLine":1]) }
                             if b.damageBuff != a.damageBuff,let buff=b.damageBuff { labels.append(["text":"伤害 ＋\(buff.amount)","x":foot.x,"y":foot.y,"at":time,"supportUnit":id,"supportLine":0]) }
                             if a.isAlive && !b.isAlive { deaths[id]=time;emitters.append(["kind":"death","at":time,"x":point.x,"y":point.y,"floor":foot.y]) }
@@ -556,7 +588,7 @@ extension Export {
                     units.append(["id":id,"name":u.name,"weaponID":u.equipment.weapon as Any? ?? NSNull(),"armorID":u.equipment.armor as Any? ?? NSNull(),"weaponPose":u.equipment.weapon=="greatSword" ? try object(GreatSwordRig.pose(progress:pose.progress,clip:pose.clip)):NSNull(),"vitalsVisible":u.kind != .monster || u.isAlive,"hp":u.health,"maxHP":stats.maximumHealth,"baseAP":stats.baseAP,"maximumAP":stats.maximumAP,"attributeDamage":stats.damage,"accessory":try AccessoryReadout.make(u,catalog:p.engine.catalog).map { try object($0) } as Any? ?? NSNull(),"shield":u.shield,"ap":u.ap,"buff":u.damageBuff?.amount ?? 0,"buffRounds":u.damageBuff?.roundsLeft ?? 0,"clip":pose.clip,"progress":pose.progress,"monster":try object(monster),"deathAge":deaths[id].map { time-$0 } as Any? ?? NSNull()])
                     if id.hasPrefix("p") {
                         var q:[String:Any]=["kind":scenario+"-"+id,"frame":frame,"time":time,"shield":u.shield,"emitters":[],"recoveryStrength":strengths[id] ?? 1]
-                        if let at=heals[id] { q["recoveryAge"]=time-at }
+                        if let at=heals[id],let tier=healingTiers[id] { q["recoveryAge"]=time-at;q["recoveryTier"]=tier.rawValue }
                         if let at=births[id] { q["birth"]=time-at }
                         if let cue=cues.first(where:{$0.unitID==id}),cue.shield>original.units[id]!.shield,u.shield==0,age>=0 { q["formation"]=age-max(0,action.impact-0.46) }
                         requests.append(q)

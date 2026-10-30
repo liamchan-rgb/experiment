@@ -29,7 +29,7 @@ final class MeadowPartyStageView:UIView {
     var actorInAction:String? { intent?.actor }
     private var focus:PartyAction?,focusTarget="p1",focusAt=0.0
     private var recovery:[String:Double]=[:],formation:[String:Double]=[:],birth:[String:Double]=[:],contact:[String:Double]=[:],broken:[String:Double]=[:],deaths:[String:Double]=[:],hurt:[String:Double]=[:]
-    private var recoveryStrength:[String:Double]=[:]
+    private var recoveryTier:[String:HealingEffectTier]=[:]
     private var fallen:[String:Double]=[:]
     private var victoryAt:Double?
     private var poseKeys:[String:String]=[:]
@@ -70,7 +70,7 @@ final class MeadowPartyStageView:UIView {
     }
     required init?(coder:NSCoder) { fatalError("init(coder:) has not been implemented") }
     @objc private func tapped(_ r:UITapGestureRecognizer) { if !isPlaying,let id=r.view?.accessibilityIdentifier { onChoose?(id) } }
-    func start() { victoryAt=nil;sceneTime=0;recovery=[:];recoveryStrength=[:];formation=[:];birth=[:];contact=[:];broken=[:];deaths=[:];hurt=[:];messages=[];emissions=[];poseKeys=[:];fallen=[:];diceAction=nil;diceConfirmedAt=nil;diceView.confirmationAge=nil;diceView.dice=[];diceSettledAt=nil;diceExitAt=nil;dimFrom=0;dimTarget=0;clock.start() }
+    func start() { victoryAt=nil;sceneTime=0;recovery=[:];recoveryTier=[:];formation=[:];birth=[:];contact=[:];broken=[:];deaths=[:];hurt=[:];messages=[];emissions=[];poseKeys=[:];fallen=[:];diceAction=nil;diceConfirmedAt=nil;diceView.confirmationAge=nil;diceView.dice=[];diceSettledAt=nil;diceExitAt=nil;dimFrom=0;dimTarget=0;clock.start() }
     func stop() { clock.stop();intent=nil;impact=nil;completion=nil;focus=nil }
     func show(_ value:GameState,friend:String,foe:String,current:String?,catalog:GameCatalog) {
         state=value;self.current=current;self.catalog=catalog;fx.friend=friend;fx.foe=foe
@@ -112,7 +112,6 @@ final class MeadowPartyStageView:UIView {
         }
         for id in value.targets {
             guard let unit=before.units[id] else { continue }
-            if ["support","heal","revive"].contains(value.action.visual),unit.health<maximumHealth(unit) { recovery[id]=delayed;recoveryStrength[id]=1 }
             if ["support","guard"].contains(value.action.visual),unit.shield<([PartyAction.shieldPotion].contains(value.action) ? 8:4) { formation[id]=delayed }
         }
         render()
@@ -147,11 +146,8 @@ final class MeadowPartyStageView:UIView {
             let point=["greatSword","legendaryStaff"].contains(intent.weaponID ?? "") && id.hasPrefix("m") ? CGPoint(x:registered.x,y:registered.y):CGPoint(x:foot.x+(shieldHit ? (5+240*0.41)*PartyVisual.heroScale:(id.hasPrefix("m") ? -80:0)),y:foot.y-(id.hasPrefix("p") ? 65:72))
             if heal>0 {
                 let shift=intent.actor==id ? PartyVisual.travel(intent,age:sceneTime-startAt):PartyPoint(0,0)
-                if intent.action == .ambush { recovery[id]=sceneTime;recoveryStrength[id]=1 }
-                if intent.action.isRune || intent.action == .dragonFlame,let catalog {
-                    let amount=SpellbladeEffects.recipients(intent,catalog:catalog).first { $0.unitID==id }?.heal ?? heal
-                    recovery[id]=sceneTime;recoveryStrength[id]=SpellbladeEffects.healingStrength(amount)
-                }
+                recovery[id]=sceneTime
+                recoveryTier[id]=HealingEffectTier.classify(actualHPGained:heal)
                 messages.append(.init(text:"＋\(heal)",point:CGPoint(x:point.x+shift.x,y:point.y+shift.y),at:sceneTime,color:.systemGreen,supportUnit:(intent.action.isRune || intent.action == .dragonFlame) ? id:nil))
             }
             if gain>0 { birth[id]=sceneTime;messages.append(.init(text:"盾 ＋\(gain)",point:CGPoint(x:point.x,y:point.y+(intent.action.isRune || intent.action == .dragonFlame ? 36:24)),at:sceneTime,color:.systemCyan,supportUnit:(intent.action.isRune || intent.action == .dragonFlame) ? id:nil,supportLine:1)) }
@@ -165,7 +161,7 @@ final class MeadowPartyStageView:UIView {
             }
             if absorbed>0 { contact[id]=sceneTime;if after.shield==0 { broken[id]=sceneTime;emissions.append(.init(kind:.shieldBreak,startedAt:sceneTime,x:foot.x,y:foot.y-60,groundY:foot.y)) } }
             if before.isAlive && !after.isAlive && after.kind == .monster { deaths[id]=sceneTime;emissions.append(.init(kind:.death,startedAt:sceneTime,x:Double(point.x),y:Double(point.y),groundY:foot.y)) }
-            if before.isAlive && !after.isAlive && after.kind == .player { recovery[id]=nil;fallen[id]=sceneTime }
+            if before.isAlive && !after.isAlive && after.kind == .player { recovery[id]=nil;recoveryTier[id]=nil;fallen[id]=sceneTime }
         }
     }
     private func render() {
@@ -200,7 +196,7 @@ final class MeadowPartyStageView:UIView {
                 let key="\(clip)-\(Int((progress*24).rounded()))-\(unit.equipment.weapon ?? "none")-\(unit.equipment.armor ?? "none")"
                 if key != poseKeys[id] { shadows[id]?.update(image:actor.poseSilhouette,soleY:actor.poseFootAnchorPx.y,contacts:actor.poseContacts.map { .init(point:$0,radius:12) });poseKeys[id]=key }
                 attached[id]?.frame=actor.bounds
-                attached[id]?.update(shield:unit.shield,preview:0,time:sceneTime,formation:unit.shield==0 ? formation[id].flatMap { sceneTime-$0<1.0 ? sceneTime-$0:nil }:nil,formationBase:0,birth:birth[id].map { sceneTime-$0 },contact:contact[id].map { sceneTime-$0 },broken:broken[id].map { sceneTime-$0 },recovery:unit.isAlive ? recovery[id].map { sceneTime-$0 }:nil,recoveryStrength:recoveryStrength[id] ?? 1)
+                attached[id]?.update(shield:unit.shield,preview:0,time:sceneTime,formation:unit.shield==0 ? formation[id].flatMap { sceneTime-$0<1.0 ? sceneTime-$0:nil }:nil,formationBase:0,birth:birth[id].map { sceneTime-$0 },contact:contact[id].map { sceneTime-$0 },broken:broken[id].map { sceneTime-$0 },recovery:unit.isAlive ? recovery[id].map { sceneTime-$0 }:nil,recoveryTier:recoveryTier[id])
                 shadows[id]?.spriteFrame=actor.frame
                 labels[id]?.frame=CGRect(x:f.x-88,y:f.y-170,width:176,height:44)
             } else if let view=monsters[id] {
@@ -240,7 +236,7 @@ final class MeadowPartyStageView:UIView {
         fx.messages=messages;fx.particles=emissions.flatMap { e in MeadowBattleLightField.sample(e.kind,age:sceneTime-e.startedAt,originX:e.x,originY:e.y,groundY:e.groundY) }
         fx.recoveryLights=state.players.compactMap { unit in
             guard unit.isAlive,let at=recovery[unit.id],let foot=PartyVisual.feet[unit.id] else { return nil }
-            let power=MeadowBattleRecoveryField.pulse(sceneTime-at)*(recoveryStrength[unit.id] ?? 1),shift=intent?.actor==unit.id ? moving:PartyPoint(0,0)
+            let power=recoveryTier[unit.id]?.lightEnvelope(at:sceneTime-at) ?? 0,shift=intent?.actor==unit.id ? moving:PartyPoint(0,0)
             return (PartyPoint(foot.x+shift.x,foot.y+shift.y),power)
         }
         if let intent,(intent.action.isRune || intent.action == .dragonFlame),let catalog {
@@ -300,14 +296,9 @@ private final class MeadowPartyEffectsView:UIView {
                     }
                 }
             }
-            if intent.action.isItem,let foot=PartyVisual.feet[intent.target] {
+            if intent.action.isItem,age<intent.action.impact,let foot=PartyVisual.feet[intent.target] {
                 let name="MeadowParty"+intent.action.rawValue.prefix(1).uppercased()+intent.action.rawValue.dropFirst()
                 if let image=UIImage(named:name) { sprite(image,PartyPoint(foot.x,foot.y-130-age*15),38,38,PartyVisual.pulse(age,0,0.25,0.85)) }
-            }
-            if visual=="revive",let foot=PartyVisual.feet[intent.target] {
-                let a=PartyVisual.pulse(age,0,0.72,1.9)
-                sprite(MeadowBattleVFXAssets.healShaft,PartyPoint(foot.x,foot.y-80),120,220,a)
-                for p in PartyVisual.rally(age:age,at:PartyPoint(foot.x,foot.y-60)) { sprite(MeadowBattleVFXAssets.healStar,PartyPoint(p.x,p.y),p.size,p.size,p.alpha) }
             }
             if intent.ranged,let foot=PartyVisual.feet[intent.actor] {
                 let tip=BowRig.releaseArrowTip

@@ -68,6 +68,7 @@ final class MeadowBattleLandscapeView: UIView {
     private var shieldContactAt: Double?
     private var shieldBreakAt: Double?
     private var idleElapsed: TimeInterval = 0
+    private var recoveryTier: HealingEffectTier?
     private var terminalClip: String?
     private var heroHP = 12
     private var heroMaxHP = 12
@@ -349,7 +350,7 @@ final class MeadowBattleLandscapeView: UIView {
             cueDuration = ceil(max(enemyMotionDuration,enemyMotionDuration*0.46+(hitWasBlocked ? 0.96 : 0.84))/0.04)*0.04
             contact = enemyMotionDuration*0.46
         case .guardPose: cueDuration = 0.96; contact = 0.46; shieldFormationAt=sceneTime
-        case .heal: cueDuration = 1.20; contact = MeadowBattleRecoveryField.impactTime; recoveryStartedAt=sceneTime
+        case .heal: cueDuration = 1.20; contact = MeadowBattleRecoveryField.impactTime; recoveryStartedAt=nil; recoveryTier=nil
         case .victory: cueDuration = 1.08
         case .defeat: cueDuration = 1.08
         }
@@ -362,7 +363,7 @@ final class MeadowBattleLandscapeView: UIView {
         clock.stop(); cue = nil; completion = nil; impactHandler = nil; terminalClip = nil
         deathStartedAt = nil; castLightAt = nil; lastImpactAt = nil; focusedAction = nil
         previewExitDim = 0; castInitialDim = 0; sceneTime = 0; focusStartedAt = 0
-        shieldFormationAt=nil; shieldBirthAt=nil; shieldContactAt=nil; shieldBreakAt=nil; recoveryStartedAt=nil; lightEmissions.removeAll(); world.transform = .identity
+        shieldFormationAt=nil; shieldBirthAt=nil; shieldContactAt=nil; shieldBreakAt=nil; recoveryStartedAt=nil; recoveryTier=nil; lightEmissions.removeAll(); world.transform = .identity
         cueElapsed = 0; idleElapsed = 0; effects.cue = nil; effects.message = ""
         hero.setPose(clip: "idle", progress: 0); hero.alpha = 1; enemy.alpha = 1
         enemy.image = MeadowBattleEnemyFrames.image(progress: 0)
@@ -408,7 +409,10 @@ final class MeadowBattleLandscapeView: UIView {
             }
             effects.message = hitWasBlocked ? "格挡" : "−\(result.damage)"
             effects.messageColor = hitWasBlocked ? .systemCyan : .systemOrange
-        case .heal: effects.message = "+\(result.healed)"; effects.messageColor = .systemGreen
+        case .heal:
+            effects.message = "+\(result.healed)"; effects.messageColor = .systemGreen
+            recoveryTier=HealingEffectTier.classify(actualHPGained:result.healed)
+            recoveryStartedAt=recoveryTier == nil ? nil:sceneTime
         case .guardPose:
             shieldBirthAt=sceneTime; shieldBreakAt=nil
             effects.message = "护盾 +\(result.shieldGained)"; effects.messageColor = .systemCyan
@@ -558,7 +562,7 @@ final class MeadowBattleLandscapeView: UIView {
         attachedSkills.frame=hero.bounds
         attachedSkills.update(shield:shownShieldValue,preview:0,time:sceneTime,
             formation:shownShieldValue>0 ? nil : shieldFormationAt.flatMap { sceneTime-$0<0.96 ? sceneTime-$0 : nil },formationBase:shieldFormationBase,birth:shieldBirthAt.map { sceneTime-$0 },contact:shieldContactAt.map { sceneTime-$0 },
-            broken:shieldBreakAt.map { sceneTime-$0 },recovery:recoveryStartedAt.map { sceneTime-$0 })
+            broken:shieldBreakAt.map { sceneTime-$0 },recovery:recoveryStartedAt.map { sceneTime-$0 },recoveryTier:recoveryTier)
         heroShadow.spriteFrame = hero.frame; enemyShadow.spriteFrame = enemy.frame
         heroFlash.frame = hero.frame; enemyFlash.frame = enemy.frame
         heroFlash.alpha = cue == .enemyStrike && !hitWasBlocked ? 0.25 * pulse(0.46, 0.51, 0.66) : 0
@@ -622,6 +626,7 @@ final class MeadowBattleLandscapeView: UIView {
             renderer.deathAge=deathStartedAt.map { sceneTime-$0 }
             renderer.particles=particles
             renderer.recoveryAge=recoveryStartedAt.map { sceneTime-$0 }
+            renderer.recoveryTier=recoveryTier
             renderer.setNeedsDisplay()
         }
         // Move only the world; HUD, health labels and skill cards remain stable.

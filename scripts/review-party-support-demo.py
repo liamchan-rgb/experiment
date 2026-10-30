@@ -3,24 +3,32 @@
 Not UIKit capture or device/performance verification. No character pixels repainted.
 """
 from pathlib import Path
-import json,math,subprocess,os,shutil
+import argparse,json,math,subprocess,os,shutil
 import numpy as np
 from PIL import Image,ImageDraw,ImageFont,ImageEnhance,ImageChops,ImageFilter
-R=Path(__file__).resolve().parents[1];D=R/'Art/Review/Battle/party-support-demo-v1';D.mkdir(exist_ok=True,parents=True)
+R=Path(__file__).resolve().parents[1]
+parser=argparse.ArgumentParser();parser.add_argument('--healing-only',action='store_true');parser.add_argument('--input',type=Path)
+args=parser.parse_args();D=R/('Art/Review/Battle/healing-effects-v1' if args.healing_only else 'Art/Review/Battle/party-support-demo-v1');D.mkdir(exist_ok=True,parents=True)
+DATA=args.input or D
 p=R/'scripts/review-battle-effects-demo.py';env={'__file__':str(p)};exec(compile(p.read_text().split('\nframes=[]; traces=[]')[0],str(p),'exec'),env)
 render,sample,asset,shadow=[env[k] for k in ['render','sample','asset','shadow']]
 W,H,HEADER,FOOTER=1000,600,70,200
-font=ImageFont.truetype('/usr/share/fonts/opentype/noto/NotoSerifCJK-Bold.ttc',22);small=ImageFont.truetype('/usr/share/fonts/opentype/noto/NotoSerifCJK-Bold.ttc',17);large=ImageFont.truetype('/usr/share/fonts/opentype/noto/NotoSerifCJK-Bold.ttc',28)
+fontfile=next((p for p in ['/usr/share/fonts/opentype/noto/NotoSerifCJK-Bold.ttc','/System/Library/Fonts/PingFang.ttc','/System/Library/Fonts/AppleSDGothicNeo.ttc'] if Path(p).exists()),None)
+if fontfile is None: raise RuntimeError('A Chinese-capable review font is required')
+font=ImageFont.truetype(fontfile,22);small=ImageFont.truetype(fontfile,17);large=ImageFont.truetype(fontfile,28)
 feet={'p1':(165,420),'p2':(315,505),'m1':(650,395),'m2':(835,510)};hs=.83;es=.82
 plate=env['plate'].resize((1000,918),Image.Resampling.LANCZOS).crop((0,200,1000,800));foreground=env['foreground'].resize((1000,918),Image.Resampling.LANCZOS).crop((0,200,1000,800))
 assets={n:asset('BattleVFX'+n) for n in ['HealStar','HealWisp','HealShaft','HealWave','RoundBarrier','Mote','Burst','GoldEmber']}
+healing_cells={'micro':(280,280),'standard':(614,512),'strong':(512,512)}
+healing_sheets={'micro':'BattleVFXHealingMicroSheet','standard':'BattleVFXHealingStandardSheet','strong':'BattleVFXHealingStrongSheet'}
+healing={tier:[asset(name).crop(((i%5)*cell[0],(i//5)*cell[1],(i%5+1)*cell[0],(i//5+1)*cell[1])) for i in range(20)] for tier,name in healing_sheets.items() for cell in [healing_cells[tier]]}
 items={n:asset('MeadowParty'+n[0].upper()+n[1:]) for n in ['smallPotion','largePotion','shieldPotion','revivalStone']}
 enemy=asset('MeadowBattleForestWarden')
 attack=asset('MeadowBattleWardenAttackSheet');enemy_attacks=[attack.crop((i*384,0,(i+1)*384,256)) for i in range(8)]
 body=asset('BattleVFXDeathBody60');wind=asset('BattleVFXDeathWind60')
 bodies=[body.crop(((i%8)*384,(i//8)*256,(i%8+1)*384,(i//8+1)*256)) for i in range(48)]
 winds=[wind.crop(((i%8)*448,(i//8)*320,(i%8+1)*448,(i//8+1)*320)) for i in range(116)]
-rows=json.loads((D/'party-frames.json').read_text());legacy=json.loads((D/'legacy-attachment-samples.json').read_text());attached={(r['kind'],r['frame']):r for r in legacy['frames']}
+rows=json.loads((DATA/'party-frames.json').read_text());legacy=json.loads((DATA/'legacy-attachment-samples.json').read_text());attached={(r['kind'],r['frame']):r for r in legacy['frames']}
 def smooth(x):t=min(1,max(0,x));return t*t*(3-2*t)
 def pulse(t,s,p,e):return smooth((t-s)/(p-s)) if t<p else 1-smooth((t-p)/(e-p))
 def compose(f,im,c,size,alpha=1,add=False,angle=0):
@@ -40,33 +48,37 @@ def glow(f,c,rx,ry,a,color):
   im=Image.new('RGBA',(96,96));arr=np.zeros((96,96,4),dtype=np.uint8);yy,xx=np.indices((96,96));v=np.maximum(0,1-np.sqrt(((xx-48)/48)**2+((yy-48)/48)**2));arr[:,:,:3]=color;arr[:,:,3]=np.round(v*255);glow.cache[key]=Image.fromarray(arr)
  compose(f,glow.cache[key],c,(rx*2,ry*2),a,True)
 glow.cache={}
+def heal_light(age,tier):
+ if tier is None or not 0<=age<1:return 0
+ rise=smooth(age/.10);fade=1-smooth((age-.46)/.54)
+ return rise*fade*{'micro':.48,'standard':.78,'strong':1.0}[tier]
 def hero_at(u,row):
- x,y=feet[u['id']];a=row['action'];v=a.get('travel',{}) if a.get('actor')==u['id'] else {};return x+v.get('x',0)-123*hs,y+v.get('y',0)-214*hs
+ x,y=feet[u['id']];a=row.get('action') or {};v=a.get('travel',{}) if a.get('actor')==u['id'] else {};return x+v.get('x',0)-123*hs,y+v.get('y',0)-214*hs
 
 def attachments(f,u,row,scene_row):
  x,y=hero_at(u,scene_row);root=sample(u['clip'],u['progress'])[1];cx=x+(root[0]+128)*hs;cy=y+(root[1]+144)*hs;foot=(cx,y+(root[1]+214)*hs)
- power=row['recoveryPower'];action=scene_row['action'];a=action.get('age',-1)
- recovery_age=None
- # The legacy requests are the same ages passed to the runtime attachment view.
  request=REQUESTS[(scene_row['scenario']+'-'+u['id'],scene_row['frame'])];recovery_age=request.get('recoveryAge')
- if recovery_age is not None and 0<=recovery_age<1.8:
-  age=recovery_age
-  compose(f,assets['HealShaft'],(foot[0],foot[1]-82.5*hs),(110*hs,185*hs),power*.5)
-  core=assets['Burst'].copy();ar=np.asarray(core).copy();ar[:,:,:3]=[209,255,217];core=Image.fromarray(ar)
-  compose(f,core,(foot[0],foot[1]-64*hs),(110*hs,110*hs),pulse(age,.34,.47,.70)*.70)
-  expand=.65+.65*smooth(age/1.1);compose(f,assets['HealWave'],(foot[0],foot[1]+2*hs),(164*hs*expand,28*hs),power*.8)
-  for q in row['wisps']:compose(f,assets['HealWisp'],(foot[0]+q['x']*hs,foot[1]+q['y']*hs),(85*hs*q['scaleX'],180*hs),q['alpha'],False,q['rotation'])
-  for q in row['recovery']:compose(f,assets['HealStar'],(foot[0]+q['x']*hs,foot[1]+q['y']*hs),(q['size']*hs,q['size']*hs),q['alpha'])
+ tier=request.get('recoveryTier')
+ if recovery_age is not None and tier in healing and 0<=recovery_age<1:
+  age=recovery_age;light=heal_light(age,tier)
+  glow(f,foot,135*hs,42*hs,light*.92,(42,255,136))
+  glow(f,(foot[0],foot[1]-65*hs),75*hs,110*hs,light*.36,(94,255,159))
+  position=age*20;lower=min(19,int(position));upper=min(19,lower+1);t=position-lower;mix=t*t*(3-2*t)
+  size={'micro':(208*hs,208*hs),'standard':(248*hs,207*hs),'strong':(258*hs,258*hs)}[tier]
+  opacity={'micro':.92,'standard':.48,'strong':.62}[tier]
+  center=(foot[0],foot[1]-size[1]/2)
+  compose(f,healing[tier][lower],center,size,opacity*(1-mix),True)
+  if upper!=lower and mix>0:compose(f,healing[tier][upper],center,size,opacity*mix,True)
  alpha=row['shieldOpacity'];compose(f,assets['RoundBarrier'],(cx,cy),(240*hs,240*hs),alpha)
  for i in range(6):
   angle=scene_row['time']*1.25+i*2.399;radius=240*hs*.41;size=(9 if i%2==0 else 6)*hs
   im=assets['Mote'].copy();ar=np.asarray(im).copy();ar[:,:,:3]=[80,245,255];im=Image.fromarray(ar)
   compose(f,im,(cx+math.cos(angle)*radius,cy+math.sin(angle)*radius),(size,size),alpha*.65)
-REQUESTS={(r['kind'],r['frame']):r for r in json.loads((D/'legacy-light-requests.json').read_text())}
+REQUESTS={(r['kind'],r['frame']):r for r in json.loads((DATA/'legacy-light-requests.json').read_text())}
 def ui(scene,row):
  f=Image.new('RGBA',(W,HEADER+H+FOOTER),'#14251c');f.alpha_composite(scene,(0,HEADER));d=ImageDraw.Draw(f)
- scenario=row['scenario'];titles={'support':'援护 · 友方恢复与授盾','rally':'振奋 · 节点队友增伤','items':'道具 · 实际恢复与授盾','revive':'复活石 · 同节点救援与起身','combat':'真实增伤 / 致死右吹 / 圆盾接触'}
- d.text((18,7),'build46 · 小队支援 / '+titles[scenario],font=font,fill='#f8e9c4');d.text((18,40),'正常速度离线美术预览 · 生产规则/轨迹 · 非UIKit/实机录屏',font=small,fill='#b5cdb7');d.text((W-155,12),f'{row["time"]:.2f}s',font=small,fill='#c8d6bd')
+ scenario=row['scenario'];titles={'support':'援护 · 友方恢复与授盾','rally':'振奋 · 节点队友增伤','items':'道具 · 实际恢复与授盾','revive':'复活石 · 同节点救援与起身','combat':'真实增伤 / 致死右吹 / 圆盾接触','healing-micro':'微量治疗 · 实际恢复 3 HP','healing-standard':'标准治疗 · 实际恢复 6 HP','healing-strong':'强效治疗 · 实际恢复 11 HP'}
+ d.text((18,7),'小队战斗 / '+titles[scenario],font=font,fill='#f8e9c4');d.text((18,40),'正常速度离线美术预览 · 生产规则/轨迹 · 非UIKit/实机录屏',font=small,fill='#b5cdb7');d.text((W-155,12),f'{row["time"]:.2f}s',font=small,fill='#c8d6bd')
  for i,u in enumerate(row['units']):
   x=16+i*246;y=HEADER+H+10;sel=u['id'] in ['p1','m1']
   d.rounded_rectangle((x,y,x+234,y+85),7,fill='#293c2d',outline='#e6cd83' if sel else '#68744f',width=2 if sel else 1)
@@ -84,11 +96,13 @@ def ui(scene,row):
  if scenario=='rally' and .95<=row['time']<1.6:
   x=220;y=HEADER+H-100;d.rounded_rectangle((x,y,x+292,y+88),6,fill='#172c20',outline='#e2c573');d.text((x+12,y+8),'振奋 · 伤害＋2',font=font,fill='#ffe7a9');d.text((x+12,y+43),'剩余1轮 · 普攻与伤害技能生效',font=small,fill='#d2dfbf')
  return f.convert('RGB')
-reports={}
-for scenario in ['support','rally','items','revive','combat']:
+reports={};clips={}
+scenarios=['healing-micro','healing-standard','healing-strong'] if args.healing_only else ['support','rally','items','revive','combat']
+for scenario in scenarios:
  print('Rendering',scenario,flush=True);group=[r for r in rows if r['scenario']==scenario];frames=[]
+ if args.healing_only:group=[r for r in group if r['time']<=2.35]
  for row in group:
-  a=row['action'];age=a.get('age',0);dim=pulse(age,0,.4,1.8)*(.58 if a.get('visual')=='attack' else .32) if a else 0
+  a=row.get('action') or {};age=a.get('age',0);dim=pulse(age,0,.4,1.8)*(.58 if a.get('visual')=='attack' else .32) if a else 0
   f=ImageEnhance.Brightness(plate).enhance(1-dim)
   ordered=sorted(row['units'],key=lambda u:feet[u['id']][1])
   for u in ordered:
@@ -118,13 +132,8 @@ for scenario in ['support','rally','items','revive','combat']:
      t=age-i*.1;alpha=pulse(t,0,.28,.85)
      if alpha>0:
       lay=Image.new('RGBA',(W,H));dd=ImageDraw.Draw(lay);y=c[1]+10-t*75;dd.line([(c[0]-14,y+10), (c[0],y),(c[0]+14,y+10)],fill=(242,211,130,round(alpha*255)),width=3);f.alpha_composite(lay)
-  if a.get('action') in items:
+  if a.get('action') in items and age<(.72 if a.get('action')=='revivalStone' else .46):
    p=feet[a['target']];compose(f,items[a['action']],(p[0],p[1]-130-age*15),(38,38),pulse(age,0,.25,.85),True)
-  if a.get('visual')=='revive':
-   p=feet[a['target']];compose(f,assets['HealShaft'],(p[0],p[1]-80),(120,220),pulse(age,0,.72,1.9),True)
-   for g in row['rally']:
-    if g['id']==a['target']:
-     for q in g['particles']:compose(f,assets['HealStar'],(q['x'],q['y']),(q['size'],q['size']),q['alpha'],True)
   if a.get('visual')=='attack':
    pp=feet[a['target']];is_enemy=a['enemy'];elapsed=age-(.46 if is_enemy else 1.048);xx=pp[0]+((5+240*.41)*hs if a.get('shielded') else 10) if is_enemy else pp[0]-80;at=(xx,pp[1]-(65 if is_enemy else 72));power=pulse(elapsed,-.035,.035,.52)
    glow(f,at,140,140,power*.48,(255,175,45));glow(f,pp,170,30,power*.65,(255,175,45))
@@ -142,6 +151,10 @@ for scenario in ['support','rally','items','revive','combat']:
   for u in row['units']:
    x,y=feet[u['id']];label=u['name'];yy=y-(140 if u['id'].startswith('p') else 218);dd=ImageDraw.Draw(f);dd.rounded_rectangle((x-78,yy,x+78,yy+27),4,fill='#172c21');dd.text((x-70,yy+1),label,font=small,fill='#fff1c9')
   frames.append(ui(f,row))
+ if args.healing_only:
+  clips[scenario]=frames
+  reports[scenario]={'frames':len(frames),'frameDurationMs':20,'durationMs':len(frames)*20,'peakPreview':'same full-scene composition as combined GIF'}
+  continue
  palette_sample=Image.new('RGB',(W*3,(HEADER+H+FOOTER)*3))
  for j,k in enumerate([0,20,40,50,65,80,len(frames)//2,len(frames)*3//4,len(frames)-1]):palette_sample.paste(frames[k],(j%3*W,j//3*(HEADER+H+FOOTER)))
  palette=palette_sample.quantize(colors=256,method=Image.Quantize.MEDIANCUT);name=scenario+'-normal.gif';scale=.85
@@ -166,4 +179,24 @@ for scenario in ['support','rally','items','revive','combat']:
   for sec,label in [(1.5,'lethal'),(2.1,'wind'),(3.26,'shield-contact')]:frames[round(sec/.02)].save(D/('combat-'+label+'.png'))
  reports[scenario]={'file':name,'frames':gif.n_frames,'frameDurationMs':20,'durationMs':len(frames)*20,'bytes':(D/name).stat().st_size,'dimensions':size,'scale':scale}
  print(scenario,reports[scenario],flush=True)
-(D/'review-render.json').write_text(json.dumps({'scope':'actual original GameCore states and production Swift fields; offline light/UI approximation, not UIKit or device capture','animations':reports,'newArtApproval':None},indent=2)+'\n')
+if args.healing_only:
+ combined=[frame for scenario in ['healing-micro','healing-standard','healing-strong'] for frame in clips[scenario]]
+ overview=Image.new('RGB',(650*3,566),'#15281b')
+ for i,scenario in enumerate(['healing-micro','healing-standard','healing-strong']):
+  overview.paste(clips[scenario][round(1.16/.02)].resize((650,566),Image.Resampling.LANCZOS),(650*i,0))
+ overview.save(D/'healing-three-tiers-peak-overview.jpg',quality=91)
+ palette_sample=Image.new('RGB',(W*3,(HEADER+H+FOOTER)*3))
+ for j,k in enumerate([0,20,40,55,70,85,len(combined)//2,len(combined)*3//4,len(combined)-1]):palette_sample.paste(combined[k],(j%3*W,j//3*(HEADER+H+FOOTER)))
+ palette=palette_sample.quantize(colors=256,method=Image.Quantize.MEDIANCUT);scale=.85
+ while True:
+  size=(round(W*scale),round((HEADER+H+FOOTER)*scale));encoded=[f.resize(size,Image.Resampling.LANCZOS).quantize(palette=palette,dither=Image.Dither.NONE) for f in combined]
+  target=D/'healing-tiers-normal.gif';encoded[0].save(target,save_all=True,append_images=encoded[1:],duration=20,loop=0,disposal=1,optimize=True)
+  binary=os.environ.get('GIFSICLE') or shutil.which('gifsicle') or '/workspace/gifsicle-1.96/src/gifsicle'
+  if Path(binary).exists():subprocess.run([binary,'-O3',str(target),'-o',str(D/(target.name+'.tmp'))],check=True);(D/(target.name+'.tmp')).replace(target)
+  if target.stat().st_size<19500000:break
+  scale=round(scale-.1,2);assert scale>=.45
+ reports['combined']={'file':target.name,'frames':len(combined),'frameDurationMs':20,'durationMs':len(combined)*20,'bytes':target.stat().st_size,'dimensions':size,'scale':scale}
+ (D/'healing-review.json').write_text(json.dumps({'scope':'actual GameCore healing receipts and production Swift fields, with source frames and original battle art composited offline; not UIKit, simulator or device capture','tierPolicy':'actual HP gained after max-health clamping: 1-3 micro, 4-8 standard, 9+ strong, 0 none','animations':reports,'newArtApproval':None},indent=2)+'\n')
+ print('Combined normal-speed healing GIF',reports['combined'],flush=True)
+else:
+ (D/'review-render.json').write_text(json.dumps({'scope':'actual original GameCore states and production Swift fields; offline light/UI approximation, not UIKit or device capture','animations':reports,'newArtApproval':None},indent=2)+'\n')
