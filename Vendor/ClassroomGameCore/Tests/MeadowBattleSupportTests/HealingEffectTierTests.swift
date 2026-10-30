@@ -30,7 +30,7 @@ final class HealingEffectTierTests: XCTestCase {
         XCTAssertEqual(lastAuthoredFrame.lower, 19)
         XCTAssertEqual(lastAuthoredFrame.upper, 19)
         XCTAssertNil(tier.frameBlend(at: 1.0))
-        XCTAssertNil(tier.frameBlend(at: -.01))
+        XCTAssertNil(tier.frameBlend(at: -0.01))
     }
 
     func testStrongTierPlacesItsAuthoredGroundEllipseAtRecipientFeet() {
