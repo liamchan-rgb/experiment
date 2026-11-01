@@ -71,7 +71,7 @@ def publish_large_file(path: str, content: bytes, message: str) -> None:
     target = Path(path)
     target.parent.mkdir(parents=True, exist_ok=True)
     target.write_bytes(content)
-    subprocess.run(["git", "add", "--", path], check=True)
+    subprocess.run(["git", "add", "--sparse", "--", path], check=True)
     subprocess.run(
         ["git", "-c", "user.name=Codex", "-c", "user.email=codex@openai.com",
          "commit", "--only", "-m", message + " [skip ci]", "--", path],
