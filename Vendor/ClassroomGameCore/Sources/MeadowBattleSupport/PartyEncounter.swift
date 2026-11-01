@@ -32,10 +32,9 @@ public enum PartyAction:String,CaseIterable,Codable {
         switch self {
         case .runeSlash,.runeWard,.battleRune,.dragonFlame:return rawValue
         case .starlightPulse,.sweep:return "attack"
-        case .dragonSoulWard,.dragonScaleWard,.dragonOrder:return "support"
+        case .rally,.dragonSoulWard,.dragonScaleWard,.dragonOrder:return "support"
         case .ambush:return "ambush"
         case .support:return "support"
-        case .rally:return "rally"
         case .breather,.smallPotion,.largePotion:return "heal"
         case .simpleGuard,.shieldPotion:return "guard"
         case .revivalStone:return "revive"

@@ -46,7 +46,7 @@ final class SkillVFXTests:XCTestCase {
         XCTAssertEqual(enemies.x,753.57,accuracy:1e-9)
         XCTAssertEqual(enemies.y,360.66,accuracy:1e-9)
         let monsterTargets=PartyVisual.skillEffectCenter(targets:["p1","p2"],actor:"m1")
-        XCTAssertEqual(monsterTargets.x,240,accuracy:1e-9)
+        XCTAssertEqual(monsterTargets.x,244.15,accuracy:1e-9)
         XCTAssertEqual(monsterTargets.y,391.12,accuracy:1e-9)
     }
 

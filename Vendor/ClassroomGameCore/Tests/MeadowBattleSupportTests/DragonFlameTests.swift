@@ -7,7 +7,7 @@ final class DragonFlameTests:XCTestCase {
         let model=try PartyEncounter(seed:47,sessionID:"dragon-flame-node",playerClassID:"dragonKnight")
         XCTAssertEqual(model.state.units["p1"]?.baseAttributes.maximumHealth,32)
         XCTAssertEqual(model.state.units["p1"]?.health,20)
-        XCTAssertEqual(model.actions(for:"p1"),[.attack,.dragonFlame])
+        XCTAssertEqual(model.actions(for:"p1"),[.attack,.dragonFlame,.dragonScaleWard,.dragonOrder])
         XCTAssertEqual(model.cost(.dragonFlame),2)
         try model.engine.apply(.endTurn(actor:"p2",timedOut:false))
 

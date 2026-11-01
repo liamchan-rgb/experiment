@@ -19,7 +19,7 @@ final class SpellbladeTests:XCTestCase {
         let dragon=try PartyEncounter(playerClassID:"dragonKnight")
         try dragon.engine.apply(.endTurn(actor:"p2",timedOut:false))
         XCTAssertEqual(dragon.state.units["p1"]?.baseAttributes.maximumHealth,32)
-        XCTAssertEqual(dragon.playerActions(),[.attack,.dragonFlame])
+        XCTAssertEqual(dragon.playerActions(),[.attack,.dragonFlame,.dragonScaleWard,.dragonOrder])
         let base=try GameCatalog.initial();XCTAssertEqual(try p.engine.catalog.skill("runeWard"),try base.skill("runeWard"))
     }
     func testSlashStagesOneReceiptAndUsesD12EvenWithStaffAndPermanentDamage() throws {
