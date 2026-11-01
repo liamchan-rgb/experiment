@@ -1,0 +1,13 @@
+{
+  "build": 71,
+  "marketingVersion": "1.6.45",
+  "file": "Downloads/MeadowJourney-build71.ipa",
+  "bytes": 59058237,
+  "sha256": "326a4d199237de1eb11a5c23e4429704017ac4c68ad564714e9b4569ce189816",
+  "format": "unsigned iOS device IPA for SideStore re-signing",
+  "architecture": "arm64",
+  "zipCRC": "passed",
+  "sourceCommit": "ea701396a5ff8d7a200de87e109b230c4fe4ca3c",
+  "workflowRun": "https://github.com/liamchan-rgb/experiment/actions/runs/41266049040",
+  "skillVFXReview": "Art/Review/Battle/skill-vfx-v1/README.md"
+}
