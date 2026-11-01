@@ -145,6 +145,7 @@ jobs:
           git show HEAD:Art/Review/Battle/legendary-staff-demo-v1/legendary-staff-poses.json > "$staff_dir/legendary-staff-poses.json"
           git show HEAD:Art/Review/Battle/party-support-demo-v1/party-frames.json > "$support_dir/party-frames.json"
           git show HEAD:Art/Review/Battle/party-support-demo-v1/legacy-attachment-samples.json > "$support_dir/legacy-attachment-samples.json"
+          cp build/logs/party-review/legacy-light-requests.json "$support_dir/legacy-light-requests.json"
           git show HEAD:Art/Review/Battle/dice-party-demo-v1/dice-light-samples.json > "$dice_dir/dice-light-samples.json"
           printf '[]\n' > "$dice_dir/poly-frames.json"
           git show HEAD:Art/Parts/P1-Battle/hunting-bow-aim-project-r1/pose.json > "$parts_dir/pose.json"
