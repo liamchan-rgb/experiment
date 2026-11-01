@@ -5,6 +5,7 @@ Never UIKit, game, simulator or device capture.
 from pathlib import Path
 from PIL import Image,ImageDraw,ImageFont
 import json,math,functools,subprocess,sys
+from review_vfx_status_timing import retime_status_sample
 R=Path(__file__).resolve().parents[1];D=R/'Art/Review/Battle/spellblade-demo-v1';D.mkdir(parents=True,exist_ok=True)
 review_args=sys.argv[1:];sys.argv=sys.argv[:1]
 p=R/'scripts/review-armor-demo.py';N={'__file__':str(p)};exec(compile(p.read_text().split('for item in armors:\n frames=[]')[0],str(p),'exec'),N)
@@ -14,6 +15,13 @@ world=Q['world'];S=Q['S'];oldgear=Q['gear'];font=Q['font'];hs=world['hs'];oy=wor
 rows=json.loads((D/'spellblade-frames.json').read_text());requests={(q['kind'],q['frame']):q for q in json.loads((D/'spellblade-light-requests.json').read_text())}
 for q in json.loads((D/'spellblade-light-samples.json').read_text())['frames']:world['attached'][(q['kind'],q['frame'])]=q
 world['reqs'].update(requests)
+# Keep cached positioning samples, but source status age/opacity from the
+# current production request so no heal or shield appears before its cue.
+for row in rows:
+ for unit in row['units']:
+  if not unit['id'].startswith('p'):continue
+  key=(row['scenario']+'-'+unit['id'],row['frame'])
+  world['attached'][key]=retime_status_sample(world['attached'][key],requests[key])
 # The main review carries rune armor and a great sword; P2 remains the original sword.
 S['gear_render']=world['gear_render']=lambda c,p,w:N['actor']('runeArmor',w,c,p) if w=='greatSword' else oldgear(c,p,w)
 assert len(world['bodies'])==48 and len(world['winds'])==116
@@ -143,6 +151,10 @@ def stills(selected=None):
   else:times=[(0,'standing'),(.6,'hover'),(1.45,'unfold'),(impact+.06,'impact'),(impact+.36,'recovery'),(3.50,'tail'),(4.6,'rest')]
   for tm,label in times:
    row=min(group,key=lambda r:abs(r['time']-tm));ui(row).save(D/(scenario+'-'+label+'.png'))
+  cue=next((r['statusCueAt'] for r in group if r.get('statusCueAt') is not None),None)
+  if cue is not None:
+   for offset,label in [(0,'status-cue'),(.12,'status-cue-plus-120ms')]:
+    row=min(group,key=lambda r:abs(r['time']-(cue+offset)));ui(row).save(D/(scenario+'-'+label+'.png'))
 if '--draft' in sys.argv:stills();print('35 whole-scene keyframes rendered');sys.exit(0)
 reports=[]
 def save(name,frames):
@@ -168,7 +180,7 @@ if '--rune-pair-only' in sys.argv:
  for scenario in selected:
   save(scenario,[ui(r) for r in rows if r['scenario']==scenario])
  stills(selected)
- (D/'review.json').write_text(json.dumps({'scope':'Normal-speed full-scene offline review of the supplied 20-frame Rune Slash attack and 20-frame node-level Rune Ward cast, with production receipts, character motion, hit particles, ground collision/light, healing and shield feedback. Not UIKit/game/device capture.','animations':reports,'keyframePNGs':14,'sourceFrameAssets':40,'newCharacterArt':False,'userArtApproval':None},ensure_ascii=False,indent=2)+'\n')
+ (D/'review.json').write_text(json.dumps({'scope':'Normal-speed full-scene offline review of the supplied 20-frame Rune Slash attack and 20-frame node-level Rune Ward cast, with production receipts, character motion, hit particles, ground collision/light, healing and shield feedback. Not UIKit/game/device capture.','animations':reports,'keyframePNGs':18,'statusCueKeyframes':['runeSlash-status-cue.png','runeSlash-status-cue-plus-120ms.png','runeWard-status-cue.png','runeWard-status-cue-plus-120ms.png'],'sourceFrameAssets':40,'statusRevealTiming':{'runeSlash':'1.1979s action age: 58% into the 0.955s delivered attack sequence from its 0.643s onset.','runeWard':'0.8352s action age: 58% into the 1.44s delivered cast sequence.'},'newCharacterArt':False,'userArtApproval':None},ensure_ascii=False,indent=2)+'\n')
  print('Rune Slash and Rune Ward normal-speed scene animations and fourteen keyframes rendered');sys.exit(0)
 if '--rune-slash-lethal-only' in sys.argv:
  save('runeSlash-lethal',[ui(r) for r in rows if r['scenario']=='runeSlash-lethal'])

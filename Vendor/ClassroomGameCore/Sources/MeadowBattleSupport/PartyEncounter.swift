@@ -44,6 +44,7 @@ public enum PartyAction:String,CaseIterable,Codable {
     }
     public var isRune:Bool { [.runeSlash,.runeWard,.battleRune].contains(self) }
     public var skillVFX:PartySkillVFXSpec? { PartySkillVFXSpec.find(rawValue) }
+    public var statusVFXCueAge:Double? { SpellbladeEffects.statusVFXCueAge(for:self) }
     public var usesRangedMotion:Bool { self == .starlightPulse }
     public var isNodeCast:Bool { [.rally,.runeWard,.battleRune,.dragonFlame,.starlightPulse,.sweep,.dragonSoulWard,.dragonScaleWard,.dragonOrder].contains(self) }
     public var isNodeSupport:Bool { [.rally,.runeWard,.battleRune,.dragonSoulWard,.dragonScaleWard,.dragonOrder].contains(self) }

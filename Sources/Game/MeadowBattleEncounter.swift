@@ -360,10 +360,11 @@ enum MeadowBattleVisualMotion {
         let smooth = MeadowBattleRecoveryField.smooth
         var alpha = formation.map { 0.68*smooth($0/0.46) } ?? 0
         if shield > 0 {
-            let spawn = birth.map { $0 < 0.12 ? smooth($0/0.12) : 1-smooth(($0-0.12)/0.28) } ?? 0
+            let spawn = birth.map { smooth($0/0.12) } ?? 1
+            let flare = birth.map { $0 < 0.12 ? smooth($0/0.12) : 1-smooth(($0-0.12)/0.28) } ?? 0
             let hit = contact.map { 1-smooth($0/0.32) } ?? 0
             let breathing = birth.map { smooth($0/0.4) } ?? 1
-            alpha = max(alpha,0.68+spawn*0.14+hit*0.22+sin(time*3)*0.025*breathing)
+            alpha = max(alpha,0.68*spawn+flare*0.14+hit*0.22+sin(time*3)*0.025*breathing)
         }
         if let broken, broken < 0.25 { alpha=max(alpha,0.95*(1-smooth(broken/0.25))) }
         return min(1,max(0,alpha))

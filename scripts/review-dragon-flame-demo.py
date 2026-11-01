@@ -6,6 +6,7 @@ from pathlib import Path
 from PIL import Image,ImageDraw,ImageFont
 import json,math,functools,subprocess,sys,copy
 R=Path(__file__).resolve().parents[1];D=R/'Art/Review/Battle/dragon-flame-demo-v1';D.mkdir(parents=True,exist_ok=True)
+from review_vfx_status_timing import retime_status_sample
 p=R/'scripts/review-armor-demo.py';N={'__file__':str(p)};exec(compile(p.read_text().split('for item in armors:\n frames=[]')[0],str(p),'exec'),N)
 p=R/'scripts/review-legendary-staff-demo.py';Q={'__file__':str(p)};exec(compile(p.read_text().split('reports=[]\nfor scenario')[0],str(p),'exec'),Q)
 world=Q['world'];S=Q['S'];oldgear=Q['gear'];font=Q['font'];hs=world['hs'];oy=world['oy'];compose=world['compose'];glow=world['glow'];asset=Q['asset'];helpers=world['env']
@@ -63,19 +64,15 @@ def recovery_lights(f,row):
   glow(f,(foot[0],foot[1]+oy),105,27,power*.65,(51,199,89));glow(f,(foot[0],foot[1]-70+oy),42,85,power*.12,(51,199,89))
 world['draw_recovery_lights']=recovery_lights
 
-# Reuse the existing support light geometry to show Dragon Flame's one-time
-# caster heal and the round barrier that persists while the 6-point shield does.
-hit_time=next(r['time'] for r in rows if r['impact'] is not None)
+# Reuse the existing support light geometry, but keep it aligned with Dragon
+# Flame's delayed status request just like the runtime's displayed vitals.
 for row in rows:
  for uid in ('p1','p2'):
   frame=row['frame']%235
   source=world['attached'].get(('runeSlash-'+uid,frame))
   if source is None:source=world['attached'][('runeSlash-'+uid,0)]
   q=copy.deepcopy(source)
-  unit=next(u for u in row['units'] if u['id']==uid)
-  q['shieldOpacity']=0.66 if unit['shield']>0 else 0
-  age=row['time']-hit_time
-  q['recoveryPower']=helpers['smooth'](age/.34)*(1-helpers['smooth']((age-.62)/.90)) if uid=='p1' else 0
+  q=retime_status_sample(q,requests[('dragonFlame-'+uid,row['frame'])])
   world['attached'][('dragonFlame-'+uid,row['frame'])]=q
  world['attached'][('dragonFlame-fx',row['frame'])]={'particles':[]}
 
@@ -157,6 +154,10 @@ def stills(selected=None):
   group=[r for r in rows if r['scenario']==scenario];impact=next(r['time'] for r in group if r['impact'] is not None)
   for tm,label in [(0,'standing'),(.6,'hover'),(1.45,'unfold'),(impact+.06,'impact'),(impact+.36,'recovery'),(3.50,'tail'),(4.6,'rest')]:
    row=min(group,key=lambda r:abs(r['time']-tm));ui(row).save(D/(scenario+'-'+label+'.png'))
+  cue=next((r['statusCueAt'] for r in group if r.get('statusCueAt') is not None),None)
+  if cue is not None:
+   for offset,label in [(0,'status-cue'),(.12,'status-cue-plus-120ms')]:
+    row=min(group,key=lambda r:abs(r['time']-(cue+offset)));ui(row).save(D/(scenario+'-'+label+'.png'))
 if '--draft' in sys.argv:stills();print('35 whole-scene keyframes rendered');sys.exit(0)
 reports=[]
 def save(name,frames):
@@ -184,7 +185,7 @@ def save(name,frames):
 if '--dragon-flame-only' in sys.argv:
  save('dragon-flame',[ui(r) for r in rows if r['scenario']=='dragonFlame'])
  stills(['dragonFlame'])
- (D/'review.json').write_text(json.dumps({'scope':'60 Hz production combat receipts, node-wide targets, 20 delivered RGBA frames and live stage attachments composed offline at normal speed. Not UIKit/game/device capture.','animations':reports,'sourceFrameCount':20,'sourceFrameSize':[280,280],'keyframePNGs':7,'userArtApproval':None},ensure_ascii=False,indent=2)+'\n')
+ (D/'review.json').write_text(json.dumps({'scope':'60 Hz production combat receipts, node-wide targets, 20 delivered RGBA frames and live stage attachments composed offline at normal speed. Not UIKit/game/device capture.','animations':reports,'sourceFrameCount':20,'sourceFrameSize':[280,280],'keyframePNGs':9,'statusCueKeyframes':['dragonFlame-status-cue.png','dragonFlame-status-cue-plus-120ms.png'],'statusRevealTiming':'1.2333s action age: shield and recovery feedback begin at 58% of the 1.3333s Dragon Flame impact animation.','userArtApproval':None},ensure_ascii=False,indent=2)+'\n')
  print('Dragon Flame normal-speed full-scene GIF and seven keyframes rendered');sys.exit(0)
 if '--rune-slash-only' in sys.argv:
  save('runeSlash',[ui(r) for r in rows if r['scenario']=='runeSlash'])

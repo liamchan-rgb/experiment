@@ -144,7 +144,10 @@ def main() -> None:
     repo = os.environ["GITHUB_REPOSITORY"]
     branch = os.environ["GITHUB_REF_NAME"]
     raw = f"https://raw.githubusercontent.com/{repo}/{branch}/Downloads/MeadowJourney-build{build}.ipa"
-    review = f"https://github.com/{repo}/blob/{branch}/Art/Review/Battle/skill-vfx-v1/README.md"
+    review = f"https://github.com/{repo}/blob/{branch}/Art/Review/Battle/spellblade-demo-v1/review.json"
+    rune_slash_gif = f"https://raw.githubusercontent.com/{repo}/{branch}/Art/Review/Battle/spellblade-demo-v1/runeSlash-normal.gif"
+    rune_ward_gif = f"https://raw.githubusercontent.com/{repo}/{branch}/Art/Review/Battle/spellblade-demo-v1/runeWard-normal.gif"
+    flame_gif = f"https://raw.githubusercontent.com/{repo}/{branch}/Art/Review/Battle/dragon-flame-demo-v1/dragon-flame-normal.gif"
     run_url = f"{os.environ['GITHUB_SERVER_URL']}/{repo}/actions/runs/{os.environ['GITHUB_RUN_ID']}"
     ipa_path = f"Downloads/MeadowJourney-build{build}.ipa"
 
@@ -181,22 +184,22 @@ def main() -> None:
 
     readme_path = "Downloads/README.md"
     readme, readme_sha = existing_text(readme_path)
-    heading = f"## build{build} · 五套战斗技能特效接入 · {version}"
+    heading = f"## build{build} · 符文斩／庇护接入与状态时序 · {version}"
     if heading in readme:
         start = readme.index(heading)
         end = readme.find("\n---\n", start)
         readme = readme[:start] + (readme[end + 5 :] if end >= 0 else "")
     section = f"""{heading}
 
-[直接下载 MeadowJourney-build{build}.ipa]({raw}) · [五套正常速度全场 GIF]({review}) · [校验记录](MeadowJourney-build{build}.json)
+[直接下载 MeadowJourney-build{build}.ipa]({raw}) · [符文斩全场 GIF]({rune_slash_gif}) · [符文庇护全场 GIF]({rune_ward_gif}) · [龙焰全场 GIF]({flame_gif}) · [时序／审核记录]({review}) · [校验记录](MeadowJourney-build{build}.json)
 
-接入星辉脉冲、振奋、横扫、龙魂庇护和龙鳞庇护五套用户素材。星辉脉冲沿用远程攻击动作，横扫沿用怪物近身攻击动作，三项辅助技能沿用防护动作；没有新增人物动作。范围特效每个目标节点只播放一次，治疗、护盾和增益仍按真实结算回执显示。原 ZIP、交付帧与运行图集均保存在 `Art/Parts/BattleVFX/`，100 张运行帧逐帧校验通过。
+接入符文斩V2的20帧攻击素材；符文庇护上传包与已归档源包SHA-256相同，继续沿用同一套20帧，未重复导入。上一轮的星辉脉冲、龙魂庇护、龙鳞庇护均复核并调整治疗／护盾显示时序。游戏规则与实际HP/AP/护盾仍在命中回执提交；治疗、护盾圈及数值提示延至相应特效进入后半段（58%）再出现，星辉脉冲在命中时已进入60%。
 
-五段全场动图均为 720×432、2.8 秒、按素材原始 12–20 FPS 播放；它们是离线美术审核，不是 UIKit、模拟器或实机录屏。纯 Swift 规则测试、战斗／资源校验和设备 Release 归档均通过。IPA 为可由 SideStore 重签的 unsigned arm64 设备包，{size:,} 字节，SHA-256 `{checksum}`；ZIP CRC 和版本号均通过。GitHub Actions [运行 #{os.environ['GITHUB_RUN_ID']}]({run_url})。未运行模拟器或实机；安装和实机效果由用户验收。
+符文斩、符文庇护和龙焰全场动图均按正常速度离线合成；上一轮五段技能GIF保持 720×432、2.8 秒、按素材原始12–20 FPS。它们都不是 UIKit、模拟器或实机录屏。Swift规则测试、资源／时序审计和设备Release归档均通过。IPA为SideStore重签用的unsigned arm64设备包，{size:,}字节，SHA-256 `{checksum}`；ZIP CRC和版本号均通过。GitHub Actions [运行 #{os.environ['GITHUB_RUN_ID']}]({run_url})。未运行模拟器或实机；安装和实机效果由用户验收。
 
-[五套动图预览与说明](../Art/Review/Battle/skill-vfx-v1/README.md) · [原始素材和拆帧](../Art/Parts/BattleVFX/skill-effects-v1/manifest.json)
+[八段技能全场GIF和审核数据]({review}) · [符文斩V2源素材与拆帧](../Art/Parts/BattleVFX/rune-slash-v2/README.md) · [符文庇护归档与重复包核验](../Art/Parts/BattleVFX/rune-ward-v1/README.md)
 
-下一步两项：龙鳞庇护的护盾接触／破碎反馈；龙之号令的增益特效。
+下一步两项：龙鳞庇护护盾接触／破碎反馈的场景审核；龙之号令增益特效设计。
 
 ---
 

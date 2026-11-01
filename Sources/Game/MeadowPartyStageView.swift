@@ -4,6 +4,7 @@ import MeadowBattleSupport
 
 final class MeadowPartyStageView:UIView {
     var onChoose:((String)->Void)?
+    var onPresentationChanged:(()->Void)?
     private let world=UIView(),dim=UIView()
     private let clock=MeadowBattleSceneClock()
     private let fx=MeadowPartyEffectsView()
@@ -36,6 +37,12 @@ final class MeadowPartyStageView:UIView {
     private var messages:[MeadowPartyMessage]=[]
     private var emissions:[MeadowBattleLightEmission]=[]
     private var skillVFX:[MeadowPartySkillVFXEvent]=[]
+    private struct PendingStatusCue {
+        let unitID:String,heal:Int,shieldGain:Int
+        let at:Double,point:CGPoint,supportUnit:Bool
+    }
+    private var pendingStatusCues:[PendingStatusCue]=[]
+    private var statusSnapshots:[String:(health:Int,shield:Int)]=[:]
     var isPlaying:Bool { intent != nil }
     override init(frame:CGRect) {
         super.init(frame:frame);backgroundColor=MeadowPreviewPalette.panel;clipsToBounds=true;layer.cornerRadius=12
@@ -71,13 +78,15 @@ final class MeadowPartyStageView:UIView {
     }
     required init?(coder:NSCoder) { fatalError("init(coder:) has not been implemented") }
     @objc private func tapped(_ r:UITapGestureRecognizer) { if !isPlaying,let id=r.view?.accessibilityIdentifier { onChoose?(id) } }
-    func start() { MeadowBattleVFXAssets.prewarm();victoryAt=nil;sceneTime=0;recovery=[:];recoveryTier=[:];formation=[:];birth=[:];contact=[:];broken=[:];deaths=[:];hurt=[:];messages=[];emissions=[];skillVFX=[];poseKeys=[:];fallen=[:];diceAction=nil;diceConfirmedAt=nil;diceView.confirmationAge=nil;diceView.dice=[];diceSettledAt=nil;diceExitAt=nil;dimFrom=0;dimTarget=0;clock.start() }
-    func stop() { clock.stop();intent=nil;impact=nil;completion=nil;focus=nil;skillVFX=[] }
+    func start() { MeadowBattleVFXAssets.prewarm();victoryAt=nil;sceneTime=0;recovery=[:];recoveryTier=[:];formation=[:];birth=[:];contact=[:];broken=[:];deaths=[:];hurt=[:];messages=[];emissions=[];skillVFX=[];pendingStatusCues=[];statusSnapshots=[:];poseKeys=[:];fallen=[:];diceAction=nil;diceConfirmedAt=nil;diceView.confirmationAge=nil;diceView.dice=[];diceSettledAt=nil;diceExitAt=nil;dimFrom=0;dimTarget=0;clock.start() }
+    func stop() { clock.stop();intent=nil;impact=nil;completion=nil;focus=nil;skillVFX=[];pendingStatusCues=[];statusSnapshots=[:] }
+    func displayedVitals(for unitID:String,health:Int,shield:Int)->(health:Int,shield:Int) { statusSnapshots[unitID] ?? (health,shield) }
     func show(_ value:GameState,friend:String,foe:String,current:String?,catalog:GameCatalog) {
         state=value;self.current=current;self.catalog=catalog;fx.friend=friend;fx.foe=foe
         for (id,label) in labels {
             guard let u=value.units[id] else { continue }
-            label.show(name:(id==current ? "▶ ":"")+u.name,hp:u.health,maximum:(try? GameRules.attributes(u,catalog:catalog).maximumHealth) ?? u.baseAttributes.maximumHealth,shield:u.shield)
+            let visible=displayedVitals(for:id,health:u.health,shield:u.shield)
+            label.show(name:(id==current ? "▶ ":"")+u.name,hp:visible.health,maximum:(try? GameRules.attributes(u,catalog:catalog).maximumHealth) ?? u.baseAttributes.maximumHealth,shield:visible.shield)
         }
         render()
     }
@@ -111,15 +120,11 @@ final class MeadowPartyStageView:UIView {
             skillVFX.append(MeadowPartySkillVFXEvent(spec:spec,startedAt:spec.startTime(actionStart:sceneTime,impactAge:hitAge),center:PartyVisual.skillEffectCenter(targets:value.targets,actor:value.actor),groundY:groundY))
         }
         let delayed=sceneTime+max(0,value.action.impact-0.46)
-        if (value.action.isRune || value.action == .dragonFlame),let catalog {
-            for cue in SpellbladeEffects.recipients(value,catalog:catalog) {
-                guard let unit=before.units[cue.unitID] else { continue }
-                if cue.shield>unit.shield { formation[cue.unitID]=delayed }
-            }
-        }
+        let statusAge=value.action.statusVFXCueAge ?? value.action.impact
+        let statusCueIsLate=statusAge>value.action.impact+0.0001
         for id in value.targets {
             guard let unit=before.units[id] else { continue }
-            if ["support","guard"].contains(value.action.visual),unit.shield<([PartyAction.shieldPotion].contains(value.action) ? 8:4) { formation[id]=delayed }
+            if !statusCueIsLate,["support","guard"].contains(value.action.visual),unit.shield<([PartyAction.shieldPotion].contains(value.action) ? 8:4) { formation[id]=delayed }
         }
         render()
     }
@@ -128,6 +133,11 @@ final class MeadowPartyStageView:UIView {
         sceneTime += delta
         emissions.removeAll { sceneTime-$0.startedAt>3 };messages.removeAll { sceneTime-$0.at>1.0 }
         skillVFX.removeAll { sceneTime-$0.startedAt>$0.spec.duration }
+        let due=pendingStatusCues.filter { $0.at<=sceneTime+1e-9 }
+        if !due.isEmpty {
+            pendingStatusCues.removeAll { $0.at<=sceneTime+1e-9 }
+            due.forEach(revealStatusCue)
+        }
         if let value=intent {
             let age=sceneTime-startAt
             let end=value.enemy ? 1.10:value.action.duration
@@ -150,16 +160,23 @@ final class MeadowPartyStageView:UIView {
             guard let before=receipt.before.units[id],let after=receipt.after.units[id],let foot=PartyVisual.feet[id] else { continue }
             let heal=max(0,after.health-before.health),damage=max(0,before.health-after.health),gain=max(0,after.shield-before.shield),absorbed=max(0,before.shield-after.shield)
             let shieldHit=absorbed>0 && id.hasPrefix("p")
+            let statusAt=startAt+(intent.action.statusVFXCueAge ?? intent.action.impact)
+            let delayStatus=after.isAlive && (heal>0 || gain>0) && statusAt>sceneTime+0.0001
+            let showsBesideOwner=intent.action.isRune || intent.action == .dragonFlame || intent.action == .starlightPulse || intent.action.isNodeSupport
             let registered=PartyVisual.hitPoint(target:id,shielded:shieldHit,weaponID:intent.weaponID)
             let point=["greatSword","legendaryStaff"].contains(intent.weaponID ?? "") && id.hasPrefix("m") ? CGPoint(x:registered.x,y:registered.y):CGPoint(x:foot.x+(shieldHit ? (5+240*0.41)*PartyVisual.heroScale:(id.hasPrefix("m") ? -80:0)),y:foot.y-(id.hasPrefix("p") ? 65:72))
-            if heal>0 {
+            if delayStatus {
+                statusSnapshots[id]=(before.health,before.shield)
+                pendingStatusCues.append(.init(unitID:id,heal:heal,shieldGain:gain,at:statusAt,point:point,supportUnit:showsBesideOwner))
+            }
+            if heal>0 && !delayStatus {
                 let shift=intent.actor==id ? PartyVisual.travel(intent,age:sceneTime-startAt):PartyPoint(0,0)
                 recovery[id]=sceneTime
                 recoveryTier[id]=HealingEffectTier.classify(actualHPGained:heal)
-                messages.append(.init(text:"＋\(heal)",point:CGPoint(x:point.x+shift.x,y:point.y+shift.y),at:sceneTime,color:.systemGreen,supportUnit:(intent.action.isRune || intent.action == .dragonFlame || intent.action == .starlightPulse || intent.action.isNodeSupport) ? id:nil))
+                messages.append(.init(text:"＋\(heal)",point:CGPoint(x:point.x+shift.x,y:point.y+shift.y),at:sceneTime,color:.systemGreen,supportUnit:showsBesideOwner ? id:nil))
             }
-            if gain>0 { birth[id]=sceneTime;messages.append(.init(text:"盾 ＋\(gain)",point:CGPoint(x:point.x,y:point.y+(intent.action.isRune || intent.action == .dragonFlame || intent.action.isNodeSupport ? 36:24)),at:sceneTime,color:.systemCyan,supportUnit:(intent.action.isRune || intent.action == .dragonFlame || intent.action == .starlightPulse || intent.action.isNodeSupport) ? id:nil,supportLine:1)) }
-            if after.damageBuff != before.damageBuff,let b=after.damageBuff { messages.append(.init(text:"伤害 ＋\(b.amount)",point:CGPoint(x:point.x,y:point.y-(intent.action.isRune || intent.action == .dragonFlame || intent.action.isNodeSupport ? 36:0)),at:sceneTime,color:MeadowPreviewPalette.gold,supportUnit:(intent.action.isRune || intent.action == .dragonFlame || intent.action.isNodeSupport) ? id:nil,supportLine:(heal>0 || gain>0) ? 2:0)) }
+            if gain>0 && !delayStatus { birth[id]=sceneTime;messages.append(.init(text:"盾 ＋\(gain)",point:CGPoint(x:point.x,y:point.y+(intent.action.isRune || intent.action == .dragonFlame || intent.action.isNodeSupport ? 36:24)),at:sceneTime,color:.systemCyan,supportUnit:showsBesideOwner ? id:nil,supportLine:1)) }
+            if after.damageBuff != before.damageBuff,let b=after.damageBuff { messages.append(.init(text:"伤害 ＋\(b.amount)",point:CGPoint(x:point.x,y:point.y-(intent.action.isRune || intent.action == .dragonFlame || intent.action.isNodeSupport ? 36:0)),at:sceneTime,color:MeadowPreviewPalette.gold,supportUnit:showsBesideOwner ? id:nil,supportLine:(heal>0 || gain>0) ? 2:0)) }
             if damage>0 || absorbed>0 {
                 hurt[id]=sceneTime
                 let hit=PartyVisual.hitPoint(target:id,shielded:absorbed>0,weaponID:intent.weaponID)
@@ -171,6 +188,21 @@ final class MeadowPartyStageView:UIView {
             if before.isAlive && !after.isAlive && after.kind == .monster { deaths[id]=sceneTime;emissions.append(.init(kind:.death,startedAt:sceneTime,x:Double(point.x),y:Double(point.y),groundY:foot.y)) }
             if before.isAlive && !after.isAlive && after.kind == .player { recovery[id]=nil;recoveryTier[id]=nil;fallen[id]=sceneTime }
         }
+        onPresentationChanged?()
+    }
+    private func revealStatusCue(_ cue:PendingStatusCue) {
+        statusSnapshots.removeValue(forKey:cue.unitID)
+        if cue.heal>0 {
+            recovery[cue.unitID]=cue.at
+            recoveryTier[cue.unitID]=HealingEffectTier.classify(actualHPGained:cue.heal)
+            let shift=intent?.actor==cue.unitID ? PartyVisual.travel(intent,age:sceneTime-startAt):PartyPoint(0,0)
+            messages.append(.init(text:"＋\(cue.heal)",point:CGPoint(x:cue.point.x+shift.x,y:cue.point.y+shift.y),at:cue.at,color:.systemGreen,supportUnit:cue.supportUnit ? cue.unitID:nil))
+        }
+        if cue.shieldGain>0 {
+            birth[cue.unitID]=cue.at
+            messages.append(.init(text:"盾 ＋\(cue.shieldGain)",point:CGPoint(x:cue.point.x,y:cue.point.y+36),at:cue.at,color:.systemCyan,supportUnit:cue.supportUnit ? cue.unitID:nil,supportLine:1))
+        }
+        onPresentationChanged?()
     }
     private func render() {
         guard let state else { return }
@@ -189,11 +221,12 @@ final class MeadowPartyStageView:UIView {
         }
         for id in ["p1","p2","m1","m2"] {
             guard let unit=state.units[id],let f=PartyVisual.feet[id] else { continue }
+            let shownVitals=displayedVitals(for:id,health:unit.health,shield:unit.shield)
             labels[id]?.isHidden=unit.kind == .monster && !unit.isAlive
             let offset=intent?.actor==id ? moving:PartyPoint(0,0)
             let foot=CGPoint(x:f.x+offset.x,y:f.y+offset.y)
             if let actor=actors[id] {
-                let pose=PartyVisual.pose(unit:unit,intent:intent,age:age,time:sceneTime,hurtAge:hurt[id].map { sceneTime-$0 },blocked:unit.shield>0 || (hurt[id] != nil && broken[id]==hurt[id]),downAge:fallen[id].map { sceneTime-$0 },victoryAge:victoryAt.map { sceneTime-$0 })
+                let pose=PartyVisual.pose(unit:unit,intent:intent,age:age,time:sceneTime,hurtAge:hurt[id].map { sceneTime-$0 },blocked:shownVitals.shield>0 || (hurt[id] != nil && broken[id]==hurt[id]),downAge:fallen[id].map { sceneTime-$0 },victoryAge:victoryAt.map { sceneTime-$0 })
                 actor.setWeaponAsset(HeroFrames.weaponVisual(unit.equipment.weapon)?.battleAsset)
                 actor.setArmor(unit.equipment.armor)
                 let clip=pose.clip,progress=pose.progress
@@ -204,7 +237,7 @@ final class MeadowPartyStageView:UIView {
                 let key="\(clip)-\(Int((progress*24).rounded()))-\(unit.equipment.weapon ?? "none")-\(unit.equipment.armor ?? "none")"
                 if key != poseKeys[id] { shadows[id]?.update(image:actor.poseSilhouette,soleY:actor.poseFootAnchorPx.y,contacts:actor.poseContacts.map { .init(point:$0,radius:12) });poseKeys[id]=key }
                 attached[id]?.frame=actor.bounds
-                attached[id]?.update(shield:unit.shield,preview:0,time:sceneTime,formation:unit.shield==0 ? formation[id].flatMap { sceneTime-$0<1.0 ? sceneTime-$0:nil }:nil,formationBase:0,birth:birth[id].map { sceneTime-$0 },contact:contact[id].map { sceneTime-$0 },broken:broken[id].map { sceneTime-$0 },recovery:unit.isAlive ? recovery[id].map { sceneTime-$0 }:nil,recoveryTier:recoveryTier[id])
+                attached[id]?.update(shield:shownVitals.shield,preview:0,time:sceneTime,formation:shownVitals.shield==0 ? formation[id].flatMap { sceneTime-$0<1.0 ? sceneTime-$0:nil }:nil,formationBase:0,birth:birth[id].map { sceneTime-$0 },contact:contact[id].map { sceneTime-$0 },broken:broken[id].map { sceneTime-$0 },recovery:unit.isAlive ? recovery[id].map { sceneTime-$0 }:nil,recoveryTier:recoveryTier[id])
                 shadows[id]?.spriteFrame=actor.frame
                 labels[id]?.frame=CGRect(x:f.x-88,y:f.y-170,width:176,height:44)
             } else if let view=monsters[id] {

@@ -169,6 +169,7 @@ def render_one(skill):
     hit_age=.46 if skill=='sweep' else 1.048 if skill=='starlightPulse' else .56
     peak=spec['peak_frame']/spec['fps']
     effect_start=action_start+hit_age if skill in ('rally','dragonSoulWard','dragonScaleWard') else action_start+max(0.,hit_age-peak)
+    status_reveal_time=(action_start+hit_age if skill=='starlightPulse' else effect_start+spec['count']/spec['fps']*.58 if skill in ('dragonSoulWard','dragonScaleWard') else None)
     frames=[]
     names=['m1','m2'] if skill=='starlightPulse' else ['p1','p2']
     pivot_points=[]
@@ -188,15 +189,20 @@ def render_one(skill):
         maxdim=.58 if skill in ('sweep','starlightPulse') else .32 if skill!='rally' else .36
         dim=maxdim*smooth(dim_age/.4)*(1-smooth((dim_age-1.2)/.6)) if dim_age>=0 else 0
         scene.alpha_composite(make_shade(dim))
-        # Healing and shields are independent gameplay feedback, shown from the existing assets.
-        if skill=='starlightPulse' and t>=action_start+hit_age:
+        # Rule changes are committed on hit; the positive HP/shield art waits
+        # until its spell animation is in the later half.
+        status_age=t-(action_start+hit_age)
+        if skill=='starlightPulse' and status_age>=0:
             p=FEET['p2'];standard=image_asset('BattleVFXHealingStandardSheet')
-            frame_index=min(19,max(0,int((t-action_start-hit_age)*20)))
+            frame_index=min(19,max(0,int(status_age*20)))
             tile=standard.crop(((frame_index%5)*614,(frame_index//5)*512,(frame_index%5+1)*614,(frame_index//5+1)*512))
-            additive(scene,tile,(p[0],p[1]-104),(206,173),.46)
-            barrier=image_asset('BattleVFXRoundBarrier');additive(scene,barrier,(p[0]+4,p[1]-87),(199,199),.34)
-        elif skill in ('dragonSoulWard','dragonScaleWard') and t>=action_start+hit_age:
-            frame_index=min(19,max(0,int((t-action_start-hit_age)*20)))
+            fade=smooth(status_age/.12)
+            additive(scene,tile,(p[0],p[1]-104),(206,173),.46*fade)
+            barrier=image_asset('BattleVFXRoundBarrier');additive(scene,barrier,(p[0]+4,p[1]-87),(199,199),.34*fade)
+        elif skill in ('dragonSoulWard','dragonScaleWard') and t>=effect_start+spec['count']/spec['fps']*.58:
+            status_age=t-(effect_start+spec['count']/spec['fps']*.58)
+            frame_index=min(19,max(0,int(status_age*20)))
+            fade=smooth(status_age/.12)
             barrier=image_asset('BattleVFXRoundBarrier')
             for unit in ('p1','p2'):
                 # Existing receipt-dependent healing is shown at its actual tier:
@@ -205,7 +211,7 @@ def render_one(skill):
                 sheet_name='BattleVFXHealingStrongSheet' if tier=='strong' else 'BattleVFXHealingStandardSheet'
                 cell=512 if tier=='strong' else 614
                 tile=image_asset(sheet_name).crop(((frame_index%5)*cell,(frame_index//5)*cell,(frame_index%5+1)*cell,(frame_index//5+1)*cell))
-                p=FEET[unit];additive(scene,tile,(p[0],p[1]-112),(214,214),.43);additive(scene,barrier,(p[0]+4,p[1]-87),(199,199),.27)
+                p=FEET[unit];additive(scene,tile,(p[0],p[1]-112),(214,214),.43*fade);additive(scene,barrier,(p[0]+4,p[1]-87),(199,199),.27*fade)
         local=t-effect_start
         if 0<=local<spec['count']/spec['fps']:
             pos=local*spec['fps'];lower=min(spec['count']-1,max(0,int(pos)));upper=min(spec['count']-1,lower+1);mix=smooth(pos-lower)
@@ -263,7 +269,12 @@ def render_one(skill):
     page.save(OUT/f'{skill}-decoded-all-frames.jpg',quality=90)
     for sec,label in [(0,'idle'),(.8,'windup'),(1.1,'impact'),(1.55,'tail'),(2.5,'settled')]:
         frames[min(FRAMES-1,round(sec*FPS))].save(OUT/f'{skill}-{label}.png')
-    return {'gif':name,'decodedFrames':gif.n_frames,'totalDurationMs':sum(durations),'sampledAtMs':20,'sizeBytes':target.stat().st_size,'motion':CLIP_NOTE[skill],'sourceFPS':spec['fps']}
+    cue_frame=None
+    if status_reveal_time is not None:
+        cue_frame=min(FRAMES-1,round(status_reveal_time*FPS))
+        frames[cue_frame].save(OUT/f'{skill}-status-cue.png')
+        frames[min(FRAMES-1,round((status_reveal_time+.12)*FPS))].save(OUT/f'{skill}-status-cue-plus-120ms.png')
+    return {'gif':name,'decodedFrames':gif.n_frames,'totalDurationMs':sum(durations),'sampledAtMs':20,'sizeBytes':target.stat().st_size,'motion':CLIP_NOTE[skill],'sourceFPS':spec['fps'],'statusCueAtSceneMs':round(status_reveal_time*1000) if status_reveal_time is not None else None,'statusCueFrame':cue_frame}
 
 selected=[ARGS.skill] if ARGS.skill else ['starlightPulse','rally','sweep','dragonSoulWard','dragonScaleWard']
 report={skill:render_one(skill) for skill in selected}
@@ -273,5 +284,12 @@ if path.exists():
     try:review=json.loads(path.read_text())
     except json.JSONDecodeError:pass
 review['animations'].update(report)
+review['statusRevealTiming']={
+    'starlightPulse':'1.048s receipt at 60% of the 1.25s authored VFX; healing and round shield begin on the hit cue, in the latter half.',
+    'dragonSoulWard':'Begin recovery and shield at VFX age 0.967s / 58% of 1.667s.',
+    'dragonScaleWard':'Begin recovery and shield at VFX age 0.580s / 58% of 1.0s.',
+    'rally':'No positive HP or shield receipt.',
+    'sweep':'No positive HP or shield receipt.'
+}
 path.write_text(json.dumps(review,ensure_ascii=False,indent=2)+'\n')
 print(json.dumps(report,ensure_ascii=False,indent=2))

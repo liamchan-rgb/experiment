@@ -98,6 +98,7 @@ jobs:
           build/art-tools/bin/python scripts/verify-rune-vfx-assets.py 2>&1 | tee build/logs/rune-vfx-assets.log || check_failed=1
           build/art-tools/bin/python scripts/verify-skill-vfx-assets.py 2>&1 | tee build/logs/skill-vfx-assets.log || check_failed=1
           swift test --package-path Vendor/ClassroomGameCore 2>&1 | tee build/logs/party-rules.log || check_failed=1
+          python3 scripts/test-review-vfx-status-timing.py 2>&1 | tee build/logs/review-vfx-status-timing.log || check_failed=1
           swift run --package-path Vendor/ClassroomGameCore MeadowSupportReviewExport build/logs/rune-review --rune-only 2>&1 | tee build/logs/rune-export.log || check_failed=1
           swift run --package-path Vendor/ClassroomGameCore MeadowSupportReviewExport build/logs/party-review --healing-only 2>&1 | tee build/logs/party-export.log || check_failed=1
           swift run --package-path Vendor/ClassroomGameCore MeadowSupportReviewExport build/logs/dragon-flame-review --dragon-flame-only 2>&1 | tee build/logs/dragon-flame-export.log || check_failed=1
@@ -127,8 +128,59 @@ jobs:
       - name: Compose normal-speed supplied skill VFX review (offline)
         run: |
           set -euo pipefail
+          rune_dir=Art/Review/Battle/spellblade-demo-v1
+          flame_dir=Art/Review/Battle/dragon-flame-demo-v1
+          mkdir -p "$rune_dir" "$flame_dir"
+          bow_dir=Art/Review/Battle/bow-actions-r7-demo-v1
+          sword_dir=Art/Review/Battle/great-sword-demo-v1
+          staff_dir=Art/Review/Battle/legendary-staff-demo-v1
+          support_dir=Art/Review/Battle/party-support-demo-v1
+          dice_dir=Art/Review/Battle/hunting-bow-a-project-r1
+          parts_dir=Art/Parts/P1-Battle/hunting-bow-aim-project-r1
+          mkdir -p "$bow_dir" "$sword_dir" "$staff_dir" "$support_dir" "$dice_dir" "$parts_dir"
+          git show HEAD:Art/Review/Battle/spellblade-demo-v1/spellblade-light-samples.json > "$rune_dir/spellblade-light-samples.json"
+          git show HEAD:Art/Review/Battle/bow-actions-r7-demo-v1/bow-poses.json > "$bow_dir/bow-poses.json"
+          git show HEAD:Art/Review/Battle/great-sword-demo-v1/great-sword-poses.json > "$sword_dir/great-sword-poses.json"
+          git show HEAD:Art/Review/Battle/legendary-staff-demo-v1/great-sword-poses.json > "$staff_dir/great-sword-poses.json"
+          git show HEAD:Art/Review/Battle/legendary-staff-demo-v1/legendary-staff-poses.json > "$staff_dir/legendary-staff-poses.json"
+          git show HEAD:Art/Review/Battle/party-support-demo-v1/party-frames.json > "$support_dir/party-frames.json"
+          git show HEAD:Art/Review/Battle/party-support-demo-v1/legacy-attachment-samples.json > "$support_dir/legacy-attachment-samples.json"
+          git show HEAD:Art/Review/Battle/dice-party-demo-v1/dice-light-samples.json > "$dice_dir/dice-light-samples.json"
+          printf '[]\n' > "$dice_dir/poly-frames.json"
+          git show HEAD:Art/Parts/P1-Battle/hunting-bow-aim-project-r1/pose.json > "$parts_dir/pose.json"
+          git show HEAD:Art/Parts/P1-Battle/hunting-bow-aim-project-r1/drawing-hand.png > "$parts_dir/drawing-hand.png"
+          git show HEAD:Art/Parts/P1-Battle/hunting-bow-aim-project-r1/grip-hand.png > "$parts_dir/grip-hand.png"
+          cp build/logs/rune-review/spellblade-frames.json "$rune_dir/spellblade-frames.json"
+          cp build/logs/rune-review/spellblade-light-requests.json "$rune_dir/spellblade-light-requests.json"
+          cp "$rune_dir/spellblade-frames.json" "$dice_dir/dice-frames.json"
+          cp "$rune_dir/spellblade-light-samples.json" "$dice_dir/dice-light-samples.json"
+          cp build/logs/dragon-flame-review/dragon-flame-frames.json "$flame_dir/dragon-flame-frames.json"
+          cp build/logs/dragon-flame-review/dragon-flame-light-requests.json "$flame_dir/dragon-flame-light-requests.json"
+          build/art-tools/bin/python scripts/review-spellblade-demo.py --rune-pair-only \
+            2>&1 | tee build/logs/rune-review-render.log
+          build/art-tools/bin/python scripts/audit-spellblade-demo.py \
+            2>&1 | tee build/logs/rune-status-timing-audit.log
+          build/art-tools/bin/python scripts/review-dragon-flame-demo.py \
+            2>&1 | tee build/logs/dragon-flame-review-render.log
           build/art-tools/bin/python scripts/review-skill-vfx-demo.py \
             2>&1 | tee build/logs/skill-vfx-review-render.log
+
+      - name: Upload rune and delayed-status art review
+        uses: actions/upload-artifact@v7
+        with:
+          name: rune-status-review-${{ github.run_id }}-${{ github.run_attempt }}
+          path: |
+            Art/Review/Battle/spellblade-demo-v1/runeSlash-normal.gif
+            Art/Review/Battle/spellblade-demo-v1/runeWard-normal.gif
+            Art/Review/Battle/spellblade-demo-v1/runeSlash-*.png
+            Art/Review/Battle/spellblade-demo-v1/runeWard-*.png
+            Art/Review/Battle/spellblade-demo-v1/source-audit.json
+            Art/Review/Battle/spellblade-demo-v1/review.json
+            Art/Review/Battle/dragon-flame-demo-v1/dragon-flame-normal.gif
+            Art/Review/Battle/dragon-flame-demo-v1/dragonFlame-*.png
+            Art/Review/Battle/dragon-flame-demo-v1/review.json
+          if-no-files-found: error
+          retention-days: 30
 
       - name: Upload supplied skill VFX art review
         uses: actions/upload-artifact@v7

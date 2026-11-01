@@ -474,7 +474,9 @@ extension Export {
         var dice=BattleDice.channels(action,actor:actorUnit,target:targetUnit,catalog:model.engine.catalog)
         let start=0.75,step=1.0/60.0,count=270
         var intent:PartyIntent?,receipt:OperationReceipt?,hitAt:Double?
-        var hurts:[String:Double]=[:],deaths:[String:Double]=[:],supportStarts:[String:Double]=[:],supportStrength:[String:Double]=[:],labels:[[String:Any]]=[],emitters:[[String:Any]]=[]
+        var hurts:[String:Double]=[:],deaths:[String:Double]=[:],supportStarts:[String:Double]=[:],supportStrength:[String:Double]=[:],shieldBirths:[String:Double]=[:],labels:[[String:Any]]=[],emitters:[[String:Any]]=[]
+        var visualHealth=Dictionary(uniqueKeysWithValues:baseline.units.map { ($0.key,$0.value.health) }),visualShield=Dictionary(uniqueKeysWithValues:baseline.units.map { ($0.key,$0.value.shield) })
+        var pendingStatus:[String:(at:Double,health:Int,shield:Int,heal:Int,gain:Int,x:Double,y:Double)]=[:]
         var rows:[[String:Any]]=[],requests:[[String:Any]]=[]
         func object<T:Encodable>(_ value:T)throws->Any { try JSONSerialization.jsonObject(with:JSONEncoder().encode(value)) }
         for frame in 0..<count {
@@ -501,11 +503,25 @@ extension Export {
                         if before.isAlive && !after.isAlive && after.kind == .monster {
                             deaths[id]=time;emitters.append(["kind":"death","at":time,"x":point.x,"y":point.y,"floor":foot.y])
                         }
-                        if heal>0 { let amount=cues.first{$0.unitID==id}?.heal ?? heal;supportStarts[id]=time;supportStrength[id]=SpellbladeEffects.healingStrength(amount);labels.append(["text":"＋\(heal)","x":foot.x,"y":foot.y,"at":time,"supportUnit":id,"supportLine":0,"recoveryStrength":supportStrength[id]!]) }
-                        if gain>0 { labels.append(["text":"盾 ＋\(gain)","x":foot.x,"y":foot.y,"at":time,"supportUnit":id,"supportLine":1]) }
-                        if after.damageBuff != before.damageBuff,let buff=after.damageBuff { labels.append(["text":"增伤 ＋\(buff.amount)","x":foot.x,"y":foot.y,"at":time,"supportUnit":id,"supportLine":0]) }
+                        visualHealth[id]=after.health-heal;visualShield[id]=after.shield-gain
+                        if heal>0 || gain>0 {
+                            let cueAt=start+(SpellbladeEffects.statusVFXCueAge(for:action) ?? action.impact)
+                            if cueAt>time+0.0001 { pendingStatus[id]=(cueAt,after.health,after.shield,heal,gain,foot.x,foot.y) }
+                            else {
+                                visualHealth[id]=after.health;visualShield[id]=after.shield
+                                if heal>0 { supportStarts[id]=cueAt;supportStrength[id]=SpellbladeEffects.healingStrength(heal);labels.append(["text":"＋\(heal)","x":foot.x,"y":foot.y,"at":cueAt,"supportUnit":id,"supportLine":0,"recoveryStrength":supportStrength[id]!]) }
+                                if gain>0 { shieldBirths[id]=cueAt;labels.append(["text":"盾 ＋\(gain)","x":foot.x,"y":foot.y,"at":cueAt,"supportUnit":id,"supportLine":1]) }
+                            }
+                        }
+                        if after.damageBuff != before.damageBuff,let buff=after.damageBuff { labels.append(["text":"增伤 ＋\(buff.amount)","x":foot.x,"y":foot.y,"at":time,"supportUnit":id,"supportLine":(heal>0 || gain>0) ? 2:0]) }
                     }
                 }
+            }
+            let readyStatus=pendingStatus.filter { $0.value.at<=time+1e-9 }
+            for (id,cue) in readyStatus {
+                pendingStatus.removeValue(forKey:id);visualHealth[id]=cue.health;visualShield[id]=cue.shield
+                if cue.heal>0 { supportStarts[id]=cue.at;supportStrength[id]=SpellbladeEffects.healingStrength(cue.heal);labels.append(["text":"＋\(cue.heal)","x":cue.x,"y":cue.y,"at":cue.at,"supportUnit":id,"supportLine":0,"recoveryStrength":supportStrength[id]!]) }
+                if cue.gain>0 { shieldBirths[id]=cue.at;labels.append(["text":"盾 ＋\(cue.gain)","x":cue.x,"y":cue.y,"at":cue.at,"supportUnit":id,"supportLine":1]) }
             }
             let visible=intent.flatMap { age<action.duration ? $0:nil }
             let cues=intent.map { SpellbladeEffects.recipients($0,catalog:model.engine.catalog) } ?? []
@@ -514,10 +530,11 @@ extension Export {
                 let unit=model.state.units[id]!,stats=try GameRules.attributes(unit,catalog:model.engine.catalog)
                 let pose=PartyVisual.pose(unit:unit,intent:visible,age:age,time:time,hurtAge:hurts[id].map{time-$0})
                 let monster=PartyVisual.monster(time:time+(id=="m2" ? 0.7:0),attackAge:nil,hurtAge:hurts[id].map{time-$0},preparing:model.current==id && visible==nil)
-                units.append(["id":id,"name":unit.name,"weaponID":unit.equipment.weapon as Any? ?? NSNull(),"armorID":unit.equipment.armor as Any? ?? NSNull(),"weaponPose":NSNull(),"vitalsVisible":unit.kind != .monster || unit.isAlive,"hp":unit.health,"maxHP":stats.maximumHealth,"baseAP":stats.baseAP,"maximumAP":stats.maximumAP,"attributeDamage":stats.damage,"shield":unit.shield,"ap":unit.ap,"buff":unit.damageBuff?.amount ?? 0,"buffRounds":unit.damageBuff?.roundsLeft ?? 0,"clip":pose.clip,"progress":pose.progress,"monster":try object(monster),"deathAge":deaths[id].map{time-$0} as Any? ?? NSNull()])
+                units.append(["id":id,"name":unit.name,"weaponID":unit.equipment.weapon as Any? ?? NSNull(),"armorID":unit.equipment.armor as Any? ?? NSNull(),"weaponPose":NSNull(),"vitalsVisible":unit.kind != .monster || unit.isAlive,"hp":visualHealth[id] ?? unit.health,"gameHP":unit.health,"maxHP":stats.maximumHealth,"baseAP":stats.baseAP,"maximumAP":stats.maximumAP,"attributeDamage":stats.damage,"shield":visualShield[id] ?? unit.shield,"gameShield":unit.shield,"ap":unit.ap,"buff":unit.damageBuff?.amount ?? 0,"buffRounds":unit.damageBuff?.roundsLeft ?? 0,"clip":pose.clip,"progress":pose.progress,"monster":try object(monster),"deathAge":deaths[id].map{time-$0} as Any? ?? NSNull()])
                 if id.hasPrefix("p") {
-                    var request:[String:Any]=["kind":"dragonFlame-\(id)","frame":frame,"time":time,"shield":unit.shield,"emitters":[]]
+                    var request:[String:Any]=["kind":"dragonFlame-\(id)","frame":frame,"time":time,"shield":visualShield[id] ?? unit.shield,"emitters":[]]
                     if let at=supportStarts[id],time-at<1.8 { request["recoveryAge"]=time-at;request["recoveryStrength"]=supportStrength[id] ?? 1 }
+                    if let at=shieldBirths[id],(visualShield[id] ?? unit.shield)>0 { request["birth"]=time-at }
                     requests.append(request)
                 }
             }
@@ -529,7 +546,7 @@ extension Export {
             let projectedDice=dice.enumerated().map { index,die in
                 PolyhedralDice.sample(die:die,time:time,index:index,count:dice.count,resolvedAge:hitAt.map{time-$0},visibleAge:max(0,time-0.20),locked:!hover,confirmationAge:hover ? nil:age)
             }
-            rows.append(["scenario":"dragonFlame","frame":frame,"time":time,"hitPoints":try object(Dictionary(uniqueKeysWithValues:["p1","p2","m1","m2"].map{($0,PartyVisual.hitPoint(target:$0))})),"damageLabels":labels.filter{time-($0["at"] as! Double)<1},"staff":NSNull(),"ranged":false,"weaponTrail":[],"projectile":NSNull(),"locked":!hover,"confirmationAge":hover ? NSNull():age,"hover":hover,"darkness":dark,"actor":actor,"target":target,"action":action.rawValue,"age":age,"playing":visible != nil,"enemy":false,"impact":hitAt as Any? ?? NSNull(),"afterimages":[],"ambushSlashes":[],"receiptDice":try object(receipt?.dice ?? []),"dice":try object(dice),"diceAnchor":try object(anchor),"dicePose":try object(diePose),"poly":try object(projectedDice),"travel":try object(travel),"current":(visible?.actor ?? model.current) as Any? ?? NSNull(),"acted":Array(model.state.battle?.acted ?? []),"units":units,"runes":try object(geometry),"recipients":try object(cues),"committed":committed != nil])
+            rows.append(["scenario":"dragonFlame","statusCueAge":action.statusVFXCueAge ?? action.impact,"statusCueAt":start+(action.statusVFXCueAge ?? action.impact),"statusFeedbackPending":!pendingStatus.isEmpty,"frame":frame,"time":time,"hitPoints":try object(Dictionary(uniqueKeysWithValues:["p1","p2","m1","m2"].map{($0,PartyVisual.hitPoint(target:$0))})),"damageLabels":labels.filter{time-($0["at"] as! Double)<1},"staff":NSNull(),"ranged":false,"weaponTrail":[],"projectile":NSNull(),"locked":!hover,"confirmationAge":hover ? NSNull():age,"hover":hover,"darkness":dark,"actor":actor,"target":target,"action":action.rawValue,"age":age,"playing":visible != nil,"enemy":false,"impact":hitAt as Any? ?? NSNull(),"afterimages":[],"ambushSlashes":[],"receiptDice":try object(receipt?.dice ?? []),"dice":try object(dice),"diceAnchor":try object(anchor),"dicePose":try object(diePose),"poly":try object(projectedDice),"travel":try object(travel),"current":(visible?.actor ?? model.current) as Any? ?? NSNull(),"acted":Array(model.state.battle?.acted ?? []),"units":units,"runes":try object(geometry),"recipients":try object(cues),"committed":committed != nil])
             let active=emitters.compactMap { e -> [String:Any]? in let elapsed=time-(e["at"] as! Double);guard elapsed<3 else{return nil};return ["kind":e["kind"]!,"age":elapsed,"x":e["x"]!,"y":e["y"]!,"floor":e["floor"]!] }
             requests.append(["kind":"dragonFlame-fx","frame":frame,"time":time,"shield":0,"emitters":active])
         }
@@ -560,6 +577,8 @@ extension Export {
             let actorUnit=original.units[actor]!,targetUnit=original.units[target]!
             var dice=BattleDice.channels(action,actor:actorUnit,target:targetUnit,catalog:p.engine.catalog),intent:PartyIntent?,receipt:OperationReceipt?,hitAt:Double?
             var hurts:[String:Double]=[:],deaths:[String:Double]=scenario=="runeSlash-lethal" ? ["m2":-3]:[:],births:[String:Double]=[:],heals:[String:Double]=[:],strengths:[String:Double]=[:],healingTiers:[String:HealingEffectTier]=[:]
+            var visualHealth=Dictionary(uniqueKeysWithValues:original.units.map { ($0.key,$0.value.health) }),visualShield=Dictionary(uniqueKeysWithValues:original.units.map { ($0.key,$0.value.shield) })
+            var pendingStatus:[String:(at:Double,health:Int,shield:Int,heal:Int,gain:Int,x:Double,y:Double)]=[:]
             var emitters:[[String:Any]]=[],labels:[[String:Any]]=[];let start=1.0,count=235
             for frame in 0..<count {
                 let time=Double(frame)*0.02,age=time-start
@@ -576,12 +595,26 @@ extension Export {
                             let a=r.before.units[id]!,b=r.after.units[id]!,foot=PartyVisual.feet[id]!,point=PartyVisual.hitPoint(target:id,weaponID:i.weaponID)
                             let damage=max(0,a.health-b.health),gain=max(0,b.shield-a.shield),heal=max(0,b.health-a.health)
                             if damage>0 { hurts[id]=time;labels.append(["text":"−\(damage)","x":point.x,"y":point.y,"at":time]);emitters.append(["kind":"strike","at":time,"x":point.x,"y":point.y,"floor":foot.y]) }
-                            if heal>0 { heals[id]=time;healingTiers[id]=HealingEffectTier.classify(actualHPGained:heal);strengths[id]=SpellbladeEffects.healingStrength(heal);labels.append(["text":"＋\(heal)","x":foot.x,"y":foot.y,"at":time,"supportUnit":id,"supportLine":0]) }
-                            if gain>0 { births[id]=time;labels.append(["text":"盾 ＋\(gain)","x":foot.x,"y":foot.y,"at":time,"supportUnit":id,"supportLine":1]) }
-                            if b.damageBuff != a.damageBuff,let buff=b.damageBuff { labels.append(["text":"伤害 ＋\(buff.amount)","x":foot.x,"y":foot.y,"at":time,"supportUnit":id,"supportLine":0]) }
+                            visualHealth[id]=b.health-heal;visualShield[id]=b.shield-gain
+                            if heal>0 || gain>0 {
+                                let cueAt=start+(SpellbladeEffects.statusVFXCueAge(for:i.action) ?? i.action.impact)
+                                if cueAt>time+0.0001 { pendingStatus[id]=(cueAt,b.health,b.shield,heal,gain,foot.x,foot.y) }
+                                else {
+                                    visualHealth[id]=b.health;visualShield[id]=b.shield
+                                    if heal>0 { heals[id]=cueAt;healingTiers[id]=HealingEffectTier.classify(actualHPGained:heal);strengths[id]=SpellbladeEffects.healingStrength(heal);labels.append(["text":"＋\(heal)","x":foot.x,"y":foot.y,"at":cueAt,"supportUnit":id,"supportLine":0]) }
+                                    if gain>0 { births[id]=cueAt;labels.append(["text":"盾 ＋\(gain)","x":foot.x,"y":foot.y,"at":cueAt,"supportUnit":id,"supportLine":1]) }
+                                }
+                            }
+                            if b.damageBuff != a.damageBuff,let buff=b.damageBuff { labels.append(["text":"伤害 ＋\(buff.amount)","x":foot.x,"y":foot.y,"at":time,"supportUnit":id,"supportLine":(heal>0 || gain>0) ? 2:0]) }
                             if a.isAlive && !b.isAlive { deaths[id]=time;emitters.append(["kind":"death","at":time,"x":point.x,"y":point.y,"floor":foot.y]) }
                         }
                     }
+                }
+                let readyStatus=pendingStatus.filter { $0.value.at<=time+1e-9 }
+                for (id,cue) in readyStatus {
+                    visualHealth[id]=cue.health;visualShield[id]=cue.shield;pendingStatus.removeValue(forKey:id)
+                    if cue.heal>0 { heals[id]=cue.at;healingTiers[id]=HealingEffectTier.classify(actualHPGained:cue.heal);strengths[id]=SpellbladeEffects.healingStrength(cue.heal);labels.append(["text":"＋\(cue.heal)","x":cue.x,"y":cue.y,"at":cue.at,"supportUnit":id,"supportLine":0]) }
+                    if cue.gain>0 { births[id]=cue.at;labels.append(["text":"盾 ＋\(cue.gain)","x":cue.x,"y":cue.y,"at":cue.at,"supportUnit":id,"supportLine":1]) }
                 }
                 let showing=intent.flatMap { age<action.duration ? $0:nil },victory=(p.state.battle==nil && time>=start+action.duration) ? time-(start+action.duration):nil
                 var units:[[String:Any]]=[]
@@ -589,18 +622,17 @@ extension Export {
                     let u=p.state.units[id]!,stats=try GameRules.attributes(u,catalog:p.engine.catalog)
                     let pose=PartyVisual.pose(unit:u,intent:showing,age:age,time:time,hurtAge:hurts[id].map { time-$0 },victoryAge:victory)
                     let monster=PartyVisual.monster(time:time+(id=="m2" ? 0.7:0),attackAge:nil,hurtAge:hurts[id].map { time-$0 },preparing:p.current==id && showing==nil)
-                    units.append(["id":id,"name":u.name,"weaponID":u.equipment.weapon as Any? ?? NSNull(),"armorID":u.equipment.armor as Any? ?? NSNull(),"weaponPose":u.equipment.weapon=="greatSword" ? try object(GreatSwordRig.pose(progress:pose.progress,clip:pose.clip)):NSNull(),"vitalsVisible":u.kind != .monster || u.isAlive,"hp":u.health,"maxHP":stats.maximumHealth,"baseAP":stats.baseAP,"maximumAP":stats.maximumAP,"attributeDamage":stats.damage,"accessory":try AccessoryReadout.make(u,catalog:p.engine.catalog).map { try object($0) } as Any? ?? NSNull(),"shield":u.shield,"ap":u.ap,"buff":u.damageBuff?.amount ?? 0,"buffRounds":u.damageBuff?.roundsLeft ?? 0,"clip":pose.clip,"progress":pose.progress,"monster":try object(monster),"deathAge":deaths[id].map { time-$0 } as Any? ?? NSNull()])
+                    units.append(["id":id,"name":u.name,"weaponID":u.equipment.weapon as Any? ?? NSNull(),"armorID":u.equipment.armor as Any? ?? NSNull(),"weaponPose":u.equipment.weapon=="greatSword" ? try object(GreatSwordRig.pose(progress:pose.progress,clip:pose.clip)):NSNull(),"vitalsVisible":u.kind != .monster || u.isAlive,"hp":visualHealth[id] ?? u.health,"gameHP":u.health,"maxHP":stats.maximumHealth,"baseAP":stats.baseAP,"maximumAP":stats.maximumAP,"attributeDamage":stats.damage,"accessory":try AccessoryReadout.make(u,catalog:p.engine.catalog).map { try object($0) } as Any? ?? NSNull(),"shield":visualShield[id] ?? u.shield,"gameShield":u.shield,"ap":u.ap,"buff":u.damageBuff?.amount ?? 0,"buffRounds":u.damageBuff?.roundsLeft ?? 0,"clip":pose.clip,"progress":pose.progress,"monster":try object(monster),"deathAge":deaths[id].map { time-$0 } as Any? ?? NSNull()])
                     if id.hasPrefix("p") {
-                        var q:[String:Any]=["kind":scenario+"-"+id,"frame":frame,"time":time,"shield":u.shield,"emitters":[],"recoveryStrength":strengths[id] ?? 1]
+                        var q:[String:Any]=["kind":scenario+"-"+id,"frame":frame,"time":time,"shield":visualShield[id] ?? u.shield,"emitters":[],"recoveryStrength":strengths[id] ?? 1]
                         if let at=heals[id],let tier=healingTiers[id] { q["recoveryAge"]=time-at;q["recoveryTier"]=tier.rawValue }
                         if let at=births[id] { q["birth"]=time-at }
-                        if let cue=cues.first(where:{$0.unitID==id}),cue.shield>original.units[id]!.shield,u.shield==0,age>=0 { q["formation"]=age-max(0,action.impact-0.46) }
                         requests.append(q)
                     }
                 }
                 let hovering=time<start,geometry=showing.map { SpellbladeEffects.sample(action:action,age:age,actor:actor,target:target,recipients:cues,weaponID:$0.weaponID) } ?? RuneEffectSample()
                 let dark=hovering ? BattleDice.darkness(action)*PartyVisual.smooth(time/0.28):showing != nil ? SpellbladeEffects.darkness(action,age:age,from:BattleDice.darkness(action)):0
-                rows.append(["scenario":scenario,"frame":frame,"time":time,"hitPoints":try object(Dictionary(uniqueKeysWithValues:["p1","p2","m1","m2"].map { ($0,PartyVisual.hitPoint(target:$0,weaponID:"greatSword")) })),"damageLabels":labels.filter { time-($0["at"] as! Double)<1 },"staff":NSNull(),"ranged":false,"weaponTrail":[],"projectile":NSNull(),"locked":!hovering,"confirmationAge":hovering ? NSNull():age,"hover":hovering,"darkness":dark,"actor":actor,"target":target,"action":action.rawValue,"age":age,"playing":showing != nil,"enemy":false,"impact":hitAt as Any? ?? NSNull(),"afterimages":[],"ambushSlashes":[],"receiptDice":try object(receipt?.dice ?? []),"dice":try object(dice),"diceAnchor":try object(PartyVisual.diceAnchor(actor:actor,intent:showing,age:age,diceCount:dice.count)),"poly":try object(dice.enumerated().map { index,die in PolyhedralDice.sample(die:die,time:time,index:index,count:dice.count,resolvedAge:hitAt.map { time-$0 },visibleAge:time,locked:!hovering,confirmationAge:hovering ? nil:age) }),"dicePose":try object(dice.indices.map { BattleDice.pose(time:time,index:$0,resolvedAge:hitAt.map { time-$0 },visibleAge:time) }),"travel":try object(PartyVisual.travel(showing,age:age)),"current":(showing?.actor ?? p.current) as Any? ?? NSNull(),"acted":Array(p.state.battle?.acted ?? []),"units":units,"runes":try object(geometry),"recipients":try object(cues)])
+                rows.append(["scenario":scenario,"statusCueAge":action.statusVFXCueAge ?? action.impact,"statusCueAt":start+(action.statusVFXCueAge ?? action.impact),"statusFeedbackPending":!pendingStatus.isEmpty,"frame":frame,"time":time,"hitPoints":try object(Dictionary(uniqueKeysWithValues:["p1","p2","m1","m2"].map { ($0,PartyVisual.hitPoint(target:$0,weaponID:"greatSword")) })),"damageLabels":labels.filter { time-($0["at"] as! Double)<1 },"staff":NSNull(),"ranged":false,"weaponTrail":[],"projectile":NSNull(),"locked":!hovering,"confirmationAge":hovering ? NSNull():age,"hover":hovering,"darkness":dark,"actor":actor,"target":target,"action":action.rawValue,"age":age,"playing":showing != nil,"enemy":false,"impact":hitAt as Any? ?? NSNull(),"afterimages":[],"ambushSlashes":[],"receiptDice":try object(receipt?.dice ?? []),"dice":try object(dice),"diceAnchor":try object(PartyVisual.diceAnchor(actor:actor,intent:showing,age:age,diceCount:dice.count)),"poly":try object(dice.enumerated().map { index,die in PolyhedralDice.sample(die:die,time:time,index:index,count:dice.count,resolvedAge:hitAt.map { time-$0 },visibleAge:time,locked:!hovering,confirmationAge:hovering ? nil:age) }),"dicePose":try object(dice.indices.map { BattleDice.pose(time:time,index:$0,resolvedAge:hitAt.map { time-$0 },visibleAge:time) }),"travel":try object(PartyVisual.travel(showing,age:age)),"current":(showing?.actor ?? p.current) as Any? ?? NSNull(),"acted":Array(p.state.battle?.acted ?? []),"units":units,"runes":try object(geometry),"recipients":try object(cues)])
                 let emissions=emitters.compactMap { e -> [String:Any]? in
                     let t=time-(e["at"] as! Double);guard t<3 else{return nil};return ["kind":e["kind"]!,"age":t,"x":e["x"]!,"y":e["y"]!,"floor":e["floor"]!]
                 }

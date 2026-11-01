@@ -48,6 +48,7 @@ final class MeadowPartyBattleView:UIView {
         for _ in 0..<6 { let card=MeadowPreviewCard(title:"",text:"");skills.append(card);skillScroll.addSubview(card) }
         skillScroll.addSubview(items);items.showsMenuAsPrimaryAction=true
         stage.onChoose={ [weak self] id in self?.choose(id) }
+        stage.onPresentationChanged={ [weak self] in self?.refresh() }
         accessibilityIdentifier="meadowPartySupportEncounter"
     }
     required init?(coder:NSCoder) { fatalError("init(coder:) has not been implemented") }
@@ -80,7 +81,7 @@ final class MeadowPartyBattleView:UIView {
         let token=generation;refresh()
         stage.play(intent,before:model.state,confirmed:model.confirmedReceipt,onImpact:{ [weak self] in
             guard let self,self.active,self.generation==token else { return nil }
-            do { let receipt=try model.commit(intent.id);self.refresh();return receipt }
+            do { return try model.commit(intent.id) }
             catch { self.hint.text=error.localizedDescription;return nil }
         },completion:{ [weak self] in
             guard let self,self.active,self.generation==token else { return }
@@ -107,7 +108,7 @@ final class MeadowPartyBattleView:UIView {
         let token=generation;refresh()
         stage.play(intent,before:model.state,confirmed:model.confirmedReceipt,onImpact:{ [weak self] in
             guard let self,self.active,self.generation==token else { return nil }
-            do { let r=try model.commit(intent.id);self.refresh();return r } catch { self.hint.text=error.localizedDescription;return nil }
+            do { return try model.commit(intent.id) } catch { self.hint.text=error.localizedDescription;return nil }
         },completion:{ [weak self] in guard let self,self.active,self.generation==token else { return };self.refresh();self.scheduleEnemy() })
     }
     private func refresh() {
@@ -121,8 +122,9 @@ final class MeadowPartyBattleView:UIView {
         hint.text=busy ? "\(name) · 动作进行中" : "\(name)行动 · 友方 \(friend.uppercased()) / 敌方 \(foe=="m1" ? "甲":"乙") · 点角色选目标"
         let displayActor=showing ?? "p1"
         if let unit=state.units[displayActor] {
-            health.show("生命",value:unit.health,maximum:(try? GameRules.attributes(unit,catalog:model.engine.catalog).maximumHealth) ?? unit.baseAttributes.maximumHealth,color:.systemGreen)
-            ward.show("护盾",value:unit.shield,maximum:8,color:.systemCyan)
+            let visible=stage.displayedVitals(for:displayActor,health:unit.health,shield:unit.shield)
+            health.show("生命",value:visible.health,maximum:(try? GameRules.attributes(unit,catalog:model.engine.catalog).maximumHealth) ?? unit.baseAttributes.maximumHealth,color:.systemGreen)
+            ward.show("护盾",value:visible.shield,maximum:8,color:.systemCyan)
             let stats=(try? GameRules.attributes(unit,catalog:model.engine.catalog)) ?? unit.baseAttributes
             if apRound != model.round { apRound=model.round;actionPointCapacity=[:] }
             let capacity=max(stats.baseAP,max(unit.ap,actionPointCapacity[displayActor] ?? 0))
@@ -130,7 +132,7 @@ final class MeadowPartyBattleView:UIView {
             ap.show(value:unit.ap,maximum:capacity)
             accessory.show(try? AccessoryReadout.make(unit,catalog:model.engine.catalog),host:self)
             if let b=unit.damageBuff { buff.show(title:"增伤＋\(b.amount)",detail:"剩余 \(b.roundsLeft) 轮\n普攻和伤害技能生效",symbol:"arrow.up",color:MeadowPreviewPalette.gold) } else { buff.hide() }
-            if unit.shield>0 { shieldBuff.show(title:"护盾 · \(unit.shield)",detail:"优先抵挡伤害\n新旧授盾取较高值",symbol:"shield.fill",color:.systemCyan) } else { shieldBuff.hide() }
+            if visible.shield>0 { shieldBuff.show(title:"护盾 · \(visible.shield)",detail:"优先抵挡伤害\n新旧授盾取较高值",symbol:"shield.fill",color:.systemCyan) } else { shieldBuff.hide() }
         }
         track.show(ids:["p2","p1","m1","m2"],names:["p1":"P1","p2":"P2","m1":"鹿灵甲","m2":"鹿灵乙"],current:showing,done:state.battle?.acted.subtracting(Set([showing ?? ""])) ?? [],down:Set(state.units.values.filter { !$0.isAlive }.map(\.id)))
         stage.show(state,friend:friend,foe:foe,current:current,catalog:model.engine.catalog)

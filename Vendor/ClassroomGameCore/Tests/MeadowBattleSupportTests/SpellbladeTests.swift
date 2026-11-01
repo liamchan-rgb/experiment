@@ -157,4 +157,17 @@ final class SpellbladeTests:XCTestCase {
         }
         XCTAssertEqual(SpellbladeEffects.healingStrength(4),1);XCTAssertGreaterThan(SpellbladeEffects.healingStrength(8),SpellbladeEffects.healingStrength(6));XCTAssertGreaterThan(SpellbladeEffects.healingStrength(12),SpellbladeEffects.healingStrength(8))
     }
+
+    func testPositiveHealthAndShieldFeedbackWaitsUntilEffectSecondHalf() {
+        let expected:[(PartyAction,Double)]=[
+            (.runeSlash,1.1979),(.runeWard,0.8352),(.dragonSoulWard,1.5266),
+            (.dragonScaleWard,1.14),(.starlightPulse,PartyAction.starlightPulse.impact),
+            (.dragonFlame,1.2333),(.battleRune,1.334)
+        ]
+        for (action,age) in expected {
+            let cue=SpellbladeEffects.statusVFXCueAge(for:action)!
+            XCTAssertEqual(cue,age,accuracy:0.002,"\(action)")
+            XCTAssertGreaterThanOrEqual(cue,action.impact)
+        }
+    }
 }

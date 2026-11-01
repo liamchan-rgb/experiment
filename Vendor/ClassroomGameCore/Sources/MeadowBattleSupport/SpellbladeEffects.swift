@@ -18,6 +18,30 @@ public enum SpellbladeEffects {
     private static let runeSlashDurations:[Double]=[0.040,0.040,0.045,0.045,0.045,0.040,0.035,0.035,0.035,0.045,0.050,0.040,0.045,0.045,0.050,0.055,0.055,0.060,0.070,0.080]
     private static let runeWardDurations:[Double]=[0.100,0.070,0.070,0.070,0.070,0.070,0.070,0.060,0.060,0.080,0.060,0.050,0.090,0.070,0.070,0.070,0.070,0.070,0.070,0.100]
 
+    /// The game rules still resolve at contact. Positive HP/shield presentation
+    /// waits until the associated effect has played through 58% of its motion.
+    public static func statusVFXCueAge(for action:PartyAction)->Double? {
+        let hit=action.impact
+        if let spec=action.skillVFX {
+            return max(hit,spec.startTime(actionStart:0,impactAge:hit)+spec.duration*0.58)
+        }
+        let start:Double,duration:Double
+        switch action {
+        case .runeSlash:
+            duration=runeSlashDurations.reduce(0,+)
+            start=hit-runeSlashDurations.prefix(10).reduce(0,+)
+        case .runeWard:
+            start=0;duration=runeWardDurations.reduce(0,+)
+        case .dragonFlame:
+            start=hit;duration=1.3333333333333333
+        default:
+            // The remaining recovery and ward actions use their established
+            // guard/support motion, which begins with the action itself.
+            start=0;duration=action.duration
+        }
+        return max(hit,start+duration*0.58)
+    }
+
     private static func authoredFrames(prefix:String,elapsed:Double,durations:[Double],center:PartyPoint,size:Double)->[BattleEffectSpriteLayer] {
         let total=durations.reduce(0,+)
         guard elapsed>=0,elapsed<total-1e-9 else { return [] }
