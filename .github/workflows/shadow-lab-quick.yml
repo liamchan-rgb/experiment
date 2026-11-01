@@ -167,7 +167,7 @@ jobs:
             2>&1 | tee build/logs/rune-review-render.log
           build/art-tools/bin/python scripts/audit-spellblade-demo.py \
             2>&1 | tee build/logs/rune-status-timing-audit.log
-          build/art-tools/bin/python scripts/review-dragon-flame-demo.py \
+          build/art-tools/bin/python scripts/review-dragon-flame-demo.py --dragon-flame-only \
             2>&1 | tee build/logs/dragon-flame-review-render.log
           build/art-tools/bin/python scripts/review-skill-vfx-demo.py \
             2>&1 | tee build/logs/skill-vfx-review-render.log
