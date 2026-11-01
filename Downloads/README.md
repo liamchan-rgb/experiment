@@ -1,3 +1,17 @@
+## build71 · 五套战斗技能特效接入 · 1.6.45
+
+[直接下载 MeadowJourney-build71.ipa](https://raw.githubusercontent.com/liamchan-rgb/experiment/fix/build33-face-grounding-camera/Downloads/MeadowJourney-build71.ipa) · [五套正常速度全场 GIF](https://github.com/liamchan-rgb/experiment/blob/fix/build33-face-grounding-camera/Art/Review/Battle/skill-vfx-v1/README.md) · [校验记录](MeadowJourney-build71.json)
+
+接入星辉脉冲、振奋、横扫、龙魂庇护和龙鳞庇护五套用户素材。星辉脉冲沿用远程攻击动作，横扫沿用怪物近身攻击动作，三项辅助技能沿用防护动作；没有新增人物动作。范围特效每个目标节点只播放一次，治疗、护盾和增益仍按真实结算回执显示。原 ZIP、交付帧与运行图集均保存在 `Art/Parts/BattleVFX/`，100 张运行帧逐帧校验通过。
+
+五段全场动图均为 720×432、2.8 秒、按素材原始 12–20 FPS 播放；它们是离线美术审核，不是 UIKit、模拟器或实机录屏。纯 Swift 规则测试、战斗／资源校验和设备 Release 归档均通过。IPA 为可由 SideStore 重签的 unsigned arm64 设备包，59,058,237 字节，SHA-256 `326a4d199237de1eb11a5c23e4429704017ac4c68ad564714e9b4569ce189816`；ZIP CRC 和版本号均通过。GitHub Actions [运行 #41266049040](https://github.com/liamchan-rgb/experiment/actions/runs/41266049040)。未运行模拟器或实机；安装和实机效果由用户验收。
+
+[五套动图预览与说明](../Art/Review/Battle/skill-vfx-v1/README.md) · [原始素材和拆帧](../Art/Parts/BattleVFX/skill-effects-v1/manifest.json)
+
+下一步两项：龙鳞庇护的护盾接触／破碎反馈；龙之号令的增益特效。
+
+---
+
 ## build70 · 符文战斗特效与命中粒子 · 1.6.44
 
 [直接下载 MeadowJourney-build70.ipa](https://raw.githubusercontent.com/liamchan-rgb/experiment/fix/build33-face-grounding-camera/Downloads/MeadowJourney-build70.ipa) · [符文斩正常速度全场GIF](https://raw.githubusercontent.com/liamchan-rgb/experiment/fix/build33-face-grounding-camera/Art/Review/Battle/spellblade-demo-v1/runeSlash-normal.gif) · [符文斩致死命中GIF](https://raw.githubusercontent.com/liamchan-rgb/experiment/fix/build33-face-grounding-camera/Art/Review/Battle/spellblade-demo-v1/runeSlash-lethal-normal.gif) · [符文庇护正常速度全场GIF](https://raw.githubusercontent.com/liamchan-rgb/experiment/fix/build33-face-grounding-camera/Art/Review/Battle/spellblade-demo-v1/runeWard-normal.gif) · [构建校验记录](MeadowJourney-build70.json)
