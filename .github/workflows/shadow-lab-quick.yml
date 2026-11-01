@@ -155,6 +155,9 @@ jobs:
           cp build/logs/rune-review/spellblade-light-requests.json "$rune_dir/spellblade-light-requests.json"
           cp "$rune_dir/spellblade-frames.json" "$dice_dir/dice-frames.json"
           cp "$rune_dir/spellblade-light-samples.json" "$dice_dir/dice-light-samples.json"
+          cp "$rune_dir/spellblade-frames.json" "$bow_dir/dice-frames.json"
+          cp "$rune_dir/spellblade-light-samples.json" "$bow_dir/dice-light-samples.json"
+          printf '[]\n' > "$bow_dir/poly-frames.json"
           cp build/logs/dragon-flame-review/dragon-flame-frames.json "$flame_dir/dragon-flame-frames.json"
           cp build/logs/dragon-flame-review/dragon-flame-light-requests.json "$flame_dir/dragon-flame-light-requests.json"
           build/art-tools/bin/python scripts/review-spellblade-demo.py --rune-pair-only \
