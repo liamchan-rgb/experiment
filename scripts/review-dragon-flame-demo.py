@@ -5,10 +5,13 @@ Never UIKit, game, simulator or device capture.
 from pathlib import Path
 from PIL import Image,ImageDraw,ImageFont
 import json,math,functools,subprocess,sys,copy
+# Nested pose renderers use argparse; keep this renderer's mode flags isolated.
+review_args=sys.argv[1:];sys.argv=sys.argv[:1]
 R=Path(__file__).resolve().parents[1];D=R/'Art/Review/Battle/dragon-flame-demo-v1';D.mkdir(parents=True,exist_ok=True)
 from review_vfx_status_timing import retime_status_sample
 p=R/'scripts/review-armor-demo.py';N={'__file__':str(p)};exec(compile(p.read_text().split('for item in armors:\n frames=[]')[0],str(p),'exec'),N)
 p=R/'scripts/review-legendary-staff-demo.py';Q={'__file__':str(p)};exec(compile(p.read_text().split('reports=[]\nfor scenario')[0],str(p),'exec'),Q)
+sys.argv+=review_args
 world=Q['world'];S=Q['S'];oldgear=Q['gear'];font=Q['font'];hs=world['hs'];oy=world['oy'];compose=world['compose'];glow=world['glow'];asset=Q['asset'];helpers=world['env']
 rows=json.loads((D/'dragon-flame-frames.json').read_text());requests={(q['kind'],q['frame']):q for q in json.loads((D/'dragon-flame-light-requests.json').read_text())}
 for q in json.loads((R/'Art/Review/Battle/spellblade-demo-v1/spellblade-light-samples.json').read_text())['frames']:world['attached'][(q['kind'],q['frame'])]=q
