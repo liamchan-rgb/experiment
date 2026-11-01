@@ -150,9 +150,18 @@ import Foundation
             }
         }
         func ward(_ t:Double)->Double {
-            MeadowBattleVisualMotion.shieldOpacity(shield:t<0.46 ? 0:4,time:t,formation:t<0.46 ? t:nil,birth:t<0.46 ? nil:t-0.46,contact:nil,broken:nil)
+            let age=t-0.46
+            return MeadowBattleVisualMotion.shieldOpacity(
+                shield:age<0 ? 0:4,
+                time:t,
+                formation:nil,
+                birth:age<0 ? nil:age,
+                contact:nil,
+                broken:nil
+            )
         }
-        precondition(ward(0)==0 && ward(0.23)>0 && ward(0.23)<0.68)
+        precondition(ward(0)==0 && ward(0.23)==0 && ward(0.46)==0)
+        precondition(ward(0.52)>0 && ward(0.52)<0.68)
         precondition(abs(ward(0.46-0.00001)-ward(0.46+0.00001))<0.0001)
         for frame in 0..<116 { precondition(MeadowBattleVisualMotion.windFrame((Double(frame)+0.01)/60)==frame) }
         for age in [0.01,0.4,0.7,1.1,1.6] {
