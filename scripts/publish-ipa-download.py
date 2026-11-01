@@ -132,8 +132,6 @@ def main() -> None:
         raise SystemExit(f"Unexpected bundle build number: {build!r}")
     if info.get("CFBundleSupportedPlatforms") != ["iPhoneOS"]:
         raise SystemExit("IPA is not a physical-device iPhoneOS build")
-    # lipo takes input files before the operation flag; its synopsis is
-    # `lipo input_file -verify_arch arch_type ...`.
     if not macho_has_arm64(executable):
         raise SystemExit("IPA application executable does not contain the arm64 architecture")
 
