@@ -83,6 +83,21 @@ enum MeadowBattleVFXAssets {
     static let healingStrong = frames("BattleVFXHealingStrongSheet", width: 512, height: 512, columns: 5, count: 20)
     static let runeSlashAttack = namedFrames("MeadowRuneSlashAttack", count: 20)
     static let runeWardCast = namedFrames("MeadowRuneWardCast", count: 20)
+    static let starlightPulse = frames("MeadowBattleVFXStarlightPulse",width:344,height:344,columns:5,count:20)
+    static let rally = frames("MeadowBattleVFXRally",width:256,height:256,columns:5,count:20)
+    static let sweep = frames("MeadowBattleVFXSweep",width:339,height:287,columns:5,count:20)
+    static let dragonSoulWard = frames("MeadowBattleVFXDragonSoulWard",width:256,height:256,columns:5,count:20)
+    static let dragonScaleWard = frames("MeadowBattleVFXDragonScaleWard",width:256,height:256,columns:4,count:20)
+    static func skillFrames(for skillID:String)->[UIImage]? {
+        switch skillID {
+        case "starlightPulse":return starlightPulse
+        case "rally":return rally
+        case "sweep":return sweep
+        case "dragonSoulWard":return dragonSoulWard
+        case "dragonScaleWard":return dragonScaleWard
+        default:return nil
+        }
+    }
     static func effectImage(named name:String)->UIImage? {
         if name.hasPrefix("MeadowRuneSlashAttack"),let index=Int(name.dropFirst("MeadowRuneSlashAttack".count)),(1...runeSlashAttack.count).contains(index) { return runeSlashAttack[index-1] }
         if name.hasPrefix("MeadowRuneWardCast"),let index=Int(name.dropFirst("MeadowRuneWardCast".count)),(1...runeWardCast.count).contains(index) { return runeWardCast[index-1] }
@@ -116,6 +131,7 @@ enum MeadowBattleVFXAssets {
             _ = body; _ = wind
             _ = healingMicro; _ = healingStandard; _ = healingStrong
             _ = runeSlashAttack; _ = runeWardCast
+            _ = starlightPulse; _ = rally; _ = sweep; _ = dragonSoulWard; _ = dragonScaleWard
         }
     }
 }

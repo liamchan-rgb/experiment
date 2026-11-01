@@ -1,0 +1,57 @@
+{
+  "scope": "normal-speed offline scene composition using original battle art, skill atlas frames and the existing attack/guard motions; not UIKit/simulator/device capture",
+  "outputDimensions": [
+    720,
+    432
+  ],
+  "sourceFramesPreserved": true,
+  "authoredCharacterMotionAdded": false,
+  "animations": {
+    "starlightPulse": {
+      "gif": "starlightPulse-normal.gif",
+      "decodedFrames": 96,
+      "totalDurationMs": 2800,
+      "sampledAtMs": 20,
+      "sizeBytes": 9510461,
+      "motion": "既有远程攻击姿态",
+      "sourceFPS": 16
+    },
+    "rally": {
+      "gif": "rally-normal.gif",
+      "decodedFrames": 107,
+      "totalDurationMs": 2800,
+      "sampledAtMs": 20,
+      "sizeBytes": 7910837,
+      "motion": "既有防护姿态",
+      "sourceFPS": 12
+    },
+    "sweep": {
+      "gif": "sweep-normal.gif",
+      "decodedFrames": 81,
+      "totalDurationMs": 2800,
+      "sampledAtMs": 20,
+      "sizeBytes": 10237361,
+      "motion": "既有近身攻击姿态",
+      "sourceFPS": 20
+    },
+    "dragonSoulWard": {
+      "gif": "dragonSoulWard-normal.gif",
+      "decodedFrames": 103,
+      "totalDurationMs": 2800,
+      "sampledAtMs": 20,
+      "sizeBytes": 5835450,
+      "motion": "既有防护姿态",
+      "sourceFPS": 12
+    },
+    "dragonScaleWard": {
+      "gif": "dragonScaleWard-normal.gif",
+      "decodedFrames": 84,
+      "totalDurationMs": 2800,
+      "sampledAtMs": 20,
+      "sizeBytes": 8600285,
+      "motion": "既有防护姿态",
+      "sourceFPS": 20
+    }
+  },
+  "userArtApproval": null
+}

@@ -35,6 +35,7 @@ final class MeadowPartyStageView:UIView {
     private var poseKeys:[String:String]=[:]
     private var messages:[MeadowPartyMessage]=[]
     private var emissions:[MeadowBattleLightEmission]=[]
+    private var skillVFX:[MeadowPartySkillVFXEvent]=[]
     var isPlaying:Bool { intent != nil }
     override init(frame:CGRect) {
         super.init(frame:frame);backgroundColor=MeadowPreviewPalette.panel;clipsToBounds=true;layer.cornerRadius=12
@@ -70,8 +71,8 @@ final class MeadowPartyStageView:UIView {
     }
     required init?(coder:NSCoder) { fatalError("init(coder:) has not been implemented") }
     @objc private func tapped(_ r:UITapGestureRecognizer) { if !isPlaying,let id=r.view?.accessibilityIdentifier { onChoose?(id) } }
-    func start() { MeadowBattleVFXAssets.prewarm();victoryAt=nil;sceneTime=0;recovery=[:];recoveryTier=[:];formation=[:];birth=[:];contact=[:];broken=[:];deaths=[:];hurt=[:];messages=[];emissions=[];poseKeys=[:];fallen=[:];diceAction=nil;diceConfirmedAt=nil;diceView.confirmationAge=nil;diceView.dice=[];diceSettledAt=nil;diceExitAt=nil;dimFrom=0;dimTarget=0;clock.start() }
-    func stop() { clock.stop();intent=nil;impact=nil;completion=nil;focus=nil }
+    func start() { MeadowBattleVFXAssets.prewarm();victoryAt=nil;sceneTime=0;recovery=[:];recoveryTier=[:];formation=[:];birth=[:];contact=[:];broken=[:];deaths=[:];hurt=[:];messages=[];emissions=[];skillVFX=[];poseKeys=[:];fallen=[:];diceAction=nil;diceConfirmedAt=nil;diceView.confirmationAge=nil;diceView.dice=[];diceSettledAt=nil;diceExitAt=nil;dimFrom=0;dimTarget=0;clock.start() }
+    func stop() { clock.stop();intent=nil;impact=nil;completion=nil;focus=nil;skillVFX=[] }
     func show(_ value:GameState,friend:String,foe:String,current:String?,catalog:GameCatalog) {
         state=value;self.current=current;self.catalog=catalog;fx.friend=friend;fx.foe=foe
         for (id,label) in labels {
@@ -103,6 +104,12 @@ final class MeadowPartyStageView:UIView {
         }
         naturalTwenty=confirmed?.dice.contains { $0.naturalTwenty } ?? false
         intent=value;state=before;startAt=sceneTime;self.impact=onImpact;self.completion=completion;fired=false;focus=nil;meetsShield=(before.units[value.target]?.shield ?? 0)>0
+        if let spec=value.action.skillVFX {
+            let hitAge=value.enemy ? 0.46:value.action.impact
+            let groundYs=value.targets.compactMap { PartyVisual.feet[$0]?.y }
+            let groundY=groundYs.isEmpty ? (PartyVisual.feet[value.actor]?.y ?? PartyVisual.height):groundYs.reduce(0,+)/Double(groundYs.count)
+            skillVFX.append(MeadowPartySkillVFXEvent(spec:spec,startedAt:spec.startTime(actionStart:sceneTime,impactAge:hitAge),center:PartyVisual.skillEffectCenter(targets:value.targets,actor:value.actor),groundY:groundY))
+        }
         let delayed=sceneTime+max(0,value.action.impact-0.46)
         if (value.action.isRune || value.action == .dragonFlame),let catalog {
             for cue in SpellbladeEffects.recipients(value,catalog:catalog) {
@@ -120,6 +127,7 @@ final class MeadowPartyStageView:UIView {
         guard window != nil,!isHidden else { clock.stop();return }
         sceneTime += delta
         emissions.removeAll { sceneTime-$0.startedAt>3 };messages.removeAll { sceneTime-$0.at>1.0 }
+        skillVFX.removeAll { sceneTime-$0.startedAt>$0.spec.duration }
         if let value=intent {
             let age=sceneTime-startAt
             let end=value.enemy ? 1.10:value.action.duration
@@ -148,16 +156,16 @@ final class MeadowPartyStageView:UIView {
                 let shift=intent.actor==id ? PartyVisual.travel(intent,age:sceneTime-startAt):PartyPoint(0,0)
                 recovery[id]=sceneTime
                 recoveryTier[id]=HealingEffectTier.classify(actualHPGained:heal)
-                messages.append(.init(text:"＋\(heal)",point:CGPoint(x:point.x+shift.x,y:point.y+shift.y),at:sceneTime,color:.systemGreen,supportUnit:(intent.action.isRune || intent.action == .dragonFlame) ? id:nil))
+                messages.append(.init(text:"＋\(heal)",point:CGPoint(x:point.x+shift.x,y:point.y+shift.y),at:sceneTime,color:.systemGreen,supportUnit:(intent.action.isRune || intent.action == .dragonFlame || intent.action == .starlightPulse || intent.action.isNodeSupport) ? id:nil))
             }
-            if gain>0 { birth[id]=sceneTime;messages.append(.init(text:"盾 ＋\(gain)",point:CGPoint(x:point.x,y:point.y+(intent.action.isRune || intent.action == .dragonFlame ? 36:24)),at:sceneTime,color:.systemCyan,supportUnit:(intent.action.isRune || intent.action == .dragonFlame) ? id:nil,supportLine:1)) }
-            if after.damageBuff != before.damageBuff,let b=after.damageBuff { messages.append(.init(text:"伤害 ＋\(b.amount)",point:CGPoint(x:point.x,y:point.y-(intent.action.isRune || intent.action == .dragonFlame ? 36:0)),at:sceneTime,color:MeadowPreviewPalette.gold,supportUnit:(intent.action.isRune || intent.action == .dragonFlame) ? id:nil)) }
+            if gain>0 { birth[id]=sceneTime;messages.append(.init(text:"盾 ＋\(gain)",point:CGPoint(x:point.x,y:point.y+(intent.action.isRune || intent.action == .dragonFlame || intent.action.isNodeSupport ? 36:24)),at:sceneTime,color:.systemCyan,supportUnit:(intent.action.isRune || intent.action == .dragonFlame || intent.action == .starlightPulse || intent.action.isNodeSupport) ? id:nil,supportLine:1)) }
+            if after.damageBuff != before.damageBuff,let b=after.damageBuff { messages.append(.init(text:"伤害 ＋\(b.amount)",point:CGPoint(x:point.x,y:point.y-(intent.action.isRune || intent.action == .dragonFlame || intent.action.isNodeSupport ? 36:0)),at:sceneTime,color:MeadowPreviewPalette.gold,supportUnit:(intent.action.isRune || intent.action == .dragonFlame || intent.action.isNodeSupport) ? id:nil,supportLine:(heal>0 || gain>0) ? 2:0)) }
             if damage>0 || absorbed>0 {
                 hurt[id]=sceneTime
                 let hit=PartyVisual.hitPoint(target:id,shielded:absorbed>0,weaponID:intent.weaponID)
                 messages.append(.init(text:damage>0 ? "−\(damage)":"格挡",point:CGPoint(x:hit.x,y:hit.y),at:sceneTime,color:damage>0 ? .white:.systemCyan,atImpact:true))
                 let p=CGPoint(x:point.x,y:point.y)
-                emissions.append(.init(kind:absorbed>0 ? .shieldContact:.strike,startedAt:sceneTime,x:Double(p.x),y:Double(p.y),groundY:foot.y))
+                if absorbed>0 || intent.action.skillVFX == nil { emissions.append(.init(kind:absorbed>0 ? .shieldContact:.strike,startedAt:sceneTime,x:Double(p.x),y:Double(p.y),groundY:foot.y)) }
             }
             if absorbed>0 { contact[id]=sceneTime;if after.shield==0 { broken[id]=sceneTime;emissions.append(.init(kind:.shieldBreak,startedAt:sceneTime,x:foot.x,y:foot.y-60,groundY:foot.y)) } }
             if before.isAlive && !after.isAlive && after.kind == .monster { deaths[id]=sceneTime;emissions.append(.init(kind:.death,startedAt:sceneTime,x:Double(point.x),y:Double(point.y),groundY:foot.y)) }
@@ -233,7 +241,7 @@ final class MeadowPartyStageView:UIView {
         diceView.confirmationAge=diceConfirmedAt.map { sceneTime-$0 }
         diceView.resolvedAge=diceSettledAt.map { sceneTime-$0 };diceView.exitAge=diceExitAt.map { sceneTime-$0 };diceView.setNeedsDisplay()
         fx.naturalTwenty=naturalTwenty;fx.intent=intent;fx.meetsShield=meetsShield;fx.age=age;fx.time=sceneTime;fx.focus=focus;fx.focusTarget=focusTarget
-        fx.messages=messages;fx.particles=emissions.flatMap { e in MeadowBattleLightField.sample(e.kind,age:sceneTime-e.startedAt,originX:e.x,originY:e.y,groundY:e.groundY) }
+        fx.messages=messages;fx.skillEffects=skillVFX;fx.particles=emissions.flatMap { e in MeadowBattleLightField.sample(e.kind,age:sceneTime-e.startedAt,originX:e.x,originY:e.y,groundY:e.groundY) }
         fx.recoveryLights=state.players.compactMap { unit in
             guard unit.isAlive,let at=recovery[unit.id],let foot=PartyVisual.feet[unit.id] else { return nil }
             let power=recoveryTier[unit.id]?.lightEnvelope(at:sceneTime-at) ?? 0,shift=intent?.actor==unit.id ? moving:PartyPoint(0,0)
@@ -247,6 +255,7 @@ final class MeadowPartyStageView:UIView {
     override func layoutSubviews() { super.layoutSubviews();let scale=bounds.width/1000;world.center=CGPoint(x:bounds.midX,y:bounds.midY);world.transform=CGAffineTransform(scaleX:scale,y:scale) }
 }
 struct MeadowPartyMessage { let text:String;let point:CGPoint;let at:Double;let color:UIColor;var atImpact=false;var supportUnit:String?=nil;var supportLine=0 }
+struct MeadowPartySkillVFXEvent { let spec:PartySkillVFXSpec;let startedAt:Double;let center:PartyPoint;let groundY:Double }
 
 private final class MeadowPartyEffectsView:UIView {
     var intent:PartyIntent?,focus:PartyAction?
@@ -257,6 +266,7 @@ private final class MeadowPartyEffectsView:UIView {
     var naturalTwenty=false
     var runes:RuneEffectSample?
     var particles:[MeadowBattleLightParticle]=[]
+    var skillEffects:[MeadowPartySkillVFXEvent]=[]
     var recoveryLights:[(PartyPoint,Double)]=[]
     override init(frame:CGRect) { super.init(frame:frame);isOpaque=false;isUserInteractionEnabled=false }
     required init?(coder:NSCoder) { fatalError("init(coder:) has not been implemented") }
@@ -272,7 +282,7 @@ private final class MeadowPartyEffectsView:UIView {
         }
         if let intent {
             let visual=intent.action.visual
-            if visual=="support" {
+            if intent.action == .support {
                 let from=PartyVisual.chest(intent.actor),to=PartyVisual.chest(intent.target)
                 let alpha=PartyVisual.pulse(age,0.05,0.36,1.12)
                 let path=UIBezierPath();path.move(to:CGPoint(x:from.x,y:from.y));path.addQuadCurve(to:CGPoint(x:to.x,y:to.y),controlPoint:CGPoint(x:(from.x+to.x)/2,y:min(from.y,to.y)-90))
@@ -281,20 +291,6 @@ private final class MeadowPartyEffectsView:UIView {
                 for p in PartyVisual.trail(age:age,from:from,to:to) { sprite(MeadowBattleVFXAssets.healStar,PartyPoint(p.x,p.y),p.size,p.size,p.alpha) }
                 let power=PartyVisual.pulse(age,0,0.56,1.5)
                 if let foot=PartyVisual.feet[intent.target] { glow(foot,110,26,power*0.5,.systemGreen) }
-            }
-            if visual=="rally" {
-                for id in intent.targets {
-                    let p=PartyVisual.chest(id),power=PartyVisual.pulse(age,0.05,0.46,1.5)
-                    glow(p,48,85,power*0.25,.orange)
-                    for mote in PartyVisual.rally(age:age,at:p) { sprite(MeadowBattleVFXAssets.ember,PartyPoint(mote.x,mote.y),mote.size*0.5,mote.size*2,mote.alpha) }
-                    for i in 0..<3 {
-                        let local=age-Double(i)*0.10,a=PartyVisual.pulse(local,0,0.28,0.85)
-                        guard a>0 else { continue }
-                        let y=p.y+10-local*75
-                        let path=UIBezierPath();path.move(to:CGPoint(x:p.x-14,y:y+10));path.addLine(to:CGPoint(x:p.x,y:y));path.addLine(to:CGPoint(x:p.x+14,y:y+10))
-                        MeadowPreviewPalette.gold.withAlphaComponent(CGFloat(a)).setStroke();path.lineWidth=3;path.stroke()
-                    }
-                }
             }
             if intent.action.isItem,age<intent.action.impact,let foot=PartyVisual.feet[intent.target] {
                 let name="MeadowParty"+intent.action.rawValue.prefix(1).uppercased()+intent.action.rawValue.dropFirst()
@@ -330,7 +326,7 @@ private final class MeadowPartyEffectsView:UIView {
                 let sample=LegendaryStaffRig.effect(age:age,foot:foot,target:PartyVisual.hitPoint(target:intent.target,shielded:meetsShield,weaponID:intent.weaponID),groundY:targetFoot.y,scale:PartyVisual.heroScale,naturalTwenty:naturalTwenty)
                 MeadowStaffEffectPainter.draw(sample,in:ctx)
             }
-            if visual=="attack",!intent.magical,let foot=PartyVisual.feet[intent.target] {
+            if visual=="attack",intent.action.skillVFX == nil,!intent.magical,let foot=PartyVisual.feet[intent.target] {
                 let a=age-(intent.enemy ? 0.46:1.048),p=PartyVisual.hitPoint(target:intent.target,shielded:meetsShield,weaponID:intent.weaponID)
                 let power=PartyVisual.pulse(a,-0.035,0.035,0.52)
                 glow(p,140,140,power*0.48,.orange);glow(foot,170,30,power*0.65,.orange)
@@ -351,6 +347,28 @@ private final class MeadowPartyEffectsView:UIView {
                     MeadowPreviewPalette.ink.withAlphaComponent(slash.alpha).setStroke();path.lineWidth=3;path.stroke();ctx.restoreGState()
                 }
             }
+        }
+        for event in skillEffects {
+            let age=time-event.startedAt
+            guard age>=0,age<event.spec.duration,let frames=MeadowBattleVFXAssets.skillFrames(for:event.spec.id),frames.count==event.spec.frameCount else { continue }
+            let position=age*event.spec.framesPerSecond
+            let lower=min(event.spec.frameCount-1,max(0,Int(position)))
+            let upper=min(event.spec.frameCount-1,lower+1)
+            let mix=PartyVisual.smooth(position-Double(lower))
+            let rect=CGRect(x:event.center.x-event.spec.anchorX,y:event.center.y-event.spec.anchorY,width:Double(event.spec.frameWidth),height:Double(event.spec.frameHeight))
+            let light=PartyVisual.pulse(age,0,event.spec.peakTime,event.spec.duration)
+            let color:UIColor
+            switch event.spec.id {
+            case "starlightPulse":color=UIColor(red:0.36,green:0.31,blue:1,alpha:1)
+            case "rally":color=MeadowPreviewPalette.gold
+            case "sweep":color=UIColor(red:0.42,green:0.78,blue:1,alpha:1)
+            case "dragonSoulWard":color=UIColor(red:0.29,green:0.67,blue:1,alpha:1)
+            default:color=UIColor(red:1,green:0.55,blue:0.18,alpha:1)
+            }
+            glow(event.center,Double(event.spec.frameWidth)*0.34,Double(event.spec.frameHeight)*0.29,light*0.13,color)
+            glow(PartyPoint(event.center.x,event.groundY-5),Double(event.spec.frameWidth)*0.31,15,light*0.24,color)
+            frames[lower].draw(in:rect,blendMode:.plusLighter,alpha:CGFloat(1-mix))
+            if upper != lower,mix>0 { frames[upper].draw(in:rect,blendMode:.plusLighter,alpha:CGFloat(mix)) }
         }
         if let runes { MeadowRuneEffectPainter.draw(runes,in:ctx) }
         var pools=0

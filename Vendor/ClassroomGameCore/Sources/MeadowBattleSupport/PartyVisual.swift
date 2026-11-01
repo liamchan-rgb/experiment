@@ -6,12 +6,53 @@ public struct PartyParticle:Codable {
 }
 public struct PartyAfterimage:Codable { public let offset:PartyPoint;public let progress:Double;public let alpha:Double }
 public struct PartySlash:Codable { public let points:[PartyPoint];public let alpha:Double }
+public enum PartySkillVFXMotion:String,Codable,Equatable { case melee,ranged,support }
+public enum PartySkillVFXTarget:String,Codable,Equatable { case enemyNode,allyNode }
+public struct PartySkillVFXSpec:Codable,Equatable,Identifiable {
+    public let id:String
+    public let assetName:String
+    public let frameCount:Int
+    public let framesPerSecond:Double
+    public let frameWidth:Int
+    public let frameHeight:Int
+    public let anchorX:Double
+    public let anchorY:Double
+    public let peakFrame:Int
+    public let motion:PartySkillVFXMotion
+    public let target:PartySkillVFXTarget
+    public var duration:Double { Double(frameCount)/framesPerSecond }
+    public var peakTime:Double { Double(peakFrame)/framesPerSecond }
+    public func startTime(actionStart:Double,impactAge:Double)->Double {
+        if motion == .support { return actionStart+impactAge }
+        return actionStart+max(0,impactAge-peakTime)
+    }
+    public static let all:[PartySkillVFXSpec] = [
+        .init(id:"starlightPulse",assetName:"MeadowBattleVFXStarlightPulse",frameCount:20,framesPerSecond:16,frameWidth:344,frameHeight:344,anchorX:172,anchorY:172,peakFrame:12,motion:.ranged,target:.enemyNode),
+        .init(id:"rally",assetName:"MeadowBattleVFXRally",frameCount:20,framesPerSecond:12,frameWidth:256,frameHeight:256,anchorX:128,anchorY:128,peakFrame:14,motion:.support,target:.allyNode),
+        .init(id:"sweep",assetName:"MeadowBattleVFXSweep",frameCount:20,framesPerSecond:20,frameWidth:339,frameHeight:287,anchorX:169.5,anchorY:143.5,peakFrame:9,motion:.melee,target:.allyNode),
+        .init(id:"dragonSoulWard",assetName:"MeadowBattleVFXDragonSoulWard",frameCount:20,framesPerSecond:12,frameWidth:256,frameHeight:256,anchorX:133,anchorY:154,peakFrame:12,motion:.support,target:.allyNode),
+        .init(id:"dragonScaleWard",assetName:"MeadowBattleVFXDragonScaleWard",frameCount:20,framesPerSecond:20,frameWidth:256,frameHeight:256,anchorX:128,anchorY:128,peakFrame:12,motion:.support,target:.allyNode)
+    ]
+    public static func find(_ skillID:String)->PartySkillVFXSpec? { all.first { $0.id==skillID } }
+    public init(id:String,assetName:String,frameCount:Int,framesPerSecond:Double,frameWidth:Int,frameHeight:Int,anchorX:Double,anchorY:Double,peakFrame:Int,motion:PartySkillVFXMotion,target:PartySkillVFXTarget) {
+        self.id=id;self.assetName=assetName;self.frameCount=frameCount;self.framesPerSecond=framesPerSecond;self.frameWidth=frameWidth;self.frameHeight=frameHeight;self.anchorX=anchorX;self.anchorY=anchorY;self.peakFrame=peakFrame;self.motion=motion;self.target=target
+    }
+}
 public enum PartyVisual {
     public static let width=1000.0,height=600.0,heroScale=0.83,enemyScale=0.82
     public static let feet:[String:PartyPoint]=["p1":PartyPoint(165,420),"p2":PartyPoint(315,505),"m1":PartyPoint(650,395),"m2":PartyPoint(835,510)]
     public static func smooth(_ x:Double)->Double { let t=min(1,max(0,x));return t*t*(3-2*t) }
     public static func pulse(_ age:Double,_ start:Double,_ peak:Double,_ end:Double)->Double { age<peak ? smooth((age-start)/(peak-start)):1-smooth((age-peak)/(end-peak)) }
     public static func chest(_ id:String)->PartyPoint { let p=feet[id]!;return PartyPoint(p.x+5*heroScale,p.y-70*heroScale) }
+    public static func skillEffectCenter(targets:[String],actor:String)->PartyPoint {
+        let points=targets.compactMap { id -> PartyPoint? in
+            guard let foot=feet[id] else { return nil }
+            let monster=id.hasPrefix("m")
+            return PartyPoint(foot.x+(monster ? 13.5*enemyScale:5*heroScale),foot.y-(monster ? 112*enemyScale:86*heroScale))
+        }
+        guard !points.isEmpty else { return feet[actor].map { PartyPoint($0.x,$0.y-70*heroScale) } ?? PartyPoint(width/2,height/2) }
+        return PartyPoint(points.reduce(0){$0+$1.x}/Double(points.count),points.reduce(0){$0+$1.y}/Double(points.count))
+    }
     public static func hitPoint(target:String,shielded:Bool=false,weaponID:String?=nil)->PartyPoint {
         let foot=feet[target]!
         if ["greatSword","legendaryStaff"].contains(weaponID ?? ""),target.hasPrefix("m") { return PartyPoint(foot.x+(94-178.5)*enemyScale,foot.y+(152-240)*enemyScale) }
@@ -77,7 +118,7 @@ public enum PartyVisual {
             let approach=smooth(age/0.82),retreat=1-smooth((age-1.25)/0.52),p=min(approach,retreat)
             return PartyPoint((to.x-155-from.x)*p,(to.y-12-from.y)*p)
         }
-        if intent.ranged || intent.magical || intent.action.isRune { return PartyPoint(0,0) }
+        if intent.ranged || intent.magical || intent.action.usesRangedMotion || intent.action.isRune { return PartyPoint(0,0) }
         if intent.weaponID=="greatSword",!intent.enemy,intent.action != .ambush {
             return GreatSwordRig.travel(age:age,from:from,to:hitPoint(target:intent.target,shielded:shielded,weaponID:intent.weaponID),scale:heroScale)
         }
@@ -108,6 +149,12 @@ extension PartyVisual {
                 clip="guard";progress=PartyVisual.smooth(age/intent.action.duration)
             } else if intent.action.isRune {
                 clip="guard";progress=smooth(age/intent.action.duration)
+            } else if intent.action == .starlightPulse {
+                clip="attack"
+                if unit.equipment.weapon=="greatSword" { progress=GreatSwordRig.progress(age:age) }
+                else if unit.equipment.weapon=="legendaryStaff" { progress=LegendaryStaffRig.progress(age:age) }
+                else if unit.equipment.weapon=="huntingBow" { progress=BowRig.progress(age:age) }
+                else { let action=max(0,age-0.4);progress=min(1,max(0,action-min(0.1,max(0,action-0.648)))/1.2) }
             } else if intent.action == .ambush {
                 clip="attack";progress=ambushProgress(age)
             } else if intent.action.visual=="attack" {

@@ -2,7 +2,7 @@ import Foundation
 import ClassroomGameCore
 
 public enum PartyAction:String,CaseIterable,Codable {
-    case attack,heavyStrike,ambush,breather,simpleGuard,support,rally,runeSlash,runeWard,battleRune,dragonFlame,smallPotion,largePotion,shieldPotion,revivalStone,endTurn
+    case attack,heavyStrike,ambush,breather,simpleGuard,support,rally,runeSlash,runeWard,battleRune,dragonFlame,starlightPulse,sweep,dragonSoulWard,dragonScaleWard,dragonOrder,smallPotion,largePotion,shieldPotion,revivalStone,endTurn
     public var title:String {
         switch self {
         case .attack:return "普通攻击"
@@ -16,6 +16,11 @@ public enum PartyAction:String,CaseIterable,Codable {
         case .runeWard:return "符文庇护"
         case .battleRune:return "战斗符文"
         case .dragonFlame:return "龙焰"
+        case .starlightPulse:return "星辉脉冲"
+        case .sweep:return "横扫"
+        case .dragonSoulWard:return "龙魂庇护"
+        case .dragonScaleWard:return "龙鳞庇护"
+        case .dragonOrder:return "龙之号令"
         case .smallPotion:return "小治疗药水"
         case .largePotion:return "大治疗药水"
         case .shieldPotion:return "护盾药水"
@@ -26,6 +31,8 @@ public enum PartyAction:String,CaseIterable,Codable {
     public var visual:String {
         switch self {
         case .runeSlash,.runeWard,.battleRune,.dragonFlame:return rawValue
+        case .starlightPulse,.sweep:return "attack"
+        case .dragonSoulWard,.dragonScaleWard,.dragonOrder:return "support"
         case .ambush:return "ambush"
         case .support:return "support"
         case .rally:return "rally"
@@ -37,9 +44,13 @@ public enum PartyAction:String,CaseIterable,Codable {
         }
     }
     public var isRune:Bool { [.runeSlash,.runeWard,.battleRune].contains(self) }
+    public var skillVFX:PartySkillVFXSpec? { PartySkillVFXSpec.find(rawValue) }
+    public var usesRangedMotion:Bool { self == .starlightPulse }
+    public var isNodeCast:Bool { [.rally,.runeWard,.battleRune,.dragonFlame,.starlightPulse,.sweep,.dragonSoulWard,.dragonScaleWard,.dragonOrder].contains(self) }
+    public var isNodeSupport:Bool { [.rally,.runeWard,.battleRune,.dragonSoulWard,.dragonScaleWard,.dragonOrder].contains(self) }
     public var impact:Double { if self == .runeSlash { return 1.048 };if self == .runeWard { return 0.72 };if self == .battleRune { return 0.56 };if self == .endTurn { return 0 };if self == .ambush { return 0.72 };if self == .dragonFlame { return 0.46 };return visual == "attack" ? 1.048 : visual == "support" ? 0.56 : visual == "revive" ? 0.72 : 0.46 }
     public var duration:Double { if self == .runeSlash { return 3.0 };if self == .runeWard { return 2.65 };if self == .battleRune { return 2.30 };if self == .dragonFlame { return 2.75 };if self == .endTurn { return 0.25 };if self == .ambush { return 2.10 };return visual == "attack" ? 1.70 : visual == "revive" ? 2.10 : 1.80 }
-    public var isOffensive:Bool { [.attack,.heavyStrike,.ambush,.runeSlash,.dragonFlame].contains(self) }
+    public var isOffensive:Bool { [.attack,.heavyStrike,.ambush,.runeSlash,.dragonFlame,.starlightPulse,.sweep].contains(self) }
     public var isItem:Bool { [.smallPotion,.largePotion,.shieldPotion,.revivalStone].contains(self) }
 }
 public struct PartyIntent {
@@ -51,8 +62,8 @@ public struct PartyIntent {
     public let command:GameCommand
     public let enemy:Bool
     public let weaponID:String?
-    public var magical:Bool { weaponID=="legendaryStaff" && !enemy && action.visual=="attack" }
-    public var ranged:Bool { weaponID=="huntingBow" && !enemy && action.isOffensive && !action.isRune && action != .dragonFlame }
+    public var magical:Bool { weaponID=="legendaryStaff" && !enemy && action.visual=="attack" && action != .starlightPulse }
+    public var ranged:Bool { weaponID=="huntingBow" && !enemy && action.isOffensive && !action.isRune && action != .dragonFlame && action != .starlightPulse }
 }
 /// Uses the original atomic rule engine. Pending visual actions do not mutate it.
 public final class PartyEncounter {
@@ -111,7 +122,7 @@ public final class PartyEncounter {
         case .endTurn:return .endTurn(actor:actor,timedOut:false)
         case .revivalStone:return .rescue(actor:actor,target:target)
         case .smallPotion,.largePotion,.shieldPotion:return .useItem(actor:actor,item:action.rawValue,target:target)
-        case .rally,.runeWard,.battleRune,.dragonFlame:return .cast(actor:actor,skill:action.rawValue,target:.node(state.units[target]?.nodeID ?? 1))
+        case .rally,.runeWard,.battleRune,.dragonFlame,.starlightPulse,.sweep,.dragonSoulWard,.dragonScaleWard,.dragonOrder:return .cast(actor:actor,skill:action.rawValue,target:.node(state.units[target]?.nodeID ?? 1))
         case .breather,.simpleGuard:return .cast(actor:actor,skill:action.rawValue,target:.unit(actor))
         default:return .cast(actor:actor,skill:action.rawValue,target:.unit(target))
         }
@@ -124,8 +135,9 @@ public final class PartyEncounter {
         guard pending==nil,preview(action,target:target).allowed,let actor=current,let command=command(action,target:target) else { return nil }
         serial += 1
         let targets:[String]
-        if [.rally,.runeWard,.battleRune].contains(action) { targets=state.players.filter { $0.isAlive && $0.nodeID==state.units[target]?.nodeID }.map(\.id) }
-        else if action == .dragonFlame { targets=state.units.values.filter { $0.kind == .monster && $0.isAlive && $0.nodeID==state.units[target]?.nodeID }.map(\.id).sorted() }
+        if action.isNodeSupport { targets=state.players.filter { $0.isAlive && $0.nodeID==state.units[target]?.nodeID }.map(\.id) }
+        else if action == .dragonFlame || action == .starlightPulse { targets=state.units.values.filter { $0.kind == .monster && $0.isAlive && $0.nodeID==state.units[target]?.nodeID }.map(\.id).sorted() }
+        else if action == .sweep { targets=state.players.filter { $0.isAlive && $0.nodeID==state.units[target]?.nodeID }.map(\.id).sorted() }
         else if action == .breather || action == .simpleGuard { targets=[actor] }
         else { targets=[target] }
         let intent=PartyIntent(id:sessionID+"/"+String(serial),action:action,actor:actor,target:target,targets:targets,command:command,enemy:state.units[actor]?.kind == .monster,weaponID:state.units[actor]?.equipment.weapon)
@@ -147,13 +159,8 @@ public final class PartyEncounter {
     public func playerActions()->[PartyAction] { current.map(actions(for:)) ?? [] }
     public func actions(for actor:String)->[PartyAction] {
         guard let unit=state.units[actor],unit.kind == .player else { return [] }
-        switch unit.templateID {
-        case "adventurer":return [.attack,.heavyStrike,.breather,.simpleGuard]
-        case "ranger":return [.attack,.ambush,.support,.rally]
-        case "spellblade":return [.attack,.runeSlash,.runeWard,.battleRune]
-        case "dragonKnight":return [.attack,.dragonFlame]
-        default:return [.attack]
-        }
+        let available=(try? GameRules.skills(unit,catalog:engine.catalog)) ?? []
+        return [.attack]+available.compactMap(PartyAction.init(rawValue:))
     }
     public func cost(_ action:PartyAction)->Int {
         if action == .endTurn { return 0 };if action == .revivalStone { return 2 }

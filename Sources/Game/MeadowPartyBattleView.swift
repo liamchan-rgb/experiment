@@ -45,7 +45,7 @@ final class MeadowPartyBattleView:UIView {
         reset.configuration?.title="演练设置";reset.showsMenuAsPrimaryAction=true
         configureTrainingMenu()
         end.addAction(UIAction { [weak self] _ in self?.perform(.endTurn) },for:.touchUpInside)
-        for _ in 0..<4 { let card=MeadowPreviewCard(title:"",text:"");skills.append(card);skillScroll.addSubview(card) }
+        for _ in 0..<6 { let card=MeadowPreviewCard(title:"",text:"");skills.append(card);skillScroll.addSubview(card) }
         skillScroll.addSubview(items);items.showsMenuAsPrimaryAction=true
         stage.onChoose={ [weak self] id in self?.choose(id) }
         accessibilityIdentifier="meadowPartySupportEncounter"
@@ -98,7 +98,12 @@ final class MeadowPartyBattleView:UIView {
         scheduled=task;DispatchQueue.main.asyncAfter(deadline:.now()+0.65,execute:task)
     }
     private func performEnemy(target:String) {
-        guard let model,let intent=model.prepare(.attack,target:target) else { return }
+        guard let model,let actorID=model.current,let actor=model.state.units[actorID] else { return }
+        let targetNode=model.state.units[target]?.nodeID
+        let nodePlayers=model.state.players.filter { $0.isAlive && $0.nodeID==targetNode }
+        let hasSweep=(try? GameRules.skills(actor,catalog:model.engine.catalog).contains("sweep")) ?? false
+        let action:PartyAction=hasSweep && nodePlayers.count>1 && model.preview(.sweep,target:target).allowed ? .sweep:.attack
+        guard let intent=model.prepare(action,target:target) else { return }
         let token=generation;refresh()
         stage.play(intent,before:model.state,confirmed:model.confirmedReceipt,onImpact:{ [weak self] in
             guard let self,self.active,self.generation==token else { return nil }
@@ -175,6 +180,11 @@ final class MeadowPartyBattleView:UIView {
         case .runeWard:return "目标地点：队友恢复8 / 盾6 · 余\(rest)"
         case .battleRune:return "目标地点：盾4 / 增伤3 · 2轮 · 余\(rest)"
         case .dragonFlame:return "目标地点：1D20＋6\(modifier) · 自身恢复6 / 盾6 / 增伤＋2 · 余\(rest)"
+        case .starlightPulse:return "目标地点：1D12＋4\(modifier) · 自身恢复6 / 盾6 · 余\(rest)"
+        case .sweep:return "目标地点：1D12\(modifier) · 余\(rest)"
+        case .dragonSoulWard:return "目标地点：恢复10 / 盾10 / 增伤3 · 2轮 · 余\(rest)"
+        case .dragonScaleWard:return "目标地点：恢复12 / 盾10 / 增伤2 · 1轮 · 余\(rest)"
+        case .dragonOrder:return "目标地点：恢复6 / 盾8 / 增伤4 · 2轮 · 余\(rest)"
         case .ambush:return "2D8＋2"+modifier+" · 自身恢复3 · 余\(rest)"
         case .support:return "1 AP · 治疗6 / 盾4 · 余\(rest)"
         case .rally:return "1 AP · 节点友方增伤2 / 1轮 · 余\(rest)"
