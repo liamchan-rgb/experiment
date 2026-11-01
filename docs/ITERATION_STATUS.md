@@ -1,22 +1,11 @@
-## 当前候选：Build71 五套技能特效接入（2026-11-01）
-归档用户提供的星辉脉冲、振奋、横扫、龙魂庇护、龙鳞庇护五个 ZIP；原压缩包、解包交付、20帧RGBA序列、源图集和Xcode运行图集均保留。资源校验逐格比对原ZIP帧与图集可见像素/Alpha：共100帧，100%匹配。未修改素材像素。工程中振奋的旧矢量替代效果已由新素材接管；没有发现其余四项存在旧专属图集。
+## 当前交付：Build71 五套技能特效接入（2026-11-01）
+用户提交的星辉脉冲、振奋、横扫、龙魂庇护、龙鳞庇护五包均已归档到 `Art/Parts/BattleVFX/`，原 ZIP、交付说明、精灵表及拆分帧保留。逐格对照共100帧，运行时图集与原帧像素完全一致；没有重画素材。攻击类分别复用现有远程／近身动作，辅助类复用防护动作；横扫由已有洞穴巨魔技能调用、命中同节点玩家。每节点只播一次范围特效，结算仍使用真实恢复／护盾／增益回执，没有新制作人物动作。
 
-技能映射：星辉脉冲用现有远程攻击姿态，节点内敌方只播一份；横扫只由具备该技能的怪物调用，复用现有近身攻击姿态并命中节点内玩家，不把怪物范围攻击映射成玩家对怪物的攻击；振奋、龙魂庇护、龙鳞庇护沿用现有防护姿态并在真实结算回执时启动。治疗、蓝色圆盾、增伤数据仍独立按实际回执显示。每套素材保留指定FPS、尺寸与锚点，完整一次播放后清除；攻击峰帧对齐命中，辅助帧不提前于结算。新增环境与地面柔光由原效果渲染层绘制，不新增人物动作或素材像素。
+五段720×432、正常速度全场景审核GIF及逐帧接触表位于 [`Art/Review/Battle/skill-vfx-v1/`](../Art/Review/Battle/skill-vfx-v1/README.md)：星辉脉冲、振奋、横扫、龙魂庇护、龙鳞庇护各一段。`scripts/verify-skill-vfx-assets.py` 与项目结构验证通过；GitHub Actions 纯 Swift 测试173项零失败。设备 Release 归档、IPA CRC、`iPhoneOS` 标记和 arm64 Mach-O 均通过。该 Actions 运行在自动发布阶段曾因大文件接口限制中断；随后改由 Git 提交上传并逐字节通过公开 Raw URL 完整GET校验。未运行模拟器或实机，安装和运行时体验由用户验收；美术认可仍待用户审阅。
 
-正常速度全场景GIF及逐20ms解码接触表位于 `Art/Review/Battle/skill-vfx-v1/`；每段2.8秒、720×432，离线组合使用现有人物／怪物图集与既有动作，不是UIKit、模拟器或实机录屏。美术检查覆盖五段完整帧序列、整场目标范围、开始/峰值/消散与辅助层叠；新美术认可仍为null。`scripts/verify-skill-vfx-assets.py` 和项目路径验证通过。Swift纯测试与设备Release构建尚待GitHub Actions验证；候选1.6.45/build71。未运行App、模拟器或实机。
+**直接 IPA：** [MeadowJourney-build71.ipa（1.6.45，59,058,237字节）](https://raw.githubusercontent.com/liamchan-rgb/experiment/fix/build33-face-grounding-camera/Downloads/MeadowJourney-build71.ipa)。SHA-256：`326a4d199237de1eb11a5c23e4429704017ac4c68ad564714e9b4569ce189816`；远端完整下载的字节数与校验值均和记录一致。校验记录见 [`Downloads/MeadowJourney-build71.json`](../Downloads/MeadowJourney-build71.json)，五段GIF入口见[审核说明](../Art/Review/Battle/skill-vfx-v1/README.md)。构建归档来自 [Actions 运行 #41266049040](https://github.com/liamchan-rgb/experiment/actions/runs/41266049040)。
 
-后两项：继续检查龙鳞庇护护盾接触/破碎与龙之号令增益反馈；再把横扫接入实际洞穴巨魔战斗样例（不改变现有训练鹿的技能配置）。
-
-## 当前交付：Build70 符文战斗特效与命中粒子（2026-10-30）
-用户提交符文斩与符文庇护新版ZIP。原包、精灵表及每帧RGBA原样归档；两套各20帧、256×256，输入ZIP／源图集／拆分帧／Xcode运行时catalog像素完全一致，末帧全透明。
-
-符文斩沿原重剑接敌动作挥击，白色斩击核心锚定实际受击点，帧序列在1.048秒动作时钟和伤害回执对齐。命中起最多32枚白／青蓝／深蓝／金色粒子按序散开；命中光照亮目标和邻近场地，粒子受重力影响碰地、反弹并留下短促火花。致死路径同一回执提交伤害数字、立即隐藏敌人状态条并启动死亡消散。符文庇护20帧符文阵在队伍节点中心只播一次，治疗／护盾效果仍按真实收益对象结算。
-
-正常速度全场景美术审核：`runeSlash-normal.gif`、`runeSlash-lethal-normal.gif`、`runeWard-normal.gif`；每段235帧×20ms＝4.7秒、1020×765。均使用本次构建导出的真实战斗帧／回执离线合成，并非UIKit、模拟器或实机录屏。七张整场关键帧和`source-audit.json`随报告归档。审核包含普通命中、致死、增伤符文斩、节点庇护和战斗符文五种回执。新美术认可仍为null，等待用户查看。
-
-1.6.44／build70设备Release IPA归档与SideStore包元数据校验成功。IPA为53,106,285字节，SHA-256 `798c72abbc1b69075ea046b22f2cd0c6e4f9b5286ebbc75c458e89fbb5968075`；重组后与CI原包长度及hash完全一致，ZIP CRC、iPhoneOS平台和arm64 Mach-O通过。168项Swift测试零失败；战斗回执／粒子碰地确定性检查、道路／行走／姿势检查及40帧资源校验通过。GitHub Actions运行[#41005079116](https://github.com/liamchan-rgb/experiment/actions/runs/41005079116)。未运行模拟器或实机；设备安装由用户验收。
-
-后两项：龙鳞守护圆形护盾与破碎表现；龙之号令增益反馈。
+后两项：细修龙鳞庇护的护盾接触与破碎反馈；在多人洞穴巨魔战斗中核对横扫的目标命中与实际回执。实机由用户验收，不自动新增动作。
 
 ---
 
