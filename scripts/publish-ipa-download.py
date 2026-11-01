@@ -8,6 +8,7 @@ import json
 import os
 import plistlib
 import struct
+import subprocess
 import sys
 import urllib.error
 import urllib.parse
@@ -63,6 +64,22 @@ def put(path: str, content: bytes, message: str, sha: str | None = None) -> None
     print(f"Publishing {path} ({len(content)} bytes)", flush=True)
     result = api_request("PUT", path, request)
     print(f"Published {path}: {result['commit']['sha']}", flush=True)
+
+
+def publish_large_file(path: str, content: bytes, message: str) -> None:
+    """Commit large files through Git; the Contents API rejects this IPA size."""
+    target = Path(path)
+    target.parent.mkdir(parents=True, exist_ok=True)
+    target.write_bytes(content)
+    subprocess.run(["git", "add", "--", path], check=True)
+    subprocess.run(
+        ["git", "-c", "user.name=Codex", "-c", "user.email=codex@openai.com",
+         "commit", "--only", "-m", message + " [skip ci]", "--", path],
+        check=True,
+    )
+    ref = "refs/heads/" + os.environ["GITHUB_REF_NAME"]
+    subprocess.run(["git", "push", "origin", "HEAD:" + ref], check=True)
+    print(f"Published {path} as a Git blob ({len(content)} bytes)", flush=True)
 
 
 def macho_has_arm64(path: Path) -> bool:
@@ -146,8 +163,13 @@ def main() -> None:
         "workflowRun": run_url,
         "skillVFXReview": "Art/Review/Battle/skill-vfx-v1/README.md",
     }
+    ipa_bytes = ipa.read_bytes()
     old_ipa = api_request("GET", ipa_path)
-    put(ipa_path, ipa.read_bytes(), f"Publish Build {build} direct IPA", old_ipa["sha"] if old_ipa else None)
+    expected_blob = hashlib.sha1(b"blob " + str(size).encode() + b"\0" + ipa_bytes).hexdigest()
+    if old_ipa and old_ipa.get("size") == size and old_ipa.get("sha") == expected_blob:
+        print(f"Verified existing direct IPA Git blob: {old_ipa['sha']}", flush=True)
+    else:
+        publish_large_file(ipa_path, ipa_bytes, f"Publish Build {build} direct IPA")
 
     record_path = f"Downloads/MeadowJourney-build{build}.json"
     old_record = api_request("GET", record_path)
