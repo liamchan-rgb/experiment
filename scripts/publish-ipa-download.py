@@ -7,7 +7,7 @@ import hashlib
 import json
 import os
 import plistlib
-import subprocess
+import struct
 import sys
 import urllib.error
 import urllib.parse
@@ -65,6 +65,34 @@ def put(path: str, content: bytes, message: str, sha: str | None = None) -> None
     print(f"Published {path}: {result['commit']['sha']}", flush=True)
 
 
+def macho_has_arm64(path: Path) -> bool:
+    """Read Mach-O CPU types directly so validation works outside macOS too."""
+    data = path.read_bytes()
+    magic = data[:4]
+    thin_orders = {
+        b"\xce\xfa\xed\xfe": "<",  # MH_MAGIC, little endian
+        b"\xcf\xfa\xed\xfe": "<",  # MH_MAGIC_64, little endian
+        b"\xfe\xed\xfa\xce": ">",  # MH_CIGAM, big endian
+        b"\xfe\xed\xfa\xcf": ">",  # MH_CIGAM_64, big endian
+    }
+    if magic in thin_orders:
+        return struct.unpack_from(thin_orders[magic] + "I", data, 4)[0] == 0x0100000C
+
+    fat_orders = {
+        b"\xca\xfe\xba\xbe": (">", 20),  # FAT_MAGIC
+        b"\xbe\xba\xfe\xca": ("<", 20),  # FAT_CIGAM
+        b"\xca\xfe\xba\xbf": (">", 32),  # FAT_MAGIC_64
+        b"\xbf\xba\xfe\xca": ("<", 32),  # FAT_CIGAM_64
+    }
+    if magic not in fat_orders:
+        raise SystemExit(f"Application executable is not a Mach-O binary: {path}")
+    byte_order, stride = fat_orders[magic]
+    count = struct.unpack_from(byte_order + "I", data, 4)[0]
+    if count == 0 or len(data) < 8 + count * stride:
+        raise SystemExit(f"Application executable has an invalid universal header: {path}")
+    return any(struct.unpack_from(byte_order + "I", data, 8 + index * stride)[0] == 0x0100000C for index in range(count))
+
+
 def main() -> None:
     if len(sys.argv) != 3:
         raise SystemExit("Usage: publish-ipa-download.py <device.ipa> <app-executable>")
@@ -89,7 +117,8 @@ def main() -> None:
         raise SystemExit("IPA is not a physical-device iPhoneOS build")
     # lipo takes input files before the operation flag; its synopsis is
     # `lipo input_file -verify_arch arch_type ...`.
-    subprocess.run(["lipo", str(executable), "-verify_arch", "arm64"], check=True)
+    if not macho_has_arm64(executable):
+        raise SystemExit("IPA application executable does not contain the arm64 architecture")
 
     digest = hashlib.sha256()
     with ipa.open("rb") as source:
