@@ -155,6 +155,7 @@ jobs:
           cp "$dice_dir/dice-frames.json" "$staff_dir/dice-frames.json"
           cp "$dice_dir/dice-light-samples.json" "$staff_dir/dice-light-samples.json"
           cp "$dice_dir/poly-frames.json" "$staff_dir/poly-frames.json"
+          cp "$bow_dir/bow-poses.json" "$staff_dir/bow-poses.json"
           git show HEAD:Art/Parts/P1-Battle/hunting-bow-aim-project-r1/pose.json > "$parts_dir/pose.json"
           git show HEAD:Art/Parts/P1-Battle/hunting-bow-aim-project-r1/drawing-hand.png > "$parts_dir/drawing-hand.png"
           git show HEAD:Art/Parts/P1-Battle/hunting-bow-aim-project-r1/grip-hand.png > "$parts_dir/grip-hand.png"
