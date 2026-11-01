@@ -39,6 +39,9 @@ jobs:
   archive:
     name: Device Release IPA
     if: ${{ !inputs.preview_only }}
+    permissions:
+      contents: write
+      actions: read
     runs-on: ${{ inputs.macos_runner || 'macos-15' }}
     timeout-minutes: 30
     defaults:
@@ -202,6 +205,20 @@ jobs:
           path: build/MeadowJourney-shadow-lab.ipa
           if-no-files-found: error
           retention-days: 30
+
+      - name: Publish direct IPA download to the repository
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+          GITHUB_REF_NAME: ${{ github.ref_name }}
+          GITHUB_SHA: ${{ github.sha }}
+          GITHUB_RUN_ID: ${{ github.run_id }}
+          GITHUB_SERVER_URL: ${{ github.server_url }}
+        run: |
+          set -euo pipefail
+          python3 scripts/publish-ipa-download.py \
+            build/MeadowJourney-shadow-lab.ipa \
+            build/MeadowJourney-shadow-lab.xcarchive/Products/Applications/MeadowJourney.app/MeadowJourney
 
       - name: Upload archive logs
         if: ${{ always() }}

@@ -44,6 +44,9 @@ concurrency:
 jobs:
   quick-shadow-lab:
     if: ${{ github.event_name == 'workflow_dispatch' && inputs.quick_lab }}
+    permissions:
+      contents: write
+      actions: read
     uses: ./.github/workflows/shadow-lab-quick.yml
     with:
       macos_runner: ${{ inputs.macos_runner || 'macos-15' }}
