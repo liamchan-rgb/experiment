@@ -42,7 +42,12 @@ for scenario in dict.fromkeys(r['scenario'] for r in rows):
   assert b['p1']['hp']==c['p1']['hp'] and b['p1']['shield']==c['p1']['shield'],'Rune Slash positive status display must remain held at contact'
   assert v['p1']['hp']==v['p1']['gameHP'] and v['p1']['shield']==v['p1']['gameShield']
   assert any(label['text']=='＋4' and abs(label['at']-hit['statusCueAt'])<1e-6 for label in cue['damageLabels'])
-  assert cue_request.get('recoveryAge',1)<0.021 and cue_request.get('birth',1)<0.021 and cue_request['shield']>0
+  assert cue_request.get('recoveryAge',1)<0.021, 'Rune Slash healing should begin at the status cue'
+  if b['p1']['gameShield']>a['p1']['gameShield']:
+   assert cue_request.get('birth',1)<0.021, 'New Rune Slash shield should begin at the status cue'
+  else:
+   assert cue_request.get('birth') is None, 'An unchanged full shield must not be born again'
+  assert cue_request['shield']==v['p1']['shield'] and cue_request['shield']>0
   assert b['p2']['gameHP']==a['p2']['gameHP'] and b['p2']['gameShield']==a['p2']['gameShield']
   assert hit['recipients']==[{'unitID':'p1','heal':4,'shield':4,'buff':0}]
  elif scenario=='runeWard':
