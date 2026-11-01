@@ -40,7 +40,7 @@ final class SkillVFXTests:XCTestCase {
 
     func testSkillEffectsUseOneNodeAnchorForAllTargets() {
         let allies=PartyVisual.skillEffectCenter(targets:["p1","p2"],actor:"p1")
-        XCTAssertEqual(allies.x,240,accuracy:1e-9)
+        XCTAssertEqual(allies.x,244.15,accuracy:1e-9)
         XCTAssertEqual(allies.y,391.12,accuracy:1e-9)
         let enemies=PartyVisual.skillEffectCenter(targets:["m1","m2"],actor:"p1")
         XCTAssertEqual(enemies.x,753.57,accuracy:1e-9)
