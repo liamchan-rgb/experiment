@@ -1,0 +1,35 @@
+{
+  "id": "b5-set-armors-v1",
+  "title": "B5 星辉甲／龙纹甲八向服装候选",
+  "items": [
+    {
+      "id": "p1-b5-starlight-armor-v1",
+      "itemID": "starlightArmor",
+      "name": "星辉甲",
+      "asset": "Art/Parts/P1-v1/b5-set-armors-v1/starlightArmor/asset.json",
+      "bindings": 104,
+      "slots": [
+        "outfit.torso",
+        "outfit.sleeve.left",
+        "outfit.sleeve.right",
+        "outfit.hem.front"
+      ],
+      "artApproval": null
+    },
+    {
+      "id": "p1-b5-dragon-armor-v1",
+      "itemID": "dragonArmor",
+      "name": "龙纹甲",
+      "asset": "Art/Parts/P1-v1/b5-set-armors-v1/dragonArmor/asset.json",
+      "bindings": 104,
+      "slots": [
+        "outfit.torso",
+        "outfit.sleeve.left",
+        "outfit.sleeve.right",
+        "outfit.hem.front"
+      ],
+      "artApproval": null
+    }
+  ],
+  "approval": null
+}
