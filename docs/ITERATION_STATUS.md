@@ -4,7 +4,7 @@
 
 主线程逐方向检查两套1×/2×的13姿势整身页（共208方向姿势页），重点看肩袖接缝、袖口贴腕、衣摆/裤腿边界、后背剑遮挡和帧间闪动；并查看解码后的八向步行及起停GIF接触表。32段GIF共480帧，步行8×120ms，起停480ms + 20×120ms + 480ms。两清单通过 `scripts/check-character-part.py`；16种发型/五官/背剑组合已用真实Compositor生成1664张整身姿势。查看[审核页](../Art/Review/P1/b5-set-armors-v1/README.md)、[核验记录](../Art/Review/P1/b5-set-armors-v1/verification.json)和[公开链接回执](../Art/Review/P1/b5-set-armors-v1/delivery.json)。
 
-两套美术认可仍为null。本轮只交付行走服装层：未制作Battle姿态挂载、未接入营地/背包/套装效果、未打IPA，也未运行App/模拟器/设备。下一步先把两套衣甲挂到现有Battle姿态做一组离线审核，再接B5套装物品与技能规则。
+美术资源已发布于提交 `c0cb41cb46476b56370de78e4db212359c3be3e4`；39份公开文件完成HTTPS完整GET，HTTP 200，MIME／字节数／SHA-256匹配，32段远程GIF也从下载内容核验了帧时长和循环，回执见 `Art/Review/P1/b5-set-armors-v1/delivery.json`。 两套美术认可仍为null。本轮只交付行走服装层：未制作Battle姿态挂载、未接入营地/背包/套装效果、未打IPA，也未运行App/模拟器/设备。下一步先把两套衣甲挂到现有Battle姿态做一组离线审核，再接B5套装物品与技能规则。
 
 ---
 
