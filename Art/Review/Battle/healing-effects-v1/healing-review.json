@@ -25,7 +25,7 @@
       "frames": 354,
       "frameDurationMs": 20,
       "durationMs": 7080,
-      "bytes": 14876230,
+      "bytes": 14646686,
       "dimensions": [
         650,
         566
@@ -33,5 +33,6 @@
       "scale": 0.65
     }
   },
-  "newArtApproval": null
+  "newArtApproval": null,
+  "statusRevealTiming": "Actual recovery is committed on contact; the healing value and health-bar gain stay hidden until the treatment effect is past halfway, then fade in smoothly. No pre-cue health feedback."
 }

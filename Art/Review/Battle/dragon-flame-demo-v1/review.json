@@ -10,7 +10,8 @@
       "size": [
         1020,
         765
-      ]
+      ],
+      "sizeBytes": 4833292
     }
   ],
   "sourceFrameCount": 20,
@@ -18,18 +19,11 @@
     280,
     280
   ],
-  "keyframePNGs": 7,
-  "codexArtReview": {
-    "status": "pass",
-    "checks": [
-      "whole-scene normal-speed timing and stage composition",
-      "cast darkness, exact impact start, warm body and ground light",
-      "both node targets, damage labels, immediate lethal dissolve and surviving hit reaction",
-      "ember motion and visible ground contacts",
-      "production polyhedral dice and fixed-value channels",
-      "sequence tail, scene-light return and clear final state"
-    ],
-    "runtimeDeviceReview": "not performed; user tests installation and runtime"
-  },
+  "keyframePNGs": 9,
+  "statusCueKeyframes": [
+    "dragonFlame-status-cue.png",
+    "dragonFlame-status-cue-plus-120ms.png"
+  ],
+  "statusRevealTiming": "Damage and flame begin at the true hit. Recovery and new shield feedback appear at action age 1.2333s, 58% into the 1.3333s impact effect, then fade in.",
   "userArtApproval": null
 }

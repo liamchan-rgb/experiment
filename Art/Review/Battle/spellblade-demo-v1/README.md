@@ -1,3 +1,13 @@
+# Build72 符文状态提示延后审核
+
+[符文斩正常速度全场 GIF](runeSlash-normal.gif) · [符文庇护正常速度全场 GIF](runeWard-normal.gif) · [命中／状态出现关键帧](status-timing-audit-build72.json) · [40 张帧资源审计](source-audit.json)
+
+规则结算仍在命中时完成；生命恢复数字、血条增加和新护盾圆环等特效播放到后半段才出现，时点采用命中与特效 58% 进度中的较晚者，并以 120ms 淡入。符文斩和符文庇护的回执时点分别为动作年龄 1.1979s 和 0.8352s。生命或护盾没有实际增加时不生成提示；已有护盾不会重播生成动画。上传的两份 ZIP 与仓库原包相同，40 张 256×256 RGBA 帧及 Xcode 目录逐像素一致。
+
+动图为正常速度、4.7 秒全场景离线美术审核，不是 UIKit、模拟器或实机录屏；美术审核待用户确认。
+
+---
+
 # Build70 符文斩／符文庇护全场景美术审核
 
 [符文斩命中动图](runeSlash-normal.gif) · [符文斩致死动图](runeSlash-lethal-normal.gif) · [符文庇护动图](runeWard-normal.gif) · [命中关键帧](runeSlash-impact.png) · [余波关键帧](runeSlash-settling.png) · [庇护峰值](runeWard-peak.png) · [回执与素材审计](source-audit.json)

@@ -1,3 +1,11 @@
+# Build72 治疗提示后置审核
+
+[三档治疗正常速度全场 GIF](healing-tiers-normal.gif) · [三档峰值对照](healing-three-tiers-peak-overview.jpg) · [时序记录](../spellblade-demo-v1/status-timing-audit-build72.json)
+
+微量（实际恢复 1–3）、标准（4–8）、强效（9 以上）档位规则不变，零恢复不播放。真实治疗在命中时结算，但治疗数字和血条增长等正向反馈等特效进入后半段才显现，并以 120ms 淡入；动图检查了提示前、触发帧与淡入后画面。动图为 7.08 秒正常速度离线场景合成，不是设备录屏。
+
+---
+
 # 三档治疗特效 · Build 69 审核
 
 [正常速度全场动画 GIF](https://raw.githubusercontent.com/liamchan-rgb/experiment/fix/build33-face-grounding-camera/Art/Review/Battle/healing-effects-v1/healing-tiers-normal.gif) · [三档峰值并排对照](https://raw.githubusercontent.com/liamchan-rgb/experiment/fix/build33-face-grounding-camera/Art/Review/Battle/healing-effects-v1/healing-three-tiers-peak-overview.jpg) · [治疗素材源包](../../../../Parts/BattleVFX/healing-v1/README.md)

@@ -545,45 +545,55 @@
     {
       "scenario": "runeSlash",
       "hitTime": 2.06,
+      "statusCueAt": 2.1969000000000003,
       "actorAPBefore": 3,
       "actorAPAfter": 1,
-      "casterHeal": 4,
+      "casterHealCommittedAtHit": 4,
+      "casterHealDisplayedAtCue": 4,
       "targetDamage": 12,
       "correctEffectScopes": true
     },
     {
       "scenario": "runeSlash-lethal",
       "hitTime": 2.06,
+      "statusCueAt": 2.1969000000000003,
       "actorAPBefore": 3,
       "actorAPAfter": 1,
-      "casterHeal": 4,
+      "casterHealCommittedAtHit": 4,
+      "casterHealDisplayedAtCue": 4,
       "targetDamage": 3,
       "correctEffectScopes": true
     },
     {
       "scenario": "runeWard",
       "hitTime": 1.72,
+      "statusCueAt": 1.8352000000000002,
       "actorAPBefore": 3,
       "actorAPAfter": 1,
-      "casterHeal": 8,
+      "casterHealCommittedAtHit": 8,
+      "casterHealDisplayedAtCue": 8,
       "targetDamage": 0,
       "correctEffectScopes": true
     },
     {
       "scenario": "battleRune",
       "hitTime": 1.56,
+      "statusCueAt": 2.3339999999999996,
       "actorAPBefore": 3,
       "actorAPAfter": 2,
-      "casterHeal": 0,
+      "casterHealCommittedAtHit": 0,
+      "casterHealDisplayedAtCue": 0,
       "targetDamage": 0,
       "correctEffectScopes": true
     },
     {
       "scenario": "runeSlash-buffed",
       "hitTime": 2.06,
+      "statusCueAt": 2.1969000000000003,
       "actorAPBefore": 2,
       "actorAPAfter": 0,
-      "casterHeal": 4,
+      "casterHealCommittedAtHit": 4,
+      "casterHealDisplayedAtCue": 4,
       "targetDamage": 18,
       "correctEffectScopes": true
     }

@@ -1,3 +1,18 @@
+## build72 · 符文与战斗状态反馈时序修正 · 1.6.45
+
+[直接下载 MeadowJourney-build72.ipa](https://raw.githubusercontent.com/liamchan-rgb/experiment/fix/build33-face-grounding-camera/Downloads/MeadowJourney-build72.ipa) · [IPA 校验记录](MeadowJourney-build72.json) · [时序审核与关键帧](../Art/Review/Battle/spellblade-demo-v1/README.md)
+
+正常速度全场景动图：
+[符文斩](https://raw.githubusercontent.com/liamchan-rgb/experiment/fix/build33-face-grounding-camera/Art/Review/Battle/spellblade-demo-v1/runeSlash-normal.gif) · [符文庇护](https://raw.githubusercontent.com/liamchan-rgb/experiment/fix/build33-face-grounding-camera/Art/Review/Battle/spellblade-demo-v1/runeWard-normal.gif) · [龙焰](https://raw.githubusercontent.com/liamchan-rgb/experiment/fix/build33-face-grounding-camera/Art/Review/Battle/dragon-flame-demo-v1/dragon-flame-normal.gif) · [三档治疗](https://raw.githubusercontent.com/liamchan-rgb/experiment/fix/build33-face-grounding-camera/Art/Review/Battle/healing-effects-v1/healing-tiers-normal.gif) · [星辉脉冲](https://raw.githubusercontent.com/liamchan-rgb/experiment/fix/build33-face-grounding-camera/Art/Review/Battle/skill-vfx-v1/starlightPulse-normal.gif) · [振奋](https://raw.githubusercontent.com/liamchan-rgb/experiment/fix/build33-face-grounding-camera/Art/Review/Battle/skill-vfx-v1/rally-normal.gif) · [横扫](https://raw.githubusercontent.com/liamchan-rgb/experiment/fix/build33-face-grounding-camera/Art/Review/Battle/skill-vfx-v1/sweep-normal.gif) · [龙魂庇护](https://raw.githubusercontent.com/liamchan-rgb/experiment/fix/build33-face-grounding-camera/Art/Review/Battle/skill-vfx-v1/dragonSoulWard-normal.gif) · [龙鳞庇护](https://raw.githubusercontent.com/liamchan-rgb/experiment/fix/build33-face-grounding-camera/Art/Review/Battle/skill-vfx-v1/dragonScaleWard-normal.gif)
+
+伤害仍在真实命中时结算。治疗数字、生命条恢复和新增护盾圆环延后到对应特效过半后显示，时点取“命中时刻”和“特效开始后 58%”中较晚者，并用 120ms 淡入；没有实际增加的治疗／护盾不显示，已有满值护盾保持原状。符文斩、符文庇护、龙焰、星辉脉冲、龙魂庇护、龙鳞庇护和三档治疗均已复核；振奋和横扫没有正向治疗／护盾回执，不会凭空出现状态提示。
+
+两份新上传的符文 ZIP 与仓库已收录帧逐像素相同，沿用原始归档，不重复拷贝。40 张符文帧、上一轮五套技能的 100 张帧和三档治疗资源检查通过；状态时序离线测试、IPA CRC／版本／arm64 校验及 Release 归档通过。预览是按生产战斗状态离线合成的美术审核，不是 UIKit、模拟器或实机录屏。IPA 为可由 SideStore 重签的 unsigned 设备包，59,083,877 字节，SHA-256 `461040702e39e21746ae4c8a0878b54e6fdfaf7c16e1a235ead718ac441da12f`。GitHub Actions [运行 #41285365973](https://github.com/liamchan-rgb/experiment/actions/runs/41285365973)；未运行模拟器或实机。
+
+下一步两项：用户在设备上检查护盾与治疗出现时点；随后制作龙之号令增益效果，并完善龙鳞护盾接触／破碎反馈。
+
+---
+
 ## build71 · 五套战斗技能特效接入 · 1.6.45
 
 [直接下载 MeadowJourney-build71.ipa](https://raw.githubusercontent.com/liamchan-rgb/experiment/fix/build33-face-grounding-camera/Downloads/MeadowJourney-build71.ipa) · [五套正常速度全场 GIF](https://github.com/liamchan-rgb/experiment/blob/fix/build33-face-grounding-camera/Art/Review/Battle/skill-vfx-v1/README.md) · [校验记录](MeadowJourney-build71.json)

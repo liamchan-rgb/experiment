@@ -1,3 +1,11 @@
+# Build72 龙焰状态提示时序复核
+
+[龙焰正常速度全场 GIF](dragon-flame-normal.gif) · [命中关键帧](dragonFlame-impact.png) · [状态出现关键帧](dragonFlame-status-cue.png) · [时序总表](../spellblade-demo-v1/status-timing-audit-build72.json)
+
+火焰与伤害在实际命中时触发；治疗／护盾提示延后到动作年龄 1.2333s（特效时长 1.3333s 的 58%）出现，并平滑淡入。粒子、地面接触与暖色环境光仍从命中阶段开始。此为正常速度离线美术预览，设备效果待用户安装验收。
+
+---
+
 # 龙焰 V2 全场美术审核
 
 完整正常速度预览：[`dragon-flame-normal.gif`](dragon-flame-normal.gif)。关键帧：[`dragonFlame-hover.png`](dragonFlame-hover.png)、[`dragonFlame-impact.png`](dragonFlame-impact.png)、[`dragonFlame-recovery.png`](dragonFlame-recovery.png)、[`dragonFlame-tail.png`](dragonFlame-tail.png)。
