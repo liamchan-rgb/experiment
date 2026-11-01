@@ -36,7 +36,9 @@ for scenario in dict.fromkeys(r['scenario'] for r in rows):
 (D/'dice-light-requests.json').write_text(json.dumps(requests,separators=(',',':'))+'\n')
 if '--prepare' in sys.argv:print(f'Prepared {len(requests)} production field requests');sys.exit(0)
 legacy=json.loads((D/'dice-light-samples.json').read_text());attached={(r['kind'],r['frame']):r for r in legacy['frames']};reqs={(r['kind'],r['frame']):r for r in requests}
-fontpath='/usr/share/fonts/opentype/noto/NotoSerifCJK-Bold.ttc';fonts={i:ImageFont.truetype(fontpath,i) for i in [14,16,17,18,20,22,24,26,30]}
+fontpath=next((p for p in ['/usr/share/fonts/opentype/noto/NotoSerifCJK-Bold.ttc','/System/Library/Fonts/PingFang.ttc','/System/Library/Fonts/AppleSDGothicNeo.ttc'] if Path(p).exists()),None)
+if fontpath is None: raise RuntimeError('A CJK-capable review font is required')
+fonts={i:ImageFont.truetype(fontpath,i) for i in [14,16,17,18,20,22,24,26,30]}
 # Current shared layout at1440x1080, no safe-area inset; production layout constants.
 CW,CH=1440,1080;left=72;ww=1296;gap=18;head=(72,54,1296,76);detail=(72,852,1296,174);track=(72,754,1296,80);maprect=(72,148,599,588);stage=(689,148,679,588);scene_scale=stage[2]/1000
 map_image=asset('MeadowGround');map_static=map_image.resize((599,588),Image.Resampling.LANCZOS)
