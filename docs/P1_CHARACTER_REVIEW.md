@@ -2,7 +2,7 @@
 
 ## 当前候选：B5 星辉甲与龙纹甲（八向行走外观）
 
-两套衣甲均基于P1行走标准，各提供104姿势绑定/416张透明衣物层，且不改身体、下装或动作。主线程逐方向检查两套1×/2×全部13姿势，并解码查看八向正常行走及起停GIF；发型、五官和背剑开关组合实际装配检查通过。主观美术认可仍留空，等待用户看预览；战斗姿态/营地装备/套装技能未接入。
+两套衣甲均基于P1行走标准，各提供104姿势绑定/416张透明衣物层，且不改身体、下装或动作。主线程逐方向检查两套1×/2×全部13姿势，并解码查看八向正常行走及起停GIF；发型、五官和背剑开关组合实际装配检查通过。主观美术认可仍留空，等待用户看预览；战斗姿态/营地装备/套装技能未接入。两套资源的39个公开文件已HTTP GET核对，记录见delivery.json。
 
 [星辉甲正常速度GIF](../Art/Review/P1/b5-set-armors-v1/preview/p1-b5-starlight-armor-v1/down-walk-normal.gif) · [龙纹甲正常速度GIF](../Art/Review/P1/b5-set-armors-v1/preview/p1-b5-dragon-armor-v1/down-walk-normal.gif) · [八方向GIF、站姿和姿势页](../Art/Review/P1/b5-set-armors-v1/README.md) · [人工审核记录](../Art/Review/P1/b5-set-armors-v1/art-review.md) · [公开链接回执](../Art/Review/P1/b5-set-armors-v1/delivery.json)
 

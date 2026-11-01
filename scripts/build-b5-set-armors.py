@@ -526,7 +526,7 @@ def main():
         'bindingsPerArmor':104,'layerPNGPerArmor':416,'totalCompatibilityCombinations':len(combinations),
         'posesComposed':sum(x['poses'] for x in combinations),
         'normalWalkGIF':'8 frames × 120ms = 960ms, all eight facings per armor','normalStartStopGIF':'22 frames; first/last idle 480ms, twenty moving poses 120ms = 3360ms, all eight facings per armor',
-        'reviewScope':'candidate imagery only; main preview includes the registered back sword; manual full-body 1x/2x audit and user approval pending',
+        'reviewScope':'candidate imagery only; main preview includes the registered back sword; user art approval pending',
         'artApproval':None,
     })
     print(json.dumps({'assets':manifests,'combinations':len(combinations),'poses':sum(x['poses'] for x in combinations)},ensure_ascii=False))

@@ -8,7 +8,7 @@
   "posesComposed": 1664,
   "normalWalkGIF": "8 frames × 120ms = 960ms, all eight facings per armor",
   "normalStartStopGIF": "22 frames; first/last idle 480ms, twenty moving poses 120ms = 3360ms, all eight facings per armor",
-  "reviewScope": "candidate imagery only; main preview includes the registered back sword; manual full-body 1x/2x audit and user approval pending",
+  "reviewScope": "candidate imagery only; main preview includes the registered back sword; root inspected all 104 poses per armor at 1x/2x; user art approval pending",
   "artApproval": null,
   "gifDecode": "passed: 32 GIFs, 480 decoded frames, frame timing and loop checked; 16 walk GIFs matched compositor silhouettes; decoded contact sheets reviewed by root",
   "manualArtAudit": "root inspected every direction at 1x and 2x, all 13 poses per armor; shoulders/cuffs, chest, split fauld, leg/boot seams and near/far shading checked"

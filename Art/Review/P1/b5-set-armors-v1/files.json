@@ -4722,13 +4722,13 @@
     },
     {
       "path": "Art/Review/P1/b5-set-armors-v1/verification.json",
-      "bytes": 1021,
-      "sha256": "40479cb3a13d79273c5a48150d74c7d44c9723238dfba656339726e5f295ae95"
+      "bytes": 1041,
+      "sha256": "1e3e1cc456c1afe6e2e4b6d5f57cf3962cbe33ecf89c6457238c68abaaace31e"
     },
     {
       "path": "scripts/build-b5-set-armors.py",
-      "bytes": 30246,
-      "sha256": "776fd867d22561004775851d48f5dbb3e99308b33064e035c113f936a5d63ab4"
+      "bytes": 30217,
+      "sha256": "0aae1aff20016c1e287c3c930f407d9a14774c39c0e7ecab02db23cb75355aa9"
     },
     {
       "path": "scripts/render-b5-set-armor-compatibility.py",
