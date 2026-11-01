@@ -7,7 +7,9 @@ from PIL import Image,ImageDraw,ImageFont,ImageChops
 import json,math,functools,subprocess
 R=Path(__file__).resolve().parents[1];A=R/'Sources/Resources/Assets.xcassets';D=R/'Art/Review/Battle/armor-fit-r2';D.mkdir(parents=True,exist_ok=True)
 p=R/'scripts/review-bow-actions-r7-demo.py';N={'__file__':str(p)};exec(compile(p.read_text().split('# Check every registered frame')[0],str(p),'exec'),N)
-base=N['base'];world=N['world'];rigdata=N['lib'];native_bow=N['composite'];origasset=N['asset'];oldtile=N['painted_tile'];gait=json.loads((R/'Sources/Resources/hero-gait.json').read_text());font=ImageFont.truetype('/usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc',14)
+base=N['base'];world=N['world'];rigdata=N['lib'];native_bow=N['composite'];origasset=N['asset'];oldtile=N['painted_tile'];gait=json.loads((R/'Sources/Resources/hero-gait.json').read_text());fontfile=next((p for p in ['/usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc','/System/Library/Fonts/PingFang.ttc','/System/Library/Fonts/AppleSDGothicNeo.ttc'] if Path(p).exists()),None)
+if fontfile is None:raise RuntimeError('A CJK-capable review font is required')
+font=ImageFont.truetype(fontfile,14)
 weapons=['trainingSword','huntingBow','greatSword','legendaryStaff'];armors=['leatherArmor','runeArmor'];pauldron='MeadowBattleHeroPauldronNearWardrobe';names={'leatherArmor':'皮甲','runeArmor':'符文甲','trainingSword':'短剑','huntingBow':'猎弓','greatSword':'重剑','legendaryStaff':'权杖'}
 poses={w:{(r.get('clip','attack'),round(r['progress']*600)):r['sample'] for r in json.loads((R/'Art/Review/Battle'/d/f).read_text())} for w,d,f in [('greatSword','great-sword-demo-v1','great-sword-poses.json'),('legendaryStaff','legendary-staff-demo-v1','legendary-staff-poses.json')]};stafforder=json.loads((R/'Vendor/ClassroomGameCore/Sources/MeadowBattleSupport/Resources/legendary-staff-v1.json').read_text())['layerOrder']
 @functools.lru_cache(4096)
