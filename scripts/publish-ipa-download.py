@@ -87,7 +87,9 @@ def main() -> None:
         raise SystemExit(f"Unexpected bundle build number: {build!r}")
     if info.get("CFBundleSupportedPlatforms") != ["iPhoneOS"]:
         raise SystemExit("IPA is not a physical-device iPhoneOS build")
-    subprocess.run(["lipo", "-verify_arch", "arm64", str(executable)], check=True)
+    # lipo takes input files before the operation flag; its synopsis is
+    # `lipo input_file -verify_arch arch_type ...`.
+    subprocess.run(["lipo", str(executable), "-verify_arch", "arm64"], check=True)
 
     digest = hashlib.sha256()
     with ipa.open("rb") as source:
