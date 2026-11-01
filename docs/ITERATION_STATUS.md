@@ -1,7 +1,7 @@
 ## 当前交付：Build71 五套技能特效接入（2026-11-01）
 用户提交的星辉脉冲、振奋、横扫、龙魂庇护、龙鳞庇护五包均已归档到 `Art/Parts/BattleVFX/`，原 ZIP、交付说明、精灵表及拆分帧保留。逐格对照共100帧，运行时图集与原帧像素完全一致；没有重画素材。攻击类分别复用现有远程／近身动作，辅助类复用防护动作；横扫由已有洞穴巨魔技能调用、命中同节点玩家。每节点只播一次范围特效，结算仍使用真实恢复／护盾／增益回执，没有新制作人物动作。
 
-五段720×432、正常速度全场景审核GIF及逐帧接触表位于 [`Art/Review/Battle/skill-vfx-v1/`](../Art/Review/Battle/skill-vfx-v1/README.md)：星辉脉冲、振奋、横扫、龙魂庇护、龙鳞庇护各一段。`scripts/verify-skill-vfx-assets.py` 与项目结构验证通过；GitHub Actions 纯 Swift 测试173项零失败。设备 Release 归档、IPA CRC、`iPhoneOS` 标记和 arm64 Mach-O 均通过。该 Actions 运行在自动发布阶段曾因大文件接口限制中断；随后改由 Git 提交上传并逐字节通过公开 Raw URL 完整GET校验。未运行模拟器或实机，安装和运行时体验由用户验收；美术认可仍待用户审阅。
+五段720×432、正常速度全场景审核GIF及逐帧接触表位于 [`Art/Review/Battle/skill-vfx-v1/`](../Art/Review/Battle/skill-vfx-v1/README.md)：星辉脉冲、振奋、横扫、龙魂庇护、龙鳞庇护各一段。`scripts/verify-skill-vfx-assets.py` 与项目结构验证通过；GitHub Actions 纯 Swift 测试173项零失败。设备 Release 归档、IPA CRC、`iPhoneOS` 标记和 arm64 Mach-O 均通过。首次 Actions 发布步骤因架构校验命令参数顺序错误停止；修正校验后确认归档包含 arm64，并经 Git 大文件提交上传（GitHub Contents API不接受该大小），公开 Raw URL 完整GET的字节数与 SHA-256 均匹配。未运行模拟器或实机，安装和运行时体验由用户验收；美术认可仍待用户审阅。
 
 **直接 IPA：** [MeadowJourney-build71.ipa（1.6.45，59,058,237字节）](https://raw.githubusercontent.com/liamchan-rgb/experiment/fix/build33-face-grounding-camera/Downloads/MeadowJourney-build71.ipa)。SHA-256：`326a4d199237de1eb11a5c23e4429704017ac4c68ad564714e9b4569ce189816`；远端完整下载的字节数与校验值均和记录一致。校验记录见 [`Downloads/MeadowJourney-build71.json`](../Downloads/MeadowJourney-build71.json)，五段GIF入口见[审核说明](../Art/Review/Battle/skill-vfx-v1/README.md)。构建归档来自 [Actions 运行 #41266049040](https://github.com/liamchan-rgb/experiment/actions/runs/41266049040)。
 
