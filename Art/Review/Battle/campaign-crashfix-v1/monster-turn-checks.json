@@ -1,0 +1,19 @@
+{
+  "frames": 238,
+  "frameMs": 20,
+  "durationMs": 4760,
+  "loop": 0,
+  "size": [
+    720,
+    526
+  ],
+  "bytes": 11392829,
+  "sourceRange": [
+    0,
+    237
+  ],
+  "includes": "two actual monster actions and complete recovery",
+  "actualDiceAnchorCalledWithPersistentIDs": true,
+  "appOrSimulatorRun": false,
+  "lightingAndUIApproximate": true
+}
