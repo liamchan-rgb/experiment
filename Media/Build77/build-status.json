@@ -1,7 +1,7 @@
 {
   "build": 77,
   "version": "1.6.50",
-  "observedAt": "2026-11-04T16:41:03.063167+00:00",
+  "observedAt": "2026-11-04T17:16:20.522804+00:00",
   "sourceCommit": "a3508591fd6934e4389d01bed98aa7cc65400835",
   "fixCommit": "4fd9c11b7b0fe9e9c446f3c6ea6b9ec2e2250eb3",
   "run": "https://github.com/liamchan-rgb/experiment/actions/runs/41869668339",
@@ -13,16 +13,16 @@
   "localTests": 194,
   "fourRegressionsPassed": true,
   "githubStatus": {
-    "indicator": "minor",
-    "description": "Minor Service Outage"
+    "indicator": "none",
+    "description": "All Systems Operational"
   },
   "actionsComponent": [
     {
       "id": "br0l2tvcx85d",
       "name": "Actions",
-      "status": "partial_outage",
+      "status": "operational",
       "created_at": "2019-11-13T18:02:19.432Z",
-      "updated_at": "2026-11-04T16:17:29.662Z",
+      "updated_at": "2026-11-04T16:48:03.067Z",
       "position": 7,
       "description": "Workflows, Compute and Orchestration for GitHub Actions",
       "showcase": true,
@@ -33,13 +33,7 @@
       "only_show_if_degraded": false
     }
   ],
-  "activeIncidents": [
-    {
-      "name": "Incident with Actions and Pages",
-      "status": "investigating",
-      "url": "https://stspg.io/pjgptg3cfc6n"
-    }
-  ],
+  "activeIncidents": [],
   "olderAttemptsCancelRequested": [
     41862780361,
     41863686510
@@ -52,5 +46,22 @@
     "startedCompilation": false,
     "message": "The job was not acquired by Runner of type hosted even after multiple attempts",
     "runnerNotice": "macOS arm64 capacity constraints"
-  }
+  },
+  "recoveryAttempts": {
+    "41869668339": {
+      "status": "queued",
+      "conclusion": null,
+      "sourceCommit": "a3508591fd6934e4389d01bed98aa7cc65400835",
+      "attempt": 2,
+      "url": "https://github.com/liamchan-rgb/experiment/actions/runs/41869668339"
+    },
+    "41864553920": {
+      "status": "queued",
+      "conclusion": null,
+      "sourceCommit": "06e7555235b08bc7f2873295fea19a07c2b71896",
+      "attempt": 2,
+      "url": "https://github.com/liamchan-rgb/experiment/actions/runs/41864553920"
+    }
+  },
+  "runAttempt": 2
 }

@@ -1,3 +1,9 @@
+## Build77 再核查：官方恢复正常，Mac重试仍未分配机器（2026-11-04）
+
+GitHub官方状态恢复All Systems Operational，Actions operational。旧Intel41869668339 attempt1已确认因取不到hosted runner失败，零编译步骤。现已重跑Intel41869668339 attempt2及备用macos-15池41864553920 attempt2，两者当前queued、没有编译步骤。源码分别a3508591/06e75552，差异仅文档/验证记录，实际修复代码与1.6.50/77版本逐字节相同；194本地测试及原正常GIF审核仍有效。官方状态恢复不代表本任务已取得Mac构建机，当前仍无新IPA。
+
+后续先检查这两个重试任务，采用先成功的实际headSha/attempt与artifact，重新核194测试/设备Release/版本/ZIP/CRC/arm64/资源/来源，再发布直接IPA并完整公开GET。无需新美术或重跑App/模拟器/实机；用户负责实机验证。旧候选源及失败队列仅历史。后两项功能仍是M4节点内容编辑、行程行囊/换装与队伍配置。
+
 更新（2026-11-04）：官方Actions仍partial_outage。上次41864553920已因始终取不到hosted runner而失败，零编译步骤，不是源码编译失败；其annotation另报macOS arm64容量限制。现重试Intel池41869668339，当前queued、尚无IPA；source a3508591fd6934e4389d01bed98aa7cc65400835，实际修复代码/版本与06e75552逐字节一致。不能把旧任务继续说成排队或成功。
 
 # Build77 · 骰子定位崩溃修复，归档等待中
