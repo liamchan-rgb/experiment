@@ -111,6 +111,7 @@ final class GameScene: SKScene {
         start.fillColor = SKColor(red: 0.96, green: 0.85, blue: 0.52, alpha: 1)
         start.strokeColor = SKColor(red: 0.40, green: 0.24, blue: 0.11, alpha: 1)
         start.lineWidth = 2.5
+        start.name = world.definition.startNodeID.map { "landmark-\($0)" }
         start.zPosition = world.definition.startNodeID == nil ? 65:22500
         if world.definition.startNodeID != nil {
             let text=SKLabelNode(fontNamed:"Georgia-Bold");text.text="起";text.fontSize=15
