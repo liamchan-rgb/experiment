@@ -1,5 +1,7 @@
 ## build72 · 符文与战斗状态反馈时序修正 · 1.6.45
 
+Build73： [直接IPA](MeadowJourney-b73.ipa) · [版本与校验](MeadowJourney-build73.json) · [地图预览说明](../Media/Build73/README.md)。1.6.46，随机地图M1/M2，节点战斗与奖励尚未结算。
+
 [直接下载 MeadowJourney-build72.ipa](https://raw.githubusercontent.com/liamchan-rgb/experiment/fix/build33-face-grounding-camera/Downloads/MeadowJourney-build72.ipa) · [IPA 校验记录](MeadowJourney-build72.json) · [时序审核与关键帧](../Art/Review/Battle/spellblade-demo-v1/README.md)
 
 正常速度全场景动图：
