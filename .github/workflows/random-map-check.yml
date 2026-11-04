@@ -12,7 +12,7 @@ on:
 permissions:
   contents: read
 concurrency:
-  group: random-map-${{ github.ref }}
+  group: random-map-${{ github.ref }}-${{ inputs.runner || 'macos-15-intel' }}
   cancel-in-progress: false
 jobs:
   archive:
