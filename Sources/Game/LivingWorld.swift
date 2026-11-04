@@ -22,7 +22,7 @@ final class LivingWorld: SKNode {
         self.textures = textures
         self.effects = preparedEffects ?? EnvironmentShaders()
         self.vegetationEnabled = vegetationEnabled
-        network = TrailNetwork(roads: definition.roads)
+        network = TrailNetwork(roads: definition.roads, patrolStart: definition.startNodeID)
         super.init()
         addChild(terrain)
         if renderTerrain { buildGround(); buildRoads(mask: roadMask) }
@@ -142,6 +142,7 @@ final class LivingWorld: SKNode {
     }
 
     static func meadowDetails(definition: SceneDefinition, network: TrailNetwork) -> [SceneDefinition.Prop] {
+        if definition.startNodeID != nil { return [] } // Generated decorations already reserve node/road clearances.
         var props: [SceneDefinition.Prop] = []
         var random = MeadowRandom(seed: definition.seed)
         for index in 0..<110 {

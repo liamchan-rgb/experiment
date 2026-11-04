@@ -77,7 +77,7 @@ final class GameScene: SKScene {
         world = prepared
         if let heroes { frames = heroes }
         addChild(world)
-        simulation = JourneySimulation(network: world.network)
+        simulation = JourneySimulation(network: world.network, spawn: world.definition.spawn?.point)
         buildMarkers(); buildActors(); reset()
     }
 
@@ -102,12 +102,12 @@ final class GameScene: SKScene {
                 world.addChild(marker)
             }
         }
-        if demoMode { togglePlayback() }
+        if demoMode && world.definition.startNodeID == nil { togglePlayback() }
     }
 
     private func buildMarkers() {
         let start = SKShapeNode(circleOfRadius: 10)
-        start.position = LivingWorld.position(CGPoint(x: 285, y: 442))
+        start.position = LivingWorld.position(world.definition.spawn?.point ?? CGPoint(x: 285, y: 442))
         start.fillColor = SKColor(red: 0.96, green: 0.85, blue: 0.52, alpha: 1)
         start.strokeColor = SKColor(red: 0.40, green: 0.24, blue: 0.11, alpha: 1)
         start.lineWidth = 2.5
@@ -115,7 +115,7 @@ final class GameScene: SKScene {
         world.addChild(start)
         for (index, discovery) in world.definition.discoveries.enumerated() {
             let root = SKNode()
-            root.position = LivingWorld.position(CGPoint(x: discovery.x + 28, y: discovery.y - 40))
+            root.position = LivingWorld.position(discovery.kind == nil ? CGPoint(x: discovery.x + 28, y: discovery.y - 40) : CGPoint(x:discovery.x,y:discovery.y-24))
             root.zPosition = 22500
             root.name = "discovery-\(index)"
             let diamond = SKShapeNode(circleOfRadius: 13)
@@ -125,7 +125,7 @@ final class GameScene: SKScene {
             diamond.name = root.name
             root.addChild(diamond)
             let label = SKLabelNode(fontNamed: "Georgia-Bold")
-            label.text = "?"
+            label.text = ["combat":"战","boss":"首","reward":"奖","empty":"空"][discovery.kind ?? ""] ?? "?"
             label.fontSize = 20
             label.fontColor = SKColor(red: 1, green: 0.95, blue: 0.81, alpha: 1)
             label.verticalAlignmentMode = .center
@@ -356,9 +356,10 @@ final class GameScene: SKScene {
         simulation.reset()
         pendingDiscovery = nil
         discovered.removeAll()
-        for node in discoveryNodes {
+        for (index,node) in discoveryNodes.enumerated() {
             node.alpha = 1
-            node.children.compactMap { $0 as? SKLabelNode }.first?.text = "?"
+            let kind=world.definition.discoveries[index].kind ?? ""
+            node.children.compactMap { $0 as? SKLabelNode }.first?.text = ["combat":"战","boss":"首","reward":"奖","empty":"空"][kind] ?? "?"
             node.children.compactMap { $0 as? SKShapeNode }.first?.fillColor = .init(red: 0.25, green: 0.27, blue: 0.23, alpha: 0.9)
         }
         selectionRing.isHidden = true
@@ -542,6 +543,7 @@ final class GameScene: SKScene {
     }
 
     private func updateDemo() {
+        guard world.definition.startNodeID == nil else { return }
         if environmentTime > 3, demoPhase == 0 {
             demoPhase = 1
             run(.customAction(withDuration: 1.4) { [weak self] _, elapsed in

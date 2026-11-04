@@ -3,8 +3,17 @@ import SpriteKit
 import MetalKit
 import MeadowBattleSupport
 import ClassroomGameCore
+import MeadowWorldSupport
 
 final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
+    private let previewMap: GeneratedMeadowMap?
+    private let randomMapButton = UIButton(type: .system)
+
+    init(previewMap: GeneratedMeadowMap? = nil) {
+        self.previewMap = previewMap
+        super.init(nibName:nil,bundle:nil)
+    }
+    required init?(coder: NSCoder) { previewMap=nil;super.init(coder:coder) }
     private let gameView = UIView()
     private var gaitView: SKView?
     private let scene = GameScene()
@@ -114,9 +123,18 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
         shadowLabButton.accessibilityIdentifier = "openShadowLab"
         shadowLabButton.addTarget(self, action: #selector(openShadowLab), for: .touchUpInside)
         view.addSubview(shadowLabButton)
-        configureCampSave()
+        if previewMap == nil { configureCampSave() }
         configureGaitControls()
         configureBattlePreview()
+        var mapStyle=labStyle
+        mapStyle.title=previewMap == nil ? "随机地图" : "返回地图设置"
+        randomMapButton.configuration=mapStyle
+        randomMapButton.addTarget(self,action:#selector(openMapSettings),for:.touchUpInside)
+        randomMapButton.isEnabled=false
+        view.addSubview(randomMapButton)
+        if previewMap != nil {
+            for control in [shadowLabButton,gaitTestButton,battlePreviewButton,p1AppearanceButton] { control.isHidden=true }
+        }
         for label in [metricsLabel, discoveryLabel] {
             label.textColor = UIColor(red: 1, green: 0.94, blue: 0.75, alpha: 1)
             label.backgroundColor = UIColor(red: 0.17, green: 0.22, blue: 0.17, alpha: 0.82)
@@ -193,6 +211,7 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
             view.addSubview(loadingView)
             loadingView.onRetry = { [weak self] in
                 guard let self else { return }
+                if self.previewMap != nil { self.dismiss(animated:true);return }
                 if !self.loadStarted { self.beginLoading() }
                 else if !MeadowGPUDiagnostics.shared.requiresColdLaunch { self.view.window?.rootViewController = GameViewController() }
             }
@@ -252,6 +271,8 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
         }
         metricsLabel.frame = CGRect(x: right - 225, y: view.bounds.height - max(inset.bottom, 10) - 50, width: 225, height: 48)
         discoveryLabel.frame = CGRect(x: view.bounds.midX - 110, y: view.bounds.height - max(inset.bottom, 10) - 44, width: 220, height: 34)
+        randomMapButton.frame=CGRect(x:max(inset.left,10)+4,y:view.bounds.height-max(inset.bottom,10)-44,width:140,height:38)
+        randomMapButton.isHidden=battlePreviewActive || scene.gaitTest != nil
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -291,7 +312,7 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
             }
             self.lastHeartbeat = now; self.loadingHeartbeats += 1
         }
-        MeadowLoader.load(device: groundView?.device, diagnosticSize: gameView.bounds.size, progress: { [weak self] value, text in
+        MeadowLoader.load(device: groundView?.device, definition: previewMap.map { SceneDefinition.generated($0) }, diagnosticSize: gameView.bounds.size, progress: { [weak self] value, text in
             self?.reportLoadingProgress(value, text: text)
         }) { [weak self] result in
             guard let self, !self.loadingFailed else { return }
@@ -412,6 +433,7 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
         gaitTestButton.isEnabled = enabled
         battlePreviewButton.isEnabled = enabled
         p1AppearanceButton.isEnabled = enabled
+        randomMapButton.isEnabled = enabled
         gaitPanel.isUserInteractionEnabled = enabled
     }
 
@@ -654,6 +676,13 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
         let lab = ShadowLabViewController()
         lab.modalPresentationStyle = .fullScreen
         present(lab, animated: true)
+    }
+
+    @objc private func openMapSettings() {
+        if previewMap != nil { dismiss(animated:true);return }
+        let settings=MeadowMapSettingsViewController()
+        settings.modalPresentationStyle = .fullScreen
+        present(settings,animated:true)
     }
 
     private func setRenderingPaused(_ paused: Bool) { groundView?.isPaused = paused; gaitView?.isPaused = paused }

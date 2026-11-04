@@ -14,7 +14,7 @@ struct PreparedMeadow {
 enum MeadowLoader {
     private static let queue = DispatchQueue(label: "meadow.loading", qos: .userInitiated)
 
-    static func load(device: MTLDevice?, diagnosticSize: CGSize? = nil, progress: @escaping (Float, String) -> Void,
+    static func load(device: MTLDevice?, definition supplied: SceneDefinition? = nil, diagnosticSize: CGSize? = nil, progress: @escaping (Float, String) -> Void,
                      completion: @escaping (Result<PreparedMeadow, Error>) -> Void) {
         func report(_ value: Double, _ text: String) {
             DispatchQueue.main.async { progress(Float(value), text) }
@@ -22,8 +22,8 @@ enum MeadowLoader {
         queue.async {
             do {
                 report(0.02, "读取地图")
-                let definition = SceneDefinition.load()
-                let network = TrailNetwork(roads: definition.roads)
+                let definition = supplied ?? SceneDefinition.load()
+                let network = TrailNetwork(roads: definition.roads, patrolStart: definition.startNodeID)
                 let mask = MeadowRoadMask.make(network: network, bounds: LivingWorld.bounds) {
                     report(0.05 + $0 * 0.22, "准备道路")
                 }

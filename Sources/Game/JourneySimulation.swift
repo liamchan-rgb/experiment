@@ -3,6 +3,7 @@ import Foundation
 struct JourneySimulation {
     enum Mode { case patrol, destination }
     let network: TrailNetwork
+    private let spawn: CGPoint?
     private(set) var travelers: [Traveler] = []
     private(set) var routes: [Trail] = []
     private(set) var isPlaying = false
@@ -10,8 +11,9 @@ struct JourneySimulation {
     private(set) var mode = Mode.patrol
     var selected = 0
 
-    init(network: TrailNetwork) {
+    init(network: TrailNetwork, spawn: CGPoint? = nil) {
         self.network = network
+        self.spawn = spawn
         reset()
     }
 
@@ -31,6 +33,10 @@ struct JourneySimulation {
             Traveler(distance: network.patrol.length, direction: -1, speed: 38),
             Traveler(distance: network.patrol.distance(nearestTo: CGPoint(x: 560, y: 441)), direction: 1, speed: 45)
         ]
+        if let spawn {
+            let start = network.patrol.distance(nearestTo: spawn)
+            for i in travelers.indices { travelers[i].distance = min(network.patrol.length, start + CGFloat(i)*14); travelers[i].direction = 1 }
+        }
         isPlaying = false
         userPaused = false
         mode = .patrol

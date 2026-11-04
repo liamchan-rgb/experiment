@@ -1,0 +1,51 @@
+name: Random Map Device Build
+on:
+  workflow_dispatch:
+  push:
+    branches: [fix/build33-face-grounding-camera]
+permissions:
+  contents: read
+concurrency:
+  group: random-map-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  archive:
+    runs-on: macos-15-intel
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          sparse-checkout: |
+            Sources
+            Vendor
+            scripts
+            Tests
+            UITests
+            MeadowJourney.xcodeproj
+      - name: Validate and test pure rules and generation
+        run: |
+          set -euo pipefail
+          mkdir -p build
+          python3 scripts/validate-project.py
+          swift test --package-path Vendor/ClassroomGameCore 2>&1 | tee build/map-tests.log
+          bash scripts/check-road-motion.sh
+          bash scripts/check-battle-encounter.sh
+          bash scripts/check-battle-effects.sh
+          bash scripts/check-modular-locomotion.sh
+      - name: Archive without running application or simulator
+        run: |
+          set -euo pipefail
+          xcodebuild archive -project MeadowJourney.xcodeproj -scheme MeadowJourney \
+            -configuration Release -destination 'generic/platform=iOS' \
+            -archivePath build/MeadowJourney.xcarchive -derivedDataPath build/Derived \
+            CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO 2>&1 | tee build/archive.log
+          bash scripts/package-ipa.sh build/MeadowJourney.xcarchive build/MeadowJourney-b73.ipa
+      - uses: actions/upload-artifact@v7
+        if: always()
+        with:
+          name: random-map-build-${{ github.run_id }}
+          path: |
+            build/*.log
+            build/*.ipa
+          if-no-files-found: error
+          retention-days: 30
