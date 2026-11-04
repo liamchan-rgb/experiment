@@ -114,7 +114,7 @@ public enum MeadowMapGenerator {
             let flipX=layout.next() & 1 == 0, flipY=layout.next() & 1 == 0
             let positions=(0..<c.total).map { i -> MeadowWorldPoint in
                 let x=100 + Double(i%cols)*1080/Double(max(1,cols-1)) + layout.value(-min(65,180/Double(cols-1)),min(65,180/Double(cols-1)))
-                let y=85 + Double(i/cols)*550/Double(max(1,rows-1)) + layout.value(-min(40,88/Double(rows-1)),min(40,88/Double(rows-1)))
+                let y=120 + Double(i/cols)*480/Double(max(1,rows-1)) + layout.value(-min(40,88/Double(rows-1)),min(40,88/Double(rows-1)))
                 return MeadowWorldPoint(flipX ? 1280-x : x,flipY ? 720-y : y)
             }
             let start=positions.indices.min { positions[$0].x-positions[$0].y < positions[$1].x-positions[$1].y }!
@@ -183,7 +183,7 @@ public enum MeadowMapGenerator {
             let p=MeadowWorldPoint(rng.value(-70,1350),rng.value(-80,820))
             guard distance(p,to:roads)>58,
                   positions.allSatisfy({hypot($0.x-p.x,$0.y-p.y)>76}),
-                  props.allSatisfy({hypot($0.x-p.x,$0.y-p.y)>max(42,$0.width*0.6)}) else { continue }
+                  props.allSatisfy({hypot($0.x-p.x,$0.y-p.y)>($0.asset == "CampTent" ? 150 : max(42,$0.width*0.6))}) else { continue }
             let asset=assets[Int(rng.next()%UInt64(assets.count))]
             let width=asset=="Flowers" ? rng.value(14,23) : asset=="Shrub" ? rng.value(25,35) : (asset.hasPrefix("Rock") ? rng.value(76,108) : rng.value(60,88))
             props.append(MeadowWorldProp(asset:asset,x:p.x,y:p.y,width:width,wind:asset.hasPrefix("Rock") ? 0 : 1))

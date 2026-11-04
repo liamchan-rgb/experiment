@@ -43,7 +43,12 @@ enum HeroFrames {
             try encoder.encode(generated).write(to:output.appendingPathComponent(name+".json"))
             try encoder.encode(definition).write(to:output.appendingPathComponent(name+"-scene.json"))
             let geometry:[[String:Any]]=network.edges.map { ["from":$0.from,"to":$0.to,"points":$0.trail.points.map{[Double($0.x),Double($0.y)]},"length":Double($0.trail.length)] }
-            let data=try JSONSerialization.data(withJSONObject:["roads":geometry,"patrol":network.patrol.points.map{[Double($0.x),Double($0.y)]}],options:[.sortedKeys])
+            let initial=JourneySimulation(network:network,spawn:definition.spawn?.point)
+            let initialHeroes:[[String:Any]]=(0..<3).map { i in
+                let p=initial.point(for:i)
+                return ["index":i,"x":Double(p.x),"y":Double(p.y),"facing":0,"frame":0]
+            }
+            let data=try JSONSerialization.data(withJSONObject:["roads":geometry,"patrol":network.patrol.points.map{[Double($0.x),Double($0.y)]},"initialHeroes":initialHeroes],options:[.sortedKeys])
             try data.write(to:output.appendingPathComponent(name+"-geometry.json"));cases+=1
             if n==10 && seed==31827 {
                 var simulation=JourneySimulation(network:network,spawn:definition.spawn?.point)

@@ -35,7 +35,7 @@ struct JourneySimulation {
         ]
         if let spawn {
             let start = network.patrol.distance(nearestTo: spawn)
-            for i in travelers.indices { travelers[i].distance = min(network.patrol.length, start + CGFloat(i)*14); travelers[i].direction = 1 }
+            for i in travelers.indices { travelers[i].distance = min(network.patrol.length, start + CGFloat(i)*30); travelers[i].direction = 1 }
         }
         isPlaying = false
         userPaused = false

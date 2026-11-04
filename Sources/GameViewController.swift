@@ -8,6 +8,7 @@ import MeadowWorldSupport
 final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
     private let previewMap: GeneratedMeadowMap?
     private let randomMapButton = UIButton(type: .system)
+    private let randomMapSummary = UILabel()
 
     init(previewMap: GeneratedMeadowMap? = nil) {
         self.previewMap = previewMap
@@ -129,9 +130,17 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
         var mapStyle=labStyle
         mapStyle.title=previewMap == nil ? "随机地图" : "返回地图设置"
         randomMapButton.configuration=mapStyle
+        randomMapButton.accessibilityIdentifier="openRandomMap"
         randomMapButton.addTarget(self,action:#selector(openMapSettings),for:.touchUpInside)
         randomMapButton.isEnabled=false
         view.addSubview(randomMapButton)
+        randomMapSummary.isHidden=previewMap == nil
+        randomMapSummary.text=previewMap.map { "地点预览 · \($0.map.nodes.count)节点 · 战斗与奖励暂不结算" }
+        randomMapSummary.textColor=UIColor(red:1,green:0.94,blue:0.75,alpha:1)
+        randomMapSummary.backgroundColor=UIColor(red:0.09,green:0.16,blue:0.11,alpha:0.9)
+        randomMapSummary.font = .boldSystemFont(ofSize:14)
+        randomMapSummary.textAlignment = .center;randomMapSummary.numberOfLines=2
+        view.addSubview(randomMapSummary)
         if previewMap != nil {
             for control in [shadowLabButton,gaitTestButton,battlePreviewButton,p1AppearanceButton] { control.isHidden=true }
         }
@@ -273,6 +282,8 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
         discoveryLabel.frame = CGRect(x: view.bounds.midX - 110, y: view.bounds.height - max(inset.bottom, 10) - 44, width: 220, height: 34)
         randomMapButton.frame=CGRect(x:max(inset.left,10)+4,y:view.bounds.height-max(inset.bottom,10)-44,width:140,height:38)
         randomMapButton.isHidden=battlePreviewActive || scene.gaitTest != nil
+        randomMapSummary.frame=CGRect(x:randomMapButton.frame.maxX+8,y:randomMapButton.frame.minY,
+            width:max(1,view.bounds.width-max(inset.right,10)-randomMapButton.frame.maxX-16),height:38)
     }
 
     override func viewDidAppear(_ animated: Bool) {

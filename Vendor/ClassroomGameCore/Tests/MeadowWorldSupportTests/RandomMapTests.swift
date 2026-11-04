@@ -22,6 +22,10 @@ final class RandomMapTests: XCTestCase {
             }
             XCTAssertTrue(result.map.nodes.allSatisfy{(0...1).contains($0.x) && (0...1).contains($0.y)})
             XCTAssertTrue(result.props.allSatisfy{MeadowMapGenerator.distance(MeadowWorldPoint($0.x,$0.y),to:result.roads)>58})
+            if let camp=result.props.first(where:{$0.asset == "CampTent"}) {
+                XCTAssertTrue((80...1200).contains(camp.x) && (110...680).contains(camp.y))
+                XCTAssertTrue(result.props.filter{$0.asset != "CampTent"}.allSatisfy{hypot($0.x-camp.x,$0.y-camp.y)>150})
+            }
         } }
     }
     func testExactManualQuotasAndNoBoss() throws {
