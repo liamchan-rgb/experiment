@@ -49,16 +49,24 @@ enum HeroFrames {static let walkFrameCount=24;static let reviewSpeed:CGFloat=25}
         let battle=try PartyEncounter(engine:session.engine,sessionID:"campaign-review"),ids=session.playerIDs+battle.monsterIDs
         var frames=[[String:Any]](),time=0.0,hurt=[String:Double](),death=[String:Double](),emissions=[(MeadowBattleLightKind,Double,PartyPoint,Double)](),messages=[[String:Any]]()
         var victory:Double?
+        var shownReceipt:OperationReceipt?
         func alias(_ id:String)->String {PartyVisual.slot(id)}
         func frame(_ intent:PartyIntent?,age:Double)throws {
             var units=[[String:Any]]()
             for id in ids {
                 let u=session.engine.state.units[id]!,p=PartyVisual.pose(unit:u,intent:intent,age:age,time:time,hurtAge:hurt[id].map{time-$0},blocked:false,downAge:u.isAlive ? nil:2,victoryAge:victory.map{time-$0})
                 let motion=PartyVisual.monster(time:time+(alias(id)=="m2" ? 0.7:0),attackAge:intent?.actor==id && intent?.action.isOffensive==true ? age:nil,hurtAge:hurt[id].map{time-$0},preparing:battle.current==id && intent==nil)
-                units.append(["id":alias(id),"sourceID":id,"name":u.name,"hp":u.health,"maxHP":try GameRules.attributes(u,catalog:session.engine.catalog).maximumHealth,"ap":u.ap,"shield":u.shield,"buff":u.damageBuff?.amount ?? 0,"clip":p.clip,"progress":p.progress,"deathAge":death[id].map{time-$0} as Any? ?? NSNull(),"monster":try json(motion)])
+                units.append(["id":alias(id),"sourceID":id,"name":u.name,"hp":u.health,"maxHP":try GameRules.attributes(u,catalog:session.engine.catalog).maximumHealth,"ap":u.ap,"shield":u.shield,"buff":u.damageBuff?.amount ?? 0,"clip":p.clip,"progress":p.progress,"deathAge":death[id].map{time-$0} as Any? ?? NSNull(),"monster":try json(motion),"diceAnchor":try json(PartyVisual.diceAnchor(actor:id,intent:intent,age:age))])
             }
             var action=[String:Any]()
             if let i=intent {action=["actor":alias(i.actor),"target":alias(i.target),"targets":i.targets.map(alias),"action":i.action.rawValue,"visual":i.action.visual,"age":age,"enemy":i.enemy,"impact":i.enemy ? 0.46:i.action.impact,"travel":try json(PartyVisual.travel(i,age:age))]}
+            if let i=intent,let receipt=shownReceipt,let actor=receipt.before.units[i.actor],let target=receipt.before.units[i.target] {
+                let dice=BattleDice.channels(i.action,actor:actor,target:target,catalog:session.engine.catalog,receipt:receipt)
+                let anchor=PartyVisual.diceAnchor(actor:i.actor,intent:i,age:age,shielded:target.shield>0,diceCount:dice.count)
+                let hit=i.enemy ? 0.46:i.action.impact
+                let poly=dice.enumerated().map { index,die in PolyhedralDice.sample(die:die,time:time,index:index,count:dice.count,resolvedAge:age>=hit ? age-hit:nil,visibleAge:age,locked:true,confirmationAge:age) }
+                action["dice"]=try json(dice);action["poly"]=try json(poly);action["diceAnchor"]=try json(anchor)
+            }
             let particles=emissions.flatMap{kind,at,p,floor in MeadowBattleLightField.sample(kind,age:time-at,originX:p.x,originY:p.y,groundY:floor)}
             let values:[[String:Any]]=particles.map{["id":$0.id,"x":$0.x,"y":$0.y,"angle":$0.angle,"size":$0.size,"alpha":$0.alpha,"cyan":$0.cyan,"groundX":$0.groundX,"groundY":$0.groundY,"groundAge":$0.groundAge as Any? ?? NSNull()]}
             frames.append(["time":time,"frame":frames.count,"units":units,"action":action,"particles":values,"messages":messages.filter{time-($0["at"] as! Double)<1},"current":battle.current.map(alias) as Any? ?? NSNull(),"round":battle.round,"terminal":battle.terminal,"coins":session.engine.state.players.map(\.coins).reduce(0,+)])
@@ -71,6 +79,7 @@ enum HeroFrames {static let walkFrameCount=24;static let reviewSpeed:CGFloat=25}
             if enemy {intent=battle.prepareMonsterStep()}
             else {let foe=battle.monsterIDs.first{session.engine.state.units[$0]!.isAlive}!;intent=battle.prepare(.attack,target:foe) ?? battle.prepare(.endTurn,target:actor)}
             guard let i=intent else{throw GameError("No review intent")}
+            shownReceipt=battle.confirmedReceipt
             let duration=enemy ? 1.10:i.action.duration,hit=enemy ? 0.46:i.action.impact
             var fired=false
             for step in 0...Int(ceil(duration/0.02)) {

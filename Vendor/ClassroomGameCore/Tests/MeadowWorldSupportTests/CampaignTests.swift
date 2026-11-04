@@ -127,8 +127,56 @@ final class CampaignTests:XCTestCase {
         XCTAssertEqual(session.engine.archive,before)
         XCTAssertEqual(PartyVisual.foot(id)?.x,PartyVisual.feet["m1"]?.x)
         XCTAssertEqual(PartyVisual.hitPoint(target:id).x,PartyVisual.hitPoint(target:"m1").x)
+        let dice=BattleDice.channels(intent.action,actor:before.state.units[id]!,target:before.state.units[id]!,catalog:session.engine.catalog,receipt:encounter.confirmedReceipt)
+        XCTAssertFalse(dice.isEmpty)
+        for age in stride(from:0.0,through:1.1,by:1.0/60) {
+            let anchor=PartyVisual.diceAnchor(actor:id,intent:intent,age:age,diceCount:dice.count)
+            XCTAssertTrue(anchor.x.isFinite && anchor.y.isFinite)
+        }
         let receipt=try XCTUnwrap(encounter.commit(intent.id))
         XCTAssertGreaterThan(receipt.after.units[id]!.health,12)
+    }
+
+    func testCampaignDiceThroughTwoRoundsAndResumedMonsterTurn()throws {
+        for seed:UInt64 in [317,318,319] {
+            var config=MeadowMapConfiguration.suggested(total:4,seed:seed)
+            config.combat=3;config.boss=0;config.reward=0;config.empty=0
+            var session=try MeadowCampaignSession.new(layout:MeadowMapGenerator.generate(config))
+            let start=session.engine.state.units["p1"]!.nodeID
+            try session.beginTravel(to:session.engine.state.map.neighbors(start)[0]);try session.advanceTravel(distance:100000)
+            var encounter=try PartyEncounter(engine:session.engine),monsterTurns=0,resumed=false
+            for _ in 0..<30 {
+                if encounter.round>=3 {break}
+                let actor=try XCTUnwrap(encounter.current)
+                if session.engine.state.units[actor]?.kind == .player {
+                    let intent=try XCTUnwrap(encounter.prepare(.endTurn,target:actor));_ = try encounter.commit(intent.id)
+                } else {
+                    // Preserve both players for two full rounds; no player
+                    // attacks, so every persistent monster reaches its turn.
+                    for id in session.playerIDs {
+                        let maximum=try GameRules.attributes(session.engine.state.units[id]!,catalog:session.engine.catalog).maximumHealth
+                        try session.engine.apply(.editResources(unit:id,value:ResourcePatch(health:maximum,shield:8)))
+                    }
+                    if !resumed {
+                        let archive=session.engine.archive
+                        session=try MeadowCampaignSession(save:.decoded(session.snapshot.encoded()))
+                        XCTAssertEqual(session.engine.archive,archive)
+                        encounter=try PartyEncounter(engine:session.engine);resumed=true
+                    }
+                    let intent=try XCTUnwrap(encounter.prepareMonsterStep()),before=session.engine.archive
+                    let dice=BattleDice.channels(intent.action,actor:before.state.units[intent.actor]!,target:before.state.units[intent.target]!,catalog:session.engine.catalog,receipt:encounter.confirmedReceipt)
+                    XCTAssertFalse(dice.isEmpty);XCTAssertTrue(intent.actor.hasPrefix("m-"))
+                    for age in stride(from:0.0,through:1.1,by:1.0/60) {
+                        let anchor=PartyVisual.diceAnchor(actor:intent.actor,intent:intent,age:age,shielded:true,diceCount:dice.count)
+                        XCTAssertTrue(anchor.x.isFinite && anchor.y.isFinite)
+                    }
+                    XCTAssertEqual(session.engine.archive,before)
+                    _ = try encounter.commit(intent.id);XCTAssertNil(try encounter.commit(intent.id));monsterTurns+=1
+                }
+            }
+            XCTAssertTrue(resumed);XCTAssertGreaterThanOrEqual(encounter.round,3)
+            XCTAssertGreaterThanOrEqual(monsterTurns,encounter.monsterIDs.count*2)
+        }
     }
     func testVictoryAndNextEncounterDoNotResetHealthOrInventory()throws {
         let session=try MeadowCampaignSession.new(layout:layout(combat:true)),start=session.engine.state.units["p1"]!.nodeID

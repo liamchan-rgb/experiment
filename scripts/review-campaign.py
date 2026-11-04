@@ -2,15 +2,22 @@
 """Actual Swift campaign/pose/light data with existing PNGs. Offline composition;
 lighting/UI approximate. Does not run UIKit, the app or a simulator."""
 from pathlib import Path
-import json,runpy,sys,math,os,shutil,subprocess,tempfile
+import json,runpy,sys,math,os,shutil,subprocess,tempfile,functools
 from PIL import Image,ImageDraw,ImageFont,ImageEnhance,ImageSequence
-ROOT=Path(__file__).resolve().parents[1];OUT=ROOT/'Art/Review/Map/campaign-v1';DATA=OUT/'data'
+ROOT=Path(__file__).resolve().parents[1];OUT=Path(sys.argv[1]).resolve() if len(sys.argv)>1 else ROOT/'Art/Review/Map/campaign-v1';DATA=OUT/'data'
 base=ROOT/'scripts/review-party-support-demo.py'
 prefix=base.read_text().split('reports={};clips={}')[0]
 prefix='\n'.join('rows=[];legacy=[];attached={}' if line.startswith('rows=json.loads') else 'REQUESTS={}' if line.startswith('REQUESTS=') else line for line in prefix.splitlines())
 saved=sys.argv;sys.argv=['offline-review'];e={'__file__':str(base)};exec(compile(prefix,str(base),'exec'),e);sys.argv=saved
 render,shadow,compose,glow,asset=[e[k] for k in ['render','shadow','compose','glow','asset']]
 feet=e['feet'];hs=e['hs'];es=e['es'];font=e['font'];small=e['small'];large=e['large'];plate=e['plate'];foreground=e['foreground']
+
+# Reuse the existing reviewed perspective faces and fixed-value plates.
+projection=(ROOT/'scripts/review-upright-dice-hud-demo.py').read_text()
+projection=projection[projection.index('@functools.lru_cache'):projection.index("namespace['die_image']=die_image")]
+dice_env={'Image':Image,'ImageDraw':ImageDraw,'ImageFont':ImageFont,'functools':functools,'fontpath':e['fontfile'],'palette_colors':{'red':'#c72924','yellow':'#d9a129','green':'#219451','blue':'#1f70cc'}}
+exec(compile(projection,'reviewed-die-projection','exec'),dice_env)
+die_image=dice_env['die_image']
 
 def gif(frames,name):
  sample=Image.new('RGB',(frames[0].width*3,frames[0].height*3))
@@ -79,6 +86,11 @@ for row in battle:
   if q['id']%6==0:glow(f,at,22,20,q['alpha']*.2,col)
   if q['groundAge'] is not None and q['groundAge']<.24:glow(f,(q['groundX'],q['groundY']),34,10,(1-q['groundAge']/.24)*q['alpha']*.6,col)
   compose(f,asset('BattleVFXCyanShard') if q['cyan'] else e['assets']['GoldEmber'],at,(q['size'],q['size']*.67),q['alpha'],True,q['angle'])
+ for i,(die,pose) in enumerate(zip(a.get('dice',[]),a.get('poly',[]))):
+  im=die_image(die,pose);im.putalpha(im.getchannel('A').point(lambda alpha:round(alpha*pose['alpha'])))
+  cx=a['diceAnchor']['x']+(i-(len(a['dice'])-1)/2)*min(82,200/max(1,len(a['dice'])))
+  cy=a['diceAnchor']['y']+43+pose['offsetY']
+  f.alpha_composite(im,(round(cx-128),round(cy-120)))
  d=ImageDraw.Draw(f)
  for msg in row['messages']:
   d.text((msg['x'],msg['y']-(row['time']-msg['at'])*26),msg['text'],font=large,fill='#ffead5',stroke_width=2,stroke_fill='#272214',anchor='mm')

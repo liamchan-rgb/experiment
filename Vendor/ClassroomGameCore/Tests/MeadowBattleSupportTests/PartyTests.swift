@@ -148,6 +148,36 @@ extension PartyTests {
     }
 }
 extension PartyTests {
+    func testPersistentMonsterDiceUseReviewedSlots() {
+        for node in [0,2,17,29] {
+            for index in 1...2 {
+                let id="m-\(node)-\(index)",slot="m\(index)"
+                for age in [0.0,0.16,0.46,0.96,1.10] {
+                    let dynamic=PartyVisual.diceAnchor(actor:id,intent:nil,age:age,diceCount:3)
+                    let reviewed=PartyVisual.diceAnchor(actor:slot,intent:nil,age:age,diceCount:3)
+                    XCTAssertEqual(dynamic.x,reviewed.x);XCTAssertEqual(dynamic.y,reviewed.y)
+                }
+            }
+        }
+    }
+    func testPlayerDiceAvoidPersistentEnemyHeaderLikeTrainingHeader() {
+        for actor in ["p1","p2"] {
+            for index in 1...2 {
+                for action in [PartyAction.attack,.ambush,.runeSlash] {
+                    func intent(_ target:String)->PartyIntent {
+                        PartyIntent(id:"anchor",action:action,actor:actor,target:target,targets:[target],command:.attack(actor:actor,target:target),enemy:false,weaponID:"trainingSword")
+                    }
+                    for age in [0.0,0.3,0.72,1.048,1.5] {
+                        for count in [1,2,5] {
+                            let real=PartyVisual.diceAnchor(actor:actor,intent:intent("m-17-\(index)"),age:age,diceCount:count)
+                            let demo=PartyVisual.diceAnchor(actor:actor,intent:intent("m\(index)"),age:age,diceCount:count)
+                            XCTAssertEqual(real.x,demo.x,accuracy:1e-9);XCTAssertEqual(real.y,demo.y,accuracy:1e-9)
+                        }
+                    }
+                }
+            }
+        }
+    }
     func testHeadDiceClearEnemyBarDuringForwardStrike() throws {
         let p=try PartyEncounter(seed:49)
         try p.engine.apply(.endTurn(actor:"p2",timedOut:false))

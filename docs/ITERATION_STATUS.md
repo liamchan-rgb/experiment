@@ -1,3 +1,9 @@
+## Build77 返修 · 正式怪物回合骰子空值崩溃（2026-11-04）
+
+用户报告Build76新/旧档战斗一轮闪退。旧BattleDice.swift:91对m-node-index真实怪物ID直接查feet并强制解包，独立纯Swift测试复现fatal/signal4。骰子actor/target统一走已有foot/slot映射；真实规则ID不变，玩家接敌的骰子血条避让也恢复。194纯测试通过：多节点双敌站位/1、2、5骰/多攻击及真实AI两轮、怪物回合读档与首领再生。旧复现日志和说明见Media/Build77、docs/planning/random-map-v1/build77-monster-dice-crash.md。导出与离线预览补真正diceAnchor/channels/poly调用，不能仅用规则回执通过替代显示路径覆盖。
+
+候选1.6.50/build77，设备编译/包检/交付状态见Media/Build77；不运行App/模拟器/实机，设备稳定性由用户验证。无需清档；三倍移动、原动作/资源/规则/存档格式保持。新美术认可null。当前优先修崩溃，不自动推进功能；后两项M4节点编辑、行程行囊/换装与队伍配置。
+
 ## Build76 交付 · M3正式行程与三倍速度（2026-11-04）
 
 正式双人行程、逐边到站结算、同一GameEngine真实遭遇/胜利继续、独立campaign-v1.json及暂停游标恢复已接。P1魔剑士/P2游侠，原演示三人保留；营地装备/衣装复制到新行程，跨战斗/读档不重置生命/物资/装备/金币/RNG。普通鹿灵/鹿王仅本地模板分别复制原wolf/caveTroll全部规则，复用鹿美术，六种怪物外观未补齐。

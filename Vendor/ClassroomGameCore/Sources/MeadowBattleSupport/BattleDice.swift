@@ -88,18 +88,21 @@ extension PartyVisual {
 
 extension PartyVisual {
     public static func diceAnchor(actor:String,intent:PartyIntent?,age:Double,shielded:Bool=false,diceCount:Int=2)->PartyPoint {
-        let foot=feet[actor]!,moving=intent?.actor==actor ? travel(intent,age:age,shielded:shielded):PartyPoint(0,0)
+        // Campaign identities (m-<node>-<index>) share the reviewed m1/m2
+        // formation. Resolve both ends just like travel, hit and HP labels.
+        guard let actorFoot=foot(actor) else { return PartyPoint(width/2,0) }
+        let moving=intent?.actor==actor ? travel(intent,age:age,shielded:shielded):PartyPoint(0,0)
         var inset=0.0
-        if let intent,!intent.enemy,intent.action.isOffensive,intent.actor==actor,let to=feet[intent.target] {
+        if let intent,!intent.enemy,intent.action.isOffensive,intent.actor==actor,let to=foot(intent.target) {
             let halfWidth=Double(max(0,diceCount-1))*PolyhedralDice.spacing(count:diceCount)/2+PolyhedralDice.radius(count:diceCount)*1.3
-            inset=max(18,halfWidth-36)*min(1,abs(moving.x)/max(1,abs(to.x-140-foot.x)))
+            inset=max(18,halfWidth-36)*min(1,abs(moving.x)/max(1,abs(to.x-140-actorFoot.x)))
         }
-        var x=foot.x+moving.x-inset
-        if actor=="p2" {
+        var x=actorFoot.x+moving.x-inset
+        if actor=="p2",let firstPlayer=foot("p1") {
             // A wide group over P2 otherwise intersects P1's fixed HP header.
             let half=Double(max(0,diceCount-1))*PolyhedralDice.spacing(count:diceCount)/2+PolyhedralDice.radius(count:diceCount)*1.3
-            x=max(x,feet["p1"]!.x+88+12+half)
+            x=max(x,firstPlayer.x+88+12+half)
         }
-        return PartyPoint(x,foot.y+moving.y-(actor.hasPrefix("m") ? 357:287))
+        return PartyPoint(x,actorFoot.y+moving.y-(actor.hasPrefix("m") ? 357:287))
     }
 }
