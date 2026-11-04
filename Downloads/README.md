@@ -1,3 +1,9 @@
+## Build74 · 节点建筑与滑块配额 · 1.6.47
+
+[直接下载 IPA](MeadowJourney-b74.ipa) · [正常行走GIF](../Art/Review/Map/random-map-v2/walk-normal.gif) · [整图/建筑/审核](../Art/Review/Map/random-map-v2/README.md) · [包检记录](../Media/Build74/verification.json)
+
+每节点对应建筑；改总数自动分配，改单类自动补差；数字/整数滑块同步。仍是林地预览，正式战斗/奖励/地图存档待后续。设备Release归档/181测试/ZIP与arm64及四建筑资源通过，未做设备运行，安装交用户。
+
 ## build72 · 符文与战斗状态反馈时序修正 · 1.6.45
 
 Build73： [直接IPA](MeadowJourney-b73.ipa) · [版本与校验](MeadowJourney-build73.json) · [地图预览说明](../Media/Build73/README.md)。1.6.46，随机地图M1/M2，节点战斗与奖励尚未结算。

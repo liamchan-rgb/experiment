@@ -1,0 +1,12 @@
+{
+  "build": 74,
+  "version": "1.6.47",
+  "file": "MeadowJourney-b74.ipa",
+  "bytes": 60144893,
+  "sha256": "19435ab36153076423a4168992a986953a5f8d70e58d939aceccb9279afb3066",
+  "sourceCommit": "09ec0902e04d5042d4044bb3133ffb502c454414",
+  "workflow": "https://github.com/liamchan-rgb/experiment/actions/runs/41803969748",
+  "scope": "node-bound landmarks; auto-balanced numeric/slider map configuration; random meadow preview only",
+  "installationTested": false,
+  "downloadURL": "https://raw.githubusercontent.com/liamchan-rgb/experiment/fix/build33-face-grounding-camera/Downloads/MeadowJourney-b74.ipa"
+}

@@ -1,3 +1,7 @@
+## Build74 归档与交付（2026-11-04）
+
+设备Release运行41803969748成功，源09ec0902e04d5042d4044bb3133ffb502c454414；181纯测试和道路/战斗/特效/模组四组回归检查通过。1.6.47/74 unsigned直接IPA见Downloads/MeadowJourney-b74.ipa与Media/Build74；CRC/经典ZIP2.0/无extra/arm64/权限/地图UI/生成器/Metal/四建筑名编入Assets.car、原SceneMap/hero-gait/规则目录均核。离线正常GIF与建筑/整图见Art/Review/Map/random-map-v2，主线程已独自审核400解码帧接触表及整图，新认可null。无App/模拟器/实机执行；后两项M3正式探索/结算/地图存档，M4单节点编辑。
+
 # Build74 · 节点建筑与数量联动（2026-11-04）
 
 总数4—30及战斗/Boss/奖励/空地/额外道路同时支持数字与整数滑块；改总数自动分配，改单类保留值/优先空地补差，所有类别+起点1始终匹配总数。每节点一建筑：既有营地/新增红木寨/紫晶石门/绿补给棚/井与路标；绑定nodeID，点击仍到实际道路节点。生成器v2扩大密集地图地块，地面/道路Mask/Metal/雾/相机/缩略图共用worldBounds，有限回溯不丢建筑。详见docs/planning/random-map-v1/build74-landmarks-controls.md与Art/Parts/Map/meadow-locations-v1。
