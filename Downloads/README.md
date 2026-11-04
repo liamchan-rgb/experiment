@@ -1,3 +1,9 @@
+## Build76 · 正式行程与三倍移动 · 1.6.49
+
+[直接下载 IPA](MeadowJourney-b76.ipa) · [正常行走 GIF](../Art/Review/Map/campaign-v1/travel-normal.gif) · [胜利收尾 GIF](../Art/Review/Map/campaign-v1/encounter-normal.gif) · [完整战斗 MP4](../Art/Review/Map/campaign-v1/encounter-full.mp4) · [包检记录](../Media/Build76/verification.json)
+
+随机地图从预览接入正式探索、到站结算、真实战斗与独立行程续档。新行程暂为魔剑士/游侠双人，原演示三人保留；移动均三倍。191项测试、四组回归与设备Release/包检通过。未运行App/模拟器/实机，实机交用户。后两项：单节点内容编辑；行程行囊/换装与队伍配置。
+
 ## Build75 · 不规则路网与建筑节点 · 1.6.48
 
 [直接下载IPA](MeadowJourney-b75.ipa) · [正常行走GIF](../Art/Review/Map/random-map-v3/walk-normal.gif) · [九布局对照](../Art/Review/Map/random-map-v3/sizes-seeds.png) · [包检记录](../Media/Build75/verification.json)

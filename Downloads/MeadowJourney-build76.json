@@ -1,0 +1,13 @@
+{
+  "build": 76,
+  "version": "1.6.49",
+  "file": "MeadowJourney-b76.ipa",
+  "bytes": 60297013,
+  "sha256": "d8e413773fcc71da55eae4092dfe86232f36078d6857737459d716fec1d7c7ec",
+  "sourceCommit": "06c12505cdb963b6c981cf3f84e682a0c5e8159a",
+  "workflow": "https://github.com/liamchan-rgb/experiment/actions/runs/41849402511",
+  "movementMultiplier": 3,
+  "scope": "formal two-player random-map journey, per-edge settlement, original-rules encounters, persistent campaign save",
+  "installationTested": false,
+  "downloadURL": "https://raw.githubusercontent.com/liamchan-rgb/experiment/fix/build33-face-grounding-camera/Downloads/MeadowJourney-b76.ipa"
+}
