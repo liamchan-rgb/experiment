@@ -14,7 +14,12 @@ final class RandomMapTests: XCTestCase {
             XCTAssertEqual(landmarks.count,n)
             XCTAssertEqual(Set(landmarks.compactMap(\.nodeID)),Set(result.map.nodes.map(\.id)))
             let assets:[NodeKind:String]=[.start:"CampTent",.combat:"NodeCombatOutpost",.boss:"NodeBossSanctum",.reward:"NodeRewardCache",.empty:"NodeWaystone"]
-            for node in result.map.nodes { XCTAssertEqual(landmarks.first{$0.nodeID==node.id}?.asset,assets[node.kind]) }
+            for node in result.map.nodes {
+                let building=landmarks.first{$0.nodeID==node.id}!
+                XCTAssertEqual(building.asset,assets[node.kind])
+                XCTAssertEqual(building.x,node.x*1280,accuracy:0.000001)
+                XCTAssertEqual(building.y+26,node.y*result.coordinateHeight,accuracy:0.000001)
+            }
             XCTAssertEqual(result.map.nodes.filter{$0.kind == .start}.count,1)
             for (kind,count) in [(NodeKind.combat,c.combat),(.boss,c.boss),(.reward,c.reward),(.empty,c.empty)] {
                 XCTAssertEqual(result.map.nodes.filter{$0.kind==kind}.count,count)
@@ -27,12 +32,28 @@ final class RandomMapTests: XCTestCase {
                 XCTAssertEqual(road.points.last!.y,b.y*result.coordinateHeight,accuracy:0.000001)
             }
             XCTAssertTrue(result.map.nodes.allSatisfy{(0...1).contains($0.x) && (0...1).contains($0.y)})
-            XCTAssertTrue(result.props.allSatisfy{MeadowMapGenerator.distance(MeadowWorldPoint($0.x,$0.y),to:result.roads)>58})
+            XCTAssertTrue(result.props.filter{$0.nodeID == nil}.allSatisfy{MeadowMapGenerator.distance(MeadowWorldPoint($0.x,$0.y),to:result.roads)>58})
             if let camp=result.props.first(where:{$0.asset == "CampTent"}) {
                 XCTAssertTrue((50...1230).contains(camp.x) && (110...(result.coordinateHeight-15)).contains(camp.y))
                 XCTAssertTrue(result.props.filter{$0.asset != "CampTent"}.allSatisfy{hypot($0.x-camp.x,$0.y-camp.y)>150})
             }
         } }
+    }
+    func testRoadHeadingsDoNotRegressToAxisAlignedRows() throws {
+        for n in [4,10,30] {
+            var axial=0,total=0
+            for seed in 0..<12 {
+                let map=try MeadowMapGenerator.generate(.suggested(total:n,seed:UInt64(seed)))
+                for road in map.roads {
+                    let a=road.points.first!,b=road.points.last!,dx=abs(a.x-b.x),dy=abs(a.y-b.y)
+                    total+=1
+                    if min(dx,dy)/hypot(dx,dy)<sin(Double.pi/12) {axial+=1}
+                }
+            }
+            // Prevent a return to an overwhelmingly horizontal/vertical road
+            // network. Artistic acceptance still needs whole-map inspection.
+            XCTAssertLessThan(Double(axial)/Double(total),0.65,"N=\(n)")
+        }
     }
     func testExactManualQuotasAndNoBoss() throws {
         var c=MeadowMapConfiguration();c.combat=0;c.boss=0;c.reward=0;c.empty=9
@@ -91,7 +112,7 @@ final class RandomMapTests: XCTestCase {
             var c=try MeadowMapConfiguration.suggested(total:total).changingCount(field:field,to:total-1)
             c.extraRoads=extra
             let m:GeneratedMeadowMap
-            do { m=try MeadowMapGenerator.generate(c) } catch { throw GameError("dense field=\(field): \(error)") }
+            do { m=try MeadowMapGenerator.generate(c) } catch { throw GameError("dense N=\(total) extra=\(extra) field=\(field): \(error)") }
             XCTAssertEqual(m.props.filter{$0.nodeID != nil}.count,total)
         } } }
     }

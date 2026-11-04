@@ -105,155 +105,220 @@ private struct MapRandom {
 }
 
 public enum MeadowMapGenerator {
-    public static let version = 2
-    private static func columns(_ n: Int) -> Int { Int(sqrt(Double(n)*1.35).rounded()) }
-    private static func candidates(_ n: Int) -> [(Int,Int)] {
-        let cols=columns(n)
-        return (0..<n).flatMap { i -> [(Int,Int)] in
-            var result:[(Int,Int)]=[]
-            if i % cols != cols-1 && i+1<n { result.append((i,i+1)) }
-            if i+cols<n { result.append((i,i+cols)) }
-            return result
-        }
-    }
+    public static let version = 3
     public static func maximumExtraRoads(total: Int) -> Int {
         guard (4...30).contains(total) else { return 0 }
-        return candidates(total).count-total+1
+        // Preserve the previous control's conservative cycle budget. Layout is
+        // now a scattered planar graph, not this budget's historical grid.
+        let cols=Int(sqrt(Double(total)*1.35).rounded())
+        return total-cols-Int(ceil(Double(total)/Double(cols)))+1
     }
-    public static func generate(_ c: MeadowMapConfiguration) throws -> GeneratedMeadowMap {
-        try c.validate()
-        // Grid-neighbor corridors preserve topology when laid out as curved paths.
-        // Random spanning tree, loop choice, jitter, reflection and contents vary.
-        for attempt in 0..<64 {
-            var topology=MapRandom(state:c.seed ^ 0x544f504f &+ UInt64(attempt))
-            var edges=candidates(c.total); topology.shuffle(&edges)
-            var groups=Array(0..<c.total), tree:[(Int,Int)]=[], spare:[(Int,Int)]=[]
-            for (a,b) in edges {
-                let ga=groups[a], gb=groups[b]
-                if ga != gb {
-                    tree.append((a,b)); groups=groups.map { $0==gb ? ga : $0 }
-                } else { spare.append((a,b)) }
+    private struct Rect {
+        let left:Double,top:Double,right:Double,bottom:Double
+        func blocks(_ a:MeadowWorldPoint,_ b:MeadowWorldPoint) -> Bool {
+            var lo=0.0,hi=1.0
+            for (origin,delta,minV,maxV) in [(a.x,b.x-a.x,left,right),(a.y,b.y-a.y,top,bottom)] {
+                if abs(delta)<1e-9 { if origin<=minV+1e-6 || origin>=maxV-1e-6 { return false };continue }
+                let t1=(minV-origin)/delta,t2=(maxV-origin)/delta
+                lo=max(lo,min(t1,t2));hi=min(hi,max(t1,t2))
+                if lo>=hi-1e-6 { return false }
             }
-            tree += spare.prefix(c.extraRoads)
-            tree.sort { $0.0 == $1.0 ? $0.1 < $1.1 : $0.0 < $1.0 }
-            var layout=MapRandom(state:c.seed ^ 0x4c41594f5554 &+ UInt64(attempt))
-            let cols=columns(c.total), rows=Int(ceil(Double(c.total)/Double(cols)))
-            let coordinateHeight:Double=max(720,440+Double(rows-1)*220)
-            let flipX=layout.next() & 1 == 0, flipY=layout.next() & 1 == 0
-            let positions=(0..<c.total).map { i -> MeadowWorldPoint in
-                let x=100 + Double(i%cols)*1000/Double(max(1,cols-1)) + layout.value(-12,12)
-                let y=220 + Double(i/cols)*(coordinateHeight-440)/Double(max(1,rows-1)) + layout.value(-12,12)
-                return MeadowWorldPoint(flipX ? 1280-x : x,flipY ? coordinateHeight-y : y)
+            return lo<1-1e-6 && hi>1e-6
+        }
+        var corners:[MeadowWorldPoint] { [.init(left,top),.init(right,top),.init(right,bottom),.init(left,bottom)] }
+    }
+    private static func cross(_ a:MeadowWorldPoint,_ b:MeadowWorldPoint,_ c:MeadowWorldPoint)->Double {
+        (b.x-a.x)*(c.y-a.y)-(b.y-a.y)*(c.x-a.x)
+    }
+    private static func length(_ a:MeadowWorldPoint,_ b:MeadowWorldPoint)->Double { hypot(b.x-a.x,b.y-a.y) }
+    private struct Triangle { let a:Int,b:Int,c:Int }
+    private static func planarEdges(_ input:[MeadowWorldPoint],height:Double)->[(Int,Int)] {
+        // Bowyer-Watson triangulation; sorted boundary keys keep replay stable.
+        let n=input.count,m=max(1280,height)*8
+        let p=input+[.init(-m,-m),.init(3*m,-m),.init(-m,3*m)]
+        var triangles=[Triangle(a:n,b:n+1,c:n+2)]
+        for i in 0..<n {
+            var boundary=[Int:Int](),keep=[Triangle]()
+            for t in triangles {
+                let a=p[t.a],b=p[t.b],c=p[t.c],q=p[i]
+                let ax=a.x-q.x,ay=a.y-q.y,bx=b.x-q.x,by=b.y-q.y,cx=c.x-q.x,cy=c.y-q.y
+                let d=(ax*ax+ay*ay)*(bx*cy-cx*by)-(bx*bx+by*by)*(ax*cy-cx*ay)+(cx*cx+cy*cy)*(ax*by-bx*ay)
+                let inside=cross(a,b,c)>0 ? d>1e-6:d < -1e-6
+                if inside {
+                    for (u,v) in [(t.a,t.b),(t.b,t.c),(t.c,t.a)] {
+                        let key=min(u,v)*(n+3)+max(u,v);boundary[key,default:0]+=1
+                    }
+                } else { keep.append(t) }
             }
-            let start=positions.indices.min { positions[$0].x-positions[$0].y < positions[$1].x-positions[$1].y }!
-            var distance=Array(repeating:-1,count:c.total); distance[start]=0
-            var queue=[start], cursor=0
-            while cursor<queue.count {
-                let u=queue[cursor]; cursor+=1
-                for (a,b) in tree {
-                    let v=a==u ? b : b==u ? a : -1
-                    if v>=0 && distance[v]<0 { distance[v]=distance[u]+1; queue.append(v) }
+            for key in boundary.keys.sorted() where boundary[key]==1 {
+                let a=key/(n+3),b=key%(n+3)
+                if abs(cross(p[a],p[b],p[i]))>1e-7 { keep.append(Triangle(a:a,b:b,c:i)) }
+            }
+            triangles=keep
+        }
+        var keys=Set<Int>()
+        for t in triangles where max(t.a,max(t.b,t.c))<n {
+            for (a,b) in [(t.a,t.b),(t.b,t.c),(t.c,t.a)] { keys.insert(min(a,b)*n+max(a,b)) }
+        }
+        return keys.sorted().map{($0/n,$0%n)}
+    }
+    private static func route(_ p:MeadowWorldPoint,_ q:MeadowWorldPoint,obstacles:[Rect],bend:Double)->[MeadowWorldPoint]? {
+        var active=Set(obstacles.indices.filter{obstacles[$0].blocks(p,q)})
+        for _ in 0..<obstacles.count+1 {
+            let vertices=[p,q]+active.sorted().flatMap{obstacles[$0].corners}
+            var costs=Array(repeating:Double.infinity,count:vertices.count),previous=Array(repeating:-1,count:vertices.count),used=Set<Int>()
+            costs[0]=0
+            for _ in vertices.indices {
+                guard let u=vertices.indices.filter({!used.contains($0)}).min(by:{costs[$0]<costs[$1]}),costs[u].isFinite else { break }
+                if u==1 { break };used.insert(u)
+                for v in vertices.indices where v != u && !used.contains(v) {
+                    if active.contains(where:{obstacles[$0].blocks(vertices[u],vertices[v])}) { continue }
+                    let next=costs[u]+length(vertices[u],vertices[v])
+                    if next<costs[v] { costs[v]=next;previous[v]=u }
                 }
             }
-            var remaining=Array(0..<c.total).filter { $0 != start }; topology.shuffle(&remaining)
-            remaining.sort { distance[$0] > distance[$1] }
-            let bosses=Array(remaining.prefix(c.boss))
-            if bosses.contains(where:{ distance[$0]<c.minimumBossHops }) { continue }
-            var kinds=Array(repeating:NodeKind.empty,count:c.total); kinds[start] = .start
-            for id in bosses { kinds[id] = .boss }
-            remaining.removeAll { bosses.contains($0) }; topology.shuffle(&remaining)
-            let contents=Array(repeating:NodeKind.combat,count:c.combat) + Array(repeating:NodeKind.reward,count:c.reward) + Array(repeating:NodeKind.empty,count:c.empty)
-            for (id,kind) in zip(remaining,contents) { kinds[id]=kind }
-            let titles:[NodeKind:String]=[.start:"起点营地",.combat:"林间战斗",.boss:"首领地点",.reward:"补给地点",.empty:"林间空地"]
-            let nodes=(0..<c.total).map { id in
-                MapNode(id:id,name:"\(titles[kinds[id]]!) · \(id+1)",kind:kinds[id],x:positions[id].x/1280,y:positions[id].y/coordinateHeight,
-                        reward:kinds[id] == .reward ? NodeReward() : nil)
+            guard costs[1].isFinite else { return nil }
+            var path=[q],index=1
+            while index != 0 { index=previous[index];guard index>=0 else{return nil};path.append(vertices[index]) }
+            path.reverse()
+            // Explicit loop avoids shadowing the obstacle index in the closure.
+            var found=Set<Int>()
+            for i in obstacles.indices where !active.contains(i) {
+                if zip(path,path.dropFirst()).contains(where:{obstacles[i].blocks($0.0,$0.1)}) { found.insert(i) }
             }
-            let map=GameMap(nodes:nodes,roads:tree.map { MapRoad($0.0,$0.1) },seed:c.seed,revealed:[start])
-            try map.validate()
-            var curves=MapRandom(state:c.seed ^ 0x524f414453)
-            let roads=tree.map { a,b -> MeadowWorldRoad in
-                let p=positions[a],q=positions[b], dx=q.x-p.x,dy=q.y-p.y, length=hypot(dx,dy)
-                let limit=min(18,length*0.06)
-                let bend=curves.value(-limit,limit)
-                let points=[p,MeadowWorldPoint(p.x+dx/3-dy/length*bend,p.y+dy/3+dx/length*bend),
-                            MeadowWorldPoint(p.x+dx*2/3-dy/length*bend,p.y+dy*2/3+dx/length*bend),q]
-                return MeadowWorldRoad(from:a,to:b,width:22,points:points)
+            if !found.isEmpty { active.formUnion(found);continue }
+            // Rounded visibility corners; the outer routing rectangle includes
+            // enough clearance to round without cutting the actual building.
+            var smooth=[p]
+            if path.count==2 {
+                let l=length(p,q),m=MeadowWorldPoint((p.x+q.x)/2-(q.y-p.y)/l*bend,(p.y+q.y)/2+(q.x-p.x)/l*bend)
+                for i in 1...16 {
+                    let t=Double(i)/16,s=1-t
+                    smooth.append(.init(s*s*p.x+2*s*t*m.x+t*t*q.x,s*s*p.y+2*s*t*m.y+t*t*q.y))
+                }
+            } else {
+                for i in 1..<path.count-1 {
+                    let a=path[i-1],b=path[i],c=path[i+1]
+                    let cut=min(18,min(length(a,b),length(b,c))*0.22)
+                    let entry=MeadowWorldPoint(b.x+(a.x-b.x)*cut/length(a,b),b.y+(a.y-b.y)*cut/length(a,b))
+                    let exit=MeadowWorldPoint(b.x+(c.x-b.x)*cut/length(b,c),b.y+(c.y-b.y)*cut/length(b,c))
+                    smooth.append(entry)
+                    for k in 1...6 {
+                        let t=Double(k)/6,s=1-t
+                        smooth.append(.init(s*s*entry.x+2*s*t*b.x+t*t*exit.x,s*s*entry.y+2*s*t*b.y+t*t*exit.y))
+                    }
+                }
+                smooth.append(q)
             }
-            guard let props=decorate(c,positions:positions,roads:roads,kinds:kinds,height:coordinateHeight) else { continue }
-            return GeneratedMeadowMap(generatorVersion:version,configuration:c,map:map,roads:roads,props:props,coordinateHeight:coordinateHeight,spawn:positions[start])
+            return smooth
         }
-        throw GameError("在64次尝试内未能满足道路、Boss距离与建筑空间要求。请更换种子或减少环路，节点数量未被修改。")
+        return nil
     }
-
-    public static func distance(_ p: MeadowWorldPoint, to roads: [MeadowWorldRoad]) -> Double {
-        roads.flatMap { road in zip(road.points,road.points.dropFirst()).map { a,b -> Double in
-            let dx=b.x-a.x,dy=b.y-a.y
-            let t=max(0,min(1,((p.x-a.x)*dx+(p.y-a.y)*dy)/max(0.001,dx*dx+dy*dy)))
-            return hypot(p.x-a.x-t*dx,p.y-a.y-t*dy)
-        } }.min() ?? .infinity
+    private static func conflicts(_ a:MeadowWorldRoad,_ b:MeadowWorldRoad)->Bool {
+        if a.from==b.from || a.from==b.to || a.to==b.from || a.to==b.to { return false }
+        for (p,q) in zip(a.points,a.points.dropFirst()) { for (r,s) in zip(b.points,b.points.dropFirst()) {
+            if max(p.x,q.x)+22<min(r.x,s.x) || max(r.x,s.x)+22<min(p.x,q.x) || max(p.y,q.y)+22<min(r.y,s.y) || max(r.y,s.y)+22<min(p.y,q.y) { continue }
+            if cross(p,q,r)*cross(p,q,s)<0 && cross(r,s,p)*cross(r,s,q)<0 { return true }
+            if segmentDistance(p,r,s)<22 || segmentDistance(q,r,s)<22 || segmentDistance(r,p,q)<22 || segmentDistance(s,p,q)<22 { return true }
+        } }
+        return false
     }
-
-    private static func decorate(_ c: MeadowMapConfiguration,positions:[MeadowWorldPoint],roads:[MeadowWorldRoad],kinds:[NodeKind],height:Double) -> [MeadowWorldProp]? {
-        var rng=MapRandom(state:c.seed ^ 0x50524f5053), props:[MeadowWorldProp]=[]
-        let catalog:[NodeKind:(String,Double)]=[.start:("CampTent",105),.combat:("NodeCombatOutpost",90),.boss:("NodeBossSanctum",104),.reward:("NodeRewardCache",86),.empty:("NodeWaystone",74)]
-        // Every node owns one landmark. Reserve both its ground footprint and
-        // visible image rectangle; no missing building is silently accepted.
-        var options=[[MeadowWorldProp]]()
-        for id in positions.indices {
-            let node=positions[id],(asset,width)=catalog[kinds[id]]!,radius=width*0.42
-            var candidates=[MeadowWorldProp]()
-            for offset in [(85.0,-85.0),(-85,-85),(0,-106),(76,-72),(-76,-72),(85,-76),(-85,-76),(92,-92),(-92,-92),(112,-50),(-112,-50),(112,50),(-112,50),(76,72),(-76,72),(85,76),(-85,76),(88,92),(-88,92),(0,110),(120,0),(-120,0),(145,-80),(-145,-80),(145,80),(-145,80),(70,-140),(-70,-140),(70,140),(-70,140)] {
-                let p=MeadowWorldPoint(node.x+offset.0,node.y+offset.1)
-                guard (width*0.46+10...(1280-width*0.46-10)).contains(p.x),(max(110,width*0.9+35)...(height-15)).contains(p.y),distance(p,to:roads)>max(60,radius+25) else { continue }
-                guard positions.allSatisfy({ q in
-                    hypot(q.x-p.x,q.y-p.y)>radius+30 &&
-                    (q.x+18 < p.x-width*0.46 || q.x-18 > p.x+width*0.46 || q.y+8 < p.y-width*0.86 || q.y-42 > p.y+width*0.06)
-                }) else { continue }
-                candidates.append(MeadowWorldProp(asset:asset,x:p.x,y:p.y,width:width,wind:0,nodeID:id))
+    private static func segmentDistance(_ p:MeadowWorldPoint,_ a:MeadowWorldPoint,_ b:MeadowWorldPoint)->Double {
+        let dx=b.x-a.x,dy=b.y-a.y,t=max(0,min(1,((p.x-a.x)*dx+(p.y-a.y)*dy)/max(0.001,dx*dx+dy*dy)))
+        return hypot(p.x-a.x-t*dx,p.y-a.y-t*dy)
+    }
+    public static func distance(_ p:MeadowWorldPoint,to roads:[MeadowWorldRoad])->Double {
+        roads.flatMap { zip($0.points,$0.points.dropFirst()).map{segmentDistance(p,$0.0,$0.1)} }.min() ?? .infinity
+    }
+    public static func generate(_ c:MeadowMapConfiguration)throws->GeneratedMeadowMap {
+        try c.validate()
+        for attempt in 0..<64 {
+            var layout=MapRandom(state:c.seed ^ 0x4c41594f5554 &+ UInt64(attempt))
+            let height=max(860,500+Double(c.total)*55),phase=layout.value(0,2 * .pi),lobe=layout.value(0,2 * .pi)
+            let rx=layout.value(460,500),ry=(height-360)/2
+            var positions=[MeadowWorldPoint]()
+            for i in 0..<c.total {
+                let theta=Double(i)*2.399963229728653+phase+layout.value(-0.06,0.06)
+                let radius=sqrt((Double(i)+0.5)/Double(c.total))
+                let shape=0.94+0.07*sin(theta*3+lobe)+0.04*cos(theta*5-phase)
+                let y=radius*sin(theta)*shape
+                positions.append(.init(640+rx*radius*cos(theta)*shape+42*sin(y*3+phase),height/2+ry*y))
             }
-            guard !candidates.isEmpty else { return nil }
-            options.append(candidates)
-        }
-        var assigned=[Int:MeadowWorldProp](),budget=1000
-        func fits(_ a:MeadowWorldProp,_ b:MeadowWorldProp) -> Bool {
-            if (a.asset=="CampTent" || b.asset=="CampTent") && hypot(a.x-b.x,a.y-b.y)<=150 { return false }
-            return abs(a.x-b.x)>(a.width+b.width)*0.5+10 ||
-                a.y+a.width*0.08+8 < b.y-b.width*0.92 || b.y+b.width*0.08+8 < a.y-a.width*0.92
-        }
-        func place() -> Bool {
-            if assigned.count==positions.count { return true }
-            if budget<=0 { return false }
-            var selected = -1, available=[MeadowWorldProp]()
-            // Place the most constrained parcel first, instead of letting an
-            // early flexible parcel occupy the only slot of a later building.
-            for id in positions.indices where assigned[id]==nil {
-                let valid=options[id].filter { candidate in assigned.values.allSatisfy{fits(candidate,$0)} }
-                if valid.isEmpty { return false }
-                if selected<0 || valid.count<available.count { selected=id;available=valid }
+            // Relax in physical coordinates, so a tall footprint does not
+            // compress neighboring points into narrow horizontal rows.
+            for _ in 0..<72 {
+                for i in positions.indices { for j in positions.indices where j<i {
+                    let d=length(positions[i],positions[j])
+                    if d<180 && d>1e-6 {
+                        let push=(180-d)*0.52,dx=(positions[i].x-positions[j].x)/d*push,dy=(positions[i].y-positions[j].y)/d*push
+                        positions[i].x+=dx;positions[i].y+=dy;positions[j].x-=dx;positions[j].y-=dy
+                    }
+                } }
+                for i in positions.indices { positions[i].x=max(100,min(1180,positions[i].x));positions[i].y=max(175,min(height-150,positions[i].y)) }
             }
-            for candidate in available {
-                budget-=1;assigned[selected]=candidate
-                if place() { return true }
-                assigned.removeValue(forKey:selected)
-                if budget<=0 { return false }
+            if positions.indices.contains(where:{i in positions.indices.contains{j in j<i && length(positions[i],positions[j])<174}}) { continue }
+            // Every building sits directly behind its road endpoint: this point
+            // is its front apron, not a separate remote node marker.
+            let obstacles=positions.map{Rect(left:$0.x-73,top:$0.y-144,right:$0.x+73,bottom:$0.y-12)}
+            let inner=positions.map{Rect(left:$0.x-66,top:$0.y-138,right:$0.x+66,bottom:$0.y-14)}
+            var topology=MapRandom(state:c.seed ^ 0x544f504f &+ UInt64(attempt)),curves=MapRandom(state:c.seed ^ 0x524f414453)
+            var routes=[(MeadowWorldRoad,Double)]()
+            for (a,b) in planarEdges(positions,height:height) {
+                guard let points=route(positions[a],positions[b],obstacles:obstacles,bend:curves.value(-38,38)) else { continue }
+                if inner.contains(where:{rect in zip(points,points.dropFirst()).contains{rect.blocks($0.0,$0.1)}}) { continue }
+                let road=MeadowWorldRoad(from:a,to:b,width:22,points:points)
+                routes.append((road,zip(points,points.dropFirst()).map{length($0.0,$0.1)}.reduce(0,+)*topology.value(0.85,1.3)))
             }
-            return false
+            routes.sort{$0.1<$1.1}
+            var groups=Array(0..<c.total),roads=[MeadowWorldRoad](),spare=[MeadowWorldRoad]()
+            for (road,_) in routes {
+                let a=road.from,b=road.to,ga=groups[a],gb=groups[b]
+                if ga != gb && !roads.contains(where:{conflicts(road,$0)}) {
+                    roads.append(road);groups=groups.map{$0==gb ? ga:$0}
+                } else { spare.append(road) }
+            }
+            guard roads.count==c.total-1 else { continue }
+            for road in spare where roads.count<c.total-1+c.extraRoads {
+                if !roads.contains(where:{conflicts(road,$0)}) { roads.append(road) }
+            }
+            guard roads.count==c.total-1+c.extraRoads else { continue }
+            roads.sort{$0.from==$1.from ? $0.to<$1.to:$0.from<$1.from}
+            let start=positions.indices.max{ positions[$0].y-positions[$0].x*0.25 < positions[$1].y-positions[$1].x*0.25 }!
+            var distance=Array(repeating:-1,count:c.total);distance[start]=0
+            var queue=[start],cursor=0
+            while cursor<queue.count {
+                let u=queue[cursor];cursor+=1
+                for road in roads {
+                    let v=road.from==u ? road.to:road.to==u ? road.from:-1
+                    if v>=0 && distance[v]<0 {distance[v]=distance[u]+1;queue.append(v)}
+                }
+            }
+            var remaining=positions.indices.filter{$0 != start};topology.shuffle(&remaining);remaining.sort{distance[$0]>distance[$1]}
+            let bosses=Array(remaining.prefix(c.boss));if bosses.contains(where:{distance[$0]<c.minimumBossHops}){continue}
+            var kinds=Array(repeating:NodeKind.empty,count:c.total);kinds[start] = .start
+            for id in bosses{kinds[id] = .boss};remaining.removeAll{bosses.contains($0)};topology.shuffle(&remaining)
+            for (id,kind) in zip(remaining,Array(repeating:NodeKind.combat,count:c.combat)+Array(repeating:NodeKind.reward,count:c.reward)+Array(repeating:NodeKind.empty,count:c.empty)){kinds[id]=kind}
+            let titles:[NodeKind:String]=[.start:"起点营地",.combat:"林间战斗",.boss:"首领遗迹",.reward:"补给棚",.empty:"林间水井"]
+            let nodes=positions.indices.map{MapNode(id:$0,name:"\(titles[kinds[$0]]!) · \($0+1)",kind:kinds[$0],x:positions[$0].x/1280,y:positions[$0].y/height,reward:kinds[$0] == .reward ? NodeReward():nil)}
+            let map=GameMap(nodes:nodes,roads:roads.map{MapRoad($0.from,$0.to)},seed:c.seed,revealed:[start]);try map.validate()
+            let catalog:[NodeKind:(String,Double)]=[.start:("CampTent",105),.combat:("NodeCombatOutpost",90),.boss:("NodeBossSanctum",104),.reward:("NodeRewardCache",86),.empty:("NodeWaystone",74)]
+            var props=positions.indices.map{ id -> MeadowWorldProp in
+                let (asset,width)=catalog[kinds[id]]!
+                return MeadowWorldProp(asset:asset,x:positions[id].x,y:positions[id].y-26,width:width,wind:0,nodeID:id)
+            }
+            let landmarkCount=props.count
+            var decoration=MapRandom(state:c.seed ^ 0x50524f5053)
+            let assets=["OakA","OakB","Pines","RockLow","RockHigh","RockSmall","Shrub","Flowers"]
+            for _ in 0..<1800 {
+                if props.count>=c.decorationCount+landmarkCount{break}
+                let p=MeadowWorldPoint(decoration.value(-70,1350),decoration.value(-80,height+100))
+                guard self.distance(p,to:roads)>58,positions.allSatisfy({length($0,p)>84}),props.allSatisfy({hypot($0.x-p.x,$0.y-p.y)>($0.nodeID != nil ? ($0.asset=="CampTent" ? 150:130):max(42,$0.width*0.6))}) else{continue}
+                let asset=assets[Int(decoration.next()%UInt64(assets.count))]
+                let width=asset=="Flowers" ? decoration.value(14,23):asset=="Shrub" ? decoration.value(25,35):asset.hasPrefix("Rock") ? decoration.value(76,108):decoration.value(60,88)
+                props.append(MeadowWorldProp(asset:asset,x:p.x,y:p.y,width:width,wind:asset.hasPrefix("Rock") ? 0:1))
+            }
+            return GeneratedMeadowMap(generatorVersion:version,configuration:c,map:map,roads:roads,props:props,coordinateHeight:height,spawn:positions[start])
         }
-        guard place() else { return nil }
-        props=positions.indices.map{assigned[$0]!}
-        let landmarkCount=props.count
-        let assets=["OakA","OakB","Pines","RockLow","RockHigh","RockSmall","Shrub","Flowers"]
-        for _ in 0..<1400 {
-            if props.count>=c.decorationCount+landmarkCount { break }
-            let p=MeadowWorldPoint(rng.value(-70,1350),rng.value(-80,height+100))
-            guard distance(p,to:roads)>58,
-                  positions.allSatisfy({hypot($0.x-p.x,$0.y-p.y)>76}),
-                  props.allSatisfy({hypot($0.x-p.x,$0.y-p.y)>($0.nodeID != nil ? ($0.asset == "CampTent" ? 150 : 110) : max(42,$0.width*0.6))}) else { continue }
-            let asset=assets[Int(rng.next()%UInt64(assets.count))]
-            let width=asset=="Flowers" ? rng.value(14,23) : asset=="Shrub" ? rng.value(25,35) : (asset.hasPrefix("Rock") ? rng.value(76,108) : rng.value(60,88))
-            props.append(MeadowWorldProp(asset:asset,x:p.x,y:p.y,width:width,wind:asset.hasPrefix("Rock") ? 0 : 1))
-        }
-        return props
+        throw GameError("在64次尝试内无法满足道路净空、建筑与Boss距离要求，请更换种子或减少环路。节点数量未改变。")
     }
 }

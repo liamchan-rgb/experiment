@@ -20,7 +20,7 @@ struct TrailNetwork {
 
     init(roads: [SceneDefinition.Road], patrolStart: Int? = nil) {
         edges = roads.map { Edge(from: $0.from, to: $0.to,
-                                trail: Trail.smooth($0.points.map(\.point)), width: $0.width) }
+                                trail: $0.sampled == true ? Trail(points:$0.points.map(\.point)) : Trail.smooth($0.points.map(\.point)), width: $0.width) }
         nodeCount = (edges.flatMap { [$0.from, $0.to] }.max() ?? 0) + 1
         if let start = patrolStart {
             let allEdges = edges

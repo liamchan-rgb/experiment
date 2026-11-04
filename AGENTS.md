@@ -1,3 +1,7 @@
+## Build75 · 不规则地图与建筑节点返修（2026-11-04）
+
+用户拒绝Build74方正路网/建筑分离。v3改散点/物理排斥/Delaunay候选与连通树+精确环路；建筑正后26单位就是实际道路节点，点建筑到门前，徽记按PNG实际轮廓顶+14挂载。缩略图画真实比例建筑，生成道路按已校验采样行走，不二次平滑。详见docs/planning/random-map-v1/build75-organic-landmarks.md。原图/人物/装备/动作保持；主线程独自返修审核，无智能体。182纯测试、648图/24极端配额与36方向退化检查、78实际道路/门前对齐/建筑避让/无假交叉检查已过，正常GIF/整图见Art/Review/Map/random-map-v3。设备归档/包检状态见Media/Build75；未运行App/模拟器/实机，用户测试；新认可null。仍仅地图预览，无正式探索结算/存档。后两项M3正式探索/结算与地图存档、M4单节点编辑。
+
 ## Build74 归档与交付（2026-11-04）
 
 设备Release运行41803969748成功，源09ec0902e04d5042d4044bb3133ffb502c454414；181纯测试和道路/战斗/特效/模组四组回归检查通过。1.6.47/74 unsigned直接IPA见Downloads/MeadowJourney-b74.ipa与Media/Build74；CRC/经典ZIP2.0/无extra/arm64/权限/地图UI/生成器/Metal/四建筑名编入Assets.car、原SceneMap/hero-gait/规则目录均核。离线正常GIF与建筑/整图见Art/Review/Map/random-map-v2，主线程已独自审核400解码帧接触表及整图，新认可null。无App/模拟器/实机执行；后两项M3正式探索/结算/地图存档，M4单节点编辑。

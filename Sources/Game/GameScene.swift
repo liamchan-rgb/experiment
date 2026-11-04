@@ -107,15 +107,19 @@ final class GameScene: SKScene {
 
     private func buildMarkers() {
         let start = SKShapeNode(circleOfRadius: 10)
-        start.position = LivingWorld.position(world.definition.spawn?.point ?? CGPoint(x: 285, y: 442))
+        start.position = LivingWorld.position(world.definition.landmarkBadgePoint(nodeID:world.definition.startNodeID) ?? world.definition.spawn?.point ?? CGPoint(x: 285, y: 442))
         start.fillColor = SKColor(red: 0.96, green: 0.85, blue: 0.52, alpha: 1)
         start.strokeColor = SKColor(red: 0.40, green: 0.24, blue: 0.11, alpha: 1)
         start.lineWidth = 2.5
-        start.zPosition = 65
+        start.zPosition = world.definition.startNodeID == nil ? 65:22500
+        if world.definition.startNodeID != nil {
+            let text=SKLabelNode(fontNamed:"Georgia-Bold");text.text="起";text.fontSize=15
+            text.fontColor = .black;text.verticalAlignmentMode = .center;start.addChild(text)
+        }
         world.addChild(start)
         for (index, discovery) in world.definition.discoveries.enumerated() {
             let root = SKNode()
-            root.position = LivingWorld.position(discovery.kind == nil ? CGPoint(x: discovery.x + 28, y: discovery.y - 40) : CGPoint(x:discovery.x,y:discovery.y-24))
+            root.position = LivingWorld.position(world.definition.landmarkBadgePoint(nodeID:discovery.nodeID) ?? (discovery.kind == nil ? CGPoint(x: discovery.x + 28, y: discovery.y - 40) : CGPoint(x:discovery.x,y:discovery.y-24)))
             root.zPosition = 22500
             root.name = "discovery-\(index)"
             let diamond = SKShapeNode(circleOfRadius: 13)

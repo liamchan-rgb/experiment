@@ -27,7 +27,24 @@ enum HeroFrames {
                 precondition(hypot(road.trail.points[0].x-a.x*1280,road.trail.points[0].y-a.y*generated.coordinateHeight)<0.000001)
                 precondition(hypot(road.trail.points.last!.x-b.x*1280,road.trail.points.last!.y-b.y*generated.coordinateHeight)<0.000001)
             }
-            for prop in definition.props { precondition(network.project(CGPoint(x:prop.x,y:prop.y)).error>50) }
+            for prop in definition.props where prop.nodeID == nil { precondition(network.project(CGPoint(x:prop.x,y:prop.y)).error>50) }
+            for prop in definition.props where prop.nodeID != nil {
+                let node=generated.map.nodes.first{$0.id==prop.nodeID}!
+                precondition(hypot(prop.x-node.x*1280,prop.y+26-node.y*generated.coordinateHeight)<0.000001)
+                let badge=definition.landmarkBadgePoint(nodeID:prop.nodeID)!
+                precondition(badge.x==prop.x && badge.y<prop.y-prop.width*0.50)
+                let l=prop.x-prop.width*0.48-9,r=prop.x+prop.width*0.48+9,t=prop.y-prop.width*0.90-9,b=prop.y+9
+                for edge in network.edges { for (a,z) in zip(edge.trail.points,edge.trail.points.dropFirst()) {
+                    var low:CGFloat=0,high:CGFloat=1,blocked=true
+                    for (origin,delta,minimum,maximum) in [(a.x,z.x-a.x,l,r),(a.y,z.y-a.y,t,b)] {
+                        if abs(delta)<0.00000001 { if origin<=minimum || origin>=maximum {blocked=false;break};continue }
+                        let one=(minimum-origin)/delta,two=(maximum-origin)/delta
+                        low=max(low,min(one,two));high=min(high,max(one,two))
+                        if low>=high-0.000001 {blocked=false;break}
+                    }
+                    precondition(!blocked || low>=1-0.000001 || high<=0.000001,"Road enters building silhouette")
+                } }
+            }
             func cross(_ a:CGPoint,_ b:CGPoint,_ c:CGPoint)->CGFloat { (b.x-a.x)*(c.y-a.y)-(b.y-a.y)*(c.x-a.x) }
             for i in network.edges.indices { for j in network.edges.indices where j>i {
                 let a=network.edges[i],b=network.edges[j]
@@ -48,7 +65,11 @@ enum HeroFrames {
                 let p=initial.point(for:i)
                 return ["index":i,"x":Double(p.x),"y":Double(p.y),"facing":0,"frame":0]
             }
-            let data=try JSONSerialization.data(withJSONObject:["roads":geometry,"patrol":network.patrol.points.map{[Double($0.x),Double($0.y)]},"initialHeroes":initialHeroes],options:[.sortedKeys])
+            let badges:[[String:Any]]=definition.props.filter{$0.nodeID != nil}.map {
+                let p=definition.landmarkBadgePoint(nodeID:$0.nodeID)!
+                return ["nodeID":$0.nodeID!,"x":Double(p.x),"y":Double(p.y)]
+            }
+            let data=try JSONSerialization.data(withJSONObject:["landmarkBadges":badges,"roads":geometry,"patrol":network.patrol.points.map{[Double($0.x),Double($0.y)]},"initialHeroes":initialHeroes],options:[.sortedKeys])
             try data.write(to:output.appendingPathComponent(name+"-geometry.json"));cases+=1
             if n==10 && seed==31827 {
                 var simulation=JourneySimulation(network:network,spawn:definition.spawn?.point)

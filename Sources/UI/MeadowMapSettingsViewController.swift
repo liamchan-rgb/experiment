@@ -50,7 +50,7 @@ final class MeadowMapSettingsViewController: UIViewController {
         let suggest=button("恢复建议分配",action:#selector(suggested));form.addArrangedSubview(suggest)
         let seed=button("换个种子",action:#selector(newSeed));form.addArrangedSubview(seed)
         let close=button("返回原地图",action:#selector(close));form.addArrangedSubview(close)
-        let heading=UILabel();heading.text="道路预览";heading.font = .boldSystemFont(ofSize:22);heading.textColor=gold
+        let heading=UILabel();heading.text="建筑与道路预览";heading.font = .boldSystemFont(ofSize:22);heading.textColor=gold
         let note=UILabel();note.text="输入或拖动总数会自动分配各类节点。调整某类时优先用空地点补差。林地预览暂不结算战斗与奖励。"
         note.font = .systemFont(ofSize:17,weight:.medium);note.textColor = .white;note.numberOfLines=0
         status.textColor=gold;status.numberOfLines=0;status.font = .boldSystemFont(ofSize:17)
@@ -175,11 +175,17 @@ private final class MeadowMapThumbnail: UIView {
         }
         let colors:[String:UIColor]=["start":.systemYellow,"combat":.systemRed,"boss":.systemPurple,"reward":.systemGreen,"empty":.lightGray]
         let names=["start":"起","combat":"战","boss":"首","reward":"奖","empty":"空"]
-        for node in map.map.nodes {
-            let p=point(node.x*1280,node.y*map.coordinateHeight),r:CGFloat=10
-            colors[node.kind.rawValue]?.setFill();UIBezierPath(ovalIn:CGRect(x:p.x-r,y:p.y-r,width:r*2,height:r*2)).fill()
+        for prop in map.props.filter({$0.nodeID != nil}).sorted(by:{$0.y<$1.y}) {
+            let p=point(prop.x,prop.y),width=CGFloat(prop.width)*scale
+            if let image=UIImage(named:prop.asset) {
+                let height=width*image.size.height/image.size.width,anchor:CGFloat=prop.asset=="CampTent" ? 0.10:0.08
+                image.draw(in:CGRect(x:p.x-width/2,y:p.y-height*(1-anchor),width:width,height:height))
+            }
+            guard let node=map.map.nodes.first(where:{$0.id==prop.nodeID}) else { continue }
+            let badge=point(prop.x,prop.y-Double(SceneDefinition.landmarkBadgeRise(asset:prop.asset,width:CGFloat(prop.width)))),r:CGFloat=5
+            colors[node.kind.rawValue]?.setFill();UIBezierPath(ovalIn:CGRect(x:badge.x-r,y:badge.y-r,width:r*2,height:r*2)).fill()
             let text=names[node.kind.rawValue] ?? "?"
-            (text as NSString).draw(in:CGRect(x:p.x-7,y:p.y-8,width:16,height:18),withAttributes:[.font:UIFont.boldSystemFont(ofSize:13),.foregroundColor:UIColor.black])
+            (text as NSString).draw(in:CGRect(x:badge.x-4,y:badge.y-5,width:10,height:11),withAttributes:[.font:UIFont.boldSystemFont(ofSize:8),.foregroundColor:UIColor.black])
         }
     }
 }
