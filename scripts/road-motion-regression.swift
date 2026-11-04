@@ -1,5 +1,7 @@
 import Foundation
+#if canImport(CoreGraphics)
 import CoreGraphics
+#endif
 
 struct MapPoint: Decodable {
     let x: CGFloat
@@ -13,6 +15,7 @@ enum SceneDefinition {
         let to: Int
         let width: CGFloat
         let points: [MapPoint]
+        var sampled: Bool? = nil
     }
 }
 
@@ -48,6 +51,12 @@ struct RoadMotionRegression {
         HeroFrames.reviewSpeed = CGFloat(24 / (Double(layout.authoredFrames[0]) * layout.reviewFrameMs / 1000))
         let scene = try decoder.decode(MapFile.self, from: data("Sources/Resources/SceneMap.json"))
         let network = TrailNetwork(roads: scene.roads)
+        var sampledRoad=scene.roads[0];sampledRoad.sampled=true
+        let sampledNetwork=TrailNetwork(roads:[sampledRoad],patrolStart:sampledRoad.from)
+        require(sampledNetwork.edges[0].trail.points==sampledRoad.points.map(\.point),
+                "generated road samples must not be smoothed a second time")
+        require(network.edges[0].trail.points==Trail.smooth(scene.roads[0].points.map(\.point)).points,
+                "legacy roads retain their original smoothing")
         var simulation = JourneySimulation(network: network)
 
         require(abs(simulation.travelers[0].speed - HeroFrames.reviewSpeed) < 0.0001,

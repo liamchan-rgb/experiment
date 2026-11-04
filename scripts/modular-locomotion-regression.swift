@@ -13,7 +13,7 @@ struct MapPoint: Decodable {
     var point: CGPoint { CGPoint(x:x,y:y) }
 }
 enum SceneDefinition {
-    struct Road: Decodable { let from: Int; let to: Int; let width: CGFloat; let points: [MapPoint] }
+    struct Road: Decodable { let from: Int; let to: Int; let width: CGFloat; let points: [MapPoint]; var sampled: Bool? = nil }
 }
 private struct MapFile: Decodable { let roads: [SceneDefinition.Road] }
 
