@@ -1,6 +1,12 @@
 name: Random Map Device Build
 on:
   workflow_dispatch:
+    inputs:
+      runner:
+        description: Mac build pool (archive only; never run the app)
+        type: choice
+        default: macos-15-intel
+        options: [macos-15-intel, macos-15]
   push:
     branches: [fix/build33-face-grounding-camera]
 permissions:
@@ -10,7 +16,7 @@ concurrency:
   cancel-in-progress: false
 jobs:
   archive:
-    runs-on: macos-15-intel
+    runs-on: ${{ inputs.runner || 'macos-15-intel' }}
     timeout-minutes: 30
     steps:
       - uses: actions/checkout@v7
