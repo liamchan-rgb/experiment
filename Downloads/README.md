@@ -1,3 +1,9 @@
+## Build75 · 不规则路网与建筑节点 · 1.6.48
+
+[直接下载IPA](MeadowJourney-b75.ipa) · [正常行走GIF](../Art/Review/Map/random-map-v3/walk-normal.gif) · [九布局对照](../Art/Review/Map/random-map-v3/sizes-seeds.png) · [包检记录](../Media/Build75/verification.json)
+
+不规则散点连接，告别方格邻接。每栋建筑门前即节点，徽记贴实际屋顶，点击建筑/徽记到同一门前。保留自动配额/整数滑块。182纯测试与设备Release及包检通过；仍只林地预览，无正式结算/地图存档。实机交用户测试。
+
 ## Build74 · 节点建筑与滑块配额 · 1.6.47
 
 [直接下载 IPA](MeadowJourney-b74.ipa) · [正常行走GIF](../Art/Review/Map/random-map-v2/walk-normal.gif) · [整图/建筑/审核](../Art/Review/Map/random-map-v2/README.md) · [包检记录](../Media/Build74/verification.json)

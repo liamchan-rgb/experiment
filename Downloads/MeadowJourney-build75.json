@@ -1,0 +1,12 @@
+{
+  "build": 75,
+  "version": "1.6.48",
+  "file": "MeadowJourney-b75.ipa",
+  "bytes": 60161365,
+  "sha256": "2624a4cdc63c4a1b0ccf2d63f6531c0b17f252071dc1d20d868a0682405e438b",
+  "sourceCommit": "5239d632296dc0f63b9ba7b3d5a11295c79ee9c0",
+  "workflow": "https://github.com/liamchan-rgb/experiment/actions/runs/41811725340",
+  "scope": "organic planar roads; building front aprons and roof badges; random meadow preview only",
+  "installationTested": false,
+  "downloadURL": "https://raw.githubusercontent.com/liamchan-rgb/experiment/fix/build33-face-grounding-camera/Downloads/MeadowJourney-b75.ipa"
+}
