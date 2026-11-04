@@ -6,15 +6,24 @@ import ClassroomGameCore
 import MeadowWorldSupport
 
 final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
+    private let campaign:MeadowCampaignSession?
+    private let campaignRefill=MeadowPreviewPalette.button("补足行动")
+    private let campaignItems=MeadowPreviewPalette.button("道具")
+    private let campaignBattle=MeadowPreviewPalette.button("继续战斗")
+    private let campaignHUD=UIView()
+    private let campaignHealth=[MeadowBattleResourceBar(),MeadowBattleResourceBar()]
+    private let campaignAP=[MeadowBattleActionPointsView(),MeadowBattleActionPointsView()]
     private let previewMap: GeneratedMeadowMap?
     private let randomMapButton = UIButton(type: .system)
     private let randomMapSummary = UILabel()
 
-    init(previewMap: GeneratedMeadowMap? = nil) {
-        self.previewMap = previewMap
+    init(previewMap: GeneratedMeadowMap? = nil,campaign:MeadowCampaignSession? = nil) {
+        self.campaign=campaign
+        self.previewMap = campaign?.snapshot.layout ?? previewMap
         super.init(nibName:nil,bundle:nil)
     }
-    required init?(coder: NSCoder) { previewMap=nil;super.init(coder:coder) }
+    required init?(coder: NSCoder) { campaign=nil;previewMap=nil;super.init(coder:coder) }
+    deinit {NotificationCenter.default.removeObserver(self)}
     private let gameView = UIView()
     private var gaitView: SKView?
     private let scene = GameScene()
@@ -127,8 +136,14 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
         if previewMap == nil { configureCampSave() }
         configureGaitControls()
         configureBattlePreview()
+        if let campaign {
+            scene.campaign=campaign
+            scene.onCampaignChanged={ [weak self] in DispatchQueue.main.async {self?.refreshCampaignStatus()} }
+            scene.onCampaignError={ [weak self] text in DispatchQueue.main.async {self?.showCampaignMessage(text)} }
+            configureCampaignControls()
+        }
         var mapStyle=labStyle
-        mapStyle.title=previewMap == nil ? "随机地图" : "返回地图设置"
+        mapStyle.title=campaign != nil ? "保存并返回":previewMap == nil ? "随机地图" : "返回地图设置"
         randomMapButton.configuration=mapStyle
         randomMapButton.accessibilityIdentifier="openRandomMap"
         randomMapButton.addTarget(self,action:#selector(openMapSettings),for:.touchUpInside)
@@ -177,7 +192,7 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
             }
         }
         scene.onSelectionChanged = { [weak self] name in
-            DispatchQueue.main.async { self?.gameView.accessibilityLabel = "林间地图，已选择 \(name)" }
+            DispatchQueue.main.async { self?.gameView.accessibilityLabel = "林间地图，已选择 \(name)";self?.refreshCampaignStatus() }
         }
         scene.onDiagnostics = { [weak self] text in
             guard let self else { return }
@@ -282,6 +297,13 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
         discoveryLabel.frame = CGRect(x: view.bounds.midX - 110, y: view.bounds.height - max(inset.bottom, 10) - 44, width: 220, height: 34)
         randomMapButton.frame=CGRect(x:max(inset.left,10)+4,y:view.bounds.height-max(inset.bottom,10)-44,width:140,height:38)
         randomMapButton.isHidden=battlePreviewActive || scene.gaitTest != nil
+        if campaign != nil {
+            let footer=view.bounds.height-max(inset.bottom,10)-44
+            campaignHUD.frame=CGRect(x:view.bounds.width-max(inset.right,10)-344,y:footer-139,width:334,height:88)
+            for i in 0..<2 {campaignHealth[i].frame=CGRect(x:8,y:CGFloat(i)*42+3,width:200,height:36);campaignAP[i].frame=CGRect(x:213,y:CGFloat(i)*42+3,width:112,height:36)}
+            campaignRefill.frame=CGRect(x:max(inset.left,10)+4,y:footer-46,width:120,height:38)
+            campaignItems.frame=campaignRefill.frame.offsetBy(dx:128,dy:0);campaignBattle.frame=campaignItems.frame.offsetBy(dx:128,dy:0)
+        }
         randomMapSummary.frame=CGRect(x:randomMapButton.frame.maxX+8,y:randomMapButton.frame.minY,
             width:max(1,view.bounds.width-max(inset.right,10)-randomMapButton.frame.maxX-16),height:38)
     }
@@ -382,6 +404,10 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
                     try self.prepareCampVisuals(unit,appearance:session.appearanceID,retaining:false)
                     self.applyCampVisuals()
                 }
+                if let campaign=self.campaign,let unit=campaign.engine.state.units["p1"],let index=HeroFrames.appearanceIDs.firstIndex(of:campaign.snapshot.appearanceID) {
+                    try self.groundRenderer?.prepareP1Equipment(appearance:index,weapon:unit.equipment.weapon,armor:unit.equipment.armor,retainingCurrent:false)
+                    self.scene.selectP1Loadout(appearance:index,weapon:unit.equipment.weapon,armor:unit.equipment.armor)
+                }
             } catch { self.showLoadingFailure(error);return }
             self.scene.activateForMetalRenderer()
             self.mapPresented = true
@@ -417,6 +443,9 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
         loadingView.update(1, text: "准备就绪")
         loadingView.isHidden = true
         setMapEnabled(true)
+        if let campaign {
+            refreshCampaignStatus()
+        }
         if ProcessInfo.processInfo.arguments.contains("-gaitCapture") { startGaitCapture() }
     }
 
@@ -471,7 +500,11 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
         ]), let text = String(data: data, encoding: .utf8) { gameView.accessibilityValue = text }
     }
 
-    @objc private func togglePlayback() { scene.togglePlayback() }
+    @objc private func togglePlayback() {
+        guard let campaign else{scene.togglePlayback();return}
+        do {try campaign.setPaused(campaign.isMoving);refreshCampaignStatus()}
+        catch {showCampaignMessage(error.localizedDescription)}
+    }
 
     private func configureGaitControls() {
         var style = UIButton.Configuration.filled()
@@ -641,7 +674,10 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
         if active { scene.beginBattlePreviewCamera() }
         battlePreviewActive = active
         battlePreviewView?.isHidden = !active
-        if active,let units=equipmentModel?.units { battlePreviewView?.configureEquipment(units) }
+        if let campaign {
+            guard !active || campaign.engine.state.battle != nil else{return}
+            battlePreviewView?.configureCampaign(engine:campaign.engine,onCommit:{ [weak self] _ in self?.scene.refreshCampaign() })
+        } else if active,let units=equipmentModel?.units { battlePreviewView?.configureEquipment(units) }
         battlePreviewView?.setActive(active)
         battlePreviewButton.isHidden = active
         shadowLabButton.isHidden = active
@@ -651,6 +687,7 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
         discoveryLabel.isHidden = active
         if active { gameView.accessibilityLabel = "Meadow Journey 林间地图，显示在左侧；右侧为可交互林地战斗" }
         else { gameView.accessibilityLabel = "林间地图，已选择 P1" }
+        if campaign != nil {refreshCampaignStatus(allowBattleOpen:false)}
         view.setNeedsLayout()
         view.layoutIfNeeded()
         if !active {
@@ -690,12 +727,75 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
     }
 
     @objc private func openMapSettings() {
+        if campaign != nil {
+            do {try saveCampaign();dismiss(animated:true)} catch {showCampaignMessage("保存失败，请稍后重试："+error.localizedDescription)}
+            return
+        }
         if previewMap != nil { dismiss(animated:true);return }
         let settings=MeadowMapSettingsViewController()
         settings.modalPresentationStyle = .fullScreen
         present(settings,animated:true)
     }
 
+    private func configureCampaignControls() {
+        MeadowPreviewPalette.stylePanel(campaignHUD);view.addSubview(campaignHUD)
+        for i in 0..<2 {campaignHUD.addSubview(campaignHealth[i]);campaignHUD.addSubview(campaignAP[i])}
+        for b in [campaignRefill,campaignItems,campaignBattle] {view.addSubview(b)}
+        campaignRefill.addAction(UIAction{[weak self] _ in self?.refillCampaign()},for:.touchUpInside)
+        campaignBattle.addAction(UIAction{[weak self] _ in self?.setBattlePreviewActive(true)},for:.touchUpInside)
+        campaignItems.showsMenuAsPrimaryAction=true
+        NotificationCenter.default.addObserver(self,selector:#selector(backgroundCampaign),name:UIApplication.willResignActiveNotification,object:nil)
+        NotificationCenter.default.addObserver(self,selector:#selector(foregroundCampaign),name:UIApplication.didBecomeActiveNotification,object:nil)
+    }
+    private func showCampaignMessage(_ text:String) {
+        discoveryLabel.text=text;discoveryLabel.alpha=1
+        discoveryLabel.layer.removeAllAnimations()
+        UIView.animate(withDuration:0.5,delay:4,options:[.beginFromCurrentState]){[weak self] in self?.discoveryLabel.alpha=0}
+    }
+    private func saveCampaign()throws {
+        guard let campaign else{return}
+        battlePreviewView?.setActive(false)
+        try campaign.setPaused(true);try campaign.checkpoint(camera:scene.campaignCamera)
+    }
+    @objc private func backgroundCampaign() {guard ready,campaign != nil else{return};do{try saveCampaign()}catch{campaign?.pauseAfterFailure();showCampaignMessage("保存失败："+error.localizedDescription)}}
+    @objc private func foregroundCampaign() {guard ready,campaign != nil else{return};if battlePreviewActive{battlePreviewView?.setActive(true)};refreshCampaignStatus(allowBattleOpen:false)}
+    private func refillCampaign() {
+        guard let campaign else{return}
+        do{try campaign.refillExploration();refreshCampaignStatus();showCampaignMessage("小队行动点已补足")}
+        catch{showCampaignMessage(error.localizedDescription)}
+    }
+    private func refreshCampaignStatus(allowBattleOpen:Bool=true) {
+        guard let campaign else{return}
+        for control in [shadowLabButton,gaitTestButton,battlePreviewButton,p1AppearanceButton] {control.isHidden=true}
+        let state=campaign.engine.state,players=state.players
+        randomMapSummary.text="已探索 \(state.map.revealed.count)/\(state.map.nodes.count) · 金币 \(players.reduce(0){$0+$1.coins}) · 积分 \(players.reduce(0){$0+$1.score})"+(campaign.cleared ? " · 敌人已清理":"")
+        let busy=campaign.travel != nil || state.battle != nil
+        campaignRefill.isEnabled = !busy;campaignItems.isEnabled = !busy
+        campaignBattle.isHidden=state.battle==nil || battlePreviewActive
+        for view in [campaignHUD,campaignRefill,campaignItems,randomMapSummary] {view.isHidden=battlePreviewActive}
+        playButton.isHidden=battlePreviewActive || campaign.travel==nil;resetButton.isHidden=true
+        playButton.isPlaying=campaign.isMoving
+        for i in players.indices {
+            let u=players[i],stats=(try? GameRules.attributes(u,catalog:campaign.engine.catalog)) ?? u.baseAttributes
+            campaignHealth[i].show(u.id.uppercased(),value:u.health,maximum:stats.maximumHealth,color:.systemGreen)
+            campaignAP[i].show(value:u.ap,maximum:max(u.ap,stats.baseAP))
+        }
+        var actions=[UIAction]()
+        let actor=scene.selectedCampaignPlayerID
+        for target in players {
+            for item in ["smallPotion","largePotion","shieldPotion","revivalStone"] {
+                let cmd:GameCommand=item=="revivalStone" ? .rescue(actor:actor,target:target.id):.useItem(actor:actor,item:item,target:target.id)
+                let preview=campaign.engine.preview(cmd),name=(try? campaign.engine.catalog.item(item).name) ?? item
+                let count=state.units[actor]?.inventory[item] ?? 0
+                actions.append(UIAction(title:target.id.uppercased()+" · "+name+" ×\(count)",attributes:preview.allowed ? []:.disabled){[weak self] _ in
+                    do{_ = try campaign.engine.apply(cmd);self?.scene.refreshCampaign();self?.refreshCampaignStatus()}
+                    catch{self?.showCampaignMessage(error.localizedDescription)}
+                })
+            }
+        }
+        campaignItems.menu=UIMenu(title:"由 "+actor.uppercased()+" 使用",children:actions)
+        if ready,allowBattleOpen,state.battle != nil,!battlePreviewActive {setBattlePreviewActive(true)}
+    }
     private func setRenderingPaused(_ paused: Bool) { groundView?.isPaused = paused; gaitView?.isPaused = paused }
     override func viewWillAppear(_ animated: Bool) { super.viewWillAppear(animated); setRenderingPaused(!mapPresented || loadingFailed) }
     override func viewDidDisappear(_ animated: Bool) { super.viewDidDisappear(animated); setRenderingPaused(true) }
@@ -703,6 +803,7 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
     @objc private func tapMap(_ recognizer: UITapGestureRecognizer) { scene.handleTap(inView: recognizer.location(in: gameView)) }
 
     @objc private func reset() {
+        if campaign != nil {refillCampaign();return}
         scene.reset()
         zoomButton.accessibilityValue = "100%"
     }

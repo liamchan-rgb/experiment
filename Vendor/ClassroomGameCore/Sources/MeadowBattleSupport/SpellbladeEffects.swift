@@ -108,7 +108,7 @@ public enum SpellbladeEffects {
         var result=RuneEffectSample()
         guard age>=0,age<action.duration else { return result }
         if action == .dragonFlame { return dragonFlame(age:age,targetIDs:targets.isEmpty ? [target]:targets) }
-        guard action.isRune,let actorFoot=PartyVisual.feet[actor],let targetFoot=PartyVisual.feet[target] else { return result }
+        guard action.isRune,let actorFoot=PartyVisual.foot(actor),let targetFoot=PartyVisual.foot(target) else { return result }
         let hit=action.impact,at=PartyVisual.hitPoint(target:target,weaponID:weaponID),source=PartyPoint(actorFoot.x+42,actorFoot.y-73)
         if action == .runeSlash {
             // Frame 010 begins exactly at the authoritative 1.048s damage receipt.
@@ -126,7 +126,7 @@ public enum SpellbladeEffects {
             return result
         }
         if action == .runeWard {
-            let points=recipients.compactMap { PartyVisual.feet[$0.unitID] }
+            let points=recipients.compactMap { PartyVisual.foot($0.unitID) }
             let node=points.isEmpty ? targetFoot:PartyPoint(points.map(\.x).reduce(0,+)/Double(points.count),points.map(\.y).reduce(0,+)/Double(points.count))
             let center=PartyPoint(node.x,node.y-65)
             result.spriteLayers=authoredFrames(prefix:"MeadowRuneWardCast",elapsed:age,durations:runeWardDurations,center:center,size:270)
@@ -156,7 +156,7 @@ public enum SpellbladeEffects {
         }
         let color="gold"
         for (index,v) in recipients.enumerated() {
-                guard let foot=PartyVisual.feet[v.unitID] else { continue }
+                guard let foot=PartyVisual.foot(v.unitID) else { continue }
                 let chest=PartyPoint(foot.x+5,foot.y-69),build=PartyVisual.smooth(age/hit)
                 let opacity=PartyVisual.smooth(age/0.25)*(1-PartyVisual.smooth((age-hit-0.18)/0.85))
                 let radius=33.0+17.0*build
@@ -196,7 +196,7 @@ public enum SpellbladeEffects {
         let upper=min(19,lower+1),mix=lower==19 ? 0:frameTime/durations[lower]
         let tail=elapsed>sequenceDuration ? 1-PartyVisual.smooth((elapsed-sequenceDuration)/0.15):1
         for (index,id) in targetIDs.enumerated() {
-            guard let foot=PartyVisual.feet[id] else { continue }
+            guard let foot=PartyVisual.foot(id) else { continue }
             let body=PartyVisual.hitPoint(target:id)
             let center=body,spriteSize=280.0
             let lowerWeight=(lower==upper ? 1:1-mix)*tail

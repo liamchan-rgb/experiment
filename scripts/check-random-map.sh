@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 map_root="$(cd "$(dirname "$0")/.." && pwd)"
-map_output="${1:-$map_root/Art/Review/Map/random-map-v3/data}"
+map_output="${1:-$map_root/Art/Review/Map/campaign-v1/map-data}"
 mkdir -p "$map_output"
 map_output="$(cd "$map_output" && pwd)"
 map_swift="${MEADOW_SWIFT:-swift}"

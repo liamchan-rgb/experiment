@@ -59,9 +59,9 @@ struct RoadMotionRegression {
                 "legacy roads retain their original smoothing")
         var simulation = JourneySimulation(network: network)
 
-        require(abs(simulation.travelers[0].speed - HeroFrames.reviewSpeed) < 0.0001,
-                "P1 map travel speed must equal the 120ms preview speed")
-        require(simulation.travelers[1].speed == 38 && simulation.travelers[2].speed == 45,
+        require(abs(simulation.travelers[0].speed - HeroFrames.reviewSpeed * 3) < 0.0001,
+                "P1 map travel speed must be three times the reviewed baseline")
+        require(simulation.travelers[1].speed == 114 && simulation.travelers[2].speed == 135,
                 "P2/P3 speeds must remain unchanged")
 
         let step = HeroFrames.reviewSpeed * CGFloat(layout.reviewFrameMs / 1000)
@@ -120,6 +120,6 @@ struct RoadMotionRegression {
         let renderer = try String(contentsOf: root.appendingPathComponent("Sources/Game/MeadowShadowRenderer.swift"), encoding: .utf8)
         require(renderer.contains("foot = hero.foot") && renderer.contains("heroChanged"),
                 "renderer backdrop invalidation must track hero foot position")
-        print("PASS: production WalkCycle, Trail, TrailNetwork, JourneySimulation; P1 speed=\(HeroFrames.reviewSpeed), pause/reset and four road directions")
+        print("PASS: production WalkCycle, Trail, TrailNetwork, JourneySimulation; P1 speed=\(simulation.travelers[0].speed), pause/reset and four road directions")
     }
 }

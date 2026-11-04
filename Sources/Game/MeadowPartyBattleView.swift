@@ -5,6 +5,10 @@ import MeadowBattleSupport
 /// A real two-player/two-target training encounter backed by the tabletop engine.
 final class MeadowPartyBattleView:UIView {
     var onClose:(()->Void)?
+    var campaignEngine:GameEngine?
+    var onCommit:((OperationReceipt)->Void)?
+    private var decisionTimer:Timer?
+
     private var model:PartyEncounter?
     var loadoutUnits:[String:GameUnit]?
     private var actionPointCapacity:[String:Int]=[:]
@@ -54,7 +58,11 @@ final class MeadowPartyBattleView:UIView {
     required init?(coder:NSCoder) { fatalError("init(coder:) has not been implemented") }
     func setActive(_ value:Bool) {
         active=value
-        if value { restart() } else {
+        decisionTimer?.invalidate();decisionTimer=nil
+        if value {
+            restart()
+            if campaignEngine != nil { decisionTimer=Timer.scheduledTimer(withTimeInterval:0.25,repeats:true) { [weak self] _ in self?.advanceDecisionClock() } }
+        } else {
             generation += 1;scheduled?.cancel();scheduled=nil;model?.cancel();stage.stop();accessory.dismiss()
         }
     }
@@ -68,8 +76,15 @@ final class MeadowPartyBattleView:UIView {
     }
     private func restart() {
         generation += 1;scheduled?.cancel();scheduled=nil;stage.stop();accessory.dismiss()
-        do { model=try PartyEncounter(loadouts:loadoutUnits,playerClassID:playerClassID) } catch { hint.text="演练加载失败：\(error.localizedDescription)";return }
-        friend="p1";foe="m1";actionPointCapacity=[:];apRound=0;stage.start();refresh()
+        do { model = try campaignEngine.map { try PartyEncounter(engine:$0) } ?? PartyEncounter(loadouts:loadoutUnits,playerClassID:playerClassID) } catch { hint.text="演练加载失败：\(error.localizedDescription)";return }
+        friend="p1";foe=model?.monsterIDs.first ?? "m1";actionPointCapacity=[:];apRound=0
+        reset.isHidden=campaignEngine != nil;back.configuration?.title=campaignEngine == nil ? "返回单人":"返回行程"
+        stage.configureMonsters(model?.monsterIDs ?? ["m1","m2"]);stage.start();refresh();scheduleEnemy()
+    }
+    private func advanceDecisionClock() {
+        guard active,campaignEngine != nil,let model,model.pending==nil,!stage.isPlaying,!model.terminal else{return}
+        do {if let receipt=try model.engine.advanceClock(by:0.25){onCommit?(receipt);refresh();scheduleEnemy()}}
+        catch {hint.text="保存失败："+error.localizedDescription;decisionTimer?.invalidate()}
     }
     private func choose(_ id:String) {
         guard model?.pending==nil else { return }
@@ -81,7 +96,7 @@ final class MeadowPartyBattleView:UIView {
         let token=generation;refresh()
         stage.play(intent,before:model.state,confirmed:model.confirmedReceipt,onImpact:{ [weak self] in
             guard let self,self.active,self.generation==token else { return nil }
-            do { return try model.commit(intent.id) }
+            do { let receipt=try model.commit(intent.id);if let receipt{self.onCommit?(receipt)};return receipt }
             catch { self.hint.text=error.localizedDescription;return nil }
         },completion:{ [weak self] in
             guard let self,self.active,self.generation==token else { return }
@@ -104,22 +119,22 @@ final class MeadowPartyBattleView:UIView {
         let nodePlayers=model.state.players.filter { $0.isAlive && $0.nodeID==targetNode }
         let hasSweep=(try? GameRules.skills(actor,catalog:model.engine.catalog).contains("sweep")) ?? false
         let action:PartyAction=hasSweep && nodePlayers.count>1 && model.preview(.sweep,target:target).allowed ? .sweep:.attack
-        guard let intent=model.prepare(action,target:target) else { return }
+        guard let intent=campaignEngine == nil ? model.prepare(action,target:target):model.prepareMonsterStep() else { return }
         let token=generation;refresh()
         stage.play(intent,before:model.state,confirmed:model.confirmedReceipt,onImpact:{ [weak self] in
             guard let self,self.active,self.generation==token else { return nil }
-            do { return try model.commit(intent.id) } catch { self.hint.text=error.localizedDescription;return nil }
+            do { let receipt=try model.commit(intent.id);if let receipt{self.onCommit?(receipt)};return receipt } catch { self.hint.text=error.localizedDescription;return nil }
         },completion:{ [weak self] in guard let self,self.active,self.generation==token else { return };self.refresh();self.scheduleEnemy() })
     }
     private func refresh() {
         guard let model else { return }
         let state=model.state;let current=model.current
-        if state.units[foe]?.isAlive != true,let live=["m1","m2"].first(where:{ state.units[$0]?.isAlive==true }) { foe=live }
+        if state.units[foe]?.isAlive != true,let live=model.monsterIDs.first(where:{ state.units[$0]?.isAlive==true }) { foe=live }
         let busy=stage.isPlaying || model.pending != nil
-        title.text=model.terminal ? (state.players.contains(where: \.isAlive) ? "小队胜利":"小队倒地") : "小队支援 · 第\(model.round)轮"
+        title.text=model.terminal ? (state.players.contains(where: \.isAlive) ? "小队胜利":"小队倒地") : (campaignEngine == nil ? "小队支援":"林地遭遇")+" · 第\(model.round)轮"
         let showing=busy ? (stage.actorInAction ?? model.pending?.actor ?? current):current
         let name=showing.flatMap { state.units[$0]?.name } ?? "演练结束"
-        hint.text=busy ? "\(name) · 动作进行中" : "\(name)行动 · 友方 \(friend.uppercased()) / 敌方 \(foe=="m1" ? "甲":"乙") · 点角色选目标"
+        hint.text=busy ? "\(name) · 动作进行中" : "\(name)行动 · 友方 \(friend.uppercased()) / 敌方 \(model.state.units[foe]?.name ?? foe) · 点角色选目标"
         let displayActor=showing ?? "p1"
         if let unit=state.units[displayActor] {
             let visible=stage.displayedVitals(for:displayActor,health:unit.health,shield:unit.shield)
@@ -134,7 +149,9 @@ final class MeadowPartyBattleView:UIView {
             if let b=unit.damageBuff { buff.show(title:"增伤＋\(b.amount)",detail:"剩余 \(b.roundsLeft) 轮\n普攻和伤害技能生效",symbol:"arrow.up",color:MeadowPreviewPalette.gold) } else { buff.hide() }
             if visible.shield>0 { shieldBuff.show(title:"护盾 · \(visible.shield)",detail:"优先抵挡伤害\n新旧授盾取较高值",symbol:"shield.fill",color:.systemCyan) } else { shieldBuff.hide() }
         }
-        track.show(ids:["p2","p1","m1","m2"],names:["p1":"P1","p2":"P2","m1":"鹿灵甲","m2":"鹿灵乙"],current:showing,done:state.battle?.acted.subtracting(Set([showing ?? ""])) ?? [],down:Set(state.units.values.filter { !$0.isAlive }.map(\.id)))
+        let queue=state.battle?.queue ?? ["p1","p2"]+model.monsterIDs
+        let names=Dictionary(uniqueKeysWithValues:queue.map{($0,state.units[$0]?.name ?? $0)})
+        track.show(ids:queue,names:names,current:showing,done:state.battle?.acted.subtracting(Set([showing ?? ""])) ?? [],down:Set(state.units.values.filter { !$0.isAlive }.map(\.id)))
         stage.show(state,friend:friend,foe:foe,current:current,catalog:model.engine.catalog)
         let actions:[PartyAction]=busy ? showing.map { model.actions(for:$0) } ?? []:model.playerActions()
         if busy { focusedAction=nil }

@@ -10,7 +10,7 @@ let package = Package(name:"ClassroomGameCore",platforms:[.iOS(.v15),.macOS(.v13
     .target(name:"ClassroomGameCore",resources:[.process("Resources")]),
     .target(name:"MeadowWorldSupport",dependencies:["ClassroomGameCore"]),
     .executableTarget(name:"MeadowMapExport",dependencies:["MeadowWorldSupport"],path:"MapTools"),
-    .testTarget(name:"MeadowWorldSupportTests",dependencies:["MeadowWorldSupport","ClassroomGameCore"]),
+    .testTarget(name:"MeadowWorldSupportTests",dependencies:["MeadowWorldSupport","MeadowBattleSupport","ClassroomGameCore"]),
     .target(name:"MeadowBattleSupport",dependencies:["ClassroomGameCore"],resources:[.process("Resources")]),
     .executableTarget(name:"MeadowSupportReviewExport",dependencies:["MeadowBattleSupport","ClassroomGameCore"],path:"Tools"),
     .testTarget(name:"ClassroomGameCoreTests",dependencies:["ClassroomGameCore"]),

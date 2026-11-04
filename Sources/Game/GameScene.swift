@@ -1,7 +1,24 @@
 import SpriteKit
 import Darwin
+import ClassroomGameCore
+import MeadowWorldSupport
 
 final class GameScene: SKScene {
+    var campaign:MeadowCampaignSession?
+    var onCampaignChanged:(()->Void)?
+    var onCampaignError:((String)->Void)?
+    var selectedCampaignPlayerID:String {guard let campaign else{return "p1"};return campaign.playerIDs[min(simulation?.selected ?? 0,campaign.playerIDs.count-1)]}
+    var campaignCamera:MeadowCampaignCamera { .init(x:Double(cameraCenter.x),y:Double(cameraCenter.y),zoom:Double(zoom)) }
+    func refreshCampaign() {
+        guard let campaign,world != nil else{return}
+        for (index,d) in world.definition.discoveries.enumerated() {
+            guard let id=d.nodeID,let node=campaign.engine.state.map.nodes.first(where:{$0.id==id}) else{continue}
+            let cleared=node.rewardCompleted || ((node.kind == .combat || node.kind == .boss) && !campaign.engine.state.units.values.contains{$0.kind == .monster && $0.nodeID==id && $0.isAlive})
+            discoveryNodes[index].children.compactMap{$0 as? SKLabelNode}.first?.text=cleared ? "✓":["combat":"战","boss":"首","reward":"奖","empty":"空"][node.kind.rawValue]
+        }
+        updateActors(before:nil)
+    }
+
     private var world: LivingWorld!
     private var simulation: JourneySimulation!
     private var actors: [SKSpriteNode] = []
@@ -35,7 +52,7 @@ final class GameScene: SKScene {
     private var cameraCenter = CGPoint(x: 640, y: 360)
     private var demoPhase = 0
     private(set) var zoom: CGFloat = 1
-    var isRunning: Bool { gaitTest.map { !$0.paused } ?? simulation?.isPlaying ?? false }
+    var isRunning: Bool { if let campaign{return campaign.isMoving};return gaitTest.map { !$0.paused } ?? simulation?.isPlaying ?? false }
     var shadowReady = false
     var shadowFrames = 0
     var shadowMapSize = 0
@@ -217,10 +234,10 @@ final class GameScene: SKScene {
         if battlePreviewCamera != nil {
             // Crop a useful map window instead of shrinking the whole map into it.
             let reference = referenceViewportSize ?? size
-            baseScale = max(min(reference.width / 1280, reference.height / (world.definition.mapHeight ?? 720)),
+            baseScale = max(min(reference.width / 1280, reference.height / (campaign == nil ? (world.definition.mapHeight ?? 720):720)),
                             max(size.width / bounds.width, size.height / bounds.height))
         } else {
-            baseScale = min(size.width / 1280, size.height / (world.definition.mapHeight ?? 720))
+            baseScale = min(size.width / 1280, size.height / (campaign == nil ? (world.definition.mapHeight ?? 720):720))
         }
         let scale = baseScale * zoom
         let halfWidth = size.width / scale / 2
@@ -256,7 +273,7 @@ final class GameScene: SKScene {
     func beginBattlePreviewCamera() {
         guard world != nil, gaitTest == nil, battlePreviewCamera == nil else { return }
         battlePreviewCamera = (cameraCenter, zoom)
-        cameraCenter = simulation.point(for: simulation.selected)
+        cameraCenter = actorPoint(simulation.selected)
         layoutWorld()
         publishDiagnostics()
     }
@@ -359,6 +376,11 @@ final class GameScene: SKScene {
         guard world != nil else { return }
         if let gaitTest { setGaitDirection(layeredPreview ? 0 : gaitTest.facing); return }
         simulation.reset()
+        if let campaign {
+            cameraCenter=CGPoint(x:campaign.snapshot.camera?.x ?? campaign.position(of:"p1").x,y:campaign.snapshot.camera?.y ?? campaign.position(of:"p1").y)
+            zoom=CGFloat(campaign.snapshot.camera?.zoom ?? 1);walks=[WalkCycle(),WalkCycle(),WalkCycle()];p1Locomotion.reset()
+            layoutWorld();refreshCampaign();onPlaybackChanged?(campaign.isMoving);return
+        }
         pendingDiscovery = nil
         discovered.removeAll()
         for (index,node) in discoveryNodes.enumerated() {
@@ -394,6 +416,24 @@ final class GameScene: SKScene {
         if gaitTest != nil {
             gaitTest?.advance(delta)
             updateActors(before: nil)
+        } else if let campaign {
+            let previous=actors.indices.map{actorPoint($0)},wasMoving=campaign.isMoving
+            let p1Requested=campaign.isMoving && campaign.travel?.actors.contains("p1")==true
+            if campaign.isMoving && (!p1Requested || p1Locomotion.allowsTravel(requested:true)) {
+                let h=campaign.heading,projection=WalkCycle.projectedScale(dx:CGFloat(h.x),dy:CGFloat(h.y))
+                let speed=(campaign.travel?.actors.compactMap{campaign.playerIDs.firstIndex(of:$0)}.map{JourneySimulation.speed(for:$0)}.min()) ?? JourneySimulation.speed(for:0)
+                do {
+                    let receipts=try campaign.advanceTravel(distance:delta*Double(speed*projection))
+                    if let receipt=receipts.last {
+                        refreshCampaign();onCampaignChanged?()
+                        let coins=receipt.after.players.reduce(0){$0+$1.coins}-receipt.before.players.reduce(0){$0+$1.coins}
+                        if coins>0 {onDiscovery?("小队获得金币 ＋\(coins)")}
+                    }
+                } catch {campaign.pauseAfterFailure();onCampaignError?(error.localizedDescription)}
+            }
+            destinationRing.isHidden=campaign.travel==nil
+            updateActors(before:previous,seconds:delta)
+            if wasMoving != campaign.isMoving {onPlaybackChanged?(campaign.isMoving);onCampaignChanged?()}
         } else {
             let previous = actors.indices.map { simulation.point(for: $0) }
             let wasPlaying = simulation.isPlaying
@@ -425,7 +465,7 @@ final class GameScene: SKScene {
 
     func metalFrame(viewSize: CGSize) -> MeadowFrameState? {
         guard let world, simulation != nil else { return nil }
-        let heroIndices = layeredPreview ? [0, 1] : Array(actors.indices)
+        let heroIndices = campaign != nil ? Array(0..<campaign!.playerIDs.count):(layeredPreview ? [0, 1] : Array(actors.indices))
         let heroes = heroIndices.map { index -> MeadowHeroCaster in
             let pose = actorPose(index)
             return MeadowHeroCaster(index: layeredPreview ? 0 : index, foot: actorPoint(index), facing: pose.facing,
@@ -434,7 +474,10 @@ final class GameScene: SKScene {
         return MeadowFrameState(world: world, camera: MeadowViewport(world: world, scene: self, viewSize: viewSize), time: environmentTime, heroes: heroes, includeEnvironment: gaitTest == nil)
     }
 
-    private func actorPoint(_ index: Int) -> CGPoint { gaitTest?.point(for: index) ?? simulation.point(for: index) }
+    private func actorPoint(_ index: Int) -> CGPoint {
+        if let campaign,index<campaign.playerIDs.count {let p=campaign.position(of:campaign.playerIDs[index]);return CGPoint(x:p.x+Double(index==0 ? -10:10),y:p.y)}
+        return gaitTest?.point(for:index) ?? simulation.point(for:index)
+    }
     private func actorPose(_ index: Int) -> HeroPose {
         let modular = index == 0 && HeroFrames.locomotionPlan != nil
         return HeroPose(heroIndex: layeredPreview && index < 2 ? 0 : index,
@@ -450,13 +493,14 @@ final class GameScene: SKScene {
                 walks[index].advance(from: before[index], to: point)
                 if index == 0 {
                     p1Locomotion.advance(from: before[index], to: point, seconds: seconds,
-                        requested: simulation.isPlaying && !simulation.travelers[0].isWaiting,
-                        headingHint: simulation.heading(for: 0))
+                        requested: campaign.map{$0.isMoving && $0.travel?.actors.contains("p1")==true} ?? (simulation.isPlaying && !simulation.travelers[0].isWaiting),
+                        headingHint: campaign.map{CGPoint(x:$0.heading.x,y:$0.heading.y)} ?? simulation.heading(for:0))
                 }
             }
             let pose = actorPose(index)
-            let visible = !layeredPreview || index < 2
+            let visible = campaign != nil ? index<campaign!.playerIDs.count:(!layeredPreview || index < 2)
             actors[index].isHidden = !visible
+            if let campaign,index<campaign.playerIDs.count {actors[index].alpha=campaign.engine.state.units[campaign.playerIDs[index]]?.isAlive==true ? 1:0.35}
             actorLabels[index].isHidden = !visible
             let gait = SIMD2(Float(pose.facing), Float(pose.frame))
             let texture: SKTexture
@@ -481,6 +525,17 @@ final class GameScene: SKScene {
     }
 
     private func order(to point: CGPoint, discovery: Int? = nil) {
+        if let campaign {
+            let nearest=campaign.engine.state.map.nodes.min{a,b in hypot(a.x*1280-point.x,a.y*campaign.snapshot.layout.coordinateHeight-point.y)<hypot(b.x*1280-point.x,b.y*campaign.snapshot.layout.coordinateHeight-point.y)}
+            guard let target=discovery.flatMap({world.definition.discoveries[$0].nodeID}) ?? nearest?.id else{return}
+            let position=campaign.point(at:target)
+            guard discovery != nil || hypot(position.x-point.x,position.y-point.y)<48 else{onDiscovery?("点击建筑选择目的地");return}
+            let actor=campaign.playerIDs[min(simulation.selected,campaign.playerIDs.count-1)]
+            if campaign.engine.state.units[actor]?.nodeID==target {onDiscovery?(campaign.engine.state.map.nodes.first{$0.id==target}!.name);return}
+            do {let plan=try campaign.beginTravel(to:target,actor:actor);destinationRing.position=LivingWorld.position(CGPoint(x:position.x,y:position.y));destinationRing.isHidden=false;onDiscovery?(plan.message);onPlaybackChanged?(true);onCampaignChanged?()}
+            catch {onCampaignError?(error.localizedDescription)}
+            return
+        }
         simulation.orderSelected(to: point)
         pendingDiscovery = discovery
         selectionRing.isHidden = false
@@ -525,7 +580,7 @@ final class GameScene: SKScene {
     }
 
     private func handleWorldTap(_ location: CGPoint) {
-        if let index = actorRoots.indices.min(by: {
+        if let index = actorRoots.indices.filter({campaign == nil || $0<campaign!.playerIDs.count}).min(by: {
             hypot(actorRoots[$0].position.x - location.x, actorRoots[$0].position.y + 17 - location.y) <
             hypot(actorRoots[$1].position.x - location.x, actorRoots[$1].position.y + 17 - location.y)
         }), hypot(actorRoots[index].position.x - location.x, actorRoots[index].position.y + 17 - location.y) < 30 {

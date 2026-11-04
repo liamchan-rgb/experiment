@@ -1,6 +1,8 @@
 import Foundation
 
 struct JourneySimulation {
+    static let movementSpeedMultiplier: CGFloat = 3
+    static func speed(for index:Int)->CGFloat { (index==0 ? HeroFrames.reviewSpeed:index==1 ? 38:45)*movementSpeedMultiplier }
     enum Mode { case patrol, destination }
     let network: TrailNetwork
     private let spawn: CGPoint?
@@ -29,9 +31,9 @@ struct JourneySimulation {
     mutating func reset() {
         routes = Array(repeating: network.patrol, count: 3)
         travelers = [
-            Traveler(distance: network.patrol.distance(nearestTo: CGPoint(x: 440, y: 444)), direction: 1, speed: HeroFrames.reviewSpeed),
-            Traveler(distance: network.patrol.length, direction: -1, speed: 38),
-            Traveler(distance: network.patrol.distance(nearestTo: CGPoint(x: 560, y: 441)), direction: 1, speed: 45)
+            Traveler(distance: network.patrol.distance(nearestTo: CGPoint(x: 440, y: 444)), direction: 1, speed: Self.speed(for:0)),
+            Traveler(distance: network.patrol.length, direction: -1, speed: Self.speed(for:1)),
+            Traveler(distance: network.patrol.distance(nearestTo: CGPoint(x: 560, y: 441)), direction: 1, speed: Self.speed(for:2))
         ]
         if let spawn {
             let start = network.patrol.distance(nearestTo: spawn)

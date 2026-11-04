@@ -8,6 +8,8 @@ final class MeadowPartyStageView:UIView {
     private let world=UIView(),dim=UIView()
     private let clock=MeadowBattleSceneClock()
     private let fx=MeadowPartyEffectsView()
+    private var monsterIDs=["m1","m2"]
+    private var renderIDs:[String] {["p1","p2"]+monsterIDs}
     private var actors:[String:MeadowBattleActorView]=[:]
     private let afterimages=(0..<3).map { _ in UIImageView() }
     private var monsters:[String:UIImageView]=[:],winds:[String:UIImageView]=[:]
@@ -53,28 +55,38 @@ final class MeadowPartyStageView:UIView {
             view.layer.zPosition=i==3 ? 900:CGFloat(-100+i);world.addSubview(view)
         }
         dim.backgroundColor = .black;dim.frame=CGRect(x:0,y:-500,width:1000,height:1600);dim.layer.zPosition=100;dim.isUserInteractionEnabled=false;world.addSubview(dim)
-        for id in ["p1","p2","m1","m2"] {
-            let shadow:MeadowBattleGroundingView
-            if id.hasPrefix("p") {
-                let actor=MeadowBattleActorView(frame:.zero);actors[id]=actor;world.addSubview(actor)
-                let skills=MeadowBattleAttachedSkillsView(frame:.zero);actor.addSubview(skills);attached[id]=skills
-                shadow=MeadowBattleGroundingView(image:actor.silhouette,soleY:214,contacts:[])
-                actor.addGestureRecognizer(UITapGestureRecognizer(target:self,action:#selector(tapped(_:))));actor.accessibilityIdentifier=id
-            } else {
-                let image=UIImage(named:"MeadowBattleForestWarden")
-                let view=UIImageView(image:image);monsters[id]=view;view.isUserInteractionEnabled=true;view.layer.magnificationFilter = .nearest
-                let flash=UIImageView();flash.isUserInteractionEnabled=false;flash.layer.magnificationFilter = .nearest;monsterFlash[id]=flash;world.addSubview(flash)
-                world.addSubview(view);view.accessibilityIdentifier=id;view.addGestureRecognizer(UITapGestureRecognizer(target:self,action:#selector(tapped(_:))))
-                let wind=UIImageView();wind.layer.magnificationFilter = .nearest;wind.layer.zPosition=950;winds[id]=wind;world.addSubview(wind)
-                shadow=MeadowBattleGroundingView(image:image,soleY:240,contacts:[.init(point:CGPoint(x:84,y:240),radius:15),.init(point:CGPoint(x:172,y:240),radius:15),.init(point:CGPoint(x:230,y:240),radius:15),.init(point:CGPoint(x:314,y:240),radius:15)])
-            }
-            shadows[id]=shadow;shadow.layer.zPosition=200;shadow.frame=world.bounds;world.addSubview(shadow)
-            let label=MeadowBattleVitalsView();label.layer.zPosition=1100;labels[id]=label;world.addSubview(label)
-        }
+        for id in renderIDs { installUnit(id) }
         diceView.layer.zPosition=1200;world.addSubview(diceView)
         for ghost in afterimages { ghost.isHidden=true;ghost.isUserInteractionEnabled=false;ghost.layer.magnificationFilter = .nearest;world.addSubview(ghost) }
         fx.frame=world.bounds;fx.layer.zPosition=1000;world.addSubview(fx)
         clock.onTick={ [weak self] delta in self?.advance(delta) }
+    }
+    private func installUnit(_ id:String) {
+        let shadow:MeadowBattleGroundingView
+        if id.hasPrefix("p") {
+            let actor=MeadowBattleActorView(frame:.zero);actors[id]=actor;world.addSubview(actor)
+            let skills=MeadowBattleAttachedSkillsView(frame:.zero);actor.addSubview(skills);attached[id]=skills
+            shadow=MeadowBattleGroundingView(image:actor.silhouette,soleY:214,contacts:[])
+            actor.addGestureRecognizer(UITapGestureRecognizer(target:self,action:#selector(tapped(_:))));actor.accessibilityIdentifier=id
+        } else {
+            let image=UIImage(named:"MeadowBattleForestWarden")
+            let view=UIImageView(image:image);monsters[id]=view;view.isUserInteractionEnabled=true;view.layer.magnificationFilter = .nearest
+            let flash=UIImageView();flash.isUserInteractionEnabled=false;flash.layer.magnificationFilter = .nearest;monsterFlash[id]=flash;world.addSubview(flash)
+            world.addSubview(view);view.accessibilityIdentifier=id;view.addGestureRecognizer(UITapGestureRecognizer(target:self,action:#selector(tapped(_:))))
+            let wind=UIImageView();wind.layer.magnificationFilter = .nearest;wind.layer.zPosition=950;winds[id]=wind;world.addSubview(wind)
+            shadow=MeadowBattleGroundingView(image:image,soleY:240,contacts:[.init(point:CGPoint(x:84,y:240),radius:15),.init(point:CGPoint(x:172,y:240),radius:15),.init(point:CGPoint(x:230,y:240),radius:15),.init(point:CGPoint(x:314,y:240),radius:15)])
+        }
+        shadows[id]=shadow;shadow.layer.zPosition=200;shadow.frame=world.bounds;world.addSubview(shadow)
+        let label=MeadowBattleVitalsView();label.layer.zPosition=1100;labels[id]=label;world.addSubview(label)
+    
+    }
+    func configureMonsters(_ ids:[String]) {
+        guard ids != monsterIDs else{return}
+        for id in monsterIDs {
+            monsters.removeValue(forKey:id)?.removeFromSuperview();winds.removeValue(forKey:id)?.removeFromSuperview()
+            monsterFlash.removeValue(forKey:id)?.removeFromSuperview();shadows.removeValue(forKey:id)?.removeFromSuperview();labels.removeValue(forKey:id)?.removeFromSuperview()
+        }
+        monsterIDs=ids;for id in ids {installUnit(id)}
     }
     required init?(coder:NSCoder) { fatalError("init(coder:) has not been implemented") }
     @objc private func tapped(_ r:UITapGestureRecognizer) { if !isPlaying,let id=r.view?.accessibilityIdentifier { onChoose?(id) } }
@@ -83,6 +95,10 @@ final class MeadowPartyStageView:UIView {
     func displayedVitals(for unitID:String,health:Int,shield:Int)->(health:Int,shield:Int) { statusSnapshots[unitID] ?? (health,shield) }
     func show(_ value:GameState,friend:String,foe:String,current:String?,catalog:GameCatalog) {
         state=value;self.current=current;self.catalog=catalog;fx.friend=friend;fx.foe=foe
+        for id in renderIDs where value.units[id]?.isAlive==false {
+            if id.hasPrefix("m"),deaths[id]==nil {deaths[id]=sceneTime-MeadowBattleVisualMotion.deathDuration}
+            if id.hasPrefix("p"),fallen[id]==nil {fallen[id]=sceneTime-2}
+        }
         for (id,label) in labels {
             guard let u=value.units[id] else { continue }
             let visible=displayedVitals(for:id,health:u.health,shield:u.shield)
@@ -115,8 +131,8 @@ final class MeadowPartyStageView:UIView {
         intent=value;state=before;startAt=sceneTime;self.impact=onImpact;self.completion=completion;fired=false;focus=nil;meetsShield=(before.units[value.target]?.shield ?? 0)>0
         if let spec=value.action.skillVFX {
             let hitAge=value.enemy ? 0.46:value.action.impact
-            let groundYs=value.targets.compactMap { PartyVisual.feet[$0]?.y }
-            let groundY=groundYs.isEmpty ? (PartyVisual.feet[value.actor]?.y ?? PartyVisual.height):groundYs.reduce(0,+)/Double(groundYs.count)
+            let groundYs=value.targets.compactMap { PartyVisual.foot($0)?.y }
+            let groundY=groundYs.isEmpty ? (PartyVisual.foot(value.actor)?.y ?? PartyVisual.height):groundYs.reduce(0,+)/Double(groundYs.count)
             skillVFX.append(MeadowPartySkillVFXEvent(spec:spec,startedAt:spec.startTime(actionStart:sceneTime,impactAge:hitAge),center:PartyVisual.skillEffectCenter(targets:value.targets,actor:value.actor),groundY:groundY))
         }
         let delayed=sceneTime+max(0,value.action.impact-0.46)
@@ -156,8 +172,8 @@ final class MeadowPartyStageView:UIView {
         if let actor=receipt.before.units[intent.actor],let target=receipt.before.units[intent.target],let catalog {
             diceView.dice=BattleDice.channels(intent.action,actor:actor,target:target,catalog:catalog,receipt:receipt);diceSettledAt=sceneTime
         }
-        for id in ["p1","p2","m1","m2"] {
-            guard let before=receipt.before.units[id],let after=receipt.after.units[id],let foot=PartyVisual.feet[id] else { continue }
+        for id in renderIDs {
+            guard let before=receipt.before.units[id],let after=receipt.after.units[id],let foot=PartyVisual.foot(id) else { continue }
             let heal=max(0,after.health-before.health),damage=max(0,before.health-after.health),gain=max(0,after.shield-before.shield),absorbed=max(0,before.shield-after.shield)
             let shieldHit=absorbed>0 && id.hasPrefix("p")
             let statusAt=startAt+(intent.action.statusVFXCueAge ?? intent.action.impact)
@@ -214,13 +230,13 @@ final class MeadowPartyStageView:UIView {
         let age=sceneTime-startAt;let moving=PartyVisual.travel(intent,age:age,shielded:meetsShield)
         let trails=PartyVisual.afterimages(intent,age:age)
         for (i,ghost) in afterimages.enumerated() {
-            guard i<trails.count,let intent,let actor=actors[intent.actor],let foot=PartyVisual.feet[intent.actor] else { ghost.isHidden=true;continue }
+            guard i<trails.count,let intent,let actor=actors[intent.actor],let foot=PartyVisual.foot(intent.actor) else { ghost.isHidden=true;continue }
             let trail=trails[i],pose=MeadowBattleAnimation.sample(clip:"attack",progress:CGFloat(trail.progress)),s=PartyVisual.heroScale
             ghost.image=actor.trailImage(progress:CGFloat(trail.progress));ghost.alpha=trail.alpha;ghost.isHidden=false;ghost.layer.zPosition=foot.y-1
             ghost.frame=CGRect(x:foot.x+trail.offset.x+(Double(pose.rootOffset.x)-123)*s,y:foot.y+trail.offset.y+(Double(pose.rootOffset.y)-214)*s,width:256*s,height:256*s)
         }
-        for id in ["p1","p2","m1","m2"] {
-            guard let unit=state.units[id],let f=PartyVisual.feet[id] else { continue }
+        for id in renderIDs {
+            guard let unit=state.units[id],let f=PartyVisual.foot(id) else { continue }
             let shownVitals=displayedVitals(for:id,health:unit.health,shield:unit.shield)
             labels[id]?.isHidden=unit.kind == .monster && !unit.isAlive
             let offset=intent?.actor==id ? moving:PartyPoint(0,0)
@@ -245,13 +261,14 @@ final class MeadowPartyStageView:UIView {
                 view.frame=CGRect(x:foot.x-178.5*s,y:foot.y-240*s,width:384*s,height:256*s);view.layer.zPosition=CGFloat(f.y)
                 monsterFlash[id]?.alpha=0
                 if let at=deaths[id] {
-                    let d=sceneTime-at;view.image=MeadowBattleVFXAssets.body[MeadowBattleVisualMotion.bodyFrame(d)]
+                    let d=sceneTime-at;view.isHidden=d>=MeadowBattleVisualMotion.deathDuration;view.image=MeadowBattleVFXAssets.body[MeadowBattleVisualMotion.bodyFrame(d)]
                     winds[id]?.image=MeadowBattleVFXAssets.wind[MeadowBattleVisualMotion.windFrame(d)]
                     winds[id]?.frame=CGRect(x:CGFloat(f.x)-178.5*s,y:CGFloat(f.y)-272*s,width:448*s,height:320*s)
                     winds[id]?.isHidden=d>=MeadowBattleVisualMotion.deathDuration
                     shadows[id]?.alpha=CGFloat(1-PartyVisual.smooth(d/0.75))
                 } else {
-                    let motion=PartyVisual.monster(time:sceneTime+(id=="m2" ? 0.7:0),attackAge:intent?.actor==id ? age:nil,hurtAge:hurt[id].map { sceneTime-$0 },preparing:current==id && intent==nil)
+                    view.isHidden=false
+                    let motion=PartyVisual.monster(time:sceneTime+(PartyVisual.slot(id)=="m2" ? 0.7:0),attackAge:intent?.actor==id && intent?.action.isOffensive==true ? age:nil,hurtAge:hurt[id].map { sceneTime-$0 },preparing:current==id && intent==nil)
                     let p=motion.progress
                     view.frame=CGRect(x:foot.x-178.5*s+motion.recoil,y:foot.y-240*s*motion.scaleY,width:384*s,height:256*s*motion.scaleY)
                     view.image=MeadowBattleEnemyFrames.image(progress:CGFloat(p));winds[id]?.isHidden=true;shadows[id]?.alpha=1
@@ -275,10 +292,14 @@ final class MeadowPartyStageView:UIView {
         diceView.resolvedAge=diceSettledAt.map { sceneTime-$0 };diceView.exitAge=diceExitAt.map { sceneTime-$0 };diceView.setNeedsDisplay()
         fx.naturalTwenty=naturalTwenty;fx.intent=intent;fx.meetsShield=meetsShield;fx.age=age;fx.time=sceneTime;fx.focus=focus;fx.focusTarget=focusTarget
         fx.messages=messages;fx.skillEffects=skillVFX;fx.particles=emissions.flatMap { e in MeadowBattleLightField.sample(e.kind,age:sceneTime-e.startedAt,originX:e.x,originY:e.y,groundY:e.groundY) }
-        fx.recoveryLights=state.players.compactMap { unit in
-            guard unit.isAlive,let at=recovery[unit.id],let foot=PartyVisual.feet[unit.id] else { return nil }
+        fx.recoveryLights=state.units.values.filter{renderIDs.contains($0.id)}.compactMap { unit in
+            guard unit.isAlive,let at=recovery[unit.id],let foot=PartyVisual.foot(unit.id) else { return nil }
             let power=recoveryTier[unit.id]?.lightEnvelope(at:sceneTime-at) ?? 0,shift=intent?.actor==unit.id ? moving:PartyPoint(0,0)
             return (PartyPoint(foot.x+shift.x,foot.y+shift.y),power)
+        }
+        fx.monsterRecoveries=monsterIDs.compactMap {id in
+            guard state.units[id]?.isAlive==true,let at=recovery[id],let tier=recoveryTier[id],let foot=PartyVisual.foot(id) else{return nil}
+            return (foot,tier,sceneTime-at)
         }
         if let intent,(intent.action.isRune || intent.action == .dragonFlame),let catalog {
             fx.runes=SpellbladeEffects.sample(action:intent.action,age:age,actor:intent.actor,target:intent.target,recipients:SpellbladeEffects.recipients(intent,catalog:catalog),weaponID:intent.weaponID,targets:intent.targets)
@@ -301,6 +322,7 @@ private final class MeadowPartyEffectsView:UIView {
     var particles:[MeadowBattleLightParticle]=[]
     var skillEffects:[MeadowPartySkillVFXEvent]=[]
     var recoveryLights:[(PartyPoint,Double)]=[]
+    var monsterRecoveries:[(PartyPoint,HealingEffectTier,Double)]=[]
     override init(frame:CGRect) { super.init(frame:frame);isOpaque=false;isUserInteractionEnabled=false }
     required init?(coder:NSCoder) { fatalError("init(coder:) has not been implemented") }
     override func draw(_ rect:CGRect) {
@@ -308,9 +330,16 @@ private final class MeadowPartyEffectsView:UIView {
         func sprite(_ im:UIImage,_ p:PartyPoint,_ w:Double,_ h:Double,_ alpha:Double) { guard alpha>0 else { return };im.draw(in:CGRect(x:p.x-w/2,y:p.y-h/2,width:w,height:h),blendMode:.plusLighter,alpha:CGFloat(alpha)) }
         func glow(_ p:PartyPoint,_ rx:Double,_ ry:Double,_ alpha:Double,_ color:UIColor) { guard alpha>0 else { return };MeadowBattleGlowCache.image(color).draw(in:CGRect(x:p.x-rx,y:p.y-ry,width:rx*2,height:ry*2),blendMode:.plusLighter,alpha:CGFloat(alpha)) }
         for (foot,power) in recoveryLights { glow(foot,105,27,power*0.65,.systemGreen);glow(PartyPoint(foot.x,foot.y-70),42,85,power*0.12,.systemGreen) }
+        for (foot,tier,age) in monsterRecoveries {
+            guard let blend=tier.frameBlend(at:age) else{continue}
+            let frames=MeadowBattleVFXAssets.healingFrames(for:tier),w=320.0,h=tier == .standard ? 267.0:320.0
+            let box=CGRect(x:foot.x-w/2,y:foot.y-h*tier.canvasGroundAnchorY,width:w,height:h)
+            frames[blend.lower].draw(in:box,blendMode:.plusLighter,alpha:CGFloat(1-blend.upperWeight))
+            if blend.upper != blend.lower {frames[blend.upper].draw(in:box,blendMode:.plusLighter,alpha:CGFloat(blend.upperWeight))}
+        }
         if intent==nil {
             for (id,color) in [(friend,UIColor.systemGreen),(foe,MeadowPreviewPalette.gold)] {
-                if let p=PartyVisual.feet[id] { ctx.setStrokeColor(color.withAlphaComponent(0.65).cgColor);ctx.setLineWidth(2);ctx.strokeEllipse(in:CGRect(x:p.x-36,y:p.y-7,width:72,height:14)) }
+                if let p=PartyVisual.foot(id) { ctx.setStrokeColor(color.withAlphaComponent(0.65).cgColor);ctx.setLineWidth(2);ctx.strokeEllipse(in:CGRect(x:p.x-36,y:p.y-7,width:72,height:14)) }
             }
         }
         if let intent {
@@ -323,13 +352,13 @@ private final class MeadowPartyEffectsView:UIView {
                 UIColor.systemGreen.withAlphaComponent(CGFloat(alpha*0.25)).setStroke();path.lineWidth=8;path.stroke();MeadowPreviewPalette.gold.withAlphaComponent(CGFloat(alpha*0.8)).setStroke();path.lineWidth=2;path.stroke();ctx.restoreGState()
                 for p in PartyVisual.trail(age:age,from:from,to:to) { sprite(MeadowBattleVFXAssets.healStar,PartyPoint(p.x,p.y),p.size,p.size,p.alpha) }
                 let power=PartyVisual.pulse(age,0,0.56,1.5)
-                if let foot=PartyVisual.feet[intent.target] { glow(foot,110,26,power*0.5,.systemGreen) }
+                if let foot=PartyVisual.foot(intent.target) { glow(foot,110,26,power*0.5,.systemGreen) }
             }
-            if intent.action.isItem,age<intent.action.impact,let foot=PartyVisual.feet[intent.target] {
+            if intent.action.isItem,age<intent.action.impact,let foot=PartyVisual.foot(intent.target) {
                 let name="MeadowParty"+intent.action.rawValue.prefix(1).uppercased()+intent.action.rawValue.dropFirst()
                 if let image=UIImage(named:name) { sprite(image,PartyPoint(foot.x,foot.y-130-age*15),38,38,PartyVisual.pulse(age,0,0.25,0.85)) }
             }
-            if intent.ranged,let foot=PartyVisual.feet[intent.actor] {
+            if intent.ranged,let foot=PartyVisual.foot(intent.actor) {
                 let tip=BowRig.releaseArrowTip
                 let from=PartyPoint(foot.x+(tip.x-123)*PartyVisual.heroScale,foot.y+(tip.y-214)*PartyVisual.heroScale)
                 let to=PartyVisual.hitPoint(target:intent.target,shielded:meetsShield)
@@ -343,7 +372,7 @@ private final class MeadowPartyEffectsView:UIView {
                     ctx.move(to:CGPoint(x:a.x,y:a.y));ctx.addLine(to:CGPoint(x:b.x,y:b.y));ctx.strokePath();ctx.restoreGState()
                 }
             }
-            if intent.weaponID=="greatSword",!intent.enemy,visual=="attack",let from=PartyVisual.feet[intent.actor] {
+            if intent.weaponID=="greatSword",!intent.enemy,visual=="attack",let from=PartyVisual.foot(intent.actor) {
                 let points=GreatSwordRig.trail(age:age,from:from,to:PartyVisual.hitPoint(target:intent.target,shielded:meetsShield,weaponID:intent.weaponID),scale:PartyVisual.heroScale)
                 if points.count>1 {
                     let power=PartyVisual.pulse(GreatSwordRig.artTime(age:age),0.86,1.0275,1.20)
@@ -355,11 +384,11 @@ private final class MeadowPartyEffectsView:UIView {
                     };ctx.restoreGState()
                 }
             }
-            if intent.magical,let foot=PartyVisual.feet[intent.actor],let targetFoot=PartyVisual.feet[intent.target] {
+            if intent.magical,let foot=PartyVisual.foot(intent.actor),let targetFoot=PartyVisual.foot(intent.target) {
                 let sample=LegendaryStaffRig.effect(age:age,foot:foot,target:PartyVisual.hitPoint(target:intent.target,shielded:meetsShield,weaponID:intent.weaponID),groundY:targetFoot.y,scale:PartyVisual.heroScale,naturalTwenty:naturalTwenty)
                 MeadowStaffEffectPainter.draw(sample,in:ctx)
             }
-            if visual=="attack",intent.action.skillVFX == nil,!intent.magical,let foot=PartyVisual.feet[intent.target] {
+            if visual=="attack",intent.action.skillVFX == nil,!intent.magical,let foot=PartyVisual.foot(intent.target) {
                 let a=age-(intent.enemy ? 0.46:1.048),p=PartyVisual.hitPoint(target:intent.target,shielded:meetsShield,weaponID:intent.weaponID)
                 let power=PartyVisual.pulse(a,-0.035,0.035,0.52)
                 glow(p,140,140,power*0.48,.orange);glow(foot,170,30,power*0.65,.orange)
@@ -368,7 +397,7 @@ private final class MeadowPartyEffectsView:UIView {
                     if !intent.enemy && !intent.ranged { sprite(MeadowBattleVFXAssets.heavyArc,p,210+a*240,210+a*240,power*0.9) }
                 }
             }
-            if visual=="ambush",let foot=PartyVisual.feet[intent.target] {
+            if visual=="ambush",let foot=PartyVisual.foot(intent.target) {
                 let at=PartyPoint(foot.x-80,foot.y-72),power=PartyVisual.pulse(age,0.72,0.755,1.14)
                 glow(at,128,115,power*0.52,.systemYellow);glow(foot,170,27,power*0.70,.systemGreen)
                 sprite(MeadowBattleVFXAssets.burst,at,130,130,power*0.72)
@@ -421,7 +450,7 @@ private final class MeadowPartyEffectsView:UIView {
             let attrs:[NSAttributedString.Key:Any]=[.font:MeadowPreviewPalette.font(24,.heavy),.foregroundColor:m.color.withAlphaComponent(CGFloat(alpha)),.strokeColor:UIColor.black.withAlphaComponent(CGFloat(alpha)),.strokeWidth:-3]
             let label=NSAttributedString(string:m.text,attributes:attrs),size=label.size()
             let p:PartyPoint
-            if let id=m.supportUnit,let foot=PartyVisual.feet[id] { p=PartyVisual.supportLabelOrigin(at:foot,width:size.width,line:m.supportLine,age:age) }
+            if let id=m.supportUnit,let foot=PartyVisual.foot(id) { p=PartyVisual.supportLabelOrigin(at:foot,width:size.width,line:m.supportLine,age:age) }
             else { p=m.atImpact ? PartyVisual.damageLabelOrigin(at:PartyPoint(m.point.x,m.point.y),width:size.width,height:size.height,age:age):PartyPoint(m.point.x+90,m.point.y-55-age*26) }
             label.draw(at:CGPoint(x:p.x,y:p.y))
         }

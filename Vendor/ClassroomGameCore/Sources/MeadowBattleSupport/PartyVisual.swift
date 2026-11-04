@@ -40,21 +40,25 @@ public struct PartySkillVFXSpec:Codable,Equatable,Identifiable {
 }
 public enum PartyVisual {
     public static let width=1000.0,height=600.0,heroScale=0.83,enemyScale=0.82
+    public static func slot(_ id:String)->String {
+        if id.hasPrefix("m-") {return id.hasSuffix("-2") ? "m2":"m1"};return id
+    }
+    public static func foot(_ id:String)->PartyPoint? {feet[slot(id)]}
     public static let feet:[String:PartyPoint]=["p1":PartyPoint(165,420),"p2":PartyPoint(315,505),"m1":PartyPoint(650,395),"m2":PartyPoint(835,510)]
     public static func smooth(_ x:Double)->Double { let t=min(1,max(0,x));return t*t*(3-2*t) }
     public static func pulse(_ age:Double,_ start:Double,_ peak:Double,_ end:Double)->Double { age<peak ? smooth((age-start)/(peak-start)):1-smooth((age-peak)/(end-peak)) }
-    public static func chest(_ id:String)->PartyPoint { let p=feet[id]!;return PartyPoint(p.x+5*heroScale,p.y-70*heroScale) }
+    public static func chest(_ id:String)->PartyPoint { let p=foot(id)!;return PartyPoint(p.x+5*heroScale,p.y-70*heroScale) }
     public static func skillEffectCenter(targets:[String],actor:String)->PartyPoint {
         let points=targets.compactMap { id -> PartyPoint? in
-            guard let foot=feet[id] else { return nil }
+            guard let foot=foot(id) else { return nil }
             let monster=id.hasPrefix("m")
             return PartyPoint(foot.x+(monster ? 13.5*enemyScale:5*heroScale),foot.y-(monster ? 112*enemyScale:86*heroScale))
         }
-        guard !points.isEmpty else { return feet[actor].map { PartyPoint($0.x,$0.y-70*heroScale) } ?? PartyPoint(width/2,height/2) }
+        guard !points.isEmpty else { return foot(actor).map { PartyPoint($0.x,$0.y-70*heroScale) } ?? PartyPoint(width/2,height/2) }
         return PartyPoint(points.reduce(0){$0+$1.x}/Double(points.count),points.reduce(0){$0+$1.y}/Double(points.count))
     }
     public static func hitPoint(target:String,shielded:Bool=false,weaponID:String?=nil)->PartyPoint {
-        let foot=feet[target]!
+        let foot=foot(target)!
         if ["greatSword","legendaryStaff"].contains(weaponID ?? ""),target.hasPrefix("m") { return PartyPoint(foot.x+(94-178.5)*enemyScale,foot.y+(152-240)*enemyScale) }
         return PartyPoint(foot.x+(target.hasPrefix("m") ? -80:shielded ? (5+240*0.41)*heroScale:10),foot.y-(target.hasPrefix("m") ? 72:65))
     }
@@ -112,7 +116,7 @@ public enum PartyVisual {
         }
     }
     public static func travel(_ intent:PartyIntent?,age:Double,shielded:Bool=false)->PartyPoint {
-        guard let intent,intent.action.isOffensive,let from=feet[intent.actor],let to=feet[intent.target] else { return PartyPoint(0,0) }
+        guard let intent,intent.action.isOffensive,let from=foot(intent.actor),let to=foot(intent.target) else { return PartyPoint(0,0) }
         if intent.action == .dragonFlame { return PartyPoint(0,0) }
         if intent.action == .runeSlash {
             let approach=smooth(age/0.82),retreat=1-smooth((age-1.25)/0.52),p=min(approach,retreat)

@@ -1,7 +1,9 @@
 import UIKit
 import MeadowWorldSupport
+import MeadowBattleSupport
+import ClassroomGameCore
 
-/// Preparation/preview only; generated places do not spend AP or grant rewards.
+/// Configure a map, inspect its scenery, or create/resume a persistent expedition.
 final class MeadowMapSettingsViewController: UIViewController {
     private let fields = ["总节点数","普通战斗","Boss","奖励","空地点","额外道路","随机种子"]
     private var inputs: [UITextField] = []
@@ -11,6 +13,8 @@ final class MeadowMapSettingsViewController: UIViewController {
     private let generateButton = UIButton(type:.system)
     private let enterButton = UIButton(type:.system)
     private let preview = MeadowMapThumbnail()
+    private let startCampaignButton=UIButton(type:.system)
+
     private var result: GeneratedMeadowMap?
     private var revision = 0
     private let gold = UIColor(red:0.91,green:0.77,blue:0.43,alpha:1)
@@ -51,7 +55,7 @@ final class MeadowMapSettingsViewController: UIViewController {
         let seed=button("换个种子",action:#selector(newSeed));form.addArrangedSubview(seed)
         let close=button("返回原地图",action:#selector(close));form.addArrangedSubview(close)
         let heading=UILabel();heading.text="建筑与道路预览";heading.font = .boldSystemFont(ofSize:22);heading.textColor=gold
-        let note=UILabel();note.text="输入或拖动总数会自动分配各类节点。调整某类时优先用空地点补差。林地预览暂不结算战斗与奖励。"
+        let note=UILabel();note.text="数量与滑块联动。可先预览建筑道路，再开始双人探索；探索会保存生命、背包、已领取奖励与途中位置。"
         note.font = .systemFont(ofSize:17,weight:.medium);note.textColor = .white;note.numberOfLines=0
         status.textColor=gold;status.numberOfLines=0;status.font = .boldSystemFont(ofSize:17)
         generateButton.configuration=button("生成道路预览",action:#selector(generate)).configuration
@@ -60,6 +64,10 @@ final class MeadowMapSettingsViewController: UIViewController {
         enterButton.addTarget(self,action:#selector(enter),for:.touchUpInside)
         right.addArrangedSubview(heading);right.addArrangedSubview(note);right.addArrangedSubview(preview)
         right.addArrangedSubview(status);right.addArrangedSubview(generateButton);right.addArrangedSubview(enterButton)
+        startCampaignButton.configuration=button("开始新行程",action:#selector(startCampaign)).configuration
+        startCampaignButton.addTarget(self,action:#selector(startCampaign),for:.touchUpInside)
+        right.addArrangedSubview(startCampaignButton)
+        right.addArrangedSubview(button("继续已保存行程",action:#selector(continueCampaign)))
         preview.heightAnchor.constraint(equalToConstant:200).isActive=true
         scroll.addSubview(form);rightScroll.addSubview(right);view.addSubview(scroll);view.addSubview(rightScroll)
         for v in [scroll,rightScroll,form,right] { v.translatesAutoresizingMaskIntoConstraints=false }
@@ -110,7 +118,7 @@ final class MeadowMapSettingsViewController: UIViewController {
         inputChanged(inputs[slider.tag])
     }
     private func changed() {
-        revision+=1;result=nil;preview.map=nil;enterButton.isEnabled=false
+        revision+=1;result=nil;preview.map=nil;enterButton.isEnabled=false;startCampaignButton.isEnabled=false
         do {
             let c=try configuration();lastValid=c
             for slider in sliders {
@@ -146,12 +154,50 @@ final class MeadowMapSettingsViewController: UIViewController {
                 self.generateButton.isEnabled=true
                 switch output {
                 case .success(let map):
-                    self.result=map;self.preview.map=map;self.enterButton.isEnabled=true
+                    self.result=map;self.preview.map=map;self.enterButton.isEnabled=true;self.startCampaignButton.isEnabled=true
                     self.status.text="\(map.map.nodes.count)个节点 · \(map.roads.count)条道路 · \(config.extraRoads)条环路\n种子 \(config.seed)"
                 case .failure(let error): self.status.text=error.localizedDescription
                 }
             }
         }
+    }
+    static func campaignStore()->MeadowCampaignStore {
+        let base=FileManager.default.urls(for:.applicationSupportDirectory,in:.userDomainMask)[0]
+        return MeadowCampaignStore(url:base.appendingPathComponent("MeadowExpedition/campaign-v1.json"))
+    }
+    @objc private func startCampaign() {
+        guard let result else{return}
+        let create={ [weak self] in
+            guard let self else{return}
+            do {
+                let store=Self.campaignStore(),base=FileManager.default.urls(for:.applicationSupportDirectory,in:.userDomainMask)[0]
+                let campStore=CampSaveStore(url:base.appendingPathComponent("MeadowCamp/camp-v1.json"))
+                var units:[String:ClassroomGameCore.GameUnit]?,appearance="forester"
+                if let bytes=try campStore.read() {
+                    let save=try JSONDecoder().decode(CampSave.self,from:bytes)
+                    try save.validate(appearances:["forester","wayfarer"],equipment:Set(["trainingSword","huntingBow","greatSword","legendaryStaff","leatherArmor","runeArmor","powerBadge","actionRing"]))
+                    units=save.archive.state.units;appearance=save.appearanceID
+                }
+                let session=try MeadowCampaignSession.new(layout:result,appearanceID:appearance,loadouts:units,persist:store.write)
+                self.presentCampaign(session)
+            } catch {self.status.text="未开始新行程："+error.localizedDescription}
+        }
+        if FileManager.default.fileExists(atPath:Self.campaignStore().url.path) {
+            let alert=UIAlertController(title:"开始新行程？",message:"这会替换当前探索存档。营地衣装与装备存档会保留。",preferredStyle:.alert)
+            alert.addAction(UIAlertAction(title:"取消",style:.cancel))
+            alert.addAction(UIAlertAction(title:"开始新行程",style:.destructive,handler:{_ in create()}));present(alert,animated:true)
+        } else {create()}
+    }
+    @objc private func continueCampaign() {
+        do {
+            let store=Self.campaignStore()
+            guard let save=try store.read() else{status.text="还没有已保存行程。先生成地图并开始新行程。";return}
+            presentCampaign(try MeadowCampaignSession(save:save,persist:store.write))
+        } catch {status.text="无法读取行程，原存档已保留："+error.localizedDescription}
+    }
+    private func presentCampaign(_ session:MeadowCampaignSession) {
+        let controller=GameViewController(campaign:session);controller.modalPresentationStyle = .fullScreen
+        present(controller,animated:true)
     }
     @objc private func enter() {
         guard let result else { return }

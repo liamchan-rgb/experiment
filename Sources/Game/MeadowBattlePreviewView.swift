@@ -51,6 +51,7 @@ final class MeadowBattlePreviewView: UIView {
     }
     var onClose: (() -> Void)?
     var onPartyActiveChanged: ((Bool)->Void)?
+    private var campaignMode=false
     private var partyMode=false
     private let party=MeadowPartyBattleView(frame:.zero)
     private let partyButton=MeadowPreviewPalette.button("小队支援")
@@ -124,7 +125,9 @@ final class MeadowBattlePreviewView: UIView {
         addSubview(partyButton)
         party.isHidden=true
         party.onClose={ [weak self] in
-            guard let self else { return };self.partyMode=false;self.party.isHidden=true
+            guard let self else { return }
+            if self.campaignMode {self.onClose?();return}
+            self.partyMode=false;self.party.isHidden=true
             self.setActive(true);self.onPartyActiveChanged?(false)
         }
         addSubview(party)
@@ -133,7 +136,15 @@ final class MeadowBattlePreviewView: UIView {
     required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
 
     /// Called by the owner when the overlay appears or disappears.
+    func configureCampaign(engine:GameEngine,onCommit:@escaping(OperationReceipt)->Void) {
+        campaignMode=true;party.campaignEngine=engine;party.onCommit=onCommit
+    }
     func setActive(_ active: Bool) {
+        if campaignMode {
+            isActive=active;partyMode=active;party.isHidden = !active;party.setActive(active)
+            partyButton.isHidden=true;onPartyActiveChanged?(active);setNeedsLayout();return
+        }
+
         if active {
             isActive = true
             updatePresentation()

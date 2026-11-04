@@ -2,9 +2,10 @@ import Foundation
 import ClassroomGameCore
 
 public enum PartyAction:String,CaseIterable,Codable {
-    case attack,heavyStrike,ambush,breather,simpleGuard,support,rally,runeSlash,runeWard,battleRune,dragonFlame,starlightPulse,sweep,dragonSoulWard,dragonScaleWard,dragonOrder,smallPotion,largePotion,shieldPotion,revivalStone,endTurn
+    case regeneration,attack,heavyStrike,ambush,breather,simpleGuard,support,rally,runeSlash,runeWard,battleRune,dragonFlame,starlightPulse,sweep,dragonSoulWard,dragonScaleWard,dragonOrder,smallPotion,largePotion,shieldPotion,revivalStone,endTurn
     public var title:String {
         switch self {
+        case .regeneration:return "再生"
         case .attack:return "普通攻击"
         case .heavyStrike:return "强击"
         case .ambush:return "突袭"
@@ -35,7 +36,7 @@ public enum PartyAction:String,CaseIterable,Codable {
         case .rally,.dragonSoulWard,.dragonScaleWard,.dragonOrder:return "support"
         case .ambush:return "ambush"
         case .support:return "support"
-        case .breather,.smallPotion,.largePotion:return "heal"
+        case .regeneration,.breather,.smallPotion,.largePotion:return "heal"
         case .simpleGuard,.shieldPotion:return "guard"
         case .revivalStone:return "revive"
         case .endTurn:return "wait"
@@ -71,6 +72,7 @@ public final class PartyEncounter {
     public private(set) var pending:PartyIntent?
     public private(set) var confirmedReceipt:OperationReceipt?
     private var confirmedEngine:GameEngine?
+    public let monsterIDs:[String]
     public let sessionID:String
     private var serial=0
     public var state:GameState { engine.state }
@@ -80,6 +82,7 @@ public final class PartyEncounter {
     public init(seed:UInt64=UInt64.random(in:1...UInt64.max),sessionID:String=UUID().uuidString,loadouts:[String:GameUnit]?=nil,playerClassID:String="adventurer") throws {
         guard ["adventurer","spellblade","dragonKnight"].contains(playerClassID) else { throw GameError("该职业尚未接入演练。") }
         self.sessionID=sessionID
+        self.monsterIDs=["m1","m2"]
         var catalog=try GameCatalog.initial()
         // A local training creature using the existing deer art. The six formal
         // monster definitions and all19 skills/18 items remain unchanged.
@@ -115,6 +118,12 @@ public final class PartyEncounter {
         state.battle=BattleState(kind:.pve,queue:["p2","p1","m1","m2"],current:"p2")
         self.engine=try GameEngine(catalog:catalog,state:state)
     }
+    public init(engine:GameEngine,sessionID:String=UUID().uuidString) throws {
+        guard let battle=engine.state.battle,battle.kind == .pve else {throw GameError("当前没有探索战斗。")}
+        self.engine=engine;self.sessionID=sessionID
+        self.monsterIDs=battle.queue.filter{engine.state.units[$0]?.kind == .monster}.sorted()
+        guard (1...2).contains(monsterIDs.count) else {throw GameError("当前战场支持1—2个敌人。")}
+    }
     public func command(_ action:PartyAction,target:String)->GameCommand? {
         guard let actor=current else { return nil }
         switch action {
@@ -123,7 +132,7 @@ public final class PartyEncounter {
         case .revivalStone:return .rescue(actor:actor,target:target)
         case .smallPotion,.largePotion,.shieldPotion:return .useItem(actor:actor,item:action.rawValue,target:target)
         case .rally,.runeWard,.battleRune,.dragonFlame,.starlightPulse,.sweep,.dragonSoulWard,.dragonScaleWard,.dragonOrder:return .cast(actor:actor,skill:action.rawValue,target:.node(state.units[target]?.nodeID ?? 1))
-        case .breather,.simpleGuard:return .cast(actor:actor,skill:action.rawValue,target:.unit(actor))
+        case .regeneration,.breather,.simpleGuard:return .cast(actor:actor,skill:action.rawValue,target:.unit(actor))
         default:return .cast(actor:actor,skill:action.rawValue,target:.unit(target))
         }
     }
@@ -138,7 +147,7 @@ public final class PartyEncounter {
         if action.isNodeSupport { targets=state.players.filter { $0.isAlive && $0.nodeID==state.units[target]?.nodeID }.map(\.id) }
         else if action == .dragonFlame || action == .starlightPulse { targets=state.units.values.filter { $0.kind == .monster && $0.isAlive && $0.nodeID==state.units[target]?.nodeID }.map(\.id).sorted() }
         else if action == .sweep { targets=state.players.filter { $0.isAlive && $0.nodeID==state.units[target]?.nodeID }.map(\.id).sorted() }
-        else if action == .breather || action == .simpleGuard { targets=[actor] }
+        else if action == .regeneration || action == .breather || action == .simpleGuard { targets=[actor] }
         else { targets=[target] }
         let intent=PartyIntent(id:sessionID+"/"+String(serial),action:action,actor:actor,target:target,targets:targets,command:command,enemy:state.units[actor]?.kind == .monster,weaponID:state.units[actor]?.equipment.weapon)
         // Resolve once in an isolated transaction at confirmation. Live HP/AP,
@@ -153,7 +162,25 @@ public final class PartyEncounter {
         guard let staged=confirmedEngine,let receipt=confirmedReceipt else { return nil }
         defer { cancel() }
         guard state==receipt.before else { throw GameError("动作确认后状态已变化，请重新选择。") }
-        engine=staged;return receipt
+        guard staged.state==receipt.after else {throw GameError("确认回执无效。")}
+        return try engine.apply(intent.command,id:intent.id)
+    }
+    /// Ask the original monster AI to select and roll exactly once, then show
+    /// that staged receipt using the already-supported melee/heal animations.
+    @discardableResult public func prepareMonsterStep()->PartyIntent? {
+        guard pending==nil,!terminal,let actor=current,state.units[actor]?.kind == .monster else{return nil}
+        serial+=1;let id=sessionID+"/"+String(serial)
+        guard let staged=try? GameEngine(catalog:engine.catalog,state:state,history:engine.history),let receipt=try? staged.apply(.monsterStep,id:id) else{return nil}
+        let skillName=receipt.events.first{$0.kind=="aiAction"}?.detail
+        let skillID=engine.catalog.skills.first{$0.name==skillName}?.id
+        let action=skillID.flatMap(PartyAction.init(rawValue:)) ?? .attack
+        let changed=state.units.keys.sorted().filter{key in
+            guard let before=state.units[key],let after=receipt.after.units[key] else{return false}
+            return before.health != after.health || before.shield != after.shield || before.damageBuff != after.damageBuff
+        }
+        let targets=changed.isEmpty ? [nextEnemyTarget() ?? "p1"]:changed
+        let intent=PartyIntent(id:id,action:action,actor:actor,target:targets[0],targets:targets,command:.monsterStep,enemy:true,weaponID:nil)
+        confirmedEngine=staged;confirmedReceipt=receipt;pending=intent;return intent
     }
     public func cancel() { pending=nil;confirmedEngine=nil;confirmedReceipt=nil }
     public func playerActions()->[PartyAction] { current.map(actions(for:)) ?? [] }
