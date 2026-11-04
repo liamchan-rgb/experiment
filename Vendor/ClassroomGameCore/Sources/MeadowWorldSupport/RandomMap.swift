@@ -10,7 +10,7 @@ public struct MeadowMapConfiguration: Codable, Equatable {
     public var empty = 1
     public var extraRoads = 1
     public var minimumBossHops = 0
-    public var decorationCount = 70
+    public var decorationCount = 100
     public init() {}
     public static func suggested(total: Int, seed: UInt64 = 31827) -> Self {
         var c = Self(); c.seed = seed; c.total = total
@@ -113,8 +113,8 @@ public enum MeadowMapGenerator {
             let cols=columns(c.total), rows=Int(ceil(Double(c.total)/Double(cols)))
             let flipX=layout.next() & 1 == 0, flipY=layout.next() & 1 == 0
             let positions=(0..<c.total).map { i -> MeadowWorldPoint in
-                let x=100 + Double(i%cols)*1080/Double(max(1,cols-1)) + layout.value(-13,13)
-                let y=85 + Double(i/cols)*550/Double(max(1,rows-1)) + layout.value(-10,10)
+                let x=100 + Double(i%cols)*1080/Double(max(1,cols-1)) + layout.value(-min(65,180/Double(cols-1)),min(65,180/Double(cols-1)))
+                let y=85 + Double(i/cols)*550/Double(max(1,rows-1)) + layout.value(-min(40,88/Double(rows-1)),min(40,88/Double(rows-1)))
                 return MeadowWorldPoint(flipX ? 1280-x : x,flipY ? 720-y : y)
             }
             let start=positions.indices.min { positions[$0].x-positions[$0].y < positions[$1].x-positions[$1].y }!
@@ -146,7 +146,8 @@ public enum MeadowMapGenerator {
             var curves=MapRandom(state:c.seed ^ 0x524f414453)
             let roads=tree.map { a,b -> MeadowWorldRoad in
                 let p=positions[a],q=positions[b], dx=q.x-p.x,dy=q.y-p.y, length=hypot(dx,dy)
-                let bend=curves.value(-5,5)
+                let limit=min(18,length*0.06)
+                let bend=curves.value(-limit,limit)
                 let points=[p,MeadowWorldPoint(p.x+dx/3-dy/length*bend,p.y+dy/3+dx/length*bend),
                             MeadowWorldPoint(p.x+dx*2/3-dy/length*bend,p.y+dy*2/3+dx/length*bend),q]
                 return MeadowWorldRoad(from:a,to:b,width:22,points:points)
@@ -168,11 +169,11 @@ public enum MeadowMapGenerator {
     private static func decorate(_ c: MeadowMapConfiguration,positions:[MeadowWorldPoint],roads:[MeadowWorldRoad],start:Int) -> [MeadowWorldProp] {
         var rng=MapRandom(state:c.seed ^ 0x50524f5053), props:[MeadowWorldProp]=[]
         // Reserve physical footprints, not image alpha bounds. Extra margin also
-        // covers the road smoother's bounded 5px bow between control points.
+        // covers the road smoother's bounded curve bow between control points.
         let spawn=positions[start]
-        for offset in [(0.0,-90.0),(-105,0),(105,0),(0,90)] {
+        for offset in [(0.0,-100.0),(-105,0),(105,0),(0,100),(95,-95),(-95,-95),(95,95),(-95,95)] {
             let p=MeadowWorldPoint(spawn.x+offset.0,spawn.y+offset.1)
-            if distance(p,to:roads)>68 && positions.allSatisfy({hypot($0.x-p.x,$0.y-p.y)>78}) {
+            if (80...1200).contains(p.x) && (110...680).contains(p.y) && distance(p,to:roads)>68 && positions.allSatisfy({hypot($0.x-p.x,$0.y-p.y)>78}) {
                 props.append(MeadowWorldProp(asset:"CampTent",x:p.x,y:p.y,width:105,wind:0)); break
             }
         }
@@ -184,7 +185,7 @@ public enum MeadowMapGenerator {
                   positions.allSatisfy({hypot($0.x-p.x,$0.y-p.y)>76}),
                   props.allSatisfy({hypot($0.x-p.x,$0.y-p.y)>max(42,$0.width*0.6)}) else { continue }
             let asset=assets[Int(rng.next()%UInt64(assets.count))]
-            let width=asset=="Flowers" ? rng.value(14,23) : asset=="Shrub" ? rng.value(25,35) : rng.value(50,76)
+            let width=asset=="Flowers" ? rng.value(14,23) : asset=="Shrub" ? rng.value(25,35) : (asset.hasPrefix("Rock") ? rng.value(76,108) : rng.value(60,88))
             props.append(MeadowWorldProp(asset:asset,x:p.x,y:p.y,width:width,wind:asset.hasPrefix("Rock") ? 0 : 1))
         }
         return props
