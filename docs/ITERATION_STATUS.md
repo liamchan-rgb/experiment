@@ -1,3 +1,7 @@
+## Build77 恢复核查：Actions仍部分中断，Intel池重试（2026-11-04）
+
+用户要求检查恢复。官方Actions为partial_outage、Incident with Actions and Pages仍investigating。旧41864553920因“The job was not acquired by Runner of type hosted even after multiple attempts”失败，零编译步骤；另有macOS arm64容量限制注记，不是源码失败。已重新提交Intel池41869668339，当前queued、源a3508591fd6934e4389d01bed98aa7cc65400835；修复源码/版本与06e75552逐字节一致，194本地测试与原审核仍有效。最新状态Media/Build77/build-status.json，尚无修复IPA。恢复后先检查此新任务，成功下载对应artifact并按Build77规范包检、直接IPA与公开完整GET后交付。不得交付Build76替代、不得运行App/模拟器/实机。后两项功能仍为M4节点内容编辑、行程行囊/换装与队伍配置。
+
 ## Build77 当前阻塞：GitHub Actions服务故障，尚无新IPA（2026-11-04）
 
 正式怪物头顶骰子空值崩溃已复现并修复；194纯Swift测试、四组回归、含真正diceAnchor/channels/poly的真实行程导出通过。正常怪物回合GIF238×20ms、全场关键图/4页实际解码接触表已主线程独审并公开GET，Art/Review/Battle/campaign-crashfix-v1。移动三倍、原资源/规则/存档格式保持，不要求删档。
