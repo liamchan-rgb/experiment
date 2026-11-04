@@ -53,7 +53,7 @@ final class EnvironmentShaders {
     }
     """
 
-    init() {
+    init(worldHeight: CGFloat = 1160) {
         func clock() -> SKUniform { SKUniform(name: "u_sceneTime", float: 0) }
         let attributes = [SKAttribute(name: "a_origin", type: .vectorFloat2),
                           SKAttribute(name: "a_extent", type: .vectorFloat2),
@@ -92,7 +92,7 @@ final class EnvironmentShaders {
 
         ground = SKShader(source: Self.noise + """
         void main() {
-            vec2 p = vec2(-160.0, 940.0) + v_tex_coord * vec2(1600.0, -1160.0);
+            vec2 p = vec2(-160.0, \(worldHeight-220)) + v_tex_coord * vec2(1600.0, -\(worldHeight));
             vec2 grid = p / 190.0, cell = floor(grid);
             vec2 weight = smoothstep(vec2(0.0), vec2(1.0), fract(grid));
             vec2 uv = p / 440.0;
@@ -162,7 +162,7 @@ final class EnvironmentShaders {
 
         soil = SKShader(source: Self.noise + """
         void main() {
-            vec2 p = vec2(-160.0, 940.0) + v_tex_coord * vec2(1600.0, -1160.0);
+            vec2 p = vec2(-160.0, \(worldHeight-220)) + v_tex_coord * vec2(1600.0, -\(worldHeight));
             vec4 mask = texture2D(u_texture, v_tex_coord);
             float edgeNoise = noise21(p * 0.23) * 0.58 + noise21(p * 0.73) * 0.28 + hash21(floor(p * 1.6)) * 0.14;
             float coverage = smoothstep(0.10 + edgeNoise * 0.15, 0.58 + edgeNoise * 0.12, mask.r);
@@ -184,7 +184,7 @@ final class EnvironmentShaders {
         func mist(layer: Float) -> SKShader {
             SKShader(source: Self.noise + """
             void main() {
-                vec2 p = vec2(-160.0, 940.0) + v_tex_coord * vec2(1600.0, -1160.0);
+                vec2 p = vec2(-160.0, \(worldHeight-220)) + v_tex_coord * vec2(1600.0, -\(worldHeight));
                 float speed = mix(8.0, 15.0, u_layer);
                 vec2 advected = p - vec2(u_sceneTime * speed, sin(u_sceneTime * 0.30 + u_layer) * 24.0);
                 vec2 q = advected * vec2(0.010, 0.013) + vec2(u_layer * 9.7);

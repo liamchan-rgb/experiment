@@ -3,6 +3,7 @@ import SpriteKit
 final class LivingWorld: SKNode {
     static let bounds = CGRect(x: -160, y: -220, width: 1600, height: 1160)
     static let towerBannerRoofAnchorY: CGFloat = 0.91
+    var worldBounds: CGRect { definition.worldBounds }
     let definition: SceneDefinition
     let network: TrailNetwork
     let effects: EnvironmentShaders
@@ -20,13 +21,13 @@ final class LivingWorld: SKNode {
          vegetationEnabled: Bool = true, atmosphereEnabled: Bool = true) {
         self.definition = definition
         self.textures = textures
-        self.effects = preparedEffects ?? EnvironmentShaders()
+        self.effects = preparedEffects ?? EnvironmentShaders(worldHeight:definition.worldBounds.height)
         self.vegetationEnabled = vegetationEnabled
         network = TrailNetwork(roads: definition.roads, patrolStart: definition.startNodeID)
         super.init()
         addChild(terrain)
         if renderTerrain { buildGround(); buildRoads(mask: roadMask) }
-        else { self.roadMask = roadMask ?? MeadowRoadMask.make(network: network, bounds: Self.bounds) }
+        else { self.roadMask = roadMask ?? MeadowRoadMask.make(network: network, bounds: worldBounds) }
         let allProps = props ?? (definition.props + Self.meadowDetails(definition: definition, network: network) + Self.roadsideGrass(network: network))
         if !deferProps { for prop in allProps { addProp(prop) } }
         if atmosphereEnabled {
@@ -77,18 +78,18 @@ final class LivingWorld: SKNode {
     static func position(_ point: CGPoint) -> CGPoint { CGPoint(x: point.x, y: -point.y) }
 
     private func buildGround() {
-        let node = SKSpriteNode(texture: texture("MeadowGround"), size: Self.bounds.size)
-        node.position = Self.position(CGPoint(x: Self.bounds.midX, y: Self.bounds.midY))
+        let node = SKSpriteNode(texture: texture("MeadowGround"), size: worldBounds.size)
+        node.position = Self.position(CGPoint(x: worldBounds.midX, y: worldBounds.midY))
         node.shader = effects.ground
         node.zPosition = 0
         terrain.addChild(node)
     }
 
     private func buildRoads(mask prepared: CGImage?) {
-        let mask = prepared ?? MeadowRoadMask.make(network: network, bounds: Self.bounds)
+        let mask = prepared ?? MeadowRoadMask.make(network: network, bounds: worldBounds)
         roadMask = mask
-        let road = SKSpriteNode(texture: SKTexture(cgImage: mask), size: Self.bounds.size)
-        road.position = Self.position(CGPoint(x: Self.bounds.midX, y: Self.bounds.midY))
+        let road = SKSpriteNode(texture: SKTexture(cgImage: mask), size: worldBounds.size)
+        road.position = Self.position(CGPoint(x: worldBounds.midX, y: worldBounds.midY))
         road.shader = effects.soil
         road.zPosition = 11
         terrain.addChild(road)
@@ -107,7 +108,7 @@ final class LivingWorld: SKNode {
         let propTexture = texture(prop.asset)
         let height = prop.width * propTexture.size().height / propTexture.size().width
         let node = SKSpriteNode(texture: propTexture, size: CGSize(width: prop.width, height: height))
-        node.name = prop.asset
+        node.name = prop.nodeID.map { "landmark-\($0)" } ?? prop.asset
         node.anchorPoint = CGPoint(x: 0.5, y: CGFloat(ShadowLabAsset(rawValue: prop.asset)?.anchorY ?? 0.04))
         node.position = Self.position(CGPoint(x: prop.x, y: prop.y))
         node.zPosition = 10000 + prop.y
@@ -146,8 +147,8 @@ final class LivingWorld: SKNode {
         var props: [SceneDefinition.Prop] = []
         var random = MeadowRandom(seed: definition.seed)
         for index in 0..<110 {
-            let point = CGPoint(x: random.value(Self.bounds.minX, Self.bounds.maxX),
-                                y: random.value(Self.bounds.minY, Self.bounds.maxY))
+            let point = CGPoint(x: random.value(definition.worldBounds.minX, definition.worldBounds.maxX),
+                                y: random.value(definition.worldBounds.minY, definition.worldBounds.maxY))
             if network.project(point).error < 38 { continue }
             if CGRect(x: 215, y: 275, width: 360, height: 160).contains(point) { continue }
             if definition.props.contains(where: { hypot($0.x - point.x, $0.y - point.y) < 23 }) { continue }
@@ -160,8 +161,8 @@ final class LivingWorld: SKNode {
     }
 
     private func addOverlay(shader: SKShader, depth: CGFloat, additive: Bool = false) {
-        let node = SKSpriteNode(color: .white, size: Self.bounds.size)
-        node.position = Self.position(CGPoint(x: Self.bounds.midX, y: Self.bounds.midY))
+        let node = SKSpriteNode(color: .white, size: worldBounds.size)
+        node.position = Self.position(CGPoint(x: worldBounds.midX, y: worldBounds.midY))
         node.shader = shader
         node.zPosition = depth
         if additive { node.blendMode = .add }

@@ -24,8 +24,8 @@ enum HeroFrames {
             for road in network.edges {
                 precondition(road.trail.length>0 && road.trail.points.allSatisfy{$0.x.isFinite && $0.y.isFinite})
                 let a=generated.map.nodes.first{$0.id==road.from}!,b=generated.map.nodes.first{$0.id==road.to}!
-                precondition(hypot(road.trail.points[0].x-a.x*1280,road.trail.points[0].y-a.y*720)<0.000001)
-                precondition(hypot(road.trail.points.last!.x-b.x*1280,road.trail.points.last!.y-b.y*720)<0.000001)
+                precondition(hypot(road.trail.points[0].x-a.x*1280,road.trail.points[0].y-a.y*generated.coordinateHeight)<0.000001)
+                precondition(hypot(road.trail.points.last!.x-b.x*1280,road.trail.points.last!.y-b.y*generated.coordinateHeight)<0.000001)
             }
             for prop in definition.props { precondition(network.project(CGPoint(x:prop.x,y:prop.y)).error>50) }
             func cross(_ a:CGPoint,_ b:CGPoint,_ c:CGPoint)->CGFloat { (b.x-a.x)*(c.y-a.y)-(b.y-a.y)*(c.x-a.x) }

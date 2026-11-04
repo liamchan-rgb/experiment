@@ -15,6 +15,7 @@ struct SceneDefinition: Codable {
         let width: CGFloat
         let mirror: Bool
         let wind: Float
+        var nodeID: Int? = nil
     }
     struct Road: Codable {
         let from: Int
@@ -27,6 +28,7 @@ struct SceneDefinition: Codable {
         let y: CGFloat
         let title: String
         var kind: String? = nil
+        var nodeID: Int? = nil
     }
     let seed: UInt64
     let props: [Prop]
@@ -35,13 +37,16 @@ struct SceneDefinition: Codable {
     let textureBudgetMiB: Double
     var spawn: MapPoint? = nil
     var startNodeID: Int? = nil
+    var mapHeight: CGFloat? = nil
+
+    var worldBounds: CGRect { CGRect(x:-160,y:-220,width:1600,height:max(1160,(mapHeight ?? 720)+440)) }
 
     static func generated(_ map: GeneratedMeadowMap) -> SceneDefinition {
         SceneDefinition(seed:map.configuration.seed,
-            props:map.props.map { Prop(asset:$0.asset,x:CGFloat($0.x),y:CGFloat($0.y),width:CGFloat($0.width),mirror:false,wind:Float($0.wind)) },
+            props:map.props.map { Prop(asset:$0.asset,x:CGFloat($0.x),y:CGFloat($0.y),width:CGFloat($0.width),mirror:false,wind:Float($0.wind),nodeID:$0.nodeID) },
             roads:map.roads.map { Road(from:$0.from,to:$0.to,width:CGFloat($0.width),points:$0.points.map { MapPoint(x:CGFloat($0.x),y:CGFloat($0.y)) }) },
-            discoveries:map.map.nodes.filter{$0.kind.rawValue != "start"}.map { Discovery(x:CGFloat($0.x*1280),y:CGFloat($0.y*720),title:$0.name,kind:$0.kind.rawValue) },
-            textureBudgetMiB:166.14,spawn:MapPoint(x:CGFloat(map.spawn.x),y:CGFloat(map.spawn.y)),startNodeID:map.map.nodes.first{$0.kind.rawValue == "start"}!.id)
+            discoveries:map.map.nodes.filter{$0.kind.rawValue != "start"}.map { Discovery(x:CGFloat($0.x*1280),y:CGFloat($0.y*map.coordinateHeight),title:$0.name,kind:$0.kind.rawValue,nodeID:$0.id) },
+            textureBudgetMiB:166.14,spawn:MapPoint(x:CGFloat(map.spawn.x),y:CGFloat(map.spawn.y)),startNodeID:map.map.nodes.first{$0.kind.rawValue == "start"}!.id,mapHeight:CGFloat(map.coordinateHeight))
     }
 
     static func load() -> SceneDefinition {

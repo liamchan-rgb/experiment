@@ -39,7 +39,7 @@ jobs:
             -configuration Release -destination 'generic/platform=iOS' \
             -archivePath build/MeadowJourney.xcarchive -derivedDataPath build/Derived \
             CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO 2>&1 | tee build/archive.log
-          bash scripts/package-ipa.sh build/MeadowJourney.xcarchive build/MeadowJourney-b73.ipa
+          bash scripts/package-ipa.sh build/MeadowJourney.xcarchive build/MeadowJourney-b74.ipa
       - uses: actions/upload-artifact@v7
         if: always()
         with:

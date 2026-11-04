@@ -208,14 +208,14 @@ final class GameScene: SKScene {
             world.attachSunlight(to: self)
             return
         }
-        let bounds = LivingWorld.bounds
+        let bounds = world.worldBounds
         if battlePreviewCamera != nil {
             // Crop a useful map window instead of shrinking the whole map into it.
             let reference = referenceViewportSize ?? size
-            baseScale = max(min(reference.width / 1280, reference.height / 720),
+            baseScale = max(min(reference.width / 1280, reference.height / (world.definition.mapHeight ?? 720)),
                             max(size.width / bounds.width, size.height / bounds.height))
         } else {
-            baseScale = min(size.width / 1280, size.height / 720)
+            baseScale = min(size.width / 1280, size.height / (world.definition.mapHeight ?? 720))
         }
         let scale = baseScale * zoom
         let halfWidth = size.width / scale / 2
@@ -366,7 +366,7 @@ final class GameScene: SKScene {
         destinationRing.isHidden = true
         walks = [WalkCycle(), WalkCycle(), WalkCycle()]
         p1Locomotion.reset()
-        cameraCenter = CGPoint(x: 640, y: 360)
+        cameraCenter = CGPoint(x: 640, y: (world.definition.mapHeight ?? 720)/2)
         zoom = 1
         layoutWorld()
         updateActors(before: nil)
@@ -536,6 +536,14 @@ final class GameScene: SKScene {
             let item = world.definition.discoveries[index]
             order(to: CGPoint(x: item.x, y: item.y), discovery: index)
             return
+        }
+        if let name=world.nodes(at:location).first(where: { $0.name?.hasPrefix("landmark-") == true })?.name,
+           let id=Int(name.dropFirst("landmark-".count)) {
+            if let index=world.definition.discoveries.firstIndex(where:{$0.nodeID==id}) {
+                let item=world.definition.discoveries[index]
+                order(to:CGPoint(x:item.x,y:item.y),discovery:index);return
+            }
+            if let spawn=world.definition.spawn { order(to:spawn.point);return }
         }
         let point = CGPoint(x: location.x, y: -location.y)
         let projection = world.network.project(point)

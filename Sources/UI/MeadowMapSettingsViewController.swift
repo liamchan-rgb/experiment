@@ -5,6 +5,8 @@ import MeadowWorldSupport
 final class MeadowMapSettingsViewController: UIViewController {
     private let fields = ["总节点数","普通战斗","Boss","奖励","空地点","额外道路","随机种子"]
     private var inputs: [UITextField] = []
+    private var sliders: [UISlider] = []
+    private var lastValid = MeadowMapConfiguration()
     private let status = UILabel()
     private let generateButton = UIButton(type:.system)
     private let enterButton = UIButton(type:.system)
@@ -30,18 +32,26 @@ final class MeadowMapSettingsViewController: UIViewController {
             field.font = .monospacedDigitSystemFont(ofSize:19,weight:.semibold);field.textColor=gold
             field.backgroundColor=UIColor(white:1,alpha:0.07);field.borderStyle = .roundedRect
             field.keyboardType = .numberPad;field.accessibilityLabel=name
-            field.addTarget(self,action:#selector(changed),for:.editingChanged)
+            field.addTarget(self,action:#selector(inputChanged(_:)),for:.editingChanged)
             inputs.append(field);row.addArrangedSubview(label);row.addArrangedSubview(field)
             row.heightAnchor.constraint(equalToConstant:40).isActive=true
             form.addArrangedSubview(row)
+            if index<6 {
+                let slider=UISlider();slider.tag=index;slider.minimumValue=index==0 ? 4:0
+                slider.maximumValue=index==0 ? 30:index==5 ? Float(MeadowMapGenerator.maximumExtraRoads(total:10)):9
+                slider.value=Float(defaults[index]) ?? 0;slider.minimumTrackTintColor=gold;slider.isContinuous=true
+                slider.accessibilityLabel=name+"滑块"
+                slider.addTarget(self,action:#selector(slid(_:)),for:.valueChanged)
+                sliders.append(slider);form.addArrangedSubview(slider)
+            }
         }
-        let fixed=UILabel();fixed.text="起点固定 1 · 各类数量须与总数一致";fixed.textColor=gold;fixed.font = .boldSystemFont(ofSize:15)
+        let fixed=UILabel();fixed.text="起点固定 1 · 总数与各分类自动匹配";fixed.textColor=gold;fixed.font = .boldSystemFont(ofSize:15)
         fixed.numberOfLines=0;form.addArrangedSubview(fixed)
-        let suggest=button("采用建议数量",action:#selector(suggested));form.addArrangedSubview(suggest)
+        let suggest=button("恢复建议分配",action:#selector(suggested));form.addArrangedSubview(suggest)
         let seed=button("换个种子",action:#selector(newSeed));form.addArrangedSubview(seed)
         let close=button("返回原地图",action:#selector(close));form.addArrangedSubview(close)
         let heading=UILabel();heading.text="道路预览";heading.font = .boldSystemFont(ofSize:22);heading.textColor=gold
-        let note=UILabel();note.text="设置节点数量后生成预览，再进入林地查看。此处用于地图与行走预览，战斗和奖励暂不结算。"
+        let note=UILabel();note.text="输入或拖动总数会自动分配各类节点。调整某类时优先用空地点补差。林地预览暂不结算战斗与奖励。"
         note.font = .systemFont(ofSize:17,weight:.medium);note.textColor = .white;note.numberOfLines=0
         status.textColor=gold;status.numberOfLines=0;status.font = .boldSystemFont(ofSize:17)
         generateButton.configuration=button("生成道路预览",action:#selector(generate)).configuration
@@ -81,10 +91,33 @@ final class MeadowMapSettingsViewController: UIViewController {
         var c=MeadowMapConfiguration();c.total=total;c.combat=combat;c.boss=boss;c.reward=reward;c.empty=empty;c.extraRoads=roads;c.seed=seed
         try c.validate();return c
     }
-    @objc private func changed() {
+    private func applyCounts(_ c: MeadowMapConfiguration) {
+        inputs[0].text=String(c.total)
+        for (index,value) in [c.combat,c.boss,c.reward,c.empty].enumerated() { inputs[index+1].text=String(value) }
+        inputs[5].text=String(c.extraRoads)
+        lastValid=c
+    }
+    @objc private func inputChanged(_ field: UITextField) {
+        if let value=Int(field.text ?? "") {
+            if field.tag==0,let c=try? lastValid.changingTotal(to:value) { applyCounts(c) }
+            else if (1...4).contains(field.tag),value>=0,let c=try? lastValid.changingCount(field:field.tag-1,to:value) { applyCounts(c) }
+        }
+        changed()
+    }
+    @objc private func slid(_ slider: UISlider) {
+        let value=Int(slider.value.rounded());slider.value=Float(value)
+        inputs[slider.tag].text=String(value)
+        inputChanged(inputs[slider.tag])
+    }
+    private func changed() {
         revision+=1;result=nil;preview.map=nil;enterButton.isEnabled=false
         do {
-            let c=try configuration();status.text="起点1 + 战斗\(c.combat) + Boss\(c.boss) + 奖励\(c.reward) + 空地\(c.empty) = \(c.total)\n数量正确，可生成。"
+            let c=try configuration();lastValid=c
+            for slider in sliders {
+                slider.maximumValue=slider.tag==0 ? 30:slider.tag==5 ? Float(MeadowMapGenerator.maximumExtraRoads(total:c.total)):Float(c.total-1)
+                slider.value=Float(inputs[slider.tag].text ?? "") ?? 0
+            }
+            status.text="起点1 + 战斗\(c.combat) + Boss\(c.boss) + 奖励\(c.reward) + 空地\(c.empty) = \(c.total)\n数量正确，可生成。"
             generateButton.isEnabled=true
         } catch {
             var detail=error.localizedDescription
@@ -98,8 +131,7 @@ final class MeadowMapSettingsViewController: UIViewController {
     }
     @objc private func suggested() {
         guard let n=Int(inputs[0].text ?? ""),(4...30).contains(n) else { changed();return }
-        let c=MeadowMapConfiguration.suggested(total:n)
-        for (index,value) in [c.combat,c.boss,c.reward,c.empty].enumerated() { inputs[index+1].text=String(value) }
+        if let c=try? lastValid.changingTotal(to:n) { applyCounts(c) }
         changed()
     }
     @objc private func newSeed() { inputs[6].text=String(UInt64.random(in:0...UInt64.max));changed() }
@@ -134,8 +166,8 @@ private final class MeadowMapThumbnail: UIView {
     override func draw(_ rect:CGRect) {
         UIColor(red:0.1,green:0.19,blue:0.13,alpha:1).setFill();UIBezierPath(roundedRect:bounds,cornerRadius:12).fill()
         guard let map else { return }
-        let scale=min((bounds.width-24)/1280,(bounds.height-24)/720)
-        func point(_ x:Double,_ y:Double) -> CGPoint { CGPoint(x:bounds.midX+CGFloat(x-640)*scale,y:bounds.midY+CGFloat(y-360)*scale) }
+        let scale=min((bounds.width-24)/1280,(bounds.height-24)/CGFloat(map.coordinateHeight))
+        func point(_ x:Double,_ y:Double) -> CGPoint { CGPoint(x:bounds.midX+CGFloat(x-640)*scale,y:bounds.midY+CGFloat(y-map.coordinateHeight/2)*scale) }
         UIColor(red:0.6,green:0.52,blue:0.32,alpha:1).setStroke()
         for road in map.roads {
             let path=UIBezierPath();path.lineWidth=3;path.move(to:point(road.points[0].x,road.points[0].y))
@@ -144,7 +176,7 @@ private final class MeadowMapThumbnail: UIView {
         let colors:[String:UIColor]=["start":.systemYellow,"combat":.systemRed,"boss":.systemPurple,"reward":.systemGreen,"empty":.lightGray]
         let names=["start":"起","combat":"战","boss":"首","reward":"奖","empty":"空"]
         for node in map.map.nodes {
-            let p=point(node.x*1280,node.y*720),r:CGFloat=10
+            let p=point(node.x*1280,node.y*map.coordinateHeight),r:CGFloat=10
             colors[node.kind.rawValue]?.setFill();UIBezierPath(ovalIn:CGRect(x:p.x-r,y:p.y-r,width:r*2,height:r*2)).fill()
             let text=names[node.kind.rawValue] ?? "?"
             (text as NSString).draw(in:CGRect(x:p.x-7,y:p.y-8,width:16,height:18),withAttributes:[.font:UIFont.boldSystemFont(ofSize:13),.foregroundColor:UIColor.black])

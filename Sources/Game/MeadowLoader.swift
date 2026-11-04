@@ -24,7 +24,7 @@ enum MeadowLoader {
                 report(0.02, "读取地图")
                 let definition = supplied ?? SceneDefinition.load()
                 let network = TrailNetwork(roads: definition.roads, patrolStart: definition.startNodeID)
-                let mask = MeadowRoadMask.make(network: network, bounds: LivingWorld.bounds) {
+                let mask = MeadowRoadMask.make(network: network, bounds: definition.worldBounds) {
                     report(0.05 + $0 * 0.22, "准备道路")
                 }
                 let props = definition.props + LivingWorld.meadowDetails(definition: definition, network: network)
@@ -42,7 +42,7 @@ enum MeadowLoader {
                 if let device {
                     report(0.50, "准备实时投影")
                     var lastStage = ""
-                    renderer = try MeadowShadowRenderer(device: device, props: props, roadMask: mask, images: images) {
+                    renderer = try MeadowShadowRenderer(device: device, props: props, roadMask: mask, bounds: definition.worldBounds, images: images) {
                         report(0.50 + $0 * 0.23, $1)
                         if diagnosticSize != nil, lastStage != $1 {
                             lastStage = $1
@@ -64,7 +64,7 @@ enum MeadowLoader {
                     heroes.append(HeroFrames.load(index))
                     report(0.83 + Double(index) * 0.003, "准备旅人")
                 }
-                let effects = EnvironmentShaders()
+                let effects = EnvironmentShaders(worldHeight:definition.worldBounds.height)
                 let prepared = PreparedMeadow(definition: definition, roadMask: mask, props: props,
                                              textures: textures, heroes: heroes, effects: effects, renderer: renderer)
                 report(0.84, "上传场景纹理")

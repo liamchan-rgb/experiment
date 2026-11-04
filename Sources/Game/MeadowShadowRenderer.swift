@@ -45,6 +45,7 @@ final class MeadowShadowRenderer: NSObject, MTKViewDelegate {
     private let presentationPipeline: MTLRenderPipelineState
     private let depthState: MTLDepthStencilState
     private let receiver: MTLBuffer
+    private let receiverBounds: CGRect
     private var staticDraws: [Draw] = []
     private var textures: [String: MTLTexture] = [:]
     private var backgroundTarget: MTLTexture?
@@ -67,12 +68,13 @@ final class MeadowShadowRenderer: NSObject, MTKViewDelegate {
     private var gpuStopped = false
 
     convenience init(device: MTLDevice, world: LivingWorld) throws {
-        try self.init(device: device, props: world.casterProps, roadMask: world.roadMask)
+        try self.init(device: device, props: world.casterProps, roadMask: world.roadMask, bounds: world.worldBounds)
         world.terrain.removeFromParent()
     }
 
     init(device: MTLDevice, props: [SceneDefinition.Prop], roadMask: CGImage,
-         images: [String: CGImage] = [:], progress: ((Double, String) -> Void)? = nil) throws {
+         bounds: CGRect = LivingWorld.bounds, images: [String: CGImage] = [:], progress: ((Double, String) -> Void)? = nil) throws {
+        self.receiverBounds = bounds
         self.device = device
         progress?(0.02, "准备投影队列")
         guard let queue = device.makeCommandQueue(), let library = device.makeDefaultLibrary() else { throw ShadowLabError.setup("地图 Metal 初始化失败") }
@@ -106,7 +108,7 @@ final class MeadowShadowRenderer: NSObject, MTKViewDelegate {
         guard let depthState = device.makeDepthStencilState(descriptor: state) else { throw ShadowLabError.setup("地图深度状态失败") }
         self.depthState = depthState
         var mesh = ShadowLabMesh()
-        let b = LivingWorld.bounds
+        let b = bounds
         let a = Self.root(CGPoint(x: b.minX, y: b.minY)), c = Self.root(CGPoint(x: b.maxX, y: b.maxY))
         mesh.triangle(a, SIMD3(c.x, a.y, 0), c); mesh.triangle(a, c, SIMD3(a.x, c.y, 0))
         guard let buffer = device.makeBuffer(bytes: mesh.vertices, length: mesh.vertices.count * MemoryLayout<ShadowLabVertex>.stride) else { throw ShadowLabError.setup("地图接收网格失败") }
@@ -253,7 +255,7 @@ final class MeadowShadowRenderer: NSObject, MTKViewDelegate {
         color.setFragmentTexture(textures["MeadowGround"], index: 0)
         color.setFragmentTexture(depthTexture, index: 1)
         color.setFragmentTexture(textures["RoadMask"], index: 2)
-        var settings = SIMD4<Float>(roads ? 1 : 0, alignment ? 1 : 0, 0, 0)
+        var settings = SIMD4<Float>(roads ? 1 : 0, alignment ? 1 : 0, Float(receiverBounds.height), 0)
         color.setFragmentBytes(&settings, length: MemoryLayout<SIMD4<Float>>.stride, index: 2)
         color.drawPrimitives(type: .triangle, vertexStart: 0, vertexCount: 6); color.endEncoding()
     }
@@ -261,7 +263,7 @@ final class MeadowShadowRenderer: NSObject, MTKViewDelegate {
     private func makeUniforms(camera: MeadowViewport, time: TimeInterval, sunCast: CGVector, shadows: Bool) -> ShadowLabUniforms {
         let up = ShadowLabMath.cameraUp
         let sun = simd_normalize(SIMD3(-Float(sunCast.dx) * up.z, Float(sunCast.dy) * up.z / up.y, 1))
-        let light = ShadowLabMath.orthographic(halfWidth: 46, halfHeight: 46, near: 0.1, far: 180)
+        let light = ShadowLabMath.orthographic(halfWidth: max(46, Float(receiverBounds.height)/32), halfHeight: max(46, Float(receiverBounds.height)/32), near: 0.1, far: 180)
             * ShadowLabMath.lookAt(eye: sun * 85, target: .zero, up: SIMD3(0, 0, 1))
         return ShadowLabUniforms(camera: camera.matrix, light: light, sunTime: SIMD4(sun, Float(time)), options: SIMD4(shadows ? 1 : 0, 1 / Float(shadowSize), 1, 1))
     }

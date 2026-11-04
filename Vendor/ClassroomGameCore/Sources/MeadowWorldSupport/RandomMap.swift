@@ -19,6 +19,31 @@ public struct MeadowMapConfiguration: Codable, Equatable {
         c.empty = total - 2 - c.combat - c.reward
         return c
     }
+    public func changingTotal(to value: Int) throws -> Self {
+        guard (4...30).contains(value) else { throw GameError("总节点数须为4—30。") }
+        var c=Self.suggested(total:value,seed:seed)
+        c.extraRoads=min(extraRoads,MeadowMapGenerator.maximumExtraRoads(total:value))
+        c.minimumBossHops=min(minimumBossHops,value-1);c.decorationCount=decorationCount
+        try c.validate();return c
+    }
+    /// Field order: combat, boss, reward, empty. Preserve the edited value;
+    /// consume empty slots first, then other categories in stable order.
+    public func changingCount(field: Int, to value: Int) throws -> Self {
+        try validate()
+        guard (0...3).contains(field) else { throw GameError("节点分类无效。") }
+        var values=[combat,boss,reward,empty]
+        values[field]=min(total-1,max(0,value))
+        let difference=total-1-values.reduce(0,+)
+        if difference>=0 { values[field==3 ? 0:3]+=difference }
+        else {
+            var remaining = -difference
+            for index in [3,0,2,1] where index != field {
+                let take=min(values[index],remaining);values[index]-=take;remaining-=take
+            }
+        }
+        var c=self;c.combat=values[0];c.boss=values[1];c.reward=values[2];c.empty=values[3]
+        try c.validate();return c
+    }
     public func validate() throws {
         guard (4...30).contains(total) else { throw GameError("总节点数须为4—30。") }
         guard [combat,boss,reward,empty].allSatisfy({ (0...30).contains($0) }),
@@ -47,6 +72,7 @@ public struct MeadowWorldProp: Codable, Equatable {
     public let y: Double
     public let width: Double
     public let wind: Double
+    public var nodeID: Int? = nil
 }
 public struct GeneratedMeadowMap: Codable, Equatable {
     public let generatorVersion: Int
@@ -54,6 +80,7 @@ public struct GeneratedMeadowMap: Codable, Equatable {
     public let map: GameMap
     public let roads: [MeadowWorldRoad]
     public let props: [MeadowWorldProp]
+    public let coordinateHeight: Double
     public let spawn: MeadowWorldPoint
 }
 
@@ -78,7 +105,7 @@ private struct MapRandom {
 }
 
 public enum MeadowMapGenerator {
-    public static let version = 1
+    public static let version = 2
     private static func columns(_ n: Int) -> Int { Int(sqrt(Double(n)*1.35).rounded()) }
     private static func candidates(_ n: Int) -> [(Int,Int)] {
         let cols=columns(n)
@@ -109,13 +136,14 @@ public enum MeadowMapGenerator {
             }
             tree += spare.prefix(c.extraRoads)
             tree.sort { $0.0 == $1.0 ? $0.1 < $1.1 : $0.0 < $1.0 }
-            var layout=MapRandom(state:c.seed ^ 0x4c41594f5554)
+            var layout=MapRandom(state:c.seed ^ 0x4c41594f5554 &+ UInt64(attempt))
             let cols=columns(c.total), rows=Int(ceil(Double(c.total)/Double(cols)))
+            let coordinateHeight:Double=max(720,440+Double(rows-1)*220)
             let flipX=layout.next() & 1 == 0, flipY=layout.next() & 1 == 0
             let positions=(0..<c.total).map { i -> MeadowWorldPoint in
-                let x=100 + Double(i%cols)*1080/Double(max(1,cols-1)) + layout.value(-min(65,180/Double(cols-1)),min(65,180/Double(cols-1)))
-                let y=120 + Double(i/cols)*480/Double(max(1,rows-1)) + layout.value(-min(40,88/Double(rows-1)),min(40,88/Double(rows-1)))
-                return MeadowWorldPoint(flipX ? 1280-x : x,flipY ? 720-y : y)
+                let x=100 + Double(i%cols)*1000/Double(max(1,cols-1)) + layout.value(-12,12)
+                let y=220 + Double(i/cols)*(coordinateHeight-440)/Double(max(1,rows-1)) + layout.value(-12,12)
+                return MeadowWorldPoint(flipX ? 1280-x : x,flipY ? coordinateHeight-y : y)
             }
             let start=positions.indices.min { positions[$0].x-positions[$0].y < positions[$1].x-positions[$1].y }!
             var distance=Array(repeating:-1,count:c.total); distance[start]=0
@@ -138,7 +166,7 @@ public enum MeadowMapGenerator {
             for (id,kind) in zip(remaining,contents) { kinds[id]=kind }
             let titles:[NodeKind:String]=[.start:"起点营地",.combat:"林间战斗",.boss:"首领地点",.reward:"补给地点",.empty:"林间空地"]
             let nodes=(0..<c.total).map { id in
-                MapNode(id:id,name:"\(titles[kinds[id]]!) · \(id+1)",kind:kinds[id],x:positions[id].x/1280,y:positions[id].y/720,
+                MapNode(id:id,name:"\(titles[kinds[id]]!) · \(id+1)",kind:kinds[id],x:positions[id].x/1280,y:positions[id].y/coordinateHeight,
                         reward:kinds[id] == .reward ? NodeReward() : nil)
             }
             let map=GameMap(nodes:nodes,roads:tree.map { MapRoad($0.0,$0.1) },seed:c.seed,revealed:[start])
@@ -152,10 +180,10 @@ public enum MeadowMapGenerator {
                             MeadowWorldPoint(p.x+dx*2/3-dy/length*bend,p.y+dy*2/3+dx/length*bend),q]
                 return MeadowWorldRoad(from:a,to:b,width:22,points:points)
             }
-            let props=decorate(c,positions:positions,roads:roads,start:start)
-            return GeneratedMeadowMap(generatorVersion:version,configuration:c,map:map,roads:roads,props:props,spawn:positions[start])
+            guard let props=decorate(c,positions:positions,roads:roads,kinds:kinds,height:coordinateHeight) else { continue }
+            return GeneratedMeadowMap(generatorVersion:version,configuration:c,map:map,roads:roads,props:props,coordinateHeight:coordinateHeight,spawn:positions[start])
         }
-        throw GameError("当前环路与Boss距离要求无法同时满足，请减少环路或降低Boss最短距离。节点数量未被修改。")
+        throw GameError("在64次尝试内未能满足道路、Boss距离与建筑空间要求。请更换种子或减少环路，节点数量未被修改。")
     }
 
     public static func distance(_ p: MeadowWorldPoint, to roads: [MeadowWorldRoad]) -> Double {
@@ -166,24 +194,62 @@ public enum MeadowMapGenerator {
         } }.min() ?? .infinity
     }
 
-    private static func decorate(_ c: MeadowMapConfiguration,positions:[MeadowWorldPoint],roads:[MeadowWorldRoad],start:Int) -> [MeadowWorldProp] {
+    private static func decorate(_ c: MeadowMapConfiguration,positions:[MeadowWorldPoint],roads:[MeadowWorldRoad],kinds:[NodeKind],height:Double) -> [MeadowWorldProp]? {
         var rng=MapRandom(state:c.seed ^ 0x50524f5053), props:[MeadowWorldProp]=[]
-        // Reserve physical footprints, not image alpha bounds. Extra margin also
-        // covers the road smoother's bounded curve bow between control points.
-        let spawn=positions[start]
-        for offset in [(0.0,-100.0),(-105,0),(105,0),(0,100),(95,-95),(-95,-95),(95,95),(-95,95)] {
-            let p=MeadowWorldPoint(spawn.x+offset.0,spawn.y+offset.1)
-            if (80...1200).contains(p.x) && (110...680).contains(p.y) && distance(p,to:roads)>68 && positions.allSatisfy({hypot($0.x-p.x,$0.y-p.y)>78}) {
-                props.append(MeadowWorldProp(asset:"CampTent",x:p.x,y:p.y,width:105,wind:0)); break
+        let catalog:[NodeKind:(String,Double)]=[.start:("CampTent",105),.combat:("NodeCombatOutpost",90),.boss:("NodeBossSanctum",104),.reward:("NodeRewardCache",86),.empty:("NodeWaystone",74)]
+        // Every node owns one landmark. Reserve both its ground footprint and
+        // visible image rectangle; no missing building is silently accepted.
+        var options=[[MeadowWorldProp]]()
+        for id in positions.indices {
+            let node=positions[id],(asset,width)=catalog[kinds[id]]!,radius=width*0.42
+            var candidates=[MeadowWorldProp]()
+            for offset in [(85.0,-85.0),(-85,-85),(0,-106),(76,-72),(-76,-72),(85,-76),(-85,-76),(92,-92),(-92,-92),(112,-50),(-112,-50),(112,50),(-112,50),(76,72),(-76,72),(85,76),(-85,76),(88,92),(-88,92),(0,110),(120,0),(-120,0),(145,-80),(-145,-80),(145,80),(-145,80),(70,-140),(-70,-140),(70,140),(-70,140)] {
+                let p=MeadowWorldPoint(node.x+offset.0,node.y+offset.1)
+                guard (width*0.46+10...(1280-width*0.46-10)).contains(p.x),(max(110,width*0.9+35)...(height-15)).contains(p.y),distance(p,to:roads)>max(60,radius+25) else { continue }
+                guard positions.allSatisfy({ q in
+                    hypot(q.x-p.x,q.y-p.y)>radius+30 &&
+                    (q.x+18 < p.x-width*0.46 || q.x-18 > p.x+width*0.46 || q.y+8 < p.y-width*0.86 || q.y-42 > p.y+width*0.06)
+                }) else { continue }
+                candidates.append(MeadowWorldProp(asset:asset,x:p.x,y:p.y,width:width,wind:0,nodeID:id))
             }
+            guard !candidates.isEmpty else { return nil }
+            options.append(candidates)
         }
+        var assigned=[Int:MeadowWorldProp](),budget=1000
+        func fits(_ a:MeadowWorldProp,_ b:MeadowWorldProp) -> Bool {
+            if (a.asset=="CampTent" || b.asset=="CampTent") && hypot(a.x-b.x,a.y-b.y)<=150 { return false }
+            return abs(a.x-b.x)>(a.width+b.width)*0.5+10 ||
+                a.y+a.width*0.08+8 < b.y-b.width*0.92 || b.y+b.width*0.08+8 < a.y-a.width*0.92
+        }
+        func place() -> Bool {
+            if assigned.count==positions.count { return true }
+            if budget<=0 { return false }
+            var selected = -1, available=[MeadowWorldProp]()
+            // Place the most constrained parcel first, instead of letting an
+            // early flexible parcel occupy the only slot of a later building.
+            for id in positions.indices where assigned[id]==nil {
+                let valid=options[id].filter { candidate in assigned.values.allSatisfy{fits(candidate,$0)} }
+                if valid.isEmpty { return false }
+                if selected<0 || valid.count<available.count { selected=id;available=valid }
+            }
+            for candidate in available {
+                budget-=1;assigned[selected]=candidate
+                if place() { return true }
+                assigned.removeValue(forKey:selected)
+                if budget<=0 { return false }
+            }
+            return false
+        }
+        guard place() else { return nil }
+        props=positions.indices.map{assigned[$0]!}
+        let landmarkCount=props.count
         let assets=["OakA","OakB","Pines","RockLow","RockHigh","RockSmall","Shrub","Flowers"]
         for _ in 0..<1400 {
-            if props.count>=c.decorationCount+1 { break }
-            let p=MeadowWorldPoint(rng.value(-70,1350),rng.value(-80,820))
+            if props.count>=c.decorationCount+landmarkCount { break }
+            let p=MeadowWorldPoint(rng.value(-70,1350),rng.value(-80,height+100))
             guard distance(p,to:roads)>58,
                   positions.allSatisfy({hypot($0.x-p.x,$0.y-p.y)>76}),
-                  props.allSatisfy({hypot($0.x-p.x,$0.y-p.y)>($0.asset == "CampTent" ? 150 : max(42,$0.width*0.6))}) else { continue }
+                  props.allSatisfy({hypot($0.x-p.x,$0.y-p.y)>($0.nodeID != nil ? ($0.asset == "CampTent" ? 150 : 110) : max(42,$0.width*0.6))}) else { continue }
             let asset=assets[Int(rng.next()%UInt64(assets.count))]
             let width=asset=="Flowers" ? rng.value(14,23) : asset=="Shrub" ? rng.value(25,35) : (asset.hasPrefix("Rock") ? rng.value(76,108) : rng.value(60,88))
             props.append(MeadowWorldProp(asset:asset,x:p.x,y:p.y,width:width,wind:asset.hasPrefix("Rock") ? 0 : 1))

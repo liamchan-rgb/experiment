@@ -6,9 +6,15 @@ final class RandomMapTests: XCTestCase {
     func testSizesSeedsAndGraphContracts() throws {
         for n in 4...30 { for seed in 0..<24 {
             let c=MeadowMapConfiguration.suggested(total:n,seed:UInt64(seed))
-            let result=try MeadowMapGenerator.generate(c)
+            let result:GeneratedMeadowMap
+            do { result=try MeadowMapGenerator.generate(c) } catch { throw GameError("N=\(n),seed=\(seed): \(error)") }
             try result.map.validate()
             XCTAssertEqual(result.map.nodes.count,n)
+            let landmarks=result.props.filter{$0.nodeID != nil}
+            XCTAssertEqual(landmarks.count,n)
+            XCTAssertEqual(Set(landmarks.compactMap(\.nodeID)),Set(result.map.nodes.map(\.id)))
+            let assets:[NodeKind:String]=[.start:"CampTent",.combat:"NodeCombatOutpost",.boss:"NodeBossSanctum",.reward:"NodeRewardCache",.empty:"NodeWaystone"]
+            for node in result.map.nodes { XCTAssertEqual(landmarks.first{$0.nodeID==node.id}?.asset,assets[node.kind]) }
             XCTAssertEqual(result.map.nodes.filter{$0.kind == .start}.count,1)
             for (kind,count) in [(NodeKind.combat,c.combat),(.boss,c.boss),(.reward,c.reward),(.empty,c.empty)] {
                 XCTAssertEqual(result.map.nodes.filter{$0.kind==kind}.count,count)
@@ -18,12 +24,12 @@ final class RandomMapTests: XCTestCase {
             for road in result.roads {
                 let a=result.map.nodes.first{$0.id==road.from}!,b=result.map.nodes.first{$0.id==road.to}!
                 XCTAssertEqual(road.points.first!.x,a.x*1280,accuracy:0.000001)
-                XCTAssertEqual(road.points.last!.y,b.y*720,accuracy:0.000001)
+                XCTAssertEqual(road.points.last!.y,b.y*result.coordinateHeight,accuracy:0.000001)
             }
             XCTAssertTrue(result.map.nodes.allSatisfy{(0...1).contains($0.x) && (0...1).contains($0.y)})
             XCTAssertTrue(result.props.allSatisfy{MeadowMapGenerator.distance(MeadowWorldPoint($0.x,$0.y),to:result.roads)>58})
             if let camp=result.props.first(where:{$0.asset == "CampTent"}) {
-                XCTAssertTrue((80...1200).contains(camp.x) && (110...680).contains(camp.y))
+                XCTAssertTrue((50...1230).contains(camp.x) && (110...(result.coordinateHeight-15)).contains(camp.y))
                 XCTAssertTrue(result.props.filter{$0.asset != "CampTent"}.allSatisfy{hypot($0.x-camp.x,$0.y-camp.y)>150})
             }
         } }
@@ -64,4 +70,30 @@ final class RandomMapTests: XCTestCase {
         let copy=try JSONDecoder().decode(GeneratedMeadowMap.self,from:JSONEncoder().encode(r))
         XCTAssertEqual(r,copy)
     }
+    func testTotalAndCategoryControlsAlwaysRebalance() throws {
+        for total in 4...30 {
+            let c=try MeadowMapConfiguration().changingTotal(to:total)
+            try c.validate();XCTAssertEqual(c.total,total)
+            for field in 0..<4 { for value in 0..<total {
+                let changed=try c.changingCount(field:field,to:value)
+                try changed.validate()
+                XCTAssertEqual([changed.combat,changed.boss,changed.reward,changed.empty][field],value)
+                XCTAssertEqual(1+changed.combat+changed.boss+changed.reward+changed.empty,total)
+            } }
+        }
+        var large=MeadowMapConfiguration.suggested(total:30);large.extraRoads=10
+        let small=try large.changingTotal(to:4)
+        XCTAssertEqual(small.extraRoads,MeadowMapGenerator.maximumExtraRoads(total:4))
+        XCTAssertThrowsError(try large.changingTotal(to:3))
+    }
+    func testSingleCategoryDenseMapsHaveEveryLandmark() throws {
+        for total in [4,10,30] { for field in 0..<4 { for extra in [0,MeadowMapGenerator.maximumExtraRoads(total:total)] {
+            var c=try MeadowMapConfiguration.suggested(total:total).changingCount(field:field,to:total-1)
+            c.extraRoads=extra
+            let m:GeneratedMeadowMap
+            do { m=try MeadowMapGenerator.generate(c) } catch { throw GameError("dense field=\(field): \(error)") }
+            XCTAssertEqual(m.props.filter{$0.nodeID != nil}.count,total)
+        } } }
+    }
+
 }

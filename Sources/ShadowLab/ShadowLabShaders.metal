@@ -156,7 +156,7 @@ fragment float4 meadowGroundFragment(LabRaster in [[stage_in]], constant LabUnif
     float3 grass = mix(mix(sa, sb, weight.x), mix(sc, sd, weight.x), weight.y);
     grass = mix(grass, float3(0.25, 0.34, 0.12), 0.15 + (1 - meadowNoise(p * 0.0037)) * 0.10);
     grass = mix(float3(dot(grass, float3(0.299, 0.587, 0.114))), grass, 0.88);
-    float2 maskUV = (p - float2(-160, -220)) / float2(1600, 1160);
+    float2 maskUV = (p - float2(-160, -220)) / float2(1600, settings.z > 0 ? settings.z : 1160);
     float4 mask = roadMask.sample(maskSampler, maskUV);
     float edge = meadowNoise(p * 0.23) * 0.58 + meadowNoise(p * 0.73) * 0.28 + meadowHash(floor(p * 1.6)) * 0.14;
     float coverage = smoothstep(0.10 + edge * 0.15, 0.58 + edge * 0.12, mask.r) * settings.x;
