@@ -1,0 +1,56 @@
+{
+  "deliveryCommit": "f3b76706d8a116f2012b9207bb4b400b4c907510",
+  "sourceCommit": "7c558bed56b8057300433d1222e9aeaaca04fa9f",
+  "checks": [
+    {
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/f3b76706d8a116f2012b9207bb4b400b4c907510/Downloads/MeadowJourney-b73.ipa",
+      "status": 200,
+      "mime": "application/octet-stream",
+      "bytes": 59177013,
+      "sha256": "3a49e18944e09494a5a424ba9965c4d99b68e317097c265519a3eb0a71d1d546"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/f3b76706d8a116f2012b9207bb4b400b4c907510/Downloads/MeadowJourney-build73.json",
+      "status": 200,
+      "mime": "text/plain",
+      "bytes": 475,
+      "sha256": "05cf88512b4561fc2c508b715a8ecffdac6e9623f13bc94a8afb2351b8f54e05"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/f3b76706d8a116f2012b9207bb4b400b4c907510/Art/Review/Map/random-map-v1/walk-normal.gif",
+      "status": 200,
+      "mime": "image/gif",
+      "bytes": 1497345,
+      "sha256": "2b2b04432f911f7a1ed834abee86dd6e8e32496cf64642feda17035e232cdcc7",
+      "frames": 400,
+      "frameMs": 20,
+      "loop": 0,
+      "dimensions": [
+        960,
+        540
+      ]
+    },
+    {
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/f3b76706d8a116f2012b9207bb4b400b4c907510/Art/Review/Map/random-map-v1/comparison.png",
+      "status": 200,
+      "mime": "image/png",
+      "bytes": 1039740,
+      "sha256": "82c0b29726b5e5edc7d07bfc1f0864db00e1facf75e70787dfcce57284fab086"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/f3b76706d8a116f2012b9207bb4b400b4c907510/Art/Review/Map/random-map-v1/map-10-overview.png",
+      "status": 200,
+      "mime": "image/png",
+      "bytes": 1844645,
+      "sha256": "af10c1492c7a23c79fae0054263f99a66eb06ac8025914fef37662b5218b9d1d"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/f3b76706d8a116f2012b9207bb4b400b4c907510/Media/Build73/README.md",
+      "status": 200,
+      "mime": "text/plain",
+      "bytes": 2056,
+      "sha256": "be298a1997fa907a82f12fb18850e8d5a706d8c2a2462ca488aaba6448ee889d"
+    }
+  ],
+  "installationTested": false
+}

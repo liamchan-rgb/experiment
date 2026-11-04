@@ -7,5 +7,6 @@
   "sourceCommit": "7c558bed56b8057300433d1222e9aeaaca04fa9f",
   "workflow": "https://github.com/liamchan-rgb/experiment/actions/runs/41776982266",
   "scope": "M1 exact configurable seeded generation + M2 map settings and meadow preview; no campaign settlement/save",
-  "installationTested": false
+  "installationTested": false,
+  "downloadURL": "https://raw.githubusercontent.com/liamchan-rgb/experiment/f3b76706d8a116f2012b9207bb4b400b4c907510/Downloads/MeadowJourney-b73.ipa"
 }
