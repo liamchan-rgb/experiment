@@ -1,0 +1,35 @@
+{
+  "kind": "offline existing-resource composition",
+  "scope": "4/10/30 overview; 78 production adapter checks;400 production motion samples at20ms",
+  "notDeviceOrUIKitCapture": true,
+  "shadowAtmosphereRoadMaterialApproximate": true,
+  "newCharacterArtwork": false,
+  "normalGifFrames": 400,
+  "normalGifFrameMs": 20,
+  "nativeUIRuntimeVerified": false,
+  "artApproval": null,
+  "sourceCommit": "7c558bed56b8057300433d1222e9aeaaca04fa9f",
+  "swiftTestCount": 179,
+  "quotaSeedsAndSizes": 648,
+  "adapterGeometryCases": 78,
+  "exportedGeometryCases": 9,
+  "rootArtReview": {
+    "wholeMapPNGs": [
+      "map-4-overview.png",
+      "map-10-overview.png",
+      "map-30-overview.png"
+    ],
+    "actualGifDecodedContactSheets": 10,
+    "contactCellPixels": [
+      240,
+      135
+    ],
+    "continuousPlaybackClaimed": false
+  },
+  "repairs": [
+    "Increase node jitter and road bow for less rigid layouts",
+    "Keep camp inside visible area and reserve 150px sight clearance",
+    "Reserve top marker margin; separate preview travelers by 30 world units"
+  ],
+  "gifSHA256": "2b2b04432f911f7a1ed834abee86dd6e8e32496cf64642feda17035e232cdcc7"
+}
