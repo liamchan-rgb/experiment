@@ -1,3 +1,11 @@
+## Build77 当前阻塞：GitHub Actions服务故障，尚无新IPA（2026-11-04）
+
+正式怪物头顶骰子空值崩溃已复现并修复；194纯Swift测试、四组回归、含真正diceAnchor/channels/poly的真实行程导出通过。正常怪物回合GIF238×20ms、全场关键图/4页实际解码接触表已主线程独审并公开GET，Art/Review/Battle/campaign-crashfix-v1。移动三倍、原资源/规则/存档格式保持，不要求删档。
+
+GitHub官方报告Actions degraded_performance及Incident with Actions and Pages investigating，Mac任务持续queued、无runner/步骤；不是编译失败。最新保留41864553920（源06e7555235b08bc7f2873295fea19a07c2b71896，原修复4fd9c11b7b0fe9e9c446f3c6ea6b9ec2e2250eb3），macos-15池已独立并发组；旧41862780361/41863686510已请求取消，不能说已取消或已成功。Media/Build77/build-status.json记录观测；README/日志/四个公开预览匹配回执已保存。**无Build77 IPA，不能以Build76改名或旧包顶替。**后续先查最新任务，成功后下载对应artifact、核194测试/版本1.6.50/77/CRC/ZIP2.0/arm64/来源/资源，再发布直接IPA并做完整公开GET。未运行App/模拟器/实机，用户设备稳定性未验证。
+
+战斗接入真实持久化ID后，回归和离线导出必须调用真实显示定位（含骰子），不能先映射为演练m1/m2再称显示路径已覆盖。下一步先完成修复归档交付；此后仍是M4单节点内容编辑，再行程行囊/换装与队伍配置。
+
 ## Build77 返修 · 正式怪物回合骰子空值崩溃（2026-11-04）
 
 用户报告Build76新/旧档战斗一轮闪退。旧BattleDice.swift:91对m-node-index真实怪物ID直接查feet并强制解包，独立纯Swift测试复现fatal/signal4。骰子actor/target统一走已有foot/slot映射；真实规则ID不变，玩家接敌的骰子血条避让也恢复。194纯测试通过：多节点双敌站位/1、2、5骰/多攻击及真实AI两轮、怪物回合读档与首领再生。旧复现日志和说明见Media/Build77、docs/planning/random-map-v1/build77-monster-dice-crash.md。导出与离线预览补真正diceAnchor/channels/poly调用，不能仅用规则回执通过替代显示路径覆盖。
