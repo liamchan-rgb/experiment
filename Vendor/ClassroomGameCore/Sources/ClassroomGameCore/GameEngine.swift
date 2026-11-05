@@ -164,6 +164,9 @@ struct Evaluation {
         case .refillExploration:
             guard state.phase == .exploration else { throw GameError("只在探索时手动补足行动点。") }
             for id in state.players.map(\.id) { var actor = try unit(id); try GameRules.refill(&actor, catalog: catalog); state.units[id] = actor }
+        case .configureNodeEncounter(let id, let templates): try configureNodeEncounter(id, templates: templates)
+        case .configureNodeReward(let id, let reward): try configureNodeReward(id, reward: reward)
+        case .resetNodeReward(let id): try resetNodeReward(id)
         }
         try checkOutcome()
         if let current = state.battle?.current, let actor = state.units[current], !actor.isAlive || actor.ap == 0 {
@@ -171,6 +174,40 @@ struct Evaluation {
         }
         if state.battle != nil && state.battle?.current == nil &&
             !state.pauseReasons.contains(.allPlayersDown) && !state.pauseReasons.contains(.noSurvivors) { try nextActor() }
+    }
+
+    mutating func configureNodeEncounter(_ id:Int,templates:[String])throws {
+        guard state.phase == .exploration,state.battle == nil,
+              let index=state.map.nodes.firstIndex(where:{$0.id==id}),
+              (state.map.nodes[index].kind == .combat || state.map.nodes[index].kind == .boss) else {throw GameError("只能在行程暂停时编辑战斗或首领地点。")}
+        guard !templates.isEmpty,templates.count<=3,(state.map.nodes[index].kind != .boss || templates.count==1) else {throw GameError("普通战斗需配置1—3只怪物；首领地点固定1只。")}
+        for template in templates {_ = try catalog.monster(template)}
+        let old=state.units.values.filter{$0.kind == .monster && $0.nodeID==id}.map(\.id)
+        for monster in old {state.units.removeValue(forKey:monster)}
+        for (offset,template) in templates.enumerated() {
+            let monster=try GameFactory.monster(id:"m-\(id)-\(offset+1)",templateID:template,nodeID:id,catalog:catalog)
+            state.units[monster.id]=monster
+        }
+        events.append(GameEvent("nodeEncounterConfigured",amount:templates.count,detail:"node=\(id);templates=\(templates.joined(separator:","))"))
+    }
+
+    mutating func configureNodeReward(_ id:Int,reward:NodeReward)throws {
+        guard state.phase == .exploration,state.battle == nil,
+              let index=state.map.nodes.firstIndex(where:{$0.id==id}),state.map.nodes[index].kind == .reward else {
+            throw GameError("只能在行程暂停时编辑补给地点。")
+        }
+        guard reward.coins>=0,reward.score>=0,reward.coins<=100_000,reward.score<=100_000,reward.items.count<=16,
+              reward.items.values.allSatisfy({$0>0 && $0<=1_000}) else {throw GameError("奖励数量无效，请输入非负整数。")}
+        for item in reward.items.keys {_ = try catalog.item(item)}
+        state.map.nodes[index].reward=reward
+        events.append(GameEvent("nodeRewardConfigured",amount:reward.coins,detail:"node=\(id);score=\(reward.score);claimed=\(state.map.nodes[index].rewardCompleted)"))
+    }
+    mutating func resetNodeReward(_ id:Int)throws {
+        guard state.phase == .exploration,state.battle == nil,
+              let index=state.map.nodes.firstIndex(where:{$0.id==id}),state.map.nodes[index].kind == .reward,
+              state.map.nodes[index].rewardCompleted else {throw GameError("只能在探索暂停时重置已领取的补给地点。")}
+        state.map.nodes[index].rewardCompleted=false
+        events.append(GameEvent("nodeRewardReset",detail:"node=\(id);explicit=true"))
     }
 
     mutating func start(kind: BattleKind, monsters: [String]) throws {

@@ -30,7 +30,7 @@ public struct MeadowCampaignSave:Codable,Equatable {
         let ids=Set(layout.map.nodes.map(\.id))
         let assets=Set(["CampTent","NodeCombatOutpost","NodeBossSanctum","NodeRewardCache","NodeWaystone","OakA","OakB","Pines","RockLow","RockHigh","RockSmall","Shrub","Flowers"])
         guard layout.props.allSatisfy({assets.contains($0.asset)}),archive.state.units.values.filter({$0.kind == .monster}).allSatisfy({u in
-            ["meadowStag","meadowElderStag"].contains(u.templateID) && (u.id=="m-\(u.nodeID)-1" || u.id=="m-\(u.nodeID)-2")
+            archive.catalog.monsters.contains(where:{$0.id==u.templateID}) && (u.id=="m-\(u.nodeID)-1" || u.id=="m-\(u.nodeID)-2" || u.id=="m-\(u.nodeID)-3")
         }) else {throw GameError("探索资源或怪物数据不受支持。")}
         guard Set(layout.props.compactMap(\.nodeID))==ids,layout.props.allSatisfy({$0.x.isFinite && $0.y.isFinite && $0.width.isFinite && $0.width>0}),
               layout.roads.count==layout.map.roads.count,layout.roads.allSatisfy({$0.points.count>=2 && $0.points.allSatisfy{$0.x.isFinite && $0.y.isFinite}}) else {throw GameError("探索布局数据无效。")}
@@ -165,5 +165,17 @@ public final class MeadowCampaignSession {
     public func checkpoint(camera:MeadowCampaignCamera?=nil)throws {var next=snapshot;if let camera{next.camera=camera};try writer.write(next)}
     @discardableResult public func refillExploration()throws->OperationReceipt {
         guard travel==nil else{throw GameError("移动中不能补足行动点。")};return try engine.apply(.refillExploration)
+    }
+    @discardableResult public func configureEncounter(node:Int,templates:[String])throws->OperationReceipt {
+        guard travel==nil,engine.state.battle==nil else{throw GameError("请先停下移动并结束当前战斗，再编辑地点。")}
+        return try engine.apply(.configureNodeEncounter(node:node,monsterTemplates:templates))
+    }
+    @discardableResult public func configureReward(node:Int,reward:NodeReward)throws->OperationReceipt {
+        guard travel==nil,engine.state.battle==nil else{throw GameError("请先停下移动并结束当前战斗，再编辑地点。")}
+        return try engine.apply(.configureNodeReward(node:node,reward:reward))
+    }
+    @discardableResult public func resetReward(node:Int)throws->OperationReceipt {
+        guard travel==nil,engine.state.battle==nil else{throw GameError("请先停下移动并结束当前战斗，再编辑地点。")}
+        return try engine.apply(.resetNodeReward(node:node))
     }
 }

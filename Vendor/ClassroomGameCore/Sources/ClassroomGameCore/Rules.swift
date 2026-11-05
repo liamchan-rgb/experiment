@@ -165,6 +165,9 @@ public enum GameCommand: Codable, Equatable {
     case reorderQueue([String])
     case finishBattle(winner: String?, byScore: Bool)
     case refillExploration
+    case configureNodeEncounter(node: Int, monsterTemplates: [String])
+    case configureNodeReward(node: Int, reward: NodeReward)
+    case resetNodeReward(node: Int)
 }
 public struct DiceResult: Codable, Equatable {
     public var source: String

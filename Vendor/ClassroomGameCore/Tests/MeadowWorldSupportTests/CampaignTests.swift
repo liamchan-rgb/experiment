@@ -200,4 +200,76 @@ final class CampaignTests:XCTestCase {
         XCTAssertEqual(resumed.engine.state.units["p1"]!.inventory,inventory)
     }
 
+    func testEncounterEditingIsValidatedLoggedAndPersisted()throws {
+        var config=MeadowMapConfiguration.suggested(total:4,seed:731)
+        config.combat=3;config.boss=0;config.reward=0;config.empty=0;config.extraRoads=0
+        let layout=try MeadowMapGenerator.generate(config)
+        var stored=Data()
+        let session=try MeadowCampaignSession.new(layout:layout,persist:{stored=$0})
+        let node=try XCTUnwrap(session.engine.state.map.nodes.first{$0.kind == .combat})
+        let receipt=try session.configureEncounter(node:node.id,templates:["meadowElderStag","meadowStag"])
+        XCTAssertEqual(receipt.command,.configureNodeEncounter(node:node.id,monsterTemplates:["meadowElderStag","meadowStag"]))
+        XCTAssertTrue(receipt.events.contains{$0.kind=="nodeEncounterConfigured"})
+        let monsters=session.engine.state.units.values.filter{$0.kind == .monster && $0.nodeID==node.id}
+        XCTAssertEqual(monsters.count,2)
+        XCTAssertEqual(Set(monsters.map(\.templateID)),Set(["meadowElderStag","meadowStag"]))
+        let restored=try MeadowCampaignSession(save:MeadowCampaignSave.decoded(stored))
+        XCTAssertEqual(restored.engine.state.units.values.filter{$0.kind == .monster && $0.nodeID==node.id}.count,2)
+        XCTAssertEqual(restored.engine.history.last?.events.first{$0.kind=="nodeEncounterConfigured"}?.detail,
+                       "node=\(node.id);templates=meadowElderStag,meadowStag")
+        let before=restored.engine.archive
+        XCTAssertThrowsError(try restored.configureEncounter(node:node.id,templates:[]))
+        XCTAssertThrowsError(try restored.configureEncounter(node:node.id,templates:["unknownMonster"]))
+        XCTAssertThrowsError(try restored.configureEncounter(node:9999,templates:["meadowStag"]))
+        XCTAssertEqual(restored.engine.archive,before)
+    }
+
+    func testClaimedRewardEditingRequiresExplicitResetAndPaysUpdatedValueOnce()throws {
+        var config=MeadowMapConfiguration.suggested(total:4,seed:732)
+        config.combat=0;config.boss=0;config.reward=3;config.empty=0;config.extraRoads=0
+        var stored=Data()
+        let session=try MeadowCampaignSession.new(layout:MeadowMapGenerator.generate(config),persist:{stored=$0})
+        let start=session.engine.state.units["p1"]!.nodeID
+        let node=try XCTUnwrap(session.engine.state.map.nodes.first{
+            $0.kind == .reward && session.engine.state.map.neighbors(start).contains($0.id)
+        })
+        _=try session.beginTravel(to:node.id);_=try session.advanceTravel(distance:100_000)
+        XCTAssertTrue(session.engine.state.map.nodes.first{$0.id==node.id}!.rewardCompleted)
+        let afterOriginalClaim=session.engine.state.units["p1"]!
+        let updated=NodeReward(coins:37,score:8,items:["smallPotion":2])
+        let edit=try session.configureReward(node:node.id,reward:updated)
+        XCTAssertTrue(edit.events.contains{$0.kind=="nodeRewardConfigured"})
+        XCTAssertTrue(session.engine.state.map.nodes.first{$0.id==node.id}!.rewardCompleted)
+        XCTAssertEqual(session.engine.state.units["p1"]!.coins,afterOriginalClaim.coins)
+        XCTAssertEqual(session.engine.state.units["p1"]!.score,afterOriginalClaim.score)
+        XCTAssertEqual(session.engine.state.units["p1"]!.inventory,afterOriginalClaim.inventory)
+        let restored=try MeadowCampaignSession(save:MeadowCampaignSave.decoded(stored))
+        XCTAssertEqual(restored.engine.state.map.nodes.first{$0.id==node.id}!.reward,updated)
+        XCTAssertTrue(restored.engine.state.map.nodes.first{$0.id==node.id}!.rewardCompleted)
+        let beforeReset=restored.engine.state.units["p1"]!
+        let reset=try restored.resetReward(node:node.id)
+        XCTAssertTrue(reset.events.contains{$0.kind=="nodeRewardReset"})
+        XCTAssertFalse(restored.engine.state.map.nodes.first{$0.id==node.id}!.rewardCompleted)
+        XCTAssertEqual(restored.engine.state.units["p1"]!.coins,beforeReset.coins)
+        XCTAssertEqual(restored.engine.state.units["p1"]!.score,beforeReset.score)
+        XCTAssertEqual(restored.engine.state.units["p1"]!.inventory,beforeReset.inventory)
+        _=try restored.beginTravel(to:start);_=try restored.advanceTravel(distance:100_000)
+        let beforeUpdatedClaim=restored.engine.state.units["p1"]!
+        _=try restored.beginTravel(to:node.id);_=try restored.advanceTravel(distance:100_000)
+        let afterUpdatedClaim=restored.engine.state.units["p1"]!
+        XCTAssertEqual(afterUpdatedClaim.coins,beforeUpdatedClaim.coins+37)
+        XCTAssertEqual(afterUpdatedClaim.score,beforeUpdatedClaim.score+8)
+        XCTAssertEqual(afterUpdatedClaim.inventory["smallPotion"] ?? 0,(beforeUpdatedClaim.inventory["smallPotion"] ?? 0)+2)
+        XCTAssertTrue(restored.engine.state.map.nodes.first{$0.id==node.id}!.rewardCompleted)
+        _=try restored.beginTravel(to:start);_=try restored.advanceTravel(distance:100_000)
+        let beforeRepeat=restored.engine.state.units["p1"]!
+        _=try restored.beginTravel(to:node.id);_=try restored.advanceTravel(distance:100_000)
+        XCTAssertEqual(restored.engine.state.units["p1"]!.coins,beforeRepeat.coins)
+        XCTAssertEqual(restored.engine.state.units["p1"]!.score,beforeRepeat.score)
+        XCTAssertEqual(restored.engine.state.units["p1"]!.inventory,beforeRepeat.inventory)
+        let saved=try MeadowCampaignSession(save:MeadowCampaignSave.decoded(stored))
+        XCTAssertEqual(saved.engine.state.map.nodes.first{$0.id==node.id}!.reward,updated)
+        XCTAssertTrue(saved.engine.state.map.nodes.first{$0.id==node.id}!.rewardCompleted)
+    }
+
 }

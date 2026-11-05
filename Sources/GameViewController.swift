@@ -10,6 +10,7 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
     private let campaignRefill=MeadowPreviewPalette.button("补足行动")
     private let campaignItems=MeadowPreviewPalette.button("道具")
     private let campaignBattle=MeadowPreviewPalette.button("继续战斗")
+    private let campaignEdit=MeadowPreviewPalette.button("编辑地点")
     private let campaignHUD=UIView()
     private let campaignHealth=[MeadowBattleResourceBar(),MeadowBattleResourceBar()]
     private let campaignAP=[MeadowBattleActionPointsView(),MeadowBattleActionPointsView()]
@@ -301,11 +302,16 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
             let footer=view.bounds.height-max(inset.bottom,10)-44
             campaignHUD.frame=CGRect(x:view.bounds.width-max(inset.right,10)-344,y:footer-139,width:334,height:88)
             for i in 0..<2 {campaignHealth[i].frame=CGRect(x:8,y:CGFloat(i)*42+3,width:200,height:36);campaignAP[i].frame=CGRect(x:213,y:CGFloat(i)*42+3,width:112,height:36)}
-            campaignRefill.frame=CGRect(x:max(inset.left,10)+4,y:footer-46,width:120,height:38)
-            campaignItems.frame=campaignRefill.frame.offsetBy(dx:128,dy:0);campaignBattle.frame=campaignItems.frame.offsetBy(dx:128,dy:0)
+            let controlsX=max(inset.left,10)+4,controlsRight=view.bounds.width-max(inset.right,10)-8,gap:CGFloat=6
+            let buttonWidth=max(1,(controlsRight-controlsX-gap*3)/4),buttonY=footer-46
+            campaignRefill.frame=CGRect(x:controlsX,y:buttonY,width:buttonWidth,height:38)
+            campaignItems.frame=CGRect(x:controlsX+buttonWidth+gap,y:buttonY,width:buttonWidth,height:38)
+            campaignBattle.frame=CGRect(x:controlsX+(buttonWidth+gap)*2,y:buttonY,width:buttonWidth,height:38)
+            campaignEdit.frame=CGRect(x:controlsX+(buttonWidth+gap)*3,y:buttonY,width:buttonWidth,height:38)
         }
+        let summaryMaxX=campaign == nil ? view.bounds.width-max(inset.right,10)-8:campaignEdit.frame.minX-8
         randomMapSummary.frame=CGRect(x:randomMapButton.frame.maxX+8,y:randomMapButton.frame.minY,
-            width:max(1,view.bounds.width-max(inset.right,10)-randomMapButton.frame.maxX-16),height:38)
+            width:max(1,summaryMaxX-randomMapButton.frame.maxX-8),height:38)
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -740,9 +746,12 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
     private func configureCampaignControls() {
         MeadowPreviewPalette.stylePanel(campaignHUD);view.addSubview(campaignHUD)
         for i in 0..<2 {campaignHUD.addSubview(campaignHealth[i]);campaignHUD.addSubview(campaignAP[i])}
-        for b in [campaignRefill,campaignItems,campaignBattle] {view.addSubview(b)}
+        for b in [campaignRefill,campaignItems,campaignBattle,campaignEdit] {view.addSubview(b)}
+        campaignEdit.accessibilityIdentifier="campaignNodeEditor"
+        campaignEdit.accessibilityLabel="编辑行程节点的遭遇怪物或补给奖励"
         campaignRefill.addAction(UIAction{[weak self] _ in self?.refillCampaign()},for:.touchUpInside)
         campaignBattle.addAction(UIAction{[weak self] _ in self?.setBattlePreviewActive(true)},for:.touchUpInside)
+        campaignEdit.addAction(UIAction{[weak self] _ in self?.showEditableNodes()},for:.touchUpInside)
         campaignItems.showsMenuAsPrimaryAction=true
         NotificationCenter.default.addObserver(self,selector:#selector(backgroundCampaign),name:UIApplication.willResignActiveNotification,object:nil)
         NotificationCenter.default.addObserver(self,selector:#selector(foregroundCampaign),name:UIApplication.didBecomeActiveNotification,object:nil)
@@ -764,15 +773,109 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
         do{try campaign.refillExploration();refreshCampaignStatus();showCampaignMessage("小队行动点已补足")}
         catch{showCampaignMessage(error.localizedDescription)}
     }
-    private func refreshCampaignStatus(allowBattleOpen:Bool=true) {
+        private func showEditableNodes() {
+        guard let campaign else{return}
+        guard campaign.travel==nil,campaign.engine.state.battle==nil else{showCampaignMessage("请先停下移动并结束战斗。");return}
+        let menu=UIAlertController(title:"编辑地点内容",message:"只编辑当前行程中的怪物或补给，位置与道路保持不变。",preferredStyle:.actionSheet)
+        for node in campaign.engine.state.map.nodes.sorted(by:{$0.id<$1.id}) where node.kind != .start && node.kind != .empty {
+            let kind:[NodeKind:String]=[.combat:"战斗",.boss:"首领",.reward:"补给",.empty:"空地"]
+            let suffix=node.kind == .reward && node.rewardCompleted ? " · 已领取":""
+            menu.addAction(UIAlertAction(title:"\(node.name) · \(kind[node.kind] ?? "地点")\(suffix)",style:.default){[weak self] _ in self?.editNodeContents(node.id)})
+        }
+        menu.addAction(UIAlertAction(title:"取消",style:.cancel))
+        menu.popoverPresentationController?.sourceView=campaignEdit
+        menu.popoverPresentationController?.sourceRect=campaignEdit.bounds
+        present(menu,animated:true)
+    }
+    private func editNodeContents(_ id:Int) {
+        guard let campaign,let node=campaign.engine.state.map.nodes.first(where:{$0.id==id}) else{return}
+        switch node.kind {
+        case .combat,.boss:chooseEncounter(node:id,boss:node.kind == .boss)
+        case .reward:chooseRewardAction(node:node)
+        case .start,.empty:showCampaignMessage("起点和空地点没有可编辑的怪物或补给内容。")
+        }
+    }
+    private func chooseRewardAction(node:MapNode) {
+        let menu=UIAlertController(title:node.name,message:node.rewardCompleted ? "已领取的地点不会因修改内容再次发奖。":"修改奖励内容，或明确重置一次性领取状态。",preferredStyle:.actionSheet)
+        menu.addAction(UIAlertAction(title:"编辑金币、积分与药水",style:.default){[weak self] _ in self?.editReward(node:node)})
+        if node.rewardCompleted {
+            menu.addAction(UIAlertAction(title:"重置已领取状态",style:.destructive){[weak self] _ in
+                let confirm=UIAlertController(title:"重新开放补给？",message:"明确重置后，小队再次抵达此处时可领取当前奖励一次。",preferredStyle:.alert)
+                confirm.addAction(UIAlertAction(title:"取消",style:.cancel))
+                confirm.addAction(UIAlertAction(title:"重置状态",style:.destructive){_ in
+                    guard let campaign=self?.campaign else{return}
+                    do{_=try campaign.resetReward(node:node.id);self?.scene.refreshCampaign();self?.refreshCampaignStatus();self?.showCampaignMessage("已记录重置；再次抵达时可领取一次。")}
+                    catch{self?.showCampaignMessage(error.localizedDescription)}
+                })
+                self?.present(confirm,animated:true)
+            })
+        }
+        menu.addAction(UIAlertAction(title:"取消",style:.cancel))
+        menu.popoverPresentationController?.sourceView=campaignEdit
+        menu.popoverPresentationController?.sourceRect=campaignEdit.bounds
+        present(menu,animated:true)
+    }
+    private func chooseEncounter(node:Int,boss:Bool) {
+        guard let campaign else{return}
+        let menu=UIAlertController(title:"替换地点怪物",message:"替换会记录在行程操作历史中，并重置本地点的怪物。",preferredStyle:.actionSheet)
+        let options:[(String,String)]=[("林地鹿灵","meadowStag"),("古树鹿王","meadowElderStag")]
+        for (name,template) in options {
+            for count in (boss ? [1]:[1,2,3]) {
+                menu.addAction(UIAlertAction(title:"\(name) ×\(count)",style:.default){[weak self] _ in
+                    let confirm=UIAlertController(title:"确认替换？",message:"\(name) ×\(count) 将成为地点 \(node) 的新遭遇。",preferredStyle:.alert)
+                    confirm.addAction(UIAlertAction(title:"取消",style:.cancel))
+                    confirm.addAction(UIAlertAction(title:"替换",style:.destructive){_ in
+                        do {
+                            _=try campaign.configureEncounter(node:node,templates:Array(repeating:template,count:count))
+                            self?.scene.refreshCampaign();self?.refreshCampaignStatus();self?.showCampaignMessage("地点 \(node) 的遭遇已更新并保存。")
+                        } catch {self?.showCampaignMessage(error.localizedDescription)}
+                    })
+                    self?.present(confirm,animated:true)
+                })
+            }
+        }
+        menu.addAction(UIAlertAction(title:"取消",style:.cancel))
+        menu.popoverPresentationController?.sourceView=campaignEdit
+        menu.popoverPresentationController?.sourceRect=campaignEdit.bounds
+        present(menu,animated:true)
+    }
+    private func editReward(node:MapNode) {
+        guard let campaign else{return}
+        let reward=node.reward ?? NodeReward()
+        let alert=UIAlertController(title:"编辑补给内容",message:node.rewardCompleted ? "此地点已领取。修改内容会保留已领取状态，不会再次发奖。":"设置金币、积分和物品数量。",preferredStyle:.alert)
+        let values=[String(reward.coins),String(reward.score),String(reward.items["smallPotion"] ?? 0),String(reward.items["largePotion"] ?? 0),String(reward.items["shieldPotion"] ?? 0)]
+        let labels=["金币","积分","小型药水","大型药水","护盾药水"]
+        for (i,label) in labels.enumerated() {
+            alert.addTextField { field in
+                field.placeholder=label;field.text=values[i];field.keyboardType = .numberPad;field.accessibilityLabel=label
+            }
+        }
+        alert.addAction(UIAlertAction(title:"取消",style:.cancel))
+        alert.addAction(UIAlertAction(title:"保存内容",style:.default){[weak self,weak alert] _ in
+            guard let fields=alert?.textFields,fields.count==5 else{return}
+            let parsed=fields.compactMap{Int($0.text ?? "")}
+            guard parsed.count==5,parsed.allSatisfy({$0>=0}),parsed[0]<=100_000,parsed[1]<=100_000,parsed.dropFirst(2).allSatisfy({$0<=1000}) else {
+                self?.showCampaignMessage("请输入非负整数；药水最多1000，金币和积分最多100000。");return
+            }
+            let v=parsed;var items=[String:Int]()
+            for (key,count) in [("smallPotion",v[2]),("largePotion",v[3]),("shieldPotion",v[4])] where count>0 {items[key]=count}
+            do {
+                _=try campaign.configureReward(node:node.id,reward:NodeReward(coins:v[0],score:v[1],items:items))
+                self?.scene.refreshCampaign();self?.refreshCampaignStatus();self?.showCampaignMessage(node.rewardCompleted ? "补给内容已更新；已领取状态保留。":"补给内容已更新并保存。")
+            } catch {self?.showCampaignMessage(error.localizedDescription)}
+        })
+        present(alert,animated:true)
+    }
+
+private func refreshCampaignStatus(allowBattleOpen:Bool=true) {
         guard let campaign else{return}
         for control in [shadowLabButton,gaitTestButton,battlePreviewButton,p1AppearanceButton] {control.isHidden=true}
         let state=campaign.engine.state,players=state.players
         randomMapSummary.text="已探索 \(state.map.revealed.count)/\(state.map.nodes.count) · 金币 \(players.reduce(0){$0+$1.coins}) · 积分 \(players.reduce(0){$0+$1.score})"+(campaign.cleared ? " · 敌人已清理":"")
         let busy=campaign.travel != nil || state.battle != nil
-        campaignRefill.isEnabled = !busy;campaignItems.isEnabled = !busy
+        campaignRefill.isEnabled = !busy;campaignItems.isEnabled = !busy;campaignEdit.isEnabled = !busy
         campaignBattle.isHidden=state.battle==nil || battlePreviewActive
-        for view in [campaignHUD,campaignRefill,campaignItems,randomMapSummary] {view.isHidden=battlePreviewActive}
+        for view in [campaignHUD,campaignRefill,campaignItems,campaignEdit,randomMapSummary] {view.isHidden=battlePreviewActive}
         playButton.isHidden=battlePreviewActive || campaign.travel==nil;resetButton.isHidden=true
         playButton.isPlaying=campaign.isMoving
         for i in players.indices {
