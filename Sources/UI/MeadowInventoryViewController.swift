@@ -242,6 +242,8 @@ final class MeadowCampaignInventoryViewController:UIViewController {
         left.alwaysBounceVertical=true;list.alwaysBounceVertical=true;detail.alwaysBounceVertical=true
         middle.addSubview(filterButton);middle.addSubview(list);right.addSubview(detail);detail.addSubview(detailContent);right.addSubview(primary)
         close.addAction(UIAction{[weak self] _ in self?.dismiss(animated:true){self?.onClose?()}},for:.touchUpInside)
+        for state in [UIControl.State.normal,.selected] {members.setTitleTextAttributes([.font:MeadowPreviewPalette.font(16),.foregroundColor:MeadowPreviewPalette.ink],for:state)}
+        members.selectedSegmentTintColor=UIColor(red:0.40,green:0.35,blue:0.19,alpha:1)
         members.addAction(UIAction{[weak self] _ in
             guard let self else{return};self.actor=self.members.selectedSegmentIndex==1 ? "p2":"p1";self.target=self.actor;self.selected=nil;self.filter="all";self.refresh()
         },for:.valueChanged)
@@ -262,6 +264,8 @@ final class MeadowCampaignInventoryViewController:UIViewController {
             let row=MeadowPreviewPalette.button(e.name+"\n背包 ×\(e.quantity)"+(e.equipped ? " · 已装备":""))
             row.configuration?.title=e.name;row.configuration?.subtitle="背包 ×\(e.quantity)"+(e.equipped ? " · 已装备":"")
             row.configuration?.baseBackgroundColor=e.id==selected ? MeadowPreviewPalette.gold:MeadowPreviewPalette.panel
+            row.configuration?.baseForegroundColor=e.id==selected ? MeadowPreviewPalette.panel:MeadowPreviewPalette.ink
+            row.configuration?.subtitleTextAttributesTransformer=UIConfigurationTextAttributesTransformer { value in var v=value;v.font=MeadowPreviewPalette.font(15,.medium);return v }
             row.accessibilityIdentifier="campaignInventoryItem-"+e.id
             row.addAction(UIAction{[weak self] _ in self?.selected=e.id;self?.refresh()},for:.touchUpInside)
             list.addSubview(row);rows.append(row)
@@ -320,6 +324,8 @@ final class MeadowCampaignInventoryViewController:UIViewController {
             }catch{text(error.localizedDescription)}}
         }else{
             let targets=UISegmentedControl(items:["对 P1 使用","对 P2 使用"]);targets.selectedSegmentIndex=target=="p2" ? 1:0
+            for state in [UIControl.State.normal,.selected] {targets.setTitleTextAttributes([.font:MeadowPreviewPalette.font(16),.foregroundColor:MeadowPreviewPalette.ink],for:state)}
+            targets.selectedSegmentTintColor=UIColor(red:0.40,green:0.35,blue:0.19,alpha:1)
             targets.frame=CGRect(x:12,y:y,width:width-24,height:36);detailContent.addSubview(targets);y+=48
             targets.addAction(UIAction{[weak self,weak targets] _ in self?.target=targets?.selectedSegmentIndex==1 ? "p2":"p1";self?.view.setNeedsLayout()},for:.valueChanged)
             primary.configuration?.title=item.kind == .revivalStone ? "复活队友 · 2 AP":"使用补给 · 1 AP"
