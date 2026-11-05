@@ -511,7 +511,10 @@ final class CampaignTests:XCTestCase {
         for _ in 0..<40 {
             if encounter.round>=3{break}
             let actor=try XCTUnwrap(encounter.current)
-            if s.engine.state.units[actor]?.kind == .player {try s.engine.apply(.endTurn(actor:actor,timedOut:false))}
+            if s.engine.state.units[actor]?.kind == .player {
+                let preview=try XCTUnwrap(encounter.prepare(.attack,target:encounter.monsterIDs[0]));XCTAssertEqual(preview.targetTemplateID,s.engine.state.units[preview.target]?.templateID);encounter.cancel()
+                try s.engine.apply(.endTurn(actor:actor,timedOut:false))
+            }
             else {
                 for id in s.playerIDs {let hp=try GameRules.attributes(s.engine.state.units[id]!,catalog:s.engine.catalog).maximumHealth;try s.engine.apply(.editResources(unit:id,value:ResourcePatch(health:hp,shield:8)))}
                 let before=s.engine.archive,intent=try XCTUnwrap(encounter.prepareMonsterStep())

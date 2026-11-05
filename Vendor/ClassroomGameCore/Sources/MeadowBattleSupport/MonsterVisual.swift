@@ -6,6 +6,11 @@ public struct MonsterVisualSpec:Equatable {
     public let id:String
     public var asset:String { "MeadowMonster"+id.prefix(1).uppercased()+id.dropFirst() }
     public var scale:Double { ["caveTroll","ruinDragon"].contains(id) ? 1.04:0.88 }
+    public var hitAnchor:PartyPoint {
+        let points:[String:PartyPoint]=["slime":PartyPoint(110,140),"wolf":PartyPoint(110,126),"goblinArcher":PartyPoint(198,129),"stoneGuardian":PartyPoint(183,128),"caveTroll":PartyPoint(190,124),"ruinDragon":PartyPoint(152,145)]
+        return points[id] ?? PartyPoint(94,152)
+    }
+    public func hitPoint(at foot:PartyPoint)->PartyPoint {PartyPoint(foot.x+(hitAnchor.x-178.5)*scale,foot.y+(hitAnchor.y-240)*scale)}
     public var contactX:Double { ["slime":20,"wolf":6,"stoneGuardian":72,"caveTroll":50][id].map(Double.init) ?? 42 }
     public func shieldCapacity(catalog:GameCatalog)->Int {
         guard let definition=try? catalog.monster(id) else{return 8}

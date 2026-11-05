@@ -91,6 +91,7 @@ for index,name in enumerate(names):
    start=None
  if not runs:runs=[[178.5,240]]
  record={'id':name,'name':titles[index],'asset':asset,'canvas':[384,256],'anchor':[178.5,240],'deathCanvas':[512,320],'deathAnchor':[178.5,272],'scale':1.04 if name in ['caveTroll','ruinDragon'] else .88,'contacts':runs,'clips':offsets,'deathCount':deathCount,'sourceCropSize':list(parts[name].size)}
+ record['hitAnchor']={'slime': [110, 140], 'wolf': [110, 126], 'goblinArcher': [198, 129], 'stoneGuardian': [183, 128], 'caveTroll': [190, 124], 'ruinDragon': [152, 145]}[name]
  records.append(record)
  print(name,master.getbbox(),len(tiles),flush=True)
 (O/'manifest.json').write_text(json.dumps({'version':1,'displayTargetFPS':60,'attackSeconds':.96,'deathSeconds':.8,'records':records,'animationMethod':'registered continuous full-surface deformation; not separately redrawn limbs','sourceApproval':None,'appRun':False},ensure_ascii=False,indent=2)+'\n')

@@ -48,17 +48,19 @@ public enum PartyVisual {
     public static func smooth(_ x:Double)->Double { let t=min(1,max(0,x));return t*t*(3-2*t) }
     public static func pulse(_ age:Double,_ start:Double,_ peak:Double,_ end:Double)->Double { age<peak ? smooth((age-start)/(peak-start)):1-smooth((age-peak)/(end-peak)) }
     public static func chest(_ id:String)->PartyPoint { let p=foot(id)!;return PartyPoint(p.x+5*heroScale,p.y-70*heroScale) }
-    public static func skillEffectCenter(targets:[String],actor:String)->PartyPoint {
+    public static func skillEffectCenter(targets:[String],actor:String,templates:[String:String]=[:])->PartyPoint {
         let points=targets.compactMap { id -> PartyPoint? in
             guard let foot=foot(id) else { return nil }
             let monster=id.hasPrefix("m")
+            if monster,let spec=MonsterVisualSpec.find(templates[id]){return spec.hitPoint(at:foot)}
             return PartyPoint(foot.x+(monster ? 13.5*enemyScale:5*heroScale),foot.y-(monster ? 112*enemyScale:86*heroScale))
         }
         guard !points.isEmpty else { return foot(actor).map { PartyPoint($0.x,$0.y-70*heroScale) } ?? PartyPoint(width/2,height/2) }
         return PartyPoint(points.reduce(0){$0+$1.x}/Double(points.count),points.reduce(0){$0+$1.y}/Double(points.count))
     }
-    public static func hitPoint(target:String,shielded:Bool=false,weaponID:String?=nil)->PartyPoint {
+    public static func hitPoint(target:String,shielded:Bool=false,weaponID:String?=nil,templateID:String?=nil)->PartyPoint {
         let foot=foot(target)!
+        if target.hasPrefix("m"),let spec=MonsterVisualSpec.find(templateID){return spec.hitPoint(at:foot)}
         if ["greatSword","legendaryStaff"].contains(weaponID ?? ""),target.hasPrefix("m") { return PartyPoint(foot.x+(94-178.5)*enemyScale,foot.y+(152-240)*enemyScale) }
         return PartyPoint(foot.x+(target.hasPrefix("m") ? -80:shielded ? (5+240*0.41)*heroScale:10),foot.y-(target.hasPrefix("m") ? 72:65))
     }
@@ -118,22 +120,25 @@ public enum PartyVisual {
     public static func travel(_ intent:PartyIntent?,age:Double,shielded:Bool=false)->PartyPoint {
         guard let intent,intent.action.isOffensive,let from=foot(intent.actor),let to=foot(intent.target) else { return PartyPoint(0,0) }
         if intent.action == .dragonFlame { return PartyPoint(0,0) }
+        let legacy=hitPoint(target:intent.target,shielded:shielded,weaponID:intent.weaponID)
+        let registered=hitPoint(target:intent.target,shielded:shielded,weaponID:intent.weaponID,templateID:intent.targetTemplateID)
+        let correction=PartyPoint(registered.x-legacy.x,registered.y-legacy.y)
         if intent.action == .runeSlash {
             let approach=smooth(age/0.82),retreat=1-smooth((age-1.25)/0.52),p=min(approach,retreat)
-            return PartyPoint((to.x-155-from.x)*p,(to.y-12-from.y)*p)
+            return PartyPoint((to.x-155+correction.x-from.x)*p,(to.y-12+correction.y-from.y)*p)
         }
         if intent.ranged || intent.magical || intent.action.usesRangedMotion || intent.action.isRune { return PartyPoint(0,0) }
         if intent.weaponID=="greatSword",!intent.enemy,intent.action != .ambush {
-            return GreatSwordRig.travel(age:age,from:from,to:hitPoint(target:intent.target,shielded:shielded,weaponID:intent.weaponID),scale:heroScale)
+            return GreatSwordRig.travel(age:age,from:from,to:registered,scale:heroScale)
         }
         if intent.action == .ambush {
             let p=age<0.72 ? smooth((age-0.22)/0.50):1-smooth((age-0.84)/0.58)
-            return PartyPoint((to.x-140-from.x)*p,(to.y-12-from.y)*p)
+            return PartyPoint((to.x-140+correction.x-from.x)*p,(to.y-12+correction.y-from.y)*p)
         }
         let t=intent.enemy ? age/0.96 : max(0,age-0.4-min(0.1,max(0,age-1.048)))/1.2
         let p=t<0.4 ? smooth((t-0.12)/0.28) : t<0.66 ? 1:1-smooth((t-0.66)/0.34)
         if intent.enemy { let spec=MonsterVisualSpec.find(intent.monsterTemplateID),scale=spec?.scale ?? enemyScale,contact=spec?.contactX ?? 42;let move=pulse(age,0.08,0.46,0.96);return PartyPoint((to.x+(178.5-contact)*scale+(shielded ? (5+240*0.41)*heroScale:0)-from.x)*move,(to.y-from.y)*move) }
-        return PartyPoint((to.x-140-from.x)*p,(to.y-12-from.y)*p)
+        return PartyPoint((to.x-140+correction.x-from.x)*p,(to.y-12+correction.y-from.y)*p)
     }
 }
 

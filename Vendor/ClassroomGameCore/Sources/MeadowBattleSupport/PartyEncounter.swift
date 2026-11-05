@@ -66,10 +66,11 @@ public struct PartyIntent {
     public var monsterTemplateID:String?=nil
     public var enemyRanged:Bool=false
     public var sourceSkillID:String?=nil
+    public var targetTemplateID:String?=nil
     public var impactAge:Double { enemy ? 0.46:action.impact }
     public var visualDuration:Double { enemy && action == .attack ? 1.10:action.duration }
-    public init(id:String,action:PartyAction,actor:String,target:String,targets:[String],command:GameCommand,enemy:Bool,weaponID:String?,monsterTemplateID:String?=nil,enemyRanged:Bool=false,sourceSkillID:String?=nil) {
-        self.id=id;self.action=action;self.actor=actor;self.target=target;self.targets=targets;self.command=command;self.enemy=enemy;self.weaponID=weaponID;self.monsterTemplateID=monsterTemplateID;self.enemyRanged=enemyRanged;self.sourceSkillID=sourceSkillID
+    public init(id:String,action:PartyAction,actor:String,target:String,targets:[String],command:GameCommand,enemy:Bool,weaponID:String?,monsterTemplateID:String?=nil,enemyRanged:Bool=false,sourceSkillID:String?=nil,targetTemplateID:String?=nil) {
+        self.id=id;self.action=action;self.actor=actor;self.target=target;self.targets=targets;self.command=command;self.enemy=enemy;self.weaponID=weaponID;self.monsterTemplateID=monsterTemplateID;self.enemyRanged=enemyRanged;self.sourceSkillID=sourceSkillID;self.targetTemplateID=targetTemplateID
     }
     public var magical:Bool { weaponID=="legendaryStaff" && !enemy && action.visual=="attack" && action != .starlightPulse }
     public var ranged:Bool { enemyRanged || weaponID=="huntingBow" && !enemy && action.isOffensive && !action.isRune && action != .dragonFlame && action != .starlightPulse }
@@ -157,7 +158,7 @@ public final class PartyEncounter {
         else if action == .sweep { targets=state.players.filter { $0.isAlive && $0.nodeID==state.units[target]?.nodeID }.map(\.id).sorted() }
         else if action == .regeneration || action == .breather || action == .simpleGuard { targets=[actor] }
         else { targets=[target] }
-        let intent=PartyIntent(id:sessionID+"/"+String(serial),action:action,actor:actor,target:target,targets:targets,command:command,enemy:state.units[actor]?.kind == .monster,weaponID:state.units[actor]?.equipment.weapon)
+        let intent=PartyIntent(id:sessionID+"/"+String(serial),action:action,actor:actor,target:target,targets:targets,command:command,enemy:state.units[actor]?.kind == .monster,weaponID:state.units[actor]?.equipment.weapon,targetTemplateID:state.units[target]?.templateID)
         // Resolve once in an isolated transaction at confirmation. Live HP/AP,
         // RNG and history remain unchanged until the visible impact commits it.
         guard let staged=try? GameEngine(catalog:engine.catalog,state:state,history:engine.history),
@@ -189,7 +190,7 @@ public final class PartyEncounter {
             return before.health != after.health || before.shield != after.shield || before.damageBuff != after.damageBuff
         }
         let targets=changed.isEmpty ? [nextEnemyTarget() ?? "p1"]:changed
-        let intent=PartyIntent(id:id,action:action,actor:actor,target:targets[0],targets:targets,command:.monsterStep,enemy:true,weaponID:nil,monsterTemplateID:state.units[actor]?.templateID,enemyRanged:action == .attack && ((try? engine.catalog.monster(state.units[actor]!.templateID).attack.range) ?? 0)>0,sourceSkillID:skillID)
+        let intent=PartyIntent(id:id,action:action,actor:actor,target:targets[0],targets:targets,command:.monsterStep,enemy:true,weaponID:nil,monsterTemplateID:state.units[actor]?.templateID,enemyRanged:action == .attack && ((try? engine.catalog.monster(state.units[actor]!.templateID).attack.range) ?? 0)>0,sourceSkillID:skillID,targetTemplateID:state.units[targets[0]]?.templateID)
         confirmedEngine=staged;confirmedReceipt=receipt;pending=intent;return intent
     }
     public func cancel() { pending=nil;confirmedEngine=nil;confirmedReceipt=nil }

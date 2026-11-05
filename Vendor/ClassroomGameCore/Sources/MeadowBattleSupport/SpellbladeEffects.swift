@@ -104,12 +104,12 @@ public enum SpellbladeEffects {
         let peak=BattleDice.darkness(action),hold=action.impact+0.28
         return (from+(peak-from)*PartyVisual.smooth(age/0.30))*(1-PartyVisual.smooth((age-hold)/0.78))
     }
-    public static func sample(action:PartyAction,age:Double,actor:String,target:String,recipients:[RuneRecipient],weaponID:String?=nil,targets:[String]=[])->RuneEffectSample {
+    public static func sample(action:PartyAction,age:Double,actor:String,target:String,recipients:[RuneRecipient],weaponID:String?=nil,targets:[String]=[],templates:[String:String]=[:])->RuneEffectSample {
         var result=RuneEffectSample()
         guard age>=0,age<action.duration else { return result }
-        if action == .dragonFlame { return dragonFlame(age:age,targetIDs:targets.isEmpty ? [target]:targets) }
+        if action == .dragonFlame { return dragonFlame(age:age,targetIDs:targets.isEmpty ? [target]:targets,templates:templates) }
         guard action.isRune,let actorFoot=PartyVisual.foot(actor),let targetFoot=PartyVisual.foot(target) else { return result }
-        let hit=action.impact,at=PartyVisual.hitPoint(target:target,weaponID:weaponID),source=PartyPoint(actorFoot.x+42,actorFoot.y-73)
+        let hit=action.impact,at=PartyVisual.hitPoint(target:target,weaponID:weaponID,templateID:templates[target]),source=PartyPoint(actorFoot.x+42,actorFoot.y-73)
         if action == .runeSlash {
             // Frame 010 begins exactly at the authoritative 1.048s damage receipt.
             // Its authored burst center is offset inside the 256px canvas, so
@@ -184,7 +184,7 @@ public enum SpellbladeEffects {
 
     /// The source sequence begins at the exact damage receipt. Fractional frame
     /// blending keeps its 20 authored poses smooth at the requested 60 Hz.
-    private static func dragonFlame(age:Double,targetIDs:[String])->RuneEffectSample {
+    private static func dragonFlame(age:Double,targetIDs:[String],templates:[String:String])->RuneEffectSample {
         var result=RuneEffectSample()
         let hit=PartyAction.dragonFlame.impact,elapsed=age-hit
         guard elapsed>=0,elapsed<1.95 else { return result }
@@ -197,7 +197,7 @@ public enum SpellbladeEffects {
         let tail=elapsed>sequenceDuration ? 1-PartyVisual.smooth((elapsed-sequenceDuration)/0.15):1
         for (index,id) in targetIDs.enumerated() {
             guard let foot=PartyVisual.foot(id) else { continue }
-            let body=PartyVisual.hitPoint(target:id)
+            let body=PartyVisual.hitPoint(target:id,templateID:templates[id])
             let center=body,spriteSize=280.0
             let lowerWeight=(lower==upper ? 1:1-mix)*tail
             if lowerWeight>0.001 { result.spriteLayers.append(.init(asset:String(format:"MeadowDragonFlame%02d",lower+1),center:center,size:spriteSize,alpha:lowerWeight)) }

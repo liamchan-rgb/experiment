@@ -657,6 +657,8 @@ extension Export {
                 let enc=JSONEncoder()
                 func point(_ p:PartyPoint)->[Double]{[p.x,p.y]}
                 var row:[String:Any]=["species":id,"frame":frame,"time":time,"poseIndex":index,"death":death != nil,"visible":death.map{$0<MonsterVisualSpec.deathDuration} ?? true,"foot":point(foot),"offset":point(offset),"scale":spec.scale,"phase":death != nil ? "death":attack != nil ? "attack":hurt != nil ? "hurt":cast != nil ? "cast":"idle"]
+                let incoming=PartyIntent(id:"incoming",action:.attack,actor:"p1",target:actor,targets:[actor],command:.attack(actor:"p1",target:actor),enemy:false,weaponID:"trainingSword",targetTemplateID:id)
+                row["registeredHit"]=point(PartyVisual.hitPoint(target:actor,templateID:id));row["hitAnchor"]=point(spec.hitAnchor);row["incomingTravel"]=point(PartyVisual.travel(incoming,age:1.048))
                 if let arrow{row["projectile"]=try JSONSerialization.jsonObject(with:enc.encode(arrow))}
                 rows.append(row)
             }

@@ -135,7 +135,7 @@ final class MeadowPartyStageView:UIView {
             let hitAge=value.impactAge
             let groundYs=value.targets.compactMap { PartyVisual.foot($0)?.y }
             let groundY=groundYs.isEmpty ? (PartyVisual.foot(value.actor)?.y ?? PartyVisual.height):groundYs.reduce(0,+)/Double(groundYs.count)
-            skillVFX.append(MeadowPartySkillVFXEvent(spec:spec,startedAt:spec.startTime(actionStart:sceneTime,impactAge:hitAge),center:PartyVisual.skillEffectCenter(targets:value.targets,actor:value.actor),groundY:groundY))
+            skillVFX.append(MeadowPartySkillVFXEvent(spec:spec,startedAt:spec.startTime(actionStart:sceneTime,impactAge:hitAge),center:PartyVisual.skillEffectCenter(targets:value.targets,actor:value.actor,templates:before.units.mapValues(\.templateID)),groundY:groundY))
         }
         let delayed=sceneTime+max(0,value.action.impact-0.46)
         let statusAge=value.action.statusVFXCueAge ?? value.action.impact
@@ -170,7 +170,7 @@ final class MeadowPartyStageView:UIView {
     }
     private func apply(_ receipt:OperationReceipt,intent:PartyIntent) {
         state=receipt.after
-        if receipt.dice.contains(where: { $0.naturalTwenty }) { let p=PartyVisual.hitPoint(target:intent.target,weaponID:intent.weaponID);messages.append(.init(text:"自然20",point:CGPoint(x:p.x,y:p.y-55),at:sceneTime,color:.systemCyan,atImpact:true)) }
+        if receipt.dice.contains(where: { $0.naturalTwenty }) { let p=PartyVisual.hitPoint(target:intent.target,weaponID:intent.weaponID,templateID:receipt.before.units[intent.target]?.templateID);messages.append(.init(text:"自然20",point:CGPoint(x:p.x,y:p.y-55),at:sceneTime,color:.systemCyan,atImpact:true)) }
         if let actor=receipt.before.units[intent.actor],let target=receipt.before.units[intent.target],let catalog {
             diceView.dice=BattleDice.channels(intent.action,actor:actor,target:target,catalog:catalog,receipt:receipt,sourceSkillID:intent.sourceSkillID);diceSettledAt=sceneTime
         }
@@ -181,7 +181,7 @@ final class MeadowPartyStageView:UIView {
             let statusAt=startAt+(intent.action.statusVFXCueAge ?? intent.action.impact)
             let delayStatus=after.isAlive && (heal>0 || gain>0) && statusAt>sceneTime+0.0001
             let showsBesideOwner=intent.action.isRune || intent.action == .dragonFlame || intent.action == .starlightPulse || intent.action.isNodeSupport
-            let registered=PartyVisual.hitPoint(target:id,shielded:shieldHit,weaponID:intent.weaponID)
+            let registered=PartyVisual.hitPoint(target:id,shielded:shieldHit,weaponID:intent.weaponID,templateID:before.templateID)
             let point=["greatSword","legendaryStaff"].contains(intent.weaponID ?? "") && id.hasPrefix("m") ? CGPoint(x:registered.x,y:registered.y):CGPoint(x:foot.x+(shieldHit ? (5+240*0.41)*PartyVisual.heroScale:(id.hasPrefix("m") ? -80:0)),y:foot.y-(id.hasPrefix("p") ? 65:72))
             if delayStatus {
                 statusSnapshots[id]=(before.health,before.shield)
@@ -197,13 +197,13 @@ final class MeadowPartyStageView:UIView {
             if after.damageBuff != before.damageBuff,let b=after.damageBuff { messages.append(.init(text:"伤害 ＋\(b.amount)",point:CGPoint(x:point.x,y:point.y-(intent.action.isRune || intent.action == .dragonFlame || intent.action.isNodeSupport ? 36:0)),at:sceneTime,color:MeadowPreviewPalette.gold,supportUnit:showsBesideOwner ? id:nil,supportLine:(heal>0 || gain>0) ? 2:0)) }
             if damage>0 || absorbed>0 {
                 hurt[id]=sceneTime
-                let hit=PartyVisual.hitPoint(target:id,shielded:absorbed>0,weaponID:intent.weaponID)
+                let hit=PartyVisual.hitPoint(target:id,shielded:absorbed>0,weaponID:intent.weaponID,templateID:before.templateID)
                 messages.append(.init(text:damage>0 ? "−\(damage)":"格挡",point:CGPoint(x:hit.x,y:hit.y),at:sceneTime,color:damage>0 ? .white:.systemCyan,atImpact:true))
-                let p=CGPoint(x:point.x,y:point.y)
+                let p=CGPoint(x:hit.x,y:hit.y)
                 if absorbed>0 || intent.action.skillVFX == nil { emissions.append(.init(kind:absorbed>0 ? .shieldContact:.strike,startedAt:sceneTime,x:Double(p.x),y:Double(p.y),groundY:foot.y)) }
             }
             if absorbed>0 { contact[id]=sceneTime;if after.shield==0 { broken[id]=sceneTime;emissions.append(.init(kind:.shieldBreak,startedAt:sceneTime,x:foot.x,y:foot.y-60,groundY:foot.y)) } }
-            if before.isAlive && !after.isAlive && after.kind == .monster { deaths[id]=sceneTime;emissions.append(.init(kind:.death,startedAt:sceneTime,x:Double(point.x),y:Double(point.y),groundY:foot.y)) }
+            if before.isAlive && !after.isAlive && after.kind == .monster { deaths[id]=sceneTime;emissions.append(.init(kind:.death,startedAt:sceneTime,x:registered.x,y:registered.y,groundY:foot.y)) }
             if before.isAlive && !after.isAlive && after.kind == .player { recovery[id]=nil;recoveryTier[id]=nil;fallen[id]=sceneTime }
         }
         onPresentationChanged?()
@@ -317,7 +317,7 @@ final class MeadowPartyStageView:UIView {
         diceView.time=sceneTime;diceView.visibleAge=sceneTime-diceVisibleAt
         diceView.confirmationAge=diceConfirmedAt.map { sceneTime-$0 }
         diceView.resolvedAge=diceSettledAt.map { sceneTime-$0 };diceView.exitAge=diceExitAt.map { sceneTime-$0 };diceView.setNeedsDisplay()
-        fx.naturalTwenty=naturalTwenty;fx.intent=intent;fx.meetsShield=meetsShield;fx.age=age;fx.time=sceneTime;fx.focus=focus;fx.focusTarget=focusTarget
+        fx.templates=state.units.mapValues(\.templateID);fx.naturalTwenty=naturalTwenty;fx.intent=intent;fx.meetsShield=meetsShield;fx.age=age;fx.time=sceneTime;fx.focus=focus;fx.focusTarget=focusTarget
         fx.messages=messages;fx.skillEffects=skillVFX;fx.particles=emissions.flatMap { e in MeadowBattleLightField.sample(e.kind,age:sceneTime-e.startedAt,originX:e.x,originY:e.y,groundY:e.groundY) }
         fx.recoveryLights=state.units.values.filter{renderIDs.contains($0.id)}.compactMap { unit in
             guard unit.isAlive,let at=recovery[unit.id],let foot=PartyVisual.foot(unit.id) else { return nil }
@@ -329,7 +329,7 @@ final class MeadowPartyStageView:UIView {
             return (foot,tier,sceneTime-at)
         }
         if let intent,(intent.action.isRune || intent.action == .dragonFlame),let catalog {
-            fx.runes=SpellbladeEffects.sample(action:intent.action,age:age,actor:intent.actor,target:intent.target,recipients:SpellbladeEffects.recipients(intent,catalog:catalog),weaponID:intent.weaponID,targets:intent.targets)
+            fx.runes=SpellbladeEffects.sample(action:intent.action,age:age,actor:intent.actor,target:intent.target,recipients:SpellbladeEffects.recipients(intent,catalog:catalog),weaponID:intent.weaponID,targets:intent.targets,templates:state.units.mapValues(\.templateID))
         } else { fx.runes=nil }
         fx.setNeedsDisplay()
     }
@@ -339,6 +339,8 @@ struct MeadowPartyMessage { let text:String;let point:CGPoint;let at:Double;let 
 struct MeadowPartySkillVFXEvent { let spec:PartySkillVFXSpec;let startedAt:Double;let center:PartyPoint;let groundY:Double }
 
 private final class MeadowPartyEffectsView:UIView {
+    var templates:[String:String]=[:]
+    private func hitPoint(_ id:String,shielded:Bool=false,weaponID:String?=nil)->PartyPoint {PartyVisual.hitPoint(target:id,shielded:shielded,weaponID:weaponID,templateID:templates[id])}
     var intent:PartyIntent?,focus:PartyAction?
     var friend="p1",foe="m1",focusTarget="p1"
     var meetsShield=false
@@ -388,7 +390,7 @@ private final class MeadowPartyEffectsView:UIView {
             if intent.ranged,let foot=PartyVisual.foot(intent.actor) {
                 let tip=BowRig.releaseArrowTip
                 let from=PartyPoint(foot.x+(tip.x-123)*PartyVisual.heroScale,foot.y+(tip.y-214)*PartyVisual.heroScale)
-                let to=PartyVisual.hitPoint(target:intent.target,shielded:meetsShield)
+                let to=hitPoint(intent.target,shielded:meetsShield)
                 let projectile=intent.enemy ? MonsterVisualSpec.find(intent.monsterTemplateID)?.projectile(age:age,foot:foot,target:to):BowRig.projectile(age:age,from:from,to:to,impact:intent.action.impact,scale:PartyVisual.heroScale)
                 if let arrow=projectile {
                     let a=arrow.tail,b=arrow.tip
@@ -402,7 +404,7 @@ private final class MeadowPartyEffectsView:UIView {
                 }
             }
             if intent.weaponID=="greatSword",!intent.enemy,visual=="attack",let from=PartyVisual.foot(intent.actor) {
-                let points=GreatSwordRig.trail(age:age,from:from,to:PartyVisual.hitPoint(target:intent.target,shielded:meetsShield,weaponID:intent.weaponID),scale:PartyVisual.heroScale)
+                let points=GreatSwordRig.trail(age:age,from:from,to:hitPoint(intent.target,shielded:meetsShield,weaponID:intent.weaponID),scale:PartyVisual.heroScale)
                 if points.count>1 {
                     let power=PartyVisual.pulse(GreatSwordRig.artTime(age:age),0.86,1.0275,1.20)
                     ctx.saveGState();ctx.setBlendMode(.plusLighter);ctx.setLineCap(.round)
@@ -414,11 +416,11 @@ private final class MeadowPartyEffectsView:UIView {
                 }
             }
             if intent.magical,let foot=PartyVisual.foot(intent.actor),let targetFoot=PartyVisual.foot(intent.target) {
-                let sample=LegendaryStaffRig.effect(age:age,foot:foot,target:PartyVisual.hitPoint(target:intent.target,shielded:meetsShield,weaponID:intent.weaponID),groundY:targetFoot.y,scale:PartyVisual.heroScale,naturalTwenty:naturalTwenty)
+                let sample=LegendaryStaffRig.effect(age:age,foot:foot,target:hitPoint(intent.target,shielded:meetsShield,weaponID:intent.weaponID),groundY:targetFoot.y,scale:PartyVisual.heroScale,naturalTwenty:naturalTwenty)
                 MeadowStaffEffectPainter.draw(sample,in:ctx)
             }
             if visual=="attack",intent.action.skillVFX == nil,!intent.magical,let foot=PartyVisual.foot(intent.target) {
-                let a=age-(intent.enemy ? 0.46:1.048),p=PartyVisual.hitPoint(target:intent.target,shielded:meetsShield,weaponID:intent.weaponID)
+                let a=age-(intent.enemy ? 0.46:1.048),p=hitPoint(intent.target,shielded:meetsShield,weaponID:intent.weaponID)
                 let power=PartyVisual.pulse(a,-0.035,0.035,0.52)
                 glow(p,140,140,power*0.48,.orange);glow(foot,170,30,power*0.65,.orange)
                 if a>=0,a<0.7 {

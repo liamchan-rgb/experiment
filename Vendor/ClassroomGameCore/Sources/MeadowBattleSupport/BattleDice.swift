@@ -96,7 +96,9 @@ extension PartyVisual {
         var inset=0.0
         if let intent,!intent.enemy,intent.action.isOffensive,intent.actor==actor,let to=foot(intent.target) {
             let halfWidth=Double(max(0,diceCount-1))*PolyhedralDice.spacing(count:diceCount)/2+PolyhedralDice.radius(count:diceCount)*1.3
-            inset=max(18,halfWidth-36)*min(1,abs(moving.x)/max(1,abs(to.x-140-actorFoot.x)))
+            let old=hitPoint(target:intent.target,weaponID:intent.weaponID),new=hitPoint(target:intent.target,weaponID:intent.weaponID,templateID:intent.targetTemplateID)
+            let correction=new.x-old.x
+            inset=(max(18,halfWidth-36)+max(0,correction))*min(1,abs(moving.x)/max(1,abs(to.x-140+correction-actorFoot.x)))
         }
         var x=actorFoot.x+moving.x-inset
         if actor=="p2",let firstPlayer=foot("p1") {
