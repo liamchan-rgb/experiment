@@ -210,7 +210,8 @@ final class MeadowMapSettingsViewController: UIViewController {
             for save in saves {
                 guard let result=save.completion else{continue}
                 menu.addAction(UIAlertAction(title:format.string(from:result.completedAt)+" · "+(result.outcome=="victory" ? "通关":"队伍倒地")+" · 种子\(save.layout.configuration.seed)",style:.default){[weak self] _ in
-                    let screen=MeadowCampaignResultsViewController(result:result,catalog:save.archive.catalog,seed:save.layout.configuration.seed);self?.present(screen,animated:true)
+                    let screen=MeadowCampaignResultsViewController(result:result,catalog:save.archive.catalog,seed:save.layout.configuration.seed);guard let self else{return}
+                    if let alert=self.presentedViewController as? UIAlertController{alert.dismiss(animated:true){self.present(screen,animated:true)}}else{self.present(screen,animated:true)}
                 })
             }
             menu.addAction(UIAlertAction(title:"取消",style:.cancel));menu.popoverPresentationController?.sourceView=preview;menu.popoverPresentationController?.sourceRect=preview.bounds;present(menu,animated:true)

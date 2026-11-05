@@ -954,7 +954,9 @@ private func refreshCampaignStatus(allowBattleOpen:Bool=true) {
         });present(alert,animated:true)
     }
     private func showCampaignResults(){
-        guard let campaign,let result=campaign.completion,presentedViewController==nil else{return}
+        guard let campaign,let result=campaign.completion else{return}
+        if let alert=presentedViewController as? UIAlertController{alert.dismiss(animated:true){[weak self] in self?.showCampaignResults()};return}
+        guard presentedViewController==nil else{return}
         let screen=MeadowCampaignResultsViewController(result:result,catalog:campaign.engine.catalog,seed:campaign.snapshot.layout.configuration.seed)
         screen.onReturnSettings={ [weak self] in
             guard let self else{return};do{try self.saveCampaign();self.dismiss(animated:true)}catch{self.showCampaignMessage("保存失败："+error.localizedDescription)}
