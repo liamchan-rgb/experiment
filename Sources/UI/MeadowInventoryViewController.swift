@@ -1,5 +1,6 @@
 import UIKit
 import UniformTypeIdentifiers
+import MeadowWorldSupport
 import MeadowBattleSupport
 import ClassroomGameCore
 
@@ -201,5 +202,140 @@ final class MeadowInventoryViewController:UIViewController,UIDocumentPickerDeleg
     private func inventoryIcon(_ id:String)->UIImage? {
         let asset=HeroFrames.weaponVisual(id)?.iconAsset ?? HeroFrames.armorVisual(id)?.iconAsset ?? HeroFrames.accessoryVisual(id)?.iconAsset ?? ["smallPotion":"MeadowPartySmallPotion","largePotion":"MeadowPartyLargePotion","shieldPotion":"MeadowPartyShieldPotion","revivalStone":"MeadowPartyRevivalStone"][id]
         return asset.flatMap { UIImage(named:$0) }
+    }
+}
+
+/// Uses the expedition's live engine; never stages a separate camp inventory.
+final class MeadowCampaignInventoryViewController:UIViewController {
+    let session:MeadowCampaignSession
+    var performEquip:((String,ItemSlot,String?)throws->Void)?
+    var onChange:(()->Void)?,onClose:(()->Void)?
+    private var actor:String,target:String,selected:String?,filter="all"
+    private let header=UIView(),left=UIScrollView(),middle=UIView(),right=UIView()
+    private let titleLabel=MeadowPreviewPalette.label("行程行囊",size:24,weight:.heavy)
+    private let saveLabel=MeadowPreviewPalette.label("随操作自动保存到当前行程",size:14)
+    private let members=UISegmentedControl(items:["P1 行囊","P2 行囊"])
+    private let close=MeadowPreviewPalette.button("返回行程")
+    private let hero=UIImageView(),health=MeadowBattleResourceBar(),ap=MeadowBattleActionPointsView()
+    private let stats=MeadowPreviewPalette.label("",size:16)
+    private let slots=ItemSlot.allCases.map{_ in MeadowPreviewPalette.button("")}
+    private let filterButton=MeadowPreviewPalette.button("全部物品 ▾"),list=UIScrollView()
+    private let detailContent=UIView()
+    private let detail=UIScrollView(),primary=MeadowPreviewPalette.button("使用")
+    private let footer=MeadowPreviewPalette.label("成员各自携带物品 · 换装不回血或补行动 · 使用补给消耗原规则行动点",size:14)
+    private var rows:[UIButton]=[]
+    private let filters=[("all","全部物品"),("weapon","武器"),("armor","护甲"),("accessory","饰品"),("supplies","补给")]
+    private let visualEquipment:Set<String>=["trainingSword","huntingBow","greatSword","legendaryStaff","leatherArmor","runeArmor","powerBadge","actionRing"]
+    init(session:MeadowCampaignSession,actor:String) {
+        self.session=session;self.actor=session.playerIDs.contains(actor) ? actor:"p1";target=self.actor
+        super.init(nibName:nil,bundle:nil);modalPresentationStyle = .fullScreen;isModalInPresentation=true
+    }
+    required init?(coder:NSCoder){fatalError("init(coder:) has not been implemented")}
+    override var prefersStatusBarHidden:Bool{true}
+    override var supportedInterfaceOrientations:UIInterfaceOrientationMask{.landscape}
+    override func viewDidLoad(){
+        super.viewDidLoad();view.backgroundColor=UIColor(red:0.045,green:0.085,blue:0.058,alpha:1)
+        [header,left,middle,right].forEach{MeadowPreviewPalette.stylePanel($0);view.addSubview($0)}
+        [titleLabel,saveLabel,members,close].forEach(header.addSubview);view.addSubview(footer)
+        [hero,health,ap,stats].forEach(left.addSubview);hero.contentMode = .scaleAspectFit;hero.layer.magnificationFilter = .nearest
+        stats.numberOfLines=0;footer.numberOfLines=2
+        left.alwaysBounceVertical=true;list.alwaysBounceVertical=true;detail.alwaysBounceVertical=true
+        middle.addSubview(filterButton);middle.addSubview(list);right.addSubview(detail);detail.addSubview(detailContent);right.addSubview(primary)
+        close.addAction(UIAction{[weak self] _ in self?.dismiss(animated:true){self?.onClose?()}},for:.touchUpInside)
+        members.addAction(UIAction{[weak self] _ in
+            guard let self else{return};self.actor=self.members.selectedSegmentIndex==1 ? "p2":"p1";self.target=self.actor;self.selected=nil;self.filter="all";self.refresh()
+        },for:.valueChanged)
+        for (i,slot) in ItemSlot.allCases.enumerated(){
+            left.addSubview(slots[i]);slots[i].titleLabel?.numberOfLines=2
+            slots[i].addAction(UIAction{[weak self] _ in guard let self else{return};self.filter=slot.rawValue;self.selected=self.session.engine.state.units[self.actor]?.equipment[slot];self.refresh()},for:.touchUpInside)
+        }
+        filterButton.showsMenuAsPrimaryAction=true
+        primary.addAction(UIAction{[weak self] _ in self?.activate()},for:.touchUpInside)
+        refresh()
+    }
+    private func refresh(){
+        guard let unit=session.engine.state.units[actor] else{return};let catalog=session.engine.catalog
+        let entries=CampInventoryProjection.entries(unit,catalog:catalog,filter:filter)
+        if !entries.contains(where:{$0.id==selected}){selected=entries.first?.id}
+        rows.forEach{$0.removeFromSuperview()};rows=[]
+        for e in entries {
+            let row=MeadowPreviewPalette.button(e.name+"\n背包 ×\(e.quantity)"+(e.equipped ? " · 已装备":""))
+            row.configuration?.title=e.name;row.configuration?.subtitle="背包 ×\(e.quantity)"+(e.equipped ? " · 已装备":"")
+            row.configuration?.baseBackgroundColor=e.id==selected ? MeadowPreviewPalette.gold:MeadowPreviewPalette.panel
+            row.accessibilityIdentifier="campaignInventoryItem-"+e.id
+            row.addAction(UIAction{[weak self] _ in self?.selected=e.id;self?.refresh()},for:.touchUpInside)
+            list.addSubview(row);rows.append(row)
+        }
+        if rows.isEmpty{let row=MeadowPreviewPalette.button("暂无此类物品");row.isEnabled=false;list.addSubview(row);rows=[row]}
+        members.selectedSegmentIndex=actor=="p2" ? 1:0
+        let a=try? GameRules.attributes(unit,catalog:catalog)
+        health.show("生命",value:unit.health,maximum:a?.maximumHealth ?? 1,color:.systemGreen);ap.show(value:unit.ap,maximum:a?.maximumAP ?? 8)
+        stats.text="\(unit.name)\n金币 \(unit.coins) · 积分 \(unit.score)\n额外伤害 ＋\(a?.damage ?? 0)"+(actor=="p2" ? "\nP2装备仅查看，补给可正常使用。":"")
+        hero.image=actor=="p1" ? HeroFrames.inventoryImages(appearanceIndex:HeroFrames.appearanceIDs.firstIndex(of:session.snapshot.appearanceID) ?? 0,weaponID:unit.equipment.weapon,armorID:unit.equipment.armor).first:nil
+        for (i,slot) in ItemSlot.allCases.enumerated(){
+            let name=unit.equipment[slot].flatMap{try? catalog.item($0).name} ?? "未装备"
+            slots[i].configuration?.title=CampInventoryProjection.slotTitle(slot)+" · "+name
+        }
+        filterButton.configuration?.title=(filters.first{$0.0==filter}?.1 ?? "全部物品")+" ▾"
+        filterButton.menu=UIMenu(children:filters.map{id,title in UIAction(title:title,state:id==filter ? .on:.off){[weak self] _ in self?.filter=id;self?.selected=nil;self?.refresh()}})
+        view.setNeedsLayout()
+    }
+    override func viewDidLayoutSubviews(){
+        super.viewDidLayoutSubviews();let s=view.safeAreaInsets
+        let l=CampInventoryLayout(width:Double(view.bounds.width),height:Double(view.bounds.height),left:Double(s.left),right:Double(s.right),top:Double(s.top),bottom:Double(s.bottom))
+        func frame(_ r:InventoryRect)->CGRect{CGRect(x:r.x,y:r.y,width:r.width,height:r.height)}
+        header.frame=frame(l.header);left.frame=frame(l.equipment);middle.frame=frame(l.bag);right.frame=frame(l.detail);footer.frame=frame(l.footer)
+        let w=header.bounds.width;titleLabel.frame=CGRect(x:12,y:2,width:max(1,w-325),height:29);saveLabel.frame=CGRect(x:12,y:31,width:max(1,w-325),height:22)
+        members.frame=CGRect(x:w-310,y:12,width:180,height:34);close.frame=CGRect(x:w-122,y:9,width:112,height:38)
+        let lw=left.bounds.width,hh:CGFloat=actor=="p1" ? 150:0
+        hero.frame=CGRect(x:8,y:8,width:lw-16,height:hh);health.frame=CGRect(x:10,y:hh+16,width:lw-20,height:42);ap.frame=CGRect(x:10,y:hh+65,width:lw-20,height:38)
+        stats.frame=CGRect(x:10,y:hh+111,width:lw-20,height:actor=="p2" ? 100:72)
+        let sy=hh+(actor=="p2" ? 220:192)
+        for (i,b) in slots.enumerated(){b.frame=CGRect(x:10,y:sy+CGFloat(i)*56,width:lw-20,height:48)}
+        left.contentSize=CGSize(width:lw,height:sy+172)
+        filterButton.frame=CGRect(x:8,y:8,width:middle.bounds.width-16,height:38);list.frame=CGRect(x:8,y:54,width:middle.bounds.width-16,height:max(1,middle.bounds.height-62))
+        for(i,row) in rows.enumerated(){row.frame=CGRect(x:0,y:CGFloat(i)*82,width:list.bounds.width,height:74)}
+        list.contentSize=CGSize(width:list.bounds.width,height:CGFloat(rows.count)*82)
+        detail.frame=CGRect(x:0,y:0,width:right.bounds.width,height:max(1,right.bounds.height-64));primary.frame=CGRect(x:10,y:right.bounds.height-54,width:right.bounds.width-20,height:44)
+        layoutDetail()
+    }
+    private func layoutDetail(){
+        detailContent.subviews.forEach{$0.removeFromSuperview()}
+        detailContent.frame=CGRect(x:0,y:0,width:detail.bounds.width,height:100);detail.contentSize=detailContent.bounds.size
+        let width=detail.bounds.width;var y:CGFloat=12
+        func text(_ value:String,_ size:CGFloat=17){let label=MeadowPreviewPalette.label(value,size:size);label.numberOfLines=0;let h=max(24,label.sizeThatFits(CGSize(width:max(1,width-24),height:10000)).height);label.frame=CGRect(x:12,y:y,width:width-24,height:h);detailContent.addSubview(label);y+=h+12}
+        primary.isHidden=true
+        guard let id=selected,let item=try? session.engine.catalog.item(id),let unit=session.engine.state.units[actor] else{text("选择物品查看详情");return}
+        text(item.name,22);text(CampInventoryProjection.summary(item));text("背包 ×\(unit.inventory[id] ?? 0)")
+        primary.isHidden=false;primary.isEnabled=false
+        if let slot=item.slot {
+            let equipped=unit.equipment[slot]==id;primary.configuration?.title=equipped ? "卸下装备":"装备"
+            if actor != "p1" {text("P2暂不支持更换装备。可切换到P1换装，或在此使用P2补给。")}
+            else if !visualEquipment.contains(id){text("该装备的挂载外观尚未接入。")}
+            else{do{
+                let candidate=try session.candidateEquipment(actor:actor,slot:slot,item:equipped ? nil:id)
+                let before=try GameRules.attributes(unit,catalog:session.engine.catalog),after=try GameRules.attributes(candidate,catalog:session.engine.catalog)
+                text("生命 \(unit.health)/\(before.maximumHealth) → \(candidate.health)/\(after.maximumHealth)\n额外伤害 ＋\(before.damage) → ＋\(after.damage)\n基础行动 \(before.baseAP) → \(after.baseAP)\n当前行动 \(unit.ap) → \(candidate.ap)")
+                text("换装不回复生命，也不补充行动点。",15);primary.isEnabled=true
+            }catch{text(error.localizedDescription)}}
+        }else{
+            let targets=UISegmentedControl(items:["对 P1 使用","对 P2 使用"]);targets.selectedSegmentIndex=target=="p2" ? 1:0
+            targets.frame=CGRect(x:12,y:y,width:width-24,height:36);detailContent.addSubview(targets);y+=48
+            targets.addAction(UIAction{[weak self,weak targets] _ in self?.target=targets?.selectedSegmentIndex==1 ? "p2":"p1";self?.view.setNeedsLayout()},for:.valueChanged)
+            primary.configuration?.title=item.kind == .revivalStone ? "复活队友 · 2 AP":"使用补给 · 1 AP"
+            if let receiver=session.engine.state.units[target],let a=try? GameRules.attributes(receiver,catalog:session.engine.catalog){text("使用者：\(actor.uppercased())\n目标：\(target.uppercased())\n生命 \(receiver.health) → \(item.kind == .revivalStone ? (a.maximumHealth+1)/2:min(a.maximumHealth,receiver.health+item.heal))/\(a.maximumHealth)\n护盾 \(receiver.shield) → \(max(receiver.shield,item.shield))")}
+            do{let command=try session.inventoryItemCommand(actor:actor,item:id,target:target),preview=session.engine.preview(command);primary.isEnabled=preview.allowed;if !preview.allowed{text(preview.message)}}catch{text(error.localizedDescription)}
+        }
+        detailContent.frame=CGRect(x:0,y:0,width:width,height:y+12);detail.contentSize=detailContent.bounds.size
+    }
+    private func activate(){
+        guard let id=selected,let item=try? session.engine.catalog.item(id) else{return}
+        do{
+            if let slot=item.slot {
+                guard actor=="p1",visualEquipment.contains(id),let performEquip else{throw GameError("当前成员的装备外观未接入。")}
+                try performEquip(actor,slot,session.engine.state.units[actor]?.equipment[slot]==id ? nil:id)
+            }else{try session.useInventory(actor:actor,item:id,target:target)}
+            saveLabel.text="操作已保存到当前行程";onChange?();refresh()
+        }catch{refresh();let alert=UIAlertController(title:"操作未完成",message:error.localizedDescription,preferredStyle:.alert);alert.addAction(UIAlertAction(title:"知道了",style:.default));present(alert,animated:true)}
     }
 }

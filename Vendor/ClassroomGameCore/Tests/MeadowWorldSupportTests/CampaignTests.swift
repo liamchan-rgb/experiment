@@ -272,4 +272,59 @@ final class CampaignTests:XCTestCase {
         XCTAssertTrue(saved.engine.state.map.nodes.first{$0.id==node.id}!.rewardCompleted)
     }
 
+    func testNewCampaignCopiesSpareInventoryWithoutDuplicatingWornItems()throws {
+        let original=try MeadowCampaignSession.new(layout:layout())
+        var p1=original.engine.state.units["p1"]!
+        p1.inventory=["huntingBow":2,"leatherArmor":1,"smallPotion":3]
+        let session=try MeadowCampaignSession.new(layout:layout(),loadouts:["p1":p1])
+        XCTAssertEqual(session.engine.state.units["p1"]!.inventory,p1.inventory)
+        XCTAssertEqual(session.engine.state.units["p1"]!.equipment,p1.equipment)
+        XCTAssertNil(session.engine.state.units["p1"]!.inventory[p1.equipment.weapon!])
+        XCTAssertEqual(p1.inventory["huntingBow"],2)
+        let restored=try MeadowCampaignSession(save:.decoded(session.snapshot.encoded()))
+        XCTAssertEqual(restored.engine.archive,session.engine.archive)
+    }
+    func testCampaignInventorySaveFailureIsAtomicAndMembersConsumeOwnSupplies()throws {
+        let original=try MeadowCampaignSession.new(layout:layout())
+        var p1=original.engine.state.units["p1"]!;p1.inventory=["leatherArmor":1,"smallPotion":3]
+        var fail=false,stored=Data()
+        let session=try MeadowCampaignSession.new(layout:layout(),loadouts:["p1":p1],persist:{data in if fail{throw GameError("disk")};stored=data})
+        try session.engine.apply(.editResources(unit:"p1",value:ResourcePatch(health:5,ap:2)))
+        let before=session.engine.archive,old=stored
+        let candidate=try session.candidateEquipment(actor:"p1",slot:.armor,item:"leatherArmor")
+        XCTAssertEqual(candidate.health,5);XCTAssertEqual(candidate.ap,2);XCTAssertEqual(session.engine.archive,before)
+        fail=true
+        XCTAssertThrowsError(try session.equipInventory(actor:"p1",slot:.armor,item:"leatherArmor"))
+        XCTAssertEqual(session.engine.archive,before);XCTAssertEqual(stored,old)
+        fail=false;try session.equipInventory(actor:"p1",slot:.armor,item:"leatherArmor")
+        XCTAssertNil(session.engine.state.units["p1"]!.inventory["leatherArmor"])
+        XCTAssertEqual(session.engine.state.units["p1"]!.equipment.armor,"leatherArmor")
+        XCTAssertEqual(session.engine.state.units["p1"]!.health,5);XCTAssertEqual(session.engine.state.units["p1"]!.ap,2)
+        let p1Count=session.engine.state.units["p1"]!.inventory["smallPotion"],p2Before=session.engine.state.units["p2"]!
+        let beforeUse=session.engine.archive,saved=stored
+        fail=true;XCTAssertThrowsError(try session.useInventory(actor:"p2",item:"smallPotion",target:"p1"))
+        XCTAssertEqual(session.engine.archive,beforeUse);XCTAssertEqual(stored,saved)
+        fail=false;try session.useInventory(actor:"p2",item:"smallPotion",target:"p1")
+        XCTAssertEqual(session.engine.state.units["p1"]!.inventory["smallPotion"],p1Count)
+        XCTAssertEqual(session.engine.state.units["p2"]!.inventory["smallPotion"],(p2Before.inventory["smallPotion"] ?? 0)-1)
+        XCTAssertEqual(session.engine.state.units["p2"]!.ap,p2Before.ap-1)
+        XCTAssertGreaterThan(session.engine.state.units["p1"]!.health,5)
+        let restored=try MeadowCampaignSession(save:.decoded(stored))
+        XCTAssertEqual(restored.engine.archive,session.engine.archive)
+    }
+    func testCampaignInventoryBlockedDuringTravelAndBattle()throws {
+        let session=try MeadowCampaignSession.new(layout:layout(combat:true))
+        let start=session.engine.state.units["p1"]!.nodeID,target=session.engine.state.map.neighbors(start)[0]
+        try session.beginTravel(to:target);let before=session.engine.archive
+        XCTAssertFalse(session.canManageInventory)
+        XCTAssertThrowsError(try session.candidateEquipment(actor:"p1",slot:.weapon,item:nil))
+        XCTAssertThrowsError(try session.useInventory(actor:"p1",item:"shieldPotion",target:"p1"))
+        XCTAssertEqual(session.engine.archive,before)
+        try session.advanceTravel(distance:100000);XCTAssertNotNil(session.engine.state.battle)
+        let battle=session.engine.archive
+        XCTAssertThrowsError(try session.equipInventory(actor:"p1",slot:.weapon,item:nil))
+        XCTAssertThrowsError(try session.useInventory(actor:"p1",item:"shieldPotion",target:"p1"))
+        XCTAssertEqual(session.engine.archive,battle)
+    }
+
 }

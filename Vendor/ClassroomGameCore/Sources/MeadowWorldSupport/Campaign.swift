@@ -91,7 +91,7 @@ public final class MeadowCampaignSession {
         for (id,classID) in [("p1","spellblade"),("p2","ranger")] {
             var u=try GameFactory.player(id:id,name:id.uppercased()+" · "+catalog.playerClass(classID).name,classID:classID,teamID:"party",nodeID:start,catalog:catalog)
             u.inventory=["smallPotion":2,"largePotion":1,"shieldPotion":1,"revivalStone":1]
-            if let source=loadouts?[id] {u.equipment=source.equipment;for item in source.equipment.itemIDs {u.inventory[item]=max(1,source.inventory[item] ?? 1)}}
+            if let source=loadouts?[id] {u.equipment=source.equipment;u.inventory=source.inventory}
             u.health=try GameRules.attributes(u,catalog:catalog).maximumHealth;try GameRules.refill(&u,catalog:catalog);units[id]=u
         }
         for node in layout.map.nodes where node.kind == .combat || node.kind == .boss {
@@ -178,4 +178,36 @@ public final class MeadowCampaignSession {
         guard travel==nil,engine.state.battle==nil else{throw GameError("请先停下移动并结束当前战斗，再编辑地点。")}
         return try engine.apply(.resetNodeReward(node:node))
     }
+    public var canManageInventory:Bool {travel==nil && engine.state.battle==nil && engine.state.phase == .exploration}
+    private func requireInventoryAccess()throws {
+        guard canManageInventory else{throw GameError("请先完成移动并结束战斗，再管理行囊。")}
+    }
+    public func candidateEquipment(actor:String,slot:ItemSlot,item:String?)throws->GameUnit {
+        try requireInventoryAccess()
+        guard let unit=engine.state.units[actor],unit.kind == .player else{throw GameError("请选择队伍成员。")}
+        if unit.equipment[slot]==item{return unit}
+        let clone=try GameEngine(catalog:engine.catalog,state:engine.state)
+        try clone.apply(.equip(unit:actor,slot:slot,item:item))
+        return clone.state.units[actor]!
+    }
+    @discardableResult public func equipInventory(actor:String,slot:ItemSlot,item:String?)throws->OperationReceipt? {
+        _=try candidateEquipment(actor:actor,slot:slot,item:item)
+        guard engine.state.units[actor]?.equipment[slot] != item else{return nil}
+        return try engine.apply(.equip(unit:actor,slot:slot,item:item))
+    }
+    public func inventoryItemCommand(actor:String,item:String,target:String)throws->GameCommand {
+        try requireInventoryAccess()
+        let definition=try engine.catalog.item(item)
+        guard definition.slot==nil else{throw GameError("装备请使用装备操作。")}
+        guard let recipient=engine.state.units[target],recipient.kind == .player else{throw GameError("请选择队伍成员。")}
+        if definition.kind != .revivalStone {
+            let stats=try GameRules.attributes(recipient,catalog:engine.catalog)
+            guard (definition.heal>0 && recipient.health<stats.maximumHealth) || definition.shield>recipient.shield else{throw GameError("目标无需恢复，或已有相同及更强护盾。")}
+        }
+        return definition.kind == .revivalStone ? .rescue(actor:actor,target:target):.useItem(actor:actor,item:item,target:target)
+    }
+    @discardableResult public func useInventory(actor:String,item:String,target:String)throws->OperationReceipt {
+        try engine.apply(inventoryItemCommand(actor:actor,item:item,target:target))
+    }
+
 }

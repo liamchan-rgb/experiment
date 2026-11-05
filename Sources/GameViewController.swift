@@ -8,7 +8,7 @@ import MeadowWorldSupport
 final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
     private let campaign:MeadowCampaignSession?
     private let campaignRefill=MeadowPreviewPalette.button("补足行动")
-    private let campaignItems=MeadowPreviewPalette.button("道具")
+    private let campaignItems=MeadowPreviewPalette.button("行囊与装备")
     private let campaignBattle=MeadowPreviewPalette.button("继续战斗")
     private let campaignEdit=MeadowPreviewPalette.button("编辑地点")
     private let campaignHUD=UIView()
@@ -760,7 +760,8 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
         campaignRefill.addAction(UIAction{[weak self] _ in self?.refillCampaign()},for:.touchUpInside)
         campaignBattle.addAction(UIAction{[weak self] _ in self?.setBattlePreviewActive(true)},for:.touchUpInside)
         campaignEdit.addAction(UIAction{[weak self] _ in self?.showEditableNodes()},for:.touchUpInside)
-        campaignItems.showsMenuAsPrimaryAction=true
+        campaignItems.accessibilityIdentifier="openCampaignInventory"
+        campaignItems.addAction(UIAction{[weak self] _ in self?.openCampaignInventory()},for:.touchUpInside)
         NotificationCenter.default.addObserver(self,selector:#selector(backgroundCampaign),name:UIApplication.willResignActiveNotification,object:nil)
         NotificationCenter.default.addObserver(self,selector:#selector(foregroundCampaign),name:UIApplication.didBecomeActiveNotification,object:nil)
     }
@@ -893,21 +894,26 @@ private func refreshCampaignStatus(allowBattleOpen:Bool=true) {
             campaignHealth[i].show(u.id.uppercased(),value:u.health,maximum:stats.maximumHealth,color:.systemGreen)
             campaignAP[i].show(value:u.ap,maximum:max(u.ap,stats.baseAP))
         }
-        var actions=[UIAction]()
-        let actor=scene.selectedCampaignPlayerID
-        for target in players {
-            for item in ["smallPotion","largePotion","shieldPotion","revivalStone"] {
-                let cmd:GameCommand=item=="revivalStone" ? .rescue(actor:actor,target:target.id):.useItem(actor:actor,item:item,target:target.id)
-                let preview=campaign.engine.preview(cmd),name=(try? campaign.engine.catalog.item(item).name) ?? item
-                let count=state.units[actor]?.inventory[item] ?? 0
-                actions.append(UIAction(title:target.id.uppercased()+" · "+name+" ×\(count)",attributes:preview.allowed ? []:.disabled){[weak self] _ in
-                    do{_ = try campaign.engine.apply(cmd);self?.scene.refreshCampaign();self?.refreshCampaignStatus()}
-                    catch{self?.showCampaignMessage(error.localizedDescription)}
-                })
-            }
-        }
-        campaignItems.menu=UIMenu(title:"由 "+actor.uppercased()+" 使用",children:actions)
         if ready,allowBattleOpen,state.battle != nil,!battlePreviewActive {setBattlePreviewActive(true)}
+    }
+    private func openCampaignInventory() {
+        guard ready,!battlePreviewActive,presentedViewController==nil,let campaign else{return}
+        guard campaign.canManageInventory else{showCampaignMessage("请先完成移动并结束战斗。");return}
+        cancelNodeSelection()
+        let screen=MeadowCampaignInventoryViewController(session:campaign,actor:scene.selectedCampaignPlayerID)
+        screen.performEquip={ [weak self] actor,slot,item in
+            guard let self else{return}
+            let candidate=try campaign.candidateEquipment(actor:actor,slot:slot,item:item)
+            let appearance=campaign.snapshot.appearanceID
+            try self.prepareCampVisuals(candidate,appearance:appearance,retaining:true)
+            do{try campaign.equipInventory(actor:actor,slot:slot,item:item)}
+            catch{if let old=campaign.engine.state.units[actor]{try? self.prepareCampVisuals(old,appearance:appearance,retaining:false)};throw error}
+            if let index=HeroFrames.appearanceIDs.firstIndex(of:appearance) {self.scene.selectP1Loadout(appearance:index,weapon:candidate.equipment.weapon,armor:candidate.equipment.armor)}
+            try? self.prepareCampVisuals(candidate,appearance:appearance,retaining:false)
+        }
+        screen.onChange={ [weak self] in self?.scene.refreshCampaign();self?.refreshCampaignStatus(allowBattleOpen:false) }
+        screen.onClose={ [weak self] in self?.refreshCampaignStatus() }
+        present(screen,animated:true)
     }
     private func setRenderingPaused(_ paused: Bool) { groundView?.isPaused = paused; gaitView?.isPaused = paused }
     override func viewWillAppear(_ animated: Bool) { super.viewWillAppear(animated); setRenderingPaused(!mapPresented || loadingFailed) }
