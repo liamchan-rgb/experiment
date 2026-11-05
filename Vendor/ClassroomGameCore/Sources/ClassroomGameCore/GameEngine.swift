@@ -122,6 +122,36 @@ struct Evaluation {
 
     mutating func execute(_ command: GameCommand) throws {
         switch command {
+        case .campaignMove(let actors,let node):
+            let travelers=try campaignTravelers(actors)
+            guard travelers.allSatisfy({state.map.neighbors($0.nodeID).contains(node)}) else{throw GameError("道路不连续。")}
+            for id in actors {state.units[id]?.nodeID=node}
+            state.map.revealed.insert(node)
+            events.append(GameEvent("campaignArrival",actor:actors.first,detail:String(node)))
+        case .interactCampaignNode(let actors):
+            let travelers=try campaignTravelers(actors),nodeID=travelers[0].nodeID
+            guard let index=state.map.nodes.firstIndex(where:{$0.id==nodeID}) else{throw GameError("地点不存在。")}
+            let node=state.map.nodes[index]
+            if node.kind == .reward,let reward=node.reward,!node.rewardCompleted {
+                try rewardActors(actors,reward:ResourceReward(coins:reward.coins,score:reward.score,items:reward.items),source:"nodeReward")
+                state.map.nodes[index].rewardCompleted=true
+            }else if node.kind == .combat || node.kind == .boss {
+                let enemies=state.units.values.filter{$0.kind == .monster && $0.isAlive && $0.nodeID==nodeID}.map(\.id).sorted()
+                guard !enemies.isEmpty else{throw GameError("此地点的敌人已清理。")}
+                for id in state.players.filter(\.isAlive).map(\.id) {
+                    var player=try unit(id);player.ap=try GameRules.attributes(player,catalog:catalog).maximumAP;state.units[id]=player
+                }
+                try start(kind:.pve,monsters:enemies)
+            }else{throw GameError(node.kind == .reward ? "此处补给已领取。":"此地点没有待处理事件。")}
+            events.append(GameEvent("campaignInteraction",actor:actors.first,detail:String(nodeID)))
+        case .refillCampaignMovement(let actors,let coins,let manual):
+            guard state.phase == .exploration,state.battle==nil,!actors.isEmpty,Set(actors).count==actors.count,coins>=0,!manual || coins==0 else{throw GameError("无法补充移动条。")}
+            var total=0
+            for id in actors {let actor=try unit(id);guard actor.kind == .player else{throw GameError("请选择队伍成员。")};total=try checkedAdd(total,actor.coins)}
+            guard total>=coins else{throw GameError("全队金币不足。")}
+            var unpaid=coins
+            for id in actors.sorted(){let payment=min(unpaid,state.units[id]!.coins);state.units[id]!.coins-=payment;unpaid-=payment}
+            events.append(GameEvent("campaignMovementRefilled",amount:coins,detail:manual ? "manual":"coins"))
         case .monsterStep: try monsterStep()
         case .editResources(let id, let patch):
             if let health = patch.health { try setHealth(id, value: health, killer: nil) }
@@ -176,6 +206,12 @@ struct Evaluation {
             !state.pauseReasons.contains(.allPlayersDown) && !state.pauseReasons.contains(.noSurvivors) { try nextActor() }
     }
 
+    func campaignTravelers(_ actors:[String])throws->[GameUnit] {
+        guard state.phase == .exploration,state.battle==nil,!actors.isEmpty,Set(actors).count==actors.count else{throw GameError("请先结束当前战斗。")}
+        let travelers=try actors.map{try unit($0)}
+        guard travelers.allSatisfy({$0.kind == .player && $0.isAlive && $0.nodeID==travelers[0].nodeID}) else{throw GameError("同行成员必须存活且位于同一地点。")}
+        return travelers
+    }
     mutating func configureNodeEncounter(_ id:Int,templates:[String])throws {
         guard state.phase == .exploration,state.battle == nil,
               let index=state.map.nodes.firstIndex(where:{$0.id==id}),

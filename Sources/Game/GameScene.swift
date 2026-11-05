@@ -6,6 +6,8 @@ import MeadowWorldSupport
 final class GameScene: SKScene {
     var selectingCampaignNode=false
     var onCampaignNodeSelected:((Int)->Void)?
+    var onCampaignInteractionRequested:((Int)->Void)?
+    private var lastCampaignUIUpdate:TimeInterval=0
     var campaign:MeadowCampaignSession?
     var onCampaignChanged:(()->Void)?
     var onCampaignError:((String)->Void)?
@@ -430,11 +432,14 @@ final class GameScene: SKScene {
                         refreshCampaign();onCampaignChanged?()
                         let coins=receipt.after.players.reduce(0){$0+$1.coins}-receipt.before.players.reduce(0){$0+$1.coins}
                         if coins>0 {onDiscovery?("小队获得金币 ＋\(coins)")}
+                        else if campaign.travel==nil{onDiscovery?("已抵达，可点击交互地点或继续前进")}
                     }
                 } catch {campaign.pauseAfterFailure();onCampaignError?(error.localizedDescription)}
             }
             destinationRing.isHidden=campaign.travel==nil
             updateActors(before:previous,seconds:delta)
+            if (wasMoving || campaign.isMoving) && environmentTime-lastCampaignUIUpdate>=0.1 {lastCampaignUIUpdate=environmentTime;onCampaignChanged?()}
+            if wasMoving && !campaign.isMoving && campaign.travel != nil && campaign.movementRemaining<=0.000001{onCampaignError?("移动条耗尽，点击补充移动后可继续原路线。")}
             if wasMoving != campaign.isMoving {onPlaybackChanged?(campaign.isMoving);onCampaignChanged?()}
         } else {
             let previous = actors.indices.map { simulation.point(for: $0) }
@@ -534,7 +539,7 @@ final class GameScene: SKScene {
             guard discovery != nil || hypot(position.x-point.x,position.y-point.y)<48 else{onDiscovery?("点击建筑选择目的地");return}
             if selectingCampaignNode {onCampaignNodeSelected?(target);return}
             let actor=campaign.playerIDs[min(simulation.selected,campaign.playerIDs.count-1)]
-            if campaign.engine.state.units[actor]?.nodeID==target {onDiscovery?(campaign.engine.state.map.nodes.first{$0.id==target}!.name);return}
+            if campaign.engine.state.units[actor]?.nodeID==target {onCampaignInteractionRequested?(target);return}
             do {let plan=try campaign.beginTravel(to:target,actor:actor);destinationRing.position=LivingWorld.position(CGPoint(x:position.x,y:position.y));destinationRing.isHidden=false;onDiscovery?(plan.message);onPlaybackChanged?(true);onCampaignChanged?()}
             catch {onCampaignError?(error.localizedDescription)}
             return

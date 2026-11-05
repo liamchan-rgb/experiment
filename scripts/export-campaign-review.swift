@@ -36,7 +36,7 @@ enum HeroFrames {static let walkFrameCount=24;static let reviewSpeed:CGFloat=25}
                 let unit=session.engine.state.units[id]!,p=positions[i]
                 heroes.append(["index":i,"x":p.x+Double(i==0 ? -10:10),"y":p.y,"facing":i==0 ? pose.facing:walk.facing,"frame":i==0 ? pose.frame:walk.frame,"hp":unit.health,"maxHP":try GameRules.attributes(unit,catalog:session.engine.catalog).maximumHealth,"ap":unit.ap])
             }
-            rows.append(["time":Double(tick)*0.02,"heroes":heroes,"revealed":session.engine.state.map.revealed.sorted(),"battle":session.engine.state.battle != nil,"coins":session.engine.state.players.map(\.coins).reduce(0,+),"history":session.engine.history.count])
+            rows.append(["time":Double(tick)*0.02,"heroes":heroes,"revealed":session.engine.state.map.revealed.sorted(),"battle":session.engine.state.battle != nil,"coins":session.engine.state.players.map(\.coins).reduce(0,+),"movement":session.movementRemaining,"movementCapacity":session.movementCapacity,"history":session.engine.history.count])
             if tick==80 {
                 let bytes=try session.snapshot.encoded();try bytes.write(to:out.appendingPathComponent("mid-road-save.json"))
                 let resumed=try MeadowCampaignSession(save:.decoded(bytes));precondition(!resumed.isMoving && resumed.position(of:"p1")==session.position(of:"p1"))
@@ -44,6 +44,7 @@ enum HeroFrames {static let walkFrameCount=24;static let reviewSpeed:CGFloat=25}
             if !session.isMoving {settled+=1;if settled>=90 {break}}
         }
         try write(rows,"walking.json")
+        if session.engine.state.battle==nil,session.travel==nil{try session.interactCurrentNode()}
         guard session.engine.state.battle != nil else{throw GameError("Review did not reach an encounter")}
         try session.snapshot.encoded().write(to:out.appendingPathComponent("battle-save.json"))
         let battle=try PartyEncounter(engine:session.engine,sessionID:"campaign-review"),ids=session.playerIDs+battle.monsterIDs
@@ -108,7 +109,7 @@ enum HeroFrames {static let walkFrameCount=24;static let reviewSpeed:CGFloat=25}
         try write(frames,"battle-frames.json")
         try session.snapshot.encoded().write(to:out.appendingPathComponent("after-battle-save.json"))
         let resumed=try MeadowCampaignSession(save:.decoded(session.snapshot.encoded()));precondition(resumed.engine.archive==session.engine.archive)
-        try write(["movementMultiplier":3,"demoSpeeds":[75,114,135],"groupSpeed":75,"previewPath":preview.path,"previewCost":preview.cost,"walkingFrames":rows.count,"battleFrames":frames.count,"outcome":battle.terminal,"battleWon":session.engine.state.battle==nil,"history":session.engine.history.count,"resumeArchiveExact":true,"appOrSimulatorRun":false],"review-trace.json")
+        try write(["movementMultiplier":3,"demoSpeeds":[75,114,135],"groupSpeed":75,"previewPath":preview.path,"previewCost":preview.cost,"walkingFrames":rows.count,"battleFrames":frames.count,"outcome":battle.terminal,"battleWon":session.engine.state.battle==nil,"movement":session.movementRemaining,"movementCapacity":session.movementCapacity,"history":session.engine.history.count,"resumeArchiveExact":true,"appOrSimulatorRun":false],"review-trace.json")
         print("Exported actual campaign movement/encounter/receipts/death/particles/resume; frames",rows.count,frames.count)
     }
 }
