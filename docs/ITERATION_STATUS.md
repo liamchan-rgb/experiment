@@ -1,3 +1,13 @@
+## Build78 已完成 · 随机地图地点内容编辑（2026-11-05）
+
+正式行程新增暂停时编辑地点：普通战斗地点替换1—3只已登记怪物，首领地点1只；补给可配置金币、积分与药水。修改已领取补给保留领取标记，不再次发奖；只有单独确认重置后，再次真实抵达才结算一次。移动/战斗期间禁止编辑，全部由游戏命令记录进操作历史并落盘。四个底部操作按钮随屏宽自适应。存档版本1不变。
+
+源码 727f7afee42fdf84c666af5341551712bd147d9e，GitHub Actions run 41979021884 attempt1成功。macOS 196项纯Swift测试、道路/遭遇/战斗特效/模组四组回归及iOS设备Release归档全通过。IPA 1.6.51/build78，60,330,605字节，SHA-256 2458759bff628243a33cfe3cc80c8c24ad151a33302f10560d123643ec6fd1e8；完整CRC/经典ZIP2.0无额外字段、iPhoneOS arm64、执行权限、Metal/Assets.car/节点建筑资源与编辑代码字符串核对通过。公开直接IPA完整GET HTTP200及字节/哈希相同，回执Media/Build78/public-downloads.json。SideStore需重签；未运行App/模拟器/实机。
+
+流程校正：首个候选CI只暴露测试夹具往返移动后未按游戏规则补足行动点；已修正测试，最终版本的196项全部通过。
+
+下一步两项：M5行程行囊与装备管理；M6队伍配置与成员切换。
+
 ## Build77公开下载已验证（2026-11-05）
 
 实际run41869668339 attempt3成功。直接IPA完整GET HTTP200，60297013字节，SHA256 615f7029f8ffd8753a6c7be07fb4e66e2214039c2e2cc00fa6fd75892e7c563c，远程内容CRC通过；原正常GIF完整GET/hash/238×20ms解码一致。回执Media/Build77/public-downloads.json；IPA固定版本链接 https://raw.githubusercontent.com/liamchan-rgb/experiment/ae8ee54a30f02825e6657397f6b23c732df0dbd7/Downloads/MeadowJourney-b77.ipa 。未运行App/模拟器/实机，设备验证交用户。下一步M4节点内容编辑，再行程行囊/换装与队伍配置。

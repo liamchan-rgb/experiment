@@ -1,0 +1,38 @@
+{
+  "id": 41979021884,
+  "runNumber": 15,
+  "runAttempt": 1,
+  "event": "workflow_dispatch",
+  "headBranch": "fix/build33-face-grounding-camera",
+  "headSHA": "727f7afee42fdf84c666af5341551712bd147d9e",
+  "status": "completed",
+  "conclusion": "success",
+  "url": "https://github.com/liamchan-rgb/experiment/actions/runs/41979021884",
+  "job": {
+    "id": 127084544661,
+    "name": "archive",
+    "status": "completed",
+    "conclusion": "success",
+    "steps": [
+      {
+        "name": "Validate and test pure rules and generation",
+        "conclusion": "success"
+      },
+      {
+        "name": "Archive without running application or simulator",
+        "conclusion": "success"
+      },
+      {
+        "name": "Run actions/upload-artifact",
+        "conclusion": "success"
+      }
+    ]
+  },
+  "artifact": {
+    "id": 13392699299,
+    "name": "random-map-build-41979021884",
+    "bytes": 56811318,
+    "sha256": "85405904b418e90cc4e93b025a17e0184f223caa5e2f3fa1487eca4ba2c37a0e",
+    "expiresAt": "2026-12-05T06:21:42Z"
+  }
+}

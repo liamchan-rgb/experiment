@@ -5,12 +5,20 @@
   "bytes": 60330605,
   "sha256": "2458759bff628243a33cfe3cc80c8c24ad151a33302f10560d123643ec6fd1e8",
   "sourceCommit": "727f7afee42fdf84c666af5341551712bd147d9e",
-  "run": "https://github.com/liamchan-rgb/experiment/actions/runs/41979021884",
+  "workflowRun": "https://github.com/liamchan-rgb/experiment/actions/runs/41979021884",
   "runAttempt": 1,
   "artifactID": 13392699299,
   "artifactSHA256": "85405904b418e90cc4e93b025a17e0184f223caa5e2f3fa1487eca4ba2c37a0e",
   "downloadURL": "https://raw.githubusercontent.com/liamchan-rgb/experiment/fix/build33-face-grounding-camera/Downloads/MeadowJourney-b78.ipa",
-  "downloadVerified": true,
+  "publicIPAVerified": true,
+  "publicGET": {
+    "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/fix/build33-face-grounding-camera/Downloads/MeadowJourney-b78.ipa",
+    "httpStatus": 200,
+    "bytes": 60330605,
+    "sha256": "2458759bff628243a33cfe3cc80c8c24ad151a33302f10560d123643ec6fd1e8",
+    "verified": true,
+    "verifiedAt": "2026-11-05T06:37:36Z"
+  },
   "installed": false,
   "appSimulatorDeviceRun": false
 }
