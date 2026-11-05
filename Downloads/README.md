@@ -1,3 +1,9 @@
+## Build83 · 完整行程结算 · 1.6.56
+
+[直接下载 IPA](https://raw.githubusercontent.com/liamchan-rgb/experiment/0fe4b24179e3d0cfa98d6ea998ddab363a2906f1/Downloads/MeadowJourney-b83.ipa) · [包检](../Media/Build83/verification.json)
+
+清理战斗地点后返营结算；全员倒地可结束，历史结果可回看。已结算行程只读，重复确认不发奖。215测试、四组回归、设备Release与公开GET通过。未运行App/模拟器/实机。
+
 ## Build82 · 道路选点与队伍配置 · 1.6.55
 
 [直接下载 IPA](https://raw.githubusercontent.com/liamchan-rgb/experiment/d05739d0d81c479960a76f09f58af71137db80ec/Downloads/MeadowJourney-b82.ipa) · [包检](../Media/Build82/verification.json)
