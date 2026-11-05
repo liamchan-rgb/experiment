@@ -4,6 +4,8 @@ import ClassroomGameCore
 import MeadowWorldSupport
 
 final class GameScene: SKScene {
+    var selectingCampaignNode=false
+    var onCampaignNodeSelected:((Int)->Void)?
     var campaign:MeadowCampaignSession?
     var onCampaignChanged:(()->Void)?
     var onCampaignError:((String)->Void)?
@@ -530,6 +532,7 @@ final class GameScene: SKScene {
             guard let target=discovery.flatMap({world.definition.discoveries[$0].nodeID}) ?? nearest?.id else{return}
             let position=campaign.point(at:target)
             guard discovery != nil || hypot(position.x-point.x,position.y-point.y)<48 else{onDiscovery?("点击建筑选择目的地");return}
+            if selectingCampaignNode {onCampaignNodeSelected?(target);return}
             let actor=campaign.playerIDs[min(simulation.selected,campaign.playerIDs.count-1)]
             if campaign.engine.state.units[actor]?.nodeID==target {onDiscovery?(campaign.engine.state.map.nodes.first{$0.id==target}!.name);return}
             do {let plan=try campaign.beginTravel(to:target,actor:actor);destinationRing.position=LivingWorld.position(CGPoint(x:position.x,y:position.y));destinationRing.isHidden=false;onDiscovery?(plan.message);onPlaybackChanged?(true);onCampaignChanged?()}

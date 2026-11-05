@@ -141,6 +141,14 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
             scene.campaign=campaign
             scene.onCampaignChanged={ [weak self] in DispatchQueue.main.async {self?.refreshCampaignStatus()} }
             scene.onCampaignError={ [weak self] text in DispatchQueue.main.async {self?.showCampaignMessage(text)} }
+            scene.onCampaignNodeSelected={ [weak self] id in
+                guard let self,let node=self.campaign?.engine.state.map.nodes.first(where:{$0.id==id}) else{return}
+                guard node.kind == .combat || node.kind == .boss || node.kind == .reward else {
+                    self.showCampaignMessage("请选择战斗、首领或补给建筑；再次点编辑按钮可取消。");return
+                }
+                self.cancelNodeSelection()
+                self.editNodeContents(id)
+            }
             configureCampaignControls()
         }
         var mapStyle=labStyle
@@ -763,6 +771,7 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
     }
     private func saveCampaign()throws {
         guard let campaign else{return}
+        cancelNodeSelection()
         battlePreviewView?.setActive(false)
         try campaign.setPaused(true);try campaign.checkpoint(camera:scene.campaignCamera)
     }
@@ -773,19 +782,19 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
         do{try campaign.refillExploration();refreshCampaignStatus();showCampaignMessage("小队行动点已补足")}
         catch{showCampaignMessage(error.localizedDescription)}
     }
-        private func showEditableNodes() {
+    private func cancelNodeSelection() {
+        scene.selectingCampaignNode=false
+        campaignEdit.configuration?.title="编辑地点"
+        refreshCampaignStatus(allowBattleOpen:false)
+    }
+    private func showEditableNodes() {
         guard let campaign else{return}
-        guard campaign.travel==nil,campaign.engine.state.battle==nil else{showCampaignMessage("请先停下移动并结束战斗。");return}
-        let menu=UIAlertController(title:"编辑地点内容",message:"只编辑当前行程中的怪物或补给，位置与道路保持不变。",preferredStyle:.actionSheet)
-        for node in campaign.engine.state.map.nodes.sorted(by:{$0.id<$1.id}) where node.kind != .start && node.kind != .empty {
-            let kind:[NodeKind:String]=[.combat:"战斗",.boss:"首领",.reward:"补给",.empty:"空地"]
-            let suffix=node.kind == .reward && node.rewardCompleted ? " · 已领取":""
-            menu.addAction(UIAlertAction(title:"\(node.name) · \(kind[node.kind] ?? "地点")\(suffix)",style:.default){[weak self] _ in self?.editNodeContents(node.id)})
-        }
-        menu.addAction(UIAlertAction(title:"取消",style:.cancel))
-        menu.popoverPresentationController?.sourceView=campaignEdit
-        menu.popoverPresentationController?.sourceRect=campaignEdit.bounds
-        present(menu,animated:true)
+        if scene.selectingCampaignNode {cancelNodeSelection();showCampaignMessage("已取消编辑选点");return}
+        guard campaign.travel==nil,campaign.engine.state.battle==nil else{showCampaignMessage("请先完成移动并结束战斗。");return}
+        scene.selectingCampaignNode=true
+        campaignEdit.configuration?.title="取消选点"
+        refreshCampaignStatus(allowBattleOpen:false)
+        showCampaignMessage("点击地图上的战斗、首领或补给建筑进行编辑")
     }
     private func editNodeContents(_ id:Int) {
         guard let campaign,let node=campaign.engine.state.map.nodes.first(where:{$0.id==id}) else{return}
@@ -872,6 +881,7 @@ private func refreshCampaignStatus(allowBattleOpen:Bool=true) {
         for control in [shadowLabButton,gaitTestButton,battlePreviewButton,p1AppearanceButton] {control.isHidden=true}
         let state=campaign.engine.state,players=state.players
         randomMapSummary.text="已探索 \(state.map.revealed.count)/\(state.map.nodes.count) · 金币 \(players.reduce(0){$0+$1.coins}) · 积分 \(players.reduce(0){$0+$1.score})"+(campaign.cleared ? " · 敌人已清理":"")
+        if scene.selectingCampaignNode {randomMapSummary.text="编辑选点中 · 点击建筑 · 再次点按钮取消"}
         let busy=campaign.travel != nil || state.battle != nil
         campaignRefill.isEnabled = !busy;campaignItems.isEnabled = !busy;campaignEdit.isEnabled = !busy
         campaignBattle.isHidden=state.battle==nil || battlePreviewActive
