@@ -253,17 +253,17 @@ final class CampaignTests:XCTestCase {
         XCTAssertEqual(restored.engine.state.units["p1"]!.coins,beforeReset.coins)
         XCTAssertEqual(restored.engine.state.units["p1"]!.score,beforeReset.score)
         XCTAssertEqual(restored.engine.state.units["p1"]!.inventory,beforeReset.inventory)
-        _=try restored.beginTravel(to:start);_=try restored.advanceTravel(distance:100_000)
+        try restored.refillExploration();_=try restored.beginTravel(to:start);_=try restored.advanceTravel(distance:100_000)
         let beforeUpdatedClaim=restored.engine.state.units["p1"]!
-        _=try restored.beginTravel(to:node.id);_=try restored.advanceTravel(distance:100_000)
+        try restored.refillExploration();_=try restored.beginTravel(to:node.id);_=try restored.advanceTravel(distance:100_000)
         let afterUpdatedClaim=restored.engine.state.units["p1"]!
         XCTAssertEqual(afterUpdatedClaim.coins,beforeUpdatedClaim.coins+37)
         XCTAssertEqual(afterUpdatedClaim.score,beforeUpdatedClaim.score+8)
         XCTAssertEqual(afterUpdatedClaim.inventory["smallPotion"] ?? 0,(beforeUpdatedClaim.inventory["smallPotion"] ?? 0)+2)
         XCTAssertTrue(restored.engine.state.map.nodes.first{$0.id==node.id}!.rewardCompleted)
-        _=try restored.beginTravel(to:start);_=try restored.advanceTravel(distance:100_000)
+        try restored.refillExploration();_=try restored.beginTravel(to:start);_=try restored.advanceTravel(distance:100_000)
         let beforeRepeat=restored.engine.state.units["p1"]!
-        _=try restored.beginTravel(to:node.id);_=try restored.advanceTravel(distance:100_000)
+        try restored.refillExploration();_=try restored.beginTravel(to:node.id);_=try restored.advanceTravel(distance:100_000)
         XCTAssertEqual(restored.engine.state.units["p1"]!.coins,beforeRepeat.coins)
         XCTAssertEqual(restored.engine.state.units["p1"]!.score,beforeRepeat.score)
         XCTAssertEqual(restored.engine.state.units["p1"]!.inventory,beforeRepeat.inventory)
