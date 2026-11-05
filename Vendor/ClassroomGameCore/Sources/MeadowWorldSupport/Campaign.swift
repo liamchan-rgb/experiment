@@ -185,8 +185,9 @@ public final class MeadowCampaignSession {
         while remainder>0,let t=travel,!t.paused {
             guard let p=MeadowCampaignSave.road(writer.snapshot.layout,from:t.path[t.leg],to:t.path[t.leg+1]) else{throw GameError("道路不存在。")}
             let before=writer.snapshot,needed=max(0,MeadowCampaignSave.length(p)-t.distance)
-            let step=min(remainder,needed,movementRemaining)
-            writer.snapshot.movement?.remaining=max(0,movementRemaining-step)
+            let available=movementRemaining
+            let step=min(remainder,needed,available),remainingAfterStep=max(0,available-min(remainder,needed,available))
+            writer.snapshot.movement?.remaining=remainingAfterStep
             writer.snapshot.movement?.totalDistance+=step
             remainder=max(0,remainder-step)
             do {
