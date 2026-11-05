@@ -7,7 +7,7 @@ public struct MonsterVisualSpec:Equatable {
     public var asset:String { "MeadowMonster"+id.prefix(1).uppercased()+id.dropFirst() }
     public var scale:Double { ["caveTroll","ruinDragon"].contains(id) ? 1.04:0.88 }
     public var hitAnchor:PartyPoint {
-        let points:[String:PartyPoint]=["slime":PartyPoint(110,140),"wolf":PartyPoint(110,126),"goblinArcher":PartyPoint(198,129),"stoneGuardian":PartyPoint(183,128),"caveTroll":PartyPoint(190,124),"ruinDragon":PartyPoint(152,145)]
+        let points:[String:PartyPoint]=["slime":PartyPoint(110,158),"wolf":PartyPoint(110,158),"goblinArcher":PartyPoint(198,158),"stoneGuardian":PartyPoint(183,158),"caveTroll":PartyPoint(190,171),"ruinDragon":PartyPoint(152,171)]
         return points[id] ?? PartyPoint(94,152)
     }
     public func hitPoint(at foot:PartyPoint)->PartyPoint {PartyPoint(foot.x+(hitAnchor.x-178.5)*scale,foot.y+(hitAnchor.y-240)*scale)}

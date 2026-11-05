@@ -14,6 +14,7 @@ final class MonsterVisualTests:XCTestCase {
             let base=PartyIntent(id:"old",action:.attack,actor:"p1",target:target,targets:[target],command:.attack(actor:"p1",target:target),enemy:false,weaponID:"trainingSword")
             let fixed=PartyIntent(id:"registered",action:.attack,actor:"p1",target:target,targets:[target],command:base.command,enemy:false,weaponID:"trainingSword",targetTemplateID:id)
             let a=PartyVisual.travel(base,age:1.048),b=PartyVisual.travel(fixed,age:1.048)
+            XCTAssertEqual(PartyVisual.foot("p1")!.y+b.y,PartyVisual.foot(target)!.y-12,accuracy:1)
             XCTAssertEqual(b.x-a.x,new.x-old.x,accuracy:0.001);XCTAssertEqual(b.y-a.y,new.y-old.y,accuracy:0.001)
             let anchor=PartyVisual.diceAnchor(actor:"p1",intent:fixed,age:1.048,diceCount:2)
             XCTAssertLessThan(anchor.x+70,PartyVisual.foot(target)!.x-84)
