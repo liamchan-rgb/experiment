@@ -1,0 +1,8 @@
+{
+  "sourceCommit": "ce75138d8748325f7b7dbcb302228d0ccde65246",
+  "cli": "MeadowSupportReviewExport --monster-only",
+  "normalSamplesPerSpecies": 320,
+  "sampleMs": 20,
+  "nativeRunPending": true,
+  "gameAppRun": false
+}
