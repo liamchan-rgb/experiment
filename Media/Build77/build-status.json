@@ -1,12 +1,12 @@
 {
   "build": 77,
   "version": "1.6.50",
-  "observedAt": "2026-11-04T17:16:20.522804+00:00",
+  "observedAt": "2026-11-05T02:12:43.525155+00:00",
   "sourceCommit": "a3508591fd6934e4389d01bed98aa7cc65400835",
   "fixCommit": "4fd9c11b7b0fe9e9c446f3c6ea6b9ec2e2250eb3",
   "run": "https://github.com/liamchan-rgb/experiment/actions/runs/41869668339",
   "runID": 41869668339,
-  "workflowStatus": "queued",
+  "workflowStatus": "in_progress",
   "workflowConclusion": null,
   "nativeArchivePassed": false,
   "ipaDelivered": false,
@@ -49,19 +49,76 @@
   },
   "recoveryAttempts": {
     "41869668339": {
-      "status": "queued",
+      "status": "in_progress",
       "conclusion": null,
-      "sourceCommit": "a3508591fd6934e4389d01bed98aa7cc65400835",
-      "attempt": 2,
-      "url": "https://github.com/liamchan-rgb/experiment/actions/runs/41869668339"
+      "attempt": 3,
+      "url": "https://github.com/liamchan-rgb/experiment/actions/runs/41869668339",
+      "sourceCommit": "a3508591fd6934e4389d01bed98aa7cc65400835"
     },
     "41864553920": {
-      "status": "queued",
-      "conclusion": null,
-      "sourceCommit": "06e7555235b08bc7f2873295fea19a07c2b71896",
+      "status": "completed",
+      "conclusion": "failure",
       "attempt": 2,
-      "url": "https://github.com/liamchan-rgb/experiment/actions/runs/41864553920"
+      "url": "https://github.com/liamchan-rgb/experiment/actions/runs/41864553920",
+      "sourceCommit": "06e7555235b08bc7f2873295fea19a07c2b71896"
     }
   },
-  "runAttempt": 2
+  "runAttempt": 3,
+  "latestJobs": [
+    {
+      "id": 127003170813,
+      "status": "in_progress",
+      "conclusion": null,
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-11-05T02:12:32Z",
+          "completed_at": "2026-11-05T02:12:34Z"
+        },
+        {
+          "name": "Run actions/checkout@v7",
+          "status": "in_progress",
+          "conclusion": null,
+          "number": 2,
+          "started_at": "2026-11-05T02:12:34Z",
+          "completed_at": null
+        },
+        {
+          "name": "Validate and test pure rules and generation",
+          "status": "pending",
+          "conclusion": null,
+          "number": 3,
+          "started_at": null,
+          "completed_at": null
+        },
+        {
+          "name": "Archive without running application or simulator",
+          "status": "pending",
+          "conclusion": null,
+          "number": 4,
+          "started_at": null,
+          "completed_at": null
+        },
+        {
+          "name": "Run actions/upload-artifact@v7",
+          "status": "pending",
+          "conclusion": null,
+          "number": 5,
+          "started_at": null,
+          "completed_at": null
+        },
+        {
+          "name": "Post Run actions/checkout@v7",
+          "status": "pending",
+          "conclusion": null,
+          "number": 10,
+          "started_at": null,
+          "completed_at": null
+        }
+      ]
+    }
+  ]
 }
