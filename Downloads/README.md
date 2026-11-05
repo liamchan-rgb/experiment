@@ -1,3 +1,9 @@
+## Build82 · 道路选点与队伍配置 · 1.6.55
+
+[直接下载 IPA](https://raw.githubusercontent.com/liamchan-rgb/experiment/d05739d0d81c479960a76f09f58af71137db80ec/Downloads/MeadowJourney-b82.ipa) · [包检](../Media/Build82/verification.json)
+
+道路任意选点/途中改向，移动系数降为50，人物战斗各自基础行动值开场；新增队伍入口、P1职业选择和操作成员保存。209测试、四组回归、设备Release与公开GET通过。未运行App/模拟器/实机。
+
 ## Build81 · 独立移动条与主动节点交互 · 1.6.54
 
 [直接下载 IPA](https://raw.githubusercontent.com/liamchan-rgb/experiment/df4d422ae13b162eba1a1d57561242ca92648812/Downloads/MeadowJourney-b81.ipa) · [包检](../Media/Build81/verification.json)
