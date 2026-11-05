@@ -4,10 +4,10 @@
 
 [完整任务书与示例](chat-apparel-v2/README.md) · [星辉甲任务](chat-apparel-v2/02_STARLIGHT_ARMOR.md) · [龙纹甲任务](chat-apparel-v2/03_DRAGON_ARMOR.md) · [母版规格](chat-apparel-v2/04_LAYER_AND_POSE_SPEC.md) · [验收分工](chat-apparel-v2/05_ACCEPTANCE.md)
 
-下载参考包后上传给Chat，再复制下面总指令。旧版本曾把最终104绑定的验收数量直接写给绘图对话，容易误解为逐帧手绘；本版以母版分工替代，旧稿可查Git历史。
+优先从根目录 [ART_TASKS.md](../../../ART_TASKS.md) 直接读取仓库内任务与素材，工作分支为 `fix/build33-face-grounding-camera`。无需用户下载上传参考包或复制整份提示词；ZIP仅供无仓库访问能力的对话备用。下面总指令与任务目录中的CHAT_START.txt一致。
 
 ```text
-请解压我上传的 Chat-Apparel-Masters-v2.zip，先读README和01_PIPELINE，并实际打开examples的五视角身体/关节导板、蓝衣分层母版及“一个母版生成八帧”的技术示例。
+优先直接读取 liamchan-rgb/experiment 仓库的 fix/build33-face-grounding-camera 分支，从根目录 ART_TASKS.md 开始。本任务目录为 Art/Standards/P1-Locomotion-Delivery-v1/chat-apparel-v2/；以下文件名均相对该目录。先读README.md和01_PIPELINE.md，并实际打开examples的五视角身体/关节导板、蓝衣分层母版及“一个母版生成八帧”的技术示例。无需用户重复上传ZIP或粘贴整份任务书。若当前环境没有仓库访问能力，如实说明；只有使用备用离线包时才解压Chat-Apparel-Masters-v2.zip读取同样资料。
 
 你的角色是绘制服装设计与静态分层母版。项目Codex负责复用现有模组、注册适配、批量导出动作帧并审核。不要把104姿势/416层引用理解成你要手绘104遍，也不要为交差伪造整套动作、运行时manifest或GIF。
 
@@ -26,7 +26,7 @@ C3：扩成五个静态视角：front、front-quarter-left、profile-left、rear
 C4：交20母版PNG、真正四层可编辑源、master-manifest、palette、原始生成稿/提示词和五视角对照。到此把母版交回Codex，不要求你再画所有动作。
 
 四个独立层：outfit.torso、outfit.sleeve.left、outfit.sleeve.right、outfit.hem.front。
-肩甲属于对应袖层；左右按角色自身，不按屏幕，正面对着我们时角色左臂在画面右。每视角以附件关节导板为准。
+肩甲属于对应袖层；左右按角色自身，不按屏幕，正面对着我们时角色左臂在画面右。每视角以examples中的关节导板为准。
 每层固定256×256真实RGBA透明PNG，左上原点，保留原画布/透明边距；不裁切居中、不缩放身体、不按内容外接框自动配准。透明alpha=0处RGB归零。
 母版不含皮肤、手、头发、脸、裤靴、武器、背景、棋盘格、文字、水印或地面投影。原身体只作隐藏参考层，不能混入衣物PNG。材质自阴影允许，固定左上光源，不用光晕掩盖形体。
 袖口与原手腕贴合，肩口/腋下有合理隐藏重叠；衣身服帖，不做圆肚/胸口凸块，腰带不要杂色；裙片与裤子分清，不画静止裤腿进护裙。

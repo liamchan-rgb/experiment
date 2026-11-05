@@ -8,7 +8,7 @@
 
 ## 怎样交给 Chat
 
-1. 上传 `Chat-Apparel-Masters-v2.zip`，粘贴 [CHAT_START.txt](CHAT_START.txt)（也有单独下载的TXT）。先让它实际解压、读文件、打开示例；仅给仓库路径不代表它能读到素材。
+1. **优先直接读仓库**：让已连接本仓库的Chat/agent从根目录 [ART_TASKS.md](../../../../ART_TASKS.md) 开始，再读 [CHAT_START.txt](CHAT_START.txt) 和本目录各文件，实际打开示例。工作分支为 `fix/build33-face-grounding-camera`，不需要用户重复上传ZIP或粘贴完整提示词。只有无法访问仓库时才用 `Downloads/Chat-Apparel-Masters-v2.zip` 离线包；不能假装已经读取。
 2. 第一轮只做两件甲各A/B/C方案，在同一个原人物的正下/左下静态模板上对比。分别选定后，先做正面四层样板，再补其余四视角。
 3. 每件交20张母版PNG、真正分层源稿、母版清单、色板与五视角合成页。交回来后由Codex登记裁片/控制点、适配现有挂载并批量导出、修边和审核。
 4. 不对称装饰或右向光照不能由现有映射妥善处理时，只补必要的右侧静态母版；不要因此改成全套逐帧手绘。
