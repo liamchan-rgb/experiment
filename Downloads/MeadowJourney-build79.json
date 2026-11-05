@@ -1,0 +1,32 @@
+{
+  "build": 79,
+  "version": "1.6.52",
+  "sourceCommit": "317d1b2ac1382a20d7006c1b6c9e5ced1b929697",
+  "runID": 41993649760,
+  "runAttempt": 1,
+  "run": "https://github.com/liamchan-rgb/experiment/actions/runs/41993649760",
+  "artifactID": 13400051905,
+  "artifactSHA256": "sha256:bfde26ddea3187c5366e482db026c105e9da5b383a7d16b266ce2df81ad4cecf",
+  "ipaBytes": 60330605,
+  "ipaSHA256": "d16acec15fb39b0fa0414b4608082161c57acf13124a99979e4e09cbec9eb244",
+  "swiftTests": 196,
+  "fourRegressionsPassed": true,
+  "deviceReleaseArchivePassed": true,
+  "crcPassed": true,
+  "classicZIP20NoExtraFields": true,
+  "arm64": true,
+  "executablePermissions": true,
+  "metalAssetsPresent": true,
+  "originalMapAndGaitIdenticalToBuild78": true,
+  "installed": false,
+  "appSimulatorDeviceRun": false,
+  "saveFormatChanged": false,
+  "movementMultiplier": 3,
+  "downloadURL": "https://raw.githubusercontent.com/liamchan-rgb/experiment/af1b107bceba62680a5aa92e85f0faaa8b5f485b/Downloads/MeadowJourney-b79.ipa",
+  "publicGET": {
+    "httpStatus": 200,
+    "bytes": 60330605,
+    "sha256": "d16acec15fb39b0fa0414b4608082161c57acf13124a99979e4e09cbec9eb244",
+    "verifiedAt": "2026-11-05T08:32:02.478546+00:00"
+  }
+}

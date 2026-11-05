@@ -1,3 +1,9 @@
+## Build79 · 地图选点编辑 · 1.6.52
+
+[直接下载 IPA](https://raw.githubusercontent.com/liamchan-rgb/experiment/af1b107bceba62680a5aa92e85f0faaa8b5f485b/Downloads/MeadowJourney-b79.ipa) · [包检记录](../Media/Build79/verification.json)
+
+点击编辑地点后，直接在地图上点击建筑进行编辑；再次点击可取消。196项测试、四组回归、设备Release归档和公开完整GET通过。未运行App/模拟器/实机。
+
 ## Build78 · 随机地图地点内容编辑 · 1.6.51
 
 [直接下载 IPA](MeadowJourney-b78.ipa) · [功能标准与验收](../docs/planning/random-map-v1/build78-node-content-editing.md) · [包检记录](../Media/Build78/verification.json)
