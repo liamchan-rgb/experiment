@@ -1,6 +1,5 @@
 {
   "version": 1,
-  "framesPerSecond": 60,
   "attackSeconds": 0.96,
   "deathSeconds": 0.8,
   "records": [
@@ -337,5 +336,6 @@
   ],
   "animationMethod": "registered continuous full-surface deformation; not separately redrawn limbs",
   "sourceApproval": null,
-  "appRun": false
+  "appRun": false,
+  "displayTargetFPS": 60
 }

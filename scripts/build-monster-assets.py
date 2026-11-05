@@ -93,7 +93,7 @@ for index,name in enumerate(names):
  record={'id':name,'name':titles[index],'asset':asset,'canvas':[384,256],'anchor':[178.5,240],'deathCanvas':[512,320],'deathAnchor':[178.5,272],'scale':1.04 if name in ['caveTroll','ruinDragon'] else .88,'contacts':runs,'clips':offsets,'deathCount':deathCount,'sourceCropSize':list(parts[name].size)}
  records.append(record)
  print(name,master.getbbox(),len(tiles),flush=True)
-(O/'manifest.json').write_text(json.dumps({'version':1,'framesPerSecond':60,'attackSeconds':.96,'deathSeconds':.8,'records':records,'animationMethod':'registered continuous full-surface deformation; not separately redrawn limbs','sourceApproval':None,'appRun':False},ensure_ascii=False,indent=2)+'\n')
+(O/'manifest.json').write_text(json.dumps({'version':1,'displayTargetFPS':60,'attackSeconds':.96,'deathSeconds':.8,'records':records,'animationMethod':'registered continuous full-surface deformation; not separately redrawn limbs','sourceApproval':None,'appRun':False},ensure_ascii=False,indent=2)+'\n')
 folder=A/'MeadowMonsterVisuals.dataset';folder.mkdir(exist_ok=True);shutil.copyfile(O/'manifest.json',folder/'motion.json');(folder/'Contents.json').write_text(json.dumps({'data':[{'idiom':'universal','filename':'motion.json'}],'info':{'version':1,'author':'xcode'}})+'\n')
 # First full-body audit board at native sprite scale, with original hero size unaltered.
 board=Image.new('RGB',(1152,640),'#1d3226');d=ImageDraw.Draw(board);font=ImageFont.truetype('/usr/share/fonts/opentype/noto/NotoSerifCJK-Bold.ttc',20)
