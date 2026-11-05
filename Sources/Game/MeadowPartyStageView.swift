@@ -72,6 +72,7 @@ final class MeadowPartyStageView:UIView {
             let image=UIImage(named:"MeadowBattleForestWarden")
             let view=UIImageView(image:image);monsters[id]=view;view.isUserInteractionEnabled=true;view.layer.magnificationFilter = .nearest
             let flash=UIImageView();flash.isUserInteractionEnabled=false;flash.layer.magnificationFilter = .nearest;monsterFlash[id]=flash;world.addSubview(flash)
+            let skills=MeadowBattleAttachedSkillsView(frame:.zero);attached[id]=skills;world.addSubview(skills)
             world.addSubview(view);view.accessibilityIdentifier=id;view.addGestureRecognizer(UITapGestureRecognizer(target:self,action:#selector(tapped(_:))))
             let wind=UIImageView();wind.layer.magnificationFilter = .nearest;wind.layer.zPosition=950;winds[id]=wind;world.addSubview(wind)
             shadow=MeadowBattleGroundingView(image:image,soleY:240,contacts:[.init(point:CGPoint(x:84,y:240),radius:15),.init(point:CGPoint(x:172,y:240),radius:15),.init(point:CGPoint(x:230,y:240),radius:15),.init(point:CGPoint(x:314,y:240),radius:15)])
@@ -84,17 +85,18 @@ final class MeadowPartyStageView:UIView {
         guard ids != monsterIDs else{return}
         for id in monsterIDs {
             monsters.removeValue(forKey:id)?.removeFromSuperview();winds.removeValue(forKey:id)?.removeFromSuperview()
-            monsterFlash.removeValue(forKey:id)?.removeFromSuperview();shadows.removeValue(forKey:id)?.removeFromSuperview();labels.removeValue(forKey:id)?.removeFromSuperview()
+            attached.removeValue(forKey:id)?.removeFromSuperview();monsterFlash.removeValue(forKey:id)?.removeFromSuperview();shadows.removeValue(forKey:id)?.removeFromSuperview();labels.removeValue(forKey:id)?.removeFromSuperview()
         }
         monsterIDs=ids;for id in ids {installUnit(id)}
     }
     required init?(coder:NSCoder) { fatalError("init(coder:) has not been implemented") }
     @objc private func tapped(_ r:UITapGestureRecognizer) { if !isPlaying,let id=r.view?.accessibilityIdentifier { onChoose?(id) } }
     func start() { MeadowBattleVFXAssets.prewarm();victoryAt=nil;sceneTime=0;recovery=[:];recoveryTier=[:];formation=[:];birth=[:];contact=[:];broken=[:];deaths=[:];hurt=[:];messages=[];emissions=[];skillVFX=[];pendingStatusCues=[];statusSnapshots=[:];poseKeys=[:];fallen=[:];diceAction=nil;diceConfirmedAt=nil;diceView.confirmationAge=nil;diceView.dice=[];diceSettledAt=nil;diceExitAt=nil;dimFrom=0;dimTarget=0;clock.start() }
-    func stop() { clock.stop();intent=nil;impact=nil;completion=nil;focus=nil;skillVFX=[];pendingStatusCues=[];statusSnapshots=[:] }
+    func stop() { MeadowMonsterFrames.retain([]);clock.stop();intent=nil;impact=nil;completion=nil;focus=nil;skillVFX=[];pendingStatusCues=[];statusSnapshots=[:] }
     func displayedVitals(for unitID:String,health:Int,shield:Int)->(health:Int,shield:Int) { statusSnapshots[unitID] ?? (health,shield) }
     func show(_ value:GameState,friend:String,foe:String,current:String?,catalog:GameCatalog) {
         state=value;self.current=current;self.catalog=catalog;fx.friend=friend;fx.foe=foe
+        MeadowMonsterFrames.retain(Set(value.units.values.filter{$0.kind == .monster && renderIDs.contains($0.id)}.compactMap{MonsterVisualSpec.find($0.templateID)?.id}))
         for id in renderIDs where value.units[id]?.isAlive==false {
             if id.hasPrefix("m"),deaths[id]==nil {deaths[id]=sceneTime-MeadowBattleVisualMotion.deathDuration}
             if id.hasPrefix("p"),fallen[id]==nil {fallen[id]=sceneTime-2}
@@ -130,7 +132,7 @@ final class MeadowPartyStageView:UIView {
         naturalTwenty=confirmed?.dice.contains { $0.naturalTwenty } ?? false
         intent=value;state=before;startAt=sceneTime;self.impact=onImpact;self.completion=completion;fired=false;focus=nil;meetsShield=(before.units[value.target]?.shield ?? 0)>0
         if let spec=value.action.skillVFX {
-            let hitAge=value.enemy ? 0.46:value.action.impact
+            let hitAge=value.impactAge
             let groundYs=value.targets.compactMap { PartyVisual.foot($0)?.y }
             let groundY=groundYs.isEmpty ? (PartyVisual.foot(value.actor)?.y ?? PartyVisual.height):groundYs.reduce(0,+)/Double(groundYs.count)
             skillVFX.append(MeadowPartySkillVFXEvent(spec:spec,startedAt:spec.startTime(actionStart:sceneTime,impactAge:hitAge),center:PartyVisual.skillEffectCenter(targets:value.targets,actor:value.actor),groundY:groundY))
@@ -156,8 +158,8 @@ final class MeadowPartyStageView:UIView {
         }
         if let value=intent {
             let age=sceneTime-startAt
-            let end=value.enemy ? 1.10:value.action.duration
-            let hit=value.enemy ? 0.46:value.action.impact
+            let end=value.visualDuration
+            let hit=value.impactAge
             if !fired,age>=hit {
                 fired=true;let callback=impact;impact=nil
                 if let receipt=callback?() { apply(receipt,intent:value) }
@@ -257,27 +259,52 @@ final class MeadowPartyStageView:UIView {
                 shadows[id]?.spriteFrame=actor.frame
                 labels[id]?.frame=CGRect(x:f.x-88,y:f.y-170,width:176,height:44)
             } else if let view=monsters[id] {
-                let s=CGFloat(PartyVisual.enemyScale)
+                let species=MonsterVisualSpec.find(unit.templateID)
+                let s=CGFloat(species?.scale ?? PartyVisual.enemyScale)
                 view.frame=CGRect(x:foot.x-178.5*s,y:foot.y-240*s,width:384*s,height:256*s);view.layer.zPosition=CGFloat(f.y)
                 monsterFlash[id]?.alpha=0
+                let baseFrame=view.frame
                 if let at=deaths[id] {
-                    let d=sceneTime-at;view.isHidden=d>=MeadowBattleVisualMotion.deathDuration;view.image=MeadowBattleVFXAssets.body[MeadowBattleVisualMotion.bodyFrame(d)]
-                    winds[id]?.image=MeadowBattleVFXAssets.wind[MeadowBattleVisualMotion.windFrame(d)]
-                    winds[id]?.frame=CGRect(x:CGFloat(f.x)-178.5*s,y:CGFloat(f.y)-272*s,width:448*s,height:320*s)
-                    winds[id]?.isHidden=d>=MeadowBattleVisualMotion.deathDuration
+                    let d=sceneTime-at
+                    if let species {
+                        view.image=MeadowMonsterFrames.image(species.id,index:MonsterVisualSpec.deathFrame(d),death:true)
+                        view.frame=CGRect(x:foot.x-178.5*s,y:foot.y-272*s,width:512*s,height:320*s)
+                        view.isHidden=d>=MonsterVisualSpec.deathDuration;winds[id]?.isHidden=true
+                    }else{
+                        view.isHidden=d>=MeadowBattleVisualMotion.deathDuration;view.image=MeadowBattleVFXAssets.body[MeadowBattleVisualMotion.bodyFrame(d)]
+                        winds[id]?.image=MeadowBattleVFXAssets.wind[MeadowBattleVisualMotion.windFrame(d)]
+                        winds[id]?.frame=CGRect(x:CGFloat(f.x)-178.5*s,y:CGFloat(f.y)-272*s,width:448*s,height:320*s)
+                        winds[id]?.isHidden=d>=MeadowBattleVisualMotion.deathDuration
+                    }
                     shadows[id]?.alpha=CGFloat(1-PartyVisual.smooth(d/0.75))
                 } else {
                     view.isHidden=false
-                    let motion=PartyVisual.monster(time:sceneTime+(PartyVisual.slot(id)=="m2" ? 0.7:0),attackAge:intent?.actor==id && intent?.action.isOffensive==true ? age:nil,hurtAge:hurt[id].map { sceneTime-$0 },preparing:current==id && intent==nil)
+                    let attacking=intent?.actor==id && intent?.action.isOffensive==true
+                    let casting=intent?.actor==id && intent?.action.isOffensive==false
+                    let motion=PartyVisual.monster(time:sceneTime+(PartyVisual.slot(id)=="m2" ? 0.7:0),attackAge:attacking ? age:nil,hurtAge:hurt[id].map { sceneTime-$0 },preparing:current==id && intent==nil)
                     let p=motion.progress
-                    view.frame=CGRect(x:foot.x-178.5*s+motion.recoil,y:foot.y-240*s*motion.scaleY,width:384*s,height:256*s*motion.scaleY)
-                    view.image=MeadowBattleEnemyFrames.image(progress:CGFloat(p));winds[id]?.isHidden=true;shadows[id]?.alpha=1
-                    let key="monster-\(Int(p*8))"
-                    if poseKeys[id] != key { shadows[id]?.update(image:view.image,soleY:240,contacts:MeadowBattleEnemyFrames.feet(progress:CGFloat(p)).map { .init(point:$0,radius:15) });poseKeys[id]=key;monsterFlash[id]?.image=view.image?.withTintColor(.white,renderingMode:.alwaysOriginal) }
+                    if let species {
+                        let index=species.frame(time:sceneTime+Double(PartyVisual.slot(id)=="m2" ? 1:0),attackAge:attacking ? age:nil,castAge:casting ? age:nil,hurtAge:hurt[id].map{sceneTime-$0},preparing:current==id && intent==nil)
+                        let key="species-\(species.id)-\(index)"
+                        if poseKeys[id] != key {
+                            view.image=MeadowMonsterFrames.image(species.id,index:index)
+                            shadows[id]?.update(image:view.image,soleY:240,contacts:MeadowMonsterFrames.feet(species.id).map{.init(point:$0,radius:species.id=="slime" ? 25:12)})
+                            monsterFlash[id]?.image=view.image?.withTintColor(.white,renderingMode:.alwaysOriginal);poseKeys[id]=key
+                        }
+                    }else{
+                        view.frame=CGRect(x:foot.x-178.5*s+motion.recoil,y:foot.y-240*s*motion.scaleY,width:384*s,height:256*s*motion.scaleY)
+                        view.image=MeadowBattleEnemyFrames.image(progress:CGFloat(p))
+                        let key="monster-\(Int(p*8))"
+                        if poseKeys[id] != key { shadows[id]?.update(image:view.image,soleY:240,contacts:MeadowBattleEnemyFrames.feet(progress:CGFloat(p)).map { .init(point:$0,radius:15) });poseKeys[id]=key;monsterFlash[id]?.image=view.image?.withTintColor(.white,renderingMode:.alwaysOriginal) }
+                    }
+                    winds[id]?.isHidden=true;shadows[id]?.alpha=1
                     monsterFlash[id]?.frame=view.frame;monsterFlash[id]?.alpha=motion.flash;monsterFlash[id]?.layer.zPosition=view.layer.zPosition+1
                 }
-                shadows[id]?.spriteFrame=view.frame
-                labels[id]?.frame=CGRect(x:f.x-84,y:f.y-242,width:168,height:44)
+                attached[id]?.frame=CGRect(x:foot.x-192*s,y:foot.y-321*s,width:384*s,height:384*s)
+                attached[id]?.layer.zPosition=view.layer.zPosition+2
+                attached[id]?.update(shield:unit.isAlive ? shownVitals.shield:0,preview:0,time:sceneTime,formation:shownVitals.shield==0 ? formation[id].flatMap{sceneTime-$0<1.0 ? sceneTime-$0:nil}:nil,formationBase:0,birth:birth[id].map{sceneTime-$0},contact:contact[id].map{sceneTime-$0},broken:broken[id].map{sceneTime-$0},recovery:nil,recoveryTier:nil)
+                shadows[id]?.spriteFrame=species == nil ? view.frame:baseFrame
+                labels[id]?.frame=CGRect(x:f.x-84,y:f.y-(species == nil ? 256*Double(s)+34:224*Double(s)+46),width:168,height:44)
             }
         }
         if let value=intent {
@@ -285,7 +312,7 @@ final class MeadowPartyStageView:UIView {
             let build=castDim+(peak-castDim)*PartyVisual.smooth(age/0.4)
             dim.alpha=CGFloat((value.action.isRune || value.action == .dragonFlame) ? SpellbladeEffects.darkness(value.action,age:age,from:castDim):build*(1-PartyVisual.smooth((age-1.2)/0.6)))
         } else { dim.alpha=CGFloat(previewDarkness()) }
-        let anchor=PartyVisual.diceAnchor(actor:diceActor,intent:intent,age:age,shielded:meetsShield,diceCount:diceView.dice.count)
+        let anchor=PartyVisual.diceAnchor(actor:diceActor,intent:intent,age:age,shielded:meetsShield,diceCount:diceView.dice.count,monsterTemplateID:state.units[diceActor]?.templateID)
         diceView.frame=CGRect(x:anchor.x-110,y:anchor.y,width:220,height:100)
         diceView.time=sceneTime;diceView.visibleAge=sceneTime-diceVisibleAt
         diceView.confirmationAge=diceConfirmedAt.map { sceneTime-$0 }
@@ -362,11 +389,13 @@ private final class MeadowPartyEffectsView:UIView {
                 let tip=BowRig.releaseArrowTip
                 let from=PartyPoint(foot.x+(tip.x-123)*PartyVisual.heroScale,foot.y+(tip.y-214)*PartyVisual.heroScale)
                 let to=PartyVisual.hitPoint(target:intent.target,shielded:meetsShield)
-                if let arrow=BowRig.projectile(age:age,from:from,to:to,impact:intent.action.impact,scale:PartyVisual.heroScale) {
+                let projectile=intent.enemy ? MonsterVisualSpec.find(intent.monsterTemplateID)?.projectile(age:age,foot:foot,target:to):BowRig.projectile(age:age,from:from,to:to,impact:intent.action.impact,scale:PartyVisual.heroScale)
+                if let arrow=projectile {
                     let a=arrow.tail,b=arrow.tip
                     ctx.saveGState();ctx.setLineCap(.round)
-                    ctx.setShadow(offset:.zero,blur:8,color:MeadowPreviewPalette.gold.cgColor)
-                    ctx.setStrokeColor(MeadowPreviewPalette.gold.withAlphaComponent(0.5).cgColor);ctx.setLineWidth(5)
+                    let missileColor=intent.monsterTemplateID=="ruinDragon" ? UIColor.systemCyan:MeadowPreviewPalette.gold
+                    ctx.setShadow(offset:.zero,blur:8,color:missileColor.cgColor)
+                    ctx.setStrokeColor(missileColor.withAlphaComponent(0.5).cgColor);ctx.setLineWidth(5)
                     ctx.move(to:CGPoint(x:a.x,y:a.y));ctx.addLine(to:CGPoint(x:b.x,y:b.y));ctx.strokePath()
                     ctx.setStrokeColor(MeadowPreviewPalette.ink.cgColor);ctx.setLineWidth(2)
                     ctx.move(to:CGPoint(x:a.x,y:a.y));ctx.addLine(to:CGPoint(x:b.x,y:b.y));ctx.strokePath();ctx.restoreGState()

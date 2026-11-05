@@ -501,4 +501,48 @@ final class CampaignTests:XCTestCase {
         XCTAssertEqual(try MeadowCampaignSave.decoded(stored).completion,result)
     }
 
+    func testThreeDistinctMonstersResumeAndTakeRealAITurns()throws {
+        var s=try MeadowCampaignSession.new(layout:layout(combat:true));let start=s.engine.state.units["p1"]!.nodeID,target=s.engine.state.map.neighbors(start)[0]
+        try s.configureEncounter(node:target,templates:["slime","wolf","goblinArcher"])
+        try s.beginTravel(to:target);try finishTravel(s);try s.interactCurrentNode()
+        s=try MeadowCampaignSession(save:.decoded(s.snapshot.encoded()));let encounter=try PartyEncounter(engine:s.engine)
+        XCTAssertEqual(encounter.monsterIDs.count,3);XCTAssertEqual(Set(encounter.monsterIDs.map(PartyVisual.slot)).count,3)
+        var seen=Set<String>()
+        for _ in 0..<40 {
+            if encounter.round>=3{break}
+            let actor=try XCTUnwrap(encounter.current)
+            if s.engine.state.units[actor]?.kind == .player {try s.engine.apply(.endTurn(actor:actor,timedOut:false))}
+            else {
+                for id in s.playerIDs {let hp=try GameRules.attributes(s.engine.state.units[id]!,catalog:s.engine.catalog).maximumHealth;try s.engine.apply(.editResources(unit:id,value:ResourcePatch(health:hp,shield:8)))}
+                let before=s.engine.archive,intent=try XCTUnwrap(encounter.prepareMonsterStep())
+                XCTAssertEqual(s.engine.archive,before);seen.insert(intent.actor)
+                XCTAssertEqual(intent.monsterTemplateID,before.state.units[actor]?.templateID)
+                XCTAssertEqual(intent.ranged,intent.monsterTemplateID=="goblinArcher")
+                let dice=BattleDice.channels(intent.action,actor:before.state.units[actor]!,target:before.state.units[intent.target]!,catalog:s.engine.catalog,receipt:encounter.confirmedReceipt)
+                for age in stride(from:0.0,through:1.1,by:0.02){let p=PartyVisual.diceAnchor(actor:actor,intent:intent,age:age,diceCount:dice.count,monsterTemplateID:intent.monsterTemplateID);XCTAssertTrue(p.x.isFinite && p.y.isFinite)}
+                _=try encounter.commit(intent.id);XCTAssertNil(try encounter.commit(intent.id))
+            }
+        }
+        XCTAssertEqual(seen,Set(encounter.monsterIDs));XCTAssertGreaterThanOrEqual(encounter.round,3)
+    }
+    func testRealMonsterSkillPresentationAliasesAndDelayedFeedback()throws {
+        for template in ["stoneGuardian","caveTroll","ruinDragon"] {
+            var config=MeadowMapConfiguration.suggested(total:4,seed:317)
+            let boss=try GameCatalog.initial().monster(template).boss;config.combat=boss ? 0:3;config.boss=boss ? 3:0;config.reward=0;config.empty=0
+            let s=try MeadowCampaignSession.new(layout:MeadowMapGenerator.generate(config)),start=s.engine.state.units["p1"]!.nodeID,target=s.engine.state.map.neighbors(start)[0]
+            try s.configureEncounter(node:target,templates:[template]);try s.beginTravel(to:target);try finishTravel(s);try s.interactCurrentNode()
+            let e=try PartyEncounter(engine:s.engine),id=e.monsterIDs[0]
+            if template=="caveTroll"{try s.engine.apply(.editResources(unit:id,value:ResourcePatch(health:12)))}else{try s.engine.apply(.editResources(unit:id,value:ResourcePatch(shield:0)))}
+            for _ in 0..<8 where s.engine.state.units[e.current ?? ""]?.kind == .player {try s.engine.apply(.endTurn(actor:e.current!,timedOut:false))}
+            let before=s.engine.archive,intent=try XCTUnwrap(e.prepareMonsterStep())
+            XCTAssertEqual(s.engine.archive,before)
+            XCTAssertEqual(intent.action,template=="stoneGuardian" ? .simpleGuard:template=="caveTroll" ? .regeneration:.dragonScaleWard)
+            XCTAssertGreaterThan(intent.visualDuration,1.1);_=try e.commit(intent.id)
+            if template=="ruinDragon" {
+                let flame=try XCTUnwrap(e.prepareMonsterStep());XCTAssertEqual(flame.action,.dragonFlame);XCTAssertEqual(flame.targets.count,2)
+                XCTAssertEqual(flame.visualDuration,2.75);XCTAssertEqual(PartyVisual.travel(flame,age:0.46).x,0)
+            }
+        }
+    }
+
 }

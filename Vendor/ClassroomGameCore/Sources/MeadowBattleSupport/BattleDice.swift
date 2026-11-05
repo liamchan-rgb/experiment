@@ -87,7 +87,7 @@ extension PartyVisual {
 }
 
 extension PartyVisual {
-    public static func diceAnchor(actor:String,intent:PartyIntent?,age:Double,shielded:Bool=false,diceCount:Int=2)->PartyPoint {
+    public static func diceAnchor(actor:String,intent:PartyIntent?,age:Double,shielded:Bool=false,diceCount:Int=2,monsterTemplateID:String?=nil)->PartyPoint {
         // Campaign identities (m-<node>-<index>) share the reviewed m1/m2
         // formation. Resolve both ends just like travel, hit and HP labels.
         guard let actorFoot=foot(actor) else { return PartyPoint(width/2,0) }
@@ -103,6 +103,8 @@ extension PartyVisual {
             let half=Double(max(0,diceCount-1))*PolyhedralDice.spacing(count:diceCount)/2+PolyhedralDice.radius(count:diceCount)*1.3
             x=max(x,firstPlayer.x+88+12+half)
         }
-        return PartyPoint(x,actorFoot.y+moving.y-(actor.hasPrefix("m") ? 357:287))
+        let spec=MonsterVisualSpec.find(monsterTemplateID ?? intent?.monsterTemplateID)
+        let lift=actor.hasPrefix("m") ? (spec.map{224*$0.scale+156} ?? 357):287
+        return PartyPoint(x,actorFoot.y+moving.y-lift)
     }
 }

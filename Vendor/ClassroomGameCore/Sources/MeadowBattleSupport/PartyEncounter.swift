@@ -63,8 +63,15 @@ public struct PartyIntent {
     public let command:GameCommand
     public let enemy:Bool
     public let weaponID:String?
+    public var monsterTemplateID:String?=nil
+    public var enemyRanged:Bool=false
+    public var impactAge:Double { enemy ? 0.46:action.impact }
+    public var visualDuration:Double { enemy && action == .attack ? 1.10:action.duration }
+    public init(id:String,action:PartyAction,actor:String,target:String,targets:[String],command:GameCommand,enemy:Bool,weaponID:String?,monsterTemplateID:String?=nil,enemyRanged:Bool=false) {
+        self.id=id;self.action=action;self.actor=actor;self.target=target;self.targets=targets;self.command=command;self.enemy=enemy;self.weaponID=weaponID;self.monsterTemplateID=monsterTemplateID;self.enemyRanged=enemyRanged
+    }
     public var magical:Bool { weaponID=="legendaryStaff" && !enemy && action.visual=="attack" && action != .starlightPulse }
-    public var ranged:Bool { weaponID=="huntingBow" && !enemy && action.isOffensive && !action.isRune && action != .dragonFlame && action != .starlightPulse }
+    public var ranged:Bool { enemyRanged || weaponID=="huntingBow" && !enemy && action.isOffensive && !action.isRune && action != .dragonFlame && action != .starlightPulse }
 }
 /// Uses the original atomic rule engine. Pending visual actions do not mutate it.
 public final class PartyEncounter {
@@ -122,7 +129,7 @@ public final class PartyEncounter {
         guard let battle=engine.state.battle,battle.kind == .pve else {throw GameError("当前没有探索战斗。")}
         self.engine=engine;self.sessionID=sessionID
         self.monsterIDs=battle.queue.filter{engine.state.units[$0]?.kind == .monster}.sorted()
-        guard (1...2).contains(monsterIDs.count) else {throw GameError("当前战场支持1—2个敌人。")}
+        guard (1...3).contains(monsterIDs.count) else {throw GameError("当前战场支持1—3个敌人。")}
     }
     public func command(_ action:PartyAction,target:String)->GameCommand? {
         guard let actor=current else { return nil }
@@ -173,13 +180,14 @@ public final class PartyEncounter {
         guard let staged=try? GameEngine(catalog:engine.catalog,state:state,history:engine.history),let receipt=try? staged.apply(.monsterStep,id:id) else{return nil}
         let skillName=receipt.events.first{$0.kind=="aiAction"}?.detail
         let skillID=engine.catalog.skills.first{$0.name==skillName}?.id
-        let action=skillID.flatMap(PartyAction.init(rawValue:)) ?? .attack
+        let aliases:[String:PartyAction]=["stoneSkin":.simpleGuard,"monsterDragonScale":.dragonScaleWard,"monsterDragonFlame":.dragonFlame]
+        let action=skillID.flatMap{aliases[$0] ?? PartyAction(rawValue:$0)} ?? .attack
         let changed=state.units.keys.sorted().filter{key in
             guard let before=state.units[key],let after=receipt.after.units[key] else{return false}
             return before.health != after.health || before.shield != after.shield || before.damageBuff != after.damageBuff
         }
         let targets=changed.isEmpty ? [nextEnemyTarget() ?? "p1"]:changed
-        let intent=PartyIntent(id:id,action:action,actor:actor,target:targets[0],targets:targets,command:.monsterStep,enemy:true,weaponID:nil)
+        let intent=PartyIntent(id:id,action:action,actor:actor,target:targets[0],targets:targets,command:.monsterStep,enemy:true,weaponID:nil,monsterTemplateID:state.units[actor]?.templateID,enemyRanged:action == .attack && ((try? engine.catalog.monster(state.units[actor]!.templateID).attack.range) ?? 0)>0)
         confirmedEngine=staged;confirmedReceipt=receipt;pending=intent;return intent
     }
     public func cancel() { pending=nil;confirmedEngine=nil;confirmedReceipt=nil }

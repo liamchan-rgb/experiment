@@ -1,4 +1,5 @@
 import UIKit
+import MeadowBattleSupport
 import MeadowWorldSupport
 import MeadowBattleSupport
 import ClassroomGameCore
@@ -73,6 +74,7 @@ final class MeadowMapSettingsViewController: UIViewController {
         right.addArrangedSubview(startCampaignButton)
         right.addArrangedSubview(button("继续已保存行程",action:#selector(continueCampaign)))
         right.addArrangedSubview(button("历史结算",action:#selector(showCompletedCampaigns)))
+        right.addArrangedSubview(button("怪物动作检视",action:#selector(showMonsterGallery)))
         preview.heightAnchor.constraint(equalToConstant:200).isActive=true
         scroll.addSubview(form);rightScroll.addSubview(right);view.addSubview(scroll);view.addSubview(rightScroll)
         for v in [scroll,rightScroll,form,right] { v.translatesAutoresizingMaskIntoConstraints=false }
@@ -201,6 +203,7 @@ final class MeadowMapSettingsViewController: UIViewController {
             presentCampaign(try MeadowCampaignSession(save:save,persist:store.write))
         } catch {status.text="无法读取行程，原存档已保留："+error.localizedDescription}
     }
+    @objc private func showMonsterGallery(){present(MeadowMonsterGalleryController(),animated:true)}
     @objc private func showCompletedCampaigns(){
         do{
             let saves=try Self.campaignStore().completedCampaigns()
@@ -299,4 +302,80 @@ final class MeadowCampaignResultsViewController:UIViewController {
         let width=(right-left-12)/2
         close.frame=CGRect(x:left,y:bottom-52,width:onReturnSettings==nil ? right-left:width,height:44);settings.frame=CGRect(x:left+width+12,y:bottom-52,width:width,height:44)
     }
+}
+
+
+/// A separate art inspection screen, never attached to the saved rule engine.
+private final class MeadowMonsterGalleryController:UIViewController {
+    private let gallery=MeadowMonsterGalleryView(),pick=UISegmentedControl(items:["史莱姆","森林狼","弓手","石像","巨魔","魔龙"])
+    private let titleLabel=MeadowPreviewPalette.label("怪物动作检视",size:26,weight:.heavy)
+    private let phase=MeadowPreviewPalette.label("",size:19,weight:.bold)
+    private let close=MeadowPreviewPalette.button("返回"),replay=MeadowPreviewPalette.button("重播动作")
+    init(){super.init(nibName:nil,bundle:nil);modalPresentationStyle = .fullScreen}
+    required init?(coder:NSCoder){fatalError("init(coder:) has not been implemented")}
+    override var prefersStatusBarHidden:Bool{true}
+    override var supportedInterfaceOrientations:UIInterfaceOrientationMask{.landscape}
+    override func viewDidLoad(){
+        super.viewDidLoad();view.backgroundColor=MeadowPreviewPalette.panel
+        for v in [gallery,pick,titleLabel,phase,close,replay]{view.addSubview(v)}
+        pick.selectedSegmentIndex=0;pick.selectedSegmentTintColor=MeadowPreviewPalette.gold
+        pick.setTitleTextAttributes([.foregroundColor:MeadowPreviewPalette.ink,.font:UIFont.boldSystemFont(ofSize:18)],for:.selected)
+        pick.setTitleTextAttributes([.foregroundColor:UIColor.white,.font:UIFont.boldSystemFont(ofSize:18)],for:.normal)
+        pick.addAction(UIAction{[weak self] _ in guard let self else{return};self.gallery.select(MonsterVisualSpec.ids[self.pick.selectedSegmentIndex])},for:.valueChanged)
+        gallery.onPhase={ [weak self] value in self?.phase.text=value+" · 仅外观检视，不消耗行程资源" }
+        close.addAction(UIAction{[weak self] _ in self?.dismiss(animated:true)},for:.touchUpInside)
+        replay.addAction(UIAction{[weak self] _ in guard let self else{return};self.gallery.select(MonsterVisualSpec.ids[self.pick.selectedSegmentIndex])},for:.touchUpInside)
+    }
+    override func viewDidAppear(_ animated:Bool){super.viewDidAppear(animated);gallery.start()}
+    override func viewWillDisappear(_ animated:Bool){super.viewWillDisappear(animated);gallery.stop()}
+    override func viewDidLayoutSubviews(){
+        super.viewDidLayoutSubviews();let safe=view.safeAreaInsets,left=max(16,safe.left+8),right=view.bounds.width-max(16,safe.right+8),width=right-left,top=max(12,safe.top+8),bottom=view.bounds.height-max(12,safe.bottom+8)
+        titleLabel.frame=CGRect(x:left,y:top,width:250,height:36);close.frame=CGRect(x:right-90,y:top,width:90,height:38)
+        pick.frame=CGRect(x:left,y:top+46,width:width,height:42)
+        gallery.frame=CGRect(x:left,y:top+98,width:width,height:max(1,bottom-top-156))
+        phase.frame=CGRect(x:left,y:bottom-44,width:width-150,height:40);replay.frame=CGRect(x:right-140,y:bottom-44,width:140,height:40)
+    }
+}
+private final class MeadowMonsterGalleryView:UIView {
+    var onPhase:((String)->Void)?
+    private let world=UIView(),monster=UIImageView(),hero=MeadowBattleActorView(frame:.zero)
+    private let grounding=MeadowBattleGroundingView(image:nil,soleY:240,contacts:[])
+    private let heroGrounding=MeadowBattleGroundingView(image:nil,soleY:214,contacts:[])
+    private let missile=CAShapeLayer()
+    private var heroGrounded=false
+    private let clock=MeadowBattleSceneClock()
+    private var species="slime",time=0.0,key=""
+    override init(frame:CGRect){
+        super.init(frame:frame);clipsToBounds=true;layer.cornerRadius=12;backgroundColor=MeadowPreviewPalette.panel
+        world.bounds=CGRect(x:0,y:0,width:1000,height:600);addSubview(world)
+        for (i,name) in MeadowBattleCanvasGeometry.sceneLayerOrder.enumerated(){
+            let image=UIImageView(image:MeadowBattlePlateProcessor.image(named:name,role:[.farForest,.ground,.midground,.foreground][i]));image.frame=CGRect(x:0,y:-159,width:1000,height:1000*1201/1309);image.layer.zPosition=i==3 ? 900:CGFloat(-100+i);world.addSubview(image)
+        }
+        world.addSubview(grounding);world.addSubview(heroGrounding);world.addSubview(hero);world.addSubview(monster);world.layer.addSublayer(missile);missile.zPosition=800;missile.lineWidth=3;missile.fillColor=nil;monster.layer.magnificationFilter = .nearest
+        hero.setWeaponAsset(HeroFrames.weaponVisual("trainingSword")?.battleAsset)
+        clock.onTick={ [weak self] delta in guard let self else{return};self.time+=delta;if self.time>6.4{self.time=0};self.render() }
+    }
+    required init?(coder:NSCoder){fatalError("init(coder:) has not been implemented")}
+    func select(_ id:String){species=id;time=0;key="";MeadowMonsterFrames.retain([id]);render()}
+    func start(){select(species);clock.start()}
+    func stop(){clock.stop();MeadowMonsterFrames.retain([])}
+    private func render(){
+        guard let spec=MonsterVisualSpec.find(species) else{return}
+        let attack=time>=0.8 && time<1.9 ? time-0.8:nil,hurt=time>=2.4 && time<2.8 ? time-2.4:nil,cast=time>=3.2 && time<4.6 ? time-3.2:nil,death=time>=5 ? time-5:nil
+        let intent=PartyIntent(id:"gallery",action:.attack,actor:"m1",target:"p1",targets:["p1"],command:.monsterStep,enemy:true,weaponID:nil,monsterTemplateID:species,enemyRanged:spec.ranged)
+        let shift=PartyVisual.travel(attack != nil ? intent:nil,age:attack ?? 0),s=spec.scale
+        let index=death.map(MonsterVisualSpec.deathFrame) ?? spec.frame(time:time,attackAge:attack,castAge:cast,hurtAge:hurt),next="\(species)-\(death != nil)-\(index)"
+        if key != next{monster.image=MeadowMonsterFrames.image(species,index:index,death:death != nil);if death==nil{grounding.update(image:monster.image,soleY:240,contacts:MeadowMonsterFrames.feet(species).map{.init(point:$0,radius:12)})};key=next}
+        let base=CGRect(x:650+shift.x-178.5*s,y:395+shift.y-240*s,width:384*s,height:256*s)
+        monster.frame=death == nil ? base:CGRect(x:650-178.5*s,y:395-272*s,width:512*s,height:320*s)
+        monster.isHidden=death.map{$0>=MonsterVisualSpec.deathDuration} ?? false;monster.layer.zPosition=395
+        grounding.spriteFrame=base;grounding.alpha=death.map{CGFloat(1-PartyVisual.smooth($0/0.75))} ?? 1
+        hero.setPose(clip:"idle",progress:CGFloat(time.truncatingRemainder(dividingBy:2.4)/2.4));hero.frame=CGRect(x:165-123*0.83,y:420-214*0.83,width:256*0.83,height:256*0.83);hero.layer.zPosition=420
+        if !heroGrounded{heroGrounding.update(image:hero.poseSilhouette,soleY:214,contacts:hero.poseContacts.map{.init(point:$0,radius:12)});heroGrounded=true};heroGrounding.spriteFrame=hero.frame
+        if let attack,let arrow=spec.projectile(age:attack,foot:PartyPoint(650,395),target:PartyVisual.hitPoint(target:"p1")){
+            let path=UIBezierPath();path.move(to:CGPoint(x:arrow.tail.x,y:arrow.tail.y));path.addLine(to:CGPoint(x:arrow.tip.x,y:arrow.tip.y));missile.path=path.cgPath;missile.strokeColor=(species=="ruinDragon" ? UIColor.systemCyan:MeadowPreviewPalette.gold).cgColor
+        }else{missile.path=nil}
+        onPhase?(death != nil ? "向右吹散退场":attack != nil ? "出招与回位":hurt != nil ? "受击":cast != nil ? "施法":"待机")
+    }
+    override func layoutSubviews(){super.layoutSubviews();let scale=min(bounds.width/1000,bounds.height/600);world.center=CGPoint(x:bounds.midX,y:bounds.midY);world.transform=CGAffineTransform(scaleX:scale,y:scale);grounding.frame=world.bounds;heroGrounding.frame=world.bounds}
 }

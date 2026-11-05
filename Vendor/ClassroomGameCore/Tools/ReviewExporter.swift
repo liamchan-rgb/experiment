@@ -5,6 +5,7 @@ import ClassroomGameCore
 @main struct Export {
     static func main() throws {
         let out=URL(fileURLWithPath:CommandLine.arguments[1]);try FileManager.default.createDirectory(at:out,withIntermediateDirectories:true)
+        if CommandLine.arguments.contains("--monster-only") { try exportMonsters(out:out);return }
         if CommandLine.arguments.contains("--dragon-flame-only") { try exportDragonFlame(out:out);return }
         if CommandLine.arguments.contains("--rune-only") { try exportRunes(out:out);return }
         if CommandLine.arguments.contains("--inventory-only") { try exportInventory(out:out);return }
@@ -643,4 +644,25 @@ extension Export {
         try JSONSerialization.data(withJSONObject:requests,options:[.sortedKeys]).write(to:out.appendingPathComponent("spellblade-light-requests.json"))
         print("Exported \(rows.count) spellblade receipt, dice, pose and rune frames plus \(requests.count) light requests")
     }
+    static func exportMonsters(out:URL)throws {
+        var rows=[[String:Any]]()
+        for id in MonsterVisualSpec.ids {
+            let spec=MonsterVisualSpec.find(id)!,actor="m-9-1",foot=PartyVisual.foot(actor)!
+            let intent=PartyIntent(id:"review-"+id,action:.attack,actor:actor,target:"p1",targets:["p1"],command:.monsterStep,enemy:true,weaponID:nil,monsterTemplateID:id,enemyRanged:spec.ranged)
+            for frame in 0..<320 {
+                let time=Double(frame)*0.02,attack=time>=0.8 && time<1.9 ? time-0.8:nil,hurt=time>=2.4 && time<2.8 ? time-2.4:nil,cast=time>=3.2 && time<4.6 ? time-3.2:nil,death=time>=5 ? time-5:nil
+                let index=death.map(MonsterVisualSpec.deathFrame) ?? spec.frame(time:time,attackAge:attack,castAge:cast,hurtAge:hurt)
+                let offset=PartyVisual.travel(attack != nil ? intent:nil,age:attack ?? 0)
+                let arrow=attack.flatMap{spec.projectile(age:$0,foot:foot,target:PartyVisual.hitPoint(target:"p1"))}
+                let enc=JSONEncoder()
+                func point(_ p:PartyPoint)->[Double]{[p.x,p.y]}
+                var row:[String:Any]=["species":id,"frame":frame,"time":time,"poseIndex":index,"death":death != nil,"visible":death.map{$0<MonsterVisualSpec.deathDuration} ?? true,"foot":point(foot),"offset":point(offset),"scale":spec.scale,"phase":death != nil ? "death":attack != nil ? "attack":hurt != nil ? "hurt":cast != nil ? "cast":"idle"]
+                if let arrow{row["projectile"]=try JSONSerialization.jsonObject(with:enc.encode(arrow))}
+                rows.append(row)
+            }
+        }
+        try JSONSerialization.data(withJSONObject:rows,options:[.sortedKeys]).write(to:out.appendingPathComponent("monster-frames.json"))
+        print("Exported \(rows.count) registered species pose/travel/missile frames; no App or simulator")
+    }
+
 }

@@ -58,6 +58,32 @@ enum MeadowBattleEnemyFrames {
     }
 }
 
+/// Authored masters share a continuous deformation field; the atlas is cropped
+/// once per species, never regenerated during a display-link tick.
+enum MeadowMonsterFrames {
+    private struct Entry { let poses:[UIImage],death:[UIImage] }
+    private static var cache:[String:Entry]=[:]
+    private static let contacts:[String:[CGPoint]] = {
+        guard let data=NSDataAsset(name:"MeadowMonsterVisuals")?.data,
+              let object=try? JSONSerialization.jsonObject(with:data) as? [String:Any],
+              let records=object["records"] as? [[String:Any]] else{return [:]}
+        var result:[String:[CGPoint]]=[:]
+        for record in records {if let id=record["id"] as? String,let values=record["contacts"] as? [[Double]] {result[id]=values.filter{$0.count==2}.map{CGPoint(x:$0[0],y:$0[1])}}}
+        return result
+    }()
+    static func retain(_ ids:Set<String>) {cache=cache.filter{ids.contains($0.key)};for id in ids{_ = entry(id)}}
+    private static func entry(_ id:String)->Entry? {
+        if let value=cache[id]{return value};guard let spec=MonsterVisualSpec.find(id) else{return nil}
+        func frames(_ suffix:String,_ width:Int,_ height:Int,_ count:Int)->[UIImage] {
+            guard let image=UIImage(named:spec.asset+suffix)?.cgImage else{return []}
+            return (0..<count).compactMap{image.cropping(to:CGRect(x:$0%8*width,y:$0/8*height,width:width,height:height)).map{UIImage(cgImage:$0)}}
+        }
+        let value=Entry(poses:frames("Motion",384,256,56),death:frames("Death",512,320,40));cache[id]=value;return value
+    }
+    static func image(_ id:String,index:Int,death:Bool=false)->UIImage? {guard let value=entry(id) else{return nil};let frames=death ? value.death:value.poses;return frames.indices.contains(index) ? frames[index]:nil}
+    static func feet(_ id:String)->[CGPoint] {contacts[id] ?? [CGPoint(x:178.5,y:240)]}
+}
+
 /// Vector combat feedback is registered to the same battlefield canvas as the
 /// sprites: target ring, short impact arc, ward and healing motes.
 enum MeadowBattleVFXAssets {

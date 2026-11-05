@@ -41,10 +41,10 @@ public struct PartySkillVFXSpec:Codable,Equatable,Identifiable {
 public enum PartyVisual {
     public static let width=1000.0,height=600.0,heroScale=0.83,enemyScale=0.82
     public static func slot(_ id:String)->String {
-        if id.hasPrefix("m-") {return id.hasSuffix("-2") ? "m2":"m1"};return id
+        if id.hasPrefix("m-") {return id.hasSuffix("-3") ? "m3":id.hasSuffix("-2") ? "m2":"m1"};return id
     }
     public static func foot(_ id:String)->PartyPoint? {feet[slot(id)]}
-    public static let feet:[String:PartyPoint]=["p1":PartyPoint(165,420),"p2":PartyPoint(315,505),"m1":PartyPoint(650,395),"m2":PartyPoint(835,510)]
+    public static let feet:[String:PartyPoint]=["p1":PartyPoint(165,420),"p2":PartyPoint(315,505),"m1":PartyPoint(650,395),"m2":PartyPoint(835,510),"m3":PartyPoint(600,585)]
     public static func smooth(_ x:Double)->Double { let t=min(1,max(0,x));return t*t*(3-2*t) }
     public static func pulse(_ age:Double,_ start:Double,_ peak:Double,_ end:Double)->Double { age<peak ? smooth((age-start)/(peak-start)):1-smooth((age-peak)/(end-peak)) }
     public static func chest(_ id:String)->PartyPoint { let p=foot(id)!;return PartyPoint(p.x+5*heroScale,p.y-70*heroScale) }
@@ -132,7 +132,7 @@ public enum PartyVisual {
         }
         let t=intent.enemy ? age/0.96 : max(0,age-0.4-min(0.1,max(0,age-1.048)))/1.2
         let p=t<0.4 ? smooth((t-0.12)/0.28) : t<0.66 ? 1:1-smooth((t-0.66)/0.34)
-        if intent.enemy { let move=pulse(age,0.08,0.46,0.96);return PartyPoint((to.x+(178.5-42)*enemyScale+(shielded ? (5+240*0.41)*heroScale:0)-from.x)*move,(to.y-from.y)*move) }
+        if intent.enemy { let spec=MonsterVisualSpec.find(intent.monsterTemplateID),scale=spec?.scale ?? enemyScale,contact=spec?.contactX ?? 42;let move=pulse(age,0.08,0.46,0.96);return PartyPoint((to.x+(178.5-contact)*scale+(shielded ? (5+240*0.41)*heroScale:0)-from.x)*move,(to.y-from.y)*move) }
         return PartyPoint((to.x-140-from.x)*p,(to.y-12-from.y)*p)
     }
 }
