@@ -318,9 +318,10 @@ private final class MeadowMonsterGalleryController:UIViewController {
     override func viewDidLoad(){
         super.viewDidLoad();view.backgroundColor=MeadowPreviewPalette.panel
         for v in [gallery,pick,titleLabel,phase,close,replay]{view.addSubview(v)}
+        phase.numberOfLines=2;phase.font=MeadowPreviewPalette.font(17)
         pick.selectedSegmentIndex=0;pick.selectedSegmentTintColor=MeadowPreviewPalette.gold
-        pick.setTitleTextAttributes([.foregroundColor:MeadowPreviewPalette.ink,.font:UIFont.boldSystemFont(ofSize:18)],for:.selected)
-        pick.setTitleTextAttributes([.foregroundColor:UIColor.white,.font:UIFont.boldSystemFont(ofSize:18)],for:.normal)
+        pick.setTitleTextAttributes([.foregroundColor:MeadowPreviewPalette.panel,.font:MeadowPreviewPalette.font(18)],for:.selected)
+        pick.setTitleTextAttributes([.foregroundColor:UIColor.white,.font:MeadowPreviewPalette.font(18)],for:.normal)
         pick.addAction(UIAction{[weak self] _ in guard let self else{return};self.gallery.select(MonsterVisualSpec.ids[self.pick.selectedSegmentIndex])},for:.valueChanged)
         gallery.onPhase={ [weak self] value in self?.phase.text=value+" · 仅外观检视，不消耗行程资源" }
         close.addAction(UIAction{[weak self] _ in self?.dismiss(animated:true)},for:.touchUpInside)
