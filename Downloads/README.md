@@ -1,3 +1,9 @@
+## Build84 · 六种怪物与动作检视 · 1.6.57
+
+[直接下载 IPA](https://raw.githubusercontent.com/liamchan-rgb/experiment/e57c23e96c94d7b10f1b1538eaa1256f99d7a553/Downloads/MeadowJourney-b84.ipa) · [正常动图](https://raw.githubusercontent.com/liamchan-rgb/experiment/7734f149fd326ff03eba2a5a6c1feac57c5a59cb/Art/Review/Battle/bestiary-v1/bestiary-normal.gif) · [包检](../Media/Build84/verification.json)
+
+设置→怪物动作检视，可批量切换六种与重播；编辑地点选择相应怪物可正式战斗。支持三敌、原怪物技能骰值/护盾容量及主体受击注册，默认地图新投放待下一轮。221纯测试、设备Release、包检及公开GET通过。未运行App/模拟器/实机。
+
 ## Build83 · 完整行程结算 · 1.6.56
 
 [直接下载 IPA](https://raw.githubusercontent.com/liamchan-rgb/experiment/0fe4b24179e3d0cfa98d6ea998ddab363a2906f1/Downloads/MeadowJourney-b83.ipa) · [包检](../Media/Build83/verification.json)
