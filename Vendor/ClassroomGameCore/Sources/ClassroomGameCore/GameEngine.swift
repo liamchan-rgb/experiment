@@ -124,7 +124,7 @@ struct Evaluation {
         switch command {
         case .campaignMove(let actors,let node):
             let travelers=try campaignTravelers(actors)
-            guard travelers.allSatisfy({state.map.neighbors($0.nodeID).contains(node)}) else{throw GameError("道路不连续。")}
+            guard travelers.allSatisfy({(state.map.neighbors($0.nodeID).contains(node) || $0.nodeID==node)}) else{throw GameError("道路不连续。")}
             for id in actors {state.units[id]?.nodeID=node}
             state.map.revealed.insert(node)
             events.append(GameEvent("campaignArrival",actor:actors.first,detail:String(node)))
@@ -139,7 +139,7 @@ struct Evaluation {
                 let enemies=state.units.values.filter{$0.kind == .monster && $0.isAlive && $0.nodeID==nodeID}.map(\.id).sorted()
                 guard !enemies.isEmpty else{throw GameError("此地点的敌人已清理。")}
                 for id in state.players.filter(\.isAlive).map(\.id) {
-                    var player=try unit(id);player.ap=try GameRules.attributes(player,catalog:catalog).maximumAP;state.units[id]=player
+                    var player=try unit(id);player.ap=try GameRules.attributes(player,catalog:catalog).baseAP;state.units[id]=player
                 }
                 try start(kind:.pve,monsters:enemies)
             }else{throw GameError(node.kind == .reward ? "此处补给已领取。":"此地点没有待处理事件。")}

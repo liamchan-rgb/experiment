@@ -461,7 +461,8 @@ final class MeadowBattleActionPointsView:UIView {
         addSubview(caption);accessibilityLabel="行动点数"
     }
     required init?(coder:NSCoder) { fatalError("init(coder:) has not been implemented") }
-    func show(value:Int,maximum:Int) {
+    func show(value:Int,maximum:Int,owner:String?=nil) {
+        caption.text=owner.map{$0+" 行动"} ?? "行动"
         self.maximum=max(0,maximum);remaining=max(0,min(value,self.maximum))
         accessibilityValue="剩余\(remaining)，共\(self.maximum)个行动点标记";setNeedsDisplay()
     }

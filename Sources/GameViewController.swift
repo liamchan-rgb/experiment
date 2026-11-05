@@ -11,6 +11,7 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
     private let campaignItems=MeadowPreviewPalette.button("行囊与装备")
     private let campaignBattle=MeadowPreviewPalette.button("继续战斗")
     private let campaignEdit=MeadowPreviewPalette.button("编辑地点")
+    private let campaignTeam=MeadowPreviewPalette.button("队伍与成员")
     private let campaignHUD=UIView()
     private let campaignMovement=MeadowBattleResourceBar()
     private let campaignHealth=[MeadowBattleResourceBar(),MeadowBattleResourceBar()]
@@ -294,6 +295,7 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
         let battleX = battlePreviewActive ? titleButton.frame.maxX + 8 : gaitTestButton.frame.maxX + 8
         battlePreviewButton.frame = CGRect(x: battleX, y: top + 2, width: 104, height: button)
         p1AppearanceButton.frame = CGRect(x: battlePreviewButton.frame.maxX + 8, y: top + 2, width: 112, height: button)
+        campaignTeam.frame=CGRect(x:titleButton.frame.maxX+8,y:top+2,width:128,height:button)
         let panelWidth = min(960, max(1, mapWidth - 32))
         gaitPanel.frame = CGRect(x: (view.bounds.width - panelWidth) / 2,
                                  y: view.bounds.height - max(inset.bottom, 12) - 194, width: panelWidth, height: 194)
@@ -758,7 +760,8 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
         MeadowPreviewPalette.stylePanel(campaignHUD);view.addSubview(campaignHUD)
         campaignHUD.addSubview(campaignMovement)
         for i in 0..<2 {campaignHUD.addSubview(campaignHealth[i]);campaignHUD.addSubview(campaignAP[i])}
-        for b in [campaignRefill,campaignItems,campaignBattle,campaignEdit] {view.addSubview(b)}
+        for b in [campaignRefill,campaignItems,campaignBattle,campaignEdit,campaignTeam] {view.addSubview(b)}
+        campaignTeam.addAction(UIAction{[weak self] _ in self?.showCampaignTeam()},for:.touchUpInside)
         campaignEdit.accessibilityIdentifier="campaignNodeEditor"
         campaignEdit.accessibilityLabel="编辑行程节点的遭遇怪物或补给奖励"
         campaignRefill.addAction(UIAction{[weak self] _ in self?.refillCampaign()},for:.touchUpInside)
@@ -785,7 +788,7 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
     private func refillCampaign() {
         guard let campaign,!campaign.isMoving,campaign.engine.state.battle==nil else{return}
         let cost=campaign.movementRefillCost
-        let menu=UIAlertController(title:"补充移动条",message:"剩余 \(Int(campaign.movementRemaining))/\(Int(campaign.movementCapacity)) 距离\n每150距离1金币，补满需要 \(cost) 金币。\n全队持有 \(campaign.partyCoins) 金币。",preferredStyle:.actionSheet)
+        let menu=UIAlertController(title:"补充移动条",message:"剩余 \(Int(campaign.movementRemaining))/\(Int(campaign.movementCapacity)) 距离\n每50距离1金币，补满需要 \(cost) 金币。\n全队持有 \(campaign.partyCoins) 金币。",preferredStyle:.actionSheet)
         func fill(_ coins:Bool) {
             do{try campaign.refillMovement(usingCoins:coins);refreshCampaignStatus();showCampaignMessage(campaign.travel != nil ? "移动条已补满，点击播放继续行走":"移动条已补满")}
             catch{showCampaignMessage(error.localizedDescription)}
@@ -802,7 +805,7 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
         guard campaign.travel==nil,let unit=campaign.engine.state.units[actor],let node=campaign.engine.state.map.nodes.first(where:{$0.id==unit.nodeID}) else{showCampaignMessage("请先抵达地点。");return}
         let combat=node.kind == .combat || node.kind == .boss
         guard (node.kind == .reward && !node.rewardCompleted) || (combat && campaign.engine.state.units.values.contains{$0.kind == .monster && $0.nodeID==node.id && $0.isAlive}) else{showCampaignMessage("此地点没有待处理事件，可继续前进。");return}
-        let message=combat ? "主动进入此处战斗。人物开场行动点补满；移动条独立保留。":"领取此处补给；领取后不会重复发放。"
+        let message=combat ? "主动进入此处战斗。人物各自按基础行动值开场；移动条独立保留。":"领取此处补给；领取后不会重复发放。"
         let alert=UIAlertController(title:node.name,message:message,preferredStyle:.alert)
         alert.addAction(UIAlertAction(title:"暂不交互",style:.cancel))
         alert.addAction(UIAlertAction(title:combat ? "开始战斗":"领取补给",style:.default){[weak self] _ in
@@ -920,8 +923,8 @@ private func refreshCampaignStatus(allowBattleOpen:Bool=true) {
         let eventAvailable=node.map{n in n.kind == .reward ? !n.rewardCompleted:((n.kind == .combat || n.kind == .boss) && state.units.values.contains{$0.kind == .monster && $0.nodeID==n.id && $0.isAlive})} ?? false
         campaignBattle.configuration?.title=state.battle != nil ? "继续战斗":(eventAvailable ? "交互地点":"暂无事件")
         campaignBattle.isHidden=battlePreviewActive;campaignBattle.isEnabled=state.battle != nil || (!busy && eventAvailable)
-        campaignMovement.show("移动 · 组队上限均值",value:Int(ceil(campaign.movementRemaining)),maximum:max(1,Int(ceil(campaign.movementCapacity))),color:.systemYellow)
-        for view in [campaignHUD,campaignRefill,campaignItems,campaignEdit,randomMapSummary] {view.isHidden=battlePreviewActive}
+        campaignMovement.show("移动 · 行动上限均值×50",value:Int(ceil(campaign.movementRemaining)),maximum:max(1,Int(ceil(campaign.movementCapacity))),color:.systemYellow)
+        for view in [campaignHUD,campaignRefill,campaignItems,campaignEdit,campaignTeam,randomMapSummary] {view.isHidden=battlePreviewActive}
         playButton.isHidden=battlePreviewActive || campaign.travel==nil;resetButton.isHidden=true
         playButton.isPlaying=campaign.isMoving
         for i in players.indices {
@@ -930,6 +933,13 @@ private func refreshCampaignStatus(allowBattleOpen:Bool=true) {
             campaignAP[i].show(value:u.ap,maximum:max(u.ap,stats.baseAP))
         }
         if ready,allowBattleOpen,state.battle != nil,!battlePreviewActive {setBattlePreviewActive(true)}
+    }
+    private func showCampaignTeam(){
+        guard let campaign else{return}
+        let rows=campaign.engine.state.players.map{u in let a=(try? GameRules.attributes(u,catalog:campaign.engine.catalog)) ?? u.baseAttributes;return "\(u.name)：基础行动\(a.baseAP)，行动上限\(a.maximumAP)"}
+        let menu=UIAlertController(title:"队伍与操作成员",message:rows.joined(separator:"\n")+"\n移动上限＝成员行动上限平均值×50。\nP1职业可在新行程设置中选择。",preferredStyle:.actionSheet)
+        for id in campaign.playerIDs{menu.addAction(UIAlertAction(title:"切换操作成员 · \(id.uppercased())"+(id==campaign.selectedPlayerID ? " ✓":""),style:.default){[weak self] _ in do{try self?.scene.selectCampaignPlayer(id);self?.refreshCampaignStatus()}catch{self?.showCampaignMessage(error.localizedDescription)}})}
+        menu.addAction(UIAlertAction(title:"关闭",style:.cancel));menu.popoverPresentationController?.sourceView=campaignTeam;menu.popoverPresentationController?.sourceRect=campaignTeam.bounds;present(menu,animated:true)
     }
     private func openCampaignInventory() {
         guard ready,!battlePreviewActive,presentedViewController==nil,let campaign else{return}

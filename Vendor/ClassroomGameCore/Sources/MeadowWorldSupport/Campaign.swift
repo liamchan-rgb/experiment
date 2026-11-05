@@ -2,8 +2,8 @@ import Foundation
 import ClassroomGameCore
 
 public enum MeadowMovementRules {
-    public static let distancePerMaximumAP:Double=150
-    public static let distancePerCoin:Double=150
+    public static let distancePerMaximumAP:Double=50
+    public static let distancePerCoin:Double=50
     public static func capacity(_ archive:GameArchive)->Double {
         let values=archive.state.players.compactMap{try? GameRules.attributes($0,catalog:archive.catalog).maximumAP}
         guard !values.isEmpty else{return 0}
@@ -11,6 +11,7 @@ public enum MeadowMovementRules {
     }
 }
 public struct MeadowCampaignMovement:Codable,Equatable {
+    public var scale:Double?=MeadowMovementRules.distancePerMaximumAP
     public var remaining:Double
     public var totalDistance:Double=0
     public var manualRefills:Int=0
@@ -24,6 +25,7 @@ public struct MeadowCampaignTravel: Codable, Equatable {
     public var leg:Int=0
     public var distance:Double=0
     public var paused=false
+    public var stopDistance:Double?=nil
 }
 public struct MeadowCampaignCamera:Codable,Equatable {
     public var x:Double,y:Double,zoom:Double
@@ -36,6 +38,7 @@ public struct MeadowCampaignSave:Codable,Equatable {
     public var travel:MeadowCampaignTravel?
     public var camera:MeadowCampaignCamera?
     public var movement:MeadowCampaignMovement?=nil
+    public var selectedPlayerID:String?=nil
     public let appearanceID:String
     public func validate() throws {
         try archive.validate();try layout.configuration.validate();try layout.map.validate()
@@ -56,14 +59,18 @@ public struct MeadowCampaignSave:Codable,Equatable {
                   layout.props.filter({$0.nodeID==node.id}).count==1 else {throw GameError("探索节点不匹配。")}
         }
         if let movement {
-            guard movement.remaining.isFinite,movement.remaining>=0,movement.remaining<=MeadowMovementRules.capacity(archive)+0.000001,
-                  movement.totalDistance.isFinite,movement.totalDistance>=0,movement.manualRefills>=0,movement.purchasedRefills>=0 else{throw GameError("移动条存档无效。")}
+            guard movement.remaining.isFinite,movement.remaining>=0,movement.remaining<=MeadowMovementRules.capacity(archive)*(movement.scale ?? 150)/MeadowMovementRules.distancePerMaximumAP+0.000001,
+                  (movement.scale ?? 150).isFinite,(movement.scale ?? 150)>0,movement.totalDistance.isFinite,movement.totalDistance>=0,movement.manualRefills>=0,movement.purchasedRefills>=0 else{throw GameError("移动条存档无效。")}
         }
+        if let selectedPlayerID {guard archive.state.players.contains(where:{$0.id==selectedPlayerID}) else{throw GameError("操作成员无效。")}}
         if let camera {guard camera.x.isFinite,camera.y.isFinite,camera.zoom.isFinite,(1...3).contains(camera.zoom) else {throw GameError("镜头数据无效。")}}
         if let t=travel {
+            if let stop=t.stopDistance {
+                guard stop.isFinite,stop>0,let last=t.path.last,t.path.count>=2,let p=Self.road(layout,from:t.path[t.path.count-2],to:last),stop<Self.length(p) else{throw GameError("道路目标无效。")}
+            }
             guard archive.state.battle==nil,!t.id.isEmpty,!t.actors.isEmpty,Set(t.actors).count==t.actors.count,
                   t.path.count>=2,t.leg>=0,t.leg<t.path.count-1,t.distance.isFinite,t.distance>=0,
-                  t.actors.allSatisfy({archive.state.units[$0]?.isAlive==true && archive.state.units[$0]?.kind == .player && archive.state.units[$0]?.nodeID==t.path[t.leg]}),
+                  t.actors.allSatisfy({archive.state.units[$0]?.isAlive==true && archive.state.units[$0]?.kind == .player && (archive.state.units[$0]?.nodeID==t.path[t.leg] || archive.state.units[$0]?.nodeID==t.path[t.leg+1])}),
                   (1..<t.path.count).allSatisfy({archive.state.map.neighbors(t.path[$0-1]).contains(t.path[$0])}),
                   let points=Self.road(layout,from:t.path[t.leg],to:t.path[t.leg+1]),t.distance<Self.length(points)+0.000001 else {throw GameError("存档中的移动游标无效。")}
         }
@@ -110,10 +117,11 @@ public final class MeadowCampaignSession {
         var elder=try c.monster("caveTroll");elder.id="meadowElderStag";elder.name="古树鹿王"
         c.monsters += [stag,elder];try c.validate();return c
     }
-    public static func new(layout:GeneratedMeadowMap,appearanceID:String="forester",loadouts:[String:GameUnit]?=nil,persist:((Data)throws->Void)?=nil)throws->MeadowCampaignSession {
+    public static func new(layout:GeneratedMeadowMap,appearanceID:String="forester",playerClassID:String="spellblade",loadouts:[String:GameUnit]?=nil,persist:((Data)throws->Void)?=nil)throws->MeadowCampaignSession {
+        guard ["adventurer","spellblade","dragonKnight"].contains(playerClassID) else{throw GameError("请选择已支持的P1职业。 ")}
         let catalog=try self.catalog(),start=layout.map.nodes.first{$0.kind == .start}!.id
         var units=[String:GameUnit]()
-        for (id,classID) in [("p1","spellblade"),("p2","ranger")] {
+        for (id,classID) in [("p1",playerClassID),("p2","ranger")] {
             var u=try GameFactory.player(id:id,name:id.uppercased()+" · "+catalog.playerClass(classID).name,classID:classID,teamID:"party",nodeID:start,catalog:catalog)
             u.inventory=["smallPotion":2,"largePotion":1,"shieldPotion":1,"revivalStone":1]
             if let source=loadouts?[id] {u.equipment=source.equipment;u.inventory=source.inventory}
@@ -132,8 +140,12 @@ public final class MeadowCampaignSession {
         let session=try MeadowCampaignSession(save:save,persist:persist);try session.checkpoint();return session
     }
     public init(save:MeadowCampaignSave,persist:((Data)throws->Void)?=nil)throws {
-        try save.validate()
-        var restored=save;restored.travel?.paused=true
+        var restored=save
+        if let movement=restored.movement,(movement.scale ?? 150) != MeadowMovementRules.distancePerMaximumAP {
+            restored.movement?.remaining=movement.remaining*MeadowMovementRules.distancePerMaximumAP/(movement.scale ?? 150)
+            restored.movement?.scale=MeadowMovementRules.distancePerMaximumAP
+        }
+        try restored.validate();restored.travel?.paused=true
         if restored.movement==nil{restored.movement=MeadowCampaignMovement(remaining:MeadowMovementRules.capacity(restored.archive))}
         restored.archive.state.pauseReasons.remove(.background)
         let writer=CampaignWriter(restored,persist:persist);self.writer=writer
@@ -163,18 +175,80 @@ public final class MeadowCampaignSession {
         guard path.count>1 else{return 0}
         return zip(path,path.dropFirst()).reduce(0){sum,edge in sum+(MeadowCampaignSave.road(writer.snapshot.layout,from:edge.0,to:edge.1).map(MeadowCampaignSave.length) ?? 0)}
     }
+    public var selectedPlayerID:String {writer.snapshot.selectedPlayerID ?? "p1"}
+    public func selectPlayer(_ id:String)throws {
+        guard playerIDs.contains(id) else{throw GameError("成员不存在。")}
+        var next=snapshot;next.selectedPlayerID=id;try writer.write(next)
+    }
+    private func plannedTravel(node:Int?,point:MeadowWorldPoint?,actor:String)throws->(MeadowCampaignTravel,Double) {
+        guard engine.state.battle==nil,engine.state.phase == .exploration,let unit=engine.state.units[actor],unit.isAlive else{throw GameError("请先结束战斗并选择存活成员。")}
+        guard movementRemaining>0.000001 else{throw GameError("移动条已耗尽，请先补充移动。")}
+        let actors=travel?.actors ?? engine.state.players.filter{$0.isAlive && $0.nodeID==unit.nodeID}.map(\.id)
+        guard actors.contains(actor) else{throw GameError("请选择当前同行成员。")}
+        var goals=[(Int,Int?,Double)]()
+        if let node {goals=[(node,nil,0)]}
+        else if let point {
+            var best:(Int,Int,Double,Double)?,error=Double.infinity
+            for road in snapshot.layout.roads {
+                var distance=0.0
+                for (a,b) in zip(road.points,road.points.dropFirst()) {
+                    let dx=b.x-a.x,dy=b.y-a.y,length=hypot(dx,dy),square=dx*dx+dy*dy
+                    let u=square>0 ? max(0,min(1,((point.x-a.x)*dx+(point.y-a.y)*dy)/square)):0
+                    let e=hypot(point.x-a.x-u*dx,point.y-a.y-u*dy)
+                    if e<error {error=e;best=(road.from,road.to,distance+u*length,MeadowCampaignSave.length(road.points))}
+                    distance+=length
+                }
+            }
+            guard let hit=best,error<=48 else{throw GameError("请点击道路或建筑。")}
+            if hit.2<0.000001{goals=[(hit.0,nil,0)]}
+            else if hit.3-hit.2<0.000001{goals=[(hit.1,nil,0)]}
+            else{goals=[(hit.0,hit.1,hit.2),(hit.1,hit.0,hit.3-hit.2)]}
+        }
+        var starts=[([Int],Double,Double)]()
+        if let t=travel {
+            let a=t.path[t.leg],b=t.path[t.leg+1],length=routeDistance([a,b])
+            starts=[([a,b],t.distance,length-t.distance),([b,a],length-t.distance,t.distance)]
+            // Direct retargeting on the same edge never visits an endpoint.
+            for (a,b,d) in goals where b != nil {
+                if Set([a,b!])==Set([t.path[t.leg],t.path[t.leg+1]]) {
+                    let current=a==t.path[t.leg] ? t.distance:length-t.distance
+                    if d>=current {
+                        var direct=MeadowCampaignTravel(id:UUID().uuidString,actors:actors,path:[a,b!]);direct.distance=current;direct.stopDistance=d
+                        return (direct,d-current)
+                    }else{
+                        var direct=MeadowCampaignTravel(id:UUID().uuidString,actors:actors,path:[b!,a]);direct.distance=length-current;direct.stopDistance=length-d
+                        return (direct,current-d)
+                    }
+                }
+            }
+        }else{starts=[([unit.nodeID],0,0)]}
+        var chosen:(MeadowCampaignTravel,Double)?
+        for (prefix,initial,firstCost) in starts {
+            for (end,other,lastCost) in goals {
+                guard let route=engine.state.map.shortestPath(from:prefix.last!,to:end) else{continue}
+                var path=prefix+route.dropFirst()
+                if let other{path.append(other)}
+                guard path.count>=2 else{continue}
+                let cost=firstCost+routeDistance(route)+lastCost
+                if chosen==nil || cost<chosen!.1 {
+                    var t=MeadowCampaignTravel(id:UUID().uuidString,actors:actors,path:path);t.distance=initial;t.stopDistance=other==nil ? nil:lastCost
+                    chosen=(t,cost)
+                }
+            }
+        }
+        guard let chosen else{throw GameError("已在此处，请选择新的目的地。")};return chosen
+    }
     public func preview(to node:Int,actor:String="p1")->ActionPreview {
-        guard travel==nil,engine.state.battle==nil,engine.state.phase == .exploration,let unit=engine.state.units[actor],unit.kind == .player,unit.isAlive,
-              let path=engine.state.map.shortestPath(from:unit.nodeID,to:node),path.count>=2 else{return .init(allowed:false,message:"请先完成当前移动或战斗。")}
-        let distance=routeDistance(path)
-        guard movementRemaining>0.000001 else{return .init(allowed:false,message:"移动条已耗尽，请补充移动。")}
-        return .init(allowed:true,cost:Int(ceil(distance)),message:"路程约\(Int(ceil(distance)))，剩余移动\(Int(movementRemaining))；沿途不会自动触发事件。",path:path)
+        do{let(t,cost)=try plannedTravel(node:node,point:nil,actor:actor);return .init(allowed:true,cost:Int(ceil(cost)),message:"路程约\(Int(ceil(cost))) · 移动剩余\(Int(movementRemaining))",path:t.path)}
+        catch{return .init(allowed:false,message:error.localizedDescription)}
     }
     @discardableResult public func beginTravel(to node:Int,actor:String="p1")throws->ActionPreview {
-        let result=preview(to:node,actor:actor);guard result.allowed else{throw GameError(result.message)}
-        let origin=result.path[0],actors=engine.state.players.filter{$0.isAlive && $0.nodeID==origin}.map(\.id)
-        var next=snapshot;next.travel=MeadowCampaignTravel(id:UUID().uuidString,actors:actors,path:result.path)
-        try writer.write(next);return result
+        let(t,cost)=try plannedTravel(node:node,point:nil,actor:actor);var next=snapshot;next.travel=t;try writer.write(next)
+        return .init(allowed:true,cost:Int(ceil(cost)),message:"前往地点，路程约\(Int(ceil(cost)))",path:t.path)
+    }
+    @discardableResult public func beginTravel(toRoadPoint point:MeadowWorldPoint,actor:String="p1")throws->ActionPreview {
+        let(t,cost)=try plannedTravel(node:nil,point:point,actor:actor);var next=snapshot;next.travel=t;try writer.write(next)
+        return .init(allowed:true,cost:Int(ceil(cost)),message:"前往道路选点，路程约\(Int(ceil(cost)))",path:t.path)
     }
     /// Advances the saved road cursor and debits the same world-space distance.
     /// Only arrivals and exhaustion checkpoint to disk; partial frames remain in
@@ -184,14 +258,18 @@ public final class MeadowCampaignSession {
         var remainder=distance,receipts=[OperationReceipt]()
         while remainder>0,let t=travel,!t.paused {
             guard let p=MeadowCampaignSave.road(writer.snapshot.layout,from:t.path[t.leg],to:t.path[t.leg+1]) else{throw GameError("道路不存在。")}
-            let before=writer.snapshot,needed=max(0,MeadowCampaignSave.length(p)-t.distance)
+            let before=writer.snapshot,last=t.leg==t.path.count-2
+            let endpoint=last ? (t.stopDistance ?? MeadowCampaignSave.length(p)):MeadowCampaignSave.length(p)
+            let needed=max(0,endpoint-t.distance)
             let available=movementRemaining
             let step=min(remainder,needed,available),remainingAfterStep=max(0,available-min(remainder,needed,available))
             writer.snapshot.movement?.remaining=remainingAfterStep
             writer.snapshot.movement?.totalDistance+=step
             remainder=max(0,remainder-step)
             do {
-                if step+0.00000001>=needed {
+                if step+0.00000001>=needed && last && t.stopDistance != nil {
+                    writer.snapshot.travel?.distance=endpoint;writer.snapshot.travel?.paused=true;try writer.write(snapshot);break
+                }else if step+0.00000001>=needed {
                     let nextLeg=t.leg+1
                     if nextLeg==t.path.count-1 {writer.snapshot.travel=nil}
                     else {writer.snapshot.travel?.leg=nextLeg;writer.snapshot.travel?.distance=0}
@@ -208,6 +286,7 @@ public final class MeadowCampaignSession {
         return receipts
     }
     public func setPaused(_ paused:Bool)throws {
+        if !paused,let t=travel,t.leg==t.path.count-2,let stop=t.stopDistance,t.distance>=stop-0.000001{throw GameError("已到达道路选点，请点击新的目的地。")}
         if !paused,travel != nil,movementRemaining<=0.000001{throw GameError("移动条已耗尽，请补充移动。")}
         var next=snapshot;next.travel?.paused=paused;try writer.write(next)
     }

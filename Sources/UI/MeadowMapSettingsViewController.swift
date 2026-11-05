@@ -15,6 +15,7 @@ final class MeadowMapSettingsViewController: UIViewController {
     private let preview = MeadowMapThumbnail()
     private let startCampaignButton=UIButton(type:.system)
 
+    private let campaignClass=UISegmentedControl(items:["冒险者","魔剑士","龙骑士"])
     private var result: GeneratedMeadowMap?
     private var revision = 0
     private let gold = UIColor(red:0.91,green:0.77,blue:0.43,alpha:1)
@@ -66,6 +67,9 @@ final class MeadowMapSettingsViewController: UIViewController {
         right.addArrangedSubview(status);right.addArrangedSubview(generateButton);right.addArrangedSubview(enterButton)
         startCampaignButton.configuration=button("开始新行程",action:#selector(startCampaign)).configuration
         startCampaignButton.addTarget(self,action:#selector(startCampaign),for:.touchUpInside)
+        let classLabel=UILabel();classLabel.text="P1职业 · P2沿用游侠";classLabel.font = .boldSystemFont(ofSize:17);classLabel.textColor=gold
+        campaignClass.selectedSegmentIndex=1;campaignClass.setTitleTextAttributes([.foregroundColor:UIColor.white],for:.normal);campaignClass.selectedSegmentTintColor=UIColor(red:0.35,green:0.35,blue:0.15,alpha:1)
+        right.addArrangedSubview(classLabel);right.addArrangedSubview(campaignClass)
         right.addArrangedSubview(startCampaignButton)
         right.addArrangedSubview(button("继续已保存行程",action:#selector(continueCampaign)))
         preview.heightAnchor.constraint(equalToConstant:200).isActive=true
@@ -178,7 +182,7 @@ final class MeadowMapSettingsViewController: UIViewController {
                     try save.validate(appearances:["forester","wayfarer"],equipment:Set(["trainingSword","huntingBow","greatSword","legendaryStaff","leatherArmor","runeArmor","powerBadge","actionRing"]))
                     units=save.archive.state.units;appearance=save.appearanceID
                 }
-                let session=try MeadowCampaignSession.new(layout:result,appearanceID:appearance,loadouts:units,persist:store.write)
+                let session=try MeadowCampaignSession.new(layout:result,appearanceID:appearance,playerClassID:["adventurer","spellblade","dragonKnight"][max(0,self.campaignClass.selectedSegmentIndex)],loadouts:units,persist:store.write)
                 self.presentCampaign(session)
             } catch {self.status.text="未开始新行程："+error.localizedDescription}
         }

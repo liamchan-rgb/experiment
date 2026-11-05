@@ -11,7 +11,7 @@ final class GameScene: SKScene {
     var campaign:MeadowCampaignSession?
     var onCampaignChanged:(()->Void)?
     var onCampaignError:((String)->Void)?
-    var selectedCampaignPlayerID:String {guard let campaign else{return "p1"};return campaign.playerIDs[min(simulation?.selected ?? 0,campaign.playerIDs.count-1)]}
+    var selectedCampaignPlayerID:String {guard let campaign else{return "p1"};return campaign.selectedPlayerID}
     var campaignCamera:MeadowCampaignCamera { .init(x:Double(cameraCenter.x),y:Double(cameraCenter.y),zoom:Double(zoom)) }
     func refreshCampaign() {
         guard let campaign,world != nil else{return}
@@ -381,6 +381,7 @@ final class GameScene: SKScene {
         if let gaitTest { setGaitDirection(layeredPreview ? 0 : gaitTest.facing); return }
         simulation.reset()
         if let campaign {
+            simulation.selected=campaign.playerIDs.firstIndex(of:campaign.selectedPlayerID) ?? 0
             cameraCenter=CGPoint(x:campaign.snapshot.camera?.x ?? campaign.position(of:"p1").x,y:campaign.snapshot.camera?.y ?? campaign.position(of:"p1").y)
             zoom=CGFloat(campaign.snapshot.camera?.zoom ?? 1);walks=[WalkCycle(),WalkCycle(),WalkCycle()];p1Locomotion.reset()
             layoutWorld();refreshCampaign();onPlaybackChanged?(campaign.isMoving);return
@@ -531,17 +532,21 @@ final class GameScene: SKScene {
         selectionRing.position = actorRoots[simulation.selected].position
     }
 
+    func selectCampaignPlayer(_ id:String)throws {
+        guard let campaign,let index=campaign.playerIDs.firstIndex(of:id) else{return}
+        try campaign.selectPlayer(id);simulation.selected=index;selectionRing.position=actorRoots[index].position;onCampaignChanged?()
+    }
     private func order(to point: CGPoint, discovery: Int? = nil) {
         if let campaign {
-            let nearest=campaign.engine.state.map.nodes.min{a,b in hypot(a.x*1280-point.x,a.y*campaign.snapshot.layout.coordinateHeight-point.y)<hypot(b.x*1280-point.x,b.y*campaign.snapshot.layout.coordinateHeight-point.y)}
-            guard let target=discovery.flatMap({world.definition.discoveries[$0].nodeID}) ?? nearest?.id else{return}
-            let position=campaign.point(at:target)
-            guard discovery != nil || hypot(position.x-point.x,position.y-point.y)<48 else{onDiscovery?("点击建筑选择目的地");return}
-            if selectingCampaignNode {onCampaignNodeSelected?(target);return}
-            let actor=campaign.playerIDs[min(simulation.selected,campaign.playerIDs.count-1)]
-            if campaign.engine.state.units[actor]?.nodeID==target {onCampaignInteractionRequested?(target);return}
-            do {let plan=try campaign.beginTravel(to:target,actor:actor);destinationRing.position=LivingWorld.position(CGPoint(x:position.x,y:position.y));destinationRing.isHidden=false;onDiscovery?(plan.message);onPlaybackChanged?(true);onCampaignChanged?()}
-            catch {onCampaignError?(error.localizedDescription)}
+            let actor=selectedCampaignPlayerID
+            if let discovery,let target=world.definition.discoveries[discovery].nodeID {
+                if selectingCampaignNode{onCampaignNodeSelected?(target);return}
+                if campaign.travel==nil && campaign.engine.state.units[actor]?.nodeID==target{onCampaignInteractionRequested?(target);return}
+                do{let plan=try campaign.beginTravel(to:target,actor:actor);let p=campaign.point(at:target);destinationRing.position=LivingWorld.position(CGPoint(x:p.x,y:p.y));destinationRing.isHidden=false;onDiscovery?(plan.message);onPlaybackChanged?(true);onCampaignChanged?()}catch{onCampaignError?(error.localizedDescription)}
+            }else{
+                if selectingCampaignNode{onDiscovery?("请点击需要编辑的建筑");return}
+                do{let plan=try campaign.beginTravel(toRoadPoint:.init(Double(point.x),Double(point.y)),actor:actor);destinationRing.position=LivingWorld.position(point);destinationRing.isHidden=false;onDiscovery?(plan.message);onPlaybackChanged?(true);onCampaignChanged?()}catch{onCampaignError?(error.localizedDescription)}
+            }
             return
         }
         simulation.orderSelected(to: point)
@@ -592,6 +597,7 @@ final class GameScene: SKScene {
             hypot(actorRoots[$0].position.x - location.x, actorRoots[$0].position.y + 17 - location.y) <
             hypot(actorRoots[$1].position.x - location.x, actorRoots[$1].position.y + 17 - location.y)
         }), hypot(actorRoots[index].position.x - location.x, actorRoots[index].position.y + 17 - location.y) < 30 {
+            if let campaign {do{try campaign.selectPlayer(campaign.playerIDs[index])}catch{onCampaignError?(error.localizedDescription);return}}
             simulation.selected = index
             selectionRing.isHidden = false
             selectionRing.position = actorRoots[index].position

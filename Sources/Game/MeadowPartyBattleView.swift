@@ -144,7 +144,7 @@ final class MeadowPartyBattleView:UIView {
             if apRound != model.round { apRound=model.round;actionPointCapacity=[:] }
             let capacity=max(stats.baseAP,max(unit.ap,actionPointCapacity[displayActor] ?? 0))
             actionPointCapacity[displayActor]=capacity
-            ap.show(value:unit.ap,maximum:capacity)
+            ap.show(value:unit.ap,maximum:capacity,owner:displayActor.hasPrefix("p") ? displayActor.uppercased():unit.name)
             accessory.show(try? AccessoryReadout.make(unit,catalog:model.engine.catalog),host:self)
             if let b=unit.damageBuff { buff.show(title:"增伤＋\(b.amount)",detail:"剩余 \(b.roundsLeft) 轮\n普攻和伤害技能生效",symbol:"arrow.up",color:MeadowPreviewPalette.gold) } else { buff.hide() }
             if visible.shield>0 { shieldBuff.show(title:"护盾 · \(visible.shield)",detail:"优先抵挡伤害\n新旧授盾取较高值",symbol:"shield.fill",color:.systemCyan) } else { shieldBuff.hide() }
