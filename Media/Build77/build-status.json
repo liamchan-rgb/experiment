@@ -14,9 +14,12 @@
   "nativeMacTests": 194,
   "fourRegressionsPassed": true,
   "ipaPackaged": true,
-  "publicIPAVerified": false,
+  "publicIPAVerified": true,
   "installationTested": false,
   "noAppSimulatorDeviceRun": true,
   "movementMultiplier": 3,
-  "saveFormatChanged": false
+  "saveFormatChanged": false,
+  "ipaDelivered": true,
+  "publicDownloadURL": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ae8ee54a30f02825e6657397f6b23c732df0dbd7/Downloads/MeadowJourney-b77.ipa",
+  "publicVerifiedAt": "2026-11-05T03:42:29.073264+00:00"
 }

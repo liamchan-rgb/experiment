@@ -1,3 +1,7 @@
+## Build77公开下载已验证（2026-11-05）
+
+实际run41869668339 attempt3成功。直接IPA完整GET HTTP200，60297013字节，SHA256 615f7029f8ffd8753a6c7be07fb4e66e2214039c2e2cc00fa6fd75892e7c563c，远程内容CRC通过；原正常GIF完整GET/hash/238×20ms解码一致。回执Media/Build77/public-downloads.json；IPA固定版本链接 https://raw.githubusercontent.com/liamchan-rgb/experiment/ae8ee54a30f02825e6657397f6b23c732df0dbd7/Downloads/MeadowJourney-b77.ipa 。未运行App/模拟器/实机，设备验证交用户。下一步M4节点内容编辑，再行程行囊/换装与队伍配置。
+
 ## Build77 已归档交付 · 正式怪物骰子空值崩溃修复（2026-11-05）
 
 GitHub Actions已恢复，41869668339 attempt3设备Release成功，实际源a3508591fd6934e4389d01bed98aa7cc65400835，1.6.50/77，Linux/Mac194纯Swift测试与四组回归通过。修复真实m-node-index怪物ID的头顶骰子定位强制解包，actor/target统一foot/slot，接敌骰子避让也保持。旧函数纯回归已复现fatal/signal4，真实怪物AI两轮/续档/首领再生与多站位/多骰显示均覆盖。无需清档，移动三倍、原资源/动作/规则/存档格式不变。
