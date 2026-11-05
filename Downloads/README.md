@@ -1,3 +1,9 @@
+## Build81 · 独立移动条与主动节点交互 · 1.6.54
+
+[直接下载 IPA](https://raw.githubusercontent.com/liamchan-rgb/experiment/df4d422ae13b162eba1a1d57561242ca92648812/Downloads/MeadowJourney-b81.ipa) · [包检](../Media/Build81/verification.json)
+
+按实际距离扣除独立移动条；每1最大AP对应150距离，组队上限取平均；可花金币或手动补满。节点主动交互，人物每场战斗开场满AP。奖励编辑框显示固定字段名称。204项测试、四组回归、设备Release及完整公开GET通过。未运行App/模拟器/实机。
+
 ## Build80 · 行程行囊与装备 · 1.6.53
 
 [直接下载 IPA](https://raw.githubusercontent.com/liamchan-rgb/experiment/cd6daa596fd885393b71d14e06de7f38e6a0aa33/Downloads/MeadowJourney-b80.ipa) · [包检](../Media/Build80/verification.json)
