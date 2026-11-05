@@ -1,3 +1,11 @@
+## Build77 已归档交付 · 正式怪物骰子空值崩溃修复（2026-11-05）
+
+GitHub Actions已恢复，41869668339 attempt3设备Release成功，实际源a3508591fd6934e4389d01bed98aa7cc65400835，1.6.50/77，Linux/Mac194纯Swift测试与四组回归通过。修复真实m-node-index怪物ID的头顶骰子定位强制解包，actor/target统一foot/slot，接敌骰子避让也保持。旧函数纯回归已复现fatal/signal4，真实怪物AI两轮/续档/首领再生与多站位/多骰显示均覆盖。无需清档，移动三倍、原资源/动作/规则/存档格式不变。
+
+直接IPA Downloads/MeadowJourney-b77.ipa，Media/Build77验证CRC/经典ZIP2.0/arm64/权限/版本/Metal/资产/原地图/步态/规则与来源；公开完整GET回执见public-downloads.json。之前排队/失败状态仅历史，最终以本次实际成功attempt及verification.json为准。原故障记录仍保留，不误称编译失败；也不得用旧Build76改名代替修复包。
+
+正常怪物回合GIF238×20ms及完整MP4/4页实际解码帧接触表已主线程独审并公开，Art/Review/Battle/campaign-crashfix-v1；包含真正持久化ID的diceAnchor/channels/poly，不再漏测HUD定位。光影/UI为离线近似，未运行App/模拟器/实机，设备稳定性待用户验证，新美术认可null。每次交付仍发正常GIF和直接IPA，后两项M4节点内容编辑、行程行囊/换装与队伍配置。
+
 ## Build77 IPA核查与第三次构建尝试（2026-11-05）
 
 此前Intel/ARM两次attempt2均已failure结束，归档任务零步骤，均无artifact；不得继续报告旧尝试仍排队。GitHub官方状态正常，已重试Intel41869668339 attempt3，源a3508591不变。此次观测状态in_progress，具体步骤见Media/Build77/build-status.json；尚无新IPA，不冒称已编译或已交付。原194项本地测试/四组回归为此前结果，本轮没有重跑或运行App/模拟器/实机。归档成功后才核包并交直接IPA。后两项仍为M4单节点内容编辑、行程行囊/换装与队伍配置。

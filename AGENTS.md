@@ -1,3 +1,11 @@
+## Build77 已归档交付 · 正式怪物骰子空值崩溃修复（2026-11-05）
+
+GitHub Actions已恢复，41869668339 attempt3设备Release成功，实际源a3508591fd6934e4389d01bed98aa7cc65400835，1.6.50/77，Linux/Mac194纯Swift测试与四组回归通过。修复真实m-node-index怪物ID的头顶骰子定位强制解包，actor/target统一foot/slot，接敌骰子避让也保持。旧函数纯回归已复现fatal/signal4，真实怪物AI两轮/续档/首领再生与多站位/多骰显示均覆盖。无需清档，移动三倍、原资源/动作/规则/存档格式不变。
+
+直接IPA Downloads/MeadowJourney-b77.ipa，Media/Build77验证CRC/经典ZIP2.0/arm64/权限/版本/Metal/资产/原地图/步态/规则与来源；公开完整GET回执见public-downloads.json。之前排队/失败状态仅历史，最终以本次实际成功attempt及verification.json为准。原故障记录仍保留，不误称编译失败；也不得用旧Build76改名代替修复包。
+
+正常怪物回合GIF238×20ms及完整MP4/4页实际解码帧接触表已主线程独审并公开，Art/Review/Battle/campaign-crashfix-v1；包含真正持久化ID的diceAnchor/channels/poly，不再漏测HUD定位。光影/UI为离线近似，未运行App/模拟器/实机，设备稳定性待用户验证，新美术认可null。每次交付仍发正常GIF和直接IPA，后两项M4节点内容编辑、行程行囊/换装与队伍配置。
+
 ## 仓库内美术任务入口（2026-11-05）
 
 用户要求资料直接保存在仓库，由后续Chat/agent自行读取，不再让用户下载上传或复制完整提示词。涉及星辉甲/龙纹甲设计与母版交付时，先读根目录 [ART_TASKS.md](ART_TASKS.md)，再依读取顺序打开任务书、实际PNG/SVG示例和模板；工作分支为 `fix/build33-face-grounding-camera`。优先使用仓库文件，ZIP仅无仓库访问能力时备用。不要仅凭路径声称已读图。当前只到C0/C1设计选择；选定后每件5视角×4层母版，Codex复用动作批量适配，不能改派逐帧手画。此入口不自动授权推进其他功能或打包。

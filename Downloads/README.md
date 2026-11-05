@@ -1,3 +1,9 @@
+## Build77 · 战斗怪物回合闪退修复 · 1.6.50
+
+[直接下载IPA](MeadowJourney-b77.ipa) · [正常怪物回合GIF](../Art/Review/Battle/campaign-crashfix-v1/monster-turn-normal.gif) · [包检记录](../Media/Build77/verification.json)
+
+修复正式怪物头顶骰子用错误编号查站位导致的空值崩溃。194项Linux/Mac测试、四组回归及设备Release/包检通过。保留旧档和三倍移动，无App/模拟器/实机执行，实机交用户。Build76存在此已知崩溃，请使用本版。后两项：节点内容编辑，行程行囊/换装与队伍配置。
+
 ## Build76 · 正式行程与三倍移动 · 1.6.49
 
 [直接下载 IPA](MeadowJourney-b76.ipa) · [正常行走 GIF](../Art/Review/Map/campaign-v1/travel-normal.gif) · [胜利收尾 GIF](../Art/Review/Map/campaign-v1/encounter-normal.gif) · [完整战斗 MP4](../Art/Review/Map/campaign-v1/encounter-full.mp4) · [包检记录](../Media/Build76/verification.json)
