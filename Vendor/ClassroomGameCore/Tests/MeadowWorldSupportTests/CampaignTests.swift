@@ -386,7 +386,7 @@ final class CampaignTests:XCTestCase {
         let session=try MeadowCampaignSession.new(layout:layout()),point=roadPoint(try MeadowCampaignSession.new(layout:layout()),0.1)
         let ap=session.engine.state.units["p1"]!.ap,before=session.movementRemaining
         let plan=try session.beginTravel(toRoadPoint:point);try session.advanceTravel(distance:100000)
-        XCTAssertFalse(session.isMoving);XCTAssertNotNil(session.travel)
+        XCTAssertFalse(session.isMoving);XCTAssertFalse(session.hasPendingTravel);XCTAssertNotNil(session.travel)
         XCTAssertEqual(session.position(of:"p1").x,point.x,accuracy:0.000001);XCTAssertEqual(session.position(of:"p1").y,point.y,accuracy:0.000001)
         XCTAssertEqual(session.engine.state.units["p1"]!.ap,ap);XCTAssertFalse(session.engine.state.map.nodes.contains{$0.rewardCompleted})
         XCTAssertEqual(before-session.movementRemaining,session.travel!.distance,accuracy:0.000001);XCTAssertGreaterThan(plan.cost,0)

@@ -790,7 +790,7 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
         let cost=campaign.movementRefillCost
         let menu=UIAlertController(title:"补充移动条",message:"剩余 \(Int(campaign.movementRemaining))/\(Int(campaign.movementCapacity)) 距离\n每50距离1金币，补满需要 \(cost) 金币。\n全队持有 \(campaign.partyCoins) 金币。",preferredStyle:.actionSheet)
         func fill(_ coins:Bool) {
-            do{try campaign.refillMovement(usingCoins:coins);refreshCampaignStatus();showCampaignMessage(campaign.travel != nil ? "移动条已补满，点击播放继续行走":"移动条已补满")}
+            do{try campaign.refillMovement(usingCoins:coins);refreshCampaignStatus();showCampaignMessage(campaign.hasPendingTravel ? "移动条已补满，点击播放继续行走":"移动条已补满，请点击新的道路目的地")}
             catch{showCampaignMessage(error.localizedDescription)}
         }
         let buy=UIAlertAction(title:"花费 \(cost) 金币补满",style:.default){_ in fill(true)};buy.isEnabled=cost>0 && campaign.partyCoins>=cost
@@ -925,7 +925,7 @@ private func refreshCampaignStatus(allowBattleOpen:Bool=true) {
         campaignBattle.isHidden=battlePreviewActive;campaignBattle.isEnabled=state.battle != nil || (!busy && eventAvailable)
         campaignMovement.show("移动 · 行动上限均值×50",value:Int(ceil(campaign.movementRemaining)),maximum:max(1,Int(ceil(campaign.movementCapacity))),color:.systemYellow)
         for view in [campaignHUD,campaignRefill,campaignItems,campaignEdit,campaignTeam,randomMapSummary] {view.isHidden=battlePreviewActive}
-        playButton.isHidden=battlePreviewActive || campaign.travel==nil;resetButton.isHidden=true
+        playButton.isHidden=battlePreviewActive || !campaign.hasPendingTravel;resetButton.isHidden=true
         playButton.isPlaying=campaign.isMoving
         for i in players.indices {
             let u=players[i],stats=(try? GameRules.attributes(u,catalog:campaign.engine.catalog)) ?? u.baseAttributes

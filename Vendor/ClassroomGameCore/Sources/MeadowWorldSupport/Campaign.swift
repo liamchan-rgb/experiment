@@ -106,6 +106,10 @@ public final class MeadowCampaignSession {
     private let writer:CampaignWriter
     public var snapshot:MeadowCampaignSave {var s=writer.snapshot;s.archive=engine.archive;if let amount=s.movement?.remaining{s.movement?.remaining=min(amount,movementCapacity)};return s}
     public var travel:MeadowCampaignTravel? {writer.snapshot.travel}
+    public var hasPendingTravel:Bool {
+        guard let t=travel else{return false}
+        return !(t.leg==t.path.count-2 && t.stopDistance.map{t.distance>=$0-0.000001}==true)
+    }
     public var isMoving:Bool {travel.map{!$0.paused} ?? false}
     public var playerIDs:[String] {engine.state.players.map(\.id)}
     public var cleared:Bool {!engine.state.units.values.contains{$0.kind == .monster && $0.isAlive}}
