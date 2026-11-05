@@ -1,8 +1,14 @@
+## Build78 · 随机地图地点内容编辑 · 1.6.51
+
+[直接下载 IPA](MeadowJourney-b78.ipa) · [功能标准与验收](../docs/planning/random-map-v1/build78-node-content-editing.md) · [包检记录](../Media/Build78/verification.json)
+
+可暂停时替换普通战斗地点的1—3只怪物，或配置首领；补给地点可编辑金币、积分与药水。编辑已领取奖励不会重复发放，只有明确重置后再抵达才会重新结算一次。移动/战斗中不可编辑，历史和存档均会记录。196项纯Swift测试、四组回归和iOS设备Release归档通过。未运行App、模拟器或实机。
+
 ## Build77 · 战斗怪物回合闪退修复 · 1.6.50
 
 [直接下载IPA](MeadowJourney-b77.ipa) · [正常怪物回合GIF](../Art/Review/Battle/campaign-crashfix-v1/monster-turn-normal.gif) · [包检记录](../Media/Build77/verification.json)
 
-修复正式怪物头顶骰子用错误编号查站位导致的空值崩溃。194项Linux/Mac测试、四组回归及设备Release/包检通过。保留旧档和三倍移动，无App/模拟器/实机执行，实机交用户。Build76存在此已知崩溃，请使用本版。后两项：节点内容编辑，行程行囊/换装与队伍配置。
+修复正式怪物头顶骰子用错误编号查站位导致的空值崩溃。194项Linux/Mac测试、四组回归及设备Release/包检通过。保留旧档和三倍移动，无App/模拟器/实机执行，实机交用户。Build76存在此已知崩溃，请使用本版。下一步：行程行囊与装备管理；再下一项：队伍配置与成员切换。
 
 ## Build76 · 正式行程与三倍移动 · 1.6.49
 
