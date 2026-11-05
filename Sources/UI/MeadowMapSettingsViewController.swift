@@ -361,6 +361,7 @@ private final class MeadowMonsterGalleryView:UIView {
     func stop(){clock.stop();MeadowMonsterFrames.retain([])}
     private func render(){
         guard let spec=MonsterVisualSpec.find(species) else{return}
+        CATransaction.begin();CATransaction.setDisableActions(true);defer{CATransaction.commit()}
         let attack=time>=0.8 && time<1.9 ? time-0.8:nil,hurt=time>=2.4 && time<2.8 ? time-2.4:nil,cast=time>=3.2 && time<4.6 ? time-3.2:nil,death=time>=5 ? time-5:nil
         let intent=PartyIntent(id:"gallery",action:.attack,actor:"m1",target:"p1",targets:["p1"],command:.monsterStep,enemy:true,weaponID:nil,monsterTemplateID:species,enemyRanged:spec.ranged)
         let shift=PartyVisual.travel(attack != nil ? intent:nil,age:attack ?? 0),s=spec.scale
