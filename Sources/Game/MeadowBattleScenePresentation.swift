@@ -522,8 +522,8 @@ final class MeadowBattleVitalsView: UIView {
         track.addSubview(fill);shieldTrack.addSubview(shieldFill);addSubview(title)
     }
     required init?(coder:NSCoder) { fatalError("init(coder:) has not been implemented") }
-    func show(name:String,hp:Int,maximum:Int,shield:Int) {
-        title.text="\(name)  \(hp)/\(maximum)";self.hp=CGFloat(hp)/CGFloat(maximum);ward=CGFloat(min(8,shield))/8
+    func show(name:String,hp:Int,maximum:Int,shield:Int,maximumShield:Int=8) {
+        title.text="\(name)  \(hp)/\(maximum)";self.hp=CGFloat(hp)/CGFloat(maximum);ward=CGFloat(min(maximumShield,shield))/CGFloat(max(1,maximumShield))
         shieldTrack.isHidden=shield==0
         accessibilityLabel=name;accessibilityValue="生命\(hp)/\(maximum)，护盾\(shield)";setNeedsLayout()
     }

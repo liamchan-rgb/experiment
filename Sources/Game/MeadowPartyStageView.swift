@@ -104,7 +104,7 @@ final class MeadowPartyStageView:UIView {
         for (id,label) in labels {
             guard let u=value.units[id] else { continue }
             let visible=displayedVitals(for:id,health:u.health,shield:u.shield)
-            label.show(name:(id==current ? "▶ ":"")+u.name,hp:visible.health,maximum:(try? GameRules.attributes(u,catalog:catalog).maximumHealth) ?? u.baseAttributes.maximumHealth,shield:visible.shield)
+            label.show(name:(id==current ? "▶ ":"")+u.name,hp:visible.health,maximum:(try? GameRules.attributes(u,catalog:catalog).maximumHealth) ?? u.baseAttributes.maximumHealth,shield:visible.shield,maximumShield:MonsterVisualSpec.find(u.templateID)?.shieldCapacity(catalog:catalog) ?? 8)
         }
         render()
     }
@@ -127,7 +127,7 @@ final class MeadowPartyStageView:UIView {
         if let actor=before.units[value.actor],let target=before.units[value.target],let catalog {
             if diceAction != value.action || diceActor != value.actor { diceVisibleAt=sceneTime }
             diceAction=value.action;diceActor=value.actor;diceSettledAt=nil;diceExitAt=nil
-            diceView.dice=BattleDice.channels(value.action,actor:actor,target:target,catalog:catalog,receipt:confirmed);diceView.locked=confirmed != nil;diceConfirmedAt=confirmed == nil ? nil:sceneTime
+            diceView.dice=BattleDice.channels(value.action,actor:actor,target:target,catalog:catalog,receipt:confirmed,sourceSkillID:value.sourceSkillID);diceView.locked=confirmed != nil;diceConfirmedAt=confirmed == nil ? nil:sceneTime
         }
         naturalTwenty=confirmed?.dice.contains { $0.naturalTwenty } ?? false
         intent=value;state=before;startAt=sceneTime;self.impact=onImpact;self.completion=completion;fired=false;focus=nil;meetsShield=(before.units[value.target]?.shield ?? 0)>0
@@ -172,7 +172,7 @@ final class MeadowPartyStageView:UIView {
         state=receipt.after
         if receipt.dice.contains(where: { $0.naturalTwenty }) { let p=PartyVisual.hitPoint(target:intent.target,weaponID:intent.weaponID);messages.append(.init(text:"自然20",point:CGPoint(x:p.x,y:p.y-55),at:sceneTime,color:.systemCyan,atImpact:true)) }
         if let actor=receipt.before.units[intent.actor],let target=receipt.before.units[intent.target],let catalog {
-            diceView.dice=BattleDice.channels(intent.action,actor:actor,target:target,catalog:catalog,receipt:receipt);diceSettledAt=sceneTime
+            diceView.dice=BattleDice.channels(intent.action,actor:actor,target:target,catalog:catalog,receipt:receipt,sourceSkillID:intent.sourceSkillID);diceSettledAt=sceneTime
         }
         for id in renderIDs {
             guard let before=receipt.before.units[id],let after=receipt.after.units[id],let foot=PartyVisual.foot(id) else { continue }

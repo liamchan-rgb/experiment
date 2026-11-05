@@ -14,8 +14,9 @@ public struct BattleDiePose:Codable {
 }
 public enum BattleDice {
     /// No RNG is used here: only the engine receipt may supply a rolled result.
-    public static func channels(_ action:PartyAction,actor:GameUnit,target:GameUnit,catalog:GameCatalog,receipt:OperationReceipt?=nil)->[BattleDie] {
+    public static func channels(_ action:PartyAction,actor:GameUnit,target:GameUnit,catalog:GameCatalog,receipt:OperationReceipt?=nil,sourceSkillID:String?=nil)->[BattleDie] {
         if action == .endTurn { return [] }
+        if let sourceSkillID{return skillChannels(sourceSkillID,actor:actor,catalog:catalog,receipt:receipt)}
         if action == .revivalStone { let maximum=(try? GameRules.attributes(target,catalog:catalog).maximumHealth) ?? target.baseAttributes.maximumHealth;return [BattleDie("green",value:(maximum+1)/2,label:"固定复活")] }
         if action == .attack {
             guard let attack=try? GameRules.attack(actor,catalog:catalog) else { return [] }

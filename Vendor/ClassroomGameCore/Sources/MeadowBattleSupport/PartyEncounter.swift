@@ -65,10 +65,11 @@ public struct PartyIntent {
     public let weaponID:String?
     public var monsterTemplateID:String?=nil
     public var enemyRanged:Bool=false
+    public var sourceSkillID:String?=nil
     public var impactAge:Double { enemy ? 0.46:action.impact }
     public var visualDuration:Double { enemy && action == .attack ? 1.10:action.duration }
-    public init(id:String,action:PartyAction,actor:String,target:String,targets:[String],command:GameCommand,enemy:Bool,weaponID:String?,monsterTemplateID:String?=nil,enemyRanged:Bool=false) {
-        self.id=id;self.action=action;self.actor=actor;self.target=target;self.targets=targets;self.command=command;self.enemy=enemy;self.weaponID=weaponID;self.monsterTemplateID=monsterTemplateID;self.enemyRanged=enemyRanged
+    public init(id:String,action:PartyAction,actor:String,target:String,targets:[String],command:GameCommand,enemy:Bool,weaponID:String?,monsterTemplateID:String?=nil,enemyRanged:Bool=false,sourceSkillID:String?=nil) {
+        self.id=id;self.action=action;self.actor=actor;self.target=target;self.targets=targets;self.command=command;self.enemy=enemy;self.weaponID=weaponID;self.monsterTemplateID=monsterTemplateID;self.enemyRanged=enemyRanged;self.sourceSkillID=sourceSkillID
     }
     public var magical:Bool { weaponID=="legendaryStaff" && !enemy && action.visual=="attack" && action != .starlightPulse }
     public var ranged:Bool { enemyRanged || weaponID=="huntingBow" && !enemy && action.isOffensive && !action.isRune && action != .dragonFlame && action != .starlightPulse }
@@ -179,7 +180,8 @@ public final class PartyEncounter {
         serial+=1;let id=sessionID+"/"+String(serial)
         guard let staged=try? GameEngine(catalog:engine.catalog,state:state,history:engine.history),let receipt=try? staged.apply(.monsterStep,id:id) else{return nil}
         let skillName=receipt.events.first{$0.kind=="aiAction"}?.detail
-        let skillID=engine.catalog.skills.first{$0.name==skillName}?.id
+        let ownSkills=(try? engine.catalog.monster(state.units[actor]!.templateID).skills) ?? []
+        let skillID=ownSkills.first{(try? engine.catalog.skill($0).name)==skillName}
         let aliases:[String:PartyAction]=["stoneSkin":.simpleGuard,"monsterDragonScale":.dragonScaleWard,"monsterDragonFlame":.dragonFlame]
         let action=skillID.flatMap{aliases[$0] ?? PartyAction(rawValue:$0)} ?? .attack
         let changed=state.units.keys.sorted().filter{key in
@@ -187,7 +189,7 @@ public final class PartyEncounter {
             return before.health != after.health || before.shield != after.shield || before.damageBuff != after.damageBuff
         }
         let targets=changed.isEmpty ? [nextEnemyTarget() ?? "p1"]:changed
-        let intent=PartyIntent(id:id,action:action,actor:actor,target:targets[0],targets:targets,command:.monsterStep,enemy:true,weaponID:nil,monsterTemplateID:state.units[actor]?.templateID,enemyRanged:action == .attack && ((try? engine.catalog.monster(state.units[actor]!.templateID).attack.range) ?? 0)>0)
+        let intent=PartyIntent(id:id,action:action,actor:actor,target:targets[0],targets:targets,command:.monsterStep,enemy:true,weaponID:nil,monsterTemplateID:state.units[actor]?.templateID,enemyRanged:action == .attack && ((try? engine.catalog.monster(state.units[actor]!.templateID).attack.range) ?? 0)>0,sourceSkillID:skillID)
         confirmedEngine=staged;confirmedReceipt=receipt;pending=intent;return intent
     }
     public func cancel() { pending=nil;confirmedEngine=nil;confirmedReceipt=nil }

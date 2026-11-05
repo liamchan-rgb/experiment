@@ -1,4 +1,5 @@
 import Foundation
+import ClassroomGameCore
 
 /// Species artwork is independent of persistent battle IDs and rule stats.
 public struct MonsterVisualSpec:Equatable {
@@ -6,6 +7,11 @@ public struct MonsterVisualSpec:Equatable {
     public var asset:String { "MeadowMonster"+id.prefix(1).uppercased()+id.dropFirst() }
     public var scale:Double { ["caveTroll","ruinDragon"].contains(id) ? 1.04:0.88 }
     public var contactX:Double { ["slime":20,"wolf":6,"stoneGuardian":72,"caveTroll":50][id].map(Double.init) ?? 42 }
+    public func shieldCapacity(catalog:GameCatalog)->Int {
+        guard let definition=try? catalog.monster(id) else{return 8}
+        let amounts=definition.skills.compactMap{try? catalog.skill($0)}.flatMap(\.effects).filter{$0.kind == .shield}.map(\.amount)
+        return max(1,([definition.shield]+amounts).max() ?? 0)
+    }
     public var ranged:Bool { ["goblinArcher","ruinDragon"].contains(id) }
     public static let ids=["slime","wolf","goblinArcher","stoneGuardian","caveTroll","ruinDragon"]
     public static func find(_ id:String?)->Self? { guard let id,ids.contains(id) else{return nil};return Self(id:id) }

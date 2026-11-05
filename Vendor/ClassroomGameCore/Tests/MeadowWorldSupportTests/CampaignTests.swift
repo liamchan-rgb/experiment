@@ -537,9 +537,17 @@ final class CampaignTests:XCTestCase {
             let before=s.engine.archive,intent=try XCTUnwrap(e.prepareMonsterStep())
             XCTAssertEqual(s.engine.archive,before)
             XCTAssertEqual(intent.action,template=="stoneGuardian" ? .simpleGuard:template=="caveTroll" ? .regeneration:.dragonScaleWard)
-            XCTAssertGreaterThan(intent.visualDuration,1.1);_=try e.commit(intent.id)
+            XCTAssertGreaterThan(intent.visualDuration,1.1)
+            let source=template=="stoneGuardian" ? "stoneSkin":template=="caveTroll" ? "regeneration":"monsterDragonScale"
+            XCTAssertEqual(intent.sourceSkillID,source)
+            let channels=BattleDice.channels(intent.action,actor:before.state.units[id]!,target:before.state.units[id]!,catalog:s.engine.catalog,receipt:e.confirmedReceipt,sourceSkillID:intent.sourceSkillID)
+            XCTAssertEqual(channels.first?.value,try s.engine.catalog.skill(source).effects.first?.amount)
+            _=try e.commit(intent.id)
             if template=="ruinDragon" {
                 let flame=try XCTUnwrap(e.prepareMonsterStep());XCTAssertEqual(flame.action,.dragonFlame);XCTAssertEqual(flame.targets.count,2)
+                XCTAssertEqual(flame.sourceSkillID,"monsterDragonFlame")
+                let dice=BattleDice.channels(flame.action,actor:s.engine.state.units[id]!,target:s.engine.state.units[flame.target]!,catalog:s.engine.catalog,receipt:e.confirmedReceipt,sourceSkillID:flame.sourceSkillID)
+                XCTAssertEqual(dice.first?.sides,20);XCTAssertFalse(dice.contains{$0.color=="blue"})
                 XCTAssertEqual(flame.visualDuration,2.75);XCTAssertEqual(PartyVisual.travel(flame,age:0.46).x,0)
             }
         }
