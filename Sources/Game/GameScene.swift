@@ -538,6 +538,7 @@ final class GameScene: SKScene {
     }
     private func order(to point: CGPoint, discovery: Int? = nil) {
         if let campaign {
+            if campaign.isCompleted{onDiscovery?("行程已结算，可查看结果或返回设置");return}
             let actor=selectedCampaignPlayerID
             if let discovery,let target=world.definition.discoveries[discovery].nodeID {
                 if selectingCampaignNode{onCampaignNodeSelected?(target);return}

@@ -11,6 +11,7 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
     private let campaignItems=MeadowPreviewPalette.button("行囊与装备")
     private let campaignBattle=MeadowPreviewPalette.button("继续战斗")
     private let campaignEdit=MeadowPreviewPalette.button("编辑地点")
+    private let campaignEnd=MeadowPreviewPalette.button("行程目标")
     private let campaignTeam=MeadowPreviewPalette.button("队伍与成员")
     private let campaignHUD=UIView()
     private let campaignMovement=MeadowBattleResourceBar()
@@ -296,6 +297,7 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
         battlePreviewButton.frame = CGRect(x: battleX, y: top + 2, width: 104, height: button)
         p1AppearanceButton.frame = CGRect(x: battlePreviewButton.frame.maxX + 8, y: top + 2, width: 112, height: button)
         campaignTeam.frame=CGRect(x:titleButton.frame.maxX+8,y:top+2,width:128,height:button)
+        campaignEnd.frame=CGRect(x:campaignTeam.frame.maxX+8,y:top+2,width:120,height:button)
         let panelWidth = min(960, max(1, mapWidth - 32))
         gaitPanel.frame = CGRect(x: (view.bounds.width - panelWidth) / 2,
                                  y: view.bounds.height - max(inset.bottom, 12) - 194, width: panelWidth, height: 194)
@@ -464,6 +466,7 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
         setMapEnabled(true)
         if let campaign {
             refreshCampaignStatus()
+            if campaign.isCompleted{showCampaignResults()}
         }
         if ProcessInfo.processInfo.arguments.contains("-gaitCapture") { startGaitCapture() }
     }
@@ -760,7 +763,8 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
         MeadowPreviewPalette.stylePanel(campaignHUD);view.addSubview(campaignHUD)
         campaignHUD.addSubview(campaignMovement)
         for i in 0..<2 {campaignHUD.addSubview(campaignHealth[i]);campaignHUD.addSubview(campaignAP[i])}
-        for b in [campaignRefill,campaignItems,campaignBattle,campaignEdit,campaignTeam] {view.addSubview(b)}
+        for b in [campaignRefill,campaignItems,campaignBattle,campaignEdit,campaignTeam,campaignEnd] {view.addSubview(b)}
+        campaignEnd.addAction(UIAction{[weak self] _ in self?.showCampaignEnd()},for:.touchUpInside)
         campaignTeam.addAction(UIAction{[weak self] _ in self?.showCampaignTeam()},for:.touchUpInside)
         campaignEdit.accessibilityIdentifier="campaignNodeEditor"
         campaignEdit.accessibilityLabel="编辑行程节点的遭遇怪物或补给奖励"
@@ -916,15 +920,15 @@ private func refreshCampaignStatus(allowBattleOpen:Bool=true) {
         let state=campaign.engine.state,players=state.players
         randomMapSummary.text="已探索 \(state.map.revealed.count)/\(state.map.nodes.count) · 金币 \(players.reduce(0){$0+$1.coins}) · 积分 \(players.reduce(0){$0+$1.score})"+(campaign.cleared ? " · 敌人已清理":"")
         if scene.selectingCampaignNode {randomMapSummary.text="编辑选点中 · 点击建筑 · 再次点按钮取消"}
-        let busy=campaign.travel != nil || state.battle != nil
-        campaignRefill.isEnabled = !campaign.isMoving && state.battle==nil && campaign.movementRefillCost>0
+        let busy=campaign.travel != nil || state.battle != nil || campaign.isCompleted
+        campaignRefill.isEnabled = !campaign.isCompleted && !campaign.isMoving && state.battle==nil && campaign.movementRefillCost>0
         campaignItems.isEnabled = !busy;campaignEdit.isEnabled = !busy
         let actor=scene.selectedCampaignPlayerID,node=state.map.nodes.first{$0.id==state.units[actor]?.nodeID}
         let eventAvailable=node.map{n in n.kind == .reward ? !n.rewardCompleted:((n.kind == .combat || n.kind == .boss) && state.units.values.contains{$0.kind == .monster && $0.nodeID==n.id && $0.isAlive})} ?? false
         campaignBattle.configuration?.title=state.battle != nil ? "继续战斗":(eventAvailable ? "交互地点":"暂无事件")
-        campaignBattle.isHidden=battlePreviewActive;campaignBattle.isEnabled=state.battle != nil || (!busy && eventAvailable)
+        campaignBattle.isHidden=battlePreviewActive;campaignBattle.isEnabled = !campaign.isCompleted && (state.battle != nil || (!busy && eventAvailable))
         campaignMovement.show("移动 · 行动上限均值×50",value:Int(ceil(campaign.movementRemaining)),maximum:max(1,Int(ceil(campaign.movementCapacity))),color:.systemYellow)
-        for view in [campaignHUD,campaignRefill,campaignItems,campaignEdit,campaignTeam,randomMapSummary] {view.isHidden=battlePreviewActive}
+        for view in [campaignHUD,campaignRefill,campaignItems,campaignEdit,campaignTeam,campaignEnd,randomMapSummary] {view.isHidden=battlePreviewActive}
         playButton.isHidden=battlePreviewActive || !campaign.hasPendingTravel;resetButton.isHidden=true
         playButton.isPlaying=campaign.isMoving
         for i in players.indices {
@@ -932,7 +936,30 @@ private func refreshCampaignStatus(allowBattleOpen:Bool=true) {
             campaignHealth[i].show(u.id.uppercased()+" · 行动上限 \(stats.maximumAP)",value:u.health,maximum:stats.maximumHealth,color:.systemGreen)
             campaignAP[i].show(value:u.ap,maximum:max(u.ap,stats.baseAP))
         }
-        if ready,allowBattleOpen,state.battle != nil,!battlePreviewActive {setBattlePreviewActive(true)}
+        campaignEnd.configuration?.title=campaign.isCompleted ? "查看结算":((campaign.canComplete || campaign.canCompleteDefeat) ? "结束并结算":"行程目标")
+        if campaign.isCompleted{randomMapSummary.text="行程已结算 · 可查看结果或返回设置"}
+        if ready,allowBattleOpen,state.battle != nil,players.contains(where: \.isAlive),!battlePreviewActive {setBattlePreviewActive(true)}
+    }
+    private func showCampaignEnd(){
+        guard let campaign else{return}
+        if campaign.isCompleted{showCampaignResults();return}
+        guard campaign.canComplete || campaign.canCompleteDefeat else{
+            let alert=UIAlertController(title:"行程目标",message:campaign.completionProgress+"\n奖励节点可自行选择是否领取。",preferredStyle:.alert);alert.addAction(UIAlertAction(title:"继续行程",style:.default));present(alert,animated:true);return
+        }
+        let alert=UIAlertController(title:campaign.canCompleteDefeat ? "结束本次行程？":"完成行程并结算？",message:"尚有 \(campaign.engine.state.map.nodes.filter{$0.kind == .reward && !$0.rewardCompleted}.count) 处补给未领取。结束后地图只供查看，结果按实际所得记录；新行程请返回设置。",preferredStyle:.alert)
+        alert.addAction(UIAlertAction(title:"取消",style:.cancel));alert.addAction(UIAlertAction(title:"结束并保存",style:.default){[weak self] _ in
+            guard let self else{return}
+            do{try campaign.completeCampaign(camera:self.scene.campaignCamera);self.cancelNodeSelection();self.refreshCampaignStatus(allowBattleOpen:false);self.showCampaignResults()}
+            catch{self.showCampaignMessage("结算未保存："+error.localizedDescription)}
+        });present(alert,animated:true)
+    }
+    private func showCampaignResults(){
+        guard let campaign,let result=campaign.completion,presentedViewController==nil else{return}
+        let screen=MeadowCampaignResultsViewController(result:result,catalog:campaign.engine.catalog,seed:campaign.snapshot.layout.configuration.seed)
+        screen.onReturnSettings={ [weak self] in
+            guard let self else{return};do{try self.saveCampaign();self.dismiss(animated:true)}catch{self.showCampaignMessage("保存失败："+error.localizedDescription)}
+        }
+        present(screen,animated:true)
     }
     private func showCampaignTeam(){
         guard let campaign else{return}

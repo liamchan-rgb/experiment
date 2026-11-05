@@ -427,4 +427,78 @@ final class CampaignTests:XCTestCase {
         XCTAssertEqual(session.engine.state.units[actor]!.ap,own-1);XCTAssertEqual(session.engine.state.units[other]!.ap,before)
     }
 
+    func clearEnemies(_ session:MeadowCampaignSession)throws {
+        for id in session.engine.state.units.values.filter({$0.kind == .monster && $0.isAlive}).map(\.id){try session.engine.apply(.setHealth(unit:id,value:0,killer:"p1"))}
+    }
+    func testCompletionRequiresAllEncountersAndReturnToCamp()throws {
+        let s=try MeadowCampaignSession.new(layout:layout(combat:true)),start=s.engine.state.units["p1"]!.nodeID
+        XCTAssertFalse(s.canComplete);XCTAssertThrowsError(try s.completeCampaign())
+        let target=s.engine.state.map.neighbors(start)[0];try s.beginTravel(to:target);try finishTravel(s)
+        try clearEnemies(s);XCTAssertTrue(s.completionGoalMet);XCTAssertFalse(s.canComplete)
+        XCTAssertThrowsError(try s.completeCampaign());XCTAssertNil(s.completion)
+        try s.refillMovement(usingCoins:false);try s.beginTravel(to:start);try finishTravel(s)
+        XCTAssertTrue(s.canComplete);let result=try s.completeCampaign()
+        XCTAssertEqual(result.outcome,"victory");XCTAssertEqual(result.clearedEncounters,result.totalEncounters)
+    }
+    func testNoEnemyMapNeedsExplorationAndRewardsRemainOptional()throws {
+        let s=try MeadowCampaignSession.new(layout:layout()),start=s.engine.state.units["p1"]!.nodeID
+        XCTAssertFalse(s.canComplete)
+        for node in s.engine.state.map.nodes where node.id != start {
+            try s.refillMovement(usingCoins:false);try s.beginTravel(to:node.id);try finishTravel(s)
+        }
+        XCTAssertTrue(s.completionGoalMet);XCTAssertFalse(s.canComplete)
+        try s.refillMovement(usingCoins:false);try s.beginTravel(to:start);try finishTravel(s)
+        let result=try s.completeCampaign();XCTAssertEqual(result.collectedRewards,0);XCTAssertEqual(result.exploredNodes,result.totalNodes)
+        XCTAssertTrue(result.players.allSatisfy{$0.coins==0})
+    }
+    func testCompletionIsIdempotentAndClosesResourceOperations()throws {
+        let s=try MeadowCampaignSession.new(layout:layout(combat:true));try clearEnemies(s)
+        let archive=s.engine.archive,result=try s.completeCampaign(),saved=s.snapshot
+        XCTAssertEqual(s.engine.archive,archive);XCTAssertEqual(try s.completeCampaign(),result);XCTAssertEqual(s.snapshot,saved)
+        let target=s.engine.state.map.neighbors(s.engine.state.units["p1"]!.nodeID)[0]
+        XCTAssertThrowsError(try s.beginTravel(to:target));XCTAssertThrowsError(try s.refillMovement(usingCoins:false))
+        XCTAssertThrowsError(try s.configureEncounter(node:target,templates:["meadowStag"]))
+        XCTAssertThrowsError(try s.equipInventory(actor:"p1",slot:.weapon,item:nil))
+        XCTAssertThrowsError(try s.engine.apply(.editResources(unit:"p1",value:ResourcePatch(coins:999))))
+        XCTAssertEqual(s.engine.archive,archive);XCTAssertEqual(s.completion,result)
+        try s.selectPlayer("p2");try s.checkpoint()
+        XCTAssertEqual(s.completion,result)
+    }
+    func testCompletionSaveFailureLeavesSessionOpenAndCanRetry()throws {
+        var fail=false,stored=Data()
+        let s=try MeadowCampaignSession.new(layout:layout(combat:true),persist:{data in if fail{throw GameError("disk")};stored=data})
+        try clearEnemies(s);let before=s.snapshot,old=stored
+        fail=true;XCTAssertThrowsError(try s.completeCampaign());XCTAssertEqual(s.snapshot,before);XCTAssertEqual(stored,old);XCTAssertTrue(s.canComplete)
+        fail=false;let result=try s.completeCampaign(),bytes=stored
+        XCTAssertEqual(try s.completeCampaign(),result);XCTAssertEqual(stored,bytes)
+        let restored=try MeadowCampaignSession(save:.decoded(stored));XCTAssertEqual(restored.completion,result);XCTAssertTrue(restored.isCompleted)
+        XCTAssertThrowsError(try restored.refillMovement(usingCoins:false))
+    }
+    func testCompletedHistoryIsPreservedBeforeNewCampaignAndDeduplicated()throws {
+        let folder=FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString)
+        defer{try? FileManager.default.removeItem(at:folder)}
+        let store=MeadowCampaignStore(url:folder.appendingPathComponent("campaign-v1.json"))
+        let s=try MeadowCampaignSession.new(layout:layout(combat:true),persist:store.write);try clearEnemies(s);let result=try s.completeCampaign()
+        let file=try XCTUnwrap(store.preserveCompletedCampaign());XCTAssertEqual(try store.preserveCompletedCampaign(),file)
+        XCTAssertEqual(try store.completedCampaigns().count,1)
+        _=try MeadowCampaignSession.new(layout:layout(),persist:store.write)
+        XCTAssertEqual(try store.completedCampaigns().first?.completion,result)
+        XCTAssertNil(try store.read()?.completion)
+        let archived=try MeadowCampaignSave.decoded(Data(contentsOf:file));var corrupted=archived
+        let other=try MeadowCampaignSession.new(layout:layout(combat:true));try clearEnemies(other);corrupted.completion=try other.completeCampaign()
+        XCTAssertThrowsError(try corrupted.encoded())
+    }
+    func testDefeatCompletionIsAtomicAndDoesNotPayAdditionalRewards()throws {
+        var fail=false,stored=Data()
+        let s=try MeadowCampaignSession.new(layout:layout(combat:true),persist:{data in if fail{throw GameError("disk")};stored=data})
+        let start=s.engine.state.units["p1"]!.nodeID;try s.beginTravel(to:s.engine.state.map.neighbors(start)[0]);try finishTravel(s);try s.interactCurrentNode()
+        for id in s.playerIDs{try s.engine.apply(.setHealth(unit:id,value:0,killer:nil))}
+        XCTAssertTrue(s.canCompleteDefeat);let before=s.engine.archive,old=stored
+        fail=true;XCTAssertThrowsError(try s.completeCampaign());XCTAssertEqual(s.engine.archive,before);XCTAssertEqual(stored,old)
+        fail=false;let result=try s.completeCampaign()
+        XCTAssertEqual(result.outcome,"defeat");XCTAssertNil(s.engine.state.battle);XCTAssertTrue(result.players.allSatisfy{!$0.isAlive})
+        XCTAssertEqual(result.players.map(\.coins),before.state.players.map(\.coins));XCTAssertEqual(try s.completeCampaign(),result)
+        XCTAssertEqual(try MeadowCampaignSave.decoded(stored).completion,result)
+    }
+
 }

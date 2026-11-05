@@ -72,6 +72,7 @@ final class MeadowMapSettingsViewController: UIViewController {
         right.addArrangedSubview(classLabel);right.addArrangedSubview(campaignClass)
         right.addArrangedSubview(startCampaignButton)
         right.addArrangedSubview(button("继续已保存行程",action:#selector(continueCampaign)))
+        right.addArrangedSubview(button("历史结算",action:#selector(showCompletedCampaigns)))
         preview.heightAnchor.constraint(equalToConstant:200).isActive=true
         scroll.addSubview(form);rightScroll.addSubview(right);view.addSubview(scroll);view.addSubview(rightScroll)
         for v in [scroll,rightScroll,form,right] { v.translatesAutoresizingMaskIntoConstraints=false }
@@ -182,6 +183,7 @@ final class MeadowMapSettingsViewController: UIViewController {
                     try save.validate(appearances:["forester","wayfarer"],equipment:Set(["trainingSword","huntingBow","greatSword","legendaryStaff","leatherArmor","runeArmor","powerBadge","actionRing"]))
                     units=save.archive.state.units;appearance=save.appearanceID
                 }
+                try store.preserveCompletedCampaign()
                 let session=try MeadowCampaignSession.new(layout:result,appearanceID:appearance,playerClassID:["adventurer","spellblade","dragonKnight"][max(0,self.campaignClass.selectedSegmentIndex)],loadouts:units,persist:store.write)
                 self.presentCampaign(session)
             } catch {self.status.text="未开始新行程："+error.localizedDescription}
@@ -198,6 +200,21 @@ final class MeadowMapSettingsViewController: UIViewController {
             guard let save=try store.read() else{status.text="还没有已保存行程。先生成地图并开始新行程。";return}
             presentCampaign(try MeadowCampaignSession(save:save,persist:store.write))
         } catch {status.text="无法读取行程，原存档已保留："+error.localizedDescription}
+    }
+    @objc private func showCompletedCampaigns(){
+        do{
+            let saves=try Self.campaignStore().completedCampaigns()
+            guard !saves.isEmpty else{status.text="还没有已结算行程。";return}
+            let menu=UIAlertController(title:"历史结算",message:"选择行程查看已保存结果",preferredStyle:.actionSheet)
+            let format=DateFormatter();format.dateFormat="MM-dd HH:mm"
+            for save in saves {
+                guard let result=save.completion else{continue}
+                menu.addAction(UIAlertAction(title:format.string(from:result.completedAt)+" · "+(result.outcome=="victory" ? "通关":"队伍倒地")+" · 种子\(save.layout.configuration.seed)",style:.default){[weak self] _ in
+                    let screen=MeadowCampaignResultsViewController(result:result,catalog:save.archive.catalog,seed:save.layout.configuration.seed);self?.present(screen,animated:true)
+                })
+            }
+            menu.addAction(UIAlertAction(title:"取消",style:.cancel));menu.popoverPresentationController?.sourceView=preview;menu.popoverPresentationController?.sourceRect=preview.bounds;present(menu,animated:true)
+        }catch{status.text="历史结算读取失败，原文件已保留："+error.localizedDescription}
     }
     private func presentCampaign(_ session:MeadowCampaignSession) {
         let controller=GameViewController(campaign:session);controller.modalPresentationStyle = .fullScreen
@@ -237,5 +254,48 @@ private final class MeadowMapThumbnail: UIView {
             let text=names[node.kind.rawValue] ?? "?"
             (text as NSString).draw(in:CGRect(x:badge.x-4,y:badge.y-5,width:10,height:11),withAttributes:[.font:UIFont.boldSystemFont(ofSize:8),.foregroundColor:UIColor.black])
         }
+    }
+}
+
+final class MeadowCampaignResultsViewController:UIViewController {
+    let result:MeadowCampaignCompletion,catalog:GameCatalog,seed:UInt64
+    var onReturnSettings:(()->Void)?
+    private let scroll=UIScrollView(),stack=UIStackView()
+    private let close=MeadowPreviewPalette.button("返回查看"),settings=MeadowPreviewPalette.button("保存并返回设置")
+    init(result:MeadowCampaignCompletion,catalog:GameCatalog,seed:UInt64){self.result=result;self.catalog=catalog;self.seed=seed;super.init(nibName:nil,bundle:nil);modalPresentationStyle = .fullScreen;isModalInPresentation=true}
+    required init?(coder:NSCoder){fatalError("init(coder:) has not been implemented")}
+    override var prefersStatusBarHidden:Bool{true}
+    override var supportedInterfaceOrientations:UIInterfaceOrientationMask{.landscape}
+    override func viewDidLoad(){
+        super.viewDidLoad();view.backgroundColor=MeadowPreviewPalette.panel
+        view.addSubview(scroll);scroll.addSubview(stack);view.addSubview(close);view.addSubview(settings)
+        stack.axis = .vertical;stack.spacing=14;stack.translatesAutoresizingMaskIntoConstraints=false
+        NSLayoutConstraint.activate([stack.topAnchor.constraint(equalTo:scroll.contentLayoutGuide.topAnchor,constant:12),stack.bottomAnchor.constraint(equalTo:scroll.contentLayoutGuide.bottomAnchor,constant:-12),stack.leadingAnchor.constraint(equalTo:scroll.contentLayoutGuide.leadingAnchor,constant:16),stack.trailingAnchor.constraint(equalTo:scroll.contentLayoutGuide.trailingAnchor,constant:-16),stack.widthAnchor.constraint(equalTo:scroll.frameLayoutGuide.widthAnchor,constant:-32)])
+        func text(_ value:String,_ size:CGFloat=18){let label=MeadowPreviewPalette.label(value,size:size);label.numberOfLines=0;stack.addArrangedSubview(label)}
+        text(result.outcome=="victory" ? "行程完成":"行程结束 · 队伍倒地",30)
+        let date=DateFormatter();date.dateStyle = .medium;date.timeStyle = .short
+        text(date.string(from:result.completedAt)+" · 地图种子 \(seed)",16)
+        text("探索 \(result.exploredNodes)/\(result.totalNodes) 地点  ·  清理 \(result.clearedEncounters)/\(result.totalEncounters) 战斗地点  ·  补给 \(result.collectedRewards)/\(result.totalRewards)")
+        text("累计移动 \(Int(result.distance.rounded())) 距离  ·  移动购买花费 \(result.movementCoins) 金币")
+        for player in result.players {
+            let attributes=(try? GameRules.attributes(player,catalog:catalog)) ?? player.baseAttributes
+            text(player.name,23)
+            let health=MeadowBattleResourceBar();health.show("生命",value:player.health,maximum:attributes.maximumHealth,color:.systemGreen);health.heightAnchor.constraint(equalToConstant:44).isActive=true;stack.addArrangedSubview(health)
+            text("持有金币 \(player.coins)  ·  积分 \(player.score)")
+            let equipment=player.equipment.itemIDs.map{(try? catalog.item($0).name) ?? $0}.joined(separator:"、")
+            text("装备："+(equipment.isEmpty ? "未装备":equipment),17)
+            let items=player.inventory.keys.sorted().map{((try? catalog.item($0).name) ?? $0)+" ×\(player.inventory[$0]!)"}.joined(separator:"、")
+            text("行囊："+(items.isEmpty ? "空":items),17)
+        }
+        text("以上为已保存的最终结果，金币和物品已经按行程中的实际操作结算。",16)
+        close.addAction(UIAction{[weak self] _ in self?.dismiss(animated:true)},for:.touchUpInside)
+        settings.isHidden=onReturnSettings==nil
+        settings.addAction(UIAction{[weak self] _ in guard let self else{return};self.dismiss(animated:true){self.onReturnSettings?()}},for:.touchUpInside)
+    }
+    override func viewDidLayoutSubviews(){
+        super.viewDidLayoutSubviews();let inset=view.safeAreaInsets,left=max(16,inset.left+12),right=view.bounds.width-max(16,inset.right+12),bottom=view.bounds.height-max(12,inset.bottom+8)
+        scroll.frame=CGRect(x:left,y:max(10,inset.top+8),width:right-left,height:max(1,bottom-74-max(10,inset.top+8)))
+        let width=(right-left-12)/2
+        close.frame=CGRect(x:left,y:bottom-52,width:onReturnSettings==nil ? right-left:width,height:44);settings.frame=CGRect(x:left+width+12,y:bottom-52,width:width,height:44)
     }
 }

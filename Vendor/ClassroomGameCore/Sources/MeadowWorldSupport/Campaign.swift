@@ -31,7 +31,15 @@ public struct MeadowCampaignCamera:Codable,Equatable {
     public var x:Double,y:Double,zoom:Double
     public init(x:Double,y:Double,zoom:Double=1){self.x=x;self.y=y;self.zoom=zoom}
 }
+public struct MeadowCampaignCompletion:Codable,Equatable {
+    public let id:String,gameID:String,outcome:String
+    public let completedAt:Date
+    public let players:[GameUnit]
+    public let exploredNodes:Int,totalNodes:Int,clearedEncounters:Int,totalEncounters:Int,collectedRewards:Int,totalRewards:Int
+    public let distance:Double,movementCoins:Int,historyCount:Int
+}
 public struct MeadowCampaignSave:Codable,Equatable {
+    public var completion:MeadowCampaignCompletion?=nil
     public var formatVersion=1
     public let layout:GeneratedMeadowMap
     public var archive:GameArchive
@@ -62,6 +70,25 @@ public struct MeadowCampaignSave:Codable,Equatable {
             guard movement.remaining.isFinite,movement.remaining>=0,movement.remaining<=MeadowMovementRules.capacity(archive)*(movement.scale ?? 150)/MeadowMovementRules.distancePerMaximumAP+0.000001,
                   (movement.scale ?? 150).isFinite,(movement.scale ?? 150)>0,movement.totalDistance.isFinite,movement.totalDistance>=0,movement.manualRefills>=0,movement.purchasedRefills>=0 else{throw GameError("移动条存档无效。")}
         }
+        if let result=completion {
+            let encounters=archive.state.map.nodes.filter{$0.kind == .combat || $0.kind == .boss}.count
+            guard UUID(uuidString:result.id) != nil,result.gameID==archive.state.gameID,result.completedAt.timeIntervalSince1970.isFinite,
+                  result.players==archive.state.players,result.historyCount==archive.history.count,archive.state.battle==nil,travel==nil,
+                  result.exploredNodes==archive.state.map.revealed.count,result.totalNodes==archive.state.map.nodes.count,
+                  result.totalEncounters==encounters,result.clearedEncounters==archive.state.map.nodes.filter({n in (n.kind == .combat || n.kind == .boss) && !archive.state.units.values.contains{$0.kind == .monster && $0.isAlive && $0.nodeID==n.id}}).count,
+                  result.collectedRewards==archive.state.map.nodes.filter({$0.kind == .reward && $0.rewardCompleted}).count,
+                  result.totalRewards==archive.state.map.nodes.filter({$0.kind == .reward}).count,
+                  result.distance==(movement?.totalDistance ?? 0),result.distance.isFinite,result.distance>=0,result.movementCoins>=0,
+                  ["victory","defeat"].contains(result.outcome) else{throw GameError("行程结算与存档不一致。")}
+        }
+        if let result=completion {
+            if result.outcome=="victory" {
+                guard !archive.state.units.values.contains(where:{$0.kind == .monster && $0.isAlive}),
+                      (result.totalEncounters>0 || archive.state.map.nodes.allSatisfy({archive.state.map.revealed.contains($0.id)})),
+                      let start=archive.state.map.nodes.first(where:{$0.kind == .start})?.id,
+                      !archive.state.players.filter(\.isAlive).isEmpty,archive.state.players.filter(\.isAlive).allSatisfy({$0.nodeID==start}) else{throw GameError("通关条件未达成。")}
+            }else{guard !archive.state.players.contains(where: \.isAlive) else{throw GameError("队伍未全员倒地。")}}
+        }
         if let selectedPlayerID {guard archive.state.players.contains(where:{$0.id==selectedPlayerID}) else{throw GameError("操作成员无效。")}}
         if let camera {guard camera.x.isFinite,camera.y.isFinite,camera.zoom.isFinite,(1...3).contains(camera.zoom) else {throw GameError("镜头数据无效。")}}
         if let t=travel {
@@ -87,11 +114,27 @@ public final class MeadowCampaignStore {
     public let url:URL
     public init(url:URL){self.url=url}
     public func read()throws->MeadowCampaignSave? {FileManager.default.fileExists(atPath:url.path) ? try .decoded(Data(contentsOf:url)):nil}
+    @discardableResult public func preserveCompletedCampaign()throws->URL? {
+        guard let save=try read(),let result=save.completion else{return nil}
+        let folder=url.deletingLastPathComponent().appendingPathComponent("Completed",isDirectory:true)
+        try FileManager.default.createDirectory(at:folder,withIntermediateDirectories:true)
+        let target=folder.appendingPathComponent(result.id+".json");try save.encoded().write(to:target,options:.atomic);return target
+    }
+    public func completedCampaigns()throws->[MeadowCampaignSave] {
+        var values=[String:MeadowCampaignSave]()
+        let folder=url.deletingLastPathComponent().appendingPathComponent("Completed",isDirectory:true)
+        if FileManager.default.fileExists(atPath:folder.path){for file in try FileManager.default.contentsOfDirectory(at:folder,includingPropertiesForKeys:nil) where file.pathExtension=="json" {
+            let save=try MeadowCampaignSave.decoded(Data(contentsOf:file));if save.completion != nil{values[save.archive.state.gameID]=save}
+        }}
+        if let current=try read(),current.completion != nil{values[current.archive.state.gameID]=current}
+        return values.values.sorted{$0.completion!.completedAt>$1.completion!.completedAt}
+    }
     public func write(_ data:Data)throws {try FileManager.default.createDirectory(at:url.deletingLastPathComponent(),withIntermediateDirectories:true);try data.write(to:url,options:.atomic)}
 }
 private final class CampaignWriter {
     var snapshot:MeadowCampaignSave
     let persist:((Data)throws->Void)?
+    var closingAsDefeat=false
     init(_ snapshot:MeadowCampaignSave,persist:((Data)throws->Void)?){self.snapshot=snapshot;self.persist=persist}
     func write(_ value:MeadowCampaignSave)throws {
         var next=value
@@ -112,6 +155,46 @@ public final class MeadowCampaignSession {
     }
     public var isMoving:Bool {travel.map{!$0.paused} ?? false}
     public var playerIDs:[String] {engine.state.players.map(\.id)}
+    public var completion:MeadowCampaignCompletion? {writer.snapshot.completion}
+    public var isCompleted:Bool {completion != nil}
+    public var totalEncounterNodes:Int {engine.state.map.nodes.filter{$0.kind == .combat || $0.kind == .boss}.count}
+    public var clearedEncounterNodes:Int {engine.state.map.nodes.filter{n in (n.kind == .combat || n.kind == .boss) && !engine.state.units.values.contains{$0.kind == .monster && $0.nodeID==n.id && $0.isAlive}}.count}
+    public var completionGoalMet:Bool {
+        if totalEncounterNodes>0{return cleared}
+        return engine.state.map.nodes.allSatisfy{engine.state.map.revealed.contains($0.id)}
+    }
+    public var canComplete:Bool {
+        guard !isCompleted,travel==nil,engine.state.battle==nil,completionGoalMet,let start=engine.state.map.nodes.first(where:{$0.kind == .start})?.id else{return false}
+        let survivors=engine.state.players.filter(\.isAlive);return !survivors.isEmpty && survivors.allSatisfy{$0.nodeID==start}
+    }
+    public var completionProgress:String {
+        if isCompleted{return "行程已结算，可查看结果"}
+        if canCompleteDefeat{return "队伍全部倒地，可结束本次行程"}
+        if !completionGoalMet{return totalEncounterNodes>0 ? "清理地点 \(clearedEncounterNodes)/\(totalEncounterNodes)，之后返回营地结算":"探索地点 \(engine.state.map.revealed.count)/\(engine.state.map.nodes.count)，之后返回营地结算"}
+        return canComplete ? "目标达成，可结束行程并结算":"目标达成，请返回营地结算"
+    }
+    public var canCompleteDefeat:Bool {!isCompleted && !isMoving && !engine.state.players.contains(where: \.isAlive)}
+    static func makeCompletion(archive:GameArchive,save:MeadowCampaignSave,outcome:String)->MeadowCampaignCompletion {
+        let state=archive.state,nodes=state.map.nodes
+        let paid=archive.history.flatMap(\.events).filter{$0.kind=="campaignMovementRefilled"}.reduce(0){sum,event in let value=sum.addingReportingOverflow(max(0,event.amount));return value.overflow ? Int.max:value.partialValue}
+        let encounters=nodes.filter{$0.kind == .combat || $0.kind == .boss}
+        return MeadowCampaignCompletion(id:UUID().uuidString,gameID:state.gameID,outcome:outcome,completedAt:Date(),players:state.players,exploredNodes:state.map.revealed.count,totalNodes:nodes.count,clearedEncounters:encounters.filter{n in !state.units.values.contains{$0.kind == .monster && $0.isAlive && $0.nodeID==n.id}}.count,totalEncounters:encounters.count,collectedRewards:nodes.filter{$0.kind == .reward && $0.rewardCompleted}.count,totalRewards:nodes.filter{$0.kind == .reward}.count,distance:save.movement?.totalDistance ?? 0,movementCoins:paid,historyCount:archive.history.count)
+    }
+    @discardableResult public func completeCampaign(camera:MeadowCampaignCamera?=nil)throws->MeadowCampaignCompletion {
+        if let completion{return completion}
+        guard canComplete || canCompleteDefeat else{throw GameError(completionProgress)}
+        let before=writer.snapshot
+        if canCompleteDefeat,engine.state.battle != nil {
+            writer.closingAsDefeat=true;defer{writer.closingAsDefeat=false}
+            if let camera{writer.snapshot.camera=camera}
+            do{try engine.apply(.finishBattle(winner:"monsters",byScore:false));return writer.snapshot.completion!}
+            catch{writer.snapshot=before;throw error}
+        }
+        var next=snapshot
+        next.completion=Self.makeCompletion(archive:engine.archive,save:next,outcome:canCompleteDefeat ? "defeat":"victory")
+        if let camera{next.camera=camera};try writer.write(next);return next.completion!
+    }
+    private func requireOpenCampaign()throws {guard !isCompleted else{throw GameError("本行程已结算，请查看结果或返回设置开始新行程。")}}
     public var cleared:Bool {!engine.state.units.values.contains{$0.kind == .monster && $0.isAlive}}
     public static func catalog()throws->GameCatalog {
         var c=try GameCatalog.initial()
@@ -154,7 +237,13 @@ public final class MeadowCampaignSession {
         restored.archive.state.pauseReasons.remove(.background)
         let writer=CampaignWriter(restored,persist:persist);self.writer=writer
         engine=try GameEngine(catalog:restored.archive.catalog,state:restored.archive.state,history:restored.archive.history,persist:{archive in
-            var next=writer.snapshot;next.archive=archive;try writer.write(next)
+            if writer.snapshot.completion != nil {
+                let old=writer.snapshot.archive
+                guard archive.state.units==old.state.units,archive.state.map==old.state.map,archive.history==old.history,archive.state.battle==nil,archive.state.phase == .exploration else{throw GameError("已结算行程只供查看。")}
+            }
+            var next=writer.snapshot;next.archive=archive
+            if writer.closingAsDefeat{next.travel=nil;next.completion=MeadowCampaignSession.makeCompletion(archive:archive,save:next,outcome:"defeat")}
+            try writer.write(next)
         })
     }
     public func point(at nodeID:Int)->MeadowWorldPoint {let n=writer.snapshot.layout.map.nodes.first{$0.id==nodeID}!;return .init(n.x*1280,n.y*writer.snapshot.layout.coordinateHeight)}
@@ -185,6 +274,7 @@ public final class MeadowCampaignSession {
         var next=snapshot;next.selectedPlayerID=id;try writer.write(next)
     }
     private func plannedTravel(node:Int?,point:MeadowWorldPoint?,actor:String)throws->(MeadowCampaignTravel,Double) {
+        try requireOpenCampaign()
         guard engine.state.battle==nil,engine.state.phase == .exploration,let unit=engine.state.units[actor],unit.isAlive else{throw GameError("请先结束战斗并选择存活成员。")}
         guard movementRemaining>0.000001 else{throw GameError("移动条已耗尽，请先补充移动。")}
         let actors=travel?.actors ?? engine.state.players.filter{$0.isAlive && $0.nodeID==unit.nodeID}.map(\.id)
@@ -295,6 +385,7 @@ public final class MeadowCampaignSession {
         var next=snapshot;next.travel?.paused=paused;try writer.write(next)
     }
     @discardableResult public func refillMovement(usingCoins:Bool)throws->OperationReceipt? {
+        try requireOpenCampaign()
         guard engine.state.phase == .exploration,engine.state.battle==nil,!isMoving else{throw GameError("请先暂停移动并结束战斗。")}
         guard movementRemaining+0.000001<movementCapacity else{return nil}
         let before=writer.snapshot,cost=usingCoins ? movementRefillCost:0
@@ -304,6 +395,7 @@ public final class MeadowCampaignSession {
         catch{writer.snapshot=before;throw error}
     }
     @discardableResult public func interactCurrentNode(actor:String="p1")throws->OperationReceipt {
+        try requireOpenCampaign()
         guard travel==nil,engine.state.battle==nil,let unit=engine.state.units[actor],unit.isAlive else{throw GameError("请先抵达地点并结束战斗。")}
         let actors=engine.state.players.filter{$0.isAlive && $0.nodeID==unit.nodeID}.map(\.id)
         return try engine.apply(.interactCampaignNode(actors:actors))
@@ -312,18 +404,21 @@ public final class MeadowCampaignSession {
     public func checkpoint(camera:MeadowCampaignCamera?=nil)throws {var next=snapshot;if let camera{next.camera=camera};try writer.write(next)}
     public func refillExploration()throws {_ = try refillMovement(usingCoins:false)}
     @discardableResult public func configureEncounter(node:Int,templates:[String])throws->OperationReceipt {
+        try requireOpenCampaign()
         guard travel==nil,engine.state.battle==nil else{throw GameError("请先停下移动并结束当前战斗，再编辑地点。")}
         return try engine.apply(.configureNodeEncounter(node:node,monsterTemplates:templates))
     }
     @discardableResult public func configureReward(node:Int,reward:NodeReward)throws->OperationReceipt {
+        try requireOpenCampaign()
         guard travel==nil,engine.state.battle==nil else{throw GameError("请先停下移动并结束当前战斗，再编辑地点。")}
         return try engine.apply(.configureNodeReward(node:node,reward:reward))
     }
     @discardableResult public func resetReward(node:Int)throws->OperationReceipt {
+        try requireOpenCampaign()
         guard travel==nil,engine.state.battle==nil else{throw GameError("请先停下移动并结束当前战斗，再编辑地点。")}
         return try engine.apply(.resetNodeReward(node:node))
     }
-    public var canManageInventory:Bool {travel==nil && engine.state.battle==nil && engine.state.phase == .exploration}
+    public var canManageInventory:Bool {!isCompleted && travel==nil && engine.state.battle==nil && engine.state.phase == .exploration}
     private func requireInventoryAccess()throws {
         guard canManageInventory else{throw GameError("请先完成移动并结束战斗，再管理行囊。")}
     }
