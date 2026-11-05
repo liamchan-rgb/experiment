@@ -1,0 +1,42 @@
+{
+  "blueMasterExample": {
+    "id": "p1-reference-blue-coat-masters",
+    "views": 5,
+    "layerReferences": 20,
+    "uniquePNGFiles": 20,
+    "completeDefaultViewCoverage": true,
+    "fileChecksPassed": true,
+    "artApproved": false,
+    "poseFramesGenerated": false,
+    "errors": []
+  },
+  "masterPlanRows": 40,
+  "codexOutputPlanRows": 832,
+  "existingSamplerComparedLayers": 64,
+  "existingSamplerPixelIdentity": true,
+  "sourceFilesUnmodified": true,
+  "referenceCopiesClearOnlyInvisibleRGB": true,
+  "normalizedReferenceLayers": 7,
+  "newArmorCreated": false,
+  "appOrSimulatorRun": false,
+  "protectedOriginalTreesBefore": {
+    "Art/Parts/P1-v1/eight-way-v1": {
+      "sha256": "6262c36dfe93a2057c7f0485422e69670a8c67e3b0eefb1f64ba47013887d772",
+      "files": 5114
+    },
+    "Art/Parts/P1-v1/b5-set-armors-v1": {
+      "sha256": "511d229fe43299f22f57aab217fb2a34b460b857eff8593218d1c1eda1b6ec3a",
+      "files": 844
+    }
+  },
+  "protectedOriginalTreesAfter": {
+    "Art/Parts/P1-v1/eight-way-v1": {
+      "sha256": "6262c36dfe93a2057c7f0485422e69670a8c67e3b0eefb1f64ba47013887d772",
+      "files": 5114
+    },
+    "Art/Parts/P1-v1/b5-set-armors-v1": {
+      "sha256": "511d229fe43299f22f57aab217fb2a34b460b857eff8593218d1c1eda1b6ec3a",
+      "files": 844
+    }
+  }
+}

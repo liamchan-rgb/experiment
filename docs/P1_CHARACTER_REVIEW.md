@@ -1,11 +1,16 @@
+## 当前：Chat服装母版任务书v2（2026-11-05）
+
+用户要求任务书细化、示例与验收明确，并纠正不应逐帧重画。已整理[母版任务书](../Art/Standards/P1-Locomotion-Delivery-v1/chat-apparel-v2/README.md)：Chat每件只交五视角四层＝20张静态母版（两件40项）；Codex复用既有表面映射/挂载与motion，批量生成104姿势/416引用，优先修母版/共用映射，少数特例才做可重导精修。星辉/龙纹分别有C0—C4任务与验收，I1—I3明确留给Codex。
+
+参考包提供原人体/关节、真实分层、注册裁片与“母版→8帧”技术示例。64层重导与旧输出逐像素一致；仅教学副本清理7层不可见RGB，原人物/旧衣/动作文件未改。旧B5被认为太朴素，见[实际反馈范围](../Art/Review/P1/b5-set-armors-v1/redesign-feedback.json)；不能把内部技术检查当用户认可。两件新母版尚未制作，概念未选，认可null。本次只更新任务书/参考材料，不新画服装、不接入App或打IPA。
+
 # P1 人物素材逐张审核
 
-## 当前候选：B5 星辉甲与龙纹甲（八向行走外观）
+## 历史候选：B5 星辉甲与龙纹甲（造型未认可，后要求重设计）
 
-两套衣甲均基于P1行走标准，各提供104姿势绑定/416张透明衣物层，且不改身体、下装或动作。主线程逐方向检查两套1×/2×全部13姿势，并解码查看八向正常行走及起停GIF；发型、五官和背剑开关组合实际装配检查通过。主观美术认可仍留空，等待用户看预览；战斗姿态/营地装备/套装技能未接入。两套资源的39个公开文件已HTTP GET核对，记录见delivery.json。
+两套衣甲均基于P1行走标准，各提供104姿势绑定/416张透明衣物层，且不改身体、下装或动作。主线程逐方向检查两套1×/2×全部13姿势，并解码查看八向正常行走及起停GIF；发型、五官和背剑开关组合实际装配检查通过。主观美术认可仍留空，等待用户看预览；战斗姿态/营地装备/套装技能未接入。 两套资源的39个公开文件已HTTP GET核对，记录见delivery.json。
 
-[星辉甲正常速度GIF](../Art/Review/P1/b5-set-armors-v1/preview/p1-b5-starlight-armor-v1/down-walk-normal.gif) · [龙纹甲正常速度GIF](../Art/Review/P1/b5-set-armors-v1/preview/p1-b5-dragon-armor-v1/down-walk-normal.gif) · [八方向GIF、站姿和姿势页](../Art/Review/P1/b5-set-armors-v1/README.md) · [人工审核记录](../Art/Review/P1/b5-set-armors-v1/art-review.md) · [公开链接回执](../Art/Review/P1/b5-set-armors-v1/delivery.json)
-
+[星辉甲正常速度GIF](../Art/Review/P1/b5-set-armors-v1/preview/p1-b5-starlight-armor-v1/down-walk-normal.gif) · [龙纹甲正常速度GIF](../Art/Review/P1/b5-set-armors-v1/preview/p1-b5-dragon-armor-v1/down-walk-normal.gif) · [八方向GIF、站姿和姿势页](../Art/Review/P1/b5-set-armors-v1/README.md) · [人工审核记录](../Art/Review/P1/b5-set-armors-v1/art-review.md)
 
 ## 当前补充：新外观制作与交付标准（仅文档）
 

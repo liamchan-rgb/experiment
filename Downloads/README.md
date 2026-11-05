@@ -476,3 +476,10 @@ Safari 下载后保存到“文件”，再打开 SideStore → My Apps → ＋�
 [来源与完整性元数据](MeadowJourney-build28.json) · [IPA SHA-256 列表](SHA256SUMS)。
 
 历史版本：[build 27](MeadowJourney-build27.json) · [build 26](MeadowJourney-build26.json) · [build 25](MeadowJourney-build25.json) · [build 24](MeadowJourney-build24.json) · [build 23](MeadowJourney-build23.json) · [build 22](MeadowJourney-build22.json)。
+
+
+## 美术任务书 · Chat服装母版v2
+
+[上传给Chat的参考ZIP](Chat-Apparel-Masters-v2.zip) · [复制总提示词TXT](Chat-Apparel-Masters-v2.txt) · [完整任务书和示例](../Art/Standards/P1-Locomotion-Delivery-v1/chat-apparel-v2/README.md) · [验证记录](Chat-Apparel-Masters-v2-verification.json)
+
+这是美术参考资料包，不是安装包。星辉甲/龙纹甲各5视角×4层＝20母版，Codex复用原模组批量导出动作；不要求绘图Chat手画104个姿势。先分别选设计，再交母版，原人物/动作不改。

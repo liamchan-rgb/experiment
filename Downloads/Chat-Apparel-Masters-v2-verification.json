@@ -1,0 +1,14 @@
+{
+  "zipSHA256": "3a16afc212b9d000241ef23c1d4a5d91c2b1b397ca4c73ca6f5bd29ad0490829",
+  "zipCRC": true,
+  "zipFiles": 96,
+  "masterPlan": 40,
+  "masterOwner": "Chat",
+  "poseOutputPlan": 832,
+  "poseOutputOwner": "Codex",
+  "editableSVGGroupsAndPNGIdentity": 20,
+  "localMarkdownLinks": 14,
+  "standaloneExtractedReferenceCheck": true,
+  "newArmorResourcesCreated": false,
+  "appSimulatorDeviceRun": false
+}
