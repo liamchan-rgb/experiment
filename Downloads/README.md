@@ -1,3 +1,9 @@
+## Build80 · 行程行囊与装备 · 1.6.53
+
+[直接下载 IPA](https://raw.githubusercontent.com/liamchan-rgb/experiment/cd6daa596fd885393b71d14e06de7f38e6a0aa33/Downloads/MeadowJourney-b80.ipa) · [包检](../Media/Build80/verification.json)
+
+P1装备/卸下与属性比较，P1/P2个人背包和定向补给，操作自动保存。旧行程物资保持，新行程完整复制营地背包。199项测试、四组回归、设备Release归档和公开完整GET通过。未运行App/模拟器/实机。
+
 ## Build79 · 地图选点编辑 · 1.6.52
 
 [直接下载 IPA](https://raw.githubusercontent.com/liamchan-rgb/experiment/af1b107bceba62680a5aa92e85f0faaa8b5f485b/Downloads/MeadowJourney-b79.ipa) · [包检记录](../Media/Build79/verification.json)
