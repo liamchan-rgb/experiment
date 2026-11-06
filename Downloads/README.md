@@ -1,3 +1,9 @@
+## Build95 · 地点参数编辑 · 1.6.68
+
+[直接下载 IPA](https://raw.githubusercontent.com/liamchan-rgb/experiment/ac9d4cb0d2e2c3385d5d535a2bec2a2d3d0ca6b2/Downloads/MeadowJourney-b95.ipa) · [说明](../docs/planning/random-map-v1/build95-site-editor.md) · [桌游demo对接方案](../docs/integration/tabletop-demo-bridge-plan.md)
+
+编辑地点可设置服务类型、买卖价比例、事件金币/恢复量；常驻字段名称、保存失败保留草稿、已处理事件锁定。桌游库只读核查完成，未修改或声称已对接。296测试、四专项、78原行程、设备Release和公开完整GET通过；未运行App/模拟器/实机。
+
 ## Build94 · 商店与可选地点事件 · 1.6.67
 
 [直接下载 IPA](https://raw.githubusercontent.com/liamchan-rgb/experiment/8c9f5be65d58030c430d3692091bdaa03ec08054/Downloads/MeadowJourney-b94.ipa) · [说明](../docs/planning/random-map-v1/build94-sites-commerce.md) · [缺图清单](../docs/planning/random-map-v1/art-gaps.md)
