@@ -5,24 +5,6 @@
 	};
 	"objectVersion" = 56;
 	"objects" = {
-AB8600000000000000000001 = { isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UI/MeadowEncounterPreviewView.swift"; sourceTree = "<group>"; };
-AB8600000000000000000002 = { isa = PBXBuildFile; fileRef = AB8600000000000000000001; };
-AB9F00000000000000000001 = { isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UI/MeadowMapSettingsViewController.swift"; sourceTree = "<group>"; };
-AB9F00000000000000000002 = { isa = PBXBuildFile; fileRef = AB9F00000000000000000001; };
-AB9F00000000000000000003 = { isa = XCSwiftPackageProductDependency; package = EA1ED59499E1DA36E4C388CF; productName = MeadowWorldSupport; };
-AB9F00000000000000000004 = { isa = PBXBuildFile; productRef = AB9F00000000000000000003; };
-
-C26C692E47A2909C63823E67 = { "isa" = "PBXFileReference"; "lastKnownFileType" = "sourcecode.swift"; "path" = "UI/MeadowInventoryViewController.swift"; "sourceTree" = "<group>"; };
-E231858EBB758E69C5FBB40B = { "isa" = "PBXBuildFile"; "fileRef" = C26C692E47A2909C63823E67; };
-A47847D1CE00000000000001 = { "isa" = "PBXFileReference"; "lastKnownFileType" = "sourcecode.swift"; "path" = "Game/MeadowBattleDiceView.swift"; "sourceTree" = "<group>"; };
-A47847D1CE00000000000002 = { "isa" = "PBXBuildFile"; "fileRef" = A47847D1CE00000000000001; };
-		1874E8D5B0102E34718206F7 = { "isa" = "PBXFileReference"; "lastKnownFileType" = "sourcecode.swift"; "path" = "Game/MeadowPartyBattleView.swift"; "sourceTree" = "<group>"; };
-		90100A4191C8B72CC9236E3E = { "isa" = "PBXBuildFile"; "fileRef" = 1874E8D5B0102E34718206F7; };
-		F961EA11DCA10F5C7F4CFA41 = { "isa" = "PBXFileReference"; "lastKnownFileType" = "sourcecode.swift"; "path" = "Game/MeadowPartyStageView.swift"; "sourceTree" = "<group>"; };
-		24CBEABFE4CB02099C3CDE6C = { "isa" = "PBXBuildFile"; "fileRef" = F961EA11DCA10F5C7F4CFA41; };
-		EA1ED59499E1DA36E4C388CF = { "isa" = "XCLocalSwiftPackageReference"; "relativePath" = "Vendor/ClassroomGameCore"; };
-		7394C890829D44FA5A47A620 = { "isa" = "XCSwiftPackageProductDependency"; "package" = EA1ED59499E1DA36E4C388CF; "productName" = "MeadowBattleSupport"; };
-		258C917B4E3F4818F2BAE32B = { "isa" = "PBXBuildFile"; "productRef" = 7394C890829D44FA5A47A620; };
 		12BE6F43C250EA1C0ABFBF32 = {
 			"isa" = "PBXFileReference";
 			"lastKnownFileType" = "sourcecode.swift";
@@ -113,6 +95,16 @@ A47847D1CE00000000000002 = { "isa" = "PBXBuildFile"; "fileRef" = A47847D1CE00000
 			"isa" = "PBXBuildFile";
 			"fileRef" = A25803CABA4AFEDD00F70343;
 		};
+		9BFEBC19D71320776DB3459F = {
+			"isa" = "PBXFileReference";
+			"lastKnownFileType" = "sourcecode.swift";
+			"path" = "Game/MeadowBattleDiceView.swift";
+			"sourceTree" = "<group>";
+		};
+		3514C4E7630B2BB4D76BC7C5 = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = 9BFEBC19D71320776DB3459F;
+		};
 		FAB1D591E0D5250C716F5F4F = {
 			"isa" = "PBXFileReference";
 			"lastKnownFileType" = "sourcecode.swift";
@@ -202,6 +194,46 @@ A47847D1CE00000000000002 = { "isa" = "PBXBuildFile"; "fileRef" = A47847D1CE00000
 		2A6A97E3A2291053F11B3878 = {
 			"isa" = "PBXBuildFile";
 			"fileRef" = 8DCCE6164BBE625A6E8C5618;
+		};
+		4BB1FD579E9ADDC405B2D06C = {
+			"isa" = "PBXFileReference";
+			"lastKnownFileType" = "sourcecode.swift";
+			"path" = "Game/MeadowPartyBattleView.swift";
+			"sourceTree" = "<group>";
+		};
+		45787C641C39C32C8DE375A6 = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = 4BB1FD579E9ADDC405B2D06C;
+		};
+		29F673767AB942CBB21A29D1 = {
+			"isa" = "PBXFileReference";
+			"lastKnownFileType" = "sourcecode.swift";
+			"path" = "Game/MeadowPartyStageView.swift";
+			"sourceTree" = "<group>";
+		};
+		B65ACD96EC063E03F093EAA1 = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = 29F673767AB942CBB21A29D1;
+		};
+		3244CE3E91A701088769AF8E = {
+			"isa" = "PBXFileReference";
+			"lastKnownFileType" = "sourcecode.metal";
+			"path" = "Game/MeadowPostProcess.metal";
+			"sourceTree" = "<group>";
+		};
+		49FAD9A3D3D8D8DCF78F50C1 = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = 3244CE3E91A701088769AF8E;
+		};
+		E1ABF3F77A63A106184643B3 = {
+			"isa" = "PBXFileReference";
+			"lastKnownFileType" = "sourcecode.swift";
+			"path" = "Game/MeadowPostProcess.swift";
+			"sourceTree" = "<group>";
+		};
+		5DC5D0E9BAE9190C0B437D0E = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = E1ABF3F77A63A106184643B3;
 		};
 		97003780C51256BE75EFB134 = {
 			"isa" = "PBXFileReference";
@@ -333,6 +365,36 @@ A47847D1CE00000000000002 = { "isa" = "PBXBuildFile"; "fileRef" = A47847D1CE00000
 			"isa" = "PBXBuildFile";
 			"fileRef" = 3FA97B42366A42314CC7F06C;
 		};
+		131CB9F8DEF36B40624CA9B7 = {
+			"isa" = "PBXFileReference";
+			"lastKnownFileType" = "sourcecode.swift";
+			"path" = "UI/MeadowEncounterPreviewView.swift";
+			"sourceTree" = "<group>";
+		};
+		93401CD90634474F47F5D799 = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = 131CB9F8DEF36B40624CA9B7;
+		};
+		C77BE7F3F23ED7244A242AF9 = {
+			"isa" = "PBXFileReference";
+			"lastKnownFileType" = "sourcecode.swift";
+			"path" = "UI/MeadowInventoryViewController.swift";
+			"sourceTree" = "<group>";
+		};
+		19C1E40824133703557273B6 = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = C77BE7F3F23ED7244A242AF9;
+		};
+		969D18DDBF5591361667122A = {
+			"isa" = "PBXFileReference";
+			"lastKnownFileType" = "sourcecode.swift";
+			"path" = "UI/MeadowMapSettingsViewController.swift";
+			"sourceTree" = "<group>";
+		};
+		A9AF61DE4D9B2B8C18510DFB = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = 969D18DDBF5591361667122A;
+		};
 		3010D05254CDB3E5CA6C1B15 = {
 			"isa" = "PBXFileReference";
 			"lastKnownFileType" = "sourcecode.swift";
@@ -405,13 +467,6 @@ A47847D1CE00000000000002 = { "isa" = "PBXBuildFile"; "fileRef" = A47847D1CE00000
 			"path" = "Sources";
 			"sourceTree" = "<group>";
 			"children" = (
-AB8600000000000000000001,
-AB9F00000000000000000001,
-C26C692E47A2909C63823E67,
-				A47847D1CE00000000000001,
-1874E8D5B0102E34718206F7,
-				F961EA11DCA10F5C7F4CFA41,
-
 				12BE6F43C250EA1C0ABFBF32,
 				F1DA447D6A7A060E6C4C4E80,
 				CFD9363EC2CA8229D023C432,
@@ -421,6 +476,7 @@ C26C692E47A2909C63823E67,
 				A05AAE886C1A644A2AF1E17A,
 				99D30FA4C024C21330B21291,
 				A25803CABA4AFEDD00F70343,
+				9BFEBC19D71320776DB3459F,
 				FAB1D591E0D5250C716F5F4F,
 				7E6967D24C9A10A40DC007E3,
 				8EFD7CF8F563E8A8463AC361,
@@ -430,6 +486,10 @@ C26C692E47A2909C63823E67,
 				8C885855554D55514A170921,
 				66DEAFD22FF432D6B57BB5F0,
 				8DCCE6164BBE625A6E8C5618,
+				4BB1FD579E9ADDC405B2D06C,
+				29F673767AB942CBB21A29D1,
+				3244CE3E91A701088769AF8E,
+				E1ABF3F77A63A106184643B3,
 				97003780C51256BE75EFB134,
 				F39DBACF2497FB5A75EB6EF7,
 				8C7845360427CB66876E55FD,
@@ -443,6 +503,9 @@ C26C692E47A2909C63823E67,
 				FC7639FDB953C3A752437661,
 				C60F22B6DBFFBBF82C4AFECF,
 				3FA97B42366A42314CC7F06C,
+				131CB9F8DEF36B40624CA9B7,
+				C77BE7F3F23ED7244A242AF9,
+				969D18DDBF5591361667122A,
 				3010D05254CDB3E5CA6C1B15,
 				3685E330EC5277A9DD5661C6,
 				59BD0A3FF43B32849B319E64,
@@ -509,8 +572,8 @@ C26C692E47A2909C63823E67,
 				"TARGETED_DEVICE_FAMILY" = "1,2";
 				"SUPPORTED_PLATFORMS" = "iphoneos iphonesimulator";
 				"CODE_SIGN_STYLE" = "Automatic";
-				"MARKETING_VERSION" = "1.6.62";
-				"CURRENT_PROJECT_VERSION" = "89";
+				"MARKETING_VERSION" = "1.6.12";
+				"CURRENT_PROJECT_VERSION" = "38";
 				"ASSETCATALOG_COMPILER_APPICON_NAME" = "AppIcon";
 				"LD_RUNPATH_SEARCH_PATHS" = (
 					"$(inherited)",
@@ -536,8 +599,8 @@ C26C692E47A2909C63823E67,
 				"TARGETED_DEVICE_FAMILY" = "1,2";
 				"SUPPORTED_PLATFORMS" = "iphoneos iphonesimulator";
 				"CODE_SIGN_STYLE" = "Automatic";
-				"MARKETING_VERSION" = "1.6.62";
-				"CURRENT_PROJECT_VERSION" = "89";
+				"MARKETING_VERSION" = "1.6.12";
+				"CURRENT_PROJECT_VERSION" = "38";
 				"ASSETCATALOG_COMPILER_APPICON_NAME" = "AppIcon";
 				"LD_RUNPATH_SEARCH_PATHS" = (
 					"$(inherited)",
@@ -562,13 +625,6 @@ C26C692E47A2909C63823E67,
 			"isa" = "PBXSourcesBuildPhase";
 			"buildActionMask" = 2147483647;
 			"files" = (
-AB8600000000000000000002,
-AB9F00000000000000000002,
-E231858EBB758E69C5FBB40B,
-				A47847D1CE00000000000002,
-90100A4191C8B72CC9236E3E,
-				24CBEABFE4CB02099C3CDE6C,
-
 				A9B47589F1C47027677602E0,
 				A0A1CFB1B359C88FE613E3FB,
 				7870D9C736172F8A9F534C7E,
@@ -578,6 +634,7 @@ E231858EBB758E69C5FBB40B,
 				EAE0075545ABB42C40815692,
 				9230100C79CFE05C6D40D51A,
 				818B9B29404202FA9BCBFA3C,
+				3514C4E7630B2BB4D76BC7C5,
 				F92ECF9C4FBCAFD3609A7669,
 				C2AD5CEC7C96E46813F4C71B,
 				A62920F6DCC8E1607595BD95,
@@ -587,6 +644,10 @@ E231858EBB758E69C5FBB40B,
 				A41D7E7DC7582CFD98977811,
 				6F13D5561D7427A98E0DED30,
 				2A6A97E3A2291053F11B3878,
+				45787C641C39C32C8DE375A6,
+				B65ACD96EC063E03F093EAA1,
+				49FAD9A3D3D8D8DCF78F50C1,
+				5DC5D0E9BAE9190C0B437D0E,
 				1F92EB805BEE2323B04135B2,
 				FF2F198554EEA584CE78CC25,
 				E34862DA991D98F5498CFE87,
@@ -600,6 +661,9 @@ E231858EBB758E69C5FBB40B,
 				0018ED367738F2E5C55380DD,
 				4420166AA53DF322630DA815,
 				4EE4D3643C508069615BF9B1,
+				93401CD90634474F47F5D799,
+				19C1E40824133703557273B6,
+				A9AF61DE4D9B2B8C18510DFB,
 				3CECB03B99CDC07317983836,
 			);
 			"runOnlyForDeploymentPostprocessing" = 0;
@@ -608,8 +672,6 @@ E231858EBB758E69C5FBB40B,
 			"isa" = "PBXFrameworksBuildPhase";
 			"buildActionMask" = 2147483647;
 			"files" = (
-				AB9F00000000000000000004,
-258C917B4E3F4818F2BAE32B,
 			);
 			"runOnlyForDeploymentPostprocessing" = 0;
 		};
@@ -635,8 +697,6 @@ E231858EBB758E69C5FBB40B,
 				4F1ECE25FD5A0DA7FF1C8370,
 				57FBC501DAC3F1F8F0C155F6,
 			);
-			"packageProductDependencies" = ( AB9F00000000000000000003,
-7394C890829D44FA5A47A620, );
 			"buildRules" = (
 			);
 			"dependencies" = (
@@ -933,7 +993,6 @@ E231858EBB758E69C5FBB40B,
 			"productRefGroup" = 615B463D1028E4E24B674CF7;
 			"projectDirPath" = "";
 			"projectRoot" = "";
-			"packageReferences" = ( EA1ED59499E1DA36E4C388CF, );
 			"targets" = (
 				F75109BEB4DD8800DA6B45F8,
 				48021BA534050206D31D8AAD,
