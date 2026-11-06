@@ -27,3 +27,10 @@
 - `modular-locomotion-regression.swift` 新增脚底时序检查：每行合计 24、短步幅方向保持均匀、其余方向打滑下降、
   姿势顺序不跳不倒、64 个“任意相位停步仍经指定出场姿势”。本机无 Swift 工具链，已用 Python 等价镜像跑通同样 64 例；Swift 版由 CI 运行。
 - 正常速度对照 GIF：`Art/Review/P1/gait-timing-v1/`（离线合成）。未改：图片、方向绑定、锚点、起停帧时长、步频、移动速度。
+
+## 3 · 修复：工程文件被生成脚本覆盖（2026-11-06）
+
+前两次提交用 `scripts/generate-project.py` 重新生成了 `project.pbxproj`，把 Codex 手工加入的本地 Swift 包引用
+（`Vendor/ClassroomGameCore` 的 ClassroomGameCore / MeadowWorldSupport / MeadowBattleSupport）、5 个 UI/战斗源文件和版本号 1.6.62/89 一并抹掉，
+导致 CI 报 `no such module 'ClassroomGameCore'`。已恢复为基础分支的工程文件，只手工追加本分支 3 个新文件（HeroBreathing.swift、MeadowPostProcess.swift/.metal），
+ID 与生成脚本算法一致。**本分支此后不再运行 generate-project.py**，新增文件一律手工追加。
