@@ -1,0 +1,65 @@
+name: Visual Refactor IPA
+# Device-only build for the visual-refactor branch. Never runs a simulator.
+# Builds only when the pushed commit message contains "[ipa]", then publishes
+# the unsigned IPA as a pre-release so it has a direct .ipa link for SideStore.
+on:
+  push:
+    branches: [claude/meadowjourney-visual-refactor-kh0zpr]
+permissions:
+  contents: write
+concurrency:
+  group: visual-refactor-ipa-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  ipa:
+    if: ${{ contains(github.event.head_commit.message, '[ipa]') }}
+    runs-on: macos-15-intel
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          sparse-checkout: |
+            Sources
+            Vendor
+            scripts
+            Tests
+            UITests
+            MeadowJourney.xcodeproj
+      - name: Project bindings and walk regression (pure Swift, no simulator)
+        run: |
+          set -euo pipefail
+          mkdir -p build
+          python3 scripts/validate-project.py
+          bash scripts/check-modular-locomotion.sh build/modular-locomotion-trace.json
+      - name: Archive device Release without signing
+        run: |
+          set -euo pipefail
+          short="${GITHUB_SHA::8}"
+          xcodebuild archive -project MeadowJourney.xcodeproj -scheme MeadowJourney \
+            -configuration Release -destination 'generic/platform=iOS' \
+            -archivePath build/MeadowJourney.xcarchive -derivedDataPath build/Derived \
+            CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO 2>&1 | tee build/archive.log | tail -40
+          bash scripts/package-ipa.sh build/MeadowJourney.xcarchive "build/MeadowJourney-visual-$short.ipa"
+          shasum -a 256 "build/MeadowJourney-visual-$short.ipa" | tee build/ipa.sha256
+      - name: Publish pre-release with a direct IPA link
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          short="${GITHUB_SHA::8}"
+          tag="visual-$short"
+          notes="视觉重构分支测试包（未签名，供 SideStore 侧载）。提交 ${GITHUB_SHA}；只做设备 Release 编译与纯逻辑回归，未运行模拟器或实机。SHA256: $(cut -d' ' -f1 build/ipa.sha256)"
+          gh release delete "$tag" --repo "$GITHUB_REPOSITORY" --yes --cleanup-tag 2>/dev/null || true
+          gh release create "$tag" "build/MeadowJourney-visual-$short.ipa" --repo "$GITHUB_REPOSITORY" \
+            --target "$GITHUB_SHA" --prerelease --title "视觉重构测试包 $short" --notes "$notes"
+          echo "IPA: https://github.com/$GITHUB_REPOSITORY/releases/download/$tag/MeadowJourney-visual-$short.ipa"
+      - uses: actions/upload-artifact@v7
+        if: always()
+        with:
+          name: visual-refactor-ipa-logs-${{ github.run_id }}
+          path: |
+            build/archive.log
+            build/ipa.sha256
+            build/modular-locomotion-trace.json
+          if-no-files-found: warn
+          retention-days: 14

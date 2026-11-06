@@ -42,3 +42,9 @@ ID 与生成脚本算法一致。**本分支此后不再运行 generate-project.
   拆分后用原头重叠与原图集最大差 1 个色阶、997 像素；3,120 格手均不压头；头部件与装备无关。记录见 `Art/Integration/P1-head-split-v1/`。
 - 新增 `P1AppearanceCompositor.swift`（CoreGraphics 叠图，格式同原图集）与 `Tests/P1AppearanceCompositorTests.swift`（全 60 张对比、换头只改头部像素）。
 - 本步不接入游戏显示；工程文件手工追加 2 个源文件，未运行生成脚本。
+
+## 5 · 交付流程（用户 2026-11-06 决定）
+
+视觉检查由用户在实机完成；本分支不在云端运行模拟器。用户选择公开预发布：新增 `.github/workflows/visual-refactor-ipa.yml`，
+只在本分支、且提交信息含 `[ipa]` 时，用 macos-15-intel 做工程校验与行走回归 + 设备 Release 无签名归档，
+并以 GitHub 预发布（tag `visual-<短提交号>`）发布 IPA 直链供 SideStore 侧载。PR 自动触发的模拟器流程推送后手动取消。之后流程与提交说明用中文。
