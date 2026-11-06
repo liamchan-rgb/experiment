@@ -4,8 +4,9 @@ direction's idle pose with a simple limb rig.
 
 The authored diagonal walks barely moved the legs. Every walk pose is now the
 idle pose-map layer of each asset, deformed per slot group:
-- legs (body leg, pants, boot): hip follows the body bob, the foot follows a
-  planted/swing trajectory along the facing, with a knee bend while swinging;
+- legs (body leg, pants, boot): two segments (hip-knee, knee-ankle); the hip
+  follows the body bob, the foot a planted/swing path along the facing, and the
+  knee flexes on loading, drives forward at push-off and lifts high when passing;
 - arms (arm, sleeve, hand): swing opposite to the legs about the shoulder;
 - everything else (torso, outfit, head, weapon): rigid vertical bob.
 Head-local art (face, hair) follows the bob through motion.json headToCanvas.
@@ -46,27 +47,36 @@ ARMS = {
 }
 # Pose p = walk frame p+1. Phase origin as authored: right contact at 0, right support 0..3, left 4..7.
 STRIDE = 11          # px of screen x from mid-stance to contact
-LIFT = [0, 0, 0, 0, 0, 3, 5, 2]   # swing-foot lift by pose since its toe-off (pose 4 for the right foot)
-KNEE = 3             # forward knee bend at mid-swing
-BOB = [1, 0, -1, 0]  # body down at contact, up at passing
-ARM = 4              # hand swing, px of screen x
+# Per pose since the right foot's contact (q = 0..7): stride factor, foot lift,
+# knee forward and knee lift (px). Two segments (hip-knee, knee-ankle) give a
+# real bend: loading flex after contact, heel-off push, high passing knee.
+LEG = [
+    (1.0, 0, 0, 0),      # contact: leg straight, foot ahead
+    (0.5, 0, 3, 1),      # loading: knee flexes under the weight
+    (0.0, 0, 1, 0),      # mid-stance
+    (-0.5, 0, 1, 0),     # terminal stance
+    (-1.0, 3, 4, 2),     # push-off: heel up, knee drives forward
+    (-0.4, 8, 7, 6),     # early swing: foot tucks up behind the knee
+    (0.25, 9, 8, 7),     # passing: knee high and forward
+    (0.8, 4, 5, 3),      # late swing: shin reaches out for contact
+]
+BOB = [1, 2, 0, -1]  # body: settles after contact, rises through passing
+ARM = 5              # hand swing, px of screen x
 
 
-def foot(q):
-    """(stride factor -1..1, lift, knee) of the right foot at pose q."""
-    q %= 8
-    if q <= 4:
-        return 1 - q / 2, 0, 0
-    return -1 + (q - 4) / 2, LIFT[q], KNEE * math.sin(math.pi * (q - 4) / 4)
-
-
-def limb_field(top, bottom, d_top, d_bottom, bump=(0, 0)):
-    span = max(1e-6, bottom - top)
+def limb_field(top, bottom, d_top, d_bottom, middle=None, d_middle=None):
+    """Displacement by source row: rows above `top` move by d_top, below `bottom`
+    by d_bottom, piecewise linear in between through an optional joint row."""
+    points = [(top, d_top)] + ([(middle, d_middle)] if middle is not None else []) + [(bottom, d_bottom)]
 
     def field(y):
-        t = min(1, max(0, (y - top) / span))
-        return (d_top[0] + t * (d_bottom[0] - d_top[0]) + bump[0] * math.sin(math.pi * t),
-                d_top[1] + t * (d_bottom[1] - d_top[1]) + bump[1] * math.sin(math.pi * t))
+        if y <= points[0][0]:
+            return points[0][1]
+        for (y0, a), (y1, b) in zip(points, points[1:]):
+            if y <= y1:
+                t = (y - y0) / max(1e-6, y1 - y0)
+                return a[0] + t * (b[0] - a[0]), a[1] + t * (b[1] - a[1])
+        return points[-1][1]
     return field
 
 
@@ -102,10 +112,12 @@ def pose_fields(direction, joints, p):
     fx, fy = FORWARD[direction]
     bob = (0, BOB[p % 4])
     fields = {}
-    for side, (slots, hip, _, ankle) in GROUPS.items():
-        s, lift, knee = foot(p if side == 'R' else p + 4)
+    for side, (slots, hip, knee, ankle) in GROUPS.items():
+        s, lift, knee_forward, knee_lift = LEG[(p if side == 'R' else p + 4) % 8]
         d_foot = (fx * STRIDE * s, fy * STRIDE * s - lift)
-        f = limb_field(joints[hip][1], joints[ankle][1], bob, d_foot, (fx * knee, fy * knee))
+        # Knee: between hip and foot, pushed along the facing and up.
+        d_knee = ((bob[0] + d_foot[0]) / 2 + fx * knee_forward, (bob[1] + d_foot[1]) / 2 + fy * knee_forward - knee_lift)
+        f = limb_field(joints[hip][1], joints[ankle][1], bob, d_foot, joints[knee][1], d_knee)
         for slot in slots:
             fields[slot] = f
     for side, (slots, shoulder, _, wrist) in ARMS.items():

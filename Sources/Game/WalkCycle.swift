@@ -103,7 +103,7 @@ struct GaitTiming: Equatable {
             let even = cycle / CGFloat(poseCount)
             let uniformSlip = planted.map { abs($0 - even) }.reduce(0, +)
             let lockedSlip = zip(planted, row).map { abs($0 - $1) }.reduce(0, +)
-            return lockedSlip < uniformSlip ? row : Array(repeating: even, count: poseCount)
+            return lockedSlip < uniformSlip - 0.01 ? row : Array(repeating: even, count: poseCount)
         }
         return GaitTiming(windows: rows)
     }
