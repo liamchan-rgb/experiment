@@ -906,9 +906,9 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
     private func editReward(node:MapNode) {
         guard let campaign else{return}
         let reward=node.reward ?? NodeReward()
-        let alert=UIAlertController(title:"编辑补给内容",message:node.rewardCompleted ? "此地点已领取。修改内容会保留已领取状态，不会再次发奖。":"设置金币、积分和物品数量。",preferredStyle:.alert)
+        let alert=UIAlertController(title:"编辑补给内容",message:node.rewardCompleted ? "此地点已领取。修改内容会保留已领取状态，不会再次发奖。":"设置每位领取者获得的金币、积分和物品数量。",preferredStyle:.alert)
         let values=[String(reward.coins),String(reward.score),String(reward.items["smallPotion"] ?? 0),String(reward.items["largePotion"] ?? 0),String(reward.items["shieldPotion"] ?? 0),String(reward.items["revivalStone"] ?? 0)]
-        let labels=["金币（每人）","积分（每人）","小型药水","大型药水","护盾药水","复活石"]
+        let labels=["每人金币","每人积分","小型药水","大型药水","护盾药水","复活石"]
         for (i,label) in labels.enumerated() {
             alert.addTextField { field in
                 field.placeholder=label;field.text=values[i];field.keyboardType = .numberPad;field.accessibilityLabel=label
@@ -921,7 +921,7 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
             guard let fields=alert?.textFields,fields.count==6 else{return}
             let parsed=fields.compactMap{Int($0.text ?? "")}
             guard parsed.count==6,parsed.allSatisfy({$0>=0}),parsed[0]<=100_000,parsed[1]<=100_000,parsed.dropFirst(2).allSatisfy({$0<=1000}) else {
-                self?.showCampaignMessage("请输入非负整数；药水最多1000，金币和积分最多100000。");return
+                self?.showCampaignMessage("请输入非负整数；物品最多1000，金币和积分最多100000。");return
             }
             let v=parsed;var items=reward.items
             for (key,count) in [("smallPotion",v[2]),("largePotion",v[3]),("shieldPotion",v[4]),("revivalStone",v[5])] {
