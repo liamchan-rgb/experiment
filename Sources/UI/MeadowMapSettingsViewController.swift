@@ -320,6 +320,7 @@ final class MeadowCampaignResultsViewController:UIViewController {
             text(player.name,23)
             let health=MeadowBattleResourceBar();health.show("生命",value:player.health,maximum:attributes.maximumHealth,color:.systemGreen);health.heightAnchor.constraint(equalToConstant:44).isActive=true;stack.addArrangedSubview(health)
             text("持有金币 \(player.coins)  ·  积分 \(player.score)")
+            text("结束时个人行动 \(player.ap) · 护盾 \(player.shield) · "+(player.isAlive ? "存活":"倒地"),17)
             let equipment=player.equipment.itemIDs.map{(try? catalog.item($0).name) ?? $0}.joined(separator:"、")
             text("装备："+(equipment.isEmpty ? "未装备":equipment),17)
             let items=player.inventory.keys.sorted().map{((try? catalog.item($0).name) ?? $0)+" ×\(player.inventory[$0]!)"}.joined(separator:"、")

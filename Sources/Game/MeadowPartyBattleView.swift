@@ -160,28 +160,41 @@ final class MeadowPartyBattleView:UIView {
             guard i<actions.count else { continue }
             let a=actions[i];let result=model.preview(a,target:target(a))
             let allowed=active && !busy && result.allowed
-            b.update(title:a.title+" · \(model.cost(a)) AP",detail:detail(a,model:model,actor:displayActor),enabled:allowed)
+            b.update(title:a.title+" · \(model.cost(a)) AP",detail:(!busy && !result.allowed) ? result.message:detail(a,model:model,actor:displayActor),enabled:allowed)
             b.previewStrength=0;b.previewColor = .clear
             b.button.removeTarget(nil,action:nil,for:.touchUpInside)
             b.button.removeAction(identifiedBy:UIAction.Identifier("party-skill"),for:.touchUpInside)
             b.button.addAction(UIAction(identifier:UIAction.Identifier("party-skill"),handler:{ [weak self] _ in self?.perform(a) }),for:.touchUpInside)
             b.onFocus={ [weak self] focused in
                 guard let self else { return }
-                if focused { self.focusedAction=a;self.stage.preview(a,target:self.target(a)) }
+                if focused { self.focusedAction=a;self.stage.preview(a,target:self.target(a));self.hint.text=model.actionReadout(a,ally:self.friend,enemy:self.foe).text.replacingOccurrences(of:"\n",with:" · ") }
                 else if self.focusedAction==a { self.focusedAction=nil;self.stage.preview(nil,target:self.target(a)) }
             }
-            b.button.accessibilityHint=result.allowed ? "执行技能":result.message
+            b.button.accessibilityHint=model.actionReadout(a,ally:friend,enemy:foe).text
         }
         end.isEnabled=active && !busy && current?.hasPrefix("p")==true && !model.terminal
         var menu:[UIAction]=[]
         for a in [PartyAction.smallPotion,.largePotion,.shieldPotion,.revivalStone] {
             let count=current.flatMap { state.units[$0]?.inventory[a.rawValue] } ?? 0
-            let allowed=model.preview(a,target:friend).allowed
-            menu.append(UIAction(title:"\(a.title) ×\(count) · \(a == .revivalStone ? 2:1) AP",image:UIImage(named:"MeadowParty"+a.rawValue.prefix(1).uppercased()+a.rawValue.dropFirst()),attributes:allowed && !busy ? []:.disabled,handler:{ [weak self] _ in self?.perform(a) }))
+            let readout=model.actionReadout(a,ally:friend,enemy:foe)
+            let allowed=readout.allowed
+            menu.append(UIAction(title:"\(a.title) ×\(count) · \(a == .revivalStone ? 2:1) AP"+(allowed ? "":" · "+readout.availability),image:UIImage(named:"MeadowParty"+a.rawValue.prefix(1).uppercased()+a.rawValue.dropFirst()),attributes:allowed && !busy ? []:.disabled,handler:{ [weak self] _ in self?.perform(a) }))
         }
-        items.menu=UIMenu(title:"对 \(friend.uppercased()) 使用",children:menu)
+        let inventoryInfo=UIAction(title:"查看双方个人资源",image:UIImage(systemName:"list.bullet.rectangle")){[weak self] _ in
+            guard let self else{return};self.showResourceSummary(model)
+        }
+        menu.append(inventoryInfo)
+        items.menu=UIMenu(title:(current.flatMap{state.units[$0]?.name} ?? "等待行动")+" · 对 \(friend.uppercased()) 使用",children:menu)
         items.isEnabled=active && !busy && current?.hasPrefix("p")==true && !model.terminal
         setNeedsLayout()
+    }
+    private func showResourceSummary(_ model:PartyEncounter) {
+        var responder:UIResponder?=self
+        while let node=responder, !(node is UIViewController) {responder=node.next}
+        guard let controller=responder as? UIViewController,controller.presentedViewController==nil else{return}
+        let actions=model.playerActions().map{model.actionReadout($0,ally:friend,enemy:foe).text}.joined(separator:"\n\n")
+        let alert=UIAlertController(title:"个人资源与当前技能",message:"查看时快照，回合计时继续。\n\n"+model.partyResourceSummary+"\n\n"+actions,preferredStyle:.alert)
+        alert.addAction(UIAlertAction(title:"关闭",style:.cancel));controller.present(alert,animated:true)
     }
     private func detail(_ a:PartyAction,model:PartyEncounter,actor:String)->String {
         guard a != .attack else {

@@ -997,7 +997,7 @@ private func refreshCampaignStatus(allowBattleOpen:Bool=true) {
     private func showCampaignEnd(){
         guard let campaign else{return}
         if campaign.isCompleted{showCampaignResults();return}
-        let menu=UIAlertController(title:"路线与目标",message:campaign.completionProgress+"\n\n"+campaign.resourceGuidance+"\n\n路线按当前真实位置计算，不预支途中补给。地点事件由你主动触发。",preferredStyle:.actionSheet)
+        let menu=UIAlertController(title:"路线与目标",message:campaign.closingReadout+"\n\n"+campaign.resourceGuidance+"\n\n路线按当前真实位置计算，不预支途中补给。地点事件由你主动触发。",preferredStyle:.actionSheet)
         for option in campaign.routeOptions(actor:scene.selectedCampaignPlayerID) {
             let prefix=option.kind=="supply" ? "最近补给 · ":option.kind=="encounter" ? "最近待战 · ":"返回"
             menu.addAction(UIAlertAction(title:prefix+option.title,style:.default){[weak self] _ in
@@ -1020,9 +1020,9 @@ private func refreshCampaignStatus(allowBattleOpen:Bool=true) {
     private func confirmCampaignEnd(){
         guard let campaign else{return}
         guard campaign.canComplete || campaign.canCompleteDefeat else{
-            let alert=UIAlertController(title:"行程目标",message:campaign.completionProgress+"\n奖励节点可自行选择是否领取。",preferredStyle:.alert);alert.addAction(UIAlertAction(title:"继续行程",style:.default));present(alert,animated:true);return
+            let alert=UIAlertController(title:"行程目标",message:campaign.closingReadout,preferredStyle:.alert);alert.addAction(UIAlertAction(title:"继续行程",style:.default));present(alert,animated:true);return
         }
-        let alert=UIAlertController(title:campaign.canCompleteDefeat ? "结束本次行程？":"完成行程并结算？",message:"尚有 \(campaign.engine.state.map.nodes.filter{$0.kind == .reward && !$0.rewardCompleted}.count) 处补给未领取。结束后地图只供查看，结果按实际所得记录；新行程请返回设置。",preferredStyle:.alert)
+        let alert=UIAlertController(title:campaign.canCompleteDefeat ? "结束本次行程？":"完成行程并结算？",message:campaign.closingReadout,preferredStyle:.alert)
         alert.addAction(UIAlertAction(title:"取消",style:.cancel));alert.addAction(UIAlertAction(title:"结束并保存",style:.default){[weak self] _ in
             guard let self else{return}
             do{try campaign.completeCampaign(camera:self.scene.campaignCamera);self.cancelNodeSelection();self.refreshCampaignStatus(allowBattleOpen:false);self.showCampaignResults()}
