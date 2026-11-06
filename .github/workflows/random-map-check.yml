@@ -10,7 +10,7 @@ on:
         description: Mac build pool (archive only; never run the app)
         type: choice
         default: macos-15-intel
-        options: [macos-15-intel, macos-15]
+        options: [macos-15-intel, macos-15, macos-26]
   push:
     branches: [fix/build33-face-grounding-camera]
 permissions:
