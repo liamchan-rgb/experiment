@@ -327,10 +327,9 @@ final class MeadowCampaignInventoryViewController:UIViewController {
             if actor != "p1" {text("P2暂不支持更换装备。可切换到P1换装，或在此使用P2补给。")}
             else if !visualEquipment.contains(id){text("该装备的挂载外观尚未接入。")}
             else{do{
-                let candidate=try session.candidateEquipment(actor:actor,slot:slot,item:equipped ? nil:id)
-                let before=try GameRules.attributes(unit,catalog:session.engine.catalog),after=try GameRules.attributes(candidate,catalog:session.engine.catalog)
-                text("生命 \(unit.health)/\(before.maximumHealth) → \(candidate.health)/\(after.maximumHealth)\n额外伤害 ＋\(before.damage) → ＋\(after.damage)\n基础行动 \(before.baseAP) → \(after.baseAP)\n当前行动 \(unit.ap) → \(candidate.ap)")
-                text("换装不回复生命，也不补充行动点。",15);primary.isEnabled=true
+                let comparison=try session.equipmentComparison(actor:actor,slot:slot,item:equipped ? nil:id)
+                text(comparison.summary)
+                text("换装不回血、不补行动或移动。地图移动上限按全队最大行动上限平均计算；基础行动加成不提高移动上限。",15);primary.isEnabled=true
             }catch{text(error.localizedDescription)}}
         }else{
             let targets=UISegmentedControl(items:["对 P1 使用","对 P2 使用"]);targets.selectedSegmentIndex=target=="p2" ? 1:0

@@ -245,6 +245,7 @@ public final class MeadowCampaignSession {
                 guard archive.state.units==old.state.units,archive.state.map==old.state.map,archive.history==old.history,archive.state.battle==nil,archive.state.phase == .exploration else{throw GameError("已结算行程只供查看。")}
             }
             var next=writer.snapshot;next.archive=archive
+            if next.completion==nil,let remaining=next.movement?.remaining{next.movement?.remaining=min(remaining,MeadowMovementRules.capacity(archive))}
             if writer.closingAsDefeat{next.travel=nil;next.completion=MeadowCampaignSession.makeCompletion(archive:archive,save:next,outcome:"defeat")}
             try writer.write(next)
         })

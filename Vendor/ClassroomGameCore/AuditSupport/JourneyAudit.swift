@@ -27,9 +27,9 @@ public struct MeadowAuditedBattle:Codable,Equatable {
 /// rolls. No scripted dice, stat edits, free movement or synthetic loot.
 /// Recovery uses real items and the same explicit AP-rest operation as the UI.
 public enum MeadowJourneyAudit {
-    public static func run(size:Int,seed:UInt64,role:String,allowManualRest:Bool=true,supplyDetour:Bool=false)throws->MeadowJourneyAuditReport {
+    public static func run(size:Int,seed:UInt64,role:String,allowManualRest:Bool=true,supplyDetour:Bool=false,loadout:MeadowAuditLoadout?=nil)throws->MeadowJourneyAuditReport {
         let layout=try MeadowMapGenerator.generate(.suggested(total:size,seed:seed))
-        var s=try MeadowCampaignSession.new(layout:layout,playerClassID:role)
+        var s=try MeadowCampaignSession.new(layout:layout,playerClassID:role,loadouts:try loadout?.units(role:role))
         let start=s.engine.state.players[0].nodeID,starting=s.partyCoins
         var visited:Set<Int>=[start],collected=Set<Int>(),fought=Set<String>(),actionsUsed=[String:Int]()
         var battles=0,cleared=0,actions=0,enemyActions=0,resumes=0,restarts=0,blockedRecovery=0

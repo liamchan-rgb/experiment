@@ -8,7 +8,19 @@ var c=MeadowMapConfiguration.suggested(total:args.count>1 ? Int(args[1]) ?? 10 :
 if args.count>3 { c.extraRoads=Int(args[3]) ?? 1 }
 let result=try MeadowMapGenerator.generate(c)
 let encoder=JSONEncoder(); encoder.outputFormatting=[.sortedKeys,.prettyPrinted]
-if args.contains("--guidance") {
+if args.contains("--equipment") {
+    struct Report:Codable {let role:String,item:String,comparison:MeadowEquipmentComparison}
+    var reports=[Report]()
+    for role in ["adventurer","spellblade","dragonKnight"] {
+        let initial=try MeadowCampaignSession.new(layout:result,playerClassID:role)
+        var save=initial.snapshot
+        let equipment=initial.engine.catalog.items.filter{$0.slot != nil}.sorted{$0.id<$1.id}
+        for item in equipment{save.archive.state.units["p1"]!.inventory[item.id]=1}
+        let session=try MeadowCampaignSession(save:save)
+        for item in equipment {reports.append(Report(role:role,item:item.id,comparison:try session.equipmentComparison(actor:"p1",slot:item.slot!,item:item.id)))}
+    }
+    FileHandle.standardOutput.write(try encoder.encode(reports))
+} else if args.contains("--guidance") {
     struct Report:Codable {
         let options:[MeadowRouteOption],resources:String
         let initialRoute:MeadowRouteReadout?,advancedRoute:MeadowRouteReadout?,restoredRoute:MeadowRouteReadout?
