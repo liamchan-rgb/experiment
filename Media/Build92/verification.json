@@ -1,0 +1,62 @@
+{
+  "sourceCommit": "17b0b0363199a37fa0ab8cccdb8d9545a02e6c1b",
+  "runID": 42232775576,
+  "artifactID": 13512080897,
+  "version": "1.6.65",
+  "build": 92,
+  "runAttempt": 1,
+  "artifactSHA256": "53679e57f6c524280e00027630c4a9583ee1859ca9e5bfea7ca24f682eac0a02",
+  "ipaBytes": 64723909,
+  "ipaSHA256": "9016ae0177b5bdf3bdf876b1658cc24391a93c67f17910d633d370fc9b62c74b",
+  "tests": 275,
+  "checks": {
+    "swiftTests": 275,
+    "fourRegressionsPassed": true,
+    "deviceReleaseArchivePassed": true,
+    "strictMatrixCounts": {
+      "baseline": 27,
+      "loadouts": 27,
+      "party": 24,
+      "partyPreview": 16,
+      "uniqueCasesMatched": true
+    },
+    "CRC": true,
+    "classicZIP2WithoutExtras": true,
+    "version": "1.6.65/92",
+    "buildSDK": {
+      "DTSDKName": "iphoneos18.5",
+      "DTXcode": "1640",
+      "DTXcodeBuild": "16F6",
+      "MinimumOSVersion": "15.0"
+    },
+    "arm64ExecutablePermissions": "0o100755",
+    "executableSHA256": "a991c95a091d02f9b99b19301fa036a1d6ac677b03890726787ba94a9c29bf7b",
+    "MetalLibraries": {
+      "Payload/MeadowJourney.app/default.metallib": "2f148cc76f8b8bf42eb4a798a40f8a57c77505ea382ee4422c9a1d82499999e3"
+    },
+    "compiledAssetCatalogSHA256": "9a3431ff9f173b30db1a3c4e9d6775caf35d12a19a0c89dda7c9c7b87b0fc2c8",
+    "compiledCatalogMatchesBuild91Bytes": false,
+    "12MonsterAtlasesAnd6Datasets": true,
+    "sourceResourceFilesUnchangedFromBuild91": 569,
+    "systemAssetutilParsedCatalogEntries": 288,
+    "encounters-default.json": "Native/current rules equal Build91 reference; numeric distance error <1e-8",
+    "encounters-max.json": "Native/current rules equal Build91 reference; numeric distance error <1e-8",
+    "balance-default.json": "Native/current rules equal Build91 reference; numeric distance error <1e-8",
+    "balance-max.json": "Native/current rules equal Build91 reference; numeric distance error <1e-8",
+    "guidance-default.json": "Native/current rules equal Build91 reference; numeric distance error <1e-8",
+    "guidance-max.json": "Native/current rules equal Build91 reference; numeric distance error <1e-8",
+    "equipment-default.json": "Native/current rules equal Build91 reference; numeric distance error <1e-8",
+    "equipment-max.json": "Native/current rules equal Build91 reference; numeric distance error <1e-8",
+    "journey-audit.json": "Native/current rules equal Build91 reference; numeric distance error <1e-8",
+    "loadout-smoke.json": "Native/current rules equal Build91 reference; numeric distance error <1e-8",
+    "party-matrix.json": "Native equal Linux Build92 reference; numeric distance error <1e-8",
+    "party-preview.json": "Native equal Linux Build92 reference; numeric distance error <1e-8"
+  },
+  "preservedBuild91JSON": {
+    "Payload/MeadowJourney.app/SceneMap.json": "b5d8e7c74e6038a4d6b3e266cf1c6f7184eee56cfb2c2f462b7e048ab6cd0ea5",
+    "Payload/MeadowJourney.app/ClassroomGameCore_ClassroomGameCore.bundle/initial-content.json": "aaab980fd5f3154ac813a02dc907a835ee0e0181c4149f2b7803d9594795f34a",
+    "Payload/MeadowJourney.app/hero-gait.json": "44ad26e97cfd0836074eefc70ee081f2bbb5b2003961ed1e779acbfebdaaa527"
+  },
+  "resourceBaselineSource": "87c11a02cafd7cc71dbe6b972489aea1ad04e049",
+  "appSimulatorDeviceRun": false
+}

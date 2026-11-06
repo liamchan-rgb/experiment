@@ -1,3 +1,9 @@
+## Build92 · 双人职业配置 · 1.6.65
+
+[直接下载 IPA](https://raw.githubusercontent.com/liamchan-rgb/experiment/5d321900bcd3687a5fc4b33b5c92d57515cd8b4b/Downloads/MeadowJourney-b92.ipa) · [入口与验证说明](../docs/planning/random-map-v1/build92-party-configuration.md) · [包检](../Media/Build92/verification.json)
+
+新行程P1/P2分别选四个现有职业，可重复，显示真实职业基础属性和技能。旧档沿用原职业、装备与进度；不提供行程中洗职业。修正P1游侠援护默认选自己，龙鳞护盾不再显示10/8。275测试、四回归、原27行程+27装备代表+新增24双人行程与设备Release通过，公开完整GET校验通过。沿用全部原美术，不运行App/模拟器/实机。
+
 ## Build91 · 怪物草稿编辑与续档保护 · 1.6.64
 
 [直接下载 IPA](https://raw.githubusercontent.com/liamchan-rgb/experiment/96bfac11b11fcc877dc274bea4d10eb1ee6e0fa6/Downloads/MeadowJourney-b91.ipa) · [入口与验证说明](../docs/planning/random-map-v1/build91-save-editing.md) · [包检](../Media/Build91/verification.json)

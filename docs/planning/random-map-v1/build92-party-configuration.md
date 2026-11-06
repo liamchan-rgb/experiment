@@ -1,3 +1,17 @@
+## Build92交付 · 双人职业配置（2026-11-06）
+
+新行程P1/P2独立选四个原职业，可重复，默认魔剑士+游侠。表单分别显示职业基础生命、基础/最大行动和真实技能；装备另计、职业与衣装/武器独立。选择仅刷新说明，不重生成地图、不耗RNG或写档；确认新建后分别继承营地装备/库存，重新创建各自职业属性、HP/AP与技能次数。继续旧档直接读取原GameUnit.templateID/已耗资源/操作成员/道路游标，格式1不改，无中途洗职业。P2换装外观原限制保持，不宣称完成新职业专属美术。
+
+P1游侠援护默认自己时改选另一存活队员；自用技能预览跟随真实施法者，原preview/command仍验证合法性。护盾条以目录盾值/当前值作为显示参考，龙鳞盾不再10/8，不增加机械上限；怪物仍自身目录容量。原属性/骰子/AI/掉落/地图/装备与动作特效资源保持。
+
+最终1.6.65/build92，源码17b0b0363199a37fa0ab8cccdb8d9545a02e6c1b，run 42232775576 attempt1。Linux/Mac完整275测试零失败、四组原专项、项目绑定/Swift语法和设备Release通过。新增8测试覆盖16对真实属性/技能和独立行动、非法职业零写入、跨职业装备继承与新建资源、路中存取/成员选择、援护/自用目标、同职业确认重建/一次提交与次数独立、护盾显示、非默认P2整程确定性。默认10节点种子31827全16职业对，加4/30节点种子0各4重复/正反职业对共24真实规则整程；断言实际具体集合，1041动作/286存取/136确认重建，与Linux逐字段一致（距离误差<1e−8）。原27默认+27装备代表与Build91逐字段一致，不重复177不变装备全矩阵，不是人类胜率。
+
+IPA CRC/经典ZIP2.0本地中央头无extra/arm64与执行权限/版本平台/Metal/12怪物图集及6数据资产通过。原资源569份逐文件SHA256匹配，原地图/步态/规则JSON包内字节同Build91；Assets.car编译字节不同，源资源摘要一致，系统assetutil解析实际目录；差异单独记录，不声明新美术。系统目录288条，SDK/摘要见Media/Build92/verification.json。原美术/动作全部复用，无新美术认可；新界面为滚动布局源码与约束检查，不称UIKit截图。未运行App/模拟器/实机。
+
+固定公开直接IPA完整GET200，64723909字节，SHA256 9016ae0177b5bdf3bdf876b1658cc24391a93c67f17910d633d370fc9b62c74b；[下载](https://raw.githubusercontent.com/liamchan-rgb/experiment/5d321900bcd3687a5fc4b33b5c92d57515cd8b4b/Downloads/MeadowJourney-b92.ipa)。来源/原始日志/实际结果Media/Build92，设备体验由用户验收。
+
+后两项：组队技能与资源提示联调；完整行程验收与异常收尾。
+
 ## Build92候选 · 双人职业配置（2026-11-06）
 
 长编队说明置于职业/开始/续档按钮之后，避免30节点配置将入口埋在怪物清单下；两选择器有明确P1/P2辅助功能标签。
@@ -11,3 +25,18 @@
 候选1.6.65/build92，验证中；通过原专项/完整测试、设备Release及包检后交付直接IPA。来源/日志Media/Build92。滚动UIKit表单以源码约束检查，不称设备截图。
 
 后两项：组队技能与资源提示联调；完整行程验收与异常收尾。
+
+### 复现与范围
+
+```bash
+swift test -c release --package-path Vendor/ClassroomGameCore
+swift run -c release --package-path Vendor/ClassroomGameCore MeadowCampaignReview --party-matrix --checkpoint /tmp/party-checkpoint.json > /tmp/party-matrix.json
+swift run -c release --package-path Vendor/ClassroomGameCore MeadowCampaignReview --size 4 --seed 0 --role ranger --companion-role spellblade
+swift run --package-path Vendor/ClassroomGameCore MeadowMapExport 10 31827 1 --party
+```
+
+24组不是全16职业对×全部种子/地图/装备的穷举。默认10节点31827覆盖16对；4/30节点种子0分别覆盖冒险者重复、游侠重复、魔剑士/龙骑士正反4对。原27默认与27装备代表继续保留；不再次宣称177装备全矩阵跨平台重跑。审计器使用原固定策略，不读取确认后的骰子来选动作、不修改规则资源或补出假胜利。
+
+入口：地图配置右侧向下滚动→P1职业/P2职业→生成预览→开始新行程。两职业区和开始/续档按钮在长怪物清单之前。选择时只更新说明，不清除已生成地图；继续旧档忽略当前表单选择并恢复旧职业。两位成员复用现有人物/动作/装备资源；职业不自动改变武器，P2装备仍沿用原可视化限制。
+
+后续提示联调关注实际施法者/受益对象、个人AP和技能剩余次数、个人库存及不可操作原因；随后完善小/中/大地图的结算、失败、金币不足和中断续档体验。
