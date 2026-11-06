@@ -2,6 +2,10 @@ name: Random Map Device Build
 on:
   workflow_dispatch:
     inputs:
+      audit_only:
+        description: Pure loadout verification only (never build or run the app)
+        type: boolean
+        default: false
       runner:
         description: Mac build pool (archive only; never run the app)
         type: choice
@@ -16,6 +20,7 @@ concurrency:
   cancel-in-progress: false
 jobs:
   archive:
+    if: ${{ inputs.audit_only != true }}
     runs-on: ${{ inputs.runner || 'macos-15-intel' }}
     timeout-minutes: 30
     steps:
@@ -74,5 +79,39 @@ jobs:
             build/loadout-smoke.json
             build/journey-audit.json
             build/monster-review/*.json
+          if-no-files-found: error
+          retention-days: 30
+  audit_loadouts:
+    if: ${{ inputs.audit_only == true }}
+    runs-on: ${{ inputs.runner || 'macos-15-intel' }}
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          sparse-checkout: |
+            Vendor
+      - name: Verify complete loadout sample without running app
+        run: |
+          set -euo pipefail
+          mkdir -p build
+          swift run -c release --package-path Vendor/ClassroomGameCore MeadowCampaignReview --loadout-smoke > build/loadout-smoke.json 2> build/loadout-smoke.log
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          rows=json.loads(Path('build/loadout-smoke.json').read_text())
+          roles=['adventurer','spellblade','dragonKnight']
+          kits=['trainingSword-plain','huntingBow-leather-badge','greatSword-rune-ring','legendaryStaff-rune-ring','starlight-three','dragon-three','unarmed-rune-ring']
+          expected={(10,'31827',r,k) for r in roles for k in kits}|{(30,'0',r,k) for r in roles for k in ['starlight-three','dragon-three']}
+          actual=[(r['journey']['size'],r['journey']['seed'],r['journey']['role'],r['loadout']['id']) for r in rows]
+          assert len(rows)==27 and len(set(actual))==27 and set(actual)==expected
+          Path('build/loadout-count-check.json').write_text(json.dumps({'cases':27,'uniqueCases':27,'expectedCasesMatched':True,'appSimulatorDeviceRun':False},indent=2)+'\n')
+          PY
+      - uses: actions/upload-artifact@v7
+        if: always()
+        with:
+          name: loadout-verification-${{ github.run_id }}
+          path: |
+            build/*.json
+            build/*.log
           if-no-files-found: error
           retention-days: 30
