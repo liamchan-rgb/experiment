@@ -1,0 +1,228 @@
+[
+  {
+    "actions" : 1,
+    "actionsUsed" : {
+      "enemy:dragonFlame" : 1
+    },
+    "battleDetails" : [
+      {
+        "collectedSupplies" : [
+          0
+        ],
+        "firstActor" : "ruinDragon",
+        "healthAfter" : {
+          "p1" : 0,
+          "p2" : 0
+        },
+        "healthBefore" : {
+          "p1" : 12,
+          "p2" : 18
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 1,
+        "outcome" : "defeat",
+        "rounds" : 1,
+        "templates" : [
+          "ruinDragon"
+        ]
+      }
+    ],
+    "battles" : 1,
+    "blockedRecovery" : 0,
+    "cleared" : 0,
+    "collected" : [
+      0
+    ],
+    "dropCoins" : 0,
+    "finalAP" : {
+      "p1" : 3,
+      "p2" : 3
+    },
+    "finalCoins" : 40,
+    "finalHealth" : {
+      "p1" : 0,
+      "p2" : 0
+    },
+    "foughtSpecies" : [
+      "ruinDragon"
+    ],
+    "itinerary" : "closed-tree",
+    "manualActionRefills" : 0,
+    "monsterActions" : 1,
+    "movementSpent" : 8,
+    "nodeCoins" : 40,
+    "outcome" : "defeat",
+    "plannedSpecies" : [
+      "ruinDragon",
+      "slime"
+    ],
+    "resumes" : 3,
+    "role" : "adventurer",
+    "seed" : "31827",
+    "size" : 4,
+    "stagedRestarts" : 0,
+    "startingCoins" : 8,
+    "totalDistance" : 702.1752628211815,
+    "visited" : [
+      0,
+      1,
+      2
+    ]
+  },
+  {
+    "actions" : 2,
+    "actionsUsed" : {
+      "enemy:attack" : 1,
+      "enemy:dragonFlame" : 1
+    },
+    "battleDetails" : [
+      {
+        "collectedSupplies" : [
+          0
+        ],
+        "firstActor" : "ruinDragon",
+        "healthAfter" : {
+          "p1" : 0,
+          "p2" : 0
+        },
+        "healthBefore" : {
+          "p1" : 24,
+          "p2" : 18
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 1,
+        "outcome" : "defeat",
+        "rounds" : 1,
+        "templates" : [
+          "ruinDragon"
+        ]
+      }
+    ],
+    "battles" : 1,
+    "blockedRecovery" : 0,
+    "cleared" : 0,
+    "collected" : [
+      0
+    ],
+    "dropCoins" : 0,
+    "finalAP" : {
+      "p1" : 3,
+      "p2" : 3
+    },
+    "finalCoins" : 40,
+    "finalHealth" : {
+      "p1" : 0,
+      "p2" : 0
+    },
+    "foughtSpecies" : [
+      "ruinDragon"
+    ],
+    "itinerary" : "closed-tree",
+    "manualActionRefills" : 0,
+    "monsterActions" : 2,
+    "movementSpent" : 8,
+    "nodeCoins" : 40,
+    "outcome" : "defeat",
+    "plannedSpecies" : [
+      "ruinDragon",
+      "slime"
+    ],
+    "resumes" : 3,
+    "role" : "spellblade",
+    "seed" : "31827",
+    "size" : 4,
+    "stagedRestarts" : 0,
+    "startingCoins" : 8,
+    "totalDistance" : 702.1752628211815,
+    "visited" : [
+      0,
+      1,
+      2
+    ]
+  },
+  {
+    "actions" : 38,
+    "actionsUsed" : {
+      "enemy:attack" : 20,
+      "enemy:dragonFlame" : 1,
+      "enemy:dragonScaleWard" : 2,
+      "player:attack" : 5,
+      "player:dragonFlame" : 1,
+      "player:dragonOrder" : 1,
+      "player:dragonScaleWard" : 2,
+      "player:largePotion" : 1,
+      "player:revivalStone" : 2,
+      "player:smallPotion" : 3
+    },
+    "battleDetails" : [
+      {
+        "collectedSupplies" : [
+          0
+        ],
+        "firstActor" : "ruinDragon",
+        "healthAfter" : {
+          "p1" : 0,
+          "p2" : 0
+        },
+        "healthBefore" : {
+          "p1" : 32,
+          "p2" : 18
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 1,
+        "outcome" : "defeat",
+        "rounds" : 8,
+        "templates" : [
+          "ruinDragon"
+        ]
+      }
+    ],
+    "battles" : 1,
+    "blockedRecovery" : 0,
+    "cleared" : 0,
+    "collected" : [
+      0
+    ],
+    "dropCoins" : 0,
+    "finalAP" : {
+      "p1" : 3,
+      "p2" : 3
+    },
+    "finalCoins" : 40,
+    "finalHealth" : {
+      "p1" : 0,
+      "p2" : 0
+    },
+    "foughtSpecies" : [
+      "ruinDragon"
+    ],
+    "itinerary" : "closed-tree",
+    "manualActionRefills" : 0,
+    "monsterActions" : 23,
+    "movementSpent" : 8,
+    "nodeCoins" : 40,
+    "outcome" : "defeat",
+    "plannedSpecies" : [
+      "ruinDragon",
+      "slime"
+    ],
+    "resumes" : 4,
+    "role" : "dragonKnight",
+    "seed" : "31827",
+    "size" : 4,
+    "stagedRestarts" : 1,
+    "startingCoins" : 8,
+    "totalDistance" : 702.1752628211815,
+    "visited" : [
+      0,
+      1,
+      2
+    ]
+  }
+]

@@ -1,3 +1,9 @@
+## Build88 · 首领与战前补给节奏 · 1.6.61
+
+[直接下载 IPA](https://raw.githubusercontent.com/liamchan-rgb/experiment/c5e97ff25b51269e56ea8d7e18275b59060c1e9e/Downloads/MeadowJourney-b88.ipa) · [节奏说明](../docs/planning/random-map-v1/build88-tempo.md) · [包检](../Media/Build88/verification.json)
+
+新行程单首领在普通战斗不足4或补给不足2时先用巨魔，多首领及历练较多的行程保留魔龙；战前大药和复活石靠近首领配置，盾药前置，领取时显示实际每人所得。旧档不重新投放。246测试、四组回归、27组固定策略行程及设备Release通过；24通关3正常失败，不是人类胜率。包检及公开完整GET通过，未运行App/模拟器/实机。
+
 ## Build87 · 完整行程回归与整备/部分移动购买 · 1.6.60
 
 [直接下载 IPA](https://raw.githubusercontent.com/liamchan-rgb/experiment/0b5ef675f46a0f63d9863789800ad35b46fa8ba8/Downloads/MeadowJourney-b87.ipa) · [行程回归](../docs/planning/random-map-v1/build87-journey-audit.md) · [包检](../Media/Build87/verification.json)
