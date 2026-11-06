@@ -1,3 +1,9 @@
+## Build94 · 商店与可选地点事件 · 1.6.67
+
+[直接下载 IPA](https://raw.githubusercontent.com/liamchan-rgb/experiment/8c9f5be65d58030c430d3692091bdaa03ec08054/Downloads/MeadowJourney-b94.ipa) · [说明](../docs/planning/random-map-v1/build94-sites-commerce.md) · [缺图清单](../docs/planning/random-map-v1/art-gaps.md)
+
+营地商店、按原目录单价的个人买卖；原空地按种子固定为行商/失物/清泉，主动选择才处理，事件全队一次。P2购买—装备规则接通，缺图仅标注并用现有资源占位。290测试、四专项、78原行程、设备Release和公开完整GET通过。未运行App/模拟器/实机。
+
 ## Build93 · 组队资源与行程收尾 · 1.6.66
 
 [直接下载 IPA](https://raw.githubusercontent.com/liamchan-rgb/experiment/419c106fba8292e3c87358720e0ae506dd5a0b2f/Downloads/MeadowJourney-b93.ipa) · [说明](../docs/planning/random-map-v1/build93-party-journey-wrap.md) · [包检](../Media/Build93/verification.json)
