@@ -17,3 +17,12 @@
 
 脚本：`scripts/refine-p1-diagonal-eyes.py`、`scripts/fix-p1-silver-hair-diagonals.py`、`scripts/rebake-p1-map-atlases.py`、`scripts/build-p1-head-split.py`。
 新美术 artApproval = null，待用户实机审核。
+
+## v2（用户反馈：斜下方的脸拐得太尖；斜上方头发太少，显得秃、太圆）
+
+- **左下/右下下巴**：原来下巴末端是 1 像素尖点（第 68 行），5 行内从 31 像素收到 10 像素，呈 V 形。去掉尖点，第 63—67 行加宽
+  （主要在靠耳侧，近侧 1—2 像素），轮廓线与明暗跟着外移，变成圆下巴。两个方向全部 13 帧。
+- **左上/右上头发**：头发下沿往下延伸约 8 像素，盖住耳朵上方光秃的太阳穴；发丝延续上方发色，新发际线略暗、边缘不规则并描边。两种发型。
+- **修正我上一轮引入的绿点**：正面银发里有一个几乎全透明的纯绿标记像素，上一轮银发调色把它带进参考色板，右上方向一处像素变成不透明绿色。
+  已修复，调色脚本改为只用不透明像素作参考；60 张图集复查无不透明纯绿像素。
+- 新文件：`heads-after-v2.png`、`eight-way-walk-normal-v2.gif`（正常速度 8 帧 × 120 ms）。脚本 `scripts/reshape-p1-diagonal-heads.py`。

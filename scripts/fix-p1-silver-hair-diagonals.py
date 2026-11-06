@@ -15,7 +15,7 @@ def files(pkg,d):
 def lum(px): return px[:,:3].astype(float)@[.2126,.7152,.0722]
 def fix(pkg, targets, refs, write):
     ref=np.concatenate([np.array(Image.open(f).convert('RGBA')).reshape(-1,4) for d in refs for f in files(pkg,d)])
-    ref=ref[ref[:,3]>0]; ref=ref[np.argsort(lum(ref))][:,:3].astype(float)
+    ref=ref[ref[:,3]>=128]; ref=ref[np.argsort(lum(ref))][:,:3].astype(float)
     n=0
     for d in targets:
         fs=files(pkg,d); arrs=[np.array(Image.open(f).convert('RGBA')) for f in fs]

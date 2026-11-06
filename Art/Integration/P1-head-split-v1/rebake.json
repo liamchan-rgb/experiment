@@ -24,8 +24,8 @@
    "p1-eight-way-hair-chestnut-v1",
    "p1-eight-way-face-blue-v1"
   ],
-  "sha256Before": "1099d4778de8cc1e92726a0f92b8bde1aa99f58b83cd0e87374bc92b65b053f0",
-  "sha256After": "931d4f01e2221200b6a9cbdd324fc200755739db870270250290fffb8309f731"
+  "sha256Before": "931d4f01e2221200b6a9cbdd324fc200755739db870270250290fffb8309f731",
+  "sha256After": "7e7cfd1626a5b64c8e607c007f55ccae69283aa7aabed810d1a617f7c4445f4c"
  },
  {
   "atlas": "P1ForesterUnarmedDirections",
@@ -50,8 +50,8 @@
    "p1-eight-way-hair-chestnut-v1",
    "p1-eight-way-face-blue-v1"
   ],
-  "sha256Before": "370dee325c6f7637405b1d61ba08d27a41059ab38de0f0ee75ce344e2488e1aa",
-  "sha256After": "926b9d2533de45e6b1ac240077bac3e04900f2259607c6be5318c87ea2e05a91"
+  "sha256Before": "926b9d2533de45e6b1ac240077bac3e04900f2259607c6be5318c87ea2e05a91",
+  "sha256After": "faac17445f3e48b76a52673165ce407bf527c876c1d9084930cc9e72925709ce"
  },
  {
   "atlas": "P1ForesterBowDirections",
@@ -78,8 +78,8 @@
    "p1-eight-way-hair-chestnut-v1",
    "p1-eight-way-face-blue-v1"
   ],
-  "sha256Before": "557d67320667398f4b31974687d4684c0213c705ecb88ebd802c8dd089dbfdf3",
-  "sha256After": "46afaf5958e90c8cbebd9e3e2d2872d17f11f80ccae18b7f6651ab8cef42645f"
+  "sha256Before": "46afaf5958e90c8cbebd9e3e2d2872d17f11f80ccae18b7f6651ab8cef42645f",
+  "sha256After": "9942caeab0648c492f25750bd2fc01c3348ad632826d6f68513ef8f796a1e56c"
  },
  {
   "atlas": "P1ForesterGreatSwordDirections",
@@ -106,8 +106,8 @@
    "p1-eight-way-hair-chestnut-v1",
    "p1-eight-way-face-blue-v1"
   ],
-  "sha256Before": "9821a17bbba00deb36d04da2cbc00728cbcd8feecd2ce409b7bc986c813fb5c2",
-  "sha256After": "32f8870e381bafa1547254ca6ebeb950e1b8201afa3177c1a82e30770a2f9aae"
+  "sha256Before": "32f8870e381bafa1547254ca6ebeb950e1b8201afa3177c1a82e30770a2f9aae",
+  "sha256After": "0053845bab5ff94ca21675df29999a8c3d30bd5820f0b53a1ee9c4c897b2d0ea"
  },
  {
   "atlas": "P1ForesterLegendaryStaffDirections",
@@ -134,8 +134,8 @@
    "p1-eight-way-hair-chestnut-v1",
    "p1-eight-way-face-blue-v1"
   ],
-  "sha256Before": "21e1f80eeac4b20acb819c0dc587c3d818092a178146fa2dae5502cd60e8148f",
-  "sha256After": "befd040677900cc179d872632088f74a52a1ea89384e14498f6f48f082ce367a"
+  "sha256Before": "befd040677900cc179d872632088f74a52a1ea89384e14498f6f48f082ce367a",
+  "sha256After": "1593b16d46186c98e9615ef485ade072e2d3da586096d803dc3c704980fd27b6"
  },
  {
   "atlas": "P1ForesterLeatherarmorNoneDirections",
@@ -160,8 +160,8 @@
    "p1-eight-way-hair-chestnut-v1",
    "p1-eight-way-face-blue-v1"
   ],
-  "sha256Before": "30b9985b6deb570e4fd8518b782118ca73bf4eff4b9840a4412c1c1a930449ec",
-  "sha256After": "3a4e59edd81b1036c309beca71ba979b734e7a99fe7e18eeeba3d680afa537d4"
+  "sha256Before": "3a4e59edd81b1036c309beca71ba979b734e7a99fe7e18eeeba3d680afa537d4",
+  "sha256After": "f21ac8c8da5c68d2d2e8ed6ea995806c32d576440b38f4a2304aa9dbf3e37ac9"
  },
  {
   "atlas": "P1ForesterLeatherarmorTrainingswordDirections",
@@ -188,8 +188,8 @@
    "p1-eight-way-hair-chestnut-v1",
    "p1-eight-way-face-blue-v1"
   ],
-  "sha256Before": "7b58eed813ab0c0c88cffc78dfdafb7f6a603c852e8a95c7ba654a2cff920bfd",
-  "sha256After": "1bbf767f029331654cf81aeb87c38a6e20d080fa55b071265f13ed8600d0b9b2"
+  "sha256Before": "1bbf767f029331654cf81aeb87c38a6e20d080fa55b071265f13ed8600d0b9b2",
+  "sha256After": "2f8c6612a58a73460b4b5ca940db9bec13da5cb5f20d5bcb897f4e9ce7a6327d"
  },
  {
   "atlas": "P1ForesterLeatherarmorHuntingbowDirections",
@@ -216,8 +216,8 @@
    "p1-eight-way-hair-chestnut-v1",
    "p1-eight-way-face-blue-v1"
   ],
-  "sha256Before": "2c334a6add2bf3259a1c5dc91c4feb5bf2feacf7c1e6a717c46646f124e992f1",
-  "sha256After": "9a43e12defc927888c8fab40fcd80989f6b56d1fccab507f45e6fd9049f91390"
+  "sha256Before": "9a43e12defc927888c8fab40fcd80989f6b56d1fccab507f45e6fd9049f91390",
+  "sha256After": "a31e2e2319b79f1a4e8661472021678f78748e08747acf9109ca499c83861304"
  },
  {
   "atlas": "P1ForesterLeatherarmorGreatswordDirections",
@@ -244,8 +244,8 @@
    "p1-eight-way-hair-chestnut-v1",
    "p1-eight-way-face-blue-v1"
   ],
-  "sha256Before": "a3dfa3d39869cb7b7d58d4f65d49b38a8592253855432e9349a423a3095e6d00",
-  "sha256After": "650c30c85c1eba03ffe9b9c604cf8eccbe88ccff92aef8ea928d7cc8f70e559c"
+  "sha256Before": "650c30c85c1eba03ffe9b9c604cf8eccbe88ccff92aef8ea928d7cc8f70e559c",
+  "sha256After": "d118cb79fc129521b11fe7fed8edd4c4fb8f910bbf1918c4ea0b77abc0bb0f03"
  },
  {
   "atlas": "P1ForesterLeatherarmorLegendarystaffDirections",
@@ -272,8 +272,8 @@
    "p1-eight-way-hair-chestnut-v1",
    "p1-eight-way-face-blue-v1"
   ],
-  "sha256Before": "257e0709682f06cbac566dd1eaae98f05ac3be7bc3ff22bf619f7f88f2f43161",
-  "sha256After": "f32f49e07eaca18c7e3ea40ee51a8a825f461da733b9a85d04e3343c534dd272"
+  "sha256Before": "f32f49e07eaca18c7e3ea40ee51a8a825f461da733b9a85d04e3343c534dd272",
+  "sha256After": "770f8c80701fb27efe091e0e67caa0aaad52b9c25d99e6018f54e547e906068d"
  },
  {
   "atlas": "P1ForesterRunearmorNoneDirections",
@@ -298,8 +298,8 @@
    "p1-eight-way-hair-chestnut-v1",
    "p1-eight-way-face-blue-v1"
   ],
-  "sha256Before": "2ee80d5afd38cfdac9bff42a044f89929e7d25d447cb77b65b8a499a7371413e",
-  "sha256After": "5940b330733715005f0e3402323d77f84cd6726478f192cca20259ce872a21f9"
+  "sha256Before": "5940b330733715005f0e3402323d77f84cd6726478f192cca20259ce872a21f9",
+  "sha256After": "f0cdf78f247a30cda079319a36bf4014f22e0586f62c3a750c6c65fc190b7582"
  },
  {
   "atlas": "P1ForesterRunearmorTrainingswordDirections",
@@ -326,8 +326,8 @@
    "p1-eight-way-hair-chestnut-v1",
    "p1-eight-way-face-blue-v1"
   ],
-  "sha256Before": "1a6123a41775fff61d0c867727ac9ed7a8679fd9143a97bbab39572df24a301f",
-  "sha256After": "e01e63df1987dbc7243fab37511d5599901078f946e09a0b1830b3e98e406818"
+  "sha256Before": "e01e63df1987dbc7243fab37511d5599901078f946e09a0b1830b3e98e406818",
+  "sha256After": "5b10603a890badaa0fc6927ee6194816418093a27f608212d45fba3bad53b947"
  },
  {
   "atlas": "P1ForesterRunearmorHuntingbowDirections",
@@ -354,8 +354,8 @@
    "p1-eight-way-hair-chestnut-v1",
    "p1-eight-way-face-blue-v1"
   ],
-  "sha256Before": "0aac91556859508618f2eded36697bedf2989a89d20400329c292f609153f848",
-  "sha256After": "082872a0f97d53ac0a01afa63ccd7eacccbb59dfa76a147e03f4f46fc1f298df"
+  "sha256Before": "082872a0f97d53ac0a01afa63ccd7eacccbb59dfa76a147e03f4f46fc1f298df",
+  "sha256After": "fd78e2aa24f3d6687bdf11f1ffd9615b1a9e3739d718a8b074b81c84adde3c5e"
  },
  {
   "atlas": "P1ForesterRunearmorGreatswordDirections",
@@ -382,8 +382,8 @@
    "p1-eight-way-hair-chestnut-v1",
    "p1-eight-way-face-blue-v1"
   ],
-  "sha256Before": "00c611e8bbc27bef1147abe61bcdcde91292a733c85c6ba39dc64a56afb80bc1",
-  "sha256After": "63d244facc799a475706a05d535bb78c264674a20a3c65aa203bead911d428cf"
+  "sha256Before": "63d244facc799a475706a05d535bb78c264674a20a3c65aa203bead911d428cf",
+  "sha256After": "12f5432f4cbcb89286b93713cc948eaa301f4fb3fbc5e3878f6125bb5fbfb56b"
  },
  {
   "atlas": "P1ForesterRunearmorLegendarystaffDirections",
@@ -410,8 +410,8 @@
    "p1-eight-way-hair-chestnut-v1",
    "p1-eight-way-face-blue-v1"
   ],
-  "sha256Before": "fc915a33d7f6101828fdaf7d94e49469247512492bec506f1e7deee63f5eadef",
-  "sha256After": "08e3032d74e66cd3644d3307d3c8036df8b00b657e301254cf186ea9d15b8b5c"
+  "sha256Before": "08e3032d74e66cd3644d3307d3c8036df8b00b657e301254cf186ea9d15b8b5c",
+  "sha256After": "b4f02d4ec383a9a767f1439a6f15e6b6d29abcb140349cf89f3e8d569941ed3d"
  },
  {
   "atlas": "P1WayfarerDirections",
@@ -438,8 +438,8 @@
    "p1-eight-way-hair-silver-v1",
    "p1-eight-way-face-amber-v1"
   ],
-  "sha256Before": "8aad3bdd9daea60307c5e16c276d7f950531da900b1efd9cbf1c53c96c75b68e",
-  "sha256After": "6f1236b2a1becdc6a5e51ecf8fb47aec6e7e7c3125be1fa4c9a1cfdd7ce589a6"
+  "sha256Before": "6f1236b2a1becdc6a5e51ecf8fb47aec6e7e7c3125be1fa4c9a1cfdd7ce589a6",
+  "sha256After": "a2726555a25a743ef1f0dd637154a216d433f8a6c7e211031e442f696aa83c76"
  },
  {
   "atlas": "P1WayfarerUnarmedDirections",
@@ -464,8 +464,8 @@
    "p1-eight-way-hair-silver-v1",
    "p1-eight-way-face-amber-v1"
   ],
-  "sha256Before": "2891b18de8696016e86ec8706852bec18a591ac786858b447275df07d01427bb",
-  "sha256After": "69508de6c69283339fbfa102b490898881a31d53ed39db6010f45b65aacecd1b"
+  "sha256Before": "69508de6c69283339fbfa102b490898881a31d53ed39db6010f45b65aacecd1b",
+  "sha256After": "25946c8b9fa0d3ab220ef6e37ca2809d3d50f4c2259da1e1938e7cbca9677e69"
  },
  {
   "atlas": "P1WayfarerBowDirections",
@@ -492,8 +492,8 @@
    "p1-eight-way-hair-silver-v1",
    "p1-eight-way-face-amber-v1"
   ],
-  "sha256Before": "314fccaa45eecb1e05024e0491fb8941b0ec84c2b978c2c2aa3057ffa345c6cb",
-  "sha256After": "4cd238f27fdf546b474ad7d3e13bcdc34b67774f18e0561fac69a1caa3fc6e76"
+  "sha256Before": "4cd238f27fdf546b474ad7d3e13bcdc34b67774f18e0561fac69a1caa3fc6e76",
+  "sha256After": "8ad5404e204ff818251ca574c40e5b1703b7796d218cf33bf21e1872e0e2dbd0"
  },
  {
   "atlas": "P1WayfarerGreatSwordDirections",
@@ -520,8 +520,8 @@
    "p1-eight-way-hair-silver-v1",
    "p1-eight-way-face-amber-v1"
   ],
-  "sha256Before": "f5fb1312c7f38b41cb55acf8477015062aaeb2e1ebda296f75460b61f135c2c7",
-  "sha256After": "7e2355b2234b3dcde7399e7a9b2d42c30fb08d675d178f69c6593f64c23a11b9"
+  "sha256Before": "7e2355b2234b3dcde7399e7a9b2d42c30fb08d675d178f69c6593f64c23a11b9",
+  "sha256After": "ff4c878c235bdda79e7b99741795a1dd68e0a55df807ff1bcf2a3adb17b8ae9d"
  },
  {
   "atlas": "P1WayfarerLegendaryStaffDirections",
@@ -548,8 +548,8 @@
    "p1-eight-way-hair-silver-v1",
    "p1-eight-way-face-amber-v1"
   ],
-  "sha256Before": "2a696dba23d111afa6a4d145887696fc6334c234b518580d1d8bc52716ceacf5",
-  "sha256After": "442872bd2400d78e2291e6b778cd25a255b1fa787140ed760455c2b4dff75985"
+  "sha256Before": "442872bd2400d78e2291e6b778cd25a255b1fa787140ed760455c2b4dff75985",
+  "sha256After": "dfe92ac8bfa23a09721eddcecf1d2316447c4652ef35b0d635c9fccf8524139e"
  },
  {
   "atlas": "P1WayfarerLeatherarmorNoneDirections",
@@ -574,8 +574,8 @@
    "p1-eight-way-hair-silver-v1",
    "p1-eight-way-face-amber-v1"
   ],
-  "sha256Before": "d886587c18880326a3ba8b56c7c9180abb79036aa50215e66f44cce860422ebd",
-  "sha256After": "2c21c930d7887e319ae8167d6bbe66dfafb3d69492131e9e98fdf782503435ca"
+  "sha256Before": "2c21c930d7887e319ae8167d6bbe66dfafb3d69492131e9e98fdf782503435ca",
+  "sha256After": "04adfb22c641d6c19d1a725c71b85ed9f5d031970a444710c981f08c3e9cab68"
  },
  {
   "atlas": "P1WayfarerLeatherarmorTrainingswordDirections",
@@ -602,8 +602,8 @@
    "p1-eight-way-hair-silver-v1",
    "p1-eight-way-face-amber-v1"
   ],
-  "sha256Before": "879d3843dbf1d6e9a8e373df9c650d4ae5bc0b44c7255ad993a8bceb915be9af",
-  "sha256After": "721dbb8ec0628652c70b5f14b14d533fda1af9c28a72068ef20706e97c1f934c"
+  "sha256Before": "721dbb8ec0628652c70b5f14b14d533fda1af9c28a72068ef20706e97c1f934c",
+  "sha256After": "b4941a0a3ebd5e390c3739083a82935e5fd6eaf75cefd0d3ff857389bb56629c"
  },
  {
   "atlas": "P1WayfarerLeatherarmorHuntingbowDirections",
@@ -630,8 +630,8 @@
    "p1-eight-way-hair-silver-v1",
    "p1-eight-way-face-amber-v1"
   ],
-  "sha256Before": "b7b682d1fd4daecde98ff37cba7744d45d0dcafe758c9ed85d4914283ff17f2a",
-  "sha256After": "e260a66c5bbb1d52b89860788b53b8a2d8bc8c7f4818cfd160ebbdf38f22d0b7"
+  "sha256Before": "e260a66c5bbb1d52b89860788b53b8a2d8bc8c7f4818cfd160ebbdf38f22d0b7",
+  "sha256After": "d9d8b833a2407b379285571d82742f57f6f8aecb586d747bb4da1a9ce165b3cf"
  },
  {
   "atlas": "P1WayfarerLeatherarmorGreatswordDirections",
@@ -658,8 +658,8 @@
    "p1-eight-way-hair-silver-v1",
    "p1-eight-way-face-amber-v1"
   ],
-  "sha256Before": "057be2c7b1cfa0acf341dd5c91ca69c982aff09b58e8142bf43bb4d9e70d24c3",
-  "sha256After": "e2da390b9a8c4283ddd592226283672a1c7b6e0b4a635cc7d1e10bd340e41d3d"
+  "sha256Before": "e2da390b9a8c4283ddd592226283672a1c7b6e0b4a635cc7d1e10bd340e41d3d",
+  "sha256After": "a90f53c1db49176921d93f7291f3bad947f0f874c86c6e33d91c638eb9ab58e0"
  },
  {
   "atlas": "P1WayfarerLeatherarmorLegendarystaffDirections",
@@ -686,8 +686,8 @@
    "p1-eight-way-hair-silver-v1",
    "p1-eight-way-face-amber-v1"
   ],
-  "sha256Before": "d4b7887da6ae0813236e8a91dddbcb0a5ef605c91a414c5988b6b1b1755600a2",
-  "sha256After": "07436c90e260fe92866bd688aaa3938bca07c3e18e6623845871ab1a1d5eb5e0"
+  "sha256Before": "07436c90e260fe92866bd688aaa3938bca07c3e18e6623845871ab1a1d5eb5e0",
+  "sha256After": "17d0cc13aa32ddc906c1a721a28ffe2ede7adf46e562d4812781a26e6e14a2d8"
  },
  {
   "atlas": "P1WayfarerRunearmorNoneDirections",
@@ -712,8 +712,8 @@
    "p1-eight-way-hair-silver-v1",
    "p1-eight-way-face-amber-v1"
   ],
-  "sha256Before": "fbabf591389d9dce3ed5e14e00333cd85375581eba920ec00e3bea2da1028d5b",
-  "sha256After": "a3d5f75cd50e0c7c99997fa4f1cc1a58829b93acde8a103b41a39de5ccead272"
+  "sha256Before": "a3d5f75cd50e0c7c99997fa4f1cc1a58829b93acde8a103b41a39de5ccead272",
+  "sha256After": "41b7e2fc5b04ad538abb23b50189d1b3ceec661ef95f5d23d24f9fd706d45ee9"
  },
  {
   "atlas": "P1WayfarerRunearmorTrainingswordDirections",
@@ -740,8 +740,8 @@
    "p1-eight-way-hair-silver-v1",
    "p1-eight-way-face-amber-v1"
   ],
-  "sha256Before": "c70dd5ef98fd33093dd85774e69f7253c367f071def0e41e7bd2aa7f261db70d",
-  "sha256After": "6f212e35c80c67b71980200757beccef1c907d2030aebdbdfe5b001fea6e2764"
+  "sha256Before": "6f212e35c80c67b71980200757beccef1c907d2030aebdbdfe5b001fea6e2764",
+  "sha256After": "b10dbde895320ca52a73a18d399aa8310062d566d528b1aae9da86ed64f2c0a1"
  },
  {
   "atlas": "P1WayfarerRunearmorHuntingbowDirections",
@@ -768,8 +768,8 @@
    "p1-eight-way-hair-silver-v1",
    "p1-eight-way-face-amber-v1"
   ],
-  "sha256Before": "60f8fba54ff03b3b42c514db70674bb690437e06d00f8d5c08b37a24b930a4ac",
-  "sha256After": "0e89789844ad8f8569ea1287fd978d59bc3695d4a1754cbcf495e55e5fd165dc"
+  "sha256Before": "0e89789844ad8f8569ea1287fd978d59bc3695d4a1754cbcf495e55e5fd165dc",
+  "sha256After": "074764c8e2cfee3c5af8aa5f1e039f189ff6c869e3a141dbbe8961b1589816e9"
  },
  {
   "atlas": "P1WayfarerRunearmorGreatswordDirections",
@@ -796,8 +796,8 @@
    "p1-eight-way-hair-silver-v1",
    "p1-eight-way-face-amber-v1"
   ],
-  "sha256Before": "225eafa2823333bebd856296fd668034abc0fb23f0a6c19e34c0f87e4ac50812",
-  "sha256After": "a322ca7d8cb146ca5dc8542484bb275546db92e832ce23777836930107ccd809"
+  "sha256Before": "a322ca7d8cb146ca5dc8542484bb275546db92e832ce23777836930107ccd809",
+  "sha256After": "f918102dcff902d17bcd876b930fa7c93ad4c87236ebeeff83e0117be239f94f"
  },
  {
   "atlas": "P1WayfarerRunearmorLegendarystaffDirections",
@@ -824,7 +824,7 @@
    "p1-eight-way-hair-silver-v1",
    "p1-eight-way-face-amber-v1"
   ],
-  "sha256Before": "bb03e1fe78903fb67fd3e2301b2e114b5e7dcae3bda61e8bc9b117bc6090fcd4",
-  "sha256After": "6c84637f84d63e9b02f67ea22ef6626093be419fc2651045ef037c906b7312da"
+  "sha256Before": "6c84637f84d63e9b02f67ea22ef6626093be419fc2651045ef037c906b7312da",
+  "sha256After": "0547091b1a7c3a8bf4997345e0ddde0c2dd8345112b4d9765151aa93b82d27cb"
  }
 ]
