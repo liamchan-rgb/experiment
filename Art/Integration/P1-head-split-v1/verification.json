@@ -693,9 +693,9 @@
   "P1HeadBrowsBlueDirections": "9bf88c4ccc133da9b5da3981d3e1c3752625c990fd6b7fcd26a1ace27a0c78a5",
   "P1HeadBrowsBlueDiagonals": "599442fd64601f7dc53249f7d3fab2ec29f091c77e6e77c70cd6cd7c0aed3ca3",
   "P1HeadEyesAmberDirections": "a3655977f8e2ba95e2ec44dbf47d85117b44539fb64bd07395519c2ea3777a0e",
-  "P1HeadEyesAmberDiagonals": "1756f4f70b11fb612a8906794c36ca122af50bdf1a82aff09a0a15f6f58b85d2",
+  "P1HeadEyesAmberDiagonals": "a2b7114c37833182bc30b144bd93e7baa892570c885b8f828a1c305bff942d3f",
   "P1HeadEyesBlueDirections": "a0e8ac0ff4ad9d5b5a56d5cf12476b96968b247af591970daa45b31292def0d0",
-  "P1HeadEyesBlueDiagonals": "08ffd8ba6a060f5fe9f40e28d38dd455cefb7ced3cce1d588ee1a92f8f553fe8",
+  "P1HeadEyesBlueDiagonals": "23a300edec58d78dc5b5a95aa071ce6c7f2a45f89cdba456ba44ae9b4b6bb3d3",
   "P1HeadMouthAmberDirections": "22f9a7590b55f8e22459acf3d68bb06b0e1587ac4950ddb26f95636fcb56f493",
   "P1HeadMouthAmberDiagonals": "c99228cd83feca513ef385ca8ba0a1d512ab16a5a9075d4633c9c8092bc76640",
   "P1HeadMouthBlueDirections": "d33aab0bf837b3ddf6251beea3808f54a7671897b7418d8000919742e795a421",
@@ -707,7 +707,7 @@
   "P1HeadHairFrontChestnutDirections": "05b88cfe4dfd9ece8534b8fd4b0e5d4d180f63dc38977bf4d639ac956137522c",
   "P1HeadHairFrontChestnutDiagonals": "d96f28bd2c1ba69df4587aba97247d802894d6ef924be457479d295c9f754c85",
   "P1HeadHairFrontSilverDirections": "7a1ab6f455edc01f580b0af273b9488a9f7c4597ce546858179bc4c694c8eb84",
-  "P1HeadHairFrontSilverDiagonals": "3d93227a9bc8b62d21de0c348ccbf84e5614e2f6482915886309de2dc2c834d3"
+  "P1HeadHairFrontSilverDiagonals": "c757d419b45750cc79bb39893af45f50852da631ec46ca4e1196f01cfb75f374"
  },
  "note": "Re-stacking split sheets with each original head vs shipped atlases; offline Pillow compositing."
 }
