@@ -1,0 +1,830 @@
+[
+ {
+  "atlas": "Hero1Directions",
+  "state": "ForesterTrainingSword",
+  "outfit": "forester",
+  "selection": [
+   "p1-eight-way-forester-v1",
+   "p1-eight-way-lower-v1",
+   "p1-eight-way-weapon-v1",
+   "p1-eight-way-hair-chestnut-v1",
+   "p1-eight-way-face-blue-v1"
+  ],
+  "sha256Before": "6f4c3dc116974b24799243d87f70ed483dc398aefc0d5ee81e214a9255a3b702",
+  "sha256After": "f31f239c7f594fe9239bc8cfa619376cf8b95d006db19101c1b3a10f6b8e5781"
+ },
+ {
+  "atlas": "Hero1Diagonals",
+  "state": "ForesterTrainingSword",
+  "outfit": "forester",
+  "selection": [
+   "p1-eight-way-forester-v1",
+   "p1-eight-way-lower-v1",
+   "p1-eight-way-weapon-v1",
+   "p1-eight-way-hair-chestnut-v1",
+   "p1-eight-way-face-blue-v1"
+  ],
+  "sha256Before": "c5853ac0bfe8ed7fc9d8b7d0a6891638d0e2656d893d2243ecc5c39705ba19dd",
+  "sha256After": "1099d4778de8cc1e92726a0f92b8bde1aa99f58b83cd0e87374bc92b65b053f0"
+ },
+ {
+  "atlas": "P1ForesterUnarmedDirections",
+  "state": "ForesterNone",
+  "outfit": "forester",
+  "selection": [
+   "p1-eight-way-forester-v1",
+   "p1-eight-way-lower-v1",
+   "p1-eight-way-hair-chestnut-v1",
+   "p1-eight-way-face-blue-v1"
+  ],
+  "sha256Before": "a97d7c2ef7f8bd1fe55f51b310152c676b583b59dc49203c632c41f9403c2c53",
+  "sha256After": "0e698451710a8c2d64a8ea753fa25f34e28e864155dd8eab93cf58300e186be7"
+ },
+ {
+  "atlas": "P1ForesterUnarmedDiagonals",
+  "state": "ForesterNone",
+  "outfit": "forester",
+  "selection": [
+   "p1-eight-way-forester-v1",
+   "p1-eight-way-lower-v1",
+   "p1-eight-way-hair-chestnut-v1",
+   "p1-eight-way-face-blue-v1"
+  ],
+  "sha256Before": "bc06355a8d2733f4d4d9911dfeb9dc49826cf7e2569ddf07dca2b99f63229e3a",
+  "sha256After": "370dee325c6f7637405b1d61ba08d27a41059ab38de0f0ee75ce344e2488e1aa"
+ },
+ {
+  "atlas": "P1ForesterBowDirections",
+  "state": "ForesterHuntingBow",
+  "outfit": "forester",
+  "selection": [
+   "p1-eight-way-forester-v1",
+   "p1-eight-way-lower-v1",
+   "p1-hunting-bow-v1",
+   "p1-eight-way-hair-chestnut-v1",
+   "p1-eight-way-face-blue-v1"
+  ],
+  "sha256Before": "f83aa84664e7c1a27610b92dea261af1e733912fd7467efac903dd09c772a931",
+  "sha256After": "251596b1533fe207490e88afe17e7b2841fbc3ccfaaa3a2877365a3cd7ac41cc"
+ },
+ {
+  "atlas": "P1ForesterBowDiagonals",
+  "state": "ForesterHuntingBow",
+  "outfit": "forester",
+  "selection": [
+   "p1-eight-way-forester-v1",
+   "p1-eight-way-lower-v1",
+   "p1-hunting-bow-v1",
+   "p1-eight-way-hair-chestnut-v1",
+   "p1-eight-way-face-blue-v1"
+  ],
+  "sha256Before": "bc5adaba660be9c95468d370cccb25aa5320f42fa381fb5e8e04f77cd7bab5ec",
+  "sha256After": "557d67320667398f4b31974687d4684c0213c705ecb88ebd802c8dd089dbfdf3"
+ },
+ {
+  "atlas": "P1ForesterGreatSwordDirections",
+  "state": "ForesterGreatSword",
+  "outfit": "forester",
+  "selection": [
+   "p1-eight-way-forester-v1",
+   "p1-eight-way-lower-v1",
+   "p1-b2-greatsword-v1",
+   "p1-eight-way-hair-chestnut-v1",
+   "p1-eight-way-face-blue-v1"
+  ],
+  "sha256Before": "0539f23657866ccd60e6b2d5473bff11baab4d4bc4dd32c2f20aaab6471fa5ef",
+  "sha256After": "197cb694660d15e725557a04cf2c0c7fed19e34cecc95de07c9cd8c0773b62bc"
+ },
+ {
+  "atlas": "P1ForesterGreatSwordDiagonals",
+  "state": "ForesterGreatSword",
+  "outfit": "forester",
+  "selection": [
+   "p1-eight-way-forester-v1",
+   "p1-eight-way-lower-v1",
+   "p1-b2-greatsword-v1",
+   "p1-eight-way-hair-chestnut-v1",
+   "p1-eight-way-face-blue-v1"
+  ],
+  "sha256Before": "b615ed21be448036fd88663a2b061fe61796dbec1b92b533154cd02e685f00fb",
+  "sha256After": "9821a17bbba00deb36d04da2cbc00728cbcd8feecd2ce409b7bc986c813fb5c2"
+ },
+ {
+  "atlas": "P1ForesterLegendaryStaffDirections",
+  "state": "ForesterLegendaryStaff",
+  "outfit": "forester",
+  "selection": [
+   "p1-eight-way-forester-v1",
+   "p1-eight-way-lower-v1",
+   "p1-b2-legendarystaff-v1",
+   "p1-eight-way-hair-chestnut-v1",
+   "p1-eight-way-face-blue-v1"
+  ],
+  "sha256Before": "412d325a11af529abceb36da932626bfeedf6dca82adcd81fc9f2bf0291691d6",
+  "sha256After": "de71dffd06e8420fde343a847aba896fe656658bfed3118ebed4cc23b5a4fdd3"
+ },
+ {
+  "atlas": "P1ForesterLegendaryStaffDiagonals",
+  "state": "ForesterLegendaryStaff",
+  "outfit": "forester",
+  "selection": [
+   "p1-eight-way-forester-v1",
+   "p1-eight-way-lower-v1",
+   "p1-b2-legendarystaff-v1",
+   "p1-eight-way-hair-chestnut-v1",
+   "p1-eight-way-face-blue-v1"
+  ],
+  "sha256Before": "ee773731c082dfb6705a664df54e951ea95eb2efb678377e114286b7c2276bf9",
+  "sha256After": "21e1f80eeac4b20acb819c0dc587c3d818092a178146fa2dae5502cd60e8148f"
+ },
+ {
+  "atlas": "P1ForesterLeatherarmorNoneDirections",
+  "state": "LeatherArmorNone",
+  "outfit": "forester",
+  "selection": [
+   "p1-eight-way-lower-v1",
+   "p1-b2-leatherarmor-r4",
+   "p1-eight-way-hair-chestnut-v1",
+   "p1-eight-way-face-blue-v1"
+  ],
+  "sha256Before": "f009b3d3930a45eccec6ddd700dcfae1a37cfc15307879c616d7e0f75c2077fd",
+  "sha256After": "38825fe562eadb0089c3c9d281543c5faec7d641d71f708480cb0b469b508dbc"
+ },
+ {
+  "atlas": "P1ForesterLeatherarmorNoneDiagonals",
+  "state": "LeatherArmorNone",
+  "outfit": "forester",
+  "selection": [
+   "p1-eight-way-lower-v1",
+   "p1-b2-leatherarmor-r4",
+   "p1-eight-way-hair-chestnut-v1",
+   "p1-eight-way-face-blue-v1"
+  ],
+  "sha256Before": "30f9accce08034e4198dc34069a1dc2311df57dcf4354b41cdc9491b8e79f7e2",
+  "sha256After": "30b9985b6deb570e4fd8518b782118ca73bf4eff4b9840a4412c1c1a930449ec"
+ },
+ {
+  "atlas": "P1ForesterLeatherarmorTrainingswordDirections",
+  "state": "LeatherArmorTrainingSword",
+  "outfit": "forester",
+  "selection": [
+   "p1-eight-way-lower-v1",
+   "p1-b2-leatherarmor-r4",
+   "p1-eight-way-weapon-v1",
+   "p1-eight-way-hair-chestnut-v1",
+   "p1-eight-way-face-blue-v1"
+  ],
+  "sha256Before": "f5eb2d1e150e41cff7d33aaa24eee990abccf1d7503f565254d9dd41439c76e0",
+  "sha256After": "e54f9d70ad5f80dd202cddc67e5bac107db9716c98a2d820ff6f4ce9685b2eb3"
+ },
+ {
+  "atlas": "P1ForesterLeatherarmorTrainingswordDiagonals",
+  "state": "LeatherArmorTrainingSword",
+  "outfit": "forester",
+  "selection": [
+   "p1-eight-way-lower-v1",
+   "p1-b2-leatherarmor-r4",
+   "p1-eight-way-weapon-v1",
+   "p1-eight-way-hair-chestnut-v1",
+   "p1-eight-way-face-blue-v1"
+  ],
+  "sha256Before": "4a54239d691a29da9c607edd45861876d0266eb5b758d64c366746e92c76c321",
+  "sha256After": "7b58eed813ab0c0c88cffc78dfdafb7f6a603c852e8a95c7ba654a2cff920bfd"
+ },
+ {
+  "atlas": "P1ForesterLeatherarmorHuntingbowDirections",
+  "state": "LeatherArmorHuntingBow",
+  "outfit": "forester",
+  "selection": [
+   "p1-eight-way-lower-v1",
+   "p1-b2-leatherarmor-r4",
+   "p1-hunting-bow-v1",
+   "p1-eight-way-hair-chestnut-v1",
+   "p1-eight-way-face-blue-v1"
+  ],
+  "sha256Before": "cfe5097e435aa672b7a22376eea61289b1bf7550d3ce98116a4ae45a5f563157",
+  "sha256After": "d8131b24be59700ff5dd3c0ec22516a0368c19f2eb372d28aba515315520c119"
+ },
+ {
+  "atlas": "P1ForesterLeatherarmorHuntingbowDiagonals",
+  "state": "LeatherArmorHuntingBow",
+  "outfit": "forester",
+  "selection": [
+   "p1-eight-way-lower-v1",
+   "p1-b2-leatherarmor-r4",
+   "p1-hunting-bow-v1",
+   "p1-eight-way-hair-chestnut-v1",
+   "p1-eight-way-face-blue-v1"
+  ],
+  "sha256Before": "3d5c6e4dcc0fc2c6b641d08c176372a68ef79a2a3181c5066927f9d4ee547386",
+  "sha256After": "2c334a6add2bf3259a1c5dc91c4feb5bf2feacf7c1e6a717c46646f124e992f1"
+ },
+ {
+  "atlas": "P1ForesterLeatherarmorGreatswordDirections",
+  "state": "LeatherArmorGreatSword",
+  "outfit": "forester",
+  "selection": [
+   "p1-eight-way-lower-v1",
+   "p1-b2-leatherarmor-r4",
+   "p1-b2-greatsword-v1",
+   "p1-eight-way-hair-chestnut-v1",
+   "p1-eight-way-face-blue-v1"
+  ],
+  "sha256Before": "37080265e1ba589239b2024dda1979c6c4df07e000a94a91c1ae9afd699039ef",
+  "sha256After": "ca9e31641370506fd3576e83bb401ac32c70dd87cf912eb6ca025c2a208a1397"
+ },
+ {
+  "atlas": "P1ForesterLeatherarmorGreatswordDiagonals",
+  "state": "LeatherArmorGreatSword",
+  "outfit": "forester",
+  "selection": [
+   "p1-eight-way-lower-v1",
+   "p1-b2-leatherarmor-r4",
+   "p1-b2-greatsword-v1",
+   "p1-eight-way-hair-chestnut-v1",
+   "p1-eight-way-face-blue-v1"
+  ],
+  "sha256Before": "40ce748f873abc337b5b3f677abb8a1052c0b25583c305c9f6d61f002471d5be",
+  "sha256After": "a3dfa3d39869cb7b7d58d4f65d49b38a8592253855432e9349a423a3095e6d00"
+ },
+ {
+  "atlas": "P1ForesterLeatherarmorLegendarystaffDirections",
+  "state": "LeatherArmorLegendaryStaff",
+  "outfit": "forester",
+  "selection": [
+   "p1-eight-way-lower-v1",
+   "p1-b2-leatherarmor-r4",
+   "p1-b2-legendarystaff-v1",
+   "p1-eight-way-hair-chestnut-v1",
+   "p1-eight-way-face-blue-v1"
+  ],
+  "sha256Before": "be9469ade14200747b17b045c754c869cf27dd8e8a9eac4ddb6c9679e8385c7e",
+  "sha256After": "f46e582498dac3e8254ec2be70a0fabf35d01e0210e4d66585d79b0c2d50e457"
+ },
+ {
+  "atlas": "P1ForesterLeatherarmorLegendarystaffDiagonals",
+  "state": "LeatherArmorLegendaryStaff",
+  "outfit": "forester",
+  "selection": [
+   "p1-eight-way-lower-v1",
+   "p1-b2-leatherarmor-r4",
+   "p1-b2-legendarystaff-v1",
+   "p1-eight-way-hair-chestnut-v1",
+   "p1-eight-way-face-blue-v1"
+  ],
+  "sha256Before": "b7c1d4290574c1c617019efb0010a9f13848c0fbc0111325a69b0283c8efeee6",
+  "sha256After": "257e0709682f06cbac566dd1eaae98f05ac3be7bc3ff22bf619f7f88f2f43161"
+ },
+ {
+  "atlas": "P1ForesterRunearmorNoneDirections",
+  "state": "RuneArmorNone",
+  "outfit": "forester",
+  "selection": [
+   "p1-eight-way-lower-v1",
+   "p1-b2-runearmor-r5",
+   "p1-eight-way-hair-chestnut-v1",
+   "p1-eight-way-face-blue-v1"
+  ],
+  "sha256Before": "6e6e499baa768deec3d02e3f2e83d4fc50b1295f03d351de0c12326a7e904c8d",
+  "sha256After": "f2c5f9310693a51dae0f1ef4212e876e99599fc62bd32de3202a0166d457193b"
+ },
+ {
+  "atlas": "P1ForesterRunearmorNoneDiagonals",
+  "state": "RuneArmorNone",
+  "outfit": "forester",
+  "selection": [
+   "p1-eight-way-lower-v1",
+   "p1-b2-runearmor-r5",
+   "p1-eight-way-hair-chestnut-v1",
+   "p1-eight-way-face-blue-v1"
+  ],
+  "sha256Before": "9ab3268047b8385ed4877e584101caf1d59bf75de9fb5277698563cb35a02b18",
+  "sha256After": "2ee80d5afd38cfdac9bff42a044f89929e7d25d447cb77b65b8a499a7371413e"
+ },
+ {
+  "atlas": "P1ForesterRunearmorTrainingswordDirections",
+  "state": "RuneArmorTrainingSword",
+  "outfit": "forester",
+  "selection": [
+   "p1-eight-way-lower-v1",
+   "p1-b2-runearmor-r5",
+   "p1-eight-way-weapon-v1",
+   "p1-eight-way-hair-chestnut-v1",
+   "p1-eight-way-face-blue-v1"
+  ],
+  "sha256Before": "7a64eb67b07b6537df81d6856813ead283f94c4c0cad2ff82d80cf235edb903c",
+  "sha256After": "f51403a1820bd27de49f176ff28870ae47eadee2c07b6dbc076b5f698c76deee"
+ },
+ {
+  "atlas": "P1ForesterRunearmorTrainingswordDiagonals",
+  "state": "RuneArmorTrainingSword",
+  "outfit": "forester",
+  "selection": [
+   "p1-eight-way-lower-v1",
+   "p1-b2-runearmor-r5",
+   "p1-eight-way-weapon-v1",
+   "p1-eight-way-hair-chestnut-v1",
+   "p1-eight-way-face-blue-v1"
+  ],
+  "sha256Before": "c979d906477e21528b135ab88d5a21a73c81f2ba607d60b47c943cde92cd36a2",
+  "sha256After": "1a6123a41775fff61d0c867727ac9ed7a8679fd9143a97bbab39572df24a301f"
+ },
+ {
+  "atlas": "P1ForesterRunearmorHuntingbowDirections",
+  "state": "RuneArmorHuntingBow",
+  "outfit": "forester",
+  "selection": [
+   "p1-eight-way-lower-v1",
+   "p1-b2-runearmor-r5",
+   "p1-hunting-bow-v1",
+   "p1-eight-way-hair-chestnut-v1",
+   "p1-eight-way-face-blue-v1"
+  ],
+  "sha256Before": "5ca01c3dd610ad778e5fb197a37b4d21ce7818237b6cefded322cf7c23576043",
+  "sha256After": "92416afe16da46b526e44010c9b9350fb0d53b437d538d9484e8cf6fc8b0911e"
+ },
+ {
+  "atlas": "P1ForesterRunearmorHuntingbowDiagonals",
+  "state": "RuneArmorHuntingBow",
+  "outfit": "forester",
+  "selection": [
+   "p1-eight-way-lower-v1",
+   "p1-b2-runearmor-r5",
+   "p1-hunting-bow-v1",
+   "p1-eight-way-hair-chestnut-v1",
+   "p1-eight-way-face-blue-v1"
+  ],
+  "sha256Before": "edc12c7dde745ba761158a964c778515ccf137a6871b4f23692a7f0600c99853",
+  "sha256After": "0aac91556859508618f2eded36697bedf2989a89d20400329c292f609153f848"
+ },
+ {
+  "atlas": "P1ForesterRunearmorGreatswordDirections",
+  "state": "RuneArmorGreatSword",
+  "outfit": "forester",
+  "selection": [
+   "p1-eight-way-lower-v1",
+   "p1-b2-runearmor-r5",
+   "p1-b2-greatsword-v1",
+   "p1-eight-way-hair-chestnut-v1",
+   "p1-eight-way-face-blue-v1"
+  ],
+  "sha256Before": "39cf9519d0a350b861972f489a9ca9c575849337ce58a46b6bc8b099a96e07a6",
+  "sha256After": "0f609d280d694f3d28c5d80cd9b4b279313ed6229b152bd3fc2a6859485b94c7"
+ },
+ {
+  "atlas": "P1ForesterRunearmorGreatswordDiagonals",
+  "state": "RuneArmorGreatSword",
+  "outfit": "forester",
+  "selection": [
+   "p1-eight-way-lower-v1",
+   "p1-b2-runearmor-r5",
+   "p1-b2-greatsword-v1",
+   "p1-eight-way-hair-chestnut-v1",
+   "p1-eight-way-face-blue-v1"
+  ],
+  "sha256Before": "41c502f01503e3f83bdcc7d18937b23d29853d54c83e188660b2fe8ed257f6c9",
+  "sha256After": "00c611e8bbc27bef1147abe61bcdcde91292a733c85c6ba39dc64a56afb80bc1"
+ },
+ {
+  "atlas": "P1ForesterRunearmorLegendarystaffDirections",
+  "state": "RuneArmorLegendaryStaff",
+  "outfit": "forester",
+  "selection": [
+   "p1-eight-way-lower-v1",
+   "p1-b2-runearmor-r5",
+   "p1-b2-legendarystaff-v1",
+   "p1-eight-way-hair-chestnut-v1",
+   "p1-eight-way-face-blue-v1"
+  ],
+  "sha256Before": "e15c39f46e39fe18ef39966f840306252b965661c89f60fe98332a22076aa6de",
+  "sha256After": "d8da2ba895c9eb4a68892c3b44cbdc43cb2f67232b30077570251ef4d33684bd"
+ },
+ {
+  "atlas": "P1ForesterRunearmorLegendarystaffDiagonals",
+  "state": "RuneArmorLegendaryStaff",
+  "outfit": "forester",
+  "selection": [
+   "p1-eight-way-lower-v1",
+   "p1-b2-runearmor-r5",
+   "p1-b2-legendarystaff-v1",
+   "p1-eight-way-hair-chestnut-v1",
+   "p1-eight-way-face-blue-v1"
+  ],
+  "sha256Before": "4635126a17dd7096935d87baa359735802070a527266c63fc68aa151ec45d12c",
+  "sha256After": "fc915a33d7f6101828fdaf7d94e49469247512492bec506f1e7deee63f5eadef"
+ },
+ {
+  "atlas": "P1WayfarerDirections",
+  "state": "WayfarerTrainingSword",
+  "outfit": "wayfarer",
+  "selection": [
+   "p1-eight-way-wayfarer-v1",
+   "p1-eight-way-lower-v1",
+   "p1-eight-way-weapon-v1",
+   "p1-eight-way-hair-silver-v1",
+   "p1-eight-way-face-amber-v1"
+  ],
+  "sha256Before": "d54ff95577a8d8399b323f4e53206f1dff93a660ac98cd7259978bfa7c499711",
+  "sha256After": "ae981b3b5387e15acc9245c95d58d6ed357c87c2a28224d42dbcdd99bb4a721d"
+ },
+ {
+  "atlas": "P1WayfarerDiagonals",
+  "state": "WayfarerTrainingSword",
+  "outfit": "wayfarer",
+  "selection": [
+   "p1-eight-way-wayfarer-v1",
+   "p1-eight-way-lower-v1",
+   "p1-eight-way-weapon-v1",
+   "p1-eight-way-hair-silver-v1",
+   "p1-eight-way-face-amber-v1"
+  ],
+  "sha256Before": "aba51ecb542cdf5317be32fcb3894ace607ea6198e435665e983cc4a06c7803a",
+  "sha256After": "8aad3bdd9daea60307c5e16c276d7f950531da900b1efd9cbf1c53c96c75b68e"
+ },
+ {
+  "atlas": "P1WayfarerUnarmedDirections",
+  "state": "WayfarerNone",
+  "outfit": "wayfarer",
+  "selection": [
+   "p1-eight-way-wayfarer-v1",
+   "p1-eight-way-lower-v1",
+   "p1-eight-way-hair-silver-v1",
+   "p1-eight-way-face-amber-v1"
+  ],
+  "sha256Before": "d4bdbdbde2eed60f8971bc892162933fcd3d75b93ac9be9a65296b171af12bcf",
+  "sha256After": "778902611add9e79b321fdb84e79ed95fe94056f2d741e620f470fdbcfcd5fea"
+ },
+ {
+  "atlas": "P1WayfarerUnarmedDiagonals",
+  "state": "WayfarerNone",
+  "outfit": "wayfarer",
+  "selection": [
+   "p1-eight-way-wayfarer-v1",
+   "p1-eight-way-lower-v1",
+   "p1-eight-way-hair-silver-v1",
+   "p1-eight-way-face-amber-v1"
+  ],
+  "sha256Before": "72194c4c31f0c188e4afc6edaba64d7f905197014547245ecd04920689eab1d3",
+  "sha256After": "2891b18de8696016e86ec8706852bec18a591ac786858b447275df07d01427bb"
+ },
+ {
+  "atlas": "P1WayfarerBowDirections",
+  "state": "WayfarerHuntingBow",
+  "outfit": "wayfarer",
+  "selection": [
+   "p1-eight-way-wayfarer-v1",
+   "p1-eight-way-lower-v1",
+   "p1-hunting-bow-v1",
+   "p1-eight-way-hair-silver-v1",
+   "p1-eight-way-face-amber-v1"
+  ],
+  "sha256Before": "628359248d35dad3de8e6921bfa0c652eca768e5f73a9cc551865873faadcde0",
+  "sha256After": "437e5ea8a42a34ee228a0811228ce6cb17cf07c9620d805d933fbcec338c8de8"
+ },
+ {
+  "atlas": "P1WayfarerBowDiagonals",
+  "state": "WayfarerHuntingBow",
+  "outfit": "wayfarer",
+  "selection": [
+   "p1-eight-way-wayfarer-v1",
+   "p1-eight-way-lower-v1",
+   "p1-hunting-bow-v1",
+   "p1-eight-way-hair-silver-v1",
+   "p1-eight-way-face-amber-v1"
+  ],
+  "sha256Before": "fa085d94beb84ac58c6548ae988e9788697d71c748c32a8921a46b6262069bf9",
+  "sha256After": "314fccaa45eecb1e05024e0491fb8941b0ec84c2b978c2c2aa3057ffa345c6cb"
+ },
+ {
+  "atlas": "P1WayfarerGreatSwordDirections",
+  "state": "WayfarerGreatSword",
+  "outfit": "wayfarer",
+  "selection": [
+   "p1-eight-way-wayfarer-v1",
+   "p1-eight-way-lower-v1",
+   "p1-b2-greatsword-v1",
+   "p1-eight-way-hair-silver-v1",
+   "p1-eight-way-face-amber-v1"
+  ],
+  "sha256Before": "ab990be48dbe657930b41c28d63ae385bd30b54e09d04ed6153b3204b5aebdbe",
+  "sha256After": "7dc108ab6b171762dedbc31dbb95c3ffc98def60c94374d28d93759e7182efca"
+ },
+ {
+  "atlas": "P1WayfarerGreatSwordDiagonals",
+  "state": "WayfarerGreatSword",
+  "outfit": "wayfarer",
+  "selection": [
+   "p1-eight-way-wayfarer-v1",
+   "p1-eight-way-lower-v1",
+   "p1-b2-greatsword-v1",
+   "p1-eight-way-hair-silver-v1",
+   "p1-eight-way-face-amber-v1"
+  ],
+  "sha256Before": "34d64acbfec9292cce8d58bbf8ed548a0e40b674dba7cc1020c7b42c72b5f4b3",
+  "sha256After": "f5fb1312c7f38b41cb55acf8477015062aaeb2e1ebda296f75460b61f135c2c7"
+ },
+ {
+  "atlas": "P1WayfarerLegendaryStaffDirections",
+  "state": "WayfarerLegendaryStaff",
+  "outfit": "wayfarer",
+  "selection": [
+   "p1-eight-way-wayfarer-v1",
+   "p1-eight-way-lower-v1",
+   "p1-b2-legendarystaff-v1",
+   "p1-eight-way-hair-silver-v1",
+   "p1-eight-way-face-amber-v1"
+  ],
+  "sha256Before": "c9ccecd31ffa45a87653f023b9dac57c70c9c0cfb6bfa3746c50cff34cc4b9bd",
+  "sha256After": "44da032c170ab06d7b7fe9df808e72e7f3846ae52207e5a1ced0114c98c43503"
+ },
+ {
+  "atlas": "P1WayfarerLegendaryStaffDiagonals",
+  "state": "WayfarerLegendaryStaff",
+  "outfit": "wayfarer",
+  "selection": [
+   "p1-eight-way-wayfarer-v1",
+   "p1-eight-way-lower-v1",
+   "p1-b2-legendarystaff-v1",
+   "p1-eight-way-hair-silver-v1",
+   "p1-eight-way-face-amber-v1"
+  ],
+  "sha256Before": "00be929cbf739a61173b17c949177ea37f9b9b4b58a30f6b92af5c4219e65b4e",
+  "sha256After": "2a696dba23d111afa6a4d145887696fc6334c234b518580d1d8bc52716ceacf5"
+ },
+ {
+  "atlas": "P1WayfarerLeatherarmorNoneDirections",
+  "state": "LeatherArmorNone",
+  "outfit": "wayfarer",
+  "selection": [
+   "p1-eight-way-lower-v1",
+   "p1-b2-leatherarmor-r4",
+   "p1-eight-way-hair-silver-v1",
+   "p1-eight-way-face-amber-v1"
+  ],
+  "sha256Before": "8ab5cf138868ee8c57ef1ac60c11f1664ed76d0bc77351e15f0d5b488e0ecd8a",
+  "sha256After": "9939ee915998447fc4d825741e7818e6946d0825fedbe6680e756285153631cf"
+ },
+ {
+  "atlas": "P1WayfarerLeatherarmorNoneDiagonals",
+  "state": "LeatherArmorNone",
+  "outfit": "wayfarer",
+  "selection": [
+   "p1-eight-way-lower-v1",
+   "p1-b2-leatherarmor-r4",
+   "p1-eight-way-hair-silver-v1",
+   "p1-eight-way-face-amber-v1"
+  ],
+  "sha256Before": "2316dd62f2d4ace53e0927cec679b08c59e27b358fb6aeb0e498b10db528e0bb",
+  "sha256After": "d886587c18880326a3ba8b56c7c9180abb79036aa50215e66f44cce860422ebd"
+ },
+ {
+  "atlas": "P1WayfarerLeatherarmorTrainingswordDirections",
+  "state": "LeatherArmorTrainingSword",
+  "outfit": "wayfarer",
+  "selection": [
+   "p1-eight-way-lower-v1",
+   "p1-b2-leatherarmor-r4",
+   "p1-eight-way-weapon-v1",
+   "p1-eight-way-hair-silver-v1",
+   "p1-eight-way-face-amber-v1"
+  ],
+  "sha256Before": "85d8992abd80da3762031271236ddfa6f380590cdaf6702acb64a5c3b07fddaf",
+  "sha256After": "2e3bebdee9830e21c8dcac4e7faa304e634e3dbc111d231711a3177ec1c7ae37"
+ },
+ {
+  "atlas": "P1WayfarerLeatherarmorTrainingswordDiagonals",
+  "state": "LeatherArmorTrainingSword",
+  "outfit": "wayfarer",
+  "selection": [
+   "p1-eight-way-lower-v1",
+   "p1-b2-leatherarmor-r4",
+   "p1-eight-way-weapon-v1",
+   "p1-eight-way-hair-silver-v1",
+   "p1-eight-way-face-amber-v1"
+  ],
+  "sha256Before": "fe8641b1e4d976c91176547af8fb2132079d92ad6032e4e8e937016ff5f05f16",
+  "sha256After": "879d3843dbf1d6e9a8e373df9c650d4ae5bc0b44c7255ad993a8bceb915be9af"
+ },
+ {
+  "atlas": "P1WayfarerLeatherarmorHuntingbowDirections",
+  "state": "LeatherArmorHuntingBow",
+  "outfit": "wayfarer",
+  "selection": [
+   "p1-eight-way-lower-v1",
+   "p1-b2-leatherarmor-r4",
+   "p1-hunting-bow-v1",
+   "p1-eight-way-hair-silver-v1",
+   "p1-eight-way-face-amber-v1"
+  ],
+  "sha256Before": "bcb827f084cea6f364081be868b685eecfaa434e4df87d0382c1d4a4eb867e67",
+  "sha256After": "ed36cd6f9612810471811021ade81c23640c352a1019e7800942901c436522b2"
+ },
+ {
+  "atlas": "P1WayfarerLeatherarmorHuntingbowDiagonals",
+  "state": "LeatherArmorHuntingBow",
+  "outfit": "wayfarer",
+  "selection": [
+   "p1-eight-way-lower-v1",
+   "p1-b2-leatherarmor-r4",
+   "p1-hunting-bow-v1",
+   "p1-eight-way-hair-silver-v1",
+   "p1-eight-way-face-amber-v1"
+  ],
+  "sha256Before": "1431c5d126b099b2a4a7087d08c2c25471a7ecfc33f60a690cd2751da764c38f",
+  "sha256After": "b7b682d1fd4daecde98ff37cba7744d45d0dcafe758c9ed85d4914283ff17f2a"
+ },
+ {
+  "atlas": "P1WayfarerLeatherarmorGreatswordDirections",
+  "state": "LeatherArmorGreatSword",
+  "outfit": "wayfarer",
+  "selection": [
+   "p1-eight-way-lower-v1",
+   "p1-b2-leatherarmor-r4",
+   "p1-b2-greatsword-v1",
+   "p1-eight-way-hair-silver-v1",
+   "p1-eight-way-face-amber-v1"
+  ],
+  "sha256Before": "106de7f9fa570756e9ef83ec147f57bd5cfb31568a45026a5f7a13d9d6f5a342",
+  "sha256After": "452248d21ba627f0007fecea6632181fe753180f153442fb7b3a37ec4da69231"
+ },
+ {
+  "atlas": "P1WayfarerLeatherarmorGreatswordDiagonals",
+  "state": "LeatherArmorGreatSword",
+  "outfit": "wayfarer",
+  "selection": [
+   "p1-eight-way-lower-v1",
+   "p1-b2-leatherarmor-r4",
+   "p1-b2-greatsword-v1",
+   "p1-eight-way-hair-silver-v1",
+   "p1-eight-way-face-amber-v1"
+  ],
+  "sha256Before": "676ee11c3ab5fe74cded3aa3d6eaf42caa40f5a9225c8169c3b3d5fe157b326f",
+  "sha256After": "057be2c7b1cfa0acf341dd5c91ca69c982aff09b58e8142bf43bb4d9e70d24c3"
+ },
+ {
+  "atlas": "P1WayfarerLeatherarmorLegendarystaffDirections",
+  "state": "LeatherArmorLegendaryStaff",
+  "outfit": "wayfarer",
+  "selection": [
+   "p1-eight-way-lower-v1",
+   "p1-b2-leatherarmor-r4",
+   "p1-b2-legendarystaff-v1",
+   "p1-eight-way-hair-silver-v1",
+   "p1-eight-way-face-amber-v1"
+  ],
+  "sha256Before": "76d8cb7c8a329b41f4ca8db6161301db543b966e01b085207bc7e7fc84d606e5",
+  "sha256After": "7454fd439cde1d24eda91ecf9457dfa049a10f01a3da81da188df9f8ae9782b4"
+ },
+ {
+  "atlas": "P1WayfarerLeatherarmorLegendarystaffDiagonals",
+  "state": "LeatherArmorLegendaryStaff",
+  "outfit": "wayfarer",
+  "selection": [
+   "p1-eight-way-lower-v1",
+   "p1-b2-leatherarmor-r4",
+   "p1-b2-legendarystaff-v1",
+   "p1-eight-way-hair-silver-v1",
+   "p1-eight-way-face-amber-v1"
+  ],
+  "sha256Before": "25caa36d0136a0d871ba46a048ed8a61c75d01112f622e4b73df182b47e660bd",
+  "sha256After": "d4b7887da6ae0813236e8a91dddbcb0a5ef605c91a414c5988b6b1b1755600a2"
+ },
+ {
+  "atlas": "P1WayfarerRunearmorNoneDirections",
+  "state": "RuneArmorNone",
+  "outfit": "wayfarer",
+  "selection": [
+   "p1-eight-way-lower-v1",
+   "p1-b2-runearmor-r5",
+   "p1-eight-way-hair-silver-v1",
+   "p1-eight-way-face-amber-v1"
+  ],
+  "sha256Before": "97cade7131cf280831c0dd11676f1f3421067897c2f50ff99c7bd35795a65064",
+  "sha256After": "47f913a8f449281e02e0ec4b8189026cb81c93369d12656ef727defcdb93ac5e"
+ },
+ {
+  "atlas": "P1WayfarerRunearmorNoneDiagonals",
+  "state": "RuneArmorNone",
+  "outfit": "wayfarer",
+  "selection": [
+   "p1-eight-way-lower-v1",
+   "p1-b2-runearmor-r5",
+   "p1-eight-way-hair-silver-v1",
+   "p1-eight-way-face-amber-v1"
+  ],
+  "sha256Before": "d0f51a435ebd86fd05197624921c0e8786388836754888ac9b96e24aa6c51e57",
+  "sha256After": "fbabf591389d9dce3ed5e14e00333cd85375581eba920ec00e3bea2da1028d5b"
+ },
+ {
+  "atlas": "P1WayfarerRunearmorTrainingswordDirections",
+  "state": "RuneArmorTrainingSword",
+  "outfit": "wayfarer",
+  "selection": [
+   "p1-eight-way-lower-v1",
+   "p1-b2-runearmor-r5",
+   "p1-eight-way-weapon-v1",
+   "p1-eight-way-hair-silver-v1",
+   "p1-eight-way-face-amber-v1"
+  ],
+  "sha256Before": "87c047ec9e0c595e55eeb3fb8f304e7740f5f17f7e7f7876e1c1fc9c52f19024",
+  "sha256After": "3b8022263a3d9628db95d558e5312abaac960d2c69b7e8c28b27e975bb144093"
+ },
+ {
+  "atlas": "P1WayfarerRunearmorTrainingswordDiagonals",
+  "state": "RuneArmorTrainingSword",
+  "outfit": "wayfarer",
+  "selection": [
+   "p1-eight-way-lower-v1",
+   "p1-b2-runearmor-r5",
+   "p1-eight-way-weapon-v1",
+   "p1-eight-way-hair-silver-v1",
+   "p1-eight-way-face-amber-v1"
+  ],
+  "sha256Before": "d6808530550c21c4ee1316527af99ae532891b47f775f3cad11d22c5b75e25d1",
+  "sha256After": "c70dd5ef98fd33093dd85774e69f7253c367f071def0e41e7bd2aa7f261db70d"
+ },
+ {
+  "atlas": "P1WayfarerRunearmorHuntingbowDirections",
+  "state": "RuneArmorHuntingBow",
+  "outfit": "wayfarer",
+  "selection": [
+   "p1-eight-way-lower-v1",
+   "p1-b2-runearmor-r5",
+   "p1-hunting-bow-v1",
+   "p1-eight-way-hair-silver-v1",
+   "p1-eight-way-face-amber-v1"
+  ],
+  "sha256Before": "3698c4ea40155c95df8a4829ecf23f61ee4164e13a813c7c066ca8388fb1197b",
+  "sha256After": "1ba89bf3315949cb2aec7ffdeabbf566515c104a6f3dcb2ee472cc0ceafbdab1"
+ },
+ {
+  "atlas": "P1WayfarerRunearmorHuntingbowDiagonals",
+  "state": "RuneArmorHuntingBow",
+  "outfit": "wayfarer",
+  "selection": [
+   "p1-eight-way-lower-v1",
+   "p1-b2-runearmor-r5",
+   "p1-hunting-bow-v1",
+   "p1-eight-way-hair-silver-v1",
+   "p1-eight-way-face-amber-v1"
+  ],
+  "sha256Before": "06350c004a938eb81d07f502728dcc8a08e56fc68a8b2c8c4b193b54af4ea155",
+  "sha256After": "60f8fba54ff03b3b42c514db70674bb690437e06d00f8d5c08b37a24b930a4ac"
+ },
+ {
+  "atlas": "P1WayfarerRunearmorGreatswordDirections",
+  "state": "RuneArmorGreatSword",
+  "outfit": "wayfarer",
+  "selection": [
+   "p1-eight-way-lower-v1",
+   "p1-b2-runearmor-r5",
+   "p1-b2-greatsword-v1",
+   "p1-eight-way-hair-silver-v1",
+   "p1-eight-way-face-amber-v1"
+  ],
+  "sha256Before": "848ee2684e5212622c9c0472787a79d90ec389010a6ce8e6b45b81f724ee3007",
+  "sha256After": "17838391618af7b219150e201bbea674c4c29fbd064ef8d9486a70d5ff6116a8"
+ },
+ {
+  "atlas": "P1WayfarerRunearmorGreatswordDiagonals",
+  "state": "RuneArmorGreatSword",
+  "outfit": "wayfarer",
+  "selection": [
+   "p1-eight-way-lower-v1",
+   "p1-b2-runearmor-r5",
+   "p1-b2-greatsword-v1",
+   "p1-eight-way-hair-silver-v1",
+   "p1-eight-way-face-amber-v1"
+  ],
+  "sha256Before": "cfa857147363add51d48675c65ddd964342eb92991001bcc39c2efdf48d3e1d9",
+  "sha256After": "225eafa2823333bebd856296fd668034abc0fb23f0a6c19e34c0f87e4ac50812"
+ },
+ {
+  "atlas": "P1WayfarerRunearmorLegendarystaffDirections",
+  "state": "RuneArmorLegendaryStaff",
+  "outfit": "wayfarer",
+  "selection": [
+   "p1-eight-way-lower-v1",
+   "p1-b2-runearmor-r5",
+   "p1-b2-legendarystaff-v1",
+   "p1-eight-way-hair-silver-v1",
+   "p1-eight-way-face-amber-v1"
+  ],
+  "sha256Before": "5c15b995d7014170664935a30e64f993179edb41f8a5a577539c9cb33e34e04a",
+  "sha256After": "ef00ffa033419210b6944ef700814fd0da438e0b7d4c963176dd8b06853f1b78"
+ },
+ {
+  "atlas": "P1WayfarerRunearmorLegendarystaffDiagonals",
+  "state": "RuneArmorLegendaryStaff",
+  "outfit": "wayfarer",
+  "selection": [
+   "p1-eight-way-lower-v1",
+   "p1-b2-runearmor-r5",
+   "p1-b2-legendarystaff-v1",
+   "p1-eight-way-hair-silver-v1",
+   "p1-eight-way-face-amber-v1"
+  ],
+  "sha256Before": "5b150ae9d26498938cda71fcb543207f07444a047baa379404ae45bae31bd386",
+  "sha256After": "bb03e1fe78903fb67fd3e2301b2e114b5e7dcae3bda61e8bc9b117bc6090fcd4"
+ }
+]
