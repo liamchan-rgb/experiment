@@ -122,6 +122,7 @@ struct Evaluation {
 
     mutating func execute(_ command: GameCommand) throws {
         switch command {
+        case .configureCampaignSite(let node,let config):try configureCampaignSite(node:node,configuration:config)
         case .tradeCampaignSite(let actor,let item,let buy):try tradeCampaignSite(actor:actor,item:item,buy:buy)
         case .resolveCampaignSite(let actor,let accept):try resolveCampaignSite(actor:actor,accept:accept)
         case .campaignMove(let actors,let node):

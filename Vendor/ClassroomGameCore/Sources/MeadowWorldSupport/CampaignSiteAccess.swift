@@ -7,6 +7,9 @@ public extension MeadowCampaignSession {
         let rows=layout.map.nodes.filter{$0.kind == .empty}.map{node in "#\(node.id) \(names[CampaignSiteRules.kind(node:node,seed:layout.map.seed)!]!)"}
         return "营地可交易；空地点服务由地图种子固定（不新增节点）："+(rows.isEmpty ? "无空地点，无额外事件。":rows.joined(separator:"、"))
     }
+    @discardableResult func configureSite(node:Int,configuration:CampaignSiteConfiguration)throws->OperationReceipt {
+        guard canManageInventory else{throw GameError("请先完成移动并结束战斗，再编辑地点。")};return try engine.apply(.configureCampaignSite(node:node,configuration:configuration))
+    }
     func siteKind(node:Int)->CampaignSiteKind? {
         guard let n=engine.state.map.nodes.first(where:{$0.id==node}) else{return nil}
         return CampaignSiteRules.kind(node:n,seed:engine.state.map.seed)

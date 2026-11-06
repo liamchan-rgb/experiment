@@ -1,0 +1,60 @@
+{
+  "upstreamRepository": "liamchan-rgb/classroom-boardgame",
+  "mainSource": "1e9100c4c18364ea64b3ec974fe957ba4ef42f6f",
+  "battleSource": "a0427b83d9233f1a83178b3c47d3fab39eed664e",
+  "upstreamReadOnly": true,
+  "upstreamAppExecuted": false,
+  "bridgeImplemented": false,
+  "coreOriginalFilesChanged": [
+    {
+      "path": "Sources/ClassroomGameCore/Rules.swift",
+      "original": "f87e42dcf0947f04be3a3fe649f8753c7b7073819c4fa6d53fad23d19bcb06d8",
+      "current": "8eb8b505146aa0c887158427fff438a9d1375ab3278ecc93b2b4ab9896f7f0bd"
+    },
+    {
+      "path": "Sources/ClassroomGameCore/GameState.swift",
+      "original": "0b0afe748f20a7ea0018b910a23bbfee8bdf79a7b7237bfa073dd7f2547073a6",
+      "current": "9c7eb0a6d27cdb0fc18551306eb5eae3b9b2ad47096b3b8fb937d7e2092c109d"
+    },
+    {
+      "path": "Sources/ClassroomGameCore/PlayProjection.swift",
+      "original": "5eb34e456f666de21118dd87ff55105a03e5b69f7a7335e8d1eea0a6e3f78454",
+      "current": "4b941f2e1e9a721924ff4bb2c33e40c9bd5eedab2a88f92bb7f3a785fe83b0c2"
+    },
+    {
+      "path": "Sources/ClassroomGameCore/GameEngine.swift",
+      "original": "fd7af9210e625efcf508fe5cf3c1465b4af46479d523f6ab73887c8029f22c49",
+      "current": "e377d85429f23f71e5cb19273ec4c276772eaab91380f4946e63e623dae83ddd"
+    }
+  ],
+  "inspectedFiles": [
+    {
+      "path": "README.md",
+      "sha256": "a554cc298984ad9648df74cd73a56f5087ecd9c6678cd739a3f93099c013b1ac"
+    },
+    {
+      "path": "native/ClassroomProbe/App.swift",
+      "sha256": "6e322e875e664ab998e297526427f3bf89d3a41ec78eeec56fcac8a4ff5a34b3"
+    },
+    {
+      "path": "native/ClassroomProbe/Views.swift",
+      "sha256": "6036700d3614b83a3893cd9f1959770978ce8bec5b64d3c4da9a6d38a8acf989"
+    },
+    {
+      "path": "native/ClassroomProbe/TeacherSession.swift",
+      "sha256": "db8eeafdfd7018533211deb389f6f2c36cbcfa40e0e67877cec73519054d4c21"
+    },
+    {
+      "path": "native/ClassroomProbe/PVEAppSession.swift",
+      "sha256": "d76ff200d1e38e6f4a7cea97c443a7bda5d0bea44338ff73d1829c9e414904e9"
+    },
+    {
+      "path": "native/Packages/GameCore/Sources/ClassroomGameCore/PublicProjection.swift",
+      "sha256": "96431486e4da5739333973eb395b52a6865166aaa408d8cafdcc0b883b3709e8"
+    },
+    {
+      "path": "native/Packages/GameCore/Sources/ClassroomGameCore/PVEPlaySession.swift",
+      "sha256": "773a3c551953f9391856cb6ed7b8b4028183d2fafdb9f5ba74e19dc1f7043f4a"
+    }
+  ]
+}

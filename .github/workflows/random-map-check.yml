@@ -89,7 +89,7 @@ jobs:
             CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO 2>&1 | tee build/archive.log
           python3 scripts/resource-source-manifest.py > build/resource-sources.json
           /usr/bin/assetutil --info build/MeadowJourney.xcarchive/Products/Applications/MeadowJourney.app/Assets.car > build/asset-catalog.json
-          bash scripts/package-ipa.sh build/MeadowJourney.xcarchive build/MeadowJourney-b94.ipa
+          bash scripts/package-ipa.sh build/MeadowJourney.xcarchive build/MeadowJourney-b95.ipa
       - uses: actions/upload-artifact@v7
         if: always()
         with:

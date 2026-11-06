@@ -865,22 +865,24 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
     private func showCampaignSite(actor:String,node:MapNode) {
         guard let campaign,let kind=campaign.siteKind(node:node.id),let unit=campaign.engine.state.units[actor] else{return}
         if kind == .shop {
-            let menu=UIAlertController(title:"行商 · #\(node.id)",message:"\(unit.name) · 个人金币 \(unit.coins)\n买卖均为1件；物品进入购买者行囊，不自动装备。价格沿用原目录。",preferredStyle:.actionSheet)
+            let menu=UIAlertController(title:"行商 · #\(node.id)",message:"\(unit.name) · 个人金币 \(unit.coins)\n买卖均为1件；物品进入购买者行囊，不自动装备。当前价格按此地保存的比例计算。",preferredStyle:.actionSheet)
             for player in campaign.engine.state.players where player.isAlive && player.nodeID==node.id && player.id != actor {
                 menu.addAction(UIAlertAction(title:"改由 "+player.name+" 交易",style:.default){[weak self] _ in self?.showCampaignSite(actor:player.id,node:node)})
             }
             for item in campaign.engine.catalog.items where item.purchasePrice != nil && item.setID==nil {
-                let price=item.purchasePrice!
+                let price=(try? CampaignSiteRules.price(item:item,buy:true,node:node,seed:campaign.engine.state.map.seed)) ?? item.purchasePrice!
                 let action=UIAlertAction(title:"买 · \(item.name) · \(price) 金币",style:.default){[weak self] _ in self?.confirmSiteTrade(actor:actor,item:item,buy:true)}
                 action.isEnabled=unit.coins>=price;menu.addAction(action)
             }
             for item in campaign.engine.catalog.items where (unit.inventory[item.id] ?? 0)>0 && item.sellPrice>0 {
-                menu.addAction(UIAlertAction(title:"卖 · \(item.name) ×\(unit.inventory[item.id]!) · \(item.sellPrice) 金币",style:.default){[weak self] _ in self?.confirmSiteTrade(actor:actor,item:item,buy:false)})
+                let selling=(try? CampaignSiteRules.price(item:item,buy:false,node:node,seed:campaign.engine.state.map.seed)) ?? item.sellPrice
+                menu.addAction(UIAlertAction(title:"卖 · \(item.name) ×\(unit.inventory[item.id]!) · \(selling) 金币",style:.default){[weak self] _ in self?.confirmSiteTrade(actor:actor,item:item,buy:false)})
             }
             menu.addAction(UIAlertAction(title:"离开商店",style:.cancel));menu.popoverPresentationController?.sourceView=campaignBattle;menu.popoverPresentationController?.sourceRect=campaignBattle.bounds;presentSiteScreen(menu)
         }else {
             let title=kind == .satchel ? "路边失物":"林间清泉"
-            let message=kind == .satchel ? "\(unit.name) 拾取5金币。":"\(unit.name) 恢复最多4生命，不超过个人上限；满血时可换成员再来。"
+            let config=CampaignSiteRules.configuration(node:node,seed:campaign.engine.state.map.seed)!
+            let message=kind == .satchel ? "\(unit.name) 拾取\(config.gold)金币。":"\(unit.name) 恢复最多\(config.healing)生命，不超过个人上限；满血时可换成员再来。"
             let alert=UIAlertController(title:title,message:message+"\n此地点全队仅处理一次。暂不处理可稍后回来；明确离开则结束事件。",preferredStyle:.alert)
             alert.addAction(UIAlertAction(title:"暂不处理",style:.cancel))
             for player in campaign.engine.state.players where player.isAlive && player.nodeID==node.id && player.id != actor {
@@ -901,7 +903,8 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
     }
     private func confirmSiteTrade(actor:String,item:ItemDefinition,buy:Bool) {
         guard let campaign else{return}
-        let price=buy ? (item.purchasePrice ?? 0):item.sellPrice,id=UUID().uuidString
+        guard let u=campaign.engine.state.units[actor],let node=campaign.engine.state.map.nodes.first(where:{$0.id==u.nodeID}),let price=try? CampaignSiteRules.price(item:item,buy:buy,node:node,seed:campaign.engine.state.map.seed) else{return}
+        let id=UUID().uuidString
         let alert=UIAlertController(title:(buy ? "购买":"出售")+item.name,message:"\(campaign.engine.state.units[actor]?.name ?? actor) · \(buy ? "支付":"获得") \(price) 个人金币 · 1件\n只变更此成员的金币和行囊，取消不交易。",preferredStyle:.alert)
         alert.addAction(UIAlertAction(title:"取消",style:.cancel))
         alert.addAction(UIAlertAction(title:"确认交易",style:.default){[weak self] _ in
@@ -922,14 +925,59 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
         scene.selectingCampaignNode=true
         campaignEdit.configuration?.title="取消选点"
         refreshCampaignStatus(allowBattleOpen:false)
-        showCampaignMessage("点击地图上的战斗、首领或补给建筑进行编辑")
+        showCampaignMessage("点击地图上的建筑，编辑遭遇、补给或商店/事件参数")
     }
     private func editNodeContents(_ id:Int) {
         guard let campaign,let node=campaign.engine.state.map.nodes.first(where:{$0.id==id}) else{return}
         switch node.kind {
         case .combat,.boss:chooseEncounter(node:id)
         case .reward:chooseRewardAction(node:node)
-        case .start,.empty:showCampaignMessage("起点和空地点没有可编辑的怪物或补给内容。")
+        case .start,.empty:chooseSiteConfiguration(node:node)
+        }
+    }
+    private func chooseSiteConfiguration(node:MapNode) {
+        guard let campaign else{return}
+        guard node.siteResolved != true else {
+            let c=CampaignSiteRules.configuration(node:node,seed:campaign.engine.state.map.seed)!
+            let alert=UIAlertController(title:"已处理事件 · 只读",message:"买价\(c.buyPercent)% · 卖价\(c.sellPercent)%\n失物\(c.gold)金币 · 清泉回复\(c.healing)\n不能重置或再次发奖。",preferredStyle:.alert)
+            alert.addAction(UIAlertAction(title:"关闭",style:.cancel));presentSiteScreen(alert);return
+        }
+        let menu=UIAlertController(title:"编辑地点服务 · #\(node.id)",message:"只改本地点；不移动建筑，不改变金币、生命或库存。已处理事件不能编辑。营地保留商店。",preferredStyle:.actionSheet)
+        for (kind,name) in [(CampaignSiteKind.shop,"商店"),(.satchel,"失物"),(.spring,"清泉")] where node.kind != .start || kind == .shop {
+            menu.addAction(UIAlertAction(title:name,style:.default){[weak self] _ in
+                var c=CampaignSiteRules.configuration(node:node,seed:campaign.engine.state.map.seed) ?? .init(kind:kind);c.kind=kind
+                self?.editSiteConfiguration(node:node.id,draft:c)
+            })
+        }
+        menu.addAction(UIAlertAction(title:"取消",style:.cancel));menu.popoverPresentationController?.sourceView=campaignEdit;menu.popoverPresentationController?.sourceRect=campaignEdit.bounds;presentSiteScreen(menu)
+    }
+    private func editSiteConfiguration(node:Int,draft:CampaignSiteConfiguration) {
+        let title:[CampaignSiteKind:String]=[.shop:"商店",.satchel:"失物",.spring:"清泉"]
+        let alert=UIAlertController(title:"\(title[draft.kind]!)参数 · #\(node)",message:"依次为买价%、卖价%、失物金币、清泉恢复。100%=原目录价格。比例10—500%，金币1—1000、恢复1—100。未启用类型的参数暂存；卖价不得高于买价。保存不重置事件、不发奖。",preferredStyle:.alert)
+        for (name,value) in zip(["买价比例 %","卖价比例 %","失物金币","清泉恢复"],[draft.buyPercent,draft.sellPercent,draft.gold,draft.healing]) {
+            alert.addTextField{f in f.placeholder=name;f.accessibilityLabel=name;f.text=String(value);f.keyboardType = .numberPad;f.borderStyle = .roundedRect
+                let label=UILabel(frame:CGRect(x:0,y:0,width:108,height:30));label.text=" "+name;label.font = .boldSystemFont(ofSize:16);label.textColor = .label
+                f.leftView=label;f.leftViewMode = .always}
+        }
+        alert.addAction(UIAlertAction(title:"取消",style:.cancel))
+        alert.addAction(UIAlertAction(title:"保存本地点",style:.default){[weak self,weak alert] _ in
+            guard let fields=alert?.textFields else{return}
+            let values=fields.map{Int($0.text ?? "") ?? -1}
+            guard values.count==4 else{return}
+            let c=CampaignSiteConfiguration(kind:draft.kind,buyPercent:values[0],sellPercent:values[1],gold:values[2],healing:values[3])
+            self?.saveSiteConfiguration(node:node,draft:c)
+        });presentSiteScreen(alert)
+    }
+    private func saveSiteConfiguration(node:Int,draft:CampaignSiteConfiguration) {
+        guard let campaign else{return}
+        do {
+            try campaign.configureSite(node:node,configuration:draft)
+            scene.refreshCampaign();refreshCampaignStatus(allowBattleOpen:false);showCampaignMessage("地点参数已保存；原资源和处理状态保留。")
+        }catch {
+            let alert=UIAlertController(title:"参数未保存",message:error.localizedDescription,preferredStyle:.alert)
+            alert.addAction(UIAlertAction(title:"返回编辑",style:.default){[weak self] _ in self?.editSiteConfiguration(node:node,draft:draft)})
+            alert.addAction(UIAlertAction(title:"重试保存",style:.default){[weak self] _ in self?.saveSiteConfiguration(node:node,draft:draft)})
+            alert.addAction(UIAlertAction(title:"取消",style:.cancel));presentSiteScreen(alert)
         }
     }
     private func chooseRewardAction(node:MapNode) {
