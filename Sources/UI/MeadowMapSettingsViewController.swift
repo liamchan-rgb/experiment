@@ -59,7 +59,7 @@ final class MeadowMapSettingsViewController: UIViewController {
         let seed=button("换个种子",action:#selector(newSeed));form.addArrangedSubview(seed)
         let close=button("返回原地图",action:#selector(close));form.addArrangedSubview(close)
         let heading=UILabel();heading.text="建筑与道路预览";heading.font = .boldSystemFont(ofSize:22);heading.textColor=gold
-        let note=UILabel();note.text="数量与滑块联动，可预览后开始双人探索。单首领行程不足4处普通战斗或2处补给时先用巨魔；长行程可能出现魔龙，多首领配置保留末段魔龙。"
+        let note=UILabel();note.text="生成地图后开始双人行程；向下可分别选择P1、P2职业或继续旧档。实际怪物编队见页面末尾。"
         note.font = .systemFont(ofSize:17,weight:.medium);note.textColor = .white;note.numberOfLines=0
         status.textColor=gold;status.numberOfLines=0;status.font = .boldSystemFont(ofSize:17)
         encounters.textColor = .white;encounters.numberOfLines=0;encounters.font = .systemFont(ofSize:16,weight:.semibold)
@@ -69,11 +69,11 @@ final class MeadowMapSettingsViewController: UIViewController {
         enterButton.addTarget(self,action:#selector(enter),for:.touchUpInside)
         right.addArrangedSubview(heading);right.addArrangedSubview(note);right.addArrangedSubview(preview)
         right.addArrangedSubview(status);right.addArrangedSubview(generateButton);right.addArrangedSubview(enterButton)
-        right.addArrangedSubview(encounters)
         startCampaignButton.configuration=button("开始新行程",action:#selector(startCampaign)).configuration
         startCampaignButton.addTarget(self,action:#selector(startCampaign),for:.touchUpInside)
         for (i,selector) in [campaignClass,companionClass].enumerated() {
             let label=UILabel();label.text="P\(i+1)职业";label.font = .boldSystemFont(ofSize:17);label.textColor=gold
+            selector.accessibilityLabel="P\(i+1)职业"
             selector.selectedSegmentIndex=i==0 ? 2:1
             selector.setTitleTextAttributes([.foregroundColor:UIColor.white,.font:UIFont.boldSystemFont(ofSize:16)],for:.normal)
             selector.setTitleTextAttributes([.foregroundColor:UIColor.white],for:.selected)
@@ -90,6 +90,7 @@ final class MeadowMapSettingsViewController: UIViewController {
         right.addArrangedSubview(button("继续已保存行程",action:#selector(continueCampaign)))
         right.addArrangedSubview(button("历史结算",action:#selector(showCompletedCampaigns)))
         right.addArrangedSubview(button("怪物动作检视",action:#selector(showMonsterGallery)))
+        right.addArrangedSubview(encounters)
         preview.heightAnchor.constraint(equalToConstant:200).isActive=true
         scroll.addSubview(form);rightScroll.addSubview(right);view.addSubview(scroll);view.addSubview(rightScroll)
         for v in [scroll,rightScroll,form,right] { v.translatesAutoresizingMaskIntoConstraints=false }
