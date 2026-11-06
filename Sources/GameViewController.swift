@@ -923,8 +923,10 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
             guard parsed.count==6,parsed.allSatisfy({$0>=0}),parsed[0]<=100_000,parsed[1]<=100_000,parsed.dropFirst(2).allSatisfy({$0<=1000}) else {
                 self?.showCampaignMessage("请输入非负整数；药水最多1000，金币和积分最多100000。");return
             }
-            let v=parsed;var items=[String:Int]()
-            for (key,count) in [("smallPotion",v[2]),("largePotion",v[3]),("shieldPotion",v[4]),("revivalStone",v[5])] where count>0 {items[key]=count}
+            let v=parsed;var items=reward.items
+            for (key,count) in [("smallPotion",v[2]),("largePotion",v[3]),("shieldPotion",v[4]),("revivalStone",v[5])] {
+                if count>0{items[key]=count}else{items.removeValue(forKey:key)}
+            }
             do {
                 _=try campaign.configureReward(node:node.id,reward:NodeReward(coins:v[0],score:v[1],items:items))
                 self?.scene.refreshCampaign();self?.refreshCampaignStatus();self?.showCampaignMessage(node.rewardCompleted ? "补给内容已更新；已领取状态保留。":"补给内容已更新并保存。")
