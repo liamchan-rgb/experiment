@@ -1042,7 +1042,7 @@ private func refreshCampaignStatus(allowBattleOpen:Bool=true) {
     private func showCampaignTeam(){
         guard let campaign else{return}
         let rows=campaign.engine.state.players.map{u in let a=(try? GameRules.attributes(u,catalog:campaign.engine.catalog)) ?? u.baseAttributes;return "\(u.name)：基础行动\(a.baseAP)，行动上限\(a.maximumAP)"}
-        let menu=UIAlertController(title:"队伍与操作成员",message:rows.joined(separator:"\n")+"\n移动上限＝成员行动上限平均值×50。\nP1职业可在新行程设置中选择。",preferredStyle:.actionSheet)
+        let menu=UIAlertController(title:"队伍与操作成员",message:rows.joined(separator:"\n")+"\n移动上限＝成员行动上限平均值×50。\n两位成员职业可在新行程设置中分别选择；当前行程沿用存档职业。",preferredStyle:.actionSheet)
         for id in campaign.playerIDs{menu.addAction(UIAlertAction(title:"切换操作成员 · \(id.uppercased())"+(id==campaign.selectedPlayerID ? " ✓":""),style:.default){[weak self] _ in do{try self?.scene.selectCampaignPlayer(id);self?.refreshCampaignStatus()}catch{self?.showCampaignMessage(error.localizedDescription)}})}
         menu.addAction(UIAlertAction(title:"关闭",style:.cancel));menu.popoverPresentationController?.sourceView=campaignTeam;menu.popoverPresentationController?.sourceRect=campaignTeam.bounds;present(menu,animated:true)
     }

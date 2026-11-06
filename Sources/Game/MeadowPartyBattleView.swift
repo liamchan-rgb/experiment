@@ -90,7 +90,7 @@ final class MeadowPartyBattleView:UIView {
         guard model?.pending==nil else { return }
         if id.hasPrefix("p") { friend=id } else { foe=id };refresh()
     }
-    private func target(_ action:PartyAction)->String { action.isOffensive ? foe:friend }
+    private func target(_ action:PartyAction)->String {model?.preferredTarget(for:action,ally:friend,enemy:foe) ?? (action.isOffensive ? foe:friend)}
     private func perform(_ action:PartyAction) {
         guard active,let model,let intent=model.prepare(action,target:target(action)) else { return }
         let token=generation;refresh()
@@ -139,7 +139,7 @@ final class MeadowPartyBattleView:UIView {
         if let unit=state.units[displayActor] {
             let visible=stage.displayedVitals(for:displayActor,health:unit.health,shield:unit.shield)
             health.show("生命",value:visible.health,maximum:(try? GameRules.attributes(unit,catalog:model.engine.catalog).maximumHealth) ?? unit.baseAttributes.maximumHealth,color:.systemGreen)
-            ward.show("护盾",value:visible.shield,maximum:8,color:.systemCyan)
+            ward.show("护盾",value:visible.shield,maximum:max(visible.shield,PartyVisual.shieldDisplayMaximum(unit:unit,catalog:model.engine.catalog)),color:.systemCyan)
             let stats=(try? GameRules.attributes(unit,catalog:model.engine.catalog)) ?? unit.baseAttributes
             if apRound != model.round { apRound=model.round;actionPointCapacity=[:] }
             let capacity=max(stats.baseAP,max(unit.ap,actionPointCapacity[displayActor] ?? 0))

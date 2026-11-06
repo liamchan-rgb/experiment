@@ -215,11 +215,11 @@ public final class MeadowCampaignSession {
         var elder=try c.monster("caveTroll");elder.id="meadowElderStag";elder.name="古树鹿王"
         c.monsters += [stag,elder];try c.validate();return c
     }
-    public static func new(layout:GeneratedMeadowMap,appearanceID:String="forester",playerClassID:String="spellblade",loadouts:[String:GameUnit]?=nil,persist:((Data)throws->Void)?=nil)throws->MeadowCampaignSession {
-        guard ["adventurer","spellblade","dragonKnight"].contains(playerClassID) else{throw GameError("请选择已支持的P1职业。 ")}
+    public static func new(layout:GeneratedMeadowMap,appearanceID:String="forester",playerClassID:String="spellblade",companionClassID:String="ranger",loadouts:[String:GameUnit]?=nil,persist:((Data)throws->Void)?=nil)throws->MeadowCampaignSession {
         let catalog=try self.catalog(),start=layout.map.nodes.first{$0.kind == .start}!.id
+        try MeadowPartyConfiguration(playerClassID:playerClassID,companionClassID:companionClassID).validate(catalog:catalog)
         var units=[String:GameUnit]()
-        for (id,classID) in [("p1",playerClassID),("p2","ranger")] {
+        for (id,classID) in [("p1",playerClassID),("p2",companionClassID)] {
             var u=try GameFactory.player(id:id,name:id.uppercased()+" · "+catalog.playerClass(classID).name,classID:classID,teamID:"party",nodeID:start,catalog:catalog)
             u.inventory=["smallPotion":2,"largePotion":1,"shieldPotion":1,"revivalStone":1]
             if let source=loadouts?[id] {u.equipment=source.equipment;u.inventory=source.inventory}

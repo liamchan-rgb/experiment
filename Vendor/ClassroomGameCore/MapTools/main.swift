@@ -2,13 +2,25 @@ import Foundation
 import MeadowWorldSupport
 import ClassroomGameCore
 
+func runExport()throws {
 let args=CommandLine.arguments
 var c=MeadowMapConfiguration.suggested(total:args.count>1 ? Int(args[1]) ?? 10 : 10,
                                      seed:args.count>2 ? UInt64(args[2]) ?? 31827 : 31827)
 if args.count>3 { c.extraRoads=Int(args[3]) ?? 1 }
 let result=try MeadowMapGenerator.generate(c)
 let encoder=JSONEncoder(); encoder.outputFormatting=[.sortedKeys,.prettyPrinted]
-if args.contains("--equipment") {
+if args.contains("--party") {
+    struct Report:Codable {let configuration:MeadowPartyConfiguration;let players:[GameUnit];let skills:[String:[String]];let summaries:[String];let movementCapacity:Double}
+    var reports=[Report]()
+    for p1 in MeadowPartyConfiguration.classIDs {for p2 in MeadowPartyConfiguration.classIDs {
+        let session=try MeadowCampaignSession.new(layout:result,playerClassID:p1,companionClassID:p2)
+        let players=session.engine.state.players
+        var skills=[String:[String]]()
+        for u in players{skills[u.id]=try GameRules.skills(u,catalog:session.engine.catalog)}
+        reports.append(Report(configuration:session.partyConfiguration,players:players,skills:skills,summaries:try [p1,p2].map{try MeadowPartyConfiguration.summary(for:$0,catalog:session.engine.catalog)},movementCapacity:session.movementCapacity))
+    }}
+    FileHandle.standardOutput.write(try encoder.encode(reports))
+} else if args.contains("--equipment") {
     struct Report:Codable {let role:String,item:String,comparison:MeadowEquipmentComparison}
     var reports=[Report]()
     for role in ["adventurer","spellblade","dragonKnight"] {
@@ -43,3 +55,6 @@ if args.contains("--equipment") {
 } else {
     FileHandle.standardOutput.write(try encoder.encode(result))
 }
+
+}
+try runExport()

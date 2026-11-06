@@ -1,5 +1,6 @@
 import Foundation
 import MeadowCampaignAuditSupport
+import MeadowWorldSupport
 
 func runReview()throws {
 
@@ -13,6 +14,19 @@ func runReview()throws {
     let roles=try option("--role").map{[$0]} ?? ["adventurer","spellblade","dragonKnight"]
     let sizes=args.contains("--matrix") ? [4,10,30]:[size]
     let seeds:[UInt64]=args.contains("--matrix") ? [0,31827,UInt64.max]:[seed]
+    if args.contains("--party-matrix") {
+        var reports=[MeadowPartyJourneyReport]()
+        let encoder=JSONEncoder();encoder.outputFormatting=[.sortedKeys,.prettyPrinted]
+        func audit(_ n:Int,_ s:UInt64,_ p1:String,_ p2:String)throws {
+            FileHandle.standardError.write(Data("Party \(n)/\(s)/\(p1)/\(p2)\n".utf8))
+            let config=MeadowPartyConfiguration(playerClassID:p1,companionClassID:p2)
+            reports.append(.init(configuration:config,journey:try MeadowJourneyAudit.run(size:n,seed:s,role:p1,companionRole:p2)))
+            if let path=try option("--checkpoint"){try encoder.encode(reports).write(to:URL(fileURLWithPath:path),options:.atomic)}
+        }
+        for p1 in MeadowPartyConfiguration.classIDs {for p2 in MeadowPartyConfiguration.classIDs {try audit(10,31827,p1,p2)}}
+        for n in [4,30] {for (p1,p2) in [("adventurer","adventurer"),("ranger","ranger"),("spellblade","dragonKnight"),("dragonKnight","spellblade")] {try audit(n,0,p1,p2)}}
+        FileHandle.standardOutput.write(try encoder.encode(reports));return
+    }
     if args.contains("--loadout-matrix") || args.contains("--loadout-smoke") || args.contains("--loadout") {
         let selected=try option("--loadout")
         var kits=selected.map{id in MeadowAuditLoadout.all.filter{$0.id==id}} ?? MeadowAuditLoadout.all
@@ -35,7 +49,7 @@ func runReview()throws {
     var reports=[MeadowJourneyAuditReport]()
     for size in sizes {for seed in seeds {for role in roles {
         FileHandle.standardError.write(Data("Audit \(size)/\(seed)/\(role)\n".utf8))
-        reports.append(try MeadowJourneyAudit.run(size:size,seed:seed,role:role,allowManualRest: !args.contains("--without-rest"),supplyDetour:args.contains("--supply-detour")))
+        reports.append(try MeadowJourneyAudit.run(size:size,seed:seed,role:role,allowManualRest: !args.contains("--without-rest"),supplyDetour:args.contains("--supply-detour"),companionRole:try option("--companion-role") ?? "ranger"))
     }}}
     let encoder=JSONEncoder();encoder.outputFormatting=[.sortedKeys,.prettyPrinted]
     FileHandle.standardOutput.write(try encoder.encode(reports))

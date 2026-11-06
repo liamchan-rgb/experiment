@@ -1,7 +1,6 @@
 import UIKit
 import MeadowBattleSupport
 import MeadowWorldSupport
-import MeadowBattleSupport
 import ClassroomGameCore
 
 /// Configure a map, inspect its scenery, or create/resume a persistent expedition.
@@ -17,7 +16,9 @@ final class MeadowMapSettingsViewController: UIViewController {
     private let preview = MeadowMapThumbnail()
     private let startCampaignButton=UIButton(type:.system)
 
-    private let campaignClass=UISegmentedControl(items:["冒险者","魔剑士","龙骑士"])
+    private let campaignClass=UISegmentedControl(items:["冒险者","游侠","魔剑士","龙骑士"])
+    private let companionClass=UISegmentedControl(items:["冒险者","游侠","魔剑士","龙骑士"])
+    private let classSummaries=[UILabel(),UILabel()]
     private var result: GeneratedMeadowMap?
     private var revision = 0
     private let gold = UIColor(red:0.91,green:0.77,blue:0.43,alpha:1)
@@ -71,9 +72,20 @@ final class MeadowMapSettingsViewController: UIViewController {
         right.addArrangedSubview(encounters)
         startCampaignButton.configuration=button("开始新行程",action:#selector(startCampaign)).configuration
         startCampaignButton.addTarget(self,action:#selector(startCampaign),for:.touchUpInside)
-        let classLabel=UILabel();classLabel.text="P1职业 · P2沿用游侠";classLabel.font = .boldSystemFont(ofSize:17);classLabel.textColor=gold
-        campaignClass.selectedSegmentIndex=1;campaignClass.setTitleTextAttributes([.foregroundColor:UIColor.white],for:.normal);campaignClass.selectedSegmentTintColor=UIColor(red:0.35,green:0.35,blue:0.15,alpha:1)
-        right.addArrangedSubview(classLabel);right.addArrangedSubview(campaignClass)
+        for (i,selector) in [campaignClass,companionClass].enumerated() {
+            let label=UILabel();label.text="P\(i+1)职业";label.font = .boldSystemFont(ofSize:17);label.textColor=gold
+            selector.selectedSegmentIndex=i==0 ? 2:1
+            selector.setTitleTextAttributes([.foregroundColor:UIColor.white,.font:UIFont.boldSystemFont(ofSize:16)],for:.normal)
+            selector.setTitleTextAttributes([.foregroundColor:UIColor.white],for:.selected)
+            selector.selectedSegmentTintColor=UIColor(red:0.35,green:0.35,blue:0.15,alpha:1)
+            selector.heightAnchor.constraint(equalToConstant:44).isActive=true
+            selector.addTarget(self,action:#selector(refreshPartySummary),for:.valueChanged)
+            let summary=classSummaries[i];summary.numberOfLines=0;summary.textColor = .white;summary.font = .systemFont(ofSize:16,weight:.semibold)
+            right.addArrangedSubview(label);right.addArrangedSubview(selector);right.addArrangedSubview(summary)
+        }
+        let partyNote=UILabel();partyNote.text="支持相同职业。以上为职业基础值，装备另计；职业与衣装、武器独立。继续存档沿用原队伍。";partyNote.numberOfLines=0;partyNote.font = .systemFont(ofSize:16);partyNote.textColor=gold
+        right.addArrangedSubview(partyNote)
+        refreshPartySummary()
         right.addArrangedSubview(startCampaignButton)
         right.addArrangedSubview(button("继续已保存行程",action:#selector(continueCampaign)))
         right.addArrangedSubview(button("历史结算",action:#selector(showCompletedCampaigns)))
@@ -179,8 +191,22 @@ final class MeadowMapSettingsViewController: UIViewController {
         let base=FileManager.default.urls(for:.applicationSupportDirectory,in:.userDomainMask)[0]
         return MeadowCampaignStore(url:base.appendingPathComponent("MeadowExpedition/campaign-v1.json"))
     }
+    private var partyConfiguration:MeadowPartyConfiguration {
+        let ids=MeadowPartyConfiguration.classIDs
+        func selected(_ control:UISegmentedControl,_ fallback:String)->String {
+            ids.indices.contains(control.selectedSegmentIndex) ? ids[control.selectedSegmentIndex]:fallback
+        }
+        return .init(playerClassID:selected(campaignClass,"spellblade"),companionClassID:selected(companionClass,"ranger"))
+    }
+    @objc private func refreshPartySummary() {
+        do {
+            let catalog=try MeadowCampaignSession.catalog(),config=partyConfiguration
+            for (i,id) in [config.playerClassID,config.companionClassID].enumerated(){classSummaries[i].text=try MeadowPartyConfiguration.summary(for:id,catalog:catalog)}
+        }catch{for label in classSummaries{label.text="职业信息读取失败："+error.localizedDescription}}
+    }
     @objc private func startCampaign() {
         guard let result else{return}
+        let config=partyConfiguration
         let create={ [weak self] in
             guard let self else{return}
             do {
@@ -193,12 +219,12 @@ final class MeadowMapSettingsViewController: UIViewController {
                     units=save.archive.state.units;appearance=save.appearanceID
                 }
                 try store.preserveCompletedCampaign()
-                let session=try MeadowCampaignSession.new(layout:result,appearanceID:appearance,playerClassID:["adventurer","spellblade","dragonKnight"][max(0,self.campaignClass.selectedSegmentIndex)],loadouts:units,persist:store.write)
+                let session=try MeadowCampaignSession.new(layout:result,appearanceID:appearance,playerClassID:config.playerClassID,companionClassID:config.companionClassID,loadouts:units,persist:store.write)
                 self.presentCampaign(session)
             } catch {self.status.text="未开始新行程："+error.localizedDescription}
         }
         if FileManager.default.fileExists(atPath:Self.campaignStore().url.path) {
-            let alert=UIAlertController(title:"开始新行程？",message:"这会替换当前探索存档。营地衣装与装备存档会保留。",preferredStyle:.alert)
+            let alert=UIAlertController(title:"开始新行程？",message:"这会替换当前探索存档。营地衣装与装备存档会保留。\n"+[classSummaries[0].text,classSummaries[1].text].compactMap{$0}.joined(separator:"\n\n"),preferredStyle:.alert)
             alert.addAction(UIAlertAction(title:"取消",style:.cancel))
             alert.addAction(UIAlertAction(title:"开始新行程",style:.destructive,handler:{_ in create()}));present(alert,animated:true)
         } else {create()}
