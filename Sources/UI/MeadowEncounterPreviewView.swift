@@ -37,7 +37,7 @@ final class MeadowEncounterPreviewView:UIView {
     func show(_ value:MeadowEncounterReadout,completed:Bool){
         title.text=(value.boss ? "首领预览 · ":"怪物预览 · ")+value.title
         let alive=value.monsters.filter{$0.health>0}.count
-        status.text=value.cleared ? "此处敌人已清理":completed ? "行程已结算 · 只读预览":value.canInteract ? "\(alive)只存活 · 已抵达，可开战":"\(alive)只存活 · 抵达后可开战\n也可继续路过此地点"
+        status.text=value.cleared ? "此处敌人已清理":completed ? "行程已结算\n只读预览":value.canInteract ? "\(alive)只存活\n已抵达，可开战":"\(alive)只存活\n抵达后可开战"
         enter.isEnabled=value.canInteract;enter.configuration?.title=value.cleared ? "已清理":"开始战斗"
         guard renderedMonsters != value.monsters else{return};renderedMonsters=value.monsters
         for v in stack.arrangedSubviews{stack.removeArrangedSubview(v);v.removeFromSuperview()}
