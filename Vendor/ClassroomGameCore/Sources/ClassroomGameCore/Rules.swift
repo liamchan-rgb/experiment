@@ -148,6 +148,8 @@ public struct ResourcePatch: Codable, Equatable {
 }
 public enum GameCommand: Codable, Equatable {
     case campaignMove(actors:[String],node:Int)
+    case tradeCampaignSite(actor:String,item:String,buy:Bool)
+    case resolveCampaignSite(actor:String,accept:Bool)
     case interactCampaignNode(actors:[String])
     case refillCampaignMovement(actors:[String],coins:Int,manual:Bool)
     case monsterStep

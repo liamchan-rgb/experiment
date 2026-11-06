@@ -283,7 +283,7 @@ final class MeadowCampaignInventoryViewController:UIViewController {
         refillActions.isEnabled=session.inventoryActionRefillNeeded;refillActions.alpha=refillActions.isEnabled ? 1:0.45
         let a=try? GameRules.attributes(unit,catalog:catalog)
         health.show("生命",value:unit.health,maximum:a?.maximumHealth ?? 1,color:.systemGreen);ap.show(value:unit.ap,maximum:a?.maximumAP ?? 8)
-        stats.text="\(unit.name)\n金币 \(unit.coins) · 积分 \(unit.score)\n额外伤害 ＋\(a?.damage ?? 0)"+(actor=="p2" ? "\nP2装备仅查看，补给可正常使用。":"")
+        stats.text="\(unit.name)\n金币 \(unit.coins) · 积分 \(unit.score)\n额外伤害 ＋\(a?.damage ?? 0)"+(actor=="p2" ? "\nP2装备规则可用，地图形象暂沿用原资源。":"")
         hero.image=actor=="p1" ? HeroFrames.inventoryImages(appearanceIndex:HeroFrames.appearanceIDs.firstIndex(of:session.snapshot.appearanceID) ?? 0,weaponID:unit.equipment.weapon,armorID:unit.equipment.armor).first:nil
         for (i,slot) in ItemSlot.allCases.enumerated(){
             let name=unit.equipment[slot].flatMap{try? catalog.item($0).name} ?? "未装备"
@@ -324,13 +324,12 @@ final class MeadowCampaignInventoryViewController:UIViewController {
         primary.isHidden=false;primary.isEnabled=false
         if let slot=item.slot {
             let equipped=unit.equipment[slot]==id;primary.configuration?.title=equipped ? "卸下装备":"装备"
-            if actor != "p1" {text("P2暂不支持更换装备。可切换到P1换装，或在此使用P2补给。")}
-            else if !visualEquipment.contains(id){text("该装备的挂载外观尚未接入。")}
-            else{do{
+            if actor != "p1" || !visualEquipment.contains(id){text("专属外观尚有缺口，暂用现有形象；属性与技能按实际装备生效。")}
+            do{
                 let comparison=try session.equipmentComparison(actor:actor,slot:slot,item:equipped ? nil:id)
                 text(comparison.summary)
                 text("换装不回血、不补行动或移动。地图移动上限按全队最大行动上限平均计算；基础行动加成不提高移动上限。",15);primary.isEnabled=true
-            }catch{text(error.localizedDescription)}}
+            }catch{text(error.localizedDescription)}
         }else{
             let targets=UISegmentedControl(items:["对 P1 使用","对 P2 使用"]);targets.selectedSegmentIndex=target=="p2" ? 1:0
             for state in [UIControl.State.normal,.selected] {targets.setTitleTextAttributes([.font:MeadowPreviewPalette.font(16),.foregroundColor:MeadowPreviewPalette.ink],for:state)}
@@ -347,7 +346,7 @@ final class MeadowCampaignInventoryViewController:UIViewController {
         guard let id=selected,let item=try? session.engine.catalog.item(id) else{return}
         do{
             if let slot=item.slot {
-                guard actor=="p1",visualEquipment.contains(id),let performEquip else{throw GameError("当前成员的装备外观未接入。")}
+                guard let performEquip else{throw GameError("装备入口不可用。")}
                 try performEquip(actor,slot,session.engine.state.units[actor]?.equipment[slot]==id ? nil:id)
             }else{try session.useInventory(actor:actor,item:id,target:target)}
             saveLabel.text="操作已保存到当前行程";onChange?();refresh()

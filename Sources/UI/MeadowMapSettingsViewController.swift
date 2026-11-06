@@ -173,7 +173,7 @@ final class MeadowMapSettingsViewController: UIViewController {
         DispatchQueue.global(qos:.userInitiated).async { [weak self] in
             let output=Result { () throws -> (GeneratedMeadowMap,String) in
                 let map=try MeadowMapGenerator.generate(config)
-                return (map,try MeadowEncounterPlanner.summary(map,catalog:MeadowCampaignSession.catalog()))
+                return (map,try MeadowEncounterPlanner.summary(map,catalog:MeadowCampaignSession.catalog())+"\n\n"+MeadowCampaignSession.siteSummary(layout:map))
             }
             DispatchQueue.main.async {
                 guard let self,self.revision==token else { return }

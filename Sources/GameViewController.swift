@@ -844,6 +844,7 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
         if campaign.engine.state.battle != nil{setBattlePreviewActive(true);return}
         let actor=scene.selectedCampaignPlayerID
         guard campaign.travel==nil,let unit=campaign.engine.state.units[actor],let node=campaign.engine.state.map.nodes.first(where:{$0.id==unit.nodeID}) else{showCampaignMessage("请先抵达地点。");return}
+        if campaign.siteAvailable(actor:actor){showCampaignSite(actor:actor,node:node);return}
         let combat=node.kind == .combat || node.kind == .boss
         guard (node.kind == .reward && !node.rewardCompleted) || (combat && campaign.engine.state.units.values.contains{$0.kind == .monster && $0.nodeID==node.id && $0.isAlive}) else{showCampaignMessage("此地点没有待处理事件，可继续前进。");return}
         let supplies=(try? campaign.rewardSummary(node:node.id)) ?? "领取此处补给。"
@@ -855,6 +856,58 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
             catch{self?.showCampaignMessage(error.localizedDescription)}
         })
         present(alert,animated:true)
+    }
+    private func presentSiteScreen(_ screen:UIAlertController) {
+        if let old=presentedViewController as? UIAlertController {
+            old.dismiss(animated:true){[weak self] in self?.present(screen,animated:true)}
+        }else if presentedViewController==nil {present(screen,animated:true)}
+    }
+    private func showCampaignSite(actor:String,node:MapNode) {
+        guard let campaign,let kind=campaign.siteKind(node:node.id),let unit=campaign.engine.state.units[actor] else{return}
+        if kind == .shop {
+            let menu=UIAlertController(title:"行商 · #\(node.id)",message:"\(unit.name) · 个人金币 \(unit.coins)\n买卖均为1件；物品进入购买者行囊，不自动装备。价格沿用原目录。",preferredStyle:.actionSheet)
+            for player in campaign.engine.state.players where player.isAlive && player.nodeID==node.id && player.id != actor {
+                menu.addAction(UIAlertAction(title:"改由 "+player.name+" 交易",style:.default){[weak self] _ in self?.showCampaignSite(actor:player.id,node:node)})
+            }
+            for item in campaign.engine.catalog.items where item.purchasePrice != nil && item.setID==nil {
+                let price=item.purchasePrice!
+                let action=UIAlertAction(title:"买 · \(item.name) · \(price) 金币",style:.default){[weak self] _ in self?.confirmSiteTrade(actor:actor,item:item,buy:true)}
+                action.isEnabled=unit.coins>=price;menu.addAction(action)
+            }
+            for item in campaign.engine.catalog.items where (unit.inventory[item.id] ?? 0)>0 && item.sellPrice>0 {
+                menu.addAction(UIAlertAction(title:"卖 · \(item.name) ×\(unit.inventory[item.id]!) · \(item.sellPrice) 金币",style:.default){[weak self] _ in self?.confirmSiteTrade(actor:actor,item:item,buy:false)})
+            }
+            menu.addAction(UIAlertAction(title:"离开商店",style:.cancel));menu.popoverPresentationController?.sourceView=campaignBattle;menu.popoverPresentationController?.sourceRect=campaignBattle.bounds;presentSiteScreen(menu)
+        }else {
+            let title=kind == .satchel ? "路边失物":"林间清泉"
+            let message=kind == .satchel ? "\(unit.name) 拾取5金币。":"\(unit.name) 恢复最多4生命，不超过个人上限；满血时可换成员再来。"
+            let alert=UIAlertController(title:title,message:message+"\n此地点全队仅处理一次。暂不处理可稍后回来；明确离开则结束事件。",preferredStyle:.alert)
+            alert.addAction(UIAlertAction(title:"暂不处理",style:.cancel))
+            for player in campaign.engine.state.players where player.isAlive && player.nodeID==node.id && player.id != actor {
+                alert.addAction(UIAlertAction(title:"改由 "+player.name+" 处理",style:.default){[weak self] _ in self?.showCampaignSite(actor:player.id,node:node)})
+            }
+            for (label,accept) in [("接受",true),("明确离开（结束事件）",false)] {
+                let id=UUID().uuidString
+                let action=UIAlertAction(title:label,style:accept ? .default:.destructive){[weak self] _ in
+                    do{try campaign.resolveSite(actor:actor,accept:accept,id:id);self?.scene.refreshCampaign();self?.refreshCampaignStatus();self?.showCampaignMessage("事件已保存。")}
+                    catch{self?.showCampaignMessage("事件未保存，可重试："+error.localizedDescription)}
+                }
+                let maximum=(try? GameRules.attributes(unit,catalog:campaign.engine.catalog).maximumHealth) ?? unit.baseAttributes.maximumHealth
+                action.isEnabled = !accept || kind != .spring || unit.health<maximum
+                alert.addAction(action)
+            }
+            presentSiteScreen(alert)
+        }
+    }
+    private func confirmSiteTrade(actor:String,item:ItemDefinition,buy:Bool) {
+        guard let campaign else{return}
+        let price=buy ? (item.purchasePrice ?? 0):item.sellPrice,id=UUID().uuidString
+        let alert=UIAlertController(title:(buy ? "购买":"出售")+item.name,message:"\(campaign.engine.state.units[actor]?.name ?? actor) · \(buy ? "支付":"获得") \(price) 个人金币 · 1件\n只变更此成员的金币和行囊，取消不交易。",preferredStyle:.alert)
+        alert.addAction(UIAlertAction(title:"取消",style:.cancel))
+        alert.addAction(UIAlertAction(title:"确认交易",style:.default){[weak self] _ in
+            do{try campaign.tradeAtSite(actor:actor,item:item.id,buy:buy,id:id);self?.scene.refreshCampaign();self?.refreshCampaignStatus();self?.showCampaignMessage("交易已保存。")}
+            catch{self?.showCampaignMessage("交易未保存，可重试："+error.localizedDescription)}
+        });presentSiteScreen(alert)
     }
     private func cancelNodeSelection() {
         scene.selectingCampaignNode=false
@@ -968,8 +1021,8 @@ private func refreshCampaignStatus(allowBattleOpen:Bool=true) {
         campaignRefill.isEnabled = !campaign.isCompleted && !campaign.isMoving && state.battle==nil && campaign.movementRefillCost>0
         campaignItems.isEnabled = !busy;campaignEdit.isEnabled = !busy
         let actor=scene.selectedCampaignPlayerID,node=state.map.nodes.first{$0.id==state.units[actor]?.nodeID}
-        let eventAvailable=node.map{n in n.kind == .reward ? !n.rewardCompleted:((n.kind == .combat || n.kind == .boss) && state.units.values.contains{$0.kind == .monster && $0.nodeID==n.id && $0.isAlive})} ?? false
-        campaignBattle.configuration?.title=state.battle != nil ? "继续战斗":(eventAvailable ? "交互地点":"暂无事件")
+        let eventAvailable=campaign.siteAvailable(actor:actor) || (node.map{n in n.kind == .reward ? !n.rewardCompleted:((n.kind == .combat || n.kind == .boss) && state.units.values.contains{$0.kind == .monster && $0.nodeID==n.id && $0.isAlive})} ?? false)
+        campaignBattle.configuration?.title=state.battle != nil ? "继续战斗":(eventAvailable ? (campaign.siteAvailable(actor:actor) ? (campaign.siteKind(node:node!.id) == .shop ? "进入商店":"处理事件"):"交互地点"):"暂无事件")
         campaignBattle.isHidden=battlePreviewActive;campaignBattle.isEnabled = !campaign.isCompleted && (state.battle != nil || (!busy && eventAvailable))
         campaignMovement.show("地图移动",value:Int(ceil(campaign.movementRemaining)),maximum:max(1,Int(ceil(campaign.movementCapacity))),color:.systemYellow)
         for view in [campaignHUD,campaignRoutePanel,campaignRefill,campaignItems,campaignEdit,campaignTeam,campaignEnd,randomMapSummary] {view.isHidden=battlePreviewActive}
@@ -1055,6 +1108,11 @@ private func refreshCampaignStatus(allowBattleOpen:Bool=true) {
             guard let self else{return}
             let candidate=try campaign.candidateEquipment(actor:actor,slot:slot,item:item)
             let appearance=campaign.snapshot.appearanceID
+            let known:Set<String>=["trainingSword","huntingBow","greatSword","legendaryStaff","leatherArmor","runeArmor","powerBadge","actionRing"]
+            if actor != "p1" || !candidate.equipment.itemIDs.allSatisfy(known.contains) {
+                try campaign.equipInventory(actor:actor,slot:slot,item:item)
+                return
+            }
             try self.prepareCampVisuals(candidate,appearance:appearance,retaining:true)
             do{try campaign.equipInventory(actor:actor,slot:slot,item:item)}
             catch{if let old=campaign.engine.state.units[actor]{try? self.prepareCampVisuals(old,appearance:appearance,retaining:false)};throw error}
