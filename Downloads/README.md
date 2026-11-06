@@ -1,3 +1,9 @@
+## Build89 · 行程路线与资源提示 · 1.6.62
+
+[直接下载 IPA](https://raw.githubusercontent.com/liamchan-rgb/experiment/bf05594630fa59cdc09ed889440a2f0621ea0486/Downloads/MeadowJourney-b89.ipa) · [使用与验证说明](../docs/planning/random-map-v1/build89-route-guidance.md) · [包检](../Media/Build89/verification.json)
+
+路线条显示真实目的地、剩余路程及途中最低金币缺口；“路线与目标”可选最近补给/待战地点或返回营地，并显示各成员实际消耗品。路线只导航，抵达后主动交互。旧档直接可用，无资源重发。253项测试、四组回归、27组行程与设备Release通过；公开完整GET校验通过，未运行App/模拟器/实机。
+
 ## Build88 · 首领与战前补给节奏 · 1.6.61
 
 [直接下载 IPA](https://raw.githubusercontent.com/liamchan-rgb/experiment/c5e97ff25b51269e56ea8d7e18275b59060c1e9e/Downloads/MeadowJourney-b88.ipa) · [节奏说明](../docs/planning/random-map-v1/build88-tempo.md) · [包检](../Media/Build88/verification.json)
