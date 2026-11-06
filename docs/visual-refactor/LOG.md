@@ -78,3 +78,9 @@ ID 与生成脚本算法一致。**本分支此后不再运行 generate-project.
 - 删除 `.settling` 状态。`scripts/modular-locomotion-regression.swift` 按新行为改写（起步按距离、任意相位立即收脚、30/60/120 FPS 一致、48 种大角度转身、地图路线停下后不踏步、足锁定时序保留）。
 
 本地无 Swift 工具链，逻辑另用 Python 镜像验证；正式回归在 IPA 流程中运行。斜向走路美术重做（骨骼重摆）在下一步。
+
+## 10 · 斜向行走骨骼重摆 v1（2026-11-06，用户要求）
+
+原斜向 8 帧腿几乎不动。新增 `scripts/build-p1-diagonal-rig-walk.py`：以待机姿势为来源，按腿/手臂/其余三类部位变形，重做四个斜向全部行走帧
+（步幅 ±11 像素、摆动抬脚与屈膝、手臂反向摆动、身体 1 像素起伏），所有使用中的部件同规则生成，更新 motion.json 与 hero-gait.json 脚底数据，
+重烘 30 张斜向图集与头部拆分。`GaitTiming.footLocked` 改为只有在确实减少滑步时才用非均匀时间窗，回归脚本同步。详见 `Art/Review/P1/diagonal-rig-walk-v1/`。

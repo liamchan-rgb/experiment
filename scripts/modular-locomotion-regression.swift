@@ -208,7 +208,7 @@ struct ModularLocomotionRegression {
             let lockedSlip = zip(planted,row).map { abs($0-$1) }.reduce(0,+)/8
             let isUniform = row.allSatisfy { $0 == 3 }
             if planted.reduce(0,+) < 12 { require(isUniform,"short art stride keeps uniform timing") }
-            else { require(!isUniform && lockedSlip < uniformSlip,"foot-locked timing reduces sole slip") }
+            require(isUniform || lockedSlip < uniformSlip,"foot-locked timing only where it reduces sole slip")
             // Frame space: poses in order, one authored pose per window, same 24-tick clock.
             var previous = -1
             for step in 0..<2400 {

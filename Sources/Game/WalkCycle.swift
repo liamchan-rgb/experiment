@@ -98,7 +98,12 @@ struct GaitTiming: Equatable {
             let scaled = clamped.map { $0 * cycle / clamped.reduce(0, +) }
             let blended = scaled.map { cycle / CGFloat(poseCount) + ($0 - cycle / CGFloat(poseCount)) * strength }
             let sum = blended.reduce(0, +)
-            return blended.map { $0 * cycle / sum }
+            let row = blended.map { $0 * cycle / sum }
+            // Keep uniform timing unless the windows actually reduce sole slip.
+            let even = cycle / CGFloat(poseCount)
+            let uniformSlip = planted.map { abs($0 - even) }.reduce(0, +)
+            let lockedSlip = zip(planted, row).map { abs($0 - $1) }.reduce(0, +)
+            return lockedSlip < uniformSlip ? row : Array(repeating: even, count: poseCount)
         }
         return GaitTiming(windows: rows)
     }
