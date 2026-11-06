@@ -13,6 +13,11 @@ public struct MeadowEncounterReadout:Codable,Equatable {
     public var cleared:Bool {monsters.allSatisfy{$0.health==0}}
 }
 public extension MeadowCampaignSession {
+    func rewardSummary(node id:Int)throws->String? {
+        guard let node=engine.state.map.nodes.first(where:{$0.id==id}),node.kind == .reward,let reward=node.reward else{return nil}
+        let items=try reward.items.keys.sorted().map{try engine.catalog.item($0).name+" ×\(reward.items[$0]!)"}
+        return (node.rewardCompleted ? "此处补给已领取。\n":"")+"每位存活领取者各获：\n金币 \(reward.coins) · 积分 \(reward.score)\n"+(items.isEmpty ? "物品：无":items.joined(separator:"\n"))
+    }
     /// Read saved units, never the new-game planner; this also reflects manual
     /// edits, damaged monsters and cleared/legacy nodes without consuming RNG.
     func encounterPreview(node id:Int,actor:String?=nil)throws->MeadowEncounterReadout? {

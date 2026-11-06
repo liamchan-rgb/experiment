@@ -58,7 +58,7 @@ final class MeadowMapSettingsViewController: UIViewController {
         let seed=button("换个种子",action:#selector(newSeed));form.addArrangedSubview(seed)
         let close=button("返回原地图",action:#selector(close));form.addArrangedSubview(close)
         let heading=UILabel();heading.text="建筑与道路预览";heading.font = .boldSystemFont(ofSize:22);heading.textColor=gold
-        let note=UILabel();note.text="数量与滑块联动。可先预览建筑道路，再开始双人探索；探索会保存生命、背包、已领取奖励与途中位置。"
+        let note=UILabel();note.text="数量与滑块联动，可预览后开始双人探索。单首领行程不足4处普通战斗或2处补给时先用巨魔；长行程可能出现魔龙，多首领配置保留末段魔龙。"
         note.font = .systemFont(ofSize:17,weight:.medium);note.textColor = .white;note.numberOfLines=0
         status.textColor=gold;status.numberOfLines=0;status.font = .boldSystemFont(ofSize:17)
         encounters.textColor = .white;encounters.numberOfLines=0;encounters.font = .systemFont(ofSize:16,weight:.semibold)

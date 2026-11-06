@@ -828,7 +828,8 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
         guard campaign.travel==nil,let unit=campaign.engine.state.units[actor],let node=campaign.engine.state.map.nodes.first(where:{$0.id==unit.nodeID}) else{showCampaignMessage("请先抵达地点。");return}
         let combat=node.kind == .combat || node.kind == .boss
         guard (node.kind == .reward && !node.rewardCompleted) || (combat && campaign.engine.state.units.values.contains{$0.kind == .monster && $0.nodeID==node.id && $0.isAlive}) else{showCampaignMessage("此地点没有待处理事件，可继续前进。");return}
-        let message=combat ? "主动进入此处战斗。人物各自按基础行动值开场；移动条独立保留。":"领取此处补给；领取后不会重复发放。"
+        let supplies=(try? campaign.rewardSummary(node:node.id)) ?? "领取此处补给。"
+        let message=combat ? "主动进入此处战斗。人物各自按基础行动值开场；移动条独立保留。":supplies+"\n领取后不会重复发放。"
         let alert=UIAlertController(title:node.name,message:message,preferredStyle:.alert)
         alert.addAction(UIAlertAction(title:"暂不交互",style:.cancel))
         alert.addAction(UIAlertAction(title:combat ? "开始战斗":"领取补给",style:.default){[weak self] _ in

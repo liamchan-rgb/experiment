@@ -13,6 +13,13 @@ public struct MeadowJourneyAuditReport:Codable,Equatable {
     public let actionsUsed:[String:Int]
     public let blockedRecovery:Int
     public let manualActionRefills:Int
+    public let battleDetails:[MeadowAuditedBattle]
+}
+public struct MeadowAuditedBattle:Codable,Equatable {
+    public let node:Int,templates:[String],firstActor:String
+    public let rounds:Int,outcome:String
+    public let healthBefore:[String:Int],healthAfter:[String:Int],naturalTwenties:[String:Int]
+    public let collectedSupplies:[Int]
 }
 
 /// Pure command-line regression driver, not game autoplay or a balance oracle.
@@ -27,6 +34,7 @@ public enum MeadowJourneyAudit {
         var visited:Set<Int>=[start],collected=Set<Int>(),fought=Set<String>(),actionsUsed=[String:Int]()
         var battles=0,cleared=0,actions=0,enemyActions=0,resumes=0,restarts=0,blockedRecovery=0
         var outcome="incomplete"
+        var battleDetails=[MeadowAuditedBattle]()
         func require(_ condition:Bool,_ message:String)throws {if !condition{throw GameError("audit \(role)/\(size)/\(seed): "+message)}}
         func restore()throws {
             let archive=s.engine.archive,position=s.engine.state.players.map{s.position(of:$0.id)}
@@ -40,14 +48,14 @@ public enum MeadowJourneyAudit {
             let actor=try firstAlive(s)
             if s.engine.state.units[actor]!.nodeID==target && s.travel==nil{return true}
             if s.movementRemaining<0.000001 {
-                if s.partyCoins<s.movementRefillCost{return false}
+                if s.movementPurchaseCoins==0{return false}
                 try s.refillMovement(usingCoins:true)
             }
             try s.beginTravel(to:target,actor:actor)
             if resumes==0 {try s.advanceTravel(distance:10);try restore();if s.travel != nil{try s.setPaused(false)}}
             for _ in 0..<500 where s.travel != nil {
                 if !s.isMoving {
-                    if s.partyCoins<s.movementRefillCost{return false}
+                    if s.movementPurchaseCoins==0{return false}
                     try s.refillMovement(usingCoins:true);try s.setPaused(false)
                 }
                 let ap=s.engine.state.players.map(\.ap),hp=s.engine.state.players.map(\.health)
@@ -84,8 +92,13 @@ public enum MeadowJourneyAudit {
             }
         }
         func battle()throws {
+            let healthBefore=Dictionary(uniqueKeysWithValues:s.engine.state.players.map{($0.id,$0.health)})
             try s.interactCurrentNode(actor:firstAlive(s));battles+=1
             var model=try PartyEncounter(engine:s.engine,sessionID:"audit/\(battles)/initial")
+            let node=try s.engine.state.units[firstAlive(s)]!.nodeID
+            let templates=model.monsterIDs.map{s.engine.state.units[$0]!.templateID}
+            let firstActor=model.current.flatMap{s.engine.state.units[$0]}.map{$0.kind == .monster ? $0.templateID:$0.id} ?? "none"
+            var rounds=0,naturalTwenties=[String:Int]()
             for id in model.monsterIDs{fought.insert(s.engine.state.units[id]!.templateID)}
             for unit in s.engine.state.players where unit.isAlive {
                 try require(unit.ap==(try GameRules.attributes(unit,catalog:s.engine.catalog).baseAP),"opening AP is not individual baseAP")
@@ -93,6 +106,7 @@ public enum MeadowJourneyAudit {
             var resumed=false,restarted=false
             for _ in 0..<600 {
                 if model.terminal{break}
+                rounds=max(rounds,model.round)
                 let actor=try unwrap(model.current,"battle missing current actor")
                 let enemy=s.engine.state.units[actor]!.kind == .monster
                 if enemy && !resumed {try restore();model=try PartyEncounter(engine:s.engine,sessionID:"audit/\(battles)/resume");resumed=true}
@@ -113,8 +127,11 @@ public enum MeadowJourneyAudit {
                 try require(receipt.after==expected.after && receipt.dice==expected.dice,"impact differs from confirmed roll")
                 try require(try model.commit(action.id)==nil,"duplicate impact committed twice")
                 actions+=1;if enemy{enemyActions+=1};actionsUsed[(enemy ? "enemy:":"player:")+action.action.rawValue,default:0]+=1
+                let twenties=receipt.dice.filter(\.naturalTwenty).count
+                if twenties>0 {naturalTwenties[(enemy ? before.state.units[actor]!.templateID:actor)+"/"+(action.sourceSkillID ?? action.action.rawValue),default:0]+=twenties}
             }
             try require(model.terminal,"battle exceeded action bound")
+            battleDetails.append(.init(node:node,templates:templates,firstActor:firstActor,rounds:rounds,outcome:s.canCompleteDefeat ? "defeat":"victory",healthBefore:healthBefore,healthAfter:Dictionary(uniqueKeysWithValues:s.engine.state.players.map{($0.id,$0.health)}),naturalTwenties:naturalTwenties,collectedSupplies:collected.sorted()))
             if s.engine.state.players.contains(where: \.isAlive){cleared+=1;try recover()}
         }
         // The baseline follows a closed BFS-spanning-tree walk, matching the
@@ -179,7 +196,7 @@ public enum MeadowJourneyAudit {
         let spent=history.reduce(0){sum,r in if case .refillCampaignMovement(_,let coins,_) = r.command{return sum+coins};return sum}
         try require(s.partyCoins==starting+nodeCoins+dropCoins-spent,"coin ledger does not balance")
         try require(s.snapshot.movement?.manualRefills==0,"audit used free movement refill")
-        return .init(size:size,seed:String(seed),role:role,outcome:outcome,itinerary:supplyDetour ? "supplies-first-detour":"closed-tree",battles:battles,cleared:cleared,actions:actions,monsterActions:enemyActions,resumes:resumes,stagedRestarts:restarts,plannedSpecies:Array(Set(encounterPlan.flatMap(\.templates))).sorted(),foughtSpecies:fought.sorted(),visited:visited.sorted(),collected:collected.sorted(),finalHealth:Dictionary(uniqueKeysWithValues:s.engine.state.players.map{($0.id,$0.health)}),finalAP:Dictionary(uniqueKeysWithValues:s.engine.state.players.map{($0.id,$0.ap)}),startingCoins:starting,nodeCoins:nodeCoins,dropCoins:dropCoins,movementSpent:spent,finalCoins:s.partyCoins,totalDistance:s.snapshot.movement?.totalDistance ?? 0,actionsUsed:actionsUsed,blockedRecovery:blockedRecovery,manualActionRefills:history.filter{$0.command == .refillExploration}.count)
+        return .init(size:size,seed:String(seed),role:role,outcome:outcome,itinerary:supplyDetour ? "supplies-first-detour":"closed-tree",battles:battles,cleared:cleared,actions:actions,monsterActions:enemyActions,resumes:resumes,stagedRestarts:restarts,plannedSpecies:Array(Set(encounterPlan.flatMap(\.templates))).sorted(),foughtSpecies:fought.sorted(),visited:visited.sorted(),collected:collected.sorted(),finalHealth:Dictionary(uniqueKeysWithValues:s.engine.state.players.map{($0.id,$0.health)}),finalAP:Dictionary(uniqueKeysWithValues:s.engine.state.players.map{($0.id,$0.ap)}),startingCoins:starting,nodeCoins:nodeCoins,dropCoins:dropCoins,movementSpent:spent,finalCoins:s.partyCoins,totalDistance:s.snapshot.movement?.totalDistance ?? 0,actionsUsed:actionsUsed,blockedRecovery:blockedRecovery,manualActionRefills:history.filter{$0.command == .refillExploration}.count,battleDetails:battleDetails)
     }
     private static func firstAlive(_ s:MeadowCampaignSession)throws->String {try unwrap(s.engine.state.players.first(where: \.isAlive)?.id,"no living expedition actor")}
     private static func unwrap<T>(_ value:T?,_ message:String)throws->T {guard let value else{throw GameError("audit: "+message)};return value}

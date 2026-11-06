@@ -11,7 +11,7 @@ public struct MeadowPlannedEncounter: Codable, Equatable {
 }
 
 public enum MeadowEncounterPlanner {
-    public static let version = 1
+    public static let version = 2
 
     public static func plan(_ layout: GeneratedMeadowMap) -> [MeadowPlannedEncounter] {
         guard let start=layout.map.nodes.first(where:{$0.kind == .start})?.id else{return []}
@@ -50,9 +50,11 @@ public enum MeadowEncounterPlanner {
                                 templates:choices[Int(sample(seed:layout.configuration.seed,node:node.id)%UInt64(choices.count))]))
         }
         for (rank,node) in bosses.enumerated() {
-            // Multiple boss nodes progress from troll to dragon. A single boss
-            // uses the seed; neither variant changes its original stats or AI.
-            let dragon=bosses.count==1 ? sample(seed:layout.configuration.seed,node:node.id)&1==1:rank==bosses.count-1
+            // A short single-boss expedition should not open against the full
+            // dragon's high group damage. Explicit boss-rush configurations keep
+            // their final dragon; monster stats, skills and dice remain original.
+            let readyForDragon=combats.count>=4 && layout.configuration.reward>=2
+            let dragon=bosses.count==1 ? readyForDragon && sample(seed:layout.configuration.seed,node:node.id)&1==1:rank==bosses.count-1
             result.append(.init(nodeID:node.id,band:"boss",distance:distances[node.id] ?? 0,templates:[dragon ? "ruinDragon":"caveTroll"]))
         }
         return result.sorted{$0.nodeID<$1.nodeID}
