@@ -78,25 +78,62 @@ def pose(direction, p, sel=None, params=None):
         es = ss + skel.project(direction, *e) + np.array([alat1, 0])
         ws = ss + skel.project(direction, *w) + np.array([alat1 + alat2, 0])
         rig[side, 'arm'] = [(sh, el, ss, es), (el, wr, es, ws)]
+    def rigid(im, anchor, target, canvas=canvas):
+        """Exact pixels, translated so `anchor` lands on `target` (no rotation, no scaling)."""
+        dx, dy = (int(round(v)) for v in (target - anchor))
+        a = np.roll(np.array(im), (dy, dx), axis=(0, 1))
+        m = a[..., 3] > 0
+        canvas[m] = a[m]
+
+    def segment(im, rows, joint, canvas=canvas):
+        (p0, c0, P0, C0), (p1, c1, P1, C1) = joint
+        upper = skel.Piece(im, (rows[0], int(c0[1]) + 3))
+        lower = skel.Piece(im, (int(c0[1]) - 2, rows[1]))
+        for piece, (sp, sc, dp, dc) in ((lower, (p1, c1, P1, C1)), (upper, (p0, c0, P0, C0))):
+            sd, dd = sc - sp, dc - dp
+            piece.draw(canvas, sp, sd, dp, dd, np.linalg.norm(dd) / np.linalg.norm(sd))
+        # joint cap: a disc of source pixels around the joint, rotated halfway
+        r = 4 if np.linalg.norm(c1 - c0) > 14 else 3
+        disc = np.array(im).copy()
+        yy, xx = np.mgrid[0:256, 0:256]
+        disc[((xx - c0[0]) ** 2 + (yy - c0[1]) ** 2 > r * r) | (yy < rows[0]) | (yy >= rows[1])] = 0
+        d0 = (c0 - p0) / np.linalg.norm(c0 - p0) + (c1 - p1) / np.linalg.norm(c1 - p1)
+        d1 = (C0 - P0) / np.linalg.norm(C0 - P0) + (C1 - P1) / np.linalg.norm(C1 - P1)
+        skel.Piece(Image.fromarray(disc)).draw(canvas, c0, d0, C0, d1)
+
+    legs_buf = {}
+    last_leg_slot = {}
+    for slot, _ in idle:
+        if slot in slot_side and slot_side[slot][1] == 'leg':
+            last_leg_slot[slot_side[slot][0]] = slot
     for slot, im in idle:
         if slot in slot_side:
             side, kind = slot_side[slot]
-            (p0, c0, P0, C0), (p1, c1, P1, C1) = rig[side, kind]
-            split = c0[1]
-            upper = skel.Piece(im, (-999, int(split) + 3))
-            lower = skel.Piece(im, (int(split) - 2, 999))
-            for piece, (sp, sc, dp, dc) in ((lower, (p1, c1, P1, C1)), (upper, (p0, c0, P0, C0))):
-                sd, dd = sc - sp, dc - dp
-                piece.draw(canvas, sp, sd, dp, dd, np.linalg.norm(dd) / np.linalg.norm(sd))
-            # joint cap: a disc of source pixels around the joint, rotated halfway
-            r = 4 if kind == 'leg' else 3
-            disc = np.array(im).copy()
-            yy, xx = np.mgrid[0:256, 0:256]
-            disc[(xx - c0[0]) ** 2 + (yy - c0[1]) ** 2 > r * r] = 0
-            cap = skel.Piece(Image.fromarray(disc))
-            d0 = (c0 - p0) / np.linalg.norm(c0 - p0) + (c1 - p1) / np.linalg.norm(c1 - p1)
-            d1 = (C0 - P0) / np.linalg.norm(C0 - P0) + (C1 - P1) / np.linalg.norm(C1 - P1)
-            cap.draw(canvas, c0, d0, C0, d1)
+            joint = rig[side, kind]
+            end_src, end_dst = joint[1][1], joint[1][3]
+            if kind == 'leg':
+                # Legs build in their own buffers; the skin leg only shows inside the clothing.
+                skin, cloth = legs_buf.setdefault(side, (np.zeros_like(canvas), np.zeros_like(canvas)))
+                if slot.startswith('body.leg'):
+                    cut = int(end_src[1])
+                    segment(im, (-999, cut + 2), joint, skin)
+                    foot = np.array(im).copy(); foot[:cut - 1] = 0
+                    rigid(Image.fromarray(foot), end_src, end_dst, skin)
+                elif slot.startswith('outfit.boot'):
+                    rigid(im, end_src, end_dst, cloth)   # shoes keep their exact pixels
+                else:
+                    segment(im, (-999, 999), joint, cloth)
+                if slot == last_leg_slot[side]:
+                    covered = cloth[..., 3] > 0
+                    if covered.any():
+                        skin[~covered] = 0
+                    for layer in (skin, cloth):
+                        m = layer[..., 3] > 0
+                        canvas[m] = layer[m]
+            elif slot.startswith('body.hand'):
+                rigid(im, end_src, end_dst)              # hands keep their exact pixels
+            else:
+                segment(im, (-999, 999), joint)          # sleeves bend at the elbow
         else:
             a = np.array(im)
             if bob:
