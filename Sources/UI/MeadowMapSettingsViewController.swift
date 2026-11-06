@@ -213,9 +213,9 @@ final class MeadowMapSettingsViewController: UIViewController {
     @objc private func showMonsterGallery(){present(MeadowMonsterGalleryController(),animated:true)}
     @objc private func showCompletedCampaigns(){
         do{
-            let saves=try Self.campaignStore().completedCampaigns()
-            guard !saves.isEmpty else{status.text="还没有已结算行程。";return}
-            let menu=UIAlertController(title:"历史结算",message:"选择行程查看已保存结果",preferredStyle:.actionSheet)
+            let history=try Self.campaignStore().completedHistory(),saves=history.saves
+            guard !saves.isEmpty else{status.text="还没有可读取的已结算行程。"+history.notice;return}
+            let menu=UIAlertController(title:"历史结算",message:"选择行程查看已保存结果。\n"+history.notice,preferredStyle:.actionSheet)
             let format=DateFormatter();format.dateFormat="MM-dd HH:mm"
             for save in saves {
                 guard let result=save.completion else{continue}
@@ -387,4 +387,75 @@ private final class MeadowMonsterGalleryView:UIView {
         onPhase?(death != nil ? "向右吹散退场":attack != nil ? "出招与回位":hurt != nil ? "受击":cast != nil ? "施法":"待机")
     }
     override func layoutSubviews(){super.layoutSubviews();let scale=min(bounds.width/1000,bounds.height/600);world.center=CGPoint(x:bounds.midX,y:bounds.midY);world.transform=CGAffineTransform(scaleX:scale,y:scale);grounding.frame=world.bounds;heroGrounding.frame=world.bounds}
+}
+
+/// Draft only: the persistent engine changes once, after explicit confirmation.
+final class MeadowEncounterEditorViewController:UIViewController {
+    var onSave:(([String])throws->Void)?
+    private var draft:MeadowEncounterEditDraft
+    private let nodeTitle:String
+    private let scroll=UIScrollView(),stack=UIStackView(),actions=UIStackView()
+    private let countButton=MeadowPreviewPalette.button("")
+    private let statusLabel=MeadowPreviewPalette.label("",size:16)
+    private var rows=[UIStackView](),pickers=[UIButton](),descriptions=[UILabel]()
+    init(draft:MeadowEncounterEditDraft,title:String){
+        self.draft=draft;nodeTitle=title;super.init(nibName:nil,bundle:nil)
+        modalPresentationStyle = .formSheet;preferredContentSize=CGSize(width:640,height:650);isModalInPresentation=true
+    }
+    required init?(coder:NSCoder){fatalError("init(coder:) has not been implemented")}
+    override func viewDidLoad(){
+        super.viewDidLoad();view.backgroundColor=MeadowPreviewPalette.panel
+        view.addSubview(scroll);view.addSubview(actions);scroll.addSubview(stack)
+        for v in [scroll,stack,actions]{v.translatesAutoresizingMaskIntoConstraints=false}
+        stack.axis = .vertical;stack.spacing=14;actions.axis = .horizontal;actions.spacing=12;actions.distribution = .fillEqually
+        let cancel=MeadowPreviewPalette.button("取消"),save=MeadowPreviewPalette.button("保存遭遇")
+        cancel.addAction(UIAction{[weak self] _ in self?.dismiss(animated:true)},for:.touchUpInside)
+        save.addAction(UIAction{[weak self] _ in self?.confirmSave()},for:.touchUpInside)
+        actions.addArrangedSubview(cancel);actions.addArrangedSubview(save)
+        let title=MeadowPreviewPalette.label("编辑遭遇 · "+nodeTitle,size:23,weight:.bold);title.numberOfLines=0
+        let note=MeadowPreviewPalette.label("选择每个位置的怪物，可混合编队。保存会恢复此地敌人的生命，已清理地点也会重新开放战斗。",size:17);note.numberOfLines=0;note.textColor=MeadowPreviewPalette.gold
+        stack.addArrangedSubview(title);stack.addArrangedSubview(note)
+        stack.addArrangedSubview(MeadowPreviewPalette.label("敌人数量",size:18,weight:.bold));stack.addArrangedSubview(countButton)
+        countButton.showsMenuAsPrimaryAction=true;countButton.heightAnchor.constraint(equalToConstant:44).isActive=true
+        for index in 0..<3 {
+            let row=UIStackView();row.axis = .vertical;row.spacing=8;row.isLayoutMarginsRelativeArrangement=true;row.layoutMargins=UIEdgeInsets(top:12,left:12,bottom:12,right:12);row.backgroundColor=MeadowPreviewPalette.card;row.layer.cornerRadius=12
+            let name=MeadowPreviewPalette.label("怪物 \(index+1)",size:18,weight:.bold),button=MeadowPreviewPalette.button(""),detail=MeadowPreviewPalette.label("",size:16)
+            button.showsMenuAsPrimaryAction=true;button.heightAnchor.constraint(equalToConstant:44).isActive=true;detail.numberOfLines=0
+            row.addArrangedSubview(name);row.addArrangedSubview(button);row.addArrangedSubview(detail)
+            rows.append(row);pickers.append(button);descriptions.append(detail);stack.addArrangedSubview(row)
+        }
+        statusLabel.numberOfLines=0;statusLabel.textColor = .systemRed;stack.addArrangedSubview(statusLabel)
+        let safe=view.safeAreaLayoutGuide
+        NSLayoutConstraint.activate([
+            actions.leadingAnchor.constraint(equalTo:safe.leadingAnchor,constant:16),actions.trailingAnchor.constraint(equalTo:safe.trailingAnchor,constant:-16),actions.bottomAnchor.constraint(equalTo:safe.bottomAnchor,constant:-16),actions.heightAnchor.constraint(equalToConstant:46),
+            scroll.topAnchor.constraint(equalTo:safe.topAnchor),scroll.leadingAnchor.constraint(equalTo:safe.leadingAnchor),scroll.trailingAnchor.constraint(equalTo:safe.trailingAnchor),scroll.bottomAnchor.constraint(equalTo:actions.topAnchor,constant:-12),
+            stack.topAnchor.constraint(equalTo:scroll.contentLayoutGuide.topAnchor,constant:16),stack.leadingAnchor.constraint(equalTo:scroll.contentLayoutGuide.leadingAnchor,constant:16),stack.trailingAnchor.constraint(equalTo:scroll.contentLayoutGuide.trailingAnchor,constant:-16),stack.bottomAnchor.constraint(equalTo:scroll.contentLayoutGuide.bottomAnchor,constant:-16),stack.widthAnchor.constraint(equalTo:scroll.frameLayoutGuide.widthAnchor,constant:-32)])
+        refresh()
+    }
+    private func change(_ edit:(inout MeadowEncounterEditDraft)throws->Void){
+        do{try edit(&draft);statusLabel.text=nil;refresh()}catch{statusLabel.text=error.localizedDescription}
+    }
+    private func refresh(){
+        countButton.configuration?.title="\(draft.count) 只"
+        countButton.menu=UIMenu(children:(1...draft.maximumCount).map{n in UIAction(title:"\(n)只",state:n==draft.count ? .on:.off){[weak self] _ in self?.change{try $0.setCount(n)}}})
+        for row in rows{stack.removeArrangedSubview(row);row.removeFromSuperview()}
+        for i in 0..<3 {
+            if i<draft.count{stack.insertArrangedSubview(rows[i],at:4+i)}
+            guard i<draft.count,let monster=draft.choices.first(where:{$0.id==draft.templates[i]}) else{continue}
+            pickers[i].configuration?.title=monster.name
+            pickers[i].menu=UIMenu(children:draft.choices.map{choice in UIAction(title:choice.name,state:choice.id==monster.id ? .on:.off){[weak self] _ in self?.change{try $0.setTemplate(choice.id,at:i)}}})
+            let a=monster.attack.dice
+            descriptions[i].text="生命 \(monster.attributes.maximumHealth) · 行动 \(monster.attributes.baseAP)\n普攻 \(a.count)D\(a.sides) · 射程 \(monster.attack.range)"
+        }
+    }
+    private func confirmSave(){
+        let names=draft.templates.compactMap{id in draft.choices.first{$0.id==id}?.name}.joined(separator:" + ")
+        let alert=UIAlertController(title:"确认保存并重置？",message:names+"\n此地点的敌人将恢复生命。",preferredStyle:.alert)
+        alert.addAction(UIAlertAction(title:"取消",style:.cancel))
+        alert.addAction(UIAlertAction(title:"保存",style:.destructive){[weak self] _ in
+            guard let self,let onSave=self.onSave else{return}
+            do{try onSave(self.draft.templates);self.dismiss(animated:true)}catch{self.statusLabel.text="未保存，原配置保留："+error.localizedDescription}
+        })
+        present(alert,animated:true)
+    }
 }

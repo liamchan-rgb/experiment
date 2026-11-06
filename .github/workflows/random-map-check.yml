@@ -57,6 +57,19 @@ jobs:
           set -euo pipefail
           swift run -c release --package-path Vendor/ClassroomGameCore MeadowCampaignReview --matrix > build/journey-audit.json 2> build/journey-audit.log
           swift run -c release --package-path Vendor/ClassroomGameCore MeadowCampaignReview --loadout-smoke > build/loadout-smoke.json 2> build/loadout-smoke.log
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          base=json.loads(Path('build/journey-audit.json').read_text())
+          assert len(base)==27 and {(r['size'],r['seed'],r['role']) for r in base}=={(n,s,r) for n in [4,10,30] for s in ['0','31827','18446744073709551615'] for r in ['adventurer','spellblade','dragonKnight']}
+          rows=json.loads(Path('build/loadout-smoke.json').read_text())
+          roles=['adventurer','spellblade','dragonKnight']
+          kits=['trainingSword-plain','huntingBow-leather-badge','greatSword-rune-ring','legendaryStaff-rune-ring','starlight-three','dragon-three','unarmed-rune-ring']
+          expected={(10,'31827',r,k) for r in roles for k in kits}|{(30,'0',r,k) for r in roles for k in ['starlight-three','dragon-three']}
+          actual=[(r['journey']['size'],r['journey']['seed'],r['journey']['role'],r['loadout']['id']) for r in rows]
+          assert len(rows)==27 and len(set(actual))==27 and set(actual)==expected
+          Path('build/matrix-count-check.json').write_text(json.dumps({'baseline':27,'loadouts':27,'uniqueCasesMatched':True},indent=2)+'\n')
+          PY
       - name: Archive without running application or simulator
         run: |
           set -euo pipefail
@@ -64,7 +77,9 @@ jobs:
             -configuration Release -destination 'generic/platform=iOS' \
             -archivePath build/MeadowJourney.xcarchive -derivedDataPath build/Derived \
             CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO 2>&1 | tee build/archive.log
-          bash scripts/package-ipa.sh build/MeadowJourney.xcarchive build/MeadowJourney-b90.ipa
+          python3 scripts/resource-source-manifest.py > build/resource-sources.json
+          /usr/bin/assetutil --info build/MeadowJourney.xcarchive/Products/Applications/MeadowJourney.app/Assets.car > build/asset-catalog.json
+          bash scripts/package-ipa.sh build/MeadowJourney.xcarchive build/MeadowJourney-b91.ipa
       - uses: actions/upload-artifact@v7
         if: always()
         with:
@@ -77,6 +92,9 @@ jobs:
             build/guidance-*.json
             build/equipment-*.json
             build/loadout-smoke.json
+            build/matrix-count-check.json
+            build/resource-sources.json
+            build/asset-catalog.json
             build/journey-audit.json
             build/monster-review/*.json
           if-no-files-found: error

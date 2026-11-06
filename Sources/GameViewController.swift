@@ -771,7 +771,7 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
 
     @objc private func openMapSettings() {
         if campaign != nil {
-            do {try saveCampaign();dismiss(animated:true)} catch {showCampaignMessage("保存失败，请稍后重试："+error.localizedDescription)}
+            do {try saveCampaign();dismiss(animated:true)} catch {refreshCampaignStatus(allowBattleOpen:false);showCampaignMessage("保存失败，请稍后重试："+error.localizedDescription)}
             return
         }
         if previewMap != nil { dismiss(animated:true);return }
@@ -818,10 +818,10 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
     }
     private func saveCampaign()throws {
         guard let campaign else{return}
+        try campaign.suspendAndCheckpoint(camera:scene.campaignCamera)
         cancelNodeSelection()
         selectEncounterPreview(nil)
         battlePreviewView?.setActive(false)
-        try campaign.setPaused(true);try campaign.checkpoint(camera:scene.campaignCamera)
     }
     @objc private func backgroundCampaign() {guard ready,campaign != nil else{return};do{try saveCampaign()}catch{campaign?.pauseAfterFailure();showCampaignMessage("保存失败："+error.localizedDescription)}}
     @objc private func foregroundCampaign() {guard ready,campaign != nil else{return};if battlePreviewActive{battlePreviewView?.setActive(true)};refreshCampaignStatus(allowBattleOpen:false)}
@@ -874,7 +874,7 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
     private func editNodeContents(_ id:Int) {
         guard let campaign,let node=campaign.engine.state.map.nodes.first(where:{$0.id==id}) else{return}
         switch node.kind {
-        case .combat,.boss:chooseEncounter(node:id,boss:node.kind == .boss)
+        case .combat,.boss:chooseEncounter(node:id)
         case .reward:chooseRewardAction(node:node)
         case .start,.empty:showCampaignMessage("起点和空地点没有可编辑的怪物或补给内容。")
         }
@@ -899,29 +899,19 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
         menu.popoverPresentationController?.sourceRect=campaignEdit.bounds
         present(menu,animated:true)
     }
-    private func chooseEncounter(node:Int,boss:Bool) {
+    private func chooseEncounter(node:Int) {
         guard let campaign else{return}
-        let menu=UIAlertController(title:"替换地点怪物",message:"替换会记录在行程操作历史中，并重置本地点的怪物。",preferredStyle:.actionSheet)
-        let options:[(String,String)]=[("林地鹿灵","meadowStag"),("古树鹿王","meadowElderStag")]
-        for (name,template) in options {
-            for count in (boss ? [1]:[1,2,3]) {
-                menu.addAction(UIAlertAction(title:"\(name) ×\(count)",style:.default){[weak self] _ in
-                    let confirm=UIAlertController(title:"确认替换？",message:"\(name) ×\(count) 将成为地点 \(node) 的新遭遇。",preferredStyle:.alert)
-                    confirm.addAction(UIAlertAction(title:"取消",style:.cancel))
-                    confirm.addAction(UIAlertAction(title:"替换",style:.destructive){_ in
-                        do {
-                            _=try campaign.configureEncounter(node:node,templates:Array(repeating:template,count:count))
-                            self?.scene.refreshCampaign();self?.refreshCampaignStatus();self?.showCampaignMessage("地点 \(node) 的遭遇已更新并保存。")
-                        } catch {self?.showCampaignMessage(error.localizedDescription)}
-                    })
-                    self?.present(confirm,animated:true)
-                })
+        do {
+            guard let mapNode=campaign.engine.state.map.nodes.first(where:{$0.id==node}) else{return}
+            let templates=campaign.engine.state.units.values.filter{$0.kind == .monster && $0.nodeID==node}.sorted{$0.id<$1.id}.map(\.templateID)
+            let draft=try MeadowEncounterEditDraft(node:mapNode,templates:templates,catalog:campaign.engine.catalog)
+            let editor=MeadowEncounterEditorViewController(draft:draft,title:mapNode.name)
+            editor.onSave={ [weak self] templates in
+                _=try campaign.configureEncounter(node:node,templates:templates)
+                self?.scene.refreshCampaign();self?.refreshCampaignStatus();self?.showCampaignMessage("地点 \(node) 的遭遇已更新并保存。")
             }
-        }
-        menu.addAction(UIAlertAction(title:"取消",style:.cancel))
-        menu.popoverPresentationController?.sourceView=campaignEdit
-        menu.popoverPresentationController?.sourceRect=campaignEdit.bounds
-        present(menu,animated:true)
+            present(editor,animated:true)
+        }catch{showCampaignMessage(error.localizedDescription)}
     }
     private func editReward(node:MapNode) {
         guard let campaign else{return}
