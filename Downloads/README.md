@@ -1,3 +1,9 @@
+## Build86 · 战斗节点怪物预览与行程补给 · 1.6.59
+
+[直接下载 IPA](https://raw.githubusercontent.com/liamchan-rgb/experiment/94a33eb2307821c74b754173977226117fb075e6/Downloads/MeadowJourney-b86.ipa) · [离线排版参考](https://raw.githubusercontent.com/liamchan-rgb/experiment/a734cbb5f99b0cc70959fcdb2d41794897ce8c61/Art/Review/Map/encounter-preview-v1/preview-cards.png) · [包检](../Media/Build86/verification.json)
+
+点战斗/首领建筑出现可关闭的实际怪物卡片，并保持即时行走；到达后可开战。新行程按道路和遭遇密度配置旅费/药水/盾药/复活石，原技能和掉落不变，旧存档不重发。233测试、四组回归、设备Release、包检与公开完整GET通过；未运行App/模拟器/实机。
+
 ## Build85 · 正式随机怪物遭遇 · 1.6.58
 
 [直接下载 IPA](https://raw.githubusercontent.com/liamchan-rgb/experiment/974d0e5d26fccd60fb13cf0c9d350b0452d62e97/Downloads/MeadowJourney-b85.ipa) · [包检](../Media/Build85/verification.json)

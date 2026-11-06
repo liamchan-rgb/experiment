@@ -1,0 +1,49 @@
+{
+  "sourceCommit": "a734cbb5f99b0cc70959fcdb2d41794897ce8c61",
+  "runID": 42148753331,
+  "artifactID": 13472131568,
+  "version": "1.6.59",
+  "build": 86,
+  "runAttempt": 1,
+  "artifactSHA256": "0271b3fa822a3592e5bcf15768701c2a1da5f88b4ac90986715bff2072318673",
+  "ipaBytes": 64619861,
+  "ipaSHA256": "7273dfd7793ee90f32d1392b02fc472accbb04a9e9ea3d46683b9d9ea4dbe24c",
+  "tests": 233,
+  "checks": {
+    "CRC": true,
+    "classicZIP2WithoutExtras": true,
+    "version": "1.6.59/86",
+    "executableDiffersFromBuild85": true,
+    "executableSHA256": "142e1e334a4fa94fc85b45fb53ac8f446fd70c0d203d882786993e6c3ca87764",
+    "arm64ExecutablePermissions": "0o100755",
+    "MetalAssets12MonsterAtlases6DatasetsAndFullCatalogUnchanged": true,
+    "encounters-default.json": "Mac/Linux roster identical; road distance error <1e-8",
+    "encounters-max.json": "Mac/Linux roster identical; road distance error <1e-8",
+    "balance-default.json": "Mac/Linux saved readouts and provisions equivalent; physical distance error <1e-8",
+    "balance-max.json": "Mac/Linux saved readouts and provisions equivalent; physical distance error <1e-8"
+  },
+  "preservedBuild85Resources": {
+    "Payload/MeadowJourney.app/Assets.car": "9a3431ff9f173b30db1a3c4e9d6775caf35d12a19a0c89dda7c9c7b87b0fc2c8",
+    "Payload/MeadowJourney.app/SceneMap.json": "b5d8e7c74e6038a4d6b3e266cf1c6f7184eee56cfb2c2f462b7e048ab6cd0ea5",
+    "Payload/MeadowJourney.app/ClassroomGameCore_ClassroomGameCore.bundle/initial-content.json": "aaab980fd5f3154ac813a02dc907a835ee0e0181c4149f2b7803d9594795f34a",
+    "Payload/MeadowJourney.app/hero-gait.json": "44ad26e97cfd0836074eefc70ee081f2bbb5b2003961ed1e779acbfebdaaa527"
+  },
+  "appSimulatorDeviceRun": false,
+  "downloadURL": "https://raw.githubusercontent.com/liamchan-rgb/experiment/94a33eb2307821c74b754173977226117fb075e6/Downloads/MeadowJourney-b86.ipa",
+  "releaseCommit": "94a33eb2307821c74b754173977226117fb075e6",
+  "publicGET": {
+    "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/94a33eb2307821c74b754173977226117fb075e6/Downloads/MeadowJourney-b86.ipa",
+    "httpStatus": 200,
+    "bytes": 64619861,
+    "sha256": "7273dfd7793ee90f32d1392b02fc472accbb04a9e9ea3d46683b9d9ea4dbe24c",
+    "verifiedAt": "2026-11-06T02:23:41.273756+00:00",
+    "completeGET": true
+  },
+  "swiftTests": 233,
+  "fourRegressionsPassed": true,
+  "deviceReleaseArchivePassed": true,
+  "saveFormatVersion": 1,
+  "provisioningVersion": 1,
+  "nodeMonsterPreview": true,
+  "installed": false
+}
