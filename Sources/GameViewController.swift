@@ -809,13 +809,14 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
     @objc private func foregroundCampaign() {guard ready,campaign != nil else{return};if battlePreviewActive{battlePreviewView?.setActive(true)};refreshCampaignStatus(allowBattleOpen:false)}
     private func refillCampaign() {
         guard let campaign,!campaign.isMoving,campaign.engine.state.battle==nil else{return}
-        let cost=campaign.movementRefillCost
-        let menu=UIAlertController(title:"补充移动条",message:"剩余 \(Int(campaign.movementRemaining))/\(Int(campaign.movementCapacity)) 距离\n每50距离1金币，补满需要 \(cost) 金币。\n全队持有 \(campaign.partyCoins) 金币。",preferredStyle:.actionSheet)
+        let cost=campaign.movementRefillCost,affordable=campaign.movementPurchaseCoins
+        let menu=UIAlertController(title:"补充移动条",message:"剩余 \(Int(campaign.movementRemaining))/\(Int(campaign.movementCapacity)) 距离\n每50距离1金币，补满需要 \(cost) 金币。\n全队持有 \(campaign.partyCoins) 金币，可购买 \(Int(ceil(campaign.movementPurchaseDistance))) 距离。",preferredStyle:.actionSheet)
         func fill(_ coins:Bool) {
-            do{try campaign.refillMovement(usingCoins:coins);refreshCampaignStatus();showCampaignMessage(campaign.hasPendingTravel ? "移动条已补满，点击播放继续行走":"移动条已补满，请点击新的道路目的地")}
+            do{try campaign.refillMovement(usingCoins:coins);refreshCampaignStatus();showCampaignMessage(campaign.hasPendingTravel ? "移动已补充，点击播放继续行走":"移动已补充，请点击新的道路目的地")}
             catch{showCampaignMessage(error.localizedDescription)}
         }
-        let buy=UIAlertAction(title:"花费 \(cost) 金币补满",style:.default){_ in fill(true)};buy.isEnabled=cost>0 && campaign.partyCoins>=cost
+        let buyTitle=affordable>0 ? "花费 \(affordable) 金币"+(affordable==cost ? "补满":"补充部分移动"):"金币不足，暂不能购买"
+        let buy=UIAlertAction(title:buyTitle,style:.default){_ in fill(true)};buy.isEnabled=affordable>0
         menu.addAction(buy);menu.addAction(UIAlertAction(title:"手动补满",style:.default){_ in fill(false)})
         menu.addAction(UIAlertAction(title:"取消",style:.cancel));menu.popoverPresentationController?.sourceView=campaignRefill;menu.popoverPresentationController?.sourceRect=campaignRefill.bounds
         present(menu,animated:true)

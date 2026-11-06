@@ -267,6 +267,8 @@ public final class MeadowCampaignSession {
     public var movementRemaining:Double {min(writer.snapshot.movement?.remaining ?? movementCapacity,movementCapacity)}
     public var movementRefillCost:Int {Int(ceil(max(0,movementCapacity-movementRemaining)/MeadowMovementRules.distancePerCoin))}
     public var partyCoins:Int {engine.state.players.reduce(0){$0+$1.coins}}
+    public var movementPurchaseCoins:Int {min(movementRefillCost,partyCoins)}
+    public var movementPurchaseDistance:Double {min(max(0,movementCapacity-movementRemaining),Double(movementPurchaseCoins)*MeadowMovementRules.distancePerCoin)}
     public func routeDistance(_ path:[Int])->Double {
         guard path.count>1 else{return 0}
         return zip(path,path.dropFirst()).reduce(0){sum,edge in sum+(MeadowCampaignSave.road(writer.snapshot.layout,from:edge.0,to:edge.1).map(MeadowCampaignSave.length) ?? 0)}
@@ -391,8 +393,10 @@ public final class MeadowCampaignSession {
         try requireOpenCampaign()
         guard engine.state.phase == .exploration,engine.state.battle==nil,!isMoving else{throw GameError("请先暂停移动并结束战斗。")}
         guard movementRemaining+0.000001<movementCapacity else{return nil}
-        let before=writer.snapshot,cost=usingCoins ? movementRefillCost:0
-        writer.snapshot.movement?.remaining=movementCapacity
+        let before=writer.snapshot,cost=usingCoins ? movementPurchaseCoins:0
+        guard !usingCoins || cost>0 else{throw GameError("金币不足，请领取补给、击败怪物或手动补充移动。")}
+        let newRemaining=usingCoins ? movementRemaining+movementPurchaseDistance:movementCapacity
+        writer.snapshot.movement?.remaining=newRemaining
         if usingCoins{writer.snapshot.movement?.purchasedRefills+=1}else{writer.snapshot.movement?.manualRefills+=1}
         do{return try engine.apply(.refillCampaignMovement(actors:playerIDs,coins:cost,manual:!usingCoins))}
         catch{writer.snapshot=before;throw error}
@@ -424,6 +428,18 @@ public final class MeadowCampaignSession {
     public var canManageInventory:Bool {!isCompleted && travel==nil && engine.state.battle==nil && engine.state.phase == .exploration}
     private func requireInventoryAccess()throws {
         guard canManageInventory else{throw GameError("请先完成移动并结束战斗，再管理行囊。")}
+    }
+    public var inventoryActionRefillNeeded:Bool {
+        canManageInventory && engine.state.players.contains{unit in
+            unit.isAlive && unit.ap < ((try? GameRules.attributes(unit,catalog:engine.catalog).baseAP) ?? 0)
+        }
+    }
+    /// Restore the original manual exploration-AP operation, separately from
+    /// the map's movement refill. Never resets HP, skill uses or inventories.
+    @discardableResult public func refillInventoryActions()throws->OperationReceipt? {
+        try requireInventoryAccess()
+        guard inventoryActionRefillNeeded else{return nil}
+        return try engine.apply(.refillExploration)
     }
     public func candidateEquipment(actor:String,slot:ItemSlot,item:String?)throws->GameUnit {
         try requireInventoryAccess()

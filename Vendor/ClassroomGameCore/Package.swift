@@ -5,12 +5,15 @@ let package = Package(name:"ClassroomGameCore",platforms:[.iOS(.v15),.macOS(.v13
     .library(name:"MeadowBattleSupport",targets:["MeadowBattleSupport"]),
     .library(name:"MeadowWorldSupport",targets:["MeadowWorldSupport"]),
     .executable(name:"MeadowMapExport",targets:["MeadowMapExport"]),
-    .executable(name:"MeadowSupportReviewExport",targets:["MeadowSupportReviewExport"])
+    .executable(name:"MeadowSupportReviewExport",targets:["MeadowSupportReviewExport"]),
+    .executable(name:"MeadowCampaignReview",targets:["MeadowCampaignReview"])
 ],targets:[
     .target(name:"ClassroomGameCore",resources:[.process("Resources")]),
     .target(name:"MeadowWorldSupport",dependencies:["ClassroomGameCore"]),
     .executableTarget(name:"MeadowMapExport",dependencies:["MeadowWorldSupport"],path:"MapTools"),
-    .testTarget(name:"MeadowWorldSupportTests",dependencies:["MeadowWorldSupport","MeadowBattleSupport","ClassroomGameCore"]),
+    .testTarget(name:"MeadowWorldSupportTests",dependencies:["MeadowWorldSupport","MeadowBattleSupport","ClassroomGameCore","MeadowCampaignAuditSupport"]),
+    .target(name:"MeadowCampaignAuditSupport",dependencies:["MeadowWorldSupport","MeadowBattleSupport","ClassroomGameCore"],path:"AuditSupport"),
+    .executableTarget(name:"MeadowCampaignReview",dependencies:["MeadowCampaignAuditSupport"],path:"CampaignTools"),
     .target(name:"MeadowBattleSupport",dependencies:["ClassroomGameCore"],resources:[.process("Resources")]),
     .executableTarget(name:"MeadowSupportReviewExport",dependencies:["MeadowBattleSupport","ClassroomGameCore"],path:"Tools"),
     .testTarget(name:"ClassroomGameCoreTests",dependencies:["ClassroomGameCore"]),

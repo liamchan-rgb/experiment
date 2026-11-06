@@ -216,13 +216,14 @@ final class MeadowCampaignInventoryViewController:UIViewController {
     private let saveLabel=MeadowPreviewPalette.label("随操作自动保存到当前行程",size:14)
     private let members=UISegmentedControl(items:["P1 行囊","P2 行囊"])
     private let close=MeadowPreviewPalette.button("返回行程")
+    private let refillActions=MeadowPreviewPalette.button("手动整备")
     private let hero=UIImageView(),health=MeadowBattleResourceBar(),ap=MeadowBattleActionPointsView()
     private let stats=MeadowPreviewPalette.label("",size:16)
     private let slots=ItemSlot.allCases.map{_ in MeadowPreviewPalette.button("")}
     private let filterButton=MeadowPreviewPalette.button("全部物品 ▾"),list=UIScrollView()
     private let detailContent=UIView()
     private let detail=UIScrollView(),primary=MeadowPreviewPalette.button("使用")
-    private let footer=MeadowPreviewPalette.label("成员各自携带物品 · 换装不回血或补行动 · 使用补给消耗原规则行动点",size:14)
+    private let footer=MeadowPreviewPalette.label("手动整备补足各成员基础行动 · 用药和救援消耗使用者的行动与个人物品",size:14)
     private var rows:[UIButton]=[]
     private let filters=[("all","全部物品"),("weapon","武器"),("armor","护甲"),("accessory","饰品"),("supplies","补给")]
     private let visualEquipment:Set<String>=["trainingSword","huntingBow","greatSword","legendaryStaff","leatherArmor","runeArmor","powerBadge","actionRing"]
@@ -237,7 +238,14 @@ final class MeadowCampaignInventoryViewController:UIViewController {
         super.viewDidLoad();view.backgroundColor=UIColor(red:0.045,green:0.085,blue:0.058,alpha:1)
         [header,left,middle,right].forEach{MeadowPreviewPalette.stylePanel($0);view.addSubview($0)}
         [titleLabel,saveLabel,members,close].forEach(header.addSubview);view.addSubview(footer)
-        [hero,health,ap,stats].forEach(left.addSubview);hero.contentMode = .scaleAspectFit;hero.layer.magnificationFilter = .nearest
+        [refillActions,hero,health,ap,stats].forEach(left.addSubview);hero.contentMode = .scaleAspectFit;hero.layer.magnificationFilter = .nearest
+        refillActions.accessibilityIdentifier="campaignRefillInventoryActions"
+        refillActions.accessibilityLabel="手动补足各成员基础行动"
+        refillActions.addAction(UIAction{[weak self] _ in
+            guard let self else{return}
+            do{try self.session.refillInventoryActions();self.saveLabel.text="各成员已按自身基础行动补足";self.onChange?();self.refresh()}
+            catch{self.refresh();let alert=UIAlertController(title:"整备未完成",message:error.localizedDescription,preferredStyle:.alert);alert.addAction(UIAlertAction(title:"知道了",style:.default));self.present(alert,animated:true)}
+        },for:.touchUpInside)
         stats.numberOfLines=0;footer.numberOfLines=2
         left.alwaysBounceVertical=true;list.alwaysBounceVertical=true;detail.alwaysBounceVertical=true
         middle.addSubview(filterButton);middle.addSubview(list);right.addSubview(detail);detail.addSubview(detailContent);right.addSubview(primary)
@@ -272,6 +280,7 @@ final class MeadowCampaignInventoryViewController:UIViewController {
         }
         if rows.isEmpty{let row=MeadowPreviewPalette.button("暂无此类物品");row.isEnabled=false;list.addSubview(row);rows=[row]}
         members.selectedSegmentIndex=actor=="p2" ? 1:0
+        refillActions.isEnabled=session.inventoryActionRefillNeeded;refillActions.alpha=refillActions.isEnabled ? 1:0.45
         let a=try? GameRules.attributes(unit,catalog:catalog)
         health.show("生命",value:unit.health,maximum:a?.maximumHealth ?? 1,color:.systemGreen);ap.show(value:unit.ap,maximum:a?.maximumAP ?? 8)
         stats.text="\(unit.name)\n金币 \(unit.coins) · 积分 \(unit.score)\n额外伤害 ＋\(a?.damage ?? 0)"+(actor=="p2" ? "\nP2装备仅查看，补给可正常使用。":"")
@@ -292,9 +301,10 @@ final class MeadowCampaignInventoryViewController:UIViewController {
         let w=header.bounds.width;titleLabel.frame=CGRect(x:12,y:2,width:max(1,w-325),height:29);saveLabel.frame=CGRect(x:12,y:31,width:max(1,w-325),height:22)
         members.frame=CGRect(x:w-310,y:12,width:180,height:34);close.frame=CGRect(x:w-122,y:9,width:112,height:38)
         let lw=left.bounds.width,hh:CGFloat=actor=="p1" ? 150:0
-        hero.frame=CGRect(x:8,y:8,width:lw-16,height:hh);health.frame=CGRect(x:10,y:hh+16,width:lw-20,height:42);ap.frame=CGRect(x:10,y:hh+65,width:lw-20,height:38)
-        stats.frame=CGRect(x:10,y:hh+111,width:lw-20,height:actor=="p2" ? 100:72)
-        let sy=hh+(actor=="p2" ? 220:192)
+        refillActions.frame=CGRect(x:10,y:8,width:lw-20,height:38)
+        hero.frame=CGRect(x:8,y:56,width:lw-16,height:hh);health.frame=CGRect(x:10,y:hh+64,width:lw-20,height:42);ap.frame=CGRect(x:10,y:hh+113,width:lw-20,height:38)
+        stats.frame=CGRect(x:10,y:hh+159,width:lw-20,height:actor=="p2" ? 100:72)
+        let sy=hh+(actor=="p2" ? 268:240)
         for (i,b) in slots.enumerated(){b.frame=CGRect(x:10,y:sy+CGFloat(i)*56,width:lw-20,height:48)}
         left.contentSize=CGSize(width:lw,height:sy+172)
         filterButton.frame=CGRect(x:8,y:8,width:middle.bounds.width-16,height:38);list.frame=CGRect(x:8,y:54,width:middle.bounds.width-16,height:max(1,middle.bounds.height-62))
