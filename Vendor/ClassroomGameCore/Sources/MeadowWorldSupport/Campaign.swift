@@ -214,11 +214,10 @@ public final class MeadowCampaignSession {
             if let source=loadouts?[id] {u.equipment=source.equipment;u.inventory=source.inventory}
             u.health=try GameRules.attributes(u,catalog:catalog).maximumHealth;try GameRules.refill(&u,catalog:catalog);units[id]=u
         }
-        for node in layout.map.nodes where node.kind == .combat || node.kind == .boss {
-            let count=node.kind == .boss ? 1:(node.id%3==0 ? 2:1)
-            for index in 1...count {
-                let id="m-\(node.id)-\(index)"
-                units[id]=try GameFactory.monster(id:id,templateID:node.kind == .boss ? "meadowElderStag":"meadowStag",nodeID:node.id,catalog:catalog)
+        for encounter in MeadowEncounterPlanner.plan(layout) {
+            for (index,template) in encounter.templates.enumerated() {
+                let id="m-\(encounter.nodeID)-\(index+1)"
+                units[id]=try GameFactory.monster(id:id,templateID:template,nodeID:encounter.nodeID,catalog:catalog)
             }
         }
         var state=GameState(units:units,teams:[GameTeam(id:"party",name:"林间小队")],map:layout.map,random:RandomState(seed:layout.configuration.seed ^ 0x43414d504149474e))

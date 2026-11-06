@@ -11,6 +11,7 @@ final class MeadowMapSettingsViewController: UIViewController {
     private var sliders: [UISlider] = []
     private var lastValid = MeadowMapConfiguration()
     private let status = UILabel()
+    private let encounters = UILabel()
     private let generateButton = UIButton(type:.system)
     private let enterButton = UIButton(type:.system)
     private let preview = MeadowMapThumbnail()
@@ -60,12 +61,14 @@ final class MeadowMapSettingsViewController: UIViewController {
         let note=UILabel();note.text="数量与滑块联动。可先预览建筑道路，再开始双人探索；探索会保存生命、背包、已领取奖励与途中位置。"
         note.font = .systemFont(ofSize:17,weight:.medium);note.textColor = .white;note.numberOfLines=0
         status.textColor=gold;status.numberOfLines=0;status.font = .boldSystemFont(ofSize:17)
+        encounters.textColor = .white;encounters.numberOfLines=0;encounters.font = .systemFont(ofSize:16,weight:.semibold)
         generateButton.configuration=button("生成道路预览",action:#selector(generate)).configuration
         generateButton.addTarget(self,action:#selector(generate),for:.touchUpInside)
         enterButton.configuration=button("进入林地预览",action:#selector(enter)).configuration
         enterButton.addTarget(self,action:#selector(enter),for:.touchUpInside)
         right.addArrangedSubview(heading);right.addArrangedSubview(note);right.addArrangedSubview(preview)
         right.addArrangedSubview(status);right.addArrangedSubview(generateButton);right.addArrangedSubview(enterButton)
+        right.addArrangedSubview(encounters)
         startCampaignButton.configuration=button("开始新行程",action:#selector(startCampaign)).configuration
         startCampaignButton.addTarget(self,action:#selector(startCampaign),for:.touchUpInside)
         let classLabel=UILabel();classLabel.text="P1职业 · P2沿用游侠";classLabel.font = .boldSystemFont(ofSize:17);classLabel.textColor=gold
@@ -125,7 +128,7 @@ final class MeadowMapSettingsViewController: UIViewController {
         inputChanged(inputs[slider.tag])
     }
     private func changed() {
-        revision+=1;result=nil;preview.map=nil;enterButton.isEnabled=false;startCampaignButton.isEnabled=false
+        revision+=1;result=nil;preview.map=nil;encounters.text=nil;enterButton.isEnabled=false;startCampaignButton.isEnabled=false
         do {
             let c=try configuration();lastValid=c
             for slider in sliders {
@@ -155,13 +158,17 @@ final class MeadowMapSettingsViewController: UIViewController {
         guard let config=try? configuration() else { changed();return }
         let token=revision;generateButton.isEnabled=false;status.text="正在生成林地…"
         DispatchQueue.global(qos:.userInitiated).async { [weak self] in
-            let output=Result { try MeadowMapGenerator.generate(config) }
+            let output=Result { () throws -> (GeneratedMeadowMap,String) in
+                let map=try MeadowMapGenerator.generate(config)
+                return (map,try MeadowEncounterPlanner.summary(map,catalog:MeadowCampaignSession.catalog()))
+            }
             DispatchQueue.main.async {
                 guard let self,self.revision==token else { return }
                 self.generateButton.isEnabled=true
                 switch output {
-                case .success(let map):
+                case .success(let (map,summary)):
                     self.result=map;self.preview.map=map;self.enterButton.isEnabled=true;self.startCampaignButton.isEnabled=true
+                    self.encounters.text=summary
                     self.status.text="\(map.map.nodes.count)个节点 · \(map.roads.count)条道路 · \(config.extraRoads)条环路\n种子 \(config.seed)"
                 case .failure(let error): self.status.text=error.localizedDescription
                 }

@@ -117,7 +117,9 @@ final class CampaignTests:XCTestCase {
         XCTAssertEqual(boss.attributes,try source.monster("caveTroll").attributes)
         XCTAssertEqual(boss.skills,try source.monster("caveTroll").skills)
         let start=session.engine.state.units["p1"]!.nodeID
-        try session.beginTravel(to:session.engine.state.map.neighbors(start)[0]);try finishTravel(session)
+        let target=session.engine.state.map.neighbors(start)[0]
+        try session.configureEncounter(node:target,templates:["caveTroll"])
+        try session.beginTravel(to:target);try finishTravel(session)
         try session.interactCurrentNode()
         let encounter=try PartyEncounter(engine:session.engine),id=encounter.monsterIDs[0]
         try session.engine.apply(.editResources(unit:id,value:ResourcePatch(health:12)))
