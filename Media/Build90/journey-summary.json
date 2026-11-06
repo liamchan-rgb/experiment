@@ -1,0 +1,26 @@
+{
+  "cases": 27,
+  "outcomes": {
+    "victory": 24,
+    "defeat": 3
+  },
+  "actions": 1330,
+  "resumes": 354,
+  "stagedRestarts": 171,
+  "species": [
+    "caveTroll",
+    "goblinArcher",
+    "ruinDragon",
+    "slime",
+    "stoneGuardian",
+    "wolf"
+  ],
+  "scope": "same fixed policy and original Build88 encounters/provisions; no app execution",
+  "allAssignedBossCachesCollectedBeforeBaselineBosses": true,
+  "appSimulatorDeviceRun": false,
+  "baselineBuild89": {
+    "victory": 24,
+    "defeat": 3
+  },
+  "comparedWithBuild89": true
+}

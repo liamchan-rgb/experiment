@@ -1,3 +1,9 @@
+## Build90 · 装备对照与职业行程回归 · 1.6.63
+
+[直接下载 IPA](https://raw.githubusercontent.com/liamchan-rgb/experiment/04875c29798a3ca69504863b9fd3a4f829d64d20/Downloads/MeadowJourney-b90.ipa) · [说明与范围](../docs/planning/random-map-v1/build90-loadout-regression.md) · [包检](../Media/Build90/verification.json)
+
+换装详情显示真实普攻/射程、技能、基础与最大行动、队伍地图移动上限。修复降低最大行动上限时余量超限导致换装保存失败；装备和移动一并保存或回滚，提高容量不补条。259项测试、177组Linux装备行程、Mac27组抽样与原27基线、设备Release通过。公开完整GET通过，未运行App/模拟器/实机。专属套装外观仍待制作，未开放原受限按钮。
+
 ## Build89 · 行程路线与资源提示 · 1.6.62
 
 [直接下载 IPA](https://raw.githubusercontent.com/liamchan-rgb/experiment/bf05594630fa59cdc09ed889440a2f0621ea0486/Downloads/MeadowJourney-b89.ipa) · [使用与验证说明](../docs/planning/random-map-v1/build89-route-guidance.md) · [包检](../Media/Build89/verification.json)

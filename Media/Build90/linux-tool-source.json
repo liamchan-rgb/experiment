@@ -1,0 +1,15 @@
+{
+  "archiveSourceCommit": "ca150c5ea5d36af7db17bd35c25afccd8710b013",
+  "regressionToolSourceCommit": "a89417d92ba537f748a140792a21dfa9dac2b703",
+  "unchangedBuildAndAuditInputPaths": [
+    "Sources",
+    "Vendor/ClassroomGameCore/Sources",
+    "Vendor/ClassroomGameCore/AuditSupport",
+    "Vendor/ClassroomGameCore/Package.swift",
+    "MeadowJourney.xcodeproj",
+    "scripts/package-ipa.sh"
+  ],
+  "buildInputDiff": [],
+  "nativeRunID": 42192128843,
+  "nativeCLIUsesArchiveSource": true
+}

@@ -1,0 +1,164 @@
+{
+  "sourceCommit": "ca150c5ea5d36af7db17bd35c25afccd8710b013",
+  "runID": 42192128843,
+  "artifactID": 13491336864,
+  "regressionToolSourceCommit": "a89417d92ba537f748a140792a21dfa9dac2b703",
+  "appInputsIdenticalAfterToolFix": true,
+  "nativeLoadoutVerification": {
+    "sourceCommit": "49c3c509205ec9bf7a3975960b35e64ce94fdd95",
+    "runID": 42210542590,
+    "artifactID": 13499130214,
+    "runAttempt": 1,
+    "artifactSHA256": "d3c00239bcb92bf0247d4797ed34a652be5503b4d6b3cb6259b388b47cbf7e84",
+    "cases": 27,
+    "appArchiveJobSkipped": true
+  },
+  "version": "1.6.63",
+  "build": 90,
+  "runAttempt": 1,
+  "artifactSHA256": "5d3f26a3e5915e44259e2924d93a7c1346009510001ec46c0cadfec13be980b7",
+  "ipaBytes": 64688885,
+  "ipaSHA256": "86f0338e2dab7bf8f64bd9e7340d22893656af47bb38d87c006475b92ab57c29",
+  "tests": 259,
+  "checks": {
+    "CRC": true,
+    "classicZIP2WithoutExtras": true,
+    "version": "1.6.63/90",
+    "executableDiffersFromBuild89": true,
+    "executableSHA256": "b4bc93ab826fefe8bc2b9a2b81af646bb0be636135b3ca45052c4a36308f4d45",
+    "arm64ExecutablePermissions": "0o100755",
+    "MetalAssets12MonsterAtlases6DatasetsAndFullCatalogUnchanged": true,
+    "encounters-default.json": "Mac/Linux roster identical; road distance error <1e-8",
+    "encounters-max.json": "Mac/Linux roster identical; road distance error <1e-8",
+    "balance-default.json": "Mac/Linux saved readouts and provisions equivalent; physical distance error <1e-8",
+    "balance-max.json": "Mac/Linux saved readouts and provisions equivalent; physical distance error <1e-8",
+    "journey-audit.json": "Mac/Linux saved readouts and provisions equivalent; physical distance error <1e-8",
+    "guidance-default.json": "Mac/Linux saved readouts and provisions equivalent; physical distance error <1e-8",
+    "guidance-max.json": "Mac/Linux saved readouts and provisions equivalent; physical distance error <1e-8",
+    "equipment-default.json": "Mac/Linux saved readouts and provisions equivalent; physical distance error <1e-8",
+    "equipment-max.json": "Mac/Linux saved readouts and provisions equivalent; physical distance error <1e-8",
+    "loadout-smoke.json": "Mac/Linux saved readouts and provisions equivalent; physical distance error <1e-8"
+  },
+  "preservedBuild89Resources": {
+    "Payload/MeadowJourney.app/Assets.car": "9a3431ff9f173b30db1a3c4e9d6775caf35d12a19a0c89dda7c9c7b87b0fc2c8",
+    "Payload/MeadowJourney.app/SceneMap.json": "b5d8e7c74e6038a4d6b3e266cf1c6f7184eee56cfb2c2f462b7e048ab6cd0ea5",
+    "Payload/MeadowJourney.app/ClassroomGameCore_ClassroomGameCore.bundle/initial-content.json": "aaab980fd5f3154ac813a02dc907a835ee0e0181c4149f2b7803d9594795f34a",
+    "Payload/MeadowJourney.app/hero-gait.json": "44ad26e97cfd0836074eefc70ee081f2bbb5b2003961ed1e779acbfebdaaa527"
+  },
+  "appSimulatorDeviceRun": false,
+  "downloadURL": "https://raw.githubusercontent.com/liamchan-rgb/experiment/04875c29798a3ca69504863b9fd3a4f829d64d20/Downloads/MeadowJourney-b90.ipa",
+  "releaseCommit": "04875c29798a3ca69504863b9fd3a4f829d64d20",
+  "publicGET": {
+    "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/04875c29798a3ca69504863b9fd3a4f829d64d20/Downloads/MeadowJourney-b90.ipa",
+    "httpStatus": 200,
+    "bytes": 64688885,
+    "sha256": "86f0338e2dab7bf8f64bd9e7340d22893656af47bb38d87c006475b92ab57c29",
+    "verifiedAt": "2026-11-06T11:34:07.150753+00:00",
+    "completeGET": true
+  },
+  "swiftTests": 259,
+  "fourRegressionsPassed": true,
+  "deviceReleaseArchivePassed": true,
+  "saveFormatVersion": 1,
+  "journeyAudit": {
+    "cases": 27,
+    "outcomes": {
+      "victory": 24,
+      "defeat": 3
+    },
+    "actions": 1330,
+    "resumes": 354,
+    "stagedRestarts": 171,
+    "species": [
+      "caveTroll",
+      "goblinArcher",
+      "ruinDragon",
+      "slime",
+      "stoneGuardian",
+      "wolf"
+    ],
+    "scope": "same fixed policy and original Build88 encounters/provisions; no app execution",
+    "allAssignedBossCachesCollectedBeforeBaselineBosses": true,
+    "appSimulatorDeviceRun": false,
+    "baselineBuild89": {
+      "victory": 24,
+      "defeat": 3
+    },
+    "comparedWithBuild89": true
+  },
+  "encounterPlannerVersion": 2,
+  "provisioningVersion": 2,
+  "equipmentReadout": true,
+  "loadoutRegression": {
+    "cases": 177,
+    "nativeSampleCases": 27,
+    "roles": [
+      "adventurer",
+      "dragonKnight",
+      "spellblade"
+    ],
+    "loadouts": 17,
+    "outcomes": {
+      "victory": 146,
+      "defeat": 31
+    },
+    "byRole": {
+      "adventurer": {
+        "victory": 46,
+        "defeat": 13
+      },
+      "dragonKnight": {
+        "victory": 51,
+        "defeat": 8
+      },
+      "spellblade": {
+        "victory": 49,
+        "defeat": 10
+      }
+    },
+    "actions": 6582,
+    "resumes": 1871,
+    "stagedRestarts": 886,
+    "species": [
+      "caveTroll",
+      "goblinArcher",
+      "ruinDragon",
+      "slime",
+      "stoneGuardian",
+      "wolf"
+    ],
+    "actionsUsed": {
+      "enemy:attack": 1679,
+      "enemy:dragonFlame": 159,
+      "enemy:dragonScaleWard": 243,
+      "player:ambush": 695,
+      "player:attack": 1903,
+      "player:heavyStrike": 173,
+      "player:largePotion": 237,
+      "player:rally": 350,
+      "player:shieldPotion": 112,
+      "player:smallPotion": 85,
+      "player:support": 85,
+      "player:revivalStone": 43,
+      "enemy:simpleGuard": 23,
+      "player:starlightPulse": 31,
+      "player:dragonSoulWard": 29,
+      "player:breather": 17,
+      "player:endTurn": 46,
+      "player:simpleGuard": 7,
+      "player:battleRune": 221,
+      "player:runeSlash": 112,
+      "player:runeWard": 11,
+      "player:dragonFlame": 134,
+      "player:dragonOrder": 152,
+      "player:dragonScaleWard": 12,
+      "enemy:regeneration": 6,
+      "enemy:sweep": 17
+    },
+    "scope": "controlled starting equipment; fixed original mean-effect strategy, real dice/items/paid movement; not human win rate, natural equipment progression, or artwork approval",
+    "appSimulatorDeviceRun": false
+  },
+  "routeGuidance": true,
+  "actualRewardPreview": true,
+  "installed": false
+}
