@@ -49,6 +49,10 @@ final class JourneyReadoutTests:XCTestCase {
         let restored=try MeadowCampaignSession(save:save),before=restored.snapshot
         XCTAssertTrue(restored.closingReadout.contains("金币缺口"));XCTAssertTrue(restored.closingReadout.contains("手动补满"))
         XCTAssertFalse(restored.canComplete);XCTAssertEqual(restored.snapshot,before)
+        var survivor=save;survivor.archive.state.units["p1"]!.health=0;survivor.selectedPlayerID="p1"
+        let onlyP2=try MeadowCampaignSession(save:survivor),frozen=onlyP2.snapshot
+        XCTAssertTrue(onlyP2.closingReadout.contains("金币缺口"));XCTAssertTrue(onlyP2.closingReadout.contains("手动补满"))
+        XCTAssertEqual(onlyP2.snapshot,frozen)
     }
     func testPausedRoadExplanationSurvivesCheckpointWithoutGrantingAnything()throws {
         let s=try MeadowCampaignSession.new(layout:MeadowMapGenerator.generate(.suggested(total:4,seed:0)))
