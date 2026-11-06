@@ -143,9 +143,62 @@ struct ModularLocomotionRegression {
         require(mapTrace.contains { $0["state"] as? String == "starting" },"real road enters start")
         require(mapTrace.contains { $0["state"] as? String == "stopping" },"real road pause reaches stop")
         require(mapTrace.contains { $0["state"] as? String == "idle" },"real road pause reaches idle")
-        let report:[String:Any] = ["status":"pass","specifiedPaths":8,"stopCommandPhases":stopCases,"renderCadenceCases":cadenceCases,"phasePreservingTurns":turnTrace,"directions":traces,"mapTrace":mapTrace,"mapSimulationSteps":1200,"deviceExecuted":false,"simulatorExecuted":false]
+        // Foot-locked pose timing derived from the same hero-gait.json soles.
+        guard let soles = GaitTiming.p1Soles(rigJSON:data) else { require(false,"P1 soles in hero-gait.json");return }
+        let timing = GaitTiming.footLocked(soles:soles)
+        var timingReport: [[String:Any]] = [], footLockedCases = 0
+        for d in 0..<8 {
+            let row = timing.windows[d]
+            require(abs(row.reduce(0,+)-24)<0.000001 && row.allSatisfy { $0 > 0.5 },"windows cover one24-unit cycle")
+            // Planted-sole travel per pose in the projected metric (as in GaitTiming).
+            let v = directions[d], n = hypot(v.x,v.y), u = CGPoint(x:v.x/n,y:v.y/n), metric = hypot(u.x,u.y*2)
+            let planted = (0..<8).map { pose -> CGFloat in
+                let a = soles[d][pose], b = soles[d][(pose+1)%8]
+                return max(0,(0..<2).map { -((b[$0].x-a[$0].x)*u.x+(b[$0].y-a[$0].y)*u.y) }.max()!)*metric
+            }
+            let uniformSlip = planted.map { abs($0-3) }.reduce(0,+)/8
+            let lockedSlip = zip(planted,row).map { abs($0-$1) }.reduce(0,+)/8
+            let isUniform = row.allSatisfy { $0 == 3 }
+            if planted.reduce(0,+) < 12 { require(isUniform,"short art stride keeps uniform timing") }
+            else { require(!isUniform && lockedSlip < uniformSlip,"foot-locked timing reduces sole slip") }
+            // Frame space: poses in order, one authored pose per window, same 24-tick clock.
+            var previous = -1
+            for step in 0..<2400 {
+                let frame = timing.frame(at:CGFloat(step)*0.01,facing:d)
+                require((1...24).contains(frame),"walk frame stays in the shared24-tick space")
+                let pose = (frame-1)/3
+                if previous >= 0 && pose != previous { require(pose == (previous+1)%8,"no skipped or reversed pose") }
+                previous = pose
+            }
+            // The specified start/stop path still enters and exits on the authored poses.
+            for phase in 0..<8 {
+                var a = AuthoredLocomotion(plan:plan,timing:timing)
+                let hint = directions[d], scale = WalkCycle.projectedScale(dx:hint.x,dy:hint.y)
+                func step(_ requested: Bool, _ seconds: Double) {
+                    let amount = CGFloat(seconds)*plan.finishSpeed*scale/hypot(hint.x,hint.y)
+                    let next = requested && a.allowsTravel(requested:true) ? CGPoint(x:hint.x*amount,y:hint.y*amount) : .zero
+                    a.advance(from:.zero,to:next,seconds:seconds,requested:requested,headingHint:hint)
+                }
+                step(true,0);step(true,0.12);step(true,0.12)
+                require(a.state == .walking && column(a.frame) == plan.directions[d].entryPhase+1,"foot-locked entry pose")
+                let target = timing.poseStart(facing:d,pose:phase)
+                var guardSteps = 0
+                while (a.distance.truncatingRemainder(dividingBy:24)-target+24).truncatingRemainder(dividingBy:24) > 0.03 && guardSteps < 4000 {
+                    step(true,0.001);guardSteps += 1
+                }
+                step(false,0)
+                var last = a, waits = 0
+                while a.state == .settling && waits < 4000 { last = a;step(false,0.005);waits += 1 }
+                require(a.frame == 27,"foot-locked bounded finish-to-exit")
+                require(column(last.frame) == plan.directions[d].exitPhase+1,"foot-locked stop follows authored exit pose")
+                footLockedCases += 1
+            }
+            timingReport.append(["direction":d,"windows":row.map { Double($0) },"plantedTravel":planted.map { Double($0) },
+                                 "meanSlipUniform":Double(uniformSlip),"meanSlipFootLocked":Double(lockedSlip),"uniform":isUniform])
+        }
+        let report:[String:Any] = ["status":"pass","specifiedPaths":8,"stopCommandPhases":stopCases,"renderCadenceCases":cadenceCases,"phasePreservingTurns":turnTrace,"directions":traces,"mapTrace":mapTrace,"mapSimulationSteps":1200,"footLockedTiming":timingReport,"footLockedStopCases":footLockedCases,"deviceExecuted":false,"simulatorExecuted":false]
         let target = URL(fileURLWithPath:CommandLine.arguments[2]);try FileManager.default.createDirectory(at:target.deletingLastPathComponent(),withIntermediateDirectories:true)
         try JSONSerialization.data(withJSONObject:report,options:[.prettyPrinted,.sortedKeys]).write(to:target)
-        print("PASS:8specified paths,\(stopCases)command phases via designated exit,\(cadenceCases)render cadence cases,64phase-preserving turn samples")
+        print("PASS:8specified paths,\(stopCases)command phases via designated exit,\(cadenceCases)render cadence cases,64phase-preserving turn samples,\(footLockedCases)foot-locked stop cases")
     }
 }

@@ -14,6 +14,7 @@ final class MeadowShadowRenderer: NSObject, MTKViewDelegate {
         let appearanceIndex: Int
         let weaponID:String?
         let armorID:String?
+        let breath: CGFloat
 
         init(_ hero: MeadowHeroCaster) {
             index = hero.index
@@ -23,6 +24,7 @@ final class MeadowShadowRenderer: NSObject, MTKViewDelegate {
             phase = hero.phase
             appearanceIndex = hero.appearanceIndex
             weaponID=hero.weaponID;armorID=hero.armorID
+            breath = hero.breath
         }
     }
 
@@ -237,7 +239,8 @@ final class MeadowShadowRenderer: NSObject, MTKViewDelegate {
             let pose = HeroPose(heroIndex: hero.index, facing: hero.facing, frame: hero.frame, phase: hero.phase)
             let offset = pose.bodyOffset()
             let foot = CGPoint(x: hero.foot.x + offset.x, y: hero.foot.y - offset.y)
-            let instance = ShadowLabInstance(asset: .hero, root: Self.root(foot), width: 64 / Self.units, aspect: 1, anchor: SIMD2(0.5, 0.125))
+            // Idle breathing scales height about the same ground anchor as the sprite.
+            let instance = ShadowLabInstance(asset: .hero, root: Self.root(foot), width: 64 / Self.units, aspect: Float(hero.breath), anchor: SIMD2(0.5, 0.125))
             mesh.imageCaster(instance, mirrored: HeroFrames.isMirrored(hero.facing), pose: pose)
             var item = try draw(mesh, texture: texture, kind: 2)
             item.uvRect = HeroFrames.atlasRect(facing: hero.facing, frame: hero.frame, heroIndex: hero.index)
@@ -488,6 +491,8 @@ struct MeadowHeroCaster {
     var appearanceIndex: Int = 0
     var weaponID:String?="trainingSword"
     var armorID:String?
+    /// Idle-breathing vertical scale, mirrored from the foreground sprite.
+    var breath: CGFloat = 1
 }
 
 struct MeadowFrameState {
