@@ -1,8 +1,8 @@
 {
  "cellsChecked": 3120,
  "handOverHeadCells": 0,
- "worstChannelDifference": 1,
- "differingPixelsTotal": 997,
+ "worstChannelDifference": 0,
+ "differingPixelsTotal": 0,
  "uniqueBodyStates": 20,
  "headSheets": 20,
  "perAtlas": [
@@ -53,8 +53,8 @@
    "armor": null,
    "group": "Directions",
    "shippedAtlas": "P1ForesterBowDirections",
-   "maxChannelDifference": 1,
-   "differingPixels": 17
+   "maxChannelDifference": 0,
+   "differingPixels": 0
   },
   {
    "state": "ForesterHuntingBow",
@@ -73,8 +73,8 @@
    "armor": null,
    "group": "Directions",
    "shippedAtlas": "P1ForesterGreatSwordDirections",
-   "maxChannelDifference": 1,
-   "differingPixels": 4
+   "maxChannelDifference": 0,
+   "differingPixels": 0
   },
   {
    "state": "ForesterGreatSword",
@@ -93,8 +93,8 @@
    "armor": null,
    "group": "Directions",
    "shippedAtlas": "P1ForesterLegendaryStaffDirections",
-   "maxChannelDifference": 1,
-   "differingPixels": 8
+   "maxChannelDifference": 0,
+   "differingPixels": 0
   },
   {
    "state": "ForesterLegendaryStaff",
@@ -133,8 +133,8 @@
    "armor": "leatherArmor",
    "group": "Directions",
    "shippedAtlas": "P1ForesterLeatherarmorTrainingswordDirections",
-   "maxChannelDifference": 1,
-   "differingPixels": 86
+   "maxChannelDifference": 0,
+   "differingPixels": 0
   },
   {
    "state": "LeatherArmorTrainingSword",
@@ -153,8 +153,8 @@
    "armor": "leatherArmor",
    "group": "Directions",
    "shippedAtlas": "P1ForesterLeatherarmorHuntingbowDirections",
-   "maxChannelDifference": 1,
-   "differingPixels": 50
+   "maxChannelDifference": 0,
+   "differingPixels": 0
   },
   {
    "state": "LeatherArmorHuntingBow",
@@ -173,8 +173,8 @@
    "armor": "leatherArmor",
    "group": "Directions",
    "shippedAtlas": "P1ForesterLeatherarmorGreatswordDirections",
-   "maxChannelDifference": 1,
-   "differingPixels": 47
+   "maxChannelDifference": 0,
+   "differingPixels": 0
   },
   {
    "state": "LeatherArmorGreatSword",
@@ -193,8 +193,8 @@
    "armor": "leatherArmor",
    "group": "Directions",
    "shippedAtlas": "P1ForesterLeatherarmorLegendarystaffDirections",
-   "maxChannelDifference": 1,
-   "differingPixels": 98
+   "maxChannelDifference": 0,
+   "differingPixels": 0
   },
   {
    "state": "LeatherArmorLegendaryStaff",
@@ -233,8 +233,8 @@
    "armor": "runeArmor",
    "group": "Directions",
    "shippedAtlas": "P1ForesterRunearmorTrainingswordDirections",
-   "maxChannelDifference": 1,
-   "differingPixels": 66
+   "maxChannelDifference": 0,
+   "differingPixels": 0
   },
   {
    "state": "RuneArmorTrainingSword",
@@ -253,8 +253,8 @@
    "armor": "runeArmor",
    "group": "Directions",
    "shippedAtlas": "P1ForesterRunearmorHuntingbowDirections",
-   "maxChannelDifference": 1,
-   "differingPixels": 26
+   "maxChannelDifference": 0,
+   "differingPixels": 0
   },
   {
    "state": "RuneArmorHuntingBow",
@@ -273,8 +273,8 @@
    "armor": "runeArmor",
    "group": "Directions",
    "shippedAtlas": "P1ForesterRunearmorGreatswordDirections",
-   "maxChannelDifference": 1,
-   "differingPixels": 31
+   "maxChannelDifference": 0,
+   "differingPixels": 0
   },
   {
    "state": "RuneArmorGreatSword",
@@ -293,8 +293,8 @@
    "armor": "runeArmor",
    "group": "Directions",
    "shippedAtlas": "P1ForesterRunearmorLegendarystaffDirections",
-   "maxChannelDifference": 1,
-   "differingPixels": 69
+   "maxChannelDifference": 0,
+   "differingPixels": 0
   },
   {
    "state": "RuneArmorLegendaryStaff",
@@ -313,8 +313,8 @@
    "armor": null,
    "group": "Directions",
    "shippedAtlas": "P1WayfarerDirections",
-   "maxChannelDifference": 1,
-   "differingPixels": 1
+   "maxChannelDifference": 0,
+   "differingPixels": 0
   },
   {
    "state": "WayfarerTrainingSword",
@@ -353,8 +353,8 @@
    "armor": null,
    "group": "Directions",
    "shippedAtlas": "P1WayfarerBowDirections",
-   "maxChannelDifference": 1,
-   "differingPixels": 9
+   "maxChannelDifference": 0,
+   "differingPixels": 0
   },
   {
    "state": "WayfarerHuntingBow",
@@ -373,8 +373,8 @@
    "armor": null,
    "group": "Directions",
    "shippedAtlas": "P1WayfarerGreatSwordDirections",
-   "maxChannelDifference": 1,
-   "differingPixels": 8
+   "maxChannelDifference": 0,
+   "differingPixels": 0
   },
   {
    "state": "WayfarerGreatSword",
@@ -393,8 +393,8 @@
    "armor": null,
    "group": "Directions",
    "shippedAtlas": "P1WayfarerLegendaryStaffDirections",
-   "maxChannelDifference": 1,
-   "differingPixels": 4
+   "maxChannelDifference": 0,
+   "differingPixels": 0
   },
   {
    "state": "WayfarerLegendaryStaff",
@@ -433,8 +433,8 @@
    "armor": "leatherArmor",
    "group": "Directions",
    "shippedAtlas": "P1WayfarerLeatherarmorTrainingswordDirections",
-   "maxChannelDifference": 1,
-   "differingPixels": 86
+   "maxChannelDifference": 0,
+   "differingPixels": 0
   },
   {
    "state": "LeatherArmorTrainingSword",
@@ -453,8 +453,8 @@
    "armor": "leatherArmor",
    "group": "Directions",
    "shippedAtlas": "P1WayfarerLeatherarmorHuntingbowDirections",
-   "maxChannelDifference": 1,
-   "differingPixels": 50
+   "maxChannelDifference": 0,
+   "differingPixels": 0
   },
   {
    "state": "LeatherArmorHuntingBow",
@@ -473,8 +473,8 @@
    "armor": "leatherArmor",
    "group": "Directions",
    "shippedAtlas": "P1WayfarerLeatherarmorGreatswordDirections",
-   "maxChannelDifference": 1,
-   "differingPixels": 47
+   "maxChannelDifference": 0,
+   "differingPixels": 0
   },
   {
    "state": "LeatherArmorGreatSword",
@@ -493,8 +493,8 @@
    "armor": "leatherArmor",
    "group": "Directions",
    "shippedAtlas": "P1WayfarerLeatherarmorLegendarystaffDirections",
-   "maxChannelDifference": 1,
-   "differingPixels": 98
+   "maxChannelDifference": 0,
+   "differingPixels": 0
   },
   {
    "state": "LeatherArmorLegendaryStaff",
@@ -533,8 +533,8 @@
    "armor": "runeArmor",
    "group": "Directions",
    "shippedAtlas": "P1WayfarerRunearmorTrainingswordDirections",
-   "maxChannelDifference": 1,
-   "differingPixels": 66
+   "maxChannelDifference": 0,
+   "differingPixels": 0
   },
   {
    "state": "RuneArmorTrainingSword",
@@ -553,8 +553,8 @@
    "armor": "runeArmor",
    "group": "Directions",
    "shippedAtlas": "P1WayfarerRunearmorHuntingbowDirections",
-   "maxChannelDifference": 1,
-   "differingPixels": 26
+   "maxChannelDifference": 0,
+   "differingPixels": 0
   },
   {
    "state": "RuneArmorHuntingBow",
@@ -573,8 +573,8 @@
    "armor": "runeArmor",
    "group": "Directions",
    "shippedAtlas": "P1WayfarerRunearmorGreatswordDirections",
-   "maxChannelDifference": 1,
-   "differingPixels": 31
+   "maxChannelDifference": 0,
+   "differingPixels": 0
   },
   {
    "state": "RuneArmorGreatSword",
@@ -593,8 +593,8 @@
    "armor": "runeArmor",
    "group": "Directions",
    "shippedAtlas": "P1WayfarerRunearmorLegendarystaffDirections",
-   "maxChannelDifference": 1,
-   "differingPixels": 69
+   "maxChannelDifference": 0,
+   "differingPixels": 0
   },
   {
    "state": "RuneArmorLegendaryStaff",
@@ -608,106 +608,106 @@
   }
  ],
  "outputs": {
-  "P1SplitUnderForesterGreatSwordDirections": "600e69064e67d4e428d2824208813d99ca9e6ddd0cf30412474e94610071a8b6",
-  "P1SplitBodyForesterGreatSwordDirections": "9f593e711ba7a8a5e2a0693d11111f07dcef23614a7d46b800cbb6890bbdd973",
+  "P1SplitUnderForesterGreatSwordDirections": "f319aa2930a8639261e4dc3798fba0ade87b3b40aa8025bc8ad83a4679a24215",
+  "P1SplitBodyForesterGreatSwordDirections": "77e0eefd36280354b9992b7ae543ce9ac01adffe9d6d4822273aeb6ca2a8fc81",
   "P1SplitUnderForesterGreatSwordDiagonals": "f319aa2930a8639261e4dc3798fba0ade87b3b40aa8025bc8ad83a4679a24215",
-  "P1SplitBodyForesterGreatSwordDiagonals": "cdc52c5d56d2e2ac352f1a0cdc4381a739616ed0f82ba43aff9c76b63620a017",
-  "P1SplitUnderForesterHuntingBowDirections": "5a229e30c1bc634d475be0b8a867d37572408f637d4f178a6b2ee6bbf5c0b1f3",
-  "P1SplitBodyForesterHuntingBowDirections": "5e3439e3badbbe7ec93aaa0ec151c4180424a37b54c29f01fb4140f0fbab24c0",
+  "P1SplitBodyForesterGreatSwordDiagonals": "639851ca8c88bb7641e7780602818f4852e2de651e9dfc18bc8117196b8aabb3",
+  "P1SplitUnderForesterHuntingBowDirections": "f319aa2930a8639261e4dc3798fba0ade87b3b40aa8025bc8ad83a4679a24215",
+  "P1SplitBodyForesterHuntingBowDirections": "0e98a18f445e1dbcd4ffb8bf6454253848e6e674642624f08ae308d34998782d",
   "P1SplitUnderForesterHuntingBowDiagonals": "f319aa2930a8639261e4dc3798fba0ade87b3b40aa8025bc8ad83a4679a24215",
-  "P1SplitBodyForesterHuntingBowDiagonals": "9343a70765b452aff64c849c40871ef4154dfb4295e37b4581fd204fed1b80fa",
-  "P1SplitUnderForesterLegendaryStaffDirections": "5674fb704bb9284a101a6703aa4792d04327e7e182697fd9009f89e521b2547f",
-  "P1SplitBodyForesterLegendaryStaffDirections": "d2b4dccffecf32e8dff699e28338379a0d91eee8edb5413af81852d938748a19",
+  "P1SplitBodyForesterHuntingBowDiagonals": "09f7716e5ee1389ccf54d4e0e33e20bd84e99939c1f4c8d069dc6b2844bb5948",
+  "P1SplitUnderForesterLegendaryStaffDirections": "f319aa2930a8639261e4dc3798fba0ade87b3b40aa8025bc8ad83a4679a24215",
+  "P1SplitBodyForesterLegendaryStaffDirections": "06d6bc44c295cd3b6eda398b2efb0353cefdd39c5002aedbfbb76b21281b2720",
   "P1SplitUnderForesterLegendaryStaffDiagonals": "f319aa2930a8639261e4dc3798fba0ade87b3b40aa8025bc8ad83a4679a24215",
-  "P1SplitBodyForesterLegendaryStaffDiagonals": "ef3c200aedb7d1eb4c109bca87f7491e4a5144427ad0068dc52a74b9f4f5c4df",
+  "P1SplitBodyForesterLegendaryStaffDiagonals": "1c65fd0fa1fb9a73088e12594dd02a8cf63a238485b207e44172078447e2060e",
   "P1SplitUnderForesterNoneDirections": "f319aa2930a8639261e4dc3798fba0ade87b3b40aa8025bc8ad83a4679a24215",
-  "P1SplitBodyForesterNoneDirections": "559cc8ac70051fb7c635d1a0c9ad25d959b58b84eef2e4c7fc425d8c8624f6dc",
+  "P1SplitBodyForesterNoneDirections": "0ea19aca548f3eb68580a5e2117dba8a5ffb3212e1efe561a0eed2d5e9097d5c",
   "P1SplitUnderForesterNoneDiagonals": "f319aa2930a8639261e4dc3798fba0ade87b3b40aa8025bc8ad83a4679a24215",
-  "P1SplitBodyForesterNoneDiagonals": "dd92653a14a3ec1821511bb945527a4a57d65b65008fcff62da863d1a273b2ac",
-  "P1SplitUnderForesterTrainingSwordDirections": "56f0d75420d7b34afa81dd8a3efeec93937800c44a2025d7340bc2d3adf99f08",
-  "P1SplitBodyForesterTrainingSwordDirections": "a5ab1a789d8bb17e2b859459f2f9d23facbced2bc468ffeba458abea076d70bf",
+  "P1SplitBodyForesterNoneDiagonals": "24a77b983630a7f6d6ff50546b24763d17c6d79f3e84866dfe0a971330f088c5",
+  "P1SplitUnderForesterTrainingSwordDirections": "f319aa2930a8639261e4dc3798fba0ade87b3b40aa8025bc8ad83a4679a24215",
+  "P1SplitBodyForesterTrainingSwordDirections": "131a412ea060a77e5471bd5b4ab0235ecc332bd7e85bbd3f2587dc3ecd6780ac",
   "P1SplitUnderForesterTrainingSwordDiagonals": "f319aa2930a8639261e4dc3798fba0ade87b3b40aa8025bc8ad83a4679a24215",
-  "P1SplitBodyForesterTrainingSwordDiagonals": "7ad79c972a7089bdcde99c2dc3bd9ffc1da46c10b202252e2916d0ac8f3d9fed",
-  "P1SplitUnderLeatherArmorGreatSwordDirections": "600e69064e67d4e428d2824208813d99ca9e6ddd0cf30412474e94610071a8b6",
-  "P1SplitBodyLeatherArmorGreatSwordDirections": "2a22d5415eaf7f9dff9e7152f9ba785ff7f93e3b4da94b954119252d64385a36",
+  "P1SplitBodyForesterTrainingSwordDiagonals": "128d14b80c23b58e07967c2542d6206ca63d9a5af993046e15372cca97636eaa",
+  "P1SplitUnderLeatherArmorGreatSwordDirections": "f319aa2930a8639261e4dc3798fba0ade87b3b40aa8025bc8ad83a4679a24215",
+  "P1SplitBodyLeatherArmorGreatSwordDirections": "6a3bc639f5c9c9f1a44abc246dc92d3ec2c1e4eef0f7726a1b9494424fcb5534",
   "P1SplitUnderLeatherArmorGreatSwordDiagonals": "f319aa2930a8639261e4dc3798fba0ade87b3b40aa8025bc8ad83a4679a24215",
-  "P1SplitBodyLeatherArmorGreatSwordDiagonals": "887a6f95bceda51bf75f8bdf7dfff160bca55ce81d310a00a66c91a8ba81b8b9",
-  "P1SplitUnderLeatherArmorHuntingBowDirections": "5a229e30c1bc634d475be0b8a867d37572408f637d4f178a6b2ee6bbf5c0b1f3",
-  "P1SplitBodyLeatherArmorHuntingBowDirections": "94da2a4398c1d2da9d9b63b90ea4ddce4c30b93047ee828f47ec0f4222408f54",
+  "P1SplitBodyLeatherArmorGreatSwordDiagonals": "deca76e9877c7a38aa1ceecca957e73aa7f756a6ee70a42bd4e5a83437250fb7",
+  "P1SplitUnderLeatherArmorHuntingBowDirections": "f319aa2930a8639261e4dc3798fba0ade87b3b40aa8025bc8ad83a4679a24215",
+  "P1SplitBodyLeatherArmorHuntingBowDirections": "ff28cdf78ff46df2210da44a304b6ec71a6771de8c739d21b78b8069cd925135",
   "P1SplitUnderLeatherArmorHuntingBowDiagonals": "f319aa2930a8639261e4dc3798fba0ade87b3b40aa8025bc8ad83a4679a24215",
-  "P1SplitBodyLeatherArmorHuntingBowDiagonals": "edf6448b4244fe914cb849c760487c313a5cf5bcef20a721d1a350ad72c9c838",
-  "P1SplitUnderLeatherArmorLegendaryStaffDirections": "5674fb704bb9284a101a6703aa4792d04327e7e182697fd9009f89e521b2547f",
-  "P1SplitBodyLeatherArmorLegendaryStaffDirections": "7423ab89489a53befd4d0cd004f4de07552d936ae1f30cc323765ea3b9be9ba9",
+  "P1SplitBodyLeatherArmorHuntingBowDiagonals": "d08d86043668ea0e1e5ed349df51c8dc53045b84dc984ef5fd313f19d7ae00b6",
+  "P1SplitUnderLeatherArmorLegendaryStaffDirections": "f319aa2930a8639261e4dc3798fba0ade87b3b40aa8025bc8ad83a4679a24215",
+  "P1SplitBodyLeatherArmorLegendaryStaffDirections": "6aa14d8725c112efea47cab91211a01a5fbd6a9cfc4f15f4d69257653712408d",
   "P1SplitUnderLeatherArmorLegendaryStaffDiagonals": "f319aa2930a8639261e4dc3798fba0ade87b3b40aa8025bc8ad83a4679a24215",
-  "P1SplitBodyLeatherArmorLegendaryStaffDiagonals": "595cc52f70771a697ab64d76c9230ff6b266c36f21136a9bc3dd1fb467a1a21a",
+  "P1SplitBodyLeatherArmorLegendaryStaffDiagonals": "843d8259385160cdc0e72a35d756f55b94d85a745d5718799dffa2422368b1d6",
   "P1SplitUnderLeatherArmorNoneDirections": "f319aa2930a8639261e4dc3798fba0ade87b3b40aa8025bc8ad83a4679a24215",
-  "P1SplitBodyLeatherArmorNoneDirections": "77bff39b778d13c717095e3733e902f220c95482ff2b9b7b2ce648deb41d73e0",
+  "P1SplitBodyLeatherArmorNoneDirections": "3eedae460fd3c041867d990664babd275235e85ae7f99921c0a7373a198b2bfb",
   "P1SplitUnderLeatherArmorNoneDiagonals": "f319aa2930a8639261e4dc3798fba0ade87b3b40aa8025bc8ad83a4679a24215",
-  "P1SplitBodyLeatherArmorNoneDiagonals": "6f9bdd917c01dcd7d61cc705fffb5a653f33f0b9687aca6da0d500b54fbe78ce",
-  "P1SplitUnderLeatherArmorTrainingSwordDirections": "56f0d75420d7b34afa81dd8a3efeec93937800c44a2025d7340bc2d3adf99f08",
-  "P1SplitBodyLeatherArmorTrainingSwordDirections": "ff0ac29e21035db1596181946bd7b348f8363b348c71356f9f016458d853e92e",
+  "P1SplitBodyLeatherArmorNoneDiagonals": "019372599c0f05b8550739622abf99c61a9ece5c1f327183a280ceb5de33bd9f",
+  "P1SplitUnderLeatherArmorTrainingSwordDirections": "f319aa2930a8639261e4dc3798fba0ade87b3b40aa8025bc8ad83a4679a24215",
+  "P1SplitBodyLeatherArmorTrainingSwordDirections": "d8bea3fc49b67dab6d24637bb16464ecd7c61f37a4d439431e26edcd2ca7d329",
   "P1SplitUnderLeatherArmorTrainingSwordDiagonals": "f319aa2930a8639261e4dc3798fba0ade87b3b40aa8025bc8ad83a4679a24215",
-  "P1SplitBodyLeatherArmorTrainingSwordDiagonals": "676bca4bc6612fa98b07ca8d261f5347cc8a85767f75e3f6a46009c818c79809",
-  "P1SplitUnderRuneArmorGreatSwordDirections": "600e69064e67d4e428d2824208813d99ca9e6ddd0cf30412474e94610071a8b6",
-  "P1SplitBodyRuneArmorGreatSwordDirections": "e1d76eb6047d331bfc4ba229a7e10181ea11296c68bb495cf3f8cfa021bc8cd7",
+  "P1SplitBodyLeatherArmorTrainingSwordDiagonals": "cd8e267c0a2c95daa7f2584d6e270553a28cf3632fb47082dc686ec06149d906",
+  "P1SplitUnderRuneArmorGreatSwordDirections": "f319aa2930a8639261e4dc3798fba0ade87b3b40aa8025bc8ad83a4679a24215",
+  "P1SplitBodyRuneArmorGreatSwordDirections": "013937c9426f2faa319ee8637041920c37c9f23825d076bc1234b9a5d6ad5653",
   "P1SplitUnderRuneArmorGreatSwordDiagonals": "f319aa2930a8639261e4dc3798fba0ade87b3b40aa8025bc8ad83a4679a24215",
-  "P1SplitBodyRuneArmorGreatSwordDiagonals": "6f354bb5895587b74bfe84c2addb2e46b5f6215bb04e2e3ae85f9cdd03b96d9a",
-  "P1SplitUnderRuneArmorHuntingBowDirections": "5a229e30c1bc634d475be0b8a867d37572408f637d4f178a6b2ee6bbf5c0b1f3",
-  "P1SplitBodyRuneArmorHuntingBowDirections": "58ae6358b5c8558c1a62cd29957edfa12262d83c53a1217439f914ec3a062c54",
+  "P1SplitBodyRuneArmorGreatSwordDiagonals": "e9ceed9fe1ca90caa036d656b88223c91a648a6feeeab3ea75f99db619c455d6",
+  "P1SplitUnderRuneArmorHuntingBowDirections": "f319aa2930a8639261e4dc3798fba0ade87b3b40aa8025bc8ad83a4679a24215",
+  "P1SplitBodyRuneArmorHuntingBowDirections": "b8eefb6e3d04b122ae0000038bbb16bd9471c55feebf15c9ed6e786c508a17b2",
   "P1SplitUnderRuneArmorHuntingBowDiagonals": "f319aa2930a8639261e4dc3798fba0ade87b3b40aa8025bc8ad83a4679a24215",
-  "P1SplitBodyRuneArmorHuntingBowDiagonals": "c6c7efc95a0dd168c2f77b9ca64ad985ac7eca152daefeb0a24d65fd51f41da5",
-  "P1SplitUnderRuneArmorLegendaryStaffDirections": "5674fb704bb9284a101a6703aa4792d04327e7e182697fd9009f89e521b2547f",
-  "P1SplitBodyRuneArmorLegendaryStaffDirections": "246a80cb3e341f3ac1c1aba30a3f8c184db7654f5662e387c7902c61713aabad",
+  "P1SplitBodyRuneArmorHuntingBowDiagonals": "7f55519482b87b6576beda83aa75c1bdbaeab91f35e0ed63ef049b999663222e",
+  "P1SplitUnderRuneArmorLegendaryStaffDirections": "f319aa2930a8639261e4dc3798fba0ade87b3b40aa8025bc8ad83a4679a24215",
+  "P1SplitBodyRuneArmorLegendaryStaffDirections": "4d048727a2a8e957814a4743d60cab02e874dab884159483e0e3b0dcb7b68851",
   "P1SplitUnderRuneArmorLegendaryStaffDiagonals": "f319aa2930a8639261e4dc3798fba0ade87b3b40aa8025bc8ad83a4679a24215",
-  "P1SplitBodyRuneArmorLegendaryStaffDiagonals": "367952d998c43e6dfd6e777f4b469860ddad0841d49496211673e4667218bfcf",
+  "P1SplitBodyRuneArmorLegendaryStaffDiagonals": "75f66213f07e22b67207f8ae3f1e15f1c69363b8991600bf643b2f00a0c5d5f7",
   "P1SplitUnderRuneArmorNoneDirections": "f319aa2930a8639261e4dc3798fba0ade87b3b40aa8025bc8ad83a4679a24215",
-  "P1SplitBodyRuneArmorNoneDirections": "908d9997bde56582e8d6e110ddc03c83f9b7fc13e920d30259cf5be1443e2dae",
+  "P1SplitBodyRuneArmorNoneDirections": "23bd8a495128b0d8a424ed5dcc74ea8173f4566ea7db6737850d6aef2ff2231d",
   "P1SplitUnderRuneArmorNoneDiagonals": "f319aa2930a8639261e4dc3798fba0ade87b3b40aa8025bc8ad83a4679a24215",
-  "P1SplitBodyRuneArmorNoneDiagonals": "441e76f3b98e2d82c0d6cdc359c00ec496821f637b43d58b00d65006fe75b936",
-  "P1SplitUnderRuneArmorTrainingSwordDirections": "56f0d75420d7b34afa81dd8a3efeec93937800c44a2025d7340bc2d3adf99f08",
-  "P1SplitBodyRuneArmorTrainingSwordDirections": "253a73fbc486f84544f126c3e595685a5e5839b103e3aeabccc441b0472bc1ce",
+  "P1SplitBodyRuneArmorNoneDiagonals": "64c27d1f88c6be9974deaf5db55d89103e03f0b6df94fed2e00bc45e35fcaf19",
+  "P1SplitUnderRuneArmorTrainingSwordDirections": "f319aa2930a8639261e4dc3798fba0ade87b3b40aa8025bc8ad83a4679a24215",
+  "P1SplitBodyRuneArmorTrainingSwordDirections": "e4b17d385c522ff1ce059263683a4ec1834b73e78fa2f762d17994e5b51576ea",
   "P1SplitUnderRuneArmorTrainingSwordDiagonals": "f319aa2930a8639261e4dc3798fba0ade87b3b40aa8025bc8ad83a4679a24215",
-  "P1SplitBodyRuneArmorTrainingSwordDiagonals": "0d02331a5f5b4e9aa14ac48d1cf27a2d680db73c9617f9b24f5bfa1aa6e30d20",
-  "P1SplitUnderWayfarerGreatSwordDirections": "600e69064e67d4e428d2824208813d99ca9e6ddd0cf30412474e94610071a8b6",
-  "P1SplitBodyWayfarerGreatSwordDirections": "6ec87983d041647953ab726bac4846ba31dee17a81353c86f34d579a91a6e02a",
+  "P1SplitBodyRuneArmorTrainingSwordDiagonals": "59e574911ed51e83ce2cac4f2d7816290686e9bd496668655b51a1065e6f18ae",
+  "P1SplitUnderWayfarerGreatSwordDirections": "f319aa2930a8639261e4dc3798fba0ade87b3b40aa8025bc8ad83a4679a24215",
+  "P1SplitBodyWayfarerGreatSwordDirections": "15f05fb39513aa2f62aab2f26acf49eb7c594f9bd78686191ea2f6cdcd4ba6b9",
   "P1SplitUnderWayfarerGreatSwordDiagonals": "f319aa2930a8639261e4dc3798fba0ade87b3b40aa8025bc8ad83a4679a24215",
-  "P1SplitBodyWayfarerGreatSwordDiagonals": "fad83c39e11d107a9da9f9e46824897742cb2dd5f175d3f1ef573080e10e9e85",
-  "P1SplitUnderWayfarerHuntingBowDirections": "5a229e30c1bc634d475be0b8a867d37572408f637d4f178a6b2ee6bbf5c0b1f3",
-  "P1SplitBodyWayfarerHuntingBowDirections": "a50342d1ab6052656fc7a008d09609814203fb1b379d534dd7738a292c39b49b",
+  "P1SplitBodyWayfarerGreatSwordDiagonals": "bf20cbf989bad37055edec4c3b6853cd21231b8c58acb5ea660c237d2dc1e817",
+  "P1SplitUnderWayfarerHuntingBowDirections": "f319aa2930a8639261e4dc3798fba0ade87b3b40aa8025bc8ad83a4679a24215",
+  "P1SplitBodyWayfarerHuntingBowDirections": "4b6d5d8896879fdaa9fdf4c232a9424f1020ce32dd41deb57c66f4a5e2130079",
   "P1SplitUnderWayfarerHuntingBowDiagonals": "f319aa2930a8639261e4dc3798fba0ade87b3b40aa8025bc8ad83a4679a24215",
-  "P1SplitBodyWayfarerHuntingBowDiagonals": "066eff2315253e765d9e6cd6c5be8504b4f5b5588f4c67b22e156e59a2f929ac",
-  "P1SplitUnderWayfarerLegendaryStaffDirections": "5674fb704bb9284a101a6703aa4792d04327e7e182697fd9009f89e521b2547f",
-  "P1SplitBodyWayfarerLegendaryStaffDirections": "eee80621547d564f5826f1894d9f2440c3f1c3fc4607775abd51ed899eb3562f",
+  "P1SplitBodyWayfarerHuntingBowDiagonals": "c5b30dfe5f94dff818f5e464bfe7c38ddecaff6ad2a2e6ee85e642594cbd7ffd",
+  "P1SplitUnderWayfarerLegendaryStaffDirections": "f319aa2930a8639261e4dc3798fba0ade87b3b40aa8025bc8ad83a4679a24215",
+  "P1SplitBodyWayfarerLegendaryStaffDirections": "663582f3654ee98ff4d598aeea2b5e04cdcb71b17f4f6e8b2f027b17fab37f2f",
   "P1SplitUnderWayfarerLegendaryStaffDiagonals": "f319aa2930a8639261e4dc3798fba0ade87b3b40aa8025bc8ad83a4679a24215",
-  "P1SplitBodyWayfarerLegendaryStaffDiagonals": "11362c8ea66f2e06342308e0b1035d001c0b63f2ed0bf3b0deabf46647f0c317",
+  "P1SplitBodyWayfarerLegendaryStaffDiagonals": "48e5e2ba5da29dd98da2136193c87450f9a281603da230ff82b78ac2b6cc527d",
   "P1SplitUnderWayfarerNoneDirections": "f319aa2930a8639261e4dc3798fba0ade87b3b40aa8025bc8ad83a4679a24215",
-  "P1SplitBodyWayfarerNoneDirections": "cd8159c1355e8fcc08a80c5662267736b85fe923118586545ee56c2454986084",
+  "P1SplitBodyWayfarerNoneDirections": "4a647cb8e9d58e81af6341a161b4f61250250c496cadf6b608a68a9f25c2c6f8",
   "P1SplitUnderWayfarerNoneDiagonals": "f319aa2930a8639261e4dc3798fba0ade87b3b40aa8025bc8ad83a4679a24215",
-  "P1SplitBodyWayfarerNoneDiagonals": "d289dd5b0e796ea3cb9e082090efcad89db4f635d9ac23c5cd7a909ac27d7654",
-  "P1SplitUnderWayfarerTrainingSwordDirections": "56f0d75420d7b34afa81dd8a3efeec93937800c44a2025d7340bc2d3adf99f08",
-  "P1SplitBodyWayfarerTrainingSwordDirections": "e36adc45b62d4a05d584f2a257839f4b8303ade996d054669350d53bb420ed23",
+  "P1SplitBodyWayfarerNoneDiagonals": "489b6e09a2976cdca67f11563cab580831baeef58dfa9a769fd80e2935a5ff63",
+  "P1SplitUnderWayfarerTrainingSwordDirections": "f319aa2930a8639261e4dc3798fba0ade87b3b40aa8025bc8ad83a4679a24215",
+  "P1SplitBodyWayfarerTrainingSwordDirections": "a7ace918d77e1b777f4f9e1a7e16e17ca00d62ade64f11d7b98aecfeb6be3eea",
   "P1SplitUnderWayfarerTrainingSwordDiagonals": "f319aa2930a8639261e4dc3798fba0ade87b3b40aa8025bc8ad83a4679a24215",
-  "P1SplitBodyWayfarerTrainingSwordDiagonals": "93aed9dac94eca611fa393ec414ff73a21abf9d45551504a8747b9d17555c967",
-  "P1HeadBrowsAmberDirections": "40c6c6c6e832b23b9af73aa9d26f09cd21dd4e1c0264ef23efe8c46f63a869af",
-  "P1HeadBrowsAmberDiagonals": "a6fe22f5cd5f96cae068600ea7882e6e7aa38fe2f83a383986b5e460fa1d8cac",
-  "P1HeadBrowsBlueDirections": "9bf88c4ccc133da9b5da3981d3e1c3752625c990fd6b7fcd26a1ace27a0c78a5",
-  "P1HeadBrowsBlueDiagonals": "b4487a2a96f733b9b013a1990b42d7882a8bf14dd167b79a2869079d57ce1b9a",
-  "P1HeadEyesAmberDirections": "a3655977f8e2ba95e2ec44dbf47d85117b44539fb64bd07395519c2ea3777a0e",
-  "P1HeadEyesAmberDiagonals": "54ac7da5be8399c2ff40310f4223b2a9f5ae90b928c150a62036329ea30e6f50",
-  "P1HeadEyesBlueDirections": "a0e8ac0ff4ad9d5b5a56d5cf12476b96968b247af591970daa45b31292def0d0",
-  "P1HeadEyesBlueDiagonals": "79fbda82e20d607ae5949c2878849a0b02263e1866c2efb966057c583b3f1f25",
-  "P1HeadMouthAmberDirections": "22f9a7590b55f8e22459acf3d68bb06b0e1587ac4950ddb26f95636fcb56f493",
-  "P1HeadMouthAmberDiagonals": "17a221619ef01c900dc517f91dce1b6f2792de7237f0ecc2126cd5c923e7102b",
-  "P1HeadMouthBlueDirections": "d33aab0bf837b3ddf6251beea3808f54a7671897b7418d8000919742e795a421",
-  "P1HeadMouthBlueDiagonals": "6fcf6144603c1c88793aaf2c297021a243935294ccc651411a4c472c49d9d4ec",
-  "P1HeadNoseAmberDirections": "e675370e16954e1f7c42e347fe561a0cf917e2b3fcb38d389559db0f2ac846ce",
-  "P1HeadNoseAmberDiagonals": "6cc055cdafa34d50f8b5ed9e63a04ac9d70db61118b2923b5ec3f3d4381e8ce4",
-  "P1HeadNoseBlueDirections": "d409434a35918dfe8acc18099edd386728a3f16e759f078493510f8582866b78",
-  "P1HeadNoseBlueDiagonals": "622b9487a0926401038298e0ddd938c8e593a6d02420d6f5f42dd004c3f94cc8",
-  "P1HeadHairFrontChestnutDirections": "05b88cfe4dfd9ece8534b8fd4b0e5d4d180f63dc38977bf4d639ac956137522c",
-  "P1HeadHairFrontChestnutDiagonals": "3d3f687f8d9aee0aabaabece0b3fb4572098e03c420a9664363fae26542c5a65",
-  "P1HeadHairFrontSilverDirections": "7a1ab6f455edc01f580b0af273b9488a9f7c4597ce546858179bc4c694c8eb84",
-  "P1HeadHairFrontSilverDiagonals": "ccba521960aae9fd7b59f87207c66dab2cdfce3eb690bf36c2a9323c04c558fb"
+  "P1SplitBodyWayfarerTrainingSwordDiagonals": "b98f137a0d756f6979fcef13cf4c681ad5ab1b91362ac47cc46a7c683758db20",
+  "P1HeadBrowsAmberDirections": "a83a2071e3637d9cebaf6b374265ab198ff34dae5d20f923be6c8a6fecd82ddc",
+  "P1HeadBrowsAmberDiagonals": "c700d8a604e0bfe05cf1bc4a2c033f94bc353e623f33103180270b96557f12f2",
+  "P1HeadBrowsBlueDirections": "78a8494dd7f24e3ece2a0184c05bc8c2a6c8c8d4d903d03c3aee9c9429e7a72a",
+  "P1HeadBrowsBlueDiagonals": "9ef5acbe3caaed228a6201c68241335c4f95103974f4fdd5a264747ca49c238f",
+  "P1HeadEyesAmberDirections": "20a5be9a9ad41c531f53870676bda098c4e1c7ec524cd8d417ae21c81cae9eca",
+  "P1HeadEyesAmberDiagonals": "13b980536352e7259a44bda962172750b36173780e5a33021c01f958f3901bde",
+  "P1HeadEyesBlueDirections": "7fc3facc24a9a8f5e1fe4d63d28f92148c6fb349f318a091bd5d69d6aad2dca8",
+  "P1HeadEyesBlueDiagonals": "27f33e87f258328e308d1a5e5e0f798ae15c5e63ba0648854e1ceda23e76ec86",
+  "P1HeadMouthAmberDirections": "78c789f46017b1b9ea81da3090e725a2f7b5afa3dab6dbf493994a1576efe23b",
+  "P1HeadMouthAmberDiagonals": "3f7f4c373309b5a097f77843d505ea4ebd04bf8ad5f096daff80dac400c826cf",
+  "P1HeadMouthBlueDirections": "6c1c37e8d0bc2624981604202b9dfa5574ae8671bc2d7d3e2295dba27bf03434",
+  "P1HeadMouthBlueDiagonals": "293a4afe1cd56933662336f2e45ac5d48a52132986544d0ef3bcfedbce07eb2c",
+  "P1HeadNoseAmberDirections": "745d87d37176864589bed5d07da2ce2bb1c1811fa4f7ef23c3765c97efea45b4",
+  "P1HeadNoseAmberDiagonals": "3f84f7b0467dfb0c9557ea908107a7be30a1d7277b340c4ce9f914ed3c1396e7",
+  "P1HeadNoseBlueDirections": "bdbc24a4c1fa97dc6835b59646956cc0d1159b1af4fb5ccc4f37bb0a7718bc22",
+  "P1HeadNoseBlueDiagonals": "99404347ce346dd38c29575dc96bec439ebbe8f4850d00e063b8508fe1b6c559",
+  "P1HeadHairFrontChestnutDirections": "0cfc868bef2b24f7f3558ba37afd98d109a37fcfed3b3b5d8ac6b14b173e41d4",
+  "P1HeadHairFrontChestnutDiagonals": "3d2765e77c59929d6ec5f680aea6ed909241e02b4c699d49c53bd744954931e8",
+  "P1HeadHairFrontSilverDirections": "a5d7a995e0aeddafd9e0b226108f439201babc14489680f70ca6853f3d82977d",
+  "P1HeadHairFrontSilverDiagonals": "5b2cb4981a3b92ef6f703219d76a104f6a6a4d781b0ad5a0b95c3c933670d4b0"
  },
  "note": "Re-stacking split sheets with each original head vs shipped atlases; offline Pillow compositing."
 }

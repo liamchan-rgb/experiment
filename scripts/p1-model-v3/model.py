@@ -20,14 +20,24 @@ def hexes(*cs):
 RAMPS = {
     'jacket': hexes('#060d08', '#15271b', '#213a26', '#2f4631', '#3e5439', '#52634a'),
     'collar': hexes('#060d08', '#10200f', '#172b1b', '#1f3922', '#2a4029', '#344a32'),
-    'pants': hexes('#0e080b', '#26232b', '#322f38', '#403c44', '#4c4951', '#5a5760'),
+    'pants': hexes('#0e080b', '#322f38', '#403c44', '#4c4951', '#5a5760', '#6a6770'),
     'boot': hexes('#120100', '#3a1d0d', '#552e17', '#6e3e22', '#87512f', '#a8714b'),
     'cuff': hexes('#120100', '#2c1509', '#3e2210', '#4b2b16', '#5a321a', '#6a3c20'),
     'sole': hexes('#0e0000', '#1f0d06', '#2c1509', '#3a1e0e', '#4b2b16', '#5a321a'),
     'skin': hexes('#3c0a02', '#c8683e', '#ec9f70', '#fbbf8f', '#fbcb9a', '#fde0c0'),
     'gold': hexes('#2a1500', '#7a5210', '#b0801a', '#d8a82c', '#f2d062', '#fff0aa'),
     'belt': hexes('#1b0a02', '#35180a', '#552a10', '#6e3414', '#884c25', '#9c6236'),
+    'navy': hexes('#030716', '#0c1a3c', '#14275a', '#1d3878', '#2a4b95', '#3d63b0'),
+    'tan': hexes('#2a1a0a', '#9a7a52', '#b89770', '#d2b48c', '#e4cba6', '#f2e2c4'),
+    'leather': hexes('#1c0a02', '#4e2410', '#6a3418', '#874624', '#a35d34', '#bd7a4c'),
+    'darkleather': hexes('#120500', '#2c1206', '#3e1c0b', '#512812', '#63331a', '#764126'),
+    'cloth': hexes('#3a3028', '#a8a29a', '#c8c2b8', '#e2ddd3', '#f2eee6', '#ffffff'),
+    'silver': hexes('#1a1c26', '#6e7488', '#9aa0b4', '#c4c9d8', '#e2e6f0', '#ffffff'),
+    'blue': hexes('#040a24', '#0e2368', '#16348e', '#2048b0', '#3264cc', '#5288e0'),
+    'gem': hexes('#12042a', '#3a1080', '#5a20b8', '#7a3ce0', '#a070f4', '#e0c8ff'),
 }
+METAL = {'silver', 'gold', 'gem'}
+HALF = LIGHT + VIEW; HALF /= np.linalg.norm(HALF)
 
 # ---------- signed distance primitives (vectorised over N x 3 points) ----------
 def sd_capsule(p, a, b, ra, rb=None):
@@ -52,16 +62,21 @@ def sd_cylinder(p, a, b, r, round_=1.0):
     dx, dy = radial - (r - round_), np.abs(h - L / 2) - (L / 2 - round_)
     return np.minimum(np.maximum(dx, dy), 0) + np.hypot(np.maximum(dx, 0), np.maximum(dy, 0)) - round_
 
+def sd_box(p, c, half, basis, round_=1.0):
+    q = np.abs((p - c) @ basis) - (np.array(half, float) - round_)
+    return np.linalg.norm(np.maximum(q, 0), axis=1) + np.minimum(np.max(q, axis=1), 0) - round_
+
 def smin(a, b, k):
     h = np.clip(.5 + .5 * (b - a) / k, 0, 1)
     return b + (a - b) * h - k * h * (1 - h)
 
 class Shape:
-    def __init__(self, name, material, sdf, local=None, group=None):
+    def __init__(self, name, material, sdf, local=None, group=None, outline=None):
         self.name, self.material, self.sdf, self.local = name, material, sdf, local
         self.group = group or name
+        self.outline = outline
 
-def render(shapes, size=256, box=(70, 60, 190, 232), steps=90):
+def render(shapes, size=256, box=(66, 56, 192, 234), steps=90, occluders=()):
     """Ray-march every pixel of `box`; returns RGBA, depth map and shape-index map."""
     x0, y0, x1, y1 = box
     ys, xs = np.mgrid[y0:y1, x0:x1]
@@ -98,6 +113,11 @@ def render(shapes, size=256, box=(70, 60, 190, 232), steps=90):
     n /= np.maximum(np.linalg.norm(n, axis=1, keepdims=True), 1e-6)
     light = n @ LIGHT
     tone = np.select([light < -.05, light < .3, light < .62, light < .9], [1, 2, 3, 4], 5)
+    spec = (n @ HALF) > .93
+    if occluders:
+        # contact shadow: surfaces tucked against another part (under collars, belts, arms) go one tone darker
+        near = np.min(np.stack([o.sdf(p) for o in occluders]), axis=0) < 2.2
+        tone = np.where(near, np.maximum(1, tone - 1), tone)
     py, px = ys[idx].astype(int), xs[idx].astype(int)
     colours = np.zeros((len(idx), 3), np.uint8)
     for k, s in enumerate(shapes):
@@ -108,7 +128,10 @@ def render(shapes, size=256, box=(70, 60, 190, 232), steps=90):
             material = s.local(p[m], material)
         for name in set(material):
             mm = material == name
-            colours[np.where(m)[0][mm]] = RAMPS[name][tone[m][mm]]
+            t = tone[m][mm]
+            if name in METAL:
+                t = np.where(spec[m][mm], 5, np.minimum(t, 4))
+            colours[np.where(m)[0][mm]] = RAMPS[name][t]
     rgba[py, px, :3] = colours; rgba[py, px, 3] = 255
     depth[py, px] = (p @ VIEW)
     sid[py, px] = which
@@ -124,5 +147,5 @@ def render(shapes, size=256, box=(70, 60, 190, 232), steps=90):
         for k, s in enumerate(shapes):
             m = edge & (sid == k)
             if m.any():
-                out[m, :3] = RAMPS[s.material][0]
+                out[m, :3] = RAMPS[s.outline or s.material][0]
     return out, depth, sid

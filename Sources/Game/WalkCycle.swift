@@ -168,6 +168,9 @@ struct AuthoredLocomotion {
         let startFrames: [Int]
         let stopFrames: [Int]
         let directions: [Direction]
+        /// "uniform" when the art is foot-locked by construction (model v3), so
+        /// pose windows must stay even instead of being re-timed from the soles.
+        var timing: String? = nil
     }
     enum State: String { case idle, starting, walking, stopping }
     /// Each stop pose is held this long (half the authored 120 ms pose).

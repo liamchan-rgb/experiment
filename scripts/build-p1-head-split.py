@@ -12,7 +12,8 @@ compositor, then split by slot:
 
 Runtime stacking order: under -> hair.back -> body -> eyes -> brows -> nose ->
 mouth -> hair.front. Hands never overlap the head in any of the 3,120 cells
-(checked here), so moving the head above the hands changes no pixel.
+(checked here: no hand is drawn above an overlapping head part), so moving the head above
+the hands changes no pixel.
 
 The script fails unless re-stacking every state with its original head
 reproduces the shipped atlas within 1 colour level (8-bit rounding at soft
@@ -126,9 +127,12 @@ def main():
                     under = [im for slot, im in layers if slot not in HEAD_SLOTS and order.index(slot) < split]
                     body = [im for slot, im in layers if slot not in HEAD_SLOTS and order.index(slot) > split]
                     head = {slot: im for slot, im in layers if slot in HEAD_SLOTS}
+                    # Only a hand drawn ABOVE an overlapping head part would change pixels when
+                    # the runtime stacks the head over the body; a hand tucked under the hair is fine.
+                    first_head = min((order.index(slot) for slot in head), default=len(order))
                     hands = np.zeros((256, 256), bool)
                     for slot, im in layers:
-                        if slot.startswith('body.hand'):
+                        if slot.startswith('body.hand') and order.index(slot) > first_head:
                             hands |= np.array(im.getchannel('A')) > 0
                     covered = np.zeros((256, 256), bool)
                     for im in head.values():

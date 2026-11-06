@@ -1,7 +1,7 @@
 import sys
 from pathlib import Path
 sys.dont_write_bytecode = True
-sys.path.insert(0, str(Path(__file__).parent)); sys.path.insert(0, str(Path(__file__).parents[1] / 'p1-skeleton-v2'))
+sys.path.insert(0, str(Path(__file__).parent))
 from PIL import Image
 import numpy as np
 from common import layers, comp

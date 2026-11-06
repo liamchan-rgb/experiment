@@ -2,7 +2,7 @@
 import math, sys
 from pathlib import Path
 sys.dont_write_bytecode = True
-sys.path.insert(0, str(Path(__file__).parent)); sys.path.insert(0, str(Path(__file__).parents[1] / 'p1-skeleton-v2'))
+sys.path.insert(0, str(Path(__file__).parent))
 import numpy as np
 from PIL import Image, ImageDraw, ImageFont
 import model, body, compare
