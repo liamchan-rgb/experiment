@@ -1,0 +1,111 @@
+[
+  {
+    "band" : "middle",
+    "distance" : 1243.341410527525,
+    "nodeID" : 0,
+    "templates" : [
+      "goblinArcher"
+    ]
+  },
+  {
+    "band" : "middle",
+    "distance" : 1442.4202899557106,
+    "nodeID" : 3,
+    "templates" : [
+      "slime",
+      "goblinArcher"
+    ]
+  },
+  {
+    "band" : "middle",
+    "distance" : 829.5739763405144,
+    "nodeID" : 5,
+    "templates" : [
+      "wolf"
+    ]
+  },
+  {
+    "band" : "deep",
+    "distance" : 1493.2723050314048,
+    "nodeID" : 8,
+    "templates" : [
+      "wolf",
+      "goblinArcher"
+    ]
+  },
+  {
+    "band" : "opening",
+    "distance" : 632.9578566592685,
+    "nodeID" : 10,
+    "templates" : [
+      "slime"
+    ]
+  },
+  {
+    "band" : "deep",
+    "distance" : 1640.5211182399207,
+    "nodeID" : 12,
+    "templates" : [
+      "stoneGuardian",
+      "slime"
+    ]
+  },
+  {
+    "band" : "boss",
+    "distance" : 3253.6300998782067,
+    "nodeID" : 14,
+    "templates" : [
+      "caveTroll"
+    ]
+  },
+  {
+    "band" : "deep",
+    "distance" : 1636.9663810022814,
+    "nodeID" : 16,
+    "templates" : [
+      "stoneGuardian"
+    ]
+  },
+  {
+    "band" : "deep",
+    "distance" : 2696.13136399947,
+    "nodeID" : 19,
+    "templates" : [
+      "stoneGuardian"
+    ]
+  },
+  {
+    "band" : "middle",
+    "distance" : 1412.900027130267,
+    "nodeID" : 20,
+    "templates" : [
+      "goblinArcher"
+    ]
+  },
+  {
+    "band" : "deep",
+    "distance" : 3033.5751390757287,
+    "nodeID" : 24,
+    "templates" : [
+      "stoneGuardian"
+    ]
+  },
+  {
+    "band" : "deep",
+    "distance" : 3390.735907012064,
+    "nodeID" : 27,
+    "templates" : [
+      "wolf",
+      "goblinArcher"
+    ]
+  },
+  {
+    "band" : "middle",
+    "distance" : 1260.7168917065023,
+    "nodeID" : 29,
+    "templates" : [
+      "slime",
+      "goblinArcher"
+    ]
+  }
+]

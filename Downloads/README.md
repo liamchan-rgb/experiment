@@ -1,3 +1,9 @@
+## Build91 · 怪物草稿编辑与续档保护 · 1.6.64
+
+[直接下载 IPA](https://raw.githubusercontent.com/liamchan-rgb/experiment/96bfac11b11fcc877dc274bea4d10eb1ee6e0fa6/Downloads/MeadowJourney-b91.ipa) · [入口与验证说明](../docs/planning/random-map-v1/build91-save-editing.md) · [包检](../Media/Build91/verification.json)
+
+怪物编辑支持原六物种与旧鹿、逐槽混合编队；保存前确认重置生命，取消不写档、失败可重试。后台一次保存暂停/道路游标/镜头，失败安全停步且不丢资源。坏历史记录不再阻断正常结算查看，原文件保留。267测试、四回归、原27行程+27装备抽样与设备Release通过，公开完整GET校验通过。未运行App/模拟器/实机。
+
 ## Build90 · 装备对照与职业行程回归 · 1.6.63
 
 [直接下载 IPA](https://raw.githubusercontent.com/liamchan-rgb/experiment/04875c29798a3ca69504863b9fd3a4f829d64d20/Downloads/MeadowJourney-b90.ipa) · [说明与范围](../docs/planning/random-map-v1/build90-loadout-regression.md) · [包检](../Media/Build90/verification.json)
