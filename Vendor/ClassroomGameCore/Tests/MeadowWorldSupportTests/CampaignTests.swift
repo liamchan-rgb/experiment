@@ -17,18 +17,18 @@ final class CampaignTests:XCTestCase {
         XCTAssertEqual(s.engine.archive,before);XCTAssertEqual(s.movementRemaining,capacity-min(20,length*0.25),accuracy:0.000001)
         try finishTravel(s);XCTAssertNil(s.travel)
         XCTAssertNil(s.engine.state.battle);XCTAssertFalse(s.engine.state.map.nodes.first{$0.id==target}!.rewardCompleted)
-        for id in ["p1","p2"]{XCTAssertEqual(s.engine.state.units[id]!.ap,before.state.units[id]!.ap);XCTAssertEqual(s.engine.state.units[id]!.coins,0)}
+        for id in ["p1","p2"]{XCTAssertEqual(s.engine.state.units[id]!.ap,before.state.units[id]!.ap);XCTAssertEqual(s.engine.state.units[id]!.coins,before.state.units[id]!.coins)}
         try s.interactCurrentNode();XCTAssertTrue(s.engine.state.map.nodes.first{$0.id==target}!.rewardCompleted)
-        XCTAssertEqual(s.engine.state.units["p1"]!.coins,10)
+        XCTAssertEqual(s.engine.state.units["p1"]!.coins,before.state.units["p1"]!.coins+before.state.map.nodes.first{$0.id==target}!.reward!.coins)
     }
     func testEachActualEdgeArrivesAndChargesOnce()throws {
         let s=try MeadowCampaignSession.new(layout:layout()),start=s.engine.state.units["p1"]!.nodeID
         let target=s.engine.state.map.nodes.max{s.engine.state.map.distance(from:start,to:$0.id)!<s.engine.state.map.distance(from:start,to:$1.id)!}!.id
-        let plan=try s.beginTravel(to:target),distance=s.routeDistance(plan.path),ap=s.engine.state.units["p1"]!.ap
+        let plan=try s.beginTravel(to:target),distance=s.routeDistance(plan.path),ap=s.engine.state.units["p1"]!.ap,initialCoins=s.partyCoins
         try finishTravel(s)
         XCTAssertEqual(s.snapshot.movement!.totalDistance,distance,accuracy:0.000001)
         XCTAssertEqual(s.engine.history.flatMap(\.events).filter{$0.kind=="campaignArrival"}.count,plan.path.count-1)
-        XCTAssertEqual(s.engine.state.units["p1"]!.ap,ap);XCTAssertEqual(s.engine.state.units["p1"]!.coins,0)
+        XCTAssertEqual(s.engine.state.units["p1"]!.ap,ap);XCTAssertEqual(s.partyCoins,initialCoins)
         XCTAssertFalse(s.engine.state.map.nodes.contains{$0.rewardCompleted})
         try s.interactCurrentNode();let coins=s.engine.state.units["p1"]!.coins
         XCTAssertThrowsError(try s.interactCurrentNode());XCTAssertEqual(s.engine.state.units["p1"]!.coins,coins)
@@ -42,8 +42,8 @@ final class CampaignTests:XCTestCase {
         let before=restored.engine.archive
         XCTAssertTrue(try restored.advanceTravel(distance:100000).isEmpty);XCTAssertEqual(restored.engine.archive,before)
         try restored.setPaused(false);try finishTravel(restored)
-        XCTAssertEqual(restored.engine.state.units["p1"]?.coins,0)
-        try restored.interactCurrentNode();XCTAssertEqual(restored.engine.state.units["p1"]?.coins,10)
+        XCTAssertEqual(restored.engine.state.units["p1"]?.coins,before.state.units["p1"]?.coins)
+        try restored.interactCurrentNode();XCTAssertEqual(restored.engine.state.units["p1"]!.coins,before.state.units["p1"]!.coins+before.state.map.nodes.first{$0.id==target}!.reward!.coins)
         XCTAssertEqual(restored.engine.state.random,before.state.random)
     }
     func testArrivalSaveFailureDoesNotSpendAPRevealOrReward()throws {
@@ -54,8 +54,8 @@ final class CampaignTests:XCTestCase {
         fail=true;XCTAssertThrowsError(try finishTravel(s))
         XCTAssertEqual(s.engine.archive,before);XCTAssertEqual(stored,old);XCTAssertFalse(s.isMoving)
         fail=false;try s.setPaused(false);try finishTravel(s)
-        XCTAssertEqual(s.engine.history.flatMap(\.events).filter{$0.kind=="campaignArrival"}.count,1);XCTAssertEqual(s.engine.state.units["p1"]?.coins,0)
-        try s.interactCurrentNode();XCTAssertEqual(s.engine.state.units["p1"]?.coins,10)
+        XCTAssertEqual(s.engine.history.flatMap(\.events).filter{$0.kind=="campaignArrival"}.count,1);XCTAssertEqual(s.engine.state.units["p1"]?.coins,before.state.units["p1"]?.coins)
+        try s.interactCurrentNode();XCTAssertEqual(s.engine.state.units["p1"]!.coins,before.state.units["p1"]!.coins+before.state.map.nodes.first{$0.id==target}!.reward!.coins)
     }
     func testEncounterStopsAtFirstEnemyAndPreservesOneEngine()throws {
         var stored=Data();let s=try MeadowCampaignSession.new(layout:layout(combat:true),persist:{stored=$0})
@@ -326,6 +326,7 @@ final class CampaignTests:XCTestCase {
     }
     func testMovementExhaustionStopsMidRoadAndResumesWithoutTeleport()throws {
         let initial=try MeadowCampaignSession.new(layout:layout());var save=initial.snapshot;save.movement?.remaining=20
+        save.archive.state.units["p1"]?.coins=0;save.archive.state.units["p2"]?.coins=0
         let session=try MeadowCampaignSession(save:save),start=session.engine.state.units["p1"]!.nodeID
         try session.beginTravel(to:session.engine.state.map.neighbors(start)[0]);try session.advanceTravel(distance:40)
         XCTAssertEqual(session.travel!.distance,20,accuracy:0.000001);XCTAssertEqual(session.movementRemaining,0)
@@ -444,6 +445,7 @@ final class CampaignTests:XCTestCase {
     }
     func testNoEnemyMapNeedsExplorationAndRewardsRemainOptional()throws {
         let s=try MeadowCampaignSession.new(layout:layout()),start=s.engine.state.units["p1"]!.nodeID
+        let initial=s.engine.state.players.map(\.coins)
         XCTAssertFalse(s.canComplete)
         for node in s.engine.state.map.nodes where node.id != start {
             try s.refillMovement(usingCoins:false);try s.beginTravel(to:node.id);try finishTravel(s)
@@ -451,7 +453,7 @@ final class CampaignTests:XCTestCase {
         XCTAssertTrue(s.completionGoalMet);XCTAssertFalse(s.canComplete)
         try s.refillMovement(usingCoins:false);try s.beginTravel(to:start);try finishTravel(s)
         let result=try s.completeCampaign();XCTAssertEqual(result.collectedRewards,0);XCTAssertEqual(result.exploredNodes,result.totalNodes)
-        XCTAssertTrue(result.players.allSatisfy{$0.coins==0})
+        XCTAssertEqual(result.players.map(\.coins),initial)
     }
     func testCompletionIsIdempotentAndClosesResourceOperations()throws {
         let s=try MeadowCampaignSession.new(layout:layout(combat:true));try clearEnemies(s)

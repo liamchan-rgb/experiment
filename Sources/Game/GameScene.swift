@@ -7,6 +7,7 @@ final class GameScene: SKScene {
     var selectingCampaignNode=false
     var onCampaignNodeSelected:((Int)->Void)?
     var onCampaignInteractionRequested:((Int)->Void)?
+    var onCampaignEncounterSelected:((Int?)->Void)?
     private var lastCampaignUIUpdate:TimeInterval=0
     var campaign:MeadowCampaignSession?
     var onCampaignChanged:(()->Void)?
@@ -538,13 +539,16 @@ final class GameScene: SKScene {
     }
     private func order(to point: CGPoint, discovery: Int? = nil) {
         if let campaign {
-            if campaign.isCompleted{onDiscovery?("行程已结算，可查看结果或返回设置");return}
             let actor=selectedCampaignPlayerID
             if let discovery,let target=world.definition.discoveries[discovery].nodeID {
                 if selectingCampaignNode{onCampaignNodeSelected?(target);return}
+                onCampaignEncounterSelected?(target)
+                if campaign.isCompleted{onDiscovery?("行程已结算，可查看结果或返回设置");return}
                 if campaign.travel==nil && campaign.engine.state.units[actor]?.nodeID==target{onCampaignInteractionRequested?(target);return}
                 do{let plan=try campaign.beginTravel(to:target,actor:actor);let p=campaign.point(at:target);destinationRing.position=LivingWorld.position(CGPoint(x:p.x,y:p.y));destinationRing.isHidden=false;onDiscovery?(plan.message);onPlaybackChanged?(true);onCampaignChanged?()}catch{onCampaignError?(error.localizedDescription)}
             }else{
+                onCampaignEncounterSelected?(nil)
+                if campaign.isCompleted{onDiscovery?("行程已结算，可查看结果或返回设置");return}
                 if selectingCampaignNode{onDiscovery?("请点击需要编辑的建筑");return}
                 do{let plan=try campaign.beginTravel(toRoadPoint:.init(Double(point.x),Double(point.y)),actor:actor);destinationRing.position=LivingWorld.position(point);destinationRing.isHidden=false;onDiscovery?(plan.message);onPlaybackChanged?(true);onCampaignChanged?()}catch{onCampaignError?(error.localizedDescription)}
             }

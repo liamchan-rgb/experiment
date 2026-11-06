@@ -17,6 +17,8 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
     private let campaignMovement=MeadowBattleResourceBar()
     private let campaignHealth=[MeadowBattleResourceBar(),MeadowBattleResourceBar()]
     private let campaignAP=[MeadowBattleActionPointsView(),MeadowBattleActionPointsView()]
+    private let encounterPreview=MeadowEncounterPreviewView()
+    private var previewEncounterNode:Int?
     private let previewMap: GeneratedMeadowMap?
     private let randomMapButton = UIButton(type: .system)
     private let randomMapSummary = UILabel()
@@ -152,7 +154,12 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
                 self.cancelNodeSelection()
                 self.editNodeContents(id)
             }
-            scene.onCampaignInteractionRequested={ [weak self] _ in self?.showCampaignInteraction() }
+            scene.onCampaignEncounterSelected={ [weak self] id in self?.selectEncounterPreview(id) }
+            scene.onCampaignInteractionRequested={ [weak self] id in
+                guard let self else{return}
+                if let campaign=self.campaign,(try? campaign.encounterPreview(node:id)) != nil{self.selectEncounterPreview(id)}
+                else{self.showCampaignInteraction()}
+            }
             configureCampaignControls()
         }
         var mapStyle=labStyle
@@ -323,6 +330,8 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
             campaignItems.frame=CGRect(x:controlsX+buttonWidth+gap,y:buttonY,width:buttonWidth,height:38)
             campaignBattle.frame=CGRect(x:controlsX+(buttonWidth+gap)*2,y:buttonY,width:buttonWidth,height:38)
             campaignEdit.frame=CGRect(x:controlsX+(buttonWidth+gap)*3,y:buttonY,width:buttonWidth,height:38)
+            let previewTop=top+button+10
+            encounterPreview.frame=CGRect(x:controlsX,y:previewTop,width:min(430,controlsRight-controlsX),height:max(120,min(encounterPreview.preferredHeight,buttonY-previewTop-8)))
         }
         let summaryMaxX=campaign == nil ? view.bounds.width-max(inset.right,10)-8:campaignEdit.frame.minX-8
         randomMapSummary.frame=CGRect(x:randomMapButton.frame.maxX+8,y:randomMapButton.frame.minY,
@@ -764,6 +773,14 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
         campaignHUD.addSubview(campaignMovement)
         for i in 0..<2 {campaignHUD.addSubview(campaignHealth[i]);campaignHUD.addSubview(campaignAP[i])}
         for b in [campaignRefill,campaignItems,campaignBattle,campaignEdit,campaignTeam,campaignEnd] {view.addSubview(b)}
+        view.addSubview(encounterPreview);encounterPreview.isHidden=true
+        encounterPreview.onClose={ [weak self] in self?.selectEncounterPreview(nil) }
+        encounterPreview.onInteract={ [weak self] in
+            guard let self,let campaign=self.campaign,let id=self.previewEncounterNode,
+                  let value=try? campaign.encounterPreview(node:id,actor:self.scene.selectedCampaignPlayerID),value.canInteract else{return}
+            do{try campaign.interactCurrentNode(actor:self.scene.selectedCampaignPlayerID);self.scene.refreshCampaign();self.refreshCampaignStatus()}
+            catch{self.showCampaignMessage(error.localizedDescription)}
+        }
         campaignEnd.addAction(UIAction{[weak self] _ in self?.showCampaignEnd()},for:.touchUpInside)
         campaignTeam.addAction(UIAction{[weak self] _ in self?.showCampaignTeam()},for:.touchUpInside)
         campaignEdit.accessibilityIdentifier="campaignNodeEditor"
@@ -784,6 +801,7 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
     private func saveCampaign()throws {
         guard let campaign else{return}
         cancelNodeSelection()
+        selectEncounterPreview(nil)
         battlePreviewView?.setActive(false)
         try campaign.setPaused(true);try campaign.checkpoint(camera:scene.campaignCamera)
     }
@@ -827,6 +845,7 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
         guard let campaign else{return}
         if scene.selectingCampaignNode {cancelNodeSelection();showCampaignMessage("已取消编辑选点");return}
         guard campaign.travel==nil,campaign.engine.state.battle==nil else{showCampaignMessage("请先完成移动并结束战斗。");return}
+        selectEncounterPreview(nil)
         scene.selectingCampaignNode=true
         campaignEdit.configuration?.title="取消选点"
         refreshCampaignStatus(allowBattleOpen:false)
@@ -888,8 +907,8 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
         guard let campaign else{return}
         let reward=node.reward ?? NodeReward()
         let alert=UIAlertController(title:"编辑补给内容",message:node.rewardCompleted ? "此地点已领取。修改内容会保留已领取状态，不会再次发奖。":"设置金币、积分和物品数量。",preferredStyle:.alert)
-        let values=[String(reward.coins),String(reward.score),String(reward.items["smallPotion"] ?? 0),String(reward.items["largePotion"] ?? 0),String(reward.items["shieldPotion"] ?? 0)]
-        let labels=["金币","积分","小型药水","大型药水","护盾药水"]
+        let values=[String(reward.coins),String(reward.score),String(reward.items["smallPotion"] ?? 0),String(reward.items["largePotion"] ?? 0),String(reward.items["shieldPotion"] ?? 0),String(reward.items["revivalStone"] ?? 0)]
+        let labels=["金币（每人）","积分（每人）","小型药水","大型药水","护盾药水","复活石"]
         for (i,label) in labels.enumerated() {
             alert.addTextField { field in
                 field.placeholder=label;field.text=values[i];field.keyboardType = .numberPad;field.accessibilityLabel=label
@@ -899,13 +918,13 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
         }
         alert.addAction(UIAlertAction(title:"取消",style:.cancel))
         alert.addAction(UIAlertAction(title:"保存内容",style:.default){[weak self,weak alert] _ in
-            guard let fields=alert?.textFields,fields.count==5 else{return}
+            guard let fields=alert?.textFields,fields.count==6 else{return}
             let parsed=fields.compactMap{Int($0.text ?? "")}
-            guard parsed.count==5,parsed.allSatisfy({$0>=0}),parsed[0]<=100_000,parsed[1]<=100_000,parsed.dropFirst(2).allSatisfy({$0<=1000}) else {
+            guard parsed.count==6,parsed.allSatisfy({$0>=0}),parsed[0]<=100_000,parsed[1]<=100_000,parsed.dropFirst(2).allSatisfy({$0<=1000}) else {
                 self?.showCampaignMessage("请输入非负整数；药水最多1000，金币和积分最多100000。");return
             }
             let v=parsed;var items=[String:Int]()
-            for (key,count) in [("smallPotion",v[2]),("largePotion",v[3]),("shieldPotion",v[4])] where count>0 {items[key]=count}
+            for (key,count) in [("smallPotion",v[2]),("largePotion",v[3]),("shieldPotion",v[4]),("revivalStone",v[5])] where count>0 {items[key]=count}
             do {
                 _=try campaign.configureReward(node:node.id,reward:NodeReward(coins:v[0],score:v[1],items:items))
                 self?.scene.refreshCampaign();self?.refreshCampaignStatus();self?.showCampaignMessage(node.rewardCompleted ? "补给内容已更新；已领取状态保留。":"补给内容已更新并保存。")
@@ -914,6 +933,14 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
         present(alert,animated:true)
     }
 
+    private func selectEncounterPreview(_ id:Int?) {
+        previewEncounterNode=id;refreshEncounterPreview();view.setNeedsLayout()
+    }
+    private func refreshEncounterPreview(){
+        guard let campaign,let id=previewEncounterNode,!battlePreviewActive,campaign.engine.state.battle==nil,!scene.selectingCampaignNode,
+              let value=try? campaign.encounterPreview(node:id,actor:scene.selectedCampaignPlayerID) else{encounterPreview.isHidden=true;return}
+        encounterPreview.show(value,completed:campaign.isCompleted);encounterPreview.isHidden=false
+    }
 private func refreshCampaignStatus(allowBattleOpen:Bool=true) {
         guard let campaign else{return}
         for control in [shadowLabButton,gaitTestButton,battlePreviewButton,p1AppearanceButton] {control.isHidden=true}
@@ -938,6 +965,7 @@ private func refreshCampaignStatus(allowBattleOpen:Bool=true) {
         }
         campaignEnd.configuration?.title=campaign.isCompleted ? "查看结算":((campaign.canComplete || campaign.canCompleteDefeat) ? "结束并结算":"行程目标")
         if campaign.isCompleted{randomMapSummary.text="行程已结算 · 可查看结果或返回设置"}
+        refreshEncounterPreview()
         if ready,allowBattleOpen,state.battle != nil,players.contains(where: \.isAlive),!battlePreviewActive {setBattlePreviewActive(true)}
     }
     private func showCampaignEnd(){

@@ -220,7 +220,11 @@ public final class MeadowCampaignSession {
                 units[id]=try GameFactory.monster(id:id,templateID:template,nodeID:encounter.nodeID,catalog:catalog)
             }
         }
-        var state=GameState(units:units,teams:[GameTeam(id:"party",name:"林间小队")],map:layout.map,random:RandomState(seed:layout.configuration.seed ^ 0x43414d504149474e))
+        let provisions=try MeadowProvisioning.plan(layout:layout,players:units.values.filter{$0.kind == .player},catalog:catalog)
+        for (id,coins) in provisions.startingCoins{units[id]?.coins=coins}
+        var map=layout.map
+        for i in map.nodes.indices {if let reward=provisions.rewards[map.nodes[i].id]{map.nodes[i].reward=reward}}
+        var state=GameState(units:units,teams:[GameTeam(id:"party",name:"林间小队")],map:map,random:RandomState(seed:layout.configuration.seed ^ 0x43414d504149474e))
         state.pauseReasons=[]
         let save=MeadowCampaignSave(layout:layout,archive:GameArchive(catalog:catalog,state:state,history:[]),appearanceID:appearanceID)
         let session=try MeadowCampaignSession(save:save,persist:persist);try session.checkpoint();return session

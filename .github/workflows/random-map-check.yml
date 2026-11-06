@@ -41,6 +41,8 @@ jobs:
           swift run --package-path Vendor/ClassroomGameCore MeadowSupportReviewExport build/monster-review --monster-only
           swift run --package-path Vendor/ClassroomGameCore MeadowMapExport 10 31827 1 --encounters > build/encounters-default.json
           swift run --package-path Vendor/ClassroomGameCore MeadowMapExport 30 18446744073709551615 1 --encounters > build/encounters-max.json
+          swift run --package-path Vendor/ClassroomGameCore MeadowMapExport 10 31827 1 --balance > build/balance-default.json
+          swift run --package-path Vendor/ClassroomGameCore MeadowMapExport 30 18446744073709551615 1 --balance > build/balance-max.json
       - name: Archive without running application or simulator
         run: |
           set -euo pipefail
@@ -48,7 +50,7 @@ jobs:
             -configuration Release -destination 'generic/platform=iOS' \
             -archivePath build/MeadowJourney.xcarchive -derivedDataPath build/Derived \
             CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO 2>&1 | tee build/archive.log
-          bash scripts/package-ipa.sh build/MeadowJourney.xcarchive build/MeadowJourney-b85.ipa
+          bash scripts/package-ipa.sh build/MeadowJourney.xcarchive build/MeadowJourney-b86.ipa
       - uses: actions/upload-artifact@v7
         if: always()
         with:
@@ -57,6 +59,7 @@ jobs:
             build/*.log
             build/*.ipa
             build/encounters-*.json
+            build/balance-*.json
             build/monster-review/*.json
           if-no-files-found: error
           retention-days: 30
