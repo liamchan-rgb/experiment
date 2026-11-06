@@ -39,7 +39,7 @@ def torso_sdf(F, widen=0.0, length=0.0, depth=0.0):
     chest_c, shoulder_c, hem_c = F.chest([0, 20, 0]), F.chest([0, 32, 0]), F.chest([0, 2 - length * .5, .5])
     def sdf(p):
         a = sd_ellipsoid(p, chest_c, np.array([16 + widen, 16, 12 + depth]), F.Bc)
-        b = sd_ellipsoid(p, shoulder_c, np.array([17 + widen, 7, 11 + depth]), F.Bc)
+        b = sd_ellipsoid(p, shoulder_c, np.array([15.6 + widen, 6.4, 10.4 + depth]), F.Bc)
         c = sd_ellipsoid(p, hem_c, np.array([17 + widen, 10 + length * .5, 13 + depth]), F.Bc)
         return smin(smin(a, b, 4), c, 4)
     return sdf
@@ -47,7 +47,7 @@ def torso_sdf(F, widen=0.0, length=0.0, depth=0.0):
 
 def collar_shape(F, material, rim, name='collar', radius=6.2):
     up = F.Bc @ np.array([0, 1.0, 0])
-    base = F.joint('neck') - up * 6.5
+    base = F.joint('neck') - up * 4.5
     def sdf(p): return sd_cylinder(p, base, base + up * 4.2, radius, 1.2)
     def detail(p, mat):
         h = (p - base) @ up
@@ -74,7 +74,7 @@ def base(F):
     chest_c = F.chest([0, 19, 0])
     slots['body.torso'] = [
         Shape('skin_torso', 'skin', lambda p: sd_ellipsoid(p, chest_c, np.array([14, 17, 10.5]), F.Bc), group='torso'),
-        Shape('neck', 'skin', lambda p: sd_capsule(p, neck - up * 7, neck + up * 1, 4.0), group='torso')]
+        Shape('neck', 'skin', lambda p: sd_capsule(p, neck - up * 7, neck + up * 2, 5.6), group='torso')]
     for s, name in SIDES:
         sh, el, wr = F.joint('shoulder' + s), F.joint('elbow' + s), F.joint('wrist' + s)
         slots['body.arm.' + name] = [
@@ -108,12 +108,12 @@ def lower(F):
         slots['outfit.pants.' + name] = [Shape('pants' + s, 'pants', pants, crease, 'leg' + s)]
         pitch = F.J['foot' + s]
         Fm = F.W @ rot_x(pitch)
-        shaft_top = ankle + (knee - ankle) / np.linalg.norm(knee - ankle) * 6
+        shaft_top = ankle + (knee - ankle) / np.linalg.norm(knee - ankle) * 6.0
         foot_c = ankle + Fm @ np.array([0, -4.4, 4.2])
         sole_off = Fm @ np.array([0, -9.0, 0])
         def boot(p, a=ankle, t=shaft_top, c=foot_c, Fm=Fm, so=sole_off):
             shaft = sd_capsule(p, a, t, 6.6, 7.0)
-            toe = sd_ellipsoid(p, c, np.array([6.8, 5.4, 10.5]), Fm)
+            toe = sd_ellipsoid(p, c, np.array([7.0, 5.6, 11.0]), Fm)
             body = smin(shaft, toe, 3)
             n = Fm @ np.array([0, -1.0, 0])
             return np.maximum(body, (p - (a + so)) @ n)
@@ -131,7 +131,7 @@ def lower(F):
 
 
 # ---------------- outfit helpers ----------------
-def sleeves(F, upper_mat, fore_mat, cuff_mat, short=False, bracer=None):
+def sleeves(F, upper_mat, fore_mat, cuff_mat, short=False, bracer=None, stripe=None):
     slots = {}
     for s, name in SIDES:
         sh, el, wr = F.joint('shoulder' + s), F.joint('elbow' + s), F.joint('wrist' + s)
@@ -145,6 +145,7 @@ def sleeves(F, upper_mat, fore_mat, cuff_mat, short=False, bracer=None):
             def cuff(p, mat, a=el, b=wr):
                 mat = mat.copy(); f = limb_frac(p, a, b)
                 mat[f > .78] = cuff_mat
+                if stripe: mat[(f > .8) & (f < .9)] = stripe
                 return mat
             shapes.append(Shape('fore' + s, fore_mat, lambda p, a=el, b=wr: sd_capsule(p, a, b, 6.0, 5.6), cuff, 'arm' + s))
         if bracer:
@@ -198,19 +199,41 @@ def tabards(F, material, trim, bottom=-17.0, name='tabard'):
 
 
 # ---------------- outfits ----------------
+def buttons(F, ys, material='gold', zs=(10.9, 12.3, 12.1), r=1.5):
+    shapes = []
+    for k, (y, z) in enumerate(zip(ys, zs)):
+        c = F.chest([0, y, z])
+        shapes.append(Shape(f'button{k}', material, lambda p, c=c: np.linalg.norm(p - c, axis=1) - r, group='torso'))
+    return shapes
+
+
+def belt_buckle(F, y=10.5, z=12.2):
+    c = F.chest([0, y, z])
+    def sdf(p): return sd_box(p, c, [3.0, 2.4, 1.1], F.Bc, .6)
+    def detail(p, mat):
+        q = (p - c) @ F.Bc; mat = mat.copy()
+        mat[(np.abs(q[:, 0]) < 1.3) & (np.abs(q[:, 1]) < .9)] = 'belt'
+        return mat
+    return Shape('buckle', 'gold', sdf, detail, 'torso')
+
+
 def forester(F):
     tor = torso_sdf(F)
     def detail(p, mat):
         q = F.local(p); mat = mat.copy()
         front = q[:, 2] > 4
-        mat[front & (np.abs(q[:, 0]) < 1.1) & (q[:, 1] > -6) & (q[:, 1] < 37)] = 'gold'
-        mat[(q[:, 1] > 8.5) & (q[:, 1] < 12.5)] = 'belt'
-        mat[front & (np.abs(q[:, 0]) < 2.6) & (q[:, 1] > 8) & (q[:, 1] < 13)] = 'gold'
-        mat[q[:, 1] < -5.6] = 'gold'
+        mat[front & (np.abs(q[:, 0]) < .55) & (q[:, 1] > 12.5) & (q[:, 1] < 36)] = 'collar'   # centre seam above the belt
+        mat[front & (np.abs(q[:, 0]) < .55) & (q[:, 1] < 8.5) & (q[:, 1] > -5)] = 'collar'
+        # cloth folds: faint dark strokes flowing from the belt up toward the arms
+        fold = np.abs(np.sin(q[:, 0] * .62 + (q[:, 1] - 10) * .09 + .9)) > .965
+        mat[fold & (q[:, 1] > -3) & (q[:, 1] < 30) & (np.abs(q[:, 0]) > 3)] = 'collar'
+        mat[(q[:, 1] > 8.2) & (q[:, 1] < 12.8)] = 'belt'
+        mat[(q[:, 1] < -4.6) & (q[:, 1] > -5.8)] = 'gold'                                     # thin hem line
         return mat
-    slots = {'outfit.torso': [Shape('jacket', 'jacket', tor, detail, 'torso'), collar_shape(F, 'collar', 'gold')],
+    slots = {'outfit.torso': [Shape('jacket', 'jacket', tor, detail, 'torso'), collar_shape(F, 'collar', 'gold'),
+                              belt_buckle(F)] + buttons(F, [30, 23, 16]),
              'outfit.hem.front': []}
-    slots.update(sleeves(F, 'jacket', 'jacket', 'gold'))
+    slots.update(sleeves(F, 'jacket', 'jacket', 'jacket', stripe='gold'))
     return slots
 
 
@@ -220,13 +243,13 @@ def wayfarer(F):
         q = F.local(p); mat = mat.copy()
         front = q[:, 2] > 4
         # front opening edges in gold, a little apart
-        mat[front & (np.abs(np.abs(q[:, 0]) - 1.6) < .9) & (q[:, 1] > -7) & (q[:, 1] < 36)] = 'gold'
+        mat[front & (np.abs(np.abs(q[:, 0]) - 1.7) < .5) & (q[:, 1] > -7) & (q[:, 1] < 36)] = 'gold'
         mat[(q[:, 1] > 8.5) & (q[:, 1] < 12.2)] = 'belt'
         mat[front & (np.abs(q[:, 0]) < 2.6) & (q[:, 1] > 8) & (q[:, 1] < 12.7)] = 'gold'
         return mat
     slots = {'outfit.torso': [Shape('coat', 'navy', tor, detail, 'torso'), collar_shape(F, 'tan', 'tan', radius=6.6)]}
     slots['outfit.hem.front'] = skirt(F, 'navy', 'gold', bottom=-17, opening=.42, name='tail')
-    slots.update(sleeves(F, 'navy', 'navy', 'gold'))
+    slots.update(sleeves(F, 'navy', 'navy', 'navy', stripe='gold'))
     return slots
 
 

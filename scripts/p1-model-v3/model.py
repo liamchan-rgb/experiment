@@ -18,14 +18,14 @@ def hexes(*cs):
 
 # ramp[0] = outline, 1..5 = shadow .. highlight
 RAMPS = {
-    'jacket': hexes('#060d08', '#15271b', '#213a26', '#2f4631', '#3e5439', '#52634a'),
+    'jacket': hexes('#050b07', '#10201a', '#1c3321', '#2c4430', '#3d5439', '#55674c'),
     'collar': hexes('#060d08', '#10200f', '#172b1b', '#1f3922', '#2a4029', '#344a32'),
-    'pants': hexes('#0e080b', '#322f38', '#403c44', '#4c4951', '#5a5760', '#6a6770'),
+    'pants': hexes('#0c070a', '#2a2730', '#38353e', '#48444c', '#59565f', '#6b6872'),
     'boot': hexes('#120100', '#3a1d0d', '#552e17', '#6e3e22', '#87512f', '#a8714b'),
     'cuff': hexes('#120100', '#2c1509', '#3e2210', '#4b2b16', '#5a321a', '#6a3c20'),
     'sole': hexes('#0e0000', '#1f0d06', '#2c1509', '#3a1e0e', '#4b2b16', '#5a321a'),
     'skin': hexes('#3c0a02', '#c8683e', '#ec9f70', '#fbbf8f', '#fbcb9a', '#fde0c0'),
-    'gold': hexes('#2a1500', '#7a5210', '#b0801a', '#d8a82c', '#f2d062', '#fff0aa'),
+    'gold': hexes('#2a1500', '#7a5210', '#a8761a', '#c99a24', '#e6bd44', '#fbe27c'),
     'belt': hexes('#1b0a02', '#35180a', '#552a10', '#6e3414', '#884c25', '#9c6236'),
     'navy': hexes('#030716', '#0c1a3c', '#14275a', '#1d3878', '#2a4b95', '#3d63b0'),
     'tan': hexes('#2a1a0a', '#9a7a52', '#b89770', '#d2b48c', '#e4cba6', '#f2e2c4'),
@@ -112,7 +112,12 @@ def render(shapes, size=256, box=(66, 56, 192, 234), steps=90, occluders=()):
                   field(p + [0, 0, e]) - field(p - [0, 0, e])], 1)
     n /= np.maximum(np.linalg.norm(n, axis=1, keepdims=True), 1e-6)
     light = n @ LIGHT
-    tone = np.select([light < -.05, light < .3, light < .62, light < .9], [1, 2, 3, 4], 5)
+    py0, px0 = ys[idx].astype(int), xs[idx].astype(int)
+    bayer = (np.array([[0, 8, 2, 10], [12, 4, 14, 6], [3, 11, 1, 9], [15, 7, 13, 5]]) / 16.0 - .5)[py0 % 4, px0 % 4]
+    h = (px0 * 73856093 ^ py0 * 19349663) & 1023
+    grain = (h / 1023.0 - .5)
+    dl = light + bayer * .17 + grain * .10               # ordered dither + fine grain, like the hand-drawn art
+    tone = np.select([dl < -.05, dl < .3, dl < .62, dl < .9], [1, 2, 3, 4], 5)
     spec = (n @ HALF) > .93
     if occluders:
         # contact shadow: surfaces tucked against another part (under collars, belts, arms) go one tone darker
@@ -139,6 +144,9 @@ def render(shapes, size=256, box=(66, 56, 192, 234), steps=90, occluders=()):
     groups = np.array([hash(s.group) % 100003 for s in shapes])
     gmap = np.where(sid >= 0, groups[np.maximum(sid, 0)], -1)
     out = rgba.copy()
+    sil_any = np.zeros(sid.shape, bool)
+    for dy, dx in ((0, 1), (0, -1), (1, 0), (-1, 0)):
+        sil_any |= (sid >= 0) & (np.roll(gmap, (dy, dx), (0, 1)) == -1)
     for dy, dx in ((0, 1), (0, -1), (1, 0), (-1, 0)):
         nb_d = np.roll(depth, (dy, dx), (0, 1)); nb_g = np.roll(gmap, (dy, dx), (0, 1))
         sil = (sid >= 0) & (nb_g == -1)
@@ -147,5 +155,7 @@ def render(shapes, size=256, box=(66, 56, 192, 234), steps=90, occluders=()):
         for k, s in enumerate(shapes):
             m = edge & (sid == k)
             if m.any():
-                out[m, :3] = RAMPS[s.outline or s.material][0]
+                ramp = RAMPS[s.outline or s.material]
+                out[m & sil_any, :3] = ramp[0]
+                out[m & ~sil_any, :3] = ramp[1]
     return out, depth, sid

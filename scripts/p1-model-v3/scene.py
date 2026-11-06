@@ -10,6 +10,16 @@ from common import comp, layers, selection
 
 HEAD_SLOTS = ['hair.back', 'head.base', 'face.eyes', 'face.brows', 'face.nose', 'face.mouth', 'hair.front']
 BASE, LOWER = 'p1-eight-way-base-v1', 'p1-eight-way-lower-v1'
+_REF = Path(__file__).resolve().parents[2] / 'Art/Integration/P1-model-v3/reference/idle-motion.json'
+
+
+def idle_motion(facing):
+    """Original idle joints/headToCanvas/drawOrder. Read from the snapshot, never from motion.json,
+    which bake.py overwrites (re-reading it would make the pipeline non-idempotent)."""
+    import json
+    if _REF.exists():
+        return json.loads(_REF.read_text())[facing]
+    return comp.frames[(facing, 'idle', 0)]
 
 
 def neck_screen(J, facing):
@@ -22,7 +32,7 @@ def neck_screen(J, facing):
 def head_offset(J, facing):
     """Integer translation that moves the existing idle head/weapon art onto this frame's neck."""
     x, y = neck_screen(J, facing)
-    ix, iy = comp.frames[(facing, 'idle', 0)]['joints']['neck']
+    ix, iy = idle_motion(facing)['joints']['neck']
     return int(round(x - ix)), int(round(y - iy))
 
 
@@ -46,7 +56,7 @@ def render_assets(J, facing, assets):
 
 def draw_order(slot_layers, facing):
     """Topological order of body slots from pairwise depth over their overlaps."""
-    idle_order = comp.frames[(facing, 'idle', 0)]['drawOrder']
+    idle_order = idle_motion(facing)['drawOrder']
     names = list(slot_layers)
     rank = {s: (idle_order.index(s) if s in idle_order else 99) for s in names}
     before = {s: set() for s in names}      # s must be drawn after every slot in before[s]
@@ -71,7 +81,7 @@ def draw_order(slot_layers, facing):
 
 
 def full_order(body_order, facing):
-    idle_order = comp.frames[(facing, 'idle', 0)]['drawOrder']
+    idle_order = idle_motion(facing)['drawOrder']
     behind_weapon = idle_order.index('weapon.back') == 0 if 'weapon.back' in idle_order else True
     order = ['hair.back', 'outfit.hem.back'] + (['weapon.back'] if behind_weapon else [])
     order += body_order
