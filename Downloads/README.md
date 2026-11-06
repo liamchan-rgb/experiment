@@ -1,3 +1,9 @@
+## Build87 · 完整行程回归与整备/部分移动购买 · 1.6.60
+
+[直接下载 IPA](https://raw.githubusercontent.com/liamchan-rgb/experiment/0b5ef675f46a0f63d9863789800ad35b46fa8ba8/Downloads/MeadowJourney-b87.ipa) · [行程回归](../docs/planning/random-map-v1/build87-journey-audit.md) · [包检](../Media/Build87/verification.json)
+
+行囊顶部“手动整备”分别补足个人基础行动；金币不够买满移动时可买部分距离，地图移动与AP独立。三职业/三规模/三种子27组纯规则基线，19通关8正常失败，无路费中断；固定策略不代表真人胜率。240测试、四组回归、设备Release、包检及公开完整GET通过；未运行App/模拟器/实机。
+
 ## Build86 · 战斗节点怪物预览与行程补给 · 1.6.59
 
 [直接下载 IPA](https://raw.githubusercontent.com/liamchan-rgb/experiment/94a33eb2307821c74b754173977226117fb075e6/Downloads/MeadowJourney-b86.ipa) · [离线排版参考](https://raw.githubusercontent.com/liamchan-rgb/experiment/a734cbb5f99b0cc70959fcdb2d41794897ce8c61/Art/Review/Map/encounter-preview-v1/preview-cards.png) · [包检](../Media/Build86/verification.json)
