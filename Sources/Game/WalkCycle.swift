@@ -147,8 +147,13 @@ struct GaitTiming: Equatable {
     }
 }
 
-/// Plays only authored entry/exit paths. Travel still owns the walk phase.
-/// On arrival, finish the current cycle at its designated exit before stop art.
+/// Responsive P1 locomotion over the authored start/walk/stop art.
+/// - Travel is never held back: the two start poses play over the first two
+///   pose-distances of real movement, then the walk continues from this
+///   facing's authored entry pose.
+/// - Arrival stops at once: two quick stop poses, no stepping in place.
+/// - Turns of 90° or more step through the intermediate facings (180° turns
+///   go round via the camera-facing side) while the walk phase continues.
 struct AuthoredLocomotion {
     struct Plan: Decodable {
         struct Direction: Decodable { let entryPhase: Int; let exitPhase: Int }
@@ -159,17 +164,27 @@ struct AuthoredLocomotion {
         let stopFrames: [Int]
         let directions: [Direction]
     }
-    enum State: String { case idle, starting, walking, settling, stopping }
+    enum State: String { case idle, starting, walking, stopping }
+    /// Each stop pose is held this long (half the authored 120 ms pose).
+    static let stopHold: TimeInterval = 0.06
+    /// Each intermediate facing during a wide turn is held this long.
+    static let turnStep: TimeInterval = 0.045
+    /// Sector (clockwise from screen-down) of each art row; inverse of WalkCycle.rows.
+    static let sectorOfRow = [0, 6, 4, 2, 1, 7, 5, 3]
+    static let rowOfSector = [0, 4, 3, 7, 2, 6, 1, 5]
+
     let plan: Plan?
     /// Per-facing pose windows; uniform unless the caller supplies foot-locked timing.
     let timing: GaitTiming
     private(set) var state = State.idle
     private(set) var frame = 0
+    /// Displayed facing (art row); eases toward the heading during wide turns.
     private(set) var facing = 0
     private(set) var distance: CGFloat = 0
     private var heading = WalkCycle()
     private var elapsed: TimeInterval = 0
-    private var remaining: CGFloat = 0
+    private var startTravel: CGFloat = 0
+    private var turnClock: TimeInterval = AuthoredLocomotion.turnStep
     var phase: CGFloat { distance.truncatingRemainder(dividingBy: 24) / 24 }
 
     init(plan: Plan?, timing: GaitTiming = .uniform) {
@@ -182,11 +197,30 @@ struct AuthoredLocomotion {
         self.timing = timing
     }
 
-    func allowsTravel(requested: Bool) -> Bool {
-        plan == nil || state == .idle || state == .walking || (state == .settling && requested)
-    }
+    /// Movement is never gated by the animation.
+    func allowsTravel(requested: Bool) -> Bool { true }
 
     mutating func reset() { self = AuthoredLocomotion(plan: plan, timing: timing) }
+
+    /// Next displayed facing toward `target`: adjacent sectors switch at once,
+    /// wider turns advance one sector per `turnStep`, 180° via screen-down.
+    private mutating func turn(toward target: Int, seconds: TimeInterval) {
+        let current = Self.sectorOfRow[facing], goal = Self.sectorOfRow[target]
+        var delta = (goal - current + 8) % 8
+        if delta > 4 { delta -= 8 }
+        // A settled facing primes the clock so a new wide turn moves at once.
+        if abs(delta) <= 1 { facing = target; turnClock = Self.turnStep; return }
+        if abs(delta) == 4 { delta = current >= 4 ? 1 : -1 }   // round via the camera-facing side
+        turnClock += seconds
+        guard turnClock >= Self.turnStep else { return }
+        turnClock = min(turnClock - Self.turnStep, Self.turnStep)
+        facing = Self.rowOfSector[(current + (delta > 0 ? 1 : -1) + 8) % 8]
+    }
+
+    private mutating func beginStop(_ plan: Plan) {
+        state = .stopping; elapsed = 0; startTravel = 0
+        frame = plan.stopFrames[0]
+    }
 
     mutating func advance(from old: CGPoint, to new: CGPoint, seconds: TimeInterval,
                           requested: Bool, headingHint: CGPoint = .zero) {
@@ -201,55 +235,52 @@ struct AuthoredLocomotion {
             state = heading.moving ? .walking : .idle
             return
         }
-        let dt = max(0, seconds), duration = plan.frameMs / 1000
-        switch state {
-        case .idle:
-            guard requested else { return }
-            facing = heading.facing; state = .starting; elapsed = 0
-            frame = plan.startFrames[0]
-        case .starting:
-            elapsed += dt
-            if elapsed + 0.000000001 < duration * 2 {
-                frame = plan.startFrames[min(1, Int((elapsed + 0.000000001) / duration))]
-            } else {
-                // The first walk pose is this direction's ORIGINAL walk01.
-                // Do not substitute global phase0 after cyclic normalization.
-                distance = timing.poseStart(facing: facing, pose: plan.directions[facing].entryPhase)
-                frame = timing.frame(at: distance, facing: facing); state = .walking
-            }
-        case .walking:
-            distance += movement / WalkCycle.projectedScale(dx: dx, dy: dy)
-            if requested {
-                facing = heading.facing
-                frame = timing.frame(at: distance, facing: facing)
-            } else {
-                let exitEnd = timing.poseStart(facing: facing, pose: plan.directions[facing].exitPhase + 1)
-                remaining = (exitEnd - distance.truncatingRemainder(dividingBy: 24) + 24)
-                    .truncatingRemainder(dividingBy: 24)
-                // At an exit boundary the visible pose is already the next
-                // phase; finish one cycle rather than teleporting backwards.
-                if remaining < 0.000001 { remaining = 24 }
-                state = .settling
-            }
-        case .settling:
-            if requested {
-                state = .walking; facing = heading.facing
-                distance += movement / WalkCycle.projectedScale(dx: dx, dy: dy)
-                frame = timing.frame(at: distance, facing: facing)
-            } else {
-                let step = plan.finishSpeed * CGFloat(dt)
-                if step + 0.000001 < remaining {
-                    distance += step; remaining -= step; frame = timing.frame(at: distance, facing: facing)
-                } else {
-                    // Exit pose has had its full interval; stop01 follows it.
-                    distance += remaining; elapsed = Double(max(0, step - remaining) / plan.finishSpeed)
-                    state = .stopping; frame = plan.stopFrames[min(1, Int(elapsed / duration))]
+        let dt = max(0, seconds), moving = movement > 0.001
+        let travelled = moving ? movement / WalkCycle.projectedScale(dx: dx, dy: dy) : 0
+        let poseDistance = GaitTiming.cycle / CGFloat(plan.walkPhaseCount)
+        if state == .idle && !(requested || moving) { return }
+        if state == .idle || state == .stopping {
+            if requested || moving {
+                turn(toward: heading.facing, seconds: dt)
+                elapsed = 0
+                if state == .stopping {
+                    // Re-order while the feet are still closing: keep striding, no new start.
+                    state = .walking; distance += travelled
+                    frame = timing.frame(at: distance, facing: facing)
+                    return
                 }
+                // Standing: step off over the first two pose-distances of real travel.
+                state = .starting; startTravel = travelled
+                frame = plan.startFrames[startTravel < poseDistance ? 0 : 1]
+                if startTravel >= poseDistance * 2 { enterWalk(plan, carry: startTravel - poseDistance * 2) }
+                return
             }
-        case .stopping:
+            // Finish any wide turn while the feet close, then stand facing the heading.
+            turn(toward: heading.facing, seconds: dt)
             elapsed += dt
-            if elapsed + 0.000000001 < duration * 2 { frame = plan.stopFrames[min(1, Int((elapsed + 0.000000001) / duration))] }
-            else { state = .idle; distance = 0; frame = 0; elapsed = 0 }
+            if elapsed + 0.000000001 < Self.stopHold * 2 {
+                frame = plan.stopFrames[min(1, Int((elapsed + 0.000000001) / Self.stopHold))]
+            } else { state = .idle; distance = 0; frame = 0; elapsed = 0; facing = heading.facing; turnClock = Self.turnStep }
+            return
         }
+        turn(toward: heading.facing, seconds: dt)
+        if !requested && !moving { beginStop(plan); return }
+        switch state {
+        case .starting:
+            startTravel += travelled
+            if startTravel >= poseDistance * 2 { enterWalk(plan, carry: startTravel - poseDistance * 2) }
+            else { frame = plan.startFrames[startTravel < poseDistance ? 0 : 1] }
+        default:
+            state = .walking
+            distance += travelled
+            frame = timing.frame(at: distance, facing: facing)
+        }
+    }
+
+    /// The first walk pose is this direction's ORIGINAL walk01 (its entry phase).
+    private mutating func enterWalk(_ plan: Plan, carry: CGFloat) {
+        state = .walking
+        distance = timing.poseStart(facing: facing, pose: plan.directions[facing].entryPhase) + carry
+        frame = timing.frame(at: distance, facing: facing)
     }
 }
