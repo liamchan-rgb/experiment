@@ -21,6 +21,7 @@ final class GameScene: SKScene {
             let cleared=node.rewardCompleted || ((node.kind == .combat || node.kind == .boss) && !campaign.engine.state.units.values.contains{$0.kind == .monster && $0.nodeID==id && $0.isAlive})
             discoveryNodes[index].children.compactMap{$0 as? SKLabelNode}.first?.text=cleared ? "✓":["combat":"战","boss":"首","reward":"奖","empty":"空"][node.kind.rawValue]
         }
+        refreshCampaignRoute()
         updateActors(before:nil)
     }
 
@@ -75,6 +76,29 @@ final class GameScene: SKScene {
     var onDiscovery: ((String) -> Void)?
     private let selectionRing = SKShapeNode(ellipseOf: CGSize(width: 30, height: 12))
     private let destinationRing = SKShapeNode(ellipseOf: CGSize(width: 25, height: 10))
+    private let campaignRoute = SKShapeNode()
+
+    private func refreshCampaignRoute() {
+        guard world != nil else{return}
+        guard let route=campaign?.routeReadout,let end=route.points.last,!route.arrived else{
+            campaignRoute.isHidden=true;destinationRing.isHidden=true;return
+        }
+        let path=CGMutablePath()
+        for (index,p) in route.points.enumerated() {
+            let point=LivingWorld.position(CGPoint(x:p.x,y:p.y))
+            if index==0{path.move(to:point)}else{path.addLine(to:point)}
+        }
+        campaignRoute.path=path;campaignRoute.isHidden=false
+        destinationRing.position=LivingWorld.position(CGPoint(x:end.x,y:end.y));destinationRing.isHidden=false
+    }
+    func travelCampaign(to node:Int) {
+        guard let campaign else{return}
+        do {
+            let plan=try campaign.beginTravel(to:node,actor:selectedCampaignPlayerID)
+            onCampaignEncounterSelected?(node);refreshCampaignRoute()
+            onDiscovery?(plan.message);onPlaybackChanged?(true);onCampaignChanged?()
+        }catch{onCampaignError?(error.localizedDescription)}
+    }
     private let reviewMode = ProcessInfo.processInfo.arguments.contains("-visualReview")
     private let demoMode = ProcessInfo.processInfo.arguments.contains("-visualDemo")
 
@@ -180,6 +204,9 @@ final class GameScene: SKScene {
         destinationRing.zPosition = 67
         destinationRing.isHidden = true
         world.addChild(destinationRing)
+        campaignRoute.strokeColor=SKColor(red:1,green:0.85,blue:0.42,alpha:0.65)
+        campaignRoute.lineWidth=2;campaignRoute.glowWidth=0;campaignRoute.zPosition=64
+        campaignRoute.isHidden=true;world.addChild(campaignRoute)
     }
 
     private func buildActors() {
@@ -438,9 +465,8 @@ final class GameScene: SKScene {
                     }
                 } catch {campaign.pauseAfterFailure();onCampaignError?(error.localizedDescription)}
             }
-            destinationRing.isHidden=campaign.travel==nil
             updateActors(before:previous,seconds:delta)
-            if (wasMoving || campaign.isMoving) && environmentTime-lastCampaignUIUpdate>=0.1 {lastCampaignUIUpdate=environmentTime;onCampaignChanged?()}
+            if (wasMoving || campaign.isMoving) && environmentTime-lastCampaignUIUpdate>=0.1 {lastCampaignUIUpdate=environmentTime;refreshCampaignRoute();onCampaignChanged?()}
             if wasMoving && !campaign.isMoving && campaign.travel != nil && campaign.movementRemaining<=0.000001{onCampaignError?("移动条耗尽，点击补充移动后可继续原路线。")}
             if wasMoving != campaign.isMoving {onPlaybackChanged?(campaign.isMoving);onCampaignChanged?()}
         } else {
@@ -545,12 +571,12 @@ final class GameScene: SKScene {
                 onCampaignEncounterSelected?(target)
                 if campaign.isCompleted{onDiscovery?("行程已结算，可查看结果或返回设置");return}
                 if campaign.travel==nil && campaign.engine.state.units[actor]?.nodeID==target{onCampaignInteractionRequested?(target);return}
-                do{let plan=try campaign.beginTravel(to:target,actor:actor);let p=campaign.point(at:target);destinationRing.position=LivingWorld.position(CGPoint(x:p.x,y:p.y));destinationRing.isHidden=false;onDiscovery?(plan.message);onPlaybackChanged?(true);onCampaignChanged?()}catch{onCampaignError?(error.localizedDescription)}
+                travelCampaign(to:target)
             }else{
                 onCampaignEncounterSelected?(nil)
                 if campaign.isCompleted{onDiscovery?("行程已结算，可查看结果或返回设置");return}
                 if selectingCampaignNode{onDiscovery?("请点击需要编辑的建筑");return}
-                do{let plan=try campaign.beginTravel(toRoadPoint:.init(Double(point.x),Double(point.y)),actor:actor);destinationRing.position=LivingWorld.position(point);destinationRing.isHidden=false;onDiscovery?(plan.message);onPlaybackChanged?(true);onCampaignChanged?()}catch{onCampaignError?(error.localizedDescription)}
+                do{let plan=try campaign.beginTravel(toRoadPoint:.init(Double(point.x),Double(point.y)),actor:actor);refreshCampaignRoute();onDiscovery?(plan.message);onPlaybackChanged?(true);onCampaignChanged?()}catch{onCampaignError?(error.localizedDescription)}
             }
             return
         }

@@ -278,10 +278,10 @@ public final class MeadowCampaignSession {
         guard playerIDs.contains(id) else{throw GameError("成员不存在。")}
         var next=snapshot;next.selectedPlayerID=id;try writer.write(next)
     }
-    private func plannedTravel(node:Int?,point:MeadowWorldPoint?,actor:String)throws->(MeadowCampaignTravel,Double) {
+    func plannedTravel(node:Int?,point:MeadowWorldPoint?,actor:String,requireMovement:Bool=true)throws->(MeadowCampaignTravel,Double) {
         try requireOpenCampaign()
         guard engine.state.battle==nil,engine.state.phase == .exploration,let unit=engine.state.units[actor],unit.isAlive else{throw GameError("请先结束战斗并选择存活成员。")}
-        guard movementRemaining>0.000001 else{throw GameError("移动条已耗尽，请先补充移动。")}
+        guard !requireMovement || movementRemaining>0.000001 else{throw GameError("移动条已耗尽，请先补充移动。")}
         let actors=travel?.actors ?? engine.state.players.filter{$0.isAlive && $0.nodeID==unit.nodeID}.map(\.id)
         guard actors.contains(actor) else{throw GameError("请选择当前同行成员。")}
         var goals=[(Int,Int?,Double)]()

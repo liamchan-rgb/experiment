@@ -8,7 +8,19 @@ var c=MeadowMapConfiguration.suggested(total:args.count>1 ? Int(args[1]) ?? 10 :
 if args.count>3 { c.extraRoads=Int(args[3]) ?? 1 }
 let result=try MeadowMapGenerator.generate(c)
 let encoder=JSONEncoder(); encoder.outputFormatting=[.sortedKeys,.prettyPrinted]
-if args.contains("--balance") {
+if args.contains("--guidance") {
+    struct Report:Codable {
+        let options:[MeadowRouteOption],resources:String
+        let initialRoute:MeadowRouteReadout?,advancedRoute:MeadowRouteReadout?,restoredRoute:MeadowRouteReadout?
+    }
+    let session=try MeadowCampaignSession.new(layout:result),options=session.routeOptions()
+    let resources=session.resourceGuidance
+    if let target=options.max(by:{$0.distance<$1.distance}){try session.beginTravel(to:target.nodeID)}
+    let initial=session.routeReadout
+    try session.advanceTravel(distance:17.25)
+    let advanced=session.routeReadout,restored=try MeadowCampaignSession(save:.decoded(session.snapshot.encoded()))
+    FileHandle.standardOutput.write(try encoder.encode(Report(options:options,resources:resources,initialRoute:initial,advancedRoute:advanced,restoredRoute:restored.routeReadout)))
+} else if args.contains("--balance") {
     struct Report:Codable {let provisions:MeadowProvisionPlan;let previews:[MeadowEncounterReadout]}
     let session=try MeadowCampaignSession.new(layout:result)
     let plan=try MeadowProvisioning.plan(layout:result,players:session.engine.state.players,catalog:session.engine.catalog)

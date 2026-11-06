@@ -11,9 +11,12 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
     private let campaignItems=MeadowPreviewPalette.button("行囊与装备")
     private let campaignBattle=MeadowPreviewPalette.button("继续战斗")
     private let campaignEdit=MeadowPreviewPalette.button("编辑地点")
-    private let campaignEnd=MeadowPreviewPalette.button("行程目标")
+    private let campaignEnd=MeadowPreviewPalette.button("路线与目标")
     private let campaignTeam=MeadowPreviewPalette.button("队伍与成员")
     private let campaignHUD=UIView()
+    private let campaignRoutePanel=UIView()
+    private let campaignRouteTitle=MeadowPreviewPalette.label("点击道路即时移动",size:17)
+    private let campaignRouteDetail=MeadowPreviewPalette.label("",size:14)
     private let campaignMovement=MeadowBattleResourceBar()
     private let campaignHealth=[MeadowBattleResourceBar(),MeadowBattleResourceBar()]
     private let campaignAP=[MeadowBattleActionPointsView(),MeadowBattleActionPointsView()]
@@ -321,17 +324,26 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
         randomMapButton.isHidden=battlePreviewActive || scene.gaitTest != nil
         if campaign != nil {
             let footer=view.bounds.height-max(inset.bottom,10)-44
-            campaignHUD.frame=CGRect(x:view.bounds.width-max(inset.right,10)-344,y:footer-188,width:334,height:136)
-            campaignMovement.frame=CGRect(x:8,y:5,width:318,height:42)
-            for i in 0..<2 {campaignHealth[i].frame=CGRect(x:8,y:CGFloat(i)*40+53,width:318,height:36);campaignAP[i].isHidden=true}
             let controlsX=max(inset.left,10)+4,controlsRight=view.bounds.width-max(inset.right,10)-8,gap:CGFloat=6
+            let hudWidth=min(334,(controlsRight-controlsX)*0.42)
+            campaignHUD.frame=CGRect(x:controlsRight-hudWidth,y:footer-188,width:hudWidth,height:136)
+            campaignMovement.frame=CGRect(x:8,y:5,width:hudWidth-16,height:42)
+            for i in 0..<2 {campaignHealth[i].frame=CGRect(x:8,y:CGFloat(i)*40+53,width:hudWidth-16,height:36);campaignAP[i].isHidden=true}
             let buttonWidth=max(1,(controlsRight-controlsX-gap*3)/4),buttonY=footer-46
             campaignRefill.frame=CGRect(x:controlsX,y:buttonY,width:buttonWidth,height:38)
             campaignItems.frame=CGRect(x:controlsX+buttonWidth+gap,y:buttonY,width:buttonWidth,height:38)
             campaignBattle.frame=CGRect(x:controlsX+(buttonWidth+gap)*2,y:buttonY,width:buttonWidth,height:38)
             campaignEdit.frame=CGRect(x:controlsX+(buttonWidth+gap)*3,y:buttonY,width:buttonWidth,height:38)
-            let previewTop=top+button+10
-            encounterPreview.frame=CGRect(x:controlsX,y:previewTop,width:min(430,controlsRight-controlsX),height:max(120,min(encounterPreview.preferredHeight,buttonY-previewTop-8)))
+            let compact=view.bounds.height<430
+            let routeTop=top+button+10,routeHeight:CGFloat=compact ? 78:56
+            let leftWidth=min(430,max(180,campaignHUD.frame.minX-controlsX-8))
+            campaignRoutePanel.frame=CGRect(x:controlsX,y:routeTop,width:compact ? leftWidth:controlsRight-controlsX,height:routeHeight)
+            campaignRouteTitle.frame=CGRect(x:12,y:3,width:campaignRoutePanel.bounds.width-24,height:24)
+            campaignRouteDetail.frame=CGRect(x:12,y:26,width:campaignRoutePanel.bounds.width-24,height:routeHeight-28)
+            campaignRouteDetail.numberOfLines=compact ? 3:1
+            campaignRoutePanel.isHidden=battlePreviewActive || (compact && !encounterPreview.isHidden)
+            let previewTop=compact ? routeTop:campaignRoutePanel.frame.maxY+6
+            encounterPreview.frame=CGRect(x:controlsX,y:previewTop,width:leftWidth,height:max(120,min(encounterPreview.preferredHeight,buttonY-previewTop-8)))
         }
         let summaryMaxX=campaign == nil ? view.bounds.width-max(inset.right,10)-8:campaignEdit.frame.minX-8
         randomMapSummary.frame=CGRect(x:randomMapButton.frame.maxX+8,y:randomMapButton.frame.minY,
@@ -770,6 +782,12 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
 
     private func configureCampaignControls() {
         MeadowPreviewPalette.stylePanel(campaignHUD);view.addSubview(campaignHUD)
+        MeadowPreviewPalette.stylePanel(campaignRoutePanel);view.addSubview(campaignRoutePanel)
+        campaignRoutePanel.isUserInteractionEnabled=false
+        campaignRoutePanel.addSubview(campaignRouteTitle);campaignRoutePanel.addSubview(campaignRouteDetail)
+        campaignRouteTitle.accessibilityIdentifier="campaignRouteDestination"
+        campaignRouteDetail.accessibilityIdentifier="campaignRouteResources"
+        for label in [campaignRouteTitle,campaignRouteDetail]{label.adjustsFontSizeToFitWidth=true;label.minimumScaleFactor=0.8}
         campaignHUD.addSubview(campaignMovement)
         for i in 0..<2 {campaignHUD.addSubview(campaignHealth[i]);campaignHUD.addSubview(campaignAP[i])}
         for b in [campaignRefill,campaignItems,campaignBattle,campaignEdit,campaignTeam,campaignEnd] {view.addSubview(b)}
@@ -941,6 +959,11 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
         previewEncounterNode=id;refreshEncounterPreview();view.setNeedsLayout()
     }
     private func refreshEncounterPreview(){
+        let wasHidden=encounterPreview.isHidden
+        defer{
+            campaignRoutePanel.isHidden=battlePreviewActive || (view.bounds.height<430 && !encounterPreview.isHidden)
+            if wasHidden != encounterPreview.isHidden{view.setNeedsLayout()}
+        }
         guard let campaign,let id=previewEncounterNode,!battlePreviewActive,campaign.engine.state.battle==nil,!scene.selectingCampaignNode,
               let value=try? campaign.encounterPreview(node:id,actor:scene.selectedCampaignPlayerID) else{encounterPreview.isHidden=true;return}
         encounterPreview.show(value,completed:campaign.isCompleted);encounterPreview.isHidden=false
@@ -958,8 +981,17 @@ private func refreshCampaignStatus(allowBattleOpen:Bool=true) {
         let eventAvailable=node.map{n in n.kind == .reward ? !n.rewardCompleted:((n.kind == .combat || n.kind == .boss) && state.units.values.contains{$0.kind == .monster && $0.nodeID==n.id && $0.isAlive})} ?? false
         campaignBattle.configuration?.title=state.battle != nil ? "继续战斗":(eventAvailable ? "交互地点":"暂无事件")
         campaignBattle.isHidden=battlePreviewActive;campaignBattle.isEnabled = !campaign.isCompleted && (state.battle != nil || (!busy && eventAvailable))
-        campaignMovement.show("移动 · 行动上限均值×50",value:Int(ceil(campaign.movementRemaining)),maximum:max(1,Int(ceil(campaign.movementCapacity))),color:.systemYellow)
-        for view in [campaignHUD,campaignRefill,campaignItems,campaignEdit,campaignTeam,campaignEnd,randomMapSummary] {view.isHidden=battlePreviewActive}
+        campaignMovement.show("地图移动",value:Int(ceil(campaign.movementRemaining)),maximum:max(1,Int(ceil(campaign.movementCapacity))),color:.systemYellow)
+        for view in [campaignHUD,campaignRoutePanel,campaignRefill,campaignItems,campaignEdit,campaignTeam,campaignEnd,randomMapSummary] {view.isHidden=battlePreviewActive}
+        if let route=campaign.routeReadout {
+            campaignRouteTitle.text=route.title;campaignRouteDetail.text=route.detail
+            campaignRouteDetail.textColor=route.additionalCoins>0 ? MeadowPreviewPalette.gold:MeadowPreviewPalette.ink
+        }else{
+            campaignRouteTitle.text=campaign.isCompleted ? "行程已结算":campaign.completionProgress
+            let supplies=state.map.nodes.filter{$0.kind == .reward && !$0.rewardCompleted}.count
+            campaignRouteDetail.text=campaign.isCompleted ? "可查看结算，或返回设置开始新行程":"剩余补给 \(supplies)处 · 全队金币 \(campaign.partyCoins) · 点击道路移动，抵达后主动交互"
+            campaignRouteDetail.textColor=MeadowPreviewPalette.ink
+        }
         playButton.isHidden=battlePreviewActive || !campaign.hasPendingTravel;resetButton.isHidden=true
         playButton.isPlaying=campaign.isMoving
         for i in players.indices {
@@ -967,7 +999,7 @@ private func refreshCampaignStatus(allowBattleOpen:Bool=true) {
             campaignHealth[i].show(u.id.uppercased()+" · 行动上限 \(stats.maximumAP)",value:u.health,maximum:stats.maximumHealth,color:.systemGreen)
             campaignAP[i].show(value:u.ap,maximum:max(u.ap,stats.baseAP))
         }
-        campaignEnd.configuration?.title=campaign.isCompleted ? "查看结算":((campaign.canComplete || campaign.canCompleteDefeat) ? "结束并结算":"行程目标")
+        campaignEnd.configuration?.title=campaign.isCompleted ? "查看结算":"路线与目标"
         if campaign.isCompleted{randomMapSummary.text="行程已结算 · 可查看结果或返回设置"}
         refreshEncounterPreview()
         if ready,allowBattleOpen,state.battle != nil,players.contains(where: \.isAlive),!battlePreviewActive {setBattlePreviewActive(true)}
@@ -975,6 +1007,28 @@ private func refreshCampaignStatus(allowBattleOpen:Bool=true) {
     private func showCampaignEnd(){
         guard let campaign else{return}
         if campaign.isCompleted{showCampaignResults();return}
+        let menu=UIAlertController(title:"路线与目标",message:campaign.completionProgress+"\n\n"+campaign.resourceGuidance+"\n\n路线按当前真实位置计算，不预支途中补给。地点事件由你主动触发。",preferredStyle:.actionSheet)
+        for option in campaign.routeOptions(actor:scene.selectedCampaignPlayerID) {
+            let prefix=option.kind=="supply" ? "最近补给 · ":option.kind=="encounter" ? "最近待战 · ":"返回"
+            menu.addAction(UIAlertAction(title:prefix+option.title,style:.default){[weak self] _ in
+                guard let self else{return}
+                if campaign.movementRemaining<=0.000001{self.refillCampaign();return}
+                self.cancelNodeSelection()
+                self.scene.travelCampaign(to:option.nodeID)
+            })
+        }
+        if campaign.movementRefillCost>0 && !campaign.isMoving && campaign.engine.state.battle==nil {
+            menu.addAction(UIAlertAction(title:"购买移动 / 手动补满",style:.default){[weak self] _ in self?.refillCampaign()})
+        }
+        if campaign.canComplete || campaign.canCompleteDefeat {
+            menu.addAction(UIAlertAction(title:"结束并结算",style:.default){[weak self] _ in self?.confirmCampaignEnd()})
+        }
+        menu.addAction(UIAlertAction(title:"关闭",style:.cancel))
+        menu.popoverPresentationController?.sourceView=campaignEnd;menu.popoverPresentationController?.sourceRect=campaignEnd.bounds
+        present(menu,animated:true)
+    }
+    private func confirmCampaignEnd(){
+        guard let campaign else{return}
         guard campaign.canComplete || campaign.canCompleteDefeat else{
             let alert=UIAlertController(title:"行程目标",message:campaign.completionProgress+"\n奖励节点可自行选择是否领取。",preferredStyle:.alert);alert.addAction(UIAlertAction(title:"继续行程",style:.default));present(alert,animated:true);return
         }
