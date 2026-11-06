@@ -1,0 +1,45 @@
+[
+  {
+    "band" : "deep",
+    "distance" : 1123.6967070028654,
+    "nodeID" : 1,
+    "templates" : [
+      "wolf",
+      "goblinArcher"
+    ]
+  },
+  {
+    "band" : "opening",
+    "distance" : 242.7078547368095,
+    "nodeID" : 2,
+    "templates" : [
+      "slime"
+    ]
+  },
+  {
+    "band" : "boss",
+    "distance" : 1320.6722675037688,
+    "nodeID" : 4,
+    "templates" : [
+      "ruinDragon"
+    ]
+  },
+  {
+    "band" : "middle",
+    "distance" : 939.2242527656789,
+    "nodeID" : 6,
+    "templates" : [
+      "goblinArcher"
+    ]
+  },
+  {
+    "band" : "deep",
+    "distance" : 1286.4463890854436,
+    "nodeID" : 9,
+    "templates" : [
+      "slime",
+      "wolf",
+      "goblinArcher"
+    ]
+  }
+]

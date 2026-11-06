@@ -1,3 +1,9 @@
+## Build85 · 正式随机怪物遭遇 · 1.6.58
+
+[直接下载 IPA](https://raw.githubusercontent.com/liamchan-rgb/experiment/974d0e5d26fccd60fb13cf0c9d350b0452d62e97/Downloads/MeadowJourney-b85.ipa) · [包检](../Media/Build85/verification.json)
+
+新行程普通地点按最短道路距离分层，1—3只原正式怪物；首领投放巨魔/魔龙。生成预览列出实际组合，旧存档与手动编辑不重排。226纯测试、四组回归、设备Release与公开完整GET通过；未运行App/模拟器/实机。本轮复用Build84美术/动作，数值及资源平衡留下一项。
+
 ## Build84 · 六种怪物与动作检视 · 1.6.57
 
 [直接下载 IPA](https://raw.githubusercontent.com/liamchan-rgb/experiment/e57c23e96c94d7b10f1b1538eaa1256f99d7a553/Downloads/MeadowJourney-b84.ipa) · [正常动图](https://raw.githubusercontent.com/liamchan-rgb/experiment/7734f149fd326ff03eba2a5a6c1feac57c5a59cb/Art/Review/Battle/bestiary-v1/bestiary-normal.gif) · [包检](../Media/Build84/verification.json)
