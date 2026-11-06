@@ -34,3 +34,11 @@
 （`Vendor/ClassroomGameCore` 的 ClassroomGameCore / MeadowWorldSupport / MeadowBattleSupport）、5 个 UI/战斗源文件和版本号 1.6.62/89 一并抹掉，
 导致 CI 报 `no such module 'ClassroomGameCore'`。已恢复为基础分支的工程文件，只手工追加本分支 3 个新文件（HeroBreathing.swift、MeadowPostProcess.swift/.metal），
 ID 与生成脚本算法一致。**本分支此后不再运行 generate-project.py**，新增文件一律手工追加。
+
+## 4 · 五官/性别自定义 第 1 步：拆头 + 运行时合成器（2026-11-06，待 CI）
+
+- 先验证：60 张 P1 地图图集全部能由分层部件逐像素重现（30 种装备状态 × 2）。
+- `scripts/build-p1-head-split.py` 生成 20 个身体状态的 under/body 页、20 张头部部件页和清单 dataset（约 +14 MB PNG）；
+  拆分后用原头重叠与原图集最大差 1 个色阶、997 像素；3,120 格手均不压头；头部件与装备无关。记录见 `Art/Integration/P1-head-split-v1/`。
+- 新增 `P1AppearanceCompositor.swift`（CoreGraphics 叠图，格式同原图集）与 `Tests/P1AppearanceCompositorTests.swift`（全 60 张对比、换头只改头部像素）。
+- 本步不接入游戏显示；工程文件手工追加 2 个源文件，未运行生成脚本。
