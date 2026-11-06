@@ -1,3 +1,9 @@
+## Build93 · 组队资源与行程收尾 · 1.6.66
+
+[直接下载 IPA](https://raw.githubusercontent.com/liamchan-rgb/experiment/419c106fba8292e3c87358720e0ae506dd5a0b2f/Downloads/MeadowJourney-b93.ipa) · [说明](../docs/planning/random-map-v1/build93-party-journey-wrap.md) · [包检](../Media/Build93/verification.json)
+
+实际施法者/目标/个人行动、库存与技能次数提示；道具菜单查看双方资源。行程结束指引含返营路费与金币不足方案；结果页显示最终个人状态。281测试、四专项、78组规则行程、设备Release与公开完整GET通过。未运行App/模拟器/实机。美术缺口只标注，清单见任务说明。
+
 ## Build92 · 双人职业配置 · 1.6.65
 
 [直接下载 IPA](https://raw.githubusercontent.com/liamchan-rgb/experiment/5d321900bcd3687a5fc4b33b5c92d57515cd8b4b/Downloads/MeadowJourney-b92.ipa) · [入口与验证说明](../docs/planning/random-map-v1/build92-party-configuration.md) · [包检](../Media/Build92/verification.json)
