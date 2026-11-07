@@ -196,7 +196,7 @@ for sid in sel:
         draw(buf, procfx.GENERATORS[sid](t, geo))
         buf = bloom(buf)
         frames.append(Image.fromarray(np.clip(buf, 0, 255).astype(np.uint8)).crop(CROP))
-    im = [f.resize((f.width * 2 // 3, f.height * 2 // 3), Image.LANCZOS).quantize(256, method=Image.Quantize.MEDIANCUT, dither=Image.Dither.NONE) for f in frames]
+    im = [f.resize((f.width * 3 // 5, f.height * 3 // 5), Image.LANCZOS).quantize(256, method=Image.Quantize.MEDIANCUT, dither=Image.Dither.NONE) for f in frames]
     im[0].save(OUT / f'{sid}-procedural.gif', save_all=True, append_images=im[1:], duration=25, loop=0, optimize=True)
     pk = int(max(procfx.SPEC[sid][1], .5) * FPS) + 3
     frames[min(len(frames) - 1, pk)].save(OUT / f'{sid}-procedural-peak.png')
