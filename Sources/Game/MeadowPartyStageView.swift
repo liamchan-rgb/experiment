@@ -37,6 +37,9 @@ final class MeadowPartyStageView:UIView {
     private var victoryAt:Double?
     private var poseKeys:[String:String]=[:]
     private var messages:[MeadowPartyMessage]=[]
+    /// Presentation-only hit feel (see MeadowBattleHitFeel): per struck monster, and the latest blow for the camera.
+    private var hitFeel:[String:MeadowPartyHitEvent]=[:]
+    private var kickFeel:(at:Double,tier:MeadowBattleHitTier,direction:Double)?
     private var emissions:[MeadowBattleLightEmission]=[]
     private var skillVFX:[MeadowPartySkillVFXEvent]=[]
     private struct PendingStatusCue {
@@ -91,7 +94,7 @@ final class MeadowPartyStageView:UIView {
     }
     required init?(coder:NSCoder) { fatalError("init(coder:) has not been implemented") }
     @objc private func tapped(_ r:UITapGestureRecognizer) { if !isPlaying,let id=r.view?.accessibilityIdentifier { onChoose?(id) } }
-    func start() { MeadowBattleVFXAssets.prewarm();victoryAt=nil;sceneTime=0;recovery=[:];recoveryTier=[:];formation=[:];birth=[:];contact=[:];broken=[:];deaths=[:];hurt=[:];messages=[];emissions=[];skillVFX=[];pendingStatusCues=[];statusSnapshots=[:];poseKeys=[:];fallen=[:];diceAction=nil;diceConfirmedAt=nil;diceView.confirmationAge=nil;diceView.dice=[];diceSettledAt=nil;diceExitAt=nil;dimFrom=0;dimTarget=0;clock.start() }
+    func start() { MeadowBattleVFXAssets.prewarm();victoryAt=nil;sceneTime=0;recovery=[:];recoveryTier=[:];formation=[:];birth=[:];contact=[:];broken=[:];deaths=[:];hurt=[:];hitFeel=[:];kickFeel=nil;messages=[];emissions=[];skillVFX=[];pendingStatusCues=[];statusSnapshots=[:];poseKeys=[:];fallen=[:];diceAction=nil;diceConfirmedAt=nil;diceView.confirmationAge=nil;diceView.dice=[];diceSettledAt=nil;diceExitAt=nil;dimFrom=0;dimTarget=0;clock.start() }
     func stop() { MeadowMonsterFrames.retain([]);clock.stop();intent=nil;impact=nil;completion=nil;focus=nil;skillVFX=[];pendingStatusCues=[];statusSnapshots=[:] }
     func displayedVitals(for unitID:String,health:Int,shield:Int)->(health:Int,shield:Int) { statusSnapshots[unitID] ?? (health,shield) }
     func show(_ value:GameState,friend:String,foe:String,current:String?,catalog:GameCatalog) {
@@ -123,6 +126,7 @@ final class MeadowPartyStageView:UIView {
         } else { diceExitAt=sceneTime }
     }
     func play(_ value:PartyIntent,before:GameState,confirmed:OperationReceipt?,onImpact:@escaping ()->OperationReceipt?,completion:@escaping ()->Void) {
+        if value.action.isOffensive { MeadowBattleHaptics.prepare() }
         castDim=previewDarkness();dimFrom=0;dimTarget=0;dimChangedAt=sceneTime
         if let actor=before.units[value.actor],let target=before.units[value.target],let catalog {
             if diceAction != value.action || diceActor != value.actor { diceVisibleAt=sceneTime }
@@ -150,6 +154,8 @@ final class MeadowPartyStageView:UIView {
         guard window != nil,!isHidden else { clock.stop();return }
         sceneTime += delta
         emissions.removeAll { sceneTime-$0.startedAt>3 };messages.removeAll { sceneTime-$0.at>1.0 }
+        hitFeel=hitFeel.filter { sceneTime-$0.value.at<1.0 }
+        if let k=kickFeel,sceneTime-k.at>=1.0 { kickFeel=nil }
         skillVFX.removeAll { sceneTime-$0.startedAt>$0.spec.duration }
         let due=pendingStatusCues.filter { $0.at<=sceneTime+1e-9 }
         if !due.isEmpty {
@@ -174,6 +180,8 @@ final class MeadowPartyStageView:UIView {
         if let actor=receipt.before.units[intent.actor],let target=receipt.before.units[intent.target],let catalog {
             diceView.dice=BattleDice.channels(intent.action,actor:actor,target:target,catalog:catalog,receipt:receipt,sourceSkillID:intent.sourceSkillID);diceSettledAt=sceneTime
         }
+        let plainAttack = !intent.enemy && intent.action.visual == "attack" && intent.action.skillVFX == nil
+        var strongestHit=0,killedAny=false,blockedAny=false
         for id in renderIDs {
             guard let before=receipt.before.units[id],let after=receipt.after.units[id],let foot=PartyVisual.foot(id) else { continue }
             let heal=max(0,after.health-before.health),damage=max(0,before.health-after.health),gain=max(0,after.shield-before.shield),absorbed=max(0,before.shield-after.shield)
@@ -198,7 +206,12 @@ final class MeadowPartyStageView:UIView {
             if damage>0 || absorbed>0 {
                 hurt[id]=sceneTime
                 let hit=PartyVisual.hitPoint(target:id,shielded:absorbed>0,weaponID:intent.weaponID,templateID:before.templateID)
-                messages.append(.init(text:damage>0 ? "−\(damage)":"格挡",point:CGPoint(x:hit.x,y:hit.y),at:sceneTime,color:damage>0 ? .white:.systemCyan,atImpact:true))
+                let killedHere=before.isAlive && !after.isAlive
+                let hitTier=MeadowBattleHitTier.classify(damage:damage,killed:killedHere)
+                if damage>0 { strongestHit=max(strongestHit,damage);if killedHere { killedAny=true } } else { blockedAny=true }
+                let popsHere=plainAttack && damage>0 && id.hasPrefix("m")
+                if popsHere { hitFeel[id]=MeadowPartyHitEvent(at:sceneTime,tier:hitTier,direction:1,point:CGPoint(x:hit.x,y:hit.y),footX:CGFloat(foot.x),floorY:CGFloat(foot.y)) }
+                messages.append(.init(text:damage>0 ? "−\(damage)":"格挡",point:CGPoint(x:hit.x,y:hit.y),at:sceneTime,color:damage>0 ? .white:.systemCyan,atImpact:true,hitTier:popsHere ? hitTier:nil))
                 let p=CGPoint(x:hit.x,y:hit.y)
                 if absorbed>0 || intent.action.skillVFX == nil { emissions.append(.init(kind:absorbed>0 ? .shieldContact:.strike,startedAt:sceneTime,x:Double(p.x),y:Double(p.y),groundY:foot.y)) }
             }
@@ -206,6 +219,11 @@ final class MeadowPartyStageView:UIView {
             if before.isAlive && !after.isAlive && after.kind == .monster { deaths[id]=sceneTime;emissions.append(.init(kind:.death,startedAt:sceneTime,x:registered.x,y:registered.y,groundY:foot.y)) }
             if before.isAlive && !after.isAlive && after.kind == .player { recovery[id]=nil;recoveryTier[id]=nil;fallen[id]=sceneTime }
         }
+        if strongestHit>0 {
+            let tier=MeadowBattleHitTier.classify(damage:strongestHit,killed:killedAny)
+            MeadowBattleHaptics.hit(tier,killed:killedAny)
+            if intent.action.visual == "attack" && intent.action.skillVFX == nil { kickFeel=(sceneTime,tier,intent.enemy ? -1:1) }
+        } else if blockedAny { MeadowBattleHaptics.blocked() }
         onPresentationChanged?()
     }
     private func revealStatusCue(_ cue:PendingStatusCue) {
@@ -281,7 +299,8 @@ final class MeadowPartyStageView:UIView {
                     view.isHidden=false
                     let attacking=intent?.actor==id && intent?.action.isOffensive==true
                     let casting=intent?.actor==id && intent?.action.isOffensive==false
-                    let motion=PartyVisual.monster(time:sceneTime+(PartyVisual.slot(id)=="m2" ? 0.7:0),attackAge:attacking ? age:nil,hurtAge:hurt[id].map { sceneTime-$0 },preparing:current==id && intent==nil)
+                    let feelActive=hitFeel[id].map { sceneTime-$0.at<0.9 } ?? false
+                    let motion=PartyVisual.monster(time:sceneTime+(PartyVisual.slot(id)=="m2" ? 0.7:0),attackAge:attacking ? age:nil,hurtAge:feelActive ? nil:hurt[id].map { sceneTime-$0 },preparing:current==id && intent==nil)
                     let p=motion.progress
                     if let species {
                         let index=species.frame(time:sceneTime+Double(PartyVisual.slot(id)=="m2" ? 1:0),attackAge:attacking ? age:nil,castAge:casting ? age:nil,hurtAge:hurt[id].map{sceneTime-$0},preparing:current==id && intent==nil)
@@ -300,10 +319,19 @@ final class MeadowPartyStageView:UIView {
                     winds[id]?.isHidden=true;shadows[id]?.alpha=1
                     monsterFlash[id]?.frame=view.frame;monsterFlash[id]?.alpha=motion.flash;monsterFlash[id]?.layer.zPosition=view.layer.zPosition+1
                 }
+                var shadowShift:CGFloat=0
+                if deaths[id]==nil,let h=hitFeel[id],sceneTime-h.at<0.9 {
+                    let a=sceneTime-h.at,sq=MeadowBattleHitFeel.squash(age:a,tier:h.tier)
+                    shadowShift=CGFloat(MeadowBattleHitFeel.knockback(age:a,tier:h.tier,canvasWidth:PartyVisual.width))
+                    let f=view.frame,footX=f.minX+f.width*178.5/384,footY=f.minY+f.height*240/256
+                    let w=f.width*CGFloat(sq.x),hgt=f.height*CGFloat(sq.y)
+                    view.frame=CGRect(x:footX-w*178.5/384+shadowShift,y:footY-hgt*240/256,width:w,height:hgt)
+                    monsterFlash[id]?.frame=view.frame;monsterFlash[id]?.alpha=CGFloat(0.45*MeadowBattleHitFeel.flash(age:a))
+                }
                 attached[id]?.frame=CGRect(x:foot.x-192*s,y:foot.y-321*s,width:384*s,height:384*s)
                 attached[id]?.layer.zPosition=view.layer.zPosition+2
                 attached[id]?.update(shield:unit.isAlive ? shownVitals.shield:0,preview:0,time:sceneTime,formation:shownVitals.shield==0 ? formation[id].flatMap{sceneTime-$0<1.0 ? sceneTime-$0:nil}:nil,formationBase:0,birth:birth[id].map{sceneTime-$0},contact:contact[id].map{sceneTime-$0},broken:broken[id].map{sceneTime-$0},recovery:nil,recoveryTier:nil)
-                shadows[id]?.spriteFrame=species == nil ? view.frame:baseFrame
+                shadows[id]?.spriteFrame=species == nil ? view.frame:baseFrame.offsetBy(dx:shadowShift,dy:0)
                 labels[id]?.frame=CGRect(x:f.x-84,y:f.y-(species == nil ? 256*Double(s)+34:224*Double(s)+46),width:168,height:44)
             }
         }
@@ -331,11 +359,20 @@ final class MeadowPartyStageView:UIView {
         if let intent,(intent.action.isRune || intent.action == .dragonFlame),let catalog {
             fx.runes=SpellbladeEffects.sample(action:intent.action,age:age,actor:intent.actor,target:intent.target,recipients:SpellbladeEffects.recipients(intent,catalog:catalog),weaponID:intent.weaponID,targets:intent.targets,templates:state.units.mapValues(\.templateID))
         } else { fx.runes=nil }
+        fx.hits=Array(hitFeel.values)
+        var kick=MeadowBattleHitFeel.Camera.zero
+        if let k=kickFeel,sceneTime-k.at<0.9,!UIAccessibility.isReduceMotionEnabled { kick=MeadowBattleHitFeel.camera(age:sceneTime-k.at,tier:k.tier,direction:k.direction) }
+        let worldScale=bounds.width/1000,layoutUnit=bounds.width/760
+        var worldTransform=CGAffineTransform(translationX:CGFloat(kick.dx)*layoutUnit,y:CGFloat(kick.dy)*layoutUnit)
+        worldTransform=worldTransform.rotated(by:CGFloat(kick.rotation)).scaledBy(x:worldScale*(1+CGFloat(kick.zoom)),y:worldScale*(1+CGFloat(kick.zoom)))
+        world.transform=worldTransform
         fx.setNeedsDisplay()
     }
     override func layoutSubviews() { super.layoutSubviews();let scale=bounds.width/1000;world.center=CGPoint(x:bounds.midX,y:bounds.midY);world.transform=CGAffineTransform(scaleX:scale,y:scale) }
 }
-struct MeadowPartyMessage { let text:String;let point:CGPoint;let at:Double;let color:UIColor;var atImpact=false;var supportUnit:String?=nil;var supportLine=0 }
+struct MeadowPartyMessage { let text:String;let point:CGPoint;let at:Double;let color:UIColor;var atImpact=false;var supportUnit:String?=nil;var supportLine=0;var hitTier:MeadowBattleHitTier?=nil }
+/// One player blow on a monster, for the shared hit-feel graphics (world coordinates).
+struct MeadowPartyHitEvent { let at:Double;let tier:MeadowBattleHitTier;let direction:Double;let point:CGPoint;let footX:CGFloat;let floorY:CGFloat }
 struct MeadowPartySkillVFXEvent { let spec:PartySkillVFXSpec;let startedAt:Double;let center:PartyPoint;let groundY:Double }
 
 private final class MeadowPartyEffectsView:UIView {
@@ -349,6 +386,7 @@ private final class MeadowPartyEffectsView:UIView {
     var naturalTwenty=false
     var runes:RuneEffectSample?
     var particles:[MeadowBattleLightParticle]=[]
+    var hits:[MeadowPartyHitEvent]=[]
     var skillEffects:[MeadowPartySkillVFXEvent]=[]
     var recoveryLights:[(PartyPoint,Double)]=[]
     var monsterRecoveries:[(PartyPoint,HealingEffectTier,Double)]=[]
@@ -422,10 +460,16 @@ private final class MeadowPartyEffectsView:UIView {
             if visual=="attack",intent.action.skillVFX == nil,!intent.magical,let foot=PartyVisual.foot(intent.target) {
                 let a=age-(intent.enemy ? 0.46:1.048),p=hitPoint(intent.target,shielded:meetsShield,weaponID:intent.weaponID)
                 let power=PartyVisual.pulse(a,-0.035,0.035,0.52)
-                glow(p,140,140,power*0.48,.orange);glow(foot,170,30,power*0.65,.orange)
-                if a>=0,a<0.7 {
-                    sprite(MeadowBattleVFXAssets.burst,p,150+a*140,150+a*140,power)
-                    if !intent.enemy && !intent.ranged { sprite(MeadowBattleVFXAssets.heavyArc,p,210+a*240,210+a*240,power*0.9) }
+                if !intent.enemy && !hits.isEmpty {
+                    // Player blows use the sharp contact flare below; only a faint floor glow and the sweep arc stay.
+                    glow(foot,110,24,power*0.30,.orange)
+                    if a>=0,a<0.7,!intent.ranged { sprite(MeadowBattleVFXAssets.heavyArc,p,170+a*220,170+a*220,power*0.55) }
+                } else {
+                    glow(p,140,140,power*0.48,.orange);glow(foot,170,30,power*0.65,.orange)
+                    if a>=0,a<0.7 {
+                        sprite(MeadowBattleVFXAssets.burst,p,150+a*140,150+a*140,power)
+                        if !intent.enemy && !intent.ranged { sprite(MeadowBattleVFXAssets.heavyArc,p,210+a*240,210+a*240,power*0.9) }
+                    }
                 }
             }
             if visual=="ambush",let foot=PartyVisual.foot(intent.target) {
@@ -463,6 +507,11 @@ private final class MeadowPartyEffectsView:UIView {
             frames[lower].draw(in:rect,blendMode:.plusLighter,alpha:CGFloat(1-mix))
             if upper != lower,mix>0 { frames[upper].draw(in:rect,blendMode:.plusLighter,alpha:CGFloat(mix)) }
         }
+        for h in hits {
+            let a=time-h.at
+            glow(PartyPoint(Double(h.point.x),Double(h.point.y)),120,120,MeadowBattleHitFeel.flash(age:a)*0.55,UIColor(red:1,green:0.75,blue:0.27,alpha:1))
+            MeadowBattleHitFeelPainter.draw(in:ctx,age:a,tier:h.tier,direction:h.direction,impact:h.point,floorY:h.floorY,footX:h.footX,unit:MeadowBattleHitFeelPainter.partyStageUnit)
+        }
         if let runes { MeadowRuneEffectPainter.draw(runes,in:ctx) }
         var pools=0
         for p in particles {
@@ -477,6 +526,10 @@ private final class MeadowPartyEffectsView:UIView {
             image.draw(in:CGRect(x:-p.size/2,y:-p.size/3,width:p.size,height:p.size*0.67),blendMode:.plusLighter,alpha:CGFloat(p.alpha));ctx.restoreGState()
         }
         for m in messages {
+            if let tier=m.hitTier {
+                MeadowBattleHitFeelPainter.drawNumber(in:ctx,text:m.text,age:time-m.at,tier:tier,impact:m.point,unit:MeadowBattleHitFeelPainter.partyStageUnit)
+                continue
+            }
             let age=time-m.at,alpha=1-PartyVisual.smooth((age-0.65)/0.35)
             let attrs:[NSAttributedString.Key:Any]=[.font:MeadowPreviewPalette.font(24,.heavy),.foregroundColor:m.color.withAlphaComponent(CGFloat(alpha)),.strokeColor:UIColor.black.withAlphaComponent(CGFloat(alpha)),.strokeWidth:-3]
             let label=NSAttributedString(string:m.text,attributes:attrs),size=label.size()

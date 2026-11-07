@@ -147,3 +147,11 @@ ID 与生成脚本算法一致。**本分支此后不再运行 generate-project.
 - 保留作参考、不用于游戏：`scripts/p1-model-v3/`（含不要随手运行的 `bake.py`）、`scripts/p1-reskin/`（原画上皮原型）、`scripts/p1-pixel/`（规则画对比）及对应 `Art/Review`。
 - 路线结论仍如第 14 条；“原画上皮”可在之后需要新动作时重启。
 - 这一步让此前模拟器检查里“抬脚阴影深度”那条失败的原因（低模美术数据）消失；该测试预计恢复通过，等下一次设备/模拟器检查确认。
+
+## 16 · 战斗打击感第一批：移植到游戏（2026-11-07，用户认可预览）
+
+用户：“恢复手绘原图，打击感按预览移植”，震动要加、音效先不做。设计预览与参考公式见 `Art/Review/Battle/hit-feel-v1/`、`scripts/battle-hitfeel/hitfeel.py`。
+- 新增 `MeadowBattleHitFeel.swift`（纯 Swift 移植）、`MeadowBattleHitFeelPainter.swift`（绘制与震动），并用 golden 比对脚本 `scripts/check-battle-hitfeel.sh` 保证与 Python 参考一致（已加入 IPA 流程的纯逻辑检查步骤）。
+- 接入单人演练与小队战斗两条展示路径；规则、回执、骰子、AP 一律不动。
+- 工程文件由 `scripts/add-swift-source.py` 手工追加（不运行 generate-project.py）。
+- 没有 Swift 工具链、无法本地编译：纯 Swift 部分在云端先编译比对，UIKit 部分在设备归档时编译；效果须用户实机确认。

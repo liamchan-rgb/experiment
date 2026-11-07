@@ -1,5 +1,6 @@
 name: Visual Refactor IPA
 # Device-only build for the visual-refactor branch. Never runs a simulator.
+# Pure Swift checks run first (walk controller, hit-feel port vs the Python reference), then the device archive.
 # Builds only when the pushed commit message contains "[ipa]", then publishes
 # the unsigned IPA as a pre-release so it has a direct .ipa link for SideStore.
 on:
@@ -31,6 +32,7 @@ jobs:
           mkdir -p build
           python3 scripts/validate-project.py
           bash scripts/check-modular-locomotion.sh build/modular-locomotion-trace.json
+          bash scripts/check-battle-hitfeel.sh
       - name: Archive device Release without signing
         run: |
           set -euo pipefail

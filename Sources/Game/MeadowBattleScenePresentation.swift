@@ -214,6 +214,10 @@ final class MeadowBattleEffectsView: UIView {
     var shieldBreakAge: Double?
     var deathAge: Double?
     var particles: [MeadowBattleLightParticle] = []
+    /// Presentation-only hit feel of the last blow (see `MeadowBattleHitFeel`).
+    var hitTier = MeadowBattleHitTier.medium
+    var hitDirection = 1.0
+    var hitFeel = false
     override init(frame: CGRect) { super.init(frame: frame); isOpaque = false; isUserInteractionEnabled = false }
     required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
     override func draw(_ rect: CGRect) {
@@ -260,13 +264,10 @@ final class MeadowBattleEffectsView: UIView {
                 light(CGPoint(x:impact.x+CGFloat(age)*90*unit,y:impact.y),115,95,0.18*(1-smooth(CGFloat(age/1.4))))
             }
 
-            light(CGPoint(x: impact.x+20*unit, y: enemyFoot.y), 235, 55, burst*0.76)
-            light(impact, 195, 190, burst*0.48)
+            // The sharp contact flare and sparks replace the old large bloom; only a small warm floor and hit glow remain.
+            light(CGPoint(x: impact.x+20*unit, y: enemyFoot.y), 220, 48, burst*0.30)
+            light(impact, 120, 120, CGFloat(impactAge.map { MeadowBattleHitFeel.flash(age: $0) } ?? 0)*0.55)
             light(heroFoot,95,32,(wardSpawn*0.28+wardContact*0.38),.cyan)
-            if let age=impactAge, age<0.5 {
-                let spread=1+CGFloat(max(0,age))*2
-                sprite(MeadowBattleVFXAssets.spray,CGPoint(x:impact.x+45*unit,y:enemyFoot.y-3*unit),260*spread,22+CGFloat(max(0,age))*70,burst*0.55)
-            }
             light(heroFoot, 90, 26, previewPower*previewEnvelope*0.16)
             return
         }
@@ -299,19 +300,13 @@ final class MeadowBattleEffectsView: UIView {
         if let age=impactAge, age<0.70 {
             let slash=pulse(age,-0.06,0,0.25)
             let spread=CGFloat(max(0,age))
-            if !rangedImpact { sprite(MeadowBattleVFXAssets.slash,impact,225,225,slash) }
+            if !rangedImpact { sprite(MeadowBattleVFXAssets.slash,impact,190,190,slash*0.8) }
             ctx.saveGState();ctx.translateBy(x:impact.x,y:impact.y);ctx.rotate(by:-0.65+spread*3.8)
-            let arc=(225+spread*300)*unit
-            MeadowBattleVFXAssets.heavyArc.draw(in:CGRect(x:-arc/2,y:-arc/2,width:arc,height:arc),blendMode:.plusLighter,alpha:rangedImpact ? 0:burst*0.9)
+            let arc=(170+spread*220)*unit
+            MeadowBattleVFXAssets.heavyArc.draw(in:CGRect(x:-arc/2,y:-arc/2,width:arc,height:arc),blendMode:.plusLighter,alpha:rangedImpact ? 0:burst*0.55)
             ctx.restoreGState()
-            let echo=pulse(age,0.10,0.19,0.65)
-            sprite(MeadowBattleVFXAssets.heavyArc,CGPoint(x:impact.x+spread*22*unit,y:impact.y),285+spread*160,225+spread*170,rangedImpact ? 0:echo*0.38)
-            sprite(MeadowBattleVFXAssets.burst,impact,205+spread*145,205+spread*145,burst)
-            sprite(MeadowBattleVFXAssets.spray,CGPoint(x:impact.x+(95+spread*75)*unit,y:impact.y-15*unit),250+spread*180,160,burst*0.9)
-            for i in 0..<26 {
-                let angle=CGFloat(i)*2.399
-                let distance=spread*CGFloat(150+(i%5)*38)*unit
-                sprite(MeadowBattleVFXAssets.mote,CGPoint(x:impact.x+cos(angle)*distance,y:impact.y+sin(angle)*distance),CGFloat(i%4==0 ? 22 : 10),CGFloat(i%4==0 ? 7 : 10),burst*0.9)
+            if hitFeel {
+                MeadowBattleHitFeelPainter.draw(in:ctx,age:age,tier:hitTier,direction:hitDirection,impact:impact,floorY:enemyFoot.y,footX:enemyFoot.x,unit:unit)
             }
         }
         if let age=shieldContactAge, age<0.4 {
@@ -326,7 +321,9 @@ final class MeadowBattleEffectsView: UIView {
             (p.cyan ? MeadowBattleVFXAssets.shard : MeadowBattleVFXAssets.ember).draw(in:CGRect(x:-size/2,y:-size/3,width:size,height:size*0.67),blendMode:.plusLighter,alpha:CGFloat(p.alpha))
             ctx.restoreGState()
         }
-        if let age=messageAge, age < 0.7, !message.isEmpty {
+        if hitFeel, !messageAtHero, !message.isEmpty, let age=messageAge {
+            MeadowBattleHitFeelPainter.drawNumber(in:ctx,text:message,age:age,tier:hitTier,impact:impact,unit:unit)
+        } else if let age=messageAge, age < 0.7, !message.isEmpty {
             let center=messageAtHero ? heroFoot : impact
             let attrs:[NSAttributedString.Key:Any]=[.font:UIFont.boldSystemFont(ofSize:max(16,23*unit)),.foregroundColor:messageColor,.strokeColor:UIColor(red:0.15,green:0.1,blue:0.04,alpha:1),.strokeWidth:-3]
             let label=NSAttributedString(string:message,attributes:attrs)

@@ -23,3 +23,12 @@
 - `tiers-comparison.png`：轻/中/重三档在 +0.02/+0.07/+0.18 s 的对比。
 
 未接入游戏。
+
+## 已接入游戏（2026-11-07，用户认可预览后）
+- `Sources/Game/MeadowBattleHitFeel.swift`：参考实现的逐式 Swift 移植（纯 Foundation）；`scripts/check-battle-hitfeel.sh` 用 `scripts/battle-hitfeel/golden.json`
+  （由 `export-golden.py` 从 Python 参考导出，3 档 × 18 个时间点 × 全部函数）逐样本比对，误差 1e-9，随 IPA 流程在云端运行。
+- `Sources/Game/MeadowBattleHitFeelPainter.swift`：闪光、冲击波、火花、尘土、叶片、伤害数字的 CoreGraphics 绘制与共用的震动反馈发生器。
+- 单人演练（`MeadowBattleLandscapeView` + `MeadowBattleEffectsView`）与小队战斗（`MeadowPartyStageView`，正式行程用的就是它）都已接入：
+  命中停顿、镜头冲击、怪物后仰与压扁、命中遮罩闪光、新命中特效、伤害数字弹出、手机震动（命中/击杀/被击中/格挡）。
+- 小队战斗里只有“普通攻击 / 强击这类无专属技能特效的攻击”使用新的命中特效、后仰与数字；其余带专属特效的技能只加手机震动，镜头冲击也仅用于上述攻击与怪物的普通攻击。
+- 与预览的差别：小队战斗没有命中遮罩素材，怪物闪光用全身白色轮廓 45% 强度；预览里那层极淡的全身提亮因此没有单独实现。
