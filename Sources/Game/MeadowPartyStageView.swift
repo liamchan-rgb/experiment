@@ -67,7 +67,7 @@ final class MeadowPartyStageView:UIView {
         dim.backgroundColor = .black;dim.frame=CGRect(x:0,y:-500,width:1000,height:1600);dim.layer.zPosition=100;dim.isUserInteractionEnabled=false;world.addSubview(dim)
         // Pane-wide colour wash for skill light and screen flashes: same coverage as `dim`, so neither has an edge at the world rectangle.
         wash.backgroundColor = .clear;wash.frame=dim.frame;wash.layer.zPosition=999;wash.isUserInteractionEnabled=false;world.addSubview(wash)
-        for bar in [barTop,barBottom] { bar.backgroundColor = .black;bar.isUserInteractionEnabled=false;bar.frame=.zero;addSubview(bar) }
+        for bar in [barTop,barBottom] { bar.backgroundColor = .black;bar.isUserInteractionEnabled=false;bar.frame = .zero;addSubview(bar) }
         for id in renderIDs { installUnit(id) }
         diceView.layer.zPosition=1200;world.addSubview(diceView)
         for ghost in afterimages { ghost.isHidden=true;ghost.isUserInteractionEnabled=false;ghost.layer.magnificationFilter = .nearest;world.addSubview(ghost) }
