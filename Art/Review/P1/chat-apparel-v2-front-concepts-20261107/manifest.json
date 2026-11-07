@@ -1,12 +1,12 @@
 {
   "stage": "C1-front-only",
-  "status": "design_only",
+  "status": "design_selected",
   "created": "2026-11-07",
   "sourceCommit": "ace14ef867cf47d62e7ad8f2618d7b1310193ea4",
   "generatedWith": "image_gen",
   "selectedDesign": {
-    "starlightArmor": null,
-    "dragonArmor": null
+    "starlightArmor": "B",
+    "dragonArmor": "B"
   },
   "artApproval": null,
   "registeredGameLayers": false,
@@ -32,5 +32,11 @@
       ],
       "mode": "RGB"
     }
-  ]
+  ],
+  "designSelection": {
+    "userStatement": "两个都选择b",
+    "date": "2026-11-07",
+    "scope": "shown front concept B for each outfit; not final sprite/motion approval"
+  },
+  "subsequentUserInstruction": "你一路做完所有方向的"
 }

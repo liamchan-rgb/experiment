@@ -1,6 +1,6 @@
 # 资源二：龙纹甲 dragonArmor
 
-新ID：`p1-chat-dragon-armor-v2`。新目录：`Art/Parts/P1-v1/chat-apparel-v2/dragonArmor/`。不覆盖旧 `b5-set-armors-v1/dragonArmor`。当前 `selectedDesign=null`，不沿用星辉甲的选择结果。
+新ID：`p1-chat-dragon-armor-v2`。新目录：`Art/Parts/P1-v1/chat-apparel-v2/dragonArmor/`。不覆盖旧 `b5-set-armors-v1/dragonArmor`。当前 `selectedDesign=B`（龙翼巡游甲，2026-11-07用户“两个都选择b”），两件的选择分别登记，恰好都为B。
 
 ## 设计目标与三套可选方案
 
