@@ -1,0 +1,146 @@
+name: Random Map Device Build
+on:
+  workflow_dispatch:
+    inputs:
+      audit_only:
+        description: Pure loadout verification only (never build or run the app)
+        type: boolean
+        default: false
+      runner:
+        description: Mac build pool (archive only; never run the app)
+        type: choice
+        default: macos-15-intel
+        options: [macos-15-intel, macos-15, macos-26]
+  push:
+    branches: [fix/build33-face-grounding-camera]
+permissions:
+  contents: read
+concurrency:
+  group: random-map-${{ github.ref }}-${{ inputs.runner || 'macos-15-intel' }}
+  cancel-in-progress: false
+jobs:
+  archive:
+    if: ${{ inputs.audit_only != true }}
+    runs-on: ${{ inputs.runner || 'macos-15-intel' }}
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          sparse-checkout: |
+            Sources
+            Vendor
+            scripts
+            Tests
+            UITests
+            MeadowJourney.xcodeproj
+      - name: Validate and test pure rules and generation
+        run: |
+          set -euo pipefail
+          mkdir -p build
+          python3 scripts/validate-project.py
+          swift test --package-path Vendor/ClassroomGameCore 2>&1 | tee build/map-tests.log
+          bash scripts/check-road-motion.sh
+          bash scripts/check-battle-encounter.sh
+          bash scripts/check-battle-effects.sh
+          bash scripts/check-modular-locomotion.sh
+          swift run --package-path Vendor/ClassroomGameCore MeadowSupportReviewExport build/monster-review --monster-only
+          swift run --package-path Vendor/ClassroomGameCore MeadowMapExport 10 31827 1 --encounters > build/encounters-default.json
+          swift run --package-path Vendor/ClassroomGameCore MeadowMapExport 30 18446744073709551615 1 --encounters > build/encounters-max.json
+          swift run --package-path Vendor/ClassroomGameCore MeadowMapExport 10 31827 1 --balance > build/balance-default.json
+          swift run --package-path Vendor/ClassroomGameCore MeadowMapExport 30 18446744073709551615 1 --balance > build/balance-max.json
+          swift run --package-path Vendor/ClassroomGameCore MeadowMapExport 10 31827 1 --guidance > build/guidance-default.json
+          swift run --package-path Vendor/ClassroomGameCore MeadowMapExport 30 18446744073709551615 1 --guidance > build/guidance-max.json
+          swift run --package-path Vendor/ClassroomGameCore MeadowMapExport 10 31827 1 --equipment > build/equipment-default.json
+          swift run --package-path Vendor/ClassroomGameCore MeadowMapExport 30 18446744073709551615 1 --equipment > build/equipment-max.json
+          swift run --package-path Vendor/ClassroomGameCore MeadowMapExport 10 31827 1 --party > build/party-preview.json
+      - name: Audit complete journeys using pure rules only
+        run: |
+          set -euo pipefail
+          swift run -c release --package-path Vendor/ClassroomGameCore MeadowCampaignReview --matrix > build/journey-audit.json 2> build/journey-audit.log
+          swift run -c release --package-path Vendor/ClassroomGameCore MeadowCampaignReview --loadout-smoke > build/loadout-smoke.json 2> build/loadout-smoke.log
+          swift run -c release --package-path Vendor/ClassroomGameCore MeadowCampaignReview --party-matrix > build/party-matrix.json 2> build/party-matrix.log
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          base=json.loads(Path('build/journey-audit.json').read_text())
+          assert len(base)==27 and {(r['size'],r['seed'],r['role']) for r in base}=={(n,s,r) for n in [4,10,30] for s in ['0','31827','18446744073709551615'] for r in ['adventurer','spellblade','dragonKnight']}
+          rows=json.loads(Path('build/loadout-smoke.json').read_text())
+          roles=['adventurer','spellblade','dragonKnight']
+          kits=['trainingSword-plain','huntingBow-leather-badge','greatSword-rune-ring','legendaryStaff-rune-ring','starlight-three','dragon-three','unarmed-rune-ring']
+          expected={(10,'31827',r,k) for r in roles for k in kits}|{(30,'0',r,k) for r in roles for k in ['starlight-three','dragon-three']}
+          actual=[(r['journey']['size'],r['journey']['seed'],r['journey']['role'],r['loadout']['id']) for r in rows]
+          assert len(rows)==27 and len(set(actual))==27 and set(actual)==expected
+          party=json.loads(Path('build/party-matrix.json').read_text())
+          classes=['adventurer','ranger','spellblade','dragonKnight']
+          expected={(10,'31827',p1,p2) for p1 in classes for p2 in classes}|{(n,'0',p1,p2) for n in [4,30] for p1,p2 in [('adventurer','adventurer'),('ranger','ranger'),('spellblade','dragonKnight'),('dragonKnight','spellblade')]}
+          actual=[(r['journey']['size'],r['journey']['seed'],r['configuration']['playerClassID'],r['configuration']['companionClassID']) for r in party]
+          assert len(party)==24 and len(set(actual))==24 and set(actual)==expected
+          assert all(r['journey']['role']==r['configuration']['playerClassID'] for r in party)
+          previews=json.loads(Path('build/party-preview.json').read_text())
+          assert len(previews)==16 and {(r['configuration']['playerClassID'],r['configuration']['companionClassID']) for r in previews}=={(a,b) for a in classes for b in classes}
+          Path('build/matrix-count-check.json').write_text(json.dumps({'baseline':27,'loadouts':27,'party':24,'partyPreview':16,'uniqueCasesMatched':True},indent=2)+'\n')
+          PY
+      - name: Archive without running application or simulator
+        run: |
+          set -euo pipefail
+          xcodebuild archive -project MeadowJourney.xcodeproj -scheme MeadowJourney \
+            -configuration Release -destination 'generic/platform=iOS' \
+            -archivePath build/MeadowJourney.xcarchive -derivedDataPath build/Derived \
+            CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO 2>&1 | tee build/archive.log
+          python3 scripts/resource-source-manifest.py > build/resource-sources.json
+          /usr/bin/assetutil --info build/MeadowJourney.xcarchive/Products/Applications/MeadowJourney.app/Assets.car > build/asset-catalog.json
+          bash scripts/package-ipa.sh build/MeadowJourney.xcarchive build/MeadowJourney-b95.ipa
+      - uses: actions/upload-artifact@v7
+        if: always()
+        with:
+          name: random-map-build-${{ github.run_id }}
+          path: |
+            build/*.log
+            build/*.ipa
+            build/encounters-*.json
+            build/balance-*.json
+            build/guidance-*.json
+            build/equipment-*.json
+            build/loadout-smoke.json
+            build/matrix-count-check.json
+            build/resource-sources.json
+            build/asset-catalog.json
+            build/journey-audit.json
+            build/party-*.json
+            build/monster-review/*.json
+          if-no-files-found: error
+          retention-days: 30
+  audit_loadouts:
+    if: ${{ inputs.audit_only == true }}
+    runs-on: ${{ inputs.runner || 'macos-15-intel' }}
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          sparse-checkout: |
+            Vendor
+      - name: Verify complete loadout sample without running app
+        run: |
+          set -euo pipefail
+          mkdir -p build
+          swift run -c release --package-path Vendor/ClassroomGameCore MeadowCampaignReview --loadout-smoke > build/loadout-smoke.json 2> build/loadout-smoke.log
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          rows=json.loads(Path('build/loadout-smoke.json').read_text())
+          roles=['adventurer','spellblade','dragonKnight']
+          kits=['trainingSword-plain','huntingBow-leather-badge','greatSword-rune-ring','legendaryStaff-rune-ring','starlight-three','dragon-three','unarmed-rune-ring']
+          expected={(10,'31827',r,k) for r in roles for k in kits}|{(30,'0',r,k) for r in roles for k in ['starlight-three','dragon-three']}
+          actual=[(r['journey']['size'],r['journey']['seed'],r['journey']['role'],r['loadout']['id']) for r in rows]
+          assert len(rows)==27 and len(set(actual))==27 and set(actual)==expected
+          Path('build/loadout-count-check.json').write_text(json.dumps({'cases':27,'uniqueCases':27,'expectedCasesMatched':True,'appSimulatorDeviceRun':False},indent=2)+'\n')
+          PY
+      - uses: actions/upload-artifact@v7
+        if: always()
+        with:
+          name: loadout-verification-${{ github.run_id }}
+          path: |
+            build/*.json
+            build/*.log
+          if-no-files-found: error
+          retention-days: 30

@@ -1,0 +1,12 @@
+[
+  {
+    "id": "04-r2",
+    "tool": "image_gen",
+    "transparent": true
+  },
+  {
+    "id": "08-r2",
+    "tool": "image_gen",
+    "transparent": true
+  }
+]

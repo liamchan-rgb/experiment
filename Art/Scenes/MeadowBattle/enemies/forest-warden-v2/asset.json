@@ -1,14 +1,14 @@
 {
-  "id": "meadow-forest-warden-alert-idle-v2",
-  "status": "static-art-candidate",
+  "id": "meadow-forest-warden-pixel-alert-idle-v1",
+  "status": "static-pixel-art-candidate",
   "userArtApproval": null,
-  "source": "source/idle-chromakey.png",
-  "sourceTool": "OpenAI image generation",
+  "source": "source/idle-pixel-generation.png",
+  "sourceTool": "OpenAI image generation edit",
   "sourceCanvasPx": [
     1536,
     1024
   ],
-  "prompt": "source/prompt.txt",
+  "prompt": "source/pixel-art-prompt.txt",
   "image": "idle.png",
   "canvasPx": [
     384,
@@ -21,12 +21,12 @@
     232
   ],
   "sourceToCanvas": [
-    0.25,
+    0.236979167,
     0,
     0,
-    0.25,
-    0,
-    0
+    0.239257813,
+    3,
+    3
   ],
   "automaticAlphaFit": false,
   "direction": "left",
@@ -41,7 +41,10 @@
   ],
   "visibleHeightNormalized": 0.33,
   "runtimeShadow": "independent projected silhouette and four contact gradients",
-  "sha256": "da3f906fc6e66633346474fda7b950f6087deb1fae5e0c98b71bf53a54c3ab64",
-  "sourceSHA256": "e5e0c9f58f888d90e58c643e0dbfa13734be41dff36ac428c7dfc4789c25fdb4",
-  "animationDelivered": false
+  "sha256": "b604bf43409d7e124c71ed5b3c2c0479ccf40c792c6e9ac8834eb30fe7d67c0e",
+  "sourceSHA256": "6e1ee32dc01929e2a4d70851441144f14325f98b7f47b006824a8906b8a95ffa",
+  "animationDelivered": false,
+  "reference": "source/idle-v2-reference.png",
+  "referenceSHA256": "da3f906fc6e66633346474fda7b950f6087deb1fae5e0c98b71bf53a54c3ab64",
+  "generationMetadata": "source/pixel-generation.json"
 }

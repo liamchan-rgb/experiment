@@ -1,0 +1,36 @@
+{
+  "rawSize": [
+    1254,
+    1254
+  ],
+  "registeredSize": [
+    192,
+    192
+  ],
+  "method": "uniform full-canvas resize and fixed tile/paint translations; final anatomical matte unchanged",
+  "paintOffsets": {
+    "up-left": {
+      "left": [
+        0,
+        0
+      ],
+      "right": [
+        0,
+        -2
+      ]
+    },
+    "up-right": {
+      "left": [
+        0,
+        6
+      ],
+      "right": [
+        0,
+        7
+      ]
+    }
+  },
+  "anatomicalFits": false,
+  "alphaBoundsFit": false,
+  "sourceSHA256": "52d28777b37c8dd12b5e1423a0cf7781d3a9859c381c95f83f35582dfa48cf90"
+}

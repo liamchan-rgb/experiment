@@ -1,0 +1,11 @@
+{
+  "date": "2026-10-22",
+  "reviewer": "user",
+  "statement": "没问题，继续下一步",
+  "status": "approved",
+  "scope": "Presented down-facing Wayfarer blue long-coat appearance and normal-speed full-body walk comparison only. Excludes unshown combinations, other directions, new transition key poses and runtime integration.",
+  "artifacts": {
+    "idle-review-2x.png": "e3022cb88e8de0e3b3695ba37fcb0dfe08d52323bce69fea460738a82bab4813",
+    "outfits-comparison-120ms.gif": "da9eeb97d3dd4e741d4f1eeb11cd079e3c31267e6b839cf8dded7ce5e66638f7"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "reviewer": "root",
+  "subagentsUsed": false,
+  "method": "generated static pose concepts from existing character and geometric guide",
+  "userArtApproval": {
+    "scope": "static concept A only",
+    "message": "那你按a来做"
+  },
+  "concepts": [
+    "pose-a-balanced.png",
+    "pose-b-braced.png",
+    "pose-c-upright.png"
+  ],
+  "handRoles": "near arm draws, far arm holds bow",
+  "knownLimitations": [
+    "concepts redraw clothing/color and are not original pixel layers",
+    "not an animation or runtime capture",
+    "pixel cleanup and exact source proportions still required"
+  ],
+  "noGameModification": true,
+  "noIpaCreated": true,
+  "deviceRun": false,
+  "selectedConcept": "A",
+  "selectionRecord": "user-selection.json"
+}

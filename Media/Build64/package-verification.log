@@ -1,0 +1,12 @@
+All 66 armor atlas/layer/icon assets compiled.
+Mac/Linux data match: party-frames.json
+Mac/Linux data match: legacy-light-requests.json
+Mac/Linux data match: dice-frames.json
+Mac/Linux data match: poly-frames.json
+Mac/Linux data match: bow-poses.json
+Mac/Linux data match: great-sword-poses.json
+Mac/Linux data match: great-sword-clock.json
+Mac/Linux data match: legendary-staff-poses.json
+Mac/Linux data match: legendary-staff-clock.json
+Mac/Linux data match: accessory-frames.json
+{"version": "1.6.38", "build": "64", "ipaBytes": 49302869, "sha256": "fee9d7d9ae5206aa3955fce1366d3476d7fc18700129cfa9cdf76ceed23caaec", "checks": "passed"}

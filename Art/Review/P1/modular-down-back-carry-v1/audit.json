@@ -1,0 +1,5959 @@
+{
+  "status": "offline evidence; internal visual review required",
+  "artApproval": null,
+  "combinations": 24,
+  "poses": 216,
+  "records": [
+    {
+      "combination": "chestnut__blue__plain__empty",
+      "frame": 0,
+      "path": "combinations/chestnut__blue__plain__empty/idle-00.png",
+      "sha256": "b78fb718cab60da5bf4970a1d2d06b8f913b504886f67fc5e6b3ab8e46bb849f"
+    },
+    {
+      "combination": "chestnut__blue__plain__empty",
+      "frame": 1,
+      "path": "combinations/chestnut__blue__plain__empty/walk-01.png",
+      "sha256": "c768320a38f574cd92c8476e88a5f2927bba8b876d9f29b554e5560f2a56ce50"
+    },
+    {
+      "combination": "chestnut__blue__plain__empty",
+      "frame": 2,
+      "path": "combinations/chestnut__blue__plain__empty/walk-02.png",
+      "sha256": "093f3d0a2e9e709b996feb36b257edfbf81494f24aa78be4b16347f0e6fd6ec0"
+    },
+    {
+      "combination": "chestnut__blue__plain__empty",
+      "frame": 3,
+      "path": "combinations/chestnut__blue__plain__empty/walk-03.png",
+      "sha256": "4c1b946e3204cb4a3b3e45bfc6a41e45abcc828067ba59f543fc34f7351b82d0"
+    },
+    {
+      "combination": "chestnut__blue__plain__empty",
+      "frame": 4,
+      "path": "combinations/chestnut__blue__plain__empty/walk-04.png",
+      "sha256": "04a9c8f8e68827e824a5e9fd178ce633cfebb8a118cea0fcfb6b3cdefdd1e463"
+    },
+    {
+      "combination": "chestnut__blue__plain__empty",
+      "frame": 5,
+      "path": "combinations/chestnut__blue__plain__empty/walk-05.png",
+      "sha256": "af0a2a04e79423d83722d5042c9ef837cfead2b1c6d7941a662d933d1ab33250"
+    },
+    {
+      "combination": "chestnut__blue__plain__empty",
+      "frame": 6,
+      "path": "combinations/chestnut__blue__plain__empty/walk-06.png",
+      "sha256": "3cdd0943bab26b373684f2441deeaa7ce85d566156c05884fe953d1b3c75a842"
+    },
+    {
+      "combination": "chestnut__blue__plain__empty",
+      "frame": 7,
+      "path": "combinations/chestnut__blue__plain__empty/walk-07.png",
+      "sha256": "caa6010bcac5da64f4871172d10014dbef71db26dd83749e0d510e3f294a8ac0"
+    },
+    {
+      "combination": "chestnut__blue__plain__empty",
+      "frame": 8,
+      "path": "combinations/chestnut__blue__plain__empty/walk-08.png",
+      "sha256": "5e3c5c143c8a7376ebf1cf693afa285b87b3691d7c51fcf37b67489014aa0ea6"
+    },
+    {
+      "combination": "chestnut__blue__plain__back",
+      "frame": 0,
+      "path": "combinations/chestnut__blue__plain__back/idle-00.png",
+      "sha256": "b49d6444caf0e813ae3fdd21b5bb887bf3635fa8508014cb46fcec846c2d1e81"
+    },
+    {
+      "combination": "chestnut__blue__plain__back",
+      "frame": 1,
+      "path": "combinations/chestnut__blue__plain__back/walk-01.png",
+      "sha256": "c770377e57322c640c73e21d69f353e58027b52ba0e2049f4fba419069e19b97"
+    },
+    {
+      "combination": "chestnut__blue__plain__back",
+      "frame": 2,
+      "path": "combinations/chestnut__blue__plain__back/walk-02.png",
+      "sha256": "aa8dda373abbf4a0f41a07fa82a76ef171f756453e22a0edb92ff6bc5651f419"
+    },
+    {
+      "combination": "chestnut__blue__plain__back",
+      "frame": 3,
+      "path": "combinations/chestnut__blue__plain__back/walk-03.png",
+      "sha256": "0296eeb8076c2309a21c8910b54b219e86d8363e30b2accb67ce4f940f654487"
+    },
+    {
+      "combination": "chestnut__blue__plain__back",
+      "frame": 4,
+      "path": "combinations/chestnut__blue__plain__back/walk-04.png",
+      "sha256": "32844c5fb711d813ed95a8e72014e431eddc2397566e1339e8d166e65ebdcab5"
+    },
+    {
+      "combination": "chestnut__blue__plain__back",
+      "frame": 5,
+      "path": "combinations/chestnut__blue__plain__back/walk-05.png",
+      "sha256": "613683531cf4f0e4a40e74c1463c62ced772fa790ded10e359242581ae90f069"
+    },
+    {
+      "combination": "chestnut__blue__plain__back",
+      "frame": 6,
+      "path": "combinations/chestnut__blue__plain__back/walk-06.png",
+      "sha256": "18c78b18ad3101b3df3ba5a87e676befe73018a536555f6e16cb15120e3a2be7"
+    },
+    {
+      "combination": "chestnut__blue__plain__back",
+      "frame": 7,
+      "path": "combinations/chestnut__blue__plain__back/walk-07.png",
+      "sha256": "fee657c7cf8cc6a59e67dce508f5e1ab4232476ca2b4a434fa706847d288956c"
+    },
+    {
+      "combination": "chestnut__blue__plain__back",
+      "frame": 8,
+      "path": "combinations/chestnut__blue__plain__back/walk-08.png",
+      "sha256": "b8497063034e30ad1f6b7f693bc825af8d6d43846385961acada223156c80fdf"
+    },
+    {
+      "combination": "chestnut__blue__forester__empty",
+      "frame": 0,
+      "path": "combinations/chestnut__blue__forester__empty/idle-00.png",
+      "sha256": "9f52492a6a4644e3af230498fdb0ee7d15b2846021719b997bd665872e426f87"
+    },
+    {
+      "combination": "chestnut__blue__forester__empty",
+      "frame": 1,
+      "path": "combinations/chestnut__blue__forester__empty/walk-01.png",
+      "sha256": "96241bb79a598eb9943e6526bfbb51dbb0cda8c15604d3bf5de632a98a3754de"
+    },
+    {
+      "combination": "chestnut__blue__forester__empty",
+      "frame": 2,
+      "path": "combinations/chestnut__blue__forester__empty/walk-02.png",
+      "sha256": "d85953b033c921288a05d5b829fcefd17300b61227fd4019d7b7917c88edaeda"
+    },
+    {
+      "combination": "chestnut__blue__forester__empty",
+      "frame": 3,
+      "path": "combinations/chestnut__blue__forester__empty/walk-03.png",
+      "sha256": "16e1eabdded1ee975b269442c1cc203fee9702345586850204bb483af57d9480"
+    },
+    {
+      "combination": "chestnut__blue__forester__empty",
+      "frame": 4,
+      "path": "combinations/chestnut__blue__forester__empty/walk-04.png",
+      "sha256": "f093f999c754a895714d0480d350b4e4c6ba8b7e50a046114c00748c201eaeb0"
+    },
+    {
+      "combination": "chestnut__blue__forester__empty",
+      "frame": 5,
+      "path": "combinations/chestnut__blue__forester__empty/walk-05.png",
+      "sha256": "fe9d5c458581e304f1d68b902b4702da82c52e1aaf797e70f0a8f3a013aee551"
+    },
+    {
+      "combination": "chestnut__blue__forester__empty",
+      "frame": 6,
+      "path": "combinations/chestnut__blue__forester__empty/walk-06.png",
+      "sha256": "fcf164036ac516f349d97fdbfd13b6b318dfbe07a05ae6a6a8f1fed3dd8b9020"
+    },
+    {
+      "combination": "chestnut__blue__forester__empty",
+      "frame": 7,
+      "path": "combinations/chestnut__blue__forester__empty/walk-07.png",
+      "sha256": "dbc1796e1310ad4bb4e91d9adf8ec5ef4ce1e4d95338b42326d789393606667c"
+    },
+    {
+      "combination": "chestnut__blue__forester__empty",
+      "frame": 8,
+      "path": "combinations/chestnut__blue__forester__empty/walk-08.png",
+      "sha256": "740cc0c49bc8a1fa611c43f58a6997c9d53434eb8f7651f5e604230444209530"
+    },
+    {
+      "combination": "chestnut__blue__forester__back",
+      "frame": 0,
+      "path": "combinations/chestnut__blue__forester__back/idle-00.png",
+      "sha256": "5ee553da1c047cb272bae22dc42aaa47405da5cb9e08112dd7d9aa2d0fccd1d2"
+    },
+    {
+      "combination": "chestnut__blue__forester__back",
+      "frame": 1,
+      "path": "combinations/chestnut__blue__forester__back/walk-01.png",
+      "sha256": "010347b94d3fbac5333b488d518907f1dca548d277ef721113c805c26cbd8ba6"
+    },
+    {
+      "combination": "chestnut__blue__forester__back",
+      "frame": 2,
+      "path": "combinations/chestnut__blue__forester__back/walk-02.png",
+      "sha256": "f8cd558b377061d0d59434a54e3922e05c9146677cdb95a4e04dfb884736329e"
+    },
+    {
+      "combination": "chestnut__blue__forester__back",
+      "frame": 3,
+      "path": "combinations/chestnut__blue__forester__back/walk-03.png",
+      "sha256": "d99d71cadcdce271457693783a20912156657c7bfd08648b81fe5418d31aa314"
+    },
+    {
+      "combination": "chestnut__blue__forester__back",
+      "frame": 4,
+      "path": "combinations/chestnut__blue__forester__back/walk-04.png",
+      "sha256": "ae17654debae19761fb24408d62d6068ac76e931e3fe55ba7a7743934a0a14d4"
+    },
+    {
+      "combination": "chestnut__blue__forester__back",
+      "frame": 5,
+      "path": "combinations/chestnut__blue__forester__back/walk-05.png",
+      "sha256": "f8f88b6f62b19621f49f766baf2a079485949ba54f39d452b0fc93a3d0a50f3e"
+    },
+    {
+      "combination": "chestnut__blue__forester__back",
+      "frame": 6,
+      "path": "combinations/chestnut__blue__forester__back/walk-06.png",
+      "sha256": "7d759c41bdcc503520ce2cb761d5a66fd847c8ac4b48c70c0726a36960a29040"
+    },
+    {
+      "combination": "chestnut__blue__forester__back",
+      "frame": 7,
+      "path": "combinations/chestnut__blue__forester__back/walk-07.png",
+      "sha256": "59c3b7e81db8d0b5babdda0c9a9220685f69c808f1ffdc0085f30cba24e05c46"
+    },
+    {
+      "combination": "chestnut__blue__forester__back",
+      "frame": 8,
+      "path": "combinations/chestnut__blue__forester__back/walk-08.png",
+      "sha256": "4a3c17fd67bdb6384d7b0f6822213801eaf294446f4923a00c7df6137f818733"
+    },
+    {
+      "combination": "chestnut__amber__plain__empty",
+      "frame": 0,
+      "path": "combinations/chestnut__amber__plain__empty/idle-00.png",
+      "sha256": "7f005a92c6a72a15dc6adf586e4eb07f606c191ef69754e83dc4a6def896f792"
+    },
+    {
+      "combination": "chestnut__amber__plain__empty",
+      "frame": 1,
+      "path": "combinations/chestnut__amber__plain__empty/walk-01.png",
+      "sha256": "e9a8c16c42ac5956bd220a2a6ca00b7e03e222e8feb39346d021bfa89d8f18f8"
+    },
+    {
+      "combination": "chestnut__amber__plain__empty",
+      "frame": 2,
+      "path": "combinations/chestnut__amber__plain__empty/walk-02.png",
+      "sha256": "303ab554eb8ad3119e63e56cbb74119456086cf964fe27f822e1dded40c99144"
+    },
+    {
+      "combination": "chestnut__amber__plain__empty",
+      "frame": 3,
+      "path": "combinations/chestnut__amber__plain__empty/walk-03.png",
+      "sha256": "74e0aec695b9919453771224010e266aa25c2d26ddd906d78bcd3ef6324c1aa2"
+    },
+    {
+      "combination": "chestnut__amber__plain__empty",
+      "frame": 4,
+      "path": "combinations/chestnut__amber__plain__empty/walk-04.png",
+      "sha256": "fe0a16c153b55b527ed0dc30d3fb927b85e74199d70ba8e234d0569d24edb394"
+    },
+    {
+      "combination": "chestnut__amber__plain__empty",
+      "frame": 5,
+      "path": "combinations/chestnut__amber__plain__empty/walk-05.png",
+      "sha256": "b92c4f64de480a9a497b1a7c30db7934f823a8f661ad3ca9d996d11a9b0c59fc"
+    },
+    {
+      "combination": "chestnut__amber__plain__empty",
+      "frame": 6,
+      "path": "combinations/chestnut__amber__plain__empty/walk-06.png",
+      "sha256": "89152ad881cd50a3917f50e33674845af1c950e4e6b695e98c7cff665b15af06"
+    },
+    {
+      "combination": "chestnut__amber__plain__empty",
+      "frame": 7,
+      "path": "combinations/chestnut__amber__plain__empty/walk-07.png",
+      "sha256": "02a54323d76138ee49f0cf920f93db8427623db8fd8bf6b5a799498438b30464"
+    },
+    {
+      "combination": "chestnut__amber__plain__empty",
+      "frame": 8,
+      "path": "combinations/chestnut__amber__plain__empty/walk-08.png",
+      "sha256": "b2c634d325a330095490429e49d4fb91b304adf757553655fe959c226cc922ff"
+    },
+    {
+      "combination": "chestnut__amber__plain__back",
+      "frame": 0,
+      "path": "combinations/chestnut__amber__plain__back/idle-00.png",
+      "sha256": "b3c8569aacdeb823386e9c16cbcc1b127b3bde6baf6570a98f5d50e7d3b213eb"
+    },
+    {
+      "combination": "chestnut__amber__plain__back",
+      "frame": 1,
+      "path": "combinations/chestnut__amber__plain__back/walk-01.png",
+      "sha256": "a0b426dead79da3a635361cd8a498347cc1599ce409a4cbb1df3813c46028810"
+    },
+    {
+      "combination": "chestnut__amber__plain__back",
+      "frame": 2,
+      "path": "combinations/chestnut__amber__plain__back/walk-02.png",
+      "sha256": "42212e2f734d30425e21f095f218cba785bd53d7aef83aa83e5cc665b4ccee11"
+    },
+    {
+      "combination": "chestnut__amber__plain__back",
+      "frame": 3,
+      "path": "combinations/chestnut__amber__plain__back/walk-03.png",
+      "sha256": "ef6e76cea0e11a1ca21a10d3df0edbb297997a48cd564842b90cf11d1bfa9b4b"
+    },
+    {
+      "combination": "chestnut__amber__plain__back",
+      "frame": 4,
+      "path": "combinations/chestnut__amber__plain__back/walk-04.png",
+      "sha256": "9c8084eeab89380f59cf6a5e224284611b2df75314f5bc5480c4f150fa017760"
+    },
+    {
+      "combination": "chestnut__amber__plain__back",
+      "frame": 5,
+      "path": "combinations/chestnut__amber__plain__back/walk-05.png",
+      "sha256": "dc21578595cdd29aa0650c8400a015cb445ecb11bb70ebbe8d233fa2120ae217"
+    },
+    {
+      "combination": "chestnut__amber__plain__back",
+      "frame": 6,
+      "path": "combinations/chestnut__amber__plain__back/walk-06.png",
+      "sha256": "66e8aa693c493802466d0199e94eb7c74ee7837df903876a359284fc407ed182"
+    },
+    {
+      "combination": "chestnut__amber__plain__back",
+      "frame": 7,
+      "path": "combinations/chestnut__amber__plain__back/walk-07.png",
+      "sha256": "5190d960ec07b4ee744ba770c593d14d1d9f4f70fa3e5412852605dcdecf030e"
+    },
+    {
+      "combination": "chestnut__amber__plain__back",
+      "frame": 8,
+      "path": "combinations/chestnut__amber__plain__back/walk-08.png",
+      "sha256": "90fc25c85ff19741ca2a6078693e32c49c6664e9eda536a9c340e7a35a3194c9"
+    },
+    {
+      "combination": "chestnut__amber__forester__empty",
+      "frame": 0,
+      "path": "combinations/chestnut__amber__forester__empty/idle-00.png",
+      "sha256": "b998b53c2d9fa05a6b0ddfe557bfc5718582a4dea149c4007af42223a9c384ba"
+    },
+    {
+      "combination": "chestnut__amber__forester__empty",
+      "frame": 1,
+      "path": "combinations/chestnut__amber__forester__empty/walk-01.png",
+      "sha256": "939012121a29cfb5126aa09a6a7c05badbbd491cf524f5d6cdd67bca245d8d95"
+    },
+    {
+      "combination": "chestnut__amber__forester__empty",
+      "frame": 2,
+      "path": "combinations/chestnut__amber__forester__empty/walk-02.png",
+      "sha256": "cada03f8c7e1d1cc12ca9bcbd3fdc5a222714a4ace32edaa195c4bf1cd2fc95e"
+    },
+    {
+      "combination": "chestnut__amber__forester__empty",
+      "frame": 3,
+      "path": "combinations/chestnut__amber__forester__empty/walk-03.png",
+      "sha256": "536192912d6d12c5795c416f52a02cd5dc80ab4c5637c40a868a6697a6ee3979"
+    },
+    {
+      "combination": "chestnut__amber__forester__empty",
+      "frame": 4,
+      "path": "combinations/chestnut__amber__forester__empty/walk-04.png",
+      "sha256": "5c05cb0bd4e611c9cbf8a4328ceb52682b01439e43481b7cadc22f56906a0a1d"
+    },
+    {
+      "combination": "chestnut__amber__forester__empty",
+      "frame": 5,
+      "path": "combinations/chestnut__amber__forester__empty/walk-05.png",
+      "sha256": "12c63688df94f59822d97d4f363d45f173cc7d0f3b8c91a4dd7f7427a3ea736c"
+    },
+    {
+      "combination": "chestnut__amber__forester__empty",
+      "frame": 6,
+      "path": "combinations/chestnut__amber__forester__empty/walk-06.png",
+      "sha256": "15df45b152a087be98c5aaedc5029716499417aab7628896e6dd501b54f04ad4"
+    },
+    {
+      "combination": "chestnut__amber__forester__empty",
+      "frame": 7,
+      "path": "combinations/chestnut__amber__forester__empty/walk-07.png",
+      "sha256": "e8bfb2939382056eb9f8d1c49547c3fe78178cbe42a8d7b9b0fd3ce8add7323f"
+    },
+    {
+      "combination": "chestnut__amber__forester__empty",
+      "frame": 8,
+      "path": "combinations/chestnut__amber__forester__empty/walk-08.png",
+      "sha256": "c1739f425e59c70daf7458f0acf3fa59887a4804005a6e798c1f6c65e6dc003c"
+    },
+    {
+      "combination": "chestnut__amber__forester__back",
+      "frame": 0,
+      "path": "combinations/chestnut__amber__forester__back/idle-00.png",
+      "sha256": "36726b11cb49e35258d6ad9bf6ae7a1b07d2b61485c2db67500f12c8c3bb004e"
+    },
+    {
+      "combination": "chestnut__amber__forester__back",
+      "frame": 1,
+      "path": "combinations/chestnut__amber__forester__back/walk-01.png",
+      "sha256": "2f7c5a00618182b77e9b53d0718ea6e730bcce4a5f6d3de1e59c200062320001"
+    },
+    {
+      "combination": "chestnut__amber__forester__back",
+      "frame": 2,
+      "path": "combinations/chestnut__amber__forester__back/walk-02.png",
+      "sha256": "6a7e9f067dcd621abb7b6da603ee1f5301709348ffa4019500d1a18a75145056"
+    },
+    {
+      "combination": "chestnut__amber__forester__back",
+      "frame": 3,
+      "path": "combinations/chestnut__amber__forester__back/walk-03.png",
+      "sha256": "c4105ad49ef9c735ac24e475f1470f5cd292a7a3974d1bb178d85aa936614d87"
+    },
+    {
+      "combination": "chestnut__amber__forester__back",
+      "frame": 4,
+      "path": "combinations/chestnut__amber__forester__back/walk-04.png",
+      "sha256": "6a91c97adb46785f76816e17a12198909c29daabd83b1f99b3c68859a1c04a4b"
+    },
+    {
+      "combination": "chestnut__amber__forester__back",
+      "frame": 5,
+      "path": "combinations/chestnut__amber__forester__back/walk-05.png",
+      "sha256": "c7b21e7f7e2d368d750741a1e11ecdb510feb0e056b2c060aceb20e0cd5ed3e1"
+    },
+    {
+      "combination": "chestnut__amber__forester__back",
+      "frame": 6,
+      "path": "combinations/chestnut__amber__forester__back/walk-06.png",
+      "sha256": "e044f6754bcfe357fb91ac09b99dde6db9a536cda86a707bc7e1d6c139e8d2d3"
+    },
+    {
+      "combination": "chestnut__amber__forester__back",
+      "frame": 7,
+      "path": "combinations/chestnut__amber__forester__back/walk-07.png",
+      "sha256": "451585eddfa1d7201d85cd03e642142a55244ace01d52006ae2fc240ad4b443f"
+    },
+    {
+      "combination": "chestnut__amber__forester__back",
+      "frame": 8,
+      "path": "combinations/chestnut__amber__forester__back/walk-08.png",
+      "sha256": "a9f3ba3dd02b64563c5d0cee36b29b5519aa14f1f83564ab9b18646fa2a44cbc"
+    },
+    {
+      "combination": "silver__blue__plain__empty",
+      "frame": 0,
+      "path": "combinations/silver__blue__plain__empty/idle-00.png",
+      "sha256": "59a17fb904468ca4eb78a6bcacc54dcf98abeb6a17f47725f59be5523ae0911f"
+    },
+    {
+      "combination": "silver__blue__plain__empty",
+      "frame": 1,
+      "path": "combinations/silver__blue__plain__empty/walk-01.png",
+      "sha256": "decde8ea2c696b3d0387ed20df91a0f8a34dffb4e1ecacb96113a5d3ab051bd3"
+    },
+    {
+      "combination": "silver__blue__plain__empty",
+      "frame": 2,
+      "path": "combinations/silver__blue__plain__empty/walk-02.png",
+      "sha256": "86afb4d59c39fb315c940846bbb578138811f432f990d507722aabfc1ecf9a2e"
+    },
+    {
+      "combination": "silver__blue__plain__empty",
+      "frame": 3,
+      "path": "combinations/silver__blue__plain__empty/walk-03.png",
+      "sha256": "71e3d438a40a5b0c773dbaa9919e1ebc3eeb573aa9e28c7c68156d92a0d056cb"
+    },
+    {
+      "combination": "silver__blue__plain__empty",
+      "frame": 4,
+      "path": "combinations/silver__blue__plain__empty/walk-04.png",
+      "sha256": "0aff4956888ea68a337e060b5285bb0bffb4f6e70dabacfd1308b98d419e676f"
+    },
+    {
+      "combination": "silver__blue__plain__empty",
+      "frame": 5,
+      "path": "combinations/silver__blue__plain__empty/walk-05.png",
+      "sha256": "0cdaaacd88209028157409d1b4678aac1869fe871c35923490802cbaebf2482d"
+    },
+    {
+      "combination": "silver__blue__plain__empty",
+      "frame": 6,
+      "path": "combinations/silver__blue__plain__empty/walk-06.png",
+      "sha256": "05610c785e577d139620e01e7c4f7f9d375c231a851cf1cf23a75d92e50c999d"
+    },
+    {
+      "combination": "silver__blue__plain__empty",
+      "frame": 7,
+      "path": "combinations/silver__blue__plain__empty/walk-07.png",
+      "sha256": "6f545db3b58814ef37c34e3f3a143917513796772c607f8c201a3af7dd4eec18"
+    },
+    {
+      "combination": "silver__blue__plain__empty",
+      "frame": 8,
+      "path": "combinations/silver__blue__plain__empty/walk-08.png",
+      "sha256": "b08de8585cf34c5013c67e95ee25878c38f16ecfb58d1b638a5bc0b1e2fce6a8"
+    },
+    {
+      "combination": "silver__blue__plain__back",
+      "frame": 0,
+      "path": "combinations/silver__blue__plain__back/idle-00.png",
+      "sha256": "5b573d3b33460487eca21a2bdd924ce4f73ff2c5a7198f11fc9bb6a0021c8758"
+    },
+    {
+      "combination": "silver__blue__plain__back",
+      "frame": 1,
+      "path": "combinations/silver__blue__plain__back/walk-01.png",
+      "sha256": "fc13974dbff139b70949f2214c248268bf9c333b1423c6d2a299b2b87120e84f"
+    },
+    {
+      "combination": "silver__blue__plain__back",
+      "frame": 2,
+      "path": "combinations/silver__blue__plain__back/walk-02.png",
+      "sha256": "20842e40a17af2f169f33615efe4219ca7dea931df25caef7af8c38c3644a3d7"
+    },
+    {
+      "combination": "silver__blue__plain__back",
+      "frame": 3,
+      "path": "combinations/silver__blue__plain__back/walk-03.png",
+      "sha256": "8195a5116a1be0d90d99690e9e12b78fa4590ab8566b587c5945dd507fa9eab3"
+    },
+    {
+      "combination": "silver__blue__plain__back",
+      "frame": 4,
+      "path": "combinations/silver__blue__plain__back/walk-04.png",
+      "sha256": "08d7e34cbb079076a5444cc00896c09dfc072fea0e5722e3e108a69b4fa3a43c"
+    },
+    {
+      "combination": "silver__blue__plain__back",
+      "frame": 5,
+      "path": "combinations/silver__blue__plain__back/walk-05.png",
+      "sha256": "735e24d7972e18d8f749395fab331d0649d407d5a66809245b84df5eb1584534"
+    },
+    {
+      "combination": "silver__blue__plain__back",
+      "frame": 6,
+      "path": "combinations/silver__blue__plain__back/walk-06.png",
+      "sha256": "b13a141da42b378d1f6b9b1afd8c71da612b98f4ae923727bdc22bc9887e7767"
+    },
+    {
+      "combination": "silver__blue__plain__back",
+      "frame": 7,
+      "path": "combinations/silver__blue__plain__back/walk-07.png",
+      "sha256": "d447191996e19d65d170a9f1f4039b46926cd7c219014f5a83bf8cebcf20ca05"
+    },
+    {
+      "combination": "silver__blue__plain__back",
+      "frame": 8,
+      "path": "combinations/silver__blue__plain__back/walk-08.png",
+      "sha256": "0bfa77aacee18554cc025fb748fa7b3455b26568858a2982367bb233f7c8e53e"
+    },
+    {
+      "combination": "silver__blue__forester__empty",
+      "frame": 0,
+      "path": "combinations/silver__blue__forester__empty/idle-00.png",
+      "sha256": "a82ed049c39d9c54b150e113ec456f32fa67a5677ba251862352d12d379b71cd"
+    },
+    {
+      "combination": "silver__blue__forester__empty",
+      "frame": 1,
+      "path": "combinations/silver__blue__forester__empty/walk-01.png",
+      "sha256": "86a5a83544fe551a618d7600daacaa7ce51c95c0ed45b12379446e83f7a5fb70"
+    },
+    {
+      "combination": "silver__blue__forester__empty",
+      "frame": 2,
+      "path": "combinations/silver__blue__forester__empty/walk-02.png",
+      "sha256": "f1ce065d7bcfd215d2671462360a2f43e3481dea45a851bc7ace00a201605b19"
+    },
+    {
+      "combination": "silver__blue__forester__empty",
+      "frame": 3,
+      "path": "combinations/silver__blue__forester__empty/walk-03.png",
+      "sha256": "6374474ddd16babe8a50b6074a247b094c5437f05a9d56efe883b23fe9e9a2be"
+    },
+    {
+      "combination": "silver__blue__forester__empty",
+      "frame": 4,
+      "path": "combinations/silver__blue__forester__empty/walk-04.png",
+      "sha256": "da299d5d04e966e24ae117ce35dbb36d876ae2bbdf39f1ec9646cc3800b66ff3"
+    },
+    {
+      "combination": "silver__blue__forester__empty",
+      "frame": 5,
+      "path": "combinations/silver__blue__forester__empty/walk-05.png",
+      "sha256": "4ed9bc832c6c2622834c4e4648dc898b704fcb088a70159456ce9cb6061a18a1"
+    },
+    {
+      "combination": "silver__blue__forester__empty",
+      "frame": 6,
+      "path": "combinations/silver__blue__forester__empty/walk-06.png",
+      "sha256": "1865ac5190505f995cc352fd54f7bb2a2e5331c996038b895876c2c7382c2fef"
+    },
+    {
+      "combination": "silver__blue__forester__empty",
+      "frame": 7,
+      "path": "combinations/silver__blue__forester__empty/walk-07.png",
+      "sha256": "077a244d907ff9e72998569eabf6ff30e5b4374593f016e03e607fbd48a7adf7"
+    },
+    {
+      "combination": "silver__blue__forester__empty",
+      "frame": 8,
+      "path": "combinations/silver__blue__forester__empty/walk-08.png",
+      "sha256": "f98c282b295dc7c19f0f4578c295a42a7365c4c64335224edd191ae6440ff9b2"
+    },
+    {
+      "combination": "silver__blue__forester__back",
+      "frame": 0,
+      "path": "combinations/silver__blue__forester__back/idle-00.png",
+      "sha256": "cf9b2499085b69e3a1841f8567f218906b53a101fa16f7a5fae3ba5739d9c6b0"
+    },
+    {
+      "combination": "silver__blue__forester__back",
+      "frame": 1,
+      "path": "combinations/silver__blue__forester__back/walk-01.png",
+      "sha256": "4daab89fc6a13180fda59a4c1e5c8548d9513ab958af03e538af5fcf1c51ba19"
+    },
+    {
+      "combination": "silver__blue__forester__back",
+      "frame": 2,
+      "path": "combinations/silver__blue__forester__back/walk-02.png",
+      "sha256": "688a905f7fef4a0f828b34185fefe0aa6ee2626e92fd8175f26d6fcff1354703"
+    },
+    {
+      "combination": "silver__blue__forester__back",
+      "frame": 3,
+      "path": "combinations/silver__blue__forester__back/walk-03.png",
+      "sha256": "184b537f5a5a34e153166a0e9fa0037b0816bd733e2b3b0e1ddf9aa79a6f437b"
+    },
+    {
+      "combination": "silver__blue__forester__back",
+      "frame": 4,
+      "path": "combinations/silver__blue__forester__back/walk-04.png",
+      "sha256": "41f1c5ab8dd119f62bfb1cc7b5196e3aa04a291ca63964c59add1fe6d48400d8"
+    },
+    {
+      "combination": "silver__blue__forester__back",
+      "frame": 5,
+      "path": "combinations/silver__blue__forester__back/walk-05.png",
+      "sha256": "075e33a801423a0d7c5fc86c2efeeed53f2bf5ddc132c180b8a04a6036ab92f7"
+    },
+    {
+      "combination": "silver__blue__forester__back",
+      "frame": 6,
+      "path": "combinations/silver__blue__forester__back/walk-06.png",
+      "sha256": "189ca0f51cb8e4258598c5393222ee7db24d1a204de455193680d87e89a14032"
+    },
+    {
+      "combination": "silver__blue__forester__back",
+      "frame": 7,
+      "path": "combinations/silver__blue__forester__back/walk-07.png",
+      "sha256": "6dfcf75cd1a28051df9f96a191cf4a1d8e5a790e9acf043f3ec494c91741b09c"
+    },
+    {
+      "combination": "silver__blue__forester__back",
+      "frame": 8,
+      "path": "combinations/silver__blue__forester__back/walk-08.png",
+      "sha256": "35bdd458cc962c122f0b9892065f05e4e77a6934ac479dc2cb09847821829515"
+    },
+    {
+      "combination": "silver__amber__plain__empty",
+      "frame": 0,
+      "path": "combinations/silver__amber__plain__empty/idle-00.png",
+      "sha256": "8f1a1be4ab5ffc2956ed0878cafae2ce90705b2e11b2b0a2dd2f7e7fbb22644e"
+    },
+    {
+      "combination": "silver__amber__plain__empty",
+      "frame": 1,
+      "path": "combinations/silver__amber__plain__empty/walk-01.png",
+      "sha256": "22dd360cc0afbfc34cb872cf1866d5600c79b67d55f969deddab02e08d323bef"
+    },
+    {
+      "combination": "silver__amber__plain__empty",
+      "frame": 2,
+      "path": "combinations/silver__amber__plain__empty/walk-02.png",
+      "sha256": "e1182fca3d7f2d954c9ba2ccf8cc04244e0e11f79ee851cde3cfcb61cae68bf7"
+    },
+    {
+      "combination": "silver__amber__plain__empty",
+      "frame": 3,
+      "path": "combinations/silver__amber__plain__empty/walk-03.png",
+      "sha256": "145a61aaf4b6e1dced7734630c150bd691608e9634e7acfa7660988ebcdfb9ec"
+    },
+    {
+      "combination": "silver__amber__plain__empty",
+      "frame": 4,
+      "path": "combinations/silver__amber__plain__empty/walk-04.png",
+      "sha256": "2cdba1825246d4fdba1192a2cb8ebaf8042f17ebe300df5bfc3282d60faed8d3"
+    },
+    {
+      "combination": "silver__amber__plain__empty",
+      "frame": 5,
+      "path": "combinations/silver__amber__plain__empty/walk-05.png",
+      "sha256": "15b1469d6a6cdc26af912630d1f95972259335a36710c47ee4034df583abc698"
+    },
+    {
+      "combination": "silver__amber__plain__empty",
+      "frame": 6,
+      "path": "combinations/silver__amber__plain__empty/walk-06.png",
+      "sha256": "2ddecb95a196b9d5ad9de17b1bb0859a6d0e7efd6c0b3fd17d3a947b5d4fad2a"
+    },
+    {
+      "combination": "silver__amber__plain__empty",
+      "frame": 7,
+      "path": "combinations/silver__amber__plain__empty/walk-07.png",
+      "sha256": "ecd78b094d5a77e516b785b625946df7f43a035e142b44db21c0cf73abc07af1"
+    },
+    {
+      "combination": "silver__amber__plain__empty",
+      "frame": 8,
+      "path": "combinations/silver__amber__plain__empty/walk-08.png",
+      "sha256": "3287bbfd9177e8ff2e6557b83aca9dc4c5564c8c2d7c366485467bacafe02d1e"
+    },
+    {
+      "combination": "silver__amber__plain__back",
+      "frame": 0,
+      "path": "combinations/silver__amber__plain__back/idle-00.png",
+      "sha256": "20fe3ce9e2e8b245a211c0b9223b4be1b4eb336d724292257c06fb8c7fc4272f"
+    },
+    {
+      "combination": "silver__amber__plain__back",
+      "frame": 1,
+      "path": "combinations/silver__amber__plain__back/walk-01.png",
+      "sha256": "52e834c4cda132b807238eafcbc836dd0941430ca149ef025ef5f19cb26668ff"
+    },
+    {
+      "combination": "silver__amber__plain__back",
+      "frame": 2,
+      "path": "combinations/silver__amber__plain__back/walk-02.png",
+      "sha256": "11dd37530155a3503286d45dee3a1ca1859e651a6ca1b4221240347c597636bb"
+    },
+    {
+      "combination": "silver__amber__plain__back",
+      "frame": 3,
+      "path": "combinations/silver__amber__plain__back/walk-03.png",
+      "sha256": "37b4b74a530f20e0c33cdd568c393bea8039ef57f28f470cbd7eb22db6e8b7a2"
+    },
+    {
+      "combination": "silver__amber__plain__back",
+      "frame": 4,
+      "path": "combinations/silver__amber__plain__back/walk-04.png",
+      "sha256": "839406ec5f84d1066f362bd9d3b7fd469efde4b74f309128eca764c01914e12e"
+    },
+    {
+      "combination": "silver__amber__plain__back",
+      "frame": 5,
+      "path": "combinations/silver__amber__plain__back/walk-05.png",
+      "sha256": "b3270c21bf7f5bb3a12dd2c0a101a9b4acf81b00e671c7607a9163eed65c22b6"
+    },
+    {
+      "combination": "silver__amber__plain__back",
+      "frame": 6,
+      "path": "combinations/silver__amber__plain__back/walk-06.png",
+      "sha256": "5da1e7286058d8fbfc002beda9cd79f5652d5fda7417bcb077dc583c6deade06"
+    },
+    {
+      "combination": "silver__amber__plain__back",
+      "frame": 7,
+      "path": "combinations/silver__amber__plain__back/walk-07.png",
+      "sha256": "d7f783af02ae907b585e5ca58ead7de80ae4261da71db0b11e4faac7e8c162e0"
+    },
+    {
+      "combination": "silver__amber__plain__back",
+      "frame": 8,
+      "path": "combinations/silver__amber__plain__back/walk-08.png",
+      "sha256": "e04720360aee50ffd153e0c71571d893168cd67a5a29e38a05c7ca874ae5793f"
+    },
+    {
+      "combination": "silver__amber__forester__empty",
+      "frame": 0,
+      "path": "combinations/silver__amber__forester__empty/idle-00.png",
+      "sha256": "4f432c4ee6c3fd524cb358fdcae7a69f2892848230d152f44d114d011034d4b7"
+    },
+    {
+      "combination": "silver__amber__forester__empty",
+      "frame": 1,
+      "path": "combinations/silver__amber__forester__empty/walk-01.png",
+      "sha256": "29ac79bca4653cb3f70a8523257829588301c1ca2cd8b7a31bcd851eccc8f698"
+    },
+    {
+      "combination": "silver__amber__forester__empty",
+      "frame": 2,
+      "path": "combinations/silver__amber__forester__empty/walk-02.png",
+      "sha256": "41ec890359edafad10bb30d66a92ec45f7f7c167170885bce6f8004552afcf73"
+    },
+    {
+      "combination": "silver__amber__forester__empty",
+      "frame": 3,
+      "path": "combinations/silver__amber__forester__empty/walk-03.png",
+      "sha256": "565c300c898f170094e2f721831755380dc0185a6420ddbce76432d1a18cd7e2"
+    },
+    {
+      "combination": "silver__amber__forester__empty",
+      "frame": 4,
+      "path": "combinations/silver__amber__forester__empty/walk-04.png",
+      "sha256": "a67bca0c404b652a6503734a66a200f3f35bc8838f58687676df80a3a3f1be21"
+    },
+    {
+      "combination": "silver__amber__forester__empty",
+      "frame": 5,
+      "path": "combinations/silver__amber__forester__empty/walk-05.png",
+      "sha256": "841434efa9b74e9e20c059528bb3817e23aa2ee3e9ee18de164d77a860fdf6c2"
+    },
+    {
+      "combination": "silver__amber__forester__empty",
+      "frame": 6,
+      "path": "combinations/silver__amber__forester__empty/walk-06.png",
+      "sha256": "2f9cc2174b6f6cadffe6dc11e98872f03261bc6f7f27922e2bb5f95408b2f3ab"
+    },
+    {
+      "combination": "silver__amber__forester__empty",
+      "frame": 7,
+      "path": "combinations/silver__amber__forester__empty/walk-07.png",
+      "sha256": "ddecddc5c673a72d10053482a7828a7deb98196ac2724e67bbe4bc76ff9a680a"
+    },
+    {
+      "combination": "silver__amber__forester__empty",
+      "frame": 8,
+      "path": "combinations/silver__amber__forester__empty/walk-08.png",
+      "sha256": "fb74db8f670ee3128acca3b6e42d6ee90457c12bcd239854c422e5a123751f26"
+    },
+    {
+      "combination": "silver__amber__forester__back",
+      "frame": 0,
+      "path": "combinations/silver__amber__forester__back/idle-00.png",
+      "sha256": "d0a0be7dd2c1ed806d2dce3793dcd60ff0267628c37b0bf71a7ebd0b355a8a71"
+    },
+    {
+      "combination": "silver__amber__forester__back",
+      "frame": 1,
+      "path": "combinations/silver__amber__forester__back/walk-01.png",
+      "sha256": "b447a7088f8d1a054d33418da4e5ef2c546314ca45f09e25236a79398d96199e"
+    },
+    {
+      "combination": "silver__amber__forester__back",
+      "frame": 2,
+      "path": "combinations/silver__amber__forester__back/walk-02.png",
+      "sha256": "1cfaf63ccde1753cee74bbbd339f0db5e5df691717dbb448c60c0a54fca40c61"
+    },
+    {
+      "combination": "silver__amber__forester__back",
+      "frame": 3,
+      "path": "combinations/silver__amber__forester__back/walk-03.png",
+      "sha256": "3ec50d962dc2a6313e5a2992715523faa94c821023151313270cfb78c38c24e8"
+    },
+    {
+      "combination": "silver__amber__forester__back",
+      "frame": 4,
+      "path": "combinations/silver__amber__forester__back/walk-04.png",
+      "sha256": "ee466bab4a6054a8c3f39db5f18885abab4b151c157a5cda28980b18060250d2"
+    },
+    {
+      "combination": "silver__amber__forester__back",
+      "frame": 5,
+      "path": "combinations/silver__amber__forester__back/walk-05.png",
+      "sha256": "d8d00809a699be154fdef3583c7839a01085ef469aafa2e386851b3b920ed80c"
+    },
+    {
+      "combination": "silver__amber__forester__back",
+      "frame": 6,
+      "path": "combinations/silver__amber__forester__back/walk-06.png",
+      "sha256": "721806884cea0531f9a48f72890cfaaf82dc3a99cacca5b4030b53c94ac1fb2e"
+    },
+    {
+      "combination": "silver__amber__forester__back",
+      "frame": 7,
+      "path": "combinations/silver__amber__forester__back/walk-07.png",
+      "sha256": "518fbf325d808d8d6656f09e11b4d6e5b5da49d7a55354e4bc24c4b44a1a0f4d"
+    },
+    {
+      "combination": "silver__amber__forester__back",
+      "frame": 8,
+      "path": "combinations/silver__amber__forester__back/walk-08.png",
+      "sha256": "69e51875e1be8f3453e6fce4648eba4a9cc956e67d58daf6d2281b17e04b5670"
+    },
+    {
+      "combination": "teal__blue__plain__empty",
+      "frame": 0,
+      "path": "combinations/teal__blue__plain__empty/idle-00.png",
+      "sha256": "9b79904def17e0e28cadb3c423fa73359ab387368982310267bcac39c6b96026"
+    },
+    {
+      "combination": "teal__blue__plain__empty",
+      "frame": 1,
+      "path": "combinations/teal__blue__plain__empty/walk-01.png",
+      "sha256": "04256e16d434101c855d540765bb995cdda5b60be1f4b9f270fae827765d2f24"
+    },
+    {
+      "combination": "teal__blue__plain__empty",
+      "frame": 2,
+      "path": "combinations/teal__blue__plain__empty/walk-02.png",
+      "sha256": "b966be598625e3db6aa658e1df70d80195f655f4e18e5fdd08376e95ed1cffbd"
+    },
+    {
+      "combination": "teal__blue__plain__empty",
+      "frame": 3,
+      "path": "combinations/teal__blue__plain__empty/walk-03.png",
+      "sha256": "9fe14bcca5461ce699c1d40af62288869e85dd50b8b8026ff6ffeb3a6e361a40"
+    },
+    {
+      "combination": "teal__blue__plain__empty",
+      "frame": 4,
+      "path": "combinations/teal__blue__plain__empty/walk-04.png",
+      "sha256": "dbdad3b5781b9de52b98df38946956d36959817f0ae9ef1353be12bb4496086b"
+    },
+    {
+      "combination": "teal__blue__plain__empty",
+      "frame": 5,
+      "path": "combinations/teal__blue__plain__empty/walk-05.png",
+      "sha256": "e45f6290375f44c68cfe8ee1304f3fd95bb5e727fcc7d464e8424594aca12905"
+    },
+    {
+      "combination": "teal__blue__plain__empty",
+      "frame": 6,
+      "path": "combinations/teal__blue__plain__empty/walk-06.png",
+      "sha256": "79f17553fc1df71080b8598cd6eca08cd66f561514242f0c22cd394525e2ba48"
+    },
+    {
+      "combination": "teal__blue__plain__empty",
+      "frame": 7,
+      "path": "combinations/teal__blue__plain__empty/walk-07.png",
+      "sha256": "2cd37f745d26f9d7f949665fff71fb83ac43dd0825663d949bc6fd843c7fd365"
+    },
+    {
+      "combination": "teal__blue__plain__empty",
+      "frame": 8,
+      "path": "combinations/teal__blue__plain__empty/walk-08.png",
+      "sha256": "543d613d1f98f4ec0e02db535b0f867a4e35dcfe1b81af2bf8a5333c537dc7b9"
+    },
+    {
+      "combination": "teal__blue__plain__back",
+      "frame": 0,
+      "path": "combinations/teal__blue__plain__back/idle-00.png",
+      "sha256": "8ac3c107a75ce9b3f80763d7d51f4cf237cad8e883611ad43021db31c0f34d40"
+    },
+    {
+      "combination": "teal__blue__plain__back",
+      "frame": 1,
+      "path": "combinations/teal__blue__plain__back/walk-01.png",
+      "sha256": "a88f56f4a0d7130cb6ff2971345fe91ceb2853b1bfd6e242b12303db844cbf3b"
+    },
+    {
+      "combination": "teal__blue__plain__back",
+      "frame": 2,
+      "path": "combinations/teal__blue__plain__back/walk-02.png",
+      "sha256": "de51f652e2d9f54c8b45a51a6221b610289278513d34864e5205a365c358a5b3"
+    },
+    {
+      "combination": "teal__blue__plain__back",
+      "frame": 3,
+      "path": "combinations/teal__blue__plain__back/walk-03.png",
+      "sha256": "9f55b91fc21db4db9b368beb9e0785933c1f0593b86cf2de4a0efca1ec40892e"
+    },
+    {
+      "combination": "teal__blue__plain__back",
+      "frame": 4,
+      "path": "combinations/teal__blue__plain__back/walk-04.png",
+      "sha256": "bbd56b821a312f2f95aabd30de78a78911772142c52b817a8f014a5200b09a36"
+    },
+    {
+      "combination": "teal__blue__plain__back",
+      "frame": 5,
+      "path": "combinations/teal__blue__plain__back/walk-05.png",
+      "sha256": "748124fa0eb57ba752bcadcef6546194f3de24c4412580072a424446308d9d3f"
+    },
+    {
+      "combination": "teal__blue__plain__back",
+      "frame": 6,
+      "path": "combinations/teal__blue__plain__back/walk-06.png",
+      "sha256": "c50b519834df7c78e2055d29ac09c60042d68c86d8d25e72e128ecfdf1b83878"
+    },
+    {
+      "combination": "teal__blue__plain__back",
+      "frame": 7,
+      "path": "combinations/teal__blue__plain__back/walk-07.png",
+      "sha256": "868947490056d2a767fb5d8cde4e30c19ed9c37b6fde25f18a1117040b0845b8"
+    },
+    {
+      "combination": "teal__blue__plain__back",
+      "frame": 8,
+      "path": "combinations/teal__blue__plain__back/walk-08.png",
+      "sha256": "c2657e105c61e51d9db7ddb718db65af150daa87f82cd9e4041d0a1bffbf8c7c"
+    },
+    {
+      "combination": "teal__blue__forester__empty",
+      "frame": 0,
+      "path": "combinations/teal__blue__forester__empty/idle-00.png",
+      "sha256": "2a1ca27c26a975bbbe9c82e114e8f5c6a3df40f42e7eda6338398f649b2d690a"
+    },
+    {
+      "combination": "teal__blue__forester__empty",
+      "frame": 1,
+      "path": "combinations/teal__blue__forester__empty/walk-01.png",
+      "sha256": "ea67ef6be6062a917f95db64a36b1b993dcf3788801e994ce2592c6de852e1d3"
+    },
+    {
+      "combination": "teal__blue__forester__empty",
+      "frame": 2,
+      "path": "combinations/teal__blue__forester__empty/walk-02.png",
+      "sha256": "b6d6680b36f150b6f01188aee65c1efd4c89f340c6f2d6437d8d483fc159b250"
+    },
+    {
+      "combination": "teal__blue__forester__empty",
+      "frame": 3,
+      "path": "combinations/teal__blue__forester__empty/walk-03.png",
+      "sha256": "63c7c89ad020fb99d25ab21543458ba2362c2344b6b9397879c904823b7d108f"
+    },
+    {
+      "combination": "teal__blue__forester__empty",
+      "frame": 4,
+      "path": "combinations/teal__blue__forester__empty/walk-04.png",
+      "sha256": "81f2cfba02cb8c0ba132079719e4d9fb3c5292f449d1779f0fecebaf05687a29"
+    },
+    {
+      "combination": "teal__blue__forester__empty",
+      "frame": 5,
+      "path": "combinations/teal__blue__forester__empty/walk-05.png",
+      "sha256": "60db1e0d7cb9591a23ed1183c86b5b703b1bd7e382aef4dadd1283ce44fdae26"
+    },
+    {
+      "combination": "teal__blue__forester__empty",
+      "frame": 6,
+      "path": "combinations/teal__blue__forester__empty/walk-06.png",
+      "sha256": "fb3074b282f7196ed4d20eb8591769d38bda95bbc3a686b5c436f19e12089bb0"
+    },
+    {
+      "combination": "teal__blue__forester__empty",
+      "frame": 7,
+      "path": "combinations/teal__blue__forester__empty/walk-07.png",
+      "sha256": "1f67bf15a2ff52ce30e733ad72aea2f80df20fc4e8416935bb53ed1e710933d6"
+    },
+    {
+      "combination": "teal__blue__forester__empty",
+      "frame": 8,
+      "path": "combinations/teal__blue__forester__empty/walk-08.png",
+      "sha256": "0c893521e7e0761153464b515e3523541c72d17c5f8fd21de8d46489e0a88d7b"
+    },
+    {
+      "combination": "teal__blue__forester__back",
+      "frame": 0,
+      "path": "combinations/teal__blue__forester__back/idle-00.png",
+      "sha256": "a099c3c3f1c18d40e6ad231a7044942f7c225aec7321d9c431f112e14e97e24d"
+    },
+    {
+      "combination": "teal__blue__forester__back",
+      "frame": 1,
+      "path": "combinations/teal__blue__forester__back/walk-01.png",
+      "sha256": "e7f5e22486febacf60d8df61bd70463b4959fa2c51171a113a9f2bf9b0fd87e3"
+    },
+    {
+      "combination": "teal__blue__forester__back",
+      "frame": 2,
+      "path": "combinations/teal__blue__forester__back/walk-02.png",
+      "sha256": "1a568de753e4f1f1736299295b84b024122f73d53cd73acd3a5658b25abc19ae"
+    },
+    {
+      "combination": "teal__blue__forester__back",
+      "frame": 3,
+      "path": "combinations/teal__blue__forester__back/walk-03.png",
+      "sha256": "f6487604c441ae3f696461ac7e00918c6e9ffadf162ebd20786dba8a2a865714"
+    },
+    {
+      "combination": "teal__blue__forester__back",
+      "frame": 4,
+      "path": "combinations/teal__blue__forester__back/walk-04.png",
+      "sha256": "e85359939e4a54cc38b069998a540aab26b3be0087f96da42bc729001d73697a"
+    },
+    {
+      "combination": "teal__blue__forester__back",
+      "frame": 5,
+      "path": "combinations/teal__blue__forester__back/walk-05.png",
+      "sha256": "b7d28d4eff284edd39e39c6ec6c355e09722e252fdca55b871654d9bf09b9b03"
+    },
+    {
+      "combination": "teal__blue__forester__back",
+      "frame": 6,
+      "path": "combinations/teal__blue__forester__back/walk-06.png",
+      "sha256": "00e421e935228d52c2a3874a8196fe214cbe68ec577995ffd44cb1f837af5ed1"
+    },
+    {
+      "combination": "teal__blue__forester__back",
+      "frame": 7,
+      "path": "combinations/teal__blue__forester__back/walk-07.png",
+      "sha256": "d54524288a55a5804bbe511c83b06df4af79b563ad0e30d6ae5dc360a52382d5"
+    },
+    {
+      "combination": "teal__blue__forester__back",
+      "frame": 8,
+      "path": "combinations/teal__blue__forester__back/walk-08.png",
+      "sha256": "8ee24b1b28c533c9b75ba1730414fc355da4b19c25ba48a0da7e882d24b5635f"
+    },
+    {
+      "combination": "teal__amber__plain__empty",
+      "frame": 0,
+      "path": "combinations/teal__amber__plain__empty/idle-00.png",
+      "sha256": "6857cb219f7686a9bef21e10dd2d72d1cdff01ca51548b90df77270e6444dcbb"
+    },
+    {
+      "combination": "teal__amber__plain__empty",
+      "frame": 1,
+      "path": "combinations/teal__amber__plain__empty/walk-01.png",
+      "sha256": "fcefa759ac6566d002a027df827be5e7a18ad18f6ddfadb980e6e989efbd740c"
+    },
+    {
+      "combination": "teal__amber__plain__empty",
+      "frame": 2,
+      "path": "combinations/teal__amber__plain__empty/walk-02.png",
+      "sha256": "e7e8d5896ad8d2b6a821bf80c70425641ebe7ec5d97945464b3d5364fc062033"
+    },
+    {
+      "combination": "teal__amber__plain__empty",
+      "frame": 3,
+      "path": "combinations/teal__amber__plain__empty/walk-03.png",
+      "sha256": "41332509ea23c8bdb8e8c53eedfc35c9b50d750ec2aa8ca7b61a6623e570ac7c"
+    },
+    {
+      "combination": "teal__amber__plain__empty",
+      "frame": 4,
+      "path": "combinations/teal__amber__plain__empty/walk-04.png",
+      "sha256": "11d8cfa9ff61b49d7ae2b2a0ea6d822ca34bc12c4bf8372fe795e5a4a215732d"
+    },
+    {
+      "combination": "teal__amber__plain__empty",
+      "frame": 5,
+      "path": "combinations/teal__amber__plain__empty/walk-05.png",
+      "sha256": "fae556ab34327616fb2e8c8221d5273052f718de39ba6359c26a16bafef17d93"
+    },
+    {
+      "combination": "teal__amber__plain__empty",
+      "frame": 6,
+      "path": "combinations/teal__amber__plain__empty/walk-06.png",
+      "sha256": "61b98b299f4e44bbf20683fcae43909506ddb14a1b59c0af3fb407d685a05378"
+    },
+    {
+      "combination": "teal__amber__plain__empty",
+      "frame": 7,
+      "path": "combinations/teal__amber__plain__empty/walk-07.png",
+      "sha256": "1089c61b8261e044df497f4a50567405e1581833eef2adcd15e918b4485976a6"
+    },
+    {
+      "combination": "teal__amber__plain__empty",
+      "frame": 8,
+      "path": "combinations/teal__amber__plain__empty/walk-08.png",
+      "sha256": "343c71d16bd27dd981099fc72a7023cf35f6acce152c71865019101f823b759e"
+    },
+    {
+      "combination": "teal__amber__plain__back",
+      "frame": 0,
+      "path": "combinations/teal__amber__plain__back/idle-00.png",
+      "sha256": "0b307d63b475d0938d04be28e4e6c32564fa4641066d7dbe6692f8affffc20d4"
+    },
+    {
+      "combination": "teal__amber__plain__back",
+      "frame": 1,
+      "path": "combinations/teal__amber__plain__back/walk-01.png",
+      "sha256": "91791bd205e2eeef05037472295335b997d4814e3b727f12d50bf6d79f92465a"
+    },
+    {
+      "combination": "teal__amber__plain__back",
+      "frame": 2,
+      "path": "combinations/teal__amber__plain__back/walk-02.png",
+      "sha256": "cfe45870e4c25944669032933495f1d747adcff707ca895f42e8459f0dc58c58"
+    },
+    {
+      "combination": "teal__amber__plain__back",
+      "frame": 3,
+      "path": "combinations/teal__amber__plain__back/walk-03.png",
+      "sha256": "4d665b6238cffb89b436f1fd0fe74fad52424351130ee9c172eddd847a2ac5ae"
+    },
+    {
+      "combination": "teal__amber__plain__back",
+      "frame": 4,
+      "path": "combinations/teal__amber__plain__back/walk-04.png",
+      "sha256": "d20f2e5fdf5838f8526b523130d67a4ae6225d2e200bf9f49d4395fcf752b834"
+    },
+    {
+      "combination": "teal__amber__plain__back",
+      "frame": 5,
+      "path": "combinations/teal__amber__plain__back/walk-05.png",
+      "sha256": "a0d06bd1bc9e4b50c645475f5d64d5f1be182095c1222d710977e023a9c44b63"
+    },
+    {
+      "combination": "teal__amber__plain__back",
+      "frame": 6,
+      "path": "combinations/teal__amber__plain__back/walk-06.png",
+      "sha256": "c22a8eaf4f0e56d9bf9d50b1952fca02a401d3863bb9e2c3eb72a26571cc931b"
+    },
+    {
+      "combination": "teal__amber__plain__back",
+      "frame": 7,
+      "path": "combinations/teal__amber__plain__back/walk-07.png",
+      "sha256": "22908fa045068e8e78b3ffbc92b5e865ce201ca821f026c870636759666eeee5"
+    },
+    {
+      "combination": "teal__amber__plain__back",
+      "frame": 8,
+      "path": "combinations/teal__amber__plain__back/walk-08.png",
+      "sha256": "2ceb4874240c16fe1ea5ab7c4e1092f5341a935d78b583ec0328ca4c710ba74f"
+    },
+    {
+      "combination": "teal__amber__forester__empty",
+      "frame": 0,
+      "path": "combinations/teal__amber__forester__empty/idle-00.png",
+      "sha256": "0fd35721163481c4dc5604b9d970dadbd056880a9be54417de262e0ac2418783"
+    },
+    {
+      "combination": "teal__amber__forester__empty",
+      "frame": 1,
+      "path": "combinations/teal__amber__forester__empty/walk-01.png",
+      "sha256": "cec2710fe2c1a71660d02d333710de18ff057d9b8d5610227e30fe07f4e04d73"
+    },
+    {
+      "combination": "teal__amber__forester__empty",
+      "frame": 2,
+      "path": "combinations/teal__amber__forester__empty/walk-02.png",
+      "sha256": "de6587781c13bb7b92ce635695f296c0c790ce828bcccf16fa8800b2b240d19e"
+    },
+    {
+      "combination": "teal__amber__forester__empty",
+      "frame": 3,
+      "path": "combinations/teal__amber__forester__empty/walk-03.png",
+      "sha256": "10db561cd1263439d14858be22de77c6d94a94403d35a023c97faf0938259b29"
+    },
+    {
+      "combination": "teal__amber__forester__empty",
+      "frame": 4,
+      "path": "combinations/teal__amber__forester__empty/walk-04.png",
+      "sha256": "aa0538ba39b291f573b7bb66fa8be0ba905386beb54589c05e31cfb077cb171d"
+    },
+    {
+      "combination": "teal__amber__forester__empty",
+      "frame": 5,
+      "path": "combinations/teal__amber__forester__empty/walk-05.png",
+      "sha256": "dd66b73e965dba7fb109166498ce705a49e8f235cf5bbb2c407e8c51c5c331ad"
+    },
+    {
+      "combination": "teal__amber__forester__empty",
+      "frame": 6,
+      "path": "combinations/teal__amber__forester__empty/walk-06.png",
+      "sha256": "5953330b6e1bc8eced8d3ad18b0365ee2a0e3d687b43192e0b9bc037db81792c"
+    },
+    {
+      "combination": "teal__amber__forester__empty",
+      "frame": 7,
+      "path": "combinations/teal__amber__forester__empty/walk-07.png",
+      "sha256": "6a496af508c6ed54c088b5146fd464e9ae939aaeaebe3b3956dddf161e73e227"
+    },
+    {
+      "combination": "teal__amber__forester__empty",
+      "frame": 8,
+      "path": "combinations/teal__amber__forester__empty/walk-08.png",
+      "sha256": "89c282a17b2f449a83d8c1d766f33387fcd018aa6eb7e0e418d5f0fb98989c21"
+    },
+    {
+      "combination": "teal__amber__forester__back",
+      "frame": 0,
+      "path": "combinations/teal__amber__forester__back/idle-00.png",
+      "sha256": "b1dcf25a8250e8115f0ba7a860c08c3d519a3d61ee207d5d48871b2a1a5419f0"
+    },
+    {
+      "combination": "teal__amber__forester__back",
+      "frame": 1,
+      "path": "combinations/teal__amber__forester__back/walk-01.png",
+      "sha256": "d486fb3fca5ec2f3719dbe83b224cb816026e28b131c5ea776681761cbb5d2a3"
+    },
+    {
+      "combination": "teal__amber__forester__back",
+      "frame": 2,
+      "path": "combinations/teal__amber__forester__back/walk-02.png",
+      "sha256": "d0ed7b8faf73794731dbfe8cd549c62691f274e2f717f39295265d9bb721cfde"
+    },
+    {
+      "combination": "teal__amber__forester__back",
+      "frame": 3,
+      "path": "combinations/teal__amber__forester__back/walk-03.png",
+      "sha256": "09ecda84aba3235268b934abd31a2a6d742251ac770d4f415101d9ce65c8f212"
+    },
+    {
+      "combination": "teal__amber__forester__back",
+      "frame": 4,
+      "path": "combinations/teal__amber__forester__back/walk-04.png",
+      "sha256": "30d525598c06677e72aedef0d9ce061f52c223aa5e37e86485a52d163c53cc30"
+    },
+    {
+      "combination": "teal__amber__forester__back",
+      "frame": 5,
+      "path": "combinations/teal__amber__forester__back/walk-05.png",
+      "sha256": "872f07ed4ee75421aef1cf45906f3a11e5a7ae856bfe06ffbe720e578fbd80ec"
+    },
+    {
+      "combination": "teal__amber__forester__back",
+      "frame": 6,
+      "path": "combinations/teal__amber__forester__back/walk-06.png",
+      "sha256": "9e4fbf8485bb76b9bedb4d2e5ce2739f3577174d4d177d9c13324baa5dddb2f0"
+    },
+    {
+      "combination": "teal__amber__forester__back",
+      "frame": 7,
+      "path": "combinations/teal__amber__forester__back/walk-07.png",
+      "sha256": "443d7a1a8d98a5f76d0c911c5791f300fa52a060eb6e00341b53a274093bee41"
+    },
+    {
+      "combination": "teal__amber__forester__back",
+      "frame": 8,
+      "path": "combinations/teal__amber__forester__back/walk-08.png",
+      "sha256": "f83e1e72349fb77e64987e71c1bd5418ca87d569d5d332c7769aad450f8e6c7c"
+    }
+  ],
+  "catalogSHA256": "1870ded44bfc7ce2796994ca0b074a97cc92829747c2784954c8ade5c7a2660c",
+  "motionSHA256": "17ebc50999ed0042f0a2c58be8e740e918c9c3f045126bbd8444a5166facdd37",
+  "base": "p1-neutral-down-walk-r6-relaxed-arms",
+  "coverage": [
+    {
+      "combination": "chestnut__blue__forester__empty",
+      "frame": 0,
+      "slot": "body.arm.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "chestnut__blue__forester__empty",
+      "frame": 0,
+      "slot": "body.arm.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "chestnut__blue__forester__empty",
+      "frame": 0,
+      "slot": "body.leg.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "chestnut__blue__forester__empty",
+      "frame": 0,
+      "slot": "body.leg.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "chestnut__blue__forester__empty",
+      "frame": 0,
+      "slot": "body.torso",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "chestnut__blue__forester__empty",
+      "frame": 1,
+      "slot": "body.arm.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "chestnut__blue__forester__empty",
+      "frame": 1,
+      "slot": "body.arm.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "chestnut__blue__forester__empty",
+      "frame": 1,
+      "slot": "body.leg.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00784313725490196
+    },
+    {
+      "combination": "chestnut__blue__forester__empty",
+      "frame": 1,
+      "slot": "body.leg.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "chestnut__blue__forester__empty",
+      "frame": 1,
+      "slot": "body.torso",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "chestnut__blue__forester__empty",
+      "frame": 2,
+      "slot": "body.arm.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "chestnut__blue__forester__empty",
+      "frame": 2,
+      "slot": "body.arm.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "chestnut__blue__forester__empty",
+      "frame": 2,
+      "slot": "body.leg.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 9.191035122238064e-05
+    },
+    {
+      "combination": "chestnut__blue__forester__empty",
+      "frame": 2,
+      "slot": "body.leg.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "chestnut__blue__forester__empty",
+      "frame": 2,
+      "slot": "body.torso",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "chestnut__blue__forester__empty",
+      "frame": 3,
+      "slot": "body.arm.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "chestnut__blue__forester__empty",
+      "frame": 3,
+      "slot": "body.arm.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "chestnut__blue__forester__empty",
+      "frame": 3,
+      "slot": "body.leg.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "chestnut__blue__forester__empty",
+      "frame": 3,
+      "slot": "body.leg.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "chestnut__blue__forester__empty",
+      "frame": 3,
+      "slot": "body.torso",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "chestnut__blue__forester__empty",
+      "frame": 4,
+      "slot": "body.arm.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "chestnut__blue__forester__empty",
+      "frame": 4,
+      "slot": "body.arm.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "chestnut__blue__forester__empty",
+      "frame": 4,
+      "slot": "body.leg.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "chestnut__blue__forester__empty",
+      "frame": 4,
+      "slot": "body.leg.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "chestnut__blue__forester__empty",
+      "frame": 4,
+      "slot": "body.torso",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "chestnut__blue__forester__empty",
+      "frame": 5,
+      "slot": "body.arm.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "chestnut__blue__forester__empty",
+      "frame": 5,
+      "slot": "body.arm.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "chestnut__blue__forester__empty",
+      "frame": 5,
+      "slot": "body.leg.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "chestnut__blue__forester__empty",
+      "frame": 5,
+      "slot": "body.leg.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "chestnut__blue__forester__empty",
+      "frame": 5,
+      "slot": "body.torso",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "chestnut__blue__forester__empty",
+      "frame": 6,
+      "slot": "body.arm.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "chestnut__blue__forester__empty",
+      "frame": 6,
+      "slot": "body.arm.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "chestnut__blue__forester__empty",
+      "frame": 6,
+      "slot": "body.leg.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "chestnut__blue__forester__empty",
+      "frame": 6,
+      "slot": "body.leg.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.023529411764705882
+    },
+    {
+      "combination": "chestnut__blue__forester__empty",
+      "frame": 6,
+      "slot": "body.torso",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "chestnut__blue__forester__empty",
+      "frame": 7,
+      "slot": "body.arm.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "chestnut__blue__forester__empty",
+      "frame": 7,
+      "slot": "body.arm.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "chestnut__blue__forester__empty",
+      "frame": 7,
+      "slot": "body.leg.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00784313725490196
+    },
+    {
+      "combination": "chestnut__blue__forester__empty",
+      "frame": 7,
+      "slot": "body.leg.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00784313725490196
+    },
+    {
+      "combination": "chestnut__blue__forester__empty",
+      "frame": 7,
+      "slot": "body.torso",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "chestnut__blue__forester__empty",
+      "frame": 8,
+      "slot": "body.arm.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "chestnut__blue__forester__empty",
+      "frame": 8,
+      "slot": "body.arm.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "chestnut__blue__forester__empty",
+      "frame": 8,
+      "slot": "body.leg.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "chestnut__blue__forester__empty",
+      "frame": 8,
+      "slot": "body.leg.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0196078431372549
+    },
+    {
+      "combination": "chestnut__blue__forester__empty",
+      "frame": 8,
+      "slot": "body.torso",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "chestnut__blue__forester__back",
+      "frame": 0,
+      "slot": "body.arm.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "chestnut__blue__forester__back",
+      "frame": 0,
+      "slot": "body.arm.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "chestnut__blue__forester__back",
+      "frame": 0,
+      "slot": "body.leg.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "chestnut__blue__forester__back",
+      "frame": 0,
+      "slot": "body.leg.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "chestnut__blue__forester__back",
+      "frame": 0,
+      "slot": "body.torso",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "chestnut__blue__forester__back",
+      "frame": 1,
+      "slot": "body.arm.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "chestnut__blue__forester__back",
+      "frame": 1,
+      "slot": "body.arm.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "chestnut__blue__forester__back",
+      "frame": 1,
+      "slot": "body.leg.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00784313725490196
+    },
+    {
+      "combination": "chestnut__blue__forester__back",
+      "frame": 1,
+      "slot": "body.leg.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "chestnut__blue__forester__back",
+      "frame": 1,
+      "slot": "body.torso",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "chestnut__blue__forester__back",
+      "frame": 2,
+      "slot": "body.arm.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "chestnut__blue__forester__back",
+      "frame": 2,
+      "slot": "body.arm.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "chestnut__blue__forester__back",
+      "frame": 2,
+      "slot": "body.leg.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 9.191035122238064e-05
+    },
+    {
+      "combination": "chestnut__blue__forester__back",
+      "frame": 2,
+      "slot": "body.leg.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "chestnut__blue__forester__back",
+      "frame": 2,
+      "slot": "body.torso",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "chestnut__blue__forester__back",
+      "frame": 3,
+      "slot": "body.arm.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "chestnut__blue__forester__back",
+      "frame": 3,
+      "slot": "body.arm.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "chestnut__blue__forester__back",
+      "frame": 3,
+      "slot": "body.leg.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "chestnut__blue__forester__back",
+      "frame": 3,
+      "slot": "body.leg.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "chestnut__blue__forester__back",
+      "frame": 3,
+      "slot": "body.torso",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "chestnut__blue__forester__back",
+      "frame": 4,
+      "slot": "body.arm.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "chestnut__blue__forester__back",
+      "frame": 4,
+      "slot": "body.arm.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "chestnut__blue__forester__back",
+      "frame": 4,
+      "slot": "body.leg.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "chestnut__blue__forester__back",
+      "frame": 4,
+      "slot": "body.leg.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "chestnut__blue__forester__back",
+      "frame": 4,
+      "slot": "body.torso",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "chestnut__blue__forester__back",
+      "frame": 5,
+      "slot": "body.arm.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "chestnut__blue__forester__back",
+      "frame": 5,
+      "slot": "body.arm.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "chestnut__blue__forester__back",
+      "frame": 5,
+      "slot": "body.leg.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "chestnut__blue__forester__back",
+      "frame": 5,
+      "slot": "body.leg.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "chestnut__blue__forester__back",
+      "frame": 5,
+      "slot": "body.torso",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "chestnut__blue__forester__back",
+      "frame": 6,
+      "slot": "body.arm.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "chestnut__blue__forester__back",
+      "frame": 6,
+      "slot": "body.arm.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "chestnut__blue__forester__back",
+      "frame": 6,
+      "slot": "body.leg.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "chestnut__blue__forester__back",
+      "frame": 6,
+      "slot": "body.leg.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.023529411764705882
+    },
+    {
+      "combination": "chestnut__blue__forester__back",
+      "frame": 6,
+      "slot": "body.torso",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "chestnut__blue__forester__back",
+      "frame": 7,
+      "slot": "body.arm.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "chestnut__blue__forester__back",
+      "frame": 7,
+      "slot": "body.arm.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "chestnut__blue__forester__back",
+      "frame": 7,
+      "slot": "body.leg.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00784313725490196
+    },
+    {
+      "combination": "chestnut__blue__forester__back",
+      "frame": 7,
+      "slot": "body.leg.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00784313725490196
+    },
+    {
+      "combination": "chestnut__blue__forester__back",
+      "frame": 7,
+      "slot": "body.torso",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "chestnut__blue__forester__back",
+      "frame": 8,
+      "slot": "body.arm.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "chestnut__blue__forester__back",
+      "frame": 8,
+      "slot": "body.arm.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "chestnut__blue__forester__back",
+      "frame": 8,
+      "slot": "body.leg.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "chestnut__blue__forester__back",
+      "frame": 8,
+      "slot": "body.leg.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0196078431372549
+    },
+    {
+      "combination": "chestnut__blue__forester__back",
+      "frame": 8,
+      "slot": "body.torso",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "chestnut__amber__forester__empty",
+      "frame": 0,
+      "slot": "body.arm.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "chestnut__amber__forester__empty",
+      "frame": 0,
+      "slot": "body.arm.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "chestnut__amber__forester__empty",
+      "frame": 0,
+      "slot": "body.leg.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "chestnut__amber__forester__empty",
+      "frame": 0,
+      "slot": "body.leg.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "chestnut__amber__forester__empty",
+      "frame": 0,
+      "slot": "body.torso",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "chestnut__amber__forester__empty",
+      "frame": 1,
+      "slot": "body.arm.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "chestnut__amber__forester__empty",
+      "frame": 1,
+      "slot": "body.arm.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "chestnut__amber__forester__empty",
+      "frame": 1,
+      "slot": "body.leg.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00784313725490196
+    },
+    {
+      "combination": "chestnut__amber__forester__empty",
+      "frame": 1,
+      "slot": "body.leg.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "chestnut__amber__forester__empty",
+      "frame": 1,
+      "slot": "body.torso",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "chestnut__amber__forester__empty",
+      "frame": 2,
+      "slot": "body.arm.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "chestnut__amber__forester__empty",
+      "frame": 2,
+      "slot": "body.arm.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "chestnut__amber__forester__empty",
+      "frame": 2,
+      "slot": "body.leg.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 9.191035122238064e-05
+    },
+    {
+      "combination": "chestnut__amber__forester__empty",
+      "frame": 2,
+      "slot": "body.leg.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "chestnut__amber__forester__empty",
+      "frame": 2,
+      "slot": "body.torso",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "chestnut__amber__forester__empty",
+      "frame": 3,
+      "slot": "body.arm.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "chestnut__amber__forester__empty",
+      "frame": 3,
+      "slot": "body.arm.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "chestnut__amber__forester__empty",
+      "frame": 3,
+      "slot": "body.leg.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "chestnut__amber__forester__empty",
+      "frame": 3,
+      "slot": "body.leg.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "chestnut__amber__forester__empty",
+      "frame": 3,
+      "slot": "body.torso",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "chestnut__amber__forester__empty",
+      "frame": 4,
+      "slot": "body.arm.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "chestnut__amber__forester__empty",
+      "frame": 4,
+      "slot": "body.arm.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "chestnut__amber__forester__empty",
+      "frame": 4,
+      "slot": "body.leg.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "chestnut__amber__forester__empty",
+      "frame": 4,
+      "slot": "body.leg.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "chestnut__amber__forester__empty",
+      "frame": 4,
+      "slot": "body.torso",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "chestnut__amber__forester__empty",
+      "frame": 5,
+      "slot": "body.arm.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "chestnut__amber__forester__empty",
+      "frame": 5,
+      "slot": "body.arm.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "chestnut__amber__forester__empty",
+      "frame": 5,
+      "slot": "body.leg.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "chestnut__amber__forester__empty",
+      "frame": 5,
+      "slot": "body.leg.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "chestnut__amber__forester__empty",
+      "frame": 5,
+      "slot": "body.torso",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "chestnut__amber__forester__empty",
+      "frame": 6,
+      "slot": "body.arm.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "chestnut__amber__forester__empty",
+      "frame": 6,
+      "slot": "body.arm.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "chestnut__amber__forester__empty",
+      "frame": 6,
+      "slot": "body.leg.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "chestnut__amber__forester__empty",
+      "frame": 6,
+      "slot": "body.leg.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.023529411764705882
+    },
+    {
+      "combination": "chestnut__amber__forester__empty",
+      "frame": 6,
+      "slot": "body.torso",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "chestnut__amber__forester__empty",
+      "frame": 7,
+      "slot": "body.arm.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "chestnut__amber__forester__empty",
+      "frame": 7,
+      "slot": "body.arm.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "chestnut__amber__forester__empty",
+      "frame": 7,
+      "slot": "body.leg.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00784313725490196
+    },
+    {
+      "combination": "chestnut__amber__forester__empty",
+      "frame": 7,
+      "slot": "body.leg.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00784313725490196
+    },
+    {
+      "combination": "chestnut__amber__forester__empty",
+      "frame": 7,
+      "slot": "body.torso",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "chestnut__amber__forester__empty",
+      "frame": 8,
+      "slot": "body.arm.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "chestnut__amber__forester__empty",
+      "frame": 8,
+      "slot": "body.arm.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "chestnut__amber__forester__empty",
+      "frame": 8,
+      "slot": "body.leg.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "chestnut__amber__forester__empty",
+      "frame": 8,
+      "slot": "body.leg.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0196078431372549
+    },
+    {
+      "combination": "chestnut__amber__forester__empty",
+      "frame": 8,
+      "slot": "body.torso",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "chestnut__amber__forester__back",
+      "frame": 0,
+      "slot": "body.arm.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "chestnut__amber__forester__back",
+      "frame": 0,
+      "slot": "body.arm.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "chestnut__amber__forester__back",
+      "frame": 0,
+      "slot": "body.leg.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "chestnut__amber__forester__back",
+      "frame": 0,
+      "slot": "body.leg.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "chestnut__amber__forester__back",
+      "frame": 0,
+      "slot": "body.torso",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "chestnut__amber__forester__back",
+      "frame": 1,
+      "slot": "body.arm.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "chestnut__amber__forester__back",
+      "frame": 1,
+      "slot": "body.arm.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "chestnut__amber__forester__back",
+      "frame": 1,
+      "slot": "body.leg.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00784313725490196
+    },
+    {
+      "combination": "chestnut__amber__forester__back",
+      "frame": 1,
+      "slot": "body.leg.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "chestnut__amber__forester__back",
+      "frame": 1,
+      "slot": "body.torso",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "chestnut__amber__forester__back",
+      "frame": 2,
+      "slot": "body.arm.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "chestnut__amber__forester__back",
+      "frame": 2,
+      "slot": "body.arm.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "chestnut__amber__forester__back",
+      "frame": 2,
+      "slot": "body.leg.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 9.191035122238064e-05
+    },
+    {
+      "combination": "chestnut__amber__forester__back",
+      "frame": 2,
+      "slot": "body.leg.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "chestnut__amber__forester__back",
+      "frame": 2,
+      "slot": "body.torso",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "chestnut__amber__forester__back",
+      "frame": 3,
+      "slot": "body.arm.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "chestnut__amber__forester__back",
+      "frame": 3,
+      "slot": "body.arm.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "chestnut__amber__forester__back",
+      "frame": 3,
+      "slot": "body.leg.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "chestnut__amber__forester__back",
+      "frame": 3,
+      "slot": "body.leg.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "chestnut__amber__forester__back",
+      "frame": 3,
+      "slot": "body.torso",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "chestnut__amber__forester__back",
+      "frame": 4,
+      "slot": "body.arm.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "chestnut__amber__forester__back",
+      "frame": 4,
+      "slot": "body.arm.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "chestnut__amber__forester__back",
+      "frame": 4,
+      "slot": "body.leg.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "chestnut__amber__forester__back",
+      "frame": 4,
+      "slot": "body.leg.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "chestnut__amber__forester__back",
+      "frame": 4,
+      "slot": "body.torso",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "chestnut__amber__forester__back",
+      "frame": 5,
+      "slot": "body.arm.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "chestnut__amber__forester__back",
+      "frame": 5,
+      "slot": "body.arm.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "chestnut__amber__forester__back",
+      "frame": 5,
+      "slot": "body.leg.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "chestnut__amber__forester__back",
+      "frame": 5,
+      "slot": "body.leg.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "chestnut__amber__forester__back",
+      "frame": 5,
+      "slot": "body.torso",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "chestnut__amber__forester__back",
+      "frame": 6,
+      "slot": "body.arm.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "chestnut__amber__forester__back",
+      "frame": 6,
+      "slot": "body.arm.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "chestnut__amber__forester__back",
+      "frame": 6,
+      "slot": "body.leg.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "chestnut__amber__forester__back",
+      "frame": 6,
+      "slot": "body.leg.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.023529411764705882
+    },
+    {
+      "combination": "chestnut__amber__forester__back",
+      "frame": 6,
+      "slot": "body.torso",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "chestnut__amber__forester__back",
+      "frame": 7,
+      "slot": "body.arm.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "chestnut__amber__forester__back",
+      "frame": 7,
+      "slot": "body.arm.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "chestnut__amber__forester__back",
+      "frame": 7,
+      "slot": "body.leg.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00784313725490196
+    },
+    {
+      "combination": "chestnut__amber__forester__back",
+      "frame": 7,
+      "slot": "body.leg.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00784313725490196
+    },
+    {
+      "combination": "chestnut__amber__forester__back",
+      "frame": 7,
+      "slot": "body.torso",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "chestnut__amber__forester__back",
+      "frame": 8,
+      "slot": "body.arm.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "chestnut__amber__forester__back",
+      "frame": 8,
+      "slot": "body.arm.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "chestnut__amber__forester__back",
+      "frame": 8,
+      "slot": "body.leg.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "chestnut__amber__forester__back",
+      "frame": 8,
+      "slot": "body.leg.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0196078431372549
+    },
+    {
+      "combination": "chestnut__amber__forester__back",
+      "frame": 8,
+      "slot": "body.torso",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "silver__blue__forester__empty",
+      "frame": 0,
+      "slot": "body.arm.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "silver__blue__forester__empty",
+      "frame": 0,
+      "slot": "body.arm.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "silver__blue__forester__empty",
+      "frame": 0,
+      "slot": "body.leg.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "silver__blue__forester__empty",
+      "frame": 0,
+      "slot": "body.leg.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "silver__blue__forester__empty",
+      "frame": 0,
+      "slot": "body.torso",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "silver__blue__forester__empty",
+      "frame": 1,
+      "slot": "body.arm.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "silver__blue__forester__empty",
+      "frame": 1,
+      "slot": "body.arm.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "silver__blue__forester__empty",
+      "frame": 1,
+      "slot": "body.leg.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00784313725490196
+    },
+    {
+      "combination": "silver__blue__forester__empty",
+      "frame": 1,
+      "slot": "body.leg.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "silver__blue__forester__empty",
+      "frame": 1,
+      "slot": "body.torso",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "silver__blue__forester__empty",
+      "frame": 2,
+      "slot": "body.arm.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "silver__blue__forester__empty",
+      "frame": 2,
+      "slot": "body.arm.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "silver__blue__forester__empty",
+      "frame": 2,
+      "slot": "body.leg.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 9.191035122238064e-05
+    },
+    {
+      "combination": "silver__blue__forester__empty",
+      "frame": 2,
+      "slot": "body.leg.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "silver__blue__forester__empty",
+      "frame": 2,
+      "slot": "body.torso",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "silver__blue__forester__empty",
+      "frame": 3,
+      "slot": "body.arm.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "silver__blue__forester__empty",
+      "frame": 3,
+      "slot": "body.arm.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "silver__blue__forester__empty",
+      "frame": 3,
+      "slot": "body.leg.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "silver__blue__forester__empty",
+      "frame": 3,
+      "slot": "body.leg.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "silver__blue__forester__empty",
+      "frame": 3,
+      "slot": "body.torso",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "silver__blue__forester__empty",
+      "frame": 4,
+      "slot": "body.arm.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "silver__blue__forester__empty",
+      "frame": 4,
+      "slot": "body.arm.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "silver__blue__forester__empty",
+      "frame": 4,
+      "slot": "body.leg.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "silver__blue__forester__empty",
+      "frame": 4,
+      "slot": "body.leg.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "silver__blue__forester__empty",
+      "frame": 4,
+      "slot": "body.torso",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "silver__blue__forester__empty",
+      "frame": 5,
+      "slot": "body.arm.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "silver__blue__forester__empty",
+      "frame": 5,
+      "slot": "body.arm.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "silver__blue__forester__empty",
+      "frame": 5,
+      "slot": "body.leg.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "silver__blue__forester__empty",
+      "frame": 5,
+      "slot": "body.leg.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "silver__blue__forester__empty",
+      "frame": 5,
+      "slot": "body.torso",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "silver__blue__forester__empty",
+      "frame": 6,
+      "slot": "body.arm.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "silver__blue__forester__empty",
+      "frame": 6,
+      "slot": "body.arm.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "silver__blue__forester__empty",
+      "frame": 6,
+      "slot": "body.leg.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "silver__blue__forester__empty",
+      "frame": 6,
+      "slot": "body.leg.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.023529411764705882
+    },
+    {
+      "combination": "silver__blue__forester__empty",
+      "frame": 6,
+      "slot": "body.torso",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "silver__blue__forester__empty",
+      "frame": 7,
+      "slot": "body.arm.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "silver__blue__forester__empty",
+      "frame": 7,
+      "slot": "body.arm.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "silver__blue__forester__empty",
+      "frame": 7,
+      "slot": "body.leg.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00784313725490196
+    },
+    {
+      "combination": "silver__blue__forester__empty",
+      "frame": 7,
+      "slot": "body.leg.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00784313725490196
+    },
+    {
+      "combination": "silver__blue__forester__empty",
+      "frame": 7,
+      "slot": "body.torso",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "silver__blue__forester__empty",
+      "frame": 8,
+      "slot": "body.arm.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "silver__blue__forester__empty",
+      "frame": 8,
+      "slot": "body.arm.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "silver__blue__forester__empty",
+      "frame": 8,
+      "slot": "body.leg.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "silver__blue__forester__empty",
+      "frame": 8,
+      "slot": "body.leg.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0196078431372549
+    },
+    {
+      "combination": "silver__blue__forester__empty",
+      "frame": 8,
+      "slot": "body.torso",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "silver__blue__forester__back",
+      "frame": 0,
+      "slot": "body.arm.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "silver__blue__forester__back",
+      "frame": 0,
+      "slot": "body.arm.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "silver__blue__forester__back",
+      "frame": 0,
+      "slot": "body.leg.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "silver__blue__forester__back",
+      "frame": 0,
+      "slot": "body.leg.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "silver__blue__forester__back",
+      "frame": 0,
+      "slot": "body.torso",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "silver__blue__forester__back",
+      "frame": 1,
+      "slot": "body.arm.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "silver__blue__forester__back",
+      "frame": 1,
+      "slot": "body.arm.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "silver__blue__forester__back",
+      "frame": 1,
+      "slot": "body.leg.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00784313725490196
+    },
+    {
+      "combination": "silver__blue__forester__back",
+      "frame": 1,
+      "slot": "body.leg.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "silver__blue__forester__back",
+      "frame": 1,
+      "slot": "body.torso",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "silver__blue__forester__back",
+      "frame": 2,
+      "slot": "body.arm.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "silver__blue__forester__back",
+      "frame": 2,
+      "slot": "body.arm.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "silver__blue__forester__back",
+      "frame": 2,
+      "slot": "body.leg.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 9.191035122238064e-05
+    },
+    {
+      "combination": "silver__blue__forester__back",
+      "frame": 2,
+      "slot": "body.leg.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "silver__blue__forester__back",
+      "frame": 2,
+      "slot": "body.torso",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "silver__blue__forester__back",
+      "frame": 3,
+      "slot": "body.arm.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "silver__blue__forester__back",
+      "frame": 3,
+      "slot": "body.arm.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "silver__blue__forester__back",
+      "frame": 3,
+      "slot": "body.leg.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "silver__blue__forester__back",
+      "frame": 3,
+      "slot": "body.leg.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "silver__blue__forester__back",
+      "frame": 3,
+      "slot": "body.torso",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "silver__blue__forester__back",
+      "frame": 4,
+      "slot": "body.arm.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "silver__blue__forester__back",
+      "frame": 4,
+      "slot": "body.arm.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "silver__blue__forester__back",
+      "frame": 4,
+      "slot": "body.leg.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "silver__blue__forester__back",
+      "frame": 4,
+      "slot": "body.leg.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "silver__blue__forester__back",
+      "frame": 4,
+      "slot": "body.torso",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "silver__blue__forester__back",
+      "frame": 5,
+      "slot": "body.arm.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "silver__blue__forester__back",
+      "frame": 5,
+      "slot": "body.arm.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "silver__blue__forester__back",
+      "frame": 5,
+      "slot": "body.leg.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "silver__blue__forester__back",
+      "frame": 5,
+      "slot": "body.leg.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "silver__blue__forester__back",
+      "frame": 5,
+      "slot": "body.torso",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "silver__blue__forester__back",
+      "frame": 6,
+      "slot": "body.arm.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "silver__blue__forester__back",
+      "frame": 6,
+      "slot": "body.arm.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "silver__blue__forester__back",
+      "frame": 6,
+      "slot": "body.leg.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "silver__blue__forester__back",
+      "frame": 6,
+      "slot": "body.leg.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.023529411764705882
+    },
+    {
+      "combination": "silver__blue__forester__back",
+      "frame": 6,
+      "slot": "body.torso",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "silver__blue__forester__back",
+      "frame": 7,
+      "slot": "body.arm.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "silver__blue__forester__back",
+      "frame": 7,
+      "slot": "body.arm.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "silver__blue__forester__back",
+      "frame": 7,
+      "slot": "body.leg.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00784313725490196
+    },
+    {
+      "combination": "silver__blue__forester__back",
+      "frame": 7,
+      "slot": "body.leg.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00784313725490196
+    },
+    {
+      "combination": "silver__blue__forester__back",
+      "frame": 7,
+      "slot": "body.torso",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "silver__blue__forester__back",
+      "frame": 8,
+      "slot": "body.arm.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "silver__blue__forester__back",
+      "frame": 8,
+      "slot": "body.arm.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "silver__blue__forester__back",
+      "frame": 8,
+      "slot": "body.leg.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "silver__blue__forester__back",
+      "frame": 8,
+      "slot": "body.leg.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0196078431372549
+    },
+    {
+      "combination": "silver__blue__forester__back",
+      "frame": 8,
+      "slot": "body.torso",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "silver__amber__forester__empty",
+      "frame": 0,
+      "slot": "body.arm.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "silver__amber__forester__empty",
+      "frame": 0,
+      "slot": "body.arm.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "silver__amber__forester__empty",
+      "frame": 0,
+      "slot": "body.leg.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "silver__amber__forester__empty",
+      "frame": 0,
+      "slot": "body.leg.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "silver__amber__forester__empty",
+      "frame": 0,
+      "slot": "body.torso",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "silver__amber__forester__empty",
+      "frame": 1,
+      "slot": "body.arm.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "silver__amber__forester__empty",
+      "frame": 1,
+      "slot": "body.arm.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "silver__amber__forester__empty",
+      "frame": 1,
+      "slot": "body.leg.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00784313725490196
+    },
+    {
+      "combination": "silver__amber__forester__empty",
+      "frame": 1,
+      "slot": "body.leg.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "silver__amber__forester__empty",
+      "frame": 1,
+      "slot": "body.torso",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "silver__amber__forester__empty",
+      "frame": 2,
+      "slot": "body.arm.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "silver__amber__forester__empty",
+      "frame": 2,
+      "slot": "body.arm.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "silver__amber__forester__empty",
+      "frame": 2,
+      "slot": "body.leg.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 9.191035122238064e-05
+    },
+    {
+      "combination": "silver__amber__forester__empty",
+      "frame": 2,
+      "slot": "body.leg.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "silver__amber__forester__empty",
+      "frame": 2,
+      "slot": "body.torso",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "silver__amber__forester__empty",
+      "frame": 3,
+      "slot": "body.arm.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "silver__amber__forester__empty",
+      "frame": 3,
+      "slot": "body.arm.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "silver__amber__forester__empty",
+      "frame": 3,
+      "slot": "body.leg.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "silver__amber__forester__empty",
+      "frame": 3,
+      "slot": "body.leg.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "silver__amber__forester__empty",
+      "frame": 3,
+      "slot": "body.torso",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "silver__amber__forester__empty",
+      "frame": 4,
+      "slot": "body.arm.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "silver__amber__forester__empty",
+      "frame": 4,
+      "slot": "body.arm.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "silver__amber__forester__empty",
+      "frame": 4,
+      "slot": "body.leg.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "silver__amber__forester__empty",
+      "frame": 4,
+      "slot": "body.leg.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "silver__amber__forester__empty",
+      "frame": 4,
+      "slot": "body.torso",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "silver__amber__forester__empty",
+      "frame": 5,
+      "slot": "body.arm.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "silver__amber__forester__empty",
+      "frame": 5,
+      "slot": "body.arm.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "silver__amber__forester__empty",
+      "frame": 5,
+      "slot": "body.leg.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "silver__amber__forester__empty",
+      "frame": 5,
+      "slot": "body.leg.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "silver__amber__forester__empty",
+      "frame": 5,
+      "slot": "body.torso",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "silver__amber__forester__empty",
+      "frame": 6,
+      "slot": "body.arm.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "silver__amber__forester__empty",
+      "frame": 6,
+      "slot": "body.arm.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "silver__amber__forester__empty",
+      "frame": 6,
+      "slot": "body.leg.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "silver__amber__forester__empty",
+      "frame": 6,
+      "slot": "body.leg.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.023529411764705882
+    },
+    {
+      "combination": "silver__amber__forester__empty",
+      "frame": 6,
+      "slot": "body.torso",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "silver__amber__forester__empty",
+      "frame": 7,
+      "slot": "body.arm.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "silver__amber__forester__empty",
+      "frame": 7,
+      "slot": "body.arm.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "silver__amber__forester__empty",
+      "frame": 7,
+      "slot": "body.leg.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00784313725490196
+    },
+    {
+      "combination": "silver__amber__forester__empty",
+      "frame": 7,
+      "slot": "body.leg.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00784313725490196
+    },
+    {
+      "combination": "silver__amber__forester__empty",
+      "frame": 7,
+      "slot": "body.torso",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "silver__amber__forester__empty",
+      "frame": 8,
+      "slot": "body.arm.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "silver__amber__forester__empty",
+      "frame": 8,
+      "slot": "body.arm.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "silver__amber__forester__empty",
+      "frame": 8,
+      "slot": "body.leg.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "silver__amber__forester__empty",
+      "frame": 8,
+      "slot": "body.leg.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0196078431372549
+    },
+    {
+      "combination": "silver__amber__forester__empty",
+      "frame": 8,
+      "slot": "body.torso",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "silver__amber__forester__back",
+      "frame": 0,
+      "slot": "body.arm.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "silver__amber__forester__back",
+      "frame": 0,
+      "slot": "body.arm.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "silver__amber__forester__back",
+      "frame": 0,
+      "slot": "body.leg.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "silver__amber__forester__back",
+      "frame": 0,
+      "slot": "body.leg.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "silver__amber__forester__back",
+      "frame": 0,
+      "slot": "body.torso",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "silver__amber__forester__back",
+      "frame": 1,
+      "slot": "body.arm.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "silver__amber__forester__back",
+      "frame": 1,
+      "slot": "body.arm.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "silver__amber__forester__back",
+      "frame": 1,
+      "slot": "body.leg.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00784313725490196
+    },
+    {
+      "combination": "silver__amber__forester__back",
+      "frame": 1,
+      "slot": "body.leg.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "silver__amber__forester__back",
+      "frame": 1,
+      "slot": "body.torso",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "silver__amber__forester__back",
+      "frame": 2,
+      "slot": "body.arm.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "silver__amber__forester__back",
+      "frame": 2,
+      "slot": "body.arm.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "silver__amber__forester__back",
+      "frame": 2,
+      "slot": "body.leg.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 9.191035122238064e-05
+    },
+    {
+      "combination": "silver__amber__forester__back",
+      "frame": 2,
+      "slot": "body.leg.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "silver__amber__forester__back",
+      "frame": 2,
+      "slot": "body.torso",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "silver__amber__forester__back",
+      "frame": 3,
+      "slot": "body.arm.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "silver__amber__forester__back",
+      "frame": 3,
+      "slot": "body.arm.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "silver__amber__forester__back",
+      "frame": 3,
+      "slot": "body.leg.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "silver__amber__forester__back",
+      "frame": 3,
+      "slot": "body.leg.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "silver__amber__forester__back",
+      "frame": 3,
+      "slot": "body.torso",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "silver__amber__forester__back",
+      "frame": 4,
+      "slot": "body.arm.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "silver__amber__forester__back",
+      "frame": 4,
+      "slot": "body.arm.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "silver__amber__forester__back",
+      "frame": 4,
+      "slot": "body.leg.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "silver__amber__forester__back",
+      "frame": 4,
+      "slot": "body.leg.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "silver__amber__forester__back",
+      "frame": 4,
+      "slot": "body.torso",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "silver__amber__forester__back",
+      "frame": 5,
+      "slot": "body.arm.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "silver__amber__forester__back",
+      "frame": 5,
+      "slot": "body.arm.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "silver__amber__forester__back",
+      "frame": 5,
+      "slot": "body.leg.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "silver__amber__forester__back",
+      "frame": 5,
+      "slot": "body.leg.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "silver__amber__forester__back",
+      "frame": 5,
+      "slot": "body.torso",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "silver__amber__forester__back",
+      "frame": 6,
+      "slot": "body.arm.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "silver__amber__forester__back",
+      "frame": 6,
+      "slot": "body.arm.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "silver__amber__forester__back",
+      "frame": 6,
+      "slot": "body.leg.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "silver__amber__forester__back",
+      "frame": 6,
+      "slot": "body.leg.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.023529411764705882
+    },
+    {
+      "combination": "silver__amber__forester__back",
+      "frame": 6,
+      "slot": "body.torso",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "silver__amber__forester__back",
+      "frame": 7,
+      "slot": "body.arm.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "silver__amber__forester__back",
+      "frame": 7,
+      "slot": "body.arm.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "silver__amber__forester__back",
+      "frame": 7,
+      "slot": "body.leg.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00784313725490196
+    },
+    {
+      "combination": "silver__amber__forester__back",
+      "frame": 7,
+      "slot": "body.leg.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00784313725490196
+    },
+    {
+      "combination": "silver__amber__forester__back",
+      "frame": 7,
+      "slot": "body.torso",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "silver__amber__forester__back",
+      "frame": 8,
+      "slot": "body.arm.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "silver__amber__forester__back",
+      "frame": 8,
+      "slot": "body.arm.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "silver__amber__forester__back",
+      "frame": 8,
+      "slot": "body.leg.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "silver__amber__forester__back",
+      "frame": 8,
+      "slot": "body.leg.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0196078431372549
+    },
+    {
+      "combination": "silver__amber__forester__back",
+      "frame": 8,
+      "slot": "body.torso",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "teal__blue__forester__empty",
+      "frame": 0,
+      "slot": "body.arm.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "teal__blue__forester__empty",
+      "frame": 0,
+      "slot": "body.arm.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "teal__blue__forester__empty",
+      "frame": 0,
+      "slot": "body.leg.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "teal__blue__forester__empty",
+      "frame": 0,
+      "slot": "body.leg.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "teal__blue__forester__empty",
+      "frame": 0,
+      "slot": "body.torso",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "teal__blue__forester__empty",
+      "frame": 1,
+      "slot": "body.arm.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "teal__blue__forester__empty",
+      "frame": 1,
+      "slot": "body.arm.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "teal__blue__forester__empty",
+      "frame": 1,
+      "slot": "body.leg.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00784313725490196
+    },
+    {
+      "combination": "teal__blue__forester__empty",
+      "frame": 1,
+      "slot": "body.leg.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "teal__blue__forester__empty",
+      "frame": 1,
+      "slot": "body.torso",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "teal__blue__forester__empty",
+      "frame": 2,
+      "slot": "body.arm.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "teal__blue__forester__empty",
+      "frame": 2,
+      "slot": "body.arm.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "teal__blue__forester__empty",
+      "frame": 2,
+      "slot": "body.leg.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 9.191035122238064e-05
+    },
+    {
+      "combination": "teal__blue__forester__empty",
+      "frame": 2,
+      "slot": "body.leg.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "teal__blue__forester__empty",
+      "frame": 2,
+      "slot": "body.torso",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "teal__blue__forester__empty",
+      "frame": 3,
+      "slot": "body.arm.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "teal__blue__forester__empty",
+      "frame": 3,
+      "slot": "body.arm.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "teal__blue__forester__empty",
+      "frame": 3,
+      "slot": "body.leg.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "teal__blue__forester__empty",
+      "frame": 3,
+      "slot": "body.leg.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "teal__blue__forester__empty",
+      "frame": 3,
+      "slot": "body.torso",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "teal__blue__forester__empty",
+      "frame": 4,
+      "slot": "body.arm.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "teal__blue__forester__empty",
+      "frame": 4,
+      "slot": "body.arm.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "teal__blue__forester__empty",
+      "frame": 4,
+      "slot": "body.leg.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "teal__blue__forester__empty",
+      "frame": 4,
+      "slot": "body.leg.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "teal__blue__forester__empty",
+      "frame": 4,
+      "slot": "body.torso",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "teal__blue__forester__empty",
+      "frame": 5,
+      "slot": "body.arm.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "teal__blue__forester__empty",
+      "frame": 5,
+      "slot": "body.arm.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "teal__blue__forester__empty",
+      "frame": 5,
+      "slot": "body.leg.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "teal__blue__forester__empty",
+      "frame": 5,
+      "slot": "body.leg.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "teal__blue__forester__empty",
+      "frame": 5,
+      "slot": "body.torso",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "teal__blue__forester__empty",
+      "frame": 6,
+      "slot": "body.arm.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "teal__blue__forester__empty",
+      "frame": 6,
+      "slot": "body.arm.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "teal__blue__forester__empty",
+      "frame": 6,
+      "slot": "body.leg.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "teal__blue__forester__empty",
+      "frame": 6,
+      "slot": "body.leg.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.023529411764705882
+    },
+    {
+      "combination": "teal__blue__forester__empty",
+      "frame": 6,
+      "slot": "body.torso",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "teal__blue__forester__empty",
+      "frame": 7,
+      "slot": "body.arm.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "teal__blue__forester__empty",
+      "frame": 7,
+      "slot": "body.arm.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "teal__blue__forester__empty",
+      "frame": 7,
+      "slot": "body.leg.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00784313725490196
+    },
+    {
+      "combination": "teal__blue__forester__empty",
+      "frame": 7,
+      "slot": "body.leg.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00784313725490196
+    },
+    {
+      "combination": "teal__blue__forester__empty",
+      "frame": 7,
+      "slot": "body.torso",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "teal__blue__forester__empty",
+      "frame": 8,
+      "slot": "body.arm.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "teal__blue__forester__empty",
+      "frame": 8,
+      "slot": "body.arm.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "teal__blue__forester__empty",
+      "frame": 8,
+      "slot": "body.leg.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "teal__blue__forester__empty",
+      "frame": 8,
+      "slot": "body.leg.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0196078431372549
+    },
+    {
+      "combination": "teal__blue__forester__empty",
+      "frame": 8,
+      "slot": "body.torso",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "teal__blue__forester__back",
+      "frame": 0,
+      "slot": "body.arm.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "teal__blue__forester__back",
+      "frame": 0,
+      "slot": "body.arm.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "teal__blue__forester__back",
+      "frame": 0,
+      "slot": "body.leg.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "teal__blue__forester__back",
+      "frame": 0,
+      "slot": "body.leg.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "teal__blue__forester__back",
+      "frame": 0,
+      "slot": "body.torso",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "teal__blue__forester__back",
+      "frame": 1,
+      "slot": "body.arm.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "teal__blue__forester__back",
+      "frame": 1,
+      "slot": "body.arm.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "teal__blue__forester__back",
+      "frame": 1,
+      "slot": "body.leg.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00784313725490196
+    },
+    {
+      "combination": "teal__blue__forester__back",
+      "frame": 1,
+      "slot": "body.leg.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "teal__blue__forester__back",
+      "frame": 1,
+      "slot": "body.torso",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "teal__blue__forester__back",
+      "frame": 2,
+      "slot": "body.arm.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "teal__blue__forester__back",
+      "frame": 2,
+      "slot": "body.arm.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "teal__blue__forester__back",
+      "frame": 2,
+      "slot": "body.leg.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 9.191035122238064e-05
+    },
+    {
+      "combination": "teal__blue__forester__back",
+      "frame": 2,
+      "slot": "body.leg.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "teal__blue__forester__back",
+      "frame": 2,
+      "slot": "body.torso",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "teal__blue__forester__back",
+      "frame": 3,
+      "slot": "body.arm.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "teal__blue__forester__back",
+      "frame": 3,
+      "slot": "body.arm.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "teal__blue__forester__back",
+      "frame": 3,
+      "slot": "body.leg.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "teal__blue__forester__back",
+      "frame": 3,
+      "slot": "body.leg.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "teal__blue__forester__back",
+      "frame": 3,
+      "slot": "body.torso",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "teal__blue__forester__back",
+      "frame": 4,
+      "slot": "body.arm.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "teal__blue__forester__back",
+      "frame": 4,
+      "slot": "body.arm.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "teal__blue__forester__back",
+      "frame": 4,
+      "slot": "body.leg.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "teal__blue__forester__back",
+      "frame": 4,
+      "slot": "body.leg.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "teal__blue__forester__back",
+      "frame": 4,
+      "slot": "body.torso",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "teal__blue__forester__back",
+      "frame": 5,
+      "slot": "body.arm.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "teal__blue__forester__back",
+      "frame": 5,
+      "slot": "body.arm.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "teal__blue__forester__back",
+      "frame": 5,
+      "slot": "body.leg.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "teal__blue__forester__back",
+      "frame": 5,
+      "slot": "body.leg.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "teal__blue__forester__back",
+      "frame": 5,
+      "slot": "body.torso",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "teal__blue__forester__back",
+      "frame": 6,
+      "slot": "body.arm.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "teal__blue__forester__back",
+      "frame": 6,
+      "slot": "body.arm.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "teal__blue__forester__back",
+      "frame": 6,
+      "slot": "body.leg.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "teal__blue__forester__back",
+      "frame": 6,
+      "slot": "body.leg.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.023529411764705882
+    },
+    {
+      "combination": "teal__blue__forester__back",
+      "frame": 6,
+      "slot": "body.torso",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "teal__blue__forester__back",
+      "frame": 7,
+      "slot": "body.arm.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "teal__blue__forester__back",
+      "frame": 7,
+      "slot": "body.arm.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "teal__blue__forester__back",
+      "frame": 7,
+      "slot": "body.leg.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00784313725490196
+    },
+    {
+      "combination": "teal__blue__forester__back",
+      "frame": 7,
+      "slot": "body.leg.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00784313725490196
+    },
+    {
+      "combination": "teal__blue__forester__back",
+      "frame": 7,
+      "slot": "body.torso",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "teal__blue__forester__back",
+      "frame": 8,
+      "slot": "body.arm.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "teal__blue__forester__back",
+      "frame": 8,
+      "slot": "body.arm.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "teal__blue__forester__back",
+      "frame": 8,
+      "slot": "body.leg.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "teal__blue__forester__back",
+      "frame": 8,
+      "slot": "body.leg.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0196078431372549
+    },
+    {
+      "combination": "teal__blue__forester__back",
+      "frame": 8,
+      "slot": "body.torso",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "teal__amber__forester__empty",
+      "frame": 0,
+      "slot": "body.arm.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "teal__amber__forester__empty",
+      "frame": 0,
+      "slot": "body.arm.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "teal__amber__forester__empty",
+      "frame": 0,
+      "slot": "body.leg.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "teal__amber__forester__empty",
+      "frame": 0,
+      "slot": "body.leg.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "teal__amber__forester__empty",
+      "frame": 0,
+      "slot": "body.torso",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "teal__amber__forester__empty",
+      "frame": 1,
+      "slot": "body.arm.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "teal__amber__forester__empty",
+      "frame": 1,
+      "slot": "body.arm.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "teal__amber__forester__empty",
+      "frame": 1,
+      "slot": "body.leg.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00784313725490196
+    },
+    {
+      "combination": "teal__amber__forester__empty",
+      "frame": 1,
+      "slot": "body.leg.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "teal__amber__forester__empty",
+      "frame": 1,
+      "slot": "body.torso",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "teal__amber__forester__empty",
+      "frame": 2,
+      "slot": "body.arm.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "teal__amber__forester__empty",
+      "frame": 2,
+      "slot": "body.arm.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "teal__amber__forester__empty",
+      "frame": 2,
+      "slot": "body.leg.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 9.191035122238064e-05
+    },
+    {
+      "combination": "teal__amber__forester__empty",
+      "frame": 2,
+      "slot": "body.leg.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "teal__amber__forester__empty",
+      "frame": 2,
+      "slot": "body.torso",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "teal__amber__forester__empty",
+      "frame": 3,
+      "slot": "body.arm.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "teal__amber__forester__empty",
+      "frame": 3,
+      "slot": "body.arm.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "teal__amber__forester__empty",
+      "frame": 3,
+      "slot": "body.leg.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "teal__amber__forester__empty",
+      "frame": 3,
+      "slot": "body.leg.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "teal__amber__forester__empty",
+      "frame": 3,
+      "slot": "body.torso",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "teal__amber__forester__empty",
+      "frame": 4,
+      "slot": "body.arm.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "teal__amber__forester__empty",
+      "frame": 4,
+      "slot": "body.arm.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "teal__amber__forester__empty",
+      "frame": 4,
+      "slot": "body.leg.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "teal__amber__forester__empty",
+      "frame": 4,
+      "slot": "body.leg.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "teal__amber__forester__empty",
+      "frame": 4,
+      "slot": "body.torso",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "teal__amber__forester__empty",
+      "frame": 5,
+      "slot": "body.arm.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "teal__amber__forester__empty",
+      "frame": 5,
+      "slot": "body.arm.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "teal__amber__forester__empty",
+      "frame": 5,
+      "slot": "body.leg.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "teal__amber__forester__empty",
+      "frame": 5,
+      "slot": "body.leg.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "teal__amber__forester__empty",
+      "frame": 5,
+      "slot": "body.torso",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "teal__amber__forester__empty",
+      "frame": 6,
+      "slot": "body.arm.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "teal__amber__forester__empty",
+      "frame": 6,
+      "slot": "body.arm.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "teal__amber__forester__empty",
+      "frame": 6,
+      "slot": "body.leg.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "teal__amber__forester__empty",
+      "frame": 6,
+      "slot": "body.leg.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.023529411764705882
+    },
+    {
+      "combination": "teal__amber__forester__empty",
+      "frame": 6,
+      "slot": "body.torso",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "teal__amber__forester__empty",
+      "frame": 7,
+      "slot": "body.arm.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "teal__amber__forester__empty",
+      "frame": 7,
+      "slot": "body.arm.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "teal__amber__forester__empty",
+      "frame": 7,
+      "slot": "body.leg.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00784313725490196
+    },
+    {
+      "combination": "teal__amber__forester__empty",
+      "frame": 7,
+      "slot": "body.leg.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00784313725490196
+    },
+    {
+      "combination": "teal__amber__forester__empty",
+      "frame": 7,
+      "slot": "body.torso",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "teal__amber__forester__empty",
+      "frame": 8,
+      "slot": "body.arm.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "teal__amber__forester__empty",
+      "frame": 8,
+      "slot": "body.arm.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "teal__amber__forester__empty",
+      "frame": 8,
+      "slot": "body.leg.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "teal__amber__forester__empty",
+      "frame": 8,
+      "slot": "body.leg.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0196078431372549
+    },
+    {
+      "combination": "teal__amber__forester__empty",
+      "frame": 8,
+      "slot": "body.torso",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "teal__amber__forester__back",
+      "frame": 0,
+      "slot": "body.arm.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "teal__amber__forester__back",
+      "frame": 0,
+      "slot": "body.arm.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "teal__amber__forester__back",
+      "frame": 0,
+      "slot": "body.leg.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "teal__amber__forester__back",
+      "frame": 0,
+      "slot": "body.leg.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "teal__amber__forester__back",
+      "frame": 0,
+      "slot": "body.torso",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "teal__amber__forester__back",
+      "frame": 1,
+      "slot": "body.arm.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "teal__amber__forester__back",
+      "frame": 1,
+      "slot": "body.arm.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "teal__amber__forester__back",
+      "frame": 1,
+      "slot": "body.leg.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00784313725490196
+    },
+    {
+      "combination": "teal__amber__forester__back",
+      "frame": 1,
+      "slot": "body.leg.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "teal__amber__forester__back",
+      "frame": 1,
+      "slot": "body.torso",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "teal__amber__forester__back",
+      "frame": 2,
+      "slot": "body.arm.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "teal__amber__forester__back",
+      "frame": 2,
+      "slot": "body.arm.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "teal__amber__forester__back",
+      "frame": 2,
+      "slot": "body.leg.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 9.191035122238064e-05
+    },
+    {
+      "combination": "teal__amber__forester__back",
+      "frame": 2,
+      "slot": "body.leg.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "teal__amber__forester__back",
+      "frame": 2,
+      "slot": "body.torso",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "teal__amber__forester__back",
+      "frame": 3,
+      "slot": "body.arm.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "teal__amber__forester__back",
+      "frame": 3,
+      "slot": "body.arm.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "teal__amber__forester__back",
+      "frame": 3,
+      "slot": "body.leg.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "teal__amber__forester__back",
+      "frame": 3,
+      "slot": "body.leg.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "teal__amber__forester__back",
+      "frame": 3,
+      "slot": "body.torso",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "teal__amber__forester__back",
+      "frame": 4,
+      "slot": "body.arm.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "teal__amber__forester__back",
+      "frame": 4,
+      "slot": "body.arm.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "teal__amber__forester__back",
+      "frame": 4,
+      "slot": "body.leg.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "teal__amber__forester__back",
+      "frame": 4,
+      "slot": "body.leg.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "teal__amber__forester__back",
+      "frame": 4,
+      "slot": "body.torso",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "teal__amber__forester__back",
+      "frame": 5,
+      "slot": "body.arm.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "teal__amber__forester__back",
+      "frame": 5,
+      "slot": "body.arm.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "teal__amber__forester__back",
+      "frame": 5,
+      "slot": "body.leg.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "teal__amber__forester__back",
+      "frame": 5,
+      "slot": "body.leg.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "teal__amber__forester__back",
+      "frame": 5,
+      "slot": "body.torso",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "teal__amber__forester__back",
+      "frame": 6,
+      "slot": "body.arm.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "teal__amber__forester__back",
+      "frame": 6,
+      "slot": "body.arm.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "teal__amber__forester__back",
+      "frame": 6,
+      "slot": "body.leg.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "teal__amber__forester__back",
+      "frame": 6,
+      "slot": "body.leg.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.023529411764705882
+    },
+    {
+      "combination": "teal__amber__forester__back",
+      "frame": 6,
+      "slot": "body.torso",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "teal__amber__forester__back",
+      "frame": 7,
+      "slot": "body.arm.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "teal__amber__forester__back",
+      "frame": 7,
+      "slot": "body.arm.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "teal__amber__forester__back",
+      "frame": 7,
+      "slot": "body.leg.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00784313725490196
+    },
+    {
+      "combination": "teal__amber__forester__back",
+      "frame": 7,
+      "slot": "body.leg.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00784313725490196
+    },
+    {
+      "combination": "teal__amber__forester__back",
+      "frame": 7,
+      "slot": "body.torso",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "teal__amber__forester__back",
+      "frame": 8,
+      "slot": "body.arm.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "teal__amber__forester__back",
+      "frame": 8,
+      "slot": "body.arm.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0
+    },
+    {
+      "combination": "teal__amber__forester__back",
+      "frame": 8,
+      "slot": "body.leg.right",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    },
+    {
+      "combination": "teal__amber__forester__back",
+      "frame": 8,
+      "slot": "body.leg.left",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.0196078431372549
+    },
+    {
+      "combination": "teal__amber__forester__back",
+      "frame": 8,
+      "slot": "body.torso",
+      "pixelsAbove5Percent": 0,
+      "maxContribution": 0.00392156862745098
+    }
+  ],
+  "weaponToggleChecks": [
+    {
+      "hair": "chestnut",
+      "face": "blue",
+      "dressed": false,
+      "frame": 0,
+      "outsideWeapon": 0,
+      "withinOpaqueHands": 0
+    },
+    {
+      "hair": "chestnut",
+      "face": "blue",
+      "dressed": false,
+      "frame": 1,
+      "outsideWeapon": 0,
+      "withinOpaqueHands": 0
+    },
+    {
+      "hair": "chestnut",
+      "face": "blue",
+      "dressed": false,
+      "frame": 2,
+      "outsideWeapon": 0,
+      "withinOpaqueHands": 0
+    },
+    {
+      "hair": "chestnut",
+      "face": "blue",
+      "dressed": false,
+      "frame": 3,
+      "outsideWeapon": 0,
+      "withinOpaqueHands": 0
+    },
+    {
+      "hair": "chestnut",
+      "face": "blue",
+      "dressed": false,
+      "frame": 4,
+      "outsideWeapon": 0,
+      "withinOpaqueHands": 0
+    },
+    {
+      "hair": "chestnut",
+      "face": "blue",
+      "dressed": false,
+      "frame": 5,
+      "outsideWeapon": 0,
+      "withinOpaqueHands": 0
+    },
+    {
+      "hair": "chestnut",
+      "face": "blue",
+      "dressed": false,
+      "frame": 6,
+      "outsideWeapon": 0,
+      "withinOpaqueHands": 0
+    },
+    {
+      "hair": "chestnut",
+      "face": "blue",
+      "dressed": false,
+      "frame": 7,
+      "outsideWeapon": 0,
+      "withinOpaqueHands": 0
+    },
+    {
+      "hair": "chestnut",
+      "face": "blue",
+      "dressed": false,
+      "frame": 8,
+      "outsideWeapon": 0,
+      "withinOpaqueHands": 0
+    },
+    {
+      "hair": "chestnut",
+      "face": "blue",
+      "dressed": true,
+      "frame": 0,
+      "outsideWeapon": 0,
+      "withinOpaqueHands": 0
+    },
+    {
+      "hair": "chestnut",
+      "face": "blue",
+      "dressed": true,
+      "frame": 1,
+      "outsideWeapon": 0,
+      "withinOpaqueHands": 0
+    },
+    {
+      "hair": "chestnut",
+      "face": "blue",
+      "dressed": true,
+      "frame": 2,
+      "outsideWeapon": 0,
+      "withinOpaqueHands": 0
+    },
+    {
+      "hair": "chestnut",
+      "face": "blue",
+      "dressed": true,
+      "frame": 3,
+      "outsideWeapon": 0,
+      "withinOpaqueHands": 0
+    },
+    {
+      "hair": "chestnut",
+      "face": "blue",
+      "dressed": true,
+      "frame": 4,
+      "outsideWeapon": 0,
+      "withinOpaqueHands": 0
+    },
+    {
+      "hair": "chestnut",
+      "face": "blue",
+      "dressed": true,
+      "frame": 5,
+      "outsideWeapon": 0,
+      "withinOpaqueHands": 0
+    },
+    {
+      "hair": "chestnut",
+      "face": "blue",
+      "dressed": true,
+      "frame": 6,
+      "outsideWeapon": 0,
+      "withinOpaqueHands": 0
+    },
+    {
+      "hair": "chestnut",
+      "face": "blue",
+      "dressed": true,
+      "frame": 7,
+      "outsideWeapon": 0,
+      "withinOpaqueHands": 0
+    },
+    {
+      "hair": "chestnut",
+      "face": "blue",
+      "dressed": true,
+      "frame": 8,
+      "outsideWeapon": 0,
+      "withinOpaqueHands": 0
+    },
+    {
+      "hair": "chestnut",
+      "face": "amber",
+      "dressed": false,
+      "frame": 0,
+      "outsideWeapon": 0,
+      "withinOpaqueHands": 0
+    },
+    {
+      "hair": "chestnut",
+      "face": "amber",
+      "dressed": false,
+      "frame": 1,
+      "outsideWeapon": 0,
+      "withinOpaqueHands": 0
+    },
+    {
+      "hair": "chestnut",
+      "face": "amber",
+      "dressed": false,
+      "frame": 2,
+      "outsideWeapon": 0,
+      "withinOpaqueHands": 0
+    },
+    {
+      "hair": "chestnut",
+      "face": "amber",
+      "dressed": false,
+      "frame": 3,
+      "outsideWeapon": 0,
+      "withinOpaqueHands": 0
+    },
+    {
+      "hair": "chestnut",
+      "face": "amber",
+      "dressed": false,
+      "frame": 4,
+      "outsideWeapon": 0,
+      "withinOpaqueHands": 0
+    },
+    {
+      "hair": "chestnut",
+      "face": "amber",
+      "dressed": false,
+      "frame": 5,
+      "outsideWeapon": 0,
+      "withinOpaqueHands": 0
+    },
+    {
+      "hair": "chestnut",
+      "face": "amber",
+      "dressed": false,
+      "frame": 6,
+      "outsideWeapon": 0,
+      "withinOpaqueHands": 0
+    },
+    {
+      "hair": "chestnut",
+      "face": "amber",
+      "dressed": false,
+      "frame": 7,
+      "outsideWeapon": 0,
+      "withinOpaqueHands": 0
+    },
+    {
+      "hair": "chestnut",
+      "face": "amber",
+      "dressed": false,
+      "frame": 8,
+      "outsideWeapon": 0,
+      "withinOpaqueHands": 0
+    },
+    {
+      "hair": "chestnut",
+      "face": "amber",
+      "dressed": true,
+      "frame": 0,
+      "outsideWeapon": 0,
+      "withinOpaqueHands": 0
+    },
+    {
+      "hair": "chestnut",
+      "face": "amber",
+      "dressed": true,
+      "frame": 1,
+      "outsideWeapon": 0,
+      "withinOpaqueHands": 0
+    },
+    {
+      "hair": "chestnut",
+      "face": "amber",
+      "dressed": true,
+      "frame": 2,
+      "outsideWeapon": 0,
+      "withinOpaqueHands": 0
+    },
+    {
+      "hair": "chestnut",
+      "face": "amber",
+      "dressed": true,
+      "frame": 3,
+      "outsideWeapon": 0,
+      "withinOpaqueHands": 0
+    },
+    {
+      "hair": "chestnut",
+      "face": "amber",
+      "dressed": true,
+      "frame": 4,
+      "outsideWeapon": 0,
+      "withinOpaqueHands": 0
+    },
+    {
+      "hair": "chestnut",
+      "face": "amber",
+      "dressed": true,
+      "frame": 5,
+      "outsideWeapon": 0,
+      "withinOpaqueHands": 0
+    },
+    {
+      "hair": "chestnut",
+      "face": "amber",
+      "dressed": true,
+      "frame": 6,
+      "outsideWeapon": 0,
+      "withinOpaqueHands": 0
+    },
+    {
+      "hair": "chestnut",
+      "face": "amber",
+      "dressed": true,
+      "frame": 7,
+      "outsideWeapon": 0,
+      "withinOpaqueHands": 0
+    },
+    {
+      "hair": "chestnut",
+      "face": "amber",
+      "dressed": true,
+      "frame": 8,
+      "outsideWeapon": 0,
+      "withinOpaqueHands": 0
+    },
+    {
+      "hair": "silver",
+      "face": "blue",
+      "dressed": false,
+      "frame": 0,
+      "outsideWeapon": 0,
+      "withinOpaqueHands": 0
+    },
+    {
+      "hair": "silver",
+      "face": "blue",
+      "dressed": false,
+      "frame": 1,
+      "outsideWeapon": 0,
+      "withinOpaqueHands": 0
+    },
+    {
+      "hair": "silver",
+      "face": "blue",
+      "dressed": false,
+      "frame": 2,
+      "outsideWeapon": 0,
+      "withinOpaqueHands": 0
+    },
+    {
+      "hair": "silver",
+      "face": "blue",
+      "dressed": false,
+      "frame": 3,
+      "outsideWeapon": 0,
+      "withinOpaqueHands": 0
+    },
+    {
+      "hair": "silver",
+      "face": "blue",
+      "dressed": false,
+      "frame": 4,
+      "outsideWeapon": 0,
+      "withinOpaqueHands": 0
+    },
+    {
+      "hair": "silver",
+      "face": "blue",
+      "dressed": false,
+      "frame": 5,
+      "outsideWeapon": 0,
+      "withinOpaqueHands": 0
+    },
+    {
+      "hair": "silver",
+      "face": "blue",
+      "dressed": false,
+      "frame": 6,
+      "outsideWeapon": 0,
+      "withinOpaqueHands": 0
+    },
+    {
+      "hair": "silver",
+      "face": "blue",
+      "dressed": false,
+      "frame": 7,
+      "outsideWeapon": 0,
+      "withinOpaqueHands": 0
+    },
+    {
+      "hair": "silver",
+      "face": "blue",
+      "dressed": false,
+      "frame": 8,
+      "outsideWeapon": 0,
+      "withinOpaqueHands": 0
+    },
+    {
+      "hair": "silver",
+      "face": "blue",
+      "dressed": true,
+      "frame": 0,
+      "outsideWeapon": 0,
+      "withinOpaqueHands": 0
+    },
+    {
+      "hair": "silver",
+      "face": "blue",
+      "dressed": true,
+      "frame": 1,
+      "outsideWeapon": 0,
+      "withinOpaqueHands": 0
+    },
+    {
+      "hair": "silver",
+      "face": "blue",
+      "dressed": true,
+      "frame": 2,
+      "outsideWeapon": 0,
+      "withinOpaqueHands": 0
+    },
+    {
+      "hair": "silver",
+      "face": "blue",
+      "dressed": true,
+      "frame": 3,
+      "outsideWeapon": 0,
+      "withinOpaqueHands": 0
+    },
+    {
+      "hair": "silver",
+      "face": "blue",
+      "dressed": true,
+      "frame": 4,
+      "outsideWeapon": 0,
+      "withinOpaqueHands": 0
+    },
+    {
+      "hair": "silver",
+      "face": "blue",
+      "dressed": true,
+      "frame": 5,
+      "outsideWeapon": 0,
+      "withinOpaqueHands": 0
+    },
+    {
+      "hair": "silver",
+      "face": "blue",
+      "dressed": true,
+      "frame": 6,
+      "outsideWeapon": 0,
+      "withinOpaqueHands": 0
+    },
+    {
+      "hair": "silver",
+      "face": "blue",
+      "dressed": true,
+      "frame": 7,
+      "outsideWeapon": 0,
+      "withinOpaqueHands": 0
+    },
+    {
+      "hair": "silver",
+      "face": "blue",
+      "dressed": true,
+      "frame": 8,
+      "outsideWeapon": 0,
+      "withinOpaqueHands": 0
+    },
+    {
+      "hair": "silver",
+      "face": "amber",
+      "dressed": false,
+      "frame": 0,
+      "outsideWeapon": 0,
+      "withinOpaqueHands": 0
+    },
+    {
+      "hair": "silver",
+      "face": "amber",
+      "dressed": false,
+      "frame": 1,
+      "outsideWeapon": 0,
+      "withinOpaqueHands": 0
+    },
+    {
+      "hair": "silver",
+      "face": "amber",
+      "dressed": false,
+      "frame": 2,
+      "outsideWeapon": 0,
+      "withinOpaqueHands": 0
+    },
+    {
+      "hair": "silver",
+      "face": "amber",
+      "dressed": false,
+      "frame": 3,
+      "outsideWeapon": 0,
+      "withinOpaqueHands": 0
+    },
+    {
+      "hair": "silver",
+      "face": "amber",
+      "dressed": false,
+      "frame": 4,
+      "outsideWeapon": 0,
+      "withinOpaqueHands": 0
+    },
+    {
+      "hair": "silver",
+      "face": "amber",
+      "dressed": false,
+      "frame": 5,
+      "outsideWeapon": 0,
+      "withinOpaqueHands": 0
+    },
+    {
+      "hair": "silver",
+      "face": "amber",
+      "dressed": false,
+      "frame": 6,
+      "outsideWeapon": 0,
+      "withinOpaqueHands": 0
+    },
+    {
+      "hair": "silver",
+      "face": "amber",
+      "dressed": false,
+      "frame": 7,
+      "outsideWeapon": 0,
+      "withinOpaqueHands": 0
+    },
+    {
+      "hair": "silver",
+      "face": "amber",
+      "dressed": false,
+      "frame": 8,
+      "outsideWeapon": 0,
+      "withinOpaqueHands": 0
+    },
+    {
+      "hair": "silver",
+      "face": "amber",
+      "dressed": true,
+      "frame": 0,
+      "outsideWeapon": 0,
+      "withinOpaqueHands": 0
+    },
+    {
+      "hair": "silver",
+      "face": "amber",
+      "dressed": true,
+      "frame": 1,
+      "outsideWeapon": 0,
+      "withinOpaqueHands": 0
+    },
+    {
+      "hair": "silver",
+      "face": "amber",
+      "dressed": true,
+      "frame": 2,
+      "outsideWeapon": 0,
+      "withinOpaqueHands": 0
+    },
+    {
+      "hair": "silver",
+      "face": "amber",
+      "dressed": true,
+      "frame": 3,
+      "outsideWeapon": 0,
+      "withinOpaqueHands": 0
+    },
+    {
+      "hair": "silver",
+      "face": "amber",
+      "dressed": true,
+      "frame": 4,
+      "outsideWeapon": 0,
+      "withinOpaqueHands": 0
+    },
+    {
+      "hair": "silver",
+      "face": "amber",
+      "dressed": true,
+      "frame": 5,
+      "outsideWeapon": 0,
+      "withinOpaqueHands": 0
+    },
+    {
+      "hair": "silver",
+      "face": "amber",
+      "dressed": true,
+      "frame": 6,
+      "outsideWeapon": 0,
+      "withinOpaqueHands": 0
+    },
+    {
+      "hair": "silver",
+      "face": "amber",
+      "dressed": true,
+      "frame": 7,
+      "outsideWeapon": 0,
+      "withinOpaqueHands": 0
+    },
+    {
+      "hair": "silver",
+      "face": "amber",
+      "dressed": true,
+      "frame": 8,
+      "outsideWeapon": 0,
+      "withinOpaqueHands": 0
+    },
+    {
+      "hair": "teal",
+      "face": "blue",
+      "dressed": false,
+      "frame": 0,
+      "outsideWeapon": 0,
+      "withinOpaqueHands": 0
+    },
+    {
+      "hair": "teal",
+      "face": "blue",
+      "dressed": false,
+      "frame": 1,
+      "outsideWeapon": 0,
+      "withinOpaqueHands": 0
+    },
+    {
+      "hair": "teal",
+      "face": "blue",
+      "dressed": false,
+      "frame": 2,
+      "outsideWeapon": 0,
+      "withinOpaqueHands": 0
+    },
+    {
+      "hair": "teal",
+      "face": "blue",
+      "dressed": false,
+      "frame": 3,
+      "outsideWeapon": 0,
+      "withinOpaqueHands": 0
+    },
+    {
+      "hair": "teal",
+      "face": "blue",
+      "dressed": false,
+      "frame": 4,
+      "outsideWeapon": 0,
+      "withinOpaqueHands": 0
+    },
+    {
+      "hair": "teal",
+      "face": "blue",
+      "dressed": false,
+      "frame": 5,
+      "outsideWeapon": 0,
+      "withinOpaqueHands": 0
+    },
+    {
+      "hair": "teal",
+      "face": "blue",
+      "dressed": false,
+      "frame": 6,
+      "outsideWeapon": 0,
+      "withinOpaqueHands": 0
+    },
+    {
+      "hair": "teal",
+      "face": "blue",
+      "dressed": false,
+      "frame": 7,
+      "outsideWeapon": 0,
+      "withinOpaqueHands": 0
+    },
+    {
+      "hair": "teal",
+      "face": "blue",
+      "dressed": false,
+      "frame": 8,
+      "outsideWeapon": 0,
+      "withinOpaqueHands": 0
+    },
+    {
+      "hair": "teal",
+      "face": "blue",
+      "dressed": true,
+      "frame": 0,
+      "outsideWeapon": 0,
+      "withinOpaqueHands": 0
+    },
+    {
+      "hair": "teal",
+      "face": "blue",
+      "dressed": true,
+      "frame": 1,
+      "outsideWeapon": 0,
+      "withinOpaqueHands": 0
+    },
+    {
+      "hair": "teal",
+      "face": "blue",
+      "dressed": true,
+      "frame": 2,
+      "outsideWeapon": 0,
+      "withinOpaqueHands": 0
+    },
+    {
+      "hair": "teal",
+      "face": "blue",
+      "dressed": true,
+      "frame": 3,
+      "outsideWeapon": 0,
+      "withinOpaqueHands": 0
+    },
+    {
+      "hair": "teal",
+      "face": "blue",
+      "dressed": true,
+      "frame": 4,
+      "outsideWeapon": 0,
+      "withinOpaqueHands": 0
+    },
+    {
+      "hair": "teal",
+      "face": "blue",
+      "dressed": true,
+      "frame": 5,
+      "outsideWeapon": 0,
+      "withinOpaqueHands": 0
+    },
+    {
+      "hair": "teal",
+      "face": "blue",
+      "dressed": true,
+      "frame": 6,
+      "outsideWeapon": 0,
+      "withinOpaqueHands": 0
+    },
+    {
+      "hair": "teal",
+      "face": "blue",
+      "dressed": true,
+      "frame": 7,
+      "outsideWeapon": 0,
+      "withinOpaqueHands": 0
+    },
+    {
+      "hair": "teal",
+      "face": "blue",
+      "dressed": true,
+      "frame": 8,
+      "outsideWeapon": 0,
+      "withinOpaqueHands": 0
+    },
+    {
+      "hair": "teal",
+      "face": "amber",
+      "dressed": false,
+      "frame": 0,
+      "outsideWeapon": 0,
+      "withinOpaqueHands": 0
+    },
+    {
+      "hair": "teal",
+      "face": "amber",
+      "dressed": false,
+      "frame": 1,
+      "outsideWeapon": 0,
+      "withinOpaqueHands": 0
+    },
+    {
+      "hair": "teal",
+      "face": "amber",
+      "dressed": false,
+      "frame": 2,
+      "outsideWeapon": 0,
+      "withinOpaqueHands": 0
+    },
+    {
+      "hair": "teal",
+      "face": "amber",
+      "dressed": false,
+      "frame": 3,
+      "outsideWeapon": 0,
+      "withinOpaqueHands": 0
+    },
+    {
+      "hair": "teal",
+      "face": "amber",
+      "dressed": false,
+      "frame": 4,
+      "outsideWeapon": 0,
+      "withinOpaqueHands": 0
+    },
+    {
+      "hair": "teal",
+      "face": "amber",
+      "dressed": false,
+      "frame": 5,
+      "outsideWeapon": 0,
+      "withinOpaqueHands": 0
+    },
+    {
+      "hair": "teal",
+      "face": "amber",
+      "dressed": false,
+      "frame": 6,
+      "outsideWeapon": 0,
+      "withinOpaqueHands": 0
+    },
+    {
+      "hair": "teal",
+      "face": "amber",
+      "dressed": false,
+      "frame": 7,
+      "outsideWeapon": 0,
+      "withinOpaqueHands": 0
+    },
+    {
+      "hair": "teal",
+      "face": "amber",
+      "dressed": false,
+      "frame": 8,
+      "outsideWeapon": 0,
+      "withinOpaqueHands": 0
+    },
+    {
+      "hair": "teal",
+      "face": "amber",
+      "dressed": true,
+      "frame": 0,
+      "outsideWeapon": 0,
+      "withinOpaqueHands": 0
+    },
+    {
+      "hair": "teal",
+      "face": "amber",
+      "dressed": true,
+      "frame": 1,
+      "outsideWeapon": 0,
+      "withinOpaqueHands": 0
+    },
+    {
+      "hair": "teal",
+      "face": "amber",
+      "dressed": true,
+      "frame": 2,
+      "outsideWeapon": 0,
+      "withinOpaqueHands": 0
+    },
+    {
+      "hair": "teal",
+      "face": "amber",
+      "dressed": true,
+      "frame": 3,
+      "outsideWeapon": 0,
+      "withinOpaqueHands": 0
+    },
+    {
+      "hair": "teal",
+      "face": "amber",
+      "dressed": true,
+      "frame": 4,
+      "outsideWeapon": 0,
+      "withinOpaqueHands": 0
+    },
+    {
+      "hair": "teal",
+      "face": "amber",
+      "dressed": true,
+      "frame": 5,
+      "outsideWeapon": 0,
+      "withinOpaqueHands": 0
+    },
+    {
+      "hair": "teal",
+      "face": "amber",
+      "dressed": true,
+      "frame": 6,
+      "outsideWeapon": 0,
+      "withinOpaqueHands": 0
+    },
+    {
+      "hair": "teal",
+      "face": "amber",
+      "dressed": true,
+      "frame": 7,
+      "outsideWeapon": 0,
+      "withinOpaqueHands": 0
+    },
+    {
+      "hair": "teal",
+      "face": "amber",
+      "dressed": true,
+      "frame": 8,
+      "outsideWeapon": 0,
+      "withinOpaqueHands": 0
+    }
+  ],
+  "gifFrames": 8,
+  "gifDurationMs": 120,
+  "scope": "down only; no simulator/device/runtime/package",
+  "coverageAllowance": "neck/collar above y136 + body bob excluded; other torso, arm and leg contributions measured after actual layer compositing"
+}

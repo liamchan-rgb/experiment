@@ -1,6 +1,12 @@
 # P1 battle-side right idle · modular art candidate
 
+The current user art review has moved to the [isolated v9 rear-plane shading candidate](../right-idle-v3/README.md). This directory retains the v7 runtime fixture. The earlier v7 package remains historical. On 2026-10-21 the user requested packaging again; v9 is now imported for the new device archive.
+
 The approved neutral `right-idle-r2/00.png` is unchanged. This static fixture adds separate chestnut hair, blue facial features, forester clothing, and a short sword. All images use the same 256×256 canvas; the anatomical foot anchor is fixed at `(123,214)` and the reference body height is 132 px. No appearance is automatically fitted from its alpha bounds. Near and far hand layers come from the static semantic split and remain in front of the outfit and grip. `hand-foreground/` excludes a rear-leg patch incorrectly owned by the redundant far-hand copy; the complete approved body underneath is unchanged.
+
+The face candidate is now [v7](face-blue/README.md). v5 crowded the features near the eye; v6's manually drawn nose and mouth were rejected as unnatural. v7 imports only four facial feature groups from a retained generated whole-character profile study, with one fixed registration; the body, hair, ear and outfit retain their existing pixels. The [native composite](assembled.png) and [whole-character 3× review](review-face-v7.png) are the primary art checks. User art approval and the device screenshot remain pending.
+
+The clothing keeps the same full-canvas alpha and registration while its green tunic palette shifts to P1's blue signature. The forest warden is now a crisp pixel-art candidate on the original 384×256 bounds, with its four contact shadows aligned to the planted hoof pixels. Neither appearance has user art approval.
 
 The app reads `MeadowBattleHeroConfiguration.dataset/configuration.json` and stacks the named images in order. Adding an appearance does not introduce a conditional branch or replace the neutral body. `runtime-sources.json` selects source PNGs and `runtime-configuration.json` defines the pose and display order. `import-runtime.py` copies those authored PNGs unchanged and records hashes; adding assets needs image/manifest changes only, without importer or engine branches. Each part directory retains editable art or generated original, registration notes and limitations.
 

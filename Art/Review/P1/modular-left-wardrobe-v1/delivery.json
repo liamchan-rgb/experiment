@@ -1,0 +1,108 @@
+{
+  "status": "verified-public-https-delivery",
+  "verifiedAtUTC": "2026-10-22T18:42:17.809405+00:00",
+  "sourceCommit": "1b9dffb1d7bef6f61e774614711b197e085c85bf",
+  "branch": "fix/build33-face-grounding-camera",
+  "artApproval": null,
+  "artifacts": [
+    {
+      "file": "outfits-comparison-120ms.gif",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/1b9dffb1d7bef6f61e774614711b197e085c85bf/Art/Review/P1/modular-left-wardrobe-v1/outfits-comparison-120ms.gif",
+      "httpStatus": 200,
+      "contentType": "image/gif",
+      "sha256": "7fba707c903883de289ffad1ba3533a68c72bdb75e2b8028239f20a4532894a7",
+      "byteCount": 169933,
+      "dimensions": [
+        1024,
+        512
+      ],
+      "frames": 8,
+      "durationsMs": [
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120
+      ],
+      "loop": 0
+    },
+    {
+      "file": "start-stop-comparison-120ms.gif",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/1b9dffb1d7bef6f61e774614711b197e085c85bf/Art/Review/P1/modular-left-wardrobe-v1/start-stop-comparison-120ms.gif",
+      "httpStatus": 200,
+      "contentType": "image/gif",
+      "sha256": "ff272d7b4d3d479003d3bc13ab89c8bede54ca63bdd9d6e5c4e7e5fd96508da5",
+      "byteCount": 461773,
+      "dimensions": [
+        1024,
+        512
+      ],
+      "frames": 22,
+      "durationsMs": [
+        480,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        480
+      ],
+      "loop": 0
+    },
+    {
+      "file": "walk-120ms.gif",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/1b9dffb1d7bef6f61e774614711b197e085c85bf/Art/Review/P1/modular-left-wardrobe-v1/walk-120ms.gif",
+      "httpStatus": 200,
+      "contentType": "image/gif",
+      "sha256": "2e558bbeb6299bbd7089e9273c03d247c48cc61ebaa3231f086c9084c7c42712",
+      "byteCount": 95382,
+      "dimensions": [
+        512,
+        512
+      ],
+      "frames": 8,
+      "durationsMs": [
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120
+      ],
+      "loop": 0
+    },
+    {
+      "file": "outfits-comparison-2x.png",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/1b9dffb1d7bef6f61e774614711b197e085c85bf/Art/Review/P1/modular-left-wardrobe-v1/outfits-comparison-2x.png",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "sha256": "ddfb0fc5cbd065f6b3d45f9be05b01fefcb23bfabdb2bf19dfe5a4e5b82fe7f1",
+      "byteCount": 22500,
+      "dimensions": [
+        1024,
+        512
+      ]
+    }
+  ],
+  "scope": "Left direction candidate only; does not imply user approval or runtime/device tests."
+}

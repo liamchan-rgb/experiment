@@ -1,0 +1,14 @@
+{
+  "date": "2026-10-24",
+  "reviewer": "user",
+  "statement": "没问题开始做下一步",
+  "direction": "down-right",
+  "revision": "neutral-r1-mirror",
+  "status": "approved",
+  "scope": "Previously delivered neutral right-down whole-body standing, normal8-frame walk and specified start/stop preview only; no independent head/clothes/weapon resources, hidden anatomy, arbitrary phase interruption or runtime",
+  "artifacts": {
+    "walk-120ms.gif": "2ad918ccbe33faf7f371cb27d792a7fdbe80a734157be5a7f72494623e1ab1fb",
+    "start-stop-120ms.gif": "cd32f25fabfdd4ed78f61a8f2ed04a00d477c4263db1af987fc499b33861fedd",
+    "idle-review-2x.png": "ebd7f33711276e5e28ed1d7c54dfd275ae367bff87a2e217ead05de5beadf654"
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "originalResource": "Art/Parts/P1-v1/weapon-short-sword-back-v1/source/imagegen-original.png",
+  "originalSourceSHA256": "46bfa9347fc99f4ed44b295a3c77464613bfd8eccb76bbcae0758a3b29b0c619",
+  "change": "Reused unmodified source weapon art. Fixed left-view projection only; no new weapon drawing or body changes.",
+  "artApproval": null
+}

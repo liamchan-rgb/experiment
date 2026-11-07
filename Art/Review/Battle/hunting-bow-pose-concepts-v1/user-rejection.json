@@ -1,0 +1,10 @@
+{
+  "date": "2026-10-27",
+  "userMessage": "你把持弓手和拉弓手搞反了，看起来姿势非常诡异，还一堆杂色像素没处理干净你先做几版效果图给我，看看你理解到没有",
+  "rejected": "build54 hunter bow grip r1 battle animation",
+  "priorDeliveryCommit": "62d105042220070606aa56ba3957ab3e518108f7",
+  "scope": "battle bow arm roles, posture and unwanted pixels",
+  "currentUserInstruction": "先提交多版静态姿势效果图，待用户判断理解",
+  "newConceptApproval": null,
+  "appChangeThisTurn": false
+}

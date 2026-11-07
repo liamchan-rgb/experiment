@@ -1,0 +1,99 @@
+{
+  "format": 2,
+  "status": "imported-for-demo-device-review",
+  "date": "2026-10-21",
+  "directions": [
+    {
+      "direction": "down",
+      "revision": "r1",
+      "source": "Art/Review/P1/directions/down/revisions/r1/strip.png",
+      "sha256": "19d934db5e3ce02fd8054759300e5c115ab1a440c17c48f954eb48a0e23987e3",
+      "approvedOriginal": "Art/Review/P1/directions/down/revisions/r1/strip.png",
+      "approvedOriginalSHA256": "19d934db5e3ce02fd8054759300e5c115ab1a440c17c48f954eb48a0e23987e3",
+      "loopRepairAuthorized": false
+    },
+    {
+      "direction": "left",
+      "revision": "r1",
+      "source": "Art/Review/P1/directions/left/revisions/r1/strip.png",
+      "sha256": "91b94ac7d5037e0155ed480d5afda807c5ab29597b54bf239ab9745cc8d4d039",
+      "approvedOriginal": "Art/Review/P1/directions/left/revisions/r1/strip.png",
+      "approvedOriginalSHA256": "91b94ac7d5037e0155ed480d5afda807c5ab29597b54bf239ab9745cc8d4d039",
+      "loopRepairAuthorized": false
+    },
+    {
+      "direction": "up",
+      "revision": "r1",
+      "source": "Art/Review/P1/directions/up/revisions/r1/strip.png",
+      "sha256": "baaf947de7d5a16d0e4c1a8fbdddd7b46effb03c33d7f195097857beab6a3df8",
+      "approvedOriginal": "Art/Review/P1/directions/up/revisions/r1/strip.png",
+      "approvedOriginalSHA256": "baaf947de7d5a16d0e4c1a8fbdddd7b46effb03c33d7f195097857beab6a3df8",
+      "loopRepairAuthorized": false
+    },
+    {
+      "direction": "right",
+      "revision": "r1",
+      "source": "Art/Review/P1/directions/right/revisions/r1/strip.png",
+      "sha256": "048ba38d0b48277ef34bf77575e00a508cab3a6f254e48ac724aa5de1a1f8b61",
+      "approvedOriginal": "Art/Review/P1/directions/right/revisions/r1/strip.png",
+      "approvedOriginalSHA256": "048ba38d0b48277ef34bf77575e00a508cab3a6f254e48ac724aa5de1a1f8b61",
+      "loopRepairAuthorized": false
+    },
+    {
+      "direction": "down-right",
+      "revision": "loop-r1",
+      "source": "Art/Review/P1/directions/down-right/revisions/loop-r1/strip.png",
+      "sha256": "ee2330e5e30e77405e2b15658b556aa772ef12668ae53ad9b3ff1199440d3a6f",
+      "approvedOriginal": "Art/Review/P1/directions/down-right/revisions/r1/strip.png",
+      "approvedOriginalSHA256": "f1e8f8f77ace3e5e779efe0655f011393bf42b24dc4c5552eefe1835a5dacb94",
+      "loopRepairAuthorized": true
+    },
+    {
+      "direction": "down-left",
+      "revision": "loop-r1",
+      "source": "Art/Review/P1/directions/down-left/revisions/loop-r1/strip.png",
+      "sha256": "bf1de96624b4e375c52cdd03c3a8da7068cb8d41f3b4ef56132738a55da69a91",
+      "approvedOriginal": "Art/Review/P1/directions/down-left/revisions/r1/strip.png",
+      "approvedOriginalSHA256": "57a865920a720dbd5c3e755f9c3c199c2641c7ce86cbde115be4934d4b2fa206",
+      "loopRepairAuthorized": true
+    },
+    {
+      "direction": "up-left",
+      "revision": "loop-r1",
+      "source": "Art/Review/P1/directions/up-left/revisions/loop-r1/strip.png",
+      "sha256": "d3b43c5c49e03d66b4b541253003f3bfcbb9e2e334d93db927efdb519c995a3f",
+      "approvedOriginal": "Art/Review/P1/directions/up-left/revisions/r6/strip.png",
+      "approvedOriginalSHA256": "5a6282612299914da5b829cff5f3c86085731088bc2a17be08b43c34eba6ff96",
+      "loopRepairAuthorized": true
+    },
+    {
+      "direction": "up-right",
+      "revision": "loop-r2",
+      "source": "Art/Review/P1/directions/up-right/revisions/loop-r2/strip.png",
+      "sha256": "2eb429fa51731f48708f4027828369afbe23232931e003d57aeb63d75265862a",
+      "approvedOriginal": "Art/Review/P1/directions/up-right/revisions/r1/strip.png",
+      "approvedOriginalSHA256": "ab21948e2e6d1a94220c2cfa32626c50a2baf3e9a0782152130595c610c4b34c",
+      "loopRepairAuthorized": true
+    }
+  ],
+  "authoredWalkPoses": 8,
+  "idlePosesPerDirection": 1,
+  "frameMs": 120,
+  "cycleMs": 960,
+  "rasterColumns": 9,
+  "distanceClockTicks": 24,
+  "pixelChangesDuringImport": 0,
+  "approvedOriginalsPreserved": true,
+  "interpolatedPoses": 0,
+  "footprints": "Art/Integration/P1-diagonal-loop-v2/footprints.json",
+  "outputs": {
+    "Sources/Resources/Assets.xcassets/Hero1Directions.imageset/Hero1Directions.png": "61d4c4ba5b0bc49bb37f2dfaa50b9c7788e484fcd81789dbc4a18a6e9502b88a",
+    "Sources/Resources/Assets.xcassets/Hero1Diagonals.imageset/Hero1Diagonals.png": "dcc95ee7978742c801e41d24f7e8d0da92474b913be0ee7436d5b1e4febff8c6",
+    "Sources/Resources/hero-gait.json": "22a1307984bde0b68ad1dc2ca8a3d8370963e9e15f88d0048b109c97e32d104b"
+  },
+  "loopRepairAuthorization": {
+    "statement": "\u56db\u4e2a\u659c\u65b9\u5411\u7684\u52a8\u753b\u9996\u5e27\u548c\u672b\u5c3e\u5e27\u8854\u63a5\u4e0d\u597d\uff0c\u6709\u8df3\u52a8\uff0c\u8fd9\u4e2a\u4f60\u7528\u5355\u5f00\u7684\u667a\u80fd\u4f53\u81ea\u5df1\u4fee\u4e00\u4e0b\uff0c\u81ea\u5df1\u5408\u6210\u52a8\u56fe\u5ba1\u6838",
+    "scope": "Autonomous four-diagonal loop repair and normal-speed self-review; original approvals remain preserved, new art is not marked user approved"
+  },
+  "physicalDeviceVisualApproval": null
+}

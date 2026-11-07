@@ -1,0 +1,76 @@
+{
+  "status": "user approved the presented down-facing v8 appearance and normal walk loop; production template incomplete",
+  "artApproval": {
+    "date": "2026-10-22",
+    "reviewer": "user",
+    "statement": "可以的，接下来该做什么",
+    "status": "approved",
+    "scope": "The presented down-facing v8 full-body appearance and normal-speed 8-frame walk loop only. Excludes unshown combinations, other directions, start/stop transitions and runtime/device integration.",
+    "artifacts": {
+      "idle-review-2x.png": "51fee2b50d78333d3472a47dc090fb4c3b41f01d71021a51ae0b39d75382a4d3",
+      "walk-120ms.gif": "c0bf14caa1037370168f616e90c5ec930423705215ec9a360993c1c008f6cdc3"
+    }
+  },
+  "rejectedPredecessor": "v7-grip-transition; user rejected exposed body and unnatural gripping hands",
+  "resourceManifestHashes": {
+    "Art/Templates/P1-Neutral/down/walk-r6-relaxed-arms/asset.json": "633a09316795de136639cdaa737a421228475b7ea3927fc3b95e9b396aa6883b",
+    "Art/Parts/P1-v1/outfit-forester-cover-v2/asset.json": "849c603bf35563ec24b8c835622d4baba0d56ed457ef030167980c07b743d80f",
+    "Art/Parts/P1-v1/weapon-short-sword-back-v1/asset.json": "87a92b48f35f516b386f4473f6d641c6aa390fa606c88a90b914770c539f550b"
+  },
+  "actualCompositorAudit": "Art/Review/P1/modular-down-back-carry-v1/audit.json",
+  "combinations": 24,
+  "poses": 216,
+  "dressedCoveragePoses": 108,
+  "weaponToggles": 108,
+  "coverageAbove5PercentFailures": 0,
+  "weaponToggleFailures": 0,
+  "normalWalk": {
+    "frames": 8,
+    "durationMsPerFrame": 120,
+    "periodMs": 960,
+    "sharedGifPalette": true
+  },
+  "reExportedPartPNGs": 153,
+  "reExportPNGByteDifferences": 0,
+  "contractTests": {
+    "run": 23,
+    "failures": 0,
+    "errors": 0
+  },
+  "compositorTests": {
+    "run": 19,
+    "failures": 0,
+    "errors": 0
+  },
+  "approvedMotionHashCheck": {
+    "frames": 72,
+    "passed": true,
+    "sparseHEADFilesMaterializedWithoutChanges": 55
+  },
+  "currentUserReviewPose": {
+    "direction": "down",
+    "clip": "idle",
+    "frame": 0,
+    "path": "Art/Review/P1/modular-down-back-carry-v1/idle-review-2x.png"
+  },
+  "internalArtReview": "Art/Review/P1/modular-down-back-carry-v1/art-review.md",
+  "artifactHashes": {
+    "idle-review-1x.png": "aa3f35b22b961d87a39aba5b84e2478266d197475eb4180d5d92f16f9de4a554",
+    "idle-review-2x.png": "51fee2b50d78333d3472a47dc090fb4c3b41f01d71021a51ae0b39d75382a4d3",
+    "nine-poses-fullbody-2x.png": "2cf9490de6fb76a2a64f135bbafe8dd48908a9891391cb47095892053d904da0",
+    "walk-120ms.gif": "c0bf14caa1037370168f616e90c5ec930423705215ec9a360993c1c008f6cdc3",
+    "audit.json": "b529765842baed0ebc95ed7fca5296ed23819c3091af595894c5b6c645d7bc3e",
+    "art-review.md": "73dd8ac43e2d8d093e1ac3751a35c779aae5dac1f15d90425b351bbf07435df3"
+  },
+  "limits": [
+    "down-facing candidate only",
+    "front view hides the middle scabbard; visible shoulder hilt and short opposite-hip tip",
+    "no simulator/device/runtime or IPA"
+  ],
+  "currentUserReviewAnimation": {
+    "path": "Art/Review/P1/modular-down-back-carry-v1/walk-120ms.gif",
+    "frames": 8,
+    "durationMs": 120,
+    "userRequiredDelivery": true
+  }
+}

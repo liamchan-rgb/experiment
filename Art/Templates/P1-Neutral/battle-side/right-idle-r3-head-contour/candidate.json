@@ -1,0 +1,35 @@
+{
+  "id": "p1-neutral-battle-side-right-idle-r3-head-contour",
+  "status": "unapproved-head-contour-candidate",
+  "parent": "../right-idle-r2/00.png",
+  "registrationReference": "../right-idle-r2/registration.json",
+  "canvasPx": [
+    256,
+    256
+  ],
+  "canvasTransform": [
+    1,
+    0,
+    0,
+    1,
+    0,
+    0
+  ],
+  "automaticAlphaFit": false,
+  "soleLineCanvasY": 214,
+  "anatomicalFootAnchorPx": [
+    123,
+    214
+  ],
+  "scope": "User-requested common rear-head silhouette revision only; no appearance-ID selection or changes to pose/limbs/face landmarks.",
+  "authoring": [
+    "head-mask.svg",
+    "head-edge.svg",
+    "build.sh"
+  ],
+  "validation": "validation.json",
+  "sourceSHA256": "9ac9c8141617b9eb31084b7139227fa9cf8ab9ccf6fa7a31a98c661a68923065",
+  "candidateSHA256": "6fdb0f71ac32e530e7242f02750bb1ccfb50f4e50a19efd0ae3dce3664a4418c",
+  "runtimeIntegrated": false,
+  "userArtApproval": null
+}

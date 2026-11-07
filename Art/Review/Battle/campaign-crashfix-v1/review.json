@@ -1,0 +1,16 @@
+{
+  "offline": true,
+  "lightingAndUIApproximate": true,
+  "notUIKitOrDevice": true,
+  "fullBattleFrames": 948,
+  "fullBattleVideo": "encounter-full.mp4",
+  "deliveredGIF": "monster-turn-normal.gif",
+  "deliveredGIFFullSourceRange": [
+    0,
+    237
+  ],
+  "deliveredGIFFrames": 238,
+  "frameMs": 20,
+  "realPersistentIDsAndHUDFieldsExercised": true,
+  "artApproval": null
+}

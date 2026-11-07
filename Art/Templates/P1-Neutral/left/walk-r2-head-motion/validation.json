@@ -1,0 +1,29 @@
+{
+  "status": "user approved presented left-neutral appearance, normal walk and subtle head motion; hidden anatomy and start/stop incomplete",
+  "artApproval": {
+    "date": "2026-10-22",
+    "reviewer": "user",
+    "statement": "\u6ca1\u95ee\u9898\u5f00\u59cb\u4e0b\u4e00\u6b65\u5de5\u4f5c",
+    "status": "approved",
+    "scope": "Presented left-facing r2 neutral full-body appearance, eight-frame normal walk and subtle head motion only. Excludes hidden anatomy, new start/stop key poses, independent left-facing appearances and runtime integration.",
+    "artifacts": {
+      "walk-120ms.gif": "67d0de0d0b641fffe8a352b786b787d7f00db41cfa8884fe9d88e65e2b60d7d3",
+      "before-after-120ms.gif": "cb5bf0a3c0eda7329aa532a068cd1e6fb7eb3ecfc115b396c88c3f048a9c5b92"
+    }
+  },
+  "baseRevision": "Art/Templates/P1-Neutral/left/walk-r1",
+  "checks": "Art/Review/P1/neutral-left-walk-r2-head-motion/head-motion-checks.json",
+  "compositorPoses": 9,
+  "headAttachmentTransforms": 9,
+  "neckConnections": 9,
+  "soleMarkers": 18,
+  "normalGifFrames": 8,
+  "normalFrameMs": 120,
+  "reexportFiles": 99,
+  "reexportByteDifferences": 0,
+  "limits": [
+    "left neutral only",
+    "natural start/stop and complete hidden joints remain incomplete",
+    "no runtime/simulator/device/IPA"
+  ]
+}

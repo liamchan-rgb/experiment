@@ -1,0 +1,31 @@
+{
+  "sourceCommit": "eaee324ab7e8f14c42878fcfc8aa11c726bf5310",
+  "reviewer": "primary agent",
+  "all143SourceCompositesByteExact": true,
+  "decodedGIFPagesInspected": 30,
+  "actualDecodedFramesInspected": 570,
+  "sixClipWholeBodyKeyposes": 30,
+  "bodyAndSceneNormalGIFs": [
+    "body-normal.gif",
+    "bow-normal.gif",
+    "bow-lethal-normal.gif"
+  ],
+  "wholeBodyScales": [
+    1,
+    2
+  ],
+  "checks": [
+    "near drawing hand and far holding hand roles",
+    "shoulder/elbow/cuff continuity and depth",
+    "string/finger/arrow registration",
+    "whole-body proportions",
+    "attack to idle switch",
+    "projectile release and impact",
+    "death and health-bar lifecycle"
+  ],
+  "previewTimingFix": "Preparation now starts at confirmation, preserving 0.86 release and original impact hold.",
+  "scope": "Offline art review using production Swift samples and imported independent layers. Not UIKit/App/device capture.",
+  "physicalDeviceRunPerformed": false,
+  "simulatorRunPerformed": false,
+  "userRuntimeArtApproved": null
+}

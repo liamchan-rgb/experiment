@@ -1,0 +1,138 @@
+{
+  "date": "2026-10-22",
+  "version": "1.6.12",
+  "build": 38,
+  "scope": "Offline full-body sequential art review, normal 120ms timing and simplified road composition; no simulator, GPU capture or physical-device runtime",
+  "revision": "Art/Review/P1/directions/up-left/revisions/contact-r1",
+  "parentReview": {
+    "status": "internally-reviewed",
+    "references": [
+      "candidate-compare.png",
+      "review-2x.png",
+      "seam-compare.png",
+      "walk.gif"
+    ],
+    "finding": "Pose02 adds a descending left boot while the right boot remains planted. Full figure scale/root and 07,08,01,02,03 continuity checked. Boot toe roll and coat silhouette assessed at whole-figure size.",
+    "visibleLeftSoleLastRows01_02_03": [
+      210,
+      215,
+      223
+    ],
+    "visibleRightSoleLastRows01_02_03": [
+      223,
+      223,
+      213
+    ],
+    "normalFrameMs": 120,
+    "userArtApproval": null
+  },
+  "checks": {
+    "onlyP1UpLeftPose02PixelsChanged": true,
+    "runtimeRowMatchesSelectedStripRGBA": true,
+    "otherEightSourceCellsUnchanged": true,
+    "allOtherHeroesAndDirectionsUnchanged": true,
+    "runtimeFootSamplesUpdated": [
+      [
+        0,
+        6,
+        4
+      ],
+      [
+        0,
+        6,
+        5
+      ],
+      [
+        0,
+        6,
+        6
+      ]
+    ],
+    "normalGIFdurationsMs": [
+      120,
+      120,
+      120,
+      120,
+      120,
+      120,
+      120,
+      120
+    ],
+    "roadGIFdurationsMs": [
+      120,
+      120,
+      120,
+      120,
+      120,
+      120,
+      120,
+      120,
+      120,
+      120,
+      120,
+      120,
+      120,
+      120,
+      120,
+      120,
+      120,
+      120,
+      120,
+      120,
+      120,
+      120,
+      120,
+      120,
+      120,
+      120,
+      120,
+      120,
+      120,
+      120,
+      120,
+      120,
+      120,
+      120,
+      120,
+      120,
+      120,
+      120,
+      120,
+      120,
+      120,
+      120,
+      120,
+      120,
+      120,
+      120,
+      120,
+      120
+    ],
+    "runtimeFrameCount24AuthoredCount8": true,
+    "originalApprovedStripsValidatedByImporter": true,
+    "userApprovalRecordsPreserved": true
+  },
+  "newFootLandmarks": {
+    "screenRight": [
+      142,
+      224,
+      0
+    ],
+    "screenLeft": [
+      110,
+      216,
+      8
+    ],
+    "convention": "Boundary y = last visible alpha row +1; conservative left lift8 gives projected ground y near224."
+  },
+  "sha256": {
+    "selectedStrip": "295e6fc45630fff7d5ddb09f6de8c7f18242a673e77e306c7c9fdc1420a9a708",
+    "pose02": "64e81fc1671b420f27f00fa64d2e0cb002b5d5e1fcb3257b666c686c2e74076d",
+    "normalGIF": "33e9e58dafa332b1de457e1e64e8d5f8477a6d5f9d6026659a80627033485449",
+    "runtimeAtlas": "ab0b2165ed51710725c13a7dad985bc78346ad1e17aa6f15e6c238ca2d61615d",
+    "runtimeGaitJSON": "91d83dc179d56e95f266ac1c528aeed6c54d958ad7d0cbd5b0d0224565a326a9",
+    "roadGIF": "a6446f22afc4e84f829bb7edf087256f93ec0ac2c0945624fa2b3e2e5ea1c06e"
+  },
+  "simulatorRunPerformed": false,
+  "physicalDeviceRunPerformed": false
+}

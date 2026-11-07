@@ -1,0 +1,27 @@
+{
+  "reviewer": "primary agent",
+  "scope": "whole body at native/enlarged scale plus every decoded frame of final all-actions-normal.gif",
+  "decodedFrames": 224,
+  "pages": [
+    "all-actions-decoded-01.jpg",
+    "all-actions-decoded-02.jpg",
+    "all-actions-decoded-03.jpg",
+    "all-actions-decoded-04.jpg",
+    "all-actions-decoded-05.jpg",
+    "all-actions-decoded-06.jpg",
+    "all-actions-decoded-07.jpg",
+    "all-actions-decoded-08.jpg",
+    "all-actions-decoded-09.jpg",
+    "all-actions-decoded-10.jpg",
+    "all-actions-decoded-11.jpg",
+    "all-actions-decoded-12.jpg"
+  ],
+  "wholeBodyComparison": "new-states-whole-body.png",
+  "findingsRepaired": [
+    "below-ground trouser flap",
+    "alpha-1 boot fringe used as physical support",
+    "revive preview differed from production ease"
+  ],
+  "newUserApproval": null,
+  "appRunPerformed": false
+}

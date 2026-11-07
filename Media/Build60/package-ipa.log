@@ -1,0 +1,33 @@
+SideStore package metadata verified: MeadowJourney 1.6.34 build 60
+{
+  "file": "/var/folders/20/jp1_0n3n7kndh6rnbqb5344m0000gn/T/tmp.K3ySKpKySP/classic.ipa",
+  "version": "1.6.34",
+  "build": "60",
+  "bytes": 38263628,
+  "sha256": "c9719a152b96c9b64231542b16a6fb1c2b24305d6d2b0f8d35467299d57c938d",
+  "compression": "stored",
+  "payloadBytesIdentical": true
+}
+Archive:  /Users/runner/work/experiment/experiment/build/MeadowJourney-shadow-lab.ipa
+    testing: Payload/                 OK
+    testing: Payload/MeadowJourney.app/   OK
+    testing: Payload/MeadowJourney.app/SceneMap.json   OK
+    testing: Payload/MeadowJourney.app/default.metallib   OK
+    testing: Payload/MeadowJourney.app/AppIcon60x60@2x.png   OK
+    testing: Payload/MeadowJourney.app/Assets.car   OK
+    testing: Payload/MeadowJourney.app/AppIcon76x76@2x~ipad.png   OK
+    testing: Payload/MeadowJourney.app/ClassroomGameCore_MeadowBattleSupport.bundle/   OK
+    testing: Payload/MeadowJourney.app/ClassroomGameCore_MeadowBattleSupport.bundle/legendary-staff-v1.json   OK
+    testing: Payload/MeadowJourney.app/ClassroomGameCore_MeadowBattleSupport.bundle/reviewed-bow-r7.json   OK
+    testing: Payload/MeadowJourney.app/ClassroomGameCore_MeadowBattleSupport.bundle/great-sword-v1.json   OK
+    testing: Payload/MeadowJourney.app/ClassroomGameCore_MeadowBattleSupport.bundle/Info.plist   OK
+    testing: Payload/MeadowJourney.app/MeadowJourney   OK
+    testing: Payload/MeadowJourney.app/Info.plist   OK
+    testing: Payload/MeadowJourney.app/ClassroomGameCore_ClassroomGameCore.bundle/   OK
+    testing: Payload/MeadowJourney.app/ClassroomGameCore_ClassroomGameCore.bundle/initial-content.json   OK
+    testing: Payload/MeadowJourney.app/ClassroomGameCore_ClassroomGameCore.bundle/Info.plist   OK
+    testing: Payload/MeadowJourney.app/hero-gait.json   OK
+    testing: Payload/MeadowJourney.app/PkgInfo   OK
+No errors detected in compressed data of /Users/runner/work/experiment/experiment/build/MeadowJourney-shadow-lab.ipa.
+c9719a152b96c9b64231542b16a6fb1c2b24305d6d2b0f8d35467299d57c938d  /Users/runner/work/experiment/experiment/build/MeadowJourney-shadow-lab.ipa
+Unsigned IPA ready for SideStore re-signing: /Users/runner/work/experiment/experiment/build/MeadowJourney-shadow-lab.ipa

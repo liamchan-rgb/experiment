@@ -23,9 +23,9 @@ struct MeadowBattleLayout {
         let top = max(safeArea.top + 12, size.height * 0.05)
         let bottom = size.height - max(safeArea.bottom + 12, size.height * 0.05)
         let width = max(1, size.width - left - right)
-        let gap = max(12, 24 * unit)
-        header = CGRect(x: left, y: top, width: width, height: max(64, 60 * unit))
-        let detailHeight: CGFloat = mode.showsDetails ? max(116, 144 * unit) : 0
+        let gap = max(8, 18 * unit)
+        header = CGRect(x: left, y: top, width: width, height: max(76, 76 * unit))
+        let detailHeight: CGFloat = mode.showsDetails ? max(142, 174 * unit) : 0
         let trackHeight: CGFloat = mode.showsBattle ? max(64, 80 * unit) : 0
         details = mode.showsDetails
             ? CGRect(x: left, y: bottom - detailHeight, width: width, height: detailHeight) : .zero

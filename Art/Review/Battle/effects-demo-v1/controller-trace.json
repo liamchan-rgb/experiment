@@ -1,0 +1,3425 @@
+{
+  "lastStrike" : [
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.066666666666666666,
+      "fps" : 15,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.13333333333333333,
+      "fps" : 15,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.20000000000000001,
+      "fps" : 15,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.26666666666666666,
+      "fps" : 15,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.33333333333333331,
+      "fps" : 15,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.39999999999999997,
+      "fps" : 15,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.46666666666666662,
+      "fps" : 15,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.055555555555555497
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.53333333333333333,
+      "fps" : 15,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.11111111111111109
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.59999999999999998,
+      "fps" : 15,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.16666666666666663
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.66666666666666663,
+      "fps" : 15,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.22222222222222218
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.73333333333333328,
+      "fps" : 15,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.27777777777777773
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.79999999999999993,
+      "fps" : 15,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.33333333333333326
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.86666666666666659,
+      "fps" : 15,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.38888888888888884
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.93333333333333324,
+      "fps" : 15,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.44444444444444436
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.99999999999999989,
+      "fps" : 15,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.49999999999999989
+    },
+    {
+      "damage" : 3,
+      "defeated" : true,
+      "elapsed" : 1.0666666666666667,
+      "fps" : 15,
+      "hp" : 0,
+      "impact" : true,
+      "poseProgress" : 0.54000000000000004
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.1333333333333333,
+      "fps" : 15,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.54444444444444451
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.2,
+      "fps" : 15,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.59999999999999998
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.2666666666666666,
+      "fps" : 15,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.65555555555555556
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.3333333333333333,
+      "fps" : 15,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.71111111111111114
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.3999999999999999,
+      "fps" : 15,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.76666666666666661
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.4666666666666666,
+      "fps" : 15,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.82222222222222208
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.5333333333333332,
+      "fps" : 15,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.87777777777777777
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.5999999999999999,
+      "fps" : 15,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.93333333333333313
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.6666666666666665,
+      "fps" : 15,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.98888888888888882
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.6799999999999999,
+      "fps" : 15,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.99999999999999978
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.033333333333333333,
+      "fps" : 30,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.066666666666666666,
+      "fps" : 30,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.10000000000000001,
+      "fps" : 30,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.13333333333333333,
+      "fps" : 30,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.16666666666666666,
+      "fps" : 30,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.19999999999999998,
+      "fps" : 30,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.23333333333333331,
+      "fps" : 30,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.26666666666666666,
+      "fps" : 30,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.29999999999999999,
+      "fps" : 30,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.33333333333333331,
+      "fps" : 30,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.36666666666666664,
+      "fps" : 30,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.39999999999999997,
+      "fps" : 30,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.43333333333333329,
+      "fps" : 30,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.027777777777777728
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.46666666666666662,
+      "fps" : 30,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.055555555555555497
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.49999999999999994,
+      "fps" : 30,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.083333333333333273
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.53333333333333333,
+      "fps" : 30,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.11111111111111109
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.56666666666666665,
+      "fps" : 30,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.13888888888888887
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.59999999999999998,
+      "fps" : 30,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.16666666666666663
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.6333333333333333,
+      "fps" : 30,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.19444444444444442
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.66666666666666663,
+      "fps" : 30,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.22222222222222218
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.69999999999999996,
+      "fps" : 30,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.24999999999999994
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.73333333333333328,
+      "fps" : 30,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.27777777777777773
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.76666666666666661,
+      "fps" : 30,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.30555555555555552
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.79999999999999993,
+      "fps" : 30,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.33333333333333326
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.83333333333333326,
+      "fps" : 30,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.36111111111111105
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.86666666666666659,
+      "fps" : 30,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.38888888888888884
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.89999999999999991,
+      "fps" : 30,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.41666666666666657
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.93333333333333324,
+      "fps" : 30,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.44444444444444436
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.96666666666666656,
+      "fps" : 30,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.47222222222222215
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.99999999999999989,
+      "fps" : 30,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.49999999999999989
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 1.0333333333333332,
+      "fps" : 30,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.52777777777777768
+    },
+    {
+      "damage" : 3,
+      "defeated" : true,
+      "elapsed" : 1.0666666666666667,
+      "fps" : 30,
+      "hp" : 0,
+      "impact" : true,
+      "poseProgress" : 0.54000000000000004
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.1000000000000001,
+      "fps" : 30,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.54000000000000004
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.1333333333333335,
+      "fps" : 30,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.54444444444444462
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.166666666666667,
+      "fps" : 30,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.57222222222222252
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.2000000000000004,
+      "fps" : 30,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.60000000000000042
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.2333333333333338,
+      "fps" : 30,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.62777777777777821
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.2666666666666673,
+      "fps" : 30,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.65555555555555611
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.3000000000000007,
+      "fps" : 30,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.68333333333333401
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.3333333333333341,
+      "fps" : 30,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.7111111111111118
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.3666666666666676,
+      "fps" : 30,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.73888888888888971
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.400000000000001,
+      "fps" : 30,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.7666666666666675
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.4333333333333345,
+      "fps" : 30,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.79444444444444551
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.4666666666666679,
+      "fps" : 30,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.82222222222222319
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.5000000000000013,
+      "fps" : 30,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.8500000000000012
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.5333333333333348,
+      "fps" : 30,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.87777777777777888
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.5666666666666682,
+      "fps" : 30,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.90555555555555689
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.6000000000000016,
+      "fps" : 30,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.93333333333333457
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.6333333333333351,
+      "fps" : 30,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.96111111111111258
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.6666666666666685,
+      "fps" : 30,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.98888888888889026
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.6799999999999999,
+      "fps" : 30,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.99999999999999978
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.016666666666666666,
+      "fps" : 60,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.033333333333333333,
+      "fps" : 60,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.050000000000000003,
+      "fps" : 60,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.066666666666666666,
+      "fps" : 60,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.083333333333333329,
+      "fps" : 60,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.099999999999999992,
+      "fps" : 60,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.11666666666666665,
+      "fps" : 60,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.13333333333333333,
+      "fps" : 60,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.14999999999999999,
+      "fps" : 60,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.16666666666666666,
+      "fps" : 60,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.18333333333333332,
+      "fps" : 60,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.19999999999999998,
+      "fps" : 60,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.21666666666666665,
+      "fps" : 60,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.23333333333333331,
+      "fps" : 60,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.24999999999999997,
+      "fps" : 60,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.26666666666666666,
+      "fps" : 60,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.28333333333333333,
+      "fps" : 60,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.29999999999999999,
+      "fps" : 60,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.31666666666666665,
+      "fps" : 60,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.33333333333333331,
+      "fps" : 60,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.34999999999999998,
+      "fps" : 60,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.36666666666666664,
+      "fps" : 60,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.3833333333333333,
+      "fps" : 60,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.39999999999999997,
+      "fps" : 60,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.41666666666666663,
+      "fps" : 60,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.01388888888888884
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.43333333333333329,
+      "fps" : 60,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.027777777777777728
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.44999999999999996,
+      "fps" : 60,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.041666666666666616
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.46666666666666662,
+      "fps" : 60,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.055555555555555497
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.48333333333333328,
+      "fps" : 60,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.069444444444444392
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.49999999999999994,
+      "fps" : 60,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.083333333333333273
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.51666666666666661,
+      "fps" : 60,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.097222222222222154
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.53333333333333333,
+      "fps" : 60,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.11111111111111109
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.55000000000000004,
+      "fps" : 60,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.12500000000000003
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.56666666666666676,
+      "fps" : 60,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.13888888888888895
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.58333333333333348,
+      "fps" : 60,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.1527777777777779
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.6000000000000002,
+      "fps" : 60,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.16666666666666682
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.61666666666666692,
+      "fps" : 60,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.18055555555555575
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.63333333333333364,
+      "fps" : 60,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.1944444444444447
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.65000000000000036,
+      "fps" : 60,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.20833333333333362
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.66666666666666707,
+      "fps" : 60,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.22222222222222254
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.68333333333333379,
+      "fps" : 60,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.23611111111111149
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.70000000000000051,
+      "fps" : 60,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.25000000000000044
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.71666666666666723,
+      "fps" : 60,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.26388888888888934
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.73333333333333395,
+      "fps" : 60,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.27777777777777829
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.75000000000000067,
+      "fps" : 60,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.29166666666666724
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.76666666666666738,
+      "fps" : 60,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.30555555555555614
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.7833333333333341,
+      "fps" : 60,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.31944444444444509
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.80000000000000082,
+      "fps" : 60,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.33333333333333404
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.81666666666666754,
+      "fps" : 60,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.34722222222222293
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.83333333333333426,
+      "fps" : 60,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.36111111111111188
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.85000000000000098,
+      "fps" : 60,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.37500000000000083
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.8666666666666677,
+      "fps" : 60,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.38888888888888973
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.88333333333333441,
+      "fps" : 60,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.40277777777777868
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.90000000000000113,
+      "fps" : 60,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.41666666666666763
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.91666666666666785,
+      "fps" : 60,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.43055555555555652
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.93333333333333457,
+      "fps" : 60,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.44444444444444547
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.95000000000000129,
+      "fps" : 60,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.45833333333333443
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.96666666666666801,
+      "fps" : 60,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.47222222222222332
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.98333333333333472,
+      "fps" : 60,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.48611111111111227
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 1.0000000000000013,
+      "fps" : 60,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.50000000000000111
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 1.0166666666666679,
+      "fps" : 60,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.51388888888888995
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 1.0333333333333345,
+      "fps" : 60,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.52777777777777879
+    },
+    {
+      "damage" : 3,
+      "defeated" : true,
+      "elapsed" : 1.0500000000000012,
+      "fps" : 60,
+      "hp" : 0,
+      "impact" : true,
+      "poseProgress" : 0.54000000000000004
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.0666666666666678,
+      "fps" : 60,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.54000000000000004
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.0833333333333344,
+      "fps" : 60,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.54000000000000004
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.100000000000001,
+      "fps" : 60,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.54000000000000004
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.1166666666666676,
+      "fps" : 60,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.54000000000000004
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.1333333333333342,
+      "fps" : 60,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.54444444444444517
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.1500000000000008,
+      "fps" : 60,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.55833333333333401
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.1666666666666674,
+      "fps" : 60,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.57222222222222285
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.183333333333334,
+      "fps" : 60,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.58611111111111169
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.2000000000000006,
+      "fps" : 60,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.60000000000000053
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.2166666666666672,
+      "fps" : 60,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.61388888888888937
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.2333333333333338,
+      "fps" : 60,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.62777777777777821
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.2500000000000004,
+      "fps" : 60,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.64166666666666705
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.2666666666666671,
+      "fps" : 60,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.65555555555555589
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.2833333333333337,
+      "fps" : 60,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.66944444444444473
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.3000000000000003,
+      "fps" : 60,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.68333333333333357
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.3166666666666669,
+      "fps" : 60,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.69722222222222241
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.3333333333333335,
+      "fps" : 60,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.71111111111111125
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.3500000000000001,
+      "fps" : 60,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.72500000000000009
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.3666666666666667,
+      "fps" : 60,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.73888888888888893
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.3833333333333333,
+      "fps" : 60,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.75277777777777777
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.3999999999999999,
+      "fps" : 60,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.76666666666666661
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.4166666666666665,
+      "fps" : 60,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.78055555555555556
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.4333333333333331,
+      "fps" : 60,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.7944444444444444
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.4499999999999997,
+      "fps" : 60,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.80833333333333324
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.4666666666666663,
+      "fps" : 60,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.82222222222222208
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.4833333333333329,
+      "fps" : 60,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.83611111111111081
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.4999999999999996,
+      "fps" : 60,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.84999999999999964
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.5166666666666662,
+      "fps" : 60,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.86388888888888848
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.5333333333333328,
+      "fps" : 60,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.87777777777777732
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.5499999999999994,
+      "fps" : 60,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.89166666666666616
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.566666666666666,
+      "fps" : 60,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.905555555555555
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.5833333333333326,
+      "fps" : 60,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.91944444444444384
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.5999999999999992,
+      "fps" : 60,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.93333333333333268
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.6166666666666658,
+      "fps" : 60,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.94722222222222152
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.6333333333333324,
+      "fps" : 60,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.96111111111111036
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.649999999999999,
+      "fps" : 60,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.9749999999999992
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.6666666666666656,
+      "fps" : 60,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.98888888888888804
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.6799999999999999,
+      "fps" : 60,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.99999999999999978
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.0083333333333333332,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.016666666666666666,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.025000000000000001,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.033333333333333333,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.041666666666666664,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.049999999999999996,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.058333333333333327,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.066666666666666666,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.074999999999999997,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.083333333333333329,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.09166666666666666,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.099999999999999992,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.10833333333333332,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.11666666666666665,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.12499999999999999,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.13333333333333333,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.14166666666666666,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.14999999999999999,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.15833333333333333,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.16666666666666666,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.17499999999999999,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.18333333333333332,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.19166666666666665,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.19999999999999998,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.20833333333333331,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.21666666666666665,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.22499999999999998,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.23333333333333331,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.24166666666666664,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.24999999999999997,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.2583333333333333,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.26666666666666666,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.27500000000000002,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.28333333333333338,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.29166666666666674,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.3000000000000001,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.30833333333333346,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.31666666666666682,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.32500000000000018,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.33333333333333354,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.3416666666666669,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.35000000000000026,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.35833333333333361,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.36666666666666697,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.37500000000000033,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.38333333333333369,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.39166666666666705,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.40000000000000041,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 3.2381504884900402e-16
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.40833333333333377,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.0069444444444447901
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.41666666666666713,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.013888888888889256
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.42500000000000049,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.020833333333333724
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.43333333333333385,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.027777777777778189
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.44166666666666721,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.034722222222222654
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.45000000000000057,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.041666666666667122
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.45833333333333393,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.048611111111111591
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.46666666666666728,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.055555555555556052
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.47500000000000064,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.062500000000000527
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.483333333333334,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.069444444444444989
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.49166666666666736,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.07638888888888945
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.50000000000000067,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.08333333333333387
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.50833333333333397,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.09027777777777829
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.51666666666666727,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.097222222222222709
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.52500000000000058,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.10416666666666713
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.53333333333333388,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.11111111111111155
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.54166666666666718,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.11805555555555597
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.55000000000000049,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.12500000000000039
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.55833333333333379,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.13194444444444481
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.5666666666666671,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.13888888888888923
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.5750000000000004,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.14583333333333365
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.5833333333333337,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.15277777777777807
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.59166666666666701,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.15972222222222249
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.60000000000000031,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.16666666666666691
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.60833333333333361,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.17361111111111133
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.61666666666666692,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.18055555555555575
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.62500000000000022,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.18750000000000017
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.63333333333333353,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.19444444444444459
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.64166666666666683,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.20138888888888901
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.65000000000000013,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.20833333333333343
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.65833333333333344,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.21527777777777785
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.66666666666666674,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.22222222222222227
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.67500000000000004,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.22916666666666669
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.68333333333333335,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.2361111111111111
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.69166666666666665,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.24305555555555552
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.69999999999999996,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.24999999999999994
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.70833333333333326,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.25694444444444436
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.71666666666666656,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.26388888888888878
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.72499999999999987,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.2708333333333332
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.73333333333333317,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.27777777777777762
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.74166666666666647,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.28472222222222204
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.74999999999999978,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.29166666666666646
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.75833333333333308,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.29861111111111088
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.76666666666666639,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.3055555555555553
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.77499999999999969,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.31249999999999972
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.78333333333333299,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.31944444444444414
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.7916666666666663,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.32638888888888856
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.7999999999999996,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.33333333333333298
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.8083333333333329,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.3402777777777774
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.81666666666666621,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.34722222222222182
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.82499999999999951,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.35416666666666624
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.83333333333333282,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.36111111111111066
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.84166666666666612,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.36805555555555508
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.84999999999999942,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.3749999999999995
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.85833333333333273,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.38194444444444392
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.86666666666666603,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.38888888888888834
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.87499999999999933,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.39583333333333276
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.88333333333333264,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.40277777777777718
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.89166666666666594,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.4097222222222216
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.89999999999999925,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.41666666666666602
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.90833333333333255,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.42361111111111044
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.91666666666666585,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.43055555555555486
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.92499999999999916,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.43749999999999928
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.93333333333333246,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.4444444444444437
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.94166666666666576,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.45138888888888812
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.94999999999999907,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.45833333333333254
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.95833333333333237,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.46527777777777696
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.96666666666666567,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.47222222222222138
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.97499999999999898,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.4791666666666658
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.98333333333333228,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.48611111111111022
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.99166666666666559,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.49305555555555464
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.99999999999999889,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.49999999999999906
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 1.0083333333333322,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.50694444444444353
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 1.0166666666666655,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.51388888888888795
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 1.0249999999999988,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.52083333333333237
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 1.0333333333333321,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.52777777777777679
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 1.0416666666666654,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.53472222222222121
+    },
+    {
+      "damage" : 3,
+      "defeated" : true,
+      "elapsed" : 1.0499999999999987,
+      "fps" : 120,
+      "hp" : 0,
+      "impact" : true,
+      "poseProgress" : 0.54000000000000004
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.058333333333332,
+      "fps" : 120,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.54000000000000004
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.0666666666666653,
+      "fps" : 120,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.54000000000000004
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.0749999999999986,
+      "fps" : 120,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.54000000000000004
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.0833333333333319,
+      "fps" : 120,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.54000000000000004
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.0916666666666652,
+      "fps" : 120,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.54000000000000004
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.0999999999999985,
+      "fps" : 120,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.54000000000000004
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.1083333333333318,
+      "fps" : 120,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.54000000000000004
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.1166666666666651,
+      "fps" : 120,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.54000000000000004
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.1249999999999984,
+      "fps" : 120,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.54000000000000004
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.1333333333333317,
+      "fps" : 120,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.54444444444444318
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.1416666666666651,
+      "fps" : 120,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.5513888888888876
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.1499999999999984,
+      "fps" : 120,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.55833333333333202
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.1583333333333317,
+      "fps" : 120,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.56527777777777644
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.166666666666665,
+      "fps" : 120,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.57222222222222086
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.1749999999999983,
+      "fps" : 120,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.57916666666666528
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.1833333333333316,
+      "fps" : 120,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.58611111111110969
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.1916666666666649,
+      "fps" : 120,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.59305555555555411
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.1999999999999982,
+      "fps" : 120,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.59999999999999853
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.2083333333333315,
+      "fps" : 120,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.60694444444444295
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.2166666666666648,
+      "fps" : 120,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.61388888888888737
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.2249999999999981,
+      "fps" : 120,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.62083333333333179
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.2333333333333314,
+      "fps" : 120,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.62777777777777621
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.2416666666666647,
+      "fps" : 120,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.63472222222222063
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.249999999999998,
+      "fps" : 120,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.64166666666666505
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.2583333333333313,
+      "fps" : 120,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.64861111111110947
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.2666666666666646,
+      "fps" : 120,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.65555555555555389
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.2749999999999979,
+      "fps" : 120,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.66249999999999831
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.2833333333333312,
+      "fps" : 120,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.66944444444444273
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.2916666666666645,
+      "fps" : 120,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.67638888888888715
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.2999999999999978,
+      "fps" : 120,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.68333333333333157
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.3083333333333311,
+      "fps" : 120,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.69027777777777599
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.3166666666666644,
+      "fps" : 120,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.69722222222222041
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.3249999999999977,
+      "fps" : 120,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.70416666666666483
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.333333333333331,
+      "fps" : 120,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.71111111111110925
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.3416666666666643,
+      "fps" : 120,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.71805555555555367
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.3499999999999976,
+      "fps" : 120,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.72499999999999809
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.358333333333331,
+      "fps" : 120,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.73194444444444251
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.3666666666666643,
+      "fps" : 120,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.73888888888888693
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.3749999999999976,
+      "fps" : 120,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.74583333333333135
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.3833333333333309,
+      "fps" : 120,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.75277777777777577
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.3916666666666642,
+      "fps" : 120,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.75972222222222019
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.3999999999999975,
+      "fps" : 120,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.76666666666666461
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.4083333333333308,
+      "fps" : 120,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.77361111111110892
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.4166666666666641,
+      "fps" : 120,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.78055555555555334
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.4249999999999974,
+      "fps" : 120,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.78749999999999776
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.4333333333333307,
+      "fps" : 120,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.79444444444444218
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.441666666666664,
+      "fps" : 120,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.8013888888888866
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.4499999999999973,
+      "fps" : 120,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.80833333333333102
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.4583333333333306,
+      "fps" : 120,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.81527777777777544
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.4666666666666639,
+      "fps" : 120,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.82222222222221986
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.4749999999999972,
+      "fps" : 120,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.82916666666666428
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.4833333333333305,
+      "fps" : 120,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.83611111111110858
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.4916666666666638,
+      "fps" : 120,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.843055555555553
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.4999999999999971,
+      "fps" : 120,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.84999999999999742
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.5083333333333304,
+      "fps" : 120,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.85694444444444184
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.5166666666666637,
+      "fps" : 120,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.86388888888888626
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.524999999999997,
+      "fps" : 120,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.87083333333333068
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.5333333333333303,
+      "fps" : 120,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.8777777777777751
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.5416666666666636,
+      "fps" : 120,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.88472222222221952
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.5499999999999969,
+      "fps" : 120,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.89166666666666394
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.5583333333333302,
+      "fps" : 120,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.89861111111110836
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.5666666666666635,
+      "fps" : 120,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.90555555555555278
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.5749999999999968,
+      "fps" : 120,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.9124999999999972
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.5833333333333302,
+      "fps" : 120,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.91944444444444162
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.5916666666666635,
+      "fps" : 120,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.92638888888888604
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.5999999999999968,
+      "fps" : 120,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.93333333333333046
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.6083333333333301,
+      "fps" : 120,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.94027777777777488
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.6166666666666634,
+      "fps" : 120,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.9472222222222193
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.6249999999999967,
+      "fps" : 120,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.95416666666666372
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.63333333333333,
+      "fps" : 120,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.96111111111110814
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.6416666666666633,
+      "fps" : 120,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.96805555555555256
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.6499999999999966,
+      "fps" : 120,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.97499999999999698
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.6583333333333299,
+      "fps" : 120,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.9819444444444414
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.6666666666666632,
+      "fps" : 120,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.98888888888888582
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.6749999999999965,
+      "fps" : 120,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.99583333333333024
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.6799999999999999,
+      "fps" : 120,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.99999999999999978
+    }
+  ],
+  "scope" : "production model and one-shot impact clock; no UI\/device execution"
+}

@@ -1,0 +1,24 @@
+{
+  "date": "2026-10-24",
+  "status": "approved",
+  "userStatement": "没问题下一步工作开始",
+  "scope": "Delivered left-down primary forester/chestnut/blue and wayfarer/silver/amber whole-body standing, normal walk and specified start-stop, including visible head/clothing/lower/back-carry. No approval inferred for undisplayed cross combinations, other directions, runtime or entire eight-direction system.",
+  "artCommit": "f4dfa7e2564500d46d65e966b4be4c25d6ee887f",
+  "files": [
+    {
+      "file": "Art/Review/P1/modular-down-left-wardrobe-v1/outfits-walk-120ms.gif",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/f4dfa7e2564500d46d65e966b4be4c25d6ee887f/Art/Review/P1/modular-down-left-wardrobe-v1/outfits-walk-120ms.gif",
+      "sha256": "21188515dcafb9095d175078932b815fd5dde6c8dcce24ee2f297d947a0874be"
+    },
+    {
+      "file": "Art/Review/P1/modular-down-left-wardrobe-v1/outfits-start-stop-120ms.gif",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/f4dfa7e2564500d46d65e966b4be4c25d6ee887f/Art/Review/P1/modular-down-left-wardrobe-v1/outfits-start-stop-120ms.gif",
+      "sha256": "983da1fa652a573f0cbfe4e866568e292f13e2940ad94dc718f28757ff64f5b8"
+    },
+    {
+      "file": "Art/Review/P1/modular-down-left-wardrobe-v1/outfits-idle-2x.png",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/f4dfa7e2564500d46d65e966b4be4c25d6ee887f/Art/Review/P1/modular-down-left-wardrobe-v1/outfits-idle-2x.png",
+      "sha256": "20c2ffa7463512a5b797c095da96bfe99f278719922f2ecc7850b629a9cb0101"
+    }
+  ]
+}

@@ -1,0 +1,132 @@
+{
+  "status": "source-registration-and-pigment-check-pass",
+  "anatomicalShapeScale": [
+    1,
+    1
+  ],
+  "bodyMatteAllowancePixels": 1,
+  "paintedColorsOnly": true,
+  "bootTopBelowOriginalKnee": true,
+  "records": [
+    {
+      "direction": "up-left",
+      "side": "left",
+      "part": "pants",
+      "bbox": [
+        110,
+        161,
+        131,
+        202
+      ],
+      "allColorsFromArtistSource": true
+    },
+    {
+      "direction": "up-left",
+      "side": "left",
+      "part": "boot",
+      "bbox": [
+        108,
+        202,
+        132,
+        218
+      ],
+      "allColorsFromArtistSource": true,
+      "oldBBox": [
+        105,
+        195,
+        135,
+        218
+      ]
+    },
+    {
+      "direction": "up-left",
+      "side": "right",
+      "part": "pants",
+      "bbox": [
+        129,
+        161,
+        147,
+        202
+      ],
+      "allColorsFromArtistSource": true
+    },
+    {
+      "direction": "up-left",
+      "side": "right",
+      "part": "boot",
+      "bbox": [
+        124,
+        202,
+        148,
+        216
+      ],
+      "allColorsFromArtistSource": true,
+      "oldBBox": [
+        118,
+        195,
+        151,
+        216
+      ]
+    },
+    {
+      "direction": "up-right",
+      "side": "left",
+      "part": "pants",
+      "bbox": [
+        108,
+        161,
+        126,
+        202
+      ],
+      "allColorsFromArtistSource": true
+    },
+    {
+      "direction": "up-right",
+      "side": "left",
+      "part": "boot",
+      "bbox": [
+        107,
+        202,
+        131,
+        216
+      ],
+      "allColorsFromArtistSource": true,
+      "oldBBox": [
+        104,
+        195,
+        138,
+        216
+      ]
+    },
+    {
+      "direction": "up-right",
+      "side": "right",
+      "part": "pants",
+      "bbox": [
+        124,
+        161,
+        145,
+        202
+      ],
+      "allColorsFromArtistSource": true
+    },
+    {
+      "direction": "up-right",
+      "side": "right",
+      "part": "boot",
+      "bbox": [
+        123,
+        202,
+        147,
+        218
+      ],
+      "allColorsFromArtistSource": true,
+      "oldBBox": [
+        120,
+        195,
+        150,
+        218
+      ]
+    }
+  ]
+}

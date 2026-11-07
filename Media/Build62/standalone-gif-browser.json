@@ -1,0 +1,88 @@
+{
+  "scope": "Standalone remote GIFs only; no game/App/simulator/device run",
+  "dimensions": [
+    [
+      1024,
+      560
+    ],
+    [
+      1024,
+      280
+    ],
+    [
+      1024,
+      280
+    ],
+    [
+      1020,
+      765
+    ]
+  ],
+  "allFourGIFsAdvanceVisibly": true,
+  "fullGETVerified": [
+    {
+      "path": "Art/Review/Battle/armor-fit-r1/armors-body-normal.gif",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/012dedc55c0441f2b4f4be6c94f85c38d0e71134/Art/Review/Battle/armor-fit-r1/armors-body-normal.gif",
+      "bytes": 2619354,
+      "sha256": "6574117021aaaa7524dccb92ae2d86fafd9130043e3c8720a5fc73ca8a87d05e",
+      "contentType": "image/gif",
+      "matchesLocal": true
+    },
+    {
+      "path": "Art/Review/Battle/armor-fit-r1/armors-standing.png",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/012dedc55c0441f2b4f4be6c94f85c38d0e71134/Art/Review/Battle/armor-fit-r1/armors-standing.png",
+      "bytes": 42114,
+      "sha256": "1293b497a8b8b1283a119861f958416ee20e4b8ba3a87cf526eb7934afd7af25",
+      "contentType": "image/png",
+      "matchesLocal": true
+    },
+    {
+      "path": "Art/Review/Battle/armor-fit-r1/leatherArmor-attack-normal.gif",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/012dedc55c0441f2b4f4be6c94f85c38d0e71134/Art/Review/Battle/armor-fit-r1/leatherArmor-attack-normal.gif",
+      "bytes": 667477,
+      "sha256": "d98720d4b86ec8400922ba11fa0892f5b996126a9afa4bb448d013c3676336fe",
+      "contentType": "image/gif",
+      "matchesLocal": true
+    },
+    {
+      "path": "Art/Review/Battle/armor-fit-r1/runeArmor-attack-normal.gif",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/012dedc55c0441f2b4f4be6c94f85c38d0e71134/Art/Review/Battle/armor-fit-r1/runeArmor-attack-normal.gif",
+      "bytes": 680103,
+      "sha256": "0145af9a70e4bacb7fd52ae755dd2de05c34ef7ad832e21894d78cc19a7b857c",
+      "contentType": "image/gif",
+      "matchesLocal": true
+    },
+    {
+      "path": "Art/Review/Battle/armor-fit-r1/leatherArmor-states-normal.gif",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/012dedc55c0441f2b4f4be6c94f85c38d0e71134/Art/Review/Battle/armor-fit-r1/leatherArmor-states-normal.gif",
+      "bytes": 1260675,
+      "sha256": "f2142391c22ab02b813740b0a031cbd9f42521e866b7a2c8a19d84869e055317",
+      "contentType": "image/gif",
+      "matchesLocal": true
+    },
+    {
+      "path": "Art/Review/Battle/armor-fit-r1/runeArmor-states-normal.gif",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/012dedc55c0441f2b4f4be6c94f85c38d0e71134/Art/Review/Battle/armor-fit-r1/runeArmor-states-normal.gif",
+      "bytes": 1282024,
+      "sha256": "3aacf8e040c9136a0fd00cbc03e30dc53d51c117a413efbfb7db5b7217592ee8",
+      "contentType": "image/gif",
+      "matchesLocal": true
+    },
+    {
+      "path": "Art/Review/Battle/armor-fit-r1/battle-normal.gif",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/012dedc55c0441f2b4f4be6c94f85c38d0e71134/Art/Review/Battle/armor-fit-r1/battle-normal.gif",
+      "bytes": 5902240,
+      "sha256": "8ac8763ccfea66d6f0d3118c6a29b44f0ec09d95605769a9b7eb65dc97238890",
+      "contentType": "image/gif",
+      "matchesLocal": true
+    },
+    {
+      "path": "Art/Review/Battle/armor-fit-r1/battle-standing.png",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/012dedc55c0441f2b4f4be6c94f85c38d0e71134/Art/Review/Battle/armor-fit-r1/battle-standing.png",
+      "bytes": 1019757,
+      "sha256": "762803b305a48ed1783292fe598bfaac5dbcc65c5f87d35f677b27190c044367",
+      "contentType": "image/png",
+      "matchesLocal": true
+    }
+  ]
+}

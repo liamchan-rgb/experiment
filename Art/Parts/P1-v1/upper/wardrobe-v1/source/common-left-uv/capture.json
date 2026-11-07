@@ -1,0 +1,12 @@
+{
+  "sourceTemplate": "Art/Templates/P1-Neutral/up-left/walk-r6-transitions",
+  "sourceManifestSHA256": "a3a48d8729aeb29bb11c3ebcd4a3d814af841cf89dfbb6153279a8c368fa5920",
+  "frames": 13,
+  "sourcePixelsUnchanged": true,
+  "uvChannels": {
+    "R": "source x pixel centre",
+    "G": "source y pixel centre",
+    "A": "valid coordinate"
+  },
+  "sampling": "nearest identical to approved offline exporter"
+}

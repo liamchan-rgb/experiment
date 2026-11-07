@@ -1,0 +1,16 @@
+{
+  "method": "Fixed uniform registration of entire generated torso source from authored collar/hem landmarks; no bounds fit or runtime resizing",
+  "sourceCanvas": [
+    1254,
+    1254
+  ],
+  "initialScale": 0.20414673046251994,
+  "registeredScale": 0.8,
+  "translation": [
+    25.6,
+    32
+  ],
+  "targetCollarY": 134,
+  "targetHemY": 180,
+  "artApproval": null
+}

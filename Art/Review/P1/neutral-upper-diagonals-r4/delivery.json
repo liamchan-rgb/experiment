@@ -1,0 +1,94 @@
+{
+  "status": "verified-public-https-delivery",
+  "verifiedAtUTC": "2026-10-23T08:39:08.023035+00:00",
+  "sourceCommit": "295e0ae27829a3b2f496eed11dc2be6cad8a4480",
+  "branch": "fix/build33-face-grounding-camera",
+  "artApproval": null,
+  "artifacts": [
+    {
+      "file": "walk-comparison-120ms.gif",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/295e0ae27829a3b2f496eed11dc2be6cad8a4480/Art/Review/P1/neutral-upper-diagonals-r4/walk-comparison-120ms.gif",
+      "httpStatus": 200,
+      "contentType": "image/gif",
+      "sha256": "fcb7151bff24ce47204633a66197048a6b1bae0d38431cda9fcaa2218650c865",
+      "byteCount": 195738,
+      "dimensions": [
+        1024,
+        512
+      ],
+      "frames": 8,
+      "durationsMs": [
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120
+      ],
+      "loop": 0
+    },
+    {
+      "file": "idle-comparison-2x.png",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/295e0ae27829a3b2f496eed11dc2be6cad8a4480/Art/Review/P1/neutral-upper-diagonals-r4/idle-comparison-2x.png",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "sha256": "8d34c539211e8214bfca2f0b314bcb383050371a57b504f1d1c51fea4bb5c395",
+      "byteCount": 32224,
+      "dimensions": [
+        1024,
+        512
+      ]
+    },
+    {
+      "file": "up-left/walk-120ms.gif",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/295e0ae27829a3b2f496eed11dc2be6cad8a4480/Art/Review/P1/neutral-upper-diagonals-r4/up-left/walk-120ms.gif",
+      "httpStatus": 200,
+      "contentType": "image/gif",
+      "sha256": "56f8b5a80d6167d2cce15396ca5768ae2038e782d420a9bf4be77576605d65be",
+      "byteCount": 104502,
+      "dimensions": [
+        512,
+        512
+      ],
+      "frames": 8,
+      "durationsMs": [
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120
+      ],
+      "loop": 0
+    },
+    {
+      "file": "up-right/walk-120ms.gif",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/295e0ae27829a3b2f496eed11dc2be6cad8a4480/Art/Review/P1/neutral-upper-diagonals-r4/up-right/walk-120ms.gif",
+      "httpStatus": 200,
+      "contentType": "image/gif",
+      "sha256": "64d93130dfa0610ca41801dcbbe7e89679bd80fa1aea5b22ca386b2eee085c26",
+      "byteCount": 101605,
+      "dimensions": [
+        512,
+        512
+      ],
+      "frames": 8,
+      "durationsMs": [
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120
+      ],
+      "loop": 0
+    }
+  ],
+  "scope": "Main-only r4 neutral upper-diagonal repair; ordered full-body frame review only, not continuous-player or user art approval."
+}

@@ -1,0 +1,34 @@
+{
+  "pack": "back-scabbard",
+  "recipe": {
+    "source": "source/sword-original.png",
+    "sha256": "46bfa9347fc99f4ed44b295a3c77464613bfd8eccb76bbcae0758a3b29b0c619",
+    "sourceLandmarks": [
+      [
+        460,
+        340
+      ],
+      [
+        790,
+        920
+      ]
+    ],
+    "targetLandmarks": [
+      [
+        105,
+        122
+      ],
+      [
+        143,
+        184
+      ]
+    ],
+    "transverseScale": 0.05,
+    "attachment": "Rigid upper torso; physical right shoulder; fully behind neutral/clothes/head, natural front-view occlusion; no central vertical carry",
+    "projectionBasis": "Same anatomical right-shoulder diagonal as accepted up-left carry; front view exchanges screen-side projection, hilt outside face, sheath behind torso/legs"
+  },
+  "originalSource": "source/original.png",
+  "authorAndReviewer": "root",
+  "artApproval": null,
+  "geometryFit": false
+}

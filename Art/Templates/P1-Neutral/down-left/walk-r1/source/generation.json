@@ -1,0 +1,39 @@
+{
+  "tool": "image_gen.imagegen",
+  "date": "2026-10-24",
+  "authorAndReviewer": "root",
+  "subagentsUsed": false,
+  "rawOutput": "source/generated-idle-original.png",
+  "rawOutputSHA256": "7b66ec820fbe88ec2cf899818eecf9c3b3b24a31aa577158c8007aea32f3bb29",
+  "rawOutputCanvas": [
+    1254,
+    1254
+  ],
+  "references": [
+    {
+      "file": "source/references/reference-0.png",
+      "sha256": "64232a2e95d292ab6f345aa18779967b6ba72efc056db0de097b12f8660a145f",
+      "derivedFrom": "Art/Templates/P1-Neutral/up-left/walk-r6-transitions/frames/00.png",
+      "derivation": "4x nearest-neighbor over #17372c; original art unchanged",
+      "purpose": "style and neutral proportion"
+    },
+    {
+      "file": "source/references/reference-1.png",
+      "sha256": "0dacb87e326375af5cc2f71a2da66e20e0e9fcc3eaea549dd51ca1a852390985",
+      "derivedFrom": "Art/Templates/P1-Neutral/down/walk-r6-relaxed-arms/frames/00.png",
+      "derivation": "4x nearest-neighbor over #17372c; original art unchanged",
+      "purpose": "style and neutral proportion"
+    },
+    {
+      "file": "source/references/reference-2.png",
+      "sha256": "51c7b69f07fc89516bbd3c30426314aa5904814728362da22b6310886872b22f",
+      "derivedFrom": "Art/Review/P1/directions/down-left/revisions/r1/frames/00.png",
+      "derivation": "4x nearest-neighbor over #17372c; original art unchanged",
+      "purpose": "facing only; old costume not used"
+    }
+  ],
+  "transparentBackground": true,
+  "prompt": "Create ONE single full-body neutral modular game mannequin in a relaxed standing pose facing DIAGONALLY DOWN-LEFT (three-quarter FRONT view looking toward screen lower-left), matching the character scale/proportions/pixel-art style of reference 1 and 2. Reference 3 is DIRECTION ONLY, not costume. This is an adult chibi fantasy game rig. Bald, featureless face (no eyes/mouth/hair, keep small natural nose silhouette and ear); ivory/offwhite sleeveless undershirt and short charcoal gym shorts; bare warm peach skin arms/legs/feet, empty relaxed small hands. Head/body/feet all consistently facing lower-left, see FRONT and character's RIGHT side. Camera slightly above, orthographic game view. CRUCIAL anatomy: screen LEFT is FAR/anatomical right arm+leg, screen RIGHT is NEAR/anatomical left arm+leg. Feet point lower-left, not right. Near shoulder on screen right, far shoulder on screen left. Arms held naturally slightly away from torso, both hands visibly separated from shorts; neutral feet a small distance apart, full leg silhouettes, knees straight but soft, no crossing legs. Match original large round-but-slightly-flattened bald chibi head and sturdy natural body (~one third head height), modest slim wrists/ankles; ivory tank stops at waistband with distinct neckline/armholes, dark short pants with clearly separated left/right hems. No weapon, boots, extra costume, scarf, hair, eyes, shadows on ground, pedestal, text, border or extra poses. Warm light fixed upper-left, shade far limbs a little darker to clarify depth. SINGLE 1024x1024 transparent PNG. Character centered, whole figure approximately occupies x=395..610 y=345..865 (head top ~350, feet ~860), same registration and scale as reference 1; don't zoom in or crop. Crisp pixel-edged painted game sprite, no vector art or photorealistic texture. All outer edges clean. Preserve alpha transparency.",
+  "registration": "Fixed 0.17 uniform scale, (24,26) translation; no bounds fitting/per-part resize; alpha128 registration threshold",
+  "sourceArtApproval": null
+}

@@ -1,0 +1,10 @@
+Mac/Linux data match: party-frames.json
+Mac/Linux data match: legacy-light-requests.json
+Mac/Linux data match: dice-frames.json
+Mac/Linux data match: poly-frames.json
+Mac/Linux data match: bow-poses.json
+Mac/Linux data match: great-sword-poses.json
+Mac/Linux data match: great-sword-clock.json
+Mac/Linux data match: legendary-staff-poses.json
+Mac/Linux data match: legendary-staff-clock.json
+{"version": "1.6.33", "build": "59", "ipaBytes": 38262895, "sha256": "a83dd2d3dd8c01a0a62c779902c18ac0eda9af4e33d07ee146afd46246fc9c9a", "checks": "passed"}

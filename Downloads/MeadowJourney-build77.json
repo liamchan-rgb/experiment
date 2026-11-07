@@ -1,0 +1,15 @@
+{
+  "build": 77,
+  "version": "1.6.50",
+  "file": "MeadowJourney-b77.ipa",
+  "bytes": 60297013,
+  "sha256": "615f7029f8ffd8753a6c7be07fb4e66e2214039c2e2cc00fa6fd75892e7c563c",
+  "sourceCommit": "a3508591fd6934e4389d01bed98aa7cc65400835",
+  "fixCommit": "4fd9c11b7b0fe9e9c446f3c6ea6b9ec2e2250eb3",
+  "workflow": "https://github.com/liamchan-rgb/experiment/actions/runs/41869668339",
+  "workflowRunAttempt": 3,
+  "scope": "fix persistent monster ID head-dice nil crash; preserve campaign save and 3x movement",
+  "movementMultiplier": 3,
+  "installationTested": false,
+  "downloadURL": "https://raw.githubusercontent.com/liamchan-rgb/experiment/fix/build33-face-grounding-camera/Downloads/MeadowJourney-b77.ipa"
+}

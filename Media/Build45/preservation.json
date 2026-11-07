@@ -1,0 +1,9 @@
+{
+  "referenceCommit": "be20ca6411bf308a60f91bb634b47416890e70a1",
+  "sourceCommit": "abcaa88f41787630c6c63d0460f6b96de2d7e935",
+  "unchangedArtAndResourcePaths": 10806,
+  "noCharacterOrGaitOrVFXAssetsChanged": true,
+  "movementAndActionTimingModelsUnchanged": true,
+  "cameraAndCombatPosesUnchanged": true,
+  "noSimulatorOrDeviceExecution": true
+}

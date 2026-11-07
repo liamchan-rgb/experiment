@@ -1,0 +1,62 @@
+{
+  "version": "1.6.42",
+  "build": 68,
+  "bundleIdentifier": "com.liamchan.experiment.meadow",
+  "date": "2026-10-29",
+  "sourceCommit": "30ce9c83a948caee6789bde183bcd0866a3e1484",
+  "workflowHead": "30ce9c83a948caee6789bde183bcd0866a3e1484",
+  "workflowRun": 40930342876,
+  "workflowURL": "https://github.com/liamchan-rgb/experiment/actions/runs/40930342876",
+  "ipaFilename": "MeadowJourney-b68.ipa",
+  "ipaBytes": 51210069,
+  "ipaSHA256": "ab20f5ae7f646ff594ac0d07d986aa86fc0841cc74c31f863b69c62867ecec39",
+  "checks": {
+    "workflowSucceeded": true,
+    "deviceReleaseArchiveSucceeded": true,
+    "unsignedForSideStore": true,
+    "outerArtifactCRC": true,
+    "ipaCRC": true,
+    "arm64IOSExecutable": true,
+    "iPhoneOSPlatform": true,
+    "versionAndBuildMatch": true,
+    "assetCatalogCompiled": true,
+    "dragonFlameSourceAndAppFramesMatch": true,
+    "dragonFlameSpriteSequence20Frames": true,
+    "dragonFlameReceiptExport270FramesAt60Hz": true,
+    "pureSwiftTests164Passed": true,
+    "physicalDeviceTestPerformed": false,
+    "simulatorTestPerformed": false
+  },
+  "directDownloadURL": "https://raw.githubusercontent.com/liamchan-rgb/experiment/fix/build33-face-grounding-camera/Downloads/MeadowJourney-b68.ipa",
+  "reviewGIFURL": "https://raw.githubusercontent.com/liamchan-rgb/experiment/fix/build33-face-grounding-camera/Art/Review/Battle/dragon-flame-demo-v1/dragon-flame-normal.gif",
+  "actionArtifacts": [
+    {
+      "name": "MeadowJourney-shadow-lab-IPA",
+      "id": 12923445811,
+      "size_bytes": 47926122,
+      "sha256": "835560c214b8270586b2a159cd3301ee3910e62d7c273177f1aecbf5cb98dd82"
+    },
+    {
+      "name": "shadow-lab-archive-logs-40930342876-1",
+      "id": 12922024298,
+      "size_bytes": 9106415,
+      "sha256": "0d380334423c4b21f2d6844fdb429d430b2329dafd11953c320b9716d2cc335a"
+    }
+  ],
+  "userInstallationPending": true,
+  "userRuntimeArtApproval": null,
+  "change": "Integrates Dragon Flame V2 as a Dragon Knight node-target skill. The authored 20-frame RGBA sequence begins on the damage receipt; red/orange/gold embers, body/ground/scene light, multi-target hit response and lethal dissolve follow the same receipt.",
+  "deliveryCommit": "1488ec5d700f47350603df8b1aed217bcc478ca5",
+  "publicRawGET": {
+    "status": 200,
+    "bytes": 51210069,
+    "sha256": "ab20f5ae7f646ff594ac0d07d986aa86fc0841cc74c31f863b69c62867ecec39",
+    "matchesLocal": true
+  },
+  "reviewGIFRawGET": {
+    "status": 200,
+    "bytes": 5002251,
+    "sha256": "be6e950aca6c2f17b21d0282fba028abd076b58a9515eac96dd3ad7a9778b358",
+    "matchesLocal": true
+  }
+}

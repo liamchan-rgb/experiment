@@ -1,0 +1,31 @@
+{
+  "build": 74,
+  "version": "1.6.47",
+  "sourceCommit": "09ec0902e04d5042d4044bb3133ffb502c454414",
+  "run": "https://github.com/liamchan-rgb/experiment/actions/runs/41803969748",
+  "artifactID": 13309741358,
+  "artifactSHA256": "sha256:59100d7d8de630d8346aeda38507775011ec512de3d97b43891e68508de98cab",
+  "ipaBytes": 60144893,
+  "ipaSHA256": "19435ab36153076423a4168992a986953a5f8d70e58d939aceccb9279afb3066",
+  "crcPassed": true,
+  "classicZIP20NoExtraFields": true,
+  "arm64DeviceExecutable": true,
+  "executablePermissions": true,
+  "nativeMapUIAndGeneratorLinked": true,
+  "metalAndAssetCatalogPresent": true,
+  "newBuildingAssetsInCompiledCatalog": {
+    "NodeCombatOutpost": true,
+    "NodeBossSanctum": true,
+    "NodeRewardCache": true,
+    "NodeWaystone": true
+  },
+  "unchangedBundledResources": {
+    "Sources/Resources/SceneMap.json": "b5d8e7c74e6038a4d6b3e266cf1c6f7184eee56cfb2c2f462b7e048ab6cd0ea5",
+    "Sources/Resources/hero-gait.json": "44ad26e97cfd0836074eefc70ee081f2bbb5b2003961ed1e779acbfebdaaa527"
+  },
+  "upstreamCatalogUnchanged": true,
+  "swiftTests": 181,
+  "installed": false,
+  "appSimulatorDeviceRun": false,
+  "artApproval": null
+}

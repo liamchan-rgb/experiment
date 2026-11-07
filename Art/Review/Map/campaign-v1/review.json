@@ -1,0 +1,18 @@
+{
+  "offline": true,
+  "lightingAndUIApproximate": true,
+  "notUIKitOrDevice": true,
+  "walkFrames": 370,
+  "battleFrames": 948,
+  "frameMs": 20,
+  "gameplayData": "actual MeadowCampaignSession / shared PartyEncounter engine / production pose+light fields",
+  "artApproval": null,
+  "battleFullVideo": "encounter-full.mp4",
+  "battleGifSourceStartFrame": 650,
+  "battleGifSourceEndFrame": 947,
+  "battleGifFrames": 298,
+  "battleGifMs": 20,
+  "battleGifScope": "last 5.96s, lethal contact and complete victory dissolve",
+  "encoding": "GIF whole-canvas rebase and lossless optimization; full video H264 crf18",
+  "primaryAgentReviewed": true
+}

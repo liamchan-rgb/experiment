@@ -1,0 +1,1 @@
+Root rejected offline review overlay: prior caption overlaps status labels; production UIKit code did not use that overlay. Replaced with larger serif text, three bars/cards, and separately placed enemy HP. No source character pixels changed.

@@ -1,0 +1,91 @@
+{
+  "status": "user approved presented down-facing second clothing silhouette and normal walk; production template incomplete",
+  "artApproval": {
+    "date": "2026-10-22",
+    "reviewer": "user",
+    "statement": "\u6ca1\u95ee\u9898\uff0c\u7ee7\u7eed\u4e0b\u4e00\u6b65",
+    "status": "approved",
+    "scope": "Presented down-facing Wayfarer blue long-coat appearance and normal-speed full-body walk comparison only. Excludes unshown combinations, other directions, new transition key poses and runtime integration.",
+    "artifacts": {
+      "idle-review-2x.png": "e3022cb88e8de0e3b3695ba37fcb0dfe08d52323bce69fea460738a82bab4813",
+      "outfits-comparison-120ms.gif": "da9eeb97d3dd4e741d4f1eeb11cd079e3c31267e6b839cf8dded7ce5e66638f7"
+    }
+  },
+  "base": "p1-neutral-down-walk-r6-relaxed-arms",
+  "newAsset": "p1-outfit-wayfarer-coat-v1",
+  "combinations": 36,
+  "renderedPoses": 324,
+  "coverageChecks": 1080,
+  "coverageFailuresAbove5Percent": 0,
+  "weaponToggleChecks": 162,
+  "weaponToggleFailures": 0,
+  "compositorTests": {
+    "run": 19,
+    "failures": 0
+  },
+  "contractTests": {
+    "run": 23,
+    "failures": 0,
+    "skips": 0
+  },
+  "reexport": {
+    "files": 90,
+    "byteDifferences": 0
+  },
+  "motionByteIdenticalToV8": true,
+  "compositorChanged": false,
+  "newAppearanceSpecificRuntimeBranches": 0,
+  "normalWalk": {
+    "frames": 8,
+    "msPerFrame": 120,
+    "cycleMs": 960
+  },
+  "startStopDiagnostic": {
+    "sequence": [
+      0,
+      0,
+      0,
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      0,
+      0,
+      0,
+      0
+    ],
+    "idleHoldMs": 480,
+    "walkFrameMs": 120,
+    "newTransitionPoses": false,
+    "scope": "Offline playback of existing idle/walk poses only; no runtime acceleration, arbitrary-phase interruption or device validation"
+  },
+  "hashes": {
+    "Art/Templates/P1-Wardrobe/down/v9-second-outfit/catalog.json": "cc18a9f4f769f2fa0e199b950c287ea67ca864eaf9a660d21144e457faf99874",
+    "Art/Templates/P1-Wardrobe/down/v9-second-outfit/motion.json": "17ebc50999ed0042f0a2c58be8e740e918c9c3f045126bbd8444a5166facdd37",
+    "Art/Parts/P1-v1/outfit-wayfarer-coat-v1/asset.json": "734b96515c9976a2a4506e005607d0096b78e4cb75bee5afb29a54c8c018fed0",
+    "Art/Review/P1/modular-down-second-outfit-v1/audit.json": "bcb5acd1b43c83770b708822023a4a4654e671e5eea8fc2099f3956b9a44e31e",
+    "Art/Review/P1/modular-down-second-outfit-v1/idle-review-2x.png": "e3022cb88e8de0e3b3695ba37fcb0dfe08d52323bce69fea460738a82bab4813",
+    "Art/Review/P1/modular-down-second-outfit-v1/walk-120ms.gif": "73ccd10c43e06af0fd1ac8dc973f399a26def0cb007a7a498326e2d33962d3d6",
+    "Art/Review/P1/modular-down-second-outfit-v1/outfits-comparison-120ms.gif": "da9eeb97d3dd4e741d4f1eeb11cd079e3c31267e6b839cf8dded7ce5e66638f7",
+    "Art/Review/P1/modular-down-second-outfit-v1/start-stop-comparison-120ms.gif": "0df7d946b99f569261450d41491420ad2937ec9ed335a8ba85c2e37b3b641474",
+    "Art/Review/P1/modular-down-second-outfit-v1/art-review.md": "71c1d4d7a3c6a4b9941293f3fa993a954363d18ca9b5401c5f43906b329b7dff"
+  },
+  "limits": [
+    "down direction only",
+    "no runtime integration, simulator/device run or IPA",
+    "does not certify arbitrary new garments, complete hidden anatomy or all eight directions"
+  ]
+}

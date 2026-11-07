@@ -1,0 +1,1554 @@
+[
+  {
+    "configuration" : {
+      "companionClassID" : "adventurer",
+      "playerClassID" : "adventurer"
+    },
+    "movementCapacity" : 400,
+    "players" : [
+      {
+        "active" : true,
+        "ap" : 3,
+        "baseAttributes" : {
+          "baseAP" : 3,
+          "damage" : 0,
+          "maximumAP" : 8,
+          "maximumHealth" : 12,
+          "range" : 0
+        },
+        "canActFromRound" : 1,
+        "coins" : 8,
+        "defeatRewarded" : false,
+        "equipment" : {
+          "weapon" : "trainingSword"
+        },
+        "health" : 12,
+        "host" : false,
+        "id" : "p1",
+        "inventory" : {
+          "largePotion" : 1,
+          "revivalStone" : 1,
+          "shieldPotion" : 1,
+          "smallPotion" : 2
+        },
+        "kind" : "player",
+        "name" : "P1 · 冒险者",
+        "nodeID" : 7,
+        "score" : 0,
+        "shield" : 0,
+        "skillUses" : {
+
+        },
+        "teamID" : "party",
+        "templateID" : "adventurer"
+      },
+      {
+        "active" : true,
+        "ap" : 3,
+        "baseAttributes" : {
+          "baseAP" : 3,
+          "damage" : 0,
+          "maximumAP" : 8,
+          "maximumHealth" : 12,
+          "range" : 0
+        },
+        "canActFromRound" : 1,
+        "coins" : 8,
+        "defeatRewarded" : false,
+        "equipment" : {
+          "weapon" : "trainingSword"
+        },
+        "health" : 12,
+        "host" : false,
+        "id" : "p2",
+        "inventory" : {
+          "largePotion" : 1,
+          "revivalStone" : 1,
+          "shieldPotion" : 1,
+          "smallPotion" : 2
+        },
+        "kind" : "player",
+        "name" : "P2 · 冒险者",
+        "nodeID" : 7,
+        "score" : 0,
+        "shield" : 0,
+        "skillUses" : {
+
+        },
+        "teamID" : "party",
+        "templateID" : "adventurer"
+      }
+    ],
+    "skills" : {
+      "p1" : [
+        "heavyStrike",
+        "breather",
+        "simpleGuard"
+      ],
+      "p2" : [
+        "heavyStrike",
+        "breather",
+        "simpleGuard"
+      ]
+    },
+    "summaries" : [
+      "冒险者 · 基础生命 12\n基础行动 3 · 行动上限 8\n技能：强击、喘息、简易防护",
+      "冒险者 · 基础生命 12\n基础行动 3 · 行动上限 8\n技能：强击、喘息、简易防护"
+    ]
+  },
+  {
+    "configuration" : {
+      "companionClassID" : "ranger",
+      "playerClassID" : "adventurer"
+    },
+    "movementCapacity" : 400,
+    "players" : [
+      {
+        "active" : true,
+        "ap" : 3,
+        "baseAttributes" : {
+          "baseAP" : 3,
+          "damage" : 0,
+          "maximumAP" : 8,
+          "maximumHealth" : 12,
+          "range" : 0
+        },
+        "canActFromRound" : 1,
+        "coins" : 8,
+        "defeatRewarded" : false,
+        "equipment" : {
+          "weapon" : "trainingSword"
+        },
+        "health" : 12,
+        "host" : false,
+        "id" : "p1",
+        "inventory" : {
+          "largePotion" : 1,
+          "revivalStone" : 1,
+          "shieldPotion" : 1,
+          "smallPotion" : 2
+        },
+        "kind" : "player",
+        "name" : "P1 · 冒险者",
+        "nodeID" : 7,
+        "score" : 0,
+        "shield" : 0,
+        "skillUses" : {
+
+        },
+        "teamID" : "party",
+        "templateID" : "adventurer"
+      },
+      {
+        "active" : true,
+        "ap" : 3,
+        "baseAttributes" : {
+          "baseAP" : 3,
+          "damage" : 0,
+          "maximumAP" : 8,
+          "maximumHealth" : 18,
+          "range" : 0
+        },
+        "canActFromRound" : 1,
+        "coins" : 8,
+        "defeatRewarded" : false,
+        "equipment" : {
+          "weapon" : "trainingSword"
+        },
+        "health" : 18,
+        "host" : false,
+        "id" : "p2",
+        "inventory" : {
+          "largePotion" : 1,
+          "revivalStone" : 1,
+          "shieldPotion" : 1,
+          "smallPotion" : 2
+        },
+        "kind" : "player",
+        "name" : "P2 · 游侠",
+        "nodeID" : 7,
+        "score" : 0,
+        "shield" : 0,
+        "skillUses" : {
+
+        },
+        "teamID" : "party",
+        "templateID" : "ranger"
+      }
+    ],
+    "skills" : {
+      "p1" : [
+        "heavyStrike",
+        "breather",
+        "simpleGuard"
+      ],
+      "p2" : [
+        "ambush",
+        "support",
+        "rally"
+      ]
+    },
+    "summaries" : [
+      "冒险者 · 基础生命 12\n基础行动 3 · 行动上限 8\n技能：强击、喘息、简易防护",
+      "游侠 · 基础生命 18\n基础行动 3 · 行动上限 8\n技能：突袭、援护、振奋"
+    ]
+  },
+  {
+    "configuration" : {
+      "companionClassID" : "spellblade",
+      "playerClassID" : "adventurer"
+    },
+    "movementCapacity" : 400,
+    "players" : [
+      {
+        "active" : true,
+        "ap" : 3,
+        "baseAttributes" : {
+          "baseAP" : 3,
+          "damage" : 0,
+          "maximumAP" : 8,
+          "maximumHealth" : 12,
+          "range" : 0
+        },
+        "canActFromRound" : 1,
+        "coins" : 8,
+        "defeatRewarded" : false,
+        "equipment" : {
+          "weapon" : "trainingSword"
+        },
+        "health" : 12,
+        "host" : false,
+        "id" : "p1",
+        "inventory" : {
+          "largePotion" : 1,
+          "revivalStone" : 1,
+          "shieldPotion" : 1,
+          "smallPotion" : 2
+        },
+        "kind" : "player",
+        "name" : "P1 · 冒险者",
+        "nodeID" : 7,
+        "score" : 0,
+        "shield" : 0,
+        "skillUses" : {
+
+        },
+        "teamID" : "party",
+        "templateID" : "adventurer"
+      },
+      {
+        "active" : true,
+        "ap" : 3,
+        "baseAttributes" : {
+          "baseAP" : 3,
+          "damage" : 0,
+          "maximumAP" : 8,
+          "maximumHealth" : 24,
+          "range" : 0
+        },
+        "canActFromRound" : 1,
+        "coins" : 8,
+        "defeatRewarded" : false,
+        "equipment" : {
+          "weapon" : "trainingSword"
+        },
+        "health" : 24,
+        "host" : false,
+        "id" : "p2",
+        "inventory" : {
+          "largePotion" : 1,
+          "revivalStone" : 1,
+          "shieldPotion" : 1,
+          "smallPotion" : 2
+        },
+        "kind" : "player",
+        "name" : "P2 · 魔剑士",
+        "nodeID" : 7,
+        "score" : 0,
+        "shield" : 0,
+        "skillUses" : {
+
+        },
+        "teamID" : "party",
+        "templateID" : "spellblade"
+      }
+    ],
+    "skills" : {
+      "p1" : [
+        "heavyStrike",
+        "breather",
+        "simpleGuard"
+      ],
+      "p2" : [
+        "runeSlash",
+        "runeWard",
+        "battleRune"
+      ]
+    },
+    "summaries" : [
+      "冒险者 · 基础生命 12\n基础行动 3 · 行动上限 8\n技能：强击、喘息、简易防护",
+      "魔剑士 · 基础生命 24\n基础行动 3 · 行动上限 8\n技能：符文斩、符文庇护、战斗符文"
+    ]
+  },
+  {
+    "configuration" : {
+      "companionClassID" : "dragonKnight",
+      "playerClassID" : "adventurer"
+    },
+    "movementCapacity" : 400,
+    "players" : [
+      {
+        "active" : true,
+        "ap" : 3,
+        "baseAttributes" : {
+          "baseAP" : 3,
+          "damage" : 0,
+          "maximumAP" : 8,
+          "maximumHealth" : 12,
+          "range" : 0
+        },
+        "canActFromRound" : 1,
+        "coins" : 8,
+        "defeatRewarded" : false,
+        "equipment" : {
+          "weapon" : "trainingSword"
+        },
+        "health" : 12,
+        "host" : false,
+        "id" : "p1",
+        "inventory" : {
+          "largePotion" : 1,
+          "revivalStone" : 1,
+          "shieldPotion" : 1,
+          "smallPotion" : 2
+        },
+        "kind" : "player",
+        "name" : "P1 · 冒险者",
+        "nodeID" : 7,
+        "score" : 0,
+        "shield" : 0,
+        "skillUses" : {
+
+        },
+        "teamID" : "party",
+        "templateID" : "adventurer"
+      },
+      {
+        "active" : true,
+        "ap" : 3,
+        "baseAttributes" : {
+          "baseAP" : 3,
+          "damage" : 0,
+          "maximumAP" : 8,
+          "maximumHealth" : 32,
+          "range" : 0
+        },
+        "canActFromRound" : 1,
+        "coins" : 8,
+        "defeatRewarded" : false,
+        "equipment" : {
+          "weapon" : "trainingSword"
+        },
+        "health" : 32,
+        "host" : false,
+        "id" : "p2",
+        "inventory" : {
+          "largePotion" : 1,
+          "revivalStone" : 1,
+          "shieldPotion" : 1,
+          "smallPotion" : 2
+        },
+        "kind" : "player",
+        "name" : "P2 · 龙骑士",
+        "nodeID" : 7,
+        "score" : 0,
+        "shield" : 0,
+        "skillUses" : {
+
+        },
+        "teamID" : "party",
+        "templateID" : "dragonKnight"
+      }
+    ],
+    "skills" : {
+      "p1" : [
+        "heavyStrike",
+        "breather",
+        "simpleGuard"
+      ],
+      "p2" : [
+        "dragonFlame",
+        "dragonScaleWard",
+        "dragonOrder"
+      ]
+    },
+    "summaries" : [
+      "冒险者 · 基础生命 12\n基础行动 3 · 行动上限 8\n技能：强击、喘息、简易防护",
+      "龙骑士 · 基础生命 32\n基础行动 3 · 行动上限 8\n技能：龙焰、龙鳞庇护、龙之号令"
+    ]
+  },
+  {
+    "configuration" : {
+      "companionClassID" : "adventurer",
+      "playerClassID" : "ranger"
+    },
+    "movementCapacity" : 400,
+    "players" : [
+      {
+        "active" : true,
+        "ap" : 3,
+        "baseAttributes" : {
+          "baseAP" : 3,
+          "damage" : 0,
+          "maximumAP" : 8,
+          "maximumHealth" : 18,
+          "range" : 0
+        },
+        "canActFromRound" : 1,
+        "coins" : 8,
+        "defeatRewarded" : false,
+        "equipment" : {
+          "weapon" : "trainingSword"
+        },
+        "health" : 18,
+        "host" : false,
+        "id" : "p1",
+        "inventory" : {
+          "largePotion" : 1,
+          "revivalStone" : 1,
+          "shieldPotion" : 1,
+          "smallPotion" : 2
+        },
+        "kind" : "player",
+        "name" : "P1 · 游侠",
+        "nodeID" : 7,
+        "score" : 0,
+        "shield" : 0,
+        "skillUses" : {
+
+        },
+        "teamID" : "party",
+        "templateID" : "ranger"
+      },
+      {
+        "active" : true,
+        "ap" : 3,
+        "baseAttributes" : {
+          "baseAP" : 3,
+          "damage" : 0,
+          "maximumAP" : 8,
+          "maximumHealth" : 12,
+          "range" : 0
+        },
+        "canActFromRound" : 1,
+        "coins" : 8,
+        "defeatRewarded" : false,
+        "equipment" : {
+          "weapon" : "trainingSword"
+        },
+        "health" : 12,
+        "host" : false,
+        "id" : "p2",
+        "inventory" : {
+          "largePotion" : 1,
+          "revivalStone" : 1,
+          "shieldPotion" : 1,
+          "smallPotion" : 2
+        },
+        "kind" : "player",
+        "name" : "P2 · 冒险者",
+        "nodeID" : 7,
+        "score" : 0,
+        "shield" : 0,
+        "skillUses" : {
+
+        },
+        "teamID" : "party",
+        "templateID" : "adventurer"
+      }
+    ],
+    "skills" : {
+      "p1" : [
+        "ambush",
+        "support",
+        "rally"
+      ],
+      "p2" : [
+        "heavyStrike",
+        "breather",
+        "simpleGuard"
+      ]
+    },
+    "summaries" : [
+      "游侠 · 基础生命 18\n基础行动 3 · 行动上限 8\n技能：突袭、援护、振奋",
+      "冒险者 · 基础生命 12\n基础行动 3 · 行动上限 8\n技能：强击、喘息、简易防护"
+    ]
+  },
+  {
+    "configuration" : {
+      "companionClassID" : "ranger",
+      "playerClassID" : "ranger"
+    },
+    "movementCapacity" : 400,
+    "players" : [
+      {
+        "active" : true,
+        "ap" : 3,
+        "baseAttributes" : {
+          "baseAP" : 3,
+          "damage" : 0,
+          "maximumAP" : 8,
+          "maximumHealth" : 18,
+          "range" : 0
+        },
+        "canActFromRound" : 1,
+        "coins" : 8,
+        "defeatRewarded" : false,
+        "equipment" : {
+          "weapon" : "trainingSword"
+        },
+        "health" : 18,
+        "host" : false,
+        "id" : "p1",
+        "inventory" : {
+          "largePotion" : 1,
+          "revivalStone" : 1,
+          "shieldPotion" : 1,
+          "smallPotion" : 2
+        },
+        "kind" : "player",
+        "name" : "P1 · 游侠",
+        "nodeID" : 7,
+        "score" : 0,
+        "shield" : 0,
+        "skillUses" : {
+
+        },
+        "teamID" : "party",
+        "templateID" : "ranger"
+      },
+      {
+        "active" : true,
+        "ap" : 3,
+        "baseAttributes" : {
+          "baseAP" : 3,
+          "damage" : 0,
+          "maximumAP" : 8,
+          "maximumHealth" : 18,
+          "range" : 0
+        },
+        "canActFromRound" : 1,
+        "coins" : 8,
+        "defeatRewarded" : false,
+        "equipment" : {
+          "weapon" : "trainingSword"
+        },
+        "health" : 18,
+        "host" : false,
+        "id" : "p2",
+        "inventory" : {
+          "largePotion" : 1,
+          "revivalStone" : 1,
+          "shieldPotion" : 1,
+          "smallPotion" : 2
+        },
+        "kind" : "player",
+        "name" : "P2 · 游侠",
+        "nodeID" : 7,
+        "score" : 0,
+        "shield" : 0,
+        "skillUses" : {
+
+        },
+        "teamID" : "party",
+        "templateID" : "ranger"
+      }
+    ],
+    "skills" : {
+      "p1" : [
+        "ambush",
+        "support",
+        "rally"
+      ],
+      "p2" : [
+        "ambush",
+        "support",
+        "rally"
+      ]
+    },
+    "summaries" : [
+      "游侠 · 基础生命 18\n基础行动 3 · 行动上限 8\n技能：突袭、援护、振奋",
+      "游侠 · 基础生命 18\n基础行动 3 · 行动上限 8\n技能：突袭、援护、振奋"
+    ]
+  },
+  {
+    "configuration" : {
+      "companionClassID" : "spellblade",
+      "playerClassID" : "ranger"
+    },
+    "movementCapacity" : 400,
+    "players" : [
+      {
+        "active" : true,
+        "ap" : 3,
+        "baseAttributes" : {
+          "baseAP" : 3,
+          "damage" : 0,
+          "maximumAP" : 8,
+          "maximumHealth" : 18,
+          "range" : 0
+        },
+        "canActFromRound" : 1,
+        "coins" : 8,
+        "defeatRewarded" : false,
+        "equipment" : {
+          "weapon" : "trainingSword"
+        },
+        "health" : 18,
+        "host" : false,
+        "id" : "p1",
+        "inventory" : {
+          "largePotion" : 1,
+          "revivalStone" : 1,
+          "shieldPotion" : 1,
+          "smallPotion" : 2
+        },
+        "kind" : "player",
+        "name" : "P1 · 游侠",
+        "nodeID" : 7,
+        "score" : 0,
+        "shield" : 0,
+        "skillUses" : {
+
+        },
+        "teamID" : "party",
+        "templateID" : "ranger"
+      },
+      {
+        "active" : true,
+        "ap" : 3,
+        "baseAttributes" : {
+          "baseAP" : 3,
+          "damage" : 0,
+          "maximumAP" : 8,
+          "maximumHealth" : 24,
+          "range" : 0
+        },
+        "canActFromRound" : 1,
+        "coins" : 8,
+        "defeatRewarded" : false,
+        "equipment" : {
+          "weapon" : "trainingSword"
+        },
+        "health" : 24,
+        "host" : false,
+        "id" : "p2",
+        "inventory" : {
+          "largePotion" : 1,
+          "revivalStone" : 1,
+          "shieldPotion" : 1,
+          "smallPotion" : 2
+        },
+        "kind" : "player",
+        "name" : "P2 · 魔剑士",
+        "nodeID" : 7,
+        "score" : 0,
+        "shield" : 0,
+        "skillUses" : {
+
+        },
+        "teamID" : "party",
+        "templateID" : "spellblade"
+      }
+    ],
+    "skills" : {
+      "p1" : [
+        "ambush",
+        "support",
+        "rally"
+      ],
+      "p2" : [
+        "runeSlash",
+        "runeWard",
+        "battleRune"
+      ]
+    },
+    "summaries" : [
+      "游侠 · 基础生命 18\n基础行动 3 · 行动上限 8\n技能：突袭、援护、振奋",
+      "魔剑士 · 基础生命 24\n基础行动 3 · 行动上限 8\n技能：符文斩、符文庇护、战斗符文"
+    ]
+  },
+  {
+    "configuration" : {
+      "companionClassID" : "dragonKnight",
+      "playerClassID" : "ranger"
+    },
+    "movementCapacity" : 400,
+    "players" : [
+      {
+        "active" : true,
+        "ap" : 3,
+        "baseAttributes" : {
+          "baseAP" : 3,
+          "damage" : 0,
+          "maximumAP" : 8,
+          "maximumHealth" : 18,
+          "range" : 0
+        },
+        "canActFromRound" : 1,
+        "coins" : 8,
+        "defeatRewarded" : false,
+        "equipment" : {
+          "weapon" : "trainingSword"
+        },
+        "health" : 18,
+        "host" : false,
+        "id" : "p1",
+        "inventory" : {
+          "largePotion" : 1,
+          "revivalStone" : 1,
+          "shieldPotion" : 1,
+          "smallPotion" : 2
+        },
+        "kind" : "player",
+        "name" : "P1 · 游侠",
+        "nodeID" : 7,
+        "score" : 0,
+        "shield" : 0,
+        "skillUses" : {
+
+        },
+        "teamID" : "party",
+        "templateID" : "ranger"
+      },
+      {
+        "active" : true,
+        "ap" : 3,
+        "baseAttributes" : {
+          "baseAP" : 3,
+          "damage" : 0,
+          "maximumAP" : 8,
+          "maximumHealth" : 32,
+          "range" : 0
+        },
+        "canActFromRound" : 1,
+        "coins" : 8,
+        "defeatRewarded" : false,
+        "equipment" : {
+          "weapon" : "trainingSword"
+        },
+        "health" : 32,
+        "host" : false,
+        "id" : "p2",
+        "inventory" : {
+          "largePotion" : 1,
+          "revivalStone" : 1,
+          "shieldPotion" : 1,
+          "smallPotion" : 2
+        },
+        "kind" : "player",
+        "name" : "P2 · 龙骑士",
+        "nodeID" : 7,
+        "score" : 0,
+        "shield" : 0,
+        "skillUses" : {
+
+        },
+        "teamID" : "party",
+        "templateID" : "dragonKnight"
+      }
+    ],
+    "skills" : {
+      "p1" : [
+        "ambush",
+        "support",
+        "rally"
+      ],
+      "p2" : [
+        "dragonFlame",
+        "dragonScaleWard",
+        "dragonOrder"
+      ]
+    },
+    "summaries" : [
+      "游侠 · 基础生命 18\n基础行动 3 · 行动上限 8\n技能：突袭、援护、振奋",
+      "龙骑士 · 基础生命 32\n基础行动 3 · 行动上限 8\n技能：龙焰、龙鳞庇护、龙之号令"
+    ]
+  },
+  {
+    "configuration" : {
+      "companionClassID" : "adventurer",
+      "playerClassID" : "spellblade"
+    },
+    "movementCapacity" : 400,
+    "players" : [
+      {
+        "active" : true,
+        "ap" : 3,
+        "baseAttributes" : {
+          "baseAP" : 3,
+          "damage" : 0,
+          "maximumAP" : 8,
+          "maximumHealth" : 24,
+          "range" : 0
+        },
+        "canActFromRound" : 1,
+        "coins" : 8,
+        "defeatRewarded" : false,
+        "equipment" : {
+          "weapon" : "trainingSword"
+        },
+        "health" : 24,
+        "host" : false,
+        "id" : "p1",
+        "inventory" : {
+          "largePotion" : 1,
+          "revivalStone" : 1,
+          "shieldPotion" : 1,
+          "smallPotion" : 2
+        },
+        "kind" : "player",
+        "name" : "P1 · 魔剑士",
+        "nodeID" : 7,
+        "score" : 0,
+        "shield" : 0,
+        "skillUses" : {
+
+        },
+        "teamID" : "party",
+        "templateID" : "spellblade"
+      },
+      {
+        "active" : true,
+        "ap" : 3,
+        "baseAttributes" : {
+          "baseAP" : 3,
+          "damage" : 0,
+          "maximumAP" : 8,
+          "maximumHealth" : 12,
+          "range" : 0
+        },
+        "canActFromRound" : 1,
+        "coins" : 8,
+        "defeatRewarded" : false,
+        "equipment" : {
+          "weapon" : "trainingSword"
+        },
+        "health" : 12,
+        "host" : false,
+        "id" : "p2",
+        "inventory" : {
+          "largePotion" : 1,
+          "revivalStone" : 1,
+          "shieldPotion" : 1,
+          "smallPotion" : 2
+        },
+        "kind" : "player",
+        "name" : "P2 · 冒险者",
+        "nodeID" : 7,
+        "score" : 0,
+        "shield" : 0,
+        "skillUses" : {
+
+        },
+        "teamID" : "party",
+        "templateID" : "adventurer"
+      }
+    ],
+    "skills" : {
+      "p1" : [
+        "runeSlash",
+        "runeWard",
+        "battleRune"
+      ],
+      "p2" : [
+        "heavyStrike",
+        "breather",
+        "simpleGuard"
+      ]
+    },
+    "summaries" : [
+      "魔剑士 · 基础生命 24\n基础行动 3 · 行动上限 8\n技能：符文斩、符文庇护、战斗符文",
+      "冒险者 · 基础生命 12\n基础行动 3 · 行动上限 8\n技能：强击、喘息、简易防护"
+    ]
+  },
+  {
+    "configuration" : {
+      "companionClassID" : "ranger",
+      "playerClassID" : "spellblade"
+    },
+    "movementCapacity" : 400,
+    "players" : [
+      {
+        "active" : true,
+        "ap" : 3,
+        "baseAttributes" : {
+          "baseAP" : 3,
+          "damage" : 0,
+          "maximumAP" : 8,
+          "maximumHealth" : 24,
+          "range" : 0
+        },
+        "canActFromRound" : 1,
+        "coins" : 8,
+        "defeatRewarded" : false,
+        "equipment" : {
+          "weapon" : "trainingSword"
+        },
+        "health" : 24,
+        "host" : false,
+        "id" : "p1",
+        "inventory" : {
+          "largePotion" : 1,
+          "revivalStone" : 1,
+          "shieldPotion" : 1,
+          "smallPotion" : 2
+        },
+        "kind" : "player",
+        "name" : "P1 · 魔剑士",
+        "nodeID" : 7,
+        "score" : 0,
+        "shield" : 0,
+        "skillUses" : {
+
+        },
+        "teamID" : "party",
+        "templateID" : "spellblade"
+      },
+      {
+        "active" : true,
+        "ap" : 3,
+        "baseAttributes" : {
+          "baseAP" : 3,
+          "damage" : 0,
+          "maximumAP" : 8,
+          "maximumHealth" : 18,
+          "range" : 0
+        },
+        "canActFromRound" : 1,
+        "coins" : 8,
+        "defeatRewarded" : false,
+        "equipment" : {
+          "weapon" : "trainingSword"
+        },
+        "health" : 18,
+        "host" : false,
+        "id" : "p2",
+        "inventory" : {
+          "largePotion" : 1,
+          "revivalStone" : 1,
+          "shieldPotion" : 1,
+          "smallPotion" : 2
+        },
+        "kind" : "player",
+        "name" : "P2 · 游侠",
+        "nodeID" : 7,
+        "score" : 0,
+        "shield" : 0,
+        "skillUses" : {
+
+        },
+        "teamID" : "party",
+        "templateID" : "ranger"
+      }
+    ],
+    "skills" : {
+      "p1" : [
+        "runeSlash",
+        "runeWard",
+        "battleRune"
+      ],
+      "p2" : [
+        "ambush",
+        "support",
+        "rally"
+      ]
+    },
+    "summaries" : [
+      "魔剑士 · 基础生命 24\n基础行动 3 · 行动上限 8\n技能：符文斩、符文庇护、战斗符文",
+      "游侠 · 基础生命 18\n基础行动 3 · 行动上限 8\n技能：突袭、援护、振奋"
+    ]
+  },
+  {
+    "configuration" : {
+      "companionClassID" : "spellblade",
+      "playerClassID" : "spellblade"
+    },
+    "movementCapacity" : 400,
+    "players" : [
+      {
+        "active" : true,
+        "ap" : 3,
+        "baseAttributes" : {
+          "baseAP" : 3,
+          "damage" : 0,
+          "maximumAP" : 8,
+          "maximumHealth" : 24,
+          "range" : 0
+        },
+        "canActFromRound" : 1,
+        "coins" : 8,
+        "defeatRewarded" : false,
+        "equipment" : {
+          "weapon" : "trainingSword"
+        },
+        "health" : 24,
+        "host" : false,
+        "id" : "p1",
+        "inventory" : {
+          "largePotion" : 1,
+          "revivalStone" : 1,
+          "shieldPotion" : 1,
+          "smallPotion" : 2
+        },
+        "kind" : "player",
+        "name" : "P1 · 魔剑士",
+        "nodeID" : 7,
+        "score" : 0,
+        "shield" : 0,
+        "skillUses" : {
+
+        },
+        "teamID" : "party",
+        "templateID" : "spellblade"
+      },
+      {
+        "active" : true,
+        "ap" : 3,
+        "baseAttributes" : {
+          "baseAP" : 3,
+          "damage" : 0,
+          "maximumAP" : 8,
+          "maximumHealth" : 24,
+          "range" : 0
+        },
+        "canActFromRound" : 1,
+        "coins" : 8,
+        "defeatRewarded" : false,
+        "equipment" : {
+          "weapon" : "trainingSword"
+        },
+        "health" : 24,
+        "host" : false,
+        "id" : "p2",
+        "inventory" : {
+          "largePotion" : 1,
+          "revivalStone" : 1,
+          "shieldPotion" : 1,
+          "smallPotion" : 2
+        },
+        "kind" : "player",
+        "name" : "P2 · 魔剑士",
+        "nodeID" : 7,
+        "score" : 0,
+        "shield" : 0,
+        "skillUses" : {
+
+        },
+        "teamID" : "party",
+        "templateID" : "spellblade"
+      }
+    ],
+    "skills" : {
+      "p1" : [
+        "runeSlash",
+        "runeWard",
+        "battleRune"
+      ],
+      "p2" : [
+        "runeSlash",
+        "runeWard",
+        "battleRune"
+      ]
+    },
+    "summaries" : [
+      "魔剑士 · 基础生命 24\n基础行动 3 · 行动上限 8\n技能：符文斩、符文庇护、战斗符文",
+      "魔剑士 · 基础生命 24\n基础行动 3 · 行动上限 8\n技能：符文斩、符文庇护、战斗符文"
+    ]
+  },
+  {
+    "configuration" : {
+      "companionClassID" : "dragonKnight",
+      "playerClassID" : "spellblade"
+    },
+    "movementCapacity" : 400,
+    "players" : [
+      {
+        "active" : true,
+        "ap" : 3,
+        "baseAttributes" : {
+          "baseAP" : 3,
+          "damage" : 0,
+          "maximumAP" : 8,
+          "maximumHealth" : 24,
+          "range" : 0
+        },
+        "canActFromRound" : 1,
+        "coins" : 8,
+        "defeatRewarded" : false,
+        "equipment" : {
+          "weapon" : "trainingSword"
+        },
+        "health" : 24,
+        "host" : false,
+        "id" : "p1",
+        "inventory" : {
+          "largePotion" : 1,
+          "revivalStone" : 1,
+          "shieldPotion" : 1,
+          "smallPotion" : 2
+        },
+        "kind" : "player",
+        "name" : "P1 · 魔剑士",
+        "nodeID" : 7,
+        "score" : 0,
+        "shield" : 0,
+        "skillUses" : {
+
+        },
+        "teamID" : "party",
+        "templateID" : "spellblade"
+      },
+      {
+        "active" : true,
+        "ap" : 3,
+        "baseAttributes" : {
+          "baseAP" : 3,
+          "damage" : 0,
+          "maximumAP" : 8,
+          "maximumHealth" : 32,
+          "range" : 0
+        },
+        "canActFromRound" : 1,
+        "coins" : 8,
+        "defeatRewarded" : false,
+        "equipment" : {
+          "weapon" : "trainingSword"
+        },
+        "health" : 32,
+        "host" : false,
+        "id" : "p2",
+        "inventory" : {
+          "largePotion" : 1,
+          "revivalStone" : 1,
+          "shieldPotion" : 1,
+          "smallPotion" : 2
+        },
+        "kind" : "player",
+        "name" : "P2 · 龙骑士",
+        "nodeID" : 7,
+        "score" : 0,
+        "shield" : 0,
+        "skillUses" : {
+
+        },
+        "teamID" : "party",
+        "templateID" : "dragonKnight"
+      }
+    ],
+    "skills" : {
+      "p1" : [
+        "runeSlash",
+        "runeWard",
+        "battleRune"
+      ],
+      "p2" : [
+        "dragonFlame",
+        "dragonScaleWard",
+        "dragonOrder"
+      ]
+    },
+    "summaries" : [
+      "魔剑士 · 基础生命 24\n基础行动 3 · 行动上限 8\n技能：符文斩、符文庇护、战斗符文",
+      "龙骑士 · 基础生命 32\n基础行动 3 · 行动上限 8\n技能：龙焰、龙鳞庇护、龙之号令"
+    ]
+  },
+  {
+    "configuration" : {
+      "companionClassID" : "adventurer",
+      "playerClassID" : "dragonKnight"
+    },
+    "movementCapacity" : 400,
+    "players" : [
+      {
+        "active" : true,
+        "ap" : 3,
+        "baseAttributes" : {
+          "baseAP" : 3,
+          "damage" : 0,
+          "maximumAP" : 8,
+          "maximumHealth" : 32,
+          "range" : 0
+        },
+        "canActFromRound" : 1,
+        "coins" : 8,
+        "defeatRewarded" : false,
+        "equipment" : {
+          "weapon" : "trainingSword"
+        },
+        "health" : 32,
+        "host" : false,
+        "id" : "p1",
+        "inventory" : {
+          "largePotion" : 1,
+          "revivalStone" : 1,
+          "shieldPotion" : 1,
+          "smallPotion" : 2
+        },
+        "kind" : "player",
+        "name" : "P1 · 龙骑士",
+        "nodeID" : 7,
+        "score" : 0,
+        "shield" : 0,
+        "skillUses" : {
+
+        },
+        "teamID" : "party",
+        "templateID" : "dragonKnight"
+      },
+      {
+        "active" : true,
+        "ap" : 3,
+        "baseAttributes" : {
+          "baseAP" : 3,
+          "damage" : 0,
+          "maximumAP" : 8,
+          "maximumHealth" : 12,
+          "range" : 0
+        },
+        "canActFromRound" : 1,
+        "coins" : 8,
+        "defeatRewarded" : false,
+        "equipment" : {
+          "weapon" : "trainingSword"
+        },
+        "health" : 12,
+        "host" : false,
+        "id" : "p2",
+        "inventory" : {
+          "largePotion" : 1,
+          "revivalStone" : 1,
+          "shieldPotion" : 1,
+          "smallPotion" : 2
+        },
+        "kind" : "player",
+        "name" : "P2 · 冒险者",
+        "nodeID" : 7,
+        "score" : 0,
+        "shield" : 0,
+        "skillUses" : {
+
+        },
+        "teamID" : "party",
+        "templateID" : "adventurer"
+      }
+    ],
+    "skills" : {
+      "p1" : [
+        "dragonFlame",
+        "dragonScaleWard",
+        "dragonOrder"
+      ],
+      "p2" : [
+        "heavyStrike",
+        "breather",
+        "simpleGuard"
+      ]
+    },
+    "summaries" : [
+      "龙骑士 · 基础生命 32\n基础行动 3 · 行动上限 8\n技能：龙焰、龙鳞庇护、龙之号令",
+      "冒险者 · 基础生命 12\n基础行动 3 · 行动上限 8\n技能：强击、喘息、简易防护"
+    ]
+  },
+  {
+    "configuration" : {
+      "companionClassID" : "ranger",
+      "playerClassID" : "dragonKnight"
+    },
+    "movementCapacity" : 400,
+    "players" : [
+      {
+        "active" : true,
+        "ap" : 3,
+        "baseAttributes" : {
+          "baseAP" : 3,
+          "damage" : 0,
+          "maximumAP" : 8,
+          "maximumHealth" : 32,
+          "range" : 0
+        },
+        "canActFromRound" : 1,
+        "coins" : 8,
+        "defeatRewarded" : false,
+        "equipment" : {
+          "weapon" : "trainingSword"
+        },
+        "health" : 32,
+        "host" : false,
+        "id" : "p1",
+        "inventory" : {
+          "largePotion" : 1,
+          "revivalStone" : 1,
+          "shieldPotion" : 1,
+          "smallPotion" : 2
+        },
+        "kind" : "player",
+        "name" : "P1 · 龙骑士",
+        "nodeID" : 7,
+        "score" : 0,
+        "shield" : 0,
+        "skillUses" : {
+
+        },
+        "teamID" : "party",
+        "templateID" : "dragonKnight"
+      },
+      {
+        "active" : true,
+        "ap" : 3,
+        "baseAttributes" : {
+          "baseAP" : 3,
+          "damage" : 0,
+          "maximumAP" : 8,
+          "maximumHealth" : 18,
+          "range" : 0
+        },
+        "canActFromRound" : 1,
+        "coins" : 8,
+        "defeatRewarded" : false,
+        "equipment" : {
+          "weapon" : "trainingSword"
+        },
+        "health" : 18,
+        "host" : false,
+        "id" : "p2",
+        "inventory" : {
+          "largePotion" : 1,
+          "revivalStone" : 1,
+          "shieldPotion" : 1,
+          "smallPotion" : 2
+        },
+        "kind" : "player",
+        "name" : "P2 · 游侠",
+        "nodeID" : 7,
+        "score" : 0,
+        "shield" : 0,
+        "skillUses" : {
+
+        },
+        "teamID" : "party",
+        "templateID" : "ranger"
+      }
+    ],
+    "skills" : {
+      "p1" : [
+        "dragonFlame",
+        "dragonScaleWard",
+        "dragonOrder"
+      ],
+      "p2" : [
+        "ambush",
+        "support",
+        "rally"
+      ]
+    },
+    "summaries" : [
+      "龙骑士 · 基础生命 32\n基础行动 3 · 行动上限 8\n技能：龙焰、龙鳞庇护、龙之号令",
+      "游侠 · 基础生命 18\n基础行动 3 · 行动上限 8\n技能：突袭、援护、振奋"
+    ]
+  },
+  {
+    "configuration" : {
+      "companionClassID" : "spellblade",
+      "playerClassID" : "dragonKnight"
+    },
+    "movementCapacity" : 400,
+    "players" : [
+      {
+        "active" : true,
+        "ap" : 3,
+        "baseAttributes" : {
+          "baseAP" : 3,
+          "damage" : 0,
+          "maximumAP" : 8,
+          "maximumHealth" : 32,
+          "range" : 0
+        },
+        "canActFromRound" : 1,
+        "coins" : 8,
+        "defeatRewarded" : false,
+        "equipment" : {
+          "weapon" : "trainingSword"
+        },
+        "health" : 32,
+        "host" : false,
+        "id" : "p1",
+        "inventory" : {
+          "largePotion" : 1,
+          "revivalStone" : 1,
+          "shieldPotion" : 1,
+          "smallPotion" : 2
+        },
+        "kind" : "player",
+        "name" : "P1 · 龙骑士",
+        "nodeID" : 7,
+        "score" : 0,
+        "shield" : 0,
+        "skillUses" : {
+
+        },
+        "teamID" : "party",
+        "templateID" : "dragonKnight"
+      },
+      {
+        "active" : true,
+        "ap" : 3,
+        "baseAttributes" : {
+          "baseAP" : 3,
+          "damage" : 0,
+          "maximumAP" : 8,
+          "maximumHealth" : 24,
+          "range" : 0
+        },
+        "canActFromRound" : 1,
+        "coins" : 8,
+        "defeatRewarded" : false,
+        "equipment" : {
+          "weapon" : "trainingSword"
+        },
+        "health" : 24,
+        "host" : false,
+        "id" : "p2",
+        "inventory" : {
+          "largePotion" : 1,
+          "revivalStone" : 1,
+          "shieldPotion" : 1,
+          "smallPotion" : 2
+        },
+        "kind" : "player",
+        "name" : "P2 · 魔剑士",
+        "nodeID" : 7,
+        "score" : 0,
+        "shield" : 0,
+        "skillUses" : {
+
+        },
+        "teamID" : "party",
+        "templateID" : "spellblade"
+      }
+    ],
+    "skills" : {
+      "p1" : [
+        "dragonFlame",
+        "dragonScaleWard",
+        "dragonOrder"
+      ],
+      "p2" : [
+        "runeSlash",
+        "runeWard",
+        "battleRune"
+      ]
+    },
+    "summaries" : [
+      "龙骑士 · 基础生命 32\n基础行动 3 · 行动上限 8\n技能：龙焰、龙鳞庇护、龙之号令",
+      "魔剑士 · 基础生命 24\n基础行动 3 · 行动上限 8\n技能：符文斩、符文庇护、战斗符文"
+    ]
+  },
+  {
+    "configuration" : {
+      "companionClassID" : "dragonKnight",
+      "playerClassID" : "dragonKnight"
+    },
+    "movementCapacity" : 400,
+    "players" : [
+      {
+        "active" : true,
+        "ap" : 3,
+        "baseAttributes" : {
+          "baseAP" : 3,
+          "damage" : 0,
+          "maximumAP" : 8,
+          "maximumHealth" : 32,
+          "range" : 0
+        },
+        "canActFromRound" : 1,
+        "coins" : 8,
+        "defeatRewarded" : false,
+        "equipment" : {
+          "weapon" : "trainingSword"
+        },
+        "health" : 32,
+        "host" : false,
+        "id" : "p1",
+        "inventory" : {
+          "largePotion" : 1,
+          "revivalStone" : 1,
+          "shieldPotion" : 1,
+          "smallPotion" : 2
+        },
+        "kind" : "player",
+        "name" : "P1 · 龙骑士",
+        "nodeID" : 7,
+        "score" : 0,
+        "shield" : 0,
+        "skillUses" : {
+
+        },
+        "teamID" : "party",
+        "templateID" : "dragonKnight"
+      },
+      {
+        "active" : true,
+        "ap" : 3,
+        "baseAttributes" : {
+          "baseAP" : 3,
+          "damage" : 0,
+          "maximumAP" : 8,
+          "maximumHealth" : 32,
+          "range" : 0
+        },
+        "canActFromRound" : 1,
+        "coins" : 8,
+        "defeatRewarded" : false,
+        "equipment" : {
+          "weapon" : "trainingSword"
+        },
+        "health" : 32,
+        "host" : false,
+        "id" : "p2",
+        "inventory" : {
+          "largePotion" : 1,
+          "revivalStone" : 1,
+          "shieldPotion" : 1,
+          "smallPotion" : 2
+        },
+        "kind" : "player",
+        "name" : "P2 · 龙骑士",
+        "nodeID" : 7,
+        "score" : 0,
+        "shield" : 0,
+        "skillUses" : {
+
+        },
+        "teamID" : "party",
+        "templateID" : "dragonKnight"
+      }
+    ],
+    "skills" : {
+      "p1" : [
+        "dragonFlame",
+        "dragonScaleWard",
+        "dragonOrder"
+      ],
+      "p2" : [
+        "dragonFlame",
+        "dragonScaleWard",
+        "dragonOrder"
+      ]
+    },
+    "summaries" : [
+      "龙骑士 · 基础生命 32\n基础行动 3 · 行动上限 8\n技能：龙焰、龙鳞庇护、龙之号令",
+      "龙骑士 · 基础生命 32\n基础行动 3 · 行动上限 8\n技能：龙焰、龙鳞庇护、龙之号令"
+    ]
+  }
+]

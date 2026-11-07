@@ -1,0 +1,11 @@
+{
+  "approvedBy": "user",
+  "message": "没问题，开始下一步，顺便之后的移动速度调至现有三倍",
+  "scope": "Build75 organic map form and building-node visual linkage only",
+  "doesNotApprove": [
+    "Build76 campaign changes",
+    "new review media",
+    "device FPS"
+  ],
+  "nextMovementMultiplier": 3
+}

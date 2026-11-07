@@ -1,0 +1,1 @@
+Battle VFX checks passed: deferred HP/AP, single impact, lethal same-event transition, nonlethal survival, cancel/retry, shield, contact hold at 15/30/60/120Hz.

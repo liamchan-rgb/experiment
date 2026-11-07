@@ -1,0 +1,14 @@
+{
+  "run": 40739168820,
+  "source": "523c7539ffc7352bd2a232bc828b087e3eb742ed",
+  "conclusion": "failure",
+  "pureTests132Passed": true,
+  "error": "GameViewController.swift:548: cannot find GameRules in scope",
+  "fix": "Import ClassroomGameCore explicitly in GameViewController; it previously used only MeadowBattleSupport",
+  "fullLogsArtifactId": 12838608425,
+  "fullLogsArtifactZIP_SHA256": "8aaf26f05302325b0558662108ae3311e85d75335216c987fd2d011f5fdf7ed2",
+  "ipaGenerated": false,
+  "ipaPublished": false,
+  "appOrSimulatorRun": false,
+  "sparseCheckoutSeconds": 11
+}

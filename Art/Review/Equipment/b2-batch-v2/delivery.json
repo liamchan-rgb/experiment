@@ -1,0 +1,82 @@
+{
+  "candidateCommit": "43dd163821f1d1a50463991aa534f66a8ca12d1d",
+  "selectedPathsVerified": 1758,
+  "publicFullGETs": [
+    {
+      "path": "batch-walk-normal.gif",
+      "url": "https://cdn.jsdelivr.net/gh/liamchan-rgb/experiment@43dd163821f1d1a50463991aa534f66a8ca12d1d/Art/Review/Equipment/b2-batch-v2/batch-walk-normal.gif",
+      "status": 200,
+      "MIME": "image/gif",
+      "bytes": 216376,
+      "SHA256": "0c643b39b315f6924b9093b402f13903f69f68f2c0b76fc3181a4e20e006dcf5"
+    },
+    {
+      "path": "batch-standing.png",
+      "url": "https://cdn.jsdelivr.net/gh/liamchan-rgb/experiment@43dd163821f1d1a50463991aa534f66a8ca12d1d/Art/Review/Equipment/b2-batch-v2/batch-standing.png",
+      "status": 200,
+      "MIME": "image/png",
+      "bytes": 52731,
+      "SHA256": "98ca76f6f7cefe513ded0af11e9ee0d4fbb935501f50ce83c010d3e86c60e4da"
+    },
+    {
+      "path": "manifest.json",
+      "url": "https://cdn.jsdelivr.net/gh/liamchan-rgb/experiment@43dd163821f1d1a50463991aa534f66a8ca12d1d/Art/Review/Equipment/b2-batch-v2/manifest.json",
+      "status": 200,
+      "MIME": "application/json",
+      "bytes": 14035,
+      "SHA256": "137f94873f63eb0f9a3fbfc38e0dca4cc54e274631626865cc8b6e0aef47d722"
+    },
+    {
+      "path": "leatherArmor/walk-normal.gif",
+      "url": "https://cdn.jsdelivr.net/gh/liamchan-rgb/experiment@43dd163821f1d1a50463991aa534f66a8ca12d1d/Art/Review/Equipment/b2-batch-v2/leatherArmor/walk-normal.gif",
+      "status": 200,
+      "MIME": "image/gif",
+      "bytes": 424364,
+      "SHA256": "4edc9d4a8681503efcef2a40320ff74cdbf2d435f391222be26d71ca4185da12"
+    },
+    {
+      "path": "leatherArmor/battle-normal.gif",
+      "url": "https://cdn.jsdelivr.net/gh/liamchan-rgb/experiment@43dd163821f1d1a50463991aa534f66a8ca12d1d/Art/Review/Equipment/b2-batch-v2/leatherArmor/battle-normal.gif",
+      "status": 200,
+      "MIME": "image/gif",
+      "bytes": 990452,
+      "SHA256": "a84842bb5e6c2c3c4cc0b84da9a83eb710a9e769921e7876fdbc2fcbfa3ef430"
+    },
+    {
+      "path": "leatherArmor/standing.png",
+      "url": "https://cdn.jsdelivr.net/gh/liamchan-rgb/experiment@43dd163821f1d1a50463991aa534f66a8ca12d1d/Art/Review/Equipment/b2-batch-v2/leatherArmor/standing.png",
+      "status": 200,
+      "MIME": "image/png",
+      "bytes": 118454,
+      "SHA256": "a354505e26ca02045d7d37d9589c548a1f096723f7e64e1fbc4f1185fa282682"
+    },
+    {
+      "path": "runeArmor/walk-normal.gif",
+      "url": "https://cdn.jsdelivr.net/gh/liamchan-rgb/experiment@43dd163821f1d1a50463991aa534f66a8ca12d1d/Art/Review/Equipment/b2-batch-v2/runeArmor/walk-normal.gif",
+      "status": 200,
+      "MIME": "image/gif",
+      "bytes": 421723,
+      "SHA256": "88a2eb38d6824e6d322121e62cba25441d8dc1dd41adb94bcdb0232b389509a6"
+    },
+    {
+      "path": "runeArmor/battle-normal.gif",
+      "url": "https://cdn.jsdelivr.net/gh/liamchan-rgb/experiment@43dd163821f1d1a50463991aa534f66a8ca12d1d/Art/Review/Equipment/b2-batch-v2/runeArmor/battle-normal.gif",
+      "status": 200,
+      "MIME": "image/gif",
+      "bytes": 1002882,
+      "SHA256": "456df0da815fc4d5a53d46af861fec9178171d6257417f2e5d5db839c16a9b4b"
+    },
+    {
+      "path": "runeArmor/standing.png",
+      "url": "https://cdn.jsdelivr.net/gh/liamchan-rgb/experiment@43dd163821f1d1a50463991aa534f66a8ca12d1d/Art/Review/Equipment/b2-batch-v2/runeArmor/standing.png",
+      "status": 200,
+      "MIME": "image/png",
+      "bytes": 126211,
+      "SHA256": "9c21d6a558b06184c02d74e63fad90be9cc2b7de62abec93363bd9234a9983a6"
+    }
+  ],
+  "siteDeployment": "deployment.json",
+  "siteSourceMatchesFinalManifestAndPerItemMedia": true,
+  "userArtApproval": null,
+  "appSimulatorOrDeviceRun": false
+}

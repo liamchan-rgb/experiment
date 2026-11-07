@@ -1,0 +1,2423 @@
+[
+  {
+    "scenario": "ambush",
+    "frame": 49,
+    "time": 0.98,
+    "locked": false,
+    "dice": [
+      {
+        "color": "red",
+        "label": "D8",
+        "sides": 8
+      },
+      {
+        "color": "red",
+        "label": "D8",
+        "sides": 8
+      },
+      {
+        "color": "yellow",
+        "label": "\u56fa\u5b9a\u52a0\u503c",
+        "sides": 0,
+        "value": 2
+      },
+      {
+        "color": "green",
+        "label": "\u56fa\u5b9a\u6062\u590d",
+        "sides": 0,
+        "value": 3
+      }
+    ],
+    "units": [
+      {
+        "ap": 3,
+        "buff": 0,
+        "clip": "idle",
+        "deathAge": null,
+        "hp": 6,
+        "id": "p1",
+        "maxHP": 12,
+        "monster": {
+          "flash": 0,
+          "progress": 0,
+          "recoil": 0,
+          "scaleY": 1.004970465532396
+        },
+        "progress": 0.4083333333333333,
+        "shield": 0,
+        "vitalsVisible": true
+      },
+      {
+        "ap": 3,
+        "buff": 0,
+        "clip": "idle",
+        "deathAge": null,
+        "hp": 12,
+        "id": "p2",
+        "maxHP": 18,
+        "monster": {
+          "flash": 0,
+          "progress": 0,
+          "recoil": 0,
+          "scaleY": 1.0013245668763449
+        },
+        "progress": 0.4083333333333333,
+        "shield": 0,
+        "vitalsVisible": true
+      },
+      {
+        "ap": 1,
+        "buff": 0,
+        "clip": "idle",
+        "deathAge": null,
+        "hp": 18,
+        "id": "m1",
+        "maxHP": 18,
+        "monster": {
+          "flash": 0,
+          "progress": 0,
+          "recoil": 0,
+          "scaleY": 1.004970465532396
+        },
+        "progress": 0.4083333333333333,
+        "shield": 0,
+        "vitalsVisible": true
+      },
+      {
+        "ap": 1,
+        "buff": 0,
+        "clip": "idle",
+        "deathAge": null,
+        "hp": 18,
+        "id": "m2",
+        "maxHP": 18,
+        "monster": {
+          "flash": 0,
+          "progress": 0,
+          "recoil": 0,
+          "scaleY": 0.9945587034975462
+        },
+        "progress": 0.4083333333333333,
+        "shield": 0,
+        "vitalsVisible": true
+      }
+    ],
+    "damageLabels": []
+  },
+  {
+    "scenario": "ambush",
+    "frame": 50,
+    "time": 1,
+    "locked": true,
+    "dice": [
+      {
+        "color": "red",
+        "label": "D8",
+        "sides": 8,
+        "value": 6
+      },
+      {
+        "color": "red",
+        "label": "D8",
+        "sides": 8,
+        "value": 4
+      },
+      {
+        "color": "yellow",
+        "label": "\u56fa\u5b9a\u52a0\u503c",
+        "sides": 0,
+        "value": 2
+      },
+      {
+        "color": "green",
+        "label": "\u56fa\u5b9a\u6062\u590d",
+        "sides": 0,
+        "value": 3
+      }
+    ],
+    "units": [
+      {
+        "ap": 3,
+        "buff": 0,
+        "clip": "idle",
+        "deathAge": null,
+        "hp": 6,
+        "id": "p1",
+        "maxHP": 12,
+        "monster": {
+          "flash": 0,
+          "progress": 0,
+          "recoil": 0,
+          "scaleY": 1.0047282422638582
+        },
+        "progress": 0.4166666666666667,
+        "shield": 0,
+        "vitalsVisible": true
+      },
+      {
+        "ap": 3,
+        "buff": 0,
+        "clip": "attack",
+        "deathAge": null,
+        "hp": 12,
+        "id": "p2",
+        "maxHP": 18,
+        "monster": {
+          "flash": 0,
+          "progress": 0,
+          "recoil": 0,
+          "scaleY": 1.0047282422638582
+        },
+        "progress": 0,
+        "shield": 0,
+        "vitalsVisible": true
+      },
+      {
+        "ap": 1,
+        "buff": 0,
+        "clip": "idle",
+        "deathAge": null,
+        "hp": 18,
+        "id": "m1",
+        "maxHP": 18,
+        "monster": {
+          "flash": 0,
+          "progress": 0,
+          "recoil": 0,
+          "scaleY": 1.0047282422638582
+        },
+        "progress": 0.4166666666666667,
+        "shield": 0,
+        "vitalsVisible": true
+      },
+      {
+        "ap": 1,
+        "buff": 0,
+        "clip": "idle",
+        "deathAge": null,
+        "hp": 18,
+        "id": "m2",
+        "maxHP": 18,
+        "monster": {
+          "flash": 0,
+          "progress": 0,
+          "recoil": 0,
+          "scaleY": 0.9943536757599173
+        },
+        "progress": 0.4166666666666667,
+        "shield": 0,
+        "vitalsVisible": true
+      }
+    ],
+    "damageLabels": []
+  },
+  {
+    "scenario": "ambush",
+    "frame": 51,
+    "time": 1.02,
+    "locked": true,
+    "dice": [
+      {
+        "color": "red",
+        "label": "D8",
+        "sides": 8,
+        "value": 6
+      },
+      {
+        "color": "red",
+        "label": "D8",
+        "sides": 8,
+        "value": 4
+      },
+      {
+        "color": "yellow",
+        "label": "\u56fa\u5b9a\u52a0\u503c",
+        "sides": 0,
+        "value": 2
+      },
+      {
+        "color": "green",
+        "label": "\u56fa\u5b9a\u6062\u590d",
+        "sides": 0,
+        "value": 3
+      }
+    ],
+    "units": [
+      {
+        "ap": 3,
+        "buff": 0,
+        "clip": "idle",
+        "deathAge": null,
+        "hp": 6,
+        "id": "p1",
+        "maxHP": 12,
+        "monster": {
+          "flash": 0,
+          "progress": 0,
+          "recoil": 0,
+          "scaleY": 1.0044751272166066
+        },
+        "progress": 0.42500000000000004,
+        "shield": 0,
+        "vitalsVisible": true
+      },
+      {
+        "ap": 3,
+        "buff": 0,
+        "clip": "attack",
+        "deathAge": null,
+        "hp": 12,
+        "id": "p2",
+        "maxHP": 18,
+        "monster": {
+          "flash": 0,
+          "progress": 0.020833333333333353,
+          "recoil": 0,
+          "scaleY": 1.0044751272166066
+        },
+        "progress": 0.003541666666666673,
+        "shield": 0,
+        "vitalsVisible": true
+      },
+      {
+        "ap": 1,
+        "buff": 0,
+        "clip": "idle",
+        "deathAge": null,
+        "hp": 18,
+        "id": "m1",
+        "maxHP": 18,
+        "monster": {
+          "flash": 0,
+          "progress": 0,
+          "recoil": 0,
+          "scaleY": 1.0044751272166066
+        },
+        "progress": 0.42500000000000004,
+        "shield": 0,
+        "vitalsVisible": true
+      },
+      {
+        "ap": 1,
+        "buff": 0,
+        "clip": "idle",
+        "deathAge": null,
+        "hp": 18,
+        "id": "m2",
+        "maxHP": 18,
+        "monster": {
+          "flash": 0,
+          "progress": 0,
+          "recoil": 0,
+          "scaleY": 0.9941616546557762
+        },
+        "progress": 0.42500000000000004,
+        "shield": 0,
+        "vitalsVisible": true
+      }
+    ],
+    "damageLabels": []
+  },
+  {
+    "scenario": "ambush",
+    "frame": 85,
+    "time": 1.7,
+    "locked": true,
+    "dice": [
+      {
+        "color": "red",
+        "label": "D8",
+        "sides": 8,
+        "value": 6
+      },
+      {
+        "color": "red",
+        "label": "D8",
+        "sides": 8,
+        "value": 4
+      },
+      {
+        "color": "yellow",
+        "label": "\u56fa\u5b9a\u52a0\u503c",
+        "sides": 0,
+        "value": 2
+      },
+      {
+        "color": "green",
+        "label": "\u56fa\u5b9a\u6062\u590d",
+        "sides": 0,
+        "value": 3
+      }
+    ],
+    "units": [
+      {
+        "ap": 3,
+        "buff": 0,
+        "clip": "idle",
+        "deathAge": null,
+        "hp": 6,
+        "id": "p1",
+        "maxHP": 12,
+        "monster": {
+          "flash": 0,
+          "progress": 0,
+          "recoil": 0,
+          "scaleY": 0.9943536757599173
+        },
+        "progress": 0.7083333333333334,
+        "shield": 0,
+        "vitalsVisible": true
+      },
+      {
+        "ap": 3,
+        "buff": 0,
+        "clip": "attack",
+        "deathAge": null,
+        "hp": 12,
+        "id": "p2",
+        "maxHP": 18,
+        "monster": {
+          "flash": 0,
+          "progress": 0.7291666666666666,
+          "recoil": 0,
+          "scaleY": 0.9943536757599173
+        },
+        "progress": 0.5381770833333334,
+        "shield": 0,
+        "vitalsVisible": true
+      },
+      {
+        "ap": 1,
+        "buff": 0,
+        "clip": "idle",
+        "deathAge": null,
+        "hp": 18,
+        "id": "m1",
+        "maxHP": 18,
+        "monster": {
+          "flash": 0,
+          "progress": 0,
+          "recoil": 0,
+          "scaleY": 0.9943536757599173
+        },
+        "progress": 0.7083333333333334,
+        "shield": 0,
+        "vitalsVisible": true
+      },
+      {
+        "ap": 1,
+        "buff": 0,
+        "clip": "idle",
+        "deathAge": null,
+        "hp": 18,
+        "id": "m2",
+        "maxHP": 18,
+        "monster": {
+          "flash": 0,
+          "progress": 0,
+          "recoil": 0,
+          "scaleY": 0.9965025068181816
+        },
+        "progress": 0.7083333333333334,
+        "shield": 0,
+        "vitalsVisible": true
+      }
+    ],
+    "damageLabels": []
+  },
+  {
+    "scenario": "ambush",
+    "frame": 86,
+    "time": 1.72,
+    "locked": true,
+    "dice": [
+      {
+        "color": "red",
+        "label": "D8",
+        "sides": 8,
+        "value": 6
+      },
+      {
+        "color": "red",
+        "label": "D8",
+        "sides": 8,
+        "value": 4
+      },
+      {
+        "color": "yellow",
+        "label": "\u56fa\u5b9a\u52a0\u503c",
+        "sides": 0,
+        "value": 2
+      },
+      {
+        "color": "green",
+        "label": "\u56fa\u5b9a\u6062\u590d",
+        "sides": 0,
+        "value": 3
+      }
+    ],
+    "units": [
+      {
+        "ap": 3,
+        "buff": 0,
+        "clip": "idle",
+        "deathAge": null,
+        "hp": 6,
+        "id": "p1",
+        "maxHP": 12,
+        "monster": {
+          "flash": 0,
+          "progress": 0,
+          "recoil": 0,
+          "scaleY": 0.9941616546557762
+        },
+        "progress": 0.7166666666666667,
+        "shield": 0,
+        "vitalsVisible": true
+      },
+      {
+        "ap": 1,
+        "buff": 0,
+        "clip": "attack",
+        "deathAge": null,
+        "hp": 15,
+        "id": "p2",
+        "maxHP": 18,
+        "monster": {
+          "flash": 0,
+          "progress": 0.75,
+          "recoil": 0,
+          "scaleY": 0.9941616546557762
+        },
+        "progress": 0.54,
+        "shield": 0,
+        "vitalsVisible": true
+      },
+      {
+        "ap": 1,
+        "buff": 0,
+        "clip": "hit",
+        "deathAge": null,
+        "hp": 6,
+        "id": "m1",
+        "maxHP": 18,
+        "monster": {
+          "flash": 0,
+          "progress": 0,
+          "recoil": 0,
+          "scaleY": 0.9941616546557762
+        },
+        "progress": 0,
+        "shield": 0,
+        "vitalsVisible": true
+      },
+      {
+        "ap": 1,
+        "buff": 0,
+        "clip": "idle",
+        "deathAge": null,
+        "hp": 18,
+        "id": "m2",
+        "maxHP": 18,
+        "monster": {
+          "flash": 0,
+          "progress": 0,
+          "recoil": 0,
+          "scaleY": 0.9967974773784369
+        },
+        "progress": 0.7166666666666667,
+        "shield": 0,
+        "vitalsVisible": true
+      }
+    ],
+    "damageLabels": [
+      {
+        "at": 1.72,
+        "text": "\u221212",
+        "x": 570,
+        "y": 323
+      }
+    ]
+  },
+  {
+    "scenario": "ambush",
+    "frame": 103,
+    "time": 2.06,
+    "locked": true,
+    "dice": [
+      {
+        "color": "red",
+        "label": "D8",
+        "sides": 8,
+        "value": 6
+      },
+      {
+        "color": "red",
+        "label": "D8",
+        "sides": 8,
+        "value": 4
+      },
+      {
+        "color": "yellow",
+        "label": "\u56fa\u5b9a\u52a0\u503c",
+        "sides": 0,
+        "value": 2
+      },
+      {
+        "color": "green",
+        "label": "\u56fa\u5b9a\u6062\u590d",
+        "sides": 0,
+        "value": 3
+      }
+    ],
+    "units": [
+      {
+        "ap": 3,
+        "buff": 0,
+        "clip": "idle",
+        "deathAge": null,
+        "hp": 6,
+        "id": "p1",
+        "maxHP": 12,
+        "monster": {
+          "flash": 0,
+          "progress": 0,
+          "recoil": 0,
+          "scaleY": 0.9931869150123186
+        },
+        "progress": 0.8583333333333334,
+        "shield": 0,
+        "vitalsVisible": true
+      },
+      {
+        "ap": 1,
+        "buff": 0,
+        "clip": "attack",
+        "deathAge": null,
+        "hp": 15,
+        "id": "p2",
+        "maxHP": 18,
+        "monster": {
+          "flash": 0,
+          "progress": 1,
+          "recoil": 0,
+          "scaleY": 0.9931869150123186
+        },
+        "progress": 0.7560933207593589,
+        "shield": 0,
+        "vitalsVisible": true
+      },
+      {
+        "ap": 1,
+        "buff": 0,
+        "clip": "hit",
+        "deathAge": null,
+        "hp": 6,
+        "id": "m1",
+        "maxHP": 18,
+        "monster": {
+          "flash": 0.07998827814722735,
+          "progress": 0,
+          "recoil": 1.7228244524018197,
+          "scaleY": 0.9917102083388313
+        },
+        "progress": 0.4857142857142859,
+        "shield": 0,
+        "vitalsVisible": true
+      },
+      {
+        "ap": 1,
+        "buff": 0,
+        "clip": "idle",
+        "deathAge": null,
+        "hp": 18,
+        "id": "m2",
+        "maxHP": 18,
+        "monster": {
+          "flash": 0,
+          "progress": 0,
+          "recoil": 0,
+          "scaleY": 1.0023397852578906
+        },
+        "progress": 0.8583333333333334,
+        "shield": 0,
+        "vitalsVisible": true
+      }
+    ],
+    "damageLabels": [
+      {
+        "at": 1.72,
+        "text": "\u221212",
+        "x": 570,
+        "y": 323
+      }
+    ]
+  },
+  {
+    "scenario": "ambush",
+    "frame": 120,
+    "time": 2.4,
+    "locked": true,
+    "dice": [
+      {
+        "color": "red",
+        "label": "D8",
+        "sides": 8,
+        "value": 6
+      },
+      {
+        "color": "red",
+        "label": "D8",
+        "sides": 8,
+        "value": 4
+      },
+      {
+        "color": "yellow",
+        "label": "\u56fa\u5b9a\u52a0\u503c",
+        "sides": 0,
+        "value": 2
+      },
+      {
+        "color": "green",
+        "label": "\u56fa\u5b9a\u6062\u590d",
+        "sides": 0,
+        "value": 3
+      }
+    ],
+    "units": [
+      {
+        "ap": 3,
+        "buff": 0,
+        "clip": "idle",
+        "deathAge": null,
+        "hp": 6,
+        "id": "p1",
+        "maxHP": 12,
+        "monster": {
+          "flash": 0,
+          "progress": 0,
+          "recoil": 0,
+          "scaleY": 0.9965025068181816
+        },
+        "progress": 0,
+        "shield": 0,
+        "vitalsVisible": true
+      },
+      {
+        "ap": 1,
+        "buff": 0,
+        "clip": "attack",
+        "deathAge": null,
+        "hp": 15,
+        "id": "p2",
+        "maxHP": 18,
+        "monster": {
+          "flash": 0,
+          "progress": 1,
+          "recoil": 0,
+          "scaleY": 0.9965025068181816
+        },
+        "progress": 0.9987453360121367,
+        "shield": 0,
+        "vitalsVisible": true
+      },
+      {
+        "ap": 1,
+        "buff": 0,
+        "clip": "hit",
+        "deathAge": null,
+        "hp": 6,
+        "id": "m1",
+        "maxHP": 18,
+        "monster": {
+          "flash": 0,
+          "progress": 0,
+          "recoil": 0,
+          "scaleY": 0.9965025068181816
+        },
+        "progress": 0.9714285714285714,
+        "shield": 0,
+        "vitalsVisible": true
+      },
+      {
+        "ap": 1,
+        "buff": 0,
+        "clip": "idle",
+        "deathAge": null,
+        "hp": 18,
+        "id": "m2",
+        "maxHP": 18,
+        "monster": {
+          "flash": 0,
+          "progress": 0,
+          "recoil": 0,
+          "scaleY": 1.0064086850858176
+        },
+        "progress": 0,
+        "shield": 0,
+        "vitalsVisible": true
+      }
+    ],
+    "damageLabels": [
+      {
+        "at": 1.72,
+        "text": "\u221212",
+        "x": 570,
+        "y": 323
+      }
+    ]
+  },
+  {
+    "scenario": "ambush",
+    "frame": 160,
+    "time": 3.2,
+    "locked": true,
+    "dice": [
+      {
+        "color": "red",
+        "label": "D8",
+        "sides": 8,
+        "value": 6
+      },
+      {
+        "color": "red",
+        "label": "D8",
+        "sides": 8,
+        "value": 4
+      },
+      {
+        "color": "yellow",
+        "label": "\u56fa\u5b9a\u52a0\u503c",
+        "sides": 0,
+        "value": 2
+      },
+      {
+        "color": "green",
+        "label": "\u56fa\u5b9a\u6062\u590d",
+        "sides": 0,
+        "value": 3
+      }
+    ],
+    "units": [
+      {
+        "ap": 3,
+        "buff": 0,
+        "clip": "idle",
+        "deathAge": null,
+        "hp": 6,
+        "id": "p1",
+        "maxHP": 12,
+        "monster": {
+          "flash": 0,
+          "progress": 0,
+          "recoil": 0,
+          "scaleY": 1.0068943233385008
+        },
+        "progress": 0.3333333333333335,
+        "shield": 0,
+        "vitalsVisible": true
+      },
+      {
+        "ap": 1,
+        "buff": 0,
+        "clip": "idle",
+        "deathAge": null,
+        "hp": 15,
+        "id": "p2",
+        "maxHP": 18,
+        "monster": {
+          "flash": 0,
+          "progress": 0,
+          "recoil": 0,
+          "scaleY": 0.9988344337655815
+        },
+        "progress": 0.3333333333333335,
+        "shield": 0,
+        "vitalsVisible": true
+      },
+      {
+        "ap": 1,
+        "buff": 0,
+        "clip": "idle",
+        "deathAge": null,
+        "hp": 6,
+        "id": "m1",
+        "maxHP": 18,
+        "monster": {
+          "flash": 0,
+          "progress": 0,
+          "recoil": 0,
+          "scaleY": 1.0068943233385008
+        },
+        "progress": 0.3333333333333335,
+        "shield": 0,
+        "vitalsVisible": true
+      },
+      {
+        "ap": 1,
+        "buff": 0,
+        "clip": "idle",
+        "deathAge": null,
+        "hp": 18,
+        "id": "m2",
+        "maxHP": 18,
+        "monster": {
+          "flash": 0,
+          "progress": 0,
+          "recoil": 0,
+          "scaleY": 1.000453128668283
+        },
+        "progress": 0.3333333333333335,
+        "shield": 0,
+        "vitalsVisible": true
+      }
+    ],
+    "damageLabels": []
+  },
+  {
+    "scenario": "attack-buff",
+    "frame": 49,
+    "time": 0.98,
+    "locked": false,
+    "dice": [
+      {
+        "color": "red",
+        "label": "D6",
+        "sides": 6
+      },
+      {
+        "color": "yellow",
+        "label": "\u56fa\u5b9a\u589e\u4f24",
+        "sides": 0,
+        "value": 2
+      }
+    ],
+    "units": [
+      {
+        "ap": 3,
+        "buff": 2,
+        "clip": "idle",
+        "deathAge": null,
+        "hp": 6,
+        "id": "p1",
+        "maxHP": 12,
+        "monster": {
+          "flash": 0,
+          "progress": 0,
+          "recoil": 0,
+          "scaleY": 1.0013245668763449
+        },
+        "progress": 0.4083333333333333,
+        "shield": 0,
+        "vitalsVisible": true
+      },
+      {
+        "ap": 2,
+        "buff": 2,
+        "clip": "idle",
+        "deathAge": null,
+        "hp": 12,
+        "id": "p2",
+        "maxHP": 18,
+        "monster": {
+          "flash": 0,
+          "progress": 0,
+          "recoil": 0,
+          "scaleY": 1.004970465532396
+        },
+        "progress": 0.4083333333333333,
+        "shield": 0,
+        "vitalsVisible": true
+      },
+      {
+        "ap": 1,
+        "buff": 0,
+        "clip": "idle",
+        "deathAge": null,
+        "hp": 18,
+        "id": "m1",
+        "maxHP": 18,
+        "monster": {
+          "flash": 0,
+          "progress": 0,
+          "recoil": 0,
+          "scaleY": 1.004970465532396
+        },
+        "progress": 0.4083333333333333,
+        "shield": 0,
+        "vitalsVisible": true
+      },
+      {
+        "ap": 1,
+        "buff": 0,
+        "clip": "idle",
+        "deathAge": null,
+        "hp": 18,
+        "id": "m2",
+        "maxHP": 18,
+        "monster": {
+          "flash": 0,
+          "progress": 0,
+          "recoil": 0,
+          "scaleY": 0.9945587034975462
+        },
+        "progress": 0.4083333333333333,
+        "shield": 0,
+        "vitalsVisible": true
+      }
+    ],
+    "damageLabels": []
+  },
+  {
+    "scenario": "attack-buff",
+    "frame": 50,
+    "time": 1,
+    "locked": true,
+    "dice": [
+      {
+        "color": "red",
+        "label": "D6",
+        "sides": 6,
+        "value": 4
+      },
+      {
+        "color": "yellow",
+        "label": "\u56fa\u5b9a\u589e\u4f24",
+        "sides": 0,
+        "value": 2
+      }
+    ],
+    "units": [
+      {
+        "ap": 3,
+        "buff": 2,
+        "clip": "attack",
+        "deathAge": null,
+        "hp": 6,
+        "id": "p1",
+        "maxHP": 12,
+        "monster": {
+          "flash": 0,
+          "progress": 0,
+          "recoil": 0,
+          "scaleY": 1.0047282422638582
+        },
+        "progress": 0,
+        "shield": 0,
+        "vitalsVisible": true
+      },
+      {
+        "ap": 2,
+        "buff": 2,
+        "clip": "idle",
+        "deathAge": null,
+        "hp": 12,
+        "id": "p2",
+        "maxHP": 18,
+        "monster": {
+          "flash": 0,
+          "progress": 0,
+          "recoil": 0,
+          "scaleY": 1.0047282422638582
+        },
+        "progress": 0.4166666666666667,
+        "shield": 0,
+        "vitalsVisible": true
+      },
+      {
+        "ap": 1,
+        "buff": 0,
+        "clip": "idle",
+        "deathAge": null,
+        "hp": 18,
+        "id": "m1",
+        "maxHP": 18,
+        "monster": {
+          "flash": 0,
+          "progress": 0,
+          "recoil": 0,
+          "scaleY": 1.0047282422638582
+        },
+        "progress": 0.4166666666666667,
+        "shield": 0,
+        "vitalsVisible": true
+      },
+      {
+        "ap": 1,
+        "buff": 0,
+        "clip": "idle",
+        "deathAge": null,
+        "hp": 18,
+        "id": "m2",
+        "maxHP": 18,
+        "monster": {
+          "flash": 0,
+          "progress": 0,
+          "recoil": 0,
+          "scaleY": 0.9943536757599173
+        },
+        "progress": 0.4166666666666667,
+        "shield": 0,
+        "vitalsVisible": true
+      }
+    ],
+    "damageLabels": []
+  },
+  {
+    "scenario": "attack-buff",
+    "frame": 51,
+    "time": 1.02,
+    "locked": true,
+    "dice": [
+      {
+        "color": "red",
+        "label": "D6",
+        "sides": 6,
+        "value": 4
+      },
+      {
+        "color": "yellow",
+        "label": "\u56fa\u5b9a\u589e\u4f24",
+        "sides": 0,
+        "value": 2
+      }
+    ],
+    "units": [
+      {
+        "ap": 3,
+        "buff": 2,
+        "clip": "attack",
+        "deathAge": null,
+        "hp": 6,
+        "id": "p1",
+        "maxHP": 12,
+        "monster": {
+          "flash": 0,
+          "progress": 0.020833333333333353,
+          "recoil": 0,
+          "scaleY": 1.0044751272166066
+        },
+        "progress": 0,
+        "shield": 0,
+        "vitalsVisible": true
+      },
+      {
+        "ap": 2,
+        "buff": 2,
+        "clip": "idle",
+        "deathAge": null,
+        "hp": 12,
+        "id": "p2",
+        "maxHP": 18,
+        "monster": {
+          "flash": 0,
+          "progress": 0,
+          "recoil": 0,
+          "scaleY": 1.0044751272166066
+        },
+        "progress": 0.42500000000000004,
+        "shield": 0,
+        "vitalsVisible": true
+      },
+      {
+        "ap": 1,
+        "buff": 0,
+        "clip": "idle",
+        "deathAge": null,
+        "hp": 18,
+        "id": "m1",
+        "maxHP": 18,
+        "monster": {
+          "flash": 0,
+          "progress": 0,
+          "recoil": 0,
+          "scaleY": 1.0044751272166066
+        },
+        "progress": 0.42500000000000004,
+        "shield": 0,
+        "vitalsVisible": true
+      },
+      {
+        "ap": 1,
+        "buff": 0,
+        "clip": "idle",
+        "deathAge": null,
+        "hp": 18,
+        "id": "m2",
+        "maxHP": 18,
+        "monster": {
+          "flash": 0,
+          "progress": 0,
+          "recoil": 0,
+          "scaleY": 0.9941616546557762
+        },
+        "progress": 0.42500000000000004,
+        "shield": 0,
+        "vitalsVisible": true
+      }
+    ],
+    "damageLabels": []
+  },
+  {
+    "scenario": "attack-buff",
+    "frame": 85,
+    "time": 1.7,
+    "locked": true,
+    "dice": [
+      {
+        "color": "red",
+        "label": "D6",
+        "sides": 6,
+        "value": 4
+      },
+      {
+        "color": "yellow",
+        "label": "\u56fa\u5b9a\u589e\u4f24",
+        "sides": 0,
+        "value": 2
+      }
+    ],
+    "units": [
+      {
+        "ap": 3,
+        "buff": 2,
+        "clip": "attack",
+        "deathAge": null,
+        "hp": 6,
+        "id": "p1",
+        "maxHP": 12,
+        "monster": {
+          "flash": 0,
+          "progress": 0.7291666666666666,
+          "recoil": 0,
+          "scaleY": 0.9943536757599173
+        },
+        "progress": 0.24999999999999994,
+        "shield": 0,
+        "vitalsVisible": true
+      },
+      {
+        "ap": 2,
+        "buff": 2,
+        "clip": "idle",
+        "deathAge": null,
+        "hp": 12,
+        "id": "p2",
+        "maxHP": 18,
+        "monster": {
+          "flash": 0,
+          "progress": 0,
+          "recoil": 0,
+          "scaleY": 0.9943536757599173
+        },
+        "progress": 0.7083333333333334,
+        "shield": 0,
+        "vitalsVisible": true
+      },
+      {
+        "ap": 1,
+        "buff": 0,
+        "clip": "idle",
+        "deathAge": null,
+        "hp": 18,
+        "id": "m1",
+        "maxHP": 18,
+        "monster": {
+          "flash": 0,
+          "progress": 0,
+          "recoil": 0,
+          "scaleY": 0.9943536757599173
+        },
+        "progress": 0.7083333333333334,
+        "shield": 0,
+        "vitalsVisible": true
+      },
+      {
+        "ap": 1,
+        "buff": 0,
+        "clip": "idle",
+        "deathAge": null,
+        "hp": 18,
+        "id": "m2",
+        "maxHP": 18,
+        "monster": {
+          "flash": 0,
+          "progress": 0,
+          "recoil": 0,
+          "scaleY": 0.9965025068181816
+        },
+        "progress": 0.7083333333333334,
+        "shield": 0,
+        "vitalsVisible": true
+      }
+    ],
+    "damageLabels": []
+  },
+  {
+    "scenario": "attack-buff",
+    "frame": 86,
+    "time": 1.72,
+    "locked": true,
+    "dice": [
+      {
+        "color": "red",
+        "label": "D6",
+        "sides": 6,
+        "value": 4
+      },
+      {
+        "color": "yellow",
+        "label": "\u56fa\u5b9a\u589e\u4f24",
+        "sides": 0,
+        "value": 2
+      }
+    ],
+    "units": [
+      {
+        "ap": 3,
+        "buff": 2,
+        "clip": "attack",
+        "deathAge": null,
+        "hp": 6,
+        "id": "p1",
+        "maxHP": 12,
+        "monster": {
+          "flash": 0,
+          "progress": 0.75,
+          "recoil": 0,
+          "scaleY": 0.9941616546557762
+        },
+        "progress": 0.26666666666666666,
+        "shield": 0,
+        "vitalsVisible": true
+      },
+      {
+        "ap": 2,
+        "buff": 2,
+        "clip": "idle",
+        "deathAge": null,
+        "hp": 12,
+        "id": "p2",
+        "maxHP": 18,
+        "monster": {
+          "flash": 0,
+          "progress": 0,
+          "recoil": 0,
+          "scaleY": 0.9941616546557762
+        },
+        "progress": 0.7166666666666667,
+        "shield": 0,
+        "vitalsVisible": true
+      },
+      {
+        "ap": 1,
+        "buff": 0,
+        "clip": "idle",
+        "deathAge": null,
+        "hp": 18,
+        "id": "m1",
+        "maxHP": 18,
+        "monster": {
+          "flash": 0,
+          "progress": 0,
+          "recoil": 0,
+          "scaleY": 0.9941616546557762
+        },
+        "progress": 0.7166666666666667,
+        "shield": 0,
+        "vitalsVisible": true
+      },
+      {
+        "ap": 1,
+        "buff": 0,
+        "clip": "idle",
+        "deathAge": null,
+        "hp": 18,
+        "id": "m2",
+        "maxHP": 18,
+        "monster": {
+          "flash": 0,
+          "progress": 0,
+          "recoil": 0,
+          "scaleY": 0.9967974773784369
+        },
+        "progress": 0.7166666666666667,
+        "shield": 0,
+        "vitalsVisible": true
+      }
+    ],
+    "damageLabels": []
+  },
+  {
+    "scenario": "attack-buff",
+    "frame": 103,
+    "time": 2.06,
+    "locked": true,
+    "dice": [
+      {
+        "color": "red",
+        "label": "D6",
+        "sides": 6,
+        "value": 4
+      },
+      {
+        "color": "yellow",
+        "label": "\u56fa\u5b9a\u589e\u4f24",
+        "sides": 0,
+        "value": 2
+      }
+    ],
+    "units": [
+      {
+        "ap": 2,
+        "buff": 2,
+        "clip": "attack",
+        "deathAge": null,
+        "hp": 6,
+        "id": "p1",
+        "maxHP": 12,
+        "monster": {
+          "flash": 0,
+          "progress": 1,
+          "recoil": 0,
+          "scaleY": 0.9931869150123186
+        },
+        "progress": 0.54,
+        "shield": 0,
+        "vitalsVisible": true
+      },
+      {
+        "ap": 2,
+        "buff": 2,
+        "clip": "idle",
+        "deathAge": null,
+        "hp": 12,
+        "id": "p2",
+        "maxHP": 18,
+        "monster": {
+          "flash": 0,
+          "progress": 0,
+          "recoil": 0,
+          "scaleY": 0.9931869150123186
+        },
+        "progress": 0.8583333333333334,
+        "shield": 0,
+        "vitalsVisible": true
+      },
+      {
+        "ap": 1,
+        "buff": 0,
+        "clip": "hit",
+        "deathAge": null,
+        "hp": 12,
+        "id": "m1",
+        "maxHP": 18,
+        "monster": {
+          "flash": 0,
+          "progress": 0,
+          "recoil": 0,
+          "scaleY": 0.9931869150123186
+        },
+        "progress": 0,
+        "shield": 0,
+        "vitalsVisible": true
+      },
+      {
+        "ap": 1,
+        "buff": 0,
+        "clip": "idle",
+        "deathAge": null,
+        "hp": 18,
+        "id": "m2",
+        "maxHP": 18,
+        "monster": {
+          "flash": 0,
+          "progress": 0,
+          "recoil": 0,
+          "scaleY": 1.0023397852578906
+        },
+        "progress": 0.8583333333333334,
+        "shield": 0,
+        "vitalsVisible": true
+      }
+    ],
+    "damageLabels": [
+      {
+        "at": 2.06,
+        "text": "\u22126",
+        "x": 570,
+        "y": 323
+      }
+    ]
+  },
+  {
+    "scenario": "attack-buff",
+    "frame": 120,
+    "time": 2.4,
+    "locked": true,
+    "dice": [
+      {
+        "color": "red",
+        "label": "D6",
+        "sides": 6,
+        "value": 4
+      },
+      {
+        "color": "yellow",
+        "label": "\u56fa\u5b9a\u589e\u4f24",
+        "sides": 0,
+        "value": 2
+      }
+    ],
+    "units": [
+      {
+        "ap": 2,
+        "buff": 2,
+        "clip": "attack",
+        "deathAge": null,
+        "hp": 6,
+        "id": "p1",
+        "maxHP": 12,
+        "monster": {
+          "flash": 0,
+          "progress": 1,
+          "recoil": 0,
+          "scaleY": 0.9965025068181816
+        },
+        "progress": 0.75,
+        "shield": 0,
+        "vitalsVisible": true
+      },
+      {
+        "ap": 2,
+        "buff": 2,
+        "clip": "idle",
+        "deathAge": null,
+        "hp": 12,
+        "id": "p2",
+        "maxHP": 18,
+        "monster": {
+          "flash": 0,
+          "progress": 0,
+          "recoil": 0,
+          "scaleY": 0.9965025068181816
+        },
+        "progress": 0,
+        "shield": 0,
+        "vitalsVisible": true
+      },
+      {
+        "ap": 1,
+        "buff": 0,
+        "clip": "hit",
+        "deathAge": null,
+        "hp": 12,
+        "id": "m1",
+        "maxHP": 18,
+        "monster": {
+          "flash": 0.07998827814722771,
+          "progress": 0,
+          "recoil": 1.7228244524018275,
+          "scaleY": 0.9950258001446943
+        },
+        "progress": 0.48571428571428554,
+        "shield": 0,
+        "vitalsVisible": true
+      },
+      {
+        "ap": 1,
+        "buff": 0,
+        "clip": "idle",
+        "deathAge": null,
+        "hp": 18,
+        "id": "m2",
+        "maxHP": 18,
+        "monster": {
+          "flash": 0,
+          "progress": 0,
+          "recoil": 0,
+          "scaleY": 1.0064086850858176
+        },
+        "progress": 0,
+        "shield": 0,
+        "vitalsVisible": true
+      }
+    ],
+    "damageLabels": [
+      {
+        "at": 2.06,
+        "text": "\u22126",
+        "x": 570,
+        "y": 323
+      }
+    ]
+  },
+  {
+    "scenario": "attack-buff",
+    "frame": 160,
+    "time": 3.2,
+    "locked": true,
+    "dice": [
+      {
+        "color": "red",
+        "label": "D6",
+        "sides": 6,
+        "value": 4
+      },
+      {
+        "color": "yellow",
+        "label": "\u56fa\u5b9a\u589e\u4f24",
+        "sides": 0,
+        "value": 2
+      }
+    ],
+    "units": [
+      {
+        "ap": 2,
+        "buff": 2,
+        "clip": "idle",
+        "deathAge": null,
+        "hp": 6,
+        "id": "p1",
+        "maxHP": 12,
+        "monster": {
+          "flash": 0,
+          "progress": 0,
+          "recoil": 0,
+          "scaleY": 0.9988344337655815
+        },
+        "progress": 0.3333333333333335,
+        "shield": 0,
+        "vitalsVisible": true
+      },
+      {
+        "ap": 2,
+        "buff": 2,
+        "clip": "idle",
+        "deathAge": null,
+        "hp": 12,
+        "id": "p2",
+        "maxHP": 18,
+        "monster": {
+          "flash": 0,
+          "progress": 0,
+          "recoil": 0,
+          "scaleY": 1.0068943233385008
+        },
+        "progress": 0.3333333333333335,
+        "shield": 0,
+        "vitalsVisible": true
+      },
+      {
+        "ap": 1,
+        "buff": 0,
+        "clip": "idle",
+        "deathAge": null,
+        "hp": 12,
+        "id": "m1",
+        "maxHP": 18,
+        "monster": {
+          "flash": 0,
+          "progress": 0,
+          "recoil": 0,
+          "scaleY": 1.0068943233385008
+        },
+        "progress": 0.3333333333333335,
+        "shield": 0,
+        "vitalsVisible": true
+      },
+      {
+        "ap": 1,
+        "buff": 0,
+        "clip": "idle",
+        "deathAge": null,
+        "hp": 18,
+        "id": "m2",
+        "maxHP": 18,
+        "monster": {
+          "flash": 0,
+          "progress": 0,
+          "recoil": 0,
+          "scaleY": 1.000453128668283
+        },
+        "progress": 0.3333333333333335,
+        "shield": 0,
+        "vitalsVisible": true
+      }
+    ],
+    "damageLabels": []
+  },
+  {
+    "scenario": "lethal",
+    "frame": 49,
+    "time": 0.98,
+    "locked": false,
+    "dice": [
+      {
+        "color": "red",
+        "label": "D6",
+        "sides": 6
+      },
+      {
+        "color": "yellow",
+        "label": "\u56fa\u5b9a\u589e\u4f24",
+        "sides": 0,
+        "value": 2
+      }
+    ],
+    "units": [
+      {
+        "ap": 3,
+        "buff": 2,
+        "clip": "idle",
+        "deathAge": null,
+        "hp": 6,
+        "id": "p1",
+        "maxHP": 12,
+        "monster": {
+          "flash": 0,
+          "progress": 0,
+          "recoil": 0,
+          "scaleY": 1.0013245668763449
+        },
+        "progress": 0.4083333333333333,
+        "shield": 0,
+        "vitalsVisible": true
+      },
+      {
+        "ap": 2,
+        "buff": 2,
+        "clip": "idle",
+        "deathAge": null,
+        "hp": 12,
+        "id": "p2",
+        "maxHP": 18,
+        "monster": {
+          "flash": 0,
+          "progress": 0,
+          "recoil": 0,
+          "scaleY": 1.004970465532396
+        },
+        "progress": 0.4083333333333333,
+        "shield": 0,
+        "vitalsVisible": true
+      },
+      {
+        "ap": 1,
+        "buff": 0,
+        "clip": "idle",
+        "deathAge": null,
+        "hp": 3,
+        "id": "m1",
+        "maxHP": 18,
+        "monster": {
+          "flash": 0,
+          "progress": 0,
+          "recoil": 0,
+          "scaleY": 1.004970465532396
+        },
+        "progress": 0.4083333333333333,
+        "shield": 0,
+        "vitalsVisible": true
+      },
+      {
+        "ap": 1,
+        "buff": 0,
+        "clip": "idle",
+        "deathAge": null,
+        "hp": 18,
+        "id": "m2",
+        "maxHP": 18,
+        "monster": {
+          "flash": 0,
+          "progress": 0,
+          "recoil": 0,
+          "scaleY": 0.9945587034975462
+        },
+        "progress": 0.4083333333333333,
+        "shield": 0,
+        "vitalsVisible": true
+      }
+    ],
+    "damageLabels": []
+  },
+  {
+    "scenario": "lethal",
+    "frame": 50,
+    "time": 1,
+    "locked": true,
+    "dice": [
+      {
+        "color": "red",
+        "label": "D6",
+        "sides": 6,
+        "value": 4
+      },
+      {
+        "color": "yellow",
+        "label": "\u56fa\u5b9a\u589e\u4f24",
+        "sides": 0,
+        "value": 2
+      }
+    ],
+    "units": [
+      {
+        "ap": 3,
+        "buff": 2,
+        "clip": "attack",
+        "deathAge": null,
+        "hp": 6,
+        "id": "p1",
+        "maxHP": 12,
+        "monster": {
+          "flash": 0,
+          "progress": 0,
+          "recoil": 0,
+          "scaleY": 1.0047282422638582
+        },
+        "progress": 0,
+        "shield": 0,
+        "vitalsVisible": true
+      },
+      {
+        "ap": 2,
+        "buff": 2,
+        "clip": "idle",
+        "deathAge": null,
+        "hp": 12,
+        "id": "p2",
+        "maxHP": 18,
+        "monster": {
+          "flash": 0,
+          "progress": 0,
+          "recoil": 0,
+          "scaleY": 1.0047282422638582
+        },
+        "progress": 0.4166666666666667,
+        "shield": 0,
+        "vitalsVisible": true
+      },
+      {
+        "ap": 1,
+        "buff": 0,
+        "clip": "idle",
+        "deathAge": null,
+        "hp": 3,
+        "id": "m1",
+        "maxHP": 18,
+        "monster": {
+          "flash": 0,
+          "progress": 0,
+          "recoil": 0,
+          "scaleY": 1.0047282422638582
+        },
+        "progress": 0.4166666666666667,
+        "shield": 0,
+        "vitalsVisible": true
+      },
+      {
+        "ap": 1,
+        "buff": 0,
+        "clip": "idle",
+        "deathAge": null,
+        "hp": 18,
+        "id": "m2",
+        "maxHP": 18,
+        "monster": {
+          "flash": 0,
+          "progress": 0,
+          "recoil": 0,
+          "scaleY": 0.9943536757599173
+        },
+        "progress": 0.4166666666666667,
+        "shield": 0,
+        "vitalsVisible": true
+      }
+    ],
+    "damageLabels": []
+  },
+  {
+    "scenario": "lethal",
+    "frame": 51,
+    "time": 1.02,
+    "locked": true,
+    "dice": [
+      {
+        "color": "red",
+        "label": "D6",
+        "sides": 6,
+        "value": 4
+      },
+      {
+        "color": "yellow",
+        "label": "\u56fa\u5b9a\u589e\u4f24",
+        "sides": 0,
+        "value": 2
+      }
+    ],
+    "units": [
+      {
+        "ap": 3,
+        "buff": 2,
+        "clip": "attack",
+        "deathAge": null,
+        "hp": 6,
+        "id": "p1",
+        "maxHP": 12,
+        "monster": {
+          "flash": 0,
+          "progress": 0.020833333333333353,
+          "recoil": 0,
+          "scaleY": 1.0044751272166066
+        },
+        "progress": 0,
+        "shield": 0,
+        "vitalsVisible": true
+      },
+      {
+        "ap": 2,
+        "buff": 2,
+        "clip": "idle",
+        "deathAge": null,
+        "hp": 12,
+        "id": "p2",
+        "maxHP": 18,
+        "monster": {
+          "flash": 0,
+          "progress": 0,
+          "recoil": 0,
+          "scaleY": 1.0044751272166066
+        },
+        "progress": 0.42500000000000004,
+        "shield": 0,
+        "vitalsVisible": true
+      },
+      {
+        "ap": 1,
+        "buff": 0,
+        "clip": "idle",
+        "deathAge": null,
+        "hp": 3,
+        "id": "m1",
+        "maxHP": 18,
+        "monster": {
+          "flash": 0,
+          "progress": 0,
+          "recoil": 0,
+          "scaleY": 1.0044751272166066
+        },
+        "progress": 0.42500000000000004,
+        "shield": 0,
+        "vitalsVisible": true
+      },
+      {
+        "ap": 1,
+        "buff": 0,
+        "clip": "idle",
+        "deathAge": null,
+        "hp": 18,
+        "id": "m2",
+        "maxHP": 18,
+        "monster": {
+          "flash": 0,
+          "progress": 0,
+          "recoil": 0,
+          "scaleY": 0.9941616546557762
+        },
+        "progress": 0.42500000000000004,
+        "shield": 0,
+        "vitalsVisible": true
+      }
+    ],
+    "damageLabels": []
+  },
+  {
+    "scenario": "lethal",
+    "frame": 85,
+    "time": 1.7,
+    "locked": true,
+    "dice": [
+      {
+        "color": "red",
+        "label": "D6",
+        "sides": 6,
+        "value": 4
+      },
+      {
+        "color": "yellow",
+        "label": "\u56fa\u5b9a\u589e\u4f24",
+        "sides": 0,
+        "value": 2
+      }
+    ],
+    "units": [
+      {
+        "ap": 3,
+        "buff": 2,
+        "clip": "attack",
+        "deathAge": null,
+        "hp": 6,
+        "id": "p1",
+        "maxHP": 12,
+        "monster": {
+          "flash": 0,
+          "progress": 0.7291666666666666,
+          "recoil": 0,
+          "scaleY": 0.9943536757599173
+        },
+        "progress": 0.24999999999999994,
+        "shield": 0,
+        "vitalsVisible": true
+      },
+      {
+        "ap": 2,
+        "buff": 2,
+        "clip": "idle",
+        "deathAge": null,
+        "hp": 12,
+        "id": "p2",
+        "maxHP": 18,
+        "monster": {
+          "flash": 0,
+          "progress": 0,
+          "recoil": 0,
+          "scaleY": 0.9943536757599173
+        },
+        "progress": 0.7083333333333334,
+        "shield": 0,
+        "vitalsVisible": true
+      },
+      {
+        "ap": 1,
+        "buff": 0,
+        "clip": "idle",
+        "deathAge": null,
+        "hp": 3,
+        "id": "m1",
+        "maxHP": 18,
+        "monster": {
+          "flash": 0,
+          "progress": 0,
+          "recoil": 0,
+          "scaleY": 0.9943536757599173
+        },
+        "progress": 0.7083333333333334,
+        "shield": 0,
+        "vitalsVisible": true
+      },
+      {
+        "ap": 1,
+        "buff": 0,
+        "clip": "idle",
+        "deathAge": null,
+        "hp": 18,
+        "id": "m2",
+        "maxHP": 18,
+        "monster": {
+          "flash": 0,
+          "progress": 0,
+          "recoil": 0,
+          "scaleY": 0.9965025068181816
+        },
+        "progress": 0.7083333333333334,
+        "shield": 0,
+        "vitalsVisible": true
+      }
+    ],
+    "damageLabels": []
+  },
+  {
+    "scenario": "lethal",
+    "frame": 86,
+    "time": 1.72,
+    "locked": true,
+    "dice": [
+      {
+        "color": "red",
+        "label": "D6",
+        "sides": 6,
+        "value": 4
+      },
+      {
+        "color": "yellow",
+        "label": "\u56fa\u5b9a\u589e\u4f24",
+        "sides": 0,
+        "value": 2
+      }
+    ],
+    "units": [
+      {
+        "ap": 3,
+        "buff": 2,
+        "clip": "attack",
+        "deathAge": null,
+        "hp": 6,
+        "id": "p1",
+        "maxHP": 12,
+        "monster": {
+          "flash": 0,
+          "progress": 0.75,
+          "recoil": 0,
+          "scaleY": 0.9941616546557762
+        },
+        "progress": 0.26666666666666666,
+        "shield": 0,
+        "vitalsVisible": true
+      },
+      {
+        "ap": 2,
+        "buff": 2,
+        "clip": "idle",
+        "deathAge": null,
+        "hp": 12,
+        "id": "p2",
+        "maxHP": 18,
+        "monster": {
+          "flash": 0,
+          "progress": 0,
+          "recoil": 0,
+          "scaleY": 0.9941616546557762
+        },
+        "progress": 0.7166666666666667,
+        "shield": 0,
+        "vitalsVisible": true
+      },
+      {
+        "ap": 1,
+        "buff": 0,
+        "clip": "idle",
+        "deathAge": null,
+        "hp": 3,
+        "id": "m1",
+        "maxHP": 18,
+        "monster": {
+          "flash": 0,
+          "progress": 0,
+          "recoil": 0,
+          "scaleY": 0.9941616546557762
+        },
+        "progress": 0.7166666666666667,
+        "shield": 0,
+        "vitalsVisible": true
+      },
+      {
+        "ap": 1,
+        "buff": 0,
+        "clip": "idle",
+        "deathAge": null,
+        "hp": 18,
+        "id": "m2",
+        "maxHP": 18,
+        "monster": {
+          "flash": 0,
+          "progress": 0,
+          "recoil": 0,
+          "scaleY": 0.9967974773784369
+        },
+        "progress": 0.7166666666666667,
+        "shield": 0,
+        "vitalsVisible": true
+      }
+    ],
+    "damageLabels": []
+  },
+  {
+    "scenario": "lethal",
+    "frame": 103,
+    "time": 2.06,
+    "locked": true,
+    "dice": [
+      {
+        "color": "red",
+        "label": "D6",
+        "sides": 6,
+        "value": 4
+      },
+      {
+        "color": "yellow",
+        "label": "\u56fa\u5b9a\u589e\u4f24",
+        "sides": 0,
+        "value": 2
+      }
+    ],
+    "units": [
+      {
+        "ap": 2,
+        "buff": 2,
+        "clip": "attack",
+        "deathAge": null,
+        "hp": 6,
+        "id": "p1",
+        "maxHP": 12,
+        "monster": {
+          "flash": 0,
+          "progress": 1,
+          "recoil": 0,
+          "scaleY": 0.9931869150123186
+        },
+        "progress": 0.54,
+        "shield": 0,
+        "vitalsVisible": true
+      },
+      {
+        "ap": 2,
+        "buff": 2,
+        "clip": "idle",
+        "deathAge": null,
+        "hp": 12,
+        "id": "p2",
+        "maxHP": 18,
+        "monster": {
+          "flash": 0,
+          "progress": 0,
+          "recoil": 0,
+          "scaleY": 0.9931869150123186
+        },
+        "progress": 0.8583333333333334,
+        "shield": 0,
+        "vitalsVisible": true
+      },
+      {
+        "ap": 1,
+        "buff": 0,
+        "clip": "defeat",
+        "deathAge": 0,
+        "hp": 0,
+        "id": "m1",
+        "maxHP": 18,
+        "monster": {
+          "flash": 0,
+          "progress": 0,
+          "recoil": 0,
+          "scaleY": 0.9931869150123186
+        },
+        "progress": 1,
+        "shield": 0,
+        "vitalsVisible": false
+      },
+      {
+        "ap": 1,
+        "buff": 0,
+        "clip": "idle",
+        "deathAge": null,
+        "hp": 18,
+        "id": "m2",
+        "maxHP": 18,
+        "monster": {
+          "flash": 0,
+          "progress": 0,
+          "recoil": 0,
+          "scaleY": 1.0023397852578906
+        },
+        "progress": 0.8583333333333334,
+        "shield": 0,
+        "vitalsVisible": true
+      }
+    ],
+    "damageLabels": [
+      {
+        "at": 2.06,
+        "text": "\u22123",
+        "x": 570,
+        "y": 323
+      }
+    ]
+  },
+  {
+    "scenario": "lethal",
+    "frame": 120,
+    "time": 2.4,
+    "locked": true,
+    "dice": [
+      {
+        "color": "red",
+        "label": "D6",
+        "sides": 6,
+        "value": 4
+      },
+      {
+        "color": "yellow",
+        "label": "\u56fa\u5b9a\u589e\u4f24",
+        "sides": 0,
+        "value": 2
+      }
+    ],
+    "units": [
+      {
+        "ap": 2,
+        "buff": 2,
+        "clip": "attack",
+        "deathAge": null,
+        "hp": 6,
+        "id": "p1",
+        "maxHP": 12,
+        "monster": {
+          "flash": 0,
+          "progress": 1,
+          "recoil": 0,
+          "scaleY": 0.9965025068181816
+        },
+        "progress": 0.75,
+        "shield": 0,
+        "vitalsVisible": true
+      },
+      {
+        "ap": 2,
+        "buff": 2,
+        "clip": "idle",
+        "deathAge": null,
+        "hp": 12,
+        "id": "p2",
+        "maxHP": 18,
+        "monster": {
+          "flash": 0,
+          "progress": 0,
+          "recoil": 0,
+          "scaleY": 0.9965025068181816
+        },
+        "progress": 0,
+        "shield": 0,
+        "vitalsVisible": true
+      },
+      {
+        "ap": 1,
+        "buff": 0,
+        "clip": "defeat",
+        "deathAge": 0.33999999999999986,
+        "hp": 0,
+        "id": "m1",
+        "maxHP": 18,
+        "monster": {
+          "flash": 0.07998827814722771,
+          "progress": 0,
+          "recoil": 1.7228244524018275,
+          "scaleY": 0.9950258001446943
+        },
+        "progress": 1,
+        "shield": 0,
+        "vitalsVisible": false
+      },
+      {
+        "ap": 1,
+        "buff": 0,
+        "clip": "idle",
+        "deathAge": null,
+        "hp": 18,
+        "id": "m2",
+        "maxHP": 18,
+        "monster": {
+          "flash": 0,
+          "progress": 0,
+          "recoil": 0,
+          "scaleY": 1.0064086850858176
+        },
+        "progress": 0,
+        "shield": 0,
+        "vitalsVisible": true
+      }
+    ],
+    "damageLabels": [
+      {
+        "at": 2.06,
+        "text": "\u22123",
+        "x": 570,
+        "y": 323
+      }
+    ]
+  },
+  {
+    "scenario": "lethal",
+    "frame": 160,
+    "time": 3.2,
+    "locked": true,
+    "dice": [
+      {
+        "color": "red",
+        "label": "D6",
+        "sides": 6,
+        "value": 4
+      },
+      {
+        "color": "yellow",
+        "label": "\u56fa\u5b9a\u589e\u4f24",
+        "sides": 0,
+        "value": 2
+      }
+    ],
+    "units": [
+      {
+        "ap": 2,
+        "buff": 2,
+        "clip": "idle",
+        "deathAge": null,
+        "hp": 6,
+        "id": "p1",
+        "maxHP": 12,
+        "monster": {
+          "flash": 0,
+          "progress": 0,
+          "recoil": 0,
+          "scaleY": 0.9988344337655815
+        },
+        "progress": 0.3333333333333335,
+        "shield": 0,
+        "vitalsVisible": true
+      },
+      {
+        "ap": 2,
+        "buff": 2,
+        "clip": "idle",
+        "deathAge": null,
+        "hp": 12,
+        "id": "p2",
+        "maxHP": 18,
+        "monster": {
+          "flash": 0,
+          "progress": 0,
+          "recoil": 0,
+          "scaleY": 1.0068943233385008
+        },
+        "progress": 0.3333333333333335,
+        "shield": 0,
+        "vitalsVisible": true
+      },
+      {
+        "ap": 1,
+        "buff": 0,
+        "clip": "defeat",
+        "deathAge": 1.1400000000000001,
+        "hp": 0,
+        "id": "m1",
+        "maxHP": 18,
+        "monster": {
+          "flash": 0,
+          "progress": 0,
+          "recoil": 0,
+          "scaleY": 1.0068943233385008
+        },
+        "progress": 1,
+        "shield": 0,
+        "vitalsVisible": false
+      },
+      {
+        "ap": 1,
+        "buff": 0,
+        "clip": "idle",
+        "deathAge": null,
+        "hp": 18,
+        "id": "m2",
+        "maxHP": 18,
+        "monster": {
+          "flash": 0,
+          "progress": 0,
+          "recoil": 0,
+          "scaleY": 1.000453128668283
+        },
+        "progress": 0.3333333333333335,
+        "shield": 0,
+        "vitalsVisible": true
+      }
+    ],
+    "damageLabels": []
+  }
+]

@@ -1,0 +1,19 @@
+{
+  "id": "p1-battle-side-right-step-contact-v1",
+  "date": "2026-10-21",
+  "status": "first-key-pose-awaiting-user-art-review",
+  "reviewImage": "review.png",
+  "nativeComposite": "assembled.png",
+  "baseAppearance": "../right-idle-v3",
+  "commonBodyPose": "Art/Templates/P1-Neutral/battle-side/right-step-contact-v1",
+  "scope": "One small-step key pose, foreground support and rear heel lift; no full animation or runtime import",
+  "runtimeIntegrated": false,
+  "userArtApproval": null,
+  "hashes": {
+    "assembled.png": "aa3d7f069e5ad478eef47ea91d939e126cab5fd0b4663a6ef7275cb5ed7cc644",
+    "review.png": "e243c30bf7bb58c1a9e81abc9ea93f9284353c95c530eefc888aab7fd95e8931",
+    "outfit-forester/wardrobe.png": "4b5db7b4f936d07ecfe4dae7cb4ae436ef80b1ff4321d403e50988cfd888eadb",
+    "outfit-forester/coverage-underpaint.svg": "7880c5ab81b255737bc714303df8e85b218e6cbf0353706e541f514306008936",
+    "reference/generated.png": "d70713da9204fd09c86c62768bec661661d7bcaa00c118e984e584b534d0676c"
+  }
+}

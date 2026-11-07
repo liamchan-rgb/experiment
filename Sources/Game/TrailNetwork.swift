@@ -18,12 +18,30 @@ struct TrailNetwork {
     let nodeCount: Int
     let patrol: Trail
 
-    init(roads: [SceneDefinition.Road]) {
+    init(roads: [SceneDefinition.Road], patrolStart: Int? = nil) {
         edges = roads.map { Edge(from: $0.from, to: $0.to,
-                                trail: Trail.smooth($0.points.map(\.point)), width: $0.width) }
+                                trail: $0.sampled == true ? Trail(points:$0.points.map(\.point)) : Trail.smooth($0.points.map(\.point)), width: $0.width) }
         nodeCount = (edges.flatMap { [$0.from, $0.to] }.max() ?? 0) + 1
-        let controls = edges[0].trail.points + Array(edges[1].trail.points.dropFirst())
-        patrol = Trail(points: Array(controls))
+        if let start = patrolStart {
+            let allEdges = edges
+            var used = Set<Int>(), controls: [CGPoint] = []
+            func visit(_ node: Int) {
+                for i in allEdges.indices where !used.contains(i) && (allEdges[i].from == node || allEdges[i].to == node) {
+                    used.insert(i)
+                    let edge = allEdges[i], forward = edge.from == node
+                    let points = forward ? edge.trail.points : Array(edge.trail.points.reversed())
+                    if controls.isEmpty { controls.append(points[0]) }
+                    controls.append(contentsOf: points.dropFirst())
+                    visit(forward ? edge.to : edge.from)
+                    controls.append(contentsOf: points.reversed().dropFirst())
+                }
+            }
+            visit(start)
+            patrol = Trail(points: controls)
+        } else {
+            let controls = edges[0].trail.points + Array(edges[1].trail.points.dropFirst())
+            patrol = Trail(points: Array(controls))
+        }
     }
 
     func project(_ point: CGPoint) -> Projection {

@@ -1,0 +1,10 @@
+[0/1] Planning build
+Building for production...
+[0/6] Write sources
+[3/6] Write swift-version--3C8F63DB8035BADF.txt
+[5/7] Compiling MeadowWorldSupport Campaign.swift
+[6/8] Compiling MeadowCampaignAuditSupport JourneyAudit.swift
+[7/9] Compiling MeadowCampaignReview main.swift
+[7/9] Write Objects.LinkFileList
+[8/9] Linking MeadowCampaignReview
+Build of product 'MeadowCampaignReview' complete! (128.71s)

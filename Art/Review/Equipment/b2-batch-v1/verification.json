@@ -1,0 +1,100 @@
+{
+  "baseline": "c5f947ef5c7a734011ad813efdda398c083003e9",
+  "checks": {
+    "greatSword": {
+      "packageFileRegionAndBindingChecks": true,
+      "bindings": 104,
+      "manifestSHA256": "9f8c104130b5542ac7a8224cf62ac0114366493fe20cfe4f259aab14fd514ed4"
+    },
+    "legendaryStaff": {
+      "packageFileRegionAndBindingChecks": true,
+      "bindings": 104,
+      "manifestSHA256": "960a49f21c31e87cf97f21a86599ca0b07171420d39777b7e6c895ce334e8ab1"
+    },
+    "leatherArmor": {
+      "packageFileRegionAndBindingChecks": true,
+      "bindings": 104,
+      "manifestSHA256": "6a591c25b0c2033d622b994b7e7763ccdb85f0f1aefbbfaf55bd87a9109901fb"
+    },
+    "runeArmor": {
+      "packageFileRegionAndBindingChecks": true,
+      "bindings": 104,
+      "manifestSHA256": "a5a9111e0a439f1602e60ac1c2edc4a3e33dda670922eb2db63b0a27c2d541cd"
+    },
+    "armorSleeveCuffAndGarmentAlphaPreservedAcrossAll832Layers": true,
+    "existingRuntimeBodyMotionAndOriginalCatalogPathsByteIdentical": 5414,
+    "original26ContractTestsPassed": true
+  },
+  "media": {
+    "greatSword/walk-normal.gif": {
+      "frames": 8,
+      "durationMs": 960,
+      "encodedFrameDurationsMs": [
+        120
+      ],
+      "SHA256": "317568b5dc1616f99269e404e946cee82687f5b763ac5ab3c219f1eee1dce357"
+    },
+    "greatSword/battle-normal.gif": {
+      "frames": 86,
+      "durationMs": 1800,
+      "encodedFrameDurationsMs": [
+        20,
+        40,
+        80
+      ],
+      "SHA256": "80875b678c48cea56ca7cb6b08a5e180c072f16ff3c4145e1524a2acbabc1a94"
+    },
+    "legendaryStaff/walk-normal.gif": {
+      "frames": 8,
+      "durationMs": 960,
+      "encodedFrameDurationsMs": [
+        120
+      ],
+      "SHA256": "501423753806e2fd2c00943a3ee358d8754b700def39dd65700dcd070ad6b567"
+    },
+    "legendaryStaff/battle-normal.gif": {
+      "frames": 60,
+      "durationMs": 1200,
+      "encodedFrameDurationsMs": [
+        20
+      ],
+      "SHA256": "e603c8daf146db96ed1bc4948384f38c3bfe58c59273d0f64f7ca527eb66fa91"
+    },
+    "leatherArmor/walk-normal.gif": {
+      "frames": 8,
+      "durationMs": 960,
+      "encodedFrameDurationsMs": [
+        120
+      ],
+      "SHA256": "554f6bb8567abe05f5f8188c6d8f2bee06ad28e5a3878589742cd52fc72eaff5"
+    },
+    "leatherArmor/battle-normal.gif": {
+      "frames": 60,
+      "durationMs": 1200,
+      "encodedFrameDurationsMs": [
+        20
+      ],
+      "SHA256": "a69aa97ccb102db5e8448fd1ce2a66ca496bb1882aeb967048396790375b7672"
+    },
+    "runeArmor/walk-normal.gif": {
+      "frames": 8,
+      "durationMs": 960,
+      "encodedFrameDurationsMs": [
+        120
+      ],
+      "SHA256": "c9abe26768cdd12f1a36ec13414831ef0aded92786d029c87f2b6c390cdfe8df"
+    },
+    "runeArmor/battle-normal.gif": {
+      "frames": 60,
+      "durationMs": 1200,
+      "encodedFrameDurationsMs": [
+        20
+      ],
+      "SHA256": "e8e7f94a61c5be28cf477b0c8ca989f1feca2d758e9a443a0d2b697092cc7b14"
+    }
+  },
+  "resourceRevisionSHA256": "d0979a710bd2413811d27ed94e86bcda3422bae823a046405db50b3a26d6e09f",
+  "runtimeModified": false,
+  "appSimulatorOrDeviceRun": false,
+  "artApproval": null
+}

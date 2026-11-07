@@ -1,0 +1,64 @@
+{
+  "date": "2026-10-26",
+  "reviewer": "root",
+  "delegated": false,
+  "sourceCommit": "a47f5d1ccf852337a784e3373e42a655ce1b2e54",
+  "decodedFramesInspected": 710,
+  "decodedContactPagesInspected": 25,
+  "nativeFullBodySamples": 6,
+  "wholeSceneSamples": 6,
+  "scales": [
+    1,
+    2
+  ],
+  "boardsInspected": 4,
+  "animations": {
+    "ambush": {
+      "file": "ambush-normal.gif",
+      "frames": 220,
+      "frameDurationMs": 20,
+      "durationMs": 4400,
+      "dimensions": [
+        1224,
+        918
+      ],
+      "bytes": 10552423
+    },
+    "attack-buff": {
+      "file": "attack-buff-normal.gif",
+      "frames": 300,
+      "frameDurationMs": 20,
+      "durationMs": 6000,
+      "dimensions": [
+        1224,
+        918
+      ],
+      "bytes": 13168358
+    },
+    "lethal": {
+      "file": "lethal-normal.gif",
+      "frames": 190,
+      "frameDurationMs": 20,
+      "durationMs": 3800,
+      "dimensions": [
+        1224,
+        918
+      ],
+      "bytes": 9728166
+    }
+  },
+  "findings": [
+    "Confirmation immediately shows stationary receipt values; pre-impact HP/AP remain unchanged. Timing trace checked at0.98/1.00/1.02/1.70/1.72s.",
+    "Fixed counter labels absent; random dice type captions remain absent. Group clearances retained.",
+    "Normal and ambush damage figures centered at the contact point, enemy retaliation contact and lethal same-event damage/dissolve inspected.",
+    "Whole-body clothing/limb/weapon proportions and whole-scene layout checked at1x/2x, source pixels unchanged."
+  ],
+  "limitations": [
+    "Normal50fps offline Pillow composition from production Swift samples and original-core transactions; fonts/blending/map/lighting/UI approximated; not UIKit/device capture.",
+    "Static decoded sequence inspection, not continuous playback or measured60FPS.",
+    "Lethal fixture uses target3HP to review death timing; default app enemies remain18HP.",
+    "Healing-strength standard recorded for future work; this iteration does not author every healing-strength tier.",
+    "No App/simulator/device/UI execution; new user art approval remains null."
+  ],
+  "newArtApproval": null
+}

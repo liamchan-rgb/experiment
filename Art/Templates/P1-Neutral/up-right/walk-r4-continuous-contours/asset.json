@@ -1,0 +1,201 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "p1-neutral-up-right-walk-r4-continuous-contours",
+  "version": "4.0.0",
+  "part": "base",
+  "compatibility": {
+    "rig": "p1-chibi-v1",
+    "bodyProfile": "p1-standard",
+    "actionSet": "locomotion-v1"
+  },
+  "mode": "pose-map",
+  "slots": [
+    "body.leg.left",
+    "body.leg.right",
+    "body.arm.left",
+    "body.hand.left",
+    "body.arm.right",
+    "body.hand.right",
+    "body.torso",
+    "head.base"
+  ],
+  "directions": [
+    "up-right"
+  ],
+  "clips": [
+    "idle",
+    "walk"
+  ],
+  "bindings": [
+    {
+      "direction": "up-right",
+      "clip": "idle",
+      "frame": 0,
+      "layers": {
+        "body.leg.left": "layers/00/body.leg.left.png",
+        "body.leg.right": "layers/00/body.leg.right.png",
+        "body.arm.left": "layers/00/body.arm.left.png",
+        "body.hand.left": "layers/00/body.hand.left.png",
+        "body.arm.right": "layers/00/body.arm.right.png",
+        "body.hand.right": "layers/00/body.hand.right.png",
+        "body.torso": "layers/00/body.torso.png",
+        "head.base": "layers/00/head.base.png"
+      }
+    },
+    {
+      "direction": "up-right",
+      "clip": "walk",
+      "frame": 1,
+      "layers": {
+        "body.leg.left": "layers/01/body.leg.left.png",
+        "body.leg.right": "layers/01/body.leg.right.png",
+        "body.arm.left": "layers/01/body.arm.left.png",
+        "body.hand.left": "layers/01/body.hand.left.png",
+        "body.arm.right": "layers/01/body.arm.right.png",
+        "body.hand.right": "layers/01/body.hand.right.png",
+        "body.torso": "layers/01/body.torso.png",
+        "head.base": "layers/01/head.base.png"
+      }
+    },
+    {
+      "direction": "up-right",
+      "clip": "walk",
+      "frame": 2,
+      "layers": {
+        "body.leg.left": "layers/02/body.leg.left.png",
+        "body.leg.right": "layers/02/body.leg.right.png",
+        "body.arm.left": "layers/02/body.arm.left.png",
+        "body.hand.left": "layers/02/body.hand.left.png",
+        "body.arm.right": "layers/02/body.arm.right.png",
+        "body.hand.right": "layers/02/body.hand.right.png",
+        "body.torso": "layers/02/body.torso.png",
+        "head.base": "layers/02/head.base.png"
+      }
+    },
+    {
+      "direction": "up-right",
+      "clip": "walk",
+      "frame": 3,
+      "layers": {
+        "body.leg.left": "layers/03/body.leg.left.png",
+        "body.leg.right": "layers/03/body.leg.right.png",
+        "body.arm.left": "layers/03/body.arm.left.png",
+        "body.hand.left": "layers/03/body.hand.left.png",
+        "body.arm.right": "layers/03/body.arm.right.png",
+        "body.hand.right": "layers/03/body.hand.right.png",
+        "body.torso": "layers/03/body.torso.png",
+        "head.base": "layers/03/head.base.png"
+      }
+    },
+    {
+      "direction": "up-right",
+      "clip": "walk",
+      "frame": 4,
+      "layers": {
+        "body.leg.left": "layers/04/body.leg.left.png",
+        "body.leg.right": "layers/04/body.leg.right.png",
+        "body.arm.left": "layers/04/body.arm.left.png",
+        "body.hand.left": "layers/04/body.hand.left.png",
+        "body.arm.right": "layers/04/body.arm.right.png",
+        "body.hand.right": "layers/04/body.hand.right.png",
+        "body.torso": "layers/04/body.torso.png",
+        "head.base": "layers/04/head.base.png"
+      }
+    },
+    {
+      "direction": "up-right",
+      "clip": "walk",
+      "frame": 5,
+      "layers": {
+        "body.leg.left": "layers/05/body.leg.left.png",
+        "body.leg.right": "layers/05/body.leg.right.png",
+        "body.arm.left": "layers/05/body.arm.left.png",
+        "body.hand.left": "layers/05/body.hand.left.png",
+        "body.arm.right": "layers/05/body.arm.right.png",
+        "body.hand.right": "layers/05/body.hand.right.png",
+        "body.torso": "layers/05/body.torso.png",
+        "head.base": "layers/05/head.base.png"
+      }
+    },
+    {
+      "direction": "up-right",
+      "clip": "walk",
+      "frame": 6,
+      "layers": {
+        "body.leg.left": "layers/06/body.leg.left.png",
+        "body.leg.right": "layers/06/body.leg.right.png",
+        "body.arm.left": "layers/06/body.arm.left.png",
+        "body.hand.left": "layers/06/body.hand.left.png",
+        "body.arm.right": "layers/06/body.arm.right.png",
+        "body.hand.right": "layers/06/body.hand.right.png",
+        "body.torso": "layers/06/body.torso.png",
+        "head.base": "layers/06/head.base.png"
+      }
+    },
+    {
+      "direction": "up-right",
+      "clip": "walk",
+      "frame": 7,
+      "layers": {
+        "body.leg.left": "layers/07/body.leg.left.png",
+        "body.leg.right": "layers/07/body.leg.right.png",
+        "body.arm.left": "layers/07/body.arm.left.png",
+        "body.hand.left": "layers/07/body.hand.left.png",
+        "body.arm.right": "layers/07/body.arm.right.png",
+        "body.hand.right": "layers/07/body.hand.right.png",
+        "body.torso": "layers/07/body.torso.png",
+        "head.base": "layers/07/head.base.png"
+      }
+    },
+    {
+      "direction": "up-right",
+      "clip": "walk",
+      "frame": 8,
+      "layers": {
+        "body.leg.left": "layers/08/body.leg.left.png",
+        "body.leg.right": "layers/08/body.leg.right.png",
+        "body.arm.left": "layers/08/body.arm.left.png",
+        "body.hand.left": "layers/08/body.hand.left.png",
+        "body.arm.right": "layers/08/body.arm.right.png",
+        "body.hand.right": "layers/08/body.hand.right.png",
+        "body.torso": "layers/08/body.torso.png",
+        "head.base": "layers/08/head.base.png"
+      }
+    }
+  ],
+  "sourceFiles": [
+    "authoring.json",
+    "source/README.md",
+    "source/arm.left.png",
+    "source/arm.right.png",
+    "source/corrected-idle-generated.png",
+    "source/corrected-idle-registered.png",
+    "source/hand.left.png",
+    "source/hand.right.png",
+    "source/head-before-neck-cleanup.png",
+    "source/head.base.png",
+    "source/leg.left.png",
+    "source/leg.right.png",
+    "source/pelvis.png",
+    "source/registration-input.json",
+    "source/torso.png",
+    "editable/00.ora",
+    "editable/00.svg",
+    "editable/01.ora",
+    "editable/01.svg",
+    "editable/02.ora",
+    "editable/02.svg",
+    "editable/03.ora",
+    "editable/03.svg",
+    "editable/04.ora",
+    "editable/04.svg",
+    "editable/05.ora",
+    "editable/05.svg",
+    "editable/06.ora",
+    "editable/06.svg",
+    "editable/07.ora",
+    "editable/07.svg",
+    "editable/08.ora",
+    "editable/08.svg"
+  ]
+}

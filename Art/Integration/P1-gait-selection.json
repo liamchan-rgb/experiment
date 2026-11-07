@@ -1,0 +1,41 @@
+{
+  "format": 1,
+  "date": "2026-10-22",
+  "recordsDir": "Art/Integration/P1-up-left-contact-v1",
+  "footprints": "Art/Integration/P1-up-left-contact-v1/footprints.json",
+  "userAuthorization": {
+    "statement": "四个斜方向的动画首帧和末尾帧衔接不好，有跳动，这个你用单开的智能体自己修一下，自己合成动图审核",
+    "scope": "Autonomous four-diagonal loop repair and normal-speed self-review; original approvals remain preserved, new art is not marked user approved",
+    "followup": {
+      "date": "2026-10-22",
+      "statement": "往左上方走的动画落下左脚太快中间没有过渡，直接前一帧太作脚后一帧瞬间落地",
+      "scope": "Continue authorized autonomous gait correction, full-body normal-speed internal art review and IPA delivery; no new user art approval inferred"
+    }
+  },
+  "directions": {
+    "down-right": {
+      "baseRevision": "r1",
+      "revision": "loop-r1",
+      "sourceStrip": "Art/Review/P1/directions/down-right/revisions/loop-r1/strip.png",
+      "sha256": "ee2330e5e30e77405e2b15658b556aa772ef12668ae53ad9b3ff1199440d3a6f"
+    },
+    "down-left": {
+      "baseRevision": "r1",
+      "revision": "loop-r1",
+      "sourceStrip": "Art/Review/P1/directions/down-left/revisions/loop-r1/strip.png",
+      "sha256": "bf1de96624b4e375c52cdd03c3a8da7068cb8d41f3b4ef56132738a55da69a91"
+    },
+    "up-left": {
+      "baseRevision": "r6",
+      "revision": "contact-r1",
+      "sourceStrip": "Art/Review/P1/directions/up-left/revisions/contact-r1/strip.png",
+      "sha256": "295e6fc45630fff7d5ddb09f6de8c7f18242a673e77e306c7c9fdc1420a9a708"
+    },
+    "up-right": {
+      "baseRevision": "r1",
+      "revision": "loop-r2",
+      "sourceStrip": "Art/Review/P1/directions/up-right/revisions/loop-r2/strip.png",
+      "sha256": "2eb429fa51731f48708f4027828369afbe23232931e003d57aeb63d75265862a"
+    }
+  }
+}

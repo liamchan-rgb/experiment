@@ -1,0 +1,13 @@
+{
+  "impactOnEnemyAlphaMask": true,
+  "impactPoint": [
+    578.0,
+    266.6933314411927
+  ],
+  "sampleRate": 60,
+  "durationSeconds": 2.4,
+  "samplesPerAction": 144,
+  "heroEnemyBodyIntersections": [],
+  "weaponFaceIntersections": [],
+  "meaning": "Geometry supplement only; does not replace visual review or device testing."
+}

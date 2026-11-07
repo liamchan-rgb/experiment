@@ -1,0 +1,27 @@
+{
+  "eventTimeMs": 3648,
+  "firstRenderedEventTimeMs": 3680,
+  "firstEventFrames": {
+    "hpZero": 92,
+    "damageNumber": 92,
+    "deathActive": 92,
+    "particles": 92,
+    "silhouetteRemoval": 92
+  },
+  "sameFrameForAllFiveSignals": true,
+  "deathWaitsForAttackRecovery": false,
+  "allParticleHorizontalVelocitiesPositive": true,
+  "allLiveParticleHorizontalDisplacementsNonnegative": true,
+  "nonlethalDamageFiveDoesNotDissolve": true,
+  "groundRingHiddenThroughoutAction": true,
+  "strongHoverDarken": 0.34,
+  "hoverToCastDarken": [
+    0.34,
+    0.34
+  ],
+  "finalMonsterAlphaPixels": 0,
+  "finalLiveParticles": 0,
+  "deviceExecution": false,
+  "runtimeIntegration": false,
+  "artApproval": null
+}

@@ -1,0 +1,12 @@
+{
+  "clips": 6,
+  "samples": 3606,
+  "nearGripOverlapMin": 80,
+  "nearGripNoOverlap": 0,
+  "nearGripSamples": [],
+  "engagedSamples": 103,
+  "drawingHandStringOverlapMin": 11,
+  "drawingHandStringNoOverlap": 0,
+  "drawSamples": [],
+  "scope": "Offline source sprite alpha and exported rig pose checks; not a substitute for visual or device review."
+}

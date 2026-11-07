@@ -1,0 +1,114 @@
+{
+  "date": "2026-10-25",
+  "scope": "documentation and baseline consistency only; no new art/runtime or device tests",
+  "status": "pass",
+  "relativeLinksChecked": 23,
+  "referenceFileDigestsChecked": 7,
+  "referencePackageFilesMatchedToRemote": 5114,
+  "existingCompleteManifestsMatched": 9,
+  "expectedBindingsPerCompleteAsset": 104,
+  "directionEntryExitMappingsChecked": 8,
+  "runtimeAtlasAndVirtualFramesMatched": true,
+  "commonSlotsAndHiddenFacesMatched": true,
+  "timingSpecificationMatched": true,
+  "emptyHandoffMarkedIncomplete": true,
+  "artworkChanged": false,
+  "runtimeChanged": false,
+  "artTestsRerun": false,
+  "deviceExecuted": false,
+  "simulatorExecuted": false,
+  "relativeLinks": [
+    {
+      "from": "Art/Standards/P1-Locomotion-Delivery-v1/README.md",
+      "target": "AGENT_BRIEF.md"
+    },
+    {
+      "from": "Art/Standards/P1-Locomotion-Delivery-v1/README.md",
+      "target": "contract.json"
+    },
+    {
+      "from": "Art/Standards/P1-Locomotion-Delivery-v1/README.md",
+      "target": "handoff-template.json"
+    },
+    {
+      "from": "Art/Standards/P1-Locomotion-Delivery-v1/README.md",
+      "target": "../../Parts/P1-v1/eight-way-v1/base/asset.json"
+    },
+    {
+      "from": "Art/Standards/P1-Locomotion-Delivery-v1/README.md",
+      "target": "../../Integration/P1-modular-eight-way-v1/motion.json"
+    },
+    {
+      "from": "Art/Standards/P1-Locomotion-Delivery-v1/README.md",
+      "target": "../../Integration/P1-modular-eight-way-v1/catalog.json"
+    },
+    {
+      "from": "Art/Standards/P1-Locomotion-Delivery-v1/README.md",
+      "target": "../P1-Parts-v1/profile.json"
+    },
+    {
+      "from": "Art/Standards/P1-Locomotion-Delivery-v1/README.md",
+      "target": "../P1-Parts-v1/asset.schema.json"
+    },
+    {
+      "from": "Art/Standards/P1-Locomotion-Delivery-v1/README.md",
+      "target": "../../Integration/P1-modular-eight-way-v1/authoring.json"
+    },
+    {
+      "from": "Art/Standards/P1-Locomotion-Delivery-v1/README.md",
+      "target": "../../Integration/P1-modular-eight-way-v1/mapping.json"
+    },
+    {
+      "from": "Art/Standards/P1-Locomotion-Delivery-v1/README.md",
+      "target": "../../Parts/P1-v1/eight-way-v1/"
+    },
+    {
+      "from": "Art/Standards/P1-Locomotion-Delivery-v1/README.md",
+      "target": "../../Integration/P1-modular-demo-v1/selection.json"
+    },
+    {
+      "from": "Art/Standards/P1-Locomotion-Delivery-v1/README.md",
+      "target": "../../Integration/P1-modular-demo-v1/README.md"
+    },
+    {
+      "from": "Art/Standards/P1-Locomotion-Delivery-v1/README.md",
+      "target": "../../Review/P1/modular-eight-way-v1/"
+    },
+    {
+      "from": "Art/Standards/P1-Locomotion-Delivery-v1/README.md",
+      "target": "../../Review/P1/modular-demo-v1/"
+    },
+    {
+      "from": "Art/Standards/P1-Locomotion-Delivery-v1/README.md",
+      "target": "../../../Media/Build39/package.json"
+    },
+    {
+      "from": "Art/Standards/P1-Locomotion-Delivery-v1/README.md",
+      "target": "../../Parts/P1-v1/eight-way-v1/hair-chestnut/asset.json"
+    },
+    {
+      "from": "Art/Standards/P1-Locomotion-Delivery-v1/README.md",
+      "target": "../../Parts/P1-v1/eight-way-v1/face-blue/asset.json"
+    },
+    {
+      "from": "Art/Standards/P1-Locomotion-Delivery-v1/README.md",
+      "target": "../../Parts/P1-v1/eight-way-v1/wayfarer/asset.json"
+    },
+    {
+      "from": "Art/Standards/P1-Locomotion-Delivery-v1/README.md",
+      "target": "../../Parts/P1-v1/eight-way-v1/lower/asset.json"
+    },
+    {
+      "from": "Art/Standards/P1-Locomotion-Delivery-v1/README.md",
+      "target": "../../Parts/P1-v1/eight-way-v1/weapon/asset.json"
+    },
+    {
+      "from": "Art/Standards/P1-Locomotion-Delivery-v1/README.md",
+      "target": "handoff-template.json"
+    },
+    {
+      "from": "Art/Standards/P1-Locomotion-Delivery-v1/AGENT_BRIEF.md",
+      "target": "README.md"
+    }
+  ]
+}

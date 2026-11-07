@@ -1,0 +1,92 @@
+{
+  "schemaVersion": "1.0.0",
+  "kind": "p1-apparel-masters",
+  "id": "p1-chat-dragon-armor-v2",
+  "baseId": "p1-eight-way-base-v1",
+  "canvas": [
+    256,
+    256
+  ],
+  "referenceMotionSHA256": "f1926c10a4eb1cb8f1935157663bd22155e8444eae37ce64562453fc075e96ba",
+  "views": [
+    {
+      "view": "front",
+      "referencePose": {
+        "direction": "down",
+        "clip": "idle",
+        "frame": 0
+      },
+      "layers": {
+        "outfit.torso": "masters/front/outfit.torso.png",
+        "outfit.sleeve.left": "masters/front/outfit.sleeve.left.png",
+        "outfit.sleeve.right": "masters/front/outfit.sleeve.right.png",
+        "outfit.hem.front": "masters/front/outfit.hem.front.png"
+      }
+    },
+    {
+      "view": "front-quarter-left",
+      "referencePose": {
+        "direction": "down-left",
+        "clip": "idle",
+        "frame": 0
+      },
+      "layers": {
+        "outfit.torso": "masters/front-quarter-left/outfit.torso.png",
+        "outfit.sleeve.left": "masters/front-quarter-left/outfit.sleeve.left.png",
+        "outfit.sleeve.right": "masters/front-quarter-left/outfit.sleeve.right.png",
+        "outfit.hem.front": "masters/front-quarter-left/outfit.hem.front.png"
+      }
+    },
+    {
+      "view": "profile-left",
+      "referencePose": {
+        "direction": "left",
+        "clip": "idle",
+        "frame": 0
+      },
+      "layers": {
+        "outfit.torso": "masters/profile-left/outfit.torso.png",
+        "outfit.sleeve.left": "masters/profile-left/outfit.sleeve.left.png",
+        "outfit.sleeve.right": "masters/profile-left/outfit.sleeve.right.png",
+        "outfit.hem.front": "masters/profile-left/outfit.hem.front.png"
+      }
+    },
+    {
+      "view": "rear-quarter-left",
+      "referencePose": {
+        "direction": "up-left",
+        "clip": "idle",
+        "frame": 0
+      },
+      "layers": {
+        "outfit.torso": "masters/rear-quarter-left/outfit.torso.png",
+        "outfit.sleeve.left": "masters/rear-quarter-left/outfit.sleeve.left.png",
+        "outfit.sleeve.right": "masters/rear-quarter-left/outfit.sleeve.right.png",
+        "outfit.hem.front": "masters/rear-quarter-left/outfit.hem.front.png"
+      }
+    },
+    {
+      "view": "back",
+      "referencePose": {
+        "direction": "up",
+        "clip": "idle",
+        "frame": 0
+      },
+      "layers": {
+        "outfit.torso": "masters/back/outfit.torso.png",
+        "outfit.sleeve.left": "masters/back/outfit.sleeve.left.png",
+        "outfit.sleeve.right": "masters/back/outfit.sleeve.right.png",
+        "outfit.hem.front": "masters/back/outfit.hem.front.png"
+      }
+    }
+  ],
+  "sourceFiles": [
+    "editable/front.svg",
+    "editable/front-quarter-left.svg",
+    "editable/profile-left.svg",
+    "editable/rear-quarter-left.svg",
+    "editable/back.svg",
+    "source/palette.json",
+    "source/prompts.txt"
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "status": "technical-pass-main-wholebody-frame-review-complete",
+  "artApproval": null,
+  "packages": 9,
+  "loadouts": 16,
+  "directions": 8,
+  "posesPerDirection": 13,
+  "actualCompositions": 1664,
+  "checks": {
+    "bodyLayerIdentity": 832,
+    "downCommonLowerProofs": 52,
+    "phaseMappings": 64,
+    "handContribution": 3328,
+    "weaponToggleIsolation": 832,
+    "adjacentTurnSupportCases": 2048,
+    "unchangedWholeCompositions": 1092,
+    "noNewUnderbodyExposure": 4992
+  },
+  "runtimeIntegrated": false,
+  "ipaBuilt": false,
+  "authorAndReviewer": "root",
+  "subagentsUsed": false,
+  "preservedExistingFiles": 11611,
+  "reexportByteIdenticalFiles": 5411,
+  "existingTests": {
+    "contract": 26,
+    "compositor": 21
+  },
+  "mainArtReview": "Art/Review/P1/modular-eight-way-v1/art-review.md",
+  "continuousPlaybackClaimed": false
+}

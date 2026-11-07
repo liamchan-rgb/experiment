@@ -1,0 +1,117 @@
+{
+  "tool": "image_gen.imagegen",
+  "authorAndReviewer": "root",
+  "subagentsUsed": false,
+  "artApproval": null,
+  "activePaints": [
+    {
+      "key": "forester",
+      "image": "source/forester-original.png",
+      "sha256": "1379e03b8136947a24cd4410d9cebe7e0dc8f742094184f8cda8cc06c6392a2b",
+      "canvas": [
+        1254,
+        1254
+      ],
+      "targetCanvas": [
+        256,
+        256
+      ],
+      "scale": 0.20414673046251994,
+      "translation": [
+        0,
+        -1
+      ],
+      "prompt": "source/prompts/forester.txt",
+      "promptSHA256": "059c2cd02a88796ffd48bf3f26710a9ec1cb1c072c5adf11a74591764a3d8781"
+    },
+    {
+      "key": "wayfarer",
+      "image": "source/wayfarer-original.png",
+      "sha256": "78361b11d23fa5e4758ef36f7300e1b31e10f46d5869c8c7d403a1354b0777f2",
+      "canvas": [
+        1254,
+        1254
+      ],
+      "targetCanvas": [
+        256,
+        256
+      ],
+      "scale": 0.20414673046251994,
+      "translation": [
+        0,
+        0
+      ],
+      "prompt": "source/prompts/wayfarer.txt",
+      "promptSHA256": "95f3af4ef76a2a35cb32fca874ca0e251b5ba84d9e9cba8f3d3dbf405842b885"
+    },
+    {
+      "key": "boot-roll",
+      "image": "source/boot-roll-original.png",
+      "sha256": "19cd1ea0681394f3f2dd6d98fdcb7d8be6a53787f90d71f8b2244666cb720bbe",
+      "canvas": [
+        1254,
+        1254
+      ],
+      "targetCanvas": [
+        256,
+        256
+      ],
+      "scale": 0.20414673046251994,
+      "translation": [
+        0,
+        -1
+      ],
+      "prompt": "source/prompts/boot-roll.txt",
+      "promptSHA256": "6c067c6a0511a260f93f4ec8e6d3e267e01e147ff7fd2a66adfae918cc088352"
+    },
+    {
+      "key": "hair-chestnut",
+      "image": "source/hair-chestnut-original.png",
+      "sha256": "059b8b1f11b18f50ea15c2a62d75d9a6a0e7d21f0e4eb237a609dbf8f9ef4ddf",
+      "canvas": [
+        1254,
+        1254
+      ],
+      "targetCanvas": [
+        96,
+        96
+      ],
+      "scale": 0.07655502392344497,
+      "translation": [
+        0,
+        0
+      ],
+      "prompt": "source/prompts/hair-chestnut.txt",
+      "promptSHA256": "243536a766026bb8b74bb5e72f09e0bb7a0935a8534afac55120d29503815797"
+    },
+    {
+      "key": "hair-silver",
+      "image": "source/hair-silver-filled-original.png",
+      "sha256": "296162cc25fe582fb012d80028e06c11b5b6032eacc92d53ec0d805e7b1bf269",
+      "canvas": [
+        1254,
+        1254
+      ],
+      "targetCanvas": [
+        96,
+        96
+      ],
+      "scale": 0.07655502392344497,
+      "translation": [
+        0,
+        -1
+      ],
+      "prompt": "source/prompts/hair-silver-filled.txt",
+      "promptSHA256": "ee46b562425540fc610f8f115d22c09a14ef0f63862d88b26160fe04e9afeba4"
+    }
+  ],
+  "hairShape": "Two colourways of the same registered short back haircut. Tool-painted brown hair owns common alpha, corrected silver source supplies RGB only after fixed1px nape/crown alignment. No base-head/ear/skin pixels imported.",
+  "retainedInitialSilver": {
+    "image": "source/hair-silver-original.png",
+    "prompt": "source/prompts/hair-silver.txt",
+    "usage": "Rejected alpha shape, tiny crown notches. Retained for provenance; not selected as final matte."
+  },
+  "geometryOwner": "Approved up neutral source, explicit clothing mattes and common registered short-hair alpha; pigment sources never replace body geometry",
+  "registration": "Whole fixed source canvas; forester/boot source y-1 aligns original216 sole, silver RGB y-1 aligns crown/nape; no alpha-bounds fit or body/limb resizing",
+  "originalBodyOrMotionChanged": false
+}

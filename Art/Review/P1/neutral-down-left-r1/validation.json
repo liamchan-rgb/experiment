@@ -1,0 +1,330 @@
+{
+  "status": "technical-checks-pass",
+  "artApproval": null,
+  "repairAndReviewOwner": "root",
+  "subagentsUsed": false,
+  "actualCompositorPoses": 13,
+  "semanticLayersWithoutOrphans": 104,
+  "newJunctionAlphaHoles": 0,
+  "completeArmPartitionChecks": 26,
+  "nearHandsPreservedWithoutClothesClipping": 13,
+  "independentPantsWalkFrames": 8,
+  "sourceIdleRGBARecompositionDifferencePixels": 0,
+  "preservedFiles": 6052,
+  "normalWalkFrameDurationsMs": [
+    120,
+    120,
+    120,
+    120,
+    120,
+    120,
+    120,
+    120
+  ],
+  "poses": [
+    {
+      "pose": 0,
+      "clip": "idle",
+      "frame": 0,
+      "actualCompositorDifferencePixels": 0,
+      "junctionAlphaHoles": 0,
+      "sides": {
+        "left": {
+          "handPixels": 95,
+          "visibleHandPixels": 95,
+          "legAreaPixels": 620,
+          "projectedKneeBendDegrees": 10.060689795322912,
+          "supportAnchorError": 0.0
+        },
+        "right": {
+          "handPixels": 71,
+          "visibleHandPixels": 71,
+          "legAreaPixels": 522,
+          "projectedKneeBendDegrees": 7.899691614265202,
+          "supportAnchorError": 0.0
+        }
+      }
+    },
+    {
+      "pose": 1,
+      "clip": "walk",
+      "frame": 1,
+      "actualCompositorDifferencePixels": 0,
+      "junctionAlphaHoles": 0,
+      "sides": {
+        "left": {
+          "handPixels": 95,
+          "visibleHandPixels": 95,
+          "legAreaPixels": 630,
+          "projectedKneeBendDegrees": 9.988534826227957,
+          "supportAnchorError": 0.0
+        },
+        "right": {
+          "handPixels": 71,
+          "visibleHandPixels": 71,
+          "legAreaPixels": 481,
+          "projectedKneeBendDegrees": 8.62323482238568,
+          "supportAnchorError": null
+        }
+      }
+    },
+    {
+      "pose": 2,
+      "clip": "walk",
+      "frame": 2,
+      "actualCompositorDifferencePixels": 0,
+      "junctionAlphaHoles": 0,
+      "sides": {
+        "left": {
+          "handPixels": 95,
+          "visibleHandPixels": 95,
+          "legAreaPixels": 627,
+          "projectedKneeBendDegrees": 9.974046541943789,
+          "supportAnchorError": 0.0
+        },
+        "right": {
+          "handPixels": 72,
+          "visibleHandPixels": 72,
+          "legAreaPixels": 470,
+          "projectedKneeBendDegrees": 20.408284494735284,
+          "supportAnchorError": null
+        }
+      }
+    },
+    {
+      "pose": 3,
+      "clip": "walk",
+      "frame": 3,
+      "actualCompositorDifferencePixels": 0,
+      "junctionAlphaHoles": 0,
+      "sides": {
+        "left": {
+          "handPixels": 96,
+          "visibleHandPixels": 96,
+          "legAreaPixels": 621,
+          "projectedKneeBendDegrees": 9.909048374518516,
+          "supportAnchorError": 0.0
+        },
+        "right": {
+          "handPixels": 71,
+          "visibleHandPixels": 71,
+          "legAreaPixels": 483,
+          "projectedKneeBendDegrees": 27.113842447088395,
+          "supportAnchorError": null
+        }
+      }
+    },
+    {
+      "pose": 4,
+      "clip": "walk",
+      "frame": 4,
+      "actualCompositorDifferencePixels": 0,
+      "junctionAlphaHoles": 0,
+      "sides": {
+        "left": {
+          "handPixels": 95,
+          "visibleHandPixels": 95,
+          "legAreaPixels": 615,
+          "projectedKneeBendDegrees": 10.170445872885775,
+          "supportAnchorError": 0.0
+        },
+        "right": {
+          "handPixels": 70,
+          "visibleHandPixels": 66,
+          "legAreaPixels": 523,
+          "projectedKneeBendDegrees": 18.066237242459035,
+          "supportAnchorError": null
+        }
+      }
+    },
+    {
+      "pose": 5,
+      "clip": "walk",
+      "frame": 5,
+      "actualCompositorDifferencePixels": 0,
+      "junctionAlphaHoles": 0,
+      "sides": {
+        "left": {
+          "handPixels": 94,
+          "visibleHandPixels": 94,
+          "legAreaPixels": 589,
+          "projectedKneeBendDegrees": 10.505524724106929,
+          "supportAnchorError": null
+        },
+        "right": {
+          "handPixels": 72,
+          "visibleHandPixels": 59,
+          "legAreaPixels": 557,
+          "projectedKneeBendDegrees": 7.414234415980457,
+          "supportAnchorError": 0.0
+        }
+      }
+    },
+    {
+      "pose": 6,
+      "clip": "walk",
+      "frame": 6,
+      "actualCompositorDifferencePixels": 0,
+      "junctionAlphaHoles": 0,
+      "sides": {
+        "left": {
+          "handPixels": 96,
+          "visibleHandPixels": 96,
+          "legAreaPixels": 581,
+          "projectedKneeBendDegrees": 1.652721910345633,
+          "supportAnchorError": null
+        },
+        "right": {
+          "handPixels": 71,
+          "visibleHandPixels": 62,
+          "legAreaPixels": 547,
+          "projectedKneeBendDegrees": 7.695414998026779,
+          "supportAnchorError": 0.0
+        }
+      }
+    },
+    {
+      "pose": 7,
+      "clip": "walk",
+      "frame": 7,
+      "actualCompositorDifferencePixels": 0,
+      "junctionAlphaHoles": 0,
+      "sides": {
+        "left": {
+          "handPixels": 95,
+          "visibleHandPixels": 95,
+          "legAreaPixels": 588,
+          "projectedKneeBendDegrees": 4.5794360701855465,
+          "supportAnchorError": null
+        },
+        "right": {
+          "handPixels": 71,
+          "visibleHandPixels": 71,
+          "legAreaPixels": 521,
+          "projectedKneeBendDegrees": 7.796801310453774,
+          "supportAnchorError": 0.0
+        }
+      }
+    },
+    {
+      "pose": 8,
+      "clip": "walk",
+      "frame": 8,
+      "actualCompositorDifferencePixels": 0,
+      "junctionAlphaHoles": 0,
+      "sides": {
+        "left": {
+          "handPixels": 95,
+          "visibleHandPixels": 95,
+          "legAreaPixels": 613,
+          "projectedKneeBendDegrees": 1.5776285628747497,
+          "supportAnchorError": null
+        },
+        "right": {
+          "handPixels": 71,
+          "visibleHandPixels": 71,
+          "legAreaPixels": 498,
+          "projectedKneeBendDegrees": 8.20100764494292,
+          "supportAnchorError": 0.0
+        }
+      }
+    },
+    {
+      "pose": 9,
+      "clip": "walk-start",
+      "frame": 1,
+      "actualCompositorDifferencePixels": 0,
+      "junctionAlphaHoles": 0,
+      "sides": {
+        "left": {
+          "handPixels": 95,
+          "visibleHandPixels": 95,
+          "legAreaPixels": 606,
+          "projectedKneeBendDegrees": 10.504903118658184,
+          "supportAnchorError": null
+        },
+        "right": {
+          "handPixels": 71,
+          "visibleHandPixels": 71,
+          "legAreaPixels": 507,
+          "projectedKneeBendDegrees": 8.158115298179071,
+          "supportAnchorError": 2.842170943040401e-14
+        }
+      }
+    },
+    {
+      "pose": 10,
+      "clip": "walk-start",
+      "frame": 2,
+      "actualCompositorDifferencePixels": 0,
+      "junctionAlphaHoles": 0,
+      "sides": {
+        "left": {
+          "handPixels": 95,
+          "visibleHandPixels": 95,
+          "legAreaPixels": 612,
+          "projectedKneeBendDegrees": 10.294069564482312,
+          "supportAnchorError": null
+        },
+        "right": {
+          "handPixels": 71,
+          "visibleHandPixels": 71,
+          "legAreaPixels": 496,
+          "projectedKneeBendDegrees": 8.401666524538433,
+          "supportAnchorError": 2.842170943040401e-14
+        }
+      }
+    },
+    {
+      "pose": 11,
+      "clip": "walk-stop",
+      "frame": 1,
+      "actualCompositorDifferencePixels": 0,
+      "junctionAlphaHoles": 0,
+      "sides": {
+        "left": {
+          "handPixels": 95,
+          "visibleHandPixels": 95,
+          "legAreaPixels": 629,
+          "projectedKneeBendDegrees": 4.325290600191487,
+          "supportAnchorError": 0.0
+        },
+        "right": {
+          "handPixels": 71,
+          "visibleHandPixels": 71,
+          "legAreaPixels": 505,
+          "projectedKneeBendDegrees": 8.30285063004943,
+          "supportAnchorError": null
+        }
+      }
+    },
+    {
+      "pose": 12,
+      "clip": "walk-stop",
+      "frame": 2,
+      "actualCompositorDifferencePixels": 0,
+      "junctionAlphaHoles": 0,
+      "sides": {
+        "left": {
+          "handPixels": 95,
+          "visibleHandPixels": 95,
+          "legAreaPixels": 624,
+          "projectedKneeBendDegrees": 7.186607665833109,
+          "supportAnchorError": 0.0
+        },
+        "right": {
+          "handPixels": 71,
+          "visibleHandPixels": 71,
+          "legAreaPixels": 522,
+          "projectedKneeBendDegrees": 8.000292701966327,
+          "supportAnchorError": 0.0
+        }
+      }
+    }
+  ],
+  "limits": [
+    "Main reviews 1x/2x whole-body frames separately; numerical checks are not art approval",
+    "Still-only viewer; no claim of continuous playback review",
+    "Specified start/stop paths only; no arbitrary phase interruption, wardrobe, App, device or IPA verification"
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "status": "draft_pending_user_review",
+  "feedback": "速度可以；手仍有点抖，鼻子以上部分过程错位有脱离感",
+  "previous": "../hunting-bow-a-followthrough-r4/",
+  "prior_user_accepted": "r4 timing only",
+  "changes": [
+    "统一鼻子及以上区域的像素与配准",
+    "重新生成并整理拉弦手、袖口与手臂的收手姿势",
+    "去掉末端明显横移的一帧",
+    "修整身体、持弓手、弓和双腿配准"
+  ],
+  "source_generated_sheet": "generated-recovery-sheet.png",
+  "used_recovery_frames": 7,
+  "head_check": {
+    "gif_decoded_frames": "15–26",
+    "rect_xyxy_exclusive": [
+      90,
+      75,
+      180,
+      114
+    ],
+    "different_pixels_across_frames": 0
+  },
+  "recovery_segment_ms": 320,
+  "gif": {
+    "frames": 46,
+    "frame_duration_ms": 40,
+    "duration_ms": 1840,
+    "loop": "once",
+    "sha256": "08ab563f45c294d965760b649e3a712ad7a3da08bf5d3df80f4ddca34601fa79"
+  },
+  "demo_integrated": false,
+  "ipa_built": false,
+  "device_run": false,
+  "user_approval": null
+}

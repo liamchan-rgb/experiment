@@ -1,0 +1,52 @@
+{
+  "candidateCommit": "cff5884a0e8e4148da67f823f35c18d0d4bfea0c",
+  "selectedPathsVerified": 66,
+  "unchangedOriginalAssetTree": "f5aa122bb6d3af662f942911c3528c00d449db7a",
+  "https": [
+    {
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/cff5884a0e8e4148da67f823f35c18d0d4bfea0c/Art/Review/Battle/hunting-bow-pose-a-r1/bow-body-normal.gif",
+      "status": 200,
+      "contentType": "image/gif",
+      "bytes": 2843319,
+      "sha256": "baef0c3378d6c71a37ce5751649992d8bcd9550eeeae0ee6b94b6adbf2fe637b"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/cff5884a0e8e4148da67f823f35c18d0d4bfea0c/Art/Review/Battle/hunting-bow-pose-a-r1/bow-normal.gif",
+      "status": 200,
+      "contentType": "image/gif",
+      "bytes": 9046144,
+      "sha256": "75a8629ef08ac04de6980adfd9e9d00efaad29a2fbb87ea406fd93b8547dffe9"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/cff5884a0e8e4148da67f823f35c18d0d4bfea0c/Art/Review/Battle/hunting-bow-pose-a-r1/pose-a-held.png",
+      "status": 200,
+      "contentType": "image/png",
+      "bytes": 19539,
+      "sha256": "91d6ee46e42873ba6769ed23160ed8c572346b6befae91ad80049a3f44271cf6"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/cff5884a0e8e4148da67f823f35c18d0d4bfea0c/Art/Review/Battle/hunting-bow-pose-a-r1/README.md",
+      "status": 200,
+      "contentType": "text/plain; charset=utf-8",
+      "bytes": 2219,
+      "sha256": "7def9b47490b2b5df6f4c39227f791b3aea9e60d8577c6fe970ca12d1b25650e"
+    }
+  ],
+  "ipaCreated": false,
+  "appSimulatorOrDeviceRun": false,
+  "userAnimationApproval": null,
+  "browserImageCheck": {
+    "scope": "Only standalone GIF images loaded in browser; no game/App executed.",
+    "dimensions": [
+      [
+        512,
+        560
+      ],
+      [
+        1224,
+        918
+      ]
+    ],
+    "bodyGifVisiblyAdvanced": true
+  }
+}

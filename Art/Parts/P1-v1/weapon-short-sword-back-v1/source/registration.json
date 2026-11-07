@@ -1,0 +1,149 @@
+{
+  "canvas": [
+    256,
+    256
+  ],
+  "reference": "Art/Review/P1/modular-down-back-carry-v1/combinations/chestnut__blue__forester__empty; actual v8 compositor outputs",
+  "source": "source/imagegen-original.png",
+  "sourceCanvas": [
+    1254,
+    1254
+  ],
+  "sourceSHA256": "46bfa9347fc99f4ed44b295a3c77464613bfd8eccb76bbcae0758a3b29b0c619",
+  "registrationMethod": "Apply one fixed affine transform to the entire original 1254x1254 RGBA source canvas. No source alpha threshold, alpha-bound crop, connected-solid crop, alpha-bounds resize, or content-dependent fit. Pillow nearest-neighbor sampling. After transform, remove only disconnected one-pixel components with alpha < 8.",
+  "postTransformCleanup": {
+    "removedIsolatedPixels": [
+      [
+        105,
+        121,
+        1
+      ],
+      [
+        163,
+        153,
+        1
+      ],
+      [
+        100,
+        216,
+        1
+      ],
+      [
+        87,
+        230,
+        1
+      ]
+    ],
+    "purpose": "four disconnected low-alpha output specks only; source image and main connected sword structure are retained without alpha-bound fitting"
+  },
+  "sourceToCellAffine": {
+    "convention": "x_cell=a*x_source+c*y_source+tx; y_cell=b*x_source+d*y_source+ty",
+    "a": 0.11412678195541842,
+    "b": -0.03708203932499369,
+    "c": 0.03708203932499369,
+    "d": 0.11412678195541842,
+    "tx": 24.893786930009668,
+    "ty": 108.25463222465483,
+    "scale": 0.12,
+    "pillowPositiveAngleDegrees": 18.0
+  },
+  "overallTranslationAfterAffine": [
+    0,
+    0
+  ],
+  "effectiveSourceToCellAffine": {
+    "a": 0.11412678195541842,
+    "b": -0.03708203932499369,
+    "c": 0.03708203932499369,
+    "d": 0.11412678195541842,
+    "tx": 24.893786930009668,
+    "ty": 108.25463222465483
+  },
+  "inverseCoefficientsUsedByPillow": [
+    7.9254709691262795,
+    -2.5751416197912285,
+    81.47602335149449,
+    2.5751416197912285,
+    7.9254709691262795,
+    -922.0739717676269
+  ],
+  "landmarkAnchor": {
+    "source": [
+      460.0,
+      340.0
+    ],
+    "baseAffineCell": [
+      90.0,
+      130.0
+    ],
+    "finalCell": [
+      90.0,
+      130.0
+    ],
+    "baseAffineMapped": [
+      [
+        90.0,
+        130.0
+      ]
+    ]
+  },
+  "tipLandmarkApprox": {
+    "source": [
+      790,
+      920
+    ],
+    "baseAffineCell": [
+      149.1694208537844,
+      183.95646055689477
+    ],
+    "finalCell": [
+      149.1694208537844,
+      183.95646055689477
+    ],
+    "targetIntent": [
+      149,
+      184
+    ]
+  },
+  "bodyTranslationByPose": {
+    "0": [
+      0,
+      0
+    ],
+    "1": [
+      0,
+      0
+    ],
+    "2": [
+      0,
+      2
+    ],
+    "3": [
+      0,
+      -1
+    ],
+    "4": [
+      0,
+      -2
+    ],
+    "5": [
+      0,
+      0
+    ],
+    "6": [
+      0,
+      2
+    ],
+    "7": [
+      0,
+      -1
+    ],
+    "8": [
+      0,
+      -2
+    ]
+  },
+  "poseRegistration": "One fixed 18-degree full-source affine anchored at (90,130), selected by actual v8 composition review; no added translation after the affine. Other pose maps use integer body-bob translations only; no per-pose rotate, scale, crop, or fit.",
+  "rejectedPriorRegistration": "source/registration-rejected-bbox-fit-v1.json (retained only as rejected history; not used to build current PNGs)",
+  "editable": "editable/00.svg and editable/00.ora are registered-output wrappers; source image remains the editable artwork origin."
+}

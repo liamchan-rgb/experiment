@@ -1,0 +1,56 @@
+[
+  {
+    "branch": "archive-assets",
+    "commit": "83a0c1ca02badf0534ef7208084b11e90cb30e5d",
+    "catalogBlob": null,
+    "archivalBinaryBranch": true
+  },
+  {
+    "branch": "ci/ios-pr-build-20261013",
+    "commit": "c2575fd1738d410714aaae81f781b2746ea8aaa5",
+    "catalogBlob": "8d1de78b54fc049dbe579026e5afcf0a79f36a11",
+    "archivalBinaryBranch": false
+  },
+  {
+    "branch": "design/hd2d-grass-four-stages-ipa-v3-20261013",
+    "commit": "dc1a9d8a524ee91c6e49bd6cd49ec412a64333c9",
+    "catalogBlob": "8d1de78b54fc049dbe579026e5afcf0a79f36a11",
+    "archivalBinaryBranch": false
+  },
+  {
+    "branch": "design/hd2d-terrain-foreground-v4-20261014",
+    "commit": "bfc2a4b66250ba9149bf2cad7f602918590ce0d5",
+    "catalogBlob": "8d1de78b54fc049dbe579026e5afcf0a79f36a11",
+    "archivalBinaryBranch": false
+  },
+  {
+    "branch": "design/map-battle-ui-round4-20261013",
+    "commit": "5283612d70091b50ace0900a1d60d18ab9a020ab",
+    "catalogBlob": "8d1de78b54fc049dbe579026e5afcf0a79f36a11",
+    "archivalBinaryBranch": false
+  },
+  {
+    "branch": "design/spritekit-native-review-v2-20261013",
+    "commit": "cc0141368c25086f1497cf109ef4381f61e01d4b",
+    "catalogBlob": "8d1de78b54fc049dbe579026e5afcf0a79f36a11",
+    "archivalBinaryBranch": false
+  },
+  {
+    "branch": "design/ui-art-round1-20261012",
+    "commit": "f43db0502bf3a9df9fef8bb7c699b6dce86c3425",
+    "catalogBlob": "8d1de78b54fc049dbe579026e5afcf0a79f36a11",
+    "archivalBinaryBranch": false
+  },
+  {
+    "branch": "feat/side-view-battle-scene-v0.11",
+    "commit": "a0427b83d9233f1a83178b3c47d3fab39eed664e",
+    "catalogBlob": "8d1de78b54fc049dbe579026e5afcf0a79f36a11",
+    "archivalBinaryBranch": false
+  },
+  {
+    "branch": "main",
+    "commit": "1e9100c4c18364ea64b3ec974fe957ba4ef42f6f",
+    "catalogBlob": "8d1de78b54fc049dbe579026e5afcf0a79f36a11",
+    "archivalBinaryBranch": false
+  }
+]

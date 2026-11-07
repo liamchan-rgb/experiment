@@ -1,0 +1,30 @@
+{
+  "proposalOnly": true,
+  "schemaVersion": 1,
+  "seed": "31827",
+  "theme": "meadow",
+  "totalNodes": 10,
+  "counts": {
+    "start": 1,
+    "combat": 4,
+    "boss": 1,
+    "reward": 3,
+    "empty": 1
+  },
+  "topology": {
+    "extraRoadCount": 2,
+    "maximumNodeDegree": 4,
+    "minimumBossHopsFromStart": 3
+  },
+  "layout": {
+    "policy": "preserve-actor-scale-expand-layout-if-needed",
+    "decorationDensity": "medium",
+    "sharedGameplayAndVisualRoads": true
+  },
+  "notes": [
+    "This file describes a proposed input; the app does not load it yet.",
+    "Counts are exact quotas, not random weights. Start is fixed at one.",
+    "Topology settings shown here are design proposals, not existing boardgame rule limits.",
+    "Save the actual generated map and layout in addition to seed and generator version."
+  ]
+}

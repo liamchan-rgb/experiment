@@ -1,0 +1,14 @@
+{
+  "file": "runeSlash-melee-review-r1.gif",
+  "frames": 95,
+  "frameDurationMs": 20,
+  "durationMs": 1900,
+  "dimensions": [
+    1020,
+    765
+  ],
+  "bytes": 6695460,
+  "sha256": "eb47147839f9523f2766025de2368a02188dcff3a490c7ebf138924bb0d50c25",
+  "palette": "shared 128-color optimized",
+  "scope": "offline review concept, not integrated into runtime"
+}

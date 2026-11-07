@@ -1,0 +1,2671 @@
+{
+  "deviceExecuted" : false,
+  "directions" : [
+    {
+      "direction" : 0,
+      "specifiedStartStop" : [
+        {
+          "column" : 0,
+          "facing" : 0,
+          "frame" : 0,
+          "phase" : 0,
+          "state" : "idle"
+        },
+        {
+          "column" : 9,
+          "facing" : 0,
+          "frame" : 25,
+          "phase" : 0,
+          "state" : "starting"
+        },
+        {
+          "column" : 10,
+          "facing" : 0,
+          "frame" : 26,
+          "phase" : 0,
+          "state" : "starting"
+        },
+        {
+          "column" : 2,
+          "facing" : 0,
+          "frame" : 4,
+          "phase" : 0.125,
+          "state" : "walking"
+        },
+        {
+          "column" : 3,
+          "facing" : 0,
+          "frame" : 7,
+          "phase" : 0.25,
+          "state" : "walking"
+        },
+        {
+          "column" : 4,
+          "facing" : 0,
+          "frame" : 10,
+          "phase" : 0.375,
+          "state" : "walking"
+        },
+        {
+          "column" : 5,
+          "facing" : 0,
+          "frame" : 13,
+          "phase" : 0.5,
+          "state" : "walking"
+        },
+        {
+          "column" : 6,
+          "facing" : 0,
+          "frame" : 16,
+          "phase" : 0.625,
+          "state" : "walking"
+        },
+        {
+          "column" : 7,
+          "facing" : 0,
+          "frame" : 19,
+          "phase" : 0.75,
+          "state" : "walking"
+        },
+        {
+          "column" : 8,
+          "facing" : 0,
+          "frame" : 22,
+          "phase" : 0.875,
+          "state" : "walking"
+        },
+        {
+          "column" : 1,
+          "facing" : 0,
+          "frame" : 1,
+          "phase" : 0,
+          "state" : "walking"
+        },
+        {
+          "column" : 2,
+          "facing" : 0,
+          "frame" : 4,
+          "phase" : 0.125,
+          "state" : "walking"
+        },
+        {
+          "column" : 3,
+          "facing" : 0,
+          "frame" : 7,
+          "phase" : 0.25,
+          "state" : "walking"
+        },
+        {
+          "column" : 4,
+          "facing" : 0,
+          "frame" : 10,
+          "phase" : 0.375,
+          "state" : "walking"
+        },
+        {
+          "column" : 5,
+          "facing" : 0,
+          "frame" : 13,
+          "phase" : 0.5,
+          "state" : "walking"
+        },
+        {
+          "column" : 6,
+          "facing" : 0,
+          "frame" : 16,
+          "phase" : 0.625,
+          "state" : "walking"
+        },
+        {
+          "column" : 7,
+          "facing" : 0,
+          "frame" : 19,
+          "phase" : 0.75,
+          "state" : "walking"
+        },
+        {
+          "column" : 8,
+          "facing" : 0,
+          "frame" : 22,
+          "phase" : 0.875,
+          "state" : "walking"
+        },
+        {
+          "column" : 1,
+          "facing" : 0,
+          "frame" : 1,
+          "phase" : 0,
+          "state" : "walking"
+        },
+        {
+          "column" : 11,
+          "facing" : 0,
+          "frame" : 27,
+          "phase" : 0.125,
+          "state" : "stopping"
+        },
+        {
+          "column" : 12,
+          "facing" : 0,
+          "frame" : 28,
+          "phase" : 0.125,
+          "state" : "stopping"
+        },
+        {
+          "column" : 0,
+          "facing" : 0,
+          "frame" : 0,
+          "phase" : 0,
+          "state" : "idle"
+        }
+      ]
+    },
+    {
+      "direction" : 1,
+      "specifiedStartStop" : [
+        {
+          "column" : 0,
+          "facing" : 1,
+          "frame" : 0,
+          "phase" : 0,
+          "state" : "idle"
+        },
+        {
+          "column" : 9,
+          "facing" : 1,
+          "frame" : 25,
+          "phase" : 0,
+          "state" : "starting"
+        },
+        {
+          "column" : 10,
+          "facing" : 1,
+          "frame" : 26,
+          "phase" : 0,
+          "state" : "starting"
+        },
+        {
+          "column" : 5,
+          "facing" : 1,
+          "frame" : 13,
+          "phase" : 0.5,
+          "state" : "walking"
+        },
+        {
+          "column" : 6,
+          "facing" : 1,
+          "frame" : 16,
+          "phase" : 0.625,
+          "state" : "walking"
+        },
+        {
+          "column" : 7,
+          "facing" : 1,
+          "frame" : 19,
+          "phase" : 0.75,
+          "state" : "walking"
+        },
+        {
+          "column" : 8,
+          "facing" : 1,
+          "frame" : 22,
+          "phase" : 0.875,
+          "state" : "walking"
+        },
+        {
+          "column" : 1,
+          "facing" : 1,
+          "frame" : 1,
+          "phase" : 0,
+          "state" : "walking"
+        },
+        {
+          "column" : 2,
+          "facing" : 1,
+          "frame" : 4,
+          "phase" : 0.125,
+          "state" : "walking"
+        },
+        {
+          "column" : 3,
+          "facing" : 1,
+          "frame" : 7,
+          "phase" : 0.25,
+          "state" : "walking"
+        },
+        {
+          "column" : 4,
+          "facing" : 1,
+          "frame" : 10,
+          "phase" : 0.375,
+          "state" : "walking"
+        },
+        {
+          "column" : 5,
+          "facing" : 1,
+          "frame" : 13,
+          "phase" : 0.5,
+          "state" : "walking"
+        },
+        {
+          "column" : 6,
+          "facing" : 1,
+          "frame" : 16,
+          "phase" : 0.625,
+          "state" : "walking"
+        },
+        {
+          "column" : 7,
+          "facing" : 1,
+          "frame" : 19,
+          "phase" : 0.75,
+          "state" : "walking"
+        },
+        {
+          "column" : 8,
+          "facing" : 1,
+          "frame" : 22,
+          "phase" : 0.875,
+          "state" : "walking"
+        },
+        {
+          "column" : 1,
+          "facing" : 1,
+          "frame" : 1,
+          "phase" : 0,
+          "state" : "walking"
+        },
+        {
+          "column" : 2,
+          "facing" : 1,
+          "frame" : 4,
+          "phase" : 0.125,
+          "state" : "walking"
+        },
+        {
+          "column" : 3,
+          "facing" : 1,
+          "frame" : 7,
+          "phase" : 0.25,
+          "state" : "walking"
+        },
+        {
+          "column" : 4,
+          "facing" : 1,
+          "frame" : 10,
+          "phase" : 0.375,
+          "state" : "walking"
+        },
+        {
+          "column" : 11,
+          "facing" : 1,
+          "frame" : 27,
+          "phase" : 0.5,
+          "state" : "stopping"
+        },
+        {
+          "column" : 12,
+          "facing" : 1,
+          "frame" : 28,
+          "phase" : 0.5,
+          "state" : "stopping"
+        },
+        {
+          "column" : 0,
+          "facing" : 1,
+          "frame" : 0,
+          "phase" : 0,
+          "state" : "idle"
+        }
+      ]
+    },
+    {
+      "direction" : 2,
+      "specifiedStartStop" : [
+        {
+          "column" : 0,
+          "facing" : 2,
+          "frame" : 0,
+          "phase" : 0,
+          "state" : "idle"
+        },
+        {
+          "column" : 9,
+          "facing" : 2,
+          "frame" : 25,
+          "phase" : 0,
+          "state" : "starting"
+        },
+        {
+          "column" : 10,
+          "facing" : 2,
+          "frame" : 26,
+          "phase" : 0,
+          "state" : "starting"
+        },
+        {
+          "column" : 5,
+          "facing" : 2,
+          "frame" : 13,
+          "phase" : 0.5,
+          "state" : "walking"
+        },
+        {
+          "column" : 6,
+          "facing" : 2,
+          "frame" : 16,
+          "phase" : 0.625,
+          "state" : "walking"
+        },
+        {
+          "column" : 7,
+          "facing" : 2,
+          "frame" : 19,
+          "phase" : 0.75,
+          "state" : "walking"
+        },
+        {
+          "column" : 8,
+          "facing" : 2,
+          "frame" : 22,
+          "phase" : 0.875,
+          "state" : "walking"
+        },
+        {
+          "column" : 1,
+          "facing" : 2,
+          "frame" : 1,
+          "phase" : 0,
+          "state" : "walking"
+        },
+        {
+          "column" : 2,
+          "facing" : 2,
+          "frame" : 4,
+          "phase" : 0.125,
+          "state" : "walking"
+        },
+        {
+          "column" : 3,
+          "facing" : 2,
+          "frame" : 7,
+          "phase" : 0.25,
+          "state" : "walking"
+        },
+        {
+          "column" : 4,
+          "facing" : 2,
+          "frame" : 10,
+          "phase" : 0.375,
+          "state" : "walking"
+        },
+        {
+          "column" : 5,
+          "facing" : 2,
+          "frame" : 13,
+          "phase" : 0.5,
+          "state" : "walking"
+        },
+        {
+          "column" : 6,
+          "facing" : 2,
+          "frame" : 16,
+          "phase" : 0.625,
+          "state" : "walking"
+        },
+        {
+          "column" : 7,
+          "facing" : 2,
+          "frame" : 19,
+          "phase" : 0.75,
+          "state" : "walking"
+        },
+        {
+          "column" : 8,
+          "facing" : 2,
+          "frame" : 22,
+          "phase" : 0.875,
+          "state" : "walking"
+        },
+        {
+          "column" : 1,
+          "facing" : 2,
+          "frame" : 1,
+          "phase" : 0,
+          "state" : "walking"
+        },
+        {
+          "column" : 2,
+          "facing" : 2,
+          "frame" : 4,
+          "phase" : 0.125,
+          "state" : "walking"
+        },
+        {
+          "column" : 3,
+          "facing" : 2,
+          "frame" : 7,
+          "phase" : 0.25,
+          "state" : "walking"
+        },
+        {
+          "column" : 4,
+          "facing" : 2,
+          "frame" : 10,
+          "phase" : 0.375,
+          "state" : "walking"
+        },
+        {
+          "column" : 11,
+          "facing" : 2,
+          "frame" : 27,
+          "phase" : 0.5,
+          "state" : "stopping"
+        },
+        {
+          "column" : 12,
+          "facing" : 2,
+          "frame" : 28,
+          "phase" : 0.5,
+          "state" : "stopping"
+        },
+        {
+          "column" : 0,
+          "facing" : 2,
+          "frame" : 0,
+          "phase" : 0,
+          "state" : "idle"
+        }
+      ]
+    },
+    {
+      "direction" : 3,
+      "specifiedStartStop" : [
+        {
+          "column" : 0,
+          "facing" : 3,
+          "frame" : 0,
+          "phase" : 0,
+          "state" : "idle"
+        },
+        {
+          "column" : 9,
+          "facing" : 3,
+          "frame" : 25,
+          "phase" : 0,
+          "state" : "starting"
+        },
+        {
+          "column" : 10,
+          "facing" : 3,
+          "frame" : 26,
+          "phase" : 0,
+          "state" : "starting"
+        },
+        {
+          "column" : 1,
+          "facing" : 3,
+          "frame" : 1,
+          "phase" : 0,
+          "state" : "walking"
+        },
+        {
+          "column" : 2,
+          "facing" : 3,
+          "frame" : 4,
+          "phase" : 0.125,
+          "state" : "walking"
+        },
+        {
+          "column" : 3,
+          "facing" : 3,
+          "frame" : 7,
+          "phase" : 0.25,
+          "state" : "walking"
+        },
+        {
+          "column" : 4,
+          "facing" : 3,
+          "frame" : 10,
+          "phase" : 0.375,
+          "state" : "walking"
+        },
+        {
+          "column" : 5,
+          "facing" : 3,
+          "frame" : 13,
+          "phase" : 0.5,
+          "state" : "walking"
+        },
+        {
+          "column" : 6,
+          "facing" : 3,
+          "frame" : 16,
+          "phase" : 0.625,
+          "state" : "walking"
+        },
+        {
+          "column" : 7,
+          "facing" : 3,
+          "frame" : 19,
+          "phase" : 0.75,
+          "state" : "walking"
+        },
+        {
+          "column" : 8,
+          "facing" : 3,
+          "frame" : 22,
+          "phase" : 0.875,
+          "state" : "walking"
+        },
+        {
+          "column" : 1,
+          "facing" : 3,
+          "frame" : 1,
+          "phase" : 0,
+          "state" : "walking"
+        },
+        {
+          "column" : 2,
+          "facing" : 3,
+          "frame" : 4,
+          "phase" : 0.125,
+          "state" : "walking"
+        },
+        {
+          "column" : 3,
+          "facing" : 3,
+          "frame" : 7,
+          "phase" : 0.25,
+          "state" : "walking"
+        },
+        {
+          "column" : 4,
+          "facing" : 3,
+          "frame" : 10,
+          "phase" : 0.375,
+          "state" : "walking"
+        },
+        {
+          "column" : 5,
+          "facing" : 3,
+          "frame" : 13,
+          "phase" : 0.5,
+          "state" : "walking"
+        },
+        {
+          "column" : 6,
+          "facing" : 3,
+          "frame" : 16,
+          "phase" : 0.625,
+          "state" : "walking"
+        },
+        {
+          "column" : 7,
+          "facing" : 3,
+          "frame" : 19,
+          "phase" : 0.75,
+          "state" : "walking"
+        },
+        {
+          "column" : 8,
+          "facing" : 3,
+          "frame" : 22,
+          "phase" : 0.875,
+          "state" : "walking"
+        },
+        {
+          "column" : 11,
+          "facing" : 3,
+          "frame" : 27,
+          "phase" : 0,
+          "state" : "stopping"
+        },
+        {
+          "column" : 12,
+          "facing" : 3,
+          "frame" : 28,
+          "phase" : 0,
+          "state" : "stopping"
+        },
+        {
+          "column" : 0,
+          "facing" : 3,
+          "frame" : 0,
+          "phase" : 0,
+          "state" : "idle"
+        }
+      ]
+    },
+    {
+      "direction" : 4,
+      "specifiedStartStop" : [
+        {
+          "column" : 0,
+          "facing" : 4,
+          "frame" : 0,
+          "phase" : 0,
+          "state" : "idle"
+        },
+        {
+          "column" : 9,
+          "facing" : 4,
+          "frame" : 25,
+          "phase" : 0,
+          "state" : "starting"
+        },
+        {
+          "column" : 10,
+          "facing" : 4,
+          "frame" : 26,
+          "phase" : 0,
+          "state" : "starting"
+        },
+        {
+          "column" : 1,
+          "facing" : 4,
+          "frame" : 1,
+          "phase" : 0,
+          "state" : "walking"
+        },
+        {
+          "column" : 2,
+          "facing" : 4,
+          "frame" : 4,
+          "phase" : 0.12499999999999999,
+          "state" : "walking"
+        },
+        {
+          "column" : 3,
+          "facing" : 4,
+          "frame" : 7,
+          "phase" : 0.24999999999999997,
+          "state" : "walking"
+        },
+        {
+          "column" : 4,
+          "facing" : 4,
+          "frame" : 10,
+          "phase" : 0.37499999999999994,
+          "state" : "walking"
+        },
+        {
+          "column" : 5,
+          "facing" : 4,
+          "frame" : 13,
+          "phase" : 0.49999999999999994,
+          "state" : "walking"
+        },
+        {
+          "column" : 6,
+          "facing" : 4,
+          "frame" : 16,
+          "phase" : 0.6249999999999999,
+          "state" : "walking"
+        },
+        {
+          "column" : 7,
+          "facing" : 4,
+          "frame" : 19,
+          "phase" : 0.7499999999999999,
+          "state" : "walking"
+        },
+        {
+          "column" : 8,
+          "facing" : 4,
+          "frame" : 22,
+          "phase" : 0.8749999999999999,
+          "state" : "walking"
+        },
+        {
+          "column" : 1,
+          "facing" : 4,
+          "frame" : 1,
+          "phase" : 0.9999999999999999,
+          "state" : "walking"
+        },
+        {
+          "column" : 2,
+          "facing" : 4,
+          "frame" : 4,
+          "phase" : 0.12499999999999985,
+          "state" : "walking"
+        },
+        {
+          "column" : 3,
+          "facing" : 4,
+          "frame" : 7,
+          "phase" : 0.24999999999999986,
+          "state" : "walking"
+        },
+        {
+          "column" : 4,
+          "facing" : 4,
+          "frame" : 10,
+          "phase" : 0.3749999999999997,
+          "state" : "walking"
+        },
+        {
+          "column" : 5,
+          "facing" : 4,
+          "frame" : 13,
+          "phase" : 0.4999999999999997,
+          "state" : "walking"
+        },
+        {
+          "column" : 6,
+          "facing" : 4,
+          "frame" : 16,
+          "phase" : 0.6249999999999997,
+          "state" : "walking"
+        },
+        {
+          "column" : 7,
+          "facing" : 4,
+          "frame" : 19,
+          "phase" : 0.7499999999999997,
+          "state" : "walking"
+        },
+        {
+          "column" : 8,
+          "facing" : 4,
+          "frame" : 22,
+          "phase" : 0.8749999999999997,
+          "state" : "walking"
+        },
+        {
+          "column" : 11,
+          "facing" : 4,
+          "frame" : 27,
+          "phase" : 0,
+          "state" : "stopping"
+        },
+        {
+          "column" : 12,
+          "facing" : 4,
+          "frame" : 28,
+          "phase" : 0,
+          "state" : "stopping"
+        },
+        {
+          "column" : 0,
+          "facing" : 4,
+          "frame" : 0,
+          "phase" : 0,
+          "state" : "idle"
+        }
+      ]
+    },
+    {
+      "direction" : 5,
+      "specifiedStartStop" : [
+        {
+          "column" : 0,
+          "facing" : 5,
+          "frame" : 0,
+          "phase" : 0,
+          "state" : "idle"
+        },
+        {
+          "column" : 9,
+          "facing" : 5,
+          "frame" : 25,
+          "phase" : 0,
+          "state" : "starting"
+        },
+        {
+          "column" : 10,
+          "facing" : 5,
+          "frame" : 26,
+          "phase" : 0,
+          "state" : "starting"
+        },
+        {
+          "column" : 5,
+          "facing" : 5,
+          "frame" : 13,
+          "phase" : 0.5,
+          "state" : "walking"
+        },
+        {
+          "column" : 6,
+          "facing" : 5,
+          "frame" : 16,
+          "phase" : 0.625,
+          "state" : "walking"
+        },
+        {
+          "column" : 7,
+          "facing" : 5,
+          "frame" : 19,
+          "phase" : 0.75,
+          "state" : "walking"
+        },
+        {
+          "column" : 8,
+          "facing" : 5,
+          "frame" : 22,
+          "phase" : 0.875,
+          "state" : "walking"
+        },
+        {
+          "column" : 1,
+          "facing" : 5,
+          "frame" : 1,
+          "phase" : 0,
+          "state" : "walking"
+        },
+        {
+          "column" : 2,
+          "facing" : 5,
+          "frame" : 4,
+          "phase" : 0.125,
+          "state" : "walking"
+        },
+        {
+          "column" : 3,
+          "facing" : 5,
+          "frame" : 7,
+          "phase" : 0.25,
+          "state" : "walking"
+        },
+        {
+          "column" : 4,
+          "facing" : 5,
+          "frame" : 10,
+          "phase" : 0.375,
+          "state" : "walking"
+        },
+        {
+          "column" : 5,
+          "facing" : 5,
+          "frame" : 13,
+          "phase" : 0.5,
+          "state" : "walking"
+        },
+        {
+          "column" : 6,
+          "facing" : 5,
+          "frame" : 16,
+          "phase" : 0.625,
+          "state" : "walking"
+        },
+        {
+          "column" : 7,
+          "facing" : 5,
+          "frame" : 19,
+          "phase" : 0.75,
+          "state" : "walking"
+        },
+        {
+          "column" : 8,
+          "facing" : 5,
+          "frame" : 22,
+          "phase" : 0.875,
+          "state" : "walking"
+        },
+        {
+          "column" : 1,
+          "facing" : 5,
+          "frame" : 1,
+          "phase" : 0,
+          "state" : "walking"
+        },
+        {
+          "column" : 2,
+          "facing" : 5,
+          "frame" : 4,
+          "phase" : 0.125,
+          "state" : "walking"
+        },
+        {
+          "column" : 3,
+          "facing" : 5,
+          "frame" : 7,
+          "phase" : 0.25,
+          "state" : "walking"
+        },
+        {
+          "column" : 4,
+          "facing" : 5,
+          "frame" : 10,
+          "phase" : 0.375,
+          "state" : "walking"
+        },
+        {
+          "column" : 11,
+          "facing" : 5,
+          "frame" : 27,
+          "phase" : 0.5,
+          "state" : "stopping"
+        },
+        {
+          "column" : 12,
+          "facing" : 5,
+          "frame" : 28,
+          "phase" : 0.5,
+          "state" : "stopping"
+        },
+        {
+          "column" : 0,
+          "facing" : 5,
+          "frame" : 0,
+          "phase" : 0,
+          "state" : "idle"
+        }
+      ]
+    },
+    {
+      "direction" : 6,
+      "specifiedStartStop" : [
+        {
+          "column" : 0,
+          "facing" : 6,
+          "frame" : 0,
+          "phase" : 0,
+          "state" : "idle"
+        },
+        {
+          "column" : 9,
+          "facing" : 6,
+          "frame" : 25,
+          "phase" : 0,
+          "state" : "starting"
+        },
+        {
+          "column" : 10,
+          "facing" : 6,
+          "frame" : 26,
+          "phase" : 0,
+          "state" : "starting"
+        },
+        {
+          "column" : 5,
+          "facing" : 6,
+          "frame" : 13,
+          "phase" : 0.5,
+          "state" : "walking"
+        },
+        {
+          "column" : 6,
+          "facing" : 6,
+          "frame" : 16,
+          "phase" : 0.625,
+          "state" : "walking"
+        },
+        {
+          "column" : 7,
+          "facing" : 6,
+          "frame" : 19,
+          "phase" : 0.75,
+          "state" : "walking"
+        },
+        {
+          "column" : 8,
+          "facing" : 6,
+          "frame" : 22,
+          "phase" : 0.875,
+          "state" : "walking"
+        },
+        {
+          "column" : 1,
+          "facing" : 6,
+          "frame" : 1,
+          "phase" : 0,
+          "state" : "walking"
+        },
+        {
+          "column" : 2,
+          "facing" : 6,
+          "frame" : 4,
+          "phase" : 0.125,
+          "state" : "walking"
+        },
+        {
+          "column" : 3,
+          "facing" : 6,
+          "frame" : 7,
+          "phase" : 0.25,
+          "state" : "walking"
+        },
+        {
+          "column" : 4,
+          "facing" : 6,
+          "frame" : 10,
+          "phase" : 0.375,
+          "state" : "walking"
+        },
+        {
+          "column" : 5,
+          "facing" : 6,
+          "frame" : 13,
+          "phase" : 0.5,
+          "state" : "walking"
+        },
+        {
+          "column" : 6,
+          "facing" : 6,
+          "frame" : 16,
+          "phase" : 0.625,
+          "state" : "walking"
+        },
+        {
+          "column" : 7,
+          "facing" : 6,
+          "frame" : 19,
+          "phase" : 0.75,
+          "state" : "walking"
+        },
+        {
+          "column" : 8,
+          "facing" : 6,
+          "frame" : 22,
+          "phase" : 0.875,
+          "state" : "walking"
+        },
+        {
+          "column" : 1,
+          "facing" : 6,
+          "frame" : 1,
+          "phase" : 0,
+          "state" : "walking"
+        },
+        {
+          "column" : 2,
+          "facing" : 6,
+          "frame" : 4,
+          "phase" : 0.125,
+          "state" : "walking"
+        },
+        {
+          "column" : 3,
+          "facing" : 6,
+          "frame" : 7,
+          "phase" : 0.25,
+          "state" : "walking"
+        },
+        {
+          "column" : 4,
+          "facing" : 6,
+          "frame" : 10,
+          "phase" : 0.375,
+          "state" : "walking"
+        },
+        {
+          "column" : 11,
+          "facing" : 6,
+          "frame" : 27,
+          "phase" : 0.5,
+          "state" : "stopping"
+        },
+        {
+          "column" : 12,
+          "facing" : 6,
+          "frame" : 28,
+          "phase" : 0.5,
+          "state" : "stopping"
+        },
+        {
+          "column" : 0,
+          "facing" : 6,
+          "frame" : 0,
+          "phase" : 0,
+          "state" : "idle"
+        }
+      ]
+    },
+    {
+      "direction" : 7,
+      "specifiedStartStop" : [
+        {
+          "column" : 0,
+          "facing" : 7,
+          "frame" : 0,
+          "phase" : 0,
+          "state" : "idle"
+        },
+        {
+          "column" : 9,
+          "facing" : 7,
+          "frame" : 25,
+          "phase" : 0,
+          "state" : "starting"
+        },
+        {
+          "column" : 10,
+          "facing" : 7,
+          "frame" : 26,
+          "phase" : 0,
+          "state" : "starting"
+        },
+        {
+          "column" : 1,
+          "facing" : 7,
+          "frame" : 1,
+          "phase" : 0,
+          "state" : "walking"
+        },
+        {
+          "column" : 2,
+          "facing" : 7,
+          "frame" : 4,
+          "phase" : 0.12499999999999999,
+          "state" : "walking"
+        },
+        {
+          "column" : 3,
+          "facing" : 7,
+          "frame" : 7,
+          "phase" : 0.24999999999999997,
+          "state" : "walking"
+        },
+        {
+          "column" : 4,
+          "facing" : 7,
+          "frame" : 10,
+          "phase" : 0.37499999999999994,
+          "state" : "walking"
+        },
+        {
+          "column" : 5,
+          "facing" : 7,
+          "frame" : 13,
+          "phase" : 0.49999999999999994,
+          "state" : "walking"
+        },
+        {
+          "column" : 6,
+          "facing" : 7,
+          "frame" : 16,
+          "phase" : 0.6249999999999999,
+          "state" : "walking"
+        },
+        {
+          "column" : 7,
+          "facing" : 7,
+          "frame" : 19,
+          "phase" : 0.7499999999999999,
+          "state" : "walking"
+        },
+        {
+          "column" : 8,
+          "facing" : 7,
+          "frame" : 22,
+          "phase" : 0.8749999999999999,
+          "state" : "walking"
+        },
+        {
+          "column" : 1,
+          "facing" : 7,
+          "frame" : 1,
+          "phase" : 0.9999999999999999,
+          "state" : "walking"
+        },
+        {
+          "column" : 2,
+          "facing" : 7,
+          "frame" : 4,
+          "phase" : 0.12499999999999985,
+          "state" : "walking"
+        },
+        {
+          "column" : 3,
+          "facing" : 7,
+          "frame" : 7,
+          "phase" : 0.24999999999999986,
+          "state" : "walking"
+        },
+        {
+          "column" : 4,
+          "facing" : 7,
+          "frame" : 10,
+          "phase" : 0.3749999999999997,
+          "state" : "walking"
+        },
+        {
+          "column" : 5,
+          "facing" : 7,
+          "frame" : 13,
+          "phase" : 0.4999999999999997,
+          "state" : "walking"
+        },
+        {
+          "column" : 6,
+          "facing" : 7,
+          "frame" : 16,
+          "phase" : 0.6249999999999997,
+          "state" : "walking"
+        },
+        {
+          "column" : 7,
+          "facing" : 7,
+          "frame" : 19,
+          "phase" : 0.7499999999999997,
+          "state" : "walking"
+        },
+        {
+          "column" : 8,
+          "facing" : 7,
+          "frame" : 22,
+          "phase" : 0.8749999999999997,
+          "state" : "walking"
+        },
+        {
+          "column" : 11,
+          "facing" : 7,
+          "frame" : 27,
+          "phase" : 0,
+          "state" : "stopping"
+        },
+        {
+          "column" : 12,
+          "facing" : 7,
+          "frame" : 28,
+          "phase" : 0,
+          "state" : "stopping"
+        },
+        {
+          "column" : 0,
+          "facing" : 7,
+          "frame" : 0,
+          "phase" : 0,
+          "state" : "idle"
+        }
+      ]
+    }
+  ],
+  "mapSimulationSteps" : 1200,
+  "mapTrace" : [
+    {
+      "column" : 9,
+      "facing" : 3,
+      "frame" : 25,
+      "phase" : 0,
+      "state" : "starting",
+      "time" : 0,
+      "x" : 440.7498362544851,
+      "y" : 443.9921643210312
+    },
+    {
+      "column" : 10,
+      "facing" : 3,
+      "frame" : 26,
+      "phase" : 0,
+      "state" : "starting",
+      "time" : 0.12,
+      "x" : 440.7498362544851,
+      "y" : 443.9921643210312
+    },
+    {
+      "column" : 1,
+      "facing" : 3,
+      "frame" : 1,
+      "phase" : 0,
+      "state" : "walking",
+      "time" : 0.24,
+      "x" : 440.7498362544851,
+      "y" : 443.9921643210312
+    },
+    {
+      "column" : 3,
+      "facing" : 3,
+      "frame" : 9,
+      "phase" : 0.37499945269550694,
+      "state" : "walking",
+      "time" : 0.36,
+      "x" : 449.7478355848782,
+      "y" : 443.9451043556413
+    },
+    {
+      "column" : 6,
+      "facing" : 3,
+      "frame" : 18,
+      "phase" : 0.7499945763235103,
+      "state" : "walking",
+      "time" : 0.48,
+      "x" : 458.7416909456427,
+      "y" : 444.0987413768455
+    },
+    {
+      "column" : 1,
+      "facing" : 3,
+      "frame" : 3,
+      "phase" : 0.12499156141625252,
+      "state" : "walking",
+      "time" : 0.6,
+      "x" : 467.72579771881186,
+      "y" : 444.3637602549262
+    },
+    {
+      "column" : 4,
+      "facing" : 3,
+      "frame" : 12,
+      "phase" : 0.4999915033009256,
+      "state" : "walking",
+      "time" : 0.72,
+      "x" : 476.70575335932875,
+      "y" : 444.6639142588135
+    },
+    {
+      "column" : 7,
+      "facing" : 3,
+      "frame" : 21,
+      "phase" : 0.8749933691294253,
+      "state" : "walking",
+      "time" : 0.84,
+      "x" : 485.69037211119513,
+      "y" : 444.9257809084517
+    },
+    {
+      "column" : 3,
+      "facing" : 3,
+      "frame" : 7,
+      "phase" : 0.25000063277999135,
+      "state" : "walking",
+      "time" : 0.96,
+      "x" : 494.68535109117124,
+      "y" : 445.0686222869878
+    },
+    {
+      "column" : 5,
+      "facing" : 3,
+      "frame" : 15,
+      "phase" : 0.624990550571146,
+      "state" : "walking",
+      "time" : 1.08,
+      "x" : 503.6812588255106,
+      "y" : 444.9734129708261
+    },
+    {
+      "column" : 8,
+      "facing" : 3,
+      "frame" : 24,
+      "phase" : 0.9999706353688579,
+      "state" : "walking",
+      "time" : 1.2,
+      "x" : 512.6443701309915,
+      "y" : 444.57691105980865
+    },
+    {
+      "column" : 3,
+      "facing" : 3,
+      "frame" : 9,
+      "phase" : 0.37495557355683573,
+      "state" : "walking",
+      "time" : 1.32,
+      "x" : 521.5664741874848,
+      "y" : 443.9909238525988
+    },
+    {
+      "column" : 6,
+      "facing" : 3,
+      "frame" : 18,
+      "phase" : 0.749946378394141,
+      "state" : "walking",
+      "time" : 1.44,
+      "x" : 530.4511648623318,
+      "y" : 443.2750101014915
+    },
+    {
+      "column" : 1,
+      "facing" : 3,
+      "frame" : 3,
+      "phase" : 0.12494060613856088,
+      "state" : "walking",
+      "time" : 1.56,
+      "x" : 539.306332418988,
+      "y" : 442.47180190842556
+    },
+    {
+      "column" : 4,
+      "facing" : 3,
+      "frame" : 12,
+      "phase" : 0.4999367172207864,
+      "state" : "walking",
+      "time" : 1.68,
+      "x" : 548.1444198509572,
+      "y" : 441.6223341504393
+    },
+    {
+      "column" : 7,
+      "facing" : 7,
+      "frame" : 21,
+      "phase" : 0.8686108146135822,
+      "state" : "walking",
+      "time" : 1.8,
+      "x" : 555.7304999942602,
+      "y" : 440.09300606106166
+    },
+    {
+      "column" : 2,
+      "facing" : 7,
+      "frame" : 6,
+      "phase" : 0.2436807806878528,
+      "state" : "walking",
+      "time" : 1.92,
+      "x" : 559.1189614337992,
+      "y" : 435.9232268761716
+    },
+    {
+      "column" : 5,
+      "facing" : 7,
+      "frame" : 15,
+      "phase" : 0.6186520554482465,
+      "state" : "walking",
+      "time" : 2.04,
+      "x" : 562.518558076399,
+      "y" : 431.7569848017809
+    },
+    {
+      "column" : 8,
+      "facing" : 7,
+      "frame" : 24,
+      "phase" : 0.9935955153884445,
+      "state" : "walking",
+      "time" : 2.16,
+      "x" : 565.8967037675794,
+      "y" : 427.58674816504754
+    },
+    {
+      "column" : 3,
+      "facing" : 7,
+      "frame" : 9,
+      "phase" : 0.36851192365902347,
+      "state" : "walking",
+      "time" : 2.2800000000000002,
+      "x" : 569.2384586781294,
+      "y" : 423.40954535209534
+    },
+    {
+      "column" : 6,
+      "facing" : 7,
+      "frame" : 18,
+      "phase" : 0.7433907119454268,
+      "state" : "walking",
+      "time" : 2.4,
+      "x" : 572.5282496592667,
+      "y" : 419.2225427951927
+    },
+    {
+      "column" : 1,
+      "facing" : 7,
+      "frame" : 3,
+      "phase" : 0.1182216072856394,
+      "state" : "walking",
+      "time" : 2.52,
+      "x" : 575.7444601959736,
+      "y" : 415.02191484210937
+    },
+    {
+      "column" : 4,
+      "facing" : 7,
+      "frame" : 12,
+      "phase" : 0.4929615639694435,
+      "state" : "walking",
+      "time" : 2.64,
+      "x" : 578.8463076830204,
+      "y" : 410.8010883596675
+    },
+    {
+      "column" : 6,
+      "facing" : 7,
+      "frame" : 18,
+      "phase" : 0.7117115639694411,
+      "state" : "settling",
+      "time" : 2.7600000000000002,
+      "x" : 580.0944055669634,
+      "y" : 409.0329854446696
+    },
+    {
+      "column" : 7,
+      "facing" : 7,
+      "frame" : 21,
+      "phase" : 0.8367115639694411,
+      "state" : "settling",
+      "time" : 2.88,
+      "x" : 580.0944055669634,
+      "y" : 409.0329854446696
+    },
+    {
+      "column" : 8,
+      "facing" : 7,
+      "frame" : 24,
+      "phase" : 0.9617115639694411,
+      "state" : "settling",
+      "time" : 3,
+      "x" : 580.0944055669634,
+      "y" : 409.0329854446696
+    },
+    {
+      "column" : 11,
+      "facing" : 7,
+      "frame" : 27,
+      "phase" : 0,
+      "state" : "stopping",
+      "time" : 3.12,
+      "x" : 580.0944055669634,
+      "y" : 409.0329854446696
+    },
+    {
+      "column" : 12,
+      "facing" : 7,
+      "frame" : 28,
+      "phase" : 0,
+      "state" : "stopping",
+      "time" : 3.24,
+      "x" : 580.0944055669634,
+      "y" : 409.0329854446696
+    },
+    {
+      "column" : 0,
+      "facing" : 7,
+      "frame" : 0,
+      "phase" : 0,
+      "state" : "idle",
+      "time" : 3.36,
+      "x" : 580.0944055669634,
+      "y" : 409.0329854446696
+    },
+    {
+      "column" : 0,
+      "facing" : 7,
+      "frame" : 0,
+      "phase" : 0,
+      "state" : "idle",
+      "time" : 3.48,
+      "x" : 580.0944055669634,
+      "y" : 409.0329854446696
+    },
+    {
+      "column" : 0,
+      "facing" : 7,
+      "frame" : 0,
+      "phase" : 0,
+      "state" : "idle",
+      "time" : 3.6,
+      "x" : 580.0944055669634,
+      "y" : 409.0329854446696
+    },
+    {
+      "column" : 0,
+      "facing" : 7,
+      "frame" : 0,
+      "phase" : 0,
+      "state" : "idle",
+      "time" : 3.72,
+      "x" : 580.0944055669634,
+      "y" : 409.0329854446696
+    },
+    {
+      "column" : 0,
+      "facing" : 7,
+      "frame" : 0,
+      "phase" : 0,
+      "state" : "idle",
+      "time" : 3.84,
+      "x" : 580.0944055669634,
+      "y" : 409.0329854446696
+    },
+    {
+      "column" : 0,
+      "facing" : 7,
+      "frame" : 0,
+      "phase" : 0,
+      "state" : "idle",
+      "time" : 3.96,
+      "x" : 580.0944055669634,
+      "y" : 409.0329854446696
+    },
+    {
+      "column" : 0,
+      "facing" : 7,
+      "frame" : 0,
+      "phase" : 0,
+      "state" : "idle",
+      "time" : 4.08,
+      "x" : 580.0944055669634,
+      "y" : 409.0329854446696
+    },
+    {
+      "column" : 9,
+      "facing" : 7,
+      "frame" : 25,
+      "phase" : 0,
+      "state" : "starting",
+      "time" : 4.2,
+      "x" : 580.344025143752,
+      "y" : 408.67936486166997
+    },
+    {
+      "column" : 10,
+      "facing" : 7,
+      "frame" : 26,
+      "phase" : 0,
+      "state" : "starting",
+      "time" : 4.32,
+      "x" : 580.344025143752,
+      "y" : 408.67936486166997
+    },
+    {
+      "column" : 1,
+      "facing" : 7,
+      "frame" : 1,
+      "phase" : 0,
+      "state" : "walking",
+      "time" : 4.44,
+      "x" : 580.344025143752,
+      "y" : 408.67936486166997
+    },
+    {
+      "column" : 3,
+      "facing" : 7,
+      "frame" : 9,
+      "phase" : 0.37474529997031913,
+      "state" : "walking",
+      "time" : 4.5600000000000005,
+      "x" : 583.2216597840488,
+      "y" : 404.4188998993801
+    },
+    {
+      "column" : 6,
+      "facing" : 7,
+      "frame" : 18,
+      "phase" : 0.7496047965195757,
+      "state" : "walking",
+      "time" : 4.68,
+      "x" : 586.0075938148688,
+      "y" : 400.1417190682245
+    },
+    {
+      "column" : 1,
+      "facing" : 7,
+      "frame" : 3,
+      "phase" : 0.12455587066707767,
+      "state" : "walking",
+      "time" : 4.8,
+      "x" : 588.757991219696,
+      "y" : 395.85761812160445
+    },
+    {
+      "column" : 4,
+      "facing" : 7,
+      "frame" : 12,
+      "phase" : 0.4995934813994394,
+      "state" : "walking",
+      "time" : 4.92,
+      "x" : 591.5229609580563,
+      "y" : 391.57477067443625
+    },
+    {
+      "column" : 7,
+      "facing" : 7,
+      "frame" : 21,
+      "phase" : 0.8747162823981807,
+      "state" : "walking",
+      "time" : 5.04,
+      "x" : 594.3503152478021,
+      "y" : 387.3010613660132
+    },
+    {
+      "column" : 2,
+      "facing" : 7,
+      "frame" : 6,
+      "phase" : 0.24990818287440852,
+      "state" : "walking",
+      "time" : 5.16,
+      "x" : 597.2888293221702,
+      "y" : 383.0453070272477
+    },
+    {
+      "column" : 6,
+      "facing" : 7,
+      "frame" : 16,
+      "phase" : 0.6251883966676676,
+      "state" : "walking",
+      "time" : 5.28,
+      "x" : 600.3919338537113,
+      "y" : 378.81780987815375
+    },
+    {
+      "column" : 1,
+      "facing" : 7,
+      "frame" : 1,
+      "phase" : 0.0005180407609118495,
+      "state" : "walking",
+      "time" : 5.4,
+      "x" : 603.6997593053436,
+      "y" : 374.62872287161537
+    },
+    {
+      "column" : 4,
+      "facing" : 7,
+      "frame" : 10,
+      "phase" : 0.375818059831247,
+      "state" : "walking",
+      "time" : 5.5200000000000005,
+      "x" : 607.1905226040565,
+      "y" : 370.4772339446952
+    },
+    {
+      "column" : 7,
+      "facing" : 7,
+      "frame" : 19,
+      "phase" : 0.7510278744001896,
+      "state" : "walking",
+      "time" : 5.64,
+      "x" : 610.8161009541845,
+      "y" : 366.3558289271595
+    },
+    {
+      "column" : 2,
+      "facing" : 7,
+      "frame" : 4,
+      "phase" : 0.12615629117537827,
+      "state" : "walking",
+      "time" : 5.76,
+      "x" : 614.5253951274348,
+      "y" : 362.25411959702257
+    },
+    {
+      "column" : 5,
+      "facing" : 7,
+      "frame" : 13,
+      "phase" : 0.501174022869281,
+      "state" : "walking",
+      "time" : 5.88,
+      "x" : 618.2661270332469,
+      "y" : 358.1609994316265
+    },
+    {
+      "column" : 8,
+      "facing" : 7,
+      "frame" : 22,
+      "phase" : 0.8760528642371828,
+      "state" : "walking",
+      "time" : 6,
+      "x" : 621.985787775894,
+      "y" : 354.0649104651638
+    },
+    {
+      "column" : 3,
+      "facing" : 7,
+      "frame" : 7,
+      "phase" : 0.25083129575418656,
+      "state" : "walking",
+      "time" : 6.12,
+      "x" : 625.6304432962863,
+      "y" : 349.9533197225337
+    },
+    {
+      "column" : 6,
+      "facing" : 7,
+      "frame" : 16,
+      "phase" : 0.6255973259981573,
+      "state" : "walking",
+      "time" : 6.24,
+      "x" : 629.1504967882984,
+      "y" : 345.8148513814443
+    },
+    {
+      "column" : 1,
+      "facing" : 7,
+      "frame" : 1,
+      "phase" : 0.0004345078818452919,
+      "state" : "walking",
+      "time" : 6.36,
+      "x" : 632.5312803103637,
+      "y" : 341.64653449762557
+    },
+    {
+      "column" : 4,
+      "facing" : 7,
+      "frame" : 10,
+      "phase" : 0.37532460389544414,
+      "state" : "walking",
+      "time" : 6.48,
+      "x" : 635.8125777059937,
+      "y" : 337.4577002413173
+    },
+    {
+      "column" : 7,
+      "facing" : 7,
+      "frame" : 19,
+      "phase" : 0.7502782187165534,
+      "state" : "walking",
+      "time" : 6.6000000000000005,
+      "x" : 639.0337791708652,
+      "y" : 333.2563978463814
+    },
+    {
+      "column" : 2,
+      "facing" : 7,
+      "frame" : 4,
+      "phase" : 0.1252998921102287,
+      "state" : "walking",
+      "time" : 6.72,
+      "x" : 642.233348679916,
+      "y" : 329.0500899232907
+    },
+    {
+      "column" : 5,
+      "facing" : 7,
+      "frame" : 13,
+      "phase" : 0.5003869907113329,
+      "state" : "walking",
+      "time" : 6.84,
+      "x" : 645.449560085522,
+      "y" : 324.84612171395213
+    },
+    {
+      "column" : 8,
+      "facing" : 7,
+      "frame" : 22,
+      "phase" : 0.8755358408443582,
+      "state" : "walking",
+      "time" : 6.96,
+      "x" : 648.7213087917762,
+      "y" : 320.6521010611058
+    },
+    {
+      "column" : 3,
+      "facing" : 7,
+      "frame" : 7,
+      "phase" : 0.2507411064588834,
+      "state" : "walking",
+      "time" : 7.08,
+      "x" : 652.0888553074532,
+      "y" : 316.4763828414609
+    },
+    {
+      "column" : 6,
+      "facing" : 5,
+      "frame" : 16,
+      "phase" : 0.6257752505261239,
+      "state" : "walking",
+      "time" : 7.2,
+      "x" : 654.9894204383977,
+      "y" : 313.01263372669814
+    },
+    {
+      "column" : 1,
+      "facing" : 5,
+      "frame" : 1,
+      "phase" : 0.0005560474439244937,
+      "state" : "walking",
+      "time" : 7.32,
+      "x" : 651.519340746516,
+      "y" : 317.1618411591928
+    },
+    {
+      "column" : 4,
+      "facing" : 5,
+      "frame" : 10,
+      "phase" : 0.3754103449543429,
+      "state" : "walking",
+      "time" : 7.44,
+      "x" : 648.1764306943742,
+      "y" : 321.3380171582846
+    },
+    {
+      "column" : 7,
+      "facing" : 5,
+      "frame" : 19,
+      "phase" : 0.7503306216481013,
+      "state" : "walking",
+      "time" : 7.5600000000000005,
+      "x" : 644.9199074529402,
+      "y" : 325.5320754415752
+    },
+    {
+      "column" : 2,
+      "facing" : 5,
+      "frame" : 4,
+      "phase" : 0.12531006792111063,
+      "state" : "walking",
+      "time" : 7.68,
+      "x" : 641.7105514715506,
+      "y" : 329.73597678118324
+    },
+    {
+      "column" : 5,
+      "facing" : 5,
+      "frame" : 13,
+      "phase" : 0.5003553028534391,
+      "state" : "walking",
+      "time" : 7.8,
+      "x" : 638.5098849831865,
+      "y" : 333.9423774279047
+    },
+    {
+      "column" : 8,
+      "facing" : 5,
+      "frame" : 22,
+      "phase" : 0.8754688901006181,
+      "state" : "walking",
+      "time" : 7.92,
+      "x" : 635.2795675517448,
+      "y" : 338.1439776311649
+    },
+    {
+      "column" : 3,
+      "facing" : 5,
+      "frame" : 7,
+      "phase" : 0.25064518654055473,
+      "state" : "walking",
+      "time" : 8.040000000000001,
+      "x" : 631.9806735484228,
+      "y" : 342.3330274612795
+    },
+    {
+      "column" : 6,
+      "facing" : 5,
+      "frame" : 16,
+      "phase" : 0.625876512603881,
+      "state" : "walking",
+      "time" : 8.16,
+      "x" : 628.5730310603932,
+      "y" : 346.50093970165176
+    },
+    {
+      "column" : 1,
+      "facing" : 5,
+      "frame" : 1,
+      "phase" : 0.0010654793123615984,
+      "state" : "walking",
+      "time" : 8.28,
+      "x" : 625.0251553121733,
+      "y" : 350.63894474186367
+    },
+    {
+      "column" : 4,
+      "facing" : 5,
+      "frame" : 10,
+      "phase" : 0.376188884994382,
+      "state" : "walking",
+      "time" : 8.4,
+      "x" : 621.3628381264867,
+      "y" : 354.7511191883908
+    },
+    {
+      "column" : 7,
+      "facing" : 5,
+      "frame" : 19,
+      "phase" : 0.751225951552397,
+      "state" : "walking",
+      "time" : 8.52,
+      "x" : 617.637798453641,
+      "y" : 358.8480693483152
+    },
+    {
+      "column" : 2,
+      "facing" : 5,
+      "frame" : 4,
+      "phase" : 0.12618174951684105,
+      "state" : "walking",
+      "time" : 8.64,
+      "x" : 613.9020785202923,
+      "y" : 362.94151389725715
+    },
+    {
+      "column" : 5,
+      "facing" : 5,
+      "frame" : 13,
+      "phase" : 0.5010545857042317,
+      "state" : "walking",
+      "time" : 8.76,
+      "x" : 610.2078587683475,
+      "y" : 367.0432386087992
+    },
+    {
+      "column" : 8,
+      "facing" : 5,
+      "frame" : 22,
+      "phase" : 0.8758543279667421,
+      "state" : "walking",
+      "time" : 8.88,
+      "x" : 606.6068062438375,
+      "y" : 371.16459620159026
+    },
+    {
+      "column" : 3,
+      "facing" : 5,
+      "frame" : 7,
+      "phase" : 0.25054418218550484,
+      "state" : "walking",
+      "time" : 9,
+      "x" : 603.1500402693094,
+      "y" : 375.31517488589355
+    },
+    {
+      "column" : 6,
+      "facing" : 5,
+      "frame" : 16,
+      "phase" : 0.6251753518964094,
+      "state" : "walking",
+      "time" : 9.120000000000001,
+      "x" : 599.8824443892802,
+      "y" : 379.50304045606066
+    },
+    {
+      "column" : 8,
+      "facing" : 5,
+      "frame" : 24,
+      "phase" : 0.9998706619485725,
+      "state" : "walking",
+      "time" : 9.24,
+      "x" : 596.812501134989,
+      "y" : 383.72904585363295
+    },
+    {
+      "column" : 3,
+      "facing" : 5,
+      "frame" : 9,
+      "phase" : 0.37465720431429145,
+      "state" : "walking",
+      "time" : 9.36,
+      "x" : 593.8966252391452,
+      "y" : 387.9835129471323
+    },
+    {
+      "column" : 6,
+      "facing" : 5,
+      "frame" : 18,
+      "phase" : 0.7495286736838717,
+      "state" : "walking",
+      "time" : 9.48,
+      "x" : 591.0824444652424,
+      "y" : 392.25620653680585
+    },
+    {
+      "column" : 1,
+      "facing" : 5,
+      "frame" : 3,
+      "phase" : 0.12449308587813827,
+      "state" : "walking",
+      "time" : 9.6,
+      "x" : 588.3214135177988,
+      "y" : 396.5387651503632
+    },
+    {
+      "column" : 4,
+      "facing" : 5,
+      "frame" : 12,
+      "phase" : 0.4995379566780945,
+      "state" : "walking",
+      "time" : 9.72,
+      "x" : 585.5657726391415,
+      "y" : 400.82320372074645
+    },
+    {
+      "column" : 7,
+      "facing" : 5,
+      "frame" : 21,
+      "phase" : 0.8746648823253267,
+      "state" : "walking",
+      "time" : 9.84,
+      "x" : 582.7648640625858,
+      "y" : 405.10129742521707
+    },
+    {
+      "column" : 2,
+      "facing" : 5,
+      "frame" : 6,
+      "phase" : 0.24990829830602243,
+      "state" : "walking",
+      "time" : 9.96,
+      "x" : 579.861037080272,
+      "y" : 409.363584115572
+    },
+    {
+      "column" : 6,
+      "facing" : 5,
+      "frame" : 16,
+      "phase" : 0.6251524538376287,
+      "state" : "walking",
+      "time" : 10.08,
+      "x" : 576.8062274372793,
+      "y" : 413.5993861065759
+    },
+    {
+      "column" : 1,
+      "facing" : 5,
+      "frame" : 1,
+      "phase" : 0.00032303498553432064,
+      "state" : "walking",
+      "time" : 10.200000000000001,
+      "x" : 573.6188403172057,
+      "y" : 417.8098436520754
+    },
+    {
+      "column" : 4,
+      "facing" : 5,
+      "frame" : 10,
+      "phase" : 0.37544057639875444,
+      "state" : "walking",
+      "time" : 10.32,
+      "x" : 570.3494232523326,
+      "y" : 422.0039012336988
+    },
+    {
+      "column" : 7,
+      "facing" : 5,
+      "frame" : 19,
+      "phase" : 0.7505175085028052,
+      "state" : "walking",
+      "time" : 10.44,
+      "x" : 567.0221170755541,
+      "y" : 426.1860562987484
+    },
+    {
+      "column" : 2,
+      "facing" : 5,
+      "frame" : 4,
+      "phase" : 0.12557421612383735,
+      "state" : "walking",
+      "time" : 10.56,
+      "x" : 563.6535092722897,
+      "y" : 430.3596848621419
+    },
+    {
+      "column" : 5,
+      "facing" : 5,
+      "frame" : 13,
+      "phase" : 0.5006023085346953,
+      "state" : "walking",
+      "time" : 10.68,
+      "x" : 560.2587939289999,
+      "y" : 434.52765708518973
+    },
+    {
+      "column" : 8,
+      "facing" : 5,
+      "frame" : 22,
+      "phase" : 0.8755533360093347,
+      "state" : "walking",
+      "time" : 10.8,
+      "x" : 556.8587220664579,
+      "y" : 438.6935409661634
+    },
+    {
+      "column" : 2,
+      "facing" : 4,
+      "frame" : 6,
+      "phase" : 0.2420985812022233,
+      "state" : "walking",
+      "time" : 10.92,
+      "x" : 555.7864744203141,
+      "y" : 442.8775198263295
+    },
+    {
+      "column" : 5,
+      "facing" : 4,
+      "frame" : 15,
+      "phase" : 0.616849328244245,
+      "state" : "walking",
+      "time" : 11.040000000000001,
+      "x" : 557.5292684939031,
+      "y" : 447.28909849600086
+    },
+    {
+      "column" : 8,
+      "facing" : 4,
+      "frame" : 24,
+      "phase" : 0.9918298673995712,
+      "state" : "walking",
+      "time" : 11.16,
+      "x" : 559.1975234576286,
+      "y" : 451.71087612494165
+    },
+    {
+      "column" : 3,
+      "facing" : 4,
+      "frame" : 9,
+      "phase" : 0.3669335568701039,
+      "state" : "walking",
+      "time" : 11.28,
+      "x" : 560.8710735681432,
+      "y" : 456.13363782077363
+    },
+    {
+      "column" : 6,
+      "facing" : 4,
+      "frame" : 18,
+      "phase" : 0.7419335568701229,
+      "state" : "walking",
+      "time" : 11.4,
+      "x" : 562.6045899800484,
+      "y" : 460.5493744764647
+    },
+    {
+      "column" : 1,
+      "facing" : 4,
+      "frame" : 3,
+      "phase" : 0.11712280158136441,
+      "state" : "walking",
+      "time" : 11.52,
+      "x" : 564.4394372100897,
+      "y" : 464.9570675862171
+    },
+    {
+      "column" : 4,
+      "facing" : 4,
+      "frame" : 12,
+      "phase" : 0.4924542413400464,
+      "state" : "walking",
+      "time" : 11.64,
+      "x" : 566.3525007056686,
+      "y" : 469.3581231137947
+    },
+    {
+      "column" : 7,
+      "facing" : 4,
+      "frame" : 21,
+      "phase" : 0.8674542413400322,
+      "state" : "walking",
+      "time" : 11.76,
+      "x" : 568.4503466165597,
+      "y" : 473.73416706164755
+    },
+    {
+      "column" : 2,
+      "facing" : 4,
+      "frame" : 6,
+      "phase" : 0.2429608333412432,
+      "state" : "walking",
+      "time" : 11.88,
+      "x" : 570.7440399170874,
+      "y" : 478.0911290605254
+    }
+  ],
+  "phasePreservingTurns" : [
+    {
+      "column" : 3,
+      "facing" : 0,
+      "frame" : 7,
+      "phase" : 0.25
+    },
+    {
+      "column" : 4,
+      "facing" : 0,
+      "frame" : 10,
+      "phase" : 0.375
+    },
+    {
+      "column" : 5,
+      "facing" : 0,
+      "frame" : 13,
+      "phase" : 0.5
+    },
+    {
+      "column" : 6,
+      "facing" : 0,
+      "frame" : 16,
+      "phase" : 0.625
+    },
+    {
+      "column" : 7,
+      "facing" : 4,
+      "frame" : 19,
+      "phase" : 0.75
+    },
+    {
+      "column" : 8,
+      "facing" : 4,
+      "frame" : 22,
+      "phase" : 0.875
+    },
+    {
+      "column" : 1,
+      "facing" : 4,
+      "frame" : 1,
+      "phase" : 0
+    },
+    {
+      "column" : 2,
+      "facing" : 4,
+      "frame" : 4,
+      "phase" : 0.125
+    },
+    {
+      "column" : 3,
+      "facing" : 3,
+      "frame" : 7,
+      "phase" : 0.25
+    },
+    {
+      "column" : 4,
+      "facing" : 3,
+      "frame" : 10,
+      "phase" : 0.375
+    },
+    {
+      "column" : 5,
+      "facing" : 3,
+      "frame" : 13,
+      "phase" : 0.5
+    },
+    {
+      "column" : 6,
+      "facing" : 3,
+      "frame" : 16,
+      "phase" : 0.625
+    },
+    {
+      "column" : 7,
+      "facing" : 7,
+      "frame" : 19,
+      "phase" : 0.75
+    },
+    {
+      "column" : 8,
+      "facing" : 7,
+      "frame" : 22,
+      "phase" : 0.875
+    },
+    {
+      "column" : 1,
+      "facing" : 7,
+      "frame" : 1,
+      "phase" : 0
+    },
+    {
+      "column" : 2,
+      "facing" : 7,
+      "frame" : 4,
+      "phase" : 0.125
+    },
+    {
+      "column" : 3,
+      "facing" : 2,
+      "frame" : 7,
+      "phase" : 0.25
+    },
+    {
+      "column" : 4,
+      "facing" : 2,
+      "frame" : 10,
+      "phase" : 0.375
+    },
+    {
+      "column" : 5,
+      "facing" : 2,
+      "frame" : 13,
+      "phase" : 0.5
+    },
+    {
+      "column" : 6,
+      "facing" : 2,
+      "frame" : 16,
+      "phase" : 0.625
+    },
+    {
+      "column" : 7,
+      "facing" : 6,
+      "frame" : 19,
+      "phase" : 0.75
+    },
+    {
+      "column" : 8,
+      "facing" : 6,
+      "frame" : 22,
+      "phase" : 0.875
+    },
+    {
+      "column" : 1,
+      "facing" : 6,
+      "frame" : 1,
+      "phase" : 0
+    },
+    {
+      "column" : 2,
+      "facing" : 6,
+      "frame" : 4,
+      "phase" : 0.125
+    },
+    {
+      "column" : 3,
+      "facing" : 1,
+      "frame" : 7,
+      "phase" : 0.25
+    },
+    {
+      "column" : 4,
+      "facing" : 1,
+      "frame" : 10,
+      "phase" : 0.375
+    },
+    {
+      "column" : 5,
+      "facing" : 1,
+      "frame" : 13,
+      "phase" : 0.5
+    },
+    {
+      "column" : 6,
+      "facing" : 1,
+      "frame" : 16,
+      "phase" : 0.625
+    },
+    {
+      "column" : 7,
+      "facing" : 5,
+      "frame" : 19,
+      "phase" : 0.75
+    },
+    {
+      "column" : 8,
+      "facing" : 5,
+      "frame" : 22,
+      "phase" : 0.875
+    },
+    {
+      "column" : 1,
+      "facing" : 5,
+      "frame" : 1,
+      "phase" : 0
+    },
+    {
+      "column" : 2,
+      "facing" : 5,
+      "frame" : 4,
+      "phase" : 0.125
+    },
+    {
+      "column" : 3,
+      "facing" : 1,
+      "frame" : 7,
+      "phase" : 0.25
+    },
+    {
+      "column" : 4,
+      "facing" : 1,
+      "frame" : 10,
+      "phase" : 0.375
+    },
+    {
+      "column" : 5,
+      "facing" : 1,
+      "frame" : 13,
+      "phase" : 0.5
+    },
+    {
+      "column" : 6,
+      "facing" : 1,
+      "frame" : 16,
+      "phase" : 0.625
+    },
+    {
+      "column" : 7,
+      "facing" : 6,
+      "frame" : 19,
+      "phase" : 0.75
+    },
+    {
+      "column" : 8,
+      "facing" : 6,
+      "frame" : 22,
+      "phase" : 0.875
+    },
+    {
+      "column" : 1,
+      "facing" : 6,
+      "frame" : 1,
+      "phase" : 0
+    },
+    {
+      "column" : 2,
+      "facing" : 6,
+      "frame" : 4,
+      "phase" : 0.125
+    },
+    {
+      "column" : 3,
+      "facing" : 2,
+      "frame" : 7,
+      "phase" : 0.25
+    },
+    {
+      "column" : 4,
+      "facing" : 2,
+      "frame" : 10,
+      "phase" : 0.375
+    },
+    {
+      "column" : 5,
+      "facing" : 2,
+      "frame" : 13,
+      "phase" : 0.5
+    },
+    {
+      "column" : 6,
+      "facing" : 2,
+      "frame" : 16,
+      "phase" : 0.625
+    },
+    {
+      "column" : 7,
+      "facing" : 7,
+      "frame" : 19,
+      "phase" : 0.75
+    },
+    {
+      "column" : 8,
+      "facing" : 7,
+      "frame" : 22,
+      "phase" : 0.875
+    },
+    {
+      "column" : 1,
+      "facing" : 7,
+      "frame" : 1,
+      "phase" : 0
+    },
+    {
+      "column" : 2,
+      "facing" : 7,
+      "frame" : 4,
+      "phase" : 0.125
+    },
+    {
+      "column" : 3,
+      "facing" : 3,
+      "frame" : 7,
+      "phase" : 0.25
+    },
+    {
+      "column" : 4,
+      "facing" : 3,
+      "frame" : 10,
+      "phase" : 0.375
+    },
+    {
+      "column" : 5,
+      "facing" : 3,
+      "frame" : 13,
+      "phase" : 0.5
+    },
+    {
+      "column" : 6,
+      "facing" : 3,
+      "frame" : 16,
+      "phase" : 0.625
+    },
+    {
+      "column" : 7,
+      "facing" : 4,
+      "frame" : 19,
+      "phase" : 0.75
+    },
+    {
+      "column" : 8,
+      "facing" : 4,
+      "frame" : 22,
+      "phase" : 0.875
+    },
+    {
+      "column" : 1,
+      "facing" : 4,
+      "frame" : 1,
+      "phase" : 0
+    },
+    {
+      "column" : 2,
+      "facing" : 4,
+      "frame" : 4,
+      "phase" : 0.125
+    },
+    {
+      "column" : 3,
+      "facing" : 0,
+      "frame" : 7,
+      "phase" : 0.25
+    },
+    {
+      "column" : 4,
+      "facing" : 0,
+      "frame" : 10,
+      "phase" : 0.375
+    },
+    {
+      "column" : 5,
+      "facing" : 0,
+      "frame" : 13,
+      "phase" : 0.5
+    },
+    {
+      "column" : 6,
+      "facing" : 0,
+      "frame" : 16,
+      "phase" : 0.625
+    },
+    {
+      "column" : 7,
+      "facing" : 5,
+      "frame" : 19,
+      "phase" : 0.75
+    },
+    {
+      "column" : 8,
+      "facing" : 5,
+      "frame" : 22,
+      "phase" : 0.875
+    },
+    {
+      "column" : 1,
+      "facing" : 5,
+      "frame" : 1,
+      "phase" : 0
+    },
+    {
+      "column" : 2,
+      "facing" : 5,
+      "frame" : 4,
+      "phase" : 0.125
+    }
+  ],
+  "renderCadenceCases" : 24,
+  "simulatorExecuted" : false,
+  "specifiedPaths" : 8,
+  "status" : "pass",
+  "stopCommandPhases" : 64
+}

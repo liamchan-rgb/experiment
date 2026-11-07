@@ -1,0 +1,99 @@
+{
+  "date": "2026-10-24",
+  "artCommit": "6fef130da1e1cfbeb09f8d6fb2f6df5a863b994e",
+  "verified": true,
+  "artApproval": null,
+  "direction": "down",
+  "authorAndReviewer": "root",
+  "subagentsUsed": false,
+  "reviewScope": "Six blue-eye sword-on combinations all13 complete1x/2x; neutral13 poses, specified start-stop order and actual GIF decoded boundary frames. Still viewer only; no continuous playback claim.",
+  "old9CompositePosesUnchanged": 324,
+  "newTransitionPoses": 4,
+  "actualCompositorPoses": 468,
+  "reexportByteIdenticalFiles": 984,
+  "remotePackageClosurePaths": 1012,
+  "allDeclaredDependenciesByteMatched": true,
+  "downSourceSyncResolved": true,
+  "previouslyMissingSourcePathsResolved": 560,
+  "historicalSourceAndReviewPathsByteChecked": 1242,
+  "publicOfflineDependenciesUnchanged": 6,
+  "existingTests": {
+    "contract": 26,
+    "compositor": 21
+  },
+  "runtimeIntegrated": false,
+  "ipaBuilt": false,
+  "files": [
+    {
+      "file": "Art/Review/P1/modular-down-transitions-v1/outfits-start-stop-120ms.gif",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/6fef130da1e1cfbeb09f8d6fb2f6df5a863b994e/Art/Review/P1/modular-down-transitions-v1/outfits-start-stop-120ms.gif",
+      "httpStatus": 200,
+      "mime": "image/gif",
+      "bytes": 619462,
+      "sha256": "5b5acdae3ce59f9ae20478f493873f242f18b309117e02c2fb81fc2a14638adb",
+      "dimensions": [
+        1024,
+        512
+      ],
+      "durationsMs": [
+        480,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        480
+      ]
+    },
+    {
+      "file": "Art/Review/P1/modular-down-transitions-v1/outfits-walk-120ms.gif",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/6fef130da1e1cfbeb09f8d6fb2f6df5a863b994e/Art/Review/P1/modular-down-transitions-v1/outfits-walk-120ms.gif",
+      "httpStatus": 200,
+      "mime": "image/gif",
+      "bytes": 222962,
+      "sha256": "da9eeb97d3dd4e741d4f1eeb11cd079e3c31267e6b839cf8dded7ce5e66638f7",
+      "dimensions": [
+        1024,
+        512
+      ],
+      "durationsMs": [
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120
+      ]
+    },
+    {
+      "file": "Art/Review/P1/modular-down-transitions-v1/outfits-idle-2x.png",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/6fef130da1e1cfbeb09f8d6fb2f6df5a863b994e/Art/Review/P1/modular-down-transitions-v1/outfits-idle-2x.png",
+      "httpStatus": 200,
+      "mime": "image/png",
+      "bytes": 31602,
+      "sha256": "00b6b574d219b11f415bb6ac771c8e20d0f5ee8b41db5103972ddea5c1b86500",
+      "dimensions": [
+        1024,
+        512
+      ],
+      "durationsMs": null
+    }
+  ]
+}

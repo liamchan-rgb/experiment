@@ -1,0 +1,116 @@
+{
+  "date": "2026-10-26",
+  "deliveryCommit": "ca7f285b5140dcc9c438fe81dd5b45041b78a6d9",
+  "sourceCommit": "4bc9855e4fe71b39022095741e64a95b05b3e133",
+  "selectedPathsChecked": 104,
+  "compiledInputsChecked": 244,
+  "publicCompleteGETs": [
+    {
+      "path": "Downloads/MeadowJourney-b48.ipa",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ca7f285b5140dcc9c438fe81dd5b45041b78a6d9/Downloads/MeadowJourney-b48.ipa",
+      "status": 200,
+      "mime": "application/octet-stream",
+      "bytes": 31844500,
+      "sha256": "2f4bf3dbf66522c5dea71e55b93343f3734241d04c3148ce1d93ae2b3b7d155f"
+    },
+    {
+      "path": "Downloads/MeadowJourney-b48.ipa",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/fix/build33-face-grounding-camera/Downloads/MeadowJourney-b48.ipa",
+      "status": 200,
+      "mime": "application/octet-stream",
+      "bytes": 31844500,
+      "sha256": "2f4bf3dbf66522c5dea71e55b93343f3734241d04c3148ce1d93ae2b3b7d155f"
+    },
+    {
+      "path": "Art/Review/Battle/poly-dice-demo-v1/types-normal.gif",
+      "url": "https://cdn.jsdelivr.net/gh/liamchan-rgb/experiment@ca7f285b5140dcc9c438fe81dd5b45041b78a6d9/Art/Review/Battle/poly-dice-demo-v1/types-normal.gif",
+      "status": 200,
+      "mime": "image/gif",
+      "bytes": 3276659,
+      "sha256": "0ba2a62dbc925ce39ce4f8ce9502cfbcbf11805a298cab0451d8ff4c2e52bf73",
+      "frames": 180,
+      "durationMs": 3600
+    },
+    {
+      "path": "Art/Review/Battle/poly-dice-demo-v1/bonus-normal.gif",
+      "url": "https://cdn.jsdelivr.net/gh/liamchan-rgb/experiment@ca7f285b5140dcc9c438fe81dd5b45041b78a6d9/Art/Review/Battle/poly-dice-demo-v1/bonus-normal.gif",
+      "status": 200,
+      "mime": "image/gif",
+      "bytes": 2053344,
+      "sha256": "c209712d5f036956f2bc95d9fb910eadf315e4a2f7f4427040c198133a647f4c",
+      "frames": 180,
+      "durationMs": 3600
+    },
+    {
+      "path": "Art/Review/Battle/poly-dice-demo-v1/attack-buff-normal.gif",
+      "url": "https://cdn.jsdelivr.net/gh/liamchan-rgb/experiment@ca7f285b5140dcc9c438fe81dd5b45041b78a6d9/Art/Review/Battle/poly-dice-demo-v1/attack-buff-normal.gif",
+      "status": 200,
+      "mime": "image/gif",
+      "bytes": 13279318,
+      "sha256": "ea9c890b8ebe12b77e54ffd9a3b5e36a481ea94c92dcbe484652e6f499b3a500",
+      "frames": 300,
+      "durationMs": 6000
+    },
+    {
+      "path": "Art/Review/Battle/poly-dice-demo-v1/support-normal.gif",
+      "url": "https://cdn.jsdelivr.net/gh/liamchan-rgb/experiment@ca7f285b5140dcc9c438fe81dd5b45041b78a6d9/Art/Review/Battle/poly-dice-demo-v1/support-normal.gif",
+      "status": 200,
+      "mime": "image/gif",
+      "bytes": 7628023,
+      "sha256": "89c945bbbf1cc63506f38bbbf8d7f1267ed385962c9f787d555d34239b0241e6",
+      "frames": 190,
+      "durationMs": 3800
+    },
+    {
+      "path": "Art/Review/Battle/poly-dice-demo-v1/attack-buff-standing.png",
+      "url": "https://cdn.jsdelivr.net/gh/liamchan-rgb/experiment@ca7f285b5140dcc9c438fe81dd5b45041b78a6d9/Art/Review/Battle/poly-dice-demo-v1/attack-buff-standing.png",
+      "status": 200,
+      "mime": "image/png",
+      "bytes": 1845186,
+      "sha256": "71e5764b73312c5d10cd596ee65d7ef071c00ebc190f150faeabf08f7425d2ee"
+    },
+    {
+      "path": "Art/Review/Battle/poly-dice-demo-v1/attack-buff-rolling.png",
+      "url": "https://cdn.jsdelivr.net/gh/liamchan-rgb/experiment@ca7f285b5140dcc9c438fe81dd5b45041b78a6d9/Art/Review/Battle/poly-dice-demo-v1/attack-buff-rolling.png",
+      "status": 200,
+      "mime": "image/png",
+      "bytes": 1810404,
+      "sha256": "836ed19edb045c433e822672663ccb02f6e811b294b1a463b12f3b028518110f"
+    },
+    {
+      "path": "Art/Review/Battle/poly-dice-demo-v1/attack-buff-settled.png",
+      "url": "https://cdn.jsdelivr.net/gh/liamchan-rgb/experiment@ca7f285b5140dcc9c438fe81dd5b45041b78a6d9/Art/Review/Battle/poly-dice-demo-v1/attack-buff-settled.png",
+      "status": 200,
+      "mime": "image/png",
+      "bytes": 1844574,
+      "sha256": "28720cfeed0b81549ae58ac576eb7bd9e24a53c07a47713582372e84a0b9566c"
+    },
+    {
+      "path": "Art/Review/Battle/poly-dice-demo-v1/types-landed.png",
+      "url": "https://cdn.jsdelivr.net/gh/liamchan-rgb/experiment@ca7f285b5140dcc9c438fe81dd5b45041b78a6d9/Art/Review/Battle/poly-dice-demo-v1/types-landed.png",
+      "status": 200,
+      "mime": "image/png",
+      "bytes": 90501,
+      "sha256": "eaa2444a1602caae06790d469f77c7be27dd27816a6dcf8ad0e03eba66c2f1c0"
+    },
+    {
+      "path": "Art/Review/Battle/poly-dice-demo-v1/bonus-landed.png",
+      "url": "https://cdn.jsdelivr.net/gh/liamchan-rgb/experiment@ca7f285b5140dcc9c438fe81dd5b45041b78a6d9/Art/Review/Battle/poly-dice-demo-v1/bonus-landed.png",
+      "status": 200,
+      "mime": "image/png",
+      "bytes": 99380,
+      "sha256": "6ab93767a053e54e10779dea86e7b7076cb3f0e5895cfaebd5e792bbc208eb4d"
+    },
+    {
+      "path": "Art/Review/Battle/poly-dice-demo-v1/support-held.png",
+      "url": "https://cdn.jsdelivr.net/gh/liamchan-rgb/experiment@ca7f285b5140dcc9c438fe81dd5b45041b78a6d9/Art/Review/Battle/poly-dice-demo-v1/support-held.png",
+      "status": 200,
+      "mime": "image/png",
+      "bytes": 1796218,
+      "sha256": "fe092954b4a76df8821a40b6a251b9ec2af503ec52be733fe725c18f98bb7022"
+    }
+  ],
+  "simulatorRun": false,
+  "deviceRun": false,
+  "newArtApproval": null
+}

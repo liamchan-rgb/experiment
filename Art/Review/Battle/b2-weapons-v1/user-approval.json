@@ -1,0 +1,16 @@
+{
+  "date": "2026-10-27",
+  "userMessage": "没问题，之前的弓箭战斗持弓姿势需要改一下，手和弓对不上",
+  "approvedScope": [
+    "上一轮展示的重剑重斩离线演出",
+    "上一轮展示的传奇权杖施法离线演出"
+  ],
+  "candidateCommit": "a26ff2a066099fdca958fdcd07552ffcabc3b18b",
+  "resourceRevisionSHA256": "b2db514f0ee2a5a8ebce86ff6e5ad078ae1203603c3527d5a9cbc7ce3410c915",
+  "notImplied": [
+    "新武器演出已集成 demo",
+    "未展示的两甲其他部分",
+    "猎弓战斗持弓姿势已通过"
+  ],
+  "nextFeedback": "猎弓战斗持弓时手和弓错位，需修复"
+}

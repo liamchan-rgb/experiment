@@ -1,0 +1,1076 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "p1-eight-way-hair-silver-v1",
+  "version": "1.0.0",
+  "part": "hair",
+  "compatibility": {
+    "rig": "p1-chibi-v1",
+    "bodyProfile": "p1-standard",
+    "actionSet": "locomotion-v1"
+  },
+  "mode": "head-local",
+  "slots": [
+    "hair.front"
+  ],
+  "directions": [
+    "down",
+    "down-left",
+    "left",
+    "up-left",
+    "up",
+    "up-right",
+    "right",
+    "down-right"
+  ],
+  "clips": [
+    "idle",
+    "walk",
+    "walk-start",
+    "walk-stop"
+  ],
+  "sourceFiles": [
+    "authoring.json",
+    "editable/down-idle-00.ora",
+    "editable/down-idle-00.svg",
+    "editable/down-walk-01.ora",
+    "editable/down-walk-01.svg",
+    "editable/down-walk-02.ora",
+    "editable/down-walk-02.svg",
+    "editable/down-walk-03.ora",
+    "editable/down-walk-03.svg",
+    "editable/down-walk-04.ora",
+    "editable/down-walk-04.svg",
+    "editable/down-walk-05.ora",
+    "editable/down-walk-05.svg",
+    "editable/down-walk-06.ora",
+    "editable/down-walk-06.svg",
+    "editable/down-walk-07.ora",
+    "editable/down-walk-07.svg",
+    "editable/down-walk-08.ora",
+    "editable/down-walk-08.svg",
+    "editable/down-walk-start-01.ora",
+    "editable/down-walk-start-01.svg",
+    "editable/down-walk-start-02.ora",
+    "editable/down-walk-start-02.svg",
+    "editable/down-walk-stop-01.ora",
+    "editable/down-walk-stop-01.svg",
+    "editable/down-walk-stop-02.ora",
+    "editable/down-walk-stop-02.svg",
+    "editable/down-left-idle-00.ora",
+    "editable/down-left-idle-00.svg",
+    "editable/down-left-walk-01.ora",
+    "editable/down-left-walk-01.svg",
+    "editable/down-left-walk-02.ora",
+    "editable/down-left-walk-02.svg",
+    "editable/down-left-walk-03.ora",
+    "editable/down-left-walk-03.svg",
+    "editable/down-left-walk-04.ora",
+    "editable/down-left-walk-04.svg",
+    "editable/down-left-walk-05.ora",
+    "editable/down-left-walk-05.svg",
+    "editable/down-left-walk-06.ora",
+    "editable/down-left-walk-06.svg",
+    "editable/down-left-walk-07.ora",
+    "editable/down-left-walk-07.svg",
+    "editable/down-left-walk-08.ora",
+    "editable/down-left-walk-08.svg",
+    "editable/down-left-walk-start-01.ora",
+    "editable/down-left-walk-start-01.svg",
+    "editable/down-left-walk-start-02.ora",
+    "editable/down-left-walk-start-02.svg",
+    "editable/down-left-walk-stop-01.ora",
+    "editable/down-left-walk-stop-01.svg",
+    "editable/down-left-walk-stop-02.ora",
+    "editable/down-left-walk-stop-02.svg",
+    "editable/left-idle-00.ora",
+    "editable/left-idle-00.svg",
+    "editable/left-walk-01.ora",
+    "editable/left-walk-01.svg",
+    "editable/left-walk-02.ora",
+    "editable/left-walk-02.svg",
+    "editable/left-walk-03.ora",
+    "editable/left-walk-03.svg",
+    "editable/left-walk-04.ora",
+    "editable/left-walk-04.svg",
+    "editable/left-walk-05.ora",
+    "editable/left-walk-05.svg",
+    "editable/left-walk-06.ora",
+    "editable/left-walk-06.svg",
+    "editable/left-walk-07.ora",
+    "editable/left-walk-07.svg",
+    "editable/left-walk-08.ora",
+    "editable/left-walk-08.svg",
+    "editable/left-walk-start-01.ora",
+    "editable/left-walk-start-01.svg",
+    "editable/left-walk-start-02.ora",
+    "editable/left-walk-start-02.svg",
+    "editable/left-walk-stop-01.ora",
+    "editable/left-walk-stop-01.svg",
+    "editable/left-walk-stop-02.ora",
+    "editable/left-walk-stop-02.svg",
+    "editable/up-left-idle-00.ora",
+    "editable/up-left-idle-00.svg",
+    "editable/up-left-walk-01.ora",
+    "editable/up-left-walk-01.svg",
+    "editable/up-left-walk-02.ora",
+    "editable/up-left-walk-02.svg",
+    "editable/up-left-walk-03.ora",
+    "editable/up-left-walk-03.svg",
+    "editable/up-left-walk-04.ora",
+    "editable/up-left-walk-04.svg",
+    "editable/up-left-walk-05.ora",
+    "editable/up-left-walk-05.svg",
+    "editable/up-left-walk-06.ora",
+    "editable/up-left-walk-06.svg",
+    "editable/up-left-walk-07.ora",
+    "editable/up-left-walk-07.svg",
+    "editable/up-left-walk-08.ora",
+    "editable/up-left-walk-08.svg",
+    "editable/up-left-walk-start-01.ora",
+    "editable/up-left-walk-start-01.svg",
+    "editable/up-left-walk-start-02.ora",
+    "editable/up-left-walk-start-02.svg",
+    "editable/up-left-walk-stop-01.ora",
+    "editable/up-left-walk-stop-01.svg",
+    "editable/up-left-walk-stop-02.ora",
+    "editable/up-left-walk-stop-02.svg",
+    "editable/up-idle-00.ora",
+    "editable/up-idle-00.svg",
+    "editable/up-walk-01.ora",
+    "editable/up-walk-01.svg",
+    "editable/up-walk-02.ora",
+    "editable/up-walk-02.svg",
+    "editable/up-walk-03.ora",
+    "editable/up-walk-03.svg",
+    "editable/up-walk-04.ora",
+    "editable/up-walk-04.svg",
+    "editable/up-walk-05.ora",
+    "editable/up-walk-05.svg",
+    "editable/up-walk-06.ora",
+    "editable/up-walk-06.svg",
+    "editable/up-walk-07.ora",
+    "editable/up-walk-07.svg",
+    "editable/up-walk-08.ora",
+    "editable/up-walk-08.svg",
+    "editable/up-walk-start-01.ora",
+    "editable/up-walk-start-01.svg",
+    "editable/up-walk-start-02.ora",
+    "editable/up-walk-start-02.svg",
+    "editable/up-walk-stop-01.ora",
+    "editable/up-walk-stop-01.svg",
+    "editable/up-walk-stop-02.ora",
+    "editable/up-walk-stop-02.svg",
+    "editable/up-right-idle-00.ora",
+    "editable/up-right-idle-00.svg",
+    "editable/up-right-walk-01.ora",
+    "editable/up-right-walk-01.svg",
+    "editable/up-right-walk-02.ora",
+    "editable/up-right-walk-02.svg",
+    "editable/up-right-walk-03.ora",
+    "editable/up-right-walk-03.svg",
+    "editable/up-right-walk-04.ora",
+    "editable/up-right-walk-04.svg",
+    "editable/up-right-walk-05.ora",
+    "editable/up-right-walk-05.svg",
+    "editable/up-right-walk-06.ora",
+    "editable/up-right-walk-06.svg",
+    "editable/up-right-walk-07.ora",
+    "editable/up-right-walk-07.svg",
+    "editable/up-right-walk-08.ora",
+    "editable/up-right-walk-08.svg",
+    "editable/up-right-walk-start-01.ora",
+    "editable/up-right-walk-start-01.svg",
+    "editable/up-right-walk-start-02.ora",
+    "editable/up-right-walk-start-02.svg",
+    "editable/up-right-walk-stop-01.ora",
+    "editable/up-right-walk-stop-01.svg",
+    "editable/up-right-walk-stop-02.ora",
+    "editable/up-right-walk-stop-02.svg",
+    "editable/right-idle-00.ora",
+    "editable/right-idle-00.svg",
+    "editable/right-walk-01.ora",
+    "editable/right-walk-01.svg",
+    "editable/right-walk-02.ora",
+    "editable/right-walk-02.svg",
+    "editable/right-walk-03.ora",
+    "editable/right-walk-03.svg",
+    "editable/right-walk-04.ora",
+    "editable/right-walk-04.svg",
+    "editable/right-walk-05.ora",
+    "editable/right-walk-05.svg",
+    "editable/right-walk-06.ora",
+    "editable/right-walk-06.svg",
+    "editable/right-walk-07.ora",
+    "editable/right-walk-07.svg",
+    "editable/right-walk-08.ora",
+    "editable/right-walk-08.svg",
+    "editable/right-walk-start-01.ora",
+    "editable/right-walk-start-01.svg",
+    "editable/right-walk-start-02.ora",
+    "editable/right-walk-start-02.svg",
+    "editable/right-walk-stop-01.ora",
+    "editable/right-walk-stop-01.svg",
+    "editable/right-walk-stop-02.ora",
+    "editable/right-walk-stop-02.svg",
+    "editable/down-right-idle-00.ora",
+    "editable/down-right-idle-00.svg",
+    "editable/down-right-walk-01.ora",
+    "editable/down-right-walk-01.svg",
+    "editable/down-right-walk-02.ora",
+    "editable/down-right-walk-02.svg",
+    "editable/down-right-walk-03.ora",
+    "editable/down-right-walk-03.svg",
+    "editable/down-right-walk-04.ora",
+    "editable/down-right-walk-04.svg",
+    "editable/down-right-walk-05.ora",
+    "editable/down-right-walk-05.svg",
+    "editable/down-right-walk-06.ora",
+    "editable/down-right-walk-06.svg",
+    "editable/down-right-walk-07.ora",
+    "editable/down-right-walk-07.svg",
+    "editable/down-right-walk-08.ora",
+    "editable/down-right-walk-08.svg",
+    "editable/down-right-walk-start-01.ora",
+    "editable/down-right-walk-start-01.svg",
+    "editable/down-right-walk-start-02.ora",
+    "editable/down-right-walk-start-02.svg",
+    "editable/down-right-walk-stop-01.ora",
+    "editable/down-right-walk-stop-01.svg",
+    "editable/down-right-walk-stop-02.ora",
+    "editable/down-right-walk-stop-02.svg"
+  ],
+  "bindings": [
+    {
+      "direction": "down",
+      "clip": "idle",
+      "frame": 0,
+      "layers": {
+        "hair.front": "png/down/idle/00/hair.front.png"
+      }
+    },
+    {
+      "direction": "down",
+      "clip": "walk",
+      "frame": 1,
+      "layers": {
+        "hair.front": "png/down/walk/01/hair.front.png"
+      }
+    },
+    {
+      "direction": "down",
+      "clip": "walk",
+      "frame": 2,
+      "layers": {
+        "hair.front": "png/down/walk/02/hair.front.png"
+      }
+    },
+    {
+      "direction": "down",
+      "clip": "walk",
+      "frame": 3,
+      "layers": {
+        "hair.front": "png/down/walk/03/hair.front.png"
+      }
+    },
+    {
+      "direction": "down",
+      "clip": "walk",
+      "frame": 4,
+      "layers": {
+        "hair.front": "png/down/walk/04/hair.front.png"
+      }
+    },
+    {
+      "direction": "down",
+      "clip": "walk",
+      "frame": 5,
+      "layers": {
+        "hair.front": "png/down/walk/05/hair.front.png"
+      }
+    },
+    {
+      "direction": "down",
+      "clip": "walk",
+      "frame": 6,
+      "layers": {
+        "hair.front": "png/down/walk/06/hair.front.png"
+      }
+    },
+    {
+      "direction": "down",
+      "clip": "walk",
+      "frame": 7,
+      "layers": {
+        "hair.front": "png/down/walk/07/hair.front.png"
+      }
+    },
+    {
+      "direction": "down",
+      "clip": "walk",
+      "frame": 8,
+      "layers": {
+        "hair.front": "png/down/walk/08/hair.front.png"
+      }
+    },
+    {
+      "direction": "down",
+      "clip": "walk-start",
+      "frame": 1,
+      "layers": {
+        "hair.front": "png/down/walk-start/01/hair.front.png"
+      }
+    },
+    {
+      "direction": "down",
+      "clip": "walk-start",
+      "frame": 2,
+      "layers": {
+        "hair.front": "png/down/walk-start/02/hair.front.png"
+      }
+    },
+    {
+      "direction": "down",
+      "clip": "walk-stop",
+      "frame": 1,
+      "layers": {
+        "hair.front": "png/down/walk-stop/01/hair.front.png"
+      }
+    },
+    {
+      "direction": "down",
+      "clip": "walk-stop",
+      "frame": 2,
+      "layers": {
+        "hair.front": "png/down/walk-stop/02/hair.front.png"
+      }
+    },
+    {
+      "direction": "down-left",
+      "clip": "idle",
+      "frame": 0,
+      "layers": {
+        "hair.front": "png/down-left/idle/00/hair.front.png"
+      }
+    },
+    {
+      "direction": "down-left",
+      "clip": "walk",
+      "frame": 1,
+      "layers": {
+        "hair.front": "png/down-left/walk/01/hair.front.png"
+      }
+    },
+    {
+      "direction": "down-left",
+      "clip": "walk",
+      "frame": 2,
+      "layers": {
+        "hair.front": "png/down-left/walk/02/hair.front.png"
+      }
+    },
+    {
+      "direction": "down-left",
+      "clip": "walk",
+      "frame": 3,
+      "layers": {
+        "hair.front": "png/down-left/walk/03/hair.front.png"
+      }
+    },
+    {
+      "direction": "down-left",
+      "clip": "walk",
+      "frame": 4,
+      "layers": {
+        "hair.front": "png/down-left/walk/04/hair.front.png"
+      }
+    },
+    {
+      "direction": "down-left",
+      "clip": "walk",
+      "frame": 5,
+      "layers": {
+        "hair.front": "png/down-left/walk/05/hair.front.png"
+      }
+    },
+    {
+      "direction": "down-left",
+      "clip": "walk",
+      "frame": 6,
+      "layers": {
+        "hair.front": "png/down-left/walk/06/hair.front.png"
+      }
+    },
+    {
+      "direction": "down-left",
+      "clip": "walk",
+      "frame": 7,
+      "layers": {
+        "hair.front": "png/down-left/walk/07/hair.front.png"
+      }
+    },
+    {
+      "direction": "down-left",
+      "clip": "walk",
+      "frame": 8,
+      "layers": {
+        "hair.front": "png/down-left/walk/08/hair.front.png"
+      }
+    },
+    {
+      "direction": "down-left",
+      "clip": "walk-start",
+      "frame": 1,
+      "layers": {
+        "hair.front": "png/down-left/walk-start/01/hair.front.png"
+      }
+    },
+    {
+      "direction": "down-left",
+      "clip": "walk-start",
+      "frame": 2,
+      "layers": {
+        "hair.front": "png/down-left/walk-start/02/hair.front.png"
+      }
+    },
+    {
+      "direction": "down-left",
+      "clip": "walk-stop",
+      "frame": 1,
+      "layers": {
+        "hair.front": "png/down-left/walk-stop/01/hair.front.png"
+      }
+    },
+    {
+      "direction": "down-left",
+      "clip": "walk-stop",
+      "frame": 2,
+      "layers": {
+        "hair.front": "png/down-left/walk-stop/02/hair.front.png"
+      }
+    },
+    {
+      "direction": "left",
+      "clip": "idle",
+      "frame": 0,
+      "layers": {
+        "hair.front": "png/left/idle/00/hair.front.png"
+      }
+    },
+    {
+      "direction": "left",
+      "clip": "walk",
+      "frame": 1,
+      "layers": {
+        "hair.front": "png/left/walk/01/hair.front.png"
+      }
+    },
+    {
+      "direction": "left",
+      "clip": "walk",
+      "frame": 2,
+      "layers": {
+        "hair.front": "png/left/walk/02/hair.front.png"
+      }
+    },
+    {
+      "direction": "left",
+      "clip": "walk",
+      "frame": 3,
+      "layers": {
+        "hair.front": "png/left/walk/03/hair.front.png"
+      }
+    },
+    {
+      "direction": "left",
+      "clip": "walk",
+      "frame": 4,
+      "layers": {
+        "hair.front": "png/left/walk/04/hair.front.png"
+      }
+    },
+    {
+      "direction": "left",
+      "clip": "walk",
+      "frame": 5,
+      "layers": {
+        "hair.front": "png/left/walk/05/hair.front.png"
+      }
+    },
+    {
+      "direction": "left",
+      "clip": "walk",
+      "frame": 6,
+      "layers": {
+        "hair.front": "png/left/walk/06/hair.front.png"
+      }
+    },
+    {
+      "direction": "left",
+      "clip": "walk",
+      "frame": 7,
+      "layers": {
+        "hair.front": "png/left/walk/07/hair.front.png"
+      }
+    },
+    {
+      "direction": "left",
+      "clip": "walk",
+      "frame": 8,
+      "layers": {
+        "hair.front": "png/left/walk/08/hair.front.png"
+      }
+    },
+    {
+      "direction": "left",
+      "clip": "walk-start",
+      "frame": 1,
+      "layers": {
+        "hair.front": "png/left/walk-start/01/hair.front.png"
+      }
+    },
+    {
+      "direction": "left",
+      "clip": "walk-start",
+      "frame": 2,
+      "layers": {
+        "hair.front": "png/left/walk-start/02/hair.front.png"
+      }
+    },
+    {
+      "direction": "left",
+      "clip": "walk-stop",
+      "frame": 1,
+      "layers": {
+        "hair.front": "png/left/walk-stop/01/hair.front.png"
+      }
+    },
+    {
+      "direction": "left",
+      "clip": "walk-stop",
+      "frame": 2,
+      "layers": {
+        "hair.front": "png/left/walk-stop/02/hair.front.png"
+      }
+    },
+    {
+      "direction": "up-left",
+      "clip": "idle",
+      "frame": 0,
+      "layers": {
+        "hair.front": "png/up-left/idle/00/hair.front.png"
+      }
+    },
+    {
+      "direction": "up-left",
+      "clip": "walk",
+      "frame": 1,
+      "layers": {
+        "hair.front": "png/up-left/walk/01/hair.front.png"
+      }
+    },
+    {
+      "direction": "up-left",
+      "clip": "walk",
+      "frame": 2,
+      "layers": {
+        "hair.front": "png/up-left/walk/02/hair.front.png"
+      }
+    },
+    {
+      "direction": "up-left",
+      "clip": "walk",
+      "frame": 3,
+      "layers": {
+        "hair.front": "png/up-left/walk/03/hair.front.png"
+      }
+    },
+    {
+      "direction": "up-left",
+      "clip": "walk",
+      "frame": 4,
+      "layers": {
+        "hair.front": "png/up-left/walk/04/hair.front.png"
+      }
+    },
+    {
+      "direction": "up-left",
+      "clip": "walk",
+      "frame": 5,
+      "layers": {
+        "hair.front": "png/up-left/walk/05/hair.front.png"
+      }
+    },
+    {
+      "direction": "up-left",
+      "clip": "walk",
+      "frame": 6,
+      "layers": {
+        "hair.front": "png/up-left/walk/06/hair.front.png"
+      }
+    },
+    {
+      "direction": "up-left",
+      "clip": "walk",
+      "frame": 7,
+      "layers": {
+        "hair.front": "png/up-left/walk/07/hair.front.png"
+      }
+    },
+    {
+      "direction": "up-left",
+      "clip": "walk",
+      "frame": 8,
+      "layers": {
+        "hair.front": "png/up-left/walk/08/hair.front.png"
+      }
+    },
+    {
+      "direction": "up-left",
+      "clip": "walk-start",
+      "frame": 1,
+      "layers": {
+        "hair.front": "png/up-left/walk-start/01/hair.front.png"
+      }
+    },
+    {
+      "direction": "up-left",
+      "clip": "walk-start",
+      "frame": 2,
+      "layers": {
+        "hair.front": "png/up-left/walk-start/02/hair.front.png"
+      }
+    },
+    {
+      "direction": "up-left",
+      "clip": "walk-stop",
+      "frame": 1,
+      "layers": {
+        "hair.front": "png/up-left/walk-stop/01/hair.front.png"
+      }
+    },
+    {
+      "direction": "up-left",
+      "clip": "walk-stop",
+      "frame": 2,
+      "layers": {
+        "hair.front": "png/up-left/walk-stop/02/hair.front.png"
+      }
+    },
+    {
+      "direction": "up",
+      "clip": "idle",
+      "frame": 0,
+      "layers": {
+        "hair.front": "png/up/idle/00/hair.front.png"
+      }
+    },
+    {
+      "direction": "up",
+      "clip": "walk",
+      "frame": 1,
+      "layers": {
+        "hair.front": "png/up/walk/01/hair.front.png"
+      }
+    },
+    {
+      "direction": "up",
+      "clip": "walk",
+      "frame": 2,
+      "layers": {
+        "hair.front": "png/up/walk/02/hair.front.png"
+      }
+    },
+    {
+      "direction": "up",
+      "clip": "walk",
+      "frame": 3,
+      "layers": {
+        "hair.front": "png/up/walk/03/hair.front.png"
+      }
+    },
+    {
+      "direction": "up",
+      "clip": "walk",
+      "frame": 4,
+      "layers": {
+        "hair.front": "png/up/walk/04/hair.front.png"
+      }
+    },
+    {
+      "direction": "up",
+      "clip": "walk",
+      "frame": 5,
+      "layers": {
+        "hair.front": "png/up/walk/05/hair.front.png"
+      }
+    },
+    {
+      "direction": "up",
+      "clip": "walk",
+      "frame": 6,
+      "layers": {
+        "hair.front": "png/up/walk/06/hair.front.png"
+      }
+    },
+    {
+      "direction": "up",
+      "clip": "walk",
+      "frame": 7,
+      "layers": {
+        "hair.front": "png/up/walk/07/hair.front.png"
+      }
+    },
+    {
+      "direction": "up",
+      "clip": "walk",
+      "frame": 8,
+      "layers": {
+        "hair.front": "png/up/walk/08/hair.front.png"
+      }
+    },
+    {
+      "direction": "up",
+      "clip": "walk-start",
+      "frame": 1,
+      "layers": {
+        "hair.front": "png/up/walk-start/01/hair.front.png"
+      }
+    },
+    {
+      "direction": "up",
+      "clip": "walk-start",
+      "frame": 2,
+      "layers": {
+        "hair.front": "png/up/walk-start/02/hair.front.png"
+      }
+    },
+    {
+      "direction": "up",
+      "clip": "walk-stop",
+      "frame": 1,
+      "layers": {
+        "hair.front": "png/up/walk-stop/01/hair.front.png"
+      }
+    },
+    {
+      "direction": "up",
+      "clip": "walk-stop",
+      "frame": 2,
+      "layers": {
+        "hair.front": "png/up/walk-stop/02/hair.front.png"
+      }
+    },
+    {
+      "direction": "up-right",
+      "clip": "idle",
+      "frame": 0,
+      "layers": {
+        "hair.front": "png/up-right/idle/00/hair.front.png"
+      }
+    },
+    {
+      "direction": "up-right",
+      "clip": "walk",
+      "frame": 1,
+      "layers": {
+        "hair.front": "png/up-right/walk/01/hair.front.png"
+      }
+    },
+    {
+      "direction": "up-right",
+      "clip": "walk",
+      "frame": 2,
+      "layers": {
+        "hair.front": "png/up-right/walk/02/hair.front.png"
+      }
+    },
+    {
+      "direction": "up-right",
+      "clip": "walk",
+      "frame": 3,
+      "layers": {
+        "hair.front": "png/up-right/walk/03/hair.front.png"
+      }
+    },
+    {
+      "direction": "up-right",
+      "clip": "walk",
+      "frame": 4,
+      "layers": {
+        "hair.front": "png/up-right/walk/04/hair.front.png"
+      }
+    },
+    {
+      "direction": "up-right",
+      "clip": "walk",
+      "frame": 5,
+      "layers": {
+        "hair.front": "png/up-right/walk/05/hair.front.png"
+      }
+    },
+    {
+      "direction": "up-right",
+      "clip": "walk",
+      "frame": 6,
+      "layers": {
+        "hair.front": "png/up-right/walk/06/hair.front.png"
+      }
+    },
+    {
+      "direction": "up-right",
+      "clip": "walk",
+      "frame": 7,
+      "layers": {
+        "hair.front": "png/up-right/walk/07/hair.front.png"
+      }
+    },
+    {
+      "direction": "up-right",
+      "clip": "walk",
+      "frame": 8,
+      "layers": {
+        "hair.front": "png/up-right/walk/08/hair.front.png"
+      }
+    },
+    {
+      "direction": "up-right",
+      "clip": "walk-start",
+      "frame": 1,
+      "layers": {
+        "hair.front": "png/up-right/walk-start/01/hair.front.png"
+      }
+    },
+    {
+      "direction": "up-right",
+      "clip": "walk-start",
+      "frame": 2,
+      "layers": {
+        "hair.front": "png/up-right/walk-start/02/hair.front.png"
+      }
+    },
+    {
+      "direction": "up-right",
+      "clip": "walk-stop",
+      "frame": 1,
+      "layers": {
+        "hair.front": "png/up-right/walk-stop/01/hair.front.png"
+      }
+    },
+    {
+      "direction": "up-right",
+      "clip": "walk-stop",
+      "frame": 2,
+      "layers": {
+        "hair.front": "png/up-right/walk-stop/02/hair.front.png"
+      }
+    },
+    {
+      "direction": "right",
+      "clip": "idle",
+      "frame": 0,
+      "layers": {
+        "hair.front": "png/right/idle/00/hair.front.png"
+      }
+    },
+    {
+      "direction": "right",
+      "clip": "walk",
+      "frame": 1,
+      "layers": {
+        "hair.front": "png/right/walk/01/hair.front.png"
+      }
+    },
+    {
+      "direction": "right",
+      "clip": "walk",
+      "frame": 2,
+      "layers": {
+        "hair.front": "png/right/walk/02/hair.front.png"
+      }
+    },
+    {
+      "direction": "right",
+      "clip": "walk",
+      "frame": 3,
+      "layers": {
+        "hair.front": "png/right/walk/03/hair.front.png"
+      }
+    },
+    {
+      "direction": "right",
+      "clip": "walk",
+      "frame": 4,
+      "layers": {
+        "hair.front": "png/right/walk/04/hair.front.png"
+      }
+    },
+    {
+      "direction": "right",
+      "clip": "walk",
+      "frame": 5,
+      "layers": {
+        "hair.front": "png/right/walk/05/hair.front.png"
+      }
+    },
+    {
+      "direction": "right",
+      "clip": "walk",
+      "frame": 6,
+      "layers": {
+        "hair.front": "png/right/walk/06/hair.front.png"
+      }
+    },
+    {
+      "direction": "right",
+      "clip": "walk",
+      "frame": 7,
+      "layers": {
+        "hair.front": "png/right/walk/07/hair.front.png"
+      }
+    },
+    {
+      "direction": "right",
+      "clip": "walk",
+      "frame": 8,
+      "layers": {
+        "hair.front": "png/right/walk/08/hair.front.png"
+      }
+    },
+    {
+      "direction": "right",
+      "clip": "walk-start",
+      "frame": 1,
+      "layers": {
+        "hair.front": "png/right/walk-start/01/hair.front.png"
+      }
+    },
+    {
+      "direction": "right",
+      "clip": "walk-start",
+      "frame": 2,
+      "layers": {
+        "hair.front": "png/right/walk-start/02/hair.front.png"
+      }
+    },
+    {
+      "direction": "right",
+      "clip": "walk-stop",
+      "frame": 1,
+      "layers": {
+        "hair.front": "png/right/walk-stop/01/hair.front.png"
+      }
+    },
+    {
+      "direction": "right",
+      "clip": "walk-stop",
+      "frame": 2,
+      "layers": {
+        "hair.front": "png/right/walk-stop/02/hair.front.png"
+      }
+    },
+    {
+      "direction": "down-right",
+      "clip": "idle",
+      "frame": 0,
+      "layers": {
+        "hair.front": "png/down-right/idle/00/hair.front.png"
+      }
+    },
+    {
+      "direction": "down-right",
+      "clip": "walk",
+      "frame": 1,
+      "layers": {
+        "hair.front": "png/down-right/walk/01/hair.front.png"
+      }
+    },
+    {
+      "direction": "down-right",
+      "clip": "walk",
+      "frame": 2,
+      "layers": {
+        "hair.front": "png/down-right/walk/02/hair.front.png"
+      }
+    },
+    {
+      "direction": "down-right",
+      "clip": "walk",
+      "frame": 3,
+      "layers": {
+        "hair.front": "png/down-right/walk/03/hair.front.png"
+      }
+    },
+    {
+      "direction": "down-right",
+      "clip": "walk",
+      "frame": 4,
+      "layers": {
+        "hair.front": "png/down-right/walk/04/hair.front.png"
+      }
+    },
+    {
+      "direction": "down-right",
+      "clip": "walk",
+      "frame": 5,
+      "layers": {
+        "hair.front": "png/down-right/walk/05/hair.front.png"
+      }
+    },
+    {
+      "direction": "down-right",
+      "clip": "walk",
+      "frame": 6,
+      "layers": {
+        "hair.front": "png/down-right/walk/06/hair.front.png"
+      }
+    },
+    {
+      "direction": "down-right",
+      "clip": "walk",
+      "frame": 7,
+      "layers": {
+        "hair.front": "png/down-right/walk/07/hair.front.png"
+      }
+    },
+    {
+      "direction": "down-right",
+      "clip": "walk",
+      "frame": 8,
+      "layers": {
+        "hair.front": "png/down-right/walk/08/hair.front.png"
+      }
+    },
+    {
+      "direction": "down-right",
+      "clip": "walk-start",
+      "frame": 1,
+      "layers": {
+        "hair.front": "png/down-right/walk-start/01/hair.front.png"
+      }
+    },
+    {
+      "direction": "down-right",
+      "clip": "walk-start",
+      "frame": 2,
+      "layers": {
+        "hair.front": "png/down-right/walk-start/02/hair.front.png"
+      }
+    },
+    {
+      "direction": "down-right",
+      "clip": "walk-stop",
+      "frame": 1,
+      "layers": {
+        "hair.front": "png/down-right/walk-stop/01/hair.front.png"
+      }
+    },
+    {
+      "direction": "down-right",
+      "clip": "walk-stop",
+      "frame": 2,
+      "layers": {
+        "hair.front": "png/down-right/walk-stop/02/hair.front.png"
+      }
+    }
+  ]
+}

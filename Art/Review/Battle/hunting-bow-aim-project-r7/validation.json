@@ -1,0 +1,45 @@
+{
+  "nativeCanvas": [
+    256,
+    256
+  ],
+  "independentSleevePNGsMatchCompositedSurfaces": true,
+  "nativeHandLayersHaveTransparency": true,
+  "stringAndArrowMeetDrawingFinger": true,
+  "farHandAnchoredAtBowGrip": true,
+  "originalSourceAssetsListedWithSHA256": true,
+  "imageGenerationUsed": false,
+  "runtimeImported": false,
+  "userApproved": false,
+  "faceAndHairAboveNeckUnchanged": true,
+  "legsAndBootsUnchanged": true,
+  "shoulderRootsUnchanged": true,
+  "torsoFileAndSurfacesUnchanged": true,
+  "handSpriteFilesUnchanged": true,
+  "waistPixelsUnchanged": true,
+  "bothArmsShorter": true,
+  "limbLengths": {
+    "near": {
+      "before": [
+        15.811388300841896,
+        42.1070065428546
+      ],
+      "after": [
+        13.92838827718412,
+        37.12142238654117
+      ]
+    },
+    "far": {
+      "before": [
+        23.345235059857504,
+        28.0
+      ],
+      "after": [
+        21.37755832643195,
+        25.0
+      ]
+    }
+  },
+  "bowMovesWithHoldingHand": true,
+  "bowTranslationX": -5.0
+}

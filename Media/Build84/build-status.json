@@ -1,0 +1,13 @@
+{
+  "build": 84,
+  "version": "1.6.57",
+  "sourceCommit": "ce75138d8748325f7b7dbcb302228d0ccde65246",
+  "runID": 42074953267,
+  "run": "https://github.com/liamchan-rgb/experiment/actions/runs/42074953267",
+  "runAttempt": 1,
+  "workflowStatus": "completed",
+  "workflowConclusion": "success",
+  "publicIPAVerified": true,
+  "downloadURL": "https://raw.githubusercontent.com/liamchan-rgb/experiment/e57c23e96c94d7b10f1b1538eaa1256f99d7a553/Downloads/MeadowJourney-b84.ipa",
+  "appSimulatorDeviceRun": false
+}

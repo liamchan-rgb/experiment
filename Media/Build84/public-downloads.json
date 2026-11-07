@@ -1,0 +1,29 @@
+{
+  "ipa": {
+    "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/e57c23e96c94d7b10f1b1538eaa1256f99d7a553/Downloads/MeadowJourney-b84.ipa",
+    "httpStatus": 200,
+    "bytes": 64534597,
+    "sha256": "a96be8330d8b95fde9a04a1bc61b256824e8f383d35723e642a1b1df6e76630b",
+    "verifiedAt": "2026-11-05T17:52:43.866953+00:00"
+  },
+  "art": [
+    {
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/7734f149fd326ff03eba2a5a6c1feac57c5a59cb/Art/Review/Battle/bestiary-v1/bestiary-normal.gif",
+      "httpStatus": 200,
+      "bytes": 2259637,
+      "sha256": "1a53dd401f929c80efa422cde66ce44afee4b097283fa4aa37600292682058fb"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/7734f149fd326ff03eba2a5a6c1feac57c5a59cb/Art/Review/Battle/bestiary-v1/bestiary-normal.mp4",
+      "httpStatus": 200,
+      "bytes": 1227513,
+      "sha256": "2bc0e63ebbdca557958e79c0acbab3f00ed0cc4d958c652a95c83514db03e343"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/7734f149fd326ff03eba2a5a6c1feac57c5a59cb/Art/Review/Battle/bestiary-v1/incoming-registration.jpg",
+      "httpStatus": 200,
+      "bytes": 630285,
+      "sha256": "c2c350afd1633949c34cb95cffcedbf5fac096202d0d923537a18ff6eeb9b712"
+    }
+  ]
+}

@@ -1,0 +1,791 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "p1-neutral-up-right-walk-r2-fixed-limbs",
+  "direction": "up-right",
+  "facing": [
+    1,
+    -1
+  ],
+  "screenForward": [
+    1,
+    -0.4
+  ],
+  "compatibility": {
+    "rig": "p1-chibi-v1",
+    "bodyProfile": "p1-standard",
+    "actionSet": "locomotion-v1"
+  },
+  "headLocalOrigin": [
+    76,
+    61
+  ],
+  "status": "repair-candidate-not-approved",
+  "artApproval": null,
+  "rejectedPredecessor": "../walk-r1",
+  "method": "Single immutable whole-leg row mesh, monotone vertical mapping (no folds), fixed transverse source width; sagittal fixed bone chains projected to rear diagonal. Arms/hands share shoulder-pivot transform. No per-frame art swaps.",
+  "anchors": {
+    "neck": [
+      129,
+      129
+    ],
+    "shoulderLeft": [
+      111,
+      137
+    ],
+    "hipLeft": [
+      116,
+      178
+    ],
+    "shoulderRight": [
+      140,
+      136
+    ],
+    "hipRight": [
+      136,
+      178
+    ]
+  },
+  "armRestOffsets": {
+    "left": [
+      -7,
+      29
+    ],
+    "right": [
+      6,
+      29
+    ]
+  },
+  "drawOrder": [
+    "body.leg.left",
+    "body.leg.right",
+    "body.arm.left",
+    "body.hand.left",
+    "body.arm.right",
+    "body.hand.right",
+    "body.torso",
+    "head.base"
+  ],
+  "rigidArms": {
+    "left": {
+      "arm": "source/arm.original.left.png",
+      "hand": "source/hand.original.left.png",
+      "sourceJoints": {
+        "shoulder": [
+          111,
+          137
+        ],
+        "elbow": [
+          107,
+          151
+        ],
+        "wrist": [
+          104,
+          163
+        ]
+      },
+      "swingDegrees": 7,
+      "armSHA256": "0ec8f63c1e4e307e6a4c248eb26f982bb9b4fa173f9337c82f3dbdde00b8878b",
+      "handSHA256": "6536c209dafafd8ecf8f58a176706a321472df9780fb2a0ae1019643221053ac"
+    },
+    "right": {
+      "arm": "source/arm.original.right.png",
+      "hand": "source/hand.original.right.png",
+      "sourceJoints": {
+        "shoulder": [
+          140,
+          136
+        ],
+        "elbow": [
+          149,
+          151
+        ],
+        "wrist": [
+          152,
+          166
+        ]
+      },
+      "swingDegrees": 7,
+      "armSHA256": "59da966fb099877ec5b1deec2adc386a967a0d29cbf79b23d5bf794e35864309",
+      "handSHA256": "b37cc3b3d2423687637a5f495943362dec20c963a93cde5bdcf3bc4cdcda2e3f"
+    }
+  },
+  "legSkin": {
+    "left": {
+      "image": "source/leg.left-skin.png",
+      "sha256": "d2679974f5cb60f64362b8ea4155279a51e63fbf39564373c7f156053f5fdb96",
+      "sourceChain": [
+        [
+          116,
+          178
+        ],
+        [
+          110,
+          191
+        ],
+        [
+          109,
+          202
+        ]
+      ],
+      "sole": [
+        109,
+        206
+      ],
+      "originalSource": "source/leg.left-original.png"
+    },
+    "right": {
+      "image": "source/leg.right-skin.png",
+      "sha256": "23c3d884631fa5808e12db3de7f46cf26ab3a304269ccc39084e10b368c8a2c9",
+      "sourceChain": [
+        [
+          136,
+          178
+        ],
+        [
+          137,
+          193
+        ],
+        [
+          137,
+          204
+        ]
+      ],
+      "sole": [
+        131,
+        214
+      ],
+      "originalSource": "source/leg.right-original.png"
+    }
+  },
+  "boneLengths": {
+    "left": {
+      "thigh": 16,
+      "shin": 13
+    },
+    "right": {
+      "thigh": 16,
+      "shin": 13
+    }
+  },
+  "projection": {
+    "forwardScale": 0.95,
+    "forwardToScreenY": -0.3,
+    "heightScale": 0.92
+  },
+  "walk": {
+    "stride": 8.0,
+    "lift": 4.5,
+    "restShortening": 1.2,
+    "bodyBob": 0.25,
+    "headSwingDeg": 0.35
+  },
+  "postRasterMaxIsolatedPixels": 2,
+  "sourceCleanup": {
+    "left": {
+      "removedIsolatedPixels": [
+        [
+          123,
+          190
+        ],
+        [
+          124,
+          190
+        ],
+        [
+          123,
+          191
+        ],
+        [
+          124,
+          191
+        ],
+        [
+          123,
+          192
+        ],
+        [
+          123,
+          193
+        ],
+        [
+          123,
+          194
+        ],
+        [
+          123,
+          195
+        ]
+      ],
+      "reason": "Static original idle segmentation fragments; never remove a major limb component",
+      "hiddenShortsEdgePixels": [
+        [
+          123,
+          172
+        ],
+        [
+          124,
+          172
+        ],
+        [
+          125,
+          172
+        ],
+        [
+          110,
+          173
+        ],
+        [
+          111,
+          173
+        ],
+        [
+          112,
+          173
+        ],
+        [
+          122,
+          173
+        ],
+        [
+          123,
+          173
+        ],
+        [
+          110,
+          174
+        ],
+        [
+          111,
+          174
+        ],
+        [
+          112,
+          174
+        ],
+        [
+          113,
+          174
+        ],
+        [
+          122,
+          174
+        ],
+        [
+          123,
+          174
+        ],
+        [
+          109,
+          175
+        ],
+        [
+          110,
+          175
+        ],
+        [
+          111,
+          175
+        ],
+        [
+          112,
+          175
+        ],
+        [
+          113,
+          175
+        ],
+        [
+          114,
+          175
+        ],
+        [
+          115,
+          175
+        ],
+        [
+          116,
+          175
+        ],
+        [
+          118,
+          175
+        ],
+        [
+          119,
+          175
+        ],
+        [
+          120,
+          175
+        ],
+        [
+          121,
+          175
+        ],
+        [
+          122,
+          175
+        ],
+        [
+          123,
+          175
+        ],
+        [
+          124,
+          175
+        ],
+        [
+          108,
+          176
+        ],
+        [
+          109,
+          176
+        ],
+        [
+          110,
+          176
+        ],
+        [
+          111,
+          176
+        ],
+        [
+          112,
+          176
+        ],
+        [
+          113,
+          176
+        ],
+        [
+          114,
+          176
+        ],
+        [
+          115,
+          176
+        ],
+        [
+          116,
+          176
+        ],
+        [
+          117,
+          176
+        ],
+        [
+          118,
+          176
+        ],
+        [
+          119,
+          176
+        ],
+        [
+          120,
+          176
+        ],
+        [
+          121,
+          176
+        ],
+        [
+          122,
+          176
+        ],
+        [
+          123,
+          176
+        ],
+        [
+          124,
+          176
+        ],
+        [
+          125,
+          176
+        ],
+        [
+          107,
+          177
+        ],
+        [
+          108,
+          177
+        ],
+        [
+          109,
+          177
+        ],
+        [
+          110,
+          177
+        ],
+        [
+          111,
+          177
+        ],
+        [
+          112,
+          177
+        ],
+        [
+          113,
+          177
+        ],
+        [
+          114,
+          177
+        ],
+        [
+          115,
+          177
+        ],
+        [
+          116,
+          177
+        ],
+        [
+          117,
+          177
+        ],
+        [
+          118,
+          177
+        ],
+        [
+          119,
+          177
+        ],
+        [
+          120,
+          177
+        ],
+        [
+          121,
+          177
+        ],
+        [
+          122,
+          177
+        ],
+        [
+          123,
+          177
+        ],
+        [
+          124,
+          177
+        ],
+        [
+          125,
+          177
+        ],
+        [
+          107,
+          178
+        ],
+        [
+          108,
+          178
+        ],
+        [
+          109,
+          178
+        ],
+        [
+          110,
+          178
+        ],
+        [
+          111,
+          178
+        ],
+        [
+          112,
+          178
+        ],
+        [
+          113,
+          178
+        ],
+        [
+          114,
+          178
+        ],
+        [
+          115,
+          178
+        ],
+        [
+          116,
+          178
+        ],
+        [
+          117,
+          178
+        ],
+        [
+          118,
+          178
+        ],
+        [
+          119,
+          178
+        ],
+        [
+          120,
+          178
+        ],
+        [
+          121,
+          178
+        ],
+        [
+          122,
+          178
+        ],
+        [
+          123,
+          178
+        ],
+        [
+          124,
+          178
+        ],
+        [
+          125,
+          178
+        ]
+      ]
+    },
+    "right": {
+      "removedIsolatedPixels": [],
+      "reason": "Static original idle segmentation fragments; never remove a major limb component",
+      "hiddenShortsEdgePixels": [
+        [
+          142,
+          172
+        ],
+        [
+          141,
+          173
+        ],
+        [
+          142,
+          173
+        ],
+        [
+          143,
+          173
+        ],
+        [
+          141,
+          174
+        ],
+        [
+          142,
+          174
+        ],
+        [
+          143,
+          174
+        ],
+        [
+          139,
+          175
+        ],
+        [
+          140,
+          175
+        ],
+        [
+          141,
+          175
+        ],
+        [
+          142,
+          175
+        ],
+        [
+          143,
+          175
+        ],
+        [
+          126,
+          176
+        ],
+        [
+          136,
+          176
+        ],
+        [
+          137,
+          176
+        ],
+        [
+          138,
+          176
+        ],
+        [
+          139,
+          176
+        ],
+        [
+          140,
+          176
+        ],
+        [
+          141,
+          176
+        ],
+        [
+          142,
+          176
+        ],
+        [
+          143,
+          176
+        ],
+        [
+          126,
+          177
+        ],
+        [
+          127,
+          177
+        ],
+        [
+          128,
+          177
+        ],
+        [
+          129,
+          177
+        ],
+        [
+          130,
+          177
+        ],
+        [
+          131,
+          177
+        ],
+        [
+          132,
+          177
+        ],
+        [
+          133,
+          177
+        ],
+        [
+          134,
+          177
+        ],
+        [
+          135,
+          177
+        ],
+        [
+          136,
+          177
+        ],
+        [
+          137,
+          177
+        ],
+        [
+          138,
+          177
+        ],
+        [
+          139,
+          177
+        ],
+        [
+          140,
+          177
+        ],
+        [
+          141,
+          177
+        ],
+        [
+          142,
+          177
+        ],
+        [
+          126,
+          178
+        ],
+        [
+          127,
+          178
+        ],
+        [
+          128,
+          178
+        ],
+        [
+          129,
+          178
+        ],
+        [
+          130,
+          178
+        ],
+        [
+          131,
+          178
+        ],
+        [
+          132,
+          178
+        ],
+        [
+          133,
+          178
+        ],
+        [
+          134,
+          178
+        ],
+        [
+          135,
+          178
+        ],
+        [
+          136,
+          178
+        ],
+        [
+          137,
+          178
+        ],
+        [
+          138,
+          178
+        ],
+        [
+          139,
+          178
+        ],
+        [
+          140,
+          178
+        ],
+        [
+          141,
+          178
+        ],
+        [
+          142,
+          178
+        ]
+      ]
+    }
+  },
+  "unusedGeneration": "source/not-selected-refined-idle.png retained as alternative; not selected because current fix preserves the earlier body/head appearance."
+}

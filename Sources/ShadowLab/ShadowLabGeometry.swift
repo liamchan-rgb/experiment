@@ -31,9 +31,11 @@ struct ShadowLabFrame {
 enum ShadowLabAsset: String {
     case tree = "OakA", oakB = "OakB", pines = "Pines", tower = "WatchTower", hero = "Hero1Directions"
     case tent = "CampTent", fence = "Fence", rockLow = "RockLow", rockHigh = "RockHigh", rockSmall = "RockSmall", shrub = "Shrub", flowers = "Flowers", banner = "Banner"
+    case combatOutpost = "NodeCombatOutpost", bossSanctum = "NodeBossSanctum", rewardCache = "NodeRewardCache", waystone = "NodeWaystone"
+    var isNodeLandmark: Bool { [.combatOutpost,.bossSanctum,.rewardCache,.waystone].contains(self) }
     var casterKind: Float {
         switch self { case .tree, .oakB, .pines: return 0; case .tower: return 1; case .hero: return 2
-        case .tent: return 3; case .fence: return 4; case .rockLow, .rockHigh, .rockSmall: return 5
+        case .tent, .combatOutpost, .bossSanctum, .rewardCache, .waystone: return 3; case .fence: return 4; case .rockLow, .rockHigh, .rockSmall: return 5
         case .shrub: return 6; case .flowers: return 7; case .banner: return 8 }
     }
     var isTree: Bool { casterKind == 0 }
@@ -46,6 +48,7 @@ enum ShadowLabAsset: String {
     }
     var anchorY: Float {
         switch self { case .tree, .oakB, .pines: return 0.09; case .tower: return 0.14
+        case .combatOutpost, .bossSanctum, .rewardCache, .waystone: return 0.08
         case .hero: return 0.125; case .tent: return 0.10; case .rockLow, .rockHigh, .rockSmall: return 0.10
         case .fence: return 0.08; case .shrub, .flowers: return 0.04; case .banner: return 0.04 }
     }
@@ -136,7 +139,7 @@ enum ShadowLabMath {
         ]
     }
 
-    static func heroFrame(time: Float) -> Int { WalkCycle.frame(at: CGFloat(max(0, time) * 42)) }
+    static func heroFrame(time: Float) -> Int { WalkCycle.frame(at: CGFloat(max(0, time)) * HeroFrames.reviewSpeed) }
     static func heroMovingRight(time: Float) -> Bool { (time * 0.75).truncatingRemainder(dividingBy: 14) > 7 }
 }
 
@@ -198,12 +201,12 @@ struct ShadowLabMesh {
             case .fence:
                 let groundV = ShadowLabAsset.fenceGroundV(at: u)
                 depth = (1 - groundV - instance.anchor.y) * instance.screenHeight / ShadowLabMath.cameraUp.y
-            case .tent, .rockLow, .rockHigh, .rockSmall, .shrub, .flowers, .banner:
+            case .tent, .rockLow, .rockHigh, .rockSmall, .shrub, .flowers, .banner, .combatOutpost, .bossSanctum, .rewardCache, .waystone:
                 // A sloping footprint keeps the lower art on the receiver;
                 // raised details retain their alpha silhouette above it.
                 let footV = 1 - instance.anchor.y - 0.09 * abs(u - 0.5) * 2
                 let footprint = (1 - footV - instance.anchor.y) * instance.screenHeight / ShadowLabMath.cameraUp.y
-                let volume: Float = instance.asset == .tent ? 0.18 : 0.07
+                let volume: Float = (instance.asset == .tent || instance.asset.isNodeLandmark) ? 0.18 : 0.07
                 depth = footprint + sin(u * .pi) * volume * instance.width * (1 - smooth(0.40, 0.88, v))
             }
             var height = (screenUp - depth * ShadowLabMath.cameraUp.y) / ShadowLabMath.cameraUp.z

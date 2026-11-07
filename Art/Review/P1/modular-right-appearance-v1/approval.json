@@ -1,0 +1,24 @@
+{
+  "date": "2026-10-24",
+  "status": "approved-shown-scope",
+  "userStatement": "没问题，继续下一项",
+  "artCommit": "e4dc95a3fa69d7cb84da6c2ede3df5e46715c5fc",
+  "scope": "Delivered right forester/chestnut/blue/back and wayfarer/silver/amber/back standing,normal walk and specified start-stop only; no undisplayed cross combinations,other directions,arbitrary interruptions or runtime approval.",
+  "files": [
+    {
+      "file": "Art/Review/P1/modular-right-appearance-v1/outfits-walk-120ms.gif",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/e4dc95a3fa69d7cb84da6c2ede3df5e46715c5fc/Art/Review/P1/modular-right-appearance-v1/outfits-walk-120ms.gif",
+      "sha256": "169549ac7c2266b7d602ebe9245894479da4ffc4616dbd5671bd0b413c9d610b"
+    },
+    {
+      "file": "Art/Review/P1/modular-right-appearance-v1/outfits-start-stop-120ms.gif",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/e4dc95a3fa69d7cb84da6c2ede3df5e46715c5fc/Art/Review/P1/modular-right-appearance-v1/outfits-start-stop-120ms.gif",
+      "sha256": "8aafa0e2864026cd70b2aa932327b643eeb4c11ef85b1dd497d3a9ae8c9d28e8"
+    },
+    {
+      "file": "Art/Review/P1/modular-right-appearance-v1/outfits-idle-2x.png",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/e4dc95a3fa69d7cb84da6c2ede3df5e46715c5fc/Art/Review/P1/modular-right-appearance-v1/outfits-idle-2x.png",
+      "sha256": "9c94e6ef1f3e62d78265dde8382aa81df88361b5ee8855890087f3c99287b761"
+    }
+  ]
+}

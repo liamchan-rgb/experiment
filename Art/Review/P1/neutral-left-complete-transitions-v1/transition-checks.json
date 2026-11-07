@@ -1,0 +1,190 @@
+{
+  "status": "technical checks passed; visual approval remains separate",
+  "artApproval": null,
+  "poseChecks": [
+    {
+      "storageIndex": 0,
+      "clip": "idle",
+      "frame": 0,
+      "actualCompositorDifferencePixels": 0,
+      "headAttachmentDifferencePixels": 0,
+      "headNeckConnected": true,
+      "soleMarkersOnLeg": 2,
+      "approvedR2VisibleRGBAPreserved": true
+    },
+    {
+      "storageIndex": 1,
+      "clip": "walk",
+      "frame": 1,
+      "actualCompositorDifferencePixels": 0,
+      "headAttachmentDifferencePixels": 0,
+      "headNeckConnected": true,
+      "soleMarkersOnLeg": 2,
+      "approvedR2VisibleRGBAPreserved": true
+    },
+    {
+      "storageIndex": 2,
+      "clip": "walk",
+      "frame": 2,
+      "actualCompositorDifferencePixels": 0,
+      "headAttachmentDifferencePixels": 0,
+      "headNeckConnected": true,
+      "soleMarkersOnLeg": 2,
+      "approvedR2VisibleRGBAPreserved": true
+    },
+    {
+      "storageIndex": 3,
+      "clip": "walk",
+      "frame": 3,
+      "actualCompositorDifferencePixels": 0,
+      "headAttachmentDifferencePixels": 0,
+      "headNeckConnected": true,
+      "soleMarkersOnLeg": 2,
+      "approvedR2VisibleRGBAPreserved": true
+    },
+    {
+      "storageIndex": 4,
+      "clip": "walk",
+      "frame": 4,
+      "actualCompositorDifferencePixels": 0,
+      "headAttachmentDifferencePixels": 0,
+      "headNeckConnected": true,
+      "soleMarkersOnLeg": 2,
+      "approvedR2VisibleRGBAPreserved": true
+    },
+    {
+      "storageIndex": 5,
+      "clip": "walk",
+      "frame": 5,
+      "actualCompositorDifferencePixels": 0,
+      "headAttachmentDifferencePixels": 0,
+      "headNeckConnected": true,
+      "soleMarkersOnLeg": 2,
+      "approvedR2VisibleRGBAPreserved": true
+    },
+    {
+      "storageIndex": 6,
+      "clip": "walk",
+      "frame": 6,
+      "actualCompositorDifferencePixels": 0,
+      "headAttachmentDifferencePixels": 0,
+      "headNeckConnected": true,
+      "soleMarkersOnLeg": 2,
+      "approvedR2VisibleRGBAPreserved": true
+    },
+    {
+      "storageIndex": 7,
+      "clip": "walk",
+      "frame": 7,
+      "actualCompositorDifferencePixels": 0,
+      "headAttachmentDifferencePixels": 0,
+      "headNeckConnected": true,
+      "soleMarkersOnLeg": 2,
+      "approvedR2VisibleRGBAPreserved": true
+    },
+    {
+      "storageIndex": 8,
+      "clip": "walk",
+      "frame": 8,
+      "actualCompositorDifferencePixels": 0,
+      "headAttachmentDifferencePixels": 0,
+      "headNeckConnected": true,
+      "soleMarkersOnLeg": 2,
+      "approvedR2VisibleRGBAPreserved": true
+    },
+    {
+      "storageIndex": 9,
+      "clip": "walk-start",
+      "frame": 1,
+      "actualCompositorDifferencePixels": 0,
+      "headAttachmentDifferencePixels": 0,
+      "headNeckConnected": true,
+      "soleMarkersOnLeg": 2,
+      "approvedR2VisibleRGBAPreserved": null
+    },
+    {
+      "storageIndex": 10,
+      "clip": "walk-start",
+      "frame": 2,
+      "actualCompositorDifferencePixels": 0,
+      "headAttachmentDifferencePixels": 0,
+      "headNeckConnected": true,
+      "soleMarkersOnLeg": 2,
+      "approvedR2VisibleRGBAPreserved": null
+    },
+    {
+      "storageIndex": 11,
+      "clip": "walk-stop",
+      "frame": 1,
+      "actualCompositorDifferencePixels": 0,
+      "headAttachmentDifferencePixels": 0,
+      "headNeckConnected": true,
+      "soleMarkersOnLeg": 2,
+      "approvedR2VisibleRGBAPreserved": null
+    },
+    {
+      "storageIndex": 12,
+      "clip": "walk-stop",
+      "frame": 2,
+      "actualCompositorDifferencePixels": 0,
+      "headAttachmentDifferencePixels": 0,
+      "headNeckConnected": true,
+      "soleMarkersOnLeg": 2,
+      "approvedR2VisibleRGBAPreserved": null
+    }
+  ],
+  "reexportFiles": 143,
+  "reexportByteDifferences": 0,
+  "gifChecks": [
+    {
+      "path": "walk-120ms.gif",
+      "frames": 8,
+      "durationsMs": [
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120
+      ],
+      "sha256": "67d0de0d0b641fffe8a352b786b787d7f00db41cfa8884fe9d88e65e2b60d7d3"
+    },
+    {
+      "path": "start-stop-120ms.gif",
+      "frames": 22,
+      "durationsMs": [
+        480,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        480
+      ],
+      "sha256": "c6df0a6f9572ee1f86d033c86284733b84a8ce513629e31aea7463246a6fcc9f"
+    }
+  ],
+  "limits": [
+    "left direction only",
+    "start path idle00 to walk01; stop path walk08 to idle00",
+    "no arbitrary walk-phase interruption",
+    "no apparel or runtime/device checks"
+  ]
+}

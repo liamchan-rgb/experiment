@@ -1,0 +1,13 @@
+{
+  "source": "b2-armor-r4/r5 registered battle patterns",
+  "handAssetsChanged": false,
+  "boneAndMotionChanged": false,
+  "walkingChanged": false,
+  "repairs": [
+    "complete independently articulated near arm skin",
+    "fitted rune forearm cuff",
+    "clean trousers and separate overlaid hem panels"
+  ],
+  "hemPolicy": "upper attachment overlaps torso; bounded leg-follow below belt",
+  "userApproval": null
+}

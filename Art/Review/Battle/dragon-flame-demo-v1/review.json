@@ -1,0 +1,29 @@
+{
+  "scope": "60 Hz production combat receipts, node-wide targets, 20 delivered RGBA frames and live stage attachments composed offline at normal speed. Not UIKit/game/device capture.",
+  "animations": [
+    {
+      "file": "dragon-flame-normal.gif",
+      "decodedFrames": 225,
+      "durationMs": 4500,
+      "effectiveFPS": 50,
+      "sourceSampleFPS": 60,
+      "size": [
+        1020,
+        765
+      ],
+      "sizeBytes": 4833292
+    }
+  ],
+  "sourceFrameCount": 20,
+  "sourceFrameSize": [
+    280,
+    280
+  ],
+  "keyframePNGs": 9,
+  "statusCueKeyframes": [
+    "dragonFlame-status-cue.png",
+    "dragonFlame-status-cue-plus-120ms.png"
+  ],
+  "statusRevealTiming": "Damage and flame begin at the true hit. Recovery and new shield feedback appear at action age 1.2333s, 58% into the 1.3333s impact effect, then fade in.",
+  "userArtApproval": null
+}

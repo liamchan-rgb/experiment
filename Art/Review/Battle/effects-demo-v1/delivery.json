@@ -1,0 +1,57 @@
+{
+  "status": "delivered-runtime-integration-with-offline-art-review",
+  "sourceCommit": "2f1d2475b119eb57e96c69200a2fc25468c8c2c8",
+  "artAndPackageCommit": "bc25464ea739b4b64be909c4d4618b92d7f99756",
+  "workflowRun": 40167117136,
+  "selectedDeliveryPathsVerified": 46,
+  "compiledSourceAndAssetsPathsVerified": 22,
+  "remoteContentsMatchLocal": true,
+  "publicArtifacts": [
+    {
+      "path": "Downloads/MeadowJourney-b40.ipa",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/bc25464ea739b4b64be909c4d4618b92d7f99756/Downloads/MeadowJourney-b40.ipa",
+      "httpStatus": 200,
+      "mime": "application/octet-stream",
+      "bytes": 25176986,
+      "sha256": "2ed99a131c16c1030d22dc9a90070945009c04c6c2c76a9c56268d84a27267be"
+    },
+    {
+      "path": "Art/Review/Battle/effects-demo-v1/battle-demo-normal.gif",
+      "url": "https://cdn.jsdelivr.net/gh/liamchan-rgb/experiment@bc25464ea739b4b64be909c4d4618b92d7f99756/Art/Review/Battle/effects-demo-v1/battle-demo-normal.gif",
+      "httpStatus": 200,
+      "mime": "image/gif",
+      "bytes": 13868915,
+      "sha256": "8cf08cf46540048c0f4a31f909b7f812b39db0102b68a416966693487ba6b883",
+      "frames": 180,
+      "frameDurationMs": 40,
+      "totalDurationMs": 7200
+    },
+    {
+      "path": "Art/Review/Battle/effects-demo-v1/standing.png",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/bc25464ea739b4b64be909c4d4618b92d7f99756/Art/Review/Battle/effects-demo-v1/standing.png",
+      "httpStatus": 200,
+      "mime": "image/png",
+      "bytes": 885620,
+      "sha256": "6a76c1f15e4b0c74be1920122983584f83e516fcb7042b81050d753ad372c568"
+    },
+    {
+      "path": "Art/Review/Battle/effects-demo-v1/impact.png",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/bc25464ea739b4b64be909c4d4618b92d7f99756/Art/Review/Battle/effects-demo-v1/impact.png",
+      "httpStatus": 200,
+      "mime": "image/png",
+      "bytes": 711033,
+      "sha256": "337e99dd3a1802152c8bc992ac638ce3c934370e8f99a7d686ed440585257d6e"
+    }
+  ],
+  "runtimeIntegration": true,
+  "actualPointerKeyboardTouchExecuted": false,
+  "simulatorOrDeviceExecuted": false,
+  "ipa": "unsigned iPhoneOS arm64 for existing SideStore re-signing workflow",
+  "artApproval": null,
+  "review": "art-review.md",
+  "checks": [
+    "integration-check.json",
+    "preservation-check.json",
+    "controller-provenance.json"
+  ]
+}

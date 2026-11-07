@@ -1,0 +1,29 @@
+{
+  "sourceCommit": "abcaa88f41787630c6c63d0460f6b96de2d7e935",
+  "deliveryCommit": "3ada1140013b75947c2b1a4969c57797c769c7e1",
+  "workflowRun": 40201819354,
+  "selectedDeliveryPathsVerified": 17,
+  "runtimeAndPackagingInputsVerified": 6,
+  "allRemoteBytesMatch": true,
+  "publicDownloads": [
+    {
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/3ada1140013b75947c2b1a4969c57797c769c7e1/Downloads/MeadowJourney-b45.ipa",
+      "httpStatus": 200,
+      "mime": "application/octet-stream",
+      "bytes": 30293018,
+      "sha256": "67a5ad78757864506d53f7b8477ec80b90ea340ceaa7ebf0b08ff3bafe9a3d07"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/fix/build33-face-grounding-camera/Downloads/MeadowJourney-b45.ipa",
+      "httpStatus": 200,
+      "mime": "application/octet-stream",
+      "bytes": 30293018,
+      "sha256": "67a5ad78757864506d53f7b8477ec80b90ea340ceaa7ebf0b08ff3bafe9a3d07"
+    }
+  ],
+  "frameRateTarget": 60,
+  "actualDeviceFPSMeasured": false,
+  "simulatorOrDeviceExecuted": false,
+  "newArtOrAnimationAssets": false,
+  "installationConfirmed": false
+}

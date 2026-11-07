@@ -1,0 +1,71 @@
+{
+  "swiftTests": 182,
+  "quotaSeedMaps": 648,
+  "extremeQuotaCases": 24,
+  "headingRegressionMaps": 36,
+  "productionGeometryCases": 78,
+  "opaqueTopBadgeChecks": [
+    {
+      "map": "map-10-1-geometry.json",
+      "landmarks": 10,
+      "badgeToOpaqueTop": 14,
+      "verified": true
+    },
+    {
+      "map": "map-10-31827-geometry.json",
+      "landmarks": 10,
+      "badgeToOpaqueTop": 14,
+      "verified": true
+    },
+    {
+      "map": "map-10-98765-geometry.json",
+      "landmarks": 10,
+      "badgeToOpaqueTop": 14,
+      "verified": true
+    },
+    {
+      "map": "map-30-1-geometry.json",
+      "landmarks": 30,
+      "badgeToOpaqueTop": 14,
+      "verified": true
+    },
+    {
+      "map": "map-30-31827-geometry.json",
+      "landmarks": 30,
+      "badgeToOpaqueTop": 14,
+      "verified": true
+    },
+    {
+      "map": "map-30-98765-geometry.json",
+      "landmarks": 30,
+      "badgeToOpaqueTop": 14,
+      "verified": true
+    },
+    {
+      "map": "map-4-1-geometry.json",
+      "landmarks": 4,
+      "badgeToOpaqueTop": 14,
+      "verified": true
+    },
+    {
+      "map": "map-4-31827-geometry.json",
+      "landmarks": 4,
+      "badgeToOpaqueTop": 14,
+      "verified": true
+    },
+    {
+      "map": "map-4-98765-geometry.json",
+      "landmarks": 4,
+      "badgeToOpaqueTop": 14,
+      "verified": true
+    }
+  ],
+  "originalCoreFilesUnchanged": 13,
+  "gif": {
+    "frames": 400,
+    "frameMs": 20,
+    "loop": 0
+  },
+  "artApproval": null,
+  "appSimulatorDeviceRun": false
+}

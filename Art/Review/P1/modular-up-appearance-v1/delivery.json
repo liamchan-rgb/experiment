@@ -1,0 +1,93 @@
+{
+  "date": "2026-10-24",
+  "artCommit": "f8381286801cfbf643898ee1c36ddbdcee49e84e",
+  "verified": true,
+  "artApproval": null,
+  "direction": "up",
+  "authorAndReviewer": "root",
+  "subagentsUsed": false,
+  "reviewScope": "Four sword-on combinations all13 complete1x/2x, complete actual normal GIF8 decoded frames and specified start-stop order; still viewer only, no continuous playback claim",
+  "reexportByteIdenticalFiles": 461,
+  "remotePackageClosurePaths": 564,
+  "allDeclaredDependenciesByteMatched": true,
+  "publicOfflineDependenciesUnchanged": 9,
+  "existingTests": {
+    "contract": 26,
+    "compositor": 21
+  },
+  "runtimeIntegrated": false,
+  "ipaBuilt": false,
+  "files": [
+    {
+      "file": "Art/Review/P1/modular-up-appearance-v1/outfits-walk-120ms.gif",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/f8381286801cfbf643898ee1c36ddbdcee49e84e/Art/Review/P1/modular-up-appearance-v1/outfits-walk-120ms.gif",
+      "httpStatus": 200,
+      "mime": "image/gif",
+      "bytes": 220455,
+      "sha256": "2c3ea902ecf18538081f3191ad9d98b2afb59ea71cc84398ac9eee0934262e3e",
+      "dimensions": [
+        1024,
+        512
+      ],
+      "durationsMs": [
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120
+      ]
+    },
+    {
+      "file": "Art/Review/P1/modular-up-appearance-v1/outfits-start-stop-120ms.gif",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/f8381286801cfbf643898ee1c36ddbdcee49e84e/Art/Review/P1/modular-up-appearance-v1/outfits-start-stop-120ms.gif",
+      "httpStatus": 200,
+      "mime": "image/gif",
+      "bytes": 609228,
+      "sha256": "a18ba28ec92314ca4a928c0496bf662b56866848ca7c4b565275bba6cce83e39",
+      "dimensions": [
+        1024,
+        512
+      ],
+      "durationsMs": [
+        480,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        480
+      ]
+    },
+    {
+      "file": "Art/Review/P1/modular-up-appearance-v1/outfits-idle-2x.png",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/f8381286801cfbf643898ee1c36ddbdcee49e84e/Art/Review/P1/modular-up-appearance-v1/outfits-idle-2x.png",
+      "httpStatus": 200,
+      "mime": "image/png",
+      "bytes": 33951,
+      "sha256": "9f17e303a736c5265b8533ef1851d5b24b9b25fa1252f1222cc60cec81b3bd57",
+      "dimensions": [
+        1024,
+        512
+      ],
+      "durationsMs": null
+    }
+  ]
+}

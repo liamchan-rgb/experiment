@@ -1,0 +1,21 @@
+{
+  "tool": "image_gen.imagegen",
+  "artApproval": null,
+  "selectedPaint": "source/generated-sleeve-plate.png idle00 cell only; authored coverage patterns and independent generated underlap materials complete the garment",
+  "sourceInputs": {
+    "source/generated-sleeve-plate.png": "a2d169377212be67e9e27127e4585f72aa2c1666a9447abe245fd0ae9141e75e",
+    "source/cloth-underlap-material.png": "114ee5cfe8e65b82ee83c9de3856eebc75071ab38247f08427379f545a6aae62",
+    "source/lower-materials.png": "c1fb5bb5f46c08d1412f89f88b15982f17f729a9d5bd778e6bc0a7dcf39a900b",
+    "source/sleeve-plate-prompt.txt": "1f619e5cb639f59b8a8fcbcfa373afd9ca4b1c0f3736b49263ef86a9ba11df26",
+    "source/underlap-material-prompt.txt": "7225c74180cfc429cbc871f9a5a28ca3b8760aee0309f2dcfc087fdb2f9c9ed7",
+    "source/lower-materials-prompt.txt": "489deca044c2632a545218d68ee4bd95adc04684f59b5dd28af883f12f8feab5",
+    "source/coverage-guide.png": "ac52babd6c365f07ff20a8898ac7afadcc13e5b5bc1dd31454b93c504f12a6c8"
+  },
+  "rejectedOrUnused": [
+    "source/rejected-loose-registration.png",
+    "source/sleeve-plate-attempt2.png",
+    "non-idle cells of the final generated sleeve plate"
+  ],
+  "registration": "authoring.json; fixed source cell/crops and stored garment patterns, no alpha-bounds fitting",
+  "assetManifestSHA256": "849c603bf35563ec24b8c835622d4baba0d56ed457ef030167980c07b743d80f"
+}

@@ -1,0 +1,29 @@
+{
+  "pack": "lower",
+  "recipe": {
+    "paint": {
+      "image": "source/forester-generated.png",
+      "canvas": [
+        1254,
+        1254
+      ],
+      "sha256": "0e1882a1377540fc5ee6ce0e1cc90b4ef73402524d84bf2478bacab18b70e429",
+      "scale": 0.20414673046251994,
+      "translation": [
+        0,
+        0
+      ]
+    },
+    "mattes": {
+      "outfit.pants.left": "source/mattes/lower-outfit.pants.left.png",
+      "outfit.boot.left": "source/mattes/lower-outfit.boot.left.png",
+      "outfit.pants.right": "source/mattes/lower-outfit.pants.right.png",
+      "outfit.boot.right": "source/mattes/lower-outfit.boot.right.png"
+    },
+    "sourceUV": "source/common-uv"
+  },
+  "originalSource": "source/original.png",
+  "authorAndReviewer": "root",
+  "artApproval": null,
+  "geometryFit": false
+}

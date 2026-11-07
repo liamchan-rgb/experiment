@@ -1,0 +1,33 @@
+{
+  "sourceCommit": "6c60a3df90756ecd105934cf05d567a8f4767d53",
+  "runID": 42154159246,
+  "artifactID": 13474466763,
+  "version": "1.6.60",
+  "build": 87,
+  "runAttempt": 1,
+  "artifactSHA256": "2d114ba1dedc13ec8f3d0bfb3963675bf8b55c7d37004c1f6426a81be21d6e17",
+  "ipaBytes": 64620141,
+  "ipaSHA256": "b4fdd261bfaa79fe05d042fc05e2bb022ba2c595793417d5f5e140644682f06e",
+  "tests": 240,
+  "checks": {
+    "CRC": true,
+    "classicZIP2WithoutExtras": true,
+    "version": "1.6.60/87",
+    "executableDiffersFromBuild86": true,
+    "executableSHA256": "8b9b1e3cef3ee695fccd097fc7dcea20bb77323e08551c9c6f19645d56026563",
+    "arm64ExecutablePermissions": "0o100755",
+    "MetalAssets12MonsterAtlases6DatasetsAndFullCatalogUnchanged": true,
+    "encounters-default.json": "Mac/Linux roster identical; road distance error <1e-8",
+    "encounters-max.json": "Mac/Linux roster identical; road distance error <1e-8",
+    "balance-default.json": "Mac/Linux saved readouts and provisions equivalent; physical distance error <1e-8",
+    "balance-max.json": "Mac/Linux saved readouts and provisions equivalent; physical distance error <1e-8",
+    "journey-audit.json": "Mac/Linux saved readouts and provisions equivalent; physical distance error <1e-8"
+  },
+  "preservedBuild86Resources": {
+    "Payload/MeadowJourney.app/Assets.car": "9a3431ff9f173b30db1a3c4e9d6775caf35d12a19a0c89dda7c9c7b87b0fc2c8",
+    "Payload/MeadowJourney.app/SceneMap.json": "b5d8e7c74e6038a4d6b3e266cf1c6f7184eee56cfb2c2f462b7e048ab6cd0ea5",
+    "Payload/MeadowJourney.app/ClassroomGameCore_ClassroomGameCore.bundle/initial-content.json": "aaab980fd5f3154ac813a02dc907a835ee0e0181c4149f2b7803d9594795f34a",
+    "Payload/MeadowJourney.app/hero-gait.json": "44ad26e97cfd0836074eefc70ee081f2bbb5b2003961ed1e779acbfebdaaa527"
+  },
+  "appSimulatorDeviceRun": false
+}

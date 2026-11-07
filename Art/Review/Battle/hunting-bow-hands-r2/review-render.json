@@ -1,0 +1,17 @@
+{
+  "scope": "production Swift ambush/helix/dice and core receipts; offline composition, not UIKit/device",
+  "animations": {
+    "bow": {
+      "file": "bow-normal.gif",
+      "frames": 190,
+      "frameDurationMs": 20,
+      "durationMs": 3800,
+      "dimensions": [
+        1224,
+        918
+      ],
+      "bytes": 9048410
+    }
+  },
+  "newArtApproval": null
+}

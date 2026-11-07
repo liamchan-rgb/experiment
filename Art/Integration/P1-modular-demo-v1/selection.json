@@ -1,0 +1,19 @@
+{
+  "date": "2026-10-25",
+  "userAuthorization": "开始下一项工作",
+  "base": "p1-eight-way-base-v1",
+  "loadouts": [
+    {
+      "id": "forester",
+      "title": "林间绿衣",
+      "atlasNames": ["Hero1Directions", "Hero1Diagonals"],
+      "assets": ["p1-eight-way-forester-v1", "p1-eight-way-lower-v1", "p1-eight-way-hair-chestnut-v1", "p1-eight-way-face-blue-v1", "p1-eight-way-weapon-v1"]
+    },
+    {
+      "id": "wayfarer",
+      "title": "行旅蓝衣",
+      "atlasNames": ["P1WayfarerDirections", "P1WayfarerDiagonals"],
+      "assets": ["p1-eight-way-wayfarer-v1", "p1-eight-way-lower-v1", "p1-eight-way-hair-silver-v1", "p1-eight-way-face-amber-v1", "p1-eight-way-weapon-v1"]
+    }
+  ]
+}

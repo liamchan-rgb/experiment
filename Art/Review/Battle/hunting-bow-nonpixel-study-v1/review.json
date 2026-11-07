@@ -1,0 +1,16 @@
+{
+  "status": "unfinished-draft-not-approved",
+  "request": "先做不是像素化的原型，确定关系后再像素化",
+  "scope": "full-body, smooth nonpixel pose study",
+  "issues": [
+    "上弓弦末端与拉弦指尖/箭尾的交点不清晰",
+    "下弓弦中途被角色袖子及身体遮挡，连续关系看不清",
+    "造型是概念草稿，并非原游戏素材"
+  ],
+  "attemptedCorrection": "图像生成工具拒绝了调整弓弦和箭尾的编辑请求，自动审核标记 violence",
+  "userApproval": null,
+  "pixelArtCreated": false,
+  "gameModified": false,
+  "ipaCreated": false,
+  "deviceRun": false
+}

@@ -1,0 +1,23 @@
+{
+  "tool": "image_gen",
+  "owner": "root",
+  "subagentsUsed": false,
+  "promptsAreSummaries": true,
+  "sources": [
+    {
+      "file": "forester-generated.png",
+      "sha256": "1ee4414bbcd69c4dac7edc263064dbd03b4a26dc3ea0ec21e5c8d134a381aa1a",
+      "promptSummary": "Paired rear three-quarter views on unchanged neutral guide; green fitted gold-trim jacket, gray trousers, brown boots and chestnut hair; fixed upper-left light."
+    },
+    {
+      "file": "wayfarer-generated.png",
+      "sha256": "26f73b5bcc202a58b3165ee166d4dd0bc5a65d2bea37d77be316b0de8394df1b",
+      "promptSummary": "Edit paired green outfit reference to navy split-tail coat and silver hair while preserving pose and body."
+    },
+    {
+      "file": "independent-lower-generated.png",
+      "sha256": "4a0dd57cdb5c5205bd80f0c2fea4c8738bd5d76e606cfa986d74c58e832bc48e",
+      "promptSummary": "Four independent complete trouser/boot limbs aligned to neutral leg guide; include hidden inner edges and complete feet."
+    }
+  ]
+}

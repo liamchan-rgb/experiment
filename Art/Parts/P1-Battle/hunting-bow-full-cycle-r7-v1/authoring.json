@@ -1,0 +1,30 @@
+{
+  "baseline": "Art/Parts/P1-Battle/hunting-bow-aim-project-r7",
+  "approvedFollowthrough": "Art/Parts/P1-Battle/hunting-bow-followthrough-r7-v3",
+  "script": "scripts/author-bow-full-cycle-r7.py",
+  "frameLayerOrder": [
+    "farArm",
+    "nearUpperArm",
+    "torso",
+    "nearSleeveConnected",
+    "head",
+    "hair",
+    "face",
+    "bow",
+    "stringAndArrow",
+    "farHand",
+    "nearHand"
+  ],
+  "nearSleeveConstruction": "sleeve-construction.json",
+  "interchangeableWeaponAnchors": [
+    "parts.bow",
+    "parts.farHand",
+    "upperTip",
+    "lowerTip",
+    "stringHand",
+    "arrowTail",
+    "arrowTip"
+  ],
+  "imageGenerationUsed": false,
+  "runtimeImported": false
+}

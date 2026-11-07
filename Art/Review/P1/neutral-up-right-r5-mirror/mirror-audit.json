@@ -1,0 +1,181 @@
+{
+  "repairAndReviewOwner": "root",
+  "subagentsUsed": false,
+  "artApproval": null,
+  "sourceTemplate": "Art/Templates/P1-Neutral/up-left/walk-r5-coupled-clothing",
+  "sourceApproval": "Art/Review/P1/neutral-up-left-r5/approval.json",
+  "sourceApprovalScope": "Presented up-left r5 neutral full-body standing appearance and normal walking loop only. Excludes hidden complete anatomy, new outfits, start-stop, up-right and App/device/IPA integration.",
+  "poses": [
+    {
+      "frame": 0,
+      "sourceDirection": "up-left",
+      "sourceFrame": 0,
+      "unchangedFrameTimingMs": 120,
+      "geometryMirrorAxisX": 127.5,
+      "semanticSidesExchanged": true,
+      "relightingRGBOnly": true,
+      "alphaDifferenceFromApprovedReflection": 0,
+      "support": "both",
+      "headLocalReflection": [
+        -1.0,
+        0.0,
+        0.0,
+        1.0,
+        95.0,
+        0.0
+      ]
+    },
+    {
+      "frame": 1,
+      "sourceDirection": "up-left",
+      "sourceFrame": 1,
+      "unchangedFrameTimingMs": 120,
+      "geometryMirrorAxisX": 127.5,
+      "semanticSidesExchanged": true,
+      "relightingRGBOnly": true,
+      "alphaDifferenceFromApprovedReflection": 0,
+      "support": "right",
+      "headLocalReflection": [
+        -1.0,
+        0.0,
+        0.0,
+        1.0,
+        95.0,
+        0.0
+      ]
+    },
+    {
+      "frame": 2,
+      "sourceDirection": "up-left",
+      "sourceFrame": 2,
+      "unchangedFrameTimingMs": 120,
+      "geometryMirrorAxisX": 127.5,
+      "semanticSidesExchanged": true,
+      "relightingRGBOnly": true,
+      "alphaDifferenceFromApprovedReflection": 0,
+      "support": "right",
+      "headLocalReflection": [
+        -1.0,
+        0.0,
+        0.0,
+        1.0,
+        95.0,
+        0.0
+      ]
+    },
+    {
+      "frame": 3,
+      "sourceDirection": "up-left",
+      "sourceFrame": 3,
+      "unchangedFrameTimingMs": 120,
+      "geometryMirrorAxisX": 127.5,
+      "semanticSidesExchanged": true,
+      "relightingRGBOnly": true,
+      "alphaDifferenceFromApprovedReflection": 0,
+      "support": "right",
+      "headLocalReflection": [
+        -1.0,
+        0.0,
+        0.0,
+        1.0,
+        95.0,
+        0.0
+      ]
+    },
+    {
+      "frame": 4,
+      "sourceDirection": "up-left",
+      "sourceFrame": 4,
+      "unchangedFrameTimingMs": 120,
+      "geometryMirrorAxisX": 127.5,
+      "semanticSidesExchanged": true,
+      "relightingRGBOnly": true,
+      "alphaDifferenceFromApprovedReflection": 0,
+      "support": "right",
+      "headLocalReflection": [
+        -1.0,
+        0.0,
+        0.0,
+        1.0,
+        95.0,
+        0.0
+      ]
+    },
+    {
+      "frame": 5,
+      "sourceDirection": "up-left",
+      "sourceFrame": 5,
+      "unchangedFrameTimingMs": 120,
+      "geometryMirrorAxisX": 127.5,
+      "semanticSidesExchanged": true,
+      "relightingRGBOnly": true,
+      "alphaDifferenceFromApprovedReflection": 0,
+      "support": "left",
+      "headLocalReflection": [
+        -1.0,
+        0.0,
+        0.0,
+        1.0,
+        95.0,
+        0.0
+      ]
+    },
+    {
+      "frame": 6,
+      "sourceDirection": "up-left",
+      "sourceFrame": 6,
+      "unchangedFrameTimingMs": 120,
+      "geometryMirrorAxisX": 127.5,
+      "semanticSidesExchanged": true,
+      "relightingRGBOnly": true,
+      "alphaDifferenceFromApprovedReflection": 0,
+      "support": "left",
+      "headLocalReflection": [
+        -1.0,
+        0.0,
+        0.0,
+        1.0,
+        95.0,
+        0.0
+      ]
+    },
+    {
+      "frame": 7,
+      "sourceDirection": "up-left",
+      "sourceFrame": 7,
+      "unchangedFrameTimingMs": 120,
+      "geometryMirrorAxisX": 127.5,
+      "semanticSidesExchanged": true,
+      "relightingRGBOnly": true,
+      "alphaDifferenceFromApprovedReflection": 0,
+      "support": "left",
+      "headLocalReflection": [
+        -1.0,
+        0.0,
+        0.0,
+        1.0,
+        95.0,
+        0.0
+      ]
+    },
+    {
+      "frame": 8,
+      "sourceDirection": "up-left",
+      "sourceFrame": 8,
+      "unchangedFrameTimingMs": 120,
+      "geometryMirrorAxisX": 127.5,
+      "semanticSidesExchanged": true,
+      "relightingRGBOnly": true,
+      "alphaDifferenceFromApprovedReflection": 0,
+      "support": "left",
+      "headLocalReflection": [
+        -1.0,
+        0.0,
+        0.0,
+        1.0,
+        95.0,
+        0.0
+      ]
+    }
+  ]
+}

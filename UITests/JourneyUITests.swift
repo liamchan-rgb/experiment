@@ -18,61 +18,48 @@ final class JourneyUITests: XCTestCase {
         let originalCamera = diagnostics(app)["camera"] as! [String: Double]
         app.buttons["openBattlePreview"].tap()
 
-        let battlefield = app.otherElements["battleLandscape"]
-        XCTAssertTrue(battlefield.waitForExistence(timeout: 15))
+        let start = app.buttons["battlePreviewPrimaryAction"]
+        XCTAssertTrue(start.waitForExistence(timeout: 15))
+        XCTAssertEqual(app.staticTexts["previewCurrentActor"].label, "探索 · 林地")
+        XCTAssertEqual(map.frame.width, originalWidth, accuracy: 1)
+        start.tap()
+
+        let enemy = app.buttons["meadowBattleForestWarden"]
+        XCTAssertTrue(enemy.waitForExistence(timeout: 10))
         XCTAssertLessThan(map.frame.width, originalWidth * 0.75)
-        XCTAssertEqual(map.frame.minY, battlefield.frame.minY, accuracy: 1)
-        XCTAssertEqual(map.frame.height, battlefield.frame.height, accuracy: 1)
-        let track = app.otherElements["previewTurnTrack"]
-        let details = app.otherElements["previewPlayerDetails"]
-        XCTAssertTrue(track.exists); XCTAssertTrue(details.exists)
-        XCTAssertGreaterThan(track.frame.minY, map.frame.maxY)
-        XCTAssertGreaterThan(details.frame.minY, track.frame.maxY)
-        XCTAssertLessThan(details.frame.height, app.frame.height * 0.17)
-        XCTAssertEqual(track.frame.minX, map.frame.minX, accuracy: 1)
-        XCTAssertEqual(track.frame.maxX, battlefield.frame.maxX, accuracy: 1)
-        XCTAssertEqual(app.otherElements.matching(NSPredicate(format: "identifier BEGINSWITH %@", "previewQueue")).count, 10)
+        XCTAssertGreaterThanOrEqual(enemy.frame.minX, map.frame.maxX,
+                                    "The selectable enemy should sit in the right-hand battlefield")
+        XCTAssertTrue(app.otherElements["previewTurnTrack"].exists)
+        XCTAssertTrue(app.otherElements["previewPlayerDetails"].exists)
         XCTAssertEqual(app.otherElements["previewQueueP1"].value as? String, "当前行动")
-        XCTAssertFalse(app.staticTexts["previewResourceValues"].label.contains("AP"))
-        XCTAssertFalse(app.buttons["openGaitTest"].isHittable)
-        XCTAssertFalse(app.buttons["openBattlePreview"].isHittable)
-        XCTAssertEqual(app.buttons.matching(NSPredicate(format: "label == %@", "返回地图")).count, 1)
-        let previewState = diagnostics(app)
-        XCTAssertEqual(previewState["zoom"] as? Double ?? -1, 1.25, accuracy: 0.001)
-        let previewCamera = previewState["camera"] as! [String: Double]
-        XCTAssertEqual(previewCamera["scale"]!, originalCamera["scale"]!, accuracy: 0.001,
-                       "Splitting the viewport must preserve the map's object sizes")
-        let selected = previewState["selected"] as! Int
-        let hero = (previewState["heroTargets"] as! [[String: Double]])[selected]
-        XCTAssertTrue((0.2...0.8).contains(hero["x"]!))
-        XCTAssertTrue((0.2...0.8).contains(hero["y"]!))
-        XCTAssertGreaterThan(previewState["independentProps"] as? Int ?? 0, 0)
-        assertVisibleGround(map, name: "meadow-map-left-of-battle-scene")
-        assertMapPaneHasTexturedTopAndBottom(map)
-        capture("meadow-layout-player-turn")
+        XCTAssertTrue(app.staticTexts["previewResourceValues"].label.contains("行动点 3/3"))
+        XCTAssertTrue(app.staticTexts["battleHeroHealth"].label.contains("12/12"))
+        XCTAssertTrue(app.staticTexts["battleEnemyHealth"].label.contains("18/18"))
 
-        let playerMapFrame = map.frame
-        let mode = app.segmentedControls["battlePreviewMode"]
-        mode.buttons["怪物回合"].tap()
-        XCTAssertFalse(details.isHittable)
-        XCTAssertTrue(track.exists)
-        XCTAssertEqual(app.otherElements["previewQueue敌1"].value as? String, "当前行动")
-        XCTAssertGreaterThan(map.frame.height, playerMapFrame.height)
-        XCTAssertEqual(map.frame.height, battlefield.frame.height, accuracy: 1)
-        assertMapPaneHasTexturedTopAndBottom(map)
-        capture("meadow-layout-monster-turn")
+        enemy.tap()
+        XCTAssertTrue((enemy.value as? String ?? "").contains("已选中"))
+        let strike = app.buttons["battleAction强击"]
+        XCTAssertTrue(strike.waitForExistence(timeout: 5))
+        XCTAssertTrue(strike.isEnabled)
+        strike.tap()
+        let strikeReady = XCTNSPredicateExpectation(predicate: NSPredicate(format: "isEnabled == true"), object: strike)
+        XCTAssertEqual(XCTWaiter.wait(for: [strikeReady], timeout: 10), .completed,
+                       "Wait until the strike animation has finished and actions unlock")
+        XCTAssertTrue(app.staticTexts["previewResourceValues"].label.contains("行动点 2/3"))
+        XCTAssertTrue(app.staticTexts["battleEnemyHealth"].label.contains("13/18"))
+        XCTAssertEqual(app.staticTexts["previewCurrentActor"].label, "第1轮 · P1 行动")
 
-        mode.buttons["探索"].tap()
-        XCTAssertFalse(battlefield.isHittable)
-        XCTAssertFalse(track.isHittable)
-        XCTAssertFalse(details.isHittable)
-        XCTAssertGreaterThan(map.frame.width, playerMapFrame.width * 1.9)
-        assertMapPaneHasTexturedTopAndBottom(map)
-        capture("meadow-layout-exploration")
-
-        mode.buttons["玩家回合"].tap()
-        XCTAssertEqual(map.frame.height, playerMapFrame.height, accuracy: 1)
-        XCTAssertTrue(details.exists)
+        let endTurn = app.buttons["battlePreviewPrimaryAction"]
+        endTurn.tap()
+        XCTAssertEqual(app.staticTexts["previewCurrentActor"].label, "第1轮 · 鹿灵蓄势")
+        let nextRound = XCTNSPredicateExpectation(
+            predicate: NSPredicate(format: "label == %@", "第2轮 · P1 行动"),
+            object: app.staticTexts["previewCurrentActor"])
+        XCTAssertEqual(XCTWaiter.wait(for: [nextRound], timeout: 12), .completed,
+                       "Wait for the visible enemy action and the next player round")
+        XCTAssertEqual(app.otherElements["previewQueueP1"].value as? String, "当前行动")
+        XCTAssertTrue(app.staticTexts["previewResourceValues"].label.contains("行动点 3/3"))
+        XCTAssertTrue(app.staticTexts["battleHeroHealth"].label.contains("8/12"))
 
         app.buttons["closeBattlePreview"].tap()
         XCTAssertTrue(app.buttons["zoomButton"].waitForExistence(timeout: 15))
@@ -100,9 +87,10 @@ final class JourneyUITests: XCTestCase {
             app.buttons["gaitDirection\(facing)"].tap()
             XCTAssertEqual(diagnostics(app)["gaitFacing"] as? Int, facing)
             XCTAssertEqual(diagnostics(app)["mode"] as? String, "gaitTest")
-            for frame in 1...24 {
-                XCTAssertEqual(diagnostics(app)["gaitFrame"] as? Int, frame)
-                if [1, 7, 13, 19].contains(frame) { capture("gait-hero-map-dir\(facing)-frame\(frame)") }
+            for pose in 1...8 {
+                XCTAssertEqual(diagnostics(app)["gaitAuthoredPose"] as? Int, pose)
+                XCTAssertEqual(diagnostics(app)["gaitFrame"] as? Int, 1 + (pose - 1) * 3)
+                if [1, 3, 5, 7].contains(pose) { capture("gait-hero-map-dir\(facing)-pose\(pose)") }
                 app.buttons["gaitStep"].tap()
             }
             XCTAssertEqual(diagnostics(app)["gaitFrame"] as? Int, 1)
@@ -113,7 +101,7 @@ final class JourneyUITests: XCTestCase {
         assertVisibleGround(map, name: "main-ground-after-gait-review")
     }
 
-    func testLayeredP1ColorwayPreviewRunsBesideOriginalInTheMapScene() {
+    func testApprovedP1GaitStepsWholePosesAndOmitsOutdatedLayeredComparison() {
         continueAfterFailure = false
         XCUIDevice.shared.orientation = .landscapeLeft
         let app = XCUIApplication(); app.launchArguments = ["-visualReview"]; app.launch()
@@ -121,19 +109,19 @@ final class JourneyUITests: XCTestCase {
         XCTAssertTrue(map.waitForExistence(timeout: 120)); waitForReady(app, map: map)
         app.buttons["openGaitTest"].tap()
         app.buttons["gaitPause"].tap()
-        app.buttons["gaitLayeredPreview"].tap()
+        app.buttons["gaitDirection0"].tap()
         var state = diagnostics(app)
-        XCTAssertEqual(state["layeredPreview"] as? Bool, true)
-        XCTAssertEqual(state["layeredPreviewFrameCount"] as? Int, 24)
+        XCTAssertFalse(app.buttons["gaitLayeredPreview"].exists)
+        XCTAssertEqual(state["layeredPreview"] as? Bool, false)
+        XCTAssertEqual(state["gaitPoseCount"] as? Int, 8)
+        XCTAssertEqual(state["gaitAuthoredPose"] as? Int, 1)
         XCTAssertEqual(state["gaitFacing"] as? Int, 0)
-        capture("layered-p1-original-versus-blue-boots")
         app.buttons["gaitStep"].tap()
         state = diagnostics(app)
-        XCTAssertEqual(state["gaitFrame"] as? Int, 2)
-        app.buttons["gaitLayeredPreview"].tap()
-        XCTAssertEqual(diagnostics(app)["layeredPreview"] as? Bool, false)
+        XCTAssertEqual(state["gaitAuthoredPose"] as? Int, 2)
+        XCTAssertEqual(state["gaitFrame"] as? Int, 4)
         app.buttons["openGaitTest"].tap()
-        assertVisibleGround(map, name: "main-ground-after-layered-preview")
+        assertVisibleGround(map, name: "main-ground-after-approved-gait-preview")
     }
 
     func testForegroundAndShadowReceiverStayAlignedAtEveryZoom() {
@@ -294,8 +282,13 @@ final class JourneyUITests: XCTestCase {
         XCTAssertEqual(state["automaticSun"] as? Bool, false)
         capture("11-shadow-lab-relayout")
         app.buttons["shadowLabClose"].tap()
-        XCTAssertTrue(app.buttons["openShadowLab"].waitForExistence(timeout: 15))
-        app.buttons["openShadowLab"].tap()
+        let openShadowLab = app.buttons["openShadowLab"]
+        XCTAssertTrue(openShadowLab.waitForExistence(timeout: 15))
+        let enabled = XCTNSPredicateExpectation(predicate: NSPredicate(format: "isEnabled == true"), object: openShadowLab)
+        XCTAssertEqual(XCTWaiter.wait(for: [enabled], timeout: 120), .completed,
+                       "The map must finish loading before the shadow lab can be reopened")
+        XCTAssertTrue(openShadowLab.isHittable)
+        openShadowLab.tap()
         XCTAssertTrue(surface.waitForExistence(timeout: 15))
     }
 
@@ -322,8 +315,11 @@ final class JourneyUITests: XCTestCase {
         let app = XCUIApplication()
         app.launchArguments = ["-visualReview"]
         app.launch()
+        let map = app.otherElements["meadowMap"]
+        waitForReady(app, map: map)
         let play = app.buttons["playButton"]
         XCTAssertTrue(play.waitForExistence(timeout: 15))
+        XCTAssertTrue(play.isHittable)
         capture("01-reference-layout")
         XCTAssertEqual(play.label, "开始行旅")
         play.tap()

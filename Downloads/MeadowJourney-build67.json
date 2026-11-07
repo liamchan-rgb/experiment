@@ -1,0 +1,76 @@
+{
+  "version": "1.6.41",
+  "build": 67,
+  "bundleIdentifier": "com.liamchan.experiment.meadow",
+  "date": "2026-10-29",
+  "sourceCommit": "5509da99ce9546c4555594f8a2c904700cd42050",
+  "workflowHead": "c6ee157f63a19237cf101382920e7c591152ba73",
+  "workflowRun": 40914603016,
+  "workflowURL": "https://github.com/liamchan-rgb/experiment/actions/runs/40914603016",
+  "ipaFilename": "MeadowJourney-b67.ipa",
+  "ipaBytes": 49938573,
+  "ipaSHA256": "2cfe07cfd90ef1f3b0ae36ee7154763d420a2d96ac37b16dcce1380d67090816",
+  "checks": {
+    "threePartArtifactDigestsAndCRC": true,
+    "partManifestAndWholeFileSHA256": true,
+    "ipaCRC": true,
+    "classicZIP20StoredLocalAndCentralHeaders": true,
+    "iPhoneOSArm64PhoneAndPad": true,
+    "executablePermissions": true,
+    "signatureAbsentForSideStore": true,
+    "metalPresent": true,
+    "eightRuneSlashAssetsCompiled": true,
+    "gaitBytesMatch": true,
+    "pinnedCatalogBundledExactly": true,
+    "archiveSucceeded": true,
+    "fivePureLogicChecks": true,
+    "pureSwiftTests162Passed": true,
+    "13MacLinuxExportsMatchWithin1e-6": true
+  },
+  "actualDeviceFPSMeasured": false,
+  "simulatorRunPerformed": false,
+  "physicalDeviceRunPerformed": false,
+  "userInstallationPending": true,
+  "change": "Integrates the supplied eight-frame Rune Slash PNG as the attack effect; reuses original hit receipt, melee pose and actor movement. Other skills, rule state and character/weapon art remain unchanged.",
+  "userRuntimeArtApproval": null,
+  "actionArtifacts": [
+    {
+      "name": "MeadowJourney-build67-ipa-part-00",
+      "id": 12915946959,
+      "size_bytes": 20462746,
+      "sha256": "7960962530be77072fbe88a4a8454209c78fd6fe661cbc71571a1be962426228"
+    },
+    {
+      "name": "MeadowJourney-build67-ipa-part-01",
+      "id": 12916331032,
+      "size_bytes": 20669315,
+      "sha256": "15bea885c6538fbc8624f65e5bc81a4b026b589bec64c7d36f8fdf9a0800ba87"
+    },
+    {
+      "name": "MeadowJourney-build67-ipa-part-02",
+      "id": 12914999786,
+      "size_bytes": 5542205,
+      "sha256": "ccce358e3f5246acdd1bdb252e892cf073d5e11ac5a8f8f79a0db089dbe51ec7"
+    },
+    {
+      "name": "MeadowJourney-build67-ipa-manifest",
+      "id": 12916420946,
+      "size_bytes": 463,
+      "sha256": "d63dc2aed4bac80a907114da0b596776ce2c20e96fa90f40cd6c725d2db201b7"
+    },
+    {
+      "name": "shadow-lab-archive-logs-40914603016-1",
+      "id": 12915483082,
+      "size_bytes": 8763338,
+      "sha256": "b1c5ef714174b3082ef64ef92d02562ad35ad82d164159902ccac5fe3bf3cdff"
+    }
+  ],
+  "actionRunConclusion": "success",
+  "directDownloadURL": "https://raw.githubusercontent.com/liamchan-rgb/experiment/b046d5f15b62dad77638f48ad108639f14404235/Downloads/MeadowJourney-b67.ipa",
+  "publicRawGET": {
+    "status": 200,
+    "bytes": 49938573,
+    "sha256": "2cfe07cfd90ef1f3b0ae36ee7154763d420a2d96ac37b16dcce1380d67090816",
+    "matchesLocal": true
+  }
+}

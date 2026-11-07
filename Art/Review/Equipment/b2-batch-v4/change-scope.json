@@ -1,0 +1,16 @@
+{
+  "items": {
+    "leatherArmor": {
+      "allIdlePartPixelsUnchanged": true,
+      "nonFrontTorsoAndHemPixelsUnchanged": true
+    },
+    "runeArmor": {
+      "allIdlePartPixelsUnchanged": true,
+      "nonFrontTorsoAndHemPixelsUnchanged": true
+    }
+  },
+  "differentFrontLayers": 82,
+  "differentOtherDirectionLayers": 222,
+  "sourceGarmentUnchanged": true,
+  "battleUsesReviewOnlyPauldronLayer": true
+}

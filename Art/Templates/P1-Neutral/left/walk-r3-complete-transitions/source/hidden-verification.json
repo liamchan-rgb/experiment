@@ -1,0 +1,7549 @@
+{
+  "method": "underlay then original slot in source drawOrder; compare all original nontransparent RGBA from the immutable visible frame snapshot when available; palette selection, later-slot occlusion, and joint probes use immutable visible layer snapshots when available; assert torso palette contains only neck/vest/short swatches and each limb slot only its matching-side skin swatch; local arm shoulder/wrist and leg hip-root shift probes count only opaque contact-core pixels, excluding antialiased outer contours and knee/ankle old locations",
+  "visibleInputs": {
+    "layers": "source/visible-layers",
+    "frames": "source/visible-frames"
+  },
+  "frames": [
+    {
+      "frame": 0,
+      "originalVisibleRGBAExact": true,
+      "preservedNontransparentPixels": 3853,
+      "newlyVisiblePixels": 0,
+      "samePartMaterialPaletteExact": {
+        "body.torso": {
+          "onlyAuthoredPartPalette": true,
+          "colors": [
+            [
+              65,
+              57,
+              62
+            ],
+            [
+              251,
+              236,
+              217
+            ],
+            [
+              253,
+              205,
+              158
+            ]
+          ]
+        },
+        "body.arm.right": {
+          "onlyAuthoredPartPalette": true,
+          "colors": [
+            [
+              224,
+              133,
+              83
+            ]
+          ]
+        },
+        "body.arm.left": {
+          "onlyAuthoredPartPalette": true,
+          "colors": [
+            [
+              253,
+              205,
+              158
+            ]
+          ]
+        },
+        "body.hand.right": {
+          "onlyAuthoredPartPalette": true,
+          "colors": [
+            [
+              224,
+              133,
+              83
+            ]
+          ]
+        },
+        "body.hand.left": {
+          "onlyAuthoredPartPalette": true,
+          "colors": [
+            [
+              253,
+              205,
+              158
+            ]
+          ]
+        },
+        "body.leg.right": {
+          "onlyAuthoredPartPalette": true,
+          "colors": [
+            [
+              224,
+              133,
+              83
+            ]
+          ]
+        },
+        "body.leg.left": {
+          "onlyAuthoredPartPalette": true,
+          "colors": [
+            [
+              253,
+              205,
+              158
+            ]
+          ]
+        }
+      },
+      "jointContactStress": [
+        {
+          "slot": "body.arm.left",
+          "testedJoints": [
+            "shoulder",
+            "wrist"
+          ],
+          "testedVisiblePixels": 18,
+          "maxNewTransparentPixels": 0,
+          "trials": [
+            {
+              "offset": [
+                -1,
+                -1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                -1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                1,
+                -1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -1,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                1,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -1,
+                1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                1,
+                1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -2,
+                -2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                -2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                2,
+                -2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -2,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                2,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -2,
+                2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                2,
+                2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            }
+          ]
+        },
+        {
+          "slot": "body.arm.right",
+          "testedJoints": [
+            "shoulder",
+            "wrist"
+          ],
+          "testedVisiblePixels": 17,
+          "maxNewTransparentPixels": 0,
+          "trials": [
+            {
+              "offset": [
+                -1,
+                -1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                -1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                1,
+                -1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -1,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                1,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -1,
+                1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                1,
+                1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -2,
+                -2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                -2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                2,
+                -2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -2,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                2,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -2,
+                2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                2,
+                2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            }
+          ]
+        },
+        {
+          "slot": "body.leg.left",
+          "testedJoints": [
+            "hip-root"
+          ],
+          "testedVisiblePixels": 9,
+          "maxNewTransparentPixels": 0,
+          "trials": [
+            {
+              "offset": [
+                -1,
+                -1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                -1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                1,
+                -1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -1,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                1,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -1,
+                1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                1,
+                1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -2,
+                -2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                -2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                2,
+                -2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -2,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                2,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -2,
+                2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                2,
+                2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            }
+          ]
+        },
+        {
+          "slot": "body.leg.right",
+          "testedJoints": [
+            "hip-root"
+          ],
+          "testedVisiblePixels": 9,
+          "maxNewTransparentPixels": 0,
+          "trials": [
+            {
+              "offset": [
+                -1,
+                -1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                -1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                1,
+                -1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -1,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                1,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -1,
+                1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                1,
+                1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -2,
+                -2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                -2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                2,
+                -2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -2,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                2,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -2,
+                2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                2,
+                2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "frame": 1,
+      "originalVisibleRGBAExact": true,
+      "preservedNontransparentPixels": 5032,
+      "newlyVisiblePixels": 0,
+      "samePartMaterialPaletteExact": {
+        "body.torso": {
+          "onlyAuthoredPartPalette": true,
+          "colors": [
+            [
+              63,
+              55,
+              61
+            ],
+            [
+              250,
+              236,
+              221
+            ],
+            [
+              253,
+              202,
+              154
+            ]
+          ]
+        },
+        "body.arm.right": {
+          "onlyAuthoredPartPalette": true,
+          "colors": [
+            [
+              250,
+              203,
+              158
+            ]
+          ]
+        },
+        "body.arm.left": {
+          "onlyAuthoredPartPalette": true,
+          "colors": [
+            [
+              253,
+              201,
+              155
+            ]
+          ]
+        },
+        "body.hand.right": {
+          "onlyAuthoredPartPalette": true,
+          "colors": [
+            [
+              250,
+              203,
+              158
+            ]
+          ]
+        },
+        "body.hand.left": {
+          "onlyAuthoredPartPalette": true,
+          "colors": [
+            [
+              253,
+              201,
+              155
+            ]
+          ]
+        },
+        "body.leg.right": {
+          "onlyAuthoredPartPalette": true,
+          "colors": [
+            [
+              250,
+              203,
+              158
+            ]
+          ]
+        },
+        "body.leg.left": {
+          "onlyAuthoredPartPalette": true,
+          "colors": [
+            [
+              253,
+              201,
+              155
+            ]
+          ]
+        }
+      },
+      "jointContactStress": [
+        {
+          "slot": "body.arm.left",
+          "testedJoints": [
+            "shoulder",
+            "wrist"
+          ],
+          "testedVisiblePixels": 18,
+          "maxNewTransparentPixels": 0,
+          "trials": [
+            {
+              "offset": [
+                -1,
+                -1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                -1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                1,
+                -1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -1,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                1,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -1,
+                1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                1,
+                1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -2,
+                -2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                -2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                2,
+                -2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -2,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                2,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -2,
+                2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                2,
+                2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            }
+          ]
+        },
+        {
+          "slot": "body.arm.right",
+          "testedJoints": [
+            "shoulder",
+            "wrist"
+          ],
+          "testedVisiblePixels": 18,
+          "maxNewTransparentPixels": 0,
+          "trials": [
+            {
+              "offset": [
+                -1,
+                -1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                -1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                1,
+                -1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -1,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                1,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -1,
+                1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                1,
+                1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -2,
+                -2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                -2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                2,
+                -2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -2,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                2,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -2,
+                2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                2,
+                2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            }
+          ]
+        },
+        {
+          "slot": "body.leg.left",
+          "testedJoints": [
+            "hip-root"
+          ],
+          "testedVisiblePixels": 9,
+          "maxNewTransparentPixels": 0,
+          "trials": [
+            {
+              "offset": [
+                -1,
+                -1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                -1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                1,
+                -1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -1,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                1,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -1,
+                1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                1,
+                1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -2,
+                -2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                -2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                2,
+                -2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -2,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                2,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -2,
+                2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                2,
+                2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            }
+          ]
+        },
+        {
+          "slot": "body.leg.right",
+          "testedJoints": [
+            "hip-root"
+          ],
+          "testedVisiblePixels": 9,
+          "maxNewTransparentPixels": 0,
+          "trials": [
+            {
+              "offset": [
+                -1,
+                -1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                -1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                1,
+                -1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -1,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                1,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -1,
+                1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                1,
+                1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -2,
+                -2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                -2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                2,
+                -2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -2,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                2,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -2,
+                2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                2,
+                2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "frame": 2,
+      "originalVisibleRGBAExact": true,
+      "preservedNontransparentPixels": 4465,
+      "newlyVisiblePixels": 0,
+      "samePartMaterialPaletteExact": {
+        "body.torso": {
+          "onlyAuthoredPartPalette": true,
+          "colors": [
+            [
+              65,
+              57,
+              63
+            ],
+            [
+              250,
+              233,
+              216
+            ],
+            [
+              253,
+              205,
+              158
+            ]
+          ]
+        },
+        "body.arm.right": {
+          "onlyAuthoredPartPalette": true,
+          "colors": [
+            [
+              229,
+              139,
+              93
+            ]
+          ]
+        },
+        "body.arm.left": {
+          "onlyAuthoredPartPalette": true,
+          "colors": [
+            [
+              252,
+              199,
+              152
+            ]
+          ]
+        },
+        "body.hand.right": {
+          "onlyAuthoredPartPalette": true,
+          "colors": [
+            [
+              229,
+              139,
+              93
+            ]
+          ]
+        },
+        "body.hand.left": {
+          "onlyAuthoredPartPalette": true,
+          "colors": [
+            [
+              252,
+              199,
+              152
+            ]
+          ]
+        },
+        "body.leg.right": {
+          "onlyAuthoredPartPalette": true,
+          "colors": [
+            [
+              229,
+              139,
+              93
+            ]
+          ]
+        },
+        "body.leg.left": {
+          "onlyAuthoredPartPalette": true,
+          "colors": [
+            [
+              252,
+              199,
+              152
+            ]
+          ]
+        }
+      },
+      "jointContactStress": [
+        {
+          "slot": "body.arm.left",
+          "testedJoints": [
+            "shoulder",
+            "wrist"
+          ],
+          "testedVisiblePixels": 18,
+          "maxNewTransparentPixels": 0,
+          "trials": [
+            {
+              "offset": [
+                -1,
+                -1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                -1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                1,
+                -1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -1,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                1,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -1,
+                1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                1,
+                1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -2,
+                -2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                -2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                2,
+                -2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -2,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                2,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -2,
+                2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                2,
+                2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            }
+          ]
+        },
+        {
+          "slot": "body.arm.right",
+          "testedJoints": [
+            "shoulder",
+            "wrist"
+          ],
+          "testedVisiblePixels": 18,
+          "maxNewTransparentPixels": 0,
+          "trials": [
+            {
+              "offset": [
+                -1,
+                -1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                -1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                1,
+                -1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -1,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                1,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -1,
+                1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                1,
+                1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -2,
+                -2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                -2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                2,
+                -2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -2,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                2,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -2,
+                2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                2,
+                2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            }
+          ]
+        },
+        {
+          "slot": "body.leg.left",
+          "testedJoints": [
+            "hip-root"
+          ],
+          "testedVisiblePixels": 9,
+          "maxNewTransparentPixels": 0,
+          "trials": [
+            {
+              "offset": [
+                -1,
+                -1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                -1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                1,
+                -1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -1,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                1,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -1,
+                1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                1,
+                1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -2,
+                -2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                -2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                2,
+                -2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -2,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                2,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -2,
+                2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                2,
+                2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            }
+          ]
+        },
+        {
+          "slot": "body.leg.right",
+          "testedJoints": [
+            "hip-root"
+          ],
+          "testedVisiblePixels": 9,
+          "maxNewTransparentPixels": 0,
+          "trials": [
+            {
+              "offset": [
+                -1,
+                -1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                -1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                1,
+                -1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -1,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                1,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -1,
+                1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                1,
+                1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -2,
+                -2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                -2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                2,
+                -2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -2,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                2,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -2,
+                2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                2,
+                2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "frame": 3,
+      "originalVisibleRGBAExact": true,
+      "preservedNontransparentPixels": 4058,
+      "newlyVisiblePixels": 0,
+      "samePartMaterialPaletteExact": {
+        "body.torso": {
+          "onlyAuthoredPartPalette": true,
+          "colors": [
+            [
+              64,
+              55,
+              60
+            ],
+            [
+              247,
+              230,
+              216
+            ],
+            [
+              252,
+              199,
+              154
+            ]
+          ]
+        },
+        "body.arm.right": {
+          "onlyAuthoredPartPalette": true,
+          "colors": [
+            [
+              239,
+              152,
+              100
+            ]
+          ]
+        },
+        "body.arm.left": {
+          "onlyAuthoredPartPalette": true,
+          "colors": [
+            [
+              253,
+              200,
+              156
+            ]
+          ]
+        },
+        "body.hand.right": {
+          "onlyAuthoredPartPalette": true,
+          "colors": [
+            [
+              239,
+              152,
+              100
+            ]
+          ]
+        },
+        "body.hand.left": {
+          "onlyAuthoredPartPalette": true,
+          "colors": [
+            [
+              253,
+              200,
+              156
+            ]
+          ]
+        },
+        "body.leg.right": {
+          "onlyAuthoredPartPalette": true,
+          "colors": [
+            [
+              239,
+              152,
+              100
+            ]
+          ]
+        },
+        "body.leg.left": {
+          "onlyAuthoredPartPalette": true,
+          "colors": [
+            [
+              253,
+              200,
+              156
+            ]
+          ]
+        }
+      },
+      "jointContactStress": [
+        {
+          "slot": "body.arm.left",
+          "testedJoints": [
+            "shoulder",
+            "wrist"
+          ],
+          "testedVisiblePixels": 18,
+          "maxNewTransparentPixels": 0,
+          "trials": [
+            {
+              "offset": [
+                -1,
+                -1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                -1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                1,
+                -1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -1,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                1,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -1,
+                1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                1,
+                1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -2,
+                -2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                -2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                2,
+                -2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -2,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                2,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -2,
+                2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                2,
+                2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            }
+          ]
+        },
+        {
+          "slot": "body.arm.right",
+          "testedJoints": [
+            "shoulder",
+            "wrist"
+          ],
+          "testedVisiblePixels": 18,
+          "maxNewTransparentPixels": 0,
+          "trials": [
+            {
+              "offset": [
+                -1,
+                -1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                -1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                1,
+                -1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -1,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                1,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -1,
+                1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                1,
+                1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -2,
+                -2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                -2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                2,
+                -2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -2,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                2,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -2,
+                2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                2,
+                2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            }
+          ]
+        },
+        {
+          "slot": "body.leg.left",
+          "testedJoints": [
+            "hip-root"
+          ],
+          "testedVisiblePixels": 9,
+          "maxNewTransparentPixels": 0,
+          "trials": [
+            {
+              "offset": [
+                -1,
+                -1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                -1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                1,
+                -1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -1,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                1,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -1,
+                1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                1,
+                1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -2,
+                -2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                -2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                2,
+                -2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -2,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                2,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -2,
+                2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                2,
+                2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            }
+          ]
+        },
+        {
+          "slot": "body.leg.right",
+          "testedJoints": [
+            "hip-root"
+          ],
+          "testedVisiblePixels": 9,
+          "maxNewTransparentPixels": 0,
+          "trials": [
+            {
+              "offset": [
+                -1,
+                -1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                -1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                1,
+                -1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -1,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                1,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -1,
+                1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                1,
+                1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -2,
+                -2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                -2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                2,
+                -2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -2,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                2,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -2,
+                2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                2,
+                2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "frame": 4,
+      "originalVisibleRGBAExact": true,
+      "preservedNontransparentPixels": 4641,
+      "newlyVisiblePixels": 0,
+      "samePartMaterialPaletteExact": {
+        "body.torso": {
+          "onlyAuthoredPartPalette": true,
+          "colors": [
+            [
+              60,
+              55,
+              59
+            ],
+            [
+              251,
+              235,
+              219
+            ],
+            [
+              253,
+              205,
+              158
+            ]
+          ]
+        },
+        "body.arm.right": {
+          "onlyAuthoredPartPalette": true,
+          "colors": [
+            [
+              240,
+              159,
+              105
+            ]
+          ]
+        },
+        "body.arm.left": {
+          "onlyAuthoredPartPalette": true,
+          "colors": [
+            [
+              252,
+              198,
+              152
+            ]
+          ]
+        },
+        "body.hand.right": {
+          "onlyAuthoredPartPalette": true,
+          "colors": [
+            [
+              240,
+              159,
+              105
+            ]
+          ]
+        },
+        "body.hand.left": {
+          "onlyAuthoredPartPalette": true,
+          "colors": [
+            [
+              252,
+              198,
+              152
+            ]
+          ]
+        },
+        "body.leg.right": {
+          "onlyAuthoredPartPalette": true,
+          "colors": [
+            [
+              240,
+              159,
+              105
+            ]
+          ]
+        },
+        "body.leg.left": {
+          "onlyAuthoredPartPalette": true,
+          "colors": [
+            [
+              252,
+              198,
+              152
+            ]
+          ]
+        }
+      },
+      "jointContactStress": [
+        {
+          "slot": "body.arm.left",
+          "testedJoints": [
+            "shoulder",
+            "wrist"
+          ],
+          "testedVisiblePixels": 18,
+          "maxNewTransparentPixels": 0,
+          "trials": [
+            {
+              "offset": [
+                -1,
+                -1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                -1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                1,
+                -1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -1,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                1,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -1,
+                1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                1,
+                1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -2,
+                -2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                -2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                2,
+                -2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -2,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                2,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -2,
+                2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                2,
+                2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            }
+          ]
+        },
+        {
+          "slot": "body.arm.right",
+          "testedJoints": [
+            "shoulder",
+            "wrist"
+          ],
+          "testedVisiblePixels": 18,
+          "maxNewTransparentPixels": 0,
+          "trials": [
+            {
+              "offset": [
+                -1,
+                -1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                -1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                1,
+                -1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -1,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                1,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -1,
+                1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                1,
+                1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -2,
+                -2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                -2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                2,
+                -2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -2,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                2,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -2,
+                2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                2,
+                2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            }
+          ]
+        },
+        {
+          "slot": "body.leg.left",
+          "testedJoints": [
+            "hip-root"
+          ],
+          "testedVisiblePixels": 9,
+          "maxNewTransparentPixels": 0,
+          "trials": [
+            {
+              "offset": [
+                -1,
+                -1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                -1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                1,
+                -1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -1,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                1,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -1,
+                1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                1,
+                1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -2,
+                -2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                -2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                2,
+                -2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -2,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                2,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -2,
+                2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                2,
+                2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            }
+          ]
+        },
+        {
+          "slot": "body.leg.right",
+          "testedJoints": [
+            "hip-root"
+          ],
+          "testedVisiblePixels": 5,
+          "maxNewTransparentPixels": 0,
+          "trials": [
+            {
+              "offset": [
+                -1,
+                -1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                -1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                1,
+                -1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -1,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                1,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -1,
+                1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                1,
+                1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -2,
+                -2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                -2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                2,
+                -2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -2,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                2,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -2,
+                2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                2,
+                2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "frame": 5,
+      "originalVisibleRGBAExact": true,
+      "preservedNontransparentPixels": 4850,
+      "newlyVisiblePixels": 0,
+      "samePartMaterialPaletteExact": {
+        "body.torso": {
+          "onlyAuthoredPartPalette": true,
+          "colors": [
+            [
+              63,
+              55,
+              60
+            ],
+            [
+              249,
+              234,
+              222
+            ],
+            [
+              253,
+              205,
+              158
+            ]
+          ]
+        },
+        "body.arm.right": {
+          "onlyAuthoredPartPalette": true,
+          "colors": [
+            [
+              241,
+              155,
+              105
+            ]
+          ]
+        },
+        "body.arm.left": {
+          "onlyAuthoredPartPalette": true,
+          "colors": [
+            [
+              253,
+              200,
+              155
+            ]
+          ]
+        },
+        "body.hand.right": {
+          "onlyAuthoredPartPalette": true,
+          "colors": [
+            [
+              241,
+              155,
+              105
+            ]
+          ]
+        },
+        "body.hand.left": {
+          "onlyAuthoredPartPalette": true,
+          "colors": [
+            [
+              253,
+              200,
+              155
+            ]
+          ]
+        },
+        "body.leg.right": {
+          "onlyAuthoredPartPalette": true,
+          "colors": [
+            [
+              241,
+              155,
+              105
+            ]
+          ]
+        },
+        "body.leg.left": {
+          "onlyAuthoredPartPalette": true,
+          "colors": [
+            [
+              253,
+              200,
+              155
+            ]
+          ]
+        }
+      },
+      "jointContactStress": [
+        {
+          "slot": "body.arm.left",
+          "testedJoints": [
+            "shoulder",
+            "wrist"
+          ],
+          "testedVisiblePixels": 18,
+          "maxNewTransparentPixels": 0,
+          "trials": [
+            {
+              "offset": [
+                -1,
+                -1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                -1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                1,
+                -1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -1,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                1,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -1,
+                1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                1,
+                1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -2,
+                -2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                -2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                2,
+                -2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -2,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                2,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -2,
+                2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                2,
+                2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            }
+          ]
+        },
+        {
+          "slot": "body.arm.right",
+          "testedJoints": [
+            "shoulder",
+            "wrist"
+          ],
+          "testedVisiblePixels": 18,
+          "maxNewTransparentPixels": 0,
+          "trials": [
+            {
+              "offset": [
+                -1,
+                -1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                -1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                1,
+                -1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -1,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                1,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -1,
+                1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                1,
+                1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -2,
+                -2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                -2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                2,
+                -2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -2,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                2,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -2,
+                2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                2,
+                2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            }
+          ]
+        },
+        {
+          "slot": "body.leg.left",
+          "testedJoints": [
+            "hip-root"
+          ],
+          "testedVisiblePixels": 9,
+          "maxNewTransparentPixels": 0,
+          "trials": [
+            {
+              "offset": [
+                -1,
+                -1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                -1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                1,
+                -1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -1,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                1,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -1,
+                1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                1,
+                1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -2,
+                -2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                -2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                2,
+                -2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -2,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                2,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -2,
+                2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                2,
+                2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            }
+          ]
+        },
+        {
+          "slot": "body.leg.right",
+          "testedJoints": [
+            "hip-root"
+          ],
+          "testedVisiblePixels": 9,
+          "maxNewTransparentPixels": 0,
+          "trials": [
+            {
+              "offset": [
+                -1,
+                -1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                -1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                1,
+                -1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -1,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                1,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -1,
+                1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                1,
+                1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -2,
+                -2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                -2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                2,
+                -2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -2,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                2,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -2,
+                2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                2,
+                2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "frame": 6,
+      "originalVisibleRGBAExact": true,
+      "preservedNontransparentPixels": 4420,
+      "newlyVisiblePixels": 0,
+      "samePartMaterialPaletteExact": {
+        "body.torso": {
+          "onlyAuthoredPartPalette": true,
+          "colors": [
+            [
+              67,
+              61,
+              67
+            ],
+            [
+              252,
+              237,
+              221
+            ],
+            [
+              253,
+              205,
+              158
+            ]
+          ]
+        },
+        "body.arm.right": {
+          "onlyAuthoredPartPalette": true,
+          "colors": [
+            [
+              244,
+              164,
+              108
+            ]
+          ]
+        },
+        "body.arm.left": {
+          "onlyAuthoredPartPalette": true,
+          "colors": [
+            [
+              253,
+              208,
+              164
+            ]
+          ]
+        },
+        "body.hand.right": {
+          "onlyAuthoredPartPalette": true,
+          "colors": [
+            [
+              244,
+              164,
+              108
+            ]
+          ]
+        },
+        "body.hand.left": {
+          "onlyAuthoredPartPalette": true,
+          "colors": [
+            [
+              253,
+              208,
+              164
+            ]
+          ]
+        },
+        "body.leg.right": {
+          "onlyAuthoredPartPalette": true,
+          "colors": [
+            [
+              244,
+              164,
+              108
+            ]
+          ]
+        },
+        "body.leg.left": {
+          "onlyAuthoredPartPalette": true,
+          "colors": [
+            [
+              253,
+              208,
+              164
+            ]
+          ]
+        }
+      },
+      "jointContactStress": [
+        {
+          "slot": "body.arm.left",
+          "testedJoints": [
+            "shoulder",
+            "wrist"
+          ],
+          "testedVisiblePixels": 18,
+          "maxNewTransparentPixels": 0,
+          "trials": [
+            {
+              "offset": [
+                -1,
+                -1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                -1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                1,
+                -1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -1,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                1,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -1,
+                1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                1,
+                1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -2,
+                -2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                -2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                2,
+                -2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -2,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                2,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -2,
+                2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                2,
+                2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            }
+          ]
+        },
+        {
+          "slot": "body.arm.right",
+          "testedJoints": [
+            "shoulder",
+            "wrist"
+          ],
+          "testedVisiblePixels": 18,
+          "maxNewTransparentPixels": 0,
+          "trials": [
+            {
+              "offset": [
+                -1,
+                -1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                -1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                1,
+                -1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -1,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                1,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -1,
+                1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                1,
+                1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -2,
+                -2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                -2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                2,
+                -2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -2,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                2,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -2,
+                2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                2,
+                2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            }
+          ]
+        },
+        {
+          "slot": "body.leg.left",
+          "testedJoints": [
+            "hip-root"
+          ],
+          "testedVisiblePixels": 9,
+          "maxNewTransparentPixels": 0,
+          "trials": [
+            {
+              "offset": [
+                -1,
+                -1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                -1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                1,
+                -1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -1,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                1,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -1,
+                1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                1,
+                1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -2,
+                -2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                -2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                2,
+                -2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -2,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                2,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -2,
+                2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                2,
+                2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            }
+          ]
+        },
+        {
+          "slot": "body.leg.right",
+          "testedJoints": [
+            "hip-root"
+          ],
+          "testedVisiblePixels": 9,
+          "maxNewTransparentPixels": 0,
+          "trials": [
+            {
+              "offset": [
+                -1,
+                -1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                -1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                1,
+                -1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -1,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                1,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -1,
+                1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                1,
+                1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -2,
+                -2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                -2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                2,
+                -2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -2,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                2,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -2,
+                2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                2,
+                2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "frame": 7,
+      "originalVisibleRGBAExact": true,
+      "preservedNontransparentPixels": 3986,
+      "newlyVisiblePixels": 0,
+      "samePartMaterialPaletteExact": {
+        "body.torso": {
+          "onlyAuthoredPartPalette": true,
+          "colors": [
+            [
+              52,
+              46,
+              51
+            ],
+            [
+              251,
+              236,
+              221
+            ],
+            [
+              252,
+              204,
+              157
+            ]
+          ]
+        },
+        "body.arm.right": {
+          "onlyAuthoredPartPalette": true,
+          "colors": [
+            [
+              235,
+              144,
+              94
+            ]
+          ]
+        },
+        "body.arm.left": {
+          "onlyAuthoredPartPalette": true,
+          "colors": [
+            [
+              253,
+              206,
+              160
+            ]
+          ]
+        },
+        "body.hand.right": {
+          "onlyAuthoredPartPalette": true,
+          "colors": [
+            [
+              235,
+              144,
+              94
+            ]
+          ]
+        },
+        "body.hand.left": {
+          "onlyAuthoredPartPalette": true,
+          "colors": [
+            [
+              253,
+              206,
+              160
+            ]
+          ]
+        },
+        "body.leg.right": {
+          "onlyAuthoredPartPalette": true,
+          "colors": [
+            [
+              235,
+              144,
+              94
+            ]
+          ]
+        },
+        "body.leg.left": {
+          "onlyAuthoredPartPalette": true,
+          "colors": [
+            [
+              253,
+              206,
+              160
+            ]
+          ]
+        }
+      },
+      "jointContactStress": [
+        {
+          "slot": "body.arm.left",
+          "testedJoints": [
+            "shoulder",
+            "wrist"
+          ],
+          "testedVisiblePixels": 18,
+          "maxNewTransparentPixels": 0,
+          "trials": [
+            {
+              "offset": [
+                -1,
+                -1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                -1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                1,
+                -1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -1,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                1,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -1,
+                1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                1,
+                1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -2,
+                -2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                -2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                2,
+                -2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -2,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                2,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -2,
+                2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                2,
+                2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            }
+          ]
+        },
+        {
+          "slot": "body.arm.right",
+          "testedJoints": [
+            "shoulder",
+            "wrist"
+          ],
+          "testedVisiblePixels": 18,
+          "maxNewTransparentPixels": 0,
+          "trials": [
+            {
+              "offset": [
+                -1,
+                -1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                -1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                1,
+                -1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -1,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                1,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -1,
+                1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                1,
+                1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -2,
+                -2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                -2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                2,
+                -2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -2,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                2,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -2,
+                2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                2,
+                2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            }
+          ]
+        },
+        {
+          "slot": "body.leg.left",
+          "testedJoints": [
+            "hip-root"
+          ],
+          "testedVisiblePixels": 9,
+          "maxNewTransparentPixels": 0,
+          "trials": [
+            {
+              "offset": [
+                -1,
+                -1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                -1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                1,
+                -1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -1,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                1,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -1,
+                1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                1,
+                1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -2,
+                -2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                -2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                2,
+                -2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -2,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                2,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -2,
+                2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                2,
+                2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            }
+          ]
+        },
+        {
+          "slot": "body.leg.right",
+          "testedJoints": [
+            "hip-root"
+          ],
+          "testedVisiblePixels": 9,
+          "maxNewTransparentPixels": 0,
+          "trials": [
+            {
+              "offset": [
+                -1,
+                -1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                -1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                1,
+                -1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -1,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                1,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -1,
+                1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                1,
+                1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -2,
+                -2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                -2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                2,
+                -2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -2,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                2,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -2,
+                2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                2,
+                2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "frame": 8,
+      "originalVisibleRGBAExact": true,
+      "preservedNontransparentPixels": 4662,
+      "newlyVisiblePixels": 0,
+      "samePartMaterialPaletteExact": {
+        "body.torso": {
+          "onlyAuthoredPartPalette": true,
+          "colors": [
+            [
+              63,
+              57,
+              63
+            ],
+            [
+              250,
+              235,
+              220
+            ],
+            [
+              253,
+              205,
+              158
+            ]
+          ]
+        },
+        "body.arm.right": {
+          "onlyAuthoredPartPalette": true,
+          "colors": [
+            [
+              251,
+              163,
+              101
+            ]
+          ]
+        },
+        "body.arm.left": {
+          "onlyAuthoredPartPalette": true,
+          "colors": [
+            [
+              253,
+              200,
+              156
+            ]
+          ]
+        },
+        "body.hand.right": {
+          "onlyAuthoredPartPalette": true,
+          "colors": [
+            [
+              251,
+              163,
+              101
+            ]
+          ]
+        },
+        "body.hand.left": {
+          "onlyAuthoredPartPalette": true,
+          "colors": [
+            [
+              253,
+              200,
+              156
+            ]
+          ]
+        },
+        "body.leg.right": {
+          "onlyAuthoredPartPalette": true,
+          "colors": [
+            [
+              251,
+              163,
+              101
+            ]
+          ]
+        },
+        "body.leg.left": {
+          "onlyAuthoredPartPalette": true,
+          "colors": [
+            [
+              253,
+              200,
+              156
+            ]
+          ]
+        }
+      },
+      "jointContactStress": [
+        {
+          "slot": "body.arm.left",
+          "testedJoints": [
+            "shoulder",
+            "wrist"
+          ],
+          "testedVisiblePixels": 18,
+          "maxNewTransparentPixels": 0,
+          "trials": [
+            {
+              "offset": [
+                -1,
+                -1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                -1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                1,
+                -1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -1,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                1,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -1,
+                1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                1,
+                1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -2,
+                -2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                -2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                2,
+                -2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -2,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                2,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -2,
+                2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                2,
+                2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            }
+          ]
+        },
+        {
+          "slot": "body.arm.right",
+          "testedJoints": [
+            "shoulder",
+            "wrist"
+          ],
+          "testedVisiblePixels": 18,
+          "maxNewTransparentPixels": 0,
+          "trials": [
+            {
+              "offset": [
+                -1,
+                -1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                -1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                1,
+                -1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -1,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                1,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -1,
+                1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                1,
+                1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -2,
+                -2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                -2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                2,
+                -2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -2,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                2,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -2,
+                2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                2,
+                2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            }
+          ]
+        },
+        {
+          "slot": "body.leg.left",
+          "testedJoints": [
+            "hip-root"
+          ],
+          "testedVisiblePixels": 9,
+          "maxNewTransparentPixels": 0,
+          "trials": [
+            {
+              "offset": [
+                -1,
+                -1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                -1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                1,
+                -1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -1,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                1,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -1,
+                1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                1,
+                1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -2,
+                -2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                -2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                2,
+                -2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -2,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                2,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -2,
+                2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                2,
+                2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            }
+          ]
+        },
+        {
+          "slot": "body.leg.right",
+          "testedJoints": [
+            "hip-root"
+          ],
+          "testedVisiblePixels": 9,
+          "maxNewTransparentPixels": 0,
+          "trials": [
+            {
+              "offset": [
+                -1,
+                -1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                -1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                1,
+                -1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -1,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                1,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -1,
+                1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                1,
+                1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -2,
+                -2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                -2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                2,
+                -2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -2,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                2,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -2,
+                2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                2,
+                2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "frame": 9,
+      "originalVisibleRGBAExact": true,
+      "preservedNontransparentPixels": 4019,
+      "newlyVisiblePixels": 0,
+      "samePartMaterialPaletteExact": {
+        "body.torso": {
+          "onlyAuthoredPartPalette": true,
+          "colors": [
+            [
+              63,
+              60,
+              64
+            ],
+            [
+              252,
+              239,
+              227
+            ],
+            [
+              253,
+              205,
+              158
+            ]
+          ]
+        },
+        "body.arm.right": {
+          "onlyAuthoredPartPalette": true,
+          "colors": [
+            [
+              247,
+              181,
+              126
+            ]
+          ]
+        },
+        "body.arm.left": {
+          "onlyAuthoredPartPalette": true,
+          "colors": [
+            [
+              252,
+              203,
+              158
+            ]
+          ]
+        },
+        "body.hand.right": {
+          "onlyAuthoredPartPalette": true,
+          "colors": [
+            [
+              247,
+              181,
+              126
+            ]
+          ]
+        },
+        "body.hand.left": {
+          "onlyAuthoredPartPalette": true,
+          "colors": [
+            [
+              252,
+              203,
+              158
+            ]
+          ]
+        },
+        "body.leg.right": {
+          "onlyAuthoredPartPalette": true,
+          "colors": [
+            [
+              247,
+              181,
+              126
+            ]
+          ]
+        },
+        "body.leg.left": {
+          "onlyAuthoredPartPalette": true,
+          "colors": [
+            [
+              252,
+              203,
+              158
+            ]
+          ]
+        }
+      },
+      "jointContactStress": [
+        {
+          "slot": "body.arm.left",
+          "testedJoints": [
+            "shoulder",
+            "wrist"
+          ],
+          "testedVisiblePixels": 18,
+          "maxNewTransparentPixels": 0,
+          "trials": [
+            {
+              "offset": [
+                -1,
+                -1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                -1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                1,
+                -1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -1,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                1,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -1,
+                1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                1,
+                1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -2,
+                -2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                -2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                2,
+                -2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -2,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                2,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -2,
+                2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                2,
+                2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            }
+          ]
+        },
+        {
+          "slot": "body.arm.right",
+          "testedJoints": [
+            "shoulder",
+            "wrist"
+          ],
+          "testedVisiblePixels": 18,
+          "maxNewTransparentPixels": 0,
+          "trials": [
+            {
+              "offset": [
+                -1,
+                -1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                -1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                1,
+                -1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -1,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                1,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -1,
+                1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                1,
+                1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -2,
+                -2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                -2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                2,
+                -2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -2,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                2,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -2,
+                2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                2,
+                2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            }
+          ]
+        },
+        {
+          "slot": "body.leg.left",
+          "testedJoints": [
+            "hip-root"
+          ],
+          "testedVisiblePixels": 9,
+          "maxNewTransparentPixels": 0,
+          "trials": [
+            {
+              "offset": [
+                -1,
+                -1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                -1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                1,
+                -1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -1,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                1,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -1,
+                1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                1,
+                1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -2,
+                -2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                -2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                2,
+                -2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -2,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                2,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -2,
+                2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                2,
+                2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            }
+          ]
+        },
+        {
+          "slot": "body.leg.right",
+          "testedJoints": [
+            "hip-root"
+          ],
+          "testedVisiblePixels": 9,
+          "maxNewTransparentPixels": 0,
+          "trials": [
+            {
+              "offset": [
+                -1,
+                -1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                -1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                1,
+                -1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -1,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                1,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -1,
+                1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                1,
+                1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -2,
+                -2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                -2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                2,
+                -2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -2,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                2,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -2,
+                2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                2,
+                2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "frame": 10,
+      "originalVisibleRGBAExact": true,
+      "preservedNontransparentPixels": 4674,
+      "newlyVisiblePixels": 0,
+      "samePartMaterialPaletteExact": {
+        "body.torso": {
+          "onlyAuthoredPartPalette": true,
+          "colors": [
+            [
+              67,
+              61,
+              66
+            ],
+            [
+              252,
+              239,
+              223
+            ],
+            [
+              253,
+              202,
+              155
+            ]
+          ]
+        },
+        "body.arm.right": {
+          "onlyAuthoredPartPalette": true,
+          "colors": [
+            [
+              253,
+              200,
+              151
+            ]
+          ]
+        },
+        "body.arm.left": {
+          "onlyAuthoredPartPalette": true,
+          "colors": [
+            [
+              253,
+              202,
+              156
+            ]
+          ]
+        },
+        "body.hand.right": {
+          "onlyAuthoredPartPalette": true,
+          "colors": [
+            [
+              253,
+              200,
+              151
+            ]
+          ]
+        },
+        "body.hand.left": {
+          "onlyAuthoredPartPalette": true,
+          "colors": [
+            [
+              253,
+              202,
+              156
+            ]
+          ]
+        },
+        "body.leg.right": {
+          "onlyAuthoredPartPalette": true,
+          "colors": [
+            [
+              253,
+              200,
+              151
+            ]
+          ]
+        },
+        "body.leg.left": {
+          "onlyAuthoredPartPalette": true,
+          "colors": [
+            [
+              253,
+              202,
+              156
+            ]
+          ]
+        }
+      },
+      "jointContactStress": [
+        {
+          "slot": "body.arm.left",
+          "testedJoints": [
+            "shoulder",
+            "wrist"
+          ],
+          "testedVisiblePixels": 18,
+          "maxNewTransparentPixels": 0,
+          "trials": [
+            {
+              "offset": [
+                -1,
+                -1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                -1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                1,
+                -1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -1,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                1,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -1,
+                1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                1,
+                1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -2,
+                -2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                -2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                2,
+                -2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -2,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                2,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -2,
+                2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                2,
+                2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            }
+          ]
+        },
+        {
+          "slot": "body.arm.right",
+          "testedJoints": [
+            "shoulder",
+            "wrist"
+          ],
+          "testedVisiblePixels": 18,
+          "maxNewTransparentPixels": 0,
+          "trials": [
+            {
+              "offset": [
+                -1,
+                -1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                -1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                1,
+                -1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -1,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                1,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -1,
+                1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                1,
+                1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -2,
+                -2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                -2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                2,
+                -2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -2,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                2,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -2,
+                2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                2,
+                2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            }
+          ]
+        },
+        {
+          "slot": "body.leg.left",
+          "testedJoints": [
+            "hip-root"
+          ],
+          "testedVisiblePixels": 9,
+          "maxNewTransparentPixels": 0,
+          "trials": [
+            {
+              "offset": [
+                -1,
+                -1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                -1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                1,
+                -1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -1,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                1,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -1,
+                1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                1,
+                1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -2,
+                -2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                -2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                2,
+                -2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -2,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                2,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -2,
+                2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                2,
+                2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            }
+          ]
+        },
+        {
+          "slot": "body.leg.right",
+          "testedJoints": [
+            "hip-root"
+          ],
+          "testedVisiblePixels": 9,
+          "maxNewTransparentPixels": 0,
+          "trials": [
+            {
+              "offset": [
+                -1,
+                -1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                -1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                1,
+                -1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -1,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                1,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -1,
+                1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                1,
+                1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -2,
+                -2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                -2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                2,
+                -2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -2,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                2,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -2,
+                2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                2,
+                2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "frame": 11,
+      "originalVisibleRGBAExact": true,
+      "preservedNontransparentPixels": 4278,
+      "newlyVisiblePixels": 0,
+      "samePartMaterialPaletteExact": {
+        "body.torso": {
+          "onlyAuthoredPartPalette": true,
+          "colors": [
+            [
+              62,
+              56,
+              63
+            ],
+            [
+              251,
+              236,
+              223
+            ],
+            [
+              252,
+              201,
+              159
+            ]
+          ]
+        },
+        "body.arm.right": {
+          "onlyAuthoredPartPalette": true,
+          "colors": [
+            [
+              253,
+              167,
+              108
+            ]
+          ]
+        },
+        "body.arm.left": {
+          "onlyAuthoredPartPalette": true,
+          "colors": [
+            [
+              252,
+              198,
+              154
+            ]
+          ]
+        },
+        "body.hand.right": {
+          "onlyAuthoredPartPalette": true,
+          "colors": [
+            [
+              253,
+              167,
+              108
+            ]
+          ]
+        },
+        "body.hand.left": {
+          "onlyAuthoredPartPalette": true,
+          "colors": [
+            [
+              252,
+              198,
+              154
+            ]
+          ]
+        },
+        "body.leg.right": {
+          "onlyAuthoredPartPalette": true,
+          "colors": [
+            [
+              253,
+              167,
+              108
+            ]
+          ]
+        },
+        "body.leg.left": {
+          "onlyAuthoredPartPalette": true,
+          "colors": [
+            [
+              252,
+              198,
+              154
+            ]
+          ]
+        }
+      },
+      "jointContactStress": [
+        {
+          "slot": "body.arm.left",
+          "testedJoints": [
+            "shoulder",
+            "wrist"
+          ],
+          "testedVisiblePixels": 18,
+          "maxNewTransparentPixels": 0,
+          "trials": [
+            {
+              "offset": [
+                -1,
+                -1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                -1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                1,
+                -1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -1,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                1,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -1,
+                1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                1,
+                1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -2,
+                -2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                -2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                2,
+                -2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -2,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                2,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -2,
+                2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                2,
+                2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            }
+          ]
+        },
+        {
+          "slot": "body.arm.right",
+          "testedJoints": [
+            "shoulder",
+            "wrist"
+          ],
+          "testedVisiblePixels": 18,
+          "maxNewTransparentPixels": 0,
+          "trials": [
+            {
+              "offset": [
+                -1,
+                -1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                -1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                1,
+                -1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -1,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                1,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -1,
+                1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                1,
+                1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -2,
+                -2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                -2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                2,
+                -2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -2,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                2,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -2,
+                2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                2,
+                2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            }
+          ]
+        },
+        {
+          "slot": "body.leg.left",
+          "testedJoints": [
+            "hip-root"
+          ],
+          "testedVisiblePixels": 9,
+          "maxNewTransparentPixels": 0,
+          "trials": [
+            {
+              "offset": [
+                -1,
+                -1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                -1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                1,
+                -1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -1,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                1,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -1,
+                1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                1,
+                1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -2,
+                -2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                -2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                2,
+                -2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -2,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                2,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -2,
+                2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                2,
+                2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            }
+          ]
+        },
+        {
+          "slot": "body.leg.right",
+          "testedJoints": [
+            "hip-root"
+          ],
+          "testedVisiblePixels": 9,
+          "maxNewTransparentPixels": 0,
+          "trials": [
+            {
+              "offset": [
+                -1,
+                -1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                -1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                1,
+                -1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -1,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                1,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -1,
+                1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                1,
+                1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -2,
+                -2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                -2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                2,
+                -2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -2,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                2,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -2,
+                2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                2,
+                2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "frame": 12,
+      "originalVisibleRGBAExact": true,
+      "preservedNontransparentPixels": 3917,
+      "newlyVisiblePixels": 0,
+      "samePartMaterialPaletteExact": {
+        "body.torso": {
+          "onlyAuthoredPartPalette": true,
+          "colors": [
+            [
+              61,
+              57,
+              62
+            ],
+            [
+              251,
+              240,
+              226
+            ],
+            [
+              252,
+              202,
+              153
+            ]
+          ]
+        },
+        "body.arm.right": {
+          "onlyAuthoredPartPalette": true,
+          "colors": [
+            [
+              240,
+              157,
+              100
+            ]
+          ]
+        },
+        "body.arm.left": {
+          "onlyAuthoredPartPalette": true,
+          "colors": [
+            [
+              252,
+              200,
+              150
+            ]
+          ]
+        },
+        "body.hand.right": {
+          "onlyAuthoredPartPalette": true,
+          "colors": [
+            [
+              240,
+              157,
+              100
+            ]
+          ]
+        },
+        "body.hand.left": {
+          "onlyAuthoredPartPalette": true,
+          "colors": [
+            [
+              252,
+              200,
+              150
+            ]
+          ]
+        },
+        "body.leg.right": {
+          "onlyAuthoredPartPalette": true,
+          "colors": [
+            [
+              240,
+              157,
+              100
+            ]
+          ]
+        },
+        "body.leg.left": {
+          "onlyAuthoredPartPalette": true,
+          "colors": [
+            [
+              252,
+              200,
+              150
+            ]
+          ]
+        }
+      },
+      "jointContactStress": [
+        {
+          "slot": "body.arm.left",
+          "testedJoints": [
+            "shoulder",
+            "wrist"
+          ],
+          "testedVisiblePixels": 18,
+          "maxNewTransparentPixels": 0,
+          "trials": [
+            {
+              "offset": [
+                -1,
+                -1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                -1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                1,
+                -1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -1,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                1,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -1,
+                1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                1,
+                1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -2,
+                -2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                -2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                2,
+                -2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -2,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                2,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -2,
+                2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                2,
+                2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            }
+          ]
+        },
+        {
+          "slot": "body.arm.right",
+          "testedJoints": [
+            "shoulder",
+            "wrist"
+          ],
+          "testedVisiblePixels": 18,
+          "maxNewTransparentPixels": 0,
+          "trials": [
+            {
+              "offset": [
+                -1,
+                -1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                -1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                1,
+                -1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -1,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                1,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -1,
+                1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                1,
+                1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -2,
+                -2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                -2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                2,
+                -2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -2,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                2,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -2,
+                2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                2,
+                2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            }
+          ]
+        },
+        {
+          "slot": "body.leg.left",
+          "testedJoints": [
+            "hip-root"
+          ],
+          "testedVisiblePixels": 9,
+          "maxNewTransparentPixels": 0,
+          "trials": [
+            {
+              "offset": [
+                -1,
+                -1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                -1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                1,
+                -1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -1,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                1,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -1,
+                1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                1,
+                1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -2,
+                -2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                -2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                2,
+                -2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -2,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                2,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -2,
+                2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                2,
+                2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            }
+          ]
+        },
+        {
+          "slot": "body.leg.right",
+          "testedJoints": [
+            "hip-root"
+          ],
+          "testedVisiblePixels": 9,
+          "maxNewTransparentPixels": 0,
+          "trials": [
+            {
+              "offset": [
+                -1,
+                -1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                -1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                1,
+                -1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -1,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                1,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -1,
+                1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                1,
+                1
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -2,
+                -2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                -2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                2,
+                -2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -2,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                2,
+                0
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                -2,
+                2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                0,
+                2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            },
+            {
+              "offset": [
+                2,
+                2
+              ],
+              "newTransparentPixelsAtJointContacts": 0
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

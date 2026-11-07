@@ -1,0 +1,93 @@
+{
+  "status": "candidate-authoring",
+  "artApproval": null,
+  "authorAndReviewer": "root",
+  "subagentsUsed": false,
+  "baseTemplate": "Art/Templates/P1-Neutral/down-left/walk-r1",
+  "baseManifestSHA256": "c193f919c6f4667d44cb08857ebbf2d0958401535fa3fd0db3d166e1635c8fd1",
+  "baseMotionSHA256": "ce121954916c255f32c99229ddb2450dadc410a5cc4812e34bb9277935bf9f08",
+  "sourceUV": "source/common-uv",
+  "sourceRegistration": "Uniform whole-canvas256/native side length for each full-body paint source, no alpha bounds fit, per-limb width/height scaling or geometry change",
+  "matteAllowances": "1pixel garment thickness; boot sole bottom never extends below registered source foot",
+  "bootTopY": {
+    "left": 201,
+    "right": 193
+  },
+  "matteSources": {
+    "forester": {
+      "outfit.torso": "source/mattes/forester-outfit.torso.png",
+      "outfit.sleeve.left": "source/mattes/forester-outfit.sleeve.left.png",
+      "outfit.sleeve.right": "source/mattes/forester-outfit.sleeve.right.png"
+    },
+    "wayfarer": {
+      "outfit.torso": "source/mattes/wayfarer-outfit.torso.png",
+      "outfit.sleeve.left": "source/mattes/wayfarer-outfit.sleeve.left.png",
+      "outfit.sleeve.right": "source/mattes/wayfarer-outfit.sleeve.right.png"
+    },
+    "lower": {
+      "outfit.pants.left": "source/mattes/lower-outfit.pants.left.png",
+      "outfit.boot.left": "source/mattes/lower-outfit.boot.left.png",
+      "outfit.pants.right": "source/mattes/lower-outfit.pants.right.png",
+      "outfit.boot.right": "source/mattes/lower-outfit.boot.right.png"
+    }
+  },
+  "sourceLight": "upper-left",
+  "maxPaintGutterPixels": 3,
+  "paintSources": {
+    "forester": {
+      "image": "source/forester-generated.png",
+      "canvas": [
+        1254,
+        1254
+      ],
+      "sha256": "0e1882a1377540fc5ee6ce0e1cc90b4ef73402524d84bf2478bacab18b70e429",
+      "scale": 0.20414673046251994,
+      "translation": [
+        0,
+        0
+      ]
+    },
+    "wayfarer": {
+      "image": "source/wayfarer-generated.png",
+      "canvas": [
+        1254,
+        1254
+      ],
+      "sha256": "5d937e1cd1d1fa50b7fbe37078eba7d72a647ea35db48ca935e4c31e058822ff",
+      "scale": 0.20414673046251994,
+      "translation": [
+        0,
+        0
+      ]
+    }
+  },
+  "weapon": {
+    "source": "source/sword-original.png",
+    "sha256": "46bfa9347fc99f4ed44b295a3c77464613bfd8eccb76bbcae0758a3b29b0c619",
+    "sourceLandmarks": [
+      [
+        460,
+        340
+      ],
+      [
+        790,
+        920
+      ]
+    ],
+    "targetLandmarks": [
+      [
+        105,
+        122
+      ],
+      [
+        143,
+        184
+      ]
+    ],
+    "transverseScale": 0.05,
+    "attachment": "Rigid upper torso; physical right shoulder; fully behind neutral/clothes/head, natural front-view occlusion; no central vertical carry",
+    "projectionBasis": "Same anatomical right-shoulder diagonal as accepted up-left carry; front view exchanges screen-side projection, hilt outside face, sheath behind torso/legs"
+  },
+  "sourceRigAudit": "Art/Review/P1/neutral-down-left-r1/rig-audit.json",
+  "sourceRigAuditSHA256": "d72f348b4cc2c29f72bbdeb9a2af1e2e2e464f21fc635bfc42525962a6fb81de"
+}

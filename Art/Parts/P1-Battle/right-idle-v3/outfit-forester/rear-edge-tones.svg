@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256" shape-rendering="crispEdges">
+  <g id="jacket.blue-shoulder-transition" fill="#27426b">
+    <rect x="112" y="137" width="1" height="1"/>
+    <rect x="110" y="138" width="1" height="1"/>
+    <rect x="109" y="139" width="1" height="8"/>
+  </g>
+  <g id="jacket.partial-alpha-edge-tone" fill="#375f96">
+    <rect x="114" y="134" width="1" height="1"/>
+    <rect x="112" y="136" width="1" height="1"/>
+  </g>
+  <g id="jacket.remove-internal-diagonal-seam" fill="#31588f">
+    <rect x="117" y="134" width="1" height="1"/>
+    <rect x="116" y="135" width="1" height="1"/>
+    <rect x="115" y="136" width="1" height="1"/>
+    <rect x="114" y="137" width="1" height="3"/>
+    <rect x="112" y="146" width="1" height="1"/>
+  </g>
+</svg>

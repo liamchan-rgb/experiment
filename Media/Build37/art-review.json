@@ -1,0 +1,92 @@
+{
+  "date": "2026-10-22",
+  "reviewer": "root agent",
+  "scope": "Full body at native size and 3x full figure; normal-speed GIF decoded in chronological order; registered offline full battlefield. No UIKit/GPU/device simulation or visual runtime acceptance.",
+  "status": "internally-reviewed-for-build37",
+  "rejectedDuringReview": [
+    "v1 rigid whole-body attack",
+    "v2 boot-edge remnants and joint gaps",
+    "weapon hidden behind torso and victory blade over face",
+    "higher-foot ground plane and duplicate contact shadows",
+    "per-frame GIF palette variance"
+  ],
+  "finalFindings": [
+    "Face/hair/body stay registered and original v9 rear shoulder/head contour retained",
+    "Near arm and both legs articulate; forearm/hand/weapon share attachment chain",
+    "Foot support plane uses complete boots and at most two planted contact shadows",
+    "Eight enemy poses keep full antlers/tail/hooves inside canvas and return to exact idle",
+    "Road P1 cadence matches120ms preview; moving shadow cache follows same foot and pose state",
+    "Player attack advances to actual blade-tip contact; enemy impact and response recover at authored duration"
+  ],
+  "userArtApproval": null,
+  "simulatorRun": false,
+  "physicalDeviceRun": false,
+  "checks": {
+    "Artifacts/Diagnostics/road-motion-four-directions-offline.gif": {
+      "bytes": 11062910,
+      "sha256": "38bc1d43c0387b8f96a4931cb19d24b8dc3220816b6b13e3fb71338304c55c7f"
+    },
+    "Art/Scenes/MeadowBattle/hero-combat-v2/v2-final-review-sheet.png": {
+      "bytes": 206394,
+      "sha256": "7c3fd3fac21c5bf54361cab44f9679fc3e3194f7b6075ce2702e7723c7d4e43e"
+    },
+    "Art/Scenes/MeadowBattle/hero-combat-v2/final-validation.json": {
+      "bytes": 14103,
+      "sha256": "1dd03648fa0375d17e9e7d5f47a288983cc38ad372a5d272d2d1340560b67080"
+    },
+    "Art/Scenes/MeadowBattle/enemies/forest-warden-motion-v1/contact-sheet.png": {
+      "bytes": 563536,
+      "sha256": "45504e6c7af60e94a99ebe22b985ceb39dd68dc76ae5d9603977dc6e3d5624c2"
+    },
+    "Art/Scenes/MeadowBattle/enemies/forest-warden-motion-v1/attack.gif": {
+      "bytes": 257339,
+      "sha256": "c5214ae9b518744b083e059275c7c7f400ac56abcf022e7eb0c844243fcb3226"
+    },
+    "Media/Build37/battle-actions-offline.gif": {
+      "frames": 165,
+      "durationMs": 6600,
+      "stableBackgroundPalette": true,
+      "sha256": "66ccac26b59380cf7cc43afbaf9aee1a650a3053b98cc8d1a01b42052d53d27b"
+    },
+    "Media/Build37/battle-scene-contact-sheet.png": {
+      "bytes": 5093196,
+      "sha256": "462ebf30e60e6eee03e8edcc611985be9a5d4dfe818479391a655459ffe91fd6"
+    },
+    "Media/Build37/strike-scene-offline.gif": {
+      "frames": 30,
+      "durationMs": 1200,
+      "stableBackgroundPalette": true,
+      "sha256": "41a3aa9a2d15ecf2132f1e6e2926365b3e64904550ac728dab3a723f1dead651"
+    },
+    "Media/Build37/enemyStrike-scene-offline.gif": {
+      "frames": 33,
+      "durationMs": 1320,
+      "stableBackgroundPalette": true,
+      "sha256": "ae6f92ea6c31fc74fbcc3f162db0fa07a6fbe0b720e15dfc9a80e0065c0072d3"
+    },
+    "Media/Build37/guard-scene-offline.gif": {
+      "frames": 24,
+      "durationMs": 960,
+      "stableBackgroundPalette": true,
+      "sha256": "2baf5d54825181d6af25af938f0bdf23d350398d9963c0ce3f5a521f31f1375b"
+    },
+    "Media/Build37/heal-scene-offline.gif": {
+      "frames": 24,
+      "durationMs": 960,
+      "stableBackgroundPalette": true,
+      "sha256": "04eb0252e61936a382fe6543097a2f45f5947982596d510b1f0fd96ec4d04c96"
+    },
+    "Media/Build37/victory-scene-offline.gif": {
+      "frames": 27,
+      "durationMs": 1080,
+      "stableBackgroundPalette": true,
+      "sha256": "04957137677e81b2fc0a08fb9c1cbb3d9814678367bee2c6cbc1603df62b60a3"
+    },
+    "Media/Build37/defeat-scene-offline.gif": {
+      "frames": 27,
+      "durationMs": 1080,
+      "stableBackgroundPalette": true,
+      "sha256": "bbf10edc1d64489be8b1d5a03f34473c9470337003cb8c2c17249d8ee3b102bb"
+    }
+  }
+}

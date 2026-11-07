@@ -1,0 +1,59 @@
+{
+  "https": [
+    {
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/9ab46b21e0980d20f81021eb2c50c3f3dc62f00f/Art/Review/Battle/legendary-staff-layering-r1/body-normal.gif",
+      "path": "Art/Review/Battle/legendary-staff-layering-r1/body-normal.gif",
+      "bytes": 856153,
+      "sha256": "1a462bb93ad29da9f0e71a912434b9826c5e46ef032d18e3d786960bbe22f45c",
+      "contentType": "image/gif",
+      "fullGETMatchesLocal": true
+    },
+    {
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/9ab46b21e0980d20f81021eb2c50c3f3dc62f00f/Art/Review/Battle/legendary-staff-layering-r1/battle-normal.gif",
+      "path": "Art/Review/Battle/legendary-staff-layering-r1/battle-normal.gif",
+      "bytes": 5610742,
+      "sha256": "f656dc2fd503659fdc6cc437e2566899cf4362c2521469cfa6c391e27f0a9dbf",
+      "contentType": "image/gif",
+      "fullGETMatchesLocal": true
+    },
+    {
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/9ab46b21e0980d20f81021eb2c50c3f3dc62f00f/Art/Review/Battle/legendary-staff-layering-r1/body-standing.png",
+      "path": "Art/Review/Battle/legendary-staff-layering-r1/body-standing.png",
+      "bytes": 27057,
+      "sha256": "5a454d4e4e5bc6fef399093b84100faf27c11b3c30ef4a2e69b8449296c724b7",
+      "contentType": "image/png",
+      "fullGETMatchesLocal": true
+    },
+    {
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/9ab46b21e0980d20f81021eb2c50c3f3dc62f00f/Art/Review/Battle/legendary-staff-layering-r1/first-frame-comparison.png",
+      "path": "Art/Review/Battle/legendary-staff-layering-r1/first-frame-comparison.png",
+      "bytes": 36032,
+      "sha256": "d3129ba530db2e47c59a5d4e7f1f617f51b0a53c1084310ab0cd723d4e07b3dc",
+      "contentType": "image/png",
+      "fullGETMatchesLocal": true
+    }
+  ],
+  "browserImageCheck": {
+    "scope": "Only standalone GIF images loaded in browser; no game/App executed.",
+    "dimensions": [
+      [
+        768,
+        840
+      ],
+      [
+        1020,
+        765
+      ]
+    ],
+    "bodyGifVisiblyAdvanced": true
+  },
+  "version": "1.6.34",
+  "build": 60,
+  "sourceCommit": "9ab46b21e0980d20f81021eb2c50c3f3dc62f00f",
+  "workflowRun": 40721530191,
+  "ipaFilename": "Downloads/MeadowJourney-b60.ipa",
+  "ipaBytes": 38263628,
+  "ipaSHA256": "c9719a152b96c9b64231542b16a6fb1c2b24305d6d2b0f8d35467299d57c938d",
+  "pureTestsPassed": 128,
+  "newRuntimeArtApproval": null
+}

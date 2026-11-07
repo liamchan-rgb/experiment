@@ -1,0 +1,43 @@
+{
+  "date": "2026-10-24",
+  "authorAndReviewer": "root",
+  "subagentsUsed": false,
+  "artApproval": null,
+  "sources": [
+    {
+      "id": "chestnut-blue",
+      "tool": "image_gen.imagegen",
+      "file": "source/chestnut-blue-original.png",
+      "sha256": "f0e491eaae442cb1d53bdd091c7597220d422da25cc8b60b18359b8a40a5bb35",
+      "prompt": "source/prompts/chestnut-blue.txt",
+      "promptSHA256": "94dc3c8d21f34df595885692014199ac895777b13b3defeaac76cb1b3ebdf541",
+      "transparentBackground": true,
+      "reference": "neutral head-guide-8x and neutral-fullbody-reference",
+      "purpose": "Independent hair and facial-feature overlay art only"
+    },
+    {
+      "id": "silver-amber",
+      "tool": "image_gen.imagegen",
+      "file": "source/silver-amber-original.png",
+      "sha256": "561b27b556a795b087f550df6e3f6d4a32f93aee00b688086043ad02ba60e353",
+      "prompt": "source/prompts/silver-amber.txt",
+      "promptSHA256": "aa2cd3c6f9c05b77242383753374c8cc16ea98d0d8560b49a87a3b5602493a37",
+      "transparentBackground": true,
+      "reference": "neutral head-guide-8x and neutral-fullbody-reference",
+      "purpose": "Independent hair and facial-feature overlay art only"
+    },
+    {
+      "id": "chestnut-trimmed",
+      "tool": "image_gen.imagegen",
+      "file": "source/chestnut-trimmed-original.png",
+      "sha256": "96bf493b54c4204da4922f35e2e24c09e57a59f0a299506606ea86ae03c810d9",
+      "prompt": "source/prompts/chestnut-trimmed.txt",
+      "promptSHA256": "8dc9eda74a18d7bb51090ae0b88189ad8e2bf5a4ac0083c204162a6559eac461",
+      "transparentBackground": true,
+      "reference": "registered brown hair overlay and neutral local head guide",
+      "purpose": "Trim front fringe to clear far eye, keep scalp/back and registration"
+    }
+  ],
+  "sourceBodiesUsedAsReferenceOnly": true,
+  "baseHeadSkinOrJawCopiedIntoAppearance": false
+}

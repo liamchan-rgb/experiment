@@ -1,0 +1,75 @@
+{
+  "scope": "normal-speed offline scene composition using original battle art, skill atlas frames and the existing attack/guard motions; not UIKit/simulator/device capture",
+  "outputDimensions": [
+    720,
+    432
+  ],
+  "sourceFramesPreserved": true,
+  "authoredCharacterMotionAdded": false,
+  "animations": {
+    "starlightPulse": {
+      "gif": "starlightPulse-normal.gif",
+      "decodedFrames": 96,
+      "totalDurationMs": 2800,
+      "sampledAtMs": 20,
+      "sizeBytes": 9150257,
+      "motion": "既有远程攻击姿态",
+      "sourceFPS": 16,
+      "statusCueAtSceneMs": 1468,
+      "statusCueFrame": 73
+    },
+    "rally": {
+      "gif": "rally-normal.gif",
+      "decodedFrames": 107,
+      "totalDurationMs": 2800,
+      "sampledAtMs": 20,
+      "sizeBytes": 7844449,
+      "motion": "既有防护姿态",
+      "sourceFPS": 12,
+      "statusCueAtSceneMs": null,
+      "statusCueFrame": null
+    },
+    "sweep": {
+      "gif": "sweep-normal.gif",
+      "decodedFrames": 81,
+      "totalDurationMs": 2800,
+      "sampledAtMs": 20,
+      "sizeBytes": 9711169,
+      "motion": "既有近身攻击姿态",
+      "sourceFPS": 20,
+      "statusCueAtSceneMs": null,
+      "statusCueFrame": null
+    },
+    "dragonSoulWard": {
+      "gif": "dragonSoulWard-normal.gif",
+      "decodedFrames": 107,
+      "totalDurationMs": 2800,
+      "sampledAtMs": 20,
+      "sizeBytes": 5894194,
+      "motion": "既有防护姿态",
+      "sourceFPS": 12,
+      "statusCueAtSceneMs": 1947,
+      "statusCueFrame": 97
+    },
+    "dragonScaleWard": {
+      "gif": "dragonScaleWard-normal.gif",
+      "decodedFrames": 91,
+      "totalDurationMs": 2800,
+      "sampledAtMs": 20,
+      "sizeBytes": 7850542,
+      "motion": "既有防护姿态",
+      "sourceFPS": 20,
+      "statusCueAtSceneMs": 1560,
+      "statusCueFrame": 78
+    }
+  },
+  "userArtApproval": null,
+  "statusRevealTiming": {
+    "starlightPulse": "1.048s receipt at 60% of the 1.25s authored VFX; healing and round shield begin on the hit cue, in the latter half.",
+    "dragonSoulWard": "Begin recovery and shield at VFX age 0.967s / 58% of 1.667s.",
+    "dragonScaleWard": "Begin recovery and shield at VFX age 0.580s / 58% of 1.0s.",
+    "rally": "No positive HP or shield receipt.",
+    "sweep": "No positive HP or shield receipt.",
+    "policy": "Actual game state resolves at contact; positive HP/shield UI starts no earlier than max(hit, effect onset + 58% of effect duration). Shield birth appears only when shield increases."
+  }
+}

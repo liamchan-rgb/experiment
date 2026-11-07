@@ -1,0 +1,14 @@
+{
+  "rawSize": [
+    1254,
+    1254
+  ],
+  "registeredSize": [
+    192,
+    192
+  ],
+  "method": "uniform full-canvas resize only",
+  "anatomicalFits": false,
+  "alphaBoundsFit": false,
+  "sourceSHA256": "bcffcfb70c3ec8b058ceac29b1fad53c75a5173b499ccbf468052f446bbe0de9"
+}

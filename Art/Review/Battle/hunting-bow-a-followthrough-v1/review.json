@@ -1,0 +1,20 @@
+{
+  "status": "draft_pending_user_review",
+  "reference": "Art/Review/Battle/hunting-bow-pose-concepts-v1/pose-a-balanced.png",
+  "motion": "release, arrow exit, drawing hand follow-through and return",
+  "preview": {
+    "file": "bow-a-followthrough-preview.gif",
+    "width": 362,
+    "height": 362,
+    "frames": 57,
+    "frame_duration_ms": 40,
+    "duration_ms": 2280,
+    "loop": "once",
+    "sha256": "6d6a6e2ce1097d1d8bf8c02663b5fce3c8be8f3c0dbaa89116b965db42e27d75",
+    "distinct_key_poses": 12
+  },
+  "demo_integrated": false,
+  "ipa_built": false,
+  "device_run": false,
+  "user_approval": null
+}

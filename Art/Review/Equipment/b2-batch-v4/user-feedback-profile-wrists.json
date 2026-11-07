@@ -1,0 +1,13 @@
+{
+  "date": "2026-10-27",
+  "feedback": "符文甲的正左正右的袖子和手腕有错位",
+  "affectedBatch": "b2-batch-v4",
+  "affectedItem": "runeArmor",
+  "directions": [
+    "left",
+    "right"
+  ],
+  "scope": "袖面和手腕衔接需要修改；不是对其他装备或全部护甲设计的判退",
+  "replacement": "b2-batch-v5",
+  "userApprovalOfReplacement": null
+}

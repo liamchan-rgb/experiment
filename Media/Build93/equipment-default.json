@@ -1,0 +1,5615 @@
+[
+  {
+    "comparison" : {
+      "after" : {
+        "active" : true,
+        "ap" : 3,
+        "baseAttributes" : {
+          "baseAP" : 3,
+          "damage" : 0,
+          "maximumAP" : 8,
+          "maximumHealth" : 12,
+          "range" : 0
+        },
+        "canActFromRound" : 1,
+        "coins" : 8,
+        "defeatRewarded" : false,
+        "equipment" : {
+          "accessory" : "actionRing",
+          "weapon" : "trainingSword"
+        },
+        "health" : 12,
+        "host" : false,
+        "id" : "p1",
+        "inventory" : {
+          "dragonArmor" : 1,
+          "dragonCharm" : 1,
+          "dragonFangSword" : 1,
+          "greatSword" : 1,
+          "huntingBow" : 1,
+          "largePotion" : 1,
+          "leatherArmor" : 1,
+          "legendaryStaff" : 1,
+          "powerBadge" : 1,
+          "revivalStone" : 1,
+          "runeArmor" : 1,
+          "shieldPotion" : 1,
+          "smallPotion" : 2,
+          "starlightArmor" : 1,
+          "starlightBlade" : 1,
+          "starlightCharm" : 1,
+          "trainingSword" : 1
+        },
+        "kind" : "player",
+        "name" : "P1 · 冒险者",
+        "nodeID" : 7,
+        "score" : 0,
+        "shield" : 0,
+        "skillUses" : {
+
+        },
+        "teamID" : "party",
+        "templateID" : "adventurer"
+      },
+      "afterStats" : {
+        "baseAP" : 4,
+        "damage" : 0,
+        "maximumAP" : 8,
+        "maximumHealth" : 12,
+        "range" : 0
+      },
+      "attackAfter" : "1D6 · 射程0",
+      "attackBefore" : "1D6 · 射程0",
+      "before" : {
+        "active" : true,
+        "ap" : 3,
+        "baseAttributes" : {
+          "baseAP" : 3,
+          "damage" : 0,
+          "maximumAP" : 8,
+          "maximumHealth" : 12,
+          "range" : 0
+        },
+        "canActFromRound" : 1,
+        "coins" : 8,
+        "defeatRewarded" : false,
+        "equipment" : {
+          "weapon" : "trainingSword"
+        },
+        "health" : 12,
+        "host" : false,
+        "id" : "p1",
+        "inventory" : {
+          "actionRing" : 1,
+          "dragonArmor" : 1,
+          "dragonCharm" : 1,
+          "dragonFangSword" : 1,
+          "greatSword" : 1,
+          "huntingBow" : 1,
+          "largePotion" : 1,
+          "leatherArmor" : 1,
+          "legendaryStaff" : 1,
+          "powerBadge" : 1,
+          "revivalStone" : 1,
+          "runeArmor" : 1,
+          "shieldPotion" : 1,
+          "smallPotion" : 2,
+          "starlightArmor" : 1,
+          "starlightBlade" : 1,
+          "starlightCharm" : 1,
+          "trainingSword" : 1
+        },
+        "kind" : "player",
+        "name" : "P1 · 冒险者",
+        "nodeID" : 7,
+        "score" : 0,
+        "shield" : 0,
+        "skillUses" : {
+
+        },
+        "teamID" : "party",
+        "templateID" : "adventurer"
+      },
+      "beforeStats" : {
+        "baseAP" : 3,
+        "damage" : 0,
+        "maximumAP" : 8,
+        "maximumHealth" : 12,
+        "range" : 0
+      },
+      "movementAfter" : 400,
+      "movementBefore" : 400,
+      "skillsAfter" : [
+        "强击",
+        "喘息",
+        "简易防护"
+      ],
+      "skillsBefore" : [
+        "强击",
+        "喘息",
+        "简易防护"
+      ]
+    },
+    "item" : "actionRing",
+    "role" : "adventurer"
+  },
+  {
+    "comparison" : {
+      "after" : {
+        "active" : true,
+        "ap" : 3,
+        "baseAttributes" : {
+          "baseAP" : 3,
+          "damage" : 0,
+          "maximumAP" : 8,
+          "maximumHealth" : 12,
+          "range" : 0
+        },
+        "canActFromRound" : 1,
+        "coins" : 8,
+        "defeatRewarded" : false,
+        "equipment" : {
+          "armor" : "dragonArmor",
+          "weapon" : "trainingSword"
+        },
+        "health" : 12,
+        "host" : false,
+        "id" : "p1",
+        "inventory" : {
+          "actionRing" : 1,
+          "dragonCharm" : 1,
+          "dragonFangSword" : 1,
+          "greatSword" : 1,
+          "huntingBow" : 1,
+          "largePotion" : 1,
+          "leatherArmor" : 1,
+          "legendaryStaff" : 1,
+          "powerBadge" : 1,
+          "revivalStone" : 1,
+          "runeArmor" : 1,
+          "shieldPotion" : 1,
+          "smallPotion" : 2,
+          "starlightArmor" : 1,
+          "starlightBlade" : 1,
+          "starlightCharm" : 1,
+          "trainingSword" : 1
+        },
+        "kind" : "player",
+        "name" : "P1 · 冒险者",
+        "nodeID" : 7,
+        "score" : 0,
+        "shield" : 0,
+        "skillUses" : {
+
+        },
+        "teamID" : "party",
+        "templateID" : "adventurer"
+      },
+      "afterStats" : {
+        "baseAP" : 3,
+        "damage" : 0,
+        "maximumAP" : 8,
+        "maximumHealth" : 24,
+        "range" : 0
+      },
+      "attackAfter" : "1D6 · 射程0",
+      "attackBefore" : "1D6 · 射程0",
+      "before" : {
+        "active" : true,
+        "ap" : 3,
+        "baseAttributes" : {
+          "baseAP" : 3,
+          "damage" : 0,
+          "maximumAP" : 8,
+          "maximumHealth" : 12,
+          "range" : 0
+        },
+        "canActFromRound" : 1,
+        "coins" : 8,
+        "defeatRewarded" : false,
+        "equipment" : {
+          "weapon" : "trainingSword"
+        },
+        "health" : 12,
+        "host" : false,
+        "id" : "p1",
+        "inventory" : {
+          "actionRing" : 1,
+          "dragonArmor" : 1,
+          "dragonCharm" : 1,
+          "dragonFangSword" : 1,
+          "greatSword" : 1,
+          "huntingBow" : 1,
+          "largePotion" : 1,
+          "leatherArmor" : 1,
+          "legendaryStaff" : 1,
+          "powerBadge" : 1,
+          "revivalStone" : 1,
+          "runeArmor" : 1,
+          "shieldPotion" : 1,
+          "smallPotion" : 2,
+          "starlightArmor" : 1,
+          "starlightBlade" : 1,
+          "starlightCharm" : 1,
+          "trainingSword" : 1
+        },
+        "kind" : "player",
+        "name" : "P1 · 冒险者",
+        "nodeID" : 7,
+        "score" : 0,
+        "shield" : 0,
+        "skillUses" : {
+
+        },
+        "teamID" : "party",
+        "templateID" : "adventurer"
+      },
+      "beforeStats" : {
+        "baseAP" : 3,
+        "damage" : 0,
+        "maximumAP" : 8,
+        "maximumHealth" : 12,
+        "range" : 0
+      },
+      "movementAfter" : 400,
+      "movementBefore" : 400,
+      "skillsAfter" : [
+        "强击",
+        "喘息",
+        "简易防护"
+      ],
+      "skillsBefore" : [
+        "强击",
+        "喘息",
+        "简易防护"
+      ]
+    },
+    "item" : "dragonArmor",
+    "role" : "adventurer"
+  },
+  {
+    "comparison" : {
+      "after" : {
+        "active" : true,
+        "ap" : 3,
+        "baseAttributes" : {
+          "baseAP" : 3,
+          "damage" : 0,
+          "maximumAP" : 8,
+          "maximumHealth" : 12,
+          "range" : 0
+        },
+        "canActFromRound" : 1,
+        "coins" : 8,
+        "defeatRewarded" : false,
+        "equipment" : {
+          "accessory" : "dragonCharm",
+          "weapon" : "trainingSword"
+        },
+        "health" : 12,
+        "host" : false,
+        "id" : "p1",
+        "inventory" : {
+          "actionRing" : 1,
+          "dragonArmor" : 1,
+          "dragonFangSword" : 1,
+          "greatSword" : 1,
+          "huntingBow" : 1,
+          "largePotion" : 1,
+          "leatherArmor" : 1,
+          "legendaryStaff" : 1,
+          "powerBadge" : 1,
+          "revivalStone" : 1,
+          "runeArmor" : 1,
+          "shieldPotion" : 1,
+          "smallPotion" : 2,
+          "starlightArmor" : 1,
+          "starlightBlade" : 1,
+          "starlightCharm" : 1,
+          "trainingSword" : 1
+        },
+        "kind" : "player",
+        "name" : "P1 · 冒险者",
+        "nodeID" : 7,
+        "score" : 0,
+        "shield" : 0,
+        "skillUses" : {
+
+        },
+        "teamID" : "party",
+        "templateID" : "adventurer"
+      },
+      "afterStats" : {
+        "baseAP" : 3,
+        "damage" : 3,
+        "maximumAP" : 8,
+        "maximumHealth" : 12,
+        "range" : 0
+      },
+      "attackAfter" : "1D6 · 射程0",
+      "attackBefore" : "1D6 · 射程0",
+      "before" : {
+        "active" : true,
+        "ap" : 3,
+        "baseAttributes" : {
+          "baseAP" : 3,
+          "damage" : 0,
+          "maximumAP" : 8,
+          "maximumHealth" : 12,
+          "range" : 0
+        },
+        "canActFromRound" : 1,
+        "coins" : 8,
+        "defeatRewarded" : false,
+        "equipment" : {
+          "weapon" : "trainingSword"
+        },
+        "health" : 12,
+        "host" : false,
+        "id" : "p1",
+        "inventory" : {
+          "actionRing" : 1,
+          "dragonArmor" : 1,
+          "dragonCharm" : 1,
+          "dragonFangSword" : 1,
+          "greatSword" : 1,
+          "huntingBow" : 1,
+          "largePotion" : 1,
+          "leatherArmor" : 1,
+          "legendaryStaff" : 1,
+          "powerBadge" : 1,
+          "revivalStone" : 1,
+          "runeArmor" : 1,
+          "shieldPotion" : 1,
+          "smallPotion" : 2,
+          "starlightArmor" : 1,
+          "starlightBlade" : 1,
+          "starlightCharm" : 1,
+          "trainingSword" : 1
+        },
+        "kind" : "player",
+        "name" : "P1 · 冒险者",
+        "nodeID" : 7,
+        "score" : 0,
+        "shield" : 0,
+        "skillUses" : {
+
+        },
+        "teamID" : "party",
+        "templateID" : "adventurer"
+      },
+      "beforeStats" : {
+        "baseAP" : 3,
+        "damage" : 0,
+        "maximumAP" : 8,
+        "maximumHealth" : 12,
+        "range" : 0
+      },
+      "movementAfter" : 400,
+      "movementBefore" : 400,
+      "skillsAfter" : [
+        "强击",
+        "喘息",
+        "简易防护"
+      ],
+      "skillsBefore" : [
+        "强击",
+        "喘息",
+        "简易防护"
+      ]
+    },
+    "item" : "dragonCharm",
+    "role" : "adventurer"
+  },
+  {
+    "comparison" : {
+      "after" : {
+        "active" : true,
+        "ap" : 3,
+        "baseAttributes" : {
+          "baseAP" : 3,
+          "damage" : 0,
+          "maximumAP" : 8,
+          "maximumHealth" : 12,
+          "range" : 0
+        },
+        "canActFromRound" : 1,
+        "coins" : 8,
+        "defeatRewarded" : false,
+        "equipment" : {
+          "weapon" : "dragonFangSword"
+        },
+        "health" : 12,
+        "host" : false,
+        "id" : "p1",
+        "inventory" : {
+          "actionRing" : 1,
+          "dragonArmor" : 1,
+          "dragonCharm" : 1,
+          "greatSword" : 1,
+          "huntingBow" : 1,
+          "largePotion" : 1,
+          "leatherArmor" : 1,
+          "legendaryStaff" : 1,
+          "powerBadge" : 1,
+          "revivalStone" : 1,
+          "runeArmor" : 1,
+          "shieldPotion" : 1,
+          "smallPotion" : 2,
+          "starlightArmor" : 1,
+          "starlightBlade" : 1,
+          "starlightCharm" : 1,
+          "trainingSword" : 2
+        },
+        "kind" : "player",
+        "name" : "P1 · 冒险者",
+        "nodeID" : 7,
+        "score" : 0,
+        "shield" : 0,
+        "skillUses" : {
+
+        },
+        "teamID" : "party",
+        "templateID" : "adventurer"
+      },
+      "afterStats" : {
+        "baseAP" : 3,
+        "damage" : 0,
+        "maximumAP" : 8,
+        "maximumHealth" : 12,
+        "range" : 0
+      },
+      "attackAfter" : "1D20 · 射程0",
+      "attackBefore" : "1D6 · 射程0",
+      "before" : {
+        "active" : true,
+        "ap" : 3,
+        "baseAttributes" : {
+          "baseAP" : 3,
+          "damage" : 0,
+          "maximumAP" : 8,
+          "maximumHealth" : 12,
+          "range" : 0
+        },
+        "canActFromRound" : 1,
+        "coins" : 8,
+        "defeatRewarded" : false,
+        "equipment" : {
+          "weapon" : "trainingSword"
+        },
+        "health" : 12,
+        "host" : false,
+        "id" : "p1",
+        "inventory" : {
+          "actionRing" : 1,
+          "dragonArmor" : 1,
+          "dragonCharm" : 1,
+          "dragonFangSword" : 1,
+          "greatSword" : 1,
+          "huntingBow" : 1,
+          "largePotion" : 1,
+          "leatherArmor" : 1,
+          "legendaryStaff" : 1,
+          "powerBadge" : 1,
+          "revivalStone" : 1,
+          "runeArmor" : 1,
+          "shieldPotion" : 1,
+          "smallPotion" : 2,
+          "starlightArmor" : 1,
+          "starlightBlade" : 1,
+          "starlightCharm" : 1,
+          "trainingSword" : 1
+        },
+        "kind" : "player",
+        "name" : "P1 · 冒险者",
+        "nodeID" : 7,
+        "score" : 0,
+        "shield" : 0,
+        "skillUses" : {
+
+        },
+        "teamID" : "party",
+        "templateID" : "adventurer"
+      },
+      "beforeStats" : {
+        "baseAP" : 3,
+        "damage" : 0,
+        "maximumAP" : 8,
+        "maximumHealth" : 12,
+        "range" : 0
+      },
+      "movementAfter" : 400,
+      "movementBefore" : 400,
+      "skillsAfter" : [
+        "强击",
+        "喘息",
+        "简易防护"
+      ],
+      "skillsBefore" : [
+        "强击",
+        "喘息",
+        "简易防护"
+      ]
+    },
+    "item" : "dragonFangSword",
+    "role" : "adventurer"
+  },
+  {
+    "comparison" : {
+      "after" : {
+        "active" : true,
+        "ap" : 3,
+        "baseAttributes" : {
+          "baseAP" : 3,
+          "damage" : 0,
+          "maximumAP" : 8,
+          "maximumHealth" : 12,
+          "range" : 0
+        },
+        "canActFromRound" : 1,
+        "coins" : 8,
+        "defeatRewarded" : false,
+        "equipment" : {
+          "weapon" : "greatSword"
+        },
+        "health" : 12,
+        "host" : false,
+        "id" : "p1",
+        "inventory" : {
+          "actionRing" : 1,
+          "dragonArmor" : 1,
+          "dragonCharm" : 1,
+          "dragonFangSword" : 1,
+          "huntingBow" : 1,
+          "largePotion" : 1,
+          "leatherArmor" : 1,
+          "legendaryStaff" : 1,
+          "powerBadge" : 1,
+          "revivalStone" : 1,
+          "runeArmor" : 1,
+          "shieldPotion" : 1,
+          "smallPotion" : 2,
+          "starlightArmor" : 1,
+          "starlightBlade" : 1,
+          "starlightCharm" : 1,
+          "trainingSword" : 2
+        },
+        "kind" : "player",
+        "name" : "P1 · 冒险者",
+        "nodeID" : 7,
+        "score" : 0,
+        "shield" : 0,
+        "skillUses" : {
+
+        },
+        "teamID" : "party",
+        "templateID" : "adventurer"
+      },
+      "afterStats" : {
+        "baseAP" : 3,
+        "damage" : 0,
+        "maximumAP" : 8,
+        "maximumHealth" : 12,
+        "range" : 0
+      },
+      "attackAfter" : "1D12 · 射程0",
+      "attackBefore" : "1D6 · 射程0",
+      "before" : {
+        "active" : true,
+        "ap" : 3,
+        "baseAttributes" : {
+          "baseAP" : 3,
+          "damage" : 0,
+          "maximumAP" : 8,
+          "maximumHealth" : 12,
+          "range" : 0
+        },
+        "canActFromRound" : 1,
+        "coins" : 8,
+        "defeatRewarded" : false,
+        "equipment" : {
+          "weapon" : "trainingSword"
+        },
+        "health" : 12,
+        "host" : false,
+        "id" : "p1",
+        "inventory" : {
+          "actionRing" : 1,
+          "dragonArmor" : 1,
+          "dragonCharm" : 1,
+          "dragonFangSword" : 1,
+          "greatSword" : 1,
+          "huntingBow" : 1,
+          "largePotion" : 1,
+          "leatherArmor" : 1,
+          "legendaryStaff" : 1,
+          "powerBadge" : 1,
+          "revivalStone" : 1,
+          "runeArmor" : 1,
+          "shieldPotion" : 1,
+          "smallPotion" : 2,
+          "starlightArmor" : 1,
+          "starlightBlade" : 1,
+          "starlightCharm" : 1,
+          "trainingSword" : 1
+        },
+        "kind" : "player",
+        "name" : "P1 · 冒险者",
+        "nodeID" : 7,
+        "score" : 0,
+        "shield" : 0,
+        "skillUses" : {
+
+        },
+        "teamID" : "party",
+        "templateID" : "adventurer"
+      },
+      "beforeStats" : {
+        "baseAP" : 3,
+        "damage" : 0,
+        "maximumAP" : 8,
+        "maximumHealth" : 12,
+        "range" : 0
+      },
+      "movementAfter" : 400,
+      "movementBefore" : 400,
+      "skillsAfter" : [
+        "强击",
+        "喘息",
+        "简易防护"
+      ],
+      "skillsBefore" : [
+        "强击",
+        "喘息",
+        "简易防护"
+      ]
+    },
+    "item" : "greatSword",
+    "role" : "adventurer"
+  },
+  {
+    "comparison" : {
+      "after" : {
+        "active" : true,
+        "ap" : 3,
+        "baseAttributes" : {
+          "baseAP" : 3,
+          "damage" : 0,
+          "maximumAP" : 8,
+          "maximumHealth" : 12,
+          "range" : 0
+        },
+        "canActFromRound" : 1,
+        "coins" : 8,
+        "defeatRewarded" : false,
+        "equipment" : {
+          "weapon" : "huntingBow"
+        },
+        "health" : 12,
+        "host" : false,
+        "id" : "p1",
+        "inventory" : {
+          "actionRing" : 1,
+          "dragonArmor" : 1,
+          "dragonCharm" : 1,
+          "dragonFangSword" : 1,
+          "greatSword" : 1,
+          "largePotion" : 1,
+          "leatherArmor" : 1,
+          "legendaryStaff" : 1,
+          "powerBadge" : 1,
+          "revivalStone" : 1,
+          "runeArmor" : 1,
+          "shieldPotion" : 1,
+          "smallPotion" : 2,
+          "starlightArmor" : 1,
+          "starlightBlade" : 1,
+          "starlightCharm" : 1,
+          "trainingSword" : 2
+        },
+        "kind" : "player",
+        "name" : "P1 · 冒险者",
+        "nodeID" : 7,
+        "score" : 0,
+        "shield" : 0,
+        "skillUses" : {
+
+        },
+        "teamID" : "party",
+        "templateID" : "adventurer"
+      },
+      "afterStats" : {
+        "baseAP" : 3,
+        "damage" : 0,
+        "maximumAP" : 8,
+        "maximumHealth" : 12,
+        "range" : 0
+      },
+      "attackAfter" : "1D8 · 射程1",
+      "attackBefore" : "1D6 · 射程0",
+      "before" : {
+        "active" : true,
+        "ap" : 3,
+        "baseAttributes" : {
+          "baseAP" : 3,
+          "damage" : 0,
+          "maximumAP" : 8,
+          "maximumHealth" : 12,
+          "range" : 0
+        },
+        "canActFromRound" : 1,
+        "coins" : 8,
+        "defeatRewarded" : false,
+        "equipment" : {
+          "weapon" : "trainingSword"
+        },
+        "health" : 12,
+        "host" : false,
+        "id" : "p1",
+        "inventory" : {
+          "actionRing" : 1,
+          "dragonArmor" : 1,
+          "dragonCharm" : 1,
+          "dragonFangSword" : 1,
+          "greatSword" : 1,
+          "huntingBow" : 1,
+          "largePotion" : 1,
+          "leatherArmor" : 1,
+          "legendaryStaff" : 1,
+          "powerBadge" : 1,
+          "revivalStone" : 1,
+          "runeArmor" : 1,
+          "shieldPotion" : 1,
+          "smallPotion" : 2,
+          "starlightArmor" : 1,
+          "starlightBlade" : 1,
+          "starlightCharm" : 1,
+          "trainingSword" : 1
+        },
+        "kind" : "player",
+        "name" : "P1 · 冒险者",
+        "nodeID" : 7,
+        "score" : 0,
+        "shield" : 0,
+        "skillUses" : {
+
+        },
+        "teamID" : "party",
+        "templateID" : "adventurer"
+      },
+      "beforeStats" : {
+        "baseAP" : 3,
+        "damage" : 0,
+        "maximumAP" : 8,
+        "maximumHealth" : 12,
+        "range" : 0
+      },
+      "movementAfter" : 400,
+      "movementBefore" : 400,
+      "skillsAfter" : [
+        "强击",
+        "喘息",
+        "简易防护"
+      ],
+      "skillsBefore" : [
+        "强击",
+        "喘息",
+        "简易防护"
+      ]
+    },
+    "item" : "huntingBow",
+    "role" : "adventurer"
+  },
+  {
+    "comparison" : {
+      "after" : {
+        "active" : true,
+        "ap" : 3,
+        "baseAttributes" : {
+          "baseAP" : 3,
+          "damage" : 0,
+          "maximumAP" : 8,
+          "maximumHealth" : 12,
+          "range" : 0
+        },
+        "canActFromRound" : 1,
+        "coins" : 8,
+        "defeatRewarded" : false,
+        "equipment" : {
+          "armor" : "leatherArmor",
+          "weapon" : "trainingSword"
+        },
+        "health" : 12,
+        "host" : false,
+        "id" : "p1",
+        "inventory" : {
+          "actionRing" : 1,
+          "dragonArmor" : 1,
+          "dragonCharm" : 1,
+          "dragonFangSword" : 1,
+          "greatSword" : 1,
+          "huntingBow" : 1,
+          "largePotion" : 1,
+          "legendaryStaff" : 1,
+          "powerBadge" : 1,
+          "revivalStone" : 1,
+          "runeArmor" : 1,
+          "shieldPotion" : 1,
+          "smallPotion" : 2,
+          "starlightArmor" : 1,
+          "starlightBlade" : 1,
+          "starlightCharm" : 1,
+          "trainingSword" : 1
+        },
+        "kind" : "player",
+        "name" : "P1 · 冒险者",
+        "nodeID" : 7,
+        "score" : 0,
+        "shield" : 0,
+        "skillUses" : {
+
+        },
+        "teamID" : "party",
+        "templateID" : "adventurer"
+      },
+      "afterStats" : {
+        "baseAP" : 3,
+        "damage" : 0,
+        "maximumAP" : 8,
+        "maximumHealth" : 16,
+        "range" : 0
+      },
+      "attackAfter" : "1D6 · 射程0",
+      "attackBefore" : "1D6 · 射程0",
+      "before" : {
+        "active" : true,
+        "ap" : 3,
+        "baseAttributes" : {
+          "baseAP" : 3,
+          "damage" : 0,
+          "maximumAP" : 8,
+          "maximumHealth" : 12,
+          "range" : 0
+        },
+        "canActFromRound" : 1,
+        "coins" : 8,
+        "defeatRewarded" : false,
+        "equipment" : {
+          "weapon" : "trainingSword"
+        },
+        "health" : 12,
+        "host" : false,
+        "id" : "p1",
+        "inventory" : {
+          "actionRing" : 1,
+          "dragonArmor" : 1,
+          "dragonCharm" : 1,
+          "dragonFangSword" : 1,
+          "greatSword" : 1,
+          "huntingBow" : 1,
+          "largePotion" : 1,
+          "leatherArmor" : 1,
+          "legendaryStaff" : 1,
+          "powerBadge" : 1,
+          "revivalStone" : 1,
+          "runeArmor" : 1,
+          "shieldPotion" : 1,
+          "smallPotion" : 2,
+          "starlightArmor" : 1,
+          "starlightBlade" : 1,
+          "starlightCharm" : 1,
+          "trainingSword" : 1
+        },
+        "kind" : "player",
+        "name" : "P1 · 冒险者",
+        "nodeID" : 7,
+        "score" : 0,
+        "shield" : 0,
+        "skillUses" : {
+
+        },
+        "teamID" : "party",
+        "templateID" : "adventurer"
+      },
+      "beforeStats" : {
+        "baseAP" : 3,
+        "damage" : 0,
+        "maximumAP" : 8,
+        "maximumHealth" : 12,
+        "range" : 0
+      },
+      "movementAfter" : 400,
+      "movementBefore" : 400,
+      "skillsAfter" : [
+        "强击",
+        "喘息",
+        "简易防护"
+      ],
+      "skillsBefore" : [
+        "强击",
+        "喘息",
+        "简易防护"
+      ]
+    },
+    "item" : "leatherArmor",
+    "role" : "adventurer"
+  },
+  {
+    "comparison" : {
+      "after" : {
+        "active" : true,
+        "ap" : 3,
+        "baseAttributes" : {
+          "baseAP" : 3,
+          "damage" : 0,
+          "maximumAP" : 8,
+          "maximumHealth" : 12,
+          "range" : 0
+        },
+        "canActFromRound" : 1,
+        "coins" : 8,
+        "defeatRewarded" : false,
+        "equipment" : {
+          "weapon" : "legendaryStaff"
+        },
+        "health" : 12,
+        "host" : false,
+        "id" : "p1",
+        "inventory" : {
+          "actionRing" : 1,
+          "dragonArmor" : 1,
+          "dragonCharm" : 1,
+          "dragonFangSword" : 1,
+          "greatSword" : 1,
+          "huntingBow" : 1,
+          "largePotion" : 1,
+          "leatherArmor" : 1,
+          "powerBadge" : 1,
+          "revivalStone" : 1,
+          "runeArmor" : 1,
+          "shieldPotion" : 1,
+          "smallPotion" : 2,
+          "starlightArmor" : 1,
+          "starlightBlade" : 1,
+          "starlightCharm" : 1,
+          "trainingSword" : 2
+        },
+        "kind" : "player",
+        "name" : "P1 · 冒险者",
+        "nodeID" : 7,
+        "score" : 0,
+        "shield" : 0,
+        "skillUses" : {
+
+        },
+        "teamID" : "party",
+        "templateID" : "adventurer"
+      },
+      "afterStats" : {
+        "baseAP" : 3,
+        "damage" : 0,
+        "maximumAP" : 8,
+        "maximumHealth" : 12,
+        "range" : 0
+      },
+      "attackAfter" : "1D20 · 射程1",
+      "attackBefore" : "1D6 · 射程0",
+      "before" : {
+        "active" : true,
+        "ap" : 3,
+        "baseAttributes" : {
+          "baseAP" : 3,
+          "damage" : 0,
+          "maximumAP" : 8,
+          "maximumHealth" : 12,
+          "range" : 0
+        },
+        "canActFromRound" : 1,
+        "coins" : 8,
+        "defeatRewarded" : false,
+        "equipment" : {
+          "weapon" : "trainingSword"
+        },
+        "health" : 12,
+        "host" : false,
+        "id" : "p1",
+        "inventory" : {
+          "actionRing" : 1,
+          "dragonArmor" : 1,
+          "dragonCharm" : 1,
+          "dragonFangSword" : 1,
+          "greatSword" : 1,
+          "huntingBow" : 1,
+          "largePotion" : 1,
+          "leatherArmor" : 1,
+          "legendaryStaff" : 1,
+          "powerBadge" : 1,
+          "revivalStone" : 1,
+          "runeArmor" : 1,
+          "shieldPotion" : 1,
+          "smallPotion" : 2,
+          "starlightArmor" : 1,
+          "starlightBlade" : 1,
+          "starlightCharm" : 1,
+          "trainingSword" : 1
+        },
+        "kind" : "player",
+        "name" : "P1 · 冒险者",
+        "nodeID" : 7,
+        "score" : 0,
+        "shield" : 0,
+        "skillUses" : {
+
+        },
+        "teamID" : "party",
+        "templateID" : "adventurer"
+      },
+      "beforeStats" : {
+        "baseAP" : 3,
+        "damage" : 0,
+        "maximumAP" : 8,
+        "maximumHealth" : 12,
+        "range" : 0
+      },
+      "movementAfter" : 400,
+      "movementBefore" : 400,
+      "skillsAfter" : [
+        "强击",
+        "喘息",
+        "简易防护"
+      ],
+      "skillsBefore" : [
+        "强击",
+        "喘息",
+        "简易防护"
+      ]
+    },
+    "item" : "legendaryStaff",
+    "role" : "adventurer"
+  },
+  {
+    "comparison" : {
+      "after" : {
+        "active" : true,
+        "ap" : 3,
+        "baseAttributes" : {
+          "baseAP" : 3,
+          "damage" : 0,
+          "maximumAP" : 8,
+          "maximumHealth" : 12,
+          "range" : 0
+        },
+        "canActFromRound" : 1,
+        "coins" : 8,
+        "defeatRewarded" : false,
+        "equipment" : {
+          "accessory" : "powerBadge",
+          "weapon" : "trainingSword"
+        },
+        "health" : 12,
+        "host" : false,
+        "id" : "p1",
+        "inventory" : {
+          "actionRing" : 1,
+          "dragonArmor" : 1,
+          "dragonCharm" : 1,
+          "dragonFangSword" : 1,
+          "greatSword" : 1,
+          "huntingBow" : 1,
+          "largePotion" : 1,
+          "leatherArmor" : 1,
+          "legendaryStaff" : 1,
+          "revivalStone" : 1,
+          "runeArmor" : 1,
+          "shieldPotion" : 1,
+          "smallPotion" : 2,
+          "starlightArmor" : 1,
+          "starlightBlade" : 1,
+          "starlightCharm" : 1,
+          "trainingSword" : 1
+        },
+        "kind" : "player",
+        "name" : "P1 · 冒险者",
+        "nodeID" : 7,
+        "score" : 0,
+        "shield" : 0,
+        "skillUses" : {
+
+        },
+        "teamID" : "party",
+        "templateID" : "adventurer"
+      },
+      "afterStats" : {
+        "baseAP" : 3,
+        "damage" : 2,
+        "maximumAP" : 8,
+        "maximumHealth" : 12,
+        "range" : 0
+      },
+      "attackAfter" : "1D6 · 射程0",
+      "attackBefore" : "1D6 · 射程0",
+      "before" : {
+        "active" : true,
+        "ap" : 3,
+        "baseAttributes" : {
+          "baseAP" : 3,
+          "damage" : 0,
+          "maximumAP" : 8,
+          "maximumHealth" : 12,
+          "range" : 0
+        },
+        "canActFromRound" : 1,
+        "coins" : 8,
+        "defeatRewarded" : false,
+        "equipment" : {
+          "weapon" : "trainingSword"
+        },
+        "health" : 12,
+        "host" : false,
+        "id" : "p1",
+        "inventory" : {
+          "actionRing" : 1,
+          "dragonArmor" : 1,
+          "dragonCharm" : 1,
+          "dragonFangSword" : 1,
+          "greatSword" : 1,
+          "huntingBow" : 1,
+          "largePotion" : 1,
+          "leatherArmor" : 1,
+          "legendaryStaff" : 1,
+          "powerBadge" : 1,
+          "revivalStone" : 1,
+          "runeArmor" : 1,
+          "shieldPotion" : 1,
+          "smallPotion" : 2,
+          "starlightArmor" : 1,
+          "starlightBlade" : 1,
+          "starlightCharm" : 1,
+          "trainingSword" : 1
+        },
+        "kind" : "player",
+        "name" : "P1 · 冒险者",
+        "nodeID" : 7,
+        "score" : 0,
+        "shield" : 0,
+        "skillUses" : {
+
+        },
+        "teamID" : "party",
+        "templateID" : "adventurer"
+      },
+      "beforeStats" : {
+        "baseAP" : 3,
+        "damage" : 0,
+        "maximumAP" : 8,
+        "maximumHealth" : 12,
+        "range" : 0
+      },
+      "movementAfter" : 400,
+      "movementBefore" : 400,
+      "skillsAfter" : [
+        "强击",
+        "喘息",
+        "简易防护"
+      ],
+      "skillsBefore" : [
+        "强击",
+        "喘息",
+        "简易防护"
+      ]
+    },
+    "item" : "powerBadge",
+    "role" : "adventurer"
+  },
+  {
+    "comparison" : {
+      "after" : {
+        "active" : true,
+        "ap" : 3,
+        "baseAttributes" : {
+          "baseAP" : 3,
+          "damage" : 0,
+          "maximumAP" : 8,
+          "maximumHealth" : 12,
+          "range" : 0
+        },
+        "canActFromRound" : 1,
+        "coins" : 8,
+        "defeatRewarded" : false,
+        "equipment" : {
+          "armor" : "runeArmor",
+          "weapon" : "trainingSword"
+        },
+        "health" : 12,
+        "host" : false,
+        "id" : "p1",
+        "inventory" : {
+          "actionRing" : 1,
+          "dragonArmor" : 1,
+          "dragonCharm" : 1,
+          "dragonFangSword" : 1,
+          "greatSword" : 1,
+          "huntingBow" : 1,
+          "largePotion" : 1,
+          "leatherArmor" : 1,
+          "legendaryStaff" : 1,
+          "powerBadge" : 1,
+          "revivalStone" : 1,
+          "shieldPotion" : 1,
+          "smallPotion" : 2,
+          "starlightArmor" : 1,
+          "starlightBlade" : 1,
+          "starlightCharm" : 1,
+          "trainingSword" : 1
+        },
+        "kind" : "player",
+        "name" : "P1 · 冒险者",
+        "nodeID" : 7,
+        "score" : 0,
+        "shield" : 0,
+        "skillUses" : {
+
+        },
+        "teamID" : "party",
+        "templateID" : "adventurer"
+      },
+      "afterStats" : {
+        "baseAP" : 3,
+        "damage" : 0,
+        "maximumAP" : 8,
+        "maximumHealth" : 20,
+        "range" : 0
+      },
+      "attackAfter" : "1D6 · 射程0",
+      "attackBefore" : "1D6 · 射程0",
+      "before" : {
+        "active" : true,
+        "ap" : 3,
+        "baseAttributes" : {
+          "baseAP" : 3,
+          "damage" : 0,
+          "maximumAP" : 8,
+          "maximumHealth" : 12,
+          "range" : 0
+        },
+        "canActFromRound" : 1,
+        "coins" : 8,
+        "defeatRewarded" : false,
+        "equipment" : {
+          "weapon" : "trainingSword"
+        },
+        "health" : 12,
+        "host" : false,
+        "id" : "p1",
+        "inventory" : {
+          "actionRing" : 1,
+          "dragonArmor" : 1,
+          "dragonCharm" : 1,
+          "dragonFangSword" : 1,
+          "greatSword" : 1,
+          "huntingBow" : 1,
+          "largePotion" : 1,
+          "leatherArmor" : 1,
+          "legendaryStaff" : 1,
+          "powerBadge" : 1,
+          "revivalStone" : 1,
+          "runeArmor" : 1,
+          "shieldPotion" : 1,
+          "smallPotion" : 2,
+          "starlightArmor" : 1,
+          "starlightBlade" : 1,
+          "starlightCharm" : 1,
+          "trainingSword" : 1
+        },
+        "kind" : "player",
+        "name" : "P1 · 冒险者",
+        "nodeID" : 7,
+        "score" : 0,
+        "shield" : 0,
+        "skillUses" : {
+
+        },
+        "teamID" : "party",
+        "templateID" : "adventurer"
+      },
+      "beforeStats" : {
+        "baseAP" : 3,
+        "damage" : 0,
+        "maximumAP" : 8,
+        "maximumHealth" : 12,
+        "range" : 0
+      },
+      "movementAfter" : 400,
+      "movementBefore" : 400,
+      "skillsAfter" : [
+        "强击",
+        "喘息",
+        "简易防护"
+      ],
+      "skillsBefore" : [
+        "强击",
+        "喘息",
+        "简易防护"
+      ]
+    },
+    "item" : "runeArmor",
+    "role" : "adventurer"
+  },
+  {
+    "comparison" : {
+      "after" : {
+        "active" : true,
+        "ap" : 3,
+        "baseAttributes" : {
+          "baseAP" : 3,
+          "damage" : 0,
+          "maximumAP" : 8,
+          "maximumHealth" : 12,
+          "range" : 0
+        },
+        "canActFromRound" : 1,
+        "coins" : 8,
+        "defeatRewarded" : false,
+        "equipment" : {
+          "armor" : "starlightArmor",
+          "weapon" : "trainingSword"
+        },
+        "health" : 12,
+        "host" : false,
+        "id" : "p1",
+        "inventory" : {
+          "actionRing" : 1,
+          "dragonArmor" : 1,
+          "dragonCharm" : 1,
+          "dragonFangSword" : 1,
+          "greatSword" : 1,
+          "huntingBow" : 1,
+          "largePotion" : 1,
+          "leatherArmor" : 1,
+          "legendaryStaff" : 1,
+          "powerBadge" : 1,
+          "revivalStone" : 1,
+          "runeArmor" : 1,
+          "shieldPotion" : 1,
+          "smallPotion" : 2,
+          "starlightBlade" : 1,
+          "starlightCharm" : 1,
+          "trainingSword" : 1
+        },
+        "kind" : "player",
+        "name" : "P1 · 冒险者",
+        "nodeID" : 7,
+        "score" : 0,
+        "shield" : 0,
+        "skillUses" : {
+
+        },
+        "teamID" : "party",
+        "templateID" : "adventurer"
+      },
+      "afterStats" : {
+        "baseAP" : 3,
+        "damage" : 0,
+        "maximumAP" : 8,
+        "maximumHealth" : 20,
+        "range" : 0
+      },
+      "attackAfter" : "1D6 · 射程0",
+      "attackBefore" : "1D6 · 射程0",
+      "before" : {
+        "active" : true,
+        "ap" : 3,
+        "baseAttributes" : {
+          "baseAP" : 3,
+          "damage" : 0,
+          "maximumAP" : 8,
+          "maximumHealth" : 12,
+          "range" : 0
+        },
+        "canActFromRound" : 1,
+        "coins" : 8,
+        "defeatRewarded" : false,
+        "equipment" : {
+          "weapon" : "trainingSword"
+        },
+        "health" : 12,
+        "host" : false,
+        "id" : "p1",
+        "inventory" : {
+          "actionRing" : 1,
+          "dragonArmor" : 1,
+          "dragonCharm" : 1,
+          "dragonFangSword" : 1,
+          "greatSword" : 1,
+          "huntingBow" : 1,
+          "largePotion" : 1,
+          "leatherArmor" : 1,
+          "legendaryStaff" : 1,
+          "powerBadge" : 1,
+          "revivalStone" : 1,
+          "runeArmor" : 1,
+          "shieldPotion" : 1,
+          "smallPotion" : 2,
+          "starlightArmor" : 1,
+          "starlightBlade" : 1,
+          "starlightCharm" : 1,
+          "trainingSword" : 1
+        },
+        "kind" : "player",
+        "name" : "P1 · 冒险者",
+        "nodeID" : 7,
+        "score" : 0,
+        "shield" : 0,
+        "skillUses" : {
+
+        },
+        "teamID" : "party",
+        "templateID" : "adventurer"
+      },
+      "beforeStats" : {
+        "baseAP" : 3,
+        "damage" : 0,
+        "maximumAP" : 8,
+        "maximumHealth" : 12,
+        "range" : 0
+      },
+      "movementAfter" : 400,
+      "movementBefore" : 400,
+      "skillsAfter" : [
+        "强击",
+        "喘息",
+        "简易防护"
+      ],
+      "skillsBefore" : [
+        "强击",
+        "喘息",
+        "简易防护"
+      ]
+    },
+    "item" : "starlightArmor",
+    "role" : "adventurer"
+  },
+  {
+    "comparison" : {
+      "after" : {
+        "active" : true,
+        "ap" : 3,
+        "baseAttributes" : {
+          "baseAP" : 3,
+          "damage" : 0,
+          "maximumAP" : 8,
+          "maximumHealth" : 12,
+          "range" : 0
+        },
+        "canActFromRound" : 1,
+        "coins" : 8,
+        "defeatRewarded" : false,
+        "equipment" : {
+          "weapon" : "starlightBlade"
+        },
+        "health" : 12,
+        "host" : false,
+        "id" : "p1",
+        "inventory" : {
+          "actionRing" : 1,
+          "dragonArmor" : 1,
+          "dragonCharm" : 1,
+          "dragonFangSword" : 1,
+          "greatSword" : 1,
+          "huntingBow" : 1,
+          "largePotion" : 1,
+          "leatherArmor" : 1,
+          "legendaryStaff" : 1,
+          "powerBadge" : 1,
+          "revivalStone" : 1,
+          "runeArmor" : 1,
+          "shieldPotion" : 1,
+          "smallPotion" : 2,
+          "starlightArmor" : 1,
+          "starlightCharm" : 1,
+          "trainingSword" : 2
+        },
+        "kind" : "player",
+        "name" : "P1 · 冒险者",
+        "nodeID" : 7,
+        "score" : 0,
+        "shield" : 0,
+        "skillUses" : {
+
+        },
+        "teamID" : "party",
+        "templateID" : "adventurer"
+      },
+      "afterStats" : {
+        "baseAP" : 3,
+        "damage" : 0,
+        "maximumAP" : 8,
+        "maximumHealth" : 12,
+        "range" : 0
+      },
+      "attackAfter" : "1D12 · 射程1",
+      "attackBefore" : "1D6 · 射程0",
+      "before" : {
+        "active" : true,
+        "ap" : 3,
+        "baseAttributes" : {
+          "baseAP" : 3,
+          "damage" : 0,
+          "maximumAP" : 8,
+          "maximumHealth" : 12,
+          "range" : 0
+        },
+        "canActFromRound" : 1,
+        "coins" : 8,
+        "defeatRewarded" : false,
+        "equipment" : {
+          "weapon" : "trainingSword"
+        },
+        "health" : 12,
+        "host" : false,
+        "id" : "p1",
+        "inventory" : {
+          "actionRing" : 1,
+          "dragonArmor" : 1,
+          "dragonCharm" : 1,
+          "dragonFangSword" : 1,
+          "greatSword" : 1,
+          "huntingBow" : 1,
+          "largePotion" : 1,
+          "leatherArmor" : 1,
+          "legendaryStaff" : 1,
+          "powerBadge" : 1,
+          "revivalStone" : 1,
+          "runeArmor" : 1,
+          "shieldPotion" : 1,
+          "smallPotion" : 2,
+          "starlightArmor" : 1,
+          "starlightBlade" : 1,
+          "starlightCharm" : 1,
+          "trainingSword" : 1
+        },
+        "kind" : "player",
+        "name" : "P1 · 冒险者",
+        "nodeID" : 7,
+        "score" : 0,
+        "shield" : 0,
+        "skillUses" : {
+
+        },
+        "teamID" : "party",
+        "templateID" : "adventurer"
+      },
+      "beforeStats" : {
+        "baseAP" : 3,
+        "damage" : 0,
+        "maximumAP" : 8,
+        "maximumHealth" : 12,
+        "range" : 0
+      },
+      "movementAfter" : 400,
+      "movementBefore" : 400,
+      "skillsAfter" : [
+        "强击",
+        "喘息",
+        "简易防护"
+      ],
+      "skillsBefore" : [
+        "强击",
+        "喘息",
+        "简易防护"
+      ]
+    },
+    "item" : "starlightBlade",
+    "role" : "adventurer"
+  },
+  {
+    "comparison" : {
+      "after" : {
+        "active" : true,
+        "ap" : 3,
+        "baseAttributes" : {
+          "baseAP" : 3,
+          "damage" : 0,
+          "maximumAP" : 8,
+          "maximumHealth" : 12,
+          "range" : 0
+        },
+        "canActFromRound" : 1,
+        "coins" : 8,
+        "defeatRewarded" : false,
+        "equipment" : {
+          "accessory" : "starlightCharm",
+          "weapon" : "trainingSword"
+        },
+        "health" : 12,
+        "host" : false,
+        "id" : "p1",
+        "inventory" : {
+          "actionRing" : 1,
+          "dragonArmor" : 1,
+          "dragonCharm" : 1,
+          "dragonFangSword" : 1,
+          "greatSword" : 1,
+          "huntingBow" : 1,
+          "largePotion" : 1,
+          "leatherArmor" : 1,
+          "legendaryStaff" : 1,
+          "powerBadge" : 1,
+          "revivalStone" : 1,
+          "runeArmor" : 1,
+          "shieldPotion" : 1,
+          "smallPotion" : 2,
+          "starlightArmor" : 1,
+          "starlightBlade" : 1,
+          "trainingSword" : 1
+        },
+        "kind" : "player",
+        "name" : "P1 · 冒险者",
+        "nodeID" : 7,
+        "score" : 0,
+        "shield" : 0,
+        "skillUses" : {
+
+        },
+        "teamID" : "party",
+        "templateID" : "adventurer"
+      },
+      "afterStats" : {
+        "baseAP" : 3,
+        "damage" : 2,
+        "maximumAP" : 8,
+        "maximumHealth" : 12,
+        "range" : 0
+      },
+      "attackAfter" : "1D6 · 射程0",
+      "attackBefore" : "1D6 · 射程0",
+      "before" : {
+        "active" : true,
+        "ap" : 3,
+        "baseAttributes" : {
+          "baseAP" : 3,
+          "damage" : 0,
+          "maximumAP" : 8,
+          "maximumHealth" : 12,
+          "range" : 0
+        },
+        "canActFromRound" : 1,
+        "coins" : 8,
+        "defeatRewarded" : false,
+        "equipment" : {
+          "weapon" : "trainingSword"
+        },
+        "health" : 12,
+        "host" : false,
+        "id" : "p1",
+        "inventory" : {
+          "actionRing" : 1,
+          "dragonArmor" : 1,
+          "dragonCharm" : 1,
+          "dragonFangSword" : 1,
+          "greatSword" : 1,
+          "huntingBow" : 1,
+          "largePotion" : 1,
+          "leatherArmor" : 1,
+          "legendaryStaff" : 1,
+          "powerBadge" : 1,
+          "revivalStone" : 1,
+          "runeArmor" : 1,
+          "shieldPotion" : 1,
+          "smallPotion" : 2,
+          "starlightArmor" : 1,
+          "starlightBlade" : 1,
+          "starlightCharm" : 1,
+          "trainingSword" : 1
+        },
+        "kind" : "player",
+        "name" : "P1 · 冒险者",
+        "nodeID" : 7,
+        "score" : 0,
+        "shield" : 0,
+        "skillUses" : {
+
+        },
+        "teamID" : "party",
+        "templateID" : "adventurer"
+      },
+      "beforeStats" : {
+        "baseAP" : 3,
+        "damage" : 0,
+        "maximumAP" : 8,
+        "maximumHealth" : 12,
+        "range" : 0
+      },
+      "movementAfter" : 400,
+      "movementBefore" : 400,
+      "skillsAfter" : [
+        "强击",
+        "喘息",
+        "简易防护"
+      ],
+      "skillsBefore" : [
+        "强击",
+        "喘息",
+        "简易防护"
+      ]
+    },
+    "item" : "starlightCharm",
+    "role" : "adventurer"
+  },
+  {
+    "comparison" : {
+      "after" : {
+        "active" : true,
+        "ap" : 3,
+        "baseAttributes" : {
+          "baseAP" : 3,
+          "damage" : 0,
+          "maximumAP" : 8,
+          "maximumHealth" : 12,
+          "range" : 0
+        },
+        "canActFromRound" : 1,
+        "coins" : 8,
+        "defeatRewarded" : false,
+        "equipment" : {
+          "weapon" : "trainingSword"
+        },
+        "health" : 12,
+        "host" : false,
+        "id" : "p1",
+        "inventory" : {
+          "actionRing" : 1,
+          "dragonArmor" : 1,
+          "dragonCharm" : 1,
+          "dragonFangSword" : 1,
+          "greatSword" : 1,
+          "huntingBow" : 1,
+          "largePotion" : 1,
+          "leatherArmor" : 1,
+          "legendaryStaff" : 1,
+          "powerBadge" : 1,
+          "revivalStone" : 1,
+          "runeArmor" : 1,
+          "shieldPotion" : 1,
+          "smallPotion" : 2,
+          "starlightArmor" : 1,
+          "starlightBlade" : 1,
+          "starlightCharm" : 1,
+          "trainingSword" : 1
+        },
+        "kind" : "player",
+        "name" : "P1 · 冒险者",
+        "nodeID" : 7,
+        "score" : 0,
+        "shield" : 0,
+        "skillUses" : {
+
+        },
+        "teamID" : "party",
+        "templateID" : "adventurer"
+      },
+      "afterStats" : {
+        "baseAP" : 3,
+        "damage" : 0,
+        "maximumAP" : 8,
+        "maximumHealth" : 12,
+        "range" : 0
+      },
+      "attackAfter" : "1D6 · 射程0",
+      "attackBefore" : "1D6 · 射程0",
+      "before" : {
+        "active" : true,
+        "ap" : 3,
+        "baseAttributes" : {
+          "baseAP" : 3,
+          "damage" : 0,
+          "maximumAP" : 8,
+          "maximumHealth" : 12,
+          "range" : 0
+        },
+        "canActFromRound" : 1,
+        "coins" : 8,
+        "defeatRewarded" : false,
+        "equipment" : {
+          "weapon" : "trainingSword"
+        },
+        "health" : 12,
+        "host" : false,
+        "id" : "p1",
+        "inventory" : {
+          "actionRing" : 1,
+          "dragonArmor" : 1,
+          "dragonCharm" : 1,
+          "dragonFangSword" : 1,
+          "greatSword" : 1,
+          "huntingBow" : 1,
+          "largePotion" : 1,
+          "leatherArmor" : 1,
+          "legendaryStaff" : 1,
+          "powerBadge" : 1,
+          "revivalStone" : 1,
+          "runeArmor" : 1,
+          "shieldPotion" : 1,
+          "smallPotion" : 2,
+          "starlightArmor" : 1,
+          "starlightBlade" : 1,
+          "starlightCharm" : 1,
+          "trainingSword" : 1
+        },
+        "kind" : "player",
+        "name" : "P1 · 冒险者",
+        "nodeID" : 7,
+        "score" : 0,
+        "shield" : 0,
+        "skillUses" : {
+
+        },
+        "teamID" : "party",
+        "templateID" : "adventurer"
+      },
+      "beforeStats" : {
+        "baseAP" : 3,
+        "damage" : 0,
+        "maximumAP" : 8,
+        "maximumHealth" : 12,
+        "range" : 0
+      },
+      "movementAfter" : 400,
+      "movementBefore" : 400,
+      "skillsAfter" : [
+        "强击",
+        "喘息",
+        "简易防护"
+      ],
+      "skillsBefore" : [
+        "强击",
+        "喘息",
+        "简易防护"
+      ]
+    },
+    "item" : "trainingSword",
+    "role" : "adventurer"
+  },
+  {
+    "comparison" : {
+      "after" : {
+        "active" : true,
+        "ap" : 3,
+        "baseAttributes" : {
+          "baseAP" : 3,
+          "damage" : 0,
+          "maximumAP" : 8,
+          "maximumHealth" : 24,
+          "range" : 0
+        },
+        "canActFromRound" : 1,
+        "coins" : 8,
+        "defeatRewarded" : false,
+        "equipment" : {
+          "accessory" : "actionRing",
+          "weapon" : "trainingSword"
+        },
+        "health" : 24,
+        "host" : false,
+        "id" : "p1",
+        "inventory" : {
+          "dragonArmor" : 1,
+          "dragonCharm" : 1,
+          "dragonFangSword" : 1,
+          "greatSword" : 1,
+          "huntingBow" : 1,
+          "largePotion" : 1,
+          "leatherArmor" : 1,
+          "legendaryStaff" : 1,
+          "powerBadge" : 1,
+          "revivalStone" : 1,
+          "runeArmor" : 1,
+          "shieldPotion" : 1,
+          "smallPotion" : 2,
+          "starlightArmor" : 1,
+          "starlightBlade" : 1,
+          "starlightCharm" : 1,
+          "trainingSword" : 1
+        },
+        "kind" : "player",
+        "name" : "P1 · 魔剑士",
+        "nodeID" : 7,
+        "score" : 0,
+        "shield" : 0,
+        "skillUses" : {
+
+        },
+        "teamID" : "party",
+        "templateID" : "spellblade"
+      },
+      "afterStats" : {
+        "baseAP" : 4,
+        "damage" : 0,
+        "maximumAP" : 8,
+        "maximumHealth" : 24,
+        "range" : 0
+      },
+      "attackAfter" : "1D6 · 射程0",
+      "attackBefore" : "1D6 · 射程0",
+      "before" : {
+        "active" : true,
+        "ap" : 3,
+        "baseAttributes" : {
+          "baseAP" : 3,
+          "damage" : 0,
+          "maximumAP" : 8,
+          "maximumHealth" : 24,
+          "range" : 0
+        },
+        "canActFromRound" : 1,
+        "coins" : 8,
+        "defeatRewarded" : false,
+        "equipment" : {
+          "weapon" : "trainingSword"
+        },
+        "health" : 24,
+        "host" : false,
+        "id" : "p1",
+        "inventory" : {
+          "actionRing" : 1,
+          "dragonArmor" : 1,
+          "dragonCharm" : 1,
+          "dragonFangSword" : 1,
+          "greatSword" : 1,
+          "huntingBow" : 1,
+          "largePotion" : 1,
+          "leatherArmor" : 1,
+          "legendaryStaff" : 1,
+          "powerBadge" : 1,
+          "revivalStone" : 1,
+          "runeArmor" : 1,
+          "shieldPotion" : 1,
+          "smallPotion" : 2,
+          "starlightArmor" : 1,
+          "starlightBlade" : 1,
+          "starlightCharm" : 1,
+          "trainingSword" : 1
+        },
+        "kind" : "player",
+        "name" : "P1 · 魔剑士",
+        "nodeID" : 7,
+        "score" : 0,
+        "shield" : 0,
+        "skillUses" : {
+
+        },
+        "teamID" : "party",
+        "templateID" : "spellblade"
+      },
+      "beforeStats" : {
+        "baseAP" : 3,
+        "damage" : 0,
+        "maximumAP" : 8,
+        "maximumHealth" : 24,
+        "range" : 0
+      },
+      "movementAfter" : 400,
+      "movementBefore" : 400,
+      "skillsAfter" : [
+        "符文斩",
+        "符文庇护",
+        "战斗符文"
+      ],
+      "skillsBefore" : [
+        "符文斩",
+        "符文庇护",
+        "战斗符文"
+      ]
+    },
+    "item" : "actionRing",
+    "role" : "spellblade"
+  },
+  {
+    "comparison" : {
+      "after" : {
+        "active" : true,
+        "ap" : 3,
+        "baseAttributes" : {
+          "baseAP" : 3,
+          "damage" : 0,
+          "maximumAP" : 8,
+          "maximumHealth" : 24,
+          "range" : 0
+        },
+        "canActFromRound" : 1,
+        "coins" : 8,
+        "defeatRewarded" : false,
+        "equipment" : {
+          "armor" : "dragonArmor",
+          "weapon" : "trainingSword"
+        },
+        "health" : 24,
+        "host" : false,
+        "id" : "p1",
+        "inventory" : {
+          "actionRing" : 1,
+          "dragonCharm" : 1,
+          "dragonFangSword" : 1,
+          "greatSword" : 1,
+          "huntingBow" : 1,
+          "largePotion" : 1,
+          "leatherArmor" : 1,
+          "legendaryStaff" : 1,
+          "powerBadge" : 1,
+          "revivalStone" : 1,
+          "runeArmor" : 1,
+          "shieldPotion" : 1,
+          "smallPotion" : 2,
+          "starlightArmor" : 1,
+          "starlightBlade" : 1,
+          "starlightCharm" : 1,
+          "trainingSword" : 1
+        },
+        "kind" : "player",
+        "name" : "P1 · 魔剑士",
+        "nodeID" : 7,
+        "score" : 0,
+        "shield" : 0,
+        "skillUses" : {
+
+        },
+        "teamID" : "party",
+        "templateID" : "spellblade"
+      },
+      "afterStats" : {
+        "baseAP" : 3,
+        "damage" : 0,
+        "maximumAP" : 8,
+        "maximumHealth" : 36,
+        "range" : 0
+      },
+      "attackAfter" : "1D6 · 射程0",
+      "attackBefore" : "1D6 · 射程0",
+      "before" : {
+        "active" : true,
+        "ap" : 3,
+        "baseAttributes" : {
+          "baseAP" : 3,
+          "damage" : 0,
+          "maximumAP" : 8,
+          "maximumHealth" : 24,
+          "range" : 0
+        },
+        "canActFromRound" : 1,
+        "coins" : 8,
+        "defeatRewarded" : false,
+        "equipment" : {
+          "weapon" : "trainingSword"
+        },
+        "health" : 24,
+        "host" : false,
+        "id" : "p1",
+        "inventory" : {
+          "actionRing" : 1,
+          "dragonArmor" : 1,
+          "dragonCharm" : 1,
+          "dragonFangSword" : 1,
+          "greatSword" : 1,
+          "huntingBow" : 1,
+          "largePotion" : 1,
+          "leatherArmor" : 1,
+          "legendaryStaff" : 1,
+          "powerBadge" : 1,
+          "revivalStone" : 1,
+          "runeArmor" : 1,
+          "shieldPotion" : 1,
+          "smallPotion" : 2,
+          "starlightArmor" : 1,
+          "starlightBlade" : 1,
+          "starlightCharm" : 1,
+          "trainingSword" : 1
+        },
+        "kind" : "player",
+        "name" : "P1 · 魔剑士",
+        "nodeID" : 7,
+        "score" : 0,
+        "shield" : 0,
+        "skillUses" : {
+
+        },
+        "teamID" : "party",
+        "templateID" : "spellblade"
+      },
+      "beforeStats" : {
+        "baseAP" : 3,
+        "damage" : 0,
+        "maximumAP" : 8,
+        "maximumHealth" : 24,
+        "range" : 0
+      },
+      "movementAfter" : 400,
+      "movementBefore" : 400,
+      "skillsAfter" : [
+        "符文斩",
+        "符文庇护",
+        "战斗符文"
+      ],
+      "skillsBefore" : [
+        "符文斩",
+        "符文庇护",
+        "战斗符文"
+      ]
+    },
+    "item" : "dragonArmor",
+    "role" : "spellblade"
+  },
+  {
+    "comparison" : {
+      "after" : {
+        "active" : true,
+        "ap" : 3,
+        "baseAttributes" : {
+          "baseAP" : 3,
+          "damage" : 0,
+          "maximumAP" : 8,
+          "maximumHealth" : 24,
+          "range" : 0
+        },
+        "canActFromRound" : 1,
+        "coins" : 8,
+        "defeatRewarded" : false,
+        "equipment" : {
+          "accessory" : "dragonCharm",
+          "weapon" : "trainingSword"
+        },
+        "health" : 24,
+        "host" : false,
+        "id" : "p1",
+        "inventory" : {
+          "actionRing" : 1,
+          "dragonArmor" : 1,
+          "dragonFangSword" : 1,
+          "greatSword" : 1,
+          "huntingBow" : 1,
+          "largePotion" : 1,
+          "leatherArmor" : 1,
+          "legendaryStaff" : 1,
+          "powerBadge" : 1,
+          "revivalStone" : 1,
+          "runeArmor" : 1,
+          "shieldPotion" : 1,
+          "smallPotion" : 2,
+          "starlightArmor" : 1,
+          "starlightBlade" : 1,
+          "starlightCharm" : 1,
+          "trainingSword" : 1
+        },
+        "kind" : "player",
+        "name" : "P1 · 魔剑士",
+        "nodeID" : 7,
+        "score" : 0,
+        "shield" : 0,
+        "skillUses" : {
+
+        },
+        "teamID" : "party",
+        "templateID" : "spellblade"
+      },
+      "afterStats" : {
+        "baseAP" : 3,
+        "damage" : 3,
+        "maximumAP" : 8,
+        "maximumHealth" : 24,
+        "range" : 0
+      },
+      "attackAfter" : "1D6 · 射程0",
+      "attackBefore" : "1D6 · 射程0",
+      "before" : {
+        "active" : true,
+        "ap" : 3,
+        "baseAttributes" : {
+          "baseAP" : 3,
+          "damage" : 0,
+          "maximumAP" : 8,
+          "maximumHealth" : 24,
+          "range" : 0
+        },
+        "canActFromRound" : 1,
+        "coins" : 8,
+        "defeatRewarded" : false,
+        "equipment" : {
+          "weapon" : "trainingSword"
+        },
+        "health" : 24,
+        "host" : false,
+        "id" : "p1",
+        "inventory" : {
+          "actionRing" : 1,
+          "dragonArmor" : 1,
+          "dragonCharm" : 1,
+          "dragonFangSword" : 1,
+          "greatSword" : 1,
+          "huntingBow" : 1,
+          "largePotion" : 1,
+          "leatherArmor" : 1,
+          "legendaryStaff" : 1,
+          "powerBadge" : 1,
+          "revivalStone" : 1,
+          "runeArmor" : 1,
+          "shieldPotion" : 1,
+          "smallPotion" : 2,
+          "starlightArmor" : 1,
+          "starlightBlade" : 1,
+          "starlightCharm" : 1,
+          "trainingSword" : 1
+        },
+        "kind" : "player",
+        "name" : "P1 · 魔剑士",
+        "nodeID" : 7,
+        "score" : 0,
+        "shield" : 0,
+        "skillUses" : {
+
+        },
+        "teamID" : "party",
+        "templateID" : "spellblade"
+      },
+      "beforeStats" : {
+        "baseAP" : 3,
+        "damage" : 0,
+        "maximumAP" : 8,
+        "maximumHealth" : 24,
+        "range" : 0
+      },
+      "movementAfter" : 400,
+      "movementBefore" : 400,
+      "skillsAfter" : [
+        "符文斩",
+        "符文庇护",
+        "战斗符文"
+      ],
+      "skillsBefore" : [
+        "符文斩",
+        "符文庇护",
+        "战斗符文"
+      ]
+    },
+    "item" : "dragonCharm",
+    "role" : "spellblade"
+  },
+  {
+    "comparison" : {
+      "after" : {
+        "active" : true,
+        "ap" : 3,
+        "baseAttributes" : {
+          "baseAP" : 3,
+          "damage" : 0,
+          "maximumAP" : 8,
+          "maximumHealth" : 24,
+          "range" : 0
+        },
+        "canActFromRound" : 1,
+        "coins" : 8,
+        "defeatRewarded" : false,
+        "equipment" : {
+          "weapon" : "dragonFangSword"
+        },
+        "health" : 24,
+        "host" : false,
+        "id" : "p1",
+        "inventory" : {
+          "actionRing" : 1,
+          "dragonArmor" : 1,
+          "dragonCharm" : 1,
+          "greatSword" : 1,
+          "huntingBow" : 1,
+          "largePotion" : 1,
+          "leatherArmor" : 1,
+          "legendaryStaff" : 1,
+          "powerBadge" : 1,
+          "revivalStone" : 1,
+          "runeArmor" : 1,
+          "shieldPotion" : 1,
+          "smallPotion" : 2,
+          "starlightArmor" : 1,
+          "starlightBlade" : 1,
+          "starlightCharm" : 1,
+          "trainingSword" : 2
+        },
+        "kind" : "player",
+        "name" : "P1 · 魔剑士",
+        "nodeID" : 7,
+        "score" : 0,
+        "shield" : 0,
+        "skillUses" : {
+
+        },
+        "teamID" : "party",
+        "templateID" : "spellblade"
+      },
+      "afterStats" : {
+        "baseAP" : 3,
+        "damage" : 0,
+        "maximumAP" : 8,
+        "maximumHealth" : 24,
+        "range" : 0
+      },
+      "attackAfter" : "1D20 · 射程0",
+      "attackBefore" : "1D6 · 射程0",
+      "before" : {
+        "active" : true,
+        "ap" : 3,
+        "baseAttributes" : {
+          "baseAP" : 3,
+          "damage" : 0,
+          "maximumAP" : 8,
+          "maximumHealth" : 24,
+          "range" : 0
+        },
+        "canActFromRound" : 1,
+        "coins" : 8,
+        "defeatRewarded" : false,
+        "equipment" : {
+          "weapon" : "trainingSword"
+        },
+        "health" : 24,
+        "host" : false,
+        "id" : "p1",
+        "inventory" : {
+          "actionRing" : 1,
+          "dragonArmor" : 1,
+          "dragonCharm" : 1,
+          "dragonFangSword" : 1,
+          "greatSword" : 1,
+          "huntingBow" : 1,
+          "largePotion" : 1,
+          "leatherArmor" : 1,
+          "legendaryStaff" : 1,
+          "powerBadge" : 1,
+          "revivalStone" : 1,
+          "runeArmor" : 1,
+          "shieldPotion" : 1,
+          "smallPotion" : 2,
+          "starlightArmor" : 1,
+          "starlightBlade" : 1,
+          "starlightCharm" : 1,
+          "trainingSword" : 1
+        },
+        "kind" : "player",
+        "name" : "P1 · 魔剑士",
+        "nodeID" : 7,
+        "score" : 0,
+        "shield" : 0,
+        "skillUses" : {
+
+        },
+        "teamID" : "party",
+        "templateID" : "spellblade"
+      },
+      "beforeStats" : {
+        "baseAP" : 3,
+        "damage" : 0,
+        "maximumAP" : 8,
+        "maximumHealth" : 24,
+        "range" : 0
+      },
+      "movementAfter" : 400,
+      "movementBefore" : 400,
+      "skillsAfter" : [
+        "符文斩",
+        "符文庇护",
+        "战斗符文"
+      ],
+      "skillsBefore" : [
+        "符文斩",
+        "符文庇护",
+        "战斗符文"
+      ]
+    },
+    "item" : "dragonFangSword",
+    "role" : "spellblade"
+  },
+  {
+    "comparison" : {
+      "after" : {
+        "active" : true,
+        "ap" : 3,
+        "baseAttributes" : {
+          "baseAP" : 3,
+          "damage" : 0,
+          "maximumAP" : 8,
+          "maximumHealth" : 24,
+          "range" : 0
+        },
+        "canActFromRound" : 1,
+        "coins" : 8,
+        "defeatRewarded" : false,
+        "equipment" : {
+          "weapon" : "greatSword"
+        },
+        "health" : 24,
+        "host" : false,
+        "id" : "p1",
+        "inventory" : {
+          "actionRing" : 1,
+          "dragonArmor" : 1,
+          "dragonCharm" : 1,
+          "dragonFangSword" : 1,
+          "huntingBow" : 1,
+          "largePotion" : 1,
+          "leatherArmor" : 1,
+          "legendaryStaff" : 1,
+          "powerBadge" : 1,
+          "revivalStone" : 1,
+          "runeArmor" : 1,
+          "shieldPotion" : 1,
+          "smallPotion" : 2,
+          "starlightArmor" : 1,
+          "starlightBlade" : 1,
+          "starlightCharm" : 1,
+          "trainingSword" : 2
+        },
+        "kind" : "player",
+        "name" : "P1 · 魔剑士",
+        "nodeID" : 7,
+        "score" : 0,
+        "shield" : 0,
+        "skillUses" : {
+
+        },
+        "teamID" : "party",
+        "templateID" : "spellblade"
+      },
+      "afterStats" : {
+        "baseAP" : 3,
+        "damage" : 0,
+        "maximumAP" : 8,
+        "maximumHealth" : 24,
+        "range" : 0
+      },
+      "attackAfter" : "1D12 · 射程0",
+      "attackBefore" : "1D6 · 射程0",
+      "before" : {
+        "active" : true,
+        "ap" : 3,
+        "baseAttributes" : {
+          "baseAP" : 3,
+          "damage" : 0,
+          "maximumAP" : 8,
+          "maximumHealth" : 24,
+          "range" : 0
+        },
+        "canActFromRound" : 1,
+        "coins" : 8,
+        "defeatRewarded" : false,
+        "equipment" : {
+          "weapon" : "trainingSword"
+        },
+        "health" : 24,
+        "host" : false,
+        "id" : "p1",
+        "inventory" : {
+          "actionRing" : 1,
+          "dragonArmor" : 1,
+          "dragonCharm" : 1,
+          "dragonFangSword" : 1,
+          "greatSword" : 1,
+          "huntingBow" : 1,
+          "largePotion" : 1,
+          "leatherArmor" : 1,
+          "legendaryStaff" : 1,
+          "powerBadge" : 1,
+          "revivalStone" : 1,
+          "runeArmor" : 1,
+          "shieldPotion" : 1,
+          "smallPotion" : 2,
+          "starlightArmor" : 1,
+          "starlightBlade" : 1,
+          "starlightCharm" : 1,
+          "trainingSword" : 1
+        },
+        "kind" : "player",
+        "name" : "P1 · 魔剑士",
+        "nodeID" : 7,
+        "score" : 0,
+        "shield" : 0,
+        "skillUses" : {
+
+        },
+        "teamID" : "party",
+        "templateID" : "spellblade"
+      },
+      "beforeStats" : {
+        "baseAP" : 3,
+        "damage" : 0,
+        "maximumAP" : 8,
+        "maximumHealth" : 24,
+        "range" : 0
+      },
+      "movementAfter" : 400,
+      "movementBefore" : 400,
+      "skillsAfter" : [
+        "符文斩",
+        "符文庇护",
+        "战斗符文"
+      ],
+      "skillsBefore" : [
+        "符文斩",
+        "符文庇护",
+        "战斗符文"
+      ]
+    },
+    "item" : "greatSword",
+    "role" : "spellblade"
+  },
+  {
+    "comparison" : {
+      "after" : {
+        "active" : true,
+        "ap" : 3,
+        "baseAttributes" : {
+          "baseAP" : 3,
+          "damage" : 0,
+          "maximumAP" : 8,
+          "maximumHealth" : 24,
+          "range" : 0
+        },
+        "canActFromRound" : 1,
+        "coins" : 8,
+        "defeatRewarded" : false,
+        "equipment" : {
+          "weapon" : "huntingBow"
+        },
+        "health" : 24,
+        "host" : false,
+        "id" : "p1",
+        "inventory" : {
+          "actionRing" : 1,
+          "dragonArmor" : 1,
+          "dragonCharm" : 1,
+          "dragonFangSword" : 1,
+          "greatSword" : 1,
+          "largePotion" : 1,
+          "leatherArmor" : 1,
+          "legendaryStaff" : 1,
+          "powerBadge" : 1,
+          "revivalStone" : 1,
+          "runeArmor" : 1,
+          "shieldPotion" : 1,
+          "smallPotion" : 2,
+          "starlightArmor" : 1,
+          "starlightBlade" : 1,
+          "starlightCharm" : 1,
+          "trainingSword" : 2
+        },
+        "kind" : "player",
+        "name" : "P1 · 魔剑士",
+        "nodeID" : 7,
+        "score" : 0,
+        "shield" : 0,
+        "skillUses" : {
+
+        },
+        "teamID" : "party",
+        "templateID" : "spellblade"
+      },
+      "afterStats" : {
+        "baseAP" : 3,
+        "damage" : 0,
+        "maximumAP" : 8,
+        "maximumHealth" : 24,
+        "range" : 0
+      },
+      "attackAfter" : "1D8 · 射程1",
+      "attackBefore" : "1D6 · 射程0",
+      "before" : {
+        "active" : true,
+        "ap" : 3,
+        "baseAttributes" : {
+          "baseAP" : 3,
+          "damage" : 0,
+          "maximumAP" : 8,
+          "maximumHealth" : 24,
+          "range" : 0
+        },
+        "canActFromRound" : 1,
+        "coins" : 8,
+        "defeatRewarded" : false,
+        "equipment" : {
+          "weapon" : "trainingSword"
+        },
+        "health" : 24,
+        "host" : false,
+        "id" : "p1",
+        "inventory" : {
+          "actionRing" : 1,
+          "dragonArmor" : 1,
+          "dragonCharm" : 1,
+          "dragonFangSword" : 1,
+          "greatSword" : 1,
+          "huntingBow" : 1,
+          "largePotion" : 1,
+          "leatherArmor" : 1,
+          "legendaryStaff" : 1,
+          "powerBadge" : 1,
+          "revivalStone" : 1,
+          "runeArmor" : 1,
+          "shieldPotion" : 1,
+          "smallPotion" : 2,
+          "starlightArmor" : 1,
+          "starlightBlade" : 1,
+          "starlightCharm" : 1,
+          "trainingSword" : 1
+        },
+        "kind" : "player",
+        "name" : "P1 · 魔剑士",
+        "nodeID" : 7,
+        "score" : 0,
+        "shield" : 0,
+        "skillUses" : {
+
+        },
+        "teamID" : "party",
+        "templateID" : "spellblade"
+      },
+      "beforeStats" : {
+        "baseAP" : 3,
+        "damage" : 0,
+        "maximumAP" : 8,
+        "maximumHealth" : 24,
+        "range" : 0
+      },
+      "movementAfter" : 400,
+      "movementBefore" : 400,
+      "skillsAfter" : [
+        "符文斩",
+        "符文庇护",
+        "战斗符文"
+      ],
+      "skillsBefore" : [
+        "符文斩",
+        "符文庇护",
+        "战斗符文"
+      ]
+    },
+    "item" : "huntingBow",
+    "role" : "spellblade"
+  },
+  {
+    "comparison" : {
+      "after" : {
+        "active" : true,
+        "ap" : 3,
+        "baseAttributes" : {
+          "baseAP" : 3,
+          "damage" : 0,
+          "maximumAP" : 8,
+          "maximumHealth" : 24,
+          "range" : 0
+        },
+        "canActFromRound" : 1,
+        "coins" : 8,
+        "defeatRewarded" : false,
+        "equipment" : {
+          "armor" : "leatherArmor",
+          "weapon" : "trainingSword"
+        },
+        "health" : 24,
+        "host" : false,
+        "id" : "p1",
+        "inventory" : {
+          "actionRing" : 1,
+          "dragonArmor" : 1,
+          "dragonCharm" : 1,
+          "dragonFangSword" : 1,
+          "greatSword" : 1,
+          "huntingBow" : 1,
+          "largePotion" : 1,
+          "legendaryStaff" : 1,
+          "powerBadge" : 1,
+          "revivalStone" : 1,
+          "runeArmor" : 1,
+          "shieldPotion" : 1,
+          "smallPotion" : 2,
+          "starlightArmor" : 1,
+          "starlightBlade" : 1,
+          "starlightCharm" : 1,
+          "trainingSword" : 1
+        },
+        "kind" : "player",
+        "name" : "P1 · 魔剑士",
+        "nodeID" : 7,
+        "score" : 0,
+        "shield" : 0,
+        "skillUses" : {
+
+        },
+        "teamID" : "party",
+        "templateID" : "spellblade"
+      },
+      "afterStats" : {
+        "baseAP" : 3,
+        "damage" : 0,
+        "maximumAP" : 8,
+        "maximumHealth" : 28,
+        "range" : 0
+      },
+      "attackAfter" : "1D6 · 射程0",
+      "attackBefore" : "1D6 · 射程0",
+      "before" : {
+        "active" : true,
+        "ap" : 3,
+        "baseAttributes" : {
+          "baseAP" : 3,
+          "damage" : 0,
+          "maximumAP" : 8,
+          "maximumHealth" : 24,
+          "range" : 0
+        },
+        "canActFromRound" : 1,
+        "coins" : 8,
+        "defeatRewarded" : false,
+        "equipment" : {
+          "weapon" : "trainingSword"
+        },
+        "health" : 24,
+        "host" : false,
+        "id" : "p1",
+        "inventory" : {
+          "actionRing" : 1,
+          "dragonArmor" : 1,
+          "dragonCharm" : 1,
+          "dragonFangSword" : 1,
+          "greatSword" : 1,
+          "huntingBow" : 1,
+          "largePotion" : 1,
+          "leatherArmor" : 1,
+          "legendaryStaff" : 1,
+          "powerBadge" : 1,
+          "revivalStone" : 1,
+          "runeArmor" : 1,
+          "shieldPotion" : 1,
+          "smallPotion" : 2,
+          "starlightArmor" : 1,
+          "starlightBlade" : 1,
+          "starlightCharm" : 1,
+          "trainingSword" : 1
+        },
+        "kind" : "player",
+        "name" : "P1 · 魔剑士",
+        "nodeID" : 7,
+        "score" : 0,
+        "shield" : 0,
+        "skillUses" : {
+
+        },
+        "teamID" : "party",
+        "templateID" : "spellblade"
+      },
+      "beforeStats" : {
+        "baseAP" : 3,
+        "damage" : 0,
+        "maximumAP" : 8,
+        "maximumHealth" : 24,
+        "range" : 0
+      },
+      "movementAfter" : 400,
+      "movementBefore" : 400,
+      "skillsAfter" : [
+        "符文斩",
+        "符文庇护",
+        "战斗符文"
+      ],
+      "skillsBefore" : [
+        "符文斩",
+        "符文庇护",
+        "战斗符文"
+      ]
+    },
+    "item" : "leatherArmor",
+    "role" : "spellblade"
+  },
+  {
+    "comparison" : {
+      "after" : {
+        "active" : true,
+        "ap" : 3,
+        "baseAttributes" : {
+          "baseAP" : 3,
+          "damage" : 0,
+          "maximumAP" : 8,
+          "maximumHealth" : 24,
+          "range" : 0
+        },
+        "canActFromRound" : 1,
+        "coins" : 8,
+        "defeatRewarded" : false,
+        "equipment" : {
+          "weapon" : "legendaryStaff"
+        },
+        "health" : 24,
+        "host" : false,
+        "id" : "p1",
+        "inventory" : {
+          "actionRing" : 1,
+          "dragonArmor" : 1,
+          "dragonCharm" : 1,
+          "dragonFangSword" : 1,
+          "greatSword" : 1,
+          "huntingBow" : 1,
+          "largePotion" : 1,
+          "leatherArmor" : 1,
+          "powerBadge" : 1,
+          "revivalStone" : 1,
+          "runeArmor" : 1,
+          "shieldPotion" : 1,
+          "smallPotion" : 2,
+          "starlightArmor" : 1,
+          "starlightBlade" : 1,
+          "starlightCharm" : 1,
+          "trainingSword" : 2
+        },
+        "kind" : "player",
+        "name" : "P1 · 魔剑士",
+        "nodeID" : 7,
+        "score" : 0,
+        "shield" : 0,
+        "skillUses" : {
+
+        },
+        "teamID" : "party",
+        "templateID" : "spellblade"
+      },
+      "afterStats" : {
+        "baseAP" : 3,
+        "damage" : 0,
+        "maximumAP" : 8,
+        "maximumHealth" : 24,
+        "range" : 0
+      },
+      "attackAfter" : "1D20 · 射程1",
+      "attackBefore" : "1D6 · 射程0",
+      "before" : {
+        "active" : true,
+        "ap" : 3,
+        "baseAttributes" : {
+          "baseAP" : 3,
+          "damage" : 0,
+          "maximumAP" : 8,
+          "maximumHealth" : 24,
+          "range" : 0
+        },
+        "canActFromRound" : 1,
+        "coins" : 8,
+        "defeatRewarded" : false,
+        "equipment" : {
+          "weapon" : "trainingSword"
+        },
+        "health" : 24,
+        "host" : false,
+        "id" : "p1",
+        "inventory" : {
+          "actionRing" : 1,
+          "dragonArmor" : 1,
+          "dragonCharm" : 1,
+          "dragonFangSword" : 1,
+          "greatSword" : 1,
+          "huntingBow" : 1,
+          "largePotion" : 1,
+          "leatherArmor" : 1,
+          "legendaryStaff" : 1,
+          "powerBadge" : 1,
+          "revivalStone" : 1,
+          "runeArmor" : 1,
+          "shieldPotion" : 1,
+          "smallPotion" : 2,
+          "starlightArmor" : 1,
+          "starlightBlade" : 1,
+          "starlightCharm" : 1,
+          "trainingSword" : 1
+        },
+        "kind" : "player",
+        "name" : "P1 · 魔剑士",
+        "nodeID" : 7,
+        "score" : 0,
+        "shield" : 0,
+        "skillUses" : {
+
+        },
+        "teamID" : "party",
+        "templateID" : "spellblade"
+      },
+      "beforeStats" : {
+        "baseAP" : 3,
+        "damage" : 0,
+        "maximumAP" : 8,
+        "maximumHealth" : 24,
+        "range" : 0
+      },
+      "movementAfter" : 400,
+      "movementBefore" : 400,
+      "skillsAfter" : [
+        "符文斩",
+        "符文庇护",
+        "战斗符文"
+      ],
+      "skillsBefore" : [
+        "符文斩",
+        "符文庇护",
+        "战斗符文"
+      ]
+    },
+    "item" : "legendaryStaff",
+    "role" : "spellblade"
+  },
+  {
+    "comparison" : {
+      "after" : {
+        "active" : true,
+        "ap" : 3,
+        "baseAttributes" : {
+          "baseAP" : 3,
+          "damage" : 0,
+          "maximumAP" : 8,
+          "maximumHealth" : 24,
+          "range" : 0
+        },
+        "canActFromRound" : 1,
+        "coins" : 8,
+        "defeatRewarded" : false,
+        "equipment" : {
+          "accessory" : "powerBadge",
+          "weapon" : "trainingSword"
+        },
+        "health" : 24,
+        "host" : false,
+        "id" : "p1",
+        "inventory" : {
+          "actionRing" : 1,
+          "dragonArmor" : 1,
+          "dragonCharm" : 1,
+          "dragonFangSword" : 1,
+          "greatSword" : 1,
+          "huntingBow" : 1,
+          "largePotion" : 1,
+          "leatherArmor" : 1,
+          "legendaryStaff" : 1,
+          "revivalStone" : 1,
+          "runeArmor" : 1,
+          "shieldPotion" : 1,
+          "smallPotion" : 2,
+          "starlightArmor" : 1,
+          "starlightBlade" : 1,
+          "starlightCharm" : 1,
+          "trainingSword" : 1
+        },
+        "kind" : "player",
+        "name" : "P1 · 魔剑士",
+        "nodeID" : 7,
+        "score" : 0,
+        "shield" : 0,
+        "skillUses" : {
+
+        },
+        "teamID" : "party",
+        "templateID" : "spellblade"
+      },
+      "afterStats" : {
+        "baseAP" : 3,
+        "damage" : 2,
+        "maximumAP" : 8,
+        "maximumHealth" : 24,
+        "range" : 0
+      },
+      "attackAfter" : "1D6 · 射程0",
+      "attackBefore" : "1D6 · 射程0",
+      "before" : {
+        "active" : true,
+        "ap" : 3,
+        "baseAttributes" : {
+          "baseAP" : 3,
+          "damage" : 0,
+          "maximumAP" : 8,
+          "maximumHealth" : 24,
+          "range" : 0
+        },
+        "canActFromRound" : 1,
+        "coins" : 8,
+        "defeatRewarded" : false,
+        "equipment" : {
+          "weapon" : "trainingSword"
+        },
+        "health" : 24,
+        "host" : false,
+        "id" : "p1",
+        "inventory" : {
+          "actionRing" : 1,
+          "dragonArmor" : 1,
+          "dragonCharm" : 1,
+          "dragonFangSword" : 1,
+          "greatSword" : 1,
+          "huntingBow" : 1,
+          "largePotion" : 1,
+          "leatherArmor" : 1,
+          "legendaryStaff" : 1,
+          "powerBadge" : 1,
+          "revivalStone" : 1,
+          "runeArmor" : 1,
+          "shieldPotion" : 1,
+          "smallPotion" : 2,
+          "starlightArmor" : 1,
+          "starlightBlade" : 1,
+          "starlightCharm" : 1,
+          "trainingSword" : 1
+        },
+        "kind" : "player",
+        "name" : "P1 · 魔剑士",
+        "nodeID" : 7,
+        "score" : 0,
+        "shield" : 0,
+        "skillUses" : {
+
+        },
+        "teamID" : "party",
+        "templateID" : "spellblade"
+      },
+      "beforeStats" : {
+        "baseAP" : 3,
+        "damage" : 0,
+        "maximumAP" : 8,
+        "maximumHealth" : 24,
+        "range" : 0
+      },
+      "movementAfter" : 400,
+      "movementBefore" : 400,
+      "skillsAfter" : [
+        "符文斩",
+        "符文庇护",
+        "战斗符文"
+      ],
+      "skillsBefore" : [
+        "符文斩",
+        "符文庇护",
+        "战斗符文"
+      ]
+    },
+    "item" : "powerBadge",
+    "role" : "spellblade"
+  },
+  {
+    "comparison" : {
+      "after" : {
+        "active" : true,
+        "ap" : 3,
+        "baseAttributes" : {
+          "baseAP" : 3,
+          "damage" : 0,
+          "maximumAP" : 8,
+          "maximumHealth" : 24,
+          "range" : 0
+        },
+        "canActFromRound" : 1,
+        "coins" : 8,
+        "defeatRewarded" : false,
+        "equipment" : {
+          "armor" : "runeArmor",
+          "weapon" : "trainingSword"
+        },
+        "health" : 24,
+        "host" : false,
+        "id" : "p1",
+        "inventory" : {
+          "actionRing" : 1,
+          "dragonArmor" : 1,
+          "dragonCharm" : 1,
+          "dragonFangSword" : 1,
+          "greatSword" : 1,
+          "huntingBow" : 1,
+          "largePotion" : 1,
+          "leatherArmor" : 1,
+          "legendaryStaff" : 1,
+          "powerBadge" : 1,
+          "revivalStone" : 1,
+          "shieldPotion" : 1,
+          "smallPotion" : 2,
+          "starlightArmor" : 1,
+          "starlightBlade" : 1,
+          "starlightCharm" : 1,
+          "trainingSword" : 1
+        },
+        "kind" : "player",
+        "name" : "P1 · 魔剑士",
+        "nodeID" : 7,
+        "score" : 0,
+        "shield" : 0,
+        "skillUses" : {
+
+        },
+        "teamID" : "party",
+        "templateID" : "spellblade"
+      },
+      "afterStats" : {
+        "baseAP" : 3,
+        "damage" : 0,
+        "maximumAP" : 8,
+        "maximumHealth" : 32,
+        "range" : 0
+      },
+      "attackAfter" : "1D6 · 射程0",
+      "attackBefore" : "1D6 · 射程0",
+      "before" : {
+        "active" : true,
+        "ap" : 3,
+        "baseAttributes" : {
+          "baseAP" : 3,
+          "damage" : 0,
+          "maximumAP" : 8,
+          "maximumHealth" : 24,
+          "range" : 0
+        },
+        "canActFromRound" : 1,
+        "coins" : 8,
+        "defeatRewarded" : false,
+        "equipment" : {
+          "weapon" : "trainingSword"
+        },
+        "health" : 24,
+        "host" : false,
+        "id" : "p1",
+        "inventory" : {
+          "actionRing" : 1,
+          "dragonArmor" : 1,
+          "dragonCharm" : 1,
+          "dragonFangSword" : 1,
+          "greatSword" : 1,
+          "huntingBow" : 1,
+          "largePotion" : 1,
+          "leatherArmor" : 1,
+          "legendaryStaff" : 1,
+          "powerBadge" : 1,
+          "revivalStone" : 1,
+          "runeArmor" : 1,
+          "shieldPotion" : 1,
+          "smallPotion" : 2,
+          "starlightArmor" : 1,
+          "starlightBlade" : 1,
+          "starlightCharm" : 1,
+          "trainingSword" : 1
+        },
+        "kind" : "player",
+        "name" : "P1 · 魔剑士",
+        "nodeID" : 7,
+        "score" : 0,
+        "shield" : 0,
+        "skillUses" : {
+
+        },
+        "teamID" : "party",
+        "templateID" : "spellblade"
+      },
+      "beforeStats" : {
+        "baseAP" : 3,
+        "damage" : 0,
+        "maximumAP" : 8,
+        "maximumHealth" : 24,
+        "range" : 0
+      },
+      "movementAfter" : 400,
+      "movementBefore" : 400,
+      "skillsAfter" : [
+        "符文斩",
+        "符文庇护",
+        "战斗符文"
+      ],
+      "skillsBefore" : [
+        "符文斩",
+        "符文庇护",
+        "战斗符文"
+      ]
+    },
+    "item" : "runeArmor",
+    "role" : "spellblade"
+  },
+  {
+    "comparison" : {
+      "after" : {
+        "active" : true,
+        "ap" : 3,
+        "baseAttributes" : {
+          "baseAP" : 3,
+          "damage" : 0,
+          "maximumAP" : 8,
+          "maximumHealth" : 24,
+          "range" : 0
+        },
+        "canActFromRound" : 1,
+        "coins" : 8,
+        "defeatRewarded" : false,
+        "equipment" : {
+          "armor" : "starlightArmor",
+          "weapon" : "trainingSword"
+        },
+        "health" : 24,
+        "host" : false,
+        "id" : "p1",
+        "inventory" : {
+          "actionRing" : 1,
+          "dragonArmor" : 1,
+          "dragonCharm" : 1,
+          "dragonFangSword" : 1,
+          "greatSword" : 1,
+          "huntingBow" : 1,
+          "largePotion" : 1,
+          "leatherArmor" : 1,
+          "legendaryStaff" : 1,
+          "powerBadge" : 1,
+          "revivalStone" : 1,
+          "runeArmor" : 1,
+          "shieldPotion" : 1,
+          "smallPotion" : 2,
+          "starlightBlade" : 1,
+          "starlightCharm" : 1,
+          "trainingSword" : 1
+        },
+        "kind" : "player",
+        "name" : "P1 · 魔剑士",
+        "nodeID" : 7,
+        "score" : 0,
+        "shield" : 0,
+        "skillUses" : {
+
+        },
+        "teamID" : "party",
+        "templateID" : "spellblade"
+      },
+      "afterStats" : {
+        "baseAP" : 3,
+        "damage" : 0,
+        "maximumAP" : 8,
+        "maximumHealth" : 32,
+        "range" : 0
+      },
+      "attackAfter" : "1D6 · 射程0",
+      "attackBefore" : "1D6 · 射程0",
+      "before" : {
+        "active" : true,
+        "ap" : 3,
+        "baseAttributes" : {
+          "baseAP" : 3,
+          "damage" : 0,
+          "maximumAP" : 8,
+          "maximumHealth" : 24,
+          "range" : 0
+        },
+        "canActFromRound" : 1,
+        "coins" : 8,
+        "defeatRewarded" : false,
+        "equipment" : {
+          "weapon" : "trainingSword"
+        },
+        "health" : 24,
+        "host" : false,
+        "id" : "p1",
+        "inventory" : {
+          "actionRing" : 1,
+          "dragonArmor" : 1,
+          "dragonCharm" : 1,
+          "dragonFangSword" : 1,
+          "greatSword" : 1,
+          "huntingBow" : 1,
+          "largePotion" : 1,
+          "leatherArmor" : 1,
+          "legendaryStaff" : 1,
+          "powerBadge" : 1,
+          "revivalStone" : 1,
+          "runeArmor" : 1,
+          "shieldPotion" : 1,
+          "smallPotion" : 2,
+          "starlightArmor" : 1,
+          "starlightBlade" : 1,
+          "starlightCharm" : 1,
+          "trainingSword" : 1
+        },
+        "kind" : "player",
+        "name" : "P1 · 魔剑士",
+        "nodeID" : 7,
+        "score" : 0,
+        "shield" : 0,
+        "skillUses" : {
+
+        },
+        "teamID" : "party",
+        "templateID" : "spellblade"
+      },
+      "beforeStats" : {
+        "baseAP" : 3,
+        "damage" : 0,
+        "maximumAP" : 8,
+        "maximumHealth" : 24,
+        "range" : 0
+      },
+      "movementAfter" : 400,
+      "movementBefore" : 400,
+      "skillsAfter" : [
+        "符文斩",
+        "符文庇护",
+        "战斗符文"
+      ],
+      "skillsBefore" : [
+        "符文斩",
+        "符文庇护",
+        "战斗符文"
+      ]
+    },
+    "item" : "starlightArmor",
+    "role" : "spellblade"
+  },
+  {
+    "comparison" : {
+      "after" : {
+        "active" : true,
+        "ap" : 3,
+        "baseAttributes" : {
+          "baseAP" : 3,
+          "damage" : 0,
+          "maximumAP" : 8,
+          "maximumHealth" : 24,
+          "range" : 0
+        },
+        "canActFromRound" : 1,
+        "coins" : 8,
+        "defeatRewarded" : false,
+        "equipment" : {
+          "weapon" : "starlightBlade"
+        },
+        "health" : 24,
+        "host" : false,
+        "id" : "p1",
+        "inventory" : {
+          "actionRing" : 1,
+          "dragonArmor" : 1,
+          "dragonCharm" : 1,
+          "dragonFangSword" : 1,
+          "greatSword" : 1,
+          "huntingBow" : 1,
+          "largePotion" : 1,
+          "leatherArmor" : 1,
+          "legendaryStaff" : 1,
+          "powerBadge" : 1,
+          "revivalStone" : 1,
+          "runeArmor" : 1,
+          "shieldPotion" : 1,
+          "smallPotion" : 2,
+          "starlightArmor" : 1,
+          "starlightCharm" : 1,
+          "trainingSword" : 2
+        },
+        "kind" : "player",
+        "name" : "P1 · 魔剑士",
+        "nodeID" : 7,
+        "score" : 0,
+        "shield" : 0,
+        "skillUses" : {
+
+        },
+        "teamID" : "party",
+        "templateID" : "spellblade"
+      },
+      "afterStats" : {
+        "baseAP" : 3,
+        "damage" : 0,
+        "maximumAP" : 8,
+        "maximumHealth" : 24,
+        "range" : 0
+      },
+      "attackAfter" : "1D12 · 射程1",
+      "attackBefore" : "1D6 · 射程0",
+      "before" : {
+        "active" : true,
+        "ap" : 3,
+        "baseAttributes" : {
+          "baseAP" : 3,
+          "damage" : 0,
+          "maximumAP" : 8,
+          "maximumHealth" : 24,
+          "range" : 0
+        },
+        "canActFromRound" : 1,
+        "coins" : 8,
+        "defeatRewarded" : false,
+        "equipment" : {
+          "weapon" : "trainingSword"
+        },
+        "health" : 24,
+        "host" : false,
+        "id" : "p1",
+        "inventory" : {
+          "actionRing" : 1,
+          "dragonArmor" : 1,
+          "dragonCharm" : 1,
+          "dragonFangSword" : 1,
+          "greatSword" : 1,
+          "huntingBow" : 1,
+          "largePotion" : 1,
+          "leatherArmor" : 1,
+          "legendaryStaff" : 1,
+          "powerBadge" : 1,
+          "revivalStone" : 1,
+          "runeArmor" : 1,
+          "shieldPotion" : 1,
+          "smallPotion" : 2,
+          "starlightArmor" : 1,
+          "starlightBlade" : 1,
+          "starlightCharm" : 1,
+          "trainingSword" : 1
+        },
+        "kind" : "player",
+        "name" : "P1 · 魔剑士",
+        "nodeID" : 7,
+        "score" : 0,
+        "shield" : 0,
+        "skillUses" : {
+
+        },
+        "teamID" : "party",
+        "templateID" : "spellblade"
+      },
+      "beforeStats" : {
+        "baseAP" : 3,
+        "damage" : 0,
+        "maximumAP" : 8,
+        "maximumHealth" : 24,
+        "range" : 0
+      },
+      "movementAfter" : 400,
+      "movementBefore" : 400,
+      "skillsAfter" : [
+        "符文斩",
+        "符文庇护",
+        "战斗符文"
+      ],
+      "skillsBefore" : [
+        "符文斩",
+        "符文庇护",
+        "战斗符文"
+      ]
+    },
+    "item" : "starlightBlade",
+    "role" : "spellblade"
+  },
+  {
+    "comparison" : {
+      "after" : {
+        "active" : true,
+        "ap" : 3,
+        "baseAttributes" : {
+          "baseAP" : 3,
+          "damage" : 0,
+          "maximumAP" : 8,
+          "maximumHealth" : 24,
+          "range" : 0
+        },
+        "canActFromRound" : 1,
+        "coins" : 8,
+        "defeatRewarded" : false,
+        "equipment" : {
+          "accessory" : "starlightCharm",
+          "weapon" : "trainingSword"
+        },
+        "health" : 24,
+        "host" : false,
+        "id" : "p1",
+        "inventory" : {
+          "actionRing" : 1,
+          "dragonArmor" : 1,
+          "dragonCharm" : 1,
+          "dragonFangSword" : 1,
+          "greatSword" : 1,
+          "huntingBow" : 1,
+          "largePotion" : 1,
+          "leatherArmor" : 1,
+          "legendaryStaff" : 1,
+          "powerBadge" : 1,
+          "revivalStone" : 1,
+          "runeArmor" : 1,
+          "shieldPotion" : 1,
+          "smallPotion" : 2,
+          "starlightArmor" : 1,
+          "starlightBlade" : 1,
+          "trainingSword" : 1
+        },
+        "kind" : "player",
+        "name" : "P1 · 魔剑士",
+        "nodeID" : 7,
+        "score" : 0,
+        "shield" : 0,
+        "skillUses" : {
+
+        },
+        "teamID" : "party",
+        "templateID" : "spellblade"
+      },
+      "afterStats" : {
+        "baseAP" : 3,
+        "damage" : 2,
+        "maximumAP" : 8,
+        "maximumHealth" : 24,
+        "range" : 0
+      },
+      "attackAfter" : "1D6 · 射程0",
+      "attackBefore" : "1D6 · 射程0",
+      "before" : {
+        "active" : true,
+        "ap" : 3,
+        "baseAttributes" : {
+          "baseAP" : 3,
+          "damage" : 0,
+          "maximumAP" : 8,
+          "maximumHealth" : 24,
+          "range" : 0
+        },
+        "canActFromRound" : 1,
+        "coins" : 8,
+        "defeatRewarded" : false,
+        "equipment" : {
+          "weapon" : "trainingSword"
+        },
+        "health" : 24,
+        "host" : false,
+        "id" : "p1",
+        "inventory" : {
+          "actionRing" : 1,
+          "dragonArmor" : 1,
+          "dragonCharm" : 1,
+          "dragonFangSword" : 1,
+          "greatSword" : 1,
+          "huntingBow" : 1,
+          "largePotion" : 1,
+          "leatherArmor" : 1,
+          "legendaryStaff" : 1,
+          "powerBadge" : 1,
+          "revivalStone" : 1,
+          "runeArmor" : 1,
+          "shieldPotion" : 1,
+          "smallPotion" : 2,
+          "starlightArmor" : 1,
+          "starlightBlade" : 1,
+          "starlightCharm" : 1,
+          "trainingSword" : 1
+        },
+        "kind" : "player",
+        "name" : "P1 · 魔剑士",
+        "nodeID" : 7,
+        "score" : 0,
+        "shield" : 0,
+        "skillUses" : {
+
+        },
+        "teamID" : "party",
+        "templateID" : "spellblade"
+      },
+      "beforeStats" : {
+        "baseAP" : 3,
+        "damage" : 0,
+        "maximumAP" : 8,
+        "maximumHealth" : 24,
+        "range" : 0
+      },
+      "movementAfter" : 400,
+      "movementBefore" : 400,
+      "skillsAfter" : [
+        "符文斩",
+        "符文庇护",
+        "战斗符文"
+      ],
+      "skillsBefore" : [
+        "符文斩",
+        "符文庇护",
+        "战斗符文"
+      ]
+    },
+    "item" : "starlightCharm",
+    "role" : "spellblade"
+  },
+  {
+    "comparison" : {
+      "after" : {
+        "active" : true,
+        "ap" : 3,
+        "baseAttributes" : {
+          "baseAP" : 3,
+          "damage" : 0,
+          "maximumAP" : 8,
+          "maximumHealth" : 24,
+          "range" : 0
+        },
+        "canActFromRound" : 1,
+        "coins" : 8,
+        "defeatRewarded" : false,
+        "equipment" : {
+          "weapon" : "trainingSword"
+        },
+        "health" : 24,
+        "host" : false,
+        "id" : "p1",
+        "inventory" : {
+          "actionRing" : 1,
+          "dragonArmor" : 1,
+          "dragonCharm" : 1,
+          "dragonFangSword" : 1,
+          "greatSword" : 1,
+          "huntingBow" : 1,
+          "largePotion" : 1,
+          "leatherArmor" : 1,
+          "legendaryStaff" : 1,
+          "powerBadge" : 1,
+          "revivalStone" : 1,
+          "runeArmor" : 1,
+          "shieldPotion" : 1,
+          "smallPotion" : 2,
+          "starlightArmor" : 1,
+          "starlightBlade" : 1,
+          "starlightCharm" : 1,
+          "trainingSword" : 1
+        },
+        "kind" : "player",
+        "name" : "P1 · 魔剑士",
+        "nodeID" : 7,
+        "score" : 0,
+        "shield" : 0,
+        "skillUses" : {
+
+        },
+        "teamID" : "party",
+        "templateID" : "spellblade"
+      },
+      "afterStats" : {
+        "baseAP" : 3,
+        "damage" : 0,
+        "maximumAP" : 8,
+        "maximumHealth" : 24,
+        "range" : 0
+      },
+      "attackAfter" : "1D6 · 射程0",
+      "attackBefore" : "1D6 · 射程0",
+      "before" : {
+        "active" : true,
+        "ap" : 3,
+        "baseAttributes" : {
+          "baseAP" : 3,
+          "damage" : 0,
+          "maximumAP" : 8,
+          "maximumHealth" : 24,
+          "range" : 0
+        },
+        "canActFromRound" : 1,
+        "coins" : 8,
+        "defeatRewarded" : false,
+        "equipment" : {
+          "weapon" : "trainingSword"
+        },
+        "health" : 24,
+        "host" : false,
+        "id" : "p1",
+        "inventory" : {
+          "actionRing" : 1,
+          "dragonArmor" : 1,
+          "dragonCharm" : 1,
+          "dragonFangSword" : 1,
+          "greatSword" : 1,
+          "huntingBow" : 1,
+          "largePotion" : 1,
+          "leatherArmor" : 1,
+          "legendaryStaff" : 1,
+          "powerBadge" : 1,
+          "revivalStone" : 1,
+          "runeArmor" : 1,
+          "shieldPotion" : 1,
+          "smallPotion" : 2,
+          "starlightArmor" : 1,
+          "starlightBlade" : 1,
+          "starlightCharm" : 1,
+          "trainingSword" : 1
+        },
+        "kind" : "player",
+        "name" : "P1 · 魔剑士",
+        "nodeID" : 7,
+        "score" : 0,
+        "shield" : 0,
+        "skillUses" : {
+
+        },
+        "teamID" : "party",
+        "templateID" : "spellblade"
+      },
+      "beforeStats" : {
+        "baseAP" : 3,
+        "damage" : 0,
+        "maximumAP" : 8,
+        "maximumHealth" : 24,
+        "range" : 0
+      },
+      "movementAfter" : 400,
+      "movementBefore" : 400,
+      "skillsAfter" : [
+        "符文斩",
+        "符文庇护",
+        "战斗符文"
+      ],
+      "skillsBefore" : [
+        "符文斩",
+        "符文庇护",
+        "战斗符文"
+      ]
+    },
+    "item" : "trainingSword",
+    "role" : "spellblade"
+  },
+  {
+    "comparison" : {
+      "after" : {
+        "active" : true,
+        "ap" : 3,
+        "baseAttributes" : {
+          "baseAP" : 3,
+          "damage" : 0,
+          "maximumAP" : 8,
+          "maximumHealth" : 32,
+          "range" : 0
+        },
+        "canActFromRound" : 1,
+        "coins" : 8,
+        "defeatRewarded" : false,
+        "equipment" : {
+          "accessory" : "actionRing",
+          "weapon" : "trainingSword"
+        },
+        "health" : 32,
+        "host" : false,
+        "id" : "p1",
+        "inventory" : {
+          "dragonArmor" : 1,
+          "dragonCharm" : 1,
+          "dragonFangSword" : 1,
+          "greatSword" : 1,
+          "huntingBow" : 1,
+          "largePotion" : 1,
+          "leatherArmor" : 1,
+          "legendaryStaff" : 1,
+          "powerBadge" : 1,
+          "revivalStone" : 1,
+          "runeArmor" : 1,
+          "shieldPotion" : 1,
+          "smallPotion" : 2,
+          "starlightArmor" : 1,
+          "starlightBlade" : 1,
+          "starlightCharm" : 1,
+          "trainingSword" : 1
+        },
+        "kind" : "player",
+        "name" : "P1 · 龙骑士",
+        "nodeID" : 7,
+        "score" : 0,
+        "shield" : 0,
+        "skillUses" : {
+
+        },
+        "teamID" : "party",
+        "templateID" : "dragonKnight"
+      },
+      "afterStats" : {
+        "baseAP" : 4,
+        "damage" : 0,
+        "maximumAP" : 8,
+        "maximumHealth" : 32,
+        "range" : 0
+      },
+      "attackAfter" : "1D6 · 射程0",
+      "attackBefore" : "1D6 · 射程0",
+      "before" : {
+        "active" : true,
+        "ap" : 3,
+        "baseAttributes" : {
+          "baseAP" : 3,
+          "damage" : 0,
+          "maximumAP" : 8,
+          "maximumHealth" : 32,
+          "range" : 0
+        },
+        "canActFromRound" : 1,
+        "coins" : 8,
+        "defeatRewarded" : false,
+        "equipment" : {
+          "weapon" : "trainingSword"
+        },
+        "health" : 32,
+        "host" : false,
+        "id" : "p1",
+        "inventory" : {
+          "actionRing" : 1,
+          "dragonArmor" : 1,
+          "dragonCharm" : 1,
+          "dragonFangSword" : 1,
+          "greatSword" : 1,
+          "huntingBow" : 1,
+          "largePotion" : 1,
+          "leatherArmor" : 1,
+          "legendaryStaff" : 1,
+          "powerBadge" : 1,
+          "revivalStone" : 1,
+          "runeArmor" : 1,
+          "shieldPotion" : 1,
+          "smallPotion" : 2,
+          "starlightArmor" : 1,
+          "starlightBlade" : 1,
+          "starlightCharm" : 1,
+          "trainingSword" : 1
+        },
+        "kind" : "player",
+        "name" : "P1 · 龙骑士",
+        "nodeID" : 7,
+        "score" : 0,
+        "shield" : 0,
+        "skillUses" : {
+
+        },
+        "teamID" : "party",
+        "templateID" : "dragonKnight"
+      },
+      "beforeStats" : {
+        "baseAP" : 3,
+        "damage" : 0,
+        "maximumAP" : 8,
+        "maximumHealth" : 32,
+        "range" : 0
+      },
+      "movementAfter" : 400,
+      "movementBefore" : 400,
+      "skillsAfter" : [
+        "龙焰",
+        "龙鳞庇护",
+        "龙之号令"
+      ],
+      "skillsBefore" : [
+        "龙焰",
+        "龙鳞庇护",
+        "龙之号令"
+      ]
+    },
+    "item" : "actionRing",
+    "role" : "dragonKnight"
+  },
+  {
+    "comparison" : {
+      "after" : {
+        "active" : true,
+        "ap" : 3,
+        "baseAttributes" : {
+          "baseAP" : 3,
+          "damage" : 0,
+          "maximumAP" : 8,
+          "maximumHealth" : 32,
+          "range" : 0
+        },
+        "canActFromRound" : 1,
+        "coins" : 8,
+        "defeatRewarded" : false,
+        "equipment" : {
+          "armor" : "dragonArmor",
+          "weapon" : "trainingSword"
+        },
+        "health" : 32,
+        "host" : false,
+        "id" : "p1",
+        "inventory" : {
+          "actionRing" : 1,
+          "dragonCharm" : 1,
+          "dragonFangSword" : 1,
+          "greatSword" : 1,
+          "huntingBow" : 1,
+          "largePotion" : 1,
+          "leatherArmor" : 1,
+          "legendaryStaff" : 1,
+          "powerBadge" : 1,
+          "revivalStone" : 1,
+          "runeArmor" : 1,
+          "shieldPotion" : 1,
+          "smallPotion" : 2,
+          "starlightArmor" : 1,
+          "starlightBlade" : 1,
+          "starlightCharm" : 1,
+          "trainingSword" : 1
+        },
+        "kind" : "player",
+        "name" : "P1 · 龙骑士",
+        "nodeID" : 7,
+        "score" : 0,
+        "shield" : 0,
+        "skillUses" : {
+
+        },
+        "teamID" : "party",
+        "templateID" : "dragonKnight"
+      },
+      "afterStats" : {
+        "baseAP" : 3,
+        "damage" : 0,
+        "maximumAP" : 8,
+        "maximumHealth" : 44,
+        "range" : 0
+      },
+      "attackAfter" : "1D6 · 射程0",
+      "attackBefore" : "1D6 · 射程0",
+      "before" : {
+        "active" : true,
+        "ap" : 3,
+        "baseAttributes" : {
+          "baseAP" : 3,
+          "damage" : 0,
+          "maximumAP" : 8,
+          "maximumHealth" : 32,
+          "range" : 0
+        },
+        "canActFromRound" : 1,
+        "coins" : 8,
+        "defeatRewarded" : false,
+        "equipment" : {
+          "weapon" : "trainingSword"
+        },
+        "health" : 32,
+        "host" : false,
+        "id" : "p1",
+        "inventory" : {
+          "actionRing" : 1,
+          "dragonArmor" : 1,
+          "dragonCharm" : 1,
+          "dragonFangSword" : 1,
+          "greatSword" : 1,
+          "huntingBow" : 1,
+          "largePotion" : 1,
+          "leatherArmor" : 1,
+          "legendaryStaff" : 1,
+          "powerBadge" : 1,
+          "revivalStone" : 1,
+          "runeArmor" : 1,
+          "shieldPotion" : 1,
+          "smallPotion" : 2,
+          "starlightArmor" : 1,
+          "starlightBlade" : 1,
+          "starlightCharm" : 1,
+          "trainingSword" : 1
+        },
+        "kind" : "player",
+        "name" : "P1 · 龙骑士",
+        "nodeID" : 7,
+        "score" : 0,
+        "shield" : 0,
+        "skillUses" : {
+
+        },
+        "teamID" : "party",
+        "templateID" : "dragonKnight"
+      },
+      "beforeStats" : {
+        "baseAP" : 3,
+        "damage" : 0,
+        "maximumAP" : 8,
+        "maximumHealth" : 32,
+        "range" : 0
+      },
+      "movementAfter" : 400,
+      "movementBefore" : 400,
+      "skillsAfter" : [
+        "龙焰",
+        "龙鳞庇护",
+        "龙之号令"
+      ],
+      "skillsBefore" : [
+        "龙焰",
+        "龙鳞庇护",
+        "龙之号令"
+      ]
+    },
+    "item" : "dragonArmor",
+    "role" : "dragonKnight"
+  },
+  {
+    "comparison" : {
+      "after" : {
+        "active" : true,
+        "ap" : 3,
+        "baseAttributes" : {
+          "baseAP" : 3,
+          "damage" : 0,
+          "maximumAP" : 8,
+          "maximumHealth" : 32,
+          "range" : 0
+        },
+        "canActFromRound" : 1,
+        "coins" : 8,
+        "defeatRewarded" : false,
+        "equipment" : {
+          "accessory" : "dragonCharm",
+          "weapon" : "trainingSword"
+        },
+        "health" : 32,
+        "host" : false,
+        "id" : "p1",
+        "inventory" : {
+          "actionRing" : 1,
+          "dragonArmor" : 1,
+          "dragonFangSword" : 1,
+          "greatSword" : 1,
+          "huntingBow" : 1,
+          "largePotion" : 1,
+          "leatherArmor" : 1,
+          "legendaryStaff" : 1,
+          "powerBadge" : 1,
+          "revivalStone" : 1,
+          "runeArmor" : 1,
+          "shieldPotion" : 1,
+          "smallPotion" : 2,
+          "starlightArmor" : 1,
+          "starlightBlade" : 1,
+          "starlightCharm" : 1,
+          "trainingSword" : 1
+        },
+        "kind" : "player",
+        "name" : "P1 · 龙骑士",
+        "nodeID" : 7,
+        "score" : 0,
+        "shield" : 0,
+        "skillUses" : {
+
+        },
+        "teamID" : "party",
+        "templateID" : "dragonKnight"
+      },
+      "afterStats" : {
+        "baseAP" : 3,
+        "damage" : 3,
+        "maximumAP" : 8,
+        "maximumHealth" : 32,
+        "range" : 0
+      },
+      "attackAfter" : "1D6 · 射程0",
+      "attackBefore" : "1D6 · 射程0",
+      "before" : {
+        "active" : true,
+        "ap" : 3,
+        "baseAttributes" : {
+          "baseAP" : 3,
+          "damage" : 0,
+          "maximumAP" : 8,
+          "maximumHealth" : 32,
+          "range" : 0
+        },
+        "canActFromRound" : 1,
+        "coins" : 8,
+        "defeatRewarded" : false,
+        "equipment" : {
+          "weapon" : "trainingSword"
+        },
+        "health" : 32,
+        "host" : false,
+        "id" : "p1",
+        "inventory" : {
+          "actionRing" : 1,
+          "dragonArmor" : 1,
+          "dragonCharm" : 1,
+          "dragonFangSword" : 1,
+          "greatSword" : 1,
+          "huntingBow" : 1,
+          "largePotion" : 1,
+          "leatherArmor" : 1,
+          "legendaryStaff" : 1,
+          "powerBadge" : 1,
+          "revivalStone" : 1,
+          "runeArmor" : 1,
+          "shieldPotion" : 1,
+          "smallPotion" : 2,
+          "starlightArmor" : 1,
+          "starlightBlade" : 1,
+          "starlightCharm" : 1,
+          "trainingSword" : 1
+        },
+        "kind" : "player",
+        "name" : "P1 · 龙骑士",
+        "nodeID" : 7,
+        "score" : 0,
+        "shield" : 0,
+        "skillUses" : {
+
+        },
+        "teamID" : "party",
+        "templateID" : "dragonKnight"
+      },
+      "beforeStats" : {
+        "baseAP" : 3,
+        "damage" : 0,
+        "maximumAP" : 8,
+        "maximumHealth" : 32,
+        "range" : 0
+      },
+      "movementAfter" : 400,
+      "movementBefore" : 400,
+      "skillsAfter" : [
+        "龙焰",
+        "龙鳞庇护",
+        "龙之号令"
+      ],
+      "skillsBefore" : [
+        "龙焰",
+        "龙鳞庇护",
+        "龙之号令"
+      ]
+    },
+    "item" : "dragonCharm",
+    "role" : "dragonKnight"
+  },
+  {
+    "comparison" : {
+      "after" : {
+        "active" : true,
+        "ap" : 3,
+        "baseAttributes" : {
+          "baseAP" : 3,
+          "damage" : 0,
+          "maximumAP" : 8,
+          "maximumHealth" : 32,
+          "range" : 0
+        },
+        "canActFromRound" : 1,
+        "coins" : 8,
+        "defeatRewarded" : false,
+        "equipment" : {
+          "weapon" : "dragonFangSword"
+        },
+        "health" : 32,
+        "host" : false,
+        "id" : "p1",
+        "inventory" : {
+          "actionRing" : 1,
+          "dragonArmor" : 1,
+          "dragonCharm" : 1,
+          "greatSword" : 1,
+          "huntingBow" : 1,
+          "largePotion" : 1,
+          "leatherArmor" : 1,
+          "legendaryStaff" : 1,
+          "powerBadge" : 1,
+          "revivalStone" : 1,
+          "runeArmor" : 1,
+          "shieldPotion" : 1,
+          "smallPotion" : 2,
+          "starlightArmor" : 1,
+          "starlightBlade" : 1,
+          "starlightCharm" : 1,
+          "trainingSword" : 2
+        },
+        "kind" : "player",
+        "name" : "P1 · 龙骑士",
+        "nodeID" : 7,
+        "score" : 0,
+        "shield" : 0,
+        "skillUses" : {
+
+        },
+        "teamID" : "party",
+        "templateID" : "dragonKnight"
+      },
+      "afterStats" : {
+        "baseAP" : 3,
+        "damage" : 0,
+        "maximumAP" : 8,
+        "maximumHealth" : 32,
+        "range" : 0
+      },
+      "attackAfter" : "1D20 · 射程0",
+      "attackBefore" : "1D6 · 射程0",
+      "before" : {
+        "active" : true,
+        "ap" : 3,
+        "baseAttributes" : {
+          "baseAP" : 3,
+          "damage" : 0,
+          "maximumAP" : 8,
+          "maximumHealth" : 32,
+          "range" : 0
+        },
+        "canActFromRound" : 1,
+        "coins" : 8,
+        "defeatRewarded" : false,
+        "equipment" : {
+          "weapon" : "trainingSword"
+        },
+        "health" : 32,
+        "host" : false,
+        "id" : "p1",
+        "inventory" : {
+          "actionRing" : 1,
+          "dragonArmor" : 1,
+          "dragonCharm" : 1,
+          "dragonFangSword" : 1,
+          "greatSword" : 1,
+          "huntingBow" : 1,
+          "largePotion" : 1,
+          "leatherArmor" : 1,
+          "legendaryStaff" : 1,
+          "powerBadge" : 1,
+          "revivalStone" : 1,
+          "runeArmor" : 1,
+          "shieldPotion" : 1,
+          "smallPotion" : 2,
+          "starlightArmor" : 1,
+          "starlightBlade" : 1,
+          "starlightCharm" : 1,
+          "trainingSword" : 1
+        },
+        "kind" : "player",
+        "name" : "P1 · 龙骑士",
+        "nodeID" : 7,
+        "score" : 0,
+        "shield" : 0,
+        "skillUses" : {
+
+        },
+        "teamID" : "party",
+        "templateID" : "dragonKnight"
+      },
+      "beforeStats" : {
+        "baseAP" : 3,
+        "damage" : 0,
+        "maximumAP" : 8,
+        "maximumHealth" : 32,
+        "range" : 0
+      },
+      "movementAfter" : 400,
+      "movementBefore" : 400,
+      "skillsAfter" : [
+        "龙焰",
+        "龙鳞庇护",
+        "龙之号令"
+      ],
+      "skillsBefore" : [
+        "龙焰",
+        "龙鳞庇护",
+        "龙之号令"
+      ]
+    },
+    "item" : "dragonFangSword",
+    "role" : "dragonKnight"
+  },
+  {
+    "comparison" : {
+      "after" : {
+        "active" : true,
+        "ap" : 3,
+        "baseAttributes" : {
+          "baseAP" : 3,
+          "damage" : 0,
+          "maximumAP" : 8,
+          "maximumHealth" : 32,
+          "range" : 0
+        },
+        "canActFromRound" : 1,
+        "coins" : 8,
+        "defeatRewarded" : false,
+        "equipment" : {
+          "weapon" : "greatSword"
+        },
+        "health" : 32,
+        "host" : false,
+        "id" : "p1",
+        "inventory" : {
+          "actionRing" : 1,
+          "dragonArmor" : 1,
+          "dragonCharm" : 1,
+          "dragonFangSword" : 1,
+          "huntingBow" : 1,
+          "largePotion" : 1,
+          "leatherArmor" : 1,
+          "legendaryStaff" : 1,
+          "powerBadge" : 1,
+          "revivalStone" : 1,
+          "runeArmor" : 1,
+          "shieldPotion" : 1,
+          "smallPotion" : 2,
+          "starlightArmor" : 1,
+          "starlightBlade" : 1,
+          "starlightCharm" : 1,
+          "trainingSword" : 2
+        },
+        "kind" : "player",
+        "name" : "P1 · 龙骑士",
+        "nodeID" : 7,
+        "score" : 0,
+        "shield" : 0,
+        "skillUses" : {
+
+        },
+        "teamID" : "party",
+        "templateID" : "dragonKnight"
+      },
+      "afterStats" : {
+        "baseAP" : 3,
+        "damage" : 0,
+        "maximumAP" : 8,
+        "maximumHealth" : 32,
+        "range" : 0
+      },
+      "attackAfter" : "1D12 · 射程0",
+      "attackBefore" : "1D6 · 射程0",
+      "before" : {
+        "active" : true,
+        "ap" : 3,
+        "baseAttributes" : {
+          "baseAP" : 3,
+          "damage" : 0,
+          "maximumAP" : 8,
+          "maximumHealth" : 32,
+          "range" : 0
+        },
+        "canActFromRound" : 1,
+        "coins" : 8,
+        "defeatRewarded" : false,
+        "equipment" : {
+          "weapon" : "trainingSword"
+        },
+        "health" : 32,
+        "host" : false,
+        "id" : "p1",
+        "inventory" : {
+          "actionRing" : 1,
+          "dragonArmor" : 1,
+          "dragonCharm" : 1,
+          "dragonFangSword" : 1,
+          "greatSword" : 1,
+          "huntingBow" : 1,
+          "largePotion" : 1,
+          "leatherArmor" : 1,
+          "legendaryStaff" : 1,
+          "powerBadge" : 1,
+          "revivalStone" : 1,
+          "runeArmor" : 1,
+          "shieldPotion" : 1,
+          "smallPotion" : 2,
+          "starlightArmor" : 1,
+          "starlightBlade" : 1,
+          "starlightCharm" : 1,
+          "trainingSword" : 1
+        },
+        "kind" : "player",
+        "name" : "P1 · 龙骑士",
+        "nodeID" : 7,
+        "score" : 0,
+        "shield" : 0,
+        "skillUses" : {
+
+        },
+        "teamID" : "party",
+        "templateID" : "dragonKnight"
+      },
+      "beforeStats" : {
+        "baseAP" : 3,
+        "damage" : 0,
+        "maximumAP" : 8,
+        "maximumHealth" : 32,
+        "range" : 0
+      },
+      "movementAfter" : 400,
+      "movementBefore" : 400,
+      "skillsAfter" : [
+        "龙焰",
+        "龙鳞庇护",
+        "龙之号令"
+      ],
+      "skillsBefore" : [
+        "龙焰",
+        "龙鳞庇护",
+        "龙之号令"
+      ]
+    },
+    "item" : "greatSword",
+    "role" : "dragonKnight"
+  },
+  {
+    "comparison" : {
+      "after" : {
+        "active" : true,
+        "ap" : 3,
+        "baseAttributes" : {
+          "baseAP" : 3,
+          "damage" : 0,
+          "maximumAP" : 8,
+          "maximumHealth" : 32,
+          "range" : 0
+        },
+        "canActFromRound" : 1,
+        "coins" : 8,
+        "defeatRewarded" : false,
+        "equipment" : {
+          "weapon" : "huntingBow"
+        },
+        "health" : 32,
+        "host" : false,
+        "id" : "p1",
+        "inventory" : {
+          "actionRing" : 1,
+          "dragonArmor" : 1,
+          "dragonCharm" : 1,
+          "dragonFangSword" : 1,
+          "greatSword" : 1,
+          "largePotion" : 1,
+          "leatherArmor" : 1,
+          "legendaryStaff" : 1,
+          "powerBadge" : 1,
+          "revivalStone" : 1,
+          "runeArmor" : 1,
+          "shieldPotion" : 1,
+          "smallPotion" : 2,
+          "starlightArmor" : 1,
+          "starlightBlade" : 1,
+          "starlightCharm" : 1,
+          "trainingSword" : 2
+        },
+        "kind" : "player",
+        "name" : "P1 · 龙骑士",
+        "nodeID" : 7,
+        "score" : 0,
+        "shield" : 0,
+        "skillUses" : {
+
+        },
+        "teamID" : "party",
+        "templateID" : "dragonKnight"
+      },
+      "afterStats" : {
+        "baseAP" : 3,
+        "damage" : 0,
+        "maximumAP" : 8,
+        "maximumHealth" : 32,
+        "range" : 0
+      },
+      "attackAfter" : "1D8 · 射程1",
+      "attackBefore" : "1D6 · 射程0",
+      "before" : {
+        "active" : true,
+        "ap" : 3,
+        "baseAttributes" : {
+          "baseAP" : 3,
+          "damage" : 0,
+          "maximumAP" : 8,
+          "maximumHealth" : 32,
+          "range" : 0
+        },
+        "canActFromRound" : 1,
+        "coins" : 8,
+        "defeatRewarded" : false,
+        "equipment" : {
+          "weapon" : "trainingSword"
+        },
+        "health" : 32,
+        "host" : false,
+        "id" : "p1",
+        "inventory" : {
+          "actionRing" : 1,
+          "dragonArmor" : 1,
+          "dragonCharm" : 1,
+          "dragonFangSword" : 1,
+          "greatSword" : 1,
+          "huntingBow" : 1,
+          "largePotion" : 1,
+          "leatherArmor" : 1,
+          "legendaryStaff" : 1,
+          "powerBadge" : 1,
+          "revivalStone" : 1,
+          "runeArmor" : 1,
+          "shieldPotion" : 1,
+          "smallPotion" : 2,
+          "starlightArmor" : 1,
+          "starlightBlade" : 1,
+          "starlightCharm" : 1,
+          "trainingSword" : 1
+        },
+        "kind" : "player",
+        "name" : "P1 · 龙骑士",
+        "nodeID" : 7,
+        "score" : 0,
+        "shield" : 0,
+        "skillUses" : {
+
+        },
+        "teamID" : "party",
+        "templateID" : "dragonKnight"
+      },
+      "beforeStats" : {
+        "baseAP" : 3,
+        "damage" : 0,
+        "maximumAP" : 8,
+        "maximumHealth" : 32,
+        "range" : 0
+      },
+      "movementAfter" : 400,
+      "movementBefore" : 400,
+      "skillsAfter" : [
+        "龙焰",
+        "龙鳞庇护",
+        "龙之号令"
+      ],
+      "skillsBefore" : [
+        "龙焰",
+        "龙鳞庇护",
+        "龙之号令"
+      ]
+    },
+    "item" : "huntingBow",
+    "role" : "dragonKnight"
+  },
+  {
+    "comparison" : {
+      "after" : {
+        "active" : true,
+        "ap" : 3,
+        "baseAttributes" : {
+          "baseAP" : 3,
+          "damage" : 0,
+          "maximumAP" : 8,
+          "maximumHealth" : 32,
+          "range" : 0
+        },
+        "canActFromRound" : 1,
+        "coins" : 8,
+        "defeatRewarded" : false,
+        "equipment" : {
+          "armor" : "leatherArmor",
+          "weapon" : "trainingSword"
+        },
+        "health" : 32,
+        "host" : false,
+        "id" : "p1",
+        "inventory" : {
+          "actionRing" : 1,
+          "dragonArmor" : 1,
+          "dragonCharm" : 1,
+          "dragonFangSword" : 1,
+          "greatSword" : 1,
+          "huntingBow" : 1,
+          "largePotion" : 1,
+          "legendaryStaff" : 1,
+          "powerBadge" : 1,
+          "revivalStone" : 1,
+          "runeArmor" : 1,
+          "shieldPotion" : 1,
+          "smallPotion" : 2,
+          "starlightArmor" : 1,
+          "starlightBlade" : 1,
+          "starlightCharm" : 1,
+          "trainingSword" : 1
+        },
+        "kind" : "player",
+        "name" : "P1 · 龙骑士",
+        "nodeID" : 7,
+        "score" : 0,
+        "shield" : 0,
+        "skillUses" : {
+
+        },
+        "teamID" : "party",
+        "templateID" : "dragonKnight"
+      },
+      "afterStats" : {
+        "baseAP" : 3,
+        "damage" : 0,
+        "maximumAP" : 8,
+        "maximumHealth" : 36,
+        "range" : 0
+      },
+      "attackAfter" : "1D6 · 射程0",
+      "attackBefore" : "1D6 · 射程0",
+      "before" : {
+        "active" : true,
+        "ap" : 3,
+        "baseAttributes" : {
+          "baseAP" : 3,
+          "damage" : 0,
+          "maximumAP" : 8,
+          "maximumHealth" : 32,
+          "range" : 0
+        },
+        "canActFromRound" : 1,
+        "coins" : 8,
+        "defeatRewarded" : false,
+        "equipment" : {
+          "weapon" : "trainingSword"
+        },
+        "health" : 32,
+        "host" : false,
+        "id" : "p1",
+        "inventory" : {
+          "actionRing" : 1,
+          "dragonArmor" : 1,
+          "dragonCharm" : 1,
+          "dragonFangSword" : 1,
+          "greatSword" : 1,
+          "huntingBow" : 1,
+          "largePotion" : 1,
+          "leatherArmor" : 1,
+          "legendaryStaff" : 1,
+          "powerBadge" : 1,
+          "revivalStone" : 1,
+          "runeArmor" : 1,
+          "shieldPotion" : 1,
+          "smallPotion" : 2,
+          "starlightArmor" : 1,
+          "starlightBlade" : 1,
+          "starlightCharm" : 1,
+          "trainingSword" : 1
+        },
+        "kind" : "player",
+        "name" : "P1 · 龙骑士",
+        "nodeID" : 7,
+        "score" : 0,
+        "shield" : 0,
+        "skillUses" : {
+
+        },
+        "teamID" : "party",
+        "templateID" : "dragonKnight"
+      },
+      "beforeStats" : {
+        "baseAP" : 3,
+        "damage" : 0,
+        "maximumAP" : 8,
+        "maximumHealth" : 32,
+        "range" : 0
+      },
+      "movementAfter" : 400,
+      "movementBefore" : 400,
+      "skillsAfter" : [
+        "龙焰",
+        "龙鳞庇护",
+        "龙之号令"
+      ],
+      "skillsBefore" : [
+        "龙焰",
+        "龙鳞庇护",
+        "龙之号令"
+      ]
+    },
+    "item" : "leatherArmor",
+    "role" : "dragonKnight"
+  },
+  {
+    "comparison" : {
+      "after" : {
+        "active" : true,
+        "ap" : 3,
+        "baseAttributes" : {
+          "baseAP" : 3,
+          "damage" : 0,
+          "maximumAP" : 8,
+          "maximumHealth" : 32,
+          "range" : 0
+        },
+        "canActFromRound" : 1,
+        "coins" : 8,
+        "defeatRewarded" : false,
+        "equipment" : {
+          "weapon" : "legendaryStaff"
+        },
+        "health" : 32,
+        "host" : false,
+        "id" : "p1",
+        "inventory" : {
+          "actionRing" : 1,
+          "dragonArmor" : 1,
+          "dragonCharm" : 1,
+          "dragonFangSword" : 1,
+          "greatSword" : 1,
+          "huntingBow" : 1,
+          "largePotion" : 1,
+          "leatherArmor" : 1,
+          "powerBadge" : 1,
+          "revivalStone" : 1,
+          "runeArmor" : 1,
+          "shieldPotion" : 1,
+          "smallPotion" : 2,
+          "starlightArmor" : 1,
+          "starlightBlade" : 1,
+          "starlightCharm" : 1,
+          "trainingSword" : 2
+        },
+        "kind" : "player",
+        "name" : "P1 · 龙骑士",
+        "nodeID" : 7,
+        "score" : 0,
+        "shield" : 0,
+        "skillUses" : {
+
+        },
+        "teamID" : "party",
+        "templateID" : "dragonKnight"
+      },
+      "afterStats" : {
+        "baseAP" : 3,
+        "damage" : 0,
+        "maximumAP" : 8,
+        "maximumHealth" : 32,
+        "range" : 0
+      },
+      "attackAfter" : "1D20 · 射程1",
+      "attackBefore" : "1D6 · 射程0",
+      "before" : {
+        "active" : true,
+        "ap" : 3,
+        "baseAttributes" : {
+          "baseAP" : 3,
+          "damage" : 0,
+          "maximumAP" : 8,
+          "maximumHealth" : 32,
+          "range" : 0
+        },
+        "canActFromRound" : 1,
+        "coins" : 8,
+        "defeatRewarded" : false,
+        "equipment" : {
+          "weapon" : "trainingSword"
+        },
+        "health" : 32,
+        "host" : false,
+        "id" : "p1",
+        "inventory" : {
+          "actionRing" : 1,
+          "dragonArmor" : 1,
+          "dragonCharm" : 1,
+          "dragonFangSword" : 1,
+          "greatSword" : 1,
+          "huntingBow" : 1,
+          "largePotion" : 1,
+          "leatherArmor" : 1,
+          "legendaryStaff" : 1,
+          "powerBadge" : 1,
+          "revivalStone" : 1,
+          "runeArmor" : 1,
+          "shieldPotion" : 1,
+          "smallPotion" : 2,
+          "starlightArmor" : 1,
+          "starlightBlade" : 1,
+          "starlightCharm" : 1,
+          "trainingSword" : 1
+        },
+        "kind" : "player",
+        "name" : "P1 · 龙骑士",
+        "nodeID" : 7,
+        "score" : 0,
+        "shield" : 0,
+        "skillUses" : {
+
+        },
+        "teamID" : "party",
+        "templateID" : "dragonKnight"
+      },
+      "beforeStats" : {
+        "baseAP" : 3,
+        "damage" : 0,
+        "maximumAP" : 8,
+        "maximumHealth" : 32,
+        "range" : 0
+      },
+      "movementAfter" : 400,
+      "movementBefore" : 400,
+      "skillsAfter" : [
+        "龙焰",
+        "龙鳞庇护",
+        "龙之号令"
+      ],
+      "skillsBefore" : [
+        "龙焰",
+        "龙鳞庇护",
+        "龙之号令"
+      ]
+    },
+    "item" : "legendaryStaff",
+    "role" : "dragonKnight"
+  },
+  {
+    "comparison" : {
+      "after" : {
+        "active" : true,
+        "ap" : 3,
+        "baseAttributes" : {
+          "baseAP" : 3,
+          "damage" : 0,
+          "maximumAP" : 8,
+          "maximumHealth" : 32,
+          "range" : 0
+        },
+        "canActFromRound" : 1,
+        "coins" : 8,
+        "defeatRewarded" : false,
+        "equipment" : {
+          "accessory" : "powerBadge",
+          "weapon" : "trainingSword"
+        },
+        "health" : 32,
+        "host" : false,
+        "id" : "p1",
+        "inventory" : {
+          "actionRing" : 1,
+          "dragonArmor" : 1,
+          "dragonCharm" : 1,
+          "dragonFangSword" : 1,
+          "greatSword" : 1,
+          "huntingBow" : 1,
+          "largePotion" : 1,
+          "leatherArmor" : 1,
+          "legendaryStaff" : 1,
+          "revivalStone" : 1,
+          "runeArmor" : 1,
+          "shieldPotion" : 1,
+          "smallPotion" : 2,
+          "starlightArmor" : 1,
+          "starlightBlade" : 1,
+          "starlightCharm" : 1,
+          "trainingSword" : 1
+        },
+        "kind" : "player",
+        "name" : "P1 · 龙骑士",
+        "nodeID" : 7,
+        "score" : 0,
+        "shield" : 0,
+        "skillUses" : {
+
+        },
+        "teamID" : "party",
+        "templateID" : "dragonKnight"
+      },
+      "afterStats" : {
+        "baseAP" : 3,
+        "damage" : 2,
+        "maximumAP" : 8,
+        "maximumHealth" : 32,
+        "range" : 0
+      },
+      "attackAfter" : "1D6 · 射程0",
+      "attackBefore" : "1D6 · 射程0",
+      "before" : {
+        "active" : true,
+        "ap" : 3,
+        "baseAttributes" : {
+          "baseAP" : 3,
+          "damage" : 0,
+          "maximumAP" : 8,
+          "maximumHealth" : 32,
+          "range" : 0
+        },
+        "canActFromRound" : 1,
+        "coins" : 8,
+        "defeatRewarded" : false,
+        "equipment" : {
+          "weapon" : "trainingSword"
+        },
+        "health" : 32,
+        "host" : false,
+        "id" : "p1",
+        "inventory" : {
+          "actionRing" : 1,
+          "dragonArmor" : 1,
+          "dragonCharm" : 1,
+          "dragonFangSword" : 1,
+          "greatSword" : 1,
+          "huntingBow" : 1,
+          "largePotion" : 1,
+          "leatherArmor" : 1,
+          "legendaryStaff" : 1,
+          "powerBadge" : 1,
+          "revivalStone" : 1,
+          "runeArmor" : 1,
+          "shieldPotion" : 1,
+          "smallPotion" : 2,
+          "starlightArmor" : 1,
+          "starlightBlade" : 1,
+          "starlightCharm" : 1,
+          "trainingSword" : 1
+        },
+        "kind" : "player",
+        "name" : "P1 · 龙骑士",
+        "nodeID" : 7,
+        "score" : 0,
+        "shield" : 0,
+        "skillUses" : {
+
+        },
+        "teamID" : "party",
+        "templateID" : "dragonKnight"
+      },
+      "beforeStats" : {
+        "baseAP" : 3,
+        "damage" : 0,
+        "maximumAP" : 8,
+        "maximumHealth" : 32,
+        "range" : 0
+      },
+      "movementAfter" : 400,
+      "movementBefore" : 400,
+      "skillsAfter" : [
+        "龙焰",
+        "龙鳞庇护",
+        "龙之号令"
+      ],
+      "skillsBefore" : [
+        "龙焰",
+        "龙鳞庇护",
+        "龙之号令"
+      ]
+    },
+    "item" : "powerBadge",
+    "role" : "dragonKnight"
+  },
+  {
+    "comparison" : {
+      "after" : {
+        "active" : true,
+        "ap" : 3,
+        "baseAttributes" : {
+          "baseAP" : 3,
+          "damage" : 0,
+          "maximumAP" : 8,
+          "maximumHealth" : 32,
+          "range" : 0
+        },
+        "canActFromRound" : 1,
+        "coins" : 8,
+        "defeatRewarded" : false,
+        "equipment" : {
+          "armor" : "runeArmor",
+          "weapon" : "trainingSword"
+        },
+        "health" : 32,
+        "host" : false,
+        "id" : "p1",
+        "inventory" : {
+          "actionRing" : 1,
+          "dragonArmor" : 1,
+          "dragonCharm" : 1,
+          "dragonFangSword" : 1,
+          "greatSword" : 1,
+          "huntingBow" : 1,
+          "largePotion" : 1,
+          "leatherArmor" : 1,
+          "legendaryStaff" : 1,
+          "powerBadge" : 1,
+          "revivalStone" : 1,
+          "shieldPotion" : 1,
+          "smallPotion" : 2,
+          "starlightArmor" : 1,
+          "starlightBlade" : 1,
+          "starlightCharm" : 1,
+          "trainingSword" : 1
+        },
+        "kind" : "player",
+        "name" : "P1 · 龙骑士",
+        "nodeID" : 7,
+        "score" : 0,
+        "shield" : 0,
+        "skillUses" : {
+
+        },
+        "teamID" : "party",
+        "templateID" : "dragonKnight"
+      },
+      "afterStats" : {
+        "baseAP" : 3,
+        "damage" : 0,
+        "maximumAP" : 8,
+        "maximumHealth" : 40,
+        "range" : 0
+      },
+      "attackAfter" : "1D6 · 射程0",
+      "attackBefore" : "1D6 · 射程0",
+      "before" : {
+        "active" : true,
+        "ap" : 3,
+        "baseAttributes" : {
+          "baseAP" : 3,
+          "damage" : 0,
+          "maximumAP" : 8,
+          "maximumHealth" : 32,
+          "range" : 0
+        },
+        "canActFromRound" : 1,
+        "coins" : 8,
+        "defeatRewarded" : false,
+        "equipment" : {
+          "weapon" : "trainingSword"
+        },
+        "health" : 32,
+        "host" : false,
+        "id" : "p1",
+        "inventory" : {
+          "actionRing" : 1,
+          "dragonArmor" : 1,
+          "dragonCharm" : 1,
+          "dragonFangSword" : 1,
+          "greatSword" : 1,
+          "huntingBow" : 1,
+          "largePotion" : 1,
+          "leatherArmor" : 1,
+          "legendaryStaff" : 1,
+          "powerBadge" : 1,
+          "revivalStone" : 1,
+          "runeArmor" : 1,
+          "shieldPotion" : 1,
+          "smallPotion" : 2,
+          "starlightArmor" : 1,
+          "starlightBlade" : 1,
+          "starlightCharm" : 1,
+          "trainingSword" : 1
+        },
+        "kind" : "player",
+        "name" : "P1 · 龙骑士",
+        "nodeID" : 7,
+        "score" : 0,
+        "shield" : 0,
+        "skillUses" : {
+
+        },
+        "teamID" : "party",
+        "templateID" : "dragonKnight"
+      },
+      "beforeStats" : {
+        "baseAP" : 3,
+        "damage" : 0,
+        "maximumAP" : 8,
+        "maximumHealth" : 32,
+        "range" : 0
+      },
+      "movementAfter" : 400,
+      "movementBefore" : 400,
+      "skillsAfter" : [
+        "龙焰",
+        "龙鳞庇护",
+        "龙之号令"
+      ],
+      "skillsBefore" : [
+        "龙焰",
+        "龙鳞庇护",
+        "龙之号令"
+      ]
+    },
+    "item" : "runeArmor",
+    "role" : "dragonKnight"
+  },
+  {
+    "comparison" : {
+      "after" : {
+        "active" : true,
+        "ap" : 3,
+        "baseAttributes" : {
+          "baseAP" : 3,
+          "damage" : 0,
+          "maximumAP" : 8,
+          "maximumHealth" : 32,
+          "range" : 0
+        },
+        "canActFromRound" : 1,
+        "coins" : 8,
+        "defeatRewarded" : false,
+        "equipment" : {
+          "armor" : "starlightArmor",
+          "weapon" : "trainingSword"
+        },
+        "health" : 32,
+        "host" : false,
+        "id" : "p1",
+        "inventory" : {
+          "actionRing" : 1,
+          "dragonArmor" : 1,
+          "dragonCharm" : 1,
+          "dragonFangSword" : 1,
+          "greatSword" : 1,
+          "huntingBow" : 1,
+          "largePotion" : 1,
+          "leatherArmor" : 1,
+          "legendaryStaff" : 1,
+          "powerBadge" : 1,
+          "revivalStone" : 1,
+          "runeArmor" : 1,
+          "shieldPotion" : 1,
+          "smallPotion" : 2,
+          "starlightBlade" : 1,
+          "starlightCharm" : 1,
+          "trainingSword" : 1
+        },
+        "kind" : "player",
+        "name" : "P1 · 龙骑士",
+        "nodeID" : 7,
+        "score" : 0,
+        "shield" : 0,
+        "skillUses" : {
+
+        },
+        "teamID" : "party",
+        "templateID" : "dragonKnight"
+      },
+      "afterStats" : {
+        "baseAP" : 3,
+        "damage" : 0,
+        "maximumAP" : 8,
+        "maximumHealth" : 40,
+        "range" : 0
+      },
+      "attackAfter" : "1D6 · 射程0",
+      "attackBefore" : "1D6 · 射程0",
+      "before" : {
+        "active" : true,
+        "ap" : 3,
+        "baseAttributes" : {
+          "baseAP" : 3,
+          "damage" : 0,
+          "maximumAP" : 8,
+          "maximumHealth" : 32,
+          "range" : 0
+        },
+        "canActFromRound" : 1,
+        "coins" : 8,
+        "defeatRewarded" : false,
+        "equipment" : {
+          "weapon" : "trainingSword"
+        },
+        "health" : 32,
+        "host" : false,
+        "id" : "p1",
+        "inventory" : {
+          "actionRing" : 1,
+          "dragonArmor" : 1,
+          "dragonCharm" : 1,
+          "dragonFangSword" : 1,
+          "greatSword" : 1,
+          "huntingBow" : 1,
+          "largePotion" : 1,
+          "leatherArmor" : 1,
+          "legendaryStaff" : 1,
+          "powerBadge" : 1,
+          "revivalStone" : 1,
+          "runeArmor" : 1,
+          "shieldPotion" : 1,
+          "smallPotion" : 2,
+          "starlightArmor" : 1,
+          "starlightBlade" : 1,
+          "starlightCharm" : 1,
+          "trainingSword" : 1
+        },
+        "kind" : "player",
+        "name" : "P1 · 龙骑士",
+        "nodeID" : 7,
+        "score" : 0,
+        "shield" : 0,
+        "skillUses" : {
+
+        },
+        "teamID" : "party",
+        "templateID" : "dragonKnight"
+      },
+      "beforeStats" : {
+        "baseAP" : 3,
+        "damage" : 0,
+        "maximumAP" : 8,
+        "maximumHealth" : 32,
+        "range" : 0
+      },
+      "movementAfter" : 400,
+      "movementBefore" : 400,
+      "skillsAfter" : [
+        "龙焰",
+        "龙鳞庇护",
+        "龙之号令"
+      ],
+      "skillsBefore" : [
+        "龙焰",
+        "龙鳞庇护",
+        "龙之号令"
+      ]
+    },
+    "item" : "starlightArmor",
+    "role" : "dragonKnight"
+  },
+  {
+    "comparison" : {
+      "after" : {
+        "active" : true,
+        "ap" : 3,
+        "baseAttributes" : {
+          "baseAP" : 3,
+          "damage" : 0,
+          "maximumAP" : 8,
+          "maximumHealth" : 32,
+          "range" : 0
+        },
+        "canActFromRound" : 1,
+        "coins" : 8,
+        "defeatRewarded" : false,
+        "equipment" : {
+          "weapon" : "starlightBlade"
+        },
+        "health" : 32,
+        "host" : false,
+        "id" : "p1",
+        "inventory" : {
+          "actionRing" : 1,
+          "dragonArmor" : 1,
+          "dragonCharm" : 1,
+          "dragonFangSword" : 1,
+          "greatSword" : 1,
+          "huntingBow" : 1,
+          "largePotion" : 1,
+          "leatherArmor" : 1,
+          "legendaryStaff" : 1,
+          "powerBadge" : 1,
+          "revivalStone" : 1,
+          "runeArmor" : 1,
+          "shieldPotion" : 1,
+          "smallPotion" : 2,
+          "starlightArmor" : 1,
+          "starlightCharm" : 1,
+          "trainingSword" : 2
+        },
+        "kind" : "player",
+        "name" : "P1 · 龙骑士",
+        "nodeID" : 7,
+        "score" : 0,
+        "shield" : 0,
+        "skillUses" : {
+
+        },
+        "teamID" : "party",
+        "templateID" : "dragonKnight"
+      },
+      "afterStats" : {
+        "baseAP" : 3,
+        "damage" : 0,
+        "maximumAP" : 8,
+        "maximumHealth" : 32,
+        "range" : 0
+      },
+      "attackAfter" : "1D12 · 射程1",
+      "attackBefore" : "1D6 · 射程0",
+      "before" : {
+        "active" : true,
+        "ap" : 3,
+        "baseAttributes" : {
+          "baseAP" : 3,
+          "damage" : 0,
+          "maximumAP" : 8,
+          "maximumHealth" : 32,
+          "range" : 0
+        },
+        "canActFromRound" : 1,
+        "coins" : 8,
+        "defeatRewarded" : false,
+        "equipment" : {
+          "weapon" : "trainingSword"
+        },
+        "health" : 32,
+        "host" : false,
+        "id" : "p1",
+        "inventory" : {
+          "actionRing" : 1,
+          "dragonArmor" : 1,
+          "dragonCharm" : 1,
+          "dragonFangSword" : 1,
+          "greatSword" : 1,
+          "huntingBow" : 1,
+          "largePotion" : 1,
+          "leatherArmor" : 1,
+          "legendaryStaff" : 1,
+          "powerBadge" : 1,
+          "revivalStone" : 1,
+          "runeArmor" : 1,
+          "shieldPotion" : 1,
+          "smallPotion" : 2,
+          "starlightArmor" : 1,
+          "starlightBlade" : 1,
+          "starlightCharm" : 1,
+          "trainingSword" : 1
+        },
+        "kind" : "player",
+        "name" : "P1 · 龙骑士",
+        "nodeID" : 7,
+        "score" : 0,
+        "shield" : 0,
+        "skillUses" : {
+
+        },
+        "teamID" : "party",
+        "templateID" : "dragonKnight"
+      },
+      "beforeStats" : {
+        "baseAP" : 3,
+        "damage" : 0,
+        "maximumAP" : 8,
+        "maximumHealth" : 32,
+        "range" : 0
+      },
+      "movementAfter" : 400,
+      "movementBefore" : 400,
+      "skillsAfter" : [
+        "龙焰",
+        "龙鳞庇护",
+        "龙之号令"
+      ],
+      "skillsBefore" : [
+        "龙焰",
+        "龙鳞庇护",
+        "龙之号令"
+      ]
+    },
+    "item" : "starlightBlade",
+    "role" : "dragonKnight"
+  },
+  {
+    "comparison" : {
+      "after" : {
+        "active" : true,
+        "ap" : 3,
+        "baseAttributes" : {
+          "baseAP" : 3,
+          "damage" : 0,
+          "maximumAP" : 8,
+          "maximumHealth" : 32,
+          "range" : 0
+        },
+        "canActFromRound" : 1,
+        "coins" : 8,
+        "defeatRewarded" : false,
+        "equipment" : {
+          "accessory" : "starlightCharm",
+          "weapon" : "trainingSword"
+        },
+        "health" : 32,
+        "host" : false,
+        "id" : "p1",
+        "inventory" : {
+          "actionRing" : 1,
+          "dragonArmor" : 1,
+          "dragonCharm" : 1,
+          "dragonFangSword" : 1,
+          "greatSword" : 1,
+          "huntingBow" : 1,
+          "largePotion" : 1,
+          "leatherArmor" : 1,
+          "legendaryStaff" : 1,
+          "powerBadge" : 1,
+          "revivalStone" : 1,
+          "runeArmor" : 1,
+          "shieldPotion" : 1,
+          "smallPotion" : 2,
+          "starlightArmor" : 1,
+          "starlightBlade" : 1,
+          "trainingSword" : 1
+        },
+        "kind" : "player",
+        "name" : "P1 · 龙骑士",
+        "nodeID" : 7,
+        "score" : 0,
+        "shield" : 0,
+        "skillUses" : {
+
+        },
+        "teamID" : "party",
+        "templateID" : "dragonKnight"
+      },
+      "afterStats" : {
+        "baseAP" : 3,
+        "damage" : 2,
+        "maximumAP" : 8,
+        "maximumHealth" : 32,
+        "range" : 0
+      },
+      "attackAfter" : "1D6 · 射程0",
+      "attackBefore" : "1D6 · 射程0",
+      "before" : {
+        "active" : true,
+        "ap" : 3,
+        "baseAttributes" : {
+          "baseAP" : 3,
+          "damage" : 0,
+          "maximumAP" : 8,
+          "maximumHealth" : 32,
+          "range" : 0
+        },
+        "canActFromRound" : 1,
+        "coins" : 8,
+        "defeatRewarded" : false,
+        "equipment" : {
+          "weapon" : "trainingSword"
+        },
+        "health" : 32,
+        "host" : false,
+        "id" : "p1",
+        "inventory" : {
+          "actionRing" : 1,
+          "dragonArmor" : 1,
+          "dragonCharm" : 1,
+          "dragonFangSword" : 1,
+          "greatSword" : 1,
+          "huntingBow" : 1,
+          "largePotion" : 1,
+          "leatherArmor" : 1,
+          "legendaryStaff" : 1,
+          "powerBadge" : 1,
+          "revivalStone" : 1,
+          "runeArmor" : 1,
+          "shieldPotion" : 1,
+          "smallPotion" : 2,
+          "starlightArmor" : 1,
+          "starlightBlade" : 1,
+          "starlightCharm" : 1,
+          "trainingSword" : 1
+        },
+        "kind" : "player",
+        "name" : "P1 · 龙骑士",
+        "nodeID" : 7,
+        "score" : 0,
+        "shield" : 0,
+        "skillUses" : {
+
+        },
+        "teamID" : "party",
+        "templateID" : "dragonKnight"
+      },
+      "beforeStats" : {
+        "baseAP" : 3,
+        "damage" : 0,
+        "maximumAP" : 8,
+        "maximumHealth" : 32,
+        "range" : 0
+      },
+      "movementAfter" : 400,
+      "movementBefore" : 400,
+      "skillsAfter" : [
+        "龙焰",
+        "龙鳞庇护",
+        "龙之号令"
+      ],
+      "skillsBefore" : [
+        "龙焰",
+        "龙鳞庇护",
+        "龙之号令"
+      ]
+    },
+    "item" : "starlightCharm",
+    "role" : "dragonKnight"
+  },
+  {
+    "comparison" : {
+      "after" : {
+        "active" : true,
+        "ap" : 3,
+        "baseAttributes" : {
+          "baseAP" : 3,
+          "damage" : 0,
+          "maximumAP" : 8,
+          "maximumHealth" : 32,
+          "range" : 0
+        },
+        "canActFromRound" : 1,
+        "coins" : 8,
+        "defeatRewarded" : false,
+        "equipment" : {
+          "weapon" : "trainingSword"
+        },
+        "health" : 32,
+        "host" : false,
+        "id" : "p1",
+        "inventory" : {
+          "actionRing" : 1,
+          "dragonArmor" : 1,
+          "dragonCharm" : 1,
+          "dragonFangSword" : 1,
+          "greatSword" : 1,
+          "huntingBow" : 1,
+          "largePotion" : 1,
+          "leatherArmor" : 1,
+          "legendaryStaff" : 1,
+          "powerBadge" : 1,
+          "revivalStone" : 1,
+          "runeArmor" : 1,
+          "shieldPotion" : 1,
+          "smallPotion" : 2,
+          "starlightArmor" : 1,
+          "starlightBlade" : 1,
+          "starlightCharm" : 1,
+          "trainingSword" : 1
+        },
+        "kind" : "player",
+        "name" : "P1 · 龙骑士",
+        "nodeID" : 7,
+        "score" : 0,
+        "shield" : 0,
+        "skillUses" : {
+
+        },
+        "teamID" : "party",
+        "templateID" : "dragonKnight"
+      },
+      "afterStats" : {
+        "baseAP" : 3,
+        "damage" : 0,
+        "maximumAP" : 8,
+        "maximumHealth" : 32,
+        "range" : 0
+      },
+      "attackAfter" : "1D6 · 射程0",
+      "attackBefore" : "1D6 · 射程0",
+      "before" : {
+        "active" : true,
+        "ap" : 3,
+        "baseAttributes" : {
+          "baseAP" : 3,
+          "damage" : 0,
+          "maximumAP" : 8,
+          "maximumHealth" : 32,
+          "range" : 0
+        },
+        "canActFromRound" : 1,
+        "coins" : 8,
+        "defeatRewarded" : false,
+        "equipment" : {
+          "weapon" : "trainingSword"
+        },
+        "health" : 32,
+        "host" : false,
+        "id" : "p1",
+        "inventory" : {
+          "actionRing" : 1,
+          "dragonArmor" : 1,
+          "dragonCharm" : 1,
+          "dragonFangSword" : 1,
+          "greatSword" : 1,
+          "huntingBow" : 1,
+          "largePotion" : 1,
+          "leatherArmor" : 1,
+          "legendaryStaff" : 1,
+          "powerBadge" : 1,
+          "revivalStone" : 1,
+          "runeArmor" : 1,
+          "shieldPotion" : 1,
+          "smallPotion" : 2,
+          "starlightArmor" : 1,
+          "starlightBlade" : 1,
+          "starlightCharm" : 1,
+          "trainingSword" : 1
+        },
+        "kind" : "player",
+        "name" : "P1 · 龙骑士",
+        "nodeID" : 7,
+        "score" : 0,
+        "shield" : 0,
+        "skillUses" : {
+
+        },
+        "teamID" : "party",
+        "templateID" : "dragonKnight"
+      },
+      "beforeStats" : {
+        "baseAP" : 3,
+        "damage" : 0,
+        "maximumAP" : 8,
+        "maximumHealth" : 32,
+        "range" : 0
+      },
+      "movementAfter" : 400,
+      "movementBefore" : 400,
+      "skillsAfter" : [
+        "龙焰",
+        "龙鳞庇护",
+        "龙之号令"
+      ],
+      "skillsBefore" : [
+        "龙焰",
+        "龙鳞庇护",
+        "龙之号令"
+      ]
+    },
+    "item" : "trainingSword",
+    "role" : "dragonKnight"
+  }
+]

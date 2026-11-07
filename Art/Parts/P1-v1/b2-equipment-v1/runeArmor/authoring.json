@@ -1,0 +1,7 @@
+{
+  "sourceGarment": "p1-eight-way-wayfarer-v1",
+  "method": "new separate armor material/panel/strap/pauldron artwork, clipped to original per-pose independent garment silhouettes",
+  "registration": "existing registered joints, no extra translation or motion phase rotation",
+  "originalGarmentModified": false,
+  "artApproval": null
+}

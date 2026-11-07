@@ -1,0 +1,73 @@
+{
+  "date": "2026-11-04",
+  "status": "research only; no generator implemented or runtime tests executed",
+  "workingSourceSHA256": {
+    "Sources/Resources/SceneMap.json": "b5d8e7c74e6038a4d6b3e266cf1c6f7184eee56cfb2c2f462b7e048ab6cd0ea5",
+    "Sources/Game/SceneDefinition.swift": "2ce2b1fd043c91e5a93ce473d402ff43496cf29f76ba94fb9c92883aafaa65d5",
+    "Sources/Game/TrailNetwork.swift": "39b18c9c6d9b642660edd8adfc9d538c6030d674972d82bc80f77a3301d0d2ff",
+    "Sources/Game/Trail.swift": "3bb928d2e5b5e85879c5d3e24757cfa42020e77321caa562c75b2349f909f60e",
+    "Sources/Game/JourneySimulation.swift": "8fcd3b6030421ec76c093f5a15895fdb7e4695971647b0a1ef5552478bad8f8d",
+    "Sources/Game/LivingWorld.swift": "051eb6499b50c518518237042277730f4c89aa29e665740c2f7406f7d06ea468",
+    "Sources/Game/MeadowLoader.swift": "3a8b9e693436d8b1ac0960b4068aeb35a4ee79f9b240f41cc0333e057f9a827a",
+    "Sources/Game/GameScene.swift": "8e7aeb3872424dad6dba0c4cdfb7150464e8333cf2c85def32b65a885251bcf0",
+    "Sources/Game/MeadowRoadMask.swift": "28c96d73f9323064f7f30a2cbaf93486ab14c4ef3037dc2e0cbe6b9f17d30572",
+    "Sources/Game/MeadowShadowRenderer.swift": "e1b067eece8ad143755c4c549d486626883f914ac125436922298510a0b0626f",
+    "Sources/GameViewController.swift": "98bfa0d95ee3b425d682bda5e3ead16a17d10ac08826b8f88613c6f5f83e253d",
+    "Vendor/ClassroomGameCore/UPSTREAM.json": "e463c0f0ec10d06bb46bbc35ce5c66eb812512938439f58b7302551b0ff0dc29",
+    "Vendor/ClassroomGameCore/Sources/ClassroomGameCore/GameState.swift": "0b0afe748f20a7ea0018b910a23bbfee8bdf79a7b7237bfa073dd7f2547073a6",
+    "Vendor/ClassroomGameCore/Sources/ClassroomGameCore/ActionPlanning.swift": "104976daefc47062997d4d190eab304eea4774c65605732d288c1ddf226957d7",
+    "Vendor/ClassroomGameCore/Sources/ClassroomGameCore/GameEngine.swift": "fd7af9210e625efcf508fe5cf3c1465b4af46479d523f6ab73887c8029f22c49",
+    "Vendor/ClassroomGameCore/Sources/MeadowBattleSupport/CampInventory.swift": "f31bc7f0a5db42d1942c581da50da0868f5be33b9aec5903bf8d9583d7dff60f"
+  },
+  "rulesSnapshot": {
+    "kind": "read-only local audit snapshot; not live upstream head",
+    "requirementsSHA256": "7ebd819fe1f57fd0b2a20121dd025c3ad649cd34be867ac52ca6f280cc708f4d",
+    "developmentStepsSHA256": "5708c79bd35dca68bc714bedb80fcd7ea5deea46a31fb6571058b097c47601bc",
+    "vendoredUpstreamCommit": "1e9100c4c18364ea64b3ec974fe957ba4ef42f6f"
+  },
+  "sceneFacts": {
+    "roadNodeIDs": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "roadNodes": 5,
+    "roads": 4,
+    "discoveries": 2,
+    "authoredProps": 120,
+    "authoredPropAssets": [
+      "CampTent",
+      "Fence",
+      "OakA",
+      "OakB",
+      "Pines",
+      "RockHigh",
+      "RockLow",
+      "RockSmall",
+      "WatchTower"
+    ],
+    "groundTexture": {
+      "path": "Sources/Resources/Assets.xcassets/MeadowGround.imageset/MeadowGround.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "sha256": "14b2cfa2e4a51eb3dab3a12f3065e04d7a73b2a1364ed05d40de668835cf6fa4",
+      "visualInspection": "grass texture inspected; no fixed road/building artwork visible"
+    }
+  },
+  "exampleCheck": {
+    "exactCountsSumToTotal": true,
+    "startCount": 1,
+    "runtimeConfigurationSupported": false
+  },
+  "notExecuted": [
+    "map generation",
+    "app or simulator run",
+    "physical device tests",
+    "frame-rate measurement",
+    "IPA build"
+  ]
+}

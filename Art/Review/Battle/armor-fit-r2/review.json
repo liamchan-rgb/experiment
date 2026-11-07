@@ -1,0 +1,34 @@
+{
+  "animations": [
+    {
+      "file": "leatherArmor-attack-normal.gif",
+      "decodedFrames": 76,
+      "durationMs": 3800
+    },
+    {
+      "file": "leatherArmor-states-normal.gif",
+      "decodedFrames": 155,
+      "durationMs": 3960
+    },
+    {
+      "file": "runeArmor-attack-normal.gif",
+      "decodedFrames": 76,
+      "durationMs": 3800
+    },
+    {
+      "file": "runeArmor-states-normal.gif",
+      "decodedFrames": 155,
+      "durationMs": 3960
+    }
+  ],
+  "scope": "Production weapon pose exports; repaired armor sources and data layer order; offline, no device capture",
+  "walkingUnchanged": true,
+  "bowUnchanged": true,
+  "userApproval": null,
+  "rootArtReview": {
+    "wholeBodyKeyPoses": "six clips, 1x and 2x",
+    "actualGIFDecodedFramesInspected": 462,
+    "scope": "three repaired generic weapon columns; original bow dedicated rig and texture bytes unchanged",
+    "staffIdleAttack0Attack1Equal": true
+  }
+}

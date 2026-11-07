@@ -1,0 +1,19 @@
+{
+  "templateOnly": true,
+  "stage": "not_started",
+  "status": "incomplete",
+  "selectedDesign": {
+    "starlightArmor": null,
+    "dragonArmor": null
+  },
+  "actualMasterFiles": [],
+  "expectedDefaultMasterReferencesPerItem": 20,
+  "inputFilesActuallyRead": [],
+  "fileChecksActuallyRun": [],
+  "fullBodyReviewActuallyDone": [],
+  "missingItems": [],
+  "capabilityLimits": [],
+  "userArtApproval": null,
+  "poseFramesCreatedByChat": false,
+  "codexIntegrationCompleted": false
+}

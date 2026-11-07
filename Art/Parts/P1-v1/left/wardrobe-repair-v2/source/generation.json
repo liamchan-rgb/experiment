@@ -1,0 +1,19 @@
+{
+  "tool": "image_gen.imagegen",
+  "reference": "body-13poses-control.png",
+  "controlSHA256": "ae0d9efc155470968136387cc71fb01c48422d28b8af26ecad8d6c3cb3a60594",
+  "registration": "1254-square source uniformly registered to the unchanged 1024-square control, fixed 4x4 cells; no alpha-bounds fitting",
+  "requests": [
+    {
+      "artifact": "exec-a7e3ec1d-be0f-416f-9ef7-4cd524adc4d4.png",
+      "retained": "green-13poses-generated.png",
+      "instructionSummary": "Keep all thirteen existing mannequin poses and body/hand/head coordinates; add the same finished green/gold jacket, bent charcoal trousers and structured short brown boots; retain fine dark outlines, far-side depth and exact foot poses. Transparent canvas; other cells empty."
+    },
+    {
+      "artifact": "exec-e167eebc-82e2-409d-a0ec-c5b8eaba66a5.png",
+      "retained": "blue-13poses-generated.png",
+      "instructionSummary": "Keep all thirteen original mannequin poses and spacing; add navy-blue long coat with restrained gold piping and cuffs, natural curved overlapping tails and pose-specific folds; no stiff rectangular flags or repeated cuffs; same gray pants/brown boots; transparent canvas."
+    }
+  ],
+  "scope": "Instruction summaries, not a verbatim transcript. Generated bodies, heads and hands are source guides only and are not exported as replacements."
+}

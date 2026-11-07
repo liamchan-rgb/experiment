@@ -1,0 +1,84 @@
+{
+  "status": "delivered-runtime-integration-with-offline-art-review",
+  "sourceCommit": "3894119b1d96f102e79e3635aa592a3dbfceb0e5",
+  "artAndPackageCommit": "89ff3ccb23f8e34ee2b3cc5528ae2dc5f499e257",
+  "workflowRun": 40175880891,
+  "selectedDeliveryPathsVerified": 59,
+  "compiledSourceAndAssetsPathsVerified": 12,
+  "remoteContentsMatchLocal": true,
+  "publicArtifacts": [
+    {
+      "path": "Downloads/MeadowJourney-b42.ipa",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/89ff3ccb23f8e34ee2b3cc5528ae2dc5f499e257/Downloads/MeadowJourney-b42.ipa",
+      "httpStatus": 200,
+      "mime": "application/octet-stream",
+      "bytes": 27661018,
+      "sha256": "128f620175ec552817ec17779c52f8b8df6e2461066ab8e6dfd1a0934fd71de5"
+    },
+    {
+      "path": "Art/Review/Battle/particles-round-shield-demo-v1/heavy-strike-normal.gif",
+      "url": "https://cdn.jsdelivr.net/gh/liamchan-rgb/experiment@89ff3ccb23f8e34ee2b3cc5528ae2dc5f499e257/Art/Review/Battle/particles-round-shield-demo-v1/heavy-strike-normal.gif",
+      "httpStatus": 200,
+      "mime": "image/gif",
+      "bytes": 17909909,
+      "sha256": "9ea8d1ca9b3867ed8d4b054bfccf301f25c1afe289c373e71e98b9555ee8d194",
+      "frames": 165,
+      "frameDurationMs": 40,
+      "totalDurationMs": 6600
+    },
+    {
+      "path": "Art/Review/Battle/particles-round-shield-demo-v1/shield-normal.gif",
+      "url": "https://cdn.jsdelivr.net/gh/liamchan-rgb/experiment@89ff3ccb23f8e34ee2b3cc5528ae2dc5f499e257/Art/Review/Battle/particles-round-shield-demo-v1/shield-normal.gif",
+      "httpStatus": 200,
+      "mime": "image/gif",
+      "bytes": 16821491,
+      "sha256": "d1e37ac9983401c1d8f5362252d99d48347d8e914791e77d99192761be54c34b",
+      "frames": 120,
+      "frameDurationMs": 40,
+      "totalDurationMs": 4800
+    },
+    {
+      "path": "Art/Review/Battle/particles-round-shield-demo-v1/attack-standing.png",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/89ff3ccb23f8e34ee2b3cc5528ae2dc5f499e257/Art/Review/Battle/particles-round-shield-demo-v1/attack-standing.png",
+      "httpStatus": 200,
+      "mime": "image/png",
+      "bytes": 879584,
+      "sha256": "61b00fb2345d44a4482bb3bb5dbe9badd1cec6f362a216ff328d2ae0ed58bcce"
+    },
+    {
+      "path": "Art/Review/Battle/particles-round-shield-demo-v1/shield-standing.png",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/89ff3ccb23f8e34ee2b3cc5528ae2dc5f499e257/Art/Review/Battle/particles-round-shield-demo-v1/shield-standing.png",
+      "httpStatus": 200,
+      "mime": "image/png",
+      "bytes": 879678,
+      "sha256": "4db38d6db51ef1afeabfc03c0d6373cbd8329e1f14cb7c3f3738db168b1a1bbe"
+    },
+    {
+      "path": "Art/Review/Battle/particles-round-shield-demo-v1/attack-impact.png",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/89ff3ccb23f8e34ee2b3cc5528ae2dc5f499e257/Art/Review/Battle/particles-round-shield-demo-v1/attack-impact.png",
+      "httpStatus": 200,
+      "mime": "image/png",
+      "bytes": 699260,
+      "sha256": "44cf8e7163a15f8c0eb8d936a09a42a9103346513ca2d0acbca998151e2afe7e"
+    },
+    {
+      "path": "Downloads/MeadowJourney-b42.ipa",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/fix/build33-face-grounding-camera/Downloads/MeadowJourney-b42.ipa",
+      "httpStatus": 200,
+      "mime": "application/octet-stream",
+      "bytes": 27661018,
+      "sha256": "128f620175ec552817ec17779c52f8b8df6e2461066ab8e6dfd1a0934fd71de5"
+    }
+  ],
+  "runtimeIntegration": true,
+  "actualPointerKeyboardTouchExecuted": false,
+  "simulatorOrDeviceExecuted": false,
+  "ipa": "unsigned iPhoneOS arm64 for existing SideStore re-signing workflow",
+  "artApproval": null,
+  "review": "art-review.md",
+  "checks": [
+    "integration-check.json",
+    "preservation-check.json",
+    "controller-provenance.json"
+  ]
+}

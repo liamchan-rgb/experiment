@@ -1,0 +1,139 @@
+{
+  "combinations": 16,
+  "posesPerCombination": 104,
+  "totalCompositions": 1664,
+  "hairOptions": 2,
+  "faceOptions": 2,
+  "backWeaponOptions": 2,
+  "lower": "p1-eight-way-lower-v1",
+  "results": [
+    {
+      "armor": "p1-b5-starlight-armor-v1",
+      "hair": "p1-eight-way-hair-chestnut-v1",
+      "face": "p1-eight-way-face-blue-v1",
+      "backWeapon": false,
+      "poses": 104,
+      "rgbaSHA256": "45f9bd7f9050812f046ea2a1df5a48cb4de558028add7121bb7997c09021eaf2"
+    },
+    {
+      "armor": "p1-b5-starlight-armor-v1",
+      "hair": "p1-eight-way-hair-chestnut-v1",
+      "face": "p1-eight-way-face-blue-v1",
+      "backWeapon": true,
+      "poses": 104,
+      "rgbaSHA256": "c958f3393bd3372f5cfb336ecd951bab7ca42421a5e8cd986ebb357bb44b0668"
+    },
+    {
+      "armor": "p1-b5-starlight-armor-v1",
+      "hair": "p1-eight-way-hair-chestnut-v1",
+      "face": "p1-eight-way-face-amber-v1",
+      "backWeapon": false,
+      "poses": 104,
+      "rgbaSHA256": "6184a9d3819c4c6415d414fb89ebf68919b43cbbf15f59c4a85c920deac2c075"
+    },
+    {
+      "armor": "p1-b5-starlight-armor-v1",
+      "hair": "p1-eight-way-hair-chestnut-v1",
+      "face": "p1-eight-way-face-amber-v1",
+      "backWeapon": true,
+      "poses": 104,
+      "rgbaSHA256": "ec571510a053bc20c01ab472960e391daf5dd1792d4fb6ca56e27da06cc50452"
+    },
+    {
+      "armor": "p1-b5-starlight-armor-v1",
+      "hair": "p1-eight-way-hair-silver-v1",
+      "face": "p1-eight-way-face-blue-v1",
+      "backWeapon": false,
+      "poses": 104,
+      "rgbaSHA256": "691b169342217a50ae552c1fa00d6c63ad6451b8b789674f03d455c90837854c"
+    },
+    {
+      "armor": "p1-b5-starlight-armor-v1",
+      "hair": "p1-eight-way-hair-silver-v1",
+      "face": "p1-eight-way-face-blue-v1",
+      "backWeapon": true,
+      "poses": 104,
+      "rgbaSHA256": "bed50224dcca90a6f00aab638773344891aa9f0d8c6f65ab9af999daf113d1dc"
+    },
+    {
+      "armor": "p1-b5-starlight-armor-v1",
+      "hair": "p1-eight-way-hair-silver-v1",
+      "face": "p1-eight-way-face-amber-v1",
+      "backWeapon": false,
+      "poses": 104,
+      "rgbaSHA256": "137d5ffb0b623e8969038bd95eba32caf16732a46f8716e8bef5175905e6fd73"
+    },
+    {
+      "armor": "p1-b5-starlight-armor-v1",
+      "hair": "p1-eight-way-hair-silver-v1",
+      "face": "p1-eight-way-face-amber-v1",
+      "backWeapon": true,
+      "poses": 104,
+      "rgbaSHA256": "2b77a4e1b6d30d1dc7ca1314ab08f7ad9af867118fa2e912821255f87309db7f"
+    },
+    {
+      "armor": "p1-b5-dragon-armor-v1",
+      "hair": "p1-eight-way-hair-chestnut-v1",
+      "face": "p1-eight-way-face-blue-v1",
+      "backWeapon": false,
+      "poses": 104,
+      "rgbaSHA256": "106d3511c261e298256303d2120a740c0155a66024e4a7cea40b9a3fef9833c5"
+    },
+    {
+      "armor": "p1-b5-dragon-armor-v1",
+      "hair": "p1-eight-way-hair-chestnut-v1",
+      "face": "p1-eight-way-face-blue-v1",
+      "backWeapon": true,
+      "poses": 104,
+      "rgbaSHA256": "09d918728a2df34e233399eb56dc3fc92b70c3416566207739c1ec6fe3b64e62"
+    },
+    {
+      "armor": "p1-b5-dragon-armor-v1",
+      "hair": "p1-eight-way-hair-chestnut-v1",
+      "face": "p1-eight-way-face-amber-v1",
+      "backWeapon": false,
+      "poses": 104,
+      "rgbaSHA256": "c13ea6c3324a02ede7c8835affe47f06d3de0a870f0fc0a179fc599992d20621"
+    },
+    {
+      "armor": "p1-b5-dragon-armor-v1",
+      "hair": "p1-eight-way-hair-chestnut-v1",
+      "face": "p1-eight-way-face-amber-v1",
+      "backWeapon": true,
+      "poses": 104,
+      "rgbaSHA256": "2b35c87bce585bec4b154fc5e501b0036f90f88752a979927681c219c6a11e9d"
+    },
+    {
+      "armor": "p1-b5-dragon-armor-v1",
+      "hair": "p1-eight-way-hair-silver-v1",
+      "face": "p1-eight-way-face-blue-v1",
+      "backWeapon": false,
+      "poses": 104,
+      "rgbaSHA256": "5084edd6ea231b76c6da4005da3aeaf70ae27b7235769ddda181b3886f742758"
+    },
+    {
+      "armor": "p1-b5-dragon-armor-v1",
+      "hair": "p1-eight-way-hair-silver-v1",
+      "face": "p1-eight-way-face-blue-v1",
+      "backWeapon": true,
+      "poses": 104,
+      "rgbaSHA256": "9e10fad9f1e859b63381301820a4c3981a1148e0cb42cb0d4604195d2509dfdb"
+    },
+    {
+      "armor": "p1-b5-dragon-armor-v1",
+      "hair": "p1-eight-way-hair-silver-v1",
+      "face": "p1-eight-way-face-amber-v1",
+      "backWeapon": false,
+      "poses": 104,
+      "rgbaSHA256": "878e6c2ee8ea0126aa07322934a2ab210c777cce1e83e29f2f078cc45b829416"
+    },
+    {
+      "armor": "p1-b5-dragon-armor-v1",
+      "hair": "p1-eight-way-hair-silver-v1",
+      "face": "p1-eight-way-face-amber-v1",
+      "backWeapon": true,
+      "poses": 104,
+      "rgbaSHA256": "116fe944e12d300619a9dc71a43dfcd6366ccbf11883e0178c597f3d9ffb82e6"
+    }
+  ]
+}

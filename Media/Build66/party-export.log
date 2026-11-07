@@ -1,0 +1,13 @@
+[0/1] Planning build
+Building for debugging...
+[0/3] Write swift-version--79AA4F9932D1E87A.txt
+Build of product 'MeadowSupportReviewExport' complete! (0.86s)
+Exported 3590 receipt-bound dice / monster / queue frames
+Exported 360 polyhedron gallery and source-formula bonus frames
+Exported 3606 shared bow/arm/string poses
+Exported3606 shared heavy-sword poses and201 contact-clock samples
+Exported3606 shared staff poses and201 spell samples
+Exported 570 accessory equipment / dice / AP frames
+Exported 7 actual camp inventory, equipment, import and layout states
+Exported 1175 spellblade receipt, dice, pose and rune frames plus 3525 light requests
+Exported 1190 actual GameCore support/item frames and 3570 attachment samples

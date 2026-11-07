@@ -1,0 +1,18 @@
+{
+  "method": "reuse original jacket fabric pixels, reconstruct concealed placket; no image generation",
+  "sources": {
+    "Art/Parts/P1-Battle/right-idle-v3/outfit-forester/wardrobe.png": "74abfbe6d6da043bc1fe7d936be1fba1915cfadc5c72803b1cd0259aa164717c",
+    "Sources/Resources/Assets.xcassets/MeadowBattleBowWardrobeCore.imageset/MeadowBattleBowWardrobeCore.png": "bb35bbb91fd62aa7f57ca87958052a02c20bbe6630581a275adbe7b5df62a6ec"
+  },
+  "script": "scripts/author-bow-jacket-r4.py",
+  "frozenFrom": "Art/Parts/P1-Battle/hunting-bow-aim-project-r3",
+  "frozenParts": [
+    "drawing-hand.png",
+    "grip-hand.png",
+    "farArm.png",
+    "nearUpperArm.png",
+    "nearForeArm.png"
+  ],
+  "runtimeImported": false,
+  "userApproved": false
+}

@@ -1,0 +1,36 @@
+{
+  "assets": [
+    {
+      "id": "p1-neutral-up-left-r7-nape",
+      "manifest": "Art/Parts/P1-v1/upper/nape-v3/base-up-left/asset.json"
+    },
+    {
+      "id": "p1-neutral-up-right-r7-nape",
+      "manifest": "Art/Parts/P1-v1/upper/nape-v3/base-up-right/asset.json"
+    },
+    {
+      "id": "p1-upper-forester-v1",
+      "manifest": "Art/Parts/P1-v1/upper/wardrobe-v1/forester/asset.json"
+    },
+    {
+      "id": "p1-upper-wayfarer-v1",
+      "manifest": "Art/Parts/P1-v1/upper/wardrobe-v1/wayfarer/asset.json"
+    },
+    {
+      "id": "p1-upper-lower-v2",
+      "manifest": "Art/Parts/P1-v1/upper/lower-v2/asset.json"
+    },
+    {
+      "id": "p1-upper-hair-chestnut-v1",
+      "manifest": "Art/Parts/P1-v1/upper/wardrobe-v1/hair-chestnut/asset.json"
+    },
+    {
+      "id": "p1-upper-hair-silver-v1",
+      "manifest": "Art/Parts/P1-v1/upper/wardrobe-v1/hair-silver/asset.json"
+    },
+    {
+      "id": "p1-upper-back-scabbard-v1",
+      "manifest": "Art/Parts/P1-v1/upper/wardrobe-v1/back-scabbard/asset.json"
+    }
+  ]
+}

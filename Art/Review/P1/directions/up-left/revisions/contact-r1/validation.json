@@ -1,0 +1,71 @@
+{
+  "format": 1,
+  "checks": {
+    "frameCount": 9,
+    "allFrames256Square": true,
+    "stripSize": [
+      2304,
+      256
+    ],
+    "gifFrameCount": 8,
+    "gifDurationsMs": [
+      120,
+      120,
+      120,
+      120,
+      120,
+      120,
+      120,
+      120
+    ],
+    "gifTotalCycleMs": 960,
+    "normalSpeedOnly": true,
+    "rawGeneratorOutputRetained": true,
+    "exactSelectedPromptRetained": true,
+    "unselectedRawGenerationFilesRetained": true,
+    "onlyVisiblePoseChangeIsFrame02": true,
+    "unmodifiedFramesExactRGBAFromSourceStrip": {
+      "0": true,
+      "1": true,
+      "3": true,
+      "4": true,
+      "5": true,
+      "6": true,
+      "7": true,
+      "8": true
+    },
+    "rebuiltStripUnmodifiedCellsExactRGBAFromSourceStrip": {
+      "0": true,
+      "1": true,
+      "3": true,
+      "4": true,
+      "5": true,
+      "6": true,
+      "7": true,
+      "8": true
+    },
+    "stripCell02ExactRGBAFromSelectedFrame02": true,
+    "frame02HashUnchangedFromAcceptedCandidate": true
+  },
+  "sha256": {
+    "strip.png": "295e6fc45630fff7d5ddb09f6de8c7f18242a673e77e306c7c9fdc1420a9a708",
+    "walk.gif": "33e9e58dafa332b1de457e1e64e8d5f8477a6d5f9d6026659a80627033485449",
+    "frames": {
+      "00.png": "0959022506ce2b1b97213f4d61c9f2bc5a49c0bd9a2ab25563fc0a7d2bde428b",
+      "01.png": "c89e86151cb213031ed6185242cca2fe23153476e3c2a18fa4c29b648db14960",
+      "02.png": "64e81fc1671b420f27f00fa64d2e0cb002b5d5e1fcb3257b666c686c2e74076d",
+      "03.png": "d79f8f3af00ded9d88e7654c5fd7b777e4729c647128b236930b72627d17a2f9",
+      "04.png": "5c5d3adb56d473b90785c69d48507497940b6451636d3befe282323497c6ed7f",
+      "05.png": "fb489088bde5d779ce09ee425b0abfb3d9c1b20615e8c309e3de3753ddf4bcd4",
+      "06.png": "807a19a07cf057eec97b9c23f35c73cb693d819bb4f402d4b9187041a2263154",
+      "07.png": "f8114186f4e87c10f60bf45f96bbcea49c5a4877398b7a871922b6327c026473",
+      "08.png": "016bbfac24b1e546eb254fbdb67c1d6c9c857f81f22edfec71b052eff06044b8"
+    },
+    "source02r6.png": "ebd262bc9f729310e112b924cda2d785acdb6133ece1ad8f008a450e72859d8c",
+    "generatedRaw02.png": "c0f66fdbb899c29516e70391198b7f039d6cc6fe7cb35da5a7c908fb240218a2",
+    "generated-02-initial-unselected-01.png": "a7c13a78cbf25e4bcd74dc516369ee3d388aecd54e3881d891bb8b9fb35f3d15",
+    "generated-02-initial-unselected-02.png": "b2e8903b198aa6cc73e5b1d442fb75904cf1c3bbbe2b4143706ba8f8ccf9e864",
+    "sourceStrip.png": "d3b43c5c49e03d66b4b541253003f3bfcbb9e2e334d93db927efdb519c995a3f"
+  },
+  "scope": "Technical image and animation validation plus internal visual self-review; not user art approval."
+}

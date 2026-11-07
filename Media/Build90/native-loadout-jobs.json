@@ -1,0 +1,108 @@
+{
+  "total_count": 2,
+  "jobs": [
+    {
+      "id": 127867825253,
+      "run_id": 42210542590,
+      "workflow_name": "Random Map Device Build",
+      "head_branch": "fix/build33-face-grounding-camera",
+      "run_url": "https://api.github.com/repos/liamchan-rgb/experiment/actions/runs/42210542590",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOVIljCc8AAAAdxYQsZQ",
+      "head_sha": "49c3c509205ec9bf7a3975960b35e64ce94fdd95",
+      "url": "https://api.github.com/repos/liamchan-rgb/experiment/actions/jobs/127867825253",
+      "html_url": "https://github.com/liamchan-rgb/experiment/actions/runs/42210542590/job/127867825253",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-11-06T11:28:48Z",
+      "started_at": "2026-11-06T11:28:53Z",
+      "completed_at": "2026-11-06T11:31:39Z",
+      "name": "audit_loadouts",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-11-06T11:28:54Z",
+          "completed_at": "2026-11-06T11:28:55Z"
+        },
+        {
+          "name": "Run actions/checkout@v7",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-11-06T11:28:55Z",
+          "completed_at": "2026-11-06T11:28:58Z"
+        },
+        {
+          "name": "Verify complete loadout sample without running app",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-11-06T11:28:58Z",
+          "completed_at": "2026-11-06T11:31:32Z"
+        },
+        {
+          "name": "Run actions/upload-artifact@v7",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-11-06T11:31:32Z",
+          "completed_at": "2026-11-06T11:31:34Z"
+        },
+        {
+          "name": "Post Run actions/checkout@v7",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8,
+          "started_at": "2026-11-06T11:31:34Z",
+          "completed_at": "2026-11-06T11:31:35Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9,
+          "started_at": "2026-11-06T11:31:35Z",
+          "completed_at": "2026-11-06T11:31:36Z"
+        }
+      ],
+      "check_run_url": "https://api.github.com/repos/liamchan-rgb/experiment/check-runs/127867825253",
+      "labels": [
+        "macos-26"
+      ],
+      "runner_id": 1000000437,
+      "runner_name": "GitHub Actions 1000000437",
+      "runner_group_id": 0,
+      "runner_group_name": "GitHub Actions"
+    },
+    {
+      "id": 127867826353,
+      "run_id": 42210542590,
+      "workflow_name": "Random Map Device Build",
+      "head_branch": "fix/build33-face-grounding-camera",
+      "run_url": "https://api.github.com/repos/liamchan-rgb/experiment/actions/runs/42210542590",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOVIljCc8AAAAdxYQwsQ",
+      "head_sha": "49c3c509205ec9bf7a3975960b35e64ce94fdd95",
+      "url": "https://api.github.com/repos/liamchan-rgb/experiment/actions/jobs/127867826353",
+      "html_url": "https://github.com/liamchan-rgb/experiment/actions/runs/42210542590/job/127867826353",
+      "status": "completed",
+      "conclusion": "skipped",
+      "created_at": "2026-11-06T11:28:48Z",
+      "started_at": "2026-11-06T11:28:48Z",
+      "completed_at": "2026-11-06T11:28:48Z",
+      "name": "archive",
+      "steps": [],
+      "check_run_url": "https://api.github.com/repos/liamchan-rgb/experiment/check-runs/127867826353",
+      "labels": [
+        "macos-26"
+      ],
+      "runner_id": null,
+      "runner_name": null,
+      "runner_group_id": null,
+      "runner_group_name": null
+    }
+  ]
+}

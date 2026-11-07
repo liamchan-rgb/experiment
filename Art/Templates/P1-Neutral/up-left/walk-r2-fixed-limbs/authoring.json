@@ -1,0 +1,381 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "p1-neutral-up-left-walk-r2-fixed-limbs",
+  "direction": "up-left",
+  "facing": [
+    -1,
+    -1
+  ],
+  "screenForward": [
+    -1,
+    -0.4
+  ],
+  "compatibility": {
+    "rig": "p1-chibi-v1",
+    "bodyProfile": "p1-standard",
+    "actionSet": "locomotion-v1"
+  },
+  "headLocalOrigin": [
+    76,
+    61
+  ],
+  "status": "repair-candidate-not-approved",
+  "artApproval": null,
+  "rejectedPredecessor": "../walk-r1",
+  "method": "Single immutable whole-leg row mesh, monotone vertical mapping (no folds), fixed transverse source width; sagittal fixed bone chains projected to rear diagonal. Arms/hands share shoulder-pivot transform. No per-frame art swaps.",
+  "anchors": {
+    "neck": [
+      127,
+      132
+    ],
+    "shoulderLeft": [
+      119,
+      138
+    ],
+    "hipLeft": [
+      120,
+      175
+    ],
+    "shoulderRight": [
+      141,
+      138
+    ],
+    "hipRight": [
+      141,
+      175
+    ]
+  },
+  "armRestOffsets": {
+    "left": [
+      -7,
+      29
+    ],
+    "right": [
+      6,
+      29
+    ]
+  },
+  "drawOrder": [
+    "body.leg.right",
+    "body.leg.left",
+    "body.arm.right",
+    "body.hand.right",
+    "body.arm.left",
+    "body.hand.left",
+    "body.torso",
+    "head.base"
+  ],
+  "rigidArms": {
+    "left": {
+      "arm": "source/arm.original.left.png",
+      "hand": "source/hand.original.left.png",
+      "sourceJoints": {
+        "shoulder": [
+          119,
+          138
+        ],
+        "elbow": [
+          112,
+          154
+        ],
+        "wrist": [
+          105,
+          170
+        ]
+      },
+      "swingDegrees": 7,
+      "armSHA256": "692886fb5aadba0fe5597dd314879f2c0194f3042a7deff042138120f32432fa",
+      "handSHA256": "e169827826fca483c518ad7e6a609d40a5f75fec706af692e34d35d59039233c"
+    },
+    "right": {
+      "arm": "source/arm.original.right.png",
+      "hand": "source/hand.original.right.png",
+      "sourceJoints": {
+        "shoulder": [
+          141,
+          138
+        ],
+        "elbow": [
+          148,
+          152
+        ],
+        "wrist": [
+          149,
+          165
+        ]
+      },
+      "swingDegrees": 7,
+      "armSHA256": "fec0e467c3de489c44b4a76830ac9097a0d027ef2b86154693a2e6a854fc3a20",
+      "handSHA256": "e15a1556e8a1e8e3dc571fb639679b7775e34ffca87f31429cf26b7b1b3f4835"
+    }
+  },
+  "legSkin": {
+    "left": {
+      "image": "source/leg.left-skin.png",
+      "sha256": "80066ab7abbd0247ef8dde3744ecac96d0dcf606724bb0abfbd2736481132b08",
+      "sourceChain": [
+        [
+          120,
+          175
+        ],
+        [
+          120,
+          193
+        ],
+        [
+          116,
+          203
+        ]
+      ],
+      "sole": [
+        120,
+        214
+      ],
+      "originalSource": "source/leg.left-original.png"
+    },
+    "right": {
+      "image": "source/leg.right-skin.png",
+      "sha256": "bf1679b68518add819c98bcc6ff8afa988500ce0eeaaae8a78443d079e7cf0c9",
+      "sourceChain": [
+        [
+          141,
+          175
+        ],
+        [
+          142,
+          193
+        ],
+        [
+          143,
+          202
+        ]
+      ],
+      "sole": [
+        142,
+        212
+      ],
+      "originalSource": "source/leg.right-original.png"
+    }
+  },
+  "boneLengths": {
+    "left": {
+      "thigh": 18,
+      "shin": 14
+    },
+    "right": {
+      "thigh": 18,
+      "shin": 14
+    }
+  },
+  "projection": {
+    "forwardScale": 0.95,
+    "forwardToScreenY": -0.3,
+    "heightScale": 0.92
+  },
+  "walk": {
+    "stride": 8.0,
+    "lift": 4.5,
+    "restShortening": 1.2,
+    "bodyBob": 0.25,
+    "headSwingDeg": 0.35
+  },
+  "postRasterMaxIsolatedPixels": 2,
+  "sourceCleanup": {
+    "left": {
+      "removedIsolatedPixels": [],
+      "reason": "Static original idle segmentation fragments; never remove a major limb component; crotch fabric outline belongs to common shorts, not deforming thigh",
+      "explicitCrotchFabricPixels": [
+        [
+          130,
+          175
+        ],
+        [
+          128,
+          176
+        ],
+        [
+          129,
+          176
+        ],
+        [
+          130,
+          176
+        ],
+        [
+          129,
+          177
+        ],
+        [
+          130,
+          177
+        ],
+        [
+          128,
+          178
+        ],
+        [
+          129,
+          178
+        ],
+        [
+          130,
+          178
+        ]
+      ],
+      "hiddenShortsEdgePixels": [
+        [
+          111,
+          175
+        ],
+        [
+          111,
+          176
+        ],
+        [
+          112,
+          176
+        ],
+        [
+          111,
+          177
+        ],
+        [
+          112,
+          177
+        ],
+        [
+          111,
+          178
+        ],
+        [
+          112,
+          178
+        ],
+        [
+          113,
+          178
+        ],
+        [
+          114,
+          178
+        ],
+        [
+          115,
+          178
+        ]
+      ]
+    },
+    "right": {
+      "removedIsolatedPixels": [
+        [
+          131,
+          174
+        ],
+        [
+          131,
+          175
+        ]
+      ],
+      "reason": "Static original idle segmentation fragments; never remove a major limb component",
+      "hiddenShortsEdgePixels": [
+        [
+          145,
+          172
+        ],
+        [
+          146,
+          172
+        ],
+        [
+          147,
+          172
+        ],
+        [
+          145,
+          173
+        ],
+        [
+          146,
+          173
+        ],
+        [
+          147,
+          173
+        ],
+        [
+          148,
+          173
+        ],
+        [
+          145,
+          174
+        ],
+        [
+          145,
+          175
+        ],
+        [
+          144,
+          176
+        ],
+        [
+          145,
+          176
+        ],
+        [
+          142,
+          177
+        ],
+        [
+          143,
+          177
+        ],
+        [
+          144,
+          177
+        ],
+        [
+          145,
+          177
+        ],
+        [
+          131,
+          178
+        ],
+        [
+          132,
+          178
+        ],
+        [
+          139,
+          178
+        ],
+        [
+          140,
+          178
+        ],
+        [
+          141,
+          178
+        ],
+        [
+          142,
+          178
+        ],
+        [
+          143,
+          178
+        ],
+        [
+          144,
+          178
+        ],
+        [
+          145,
+          178
+        ]
+      ]
+    }
+  },
+  "unusedGeneration": "source/not-selected-refined-idle.png retained as alternative; not selected because current fix preserves the earlier body/head appearance."
+}

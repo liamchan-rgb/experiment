@@ -1,0 +1,18 @@
+{
+  "referenceCommit": "d2c36132213b4a3c4de440b6544bd46d0bc204c7",
+  "preservedOldFiles": 229,
+  "oldFilesMatchRemoteGitBlobs": true,
+  "actualContactInsideMonsterAlpha": {
+    "sourcePixel": [
+      110,
+      184
+    ],
+    "alpha": 255
+  },
+  "lightingEnvelopeContinuousAt40ms": true,
+  "dissolveMonotonicAndComplete": true,
+  "transparentSpriteRGBZero": true,
+  "artApproval": null,
+  "runtimeInputTested": false,
+  "deviceExecution": false
+}

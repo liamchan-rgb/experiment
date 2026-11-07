@@ -1,0 +1,7 @@
+{
+  "run": 40836903456,
+  "sourceCommit": "45652b8f63b8d1dc3c1b2860b51eef369ce0d76d",
+  "packagePublished": false,
+  "reason": "Selective publication searched Sources/Assets.xcassets instead of Sources/Resources/Assets.xcassets, silently omitting four new icon files. Package asset-name check caught omission. Publish exact real paths, assert four exist, and rebuild.",
+  "oldCoreAndArtUnchanged": true
+}

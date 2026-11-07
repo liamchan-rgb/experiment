@@ -1,0 +1,383 @@
+{
+  "schemaVersion": 1,
+  "status": "v2-art-review-candidate",
+  "canvasPx": [
+    256,
+    256
+  ],
+  "runtimeConfiguration": {
+    "file": "Sources/Resources/Assets.xcassets/MeadowBattleHeroConfigurationV2.dataset/configuration.json",
+    "sha256": "54891fe5a3bcc9fba09bf0727d288286c3d939274d93bb8e4e0257f69885d865",
+    "matchesArtConfiguration": true,
+    "layers": [
+      {
+        "assetName": "MeadowBattleHeroWeapon",
+        "file": "Sources/Resources/Assets.xcassets/MeadowBattleHeroWeapon.imageset/MeadowBattleHeroWeapon.png",
+        "sha256": "a4a0122c73fba3120e9c4537fd55089195a61469a1c72e098b9f430d10ceaa5c",
+        "dimensionsPx": [
+          256,
+          256
+        ],
+        "mode": "RGBA"
+      },
+      {
+        "assetName": "MeadowBattleHeroJointUnderlay",
+        "file": "Sources/Resources/Assets.xcassets/MeadowBattleHeroJointUnderlay.imageset/MeadowBattleHeroJointUnderlay.png",
+        "sha256": "9ea53c1fe83f78f1270a19f163af29fef647b0db4e1684a975e6306a3897a2e7",
+        "dimensionsPx": [
+          256,
+          256
+        ],
+        "mode": "RGBA"
+      },
+      {
+        "assetName": "MeadowBattleHeroBodyCore",
+        "file": "Sources/Resources/Assets.xcassets/MeadowBattleHeroBodyCore.imageset/MeadowBattleHeroBodyCore.png",
+        "sha256": "40acbcd999ce879a445300755ef1ec25c0c2c38080325c6c5f14776fa94ddde1",
+        "dimensionsPx": [
+          256,
+          256
+        ],
+        "mode": "RGBA"
+      },
+      {
+        "assetName": "MeadowBattleHeroArmNearUpperBody",
+        "file": "Sources/Resources/Assets.xcassets/MeadowBattleHeroArmNearUpperBody.imageset/MeadowBattleHeroArmNearUpperBody.png",
+        "sha256": "1ba79fe1a919311c386f79f182ab77bee88fa3949dc318be3109cbeb664f22e0",
+        "dimensionsPx": [
+          256,
+          256
+        ],
+        "mode": "RGBA"
+      },
+      {
+        "assetName": "MeadowBattleHeroArmNearForearmBody",
+        "file": "Sources/Resources/Assets.xcassets/MeadowBattleHeroArmNearForearmBody.imageset/MeadowBattleHeroArmNearForearmBody.png",
+        "sha256": "e37bd6e21a55d7c8688756b41feee4a77c1126cbbceac93e653958b7102f64d7",
+        "dimensionsPx": [
+          256,
+          256
+        ],
+        "mode": "RGBA"
+      },
+      {
+        "assetName": "MeadowBattleHeroLegNearThighBody",
+        "file": "Sources/Resources/Assets.xcassets/MeadowBattleHeroLegNearThighBody.imageset/MeadowBattleHeroLegNearThighBody.png",
+        "sha256": "22f31602ce77c49aa71989fb63be514863f42ead41003d3b19acd570cfd34de0",
+        "dimensionsPx": [
+          256,
+          256
+        ],
+        "mode": "RGBA"
+      },
+      {
+        "assetName": "MeadowBattleHeroLegNearShinBody",
+        "file": "Sources/Resources/Assets.xcassets/MeadowBattleHeroLegNearShinBody.imageset/MeadowBattleHeroLegNearShinBody.png",
+        "sha256": "34218b1f89cf3c64ec807521cfebf8f3c3d1eb238a945e73f89c33e21ee20203",
+        "dimensionsPx": [
+          256,
+          256
+        ],
+        "mode": "RGBA"
+      },
+      {
+        "assetName": "MeadowBattleHeroLegFarThighBody",
+        "file": "Sources/Resources/Assets.xcassets/MeadowBattleHeroLegFarThighBody.imageset/MeadowBattleHeroLegFarThighBody.png",
+        "sha256": "50ec5f98c5933ab2936b38b081c977785592907e4302c6b69aa5b9019802c384",
+        "dimensionsPx": [
+          256,
+          256
+        ],
+        "mode": "RGBA"
+      },
+      {
+        "assetName": "MeadowBattleHeroLegFarShinBody",
+        "file": "Sources/Resources/Assets.xcassets/MeadowBattleHeroLegFarShinBody.imageset/MeadowBattleHeroLegFarShinBody.png",
+        "sha256": "69d05e9a44dffddfa0d7cc5f6af0afed02cfc589512812fb4268bf95a08a4016",
+        "dimensionsPx": [
+          256,
+          256
+        ],
+        "mode": "RGBA"
+      },
+      {
+        "assetName": "MeadowBattleHeroWardrobeCore",
+        "file": "Sources/Resources/Assets.xcassets/MeadowBattleHeroWardrobeCore.imageset/MeadowBattleHeroWardrobeCore.png",
+        "sha256": "1a946e0db6559c92e8eebcba70f62fccb2325c55afce85f42538625c66efb600",
+        "dimensionsPx": [
+          256,
+          256
+        ],
+        "mode": "RGBA"
+      },
+      {
+        "assetName": "MeadowBattleHeroArmNearUpperWardrobe",
+        "file": "Sources/Resources/Assets.xcassets/MeadowBattleHeroArmNearUpperWardrobe.imageset/MeadowBattleHeroArmNearUpperWardrobe.png",
+        "sha256": "eafcd179b21732f52582d1469f981d65e0a4ca6024cbe49d9de5473b7cb875ca",
+        "dimensionsPx": [
+          256,
+          256
+        ],
+        "mode": "RGBA"
+      },
+      {
+        "assetName": "MeadowBattleHeroArmNearForearmWardrobe",
+        "file": "Sources/Resources/Assets.xcassets/MeadowBattleHeroArmNearForearmWardrobe.imageset/MeadowBattleHeroArmNearForearmWardrobe.png",
+        "sha256": "4d5016f7899a08874c2c5d46fd0dd16f304ced2b5297e8cdb2b8374d9252ab0e",
+        "dimensionsPx": [
+          256,
+          256
+        ],
+        "mode": "RGBA"
+      },
+      {
+        "assetName": "MeadowBattleHeroLegNearThighWardrobe",
+        "file": "Sources/Resources/Assets.xcassets/MeadowBattleHeroLegNearThighWardrobe.imageset/MeadowBattleHeroLegNearThighWardrobe.png",
+        "sha256": "e1c91b3d4c836da3a72d0d311f043f63c48c684c8088e55097b6bace213aaf7e",
+        "dimensionsPx": [
+          256,
+          256
+        ],
+        "mode": "RGBA"
+      },
+      {
+        "assetName": "MeadowBattleHeroLegNearShinWardrobe",
+        "file": "Sources/Resources/Assets.xcassets/MeadowBattleHeroLegNearShinWardrobe.imageset/MeadowBattleHeroLegNearShinWardrobe.png",
+        "sha256": "7ec76ed5aa128a3b98008aa5ec5d03aedb7567211d23afb1fb55aae4f6fb37a5",
+        "dimensionsPx": [
+          256,
+          256
+        ],
+        "mode": "RGBA"
+      },
+      {
+        "assetName": "MeadowBattleHeroLegFarThighWardrobe",
+        "file": "Sources/Resources/Assets.xcassets/MeadowBattleHeroLegFarThighWardrobe.imageset/MeadowBattleHeroLegFarThighWardrobe.png",
+        "sha256": "b5b31b719b9dc5b85012da0f54d47616dadec763e6c5fdd881ea844698910af5",
+        "dimensionsPx": [
+          256,
+          256
+        ],
+        "mode": "RGBA"
+      },
+      {
+        "assetName": "MeadowBattleHeroLegFarShinWardrobe",
+        "file": "Sources/Resources/Assets.xcassets/MeadowBattleHeroLegFarShinWardrobe.imageset/MeadowBattleHeroLegFarShinWardrobe.png",
+        "sha256": "e2990029bf7fe14cd4af8215d8ed86b1623af288330049f197d28ba738027a2f",
+        "dimensionsPx": [
+          256,
+          256
+        ],
+        "mode": "RGBA"
+      },
+      {
+        "assetName": "MeadowBattleHeroHair",
+        "file": "Sources/Resources/Assets.xcassets/MeadowBattleHeroHair.imageset/MeadowBattleHeroHair.png",
+        "sha256": "144d8fa28d23319afe6a1e9560ccc14b8450da25d225361772b0f2cdad65a209",
+        "dimensionsPx": [
+          256,
+          256
+        ],
+        "mode": "RGBA"
+      },
+      {
+        "assetName": "MeadowBattleHeroFace",
+        "file": "Sources/Resources/Assets.xcassets/MeadowBattleHeroFace.imageset/MeadowBattleHeroFace.png",
+        "sha256": "11d54df5f734d6140919bd8f3bc1448795e55e35e3ad0981c05c7248eda28b64",
+        "dimensionsPx": [
+          256,
+          256
+        ],
+        "mode": "P"
+      },
+      {
+        "assetName": "MeadowBattleHeroNearHand",
+        "file": "Sources/Resources/Assets.xcassets/MeadowBattleHeroNearHand.imageset/MeadowBattleHeroNearHand.png",
+        "sha256": "2d69ea1ef28c8209ca81556546e25bfc57bd9f471973c22e4474e0b9a00e3399",
+        "dimensionsPx": [
+          256,
+          256
+        ],
+        "mode": "P"
+      },
+      {
+        "assetName": "MeadowBattleHeroFarHand",
+        "file": "Sources/Resources/Assets.xcassets/MeadowBattleHeroFarHand.imageset/MeadowBattleHeroFarHand.png",
+        "sha256": "c37cbd0984a8b68ffc6f1721997ba33455a2d2bc5d697c2c77f318ec72ca7661",
+        "dimensionsPx": [
+          256,
+          256
+        ],
+        "mode": "P"
+      }
+    ]
+  },
+  "animationData": {
+    "artFile": "Art/Scenes/MeadowBattle/hero-combat-v2/clips.json",
+    "artSha256": "d5467e80101cb670b1788f9ee16b8092f1396e3173906fe12130a5d42ce956b7",
+    "runtimeFile": "Sources/Resources/Assets.xcassets/MeadowBattleHeroAnimationV2.dataset/animation.json",
+    "runtimeSha256": "d5467e80101cb670b1788f9ee16b8092f1396e3173906fe12130a5d42ce956b7",
+    "matches": true,
+    "frameDurationMs": 120,
+    "silhouetteBuckets": 24,
+    "quantization": "round",
+    "gifSampling": "progress = frameIndex / frameCount for looped and one-shot clips; matches runtime elapsedMs / durationMs"
+  },
+  "gifs": {
+    "idle": {
+      "file": "Art/Scenes/MeadowBattle/hero-combat-v2/idle.gif",
+      "sha256": "37c533ecad64fb1d036f5e9d03c8be5a8ebb4ae1823f56cd55d7e2cd7b93c3d5",
+      "durationMsExpected": 2400,
+      "durationMsEncoded": 2400,
+      "decodedFrames": 13,
+      "frameDurationMsSource": 120,
+      "sampling": "progress = frameIndex / sourceFrameCount; final frame starts 120 ms before clip end"
+    },
+    "attack": {
+      "file": "Art/Scenes/MeadowBattle/hero-combat-v2/attack.gif",
+      "sha256": "78f8ad6280824f9631f59cd67b45600f5969abc045ce08eb8c23934d5cc31da0",
+      "durationMsExpected": 1200,
+      "durationMsEncoded": 1200,
+      "decodedFrames": 10,
+      "frameDurationMsSource": 120,
+      "sampling": "progress = frameIndex / sourceFrameCount; final frame starts 120 ms before clip end"
+    },
+    "guard": {
+      "file": "Art/Scenes/MeadowBattle/hero-combat-v2/guard.gif",
+      "sha256": "fb4f5967826fee11cf2c205d3df9697eb7c3b6f1497278aaaacbc6586a8123c9",
+      "durationMsExpected": 960,
+      "durationMsEncoded": 960,
+      "decodedFrames": 4,
+      "frameDurationMsSource": 120,
+      "sampling": "progress = frameIndex / sourceFrameCount; final frame starts 120 ms before clip end"
+    },
+    "hit": {
+      "file": "Art/Scenes/MeadowBattle/hero-combat-v2/hit.gif",
+      "sha256": "5b91e6603fd32efce38f0da69da30894776cf18a436c2d5b71b48ab649edf24d",
+      "durationMsExpected": 840,
+      "durationMsEncoded": 840,
+      "decodedFrames": 7,
+      "frameDurationMsSource": 120,
+      "sampling": "progress = frameIndex / sourceFrameCount; final frame starts 120 ms before clip end"
+    },
+    "victory": {
+      "file": "Art/Scenes/MeadowBattle/hero-combat-v2/victory.gif",
+      "sha256": "b032cf1c1b06126c86850381b58ba2c212dfd9e2913223aaef6242cdc4d5ba2b",
+      "durationMsExpected": 1080,
+      "durationMsEncoded": 1080,
+      "decodedFrames": 7,
+      "frameDurationMsSource": 120,
+      "sampling": "progress = frameIndex / sourceFrameCount; final frame starts 120 ms before clip end"
+    },
+    "defeat": {
+      "file": "Art/Scenes/MeadowBattle/hero-combat-v2/defeat.gif",
+      "sha256": "0fce84b2790d7fdca8ffcf4ededee7fc7e68246dff08fbb068a64280b07f3812",
+      "durationMsExpected": 1080,
+      "durationMsEncoded": 1080,
+      "decodedFrames": 8,
+      "frameDurationMsSource": 120,
+      "sampling": "progress = frameIndex / sourceFrameCount; final frame starts 120 ms before clip end"
+    }
+  },
+  "reviewSheet": {
+    "file": "Art/Scenes/MeadowBattle/hero-combat-v2/v2-final-review-sheet.png",
+    "sha256": "7c3fd3fac21c5bf54361cab44f9679fc3e3194f7b6075ce2702e7723c7d4e43e",
+    "renderedFromCurrentGifFiles": true
+  },
+  "staticComposite": {
+    "v2IdleVsBuild35Runtime": {
+      "visiblePixelDifferences": 0,
+      "maxChannelDelta": 0
+    },
+    "v2IdleVsBuild35RuntimeHeadAndFaceYlt130": {
+      "visiblePixelDifferences": 0,
+      "maxChannelDelta": 0
+    },
+    "build35RuntimeVsAssembled": {
+      "visiblePixelDifferences": 630,
+      "maxChannelDelta": 1
+    },
+    "v2IdleVsAssembled": {
+      "visiblePixelDifferences": 630,
+      "maxChannelDelta": 1
+    }
+  },
+  "bootSegmentation": {
+    "sourceNearBootXRangePx": [
+      134,
+      163
+    ],
+    "nearShinMaskExtentPx": [
+      127,
+      167
+    ],
+    "sourceFarBootXRangePx": [
+      88,
+      109
+    ],
+    "farShinMaskExtentPx": [
+      81,
+      117
+    ],
+    "reviewed": "Latest full-character GIFs were rerendered and the review sheet regenerated after extending both shin masks to cover the complete original boots; no static boot fragments remain."
+  },
+  "artSources": [
+    {
+      "file": "Art/Scenes/MeadowBattle/hero-combat-v2/source/underlay-inpaint-prompt.txt",
+      "sha256": "49d85e62d0b6f260ae360a580c6a9915efaa587040333ec413917710a11ad61b"
+    },
+    {
+      "file": "Art/Scenes/MeadowBattle/hero-combat-v2/source/generated-underlay.png",
+      "sha256": "26fc198ae81479860593eb0277839ebbc6f829a51cceef3f75e791b079d93860",
+      "dimensionsPx": [
+        1254,
+        1254
+      ]
+    },
+    {
+      "file": "Art/Scenes/MeadowBattle/hero-combat-v2/source/generated-core-underlay.png",
+      "sha256": "989c6db6aaddd7915c27def5ca9822081a6b1d6d0e1d54692d7a2813566baa05",
+      "dimensionsPx": [
+        1254,
+        1254
+      ]
+    },
+    {
+      "file": "Art/Scenes/MeadowBattle/hero-combat-v2/source/generated-core-256.png",
+      "sha256": "7febe7f22273457ad335166c0256641fdabee78c7bcac711751df6f29afb1b84",
+      "dimensionsPx": [
+        256,
+        256
+      ]
+    },
+    {
+      "file": "Art/Scenes/MeadowBattle/hero-combat-v2/source/registered-underlay-holes.png",
+      "sha256": "a7567da04838f120a2e11ad81affacf7f56092ce23f735468222fbeccd0345e4",
+      "dimensionsPx": [
+        256,
+        256
+      ]
+    }
+  ],
+  "scope": {
+    "deviceRun": false,
+    "simulatorRun": false,
+    "fullOutfitTemplate": false,
+    "enemyAnimation": false,
+    "note": "Common registered body/wardrobe segmentation only. Appearance layers are retained, but full outfit-template support is not claimed."
+  },
+  "jointMaskSource": {
+    "file": "Art/Scenes/MeadowBattle/hero-combat-v2/source/joint-regions.json",
+    "sha256": "ba547e9358d5d20dca7e1af88c12a4b343de67851f9d45422c3a4efd28074bd4"
+  },
+  "reviewScripts": {
+    "segmentBuilder": {
+      "file": "Art/Scenes/MeadowBattle/hero-combat-v2/source/build-segments.py",
+      "sha256": "fb34c64ef2b4ce412896c081b8fc791c579d40d73ea8a43b1ee71d19e2b829e0"
+    },
+    "gifRenderer": {
+      "file": "Art/Scenes/MeadowBattle/hero-combat-v2/render-review.py",
+      "sha256": "b7d4f874175889cad5a29dc625e80fd373a2aaebccd901510998f53ebc5ad354"
+    }
+  }
+}

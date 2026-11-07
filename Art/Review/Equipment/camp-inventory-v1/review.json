@@ -1,0 +1,19 @@
+{
+  "scope": "Offline UI illustration using actual production camp projection/layout and unchanged native atlas cells. Not UIKit/App/device.",
+  "normalFrames": 8,
+  "frameMs": 120,
+  "durationMs": 960,
+  "states": 7,
+  "padAndPhoneStandingPNGs": 14,
+  "characterArtChanged": false,
+  "userUIApproval": null,
+  "rootReview": {
+    "reviewer": "root",
+    "wholePagePadPNGsViewed": 7,
+    "wholePagePhonePNGsViewed": 7,
+    "actualDecodedGIFFullPagesViewed": 8,
+    "allEightNativeCellsAt1xAnd2xViewed": true,
+    "scope": "Offline whole UI illustrations and native cell reuse only; not UIKit screenshots or App/device runs",
+    "newCharacterArt": false
+  }
+}

@@ -1,0 +1,103 @@
+{
+  "id": "p1-neutral-right-walk-r1-mirror",
+  "status": "candidate-main-only",
+  "direction": "right",
+  "authorAndReviewer": "root",
+  "subagentsUsed": false,
+  "sourceTemplate": "Art/Templates/P1-Neutral/left/walk-r3-complete-transitions",
+  "sourceManifestSHA256": "07a1cbc6335db5170de3bd0bdc2010398c7b0a5c412f16b6fffbced3e80d43dd",
+  "sourceMotionSHA256": "1bf888ebf4fa45dd7a92df1cfcd05406c5568622bb2870a12420bef74a0cfc8f",
+  "sourceApproval": "Art/Templates/P1-Neutral/left/walk-r3-complete-transitions/approval.json",
+  "oldRightApprovedReference": "Art/Review/P1/directions/right/revisions/r1/approval.json",
+  "oldRightScope": "Preserved whole-character old approved strip and demo row; camera/coordination reference only, new neutral not pixel-identical and not automatically approved",
+  "headLocalCanvas": [
+    96,
+    96
+  ],
+  "sourceHeadOrigin": [
+    76,
+    61
+  ],
+  "rightHeadOrigin": [
+    84,
+    61
+  ],
+  "geometryMirrorAxisX": 127.5,
+  "nearSide": "right",
+  "farSide": "left",
+  "sourceLight": "upper-left",
+  "lightReference": "source/relight-generated.png",
+  "lightRegistration": {
+    "canvas": [
+      1254,
+      1254
+    ],
+    "scale": 0.8165869218500797,
+    "translation": [
+      0,
+      0
+    ]
+  },
+  "newArtApproval": null,
+  "sequence": [
+    0,
+    9,
+    10,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    11,
+    12,
+    0
+  ],
+  "durationsMs": [
+    480,
+    120,
+    120,
+    120,
+    120,
+    120,
+    120,
+    120,
+    120,
+    120,
+    120,
+    120,
+    120,
+    120,
+    120,
+    120,
+    120,
+    120,
+    120,
+    120,
+    120,
+    480
+  ],
+  "limits": [
+    "Only specified start/stop paths; not arbitrary phase interrupts",
+    "Neutral body only this review; independent right hair/face/clothing/back carry follow after review",
+    "No runtime/device/IPA"
+  ],
+  "lightReferenceSHA256": "f7052705042e5a1fe5fa15b6b8bcc14196be27a4b460cefe13af8df24879a658",
+  "lightingMethod": {
+    "head": "one static96 head-local tool-colour source projected by original reflected headToCanvas",
+    "limbs": "one static near/far tool skin ramp, same all13 poses; per-source median anchors normalize old source tone variation, complete same-side arm/hand share anchor",
+    "safetyClothes": "original cream shirt/gray shorts and source ink RGBA preserved",
+    "referenceGeometryImported": false,
+    "failedSpatialAttemptsPreserved": "Art/Review/P1/neutral-right-r1-mirror/rejected-probes"
+  }
+}

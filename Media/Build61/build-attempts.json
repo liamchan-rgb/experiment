@@ -1,0 +1,27 @@
+{
+  "sourceCommit": "bd9d8156bc761c4efbfd7561c67aa5620a592d26",
+  "completedFailedAttempts": [
+    {
+      "run": 40735963209,
+      "reason": "Initializer-local assetImage helper unavailable in equipment prewarm"
+    },
+    {
+      "run": 40739168820,
+      "reason": "GameViewController missing explicit ClassroomGameCore import"
+    }
+  ],
+  "stalledAttempt": {
+    "run": 40741041255,
+    "reason": "Checkout RPC curl56 timed out; early EOF / failed promisor blob fetch; run finished before cancellation was accepted",
+    "cancelRequested": true,
+    "cancellationAccepted": false,
+    "conclusion": "failure"
+  },
+  "selectedRun": 40742600629,
+  "selectedRef": "ci/build61-armor-device",
+  "sourceCodeChangedForFallback": false,
+  "quickLab": true,
+  "packageOnly": true,
+  "macOSRunner": "macos-15-intel",
+  "selectedConclusion": "success"
+}

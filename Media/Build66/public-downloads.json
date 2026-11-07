@@ -1,0 +1,228 @@
+{
+  "ipa": {
+    "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/7b9af7c60ca24a4dc387ef1833edc760bf0c7486/Downloads/MeadowJourney-b66.ipa",
+    "bytes": 49443349,
+    "sha256": "0390e647d1005820baccbfae264d6f0d757583c6c5638cd76f2b46b840de3255",
+    "contentType": "application/octet-stream",
+    "matchesLocalVerifiedIPA": true
+  },
+  "media": [
+    {
+      "path": "Art/Review/Battle/spellblade-demo-v1/three-skills-normal.gif",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/abe3f238adb9b5a8b166d65ccc4c38e001673260/Art/Review/Battle/spellblade-demo-v1/three-skills-normal.gif",
+      "bytes": 11761014,
+      "sha256": "b402db417df3639f3d98b40e7ffbb28fd358fdfa3ec4863a1a4be06fb8865580",
+      "contentType": "application/octet-stream",
+      "matchesLocal": true
+    },
+    {
+      "path": "Art/Review/Battle/spellblade-demo-v1/runeSlash-normal.gif",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/abe3f238adb9b5a8b166d65ccc4c38e001673260/Art/Review/Battle/spellblade-demo-v1/runeSlash-normal.gif",
+      "bytes": 7455223,
+      "sha256": "26a9f89c68075bc15dc78bbb860c89fff8d97748012c5b46cc7d3d60ca4a4b8d",
+      "contentType": "image/gif",
+      "matchesLocal": true
+    },
+    {
+      "path": "Art/Review/Battle/spellblade-demo-v1/runeWard-normal.gif",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/abe3f238adb9b5a8b166d65ccc4c38e001673260/Art/Review/Battle/spellblade-demo-v1/runeWard-normal.gif",
+      "bytes": 6516840,
+      "sha256": "45ce46b8318a55e7e2c8b3782709c3f9ab960e765a05684a36ed577f669c2251",
+      "contentType": "image/gif",
+      "matchesLocal": true
+    },
+    {
+      "path": "Art/Review/Battle/spellblade-demo-v1/battleRune-normal.gif",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/abe3f238adb9b5a8b166d65ccc4c38e001673260/Art/Review/Battle/spellblade-demo-v1/battleRune-normal.gif",
+      "bytes": 6539760,
+      "sha256": "627a386dc7ba793aad169b4cbea0286f0fed9ba5ce615abd6a4cdb80e25e2da8",
+      "contentType": "image/gif",
+      "matchesLocal": true
+    },
+    {
+      "path": "Art/Review/Battle/spellblade-demo-v1/runeSlash-lethal-normal.gif",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/abe3f238adb9b5a8b166d65ccc4c38e001673260/Art/Review/Battle/spellblade-demo-v1/runeSlash-lethal-normal.gif",
+      "bytes": 7851285,
+      "sha256": "f9bb152a6ca284e01e6ed1896eab39b06a33cd7411ff2d6fb0c621d5d7d94f89",
+      "contentType": "image/gif",
+      "matchesLocal": true
+    },
+    {
+      "path": "Art/Review/Battle/spellblade-demo-v1/runeSlash-standing.png",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/abe3f238adb9b5a8b166d65ccc4c38e001673260/Art/Review/Battle/spellblade-demo-v1/runeSlash-standing.png",
+      "bytes": 1035691,
+      "sha256": "00ad83c09bb38ffde5d3b7aa7c3e350b3bbdb0b6a30f8f901140a163037d23a2",
+      "contentType": "image/png",
+      "matchesLocal": true
+    },
+    {
+      "path": "Art/Review/Battle/spellblade-demo-v1/runeWard-recovery.png",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/abe3f238adb9b5a8b166d65ccc4c38e001673260/Art/Review/Battle/spellblade-demo-v1/runeWard-recovery.png",
+      "bytes": 1001003,
+      "sha256": "1789b7d72b9b323fc9fd9bd080f3049728e461e1545292976ad08e835baefda3",
+      "contentType": "image/png",
+      "matchesLocal": true
+    },
+    {
+      "path": "Art/Review/Battle/spellblade-demo-v1/battleRune-impact.png",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/abe3f238adb9b5a8b166d65ccc4c38e001673260/Art/Review/Battle/spellblade-demo-v1/battleRune-impact.png",
+      "bytes": 1003941,
+      "sha256": "0fc489362916f590b98f6233b5c877f298d1e6df11f72d64d4cfc980d5e48da9",
+      "contentType": "image/png",
+      "matchesLocal": true
+    },
+    {
+      "path": "Art/Review/Battle/spellblade-demo-v1/cast-mounts-1x.png",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/abe3f238adb9b5a8b166d65ccc4c38e001673260/Art/Review/Battle/spellblade-demo-v1/cast-mounts-1x.png",
+      "bytes": 136331,
+      "sha256": "7a2e37e2c6012ab7988bb45b6049bf370af7c4a506b39dff1199520a7cea911c",
+      "contentType": "image/png",
+      "matchesLocal": true
+    },
+    {
+      "path": "Art/Review/Battle/spellblade-demo-v1/review.json",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/abe3f238adb9b5a8b166d65ccc4c38e001673260/Art/Review/Battle/spellblade-demo-v1/review.json",
+      "bytes": 2588,
+      "sha256": "471fd9805243326b5e947f6f416f594d9c366efb727b898fd14ad8554b9a6219",
+      "contentType": "text/plain; charset=utf-8",
+      "matchesLocal": true
+    }
+  ],
+  "standaloneGIFBrowser": {
+    "scope": "Standalone remote offline GIF playback only; no game/App/UIKit/simulator/device run",
+    "checks": [
+      {
+        "path": "Art/Review/Battle/spellblade-demo-v1/three-skills-normal.gif",
+        "dimensions": [
+          1020,
+          765
+        ],
+        "loadsAndAdvances": true,
+        "uniqueScreenshots": 6
+      },
+      {
+        "path": "Art/Review/Battle/spellblade-demo-v1/runeSlash-normal.gif",
+        "dimensions": [
+          1020,
+          765
+        ],
+        "loadsAndAdvances": true,
+        "uniqueScreenshots": 6
+      },
+      {
+        "path": "Art/Review/Battle/spellblade-demo-v1/runeWard-normal.gif",
+        "dimensions": [
+          1020,
+          765
+        ],
+        "loadsAndAdvances": true,
+        "uniqueScreenshots": 6
+      },
+      {
+        "path": "Art/Review/Battle/spellblade-demo-v1/battleRune-normal.gif",
+        "dimensions": [
+          1020,
+          765
+        ],
+        "loadsAndAdvances": true,
+        "uniqueScreenshots": 6
+      },
+      {
+        "path": "Art/Review/Battle/spellblade-demo-v1/runeSlash-lethal-normal.gif",
+        "dimensions": [
+          1020,
+          765
+        ],
+        "loadsAndAdvances": true,
+        "uniqueScreenshots": 6
+      }
+    ],
+    "frameMs": 20,
+    "fullGETVerified": [
+      {
+        "path": "Art/Review/Battle/spellblade-demo-v1/three-skills-normal.gif",
+        "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/abe3f238adb9b5a8b166d65ccc4c38e001673260/Art/Review/Battle/spellblade-demo-v1/three-skills-normal.gif",
+        "bytes": 11761014,
+        "sha256": "b402db417df3639f3d98b40e7ffbb28fd358fdfa3ec4863a1a4be06fb8865580",
+        "contentType": "application/octet-stream",
+        "matchesLocal": true
+      },
+      {
+        "path": "Art/Review/Battle/spellblade-demo-v1/runeSlash-normal.gif",
+        "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/abe3f238adb9b5a8b166d65ccc4c38e001673260/Art/Review/Battle/spellblade-demo-v1/runeSlash-normal.gif",
+        "bytes": 7455223,
+        "sha256": "26a9f89c68075bc15dc78bbb860c89fff8d97748012c5b46cc7d3d60ca4a4b8d",
+        "contentType": "image/gif",
+        "matchesLocal": true
+      },
+      {
+        "path": "Art/Review/Battle/spellblade-demo-v1/runeWard-normal.gif",
+        "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/abe3f238adb9b5a8b166d65ccc4c38e001673260/Art/Review/Battle/spellblade-demo-v1/runeWard-normal.gif",
+        "bytes": 6516840,
+        "sha256": "45ce46b8318a55e7e2c8b3782709c3f9ab960e765a05684a36ed577f669c2251",
+        "contentType": "image/gif",
+        "matchesLocal": true
+      },
+      {
+        "path": "Art/Review/Battle/spellblade-demo-v1/battleRune-normal.gif",
+        "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/abe3f238adb9b5a8b166d65ccc4c38e001673260/Art/Review/Battle/spellblade-demo-v1/battleRune-normal.gif",
+        "bytes": 6539760,
+        "sha256": "627a386dc7ba793aad169b4cbea0286f0fed9ba5ce615abd6a4cdb80e25e2da8",
+        "contentType": "image/gif",
+        "matchesLocal": true
+      },
+      {
+        "path": "Art/Review/Battle/spellblade-demo-v1/runeSlash-lethal-normal.gif",
+        "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/abe3f238adb9b5a8b166d65ccc4c38e001673260/Art/Review/Battle/spellblade-demo-v1/runeSlash-lethal-normal.gif",
+        "bytes": 7851285,
+        "sha256": "f9bb152a6ca284e01e6ed1896eab39b06a33cd7411ff2d6fb0c621d5d7d94f89",
+        "contentType": "image/gif",
+        "matchesLocal": true
+      },
+      {
+        "path": "Art/Review/Battle/spellblade-demo-v1/runeSlash-standing.png",
+        "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/abe3f238adb9b5a8b166d65ccc4c38e001673260/Art/Review/Battle/spellblade-demo-v1/runeSlash-standing.png",
+        "bytes": 1035691,
+        "sha256": "00ad83c09bb38ffde5d3b7aa7c3e350b3bbdb0b6a30f8f901140a163037d23a2",
+        "contentType": "image/png",
+        "matchesLocal": true
+      },
+      {
+        "path": "Art/Review/Battle/spellblade-demo-v1/runeWard-recovery.png",
+        "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/abe3f238adb9b5a8b166d65ccc4c38e001673260/Art/Review/Battle/spellblade-demo-v1/runeWard-recovery.png",
+        "bytes": 1001003,
+        "sha256": "1789b7d72b9b323fc9fd9bd080f3049728e461e1545292976ad08e835baefda3",
+        "contentType": "image/png",
+        "matchesLocal": true
+      },
+      {
+        "path": "Art/Review/Battle/spellblade-demo-v1/battleRune-impact.png",
+        "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/abe3f238adb9b5a8b166d65ccc4c38e001673260/Art/Review/Battle/spellblade-demo-v1/battleRune-impact.png",
+        "bytes": 1003941,
+        "sha256": "0fc489362916f590b98f6233b5c877f298d1e6df11f72d64d4cfc980d5e48da9",
+        "contentType": "image/png",
+        "matchesLocal": true
+      },
+      {
+        "path": "Art/Review/Battle/spellblade-demo-v1/cast-mounts-1x.png",
+        "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/abe3f238adb9b5a8b166d65ccc4c38e001673260/Art/Review/Battle/spellblade-demo-v1/cast-mounts-1x.png",
+        "bytes": 136331,
+        "sha256": "7a2e37e2c6012ab7988bb45b6049bf370af7c4a506b39dff1199520a7cea911c",
+        "contentType": "image/png",
+        "matchesLocal": true
+      },
+      {
+        "path": "Art/Review/Battle/spellblade-demo-v1/review.json",
+        "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/abe3f238adb9b5a8b166d65ccc4c38e001673260/Art/Review/Battle/spellblade-demo-v1/review.json",
+        "bytes": 2588,
+        "sha256": "471fd9805243326b5e947f6f416f594d9c366efb727b898fd14ad8554b9a6219",
+        "contentType": "text/plain; charset=utf-8",
+        "matchesLocal": true
+      }
+    ]
+  },
+  "appRunPerformed": false,
+  "simulatorRunPerformed": false,
+  "physicalDeviceRunPerformed": false,
+  "newRuntimeArtApproval": null
+}

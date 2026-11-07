@@ -1,12 +1,12 @@
 {
-  "info": {
-    "author": "xcode",
-    "version": 1
-  },
   "images": [
     {
       "filename": "Hero1Diagonals.png",
       "idiom": "universal"
     }
-  ]
+  ],
+  "info": {
+    "author": "xcode",
+    "version": 1
+  }
 }

@@ -1,0 +1,20 @@
+{
+  "applicationSourceCommit": "5509da99ce9546c4555594f8a2c904700cd42050",
+  "workflowHead": "c6ee157f63a19237cf101382920e7c591152ba73",
+  "workflowRun": 40914603016,
+  "appSourceChangedBetweenSourceAndWorkflowHead": false,
+  "workflowAndOfflineReviewChangesBetweenCommits": [
+    ".github/workflows/shadow-lab-quick.yml",
+    "scripts/review-spellblade-demo.py",
+    "Art/Review/Battle/spellblade-demo-v1/runeSlash-normal.gif",
+    "Art/Review/Battle/spellblade-demo-v1/runeSlash-decoded-07.png"
+  ],
+  "userSpritesheet": "Art/Parts/BattleVFX/rune-slash-v1/source-spritesheet.png",
+  "userSpritesheetSHA256": "9f43d7ae29dff9e625b4717635eabc9eb1acfe868f40d954ba4ee3b1b5a1c078",
+  "appVersion": "1.6.41",
+  "build": "67",
+  "ipaSHA256": "2cfe07cfd90ef1f3b0ae36ee7154763d420a2d96ac37b16dcce1380d67090816",
+  "ipaBytes": 49938573,
+  "ipaCommit": "b046d5f15b62dad77638f48ad108639f14404235",
+  "ipaURL": "https://raw.githubusercontent.com/liamchan-rgb/experiment/b046d5f15b62dad77638f48ad108639f14404235/Downloads/MeadowJourney-b67.ipa"
+}

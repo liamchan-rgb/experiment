@@ -1,0 +1,29 @@
+{
+  "date": "2026-10-24",
+  "status": "approved-shown-scope",
+  "userStatement": "没问题，继续下一项",
+  "artCommit": "451778c0e599735976a9c52c741f57d5eea1a2b1",
+  "scope": "Presented right neutral full-body standing,8-frame normal walk,specified idle->walk01/walk08->idle start-stop and left/right comparison only. Does not approve new independent appearances, arbitrary phase interruptions, complete hidden anatomy or runtime.",
+  "files": [
+    {
+      "file": "Art/Review/P1/neutral-right-r1-mirror/walk-120ms.gif",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/451778c0e599735976a9c52c741f57d5eea1a2b1/Art/Review/P1/neutral-right-r1-mirror/walk-120ms.gif",
+      "sha256": "b6a4d62cd2bc33d4f3229b319238d1d9141a86dc6c64eb9f0d9cc9f4af5eeb84"
+    },
+    {
+      "file": "Art/Review/P1/neutral-right-r1-mirror/start-stop-120ms.gif",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/451778c0e599735976a9c52c741f57d5eea1a2b1/Art/Review/P1/neutral-right-r1-mirror/start-stop-120ms.gif",
+      "sha256": "837651850195457b0bb5ed8cfb9118dd285f63be07a6106d0f44d84f708d0460"
+    },
+    {
+      "file": "Art/Review/P1/neutral-right-r1-mirror/idle-review-2x.png",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/451778c0e599735976a9c52c741f57d5eea1a2b1/Art/Review/P1/neutral-right-r1-mirror/idle-review-2x.png",
+      "sha256": "0370d3dec334089ddc42e888fc77cf9c65be8fd1e87ca373a6545f5e00f0f433"
+    },
+    {
+      "file": "Art/Review/P1/neutral-right-r1-mirror/walk-comparison-120ms.gif",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/451778c0e599735976a9c52c741f57d5eea1a2b1/Art/Review/P1/neutral-right-r1-mirror/walk-comparison-120ms.gif",
+      "sha256": "64a1d95addab40d867cf4888faa5530279d11f5a77bf9055f724fea2605b7b70"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "baseline": "c7d0101c10ddd50be3418ced69deef76f1a8ca6d",
+  "unchangedResourceOriginalCoreAndWeaponRigPaths": 402,
+  "newCharacterOrEquipmentArt": false,
+  "oldGaitAndCatalogByteExact": true,
+  "actualCampStates": 7,
+  "coldRestoreFieldsMatch": true,
+  "ringBaseAP": 4,
+  "ringCap": 8,
+  "suppliesPayOriginalAP": true,
+  "emptySlotsSurviveExport": true,
+  "userUIApproval": null
+}

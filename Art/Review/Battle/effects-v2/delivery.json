@@ -1,0 +1,57 @@
+{
+  "status": "published-https-verified-offline-candidate",
+  "sourceAndArtCommit": "4e05336f4396280907e78b275d4ced7b72fa8c91",
+  "selectedRemotePathsVerified": 31,
+  "remoteBlobMatchesLocalBytes": true,
+  "publicArtifacts": [
+    {
+      "path": "Art/Review/Battle/effects-v2/battle-effects-v2.gif",
+      "url": "https://cdn.jsdelivr.net/gh/liamchan-rgb/experiment@4e05336f4396280907e78b275d4ced7b72fa8c91/Art/Review/Battle/effects-v2/battle-effects-v2.gif",
+      "httpStatus": 200,
+      "mime": "image/gif",
+      "bytes": 13572000,
+      "sha256": "b74981af48029f7e34e0a92df1b20d08117a9fac66b897252fb86f690289f65c",
+      "dimensions": [
+        760,
+        809
+      ],
+      "frames": 180,
+      "totalDurationMs": 7200,
+      "frameDurationMs": 40
+    },
+    {
+      "path": "Art/Review/Battle/effects-v2/standing.png",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/4e05336f4396280907e78b275d4ced7b72fa8c91/Art/Review/Battle/effects-v2/standing.png",
+      "httpStatus": 200,
+      "mime": "image/png",
+      "bytes": 883017,
+      "sha256": "1bdffde248d283d7283a65260f92a49bf1a3ec3380a7b51bf0d0083a04535f7d",
+      "dimensions": [
+        760,
+        809
+      ]
+    },
+    {
+      "path": "Art/Review/Battle/effects-v2/impact.png",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/4e05336f4396280907e78b275d4ced7b72fa8c91/Art/Review/Battle/effects-v2/impact.png",
+      "httpStatus": 200,
+      "mime": "image/png",
+      "bytes": 707585,
+      "sha256": "fe6a9c32b409423d4a41336ebafcd1942fba6afe3dbb5739da055b13ca1cdb1d",
+      "dimensions": [
+        760,
+        809
+      ]
+    }
+  ],
+  "artApproval": null,
+  "runtimeIntegration": false,
+  "pointerInputExecuted": false,
+  "deviceOrSimulatorExecuted": false,
+  "ipaBuilt": false,
+  "review": "art-review.md",
+  "checks": [
+    "verification.json",
+    "preservation-check.json"
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "canvasPx": [
+    256,
+    256
+  ],
+  "unchangedAboveY180": true,
+  "headFaceHairJacketBeltHandsSwordUnchanged": true,
+  "soleLinePx": 214,
+  "noPixelsBelowSoleLine": true,
+  "opaqueNeutralLegPixelsCovered": true,
+  "commonPoseSource": "Art/Templates/P1-Neutral/battle-side/right-step-contact-v1",
+  "registeredSourceScale": 0.2,
+  "registeredSourceTranslationPx": [
+    0,
+    5
+  ],
+  "runtimeIntegrated": false,
+  "userArtApproval": null,
+  "fullAnimationComplete": false,
+  "fullHiddenAnatomyComplete": false,
+  "visibleAlphaThreshold": 32,
+  "foregroundBootSoleAligned": true,
+  "visibleChangedPixels": 1665,
+  "visibleChangedBoundsExclusive": [
+    86,
+    180,
+    162,
+    215
+  ]
+}

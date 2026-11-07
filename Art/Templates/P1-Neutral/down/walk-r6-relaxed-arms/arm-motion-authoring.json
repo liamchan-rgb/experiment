@@ -1,0 +1,131 @@
+{
+  "sourceBase": "Art/Templates/P1-Neutral/down/walk-r2",
+  "sourcePose": "idle00 natural empty arms and hands",
+  "sourceBySlot": {
+    "body.arm.right": "layers/00/body.arm.right.png",
+    "body.arm.left": "layers/00/body.arm.left.png",
+    "body.hand.right": "layers/00/body.hand.right.png",
+    "body.hand.left": "layers/00/body.hand.left.png"
+  },
+  "bodyBobY": [
+    0,
+    0,
+    2,
+    -1,
+    -2,
+    0,
+    2,
+    -1,
+    -2
+  ],
+  "rightRelativeXY": [
+    [
+      0,
+      0
+    ],
+    [
+      -1,
+      -2
+    ],
+    [
+      -1,
+      -1
+    ],
+    [
+      0,
+      1
+    ],
+    [
+      0,
+      2
+    ],
+    [
+      0,
+      3
+    ],
+    [
+      0,
+      1
+    ],
+    [
+      0,
+      -1
+    ],
+    [
+      -1,
+      -2
+    ]
+  ],
+  "leftRelativeXY": [
+    [
+      0,
+      0
+    ],
+    [
+      1,
+      2
+    ],
+    [
+      1,
+      3
+    ],
+    [
+      0,
+      1
+    ],
+    [
+      0,
+      -1
+    ],
+    [
+      0,
+      -2
+    ],
+    [
+      0,
+      -1
+    ],
+    [
+      0,
+      1
+    ],
+    [
+      1,
+      2
+    ]
+  ],
+  "operation": "same fixed shoulder-pivot transform for each natural arm and its hand: small angle plus authored relative translation and body bob; torso/head/legs remain r2 per-pose originals",
+  "artApproval": null,
+  "rightAngleDeg": [
+    0,
+    4,
+    2,
+    -2,
+    -4,
+    -6,
+    -2,
+    2,
+    4
+  ],
+  "leftAngleDeg": [
+    0,
+    4,
+    6,
+    2,
+    -2,
+    -4,
+    -2,
+    2,
+    4
+  ],
+  "shoulderPivots": {
+    "right": [
+      110,
+      137
+    ],
+    "left": [
+      140,
+      137
+    ]
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "kind": "offline existing-resource composition",
+  "scope": "4/10/30 nodes;9 Swift adapter geometry exports;400 production motion samples at20ms",
+  "notDeviceOrUIKitCapture": true,
+  "shadowAtmosphereRoadMaterialApproximate": true,
+  "newCharacterArtwork": false,
+  "normalGifFrames": 400,
+  "normalGifFrameMs": 20,
+  "nativeUIRuntimeVerified": false,
+  "artApproval": null
+}

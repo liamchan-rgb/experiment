@@ -1,0 +1,122 @@
+{
+  "generatedSourceSHA256": "62ad65f2c8ca71ab84e317a8c313d7f57ea4c783aafc2a86fd62bad75c7f0313",
+  "method": "independent shaped armor source, fixed .205 whole-guide scale, explicit shoulder/elbow segmentation, short tassets follow each original leg",
+  "sourceGuides": [
+    {
+      "neck": [
+        270,
+        155
+      ],
+      "arms": [
+        [
+          176,
+          193
+        ],
+        [
+          365,
+          193
+        ]
+      ],
+      "elbows": [
+        [
+          168,
+          260
+        ],
+        [
+          375,
+          260
+        ]
+      ],
+      "cut": 244,
+      "belt": 303
+    },
+    {
+      "neck": [
+        665,
+        157
+      ],
+      "arms": [
+        [
+          598,
+          200
+        ],
+        [
+          709,
+          194
+        ]
+      ],
+      "elbows": [
+        [
+          595,
+          261
+        ],
+        [
+          716,
+          260
+        ]
+      ],
+      "cut": 248,
+      "belt": 304
+    },
+    {
+      "neck": [
+        1095,
+        158
+      ],
+      "arms": [
+        [
+          992,
+          192
+        ],
+        [
+          1194,
+          194
+        ]
+      ],
+      "elbows": [
+        [
+          984,
+          260
+        ],
+        [
+          1201,
+          260
+        ]
+      ],
+      "cut": 246,
+      "belt": 304
+    },
+    {
+      "neck": [
+        1504,
+        158
+      ],
+      "arms": [
+        [
+          1425,
+          195
+        ],
+        [
+          1606,
+          194
+        ]
+      ],
+      "elbows": [
+        [
+          1421,
+          260
+        ],
+        [
+          1610,
+          260
+        ]
+      ],
+      "cut": 246,
+      "belt": 304
+    }
+  ],
+  "sourceRowOffset": 0,
+  "noExistingClothingRecolorOrAlphaReuse": true,
+  "originalBodyMotionModified": false,
+  "artApproval": null
+}

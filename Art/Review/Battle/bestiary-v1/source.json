@@ -1,0 +1,12 @@
+{
+  "sourceCommit": "ce75138d8748325f7b7dbcb302228d0ccde65246",
+  "cli": "MeadowSupportReviewExport --monster-only",
+  "normalSamplesPerSpecies": 320,
+  "sampleMs": 20,
+  "nativeRunPending": false,
+  "gameAppRun": false,
+  "nativeRunID": 42074953267,
+  "nativeSourceCommit": "ce75138d8748325f7b7dbcb302228d0ccde65246",
+  "nativeModelSHA256": "b57bc4e8071ac7316ec3b3e9d8d73ac9388d739799859133fa8b35e02b45a5fc",
+  "nativeModelEquivalentToLinux": true
+}

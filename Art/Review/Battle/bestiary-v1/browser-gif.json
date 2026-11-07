@@ -1,0 +1,15 @@
+{
+  "scope": "Standalone public HTTPS GIF decoder/playback only. No game/App/simulator/device started.",
+  "dimensions": [
+    1200,
+    528
+  ],
+  "encodedFrames": 93,
+  "durationMs": 6400,
+  "minFrameMs": 20,
+  "maxHeldFrameMs": 800,
+  "loop": 0,
+  "visuallyAdvanced": true,
+  "bytes": 2259637,
+  "sha256": "1a53dd401f929c80efa422cde66ce44afee4b097283fa4aa37600292682058fb"
+}

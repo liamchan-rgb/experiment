@@ -1,0 +1,32 @@
+{
+  "id": "p1-hair-silver-down-left-v1",
+  "source": {
+    "image": "source/silver-amber-original.png",
+    "canvas": [
+      1774,
+      887
+    ],
+    "sha256": "561b27b556a795b087f550df6e3f6d4a32f93aee00b688086043ad02ba60e353",
+    "prompt": "source/prompt.txt"
+  },
+  "panel": 0,
+  "registration": {
+    "hair.front": [
+      {
+        "components": "all",
+        "scale": 0.07,
+        "translation": [
+          18,
+          12
+        ]
+      }
+    ]
+  },
+  "headLocalOrigin": [
+    76,
+    61
+  ],
+  "authorAndReviewer": "root",
+  "subagentsUsed": false,
+  "artApproval": null
+}

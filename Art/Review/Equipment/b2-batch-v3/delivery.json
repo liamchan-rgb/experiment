@@ -1,0 +1,96 @@
+{
+  "candidateCommit": "fb72eb5f773d178dece199d0069cbf4b34ad245c",
+  "resourceRevisionSHA256": "065f0efc4faa649090f899f4a2b1317c3cf422efc0373e19adb5da387c9d99b9",
+  "checkedPublishedPaths": 1785,
+  "onlySelectedPathsChanged": true,
+  "media": [
+    {
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/fb72eb5f773d178dece199d0069cbf4b34ad245c/Art/Review/Equipment/b2-batch-v3/batch-walk-normal.gif",
+      "status": 200,
+      "mime": "image/gif",
+      "bytes": 768775,
+      "SHA256": "f13ea61bfbbdb1069dca9a6642d71c9fbf810240dcb809f667e0a96c4f31b1d0",
+      "frames": 8,
+      "durationMs": 960,
+      "loop": 0
+    },
+    {
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/fb72eb5f773d178dece199d0069cbf4b34ad245c/Art/Review/Equipment/b2-batch-v3/batch-standing.png",
+      "status": 200,
+      "mime": "image/png",
+      "bytes": 237884,
+      "SHA256": "b46535a53f6e5ecbc679e86034e8546aec90b013315d9a55cf6b143acfcc0177"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/fb72eb5f773d178dece199d0069cbf4b34ad245c/Art/Review/Equipment/b2-batch-v3/leatherArmor/walk-normal.gif",
+      "status": 200,
+      "mime": "image/gif",
+      "bytes": 416021,
+      "SHA256": "e8aa22689633c4aa1f59431945879f0f4d348206209883b11837b72e7fbdaae2",
+      "frames": 8,
+      "durationMs": 960,
+      "loop": 0
+    },
+    {
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/fb72eb5f773d178dece199d0069cbf4b34ad245c/Art/Review/Equipment/b2-batch-v3/leatherArmor/standing.png",
+      "status": 200,
+      "mime": "image/png",
+      "bytes": 116542,
+      "SHA256": "0ef06a3a8769301a784d4d7329665d85fa7fc3c352ff3c22f22a5560b8e37287"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/fb72eb5f773d178dece199d0069cbf4b34ad245c/Art/Review/Equipment/b2-batch-v3/leatherArmor/battle-normal.gif",
+      "status": 200,
+      "mime": "image/gif",
+      "bytes": 996993,
+      "SHA256": "84e610e483b2d7031525a35c06a94f3ead3dd16b7df347b7dc12228a43ee9c09",
+      "frames": 60,
+      "durationMs": 1200,
+      "loop": 0
+    },
+    {
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/fb72eb5f773d178dece199d0069cbf4b34ad245c/Art/Review/Equipment/b2-batch-v3/runeArmor/walk-normal.gif",
+      "status": 200,
+      "mime": "image/gif",
+      "bytes": 405343,
+      "SHA256": "1f41316fccde8f1def3b30851df1332f608599b1f51b80bd81bf97cccac03cad",
+      "frames": 8,
+      "durationMs": 960,
+      "loop": 0
+    },
+    {
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/fb72eb5f773d178dece199d0069cbf4b34ad245c/Art/Review/Equipment/b2-batch-v3/runeArmor/standing.png",
+      "status": 200,
+      "mime": "image/png",
+      "bytes": 121484,
+      "SHA256": "94af55732a4cb016b4ac90cef6c8f65bc5a30279ecef5acbfe920c8da63cda9c"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/fb72eb5f773d178dece199d0069cbf4b34ad245c/Art/Review/Equipment/b2-batch-v3/runeArmor/battle-normal.gif",
+      "status": 200,
+      "mime": "image/gif",
+      "bytes": 983280,
+      "SHA256": "a029cff3bafb0798c44996c526c75651d0d353a7642d47af667591ce61f60d0e",
+      "frames": 60,
+      "durationMs": 1200,
+      "loop": 0
+    },
+    {
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/fb72eb5f773d178dece199d0069cbf4b34ad245c/Art/Review/Equipment/b2-batch-v3/manifest.json",
+      "status": 200,
+      "mime": "text/plain",
+      "bytes": 14085,
+      "SHA256": "8af5fc6dc409f9bc68af420eb5496055b95eb341488a669c7e808dffb12c93cf"
+    }
+  ],
+  "artApproval": null,
+  "deviceRun": false,
+  "site": "https://meadow-equipment-review.smokytide.chatgpt.site",
+  "deployment": "appgdep_6adf842cbe788191bb55f292fad931b7",
+  "siteVersion": "appgprj_6adf5ffe0ee88191a0d7a2ad3a0686b4~appgver_ee75f5cae334819184e07bc22ca08a1f",
+  "siteSourceCommit": "372a0abfaa04fe9b1954522cbf82bbdc42bef2b0",
+  "siteAudience": "owner-private",
+  "fourOriginalApprovalsPreserved": true,
+  "twoNewArmorsPendingReview": true,
+  "runtimeIntegrated": false
+}

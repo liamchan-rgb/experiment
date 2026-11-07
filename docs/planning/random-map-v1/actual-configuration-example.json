@@ -1,0 +1,11 @@
+{
+  "boss": 1,
+  "combat": 4,
+  "decorationCount": 100,
+  "empty": 1,
+  "extraRoads": 1,
+  "minimumBossHops": 0,
+  "reward": 3,
+  "seed": 31827,
+  "total": 10
+}

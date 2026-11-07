@@ -1,0 +1,19 @@
+{
+  "canvasPx": [
+    256,
+    256
+  ],
+  "changedPixels": 97,
+  "changedBoundsPx": [
+    101,
+    105,
+    116,
+    127
+  ],
+  "changesRestrictedToHeadRear": true,
+  "pixelsAtAndBelowY128Unchanged": true,
+  "sourcePoseApproval": "r2 pose only; r3 head contour unapproved",
+  "runtimeIntegrated": false,
+  "userArtApproval": null,
+  "faceAndEarAtAndBeyondX117Unchanged": true
+}

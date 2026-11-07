@@ -1,0 +1,17 @@
+{
+  "sourceSHA256": "c94812aae001ef772e2d0b27c2bb2eabd655544abc8f642d723b40289b5caa2b",
+  "exporter": "scripts/build-b2-armor-r4.py",
+  "surface": "scripts/armor-shared-surface-r4.py",
+  "sourceViews": [
+    "front",
+    "front-quarter-left",
+    "profile-left",
+    "rear-quarter-left",
+    "back"
+  ],
+  "method": "existing five-view armor; front torso follows neck/pelvis without independent shoulder tilt; each pauldron pivots with its arm; source joints and layer order retained",
+  "profileWrists": "five nearest solid original hand marker pixels to its elbow; frozen per pose, not garment alpha fitting",
+  "bodyMotionModified": false,
+  "oldApprovedArtModified": false,
+  "artApproval": null
+}

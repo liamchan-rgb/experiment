@@ -1,0 +1,10 @@
+{
+  "poses": 104,
+  "armAnchors": 624,
+  "maximumEndpointErrorNativePixels": 0,
+  "visibleClothTriangleFoldResult": {
+    "visibleInvertedTriangles": []
+  },
+  "artApproval": null,
+  "surfaceCodeSHA256": "3cd6f4800eb6d5f948e08386b382236c1cc12e4f7d77818b1cfeb92971767809"
+}

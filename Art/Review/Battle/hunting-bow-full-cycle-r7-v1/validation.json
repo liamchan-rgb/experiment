@@ -1,0 +1,17 @@
+{
+  "nativeSamples": 143,
+  "decodedFrames": 81,
+  "durationMs": 2860,
+  "approvedFollowthroughLayersAndPosesByteExact": true,
+  "headFaceStableNativeAndDecoded": true,
+  "allPreparationSleeveWristOverlaps": true,
+  "shoulderPivotsFixed": true,
+  "firstFullDrawExactlyR7": true,
+  "globalPalette": true,
+  "singlePlayback": true,
+  "imageGenerationUsed": false,
+  "runtimeImported": false,
+  "deviceRunPerformed": false,
+  "userApproved": false,
+  "drawingFingerStringAndArrowCoincideAfterNocking": true
+}

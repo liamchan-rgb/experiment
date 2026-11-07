@@ -1,0 +1,44 @@
+Building for production...
+[0/12] Write sources
+[3/12] Copying legendary-staff-v1.json
+[3/12] Write sources
+[3/12] Copying reviewed-bow-r7.json
+[6/12] Copying great-sword-v1.json
+[7/12] Write sources
+[8/12] Copying initial-content.json
+[9/12] Write swift-version--79AA4F9932D1E87A.txt
+[11/13] Compiling ClassroomGameCore ActionPlanning.swift
+[12/15] Compiling MeadowBattleSupport BattleDice.swift
+[13/15] Compiling MeadowWorldSupport Campaign.swift
+[14/16] Compiling MeadowCampaignAuditSupport JourneyAudit.swift
+[15/17] Compiling MeadowCampaignReview main.swift
+[15/17] Write Objects.LinkFileList
+[16/17] Linking MeadowCampaignReview
+Build of product 'MeadowCampaignReview' complete! (67.33s)
+Audit 4/0/adventurer
+Audit 4/0/spellblade
+Audit 4/0/dragonKnight
+Audit 4/31827/adventurer
+Audit 4/31827/spellblade
+Audit 4/31827/dragonKnight
+Audit 4/18446744073709551615/adventurer
+Audit 4/18446744073709551615/spellblade
+Audit 4/18446744073709551615/dragonKnight
+Audit 10/0/adventurer
+Audit 10/0/spellblade
+Audit 10/0/dragonKnight
+Audit 10/31827/adventurer
+Audit 10/31827/spellblade
+Audit 10/31827/dragonKnight
+Audit 10/18446744073709551615/adventurer
+Audit 10/18446744073709551615/spellblade
+Audit 10/18446744073709551615/dragonKnight
+Audit 30/0/adventurer
+Audit 30/0/spellblade
+Audit 30/0/dragonKnight
+Audit 30/31827/adventurer
+Audit 30/31827/spellblade
+Audit 30/31827/dragonKnight
+Audit 30/18446744073709551615/adventurer
+Audit 30/18446744073709551615/spellblade
+Audit 30/18446744073709551615/dragonKnight

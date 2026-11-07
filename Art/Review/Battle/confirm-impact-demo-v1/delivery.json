@@ -1,0 +1,98 @@
+{
+  "date": "2026-10-26",
+  "deliveryCommit": "4858744e4dbcc24b9e9144ad38c71e3adbd4767f",
+  "sourceCommit": "a47f5d1ccf852337a784e3373e42a655ce1b2e54",
+  "selectedPathsChecked": 96,
+  "compiledInputsChecked": 246,
+  "publicCompleteGETs": [
+    {
+      "path": "Downloads/MeadowJourney-b50.ipa",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/4858744e4dbcc24b9e9144ad38c71e3adbd4767f/Downloads/MeadowJourney-b50.ipa",
+      "status": 200,
+      "mime": "application/octet-stream",
+      "bytes": 31878612,
+      "sha256": "ee3e6dcd9c253a374ed117aa2aeabe294cfbe68dabbbf432c28a8f9041c05cc9"
+    },
+    {
+      "path": "Downloads/MeadowJourney-b50.ipa",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/fix/build33-face-grounding-camera/Downloads/MeadowJourney-b50.ipa",
+      "status": 200,
+      "mime": "application/octet-stream",
+      "bytes": 31878612,
+      "sha256": "ee3e6dcd9c253a374ed117aa2aeabe294cfbe68dabbbf432c28a8f9041c05cc9"
+    },
+    {
+      "path": "Art/Review/Battle/confirm-impact-demo-v1/ambush-normal.gif",
+      "url": "https://cdn.jsdelivr.net/gh/liamchan-rgb/experiment@4858744e4dbcc24b9e9144ad38c71e3adbd4767f/Art/Review/Battle/confirm-impact-demo-v1/ambush-normal.gif",
+      "status": 200,
+      "mime": "image/gif",
+      "bytes": 10552423,
+      "sha256": "4a53fa17ecc07207e58fe82b2cf5300fe47fbea3a3938623ad573b0d910b96cc",
+      "frames": 220,
+      "durationMs": 4400
+    },
+    {
+      "path": "Art/Review/Battle/confirm-impact-demo-v1/attack-buff-normal.gif",
+      "url": "https://cdn.jsdelivr.net/gh/liamchan-rgb/experiment@4858744e4dbcc24b9e9144ad38c71e3adbd4767f/Art/Review/Battle/confirm-impact-demo-v1/attack-buff-normal.gif",
+      "status": 200,
+      "mime": "image/gif",
+      "bytes": 13168358,
+      "sha256": "07f26066cb256c45e17593d9dab56265b8a5417ae32dd5c2d4720e3f5e6a1add",
+      "frames": 300,
+      "durationMs": 6000
+    },
+    {
+      "path": "Art/Review/Battle/confirm-impact-demo-v1/lethal-normal.gif",
+      "url": "https://cdn.jsdelivr.net/gh/liamchan-rgb/experiment@4858744e4dbcc24b9e9144ad38c71e3adbd4767f/Art/Review/Battle/confirm-impact-demo-v1/lethal-normal.gif",
+      "status": 200,
+      "mime": "image/gif",
+      "bytes": 9728166,
+      "sha256": "7cb4950658de58d076878b6511a57e4f63ed54e983627d64fef581d9ede355ab",
+      "frames": 190,
+      "durationMs": 3800
+    },
+    {
+      "path": "Art/Review/Battle/confirm-impact-demo-v1/ambush-standing.png",
+      "url": "https://cdn.jsdelivr.net/gh/liamchan-rgb/experiment@4858744e4dbcc24b9e9144ad38c71e3adbd4767f/Art/Review/Battle/confirm-impact-demo-v1/ambush-standing.png",
+      "status": 200,
+      "mime": "image/png",
+      "bytes": 1847829,
+      "sha256": "67f12c2f9b847d2ca52984d60678b15deda0523fdf1a5033b3b1ef218f964895"
+    },
+    {
+      "path": "Art/Review/Battle/confirm-impact-demo-v1/ambush-dash.png",
+      "url": "https://cdn.jsdelivr.net/gh/liamchan-rgb/experiment@4858744e4dbcc24b9e9144ad38c71e3adbd4767f/Art/Review/Battle/confirm-impact-demo-v1/ambush-dash.png",
+      "status": 200,
+      "mime": "image/png",
+      "bytes": 1746546,
+      "sha256": "f24b26cfa689a3f0fe342c3eb6d34d3ad59b2c7e9b4c70e01ac1b5b294908a14"
+    },
+    {
+      "path": "Art/Review/Battle/confirm-impact-demo-v1/ambush-impact.png",
+      "url": "https://cdn.jsdelivr.net/gh/liamchan-rgb/experiment@4858744e4dbcc24b9e9144ad38c71e3adbd4767f/Art/Review/Battle/confirm-impact-demo-v1/ambush-impact.png",
+      "status": 200,
+      "mime": "image/png",
+      "bytes": 1742779,
+      "sha256": "dc3b68bd5e14a331b1f8697d2c21ba20bd33cb9d2d3681e9c6cd72947f4ccb23"
+    },
+    {
+      "path": "Art/Review/Battle/confirm-impact-demo-v1/attack-buff-impact.png",
+      "url": "https://cdn.jsdelivr.net/gh/liamchan-rgb/experiment@4858744e4dbcc24b9e9144ad38c71e3adbd4767f/Art/Review/Battle/confirm-impact-demo-v1/attack-buff-impact.png",
+      "status": 200,
+      "mime": "image/png",
+      "bytes": 1739883,
+      "sha256": "4a4c471a31a8b376dfc420ef04f67b9d51487b23e17acfdcaaa3073243c74c3c"
+    },
+    {
+      "path": "Art/Review/Battle/confirm-impact-demo-v1/lethal-impact.png",
+      "url": "https://cdn.jsdelivr.net/gh/liamchan-rgb/experiment@4858744e4dbcc24b9e9144ad38c71e3adbd4767f/Art/Review/Battle/confirm-impact-demo-v1/lethal-impact.png",
+      "status": 200,
+      "mime": "image/png",
+      "bytes": 1743380,
+      "sha256": "6ee5620feecb8bffd90aec56f2b635c21e4c0ecfd555e217ae6b416617f8fd03"
+    }
+  ],
+  "simulatorRun": false,
+  "deviceRun": false,
+  "newArtApproval": null
+}

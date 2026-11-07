@@ -1,0 +1,139 @@
+{
+  "id": "p1-weapon-back-scabbard-left-v1",
+  "version": "1.0.0",
+  "compatibility": {
+    "rig": "p1-chibi-v1",
+    "bodyProfile": "p1-standard",
+    "actionSet": "locomotion-v1"
+  },
+  "schemaVersion": "1.0.0",
+  "part": "weapon",
+  "mode": "pose-map",
+  "directions": [
+    "left"
+  ],
+  "clips": [
+    "idle",
+    "walk",
+    "walk-start",
+    "walk-stop"
+  ],
+  "slots": [
+    "weapon.back"
+  ],
+  "carryProfile": "back-scabbard",
+  "bindings": [
+    {
+      "direction": "left",
+      "clip": "idle",
+      "frame": 0,
+      "layers": {
+        "weapon.back": "png/weapon.back.png"
+      }
+    },
+    {
+      "direction": "left",
+      "clip": "walk",
+      "frame": 1,
+      "layers": {
+        "weapon.back": "png/weapon.back.png"
+      }
+    },
+    {
+      "direction": "left",
+      "clip": "walk",
+      "frame": 2,
+      "layers": {
+        "weapon.back": "png/weapon.back.png"
+      }
+    },
+    {
+      "direction": "left",
+      "clip": "walk",
+      "frame": 3,
+      "layers": {
+        "weapon.back": "png/weapon.back.png"
+      }
+    },
+    {
+      "direction": "left",
+      "clip": "walk",
+      "frame": 4,
+      "layers": {
+        "weapon.back": "png/weapon.back.png"
+      }
+    },
+    {
+      "direction": "left",
+      "clip": "walk",
+      "frame": 5,
+      "layers": {
+        "weapon.back": "png/weapon.back.png"
+      }
+    },
+    {
+      "direction": "left",
+      "clip": "walk",
+      "frame": 6,
+      "layers": {
+        "weapon.back": "png/weapon.back.png"
+      }
+    },
+    {
+      "direction": "left",
+      "clip": "walk",
+      "frame": 7,
+      "layers": {
+        "weapon.back": "png/weapon.back.png"
+      }
+    },
+    {
+      "direction": "left",
+      "clip": "walk",
+      "frame": 8,
+      "layers": {
+        "weapon.back": "png/weapon.back.png"
+      }
+    },
+    {
+      "direction": "left",
+      "clip": "walk-start",
+      "frame": 1,
+      "layers": {
+        "weapon.back": "png/weapon.back.png"
+      }
+    },
+    {
+      "direction": "left",
+      "clip": "walk-start",
+      "frame": 2,
+      "layers": {
+        "weapon.back": "png/weapon.back.png"
+      }
+    },
+    {
+      "direction": "left",
+      "clip": "walk-stop",
+      "frame": 1,
+      "layers": {
+        "weapon.back": "png/weapon.back.png"
+      }
+    },
+    {
+      "direction": "left",
+      "clip": "walk-stop",
+      "frame": 2,
+      "layers": {
+        "weapon.back": "png/weapon.back.png"
+      }
+    }
+  ],
+  "sourceFiles": [
+    "authoring.json",
+    "export.py",
+    "source/imagegen-original.png",
+    "source/provenance.json",
+    "editable/back-scabbard.ora",
+    "editable/back-scabbard.svg"
+  ]
+}

@@ -1,0 +1,126 @@
+{
+  "date": "2026-10-25",
+  "deliveryCommit": "5b5114ed751e7020f1bb7823805cb76b179cc254",
+  "sourceCommit": "cf245fe98d2234941423e487bacc8be0f67685be",
+  "selectedPathsChecked": 105,
+  "compiledInputsChecked": 241,
+  "publicCompleteGETs": [
+    {
+      "path": "Downloads/MeadowJourney-b46.ipa",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/5b5114ed751e7020f1bb7823805cb76b179cc254/Downloads/MeadowJourney-b46.ipa",
+      "status": 200,
+      "mime": "application/octet-stream",
+      "bytes": 31740108,
+      "sha256": "3cd7c942e82d91a238ba9f11f4921c88f24a640734fbb38154f1e008f04e855d"
+    },
+    {
+      "path": "Downloads/MeadowJourney-b46.ipa",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/fix/build33-face-grounding-camera/Downloads/MeadowJourney-b46.ipa",
+      "status": 200,
+      "mime": "application/octet-stream",
+      "bytes": 31740108,
+      "sha256": "3cd7c942e82d91a238ba9f11f4921c88f24a640734fbb38154f1e008f04e855d"
+    },
+    {
+      "path": "Art/Review/Battle/party-support-demo-v1/support-normal.gif",
+      "url": "https://cdn.jsdelivr.net/gh/liamchan-rgb/experiment@5b5114ed751e7020f1bb7823805cb76b179cc254/Art/Review/Battle/party-support-demo-v1/support-normal.gif",
+      "status": 200,
+      "mime": "image/gif",
+      "bytes": 8633035,
+      "sha256": "a2e4fcb6af1dbc8004ef9dac8159f9559ccf8292dcdedb083232a5708f4f700e",
+      "frames": 160,
+      "durationMs": 3200
+    },
+    {
+      "path": "Art/Review/Battle/party-support-demo-v1/rally-normal.gif",
+      "url": "https://cdn.jsdelivr.net/gh/liamchan-rgb/experiment@5b5114ed751e7020f1bb7823805cb76b179cc254/Art/Review/Battle/party-support-demo-v1/rally-normal.gif",
+      "status": 200,
+      "mime": "image/gif",
+      "bytes": 8571726,
+      "sha256": "ec39b9f0fac36a7ec7537b9a5bf66d65d118020c8d43a37478b8683b1ad4af8d",
+      "frames": 160,
+      "durationMs": 3200
+    },
+    {
+      "path": "Art/Review/Battle/party-support-demo-v1/items-normal.gif",
+      "url": "https://cdn.jsdelivr.net/gh/liamchan-rgb/experiment@5b5114ed751e7020f1bb7823805cb76b179cc254/Art/Review/Battle/party-support-demo-v1/items-normal.gif",
+      "status": 200,
+      "mime": "image/gif",
+      "bytes": 19495706,
+      "sha256": "18c8e5527bc2c521249ce163ca8ff8b53f4cbc8b20d1925dbc78202f8c2878d5",
+      "frames": 370,
+      "durationMs": 7400
+    },
+    {
+      "path": "Art/Review/Battle/party-support-demo-v1/revive-normal.gif",
+      "url": "https://cdn.jsdelivr.net/gh/liamchan-rgb/experiment@5b5114ed751e7020f1bb7823805cb76b179cc254/Art/Review/Battle/party-support-demo-v1/revive-normal.gif",
+      "status": 200,
+      "mime": "image/gif",
+      "bytes": 8673125,
+      "sha256": "93bccbc5b51876ed2ad5462304ce97d85089fa8f25edeb61eea97e2f18c37591",
+      "frames": 180,
+      "durationMs": 3600
+    },
+    {
+      "path": "Art/Review/Battle/party-support-demo-v1/combat-normal.gif",
+      "url": "https://cdn.jsdelivr.net/gh/liamchan-rgb/experiment@5b5114ed751e7020f1bb7823805cb76b179cc254/Art/Review/Battle/party-support-demo-v1/combat-normal.gif",
+      "status": 200,
+      "mime": "image/gif",
+      "bytes": 14307444,
+      "sha256": "6c72fc4642ed38052c7efd56a0556e5da855bbff00d35c432cd2ef4f6ba19391",
+      "frames": 320,
+      "durationMs": 6400
+    },
+    {
+      "path": "Art/Review/Battle/party-support-demo-v1/support-standing.png",
+      "url": "https://cdn.jsdelivr.net/gh/liamchan-rgb/experiment@5b5114ed751e7020f1bb7823805cb76b179cc254/Art/Review/Battle/party-support-demo-v1/support-standing.png",
+      "status": 200,
+      "mime": "image/png",
+      "bytes": 1055510,
+      "sha256": "c529185d6b2d20e131ab90722c37fc8fa971ba588ae1d703f62e1c58f021fa2d"
+    },
+    {
+      "path": "Art/Review/Battle/party-support-demo-v1/support-impact.png",
+      "url": "https://cdn.jsdelivr.net/gh/liamchan-rgb/experiment@5b5114ed751e7020f1bb7823805cb76b179cc254/Art/Review/Battle/party-support-demo-v1/support-impact.png",
+      "status": 200,
+      "mime": "image/png",
+      "bytes": 992569,
+      "sha256": "4b47a73df1d47fcd8ff687e32afcd322cbcf8a9f64007e1d8232d90b245de844"
+    },
+    {
+      "path": "Art/Review/Battle/party-support-demo-v1/rally-impact.png",
+      "url": "https://cdn.jsdelivr.net/gh/liamchan-rgb/experiment@5b5114ed751e7020f1bb7823805cb76b179cc254/Art/Review/Battle/party-support-demo-v1/rally-impact.png",
+      "status": 200,
+      "mime": "image/png",
+      "bytes": 964090,
+      "sha256": "475a69eb6b1b2c51de5be8c983de24ccb218521266352cac9de9a8762d9f9545"
+    },
+    {
+      "path": "Art/Review/Battle/party-support-demo-v1/revive-standing.png",
+      "url": "https://cdn.jsdelivr.net/gh/liamchan-rgb/experiment@5b5114ed751e7020f1bb7823805cb76b179cc254/Art/Review/Battle/party-support-demo-v1/revive-standing.png",
+      "status": 200,
+      "mime": "image/png",
+      "bytes": 1056936,
+      "sha256": "0aea4bb3c7979fa2f0188c693bda1f1d18588038558fa1f1dc66af340a96caa5"
+    },
+    {
+      "path": "Art/Review/Battle/party-support-demo-v1/items-shield.png",
+      "url": "https://cdn.jsdelivr.net/gh/liamchan-rgb/experiment@5b5114ed751e7020f1bb7823805cb76b179cc254/Art/Review/Battle/party-support-demo-v1/items-shield.png",
+      "status": 200,
+      "mime": "image/png",
+      "bytes": 989633,
+      "sha256": "fe1ac729a2589632ed111931fb2ce8c35d0404f2220fc0ab49c49dc194a0991c"
+    },
+    {
+      "path": "Art/Review/Battle/party-support-demo-v1/combat-shield-contact.png",
+      "url": "https://cdn.jsdelivr.net/gh/liamchan-rgb/experiment@5b5114ed751e7020f1bb7823805cb76b179cc254/Art/Review/Battle/party-support-demo-v1/combat-shield-contact.png",
+      "status": 200,
+      "mime": "image/png",
+      "bytes": 859572,
+      "sha256": "1946f7599b1b3301ba3cd34b09659ddb223a07dacf1d1a1f05c3ba830f2884e6"
+    }
+  ],
+  "simulatorRun": false,
+  "deviceRun": false,
+  "newArtApproval": null
+}

@@ -1,0 +1,84 @@
+{
+  "candidateCommit": "a26ff2a066099fdca958fdcd07552ffcabc3b18b",
+  "resourceRevisionSHA256": "b2db514f0ee2a5a8ebce86ff6e5ad078ae1203603c3527d5a9cbc7ce3410c915",
+  "checkedPublishedPaths": 55,
+  "onlySelectedPathsChanged": true,
+  "media": [
+    {
+      "url": "https://cdn.jsdelivr.net/gh/liamchan-rgb/experiment@a26ff2a066099fdca958fdcd07552ffcabc3b18b/Art/Review/Battle/b2-weapons-v1/greatSword-scene-normal.gif",
+      "status": 200,
+      "mime": "image/gif",
+      "bytes": 13078788,
+      "SHA256": "79a564dac83937b0a9231c4b63378a74b6402e43279f15f78d4400673f252842",
+      "frames": 103,
+      "durationMs": 2400,
+      "loop": 0
+    },
+    {
+      "url": "https://cdn.jsdelivr.net/gh/liamchan-rgb/experiment@a26ff2a066099fdca958fdcd07552ffcabc3b18b/Art/Review/Battle/b2-weapons-v1/legendaryStaff-scene-normal.gif",
+      "status": 200,
+      "mime": "image/gif",
+      "bytes": 11107870,
+      "SHA256": "cb342a6a0fe47b748ae26854872a9c90429e588b44cf115e4a95daed214a06d6",
+      "frames": 115,
+      "durationMs": 2400,
+      "loop": 0
+    },
+    {
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/a26ff2a066099fdca958fdcd07552ffcabc3b18b/Art/Review/Battle/b2-weapons-v1/greatSword-scene-60fps.mp4",
+      "status": 200,
+      "mime": "application/octet-stream",
+      "bytes": 576637,
+      "SHA256": "3bb40d4733171edb613aa458c8b4f1d14476242d07cb6d0c97abc0bd54264d9a",
+      "stream": {
+        "codec_name": "h264",
+        "width": 800,
+        "height": 480,
+        "avg_frame_rate": "60/1",
+        "duration": "2.400000",
+        "nb_frames": "144"
+      }
+    },
+    {
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/a26ff2a066099fdca958fdcd07552ffcabc3b18b/Art/Review/Battle/b2-weapons-v1/legendaryStaff-scene-60fps.mp4",
+      "status": 200,
+      "mime": "application/octet-stream",
+      "bytes": 505049,
+      "SHA256": "dfb6647e4d8fd1fe9dcc529b2a51ad30690c232c18eb49a79a56b6820796f5df",
+      "stream": {
+        "codec_name": "h264",
+        "width": 800,
+        "height": 480,
+        "avg_frame_rate": "60/1",
+        "duration": "2.400000",
+        "nb_frames": "144"
+      }
+    },
+    {
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/a26ff2a066099fdca958fdcd07552ffcabc3b18b/Art/Review/Battle/b2-weapons-v1/greatSword-1.04.png",
+      "status": 200,
+      "mime": "image/png",
+      "bytes": 811106,
+      "SHA256": "0a32ffea01c15ac25a4c3e7d22aa5abb3f2c4b21e4cf632ffc5fa14d18c2a5de"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/a26ff2a066099fdca958fdcd07552ffcabc3b18b/Art/Review/Battle/b2-weapons-v1/legendaryStaff-1.48.png",
+      "status": 200,
+      "mime": "image/png",
+      "bytes": 782103,
+      "SHA256": "340a2ae2f99ae29f042505132a6c732650e2d35c80f2ab6f129e23123f5278e8"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/a26ff2a066099fdca958fdcd07552ffcabc3b18b/Art/Review/Equipment/b2-batch-v6/manifest.json",
+      "status": 200,
+      "mime": "text/plain",
+      "bytes": 16351,
+      "SHA256": "a20acb116d67dd12b112f557c32a43f54ec45b180833e8d7dd9af53b7aac2b26"
+    }
+  ],
+  "newActionArtApproval": null,
+  "deviceRun": false,
+  "publicGifBrowserDisplayChecked": true,
+  "publicGifDelivery": "immutable jsDelivr GitHub CDN URLs; complete bytes match committed GIFs, image/gif; GitHub raw sends application/octet-stream for these GIFs",
+  "mp4RawContentType": "application/octet-stream; review using deployed video player"
+}

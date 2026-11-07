@@ -1,0 +1,89 @@
+{
+  "candidateCommit": "daad0934269e9810c65616ad685ade3101ab4013",
+  "resourceRevisionSHA256": "1712316d3fc209b10f2a40ff2daac99706de1bee87d2440cf9a68d864ecdc2ef",
+  "checkedPublishedPaths": 905,
+  "onlySelectedPathsChanged": true,
+  "media": [
+    {
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/daad0934269e9810c65616ad685ade3101ab4013/Art/Review/Equipment/b2-batch-v5/rune-left-walk-normal.gif",
+      "status": 200,
+      "mime": "image/gif",
+      "bytes": 212310,
+      "SHA256": "d76f19ad5a3b91173b2a740123f2fdadcea1795e436b898222e0258ae6bf91ac",
+      "frames": 8,
+      "durationMs": 960,
+      "loop": 0
+    },
+    {
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/daad0934269e9810c65616ad685ade3101ab4013/Art/Review/Equipment/b2-batch-v5/rune-right-walk-normal.gif",
+      "status": 200,
+      "mime": "image/gif",
+      "bytes": 203419,
+      "SHA256": "21477abaa56039f08e34e172bbd861945fb02caed8ab4ad8f71e5cb2f4057bf3",
+      "frames": 8,
+      "durationMs": 960,
+      "loop": 0
+    },
+    {
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/daad0934269e9810c65616ad685ade3101ab4013/Art/Review/Equipment/b2-batch-v5/rune-left-start-stop-normal.gif",
+      "status": 200,
+      "mime": "image/gif",
+      "bytes": 576588,
+      "SHA256": "9617ed755e8d2fa2fbb05d76d57561f5ca5ec4713e9fbfea480f27acfb33a44c",
+      "frames": 22,
+      "durationMs": 3360,
+      "loop": 0
+    },
+    {
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/daad0934269e9810c65616ad685ade3101ab4013/Art/Review/Equipment/b2-batch-v5/rune-right-start-stop-normal.gif",
+      "status": 200,
+      "mime": "image/gif",
+      "bytes": 551805,
+      "SHA256": "2f60653f8dda68bb3ff546429741159c07bba31491cca32d14e7023c28c7157e",
+      "frames": 22,
+      "durationMs": 3360,
+      "loop": 0
+    },
+    {
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/daad0934269e9810c65616ad685ade3101ab4013/Art/Review/Equipment/b2-batch-v5/rune-profile-standing.png",
+      "status": 200,
+      "mime": "image/png",
+      "bytes": 44012,
+      "SHA256": "bd1501ccbfdce63c9c4c9ea187828f67f176e073fdb573e3d5f5c86faf27de15"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/daad0934269e9810c65616ad685ade3101ab4013/Art/Review/Equipment/b2-batch-v5/runeArmor/walk-normal.gif",
+      "status": 200,
+      "mime": "image/gif",
+      "bytes": 403485,
+      "SHA256": "a568150615381d364de11f37caa6e90f9470e4d2727396f7b2b9db8f0302948a",
+      "frames": 8,
+      "durationMs": 960,
+      "loop": 0
+    },
+    {
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/daad0934269e9810c65616ad685ade3101ab4013/Art/Review/Equipment/b2-batch-v5/runeArmor/standing.png",
+      "status": 200,
+      "mime": "image/png",
+      "bytes": 121122,
+      "SHA256": "7516c9a64c2d31d794a67f8e84191af61acd76393d58352d9c9b34a124c283d9"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/daad0934269e9810c65616ad685ade3101ab4013/Art/Review/Equipment/b2-batch-v5/manifest.json",
+      "status": 200,
+      "mime": "text/plain",
+      "bytes": 14047,
+      "SHA256": "287388d29637572692ba129b0d9bc078a58fedf3ee206bc1ae06f7202b918edb"
+    }
+  ],
+  "artApproval": null,
+  "deviceRun": false,
+  "site": "https://meadow-equipment-review.smokytide.chatgpt.site",
+  "deployment": "appgdep_6adffa9c4e088191a176ea5931fd41d3",
+  "siteVersion": "appgprj_6adf5ffe0ee88191a0d7a2ad3a0686b4~appgver_d99ad3eab7848191940102b18b440a85",
+  "siteSourceCommit": "93fef05771416c79ae90ea91e2b179e8ab180bc6",
+  "siteAudience": "owner-private",
+  "fourOriginalApprovalsPreserved": true,
+  "twoArmorsPendingUserReview": true,
+  "runtimeIntegrated": false
+}

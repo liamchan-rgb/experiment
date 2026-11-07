@@ -1,0 +1,12 @@
+{
+  "date": "2026-10-23",
+  "status": "user-rejected",
+  "statements": [
+    "这走起来手都要剥离身体了",
+    "腿部也是在疯狂闪烁"
+  ],
+  "artApproval": null,
+  "previousInternalArtPassWithdrawn": true,
+  "rootCause": "Per-frame independent limb shapes, incorrect same-side ownership and unstable joint lengths; whole-character alpha connectivity missed broken individual limbs.",
+  "replacement": "neutral-upper-diagonals-r2"
+}

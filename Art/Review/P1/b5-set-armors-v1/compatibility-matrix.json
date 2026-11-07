@@ -1,0 +1,24 @@
+{
+  "compatibleDimensions": {
+    "hair": 2,
+    "face": 2,
+    "backWeapon": 2
+  },
+  "combinations": 8,
+  "posesRendered": 32,
+  "records": [
+    {
+      "armor": "p1-b5-starlight-armor-v1",
+      "loadouts": 8,
+      "fullBodyViews": 16,
+      "image": "Art/Review/P1/b5-set-armors-v1/preview/p1-b5-starlight-armor-v1/compatibility-matrix-2x.png"
+    },
+    {
+      "armor": "p1-b5-dragon-armor-v1",
+      "loadouts": 8,
+      "fullBodyViews": 16,
+      "image": "Art/Review/P1/b5-set-armors-v1/preview/p1-b5-dragon-armor-v1/compatibility-matrix-2x.png"
+    }
+  ],
+  "artApproval": null
+}

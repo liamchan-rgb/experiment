@@ -1,0 +1,30 @@
+{
+  "source": "08-right-initial.png",
+  "sourceHip": [
+    130.0,
+    124.0
+  ],
+  "sourceSole": [
+    128.0,
+    206.0
+  ],
+  "targetHip": [
+    136.0,
+    178.0
+  ],
+  "targetSole": [
+    125.0,
+    220.0
+  ],
+  "uniformSourceScale": 0.5293131528623708,
+  "sourceMatrix": [
+    0.5151605231866826,
+    0.12158145065398328,
+    -0.12158145065398328,
+    0.5151605231866826,
+    84.10523186682519,
+    98.31450653983353
+  ],
+  "method": "Fixed authoring registration of whole source component by explicitly measured hip/sole landmarks; no bounds fitting or runtime sizing",
+  "note": "03 reuses the same anatomical LEFT component from pose04; alternate generated full-character03 swapped support and is preserved unused"
+}

@@ -1,0 +1,95 @@
+{
+  "date": "2026-10-24",
+  "artCommit": "e4dc95a3fa69d7cb84da6c2ede3df5e46715c5fc",
+  "verified": true,
+  "artApproval": null,
+  "direction": "right",
+  "authorAndReviewer": "root",
+  "subagentsUsed": false,
+  "reviewScope": "Eight sword-on combinations all13 complete1x/2x, main standing and specified start-stop, actual normal GIF8 decoded frames; still viewer only, no continuous playback claim",
+  "reexportByteIdenticalFiles": 874,
+  "actualCompositorPoses": 208,
+  "bareBodyPosesUnchanged": 13,
+  "remotePackageClosurePaths": 1328,
+  "allDeclaredAndConsumedPackageDependenciesByteMatched": true,
+  "publicOfflineDependenciesUnchanged": 7,
+  "existingTests": {
+    "contract": 26,
+    "compositor": 21
+  },
+  "runtimeIntegrated": false,
+  "ipaBuilt": false,
+  "files": [
+    {
+      "file": "Art/Review/P1/modular-right-appearance-v1/outfits-walk-120ms.gif",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/e4dc95a3fa69d7cb84da6c2ede3df5e46715c5fc/Art/Review/P1/modular-right-appearance-v1/outfits-walk-120ms.gif",
+      "httpStatus": 200,
+      "mime": "image/gif",
+      "bytes": 186566,
+      "sha256": "169549ac7c2266b7d602ebe9245894479da4ffc4616dbd5671bd0b413c9d610b",
+      "dimensions": [
+        1024,
+        512
+      ],
+      "durationsMs": [
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120
+      ]
+    },
+    {
+      "file": "Art/Review/P1/modular-right-appearance-v1/outfits-start-stop-120ms.gif",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/e4dc95a3fa69d7cb84da6c2ede3df5e46715c5fc/Art/Review/P1/modular-right-appearance-v1/outfits-start-stop-120ms.gif",
+      "httpStatus": 200,
+      "mime": "image/gif",
+      "bytes": 503527,
+      "sha256": "8aafa0e2864026cd70b2aa932327b643eeb4c11ef85b1dd497d3a9ae8c9d28e8",
+      "dimensions": [
+        1024,
+        512
+      ],
+      "durationsMs": [
+        480,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        480
+      ]
+    },
+    {
+      "file": "Art/Review/P1/modular-right-appearance-v1/outfits-idle-2x.png",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/e4dc95a3fa69d7cb84da6c2ede3df5e46715c5fc/Art/Review/P1/modular-right-appearance-v1/outfits-idle-2x.png",
+      "httpStatus": 200,
+      "mime": "image/png",
+      "bytes": 26873,
+      "sha256": "9c94e6ef1f3e62d78265dde8382aa81df88361b5ee8855890087f3c99287b761",
+      "dimensions": [
+        1024,
+        512
+      ],
+      "durationsMs": null
+    }
+  ]
+}

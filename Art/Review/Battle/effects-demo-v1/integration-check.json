@@ -1,0 +1,37 @@
+{
+  "scope": "offline shared import assets and production pure Swift event data; no UIKit/GPU/device capture",
+  "deathFrames": 48,
+  "bodyAlphaMonotonic": true,
+  "lastBodyAndWindEmpty": true,
+  "windFirstFrameNonempty": true,
+  "firstEventFrames": {
+    "hpZero": 92,
+    "damage": 92,
+    "death": 92,
+    "wind": 92
+  },
+  "demoLethalDamage": 3,
+  "rulesStillFiveDamage": true,
+  "sourceAndArtOldVersionsPreserved": true,
+  "actorPoseSheetsMatchApprovedV3": 4,
+  "artApproval": null,
+  "simulatorOrDeviceExecuted": false,
+  "sources": {
+    "Sources/Resources/Assets.xcassets/BattleVFXBurst.imageset/BattleVFXBurst.png": "49e110cce4d4ad1ba50115e13f31cb8533d8f95d6de218b963f1941b2728e579",
+    "Sources/Resources/Assets.xcassets/BattleVFXBurst.imageset/Contents.json": "5a6a35970bf9efb57ff3a62423d6e362e2537c96679154293ca12c6d59070b8a",
+    "Sources/Resources/Assets.xcassets/BattleVFXConfig.dataset/config.json": "ff6eae4f007e22769922d1e26038fe8477a1e0cc3784cd52e84ef4c80ce32d05",
+    "Sources/Resources/Assets.xcassets/BattleVFXConfig.dataset/Contents.json": "9ac7b30df0dae6be6ff045ba2ed803e7dfe95c2e63583b994a53a7e1eb04ecde",
+    "Sources/Resources/Assets.xcassets/BattleVFXDeathBody.imageset/Contents.json": "b3df054bdd445e203ff240b30316dd7ab92144c571f75f1b33beb0fd2940b7d2",
+    "Sources/Resources/Assets.xcassets/BattleVFXDeathBody.imageset/BattleVFXDeathBody.png": "bae27bc1a45df1f10cbb1970317daa86668939c79218e410cb4d438ab78e65e6",
+    "Sources/Resources/Assets.xcassets/BattleVFXHitMask.imageset/Contents.json": "f171691aa509ddeebef7fc8607e82811a26a7d7cbd89f5c4ef2ebfc2df5b71dc",
+    "Sources/Resources/Assets.xcassets/BattleVFXHitMask.imageset/BattleVFXHitMask.png": "9d016a5c59632fcdc853441ed901246dcec9dad20cd64ad73129ad09dc001820",
+    "Sources/Resources/Assets.xcassets/BattleVFXMote.imageset/BattleVFXMote.png": "8f1be9af15f8785e7e9c51f5ab3ed7d925e418058ab3c5ad20a017e5a0d4cfc4",
+    "Sources/Resources/Assets.xcassets/BattleVFXMote.imageset/Contents.json": "8d3ed3477d6803b17fe21f8fe3f9d02d4224d792a3b3ca3245c32cb7390a7bcf",
+    "Sources/Resources/Assets.xcassets/BattleVFXSlash.imageset/BattleVFXSlash.png": "87e154bc5ea620b2a6331d7e0329b0a5f833b5ecaebfccfbd8c2731140a9959b",
+    "Sources/Resources/Assets.xcassets/BattleVFXSlash.imageset/Contents.json": "cf751c64ebc158b46ef8048654f1634d6b41793dbbc8619c3588b16961a75b7b",
+    "Sources/Resources/Assets.xcassets/BattleVFXDeathWind.imageset/BattleVFXDeathWind.png": "471cb145ed11d46e6836ed1d7c23f40ce2ffed3fb17451e6d498e4ae6da4a92f",
+    "Sources/Resources/Assets.xcassets/BattleVFXDeathWind.imageset/Contents.json": "2347098a3ded3fecccd16c51c1ac25dfe52cc328064cd8f7713dad05f2967de9",
+    "Sources/Resources/Assets.xcassets/BattleVFXRing.imageset/BattleVFXRing.png": "e9d0d5507219cdb6dd6e2c2c9e2f6f6c15ee1c81b722090d535d67a4edeef927",
+    "Sources/Resources/Assets.xcassets/BattleVFXRing.imageset/Contents.json": "04f071887a8f5f5e0fed77c631819483f4b5fd69dce0b5bd7b14ce3fb901186c"
+  }
+}

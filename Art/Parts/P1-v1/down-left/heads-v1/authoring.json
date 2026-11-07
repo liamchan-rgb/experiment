@@ -1,0 +1,233 @@
+{
+  "schemaVersion": "1.0.0",
+  "direction": "down-left",
+  "localCanvas": [
+    96,
+    96
+  ],
+  "headLocalOrigin": [
+    76,
+    61
+  ],
+  "bodyTemplate": "Art/Templates/P1-Neutral/down-left/walk-r1",
+  "bodyApproval": "Art/Review/P1/neutral-down-left-r1/approval.json",
+  "baseManifestSHA256": "c193f919c6f4667d44cb08857ebbf2d0958401535fa3fd0db3d166e1635c8fd1",
+  "baseMotionSHA256": "ce121954916c255f32c99229ddb2450dadc410a5cc4812e34bb9277935bf9f08",
+  "authorAndReviewer": "root",
+  "subagentsUsed": false,
+  "artApproval": null,
+  "sourceAlphaThreshold": 128,
+  "registration": "Fixed authored source landmarks on complete panels; no alpha bounds fitting or per-pose fitting",
+  "sources": {
+    "chestnut-blue": {
+      "image": "source/chestnut-blue-original.png",
+      "canvas": [
+        1774,
+        887
+      ],
+      "sha256": "f0e491eaae442cb1d53bdd091c7597220d422da25cc8b60b18359b8a40a5bb35",
+      "prompt": "source/prompts/chestnut-blue.txt"
+    },
+    "silver-amber": {
+      "image": "source/silver-amber-original.png",
+      "canvas": [
+        1774,
+        887
+      ],
+      "sha256": "561b27b556a795b087f550df6e3f6d4a32f93aee00b688086043ad02ba60e353",
+      "prompt": "source/prompts/silver-amber.txt"
+    },
+    "chestnut-trimmed": {
+      "image": "source/chestnut-trimmed-original.png",
+      "canvas": [
+        1254,
+        1254
+      ],
+      "sha256": "96bf493b54c4204da4922f35e2e24c09e57a59f0a299506606ea86ae03c810d9",
+      "prompt": "source/prompts/chestnut-trimmed.txt"
+    }
+  },
+  "packages": {
+    "hair-chestnut": {
+      "id": "p1-hair-chestnut-down-left-v1",
+      "part": "hair",
+      "source": "chestnut-trimmed",
+      "panel": 0,
+      "slots": {
+        "hair.front": [
+          {
+            "components": "all",
+            "scale": 0.07655502392344497,
+            "translation": [
+              0,
+              0
+            ]
+          }
+        ]
+      }
+    },
+    "hair-silver": {
+      "id": "p1-hair-silver-down-left-v1",
+      "part": "hair",
+      "source": "silver-amber",
+      "panel": 0,
+      "slots": {
+        "hair.front": [
+          {
+            "components": "all",
+            "scale": 0.07,
+            "translation": [
+              18,
+              12
+            ]
+          }
+        ]
+      }
+    },
+    "face-blue": {
+      "id": "p1-face-blue-down-left-v1",
+      "part": "face",
+      "source": "chestnut-blue",
+      "panel": 1,
+      "slots": {
+        "face.eyes": [
+          {
+            "components": [
+              3
+            ],
+            "scale": 0.07,
+            "translation": [
+              15.3,
+              14.8
+            ]
+          },
+          {
+            "components": [
+              4
+            ],
+            "scale": 0.07,
+            "translation": [
+              15.3,
+              14.5
+            ]
+          }
+        ],
+        "face.brows": [
+          {
+            "components": [
+              1,
+              2
+            ],
+            "scale": 0.07,
+            "translation": [
+              15.3,
+              12.3
+            ]
+          }
+        ],
+        "face.nose": [
+          {
+            "components": [
+              5
+            ],
+            "scale": 0.07,
+            "translation": [
+              13.5,
+              16
+            ]
+          }
+        ],
+        "face.mouth": [
+          {
+            "components": [
+              6
+            ],
+            "scale": 0.07,
+            "translation": [
+              14.1,
+              16.5
+            ]
+          }
+        ]
+      }
+    },
+    "face-amber": {
+      "id": "p1-face-amber-down-left-v1",
+      "part": "face",
+      "source": "silver-amber",
+      "panel": 1,
+      "slots": {
+        "face.eyes": [
+          {
+            "components": [
+              2
+            ],
+            "scale": 0.06,
+            "translation": [
+              19,
+              20.8
+            ]
+          },
+          {
+            "components": [
+              4,
+              5,
+              6
+            ],
+            "scale": 0.066,
+            "translation": [
+              18,
+              16
+            ]
+          }
+        ],
+        "face.brows": [
+          {
+            "components": [
+              1
+            ],
+            "scale": 0.06,
+            "translation": [
+              19,
+              18.7
+            ]
+          },
+          {
+            "components": [
+              3
+            ],
+            "scale": 0.06,
+            "translation": [
+              20.5,
+              18.5
+            ]
+          }
+        ],
+        "face.nose": [
+          {
+            "components": [
+              7
+            ],
+            "scale": 0.07,
+            "translation": [
+              14.6,
+              16
+            ]
+          }
+        ],
+        "face.mouth": [
+          {
+            "components": [
+              8
+            ],
+            "scale": 0.07,
+            "translation": [
+              15.5,
+              15.1
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

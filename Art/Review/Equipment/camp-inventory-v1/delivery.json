@@ -1,0 +1,187 @@
+{
+  "version": "1.6.39",
+  "build": 65,
+  "sourceCommit": "90eb1f675d0cb9b1e5c8bcf2bc2421e74c7d912e",
+  "mediaCommit": "9529cdef26efbf9ff2f95add6e979a405a5c785e",
+  "workflowRun": 40843673369,
+  "ipaPath": "Downloads/MeadowJourney-b65.ipa",
+  "ipaBytes": 49391101,
+  "ipaSHA256": "5dd41203ba5264c5dfc138ddafa7412d3613dc658a5b8aa9e1cf218c941d561a",
+  "publicMedia": [
+    {
+      "path": "Art/Review/Equipment/camp-inventory-v1/inventory-normal.gif",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/9529cdef26efbf9ff2f95add6e979a405a5c785e/Art/Review/Equipment/camp-inventory-v1/inventory-normal.gif",
+      "bytes": 445615,
+      "sha256": "4e814fea34e962f1fa3c911d7ac8b54a8078436f369797b6003c7412de06912a",
+      "contentType": "image/gif",
+      "matchesLocal": true
+    },
+    {
+      "path": "Art/Review/Equipment/camp-inventory-v1/inventory-standing.png",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/9529cdef26efbf9ff2f95add6e979a405a5c785e/Art/Review/Equipment/camp-inventory-v1/inventory-standing.png",
+      "bytes": 117009,
+      "sha256": "3a64adce5b0538fe89d1110b2285d480c1e4606c8a851560b122f84a743b8f8d",
+      "contentType": "image/png",
+      "matchesLocal": true
+    },
+    {
+      "path": "Art/Review/Equipment/camp-inventory-v1/initial-pad.png",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/9529cdef26efbf9ff2f95add6e979a405a5c785e/Art/Review/Equipment/camp-inventory-v1/initial-pad.png",
+      "bytes": 137946,
+      "sha256": "e66a6c6960da7e7001ffe3d3bf83ca2ddf5dbbd6343cb0c8c050f8dae7abb7f2",
+      "contentType": "image/png",
+      "matchesLocal": true
+    },
+    {
+      "path": "Art/Review/Equipment/camp-inventory-v1/supplies-pad.png",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/9529cdef26efbf9ff2f95add6e979a405a5c785e/Art/Review/Equipment/camp-inventory-v1/supplies-pad.png",
+      "bytes": 113314,
+      "sha256": "defa423902b613e3687d74fe1312c1a381d178f799911c0028b10eea2294e033",
+      "contentType": "image/png",
+      "matchesLocal": true
+    },
+    {
+      "path": "Art/Review/Equipment/camp-inventory-v1/ring-phone.png",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/9529cdef26efbf9ff2f95add6e979a405a5c785e/Art/Review/Equipment/camp-inventory-v1/ring-phone.png",
+      "bytes": 72201,
+      "sha256": "a69abc69e86a8aa1bf73f52a23c98c802f1b842659f790fb7c252b9a1f8d741c",
+      "contentType": "image/png",
+      "matchesLocal": true
+    },
+    {
+      "path": "Art/Review/Equipment/camp-inventory-v1/native-eight-frames-1x2x.png",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/9529cdef26efbf9ff2f95add6e979a405a5c785e/Art/Review/Equipment/camp-inventory-v1/native-eight-frames-1x2x.png",
+      "bytes": 139218,
+      "sha256": "5333cddd7e59deecea09dd797879ae90362d9c3389eb1f0a26d30f04a812321f",
+      "contentType": "image/png",
+      "matchesLocal": true
+    },
+    {
+      "path": "Art/Review/Equipment/camp-inventory-v1/inventory-frames.json",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/9529cdef26efbf9ff2f95add6e979a405a5c785e/Art/Review/Equipment/camp-inventory-v1/inventory-frames.json",
+      "bytes": 17806,
+      "sha256": "1c196e60d645fb44d9415146dfd7bd74a49ebb22528ae9802b6bf5abb5562e56",
+      "contentType": "text/plain; charset=utf-8",
+      "matchesLocal": true
+    },
+    {
+      "path": "Art/Review/Equipment/camp-inventory-v1/review.json",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/9529cdef26efbf9ff2f95add6e979a405a5c785e/Art/Review/Equipment/camp-inventory-v1/review.json",
+      "bytes": 660,
+      "sha256": "92f2ba294a269584447e38195b2265a7c539ae6ddfe1a3b0abf1f5879f94ef74",
+      "contentType": "text/plain; charset=utf-8",
+      "matchesLocal": true
+    }
+  ],
+  "artReview": {
+    "scope": "Offline UI illustration using actual production camp projection/layout and unchanged native atlas cells. Not UIKit/App/device.",
+    "normalFrames": 8,
+    "frameMs": 120,
+    "durationMs": 960,
+    "states": 7,
+    "padAndPhoneStandingPNGs": 14,
+    "characterArtChanged": false,
+    "userUIApproval": null,
+    "rootReview": {
+      "reviewer": "root",
+      "wholePagePadPNGsViewed": 7,
+      "wholePagePhonePNGsViewed": 7,
+      "actualDecodedGIFFullPagesViewed": 8,
+      "allEightNativeCellsAt1xAnd2xViewed": true,
+      "scope": "Offline whole UI illustrations and native cell reuse only; not UIKit screenshots or App/device runs",
+      "newCharacterArt": false
+    }
+  },
+  "sourceAudit": {
+    "baseline": "c7d0101c10ddd50be3418ced69deef76f1a8ca6d",
+    "unchangedResourceOriginalCoreAndWeaponRigPaths": 402,
+    "newCharacterOrEquipmentArt": false,
+    "oldGaitAndCatalogByteExact": true,
+    "actualCampStates": 7,
+    "coldRestoreFieldsMatch": true,
+    "ringBaseAP": 4,
+    "ringCap": 8,
+    "suppliesPayOriginalAP": true,
+    "emptySlotsSurviveExport": true,
+    "userUIApproval": null
+  },
+  "standaloneGIFBrowser": {
+    "scope": "Standalone remote offline GIF only; no game/App/UIKit/simulator/device run",
+    "dimensions": [
+      1194,
+      862
+    ],
+    "normalGIFLoadsAndAdvances": true,
+    "frameMs": 120,
+    "fullGETVerified": [
+      {
+        "path": "Art/Review/Equipment/camp-inventory-v1/inventory-normal.gif",
+        "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/9529cdef26efbf9ff2f95add6e979a405a5c785e/Art/Review/Equipment/camp-inventory-v1/inventory-normal.gif",
+        "bytes": 445615,
+        "sha256": "4e814fea34e962f1fa3c911d7ac8b54a8078436f369797b6003c7412de06912a",
+        "contentType": "image/gif",
+        "matchesLocal": true
+      },
+      {
+        "path": "Art/Review/Equipment/camp-inventory-v1/inventory-standing.png",
+        "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/9529cdef26efbf9ff2f95add6e979a405a5c785e/Art/Review/Equipment/camp-inventory-v1/inventory-standing.png",
+        "bytes": 117009,
+        "sha256": "3a64adce5b0538fe89d1110b2285d480c1e4606c8a851560b122f84a743b8f8d",
+        "contentType": "image/png",
+        "matchesLocal": true
+      },
+      {
+        "path": "Art/Review/Equipment/camp-inventory-v1/initial-pad.png",
+        "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/9529cdef26efbf9ff2f95add6e979a405a5c785e/Art/Review/Equipment/camp-inventory-v1/initial-pad.png",
+        "bytes": 137946,
+        "sha256": "e66a6c6960da7e7001ffe3d3bf83ca2ddf5dbbd6343cb0c8c050f8dae7abb7f2",
+        "contentType": "image/png",
+        "matchesLocal": true
+      },
+      {
+        "path": "Art/Review/Equipment/camp-inventory-v1/supplies-pad.png",
+        "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/9529cdef26efbf9ff2f95add6e979a405a5c785e/Art/Review/Equipment/camp-inventory-v1/supplies-pad.png",
+        "bytes": 113314,
+        "sha256": "defa423902b613e3687d74fe1312c1a381d178f799911c0028b10eea2294e033",
+        "contentType": "image/png",
+        "matchesLocal": true
+      },
+      {
+        "path": "Art/Review/Equipment/camp-inventory-v1/ring-phone.png",
+        "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/9529cdef26efbf9ff2f95add6e979a405a5c785e/Art/Review/Equipment/camp-inventory-v1/ring-phone.png",
+        "bytes": 72201,
+        "sha256": "a69abc69e86a8aa1bf73f52a23c98c802f1b842659f790fb7c252b9a1f8d741c",
+        "contentType": "image/png",
+        "matchesLocal": true
+      },
+      {
+        "path": "Art/Review/Equipment/camp-inventory-v1/native-eight-frames-1x2x.png",
+        "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/9529cdef26efbf9ff2f95add6e979a405a5c785e/Art/Review/Equipment/camp-inventory-v1/native-eight-frames-1x2x.png",
+        "bytes": 139218,
+        "sha256": "5333cddd7e59deecea09dd797879ae90362d9c3389eb1f0a26d30f04a812321f",
+        "contentType": "image/png",
+        "matchesLocal": true
+      },
+      {
+        "path": "Art/Review/Equipment/camp-inventory-v1/inventory-frames.json",
+        "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/9529cdef26efbf9ff2f95add6e979a405a5c785e/Art/Review/Equipment/camp-inventory-v1/inventory-frames.json",
+        "bytes": 17806,
+        "sha256": "1c196e60d645fb44d9415146dfd7bd74a49ebb22528ae9802b6bf5abb5562e56",
+        "contentType": "text/plain; charset=utf-8",
+        "matchesLocal": true
+      },
+      {
+        "path": "Art/Review/Equipment/camp-inventory-v1/review.json",
+        "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/9529cdef26efbf9ff2f95add6e979a405a5c785e/Art/Review/Equipment/camp-inventory-v1/review.json",
+        "bytes": 660,
+        "sha256": "92f2ba294a269584447e38195b2265a7c539ae6ddfe1a3b0abf1f5879f94ef74",
+        "contentType": "text/plain; charset=utf-8",
+        "matchesLocal": true
+      }
+    ]
+  },
+  "appRunPerformed": false,
+  "simulatorRunPerformed": false,
+  "physicalDeviceRunPerformed": false,
+  "userUIApproval": null
+}

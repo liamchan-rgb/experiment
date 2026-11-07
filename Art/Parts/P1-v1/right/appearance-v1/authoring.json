@@ -1,0 +1,144 @@
+{
+  "status": "candidate-main-only",
+  "artApproval": null,
+  "authorAndReviewer": "root",
+  "subagentsUsed": false,
+  "baseTemplate": "Art/Templates/P1-Neutral/right/walk-r1-mirror",
+  "baseManifestSHA256": "89ab1e6ddd853e53a773d861756a9b9656316ff9cf92ab934d94e6050bcbb21b",
+  "baseMotionSHA256": "de9a2527903ed6af8e2c04d17c9c47c55a3941e099a5c9424aa018ab61007dba",
+  "sources": {
+    "forester": "Art/Parts/P1-v1/left/wardrobe-repair-v2/forester",
+    "wayfarer": "Art/Parts/P1-v1/left/wardrobe-repair-v2/wayfarer",
+    "lower": "Art/Parts/P1-v1/left/wardrobe-repair-v2/lower",
+    "back-scabbard": "Art/Parts/P1-v1/left/back-scabbard-v1",
+    "hair-chestnut": "Art/Parts/P1-v1/left/heads-v1/hair-chestnut-left",
+    "hair-silver": "Art/Parts/P1-v1/left/heads-v1/hair-silver-left",
+    "face-blue": "Art/Parts/P1-v1/left/heads-v1/face-blue-left",
+    "face-amber": "Art/Parts/P1-v1/left/heads-v1/face-amber-left"
+  },
+  "sourceWardrobeMotion": "Art/Templates/P1-Wardrobe/left/v2-painted-poses/motion.json",
+  "sourceManifestSHA256": {
+    "forester": "13c7c747672483e426239fc44038a7de30ebb85e06daee43b62195d42baf3001",
+    "wayfarer": "514e30b9efa40a538d872d66f0916407bf9c99e8a9cb5b00e3b190f93a75522e",
+    "lower": "4961d07b7e11b7a18a795390aa33c6c6849e848dad48a45248cc45c619efe69c",
+    "back-scabbard": "cf4922601b7b348a4dd809be6688b42ee90259a4bf7020ba157e65087ca6d31c",
+    "hair-chestnut": "d2099dba74c005829d5372d259ab3ad7bdd45ee5c8030c85bb00fec39cd477b2",
+    "hair-silver": "eed876230c935901c7dae94f0041735874bbe6507cd7ca4452d06f7e7410330d",
+    "face-blue": "da9e5b577645d0ca9165f12badbfd012088c0563c55f1c4cc1ef9b79d9cd444e",
+    "face-amber": "59154fe534a24c541dfb23b87cea5a8c339565f60d8b2ffef6f76a20b08a4dc2"
+  },
+  "headLocalCanvas": [
+    96,
+    96
+  ],
+  "headLocalOrigin": [
+    84,
+    61
+  ],
+  "direction": "right",
+  "nearSide": "right",
+  "farSide": "left",
+  "sourceLight": "upper-left",
+  "relightEnabled": true,
+  "weapon": "Retain left side-view projected hilt/tip relation through fixed reflection; no central spine carry or body-dependent fitting",
+  "sequence": [
+    0,
+    9,
+    10,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    11,
+    12,
+    0
+  ],
+  "durationsMs": [
+    480,
+    120,
+    120,
+    120,
+    120,
+    120,
+    120,
+    120,
+    120,
+    120,
+    120,
+    120,
+    120,
+    120,
+    120,
+    120,
+    120,
+    120,
+    120,
+    120,
+    120,
+    480
+  ],
+  "relight": {
+    "tool": "image_gen.imagegen",
+    "sourceLight": "upper-left",
+    "head": "one static96 hair RGB source, max6px material gutter",
+    "clothes": "static8colour material ramps; whole outfit shares source median anchor",
+    "lower": "same-side pants source median; fixed all13 boot anchor preserves painted soles",
+    "alphaGeometryChanged": false,
+    "sources": {
+      "hair-chestnut": {
+        "image": "source/hair-chestnut-relight-original.png",
+        "sha256": "79c45e4045ef7f985ac40eb8e07def39b071c4f5d1eda9e6f85a0bcdc430bcc1",
+        "canvas": [
+          1254,
+          1254
+        ],
+        "targetCanvas": [
+          96,
+          96
+        ],
+        "scale": 0.07655502392344497,
+        "prompt": "source/hair-chestnut-prompt.txt"
+      },
+      "hair-silver": {
+        "image": "source/hair-silver-relight-original.png",
+        "sha256": "f771a9c48f77960276fcd9ff7719e3ef376c773d0e2eb3d46e67649c0fd88011",
+        "canvas": [
+          1254,
+          1254
+        ],
+        "targetCanvas": [
+          96,
+          96
+        ],
+        "scale": 0.07655502392344497,
+        "prompt": "source/hair-silver-prompt.txt"
+      },
+      "outfits": {
+        "image": "source/outfits-relight-original.png",
+        "sha256": "15dd78c6854aed68692a9ac3038003f994267215d66dba702d662446fdeafeb0",
+        "canvas": [
+          1254,
+          1254
+        ],
+        "targetCanvas": [
+          512,
+          512
+        ],
+        "scale": 0.4082934609250399,
+        "prompt": "source/outfits-prompt.txt"
+      }
+    }
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "assets": [
+    {
+      "id": "p1-neutral-up-left-walk-r2-fixed-limbs",
+      "manifest": "Art/Templates/P1-Neutral/up-left/walk-r2-fixed-limbs/asset.json"
+    },
+    {
+      "id": "p1-neutral-up-right-walk-r2-fixed-limbs",
+      "manifest": "Art/Templates/P1-Neutral/up-right/walk-r2-fixed-limbs/asset.json"
+    }
+  ]
+}

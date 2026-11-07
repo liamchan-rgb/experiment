@@ -1,0 +1,50 @@
+{
+  "scope": "production Swift projected polyhedra and actual original-core receipts; offline composition, not UIKit/device capture",
+  "animations": {
+    "types": {
+      "file": "types-normal.gif",
+      "frames": 180,
+      "frameDurationMs": 20,
+      "durationMs": 3600,
+      "dimensions": [
+        1020,
+        722
+      ],
+      "bytes": 3276659
+    },
+    "bonus": {
+      "file": "bonus-normal.gif",
+      "frames": 180,
+      "frameDurationMs": 20,
+      "durationMs": 3600,
+      "dimensions": [
+        1020,
+        722
+      ],
+      "bytes": 2053344
+    },
+    "attack-buff": {
+      "file": "attack-buff-normal.gif",
+      "frames": 300,
+      "frameDurationMs": 20,
+      "durationMs": 6000,
+      "dimensions": [
+        1224,
+        918
+      ],
+      "bytes": 13279318
+    },
+    "support": {
+      "file": "support-normal.gif",
+      "frames": 190,
+      "frameDurationMs": 20,
+      "durationMs": 3800,
+      "dimensions": [
+        1224,
+        918
+      ],
+      "bytes": 7628023
+    }
+  },
+  "newArtApproval": null
+}
