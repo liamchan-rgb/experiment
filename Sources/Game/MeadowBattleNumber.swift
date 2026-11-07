@@ -19,7 +19,7 @@ enum MeadowBattleNumber {
         case .heal: return 42
         case .shield: return 36
         case .buff: return 34
-        case .crit: return 52
+        case .crit: return 120
         }
     }
 

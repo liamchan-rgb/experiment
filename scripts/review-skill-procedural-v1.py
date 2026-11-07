@@ -181,6 +181,7 @@ def case(targets): return dict(targets=targets, center=targets[0][0], ground=tar
 CASES = {k: case(FOES) for k in ('starlightPulse', 'sweep', 'runeSlash', 'dragonFlame')}
 CASES.update({k: case(ALLIES) for k in ('rally', 'dragonSoulWard', 'dragonScaleWard', 'runeWard', 'battleRune', 'dragonOrder')})
 CASES.update({k: case(ALLIES[:1]) for k in ('healMicro', 'healStandard', 'healStrong')})
+CASES.update({k: case(FOES[:1]) for k in ('natural20', 'hitBlade', 'hitGreat', 'hitBow', 'hitStaff', 'hitClaw', 'hitAmbush', 'hitWard')}); CASES['shieldDome'] = case(ALLIES)
 for c in CASES.values(): c.update(caster=hero_chest, casterFoot=hero_foot)
 CROP = (int(hx - 90), int(hy - 110), int(hx + 700), int(hy + 330))
 sel = sys.argv[2].split(',') if len(sys.argv) > 2 else list(CASES)

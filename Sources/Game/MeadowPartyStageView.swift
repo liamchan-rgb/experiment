@@ -147,7 +147,7 @@ final class MeadowPartyStageView:UIView {
         }
         naturalTwenty=confirmed?.dice.contains { $0.naturalTwenty } ?? false
         intent=value;state=before;startAt=sceneTime;self.impact=onImpact;self.completion=completion;fired=false;focus=nil;meetsShield=(before.units[value.target]?.shield ?? 0)>0
-        if let proc=MeadowSkillProcedural.info[value.action.rawValue] {
+        if let procName=MeadowSkillProcedural.procID(for:value.action.rawValue),let proc=MeadowSkillProcedural.info[procName] {
             let templates=before.units.mapValues(\.templateID)
             func target(_ id:String)->MeadowSkillProcedural.Target? {
                 guard let foot=PartyVisual.foot(id) else { return nil }
@@ -162,7 +162,7 @@ final class MeadowPartyStageView:UIView {
                     // The effect starts early enough that its release lands on the rule's impact moment, inside the existing cast motion.
                     let start=sceneTime+max(0,value.impactAge-proc.release)
                     let ids=value.targets.filter { PartyVisual.foot($0) != nil }
-                    procVFX.append(MeadowPartyProcEvent(skill:value.action.rawValue,start:start,direction:first.chest.x>=geo.caster.x ? 1:-1,geo:geo,casterID:value.actor,targetIDs:ids))
+                    procVFX.append(MeadowPartyProcEvent(skill:procName,start:start,direction:first.chest.x>=geo.caster.x ? 1:-1,geo:geo,casterID:value.actor,targetIDs:ids))
                 }
             }
         } else if let spec=value.action.skillVFX {
@@ -210,12 +210,36 @@ final class MeadowPartyStageView:UIView {
             if age>=end { intent=nil;impact=nil;let finished=completion;completion=nil;MeadowBattleFrameTiming.flush();finished?() }
         } else { render() }
     }
+    /// One blow on a target as a procedural effect: style by weapon / attacker, size by how hard it really was.
+    private func spawnBlow(_ intent:PartyIntent,target id:String,hit:PartyPoint,foot:PartyPoint,templates:[String:String],tier:MeadowBattleHitTier,blocked:Bool,delay:Double) {
+        let name:String
+        if blocked { name="hitWard" }
+        else if intent.enemy { name="hitClaw" }
+        else if intent.action == .ambush { name="hitAmbush" }
+        else { switch intent.weaponID ?? "" { case "greatSword":name="hitGreat";case "huntingBow":name="hitBow";case "legendaryStaff":name="hitStaff";default:name="hitBlade" } }
+        let casterChest=PartyVisual.skillEffectCenter(targets:[intent.actor],actor:intent.actor,templates:templates),casterFoot=PartyVisual.foot(intent.actor) ?? hit
+        let geo=MeadowSkillProcedural.Geometry(caster:.init(casterChest.x,casterChest.y),casterFoot:.init(casterFoot.x,casterFoot.y),targets:[.init(chest:.init(hit.x,hit.y),foot:.init(foot.x,foot.y))],ground:foot.y)
+        var event=MeadowPartyProcEvent(skill:name,start:sceneTime+delay,direction:hit.x>=casterChest.x ? 1:-1,geo:geo,casterID:intent.actor,targetIDs:[id])
+        event.power=tier.intensity*(intent.action == .heavyStrike ? 1.2:1)
+        procVFX.append(event)
+    }
+    /// The roll that ends the fight: a long, loud effect on the target, a hard push-in, and a run of heavy haptics.
+    private func spawnNaturalTwenty(_ intent:PartyIntent,receipt:OperationReceipt) {
+        guard let foot=PartyVisual.foot(intent.target) else { return }
+        let templates=receipt.before.units.mapValues(\.templateID)
+        let chest=PartyVisual.hitPoint(target:intent.target,weaponID:intent.weaponID,templateID:templates[intent.target]),casterChest=PartyVisual.skillEffectCenter(targets:[intent.actor],actor:intent.actor,templates:templates),casterFoot=PartyVisual.foot(intent.actor) ?? foot
+        let geo=MeadowSkillProcedural.Geometry(caster:.init(casterChest.x,casterChest.y),casterFoot:.init(casterFoot.x,casterFoot.y),targets:[.init(chest:.init(chest.x,chest.y),foot:.init(foot.x,foot.y))],ground:foot.y)
+        procVFX.append(MeadowPartyProcEvent(skill:"natural20",start:sceneTime,direction:chest.x>=casterChest.x ? 1:-1,geo:geo,casterID:intent.actor,targetIDs:[intent.target]))
+        MeadowBattleHaptics.naturalTwenty()
+    }
     private func apply(_ receipt:OperationReceipt,intent:PartyIntent) {
         state=receipt.after
-        if receipt.dice.contains(where: { $0.naturalTwenty }) { let p=PartyVisual.hitPoint(target:intent.target,weaponID:intent.weaponID,templateID:receipt.before.units[intent.target]?.templateID);messages.append(.init(text:"20!",point:CGPoint(x:p.x,y:p.y-55),at:sceneTime,color:.systemCyan,atImpact:true,kind:.crit,rank:2,follow:intent.target)) }
+        if receipt.dice.contains(where: { $0.naturalTwenty }) { let p=PartyVisual.hitPoint(target:intent.target,weaponID:intent.weaponID,templateID:receipt.before.units[intent.target]?.templateID);messages.append(.init(text:"20!",point:CGPoint(x:p.x,y:p.y-55),at:sceneTime,color:MeadowPreviewPalette.gold,atImpact:true,kind:.crit,rank:2,follow:intent.target)) }
         if let actor=receipt.before.units[intent.actor],let target=receipt.before.units[intent.target],let catalog {
             diceView.dice=BattleDice.channels(intent.action,actor:actor,target:target,catalog:catalog,receipt:receipt,sourceSkillID:intent.sourceSkillID);diceSettledAt=sceneTime
         }
+        let rolledTwenty=receipt.dice.contains { $0.naturalTwenty }
+        if rolledTwenty { spawnNaturalTwenty(intent,receipt:receipt) }
         let plainAttack = !intent.enemy && intent.action.visual == "attack" && intent.action.skillVFX == nil
         var strongestHit=0,killedAny=false,blockedAny=false,numberOrder=0
         for id in renderIDs {
@@ -249,8 +273,9 @@ final class MeadowPartyStageView:UIView {
                 if popsHere { hitFeel[id]=MeadowPartyHitEvent(at:sceneTime,tier:hitTier,direction:1,point:CGPoint(x:hit.x,y:hit.y),footX:CGFloat(foot.x),floorY:CGFloat(foot.y)) }
                 // Several targets: their numbers follow one another by a beat instead of all appearing on the same frame.
                 messages.append(.init(text:damage>0 ? "−\(damage)":"BLOCK",point:CGPoint(x:hit.x,y:hit.y),at:sceneTime+0.07*Double(numberOrder),color:damage>0 ? .white:.systemCyan,atImpact:true,hitTier:popsHere ? hitTier:nil,kind:damage>0 ? .damage:.block,rank:hitTier.rawValue,follow:id));numberOrder += 1
+                if !rolledTwenty && MeadowSkillProcedural.procID(for:intent.action.rawValue) == nil { spawnBlow(intent,target:id,hit:hit,foot:foot,templates:receipt.before.units.mapValues(\.templateID),tier:hitTier,blocked:damage == 0 && absorbed>0,delay:0.07*Double(max(0,numberOrder-1))) }
                 let p=CGPoint(x:hit.x,y:hit.y)
-                if absorbed>0 || (intent.action.skillVFX == nil && MeadowSkillProcedural.info[intent.action.rawValue] == nil) { emissions.append(.init(kind:absorbed>0 ? .shieldContact:.strike,startedAt:sceneTime,x:Double(p.x),y:Double(p.y),groundY:foot.y)) }
+                if absorbed>0 || (intent.action.skillVFX == nil && MeadowSkillProcedural.procID(for:intent.action.rawValue) == nil) { emissions.append(.init(kind:absorbed>0 ? .shieldContact:.strike,startedAt:sceneTime,x:Double(p.x),y:Double(p.y),groundY:foot.y)) }
             }
             if absorbed>0 { contact[id]=sceneTime;if after.shield==0 { broken[id]=sceneTime;emissions.append(.init(kind:.shieldBreak,startedAt:sceneTime,x:foot.x,y:foot.y-60,groundY:foot.y)) } }
             if before.isAlive && !after.isAlive && after.kind == .monster { deaths[id]=sceneTime;emissions.append(.init(kind:.death,startedAt:sceneTime,x:registered.x,y:registered.y,groundY:foot.y)) }
@@ -259,9 +284,9 @@ final class MeadowPartyStageView:UIView {
         if strongestHit>0 {
             let tier=MeadowBattleHitTier.classify(damage:strongestHit,killed:killedAny)
             MeadowBattleHaptics.hit(tier,killed:killedAny)
-            if MeadowSkillProcedural.info[intent.action.rawValue] != nil {
+            if let procName=MeadowSkillProcedural.procID(for:intent.action.rawValue) {
                 // A procedural skill has its own lens work; the real damage decides how hard it shakes after the release.
-                for i in procVFX.indices where procVFX[i].casterID == intent.actor && procVFX[i].skill == intent.action.rawValue { procVFX[i].power=tier.intensity*(killedAny ? 1.12:1) }
+                for i in procVFX.indices where procVFX[i].casterID == intent.actor && procVFX[i].skill == procName { procVFX[i].power=tier.intensity*(killedAny ? 1.12:1) }
             } else { kickFeel=(sceneTime,tier,intent.enemy ? -1:1) }
         } else if blockedAny { MeadowBattleHaptics.blocked() }
         onPresentationChanged?()
@@ -428,7 +453,7 @@ final class MeadowPartyStageView:UIView {
             // Skills are drawn on the GPU; a full-screen flash goes to the pane-wide wash.
             if let flash=gpu.draw(fx.skillPrimitives()) { wash.backgroundColor=UIColor(red:CGFloat(flash.color.r/255),green:CGFloat(flash.color.g/255),blue:CGFloat(flash.color.b/255),alpha:CGFloat(min(1,flash.alpha*0.85))) }
         }
-        if let intent,(intent.action.isRune || intent.action == .dragonFlame),let catalog,MeadowSkillProcedural.info[intent.action.rawValue] == nil {
+        if let intent,(intent.action.isRune || intent.action == .dragonFlame),let catalog,MeadowSkillProcedural.procID(for:intent.action.rawValue) == nil {
             fx.runes=SpellbladeEffects.sample(action:intent.action,age:age,actor:intent.actor,target:intent.target,recipients:SpellbladeEffects.recipients(intent,catalog:catalog),weaponID:intent.weaponID,targets:intent.targets,templates:state.units.mapValues(\.templateID))
         } else { fx.runes=nil }
         fx.hits=Array(hitFeel.values)
@@ -496,7 +521,9 @@ struct MeadowPartyProcEvent {
         let c=move(geo.casterFoot,geo.caster,casterID)
         var targets:[MeadowSkillProcedural.Target]=[]
         for (i,t) in geo.targets.enumerated() where i<targetIDs.count { let m=move(t.foot,t.chest,targetIDs[i]);targets.append(.init(chest:m.chest,foot:m.foot)) }
-        return .init(caster:c.chest,casterFoot:c.foot,targets:targets.isEmpty ? geo.targets:targets,ground:targets.first?.foot.y ?? geo.ground)
+        var g=MeadowSkillProcedural.Geometry(caster:c.chest,casterFoot:c.foot,targets:targets.isEmpty ? geo.targets:targets,ground:targets.first?.foot.y ?? geo.ground)
+        g.power=power
+        return g
     }
 }
 enum MeadowSkillProceduralDrawing {
@@ -572,6 +599,8 @@ private final class MeadowPartyEffectsView:UIView {
     /// horizontal edge). Drawing is in world coordinates; the layer is drawn at a lower resolution, which soft light does not mind and which keeps long skills fast.
     static let worldRect=CGRect(x:0,y:-200,width:1000,height:1000)
     static let drawScale:CGFloat=1.5
+    /// Blows (plain attacks, strong strike, ambush) are procedural effects now; the old sprite / flare impact drawing stays off.
+    static let proceduralBlows=true
     override func didMoveToWindow() { super.didMoveToWindow();contentScaleFactor=Self.drawScale }
     override init(frame:CGRect) { super.init(frame:frame);isOpaque=false;isUserInteractionEnabled=false }
     required init?(coder:NSCoder) { fatalError("init(coder:) has not been implemented") }
@@ -666,7 +695,7 @@ private final class MeadowPartyEffectsView:UIView {
                 let sample=LegendaryStaffRig.effect(age:age,foot:foot,target:hitPoint(intent.target,shielded:meetsShield,weaponID:intent.weaponID),groundY:targetFoot.y,scale:PartyVisual.heroScale,naturalTwenty:naturalTwenty)
                 MeadowStaffEffectPainter.draw(sample,in:ctx)
             }
-            if visual=="attack",intent.action.skillVFX == nil,!intent.magical,let foot=PartyVisual.foot(intent.target) {
+            if !Self.proceduralBlows,visual=="attack",intent.action.skillVFX == nil,!intent.magical,let foot=PartyVisual.foot(intent.target) {
                 let a=age-(intent.enemy ? 0.46:1.048),p=hitPoint(intent.target,shielded:meetsShield,weaponID:intent.weaponID)
                 let power=PartyVisual.pulse(a,-0.035,0.035,0.52)
                 if !intent.enemy && !hits.isEmpty {
@@ -681,7 +710,7 @@ private final class MeadowPartyEffectsView:UIView {
                     }
                 }
             }
-            if visual=="ambush",let foot=PartyVisual.foot(intent.target) {
+            if !Self.proceduralBlows,visual=="ambush",let foot=PartyVisual.foot(intent.target) {
                 let at=PartyPoint(foot.x-80,foot.y-72),power=PartyVisual.pulse(age,0.72,0.755,1.14)
                 glow(at,128,115,power*0.52,.systemYellow);glow(foot,170,27,power*0.70,.systemGreen)
                 sprite(MeadowBattleVFXAssets.burst,at,130,130,power*0.72)
@@ -812,7 +841,7 @@ private final class MeadowPartyEffectsView:UIView {
             }
         }
         if !gpuDrawsSkills { onFlash?(flashColor) }
-        for h in hits {
+        for h in hits where !Self.proceduralBlows {
             let a=time-h.at
             glow(PartyPoint(Double(h.point.x),Double(h.point.y)),120,120,MeadowBattleHitFeel.flash(age:a)*0.55,UIColor(red:1,green:0.75,blue:0.27,alpha:1))
             MeadowBattleHitFeelPainter.draw(in:ctx,age:a,tier:h.tier,direction:h.direction,impact:h.point,floorY:h.floorY,footX:h.footX,unit:MeadowBattleHitFeelPainter.partyStageUnit)

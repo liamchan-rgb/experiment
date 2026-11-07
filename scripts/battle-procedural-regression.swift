@@ -94,7 +94,7 @@ struct BattleProceduralRegression {
             return m
         }
         // The director shot: every combat skill pushes in on its caster, swings to the targets, and lets go again.
-        for id in M.skillIDs where !id.hasPrefix("heal") {
+        for id in M.skillIDs where !id.hasPrefix("heal") && !id.hasPrefix("hit") && id != "natural20" {
             guard let info = M.info[id] else { continue }
             var maxWeight = 0.0, maxZoom = 0.0, t = 0.0, firstFocus: Double? = nil, lastFocus = 0.0
             while t < info.duration {
@@ -115,6 +115,11 @@ struct BattleProceduralRegression {
             let c1 = M.camera(skill: id, t: after, direction: 1), c2 = M.scaled(c1, skill: id, t: after, power: 1.45), c3 = M.scaled(c1, skill: id, t: after, power: 0.7)
             check(abs(c2.dx) + abs(c2.dy) + 200 * abs(c2.zoom) >= abs(c3.dx) + abs(c3.dy) + 200 * abs(c3.zoom) - 1e-9, "\(id): heavier hits should shake at least as hard")
         }
+        // The natural 20 pushes straight in on the target and holds; plain blows have no director shot and no lens work of their own.
+        var n20w = 0.0, n20z = 0.0, t20 = 0.0
+        while t20 < 2.8 { let s = M.shot(skill: "natural20", t: t20, geo: geo); n20w = max(n20w, s.weight); n20z = max(n20z, s.zoom); t20 += 1.0 / 60 }
+        check(n20w > 0.95 && n20z > 0.3, "natural20: the push-in is too weak (\(n20w), \(n20z))")
+        for id in M.skillIDs where id.hasPrefix("hit") { check(M.shot(skill: id, t: 0.3, geo: geo) == .idle && M.camera(skill: id, t: 0.3, direction: 1) == .zero, "\(id) must not move the lens") }
         for id in ["healMicro", "healStandard", "healStrong"] { check(M.shot(skill: id, t: 0.3, geo: geo) == .idle, "\(id) must not move the lens") }
         check(peak("dragonFlame") > peak("healMicro") * 4, "dragon flame should kick harder than a micro heal")
         check(peak("dragonScaleWard") > 0.5 && peak("runeSlash") > 0.5 && peak("dragonOrder") > 0.5, "weighty skills must move the lens")

@@ -1552,6 +1552,135 @@ def sweep_arc(t, geo, ti=0):
     return out
 
 
+# ------------------------------------------------------------------ blows: one generator, a style per weapon / attacker
+PAL['blade'] = dict(deep=(70, 80, 110), body=(190, 205, 235), mid=(235, 242, 255), light=(255, 255, 255), a1=(255, 225, 150), a2=(160, 200, 255))
+PAL['great'] = dict(deep=(110, 60, 20), body=(255, 170, 70), mid=(255, 215, 140), light=(255, 250, 225), a1=(255, 255, 255), a2=(255, 140, 60))
+PAL['bow'] = dict(deep=(20, 90, 50), body=(110, 230, 150), mid=(190, 255, 200), light=(240, 255, 240), a1=(255, 240, 170), a2=(120, 255, 220))
+PAL['staff'] = dict(deep=(30, 40, 140), body=(110, 150, 255), mid=(170, 200, 255), light=(240, 245, 255), a1=(255, 230, 170), a2=(190, 130, 255))
+PAL['claw'] = dict(deep=(110, 20, 16), body=(230, 60, 40), mid=(255, 130, 90), light=(255, 225, 190), a1=(255, 255, 230), a2=(255, 170, 60))
+PAL['ambush'] = dict(deep=(20, 90, 40), body=(120, 235, 110), mid=(220, 255, 130), light=(250, 255, 210), a1=(255, 245, 140), a2=(160, 255, 190))
+PAL['ward'] = dict(deep=(10, 50, 110), body=(60, 170, 255), mid=(140, 225, 255), light=(225, 248, 255), a1=(255, 255, 255), a2=(120, 200, 255))
+PAL['gold'] = dict(deep=(130, 80, 10), body=(255, 190, 50), mid=(255, 225, 120), light=(255, 250, 220), a1=(255, 255, 255), a2=(255, 170, 40))
+HITS = {'hitBlade': 'blade', 'hitGreat': 'great', 'hitBow': 'bow', 'hitStaff': 'staff', 'hitClaw': 'claw', 'hitAmbush': 'ambush', 'hitWard': 'ward'}
+SPEC.update({k: (1.1, .05, False) for k in HITS})
+SPEC.update({'natural20': (2.8, .05, False), 'shieldDome': (1.9, .46, True)})
+DIM.update({k: (0.0, (1.0, 1.0, 1.0)) for k in HITS})
+DIM.update({'natural20': (.5, (1.0, .92, .7)), 'shieldDome': (.26, (.8, .92, 1.0))})
+
+
+def hit_effect(skill, t, geo, ti=0):
+    out = []; st = HITS[skill]; P = PAL[st]; C = geo['caster']; (T, TF) = geo['targets'][ti]
+    pw = geo.get('power', 1.0); d = 1.0 if T[0] >= C[0] else -1.0; k = t - .05
+    if k < 0: return out
+    S = .85 + .3 * pw; fade = 1 - ease_in(k / .85)
+    out.append(('g', T[0], T[1], 120 * S * (.5 + ease_out(k / .15)), 90 * S * (.5 + ease_out(k / .15)), P['body'], .55 * (1 - ease_in(k / .45))))
+    out.append(('g', T[0], T[1], 46 * S, 40 * S, P['light'], .9 * (1 - ease_in(k / .14))))
+    out.append(('g', T[0], T[1], 150 * S, 70 * S, P['deep'], .25 * fade))
+    u = ease_out(k / .1)
+    if st == 'blade':
+        for s_, (ang, ln) in enumerate(((-.7 * d, 1.0), (.55 * d, .8))):
+            out.append(('e', T[0], T[1], 78 * S * u * ln, 4.5 * S, ang, P['light'], 1 - ease_in(k / .35)))
+            out.append(('e', T[0], T[1], 90 * S * u * ln, 9 * S, ang, P['body'], .5 * (1 - ease_in(k / .4))))
+    elif st == 'great':
+        for s_, (ang, ln) in enumerate(((-.6 * d, 1.0), (.4 * d, .7), (-1.2 * d, .55))):
+            out.append(('e', T[0], T[1], 130 * S * u * ln, 8 * S, ang, P['light'], 1 - ease_in(k / .4)))
+            out.append(('e', T[0], T[1], 150 * S * u * ln, 18 * S, ang, P['body'], .5 * (1 - ease_in(k / .5))))
+        r = 40 + 210 * S * ease_out(k / .45); out.append(('r', T[0], T[1], r, r, 3.0 * (1 - k / .6) + .6, P['mid'], .8 * (1 - ease_in(k / .6))))
+        for j in range(5):
+            a = (j - 2) * .5 + (0 if d > 0 else math.pi); out.append(('e', TF[0] + math.cos(a) * 60 * u, TF[1] - 2 + math.sin(a) * 12, 70 * S * u, 2.2, a * .3, P['a1'], .8 * fade))
+    elif st == 'bow':
+        a = math.atan2(T[1] - C[1], T[0] - C[0]); L = 150 * S * u
+        out.append(('e', T[0] - math.cos(a) * L * .5, T[1] - math.sin(a) * L * .5, L * .5 + 1, 3.0, a, P['light'], 1 - ease_in(k / .3)))
+        out.append(('e', T[0] - math.cos(a) * L * .5, T[1] - math.sin(a) * L * .5, L * .5 + 1, 8.0, a, P['body'], .5 * (1 - ease_in(k / .4)))); 
+        for q in range(2): out.append(('e', T[0], T[1], 40 * S * u, 2.0, q * 1.5708, P['light'], 1 - ease_in(k / .4)))
+    elif st == 'staff':
+        for w in range(2):
+            uu = (k - .08 * w) / .45
+            if 0 < uu < 1:
+                r = 20 + 120 * S * ease_out(uu); out.append(('r', T[0], T[1], r, r, 2.6 * (1 - uu) + .6, (P['mid'], P['a2'])[w], .9 * (1 - ease_in(uu))))
+        for q in range(6):
+            a = q * 1.0472 + k * 3; rr = 34 * S * u; out.append(('e', T[0] + math.cos(a) * rr, T[1] + math.sin(a) * rr, 14 * S, 1.6, a, P['light'], 1 - ease_in(k / .45)))
+    elif st == 'claw':
+        for q in range(3):
+            kk = k - .035 * q
+            if kk < 0: continue
+            off = (q - 1) * 20; ang = .9 * d; ox = -math.sin(ang) * off; oy = math.cos(ang) * off; uq = ease_out(kk / .09)
+            out.append(('e', T[0] + ox, T[1] + oy, 95 * S * uq, 4.0 * S, ang, P['light'], 1 - ease_in(kk / .35)))
+            out.append(('e', T[0] + ox, T[1] + oy, 105 * S * uq, 9.0 * S, ang, P['body'], .55 * (1 - ease_in(kk / .4))))
+    elif st == 'ambush':
+        for s_, ang in enumerate((-.35 * d, .35 * d)):
+            kk = k - .05 * s_
+            if kk < 0: continue
+            uq = ease_out(kk / .08); out.append(('e', T[0], T[1], 120 * S * uq, 3.2 * S, ang, P['light'], 1 - ease_in(kk / .35)))
+            out.append(('e', T[0], T[1], 135 * S * uq, 8.0 * S, ang, P['body'], .5 * (1 - ease_in(kk / .4))))
+        for q in range(6):
+            a = q * 1.0472 + .5; rr = (30 + 50 * frac(q, 2)) * S * u; out.append(('e', T[0] + math.cos(a) * rr, T[1] + math.sin(a) * rr * .8, 9 * S, 1.6, a, P['a1'], 1 - ease_in(k / .5)))
+    else:                                                                    # ward: the blow lands on a shield and rings through it
+        for w in range(2):
+            uu = (k - .07 * w) / .5
+            if 0 < uu < 1:
+                r = 30 + 90 * ease_out(uu); out.append(('r', T[0], T[1], r * .8, r, 2.4 * (1 - uu) + .6, (P['mid'], P['light'])[w], .9 * (1 - ease_in(uu))))
+        for q in range(6):
+            a0 = k * 2 + q * 1.0472; out.append(('a', T[0], T[1], 54 * S, 70 * S, a0, a0 + .5, 3.0, P['light'], .8 * (1 - ease_in(k / .5))))
+    for j in range(int(10 + 6 * pw)):                                       # shards
+        jj = j + 31 * ti; a = frac(jj, 3) * 6.2832; r = (25 + 120 * frac(jj, 4)) * S * ease_out(k / .35)
+        out.append(('e', T[0] + math.cos(a) * r, T[1] + math.sin(a) * r * .6, 9 * S, 1.5, a, (P['light'], P['mid'], P['a1'])[j % 3], max(0.0, 1 - k / .55)))
+    rr = 20 + 100 * S * ease_out(k / .4); out.append(('r', TF[0], TF[1] - 2, rr, rr * .26, 2.4 * max(0.0, 1 - k / .5) + .6, P['mid'], .6 * fade))
+    return out
+
+
+# ------------------------------------------------------------------ natural 20: the roll that ends the fight
+def natural20(t, geo, ti=0):
+    out = []; P = PAL['gold']; (T, TF) = geo['targets'][ti]
+    if ti == 0:
+        out.append(('f', (255, 255, 255), .95 * math.exp(-t * 8)))
+        if t >= .1: out.append(('f', P['mid'], .5 * math.exp(-(t - .1) * 6)))
+    env = smooth(t / .12) * (1 - smooth((t - 1.5) / 1.0)); grow = smooth(t / .3)
+    out.append(('e', T[0], TF[1] - 190, 420, 46 * env + .4, -1.5708, P['body'], .55 * env))                  # a column of light from the sky
+    out.append(('e', T[0], TF[1] - 190, 420, 14 * env + .4, -1.5708, P['light'], .95 * env))
+    out.append(('g', T[0], T[1], 300 * (.4 + ease_out(t / .2)), 240 * (.4 + ease_out(t / .2)), P['body'], .6 * (1 - ease_in(t / 1.4))))
+    out.append(('g', T[0], T[1], 110, 100, P['light'], .95 * (1 - ease_in(t / .5))))
+    for i in range(28):                                                      # rays
+        a = i * 6.2832 / 28 + .25 * t * (1.0 if i % 2 else -1.0); L = (180 + 220 * frac(i, 3)) * ease_out(t / .22) * (1 - ease_in((t - .15) / 1.6))
+        if L <= 2: continue
+        out.append(('e', T[0] + math.cos(a) * L * .5, T[1] + math.sin(a) * L * .5, L * .5, 3 + 3 * frac(i, 5), a, (P['light'], P['mid'], P['a1'])[i % 3], .85 * (1 - ease_in(t / 1.8))))
+    for w in range(4):                                                       # shock waves: a ring around the target and one rolling along the ground
+        u = (t - .06 * w) / 1.0
+        if 0 < u < 1:
+            R = 40 + 560 * ease_out(u); col = (P['light'], P['mid'], P['a1'], P['body'])[w]
+            out.append(('r', T[0], T[1], R, R, 6.0 * (1 - u) + 1.0, col, .9 * (1 - ease_in(u))))
+            out.append(('r', T[0], TF[1] - 2, R * 1.4, R * 1.4 * .24, 5.0 * (1 - u) + 1.0, col, .8 * (1 - ease_in(u))))
+    out.append(('r', T[0], T[1] - 120, 90 * grow + 1, 28 * grow + 1, 3.0, P['a1'], .9 * env))                # a crown above the target
+    out.append(('r', T[0], T[1] - 120, 62 * grow + 1, 18 * grow + 1, 1.6, P['mid'], .8 * env))
+    for i in range(24):                                                      # embers climb the column
+        u = (t - .1 - .4 * frac(i, 2)) / 1.2
+        if 0 < u < 1:
+            out.append(('e', T[0] + (frac(i, 3) - .5) * 120, TF[1] - u * (260 + 160 * frac(i, 4)), 14, 2.0, -1.5708, P['light'], .9 * (1 - u)))
+    return out
+
+
+# ------------------------------------------------------------------ shield dome: a shell of light closes around the unit
+def shield_dome(t, geo, ti=0):
+    out = []; P = PAL['ward']; (chest, foot) = geo['targets'][ti]; fx, fy = foot; cx, cy = chest; imp = .46
+    gr = smooth(t / .25) * (1 - smooth((t - 1.5) / .3))
+    out.append(('g', fx, fy - 2, 90 * gr + 4, 24 * gr + 2, P['body'], .45 * gr))
+    for ri, sc in enumerate((1.0, .72, .45)):
+        e = .4 + .6 * ease_out(t / .4); out.append(('r', fx, fy - 2, 70 * sc * e, 70 * sc * .28 * e, 2.2 - .5 * ri, (P['mid'], P['light'], P['a2'])[ri], .8 * gr))
+    if t >= imp - .05:
+        e = ease_out((t - imp + .05) / .35); env = e * (1 - smooth((t - 1.5) / .3))
+        out.append(('g', cx, cy, 90 * e + 2, 120 * e + 2, P['body'], .3 * env))
+        out.append(('r', cx, cy, 64 * e + 1, 94 * e + 1, 3.0, P['mid'], .9 * env)); out.append(('r', cx, cy, 58 * e + 1, 88 * e + 1, 1.2, P['light'], .7 * env))
+        for q in range(6):
+            a0 = t * 1.6 + q * 1.0472; out.append(('a', cx, cy, 64 * e + 1, 94 * e + 1, a0, a0 + .62, 4.0, P['light'], .85 * env * (.6 + .4 * math.sin(t * 5 + q))))
+        out.append(('r', cx, cy, 64 * e + 1, 22 * e + 1, 1.4, P['a2'], .55 * env, .35 * math.sin(t)))
+        out.append(('r', cx, cy, 64 * e + 1, 22 * e + 1, 1.4, P['a2'], .55 * env, -.35 * math.sin(t * 1.3)))
+        if ti == 0 and imp - .05 <= t < imp + .2: out.append(('f', P['mid'], .14 * (1 - (t - imp + .05) / .25)))
+        for q in range(10):
+            ph = frac(q + 20 * ti, 1); a = ph * 6.2832 + t * 1.5; uu = (t * .6 + ph) % 1.0
+            out.append(('e', cx + math.cos(a) * 60 * e, cy + 80 - uu * 170, 8, 1.4, -1.5708, P['light'], env * math.sin(math.pi * uu)))
+    return out
+
+
 def multi(fn):
     """Run a single-target effect once per target. Caster-side parts are emitted only for the first target (ti == 0)."""
     def run(t, geo):
@@ -1563,7 +1692,8 @@ def multi(fn):
 
 _SINGLE = {'starlightPulse': starlight, 'dragonSoulWard': soul, 'dragonScaleWard': scale_ward, 'runeSlash': rune_slash, 'runeWard': rune_ward,
            'battleRune': battle_rune, 'dragonFlame': dragon_flame, 'dragonOrder': dragon_order,
-           'healMicro': heal_micro, 'healStandard': heal_standard, 'healStrong': heal_strong, 'rally': rally_call, 'sweep': sweep_arc}
+           'healMicro': heal_micro, 'healStandard': heal_standard, 'healStrong': heal_strong, 'rally': rally_call, 'sweep': sweep_arc, 'natural20': natural20, 'shieldDome': shield_dome,
+           **{k: (lambda t, geo, ti=0, k=k: hit_effect(k, t, geo, ti)) for k in HITS}}
 # ------------------------------------------------------------------ atmosphere: themed particles over the whole stage
 # Three layers per skill, all closed-form in t with fixed-id randomness: particles that GATHER into the caster while the power builds,
 # a FIELD of particles that fills the whole stage with the skill's own weather (dragon flame = a hot updraft of embers, starlight =
@@ -1581,6 +1711,8 @@ ATMOS = {
     'dragonOrder': ('ember', 'gust', 'order', 66, 28, 22, .50, 1.3, .56),
     'rally': ('star', 'rise', 'rally', 60, 24, 18, .34, 1.3, .56),
     'sweep': ('ember', 'gust', 'sweep', 60, 22, 20, .60, 1.2, 1.048),
+    'natural20': ('star', 'fall', 'gold', 90, 0, 40, .40, 1.7, .05),
+    'shieldDome': ('flake', 'orbit', 'ward', 44, 22, 0, .45, 1.1, .46),
     'healMicro': ('mote', 'rise', 'heal', 20, 0, 0, .30, 1.1, .3),
     'healStandard': ('mote', 'rise', 'heal', 28, 0, 0, .30, 1.25, .3),
     'healStrong': ('mote', 'rise', 'heal', 36, 0, 0, .30, 1.4, .3),

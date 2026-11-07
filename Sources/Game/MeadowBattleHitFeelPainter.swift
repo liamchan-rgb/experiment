@@ -129,4 +129,12 @@ enum MeadowBattleHaptics {
 
     /// A blocked blow: a short, soft tap.
     static func blocked() { light.impactOccurred(intensity: 0.5) }
+    /// The natural 20: three heavy taps and a success buzz.
+    static func naturalTwenty() {
+        heavy.prepare(); rigid.prepare()
+        heavy.impactOccurred(intensity: 1.0)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.09) { rigid.impactOccurred(intensity: 1.0) }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.22) { heavy.impactOccurred(intensity: 0.8) }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.40) { UINotificationFeedbackGenerator().notificationOccurred(.success) }
+    }
 }
