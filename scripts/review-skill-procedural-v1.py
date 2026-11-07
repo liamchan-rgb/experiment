@@ -176,6 +176,11 @@ CASES = {
     'rally': dict(targets=[(hero_chest, hero_foot)], center=hero_chest, ground=hero_foot[1]),
     'dragonSoulWard': dict(targets=[(hero_chest, hero_foot)], center=hero_chest, ground=hero_foot[1]),
     'dragonScaleWard': dict(targets=[(hero_chest, hero_foot)], center=hero_chest, ground=hero_foot[1]),
+    'runeSlash': dict(targets=[(enemy_chest, enemy_foot)], center=enemy_chest, ground=enemy_foot[1]),
+    'dragonFlame': dict(targets=[(enemy_chest, enemy_foot)], center=enemy_chest, ground=enemy_foot[1]),
+    'runeWard': dict(targets=[(hero_chest, hero_foot)], center=hero_chest, ground=hero_foot[1]),
+    'battleRune': dict(targets=[(hero_chest, hero_foot)], center=hero_chest, ground=hero_foot[1]),
+    'dragonOrder': dict(targets=[(hero_chest, hero_foot), ((hero_chest[0] + 150, hero_chest[1]), (hero_foot[0] + 150, hero_foot[1]))], center=hero_chest, ground=hero_foot[1]),
 }
 for c in CASES.values(): c.update(caster=hero_chest, casterFoot=hero_foot)
 CROP = (int(hx - 90), int(hy - 90), int(hx + 560), int(hy + 290))

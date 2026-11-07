@@ -784,4 +784,317 @@ def soul(t, geo):
     return out
 
 
-GENERATORS = {'starlightPulse': starlight, 'rally': rally, 'sweep': sweep, 'dragonSoulWard': soul, 'dragonScaleWard': scales}
+# ================================================================== v5: the spellblade and dragon knight skills
+# Palette: deep, body, mid, light, accent 1, accent 2.
+PAL = {
+    'rune': dict(deep=(14, 40, 92), body=(40, 150, 235), mid=(90, 215, 255), light=(205, 248, 255), a1=(255, 214, 120), a2=(150, 110, 255)),
+    'battle': dict(deep=(110, 40, 10), body=(230, 120, 30), mid=(255, 180, 60), light=(255, 236, 170), a1=(255, 90, 60), a2=(255, 230, 160)),
+    'flame': dict(deep=(120, 20, 8), body=(235, 70, 20), mid=(255, 150, 40), light=(255, 225, 140), a1=(255, 250, 220), a2=(255, 90, 40)),
+    'scale': dict(deep=(96, 44, 10), body=(214, 120, 28), mid=(255, 180, 70), light=(255, 230, 160), a1=(255, 120, 60), a2=(255, 214, 120)),
+    'order': dict(deep=(90, 10, 30), body=(200, 40, 50), mid=(255, 110, 70), light=(255, 210, 150), a1=(255, 220, 120), a2=(255, 150, 90)),
+}
+SPEC.update({'runeSlash': (2.4, 1.048, False), 'runeWard': (2.4, .72, True), 'battleRune': (2.1, .56, True),
+             'dragonFlame': (2.2, .46, False), 'dragonScaleWard': (2.2, .56, True), 'dragonOrder': (2.1, .56, True)})
+DIM.update({'runeSlash': (.30, (.8, .92, 1.0)), 'runeWard': (.28, (.8, .92, 1.0)), 'battleRune': (.28, (1.0, .88, .72)),
+            'dragonFlame': (.34, (1.0, .78, .62)), 'dragonScaleWard': (.28, (1.0, .88, .7)), 'dragonOrder': (.32, (1.0, .78, .72))})
+
+
+def compress_in(out, cx, cy, fx, fy, pre, P, n=30):
+    """Light drawn into the target in the beat before release."""
+    if pre <= 0 or pre >= 1.02: return
+    for i in range(n):
+        ph = frac(i, 1); tt = clamp01((pre - ph * .3) / (1 - ph * .3))
+        a = frac(i, 2) * 6.283 + tt * 4.5; r = (110 + 80 * frac(i, 3)) * (1 - ease_in(tt)) ** 1.4
+        x = cx + math.cos(a) * r; y = cy + 20 + math.sin(a) * r * .55 - 20 * ease_in(tt)
+        k = math.sin(math.pi * min(1, tt * 1.05)) ** .6
+        out.append(('e', x, y, 9 + 16 * (1 - tt), 1.8, a + 1.571 + tt * 4.5, (P['light'], P['mid'], P['a1'])[i % 3], .8 * k)); out.append(('g', x, y, 6, 6, P['light'], .7 * k))
+    k = ease_in(clamp01(pre))
+    out.append(('g', cx, cy, 90 - 50 * k, 110 - 60 * k, P['body'], .2 + .22 * k)); out.append(('g', cx, cy, 22, 28, P['mid'], .5 * k))
+
+
+def ground_waves(out, fx, gy, post, P, R=190, n=4, thick=7.0):
+    for j in range(n):
+        d = j * .09
+        if post - d >= 0:
+            r = 14 + R * ease_out((post - d) / .7); wd = (thick - j * 1.5)
+            out.append(('r', fx, gy - 2, r, r * .27, max(.6, wd * (1 - (post - d) / .75)), (P['mid'], P['body'], P['mid'], P['light'])[j % 4], .8 * (1 - ease_in((post - d) / .75))))
+
+
+def column(out, fx, fy, post, env, P, h=240, w0=84):
+    top = fy - h * ease_out(post / .2); us = [i / 40 for i in range(41)]
+    for lyr, (w, c_, a) in enumerate(((w0, P['deep'], .16), (w0 * .62, P['body'], .14), (w0 * .3, P['mid'], .13), (10, P['light'], .3))):
+        pts = [(fx + math.sin(u * 7 + post * 4 + lyr) * 3 * (1 - u), fy - u * (fy - top)) for u in us]
+        out.append(('k', pts, [w * (.5 + .5 * math.sin(math.pi * (u * .9 + .1)) ** .5) * (1 + .06 * math.sin(post * 20 + lyr)) for u in us], c_, a * env, 'add', 14 if lyr < 2 else 6))
+
+
+def sparks_out(out, cx, cy, post, P, n=44, spread=160, life0=.9, rise=70):
+    for i in range(n):
+        tb = .02 + .5 * frac(i, 1); tt = post - tb
+        if not 0 <= tt < life0: continue
+        a = frac(i, 3) * 6.283; r = (60 + spread * frac(i, 4)) * ease_out(tt / .6)
+        x = cx + math.cos(a) * r; y = cy + 40 + math.sin(a) * r * .3 - rise * tt * (.5 + frac(i, 5)); k = (1 - tt / life0) * (.6 + .4 * math.sin(tt * 30 + i))
+        out.append(('e', x, y, 10, 1.7, a, (P['light'], P['a1'], P['mid'])[i % 3], .8 * k)); out.append(('g', x, y, 6, 6, P['light'], .7 * k))
+
+
+def helix_streams(out, fx, fy, post, env, P, n=6, height=215, widest=11.0):
+    for q in range(n):
+        sgn = 1 if q % 2 == 0 else -1; pts = []; ws = []
+        head = ease_out(clamp01(post / .5)); tail = ease_in(clamp01((post - .9) / .6))
+        for j in range(72):
+            u = j / 71
+            if u > head or u < tail * .9: continue
+            ang = q * 6.283 / n + sgn * (u * (7 + .7 * q) - post * (4.5 + .4 * q)); rr = 40 + 30 * math.sin(u * 3 + q) + 34 * u * (1 + .15 * q)
+            pts.append((fx + math.cos(ang) * rr, fy - 8 - u * height + math.sin(ang) * rr * .3)); ws.append((widest * (1 - u) ** .9 + 1.4) * (1 - tail) * (.75 + .25 * math.sin(u * 9 + q)))
+        if len(pts) > 3:
+            stack(out, pts, ws, [(1.7, P['deep'], 'add', .3), (1.0, P['body'], 'add', .5), (.5, P['mid'], 'add', .7), (.16, P['light'], 'add', .8)], env)
+            out.append(('k', pts, [w * 3.0 for w in ws], P['deep'], .1 * env, 'add', 12))
+
+
+def aura(out, cx, cy, fx, t, env, P, rx=56, ry=86, flames=14, crown=None):
+    if env <= .01: return
+    pulse = 1 + .05 * math.sin(t * 6); RX, RY = rx * pulse, ry * pulse
+    out.append(('g', cx, cy, RX * 1.6, RY * 1.3, P['deep'], .22 * env)); out.append(('g', cx, cy, RX * 1.05, RY * 1.0, P['body'], .08 * env))
+    for sc, w, c_, al in ((1.0, 3.0, P['mid'], .55), (.94, 1.6, P['body'], .5), (1.1, 1.4, P['body'], .35)):
+        out.append(('r', cx, cy, RX * sc, RY * sc, w, c_, al * env))
+    for k in range(5):
+        a0 = t * (1.3 + .35 * k) + k * 1.3; out.append(('a', cx, cy, RX * (1 + .03 * k), RY * (1 + .03 * k), a0, a0 + 1.0, 2.8, P['mid'], .6 * env))
+    for i in range(flames):
+        ph = frac(i, 1); u0 = (t * .55 + ph) % 1.0; a = frac(i, 2) * 6.283; bx = cx + math.cos(a) * RX * .7; by = cy + RY * .75
+        pts = []; ws = []
+        for j in range(22):
+            u = j / 21; pts.append((bx + math.sin(u * 5 + t * 3 + i) * 9 * u + (frac(i, 4) - .5) * 20 * u, by - u * (90 + 70 * frac(i, 3)) * (.35 + .65 * u0))); ws.append(8 * (1 - u) ** 1.1 + .4)
+        out.append(('k', pts, ws, (P['body'], P['mid'], P['a2'])[i % 3], .4 * env * math.sin(math.pi * u0) ** .8, 'add', 3.0))
+    for i in range(24):
+        u = ((t * .4 + frac(i, 1)) % 1.0); a = frac(i, 2) * 6.283 + t * .8
+        x = cx + math.cos(a) * RX * .95 * frac(i, 3); y = cy + RY * (1 - 2 * u); k = env * math.sin(math.pi * u)
+        out.append(('g', x, y, 8, 8, (P['light'], P['mid'], P['a1'])[i % 3], .65 * k)); out.append(('g', x, y, 3, 3, (255, 255, 255), .9 * k))
+    if crown:
+        halo = env * (.7 + .3 * math.sin(t * 5)); out.append(('r', cx, cy - RY - 14, 34, 9, 2.2, crown, .75 * halo)); out.append(('g', cx, cy - RY - 14, 50, 16, crown, .28 * halo))
+
+
+def burst_at(out, cx, cy, a, P, size=1.0):
+    """Common detonation: flash, soft core, streak, rays, rings."""
+    if a < 0: return
+    if a < .2: out.append(('f', P['mid'], .12 * math.exp(-a * 18)))
+    out.append(('g', cx, cy, 170 * size * (.5 + ease_out(a / .35)), 170 * size * (.5 + ease_out(a / .35)), P['deep'], .4 * (1 - ease_in(a / .8))))
+    out.append(('g', cx, cy, 60 * size, 60 * size, P['body'], .5 * (1 - ease_in(a / .35))))
+    out.append(('g', cx, cy, 22 * size, 22 * size, P['light'], .6 * (1 - ease_in(a / .22)))); out.append(('g', cx, cy, 10 * size, 10 * size, (255, 255, 255), .85 * (1 - ease_in(a / .16))))
+    out.append(('e', cx, cy, 230 * size * ease_out(a / .2), 4.5, 0, P['mid'], .5 * (1 - ease_in(a / .45))))
+    for k in range(32):
+        ang = k * 2 * math.pi / 32 + a * .4; L = (60 + 100 * frac(k, 2)) * size * ease_out(a / .16) * (1 - ease_in((a - .1) / .6))
+        if L > 3: out.append(('e', cx + math.cos(ang) * L / 2, cy + math.sin(ang) * L / 2, L / 2, 1.8, ang, (P['body'], P['a1'], P['mid'], P['light'])[k % 4], .55 * (1 - a / .7)))
+    for ring_i, (d, col) in enumerate(((0, P['mid']), (.07, P['a1']), (.14, P['body']))):
+        if a - d >= 0:
+            r = (12 + 150 * ease_out((a - d) / .6)) * size
+            out.append(('r', cx, cy, r, r * .8, 3.0 * (1 - (a - d) / .65) + .6, col, .85 * (1 - ease_in((a - d) / .65))))
+
+
+def rune_cylinder(out, fx, gy, cy, t, env, P, RX=52, RY=84, bands=5):
+    """A standing barrier made of rotating arc bands, rings and travelling glints (runes implied, nothing literal)."""
+    if env <= .01: return
+    out.append(('g', fx, cy, RX * 1.4, RY * 1.25, P['deep'], .2 * env))
+    for b in range(bands):
+        yy = cy + (b - (bands - 1) / 2) * RY * .42
+        for k in range(4):
+            a0 = t * (1.0 + .25 * b) * (1 if b % 2 == 0 else -1) + k * 1.571 + b
+            out.append(('a', fx, yy, RX * .98, RX * .98 * .28, a0, a0 + .95, 2.6, (P['mid'], P['a1'])[b % 2], .75 * env))
+        out.append(('r', fx, yy, RX, RX * .28, 1.2, P['body'], .45 * env))
+    out.append(('r', fx, cy, RX, RY, 2.6, P['light'], .45 * env))
+    wy = cy + RY * (1 - 2 * ((t * .8) % 1.0)); out.append(('e', fx, wy, RX, 9, 0, P['light'], .4 * env))
+
+
+# ------------------------------------------------------------------ spellblade: rune slash
+def rune_slash(t, geo):
+    out = []; P = PAL['rune']; C = geo['caster']; CF = geo['casterFoot']; T, TF = geo['targets'][0]; imp = SPEC['runeSlash'][1]
+    pre = clamp01((t - .3) / (imp - .3)); post = t - imp
+    sg = smooth((t - .2) / .3) * (1 - smooth((t - imp - .1) / .5))
+    sigil2(out, CF[0], CF[1] - 2, 62 - 16 * ease_in(pre), .3, t, sg, (P['mid'], P['body'], P['light']), 8, 1.4 + 2.5 * pre)
+    if t < imp: compress_in(out, C[0] + 30, C[1] - 10, CF[0], CF[1], pre, P, 26)
+    for q in range(3):                                                                         # rune light runs along the blade while it is held
+        if 0 < pre:
+            for j in range(10):
+                u = j / 9; a = t * 6 + q * 2.1 + u * 3; x = C[0] + 24 + u * 30; y = C[1] - 22 + u * 4
+                out.append(('g', x + math.cos(a) * 3, y + math.sin(a) * 4, 6, 6, (P['light'], P['a1'], P['mid'])[q], .55 * pre * math.sin(math.pi * u) ** .5))
+    if post >= 0:
+        cx, cy = T; swing = clamp01(post / .26)
+        for copy in range(4):                                                                  # a slash and three afterimages, each a smooth ribbon
+            d = copy * .035; sw = clamp01((post - d) / .26)
+            if sw <= 0: continue
+            head = lerp(-1.75, 1.85, ease_out(sw) ** .9); tail = head - 2.6 * (1 - .15 * copy)
+            pts = []; ws = []
+            for j in range(60):
+                th = lerp(max(tail, -1.75), head, j / 59); u = j / 59
+                pts.append((cx - 24 + math.cos(th) * 128 * (1 + .04 * copy), cy + math.sin(th) * 84 * (1 + .04 * copy) - 6)); ws.append((22 * math.sin(math.pi * clamp01((th + 1.75) / 3.6)) ** .7 + 2) * (u ** 1.1) * (1 - .18 * copy))
+            env = (1 - ease_in((post - .3 - d) / .6)) * (1 - .2 * copy)
+            if env > .01 and len(pts) > 3:
+                stack(out, pts, ws, [(1.7, P['deep'], 'add', .28), (1.0, P['body'], 'add', .55), (.5, P['mid'], 'add', .75), (.18, P['light'], 'add', .95)], env)
+        hx = cx - 24 + math.cos(lerp(-1.75, 1.85, ease_out(swing) ** .9)) * 128; hy = cy + math.sin(lerp(-1.75, 1.85, ease_out(swing) ** .9)) * 84 - 6
+        if post < .5: out.append(('g', hx, hy, 40, 40, P['mid'], .6 * (1 - post / .5))); out.append(('g', hx, hy, 14, 14, P['light'], .9 * (1 - post / .5)))
+        if post > .16: burst_at(out, cx, cy, post - .16, P, 1.05)
+        ground_waves(out, TF[0], TF[1], post - .12, P, 200, 4, 7)
+        for k in range(9):                                                                     # light run along the ground from the blow
+            a = k * 2 * math.pi / 9 + .3 * frac(k, 2); pts = []; ws = []
+            for j in range(24):
+                u = j / 23; L = (40 + 150 * frac(k, 3)) * ease_out((post - .12) / .5) * u
+                pts.append((TF[0] + math.cos(a) * L + math.sin(u * 9 + k) * 4, TF[1] - 4 + math.sin(a) * L * .27)); ws.append(5 * (1 - u) ** 1.2 + .5)
+            out.append(('k', pts, ws, (P['mid'], P['a1'], P['light'])[k % 3], .6 * (1 - ease_in((post - .1) / .8)), 'add', 3.0))
+        sparks_out(out, cx, cy, post - .1, P, 56, 200)
+        sg2 = smooth((post - .1) / .1) * (1 - ease_in((post - .3) / .9)); sigil2(out, TF[0], TF[1] - 2, 50 + 70 * ease_out((post - .1) / .4), .3, post + imp, sg2, (P['mid'], P['body'], P['a1']), 8, 1.6)
+    return out
+
+
+# ------------------------------------------------------------------ spellblade: rune ward
+def rune_ward(t, geo):
+    out = []; P = PAL['rune']; (chest, foot) = geo['targets'][0]; fx, fy = foot; cx, cy = chest; gy = geo['ground']; imp = SPEC['runeWard'][1]
+    pre = clamp01(t / imp); post = t - imp
+    sg = smooth(t / .25) * (1 - smooth((t - 2.0) / .35))
+    sigil2(out, fx, gy - 2, 72 - 12 * ease_in(pre) * (post < 0) + 8 * ease_out(post / .3), .28, t, sg, (P['mid'], P['body'], P['a1']), 10, 1.0 + 3 * ease_in(pre) * (post < 0))
+    if post < .05: compress_in(out, cx, cy, fx, fy, pre, P, 30)
+    if post >= 0:
+        if post < .2: out.append(('f', P['mid'], .12 * math.exp(-post * 14)))
+        ground_waves(out, fx, gy, post, P, 180, 4, 6)
+        for k in range(6):                                                                     # rune rings climbing the body
+            d = k * .07; tt = post - d
+            if 0 <= tt < .9:
+                y = fy - 6 - 150 * ease_out(tt / .8); rx_ = 60 - 10 * math.sin(math.pi * tt / .9)
+                out.append(('r', fx, y, rx_, rx_ * .28, 3.0 * (1 - tt / .95) + .6, (P['mid'], P['a1'], P['light'])[k % 3], .8 * (1 - ease_in(tt / .95))))
+                for m in range(3):
+                    a0 = t * 5 + m * 2.094 + k; out.append(('a', fx, y, rx_, rx_ * .28, a0, a0 + .8, 3.0, P['light'], .7 * (1 - ease_in(tt / .95))))
+        col_env = smooth(post / .12) * (1 - smooth((post - .9) / .5)); column(out, fx, fy, post, col_env, P, 220, 70)
+        sparks_out(out, cx, cy, post, P, 34, 130, .9, 60)
+    cyl = smooth((post - .12) / .35) * (1 - smooth((t - 2.0) / .35)) if post > 0 else 0
+    rune_cylinder(out, fx, gy, cy, t, cyl, P)
+    for i in range(18):
+        u = ((t * .45 + frac(i, 1)) % 1.0); a = frac(i, 2) * 6.283 + t; x = fx + math.cos(a) * 46 * frac(i, 3); y = cy + 84 * (1 - 2 * u); k = cyl * math.sin(math.pi * u)
+        out.append(('g', x, y, 8, 8, (P['light'], P['mid'], P['a1'])[i % 3], .65 * k)); out.append(('g', x, y, 3, 3, (255, 255, 255), .9 * k))
+    return out
+
+
+# ------------------------------------------------------------------ spellblade: battle rune (a surge of power)
+def battle_rune(t, geo):
+    out = []; P = PAL['battle']; (chest, foot) = geo['targets'][0]; fx, fy = foot; cx, cy = chest; gy = geo['ground']; imp = SPEC['battleRune'][1]
+    pre = clamp01((t - .05) / (imp - .05)); post = t - imp
+    sg = smooth(t / .2) * (1 - smooth((t - 1.8) / .3))
+    sigil2(out, fx, gy - 2, 70 - 14 * ease_in(pre) * (post < 0) + 10 * ease_out(post / .3), .28, t, sg, (P['mid'], P['body'], P['a2']), 12, 1.0 + 3 * ease_in(pre) * (post < 0))
+    if post < .05: compress_in(out, cx, cy, fx, fy, pre, P, 30)
+    if post >= 0:
+        if post < .22: out.append(('f', P['mid'], .14 * math.exp(-post * 14)))
+        ground_waves(out, fx, gy, post, P, 200, 4, 7); column(out, fx, fy, post, smooth(post / .1) * (1 - smooth((post - .8) / .5)), P, 260, 90)
+        for q in range(7):                                                                     # tongues of power racing up the body
+            pts = []; ws = []; head = ease_out(clamp01((post - q * .02) / .4)); tail = ease_in(clamp01((post - .7) / .6))
+            for j in range(40):
+                u = j / 39
+                if u > head or u < tail * .9: continue
+                a = q * .9 + post * 3; x = fx + math.sin(u * 6 + post * 8 + q * 2) * (14 + 10 * u) + (q - 3) * 7
+                pts.append((x, fy - 6 - u * (200 + 40 * frac(q, 1)))); ws.append((13 * (1 - u) ** .9 + 1.6) * (1 - tail))
+            if len(pts) > 3: stack(out, pts, ws, [(1.7, P['deep'], 'add', .3), (1.0, P['body'], 'add', .55), (.5, P['mid'], 'add', .75), (.18, P['light'], 'add', .9)], 1.0)
+        sparks_out(out, cx, cy, post, P, 60, 170, 1.0, 100)
+        for k in range(3):                                                                     # the power settles into the shoulders and arms
+            a = post - k * .08
+            if a >= 0: r = 20 + 110 * ease_out(a / .6); out.append(('r', cx, cy, r, r * 1.2, 2.4 * (1 - a / .65) + .5, (P['light'], P['a1'], P['mid'])[k], .6 * (1 - ease_in(a / .65))))
+    aura(out, cx, cy, fx, t, smooth((post - .1) / .4) * (1 - smooth((t - 1.8) / .3)) if post > 0 else 0, P, 58, 88, 18, P['light'])
+    return out
+
+
+# ------------------------------------------------------------------ dragon knight: dragon flame (fire falls on the target and erupts)
+def dragon_flame(t, geo):
+    out = []; P = PAL['flame']; C = geo['caster']; CF = geo['casterFoot']; T, TF = geo['targets'][0]; imp = SPEC['dragonFlame'][1]
+    pre = clamp01(t / imp); post = t - imp; cx, cy = T
+    sg = smooth(t / .2) * (1 - smooth((t - imp - .4) / .5))
+    sigil2(out, CF[0], CF[1] - 2, 60 - 12 * ease_in(pre), .3, t, sg, (P['mid'], P['body'], P['a1']), 8, 1.5 + 3 * pre)
+    if t < imp + .05: compress_in(out, C[0] + 20, C[1] - 6, CF[0], CF[1], pre, P, 28)
+    if t < imp:                                                                                # a braided torrent of fire falls onto the target
+        k = ease_in(pre)
+        for q in range(4):
+            pts = []; ws = []
+            for j in range(64):
+                u = j / 63
+                if u > k * 1.05: continue
+                x = lerp(cx - 120, cx, u ** .9) + math.sin(u * 9 + t * 14 + q * 1.6) * (14 * (1 - u) + 3); y = lerp(cy - 280, cy, u ** .9) + math.cos(u * 8 + t * 12 + q) * 8 * (1 - u)
+                pts.append((x + (q - 1.5) * 9 * (1 - u), y)); ws.append((16 * u ** .6 + 3) * (1 - .15 * q))
+            if len(pts) > 3: stack(out, pts, ws, [(1.8, P['deep'], 'add', .3), (1.0, P['body'], 'add', .6), (.55, P['mid'], 'add', .8), (.2, P['a1'], 'add', .95)], 1.0)
+        out.append(('g', cx - 120 * (1 - k), cy - 280 * (1 - k), 50, 50, P['mid'], .5 * k)); out.append(('g', cx - 120 * (1 - k), cy - 280 * (1 - k), 20, 20, P['a1'], .8 * k))
+    if post >= 0:
+        burst_at(out, cx, cy, post, P, 1.2); ground_waves(out, TF[0], TF[1], post, P, 210, 4, 8)
+        col_env = smooth(post / .1) * (1 - smooth((post - .9) / .6)); column(out, TF[0], TF[1], post, col_env, P, 250, 96)
+        for q in range(5):                                                                     # flames licking up from the ground
+            pts = []; ws = []; head = ease_out(clamp01((post - q * .03) / .5)); tail = ease_in(clamp01((post - .9) / .7))
+            for j in range(34):
+                u = j / 33
+                if u > head or u < tail * .85: continue
+                pts.append((TF[0] + (q - 2) * 16 + math.sin(u * 8 + post * 9 + q) * (8 + 12 * u), TF[1] - 4 - u * (170 + 40 * frac(q, 2)))); ws.append((16 * (1 - u) ** .8 + 2) * (1 - tail))
+            if len(pts) > 3: stack(out, pts, ws, [(1.7, P['deep'], 'add', .3), (1.0, P['body'], 'add', .55), (.5, P['mid'], 'add', .75), (.2, P['a1'], 'add', .9)], 1.0)
+        sparks_out(out, cx, cy, post, P, 80, 220, 1.2, 120)
+        for i in range(10):                                                                    # heavy smoke rising and thinning out
+            u = clamp01((post - .15 - .04 * i) / 1.2)
+            if 0 < u < 1: out.append(('g', TF[0] + (frac(i, 1) - .5) * 80, TF[1] - 40 - u * 150, 40 + 30 * u, 36 + 24 * u, P['deep'], .22 * math.sin(math.pi * u)))
+        a2 = smooth((post - .2) / .3) * (1 - smooth((t - 2.0) / .2)); sigil2(out, TF[0], TF[1] - 2, 50 + 66 * ease_out(post / .4), .3, post + imp, a2 * (1 - ease_in(post / 1.4)), (P['mid'], P['body'], P['a1']), 8, 1.2)
+    ca = smooth((post - .15) / .3) * (1 - smooth((t - 2.0) / .2)) if post > 0 else 0                    # the caster is wrapped in warmth
+    if ca > 0: aura(out, C[0], C[1], CF[0], t, ca * .8, PAL['scale'], 46, 70, 8, None)
+    return out
+
+
+# ------------------------------------------------------------------ dragon knight: dragon scale ward (a heavy amber guard)
+def scale_ward(t, geo):
+    out = []; P = PAL['scale']; (chest, foot) = geo['targets'][0]; fx, fy = foot; cx, cy = chest; gy = geo['ground']; imp = SPEC['dragonScaleWard'][1]
+    pre = clamp01(t / imp); post = t - imp
+    sg = smooth(t / .2) * (1 - smooth((t - 1.8) / .35))
+    sigil2(out, fx, gy - 2, 72 - 14 * ease_in(pre) * (post < 0) + 8 * ease_out(post / .3), .28, t, sg, (P['mid'], P['body'], P['a2']), 10, 1.0 + 3 * ease_in(pre) * (post < 0))
+    if post < .05: compress_in(out, cx, cy, fx, fy, pre, P, 30)
+    if post >= 0:
+        if post < .22: out.append(('f', P['mid'], .12 * math.exp(-post * 14)))
+        ground_waves(out, fx, gy, post, P, 200, 5, 9)
+        RX, RY = 56, 88
+        for layer in range(3):                                                                 # overlapping curved plates close round the body, layer on layer
+            d = layer * .12; tt = clamp01((post - d) / .35); env = smooth(tt) * (1 - smooth((t - 1.75 - layer * .06) / .4))
+            if env <= .01: continue
+            sc = 1 + .1 * layer
+            for row in range(7):
+                yy = cy + (row - 3) * RY * .27; rr = math.sqrt(max(0.0, 1 - ((row - 3) * .27) ** 2)) * RX * sc
+                for k in range(5):
+                    a0 = (k * 1.2566 + row * .45 + layer * .6) + t * (.35 if layer % 2 == 0 else -.35)
+                    out.append(('a', fx, yy, rr, rr * .27, a0, a0 + 1.35, 3.4 - layer * .5, (P['mid'], P['a2'], P['light'])[layer], .6 * env))
+            out.append(('r', fx, cy, RX * sc, RY * sc, 2.4 - layer * .5, (P['light'], P['mid'], P['body'])[layer], .45 * env))
+        shell = smooth((post - .1) / .4) * (1 - smooth((t - 1.75) / .4))
+        out.append(('g', fx, cy, RX * 1.5, RY * 1.3, P['body'], .2 * shell)); out.append(('g', fx, cy, RX * 1.0, RY * 1.0, P['mid'], .1 * shell))
+        wy = cy + RY * (1 - 2 * ((t * .9) % 1.0)); out.append(('e', fx, wy, RX, 10, 0, P['light'], .4 * shell))
+        if .1 < post < .6: out.append(('r', fx, cy, 30 + 110 * ease_out((post - .1) / .5), 40 + 150 * ease_out((post - .1) / .5), 2.4 * (1 - (post - .1) / .55) + .5, P['light'], .6 * (1 - (post - .1) / .55)))
+        sparks_out(out, cx, cy, post, P, 40, 140, 1.0, 90)
+        for i in range(18):
+            u = ((t * .35 + frac(i, 1)) % 1.0); a = frac(i, 2) * 6.283 + t * .7; x = fx + math.cos(a) * RX * .95 * frac(i, 3); y = fy - 8 - u * 180; k = shell * math.sin(math.pi * u)
+            out.append(('g', x, y, 8, 8, (P['light'], P['a1'], P['mid'])[i % 3], .6 * k)); out.append(('g', x, y, 3, 3, (255, 255, 255), .85 * k))
+    return out
+
+
+# ------------------------------------------------------------------ dragon knight: dragon order (a command that shakes the field)
+def dragon_order(t, geo):
+    out = []; P = PAL['order']; C = geo['caster']; CF = geo['casterFoot']; imp = SPEC['dragonOrder'][1]
+    pre = clamp01(t / imp); post = t - imp; gy = geo['ground']
+    sg = smooth(t / .2) * (1 - smooth((t - 1.8) / .3))
+    sigil2(out, CF[0], CF[1] - 2, 74 - 14 * ease_in(pre) * (post < 0) + 10 * ease_out(post / .3), .28, t, sg, (P['mid'], P['body'], P['a1']), 12, 1.0 + 3 * ease_in(pre) * (post < 0))
+    if post < .05: compress_in(out, C[0], C[1], CF[0], CF[1], pre, P, 34)
+    if post >= 0:
+        if post < .25: out.append(('f', P['mid'], .16 * math.exp(-post * 12)))
+        ground_waves(out, CF[0], CF[1], post, P, 260, 5, 9)
+        for k in range(5):                                                                     # the roar: wide arcs of pressure sweeping out across the field
+            d = k * .08; tt = post - d
+            if tt >= 0:
+                r = 40 + 420 * ease_out(tt / .9); out.append(('a', C[0] + 20, C[1], r, r * .55, -1.1, 1.1, 5.0 * (1 - tt / .95) + .8, (P['light'], P['a1'], P['mid'], P['light'], P['a1'])[k], .75 * (1 - ease_in(tt / .95))))
+                out.append(('a', C[0] + 20, C[1], r * .94, r * .94 * .55, -1.0, 1.0, 2.0, P['body'], .5 * (1 - ease_in(tt / .95))))
+        out.append(('e', C[0] + 120 * ease_out(post / .5), C[1], 160, 7, 0, P['mid'], .35 * (1 - ease_in(post / .6))))
+        for n, (chest, foot) in enumerate(geo['targets']):
+            tt = post - .1 - .06 * n
+            if tt < 0: continue
+            fx, fy = foot; cx, cy = chest
+            col_env = smooth(tt / .12) * (1 - smooth((tt - .9) / .5)); column(out, fx, fy, tt, col_env, P, 230, 74)
+            helix_streams(out, fx, fy, tt, col_env, P, 5, 190, 10.0)
+            ground_waves(out, fx, gy, tt, P, 160, 3, 6); sparks_out(out, cx, cy, tt, P, 34, 130, 1.0, 100)
+            aura(out, cx, cy, fx, t, smooth((tt - .1) / .4) * (1 - smooth((t - 1.8) / .3)), P, 54, 84, 12, P['a1'])
+            for k in range(3):                                                                  # a seal of command over each head
+                yy = cy - 120 - k * 12; a0 = t * (2 + k) + k
+                out.append(('a', fx, yy, 30 - k * 5, 9 - k * 1.5, a0, a0 + 2.2, 2.2, (P['a1'], P['light'], P['mid'])[k], .8 * smooth((tt - .15) / .2) * (1 - smooth((t - 1.8) / .3))))
+    return out
+
+
+GENERATORS = {'starlightPulse': starlight, 'rally': rally, 'sweep': sweep, 'dragonSoulWard': soul, 'dragonScaleWard': scale_ward,
+              'runeSlash': rune_slash, 'runeWard': rune_ward, 'battleRune': battle_rune, 'dragonFlame': dragon_flame, 'dragonOrder': dragon_order}
