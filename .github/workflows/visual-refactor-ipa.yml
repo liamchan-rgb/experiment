@@ -33,6 +33,7 @@ jobs:
           python3 scripts/validate-project.py
           bash scripts/check-modular-locomotion.sh build/modular-locomotion-trace.json
           bash scripts/check-battle-hitfeel.sh
+          bash scripts/check-battle-ambient.sh
       - name: Archive device Release without signing
         run: |
           set -euo pipefail

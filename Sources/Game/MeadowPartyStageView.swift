@@ -507,11 +507,41 @@ private final class MeadowPartyEffectsView:UIView {
             default:color=UIColor(red:1,green:0.55,blue:0.18,alpha:1)
             }
             glow(event.center,Double(event.spec.frameWidth)*0.34,Double(event.spec.frameHeight)*0.29,light*0.13,color)
-            glow(PartyPoint(event.center.x,event.groundY-5),Double(event.spec.frameWidth)*0.31,15,light*0.24,color)
+            // Ambient light (MeadowSkillAmbientLight): a faint wash over the whole stage, a wide pool of light on the floor
+            // with a rim, and (below) a squashed reflection and glowing motes that drift over the characters.
+            let lit=MeadowSkillAmbientLight.level(age:age,peak:event.spec.peakTime,duration:event.spec.duration)
+            let floorWidth=Double(event.spec.frameWidth)
+            if lit>0 {
+                // Dim the stage a little so the light reads (normal blend, drawn before every additive layer), then tint it.
+                ctx.saveGState();ctx.setFillColor(UIColor(red:0.06,green:0.05,blue:0.10,alpha:CGFloat(lit*0.26)).cgColor);ctx.fill(bounds)
+                ctx.setBlendMode(.plusLighter);ctx.setFillColor(color.withAlphaComponent(CGFloat(lit*0.03)).cgColor);ctx.fill(bounds);ctx.restoreGState()
+                glow(event.center,max(Double(bounds.width),floorWidth)*0.62,max(Double(bounds.height),floorWidth)*0.52,lit*0.16,color)
+                glow(PartyPoint(event.center.x,event.groundY-2),floorWidth*0.62,28,lit*0.34,color)
+                ctx.saveGState();ctx.setBlendMode(.plusLighter);ctx.setStrokeColor(color.withAlphaComponent(CGFloat(lit*0.32)).cgColor);ctx.setLineWidth(1.5)
+                ctx.strokeEllipse(in:CGRect(x:event.center.x-floorWidth*0.36,y:event.groundY-9,width:floorWidth*0.72,height:18));ctx.restoreGState()
+            }
             ctx.saveGState();ctx.interpolationQuality = pixelArt ? .none : .default
             frames[lower].draw(in:rect,blendMode:.plusLighter,alpha:CGFloat(1-mix))
             if upper != lower,mix>0 { frames[upper].draw(in:rect,blendMode:.plusLighter,alpha:CGFloat(mix)) }
             ctx.restoreGState()
+            if lit>0 {
+                // Squashed reflection on the floor, only below the ground line.
+                ctx.saveGState();ctx.interpolationQuality = pixelArt ? .none : .default
+                ctx.clip(to:CGRect(x:rect.minX-20,y:event.groundY,width:rect.width+40,height:90))
+                ctx.translateBy(x:0,y:event.groundY);ctx.scaleBy(x:1,y:-0.30);ctx.translateBy(x:0,y:-event.groundY)
+                frames[lower].draw(in:rect,blendMode:.plusLighter,alpha:CGFloat(0.16*(1-mix)*lit))
+                if upper != lower,mix>0 { frames[upper].draw(in:rect,blendMode:.plusLighter,alpha:CGFloat(0.16*mix*lit)) }
+                ctx.restoreGState()
+            }
+            if !UIAccessibility.isReduceMotionEnabled {
+                let hot=UIColor(red:1,green:0.96,blue:0.86,alpha:1)
+                for m in MeadowSkillAmbientLight.motes(skill:event.spec.id,age:age,duration:event.spec.duration,spread:floorWidth*0.36) {
+                    let p=PartyPoint(event.center.x+m.dx,event.center.y+m.dy)
+                    glow(p,m.radius*1.5,m.radius*1.5,m.alpha*0.8,color)
+                    ctx.saveGState();ctx.setBlendMode(.plusLighter);ctx.setFillColor((m.hot ? hot : color).withAlphaComponent(CGFloat(m.alpha)).cgColor)
+                    ctx.fill(CGRect(x:p.x-m.core/2,y:p.y-m.core/2,width:m.core,height:m.core));ctx.restoreGState()
+                }
+            }
         }
         for h in hits {
             let a=time-h.at
