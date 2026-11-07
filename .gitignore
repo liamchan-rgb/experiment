@@ -2,3 +2,4 @@
 # Local pure Swift package products
 Vendor/**/.build/
 Vendor/**/.swiftpm/
+__pycache__/
