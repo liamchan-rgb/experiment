@@ -444,12 +444,16 @@ final class MeadowPartyStageView:UIView {
         let totalZoom=CGFloat(kick.zoom+shot.zoom),sceneScale=worldScale*(1+totalZoom)
         var shotX=CGFloat(0),shotY=CGFloat(0)
         if shot.weight>0 {
-            // Slide toward the focus, but never further than the plates allow: the world is 1000 wide, the plates run y -159...758.
-            let maxX=500*(1-1/(1+Double(totalZoom))),slackY=max(0,459-Double(bounds.height/(2*sceneScale)))
-            shotX=CGFloat(min(maxX,max(-maxX,-(shot.focusX-500)*0.9*shot.weight)))*sceneScale
-            shotY=CGFloat(min(slackY,max(-slackY,-(shot.focusY-300)*0.6*shot.weight)))*sceneScale
+            // Slide toward the focus.
+            shotX=CGFloat(-(shot.focusX-500)*0.9*shot.weight)*sceneScale
+            shotY=CGFloat(-(shot.focusY-300)*0.6*shot.weight)*sceneScale
         }
-        var worldTransform=CGAffineTransform(translationX:CGFloat(kick.dx)*layoutUnit+shotX,y:CGFloat(kick.dy)*layoutUnit+shotY)
+        // The whole slide (shot + lens kick) is kept inside what the plates can cover, so the world edge never shows:
+        // the world is 1000 wide and the plates run y -159...758; a zoom of z lets the frame slide 500*z units sideways, less what rotation uses up (a few units of floor keep the small shakes alive at no zoom).
+        let kickX=CGFloat(kick.dx)*layoutUnit+shotX,kickY=CGFloat(kick.dy)*layoutUnit+shotY
+        let maxSlideX=max(5*layoutUnit,bounds.width/2*totalZoom-abs(CGFloat(kick.rotation))*bounds.width/2)
+        let maxSlideY=max(5*layoutUnit,(459*sceneScale-bounds.height/2)-abs(CGFloat(kick.rotation))*bounds.width/2)
+        var worldTransform=CGAffineTransform(translationX:min(maxSlideX,max(-maxSlideX,kickX)),y:min(maxSlideY,max(-maxSlideY,kickY)))
         worldTransform=worldTransform.rotated(by:CGFloat(kick.rotation)).scaledBy(x:sceneScale,y:sceneScale)
         world.transform=worldTransform
         fx.setNeedsDisplay()
