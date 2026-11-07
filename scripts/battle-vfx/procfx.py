@@ -10,6 +10,7 @@ Primitives (stage points, y grows downward):
   ('r', x, y, rx, ry, width, rgb, alpha)     ring on an ellipse
   ('s', x1, y1, x2, y2, width, rgb, alpha)   segment (glow along it + bright core)
   ('d', x, y, rx, ry, rgb, alpha)            hard diamond (scale plates)
+  ('p', [(x, y), ...], rgb, alpha)           solid polygon, normal blending (heads, fins)
   ('c', x, y, r, rgb, alpha)                 solid disc with normal blending (keeps dark, saturated colour; body of the dragon)
 Geometry `geo`: dict(caster=(x,y chest), casterFoot=(x,y), targets=[(chest, foot), ...], center=(x,y), ground=y).
 `t` is seconds since the skill started; `impact` is when it lands (peak), `duration` the total length.
@@ -17,14 +18,14 @@ Geometry `geo`: dict(caster=(x,y chest), casterFoot=(x,y), targets=[(chest, foot
 import math
 
 SPEC = {  # id: (duration, impact, support)
-    'starlightPulse': (1.25, 0.75, False),
+    'starlightPulse': (1.6, 0.75, False),
     'rally': (1.67, 0.0, True),
     'sweep': (1.0, 0.45, False),
-    'dragonSoulWard': (1.67, 0.0, True),
+    'dragonSoulWard': (2.0, 0.0, True),
     'dragonScaleWard': (1.0, 0.0, True),
 }
 TONE = {
-    'starlightPulse': [(255, 255, 255), (205, 196, 255), (126, 108, 255), (64, 48, 190)],
+    'starlightPulse': [(255, 255, 255), (222, 212, 255), (160, 136, 255), (96, 70, 235), (44, 26, 150)],
     'rally': [(255, 250, 215), (255, 213, 96), (240, 150, 30), (170, 84, 12)],
     'sweep': [(255, 255, 255), (190, 232, 255), (92, 170, 255), (36, 86, 200)],
     'dragonSoulWard': [(235, 250, 255), (130, 210, 255), (56, 140, 255), (24, 70, 190)],
@@ -50,6 +51,39 @@ def glint(out, x, y, long, thick, col, a, rot=0.0):
     out.append(('g', x, y, long * .35, long * .35, col, a * .8))
 
 
+# how far the stage is dimmed while the skill is on, and the tint of the dimming: (amount, rgb multiplier)
+DIM = {'starlightPulse': (.34, (.80, .76, 1.0)), 'rally': (.24, (1.0, .94, .8)), 'sweep': (.26, (.82, .9, 1.0)),
+       'dragonSoulWard': (.32, (.74, .88, 1.0)), 'dragonScaleWard': (.26, (1.0, .9, .76))}
+MAG, CYAN, GOLD = (255, 128, 226), (130, 224, 255), (255, 232, 160)
+
+
+def ell(cx, cy, rx, ry, a): return cx + math.cos(a) * rx, cy + math.sin(a) * ry
+
+
+def sigil(out, cx, cy, R, ratio, t, env, cols, glyphs=12, spin=1.0):
+    """Rotating floor sigil: double ring, ticks, a hexagram, glyph dots and a soft disc (projected onto the floor)."""
+    if env <= .01: return
+    c1, c2, c3 = cols
+    out.append(('g', cx, cy, R * 1.12, R * 1.12 * ratio, c2, .30 * env))
+    out.append(('r', cx, cy, R, R * ratio, 2.4, c1, .85 * env))
+    out.append(('r', cx, cy, R * .9, R * .9 * ratio, 1.2, c2, .6 * env))
+    out.append(('r', cx, cy, R * .58, R * .58 * ratio, 1.5, c1, .7 * env))
+    for k in range(glyphs):
+        a = spin * t * .6 + k * 2 * math.pi / glyphs
+        x1, y1 = ell(cx, cy, R * .9, R * .9 * ratio, a); x2, y2 = ell(cx, cy, R * 1.0, R * ratio, a)
+        out.append(('s', x1, y1, x2, y2, 1.6, c1, .8 * env))
+        if k % 2 == 0:
+            gx, gy = ell(cx, cy, R * .79, R * .79 * ratio, a + math.pi / glyphs)
+            out.append(('b', gx, gy, 3.2, c3, .9 * env))
+    for tri in (0, 1):
+        base = -spin * t * .45 + tri * math.pi / 3
+        pts = [ell(cx, cy, R * .86, R * .86 * ratio, base + j * 2 * math.pi / 3) for j in range(3)]
+        for j in range(3):
+            (xa, ya), (xb, yb) = pts[j], pts[(j + 1) % 3]
+            out.append(('s', xa, ya, xb, yb, 1.4, c2, .65 * env))
+    out.append(('g', cx, cy, R * .3, R * .3 * ratio, c3, .35 * env))
+
+
 def tone_at(skill, u):
     """u in 0..1 from hot core to cool tail."""
     T = TONE[skill]
@@ -58,58 +92,106 @@ def tone_at(skill, u):
 
 # ------------------------------------------------------------------ starlight pulse: a comet of star dust
 def starlight(t, geo):
-    out = []; C = geo['caster']; T = geo['targets'][0][0]; imp = SPEC['starlightPulse'][1]
-    W = TONE['starlightPulse']
+    out = []; C = geo['caster']; CF = geo['casterFoot']; T, TF = geo['targets'][0]; imp = SPEC['starlightPulse'][1]
+    V = TONE['starlightPulse']; helix = [V[1], MAG, CYAN]
+    # floor sigil under the caster while the comet is born
+    sig = smooth(t / .2) * (1 - smooth((t - .42) / .25))
+    sigil(out, CF[0], CF[1] - 2, 66, .3, t, sig, (V[2], V[3], V[1]), 12, 1.2)
+    if t < .5:
+        for i in range(18):
+            ph = frac(i, 1); u = (t * .9 + ph) % 1.0
+            x = CF[0] + (frac(i, 2) - .5) * 80; y = CF[1] - 6 - u * 120
+            al = sig * math.sin(math.pi * u) ** .7
+            out.append(('g', x, y, 7, 7, V[2], .6 * al)); out.append(('b', x, y, 2.2, V[0], al))
+
     def path(tt):
-        s = ease_in(clamp01(tt / imp)) ** 0.8
+        s = ease_in(clamp01(tt / imp)) ** .8
         x, y = lerp2(C, T, s)
-        return x, y - 64 * math.sin(math.pi * s) * (1 - 0.3 * s), s
-    if t < imp + 0.02:
-        hx, hy, hs = path(t)
-        for i in range(28, -1, -1):
-            tt = t - i * 0.02
+        return x, y - 70 * math.sin(math.pi * s) * (1 - .3 * s), s
+
+    if t < imp + .02:
+        hx, hy, _ = path(t)
+        N = 46
+        for i in range(N - 1, -1, -1):
+            tt = t - i * .013
             if tt < 0: continue
-            x, y, s = path(tt)
-            u = i / 28
-            wob = math.sin(tt * 30 + i) * 3 * u
-            x += wob; y += math.cos(tt * 26 + i) * 3 * u
-            r = 15 * (1 - .75 * u) * (0.6 + 0.4 * clamp01(tt * 8))
-            col = tone_at('starlightPulse', u)
-            out.append(('g', x, y, r * 2.0, r * 2.0, col, 0.24 * (1 - .5 * u)))
-            out.append(('b', x, y, max(1.5, 5 * (1 - u)), W[0] if u < .5 else W[1], 0.9 * (1 - u * .6)))
-            if i % 2 == 0:
-                jx = math.sin(i * 12.9) * 11 * u; jy = math.cos(i * 7.7) * 11 * u - 6 * u
-                out.append(('b', x + jx, y + jy, max(1.2, 2.6 * (1 - u)), W[1], 0.8 * (1 - u)))
-        fade = clamp01((imp - t) / 0.05)
-        out.append(('g', hx, hy, 46, 46, W[2], 0.38 * fade)); out.append(('g', hx, hy, 22, 22, W[1], 0.5 * fade))
-        glint(out, hx, hy, 30 + 4 * math.sin(t * 20), 2.4, W[0], fade, t * 3)
+            x, y, s = path(tt); x2, y2, _ = path(tt + .006)
+            dx, dy = x2 - x, y2 - y; L = math.hypot(dx, dy) or 1.0; nx, ny = -dy / L, dx / L
+            u = i / N; w = (15 * (1 - u) ** .8 + 1.6) * (.45 + .55 * clamp01(tt * 7))
+            lat = 4.5 * u * math.sin(tt * 22 + i * .5); cx, cy = x + nx * lat, y + ny * lat
+            if i % 3 == 0:
+                col = (V[3], MAG, CYAN)[(i // 3) % 3]
+                out.append(('g', cx, cy, w * 3.6, w * 3.6, col, .09 * (1 - u)))          # nebula puffs
+            out.append(('g', cx, cy, w * 2.1, w * 2.1, V[3], .16 * (1 - .5 * u)))
+            out.append(('c', cx, cy, w * 1.02, V[4], .6 * (1 - .4 * u)))
+            out.append(('c', cx, cy, w * .7, V[3], .75 * (1 - .3 * u)))
+            out.append(('g', cx, cy, w * 1.1, w * 1.1, V[2], .5 * (1 - u)))
+            for k in range(3):                                                       # three strands twisting round the core
+                ang = tt * 18 + i * .35 + k * 2.094
+                off = w * .95 + 2
+                px = cx + nx * math.cos(ang) * off; py = cy + ny * math.cos(ang) * off + math.sin(ang) * off * .35
+                if math.sin(ang) > -.2:
+                    out.append(('g', px, py, 4.2, 4.2, helix[k], .65 * (1 - u)))
+                    out.append(('b', px, py, 1.9, V[0], .9 * (1 - u)))
+        for i in range(30):                                                          # shed star dust
+            tb = frac(i, 1) * imp * .95
+            if not 0 <= t - tb < .55: continue
+            tt = t - tb; x, y, _ = path(tb); r = tt / .55
+            x += (frac(i, 2) - .5) * 40 * r; y += (frac(i, 3) - .3) * 40 * r + 30 * r * r
+            col = (V[0], GOLD, MAG, CYAN)[i % 4]; k = 1 - r
+            glint(out, x, y, 6 + 5 * frac(i, 4), 1.1, col, .9 * k, tt * 4 + i)
+        fade = clamp01((imp - t) / .05)
+        out.append(('g', hx, hy, 60, 60, V[3], .34 * fade))
+        out.append(('r', hx, hy, 22 + 3 * math.sin(t * 25), 22 + 3 * math.sin(t * 25), 1.6, V[2], .55 * fade))
+        out.append(('g', hx, hy, 26, 26, V[2], .6 * fade)); out.append(('c', hx, hy, 9, V[1], .95 * fade))
+        out.append(('g', hx, hy, 13, 13, V[0], .95 * fade)); out.append(('b', hx, hy, 5, V[0], fade))
+        glint(out, hx, hy, 38 + 4 * math.sin(t * 20), 2.6, V[0], fade, t * 3)
+        glint(out, hx, hy, 24, 1.8, V[1], .8 * fade, t * 3 + .785)
+        out.append(('s', hx - 70, hy, hx + 70, hy, 1.6, V[1], .35 * fade))
         for k in range(6):
-            a = t * 9 + k * math.pi / 3; rr = 20 + 5 * math.sin(t * 6 + k)
-            out.append(('b', hx + math.cos(a) * rr, hy + math.sin(a) * rr * .6, 3, W[0], .9 * fade))
+            a = t * 9 + k * math.pi / 3; rr = 22 + 5 * math.sin(t * 6 + k)
+            out.append(('b', hx + math.cos(a) * rr, hy + math.sin(a) * rr * .6, 3, V[0], .9 * fade))
     a = t - imp
     if a >= 0:
         cx, cy = T
-        if a < .25: out.append(('f', W[2], .16 * math.exp(-a * 16)))
-        out.append(('g', cx, cy, 110 * (.5 + ease_out(a / .3)), 110 * (.5 + ease_out(a / .3)), W[2], .42 * (1 - ease_in(a / .5))))
-        out.append(('g', cx, cy, 40, 40, W[1], .6 * (1 - ease_in(a / .22))))
-        for j, d in enumerate((0, .08)):
+        if a < .2: out.append(('f', V[2], .14 * math.exp(-a * 18)))
+        out.append(('g', cx, cy, 150 * (.5 + ease_out(a / .35)), 150 * (.5 + ease_out(a / .35)), V[3], .4 * (1 - ease_in(a / .7))))
+        out.append(('g', cx, cy, 52, 52, V[2], .5 * (1 - ease_in(a / .3)))); out.append(('g', cx, cy, 20, 20, V[1], .6 * (1 - ease_in(a / .2))))
+        # radiating light rays
+        for k in range(28):
+            ang = k * 2 * math.pi / 28 + a * .5
+            L = (70 + 80 * frac(k, 2)) * ease_out(a / .14) * (1 - ease_in((a - .08) / .55))
+            if L > 2: out.append(('s', cx, cy, cx + math.cos(ang) * L, cy + math.sin(ang) * L, 2.4 * (1 - a / .65), (V[2], MAG, CYAN, V[1])[k % 4], .6 * (1 - a / .65)))
+        for j, (d, col) in enumerate(((0, V[2]), (.07, MAG), (.14, CYAN))):
             if a - d >= 0:
-                r = 14 + 100 * ease_out((a - d) / .42)
-                out.append(('r', cx, cy, r, r * .8, 2.5 * (1 - (a - d) / .5), W[1], .9 * (1 - ease_in((a - d) / .5))))
-        if a < .5:
-            for k in range(8):
-                ang = k * math.pi / 4 + .2
-                L = (90 if k % 2 == 0 else 52) * ease_out(a / .12) * (1 - ease_in((a - .15) / .35))
-                if L > 1: out.append(('s', cx, cy, cx + math.cos(ang) * L, cy + math.sin(ang) * L, 3.4 * (1 - a / .5), W[0], 1 - a / .5))
-        for i in range(44):
-            life = .45 + .5 * frac(i, 2); tt = a - .02 * frac(i, 5)
+                r = 12 + 140 * ease_out((a - d) / .55)
+                out.append(('r', cx, cy, r, r * .8, 3.2 * (1 - (a - d) / .6) + .6, col, .9 * (1 - ease_in((a - d) / .6))))
+        sg = smooth(a / .08) * (1 - ease_in((a - .2) / .6))
+        sigil(out, TF[0], TF[1] - 2, 44 + 62 * ease_out(a / .3), .3, a + imp, sg, (V[2], V[3], V[1]), 12, 1.6)
+        for q, (L0, rot, dx, dy) in enumerate(((100, .3, 0, 0), (62, .8, -50, -30), (48, 1.2, 46, 24))):
+            k = ease_out(a / .12) * (1 - ease_in((a - .12) / .4))
+            if k > .02: glint(out, cx + dx, cy + dy, L0 * k, 3.0, V[1], .8 * k, rot + a * 1.5)
+        for i in range(84):                                                          # streaking sparks
+            life = .5 + .55 * frac(i, 2); tt = a - .02 * frac(i, 5)
             if not 0 <= tt < life: continue
-            ang = frac(i, 3) * 6.283; spd = 150 + 240 * frac(i, 4); tr = tt / life
-            d = spd * (1 - math.exp(-tt * 5)) / 5
-            x = cx + math.cos(ang) * d; y = cy + math.sin(ang) * d * .8 + 120 * tt * tt * (frac(i, 6) > .5)
-            tw = .6 + .4 * math.sin(tt * 40 + i)
-            out.append(('g', x, y, 9, 9, W[2], .55 * (1 - tr) * tw))
-            out.append(('b', x, y, 2.5 * (1 - .6 * tr), W[0], (1 - tr) * tw))
+            ang = frac(i, 3) * 6.283; spd = 160 + 280 * frac(i, 4); tr = tt / life
+            d = spd * (1 - math.exp(-tt * 5)) / 5; v = spd * math.exp(-tt * 5)
+            x = cx + math.cos(ang) * d; y = cy + math.sin(ang) * d * .8 + 130 * tt * tt * (frac(i, 6) > .5)
+            tw = .6 + .4 * math.sin(tt * 40 + i); col = (V[0], GOLD, MAG, CYAN, V[1])[i % 5]
+            tx, ty = x - math.cos(ang) * v * .028, y - math.sin(ang) * v * .028 * .8
+            out.append(('s', x, y, tx, ty, 2.2 * (1 - .5 * tr), col, (1 - tr) * tw))
+            out.append(('g', x, y, 8, 8, col, .45 * (1 - tr) * tw)); out.append(('b', x, y, 2.4, V[0], (1 - tr) * tw))
+        for i in range(26):                                                          # slow starfall
+            tb = .08 + .5 * frac(i, 1); tt = a - tb
+            if not 0 <= tt < .85: continue
+            x = cx + (frac(i, 2) - .5) * 190; y = cy - 120 + tt * (70 + 40 * frac(i, 3)); r = tt / .85
+            col = (V[0], GOLD, V[1], CYAN)[i % 4]
+            glint(out, x, y, 5 + 5 * frac(i, 4), 1.2, col, math.sin(math.pi * r) * (.6 + .4 * math.sin(tt * 30 + i)), tt * 3 + i)
+        if a < .6:
+            for k in range(6):
+                u = a / .6; ang = k * 1.047 + 1.9 * u
+                px, py = cx + math.cos(ang) * 60 * ease_out(u), cy + math.sin(ang) * 44 * ease_out(u)
+                out.append(('g', px, py, 36, 36, (V[3], MAG, CYAN)[k % 3], .16 * (1 - u)))   # nebula puffs
     return out
 
 
@@ -189,56 +271,102 @@ def sweep(t, geo):
 # ------------------------------------------------------------------ dragon soul ward: a dragon coils round the ally, becomes a shell
 def soul(t, geo):
     out = []; D = TONE['dragonSoulWard']; (chest, foot) = geo['targets'][0]; fx, fy = foot; gy = geo['ground']
-    N = 52; coil = ease_out(clamp01(t / .5)); dissolve = smooth((t - .95) / .35)
-    shell = smooth((t - .55) / .35) * (1 - smooth((t - 1.2) / .45))
+    N = 56; coil = ease_out(clamp01(t / .55)); dissolve = smooth((t - 1.0) / .45)
+    shell = smooth((t - .6) / .4) * (1 - smooth((t - 1.55) / .45))
+    DEEP, BODY, MID, LIGHT = (10, 30, 96), (34, 98, 220), (70, 150, 255), (170, 225, 255)
+    # floor sigil: the dragon seal
+    sg = smooth(t / .25) * (1 - smooth((t - 1.5) / .45))
+    sigil(out, fx, gy - 2, 70, .28, t, sg, (D[1], D[2], D[0]), 12, 1.0)
+    if sg > .01:
+        for k in range(12):
+            a = -t * .8 + k * math.pi / 6
+            x, y = ell(fx, gy - 2, 80, 80 * .28, a); out.append(('b', x, y, 3.0, GOLD, .85 * sg * (.5 + .5 * math.sin(t * 5 + k))))
+
     def body(tt, i):
-        ph = tt * 5.4 - i * .13
-        r = lerp(70, 40, coil) * (1 + .06 * math.sin(i * .33 + tt * 3))
-        rise = 20 + 116 * (1 - math.exp(-max(0, tt) * 2.2)) - i * 1.05 + math.sin(ph * .5) * 6
+        ph = tt * 4.8 - i * .115
+        r = lerp(86, 42, coil) * (1 + .05 * math.sin(i * .3 + tt * 3))
+        rise = 14 + 126 * (1 - math.exp(-max(0, tt) * 2.0)) - i * .95 + math.sin(ph * .5) * 7
         return fx + math.cos(ph) * r, fy - rise + math.sin(ph) * r * .34, math.sin(ph)
-    if t < 1.35:
+    if t < 1.5:
         env = 1 - dissolve
         pts = [body(t, i) for i in range(N)]
-        def seg_size(i, dep): return (17 * (1 - i / N) ** .8 + 5) * (.82 + .18 * dep)
-        live = [i for i in range(N) if not (i > N * (1 - dissolve))]
+
+        def size(i, dep): return (20 * (1 - i / N) ** .8 + 5) * (.82 + .18 * dep)
+        live = [i for i in range(N) if i <= N * (1 - dissolve)]
         if env > .01:
-            for i in reversed(live):                      # pass 1: silhouette, so the dark edge only shows on the outline
-                x, y, dep = pts[i]; sz = seg_size(i, dep); al = (1.0 if dep > -.2 else .6) * env
-                out.append(('g', x, y, sz * 1.7, sz * 1.7, D[2], .16 * env))
-                out.append(('c', x, y, sz * .56 + 1.6, (10, 30, 96), .95 * al))
-            for i in reversed(live):                      # pass 2: body
-                x, y, dep = pts[i]; sz = seg_size(i, dep); al = (1.0 if dep > -.2 else .6) * env
-                out.append(('c', x, y, sz * .56, (34, 98, 220) if i / N > .2 else (70, 150, 255), al))
-            for i in reversed(live):                      # pass 3: light along the back
-                x, y, dep = pts[i]; sz = seg_size(i, dep); al = (1.0 if dep > -.2 else .6) * env
-                out.append(('c', x - sz * .1, y - sz * .2, sz * .28, (140, 205, 255), .85 * al))
-                if i % 4 == 0: out.append(('b', x + math.sin(i * 9.1) * sz * .5, y - sz * .62, max(2, sz * .24), D[0], .95 * env))
-        hx, hy, hd = pts[0]; nx, ny, _ = pts[3]
-        ang = math.atan2(hy - ny, hx - nx); c, s = math.cos(ang), math.sin(ang)
-        def P(u, v): return hx + c * u - s * v, hy + s * u + c * v
-        for k, (u, v, z, col) in enumerate([(4, 0, 14, D[0]), (13, -1, 11, D[1]), (-6, 1, 12, D[2])]):
-            x, y = P(u, v); out.append(('c', x, y, z * .75 + 1.5, (10, 30, 96), .95 * env)); out.append(('c', x, y, z * .75, (60, 140, 255) if k != 0 else (140, 205, 255), .98 * env))
-        for sgn in (-1, 1):
-            x1, y1 = P(-4, sgn * 6); x2, y2 = P(-16, sgn * 13); out.append(('s', x1, y1, x2, y2, 3.5, D[0], .9 * env))
-        ex, ey = P(5, -4); out.append(('b', ex, ey, 3.6, (255, 255, 255), env))
-        out.append(('g', hx, hy, 44, 44, D[1], .32 * env))
-        # breath of light flaring at the snout once coiled
-        if .35 < t < .85:
-            k = smooth((t - .35) / .2) * (1 - smooth((t - .65) / .2)); x, y = P(18, 0)
-            out.append(('g', x, y, 22 * k + 4, 22 * k + 4, D[0], .8 * k))
+            for i in range(0, N, 4):                                               # mist puffs along the body
+                if i in live:
+                    x, y, dep = pts[i]; out.append(('g', x, y, 30, 24, (D[1], D[2], D[0])[(i // 4) % 3], .1 * env))
+            for i in reversed(live):                                               # silhouette
+                x, y, dep = pts[i]; sz = size(i, dep); al = (1.0 if dep > -.2 else .6) * env
+                out.append(('g', x, y, sz * 1.8, sz * 1.8, D[2], .15 * env)); out.append(('c', x, y, sz * .56 + 1.7, DEEP, .95 * al))
+            for i in reversed(live):                                               # body, belly and back light
+                x, y, dep = pts[i]; sz = size(i, dep); al = (1.0 if dep > -.2 else .6) * env
+                out.append(('c', x, y, sz * .56, BODY if i / N > .2 else MID, al))
+                out.append(('c', x + sz * .04, y + sz * .2, sz * .34, MID, .85 * al))               # lighter belly
+                out.append(('c', x - sz * .1, y - sz * .2, sz * .26, LIGHT, .85 * al))              # back light
+                if i % 3 == 0 and dep > -.3:                                                      # dorsal fin
+                    out.append(('p', [(x - sz * .22, y - sz * .45), (x + sz * .22, y - sz * .45), (x + sz * .05, y - sz * 1.15)], MID, .9 * env))
+                    out.append(('p', [(x - sz * .1, y - sz * .5), (x + sz * .1, y - sz * .5), (x + sz * .03, y - sz * .95)], LIGHT, .9 * env))
+                if i % 5 == 2: out.append(('b', x + math.sin(i * 9.1) * sz * .4, y - sz * .1, max(1.8, sz * .16), D[0], .85 * env))
+            tx, ty, _ = pts[min(N - 1, int(N * (1 - dissolve)) - 1 if dissolve > 0 else N - 1)]
+            for k in range(3):                                                      # tail tuft
+                a = k - 1; out.append(('s', tx, ty, tx + 16 * (1 + .3 * math.sin(t * 8 + k)), ty + a * 9 + 4, 2.2, LIGHT, .7 * env))
+            hx, hy, hd = pts[0]; nx2, ny2, _ = pts[3]
+            ang = math.atan2(hy - ny2, hx - nx2); c, s_ = math.cos(ang), math.sin(ang); sc = 1.6
+            def P(u, v): return (hx + (c * u - s_ * v) * sc, hy + (s_ * u + c * v) * sc)
+            def poly(pts_l, col, al, grow=1.0): return ('p', [P(u * grow, v * grow) for u, v in pts_l], col, al * env)
+            skull = [(-8, -7), (2, -9), (12, -6), (21, -3), (24, 1), (15, 3), (4, 6), (-8, 5)]
+            jaw = [(0, 5), (14, 3), (21, 4), (12, 10), (0, 9)]
+            out.append(poly(skull, DEEP, .98, 1.14)); out.append(poly(jaw, DEEP, .98, 1.14))
+            for hu, hv, hl, hw in ((-6, -6, -20, -16), (-4, -8, -14, -22)):                # horns
+                out.append(('p', [P(hu, hv), P(hl, hw), P(hu - 3, hv + 4)], DEEP, .95 * env))
+                out.append(('p', [P(hu - .5, hv - .5), P(hl + 1.5, hw + 1.5), P(hu - 2.6, hv + 3.2)], LIGHT, .95 * env))
+            for sp in range(3):                                                    # mane spikes
+                out.append(('p', [P(-8 - sp * 5, -3 + sp * 2), P(-22 - sp * 5, -9 + sp * 5), P(-9 - sp * 5, 4 + sp * 2)], MID if sp != 1 else BODY, .9 * env))
+            out.append(poly(skull, BODY, 1.0)); out.append(poly(jaw, (28, 80, 190), 1.0))
+            out.append(poly([(2, -8), (12, -6), (21, -3), (12, -2.2), (3, -4)], LIGHT, .85))  # bridge highlight
+            for k in range(3): x, y = P(14 + k * 3, 3.2); out.append(('b', x, y, 1.6, (255, 255, 255), .9 * env))   # teeth
+            ex, ey = P(6, -3.2); out.append(('g', ex, ey, 10, 10, (255, 230, 140), .9 * env)); out.append(('b', ex, ey, 3.6, (255, 255, 255), env))
+            for sgn in (-1, 1):                                                    # flowing whiskers
+                pts_w = [P(20, sgn * 3)]
+                for q in range(1, 7):
+                    pts_w.append(P(20 - q * 5.5, sgn * (3 + q * 3.2) + math.sin(t * 7 + q * .8 + sgn) * 3.5))
+                for q in range(6): out.append(('s', pts_w[q][0], pts_w[q][1], pts_w[q + 1][0], pts_w[q + 1][1], 1.9 - q * .15, LIGHT, .85 * env))
+            out.append(('g', hx, hy, 46, 46, D[1], .3 * env))
+            if .35 < t < .95:
+                k = smooth((t - .35) / .2) * (1 - smooth((t - .75) / .2)); x, y = P(26, 2)
+                out.append(('g', x, y, 26 * k + 4, 26 * k + 4, D[0], .8 * k)); out.append(('g', x, y, 50 * k + 4, 50 * k + 4, D[2], .3 * k))
+                for q in range(10):
+                    a2 = frac(q, 1) * 6.283; r2 = 12 + 40 * k * frac(q, 2); out.append(('b', x + math.cos(a2) * r2, y + math.sin(a2) * r2, 2.2, D[0], .8 * k))
+        # the body breaks into light as it dissolves
+        if dissolve > 0:
+            for i in range(N):
+                if i <= N * (1 - dissolve): continue
+                x, y, dep = pts[i]
+                if frac(i, 1) > .6: continue
+                out.append(('g', x, y, 10, 10, (D[0], D[1], GOLD)[i % 3], .6 * (1 - dissolve * .5)))
+                out.append(('b', x + (frac(i, 2) - .5) * 24 * dissolve, y - 30 * dissolve * (.5 + frac(i, 3)), 2.4, D[0], .9))
     if shell > .01:
-        cy_ = fy - 62
-        for k in range(3):
-            r = 1 - k * .06
-            out.append(('r', fx, cy_, 48 * r, 74 * r, 2.4, D[1 + (k > 1)], .5 * shell))
-        out.append(('g', fx, cy_, 62, 90, D[2], .26 * shell))
-        for i in range(14):
-            th = t * 1.6 + i * 6.283 / 14 + frac(i, 2); tw = .5 + .5 * math.sin(t * 6 + i)
-            out.append(('b', fx + math.cos(th) * 48, cy_ + math.sin(th) * 74 * .98 * (1 if i % 2 else .6), 3.2, D[0], shell * tw))
-        out.append(('r', fx, gy - 2, 54, 54 * .28, 2.4, D[1], .65 * shell))
-    if .5 < t < 1.1:
-        k = 1 - abs(t - .75) / .25
-        if k > 0: out.append(('f', D[2], .12 * k))
+        cy_ = fy - 64; RX, RY = 50, 78; rot = t * 1.1
+        out.append(('g', fx, cy_, RX * 1.3, RY * 1.2, D[2], .2 * shell)); out.append(('g', fx, cy_, RX * .9, RY * .9, D[1], .1 * shell))
+        for q in range(-3, 4):                                                     # latitude rings of the scale lattice
+            yy = cy_ + q * RY * .27; rr = math.sqrt(max(0.0, 1 - (q * .27) ** 2))
+            out.append(('r', fx, yy, RX * rr, RX * rr * .26, 1.5, D[1], .45 * shell))
+        for k in range(6):                                                         # meridians
+            a = rot + k * math.pi / 6; rx_ = abs(math.cos(a)) * RX
+            if rx_ > 3: out.append(('r', fx, cy_, rx_, RY, 1.3, D[1], .34 * shell * (.5 + .5 * math.cos(a) ** 2)))
+        out.append(('r', fx, cy_, RX, RY, 2.8, LIGHT, .55 * shell)); out.append(('r', fx, cy_, RX * .97, RY * .97, 1.3, D[0], .5 * shell))
+        wy = cy_ + RY * (1 - 2 * ((t * .9) % 1.0)); out.append(('g', fx, wy, RX * 1.1, 10, D[0], .4 * shell))        # shimmer sweep
+        for i in range(22):                                                        # rising motes inside the shell
+            u = ((t * .5 + frac(i, 1)) % 1.0); a = frac(i, 2) * 6.283 + t
+            x = fx + math.cos(a) * RX * .8 * frac(i, 3); y = cy_ + RY * (1 - 2 * u) * .9
+            out.append(('g', x, y, 7, 7, (D[0], D[1], GOLD)[i % 3], .6 * shell * math.sin(math.pi * u))); out.append(('b', x, y, 2.2, D[0], shell * math.sin(math.pi * u)))
+        rp = (t * 1.2) % 1.0
+        out.append(('r', fx, cy_ + RY * (rp * 2 - 1) * .9, RX * math.sqrt(max(0.0, 1 - ((rp * 2 - 1) * .9) ** 2)) * 1.02, 10, 1.8, D[0], .5 * shell * (1 - rp)))
+    if .55 < t < 1.1:
+        k = 1 - abs(t - .8) / .25
+        if k > 0: out.append(('f', D[2], .1 * k))
     return out
 
 

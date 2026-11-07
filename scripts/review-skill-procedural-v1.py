@@ -77,6 +77,17 @@ def disc(buf, cx, cy, r, col, a):
     buf[y0:y1, x0:x1] = buf[y0:y1, x0:x1] * (1 - m) + np.array(col) * m
 
 
+def poly(buf, pts, col, a):
+    xs = [q[0] for q in pts]; ys = [q[1] for q in pts]
+    w = window((min(xs) + max(xs)) / 2, (min(ys) + max(ys)) / 2, (max(xs) - min(xs)) / 2 + 1, (max(ys) - min(ys)) / 2 + 1)
+    if not w or a <= 0.003: return
+    x0, x1, y0, y1 = w
+    from PIL import ImageDraw
+    m = Image.new('L', (x1 - x0, y1 - y0), 0); ImageDraw.Draw(m).polygon([(q[0] - x0, q[1] - y0) for q in pts], fill=255)
+    mm = (np.asarray(m).astype(float) / 255)[..., None] * min(1.0, a)
+    buf[y0:y1, x0:x1] = buf[y0:y1, x0:x1] * (1 - mm) + np.array(col) * mm
+
+
 def seg(buf, x1, y1, x2, y2, wd, col, a):
     L = math.hypot(x2 - x1, y2 - y1); n = max(2, int(L / 3))
     for k in range(n + 1):
@@ -92,6 +103,7 @@ def draw(buf, prims):
         elif k == 'b': block(buf, p[1], p[2], p[3], p[4], p[5])
         elif k == 'r': ring(buf, *p[1:7], p[7]) if False else ring(buf, p[1], p[2], p[3], p[4], p[5], p[6], p[7])
         elif k == 's': seg(buf, *p[1:])
+        elif k == 'p': poly(buf, p[1], p[2], p[3])
         elif k == 'c': disc(buf, *p[1:])
         elif k == 'd': diamond(buf, *p[1:])
         elif k == 'f': buf += p[2] * np.array(p[1])
@@ -124,11 +136,12 @@ for sid in sel:
         t = k / FPS
         buf = scene(t)
         lit = procfx.smooth(t / .15) * (1 - procfx.smooth((t - dur + .25) / .4))
-        buf *= 1 - .24 * lit * np.array([1.0, .96, .86])
+        dm, dt = procfx.DIM[sid]
+        buf *= 1 - dm * lit * (1 - np.array(dt) * .0) * np.array(dt)
         draw(buf, procfx.GENERATORS[sid](t, geo))
         buf = bloom(buf)
         frames.append(Image.fromarray(np.clip(buf, 0, 255).astype(np.uint8)).crop(CROP))
-    im = [f.resize((f.width * 2 // 3, f.height * 2 // 3), Image.LANCZOS).quantize(96, dither=Image.Dither.NONE) for f in frames]
+    im = [f.resize((f.width * 2 // 3, f.height * 2 // 3), Image.LANCZOS).quantize(256, method=Image.Quantize.MEDIANCUT, dither=Image.Dither.NONE) for f in frames]
     im[0].save(OUT / f'{sid}-procedural.gif', save_all=True, append_images=im[1:], duration=25, loop=0, optimize=True)
     pk = int(max(procfx.SPEC[sid][1], .5) * FPS) + 3
     frames[min(len(frames) - 1, pk)].save(OUT / f'{sid}-procedural-peak.png')
