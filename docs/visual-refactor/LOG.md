@@ -155,3 +155,15 @@ ID 与生成脚本算法一致。**本分支此后不再运行 generate-project.
 - 接入单人演练与小队战斗两条展示路径；规则、回执、骰子、AP 一律不动。
 - 工程文件由 `scripts/add-swift-source.py` 手工追加（不运行 generate-project.py）。
 - 没有 Swift 工具链、无法本地编译：纯 Swift 部分在云端先编译比对，UIKit 部分在设备归档时编译；效果须用户实机确认。
+
+## 17 · 战斗打磨第二批：五张技能精灵表像素重构（2026-11-07）
+
+用户：“其他技能目前的精灵表很粗糙，抖动很严重，你看看拿过来用你自己的像素画来重构一下”。
+- 原因：旧表是逐帧生成的柔边图，帧间形状不连贯，再加上播放时的交叉淡入 + 平滑缩放，看上去在抖。
+- 做法：`scripts/battle-vfx/`(`pixelvfx.py` 工具、`skills.py` 五个技能、`build.py` 输出)。每帧在 1/2 网格上用硬边遮罩 + 少量色板绘制，
+  渐隐用屏幕固定的 Bayer 抖动，全部运动都是帧号的闭式函数、粒子 id 固定，所以相邻帧天然连贯；最近邻放大 2 倍回原单元尺寸，
+  帧数/fps/锚点/峰值时间(`PartySkillVFXSpec`)一律不变。
+- 范围：starlightPulse、rally、sweep、dragonSoulWard、dragonScaleWard 五张，直接替换同名 imageset 的 PNG。
+- 播放：`MeadowPartyEffectsView` 对这五个技能逐帧保持（不交叉淡入）并用最近邻缩放；其它技能表照旧。
+- 预览：`Art/Review/Battle/skill-pixel-v1/*.gif`（左旧右新，规格 fps 实速）。
+- 自评最弱的是 dragonSoulWard（龙头偏小，更像蛇形光带），其余观感较好；待用户实机意见。

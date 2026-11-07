@@ -388,6 +388,7 @@ private final class MeadowPartyEffectsView:UIView {
     var particles:[MeadowBattleLightParticle]=[]
     var hits:[MeadowPartyHitEvent]=[]
     var skillEffects:[MeadowPartySkillVFXEvent]=[]
+    static let pixelSkillIDs:Set<String>=["starlightPulse","rally","sweep","dragonSoulWard","dragonScaleWard"]
     var recoveryLights:[(PartyPoint,Double)]=[]
     var monsterRecoveries:[(PartyPoint,HealingEffectTier,Double)]=[]
     override init(frame:CGRect) { super.init(frame:frame);isOpaque=false;isUserInteractionEnabled=false }
@@ -491,7 +492,10 @@ private final class MeadowPartyEffectsView:UIView {
             let position=age*event.spec.framesPerSecond
             let lower=min(event.spec.frameCount-1,max(0,Int(position)))
             let upper=min(event.spec.frameCount-1,lower+1)
-            let mix=PartyVisual.smooth(position-Double(lower))
+            // The five hand-built pixel sheets (scripts/battle-vfx) hold each frame and are scaled without smoothing, so the
+            // pixels stay crisp and nothing swims between frames; any other sheet keeps the soft cross-fade.
+            let pixelArt=Self.pixelSkillIDs.contains(event.spec.id)
+            let mix=pixelArt ? 0 : PartyVisual.smooth(position-Double(lower))
             let rect=CGRect(x:event.center.x-event.spec.anchorX,y:event.center.y-event.spec.anchorY,width:Double(event.spec.frameWidth),height:Double(event.spec.frameHeight))
             let light=PartyVisual.pulse(age,0,event.spec.peakTime,event.spec.duration)
             let color:UIColor
@@ -504,8 +508,10 @@ private final class MeadowPartyEffectsView:UIView {
             }
             glow(event.center,Double(event.spec.frameWidth)*0.34,Double(event.spec.frameHeight)*0.29,light*0.13,color)
             glow(PartyPoint(event.center.x,event.groundY-5),Double(event.spec.frameWidth)*0.31,15,light*0.24,color)
+            ctx.saveGState();ctx.interpolationQuality = pixelArt ? .none : .default
             frames[lower].draw(in:rect,blendMode:.plusLighter,alpha:CGFloat(1-mix))
             if upper != lower,mix>0 { frames[upper].draw(in:rect,blendMode:.plusLighter,alpha:CGFloat(mix)) }
+            ctx.restoreGState()
         }
         for h in hits {
             let a=time-h.at
