@@ -300,7 +300,7 @@ enum MeadowSkillProcedural {
                 if !(0 <= tt && tt < life) { continue }
                 let ang = frac(i, 3) * 6.283, spd = 160 + 300 * frac(i, 4), tr = tt / life
                 let d = spd * (1 - exp(-tt * 5)) / 5, v = spd * exp(-tt * 5)
-                let x = cx + cos(ang) * d, y = cy + sin(ang) * d * 0.8 + 140 * tt * tt * b2d(frac(i, 6) > 0.55)
+                let x = cx + cos(ang) * d, y = cy + sin(ang) * d * 0.8 + 140 * tt * tt * b2d(frac(i, 6) > 0.5)
                 let tw = 0.6 + 0.4 * sin(tt * 40 + Double(i)), col = [V[0], gold, magenta, cyan, V[1]][i % 5]
                 o.e(x - cos(ang) * v * 0.014, y - sin(ang) * v * 0.014 * 0.8, max(3.0, v * 0.03), 1.9 * (1 - 0.5 * tr), ang, col, 0.9 * (1 - tr) * tw)
                 o.g(x, y, 7, 7, col, 0.5 * (1 - tr) * tw)
@@ -323,7 +323,7 @@ enum MeadowSkillProcedural {
     static func soul(_ t: Double, _ geo: Geometry) -> [Prim] {
         var o = Out(); let D = soulTone, chest = geo.targets[0].chest, foot = geo.targets[0].foot, fx = foot.x, fy = foot.y, gy = geo.ground
         let cx = chest.x, cy = chest.y
-        let DEEP = RGB(10, 30, 96), BODY = RGB(34, 98, 220), MID = RGB(70, 150, 255), LIGHT = RGB(170, 225, 255)
+        let BODY = RGB(34, 98, 220), MID = RGB(70, 150, 255), LIGHT = RGB(170, 225, 255)
         let REL = 0.38
         let pre = clamp01(t / REL), post = t - REL
         let sg = smooth(t / 0.22) * (1 - smooth((t - 1.55) / 0.4))
@@ -709,7 +709,6 @@ enum MeadowSkillProcedural {
                 if tt < 0 { continue }
                 let r = (40 + 470 * easeOut(tt / 0.85)) * big, fade = 1 - easeIn(tt / 0.9)
                 o.arc(C.x + 20, C.y, r, r * 0.52, -1.15, 1.15, (7.0 - Double(rI) * 1.8) * fade + 0.8, [P.light, P.a1, P.mid][rI], 0.85 * fade)
-                o.arc(C.x + 20, C.y, r * 0.94, r * 0.94 * 0.52, -1.0, 1.0, 2.0, P.body, 0.5 * (1 - easeIn(tt / 0.9)))
             }
             let r = 20 + 130 * big * easeOut(a / 0.5); o.r(CF.x, CF.y - 2, r, r * 0.27, 6 * (1 - a / 0.55) + 0.6, P.mid, 0.8 * (1 - easeIn(a / 0.55)))
             for (n, tg) in geo.targets.enumerated() {
