@@ -155,7 +155,6 @@ enum MeadowBattleVFXAssets {
     static func prewarm() {
         DispatchQueue.global(qos:.userInitiated).async {
             _ = body; _ = wind
-            _ = healingMicro; _ = healingStandard; _ = healingStrong
             _ = runeSlashAttack; _ = runeWardCast
             _ = starlightPulse; _ = rally; _ = sweep; _ = dragonSoulWard; _ = dragonScaleWard
         }
@@ -172,24 +171,13 @@ private final class MeadowBattleHealingArtworkView: UIView {
     required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
     func update(tier: HealingEffectTier?, age: Double) {
         self.tier = tier; self.age = age
-        isHidden = tier == nil || tier?.frameBlend(at: age) == nil
+        isHidden = tier == nil || !MeadowSkillProceduralDrawing.active(tier!, age: age)
         setNeedsDisplay()
     }
     override func draw(_ rect: CGRect) {
-        guard let tier, let blend = tier.frameBlend(at: age) else { return }
-        MeadowBattleVFXAssets.drawHealing(tier: tier, blend: blend, in: rect)
-    }
-}
-
-extension MeadowBattleVFXAssets {
-    /// The healing sheets are hand-built pixel art (scripts/battle-vfx/heal.py): each frame is held (no cross-fade),
-    /// scaled without smoothing and drawn at full strength, since the old per-tier dimming was tuned for the old art.
-    static func drawHealing(tier: HealingEffectTier, blend: HealingEffectFrameBlend, in rect: CGRect) {
-        let frames = healingFrames(for: tier)
-        guard frames.count == HealingEffectTier.frameCount, frames.indices.contains(blend.lower), let ctx = UIGraphicsGetCurrentContext() else { return }
-        ctx.saveGState(); ctx.interpolationQuality = .none
-        frames[blend.lower].draw(in: rect, blendMode: .plusLighter, alpha: 0.95)
-        ctx.restoreGState()
+        guard let tier, MeadowSkillProceduralDrawing.active(tier, age: age), let ctx = UIGraphicsGetCurrentContext() else { return }
+        let foot = PartyPoint(Double(rect.midX), Double(rect.minY + rect.height * CGFloat(tier.canvasGroundAnchorY))), scale = Double(rect.height) / 260
+        MeadowSkillProceduralDrawing.drawHeal(tier, age: age, foot: foot, chest: PartyPoint(foot.x, foot.y - 80 * scale), in: ctx, bounds: rect)
     }
 }
 
@@ -277,15 +265,9 @@ final class MeadowBattleEffectsView: UIView {
             light(heroFoot, 90, 26, previewPower*previewEnvelope*0.16)
             return
         }
-        if let tier=recoveryTier,let age=recoveryAge,let blend=tier.frameBlend(at:age) {
-            let size:CGSize
-            switch tier {
-            case .micro: size=CGSize(width:208,height:208)
-            case .standard: size=CGSize(width:248,height:207)
-            case .strong: size=CGSize(width:258,height:258)
-            }
-            let frame=CGRect(x:heroFoot.x-size.width*unit/2,y:heroFoot.y-size.height*unit*CGFloat(tier.canvasGroundAnchorY),width:size.width*unit,height:size.height*unit)
-            MeadowBattleVFXAssets.drawHealing(tier:tier,blend:blend,in:frame)
+        if let tier=recoveryTier,let age=recoveryAge,MeadowSkillProceduralDrawing.active(tier,age:age),let ctx=UIGraphicsGetCurrentContext() {
+            let foot=PartyPoint(Double(heroFoot.x),Double(heroFoot.y))
+            MeadowSkillProceduralDrawing.drawHeal(tier,age:age,foot:foot,chest:PartyPoint(foot.x,foot.y-80*Double(unit)),in:ctx,bounds:bounds)
         }
         if selected, cue == nil {
             UIColor(red: 1, green: 0.84, blue: 0.35, alpha: 0.65).setStroke()
