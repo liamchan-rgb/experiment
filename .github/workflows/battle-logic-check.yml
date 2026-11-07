@@ -1,0 +1,34 @@
+name: Battle logic check
+
+# Fast feedback for the pure-Swift battle presentation logic (hit feel, ambient light, procedural skills).
+# Runs on Linux; no Xcode, simulator or device.
+on:
+  push:
+    branches: [claude/meadowjourney-visual-refactor-kh0zpr]
+    paths:
+      - 'Sources/Game/MeadowSkill*.swift'
+      - 'Sources/Game/MeadowBattleHitFeel.swift'
+      - 'scripts/*procedural*'
+      - 'scripts/*ambient*'
+      - 'scripts/battle-vfx/**'
+      - '.github/workflows/battle-logic-check.yml'
+  workflow_dispatch:
+
+concurrency:
+  group: battle-logic-check-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  logic:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: swift-actions/setup-swift@v2
+        with:
+          swift-version: '6.0'
+      - name: Procedural skills match the Python reference
+        run: bash scripts/check-battle-procedural.sh
+      - name: Ambient light
+        run: bash scripts/check-battle-ambient.sh
+      - name: Hit feel
+        run: bash scripts/check-battle-hitfeel.sh

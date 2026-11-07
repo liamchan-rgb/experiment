@@ -283,6 +283,116 @@ A47847D1CE00000000000002 = { "isa" = "PBXBuildFile"; "fileRef" = A47847D1CE00000
 			"isa" = "PBXBuildFile";
 			"fileRef" = 6A21BA7FDDC2FB7B790D0351;
 		};
+		FE970F195E8CCBC7821D3C71 = {
+			"isa" = "PBXFileReference";
+			"lastKnownFileType" = "sourcecode.swift";
+			"path" = "Game/P1AppearanceCompositor.swift";
+			"sourceTree" = "<group>";
+		};
+		FE8437B83FCAD8F939F44AA4 = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = FE970F195E8CCBC7821D3C71;
+		};
+		4877E49D4299B008F4EE0760 = {
+			"isa" = "PBXFileReference";
+			"lastKnownFileType" = "sourcecode.swift";
+			"path" = "Game/MeadowSkillGPU.swift";
+			"sourceTree" = "<group>";
+		};
+		C6F707D88F2FCF7DBA159240 = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = 4877E49D4299B008F4EE0760;
+		};
+		E01094952BE1E6975BB984C1 = {
+			"isa" = "PBXFileReference";
+			"lastKnownFileType" = "sourcecode.swift";
+			"path" = "Game/MeadowBattleNumber.swift";
+			"sourceTree" = "<group>";
+		};
+		2B07F08879B4B1E4CEC650D1 = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = E01094952BE1E6975BB984C1;
+		};
+		10D1A2654D6A27AA3C98A6A4 = {
+			"isa" = "PBXFileReference";
+			"lastKnownFileType" = "sourcecode.swift";
+			"path" = "Game/MeadowSkillProceduralPainter.swift";
+			"sourceTree" = "<group>";
+		};
+		F5BE3B5921621B9151004B8B = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = 10D1A2654D6A27AA3C98A6A4;
+		};
+		2858CBDF717EBE6BBDB4FE16 = {
+			"isa" = "PBXFileReference";
+			"lastKnownFileType" = "sourcecode.swift";
+			"path" = "Game/MeadowSkillProcedural.swift";
+			"sourceTree" = "<group>";
+		};
+		D0D0ABA7E6F376D3D33C5AE1 = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = 2858CBDF717EBE6BBDB4FE16;
+		};
+		10F43022AA66E3C6375E3D39 = {
+			"isa" = "PBXFileReference";
+			"lastKnownFileType" = "sourcecode.swift";
+			"path" = "Game/MeadowSkillAmbientLight.swift";
+			"sourceTree" = "<group>";
+		};
+		386C1DB14E336E26D52E2159 = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = 10F43022AA66E3C6375E3D39;
+		};
+		0149D276589359C5DE9B8D2E = {
+			"isa" = "PBXFileReference";
+			"lastKnownFileType" = "sourcecode.swift";
+			"path" = "Game/MeadowBattleHitFeelPainter.swift";
+			"sourceTree" = "<group>";
+		};
+		B5EFBB5B433A4C3A8AF3A923 = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = 0149D276589359C5DE9B8D2E;
+		};
+		9AF23C9490F7A767F95A15A2 = {
+			"isa" = "PBXFileReference";
+			"lastKnownFileType" = "sourcecode.swift";
+			"path" = "Game/MeadowBattleHitFeel.swift";
+			"sourceTree" = "<group>";
+		};
+		61E45FA749BA37A0E20175AB = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = 9AF23C9490F7A767F95A15A2;
+		};
+		362E1CFAFAA9BA9710B43AF1 = {
+			"isa" = "PBXFileReference";
+			"lastKnownFileType" = "sourcecode.swift";
+			"path" = "Game/HeroBreathing.swift";
+			"sourceTree" = "<group>";
+		};
+		E1B48DB5C10721230DDADC2C = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = 362E1CFAFAA9BA9710B43AF1;
+		};
+		E1ABF3F77A63A106184643B3 = {
+			"isa" = "PBXFileReference";
+			"lastKnownFileType" = "sourcecode.swift";
+			"path" = "Game/MeadowPostProcess.swift";
+			"sourceTree" = "<group>";
+		};
+		5DC5D0E9BAE9190C0B437D0E = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = E1ABF3F77A63A106184643B3;
+		};
+		3244CE3E91A701088769AF8E = {
+			"isa" = "PBXFileReference";
+			"lastKnownFileType" = "sourcecode.metal";
+			"path" = "Game/MeadowPostProcess.metal";
+			"sourceTree" = "<group>";
+		};
+		49FAD9A3D3D8D8DCF78F50C1 = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = 3244CE3E91A701088769AF8E;
+		};
 		5595A96AECADD87EFD6DE6D6 = {
 			"isa" = "PBXFileReference";
 			"lastKnownFileType" = "sourcecode.swift";
@@ -438,6 +548,17 @@ C26C692E47A2909C63823E67,
 				4B5D87B0E3C770DAA09EE100,
 				D0760787AC13759F118D8DE8,
 				6A21BA7FDDC2FB7B790D0351,
+				FE970F195E8CCBC7821D3C71,
+				4877E49D4299B008F4EE0760,
+				E01094952BE1E6975BB984C1,
+				10D1A2654D6A27AA3C98A6A4,
+				2858CBDF717EBE6BBDB4FE16,
+				10F43022AA66E3C6375E3D39,
+				0149D276589359C5DE9B8D2E,
+				9AF23C9490F7A767F95A15A2,
+				362E1CFAFAA9BA9710B43AF1,
+				E1ABF3F77A63A106184643B3,
+				3244CE3E91A701088769AF8E,
 				5595A96AECADD87EFD6DE6D6,
 				45C12FE3B590F238A72F9416,
 				FC7639FDB953C3A752437661,
@@ -456,6 +577,7 @@ C26C692E47A2909C63823E67,
 			"sourceTree" = "<group>";
 			"children" = (
 				78EB49E2E61F4F6BA66DC0CB,
+				6F9E2D6A7B472FE215413D0A,
 			);
 		};
 		0F2612BBE722F8B97292B1A7 = {
@@ -595,6 +717,17 @@ E231858EBB758E69C5FBB40B,
 				7A73B65B6F0455441E0B5B86,
 				BB374ADDA90DD49DAF266AD2,
 				8E972FB2B3AACA4C529240AD,
+				FE8437B83FCAD8F939F44AA4,
+				C6F707D88F2FCF7DBA159240,
+				2B07F08879B4B1E4CEC650D1,
+				F5BE3B5921621B9151004B8B,
+				D0D0ABA7E6F376D3D33C5AE1,
+				386C1DB14E336E26D52E2159,
+				B5EFBB5B433A4C3A8AF3A923,
+				61E45FA749BA37A0E20175AB,
+				E1B48DB5C10721230DDADC2C,
+				5DC5D0E9BAE9190C0B437D0E,
+				49FAD9A3D3D8D8DCF78F50C1,
 				ACC04BAE083F06BFDC7ED36E,
 				579D851CA923F0E0D661773A,
 				0018ED367738F2E5C55380DD,
@@ -658,6 +791,16 @@ E231858EBB758E69C5FBB40B,
 			"isa" = "PBXBuildFile";
 			"fileRef" = 78EB49E2E61F4F6BA66DC0CB;
 		};
+		6F9E2D6A7B472FE215413D0A = {
+			"isa" = "PBXFileReference";
+			"lastKnownFileType" = "sourcecode.swift";
+			"path" = "P1AppearanceCompositorTests.swift";
+			"sourceTree" = "<group>";
+		};
+		2B04ED3A2FED2EF08E2B1F27 = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = 6F9E2D6A7B472FE215413D0A;
+		};
 		A3F457D24C46F2E4EB780BCC = {
 			"isa" = "XCBuildConfiguration";
 			"name" = "Debug";
@@ -715,6 +858,7 @@ E231858EBB758E69C5FBB40B,
 			"buildActionMask" = 2147483647;
 			"files" = (
 				BF71C53CAE7B14794151F420,
+				2B04ED3A2FED2EF08E2B1F27,
 			);
 			"runOnlyForDeploymentPostprocessing" = 0;
 		};

@@ -25,8 +25,30 @@ def same_pixels(a, b, where):
     assert ImageChops.difference(a, b).getbbox() is None, f"{where}: pixel mismatch"
 
 
+# The catalog sheets are now hand-built pixel art (scripts/battle-vfx/heal.py), no longer the delivered packs: check their
+# structure (size, 20 frames, a visible effect in the middle, a faint ending) instead of comparing with the packs.
+PIXEL_ART = {"BattleVFXHealingMicroSheet": (320, 320), "BattleVFXHealingStandardSheet": (320, 268), "BattleVFXHealingStrongSheet": (320, 320)}
+
+
+def verify_pixel_art(asset_name, cell_w, cell_h):
+    path = CATALOG / f"{asset_name}.imageset" / f"{asset_name}.png"
+    sheet = rgba(Image.open(path), str(path))
+    assert sheet.size == (cell_w * 5, cell_h * 4), f"{asset_name}: unexpected atlas size {sheet.size}"
+    covered = []
+    for index in range(20):
+        x, y = (index % 5) * cell_w, (index // 5) * cell_h
+        alpha = sheet.crop((x, y, x + cell_w, y + cell_h)).getchannel("A")
+        covered.append(sum(1 for v in alpha.tobytes() if v > 0))
+    assert max(covered) > 1500, f"{asset_name}: effect is not visible in any frame"
+    assert covered[19] < max(covered) * 0.25, f"{asset_name}: ending frame should be faint"
+    print(f"PASS {asset_name}: hand-built pixel art, 20 frames of {cell_w}x{cell_h}, 5x4 atlas, peak coverage {max(covered)} px, ending {covered[19]} px")
+
+
 def main():
     for zip_name, prefix, sheet_name, asset_name, cell_w, cell_h in SPECS:
+        if asset_name in PIXEL_ART:
+            verify_pixel_art(asset_name, *PIXEL_ART[asset_name])
+            continue
         archive = PACKS / zip_name
         assert archive.is_file(), f"missing source pack: {archive}"
         with ZipFile(archive) as z:

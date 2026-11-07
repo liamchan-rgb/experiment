@@ -1,0 +1,664 @@
+{
+ "down": {
+  "joints": {
+   "shoulderRight": [
+    114.0,
+    136.0
+   ],
+   "shoulderLeft": [
+    144.0,
+    136.0
+   ],
+   "elbowRight": [
+    108.0,
+    153.0
+   ],
+   "elbowLeft": [
+    150.0,
+    153.0
+   ],
+   "hipRight": [
+    121,
+    175
+   ],
+   "hipLeft": [
+    139,
+    175
+   ],
+   "kneeRight": [
+    122,
+    187
+   ],
+   "kneeLeft": [
+    138,
+    187
+   ],
+   "ankleRight": [
+    120,
+    204
+   ],
+   "ankleLeft": [
+    138,
+    204
+   ],
+   "neck": [
+    128,
+    132
+   ],
+   "wristLeft": [
+    152.0,
+    167.0
+   ],
+   "wristRight": [
+    106.0,
+    167.0
+   ]
+  },
+  "headToCanvas": [
+   1,
+   0,
+   0,
+   1,
+   80,
+   60
+  ],
+  "drawOrder": [
+   "weapon.back",
+   "hair.back",
+   "outfit.hem.back",
+   "body.leg.right",
+   "body.leg.left",
+   "body.arm.right",
+   "body.arm.left",
+   "body.torso",
+   "outfit.pants.right",
+   "outfit.boot.right",
+   "outfit.pants.left",
+   "outfit.boot.left",
+   "outfit.sleeve.right",
+   "outfit.sleeve.left",
+   "outfit.torso",
+   "outfit.hem.front",
+   "head.base",
+   "face.eyes",
+   "face.brows",
+   "face.nose",
+   "face.mouth",
+   "hair.front",
+   "body.hand.right",
+   "body.hand.left"
+  ]
+ },
+ "down-left": {
+  "joints": {
+   "hipLeft": [
+    136.0,
+    171.0
+   ],
+   "kneeLeft": [
+    140.0,
+    188.0
+   ],
+   "ankleLeft": [
+    141.0,
+    206.0
+   ],
+   "shoulderLeft": [
+    141.0,
+    139.0
+   ],
+   "elbowLeft": [
+    147.0,
+    152.0
+   ],
+   "wristLeft": [
+    151.0,
+    167.0
+   ],
+   "hipRight": [
+    120.0,
+    170.0
+   ],
+   "kneeRight": [
+    119.0,
+    184.0
+   ],
+   "ankleRight": [
+    120.0,
+    199.0
+   ],
+   "shoulderRight": [
+    115.0,
+    137.0
+   ],
+   "elbowRight": [
+    111.0,
+    149.0
+   ],
+   "wristRight": [
+    108.0,
+    161.0
+   ],
+   "neck": [
+    128.0,
+    132.0
+   ]
+  },
+  "headToCanvas": [
+   1.0,
+   0.0,
+   0.0,
+   1.0,
+   77.0,
+   62.0
+  ],
+  "drawOrder": [
+   "weapon.back",
+   "body.leg.right",
+   "body.leg.left",
+   "body.arm.right",
+   "outfit.sleeve.right",
+   "body.hand.right",
+   "body.torso",
+   "outfit.pants.right",
+   "outfit.boot.right",
+   "outfit.pants.left",
+   "outfit.boot.left",
+   "outfit.hem.front",
+   "outfit.torso",
+   "body.arm.left",
+   "outfit.sleeve.left",
+   "body.hand.left",
+   "head.base",
+   "face.eyes",
+   "face.brows",
+   "face.nose",
+   "face.mouth",
+   "hair.front"
+  ]
+ },
+ "left": {
+  "joints": {
+   "neck": [
+    128,
+    132
+   ],
+   "shoulderLeft": [
+    132,
+    138
+   ],
+   "shoulderRight": [
+    125,
+    140
+   ],
+   "elbowLeft": [
+    134,
+    153
+   ],
+   "elbowRight": [
+    142,
+    152
+   ],
+   "hipLeft": [
+    132,
+    176
+   ],
+   "hipRight": [
+    125,
+    176
+   ]
+  },
+  "headToCanvas": [
+   1.0,
+   -0.0,
+   0.0,
+   1.0,
+   79.0,
+   61.0
+  ],
+  "drawOrder": [
+   "weapon.back",
+   "hair.back",
+   "outfit.hem.back",
+   "body.leg.right",
+   "body.leg.left",
+   "body.arm.right",
+   "outfit.sleeve.right",
+   "body.hand.right",
+   "body.torso",
+   "outfit.pants.right",
+   "outfit.boot.right",
+   "outfit.pants.left",
+   "outfit.boot.left",
+   "outfit.torso",
+   "outfit.hem.front",
+   "head.base",
+   "face.eyes",
+   "face.brows",
+   "face.nose",
+   "face.mouth",
+   "hair.front",
+   "body.arm.left",
+   "outfit.sleeve.left",
+   "body.hand.left"
+  ]
+ },
+ "up-left": {
+  "joints": {
+   "hipLeft": [
+    119.0,
+    168.0
+   ],
+   "kneeLeft": [
+    122.0,
+    189.0
+   ],
+   "ankleLeft": [
+    123.0,
+    206.0
+   ],
+   "shoulderLeft": [
+    115.0,
+    137.0
+   ],
+   "elbowLeft": [
+    110.0,
+    153.0
+   ],
+   "wristLeft": [
+    104.0,
+    167.0
+   ],
+   "hipRight": [
+    137.0,
+    168.0
+   ],
+   "kneeRight": [
+    137.0,
+    189.0
+   ],
+   "ankleRight": [
+    139.0,
+    204.0
+   ],
+   "shoulderRight": [
+    143.0,
+    137.0
+   ],
+   "elbowRight": [
+    147.0,
+    152.0
+   ],
+   "wristRight": [
+    150.0,
+    166.0
+   ],
+   "neck": [
+    128.0,
+    132.0
+   ]
+  },
+  "headToCanvas": [
+   1.0,
+   0.0,
+   0.0,
+   1.0,
+   76.0,
+   61.0
+  ],
+  "drawOrder": [
+   "body.leg.right",
+   "body.leg.left",
+   "body.arm.right",
+   "outfit.sleeve.right",
+   "body.hand.right",
+   "body.torso",
+   "outfit.pants.right",
+   "outfit.boot.right",
+   "outfit.pants.left",
+   "outfit.boot.left",
+   "outfit.hem.front",
+   "outfit.torso",
+   "weapon.back",
+   "body.arm.left",
+   "outfit.sleeve.left",
+   "body.hand.left",
+   "head.base",
+   "face.eyes",
+   "face.brows",
+   "face.nose",
+   "face.mouth",
+   "hair.front"
+  ]
+ },
+ "up": {
+  "joints": {
+   "hipLeft": [
+    119.0,
+    168.0
+   ],
+   "kneeLeft": [
+    119.0,
+    192.0
+   ],
+   "ankleLeft": [
+    118.0,
+    210.0
+   ],
+   "shoulderLeft": [
+    112.0,
+    140.0
+   ],
+   "elbowLeft": [
+    108.0,
+    155.0
+   ],
+   "wristLeft": [
+    104.0,
+    168.0
+   ],
+   "hipRight": [
+    136.0,
+    168.0
+   ],
+   "kneeRight": [
+    137.0,
+    192.0
+   ],
+   "ankleRight": [
+    137.0,
+    210.0
+   ],
+   "shoulderRight": [
+    143.0,
+    140.0
+   ],
+   "elbowRight": [
+    148.0,
+    155.0
+   ],
+   "wristRight": [
+    151.0,
+    168.0
+   ],
+   "neck": [
+    128.0,
+    132.0
+   ]
+  },
+  "headToCanvas": [
+   1.0,
+   0.0,
+   0.0,
+   1.0,
+   80.0,
+   63.0
+  ],
+  "drawOrder": [
+   "body.leg.left",
+   "body.leg.right",
+   "body.arm.right",
+   "outfit.sleeve.right",
+   "body.hand.right",
+   "body.torso",
+   "outfit.pants.left",
+   "outfit.boot.left",
+   "outfit.pants.right",
+   "outfit.boot.right",
+   "outfit.hem.front",
+   "outfit.torso",
+   "body.arm.left",
+   "outfit.sleeve.left",
+   "body.hand.left",
+   "weapon.back",
+   "head.base",
+   "face.eyes",
+   "face.brows",
+   "face.nose",
+   "face.mouth",
+   "hair.front"
+  ]
+ },
+ "up-right": {
+  "joints": {
+   "hipRight": [
+    137.0,
+    168.0
+   ],
+   "kneeRight": [
+    134.0,
+    189.0
+   ],
+   "ankleRight": [
+    133.0,
+    206.0
+   ],
+   "shoulderRight": [
+    141.0,
+    137.0
+   ],
+   "elbowRight": [
+    146.0,
+    153.0
+   ],
+   "wristRight": [
+    152.0,
+    167.0
+   ],
+   "hipLeft": [
+    119.0,
+    168.0
+   ],
+   "kneeLeft": [
+    119.0,
+    189.0
+   ],
+   "ankleLeft": [
+    117.0,
+    204.0
+   ],
+   "shoulderLeft": [
+    113.0,
+    137.0
+   ],
+   "elbowLeft": [
+    109.0,
+    152.0
+   ],
+   "wristLeft": [
+    106.0,
+    166.0
+   ],
+   "neck": [
+    128.0,
+    132.0
+   ]
+  },
+  "headToCanvas": [
+   1.0,
+   0.0,
+   0.0,
+   1.0,
+   85.0,
+   61.0
+  ],
+  "drawOrder": [
+   "body.leg.left",
+   "body.leg.right",
+   "body.arm.left",
+   "outfit.sleeve.left",
+   "body.hand.left",
+   "body.torso",
+   "outfit.pants.left",
+   "outfit.boot.left",
+   "outfit.pants.right",
+   "outfit.boot.right",
+   "outfit.hem.front",
+   "outfit.torso",
+   "body.arm.right",
+   "outfit.sleeve.right",
+   "body.hand.right",
+   "weapon.back",
+   "head.base",
+   "face.eyes",
+   "face.brows",
+   "face.nose",
+   "face.mouth",
+   "hair.front"
+  ]
+ },
+ "right": {
+  "joints": {
+   "neck": [
+    128,
+    132
+   ],
+   "shoulderRight": [
+    124,
+    138
+   ],
+   "shoulderLeft": [
+    131,
+    140
+   ],
+   "elbowRight": [
+    122,
+    153
+   ],
+   "elbowLeft": [
+    114,
+    152
+   ],
+   "hipRight": [
+    124,
+    176
+   ],
+   "hipLeft": [
+    131,
+    176
+   ]
+  },
+  "headToCanvas": [
+   1.0,
+   0.0,
+   0.0,
+   1.0,
+   82.0,
+   61.0
+  ],
+  "drawOrder": [
+   "weapon.back",
+   "hair.back",
+   "outfit.hem.back",
+   "body.leg.left",
+   "body.leg.right",
+   "body.arm.left",
+   "outfit.sleeve.left",
+   "body.hand.left",
+   "body.torso",
+   "outfit.pants.left",
+   "outfit.boot.left",
+   "outfit.pants.right",
+   "outfit.boot.right",
+   "outfit.torso",
+   "outfit.hem.front",
+   "head.base",
+   "face.eyes",
+   "face.brows",
+   "face.nose",
+   "face.mouth",
+   "hair.front",
+   "body.arm.right",
+   "outfit.sleeve.right",
+   "body.hand.right"
+  ]
+ },
+ "down-right": {
+  "joints": {
+   "hipRight": [
+    120.0,
+    171.0
+   ],
+   "kneeRight": [
+    116.0,
+    188.0
+   ],
+   "ankleRight": [
+    115.0,
+    206.0
+   ],
+   "shoulderRight": [
+    115.0,
+    139.0
+   ],
+   "elbowRight": [
+    109.0,
+    152.0
+   ],
+   "wristRight": [
+    105.0,
+    167.0
+   ],
+   "hipLeft": [
+    136.0,
+    170.0
+   ],
+   "kneeLeft": [
+    137.0,
+    184.0
+   ],
+   "ankleLeft": [
+    136.0,
+    199.0
+   ],
+   "shoulderLeft": [
+    141.0,
+    137.0
+   ],
+   "elbowLeft": [
+    145.0,
+    149.0
+   ],
+   "wristLeft": [
+    148.0,
+    161.0
+   ],
+   "neck": [
+    128.0,
+    132.0
+   ]
+  },
+  "headToCanvas": [
+   1.0,
+   0.0,
+   0.0,
+   1.0,
+   84.0,
+   62.0
+  ],
+  "drawOrder": [
+   "weapon.back",
+   "body.leg.left",
+   "body.leg.right",
+   "body.arm.left",
+   "outfit.sleeve.left",
+   "body.hand.left",
+   "body.torso",
+   "outfit.pants.left",
+   "outfit.boot.left",
+   "outfit.pants.right",
+   "outfit.boot.right",
+   "outfit.hem.front",
+   "outfit.torso",
+   "body.arm.right",
+   "outfit.sleeve.right",
+   "body.hand.right",
+   "head.base",
+   "face.eyes",
+   "face.brows",
+   "face.nose",
+   "face.mouth",
+   "hair.front"
+  ]
+ }
+}
