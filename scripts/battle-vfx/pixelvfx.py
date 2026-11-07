@@ -33,12 +33,15 @@ def frac(i, salt):
 
 class Grid:
     """One frame on a w x h grid. Pixel centres are at +0.5; all masks are hard (no antialiasing)."""
+    SUPER = 1          # >1 renders the same design on a k-times finer pixel grid (coordinates stay in design units)
+
     def __init__(self, w, h):
-        self.w, self.h = w, h
-        self.rgba = np.zeros((h, w, 4), np.uint8)
-        yy, xx = np.mgrid[0:h, 0:w]
-        self.x, self.y = xx + .5, yy + .5
-        self.bayer = np.tile(BAYER4, (h // 4 + 1, w // 4 + 1))[:h, :w]
+        k = self.k = Grid.SUPER
+        self.w, self.h = w * k, h * k
+        self.rgba = np.zeros((self.h, self.w, 4), np.uint8)
+        yy, xx = np.mgrid[0:self.h, 0:self.w]
+        self.x, self.y = (xx + .5) / k, (yy + .5) / k
+        self.bayer = np.tile(BAYER4, (self.h // 4 + 1, self.w // 4 + 1))[:self.h, :self.w]
 
     # ---- masks ----
     def disc(self, cx, cy, r): return (self.x - cx) ** 2 + (self.y - cy) ** 2 <= r * r
@@ -116,7 +119,8 @@ def pack_sheet(frames, grid_scale, cell, columns):
     rows = math.ceil(len(frames) / columns)
     sheet = Image.new('RGBA', (cw * columns, ch * rows))
     for i, g in enumerate(frames):
-        im = g.image().resize((g.w * grid_scale, g.h * grid_scale), Image.NEAREST)
+        f = grid_scale // g.k
+        im = g.image().resize((g.w * f, g.h * f), Image.NEAREST) if f > 1 else g.image()
         ox, oy = (cw - im.width) // 2, (ch - im.height) // 2
         tile = Image.new('RGBA', (cw, ch)); tile.alpha_composite(im.crop((max(0, -ox), max(0, -oy), max(0, -ox) + min(im.width, cw), max(0, -oy) + min(im.height, ch))), (max(0, ox), max(0, oy)))
         sheet.alpha_composite(tile, ((i % columns) * cw, (i // columns) * ch))

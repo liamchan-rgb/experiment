@@ -4,7 +4,7 @@ usage: python3 build.py <out-dir>      # writes <asset>.png for every skill, at 
        python3 build.py --assets       # writes straight into Sources/Resources/Assets.xcassets
 """
 import os, sys
-from pixelvfx import pack_sheet
+from pixelvfx import pack_sheet, Grid
 from skills import SPECS, GENERATORS
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
@@ -17,7 +17,11 @@ def build(skill):
 
 
 if __name__ == '__main__':
-    arg = sys.argv[1] if len(sys.argv) > 1 else '.'
+    Grid.SUPER = 2   # 1 design px = 1 point on the stage, the same density as the character art (override: --super=1)
+    args = [a for a in sys.argv[1:] if not a.startswith('--super=')]
+    for a in sys.argv[1:]:
+        if a.startswith('--super='): Grid.SUPER = int(a.split('=')[1])
+    arg = args[0] if args else '.'
     for skill in SPECS:
         asset, sheet = build(skill)
         if arg == '--assets':
