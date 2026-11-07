@@ -7,9 +7,12 @@ carries a soft additive glow, and a bloom pass (or its stacked-glow approximatio
 Primitives (stage points, y grows downward):
   ('g', x, y, rx, ry, rgb, alpha)            soft radial glow
   ('b', x, y, size, rgb, alpha)              small hard square (accent)
-  ('r', x, y, rx, ry, width, rgb, alpha)     ring on an ellipse
+  ('r', x, y, rx, ry, width, rgb, alpha[, rot])  ring on an ellipse (optionally rotated by rot)
   ('s', x1, y1, x2, y2, width, rgb, alpha)   segment (glow along it + bright core)
   ('d', x, y, rx, ry, rgb, alpha)            hard diamond (scale plates)
+  ('k', pts, widths, rgb, alpha, mode, soft)  smooth tapered ribbon along a curve; mode 'add' (light) or 'mix' (solid, normal blend); soft = edge softness in points
+  ('e', x, y, rx, ry, angle, rgb, alpha)      elongated soft glow rotated by `angle` (rays, glints, spark streaks)
+  ('a', x, y, rx, ry, a0, a1, width, rgb, alpha)  arc of an ellipse
   ('p', [(x, y), ...], rgb, alpha)           solid polygon, normal blending (heads, fins)
   ('c', x, y, r, rgb, alpha)                 solid disc with normal blending (keeps dark, saturated colour; body of the dragon)
 Geometry `geo`: dict(caster=(x,y chest), casterFoot=(x,y), targets=[(chest, foot), ...], center=(x,y), ground=y).
@@ -415,6 +418,287 @@ def scales(t, geo):
         out.append(('r', fx, cy_, shell_rx, shell_ry, 2.0, S[1], .4 * sh))
     if .18 < t < .45:
         out.append(('f', S[2], .12 * (1 - abs(t - .3) / .15)))
+    return out
+
+
+# ================================================================== v3: smooth, rich, no angular parts
+def stack(out, pts, ws, layers, alpha=1.0):
+    """Gradient ribbon: several passes, each (width scale, rgb, mode, alpha), outer to inner, so the stroke shades smoothly."""
+    for sc, col, mode, a in layers:
+        out.append(('k', pts, [w * sc for w in ws], col, a * alpha, mode, max(1.2, 2.4 * sc)))
+
+
+def sigil2(out, cx, cy, R, ratio, t, env, cols, petals=8, spin=1.0):
+    """Floor seal made only of rings, arcs and petals (no straight lines)."""
+    if env <= .01: return
+    c1, c2, c3 = cols
+    out.append(('g', cx, cy, R * 1.18, R * 1.18 * ratio, c2, .30 * env)); out.append(('g', cx, cy, R * .6, R * .6 * ratio, c1, .22 * env))
+    out.append(('r', cx, cy, R, R * ratio, 2.6, c1, .85 * env)); out.append(('r', cx, cy, R * .93, R * .93 * ratio, 1.1, c3, .6 * env))
+    out.append(('r', cx, cy, R * .62, R * .62 * ratio, 1.6, c1, .7 * env)); out.append(('r', cx, cy, R * .3, R * .3 * ratio, 1.2, c3, .6 * env))
+    for k in range(6):
+        a0 = spin * t * .7 + k * math.pi / 3
+        out.append(('a', cx, cy, R * .8, R * .8 * ratio, a0, a0 + .72, 3.0, c1, .85 * env))
+    for k in range(4):
+        a0 = -spin * t * 1.1 + k * math.pi / 2
+        out.append(('a', cx, cy, R * .46, R * .46 * ratio, a0, a0 + .9, 2.2, c3, .8 * env))
+    for k in range(petals):
+        a = k * 2 * math.pi / petals - spin * t * .4; d = R * .5
+        px, py = cx + math.cos(a) * d, cy + math.sin(a) * d * ratio
+        out.append(('r', px, py, R * .3, R * .11 * (1 + 1.2 * (1 - ratio)), 1.2, c2, .5 * env, a))
+        out.append(('e', px, py, R * .26, R * .08, a, c1, .16 * env))
+    for k in range(16):
+        a = k * math.pi / 8 + spin * t * .5
+        x, y = cx + math.cos(a) * R * .72, cy + math.sin(a) * R * .72 * ratio
+        out.append(('g', x, y, 5, 5, c3, .85 * env * (.55 + .45 * math.sin(t * 5 + k))))
+
+
+def aurora(out, cx, cy, t, env, cols, spread=150, h=120):
+    if env <= .01: return
+    for k in range(3):
+        pts = []; ws = []
+        for j in range(48):
+            u = j / 47; x = cx + (u - .5) * spread * 2
+            y = cy - h - 26 * k + 22 * math.sin(u * 5 + t * 1.3 + k * 2) + 9 * math.sin(u * 11 - t * 2 + k)
+            pts.append((x, y)); ws.append(30 * math.sin(math.pi * u) ** .8 * (1 - .18 * k) + 2)
+        out.append(('k', pts, ws, cols[k % len(cols)], .16 * env, 'add', 9))
+        out.append(('k', pts, [w * .4 for w in ws], cols[(k + 1) % len(cols)], .12 * env, 'add', 6))
+
+
+# ------------------------------------------------------------------ starlight pulse v3
+def starlight(t, geo):
+    out = []; C = geo['caster']; CF = geo['casterFoot']; T, TF = geo['targets'][0]; imp = SPEC['starlightPulse'][1]
+    V = TONE['starlightPulse']; DEEP = (40, 24, 140)
+    sig = smooth(t / .2) * (1 - smooth((t - .42) / .25))
+    sigil2(out, CF[0], CF[1] - 2, 66, .3, t, sig, (V[2], V[3], V[1]), 8, 1.2)
+    if t < .55:
+        for i in range(22):                                                             # light rising from the seal
+            ph = frac(i, 1); u = (t * .9 + ph) % 1.0
+            x = CF[0] + math.sin(u * 6 + i) * (24 + 30 * frac(i, 2)); y = CF[1] - 6 - u * 130
+            al = sig * math.sin(math.pi * u) ** .7
+            out.append(('g', x, y, 8, 8, (V[2], MAG, CYAN)[i % 3], .55 * al)); out.append(('g', x, y, 3, 3, V[0], .9 * al))
+
+    def path(tt):
+        s = ease_in(clamp01(tt / imp)) ** .8
+        x, y = lerp2(C, T, s)
+        return x, y - 70 * math.sin(math.pi * s) * (1 - .3 * s), s
+
+    if t < imp + .02:
+        hx, hy, _ = path(t)
+        N = 60; pts = []; ws = []; nrm = []
+        for i in range(N - 1, -1, -1):
+            tt = t - i * .0105
+            if tt < 0: continue
+            x, y, s = path(tt); x2, y2, _ = path(tt + .006)
+            dx, dy = x2 - x, y2 - y; L = math.hypot(dx, dy) or 1.0; nx, ny = -dy / L, dx / L
+            u = i / N; lat = 5 * u * math.sin(tt * 22 + i * .45)
+            pts.append((x + nx * lat, y + ny * lat)); nrm.append((nx, ny, tt, i))
+            ws.append(((17 * (1 - u) ** .85 + 1.2) * (.45 + .55 * clamp01(tt * 7))) * 2)
+        if len(pts) > 3:
+            for k in range(0, len(pts), 5):                                                 # nebula puffs
+                out.append(('g', pts[k][0], pts[k][1], ws[k] * 1.9, ws[k] * 1.9, (V[3], MAG, CYAN)[(k // 5) % 3], .1))
+            stack(out, pts, ws, [(1.25, DEEP, 'mix', .5), (1.0, V[4], 'mix', .7), (.72, V[3], 'mix', .85), (.5, V[2], 'add', .55), (.22, V[1], 'add', .85)])
+            for k, col in enumerate((MAG, CYAN, V[1])):                                       # three light strands twisting round the core
+                sp = []; sw = []
+                for (px, py), (nx, ny, tt, i), w in zip(pts, nrm, ws):
+                    ang = tt * 18 + i * .3 + k * 2.094; off = w * .62 + 2
+                    sp.append((px + nx * math.cos(ang) * off, py + ny * math.cos(ang) * off + math.sin(ang) * off * .3)); sw.append(max(.8, w * .12))
+                out.append(('k', sp, sw, col, .8, 'add', 2.0))
+        for i in range(34):                                                                   # shed star dust
+            tb = frac(i, 1) * imp * .95
+            if not 0 <= t - tb < .6: continue
+            tt = t - tb; x, y, _ = path(tb); r = tt / .6
+            x += (frac(i, 2) - .5) * 44 * r; y += (frac(i, 3) - .3) * 44 * r + 34 * r * r
+            col = (V[0], GOLD, MAG, CYAN)[i % 4]; k = (1 - r) * (.6 + .4 * math.sin(tt * 30 + i))
+            out.append(('g', x, y, 8, 8, col, .7 * k)); out.append(('e', x, y, 8 + 4 * frac(i, 4), 1.1, tt * 3 + i, V[0], .8 * k)); out.append(('e', x, y, 8 + 4 * frac(i, 4), 1.1, tt * 3 + i + 1.571, V[0], .8 * k))
+        fade = clamp01((imp - t) / .05); pulse = 1 + .08 * math.sin(t * 25)
+        out.append(('g', hx, hy, 74, 74, V[3], .3 * fade)); out.append(('g', hx, hy, 40, 40, V[2], .42 * fade))
+        out.append(('r', hx, hy, 26 * pulse, 26 * pulse, 1.5, V[2], .5 * fade)); out.append(('r', hx, hy, 34, 34, 1.0, MAG, .35 * fade))
+        out.append(('g', hx, hy, 24, 24, V[1], .75 * fade)); out.append(('g', hx, hy, 12, 12, V[0], 1.0 * fade))
+        out.append(('e', hx, hy, 110, 3.2, 0, V[1], .45 * fade)); out.append(('e', hx, hy, 70, 2.4, 0, V[0], .5 * fade))
+        for k in range(4): out.append(('e', hx, hy, 42 - 10 * (k % 2), 2.4, t * 3 + k * .785, V[0], .6 * fade))
+        for k in range(7):
+            a = t * 9 + k * 2 * math.pi / 7; rr = 24 + 5 * math.sin(t * 6 + k)
+            out.append(('g', hx + math.cos(a) * rr, hy + math.sin(a) * rr * .6, 6, 6, (V[0], MAG, CYAN)[k % 3], .8 * fade))
+    a = t - imp
+    if a >= 0:
+        cx, cy = T
+        if a < .2: out.append(('f', V[2], .12 * math.exp(-a * 18)))
+        out.append(('g', cx, cy, 170 * (.5 + ease_out(a / .35)), 170 * (.5 + ease_out(a / .35)), V[3], .4 * (1 - ease_in(a / .8))))
+        out.append(('g', cx, cy, 60, 60, V[2], .5 * (1 - ease_in(a / .35))))
+        out.append(('g', cx, cy, 22, 22, V[1], .6 * (1 - ease_in(a / .22)))); out.append(('g', cx, cy, 10, 10, V[0], .9 * (1 - ease_in(a / .16))))
+        out.append(('e', cx, cy, 230 * ease_out(a / .2), 4.5, 0, V[1], .55 * (1 - ease_in(a / .45))))          # anamorphic streak
+        out.append(('e', cx, cy, 110 * ease_out(a / .2), 3.2, 0, V[0], .55 * (1 - ease_in(a / .35))))
+        out.append(('e', cx, cy, 90 * ease_out(a / .2), 3.0, 1.571, V[1], .4 * (1 - ease_in(a / .35))))
+        for k in range(40):                                                                   # soft light rays
+            ang = k * 2 * math.pi / 40 + a * .4
+            L = (60 + 100 * frac(k, 2)) * ease_out(a / .16) * (1 - ease_in((a - .1) / .6))
+            if L > 3: out.append(('e', cx + math.cos(ang) * L / 2, cy + math.sin(ang) * L / 2, L / 2, 1.8, ang, (V[2], MAG, CYAN, V[1])[k % 4], .55 * (1 - a / .7)))
+        for ring_i, (d, col) in enumerate(((0, V[2]), (.07, MAG), (.14, CYAN), (.22, V[1]))):    # shock rings
+            if a - d >= 0:
+                r = 12 + 150 * ease_out((a - d) / .6)
+                out.append(('r', cx, cy, r, r * .8, 3.0 * (1 - (a - d) / .65) + .6, col, .85 * (1 - ease_in((a - d) / .65))))
+        for layer, (n_p, col, rot0, size) in enumerate(((12, V[2], 0.0, 120), (8, MAG, .39, 82), (12, CYAN, .13, 150))):   # blooming light lotus
+            k = ease_out((a - layer * .05) / .3) * (1 - ease_in((a - .22 - layer * .05) / .5))
+            if k > .02:
+                for q in range(n_p):
+                    ang = q * 2 * math.pi / n_p + rot0 + a * (.9 - .3 * layer); L = size * k
+                    px, py = cx + math.cos(ang) * L * .5, cy + math.sin(ang) * L * .5 * .82
+                    out.append(('r', px, py, L * .5, L * .13, 1.4, col, .6 * k, ang)); out.append(('e', px, py, L * .42, L * .1, ang, col, .2 * k))
+        sg = smooth(a / .08) * (1 - ease_in((a - .22) / .6))
+        sigil2(out, TF[0], TF[1] - 2, 46 + 62 * ease_out(a / .3), .3, a + imp, sg, (V[2], V[3], V[1]), 8, 1.6)
+        for q in range(3):                                                                    # rising spiral light
+            pts = []; ws = []
+            for j in range(40):
+                u = j / 39; ang = q * 2.094 + u * 7 + a * 5; rr = 36 + 40 * u
+                pts.append((TF[0] + math.cos(ang) * rr, TF[1] - 8 - u * 150 * ease_out(a / .5) + math.sin(ang) * rr * .3)); ws.append(5 * math.sin(math.pi * u) ** .8 + .6)
+            out.append(('k', pts, ws, (V[2], MAG, CYAN)[q], .55 * (1 - ease_in((a - .15) / .6)), 'add', 3.0))
+        for i in range(90):                                                                   # streaking sparks
+            life = .55 + .6 * frac(i, 2); tt = a - .02 * frac(i, 5)
+            if not 0 <= tt < life: continue
+            ang = frac(i, 3) * 6.283; spd = 160 + 300 * frac(i, 4); tr = tt / life
+            d = spd * (1 - math.exp(-tt * 5)) / 5; v = spd * math.exp(-tt * 5)
+            x = cx + math.cos(ang) * d; y = cy + math.sin(ang) * d * .8 + 140 * tt * tt * (frac(i, 6) > .5)
+            tw = .6 + .4 * math.sin(tt * 40 + i); col = (V[0], GOLD, MAG, CYAN, V[1])[i % 5]
+            out.append(('e', x - math.cos(ang) * v * .014, y - math.sin(ang) * v * .014 * .8, max(3.0, v * .03), 1.9 * (1 - .5 * tr), ang, col, .9 * (1 - tr) * tw))
+            out.append(('g', x, y, 7, 7, col, .5 * (1 - tr) * tw))
+        for i in range(34):                                                                   # slow starfall
+            tb = .06 + .55 * frac(i, 1); tt = a - tb
+            if not 0 <= tt < .9: continue
+            x = cx + (frac(i, 2) - .5) * 210; y = cy - 130 + tt * (70 + 40 * frac(i, 3)); r = tt / .9
+            col = (V[0], GOLD, V[1], CYAN)[i % 4]; k = math.sin(math.pi * r) * (.6 + .4 * math.sin(tt * 30 + i))
+            sz = 5 + 6 * frac(i, 4)
+            out.append(('g', x, y, sz, sz, col, .7 * k)); out.append(('e', x, y, sz * 1.7, 1.1, tt * 2 + i, V[0], .8 * k)); out.append(('e', x, y, sz * 1.7, 1.1, tt * 2 + i + 1.571, V[0], .8 * k))
+        aurora(out, cx, cy - 20, a * 1.4, smooth(a / .25) * (1 - smooth((a - .4) / .5)), (V[3], MAG, CYAN), 140, 100)
+    return out
+
+
+# ------------------------------------------------------------------ dragon soul ward v3
+def soul(t, geo):
+    out = []; D = TONE['dragonSoulWard']; (chest, foot) = geo['targets'][0]; fx, fy = foot; gy = geo['ground']
+    N = 90; coil = ease_out(clamp01(t / .55)); dissolve = smooth((t - 1.0) / .45)
+    shell = smooth((t - .6) / .4) * (1 - smooth((t - 1.55) / .45))
+    DEEP, BODY, MID, LIGHT, BELLY = (10, 30, 96), (34, 98, 220), (70, 150, 255), (170, 225, 255), (150, 215, 255)
+    sg = smooth(t / .25) * (1 - smooth((t - 1.5) / .45))
+    sigil2(out, fx, gy - 2, 72, .28, t, sg, (D[2], (36, 90, 220), D[1]), 10, 1.0)
+    for k in range(14):
+        a = -t * .8 + k * math.pi / 7; x, y = ell(fx, gy - 2, 84, 84 * .28, a)
+        out.append(('g', x, y, 6, 6, GOLD, .8 * sg * (.5 + .5 * math.sin(t * 5 + k))))
+
+    def body(tt, i):
+        ph = tt * 4.8 - i * .067
+        r = lerp(88, 42, coil) * (1 + .05 * math.sin(i * .2 + tt * 3))
+        rise = 14 + 130 * (1 - math.exp(-max(0, tt) * 2.0)) - i * .55 + math.sin(ph * .5) * 7
+        return fx + math.cos(ph) * r, fy - rise + math.sin(ph) * r * .34, math.sin(ph)
+    if t < 1.5:
+        env = 1 - dissolve; n_live = max(2, int(N * (1 - dissolve)))
+        raw = [body(t, i) for i in range(N)]
+        pts = [(x, y) for x, y, _ in raw][:n_live]; dep = [d for _, _, d in raw][:n_live]
+        ws = [(27 * (1 - i / N) ** .8 + 5) * (.86 + .14 * dep[i]) for i in range(n_live)]
+        if env > .01 and n_live > 4:
+            for i in range(0, n_live, 6):
+                out.append(('g', pts[i][0], pts[i][1], 34, 28, (D[1], D[2], D[0])[(i // 6) % 3], .1 * env))            # mist
+            def nrm(i):
+                a_, b_ = pts[max(0, i - 1)], pts[min(n_live - 1, i + 1)]; dx, dy = b_[0] - a_[0], b_[1] - a_[1]; L = math.hypot(dx, dy) or 1.0
+                return -dy / L, dx / L
+            runs = []; cur = [0]
+            for i in range(1, n_live):
+                if (dep[i] >= -.15) != (dep[cur[-1]] >= -.15): runs.append(cur); cur = [cur[-1], i]
+                else: cur.append(i)
+            runs.append(cur)
+            for run in sorted(runs, key=lambda r_: dep[r_[len(r_) // 2]] >= -.15):      # far runs first
+                front = dep[run[len(run) // 2]] >= -.15; fa = (1.0 if front else .62) * env
+                rp = [pts[i] for i in run]; rw = [ws[i] for i in run]
+                stack(out, rp, rw, [(1.0, DEEP, 'mix', .95), (.84, BODY, 'mix', 1.0)], fa)
+                up = []; lo = []
+                for i in run: nx, ny = nrm(i); up.append((pts[i][0] + nx * ws[i] * -.2, pts[i][1] + ny * ws[i] * -.2)); lo.append((pts[i][0] + nx * ws[i] * .2, pts[i][1] + ny * ws[i] * .2))
+                out.append(('k', lo, [w * .42 for w in rw], BELLY, .8 * fa, 'mix', 2.2))                      # lighter belly
+                out.append(('k', up, [w * .3 for w in rw], LIGHT, .85 * fa, 'mix', 2.0))                       # back light
+                out.append(('k', rp, [w * .6 for w in rw], MID, .3 * fa, 'add', 4.0))
+            for i in range(3, n_live - 4, 5):                                                              # flowing dorsal fins
+                if dep[i] < -.3: continue
+                nx, ny = nrm(i); fx0, fy0 = pts[i][0] - nx * ws[i] * .4, pts[i][1] - ny * ws[i] * .4
+                tx, ty = pts[min(n_live - 1, i + 2)][0] - pts[max(0, i - 2)][0], pts[min(n_live - 1, i + 2)][1] - pts[max(0, i - 2)][1]; tl = math.hypot(tx, ty) or 1.0
+                tx, ty = tx / tl, ty / tl; hgt = ws[i] * 1.5; fp = []; fw = []
+                for q in range(14):
+                    u = q / 13; wob = math.sin(t * 7 + i * .5 + u * 4) * 4 * u
+                    fp.append((fx0 - nx * hgt * math.sin(math.pi * u * .8) + tx * u * hgt * 1.3 + nx * wob, fy0 - ny * hgt * math.sin(math.pi * u * .8) + ty * u * hgt * 1.3 + ny * wob)); fw.append(5.5 * (1 - u) ** 1.1 + .3)
+                out.append(('k', fp, fw, MID, .85 * env, 'mix', 1.6)); out.append(('k', fp, [w * .5 for w in fw], LIGHT, .8 * env, 'mix', 1.4))
+            # head: bulbous skull + snout from one smooth ribbon, jaw, horns, mane and whiskers are all curved ribbons
+            hx, hy = pts[0]; nx2, ny2 = pts[min(n_live - 1, 7)]
+            ang = math.atan2(hy - ny2, hx - nx2); c, s_ = math.cos(ang), math.sin(ang); sc = 1.3
+            def P(u, v): return (hx + (c * u - s_ * v) * sc, hy + (s_ * u + c * v) * sc)
+            def curve(ctrl, n=18):
+                out_pts = []
+                for q in range(n):
+                    u = q / (n - 1); i0 = min(len(ctrl) - 2, int(u * (len(ctrl) - 1))); f = u * (len(ctrl) - 1) - i0
+                    a_, b_ = ctrl[i0], ctrl[i0 + 1]; out_pts.append((lerp(a_[0], b_[0], f), lerp(a_[1], b_[1], f)))
+                return out_pts
+            def sm(ctrl, wctrl, n=26):
+                pp = []; ww = []
+                for q in range(n):
+                    u = q / (n - 1) * (len(ctrl) - 1); i0 = min(len(ctrl) - 2, int(u)); f = u - i0; f = f * f * (3 - 2 * f)
+                    pp.append((lerp(ctrl[i0][0], ctrl[i0 + 1][0], f), lerp(ctrl[i0][1], ctrl[i0 + 1][1], f))); ww.append(lerp(wctrl[i0], wctrl[i0 + 1], f))
+                return pp, ww
+            sp, sw = sm([P(-12, 0), P(0, 0), P(12, -1), P(26, 0), P(38, 2)], [16, 24, 21, 12, 5])
+            stack(out, sp, sw, [(1.14, DEEP, 'mix', .98), (1.0, BODY, 'mix', 1.0), (.62, MID, 'mix', .55)], env)
+            up_ = [(x, y - 3.5) for x, y in sp]
+            out.append(('k', [P(-2, -6), P(10, -6), P(24, -4), P(36, -.5)], [4.5, 5, 4, 1.5], LIGHT, .85 * env, 'mix', 2.0))
+            jp, jw = sm([P(2, 9), P(14, 10), P(28, 8), P(36, 4)], [8, 9, 6, 2.2])
+            stack(out, jp, jw, [(1.15, DEEP, 'mix', .95), (1.0, (28, 80, 190), 'mix', 1.0)], env)
+            for hu, hv, hl, hw2 in ((-4, -10, -22, -16), (0, -12, -14, -24)):                              # curved horns
+                hp = [P(hu, hv), P(hu - 6, hv - 8), P(hl + 3, hw2 + 5), P(hl, hw2)]
+                cp = curve(hp, 18); out.append(('k', cp, [7 * (1 - q / 17) ** .9 + .5 for q in range(18)], DEEP, .95 * env, 'mix', 1.4)); out.append(('k', cp, [4.4 * (1 - q / 17) ** .9 + .2 for q in range(18)], LIGHT, .95 * env, 'mix', 1.2))
+            for m in range(3):                                                                             # flowing mane
+                mp = []; mw = []
+                for q in range(16):
+                    u = q / 15; wob = math.sin(t * 6 + m + u * 4) * 5 * u
+                    mp.append(P(-8 - u * 26, -4 + m * 4 + wob * .6)); mw.append(5 * (1 - u) ** 1.1 + .3)
+                out.append(('k', mp, mw, MID if m % 2 else BODY, .85 * env, 'mix', 1.6)); out.append(('k', mp, [w * .45 for w in mw], LIGHT, .7 * env, 'add', 2.0))
+            for sgn in (-1, 1):                                                                            # long flowing whiskers
+                wp = []; ww = []
+                for q in range(24):
+                    u = q / 23; wp.append(P(34 - u * 44, sgn * (3 + u * 12) + math.sin(t * 6 + u * 6 + sgn) * 5 * u)); ww.append(1.8 * (1 - u) ** 1.0 + .22)
+                out.append(('k', wp, ww, LIGHT, .9 * env, 'add', 1.4))
+            ex, ey = P(10, -6); out.append(('g', ex, ey, 13, 13, (255, 220, 120), .85 * env)); out.append(('g', ex, ey, 5.5, 5.5, (255, 255, 255), 1.0 * env))
+            out.append(('g', hx, hy, 60, 60, D[1], .28 * env))
+            if .35 < t < .95:
+                k = smooth((t - .35) / .2) * (1 - smooth((t - .75) / .2)); x, y = P(42, 2)
+                out.append(('g', x, y, 34 * k + 4, 34 * k + 4, D[0], .7 * k)); out.append(('g', x, y, 70 * k + 4, 70 * k + 4, D[2], .3 * k))
+                for q in range(12):
+                    a2 = frac(q, 1) * 6.283; r2 = 14 + 50 * k * frac(q, 2); out.append(('g', x + math.cos(a2) * r2, y + math.sin(a2) * r2, 6, 6, D[0], .8 * k))
+            for k in range(2):                                                                             # spirit scarves
+                sp2 = []; sw2 = []
+                for q in range(50):
+                    u = q / 49; ph = t * 3 + k * 3.14 - u * 5
+                    sp2.append((fx + math.cos(ph) * (108 + 6 * math.sin(u * 8)), fy - 30 - 110 * u * (1 - .2 * k) + math.sin(ph) * 36)); sw2.append(5 * math.sin(math.pi * u) ** .8 + .4)
+                out.append(('k', sp2, sw2, (D[1], D[0])[k], .2 * env * (1 - dissolve), 'add', 4.0))
+        if dissolve > 0:                                                                                    # the body turns into light
+            for i in range(n_live, N, 2):
+                x, y, _ = raw[i]
+                out.append(('g', x + (frac(i, 2) - .5) * 26 * dissolve, y - 34 * dissolve * (.5 + frac(i, 3)), 9, 9, (D[0], D[1], GOLD)[i % 3], .65 * (1 - dissolve * .6)))
+    if shell > .01:
+        cy_ = fy - 64; RX, RY = 52, 80
+        out.append(('g', fx, cy_, RX * 1.35, RY * 1.25, D[2], .2 * shell)); out.append(('g', fx, cy_, RX * .9, RY * .9, D[1], .1 * shell))
+        for q in range(3):                                                                                 # bands of light winding round the dome
+            pts_ = []; ws_ = []
+            for j in range(60):
+                u = j / 59; ang = q * 2.094 + u * 9 + t * 1.3
+                pts_.append((fx + math.cos(ang) * RX * math.sqrt(max(0, 1 - (2 * u - 1) ** 2)) * 1.0, cy_ + (2 * u - 1) * RY * .96))
+                ws_.append(4 * math.sin(math.pi * u) ** .6 + .5)
+            out.append(('k', pts_, ws_, (D[1], D[0], GOLD)[q], .5 * shell, 'add', 2.4))
+        out.append(('r', fx, cy_, RX, RY, 3.0, LIGHT, .5 * shell)); out.append(('r', fx, cy_, RX * .96, RY * .96, 1.4, D[1], .5 * shell)); out.append(('r', fx, cy_, RX * .86, RY * .88, 1.0, D[2], .3 * shell))
+        for k in range(5):
+            a0 = t * (1.2 + .3 * k) + k * 1.3; out.append(('a', fx, cy_, RX * (1.0 + .02 * k), RY * (1.0 + .02 * k), a0, a0 + .9, 2.6, D[0], .65 * shell))
+        wy = cy_ + RY * (1 - 2 * ((t * .8) % 1.0)); out.append(('e', fx, wy, RX * 1.0, 9, 0, D[0], .4 * shell))
+        for i in range(30):
+            u = ((t * .45 + frac(i, 1)) % 1.0); a = frac(i, 2) * 6.283 + t
+            x = fx + math.cos(a) * RX * .82 * frac(i, 3); y = cy_ + RY * (1 - 2 * u) * .9; k = shell * math.sin(math.pi * u)
+            out.append(('g', x, y, 8, 8, (D[0], D[1], GOLD)[i % 3], .65 * k)); out.append(('g', x, y, 3, 3, (255, 255, 255), .9 * k))
+        rp = (t * 1.2) % 1.0
+        out.append(('r', fx, cy_ + RY * (rp * 2 - 1) * .9, RX * math.sqrt(max(0.0, 1 - ((rp * 2 - 1) * .9) ** 2)) * 1.02, 10, 1.8, D[0], .5 * shell * (1 - rp)))
+    if .55 < t < 1.1:
+        k = 1 - abs(t - .8) / .25
+        if k > 0: out.append(('f', D[2], .1 * k))
     return out
 
 

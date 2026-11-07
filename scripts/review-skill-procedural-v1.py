@@ -51,11 +51,14 @@ def block(buf, cx, cy, size, col, a):
     buf[y0:y1, x0:x1][m] += np.array(col) * min(1.0, a)
 
 
-def ring(buf, cx, cy, rx, ry, wd, col, a):
-    w = window(cx, cy, rx + wd, ry + wd)
+def ring(buf, cx, cy, rx, ry, wd, col, a, rot=0.0):
+    R_ = max(rx, ry)
+    w = window(cx, cy, R_ + wd, R_ + wd) if rot else window(cx, cy, rx + wd, ry + wd)
     if not w or a <= 0.003: return
     x0, x1, y0, y1 = w
-    d = np.sqrt(((XX[y0:y1, x0:x1] + .5 - cx) / rx) ** 2 + ((YY[y0:y1, x0:x1] + .5 - cy) / ry) ** 2)
+    dx, dy = XX[y0:y1, x0:x1] + .5 - cx, YY[y0:y1, x0:x1] + .5 - cy
+    if rot: dx, dy = dx * math.cos(rot) + dy * math.sin(rot), -dx * math.sin(rot) + dy * math.cos(rot)
+    d = np.sqrt((dx / max(rx, .5)) ** 2 + (dy / max(ry, .5)) ** 2)
     band = np.clip(1 - np.abs(d - 1) * min(rx, ry) / max(wd, 1.0), 0, 1)
     buf[y0:y1, x0:x1] += (band * min(1.0, a))[..., None] * np.array(col)
 
@@ -88,6 +91,51 @@ def poly(buf, pts, col, a):
     buf[y0:y1, x0:x1] = buf[y0:y1, x0:x1] * (1 - mm) + np.array(col) * mm
 
 
+def egl(buf, cx, cy, rx, ry, ang, col, a):
+    R_ = max(rx, ry)
+    w = window(cx, cy, R_, R_)
+    if not w or a <= 0.003: return
+    x0, x1, y0, y1 = w
+    dx, dy = XX[y0:y1, x0:x1] + .5 - cx, YY[y0:y1, x0:x1] + .5 - cy
+    u = dx * math.cos(ang) + dy * math.sin(ang); v = -dx * math.sin(ang) + dy * math.cos(ang)
+    d = np.sqrt((u / max(rx, .5)) ** 2 + (v / max(ry, .5)) ** 2)
+    buf[y0:y1, x0:x1] += (np.clip(1 - d, 0, 1) ** 1.6 * min(1.0, a))[..., None] * np.array(col)
+
+
+def arc(buf, cx, cy, rx, ry, a0, a1, wd, col, a):
+    w = window(cx, cy, rx + wd, ry + wd)
+    if not w or a <= 0.003: return
+    x0, x1, y0, y1 = w
+    X, Y = XX[y0:y1, x0:x1] + .5 - cx, YY[y0:y1, x0:x1] + .5 - cy
+    d = np.sqrt((X / rx) ** 2 + (Y / ry) ** 2)
+    band = np.clip(1 - np.abs(d - 1) * min(rx, ry) / max(wd, 1.0), 0, 1)
+    ang = (np.arctan2(Y / ry, X / rx) - a0) % (2 * math.pi)
+    span = a1 - a0; edge = np.clip(np.minimum(ang, span - ang) / .12, 0, 1)
+    m = band * np.where(ang <= span, edge, 0)
+    buf[y0:y1, x0:x1] += (m * min(1.0, a))[..., None] * np.array(col)
+
+
+def ribbon(buf, pts, ws, col, a, mode, soft):
+    if len(pts) < 2 or a <= 0.003: return
+    pad = max(ws) / 2 + soft * 3 + 2
+    x0 = int(max(0, min(p[0] for p in pts) - pad)); x1 = int(min(W, max(p[0] for p in pts) + pad + 1))
+    y0 = int(max(0, min(p[1] for p in pts) - pad)); y1 = int(min(H, max(p[1] for p in pts) + pad + 1))
+    if x1 <= x0 or y1 <= y0: return
+    from PIL import ImageDraw
+    SS = 2
+    m = Image.new('L', ((x1 - x0) * SS, (y1 - y0) * SS), 0); d = ImageDraw.Draw(m)
+    for (xa, ya), (xb, yb), wa, wb in zip(pts, pts[1:], ws, ws[1:]):
+        n = max(1, int(math.hypot(xb - xa, yb - ya) / 0.8))
+        for k in range(n + 1):
+            u = k / n; x = (xa + (xb - xa) * u - x0) * SS; y = (ya + (yb - ya) * u - y0) * SS; r = max(.3, (wa + (wb - wa) * u) / 2) * SS
+            d.ellipse([x - r, y - r, x + r, y + r], fill=255)
+    m = m.resize((x1 - x0, y1 - y0), Image.LANCZOS).filter(ImageFilter.GaussianBlur(max(.4, soft * .5)))
+    mm = (np.asarray(m).astype(float) / 255)[..., None] * min(1.0, a)
+    reg = buf[y0:y1, x0:x1]
+    if mode == 'add': buf[y0:y1, x0:x1] = reg + mm * np.array(col)
+    else: buf[y0:y1, x0:x1] = reg * (1 - mm) + np.array(col) * mm
+
+
 def seg(buf, x1, y1, x2, y2, wd, col, a):
     L = math.hypot(x2 - x1, y2 - y1); n = max(2, int(L / 3))
     for k in range(n + 1):
@@ -101,7 +149,10 @@ def draw(buf, prims):
         k = p[0]
         if k == 'g': glow(buf, p[1], p[2], p[3], p[4], p[5], p[6])
         elif k == 'b': block(buf, p[1], p[2], p[3], p[4], p[5])
-        elif k == 'r': ring(buf, *p[1:7], p[7]) if False else ring(buf, p[1], p[2], p[3], p[4], p[5], p[6], p[7])
+        elif k == 'r': ring(buf, *p[1:])
+        elif k == 'e': egl(buf, *p[1:])
+        elif k == 'a': arc(buf, *p[1:])
+        elif k == 'k': ribbon(buf, *p[1:])
         elif k == 's': seg(buf, *p[1:])
         elif k == 'p': poly(buf, p[1], p[2], p[3])
         elif k == 'c': disc(buf, *p[1:])
