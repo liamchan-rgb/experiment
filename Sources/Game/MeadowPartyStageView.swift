@@ -51,6 +51,9 @@ final class MeadowPartyStageView:UIView {
     /// The system's Reduce Motion switch only turns the camera work off when this is asked for (`MeadowCameraRespectsReduceMotion`); by default the camera always works.
     private static var reduceMotion:Bool { UIAccessibility.isReduceMotionEnabled && UserDefaults.standard.bool(forKey:"MeadowCameraRespectsReduceMotion") }
     private let barTop=UIView(),barBottom=UIView()
+    private var cameraTransform:CGAffineTransform?,cameraWidth:CGFloat=0
+    /// When a fallen hero was brought back (they fade back in as the revive light gathers).
+    private var revivedAt:[String:Double]=[:]
     /// The GPU drawer for procedural skills (nil: Metal unavailable, the effects layer draws them with CoreGraphics).
     private var gpu:MeadowSkillGPUView?
     private struct PendingStatusCue {
@@ -108,7 +111,7 @@ final class MeadowPartyStageView:UIView {
     }
     required init?(coder:NSCoder) { fatalError("init(coder:) has not been implemented") }
     @objc private func tapped(_ r:UITapGestureRecognizer) { if !isPlaying,let id=r.view?.accessibilityIdentifier { onChoose?(id) } }
-    func start() { MeadowBattleVFXAssets.prewarm();victoryAt=nil;sceneTime=0;recovery=[:];recoveryTier=[:];formation=[:];birth=[:];contact=[:];contactAngle=[:];broken=[:];deaths=[:];hurt=[:];hitFeel=[:];kickFeel=nil;messages=[];emissions=[];skillVFX=[];procVFX=[];pendingStatusCues=[];statusSnapshots=[:];poseKeys=[:];fallen=[:];diceAction=nil;diceConfirmedAt=nil;diceView.confirmationAge=nil;diceView.dice=[];diceSettledAt=nil;diceExitAt=nil;dimFrom=0;dimTarget=0;clock.start() }
+    func start() { MeadowBattleVFXAssets.prewarm();victoryAt=nil;sceneTime=0;recovery=[:];recoveryTier=[:];formation=[:];birth=[:];contact=[:];contactAngle=[:];revivedAt=[:];broken=[:];deaths=[:];hurt=[:];hitFeel=[:];kickFeel=nil;messages=[];emissions=[];skillVFX=[];procVFX=[];pendingStatusCues=[];statusSnapshots=[:];poseKeys=[:];fallen=[:];diceAction=nil;diceConfirmedAt=nil;diceView.confirmationAge=nil;diceView.dice=[];diceSettledAt=nil;diceExitAt=nil;dimFrom=0;dimTarget=0;clock.start() }
     func stop() { MeadowMonsterFrames.retain([]);clock.stop();intent=nil;impact=nil;completion=nil;focus=nil;skillVFX=[];procVFX=[];pendingStatusCues=[];statusSnapshots=[:] }
     func displayedVitals(for unitID:String,health:Int,shield:Int)->(health:Int,shield:Int) { statusSnapshots[unitID] ?? (health,shield) }
     func show(_ value:GameState,friend:String,foe:String,current:String?,catalog:GameCatalog) {
@@ -325,8 +328,12 @@ final class MeadowPartyStageView:UIView {
                 switch before.templateID { case "slime":deathName="deathSlime";case "wolf":deathName="deathWolf";case "goblinArcher":deathName="deathGoblin";case "stoneGuardian":deathName="deathStone";case "caveTroll":deathName="deathTroll";case "ruinDragon":deathName="deathDragon";default:deathName="deathBurst" }
                 spawnProc(deathName,intent,target:id,hit:registered,foot:foot,templates:receipt.before.units.mapValues(\.templateID),power:1.0,delay:0)
             }
+            if !before.isAlive && after.isAlive && after.kind == .player {
+                fallen[id]=nil;revivedAt[id]=sceneTime
+                spawnProc("revive",intent,target:id,hit:PartyPoint(foot.x,foot.y-60),foot:foot,templates:receipt.before.units.mapValues(\.templateID),power:1.0,delay:0)
+            }
             if before.isAlive && !after.isAlive && after.kind == .player {
-                recovery[id]=nil;recoveryTier[id]=nil;fallen[id]=sceneTime
+                recovery[id]=nil;recoveryTier[id]=nil;fallen[id]=sceneTime;revivedAt[id]=nil
                 spawnProc("playerDown",intent,target:id,hit:PartyPoint(foot.x,foot.y-40),foot:foot,templates:receipt.before.units.mapValues(\.templateID),power:1.0,delay:0)
             }
         }
@@ -385,6 +392,9 @@ final class MeadowPartyStageView:UIView {
                 let s=CGFloat(PartyVisual.heroScale),root=actor.poseRootOffset
                 actor.frame=CGRect(x:foot.x-123*s+root.x*s,y:foot.y-214*s+root.y*s,width:256*s,height:256*s)
                 actor.layer.zPosition=CGFloat(f.y)
+                // A fallen hero is taken off the field (a soul crystal marks the spot, see downAura) and fades back in when revived.
+                let shown:CGFloat=unit.isAlive ? CGFloat(revivedAt[id].map { MeadowSkillProcedural.smooth((sceneTime-$0-0.35)/0.5) } ?? 1):CGFloat(1-MeadowSkillProcedural.smooth(((fallen[id].map { sceneTime-$0 } ?? 10)-0.45)/0.4))
+                actor.alpha=shown;shadows[id]?.alpha=shown
                 let key="\(clip)-\(Int((progress*24).rounded()))-\(unit.equipment.weapon ?? "none")-\(unit.equipment.armor ?? "none")"
                 if key != poseKeys[id] { shadows[id]?.update(image:actor.poseSilhouette,soleY:actor.poseFootAnchorPx.y,contacts:actor.poseContacts.map { .init(point:$0,radius:12) });poseKeys[id]=key }
                 attached[id]?.frame=actor.bounds
@@ -554,13 +564,20 @@ final class MeadowPartyStageView:UIView {
         }
         var worldTransform=CGAffineTransform(translationX:(CGFloat(kick.dx+rattle.dx))*layoutUnit+shotX,y:(CGFloat(kick.dy+rattle.dy))*layoutUnit+shotY)
         worldTransform=worldTransform.rotated(by:CGFloat(kick.rotation+rattle.rotation)).scaledBy(x:sceneScale,y:sceneScale)
-        world.transform=worldTransform
+        world.transform=worldTransform;cameraTransform=worldTransform;cameraWidth=bounds.width
         // Cinema bars: while the lens is on a close-up, black bars slide in at the top and bottom, so the camera work reads at a glance.
         let barH=bounds.height*0.065*CGFloat(shot.weight)
         barTop.frame=CGRect(x:0,y:0,width:bounds.width,height:barH);barBottom.frame=CGRect(x:0,y:bounds.height-barH,width:bounds.width,height:barH)
         fx.setNeedsDisplay()
     }
-    override func layoutSubviews() { super.layoutSubviews();let scale=bounds.width/1000;gpu?.setResolution(max(1,min(3,UIScreen.main.scale*scale*1.15)));world.center=CGPoint(x:bounds.midX,y:bounds.midY);world.transform=CGAffineTransform(scaleX:scale,y:scale) }
+    /// UIKit lays this view out again whenever a subview changes size - and the camera's zoom changes the world's size every frame. Layout
+    /// used to reset the world to its plain scale, which silently undid the whole camera (zoom, shake, director shot); it now keeps the camera.
+    override func layoutSubviews() {
+        super.layoutSubviews();let scale=bounds.width/1000
+        gpu?.setResolution(max(1,min(3,UIScreen.main.scale*scale*1.15)))
+        world.center=CGPoint(x:bounds.midX,y:bounds.midY)
+        if let camera=cameraTransform,cameraWidth==bounds.width { world.transform=camera } else { world.transform=CGAffineTransform(scaleX:scale,y:scale) }
+    }
 }
 struct MeadowPartyMessage {
     let text:String;let point:CGPoint;let at:Double;let color:UIColor;var atImpact=false;var supportUnit:String?=nil;var supportLine=0;var hitTier:MeadowBattleHitTier?=nil
@@ -1125,10 +1142,25 @@ extension MeadowPartyStageView {
         labPlay("playerDown",actor:attacker,targets:[id],power:1.0)
         state?.units[id]?.health=0;fallen[id]=sceneTime
     }
-    func labShake(_ tier:MeadowBattleHitTier) { kickFeel=(sceneTime,tier,1) }
+    func labShake(_ tier:MeadowBattleHitTier,delay:Double=0) { kickFeel=(sceneTime+delay,tier,1) }
+    /// The state the lab is showing (to build real intents for `play`).
+    var labState:GameState? { state }
+    func labSetWeapon(_ id:String,_ weapon:String?) { state?.units[id]?.equipment.weapon=weapon }
+    /// A floating number on `target`, `delay` seconds from now.
+    func labNumber(_ text:String,target:String,kind:MeadowBattleNumber.Kind,rank:Int,delay:Double) {
+        guard let state else { return }
+        let p=PartyVisual.hitPoint(target:target,templateID:state.units[target]?.templateID)
+        let color:UIColor = kind == .heal ? .systemGreen:kind == .shield ? .systemCyan:.white
+        messages.append(.init(text:text,point:CGPoint(x:p.x,y:p.y),at:sceneTime+delay,color:color,atImpact:true,kind:kind,rank:rank,follow:target))
+    }
+    func labRevive(_ id:String) {
+        guard let unit=state?.units[id],!unit.isAlive else { return }
+        state?.units[id]?.health=max(1,unit.baseAttributes.maximumHealth/2);fallen[id]=nil;revivedAt[id]=sceneTime
+        labPlay("revive",actor:id,targets:[id],power:1.0)
+    }
     /// Back to a clean stage with the given state.
     func labReset(_ value:GameState,catalog:GameCatalog) {
-        procVFX=[];messages=[];deaths=[:];fallen=[:];contact=[:];contactAngle=[:];birth=[:];broken=[:];recovery=[:];recoveryTier=[:];hitFeel=[:];kickFeel=nil;hurt=[:];statusSnapshots=[:];emissions=[]
+        procVFX=[];messages=[];deaths=[:];fallen=[:];contact=[:];contactAngle=[:];revivedAt=[:];birth=[:];broken=[:];recovery=[:];recoveryTier=[:];hitFeel=[:];kickFeel=nil;hurt=[:];statusSnapshots=[:];emissions=[]
         show(value,friend:"p1",foe:"m1",current:nil,catalog:catalog)
     }
 }

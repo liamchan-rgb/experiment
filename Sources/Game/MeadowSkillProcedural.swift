@@ -30,7 +30,7 @@ enum MeadowSkillProcedural {
                            "healMicro", "healStandard", "healStrong", "rally", "sweep",
                            "shieldShell", "shieldShellHit", "shieldBreak", "deathBurst",
                            "hitSlime", "hitWolf", "hitArrowM", "hitStone", "hitTroll", "hitDragon",
-                           "deathSlime", "deathWolf", "deathGoblin", "deathStone", "deathTroll", "deathDragon", "playerDown", "downAura", "projBow", "projStaff", "projArcher", "projDragon",
+                           "deathSlime", "deathWolf", "deathGoblin", "deathStone", "deathTroll", "deathDragon", "playerDown", "downAura", "revive", "projBow", "projStaff", "projArcher", "projDragon",
                            "natural20", "shieldDome", "hitBlade", "hitGreat", "hitBow", "hitStaff", "hitClaw", "hitAmbush", "hitWard"]
     static let info: [String: Info] = [
         "starlightPulse": Info(duration: 1.6, release: 0.75, dim: 0.34, dimTint: RGB(0.80, 0.76, 1.0), support: false),
@@ -53,6 +53,7 @@ enum MeadowSkillProcedural {
         "shieldBreak": Info(duration: 1.2, release: 0.03, dim: 0.0, dimTint: RGB(1, 1, 1), support: false),
         "deathSlime": deathInfo(1.8), "deathWolf": deathInfo(1.8), "deathGoblin": deathInfo(1.8), "deathStone": deathInfo(2.0), "deathTroll": deathInfo(1.8), "deathDragon": deathInfo(2.4),
         "playerDown": Info(duration: 2.2, release: 0.05, dim: 0.0, dimTint: RGB(1, 1, 1), support: false),
+        "revive": Info(duration: 1.8, release: 0.3, dim: 0.0, dimTint: RGB(1, 1, 1), support: true),
         "downAura": Info(duration: 3.0, release: 0.5, dim: 0.0, dimTint: RGB(1, 1, 1), support: true),
         "hitSlime": hitInfo, "hitWolf": hitInfo, "hitArrowM": hitInfo, "hitStone": hitInfo, "hitTroll": hitInfo, "hitDragon": hitInfo,
         "deathBurst": Info(duration: 1.8, release: 0.04, dim: 0.0, dimTint: RGB(1, 1, 1), support: false),
@@ -91,7 +92,7 @@ enum MeadowSkillProcedural {
         case "deathTroll": return Pal.troll.mid
         case "deathDragon": return Pal.ward.mid
         case "playerDown": return Pal.down.mid
-        case "downAura": return Pal.gold.mid
+        case "downAura", "revive": return Pal.gold.mid
         case "hitSlime": return Pal.goo.mid
         case "hitWolf": return Pal.wolf.mid
         case "hitArrowM": return Pal.goblin.mid
@@ -273,6 +274,7 @@ enum MeadowSkillProcedural {
             case "deathBurst", "deathSlime", "deathWolf", "deathGoblin", "deathStone", "deathTroll", "deathDragon": all += deathEffect(id, t, geo, ti)
             case "playerDown": all += playerDown(t, geo, ti)
             case "downAura": all += downAura(t, geo, ti)
+            case "revive": all += revive(t, geo, ti)
             case "projBow", "projStaff", "projArcher", "projDragon": all += projectile(id, t, geo, ti)
             case "shieldBreak": all += shieldBreak(t, geo, ti)
             case "shieldShell": all += shieldShell(t, geo, ti)
@@ -1313,9 +1315,21 @@ enum MeadowSkillProcedural {
             }
         }
         if L < 0.45 {
-            for q in 0..<3 {
-                let ac = frac(q + 3 * ti, 2) * 6.2832
-                o.e(cx + cos(ac) * RX * 0.9, ccy + sin(ac) * RY * 0.9, 14, 1.2, ac + 1.5708, P.light, 0.7 * A * (0.5 + 0.5 * sin(t * 11 + Double(q))))
+            let warn = min(1.0, (0.45 - L) / 0.25)
+            o.r(cx, ccy, RX, RY, 4.5, RGB(255, 170, 90), 0.9 * A * warn * (0.5 + 0.5 * sin(t * 19)))
+            for q in 0..<8 {
+                let ac = frac(q + 3 * ti, 2) * 6.2832 + Double(q) * 0.4, sx = cx + cos(ac) * RX, sy = ccy + sin(ac) * RY
+                var pts: [Pt] = [], ws: [Double] = []
+                for j in 0..<5 {
+                    let u = Double(j) / 4.0, jit = (frac(q * 7 + j, 3) - 0.5) * 16 * (j > 0 ? 1.0 : 0.0)
+                    pts.append(Pt(sx - cos(ac) * RX * 0.6 * u - sin(ac) * jit, sy - sin(ac) * RY * 0.6 * u + cos(ac) * jit)); ws.append(3.4 * (1 - u) + 0.8)
+                }
+                let al = A * (0.75 + 0.25 * sin(t * 13 + Double(q)))
+                o.k(pts, ws.map { $0 * 2.4 }, P.mid, 0.35 * al, add: true, soft: 1.2); o.k(pts, ws, P.light, al, add: true, soft: 1.2)
+            }
+            for q in 0..<4 {
+                let ac = frac(q + 9, 4) * 6.2832, u = pm(t * 1.3 + frac(q, 4), 1.0)
+                o.e(cx + cos(ac) * RX, ccy + sin(ac) * RY + u * 60, 6, 2.0, u * 6, P.light, (1 - u) * 0.8 * A)
             }
         }
         return o.prims
@@ -1535,17 +1549,44 @@ enum MeadowSkillProcedural {
         return o.prims
     }
 
-    /// A fallen hero waits for a revival: a pale light and a few motes rise slowly; `t0` is the time since the fall.
+    /// A fallen hero is hidden; in their place a soul crystal floats over a sigil, with a beam above it, until a revival. `t0`: time since the fall.
     static func downAura(_ t0: Double, _ geo: Geometry, _ ti: Int) -> [Prim] {
         var o = Out(); let P = Pal.gold, fx = geo.targets[ti].foot.x, fy = geo.targets[ti].foot.y, t = max(0.0, t0)
-        let A = smooth(t / 0.6)
-        o.g(fx, fy - 4, 60, 14, P.body, 0.18 * A)
-        o.r(fx, fy - 2, 44 + 4 * sin(t * 2), (44 + 4 * sin(t * 2)) * 0.28, 1.4, P.mid, (0.35 + 0.15 * sin(t * 2)) * A)
-        o.e(fx, fy - 90, 90, 3.0, -1.5708, P.light, (0.22 + 0.08 * sin(t * 1.5)) * A)
-        for q in 0..<7 {
-            let ph = frac(q + 5 * ti, 1), u = pm(t * 0.25 + ph, 1.0)
-            o.g(fx + sin(ph * 6.2832 + t * 0.6) * 34, fy - 12 - u * 150, 6, 6, P.a2, 0.7 * sin(Double.pi * u) * A)
+        let A = smooth((t - 0.3) / 0.6), bob = sin(t * 2) * 4, cy = fy - 70 + bob
+        o.g(fx, fy - 4, 70, 16, P.body, 0.3 * A)
+        o.r(fx, fy - 2, 46, 13, 2.2, P.mid, 0.7 * A); o.r(fx, fy - 2, 32, 9, 1.2, P.light, 0.6 * A)
+        for q in 0..<3 { let a0 = t * 0.8 + Double(q) * 2.094; o.arc(fx, fy - 2, 56, 16, a0, a0 + 1.0, 2.2, P.a2, 0.7 * A) }
+        o.e(fx, fy - 160, 160, 4.0, -1.5708, P.light, 0.35 * A * (0.7 + 0.3 * sin(t * 1.5)))
+        o.g(fx, cy, 40, 50, P.body, 0.45 * A * (0.8 + 0.2 * sin(t * 3)))
+        let ys: [Double] = [-28, -12, 0, 12, 28], wd: [Double] = [0.5, 16, 22, 16, 0.5]
+        o.k(ys.map { Pt(fx, cy + $0) }, wd, P.mid, 0.85 * A, add: true, soft: 1.4)
+        o.k(ys.map { Pt(fx, cy + $0) }, wd.map { $0 * 0.45 }, P.light, 0.9 * A, add: true, soft: 1.2)
+        for q in 0..<5 { let a = t * 2 + Double(q) * 1.2566; o.g(fx + cos(a) * 30, cy + sin(a) * 10, 5, 5, P.a2, 0.8 * A) }
+        return o.prims
+    }
+
+    // MARK: revive (a beam comes down, the light gathers into the body, the hero returns)
+
+    static func revive(_ t: Double, _ geo: Geometry, _ ti: Int) -> [Prim] {
+        var o = Out(); let P = Pal.gold, fx = geo.targets[ti].foot.x, fy = geo.targets[ti].foot.y, cx = geo.targets[ti].chest.x, cy = geo.targets[ti].chest.y
+        if ti == 0 && t >= 0.28 && t < 0.9 { o.f(P.light, 0.45 * exp(-max(0.0, t - 0.3) * 10)) }
+        let fade = 1 - smooth((t - 0.9) / 0.6), h = 420 * easeOut(t / 0.3)
+        o.e(fx, fy - 420 + h / 2, h / 2 + 1, 20 * fade + 0.4, -1.5708, P.body, 0.6 * fade)
+        o.e(fx, fy - 420 + h / 2, h / 2 + 1, 6.0, -1.5708, P.light, 0.9 * fade)
+        let r = 30 + 90 * easeOut(t / 0.5)
+        o.r(fx, fy - 2, r, r * 0.28, 3.0 * max(0.0, 1 - t / 1.2) + 0.8, P.mid, 0.9 * (1 - easeIn(t / 1.4)))
+        for q in 0..<4 { let a0 = t * 2 + Double(q) * 1.5708; o.arc(fx, fy - 2, r * 1.2, r * 0.34, a0, a0 + 0.9, 2.4, P.a2, 0.8 * (1 - easeIn(t / 1.4))) }
+        for i in 0..<20 {
+            let a = frac(i, 1) * 6.2832
+            if t < 0.35 {
+                let e = smooth(t / 0.35), rr = 120 * (1 - e)
+                o.g(cx + cos(a) * rr, cy + sin(a) * rr * 0.7, 6, 6, P.a2, 0.9 * e)
+            } else {
+                let u = (t - 0.35) / 0.9
+                if u < 1 { o.e(cx + cos(a) * 90 * easeOut(u), cy + sin(a) * 50 * easeOut(u) - 60 * u, 10, 1.6, a, P.light, 1 - u) }
+            }
         }
+        o.g(cx, cy, 70, 90, P.body, 0.4 * smooth((t - 0.3) / 0.1) * (1 - smooth((t - 1.0) / 0.6)))
         return o.prims
     }
 

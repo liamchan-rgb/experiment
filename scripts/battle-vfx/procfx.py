@@ -1782,10 +1782,19 @@ def shield_shell(t, geo, ti=0):
         for j in range(8):
             a = ha + (frac(j, 3) - .5) * 1.6; r = (20 + 90 * frac(j, 4)) * ease_out(k / .3)
             out.append(('e', hx + math.cos(a) * r, hy + math.sin(a) * r, 10, 1.6, a, P['light'], max(0.0, 1 - k / .45)))
-    if L < .45:                                                              # nearly spent: cracks run across it
-        for q in range(3):
-            ac = frac(q + 3 * ti, 2) * 6.2832
-            out.append(('e', cx + math.cos(ac) * RX * .9, ccy + math.sin(ac) * RY * .9, 14, 1.2, ac + 1.5708, P['light'], .7 * A * (.5 + .5 * math.sin(t * 11 + q))))
+    if L < .45:                                                              # nearly spent: the shell flickers warm and cracks run across it, chips fall off
+        warn = min(1.0, (.45 - L) / .25)
+        out.append(('r', cx, ccy, RX, RY, 4.5, (255, 170, 90), .9 * A * warn * (.5 + .5 * math.sin(t * 19))))
+        for q in range(8):
+            ac = frac(q + 3 * ti, 2) * 6.2832 + q * .4; sx = cx + math.cos(ac) * RX; sy = ccy + math.sin(ac) * RY; pts = []; ws = []
+            for j in range(5):
+                u = j / 4.0; jit = (frac(q * 7 + j, 3) - .5) * 16 * (1.0 if j > 0 else 0.0)
+                pts.append((sx - math.cos(ac) * RX * .6 * u - math.sin(ac) * jit, sy - math.sin(ac) * RY * .6 * u + math.cos(ac) * jit)); ws.append(3.4 * (1 - u) + .8)
+            al = A * (.75 + .25 * math.sin(t * 13 + q))
+            out.append(('k', pts, [w * 2.4 for w in ws], P['mid'], .35 * al, 'add', 1.2)); out.append(('k', pts, ws, P['light'], al, 'add', 1.2))
+        for q in range(4):
+            ac = frac(q + 9, 4) * 6.2832; u = (t * 1.3 + frac(q, 4)) % 1.0
+            out.append(('e', cx + math.cos(ac) * RX, ccy + math.sin(ac) * RY + u * 60, 6, 2.0, u * 6, P['light'], (1 - u) * .8 * A))
     return out
 
 
@@ -1961,15 +1970,45 @@ def player_down(t, geo, ti=0):
 
 
 def down_aura(t, geo, ti=0):
-    """A fallen hero waits for a revival: a pale light and a few motes rise slowly; `t` is the time since the fall."""
+    """A fallen hero is hidden; in their place a soul crystal floats over a sigil, with a beam above it, until a revival. `t`: time since the fall."""
     out = []; P = PAL['gold']; (chest, foot) = geo['targets'][ti]; fx, fy = foot; t = max(0.0, t)
-    A = smooth(t / .6)
-    out.append(('g', fx, fy - 4, 60, 14, P['body'], .18 * A))
-    out.append(('r', fx, fy - 2, 44 + 4 * math.sin(t * 2), (44 + 4 * math.sin(t * 2)) * .28, 1.4, P['mid'], (.35 + .15 * math.sin(t * 2)) * A))
-    out.append(('e', fx, fy - 90, 90, 3.0, -1.5708, P['light'], (.22 + .08 * math.sin(t * 1.5)) * A))
-    for q in range(7):
-        ph = frac(q + 5 * ti, 1); u = (t * .25 + ph) % 1.0
-        out.append(('g', fx + math.sin(ph * 6.2832 + t * .6) * 34, fy - 12 - u * 150, 6, 6, P['a2'], .7 * math.sin(math.pi * u) * A))
+    A = smooth((t - .3) / .6); bob = math.sin(t * 2) * 4; cy = fy - 70 + bob
+    out.append(('g', fx, fy - 4, 70, 16, P['body'], .3 * A))
+    out.append(('r', fx, fy - 2, 46, 13, 2.2, P['mid'], .7 * A)); out.append(('r', fx, fy - 2, 32, 9, 1.2, P['light'], .6 * A))
+    for q in range(3):
+        a0 = t * .8 + q * 2.094; out.append(('a', fx, fy - 2, 56, 16, a0, a0 + 1.0, 2.2, P['a2'], .7 * A))
+    out.append(('e', fx, fy - 160, 160, 4.0, -1.5708, P['light'], .35 * A * (.7 + .3 * math.sin(t * 1.5))))
+    out.append(('g', fx, cy, 40, 50, P['body'], .45 * A * (.8 + .2 * math.sin(t * 3))))
+    ys = (-28, -12, 0, 12, 28); wd = (.5, 16, 22, 16, .5)
+    out.append(('k', [(fx, cy + y) for y in ys], list(wd), P['mid'], .85 * A, 'add', 1.4))
+    out.append(('k', [(fx, cy + y) for y in ys], [w * .45 for w in wd], P['light'], .9 * A, 'add', 1.2))
+    for q in range(5):
+        a = t * 2 + q * 1.2566; out.append(('g', fx + math.cos(a) * 30, cy + math.sin(a) * 10, 5, 5, P['a2'], .8 * A))
+    return out
+
+
+# ------------------------------------------------------------------ revive: a beam comes down, the light gathers into the body, the hero returns
+SPEC.update({'revive': (1.8, .3, True)})
+DIM.update({'revive': (0.0, (1.0, 1.0, 1.0))})
+
+
+def revive(t, geo, ti=0):
+    out = []; P = PAL['gold']; (chest, foot) = geo['targets'][ti]; fx, fy = foot; cx, cy = chest
+    if ti == 0 and .28 <= t < .9: out.append(('f', P['light'], .45 * math.exp(-max(0.0, t - .3) * 10)))
+    fade = 1 - smooth((t - .9) / .6); h = 420 * ease_out(t / .3)
+    out.append(('e', fx, fy - 420 + h / 2, h / 2 + 1, 20 * fade + .4, -1.5708, P['body'], .6 * fade))
+    out.append(('e', fx, fy - 420 + h / 2, h / 2 + 1, 6.0, -1.5708, P['light'], .9 * fade))
+    r = 30 + 90 * ease_out(t / .5); out.append(('r', fx, fy - 2, r, r * .28, 3.0 * max(0.0, 1 - t / 1.2) + .8, P['mid'], .9 * (1 - ease_in(t / 1.4))))
+    for q in range(4):
+        a0 = t * 2 + q * 1.5708; out.append(('a', fx, fy - 2, r * 1.2, r * .34, a0, a0 + .9, 2.4, P['a2'], .8 * (1 - ease_in(t / 1.4))))
+    for i in range(20):
+        a = frac(i, 1) * 6.2832
+        if t < .35:
+            e = smooth(t / .35); rr = 120 * (1 - e); out.append(('g', cx + math.cos(a) * rr, cy + math.sin(a) * rr * .7, 6, 6, P['a2'], .9 * e))
+        else:
+            u = (t - .35) / .9
+            if u < 1: out.append(('e', cx + math.cos(a) * 90 * ease_out(u), cy + math.sin(a) * 50 * ease_out(u) - 60 * u, 10, 1.6, a, P['light'], 1 - u))
+    out.append(('g', cx, cy, 70, 90, P['body'], .4 * smooth((t - .3) / .1) * (1 - smooth((t - 1.0) / .6))))
     return out
 
 
@@ -1984,7 +2023,7 @@ def multi(fn):
 
 _SINGLE = {'starlightPulse': starlight, 'dragonSoulWard': soul, 'dragonScaleWard': scale_ward, 'runeSlash': rune_slash, 'runeWard': rune_ward,
            'battleRune': battle_rune, 'dragonFlame': dragon_flame, 'dragonOrder': dragon_order,
-           'healMicro': heal_micro, 'healStandard': heal_standard, 'healStrong': heal_strong, 'rally': rally_call, 'sweep': sweep_arc, 'natural20': natural20, 'shieldDome': shield_dome, 'shieldBreak': shield_break, 'playerDown': player_down, 'downAura': down_aura,
+           'healMicro': heal_micro, 'healStandard': heal_standard, 'healStrong': heal_strong, 'rally': rally_call, 'sweep': sweep_arc, 'natural20': natural20, 'shieldDome': shield_dome, 'shieldBreak': shield_break, 'playerDown': player_down, 'downAura': down_aura, 'revive': revive,
            **{k: (lambda t, geo, ti=0, k=k: death_effect(k, t, geo, ti)) for k in DEATHS}, 'shieldShell': shield_shell,
            'shieldShellHit': lambda t, geo, ti=0: shield_shell(t, dict(geo, hit_age=t * .5, hit_angle=.4, power=.3), ti),
            **{k: (lambda t, geo, ti=0, k=k: hit_effect(k, t, geo, ti)) for k in HITS},

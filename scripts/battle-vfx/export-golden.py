@@ -7,7 +7,7 @@ import procfx
 
 GEO = dict(caster=(140.0, 330.0), casterFoot=(140.0, 400.0), targets=[((520.0, 300.0), (520.0, 400.0)), ((300.0, 310.0), (300.0, 400.0))], ground=400.0)
 TIMES = [0.07, 0.2, 0.37, 0.55, 0.8, 1.1, 1.45, 1.9]
-SKILLS = ['starlightPulse', 'dragonSoulWard', 'dragonScaleWard', 'runeSlash', 'runeWard', 'battleRune', 'dragonFlame', 'dragonOrder', 'healMicro', 'healStandard', 'healStrong', 'rally', 'sweep', 'natural20', 'shieldDome', 'hitBlade', 'hitGreat', 'hitBow', 'hitStaff', 'hitClaw', 'hitAmbush', 'hitWard', 'shieldBreak', 'deathBurst', 'projBow', 'projStaff', 'projArcher', 'projDragon', 'shieldShell', 'shieldShellHit', 'hitSlime', 'hitWolf', 'hitArrowM', 'hitStone', 'hitTroll', 'hitDragon', 'deathSlime', 'deathWolf', 'deathGoblin', 'deathStone', 'deathTroll', 'deathDragon', 'playerDown', 'downAura']
+SKILLS = ['starlightPulse', 'dragonSoulWard', 'dragonScaleWard', 'runeSlash', 'runeWard', 'battleRune', 'dragonFlame', 'dragonOrder', 'healMicro', 'healStandard', 'healStrong', 'rally', 'sweep', 'natural20', 'shieldDome', 'hitBlade', 'hitGreat', 'hitBow', 'hitStaff', 'hitClaw', 'hitAmbush', 'hitWard', 'shieldBreak', 'deathBurst', 'projBow', 'projStaff', 'projArcher', 'projDragon', 'shieldShell', 'shieldShellHit', 'hitSlime', 'hitWolf', 'hitArrowM', 'hitStone', 'hitTroll', 'hitDragon', 'deathSlime', 'deathWolf', 'deathGoblin', 'deathStone', 'deathTroll', 'deathDragon', 'playerDown', 'downAura', 'revive']
 
 
 def flat(p):
