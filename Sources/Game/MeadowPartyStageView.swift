@@ -14,7 +14,9 @@ final class MeadowPartyStageView:UIView {
     private let afterimages=(0..<3).map { _ in UIImageView() }
     private var monsters:[String:UIImageView]=[:],winds:[String:UIImageView]=[:]
     private var shadows:[String:MeadowBattleGroundingView]=[:]
+    /// The old sprite shield (`MeadowBattleAttachedSkillsView`) is gone from the party stage: shields are procedural shells (`MeadowSkillProcedural.shieldShell`).
     private var attached:[String:MeadowBattleAttachedSkillsView]=[:]
+    private var contactAngle:[String:Double]=[:]
     private var labels:[String:MeadowBattleVitalsView]=[:]
     private var monsterFlash:[String:UIImageView]=[:]
     private let diceView=MeadowBattleDiceView()
@@ -80,14 +82,12 @@ final class MeadowPartyStageView:UIView {
         let shadow:MeadowBattleGroundingView
         if id.hasPrefix("p") {
             let actor=MeadowBattleActorView(frame:.zero);actors[id]=actor;world.addSubview(actor)
-            let skills=MeadowBattleAttachedSkillsView(frame:.zero);actor.addSubview(skills);attached[id]=skills
             shadow=MeadowBattleGroundingView(image:actor.silhouette,soleY:214,contacts:[])
             actor.addGestureRecognizer(UITapGestureRecognizer(target:self,action:#selector(tapped(_:))));actor.accessibilityIdentifier=id
         } else {
             let image=UIImage(named:"MeadowBattleForestWarden")
             let view=UIImageView(image:image);monsters[id]=view;view.isUserInteractionEnabled=true;view.layer.magnificationFilter = .nearest
             let flash=UIImageView();flash.isUserInteractionEnabled=false;flash.layer.magnificationFilter = .nearest;monsterFlash[id]=flash;world.addSubview(flash)
-            let skills=MeadowBattleAttachedSkillsView(frame:.zero);attached[id]=skills;world.addSubview(skills)
             world.addSubview(view);view.accessibilityIdentifier=id;view.addGestureRecognizer(UITapGestureRecognizer(target:self,action:#selector(tapped(_:))))
             let wind=UIImageView();wind.layer.magnificationFilter = .nearest;wind.layer.zPosition=950;winds[id]=wind;world.addSubview(wind)
             shadow=MeadowBattleGroundingView(image:image,soleY:240,contacts:[.init(point:CGPoint(x:84,y:240),radius:15),.init(point:CGPoint(x:172,y:240),radius:15),.init(point:CGPoint(x:230,y:240),radius:15),.init(point:CGPoint(x:314,y:240),radius:15)])
@@ -106,7 +106,7 @@ final class MeadowPartyStageView:UIView {
     }
     required init?(coder:NSCoder) { fatalError("init(coder:) has not been implemented") }
     @objc private func tapped(_ r:UITapGestureRecognizer) { if !isPlaying,let id=r.view?.accessibilityIdentifier { onChoose?(id) } }
-    func start() { MeadowBattleVFXAssets.prewarm();victoryAt=nil;sceneTime=0;recovery=[:];recoveryTier=[:];formation=[:];birth=[:];contact=[:];broken=[:];deaths=[:];hurt=[:];hitFeel=[:];kickFeel=nil;messages=[];emissions=[];skillVFX=[];procVFX=[];pendingStatusCues=[];statusSnapshots=[:];poseKeys=[:];fallen=[:];diceAction=nil;diceConfirmedAt=nil;diceView.confirmationAge=nil;diceView.dice=[];diceSettledAt=nil;diceExitAt=nil;dimFrom=0;dimTarget=0;clock.start() }
+    func start() { MeadowBattleVFXAssets.prewarm();victoryAt=nil;sceneTime=0;recovery=[:];recoveryTier=[:];formation=[:];birth=[:];contact=[:];contactAngle=[:];broken=[:];deaths=[:];hurt=[:];hitFeel=[:];kickFeel=nil;messages=[];emissions=[];skillVFX=[];procVFX=[];pendingStatusCues=[];statusSnapshots=[:];poseKeys=[:];fallen=[:];diceAction=nil;diceConfirmedAt=nil;diceView.confirmationAge=nil;diceView.dice=[];diceSettledAt=nil;diceExitAt=nil;dimFrom=0;dimTarget=0;clock.start() }
     func stop() { MeadowMonsterFrames.retain([]);clock.stop();intent=nil;impact=nil;completion=nil;focus=nil;skillVFX=[];procVFX=[];pendingStatusCues=[];statusSnapshots=[:] }
     func displayedVitals(for unitID:String,health:Int,shield:Int)->(health:Int,shield:Int) { statusSnapshots[unitID] ?? (health,shield) }
     func show(_ value:GameState,friend:String,foe:String,current:String?,catalog:GameCatalog) {
@@ -305,6 +305,7 @@ final class MeadowPartyStageView:UIView {
             }
             if absorbed>0 {
                 contact[id]=sceneTime
+                do { let templates=receipt.before.units.mapValues(\.templateID),from=PartyVisual.skillEffectCenter(targets:[intent.actor],actor:intent.actor,templates:templates),at=PartyVisual.skillEffectCenter(targets:[id],actor:intent.actor,templates:templates);contactAngle[id]=atan2(from.y-at.y,from.x-at.x) }
                 if after.shield==0 {
                     broken[id]=sceneTime
                     spawnProc("shieldBreak",intent,target:id,hit:registered,foot:foot,templates:receipt.before.units.mapValues(\.templateID),power:1.0+Double(min(absorbed,12))/12.0*0.5,delay:0)
@@ -485,6 +486,13 @@ final class MeadowPartyStageView:UIView {
             return (foot:base,chest:PartyPoint(base.x+5*PartyVisual.heroScale,base.y-70*PartyVisual.heroScale),tier:tier,age:sceneTime-at)
         }
         fx.procEffects=procVFX;fx.liveFeet=liveFeet
+        fx.shields=state.units.values.filter { renderIDs.contains($0.id) && $0.isAlive }.compactMap { unit in
+            let shield=displayedVitals(for:unit.id,health:unit.health,shield:unit.shield).shield
+            guard shield>0,let baseFoot=PartyVisual.foot(unit.id) else { return nil }
+            let foot=liveFeet[unit.id] ?? baseFoot,baseChest=PartyVisual.skillEffectCenter(targets:[unit.id],actor:unit.id,templates:healTemplates)
+            let monster=unit.kind == .monster,defaultAngle=monster ? Double.pi:0.0
+            return (foot:foot,chest:PartyPoint(foot.x+(baseChest.x-baseFoot.x),foot.y+(baseChest.y-baseFoot.y)),level:min(1.5,max(0.25,Double(shield)/8.0)),age:birth[unit.id].map { sceneTime-$0 } ?? 10,hitAge:contact[unit.id].map { sceneTime-$0 } ?? -1,hitAngle:contactAngle[unit.id] ?? defaultAngle,wide:monster ? 1.35:1.0)
+        }
         if let gpu {
             // Skills are drawn on the GPU; a full-screen flash goes to the pane-wide wash.
             if let flash=gpu.draw(fx.skillPrimitives()) { wash.backgroundColor=UIColor(red:CGFloat(flash.color.r/255),green:CGFloat(flash.color.g/255),blue:CGFloat(flash.color.b/255),alpha:CGFloat(min(1,flash.alpha*0.85))) }
@@ -613,11 +621,22 @@ private final class MeadowPartyEffectsView:UIView {
     var liveFeet:[String:PartyPoint]=[:]
     /// Reports the strongest full-screen flash of this frame (or nil) to the stage, which shows it on a pane-wide overlay.
     var onFlash:((UIColor?)->Void)?
+    /// Every standing shield: where the unit is, how full it is, how old it is, and when/where it last blocked a blow.
+    var shields:[(foot:PartyPoint,chest:PartyPoint,level:Double,age:Double,hitAge:Double,hitAngle:Double,wide:Double)]=[]
     /// True when the GPU view draws the procedural skills and healing; this layer then leaves them out.
     var gpuDrawsSkills=false
     /// Everything the procedural skills draw this frame (soft light first, then the shapes), for the GPU.
-    func skillPrimitives()->[MeadowSkillProcedural.Prim] {
+    func shieldPrimitives()->[MeadowSkillProcedural.Prim] {
         var all:[MeadowSkillProcedural.Prim]=[]
+        for sh in shields {
+            var geo=MeadowSkillProcedural.Geometry(caster:.init(sh.chest.x,sh.chest.y),casterFoot:.init(sh.foot.x,sh.foot.y),targets:[.init(chest:.init(sh.chest.x,sh.chest.y),foot:.init(sh.foot.x,sh.foot.y))],ground:sh.foot.y)
+            geo.power=sh.level;geo.hitAge=sh.hitAge;geo.hitAngle=sh.hitAngle;geo.wide=sh.wide
+            all += MeadowSkillProcedural.shieldShell(sh.age,geo,0)
+        }
+        return all
+    }
+    func skillPrimitives()->[MeadowSkillProcedural.Prim] {
+        var all=shieldPrimitives()
         for r in monsterRecoveries+allyRecoveries { all += MeadowSkillProceduralDrawing.healPrims(r.tier,age:r.age,foot:r.foot,chest:r.chest) }
         for e in procEffects {
             let t=time-e.start
@@ -862,6 +881,7 @@ private final class MeadowPartyEffectsView:UIView {
             }
         }
         // Continuous procedural skills (MeadowSkillProcedural): ambient light first, then the effect itself.
+        if !gpuDrawsSkills { MeadowSkillProceduralPainter.draw(shieldPrimitives(),in:ctx,bounds:bounds) }
         var flashColor:UIColor?=nil,flashAlpha=0.0
         for e in procEffects where !gpuDrawsSkills {
             let t=time-e.start

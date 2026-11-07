@@ -10,7 +10,9 @@ enum MeadowSkillProcedural {
     struct RGB: Equatable { let r: Double, g: Double, b: Double; init(_ r: Double, _ g: Double, _ b: Double) { self.r = r; self.g = g; self.b = b } }
     struct Pt: Equatable { var x: Double, y: Double; init(_ x: Double, _ y: Double) { self.x = x; self.y = y } }
     struct Target: Equatable { var chest: Pt, foot: Pt }
-    struct Geometry: Equatable { var caster: Pt, casterFoot: Pt, targets: [Target], ground: Double; var power = 1.0 }
+    struct Geometry: Equatable { var caster: Pt, casterFoot: Pt, targets: [Target], ground: Double; var power = 1.0
+        /// For the standing shield shell: seconds since it last blocked a blow (negative: none), where on the shell that blow landed, and the body-width factor.
+        var hitAge = -1.0, hitAngle = 0.0, wide = 1.0 }
 
     enum Prim: Equatable {
         case glow(x: Double, y: Double, rx: Double, ry: Double, c: RGB, a: Double)
@@ -26,7 +28,7 @@ enum MeadowSkillProcedural {
     struct Info { let duration: Double, release: Double, dim: Double, dimTint: RGB, support: Bool }
     static let skillIDs = ["starlightPulse", "dragonSoulWard", "dragonScaleWard", "runeSlash", "runeWard", "battleRune", "dragonFlame", "dragonOrder",
                            "healMicro", "healStandard", "healStrong", "rally", "sweep",
-                           "shieldBreak", "deathBurst", "projBow", "projStaff", "projArcher", "projDragon",
+                           "shieldShell", "shieldShellHit", "shieldBreak", "deathBurst", "projBow", "projStaff", "projArcher", "projDragon",
                            "natural20", "shieldDome", "hitBlade", "hitGreat", "hitBow", "hitStaff", "hitClaw", "hitAmbush", "hitWard"]
     static let info: [String: Info] = [
         "starlightPulse": Info(duration: 1.6, release: 0.75, dim: 0.34, dimTint: RGB(0.80, 0.76, 1.0), support: false),
@@ -44,6 +46,8 @@ enum MeadowSkillProcedural {
         "sweep": Info(duration: 2.0, release: 1.048, dim: 0.26, dimTint: RGB(0.82, 0.9, 1.0), support: false),
         "natural20": Info(duration: 2.8, release: 0.05, dim: 0.5, dimTint: RGB(1.0, 0.92, 0.7), support: false),
         "shieldDome": Info(duration: 1.9, release: 0.46, dim: 0.26, dimTint: RGB(0.8, 0.92, 1.0), support: true),
+        "shieldShell": Info(duration: 3.0, release: 0.5, dim: 0.0, dimTint: RGB(1, 1, 1), support: true),
+        "shieldShellHit": Info(duration: 3.0, release: 0.5, dim: 0.0, dimTint: RGB(1, 1, 1), support: true),
         "shieldBreak": Info(duration: 1.2, release: 0.03, dim: 0.0, dimTint: RGB(1, 1, 1), support: false),
         "deathBurst": Info(duration: 1.8, release: 0.04, dim: 0.0, dimTint: RGB(1, 1, 1), support: false),
         "projBow": projInfo(0.0, 0.19), "projStaff": projInfo(0.49, 0.21), "projArcher": projInfo(0.0, 0.22), "projDragon": projInfo(0.0, 0.22),
@@ -51,7 +55,7 @@ enum MeadowSkillProcedural {
     ]
     private static func projInfo(_ charge: Double, _ flight: Double) -> Info { Info(duration: charge + flight + 0.35, release: charge + flight, dim: 0.0, dimTint: RGB(1, 1, 1), support: false) }
     /// Effects that belong to a single blow or flight: no dim, no wash, no soft ambient light, no lens work of their own.
-    static func isBlow(_ id: String) -> Bool { id.hasPrefix("hit") || id.hasPrefix("proj") || id == "deathBurst" || id == "shieldBreak" }
+    static func isBlow(_ id: String) -> Bool { id.hasPrefix("hit") || id.hasPrefix("proj") || id.hasPrefix("shieldShell") || id == "deathBurst" || id == "shieldBreak" }
     private static let hitInfo = Info(duration: 1.1, release: 0.05, dim: 0.0, dimTint: RGB(1, 1, 1), support: false)
     /// The procedural skill that draws a party action, if any (the two shield actions and the ally support share the shield dome).
     static func procID(for action: String) -> String? {
@@ -73,7 +77,7 @@ enum MeadowSkillProcedural {
         case "natural20": return Pal.gold.mid
         case "shieldDome", "hitWard": return Pal.ward.mid
         case "deathBurst": return Pal.dust.mid
-        case "shieldBreak": return Pal.ward.mid
+        case "shieldBreak", "shieldShell", "shieldShellHit": return Pal.ward.mid
         case "projBow": return Pal.bow.mid
         case "projStaff": return Pal.staff.mid
         case "projArcher": return Pal.claw.mid
@@ -241,6 +245,8 @@ enum MeadowSkillProcedural {
             case "hitBlade", "hitGreat", "hitBow", "hitStaff", "hitClaw", "hitAmbush", "hitWard": all += hitEffect(id, t, geo, ti)
             case "projBow", "projStaff", "projArcher", "projDragon": all += projectile(id, t, geo, ti)
             case "shieldBreak": all += shieldBreak(t, geo, ti)
+            case "shieldShell": all += shieldShell(t, geo, ti)
+            case "shieldShellHit": var g = geo; g.hitAge = t * 0.5; g.hitAngle = 0.4; g.power = 0.3; all += shieldShell(t, g, ti)
             case "deathBurst": all += deathBurst(t, geo, ti)
             default: return []
             }
@@ -1147,7 +1153,7 @@ enum MeadowSkillProcedural {
     static func shieldDome(_ t: Double, _ geo: Geometry, _ ti: Int) -> [Prim] {
         var o = Out(); let P = Pal.ward, chest = geo.targets[ti].chest, foot = geo.targets[ti].foot, imp = 0.46
         let fx = foot.x, fy = foot.y, cx = chest.x, cy = chest.y
-        let gr = smooth(t / 0.25) * (1 - smooth((t - 1.5) / 0.3))
+        let gr = smooth(t / 0.25) * (1 - smooth((t - 1.2) / 0.3))
         o.g(fx, fy - 2, 90 * gr + 4, 24 * gr + 2, P.body, 0.45 * gr)
         let ringCols = [P.mid, P.light, P.a2], scales = [1.0, 0.72, 0.45]
         for ri in 0..<3 {
@@ -1155,19 +1161,62 @@ enum MeadowSkillProcedural {
             o.r(fx, fy - 2, 70 * scales[ri] * e, 70 * scales[ri] * 0.28 * e, 2.2 - 0.5 * Double(ri), ringCols[ri], 0.8 * gr)
         }
         if t >= imp - 0.05 {
-            let e = easeOut((t - imp + 0.05) / 0.35), env = e * (1 - smooth((t - 1.5) / 0.3))
-            o.g(cx, cy, 90 * e + 2, 120 * e + 2, P.body, 0.3 * env)
-            o.r(cx, cy, 64 * e + 1, 94 * e + 1, 3.0, P.mid, 0.9 * env); o.r(cx, cy, 58 * e + 1, 88 * e + 1, 1.2, P.light, 0.7 * env)
-            for q in 0..<6 {
-                let a0 = t * 1.6 + Double(q) * 1.0472
-                o.arc(cx, cy, 64 * e + 1, 94 * e + 1, a0, a0 + 0.62, 4.0, P.light, 0.85 * env * (0.6 + 0.4 * sin(t * 5 + Double(q))))
-            }
-            o.r(cx, cy, 64 * e + 1, 22 * e + 1, 1.4, P.a2, 0.55 * env, 0.35 * sin(t))
-            o.r(cx, cy, 64 * e + 1, 22 * e + 1, 1.4, P.a2, 0.55 * env, -0.35 * sin(t * 1.3))
+            let env = smooth((t - imp + 0.05) / 0.2) * (1 - smooth((t - 1.2) / 0.3))
             if ti == 0 && t >= imp - 0.05 && t < imp + 0.2 { o.f(P.mid, 0.14 * (1 - (t - imp + 0.05) / 0.25)) }
             for q in 0..<10 {
                 let ph = frac(q + 20 * ti, 1), a = ph * 6.2832 + t * 1.5, uu = pm(t * 0.6 + ph, 1.0)
-                o.e(cx + cos(a) * 60 * e, cy + 80 - uu * 170, 8, 1.4, -1.5708, P.light, env * sin(Double.pi * uu))
+                o.e(cx + cos(a) * 60, cy + 80 - uu * 170, 8, 1.4, -1.5708, P.light, env * sin(Double.pi * uu))
+            }
+        }
+        return o.prims
+    }
+
+    // MARK: the shield itself (one shell that is generated, stands, blocks and breaks)
+
+    static func shieldShell(_ t0: Double, _ geo: Geometry, _ ti: Int) -> [Prim] {
+        var o = Out(); let P = Pal.ward, cx = geo.targets[ti].chest.x, cy = geo.targets[ti].chest.y, fx = geo.targets[ti].foot.x, fy = geo.targets[ti].foot.y
+        let L = min(1.6, max(0.2, geo.power)), hitAge = geo.hitAge, ha = geo.hitAngle, t = max(0.0, t0)
+        let ry0 = max(70.0, (fy - cy) * 1.55), rx0 = ry0 * 0.72 * geo.wide, ccy = fy - ry0 * 0.92
+        let g = easeOut(t / 0.5), over = 1 + 0.1 * sin(min(1.0, t / 0.5) * Double.pi), sc = (0.25 + 0.75 * g) * over
+        let RX = rx0 * sc, RY = ry0 * sc
+        let A = smooth(t / 0.25) * (0.55 + 0.45 * min(1.0, L)), flick = L >= 0.4 ? 1.0 : 0.75 + 0.25 * sin(t * 23)
+        o.g(cx, ccy, RX * 1.25, RY * 1.2, P.body, 0.24 * A)
+        o.r(cx, ccy, RX, RY, 2.8, P.mid, 1.0 * A * flick); o.r(cx, ccy, RX * 0.94, RY * 0.94, 1.1, P.light, 0.6 * A)
+        for q in 0..<4 {
+            let a0 = t * 0.9 + Double(q) * 1.5708
+            o.arc(cx, ccy, RX, RY, a0, a0 + 0.5, 3.4, P.light, 0.8 * A * (0.6 + 0.4 * sin(t * 3 + Double(q))))
+        }
+        o.r(cx, ccy, RX, RY * 0.3, 1.2, P.a2, 0.45 * A, 0.3 * sin(t * 0.7))
+        for q in 0..<6 {
+            let ph = frac(q + 8 * ti, 1), uu = pm(t * 0.4 + ph, 1.0)
+            o.e(cx + cos(ph * 6.2832 + t * 0.8) * RX * 0.8, ccy + RY * 0.7 - uu * RY * 1.4, 8, 1.3, -1.5708, P.light, A * 0.8 * sin(Double.pi * uu))
+        }
+        o.r(fx, fy - 2, RX * 0.9, RX * 0.9 * 0.26, 1.6, P.mid, 0.5 * A); o.g(fx, fy - 2, RX, 16, P.body, 0.25 * A)
+        if t < 0.7 {
+            let u = t / 0.7
+            o.r(cx, ccy, RX * (1 + 0.5 * u), RY * (1 + 0.5 * u), 3.0 * (1 - u) + 0.5, P.light, 0.8 * (1 - u))
+            for q in 0..<10 {
+                let ph = frac(q + 8 * ti, 2), a = ph * 6.2832
+                o.e(cx + cos(a) * RX * 0.95, ccy + sin(a) * RY * 0.95 - u * 50, 9, 1.4, -1.5708, P.light, (1 - u) * 0.9)
+            }
+        }
+        if hitAge >= 0 && hitAge < 0.7 {
+            let k = hitAge, hx = cx + cos(ha) * RX, hy = ccy + sin(ha) * RY
+            o.g(hx, hy, 50 * (1 - 0.4 * easeOut(k / 0.4)), 50 * (1 - 0.4 * easeOut(k / 0.4)), P.light, 0.9 * (1 - easeIn(k / 0.35)))
+            for w in 0..<3 {
+                let sp = 0.3 + 1.4 * easeOut((k - 0.05 * Double(w)) / 0.5)
+                o.arc(cx, ccy, RX * (1 + 0.03 * Double(w)), RY * (1 + 0.03 * Double(w)), ha - sp, ha + sp, 3.0 * (1 - k / 0.6) + 0.8, P.mid, 0.9 * (1 - easeIn((k - 0.05 * Double(w)) / 0.55)))
+            }
+            o.r(cx, ccy, RX, RY, 5.0, P.light, 0.6 * (1 - easeIn(k / 0.3)))
+            for j in 0..<8 {
+                let a = ha + (frac(j, 3) - 0.5) * 1.6, r = (20 + 90 * frac(j, 4)) * easeOut(k / 0.3)
+                o.e(hx + cos(a) * r, hy + sin(a) * r, 10, 1.6, a, P.light, max(0.0, 1 - k / 0.45))
+            }
+        }
+        if L < 0.45 {
+            for q in 0..<3 {
+                let ac = frac(q + 3 * ti, 2) * 6.2832
+                o.e(cx + cos(ac) * RX * 0.9, ccy + sin(ac) * RY * 0.9, 14, 1.2, ac + 1.5708, P.light, 0.7 * A * (0.5 + 0.5 * sin(t * 11 + Double(q))))
             }
         }
         return o.prims

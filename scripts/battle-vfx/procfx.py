@@ -1671,23 +1671,66 @@ def natural20(t, geo, ti=0):
 
 # ------------------------------------------------------------------ shield dome: a shell of light closes around the unit
 def shield_dome(t, geo, ti=0):
+    """The casting of a shield: light gathers on the ground under the unit and is released as a flash and rising sparks. The shell itself
+    (generation, standing, blocking, breaking) is `shield_shell`, driven by the unit's real shield."""
     out = []; P = PAL['ward']; (chest, foot) = geo['targets'][ti]; fx, fy = foot; cx, cy = chest; imp = .46
-    gr = smooth(t / .25) * (1 - smooth((t - 1.5) / .3))
+    gr = smooth(t / .25) * (1 - smooth((t - 1.2) / .3))
     out.append(('g', fx, fy - 2, 90 * gr + 4, 24 * gr + 2, P['body'], .45 * gr))
     for ri, sc in enumerate((1.0, .72, .45)):
         e = .4 + .6 * ease_out(t / .4); out.append(('r', fx, fy - 2, 70 * sc * e, 70 * sc * .28 * e, 2.2 - .5 * ri, (P['mid'], P['light'], P['a2'])[ri], .8 * gr))
     if t >= imp - .05:
-        e = ease_out((t - imp + .05) / .35); env = e * (1 - smooth((t - 1.5) / .3))
-        out.append(('g', cx, cy, 90 * e + 2, 120 * e + 2, P['body'], .3 * env))
-        out.append(('r', cx, cy, 64 * e + 1, 94 * e + 1, 3.0, P['mid'], .9 * env)); out.append(('r', cx, cy, 58 * e + 1, 88 * e + 1, 1.2, P['light'], .7 * env))
-        for q in range(6):
-            a0 = t * 1.6 + q * 1.0472; out.append(('a', cx, cy, 64 * e + 1, 94 * e + 1, a0, a0 + .62, 4.0, P['light'], .85 * env * (.6 + .4 * math.sin(t * 5 + q))))
-        out.append(('r', cx, cy, 64 * e + 1, 22 * e + 1, 1.4, P['a2'], .55 * env, .35 * math.sin(t)))
-        out.append(('r', cx, cy, 64 * e + 1, 22 * e + 1, 1.4, P['a2'], .55 * env, -.35 * math.sin(t * 1.3)))
+        env = smooth((t - imp + .05) / .2) * (1 - smooth((t - 1.2) / .3))
         if ti == 0 and imp - .05 <= t < imp + .2: out.append(('f', P['mid'], .14 * (1 - (t - imp + .05) / .25)))
         for q in range(10):
             ph = frac(q + 20 * ti, 1); a = ph * 6.2832 + t * 1.5; uu = (t * .6 + ph) % 1.0
-            out.append(('e', cx + math.cos(a) * 60 * e, cy + 80 - uu * 170, 8, 1.4, -1.5708, P['light'], env * math.sin(math.pi * uu)))
+            out.append(('e', cx + math.cos(a) * 60, cy + 80 - uu * 170, 8, 1.4, -1.5708, P['light'], env * math.sin(math.pi * uu)))
+    return out
+
+
+# ------------------------------------------------------------------ the shield itself: one shell that is generated, stands, blocks and breaks
+SPEC.update({'shieldShell': (3.0, .5, True), 'shieldShellHit': (3.0, .5, True)})
+DIM.update({'shieldShell': (0.0, (1.0, 1.0, 1.0)), 'shieldShellHit': (0.0, (1.0, 1.0, 1.0))})
+
+
+def shield_shell(t, geo, ti=0):
+    """`t` is the age of the shell (since it was generated; large = standing), geo['power'] the fill (shield / capacity), geo['hit_age'] seconds since
+    it last blocked a blow (negative: none) and geo['hit_angle'] where on the shell that blow landed, geo['wide'] the body width factor."""
+    out = []; P = PAL['ward']; (chest, foot) = geo['targets'][ti]; cx, cy = chest; fx, fy = foot
+    L = min(1.6, max(.2, geo.get('power', 1.0))); hit_age = geo.get('hit_age', -1.0); ha = geo.get('hit_angle', 0.0); wide = geo.get('wide', 1.0)
+    t = max(0.0, t)
+    ry0 = max(70.0, (fy - cy) * 1.55); rx0 = ry0 * .72 * wide; ccy = fy - ry0 * .92
+    g = ease_out(t / .5); over = 1 + .1 * math.sin(min(1.0, t / .5) * math.pi); sc = (.25 + .75 * g) * over
+    RX = rx0 * sc; RY = ry0 * sc
+    A = smooth(t / .25) * (.55 + .45 * min(1.0, L)); flick = 1.0 if L >= .4 else .75 + .25 * math.sin(t * 23)
+    out.append(('g', cx, ccy, RX * 1.25, RY * 1.2, P['body'], .24 * A))
+    out.append(('r', cx, ccy, RX, RY, 2.8, P['mid'], 1.0 * A * flick)); out.append(('r', cx, ccy, RX * .94, RY * .94, 1.1, P['light'], .6 * A))
+    for q in range(4):                                                       # plates that turn slowly round the shell
+        a0 = t * .9 + q * 1.5708; out.append(('a', cx, ccy, RX, RY, a0, a0 + .5, 3.4, P['light'], .8 * A * (.6 + .4 * math.sin(t * 3 + q))))
+    out.append(('r', cx, ccy, RX, RY * .3, 1.2, P['a2'], .45 * A, .3 * math.sin(t * .7)))
+    for q in range(6):                                                       # motes drift up inside
+        ph = frac(q + 8 * ti, 1); uu = (t * .4 + ph) % 1.0
+        out.append(('e', cx + math.cos(ph * 6.2832 + t * .8) * RX * .8, ccy + RY * .7 - uu * RY * 1.4, 8, 1.3, -1.5708, P['light'], A * .8 * math.sin(math.pi * uu)))
+    out.append(('r', fx, fy - 2, RX * .9, RX * .9 * .26, 1.6, P['mid'], .5 * A)); out.append(('g', fx, fy - 2, RX, 16, P['body'], .25 * A))
+    if t < .7:                                                               # generation: a flash ring leaves the shell and sparks climb its sides
+        u = t / .7
+        out.append(('r', cx, ccy, RX * (1 + .5 * u), RY * (1 + .5 * u), 3.0 * (1 - u) + .5, P['light'], .8 * (1 - u)))
+        for q in range(10):
+            ph = frac(q + 8 * ti, 2); a = ph * 6.2832
+            out.append(('e', cx + math.cos(a) * RX * .95, ccy + math.sin(a) * RY * .95 - u * 50, 9, 1.4, -1.5708, P['light'], (1 - u) * .9))
+    if 0 <= hit_age < .7:                                                    # a blow lands on the shell: a flare, ripples spreading from the spot, sparks thrown back
+        k = hit_age; hx = cx + math.cos(ha) * RX; hy = ccy + math.sin(ha) * RY
+        out.append(('g', hx, hy, 50 * (1 - .4 * ease_out(k / .4)), 50 * (1 - .4 * ease_out(k / .4)), P['light'], .9 * (1 - ease_in(k / .35))))
+        for w in range(3):
+            sp = .3 + 1.4 * ease_out((k - .05 * w) / .5)
+            out.append(('a', cx, ccy, RX * (1 + .03 * w), RY * (1 + .03 * w), ha - sp, ha + sp, 3.0 * (1 - k / .6) + .8, P['mid'], .9 * (1 - ease_in((k - .05 * w) / .55))))
+        out.append(('r', cx, ccy, RX, RY, 5.0, P['light'], .6 * (1 - ease_in(k / .3))))
+        for j in range(8):
+            a = ha + (frac(j, 3) - .5) * 1.6; r = (20 + 90 * frac(j, 4)) * ease_out(k / .3)
+            out.append(('e', hx + math.cos(a) * r, hy + math.sin(a) * r, 10, 1.6, a, P['light'], max(0.0, 1 - k / .45)))
+    if L < .45:                                                              # nearly spent: cracks run across it
+        for q in range(3):
+            ac = frac(q + 3 * ti, 2) * 6.2832
+            out.append(('e', cx + math.cos(ac) * RX * .9, ccy + math.sin(ac) * RY * .9, 14, 1.2, ac + 1.5708, P['light'], .7 * A * (.5 + .5 * math.sin(t * 11 + q))))
     return out
 
 
@@ -1806,7 +1849,8 @@ def multi(fn):
 
 _SINGLE = {'starlightPulse': starlight, 'dragonSoulWard': soul, 'dragonScaleWard': scale_ward, 'runeSlash': rune_slash, 'runeWard': rune_ward,
            'battleRune': battle_rune, 'dragonFlame': dragon_flame, 'dragonOrder': dragon_order,
-           'healMicro': heal_micro, 'healStandard': heal_standard, 'healStrong': heal_strong, 'rally': rally_call, 'sweep': sweep_arc, 'natural20': natural20, 'shieldDome': shield_dome, 'shieldBreak': shield_break, 'deathBurst': death_burst,
+           'healMicro': heal_micro, 'healStandard': heal_standard, 'healStrong': heal_strong, 'rally': rally_call, 'sweep': sweep_arc, 'natural20': natural20, 'shieldDome': shield_dome, 'shieldBreak': shield_break, 'deathBurst': death_burst, 'shieldShell': shield_shell,
+           'shieldShellHit': lambda t, geo, ti=0: shield_shell(t, dict(geo, hit_age=t * .5, hit_angle=.4, power=.3), ti),
            **{k: (lambda t, geo, ti=0, k=k: hit_effect(k, t, geo, ti)) for k in HITS},
            **{k: (lambda t, geo, ti=0, k=k: projectile(k, t, geo, ti)) for k in PROJ}}
 # ------------------------------------------------------------------ atmosphere: themed particles over the whole stage
