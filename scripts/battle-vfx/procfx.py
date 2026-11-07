@@ -1256,8 +1256,8 @@ def battle_rune(t, geo, ti=0):
 # ------------------------------------------------------------------ dragon flame: a fire comet falls and the ground keeps burning
 def dragon_flame(t, geo, ti=0):
     out = []; P = PAL['flame']; C = geo['caster']; CF = geo['casterFoot']; T, TF = geo['targets'][ti]; imp = SPEC['dragonFlame'][1]
-    cx, cy = T; post = t - imp; pre = clamp01(t / imp)
-    SX, SY = cx - 170, cy - 330                                              # where the comet comes from
+    cx, cy = T; post = t - imp; pre = clamp01(t / imp); d = 1.0 if cx >= C[0] else -1.0     # a monster's flame comes from the monster's side
+    SX, SY = cx - 170 * d, cy - 330                                              # where the comet comes from
     out.append(('g', SX, SY, 160, 120, P['body'], .22 * smooth(t / .2) * (1 - smooth(post / .3)))); out.append(('g', SX, SY, 70, 60, P['mid'], .25 * smooth(t / .2) * (1 - smooth(post / .3)))) if post < .4 else None
     def path(tt):
         s = ease_in(clamp01(tt / imp)) ** 1.5
@@ -1299,7 +1299,7 @@ def dragon_flame(t, geo, ti=0):
             a = frac(i, 3) * 6.283; r = (40 + 190 * frac(i, 4)) * ease_out(tt / .6); k = 1 - tt / 1.2
             out.append(('e', cx + math.cos(a) * r, cy + 20 + math.sin(a) * r * .4 - 130 * tt * (.4 + frac(i, 5)) + 90 * tt * tt, 9, 1.6, a - 1.2 * tt, (P['a1'], P['mid'], P['a2'])[i % 3], .85 * k * (.6 + .4 * math.sin(tt * 30 + i))))
     if t < imp + .9 and ti == 0:
-        e = smooth((t - .05) / .2) * (1 - smooth((t - imp - .5) / .4)); out.append(('g', C[0] + 26, C[1] - 6, 36, 40, P['mid'], .25 * e))
+        e = smooth((t - .05) / .2) * (1 - smooth((t - imp - .5) / .4)); out.append(('g', C[0] + 26 * d, C[1] - 6, 36, 40, P['mid'], .25 * e))
     return out
 
 

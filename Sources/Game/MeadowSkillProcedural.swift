@@ -642,8 +642,8 @@ enum MeadowSkillProcedural {
 
     static func dragonFlame(_ t: Double, _ geo: Geometry, _ ti: Int) -> [Prim] {
         var o = Out(); let P = Pal.flame, C = geo.caster, T = geo.targets[ti].chest, TF = geo.targets[ti].foot, imp = 0.46
-        let cx = T.x, cy = T.y, post = t - imp
-        let SX = cx - 170, SY = cy - 330
+        let cx = T.x, cy = T.y, post = t - imp, d: Double = cx >= C.x ? 1.0 : -1.0
+        let SX = cx - 170 * d, SY = cy - 330
         o.g(SX, SY, 160, 120, P.body, 0.22 * smooth(t / 0.2) * (1 - smooth(post / 0.3)))
         if post < 0.4 { o.g(SX, SY, 70, 60, P.mid, 0.25 * smooth(t / 0.2) * (1 - smooth(post / 0.3))) }
         func path(_ tt: Double) -> (Double, Double, Double) {
@@ -698,7 +698,7 @@ enum MeadowSkillProcedural {
             }
         }
         if t < imp + 0.9 && ti == 0 {
-            let e = smooth((t - 0.05) / 0.2) * (1 - smooth((t - imp - 0.5) / 0.4)); o.g(C.x + 26, C.y - 6, 36, 40, P.mid, 0.25 * e)
+            let e = smooth((t - 0.05) / 0.2) * (1 - smooth((t - imp - 0.5) / 0.4)); o.g(C.x + 26 * d, C.y - 6, 36, 40, P.mid, 0.25 * e)
         }
         return o.prims
     }
