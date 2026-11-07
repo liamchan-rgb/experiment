@@ -121,7 +121,7 @@ struct BattleProceduralRegression {
             check(M.trauma(skill: id, t: -0.1, power: 1) == 0, "\(id): trauma before the effect")
             var peakTr = 0.0, tt = 0.0
             while tt < info.duration + 0.5 { let v = M.trauma(skill: id, t: tt, power: 1); check(v >= 0 && v <= 1.3 && v.isFinite, "\(id) t=\(tt): trauma \(v)"); peakTr = max(peakTr, v); tt += 1.0 / 60 }
-            let wantsShake = !(id.hasPrefix("hit") || id.hasPrefix("proj") || id.hasPrefix("heal") || id.hasPrefix("shieldShell") || id == "downAura" || id == "shieldDome")
+            let wantsShake = !(id.hasPrefix("hit") || id.hasPrefix("proj") || id.hasPrefix("heal") || id.hasPrefix("shieldShell") || id == "downAura" || id == "buffAura" || id == "shieldDome")
             check(wantsShake ? peakTr > 0.3 : peakTr == 0, "\(id): trauma peak \(peakTr)")
             check(M.trauma(skill: id, t: info.duration + 0.4, power: 1) < 0.05, "\(id): trauma does not die away")
         }

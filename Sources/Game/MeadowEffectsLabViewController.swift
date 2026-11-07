@@ -81,8 +81,8 @@ final class MeadowEffectsLabViewController: UIViewController {
             column.addArrangedSubview(action(name) { [weak self] in self?.offensiveSkill(a, name: name) })
         }
         column.addArrangedSubview(heading("P1 动作 · 增益与护盾"))
-        for (a, name, shield, heal) in [(PartyAction.rally, "振奋", 0, 0), (.dragonSoulWard, "龙魂庇护", 10, 10), (.dragonScaleWard, "龙鳞庇护", 10, 12), (.runeWard, "符文庇护", 6, 8), (.battleRune, "战斗符文", 4, 0), (.dragonOrder, "龙之号令", 8, 6)] {
-            column.addArrangedSubview(action(name) { [weak self] in self?.supportSkill(a, name: name, targets: ["p1", "p2"], shield: shield, heal: heal) })
+        for (a, name, shield, heal, buff) in [(PartyAction.rally, "振奋", 0, 0, 2), (.dragonSoulWard, "龙魂庇护", 10, 10, 3), (.dragonScaleWard, "龙鳞庇护", 10, 12, 2), (.runeWard, "符文庇护", 6, 8, 0), (.battleRune, "战斗符文", 4, 0, 3), (.dragonOrder, "龙之号令", 8, 6, 4)] {
+            column.addArrangedSubview(action(name) { [weak self] in self?.supportSkill(a, name: name, targets: ["p1", "p2"], shield: shield, heal: heal, buff: buff) })
         }
         column.addArrangedSubview(action("简易防护") { [weak self] in self?.supportSkill(.simpleGuard, name: "简易防护", targets: ["p1"], shield: 4) })
         column.addArrangedSubview(action("援护（P1 → P2）") { [weak self] in self?.supportSkill(.support, name: "援护", targets: ["p2"], shield: 4, heal: 6) })
@@ -115,6 +115,10 @@ final class MeadowEffectsLabViewController: UIViewController {
         column.addArrangedSubview(action("护盾见底（剩 2：裂纹、闪烁、掉碎片）") { [weak self] in self?.stage.labSetShield("p1", 2); self?.say("护盾见底") })
         column.addArrangedSubview(action("破碎") { [weak self] in self?.stage.labBreak("p1", from: "m1"); self?.say("护盾破碎") })
 
+        column.addArrangedSubview(heading("单独特效 · 增伤持续"))
+        for (amount, name) in [(2, "增伤 +2（P1、P2）"), (4, "增伤 +4（P1、P2）"), (0, "清除增伤")] {
+            column.addArrangedSubview(action(name) { [weak self] in self?.stage.labSetBuff("p1", amount); self?.stage.labSetBuff("p2", amount); self?.say(name) })
+        }
         column.addArrangedSubview(heading("镜头震动"))
         for (i, name) in ["轻震", "中震", "重震"].enumerated() {
             column.addArrangedSubview(action(name) { [weak self] in self?.stage.labShake(MeadowBattleHitTier(rawValue: i) ?? .medium); self?.say(name) })
@@ -170,13 +174,15 @@ final class MeadowEffectsLabViewController: UIViewController {
         for (i, id) in ["m1", "m2"].enumerated() { stage.labNumber("−\(damage(12))", target: id, kind: .damage, rank: strength, delay: impact + 0.07 * Double(i)) }
     }
 
-    private func supportSkill(_ act: PartyAction, name: String, targets: [String], shield: Int, heal: Int = 6) {
+    private func supportSkill(_ act: PartyAction, name: String, targets: [String], shield: Int, heal: Int = 6, buff: Int = 0) {
         guard let impact = perform(act, actor: "p1", targets: targets, enemy: false, name: name) else { return }
         for id in targets {
             if heal > 0 { stage.labPlay(heal >= 10 ? "healStrong" : heal >= 6 ? "healStandard" : "healMicro", actor: "p1", targets: [id], power: 1.0, delay: impact); stage.labNumber("+\(heal)", target: id, kind: .heal, rank: 1, delay: impact) }
             if shield > 0 { stage.labNumber("+\(shield)", target: id, kind: .shield, rank: 1, delay: impact + 0.1) }
+            if buff > 0 { stage.labNumber("↑\(buff)", target: id, kind: .buff, rank: 1, delay: impact + 0.2) }
         }
         if shield > 0 { DispatchQueue.main.asyncAfter(deadline: .now() + impact) { [weak self] in for id in targets { self?.stage.labSetShield(id, shield) } } }
+        if buff > 0 { DispatchQueue.main.asyncAfter(deadline: .now() + impact) { [weak self] in for id in targets { self?.stage.labSetBuff(id, buff) } } }
     }
 
     private func revivalStone() {
@@ -221,7 +227,7 @@ final class MeadowEffectsLabViewController: UIViewController {
             { [weak self] in self?.offensiveSkill(.runeSlash, name: "符文斩") },
             { [weak self] in self?.offensiveSkill(.dragonFlame, name: "龙焰") },
             { [weak self] in self?.offensiveSkill(.sweep, name: "横扫") },
-            { [weak self] in self?.supportSkill(.rally, name: "振奋", targets: ["p1", "p2"], shield: 0, heal: 0) },
+            { [weak self] in self?.supportSkill(.rally, name: "振奋", targets: ["p1", "p2"], shield: 0, heal: 0, buff: 2) },
             { [weak self] in self?.supportSkill(.dragonSoulWard, name: "龙魂庇护", targets: ["p1", "p2"], shield: 10) },
             { [weak self] in self?.supportSkill(.dragonScaleWard, name: "龙鳞庇护", targets: ["p1", "p2"], shield: 10) },
             { [weak self] in self?.supportSkill(.runeWard, name: "符文庇护", targets: ["p1", "p2"], shield: 6) },

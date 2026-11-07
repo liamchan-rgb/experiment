@@ -30,7 +30,7 @@ enum MeadowSkillProcedural {
                            "healMicro", "healStandard", "healStrong", "rally", "sweep",
                            "shieldShell", "shieldShellHit", "shieldBreak", "deathBurst",
                            "hitSlime", "hitWolf", "hitArrowM", "hitStone", "hitTroll", "hitDragon",
-                           "deathSlime", "deathWolf", "deathGoblin", "deathStone", "deathTroll", "deathDragon", "playerDown", "downAura", "revive", "projBow", "projStaff", "projArcher", "projDragon",
+                           "deathSlime", "deathWolf", "deathGoblin", "deathStone", "deathTroll", "deathDragon", "playerDown", "downAura", "revive", "buffAura", "projBow", "projStaff", "projArcher", "projDragon",
                            "natural20", "shieldDome", "hitBlade", "hitGreat", "hitBow", "hitStaff", "hitClaw", "hitAmbush", "hitWard"]
     static let info: [String: Info] = [
         "starlightPulse": Info(duration: 1.6, release: 0.75, dim: 0.34, dimTint: RGB(0.80, 0.76, 1.0), support: false),
@@ -53,6 +53,7 @@ enum MeadowSkillProcedural {
         "shieldBreak": Info(duration: 1.2, release: 0.03, dim: 0.0, dimTint: RGB(1, 1, 1), support: false),
         "deathSlime": deathInfo(1.8), "deathWolf": deathInfo(1.8), "deathGoblin": deathInfo(1.8), "deathStone": deathInfo(2.0), "deathTroll": deathInfo(1.8), "deathDragon": deathInfo(2.4),
         "playerDown": Info(duration: 2.2, release: 0.05, dim: 0.0, dimTint: RGB(1, 1, 1), support: false),
+        "buffAura": Info(duration: 3.0, release: 0.3, dim: 0.0, dimTint: RGB(1, 1, 1), support: true),
         "revive": Info(duration: 1.8, release: 0.3, dim: 0.0, dimTint: RGB(1, 1, 1), support: true),
         "downAura": Info(duration: 3.0, release: 0.5, dim: 0.0, dimTint: RGB(1, 1, 1), support: true),
         "hitSlime": hitInfo, "hitWolf": hitInfo, "hitArrowM": hitInfo, "hitStone": hitInfo, "hitTroll": hitInfo, "hitDragon": hitInfo,
@@ -62,7 +63,7 @@ enum MeadowSkillProcedural {
     ]
     private static func projInfo(_ charge: Double, _ flight: Double) -> Info { Info(duration: charge + flight + 0.35, release: charge + flight, dim: 0.0, dimTint: RGB(1, 1, 1), support: false) }
     /// Effects that belong to a single blow or flight: no dim, no wash, no soft ambient light, no lens work of their own.
-    static func isBlow(_ id: String) -> Bool { id.hasPrefix("hit") || id.hasPrefix("proj") || id.hasPrefix("shieldShell") || id.hasPrefix("death") || id == "downAura" || id == "shieldBreak" }
+    static func isBlow(_ id: String) -> Bool { id.hasPrefix("hit") || id.hasPrefix("proj") || id.hasPrefix("shieldShell") || id.hasPrefix("death") || id == "downAura" || id == "buffAura" || id == "shieldBreak" }
     private static func deathInfo(_ d: Double) -> Info { Info(duration: d, release: 0.04, dim: 0.0, dimTint: RGB(1, 1, 1), support: false) }
     private static let hitInfo = Info(duration: 1.1, release: 0.05, dim: 0.0, dimTint: RGB(1, 1, 1), support: false)
     /// The procedural skill that draws a party action, if any (the two shield actions and the ally support share the shield dome).
@@ -93,6 +94,7 @@ enum MeadowSkillProcedural {
         case "deathDragon": return Pal.ward.mid
         case "playerDown": return Pal.down.mid
         case "downAura", "revive": return Pal.gold.mid
+        case "buffAura": return Pal.fury.mid
         case "hitSlime": return Pal.goo.mid
         case "hitWolf": return Pal.wolf.mid
         case "hitArrowM": return Pal.goblin.mid
@@ -143,6 +145,7 @@ enum MeadowSkillProcedural {
         static let goblin = Pal(deep: RGB(100, 60, 10), body: RGB(230, 160, 40), mid: RGB(255, 210, 110), light: RGB(255, 245, 200), a1: RGB(255, 255, 230), a2: RGB(180, 220, 90))
         static let stone = Pal(deep: RGB(60, 55, 50), body: RGB(150, 140, 125), mid: RGB(205, 195, 175), light: RGB(245, 240, 225), a1: RGB(255, 230, 160), a2: RGB(110, 100, 90))
         static let troll = Pal(deep: RGB(80, 50, 20), body: RGB(180, 120, 60), mid: RGB(225, 170, 100), light: RGB(255, 235, 190), a1: RGB(255, 200, 120), a2: RGB(120, 80, 40))
+        static let fury = Pal(deep: RGB(110, 20, 10), body: RGB(240, 90, 40), mid: RGB(255, 170, 70), light: RGB(255, 235, 190), a1: RGB(255, 80, 50), a2: RGB(255, 210, 100))
         static let down = Pal(deep: RGB(90, 20, 30), body: RGB(220, 60, 60), mid: RGB(255, 150, 130), light: RGB(255, 235, 225), a1: RGB(255, 255, 255), a2: RGB(255, 210, 120))
         static let blade = Pal(deep: RGB(70, 80, 110), body: RGB(190, 205, 235), mid: RGB(235, 242, 255), light: RGB(255, 255, 255), a1: RGB(255, 225, 150), a2: RGB(160, 200, 255))
         static let great = Pal(deep: RGB(110, 60, 20), body: RGB(255, 170, 70), mid: RGB(255, 215, 140), light: RGB(255, 250, 225), a1: RGB(255, 255, 255), a2: RGB(255, 140, 60))
@@ -275,6 +278,7 @@ enum MeadowSkillProcedural {
             case "playerDown": all += playerDown(t, geo, ti)
             case "downAura": all += downAura(t, geo, ti)
             case "revive": all += revive(t, geo, ti)
+            case "buffAura": all += buffAura(t, geo, ti)
             case "projBow", "projStaff", "projArcher", "projDragon": all += projectile(id, t, geo, ti)
             case "shieldBreak": all += shieldBreak(t, geo, ti)
             case "shieldShell": all += shieldShell(t, geo, ti)
@@ -1565,6 +1569,36 @@ enum MeadowSkillProcedural {
         return o.prims
     }
 
+    // MARK: damage buff (a standing fury around a unit while its damage is raised)
+
+    /// `t0`: time since the buff was granted (large = standing); `geo.power`: the buff's strength (amount / 3).
+    static func buffAura(_ t0: Double, _ geo: Geometry, _ ti: Int) -> [Prim] {
+        var o = Out(); let P = Pal.fury, cx = geo.targets[ti].chest.x, cy = geo.targets[ti].chest.y, fx = geo.targets[ti].foot.x, fy = geo.targets[ti].foot.y, t = max(0.0, t0)
+        let L = min(1.6, max(0.4, geo.power)), A = smooth(t / 0.3) * (0.6 + 0.4 * min(1.0, L))
+        o.g(cx, cy, 50 * L + 10, 70 * L + 12, P.body, 0.16 * A * (0.8 + 0.2 * sin(t * 4)))
+        o.r(fx, fy - 2, 40, 11, 1.8, P.a1, 0.55 * A)
+        for q in 0..<2 {
+            let a0 = t * (q == 0 ? 1.4 : -1.1) + Double(q) * Double.pi
+            o.arc(fx, fy - 2, 48, 14, a0, a0 + 1.6, 2.4, q == 0 ? P.mid : P.a2, 0.7 * A)
+        }
+        let flameCols = [P.a1, P.a2, P.mid]
+        for q in 0..<Int(6 + 4 * L) {
+            let ph = frac(q + 6 * ti, 1), u = pm(t * (0.7 + 0.3 * frac(q, 2)) + ph, 1.0)
+            let x = fx + cos(ph * 6.2832 + t * 0.5) * 30, y = fy - 6 - u * (140 + 30 * L)
+            o.e(x, y, 12 + 6 * L, 2.2, -1.5708, flameCols[q % 3], 0.85 * A * sin(Double.pi * u))
+        }
+        for q in 0..<2 {
+            let u = pm(t * 0.5 + Double(q) * 0.5, 1.0), y = cy - 70 - u * 40, al = A * sin(Double.pi * u)
+            o.e(cx - 7, y + 4, 10, 2.4, -0.75, P.light, al); o.e(cx + 7, y + 4, 10, 2.4, 0.75, P.light, al)
+        }
+        if t < 0.6 {
+            let u = t / 0.6
+            o.g(cx, cy, 90, 110, P.mid, 0.5 * (1 - u))
+            o.r(fx, fy - 2 - 120 * easeOut(u), 50 * (1 + u), 14 * (1 + u), 3.0 * (1 - u) + 0.5, P.a2, 0.9 * (1 - u))
+        }
+        return o.prims
+    }
+
     // MARK: revive (a beam comes down, the light gathers into the body, the hero returns)
 
     static func revive(_ t: Double, _ geo: Geometry, _ ti: Int) -> [Prim] {
@@ -1789,7 +1823,7 @@ enum MeadowSkillProcedural {
     /// 0...1.2: the shake an effect adds to the world `t` seconds into it. It jumps up at the release and dies away; the stage turns the summed
     /// trauma into a continuous multi-axis shake (offset, tilt, a little zoom), so a hit reads as a hit even on a small screen.
     static func trauma(skill id: String, t: Double, power: Double) -> Double {
-        guard let i = info[id], t >= 0, !id.hasPrefix("hit"), !id.hasPrefix("proj"), !id.hasPrefix("heal"), !id.hasPrefix("shieldShell"), id != "downAura", id != "shieldDome" else { return 0 }
+        guard let i = info[id], t >= 0, !id.hasPrefix("hit"), !id.hasPrefix("proj"), !id.hasPrefix("heal"), !id.hasPrefix("shieldShell"), id != "downAura", id != "buffAura", id != "shieldDome" else { return 0 }
         let amp: Double, rate: Double
         switch id {
         case "dragonFlame": amp = 0.95; rate = 3.2

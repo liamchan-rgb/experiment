@@ -54,6 +54,8 @@ final class MeadowPartyStageView:UIView {
     private var cameraTransform:CGAffineTransform?,cameraWidth:CGFloat=0
     /// When a fallen hero was brought back (they fade back in as the revive light gathers).
     private var revivedAt:[String:Double]=[:]
+    /// When each unit's current damage buff was granted, and buffs the lab shows without the rules (amount).
+    private var buffBirth:[String:Double]=[:],labBuff:[String:Int]=[:]
     /// The GPU drawer for procedural skills (nil: Metal unavailable, the effects layer draws them with CoreGraphics).
     private var gpu:MeadowSkillGPUView?
     private struct PendingStatusCue {
@@ -111,7 +113,7 @@ final class MeadowPartyStageView:UIView {
     }
     required init?(coder:NSCoder) { fatalError("init(coder:) has not been implemented") }
     @objc private func tapped(_ r:UITapGestureRecognizer) { if !isPlaying,let id=r.view?.accessibilityIdentifier { onChoose?(id) } }
-    func start() { MeadowBattleVFXAssets.prewarm();victoryAt=nil;sceneTime=0;recovery=[:];recoveryTier=[:];formation=[:];birth=[:];contact=[:];contactAngle=[:];revivedAt=[:];broken=[:];deaths=[:];hurt=[:];hitFeel=[:];kickFeel=nil;messages=[];emissions=[];skillVFX=[];procVFX=[];pendingStatusCues=[];statusSnapshots=[:];poseKeys=[:];fallen=[:];diceAction=nil;diceConfirmedAt=nil;diceView.confirmationAge=nil;diceView.dice=[];diceSettledAt=nil;diceExitAt=nil;dimFrom=0;dimTarget=0;clock.start() }
+    func start() { MeadowBattleVFXAssets.prewarm();victoryAt=nil;sceneTime=0;recovery=[:];recoveryTier=[:];formation=[:];birth=[:];contact=[:];contactAngle=[:];revivedAt=[:];buffBirth=[:];labBuff=[:];broken=[:];deaths=[:];hurt=[:];hitFeel=[:];kickFeel=nil;messages=[];emissions=[];skillVFX=[];procVFX=[];pendingStatusCues=[];statusSnapshots=[:];poseKeys=[:];fallen=[:];diceAction=nil;diceConfirmedAt=nil;diceView.confirmationAge=nil;diceView.dice=[];diceSettledAt=nil;diceExitAt=nil;dimFrom=0;dimTarget=0;clock.start() }
     func stop() { MeadowMonsterFrames.retain([]);clock.stop();intent=nil;impact=nil;completion=nil;focus=nil;skillVFX=[];procVFX=[];pendingStatusCues=[];statusSnapshots=[:] }
     func displayedVitals(for unitID:String,health:Int,shield:Int)->(health:Int,shield:Int) { statusSnapshots[unitID] ?? (health,shield) }
     func show(_ value:GameState,friend:String,foe:String,current:String?,catalog:GameCatalog) {
@@ -300,6 +302,7 @@ final class MeadowPartyStageView:UIView {
                 messages.append(.init(text:"+\(heal)",point:CGPoint(x:point.x+shift.x,y:point.y+shift.y),at:sceneTime,color:.systemGreen,supportUnit:showsBesideOwner ? id:nil,kind:.heal))
             }
             if gain>0 && !delayStatus { birth[id]=sceneTime;messages.append(.init(text:"+\(gain)",point:CGPoint(x:point.x,y:point.y+(intent.action.isRune || intent.action == .dragonFlame || intent.action.isNodeSupport ? 36:24)),at:sceneTime,color:.systemCyan,supportUnit:showsBesideOwner ? id:nil,supportLine:1,kind:.shield)) }
+            if after.damageBuff != before.damageBuff,after.damageBuff != nil { buffBirth[id]=sceneTime }
             if after.damageBuff != before.damageBuff,let b=after.damageBuff { messages.append(.init(text:"↑\(b.amount)",point:CGPoint(x:point.x,y:point.y-(intent.action.isRune || intent.action == .dragonFlame || intent.action.isNodeSupport ? 36:0)),at:sceneTime,color:MeadowPreviewPalette.gold,supportUnit:showsBesideOwner ? id:nil,supportLine:(heal>0 || gain>0) ? 2:0,kind:.buff)) }
             if damage>0 || absorbed>0 {
                 hurt[id]=sceneTime
@@ -508,6 +511,11 @@ final class MeadowPartyStageView:UIView {
             return (foot:base,chest:PartyPoint(base.x+5*PartyVisual.heroScale,base.y-70*PartyVisual.heroScale),tier:tier,age:sceneTime-at)
         }
         fx.procEffects=procVFX;fx.liveFeet=liveFeet
+        fx.buffs=state.units.values.filter { renderIDs.contains($0.id) && $0.isAlive }.compactMap { unit in
+            guard let amount=unit.damageBuff?.amount ?? labBuff[unit.id],amount>0,let baseFoot=PartyVisual.foot(unit.id) else { return nil }
+            let foot=liveFeet[unit.id] ?? baseFoot,baseChest=PartyVisual.skillEffectCenter(targets:[unit.id],actor:unit.id,templates:healTemplates)
+            return (foot:foot,chest:PartyPoint(foot.x+(baseChest.x-baseFoot.x),foot.y+(baseChest.y-baseFoot.y)),level:Double(amount)/3.0,age:buffBirth[unit.id].map { sceneTime-$0 } ?? 10)
+        }
         fx.downed=state.units.values.filter { renderIDs.contains($0.id) && $0.kind == .player && !$0.isAlive }.compactMap { unit in
             guard let foot=liveFeet[unit.id] ?? PartyVisual.foot(unit.id) else { return nil }
             return (foot:foot,age:fallen[unit.id].map { sceneTime-$0 } ?? 10)
@@ -663,6 +671,8 @@ private final class MeadowPartyEffectsView:UIView {
     var shields:[(foot:PartyPoint,chest:PartyPoint,level:Double,age:Double,hitAge:Double,hitAngle:Double,wide:Double)]=[]
     /// Fallen heroes (foot, seconds since the fall): a pale light waits over each.
     var downed:[(foot:PartyPoint,age:Double)]=[]
+    /// Raised damage: a standing fury around each buffed unit (foot, chest, strength, seconds since granted).
+    var buffs:[(foot:PartyPoint,chest:PartyPoint,level:Double,age:Double)]=[]
     /// True when the GPU view draws the procedural skills and healing; this layer then leaves them out.
     var gpuDrawsSkills=false
     /// Everything the procedural skills draw this frame (soft light first, then the shapes), for the GPU.
@@ -672,6 +682,11 @@ private final class MeadowPartyEffectsView:UIView {
             var geo=MeadowSkillProcedural.Geometry(caster:.init(sh.chest.x,sh.chest.y),casterFoot:.init(sh.foot.x,sh.foot.y),targets:[.init(chest:.init(sh.chest.x,sh.chest.y),foot:.init(sh.foot.x,sh.foot.y))],ground:sh.foot.y)
             geo.power=sh.level;geo.hitAge=sh.hitAge;geo.hitAngle=sh.hitAngle;geo.wide=sh.wide
             all += MeadowSkillProcedural.shieldShell(sh.age,geo,0)
+        }
+        for b in buffs {
+            var geo=MeadowSkillProcedural.Geometry(caster:.init(b.chest.x,b.chest.y),casterFoot:.init(b.foot.x,b.foot.y),targets:[.init(chest:.init(b.chest.x,b.chest.y),foot:.init(b.foot.x,b.foot.y))],ground:b.foot.y)
+            geo.power=b.level
+            all += MeadowSkillProcedural.buffAura(b.age,geo,0)
         }
         for d in downed {
             let geo=MeadowSkillProcedural.Geometry(caster:.init(d.foot.x,d.foot.y),casterFoot:.init(d.foot.x,d.foot.y),targets:[.init(chest:.init(d.foot.x,d.foot.y-30),foot:.init(d.foot.x,d.foot.y))],ground:d.foot.y)
@@ -1145,6 +1160,8 @@ extension MeadowPartyStageView {
     func labShake(_ tier:MeadowBattleHitTier,delay:Double=0) { kickFeel=(sceneTime+delay,tier,1) }
     /// The state the lab is showing (to build real intents for `play`).
     var labState:GameState? { state }
+    /// A damage buff of `amount` on `id` as the lab shows it (0 removes it).
+    func labSetBuff(_ id:String,_ amount:Int) { labBuff[id]=amount>0 ? amount:nil;if amount>0 { buffBirth[id]=sceneTime } }
     func labSetWeapon(_ id:String,_ weapon:String?) { state?.units[id]?.equipment.weapon=weapon }
     /// A floating number on `target`, `delay` seconds from now.
     func labNumber(_ text:String,target:String,kind:MeadowBattleNumber.Kind,rank:Int,delay:Double) {
@@ -1160,7 +1177,7 @@ extension MeadowPartyStageView {
     }
     /// Back to a clean stage with the given state.
     func labReset(_ value:GameState,catalog:GameCatalog) {
-        procVFX=[];messages=[];deaths=[:];fallen=[:];contact=[:];contactAngle=[:];revivedAt=[:];birth=[:];broken=[:];recovery=[:];recoveryTier=[:];hitFeel=[:];kickFeel=nil;hurt=[:];statusSnapshots=[:];emissions=[]
+        procVFX=[];messages=[];deaths=[:];fallen=[:];contact=[:];contactAngle=[:];revivedAt=[:];buffBirth=[:];labBuff=[:];birth=[:];broken=[:];recovery=[:];recoveryTier=[:];hitFeel=[:];kickFeel=nil;hurt=[:];statusSnapshots=[:];emissions=[]
         show(value,friend:"p1",foe:"m1",current:nil,catalog:catalog)
     }
 }

@@ -182,7 +182,7 @@ CASES = {k: case(FOES) for k in ('starlightPulse', 'sweep', 'runeSlash', 'dragon
 CASES.update({k: case(ALLIES) for k in ('rally', 'dragonSoulWard', 'dragonScaleWard', 'runeWard', 'battleRune', 'dragonOrder')})
 CASES.update({k: case(ALLIES[:1]) for k in ('healMicro', 'healStandard', 'healStrong')})
 CASES.update({k: case(FOES[:1]) for k in ('natural20', 'hitBlade', 'hitGreat', 'hitBow', 'hitStaff', 'hitClaw', 'hitAmbush', 'hitWard')}); CASES['shieldDome'] = case(ALLIES)
-CASES.update({k: case(ALLIES[:1]) for k in ('shieldShell', 'shieldShellHit', 'playerDown', 'downAura', 'revive')})
+CASES.update({k: case(ALLIES[:1]) for k in ('shieldShell', 'shieldShellHit', 'playerDown', 'downAura', 'revive', 'buffAura')})
 CASES.update({k: case(FOES[:1]) for k in ('hitSlime', 'hitWolf', 'hitArrowM', 'hitStone', 'hitTroll', 'hitDragon', 'deathSlime', 'deathWolf', 'deathGoblin', 'deathStone', 'deathTroll', 'deathDragon')})
 CASES.update({k: case(FOES[:1]) for k in ('projBow', 'projStaff', 'projArcher', 'projDragon', 'shieldBreak', 'deathBurst')})
 for c in CASES.values(): c.update(caster=hero_chest, casterFoot=hero_foot)

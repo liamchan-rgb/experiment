@@ -2012,6 +2012,35 @@ def revive(t, geo, ti=0):
     return out
 
 
+# ------------------------------------------------------------------ damage buff: a standing fury around a unit while its damage is raised
+PAL['fury'] = dict(deep=(110, 20, 10), body=(240, 90, 40), mid=(255, 170, 70), light=(255, 235, 190), a1=(255, 80, 50), a2=(255, 210, 100))
+SPEC.update({'buffAura': (3.0, .3, True)})
+DIM.update({'buffAura': (0.0, (1.0, 1.0, 1.0))})
+
+
+def buff_aura(t, geo, ti=0):
+    """`t`: time since the buff was granted (large = standing); geo['power']: the buff's strength (amount / 3)."""
+    out = []; P = PAL['fury']; (chest, foot) = geo['targets'][ti]; cx, cy = chest; fx, fy = foot; t = max(0.0, t)
+    L = min(1.6, max(.4, geo.get('power', 1.0))); A = smooth(t / .3) * (.6 + .4 * min(1.0, L))
+    out.append(('g', cx, cy, 50 * L + 10, 70 * L + 12, P['body'], .16 * A * (.8 + .2 * math.sin(t * 4))))
+    out.append(('r', fx, fy - 2, 40, 11, 1.8, P['a1'], .55 * A))
+    for q in range(2):
+        a0 = t * (1.4 if q == 0 else -1.1) + q * math.pi; out.append(('a', fx, fy - 2, 48, 14, a0, a0 + 1.6, 2.4, (P['mid'], P['a2'])[q], .7 * A))
+    n = int(6 + 4 * L)
+    for q in range(n):                                                       # flames of power climb the body
+        ph = frac(q + 6 * ti, 1); u = (t * (.7 + .3 * frac(q, 2)) + ph) % 1.0
+        x = fx + math.cos(ph * 6.2832 + t * .5) * 30; y = fy - 6 - u * (140 + 30 * L)
+        out.append(('e', x, y, 12 + 6 * L, 2.2, -1.5708, (P['a1'], P['a2'], P['mid'])[q % 3], .85 * A * math.sin(math.pi * u)))
+    for q in range(2):                                                       # chevrons rise slowly above the head
+        u = (t * .5 + q * .5) % 1.0; y = cy - 70 - u * 40; al = A * math.sin(math.pi * u)
+        out.append(('e', cx - 7, y + 4, 10, 2.4, -.75, P['light'], al)); out.append(('e', cx + 7, y + 4, 10, 2.4, .75, P['light'], al))
+    if t < .6:                                                               # the moment it is granted: a flare and a ring thrown up
+        u = t / .6
+        out.append(('g', cx, cy, 90, 110, P['mid'], .5 * (1 - u)))
+        out.append(('r', fx, fy - 2 - 120 * ease_out(u), 50 * (1 + u), 14 * (1 + u), 3.0 * (1 - u) + .5, P['a2'], .9 * (1 - u)))
+    return out
+
+
 def multi(fn):
     """Run a single-target effect once per target. Caster-side parts are emitted only for the first target (ti == 0)."""
     def run(t, geo):
@@ -2023,7 +2052,7 @@ def multi(fn):
 
 _SINGLE = {'starlightPulse': starlight, 'dragonSoulWard': soul, 'dragonScaleWard': scale_ward, 'runeSlash': rune_slash, 'runeWard': rune_ward,
            'battleRune': battle_rune, 'dragonFlame': dragon_flame, 'dragonOrder': dragon_order,
-           'healMicro': heal_micro, 'healStandard': heal_standard, 'healStrong': heal_strong, 'rally': rally_call, 'sweep': sweep_arc, 'natural20': natural20, 'shieldDome': shield_dome, 'shieldBreak': shield_break, 'playerDown': player_down, 'downAura': down_aura, 'revive': revive,
+           'healMicro': heal_micro, 'healStandard': heal_standard, 'healStrong': heal_strong, 'rally': rally_call, 'sweep': sweep_arc, 'natural20': natural20, 'shieldDome': shield_dome, 'shieldBreak': shield_break, 'playerDown': player_down, 'downAura': down_aura, 'revive': revive, 'buffAura': buff_aura,
            **{k: (lambda t, geo, ti=0, k=k: death_effect(k, t, geo, ti)) for k in DEATHS}, 'shieldShell': shield_shell,
            'shieldShellHit': lambda t, geo, ti=0: shield_shell(t, dict(geo, hit_age=t * .5, hit_angle=.4, power=.3), ti),
            **{k: (lambda t, geo, ti=0, k=k: hit_effect(k, t, geo, ti)) for k in HITS},
