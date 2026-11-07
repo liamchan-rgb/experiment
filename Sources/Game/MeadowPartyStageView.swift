@@ -400,10 +400,9 @@ private final class MeadowPartyEffectsView:UIView {
         for (foot,power) in recoveryLights { glow(foot,105,27,power*0.65,.systemGreen);glow(PartyPoint(foot.x,foot.y-70),42,85,power*0.12,.systemGreen) }
         for (foot,tier,age) in monsterRecoveries {
             guard let blend=tier.frameBlend(at:age) else{continue}
-            let frames=MeadowBattleVFXAssets.healingFrames(for:tier),w=320.0,h=tier == .standard ? 267.0:320.0
+            let w=320.0,h=tier == .standard ? 268.0:320.0
             let box=CGRect(x:foot.x-w/2,y:foot.y-h*tier.canvasGroundAnchorY,width:w,height:h)
-            frames[blend.lower].draw(in:box,blendMode:.plusLighter,alpha:CGFloat(1-blend.upperWeight))
-            if blend.upper != blend.lower {frames[blend.upper].draw(in:box,blendMode:.plusLighter,alpha:CGFloat(blend.upperWeight))}
+            MeadowBattleVFXAssets.drawHealing(tier:tier,blend:blend,in:box)
         }
         if intent==nil {
             for (id,color) in [(friend,UIColor.systemGreen),(foe,MeadowPreviewPalette.gold)] {

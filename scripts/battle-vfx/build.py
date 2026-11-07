@@ -6,6 +6,9 @@ usage: python3 build.py <out-dir>      # writes <asset>.png for every skill, at 
 import os, sys
 from pixelvfx import pack_sheet, Grid
 from skills import SPECS, GENERATORS
+import heal
+SPECS = {**SPECS, **heal.SPECS}
+GENERATORS = {**GENERATORS, **heal.GENERATORS}
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
 

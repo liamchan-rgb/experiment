@@ -104,9 +104,9 @@ enum MeadowBattleVFXAssets {
     static let mote = UIImage(named: "BattleVFXMote")!
     static let body = frames("BattleVFXDeathBody60", width: 384, height: 256,count:48)
     static let wind = frames("BattleVFXDeathWind60", width: 448, height: 320,count:116)
-    static let healingMicro = frames("BattleVFXHealingMicroSheet", width: 280, height: 280, columns: 5, count: 20)
-    static let healingStandard = frames("BattleVFXHealingStandardSheet", width: 614, height: 512, columns: 5, count: 20)
-    static let healingStrong = frames("BattleVFXHealingStrongSheet", width: 512, height: 512, columns: 5, count: 20)
+    static let healingMicro = frames("BattleVFXHealingMicroSheet", width: 320, height: 320, columns: 5, count: 20)
+    static let healingStandard = frames("BattleVFXHealingStandardSheet", width: 320, height: 268, columns: 5, count: 20)
+    static let healingStrong = frames("BattleVFXHealingStrongSheet", width: 320, height: 320, columns: 5, count: 20)
     static let runeSlashAttack = namedFrames("MeadowRuneSlashAttack", count: 20)
     static let runeWardCast = namedFrames("MeadowRuneWardCast", count: 20)
     static let starlightPulse = frames("MeadowBattleVFXStarlightPulse",width:344,height:344,columns:5,count:20)
@@ -177,13 +177,19 @@ private final class MeadowBattleHealingArtworkView: UIView {
     }
     override func draw(_ rect: CGRect) {
         guard let tier, let blend = tier.frameBlend(at: age) else { return }
-        let frames = MeadowBattleVFXAssets.healingFrames(for: tier)
-        guard frames.count == HealingEffectTier.frameCount else { return }
-        let upperWeight = CGFloat(blend.upperWeight),opacity=CGFloat(tier.artOpacity)
-        frames[blend.lower].draw(in: rect, blendMode: .plusLighter, alpha: opacity*(1-upperWeight))
-        if blend.upper != blend.lower, upperWeight > 0 {
-            frames[blend.upper].draw(in: rect, blendMode: .plusLighter, alpha: opacity*upperWeight)
-        }
+        MeadowBattleVFXAssets.drawHealing(tier: tier, blend: blend, in: rect)
+    }
+}
+
+extension MeadowBattleVFXAssets {
+    /// The healing sheets are hand-built pixel art (scripts/battle-vfx/heal.py): each frame is held (no cross-fade),
+    /// scaled without smoothing and drawn at full strength, since the old per-tier dimming was tuned for the old art.
+    static func drawHealing(tier: HealingEffectTier, blend: HealingEffectFrameBlend, in rect: CGRect) {
+        let frames = healingFrames(for: tier)
+        guard frames.count == HealingEffectTier.frameCount, frames.indices.contains(blend.lower), let ctx = UIGraphicsGetCurrentContext() else { return }
+        ctx.saveGState(); ctx.interpolationQuality = .none
+        frames[blend.lower].draw(in: rect, blendMode: .plusLighter, alpha: 0.95)
+        ctx.restoreGState()
     }
 }
 
@@ -279,12 +285,7 @@ final class MeadowBattleEffectsView: UIView {
             case .strong: size=CGSize(width:258,height:258)
             }
             let frame=CGRect(x:heroFoot.x-size.width*unit/2,y:heroFoot.y-size.height*unit*CGFloat(tier.canvasGroundAnchorY),width:size.width*unit,height:size.height*unit)
-            let frames=MeadowBattleVFXAssets.healingFrames(for:tier),mix=CGFloat(blend.upperWeight)
-            if frames.count==HealingEffectTier.frameCount {
-                let opacity=CGFloat(tier.artOpacity)
-                frames[blend.lower].draw(in:frame,blendMode:.plusLighter,alpha:opacity*(1-mix))
-                if blend.upper != blend.lower,mix>0 { frames[blend.upper].draw(in:frame,blendMode:.plusLighter,alpha:opacity*mix) }
-            }
+            MeadowBattleVFXAssets.drawHealing(tier:tier,blend:blend,in:frame)
         }
         if selected, cue == nil {
             UIColor(red: 1, green: 0.84, blue: 0.35, alpha: 0.65).setStroke()
