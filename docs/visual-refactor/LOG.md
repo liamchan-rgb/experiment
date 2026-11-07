@@ -191,3 +191,11 @@ ID 与生成脚本算法一致。**本分支此后不再运行 generate-project.
 播放：`MeadowBattleVFXAssets.drawHealing` 逐帧保持 + 最近邻 + 0.95 强度（旧的分档透明度是为旧图调的，`HealingEffectTier` 在 Vendor 内未改）。
 `scripts/verify-healing-assets.py` 对这三张改为结构校验（尺寸、20 帧、有效果、结尾淡出），不再与交付包逐像素比对。
 预览：`Art/Review/Battle/healing-pixel-v1/`（`scripts/review-healing-pixel-v1.py`，近似）。强度与位置需实机确认；治疗环境光沿用现有 `lightEnvelope`。
+
+## 20 · 战斗打磨：技能通用三层（蓄力 / 目标反应 / 余韵）（2026-11-07）
+
+用户：“技能本身已经很简单，想想怎么丰富观感”；确定先做通用三层，蓄力压进现有出手动作里（不延长战斗节奏）。仅五个像素技能，`MeadowSkillAmbientLight`（纯 Foundation）+ `MeadowPartyEffectsView`：
+1. 蓄力：精灵开始前最后 0.5 s（不足 0.12 s 则不画，起点不早于出手开始），施法者胸口聚光、脚下光环收缩、12 颗光点螺旋汇聚。远程/近战技能的精灵在 `impactAge - peakTime` 开始，辅助技能在 `impactAge` 开始，蓄力都落在这段既有出手动作之内，不延长节奏。
+2. 目标反应：从命中起，每个目标身上闪一下技能色（攻击类 0.6 s 并溅光点；护佑类 1.7 s，脚下一圈转动光环 + 四颗绕行光点 + 身周淡光）。
+3. 余韵：精灵结束后 0.9 s 的地面光池渐隐与几颗上升余烬。
+减弱动态时只保留光晕/光环，不画粒子。`scripts/check-battle-ambient.sh` 扩展：边界、窗口、汇聚方向、护佑光环保持/退去、粒子逐帧连续。预览（近似，半帧率缩小）`Art/Review/Battle/skill-stagecraft-v1/`（`scripts/review-skill-stagecraft-v1.py`）。

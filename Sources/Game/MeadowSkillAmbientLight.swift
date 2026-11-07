@@ -67,4 +67,78 @@ enum MeadowSkillAmbientLight {
         }
         return out
     }
+
+    // MARK: stagecraft - the three generic layers around the sprite: charge-up, target reaction, afterglow
+
+    /// Wards and buffs stay on their targets; the other skills strike and fade.
+    static func isWard(_ id: String) -> Bool { ["rally", "dragonSoulWard", "dragonScaleWard"].contains(id) }
+
+    /// Time the charge-up is drawn before the sprite starts. It lives entirely inside the existing cast motion.
+    static let chargeWindow = 0.5
+    static let reactionLife = 0.6, wardReactionLife = 1.7, afterglowLife = 0.9
+
+    static func easeOut(_ x: Double) -> Double { let t = clamp01(x); return 1 - (1 - t) * (1 - t) * (1 - t) }
+
+    /// Light gathering on the caster: specks converging on the chest and a ring contracting on the floor.
+    struct Charge: Equatable { let level: Double, ringRadius: Double, ringAlpha: Double, motes: [Mote] }
+
+    /// `progress` runs 0 -> 1 over the charge window. Positions are relative to the caster's chest.
+    static func charge(skill id: String, progress p: Double) -> Charge? {
+        guard p > 0, p <= 1 else { return nil }
+        var motes: [Mote] = []
+        for i in 0..<12 {
+            let a0 = fraction(i, 3) * 2 * Double.pi
+            let start = 70 + 50 * fraction(i, 4)
+            let t = clamp01((p - 0.35 * fraction(i, 1)) / (1 - 0.35 * fraction(i, 1)))
+            let r = start * (1 - easeOut(t))
+            let swirl = a0 + t * 2.4
+            let alpha = clamp01(p * 3) * (0.5 + 0.5 * fraction(i, 2)) * (1 - smooth((t - 0.9) / 0.1))
+            motes.append(Mote(id: i, dx: cos(swirl) * r, dy: sin(swirl) * r * 0.7, radius: 14 + 10 * fraction(i, 5), core: 1.5 + 1.5 * fraction(i, 9), alpha: alpha, hot: fraction(i, 10) > 0.55))
+        }
+        return Charge(level: smooth(p) * 0.9, ringRadius: 12 + 58 * (1 - easeOut(p)), ringAlpha: clamp01(p * 2.5) * (1 - 0.4 * p), motes: motes)
+    }
+
+    /// What the target does when the skill lands: strikes flash and spit sparks, wards put on a turning aura.
+    struct Reaction: Equatable { let glow: Double, aura: Double, spin: Double, motes: [Mote] }
+
+    /// `age` is seconds since the impact. Positions are relative to the target's chest.
+    static func reaction(skill id: String, age: Double) -> Reaction? {
+        let ward = isWard(id)
+        guard age >= 0, age < (ward ? wardReactionLife : reactionLife) else { return nil }
+        var motes: [Mote] = []
+        if ward {
+            for i in 0..<8 {
+                let th = fraction(i, 3) * 2 * Double.pi + age * (2.2 + fraction(i, 4))
+                let rise = fraction(i, 5) * 30 - 14 + sin(age * 3 + Double(i)) * 5
+                let alpha = clamp01(age / 0.25) * (1 - smooth((age - 1.1) / 0.6))
+                motes.append(Mote(id: i, dx: cos(th) * 34, dy: sin(th) * 12 + rise, radius: 14, core: 1.8 + fraction(i, 9), alpha: alpha, hot: fraction(i, 10) > 0.6))
+            }
+            let aura = smooth(age / 0.2) * (1 - smooth((age - 1.1) / 0.6))
+            return Reaction(glow: (1 - smooth(age / 0.4)) * 0.8, aura: aura, spin: age * 2.2, motes: motes)
+        }
+        for i in 0..<9 {
+            let life = 0.3 + 0.3 * fraction(i, 2), t = age / life
+            guard t < 1 else { continue }
+            let a = fraction(i, 3) * 2 * Double.pi
+            let d = (14 + 40 * fraction(i, 4)) * easeOut(t)
+            motes.append(Mote(id: i, dx: cos(a) * d, dy: sin(a) * d * 0.8 - 6 * t, radius: 12 + 8 * fraction(i, 5), core: 1.6 + 1.4 * fraction(i, 9), alpha: pow(1 - t, 0.8), hot: fraction(i, 10) > 0.5))
+        }
+        return Reaction(glow: pow(1 - age / reactionLife, 2) * 0.9, aura: 0, spin: 0, motes: motes)
+    }
+
+    /// Light that lingers on the floor after the sprite has ended; `age` runs 0 -> afterglowLife. Positions are relative to the skill centre.
+    struct Afterglow: Equatable { let pool: Double, motes: [Mote] }
+
+    static func afterglow(skill id: String, age: Double, spread: Double) -> Afterglow? {
+        guard age >= 0, age < afterglowLife else { return nil }
+        let t = age / afterglowLife
+        var motes: [Mote] = []
+        for i in 0..<10 {
+            let a0 = fraction(i, 3) * 2 * Double.pi
+            let r = spread * (0.2 + 0.8 * fraction(i, 4))
+            motes.append(Mote(id: i, dx: cos(a0) * r + sin(age * 2 + Double(i)) * 4, dy: sin(a0) * r * 0.5 - age * (14 + 22 * fraction(i, 6)), radius: 12 + 8 * fraction(i, 5), core: 1.4 + 1.2 * fraction(i, 9), alpha: (1 - t) * (0.4 + 0.6 * fraction(i, 2)), hot: false))
+        }
+        return Afterglow(pool: pow(1 - t, 1.5) * 0.5, motes: motes)
+    }
 }
+

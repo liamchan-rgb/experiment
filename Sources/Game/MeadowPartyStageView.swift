@@ -139,7 +139,12 @@ final class MeadowPartyStageView:UIView {
             let hitAge=value.impactAge
             let groundYs=value.targets.compactMap { PartyVisual.foot($0)?.y }
             let groundY=groundYs.isEmpty ? (PartyVisual.foot(value.actor)?.y ?? PartyVisual.height):groundYs.reduce(0,+)/Double(groundYs.count)
-            skillVFX.append(MeadowPartySkillVFXEvent(spec:spec,startedAt:spec.startTime(actionStart:sceneTime,impactAge:hitAge),center:PartyVisual.skillEffectCenter(targets:value.targets,actor:value.actor,templates:before.units.mapValues(\.templateID)),groundY:groundY))
+            let templates=before.units.mapValues(\.templateID)
+            var event=MeadowPartySkillVFXEvent(spec:spec,startedAt:spec.startTime(actionStart:sceneTime,impactAge:hitAge),center:PartyVisual.skillEffectCenter(targets:value.targets,actor:value.actor,templates:templates),groundY:groundY)
+            event.actionStart=sceneTime;event.impactAt=sceneTime+hitAge
+            if let foot=PartyVisual.foot(value.actor) { event.casterFoot=foot;event.casterChest=PartyPoint(foot.x+5*PartyVisual.heroScale,foot.y-70*PartyVisual.heroScale) }
+            event.targets=value.targets.compactMap { id in PartyVisual.foot(id).map { MeadowPartySkillTarget(chest:PartyVisual.skillEffectCenter(targets:[id],actor:value.actor,templates:templates),foot:$0) } }
+            skillVFX.append(event)
         }
         let delayed=sceneTime+max(0,value.action.impact-0.46)
         let statusAge=value.action.statusVFXCueAge ?? value.action.impact
@@ -156,7 +161,7 @@ final class MeadowPartyStageView:UIView {
         emissions.removeAll { sceneTime-$0.startedAt>3 };messages.removeAll { sceneTime-$0.at>1.0 }
         hitFeel=hitFeel.filter { sceneTime-$0.value.at<1.0 }
         if let k=kickFeel,sceneTime-k.at>=1.0 { kickFeel=nil }
-        skillVFX.removeAll { sceneTime-$0.startedAt>$0.spec.duration }
+        skillVFX.removeAll { sceneTime-$0.startedAt>$0.lifetime }
         let due=pendingStatusCues.filter { $0.at<=sceneTime+1e-9 }
         if !due.isEmpty {
             pendingStatusCues.removeAll { $0.at<=sceneTime+1e-9 }
@@ -373,7 +378,17 @@ final class MeadowPartyStageView:UIView {
 struct MeadowPartyMessage { let text:String;let point:CGPoint;let at:Double;let color:UIColor;var atImpact=false;var supportUnit:String?=nil;var supportLine=0;var hitTier:MeadowBattleHitTier?=nil }
 /// One player blow on a monster, for the shared hit-feel graphics (world coordinates).
 struct MeadowPartyHitEvent { let at:Double;let tier:MeadowBattleHitTier;let direction:Double;let point:CGPoint;let footX:CGFloat;let floorY:CGFloat }
-struct MeadowPartySkillVFXEvent { let spec:PartySkillVFXSpec;let startedAt:Double;let center:PartyPoint;let groundY:Double }
+struct MeadowPartySkillTarget { let chest:PartyPoint;let foot:PartyPoint }
+/// A skill on stage: the sprite (`startedAt`), plus what surrounds it - the charge-up on the caster inside the cast motion
+/// (`actionStart` ... `startedAt`), the reaction of each target from `impactAt`, and the afterglow once the sprite ends.
+struct MeadowPartySkillVFXEvent {
+    let spec:PartySkillVFXSpec;let startedAt:Double;let center:PartyPoint;let groundY:Double
+    var actionStart=0.0,impactAt=0.0
+    var casterChest:PartyPoint?,casterFoot:PartyPoint?
+    var targets:[MeadowPartySkillTarget]=[]
+    /// Seconds after `startedAt` when nothing of this skill is left to draw.
+    var lifetime:Double { max(spec.duration+MeadowSkillAmbientLight.afterglowLife,(impactAt-startedAt)+MeadowSkillAmbientLight.wardReactionLife)+0.05 }
+}
 
 private final class MeadowPartyEffectsView:UIView {
     var templates:[String:String]=[:]
@@ -540,6 +555,53 @@ private final class MeadowPartyEffectsView:UIView {
                     ctx.saveGState();ctx.setBlendMode(.plusLighter);ctx.setFillColor((m.hot ? hot : color).withAlphaComponent(CGFloat(m.alpha)).cgColor)
                     ctx.fill(CGRect(x:p.x-m.core/2,y:p.y-m.core/2,width:m.core,height:m.core));ctx.restoreGState()
                 }
+            }
+        }
+        // Stagecraft around the five pixel skills (MeadowSkillAmbientLight): charge-up, target reaction, afterglow.
+        for event in skillEffects where Self.pixelSkillIDs.contains(event.spec.id) {
+            let id=event.spec.id,tone=MeadowSkillAmbientLight.tone(for:id)
+            let color=UIColor(red:CGFloat(tone.r),green:CGFloat(tone.g),blue:CGFloat(tone.b),alpha:1),hot=UIColor(red:1,green:0.96,blue:0.86,alpha:1)
+            let calm=UIAccessibility.isReduceMotionEnabled
+            func specks(_ motes:[MeadowSkillAmbientLight.Mote],_ o:PartyPoint,_ strength:Double) {
+                guard !calm else { return }
+                for m in motes where m.alpha>0.01 {
+                    let p=PartyPoint(o.x+m.dx,o.y+m.dy)
+                    glow(p,m.radius*1.4,m.radius*1.4,m.alpha*strength,color)
+                    ctx.saveGState();ctx.setBlendMode(.plusLighter);ctx.setFillColor((m.hot ? hot:color).withAlphaComponent(CGFloat(m.alpha)).cgColor)
+                    ctx.fill(CGRect(x:p.x-m.core/2,y:p.y-m.core/2,width:m.core,height:m.core));ctx.restoreGState()
+                }
+            }
+            func rim(_ c:PartyPoint,_ rx:Double,_ ry:Double,_ alpha:Double) {
+                guard alpha>0.01 else { return }
+                ctx.saveGState();ctx.setBlendMode(.plusLighter);ctx.setStrokeColor(color.withAlphaComponent(CGFloat(min(1,alpha))).cgColor);ctx.setLineWidth(1.5)
+                ctx.strokeEllipse(in:CGRect(x:c.x-rx,y:c.y-ry,width:rx*2,height:ry*2));ctx.restoreGState()
+            }
+            // 1. Charge-up on the caster, in the last half second before the sprite starts (inside the existing cast motion).
+            let chargeStart=max(event.actionStart,event.startedAt-MeadowSkillAmbientLight.chargeWindow)
+            if let chest=event.casterChest,let foot=event.casterFoot,event.startedAt-chargeStart>0.12,time>=chargeStart,time<event.startedAt,
+               let c=MeadowSkillAmbientLight.charge(skill:id,progress:(time-chargeStart)/(event.startedAt-chargeStart)) {
+                glow(chest,52,52,c.level*0.5,color)
+                rim(foot,c.ringRadius,c.ringRadius*0.3,c.ringAlpha*0.7)
+                specks(c.motes,chest,0.75)
+            }
+            // 3. Target reactions from the impact.
+            for target in event.targets {
+                guard let r=MeadowSkillAmbientLight.reaction(skill:id,age:time-event.impactAt) else { continue }
+                glow(target.chest,46,66,r.glow*0.45,color)
+                if r.aura>0.01 {
+                    glow(target.chest,34,62,r.aura*0.16,color)
+                    rim(target.foot,40,12,r.aura*0.5)
+                    if !calm { for k in 0..<4 {
+                        let th=r.spin+Double(k)*Double.pi/2,p=PartyPoint(target.foot.x+cos(th)*40,target.foot.y+sin(th)*12)
+                        ctx.saveGState();ctx.setBlendMode(.plusLighter);ctx.setFillColor(hot.withAlphaComponent(CGFloat(r.aura)).cgColor);ctx.fill(CGRect(x:p.x-1.5,y:p.y-1.5,width:3,height:3));ctx.restoreGState()
+                    } }
+                }
+                specks(r.motes,target.chest,0.6)
+            }
+            // 4. Afterglow: a fading pool of light and a few embers once the sprite has ended.
+            if let g=MeadowSkillAmbientLight.afterglow(skill:id,age:time-(event.startedAt+event.spec.duration),spread:Double(event.spec.frameWidth)*0.3) {
+                glow(PartyPoint(event.center.x,event.groundY-2),Double(event.spec.frameWidth)*0.5,22,g.pool,color)
+                specks(g.motes,event.center,0.6)
             }
         }
         for h in hits {
