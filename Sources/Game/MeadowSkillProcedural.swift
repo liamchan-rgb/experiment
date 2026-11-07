@@ -28,7 +28,9 @@ enum MeadowSkillProcedural {
     struct Info { let duration: Double, release: Double, dim: Double, dimTint: RGB, support: Bool }
     static let skillIDs = ["starlightPulse", "dragonSoulWard", "dragonScaleWard", "runeSlash", "runeWard", "battleRune", "dragonFlame", "dragonOrder",
                            "healMicro", "healStandard", "healStrong", "rally", "sweep",
-                           "shieldShell", "shieldShellHit", "shieldBreak", "deathBurst", "projBow", "projStaff", "projArcher", "projDragon",
+                           "shieldShell", "shieldShellHit", "shieldBreak", "deathBurst",
+                           "hitSlime", "hitWolf", "hitArrowM", "hitStone", "hitTroll", "hitDragon",
+                           "deathSlime", "deathWolf", "deathGoblin", "deathStone", "deathTroll", "deathDragon", "playerDown", "downAura", "projBow", "projStaff", "projArcher", "projDragon",
                            "natural20", "shieldDome", "hitBlade", "hitGreat", "hitBow", "hitStaff", "hitClaw", "hitAmbush", "hitWard"]
     static let info: [String: Info] = [
         "starlightPulse": Info(duration: 1.6, release: 0.75, dim: 0.34, dimTint: RGB(0.80, 0.76, 1.0), support: false),
@@ -49,13 +51,18 @@ enum MeadowSkillProcedural {
         "shieldShell": Info(duration: 3.0, release: 0.5, dim: 0.0, dimTint: RGB(1, 1, 1), support: true),
         "shieldShellHit": Info(duration: 3.0, release: 0.5, dim: 0.0, dimTint: RGB(1, 1, 1), support: true),
         "shieldBreak": Info(duration: 1.2, release: 0.03, dim: 0.0, dimTint: RGB(1, 1, 1), support: false),
+        "deathSlime": deathInfo(1.8), "deathWolf": deathInfo(1.8), "deathGoblin": deathInfo(1.8), "deathStone": deathInfo(2.0), "deathTroll": deathInfo(1.8), "deathDragon": deathInfo(2.4),
+        "playerDown": Info(duration: 2.2, release: 0.05, dim: 0.0, dimTint: RGB(1, 1, 1), support: false),
+        "downAura": Info(duration: 3.0, release: 0.5, dim: 0.0, dimTint: RGB(1, 1, 1), support: true),
+        "hitSlime": hitInfo, "hitWolf": hitInfo, "hitArrowM": hitInfo, "hitStone": hitInfo, "hitTroll": hitInfo, "hitDragon": hitInfo,
         "deathBurst": Info(duration: 1.8, release: 0.04, dim: 0.0, dimTint: RGB(1, 1, 1), support: false),
         "projBow": projInfo(0.0, 0.19), "projStaff": projInfo(0.49, 0.21), "projArcher": projInfo(0.0, 0.22), "projDragon": projInfo(0.0, 0.22),
         "hitBlade": hitInfo, "hitGreat": hitInfo, "hitBow": hitInfo, "hitStaff": hitInfo, "hitClaw": hitInfo, "hitAmbush": hitInfo, "hitWard": hitInfo
     ]
     private static func projInfo(_ charge: Double, _ flight: Double) -> Info { Info(duration: charge + flight + 0.35, release: charge + flight, dim: 0.0, dimTint: RGB(1, 1, 1), support: false) }
     /// Effects that belong to a single blow or flight: no dim, no wash, no soft ambient light, no lens work of their own.
-    static func isBlow(_ id: String) -> Bool { id.hasPrefix("hit") || id.hasPrefix("proj") || id.hasPrefix("shieldShell") || id == "deathBurst" || id == "shieldBreak" }
+    static func isBlow(_ id: String) -> Bool { id.hasPrefix("hit") || id.hasPrefix("proj") || id.hasPrefix("shieldShell") || id.hasPrefix("death") || id == "downAura" || id == "shieldBreak" }
+    private static func deathInfo(_ d: Double) -> Info { Info(duration: d, release: 0.04, dim: 0.0, dimTint: RGB(1, 1, 1), support: false) }
     private static let hitInfo = Info(duration: 1.1, release: 0.05, dim: 0.0, dimTint: RGB(1, 1, 1), support: false)
     /// The procedural skill that draws a party action, if any (the two shield actions and the ally support share the shield dome).
     static func procID(for action: String) -> String? {
@@ -77,6 +84,20 @@ enum MeadowSkillProcedural {
         case "natural20": return Pal.gold.mid
         case "shieldDome", "hitWard": return Pal.ward.mid
         case "deathBurst": return Pal.dust.mid
+        case "deathSlime": return Pal.goo.mid
+        case "deathWolf": return Pal.wolf.mid
+        case "deathGoblin": return Pal.goblin.mid
+        case "deathStone": return Pal.stone.mid
+        case "deathTroll": return Pal.troll.mid
+        case "deathDragon": return Pal.ward.mid
+        case "playerDown": return Pal.down.mid
+        case "downAura": return Pal.gold.mid
+        case "hitSlime": return Pal.goo.mid
+        case "hitWolf": return Pal.wolf.mid
+        case "hitArrowM": return Pal.goblin.mid
+        case "hitStone": return Pal.stone.mid
+        case "hitTroll": return Pal.troll.mid
+        case "hitDragon": return Pal.ward.mid
         case "shieldBreak", "shieldShell", "shieldShellHit": return Pal.ward.mid
         case "projBow": return Pal.bow.mid
         case "projStaff": return Pal.staff.mid
@@ -116,6 +137,12 @@ enum MeadowSkillProcedural {
         static let rally = Pal(deep: RGB(120, 60, 8), body: RGB(240, 150, 30), mid: RGB(255, 213, 96), light: RGB(255, 250, 215), a1: RGB(255, 255, 255), a2: RGB(255, 196, 70))
         static let sweep = Pal(deep: RGB(20, 50, 140), body: RGB(92, 170, 255), mid: RGB(190, 232, 255), light: RGB(255, 255, 255), a1: RGB(255, 214, 120), a2: RGB(150, 200, 255))
         static let dust = Pal(deep: RGB(70, 55, 40), body: RGB(210, 170, 110), mid: RGB(245, 215, 150), light: RGB(255, 245, 220), a1: RGB(255, 255, 255), a2: RGB(255, 170, 80))
+        static let goo = Pal(deep: RGB(20, 70, 30), body: RGB(90, 210, 90), mid: RGB(170, 250, 140), light: RGB(235, 255, 215), a1: RGB(255, 255, 200), a2: RGB(60, 170, 110))
+        static let wolf = Pal(deep: RGB(60, 50, 70), body: RGB(200, 200, 225), mid: RGB(235, 235, 250), light: RGB(255, 255, 255), a1: RGB(255, 90, 80), a2: RGB(170, 60, 60))
+        static let goblin = Pal(deep: RGB(100, 60, 10), body: RGB(230, 160, 40), mid: RGB(255, 210, 110), light: RGB(255, 245, 200), a1: RGB(255, 255, 230), a2: RGB(180, 220, 90))
+        static let stone = Pal(deep: RGB(60, 55, 50), body: RGB(150, 140, 125), mid: RGB(205, 195, 175), light: RGB(245, 240, 225), a1: RGB(255, 230, 160), a2: RGB(110, 100, 90))
+        static let troll = Pal(deep: RGB(80, 50, 20), body: RGB(180, 120, 60), mid: RGB(225, 170, 100), light: RGB(255, 235, 190), a1: RGB(255, 200, 120), a2: RGB(120, 80, 40))
+        static let down = Pal(deep: RGB(90, 20, 30), body: RGB(220, 60, 60), mid: RGB(255, 150, 130), light: RGB(255, 235, 225), a1: RGB(255, 255, 255), a2: RGB(255, 210, 120))
         static let blade = Pal(deep: RGB(70, 80, 110), body: RGB(190, 205, 235), mid: RGB(235, 242, 255), light: RGB(255, 255, 255), a1: RGB(255, 225, 150), a2: RGB(160, 200, 255))
         static let great = Pal(deep: RGB(110, 60, 20), body: RGB(255, 170, 70), mid: RGB(255, 215, 140), light: RGB(255, 250, 225), a1: RGB(255, 255, 255), a2: RGB(255, 140, 60))
         static let bow = Pal(deep: RGB(20, 90, 50), body: RGB(110, 230, 150), mid: RGB(190, 255, 200), light: RGB(240, 255, 240), a1: RGB(255, 240, 170), a2: RGB(120, 255, 220))
@@ -242,12 +269,14 @@ enum MeadowSkillProcedural {
             case "sweep": all += sweepArc(t, geo, ti)
             case "natural20": all += natural20(t, geo, ti)
             case "shieldDome": all += shieldDome(t, geo, ti)
-            case "hitBlade", "hitGreat", "hitBow", "hitStaff", "hitClaw", "hitAmbush", "hitWard": all += hitEffect(id, t, geo, ti)
+            case "hitBlade", "hitGreat", "hitBow", "hitStaff", "hitClaw", "hitAmbush", "hitWard", "hitSlime", "hitWolf", "hitArrowM", "hitStone", "hitTroll", "hitDragon": all += hitEffect(id, t, geo, ti)
+            case "deathBurst", "deathSlime", "deathWolf", "deathGoblin", "deathStone", "deathTroll", "deathDragon": all += deathEffect(id, t, geo, ti)
+            case "playerDown": all += playerDown(t, geo, ti)
+            case "downAura": all += downAura(t, geo, ti)
             case "projBow", "projStaff", "projArcher", "projDragon": all += projectile(id, t, geo, ti)
             case "shieldBreak": all += shieldBreak(t, geo, ti)
             case "shieldShell": all += shieldShell(t, geo, ti)
             case "shieldShellHit": var g = geo; g.hitAge = t * 0.5; g.hitAngle = 0.4; g.power = 0.3; all += shieldShell(t, g, ti)
-            case "deathBurst": all += deathBurst(t, geo, ti)
             default: return []
             }
         }
@@ -1007,6 +1036,12 @@ enum MeadowSkillProcedural {
         case "hitClaw": return (.claw, "claw")
         case "hitAmbush": return (.ambush, "ambush")
         case "hitWard": return (.ward, "ward")
+        case "hitSlime": return (.goo, "goo")
+        case "hitWolf": return (.wolf, "bite")
+        case "hitArrowM": return (.goblin, "bow")
+        case "hitStone": return (.stone, "crumble")
+        case "hitTroll": return (.troll, "slam")
+        case "hitDragon": return (.ward, "magic")
         default: return nil
         }
     }
@@ -1016,6 +1051,7 @@ enum MeadowSkillProcedural {
         var o = Out(); let P = hs.0, st = hs.1, C = geo.caster, T = geo.targets[ti].chest, TF = geo.targets[ti].foot
         let pwr = geo.power, d: Double = T.x >= C.x ? 1.0 : -1.0, k = t - 0.05
         if k < 0 { return [] }
+        let ang0 = atan2(T.y - C.y, T.x - C.x), cs = cos(ang0), sn = sin(ang0)
         let S = 0.85 + 0.3 * pwr, fade = 1 - easeIn(k / 0.85)
         o.g(T.x, T.y, 120 * S * (0.5 + easeOut(k / 0.15)), 90 * S * (0.5 + easeOut(k / 0.15)), P.body, 0.55 * (1 - easeIn(k / 0.45)))
         o.g(T.x, T.y, 46 * S, 40 * S, P.light, 0.9 * (1 - easeIn(k / 0.14)))
@@ -1075,6 +1111,69 @@ enum MeadowSkillProcedural {
                 let a = Double(q) * 1.0472 + 0.5, rr = (30 + 50 * frac(q, 2)) * S * u
                 o.e(T.x + cos(a) * rr, T.y + sin(a) * rr * 0.8, 9 * S, 1.6, a, P.a1, 1 - easeIn(k / 0.5))
             }
+        case "goo":
+            let e = easeOut(k / 0.2)
+            o.r(T.x, TF.y - 2, 70 * S * e, 26 * S * e, 4 * max(0.0, 1 - k / 0.4) + 0.8, P.mid, 0.9 * (1 - easeIn(k / 0.45)))
+            for j in 0..<7 {
+                let jj = j + 31 * ti, a = ang0 + (frac(jj, 3) - 0.5) * 2.2, r = (40 + 110 * frac(jj, 4)) * S * easeOut(k / 0.3)
+                let bx = T.x + cos(a) * r, by = T.y + sin(a) * r * 0.5 + 120 * k * k * (1 + frac(jj, 6)), sz = (10 + 10 * frac(jj, 5)) * S, al = max(0.0, 1 - k / 0.7)
+                o.g(bx, by, sz, sz, P.body, al); o.g(bx, by, sz * 0.5, sz * 0.5, P.light, al * 0.8)
+            }
+            for j in 0..<5 { o.e(T.x + (frac(j, 2) - 0.5) * 50, T.y - 10 + 140 * k * (0.6 + frac(j, 3)), 10, 2.0, 1.5708, P.mid, max(0.0, 1 - k / 0.6)) }
+        case "bite":
+            let c = easeOut(k / 0.08), al = 1 - easeIn(k / 0.35)
+            o.arc(T.x, T.y - 34 * (1 - c) - 6, 46 * S, 30 * S, Double.pi + 0.4, 2 * Double.pi - 0.4, 4.0 * S, P.light, al)
+            o.arc(T.x, T.y + 34 * (1 - c) + 6, 46 * S, 30 * S, 0.4, Double.pi - 0.4, 4.0 * S, P.light, al)
+            for q in 0..<4 {
+                o.e(T.x + (Double(q) - 1.5) * 16, T.y - 12 - 22 * (1 - c), 9 * S, 1.8, 1.5708, P.light, al); o.e(T.x + (Double(q) - 1.5) * 16, T.y + 12 + 22 * (1 - c), 9 * S, 1.8, -1.5708, P.light, al)
+            }
+            for q in 0..<3 {
+                let kk = k - 0.03 * Double(q)
+                if kk < 0 { continue }
+                let off = Double(q - 1) * 16
+                o.e(T.x - sin(0.9 * d) * off, T.y + cos(0.9 * d) * off, 70 * S * easeOut(kk / 0.09), 3.0 * S, 0.9 * d, P.a1, 1 - easeIn(kk / 0.35))
+            }
+        case "crumble":
+            let chunkCols = [P.mid, P.a2]
+            for j in 0..<8 {
+                let jj = j + 31 * ti, a = ang0 + (frac(jj, 3) - 0.5) * 1.6, r = (30 + 120 * frac(jj, 4)) * S * easeOut(k / 0.4)
+                o.e(T.x + cos(a) * r, T.y + sin(a) * r * 0.6 + 220 * k * k * frac(jj, 6), 11 + 7 * frac(jj, 5), 6 + 3 * frac(jj, 5), k * (4 + 6 * frac(jj, 2)) + Double(j), chunkCols[j % 2], max(0.0, 1 - k / 0.8))
+            }
+            for j in 0..<4 { o.g(T.x + (frac(j, 2) - 0.5) * 80, T.y + 10 - 60 * k * (0.5 + frac(j, 3)), 34 + 12 * frac(j, 4), 26 + 10 * frac(j, 4), P.deep, 0.4 * max(0.0, 1 - k / 0.7)) }
+            for j in 0..<6 {
+                let a = Double(j - 2) * 0.4 - 0.2 + (d > 0 ? 0.0 : Double.pi), r = (80 + 90 * frac(j, 4)) * easeOut(k / 0.3)
+                o.e(TF.x + cos(a) * r * 0.5, TF.y - 2 + sin(a) * 10, r * 0.5 + 1, 1.6, a * 0.15, P.a1, max(0.0, 1 - k / 0.7))
+            }
+            let r = 40 + 170 * S * easeOut(k / 0.4)
+            o.r(TF.x, TF.y - 2, r, r * 0.26, 4.0 * max(0.0, 1 - k / 0.5) + 0.6, P.mid, 0.8 * (1 - easeIn(k / 0.5)))
+        case "slam":
+            let ringCols = [P.mid, P.light], chunkCols = [P.mid, P.a2]
+            for w in 0..<2 {
+                let uu = (k - 0.08 * Double(w)) / 0.6
+                if uu > 0 && uu < 1 {
+                    let R = 40 + 300 * S * easeOut(uu)
+                    o.r(TF.x, TF.y - 2, R, R * 0.24, 6.0 * (1 - uu) + 1.0, ringCols[w], 0.9 * (1 - easeIn(uu)))
+                }
+            }
+            o.e(T.x, T.y - 20, 150 * u, 22 * S, -1.5708, P.body, 0.6 * (1 - easeIn(k / 0.4))); o.e(T.x, T.y - 20, 140 * u, 7, -1.5708, P.light, 1 - easeIn(k / 0.3))
+            for j in 0..<14 { o.g(TF.x + (frac(j, 2) - 0.5) * 160, TF.y - 120 * k * (0.5 + frac(j, 3)), 24 + 10 * frac(j, 4), 20 + 8 * frac(j, 4), P.deep, 0.45 * max(0.0, 1 - k / 0.8)) }
+            for j in 0..<8 {
+                let jj = j + 31 * ti, a = -Double.pi / 2 + (frac(jj, 3) - 0.5) * 2.4, r = (60 + 150 * frac(jj, 4)) * S * easeOut(k / 0.45)
+                o.e(TF.x + cos(a) * r, TF.y + sin(a) * r + 260 * k * k * frac(jj, 6), 14 + 8 * frac(jj, 5), 8 + 3 * frac(jj, 5), k * (3 + 6 * frac(jj, 2)) + Double(j), chunkCols[j % 2], max(0.0, 1 - k / 0.85))
+            }
+        case "magic":
+            let ringCols = [P.mid, P.light, P.a2]
+            for w in 0..<3 {
+                let uu = (k - 0.07 * Double(w)) / 0.5
+                if uu > 0 && uu < 1 {
+                    let r = 20 + 150 * S * easeOut(uu)
+                    o.r(T.x, T.y, r, r, 3.0 * (1 - uu) + 0.6, ringCols[w], 0.9 * (1 - easeIn(uu)))
+                }
+            }
+            for q in 0..<12 {
+                let a = Double(q) * 0.5236 + k, L2 = 110 * S * easeOut(k / 0.15)
+                o.e(T.x + cos(a) * L2 * 0.5, T.y + sin(a) * L2 * 0.5, L2 * 0.5 + 1, 2.2, a, P.light, 1 - easeIn(k / 0.4))
+            }
         default:
             for w in 0..<2 {
                 let uu = (k - 0.07 * Double(w)) / 0.5
@@ -1088,7 +1187,7 @@ enum MeadowSkillProcedural {
                 o.arc(T.x, T.y, 54 * S, 70 * S, a0, a0 + 0.5, 3.0, P.light, 0.8 * (1 - easeIn(k / 0.5)))
             }
         }
-        let ang0 = atan2(T.y - C.y, T.x - C.x), cs = cos(ang0), sn = sin(ang0), shardCols = [P.light, P.mid, P.a1]
+        let shardCols = [P.light, P.mid, P.a1]
         o.e(T.x - cs * 50 * S * u, T.y - sn * 50 * S * u, 140 * S * u + 1, 3.2 * S, ang0, P.light, 1 - easeIn(k / 0.25))
         for q in 0..<8 {
             let a = Double(q) * 0.7854 + 0.2
@@ -1313,23 +1412,84 @@ enum MeadowSkillProcedural {
         return o.prims
     }
 
-    // MARK: monster death (the body comes apart and is blown to the right)
+    // MARK: monster death (the body comes apart in the way of its species)
 
-    static func deathBurst(_ t: Double, _ geo: Geometry, _ ti: Int) -> [Prim] {
-        var o = Out(); let P = Pal.dust, chest = geo.targets[ti].chest, foot = geo.targets[ti].foot
+    private static func deathStyle(_ id: String) -> (Pal, String) {
+        switch id {
+        case "deathSlime": return (.goo, "goo")
+        case "deathWolf": return (.wolf, "dust")
+        case "deathGoblin": return (.goblin, "dust")
+        case "deathStone": return (.stone, "crumble")
+        case "deathTroll": return (.troll, "dust")
+        case "deathDragon": return (.ward, "rise")
+        default: return (.dust, "dust")
+        }
+    }
+
+    static func deathEffect(_ id: String, _ t: Double, _ geo: Geometry, _ ti: Int) -> [Prim] {
+        var o = Out(); let ds = deathStyle(id), P = ds.0, mode = ds.1, chest = geo.targets[ti].chest, foot = geo.targets[ti].foot
         let cx = chest.x, cy = chest.y, fx = foot.x, fy = foot.y, hgt = max(40.0, (fy - cy) * 2.0), wid = hgt * 0.7
         o.g(cx, cy, 100 * (0.5 + easeOut(t / 0.2)), 100 * (0.5 + easeOut(t / 0.2)), P.body, 0.5 * (1 - easeIn(t / 0.5)))
         o.g(cx, cy, 40, 40, P.light, 0.8 * (1 - easeIn(t / 0.2)))
         o.g(fx, fy - 2, 90, 20, P.deep, 0.25 * (1 - easeIn(t / 1.6)))
         let cols = [P.light, P.mid, P.a2]
-        for i in 0..<Int(52 + 20 * geo.power) {
-            let hy = frac(i, 2), born = 0.04 + 0.55 * frac(i, 1) * (1 - 0.5 * hy), tt = t - born, life = 0.9 + 0.6 * frac(i, 3)
-            if !(tt >= 0 && tt < life) { continue }
-            let x0 = cx + (frac(i, 4) - 0.5) * wid, y0 = fy - hy * hgt
-            let drift = (60 + 200 * frac(i, 5)) * easeOut(tt / 0.9) * (0.6 + 0.8 * hy)
-            let x = x0 + drift, y = y0 - 40 * tt * (0.4 + frac(i, 6)) + 9 * sin(tt * 5 + Double(i))
-            let vx = 200 * (0.6 + 0.8 * hy) * (1 - tt / life) + 40, vy = -40.0, a = pw(1 - tt / life, 0.8) * smooth(tt / 0.05)
-            o.e(x, y, 22 + 24 * frac(i, 7), 2.4 + 1.6 * frac(i, 8), atan2(vy, vx), cols[i % 3], a * 0.95); o.g(x, y, 9, 9, P.body, a * 0.4)
+        switch mode {
+        case "dust":
+            for i in 0..<Int(52 + 20 * geo.power) {
+                let hy = frac(i, 2), born = 0.04 + 0.55 * frac(i, 1) * (1 - 0.5 * hy), tt = t - born, life = 0.9 + 0.6 * frac(i, 3)
+                if !(tt >= 0 && tt < life) { continue }
+                let x0 = cx + (frac(i, 4) - 0.5) * wid, y0 = fy - hy * hgt
+                let drift = (60 + 200 * frac(i, 5)) * easeOut(tt / 0.9) * (0.6 + 0.8 * hy)
+                let x = x0 + drift, y = y0 - 40 * tt * (0.4 + frac(i, 6)) + 9 * sin(tt * 5 + Double(i))
+                let vx = 200 * (0.6 + 0.8 * hy) * (1 - tt / life) + 40, vy = -40.0, a = pw(1 - tt / life, 0.8) * smooth(tt / 0.05)
+                o.e(x, y, 22 + 24 * frac(i, 7), 2.4 + 1.6 * frac(i, 8), atan2(vy, vx), cols[i % 3], a * 0.95); o.g(x, y, 9, 9, P.body, a * 0.4)
+            }
+            for q in 0..<6 {
+                let tt = t - 0.1 - 0.1 * Double(q)
+                if tt > 0 && tt < 0.8 {
+                    let u = easeOut(tt / 0.8)
+                    o.e(cx + 40 + 220 * u, fy - (Double(q) + 0.5) * hgt / 6, 40 + 30 * frac(q, 2), 1.2, 0.0, P.light, 0.5 * (1 - tt / 0.8))
+                }
+            }
+        case "goo":
+            for i in 0..<22 {
+                let tt = t - 0.03 - 0.12 * frac(i, 1), life = 1.0 + 0.4 * frac(i, 3)
+                if !(tt >= 0 && tt < life) { continue }
+                let a = -1.5708 + (frac(i, 4) - 0.5) * 3.4, sp = 80 + 160 * frac(i, 5)
+                let x = cx + (frac(i, 6) - 0.3) * 30 + cos(a) * sp * easeOut(tt / 0.5) + 60 * tt
+                var y = cy + sin(a) * sp * easeOut(tt / 0.5) + 300 * tt * tt * (0.5 + frac(i, 7))
+                y = min(y, fy - 2)
+                let sz = 9 + 12 * frac(i, 8), al = pw(1 - tt / life, 0.6) * smooth(tt / 0.04)
+                o.g(x, y, sz, sz, P.body, al); o.g(x, y, sz * 0.5, sz * 0.5, P.light, al * 0.8)
+            }
+            o.g(fx + 20, fy - 2, 50 + 110 * easeOut(t / 0.8), 12 + 14 * easeOut(t / 0.8), P.body, 0.55 * (1 - easeIn((t - 0.3) / 1.4)))
+        case "crumble":
+            let chunkCols = [P.mid, P.a2, P.body]
+            for i in 0..<16 {
+                let tt = t - 0.04 - 0.25 * frac(i, 1), life = 1.3
+                if !(tt >= 0 && tt < life) { continue }
+                let x0 = cx + (frac(i, 4) - 0.5) * wid, y0 = fy - frac(i, 2) * hgt
+                let x = x0 + (frac(i, 5) - 0.3) * 60 * easeOut(tt / 0.6) + 60 * tt, y = min(fy - 3, y0 + 300 * tt * tt * (0.6 + frac(i, 6)))
+                let al = pw(1 - tt / life, 0.6)
+                o.e(x, y, 11 + 8 * frac(i, 7), 6 + 4 * frac(i, 8), tt * (3 + 5 * frac(i, 2)) + Double(i), chunkCols[i % 3], al)
+                if y >= fy - 4 { o.g(x, fy - 6, 22, 12, P.deep, 0.35 * al) }
+            }
+            for q in 0..<5 {
+                let tt = t - 0.15 * Double(q)
+                if tt > 0 && tt < 1.0 { o.g(cx + (frac(q, 2) - 0.5) * wid, fy - 8 - 30 * tt, 40 + 20 * frac(q, 3), 24 + 10 * frac(q, 3), P.deep, 0.4 * (1 - tt / 1.0)) }
+            }
+        default:
+            o.e(fx, fy - 150, 300 * smooth(t / 0.3), 18 * (1 - smooth((t - 0.8) / 0.8)) + 0.4, -1.5708, P.mid, 0.6 * (1 - easeIn(t / 1.6)))
+            o.e(fx, fy - 150, 300 * smooth(t / 0.3), 6 + 0.4, -1.5708, P.light, 0.9 * (1 - easeIn(t / 1.4)))
+            let r = 30 + 220 * easeOut(t / 0.8)
+            o.r(fx, fy - 2, r, r * 0.26, 4.0 * max(0.0, 1 - t / 0.9) + 0.6, P.mid, 0.8 * (1 - easeIn(t / 0.9)))
+            for i in 0..<44 {
+                let tt = t - 0.04 - 0.4 * frac(i, 1), life = 1.2 + 0.5 * frac(i, 3)
+                if !(tt >= 0 && tt < life) { continue }
+                let x = cx + (frac(i, 4) - 0.5) * wid + sin(tt * 4 + Double(i)) * 14, y = fy - frac(i, 2) * hgt - 250 * tt * (0.4 + frac(i, 6)), a = pw(1 - tt / life, 0.8) * smooth(tt / 0.05)
+                o.e(x, y, 14 + 12 * frac(i, 7), 2.0, -1.5708, cols[i % 3], a * 0.9); o.g(x, y, 8, 8, P.body, a * 0.4)
+            }
+            o.g(cx, cy - 120 * easeOut(t / 1.2), 50 * (1 - easeIn(t / 1.6)) + 4, 50 * (1 - easeIn(t / 1.6)) + 4, P.light, 0.8 * (1 - easeIn(t / 1.6)))
         }
         for j in 0..<8 {
             let tt = t - 0.05 - 0.3 * frac(j, 1)
@@ -1338,12 +1498,53 @@ enum MeadowSkillProcedural {
                 o.g(x, fy - 4 - 8 * frac(j, 4), 16, 7, P.deep, 0.4 * (1 - tt / 1.0))
             }
         }
-        for q in 0..<6 {
-            let tt = t - 0.1 - 0.1 * Double(q)
-            if tt > 0 && tt < 0.8 {
-                let u = easeOut(tt / 0.8)
-                o.e(cx + 40 + 220 * u, fy - (Double(q) + 0.5) * hgt / 6, 40 + 30 * frac(q, 2), 1.2, 0.0, P.light, 0.5 * (1 - tt / 0.8))
+        return o.prims
+    }
+
+    // MARK: a hero goes down (a shock, a soul rising, and a light that waits)
+
+    static func playerDown(_ t: Double, _ geo: Geometry, _ ti: Int) -> [Prim] {
+        var o = Out(); let P = Pal.down, chest = geo.targets[ti].chest, foot = geo.targets[ti].foot, cx = chest.x, cy = chest.y, fx = foot.x, fy = foot.y
+        if ti == 0 {
+            o.f(RGB(255, 255, 255), 0.5 * exp(-t * 10))
+            o.f(P.body, 0.25 * exp(-t * 6))
+        }
+        o.g(cx, cy, 140 * (0.5 + easeOut(t / 0.2)), 140 * (0.5 + easeOut(t / 0.2)), P.body, 0.6 * (1 - easeIn(t / 0.5)))
+        o.g(cx, cy, 60, 60, P.light, 0.9 * (1 - easeIn(t / 0.18)))
+        let ringCols = [P.mid, P.a2]
+        for w in 0..<2 {
+            let u = (t - 0.1 * Double(w)) / 0.9
+            if u > 0 && u < 1 {
+                let R = 40 + 360 * easeOut(u)
+                o.r(fx, fy - 2, R, R * 0.26, 5.0 * (1 - u) + 1.0, ringCols[w], 0.8 * (1 - easeIn(u)))
             }
+        }
+        for q in 0..<8 {
+            let a = Double(q) * 0.7854 + 0.2, r = (50 + 120 * frac(q, 2)) * easeOut(t / 0.5)
+            o.e(fx + cos(a) * r, fy - 4 + sin(a) * r * 0.2, 20, 2.0, a * 0.2, P.deep, 0.6 * max(0.0, 1 - t / 0.7))
+        }
+        o.e(fx, fy - 130, 140 * smooth(t / 0.4), 16 * smooth(t / 0.4) + 0.4, -1.5708, P.mid, 0.35 * (1 - easeIn(t / 1.6)))
+        let soulCols = [P.a2, P.light]
+        for q in 0..<10 {
+            let u = (t - 0.15 - 0.12 * Double(q)) / 1.6
+            if u > 0 && u < 1 {
+                let x = fx + sin(u * 5 + Double(q)) * 28 * (0.4 + u), y = fy - 20 - u * 260 * (0.6 + 0.4 * frac(q, 2)), al = sin(Double.pi * u), col = soulCols[q % 2]
+                o.g(x, y, 10, 10, col, 0.8 * al); o.g(x, y + 14, 7, 7, col, 0.5 * al); o.g(x, y + 26, 5, 5, col, 0.3 * al)
+            }
+        }
+        return o.prims
+    }
+
+    /// A fallen hero waits for a revival: a pale light and a few motes rise slowly; `t0` is the time since the fall.
+    static func downAura(_ t0: Double, _ geo: Geometry, _ ti: Int) -> [Prim] {
+        var o = Out(); let P = Pal.gold, fx = geo.targets[ti].foot.x, fy = geo.targets[ti].foot.y, t = max(0.0, t0)
+        let A = smooth(t / 0.6)
+        o.g(fx, fy - 4, 60, 14, P.body, 0.18 * A)
+        o.r(fx, fy - 2, 44 + 4 * sin(t * 2), (44 + 4 * sin(t * 2)) * 0.28, 1.4, P.mid, (0.35 + 0.15 * sin(t * 2)) * A)
+        o.e(fx, fy - 90, 90, 3.0, -1.5708, P.light, (0.22 + 0.08 * sin(t * 1.5)) * A)
+        for q in 0..<7 {
+            let ph = frac(q + 5 * ti, 1), u = pm(t * 0.25 + ph, 1.0)
+            o.g(fx + sin(ph * 6.2832 + t * 0.6) * 34, fy - 12 - u * 150, 6, 6, P.a2, 0.7 * sin(Double.pi * u) * A)
         }
         return o.prims
     }
@@ -1519,6 +1720,8 @@ enum MeadowSkillProcedural {
             if r >= 0 && r < 1.0 { c.dy += 0.9 * sin(t * 47) * (1 - r) }
         case "dragonScaleWard":
             c.zoom = max(0, thump(t, 0.56, 0.032, 9, 0)); c.dy = -thump(t, 0.56, 3.2, 10, 30, 0.6)
+        case "playerDown":
+            c.zoom = max(0, thump(t, 0, 0.06, 4, 0)); c.dx = direction * thump(t, 0, 10, 4, 30); c.dy = -thump(t, 0, 8, 4.5, 36, 0.6); c.rotation = -direction * thump(t, 0, 0.016, 4, 22)
         case "natural20":
             c.zoom = max(0, thump(t, 0, 0.07, 5, 0)); c.dx = direction * thump(t, 0, 12, 4.5, 34); c.dy = -thump(t, 0, 8, 5, 40, 0.6)
             c.rotation = direction * thump(t, 0, 0.02, 5, 24)
@@ -1540,6 +1743,41 @@ enum MeadowSkillProcedural {
         return c
     }
 
+    // MARK: trauma (how hard an effect shakes the world)
+
+    /// 0...1.2: the shake an effect adds to the world `t` seconds into it. It jumps up at the release and dies away; the stage turns the summed
+    /// trauma into a continuous multi-axis shake (offset, tilt, a little zoom), so a hit reads as a hit even on a small screen.
+    static func trauma(skill id: String, t: Double, power: Double) -> Double {
+        guard let i = info[id], t >= 0, !id.hasPrefix("hit"), !id.hasPrefix("proj"), !id.hasPrefix("heal"), !id.hasPrefix("shieldShell"), id != "downAura", id != "shieldDome" else { return 0 }
+        let amp: Double, rate: Double
+        switch id {
+        case "dragonFlame": amp = 0.95; rate = 3.2
+        case "natural20": amp = 1.0; rate = 1.7
+        case "playerDown": amp = 0.9; rate = 2.6
+        case "sweep": amp = 0.8; rate = 4.0
+        case "runeSlash": amp = 0.7; rate = 4.5
+        case "starlightPulse", "dragonScaleWard", "dragonOrder": amp = 0.5; rate = 4.0
+        case "shieldBreak": amp = 0.6; rate = 4.5
+        case "deathDragon": amp = 0.8; rate = 3.0
+        case "deathTroll": amp = 0.6; rate = 3.6
+        case "deathStone": amp = 0.7; rate = 3.4
+        case "deathSlime", "deathWolf", "deathGoblin", "deathBurst": amp = 0.4; rate = 4.5
+        default: amp = 0.42; rate = 4.5
+        }
+        let r = t - i.release
+        guard r >= -0.01 else { return 0 }
+        let rise = smooth((r + 0.01) / 0.03)
+        let boost = id == "dragonFlame" && r > 0 && r < 1.2 ? 0.3 * (1 - r / 1.2) : 0
+        return (amp * min(1.6, max(0.6, power)) * exp(-max(0, r) * rate) + boost) * rise
+    }
+
+    /// The continuous shake for a trauma level at scene time `time`: offset in layout units, tilt in radians, zoom.
+    static func shake(trauma tr: Double, time: Double) -> (dx: Double, dy: Double, rotation: Double, zoom: Double) {
+        let k = min(1.0, max(0.0, tr)), s = pow(k, 1.5)
+        func n(_ seed: Double) -> Double { sin(time * 43 + seed) * 0.55 + sin(time * 71 + seed * 2.1) * 0.3 + sin(time * 109 + seed * 3.7) * 0.15 }
+        return (26 * s * n(1.3), 18 * s * n(4.1), 0.028 * s * n(7.7), 0.035 * k)
+    }
+
     // MARK: director shot (the lens follows the story of the skill)
 
     /// A framing request for the stage: lean the lens toward `focus` (stage coordinates) by `weight` (0...1) and push in by `zoom`.
@@ -1551,6 +1789,12 @@ enum MeadowSkillProcedural {
     /// Healing micro-effects have no director shot - they are the stage's background, not a cast.
     static func shot(skill id: String, t: Double, geo: Geometry) -> Shot {
         guard !id.hasPrefix("heal"), !isBlow(id), t >= 0, let i = info[id], t < i.duration, !geo.targets.isEmpty else { return .idle }
+        if id == "playerDown" {
+            // A hero falls: the lens drifts in on the body and holds for a while.
+            let n = Double(geo.targets.count)
+            let w = smooth(t / 0.2) * (1 - smooth((t - 1.0) / 0.8))
+            return Shot(focusX: geo.targets.reduce(0) { $0 + $1.foot.x } / n, focusY: geo.targets.reduce(0) { $0 + $1.foot.y - 30 } / n, weight: w, zoom: w * 0.22)
+        }
         if id == "natural20" {
             // The roll that ends the fight: straight in on the target, a long hold, a slow release.
             let n = Double(geo.targets.count)

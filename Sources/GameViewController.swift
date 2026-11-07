@@ -64,6 +64,7 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
     private let resetButton = ParchmentButton(symbol: .reset)
     private let zoomButton = ParchmentButton(symbol: .zoom)
     private let shadowLabButton = UIButton(type: .system)
+    private let effectsLabButton = UIButton(type: .system)
     private let gaitTestButton = UIButton(type: .system)
     private let battlePreviewButton = UIButton(type: .system)
     private var battlePreviewView: MeadowBattlePreviewView?
@@ -145,6 +146,20 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
         if previewMap == nil { configureCampSave() }
         configureGaitControls()
         configureBattlePreview()
+        // The old entry points (light lab, gait test, the battle demos, the loadout screen) are gone from the home screen: only the random map
+        // and the effects review lab are left. (Their code stays for the campaign's own battles.)
+        for control in [shadowLabButton,gaitTestButton,battlePreviewButton,p1AppearanceButton,gaitPanel] as [UIView] { control.removeFromSuperview() }
+        var effectsStyle=labStyle
+        effectsStyle.title="特效审核"
+        effectsLabButton.configuration=effectsStyle
+        effectsLabButton.accessibilityIdentifier="openEffectsLab"
+        effectsLabButton.addAction(UIAction { [weak self] _ in
+            guard let self else{return}
+            let lab=MeadowEffectsLabViewController();lab.modalPresentationStyle = .fullScreen
+            self.present(lab,animated:true)
+        },for:.touchUpInside)
+        effectsLabButton.isHidden=previewMap != nil
+        view.addSubview(effectsLabButton)
         if let campaign {
             scene.campaign=campaign
             scene.onCampaignChanged={ [weak self] in DispatchQueue.main.async {self?.refreshCampaignStatus()} }
@@ -301,6 +316,7 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
         let spacing = button + 2
         titleButton.frame = CGRect(x: max(inset.left, 10) + 4, y: top, width: isPad ? 88 : 70, height: isPad ? 44 : 38)
         shadowLabButton.frame = CGRect(x: titleButton.frame.maxX + 8, y: top + 2, width: 96, height: button)
+        effectsLabButton.frame = CGRect(x: titleButton.frame.maxX + 8, y: top + 2, width: 96, height: button)
         gaitTestButton.frame = CGRect(x: (scene.gaitTest == nil ? shadowLabButton.frame.maxX : titleButton.frame.maxX) + 8,
                                       y: top + 2, width: 100, height: button)
         let battleX = battlePreviewActive ? titleButton.frame.maxX + 8 : gaitTestButton.frame.maxX + 8

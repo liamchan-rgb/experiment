@@ -48,6 +48,8 @@ final class MeadowPartyStageView:UIView {
     /// Where every unit is drawn right now (after travel and knock-back); effects follow these.
     private var liveFeet:[String:PartyPoint]=[:]
     private var washBase=UIColor.clear
+    /// The system's Reduce Motion switch only turns the camera work off when this is asked for (`MeadowCameraRespectsReduceMotion`); by default the camera always works.
+    private static var reduceMotion:Bool { UIAccessibility.isReduceMotionEnabled && UserDefaults.standard.bool(forKey:"MeadowCameraRespectsReduceMotion") }
     private let barTop=UIView(),barBottom=UIView()
     /// The GPU drawer for procedural skills (nil: Metal unavailable, the effects layer draws them with CoreGraphics).
     private var gpu:MeadowSkillGPUView?
@@ -215,7 +217,10 @@ final class MeadowPartyStageView:UIView {
     private func spawnBlow(_ intent:PartyIntent,target id:String,hit:PartyPoint,foot:PartyPoint,templates:[String:String],tier:MeadowBattleHitTier,blocked:Bool,delay:Double) {
         let name:String
         if blocked { name="hitWard" }
-        else if intent.enemy { name="hitClaw" }
+        else if intent.enemy {
+            // Every species hits in its own way (see `MeadowSkillProcedural.hitEffect`).
+            switch intent.monsterTemplateID ?? "" { case "slime":name="hitSlime";case "wolf":name="hitWolf";case "goblinArcher":name="hitArrowM";case "stoneGuardian":name="hitStone";case "caveTroll":name="hitTroll";case "ruinDragon":name="hitDragon";default:name="hitClaw" }
+        }
         else if intent.action == .ambush { name="hitAmbush" }
         else { switch intent.weaponID ?? "" { case "greatSword":name="hitGreat";case "huntingBow":name="hitBow";case "legendaryStaff":name="hitStaff";default:name="hitBlade" } }
         spawnProc(name,intent,target:id,hit:hit,foot:foot,templates:templates,power:tier.intensity*(intent.action == .heavyStrike ? 1.2:1),delay:delay)
@@ -253,11 +258,13 @@ final class MeadowPartyStageView:UIView {
     }
     /// The roll that ends the fight: a long, loud effect on the target, a hard push-in, and a run of heavy haptics.
     private func spawnNaturalTwenty(_ intent:PartyIntent,receipt:OperationReceipt) {
-        guard let foot=PartyVisual.foot(intent.target) else { return }
-        let templates=receipt.before.units.mapValues(\.templateID)
-        let chest=PartyVisual.hitPoint(target:intent.target,weaponID:intent.weaponID,templateID:templates[intent.target]),casterChest=PartyVisual.skillEffectCenter(targets:[intent.actor],actor:intent.actor,templates:templates),casterFoot=PartyVisual.foot(intent.actor) ?? foot
+        spawnNaturalTwenty(actor:intent.actor,target:intent.target,weaponID:intent.weaponID,templates:receipt.before.units.mapValues(\.templateID))
+    }
+    func spawnNaturalTwenty(actor:String,target:String,weaponID:String?,templates:[String:String],delay:Double=0) {
+        guard let foot=PartyVisual.foot(target) else { return }
+        let chest=PartyVisual.hitPoint(target:target,weaponID:weaponID,templateID:templates[target]),casterChest=PartyVisual.skillEffectCenter(targets:[actor],actor:actor,templates:templates),casterFoot=PartyVisual.foot(actor) ?? foot
         let geo=MeadowSkillProcedural.Geometry(caster:.init(casterChest.x,casterChest.y),casterFoot:.init(casterFoot.x,casterFoot.y),targets:[.init(chest:.init(chest.x,chest.y),foot:.init(foot.x,foot.y))],ground:foot.y)
-        procVFX.append(MeadowPartyProcEvent(skill:"natural20",start:sceneTime,direction:chest.x>=casterChest.x ? 1:-1,geo:geo,casterID:intent.actor,targetIDs:[intent.target]))
+        procVFX.append(MeadowPartyProcEvent(skill:"natural20",start:sceneTime+delay,direction:chest.x>=casterChest.x ? 1:-1,geo:geo,casterID:actor,targetIDs:[target]))
         MeadowBattleHaptics.naturalTwenty()
     }
     private func apply(_ receipt:OperationReceipt,intent:PartyIntent) {
@@ -314,9 +321,14 @@ final class MeadowPartyStageView:UIView {
             }
             if before.isAlive && !after.isAlive && after.kind == .monster {
                 deaths[id]=sceneTime
-                spawnProc("deathBurst",intent,target:id,hit:registered,foot:foot,templates:receipt.before.units.mapValues(\.templateID),power:1.0,delay:0)
+                let deathName:String
+                switch before.templateID { case "slime":deathName="deathSlime";case "wolf":deathName="deathWolf";case "goblinArcher":deathName="deathGoblin";case "stoneGuardian":deathName="deathStone";case "caveTroll":deathName="deathTroll";case "ruinDragon":deathName="deathDragon";default:deathName="deathBurst" }
+                spawnProc(deathName,intent,target:id,hit:registered,foot:foot,templates:receipt.before.units.mapValues(\.templateID),power:1.0,delay:0)
             }
-            if before.isAlive && !after.isAlive && after.kind == .player { recovery[id]=nil;recoveryTier[id]=nil;fallen[id]=sceneTime }
+            if before.isAlive && !after.isAlive && after.kind == .player {
+                recovery[id]=nil;recoveryTier[id]=nil;fallen[id]=sceneTime
+                spawnProc("playerDown",intent,target:id,hit:PartyPoint(foot.x,foot.y-40),foot:foot,templates:receipt.before.units.mapValues(\.templateID),power:1.0,delay:0)
+            }
         }
         if strongestHit>0 {
             let tier=MeadowBattleHitTier.classify(damage:strongestHit,killed:killedAny)
@@ -486,6 +498,10 @@ final class MeadowPartyStageView:UIView {
             return (foot:base,chest:PartyPoint(base.x+5*PartyVisual.heroScale,base.y-70*PartyVisual.heroScale),tier:tier,age:sceneTime-at)
         }
         fx.procEffects=procVFX;fx.liveFeet=liveFeet
+        fx.downed=state.units.values.filter { renderIDs.contains($0.id) && $0.kind == .player && !$0.isAlive }.compactMap { unit in
+            guard let foot=liveFeet[unit.id] ?? PartyVisual.foot(unit.id) else { return nil }
+            return (foot:foot,age:fallen[unit.id].map { sceneTime-$0 } ?? 10)
+        }
         fx.shields=state.units.values.filter { renderIDs.contains($0.id) && $0.isAlive }.compactMap { unit in
             let shield=displayedVitals(for:unit.id,health:unit.health,shield:unit.shield).shield
             guard shield>0,let baseFoot=PartyVisual.foot(unit.id) else { return nil }
@@ -502,37 +518,42 @@ final class MeadowPartyStageView:UIView {
         } else { fx.runes=nil }
         fx.hits=Array(hitFeel.values)
         var kick=MeadowBattleHitFeel.Camera.zero
-        if let k=kickFeel,sceneTime-k.at<0.9,!UIAccessibility.isReduceMotionEnabled { kick=MeadowBattleHitFeel.camera(age:sceneTime-k.at,tier:k.tier,direction:k.direction) }
-        if !UIAccessibility.isReduceMotionEnabled {
+        let still=Self.reduceMotion
+        if let k=kickFeel,sceneTime-k.at<0.9,!still { kick=MeadowBattleHitFeel.camera(age:sceneTime-k.at,tier:k.tier,direction:k.direction) }
+        var trauma=0.0
+        if !still {
             for e in procVFX {
                 let t=sceneTime-e.start
                 let c=MeadowSkillProcedural.scaled(MeadowSkillProcedural.camera(skill:e.skill,t:t,direction:e.direction),skill:e.skill,t:t,power:e.power)
                 kick.dx+=c.dx;kick.dy+=c.dy;kick.zoom+=c.zoom;kick.rotation+=c.rotation
+                trauma+=MeadowSkillProcedural.trauma(skill:e.skill,t:t,power:e.power)
             }
+            // A plain blow (or a broken shield) shakes by its hit tier.
+            if let k=kickFeel { let a=sceneTime-k.at;if a>=0 { trauma+=[0.45,0.7,1.0][min(2,max(0,k.tier.rawValue))]*exp(-a*4.0) } }
         }
+        // The shake itself: a continuous multi-axis rattle driven by the summed trauma (see MeadowSkillProcedural.shake).
+        let rattle=MeadowSkillProcedural.shake(trauma:min(1,trauma),time:sceneTime)
         // Director shot: close-up on whoever casts, a swing to the targets on release, a slow pull back.
         var shot=MeadowSkillProcedural.Shot.idle
-        if !UIAccessibility.isReduceMotionEnabled {
+        if !still {
             for e in procVFX {
                 let s=MeadowSkillProcedural.shot(skill:e.skill,t:sceneTime-e.start,geo:e.geometry(live:liveFeet))
                 if s.weight>shot.weight { shot=s }
             }
         }
         let worldScale=bounds.width/1000,layoutUnit=bounds.width/760
-        let totalZoom=CGFloat(kick.zoom+shot.zoom),sceneScale=worldScale*(1+totalZoom)
+        // Zoom enough to keep the world's edge out of view while it rattles.
+        let cover=CGFloat(abs(rattle.dx)+abs(kick.dx))*layoutUnit/(bounds.width/2)+CGFloat(abs(rattle.rotation)+abs(kick.rotation))*0.6
+        let totalZoom=CGFloat(kick.zoom+shot.zoom+rattle.zoom)+cover,sceneScale=worldScale*(1+totalZoom)
         var shotX=CGFloat(0),shotY=CGFloat(0)
         if shot.weight>0 {
-            // Slide toward the focus.
-            shotX=CGFloat(-(shot.focusX-500)*shot.weight)*sceneScale
-            shotY=CGFloat(-(shot.focusY-300)*0.8*shot.weight)*sceneScale
+            // Slide toward the focus, but never further than the zoom lets the plates cover (the world is 1000 wide, the plates run y -159...758).
+            let maxX=500*(1-1/(1+Double(totalZoom))),slackY=max(0,459-Double(bounds.height/(2*sceneScale)))+30
+            shotX=CGFloat(min(maxX,max(-maxX,-(shot.focusX-500)*shot.weight)))*sceneScale
+            shotY=CGFloat(min(slackY,max(-slackY,-(shot.focusY-300)*0.8*shot.weight)))*sceneScale
         }
-        // The whole slide (shot + lens kick) is kept inside what the plates can cover, so the world edge never shows:
-        // the world is 1000 wide and the plates run y -159...758; a zoom of z lets the frame slide 500*z units sideways, less what rotation uses up (a few units of floor keep the small shakes alive at no zoom).
-        let kickX=CGFloat(kick.dx)*layoutUnit+shotX,kickY=CGFloat(kick.dy)*layoutUnit+shotY
-        let maxSlideX=max(5*layoutUnit,bounds.width/2*totalZoom-abs(CGFloat(kick.rotation))*bounds.width/2)
-        let maxSlideY=max(30*layoutUnit,(459*sceneScale-bounds.height/2)-abs(CGFloat(kick.rotation))*bounds.width/2)
-        var worldTransform=CGAffineTransform(translationX:min(maxSlideX,max(-maxSlideX,kickX)),y:min(maxSlideY,max(-maxSlideY,kickY)))
-        worldTransform=worldTransform.rotated(by:CGFloat(kick.rotation)).scaledBy(x:sceneScale,y:sceneScale)
+        var worldTransform=CGAffineTransform(translationX:(CGFloat(kick.dx+rattle.dx))*layoutUnit+shotX,y:(CGFloat(kick.dy+rattle.dy))*layoutUnit+shotY)
+        worldTransform=worldTransform.rotated(by:CGFloat(kick.rotation+rattle.rotation)).scaledBy(x:sceneScale,y:sceneScale)
         world.transform=worldTransform
         // Cinema bars: while the lens is on a close-up, black bars slide in at the top and bottom, so the camera work reads at a glance.
         let barH=bounds.height*0.065*CGFloat(shot.weight)
@@ -623,6 +644,8 @@ private final class MeadowPartyEffectsView:UIView {
     var onFlash:((UIColor?)->Void)?
     /// Every standing shield: where the unit is, how full it is, how old it is, and when/where it last blocked a blow.
     var shields:[(foot:PartyPoint,chest:PartyPoint,level:Double,age:Double,hitAge:Double,hitAngle:Double,wide:Double)]=[]
+    /// Fallen heroes (foot, seconds since the fall): a pale light waits over each.
+    var downed:[(foot:PartyPoint,age:Double)]=[]
     /// True when the GPU view draws the procedural skills and healing; this layer then leaves them out.
     var gpuDrawsSkills=false
     /// Everything the procedural skills draw this frame (soft light first, then the shapes), for the GPU.
@@ -632,6 +655,10 @@ private final class MeadowPartyEffectsView:UIView {
             var geo=MeadowSkillProcedural.Geometry(caster:.init(sh.chest.x,sh.chest.y),casterFoot:.init(sh.foot.x,sh.foot.y),targets:[.init(chest:.init(sh.chest.x,sh.chest.y),foot:.init(sh.foot.x,sh.foot.y))],ground:sh.foot.y)
             geo.power=sh.level;geo.hitAge=sh.hitAge;geo.hitAngle=sh.hitAngle;geo.wide=sh.wide
             all += MeadowSkillProcedural.shieldShell(sh.age,geo,0)
+        }
+        for d in downed {
+            let geo=MeadowSkillProcedural.Geometry(caster:.init(d.foot.x,d.foot.y),casterFoot:.init(d.foot.x,d.foot.y),targets:[.init(chest:.init(d.foot.x,d.foot.y-30),foot:.init(d.foot.x,d.foot.y))],ground:d.foot.y)
+            all += MeadowSkillProcedural.downAura(d.age,geo,0)
         }
         return all
     }
@@ -1020,5 +1047,88 @@ enum MeadowRuneEffectPainter {
             ctx.setFillColor(color(m.color).withAlphaComponent(CGFloat(m.alpha)).cgColor)
             ctx.move(to:CGPoint(x:0,y:-m.size/2));ctx.addLine(to:CGPoint(x:m.size/3,y:0));ctx.addLine(to:CGPoint(x:0,y:m.size/2));ctx.addLine(to:CGPoint(x:-m.size/3,y:0));ctx.closePath();ctx.fillPath();ctx.restoreGState()
         }
+    }
+}
+
+// MARK: effect review (the lab: MeadowEffectsLabViewController)
+extension MeadowPartyStageView {
+    /// Plays one procedural effect on the stage without involving the rules. `id` is any id of `MeadowSkillProcedural.skillIDs`, or one of
+    /// the lab's own: `projBow`/`projStaff`/`projArcher`/`projDragon` fly from the actor to the first target, `natural20`, `shieldDome`, `deathX`, ...
+    func labPlay(_ id:String,actor:String,targets:[String],power:Double,weaponID:String?=nil,delay:Double=0) {
+        guard let state,let aFoot=PartyVisual.foot(actor),let first=targets.first,let tFoot=PartyVisual.foot(first) else { return }
+        let templates=state.units.mapValues(\.templateID)
+        let aChest=PartyVisual.skillEffectCenter(targets:[actor],actor:actor,templates:templates)
+        let hit=PartyVisual.hitPoint(target:first,weaponID:weaponID,templateID:templates[first])
+        func spawn(_ name:String,from:PartyPoint,to:[(chest:PartyPoint,foot:PartyPoint)],ids:[String],pw:Double) {
+            guard let f=to.first else { return }
+            let geo=MeadowSkillProcedural.Geometry(caster:.init(from.x,from.y),casterFoot:.init(aFoot.x,aFoot.y),targets:to.map { .init(chest:.init($0.chest.x,$0.chest.y),foot:.init($0.foot.x,$0.foot.y)) },ground:f.foot.y)
+            var event=MeadowPartyProcEvent(skill:name,start:sceneTime+delay,direction:f.chest.x>=aChest.x ? 1:-1,geo:geo,casterID:actor,targetIDs:ids)
+            event.power=pw;procVFX.append(event)
+        }
+        let heals:[String:HealingEffectTier]=["healMicro":.micro,"healStandard":.standard,"healStrong":.strong]
+        if let tier=heals[id] { for t in targets { recovery[t]=sceneTime+delay;recoveryTier[t]=tier };return }
+        if id == "natural20" { spawnNaturalTwenty(actor:actor,target:first,weaponID:weaponID,templates:templates,delay:delay);return }
+        if id.hasPrefix("proj") {
+            let templateID=templates[actor] ?? ""
+            let from:PartyPoint
+            switch id {
+            case "projBow":
+                let tip=BowRig.releaseArrowTip;from=PartyPoint(aFoot.x+(tip.x-123)*PartyVisual.heroScale,aFoot.y+(tip.y-214)*PartyVisual.heroScale)
+            case "projStaff":
+                let g=LegendaryStaffRig.gem(progress:LegendaryStaffRig.progress(age:LegendaryStaffRig.releaseAge));from=PartyPoint(aFoot.x+(g.x-123)*PartyVisual.heroScale,aFoot.y+(g.y-214)*PartyVisual.heroScale)
+            default:
+                let spec=MonsterVisualSpec.find(templateID),goblin=id == "projArcher",scale=spec?.scale ?? 0.88
+                from=PartyPoint(aFoot.x+(goblin ? -82:-143)*scale,aFoot.y-(goblin ? 144:149)*scale)
+            }
+            spawn(id,from:from,to:[(chest:hit,foot:tFoot)],ids:[first],pw:power);return
+        }
+        if MeadowSkillProcedural.isBlow(id) || id == "playerDown" {
+            for t in targets {
+                guard let f=PartyVisual.foot(t) else { continue }
+                let h=PartyVisual.hitPoint(target:t,weaponID:weaponID,templateID:templates[t])
+                spawn(id,from:aChest,to:[(chest:id == "playerDown" ? PartyPoint(f.x,f.y-40):h,foot:f)],ids:[t],pw:power)
+            }
+            return
+        }
+        // A skill: the same event the battle makes - the caster, and every target at once.
+        let list=targets.compactMap { t -> (chest:PartyPoint,foot:PartyPoint)? in
+            guard let f=PartyVisual.foot(t) else { return nil }
+            return (chest:PartyVisual.skillEffectCenter(targets:[t],actor:actor,templates:templates),foot:f)
+        }
+        spawn(id,from:aChest,to:list,ids:targets,pw:power)
+    }
+    /// A shield of `value` on `id`, generated now.
+    func labSetShield(_ id:String,_ value:Int) {
+        state?.units[id]?.shield=value;statusSnapshots.removeValue(forKey:id)
+        if value>0 { birth[id]=sceneTime } else { broken[id]=sceneTime }
+    }
+    /// A blow lands on the shield of `id` from `attacker`; `value` is what is left afterwards.
+    func labBlock(_ id:String,from attacker:String,remaining value:Int) {
+        guard let state else { return }
+        let templates=state.units.mapValues(\.templateID),a=PartyVisual.skillEffectCenter(targets:[attacker],actor:attacker,templates:templates),t=PartyVisual.skillEffectCenter(targets:[id],actor:attacker,templates:templates)
+        contact[id]=sceneTime;contactAngle[id]=atan2(a.y-t.y,a.x-t.x);self.state?.units[id]?.shield=value
+        labPlay("hitWard",actor:attacker,targets:[id],power:1.0)
+    }
+    func labBreak(_ id:String,from attacker:String) {
+        state?.units[id]?.shield=0;broken[id]=sceneTime;contact[id]=sceneTime
+        labPlay("shieldBreak",actor:attacker,targets:[id],power:1.2)
+        kickFeel=(sceneTime,.medium,1)
+    }
+    func labKill(_ id:String,from attacker:String) {
+        guard let template=state?.units[id]?.templateID else { return }
+        let name:String
+        switch template { case "slime":name="deathSlime";case "wolf":name="deathWolf";case "goblinArcher":name="deathGoblin";case "stoneGuardian":name="deathStone";case "caveTroll":name="deathTroll";case "ruinDragon":name="deathDragon";default:name="deathBurst" }
+        labPlay(name,actor:attacker,targets:[id],power:1.0)
+        state?.units[id]?.health=0;deaths[id]=sceneTime
+    }
+    func labDown(_ id:String,from attacker:String) {
+        labPlay("playerDown",actor:attacker,targets:[id],power:1.0)
+        state?.units[id]?.health=0;fallen[id]=sceneTime
+    }
+    func labShake(_ tier:MeadowBattleHitTier) { kickFeel=(sceneTime,tier,1) }
+    /// Back to a clean stage with the given state.
+    func labReset(_ value:GameState,catalog:GameCatalog) {
+        procVFX=[];messages=[];deaths=[:];fallen=[:];contact=[:];contactAngle=[:];birth=[:];broken=[:];recovery=[:];recoveryTier=[:];hitFeel=[:];kickFeel=nil;hurt=[:];statusSnapshots=[:];emissions=[]
+        show(value,friend:"p1",foe:"m1",current:nil,catalog:catalog)
     }
 }

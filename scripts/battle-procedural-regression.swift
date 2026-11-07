@@ -94,7 +94,7 @@ struct BattleProceduralRegression {
             return m
         }
         // The director shot: every combat skill pushes in on its caster, swings to the targets, and lets go again.
-        for id in M.skillIDs where !id.hasPrefix("heal") && !M.isBlow(id) && id != "natural20" {
+        for id in M.skillIDs where !id.hasPrefix("heal") && !M.isBlow(id) && id != "natural20" && id != "playerDown" {
             guard let info = M.info[id] else { continue }
             var maxWeight = 0.0, maxZoom = 0.0, t = 0.0, firstFocus: Double? = nil, lastFocus = 0.0
             while t < info.duration {
@@ -115,10 +115,27 @@ struct BattleProceduralRegression {
             let c1 = M.camera(skill: id, t: after, direction: 1), c2 = M.scaled(c1, skill: id, t: after, power: 1.45), c3 = M.scaled(c1, skill: id, t: after, power: 0.7)
             check(abs(c2.dx) + abs(c2.dy) + 200 * abs(c2.zoom) >= abs(c3.dx) + abs(c3.dy) + 200 * abs(c3.zoom) - 1e-9, "\(id): heavier hits should shake at least as hard")
         }
+        // Trauma: nothing before the release, a jump at it, a decay after; the shake it drives is large enough to see and bounded.
+        for id in M.skillIDs {
+            guard let info = M.info[id] else { continue }
+            check(M.trauma(skill: id, t: -0.1, power: 1) == 0, "\(id): trauma before the effect")
+            var peakTr = 0.0, tt = 0.0
+            while tt < info.duration + 0.5 { let v = M.trauma(skill: id, t: tt, power: 1); check(v >= 0 && v <= 1.3 && v.isFinite, "\(id) t=\(tt): trauma \(v)"); peakTr = max(peakTr, v); tt += 1.0 / 60 }
+            let wantsShake = !(id.hasPrefix("hit") || id.hasPrefix("proj") || id.hasPrefix("heal") || id.hasPrefix("shieldShell") || id == "downAura" || id == "shieldDome")
+            check(wantsShake ? peakTr > 0.3 : peakTr == 0, "\(id): trauma peak \(peakTr)")
+            check(M.trauma(skill: id, t: info.duration + 0.4, power: 1) < 0.05, "\(id): trauma does not die away")
+        }
+        var maxOff = 0.0, tq = 0.0
+        while tq < 2 { let sh = M.shake(trauma: 1, time: tq); maxOff = max(maxOff, abs(sh.dx) + abs(sh.dy)); check(abs(sh.dx) <= 26.1 && abs(sh.dy) <= 18.1 && abs(sh.rotation) <= 0.0281, "shake out of range"); tq += 1.0 / 120 }
+        check(maxOff > 20, "full trauma must shake visibly (peak offset \(maxOff))")
+        check(M.shake(trauma: 0, time: 1.0).dx == 0, "no trauma, no shake")
         // The natural 20 pushes straight in on the target and holds; plain blows have no director shot and no lens work of their own.
         var n20w = 0.0, n20z = 0.0, t20 = 0.0
         while t20 < 2.8 { let s = M.shot(skill: "natural20", t: t20, geo: geo); n20w = max(n20w, s.weight); n20z = max(n20z, s.zoom); t20 += 1.0 / 60 }
         check(n20w > 0.95 && n20z > 0.3, "natural20: the push-in is too weak (\(n20w), \(n20z))")
+        var pdw = 0.0, pdz = 0.0, tpd = 0.0
+        while tpd < 2.2 { let sh = M.shot(skill: "playerDown", t: tpd, geo: geo); pdw = max(pdw, sh.weight); pdz = max(pdz, sh.zoom); tpd += 1.0 / 60 }
+        check(pdw > 0.95 && pdz > 0.15, "playerDown: the push-in is too weak (\(pdw), \(pdz))")
         for id in M.skillIDs where M.isBlow(id) { check(M.shot(skill: id, t: 0.3, geo: geo) == .idle && M.camera(skill: id, t: 0.3, direction: 1) == .zero, "\(id) must not move the lens") }
         for id in ["healMicro", "healStandard", "healStrong"] { check(M.shot(skill: id, t: 0.3, geo: geo) == .idle, "\(id) must not move the lens") }
         check(peak("dragonFlame") > peak("healMicro") * 4, "dragon flame should kick harder than a micro heal")

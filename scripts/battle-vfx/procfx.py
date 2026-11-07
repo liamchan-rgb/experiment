@@ -1561,7 +1561,16 @@ PAL['claw'] = dict(deep=(110, 20, 16), body=(230, 60, 40), mid=(255, 130, 90), l
 PAL['ambush'] = dict(deep=(20, 90, 40), body=(120, 235, 110), mid=(220, 255, 130), light=(250, 255, 210), a1=(255, 245, 140), a2=(160, 255, 190))
 PAL['ward'] = dict(deep=(10, 50, 110), body=(60, 170, 255), mid=(140, 225, 255), light=(225, 248, 255), a1=(255, 255, 255), a2=(120, 200, 255))
 PAL['gold'] = dict(deep=(130, 80, 10), body=(255, 190, 50), mid=(255, 225, 120), light=(255, 250, 220), a1=(255, 255, 255), a2=(255, 170, 40))
-HITS = {'hitBlade': 'blade', 'hitGreat': 'great', 'hitBow': 'bow', 'hitStaff': 'staff', 'hitClaw': 'claw', 'hitAmbush': 'ambush', 'hitWard': 'ward'}
+PAL['goo'] = dict(deep=(20, 70, 30), body=(90, 210, 90), mid=(170, 250, 140), light=(235, 255, 215), a1=(255, 255, 200), a2=(60, 170, 110))
+PAL['wolf'] = dict(deep=(60, 50, 70), body=(200, 200, 225), mid=(235, 235, 250), light=(255, 255, 255), a1=(255, 90, 80), a2=(170, 60, 60))
+PAL['goblin'] = dict(deep=(100, 60, 10), body=(230, 160, 40), mid=(255, 210, 110), light=(255, 245, 200), a1=(255, 255, 230), a2=(180, 220, 90))
+PAL['stone'] = dict(deep=(60, 55, 50), body=(150, 140, 125), mid=(205, 195, 175), light=(245, 240, 225), a1=(255, 230, 160), a2=(110, 100, 90))
+PAL['troll'] = dict(deep=(80, 50, 20), body=(180, 120, 60), mid=(225, 170, 100), light=(255, 235, 190), a1=(255, 200, 120), a2=(120, 80, 40))
+PAL['down'] = dict(deep=(90, 20, 30), body=(220, 60, 60), mid=(255, 150, 130), light=(255, 235, 225), a1=(255, 255, 255), a2=(255, 210, 120))
+# id: (palette, style)
+HITS = {'hitBlade': ('blade', 'blade'), 'hitGreat': ('great', 'great'), 'hitBow': ('bow', 'bow'), 'hitStaff': ('staff', 'staff'), 'hitClaw': ('claw', 'claw'),
+        'hitAmbush': ('ambush', 'ambush'), 'hitWard': ('ward', 'ward'),
+        'hitSlime': ('goo', 'goo'), 'hitWolf': ('wolf', 'bite'), 'hitArrowM': ('goblin', 'bow'), 'hitStone': ('stone', 'crumble'), 'hitTroll': ('troll', 'slam'), 'hitDragon': ('ward', 'magic')}
 SPEC.update({k: (1.1, .05, False) for k in HITS})
 SPEC.update({'natural20': (2.8, .05, False), 'shieldDome': (1.9, .46, True)})
 DIM.update({k: (0.0, (1.0, 1.0, 1.0)) for k in HITS})
@@ -1569,9 +1578,10 @@ DIM.update({'natural20': (.5, (1.0, .92, .7)), 'shieldDome': (.26, (.8, .92, 1.0
 
 
 def hit_effect(skill, t, geo, ti=0):
-    out = []; st = HITS[skill]; P = PAL[st]; C = geo['caster']; (T, TF) = geo['targets'][ti]
+    out = []; pal, st = HITS[skill]; P = PAL[pal]; C = geo['caster']; (T, TF) = geo['targets'][ti]
     pw = geo.get('power', 1.0); d = 1.0 if T[0] >= C[0] else -1.0; k = t - .05
     if k < 0: return out
+    ang0 = math.atan2(T[1] - C[1], T[0] - C[0]); cs, sn = math.cos(ang0), math.sin(ang0)      # the direction of the blow
     S = .85 + .3 * pw; fade = 1 - ease_in(k / .85)
     out.append(('g', T[0], T[1], 120 * S * (.5 + ease_out(k / .15)), 90 * S * (.5 + ease_out(k / .15)), P['body'], .55 * (1 - ease_in(k / .45))))
     out.append(('g', T[0], T[1], 46 * S, 40 * S, P['light'], .9 * (1 - ease_in(k / .14))))
@@ -1615,6 +1625,52 @@ def hit_effect(skill, t, geo, ti=0):
             out.append(('e', T[0], T[1], 135 * S * uq, 8.0 * S, ang, P['body'], .5 * (1 - ease_in(kk / .4))))
         for q in range(6):
             a = q * 1.0472 + .5; rr = (30 + 50 * frac(q, 2)) * S * u; out.append(('e', T[0] + math.cos(a) * rr, T[1] + math.sin(a) * rr * .8, 9 * S, 1.6, a, P['a1'], 1 - ease_in(k / .5)))
+    elif st == 'goo':                                                        # a wet slap: the target is splashed and the goo runs down
+        e = ease_out(k / .2); out.append(('r', T[0], TF[1] - 2, 70 * S * e, 26 * S * e, 4 * max(0.0, 1 - k / .4) + .8, P['mid'], .9 * (1 - ease_in(k / .45))))
+        for j in range(7):
+            jj = j + 31 * ti; a = ang0 + (frac(jj, 3) - .5) * 2.2; r = (40 + 110 * frac(jj, 4)) * S * ease_out(k / .3)
+            bx = T[0] + math.cos(a) * r; by = T[1] + math.sin(a) * r * .5 + 120 * k * k * (1 + frac(jj, 6)); sz = (10 + 10 * frac(jj, 5)) * S; al = max(0.0, 1 - k / .7)
+            out.append(('g', bx, by, sz, sz, P['body'], al)); out.append(('g', bx, by, sz * .5, sz * .5, P['light'], al * .8))
+        for j in range(5):
+            out.append(('e', T[0] + (frac(j, 2) - .5) * 50, T[1] - 10 + 140 * k * (.6 + frac(j, 3)), 10, 2.0, 1.5708, P['mid'], max(0.0, 1 - k / .6)))
+    elif st == 'bite':                                                       # jaws snap shut on the target
+        c = ease_out(k / .08); al = 1 - ease_in(k / .35)
+        out.append(('a', T[0], T[1] - 34 * (1 - c) - 6, 46 * S, 30 * S, math.pi + .4, 2 * math.pi - .4, 4.0 * S, P['light'], al))
+        out.append(('a', T[0], T[1] + 34 * (1 - c) + 6, 46 * S, 30 * S, .4, math.pi - .4, 4.0 * S, P['light'], al))
+        for q in range(4):
+            out.append(('e', T[0] + (q - 1.5) * 16, T[1] - 12 - 22 * (1 - c), 9 * S, 1.8, 1.5708, P['light'], al)); out.append(('e', T[0] + (q - 1.5) * 16, T[1] + 12 + 22 * (1 - c), 9 * S, 1.8, -1.5708, P['light'], al))
+        for q in range(3):
+            kk = k - .03 * q
+            if kk < 0: continue
+            off = (q - 1) * 16; out.append(('e', T[0] - math.sin(.9 * d) * off, T[1] + math.cos(.9 * d) * off, 70 * S * ease_out(kk / .09), 3.0 * S, .9 * d, P['a1'], 1 - ease_in(kk / .35)))
+    elif st == 'crumble':                                                    # a stone fist: chunks fly and fall, dust rolls up, cracks run out along the ground
+        for j in range(8):
+            jj = j + 31 * ti; a = ang0 + (frac(jj, 3) - .5) * 1.6; r = (30 + 120 * frac(jj, 4)) * S * ease_out(k / .4)
+            out.append(('e', T[0] + math.cos(a) * r, T[1] + math.sin(a) * r * .6 + 220 * k * k * frac(jj, 6), 11 + 7 * frac(jj, 5), 6 + 3 * frac(jj, 5), k * (4 + 6 * frac(jj, 2)) + j, (P['mid'], P['a2'])[j % 2], max(0.0, 1 - k / .8)))
+        for j in range(4):
+            out.append(('g', T[0] + (frac(j, 2) - .5) * 80, T[1] + 10 - 60 * k * (.5 + frac(j, 3)), 34 + 12 * frac(j, 4), 26 + 10 * frac(j, 4), P['deep'], .4 * max(0.0, 1 - k / .7)))
+        for j in range(6):
+            a = (j - 2.5) * .4 + (0.0 if d > 0 else math.pi); r = (80 + 90 * frac(j, 4)) * ease_out(k / .3)
+            out.append(('e', TF[0] + math.cos(a) * r * .5, TF[1] - 2 + math.sin(a) * 10, r * .5 + 1, 1.6, a * .15, P['a1'], max(0.0, 1 - k / .7)))
+        r = 40 + 170 * S * ease_out(k / .4); out.append(('r', TF[0], TF[1] - 2, r, r * .26, 4.0 * max(0.0, 1 - k / .5) + .6, P['mid'], .8 * (1 - ease_in(k / .5))))
+    elif st == 'slam':                                                       # a club on the ground: a column of force, a huge ring, a fountain of dirt
+        for w in range(2):
+            uu = (k - .08 * w) / .6
+            if 0 < uu < 1:
+                R = 40 + 300 * S * ease_out(uu); out.append(('r', TF[0], TF[1] - 2, R, R * .24, 6.0 * (1 - uu) + 1.0, (P['mid'], P['light'])[w], .9 * (1 - ease_in(uu))))
+        out.append(('e', T[0], T[1] - 20, 150 * u, 22 * S, -1.5708, P['body'], .6 * (1 - ease_in(k / .4)))); out.append(('e', T[0], T[1] - 20, 140 * u, 7, -1.5708, P['light'], 1 - ease_in(k / .3)))
+        for j in range(14):
+            out.append(('g', TF[0] + (frac(j, 2) - .5) * 160, TF[1] - 120 * k * (.5 + frac(j, 3)), 24 + 10 * frac(j, 4), 20 + 8 * frac(j, 4), P['deep'], .45 * max(0.0, 1 - k / .8)))
+        for j in range(8):
+            jj = j + 31 * ti; a = -math.pi / 2 + (frac(jj, 3) - .5) * 2.4; r = (60 + 150 * frac(jj, 4)) * S * ease_out(k / .45)
+            out.append(('e', TF[0] + math.cos(a) * r, TF[1] + math.sin(a) * r + 260 * k * k * frac(jj, 6), 14 + 8 * frac(jj, 5), 8 + 3 * frac(jj, 5), k * (3 + 6 * frac(jj, 2)) + j, (P['mid'], P['a2'])[j % 2], max(0.0, 1 - k / .85)))
+    elif st == 'magic':                                                      # a burst of magic: rings and rays
+        for w in range(3):
+            uu = (k - .07 * w) / .5
+            if 0 < uu < 1:
+                r = 20 + 150 * S * ease_out(uu); out.append(('r', T[0], T[1], r, r, 3.0 * (1 - uu) + .6, (P['mid'], P['light'], P['a2'])[w], .9 * (1 - ease_in(uu))))
+        for q in range(12):
+            a = q * .5236 + k; L2 = 110 * S * ease_out(k / .15); out.append(('e', T[0] + math.cos(a) * L2 * .5, T[1] + math.sin(a) * L2 * .5, L2 * .5 + 1, 2.2, a, P['light'], 1 - ease_in(k / .4)))
     else:                                                                    # ward: the blow lands on a shield and rings through it
         for w in range(2):
             uu = (k - .07 * w) / .5
@@ -1622,7 +1678,6 @@ def hit_effect(skill, t, geo, ti=0):
                 r = 30 + 90 * ease_out(uu); out.append(('r', T[0], T[1], r * .8, r, 2.4 * (1 - uu) + .6, (P['mid'], P['light'])[w], .9 * (1 - ease_in(uu))))
         for q in range(6):
             a0 = k * 2 + q * 1.0472; out.append(('a', T[0], T[1], 54 * S, 70 * S, a0, a0 + .5, 3.0, P['light'], .8 * (1 - ease_in(k / .5))))
-    ang0 = math.atan2(T[1] - C[1], T[0] - C[0]); cs, sn = math.cos(ang0), math.sin(ang0)      # the direction of the blow
     out.append(('e', T[0] - cs * 50 * S * u, T[1] - sn * 50 * S * u, 140 * S * u + 1, 3.2 * S, ang0, P['light'], 1 - ease_in(k / .25)))   # its line, behind the target
     for q in range(8):                                                       # the flash star on contact
         a = q * .7854 + .2; out.append(('e', T[0] + math.cos(a) * 22 * S, T[1] + math.sin(a) * 22 * S * .8, 16 * S * (1 - ease_in(k / .14)) + .4, 1.4, a, P['light'], 1 - ease_in(k / .14)))
@@ -1811,30 +1866,110 @@ def shield_break(t, geo, ti=0):
     return out
 
 
-# ------------------------------------------------------------------ monster death: the body comes apart and is blown to the right
-def death_burst(t, geo, ti=0):
-    out = []; P = PAL['dust']; (chest, foot) = geo['targets'][ti]; cx, cy = chest; fx, fy = foot; pw = geo.get('power', 1.0)
+# ------------------------------------------------------------------ monster death: the body comes apart in the way of its species
+# id: (palette, mode)
+DEATHS = {'deathBurst': ('dust', 'dust'), 'deathSlime': ('goo', 'goo'), 'deathWolf': ('wolf', 'dust'), 'deathGoblin': ('goblin', 'dust'),
+          'deathStone': ('stone', 'crumble'), 'deathTroll': ('troll', 'dust'), 'deathDragon': ('ward', 'rise')}
+SPEC.update({k: (2.0 if v[1] == 'crumble' else 2.4 if v[1] == 'rise' else 1.8, .04, False) for k, v in DEATHS.items()})
+DIM.update({k: (0.0, (1.0, 1.0, 1.0)) for k in DEATHS})
+
+
+def death_effect(skill, t, geo, ti=0):
+    out = []; pal, mode = DEATHS[skill]; P = PAL[pal]; (chest, foot) = geo['targets'][ti]; cx, cy = chest; fx, fy = foot; pw = geo.get('power', 1.0)
     hgt = max(40.0, (fy - cy) * 2.0); wid = hgt * .7
     out.append(('g', cx, cy, 100 * (.5 + ease_out(t / .2)), 100 * (.5 + ease_out(t / .2)), P['body'], .5 * (1 - ease_in(t / .5))))
     out.append(('g', cx, cy, 40, 40, P['light'], .8 * (1 - ease_in(t / .2))))
     out.append(('g', fx, fy - 2, 90, 20, P['deep'], .25 * (1 - ease_in(t / 1.6))))
-    for i in range(int(52 + 20 * pw)):
-        hy = frac(i, 2); born = .04 + .55 * frac(i, 1) * (1 - .5 * hy); tt = t - born; life = .9 + .6 * frac(i, 3)
-        if not 0 <= tt < life: continue
-        x0 = cx + (frac(i, 4) - .5) * wid; y0 = fy - hy * hgt
-        drift = (60 + 200 * frac(i, 5)) * ease_out(tt / .9) * (.6 + .8 * hy)
-        x = x0 + drift; y = y0 - 40 * tt * (.4 + frac(i, 6)) + 9 * math.sin(tt * 5 + i)
-        vx = 200 * (.6 + .8 * hy) * (1 - tt / life) + 40; vy = -40.0; a = (1 - tt / life) ** .8 * smooth(tt / .05)
-        out.append(('e', x, y, 22 + 24 * frac(i, 7), 2.4 + 1.6 * frac(i, 8), math.atan2(vy, vx), (P['light'], P['mid'], P['a2'])[i % 3], a * .95)); out.append(('g', x, y, 9, 9, P['body'], a * .4))
-    for j in range(8):                                                       # the body's dust runs along the ground
+    cols = (P['light'], P['mid'], P['a2'])
+    if mode == 'dust':                                                       # blown to the right, the upper body going furthest
+        for i in range(int(52 + 20 * pw)):
+            hy = frac(i, 2); born = .04 + .55 * frac(i, 1) * (1 - .5 * hy); tt = t - born; life = .9 + .6 * frac(i, 3)
+            if not 0 <= tt < life: continue
+            x0 = cx + (frac(i, 4) - .5) * wid; y0 = fy - hy * hgt
+            drift = (60 + 200 * frac(i, 5)) * ease_out(tt / .9) * (.6 + .8 * hy)
+            x = x0 + drift; y = y0 - 40 * tt * (.4 + frac(i, 6)) + 9 * math.sin(tt * 5 + i)
+            vx = 200 * (.6 + .8 * hy) * (1 - tt / life) + 40; vy = -40.0; a = (1 - tt / life) ** .8 * smooth(tt / .05)
+            out.append(('e', x, y, 22 + 24 * frac(i, 7), 2.4 + 1.6 * frac(i, 8), math.atan2(vy, vx), cols[i % 3], a * .95)); out.append(('g', x, y, 9, 9, P['body'], a * .4))
+        for q in range(6):
+            tt = t - .1 - .1 * q
+            if 0 < tt < .8:
+                u = ease_out(tt / .8); out.append(('e', cx + 40 + 220 * u, fy - (q + .5) * hgt / 6, 40 + 30 * frac(q, 2), 1.2, 0.0, P['light'], .5 * (1 - tt / .8)))
+    elif mode == 'goo':                                                      # the body bursts into blobs that fly, fall and pool
+        for i in range(22):
+            tt = t - .03 - .12 * frac(i, 1); life = 1.0 + .4 * frac(i, 3)
+            if not 0 <= tt < life: continue
+            a = -1.5708 + (frac(i, 4) - .5) * 3.4; sp = 80 + 160 * frac(i, 5)
+            x = cx + (frac(i, 6) - .3) * 30 + math.cos(a) * sp * ease_out(tt / .5) + 60 * tt; y = cy + math.sin(a) * sp * ease_out(tt / .5) + 300 * tt * tt * (.5 + frac(i, 7))
+            y = min(y, fy - 2); sz = 9 + 12 * frac(i, 8); al = (1 - tt / life) ** .6 * smooth(tt / .04)
+            out.append(('g', x, y, sz, sz, P['body'], al)); out.append(('g', x, y, sz * .5, sz * .5, P['light'], al * .8))
+        out.append(('g', fx + 20, fy - 2, 50 + 110 * ease_out(t / .8), 12 + 14 * ease_out(t / .8), P['body'], .55 * (1 - ease_in((t - .3) / 1.4))))
+    elif mode == 'crumble':                                                  # the body breaks into chunks that fall, bounce and settle in dust
+        for i in range(16):
+            tt = t - .04 - .25 * frac(i, 1); life = 1.3
+            if not 0 <= tt < life: continue
+            x0 = cx + (frac(i, 4) - .5) * wid; y0 = fy - frac(i, 2) * hgt
+            x = x0 + (frac(i, 5) - .3) * 60 * ease_out(tt / .6) + 60 * tt; y = min(fy - 3, y0 + 300 * tt * tt * (.6 + frac(i, 6)))
+            al = (1 - tt / life) ** .6; out.append(('e', x, y, 11 + 8 * frac(i, 7), 6 + 4 * frac(i, 8), tt * (3 + 5 * frac(i, 2)) + i, (P['mid'], P['a2'], P['body'])[i % 3], al))
+            if y >= fy - 4: out.append(('g', x, fy - 6, 22, 12, P['deep'], .35 * al))
+        for q in range(5):
+            tt = t - .15 * q
+            if 0 < tt < 1.0: out.append(('g', cx + (frac(q, 2) - .5) * wid, fy - 8 - 30 * tt, 40 + 20 * frac(q, 3), 24 + 10 * frac(q, 3), P['deep'], .4 * (1 - tt / 1.0)))
+    else:                                                                    # 'rise': a spirit goes up in a column of light
+        out.append(('e', fx, fy - 150, 300 * smooth(t / .3), 18 * (1 - smooth((t - .8) / .8)) + .4, -1.5708, P['mid'], .6 * (1 - ease_in(t / 1.6))))
+        out.append(('e', fx, fy - 150, 300 * smooth(t / .3), 6 + .4, -1.5708, P['light'], .9 * (1 - ease_in(t / 1.4))))
+        r = 30 + 220 * ease_out(t / .8); out.append(('r', fx, fy - 2, r, r * .26, 4.0 * max(0.0, 1 - t / .9) + .6, P['mid'], .8 * (1 - ease_in(t / .9))))
+        for i in range(44):
+            tt = t - .04 - .4 * frac(i, 1); life = 1.2 + .5 * frac(i, 3)
+            if not 0 <= tt < life: continue
+            x = cx + (frac(i, 4) - .5) * wid + math.sin(tt * 4 + i) * 14; y = fy - frac(i, 2) * hgt - 250 * tt * (.4 + frac(i, 6)); a = (1 - tt / life) ** .8 * smooth(tt / .05)
+            out.append(('e', x, y, 14 + 12 * frac(i, 7), 2.0, -1.5708, cols[i % 3], a * .9)); out.append(('g', x, y, 8, 8, P['body'], a * .4))
+        out.append(('g', cx, cy - 120 * ease_out(t / 1.2), 50 * (1 - ease_in(t / 1.6)) + 4, 50 * (1 - ease_in(t / 1.6)) + 4, P['light'], .8 * (1 - ease_in(t / 1.6))))
+    for j in range(8):                                                       # whatever the species, the ground dust is shoved to the right
         tt = t - .05 - .3 * frac(j, 1)
         if 0 < tt < 1.0:
             x = fx + (frac(j, 2) - .3) * 60 + (50 + 220 * frac(j, 3)) * ease_out(tt / .8)
             out.append(('g', x, fy - 4 - 8 * frac(j, 4), 16, 7, P['deep'], .4 * (1 - tt / 1.0)))
-    for q in range(6):                                                       # wind
-        tt = t - .1 - .1 * q
-        if 0 < tt < .8:
-            u = ease_out(tt / .8); out.append(('e', cx + 40 + 220 * u, fy - (q + .5) * hgt / 6, 40 + 30 * frac(q, 2), 1.2, 0.0, P['light'], .5 * (1 - tt / .8)))
+    return out
+
+
+# ------------------------------------------------------------------ a hero goes down: a shock, a soul rising, and a light that waits
+SPEC.update({'playerDown': (2.2, .05, False), 'downAura': (3.0, .5, True)})
+DIM.update({'playerDown': (0.0, (1.0, 1.0, 1.0)), 'downAura': (0.0, (1.0, 1.0, 1.0))})
+
+
+def player_down(t, geo, ti=0):
+    out = []; P = PAL['down']; (chest, foot) = geo['targets'][ti]; cx, cy = chest; fx, fy = foot
+    if ti == 0:
+        out.append(('f', (255, 255, 255), .5 * math.exp(-t * 10)))
+        out.append(('f', P['body'], .25 * math.exp(-t * 6)))
+    out.append(('g', cx, cy, 140 * (.5 + ease_out(t / .2)), 140 * (.5 + ease_out(t / .2)), P['body'], .6 * (1 - ease_in(t / .5))))
+    out.append(('g', cx, cy, 60, 60, P['light'], .9 * (1 - ease_in(t / .18))))
+    for w in range(2):
+        u = (t - .1 * w) / .9
+        if 0 < u < 1:
+            out.append(('r', fx, fy - 2, 40 + 360 * ease_out(u), (40 + 360 * ease_out(u)) * .26, 5.0 * (1 - u) + 1.0, (P['mid'], P['a2'])[w], .8 * (1 - ease_in(u))))
+    for q in range(8):                                                       # the fall kicks dust out along the ground
+        a = q * .7854 + .2; r = (50 + 120 * frac(q, 2)) * ease_out(t / .5)
+        out.append(('e', fx + math.cos(a) * r, fy - 4 + math.sin(a) * r * .2, 20, 2.0, a * .2, P['deep'], .6 * max(0.0, 1 - t / .7)))
+    out.append(('e', fx, fy - 130, 140 * smooth(t / .4), 16 * smooth(t / .4) + .4, -1.5708, P['mid'], .35 * (1 - ease_in(t / 1.6))))
+    for q in range(10):                                                      # the soul rises
+        u = (t - .15 - .12 * q) / 1.6
+        if 0 < u < 1:
+            x = fx + math.sin(u * 5 + q) * 28 * (.4 + u); y = fy - 20 - u * 260 * (.6 + .4 * frac(q, 2)); al = math.sin(math.pi * u); col = (P['a2'], P['light'])[q % 2]
+            out.append(('g', x, y, 10, 10, col, .8 * al)); out.append(('g', x, y + 14, 7, 7, col, .5 * al)); out.append(('g', x, y + 26, 5, 5, col, .3 * al))
+    return out
+
+
+def down_aura(t, geo, ti=0):
+    """A fallen hero waits for a revival: a pale light and a few motes rise slowly; `t` is the time since the fall."""
+    out = []; P = PAL['gold']; (chest, foot) = geo['targets'][ti]; fx, fy = foot; t = max(0.0, t)
+    A = smooth(t / .6)
+    out.append(('g', fx, fy - 4, 60, 14, P['body'], .18 * A))
+    out.append(('r', fx, fy - 2, 44 + 4 * math.sin(t * 2), (44 + 4 * math.sin(t * 2)) * .28, 1.4, P['mid'], (.35 + .15 * math.sin(t * 2)) * A))
+    out.append(('e', fx, fy - 90, 90, 3.0, -1.5708, P['light'], (.22 + .08 * math.sin(t * 1.5)) * A))
+    for q in range(7):
+        ph = frac(q + 5 * ti, 1); u = (t * .25 + ph) % 1.0
+        out.append(('g', fx + math.sin(ph * 6.2832 + t * .6) * 34, fy - 12 - u * 150, 6, 6, P['a2'], .7 * math.sin(math.pi * u) * A))
     return out
 
 
@@ -1849,7 +1984,8 @@ def multi(fn):
 
 _SINGLE = {'starlightPulse': starlight, 'dragonSoulWard': soul, 'dragonScaleWard': scale_ward, 'runeSlash': rune_slash, 'runeWard': rune_ward,
            'battleRune': battle_rune, 'dragonFlame': dragon_flame, 'dragonOrder': dragon_order,
-           'healMicro': heal_micro, 'healStandard': heal_standard, 'healStrong': heal_strong, 'rally': rally_call, 'sweep': sweep_arc, 'natural20': natural20, 'shieldDome': shield_dome, 'shieldBreak': shield_break, 'deathBurst': death_burst, 'shieldShell': shield_shell,
+           'healMicro': heal_micro, 'healStandard': heal_standard, 'healStrong': heal_strong, 'rally': rally_call, 'sweep': sweep_arc, 'natural20': natural20, 'shieldDome': shield_dome, 'shieldBreak': shield_break, 'playerDown': player_down, 'downAura': down_aura,
+           **{k: (lambda t, geo, ti=0, k=k: death_effect(k, t, geo, ti)) for k in DEATHS}, 'shieldShell': shield_shell,
            'shieldShellHit': lambda t, geo, ti=0: shield_shell(t, dict(geo, hit_age=t * .5, hit_angle=.4, power=.3), ti),
            **{k: (lambda t, geo, ti=0, k=k: hit_effect(k, t, geo, ti)) for k in HITS},
            **{k: (lambda t, geo, ti=0, k=k: projectile(k, t, geo, ti)) for k in PROJ}}
