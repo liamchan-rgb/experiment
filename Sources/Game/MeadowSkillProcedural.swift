@@ -1145,14 +1145,14 @@ enum MeadowSkillProcedural {
         let tx = geo.targets.reduce(0) { $0 + $1.chest.x } / n, ty = geo.targets.reduce(0) { $0 + $1.chest.y } / n
         let spread = geo.targets.map { abs($0.chest.x - tx) }.max() ?? 0
         // Weight: ease in over the first half of the build-up, hold through the release, ease out afterwards.
-        let hold = rel + 0.55
-        let weight = smooth(t / (rel * 0.5)) * (1 - smooth((t - hold) / min(0.9, max(0.4, i.duration - hold))))
+        let hold = rel + 0.9
+        let weight = smooth(t / (rel * 0.45)) * (1 - smooth((t - hold) / min(1.0, max(0.5, i.duration - hold))))
         // Swing: caster -> targets around the release (support skills swing too: the allies are the targets).
         let swing = smooth((t - rel * 0.55) / (rel * 0.6 + 0.12))
         let fx = geo.caster.x + (tx - geo.caster.x) * swing, fy = geo.caster.y + (ty - geo.caster.y) * swing
         // Zoom: a tight close-up on the caster, relaxing to a wider frame that still holds a group of targets.
         let wide = 1 - clamp01(spread / 420)
-        let closeUp = 0.17, atTargets = 0.07 + 0.07 * wide
+        let closeUp = 0.30, atTargets = 0.13 + 0.08 * wide
         return Shot(focusX: fx, focusY: fy, weight: weight, zoom: weight * (closeUp + (atTargets - closeUp) * swing))
     }
 
@@ -1160,7 +1160,8 @@ enum MeadowSkillProcedural {
     /// without touching the build-up before the release (so there is no jump when the damage becomes known).
     static func scaled(_ c: Camera, skill id: String, t: Double, power: Double) -> Camera {
         guard let i = info[id] else { return c }
-        let k = 1 + (power - 1) * smooth((t - i.release) / 0.12)
+        // A medium blow shakes 1.6x the base thump, a heavy one 2.3x, a light one barely more than the base.
+        let k = 1 + (power * 1.6 - 1) * smooth((t - i.release) / 0.12)
         return Camera(dx: c.dx * k, dy: c.dy * k, zoom: c.zoom * k, rotation: c.rotation * k)
     }
 

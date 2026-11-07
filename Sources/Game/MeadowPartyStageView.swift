@@ -46,6 +46,7 @@ final class MeadowPartyStageView:UIView {
     /// Where every unit is drawn right now (after travel and knock-back); effects follow these.
     private var liveFeet:[String:PartyPoint]=[:]
     private var washBase=UIColor.clear
+    private let barTop=UIView(),barBottom=UIView()
     /// The GPU drawer for procedural skills (nil: Metal unavailable, the effects layer draws them with CoreGraphics).
     private var gpu:MeadowSkillGPUView?
     private struct PendingStatusCue {
@@ -66,6 +67,7 @@ final class MeadowPartyStageView:UIView {
         dim.backgroundColor = .black;dim.frame=CGRect(x:0,y:-500,width:1000,height:1600);dim.layer.zPosition=100;dim.isUserInteractionEnabled=false;world.addSubview(dim)
         // Pane-wide colour wash for skill light and screen flashes: same coverage as `dim`, so neither has an edge at the world rectangle.
         wash.backgroundColor = .clear;wash.frame=dim.frame;wash.layer.zPosition=999;wash.isUserInteractionEnabled=false;world.addSubview(wash)
+        for bar in [barTop,barBottom] { bar.backgroundColor = .black;bar.isUserInteractionEnabled=false;bar.frame=.zero;addSubview(bar) }
         for id in renderIDs { installUnit(id) }
         diceView.layer.zPosition=1200;world.addSubview(diceView)
         for ghost in afterimages { ghost.isHidden=true;ghost.isUserInteractionEnabled=false;ghost.layer.magnificationFilter = .nearest;world.addSubview(ghost) }
@@ -452,17 +454,20 @@ final class MeadowPartyStageView:UIView {
         var shotX=CGFloat(0),shotY=CGFloat(0)
         if shot.weight>0 {
             // Slide toward the focus.
-            shotX=CGFloat(-(shot.focusX-500)*0.9*shot.weight)*sceneScale
-            shotY=CGFloat(-(shot.focusY-300)*0.6*shot.weight)*sceneScale
+            shotX=CGFloat(-(shot.focusX-500)*shot.weight)*sceneScale
+            shotY=CGFloat(-(shot.focusY-300)*0.8*shot.weight)*sceneScale
         }
         // The whole slide (shot + lens kick) is kept inside what the plates can cover, so the world edge never shows:
         // the world is 1000 wide and the plates run y -159...758; a zoom of z lets the frame slide 500*z units sideways, less what rotation uses up (a few units of floor keep the small shakes alive at no zoom).
         let kickX=CGFloat(kick.dx)*layoutUnit+shotX,kickY=CGFloat(kick.dy)*layoutUnit+shotY
         let maxSlideX=max(5*layoutUnit,bounds.width/2*totalZoom-abs(CGFloat(kick.rotation))*bounds.width/2)
-        let maxSlideY=max(5*layoutUnit,(459*sceneScale-bounds.height/2)-abs(CGFloat(kick.rotation))*bounds.width/2)
+        let maxSlideY=max(30*layoutUnit,(459*sceneScale-bounds.height/2)-abs(CGFloat(kick.rotation))*bounds.width/2)
         var worldTransform=CGAffineTransform(translationX:min(maxSlideX,max(-maxSlideX,kickX)),y:min(maxSlideY,max(-maxSlideY,kickY)))
         worldTransform=worldTransform.rotated(by:CGFloat(kick.rotation)).scaledBy(x:sceneScale,y:sceneScale)
         world.transform=worldTransform
+        // Cinema bars: while the lens is on a close-up, black bars slide in at the top and bottom, so the camera work reads at a glance.
+        let barH=bounds.height*0.065*CGFloat(shot.weight)
+        barTop.frame=CGRect(x:0,y:0,width:bounds.width,height:barH);barBottom.frame=CGRect(x:0,y:bounds.height-barH,width:bounds.width,height:barH)
         fx.setNeedsDisplay()
     }
     override func layoutSubviews() { super.layoutSubviews();let scale=bounds.width/1000;gpu?.setResolution(max(1,min(3,UIScreen.main.scale*scale*1.15)));world.center=CGPoint(x:bounds.midX,y:bounds.midY);world.transform=CGAffineTransform(scaleX:scale,y:scale) }

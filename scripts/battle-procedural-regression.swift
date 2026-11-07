@@ -99,12 +99,12 @@ struct BattleProceduralRegression {
             var maxWeight = 0.0, maxZoom = 0.0, t = 0.0, firstFocus: Double? = nil, lastFocus = 0.0
             while t < info.duration {
                 let s = M.shot(skill: id, t: t, geo: geo)
-                check(s.weight >= 0 && s.weight <= 1.0001 && s.zoom >= -1e-9 && s.zoom <= 0.2 && s.focusX.isFinite && s.focusY.isFinite, "\(id) t=\(t): shot out of range \(s)")
+                check(s.weight >= 0 && s.weight <= 1.0001 && s.zoom >= -1e-9 && s.zoom <= 0.35 && s.focusX.isFinite && s.focusY.isFinite, "\(id) t=\(t): shot out of range \(s)")
                 if firstFocus == nil, s.weight > 0.05 { firstFocus = s.focusX }
                 if s.weight > 0.05 { lastFocus = s.focusX }
                 maxWeight = max(maxWeight, s.weight); maxZoom = max(maxZoom, s.zoom); t += 1.0 / 60
             }
-            check(maxWeight > 0.95 && maxZoom > 0.1, "\(id): the close-up never happens (weight \(maxWeight), zoom \(maxZoom))")
+            check(maxWeight > 0.95 && maxZoom > 0.25, "\(id): the close-up never happens (weight \(maxWeight), zoom \(maxZoom))")
             check(M.shot(skill: id, t: -0.1, geo: geo) == .idle && M.shot(skill: id, t: info.duration + 0.2, geo: geo) == .idle, "\(id) shot outside the effect")
             // Starts on the caster, ends nearer the targets.
             let caster = geo.caster.x, tx = geo.targets.map { $0.chest.x }.reduce(0, +) / Double(geo.targets.count)

@@ -36,10 +36,10 @@ def shot(t, rel, dur, caster, targets):
     if t < 0 or t >= dur: return 0, 0, 0, 0
     tx = sum(x for x, y in targets) / len(targets); ty = sum(y for x, y in targets) / len(targets)
     spread = max(abs(x - tx) for x, y in targets)
-    hold = rel + .55; w = sm(t / (rel * .5)) * (1 - sm((t - hold) / min(.9, max(.4, dur - hold))))
+    hold = rel + .9; w = sm(t / (rel * .45)) * (1 - sm((t - hold) / min(1.0, max(.5, dur - hold))))
     sw = sm((t - rel * .55) / (rel * .6 + .12))
     fx = caster[0] + (tx - caster[0]) * sw; fy = caster[1] + (ty - caster[1]) * sw
-    wide = 1 - min(1, spread / (420 * PW / 1000)); close, at = .17, .07 + .07 * wide
+    wide = 1 - min(1, spread / (420 * PW / 1000)); close, at = .30, .13 + .08 * wide
     return fx, fy, w, w * (close + (at - close) * sw)
 def flame_cam(t, power, rel=.46, d=1):
     c = [d * thump(t, rel, 7, 7, 28), -thump(t, rel, 4, 8, 36, .6), max(0, thump(t, rel, .045, 6, 0)), d * thump(t, rel, .008, 8, 26)]
