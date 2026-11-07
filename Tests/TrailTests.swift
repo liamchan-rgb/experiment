@@ -561,16 +561,19 @@ final class TrailTests: XCTestCase {
         }
     }
 
-    func testWalkCadenceRetainsItsPhaseAcrossAStop() {
+    /// The responsive controller (docs/visual-refactor/LOG.md #9) no longer carries the walk phase across a stop: a stop
+    /// returns to the idle frame and clears the travelled distance, and the next step restarts through the start poses
+    /// instead of resuming mid-cycle. (Replaces the old "retains its phase" expectation: frame 15 / distance 13.)
+    func testWalkRestartsFromTheStartPosesAfterAStop() {
         var walk = WalkCycle()
         walk.advance(from: .zero, to: CGPoint(x: 13, y: 0))
         XCTAssertEqual(walk.frame, 14)
         XCTAssertEqual(walk.facing, 3)
         walk.advance(from: CGPoint(x: 13, y: 0), to: CGPoint(x: 13, y: 0))
         XCTAssertEqual(walk.frame, 0)
-        XCTAssertEqual(walk.distance, 13)
+        XCTAssertEqual(walk.distance, 0)
         walk.advance(from: CGPoint(x: 13, y: 0), to: CGPoint(x: 14, y: 0))
-        XCTAssertEqual(walk.frame, 15)
+        XCTAssertEqual(walk.frame, 2)
     }
 
     func testDiagonalHeadingUsesANarrowStableHysteresisBand() {
