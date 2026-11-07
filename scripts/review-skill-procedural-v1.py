@@ -23,6 +23,10 @@ def scene(t):
     shadow(s, enemy, ex, ey, es); shadow(s, hero, hx, hy, hs)
     s.alpha_composite(hero.resize((round(256 * hs), round(256 * hs)), Image.Resampling.NEAREST), (round(hx), round(hy)))
     s.alpha_composite(enemy.resize((round(enemy.width * es), round(enemy.height * es)), Image.Resampling.NEAREST), (round(ex), round(ey)))
+    hero2 = render('idle', ((t + .7) % 2.4) / 2.4); e2 = (ex + 120, ey + 62)
+    shadow(s, hero2, hx + 120, hy + 40, hs); shadow(s, enemy, *e2, es)
+    s.alpha_composite(enemy.resize((round(enemy.width * es), round(enemy.height * es)), Image.Resampling.NEAREST), (round(e2[0]), round(e2[1])))
+    s.alpha_composite(hero2.resize((round(256 * hs), round(256 * hs)), Image.Resampling.NEAREST), (round(hx + 120), round(hy + 40)))
     s.alpha_composite(foreground)
     return np.asarray(s.convert('RGB')).astype(float)
 
@@ -169,24 +173,16 @@ def bloom(buf, strength=.26):
 
 
 hero_chest = (hx + 128 * hs + 5 * .83, hy + 170 * hs); hero_foot = (hx + 128 * hs, hy + 240 * hs)
+hero2_chest = (hero_chest[0] + 120, hero_chest[1] + 40); hero2_foot = (hero_foot[0] + 120, hero_foot[1] + 40)
 enemy_chest = (ex + 178 * es, ey + 140 * es); enemy_foot = (ex + 178 * es, ey + 240 * es)
-CASES = {
-    'starlightPulse': dict(targets=[(enemy_chest, enemy_foot)], center=enemy_chest, ground=enemy_foot[1]),
-    'sweep': dict(targets=[(enemy_chest, enemy_foot)], center=enemy_chest, ground=enemy_foot[1]),
-    'rally': dict(targets=[(hero_chest, hero_foot)], center=hero_chest, ground=hero_foot[1]),
-    'dragonSoulWard': dict(targets=[(hero_chest, hero_foot)], center=hero_chest, ground=hero_foot[1]),
-    'dragonScaleWard': dict(targets=[(hero_chest, hero_foot)], center=hero_chest, ground=hero_foot[1]),
-    'healMicro': dict(targets=[(hero_chest, hero_foot)], center=hero_chest, ground=hero_foot[1]),
-    'healStandard': dict(targets=[(hero_chest, hero_foot)], center=hero_chest, ground=hero_foot[1]),
-    'healStrong': dict(targets=[(hero_chest, hero_foot)], center=hero_chest, ground=hero_foot[1]),
-    'runeSlash': dict(targets=[(enemy_chest, enemy_foot)], center=enemy_chest, ground=enemy_foot[1]),
-    'dragonFlame': dict(targets=[(enemy_chest, enemy_foot)], center=enemy_chest, ground=enemy_foot[1]),
-    'runeWard': dict(targets=[(hero_chest, hero_foot)], center=hero_chest, ground=hero_foot[1]),
-    'battleRune': dict(targets=[(hero_chest, hero_foot)], center=hero_chest, ground=hero_foot[1]),
-    'dragonOrder': dict(targets=[(hero_chest, hero_foot), ((hero_chest[0] + 150, hero_chest[1]), (hero_foot[0] + 150, hero_foot[1]))], center=hero_chest, ground=hero_foot[1]),
-}
+enemy2_chest = (enemy_chest[0] + 110, enemy_chest[1] + 62); enemy2_foot = (enemy_foot[0] + 110, enemy_foot[1] + 62)
+FOES = [(enemy_chest, enemy_foot), (enemy2_chest, enemy2_foot)]; ALLIES = [(hero_chest, hero_foot), (hero2_chest, hero2_foot)]
+def case(targets): return dict(targets=targets, center=targets[0][0], ground=targets[0][1][1])
+CASES = {k: case(FOES) for k in ('starlightPulse', 'sweep', 'runeSlash', 'dragonFlame')}
+CASES.update({k: case(ALLIES) for k in ('rally', 'dragonSoulWard', 'dragonScaleWard', 'runeWard', 'battleRune', 'dragonOrder')})
+CASES.update({k: case(ALLIES[:1]) for k in ('healMicro', 'healStandard', 'healStrong')})
 for c in CASES.values(): c.update(caster=hero_chest, casterFoot=hero_foot)
-CROP = (int(hx - 90), int(hy - 90), int(hx + 560), int(hy + 290))
+CROP = (int(hx - 90), int(hy - 110), int(hx + 700), int(hy + 330))
 sel = sys.argv[2].split(',') if len(sys.argv) > 2 else list(CASES)
 for sid in sel:
     dur = procfx.SPEC[sid][0]; geo = CASES[sid]; frames = []

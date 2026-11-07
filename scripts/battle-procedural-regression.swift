@@ -64,6 +64,26 @@ struct BattleProceduralRegression {
                 check(lit >= 0 && lit <= 1, "\(id) t=\(t): light \(lit)")
                 t += 1.0 / 30
             }
+            // Every target gets the effect: something is drawn centred on each target's chest while the effect is at full strength.
+            func centres(_ p: M.Prim) -> [Double] {
+                switch p {
+                case let .glow(x, _, _, _, _, _), let .ring(x, _, _, _, _, _, _, _), let .streak(x, _, _, _, _, _, _), let .arc(x, _, _, _, _, _, _, _, _): return [x]
+                case let .ribbon(pts, _, _, _, _, _): return pts.map { $0.x }
+                case .flash: return []
+                }
+            }
+            for probe in [info.release + 0.45, info.release + 0.8] {
+                let prims = M.primitives(skill: id, t: probe, geo: geo)
+                for (i, tg) in geo.targets.enumerated() {
+                    check(prims.contains { centres($0).contains { abs($0 - tg.chest.x) < 45 } }, "\(id) t=\(probe): target \(i) at x=\(tg.chest.x) gets no effect")
+                }
+            }
+            // Caster-side parts (charge-up, seal under the caster) are drawn once, not once per target.
+            if ["starlightPulse", "runeSlash", "dragonFlame", "dragonOrder"].contains(id) {
+                let one = M.Geometry(caster: geo.caster, casterFoot: geo.casterFoot, targets: [geo.targets[0]], ground: geo.ground)
+                let before = info.release * 0.5, withTwo = M.primitives(skill: id, t: before, geo: geo).count, withOne = M.primitives(skill: id, t: before, geo: one).count
+                check(withOne > 0 && withTwo < 2 * withOne, "\(id): the charge-up is duplicated per target (\(withTwo) vs \(withOne))")
+            }
             check(M.camera(skill: id, t: -0.1, direction: 1) == .zero && M.camera(skill: id, t: info.duration + 0.5, direction: 1) == .zero, "\(id) camera outside the effect")
             check(M.primitives(skill: id, t: info.duration + 1.5, geo: geo).count < 400, "\(id) draws too much after the end")
         }

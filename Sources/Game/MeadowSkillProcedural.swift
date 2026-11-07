@@ -171,33 +171,37 @@ enum MeadowSkillProcedural {
 
     // MARK: entry point
 
+    /// Every target gets the effect; caster-side parts (charge-up, seal under the caster, stage flash) are drawn once, for the first target.
     static func primitives(skill id: String, t: Double, geo: Geometry) -> [Prim] {
-        guard let first = geo.targets.first else { return [] }
-        _ = first
-        switch id {
-        case "starlightPulse": return starlight(t, geo)
-        case "dragonSoulWard": return soul(t, geo)
-        case "dragonScaleWard": return scaleWard(t, geo)
-        case "runeSlash": return runeSlash(t, geo)
-        case "runeWard": return runeWard(t, geo)
-        case "battleRune": return battleRune(t, geo)
-        case "dragonFlame": return dragonFlame(t, geo)
-        case "dragonOrder": return dragonOrder(t, geo)
-        case "healMicro": return healMicro(t, geo)
-        case "healStandard": return healStandard(t, geo)
-        case "healStrong": return healStrong(t, geo)
-        default: return []
+        guard !geo.targets.isEmpty else { return [] }
+        var all: [Prim] = []
+        for ti in geo.targets.indices {
+            switch id {
+            case "starlightPulse": all += starlight(t, geo, ti)
+            case "dragonSoulWard": all += soul(t, geo, ti)
+            case "dragonScaleWard": all += scaleWard(t, geo, ti)
+            case "runeSlash": all += runeSlash(t, geo, ti)
+            case "runeWard": all += runeWard(t, geo, ti)
+            case "battleRune": all += battleRune(t, geo, ti)
+            case "dragonFlame": all += dragonFlame(t, geo, ti)
+            case "dragonOrder": all += dragonOrder(t, geo, ti)
+            case "healMicro": all += healMicro(t, geo, ti)
+            case "healStandard": all += healStandard(t, geo, ti)
+            case "healStrong": all += healStrong(t, geo, ti)
+            default: return []
+            }
         }
+        return all
     }
 
     // MARK: starlight pulse
 
-    static func starlight(_ t: Double, _ geo: Geometry) -> [Prim] {
-        var o = Out(); let C = geo.caster, CF = geo.casterFoot, T = geo.targets[0].chest, TF = geo.targets[0].foot, imp = 0.75
+    static func starlight(_ t: Double, _ geo: Geometry, _ ti: Int) -> [Prim] {
+        var o = Out(); let C = geo.caster, CF = geo.casterFoot, T = geo.targets[ti].chest, TF = geo.targets[ti].foot, imp = 0.75
         let V = starlightTone, DEEP = RGB(40, 24, 140)
-        let sig = smooth(t / 0.2) * (1 - smooth((t - 0.42) / 0.25))
+        let sig = smooth(t / 0.2) * (1 - smooth((t - 0.42) / 0.25)) * (ti == 0 ? 1.0 : 0.0)
         sigil2(&o, CF.x, CF.y - 2, 66, 0.3, t, sig, (V[2], V[3], V[1]), 8, 1.2)
-        if t < 0.55 {
+        if t < 0.55 && ti == 0 {
             for i in 0..<22 {
                 let ph = frac(i, 1), u = pm(t * 0.9 + ph, 1.0), di = Double(i)
                 let x = CF.x + sin(u * 6 + di) * (24 + 30 * frac(i, 2)), y = CF.y - 6 - u * 130
@@ -258,7 +262,7 @@ enum MeadowSkillProcedural {
         let a = t - imp
         if a >= 0 {
             let cx = T.x, cy = T.y
-            if a < 0.2 { o.f(V[2], 0.12 * exp(-a * 18)) }
+            if a < 0.2 && ti == 0 { o.f(V[2], 0.12 * exp(-a * 18)) }
             o.g(cx, cy, 170 * (0.5 + easeOut(a / 0.35)), 170 * (0.5 + easeOut(a / 0.35)), V[3], 0.4 * (1 - easeIn(a / 0.8)))
             o.g(cx, cy, 60, 60, V[2], 0.5 * (1 - easeIn(a / 0.35)))
             o.g(cx, cy, 22, 22, V[1], 0.6 * (1 - easeIn(a / 0.22))); o.g(cx, cy, 10, 10, V[0], 0.9 * (1 - easeIn(a / 0.16)))
@@ -320,8 +324,8 @@ enum MeadowSkillProcedural {
 
     // MARK: dragon soul ward (power and presence, nothing literal)
 
-    static func soul(_ t: Double, _ geo: Geometry) -> [Prim] {
-        var o = Out(); let D = soulTone, chest = geo.targets[0].chest, foot = geo.targets[0].foot, fx = foot.x, fy = foot.y, gy = geo.ground
+    static func soul(_ t: Double, _ geo: Geometry, _ ti: Int) -> [Prim] {
+        var o = Out(); let D = soulTone, chest = geo.targets[ti].chest, foot = geo.targets[ti].foot, fx = foot.x, fy = foot.y, gy = foot.y
         let cx = chest.x, cy = chest.y
         let BODY = RGB(34, 98, 220), MID = RGB(70, 150, 255), LIGHT = RGB(170, 225, 255)
         let REL = 0.38
@@ -341,7 +345,7 @@ enum MeadowSkillProcedural {
             o.g(cx, cy, 70 - 40 * k + 20, 90 - 50 * k + 20, D[3], 0.22 + 0.22 * k); o.g(cx, cy, 20, 26, D[1], 0.5 * k)
         }
         if post >= 0 {
-            if post < 0.22 { o.f(D[2], 0.12 * exp(-post * 14)) }
+            if post < 0.22 && ti == 0 { o.f(D[2], 0.12 * exp(-post * 14)) }
             let waves: [(Double, Double)] = [(0, 7.0), (0.08, 5.0), (0.17, 3.4), (0.28, 2.2)]
             for (j, (d, wd)) in waves.enumerated() where post - d >= 0 {
                 let r = 14 + 190 * easeOut((post - d) / 0.7)
@@ -420,11 +424,11 @@ enum MeadowSkillProcedural {
 
     // MARK: spellblade: rune slash
 
-    static func runeSlash(_ t: Double, _ geo: Geometry) -> [Prim] {
-        var o = Out(); let P = Pal.rune, C = geo.caster, T = geo.targets[0].chest, imp = 1.048
+    static func runeSlash(_ t: Double, _ geo: Geometry, _ ti: Int) -> [Prim] {
+        var o = Out(); let P = Pal.rune, C = geo.caster, T = geo.targets[ti].chest, imp = 1.048
         let pre = clamp01((t - 0.25) / (imp - 0.25)), cx = T.x, cy = T.y
         let ANG: [Double] = [-0.95, 0.35, 1.25, -0.2, -1.75]
-        for k in 0..<5 {
+        for k in 0..<(ti == 0 ? 5 : 0) {
             let dk = Double(k), e = smooth((t - 0.2 - dk * 0.09) / 0.35)
             if e <= 0.01 || t >= imp + 0.05 * dk { continue }
             let sp = 3 + 14 * pre * pre, a = t * sp + dk * 1.2566, R = 52 + 10 * sin(t * 5 + dk)
@@ -433,7 +437,7 @@ enum MeadowSkillProcedural {
             let ws = (0..<12).map { i in 9 * pw(sin(Double.pi * (Double(i) / 11)), 0.8) + 0.6 }
             o.stack(pts, ws, [(2.2, P.body, true, 0.25), (1.0, P.mid, true, 0.6), (0.4, P.light, true, 0.95)], e)
         }
-        if t < imp {
+        if t < imp && ti == 0 {
             o.g(C.x + 24, C.y, 40 + 30 * pre, 50 + 30 * pre, P.body, 0.22 + 0.25 * pre); o.g(C.x + 24, C.y, 14, 18, P.light, 0.8 * pre)
         }
         let last = imp + 0.06 * 4
@@ -461,7 +465,7 @@ enum MeadowSkillProcedural {
         }
         if t - last > 0 {
             let a = t - last
-            o.f(P.light, 0.1 * exp(-a * 20))
+            if ti == 0 { o.f(P.light, 0.1 * exp(-a * 20)) }
             let r = 20 + 100 * easeOut(a / 0.35); o.r(cx, cy, r, r * 0.8, 2.4 * (1 - a / 0.4) + 0.4, P.mid, 0.7 * (1 - easeIn(a / 0.4)))
             for i in 0..<26 {
                 let ang2 = frac(i, 3) * 6.283, d = (40 + 130 * frac(i, 4)) * easeOut(a / 0.6), tr = a / 0.9
@@ -473,8 +477,8 @@ enum MeadowSkillProcedural {
 
     // MARK: spellblade: rune ward
 
-    static func runeWard(_ t: Double, _ geo: Geometry) -> [Prim] {
-        var o = Out(); let P = Pal.rune, foot = geo.targets[0].foot, chest = geo.targets[0].chest, fx = foot.x, fy = foot.y, cy = chest.y, imp = 0.72
+    static func runeWard(_ t: Double, _ geo: Geometry, _ ti: Int) -> [Prim] {
+        var o = Out(); let P = Pal.rune, foot = geo.targets[ti].foot, chest = geo.targets[ti].chest, fx = foot.x, fy = foot.y, cy = chest.y, imp = 0.72
         let N = 6, H = 150.0
         let close = t >= imp ? easeOut(clamp01((t - imp) / 0.4)) : 0.0
         let appear = smooth(t / 0.4), fadeout = 1 - smooth((t - 1.9) / 0.45)
@@ -506,7 +510,7 @@ enum MeadowSkillProcedural {
         if t >= imp {
             let a = t - imp
             if a < 0.5 {
-                o.f(P.light, 0.1 * exp(-a * 16))
+                if ti == 0 { o.f(P.light, 0.1 * exp(-a * 16)) }
                 let r = 30 + 120 * easeOut(a / 0.45); o.r(fx, fy - 2, r, r * 0.28, 3.4 * (1 - a / 0.5) + 0.5, P.light, 0.8 * (1 - easeIn(a / 0.5)))
             }
             for k in 0..<N {
@@ -528,8 +532,8 @@ enum MeadowSkillProcedural {
 
     // MARK: spellblade: battle rune
 
-    static func battleRune(_ t: Double, _ geo: Geometry) -> [Prim] {
-        var o = Out(); let P = Pal.battle, chest = geo.targets[0].chest, foot = geo.targets[0].foot, fx = foot.x, fy = foot.y, cx = chest.x, cy = chest.y, imp = 0.56
+    static func battleRune(_ t: Double, _ geo: Geometry, _ ti: Int) -> [Prim] {
+        var o = Out(); let P = Pal.battle, chest = geo.targets[ti].chest, foot = geo.targets[ti].foot, fx = foot.x, fy = foot.y, cx = chest.x, cy = chest.y, imp = 0.56
         let pre = clamp01((t - 0.05) / (imp - 0.05)), post = t - imp, fade = 1 - smooth((t - 1.75) / 0.35)
         let NODES = (0..<6).map { k -> Pt in let a = Double(k) * Double.pi / 3 + 0.4; return Pt(cx + cos(a) * 46, cy + sin(a) * 58) }
         if t < imp {
@@ -540,7 +544,7 @@ enum MeadowSkillProcedural {
             o.g(cx, cy, 70, 90, P.body, 0.15 + 0.2 * pre)
         }
         if post >= 0 {
-            if post < 0.15 { o.f(P.light, 0.2 * exp(-post * 18)) }
+            if post < 0.15 && ti == 0 { o.f(P.light, 0.2 * exp(-post * 18)) }
             let env = smooth(post / 0.08) * fade
             for k in 0..<16 {
                 let ph = Int(t * 24) + k * 7, r1 = frac(ph, 1), r2 = frac(ph, 2)
@@ -576,8 +580,8 @@ enum MeadowSkillProcedural {
 
     // MARK: dragon knight: dragon flame
 
-    static func dragonFlame(_ t: Double, _ geo: Geometry) -> [Prim] {
-        var o = Out(); let P = Pal.flame, C = geo.caster, T = geo.targets[0].chest, TF = geo.targets[0].foot, imp = 0.46
+    static func dragonFlame(_ t: Double, _ geo: Geometry, _ ti: Int) -> [Prim] {
+        var o = Out(); let P = Pal.flame, C = geo.caster, T = geo.targets[ti].chest, TF = geo.targets[ti].foot, imp = 0.46
         let cx = T.x, cy = T.y, post = t - imp
         let SX = cx - 170, SY = cy - 330
         o.g(SX, SY, 160, 120, P.body, 0.22 * smooth(t / 0.2) * (1 - smooth(post / 0.3)))
@@ -608,16 +612,16 @@ enum MeadowSkillProcedural {
             o.g(hx, hy, 70, 70, P.body, 0.5); o.g(hx, hy, 34, 34, P.mid, 0.8); o.g(hx, hy, 14, 14, P.a1, 1.0)
         }
         if post >= 0 {
-            if post < 0.25 { o.f(P.mid, 0.26 * exp(-post * 12)) }
-            o.g(cx, cy, 230 * (0.5 + easeOut(post / 0.3)), 160 * (0.5 + easeOut(post / 0.3)), P.body, 0.45 * (1 - easeIn(post / 0.7)))
+            if post < 0.25 && ti == 0 { o.f(P.mid, 0.26 * exp(-post * 12)) }
+            o.g(cx, cy, 290 * (0.5 + easeOut(post / 0.3)), 190 * (0.5 + easeOut(post / 0.3)), P.body, 0.45 * (1 - easeIn(post / 0.7)))
             o.g(cx, cy, 70, 60, P.a1, 0.8 * (1 - easeIn(post / 0.22)))
             for k in 0..<22 {
-                let dk = Double(k), a = dk * 2 * Double.pi / 22 + 0.2 * frac(k, 2), L = (90 + 90 * frac(k, 3)) * easeOut(post / 0.45)
+                let dk = Double(k), a = dk * 2 * Double.pi / 22 + 0.2 * frac(k, 2), L = (120 + 110 * frac(k, 3)) * easeOut(post / 0.45)
                 let x = TF.x + cos(a) * L, y = TF.y - 4 + sin(a) * L * 0.27
                 flame(&o, x, y, 40 + 60 * frac(k, 4) * (1 - easeIn(post / 1.4)), 10, t, dk, P, (1 - easeIn((post - 0.4) / 1.2)) * smooth(post / 0.1))
             }
             for i in 0..<48 {
-                let di = Double(i), ang = frac(i, 5) * 6.283, rr = 20 + 100 * frac(i, 6), x = TF.x + cos(ang) * rr * 1.1, y = TF.y - 3 + sin(ang) * rr * 0.27
+                let di = Double(i), ang = frac(i, 5) * 6.283, rr = 20 + 150 * frac(i, 6), x = TF.x + cos(ang) * rr * 1.1, y = TF.y - 3 + sin(ang) * rr * 0.27
                 let born = 0.15 + 0.5 * frac(i, 7), lifeA = clamp01((post - born) / 0.2) * (1 - clamp01((post - born - 0.9 - 0.5 * frac(i, 8)) / 0.5))
                 if lifeA > 0.01 { flame(&o, x, y, (26 + 44 * frac(i, 9)) * (0.7 + 0.3 * sin(t * 11 + di)), 5.5 + 4 * frac(i, 1), t, di + 20, P, lifeA, 18) }
             }
@@ -633,7 +637,7 @@ enum MeadowSkillProcedural {
                 o.e(cx + cos(a) * r, cy + 20 + sin(a) * r * 0.4 - 130 * tt * (0.4 + frac(i, 5)) + 90 * tt * tt, 9, 1.6, a - 1.2 * tt, [P.a1, P.mid, P.a2][i % 3], 0.85 * k * (0.6 + 0.4 * sin(tt * 30 + Double(i))))
             }
         }
-        if t < imp + 0.9 {
+        if t < imp + 0.9 && ti == 0 {
             let e = smooth((t - 0.05) / 0.2) * (1 - smooth((t - imp - 0.5) / 0.4)); o.g(C.x + 26, C.y - 6, 36, 40, P.mid, 0.25 * e)
         }
         return o.prims
@@ -641,8 +645,8 @@ enum MeadowSkillProcedural {
 
     // MARK: dragon knight: dragon scale ward
 
-    static func scaleWard(_ t: Double, _ geo: Geometry) -> [Prim] {
-        var o = Out(); let P = Pal.scale, chest = geo.targets[0].chest, foot = geo.targets[0].foot, fx = foot.x, fy = foot.y, cx = chest.x, cy = chest.y, imp = 0.56
+    static func scaleWard(_ t: Double, _ geo: Geometry, _ ti: Int) -> [Prim] {
+        var o = Out(); let P = Pal.scale, chest = geo.targets[ti].chest, foot = geo.targets[ti].foot, fx = foot.x, fy = foot.y, cx = chest.x, cy = chest.y, imp = 0.56
         let fadeout = 1 - smooth((t - 1.85) / 0.4)
         let ORB: [(Double, Double, Double, Int)] = [(60, 0.35, 1.0, 5), (74, 1.15, -0.65, 5), (86, -1.2, 0.5, 5)]
         let BR = RGB(96, 52, 14)
@@ -671,7 +675,7 @@ enum MeadowSkillProcedural {
         if t >= imp {
             let a = t - imp
             if a < 0.5 {
-                o.f(P.mid, 0.12 * exp(-a * 16))
+                if ti == 0 { o.f(P.mid, 0.12 * exp(-a * 16)) }
                 let r = 24 + 130 * easeOut(a / 0.45); o.r(fx, fy - 2, r, r * 0.28, 6 * (1 - a / 0.5) + 0.6, P.light, 0.8 * (1 - easeIn(a / 0.5)))
                 let r2 = 40 + 90 * easeOut(a / 0.35); o.r(cx, cy, r2, r2 * 1.25, 3 * (1 - a / 0.4) + 0.5, P.mid, 0.6 * (1 - easeIn(a / 0.4)))
             }
@@ -691,10 +695,10 @@ enum MeadowSkillProcedural {
 
     // MARK: dragon knight: dragon order
 
-    static func dragonOrder(_ t: Double, _ geo: Geometry) -> [Prim] {
+    static func dragonOrder(_ t: Double, _ geo: Geometry, _ ti: Int) -> [Prim] {
         var o = Out(); let P = Pal.order, C = geo.caster, CF = geo.casterFoot, imp = 0.56
         let BEATS = [imp, imp + 0.3, imp + 0.6], fadeout = 1 - smooth((t - 1.85) / 0.3)
-        if t < imp {
+        if t < imp && ti == 0 {
             for k in 0..<3 {
                 let tap = max(0.0, 1 - abs(t - (0.15 + Double(k) * 0.17)) / 0.06); o.g(C.x, C.y, 44 + 30 * tap, 54 + 30 * tap, P.body, 0.12 + 0.3 * tap)
             }
@@ -703,15 +707,15 @@ enum MeadowSkillProcedural {
             let a = t - tb
             if a < 0 { continue }
             let big = 1.0 + 0.5 * b2d(bi == 2), dbi = Double(bi)
-            if a < 0.14 { o.f(P.mid, (0.1 + 0.08 * dbi) * exp(-a * 24)) }
-            for rI in 0..<3 {
+            if a < 0.14 && ti == 0 { o.f(P.mid, (0.1 + 0.08 * dbi) * exp(-a * 24)) }
+            for rI in 0..<(ti == 0 ? 3 : 0) {
                 let d = Double(rI) * 0.05, tt = a - d
                 if tt < 0 { continue }
                 let r = (40 + 470 * easeOut(tt / 0.85)) * big, fade = 1 - easeIn(tt / 0.9)
                 o.arc(C.x + 20, C.y, r, r * 0.52, -1.15, 1.15, (7.0 - Double(rI) * 1.8) * fade + 0.8, [P.light, P.a1, P.mid][rI], 0.85 * fade)
             }
-            let r = 20 + 130 * big * easeOut(a / 0.5); o.r(CF.x, CF.y - 2, r, r * 0.27, 6 * (1 - a / 0.55) + 0.6, P.mid, 0.8 * (1 - easeIn(a / 0.55)))
-            for (n, tg) in geo.targets.enumerated() {
+            if ti == 0 { let r = 20 + 130 * big * easeOut(a / 0.5); o.r(CF.x, CF.y - 2, r, r * 0.27, 6 * (1 - a / 0.55) + 0.6, P.mid, 0.8 * (1 - easeIn(a / 0.55))) }
+            for (n, tg) in [(ti, geo.targets[ti])] {
                 let hit = a - 0.1 - 0.05 * Double(n)
                 if hit < 0 { continue }
                 let cx = tg.chest.x, cy = tg.chest.y, fx = tg.foot.x, fy = tg.foot.y
@@ -728,7 +732,7 @@ enum MeadowSkillProcedural {
             }
         }
         let last = t - BEATS[2]
-        for (n, tg) in geo.targets.enumerated() {
+        for (n, tg) in [(ti, geo.targets[ti])] {
             if last < 0.15 { continue }
             let cx = tg.chest.x, cy = tg.chest.y, ph = pm(t * 2.0 - Double(n) * 0.2, 1.0), env = smooth((last - 0.15) / 0.25) * fadeout
             o.g(cx, cy, 52 + 14 * exp(-ph * 5), 80 + 18 * exp(-ph * 5), P.body, (0.14 + 0.3 * exp(-ph * 5)) * env)
@@ -743,8 +747,8 @@ enum MeadowSkillProcedural {
 
     // MARK: healing (micro, standard, strong)
 
-    static func healMicro(_ t: Double, _ geo: Geometry) -> [Prim] {
-        var o = Out(); let P = Pal.heal, chest = geo.targets[0].chest, foot = geo.targets[0].foot, fx = foot.x, fy = foot.y, cx = chest.x, cy = chest.y
+    static func healMicro(_ t: Double, _ geo: Geometry, _ ti: Int) -> [Prim] {
+        var o = Out(); let P = Pal.heal, chest = geo.targets[ti].chest, foot = geo.targets[ti].foot, fx = foot.x, fy = foot.y, cx = chest.x, cy = chest.y
         let fade = 1 - smooth((t - 1.1) / 0.25)
         let r = 10 + 40 * easeOut(t / 0.6); o.thinRing(fx, fy - 2, r, r * 0.27, 1.5 * (1 - t / 0.7) + 0.4, P.mid, 0.7 * (1 - easeIn(t / 0.7)))
         let pulse = exp(-pow((t - 0.28) / 0.13, 2)); o.g(cx, cy, 60, 74, P.body, 0.4 * pulse); o.g(cx, cy, 18, 22, P.light, 0.6 * pulse)
@@ -762,8 +766,8 @@ enum MeadowSkillProcedural {
         return o.prims
     }
 
-    static func healStandard(_ t: Double, _ geo: Geometry) -> [Prim] {
-        var o = Out(); let P = Pal.heal, chest = geo.targets[0].chest, foot = geo.targets[0].foot, fx = foot.x, fy = foot.y, cx = chest.x, cy = chest.y
+    static func healStandard(_ t: Double, _ geo: Geometry, _ ti: Int) -> [Prim] {
+        var o = Out(); let P = Pal.heal, chest = geo.targets[ti].chest, foot = geo.targets[ti].foot, fx = foot.x, fy = foot.y, cx = chest.x, cy = chest.y
         let fade = 1 - smooth((t - 1.45) / 0.3)
         for q in 0..<2 {
             let head = easeOut(clamp01(t / 0.9)), tail = easeIn(clamp01((t - 0.7) / 0.8))
@@ -803,8 +807,8 @@ enum MeadowSkillProcedural {
         return o.prims
     }
 
-    static func healStrong(_ t: Double, _ geo: Geometry) -> [Prim] {
-        var o = Out(); let P = Pal.heal, chest = geo.targets[0].chest, foot = geo.targets[0].foot, fx = foot.x, fy = foot.y, cx = chest.x, cy = chest.y
+    static func healStrong(_ t: Double, _ geo: Geometry, _ ti: Int) -> [Prim] {
+        var o = Out(); let P = Pal.heal, chest = geo.targets[ti].chest, foot = geo.targets[ti].foot, fx = foot.x, fy = foot.y, cx = chest.x, cy = chest.y
         let fade = 1 - smooth((t - 1.85) / 0.4)
         for q in 0..<4 {
             let dq = Double(q), env = smooth((t - 0.1 - 0.06 * dq) / 0.5) * fade
@@ -832,7 +836,7 @@ enum MeadowSkillProcedural {
                 o.e(cx + cos(ang) * L * s / 2, cy + sin(ang) * L * s / 2 * 0.95, L * s / 2, 1.1, ang, [P.mid, P.light, P.a2, P.mid][k % 4], 0.4 * env)
             }
         }
-        if t > 0.3 { o.f(P.a1, 0.1 * exp(-(t - 0.3) * 14)) }
+        if t > 0.3 && ti == 0 { o.f(P.a1, 0.1 * exp(-(t - 0.3) * 14)) }
         for i in 0..<44 {
             let tb = 0.25 + 0.5 * frac(i, 1), tt = t - tb
             if !(0 <= tt && tt < 1.3) { continue }
