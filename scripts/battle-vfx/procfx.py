@@ -21,11 +21,11 @@ Geometry `geo`: dict(caster=(x,y chest), casterFoot=(x,y), targets=[(chest, foot
 import math
 
 SPEC = {  # id: (duration, impact, support)
-    'starlightPulse': (1.6, 0.75, False),
+    'starlightPulse': (1.6, 0.75, False, .75),
     'rally': (1.67, 0.0, True),
     'sweep': (1.0, 0.45, False),
-    'dragonSoulWard': (2.0, 0.0, True),
-    'dragonScaleWard': (1.0, 0.0, True),
+    'dragonSoulWard': (2.0, 0.0, True, .38),
+    'dragonScaleWard': (1.0, 0.0, True, .56),
 }
 TONE = {
     'starlightPulse': [(255, 255, 255), (222, 212, 255), (160, 136, 255), (96, 70, 235), (44, 26, 150)],
@@ -1491,4 +1491,104 @@ def multi(fn):
 _SINGLE = {'starlightPulse': starlight, 'dragonSoulWard': soul, 'dragonScaleWard': scale_ward, 'runeSlash': rune_slash, 'runeWard': rune_ward,
            'battleRune': battle_rune, 'dragonFlame': dragon_flame, 'dragonOrder': dragon_order,
            'healMicro': heal_micro, 'healStandard': heal_standard, 'healStrong': heal_strong}
-GENERATORS = {**{k: multi(v) for k, v in _SINGLE.items()}, 'rally': rally, 'sweep': sweep}
+# ------------------------------------------------------------------ atmosphere: themed particles over the whole stage
+# Three layers per skill, all closed-form in t with fixed-id randomness: particles that GATHER into the caster while the power builds,
+# a FIELD of particles that fills the whole stage with the skill's own weather (dragon flame = a hot updraft of embers, starlight =
+# falling twinkling stars, soul ward = rising blue wisps, scale ward = tumbling gilded flakes, runes = glyph fragments, ...),
+# and a BURST from every target at the release.
+# id: (kind, motion, palette, field count, gather count, burst count per target, rate, size, release time)
+ATMOS = {
+    'starlightPulse': ('star', 'fall', 'starlight', 70, 28, 22, .42, 1.3, .75),
+    'dragonSoulWard': ('wisp', 'rise', 'soul', 64, 28, 18, .34, 1.4, .38),
+    'dragonScaleWard': ('flake', 'fall', 'scale', 60, 24, 22, .30, 1.3, .56),
+    'runeSlash': ('rune', 'gust', 'rune', 66, 26, 24, .55, 1.3, 1.048),
+    'runeWard': ('rune', 'rise', 'rune', 60, 26, 18, .30, 1.3, .72),
+    'battleRune': ('spark', 'orbit', 'battle', 60, 26, 24, .50, 1.3, .56),
+    'dragonFlame': ('ember', 'rise', 'flame', 90, 32, 30, .50, 1.45, .46),
+    'dragonOrder': ('ember', 'gust', 'order', 66, 28, 22, .50, 1.3, .56),
+    'healMicro': ('mote', 'rise', 'heal', 20, 0, 0, .30, 1.1, .3),
+    'healStandard': ('mote', 'rise', 'heal', 28, 0, 0, .30, 1.25, .3),
+    'healStrong': ('mote', 'rise', 'heal', 36, 0, 0, .30, 1.4, .3),
+}
+
+
+def atmos_cols(name):
+    if name == 'starlight': return [(255, 255, 255), (222, 212, 255), (160, 136, 255), (255, 255, 255)]
+    if name == 'soul': return [(235, 250, 255), (130, 210, 255), (56, 140, 255), (235, 250, 255)]
+    P = PAL[name]; return [P['light'], P['mid'], P['a2'], P['a1']]
+
+
+def particle(out, kind, x, y, vx, vy, a, s, col, t, i):
+    if a < .012: return
+    if kind == 'ember':
+        out.append(('e', x, y, 18 * s, 3 * s, math.atan2(vy, vx), col, a * .95)); out.append(('g', x, y, 11 * s, 11 * s, col, a * .4))
+    elif kind == 'star':
+        tw = .55 + .45 * math.sin(t * 9 + i * 1.7); L = 22 * s * (.6 + .4 * tw)
+        out.append(('e', x, y, L, 1.8 * s, 0.0, col, a * tw)); out.append(('e', x, y, L * .8, 1.6 * s, 1.5708, col, a * tw)); out.append(('g', x, y, 10 * s, 10 * s, col, a * tw * .35))
+    elif kind == 'wisp':
+        out.append(('g', x, y, 13 * s, 13 * s, col, a * .85)); out.append(('g', x - vx * .06, y - vy * .06, 9 * s, 9 * s, col, a * .55)); out.append(('g', x - vx * .12, y - vy * .12, 6.5 * s, 6.5 * s, col, a * .35))
+    elif kind == 'flake':
+        tum = t * 3 + i; out.append(('e', x, y, 13 * s * (.35 + .65 * abs(math.cos(tum))), 5 * s, tum * .7, col, a)); out.append(('g', x, y, 7 * s, 7 * s, col, a * .25))
+    elif kind == 'rune':
+        a0 = t * 2 + i; out.append(('a', x, y, 11 * s, 11 * s, a0, a0 + 4.2, 2.0, col, a)); out.append(('g', x, y, 14 * s, 14 * s, col, a * .35))
+    elif kind == 'spark':
+        out.append(('e', x, y, 13 * s, 2.2 * s, math.sin(t * 40 + i) * 1.5, col, a)); out.append(('g', x, y, 9 * s, 9 * s, col, a * .5))
+    else:
+        out.append(('g', x, y, 9 * s, 9 * s, col, a * .8)); out.append(('g', x, y, 3.5 * s, 3.5 * s, col, a))
+
+
+def atmosphere(skill, t, geo):
+    spec = ATMOS.get(skill)
+    if spec is None: return []
+    kind, motion, pal, NF, NG, NB, rate, size, imp = spec
+    dur = SPEC[skill][0]
+    if t < 0 or t >= dur: return []
+    cols = atmos_cols(pal); out = []
+    C = geo['caster']; Ts = [c for c, f in geo['targets']]; gy = geo['ground']
+    xs = [C[0]] + [p[0] for p in Ts]; x0 = min(xs) - 170; x1 = max(xs) + 170; top = gy - 330
+    mx = sum(p[0] for p in Ts) / len(Ts); my = sum(p[1] for p in Ts) / len(Ts); d = 1.0 if Ts[0][0] >= C[0] else -1.0
+    amb = smooth(t / (imp * .8 + .05)) * (1 - smooth((t - dur * .62) / (dur * .34)))
+    lvl = amb * (.45 + .55 * smooth((t - imp * .7) / .4))
+    for i in range(NF):                                                     # the field: the skill's own weather across the stage
+        sp = (.55 + .9 * frac(i, 3)) * rate; q = t * sp + frac(i, 2); lane = int(math.floor(q)); cyc = q - lane
+        ux = frac(i + 17 * lane, 5); vz = frac(i, 4); sway = math.sin(cyc * 6.2832 * (1 + vz) + i)
+        if motion == 'rise':
+            H = 240 + 90 * vz; x = x0 + (x1 - x0) * ux + sway * 16 * (.4 + cyc); y = gy + 10 - cyc * H; vx = sway * 10; vy = -H * sp
+        elif motion == 'fall':
+            H = gy - top + 20; x = x0 + (x1 - x0) * ux + sway * 22 * (.4 + cyc); y = top - 20 + cyc * H; vx = sway * 12; vy = H * sp
+        elif motion == 'gust':
+            W = x1 - x0 + 180; x = (x0 - 90 if d > 0 else x1 + 90) + d * cyc * W; y = gy - 30 - 230 * frac(i + 7 * lane, 6) + sway * 14; vx = d * W * sp; vy = 0.0
+        else:
+            w = (.8 + 1.2 * vz) * (1.0 if i % 2 == 0 else -1.0); ang = t * w + i * 2.399; R = 60 + 190 * ux
+            x = mx + math.cos(ang) * R * 1.2; y = my + math.sin(ang) * R * .35 - 40 * cyc; vx = -math.sin(ang) * R * 1.2 * w; vy = math.cos(ang) * R * .35 * w - 40 * sp
+        a = lvl * math.sin(math.pi * cyc) ** .8 * (.65 + .35 * frac(i, 7))
+        particle(out, kind, x, y, vx, vy, a, size * (.7 + .6 * vz), cols[i % 4], t, i)
+    if NG and t < imp + .02:                                                  # gather: the power is drawn into the caster
+        for j in range(NG):
+            e = smooth((t - .04 - .3 * imp * frac(j, 3)) / (imp * .8))
+            if e <= .01 or e >= 1: continue
+            a0 = frac(j, 1) * 6.2832 + t * (1.4 + frac(j, 2)); R0 = 130 + 150 * frac(j, 2); r = R0 * (1 - e) ** 1.4
+            x = C[0] + math.cos(a0) * r; y = C[1] + math.sin(a0) * r * .6
+            a = smooth(e * 6) * (1 - smooth((e - .85) / .15)) * smooth(t / .12) * .9
+            particle(out, kind, x, y, C[0] - x, C[1] - y, a, size, cols[j % 4], t, j + 100)
+    post = t - imp
+    if NB and post > 0:                                                       # burst: every target throws the power back out
+        for ti, T in enumerate(Ts):
+            for j in range(NB):
+                jj = j + 31 * ti; tt = post - (.02 + .22 * frac(jj, 5)); life = 1.0 + .6 * frac(jj, 6)
+                if not 0 <= tt < life: continue
+                ang = frac(jj, 7) * 6.2832; spd = 80 + 170 * frac(jj, 8); rr = spd * ease_out(tt / .7); slow = 1 - clamp01(tt / .7)
+                if motion == 'fall': dy = 90 * tt * tt; gv = 180 * tt
+                else: dy = -70 * tt; gv = -70.0
+                x = T[0] + math.cos(ang) * rr; y = T[1] + math.sin(ang) * rr * .55 + dy
+                a = (1 - tt / life) ** .8 * smooth(tt / .05) * .95
+                particle(out, kind, x, y, math.cos(ang) * spd * slow, math.sin(ang) * spd * .55 * slow + gv, a, size * 1.1, cols[jj % 4], t, jj + 200)
+    return out
+
+
+def with_atmosphere(fn, skill):
+    def run(t, geo): return fn(t, geo) + atmosphere(skill, t, geo)
+    return run
+
+
+GENERATORS = {**{k: with_atmosphere(multi(v), k) for k, v in _SINGLE.items()}, 'rally': rally, 'sweep': sweep}

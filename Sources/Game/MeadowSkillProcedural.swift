@@ -191,7 +191,7 @@ enum MeadowSkillProcedural {
             default: return []
             }
         }
-        return all
+        return all + atmosphere(skill: id, t: t, geo: geo)
     }
 
     // MARK: starlight pulse
@@ -847,6 +847,120 @@ enum MeadowSkillProcedural {
             o.e(x - vx * 0.012, y - vyn * 0.012, max(3, sp * 0.02), 1.2, atan2(vyn, vx), col, 0.85 * k); o.g(x, y, 6, 6, col, 0.5 * k); o.g(x, y, 2.4, 2.4, white, 0.9 * k)
         }
         o.g(cx, cy, 80 + 6 * sin(t * 5), 110 + 6 * sin(t * 5), P.body, 0.14 * smooth((t - 0.3) / 0.4) * fade)
+        return o.prims
+    }
+
+    // MARK: atmosphere (themed particles over the whole stage)
+
+    /// Three layers per skill: particles that gather into the caster while the power builds, a field that fills the whole stage with the
+    /// skill's own weather (embers, falling stars, wisps, flakes, glyph fragments...), and a burst from every target at the release.
+    struct AtmosSpec { let kind: String, motion: String, palette: String, field: Int, gather: Int, burst: Int, rate: Double, size: Double, release: Double }
+    static let atmos: [String: AtmosSpec] = [
+        "starlightPulse": AtmosSpec(kind: "star", motion: "fall", palette: "starlight", field: 70, gather: 28, burst: 22, rate: 0.42, size: 1.3, release: 0.75),
+        "dragonSoulWard": AtmosSpec(kind: "wisp", motion: "rise", palette: "soul", field: 64, gather: 28, burst: 18, rate: 0.34, size: 1.4, release: 0.38),
+        "dragonScaleWard": AtmosSpec(kind: "flake", motion: "fall", palette: "scale", field: 60, gather: 24, burst: 22, rate: 0.30, size: 1.3, release: 0.56),
+        "runeSlash": AtmosSpec(kind: "rune", motion: "gust", palette: "rune", field: 66, gather: 26, burst: 24, rate: 0.55, size: 1.3, release: 1.048),
+        "runeWard": AtmosSpec(kind: "rune", motion: "rise", palette: "rune", field: 60, gather: 26, burst: 18, rate: 0.30, size: 1.3, release: 0.72),
+        "battleRune": AtmosSpec(kind: "spark", motion: "orbit", palette: "battle", field: 60, gather: 26, burst: 24, rate: 0.50, size: 1.3, release: 0.56),
+        "dragonFlame": AtmosSpec(kind: "ember", motion: "rise", palette: "flame", field: 90, gather: 32, burst: 30, rate: 0.50, size: 1.45, release: 0.46),
+        "dragonOrder": AtmosSpec(kind: "ember", motion: "gust", palette: "order", field: 66, gather: 28, burst: 22, rate: 0.50, size: 1.3, release: 0.56),
+        "healMicro": AtmosSpec(kind: "mote", motion: "rise", palette: "heal", field: 20, gather: 0, burst: 0, rate: 0.30, size: 1.1, release: 0.3),
+        "healStandard": AtmosSpec(kind: "mote", motion: "rise", palette: "heal", field: 28, gather: 0, burst: 0, rate: 0.30, size: 1.25, release: 0.3),
+        "healStrong": AtmosSpec(kind: "mote", motion: "rise", palette: "heal", field: 36, gather: 0, burst: 0, rate: 0.30, size: 1.4, release: 0.3),
+    ]
+
+    static func atmosCols(_ name: String) -> [RGB] {
+        switch name {
+        case "starlight": return [RGB(255, 255, 255), RGB(222, 212, 255), RGB(160, 136, 255), RGB(255, 255, 255)]
+        case "soul": return [RGB(235, 250, 255), RGB(130, 210, 255), RGB(56, 140, 255), RGB(235, 250, 255)]
+        default:
+            let P: Pal
+            switch name { case "rune": P = .rune; case "battle": P = .battle; case "flame": P = .flame; case "scale": P = .scale; case "order": P = .order; default: P = .heal }
+            return [P.light, P.mid, P.a2, P.a1]
+        }
+    }
+
+    private static func particle(_ o: inout Out, _ kind: String, _ x: Double, _ y: Double, _ vx: Double, _ vy: Double, _ a: Double, _ s: Double, _ col: RGB, _ t: Double, _ i: Int) {
+        if a < 0.012 { return }
+        let di = Double(i)
+        switch kind {
+        case "ember":
+            o.e(x, y, 18 * s, 3 * s, atan2(vy, vx), col, a * 0.95); o.g(x, y, 11 * s, 11 * s, col, a * 0.4)
+        case "star":
+            let tw = 0.55 + 0.45 * sin(t * 9 + di * 1.7), L = 22 * s * (0.6 + 0.4 * tw)
+            o.e(x, y, L, 1.8 * s, 0.0, col, a * tw); o.e(x, y, L * 0.8, 1.6 * s, 1.5708, col, a * tw); o.g(x, y, 10 * s, 10 * s, col, a * tw * 0.35)
+        case "wisp":
+            o.g(x, y, 13 * s, 13 * s, col, a * 0.85); o.g(x - vx * 0.06, y - vy * 0.06, 9 * s, 9 * s, col, a * 0.55); o.g(x - vx * 0.12, y - vy * 0.12, 6.5 * s, 6.5 * s, col, a * 0.35)
+        case "flake":
+            let tum = t * 3 + di
+            o.e(x, y, 13 * s * (0.35 + 0.65 * abs(cos(tum))), 5 * s, tum * 0.7, col, a); o.g(x, y, 7 * s, 7 * s, col, a * 0.25)
+        case "rune":
+            let a0 = t * 2 + di
+            o.arc(x, y, 11 * s, 11 * s, a0, a0 + 4.2, 2.0, col, a); o.g(x, y, 14 * s, 14 * s, col, a * 0.35)
+        case "spark":
+            o.e(x, y, 13 * s, 2.2 * s, sin(t * 40 + di) * 1.5, col, a); o.g(x, y, 9 * s, 9 * s, col, a * 0.5)
+        default:
+            o.g(x, y, 9 * s, 9 * s, col, a * 0.8); o.g(x, y, 3.5 * s, 3.5 * s, col, a)
+        }
+    }
+
+    static func atmosphere(skill id: String, t: Double, geo: Geometry) -> [Prim] {
+        guard let sp = atmos[id], let info = info[id], t >= 0, t < info.duration, !geo.targets.isEmpty else { return [] }
+        let imp = sp.release, cols = atmosCols(sp.palette)
+        var o = Out()
+        let C = geo.caster, Ts = geo.targets.map { $0.chest }, gy = geo.ground
+        let xs = [C.x] + Ts.map { $0.x }, x0 = (xs.min() ?? C.x) - 170, x1 = (xs.max() ?? C.x) + 170, top = gy - 330
+        let mx = Ts.reduce(0.0) { $0 + $1.x } / Double(Ts.count), my = Ts.reduce(0.0) { $0 + $1.y } / Double(Ts.count)
+        let d: Double = Ts[0].x >= C.x ? 1.0 : -1.0
+        let amb = smooth(t / (imp * 0.8 + 0.05)) * (1 - smooth((t - info.duration * 0.62) / (info.duration * 0.34)))
+        let lvl = amb * (0.45 + 0.55 * smooth((t - imp * 0.7) / 0.4))
+        for i in 0..<sp.field {
+            let di = Double(i)
+            let rate = (0.55 + 0.9 * frac(i, 3)) * sp.rate, q = t * rate + frac(i, 2), lane = Int(floor(q)), cyc = q - Double(lane)
+            let ux = frac(i + 17 * lane, 5), vz = frac(i, 4), sway = sin(cyc * 6.2832 * (1 + vz) + di)
+            var x = 0.0, y = 0.0, vx = 0.0, vy = 0.0
+            switch sp.motion {
+            case "rise":
+                let H = 240 + 90 * vz
+                x = x0 + (x1 - x0) * ux + sway * 16 * (0.4 + cyc); y = gy + 10 - cyc * H; vx = sway * 10; vy = -H * rate
+            case "fall":
+                let H = gy - top + 20
+                x = x0 + (x1 - x0) * ux + sway * 22 * (0.4 + cyc); y = top - 20 + cyc * H; vx = sway * 12; vy = H * rate
+            case "gust":
+                let W = x1 - x0 + 180
+                x = (d > 0 ? x0 - 90 : x1 + 90) + d * cyc * W; y = gy - 30 - 230 * frac(i + 7 * lane, 6) + sway * 14; vx = d * W * rate; vy = 0.0
+            default:
+                let w = (0.8 + 1.2 * vz) * (i % 2 == 0 ? 1.0 : -1.0), ang = t * w + di * 2.399, R = 60 + 190 * ux
+                x = mx + cos(ang) * R * 1.2; y = my + sin(ang) * R * 0.35 - 40 * cyc; vx = -sin(ang) * R * 1.2 * w; vy = cos(ang) * R * 0.35 * w - 40 * rate
+            }
+            let a = lvl * pw(sin(Double.pi * cyc), 0.8) * (0.65 + 0.35 * frac(i, 7))
+            particle(&o, sp.kind, x, y, vx, vy, a, sp.size * (0.7 + 0.6 * vz), cols[i % 4], t, i)
+        }
+        if sp.gather > 0 && t < imp + 0.02 {
+            for j in 0..<sp.gather {
+                let e = smooth((t - 0.04 - 0.3 * imp * frac(j, 3)) / (imp * 0.8))
+                if e <= 0.01 || e >= 1 { continue }
+                let a0 = frac(j, 1) * 6.2832 + t * (1.4 + frac(j, 2)), R0 = 130 + 150 * frac(j, 2), r = R0 * pw(1 - e, 1.4)
+                let x = C.x + cos(a0) * r, y = C.y + sin(a0) * r * 0.6
+                let a = smooth(e * 6) * (1 - smooth((e - 0.85) / 0.15)) * smooth(t / 0.12) * 0.9
+                particle(&o, sp.kind, x, y, C.x - x, C.y - y, a, sp.size, cols[j % 4], t, j + 100)
+            }
+        }
+        let post = t - imp
+        if sp.burst > 0 && post > 0 {
+            for (ti, T) in Ts.enumerated() {
+                for j in 0..<sp.burst {
+                    let jj = j + 31 * ti, tt = post - (0.02 + 0.22 * frac(jj, 5)), life = 1.0 + 0.6 * frac(jj, 6)
+                    if !(tt >= 0 && tt < life) { continue }
+                    let ang = frac(jj, 7) * 6.2832, spd = 80 + 170 * frac(jj, 8), rr = spd * easeOut(tt / 0.7), slow = 1 - clamp01(tt / 0.7)
+                    let dy: Double, gv: Double
+                    if sp.motion == "fall" { dy = 90 * tt * tt; gv = 180 * tt } else { dy = -70 * tt; gv = -70.0 }
+                    let x = T.x + cos(ang) * rr, y = T.y + sin(ang) * rr * 0.55 + dy
+                    let a = pw(1 - tt / life, 0.8) * smooth(tt / 0.05) * 0.95
+                    particle(&o, sp.kind, x, y, cos(ang) * spd * slow, sin(ang) * spd * 0.55 * slow + gv, a, sp.size * 1.1, cols[jj % 4], t, jj + 200)
+                }
+            }
+        }
         return o.prims
     }
 
