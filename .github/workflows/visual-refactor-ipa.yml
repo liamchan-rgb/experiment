@@ -5,7 +5,7 @@ name: Visual Refactor IPA
 # the unsigned IPA as a pre-release so it has a direct .ipa link for SideStore.
 on:
   push:
-    branches: [claude/meadowjourney-visual-refactor-kh0zpr]
+    branches: [claude/meadowjourney-visual-refactor-kh0zpr, claude/meadowjourney-character-pixel-hck1q2]
 permissions:
   contents: write
 concurrency:

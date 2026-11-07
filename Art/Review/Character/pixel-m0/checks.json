@@ -1,0 +1,348 @@
+{
+ "spec": {
+  "height": 64,
+  "canvas": [
+   80,
+   76
+  ],
+  "pitch_deg": 14.0
+ },
+ "battle_logical_pixel_size_in_scene_px": 5.638,
+ "size": {
+  "height_down": 63,
+  "width_down": 28,
+  "height_right": 64,
+  "width_right": 30
+ },
+ "head_stable": [
+  {
+   "direction": "right",
+   "anim": "idle",
+   "head_offsets": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     0
+    ]
+   ],
+   "mismatched_pixels": 0,
+   "vertical_range": 1,
+   "horizontal_range": 0
+  },
+  {
+   "direction": "right",
+   "anim": "walk",
+   "head_offsets": [
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     0
+    ]
+   ],
+   "mismatched_pixels": 0,
+   "vertical_range": 1,
+   "horizontal_range": 0
+  },
+  {
+   "direction": "down_right",
+   "anim": "idle",
+   "head_offsets": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     0
+    ]
+   ],
+   "mismatched_pixels": 0,
+   "vertical_range": 1,
+   "horizontal_range": 0
+  },
+  {
+   "direction": "down_right",
+   "anim": "walk",
+   "head_offsets": [
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     0
+    ]
+   ],
+   "mismatched_pixels": 0,
+   "vertical_range": 1,
+   "horizontal_range": 0
+  },
+  {
+   "direction": "down",
+   "anim": "idle",
+   "head_offsets": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     0
+    ]
+   ],
+   "mismatched_pixels": 0,
+   "vertical_range": 1,
+   "horizontal_range": 0
+  },
+  {
+   "direction": "down",
+   "anim": "walk",
+   "head_offsets": [
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     0
+    ]
+   ],
+   "mismatched_pixels": 0,
+   "vertical_range": 1,
+   "horizontal_range": 0
+  },
+  {
+   "direction": "up_right",
+   "anim": "idle",
+   "head_offsets": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     0
+    ]
+   ],
+   "mismatched_pixels": 0,
+   "vertical_range": 1,
+   "horizontal_range": 0
+  },
+  {
+   "direction": "up_right",
+   "anim": "walk",
+   "head_offsets": [
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     0
+    ]
+   ],
+   "mismatched_pixels": 0,
+   "vertical_range": 1,
+   "horizontal_range": 0
+  },
+  {
+   "direction": "up",
+   "anim": "idle",
+   "head_offsets": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     0
+    ]
+   ],
+   "mismatched_pixels": 0,
+   "vertical_range": 1,
+   "horizontal_range": 0
+  },
+  {
+   "direction": "up",
+   "anim": "walk",
+   "head_offsets": [
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     0
+    ]
+   ],
+   "mismatched_pixels": 0,
+   "vertical_range": 1,
+   "horizontal_range": 0
+  },
+  {
+   "direction": "right",
+   "anim": "battle_idle",
+   "head_offsets": [
+    [
+     1,
+     0
+    ],
+    [
+     1,
+     1
+    ],
+    [
+     1,
+     1
+    ],
+    [
+     1,
+     0
+    ]
+   ],
+   "mismatched_pixels": 0,
+   "vertical_range": 1,
+   "horizontal_range": 0
+  },
+  {
+   "direction": "right",
+   "anim": "attack",
+   "head_offsets": [
+    [
+     -3,
+     0
+    ],
+    [
+     5,
+     1
+    ],
+    [
+     10,
+     2
+    ],
+    [
+     5,
+     1
+    ]
+   ],
+   "mismatched_pixels": 0,
+   "vertical_range": 2,
+   "horizontal_range": 13
+  }
+ ],
+ "palette": {
+  "per_combo": {
+   "tousled/round/blue_tunic": 22,
+   "tousled/round/green_jerkin": 22,
+   "tousled/sharp/blue_tunic": 22,
+   "tousled/sharp/green_jerkin": 22,
+   "tousled/soft/blue_tunic": 22,
+   "tousled/soft/green_jerkin": 22,
+   "swept/round/blue_tunic": 22,
+   "swept/round/green_jerkin": 22,
+   "swept/sharp/blue_tunic": 22,
+   "swept/sharp/green_jerkin": 22,
+   "swept/soft/blue_tunic": 22,
+   "swept/soft/green_jerkin": 22,
+   "ponytail/round/blue_tunic": 22,
+   "ponytail/round/green_jerkin": 22,
+   "ponytail/sharp/blue_tunic": 22,
+   "ponytail/sharp/green_jerkin": 22,
+   "ponytail/soft/blue_tunic": 22,
+   "ponytail/soft/green_jerkin": 22
+  },
+  "max_per_combo": 22,
+  "all_combos_total": 38
+ },
+ "swap": {
+  "comparisons": 77,
+  "failed": 0,
+  "failures": []
+ }
+}
