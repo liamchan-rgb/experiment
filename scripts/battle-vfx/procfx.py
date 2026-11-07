@@ -1281,11 +1281,11 @@ def dragon_flame(t, geo, ti=0):
         if post < .25 and ti == 0: out.append(('f', P['mid'], .26 * math.exp(-post * 12)))
         out.append(('g', cx, cy, 290 * (.5 + ease_out(post / .3)), 190 * (.5 + ease_out(post / .3)), P['body'], .45 * (1 - ease_in(post / .7))))
         out.append(('g', cx, cy, 70, 60, P['a1'], .8 * (1 - ease_in(post / .22))))
-        for k in range(22):                                                    # the splash runs out along the ground as low sheets of fire
-            a = k * 2 * math.pi / 22 + .2 * frac(k, 2); L = (120 + 110 * frac(k, 3)) * ease_out(post / .45)
+        for k in range(18):                                                    # the splash runs out along the ground as low sheets of fire
+            a = k * 2 * math.pi / 18 + .2 * frac(k, 2); L = (120 + 110 * frac(k, 3)) * ease_out(post / .45)
             x, y = TF[0] + math.cos(a) * L, TF[1] - 4 + math.sin(a) * L * .27
             flame(out, x, y, 40 + 60 * frac(k, 4) * (1 - ease_in(post / 1.4)), 10, t, k, P, (1 - ease_in((post - .4) / 1.2)) * smooth(post / .1))
-        for i in range(48):                                                    # the ground goes on burning: many small tongues, each living its own life
+        for i in range(36):                                                    # the ground goes on burning: many small tongues, each living its own life
             ang = frac(i, 5) * 6.283; rr = 20 + 150 * frac(i, 6); x = TF[0] + math.cos(ang) * rr * 1.1; y = TF[1] - 3 + math.sin(ang) * rr * .27
             born = .15 + .5 * frac(i, 7); lifeA = clamp01((post - born) / .2) * (1 - clamp01((post - born - .9 - .5 * frac(i, 8)) / .5))
             if lifeA > .01: flame(out, x, y, (26 + 44 * frac(i, 9)) * (.7 + .3 * math.sin(t * 11 + i)), 5.5 + 4 * frac(i, 1), t, i + 20, P, lifeA, 18)
@@ -1479,6 +1479,79 @@ def heal_strong(t, geo, ti=0):
     return out
 
 
+# ------------------------------------------------------------------ rally: a call that rolls out over every ally and lifts them
+PAL['rally'] = dict(deep=(120, 60, 8), body=(240, 150, 30), mid=(255, 213, 96), light=(255, 250, 215), a1=(255, 255, 255), a2=(255, 196, 70))
+PAL['sweep'] = dict(deep=(20, 50, 140), body=(92, 170, 255), mid=(190, 232, 255), light=(255, 255, 255), a1=(255, 214, 120), a2=(150, 200, 255))
+SPEC.update({'rally': (2.0, .56, True), 'sweep': (2.0, 1.048, False)})
+
+
+def rally_call(t, geo, ti=0):
+    out = []; P = PAL['rally']; C = geo['caster']; CF = geo['casterFoot']; (chest, foot) = geo['targets'][ti]; imp = .56
+    fx, fy = foot; cx, cy = chest
+    if ti == 0:                                                              # the call: a beam of light gathers over the caster, then waves leave along the ground
+        gat = smooth(t / (imp * .9)) * (1 - smooth((t - imp - .1) / .3))
+        out.append(('g', C[0], C[1] - 10, 50 * gat + 4, 70 * gat + 4, P['body'], .35 * gat))
+        out.append(('e', C[0], C[1] - 70 * gat, 130 * gat + 6, 7, -1.5708, P['mid'], .8 * gat))
+        out.append(('e', C[0], C[1] - 70 * gat, 90 * gat + 4, 3, -1.5708, P['light'], gat))
+        for w in range(3):
+            u = (t - imp - .16 * w) / .8
+            if 0 < u < 1:
+                r = 30 + 330 * ease_out(u)
+                out.append(('r', CF[0], CF[1] - 2, r, r * .26, 3.2 * (1 - u) + .8, (P['mid'], P['a2'], P['light'])[w], .85 * (1 - ease_in(u))))
+        if imp <= t < imp + .25: out.append(('f', P['mid'], .2 * math.exp(-(t - imp) * 14)))
+    reach = imp + .1 + .3 * clamp01(abs(fx - CF[0]) / 420.0); tt = t - reach  # the wave arrives at each ally a moment after it left the caster
+    if tt >= 0:
+        env = smooth(tt / .18) * (1 - smooth((tt - 1.0) / .5)); grow = smooth(tt / .25)
+        out.append(('g', fx, fy - 2, 70 * env + 4, 20 * env + 2, P['body'], .5 * env))
+        out.append(('e', fx, fy - 90 * grow, 110 * grow + 4, 22, -1.5708, P['body'], .30 * env))
+        out.append(('e', fx, fy - 90 * grow, 110 * grow + 4, 12, -1.5708, P['mid'], .5 * env))
+        out.append(('e', fx, fy - 90 * grow, 108 * grow + 4, 5, -1.5708, P['light'], .8 * env))
+        r = 14 + 60 * ease_out(tt / .4); out.append(('r', fx, fy - 2, r, r * .3, 2.4 * (1 - ease_in(tt / .9)) + .8, P['mid'], .9 * (1 - ease_in(tt / 1.1))))
+        out.append(('g', cx, cy, 70 * env + 4, 95 * env + 4, P['body'], .22 * env))
+        out.append(('r', cx, cy - 78, 26 * grow + 2, 8 * grow + 1, 1.6, P['a1'], .7 * env))
+        for k in range(3):                                                   # chevrons climb the body: more, stronger
+            u = (tt * .9 + k / 3.0) % 1.0; y = fy - 20 - u * 130; al = env * math.sin(math.pi * u)
+            out.append(('e', cx - 8, y + 5, 12, 2.6, -.75, P['light'], al)); out.append(('e', cx + 8, y + 5, 12, 2.6, .75, P['light'], al))
+            out.append(('g', cx, y, 16, 12, P['mid'], .35 * al))
+    return out
+
+
+# ------------------------------------------------------------------ sweep: one huge crescent swung through every enemy
+def sweep_arc(t, geo, ti=0):
+    out = []; P = PAL['sweep']; C = geo['caster']; (T, TF) = geo['targets'][ti]; imp = 1.048
+    d = 1.0 if geo['targets'][0][0][0] >= C[0] else -1.0
+    far = max(abs(c[0] - C[0]) for c, f in geo['targets']); R = max(220.0, far + 90.0); RY = 100.0; ex, ey = C[0] + d * 30, C[1] + 25
+    post = t - imp
+    def pt(th, k=1.0): return (ex + d * math.cos(th) * R * k, ey + math.sin(th) * RY * k)
+    if ti == 0:
+        gat = smooth(t / (imp * .85)) * (1 - smooth(post / .15))
+        out.append(('g', C[0] + d * 26, C[1] - 6, 30 * gat + 3, 34 * gat + 3, P['mid'], .45 * gat))
+        out.append(('e', C[0] + d * 26, C[1] - 6, 48 * gat + 2, 2.2, -.9 * d, P['light'], .9 * gat))
+        if -.05 <= post < 1.0:
+            head = lerp(3.4, 6.2, ease_out(clamp01(post / .24))); env = 1 - smooth((post - .24) / .5)
+            for echo in range(2):
+                h = head - .35 * echo; k = 1 - .07 * echo; pts = []; ws = []
+                for j in range(40):
+                    u = j / 39.0; th = max(3.4, h - 1.5 * u)
+                    pts.append(pt(th, k)); ws.append(26 * (1 - u) ** .8 * (.5 + .5 * math.sin(math.pi * clamp01((th - 3.4) / 2.8))) + 2)
+                stack(out, pts, ws, [(2.2, P['deep'], 'add', .25), (1.0, P['body'], 'add', .55), (.5, P['mid'], 'add', .85), (.2, P['light'], 'add', .95)], env * (1.0 if echo == 0 else .55))
+            hp = pt(head)
+            if post < .5: out.append(('g', hp[0], hp[1], 40, 40, P['body'], .5 * env)); out.append(('g', hp[0], hp[1], 20, 20, P['light'], .8 * env))
+        if imp <= t < imp + .25: out.append(('f', P['mid'], .22 * math.exp(-post * 14)))
+    hit = imp + .02 + .22 * clamp01(abs(T[0] - C[0]) / R); hp_ = t - hit
+    if 0 <= hp_ < .7:                                                         # the crescent reaches this enemy
+        k = 1 - ease_in(hp_ / .5)
+        out.append(('g', T[0], T[1], 150 * (.6 + ease_out(hp_ / .2)), 100 * (.6 + ease_out(hp_ / .2)), P['body'], .5 * k))
+        out.append(('g', T[0], T[1], 60, 50, P['light'], .8 * (1 - ease_in(hp_ / .18))))
+        out.append(('e', T[0], T[1], 90 * ease_out(hp_ / .12), 4, -.55 * d, P['light'], 1 - ease_in(hp_ / .4)))
+        out.append(('e', T[0], T[1], 70 * ease_out(hp_ / .12), 3, .45 * d, P['mid'], 1 - ease_in(hp_ / .4)))
+        for j in range(10):
+            jj = j + 31 * ti; a = frac(jj, 3) * 6.2832; r = (30 + 110 * frac(jj, 4)) * ease_out(hp_ / .4)
+            out.append(('e', T[0] + math.cos(a) * r, T[1] + math.sin(a) * r * .6, 10, 1.6, a, (P['light'], P['mid'], P['a1'])[j % 3], max(0.0, 1 - hp_ / .6)))
+        rr = 20 + 120 * ease_out(hp_ / .5); out.append(('r', TF[0], TF[1] - 2, rr, rr * .26, 2.4 * max(0.0, 1 - hp_ / .6) + .6, P['mid'], .7 * (1 - ease_in(hp_ / .6))))
+    return out
+
+
 def multi(fn):
     """Run a single-target effect once per target. Caster-side parts are emitted only for the first target (ti == 0)."""
     def run(t, geo):
@@ -1490,7 +1563,7 @@ def multi(fn):
 
 _SINGLE = {'starlightPulse': starlight, 'dragonSoulWard': soul, 'dragonScaleWard': scale_ward, 'runeSlash': rune_slash, 'runeWard': rune_ward,
            'battleRune': battle_rune, 'dragonFlame': dragon_flame, 'dragonOrder': dragon_order,
-           'healMicro': heal_micro, 'healStandard': heal_standard, 'healStrong': heal_strong}
+           'healMicro': heal_micro, 'healStandard': heal_standard, 'healStrong': heal_strong, 'rally': rally_call, 'sweep': sweep_arc}
 # ------------------------------------------------------------------ atmosphere: themed particles over the whole stage
 # Three layers per skill, all closed-form in t with fixed-id randomness: particles that GATHER into the caster while the power builds,
 # a FIELD of particles that fills the whole stage with the skill's own weather (dragon flame = a hot updraft of embers, starlight =
@@ -1504,8 +1577,10 @@ ATMOS = {
     'runeSlash': ('rune', 'gust', 'rune', 66, 26, 24, .55, 1.3, 1.048),
     'runeWard': ('rune', 'rise', 'rune', 60, 26, 18, .30, 1.3, .72),
     'battleRune': ('spark', 'orbit', 'battle', 60, 26, 24, .50, 1.3, .56),
-    'dragonFlame': ('ember', 'rise', 'flame', 90, 32, 30, .50, 1.45, .46),
+    'dragonFlame': ('ember', 'rise', 'flame', 64, 22, 20, .50, 1.45, .46),
     'dragonOrder': ('ember', 'gust', 'order', 66, 28, 22, .50, 1.3, .56),
+    'rally': ('star', 'rise', 'rally', 60, 24, 18, .34, 1.3, .56),
+    'sweep': ('ember', 'gust', 'sweep', 60, 22, 20, .60, 1.2, 1.048),
     'healMicro': ('mote', 'rise', 'heal', 20, 0, 0, .30, 1.1, .3),
     'healStandard': ('mote', 'rise', 'heal', 28, 0, 0, .30, 1.25, .3),
     'healStrong': ('mote', 'rise', 'heal', 36, 0, 0, .30, 1.4, .3),
@@ -1591,4 +1666,4 @@ def with_atmosphere(fn, skill):
     return run
 
 
-GENERATORS = {**{k: with_atmosphere(multi(v), k) for k, v in _SINGLE.items()}, 'rally': rally, 'sweep': sweep}
+GENERATORS = {k: with_atmosphere(multi(v), k) for k, v in _SINGLE.items()}

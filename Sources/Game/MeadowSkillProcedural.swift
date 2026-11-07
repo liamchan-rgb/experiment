@@ -25,7 +25,7 @@ enum MeadowSkillProcedural {
 
     struct Info { let duration: Double, release: Double, dim: Double, dimTint: RGB, support: Bool }
     static let skillIDs = ["starlightPulse", "dragonSoulWard", "dragonScaleWard", "runeSlash", "runeWard", "battleRune", "dragonFlame", "dragonOrder",
-                           "healMicro", "healStandard", "healStrong"]
+                           "healMicro", "healStandard", "healStrong", "rally", "sweep"]
     static let info: [String: Info] = [
         "starlightPulse": Info(duration: 1.6, release: 0.75, dim: 0.34, dimTint: RGB(0.80, 0.76, 1.0), support: false),
         "dragonSoulWard": Info(duration: 2.0, release: 0.38, dim: 0.32, dimTint: RGB(0.74, 0.88, 1.0), support: true),
@@ -37,7 +37,9 @@ enum MeadowSkillProcedural {
         "dragonOrder": Info(duration: 2.1, release: 0.56, dim: 0.32, dimTint: RGB(1.0, 0.78, 0.72), support: true),
         "healMicro": Info(duration: 1.35, release: 0.1, dim: 0.26, dimTint: RGB(0.82, 0.96, 0.86), support: true),
         "healStandard": Info(duration: 1.8, release: 0.1, dim: 0.28, dimTint: RGB(0.8, 0.96, 0.85), support: true),
-        "healStrong": Info(duration: 2.3, release: 0.1, dim: 0.32, dimTint: RGB(0.78, 0.95, 0.84), support: true)
+        "healStrong": Info(duration: 2.3, release: 0.1, dim: 0.32, dimTint: RGB(0.78, 0.95, 0.84), support: true),
+        "rally": Info(duration: 2.0, release: 0.56, dim: 0.24, dimTint: RGB(1.0, 0.94, 0.8), support: true),
+        "sweep": Info(duration: 2.0, release: 1.048, dim: 0.26, dimTint: RGB(0.82, 0.9, 1.0), support: false)
     ]
     /// Dominant colour of each skill (for the ambient light, floor pool and motes).
     static func tone(_ id: String) -> RGB {
@@ -49,6 +51,8 @@ enum MeadowSkillProcedural {
         case "battleRune": return Pal.battle.mid
         case "dragonFlame": return Pal.flame.mid
         case "dragonOrder": return Pal.order.mid
+        case "rally": return Pal.rally.mid
+        case "sweep": return Pal.sweep.mid
         default: return Pal.heal.mid
         }
     }
@@ -74,6 +78,8 @@ enum MeadowSkillProcedural {
         static let flame = Pal(deep: RGB(120, 20, 8), body: RGB(235, 70, 20), mid: RGB(255, 150, 40), light: RGB(255, 225, 140), a1: RGB(255, 250, 220), a2: RGB(255, 90, 40))
         static let scale = Pal(deep: RGB(96, 44, 10), body: RGB(214, 120, 28), mid: RGB(255, 180, 70), light: RGB(255, 230, 160), a1: RGB(255, 120, 60), a2: RGB(255, 214, 120))
         static let order = Pal(deep: RGB(90, 10, 30), body: RGB(200, 40, 50), mid: RGB(255, 110, 70), light: RGB(255, 210, 150), a1: RGB(255, 220, 120), a2: RGB(255, 150, 90))
+        static let rally = Pal(deep: RGB(120, 60, 8), body: RGB(240, 150, 30), mid: RGB(255, 213, 96), light: RGB(255, 250, 215), a1: RGB(255, 255, 255), a2: RGB(255, 196, 70))
+        static let sweep = Pal(deep: RGB(20, 50, 140), body: RGB(92, 170, 255), mid: RGB(190, 232, 255), light: RGB(255, 255, 255), a1: RGB(255, 214, 120), a2: RGB(150, 200, 255))
         static let heal = Pal(deep: RGB(8, 66, 40), body: RGB(40, 190, 100), mid: RGB(110, 235, 150), light: RGB(215, 255, 228), a1: RGB(255, 232, 150), a2: RGB(120, 240, 222))
     }
     static let magenta = RGB(255, 128, 226), cyan = RGB(130, 224, 255), gold = RGB(255, 232, 160), white = RGB(255, 255, 255)
@@ -188,6 +194,8 @@ enum MeadowSkillProcedural {
             case "healMicro": all += healMicro(t, geo, ti)
             case "healStandard": all += healStandard(t, geo, ti)
             case "healStrong": all += healStrong(t, geo, ti)
+            case "rally": all += rallyCall(t, geo, ti)
+            case "sweep": all += sweepArc(t, geo, ti)
             default: return []
             }
         }
@@ -615,12 +623,12 @@ enum MeadowSkillProcedural {
             if post < 0.25 && ti == 0 { o.f(P.mid, 0.26 * exp(-post * 12)) }
             o.g(cx, cy, 290 * (0.5 + easeOut(post / 0.3)), 190 * (0.5 + easeOut(post / 0.3)), P.body, 0.45 * (1 - easeIn(post / 0.7)))
             o.g(cx, cy, 70, 60, P.a1, 0.8 * (1 - easeIn(post / 0.22)))
-            for k in 0..<22 {
-                let dk = Double(k), a = dk * 2 * Double.pi / 22 + 0.2 * frac(k, 2), L = (120 + 110 * frac(k, 3)) * easeOut(post / 0.45)
+            for k in 0..<18 {
+                let dk = Double(k), a = dk * 2 * Double.pi / 18 + 0.2 * frac(k, 2), L = (120 + 110 * frac(k, 3)) * easeOut(post / 0.45)
                 let x = TF.x + cos(a) * L, y = TF.y - 4 + sin(a) * L * 0.27
                 flame(&o, x, y, 40 + 60 * frac(k, 4) * (1 - easeIn(post / 1.4)), 10, t, dk, P, (1 - easeIn((post - 0.4) / 1.2)) * smooth(post / 0.1))
             }
-            for i in 0..<48 {
+            for i in 0..<36 {
                 let di = Double(i), ang = frac(i, 5) * 6.283, rr = 20 + 150 * frac(i, 6), x = TF.x + cos(ang) * rr * 1.1, y = TF.y - 3 + sin(ang) * rr * 0.27
                 let born = 0.15 + 0.5 * frac(i, 7), lifeA = clamp01((post - born) / 0.2) * (1 - clamp01((post - born - 0.9 - 0.5 * frac(i, 8)) / 0.5))
                 if lifeA > 0.01 { flame(&o, x, y, (26 + 44 * frac(i, 9)) * (0.7 + 0.3 * sin(t * 11 + di)), 5.5 + 4 * frac(i, 1), t, di + 20, P, lifeA, 18) }
@@ -850,6 +858,92 @@ enum MeadowSkillProcedural {
         return o.prims
     }
 
+    // MARK: rally (a call that rolls out over every ally and lifts them)
+
+    static func rallyCall(_ t: Double, _ geo: Geometry, _ ti: Int) -> [Prim] {
+        var o = Out(); let P = Pal.rally, C = geo.caster, CF = geo.casterFoot, chest = geo.targets[ti].chest, foot = geo.targets[ti].foot, imp = 0.56
+        let fx = foot.x, fy = foot.y, cx = chest.x, cy = chest.y
+        if ti == 0 {
+            let gat = smooth(t / (imp * 0.9)) * (1 - smooth((t - imp - 0.1) / 0.3))
+            o.g(C.x, C.y - 10, 50 * gat + 4, 70 * gat + 4, P.body, 0.35 * gat)
+            o.e(C.x, C.y - 70 * gat, 130 * gat + 6, 7, -1.5708, P.mid, 0.8 * gat)
+            o.e(C.x, C.y - 70 * gat, 90 * gat + 4, 3, -1.5708, P.light, gat)
+            let waveCols = [P.mid, P.a2, P.light]
+            for w in 0..<3 {
+                let u = (t - imp - 0.16 * Double(w)) / 0.8
+                if u > 0 && u < 1 {
+                    let r = 30 + 330 * easeOut(u)
+                    o.r(CF.x, CF.y - 2, r, r * 0.26, 3.2 * (1 - u) + 0.8, waveCols[w], 0.85 * (1 - easeIn(u)))
+                }
+            }
+            if t >= imp && t < imp + 0.25 { o.f(P.mid, 0.2 * exp(-(t - imp) * 14)) }
+        }
+        let reach = imp + 0.1 + 0.3 * clamp01(abs(fx - CF.x) / 420.0), tt = t - reach
+        if tt >= 0 {
+            let env = smooth(tt / 0.18) * (1 - smooth((tt - 1.0) / 0.5)), grow = smooth(tt / 0.25)
+            o.g(fx, fy - 2, 70 * env + 4, 20 * env + 2, P.body, 0.5 * env)
+            o.e(fx, fy - 90 * grow, 110 * grow + 4, 22, -1.5708, P.body, 0.30 * env)
+            o.e(fx, fy - 90 * grow, 110 * grow + 4, 12, -1.5708, P.mid, 0.5 * env)
+            o.e(fx, fy - 90 * grow, 108 * grow + 4, 5, -1.5708, P.light, 0.8 * env)
+            let r = 14 + 60 * easeOut(tt / 0.4)
+            o.r(fx, fy - 2, r, r * 0.3, 2.4 * (1 - easeIn(tt / 0.9)) + 0.8, P.mid, 0.9 * (1 - easeIn(tt / 1.1)))
+            o.g(cx, cy, 70 * env + 4, 95 * env + 4, P.body, 0.22 * env)
+            o.r(cx, cy - 78, 26 * grow + 2, 8 * grow + 1, 1.6, P.a1, 0.7 * env)
+            for k in 0..<3 {
+                let u = pm(tt * 0.9 + Double(k) / 3.0, 1.0), y = fy - 20 - u * 130, al = env * sin(Double.pi * u)
+                o.e(cx - 8, y + 5, 12, 2.6, -0.75, P.light, al); o.e(cx + 8, y + 5, 12, 2.6, 0.75, P.light, al)
+                o.g(cx, y, 16, 12, P.mid, 0.35 * al)
+            }
+        }
+        return o.prims
+    }
+
+    // MARK: sweep (one huge crescent swung through every enemy)
+
+    static func sweepArc(_ t: Double, _ geo: Geometry, _ ti: Int) -> [Prim] {
+        var o = Out(); let P = Pal.sweep, C = geo.caster, T = geo.targets[ti].chest, TF = geo.targets[ti].foot, imp = 1.048
+        let d: Double = geo.targets[0].chest.x >= C.x ? 1.0 : -1.0
+        let far = geo.targets.map { abs($0.chest.x - C.x) }.max() ?? 0, R = max(220.0, far + 90.0), RY = 100.0, ex = C.x + d * 30, ey = C.y + 25
+        let post = t - imp
+        func pt(_ th: Double, _ k: Double = 1.0) -> Pt { Pt(ex + d * cos(th) * R * k, ey + sin(th) * RY * k) }
+        if ti == 0 {
+            let gat = smooth(t / (imp * 0.85)) * (1 - smooth(post / 0.15))
+            o.g(C.x + d * 26, C.y - 6, 30 * gat + 3, 34 * gat + 3, P.mid, 0.45 * gat)
+            o.e(C.x + d * 26, C.y - 6, 48 * gat + 2, 2.2, -0.9 * d, P.light, 0.9 * gat)
+            if post >= -0.05 && post < 1.0 {
+                let head = lerp(3.4, 6.2, easeOut(clamp01(post / 0.24))), env = 1 - smooth((post - 0.24) / 0.5)
+                for echo in 0..<2 {
+                    let h = head - 0.35 * Double(echo), k = 1 - 0.07 * Double(echo)
+                    var pts: [Pt] = [], ws: [Double] = []
+                    for j in 0..<40 {
+                        let u = Double(j) / 39.0, th = max(3.4, h - 1.5 * u)
+                        pts.append(pt(th, k)); ws.append(26 * pw(1 - u, 0.8) * (0.5 + 0.5 * sin(Double.pi * clamp01((th - 3.4) / 2.8))) + 2)
+                    }
+                    o.stack(pts, ws, [(2.2, P.deep, true, 0.25), (1.0, P.body, true, 0.55), (0.5, P.mid, true, 0.85), (0.2, P.light, true, 0.95)], env * (echo == 0 ? 1.0 : 0.55))
+                }
+                let hp = pt(head)
+                if post < 0.5 { o.g(hp.x, hp.y, 40, 40, P.body, 0.5 * env); o.g(hp.x, hp.y, 20, 20, P.light, 0.8 * env) }
+            }
+            if t >= imp && t < imp + 0.25 { o.f(P.mid, 0.22 * exp(-post * 14)) }
+        }
+        let hit = imp + 0.02 + 0.22 * clamp01(abs(T.x - C.x) / R), hq = t - hit
+        if hq >= 0 && hq < 0.7 {
+            let k = 1 - easeIn(hq / 0.5)
+            o.g(T.x, T.y, 150 * (0.6 + easeOut(hq / 0.2)), 100 * (0.6 + easeOut(hq / 0.2)), P.body, 0.5 * k)
+            o.g(T.x, T.y, 60, 50, P.light, 0.8 * (1 - easeIn(hq / 0.18)))
+            o.e(T.x, T.y, 90 * easeOut(hq / 0.12), 4, -0.55 * d, P.light, 1 - easeIn(hq / 0.4))
+            o.e(T.x, T.y, 70 * easeOut(hq / 0.12), 3, 0.45 * d, P.mid, 1 - easeIn(hq / 0.4))
+            let shardCols = [P.light, P.mid, P.a1]
+            for j in 0..<10 {
+                let jj = j + 31 * ti, a = frac(jj, 3) * 6.2832, r = (30 + 110 * frac(jj, 4)) * easeOut(hq / 0.4)
+                o.e(T.x + cos(a) * r, T.y + sin(a) * r * 0.6, 10, 1.6, a, shardCols[j % 3], max(0.0, 1 - hq / 0.6))
+            }
+            let rr = 20 + 120 * easeOut(hq / 0.5)
+            o.r(TF.x, TF.y - 2, rr, rr * 0.26, 2.4 * max(0.0, 1 - hq / 0.6) + 0.6, P.mid, 0.7 * (1 - easeIn(hq / 0.6)))
+        }
+        return o.prims
+    }
+
     // MARK: atmosphere (themed particles over the whole stage)
 
     /// Three layers per skill: particles that gather into the caster while the power builds, a field that fills the whole stage with the
@@ -862,8 +956,10 @@ enum MeadowSkillProcedural {
         "runeSlash": AtmosSpec(kind: "rune", motion: "gust", palette: "rune", field: 66, gather: 26, burst: 24, rate: 0.55, size: 1.3, release: 1.048),
         "runeWard": AtmosSpec(kind: "rune", motion: "rise", palette: "rune", field: 60, gather: 26, burst: 18, rate: 0.30, size: 1.3, release: 0.72),
         "battleRune": AtmosSpec(kind: "spark", motion: "orbit", palette: "battle", field: 60, gather: 26, burst: 24, rate: 0.50, size: 1.3, release: 0.56),
-        "dragonFlame": AtmosSpec(kind: "ember", motion: "rise", palette: "flame", field: 90, gather: 32, burst: 30, rate: 0.50, size: 1.45, release: 0.46),
+        "dragonFlame": AtmosSpec(kind: "ember", motion: "rise", palette: "flame", field: 64, gather: 22, burst: 20, rate: 0.50, size: 1.45, release: 0.46),
         "dragonOrder": AtmosSpec(kind: "ember", motion: "gust", palette: "order", field: 66, gather: 28, burst: 22, rate: 0.50, size: 1.3, release: 0.56),
+        "rally": AtmosSpec(kind: "star", motion: "rise", palette: "rally", field: 60, gather: 24, burst: 18, rate: 0.34, size: 1.3, release: 0.56),
+        "sweep": AtmosSpec(kind: "ember", motion: "gust", palette: "sweep", field: 60, gather: 22, burst: 20, rate: 0.60, size: 1.2, release: 1.048),
         "healMicro": AtmosSpec(kind: "mote", motion: "rise", palette: "heal", field: 20, gather: 0, burst: 0, rate: 0.30, size: 1.1, release: 0.3),
         "healStandard": AtmosSpec(kind: "mote", motion: "rise", palette: "heal", field: 28, gather: 0, burst: 0, rate: 0.30, size: 1.25, release: 0.3),
         "healStrong": AtmosSpec(kind: "mote", motion: "rise", palette: "heal", field: 36, gather: 0, burst: 0, rate: 0.30, size: 1.4, release: 0.3),
@@ -875,7 +971,7 @@ enum MeadowSkillProcedural {
         case "soul": return [RGB(235, 250, 255), RGB(130, 210, 255), RGB(56, 140, 255), RGB(235, 250, 255)]
         default:
             let P: Pal
-            switch name { case "rune": P = .rune; case "battle": P = .battle; case "flame": P = .flame; case "scale": P = .scale; case "order": P = .order; default: P = .heal }
+            switch name { case "rally": P = .rally; case "sweep": P = .sweep; case "rune": P = .rune; case "battle": P = .battle; case "flame": P = .flame; case "scale": P = .scale; case "order": P = .order; default: P = .heal }
             return [P.light, P.mid, P.a2, P.a1]
         }
     }
@@ -1006,6 +1102,11 @@ enum MeadowSkillProcedural {
             if r >= 0 && r < 1.0 { c.dy += 0.9 * sin(t * 47) * (1 - r) }
         case "dragonScaleWard":
             c.zoom = max(0, thump(t, 0.56, 0.032, 9, 0)); c.dy = -thump(t, 0.56, 3.2, 10, 30, 0.6)
+        case "sweep":
+            c.dx = direction * thump(t, 1.048, 6.0, 9, 30); c.dy = -thump(t, 1.048, 2.4, 10, 40, 0.6)
+            c.zoom = max(0, thump(t, 1.048, 0.035, 7, 0)); c.rotation = direction * thump(t, 1.048, 0.006, 9, 26)
+        case "rally":
+            c.zoom = max(0, thump(t, 0.56, 0.03, 9, 0)); c.dy = -thump(t, 0.56, 2.0, 12, 40, 0.5)
         case "dragonOrder":
             for (k, amp) in [0.02, 0.022, 0.036].enumerated() {
                 let t0 = 0.56 + 0.3 * Double(k)

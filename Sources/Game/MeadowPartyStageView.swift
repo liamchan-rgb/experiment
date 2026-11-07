@@ -67,7 +67,7 @@ final class MeadowPartyStageView:UIView {
         for id in renderIDs { installUnit(id) }
         diceView.layer.zPosition=1200;world.addSubview(diceView)
         for ghost in afterimages { ghost.isHidden=true;ghost.isUserInteractionEnabled=false;ghost.layer.magnificationFilter = .nearest;world.addSubview(ghost) }
-        fx.frame=world.bounds;fx.layer.zPosition=1000;world.addSubview(fx)
+        fx.frame=MeadowPartyEffectsView.worldRect;fx.contentScaleFactor=MeadowPartyEffectsView.drawScale;fx.layer.zPosition=1000;world.addSubview(fx)
         fx.onFlash={ [weak self] flash in guard let self else { return };self.wash.backgroundColor=flash ?? self.washBase }
         clock.onTick={ [weak self] delta in self?.advance(delta) }
     }
@@ -207,7 +207,7 @@ final class MeadowPartyStageView:UIView {
     }
     private func apply(_ receipt:OperationReceipt,intent:PartyIntent) {
         state=receipt.after
-        if receipt.dice.contains(where: { $0.naturalTwenty }) { let p=PartyVisual.hitPoint(target:intent.target,weaponID:intent.weaponID,templateID:receipt.before.units[intent.target]?.templateID);messages.append(.init(text:"自然20",point:CGPoint(x:p.x,y:p.y-55),at:sceneTime,color:.systemCyan,atImpact:true,kind:.crit,rank:2,follow:intent.target)) }
+        if receipt.dice.contains(where: { $0.naturalTwenty }) { let p=PartyVisual.hitPoint(target:intent.target,weaponID:intent.weaponID,templateID:receipt.before.units[intent.target]?.templateID);messages.append(.init(text:"20!",point:CGPoint(x:p.x,y:p.y-55),at:sceneTime,color:.systemCyan,atImpact:true,kind:.crit,rank:2,follow:intent.target)) }
         if let actor=receipt.before.units[intent.actor],let target=receipt.before.units[intent.target],let catalog {
             diceView.dice=BattleDice.channels(intent.action,actor:actor,target:target,catalog:catalog,receipt:receipt,sourceSkillID:intent.sourceSkillID);diceSettledAt=sceneTime
         }
@@ -230,10 +230,10 @@ final class MeadowPartyStageView:UIView {
                 let shift=intent.actor==id ? PartyVisual.travel(intent,age:sceneTime-startAt):PartyPoint(0,0)
                 recovery[id]=sceneTime
                 recoveryTier[id]=HealingEffectTier.classify(actualHPGained:heal)
-                messages.append(.init(text:"＋\(heal)",point:CGPoint(x:point.x+shift.x,y:point.y+shift.y),at:sceneTime,color:.systemGreen,supportUnit:showsBesideOwner ? id:nil,kind:.heal))
+                messages.append(.init(text:"+\(heal)",point:CGPoint(x:point.x+shift.x,y:point.y+shift.y),at:sceneTime,color:.systemGreen,supportUnit:showsBesideOwner ? id:nil,kind:.heal))
             }
-            if gain>0 && !delayStatus { birth[id]=sceneTime;messages.append(.init(text:"盾 ＋\(gain)",point:CGPoint(x:point.x,y:point.y+(intent.action.isRune || intent.action == .dragonFlame || intent.action.isNodeSupport ? 36:24)),at:sceneTime,color:.systemCyan,supportUnit:showsBesideOwner ? id:nil,supportLine:1,kind:.shield)) }
-            if after.damageBuff != before.damageBuff,let b=after.damageBuff { messages.append(.init(text:"伤害 ＋\(b.amount)",point:CGPoint(x:point.x,y:point.y-(intent.action.isRune || intent.action == .dragonFlame || intent.action.isNodeSupport ? 36:0)),at:sceneTime,color:MeadowPreviewPalette.gold,supportUnit:showsBesideOwner ? id:nil,supportLine:(heal>0 || gain>0) ? 2:0,kind:.buff)) }
+            if gain>0 && !delayStatus { birth[id]=sceneTime;messages.append(.init(text:"+\(gain)",point:CGPoint(x:point.x,y:point.y+(intent.action.isRune || intent.action == .dragonFlame || intent.action.isNodeSupport ? 36:24)),at:sceneTime,color:.systemCyan,supportUnit:showsBesideOwner ? id:nil,supportLine:1,kind:.shield)) }
+            if after.damageBuff != before.damageBuff,let b=after.damageBuff { messages.append(.init(text:"↑\(b.amount)",point:CGPoint(x:point.x,y:point.y-(intent.action.isRune || intent.action == .dragonFlame || intent.action.isNodeSupport ? 36:0)),at:sceneTime,color:MeadowPreviewPalette.gold,supportUnit:showsBesideOwner ? id:nil,supportLine:(heal>0 || gain>0) ? 2:0,kind:.buff)) }
             if damage>0 || absorbed>0 {
                 hurt[id]=sceneTime
                 let hit=PartyVisual.hitPoint(target:id,shielded:absorbed>0,weaponID:intent.weaponID,templateID:before.templateID)
@@ -243,7 +243,7 @@ final class MeadowPartyStageView:UIView {
                 let popsHere=plainAttack && damage>0 && id.hasPrefix("m")
                 if popsHere { hitFeel[id]=MeadowPartyHitEvent(at:sceneTime,tier:hitTier,direction:1,point:CGPoint(x:hit.x,y:hit.y),footX:CGFloat(foot.x),floorY:CGFloat(foot.y)) }
                 // Several targets: their numbers follow one another by a beat instead of all appearing on the same frame.
-                messages.append(.init(text:damage>0 ? "−\(damage)":"格挡",point:CGPoint(x:hit.x,y:hit.y),at:sceneTime+0.07*Double(numberOrder),color:damage>0 ? .white:.systemCyan,atImpact:true,hitTier:popsHere ? hitTier:nil,kind:damage>0 ? .damage:.block,rank:hitTier.rawValue,follow:id));numberOrder += 1
+                messages.append(.init(text:damage>0 ? "−\(damage)":"BLOCK",point:CGPoint(x:hit.x,y:hit.y),at:sceneTime+0.07*Double(numberOrder),color:damage>0 ? .white:.systemCyan,atImpact:true,hitTier:popsHere ? hitTier:nil,kind:damage>0 ? .damage:.block,rank:hitTier.rawValue,follow:id));numberOrder += 1
                 let p=CGPoint(x:hit.x,y:hit.y)
                 if absorbed>0 || (intent.action.skillVFX == nil && MeadowSkillProcedural.info[intent.action.rawValue] == nil) { emissions.append(.init(kind:absorbed>0 ? .shieldContact:.strike,startedAt:sceneTime,x:Double(p.x),y:Double(p.y),groundY:foot.y)) }
             }
@@ -267,11 +267,11 @@ final class MeadowPartyStageView:UIView {
             recovery[cue.unitID]=cue.at
             recoveryTier[cue.unitID]=HealingEffectTier.classify(actualHPGained:cue.heal)
             let shift=intent?.actor==cue.unitID ? PartyVisual.travel(intent,age:sceneTime-startAt):PartyPoint(0,0)
-            messages.append(.init(text:"＋\(cue.heal)",point:CGPoint(x:cue.point.x+shift.x,y:cue.point.y+shift.y),at:cue.at,color:.systemGreen,supportUnit:cue.supportUnit ? cue.unitID:nil,kind:.heal))
+            messages.append(.init(text:"+\(cue.heal)",point:CGPoint(x:cue.point.x+shift.x,y:cue.point.y+shift.y),at:cue.at,color:.systemGreen,supportUnit:cue.supportUnit ? cue.unitID:nil,kind:.heal))
         }
         if cue.shieldGain>0 {
             birth[cue.unitID]=cue.at
-            messages.append(.init(text:"盾 ＋\(cue.shieldGain)",point:CGPoint(x:cue.point.x,y:cue.point.y+36),at:cue.at,color:.systemCyan,supportUnit:cue.supportUnit ? cue.unitID:nil,supportLine:1,kind:.shield))
+            messages.append(.init(text:"+\(cue.shieldGain)",point:CGPoint(x:cue.point.x,y:cue.point.y+36),at:cue.at,color:.systemCyan,supportUnit:cue.supportUnit ? cue.unitID:nil,supportLine:1,kind:.shield))
         }
         onPresentationChanged?()
     }
@@ -531,6 +531,11 @@ private final class MeadowPartyEffectsView:UIView {
     var liveFeet:[String:PartyPoint]=[:]
     /// Reports the strongest full-screen flash of this frame (or nil) to the stage, which shows it on a pane-wide overlay.
     var onFlash:((UIColor?)->Void)?
+    /// The effects layer covers more than the 1000x600 world: glows that reach past the world's edge are not cut off there (that cut was a hard
+    /// horizontal edge). Drawing is in world coordinates; the layer is drawn at a lower resolution, which soft light does not mind and which keeps long skills fast.
+    static let worldRect=CGRect(x:0,y:-200,width:1000,height:1000)
+    static let drawScale:CGFloat=1.5
+    override func didMoveToWindow() { super.didMoveToWindow();contentScaleFactor=Self.drawScale }
     override init(frame:CGRect) { super.init(frame:frame);isOpaque=false;isUserInteractionEnabled=false }
     required init?(coder:NSCoder) { fatalError("init(coder:) has not been implemented") }
     /// A floating number: springs in, floats up and fades late (`MeadowBattleNumber`). It stays stuck to its unit as the unit is knocked back.
@@ -565,6 +570,8 @@ private final class MeadowPartyEffectsView:UIView {
     }
     override func draw(_ rect:CGRect) {
         guard let ctx=UIGraphicsGetCurrentContext() else { return }
+        ctx.translateBy(x:-Self.worldRect.minX,y:-Self.worldRect.minY)
+        let bounds=Self.worldRect
         func sprite(_ im:UIImage,_ p:PartyPoint,_ w:Double,_ h:Double,_ alpha:Double) { guard alpha>0 else { return };im.draw(in:CGRect(x:p.x-w/2,y:p.y-h/2,width:w,height:h),blendMode:.plusLighter,alpha:CGFloat(alpha)) }
         func glow(_ p:PartyPoint,_ rx:Double,_ ry:Double,_ alpha:Double,_ color:UIColor) { guard alpha>0 else { return };MeadowBattleGlowCache.image(color).draw(in:CGRect(x:p.x-rx,y:p.y-ry,width:rx*2,height:ry*2),blendMode:.plusLighter,alpha:CGFloat(alpha)) }
         for (foot,power) in recoveryLights { glow(foot,105,27,power*0.65,.systemGreen);glow(PartyPoint(foot.x,foot.y-70),42,85,power*0.12,.systemGreen) }
@@ -677,7 +684,7 @@ private final class MeadowPartyEffectsView:UIView {
             let floorWidth=Double(event.spec.frameWidth)
             if lit>0 {
                 // The flat dim and tint for this light are applied by the stage on pane-wide overlays (see `render()`), not here.
-                glow(event.center,max(Double(bounds.width),floorWidth)*0.62,max(Double(bounds.height),floorWidth)*0.52,lit*0.16,color)
+                glow(event.center,max(Double(bounds.width),floorWidth)*0.62,max(600,floorWidth)*0.52,lit*0.16,color)
                 glow(PartyPoint(event.center.x,event.groundY-2),floorWidth*0.62,28,lit*0.34,color)
                 ctx.saveGState();ctx.setBlendMode(.plusLighter);ctx.setStrokeColor(color.withAlphaComponent(CGFloat(lit*0.32)).cgColor);ctx.setLineWidth(1.5)
                 ctx.strokeEllipse(in:CGRect(x:event.center.x-floorWidth*0.36,y:event.groundY-9,width:floorWidth*0.72,height:18));ctx.restoreGState()
