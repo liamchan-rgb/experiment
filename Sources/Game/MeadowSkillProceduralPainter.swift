@@ -30,8 +30,9 @@ enum MeadowSkillProceduralPainter {
         UIColor(red: CGFloat(c.r / 255), green: CGFloat(c.g / 255), blue: CGFloat(c.b / 255), alpha: CGFloat(min(1, max(0, a)))).cgColor
     }
 
-    /// Draws a list of primitives into `ctx` (stage coordinates). `bounds` is the area a flash fills.
-    static func draw(_ prims: [MeadowSkillProcedural.Prim], in ctx: CGContext, bounds: CGRect) {
+    /// Draws a list of primitives into `ctx` (stage coordinates). `bounds` is the area a flash fills, unless a `flash` sink is given:
+    /// then the full-screen flash is reported to the sink (the stage turns it into a pane-wide overlay, so it has no edge at the world rectangle).
+    static func draw(_ prims: [MeadowSkillProcedural.Prim], in ctx: CGContext, bounds: CGRect, flash: ((MeadowSkillProcedural.RGB, Double) -> Void)? = nil) {
         ctx.saveGState()
         defer { ctx.restoreGState() }
         ctx.setLineCap(.round); ctx.setLineJoin(.round)
@@ -77,6 +78,7 @@ enum MeadowSkillProceduralPainter {
                 ctx.restoreGState()
             case let .flash(c, a):
                 guard a > 0.004 else { continue }
+                if let flash { flash(c, a); continue }
                 ctx.saveGState(); ctx.setBlendMode(.plusLighter); ctx.setFillColor(color(c, a)); ctx.fill(bounds); ctx.restoreGState()
             }
         }
@@ -103,17 +105,21 @@ enum MeadowSkillProceduralPainter {
     }
 
     /// Stage-wide light that answers a skill: a tinted dim, a broad glow on the target and a pool of light on the floor.
-    static func drawAmbient(skill id: String, t: Double, in ctx: CGContext, bounds: CGRect, target: CGPoint, floorY: CGFloat, rx: Double) {
+    /// `fillBounds` false leaves the flat dim/wash to the stage (a pane-wide overlay), so the grade has no edge at the world rectangle.
+    static func drawAmbient(skill id: String, t: Double, in ctx: CGContext, bounds: CGRect, target: CGPoint, floorY: CGFloat, rx: Double, fillBounds: Bool = true) {
         guard let info = MeadowSkillProcedural.info[id] else { return }
         let lit = MeadowSkillProcedural.light(skill: id, t: t)
         guard lit > 0.01 else { return }
         let tone = MeadowSkillProcedural.tone(id)
         ctx.saveGState()
-        // The stage view already dims during a cast; this adds a tinted share so the skill's own colour grades the scene.
-        ctx.setFillColor(UIColor(red: CGFloat(info.dimTint.r) * 0.1, green: CGFloat(info.dimTint.g) * 0.1, blue: CGFloat(info.dimTint.b) * 0.12, alpha: CGFloat(lit * info.dim * 0.55)).cgColor)
-        ctx.fill(bounds)
+        if fillBounds {
+            // The stage view already dims during a cast; this adds a tinted share so the skill's own colour grades the scene.
+            ctx.setFillColor(UIColor(red: CGFloat(info.dimTint.r) * 0.1, green: CGFloat(info.dimTint.g) * 0.1, blue: CGFloat(info.dimTint.b) * 0.12, alpha: CGFloat(lit * info.dim * 0.55)).cgColor)
+            ctx.fill(bounds)
+            ctx.setBlendMode(.plusLighter)
+            ctx.setFillColor(color(tone, lit * 0.018)); ctx.fill(bounds)
+        }
         ctx.setBlendMode(.plusLighter)
-        ctx.setFillColor(color(tone, lit * 0.018)); ctx.fill(bounds)
         if let cg = glow(tone).cgImage {
             ctx.setAlpha(CGFloat(lit * 0.16)); ctx.draw(cg, in: CGRect(x: target.x - CGFloat(rx) * 1.5, y: target.y - CGFloat(rx) * 1.2, width: CGFloat(rx) * 3, height: CGFloat(rx) * 2.4))
             ctx.setAlpha(CGFloat(lit * 0.3)); ctx.draw(cg, in: CGRect(x: target.x - CGFloat(rx) * 0.9, y: floorY - 22, width: CGFloat(rx) * 1.8, height: 44))

@@ -903,6 +903,41 @@ enum MeadowSkillProcedural {
         return c
     }
 
+    // MARK: director shot (the lens follows the story of the skill)
+
+    /// A framing request for the stage: lean the lens toward `focus` (stage coordinates) by `weight` (0...1) and push in by `zoom`.
+    struct Shot: Equatable { var focusX = 0.0, focusY = 0.0, weight = 0.0, zoom = 0.0
+        static let idle = Shot()
+    }
+
+    /// Close-up on the caster while the power gathers, a swing to the targets as it is released, then a slow pull back.
+    /// Healing micro-effects have no director shot - they are the stage's background, not a cast.
+    static func shot(skill id: String, t: Double, geo: Geometry) -> Shot {
+        guard !id.hasPrefix("heal"), t >= 0, let i = info[id], t < i.duration, !geo.targets.isEmpty else { return .idle }
+        let rel = max(0.2, i.release)
+        let n = Double(geo.targets.count)
+        let tx = geo.targets.reduce(0) { $0 + $1.chest.x } / n, ty = geo.targets.reduce(0) { $0 + $1.chest.y } / n
+        let spread = geo.targets.map { abs($0.chest.x - tx) }.max() ?? 0
+        // Weight: ease in over the first half of the build-up, hold through the release, ease out afterwards.
+        let hold = rel + 0.55
+        let weight = smooth(t / (rel * 0.5)) * (1 - smooth((t - hold) / min(0.9, max(0.4, i.duration - hold))))
+        // Swing: caster -> targets around the release (support skills swing too: the allies are the targets).
+        let swing = smooth((t - rel * 0.55) / (rel * 0.6 + 0.12))
+        let fx = geo.caster.x + (tx - geo.caster.x) * swing, fy = geo.caster.y + (ty - geo.caster.y) * swing
+        // Zoom: a tight close-up on the caster, relaxing to a wider frame that still holds a group of targets.
+        let wide = 1 - clamp01(spread / 420)
+        let closeUp = 0.17, atTargets = 0.07 + 0.07 * wide
+        return Shot(focusX: fx, focusY: fy, weight: weight, zoom: weight * (closeUp + (atTargets - closeUp) * swing))
+    }
+
+    /// Scales the thump part of the lens kick by how hard the hit actually was (`power` ~0.7 light, 1 medium, 1.45 heavy),
+    /// without touching the build-up before the release (so there is no jump when the damage becomes known).
+    static func scaled(_ c: Camera, skill id: String, t: Double, power: Double) -> Camera {
+        guard let i = info[id] else { return c }
+        let k = 1 + (power - 1) * smooth((t - i.release) / 0.12)
+        return Camera(dx: c.dx * k, dy: c.dy * k, zoom: c.zoom * k, rotation: c.rotation * k)
+    }
+
     // MARK: ambient light (the stage answers each skill)
 
     /// 0...1 light level driven by the skill's own phases: it builds into the release, holds, and fades with the effect.

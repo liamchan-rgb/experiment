@@ -93,6 +93,29 @@ struct BattleProceduralRegression {
             while t < 2.4 { let c = M.camera(skill: id, t: t, direction: 1); m = max(m, abs(c.dx) + abs(c.dy) + 200 * abs(c.zoom)); t += 1.0 / 60 }
             return m
         }
+        // The director shot: every combat skill pushes in on its caster, swings to the targets, and lets go again.
+        for id in M.skillIDs where !id.hasPrefix("heal") {
+            guard let info = M.info[id] else { continue }
+            var maxWeight = 0.0, maxZoom = 0.0, t = 0.0, firstFocus: Double? = nil, lastFocus = 0.0
+            while t < info.duration {
+                let s = M.shot(skill: id, t: t, geo: geo)
+                check(s.weight >= 0 && s.weight <= 1.0001 && s.zoom >= -1e-9 && s.zoom <= 0.2 && s.focusX.isFinite && s.focusY.isFinite, "\(id) t=\(t): shot out of range \(s)")
+                if firstFocus == nil, s.weight > 0.05 { firstFocus = s.focusX }
+                if s.weight > 0.05 { lastFocus = s.focusX }
+                maxWeight = max(maxWeight, s.weight); maxZoom = max(maxZoom, s.zoom); t += 1.0 / 60
+            }
+            check(maxWeight > 0.95 && maxZoom > 0.1, "\(id): the close-up never happens (weight \(maxWeight), zoom \(maxZoom))")
+            check(M.shot(skill: id, t: -0.1, geo: geo) == .idle && M.shot(skill: id, t: info.duration + 0.2, geo: geo) == .idle, "\(id) shot outside the effect")
+            // Starts on the caster, ends nearer the targets.
+            let caster = geo.caster.x, tx = geo.targets.map { $0.chest.x }.reduce(0, +) / Double(geo.targets.count)
+            if abs(tx - caster) > 60 { check(abs((firstFocus ?? 0) - caster) < abs((firstFocus ?? 0) - tx) && abs(lastFocus - tx) < abs(lastFocus - caster), "\(id): the shot does not travel from caster to targets") }
+            // Damage scaling only touches the part after the release.
+            let before = info.release * 0.5, after = info.release + 0.3
+            check(M.scaled(M.camera(skill: id, t: before, direction: 1), skill: id, t: before, power: 1.45) == M.camera(skill: id, t: before, direction: 1), "\(id): damage power must not change the build-up")
+            let c1 = M.camera(skill: id, t: after, direction: 1), c2 = M.scaled(c1, skill: id, t: after, power: 1.45), c3 = M.scaled(c1, skill: id, t: after, power: 0.7)
+            check(abs(c2.dx) + abs(c2.dy) + 200 * abs(c2.zoom) >= abs(c3.dx) + abs(c3.dy) + 200 * abs(c3.zoom) - 1e-9, "\(id): heavier hits should shake at least as hard")
+        }
+        for id in ["healMicro", "healStandard", "healStrong"] { check(M.shot(skill: id, t: 0.3, geo: geo) == .idle, "\(id) must not move the lens") }
         check(peak("dragonFlame") > peak("healMicro") * 4, "dragon flame should kick harder than a micro heal")
         check(peak("dragonScaleWard") > 0.5 && peak("runeSlash") > 0.5 && peak("dragonOrder") > 0.5, "weighty skills must move the lens")
         if failures > 0 { fputs("\(failures) failures\n", stderr); exit(1) }
