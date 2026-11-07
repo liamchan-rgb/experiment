@@ -1060,6 +1060,17 @@ enum MeadowSkillProcedural {
         return o.prims
     }
 
+    /// The soft light a skill casts on the stage (a wide glow around the targets, a pool on the floor), as primitives: the same shapes the
+    /// CoreGraphics painter draws in `drawAmbient`, for the GPU path. The flat dim and wash are the stage's pane-wide overlays.
+    static func ambient(skill id: String, t: Double, target: Pt, floorY: Double, rx: Double) -> [Prim] {
+        guard info[id] != nil else { return [] }
+        let lit = light(skill: id, t: t)
+        guard lit > 0.01 else { return [] }
+        let col = tone(id)
+        return [.glow(x: target.x, y: target.y, rx: rx * 1.5, ry: rx * 1.2, c: col, a: lit * 0.16),
+                .glow(x: target.x, y: floorY, rx: rx * 0.9, ry: 22, c: col, a: lit * 0.3)]
+    }
+
     // MARK: camera (how the lens answers each skill)
 
     struct Camera: Equatable { var dx = 0.0, dy = 0.0, zoom = 0.0, rotation = 0.0

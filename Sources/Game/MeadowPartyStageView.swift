@@ -46,6 +46,8 @@ final class MeadowPartyStageView:UIView {
     /// Where every unit is drawn right now (after travel and knock-back); effects follow these.
     private var liveFeet:[String:PartyPoint]=[:]
     private var washBase=UIColor.clear
+    /// The GPU drawer for procedural skills (nil: Metal unavailable, the effects layer draws them with CoreGraphics).
+    private var gpu:MeadowSkillGPUView?
     private struct PendingStatusCue {
         let unitID:String,heal:Int,shieldGain:Int
         let at:Double,point:CGPoint,supportUnit:Bool
@@ -68,6 +70,7 @@ final class MeadowPartyStageView:UIView {
         diceView.layer.zPosition=1200;world.addSubview(diceView)
         for ghost in afterimages { ghost.isHidden=true;ghost.isUserInteractionEnabled=false;ghost.layer.magnificationFilter = .nearest;world.addSubview(ghost) }
         fx.frame=MeadowPartyEffectsView.worldRect;fx.contentScaleFactor=MeadowPartyEffectsView.drawScale;fx.layer.zPosition=1000;world.addSubview(fx)
+        if let view=MeadowSkillGPUView(worldRect:MeadowPartyEffectsView.worldRect) { view.layer.zPosition=1000;fx.layer.zPosition=1001;world.insertSubview(view,belowSubview:fx);gpu=view;fx.gpuDrawsSkills=true }
         fx.onFlash={ [weak self] flash in guard let self else { return };self.wash.backgroundColor=flash ?? self.washBase }
         clock.onTick={ [weak self] delta in self?.advance(delta) }
     }
@@ -419,6 +422,10 @@ final class MeadowPartyStageView:UIView {
             return (foot:base,chest:PartyPoint(base.x+5*PartyVisual.heroScale,base.y-70*PartyVisual.heroScale),tier:tier,age:sceneTime-at)
         }
         fx.procEffects=procVFX;fx.liveFeet=liveFeet
+        if let gpu {
+            // Skills are drawn on the GPU; a full-screen flash goes to the pane-wide wash.
+            if let flash=gpu.draw(fx.skillPrimitives()) { wash.backgroundColor=UIColor(red:CGFloat(flash.color.r/255),green:CGFloat(flash.color.g/255),blue:CGFloat(flash.color.b/255),alpha:CGFloat(min(1,flash.alpha*0.85))) }
+        }
         if let intent,(intent.action.isRune || intent.action == .dragonFlame),let catalog,MeadowSkillProcedural.info[intent.action.rawValue] == nil {
             fx.runes=SpellbladeEffects.sample(action:intent.action,age:age,actor:intent.actor,target:intent.target,recipients:SpellbladeEffects.recipients(intent,catalog:catalog),weaponID:intent.weaponID,targets:intent.targets,templates:state.units.mapValues(\.templateID))
         } else { fx.runes=nil }
@@ -458,7 +465,7 @@ final class MeadowPartyStageView:UIView {
         world.transform=worldTransform
         fx.setNeedsDisplay()
     }
-    override func layoutSubviews() { super.layoutSubviews();let scale=bounds.width/1000;world.center=CGPoint(x:bounds.midX,y:bounds.midY);world.transform=CGAffineTransform(scaleX:scale,y:scale) }
+    override func layoutSubviews() { super.layoutSubviews();let scale=bounds.width/1000;gpu?.setResolution(max(1,min(3,UIScreen.main.scale*scale*1.15)));world.center=CGPoint(x:bounds.midX,y:bounds.midY);world.transform=CGAffineTransform(scaleX:scale,y:scale) }
 }
 struct MeadowPartyMessage {
     let text:String;let point:CGPoint;let at:Double;let color:UIColor;var atImpact=false;var supportUnit:String?=nil;var supportLine=0;var hitTier:MeadowBattleHitTier?=nil
@@ -490,6 +497,13 @@ struct MeadowPartyProcEvent {
 enum MeadowSkillProceduralDrawing {
     static func heal(_ tier:HealingEffectTier)->String { switch tier { case .micro:return "healMicro";case .standard:return "healStandard";case .strong:return "healStrong" } }
     static func active(_ tier:HealingEffectTier,age:Double)->Bool { guard let info=MeadowSkillProcedural.info[heal(tier)] else { return false };return age>=0 && age<info.duration }
+    /// Everything one healing effect draws (the effect and its soft light), as primitives.
+    static func healPrims(_ tier:HealingEffectTier,age:Double,foot:PartyPoint,chest:PartyPoint)->[MeadowSkillProcedural.Prim] {
+        let id=heal(tier)
+        guard let info=MeadowSkillProcedural.info[id],age>=0,age<info.duration else { return [] }
+        let geo=MeadowSkillProcedural.Geometry(caster:.init(chest.x,chest.y),casterFoot:.init(foot.x,foot.y),targets:[.init(chest:.init(chest.x,chest.y),foot:.init(foot.x,foot.y))],ground:foot.y)
+        return MeadowSkillProcedural.ambient(skill:id,t:age,target:.init(chest.x,chest.y),floorY:foot.y,rx:70)+MeadowSkillProcedural.primitives(skill:id,t:age,geo:geo)
+    }
     static func drawHeal(_ tier:HealingEffectTier,age:Double,foot:PartyPoint,chest:PartyPoint,in ctx:CGContext,bounds:CGRect) {
         let id=heal(tier)
         guard let info=MeadowSkillProcedural.info[id],age>=0,age<info.duration else { return }
@@ -531,6 +545,24 @@ private final class MeadowPartyEffectsView:UIView {
     var liveFeet:[String:PartyPoint]=[:]
     /// Reports the strongest full-screen flash of this frame (or nil) to the stage, which shows it on a pane-wide overlay.
     var onFlash:((UIColor?)->Void)?
+    /// True when the GPU view draws the procedural skills and healing; this layer then leaves them out.
+    var gpuDrawsSkills=false
+    /// Everything the procedural skills draw this frame (soft light first, then the shapes), for the GPU.
+    func skillPrimitives()->[MeadowSkillProcedural.Prim] {
+        var all:[MeadowSkillProcedural.Prim]=[]
+        for r in monsterRecoveries+allyRecoveries { all += MeadowSkillProceduralDrawing.healPrims(r.tier,age:r.age,foot:r.foot,chest:r.chest) }
+        for e in procEffects {
+            let t=time-e.start
+            guard let info=e.info,t>=0,t<info.duration else { continue }
+            let geo=e.geometry(live:liveFeet)
+            guard !geo.targets.isEmpty else { continue }
+            let n=Double(geo.targets.count),mx=geo.targets.reduce(0){$0+$1.chest.x}/n,my=geo.targets.reduce(0){$0+$1.chest.y}/n,fy=geo.targets.reduce(0){$0+$1.foot.y}/n
+            let spread=geo.targets.map { abs($0.chest.x-mx) }.max() ?? 0
+            all += MeadowSkillProcedural.ambient(skill:e.skill,t:t,target:.init(mx,my),floorY:fy,rx:90+spread)
+            all += MeadowSkillProcedural.primitives(skill:e.skill,t:t,geo:geo)
+        }
+        return all
+    }
     /// The effects layer covers more than the 1000x600 world: glows that reach past the world's edge are not cut off there (that cut was a hard
     /// horizontal edge). Drawing is in world coordinates; the layer is drawn at a lower resolution, which soft light does not mind and which keeps long skills fast.
     static let worldRect=CGRect(x:0,y:-200,width:1000,height:1000)
@@ -575,7 +607,7 @@ private final class MeadowPartyEffectsView:UIView {
         func sprite(_ im:UIImage,_ p:PartyPoint,_ w:Double,_ h:Double,_ alpha:Double) { guard alpha>0 else { return };im.draw(in:CGRect(x:p.x-w/2,y:p.y-h/2,width:w,height:h),blendMode:.plusLighter,alpha:CGFloat(alpha)) }
         func glow(_ p:PartyPoint,_ rx:Double,_ ry:Double,_ alpha:Double,_ color:UIColor) { guard alpha>0 else { return };MeadowBattleGlowCache.image(color).draw(in:CGRect(x:p.x-rx,y:p.y-ry,width:rx*2,height:ry*2),blendMode:.plusLighter,alpha:CGFloat(alpha)) }
         for (foot,power) in recoveryLights { glow(foot,105,27,power*0.65,.systemGreen);glow(PartyPoint(foot.x,foot.y-70),42,85,power*0.12,.systemGreen) }
-        for r in monsterRecoveries+allyRecoveries { MeadowSkillProceduralDrawing.drawHeal(r.tier,age:r.age,foot:r.foot,chest:r.chest,in:ctx,bounds:bounds) }
+        if !gpuDrawsSkills { for r in monsterRecoveries+allyRecoveries { MeadowSkillProceduralDrawing.drawHeal(r.tier,age:r.age,foot:r.foot,chest:r.chest,in:ctx,bounds:bounds) } }
         if intent==nil {
             for (id,color) in [(friend,UIColor.systemGreen),(foe,MeadowPreviewPalette.gold)] {
                 if let p=PartyVisual.foot(id) { ctx.setStrokeColor(color.withAlphaComponent(0.65).cgColor);ctx.setLineWidth(2);ctx.strokeEllipse(in:CGRect(x:p.x-36,y:p.y-7,width:72,height:14)) }
@@ -761,7 +793,7 @@ private final class MeadowPartyEffectsView:UIView {
         }
         // Continuous procedural skills (MeadowSkillProcedural): ambient light first, then the effect itself.
         var flashColor:UIColor?=nil,flashAlpha=0.0
-        for e in procEffects {
+        for e in procEffects where !gpuDrawsSkills {
             let t=time-e.start
             guard let info=e.info,t>=0,t<info.duration else { continue }
             let geo=e.geometry(live:liveFeet)
@@ -774,7 +806,7 @@ private final class MeadowPartyEffectsView:UIView {
                 if a>flashAlpha { flashAlpha=a;flashColor=UIColor(red:CGFloat(c.r/255),green:CGFloat(c.g/255),blue:CGFloat(c.b/255),alpha:CGFloat(min(1,a*0.85))) }
             }
         }
-        onFlash?(flashColor)
+        if !gpuDrawsSkills { onFlash?(flashColor) }
         for h in hits {
             let a=time-h.at
             glow(PartyPoint(Double(h.point.x),Double(h.point.y)),120,120,MeadowBattleHitFeel.flash(age:a)*0.55,UIColor(red:1,green:0.75,blue:0.27,alpha:1))
