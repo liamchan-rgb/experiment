@@ -1096,5 +1096,296 @@ def dragon_order(t, geo):
     return out
 
 
+# ================================================================== v6: every skill gets its own signature (no shared burst/column/aura recipe)
+def arc_pts(cx, cy, rx, ry, a0, a1, n=40, roll=0.0):
+    out = []
+    for j in range(n):
+        a = lerp(a0, a1, j / (n - 1)); x, y = math.cos(a) * rx, math.sin(a) * ry
+        out.append((cx + x * math.cos(roll) - y * math.sin(roll), cy + x * math.sin(roll) + y * math.cos(roll)))
+    return out
+
+
+def bolt(out, A, B, t, seed, P, amp=14, n=16, w=3.2, alpha=1.0, rate=30):
+    """A crackling arc between two points: jittering smooth ribbon, bright thin core, soft halo."""
+    pts = []; ws = []
+    dx, dy = B[0] - A[0], B[1] - A[1]; L = math.hypot(dx, dy) or 1.0; nx, ny = -dy / L, dx / L
+    for j in range(n):
+        u = j / (n - 1); env = math.sin(math.pi * u) ** .8
+        d = amp * env * (math.sin(j * 1.9 + t * rate + seed * 7.1) * .6 + math.sin(j * 3.3 - t * rate * 1.3 + seed * 3.7) * .4)
+        pts.append((A[0] + dx * u + nx * d, A[1] + dy * u + ny * d)); ws.append(w * (.55 + .45 * env))
+    stack(out, pts, ws, [(2.6, P['body'], 'add', .22), (1.0, P['mid'], 'add', .55), (.4, P['light'], 'add', .95)], alpha)
+
+
+def flame(out, bx, by, h, w, t, seed, P, alpha=1.0, n=26):
+    pts = []; ws = []
+    for j in range(n):
+        u = j / (n - 1); pts.append((bx + math.sin(u * 6 + t * 9 + seed * 3.3) * w * .5 * u + math.sin(u * 13 - t * 14 + seed) * w * .15 * u, by - u * h)); ws.append(w * (1 - u) ** .85 + .8)
+    stack(out, pts, ws, [(1.6, P['deep'], 'add', .3), (1.0, P['body'], 'add', .6), (.55, P['mid'], 'add', .8), (.2, P['a1'], 'add', .95)], alpha)
+
+
+# ------------------------------------------------------------------ rune slash: five phantom blades cut the target in turn
+def rune_slash(t, geo):
+    out = []; P = PAL['rune']; C = geo['caster']; CF = geo['casterFoot']; T, TF = geo['targets'][0]; imp = SPEC['runeSlash'][1]
+    pre = clamp01((t - .25) / (imp - .25)); cx, cy = T
+    ANG = (-.95, .35, 1.25, -.2, -1.75)                                      # the angle of each cut
+    for k in range(5):                                                       # blades gather round the caster, spinning faster and faster
+        e = smooth((t - .2 - k * .09) / .35)
+        if e <= .01 or t >= imp + .05 * k: continue
+        sp = 3 + 14 * pre * pre; a = t * sp + k * 1.2566; R = 52 + 10 * math.sin(t * 5 + k)
+        px, py = C[0] + 24 + math.cos(a) * R, C[1] + math.sin(a) * R * .55
+        ang = a + 1.571
+        pts = [(px + math.cos(ang) * s_ * 24, py + math.sin(ang) * s_ * 24 * .55) for s_ in [i / 11 - .5 for i in range(12)]]
+        ws = [9 * math.sin(math.pi * (i / 11)) ** .8 + .6 for i in range(12)]
+        stack(out, pts, ws, [(2.2, P['body'], 'add', .25), (1.0, P['mid'], 'add', .6), (.4, P['light'], 'add', .95)], e)
+    if t < imp:
+        out.append(('g', C[0] + 24, C[1], 40 + 30 * pre, 50 + 30 * pre, P['body'], .22 + .25 * pre)); out.append(('g', C[0] + 24, C[1], 14, 18, P['light'], .8 * pre))
+    last = imp + .06 * 4
+    for k in range(5):                                                       # the cuts: each appears all at once, burns white, then cools
+        a = t - imp - .06 * k
+        if a < 0: continue
+        th = ANG[k]; L = 150 + 30 * (k % 2)
+        fly = clamp01(a / .05)                                                # the blade flashes in from the caster side
+        reveal = ease_out(clamp01(a / .07))
+        env = (1 - ease_in((a - .06) / .55)) * (1.0 if a < .06 else 1.0)
+        ux, uy = math.cos(th), math.sin(th) * .8; nx, ny = -uy, ux
+        pts = []; ws = []
+        for j in range(30):
+            u = j / 29; s_ = (u - .5) * 2; bow = (1 - s_ * s_) * 16
+            pts.append((cx + ux * s_ * L * reveal + nx * bow, cy + uy * s_ * L * reveal + ny * bow)); ws.append(10 * math.sin(math.pi * u) ** .75 + .5)
+        if env > .01:
+            stack(out, pts, ws, [(2.4, P['deep'], 'add', .3), (1.2, P['body'], 'add', .5), (.6, P['mid'], 'add', .7), (.22, P['light'], 'add', .95)], env)
+            col = (P['a1'], P['light'])[k % 2]
+            out.append(('g', cx, cy, 44, 44, col, .4 * env * (1 - ease_in(a / .3)))); out.append(('e', cx, cy, 120, 3.0, th, P['mid'], .5 * (1 - ease_in(a / .22))))
+        for i in range(8):                                                    # chips of light thrown off each cut
+            ang2 = th + (frac(i + 9 * k, 3) - .5) * 1.4 + (math.pi if i % 2 else 0); d = (30 + 80 * frac(i + 9 * k, 4)) * ease_out(a / .4)
+            out.append(('e', cx + math.cos(ang2) * d, cy + math.sin(ang2) * d * .8, 9, 1.5, ang2, (P['light'], P['a1'])[i % 2], .8 * (1 - ease_in(a / .5))))
+    if t - last > 0:                                                         # the stroke is felt after the cuts: a single hard pulse and scattered glass-like light
+        a = t - last
+        out.append(('f', P['light'], .1 * math.exp(-a * 20)))
+        r = 20 + 100 * ease_out(a / .35); out.append(('r', cx, cy, r, r * .8, 2.4 * (1 - a / .4) + .4, P['mid'], .7 * (1 - ease_in(a / .4))))
+        for i in range(26):
+            ang2 = frac(i, 3) * 6.283; d = (40 + 130 * frac(i, 4)) * ease_out(a / .6); tr = a / .9
+            out.append(('e', cx + math.cos(ang2) * d, cy + math.sin(ang2) * d * .8 + 40 * a * a, 12, 1.4, ang2 + 1.2 * a, (P['light'], P['a1'], P['mid'])[i % 3], .8 * (1 - tr)))
+    return out
+
+
+# ------------------------------------------------------------------ rune ward: six curved panels close like a shutter
+def rune_ward(t, geo):
+    out = []; P = PAL['rune']; (chest, foot) = geo['targets'][0]; fx, fy = foot; cx, cy = chest; imp = SPEC['runeWard'][1]
+    N = 6; H = 150
+    close = ease_out(clamp01((t - imp) / .4)) if t >= imp else 0.0
+    appear = smooth(t / .4)
+    fadeout = 1 - smooth((t - 1.9) / .45)
+    R = lerp(112, 50, close) if t >= imp else 112 - 6 * math.sin(t * 6)
+    spin = t * (.5 + 4 * (1 - close)) * (1 if t < imp else (1 - close))
+    for k in range(N):
+        a = spin + k * 2 * math.pi / N; half = math.pi / N * (.86 + .14 * close)
+        pts_b = []; ws_b = []; up = []
+        for j in range(26):
+            u = j / 25; aa = a + (u - .5) * 2 * half * (1 if t >= imp else .6)
+            pts_b.append((fx + math.cos(aa) * R, fy - 4 + math.sin(aa) * R * .28))
+        # panel = a wall of light: many vertical ribbons along the arc, heights follow a gentle dome
+        depth = math.sin(a)
+        for j in range(0, 26, 3):
+            x0, y0 = pts_b[j]; u = j / 25; h = H * (.92 + .08 * math.sin(u * math.pi)) * (appear if t < imp else 1.0)
+            pw = [(x0, y0 - q * h / 14 + math.sin(q * .5 + t * 3 + k) * 1.5) for q in range(15)]
+            ww = [6 + 2 * math.sin(q / 14 * math.pi) for q in range(15)]
+            out.append(('k', pw, ww, P['body'] if depth < 0 else P['mid'], (.2 if depth < 0 else .34) * appear * fadeout, 'add', 5.0))
+        top = [(x, y - H * (appear if t < imp else 1.0)) for x, y in pts_b]; bot = pts_b
+        out.append(('k', top, [3.2] * len(top), P['light'], (.5 if depth >= 0 else .3) * appear * fadeout, 'add', 2.0))
+        out.append(('k', bot, [3.2] * len(bot), P['light'], (.55 if depth >= 0 else .3) * appear * fadeout, 'add', 2.0))
+        ca, sa = math.cos(a), math.sin(a)
+        for m in range(3):                                                    # a glyph-like mark rising slowly on each panel
+            uu = ((t * .35 + m / 3 + k * .13) % 1.0); x, y = fx + ca * R, fy - 4 + sa * R * .28 - uu * H
+            out.append(('g', x, y, 7, 7, P['a1'], .7 * appear * fadeout * math.sin(math.pi * uu)))
+    if t >= imp:
+        a = t - imp
+        if a < .5:                                                            # the shutter locks: one flash on the floor, one ring, a held breath
+            out.append(('f', P['light'], .1 * math.exp(-a * 16)))
+            r = 30 + 120 * ease_out(a / .45); out.append(('r', fx, fy - 2, r, r * .28, 3.4 * (1 - a / .5) + .5, P['light'], .8 * (1 - ease_in(a / .5))))
+        for k in range(N):                                                    # seams glow in sequence around the ring
+            ph = (t * 1.4 - k / N) % 1.0; ang = k * 2 * math.pi / N + spin + math.pi / N
+            x, y = fx + math.cos(ang) * R, fy - 4 + math.sin(ang) * R * .28
+            pts = [(x, y - q * H / 12) for q in range(13)]
+            out.append(('k', pts, [2.6] * 13, P['light'], (.9 * math.exp(-ph * 4)) * fadeout, 'add', 2.0))
+        out.append(('g', fx, cy, 70, 100, P['body'], .12 * fadeout))
+    if t < imp:                                                               # panels drift in out of motes
+        for i in range(30):
+            ph = frac(i, 1); a = frac(i, 2) * 6.283 + t * 2; r = 120 + 40 * ph
+            out.append(('g', fx + math.cos(a) * r, fy - 6 - frac(i, 3) * H + math.sin(a) * r * .28, 6, 6, P['mid'], .6 * appear * (1 - clamp01((t - imp + .1) / .1))))
+    return out
+
+
+# ------------------------------------------------------------------ battle rune: overcharge, crackling lightning and speed afterimages
+def battle_rune(t, geo):
+    out = []; P = PAL['battle']; (chest, foot) = geo['targets'][0]; fx, fy = foot; cx, cy = chest; imp = SPEC['battleRune'][1]
+    pre = clamp01((t - .05) / (imp - .05)); post = t - imp; fade = 1 - smooth((t - 1.75) / .35)
+    NODES = [(cx + math.cos(a) * 46, cy + math.sin(a) * 58) for a in [k * math.pi / 3 + .4 for k in range(6)]]
+    if t < imp:                                                               # tiny sparks crawl over the body, the hair stands on end
+        for k in range(int(3 + 9 * pre)):
+            A = NODES[k % 6]; B = NODES[(k * 5 + 2) % 6]
+            if A != B: bolt(out, A, B, t, k, P, 6 + 6 * pre, 10, 1.6, .5 + .5 * pre)
+        out.append(('g', cx, cy, 70, 90, P['body'], .15 + .2 * pre))
+    if post >= 0:
+        if post < .15: out.append(('f', P['light'], .2 * math.exp(-post * 18)))
+        env = smooth(post / .08) * fade
+        for k in range(16):                                                    # a field of arcs, each re-rolled by time so it flickers like real discharge
+            ph = int(t * 24) + k * 7; r1 = frac(ph, 1); r2 = frac(ph, 2)
+            a1 = k * .393 + r1 * .5; ang2 = a1 + 1.2 + r2 * 2.2
+            A = (cx + math.cos(a1) * (30 + 20 * r1), cy + math.sin(a1) * (40 + 20 * r1)); B = (fx + math.cos(ang2) * (70 + 60 * r2), fy - 4 + math.sin(ang2) * 18)
+            if k % 3 == 0: B = (cx + math.cos(ang2) * (90 + 40 * r2), cy + math.sin(ang2) * (100 + 30 * r2) - 20)
+            bolt(out, A, B, t, k + 1, P, 22, 16, 3.0, env * (.45 + .55 * frac(ph, 3)) * (1 - ease_in(post / 1.6) * .6))
+        for q in range(4):                                                    # speed afterimages sweeping up the body, each a ghost of the one before
+            d = q * .06; aa = post - d
+            if 0 <= aa < .5:
+                y = fy - 170 * ease_out(aa / .45); w = 62 * (1 - aa / .6)
+                pts = [(cx + (u - .5) * 2 * w, y + 8 * math.sin(u * 3.1)) for u in [i / 20 for i in range(21)]]
+                out.append(('k', pts, [3.4 * math.sin(math.pi * u) + .4 for u in [i / 20 for i in range(21)]], (P['light'], P['a1'], P['mid'], P['body'])[q], .8 * (1 - aa / .5), 'add', 3.0))
+        for i in range(34):                                                    # embers that spit off the discharge
+            tb = frac(i, 1) * .6; tt = post - tb
+            if not 0 <= tt < .8: continue
+            ang = frac(i, 3) * 6.283; d = (50 + 120 * frac(i, 4)) * ease_out(tt / .5)
+            x = cx + math.cos(ang) * d; y = cy + math.sin(ang) * d * .6 - 60 * tt * (.4 + frac(i, 5)) + 120 * tt * tt * (frac(i, 6) > .5); k = (1 - tt / .8)
+            out.append(('e', x, y, 8, 1.5, ang, (P['light'], P['a1'], P['mid'])[i % 3], .8 * k)); out.append(('g', x, y, 5, 5, P['light'], .7 * k))
+        for k in range(6):                                                    # the floor takes the current: scorched glow and a lazy ring
+            ang = k * 1.047 + .3; x, y = fx + math.cos(ang) * 60, fy - 4 + math.sin(ang) * 16
+            out.append(('g', x, y, 26, 8, P['deep'], .35 * fade)); out.append(('g', x, y, 10, 4, P['mid'], .5 * fade * (.5 + .5 * math.sin(t * 25 + k * 2))))
+    return out
+
+
+# ------------------------------------------------------------------ dragon flame: a fire comet falls and the ground keeps burning
+def dragon_flame(t, geo):
+    out = []; P = PAL['flame']; C = geo['caster']; CF = geo['casterFoot']; T, TF = geo['targets'][0]; imp = SPEC['dragonFlame'][1]
+    cx, cy = T; post = t - imp; pre = clamp01(t / imp)
+    SX, SY = cx - 170, cy - 330                                              # where the comet comes from
+    out.append(('g', SX, SY, 160, 120, P['body'], .22 * smooth(t / .2) * (1 - smooth(post / .3)))); out.append(('g', SX, SY, 70, 60, P['mid'], .25 * smooth(t / .2) * (1 - smooth(post / .3)))) if post < .4 else None
+    def path(tt):
+        s = ease_in(clamp01(tt / imp)) ** 1.5
+        return lerp(SX, cx, s) + math.sin(s * 5) * 8 * (1 - s), lerp(SY, cy, s), s
+    if t < imp + .03:
+        hx, hy, hs = path(t)
+        pts = []; ws = []
+        for i in range(48, -1, -1):
+            tt = t - i * .012
+            if tt < 0: continue
+            x, y, s = path(tt); u = i / 48
+            pts.append((x + math.sin(tt * 40 + i * .6) * 5 * u, y + math.cos(tt * 33 + i * .4) * 5 * u)); ws.append((26 * (1 - u) ** .8 + 2) * (.5 + .5 * clamp01(tt * 6)))
+        if len(pts) > 3: stack(out, pts, ws, [(2.0, P['deep'], 'add', .3), (1.2, P['body'], 'add', .5), (.7, P['mid'], 'add', .75), (.3, P['a1'], 'add', .95)])
+        for q in range(7):                                                    # tongues streaming off the head
+            fp = []; fw = []
+            for j in range(18):
+                u = j / 17; back = (pts[-1] if pts else (hx, hy)); fp.append((hx - (cx - SX) / 380 * u * 90 + math.sin(u * 7 + t * 20 + q * 1.1) * 10 * u + (q - 3) * 4, hy - (cy - SY) / 380 * u * 90 + math.cos(u * 6 + t * 17 + q) * 8 * u)); fw.append(12 * (1 - u) ** .9 + .5)
+            out.append(('k', fp, fw, (P['mid'], P['a2'], P['body'])[q % 3], .55, 'add', 3.0))
+        out.append(('g', hx, hy, 70, 70, P['body'], .5)); out.append(('g', hx, hy, 34, 34, P['mid'], .8)); out.append(('g', hx, hy, 14, 14, P['a1'], 1.0))
+    if post >= 0:
+        if post < .25: out.append(('f', P['mid'], .26 * math.exp(-post * 12)))
+        out.append(('g', cx, cy, 230 * (.5 + ease_out(post / .3)), 160 * (.5 + ease_out(post / .3)), P['body'], .45 * (1 - ease_in(post / .7))))
+        out.append(('g', cx, cy, 70, 60, P['a1'], .8 * (1 - ease_in(post / .22))))
+        for k in range(14):                                                    # the splash runs out along the ground as low sheets of fire
+            a = k * 2 * math.pi / 14 + .2 * frac(k, 2); L = (90 + 90 * frac(k, 3)) * ease_out(post / .45)
+            x, y = TF[0] + math.cos(a) * L, TF[1] - 4 + math.sin(a) * L * .27
+            flame(out, x, y, 40 + 60 * frac(k, 4) * (1 - ease_in(post / 1.4)), 20, t, k, P, (1 - ease_in((post - .4) / 1.2)) * smooth(post / .1))
+        for i in range(26):                                                    # the ground goes on burning: many small tongues, each living its own life
+            ang = frac(i, 5) * 6.283; rr = 20 + 100 * frac(i, 6); x = TF[0] + math.cos(ang) * rr * 1.1; y = TF[1] - 3 + math.sin(ang) * rr * .27
+            born = .15 + .5 * frac(i, 7); lifeA = clamp01((post - born) / .2) * (1 - clamp01((post - born - .9 - .5 * frac(i, 8)) / .5))
+            if lifeA > .01: flame(out, x, y, (30 + 46 * frac(i, 9)) * (.7 + .3 * math.sin(t * 11 + i)), 11 + 8 * frac(i, 1), t, i + 20, P, lifeA, 18)
+        for i in range(14):
+            u = clamp01((post - .2 - .05 * i) / 1.3)
+            if 0 < u < 1: out.append(('g', TF[0] + (frac(i, 1) - .5) * 100, TF[1] - 30 - u * 190, 36 + 34 * u, 30 + 26 * u, P['deep'], .24 * math.sin(math.pi * u)))
+        out.append(('g', TF[0], TF[1] - 2, 120, 26, P['deep'], .36 * smooth(post / .3) * (1 - smooth((post - 1.6) / .6))))   # the scorch stays a while
+        for i in range(60):
+            tb = .02 + .5 * frac(i, 1); tt = post - tb
+            if not 0 <= tt < 1.2: continue
+            a = frac(i, 3) * 6.283; r = (40 + 190 * frac(i, 4)) * ease_out(tt / .6); k = 1 - tt / 1.2
+            out.append(('e', cx + math.cos(a) * r, cy + 20 + math.sin(a) * r * .4 - 130 * tt * (.4 + frac(i, 5)) + 90 * tt * tt, 9, 1.6, a - 1.2 * tt, (P['a1'], P['mid'], P['a2'])[i % 3], .85 * k * (.6 + .4 * math.sin(tt * 30 + i))))
+    if t < imp + .9:
+        e = smooth((t - .05) / .2) * (1 - smooth((t - imp - .5) / .4)); out.append(('g', C[0] + 26, C[1] - 6, 36, 40, P['mid'], .25 * e))
+    return out
+
+
+# ------------------------------------------------------------------ dragon scale ward: heavy guard plates fall and settle into three orbits
+def scale_ward(t, geo):
+    out = []; P = PAL['scale']; (chest, foot) = geo['targets'][0]; fx, fy = foot; cx, cy = chest; imp = SPEC['dragonScaleWard'][1]
+    fadeout = 1 - smooth((t - 1.85) / .4)
+    ORB = ((60, .35, 1.0, 3), (74, 1.15, -.65, 3), (86, -1.2, .5, 3))           # radius, tilt (rad), spin speed, plate count
+    BR = (96, 52, 14)
+    for oi, (R, tilt, spd, n) in enumerate(ORB):
+        lock = ease_out(clamp01((t - imp + .16 * (2 - oi) - .1) / .34)) if t >= imp - .3 else 0.0
+        for k in range(n):
+            drop = clamp01((t - .05 * k - .08 * oi) / (imp - .1)); fall = (1 - ease_out(drop)) ** 1.5
+            a0 = spd * t * (1 + 1.5 * (1 - lock)) + k * 2 * math.pi / n + oi
+            half = .55 - .08 * oi
+            pts = []
+            for j in range(24):
+                a = a0 + (j / 23 - .5) * 2 * half; x = math.cos(a) * R; z = math.sin(a) * R
+                y = z * math.sin(tilt) * 1.0 + fall * -170; px = cx + x * math.cos(tilt * .6); py = cy + y * 1.05 + z * .12
+                pts.append((px, py))
+            depth = math.sin(a0) * math.cos(tilt)
+            alpha = (1.0 if depth > -.3 else .55) * fadeout * smooth(drop * 3)
+            ws = [20 * math.sin(math.pi * (j / 23)) ** .55 + 4 for j in range(24)]
+            stack(out, pts, ws, [(1.25, BR, 'mix', .95), (1.0, P['body'], 'mix', 1.0), (.6, P['mid'], 'mix', .8), (.22, P['light'], 'add', .9)], alpha)
+            out.append(('k', pts, [w * 2.6 for w in ws], P['body'], .14 * alpha, 'add', 10))
+            if t >= imp:                                                       # a trailing glow as each plate wheels round
+                tr = [(pts[0][0] - math.cos(a0 - 1.571) * 22 * (u / 5), pts[0][1]) for u in range(6)]
+    if t >= imp:
+        a = t - imp
+        if a < .5:
+            out.append(('f', P['mid'], .12 * math.exp(-a * 16)))
+            r = 24 + 130 * ease_out(a / .45); out.append(('r', fx, fy - 2, r, r * .28, 6 * (1 - a / .5) + .6, P['light'], .8 * (1 - ease_in(a / .5))))
+            r2 = 40 + 90 * ease_out(a / .35); out.append(('r', cx, cy, r2, r2 * 1.25, 3 * (1 - a / .4) + .5, P['mid'], .6 * (1 - ease_in(a / .4))))
+        for oi, (R, tilt, spd, n) in enumerate(ORB):                           # each orbit pulses in turn, a slow heavy heartbeat
+            ph = (t * 1.1 - oi * .18) % 1.0
+            pts = arc_pts(cx, cy, R * math.cos(tilt * .35), R * math.sin(tilt) * .55 * .0 + R * .22 + 8, 0, 6.283, 50, 0)
+            out.append(('k', pts, [2.0] * len(pts), P['a2'], (.5 * math.exp(-ph * 3.5) + .12) * fadeout, 'add', 2.0))
+        out.append(('g', cx, cy, 80, 110, P['body'], .1 * fadeout))
+        for i in range(20):
+            u = ((t * .35 + frac(i, 1)) % 1.0); ang = frac(i, 2) * 6.283 + t * .5
+            out.append(('g', cx + math.cos(ang) * 80 * frac(i, 3), fy - 6 - u * 190, 7, 7, (P['light'], P['a1'], P['mid'])[i % 3], .6 * fadeout * math.sin(math.pi * u)))
+    return out
+
+
+# ------------------------------------------------------------------ dragon order: three war-drum beats, each answered by the whole field
+def dragon_order(t, geo):
+    out = []; P = PAL['order']; C = geo['caster']; CF = geo['casterFoot']; imp = SPEC['dragonOrder'][1]
+    BEATS = (imp, imp + .3, imp + .6); fadeout = 1 - smooth((t - 1.85) / .3)
+    pre = clamp01(t / imp)
+    if t < imp:
+        for k in range(3):                                                    # the stance: light pulled into the chest, three short taps before the first beat
+            tap = max(0.0, 1 - abs(t - (.15 + k * .17)) / .06); out.append(('g', C[0], C[1], 44 + 30 * tap, 54 + 30 * tap, P['body'], .12 + .3 * tap))
+    for bi, tb in enumerate(BEATS):
+        a = t - tb
+        if a < 0: continue
+        big = 1.0 + .5 * (bi == 2)
+        if a < .14: out.append(('f', P['mid'], (.1 + .08 * bi) * math.exp(-a * 24)))
+        for r_i in range(3):                                                  # the beat leaves the chest as nested sweeping arcs
+            d = r_i * .05; tt = a - d
+            if tt < 0: continue
+            r = (40 + 470 * ease_out(tt / .85)) * big; fade = 1 - ease_in(tt / .9)
+            out.append(('a', C[0] + 20, C[1], r, r * .52, -1.15, 1.15, (7.0 - r_i * 1.8) * fade + .8, (P['light'], P['a1'], P['mid'])[r_i], .85 * fade))
+        r = 20 + 130 * big * ease_out(a / .5); out.append(('r', CF[0], CF[1] - 2, r, r * .27, 6 * (1 - a / .55) + .6, P['mid'], .8 * (1 - ease_in(a / .55))))
+        for n, (chest, foot) in enumerate(geo['targets']):                     # the answer: a ring snaps inward onto each ally with the flash
+            hit = a - .1 - .05 * n
+            if hit < 0: continue
+            cx, cy = chest; fx, fy = foot
+            R0 = 130 * big; r = R0 * (1 - ease_out(hit / .26)) + 14; al = (1 - ease_in(hit / .3)) * smooth(hit / .04)
+            out.append(('r', cx, cy, r * .8, r * 1.3, 4.0 * al + .5, (P['a1'], P['light'], P['mid'])[bi], .9 * al))
+            out.append(('r', fx, fy - 2, r * 1.4, r * 1.4 * .27, 3.4 * al + .5, P['mid'], .7 * al))
+            if hit < .3:
+                out.append(('g', cx, cy, 70 * (1 - ease_in(hit / .3)) + 36, 92 * (1 - ease_in(hit / .3)) + 46, P['a1'], .45 * al * (1 + .4 * bi))); out.append(('g', cx, cy, 24, 32, (255, 255, 255), .5 * al))
+            for i in range(10):
+                ang = frac(i + 11 * bi, 3) * 6.283; d = (30 + 70 * frac(i + 11 * bi, 4)) * ease_out(hit / .4)
+                out.append(('e', cx + math.cos(ang) * d, cy + math.sin(ang) * d * .8 - 20 * hit, 9, 1.5, ang, (P['a1'], P['light'], P['a2'])[i % 3], .8 * (1 - ease_in(hit / .55))))
+    last = t - BEATS[2]
+    for n, (chest, foot) in enumerate(geo['targets']):                          # after the last beat each ally keeps the rhythm: a heartbeat of light
+        if last < .15: continue
+        cx, cy = chest; ph = (t * 2.0 - n * .2) % 1.0; env = smooth((last - .15) / .25) * fadeout
+        out.append(('g', cx, cy, 52 + 14 * math.exp(-ph * 5), 80 + 18 * math.exp(-ph * 5), P['body'], (.14 + .3 * math.exp(-ph * 5)) * env))
+        out.append(('r', cx, cy, 44 + 30 * ph, 70 + 40 * ph, 1.8 * (1 - ph) + .4, P['a1'], .7 * (1 - ph) * env))
+        for i in range(12):
+            u = ((t * .5 + frac(i, 1)) % 1.0); ang = frac(i, 2) * 6.283
+            out.append(('g', cx + math.cos(ang) * 40 * frac(i, 3), foot[1] - 6 - u * 150, 7, 7, (P['a1'], P['light'], P['mid'])[i % 3], .6 * env * math.sin(math.pi * u)))
+    return out
+
+
 GENERATORS = {'starlightPulse': starlight, 'rally': rally, 'sweep': sweep, 'dragonSoulWard': soul, 'dragonScaleWard': scale_ward,
               'runeSlash': rune_slash, 'runeWard': rune_ward, 'battleRune': battle_rune, 'dragonFlame': dragon_flame, 'dragonOrder': dragon_order}
