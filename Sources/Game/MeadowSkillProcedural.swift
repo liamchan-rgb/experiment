@@ -26,6 +26,7 @@ enum MeadowSkillProcedural {
     struct Info { let duration: Double, release: Double, dim: Double, dimTint: RGB, support: Bool }
     static let skillIDs = ["starlightPulse", "dragonSoulWard", "dragonScaleWard", "runeSlash", "runeWard", "battleRune", "dragonFlame", "dragonOrder",
                            "healMicro", "healStandard", "healStrong", "rally", "sweep",
+                           "shieldBreak", "deathBurst", "projBow", "projStaff", "projArcher", "projDragon",
                            "natural20", "shieldDome", "hitBlade", "hitGreat", "hitBow", "hitStaff", "hitClaw", "hitAmbush", "hitWard"]
     static let info: [String: Info] = [
         "starlightPulse": Info(duration: 1.6, release: 0.75, dim: 0.34, dimTint: RGB(0.80, 0.76, 1.0), support: false),
@@ -43,8 +44,14 @@ enum MeadowSkillProcedural {
         "sweep": Info(duration: 2.0, release: 1.048, dim: 0.26, dimTint: RGB(0.82, 0.9, 1.0), support: false),
         "natural20": Info(duration: 2.8, release: 0.05, dim: 0.5, dimTint: RGB(1.0, 0.92, 0.7), support: false),
         "shieldDome": Info(duration: 1.9, release: 0.46, dim: 0.26, dimTint: RGB(0.8, 0.92, 1.0), support: true),
+        "shieldBreak": Info(duration: 1.2, release: 0.03, dim: 0.0, dimTint: RGB(1, 1, 1), support: false),
+        "deathBurst": Info(duration: 1.8, release: 0.04, dim: 0.0, dimTint: RGB(1, 1, 1), support: false),
+        "projBow": projInfo(0.0, 0.19), "projStaff": projInfo(0.49, 0.21), "projArcher": projInfo(0.0, 0.22), "projDragon": projInfo(0.0, 0.22),
         "hitBlade": hitInfo, "hitGreat": hitInfo, "hitBow": hitInfo, "hitStaff": hitInfo, "hitClaw": hitInfo, "hitAmbush": hitInfo, "hitWard": hitInfo
     ]
+    private static func projInfo(_ charge: Double, _ flight: Double) -> Info { Info(duration: charge + flight + 0.35, release: charge + flight, dim: 0.0, dimTint: RGB(1, 1, 1), support: false) }
+    /// Effects that belong to a single blow or flight: no dim, no wash, no soft ambient light, no lens work of their own.
+    static func isBlow(_ id: String) -> Bool { id.hasPrefix("hit") || id.hasPrefix("proj") || id == "deathBurst" || id == "shieldBreak" }
     private static let hitInfo = Info(duration: 1.1, release: 0.05, dim: 0.0, dimTint: RGB(1, 1, 1), support: false)
     /// The procedural skill that draws a party action, if any (the two shield actions and the ally support share the shield dome).
     static func procID(for action: String) -> String? {
@@ -65,6 +72,12 @@ enum MeadowSkillProcedural {
         case "sweep": return Pal.sweep.mid
         case "natural20": return Pal.gold.mid
         case "shieldDome", "hitWard": return Pal.ward.mid
+        case "deathBurst": return Pal.dust.mid
+        case "shieldBreak": return Pal.ward.mid
+        case "projBow": return Pal.bow.mid
+        case "projStaff": return Pal.staff.mid
+        case "projArcher": return Pal.claw.mid
+        case "projDragon": return Pal.ward.mid
         case "hitBlade": return Pal.blade.mid
         case "hitGreat": return Pal.great.mid
         case "hitBow": return Pal.bow.mid
@@ -98,6 +111,7 @@ enum MeadowSkillProcedural {
         static let order = Pal(deep: RGB(90, 10, 30), body: RGB(200, 40, 50), mid: RGB(255, 110, 70), light: RGB(255, 210, 150), a1: RGB(255, 220, 120), a2: RGB(255, 150, 90))
         static let rally = Pal(deep: RGB(120, 60, 8), body: RGB(240, 150, 30), mid: RGB(255, 213, 96), light: RGB(255, 250, 215), a1: RGB(255, 255, 255), a2: RGB(255, 196, 70))
         static let sweep = Pal(deep: RGB(20, 50, 140), body: RGB(92, 170, 255), mid: RGB(190, 232, 255), light: RGB(255, 255, 255), a1: RGB(255, 214, 120), a2: RGB(150, 200, 255))
+        static let dust = Pal(deep: RGB(70, 55, 40), body: RGB(210, 170, 110), mid: RGB(245, 215, 150), light: RGB(255, 245, 220), a1: RGB(255, 255, 255), a2: RGB(255, 170, 80))
         static let blade = Pal(deep: RGB(70, 80, 110), body: RGB(190, 205, 235), mid: RGB(235, 242, 255), light: RGB(255, 255, 255), a1: RGB(255, 225, 150), a2: RGB(160, 200, 255))
         static let great = Pal(deep: RGB(110, 60, 20), body: RGB(255, 170, 70), mid: RGB(255, 215, 140), light: RGB(255, 250, 225), a1: RGB(255, 255, 255), a2: RGB(255, 140, 60))
         static let bow = Pal(deep: RGB(20, 90, 50), body: RGB(110, 230, 150), mid: RGB(190, 255, 200), light: RGB(240, 255, 240), a1: RGB(255, 240, 170), a2: RGB(120, 255, 220))
@@ -225,6 +239,9 @@ enum MeadowSkillProcedural {
             case "natural20": all += natural20(t, geo, ti)
             case "shieldDome": all += shieldDome(t, geo, ti)
             case "hitBlade", "hitGreat", "hitBow", "hitStaff", "hitClaw", "hitAmbush", "hitWard": all += hitEffect(id, t, geo, ti)
+            case "projBow", "projStaff", "projArcher", "projDragon": all += projectile(id, t, geo, ti)
+            case "shieldBreak": all += shieldBreak(t, geo, ti)
+            case "deathBurst": all += deathBurst(t, geo, ti)
             default: return []
             }
         }
@@ -1065,10 +1082,23 @@ enum MeadowSkillProcedural {
                 o.arc(T.x, T.y, 54 * S, 70 * S, a0, a0 + 0.5, 3.0, P.light, 0.8 * (1 - easeIn(k / 0.5)))
             }
         }
-        let shardCols = [P.light, P.mid, P.a1]
-        for j in 0..<Int(10 + 6 * pwr) {
-            let jj = j + 31 * ti, a = frac(jj, 3) * 6.2832, r = (25 + 120 * frac(jj, 4)) * S * easeOut(k / 0.35)
-            o.e(T.x + cos(a) * r, T.y + sin(a) * r * 0.6, 9 * S, 1.5, a, shardCols[j % 3], max(0.0, 1 - k / 0.55))
+        let ang0 = atan2(T.y - C.y, T.x - C.x), cs = cos(ang0), sn = sin(ang0), shardCols = [P.light, P.mid, P.a1]
+        o.e(T.x - cs * 50 * S * u, T.y - sn * 50 * S * u, 140 * S * u + 1, 3.2 * S, ang0, P.light, 1 - easeIn(k / 0.25))
+        for q in 0..<8 {
+            let a = Double(q) * 0.7854 + 0.2
+            o.e(T.x + cos(a) * 22 * S, T.y + sin(a) * 22 * S * 0.8, 16 * S * (1 - easeIn(k / 0.14)) + 0.4, 1.4, a, P.light, 1 - easeIn(k / 0.14))
+        }
+        for j in 0..<Int(16 + 10 * pwr) {
+            let jj = j + 31 * ti, a = ang0 + (frac(jj, 3) - 0.5) * 1.9, r = (50 + 210 * frac(jj, 4)) * S * easeOut(k / 0.4)
+            o.e(T.x + cos(a) * r, T.y + sin(a) * r * 0.7 + 60 * k * k * frac(jj, 6), (14 + 24 * frac(jj, 5)) * S * (1 - 0.5 * easeIn(k / 0.5)), 2.2, a, shardCols[j % 3], max(0.0, 1 - k / 0.6))
+        }
+        for j in 0..<4 {
+            let jj = j + 50, a = frac(jj, 3) * 6.2832, r = (20 + 60 * frac(jj, 4)) * S * easeOut(k / 0.35)
+            o.g(T.x + cos(a) * r, T.y + sin(a) * r * 0.6, 5 * S, 5 * S, P.light, max(0.0, 1 - k / 0.5))
+        }
+        for j in 0..<6 {
+            let x = TF.x + cs * (30 + 120 * frac(j, 2)) * easeOut(k / 0.5)
+            o.g(x, TF.y - 4 - 10 * frac(j, 3), 14 * S, 7 * S, P.deep, 0.35 * max(0.0, 1 - k / 0.6))
         }
         let rr = 20 + 100 * S * easeOut(k / 0.4)
         o.r(TF.x, TF.y - 2, rr, rr * 0.26, 2.4 * max(0.0, 1 - k / 0.5) + 0.6, P.mid, 0.6 * fade)
@@ -1138,6 +1168,132 @@ enum MeadowSkillProcedural {
             for q in 0..<10 {
                 let ph = frac(q + 20 * ti, 1), a = ph * 6.2832 + t * 1.5, uu = pm(t * 0.6 + ph, 1.0)
                 o.e(cx + cos(a) * 60 * e, cy + 80 - uu * 170, 8, 1.4, -1.5708, P.light, env * sin(Double.pi * uu))
+            }
+        }
+        return o.prims
+    }
+
+    // MARK: projectiles (arrows and orbs with a direction, a trail and a launch)
+
+    private static func projSpec(_ id: String) -> (Pal, Bool, Double, Double)? {
+        switch id {
+        case "projBow": return (.bow, true, 0.0, 0.19)
+        case "projStaff": return (.staff, false, 0.49, 0.21)
+        case "projArcher": return (.claw, true, 0.0, 0.22)
+        case "projDragon": return (.ward, false, 0.0, 0.22)
+        default: return nil
+        }
+    }
+
+    static func projectile(_ id: String, _ t: Double, _ geo: Geometry, _ ti: Int) -> [Prim] {
+        guard ti == 0, let ps = projSpec(id) else { return [] }
+        var o = Out(); let P = ps.0, isArrow = ps.1, L = ps.2, F = ps.3, C = geo.caster, T = geo.targets[0].chest
+        let cols = [P.light, P.mid, P.a1]
+        func path(_ u: Double) -> (Double, Double) { (lerp(C.x, T.x, u), lerp(C.y, T.y, u) - (isArrow ? 6.0 : 40.0) * sin(Double.pi * u)) }
+        let u = clamp01((t - L) / F)
+        if L > 0 && t < L + 0.05 {
+            let ch = smooth(t / L), fade = 1 - smooth((t - L) / 0.05)
+            o.g(C.x, C.y, 10 + 34 * ch, 10 + 34 * ch, P.body, 0.5 * ch * fade); o.g(C.x, C.y, 5 + 14 * ch, 5 + 14 * ch, P.light, 0.9 * ch * fade)
+            o.arc(C.x, C.y, 18 + 10 * ch, 18 + 10 * ch, t * 6, t * 6 + 3.4, 1.6, P.light, 0.8 * ch * fade)
+            for j in 0..<14 {
+                let e = smooth((t - 0.03 - 0.25 * L * frac(j, 3)) / (L * 0.85))
+                if e > 0 && e < 1 {
+                    let a = frac(j, 1) * 6.2832 + t * 3, r = (70 + 60 * frac(j, 2)) * pw(1 - e, 1.4)
+                    o.g(C.x + cos(a) * r, C.y + sin(a) * r * 0.7, 6, 6, cols[j % 3], 0.8 * smooth(e * 5))
+                }
+            }
+        }
+        if t >= L {
+            let mf = t - L
+            if mf < 0.15 {
+                let q = 1 - mf / 0.15
+                o.g(C.x, C.y, 40 * q + 8, 40 * q + 8, P.light, 0.8 * q); o.r(C.x, C.y, 12 + 40 * (1 - q), 12 + 40 * (1 - q), 2.0 * q + 0.5, P.mid, 0.7 * q)
+            }
+            if t < L + F + 0.12 {
+                let (hx, hy) = path(u), (x1, y1) = path(clamp01(u - 0.02)), (x2, y2) = path(clamp01(u + 0.02)), ang = atan2(y2 - y1, x2 - x1)
+                let fade = 1 - smooth((t - L - F) / 0.12), ca = cos(ang), sa = sin(ang)
+                var pts: [Pt] = [], ws: [Double] = []
+                for i in stride(from: 24, through: 0, by: -1) {
+                    let tt = t - Double(i) * 0.006
+                    if tt < L { continue }
+                    let (x, y) = path(clamp01((tt - L) / F)), q = Double(i) / 24.0
+                    pts.append(Pt(x, y)); ws.append((isArrow ? 5.0 : 11.0) * pw(1 - q, 0.9) + 0.8)
+                }
+                if pts.count > 3 { o.stack(pts, ws, [(2.2, P.deep, true, 0.25), (1.0, P.body, true, 0.6), (0.5, P.mid, true, 0.85), (0.2, P.light, true, 0.95)], fade) }
+                if isArrow {
+                    o.e(hx - ca * 20, hy - sa * 20, 22, 2.2, ang, P.light, fade); o.e(hx - ca * 20, hy - sa * 20, 26, 6.0, ang, P.body, 0.5 * fade)
+                    o.g(hx, hy, 10, 10, P.light, 0.9 * fade)
+                    for q in 0..<3 { let off = Double(q - 1) * 7; o.e(hx - ca * 34 - sa * off, hy - sa * 34 + ca * off, 26, 1.1, ang, P.mid, 0.5 * fade) }
+                } else {
+                    o.g(hx, hy, 30, 30, P.body, 0.55 * fade); o.g(hx, hy, 15, 15, P.light, 0.95 * fade)
+                    for q in 0..<2 { let a0 = t * 9 + Double(q) * Double.pi; o.arc(hx, hy, 16, 16, a0, a0 + 2.2, 2.0, q == 0 ? P.light : P.a2, 0.85 * fade) }
+                    for j in 0..<8 {
+                        let (x, y) = path(clamp01(u - 0.08 * Double(j) / 8.0)), w = sin(t * 30 + Double(j) * 1.7) * 10 * (Double(j) / 8.0)
+                        o.g(x - sa * w, y + ca * w, 5, 5, cols[j % 3], 0.6 * (1 - Double(j) / 8.0) * fade)
+                    }
+                }
+            }
+        }
+        return o.prims
+    }
+
+    // MARK: shield break (the shell bursts apart and its plates are thrown along the blow)
+
+    static func shieldBreak(_ t: Double, _ geo: Geometry, _ ti: Int) -> [Prim] {
+        var o = Out(); let P = Pal.ward, C = geo.caster, chest = geo.targets[ti].chest, foot = geo.targets[ti].foot
+        let cx = chest.x, cy = chest.y, fx = foot.x, fy = foot.y, k = t - 0.03
+        if k < 0 { return [] }
+        let S = 0.85 + 0.3 * geo.power, ang0 = atan2(cy - C.y, cx - C.x), cs = cos(ang0), sn = sin(ang0)
+        o.g(cx, cy, 130 * S * (0.5 + easeOut(k / 0.12)), 150 * S * (0.5 + easeOut(k / 0.12)), P.body, 0.6 * (1 - easeIn(k / 0.35)))
+        o.g(cx, cy, 60, 70, P.light, 0.9 * (1 - easeIn(k / 0.12)))
+        o.r(cx, cy, 64 + 110 * easeOut(k / 0.3), 94 + 140 * easeOut(k / 0.3), 3.5 * (1 - k / 0.45) + 0.6, P.mid, 0.9 * (1 - easeIn(k / 0.45)))
+        o.r(cx, cy, 58 + 80 * easeOut(k / 0.3), 88 + 100 * easeOut(k / 0.3), 1.4, P.light, 0.7 * (1 - easeIn(k / 0.35)))
+        for j in 0..<14 {
+            let a0 = Double(j) * 6.2832 / 14 + 0.1 * frac(j, 2), rad = 1 + 1.6 * easeOut(k / 0.55), sp = easeOut(k / 0.55) * (0.4 + frac(j, 3)), spin = a0 + k * (2 + 4 * frac(j, 5))
+            o.arc(cx + cs * 130 * sp, cy + sn * 130 * sp + 90 * k * k * frac(j, 4), 64 * rad, 94 * rad, spin, spin + 0.38, 3.0 * (1 - easeIn(k / 0.6)) + 0.6, P.light, max(0.0, 1 - k / 0.65))
+        }
+        let shardCols = [P.light, P.mid, P.a2]
+        for j in 0..<16 {
+            let jj = j + 31 * ti, a = ang0 + (frac(jj, 3) - 0.5) * 2.4, r = (60 + 200 * frac(jj, 4)) * S * easeOut(k / 0.45)
+            o.e(cx + cos(a) * r, cy + sin(a) * r * 0.7 + 70 * k * k * frac(jj, 6), (10 + 14 * frac(jj, 5)) * S, 1.6, a, shardCols[j % 3], max(0.0, 1 - k / 0.65))
+        }
+        o.e(cx - cs * 40 * S, cy - sn * 40 * S, 110 * S * easeOut(k / 0.1) + 1, 2.6 * S, ang0, P.light, 1 - easeIn(k / 0.3))
+        let rr = 20 + 130 * S * easeOut(k / 0.45)
+        o.r(fx, fy - 2, rr, rr * 0.26, 2.4 * max(0.0, 1 - k / 0.5) + 0.6, P.mid, 0.6 * (1 - easeIn(k / 0.8)))
+        o.g(fx, fy - 2, 80, 18, P.deep, 0.3 * (1 - easeIn(k / 1.0)))
+        return o.prims
+    }
+
+    // MARK: monster death (the body comes apart and is blown to the right)
+
+    static func deathBurst(_ t: Double, _ geo: Geometry, _ ti: Int) -> [Prim] {
+        var o = Out(); let P = Pal.dust, chest = geo.targets[ti].chest, foot = geo.targets[ti].foot
+        let cx = chest.x, cy = chest.y, fx = foot.x, fy = foot.y, hgt = max(40.0, (fy - cy) * 2.0), wid = hgt * 0.7
+        o.g(cx, cy, 100 * (0.5 + easeOut(t / 0.2)), 100 * (0.5 + easeOut(t / 0.2)), P.body, 0.5 * (1 - easeIn(t / 0.5)))
+        o.g(cx, cy, 40, 40, P.light, 0.8 * (1 - easeIn(t / 0.2)))
+        o.g(fx, fy - 2, 90, 20, P.deep, 0.25 * (1 - easeIn(t / 1.6)))
+        let cols = [P.light, P.mid, P.a2]
+        for i in 0..<Int(52 + 20 * geo.power) {
+            let hy = frac(i, 2), born = 0.04 + 0.55 * frac(i, 1) * (1 - 0.5 * hy), tt = t - born, life = 0.9 + 0.6 * frac(i, 3)
+            if !(tt >= 0 && tt < life) { continue }
+            let x0 = cx + (frac(i, 4) - 0.5) * wid, y0 = fy - hy * hgt
+            let drift = (60 + 200 * frac(i, 5)) * easeOut(tt / 0.9) * (0.6 + 0.8 * hy)
+            let x = x0 + drift, y = y0 - 40 * tt * (0.4 + frac(i, 6)) + 9 * sin(tt * 5 + Double(i))
+            let vx = 200 * (0.6 + 0.8 * hy) * (1 - tt / life) + 40, vy = -40.0, a = pw(1 - tt / life, 0.8) * smooth(tt / 0.05)
+            o.e(x, y, 22 + 24 * frac(i, 7), 2.4 + 1.6 * frac(i, 8), atan2(vy, vx), cols[i % 3], a * 0.95); o.g(x, y, 9, 9, P.body, a * 0.4)
+        }
+        for j in 0..<8 {
+            let tt = t - 0.05 - 0.3 * frac(j, 1)
+            if tt > 0 && tt < 1.0 {
+                let x = fx + (frac(j, 2) - 0.3) * 60 + (50 + 220 * frac(j, 3)) * easeOut(tt / 0.8)
+                o.g(x, fy - 4 - 8 * frac(j, 4), 16, 7, P.deep, 0.4 * (1 - tt / 1.0))
+            }
+        }
+        for q in 0..<6 {
+            let tt = t - 0.1 - 0.1 * Double(q)
+            if tt > 0 && tt < 0.8 {
+                let u = easeOut(tt / 0.8)
+                o.e(cx + 40 + 220 * u, fy - (Double(q) + 0.5) * hgt / 6, 40 + 30 * frac(q, 2), 1.2, 0.0, P.light, 0.5 * (1 - tt / 0.8))
             }
         }
         return o.prims
@@ -1264,7 +1420,7 @@ enum MeadowSkillProcedural {
     /// The soft light a skill casts on the stage (a wide glow around the targets, a pool on the floor), as primitives: the same shapes the
     /// CoreGraphics painter draws in `drawAmbient`, for the GPU path. The flat dim and wash are the stage's pane-wide overlays.
     static func ambient(skill id: String, t: Double, target: Pt, floorY: Double, rx: Double) -> [Prim] {
-        guard info[id] != nil else { return [] }
+        guard info[id] != nil, !isBlow(id) else { return [] }
         let lit = light(skill: id, t: t)
         guard lit > 0.01 else { return [] }
         let col = tone(id)
@@ -1287,7 +1443,7 @@ enum MeadowSkillProcedural {
 
     /// Lens kick in layout units (the same units as `MeadowBattleHitFeel.camera`). `direction` is +1 when the effect travels to the right.
     static func camera(skill id: String, t: Double, direction: Double) -> Camera {
-        guard t >= 0, let i = info[id], t < i.duration, !id.hasPrefix("hit") else { return .zero }
+        guard t >= 0, let i = info[id], t < i.duration, !isBlow(id) else { return .zero }
         var c = Camera()
         switch id {
         case "starlightPulse":
@@ -1345,7 +1501,7 @@ enum MeadowSkillProcedural {
     /// Close-up on the caster while the power gathers, a swing to the targets as it is released, then a slow pull back.
     /// Healing micro-effects have no director shot - they are the stage's background, not a cast.
     static func shot(skill id: String, t: Double, geo: Geometry) -> Shot {
-        guard !id.hasPrefix("heal"), !id.hasPrefix("hit"), t >= 0, let i = info[id], t < i.duration, !geo.targets.isEmpty else { return .idle }
+        guard !id.hasPrefix("heal"), !isBlow(id), t >= 0, let i = info[id], t < i.duration, !geo.targets.isEmpty else { return .idle }
         if id == "natural20" {
             // The roll that ends the fight: straight in on the target, a long hold, a slow release.
             let n = Double(geo.targets.count)

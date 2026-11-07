@@ -72,7 +72,7 @@ struct BattleProceduralRegression {
                 case .flash: return []
                 }
             }
-            for probe in [info.release + 0.45, info.release + 0.8] {
+            for probe in [info.release + 0.45, info.release + 0.8] where !id.hasPrefix("proj") {
                 let prims = M.primitives(skill: id, t: probe, geo: geo)
                 for (i, tg) in geo.targets.enumerated() {
                     check(prims.contains { centres($0).contains { abs($0 - tg.chest.x) < 45 } }, "\(id) t=\(probe): target \(i) at x=\(tg.chest.x) gets no effect")
@@ -94,7 +94,7 @@ struct BattleProceduralRegression {
             return m
         }
         // The director shot: every combat skill pushes in on its caster, swings to the targets, and lets go again.
-        for id in M.skillIDs where !id.hasPrefix("heal") && !id.hasPrefix("hit") && id != "natural20" {
+        for id in M.skillIDs where !id.hasPrefix("heal") && !M.isBlow(id) && id != "natural20" {
             guard let info = M.info[id] else { continue }
             var maxWeight = 0.0, maxZoom = 0.0, t = 0.0, firstFocus: Double? = nil, lastFocus = 0.0
             while t < info.duration {
@@ -119,7 +119,7 @@ struct BattleProceduralRegression {
         var n20w = 0.0, n20z = 0.0, t20 = 0.0
         while t20 < 2.8 { let s = M.shot(skill: "natural20", t: t20, geo: geo); n20w = max(n20w, s.weight); n20z = max(n20z, s.zoom); t20 += 1.0 / 60 }
         check(n20w > 0.95 && n20z > 0.3, "natural20: the push-in is too weak (\(n20w), \(n20z))")
-        for id in M.skillIDs where id.hasPrefix("hit") { check(M.shot(skill: id, t: 0.3, geo: geo) == .idle && M.camera(skill: id, t: 0.3, direction: 1) == .zero, "\(id) must not move the lens") }
+        for id in M.skillIDs where M.isBlow(id) { check(M.shot(skill: id, t: 0.3, geo: geo) == .idle && M.camera(skill: id, t: 0.3, direction: 1) == .zero, "\(id) must not move the lens") }
         for id in ["healMicro", "healStandard", "healStrong"] { check(M.shot(skill: id, t: 0.3, geo: geo) == .idle, "\(id) must not move the lens") }
         check(peak("dragonFlame") > peak("healMicro") * 4, "dragon flame should kick harder than a micro heal")
         check(peak("dragonScaleWard") > 0.5 && peak("runeSlash") > 0.5 && peak("dragonOrder") > 0.5, "weighty skills must move the lens")

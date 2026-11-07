@@ -1622,9 +1622,19 @@ def hit_effect(skill, t, geo, ti=0):
                 r = 30 + 90 * ease_out(uu); out.append(('r', T[0], T[1], r * .8, r, 2.4 * (1 - uu) + .6, (P['mid'], P['light'])[w], .9 * (1 - ease_in(uu))))
         for q in range(6):
             a0 = k * 2 + q * 1.0472; out.append(('a', T[0], T[1], 54 * S, 70 * S, a0, a0 + .5, 3.0, P['light'], .8 * (1 - ease_in(k / .5))))
-    for j in range(int(10 + 6 * pw)):                                       # shards
-        jj = j + 31 * ti; a = frac(jj, 3) * 6.2832; r = (25 + 120 * frac(jj, 4)) * S * ease_out(k / .35)
-        out.append(('e', T[0] + math.cos(a) * r, T[1] + math.sin(a) * r * .6, 9 * S, 1.5, a, (P['light'], P['mid'], P['a1'])[j % 3], max(0.0, 1 - k / .55)))
+    ang0 = math.atan2(T[1] - C[1], T[0] - C[0]); cs, sn = math.cos(ang0), math.sin(ang0)      # the direction of the blow
+    out.append(('e', T[0] - cs * 50 * S * u, T[1] - sn * 50 * S * u, 140 * S * u + 1, 3.2 * S, ang0, P['light'], 1 - ease_in(k / .25)))   # its line, behind the target
+    for q in range(8):                                                       # the flash star on contact
+        a = q * .7854 + .2; out.append(('e', T[0] + math.cos(a) * 22 * S, T[1] + math.sin(a) * 22 * S * .8, 16 * S * (1 - ease_in(k / .14)) + .4, 1.4, a, P['light'], 1 - ease_in(k / .14)))
+    for j in range(int(16 + 10 * pw)):                                      # a spray that follows the blow: a cone along its direction, falling a little
+        jj = j + 31 * ti; a = ang0 + (frac(jj, 3) - .5) * 1.9; r = (50 + 210 * frac(jj, 4)) * S * ease_out(k / .4)
+        out.append(('e', T[0] + math.cos(a) * r, T[1] + math.sin(a) * r * .7 + 60 * k * k * frac(jj, 6), (14 + 24 * frac(jj, 5)) * S * (1 - .5 * ease_in(k / .5)), 2.2, a, (P['light'], P['mid'], P['a1'])[j % 3], max(0.0, 1 - k / .6)))
+    for j in range(4):                                                       # a few sparkles every which way
+        jj = j + 50; a = frac(jj, 3) * 6.2832; r = (20 + 60 * frac(jj, 4)) * S * ease_out(k / .35)
+        out.append(('g', T[0] + math.cos(a) * r, T[1] + math.sin(a) * r * .6, 5 * S, 5 * S, P['light'], max(0.0, 1 - k / .5)))
+    for j in range(6):                                                       # dust shoved along the ground in the blow's direction
+        x = TF[0] + cs * (30 + 120 * frac(j, 2)) * ease_out(k / .5)
+        out.append(('g', x, TF[1] - 4 - 10 * frac(j, 3), 14 * S, 7 * S, P['deep'], .35 * max(0.0, 1 - k / .6)))
     rr = 20 + 100 * S * ease_out(k / .4); out.append(('r', TF[0], TF[1] - 2, rr, rr * .26, 2.4 * max(0.0, 1 - k / .5) + .6, P['mid'], .6 * fade))
     return out
 
@@ -1681,6 +1691,110 @@ def shield_dome(t, geo, ti=0):
     return out
 
 
+# ------------------------------------------------------------------ projectiles: arrows and orbs with a direction, a trail and a launch
+PAL['dust'] = dict(deep=(70, 55, 40), body=(210, 170, 110), mid=(245, 215, 150), light=(255, 245, 220), a1=(255, 255, 255), a2=(255, 170, 80))
+# id: (palette, kind, charge before launch, flight time)
+PROJ = {'projBow': ('bow', 'arrow', 0.0, .19), 'projStaff': ('staff', 'orb', .49, .21), 'projArcher': ('claw', 'arrow', 0.0, .22), 'projDragon': ('ward', 'orb', 0.0, .22)}
+SPEC.update({k: (v[2] + v[3] + .35, v[2] + v[3], False) for k, v in PROJ.items()})
+DIM.update({k: (0.0, (1.0, 1.0, 1.0)) for k in PROJ})
+SPEC.update({'shieldBreak': (1.2, .03, False), 'deathBurst': (1.8, .04, False)})
+DIM.update({'shieldBreak': (0.0, (1.0, 1.0, 1.0)), 'deathBurst': (0.0, (1.0, 1.0, 1.0))})
+
+
+def projectile(skill, t, geo, ti=0):
+    out = []
+    if ti != 0: return out
+    pal, kind, L, F = PROJ[skill]; P = PAL[pal]; C = geo['caster']; (T, TF) = geo['targets'][0]
+    cols = (P['light'], P['mid'], P['a1'])
+    def path(u):
+        return lerp(C[0], T[0], u), lerp(C[1], T[1], u) - (40 if kind == 'orb' else 6) * math.sin(math.pi * u)
+    u = clamp01((t - L) / F)
+    if L > 0 and t < L + .05:                                                # the orb is gathered at the staff before it is thrown
+        ch = smooth(t / L); fade = 1 - smooth((t - L) / .05)
+        out.append(('g', C[0], C[1], 10 + 34 * ch, 10 + 34 * ch, P['body'], .5 * ch * fade)); out.append(('g', C[0], C[1], 5 + 14 * ch, 5 + 14 * ch, P['light'], .9 * ch * fade))
+        out.append(('a', C[0], C[1], 18 + 10 * ch, 18 + 10 * ch, t * 6, t * 6 + 3.4, 1.6, P['light'], .8 * ch * fade))
+        for j in range(14):
+            e = smooth((t - .03 - .25 * L * frac(j, 3)) / (L * .85))
+            if 0 < e < 1:
+                a = frac(j, 1) * 6.2832 + t * 3; r = (70 + 60 * frac(j, 2)) * (1 - e) ** 1.4
+                out.append(('g', C[0] + math.cos(a) * r, C[1] + math.sin(a) * r * .7, 6, 6, cols[j % 3], .8 * smooth(e * 5)))
+    if t >= L:
+        mf = t - L
+        if mf < .15:                                                         # the launch: a flash and a ring at the muzzle
+            q = 1 - mf / .15; out.append(('g', C[0], C[1], 40 * q + 8, 40 * q + 8, P['light'], .8 * q)); out.append(('r', C[0], C[1], 12 + 40 * (1 - q), 12 + 40 * (1 - q), 2.0 * q + .5, P['mid'], .7 * q))
+        if t < L + F + .12:
+            hx, hy = path(u); x1, y1 = path(clamp01(u - .02)); x2, y2 = path(clamp01(u + .02)); ang = math.atan2(y2 - y1, x2 - x1)
+            fade = 1 - smooth((t - L - F) / .12); ca, sa = math.cos(ang), math.sin(ang)
+            pts = []; ws = []
+            for i in range(24, -1, -1):
+                tt = t - i * .006
+                if tt < L: continue
+                x, y = path(clamp01((tt - L) / F)); q = i / 24.0; pts.append((x, y)); ws.append((11 if kind == 'orb' else 5) * (1 - q) ** .9 + .8)
+            if len(pts) > 3: stack(out, pts, ws, [(2.2, P['deep'], 'add', .25), (1.0, P['body'], 'add', .6), (.5, P['mid'], 'add', .85), (.2, P['light'], 'add', .95)], fade)
+            if kind == 'arrow':
+                out.append(('e', hx - ca * 20, hy - sa * 20, 22, 2.2, ang, P['light'], fade)); out.append(('e', hx - ca * 20, hy - sa * 20, 26, 6.0, ang, P['body'], .5 * fade))
+                out.append(('g', hx, hy, 10, 10, P['light'], .9 * fade))
+                for q in range(3):
+                    off = (q - 1) * 7; out.append(('e', hx - ca * 34 - sa * off, hy - sa * 34 + ca * off, 26, 1.1, ang, P['mid'], .5 * fade))
+            else:
+                out.append(('g', hx, hy, 30, 30, P['body'], .55 * fade)); out.append(('g', hx, hy, 15, 15, P['light'], .95 * fade))
+                for q in range(2):
+                    a0 = t * 9 + q * math.pi; out.append(('a', hx, hy, 16, 16, a0, a0 + 2.2, 2.0, (P['light'], P['a2'])[q], .85 * fade))
+                for j in range(8):
+                    x, y = path(clamp01(u - .08 * j / 8.0)); w = math.sin(t * 30 + j * 1.7) * 10 * (j / 8.0)
+                    out.append(('g', x - sa * w, y + ca * w, 5, 5, cols[j % 3], .6 * (1 - j / 8.0) * fade))
+    return out
+
+
+# ------------------------------------------------------------------ shield break: the shell bursts apart and its plates are thrown along the blow
+def shield_break(t, geo, ti=0):
+    out = []; P = PAL['ward']; C = geo['caster']; (chest, foot) = geo['targets'][ti]; cx, cy = chest; fx, fy = foot
+    k = t - .03
+    if k < 0: return out
+    S = .85 + .3 * geo.get('power', 1.0); ang0 = math.atan2(cy - C[1], cx - C[0]); cs, sn = math.cos(ang0), math.sin(ang0)
+    out.append(('g', cx, cy, 130 * S * (.5 + ease_out(k / .12)), 150 * S * (.5 + ease_out(k / .12)), P['body'], .6 * (1 - ease_in(k / .35))))
+    out.append(('g', cx, cy, 60, 70, P['light'], .9 * (1 - ease_in(k / .12))))
+    out.append(('r', cx, cy, 64 + 110 * ease_out(k / .3), 94 + 140 * ease_out(k / .3), 3.5 * (1 - k / .45) + .6, P['mid'], .9 * (1 - ease_in(k / .45))))
+    out.append(('r', cx, cy, 58 + 80 * ease_out(k / .3), 88 + 100 * ease_out(k / .3), 1.4, P['light'], .7 * (1 - ease_in(k / .35))))
+    for j in range(14):                                                      # the plates: arcs of the shell, thrown along the blow and falling
+        a0 = j * 6.2832 / 14 + .1 * frac(j, 2); rad = 1 + 1.6 * ease_out(k / .55); sp = ease_out(k / .55) * (.4 + frac(j, 3)); spin = a0 + k * (2 + 4 * frac(j, 5))
+        out.append(('a', cx + cs * 130 * sp, cy + sn * 130 * sp + 90 * k * k * frac(j, 4), 64 * rad, 94 * rad, spin, spin + .38, 3.0 * (1 - ease_in(k / .6)) + .6, P['light'], max(0.0, 1 - k / .65)))
+    for j in range(16):
+        jj = j + 31 * ti; a = ang0 + (frac(jj, 3) - .5) * 2.4; r = (60 + 200 * frac(jj, 4)) * S * ease_out(k / .45)
+        out.append(('e', cx + math.cos(a) * r, cy + math.sin(a) * r * .7 + 70 * k * k * frac(jj, 6), (10 + 14 * frac(jj, 5)) * S, 1.6, a, (P['light'], P['mid'], P['a2'])[j % 3], max(0.0, 1 - k / .65)))
+    out.append(('e', cx - cs * 40 * S, cy - sn * 40 * S, 110 * S * ease_out(k / .1) + 1, 2.6 * S, ang0, P['light'], 1 - ease_in(k / .3)))
+    rr = 20 + 130 * S * ease_out(k / .45); out.append(('r', fx, fy - 2, rr, rr * .26, 2.4 * max(0.0, 1 - k / .5) + .6, P['mid'], .6 * (1 - ease_in(k / .8))))
+    out.append(('g', fx, fy - 2, 80, 18, P['deep'], .3 * (1 - ease_in(k / 1.0))))
+    return out
+
+
+# ------------------------------------------------------------------ monster death: the body comes apart and is blown to the right
+def death_burst(t, geo, ti=0):
+    out = []; P = PAL['dust']; (chest, foot) = geo['targets'][ti]; cx, cy = chest; fx, fy = foot; pw = geo.get('power', 1.0)
+    hgt = max(40.0, (fy - cy) * 2.0); wid = hgt * .7
+    out.append(('g', cx, cy, 100 * (.5 + ease_out(t / .2)), 100 * (.5 + ease_out(t / .2)), P['body'], .5 * (1 - ease_in(t / .5))))
+    out.append(('g', cx, cy, 40, 40, P['light'], .8 * (1 - ease_in(t / .2))))
+    out.append(('g', fx, fy - 2, 90, 20, P['deep'], .25 * (1 - ease_in(t / 1.6))))
+    for i in range(int(52 + 20 * pw)):
+        hy = frac(i, 2); born = .04 + .55 * frac(i, 1) * (1 - .5 * hy); tt = t - born; life = .9 + .6 * frac(i, 3)
+        if not 0 <= tt < life: continue
+        x0 = cx + (frac(i, 4) - .5) * wid; y0 = fy - hy * hgt
+        drift = (60 + 200 * frac(i, 5)) * ease_out(tt / .9) * (.6 + .8 * hy)
+        x = x0 + drift; y = y0 - 40 * tt * (.4 + frac(i, 6)) + 9 * math.sin(tt * 5 + i)
+        vx = 200 * (.6 + .8 * hy) * (1 - tt / life) + 40; vy = -40.0; a = (1 - tt / life) ** .8 * smooth(tt / .05)
+        out.append(('e', x, y, 22 + 24 * frac(i, 7), 2.4 + 1.6 * frac(i, 8), math.atan2(vy, vx), (P['light'], P['mid'], P['a2'])[i % 3], a * .95)); out.append(('g', x, y, 9, 9, P['body'], a * .4))
+    for j in range(8):                                                       # the body's dust runs along the ground
+        tt = t - .05 - .3 * frac(j, 1)
+        if 0 < tt < 1.0:
+            x = fx + (frac(j, 2) - .3) * 60 + (50 + 220 * frac(j, 3)) * ease_out(tt / .8)
+            out.append(('g', x, fy - 4 - 8 * frac(j, 4), 16, 7, P['deep'], .4 * (1 - tt / 1.0)))
+    for q in range(6):                                                       # wind
+        tt = t - .1 - .1 * q
+        if 0 < tt < .8:
+            u = ease_out(tt / .8); out.append(('e', cx + 40 + 220 * u, fy - (q + .5) * hgt / 6, 40 + 30 * frac(q, 2), 1.2, 0.0, P['light'], .5 * (1 - tt / .8)))
+    return out
+
+
 def multi(fn):
     """Run a single-target effect once per target. Caster-side parts are emitted only for the first target (ti == 0)."""
     def run(t, geo):
@@ -1692,8 +1806,9 @@ def multi(fn):
 
 _SINGLE = {'starlightPulse': starlight, 'dragonSoulWard': soul, 'dragonScaleWard': scale_ward, 'runeSlash': rune_slash, 'runeWard': rune_ward,
            'battleRune': battle_rune, 'dragonFlame': dragon_flame, 'dragonOrder': dragon_order,
-           'healMicro': heal_micro, 'healStandard': heal_standard, 'healStrong': heal_strong, 'rally': rally_call, 'sweep': sweep_arc, 'natural20': natural20, 'shieldDome': shield_dome,
-           **{k: (lambda t, geo, ti=0, k=k: hit_effect(k, t, geo, ti)) for k in HITS}}
+           'healMicro': heal_micro, 'healStandard': heal_standard, 'healStrong': heal_strong, 'rally': rally_call, 'sweep': sweep_arc, 'natural20': natural20, 'shieldDome': shield_dome, 'shieldBreak': shield_break, 'deathBurst': death_burst,
+           **{k: (lambda t, geo, ti=0, k=k: hit_effect(k, t, geo, ti)) for k in HITS},
+           **{k: (lambda t, geo, ti=0, k=k: projectile(k, t, geo, ti)) for k in PROJ}}
 # ------------------------------------------------------------------ atmosphere: themed particles over the whole stage
 # Three layers per skill, all closed-form in t with fixed-id randomness: particles that GATHER into the caster while the power builds,
 # a FIELD of particles that fills the whole stage with the skill's own weather (dragon flame = a hot updraft of embers, starlight =

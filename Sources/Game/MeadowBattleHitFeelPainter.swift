@@ -113,9 +113,12 @@ enum MeadowBattleHaptics {
     private static let heavy = UIImpactFeedbackGenerator(style: .heavy)
     private static let rigid = UIImpactFeedbackGenerator(style: .rigid)
 
-    static func prepare() { light.prepare(); medium.prepare(); heavy.prepare(); rigid.prepare() }
+    /// Phone vibration is off: the lens shake is the feedback.
+    static let enabled = false
+    static func prepare() { guard enabled else { return }; light.prepare(); medium.prepare(); heavy.prepare(); rigid.prepare() }
 
     static func hit(_ tier: MeadowBattleHitTier, killed: Bool = false) {
+        guard enabled else { return }
         let h = MeadowBattleHitFeel.haptic(tier: tier)
         switch h.style {
         case .light: light.impactOccurred(intensity: CGFloat(h.intensity))
@@ -128,9 +131,10 @@ enum MeadowBattleHaptics {
     }
 
     /// A blocked blow: a short, soft tap.
-    static func blocked() { light.impactOccurred(intensity: 0.5) }
+    static func blocked() { guard enabled else { return }; light.impactOccurred(intensity: 0.5) }
     /// The natural 20: three heavy taps and a success buzz.
     static func naturalTwenty() {
+        guard enabled else { return }
         heavy.prepare(); rigid.prepare()
         heavy.impactOccurred(intensity: 1.0)
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.09) { rigid.impactOccurred(intensity: 1.0) }
