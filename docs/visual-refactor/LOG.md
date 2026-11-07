@@ -135,3 +135,15 @@ ID 与生成脚本算法一致。**本分支此后不再运行 generate-project.
   披肩发草稿的三个问题（造型方向、发丝质感、颜色数量）仍待用户回复。
 
 **下一步**：战斗打磨（技能特效、打击感）。
+
+## 15 · 恢复手绘 P1 原图（2026-11-07，用户决定）
+
+用户决定：“恢复手绘原图”。把所有被模型 v3 改动的美术文件还原到 git 527e3548（最后一个手绘版本，含已认可的肤色统一、斜向五官/发型精修）：
+`Art/Parts/P1-v1/**`、`Art/Integration/P1-modular-eight-way-v1/motion.json`、`Art/Integration/P1-head-split-v1/*`、
+`Sources/Resources/Assets.xcassets` 中的全部 P1 图集与拆分/头部图、`Sources/Resources/hero-gait.json`，共 3468 个文件；
+`validate-project.py` 通过，响应式控制器的 Python 镜像（48 项）在原数据上仍通过。
+
+- 保留：响应式控制器、后处理、呼吸、头部拆分与合成器、`GaitTiming`（匀速开关 `timing = "uniform"` 对手绘数据不触发，足锁定时间窗照旧）。
+- 保留作参考、不用于游戏：`scripts/p1-model-v3/`（含不要随手运行的 `bake.py`）、`scripts/p1-reskin/`（原画上皮原型）、`scripts/p1-pixel/`（规则画对比）及对应 `Art/Review`。
+- 路线结论仍如第 14 条；“原画上皮”可在之后需要新动作时重启。
+- 这一步让此前模拟器检查里“抬脚阴影深度”那条失败的原因（低模美术数据）消失；该测试预计恢复通过，等下一次设备/模拟器检查确认。
