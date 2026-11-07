@@ -702,4 +702,86 @@ def soul(t, geo):
     return out
 
 
+# ------------------------------------------------------------------ dragon soul ward v4: presence and power, nothing literal
+def soul(t, geo):
+    out = []; D = TONE['dragonSoulWard']; (chest, foot) = geo['targets'][0]; fx, fy = foot; gy = geo['ground']
+    cx, cy = chest[0], chest[1]
+    DEEP, BODY, MID, LIGHT = (10, 30, 96), (34, 98, 220), (70, 150, 255), (170, 225, 255)
+    REL = .38                                           # the moment the power is released
+    pre = clamp01(t / REL); post = t - REL
+    # 1. the air tightens: light is drawn in, the seal wakes, the world darkens a touch more
+    sg = smooth(t / .22) * (1 - smooth((t - 1.55) / .4))
+    sigil2(out, fx, gy - 2, 74 - 14 * ease_in(pre) * (post < 0) + 8 * ease_out(post / .3), .28, t, sg, (D[2], (36, 90, 220), D[1]), 10, 1.0 + 3 * ease_in(pre) * (post < 0))
+    if t < REL + .05:
+        for i in range(34):
+            ph = frac(i, 1); tt = clamp01((t - ph * .12) / (REL - ph * .12))
+            a = frac(i, 2) * 6.283 + tt * 4.5; r = (120 + 80 * frac(i, 3)) * (1 - ease_in(tt)) ** 1.4
+            x = cx + math.cos(a) * r; y = cy + 20 + math.sin(a) * r * .55 - 20 * ease_in(tt)
+            k = math.sin(math.pi * min(1, tt * 1.05)) ** .6
+            out.append(('e', x, y, 9 + 18 * (1 - tt), 1.8, a + 1.571 + tt * 4.5, (D[0], D[1], GOLD)[i % 3], .8 * k))
+            out.append(('g', x, y, 6, 6, D[0], .8 * k))
+        k = ease_in(pre) * (post < 0)
+        out.append(('g', cx, cy, 70 - 40 * k + 20, 90 - 50 * k + 20, D[3], .22 + .22 * k)); out.append(('g', cx, cy, 20, 26, D[1], .5 * k))
+    # 2. release: flash, pressure waves, a column of power
+    if post >= 0:
+        if post < .22: out.append(('f', D[2], .12 * math.exp(-post * 14)))
+        for j, (d, wd) in enumerate(((0, 7.0), (.08, 5.0), (.17, 3.4), (.28, 2.2))):
+            if post - d >= 0:
+                r = 14 + 190 * ease_out((post - d) / .7)
+                out.append(('r', fx, gy - 2, r, r * .27, wd * (1 - (post - d) / .75) + .5, (D[1], D[2], D[2], D[1])[j], .8 * (1 - ease_in((post - d) / .75))))
+        for j in range(2):                                                                               # a wave through the air, round the body
+            if post - j * .1 >= 0:
+                r = 26 + 120 * ease_out((post - j * .1) / .5); out.append(('r', cx, cy, r, r * 1.25, 2.4 * (1 - (post - j * .1) / .55) + .5, D[1], .6 * (1 - ease_in((post - j * .1) / .55))))
+        col_env = smooth(post / .12) * (1 - smooth((post - .95) / .55))
+        for lyr, (w, c_, a) in enumerate(((84, D[3], .12), (52, BODY, .12), (26, D[2], .12), (9, MID, .3))):         # pillar of power, soft all through
+            top = fy - 250 * ease_out(post / .2)
+            pts = [(fx + math.sin(u * 7 + t * 4 + lyr) * 3 * (1 - u), fy - u * (fy - top)) for u in [i / 40 for i in range(41)]]
+            out.append(('k', pts, [w * (.5 + .5 * math.sin(math.pi * (u * .9 + .1)) ** .5) * (1 + .06 * math.sin(t * 20 + lyr)) for u in [i / 40 for i in range(41)]], c_, a * col_env, 'add', 14 if lyr < 2 else 6))
+        for q in range(6):                                                                               # counter-rotating streams of force
+            sgn = 1 if q % 2 == 0 else -1; pts = []; ws = []
+            head = ease_out(clamp01(post / .5)); tail = ease_in(clamp01((post - .9) / .6))
+            for j in range(72):
+                u = j / 71
+                if u > head or u < tail * .9: continue
+                ang = q * 1.047 + sgn * (u * (7 + .7 * q) - post * (4.5 + .4 * q)); rr = 40 + 30 * math.sin(u * 3 + q) + 34 * u * (1 + .15 * q)
+                pts.append((fx + math.cos(ang) * rr, fy - 8 - u * 215 + math.sin(ang) * rr * .3)); ws.append((11 * (1 - u) ** .9 + 1.4) * (1 - tail) * (.75 + .25 * math.sin(u * 9 + q)))
+            if len(pts) > 3:
+                stack(out, pts, ws, [(1.7, D[3], 'add', .30), (1.0, BODY, 'add', .5), (.5, MID, 'add', .7), (.16, LIGHT, 'add', .8)], col_env)
+                out.append(('k', pts, [w * 3.0 for w in ws], D[3], .1 * col_env, 'add', 12))
+        for i in range(44):                                                                              # sparks blown outward and up
+            tb = .02 + .5 * frac(i, 1); tt = post - tb
+            if not 0 <= tt < .9: continue
+            a = frac(i, 3) * 6.283; r = (60 + 160 * frac(i, 4)) * ease_out(tt / .6)
+            x = cx + math.cos(a) * r; y = cy + 40 + math.sin(a) * r * .3 - 70 * tt * (.5 + frac(i, 5)); k = (1 - tt / .9) * (.6 + .4 * math.sin(tt * 30 + i))
+            out.append(('e', x, y, 10, 1.7, a, (D[0], GOLD, D[1])[i % 3], .8 * k)); out.append(('g', x, y, 6, 6, D[0], .7 * k))
+        for k in range(26):                                                                              # wind raked across the ground
+            a = k * 2 * math.pi / 26 + .3 * frac(k, 2); L = (40 + 60 * frac(k, 3)); r = (30 + 160 * ease_out(post / .6)) * (.7 + .5 * frac(k, 4))
+            out.append(('e', fx + math.cos(a) * r, gy - 4 + math.sin(a) * r * .27, L, 1.8, a, D[2], .5 * (1 - ease_in(post / .8))))
+    # 3. the aura that stays: layered, breathing shells and flames of light rising off the body
+    aura = smooth((post - .1) / .4) * (1 - smooth((t - 1.6) / .4)) if post > 0 else 0
+    if aura > .01:
+        pulse = 1 + .05 * math.sin(t * 6); RX, RY = 56 * pulse, 86 * pulse
+        out.append(('g', cx, cy, RX * 1.6, RY * 1.3, D[3], .22 * aura)); out.append(('g', cx, cy, RX * 1.05, RY * 1.0, D[2], .08 * aura))
+        for k, (sc, w, c_, al) in enumerate(((1.0, 3.0, D[1], .55), (.94, 1.6, D[2], .5), (1.1, 1.4, D[2], .35))):
+            out.append(('r', cx, cy, RX * sc, RY * sc, w, c_, al * aura))
+        for k in range(5):
+            a0 = t * (1.3 + .35 * k) + k * 1.3; out.append(('a', cx, cy, RX * (1 + .03 * k), RY * (1 + .03 * k), a0, a0 + 1.0, 2.8, D[1], .6 * aura))
+        for i in range(16):                                                                              # flames of light off the shoulders and back
+            ph = frac(i, 1); u0 = (t * .55 + ph) % 1.0; a = frac(i, 2) * 6.283
+            bx = cx + math.cos(a) * RX * .7; by = cy + RY * .75
+            pts = []; ws = []
+            for j in range(22):
+                u = j / 21; y = by - u * (90 + 70 * frac(i, 3)) * (.35 + .65 * u0)
+                pts.append((bx + math.sin(u * 5 + t * 3 + i) * 9 * u + (frac(i, 4) - .5) * 20 * u, y)); ws.append(8 * (1 - u) ** 1.1 + .4)
+            fade = math.sin(math.pi * u0) ** .8
+            out.append(('k', pts, ws, (D[2], D[1], D[2])[i % 3], .4 * aura * fade, 'add', 3.0))
+        for i in range(30):
+            u = ((t * .4 + frac(i, 1)) % 1.0); a = frac(i, 2) * 6.283 + t * .8
+            x = cx + math.cos(a) * RX * .95 * frac(i, 3); y = cy + RY * (1 - 2 * u); k = aura * math.sin(math.pi * u)
+            out.append(('g', x, y, 8, 8, (D[0], D[1], GOLD)[i % 3], .65 * k)); out.append(('g', x, y, 3, 3, (255, 255, 255), .9 * k))
+        halo = aura * (.7 + .3 * math.sin(t * 5))                                                         # a crown of light above the head
+        out.append(('r', cx, cy - RY - 14, 34, 9, 2.2, GOLD, .75 * halo)); out.append(('g', cx, cy - RY - 14, 50, 16, GOLD, .28 * halo))
+    return out
+
+
 GENERATORS = {'starlightPulse': starlight, 'rally': rally, 'sweep': sweep, 'dragonSoulWard': soul, 'dragonScaleWard': scales}
