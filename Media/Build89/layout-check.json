@@ -1,0 +1,85 @@
+{
+  "scope": "offline frame arithmetic, not UIKit rendering or device execution",
+  "cases": [
+    {
+      "viewport": [
+        568,
+        320
+      ],
+      "safeInsets": [
+        44,
+        44,
+        0,
+        21
+      ],
+      "previewWidth": 263.44,
+      "previewMinHeightFits": true,
+      "noHUDAreaOverlap": true,
+      "compactPreviewReplacesRouteBanner": true
+    },
+    {
+      "viewport": [
+        667,
+        375
+      ],
+      "safeInsets": [
+        44,
+        44,
+        0,
+        21
+      ],
+      "previewWidth": 320.86,
+      "previewMinHeightFits": true,
+      "noHUDAreaOverlap": true,
+      "compactPreviewReplacesRouteBanner": true
+    },
+    {
+      "viewport": [
+        852,
+        393
+      ],
+      "safeInsets": [
+        59,
+        59,
+        0,
+        21
+      ],
+      "previewWidth": 410.76,
+      "previewMinHeightFits": true,
+      "noHUDAreaOverlap": true,
+      "compactPreviewReplacesRouteBanner": true
+    },
+    {
+      "viewport": [
+        1024,
+        768
+      ],
+      "safeInsets": [
+        0,
+        0,
+        24,
+        20
+      ],
+      "previewWidth": 430,
+      "previewMinHeightFits": true,
+      "noHUDAreaOverlap": true,
+      "compactPreviewReplacesRouteBanner": false
+    },
+    {
+      "viewport": [
+        1366,
+        1024
+      ],
+      "safeInsets": [
+        0,
+        0,
+        24,
+        20
+      ],
+      "previewWidth": 430,
+      "previewMinHeightFits": true,
+      "noHUDAreaOverlap": true,
+      "compactPreviewReplacesRouteBanner": false
+    }
+  ]
+}

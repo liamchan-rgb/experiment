@@ -1,3 +1,460 @@
+## 紫发盖耳发型：正侧面一致性 r4（2026-11-08）
+
+交付核验补记：实际r4源提交 `13cbe2e250a74a1a8e5c4a0dd026c866fd2cdfa8`，发布run42467575261/job128690546967全部步骤成功。59项公开文件完整GET200，共6095692字节，逐项SHA256匹配；回执 Art/Review/P1/purple-ear-cover-r4/public-downloads.json。临时上传分支/工作流已删除，无重复发布任务；收尾只补日志/回执，不更改App/课堂版本。
+
+用户“你只改战斗部分的就可以了，明明正面视图是长发盖住耳朵，换到侧面就不是了”，随即更正“不对是所有的侧面正方向侧面”。最新范围为行走正左/正右与现有战斗侧视，不仅战斗。r3整体短发改造是主线程理解错误，本轮撤回；不得把用户问题当作再改正面/剪短整款的授权。
+
+按原42df0a0a的盖耳正面恢复六个非正侧视角SVG/PNG及色板，逐字节保持参考。只对正左/正右画与正面同长度的连续盖耳发束，登记到战斗；耳区材质跟随正面长发，避免暗色补丁。ID保持、hair1.0.3，当前 Art/Review/P1/purple-ear-cover-r4。原五官/耳/皮肤/身体/衣服/手/武器/头注册及motion不改，其他217PNG不变。
+
+正左/正右耳核心区各204/204头发覆盖（旧57/56），战斗耳区覆盖，四脸正侧面实际眼像素零相交，六参考视角PNG/SVG与42df源完全一致。832行走+672战斗姿态复查；两正常GIF完整93帧，8×120ms行走/2700ms战斗。主线程看正面双侧与战斗1×/2×整身、GIF实际抽帧及七状态；机械全覆盖不当逐张目检，独立浏览器只验证GIF推进。无子智能体，无App/模拟器/实机。
+
+仍只Art/作者脚本与记录，App UI/存档/课堂基线和版本保持，无新IPA，新美术认可null。后两步：集中精修剩余外观反馈；同一人物外观接入自定义/存档与探索/战斗，再设备归档交直接IPA。
+
+## 紫发F1偏分层次短发 r3（2026-11-08）
+
+交付核验补记：r3实际源提交 `e4e8d1b921fb7509f671e6df8f96e263f01aa691`，发布run42464421110/job128680502849全部步骤成功。55项公开文件完整GET200，共6042947字节，逐项SHA256匹配；回执 Art/Review/P1/purple-bob-r3/public-downloads.json。临时上传分支/工作流已清除，无重复发布任务；收尾只补回执/日志，不改美术源或App/课堂版本。
+
+用户判退紫发款外形，主线程只重做F1：偏分刘海、较轻的耳侧发束、收短后颈与错落发尾，背部直条纹改弯曲发束，紫色提清晰度。稳定ID保持、hair1.0.2，八向96母版+256战斗头发九PNG；其余217头部/战斗衣物PNG逐字节保持。其他5发型、4五官、身体/衣服/手/武器/motion及头注册不改。当前 Art/Review/P1/purple-bob-r3，其他款仍以r2为准。
+
+初稿正面发梢碰外眼角已自行收回，不删眼/不放宽检查。八向合同、四套实际眼避让、透明RGB与无游离像素通过；832行走整人+672战斗姿态，四脸/两衣/四武器/七状态复核。两正常GIF完整93实际帧，walk8×120ms、战斗2700ms；固定采样色板降低离线导出内存而不改节奏/重复慢放。主线程看1×/2×全身八向前后、战斗站姿/七状态和实际GIF抽帧，机械全覆盖不算逐张目检。独立浏览器只查GIF推进，无App/模拟器/实机。
+
+环境已恢复；此前本地R2草稿先打包保留，再选择性对齐已交付42df0a0a3c2b15f8e67bf3787d47e7d8ae6564f5及最新远端日志，无整体reset。只清理一份已逐字节核对永久Downloads的旧Build95验证下载缓存，不改仓库IPA。当前只Art/作者脚本/记录，无智能体；App UI/存档/课堂基线及版本保持，未新打IPA，新用户美术认可仍null。后两步：集中精修外观反馈；同一人物外观接入自定义/存档与探索/战斗，设备归档交直接IPA。
+
+## 侧面发量覆盖 r2（2026-11-08）
+
+交付核验补记：实际r2源提交 ba0a601565effe469dc1684a627ce299c4ee7528，重建run42451122457。主线程已再次查看重建实际整身与动图解码图；124项公开文件完整GET200、共14157951字节，逐项匹配Git blob/字节与SHA256，PNG CRC通过。回执 Art/Review/P1/side-hair-coverage-r2/public-downloads.json。临时重建/验证分支在本次成功后删除；本轮仍仅资源审核，不推进App/课堂版本。原环境恢复后先比对本提交与本轮文件，不整体reset或覆盖其他未提交工作。
+
+六款发型下压侧发际线、补鬓发/耳上覆盖与斜下过渡；24母版SVG/PNG及6战斗头发，hair1.0.1、ID保持，正面/后三向/脸/身体/衣服/动作与注册不改。当前审核 Art/Review/P1/side-hair-coverage-r2。短鲍伯初稿斜左保护区问题已修，六项合同/四套实际眼零相交通过；196其他PNG不变，重新4032战斗/144行走，9GIF共370帧全解码，正常120ms行走及原战斗时钟；五只独立浏览器GIF推进。机械验证不替代主线程目检。
+
+本地主要整身检查后环境断连，当前从相同源在GitHub重建，重建输出在发布前由主线程再次核对；实际源提交与全公开GET回执另记。未委派智能体，未运行App/模拟器/实机，当前仅Art/作者脚本，未接入App UI/存档，experiment仍Build95、课堂v0.18.0/build23。后两步：集中精修外观反馈；同一人物外观接入探索/战斗与存档，再设备归档交直接IPA。用户认可仍null。
+
+## 行走/战斗发型与五官同步审核修订（2026-11-08）
+
+交付核验补记：本轮绑定/预览源提交 `ece5c5892ab40b0c60869af60d6af93ab67e58af`，原226PNG仍来自3ef48ebdb43d608d459fc438714fe0f6e1ed6d29，未改其像素。发布run42434021318/job128588869390全部步骤成功，115项公开文件完整GET200、共24456267字节，逐项SHA256匹配；回执 Art/Review/Battle/appearance-synchronized-v1/public-downloads.json。临时上传分支与工作流已清除，无重复发布任务；收尾仅补日志/回执，不推进App/课堂版本。
+
+用户要求“战斗的时候也要把五官和发型同步”。查明上轮已做新头部注册/持弓预览，但服装战斗总览仍用旧默认头。新权威审核页 Art/Review/Battle/appearance-synchronized-v1，正常并排GIF左行走右战斗，同一玩家同一发型/脸/衣服选择；原页已标历史并指向新版。
+
+scene-bindings.json 和 scripts/appearance-scene-binding.py 将同一稳定ID映射两场景资源，逐玩家不可变完整选择，验证后原子替换；非法脸不丢原选择、编辑一人不改另一人、未知玩家拒绝。Renderer.for_appearance同时替换头发和脸，原弓新头只跟一次torso，不叠原native旧头。战斗默认导出和头部行走/持弓重导也从同一预设读取，不按武器或性别另猜头部。
+
+48组合×4武器×7状态×3阶段=4032战斗整人合成与144行走通过，226张既有头部/衣服PNG源SHA逐一不变。三正常GIF全解码322实际帧，时长2700/2700/4380ms，行走仍120ms。主线程亲看男/女全部脸全身对照、两张八阶段对照、重剑/弓七状态和实际GIF抽帧；机械全覆盖不等于逐张人工目检，独立浏览器只测试GIF推进。未委派智能体、未运行App/模拟器/实机。
+
+本轮是资源同步合同与离线预览，不改Sources/Vendor、外观UI或人物存档，不称游戏安装包已生效。experiment仍Build95、课堂v0.18.0/build23、资源基线保持；用户未新增认可，不重打旧IPA。后两步仍为集中确认/精修新外观；按同步协议将同一人物外观记录接入自定义/存档与探索/战斗，再设备归档交直接IPA。
+
+## 双 B 战斗衣装与男女自定义头部（2026-11-08）
+
+交付核验补记：美术资源源提交 `3ef48ebdb43d608d459fc438714fe0f6e1ed6d29`；发布run42431828753/job128582217821全部步骤成功。474项公开文件完整GET200，共30423914字节，逐项SHA256匹配，回执 `Art/Integration/Appearance-battle-custom-heads-v1/public-downloads.json`。临时上传分支及工作流已清除，无重复发布任务；本次收尾只补回执/日志，不改美术资源或App/课堂基线。
+
+用户“可以，把战斗阶段的也做了。然后做几个人物自定义发型（区分男女）和五官”授权本轮。前次展示的两只B八向行走预览接受范围单独登记，不延伸为所有未展示组合/起停/新战斗/头部认可。实际新资源与批量正常GIF见 [本轮交付](../Art/Integration/Appearance-battle-custom-heads-v1/README.md)。固定原输入1f76bce38fb33742ff6eeaef1499c186f14c0fb6，仍在fix/build33-face-grounding-camera，不改App版本。
+
+完成两件B的现有四武器/七状态战斗挂载：通用衣身、肩甲、近臂上下袖与前后短护裙六层；弓沿已认可native骨架与345帧，只改衣物材质，双手、原皮肤、头和裤腿像素/alpha保持。新增三男式短碎/侧分/小束发、三女式短鲍伯/短侧马尾/盘发及四套独立五官；八向96head-local母版，每项104绑定，性别是样式标签不锁定搭配，同一身体、无新女体。战斗256注册五官固定位置，仅跟原头身变换；弓新头只应用一次原torso，不重复baked变换。
+
+主线程自行制作/返修/审核，无智能体。已返修首版发丝大面像头盔、五官过扁与战斗眼鼻口注册，短发/侧分轮廓差异。八张整身战斗表含280关键姿态，检查袖腕、腰裙与武器遮挡；全身发型/五官表与实际GIF抽帧已看。10项原合同/226PNG/48组合×104＝4992合成通过；91原输入逐一对Git blob；9只正常GIF/353实际帧完整机械解码。实际四只GIF在独立Chromium各12次130ms采样均推进，不能当App或设备性能验证。主线程目检范围另列，不把全部解码写成全部逐帧亲看。
+
+当前仅Art分层资源、脚本、批量审核与对接说明，未改Sources/Vendor、人物自定义UI/存档、课堂568基线；experiment仍Build95，课堂仍v0.18.0/build23。新资源userArtApproval为null，不打旧包冒充。未运行App/模拟器/实机。后两步：集中确认/精修这批新战斗/头部；按同步协议接入自定义与存档、demo/课堂，再审成套图集并设备Release归档交直接IPA。缺其他美术只登记。
+
+## 星辉甲/龙纹甲双B八向服装资源（2026-11-07）
+
+交付核验补记：美术源码 `7d0f3c2ad4b57191b1fc324cd885ba488c4bb800`，发布run42404662679成功，1027项公开文件完整GET200、共16916367字节，全部逐项匹配SHA256；回执 `Art/Review/P1/chat-apparel-v2-b-eight-way-r1/public-downloads.json`。临时上传分支/工作流已随发布清除，无重复发布任务。此后收尾提交仅补记录，不改美术源，不把课堂基线或App版本冒记成已更新。
+
+
+用户“两个都选择b”分别选定星辉甲B天仪礼甲、龙纹甲B龙翼巡游甲，随后“你一路做完所有方向的”授权本轮直接完成全部方向与原模组适配，不在C2暂停。实际资源 Art/Parts/P1-v1/chat-apparel-v2，审核与正常GIF见[交付记录](Art/Review/P1/chat-apparel-v2-b-eight-way-r1/README.md)。每件5默认+3右向静态view×4层＝32母版，两件64；沿用原motion、人体、头脸、裤靴、手和背剑，导出每件104绑定/416层，两件208姿势/832层引用。不是用生成整人图切层，也不重画104次。设计选型B不等于对新像素资源/动作的认可，userArtApproval仍null。
+
+主线程亲自制作/返修，完成全部13姿势×八向1×、八向站姿2×及侧向动作2×整身审核，四只八向总览/背剑GIF全部32实际解码帧接触表已看。共36正常GIF/512实际解码帧，walk8×120ms原节奏，起停沿原入口。2发型×2五官×背剑开关×104姿势，两件1664合成通过，64母版/832动作层RGBA/ICC/透明RGB/覆盖检查通过；原2392参考PNG逐一核原Git blob，motion SHA不变。独立Chromium只加载真实GIF，8次130ms采样确认推进；不是App/性能测试，不运行App/模拟器/实机，不委派智能体。
+
+返修过侧向底衣/后斜上臂漏出、正侧面远臂摆动露肤、原参考alpha=1远处插值哨兵被错误放大为实心点。现按原语义人体轮廓生成服装内衬，再叠原运动映射甲片；不修改身体，不以肤色阈值删边，不把肩甲钉到衣身，头和手按原drawOrder最后合成。
+
+当前仅完成离线服装母版/全八向原模组资源与审核候选，未更改App资源目录/版本或课堂568源资源基线，不称已接入游戏或可任意战斗换装。本轮不打IPA，experiment本体仍Build95。后两步：按用户八向反馈集中精修并确认；再按 docs/integration/classroom-art-sync.md 把已认可资源接入demo/课堂，审核实际成套图集后设备归档交直接IPA。缺其他美术仍只登记。
+
+## 星辉甲与龙纹甲正面选型（2026-11-07）
+
+用户插入要求“之前的那两套衣服没做完的……先出正面图看看”，暂缓首批课堂美术接入。已按原任务书分别生成两套A/B/C正面全身方案，见[选型记录](Art/Review/P1/chat-apparel-v2-front-concepts-20261107/README.md)。image_gen设计稿，主线程整身检查肩腕连接、胸腹收束和腰甲裤腿关系；不是项目逐像素原人物、256注册母版或真实四层资源，未导入运行时。两套selectedDesign/artApproval独立为null，旧候选保留。当前用户限定静态正面，不制作新动作/GIF/IPA，不运行App/模拟器/实机，不委派智能体。
+
+后两步：选款后制作正面四层并审整身1×/2×；再补其余四视角并复用原模组审核八向正常动图。细鳞/细线需要落到游戏尺寸时简化，概念图不得直接当挂载验收合格。
+
+## 行程/历史筛选与美术对接 · 课堂v0.18.0/build23（2026-11-07）
+
+用户继续下一项并要求说明以后experiment的人物骨骼/配饰/技能特效/UI等如何接入课堂。课堂行程页支持标题/成员/队伍/种子搜索、探索/战斗/结算状态、1—7人数叠加、保存时间或原槽号稳定排序；原槽号不随列表重排。空槽和损坏提示单独保留，坏档不被筛选隐藏。历史支持战斗/移动/资源/组队/外观/配置分类，涉及人物/怪物、关键字/旧新姓名/原序号、升降序；后台索引、50条递增加载，查询不写档/推进RNG。回退继续使用原ID，保留所选条目、撤回其后全部原操作，包括筛选/分页隐藏项，确认显示原序号和总数，先备份再恢复并暂停。
+
+完整美术协议已镜像在两仓库AGENTS入口：本仓库docs/integration/classroom-art-sync.md及模板classroom-art-update-template.json；课堂仓库docs/integration/experiment-art-sync.md及experiment-art-update-template.json。固定完整源SHA，成套盘点PNG/图集/骨骼锚点/配饰遮挡/姿态代码/技能时序/光照粒子/公开UI，按实际路径选择性合并；保留课堂教师私有权限、6学生+P7、绘本、固定画布/镜像、存档/规则，不整仓或旧Vendor覆盖。逐文件源提交与SHA、兼容标识、正常GIF、实际编译IPA和可恢复归档都要记录，不把混合来源冒记为一个新SHA。不自动热更新。
+
+课堂tools/plan_experiment_art_update.py仅生成提交间增改删/目标映射/源旧新与课堂当前哈希/适配差异报告，不做apply。真实初始盘点固定experiment 331ccbc3a9dec4e275774396dee30999f407d9df，相对175c7dfc的37项差异全部为Media/Build95离线交付证据，无运行时资源/呈现代码变化。本轮没有导入新美术，也没有推进568源资源基线；experiment本体仍Build95。源协议在331ccbc独立提交，当前记录只同步课堂交付结果。
+
+新增14Swift+4Python盘点专项，本地及实际CI完成403规则/后台+6绘本核心零失败，另8本地Python工具检查。设备Release实际编译`7b27d32e01582a96f4611538d9db5561663388f9`、run42396956759 attempt1，版本0.18.0/build23，最低iPadOS27.0、SDKiphoneos27.2；CRC/经典ZIP2.0/arm64/755/Metal/568源资源SHA/281编译名称/3挂载JSON通过，可执行文件不同build22。未运行App/模拟器/实机；实际iPad输入/长列表/电视隐私/性能由用户复核。8秒100帧正常GIF为离线筛选/协议结构示意，主线程四阶段接触表和逐帧解码已查，不是App/UIKit截图或性能/触摸回放。
+
+源码快照`70e286f08f768bc7d40fd3fe9525de6b66c931d4`与实际编译提交分开，标签`archive-browser-meadow-v0.18.0-20261107`。源码/协议/工具/Git bundle/IPA/诊断/GIF永久保存在archive-assets，ZIP逐文件/独立bundle恢复与fsck/全部公开文件GET通过，归档run42397858759；main只放索引。直接IPA完整GET200，62916115字节，SHA256`79f4fc233667f31c85e681fe017094938282b8eac03d3dd703fb81e19c6d797a`。
+
+[直接IPA](https://raw.githubusercontent.com/liamchan-rgb/classroom-boardgame/ec0c544576c2b55da4b91f00b23b7edf668fa4e7/archive-browser-meadow-v0.18.0-20261107/ClassroomStage2-v0.18.0-unsigned.ipa) · [正常速度筛选/对接示意GIF](https://raw.githubusercontent.com/liamchan-rgb/classroom-boardgame/ec0c544576c2b55da4b91f00b23b7edf668fa4e7/archive-browser-meadow-v0.18.0-20261107/archive-browser-normal.gif) · [可恢复存档/校验](https://github.com/liamchan-rgb/classroom-boardgame/blob/main/archives/archive-browser-meadow-v0.18.0-20261107.json)
+
+后两步：教师常用课堂配置预设；有真实experiment交付后，按本协议接入首批美术更新。缺失美术只登记，不擅自补画，不自动读取或上传教师设备真实存档。
+
+本轮本地GH_TOKEN过期，GitHub连接接口仍有效；已通过连接接口与仅本轮使用的publish-verified-build23工作流完成永久归档，收尾删除该临时工作流，无重复发布任务。命令行写权限未恢复，不输出凭据；后续写入可继续使用已连接接口。
+
+## 长期美术对接入口 · experiment → 课堂端（2026-11-07）
+
+用户明确之后在experiment更新人物骨骼/配饰/技能特效/UI等，课堂端按固定源提交选择性接入。制作与接入agent先读[完整对接协议](docs/integration/classroom-art-sync.md)，按[变更模板](docs/integration/classroom-art-update-template.json)记录PNG/图集/骨架JSON/姿态代码/时序/UI依赖与实际来源SHA。课堂已演进出6学生+P7/私有教师权限/存档，禁止整仓或Vendor反向覆盖。同步后必须正常GIF、设备Release/包检、直接IPA与可恢复归档；不运行App/模拟器/实机，缺美术只登记。本轮仅建立流程，不称未来美术已同步；课堂资源基线仍175c7dfc，experiment本体仍Build95。只读盘点工具在课堂tools/plan_experiment_art_update.py。
+
+## 人物与行程存档导入导出 · 课堂v0.17.0/build22（2026-11-07）
+
+本轮执行用户“开始下一步”，完成上次第一项存档导入导出。教师档案窗口右上“导入导出”，各人物/行程槽也可单独导出；单个或勾选多个槽组成JSON，系统“文件”窗口由用户选择保存位置。当前游戏进度需先存到行程槽；导出不覆盖工作档或槽，取消也无游戏副作用。人物仅含原姓名/现有装扮，行程保留完整地图/队伍/战斗队列/RNG/移动条/道路/镜头/历史，槽标题及原保存时间不变。
+
+导入先读文件并校验，支持统一version1备份及旧人物槽/人物档案/行程槽/地图工作档四种JSON。预览来源、条目选择、逐类目标槽和已有标题，重复/非法目标拒绝，确认框逐项列来源→目标与覆盖数量。只写所选槽，不立即替换当前行程；之后返回档案页点读取才应用。安全作用域和后台文件处理，128MiB限制，错误/取消可见；从文件窗口返回保留选择和目标。私有表单/文件窗口不进公开渲染树，不额外生成地图或规则引擎。
+
+覆盖前保存所有目标原始字节，包括损坏文件，再写pending日志后逐文件原子写；失败回滚整批，应用中断后下次槽读写先恢复原状态，原为空槽删除中断写入。恢复失败保留日志并阻止返回半份数据。导入页可从最近20份覆盖前备份重新进入预览，旧文件不删除；坏历史备份独立列错，原损坏字节仍保留，不声称修复坏原件。既有12人物/8行程槽、P7、历史与公开布局保持，无新美术，基础衣装标签更正但旧blue值兼容。
+
+新增21专项。本地及实际CI完成389规则/后台+6绘本核心零失败，另4本地Python工具检查；设备Release实际编译`46ae062fbb17663f4b015b9ab847dbd4f67c8289`，run42392999420 attempt1。版本0.17.0/build22，最低iPadOS27.0、SDKiphoneos27.2，CRC/经典ZIP2.0/arm64/755/Metal/568源资源SHA/281编译名称/3挂载JSON通过，可执行文件不同build21。初稿run42392920498在补文件窗口返回状态保护后被新构建取代，未交付。未运行App/模拟器/实机，实际系统文件供应商/触摸/菜单/弹窗/投屏/性能由用户安装复核。
+
+正常GIF为8秒、100×80ms离线流程示意，主线程四阶段接触表与逐帧解码已检查，不是App/UIKit截图、触摸或性能数据；示意文件窗口不进入游戏素材。源码快照`611acfbadd47300c0da04279e6605f65e7be3c82`与实际编译提交分开，标签`archive-save-transfer-meadow-v0.17.0-20261107`。完整源码/Git bundle/IPA/诊断/GIF已存archive-assets，逐文件ZIP/独立bundle恢复和fsck/全部公开文件GET通过，归档run42393595270；main只放索引。直接IPA完整GET200，62797083字节，SHA256`76915e2623346b619791927b4d52c8a70979ab004f220a5429922987ac694af2`。
+
+[直接IPA](https://raw.githubusercontent.com/liamchan-rgb/classroom-boardgame/10fcb0e9376f1c8ba7cf261955153a839aba5446/archive-save-transfer-meadow-v0.17.0-20261107/ClassroomStage2-v0.17.0-unsigned.ipa) · [正常速度导入导出示意GIF](https://raw.githubusercontent.com/liamchan-rgb/classroom-boardgame/10fcb0e9376f1c8ba7cf261955153a839aba5446/archive-save-transfer-meadow-v0.17.0-20261107/save-transfer-normal.gif) · [可恢复存档/校验](https://github.com/liamchan-rgb/classroom-boardgame/blob/main/archives/save-transfer-meadow-v0.17.0-20261107.json)
+
+experiment本体仍Build95，只同步本轮记录；不自动读取/上传教师设备内真实资料。后两步：行程与历史分类筛选；教师常用课堂配置预设复用。本轮未自动启动这两项。
+
+## 人物档案/行程槽、历史回退与老师参战 · 课堂v0.16.0/build21（2026-11-07）
+
+用户授权开始旧后两项，新增人物名与自定义外观独立存档。教师游戏“管理→人物档案/行程槽/历史/老师参战”，绘本“存档与历史”；均私有，不进入公开捕获。12人物槽只含姓名和已认可外观/衣装装扮，读取到编辑区再确认应用，不带职业/数值/装备/金币/背包/地图。新行程逐学生读取档案，当前任意玩家含P7也可保存/应用。衣装不提供属性，武器仍按实际装备；独立体型/发型/脸/染色美术未制作，只登记，战斗复用现有骨架。
+
+8完整行程槽沿用原MeadowCampaignSave，保存地图/队伍/背包/各队移动条/道路/镜头/战斗队列/RNG/历史。覆盖确认，读档/回退/新行程覆盖前Recovery唯一备份，提供最近20份恢复入口，旧文件保留。坏槽独立报错不删除，其余槽正常；旧两人档/旧addHost命令/可选外观字段兼容，读战斗槽后暂停。历史列表倒序展开骰值及成员数值变化，回退保留选中条目、撤回后续，新记录含道路/移动/镜头检查点；旧记录无检查点则停止游标且不补满余额。回退后暂停，不重复奖励/掷骰。
+
+老师启用UI填名/职业/队伍，在探索且无道路游标、未结算时加入host=true独立P7；不占6学生，只有一名。7人沿用同一正式战斗、个人AP、组队仓库、GM、绘本状态与持久化，不新建第二引擎。地图/背包/战斗衣装跟随每名档案，按当前成员按需加载并裁减缓存；换装备预载后提交，不清掉其他成员纹理。旧“老师仅API/历史待办”已在本轮实现。
+
+新增24项专项，本地及实际CI完成368规则/后台+6绘本核心零失败，另有本地4Python检查；设备Release实际编译`a14364ba89c44a76bffebe0e6004a019f860c8cd`，run42390402952 attempt1。版本0.16.0/build21，最低iPadOS27.0、SDKiphoneos27.2，CRC/经典ZIP2.0/arm64/755/Metal/568源资源SHA/281编译名称/3挂载数据核验通过，可执行文件不同build20。未运行App/模拟器/实机，真实七人布局/点击/键盘/电视与性能由用户复核。6秒GIF是已有图集的离线流程示意，经主线程四阶段接触表与逐帧解码审核，不是App截图/触摸/性能测试。
+
+源码快照`93a899956222d958d4d257c37990010899590559`与实际编译提交分开，标签`archive-player-slots-meadow-v0.16.0-20261107`。完整源码/Git bundle/IPA/诊断/GIF已存archive-assets，逐文件ZIP/独立bundle恢复与fsck/全部公开分片GET通过，归档run42391019080；main只放索引。直接IPA完整GET200，62573595字节，SHA256`699c2d5b6e90580e6240768d16e6091a9355afc3f3a7b719fb79edbf6b415308`。
+
+[直接IPA](https://raw.githubusercontent.com/liamchan-rgb/classroom-boardgame/b6625c3fbbb9b00ae4d0e03f599fa1ec0db5c3bf/archive-player-slots-meadow-v0.16.0-20261107/ClassroomStage2-v0.16.0-unsigned.ipa) · [正常速度流程示意GIF](https://raw.githubusercontent.com/liamchan-rgb/classroom-boardgame/b6625c3fbbb9b00ae4d0e03f599fa1ec0db5c3bf/archive-player-slots-meadow-v0.16.0-20261107/player-slots-normal.gif) · [可恢复存档/校验](https://github.com/liamchan-rgb/classroom-boardgame/blob/main/archives/player-slots-meadow-v0.16.0-20261107.json)
+
+experiment本体仍Build95，本轮只同步对接记录。后两步建议：人物/行程槽手动导出导入，方便换机与课堂备份；行程筛选与历史分类，方便长课时查找。不是自动启动新任务。
+
+## 绘本状态/发放与私有玩家GM · 课堂v0.15.0/build20（2026-11-07）
+
+用户授权完成旧两项绘本待办，并新增任意玩家各项数值与个人背包GM。公开PublicBookPage底部固定真实窗口高度9%的总状态带，横排最多7人，仅姓名、HP与绿血条、黄色菱形AP/上限、金币；绘本图像独占其余91%并保持比例，页码小角标。长名字可缩小、极值简写，朗读保留全数值。ClassroomBookPlayerStatus白名单投影不含背包/备注/权限/历史。教师本地书页复用同一只读页面，备注单独私有。
+
+教师绘本页固定常用按钮、对象选择（单/多/全选）及AP/金币发放，不切游戏页；AP+1、金币+10快捷项按个人含装备上限封顶，与地图移动条独立，同一campaign/engine无第二账本。不解除绘本暂停、不推进AI/RNG，非法对象/重复/整数溢出整笔回滚。
+
+游戏右上GM及绘本GM窗口使用同一教师私有宿主，含全屏。可改姓名、当前HP/护盾/AP/金币/积分、基础最大HP/基础AP/AP上限/伤害/射程、增伤数值及轮数、技能已用次数、全部目录内个人背包数量（0移除，可搜索）。字段标签持续可见，基础与装备加成分开，身份/职业/队伍/节点/穿戴/仓库不改。提高上限不自动补满资源或移动条；降低上限需同步当前值合法。倒地清盾/增伤，复活沿用下一轮可行动；道路游标中成员设倒地先到建筑节点。GM成功单次提交后才刷新公开结果，失败保留草稿；关闭未保存不写。
+
+仅最近命令为GM/绘本发放时，可通过教师入口撤销，不能越过后续动作。专用undoPreservingPresentationPause保持当前绘本/手动/编辑/后台等显示暂停；行动者未变时保留当前剩余时钟，避免跨绘本/游戏撤销带回历史book暂停。原通用undo语义保持。原6学生+老师p7 API、一屏教师控件/原技能卡、固定1280×720画布与960×540/30Hz目标保持；不新增美术。
+
+新增15专项涵盖1—7人多窗口面积<10%、只读字段白名单、绘本暂停中多人发放/个人封顶/移动及RNG不变、无效/重复/溢出回滚、公开端拒绝GM/发放/撤销、任意玩家数字/背包与身份隔离、非法属性/物品/技能拒绝、背包0移除、增伤/技能次数、倒地/复活、存档/撤销、磁盘失败、道路游标保护、跨页面撤销暂停保持。本地15专项通过；实际编译`92ad2d39e09bd8b289727b3be29544953a4193fa`、run42380512294 attempt1完成344规则/后台+6绘本核心零失败、4项Python CI工具及设备Release归档。IPA0.15.0/build20，最低iPadOS27.0、SDKiphoneos27.2；arm64/755/CRC/经典ZIP2.0、Metal、568源资源SHA/281编译名称/3挂载JSON通过，可执行文件不同于build19。
+
+正常GIF是6秒离线布局/状态更新示意，7人含老师仅作容量示例，不表示老师启用UI已上线；示意页不会写入PPT或美术资源。主线程查看初始/私有草稿/保存后三幅接触表并逐帧解码。非App/UIKit/触摸回放/性能验证，未运行App/模拟器/实机；真正阅读密度、键盘/菜单、电视隐私与性能由用户安装验收。缺P3—P7独立外观仍只登记。
+
+源码快照`eb1a922ced394361543f3faf0fc9bd85c74dbf2d`与实际编译提交分开，标签`archive-book-gm-meadow-v0.15.0-20261107`。源码/Git bundle/IPA/诊断/GIF已存archive-assets，ZIP逐文件、独立bundle恢复/fsck、全部公开分片GET通过，归档run42381086078；main仅索引。直接IPA完整GET200，62351059字节，SHA256`ed92c030c08017c28b798a427d2ac78eecdd0d5101d61b92075f32c5d75d84cc`。
+
+[直接IPA](https://raw.githubusercontent.com/liamchan-rgb/classroom-boardgame/1a95393811f8dd62086d3922d84455ace597d823/archive-book-gm-meadow-v0.15.0-20261107/ClassroomStage2-v0.15.0-unsigned.ipa) · [正常速度绘本/GM离线示意GIF](https://raw.githubusercontent.com/liamchan-rgb/classroom-boardgame/1a95393811f8dd62086d3922d84455ace597d823/archive-book-gm-meadow-v0.15.0-20261107/book-gm-normal.gif) · [可恢复存档/校验](https://github.com/liamchan-rgb/classroom-boardgame/blob/main/archives/book-gm-meadow-v0.15.0-20261107.json)
+
+experiment本体仍Build95，本轮只同步对接记录。旧绘本两项已实现，不能继续写“未实施”。建议后两步：教师操作历史列表与按记录回退；老师参战启用入口与7人完整流程，本轮未顺带实施。
+
+## 六名学生组队与老师独立席位 · 课堂v0.14.0/build19（2026-11-07）
+
+按桌游仓库docs/课堂桌游_需求设计_v1.md §1.2/3.1/3.2/8.1/9.1/10.1接入，当前用户的独立距离移动条覆盖原移动AP描述。新行程1—6名学生，逐人姓名/职业，默认同队；旧双人档兼容，继续保留原人数/地图/资产/队列/RNG，不强制转六人。
+
+教师管理→队伍与仓库可建队、拆队、调成员、改名、合并、查看实时队分和仓库。同队金币/个人背包物品互转与仓库存取限探索，不扣AP、无同节点要求，跨队普通转移和战斗取仓拒绝，教师可显式跨队调拨并记录后台事件；已穿戴装备须先卸下。换队仅改teamID，个人资产/HP/AP/技能次数保留，旧队仓库留原队；合并一次提交成员与两仓库，空原队保留历史。原GameEngine命令原子保存、历史回执、撤销，失败回滚，无第二规则/AI/RNG。
+
+不同队不随所选队移动，当前队最大AP平均×50为上限，分队距离余额独立；购买仅用本队金币，战斗AP保持个人独立。地图演员/步态/诊断索引、血条、行囊成员和用药目标、战斗演员/站位/血条/命中动态人数，原队列支持全部学生。主持人API ClassroomGameBackend.joinTeacher(name:classID:team:role:)仅教师可调用，预留host=true的p7，不占六名学生；最多一名，沿用同套资源/计分规则和教师后台权限，无启用UI。未来调用后重装同会话渲染器刷新人数。P3—P7独立外观缺失，复用现有资源并以编号姓名区分，未新画美术。
+
+新增12专项：1—6人存档往返/非法人数、主持人权限与限额、成员字段与RNG保留、队分、仓库守恒/合并/撤销、原队仓库保留、跨队/透支/战斗拒绝、保存失败回滚、六人战斗队列、不同队不跟随、分队移动与AP独立。此前317测试和12专项在Linux通过；实际编译`99b25d16d0e40ed6ddfe094b91bbfa16945aa8e1`、run42375834060 attempt1完成329规则/后台+6绘本核心零失败、4项Python CI工具检查、设备Release归档。IPA0.14.0/build19，最低iPadOS27.0、SDKiphoneos27.2；arm64/755/CRC/经典ZIP2.0、Metal、568源资源SHA/281编译名称/3挂载JSON通过，可执行文件不同于build18。
+
+原一屏教师控件/原技能卡点击与悬停、固定1280×720画布、教师960×540/30Hz和电视60Hz目标保持。私有分组仓库表单不进入公开捕获，公开端无法调用组队/主持人接口。正常GIF为6秒离线结构/站位示意，复用既有演员资源；主线程查看起中末接触表并逐帧解码。非App/UIKit/触摸回放/性能测试，无App/模拟器/实机运行；六人密度/实际点击/帧率/电视隐私由用户安装复核。
+
+源码快照`0d266cc2b1874a2a9c337a3fd4758a7f771a170f`与实际编译提交分开，标签`archive-team-module-meadow-v0.14.0-20261107`。完整源码/Git bundle/IPA/诊断/GIF在archive-assets；ZIP逐文件校验、独立bundle恢复/fsck、全部公开分片GET通过，归档run42376363859；main仅索引。直接IPA完整GET200，62227227字节，SHA256`f60a1f9fb1b856554453316d5909b99a8da854acbbfe753b67c1b0410300dec9`。
+
+[直接IPA](https://raw.githubusercontent.com/liamchan-rgb/classroom-boardgame/5a314ebd8da584a173b7c2139cbfd328f3e3e1fa/archive-team-module-meadow-v0.14.0-20261107/ClassroomStage2-v0.14.0-unsigned.ipa) · [正常速度组队离线示意GIF](https://raw.githubusercontent.com/liamchan-rgb/classroom-boardgame/5a314ebd8da584a173b7c2139cbfd328f3e3e1fa/archive-team-module-meadow-v0.14.0-20261107/team-module-normal.gif) · [可恢复存档/校验](https://github.com/liamchan-rgb/classroom-boardgame/blob/main/archives/team-module-meadow-v0.14.0-20261107.json)
+
+experiment本体仍Build95，本轮只同步对接记录。后两步仍为绘本人物状态区≤画面10%；教师绘本页发放AP/金币。本轮未实施。
+
+## 教师游戏窗口一屏操作 · 课堂v0.13.4/build18（2026-11-07）
+
+用户要求教师按钮尽量移入游戏窗口、无须上下翻页，技能必须合并到游戏原画面。本轮删除后台整页ScrollView、画外按钮和独立battleControls技能网格，改固定管理栏44pt、阶段操作栏48pt、自适应真实游戏画面、单行状态28pt。探索常用选人/选地点编辑/修改内容/交互/行囊/补移动/暂停在窗口内；低频新行程/续档/保存/资源调整/发奖/队伍/路线/节点编辑收进管理菜单。全屏复用同一结构。
+
+战斗直接点击原公开MeadowPartyBattleView技能卡，无第二套技能按钮；鼠标悬停走原骰子预览，点角色或血条选目标。紧凑工具栏提供目标/道具/暂停/结束行动。命中先还原固定1280×720画布，再按真实UIView坐标转换查询原卡/角色位置，经requireTeacher与原后台battleTarget校验执行；公开源技能/角色回调仍禁用，不启用电视操作，不创建第二份引擎/AI/RNG。课堂技能卡均分可用宽度，移除已删除道具占位，不需横向滚动。地图拖动捏合和点路保留，技能tap与相机pan分别判定。全屏私有表单通过当前教师呈现宿主打开，实际弹窗仍停止输入/回传。
+
+私有工具栏属于教师宿主兄弟视图，不进入游戏控制器捕获；电视仍仅游戏/玩家面板/绘本，无权限按钮/备注/编辑界面。教师960×540/30Hz和电视60Hz仍为目标，不称实机稳定帧率。缺失美术只登记，本轮没有新人物/技能资源。
+
+实际编译`2d6607489fa9f353c108d8b63fa98c616a0942b4`、run42365112217 attempt1完成317规则/后台+6绘本核心零失败、4项Python CI工具检查和设备Release归档；包版本0.13.4/build18、最低iPadOS27.0、SDKiphoneos27.2。arm64/755/CRC/经典ZIP2.0、Metal、568源资源SHA/281编译名称/3挂载JSON通过；可执行文件与build17不同。未运行App/模拟器/实机，原技能点击命中、菜单与单页布局、投屏隔离由用户安装复核。
+
+正常GIF复用已有符文斩战斗采样与原资源，40ms采样，展示单页结构/原卡位置/窗口工具栏；主线程查看起中末接触表并逐帧解码。仅离线结构示意，CPU布局/道路/阴影近似，不称UIKit截图/触摸回放/性能测试或新美术认可。
+
+源码快照`29d64e673be47c97c57e89d4a1bb85b355155c1d`与IPA实际编译提交分开，标签`archive-teacher-window-meadow-v0.13.4-20261107`。完整源码/Git bundle/IPA/诊断/正常GIF已存archive-assets；ZIP逐文件校验、独立bundle恢复/fsck及全部公开分片GET通过，归档run42365742197。main仅索引。直接IPA完整GET200，62106787字节，SHA256`7293052f23de2149081c45304da1f70d7cd2762a919e3e12542bccff08ae3abc`。
+
+[直接IPA](https://raw.githubusercontent.com/liamchan-rgb/classroom-boardgame/c5ef4b871590ef9bb965f41908cfe7826c40700e/archive-teacher-window-meadow-v0.13.4-20261107/ClassroomStage2-v0.13.4-unsigned.ipa) · [正常速度离线窗口示意GIF](https://raw.githubusercontent.com/liamchan-rgb/classroom-boardgame/c5ef4b871590ef9bb965f41908cfe7826c40700e/archive-teacher-window-meadow-v0.13.4-20261107/teacher-window-normal.gif) · [可恢复存档/校验](https://github.com/liamchan-rgb/classroom-boardgame/blob/main/archives/teacher-window-meadow-v0.13.4-20261107.json)
+
+experiment本体仍Build95，本轮只同步对接记录。后两步仍为绘本生命/AP/金币状态区≤画面10%；教师在绘本页发放AP/金币，本轮未实施。
+
+## 教师高清30帧目标与拖动地图 · 课堂v0.13.3/build17（2026-11-07）
+
+用户要求提高教师部分清晰度与帧率并恢复原demo拖动。本轮在classroom-boardgame分支feat/teacher-backend-meadow-v0.13实现教师960×540/30Hz目标，覆盖v16的640×360/15Hz。真实地图CGImage直接分层显示，公开透明UIView另行缓存；静态HUD按脏最高10Hz，战斗/骰子30Hz。GPU缩小、后台utility读取、单一在途、隐藏/绘本/后台/私有弹窗暂停保持。新地图帧直接推送，阶段时钟容忍略早vsync，挂起不追补队列。理论GPU裸像素预算62,208,000字节/秒，不代表设备耗时或稳定帧率；电视原生1280×720/60Hz目标保持。没有设备CPU/GPU测量。
+
+对照原experiment panMap/pinchMap和GameScene.panBy/setZoom，教师端单指/双指/鼠标拖动平移相机、双指捏合围绕触点缩放；沿用原方向/边界/缩放规则，先换算回固定逻辑画布。tap等待拖动/捏合失败，拖动抬手不下走路命令。道路点按移动、建筑选中保持，地图拖动优先于后台ScrollView，地图外正常滚动。相机手势不扣移动值/AP、不改规则/RNG；公开电视无控制手势/后台按钮/备注/私有弹窗。单一规则/AI/计时、固定画布及设备角色权限保持。
+
+21项专项和4项CI工具检查通过，实际提交`a4a1f901a5b01bd11f3470c1c8a403ebf1616f05`、run42356713660 attempt1完成317规则/后台+6绘本核心测试零失败及设备Release归档。IPA0.13.3/build17、最低iPadOS27.0、SDKiphoneos27.2；arm64/755/CRC/经典ZIP2.0、Metal、568源资源SHA/281编译名称/3挂载JSON核验通过，二进制不同于build16。没有运行App、模拟器、实机。真实手势/清晰度/帧率/电视与断开对齐由用户安装复核。
+
+新正常GIF为60个40ms采样点、2.4秒的离线相机规则示意，复用地图素材，CPU道路/阴影仅作近似；主线程查看起始/中间/结束接触表，教师与电视相机一致，指针仅教师。它不是App/触摸回放/性能测量，不把离线示意称实机流畅度或美术认可。缺失美术只登记，本轮没有新人物/技能资源。
+
+源码快照`b9bc217f928cfd061f787f634328dd8b13fa6e62`与IPA实际编译提交分开，标签`archive-preview-drag-meadow-v0.13.3-20261107`。完整源码/Git bundle/IPA/诊断/正常GIF已存archive-assets；ZIP逐文件校验、独立bundle恢复/fsck及全部公开分片GET通过，归档run42357179451。main仅索引。直接IPA完整GET200，62091075字节，SHA256`35db2d3b18f79085a84977bd3ab0abfc6319c44144e953f1cbe18017f5fa3860`。
+
+[直接IPA](https://raw.githubusercontent.com/liamchan-rgb/classroom-boardgame/a0503327974cbb72525eeea26ea4bd20eeb98113/archive-preview-drag-meadow-v0.13.3-20261107/ClassroomStage2-v0.13.3-unsigned.ipa) · [正常速度离线拖动示意GIF](https://raw.githubusercontent.com/liamchan-rgb/classroom-boardgame/a0503327974cbb72525eeea26ea4bd20eeb98113/archive-preview-drag-meadow-v0.13.3-20261107/preview-drag-normal.gif) · [可恢复存档/校验](https://github.com/liamchan-rgb/classroom-boardgame/blob/main/archives/preview-drag-meadow-v0.13.3-20261107.json)
+
+experiment本体仍Build95，本轮仅同步对接记录。后两步仍为：绘本生命/AP/金币状态总占画面≤10%；教师在绘本界面发放AP/金币。本轮两项均未实施，先收当前设备反馈。
+
+## 教师预览开销与点击返修 · 课堂v0.13.2/build16（2026-11-07）
+
+用户反馈v15交互卡、点不动。源码确认：投屏时主线程30Hz完整1280×720游戏UIView重绘及像素复制/CGImage构造偏重；不投屏时该链路原本关闭，仍有全屏遗漏教师手势和encounter预览拦截地图输入的独立问题。未在设备测量CPU/GPU占比，不把所有卡顿归因于这一处。
+
+本轮在classroom-boardgame分支feat/teacher-backend-meadow-v0.13修改：GPU先缩小为640×360，GPU buffer读取/CGImage构造放utility队列，主线程必要公开UIView合成以半分辨率15Hz上限进行，单次在途不堆积。教师画面滚出屏幕、离开游戏页、绘本、后台、私有对话框或无电视时停止回传。界面revision改为实际状态变化发布，保留AI/超时计时。理论GPU裸像素预算110592000→13824000字节/秒（1/8），不是设备实际帧率/耗时提升8倍。电视仍为1280×720原生60Hz目标，教师辅助回传降采样；原美术资源不变，缺图仍只登记。
+
+全屏接入同一TeacherGamePreview输入，新增教师端收起预览按钮；怪物预览外可继续点道路，卡片内部只读；无效状态给提示。建筑真实命中与相机逆变换、地图/阴影固定画布、单一规则/AI/掷骰、公开端权限隔离保持。教师预览不捕获后台按钮/备注/私有弹窗。绘本≤10%生命/AP/金币状态区与教师发放入口仍只记录，未实施；后两步仍按这两项顺序。
+
+17后台/画布/预览专项在Linux通过，新增覆盖预览后导航不改战斗RNG、裸像素预算上限/独立画布、隐藏/本机/绘本/后台/私有对话框禁回传；源码审计确认全屏手势、滚动可见性、单次在途与后台队列。实际编译提交`81406b3bf1c08e11b9d70defdac90a0297a4cc7a`、run42350765946 attempt1，313规则/后台+6绘本核心测试零失败，4项CI工具检查、设备Release归档通过。过渡run42350196166/42350410685因补滚动离屏停止回传和暂停缓存策略主动取消，未发布为最终包。
+
+IPA0.13.2/build16，最低iPadOS27.0、SDKiphoneos27.2，arm64/755/CRC/经典ZIP2.0、Metal及568源资源SHA/281编译名称/3挂载JSON通过，二进制不同于build15。正常显示规则GIF复用v15同一离线5帧/8秒示意（非性能对比、非App/电视截图），不称新美术认可或实机流畅度验收。未运行App、模拟器、实机；实际触摸响应、电视对齐及帧率待用户安装复核。
+
+源码快照`2c9f395448421218f7a90f3576b1e6a22ebde451`与IPA编译提交分开，标签`archive-preview-input-meadow-v0.13.2-20261107`。完整源码/Git bundle/IPA/诊断/离线GIF已存archive-assets，ZIP逐文件、独立bundle恢复/fsck及全部公开分片GET通过，归档run42351319022；main仅索引。IPA完整GET200，62087899字节，SHA256`d335bc7fe9320357dcca960fbc556a134a97ded8b7ccc2e379a8c7efd30f355a`。
+
+[直接IPA](https://raw.githubusercontent.com/liamchan-rgb/classroom-boardgame/0b1981b3b78d07ee0ba8d4cd45f6a077c9a4bd59/archive-preview-input-meadow-v0.13.2-20261107/ClassroomStage2-v0.13.2-unsigned.ipa) · [沿用的显示规则GIF](https://raw.githubusercontent.com/liamchan-rgb/classroom-boardgame/0b1981b3b78d07ee0ba8d4cd45f6a077c9a4bd59/archive-preview-input-meadow-v0.13.2-20261107/preview-input-normal.gif) · [可恢复存档/校验](https://github.com/liamchan-rgb/classroom-boardgame/blob/main/archives/preview-input-meadow-v0.13.2-20261107.json)
+
+experiment本体仍Build95，本轮只同步对接记录，不伪造Build96。安装后打开ClassroomProbe，重点复核全屏点路、怪物预览外点路和操作按钮响应。
+
+## 电视地图对齐返修与教师实际画面同步 · 课堂v0.13.1/build15（2026-11-07）
+
+用户报告v0.13/build14初始iPad正常，连接电视后地图地面/树木/阴影错乱，断开后仍异常；截图右侧地面被截断。用户还要求教师端不单独生成简略地图，直接同步实际游戏画面，操作按钮不投放。
+
+本轮在classroom-boardgame的`feat/teacher-backend-meadow-v0.13`修复：统一1280×720逻辑画布（含只读行囊/结算），窗口仅等比居中留边；跨宿主先清UIView transform再设bounds并完成布局，禁止在变换中写frame；classroom地图SpriteKit改aspectFit，Metal关闭drawable自动缩放并固定一点一像素，地图/战斗分区使用整数像素尺寸。屏幕DPI/窗口比例不再改变地图、相机与阴影的内部坐标。这是源码修正，未声称已在用户电视复验成功。
+
+删除TeacherControlMap简图，教师端直接使用实际游戏画面。无电视时本机显示唯一原生渲染器；有电视时该渲染器投放电视，教师端异步回传其Metal完成帧与公开UIView层（上限30Hz，电视渲染目标仍60Hz，不作实机性能承诺）。仅捕获游戏控制器view的公开内容，后台按钮/节点表单/备注属于另一根窗口；无第二份地图、规则、AI或掷骰。教师点击先消除等比留边，再逆变换当前真实相机轴到世界坐标，支持放大和平移后的道路/节点选择；公开端不进入编辑模式。
+
+用户明确先记录、不在此轮实现的绘本待办：①人物生命/行动值/金币简要状态合计≤公开画面10%，不遮绘本；②教师在绘本界面直接发放AP和金币。已保存至上游docs/planning/classroom-book-status-backlog.md及本轮说明。后两步按此顺序推进，不自动扩课堂人数。
+
+新增4项纯画布/投影回归，14项后台专项在Linux通过；实际构建run 42346131666 attempt1、编译提交`7ffc6b13ab3f58c39ea21f63669e2c46440d6e2f`，完整310规则/后台+6绘本核心测试零失败，另4项CI工具测试通过，设备Release归档成功。首轮run42345436987因Apple平台CoreGraphics未显式导入而在纯包编译失败，未产IPA；补齐导入后重建。源码审计/测试不等于运行外屏验证。
+
+IPA0.13.1/build15，最低iPadOS27.0、SDKiphoneos27.2，arm64/755/CRC/经典ZIP2.0无extra、内置PPT、Metal库、568源资源SHA/281编译名称/3份挂载JSON通过。原美术复用，无新人物资源或新增认可。离线连接规则GIF实际5帧/8000ms，主线程查看全部阶段与全景；CPU道路/阴影近似，非App/Metal/电视截图，不作为设备修复证明。未运行App/模拟器/实机，安装后需用户比较初始iPad、电视投放、断开及重复连接。
+
+源码快照`5664dd2f2ae4920ccc765585857074f872be1506`与IPA实际编译提交分开，唯一标签`archive-display-mirror-meadow-v0.13.1-20261107`。完整源码/Git bundle/IPA及诊断/离线GIF已永久备份archive-assets，ZIP逐文件、独立bundle恢复/fsck及所有分片公开GET通过，归档run42346849708；main仅加索引。IPA完整公开GET200：62053723字节，SHA256`88b62f485759e72d606159497dcb1d3f74235b4f5987d675b59e950a1ef2f244`。
+
+[直接IPA](https://raw.githubusercontent.com/liamchan-rgb/classroom-boardgame/01604bc3a93627a60881da807bf923b4fc02fc07/archive-display-mirror-meadow-v0.13.1-20261107/ClassroomStage2-v0.13.1-unsigned.ipa) · [离线显示规则GIF](https://raw.githubusercontent.com/liamchan-rgb/classroom-boardgame/01604bc3a93627a60881da807bf923b4fc02fc07/archive-display-mirror-meadow-v0.13.1-20261107/display-mirror-normal.gif) · [可恢复存档与校验](https://github.com/liamchan-rgb/classroom-boardgame/blob/main/archives/display-mirror-meadow-v0.13.1-20261107.json)
+
+安装后打开ClassroomProbe → 游戏后台，实际画面支持道路点击，开启“选取地点进行后台编辑”后点建筑再编辑；权限表单仍只在教师端。experiment本体仍Build95，本轮仅同步对接记录，不伪造Build96。
+
+## 教师后台重构交付 · v0.13/build14（2026-11-07）
+
+用户更正上一版架构：删除原桌游游戏部分；当前Meadow demo的操作与教师权限移到教师后台，随机地图生成留后台；投放端只显示探索地图、按需玩家行囊/怪物预览，战斗用现有完整战斗预览。本轮在classroom-boardgame分支 `feat/teacher-backend-meadow-v0.13` 执行，覆盖此前v0.12.1“保留旧游戏/切换简化公开页”的后续安排。旧代码/旧包保留于历史存档，App里无旧游戏回退。
+
+删除原RulesLab/PVEAppSession/旧地图战斗公开页/v0.12简化适配；保留PPT导入、页面、备注、备份与iPadOS27独立公开场景。完整导入当前demo的GameViewController、Metal GameScene、MeadowBattlePreview/PartyBattle/PartyStage、动作/骰子/技能/死亡演出、规则与资源。公开模式不挂载管理按钮，根输入禁用，战斗公开回调另行拒绝；所有原游戏弹窗转交教师根presenter，公开端只读玩家信息，不含节点编辑/备注。ClassroomGameBackend持有单一正式campaign/encounter；教师后台驱动地图生成/移动、AI/时钟，公开端不创建训练局或第二份规则。战斗结束演出完成回地图；绘本/暂停保留同一会话。新行程独立ClassroomMeadow命名空间，旧个人资料不删除、不自动转旧PVE存档。
+
+后台操作地图支持道路任意点/节点编辑/镜头/角色选择/怪物预览/背包装备/移动补充/资源/奖励/队伍/路线，战斗目标、技能、悬停骰子、物品与回合操作留后台。最终检查补齐当前玩家回合/AP/库存/次数/目标校验，键盘同样守卫；校验不prepare、不掷骰、不改状态。沿用当前双人行程与平均距离移动条，不声称扩为完整课堂多成员。
+
+资源来自experiment175c7dfc4a68e62cb9693da8d837b77081619a6b，568份源资源SHA逐份一致、281编译资源名称、3份SPM挂载JSON逐字节、Assets.car与Metal库已核对；无新美术生成或新增用户认可。主线程亲看完整联系表并解码118帧/4720ms正常速度GIF，属于离线职责示意/既有资源合成，非UIKit或设备截图，不称实际窗口路由或连续播放验收。缺图仍仅登记。
+
+实际设备Release编译提交 `b20e3a95cf5c52d4724f66e5f88d219bdff48f58`，run 42341843315 attempt1，306规则/后台测试+6绘本核心测试零失败，另4项Python CI工具测试通过。IPA0.13/build14、iPhoneOS arm64/755、CRC/经典ZIP2.0无extra、内置PPT、完整地图/步态资源、Metal库头均通过；最低iPadOS27.0、SDKiphoneos27.2。未运行App、模拟器或实机，真实外屏切换/比例/触摸由用户安装截图反馈。
+
+永久源码快照 `34931ec42f8f92f614ffe2a2a6b212177b42b7b5` 与编译提交分开记录；唯一标签 `archive-teacher-backend-meadow-v0.13-20261107`。完整源码/Git bundle/本步IPA与诊断/正常GIF已存archive-assets，ZIP逐文件、独立bundle恢复/fsck及所有分片公开GET通过，归档run 42342449892。索引仅加入main，不合并代码或二进制分支。IPA完整公开GET200：62037369字节，SHA256 `7eefd10008f2820807a909ecf4fd185816d067f3c0fdf39bd405c8823cbb714c`。
+
+[直接IPA](https://raw.githubusercontent.com/liamchan-rgb/classroom-boardgame/f74f280a2598f11f440f7b0b8b8b3ae77f58a836/archive-teacher-backend-meadow-v0.13-20261107/ClassroomStage2-v0.13-unsigned.ipa) · [正常速度离线GIF](https://raw.githubusercontent.com/liamchan-rgb/classroom-boardgame/f74f280a2598f11f440f7b0b8b8b3ae77f58a836/archive-teacher-backend-meadow-v0.13-20261107/teacher-public-normal.gif) · [可恢复存档与校验](https://github.com/liamchan-rgb/classroom-boardgame/blob/main/archives/teacher-backend-meadow-v0.13-20261107.json)
+
+入口：ClassroomProbe → 游戏后台 → 随机地图与新行程 → 生成/开始。未接外屏可全屏预览；接屏后由独立公开窗口承载同一渲染器。experiment本体仍Build95，不冒称Build96。后两步：①依据教师端/投放端实机截图调操作密度、投放比例和切换；②扩展课堂更多成员与目标布局，缺图只登记。
+
+## 桌游双屏试接交付 · v0.12.1/build13（2026-11-07）
+
+用户要求尝试接入，随后明确“两个模块”指教师操作端与公开展示端。本轮在 classroom-boardgame 新分支 `feat/meadow-public-bridge-v0.12` 实际接入 PublicSurface，只收脱敏 PublicPlayFrame；原教师控制、完整教师地图、选人/目标/发奖/编辑/撤销/记录与绘本/备注隔离保留。公开端可切 Meadow/原画面，教师端“PVE课堂→预览公开画面”查看同一公开数据源。未改原 App 外接场景注册，不用教师屏镜像替代独立公开端。
+
+只有原 PVEAppSession/GameEngine 负责结算/掷骰/保存/AI/计时。新增账本 before 是 publicSnapshot，不是完整GameState；只记录真实技能ID与HP/盾变化。命中 .46 秒显示伤害/死亡，恢复/新盾 .72 秒后显示；混合技能分别处理，队列不跳未来结果，历史恢复/撤销不重放。战斗画面只取真实 queueIDs，移动用已提交路径，抵达再切战斗。原桌游仍按AP/道路/抵达开战规则；没有迁入Meadow距离移动条或覆盖存档，未建立第二套引擎。
+
+114份已有素材SHA匹配experiment 175c7dfc4a68e62cb9693da8d837b77081619a6b；蓝衣通用近战及怪物/技能特效复用。初次整景审核发现治疗盖住接敌人物，根线程自行改至人物背后并延后，符文斩峰值对齐命中；v0.12内部稿保留，最终交付v0.12.1/build13。主线程查看79个GIF解码帧的五页整景、三处1×/2×完整人物场景；正常GIF3000ms。离线Pillow合成含辉光/文字近似，不称作UIKit/外接屏截图或设备连续播放验收。默认双人adventurer/spellblade复用蓝衣近战；其余职业暂沿用原美术，职业装备/远程动作绑定、完整Metal地图及全部课堂容量视觉仍为后续，不声称全部Meadow玩法已移植；缺图只标注。
+
+实际设备Release源码 `3f1b684f978df334d4ec0ec7cf52d31f9e85afa4`，run 42319105836 attempt1，79 GameCore + 6 ProbeCore零失败，另4项CI工具检查通过。IPA版本0.12.1/build13、iPhoneOS arm64/755、CRC/经典ZIP2.0无extra、内置PPT/114素材逐文件SHA通过；二进制确实不同于build12。桌游原部署目标保留 iPadOS27.0，SDK27.2；本次不需要自定义Metal库。未运行App/模拟器/实机，不声称外接屏/PPT实际设备已验收。
+
+永久归档源码快照 `a011d69a4d85cb3832aea40f0e4264c594c68502`，标签 `archive-meadow-public-bridge-v0.12.1-20261107`，源码与实际编译提交分开记录；完整源码/Git历史bundle/交付及诊断已备份到archive-assets，ZIP逐文件、bundle独立恢复/fsck和所有分片公开GET通过。首次误触发备份因未生成新版本记录而安全退出，补齐实际成功run/artifact记录后run42319544558完成归档。索引收尾不递归归档。
+
+IPA完整公开GET200：36150190字节，SHA256 `e8618ee986a6029f702b84b68fc1f8a8f5b50a83f1f6e2f28dd7f11830d21b71`。
+
+[直接IPA](https://raw.githubusercontent.com/liamchan-rgb/classroom-boardgame/b5923d3286cfe2a2e30b10148dfc7f690f8fc4b7/archive-meadow-public-bridge-v0.12.1-20261107/ClassroomStage2-v0.12.1-unsigned.ipa) · [正常速度离线GIF](https://raw.githubusercontent.com/liamchan-rgb/classroom-boardgame/b5923d3286cfe2a2e30b10148dfc7f690f8fc4b7/archive-meadow-public-bridge-v0.12.1-20261107/meadow-public-normal.gif) · [可恢复存档/校验](https://github.com/liamchan-rgb/classroom-boardgame/blob/main/archives/meadow-public-bridge-v0.12.1-20261107.json)
+
+experiment本体仍为Build95，本轮没有伪造Build96或重打Meadow旧包。后两步：①按用户教师端/公开端实机截图修正比例、字重与信息密度；②逐职业补公开装备/远程动作绑定与精确时间轴，再扩全部课堂容量，缺图仅列清单。
+
+## Build95交付 · 服务参数编辑与桌游demo对接核查（2026-11-06）
+
+地图→编辑地点→营地/空地，设置商店/失物/清泉，营地保留商店。买卖价10—500%（100%原目录价、整数最低1），失物金币1—1000，清泉恢复1—100；最终卖价不得高于可购商品买价。字段常驻名称，取消不写入，失败保留草稿可重试，已处理事件显示只读配置且不能重置/改类型。编辑不发奖、不改个人HP/AP/库存/RNG/道路；移动/战斗/结算后拒绝。报价、确认和实际交易使用同一份保存配置；事件收益也读取该配置。可选siteConfiguration缺省保持旧SITES1和原价5金币/4回复；校验拒绝非法或套利导入，不改全局目录。
+
+Linux/Mac完整296项零失败，新增6项覆盖改价实际扣款/卖价与续档、事件类型/金币保存与处理后锁定、清泉配置封顶、范围/营地类型/套利导入拒绝、保存失败回滚重试、旧nil配置与暂停道路编辑拒绝。四专项/项目绑定/语法/设备Release通过。原27+27+24固定策略在Mac重跑并断言完整集合，与Build94保留参考逐字段相同（距离<1e−8）；未宣称本轮Linux重跑78整程或参数经济已平衡。
+
+随后只读核查classroom-boardgame main 1e9100c4c18364ea64b3ec974fe957ba4ef42f6f及战斗分支a0427b83d9233f1a83178b3c47d3fab39eed664e，确认TeacherHost/PPT/独立公开窗口、PVEAppSession/PresentationLedger/PublicPlayFrame可作入口，两分支关键会话/公开协议相同。推荐原demo为主壳，Meadow先作公开帧只读画面适配：规则/保存/AI/计时仅一处负责；已提交回执不得再次prepare/apply/commit或重掷，教师私有信息不投影。双人默认场景先验证，1—6学生+主持人、任意ID、公开外观数据、存档/撤销及移动规则模式需逐项适配。原UPSTREAM指纹是历史来源，当前Core已分叉，不能直接覆盖。方案与审计见docs/integration/tabletop-demo-bridge-plan.md和tabletop-demo-audit.json。本轮未改/未编译/未运行桌游demo，不声称真实对接完成。
+
+最终1.6.68/build95，源码175c7dfc4a68e62cb9693da8d837b77081619a6b，run 42265928750 attempt1。IPA CRC/ZIP2.0无extra/arm64及755/版本平台/Metal头/12图集6数据集通过；源资源569份SHA256匹配，原地图/步态/规则JSON字节同Build94，系统assetutil解析288条。实际SDK/编译目录摘要另记，无新美术或美术认可，缺图继续标注。未运行App/模拟器/实机。
+
+直接IPA完整公开GET200，64792405字节，SHA256 2d1ae3f9abe0fec4ac63202b37e1ed11b37ac1f0b636698c9f30328b196ef8e3；[下载](https://raw.githubusercontent.com/liamchan-rgb/experiment/ac9d4cb0d2e2c3385d5d535a2bec2a2d3d0ca6b2/Downloads/MeadowJourney-b95.ipa)。来源/日志/包检Media/Build95，设备体验由用户验收。
+
+后两项：PublicPlayFrame只读画面适配样例；验证后在桌游新分支接入公开画面开关与原功能回退。
+
+## Build95候选 · 地点服务参数编辑与桌游对接核查（2026-11-06）
+
+编辑地点后选营地/空地：营地保留商店，未处理空地可在商店/失物/清泉间切换；买卖价格比例10—500%、失物金币1—1000、清泉恢复1—100。100%指原目录价，整数价最低1，最终卖价不得高于可购商品买价。字段有常驻名称，保存失败保留草稿可重试，取消不写入。已处理事件只读查看且不能重置，编辑不发奖/不改HP/AP/库存/RNG/道路坐标；移动、战斗、结算后拒绝。新可选siteConfiguration仅在明确保存时写入，旧nil配置完全沿用SITES1和原价5金币/4回复；报价与实际扣款读取同一函数，事件数值也读保存配置。恶意导入的非法/套利配置也拒绝。
+
+Linux完整296测试通过，新增6项覆盖改价实际交易/续档、事件类型与金币持久/处理后锁定、清泉配置封顶、非法比例/营地类型/导入套利拒绝、保存失败回滚重试、旧nil配置/暂停道路禁编辑。四原专项、项目/语法检查通过；设备Release、原78固定策略及IPA/公开GET待完成。原数值/资源/美术复用，无App/模拟器/实机运行。
+
+随后只读核查桌游main及战斗分支现有demo，确认TeacherHost/PPT/独立公开窗口、PVEAppSession/PresentationLedger/PublicPlayFrame入口。建议以原demo为主壳，先做公开帧只读渲染适配，保留单一规则/保存/计时权威，避免双重结算。两库Core已分叉，原UPSTREAM指纹仅历史，不能直接覆盖存档/主程序。详见docs/integration/tabletop-demo-bridge-plan.md与审计JSON；本轮未改桌游仓库或实现真实对接。
+
+候选1.6.68/build95。美术缺口按原约定只标注，不阻塞。后两项：PublicPlayFrame只读画面适配样例；验证后在桌游新分支接入公开画面开关与原功能回退。
+
+## Build94交付 · 个人商店与一次性可选事件（2026-11-06）
+
+营地提供商店，原空地点按map.seed/nodeID的SITES1稳定混合分配行商/失物/清泉，地图预览列服务、正式地图原建筑标签显示商/泉/事，处理事件后勾号。默认31827/10节点#3为清泉。零空地不造额外事件，节点/道路/原建筑不重排；路过和打开菜单不自动交易或领事件。旧档缺siteResolved字段按未处理读，新字段只写原空地事件处理状态；SITES1算法须保持稳定，后续扩展应版本化或保留原配置，不可改常量重投旧档。
+
+买卖沿原目录价，每次1件、个人付费和个人行囊，不自动装备，不使用他人金币。仅12原有非套装、purchasePrice非空商品可买；卖仅扣行囊，不出售仍穿着而无副本的装备。确认/取消分离、可换P1/P2买家，余额不足禁用。事务id去重/冲突拒绝，写入失败整体回滚。失物给处理者5金币，清泉回复最多4生命且不超装备后个人上限；满血接受禁用、可切处理成员，暂不处理保留、明确离开结束，全队每地点一次，存取不重投、不消耗战斗RNG。移动含暂停道路/战斗/已结算拒绝；结算仍仅冻结实际所得。
+
+依用户缺图仅标注授权，正式行程P2换装及缺专属图的原装备规则入口开放。P2和未映射装备只提交规则，跳过P1专属图准备，不污染P1外观；已有图占位，未映射武器无专属图，服装用基础层。缺商人/清泉/失物建筑与演出、P2/套装专属挂载见art-gaps.md。本轮无新美术资源/动作，不称新美术验收；UIKit与标签仅源码/约束检查，未运行App/模拟器/实机。
+
+最终1.6.67/build94，源码29d60fa0d39b6b96763b298155aeab16f8778a9e，run 42257900267 attempt1。Linux/Mac完整290测试零失败，新增9项覆盖12商品/双成员个人扣款与P2买入装备/AP不补、行囊出售/id去重、写入失败重试回滚、缺钱/套装/暂停道路拒绝、固定种子及推进战斗RNG不改地点/旧档、事件跨成员续档/清泉封顶/明确离开，以及交易事件贯穿全图探索返营结算和只读恢复。1000金币/全空图为受控测试夹具，不在App赠送。四原专项、项目绑定/Swift语法、设备Release通过。原27默认+27装备代表+24双人组合在Mac重跑并断言具体集合，逐字段与Build93参考一致（距离差<1e−8）；该固定策略不主动使用新服务，不宣称新经济平衡或真人胜率，未声称本轮Linux重跑78整程。无新实机反馈，不擅改原战斗/移动系数或速度。
+
+IPA CRC/经典ZIP2.0无extra/arm64及755/版本平台/Metal头/12怪物图集6数据资产通过；源资源569份SHA256匹配，原地图/步态/规则JSON包内字节同Build93。SDK与Assets.car摘要实记，系统assetutil解析288条；编译差异不称新美术。直接IPA完整公开GET200，64774733字节，SHA256 2dc90ddcded376ae1312cf5dab37bfba3862cf10683e58c710f0c56c0a8d37e9；[下载](https://raw.githubusercontent.com/liamchan-rgb/experiment/8c9f5be65d58030c430d3692091bdaa03ec08054/Downloads/MeadowJourney-b94.ipa)。来源/原始日志/结果Media/Build94，设备体验由用户验收。
+
+后两项：商店与事件参数编辑入口；依据用户实机反馈调整行程节奏与资源。
+
+## Build94候选 · 商店与一次性地点事件（2026-11-06）
+
+营地商店保证可用；原空地点按地图seed与nodeID的独立稳定混合分配为行商/失物/清泉，不增加NodeKind或节点/道路/建筑，不消耗战斗RNG。默认10节点31827的#3为清泉。地图预览列出服务清单，正式地图原建筑上的标签显示商/泉/事、完成后勾号。只有主动点击进入商店/处理事件才执行；路过、打开菜单、取消均不扣款或结算，空地为0时仅营地有商店、不造额外事件。
+
+商品沿用目录purchasePrice/sellPrice，一次1件、无限库存、按购买者个人金币扣款并进入其个人行囊，不自动装备。只出售purchasePrice非空且非套装的12原商品；卖出只消耗个人行囊，已装备但行囊无副本不可出售。UI明确买家/金额并二次确认，可切P1/P2；不足时禁用。交易id可重试去重，同id不同请求拒绝，保存失败金币/库存/历史一起回滚。移动（含暂停道路）、战斗、结算后拒绝交易。
+
+失物给处理者5金币，清泉最多回复4HP且不超个人装备后上限，满血接受选项禁用，可换存活同地点成员；事件全队每地点一次。暂不处理不消耗，明确离开永久结束。可选siteResolved字段仅在实际处理时写入原空地点，旧档缺字段正常读，地图seed固定保证续档/开关菜单不重投；不复用补给领取标记，不改补给统计与清理/返营目标。已完成档冻结，新逻辑不能重复发奖。保留formatVersion1读取旧档，新增交易/事件命令由本版识别。
+
+按用户美术缺口不阻塞的要求，正式行程开放P2换装及原先因专属图缺失隐藏的装备规则入口。显示缺图说明，已有可用图占位；P2/未映射装备只提交规则，不进入P1图片准备流程，不改动P1外观。原有已支持P1装备保持既有图绑定。未制作新美术或宣称新美术验收；商人/清泉/失物建筑与P2/套装专属呈现缺口记art-gaps.md。
+
+Linux完整290测试零失败（新增9项：12商品/两成员个人扣款/P2装备与AP不补、仅库存出售与id去重、交易失败回滚、缺钱/套装/暂停道路拒绝、种子/旧档不耗RNG、事件跨成员/续档去重、清泉无效不消耗与回复封顶、事件失败/明确离开、交易事件贯穿全图探索与冻结结算）。四原专项、项目绑定/Swift语法通过。测试1000金币/全空图为受控夹具，不在App赠送；原78条固定策略（不主动用商店事件）需与Build93对照，不当作新经济平衡或真人胜率。无新用户实机反馈，本轮不擅改原移动系数/速度/战斗数值，先完善交互与资源衔接。
+
+候选1.6.67/build94；设备Release与最终包检/公开GET待完成。未运行App/模拟器/实机。后两项：商店与事件参数编辑入口；依据用户实机反馈调整行程节奏与资源。
+
+## Build93交付 · 合并组队资源与行程收尾（2026-11-06）
+
+战斗技能按真实施法者/实际目标或地点群体生成只读说明，个人AP、消耗、次数和库存来自该角色，禁用说明来自原preview。卡片保留两行空间，禁用时显示原因；悬停及辅助功能读出实际目标/资源。道具菜单新增双方个人资源和当前技能详情，明确查看时快照、原回合计时继续。结果页展示结束时个人AP/护盾/存活，不重置或合并个人资源。
+
+行程目标与结束确认共用真实档案说明：探索/清理进度、可选补给、未结束战斗、道路暂停续档、按存活成员查询返营实际路程与最低旅费（包括P1倒地仍被选中）、金币缺口和手动补移动条的选择、取消/失败可重试、结算只记实际所得不额外发奖。已结算展示冻结结果；沿用原原子保存、幂等结算/回滚、败北、坏档保护与格式1。
+
+按用户本轮授权，后续美术缺口仅标注用途/替代/待补，不以补画阻塞逻辑与IPA交付；不将缺失资源标为已制作/认可。清单docs/planning/random-map-v1/art-gaps.md记录现有星辉/龙纹专属挂载图与P2完整换装呈现缺口；本轮提示使用已有UIKit组件，没有新动作素材。
+
+最终1.6.66/build93，源码9faea3f267056da6a0ab17ee818bc23f7dc9e33f，run 42239424403 attempt1。Linux/Mac完整281项零失败（新增6项实际目标/群体/个人库存、只读旧档、返营路费不足和道路暂停恢复），四原专项/项目绑定/Swift语法及设备Release通过。原结算幂等/保存失败回滚/全灭/历史隔离测试仍完整执行。Mac的27默认+27装备代表+24双人组合全部精确断言具体集合，报告逐字段与Build92保留基线相同（距离差<1e−8），不宣称本轮Linux重跑78整程，不是人类胜率。
+
+包检CRC/经典ZIP2.0无extra/arm64与755/版本平台/Metal头及12怪物图集6数据资产通过。原资源569份源SHA256匹配，地图/步态/规则包内字节同Build92；实际SDK和编译Assets.car摘要另记，系统assetutil解析288条，不把SDK编译差异称新美术。无新美术认可，界面为源码约束检查，不称UIKit截图。未运行App/模拟器/实机。
+
+直接IPA完整公开GET200，64740909字节，SHA256 35828fb378632d10af4fe0618b6a24d8a833c4ffe5c838588ea62982dd866dab；[下载](https://raw.githubusercontent.com/liamchan-rgb/experiment/419c106fba8292e3c87358720e0ae506dd5a0b2f/Downloads/MeadowJourney-b93.ipa)。来源/原始日志/结果Media/Build93，设备体验由用户验收。
+
+后两步：随机事件与商店的规则入口；按用户设备反馈调整整段行程交互与数值。
+
+Build93返营边界补查：P1倒地但仍被选中时，使用存活成员查询返营路费；不切换选择/资源。补充仅P2存活状态的断言，首个run42238796689取消，最终归档使用修订源码。
+
+## Build93候选 · 组队资源提示与完整行程收尾（2026-11-06）
+
+用户要求将组队技能/资源提示与完整行程结算/失败/续档合并一轮，交付直接IPA。以后遇美术缺口仅标注用途、现有替代与待制作内容，不以补画作为本轮逻辑交付前置条件；不自动认可旧未通过素材，也不把缺图写成已完成。本轮复用原美术，已知星辉/龙纹专属装备美术及P2完整换装呈现缺口继续列账，不在此轮新制作。
+
+新增纯只读技能说明：实际施法者、经原preferredTarget解析的目标、地点群体范围、个人AP/消耗/技能剩余次数/个人物品库存和原preview不可用原因。卡片有限两行保留短公式、不可用时显示原原因；悬停显示目标/消耗，辅助功能读完整说明。道具菜单新增双方资源及当前技能明细弹窗，明确查看时快照且原回合计时继续，不暂停或赠送行动点。不修改原骰子/技能/库存扣除逻辑。
+
+行程目标和结束确认共用closingReadout，显示实际清理/探索状态、剩余可选补给、进行中战斗或道路暂停续档、目标完成但未返营时道路距离/最低金币/缺口及手动补条选项、失败可重试与结算不额外发奖；已结算读取冻结结果。沿用原原子结算、格式1、已完成档只读与坏档保护，原27+27+24固定策略行程继续核对，不把正常失败称回归错误。新增6项覆盖个人目标/AP/库存/群体、只读旧档恢复、返营金币缺口、道路暂停恢复；完整旧结算幂等/失败回滚/全灭/历史隔离测试一并运行。
+
+候选1.6.66/build93；检查、设备Release及公开完整GET待完成。未运行App/模拟器/实机。界面仅源码/约束检查，无新动作图，不称美术验收。
+
+后两步：随机事件与商店的规则入口；整段行程的交互与数值调整（依据用户设备反馈）。
+
+## Build92交付 · 双人职业配置（2026-11-06）
+
+新行程P1/P2独立选四个原职业，可重复，默认魔剑士+游侠。表单分别显示职业基础生命、基础/最大行动和真实技能；装备另计、职业与衣装/武器独立。选择仅刷新说明，不重生成地图、不耗RNG或写档；确认新建后分别继承营地装备/库存，重新创建各自职业属性、HP/AP与技能次数。继续旧档直接读取原GameUnit.templateID/已耗资源/操作成员/道路游标，格式1不改，无中途洗职业。P2换装外观原限制保持，不宣称完成新职业专属美术。
+
+P1游侠援护默认自己时改选另一存活队员；自用技能预览跟随真实施法者，原preview/command仍验证合法性。护盾条以目录盾值/当前值作为显示参考，龙鳞盾不再10/8，不增加机械上限；怪物仍自身目录容量。原属性/骰子/AI/掉落/地图/装备与动作特效资源保持。
+
+最终1.6.65/build92，源码17b0b0363199a37fa0ab8cccdb8d9545a02e6c1b，run 42232775576 attempt1。Linux/Mac完整275测试零失败、四组原专项、项目绑定/Swift语法和设备Release通过。新增8测试覆盖16对真实属性/技能和独立行动、非法职业零写入、跨职业装备继承与新建资源、路中存取/成员选择、援护/自用目标、同职业确认重建/一次提交与次数独立、护盾显示、非默认P2整程确定性。默认10节点种子31827全16职业对，加4/30节点种子0各4重复/正反职业对共24真实规则整程；断言实际具体集合，1041动作/286存取/136确认重建，与Linux逐字段一致（距离误差<1e−8）。原27默认+27装备代表与Build91逐字段一致，不重复177不变装备全矩阵，不是人类胜率。
+
+IPA CRC/经典ZIP2.0本地中央头无extra/arm64与执行权限/版本平台/Metal/12怪物图集及6数据资产通过。原资源569份逐文件SHA256匹配，原地图/步态/规则JSON包内字节同Build91；Assets.car编译字节不同，源资源摘要一致，系统assetutil解析实际目录；差异单独记录，不声明新美术。系统目录288条，SDK/摘要见Media/Build92/verification.json。原美术/动作全部复用，无新美术认可；新界面为滚动布局源码与约束检查，不称UIKit截图。未运行App/模拟器/实机。
+
+固定公开直接IPA完整GET200，64723909字节，SHA256 9016ae0177b5bdf3bdf876b1658cc24391a93c67f17910d633d370fc9b62c74b；[下载](https://raw.githubusercontent.com/liamchan-rgb/experiment/5d321900bcd3687a5fc4b33b5c92d57515cd8b4b/Downloads/MeadowJourney-b92.ipa)。来源/原始日志/实际结果Media/Build92，设备体验由用户验收。
+
+后两项：组队技能与资源提示联调；完整行程验收与异常收尾。
+
+Build92布局补查：将长编队说明移至职业与创建/续档按钮后，缩短顶部引导并给两个选择器P1/P2辅助功能标签。初始run42231291269因界面补查主动取消，最终归档必须使用包含修订的新源码；不改变规则/审计输入，不重跑已通过不变专项。
+
+## Build92候选 · 双人职业配置（2026-11-06）
+
+新行程P1/P2分别在冒险者、游侠、魔剑士、龙骑士中选择，可重复，默认仍魔剑士+游侠。显示职业基础生命/基础行动/最大行动及真实三个技能；装备另计，职业与衣装/武器独立。选择只刷新说明，不重生成地图、不耗RNG、不覆盖旧档；确认创建才按选择新建两名成员，分别继承原营地装备/库存，使用新职业属性、初始HP/AP/空技能次数。继续旧档读取原GameUnit.templateID，格式1不变，无中途洗职业。原P2换装限制保持，不把职业选择称P2装备外观完成。
+
+游侠不再限定P2，援护当所选队友为施法者时默认改为另一存活成员；自用技能预览指向实际施法者，仍由原preview/command判定合法性。显示护盾参考上限按目录盾值/当前值，不出现龙鳞盾10/8；非新玩法护盾上限，怪物仍自身目录容量。沿用原人物/装备/动作/特效，无新美术认可，不运行App/模拟器/实机。
+
+新增8项覆盖16职业对真实属性技能与独立AP/相同地图怪物资源、非法任一职业零写入、跨职业继承装备但重建基础/次数、路中存取/操作成员、P1援护与P2自用目标、同职业确认/恢复/只提交一次与次数不串用、护盾目录显示、非默认P2完整行程确定性。另24整程矩阵：默认10节点种子31827全16对；4/30节点种子0各重复冒险者/重复游侠/魔剑龙骑正反组合4对。保留原27默认行程与27装备代表矩阵并断言实际集合；固定策略真实骰子、有偿移动、合法物品/明确整备，允许正常失败，不是人类胜率。16创建读数跨平台导出，原资源逐文件摘要核对。
+
+候选1.6.65/build92，验证中；通过原专项/完整测试、设备Release及包检后交付直接IPA。来源/日志Media/Build92。滚动UIKit表单以源码约束检查，不称设备截图。
+
+后两项：组队技能与资源提示联调；完整行程验收与异常收尾。
+
+## Build91交付 · 行程编辑与续档保护（2026-11-06）
+
+地图→编辑地点→点战斗/首领建筑打开独立草稿，读取实际保存编队，提供原六物种和两种旧鹿。普通地点1—3只、各槽可混合；首领默认1只，旧合法多只编队保留原上限。固定字段与真实名字/HP/AP/普攻射程可见，增减数量恢复保留隐藏槽选择；取消不写档、不耗RNG。保存遭遇后须明确确认重置此地敌人生命，成功才刷新地图，失败保留原配置并可重试，不修改其他节点或玩家库存。复用原怪物美术与原configureEncounter规则，不更改属性/AI/掉落、地图坐标或建筑。
+
+退出/后台通过一次suspendAndCheckpoint保存暂停、道路游标、余额、操作成员和镜头，替代两次写入。失败保留持久原档与内存当前位置、资源及旧镜头，仅安全停步，重试不重复抵达；退出失败刷新暂停按钮。战斗界面在保存成功后停用，避免失败仍被停住。镜头1—3及有限数校验在有无persist时一致。历史结算逐文件收集错误，坏记录不再阻断其他正常记录，UI提示无法读取数量，原文件不重写/不删除；当前坏档仍严格拒绝加载与自动覆盖，目录枚举失败仍报错，不冒充恢复内容。格式1、旧档/手动奖励与已领取状态保持。
+
+最终1.6.64/build91，源码87c11a02cafd7cc71dbe6b972489aea1ad04e049，run 42218974754 attempt1。Linux/Mac完整267项零失败、四组原专项、项目绑定/语法及设备Release通过。新增8项覆盖单次后台提交、失败安全暂停/重试、非法镜头、8物种草稿/取消、混合编队原子编辑、已领补给编辑/重置失败与一次发放、真实坏文件夹隔离、战斗确认未命中保存后同值重建和一次提交。原27基线及27装备抽样均断言数量/唯一和具体角色/种子/规模/装备集合；与Build90对应数据逐字段相同（距离误差<1e−8），不是真人胜率。本轮不重复上轮177个不变装备组合，也不把纯规则测试称实机美术验收。
+
+IPA CRC/经典ZIP2.0本地中央头无extra/arm64及执行权限/版本平台/Metal/12怪物图集6数据资产通过。原资源569份逐文件SHA256匹配，原地图/步态/规则JSON与Build90包内字节相同；本轮Mac26/新SDK的Assets.car编译字节与Build90不同；源资源逐文件SHA256一致，系统assetutil已成功解析实际目录，编译产物差异单独记录，不声明新美术。系统解析目录288条，实际SDK与SHA记录在Media/Build91/verification.json。原人物/装备/怪物/动画/特效源图全部复用，无新美术认可；新界面为滚动布局源码与约束检查，不称UIKit截图。
+
+公开固定链接完整GET200，64534939字节，SHA256 8b7dbc0ca8e4694ad3bdee965d84f1b40daa80bc4dc5731554c124e96d1d5043；[直接IPA](https://raw.githubusercontent.com/liamchan-rgb/experiment/96bfac11b11fcc877dc274bea4d10eb1ee6e0fa6/Downloads/MeadowJourney-b91.ipa)。来源/原始日志/校验在Media/Build91；未运行App/模拟器/实机，设备体验由用户验收。
+
+后两项：小队职业配置入口；组队技能与资源提示联调。
+
+## Build91候选 · 行程编辑与续档保护（2026-11-06）
+
+怪物编辑从旧鹿二选菜单升级为独立草稿：读取实际保存的有序编队，提供原目录六物种+两旧鹿，共8种；普通地点1—3只且各槽可混合，首领默认1只，已有合法多只首领保留原数量上限避免截断。修改/缩减后恢复/取消不写档，不耗RNG，不新建画面素材。显示真实名字、HP、AP和普攻/射程；明确确认后才调用原configureEncounter一次提交，恢复该地点敌人生命及战斗状态；保存失败保留原档并允许重试。原怪物/数值/AI/掉落不改，地图坐标/建筑不改。
+
+退出/后台用suspendAndCheckpoint将暂停、当前道路游标、移动余额、操作成员及镜头合为一次原子写入，替代原先setPaused后checkpoint两次写。失败保留原持久数据、当前内存游标和所有资源，仅安全暂停道路，重试不重复抵达；退出保存失败会刷新暂停按钮。战斗界面只在保存成功后停用，避免退出失败后界面停住。镜头校验在有/无persist时一致，拒绝非有限数与1—3范围外zoom，不接受损坏状态。
+
+历史结算逐文件读取，坏文件只列入问题清单，其他正常记录仍可查看；界面提示不能读取的数量，坏文件和正常文件原字节不改。当前坏档read/新行程归档保护仍严格抛错，不静默覆盖，不伪造恢复。历史目录枚举失败仍报错，不冒充空列表。存档格式1，旧档/手动奖励与已清状态保留。
+
+Linux完整267项零失败、四组原专项回归、项目绑定/Swift语法检查通过。新增8项覆盖单次后台写、失败安全暂停/重试无重复抵达、无persist非法镜头、8物种草稿/数量/取消、混合编队原子失败重试、已领取奖励编辑/重置失败与一次发放、真实文件夹坏历史隔离、待命中骰子保存后同值恢复与只提交一次。仍运行原27基线及27装备抽样，CI显式断言各27条和完整具体集合，不能只看绿色状态。无需再重跑上轮177个不变装备组合。
+
+候选1.6.64/build91；设备Release和最终包检待执行。采用当前可用Mac26设备编译池，资源输入逐文件SHA256核对与上轮原源一致，编译car由系统assetutil解析；跨SDK编译目录/Metal字节若变化单独记录，不称新美术。原人物/怪物/装备/动画/特效源图全部复用，无新美术认可。不运行App/模拟器/实机，最终直接IPA，来源/日志Media/Build91。离线布局为UIKit滚动草稿界面源码/约束检查，不称设备截图。
+
+后两项：小队职业配置入口；组队技能与资源提示联调。
+
+## Build90交付 · 装备对照与职业行程回归（2026-11-06）
+
+行囊装备详情新增纯只读对照：个人基础/最大/当前行动、队伍地图移动上限、真实普攻骰子/射程和换装后技能。行动戒指仅提升该角色基础AP，不提高地图移动容量；换装不回血或补AP/移动，进入战斗按各自基础AP恢复。确认为降低最大AP时原writer未截断movement.remaining，存档校验因超出新容量拒绝换装；现同次保存前按新容量截断，重新提高容量不补条，保存失败完整回滚装备/生命/AP/库存和移动。原无效存档仍拒绝、不放宽校验，已封存档不变，格式1。
+
+Linux完整259项零失败，四组原专项、项目绑定/语法检查通过。新增六项覆盖36起始组合的144次武器预览/真实换装一致、个人开场AP、容量截断/重装不补、旧非法档/保存失败、套装两三件阈值和确定性装备行程。177组受控初始装备行程已用Linux Release逐例检查点完成（此前Debug长会话中断、未输出整批结果，不计作完成），结局{'victory': 146, 'defeat': 31}；共6582战斗动作、1871存取恢复、886确认动作重建。P1三职业、四武器三基础护甲/饰品配置、空手、星辉/龙纹两三件，P2仍游侠短剑；10节点三种子153组+4/30节点双种子完整套装24组。原AI/骰子/掉落/规则数值、不使用免费移动或假复活；固定策略而非真人胜率、非自然成长获装路线。
+
+初次Mac抽样实际只有6条，已保留原文件；补充纯核验run 42210542590（源码49c3c509205ec9bf7a3975960b35e64ce94fdd95）断言27条唯一且指定角色/装备/规模/种子集合匹配后，Mac对27组装备代表用例逐字段复核（含各职业、四武器、空手、完整套装及30节点），与Linux全量中的对应记录一致；原27组默认行程仍与Build89一致24通关/3正常失败、1330动作/354恢复/171确认重建。42个装备单件比较在默认/最大地图逐字段跨平台一致。全量与抽样范围分开留档，不声称177组均在Mac重跑。专属星辉/龙纹美术仍有缺口，不把规则通过称外观完成，不开放原未支持按钮；原P2换装限制保持，原人物/装备/怪物/动画/特效全复用，无新美术认可，不把规则/数学检查称实机美术验收。
+
+最终1.6.63/build90；源码ca150c5ea5d36af7db17bd35c25afccd8710b013，run 42192128843 attempt1，Mac259测试/四回归/原27基线/设备Release成功；装备27抽样由上述补充运行独立完成。Linux命令工具入口修订为a89417d92ba537f748a140792a21dfa9dac2b703；已核实App、规则/战斗/地图库及审计库输入相对设备源码无差异，原设备IPA来源不改写。IPA CRC/经典ZIP2.0本地中央头无extra/arm64执行权限/版本平台/Metal/12怪物图集及6数据资产校验；整份Assets.car及原地图/步态/规则JSON与Build89字节一致。公开固定链接完整GET200，64688885字节，SHA256 86f0338e2dab7bf8f64bd9e7340d22893656af47bb38d87c006475b92ab57c29；[直接IPA](https://raw.githubusercontent.com/liamchan-rgb/experiment/04875c29798a3ca69504863b9fd3a4f829d64d20/Downloads/MeadowJourney-b90.ipa)。来源、日志与实际数据在Media/Build90。未运行App/模拟器/实机，设备体验交用户验收。
+
+后两项：行程编辑与续档异常回归；小队职业配置入口。
+
+## Build90抽样数量补查（2026-11-06）
+
+Mac15/15-intel纯补核均等待机器，依据runner-images已登记的macos-26镜像增加同一纯核验的备用池；不改变App和规则/审计库输入。以实际首先成功并通过27条断言的补充运行记录为准，其余自有补核任务完成后取消，避免重复。
+
+最终比对发现原Mac成功任务的loadout-smoke.json实际仅6组，缺少预期21个10节点组合，因此不能据任务绿色状态声称27组已核验。Linux改用普通函数入口后的177条逐例Release输出已完整保存（146通关/31正常失败）。补充纯Mac核验模式audit_only，明确跳过App归档，只执行修订后的同一命令工具；必须断言27条唯一且具体角色/装备/规模/种子集合完全匹配，再与Linux对应27条逐字段比对。IPA仍保留实际ca150c5/run42192128843来源，未改App或规则库；补充Mac运行来源单独记录。只有补核实际通过才发布。
+
+## Build90命令工具补查（2026-11-06）
+
+Linux Swift6.0.3 Release单例CLI在顶层嵌套循环执行后出现额外的无效地图规模（请求10，下一次错误尝试49）；Debug整批和Mac原27抽样已成功执行，但此前Linux长任务会话在最后一组中断，整批JSON未落盘。将命令工具入口完整放入普通throws函数，以return收束，避免顶层循环/退出路径；同一Release单例已核实只返回请求的一组。全量177组改用逐例检查点外部驱动，结果以最终完整文件为准。此补查只改CampaignTools命令入口，不改App的Sources、原规则/战斗/地图支持库、AuditSupport或包配置；设备归档仍为实际ca150c5/run42192128843的1.6.63/build90，另记录工具提交和App输入不变证据。不得把旧中断任务说成177已完成，也不将CLI修订混称已重新归档App。
+
+## Build90候选 · 职业与装备行程回归（2026-11-06）
+
+回归覆盖P1三职业、四种已接入武器×基础/皮甲徽章/符文甲戒指共12套、空手，以及星辉/龙纹两件与三件规则夹具；P2仍原游侠/短剑。10节点三种子153组，4/30节点双种子两套完整套装24组，共177组纯命令规则行程；Mac取27组代表用例与原27组基线逐字段比对。夹具明确初始装备，不在App赠送、不修改原Catalog/掉落/AI/骰子/数值，也不把套装规则通过记为专属外观制作完成。既有固定均值策略和有偿移动、真实物品、途中/怪物回合/确认未命中存取及防重复提交继续使用；允许正常失败，不用资源修改造胜利。全量矩阵正在执行，最终计数以实际报告为准。
+
+确认为降低最大行动上限的换装保存边界：旧writer只更新archive，未截断movement.remaining，保存校验发现旧余量超过新容量而拒绝操作。现于同一次保存前按新队伍平均最大AP×50截断余量；提高容量不补移动，失败时装备/生命/AP/库存和移动一起回滚。原无效档仍拒绝，不放松校验，不改格式1，不影响已封存档。源测试直接构造旧写法的保存失败，再验证正式API成功且重新装备不补条。
+
+行囊装备详情新增纯只读对照：基础行动、行动上限、个人当前行动、队伍地图移动上限、真实普攻骰子/射程、换装后技能。行动戒指只加个人基础AP，地图上限不变；原换装不回血/不补AP，开场按各自基础AP恢复，均经检查。原P2换装限制、未接入套装外观限制保持，不制作新动作或外观，无新美术认可；本轮动作显示沿用原素材与四组专项回归，不把纯规则/数学检查称实机美术验收。
+
+Linux完整259项零失败、四组原专项回归和项目绑定/Swift语法检查通过；新增六项覆盖36起始组合的144次武器比较/换装、个人AP、最大容量截断/重装、无效档、保存失败回滚、套装技能阈值和确定性装备行程。候选1.6.63/build90，设备Release、Mac抽样、包检和公开下载待执行。不运行App/模拟器/实机，交付直接IPA。结果放Media/Build90。
+
+后两项：行程编辑与续档异常回归；小队职业配置入口。
+
+## Build89交付 · 行程路线与资源提示（2026-11-06）
+
+地图新增持续路线条：当前目的地、剩余真实道路距离、暂停/道路选点抵达状态，以及按现有移动/金币计算的最低途中旅费及缺口。薄金色导航线只画未走道路，终点环对齐实际投影/节点，途中改向和续档同步；不改步态/速度或自动推进事件，线段每0.1秒刷新。“路线与目标”显示真实个人药水/盾药/复活石和存活状态，提供按原移动规划路程最近的一处未领补给/待战地点及返回营地；选择后走原移动入口，抵达仍主动交互。原结算与手动补满/金币购买保留，无移动先补充；旅费考虑每次移动容量封顶取整、末次可由余额部分购买，不预支未领补给，实际购买可比最低预算补入更多距离。
+
+旧档直接读取实际保存的怪物/奖励/道路游标，已领/已清不列为推荐，不重投/不重发，存档格式1不变。零补给不造节点；倒地成员库存分别列出不混作可用治疗。地图移动仍平均最大AP×50、三倍速度、各角色战斗AP独立；原Catalog/怪物/地图/装备/动作/特效资源全保持，无新美术认可。小屏横屏左侧路线说明与怪物预览切换避让、右侧资源栏缩宽；五组离线尺寸检查非UIKit截图或设备测试。
+
+最终1.6.62/build89；源码9e49a8d6f4d8cd9d0c53e3114b26018efced38f6，run 42185218219 attempt1；Linux/Mac253项纯Swift、四组原回归及设备Release通过。路线默认/最大地图初始、移动17.25距离后、暂停续档导出跨平台逐字段一致（坐标误差<1e−8）。27组固定策略行程与Build88逐字段一致：24通关/3正常失败，1330动作、354存取恢复、171确认动作重建，六物种实际参战，无路费中断，不是人类胜率或所有装备覆盖。来源、逐项结果、实际日志与包检见Media/Build89。
+
+IPA CRC/经典ZIP2.0本地中央头无extra/arm64与执行权限/版本平台/Metal/12怪物图集和6数据资产通过；整份Assets.car及原地图/步态/规则JSON与Build88字节一致。公开固定链接完整GET200，64671461字节，SHA256 045aa944a29dd2f641f97c601c761425863bfc2713ed9ca5fdf466d804464edd；[直接IPA](https://raw.githubusercontent.com/liamchan-rgb/experiment/bf05594630fa59cdc09ed889440a2f0621ea0486/Downloads/MeadowJourney-b89.ipa)。未运行App/模拟器/实机，设备体验仍由用户验收。
+
+后两项：职业及装备搭配战斗回归；根据回归与用户实机反馈完善整段行程体验。
+
 ## Build89候选 · 行程路线与资源提示（2026-11-06）
 
 补查窄屏预览卡片：状态栏两行缩为“存活数 / 抵达后可开战”，保持15号字体，避免原长提示在缩窄后挤成三四行；可路过说明仍在路线菜单。首个候选run42183804516因该显示补查主动取消，最终交付必须使用包含此修正的新源码归档。

@@ -1,3 +1,45 @@
+## Build95 · 地点参数编辑 · 1.6.68
+
+[直接下载 IPA](https://raw.githubusercontent.com/liamchan-rgb/experiment/ac9d4cb0d2e2c3385d5d535a2bec2a2d3d0ca6b2/Downloads/MeadowJourney-b95.ipa) · [说明](../docs/planning/random-map-v1/build95-site-editor.md) · [桌游demo对接方案](../docs/integration/tabletop-demo-bridge-plan.md)
+
+编辑地点可设置服务类型、买卖价比例、事件金币/恢复量；常驻字段名称、保存失败保留草稿、已处理事件锁定。桌游库只读核查完成，未修改或声称已对接。296测试、四专项、78原行程、设备Release和公开完整GET通过；未运行App/模拟器/实机。
+
+## Build94 · 商店与可选地点事件 · 1.6.67
+
+[直接下载 IPA](https://raw.githubusercontent.com/liamchan-rgb/experiment/8c9f5be65d58030c430d3692091bdaa03ec08054/Downloads/MeadowJourney-b94.ipa) · [说明](../docs/planning/random-map-v1/build94-sites-commerce.md) · [缺图清单](../docs/planning/random-map-v1/art-gaps.md)
+
+营地商店、按原目录单价的个人买卖；原空地按种子固定为行商/失物/清泉，主动选择才处理，事件全队一次。P2购买—装备规则接通，缺图仅标注并用现有资源占位。290测试、四专项、78原行程、设备Release和公开完整GET通过。未运行App/模拟器/实机。
+
+## Build93 · 组队资源与行程收尾 · 1.6.66
+
+[直接下载 IPA](https://raw.githubusercontent.com/liamchan-rgb/experiment/419c106fba8292e3c87358720e0ae506dd5a0b2f/Downloads/MeadowJourney-b93.ipa) · [说明](../docs/planning/random-map-v1/build93-party-journey-wrap.md) · [包检](../Media/Build93/verification.json)
+
+实际施法者/目标/个人行动、库存与技能次数提示；道具菜单查看双方资源。行程结束指引含返营路费与金币不足方案；结果页显示最终个人状态。281测试、四专项、78组规则行程、设备Release与公开完整GET通过。未运行App/模拟器/实机。美术缺口只标注，清单见任务说明。
+
+## Build92 · 双人职业配置 · 1.6.65
+
+[直接下载 IPA](https://raw.githubusercontent.com/liamchan-rgb/experiment/5d321900bcd3687a5fc4b33b5c92d57515cd8b4b/Downloads/MeadowJourney-b92.ipa) · [入口与验证说明](../docs/planning/random-map-v1/build92-party-configuration.md) · [包检](../Media/Build92/verification.json)
+
+新行程P1/P2分别选四个现有职业，可重复，显示真实职业基础属性和技能。旧档沿用原职业、装备与进度；不提供行程中洗职业。修正P1游侠援护默认选自己，龙鳞护盾不再显示10/8。275测试、四回归、原27行程+27装备代表+新增24双人行程与设备Release通过，公开完整GET校验通过。沿用全部原美术，不运行App/模拟器/实机。
+
+## Build91 · 怪物草稿编辑与续档保护 · 1.6.64
+
+[直接下载 IPA](https://raw.githubusercontent.com/liamchan-rgb/experiment/96bfac11b11fcc877dc274bea4d10eb1ee6e0fa6/Downloads/MeadowJourney-b91.ipa) · [入口与验证说明](../docs/planning/random-map-v1/build91-save-editing.md) · [包检](../Media/Build91/verification.json)
+
+怪物编辑支持原六物种与旧鹿、逐槽混合编队；保存前确认重置生命，取消不写档、失败可重试。后台一次保存暂停/道路游标/镜头，失败安全停步且不丢资源。坏历史记录不再阻断正常结算查看，原文件保留。267测试、四回归、原27行程+27装备抽样与设备Release通过，公开完整GET校验通过。未运行App/模拟器/实机。
+
+## Build90 · 装备对照与职业行程回归 · 1.6.63
+
+[直接下载 IPA](https://raw.githubusercontent.com/liamchan-rgb/experiment/04875c29798a3ca69504863b9fd3a4f829d64d20/Downloads/MeadowJourney-b90.ipa) · [说明与范围](../docs/planning/random-map-v1/build90-loadout-regression.md) · [包检](../Media/Build90/verification.json)
+
+换装详情显示真实普攻/射程、技能、基础与最大行动、队伍地图移动上限。修复降低最大行动上限时余量超限导致换装保存失败；装备和移动一并保存或回滚，提高容量不补条。259项测试、177组Linux装备行程、Mac27组抽样与原27基线、设备Release通过。公开完整GET通过，未运行App/模拟器/实机。专属套装外观仍待制作，未开放原受限按钮。
+
+## Build89 · 行程路线与资源提示 · 1.6.62
+
+[直接下载 IPA](https://raw.githubusercontent.com/liamchan-rgb/experiment/bf05594630fa59cdc09ed889440a2f0621ea0486/Downloads/MeadowJourney-b89.ipa) · [使用与验证说明](../docs/planning/random-map-v1/build89-route-guidance.md) · [包检](../Media/Build89/verification.json)
+
+路线条显示真实目的地、剩余路程及途中最低金币缺口；“路线与目标”可选最近补给/待战地点或返回营地，并显示各成员实际消耗品。路线只导航，抵达后主动交互。旧档直接可用，无资源重发。253项测试、四组回归、27组行程与设备Release通过；公开完整GET校验通过，未运行App/模拟器/实机。
+
 ## Build88 · 首领与战前补给节奏 · 1.6.61
 
 [直接下载 IPA](https://raw.githubusercontent.com/liamchan-rgb/experiment/c5e97ff25b51269e56ea8d7e18275b59060c1e9e/Downloads/MeadowJourney-b88.ipa) · [节奏说明](../docs/planning/random-map-v1/build88-tempo.md) · [包检](../Media/Build88/verification.json)

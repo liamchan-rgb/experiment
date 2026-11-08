@@ -1,0 +1,13 @@
+{
+  "cases": 24,
+  "outcomes": {
+    "defeat": 3,
+    "victory": 21
+  },
+  "actions": 1041,
+  "resumes": 286,
+  "stagedRestarts": 136,
+  "blockedRecovery": 0,
+  "expectedCasesMatched": true,
+  "appSimulatorDeviceRun": false
+}

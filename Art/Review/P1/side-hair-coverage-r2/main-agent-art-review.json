@@ -1,0 +1,51 @@
+{
+  "reviewer": "main agent",
+  "rebuiltImagesViewedAfterExecutorOutage": true,
+  "renderRunID": 42451122457,
+  "renderReviewCommit": "950f4de9d08b8d74e7534c12ac171eb3269e01c9",
+  "viewedImages": [
+    {
+      "path": "Art/Review/P1/side-hair-coverage-r2/side-before-after-whole-body-1x.png",
+      "gitBlob": "772c5a3d1b3b1cda31bb172526336a43499af697"
+    },
+    {
+      "path": "Art/Review/P1/side-hair-coverage-r2/walking-battle-same-head-2x.png",
+      "gitBlob": "e5d26647169428e515ccc31a8a45dad8730d5c31"
+    },
+    {
+      "path": "Art/Review/P1/side-hair-coverage-r2/left-all-six-whole-body-1x.png",
+      "gitBlob": "ff9ef1c5171f5d7592e2574848ade3f8f9622350"
+    },
+    {
+      "path": "Art/Review/P1/side-hair-coverage-r2/right-all-six-whole-body-1x.png",
+      "gitBlob": "4f51ee63f16b4890b369e88640e35b36c98c9adc"
+    },
+    {
+      "path": "Art/Review/P1/side-hair-coverage-r2/down-left-all-six-whole-body-1x.png",
+      "gitBlob": "170cf94a69f226cb393470e76ce6f2cd7da0dc50"
+    },
+    {
+      "path": "Art/Review/P1/side-hair-coverage-r2/down-right-all-six-whole-body-1x.png",
+      "gitBlob": "4a3caf89e20f92dd8b7c612385a294d6c71b501a"
+    },
+    {
+      "path": "Art/Review/P1/side-hair-coverage-r2/paired-actual-decoded-056.png",
+      "gitBlob": "13b7aee84ae7be3469b802a4952b070bf3222c4e"
+    },
+    {
+      "path": "Art/Review/P1/side-hair-coverage-r2/browser-gif-review/3-sample-12.png",
+      "gitBlob": "819c6526ee9bfa893d7efca263c6aedb68c7095d"
+    }
+  ],
+  "focus": [
+    "whole-figure proportion at 1x and 2x",
+    "lower side hairline and temple locks",
+    "visible eyes and ears",
+    "same hair in walking and battle",
+    "actual decoded GIF and browser sample"
+  ],
+  "all4032MechanicalCompositionsVisuallyReviewed": false,
+  "newArtApproval": null,
+  "appSimulatorOrDeviceRun": false,
+  "runtimeImported": false
+}

@@ -1,0 +1,8 @@
+{
+  "originalAtlasSHA256": "b1ff288653cef8cb0c2cfc3706b869a07655c2ae32a3fe914868ebb32a8f93ef",
+  "editedClothTiles": 651,
+  "allNonClothPixelsAndAlphaByteExact": true,
+  "handsNotRepaintedOrSwapped": true,
+  "nativeMotionChanged": false,
+  "shortFittedBowVariant": true
+}

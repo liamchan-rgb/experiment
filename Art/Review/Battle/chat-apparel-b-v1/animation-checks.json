@@ -1,0 +1,18 @@
+{
+  "clips": [
+    {
+      "file": "both-armors-attack-normal.gif",
+      "frames": 76,
+      "durationMs": 2700,
+      "sha256": "d61f7f5634aac581664e284c206ffc46c98f21960f3a6a93da942551789891fd"
+    },
+    {
+      "file": "both-armors-states-normal.gif",
+      "frames": 161,
+      "durationMs": 4380,
+      "sha256": "85a66dcf48d56adf397ee42b5d7f25c95835eb1a134fef04603eff788a57e2c5"
+    }
+  ],
+  "scope": "existing production pose samples; independent layer rendering, not App or device capture",
+  "newArtApproval": null
+}

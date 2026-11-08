@@ -30,6 +30,7 @@ public struct MeadowCampaignTravel: Codable, Equatable {
 public struct MeadowCampaignCamera:Codable,Equatable {
     public var x:Double,y:Double,zoom:Double
     public init(x:Double,y:Double,zoom:Double=1){self.x=x;self.y=y;self.zoom=zoom}
+    func validate()throws {guard x.isFinite,y.isFinite,zoom.isFinite,(1...3).contains(zoom) else{throw GameError("镜头数据无效。")}}
 }
 public struct MeadowCampaignCompletion:Codable,Equatable {
     public let id:String,gameID:String,outcome:String
@@ -90,7 +91,7 @@ public struct MeadowCampaignSave:Codable,Equatable {
             }else{guard !archive.state.players.contains(where: \.isAlive) else{throw GameError("队伍未全员倒地。")}}
         }
         if let selectedPlayerID {guard archive.state.players.contains(where:{$0.id==selectedPlayerID}) else{throw GameError("操作成员无效。")}}
-        if let camera {guard camera.x.isFinite,camera.y.isFinite,camera.zoom.isFinite,(1...3).contains(camera.zoom) else {throw GameError("镜头数据无效。")}}
+        try camera?.validate()
         if let t=travel {
             if let stop=t.stopDistance {
                 guard stop.isFinite,stop>0,let last=t.path.last,t.path.count>=2,let p=Self.road(layout,from:t.path[t.path.count-2],to:last),stop<Self.length(p) else{throw GameError("道路目标无效。")}
@@ -120,14 +121,23 @@ public final class MeadowCampaignStore {
         try FileManager.default.createDirectory(at:folder,withIntermediateDirectories:true)
         let target=folder.appendingPathComponent(result.id+".json");try save.encoded().write(to:target,options:.atomic);return target
     }
-    public func completedCampaigns()throws->[MeadowCampaignSave] {
+    public func completedCampaigns()throws->[MeadowCampaignSave] {try completedHistory().saves}
+    public func completedHistory()throws->MeadowCampaignHistory {
         var values=[String:MeadowCampaignSave]()
+        var issues=[MeadowCampaignReadIssue]()
         let folder=url.deletingLastPathComponent().appendingPathComponent("Completed",isDirectory:true)
         if FileManager.default.fileExists(atPath:folder.path){for file in try FileManager.default.contentsOfDirectory(at:folder,includingPropertiesForKeys:nil) where file.pathExtension=="json" {
-            let save=try MeadowCampaignSave.decoded(Data(contentsOf:file));if save.completion != nil{values[save.archive.state.gameID]=save}
+            do {
+                let save=try MeadowCampaignSave.decoded(Data(contentsOf:file))
+                if let result=save.completion {
+                    if let old=values[save.archive.state.gameID]?.completion,old.completedAt>result.completedAt{continue}
+                    values[save.archive.state.gameID]=save
+                }
+            }catch{issues.append(.init(file:file.lastPathComponent,message:error.localizedDescription))}
         }}
-        if let current=try read(),current.completion != nil{values[current.archive.state.gameID]=current}
-        return values.values.sorted{$0.completion!.completedAt>$1.completion!.completedAt}
+        do{if let current=try read(),current.completion != nil{values[current.archive.state.gameID]=current}}
+        catch{issues.append(.init(file:url.lastPathComponent,message:error.localizedDescription))}
+        return .init(saves:values.values.sorted{let a=$0.completion!,b=$1.completion!;return a.completedAt==b.completedAt ? a.id<b.id:a.completedAt>b.completedAt},issues:issues.sorted{$0.file<$1.file})
     }
     public func write(_ data:Data)throws {try FileManager.default.createDirectory(at:url.deletingLastPathComponent(),withIntermediateDirectories:true);try data.write(to:url,options:.atomic)}
 }
@@ -138,6 +148,7 @@ private final class CampaignWriter {
     init(_ snapshot:MeadowCampaignSave,persist:((Data)throws->Void)?){self.snapshot=snapshot;self.persist=persist}
     func write(_ value:MeadowCampaignSave)throws {
         var next=value
+        try next.camera?.validate()
         if let amount=next.movement?.remaining {next.movement?.remaining=min(amount,MeadowMovementRules.capacity(next.archive))}
         if let persist {try persist(next.encoded())};snapshot=next
     }
@@ -204,11 +215,11 @@ public final class MeadowCampaignSession {
         var elder=try c.monster("caveTroll");elder.id="meadowElderStag";elder.name="古树鹿王"
         c.monsters += [stag,elder];try c.validate();return c
     }
-    public static func new(layout:GeneratedMeadowMap,appearanceID:String="forester",playerClassID:String="spellblade",loadouts:[String:GameUnit]?=nil,persist:((Data)throws->Void)?=nil)throws->MeadowCampaignSession {
-        guard ["adventurer","spellblade","dragonKnight"].contains(playerClassID) else{throw GameError("请选择已支持的P1职业。 ")}
+    public static func new(layout:GeneratedMeadowMap,appearanceID:String="forester",playerClassID:String="spellblade",companionClassID:String="ranger",loadouts:[String:GameUnit]?=nil,persist:((Data)throws->Void)?=nil)throws->MeadowCampaignSession {
         let catalog=try self.catalog(),start=layout.map.nodes.first{$0.kind == .start}!.id
+        try MeadowPartyConfiguration(playerClassID:playerClassID,companionClassID:companionClassID).validate(catalog:catalog)
         var units=[String:GameUnit]()
-        for (id,classID) in [("p1",playerClassID),("p2","ranger")] {
+        for (id,classID) in [("p1",playerClassID),("p2",companionClassID)] {
             var u=try GameFactory.player(id:id,name:id.uppercased()+" · "+catalog.playerClass(classID).name,classID:classID,teamID:"party",nodeID:start,catalog:catalog)
             u.inventory=["smallPotion":2,"largePotion":1,"shieldPotion":1,"revivalStone":1]
             if let source=loadouts?[id] {u.equipment=source.equipment;u.inventory=source.inventory}
@@ -245,6 +256,7 @@ public final class MeadowCampaignSession {
                 guard archive.state.units==old.state.units,archive.state.map==old.state.map,archive.history==old.history,archive.state.battle==nil,archive.state.phase == .exploration else{throw GameError("已结算行程只供查看。")}
             }
             var next=writer.snapshot;next.archive=archive
+            if next.completion==nil,let remaining=next.movement?.remaining{next.movement?.remaining=min(remaining,MeadowMovementRules.capacity(archive))}
             if writer.closingAsDefeat{next.travel=nil;next.completion=MeadowCampaignSession.makeCompletion(archive:archive,save:next,outcome:"defeat")}
             try writer.write(next)
         })
@@ -408,7 +420,10 @@ public final class MeadowCampaignSession {
         return try engine.apply(.interactCampaignNode(actors:actors))
     }
     public func pauseAfterFailure(){writer.snapshot.travel?.paused=true}
-    public func checkpoint(camera:MeadowCampaignCamera?=nil)throws {var next=snapshot;if let camera{next.camera=camera};try writer.write(next)}
+    public func checkpoint(camera:MeadowCampaignCamera?=nil,pauseTravel:Bool=false)throws {var next=snapshot;if let camera{next.camera=camera};if pauseTravel{next.travel?.paused=true};try writer.write(next)}
+    public func suspendAndCheckpoint(camera:MeadowCampaignCamera)throws {
+        do{try checkpoint(camera:camera,pauseTravel:true)}catch{pauseAfterFailure();throw error}
+    }
     public func refillExploration()throws {_ = try refillMovement(usingCoins:false)}
     @discardableResult public func configureEncounter(node:Int,templates:[String])throws->OperationReceipt {
         try requireOpenCampaign()

@@ -14,12 +14,17 @@ final class GameScene: SKScene {
     var onCampaignError:((String)->Void)?
     var selectedCampaignPlayerID:String {guard let campaign else{return "p1"};return campaign.selectedPlayerID}
     var campaignCamera:MeadowCampaignCamera { .init(x:Double(cameraCenter.x),y:Double(cameraCenter.y),zoom:Double(zoom)) }
+    private func campaignSiteSymbol(_ id:Int?)->String? {
+        guard let id,let campaign,let kind=campaign.siteKind(node:id) else{return nil}
+        if campaign.engine.state.map.nodes.first(where:{$0.id==id})?.siteResolved==true{return "✓"}
+        return kind == .shop ? "商":kind == .spring ? "泉":"事"
+    }
     func refreshCampaign() {
         guard let campaign,world != nil else{return}
         for (index,d) in world.definition.discoveries.enumerated() {
             guard let id=d.nodeID,let node=campaign.engine.state.map.nodes.first(where:{$0.id==id}) else{continue}
             let cleared=node.rewardCompleted || ((node.kind == .combat || node.kind == .boss) && !campaign.engine.state.units.values.contains{$0.kind == .monster && $0.nodeID==id && $0.isAlive})
-            discoveryNodes[index].children.compactMap{$0 as? SKLabelNode}.first?.text=cleared ? "✓":["combat":"战","boss":"首","reward":"奖","empty":"空"][node.kind.rawValue]
+            discoveryNodes[index].children.compactMap{$0 as? SKLabelNode}.first?.text=cleared ? "✓":campaignSiteSymbol(id) ?? ["combat":"战","boss":"首","reward":"奖","empty":"空"][node.kind.rawValue]
         }
         refreshCampaignRoute()
         updateActors(before:nil)
@@ -177,7 +182,7 @@ final class GameScene: SKScene {
             diamond.name = root.name
             root.addChild(diamond)
             let label = SKLabelNode(fontNamed: "Georgia-Bold")
-            label.text = ["combat":"战","boss":"首","reward":"奖","empty":"空"][discovery.kind ?? ""] ?? "?"
+            label.text = campaignSiteSymbol(discovery.nodeID) ?? ["combat":"战","boss":"首","reward":"奖","empty":"空"][discovery.kind ?? ""] ?? "?"
             label.fontSize = 20
             label.fontColor = SKColor(red: 1, green: 0.95, blue: 0.81, alpha: 1)
             label.verticalAlignmentMode = .center

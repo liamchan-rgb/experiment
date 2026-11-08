@@ -1,0 +1,20 @@
+{
+  "id": 13502423553,
+  "node_id": "MDg6QXJ0aWZhY3QxMzUwMjQyMzU1Mw==",
+  "name": "random-map-build-42218974754",
+  "size_in_bytes": 60933625,
+  "url": "https://api.github.com/repos/liamchan-rgb/experiment/actions/artifacts/13502423553",
+  "archive_download_url": "https://api.github.com/repos/liamchan-rgb/experiment/actions/artifacts/13502423553/zip",
+  "expired": false,
+  "digest": "sha256:8f6f2089da728ff73a61c5ae507b9884973ee038be6f38f8a3a0fc3dbf25b3f7",
+  "created_at": "2026-11-06T12:46:38Z",
+  "updated_at": "2026-11-06T12:46:38Z",
+  "expires_at": "2026-12-06T12:46:34Z",
+  "workflow_run": {
+    "id": 42218974754,
+    "repository_id": 1418289929,
+    "head_repository_id": 1418289929,
+    "head_branch": "fix/build33-face-grounding-camera",
+    "head_sha": "87c11a02cafd7cc71dbe6b972489aea1ad04e049"
+  }
+}

@@ -1,0 +1,208 @@
+[
+  {
+    "journey" : {
+      "actions" : 57,
+      "actionsUsed" : {
+        "enemy:attack" : 13,
+        "enemy:dragonFlame" : 1,
+        "enemy:dragonScaleWard" : 2,
+        "player:ambush" : 5,
+        "player:attack" : 17,
+        "player:heavyStrike" : 5,
+        "player:largePotion" : 3,
+        "player:rally" : 5,
+        "player:shieldPotion" : 2,
+        "player:smallPotion" : 3,
+        "player:support" : 1
+      },
+      "battleDetails" : [
+        {
+          "collectedSupplies" : [
+            0,
+            1
+          ],
+          "firstActor" : "slime",
+          "healthAfter" : {
+            "p1" : 8,
+            "p2" : 18
+          },
+          "healthBefore" : {
+            "p1" : 12,
+            "p2" : 18
+          },
+          "naturalTwenties" : {
+
+          },
+          "node" : 2,
+          "outcome" : "victory",
+          "rounds" : 1,
+          "templates" : [
+            "slime"
+          ]
+        },
+        {
+          "collectedSupplies" : [
+            0,
+            1
+          ],
+          "firstActor" : "p1",
+          "healthAfter" : {
+            "p1" : 6,
+            "p2" : 14
+          },
+          "healthBefore" : {
+            "p1" : 8,
+            "p2" : 18
+          },
+          "naturalTwenties" : {
+
+          },
+          "node" : 5,
+          "outcome" : "victory",
+          "rounds" : 5,
+          "templates" : [
+            "ruinDragon"
+          ]
+        },
+        {
+          "collectedSupplies" : [
+            0,
+            1
+          ],
+          "firstActor" : "p1",
+          "healthAfter" : {
+            "p1" : 12,
+            "p2" : 18
+          },
+          "healthBefore" : {
+            "p1" : 6,
+            "p2" : 14
+          },
+          "naturalTwenties" : {
+
+          },
+          "node" : 7,
+          "outcome" : "victory",
+          "rounds" : 2,
+          "templates" : [
+            "wolf",
+            "goblinArcher"
+          ]
+        },
+        {
+          "collectedSupplies" : [
+            0,
+            1,
+            9
+          ],
+          "firstActor" : "stoneGuardian",
+          "healthAfter" : {
+            "p1" : 8,
+            "p2" : 18
+          },
+          "healthBefore" : {
+            "p1" : 12,
+            "p2" : 18
+          },
+          "naturalTwenties" : {
+
+          },
+          "node" : 4,
+          "outcome" : "victory",
+          "rounds" : 1,
+          "templates" : [
+            "stoneGuardian"
+          ]
+        },
+        {
+          "collectedSupplies" : [
+            0,
+            1,
+            9
+          ],
+          "firstActor" : "p2",
+          "healthAfter" : {
+            "p1" : 8,
+            "p2" : 18
+          },
+          "healthBefore" : {
+            "p1" : 8,
+            "p2" : 18
+          },
+          "naturalTwenties" : {
+
+          },
+          "node" : 8,
+          "outcome" : "victory",
+          "rounds" : 1,
+          "templates" : [
+            "wolf"
+          ]
+        }
+      ],
+      "battles" : 5,
+      "blockedRecovery" : 0,
+      "cleared" : 5,
+      "collected" : [
+        0,
+        1,
+        9
+      ],
+      "dropCoins" : 40,
+      "finalAP" : {
+        "p1" : 3,
+        "p2" : 3
+      },
+      "finalCoins" : 48,
+      "finalHealth" : {
+        "p1" : 8,
+        "p2" : 18
+      },
+      "foughtSpecies" : [
+        "goblinArcher",
+        "ruinDragon",
+        "slime",
+        "stoneGuardian",
+        "wolf"
+      ],
+      "itinerary" : "closed-tree",
+      "manualActionRefills" : 5,
+      "monsterActions" : 16,
+      "movementSpent" : 80,
+      "nodeCoins" : 80,
+      "outcome" : "victory",
+      "plannedSpecies" : [
+        "goblinArcher",
+        "ruinDragon",
+        "slime",
+        "stoneGuardian",
+        "wolf"
+      ],
+      "resumes" : 11,
+      "role" : "adventurer",
+      "seed" : "0",
+      "size" : 10,
+      "stagedRestarts" : 5,
+      "startingCoins" : 8,
+      "totalDistance" : 4250.658135506265,
+      "visited" : [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ]
+    },
+    "loadout" : {
+      "equipment" : {
+        "weapon" : "trainingSword"
+      },
+      "id" : "trainingSword-plain"
+    }
+  }
+]

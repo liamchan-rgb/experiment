@@ -1,0 +1,95 @@
+[0/1] Planning build
+Building for debugging...
+[0/24] Write sources
+[3/24] Write swift-version--3C8F63DB8035BADF.txt
+[5/22] Emitting module MeadowWorldSupport
+[6/22] Compiling MeadowWorldSupport Campaign.swift
+[7/22] Compiling MeadowWorldSupport EncounterEdit.swift
+[8/25] Compiling MeadowWorldSupport EquipmentReadout.swift
+[9/25] Compiling MeadowWorldSupport EncounterPreview.swift
+[10/25] Compiling MeadowWorldSupport RouteGuidance.swift
+[11/26] Wrapping AST for MeadowWorldSupport for debugging
+[13/31] Compiling MeadowCampaignAuditSupport LoadoutAudit.swift
+[14/31] Compiling MeadowMapExport main.swift
+[15/31] Emitting module MeadowMapExport
+[16/31] Write Objects.LinkFileList
+[18/31] Compiling MeadowCampaignAuditSupport JourneyAudit.swift
+[19/31] Emitting module MeadowCampaignAuditSupport
+[20/31] Linking MeadowMapExport
+[22/40] Compiling MeadowCampaignReview main.swift
+[23/40] Emitting module MeadowCampaignReview
+[24/41] Wrapping AST for MeadowCampaignReview for debugging
+[25/41] Write Objects.LinkFileList
+[27/41] Emitting module MeadowWorldSupportTests
+[27/44] Linking MeadowCampaignReview
+[29/44] Compiling MeadowWorldSupportTests RouteGuidanceTests.swift
+/workspace/experiment/Vendor/ClassroomGameCore/Tests/MeadowWorldSupportTests/SaveEditingTests.swift:112:76: warning: result of call to 'commit' is unused
+110 |         try move(s,to:target);try s.interactCurrentNode();let model=try PartyEncounter(engine:s.engine)
+111 |         for _ in 0..<6 where model.current.map({s.engine.state.units[$0]?.kind == .monster})==true {
+112 |             let intent=try XCTUnwrap(model.prepareMonsterStep());try model.commit(intent.id)
+    |                                                                            `- warning: result of call to 'commit' is unused
+113 |         }
+114 |         let monster=try XCTUnwrap(model.monsterIDs.first),before=s.engine.archive
+[30/44] Compiling MeadowWorldSupportTests SaveEditingTests.swift
+/workspace/experiment/Vendor/ClassroomGameCore/Tests/MeadowWorldSupportTests/SaveEditingTests.swift:112:76: warning: result of call to 'commit' is unused
+110 |         try move(s,to:target);try s.interactCurrentNode();let model=try PartyEncounter(engine:s.engine)
+111 |         for _ in 0..<6 where model.current.map({s.engine.state.units[$0]?.kind == .monster})==true {
+112 |             let intent=try XCTUnwrap(model.prepareMonsterStep());try model.commit(intent.id)
+    |                                                                            `- warning: result of call to 'commit' is unused
+113 |         }
+114 |         let monster=try XCTUnwrap(model.monsterIDs.first),before=s.engine.archive
+[31/44] Compiling MeadowWorldSupportTests TempoTests.swift
+/workspace/experiment/Vendor/ClassroomGameCore/Tests/MeadowWorldSupportTests/SaveEditingTests.swift:112:76: warning: result of call to 'commit' is unused
+110 |         try move(s,to:target);try s.interactCurrentNode();let model=try PartyEncounter(engine:s.engine)
+111 |         for _ in 0..<6 where model.current.map({s.engine.state.units[$0]?.kind == .monster})==true {
+112 |             let intent=try XCTUnwrap(model.prepareMonsterStep());try model.commit(intent.id)
+    |                                                                            `- warning: result of call to 'commit' is unused
+113 |         }
+114 |         let monster=try XCTUnwrap(model.monsterIDs.first),before=s.engine.archive
+[32/44] Compiling MeadowWorldSupportTests JourneyAuditTests.swift
+[33/44] Compiling MeadowWorldSupportTests ProvisionsPreviewTests.swift
+[34/44] Compiling MeadowWorldSupportTests RandomMapTests.swift
+[35/44] Compiling MeadowWorldSupportTests CampaignTests.swift
+[36/44] Compiling MeadowWorldSupportTests EncounterPlannerTests.swift
+[37/44] Compiling MeadowWorldSupportTests EquipmentJourneyTests.swift
+[38/45] /workspace/experiment/Vendor/ClassroomGameCore/.build/x86_64-unknown-linux-gnu/debug/ClassroomGameCorePackageDiscoveredTests.derived/all-discovered-tests.swift
+[39/46] Write sources
+[40/46] Wrapping AST for MeadowWorldSupportTests for debugging
+[42/50] Emitting module ClassroomGameCorePackageDiscoveredTests
+[43/50] Compiling ClassroomGameCorePackageDiscoveredTests MeadowWorldSupportTests.swift
+[44/50] Compiling ClassroomGameCorePackageDiscoveredTests ClassroomGameCoreTests.swift
+[45/50] Compiling ClassroomGameCorePackageDiscoveredTests MeadowBattleSupportTests.swift
+[46/51] Compiling ClassroomGameCorePackageDiscoveredTests all-discovered-tests.swift
+[47/52] /workspace/experiment/Vendor/ClassroomGameCore/.build/x86_64-unknown-linux-gnu/debug/ClassroomGameCorePackageTests.derived/runner.swift
+[48/53] Write sources
+[49/53] Wrapping AST for ClassroomGameCorePackageDiscoveredTests for debugging
+[51/55] Compiling ClassroomGameCorePackageTests runner.swift
+[52/55] Emitting module ClassroomGameCorePackageTests
+[53/55] Write Objects.LinkFileList
+[54/55] Linking ClassroomGameCorePackageTests.xctest
+Build complete! (30.84s)
+Test Suite 'Selected tests' started at 2026-11-06 12:28:44.931
+Test Suite 'SaveEditingTests' started at 2026-11-06 12:28:44.936
+Test Case 'SaveEditingTests.testBackgroundCheckpointWritesCursorPauseCameraAndSelectionExactlyOnce' started at 2026-11-06 12:28:44.936
+Test Case 'SaveEditingTests.testBackgroundCheckpointWritesCursorPauseCameraAndSelectionExactlyOnce' passed (0.069 seconds)
+Test Case 'SaveEditingTests.testBattleCheckpointDoesNotCommitPendingDiceAndResumeRecreatesSameReceiptOnce' started at 2026-11-06 12:28:45.005
+Test Case 'SaveEditingTests.testBattleCheckpointDoesNotCommitPendingDiceAndResumeRecreatesSameReceiptOnce' passed (0.239 seconds)
+Test Case 'SaveEditingTests.testCorruptHistoryAndCurrentDoNotHideHealthyHistoryOrRewriteFiles' started at 2026-11-06 12:28:45.244
+Test Case 'SaveEditingTests.testCorruptHistoryAndCurrentDoNotHideHealthyHistoryOrRewriteFiles' passed (0.056 seconds)
+Test Case 'SaveEditingTests.testEditorDraftOffersAllEightRegisteredSpeciesRetainsSlotsAndDoesNotWriteOnCancel' started at 2026-11-06 12:28:45.300
+Test Case 'SaveEditingTests.testEditorDraftOffersAllEightRegisteredSpeciesRetainsSlotsAndDoesNotWriteOnCancel' passed (0.012 seconds)
+Test Case 'SaveEditingTests.testFailedBackgroundSaveKeepsDurableBytesAndLiveResourcesThenRetriesWithoutDuplicateArrival' started at 2026-11-06 12:28:45.312
+Test Case 'SaveEditingTests.testFailedBackgroundSaveKeepsDurableBytesAndLiveResourcesThenRetriesWithoutDuplicateArrival' passed (0.047 seconds)
+Test Case 'SaveEditingTests.testInvalidCameraIsRejectedWithOrWithoutPersistenceWithoutChangingSnapshot' started at 2026-11-06 12:28:45.359
+Test Case 'SaveEditingTests.testInvalidCameraIsRejectedWithOrWithoutPersistenceWithoutChangingSnapshot' passed (0.04 seconds)
+Test Case 'SaveEditingTests.testMixedEncounterEditFailureRollsBackAndRetryPersistsExactNewRosterOnly' started at 2026-11-06 12:28:45.399
+Test Case 'SaveEditingTests.testMixedEncounterEditFailureRollsBackAndRetryPersistsExactNewRosterOnly' passed (0.049 seconds)
+Test Case 'SaveEditingTests.testRewardEditAndExplicitResetFailAtomicallyAndNeverPayTwice' started at 2026-11-06 12:28:45.448
+Test Case 'SaveEditingTests.testRewardEditAndExplicitResetFailAtomicallyAndNeverPayTwice' passed (0.115 seconds)
+Test Suite 'SaveEditingTests' passed at 2026-11-06 12:28:45.563
+	 Executed 8 tests, with 0 failures (0 unexpected) in 0.627 (0.627) seconds
+Test Suite 'Selected tests' passed at 2026-11-06 12:28:45.563
+	 Executed 8 tests, with 0 failures (0 unexpected) in 0.627 (0.627) seconds
+◇ Test run started.
+↳ Testing Library Version: 6.0.3 (18c42c19cac3faf)
+✔ Test run with 0 tests passed after 0.001 seconds.

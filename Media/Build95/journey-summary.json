@@ -1,0 +1,24 @@
+{
+  "baselineCases": 27,
+  "baselineOutcomes": {
+    "victory": 24,
+    "defeat": 3
+  },
+  "loadoutCases": 27,
+  "loadoutOutcomes": {
+    "victory": 25,
+    "defeat": 2
+  },
+  "baselineActions": 1330,
+  "loadoutActions": 1188,
+  "scope": "27 default and 27 loadout cases compared to Build94; 24 party journeys compared to Build94 reference; not human win rate",
+  "appSimulatorDeviceRun": false,
+  "partyCases": 24,
+  "partyOutcomes": {
+    "defeat": 3,
+    "victory": 21
+  },
+  "partyActions": 1041,
+  "partyResumes": 286,
+  "partyStagedRestarts": 136
+}

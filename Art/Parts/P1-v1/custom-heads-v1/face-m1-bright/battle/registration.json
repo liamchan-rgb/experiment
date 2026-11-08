@@ -1,0 +1,21 @@
+{
+  "sourceMasters": "masters/right/",
+  "featureTranslations": {
+    "face.eyes": [
+      82,
+      65
+    ],
+    "face.brows": [
+      82,
+      64
+    ],
+    "face.mouth": [
+      79,
+      65
+    ]
+  },
+  "noseGeometry": "original MeadowBattleHeroFace [146,116,153,125] nose component",
+  "battlePart": "MeadowBattleHeroFace",
+  "sameUnmodifiedTorsoPose": true,
+  "headSkinEarJawChanged": false
+}

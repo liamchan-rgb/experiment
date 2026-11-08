@@ -175,7 +175,7 @@ final class MeadowPartyStageView:UIView {
         for (id,label) in labels {
             guard let u=value.units[id] else { continue }
             let visible=displayedVitals(for:id,health:u.health,shield:u.shield)
-            label.show(name:(id==current ? "▶ ":"")+u.name,hp:visible.health,maximum:(try? GameRules.attributes(u,catalog:catalog).maximumHealth) ?? u.baseAttributes.maximumHealth,shield:visible.shield,maximumShield:MonsterVisualSpec.find(u.templateID)?.shieldCapacity(catalog:catalog) ?? 8)
+            label.show(name:(id==current ? "▶ ":"")+u.name,hp:visible.health,maximum:(try? GameRules.attributes(u,catalog:catalog).maximumHealth) ?? u.baseAttributes.maximumHealth,shield:visible.shield,maximumShield:max(visible.shield,PartyVisual.shieldDisplayMaximum(unit:u,catalog:catalog)))
         }
         render()
     }

@@ -1,0 +1,23 @@
+{
+  "label": "F1 Ear-cover bob",
+  "genderStyle": "female",
+  "scope": "gender-styled appearance preset on unchanged shared body; not a separate female body",
+  "headCanvas": [
+    96,
+    96
+  ],
+  "headToCanvasSource": "original motion, unchanged",
+  "slots": [
+    "hair.front"
+  ],
+  "noSkinEarsJawOrBodyPixels": true,
+  "fullEightDirections": true,
+  "bindingCount": 104,
+  "uniqueDirectionalLayerPNGs": 8,
+  "hairBackContractChanged": false,
+  "artApproval": null,
+  "runtimeImported": false,
+  "sideHairCoverageRevision": "r2 lowered side hairline and temples; ear-front locks; unchanged face/skin/registration",
+  "designRevision": "r4: restore original front/non-orthogonal views; match ear-cover length on left/right and battle",
+  "frontReferenceCommit": "42df0a0a3c2b15f8e67bf3787d47e7d8ae6564f5"
+}

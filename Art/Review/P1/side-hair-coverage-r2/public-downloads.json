@@ -1,0 +1,1005 @@
+{
+  "publishedCommit": "ba0a601565effe469dc1684a627ce299c4ee7528",
+  "renderRunID": 42451122457,
+  "verificationRunID": "42451542206",
+  "allPublicGETsByteAndSHA256Matched": true,
+  "fileCount": 124,
+  "bytes": 14157951,
+  "mainAgentReviewedRebuiltImages": true,
+  "appSimulatorOrDeviceRun": false,
+  "runtimeImported": false,
+  "files": [
+    {
+      "path": "AGENTS.md",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ba0a601565effe469dc1684a627ce299c4ee7528/AGENTS.md",
+      "status": 200,
+      "bytes": 263075,
+      "sha256": "df15c26659477ea32b7b3ae80f17725c4ccd3c2e5c7d1c8d42661b7f15808a10",
+      "gitBlob": "34689577385747c1673193f5609f5e1a9f502771"
+    },
+    {
+      "path": "ART_TASKS.md",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ba0a601565effe469dc1684a627ce299c4ee7528/ART_TASKS.md",
+      "status": 200,
+      "bytes": 3963,
+      "sha256": "b77c9929cad88c8ef0beede3185b91f9b96e2ad595bff9f8bf2753305bac15a6",
+      "gitBlob": "e2c5786b9da3248cad8b2c18960bdcf61645fd5c"
+    },
+    {
+      "path": "Art/Integration/Appearance-battle-custom-heads-v1/README.md",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ba0a601565effe469dc1684a627ce299c4ee7528/Art/Integration/Appearance-battle-custom-heads-v1/README.md",
+      "status": 200,
+      "bytes": 5667,
+      "sha256": "e9351619d53b14e65a81644e3e6a209ef5705ae37696c4d51be7f3752a8cf5bc",
+      "gitBlob": "4ee4cd2a1d3def9c39d65f830c51f52a359ee248"
+    },
+    {
+      "path": "Art/Integration/Appearance-battle-custom-heads-v1/scene-bindings.json",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ba0a601565effe469dc1684a627ce299c4ee7528/Art/Integration/Appearance-battle-custom-heads-v1/scene-bindings.json",
+      "status": 200,
+      "bytes": 5912,
+      "sha256": "c1c32bdbc8953c3411c3e2f2467e1c220fa3085f1879cbd0454e45234ae3b981",
+      "gitBlob": "2f539eb42c8fab218976431b398648c458a11a68"
+    },
+    {
+      "path": "Art/Parts/P1-v1/custom-heads-v1/hair-f1-bob/asset.json",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ba0a601565effe469dc1684a627ce299c4ee7528/Art/Parts/P1-v1/custom-heads-v1/hair-f1-bob/asset.json",
+      "status": 200,
+      "bytes": 17848,
+      "sha256": "c2ebc3cd2f23c569c4f4da87d7bf258ab2d2b4b55211b9b5fad36588e5d14c4c",
+      "gitBlob": "5b1d5b957e516e1eb8e139fde2a8c02f3abf48a9"
+    },
+    {
+      "path": "Art/Parts/P1-v1/custom-heads-v1/hair-f1-bob/authoring.json",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ba0a601565effe469dc1684a627ce299c4ee7528/Art/Parts/P1-v1/custom-heads-v1/hair-f1-bob/authoring.json",
+      "status": 200,
+      "bytes": 616,
+      "sha256": "c84cb8e66a44b6b61c65cde259c58891391ba29f0bfec722739530bf88bcc9e1",
+      "gitBlob": "e7ccb38990d186120ae0a0183af0acea25b36434"
+    },
+    {
+      "path": "Art/Parts/P1-v1/custom-heads-v1/hair-f1-bob/battle/hair.png",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ba0a601565effe469dc1684a627ce299c4ee7528/Art/Parts/P1-v1/custom-heads-v1/hair-f1-bob/battle/hair.png",
+      "status": 200,
+      "bytes": 6439,
+      "sha256": "6e22dbf8baa6b8584bc20942256b5921c859b9deb5757638fe7466ac00e08229",
+      "gitBlob": "390414675246c6ae0cbd61f0157382edea22528d"
+    },
+    {
+      "path": "Art/Parts/P1-v1/custom-heads-v1/hair-f1-bob/editable/down-left.svg",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ba0a601565effe469dc1684a627ce299c4ee7528/Art/Parts/P1-v1/custom-heads-v1/hair-f1-bob/editable/down-left.svg",
+      "status": 200,
+      "bytes": 135241,
+      "sha256": "766a2ee9586f2d43b59b494cf47ea3a8103f0e846b25b705641c78ae9c0e723b",
+      "gitBlob": "5b4682892f0f229130ee197869d4a0d0ed0bf8ba"
+    },
+    {
+      "path": "Art/Parts/P1-v1/custom-heads-v1/hair-f1-bob/editable/down-right.svg",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ba0a601565effe469dc1684a627ce299c4ee7528/Art/Parts/P1-v1/custom-heads-v1/hair-f1-bob/editable/down-right.svg",
+      "status": 200,
+      "bytes": 135227,
+      "sha256": "4c3d6f78e85d01d75285c6114cfa1deb884f7bbe8b7db3c6acc16c294f420475",
+      "gitBlob": "349649a014681d04917d533cdcd23a11387c1f70"
+    },
+    {
+      "path": "Art/Parts/P1-v1/custom-heads-v1/hair-f1-bob/editable/left.svg",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ba0a601565effe469dc1684a627ce299c4ee7528/Art/Parts/P1-v1/custom-heads-v1/hair-f1-bob/editable/left.svg",
+      "status": 200,
+      "bytes": 132858,
+      "sha256": "c0ac7583a94eec26409573ed67172777ea809ac16f017fae591df162a56d638b",
+      "gitBlob": "7e1ad777f568871f57d7d6cb042a8985199f5d42"
+    },
+    {
+      "path": "Art/Parts/P1-v1/custom-heads-v1/hair-f1-bob/editable/right.svg",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ba0a601565effe469dc1684a627ce299c4ee7528/Art/Parts/P1-v1/custom-heads-v1/hair-f1-bob/editable/right.svg",
+      "status": 200,
+      "bytes": 128298,
+      "sha256": "0da9a1138a6bea466912069e353eb6a8c611e15314c1f83253107d24d532cebf",
+      "gitBlob": "e32d84cf58636236c6c7cc243d3e30e6930d4386"
+    },
+    {
+      "path": "Art/Parts/P1-v1/custom-heads-v1/hair-f1-bob/masters/down-left/hair.front.png",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ba0a601565effe469dc1684a627ce299c4ee7528/Art/Parts/P1-v1/custom-heads-v1/hair-f1-bob/masters/down-left/hair.front.png",
+      "status": 200,
+      "bytes": 6337,
+      "sha256": "353beada804be161523768f302f037b3df5e36ffec695459f58973568689e2be",
+      "gitBlob": "d1ea71c1346c1b8813158363abbb0438f687a9cd"
+    },
+    {
+      "path": "Art/Parts/P1-v1/custom-heads-v1/hair-f1-bob/masters/down-right/hair.front.png",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ba0a601565effe469dc1684a627ce299c4ee7528/Art/Parts/P1-v1/custom-heads-v1/hair-f1-bob/masters/down-right/hair.front.png",
+      "status": 200,
+      "bytes": 6431,
+      "sha256": "d1a66a4ae297c3657b76915098f45abaee9956ca8c82e27e1d4bb20362746506",
+      "gitBlob": "83050bf11317ab0f395f612098122e74ce0d53f9"
+    },
+    {
+      "path": "Art/Parts/P1-v1/custom-heads-v1/hair-f1-bob/masters/left/hair.front.png",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ba0a601565effe469dc1684a627ce299c4ee7528/Art/Parts/P1-v1/custom-heads-v1/hair-f1-bob/masters/left/hair.front.png",
+      "status": 200,
+      "bytes": 5816,
+      "sha256": "e75148cdfc788b8d1603f50617b41f2030702a6700126ef0c75afc87315a015c",
+      "gitBlob": "b534c51f9101f76c240dee116e0f8f3b4e911941"
+    },
+    {
+      "path": "Art/Parts/P1-v1/custom-heads-v1/hair-f1-bob/masters/right/hair.front.png",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ba0a601565effe469dc1684a627ce299c4ee7528/Art/Parts/P1-v1/custom-heads-v1/hair-f1-bob/masters/right/hair.front.png",
+      "status": 200,
+      "bytes": 5913,
+      "sha256": "e02a61251fdb01b00465825eff24d9f4a59eceba8e77026c89454e7d46a02ba2",
+      "gitBlob": "c81b560cd082c4044429a9130d36e23a3c24d4ef"
+    },
+    {
+      "path": "Art/Parts/P1-v1/custom-heads-v1/hair-f2-ponytail/asset.json",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ba0a601565effe469dc1684a627ce299c4ee7528/Art/Parts/P1-v1/custom-heads-v1/hair-f2-ponytail/asset.json",
+      "status": 200,
+      "bytes": 17853,
+      "sha256": "261740daa716b5155f8ecca9f959fd056465cf3636806603f9ac385251f6ac61",
+      "gitBlob": "80f2168cffbb7002d7e4ee3c802fc5388b45dd58"
+    },
+    {
+      "path": "Art/Parts/P1-v1/custom-heads-v1/hair-f2-ponytail/authoring.json",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ba0a601565effe469dc1684a627ce299c4ee7528/Art/Parts/P1-v1/custom-heads-v1/hair-f2-ponytail/authoring.json",
+      "status": 200,
+      "bytes": 617,
+      "sha256": "23619ea9fa41c7cb45ceb2dcf9a5185267c0a72f4edb54ac169119689369850e",
+      "gitBlob": "fb12ed5454923cbd1fd83a5d36332dafcc2f5292"
+    },
+    {
+      "path": "Art/Parts/P1-v1/custom-heads-v1/hair-f2-ponytail/battle/hair.png",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ba0a601565effe469dc1684a627ce299c4ee7528/Art/Parts/P1-v1/custom-heads-v1/hair-f2-ponytail/battle/hair.png",
+      "status": 200,
+      "bytes": 6559,
+      "sha256": "42c07a942a6d3a4b36366119d34d27baf62b9d56dfd30ccda636577487483fdd",
+      "gitBlob": "2971707ac79e4325a6acc7e175295852e1de84ab"
+    },
+    {
+      "path": "Art/Parts/P1-v1/custom-heads-v1/hair-f2-ponytail/editable/down-left.svg",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ba0a601565effe469dc1684a627ce299c4ee7528/Art/Parts/P1-v1/custom-heads-v1/hair-f2-ponytail/editable/down-left.svg",
+      "status": 200,
+      "bytes": 80682,
+      "sha256": "dab518f0f43bbe056ea04b7f850f8048309a6576ef81ecff9ca223f8b5012fa4",
+      "gitBlob": "37bf9d771db35154a036699c96b1c241d363421d"
+    },
+    {
+      "path": "Art/Parts/P1-v1/custom-heads-v1/hair-f2-ponytail/editable/down-right.svg",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ba0a601565effe469dc1684a627ce299c4ee7528/Art/Parts/P1-v1/custom-heads-v1/hair-f2-ponytail/editable/down-right.svg",
+      "status": 200,
+      "bytes": 80555,
+      "sha256": "d3e7e9e9fe49a262b1e97358a09bf92396a38b222174384fa497c8969ba1ea51",
+      "gitBlob": "0066f9d6830114382017e7bfd4d9c205e26b2afd"
+    },
+    {
+      "path": "Art/Parts/P1-v1/custom-heads-v1/hair-f2-ponytail/editable/left.svg",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ba0a601565effe469dc1684a627ce299c4ee7528/Art/Parts/P1-v1/custom-heads-v1/hair-f2-ponytail/editable/left.svg",
+      "status": 200,
+      "bytes": 80702,
+      "sha256": "6fdacf0a1bd319b55c2282294364038caa9af1910b8939e209d49a0a1c39fe89",
+      "gitBlob": "69d05031a036f5391dd38a7290dbf37bc952643b"
+    },
+    {
+      "path": "Art/Parts/P1-v1/custom-heads-v1/hair-f2-ponytail/editable/right.svg",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ba0a601565effe469dc1684a627ce299c4ee7528/Art/Parts/P1-v1/custom-heads-v1/hair-f2-ponytail/editable/right.svg",
+      "status": 200,
+      "bytes": 76252,
+      "sha256": "5dae3457188db1f339a0a6d0919d7d0e249685de14533926dbc39e4ee971f50c",
+      "gitBlob": "d248fe1b04cd7bd045c09feb41828bdacedc7c4a"
+    },
+    {
+      "path": "Art/Parts/P1-v1/custom-heads-v1/hair-f2-ponytail/masters/down-left/hair.front.png",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ba0a601565effe469dc1684a627ce299c4ee7528/Art/Parts/P1-v1/custom-heads-v1/hair-f2-ponytail/masters/down-left/hair.front.png",
+      "status": 200,
+      "bytes": 6359,
+      "sha256": "c4c4a1e1ab80c5f2987ab6af89f88555aa6bcd6e1bbf010781b63bfbab478e3f",
+      "gitBlob": "c0724723233480165588b8f0bda98769168a2e64"
+    },
+    {
+      "path": "Art/Parts/P1-v1/custom-heads-v1/hair-f2-ponytail/masters/down-right/hair.front.png",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ba0a601565effe469dc1684a627ce299c4ee7528/Art/Parts/P1-v1/custom-heads-v1/hair-f2-ponytail/masters/down-right/hair.front.png",
+      "status": 200,
+      "bytes": 6286,
+      "sha256": "727167a2d48fe1b95c96d89959a42f24900e11556f9696a8acb9fb61ef1325ed",
+      "gitBlob": "77b92bbd613e56c6835ef367a37a9a5a9fc84905"
+    },
+    {
+      "path": "Art/Parts/P1-v1/custom-heads-v1/hair-f2-ponytail/masters/left/hair.front.png",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ba0a601565effe469dc1684a627ce299c4ee7528/Art/Parts/P1-v1/custom-heads-v1/hair-f2-ponytail/masters/left/hair.front.png",
+      "status": 200,
+      "bytes": 6078,
+      "sha256": "4811d6d81fb417ab1f9a64e128e459638dde7c91c2065fae7390c7eed0ffde4b",
+      "gitBlob": "8a5a14a69afe721bb3ecf900f9080cd0e8a7811c"
+    },
+    {
+      "path": "Art/Parts/P1-v1/custom-heads-v1/hair-f2-ponytail/masters/right/hair.front.png",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ba0a601565effe469dc1684a627ce299c4ee7528/Art/Parts/P1-v1/custom-heads-v1/hair-f2-ponytail/masters/right/hair.front.png",
+      "status": 200,
+      "bytes": 6030,
+      "sha256": "7c9bf363cfaee88d4e1de9cc3ccd811509c70b6481d9e88af45ab8c35071a46a",
+      "gitBlob": "f0fe5d65f12a83b2148cba09ebe6599bef4d84a8"
+    },
+    {
+      "path": "Art/Parts/P1-v1/custom-heads-v1/hair-f3-bun/asset.json",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ba0a601565effe469dc1684a627ce299c4ee7528/Art/Parts/P1-v1/custom-heads-v1/hair-f3-bun/asset.json",
+      "status": 200,
+      "bytes": 17848,
+      "sha256": "ab751f9bc4e74d30e484268439c3bb6d57af8457151c1e77c50b914eb13d562f",
+      "gitBlob": "becb2be2046b5322b84593b1f87043839cc09482"
+    },
+    {
+      "path": "Art/Parts/P1-v1/custom-heads-v1/hair-f3-bun/authoring.json",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ba0a601565effe469dc1684a627ce299c4ee7528/Art/Parts/P1-v1/custom-heads-v1/hair-f3-bun/authoring.json",
+      "status": 200,
+      "bytes": 619,
+      "sha256": "6d0517af2c347410645e077fc25e3190c0e8ecdc601f42b1bec7682bbd379e0c",
+      "gitBlob": "90b91574ff1263f777981998cf12066ce9c5a240"
+    },
+    {
+      "path": "Art/Parts/P1-v1/custom-heads-v1/hair-f3-bun/battle/hair.png",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ba0a601565effe469dc1684a627ce299c4ee7528/Art/Parts/P1-v1/custom-heads-v1/hair-f3-bun/battle/hair.png",
+      "status": 200,
+      "bytes": 6745,
+      "sha256": "4b5706929f8c27d22c87eba2af5b0800334193493c9cdcf79a80fc1e2cc86e2a",
+      "gitBlob": "c64b78cf0d0b383a3e128ca5db450123b808528e"
+    },
+    {
+      "path": "Art/Parts/P1-v1/custom-heads-v1/hair-f3-bun/editable/down-left.svg",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ba0a601565effe469dc1684a627ce299c4ee7528/Art/Parts/P1-v1/custom-heads-v1/hair-f3-bun/editable/down-left.svg",
+      "status": 200,
+      "bytes": 81152,
+      "sha256": "6c37b4d2a8446e47ac8b67342be2f53fb306e77aa0cd65cab916d90e0ae0f4fd",
+      "gitBlob": "cf0b3d26468dd790ac9b9b3ac85f28059031d38f"
+    },
+    {
+      "path": "Art/Parts/P1-v1/custom-heads-v1/hair-f3-bun/editable/down-right.svg",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ba0a601565effe469dc1684a627ce299c4ee7528/Art/Parts/P1-v1/custom-heads-v1/hair-f3-bun/editable/down-right.svg",
+      "status": 200,
+      "bytes": 81310,
+      "sha256": "68c47650a2df3c89008a4273a8cb406935997bb36bc6078f7c60598e150a8568",
+      "gitBlob": "5c4dbbdaff6e2ba5dd42c00a2d0f739d0d204eea"
+    },
+    {
+      "path": "Art/Parts/P1-v1/custom-heads-v1/hair-f3-bun/editable/left.svg",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ba0a601565effe469dc1684a627ce299c4ee7528/Art/Parts/P1-v1/custom-heads-v1/hair-f3-bun/editable/left.svg",
+      "status": 200,
+      "bytes": 81913,
+      "sha256": "4ecab0428e15df63de8cde1e8571c7eb1fb14b0e2b802c7010b2405b68363f8d",
+      "gitBlob": "cab6093ebfe1e3bdbd21edc2c894947d653600f4"
+    },
+    {
+      "path": "Art/Parts/P1-v1/custom-heads-v1/hair-f3-bun/editable/right.svg",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ba0a601565effe469dc1684a627ce299c4ee7528/Art/Parts/P1-v1/custom-heads-v1/hair-f3-bun/editable/right.svg",
+      "status": 200,
+      "bytes": 77463,
+      "sha256": "326836432b076d25ac9744e62ea580a26e735ab2eab535ba8a60928fcfeda7bb",
+      "gitBlob": "ead00a0dc6237f91981e4bef9ebfec929e0b0865"
+    },
+    {
+      "path": "Art/Parts/P1-v1/custom-heads-v1/hair-f3-bun/masters/down-left/hair.front.png",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ba0a601565effe469dc1684a627ce299c4ee7528/Art/Parts/P1-v1/custom-heads-v1/hair-f3-bun/masters/down-left/hair.front.png",
+      "status": 200,
+      "bytes": 6474,
+      "sha256": "80371a19cb606bb04fa78db46da52c73630fde2aa5a8465f2b8905709085b952",
+      "gitBlob": "4bcc8de712fb4ecd526a2d8d0b50c7a1ad8e23dc"
+    },
+    {
+      "path": "Art/Parts/P1-v1/custom-heads-v1/hair-f3-bun/masters/down-right/hair.front.png",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ba0a601565effe469dc1684a627ce299c4ee7528/Art/Parts/P1-v1/custom-heads-v1/hair-f3-bun/masters/down-right/hair.front.png",
+      "status": 200,
+      "bytes": 6609,
+      "sha256": "636ef3f7cd2af8ab32a75edea8b27cb77ee24b90094d90ff2acd75463cf177b1",
+      "gitBlob": "5f2d27101cd147d8751591465571b5b014347121"
+    },
+    {
+      "path": "Art/Parts/P1-v1/custom-heads-v1/hair-f3-bun/masters/left/hair.front.png",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ba0a601565effe469dc1684a627ce299c4ee7528/Art/Parts/P1-v1/custom-heads-v1/hair-f3-bun/masters/left/hair.front.png",
+      "status": 200,
+      "bytes": 6180,
+      "sha256": "cb43cdeb6cbac04411abf95d0e16a577f033a8942cb1658872a87a27c6619307",
+      "gitBlob": "5751eb3ef803f3b6f3af38fea7a16a0d14851702"
+    },
+    {
+      "path": "Art/Parts/P1-v1/custom-heads-v1/hair-f3-bun/masters/right/hair.front.png",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ba0a601565effe469dc1684a627ce299c4ee7528/Art/Parts/P1-v1/custom-heads-v1/hair-f3-bun/masters/right/hair.front.png",
+      "status": 200,
+      "bytes": 6215,
+      "sha256": "0caf3ba538653b574802d025d0f10223e2e72299d906846ec9e94fe03d212688",
+      "gitBlob": "1767c1bbec3b903664b657ee8a42684896dbb60c"
+    },
+    {
+      "path": "Art/Parts/P1-v1/custom-heads-v1/hair-m1-short/asset.json",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ba0a601565effe469dc1684a627ce299c4ee7528/Art/Parts/P1-v1/custom-heads-v1/hair-m1-short/asset.json",
+      "status": 200,
+      "bytes": 17850,
+      "sha256": "9c60207ffc993fa84cb62624844ff2446d427908a5b1d853413761876696dba2",
+      "gitBlob": "6990cb1d09f31ef92b386bd6d9ffbaaab8e4f3f4"
+    },
+    {
+      "path": "Art/Parts/P1-v1/custom-heads-v1/hair-m1-short/authoring.json",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ba0a601565effe469dc1684a627ce299c4ee7528/Art/Parts/P1-v1/custom-heads-v1/hair-m1-short/authoring.json",
+      "status": 200,
+      "bytes": 616,
+      "sha256": "d90010e58c353212f6c7dc1f402e1deaaf21ac42233cbe264c3160f7d6f539e4",
+      "gitBlob": "d4c857e413a0c985c18edc3f3df70e8caf956ab9"
+    },
+    {
+      "path": "Art/Parts/P1-v1/custom-heads-v1/hair-m1-short/battle/hair.png",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ba0a601565effe469dc1684a627ce299c4ee7528/Art/Parts/P1-v1/custom-heads-v1/hair-m1-short/battle/hair.png",
+      "status": 200,
+      "bytes": 6050,
+      "sha256": "6d63f35eb20e991627c7791d09b6458ff1bc54574ebe324523a9d3ccf0024535",
+      "gitBlob": "d2c493c875a04a57c91080853a7f2be7777de40d"
+    },
+    {
+      "path": "Art/Parts/P1-v1/custom-heads-v1/hair-m1-short/editable/down-left.svg",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ba0a601565effe469dc1684a627ce299c4ee7528/Art/Parts/P1-v1/custom-heads-v1/hair-m1-short/editable/down-left.svg",
+      "status": 200,
+      "bytes": 80211,
+      "sha256": "285a9e59c32f92d9e7201bc39faa96a1aa284da47b6616c283562247d6906ff1",
+      "gitBlob": "694916b58715a2f3ef9ee3748bdcb29da377ffd3"
+    },
+    {
+      "path": "Art/Parts/P1-v1/custom-heads-v1/hair-m1-short/editable/down-right.svg",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ba0a601565effe469dc1684a627ce299c4ee7528/Art/Parts/P1-v1/custom-heads-v1/hair-m1-short/editable/down-right.svg",
+      "status": 200,
+      "bytes": 80312,
+      "sha256": "432e3ee4d1f82f66b0911ad3850e352b838f4bd790d5f7573ab2917be778d30f",
+      "gitBlob": "08197141be71ed80a2e722f1ab86c4e98ace8836"
+    },
+    {
+      "path": "Art/Parts/P1-v1/custom-heads-v1/hair-m1-short/editable/left.svg",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ba0a601565effe469dc1684a627ce299c4ee7528/Art/Parts/P1-v1/custom-heads-v1/hair-m1-short/editable/left.svg",
+      "status": 200,
+      "bytes": 80003,
+      "sha256": "ed802991f0647e9d3b06f17e04d7eb5a46d41245b9e25c5fcadcd10d3c870486",
+      "gitBlob": "6e17ce261f9a994ff4367bc1b1dc0cd2f3124be6"
+    },
+    {
+      "path": "Art/Parts/P1-v1/custom-heads-v1/hair-m1-short/editable/right.svg",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ba0a601565effe469dc1684a627ce299c4ee7528/Art/Parts/P1-v1/custom-heads-v1/hair-m1-short/editable/right.svg",
+      "status": 200,
+      "bytes": 76237,
+      "sha256": "f8a95b8a15ad2c04712c1d00cf0c983be4b36f549aa40fda751dc70598a55981",
+      "gitBlob": "6162b4dde05b6687c28cc2f7f28bd2028fde1b9e"
+    },
+    {
+      "path": "Art/Parts/P1-v1/custom-heads-v1/hair-m1-short/masters/down-left/hair.front.png",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ba0a601565effe469dc1684a627ce299c4ee7528/Art/Parts/P1-v1/custom-heads-v1/hair-m1-short/masters/down-left/hair.front.png",
+      "status": 200,
+      "bytes": 5730,
+      "sha256": "534c192fe2c587e4d9a6bb98a2ba2dcd118de154a4f09f88ee2c2a766a6b9223",
+      "gitBlob": "2560db3f44175f2993096e869ec3a856b28c5f88"
+    },
+    {
+      "path": "Art/Parts/P1-v1/custom-heads-v1/hair-m1-short/masters/down-right/hair.front.png",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ba0a601565effe469dc1684a627ce299c4ee7528/Art/Parts/P1-v1/custom-heads-v1/hair-m1-short/masters/down-right/hair.front.png",
+      "status": 200,
+      "bytes": 5808,
+      "sha256": "80c3c09496694562b9f8bddbc91174f0b3e919ed439edef833d6e2f8ad212ca5",
+      "gitBlob": "565d7f77c966d77eb5cbe5ddf463b74724552f88"
+    },
+    {
+      "path": "Art/Parts/P1-v1/custom-heads-v1/hair-m1-short/masters/left/hair.front.png",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ba0a601565effe469dc1684a627ce299c4ee7528/Art/Parts/P1-v1/custom-heads-v1/hair-m1-short/masters/left/hair.front.png",
+      "status": 200,
+      "bytes": 5478,
+      "sha256": "328fe49ad9334cb299aa44cea463ed8045c107edc55784fc90f8c6bc1b904fb6",
+      "gitBlob": "347cc11727ee496e342700aab9e1dfc29347361e"
+    },
+    {
+      "path": "Art/Parts/P1-v1/custom-heads-v1/hair-m1-short/masters/right/hair.front.png",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ba0a601565effe469dc1684a627ce299c4ee7528/Art/Parts/P1-v1/custom-heads-v1/hair-m1-short/masters/right/hair.front.png",
+      "status": 200,
+      "bytes": 5565,
+      "sha256": "fc789e774aa1d3340a752f77f111e1790717259e77e2a3326288691dfe700061",
+      "gitBlob": "cff4a0eee7c4a160b0cd34f77bf07d52736a5d53"
+    },
+    {
+      "path": "Art/Parts/P1-v1/custom-heads-v1/hair-m2-sidepart/asset.json",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ba0a601565effe469dc1684a627ce299c4ee7528/Art/Parts/P1-v1/custom-heads-v1/hair-m2-sidepart/asset.json",
+      "status": 200,
+      "bytes": 17853,
+      "sha256": "4b163ec0b17fd2f1d3dc791b4c9e7654a7bbf34e1f198f9120d40a02e87de401",
+      "gitBlob": "3949d6c9fc90aedc2894c4b40211a7e079efc303"
+    },
+    {
+      "path": "Art/Parts/P1-v1/custom-heads-v1/hair-m2-sidepart/authoring.json",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ba0a601565effe469dc1684a627ce299c4ee7528/Art/Parts/P1-v1/custom-heads-v1/hair-m2-sidepart/authoring.json",
+      "status": 200,
+      "bytes": 615,
+      "sha256": "7dc46cd6d0fce8e2003b361d929edc0b1e7593d2168023c8820d4494cf7163aa",
+      "gitBlob": "06004656807c21f5df6cd8f7207a095039da08f8"
+    },
+    {
+      "path": "Art/Parts/P1-v1/custom-heads-v1/hair-m2-sidepart/battle/hair.png",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ba0a601565effe469dc1684a627ce299c4ee7528/Art/Parts/P1-v1/custom-heads-v1/hair-m2-sidepart/battle/hair.png",
+      "status": 200,
+      "bytes": 6242,
+      "sha256": "156bf2c6d493784609c803faf790f958d9f622ab1ac00cc518760bb33d237a1f",
+      "gitBlob": "0554040118038ea7e87cc2f8e716eb4c64f56ced"
+    },
+    {
+      "path": "Art/Parts/P1-v1/custom-heads-v1/hair-m2-sidepart/editable/down-left.svg",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ba0a601565effe469dc1684a627ce299c4ee7528/Art/Parts/P1-v1/custom-heads-v1/hair-m2-sidepart/editable/down-left.svg",
+      "status": 200,
+      "bytes": 77853,
+      "sha256": "cbfd701ec59383f31a891538c44ecf152d1a65232741bf2299326953075a9949",
+      "gitBlob": "da0a97cbeb9b698ceaee5dd7ecfbcc486ff68b29"
+    },
+    {
+      "path": "Art/Parts/P1-v1/custom-heads-v1/hair-m2-sidepart/editable/down-right.svg",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ba0a601565effe469dc1684a627ce299c4ee7528/Art/Parts/P1-v1/custom-heads-v1/hair-m2-sidepart/editable/down-right.svg",
+      "status": 200,
+      "bytes": 77667,
+      "sha256": "e63a817087bebc07ce0fd732bba6364a63458babd56ecf492098198635f544d9",
+      "gitBlob": "5e72c2783464fb1bfc487ca4d53b8273646864de"
+    },
+    {
+      "path": "Art/Parts/P1-v1/custom-heads-v1/hair-m2-sidepart/editable/left.svg",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ba0a601565effe469dc1684a627ce299c4ee7528/Art/Parts/P1-v1/custom-heads-v1/hair-m2-sidepart/editable/left.svg",
+      "status": 200,
+      "bytes": 80999,
+      "sha256": "ffbc3bbf0947159569148ca1b38e8da4fce988f15e8ebf2f5a2e565950481f90",
+      "gitBlob": "9c664338948da6f518187dfefd7d3ee22e13286a"
+    },
+    {
+      "path": "Art/Parts/P1-v1/custom-heads-v1/hair-m2-sidepart/editable/right.svg",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ba0a601565effe469dc1684a627ce299c4ee7528/Art/Parts/P1-v1/custom-heads-v1/hair-m2-sidepart/editable/right.svg",
+      "status": 200,
+      "bytes": 75979,
+      "sha256": "b9815d8cc87ed76bea7c20f9c447ba0f202795899f6c8fedaf6fad34732e8335",
+      "gitBlob": "4e47e872e2901052886da37e6ce7e50d13b1ae05"
+    },
+    {
+      "path": "Art/Parts/P1-v1/custom-heads-v1/hair-m2-sidepart/masters/down-left/hair.front.png",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ba0a601565effe469dc1684a627ce299c4ee7528/Art/Parts/P1-v1/custom-heads-v1/hair-m2-sidepart/masters/down-left/hair.front.png",
+      "status": 200,
+      "bytes": 5910,
+      "sha256": "2925ebe407f9ccdf5cab775c1f5cdbd236381354afd89de6857c4b2649ddcafd",
+      "gitBlob": "b6108291b13ac71eedb7a16b96e6aa8b2d8adad8"
+    },
+    {
+      "path": "Art/Parts/P1-v1/custom-heads-v1/hair-m2-sidepart/masters/down-right/hair.front.png",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ba0a601565effe469dc1684a627ce299c4ee7528/Art/Parts/P1-v1/custom-heads-v1/hair-m2-sidepart/masters/down-right/hair.front.png",
+      "status": 200,
+      "bytes": 6026,
+      "sha256": "d3874fc91571c0f48527f10f341e29530751ae428ab6bfa732d91871a8d0d752",
+      "gitBlob": "7f9268cf3b6687f4e0ed546839d039f9ddd1f4c5"
+    },
+    {
+      "path": "Art/Parts/P1-v1/custom-heads-v1/hair-m2-sidepart/masters/left/hair.front.png",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ba0a601565effe469dc1684a627ce299c4ee7528/Art/Parts/P1-v1/custom-heads-v1/hair-m2-sidepart/masters/left/hair.front.png",
+      "status": 200,
+      "bytes": 5666,
+      "sha256": "06f14d3701b71bd245dd3177cb0a2cafdfc9c4b366017c129cf437d28a07b8a1",
+      "gitBlob": "2425b05664a2fda45d347ca55d321bfd6b13a524"
+    },
+    {
+      "path": "Art/Parts/P1-v1/custom-heads-v1/hair-m2-sidepart/masters/right/hair.front.png",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ba0a601565effe469dc1684a627ce299c4ee7528/Art/Parts/P1-v1/custom-heads-v1/hair-m2-sidepart/masters/right/hair.front.png",
+      "status": 200,
+      "bytes": 5745,
+      "sha256": "a1f43a431d00ba078885a01f804f4966ba51006f505910ff2f60cd65b20dbf6f",
+      "gitBlob": "a542ef98548b7970678df1c9b425116517d11348"
+    },
+    {
+      "path": "Art/Parts/P1-v1/custom-heads-v1/hair-m3-topknot/asset.json",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ba0a601565effe469dc1684a627ce299c4ee7528/Art/Parts/P1-v1/custom-heads-v1/hair-m3-topknot/asset.json",
+      "status": 200,
+      "bytes": 17852,
+      "sha256": "5ffce9d97a35dff28924bf4d078f38cb44648fbd800a8e736c69de2421500bde",
+      "gitBlob": "666483b396321b5f323bac6c2797c70a86c41efb"
+    },
+    {
+      "path": "Art/Parts/P1-v1/custom-heads-v1/hair-m3-topknot/authoring.json",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ba0a601565effe469dc1684a627ce299c4ee7528/Art/Parts/P1-v1/custom-heads-v1/hair-m3-topknot/authoring.json",
+      "status": 200,
+      "bytes": 616,
+      "sha256": "66b2ca615ad9a102f1a61d96c3658d6d1cea1dc471a2d1f5dc44d52399e9191c",
+      "gitBlob": "acce53ba6c41c781d6cad52392b4ae675e9d6c41"
+    },
+    {
+      "path": "Art/Parts/P1-v1/custom-heads-v1/hair-m3-topknot/battle/hair.png",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ba0a601565effe469dc1684a627ce299c4ee7528/Art/Parts/P1-v1/custom-heads-v1/hair-m3-topknot/battle/hair.png",
+      "status": 200,
+      "bytes": 6647,
+      "sha256": "c1dd4ecff49ac9411aa8586cc6400d5ef8b74aec6788870ccd4ba35261e8b055",
+      "gitBlob": "77c2b5a19e4c5abe00ce1a97abc7fc93de359e3b"
+    },
+    {
+      "path": "Art/Parts/P1-v1/custom-heads-v1/hair-m3-topknot/editable/down-left.svg",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ba0a601565effe469dc1684a627ce299c4ee7528/Art/Parts/P1-v1/custom-heads-v1/hair-m3-topknot/editable/down-left.svg",
+      "status": 200,
+      "bytes": 80672,
+      "sha256": "8fe979d43214666ef8bca72a6d90a1a03125b8f360dcfb019a74d60f1ce5517d",
+      "gitBlob": "7f5b3b1a9bf10544ff2d6e7e52002a7720f94ebb"
+    },
+    {
+      "path": "Art/Parts/P1-v1/custom-heads-v1/hair-m3-topknot/editable/down-right.svg",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ba0a601565effe469dc1684a627ce299c4ee7528/Art/Parts/P1-v1/custom-heads-v1/hair-m3-topknot/editable/down-right.svg",
+      "status": 200,
+      "bytes": 80488,
+      "sha256": "01737f81082f1aa2772323529f8c6d6af4e1703e4536ca3a698a8a9d55246e9c",
+      "gitBlob": "e51ff47e1b0dfb9dde22d6fed23864d98d5950d0"
+    },
+    {
+      "path": "Art/Parts/P1-v1/custom-heads-v1/hair-m3-topknot/editable/left.svg",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ba0a601565effe469dc1684a627ce299c4ee7528/Art/Parts/P1-v1/custom-heads-v1/hair-m3-topknot/editable/left.svg",
+      "status": 200,
+      "bytes": 80863,
+      "sha256": "539484446c7eef627d8b421c249ed549f555af9e6caaacc9e49bb4ccfd90e3be",
+      "gitBlob": "68c6e7f22a9132dcf7e1087be6082fdb3648cb27"
+    },
+    {
+      "path": "Art/Parts/P1-v1/custom-heads-v1/hair-m3-topknot/editable/right.svg",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ba0a601565effe469dc1684a627ce299c4ee7528/Art/Parts/P1-v1/custom-heads-v1/hair-m3-topknot/editable/right.svg",
+      "status": 200,
+      "bytes": 76812,
+      "sha256": "1ef482258492071f0becb67679d85c84c131abb7030fe8f22fc7db968deff88a",
+      "gitBlob": "ae173a5ba2a4cb1632f104949dc2a4c67e51b532"
+    },
+    {
+      "path": "Art/Parts/P1-v1/custom-heads-v1/hair-m3-topknot/masters/down-left/hair.front.png",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ba0a601565effe469dc1684a627ce299c4ee7528/Art/Parts/P1-v1/custom-heads-v1/hair-m3-topknot/masters/down-left/hair.front.png",
+      "status": 200,
+      "bytes": 6348,
+      "sha256": "581709c0d10556faa6e7503c95ca6d5218c1882b028308c6706a0ee11aeb55fa",
+      "gitBlob": "4c38d5ba6a0d2db74f42a6d273f9ce1e99f01c93"
+    },
+    {
+      "path": "Art/Parts/P1-v1/custom-heads-v1/hair-m3-topknot/masters/down-right/hair.front.png",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ba0a601565effe469dc1684a627ce299c4ee7528/Art/Parts/P1-v1/custom-heads-v1/hair-m3-topknot/masters/down-right/hair.front.png",
+      "status": 200,
+      "bytes": 6438,
+      "sha256": "e316de2f2d744a08fb278da3a4bb4397e63a05617d1fc0e431ea675504e5aef2",
+      "gitBlob": "f7dd7667f3ebfa25c233b1d41c8b76a437fe59ce"
+    },
+    {
+      "path": "Art/Parts/P1-v1/custom-heads-v1/hair-m3-topknot/masters/left/hair.front.png",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ba0a601565effe469dc1684a627ce299c4ee7528/Art/Parts/P1-v1/custom-heads-v1/hair-m3-topknot/masters/left/hair.front.png",
+      "status": 200,
+      "bytes": 6022,
+      "sha256": "0dc3a15b21d232f9c29e3180f18e29931b998170a5756587677542200c774aff",
+      "gitBlob": "94171d9395d89d330d9827de3696d76be167cf26"
+    },
+    {
+      "path": "Art/Parts/P1-v1/custom-heads-v1/hair-m3-topknot/masters/right/hair.front.png",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ba0a601565effe469dc1684a627ce299c4ee7528/Art/Parts/P1-v1/custom-heads-v1/hair-m3-topknot/masters/right/hair.front.png",
+      "status": 200,
+      "bytes": 6122,
+      "sha256": "9f9f0c530095da293b11599172b3444a303f605d8759e25741456df0f7df02a7",
+      "gitBlob": "c6c8853f1e2e6d9710f4f7a9d7ea5e9919a1c1fe"
+    },
+    {
+      "path": "Art/Review/Battle/appearance-synchronized-v1/README.md",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ba0a601565effe469dc1684a627ce299c4ee7528/Art/Review/Battle/appearance-synchronized-v1/README.md",
+      "status": 200,
+      "bytes": 4516,
+      "sha256": "01c91b29d766f41eeb8056bad7c0c54ba80981523536e3db3dbeb9856a7c67af",
+      "gitBlob": "b0de5876d223c1d384f2d15ccf0c3778c31455cd"
+    },
+    {
+      "path": "Art/Review/P1/custom-heads-v1/README.md",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ba0a601565effe469dc1684a627ce299c4ee7528/Art/Review/P1/custom-heads-v1/README.md",
+      "status": 200,
+      "bytes": 1958,
+      "sha256": "b74d8c6309f980716a15f82a34810f46f8e0c439a305c556a1edee2677820e45",
+      "gitBlob": "b48a19bbe11a91560ae8c309c0f0970ad26d23bc"
+    },
+    {
+      "path": "Art/Review/P1/side-hair-coverage-r2/README.md",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ba0a601565effe469dc1684a627ce299c4ee7528/Art/Review/P1/side-hair-coverage-r2/README.md",
+      "status": 200,
+      "bytes": 2868,
+      "sha256": "2b5a6973b137ae3c872ec18dfaa8b8c97f45c7cf18fcf21ec40b173322119251",
+      "gitBlob": "acc62aa77711131c7a66e6b468d1d68e31dcef26"
+    },
+    {
+      "path": "Art/Review/P1/side-hair-coverage-r2/animation-checks.json",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ba0a601565effe469dc1684a627ce299c4ee7528/Art/Review/P1/side-hair-coverage-r2/animation-checks.json",
+      "status": 200,
+      "bytes": 723,
+      "sha256": "4bc88e22a416d4388528953d4ee37e016a89cd5d74a77bdbe39cc772c3cf451a",
+      "gitBlob": "4775f8fe0455bd88d478389d1919e0591ad5ff16"
+    },
+    {
+      "path": "Art/Review/P1/side-hair-coverage-r2/both-armors-attack-normal.gif",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ba0a601565effe469dc1684a627ce299c4ee7528/Art/Review/P1/side-hair-coverage-r2/both-armors-attack-normal.gif",
+      "status": 200,
+      "bytes": 1326409,
+      "sha256": "68c68cf89d2e58c7aba2c08e2b18095432d806c11f9cfdd8ed2eea8ee15a8dcb",
+      "gitBlob": "0570b40cef417c95ff59e9912afa73ef416cfbdb"
+    },
+    {
+      "path": "Art/Review/P1/side-hair-coverage-r2/both-armors-states-normal.gif",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ba0a601565effe469dc1684a627ce299c4ee7528/Art/Review/P1/side-hair-coverage-r2/both-armors-states-normal.gif",
+      "status": 200,
+      "bytes": 2878358,
+      "sha256": "4e3a2cee43ab9e710b37467a7830edce798529a12cd44e2dc370f48ed9c74b77",
+      "gitBlob": "a8191609c90db6e9452c05f03b7e309ed1a63b16"
+    },
+    {
+      "path": "Art/Review/P1/side-hair-coverage-r2/browser-gif-review.json",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ba0a601565effe469dc1684a627ce299c4ee7528/Art/Review/P1/side-hair-coverage-r2/browser-gif-review.json",
+      "status": 200,
+      "bytes": 6206,
+      "sha256": "14e237e07abd25f9a0d05e3e12e68a9080edeacb82643edf314faa12052db380",
+      "gitBlob": "ef02df61c10a5c38c48bcb07621f4d09e097a0c7"
+    },
+    {
+      "path": "Art/Review/P1/side-hair-coverage-r2/browser-gif-review/1-sample-01.png",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ba0a601565effe469dc1684a627ce299c4ee7528/Art/Review/P1/side-hair-coverage-r2/browser-gif-review/1-sample-01.png",
+      "status": 200,
+      "bytes": 63169,
+      "sha256": "e06caea119168f1f56e139d184083e4108f3ad17977d357c399fe5a814ea1429",
+      "gitBlob": "0bc5c8c1b242dfee79dddf1449d80020f2729254"
+    },
+    {
+      "path": "Art/Review/P1/side-hair-coverage-r2/browser-gif-review/1-sample-06.png",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ba0a601565effe469dc1684a627ce299c4ee7528/Art/Review/P1/side-hair-coverage-r2/browser-gif-review/1-sample-06.png",
+      "status": 200,
+      "bytes": 67614,
+      "sha256": "f2652b55f21df692a1cbc3f705235afe0a1b4080caf2ebf1d0ce8d0c6ce852dc",
+      "gitBlob": "fef022cca1b564d83ee14eb9b680654922b0e355"
+    },
+    {
+      "path": "Art/Review/P1/side-hair-coverage-r2/browser-gif-review/1-sample-12.png",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ba0a601565effe469dc1684a627ce299c4ee7528/Art/Review/P1/side-hair-coverage-r2/browser-gif-review/1-sample-12.png",
+      "status": 200,
+      "bytes": 64908,
+      "sha256": "2fc7ca03aa629945702dcb00802cfcd4f9b7a750c42dececa2083a2ae2dddeaa",
+      "gitBlob": "cd254a1fa9c0db330ae07c9b1a194870f719589f"
+    },
+    {
+      "path": "Art/Review/P1/side-hair-coverage-r2/browser-gif-review/2-sample-01.png",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ba0a601565effe469dc1684a627ce299c4ee7528/Art/Review/P1/side-hair-coverage-r2/browser-gif-review/2-sample-01.png",
+      "status": 200,
+      "bytes": 55932,
+      "sha256": "a7469ef2c1bd567871cdf48aff55d741f6fbb4fbce747fd31613dd995d97baf4",
+      "gitBlob": "192ca1fe0d2e95d965c439c34df782801564d08d"
+    },
+    {
+      "path": "Art/Review/P1/side-hair-coverage-r2/browser-gif-review/2-sample-06.png",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ba0a601565effe469dc1684a627ce299c4ee7528/Art/Review/P1/side-hair-coverage-r2/browser-gif-review/2-sample-06.png",
+      "status": 200,
+      "bytes": 78152,
+      "sha256": "4c564621e69aece6ee224097b0f500ebae4fb9a9abc19c801aab5924bf576db3",
+      "gitBlob": "129b288d5d6b8fb839a2eead41648c5cde0079d0"
+    },
+    {
+      "path": "Art/Review/P1/side-hair-coverage-r2/browser-gif-review/2-sample-12.png",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ba0a601565effe469dc1684a627ce299c4ee7528/Art/Review/P1/side-hair-coverage-r2/browser-gif-review/2-sample-12.png",
+      "status": 200,
+      "bytes": 67131,
+      "sha256": "c4df9349fa1d48032cf754ccf1209731c67db0625fabf17959995bc5b9478a2d",
+      "gitBlob": "f260c25744ed52aa51e277d904d41cc4ef6ff97a"
+    },
+    {
+      "path": "Art/Review/P1/side-hair-coverage-r2/browser-gif-review/3-sample-01.png",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ba0a601565effe469dc1684a627ce299c4ee7528/Art/Review/P1/side-hair-coverage-r2/browser-gif-review/3-sample-01.png",
+      "status": 200,
+      "bytes": 58142,
+      "sha256": "9daea9d4493993543845169c34b5ed13e5dc6a722ca5dea63b0631f06e71b9e7",
+      "gitBlob": "8a2c17d3eff89bbaa67dc0fdaa53daf8781bfcb2"
+    },
+    {
+      "path": "Art/Review/P1/side-hair-coverage-r2/browser-gif-review/3-sample-06.png",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ba0a601565effe469dc1684a627ce299c4ee7528/Art/Review/P1/side-hair-coverage-r2/browser-gif-review/3-sample-06.png",
+      "status": 200,
+      "bytes": 62201,
+      "sha256": "949bfdcaf6c48fc808ce7ce59230d2975d862aff3dd3fe3786c0b902337cf4a0",
+      "gitBlob": "722cb0ea1b5bbc2df1ddfd0a6505d04853ef7ce4"
+    },
+    {
+      "path": "Art/Review/P1/side-hair-coverage-r2/browser-gif-review/3-sample-12.png",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ba0a601565effe469dc1684a627ce299c4ee7528/Art/Review/P1/side-hair-coverage-r2/browser-gif-review/3-sample-12.png",
+      "status": 200,
+      "bytes": 59811,
+      "sha256": "ef25bfb67d6e6a516a89099149036cad42e224d5b45ef0ce4a612801b68d5450",
+      "gitBlob": "819c6526ee9bfa893d7efca263c6aedb68c7095d"
+    },
+    {
+      "path": "Art/Review/P1/side-hair-coverage-r2/browser-gif-review/4-sample-01.png",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ba0a601565effe469dc1684a627ce299c4ee7528/Art/Review/P1/side-hair-coverage-r2/browser-gif-review/4-sample-01.png",
+      "status": 200,
+      "bytes": 72557,
+      "sha256": "7eda45353b4a2c99e84709d98dd97358186bf51234d4e236a297d969cb4c1d79",
+      "gitBlob": "e80420a8d94aaf6a2bc30a6264bdd8dfbc0d6437"
+    },
+    {
+      "path": "Art/Review/P1/side-hair-coverage-r2/browser-gif-review/4-sample-06.png",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ba0a601565effe469dc1684a627ce299c4ee7528/Art/Review/P1/side-hair-coverage-r2/browser-gif-review/4-sample-06.png",
+      "status": 200,
+      "bytes": 73533,
+      "sha256": "0052f03fd212dd91386ee6235bdeea1040ce8b0aa98e95c3b584bb841f20ebfd",
+      "gitBlob": "a7bffb4637014d897c2966fd1b8d4a5cfa00ef91"
+    },
+    {
+      "path": "Art/Review/P1/side-hair-coverage-r2/browser-gif-review/4-sample-12.png",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ba0a601565effe469dc1684a627ce299c4ee7528/Art/Review/P1/side-hair-coverage-r2/browser-gif-review/4-sample-12.png",
+      "status": 200,
+      "bytes": 73533,
+      "sha256": "0052f03fd212dd91386ee6235bdeea1040ce8b0aa98e95c3b584bb841f20ebfd",
+      "gitBlob": "a7bffb4637014d897c2966fd1b8d4a5cfa00ef91"
+    },
+    {
+      "path": "Art/Review/P1/side-hair-coverage-r2/browser-gif-review/5-sample-01.png",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ba0a601565effe469dc1684a627ce299c4ee7528/Art/Review/P1/side-hair-coverage-r2/browser-gif-review/5-sample-01.png",
+      "status": 200,
+      "bytes": 72252,
+      "sha256": "74a9273a19deabbc684878e7a7a11050c59ac07c342345765a912b791c2ca340",
+      "gitBlob": "7fd17f712b6a1ed89384cfc4f77056897a6744c1"
+    },
+    {
+      "path": "Art/Review/P1/side-hair-coverage-r2/browser-gif-review/5-sample-06.png",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ba0a601565effe469dc1684a627ce299c4ee7528/Art/Review/P1/side-hair-coverage-r2/browser-gif-review/5-sample-06.png",
+      "status": 200,
+      "bytes": 73242,
+      "sha256": "255636927dca7885124f2502e2f9dfafd395320cab88a86c4a1d79b0f175ffa3",
+      "gitBlob": "11c1cbbaae4f856504818ccf7710d107237ccc03"
+    },
+    {
+      "path": "Art/Review/P1/side-hair-coverage-r2/browser-gif-review/5-sample-12.png",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ba0a601565effe469dc1684a627ce299c4ee7528/Art/Review/P1/side-hair-coverage-r2/browser-gif-review/5-sample-12.png",
+      "status": 200,
+      "bytes": 73242,
+      "sha256": "255636927dca7885124f2502e2f9dfafd395320cab88a86c4a1d79b0f175ffa3",
+      "gitBlob": "11c1cbbaae4f856504818ccf7710d107237ccc03"
+    },
+    {
+      "path": "Art/Review/P1/side-hair-coverage-r2/coverage-verification.json",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ba0a601565effe469dc1684a627ce299c4ee7528/Art/Review/P1/side-hair-coverage-r2/coverage-verification.json",
+      "status": 200,
+      "bytes": 32524,
+      "sha256": "abce0f60163682e85625aa097a4629194bde1c766e353fe90b2c7082a63b13ba",
+      "gitBlob": "2945db7094c62f643e6d97c7727de9e3f6885a2e"
+    },
+    {
+      "path": "Art/Review/P1/side-hair-coverage-r2/down-left-all-six-whole-body-1x.png",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ba0a601565effe469dc1684a627ce299c4ee7528/Art/Review/P1/side-hair-coverage-r2/down-left-all-six-whole-body-1x.png",
+      "status": 200,
+      "bytes": 35908,
+      "sha256": "753a2f6770b55ce1dbbb20cfd5e9928a20b23cd493766abc5da4a241b43d224d",
+      "gitBlob": "170cf94a69f226cb393470e76ce6f2cd7da0dc50"
+    },
+    {
+      "path": "Art/Review/P1/side-hair-coverage-r2/down-right-all-six-whole-body-1x.png",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ba0a601565effe469dc1684a627ce299c4ee7528/Art/Review/P1/side-hair-coverage-r2/down-right-all-six-whole-body-1x.png",
+      "status": 200,
+      "bytes": 36378,
+      "sha256": "677a2dbea6406aa3f6f2d3dec316787f7d32194aa608b8267cd41ba60b49f2e7",
+      "gitBlob": "4a3caf89e20f92dd8b7c612385a294d6c71b501a"
+    },
+    {
+      "path": "Art/Review/P1/side-hair-coverage-r2/f1-bob-eight-way-normal.gif",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ba0a601565effe469dc1684a627ce299c4ee7528/Art/Review/P1/side-hair-coverage-r2/f1-bob-eight-way-normal.gif",
+      "status": 200,
+      "bytes": 248995,
+      "sha256": "ae8c8fe352fbef09baa131e1802b7dcfe5c8eb520f68add44ecf41178bb284fe",
+      "gitBlob": "371a7a8b71fa52da5d407e24708bba7920057efa"
+    },
+    {
+      "path": "Art/Review/P1/side-hair-coverage-r2/f2-ponytail-eight-way-normal.gif",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ba0a601565effe469dc1684a627ce299c4ee7528/Art/Review/P1/side-hair-coverage-r2/f2-ponytail-eight-way-normal.gif",
+      "status": 200,
+      "bytes": 247396,
+      "sha256": "8cb03ea27b5159010357fa742a75136b615b6fda47f7b8dd464d847a94057c2c",
+      "gitBlob": "751e6b3b2cde96dc58f1868dbd39ebcfc7cab205"
+    },
+    {
+      "path": "Art/Review/P1/side-hair-coverage-r2/f3-bun-eight-way-normal.gif",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ba0a601565effe469dc1684a627ce299c4ee7528/Art/Review/P1/side-hair-coverage-r2/f3-bun-eight-way-normal.gif",
+      "status": 200,
+      "bytes": 252691,
+      "sha256": "11d0519fdc4b1bb8fa06edbf118c6714c36b94186cd7bf681deb8a63f78f4b94",
+      "gitBlob": "aa65568c4dce6f60e7e9c9ecea5e2fe6e8319f55"
+    },
+    {
+      "path": "Art/Review/P1/side-hair-coverage-r2/female-all-faces-two-scenes-1x.png",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ba0a601565effe469dc1684a627ce299c4ee7528/Art/Review/P1/side-hair-coverage-r2/female-all-faces-two-scenes-1x.png",
+      "status": 200,
+      "bytes": 137751,
+      "sha256": "2758a8d8c9cbc6ce08a6a9ae5ade3d4fbfae1f1904cb643e90f4c49901058f85",
+      "gitBlob": "ff5ba0661d2b63a7018eefe3b112dab7d1f400e7"
+    },
+    {
+      "path": "Art/Review/P1/side-hair-coverage-r2/female-paired-attack-phases-1x.png",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ba0a601565effe469dc1684a627ce299c4ee7528/Art/Review/P1/side-hair-coverage-r2/female-paired-attack-phases-1x.png",
+      "status": 200,
+      "bytes": 409571,
+      "sha256": "40ad1edc777a2421106fc0a46cea5921c97be82c478b2b039fa6600c2cbe8020",
+      "gitBlob": "254055bcb84dc692dc544f5a752b7278104ffee4"
+    },
+    {
+      "path": "Art/Review/P1/side-hair-coverage-r2/left-all-six-whole-body-1x.png",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ba0a601565effe469dc1684a627ce299c4ee7528/Art/Review/P1/side-hair-coverage-r2/left-all-six-whole-body-1x.png",
+      "status": 200,
+      "bytes": 32337,
+      "sha256": "49bafe89304752395690290e8a0bb54eac693c3d1a5edffbbb3e22a443813e7b",
+      "gitBlob": "ff9ef1c5171f5d7592e2574848ade3f8f9622350"
+    },
+    {
+      "path": "Art/Review/P1/side-hair-coverage-r2/m1-short-eight-way-normal.gif",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ba0a601565effe469dc1684a627ce299c4ee7528/Art/Review/P1/side-hair-coverage-r2/m1-short-eight-way-normal.gif",
+      "status": 200,
+      "bytes": 242208,
+      "sha256": "1425d5e9cd8b56365041087dad7029d455be7ade1d946fbd2ae42125b0fb76e3",
+      "gitBlob": "8df4777b945be28cab584a267907e5ed8b930d8b"
+    },
+    {
+      "path": "Art/Review/P1/side-hair-coverage-r2/m2-sidepart-eight-way-normal.gif",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ba0a601565effe469dc1684a627ce299c4ee7528/Art/Review/P1/side-hair-coverage-r2/m2-sidepart-eight-way-normal.gif",
+      "status": 200,
+      "bytes": 245029,
+      "sha256": "e480c17517cdc5de668b1240c19f123bfc5b00744fa6a8d79b6c9e686da6b614",
+      "gitBlob": "e823696b54a86bedfd11659978ed018a2ef55687"
+    },
+    {
+      "path": "Art/Review/P1/side-hair-coverage-r2/m3-topknot-eight-way-normal.gif",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ba0a601565effe469dc1684a627ce299c4ee7528/Art/Review/P1/side-hair-coverage-r2/m3-topknot-eight-way-normal.gif",
+      "status": 200,
+      "bytes": 251999,
+      "sha256": "b4ad938c7022682ae2b04ead4b30f75ff089e864b8636a16ca5efff31e7bd942",
+      "gitBlob": "3840747e9c5b4b9f5d9f42095c3de168cc0b92c6"
+    },
+    {
+      "path": "Art/Review/P1/side-hair-coverage-r2/male-all-faces-two-scenes-1x.png",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ba0a601565effe469dc1684a627ce299c4ee7528/Art/Review/P1/side-hair-coverage-r2/male-all-faces-two-scenes-1x.png",
+      "status": 200,
+      "bytes": 137136,
+      "sha256": "79f217375778da2f1f7f618061f3830dedfe44955aa08a7bfcacdd0394224ca0",
+      "gitBlob": "e1f446179c48a35e590bd3e4d38b978058354adb"
+    },
+    {
+      "path": "Art/Review/P1/side-hair-coverage-r2/male-paired-attack-phases-1x.png",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ba0a601565effe469dc1684a627ce299c4ee7528/Art/Review/P1/side-hair-coverage-r2/male-paired-attack-phases-1x.png",
+      "status": 200,
+      "bytes": 387367,
+      "sha256": "21b9a1c0aa98e53fdfd4309171a2070126c47ae210ecaf9dea226a7694ea9f76",
+      "gitBlob": "8fd565aad3deecdac80f2ed3c8d60bbf6293acbf"
+    },
+    {
+      "path": "Art/Review/P1/side-hair-coverage-r2/media-checks.json",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ba0a601565effe469dc1684a627ce299c4ee7528/Art/Review/P1/side-hair-coverage-r2/media-checks.json",
+      "status": 200,
+      "bytes": 2327,
+      "sha256": "5aa54f90e8d532ea5c2e2e60504ddb8be926ff66d7622a7e21ed8ed314aab259",
+      "gitBlob": "dafc83215d35c00444c4ee1921c803e8e346af61"
+    },
+    {
+      "path": "Art/Review/P1/side-hair-coverage-r2/paired-actual-decoded-000.png",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ba0a601565effe469dc1684a627ce299c4ee7528/Art/Review/P1/side-hair-coverage-r2/paired-actual-decoded-000.png",
+      "status": 200,
+      "bytes": 83645,
+      "sha256": "8f7d73be9d5576fd2bfc49638dcdbb738038b4c66e3e9c987cdab4de5f8520c4",
+      "gitBlob": "04a42de0b0195fbc156547f930d8b37e03e407f8"
+    },
+    {
+      "path": "Art/Review/P1/side-hair-coverage-r2/paired-actual-decoded-028.png",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ba0a601565effe469dc1684a627ce299c4ee7528/Art/Review/P1/side-hair-coverage-r2/paired-actual-decoded-028.png",
+      "status": 200,
+      "bytes": 96521,
+      "sha256": "8ad7dedca77ec175e508fd0b67d16148bffc9499312ea158d9b04a6e8cd2725d",
+      "gitBlob": "f1bf8d5a7740bd910543d738af88baca84702932"
+    },
+    {
+      "path": "Art/Review/P1/side-hair-coverage-r2/paired-actual-decoded-056.png",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ba0a601565effe469dc1684a627ce299c4ee7528/Art/Review/P1/side-hair-coverage-r2/paired-actual-decoded-056.png",
+      "status": 200,
+      "bytes": 90588,
+      "sha256": "820ae8a9fd483c703b57cc4f286bb756f44380edf66bf88ba536afe7f04ce434",
+      "gitBlob": "13b7aee84ae7be3469b802a4952b070bf3222c4e"
+    },
+    {
+      "path": "Art/Review/P1/side-hair-coverage-r2/paired-actual-decoded-084.png",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ba0a601565effe469dc1684a627ce299c4ee7528/Art/Review/P1/side-hair-coverage-r2/paired-actual-decoded-084.png",
+      "status": 200,
+      "bytes": 81219,
+      "sha256": "ef8da560c0f6796fe2d128692511a44da7bb591ea09f1723b7d8fbf7ebe407fa",
+      "gitBlob": "ff3c51759fa6a3f4617d9266b1b3f775f624a48d"
+    },
+    {
+      "path": "Art/Review/P1/side-hair-coverage-r2/right-all-six-whole-body-1x.png",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ba0a601565effe469dc1684a627ce299c4ee7528/Art/Review/P1/side-hair-coverage-r2/right-all-six-whole-body-1x.png",
+      "status": 200,
+      "bytes": 31829,
+      "sha256": "3dc66748bafd5187dc3c7eb9779d0e73b1178f068ccc42c148ce83b9c6dcecb1",
+      "gitBlob": "4f51ee63f16b4890b369e88640e35b36c98c9adc"
+    },
+    {
+      "path": "Art/Review/P1/side-hair-coverage-r2/side-before-after-whole-body-1x.png",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ba0a601565effe469dc1684a627ce299c4ee7528/Art/Review/P1/side-hair-coverage-r2/side-before-after-whole-body-1x.png",
+      "status": 200,
+      "bytes": 154759,
+      "sha256": "f4aa688f9daec9302fd68af91d845cf298cb44d74907e9ca34c7d7ebbf62ec14",
+      "gitBlob": "772c5a3d1b3b1cda31bb172526336a43499af697"
+    },
+    {
+      "path": "Art/Review/P1/side-hair-coverage-r2/side-before-after-whole-body-2x.png",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ba0a601565effe469dc1684a627ce299c4ee7528/Art/Review/P1/side-hair-coverage-r2/side-before-after-whole-body-2x.png",
+      "status": 200,
+      "bytes": 217034,
+      "sha256": "17f6f505080c4e35efdbc860f9f72673ba0e99bea4abe36bd100ee174630695c",
+      "gitBlob": "e94f4af5a47443189824a323de45bdcb59664ecf"
+    },
+    {
+      "path": "Art/Review/P1/side-hair-coverage-r2/sync-verification.json",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ba0a601565effe469dc1684a627ce299c4ee7528/Art/Review/P1/side-hair-coverage-r2/sync-verification.json",
+      "status": 200,
+      "bytes": 427023,
+      "sha256": "43f3aa3ec320737663d755ea16ec42663319a3341b486351171d49cf34c7f4cd",
+      "gitBlob": "32defd3862cf053d1e005353940876bfcce8b0ac"
+    },
+    {
+      "path": "Art/Review/P1/side-hair-coverage-r2/walking-battle-same-head-1x.png",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ba0a601565effe469dc1684a627ce299c4ee7528/Art/Review/P1/side-hair-coverage-r2/walking-battle-same-head-1x.png",
+      "status": 200,
+      "bytes": 94899,
+      "sha256": "e843530fb8b8bc937597f6c6ca00eda07659d9fc4e3bc560c3da6259561801a3",
+      "gitBlob": "88e6064e04b7793a813f198c6258e797d8bf1d05"
+    },
+    {
+      "path": "Art/Review/P1/side-hair-coverage-r2/walking-battle-same-head-2x.png",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ba0a601565effe469dc1684a627ce299c4ee7528/Art/Review/P1/side-hair-coverage-r2/walking-battle-same-head-2x.png",
+      "status": 200,
+      "bytes": 128707,
+      "sha256": "5d4faa2e3c0a51927f59b7f3bd28ce377a7c03eb6444bdd84a45175380ae10f5",
+      "gitBlob": "e5d26647169428e515ccc31a8a45dad8730d5c31"
+    },
+    {
+      "path": "Art/Review/P1/side-hair-coverage-r2/walking-battle-same-head-normal.gif",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ba0a601565effe469dc1684a627ce299c4ee7528/Art/Review/P1/side-hair-coverage-r2/walking-battle-same-head-normal.gif",
+      "status": 200,
+      "bytes": 1513047,
+      "sha256": "0f66ce86dddac14585c7dc0bb27c0f19ce6199aef09a3d635cf3aaffdf0a432b",
+      "gitBlob": "8eefd77a97b3f882607fce308257dea30cfe20d2"
+    },
+    {
+      "path": "docs/ITERATION_STATUS.md",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ba0a601565effe469dc1684a627ce299c4ee7528/docs/ITERATION_STATUS.md",
+      "status": 200,
+      "bytes": 548108,
+      "sha256": "5e9b569306ea0fa6c3cbaf3d4d557a407c93ec95f9087566b5e9e6a40a509dd2",
+      "gitBlob": "560c3c137770856a05d760c4fc446255773b5322"
+    },
+    {
+      "path": "scripts/build-chat-apparel-b-battle.py",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ba0a601565effe469dc1684a627ce299c4ee7528/scripts/build-chat-apparel-b-battle.py",
+      "status": 200,
+      "bytes": 20831,
+      "sha256": "a51891e42f45145e177ce0cb76b6751635147aa26a5c1442149fcb07b94639e5",
+      "gitBlob": "6429b4a951689165786cc4d8070dccc5e08274d3"
+    },
+    {
+      "path": "scripts/build-custom-heads-v1.py",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ba0a601565effe469dc1684a627ce299c4ee7528/scripts/build-custom-heads-v1.py",
+      "status": 200,
+      "bytes": 23371,
+      "sha256": "f258eeb23debd3f8d210d1cb3c5224828c53af072cf3c3aa181988db12a9752c",
+      "gitBlob": "80f05f2b29f3937200faf26ea658b11befcc97aa"
+    },
+    {
+      "path": "scripts/review-side-hair-coverage.py",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ba0a601565effe469dc1684a627ce299c4ee7528/scripts/review-side-hair-coverage.py",
+      "status": 200,
+      "bytes": 6781,
+      "sha256": "196dc1d8c364d4098f989e3dbdff55db4330c387feabe2717da13fd5dfb989bb",
+      "gitBlob": "507483714a24643283974ddc286d9243689dcd2c"
+    },
+    {
+      "path": "scripts/review-synchronized-appearance.py",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ba0a601565effe469dc1684a627ce299c4ee7528/scripts/review-synchronized-appearance.py",
+      "status": 200,
+      "bytes": 8232,
+      "sha256": "32845a304843fbbd9de9025491ff17cb86177a53bc988bd994234dfb9b9a14d5",
+      "gitBlob": "48013eb8235fb3939607ae894e9b95a818d7f1a1"
+    },
+    {
+      "path": "Art/Review/P1/side-hair-coverage-r2/main-agent-art-review.json",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ba0a601565effe469dc1684a627ce299c4ee7528/Art/Review/P1/side-hair-coverage-r2/main-agent-art-review.json",
+      "status": 200,
+      "bytes": 1846,
+      "sha256": "ad71b1b239a9bddcc303d507479c77c6d41d5cfe97e80770421639e41846f341",
+      "gitBlob": "6d1ee8a48914ce55e98a98b367d1823de39187a5"
+    }
+  ]
+}

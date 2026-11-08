@@ -1,0 +1,11 @@
+{
+  "sourceCommit": "a89417d92ba537f748a140792a21dfa9dac2b703",
+  "archiveSourceCommit": "ca150c5ea5d36af7db17bd35c25afccd8710b013",
+  "binarySHA256": "d25cf50bac85aebc51463dc4227831b75acedc413c4c4a5a3ded193266fba6f0",
+  "configuration": "Release",
+  "platform": "Linux",
+  "checkpointed": true,
+  "workers": 2,
+  "cases": 177,
+  "appSimulatorDeviceRun": false
+}

@@ -1,0 +1,69 @@
+[0/1] Planning build
+Building for debugging...
+[0/20] Write sources
+[1/20] Write swift-version--3C8F63DB8035BADF.txt
+[3/17] Compiling MeadowCampaignReview main.swift
+[4/17] Emitting module MeadowCampaignReview
+[6/18] Emitting module MeadowWorldSupportTests
+[6/19] Wrapping AST for MeadowCampaignReview for debugging
+[7/19] Write Objects.LinkFileList
+[9/19] Compiling MeadowWorldSupportTests EquipmentJourneyTests.swift
+[10/19] Compiling MeadowWorldSupportTests JourneyAuditTests.swift
+[11/19] Compiling MeadowWorldSupportTests PartyConfigurationTests.swift
+/workspace/experiment/Vendor/ClassroomGameCore/Tests/MeadowWorldSupportTests/PartyConfigurationTests.swift:98:15: warning: result of call to 'commit' is unused
+ 96 |         let restored=try MeadowCampaignSession(save:.decoded(s.snapshot.encoded())),replay=try PartyEncounter(engine:restored.engine)
+ 97 |         let again=try XCTUnwrap(replay.prepare(.support,target:"p2"))
+ 98 |         try b.commit(intent.id);try replay.commit(again.id)
+    |               `- warning: result of call to 'commit' is unused
+ 99 |         XCTAssertEqual(s.engine.state,restored.engine.state)
+100 |         XCTAssertEqual(s.engine.state.units["p1"]!.skillUses["support"],1)
+
+/workspace/experiment/Vendor/ClassroomGameCore/Tests/MeadowWorldSupportTests/PartyConfigurationTests.swift:98:44: warning: result of call to 'commit' is unused
+ 96 |         let restored=try MeadowCampaignSession(save:.decoded(s.snapshot.encoded())),replay=try PartyEncounter(engine:restored.engine)
+ 97 |         let again=try XCTUnwrap(replay.prepare(.support,target:"p2"))
+ 98 |         try b.commit(intent.id);try replay.commit(again.id)
+    |                                            `- warning: result of call to 'commit' is unused
+ 99 |         XCTAssertEqual(s.engine.state,restored.engine.state)
+100 |         XCTAssertEqual(s.engine.state.units["p1"]!.skillUses["support"],1)
+[12/20] /workspace/experiment/Vendor/ClassroomGameCore/.build/x86_64-unknown-linux-gnu/debug/ClassroomGameCorePackageDiscoveredTests.derived/all-discovered-tests.swift
+[13/21] Write sources
+[14/21] Linking MeadowCampaignReview
+[15/21] Wrapping AST for MeadowWorldSupportTests for debugging
+[17/25] Compiling ClassroomGameCorePackageDiscoveredTests ClassroomGameCoreTests.swift
+[18/25] Compiling ClassroomGameCorePackageDiscoveredTests MeadowBattleSupportTests.swift
+[19/25] Compiling ClassroomGameCorePackageDiscoveredTests MeadowWorldSupportTests.swift
+[20/25] Emitting module ClassroomGameCorePackageDiscoveredTests
+[21/26] Compiling ClassroomGameCorePackageDiscoveredTests all-discovered-tests.swift
+[22/27] /workspace/experiment/Vendor/ClassroomGameCore/.build/x86_64-unknown-linux-gnu/debug/ClassroomGameCorePackageTests.derived/runner.swift
+[23/28] Write sources
+[24/28] Wrapping AST for ClassroomGameCorePackageDiscoveredTests for debugging
+[26/30] Compiling ClassroomGameCorePackageTests runner.swift
+[27/30] Emitting module ClassroomGameCorePackageTests
+[28/30] Write Objects.LinkFileList
+[29/30] Linking ClassroomGameCorePackageTests.xctest
+Build complete! (6.80s)
+Test Suite 'Selected tests' started at 2026-11-06 14:03:37.480
+Test Suite 'PartyConfigurationTests' started at 2026-11-06 14:03:37.484
+Test Case 'PartyConfigurationTests.testAllSixteenPairsUseSelectedStatsSkillsAndIndependentOpeningAP' started at 2026-11-06 14:03:37.484
+Test Case 'PartyConfigurationTests.testAllSixteenPairsUseSelectedStatsSkillsAndIndependentOpeningAP' passed (0.102 seconds)
+Test Case 'PartyConfigurationTests.testCampEquipmentPersistsButOldClassAndSpentResourcesDoNotLeakIntoNewParty' started at 2026-11-06 14:03:37.587
+Test Case 'PartyConfigurationTests.testCampEquipmentPersistsButOldClassAndSpentResourcesDoNotLeakIntoNewParty' passed (0.021 seconds)
+Test Case 'PartyConfigurationTests.testDefaultsAndInvalidEitherClassNeverPersist' started at 2026-11-06 14:03:37.608
+Test Case 'PartyConfigurationTests.testDefaultsAndInvalidEitherClassNeverPersist' passed (0.047 seconds)
+Test Case 'PartyConfigurationTests.testNewCompanionJourneyReplaysActualDiceAndResources' started at 2026-11-06 14:03:37.655
+Test Case 'PartyConfigurationTests.testNewCompanionJourneyReplaysActualDiceAndResources' passed (0.778 seconds)
+Test Case 'PartyConfigurationTests.testRepeatedClassSkillCommitAndResumeDoNotShareAPOrUses' started at 2026-11-06 14:03:38.433
+Test Case 'PartyConfigurationTests.testRepeatedClassSkillCommitAndResumeDoNotShareAPOrUses' passed (0.064 seconds)
+Test Case 'PartyConfigurationTests.testResumeKeepsBothClassesCursorResourcesAndSelection' started at 2026-11-06 14:03:38.497
+Test Case 'PartyConfigurationTests.testResumeKeepsBothClassesCursorResourcesAndSelection' passed (0.026 seconds)
+Test Case 'PartyConfigurationTests.testShieldDisplayReferenceIncludesDragonWardWithoutChangingMechanics' started at 2026-11-06 14:03:38.523
+Test Case 'PartyConfigurationTests.testShieldDisplayReferenceIncludesDragonWardWithoutChangingMechanics' passed (0.003 seconds)
+Test Case 'PartyConfigurationTests.testSupportDefaultsToOtherPlayerAndSelfSkillsToActualCasterWithoutMutation' started at 2026-11-06 14:03:38.526
+Test Case 'PartyConfigurationTests.testSupportDefaultsToOtherPlayerAndSelfSkillsToActualCasterWithoutMutation' passed (0.033 seconds)
+Test Suite 'PartyConfigurationTests' passed at 2026-11-06 14:03:38.558
+	 Executed 8 tests, with 0 failures (0 unexpected) in 1.074 (1.074) seconds
+Test Suite 'Selected tests' passed at 2026-11-06 14:03:38.559
+	 Executed 8 tests, with 0 failures (0 unexpected) in 1.074 (1.074) seconds
+◇ Test run started.
+↳ Testing Library Version: 6.0.3 (18c42c19cac3faf)
+✔ Test run with 0 tests passed after 0.001 seconds.

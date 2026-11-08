@@ -72,6 +72,7 @@ public enum GameRules {
 extension GameState {
     public func validate(catalog: GameCatalog) throws {
         try map.validate()
+        for node in map.nodes where node.siteConfiguration != nil {try CampaignSiteRules.validatePrices(node:node,seed:map.seed,catalog:catalog)}
         let teamIDs = Set(teams.map(\.id)), nodeIDs = Set(map.nodes.map(\.id))
         guard formatVersion == 1, !gameID.isEmpty, (1...7).contains(players.count),
               teamIDs.count == teams.count, remainingSeconds.isFinite, remainingSeconds >= 0,
@@ -148,6 +149,9 @@ public struct ResourcePatch: Codable, Equatable {
 }
 public enum GameCommand: Codable, Equatable {
     case campaignMove(actors:[String],node:Int)
+    case configureCampaignSite(node:Int,configuration:CampaignSiteConfiguration)
+    case tradeCampaignSite(actor:String,item:String,buy:Bool)
+    case resolveCampaignSite(actor:String,accept:Bool)
     case interactCampaignNode(actors:[String])
     case refillCampaignMovement(actors:[String],coins:Int,manual:Bool)
     case monsterStep

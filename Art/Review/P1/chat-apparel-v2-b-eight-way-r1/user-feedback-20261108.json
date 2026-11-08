@@ -1,0 +1,16 @@
+{
+  "date": "2026-11-08",
+  "userMessage": "可以，把战斗阶段的也做了。然后做几个人物自定义发型（区分男女）和五官",
+  "scope": "accepts the two shown B eight-direction walking previews only",
+  "shownFiles": [
+    "starlightArmor/eight-way-walk-normal.gif",
+    "dragonArmor/eight-way-walk-normal.gif"
+  ],
+  "doesNotApprove": [
+    "all hidden head/back-sword combinations",
+    "walk start/stop previews not shown",
+    "new battle garments",
+    "new hair and facial assets"
+  ],
+  "originalVerificationRetained": true
+}

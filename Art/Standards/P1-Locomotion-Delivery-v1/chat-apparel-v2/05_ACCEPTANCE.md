@@ -1,5 +1,7 @@
 # 验收分两段：母版交接、模组输出
 
+> 当前实际进度（2026-11-07）：两件均由用户选定B，且授权一次完成全部方向；八向分层母版和原行走模组输出已制作，见根 ART_TASKS.md 与 Art/Review/P1/chat-apparel-v2-b-eight-way-r1/README.md。新资源/动作认可待反馈，未接入App。下文为通用制作/交接规范，不把空模板当实际进度。
+
 ## A. Chat交回母版时
 
 | 检查 | 明确通过条件 | 退回情况 |
@@ -40,6 +42,6 @@
 - Codex：登记母版、复用动作/挂载批量导出、修复与主线程审核，再交正常GIF。
 - 用户：选择设计、认可实际展示范围，之后做实机体验；选概念不等于认可母版/104姿势/战斗/安装包。
 
-本任务不新增战斗动作、人体、运行时代码或IPA。两套新母版尚未制作，模板保持未完成/null。母版文件可用`scripts/check-apparel-master.py`核规格；它不自动评分美术，也不替代后续适配。
+本任务不新增战斗动作、人体、运行时代码或IPA。模板保持格式示例的未填写/null，实际新甲进度读根 ART_TASKS.md 和新资源清单。母版文件可用`scripts/check-apparel-master.py`核规格；它不自动评分美术，也不替代后续适配。
 
 参考包解压后可执行：`python tools/check-apparel-master.py examples/blue-coat-masters/master-manifest.json`。检查新包时换成其清单路径；C2只有front时可显式使用`--partial`，输出会标非完整五视角，不可冒充完整母版。没有执行能力时只写未验证。

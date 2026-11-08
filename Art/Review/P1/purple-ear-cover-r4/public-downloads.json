@@ -1,0 +1,436 @@
+{
+  "publishedCommit": "13cbe2e250a74a1a8e5c4a0dd026c866fd2cdfa8",
+  "publishedTree": "6cbfa09877889b5747716742679b0216d54c4809",
+  "sourceParent": "71a6aaa38d0e39ca1d96ba4133eb8c7fea9abe0f",
+  "runID": 42467575261,
+  "payloadSHA256": "e791196a070a6b1308078bbe9f2c893a9d235c0300976b4c879b0ed0f19c2171",
+  "fileCount": 59,
+  "verifiedFileCount": 59,
+  "bytes": 6095692,
+  "allPublicGETsByteAndSHA256Matched": true,
+  "transportBranchDeleted": true,
+  "appOrSimulatorRun": false,
+  "files": [
+    {
+      "path": "AGENTS.md",
+      "status": 200,
+      "bytes": 267140,
+      "sha256": "a3fe79206b8698d4245b747b83e7a0903e702c003947dd8a9775c31b471d5004",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/13cbe2e250a74a1a8e5c4a0dd026c866fd2cdfa8/AGENTS.md"
+    },
+    {
+      "path": "ART_TASKS.md",
+      "status": 200,
+      "bytes": 4515,
+      "sha256": "8cc5af84859a907095fc88b3e0394d21de8d0d4b3f2c91b0af351e8569dfa6de",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/13cbe2e250a74a1a8e5c4a0dd026c866fd2cdfa8/ART_TASKS.md"
+    },
+    {
+      "path": "Art/Integration/Appearance-battle-custom-heads-v1/README.md",
+      "status": 200,
+      "bytes": 6048,
+      "sha256": "9a1a4c32043fc136e34cf6d55f1733cd5c5ece568a71fafbe491b7ad6ecc7543",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/13cbe2e250a74a1a8e5c4a0dd026c866fd2cdfa8/Art/Integration/Appearance-battle-custom-heads-v1/README.md"
+    },
+    {
+      "path": "Art/Integration/Appearance-battle-custom-heads-v1/appearance-catalog.json",
+      "status": 200,
+      "bytes": 1531,
+      "sha256": "939aef966a1db72f0aa5ce36c1abdc1cfdc3afd563e91db6526a62c234806d84",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/13cbe2e250a74a1a8e5c4a0dd026c866fd2cdfa8/Art/Integration/Appearance-battle-custom-heads-v1/appearance-catalog.json"
+    },
+    {
+      "path": "Art/Integration/Appearance-battle-custom-heads-v1/scene-bindings.json",
+      "status": 200,
+      "bytes": 5961,
+      "sha256": "9008cfa334d9d58f9fe14ebd0ec79b5ac0a1ff5c9af783de7208c73afe33df9d",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/13cbe2e250a74a1a8e5c4a0dd026c866fd2cdfa8/Art/Integration/Appearance-battle-custom-heads-v1/scene-bindings.json"
+    },
+    {
+      "path": "Art/Parts/P1-v1/custom-heads-v1/hair-f1-bob/asset.json",
+      "status": 200,
+      "bytes": 17848,
+      "sha256": "e672fd44879e81e7ac3e6a54a3eafc2abcccc15be78ad600347d99c4193b34d9",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/13cbe2e250a74a1a8e5c4a0dd026c866fd2cdfa8/Art/Parts/P1-v1/custom-heads-v1/hair-f1-bob/asset.json"
+    },
+    {
+      "path": "Art/Parts/P1-v1/custom-heads-v1/hair-f1-bob/authoring.json",
+      "status": 200,
+      "bytes": 811,
+      "sha256": "0a1c15beae63dbaa4254bb026fb02eb1a188b1a76af98fe72dd709349dabc9ba",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/13cbe2e250a74a1a8e5c4a0dd026c866fd2cdfa8/Art/Parts/P1-v1/custom-heads-v1/hair-f1-bob/authoring.json"
+    },
+    {
+      "path": "Art/Parts/P1-v1/custom-heads-v1/hair-f1-bob/battle/hair.png",
+      "status": 200,
+      "bytes": 6602,
+      "sha256": "e390102909557e05a375287ecb3d97ae84be1071ddc02b04667238bee9c99f1a",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/13cbe2e250a74a1a8e5c4a0dd026c866fd2cdfa8/Art/Parts/P1-v1/custom-heads-v1/hair-f1-bob/battle/hair.png"
+    },
+    {
+      "path": "Art/Parts/P1-v1/custom-heads-v1/hair-f1-bob/editable/down-left.svg",
+      "status": 200,
+      "bytes": 135241,
+      "sha256": "766a2ee9586f2d43b59b494cf47ea3a8103f0e846b25b705641c78ae9c0e723b",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/13cbe2e250a74a1a8e5c4a0dd026c866fd2cdfa8/Art/Parts/P1-v1/custom-heads-v1/hair-f1-bob/editable/down-left.svg"
+    },
+    {
+      "path": "Art/Parts/P1-v1/custom-heads-v1/hair-f1-bob/editable/down-right.svg",
+      "status": 200,
+      "bytes": 135227,
+      "sha256": "4c3d6f78e85d01d75285c6114cfa1deb884f7bbe8b7db3c6acc16c294f420475",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/13cbe2e250a74a1a8e5c4a0dd026c866fd2cdfa8/Art/Parts/P1-v1/custom-heads-v1/hair-f1-bob/editable/down-right.svg"
+    },
+    {
+      "path": "Art/Parts/P1-v1/custom-heads-v1/hair-f1-bob/editable/down.svg",
+      "status": 200,
+      "bytes": 122490,
+      "sha256": "e5d52f488d234b4e7a7bb7a0acd95b3e36319518f35804e9b3b8d31978d18da3",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/13cbe2e250a74a1a8e5c4a0dd026c866fd2cdfa8/Art/Parts/P1-v1/custom-heads-v1/hair-f1-bob/editable/down.svg"
+    },
+    {
+      "path": "Art/Parts/P1-v1/custom-heads-v1/hair-f1-bob/editable/left.svg",
+      "status": 200,
+      "bytes": 178389,
+      "sha256": "eb6abc24797eb3c7be644a955392c7d623ed92fa8e45b51f3258454a33df29e6",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/13cbe2e250a74a1a8e5c4a0dd026c866fd2cdfa8/Art/Parts/P1-v1/custom-heads-v1/hair-f1-bob/editable/left.svg"
+    },
+    {
+      "path": "Art/Parts/P1-v1/custom-heads-v1/hair-f1-bob/editable/right.svg",
+      "status": 200,
+      "bytes": 176396,
+      "sha256": "876c4de27dcf39ce8a372f8be8bf74020f898b5400576efbf7df0bba44f95f85",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/13cbe2e250a74a1a8e5c4a0dd026c866fd2cdfa8/Art/Parts/P1-v1/custom-heads-v1/hair-f1-bob/editable/right.svg"
+    },
+    {
+      "path": "Art/Parts/P1-v1/custom-heads-v1/hair-f1-bob/editable/up-left.svg",
+      "status": 200,
+      "bytes": 178346,
+      "sha256": "84760ad174c9012a9d264c6d48ce62f46885388b7a10c47a7afdf8f965924ccf",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/13cbe2e250a74a1a8e5c4a0dd026c866fd2cdfa8/Art/Parts/P1-v1/custom-heads-v1/hair-f1-bob/editable/up-left.svg"
+    },
+    {
+      "path": "Art/Parts/P1-v1/custom-heads-v1/hair-f1-bob/editable/up-right.svg",
+      "status": 200,
+      "bytes": 181532,
+      "sha256": "f418a24a71c1ce21dee9417472b0c7448c03be8c3d9368cc385d3f82e87dded0",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/13cbe2e250a74a1a8e5c4a0dd026c866fd2cdfa8/Art/Parts/P1-v1/custom-heads-v1/hair-f1-bob/editable/up-right.svg"
+    },
+    {
+      "path": "Art/Parts/P1-v1/custom-heads-v1/hair-f1-bob/editable/up.svg",
+      "status": 200,
+      "bytes": 167650,
+      "sha256": "9ba560c87e10583446f232b03454d904266ac3ed39d0a24875e883f4429ae5a7",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/13cbe2e250a74a1a8e5c4a0dd026c866fd2cdfa8/Art/Parts/P1-v1/custom-heads-v1/hair-f1-bob/editable/up.svg"
+    },
+    {
+      "path": "Art/Parts/P1-v1/custom-heads-v1/hair-f1-bob/masters/down-left/hair.front.png",
+      "status": 200,
+      "bytes": 6337,
+      "sha256": "353beada804be161523768f302f037b3df5e36ffec695459f58973568689e2be",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/13cbe2e250a74a1a8e5c4a0dd026c866fd2cdfa8/Art/Parts/P1-v1/custom-heads-v1/hair-f1-bob/masters/down-left/hair.front.png"
+    },
+    {
+      "path": "Art/Parts/P1-v1/custom-heads-v1/hair-f1-bob/masters/down-right/hair.front.png",
+      "status": 200,
+      "bytes": 6431,
+      "sha256": "d1a66a4ae297c3657b76915098f45abaee9956ca8c82e27e1d4bb20362746506",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/13cbe2e250a74a1a8e5c4a0dd026c866fd2cdfa8/Art/Parts/P1-v1/custom-heads-v1/hair-f1-bob/masters/down-right/hair.front.png"
+    },
+    {
+      "path": "Art/Parts/P1-v1/custom-heads-v1/hair-f1-bob/masters/down/hair.front.png",
+      "status": 200,
+      "bytes": 5661,
+      "sha256": "de611412a90fbb8303ba6feae9e02333485b04dff77c56cff61fe5525a4f4ced",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/13cbe2e250a74a1a8e5c4a0dd026c866fd2cdfa8/Art/Parts/P1-v1/custom-heads-v1/hair-f1-bob/masters/down/hair.front.png"
+    },
+    {
+      "path": "Art/Parts/P1-v1/custom-heads-v1/hair-f1-bob/masters/left/hair.front.png",
+      "status": 200,
+      "bytes": 5905,
+      "sha256": "6067674e584c25cb4b14679184387ca7a7dd5ee2876588d87dc6d05d1a48eaab",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/13cbe2e250a74a1a8e5c4a0dd026c866fd2cdfa8/Art/Parts/P1-v1/custom-heads-v1/hair-f1-bob/masters/left/hair.front.png"
+    },
+    {
+      "path": "Art/Parts/P1-v1/custom-heads-v1/hair-f1-bob/masters/right/hair.front.png",
+      "status": 200,
+      "bytes": 6018,
+      "sha256": "de25d191fb26fe252b8c9783a18b46699d3a97a3a8f65bb7023078010df6d9ab",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/13cbe2e250a74a1a8e5c4a0dd026c866fd2cdfa8/Art/Parts/P1-v1/custom-heads-v1/hair-f1-bob/masters/right/hair.front.png"
+    },
+    {
+      "path": "Art/Parts/P1-v1/custom-heads-v1/hair-f1-bob/masters/up-left/hair.front.png",
+      "status": 200,
+      "bytes": 6608,
+      "sha256": "0b81594cd62b408c6a348c6c6fbe4d8332e859dc0f52db79a2757f241f3459f4",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/13cbe2e250a74a1a8e5c4a0dd026c866fd2cdfa8/Art/Parts/P1-v1/custom-heads-v1/hair-f1-bob/masters/up-left/hair.front.png"
+    },
+    {
+      "path": "Art/Parts/P1-v1/custom-heads-v1/hair-f1-bob/masters/up-right/hair.front.png",
+      "status": 200,
+      "bytes": 6601,
+      "sha256": "d671c6b542b14c6599396936c0cd03a8ac16e5c0bbd06a5d22195521a1bf3b08",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/13cbe2e250a74a1a8e5c4a0dd026c866fd2cdfa8/Art/Parts/P1-v1/custom-heads-v1/hair-f1-bob/masters/up-right/hair.front.png"
+    },
+    {
+      "path": "Art/Parts/P1-v1/custom-heads-v1/hair-f1-bob/masters/up/hair.front.png",
+      "status": 200,
+      "bytes": 6562,
+      "sha256": "cbab76434606058384a85f11ce0ff02f378182ecb2fb0af02fff9a03871948d7",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/13cbe2e250a74a1a8e5c4a0dd026c866fd2cdfa8/Art/Parts/P1-v1/custom-heads-v1/hair-f1-bob/masters/up/hair.front.png"
+    },
+    {
+      "path": "Art/Parts/P1-v1/custom-heads-v1/hair-f1-bob/palette.json",
+      "status": 200,
+      "bytes": 124,
+      "sha256": "50fe86582e52ef02b175bb64d846516c2796307127662f1cc42b2117523a152a",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/13cbe2e250a74a1a8e5c4a0dd026c866fd2cdfa8/Art/Parts/P1-v1/custom-heads-v1/hair-f1-bob/palette.json"
+    },
+    {
+      "path": "Art/Review/P1/custom-heads-v1/README.md",
+      "status": 200,
+      "bytes": 2313,
+      "sha256": "2331f481e6adbb161b5a2d9acd21aa1bb3489de30f8fa8a2e373cb0ae84cfe31",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/13cbe2e250a74a1a8e5c4a0dd026c866fd2cdfa8/Art/Review/P1/custom-heads-v1/README.md"
+    },
+    {
+      "path": "Art/Review/P1/purple-bob-r3/README.md",
+      "status": 200,
+      "bytes": 2830,
+      "sha256": "cfed5755688cc391326f6700e5eaac127d3fca2b4ca301d569f23fdd54c4fb23",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/13cbe2e250a74a1a8e5c4a0dd026c866fd2cdfa8/Art/Review/P1/purple-bob-r3/README.md"
+    },
+    {
+      "path": "Art/Review/P1/purple-bob-r3/user-feedback-ear-scope.json",
+      "status": 200,
+      "bytes": 437,
+      "sha256": "230af052d7060e9c1f401d7249f2e16afe73fd74f84d8797800c9f12638d7d73",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/13cbe2e250a74a1a8e5c4a0dd026c866fd2cdfa8/Art/Review/P1/purple-bob-r3/user-feedback-ear-scope.json"
+    },
+    {
+      "path": "Art/Review/P1/purple-ear-cover-r4/README.md",
+      "status": 200,
+      "bytes": 2867,
+      "sha256": "2db762d1f861e471ce04bd08e54e9c8d7b6a2d861d4c2ffb666030e12b6be4d1",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/13cbe2e250a74a1a8e5c4a0dd026c866fd2cdfa8/Art/Review/P1/purple-ear-cover-r4/README.md"
+    },
+    {
+      "path": "Art/Review/P1/purple-ear-cover-r4/battle-states-1-1x.png",
+      "status": 200,
+      "bytes": 242040,
+      "sha256": "f70f8df8155fcdcb095f693ef725d52fc5dcfa70b8d137c8273c156c21bd62cc",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/13cbe2e250a74a1a8e5c4a0dd026c866fd2cdfa8/Art/Review/P1/purple-ear-cover-r4/battle-states-1-1x.png"
+    },
+    {
+      "path": "Art/Review/P1/purple-ear-cover-r4/battle-states-2-1x.png",
+      "status": 200,
+      "bytes": 240441,
+      "sha256": "c9584245f97b2ec40062e0c046591ca9d18cd3087b3573ff224d11f8a3a5be29",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/13cbe2e250a74a1a8e5c4a0dd026c866fd2cdfa8/Art/Review/P1/purple-ear-cover-r4/battle-states-2-1x.png"
+    },
+    {
+      "path": "Art/Review/P1/purple-ear-cover-r4/before-after-eight-directions-1x.png",
+      "status": 200,
+      "bytes": 154938,
+      "sha256": "a985024f26b70de19056f08cec8cdcec0affd7f15c324f9ed330240430a6ed97",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/13cbe2e250a74a1a8e5c4a0dd026c866fd2cdfa8/Art/Review/P1/purple-ear-cover-r4/before-after-eight-directions-1x.png"
+    },
+    {
+      "path": "Art/Review/P1/purple-ear-cover-r4/before-after-eight-directions-2x.png",
+      "status": 200,
+      "bytes": 211618,
+      "sha256": "88df0bc590689564a5bf6112c0055539f37d802b61a724f0e012d92dc8c21c55",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/13cbe2e250a74a1a8e5c4a0dd026c866fd2cdfa8/Art/Review/P1/purple-ear-cover-r4/before-after-eight-directions-2x.png"
+    },
+    {
+      "path": "Art/Review/P1/purple-ear-cover-r4/browser-gif-review.json",
+      "status": 200,
+      "bytes": 2589,
+      "sha256": "905ed576c929de61243943aef80a07190bd613731577acce45764149a0267c5c",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/13cbe2e250a74a1a8e5c4a0dd026c866fd2cdfa8/Art/Review/P1/purple-ear-cover-r4/browser-gif-review.json"
+    },
+    {
+      "path": "Art/Review/P1/purple-ear-cover-r4/browser-gif-review/1-sample-01.png",
+      "status": 200,
+      "bytes": 73712,
+      "sha256": "90918caaa54bb751b64a443ea002ded964a2a10be9b25d26d279701837b482d9",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/13cbe2e250a74a1a8e5c4a0dd026c866fd2cdfa8/Art/Review/P1/purple-ear-cover-r4/browser-gif-review/1-sample-01.png"
+    },
+    {
+      "path": "Art/Review/P1/purple-ear-cover-r4/browser-gif-review/1-sample-06.png",
+      "status": 200,
+      "bytes": 72603,
+      "sha256": "564c342ba0dd375d245cbd046f23cd12f63e3acf26980715c075c95672cd6d4f",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/13cbe2e250a74a1a8e5c4a0dd026c866fd2cdfa8/Art/Review/P1/purple-ear-cover-r4/browser-gif-review/1-sample-06.png"
+    },
+    {
+      "path": "Art/Review/P1/purple-ear-cover-r4/browser-gif-review/1-sample-12.png",
+      "status": 200,
+      "bytes": 73712,
+      "sha256": "90918caaa54bb751b64a443ea002ded964a2a10be9b25d26d279701837b482d9",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/13cbe2e250a74a1a8e5c4a0dd026c866fd2cdfa8/Art/Review/P1/purple-ear-cover-r4/browser-gif-review/1-sample-12.png"
+    },
+    {
+      "path": "Art/Review/P1/purple-ear-cover-r4/browser-gif-review/2-sample-01.png",
+      "status": 200,
+      "bytes": 66318,
+      "sha256": "93191443eaaa580120df72ca9a4076471f589f3093a8d0ebfcea5edd729f184f",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/13cbe2e250a74a1a8e5c4a0dd026c866fd2cdfa8/Art/Review/P1/purple-ear-cover-r4/browser-gif-review/2-sample-01.png"
+    },
+    {
+      "path": "Art/Review/P1/purple-ear-cover-r4/browser-gif-review/2-sample-06.png",
+      "status": 200,
+      "bytes": 74684,
+      "sha256": "0002b31e98c287198beb2943c51b48dbcbe973440896e518a85ce44337e2ddd7",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/13cbe2e250a74a1a8e5c4a0dd026c866fd2cdfa8/Art/Review/P1/purple-ear-cover-r4/browser-gif-review/2-sample-06.png"
+    },
+    {
+      "path": "Art/Review/P1/purple-ear-cover-r4/browser-gif-review/2-sample-12.png",
+      "status": 200,
+      "bytes": 66658,
+      "sha256": "33e8fdd7e12357f13b89d0b3dba5ea4629bcc0a4ca2dce6c70ca31cc9368a29a",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/13cbe2e250a74a1a8e5c4a0dd026c866fd2cdfa8/Art/Review/P1/purple-ear-cover-r4/browser-gif-review/2-sample-12.png"
+    },
+    {
+      "path": "Art/Review/P1/purple-ear-cover-r4/ear-cover-eight-way-normal-decoded-000.png",
+      "status": 200,
+      "bytes": 73068,
+      "sha256": "2f1d7e2c5ef25a08d48af48d37bcfb0f4e163039072fbbeb40633c6ad805682b",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/13cbe2e250a74a1a8e5c4a0dd026c866fd2cdfa8/Art/Review/P1/purple-ear-cover-r4/ear-cover-eight-way-normal-decoded-000.png"
+    },
+    {
+      "path": "Art/Review/P1/purple-ear-cover-r4/ear-cover-eight-way-normal-decoded-004.png",
+      "status": 200,
+      "bytes": 72791,
+      "sha256": "55d519dee6082b9e60cac4df30045e5b6e5f04b562a12bcbc99f689bd078670d",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/13cbe2e250a74a1a8e5c4a0dd026c866fd2cdfa8/Art/Review/P1/purple-ear-cover-r4/ear-cover-eight-way-normal-decoded-004.png"
+    },
+    {
+      "path": "Art/Review/P1/purple-ear-cover-r4/ear-cover-eight-way-normal-decoded-007.png",
+      "status": 200,
+      "bytes": 71973,
+      "sha256": "802734c34babede24b669d6267ed741be6bc9bbdb9f1806b0ddeb65218a3cddf",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/13cbe2e250a74a1a8e5c4a0dd026c866fd2cdfa8/Art/Review/P1/purple-ear-cover-r4/ear-cover-eight-way-normal-decoded-007.png"
+    },
+    {
+      "path": "Art/Review/P1/purple-ear-cover-r4/ear-cover-eight-way-normal.gif",
+      "status": 200,
+      "bytes": 248676,
+      "sha256": "3425de197a74e043e689b2ff92740893883bbaaba9ffc73e7a9d36bcf276b78b",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/13cbe2e250a74a1a8e5c4a0dd026c866fd2cdfa8/Art/Review/P1/purple-ear-cover-r4/ear-cover-eight-way-normal.gif"
+    },
+    {
+      "path": "Art/Review/P1/purple-ear-cover-r4/ear-cover-walk-battle-normal-decoded-000.png",
+      "status": 200,
+      "bytes": 68437,
+      "sha256": "2626d5c900dea6dee9f84847826d48add3f9d712a8d7b8e216a8795e4c8fdf1a",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/13cbe2e250a74a1a8e5c4a0dd026c866fd2cdfa8/Art/Review/P1/purple-ear-cover-r4/ear-cover-walk-battle-normal-decoded-000.png"
+    },
+    {
+      "path": "Art/Review/P1/purple-ear-cover-r4/ear-cover-walk-battle-normal-decoded-042.png",
+      "status": 200,
+      "bytes": 80132,
+      "sha256": "996d360491c819d22eefde46ae5636d4ad7c3b8dd207be811197477c0fad3055",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/13cbe2e250a74a1a8e5c4a0dd026c866fd2cdfa8/Art/Review/P1/purple-ear-cover-r4/ear-cover-walk-battle-normal-decoded-042.png"
+    },
+    {
+      "path": "Art/Review/P1/purple-ear-cover-r4/ear-cover-walk-battle-normal-decoded-084.png",
+      "status": 200,
+      "bytes": 66234,
+      "sha256": "2f18df338325e3b7407391439e6afc02e9a0b7298289bca09307952d30010eff",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/13cbe2e250a74a1a8e5c4a0dd026c866fd2cdfa8/Art/Review/P1/purple-ear-cover-r4/ear-cover-walk-battle-normal-decoded-084.png"
+    },
+    {
+      "path": "Art/Review/P1/purple-ear-cover-r4/ear-cover-walk-battle-normal.gif",
+      "status": 200,
+      "bytes": 1526578,
+      "sha256": "7e9fa2465fcbffc678116c7030ae36364f432942d41ff07d53e50da3ec3631b5",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/13cbe2e250a74a1a8e5c4a0dd026c866fd2cdfa8/Art/Review/P1/purple-ear-cover-r4/ear-cover-walk-battle-normal.gif"
+    },
+    {
+      "path": "Art/Review/P1/purple-ear-cover-r4/front-side-battle-1x.png",
+      "status": 200,
+      "bytes": 42907,
+      "sha256": "e671ebc256619f992e26094c32808be3e27c8ed15a7de6b6292886f6ea775ca8",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/13cbe2e250a74a1a8e5c4a0dd026c866fd2cdfa8/Art/Review/P1/purple-ear-cover-r4/front-side-battle-1x.png"
+    },
+    {
+      "path": "Art/Review/P1/purple-ear-cover-r4/front-side-battle-2x.png",
+      "status": 200,
+      "bytes": 58648,
+      "sha256": "91d7392abb723d7f29b4cd4b1933ba79304cd182ff6cd46b2b4f6626987c2c9a",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/13cbe2e250a74a1a8e5c4a0dd026c866fd2cdfa8/Art/Review/P1/purple-ear-cover-r4/front-side-battle-2x.png"
+    },
+    {
+      "path": "Art/Review/P1/purple-ear-cover-r4/input-pngs.json",
+      "status": 200,
+      "bytes": 42883,
+      "sha256": "371bc4bf567a0c5004ff82169a2a11e063b50b4b63499d5f9311ebe1862f92b0",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/13cbe2e250a74a1a8e5c4a0dd026c866fd2cdfa8/Art/Review/P1/purple-ear-cover-r4/input-pngs.json"
+    },
+    {
+      "path": "Art/Review/P1/purple-ear-cover-r4/main-agent-art-review.json",
+      "status": 200,
+      "bytes": 464,
+      "sha256": "c81a3c1deb131d93126aa4b88615301f0d76bfe4c4936427c1f8cd4eee619382",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/13cbe2e250a74a1a8e5c4a0dd026c866fd2cdfa8/Art/Review/P1/purple-ear-cover-r4/main-agent-art-review.json"
+    },
+    {
+      "path": "Art/Review/P1/purple-ear-cover-r4/standing-and-battle-1x.png",
+      "status": 200,
+      "bytes": 75743,
+      "sha256": "6327e5ddd95c67eb3ac85ddbfcf0961d943e2a7177f172b8b86e5f7791927f47",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/13cbe2e250a74a1a8e5c4a0dd026c866fd2cdfa8/Art/Review/P1/purple-ear-cover-r4/standing-and-battle-1x.png"
+    },
+    {
+      "path": "Art/Review/P1/purple-ear-cover-r4/standing-and-battle-2x.png",
+      "status": 200,
+      "bytes": 105647,
+      "sha256": "dc1a4ec72b390652b003f14d93cba616b60be9fead3904798b5bf0b7631777f3",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/13cbe2e250a74a1a8e5c4a0dd026c866fd2cdfa8/Art/Review/P1/purple-ear-cover-r4/standing-and-battle-2x.png"
+    },
+    {
+      "path": "Art/Review/P1/purple-ear-cover-r4/verification.json",
+      "status": 200,
+      "bytes": 48873,
+      "sha256": "371a2c9b72768c3dc06afcf5ff8250b772020fef87c6e07b5cd81db91742af00",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/13cbe2e250a74a1a8e5c4a0dd026c866fd2cdfa8/Art/Review/P1/purple-ear-cover-r4/verification.json"
+    },
+    {
+      "path": "Art/Review/P1/side-hair-coverage-r2/README.md",
+      "status": 200,
+      "bytes": 3223,
+      "sha256": "19cf23c5cb3b0f714ed2059d6e006925814a983cbf40eb7bca625ff8bbb0a701",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/13cbe2e250a74a1a8e5c4a0dd026c866fd2cdfa8/Art/Review/P1/side-hair-coverage-r2/README.md"
+    },
+    {
+      "path": "docs/ITERATION_STATUS.md",
+      "status": 200,
+      "bytes": 552173,
+      "sha256": "ed986ccf5d08207359519af0e975c46de25f5d627999b735535939bea29948fa",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/13cbe2e250a74a1a8e5c4a0dd026c866fd2cdfa8/docs/ITERATION_STATUS.md"
+    },
+    {
+      "path": "scripts/build-custom-heads-v1.py",
+      "status": 200,
+      "bytes": 23804,
+      "sha256": "19f5d632be2e55295b7d7d915a1a8e65e657780354c38cf60bbb82bc72d0f452",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/13cbe2e250a74a1a8e5c4a0dd026c866fd2cdfa8/scripts/build-custom-heads-v1.py"
+    },
+    {
+      "path": "scripts/review-purple-ear-cover-r4.py",
+      "status": 200,
+      "bytes": 9704,
+      "sha256": "22974be5e1d618fab8161ab3e034473b66c7cddddc308ce704e0c5af8abba10e",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/13cbe2e250a74a1a8e5c4a0dd026c866fd2cdfa8/scripts/review-purple-ear-cover-r4.py"
+    }
+  ],
+  "failures": [],
+  "publicationJob": {
+    "runID": 42467575261,
+    "jobID": 128690546967,
+    "allStepsSucceeded": true,
+    "temporaryBranchAndWorkflowRemoved": true
+  },
+  "runtimeImported": false
+}

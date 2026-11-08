@@ -1,0 +1,66 @@
+{
+  "schemaVersion": 1,
+  "item": "starlightArmor",
+  "design": "B",
+  "sourceCommit": "1f76bce38fb33742ff6eeaef1499c186f14c0fb6",
+  "genericParts": {
+    "MeadowBattleHeroWardrobeCore": "generic/MeadowBattleHeroWardrobeCore.png",
+    "MeadowBattleHeroPauldronNearWardrobe": "generic/MeadowBattleHeroPauldronNearWardrobe.png",
+    "MeadowBattleHeroArmNearUpperWardrobe": "generic/MeadowBattleHeroArmNearUpperWardrobe.png",
+    "MeadowBattleHeroArmNearForearmWardrobe": "generic/MeadowBattleHeroArmNearForearmWardrobe.png",
+    "MeadowBattleHeroHemFarWardrobe": "generic/MeadowBattleHeroHemFarWardrobe.png",
+    "MeadowBattleHeroHemNearWardrobe": "generic/MeadowBattleHeroHemNearWardrobe.png"
+  },
+  "existingBodyParts": {
+    "MeadowBattleHeroLegFarThighWardrobe": "MeadowRuneArmorLegFarThighWardrobe",
+    "MeadowBattleHeroLegNearThighWardrobe": "MeadowRuneArmorLegNearThighWardrobe",
+    "MeadowBattleHeroArmNearUpperBody": "MeadowRuneArmorArmNearUpperBody",
+    "MeadowBattleHeroArmNearForearmBody": "MeadowRuneArmorArmNearForearmBody"
+  },
+  "genericLayerOrder": [
+    "MeadowBattleHeroJointUnderlay",
+    "MeadowBattleHeroBodyCore",
+    "MeadowBattleHeroLegFarThighBody",
+    "MeadowBattleHeroLegFarShinBody",
+    "MeadowBattleHeroLegNearThighBody",
+    "MeadowBattleHeroLegNearShinBody",
+    "MeadowBattleHeroLegFarThighWardrobe",
+    "MeadowBattleHeroLegFarShinWardrobe",
+    "MeadowBattleHeroLegNearThighWardrobe",
+    "MeadowBattleHeroLegNearShinWardrobe",
+    "MeadowBattleHeroWardrobeCore",
+    "MeadowBattleHeroHemFarWardrobe",
+    "MeadowBattleHeroHemNearWardrobe",
+    "MeadowBattleHeroArmNearUpperBody",
+    "MeadowBattleHeroArmNearUpperWardrobe",
+    "MeadowBattleHeroPauldronNearWardrobe",
+    "MeadowBattleHeroArmNearForearmBody",
+    "MeadowBattleHeroArmNearForearmWardrobe",
+    "MeadowBattleHeroWeapon",
+    "MeadowBattleHeroHair",
+    "MeadowBattleHeroFace",
+    "MeadowBattleHeroNearHand",
+    "MeadowBattleHeroFarHand"
+  ],
+  "bowAtlas": "bow/atlas.png",
+  "bowTorso": "bow/torso.png",
+  "originalNativeBowJSON": "Vendor/ClassroomGameCore/Sources/MeadowBattleSupport/Resources/reviewed-bow-r7.json",
+  "weapons": [
+    "trainingSword",
+    "greatSword",
+    "huntingBow",
+    "legendaryStaff"
+  ],
+  "clips": [
+    "idle",
+    "attack",
+    "guard",
+    "hit",
+    "victory",
+    "defeat",
+    "revive"
+  ],
+  "originalBodyHandWeaponPoseOrRulesChanged": false,
+  "runtimeImported": false,
+  "artApproval": null
+}

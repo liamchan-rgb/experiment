@@ -1,0 +1,126 @@
+{
+  "scope": "independent actual GIF playback only; not App execution or performance measurement",
+  "records": [
+    {
+      "path": "Art/Review/P1/side-hair-coverage-r2/walking-battle-same-head-normal.gif",
+      "dimensions": {
+        "complete": true,
+        "width": 1536,
+        "height": 560
+      },
+      "sampleIntervalMs": 130,
+      "sampleHashes": [
+        "e06caea119168f1f56e139d184083e4108f3ad17977d357c399fe5a814ea1429",
+        "f3d98e12e3520f936e5b13c9eb629607d512c667407ecbbb2553f795e096b554",
+        "23e821f4db41c317f86b5b5788868cbfc251ad14e9ca18db5a421c7ebb57e40c",
+        "edd8797cae8b29a5adc5ed8d3ec70d6b20db56f0b9043eb3e9f24f65c7ba8b47",
+        "fdc8c1cfab5ae43ee000e2aba47b5330dcc42ba1c38d26e047d9611b256f6ac0",
+        "f2652b55f21df692a1cbc3f705235afe0a1b4080caf2ebf1d0ce8d0c6ce852dc",
+        "811d66f55b0cd388f806664a1e085b605deeee099bd621ad9b0cb7fcb0c7c42d",
+        "9d328aec56e921d77afa0b19420ab483408b5bd7d928d44a9b661916a0c08951",
+        "33466275288ab2536f67be5722cf982c2f019aad1234684e5e64e37b8e0b228c",
+        "e5ac3a745c3f567c184b696ca25d82de1963224d54b0005d1774955a283c0f89",
+        "c413658ed76027a784a2ad554f8444ab39d2e1d089743f0ad4f6fad5fa5e1ffa",
+        "2fc7ca03aa629945702dcb00802cfcd4f9b7a750c42dececa2083a2ae2dddeaa"
+      ],
+      "distinctScreenshotHashes": 12
+    },
+    {
+      "path": "Art/Review/P1/side-hair-coverage-r2/both-armors-attack-normal.gif",
+      "dimensions": {
+        "complete": true,
+        "width": 1024,
+        "height": 560
+      },
+      "sampleIntervalMs": 130,
+      "sampleHashes": [
+        "a7469ef2c1bd567871cdf48aff55d741f6fbb4fbce747fd31613dd995d97baf4",
+        "a7469ef2c1bd567871cdf48aff55d741f6fbb4fbce747fd31613dd995d97baf4",
+        "a7469ef2c1bd567871cdf48aff55d741f6fbb4fbce747fd31613dd995d97baf4",
+        "3493cd41755ba9d2ab7ff7516d8c26203ede05f7e95d463a57bf2f32b2f153f8",
+        "f61f29d680d31703516c453d155518ffc5a43d48493056e679b3165d0be2d89e",
+        "4c564621e69aece6ee224097b0f500ebae4fb9a9abc19c801aab5924bf576db3",
+        "9280e366d1535a33c62952f1f3224c34ed1eface975b19cd39bd5557b20bda18",
+        "287dbadb32b1bd7373d5137e5df0a6719ada18439cb59018f6cd2a23ea089b7f",
+        "c95828866ef98144cee33a8e10843d928e128677b686ddd9e3db9db32767a4d3",
+        "337bfc6f1a31b5da340d96744e2eeab63019d3d94d4f89209cc1eaab9c41865c",
+        "44ff482db79b352de357986ba021356d8a4a3d0a939593b1e84cb5c5f506e0fb",
+        "c4df9349fa1d48032cf754ccf1209731c67db0625fabf17959995bc5b9478a2d"
+      ],
+      "distinctScreenshotHashes": 10
+    },
+    {
+      "path": "Art/Review/P1/side-hair-coverage-r2/both-armors-states-normal.gif",
+      "dimensions": {
+        "complete": true,
+        "width": 1024,
+        "height": 560
+      },
+      "sampleIntervalMs": 130,
+      "sampleHashes": [
+        "9daea9d4493993543845169c34b5ed13e5dc6a722ca5dea63b0631f06e71b9e7",
+        "2866b0426771bf7e08e3eb3e2c106d119a271dab0e7098fd71ca7ecfa7826f96",
+        "949bfdcaf6c48fc808ce7ce59230d2975d862aff3dd3fe3786c0b902337cf4a0",
+        "949bfdcaf6c48fc808ce7ce59230d2975d862aff3dd3fe3786c0b902337cf4a0",
+        "949bfdcaf6c48fc808ce7ce59230d2975d862aff3dd3fe3786c0b902337cf4a0",
+        "949bfdcaf6c48fc808ce7ce59230d2975d862aff3dd3fe3786c0b902337cf4a0",
+        "f206d52b76c7cc9d2c20e9d7a0df4bc5f842778530efc2b8da7296a7c13f0f35",
+        "46dafc2ed1d158f233fbe47e477cd311d4ee7ec928ddf58d987bd99df83e90b1",
+        "1335c28b96a230ef500e91c68bca46c276e8d21ddf990e9d132ba0c1d4037646",
+        "4b0bbe86bf4e087e905f42397a3514ef6c7dfd0ecc0987e7f5abb3b3407899c1",
+        "51467e50e27ea7cb6583a779f26e8c6f7f48029edfc135f93482c32ab0e26b43",
+        "ef25bfb67d6e6a516a89099149036cad42e224d5b45ef0ce4a612801b68d5450"
+      ],
+      "distinctScreenshotHashes": 9
+    },
+    {
+      "path": "Art/Review/P1/side-hair-coverage-r2/m1-short-eight-way-normal.gif",
+      "dimensions": {
+        "complete": true,
+        "width": 1024,
+        "height": 560
+      },
+      "sampleIntervalMs": 130,
+      "sampleHashes": [
+        "7eda45353b4a2c99e84709d98dd97358186bf51234d4e236a297d969cb4c1d79",
+        "e3873fa96bf9859508dbd6e9973f25ecf6997131aff3fa80cd5daeda5ba14384",
+        "200b7d1ccc2e5f735cf2c0e6e43f685440509e4da68439852921d244d6b2d474",
+        "577cfd39f6a2b00c9d7e6106ab635c363bc901561aa83a30f0f4452f5e9ae591",
+        "0bbd8cf7d89c53258668885138c9a5785eb863050131030b4b83dd2e4b7e85d5",
+        "0052f03fd212dd91386ee6235bdeea1040ce8b0aa98e95c3b584bb841f20ebfd",
+        "7eda45353b4a2c99e84709d98dd97358186bf51234d4e236a297d969cb4c1d79",
+        "e3873fa96bf9859508dbd6e9973f25ecf6997131aff3fa80cd5daeda5ba14384",
+        "0e221770919699f6b9e2d0570c91a5d4b2f03ce01e2665f1533785763a36fdf7",
+        "577cfd39f6a2b00c9d7e6106ab635c363bc901561aa83a30f0f4452f5e9ae591",
+        "0bbd8cf7d89c53258668885138c9a5785eb863050131030b4b83dd2e4b7e85d5",
+        "0052f03fd212dd91386ee6235bdeea1040ce8b0aa98e95c3b584bb841f20ebfd"
+      ],
+      "distinctScreenshotHashes": 7
+    },
+    {
+      "path": "Art/Review/P1/side-hair-coverage-r2/f1-bob-eight-way-normal.gif",
+      "dimensions": {
+        "complete": true,
+        "width": 1024,
+        "height": 560
+      },
+      "sampleIntervalMs": 130,
+      "sampleHashes": [
+        "74a9273a19deabbc684878e7a7a11050c59ac07c342345765a912b791c2ca340",
+        "360e929631be86e2029bfb21b7532b3a3cee127bf0efab64d1e3c8d98f4abc78",
+        "bba0ee8c0556152532588281e5a5db6673516bf1f2a366b44ea36a8b7c26b819",
+        "24cb67d6add5029e9e6968f9766e7484d4ad3bd11b0caafb3f47c902d1b091ba",
+        "3cd9f5685663c301f827ca6bcc15807bb618564bab155be4a3ab7374d94c3d89",
+        "255636927dca7885124f2502e2f9dfafd395320cab88a86c4a1d79b0f175ffa3",
+        "74a9273a19deabbc684878e7a7a11050c59ac07c342345765a912b791c2ca340",
+        "360e929631be86e2029bfb21b7532b3a3cee127bf0efab64d1e3c8d98f4abc78",
+        "1194c61433821846b1383b4261ffe64c3369394c83cd9d40a2dfb7415ab613ad",
+        "bba0ee8c0556152532588281e5a5db6673516bf1f2a366b44ea36a8b7c26b819",
+        "3cd9f5685663c301f827ca6bcc15807bb618564bab155be4a3ab7374d94c3d89",
+        "255636927dca7885124f2502e2f9dfafd395320cab88a86c4a1d79b0f175ffa3"
+      ],
+      "distinctScreenshotHashes": 7
+    }
+  ],
+  "appSimulatorOrDeviceRun": false
+}

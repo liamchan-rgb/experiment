@@ -1,0 +1,15 @@
+{
+  "reviewer": "main agent",
+  "wholeFigureFirst": true,
+  "views": [
+    "front-side-battle-2x.png",
+    "ear-cover-walk-battle-normal-decoded-042.png",
+    "battle-states-2-1x.png"
+  ],
+  "referenceFrontRestoredInsteadOfRedesigned": true,
+  "scope": "orthogonal left/right in walking, and existing battle side view",
+  "all1504MechanicalFiguresVisuallyReviewed": false,
+  "newArtApproval": null,
+  "runtimeImported": false,
+  "appSimulatorOrDeviceRun": false
+}

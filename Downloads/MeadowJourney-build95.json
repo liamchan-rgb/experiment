@@ -1,0 +1,119 @@
+{
+  "sourceCommit": "175c7dfc4a68e62cb9693da8d837b77081619a6b",
+  "runID": 42265928750,
+  "artifactID": 13528533456,
+  "version": "1.6.68",
+  "build": 95,
+  "runAttempt": 1,
+  "artifactSHA256": "373c73b9613af50e574a22546784e940328d5fc52b7dbf938be53cb159b781d8",
+  "ipaBytes": 64792405,
+  "ipaSHA256": "2d1ae3f9abe0fec4ac63202b37e1ed11b37ac1f0b636698c9f30328b196ef8e3",
+  "tests": 296,
+  "checks": {
+    "swiftTests": 296,
+    "fourRegressionsPassed": true,
+    "deviceReleaseArchivePassed": true,
+    "strictMatrixCounts": {
+      "baseline": 27,
+      "loadouts": 27,
+      "party": 24,
+      "partyPreview": 16,
+      "uniqueCasesMatched": true
+    },
+    "CRC": true,
+    "classicZIP2WithoutExtras": true,
+    "version": "1.6.68/95",
+    "buildSDK": {
+      "DTSDKName": "iphoneos18.5",
+      "DTXcode": "1640",
+      "DTXcodeBuild": "16F6",
+      "MinimumOSVersion": "15.0"
+    },
+    "arm64ExecutablePermissions": "0o100755",
+    "executableSHA256": "a090db0ef4d7269028ed75beeebaf30393fe4953e5c8807504f8d249cad46677",
+    "MetalLibraries": {
+      "Payload/MeadowJourney.app/default.metallib": "2f148cc76f8b8bf42eb4a798a40f8a57c77505ea382ee4422c9a1d82499999e3"
+    },
+    "compiledAssetCatalogSHA256": "9a3431ff9f173b30db1a3c4e9d6775caf35d12a19a0c89dda7c9c7b87b0fc2c8",
+    "compiledCatalogMatchesBuild94Bytes": true,
+    "12MonsterAtlasesAnd6Datasets": true,
+    "sourceResourceFilesUnchangedFromBuild94": 569,
+    "systemAssetutilParsedCatalogEntries": 288,
+    "encounters-default.json": "Native/current rules equal Build94 reference; numeric distance error <1e-8",
+    "encounters-max.json": "Native/current rules equal Build94 reference; numeric distance error <1e-8",
+    "balance-default.json": "Native/current rules equal Build94 reference; numeric distance error <1e-8",
+    "balance-max.json": "Native/current rules equal Build94 reference; numeric distance error <1e-8",
+    "guidance-default.json": "Native/current rules equal Build94 reference; numeric distance error <1e-8",
+    "guidance-max.json": "Native/current rules equal Build94 reference; numeric distance error <1e-8",
+    "equipment-default.json": "Native/current rules equal Build94 reference; numeric distance error <1e-8",
+    "equipment-max.json": "Native/current rules equal Build94 reference; numeric distance error <1e-8",
+    "journey-audit.json": "Native/current rules equal Build94 reference; numeric distance error <1e-8",
+    "loadout-smoke.json": "Native/current rules equal Build94 reference; numeric distance error <1e-8",
+    "party-matrix.json": "Native equal preserved Build94 reference; numeric distance error <1e-8",
+    "party-preview.json": "Native equal preserved Build94 reference; numeric distance error <1e-8"
+  },
+  "preservedBuild94JSON": {
+    "Payload/MeadowJourney.app/SceneMap.json": "b5d8e7c74e6038a4d6b3e266cf1c6f7184eee56cfb2c2f462b7e048ab6cd0ea5",
+    "Payload/MeadowJourney.app/ClassroomGameCore_ClassroomGameCore.bundle/initial-content.json": "aaab980fd5f3154ac813a02dc907a835ee0e0181c4149f2b7803d9594795f34a",
+    "Payload/MeadowJourney.app/hero-gait.json": "44ad26e97cfd0836074eefc70ee081f2bbb5b2003961ed1e779acbfebdaaa527"
+  },
+  "resourceBaselineSource": "29d60fa0d39b6b96763b298155aeab16f8778a9e",
+  "appSimulatorDeviceRun": false,
+  "downloadURL": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ac9d4cb0d2e2c3385d5d535a2bec2a2d3d0ca6b2/Downloads/MeadowJourney-b95.ipa",
+  "releaseCommit": "ac9d4cb0d2e2c3385d5d535a2bec2a2d3d0ca6b2",
+  "publicGET": {
+    "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ac9d4cb0d2e2c3385d5d535a2bec2a2d3d0ca6b2/Downloads/MeadowJourney-b95.ipa",
+    "httpStatus": 200,
+    "bytes": 64792405,
+    "sha256": "2d1ae3f9abe0fec4ac63202b37e1ed11b37ac1f0b636698c9f30328b196ef8e3",
+    "verifiedAt": "2026-11-06T18:24:38.700180+00:00",
+    "completeGET": true
+  },
+  "swiftTests": 296,
+  "fourRegressionsPassed": true,
+  "deviceReleaseArchivePassed": true,
+  "saveFormatVersion": 1,
+  "journeyAudit": {
+    "baselineCases": 27,
+    "baselineOutcomes": {
+      "victory": 24,
+      "defeat": 3
+    },
+    "loadoutCases": 27,
+    "loadoutOutcomes": {
+      "victory": 25,
+      "defeat": 2
+    },
+    "baselineActions": 1330,
+    "loadoutActions": 1188,
+    "scope": "27 default and 27 loadout cases compared to Build94; 24 party journeys compared to Build94 reference; not human win rate",
+    "appSimulatorDeviceRun": false,
+    "partyCases": 24,
+    "partyOutcomes": {
+      "defeat": 3,
+      "victory": 21
+    },
+    "partyActions": 1041,
+    "partyResumes": 286,
+    "partyStagedRestarts": 136
+  },
+  "independentPlayerClasses": true,
+  "supportedClasses": [
+    "adventurer",
+    "ranger",
+    "spellblade",
+    "dragonKnight"
+  ],
+  "partyCombinations": 16,
+  "routeGuidance": true,
+  "actualRewardPreview": true,
+  "partyResourceReadout": true,
+  "journeyClosingReadout": true,
+  "personalCommerce": true,
+  "seededOptionalSites": true,
+  "p2EquipmentRules": true,
+  "siteResolvedOptionalField": true,
+  "siteParameterEditor": true,
+  "tabletopBridgeImplemented": false,
+  "installed": false
+}

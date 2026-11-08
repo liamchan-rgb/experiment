@@ -1,0 +1,11 @@
+{
+  "sourceCommit": "17b0b0363199a37fa0ab8cccdb8d9545a02e6c1b",
+  "activeRun": 42232775576,
+  "runner": "macos-15-intel",
+  "queueFallbacksCancelled": [
+    42231576230,
+    42232158724
+  ],
+  "earlierLayoutRevisionRunCancelled": 42231291269,
+  "reason": "No runner assigned to the first two pools; use actual successful archive only. Earlier source superseded by UI layout adjustment."
+}

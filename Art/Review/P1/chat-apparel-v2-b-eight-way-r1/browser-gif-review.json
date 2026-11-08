@@ -1,0 +1,30 @@
+{
+  "scope": "independent local HTML GIF playback only; not game/App execution or frame-rate measurement",
+  "browser": "headless Chromium",
+  "images": [
+    {
+      "complete": true,
+      "width": 1024,
+      "height": 560
+    },
+    {
+      "complete": true,
+      "width": 1024,
+      "height": 560
+    }
+  ],
+  "sampleIntervalMs": 130,
+  "screenshotSamples": 8,
+  "distinctScreenshotHashes": 6,
+  "sha256": [
+    "774ecf576ba572cac74b460c2d994202ccbb8777a78c1af47a06f9fa7b076656",
+    "a9d57b9272b8a948346ec0892fcfa5aec1fa1adcf3008b73662b6e66e2735cad",
+    "b675da3bb454ed23215401ffe11ad0a5fc3c11add6fe1eee8d8af105ca2ce0a8",
+    "98ae7985367ec43acc9ac7da14cbd6e8e044062061f1091405df430a4ad6a962",
+    "c82b2e0d984ec215233aaf6d927846bccf36bae3087a9e64d5310a0a646db97b",
+    "b2382af4dc89e3b8a39b1710dea80983e808afdbe9a7194de75f81a406549336",
+    "a9d57b9272b8a948346ec0892fcfa5aec1fa1adcf3008b73662b6e66e2735cad",
+    "b675da3bb454ed23215401ffe11ad0a5fc3c11add6fe1eee8d8af105ca2ce0a8"
+  ],
+  "appSimulatorOrDeviceRun": false
+}

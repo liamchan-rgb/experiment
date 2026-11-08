@@ -1,0 +1,54 @@
+{
+  "scope": "Actual exported GIFs in independent Chromium; not App execution, performance measurement or user art approval",
+  "appSimulatorOrDeviceRun": false,
+  "records": [
+    {
+      "path": "Art/Review/P1/purple-bob-r3/purple-eight-way-normal.gif",
+      "dimensions": {
+        "complete": true,
+        "width": 1024,
+        "height": 560
+      },
+      "intervalMs": 130,
+      "sampleHashes": [
+        "282a1a3ab8c2b3b30628ca182f2f48b610aab4246484d4b820af62c02dae7f88",
+        "2e6c03a6078443ea9c32709763f297c379b8b9228ee018d79047ac735fa24e6e",
+        "1f14a91ecc19cb381f411d3b7d05bcb6b28f2dc8875e79507da9c56b8b5a3d21",
+        "c379c63b3ac013c55c09d8481def3bf82070c7992243f39e37a66c6256a174e8",
+        "a3c65f3f7dec592375c5c349089a12d0bc4ec385836a43986bba35953553495a",
+        "282a1a3ab8c2b3b30628ca182f2f48b610aab4246484d4b820af62c02dae7f88",
+        "6b35aa8157c2e742f2825dc9b3e49ce53c0c6ec77624de2218a8d99f5b987da2",
+        "1f14a91ecc19cb381f411d3b7d05bcb6b28f2dc8875e79507da9c56b8b5a3d21",
+        "58f86f6023374d2d97e615f72f0264e0d60ad184eada77e475922368724bcc69",
+        "c379c63b3ac013c55c09d8481def3bf82070c7992243f39e37a66c6256a174e8",
+        "f6a97fa7f9c11cc5e137502a8fe5b733688a493cf0b8266e05bce5d853ac6829",
+        "282a1a3ab8c2b3b30628ca182f2f48b610aab4246484d4b820af62c02dae7f88"
+      ],
+      "distinctScreenshotHashes": 8
+    },
+    {
+      "path": "Art/Review/P1/purple-bob-r3/purple-walk-battle-normal.gif",
+      "dimensions": {
+        "complete": true,
+        "width": 1280,
+        "height": 560
+      },
+      "intervalMs": 130,
+      "sampleHashes": [
+        "55038f6509f6afa2ae42b76de167b4a08818b004d1b2876127c88dbf16f5fd41",
+        "b271d7cf54bc9b54b26795f330689f6bcb02f5f93d9d86aac7c3b57d8890eba4",
+        "effca1c55e1f83e29d768bc73c9f676f19d403ddb0b4106281a94421a60d7a86",
+        "1817ce517e6fa879acdb5c8bef1b3c3a2696f87c07184237efab6dca017f2b9e",
+        "55bb83539085becdba7817b6a44523d175cb8b376f60e96a7fde1b5703bc6cf1",
+        "e508c0aea4dc1fe0c888672a8163fe23dd47f0fa1da1628ae91093aacc19fdf1",
+        "e34ca0f947e79a7242eceb4b7dfc26418de199453ce1c4ca4da3083bba07eed4",
+        "11f07c09ddd98e4c30235bd3a1b69e3ebce9700c07fb1ff0ee70a8e245cf7a78",
+        "2ae156e6b95e59fab4c9e94f7a1abdab62d33b32a35427f0a195689fd6a6deb7",
+        "9e7d1e5c27f05f2179a273a3154307747ec0fb53dfed8541629b2e9583e5fb29",
+        "5b282101aab5b531163f8c89c12440e2304d50f29ae06b5293175128c94773d0",
+        "55038f6509f6afa2ae42b76de167b4a08818b004d1b2876127c88dbf16f5fd41"
+      ],
+      "distinctScreenshotHashes": 11
+    }
+  ]
+}

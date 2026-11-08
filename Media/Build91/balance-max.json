@@ -1,0 +1,422 @@
+{
+  "previews" : [
+    {
+      "boss" : false,
+      "canInteract" : false,
+      "monsters" : [
+        {
+          "attack" : "1D6",
+          "baseAP" : 2,
+          "health" : 12,
+          "id" : "m-0-1",
+          "maximumHealth" : 12,
+          "name" : "哥布林弓手",
+          "shield" : 0,
+          "skills" : [
+
+          ],
+          "templateID" : "goblinArcher"
+        }
+      ],
+      "nodeID" : 0,
+      "title" : "林间战斗 · 1"
+    },
+    {
+      "boss" : false,
+      "canInteract" : false,
+      "monsters" : [
+        {
+          "attack" : "1D4",
+          "baseAP" : 1,
+          "health" : 8,
+          "id" : "m-3-1",
+          "maximumHealth" : 8,
+          "name" : "捣蛋史莱姆",
+          "shield" : 0,
+          "skills" : [
+
+          ],
+          "templateID" : "slime"
+        },
+        {
+          "attack" : "1D6",
+          "baseAP" : 2,
+          "health" : 12,
+          "id" : "m-3-2",
+          "maximumHealth" : 12,
+          "name" : "哥布林弓手",
+          "shield" : 0,
+          "skills" : [
+
+          ],
+          "templateID" : "goblinArcher"
+        }
+      ],
+      "nodeID" : 3,
+      "title" : "林间战斗 · 4"
+    },
+    {
+      "boss" : false,
+      "canInteract" : false,
+      "monsters" : [
+        {
+          "attack" : "1D6",
+          "baseAP" : 2,
+          "health" : 12,
+          "id" : "m-5-1",
+          "maximumHealth" : 12,
+          "name" : "森林狼",
+          "shield" : 0,
+          "skills" : [
+
+          ],
+          "templateID" : "wolf"
+        }
+      ],
+      "nodeID" : 5,
+      "title" : "林间战斗 · 6"
+    },
+    {
+      "boss" : false,
+      "canInteract" : false,
+      "monsters" : [
+        {
+          "attack" : "1D6",
+          "baseAP" : 2,
+          "health" : 12,
+          "id" : "m-8-1",
+          "maximumHealth" : 12,
+          "name" : "森林狼",
+          "shield" : 0,
+          "skills" : [
+
+          ],
+          "templateID" : "wolf"
+        },
+        {
+          "attack" : "1D6",
+          "baseAP" : 2,
+          "health" : 12,
+          "id" : "m-8-2",
+          "maximumHealth" : 12,
+          "name" : "哥布林弓手",
+          "shield" : 0,
+          "skills" : [
+
+          ],
+          "templateID" : "goblinArcher"
+        }
+      ],
+      "nodeID" : 8,
+      "title" : "林间战斗 · 9"
+    },
+    {
+      "boss" : false,
+      "canInteract" : false,
+      "monsters" : [
+        {
+          "attack" : "1D4",
+          "baseAP" : 1,
+          "health" : 8,
+          "id" : "m-10-1",
+          "maximumHealth" : 8,
+          "name" : "捣蛋史莱姆",
+          "shield" : 0,
+          "skills" : [
+
+          ],
+          "templateID" : "slime"
+        }
+      ],
+      "nodeID" : 10,
+      "title" : "林间战斗 · 11"
+    },
+    {
+      "boss" : false,
+      "canInteract" : false,
+      "monsters" : [
+        {
+          "attack" : "1D8",
+          "baseAP" : 2,
+          "health" : 24,
+          "id" : "m-12-1",
+          "maximumHealth" : 24,
+          "name" : "石像守卫",
+          "shield" : 6,
+          "skills" : [
+            "石肤"
+          ],
+          "templateID" : "stoneGuardian"
+        },
+        {
+          "attack" : "1D4",
+          "baseAP" : 1,
+          "health" : 8,
+          "id" : "m-12-2",
+          "maximumHealth" : 8,
+          "name" : "捣蛋史莱姆",
+          "shield" : 0,
+          "skills" : [
+
+          ],
+          "templateID" : "slime"
+        }
+      ],
+      "nodeID" : 12,
+      "title" : "林间战斗 · 13"
+    },
+    {
+      "boss" : true,
+      "canInteract" : false,
+      "monsters" : [
+        {
+          "attack" : "1D10",
+          "baseAP" : 3,
+          "health" : 48,
+          "id" : "m-14-1",
+          "maximumHealth" : 48,
+          "name" : "洞穴巨魔",
+          "shield" : 0,
+          "skills" : [
+            "再生",
+            "横扫"
+          ],
+          "templateID" : "caveTroll"
+        }
+      ],
+      "nodeID" : 14,
+      "title" : "首领遗迹 · 15"
+    },
+    {
+      "boss" : false,
+      "canInteract" : false,
+      "monsters" : [
+        {
+          "attack" : "1D8",
+          "baseAP" : 2,
+          "health" : 24,
+          "id" : "m-16-1",
+          "maximumHealth" : 24,
+          "name" : "石像守卫",
+          "shield" : 6,
+          "skills" : [
+            "石肤"
+          ],
+          "templateID" : "stoneGuardian"
+        }
+      ],
+      "nodeID" : 16,
+      "title" : "林间战斗 · 17"
+    },
+    {
+      "boss" : false,
+      "canInteract" : false,
+      "monsters" : [
+        {
+          "attack" : "1D8",
+          "baseAP" : 2,
+          "health" : 24,
+          "id" : "m-19-1",
+          "maximumHealth" : 24,
+          "name" : "石像守卫",
+          "shield" : 6,
+          "skills" : [
+            "石肤"
+          ],
+          "templateID" : "stoneGuardian"
+        }
+      ],
+      "nodeID" : 19,
+      "title" : "林间战斗 · 20"
+    },
+    {
+      "boss" : false,
+      "canInteract" : false,
+      "monsters" : [
+        {
+          "attack" : "1D6",
+          "baseAP" : 2,
+          "health" : 12,
+          "id" : "m-20-1",
+          "maximumHealth" : 12,
+          "name" : "哥布林弓手",
+          "shield" : 0,
+          "skills" : [
+
+          ],
+          "templateID" : "goblinArcher"
+        }
+      ],
+      "nodeID" : 20,
+      "title" : "林间战斗 · 21"
+    },
+    {
+      "boss" : false,
+      "canInteract" : false,
+      "monsters" : [
+        {
+          "attack" : "1D8",
+          "baseAP" : 2,
+          "health" : 24,
+          "id" : "m-24-1",
+          "maximumHealth" : 24,
+          "name" : "石像守卫",
+          "shield" : 6,
+          "skills" : [
+            "石肤"
+          ],
+          "templateID" : "stoneGuardian"
+        }
+      ],
+      "nodeID" : 24,
+      "title" : "林间战斗 · 25"
+    },
+    {
+      "boss" : false,
+      "canInteract" : false,
+      "monsters" : [
+        {
+          "attack" : "1D6",
+          "baseAP" : 2,
+          "health" : 12,
+          "id" : "m-27-1",
+          "maximumHealth" : 12,
+          "name" : "森林狼",
+          "shield" : 0,
+          "skills" : [
+
+          ],
+          "templateID" : "wolf"
+        },
+        {
+          "attack" : "1D6",
+          "baseAP" : 2,
+          "health" : 12,
+          "id" : "m-27-2",
+          "maximumHealth" : 12,
+          "name" : "哥布林弓手",
+          "shield" : 0,
+          "skills" : [
+
+          ],
+          "templateID" : "goblinArcher"
+        }
+      ],
+      "nodeID" : 27,
+      "title" : "林间战斗 · 28"
+    },
+    {
+      "boss" : false,
+      "canInteract" : false,
+      "monsters" : [
+        {
+          "attack" : "1D4",
+          "baseAP" : 1,
+          "health" : 8,
+          "id" : "m-29-1",
+          "maximumHealth" : 8,
+          "name" : "捣蛋史莱姆",
+          "shield" : 0,
+          "skills" : [
+
+          ],
+          "templateID" : "slime"
+        },
+        {
+          "attack" : "1D6",
+          "baseAP" : 2,
+          "health" : 12,
+          "id" : "m-29-2",
+          "maximumHealth" : 12,
+          "name" : "哥布林弓手",
+          "shield" : 0,
+          "skills" : [
+
+          ],
+          "templateID" : "goblinArcher"
+        }
+      ],
+      "nodeID" : 29,
+      "title" : "林间战斗 · 30"
+    }
+  ],
+  "provisions" : {
+    "bossSupplyNodes" : {
+      "14" : 9
+    },
+    "healingPressure" : 1,
+    "movementCoinBudget" : 256,
+    "rewards" : {
+      "1" : {
+        "coins" : 14,
+        "items" : {
+          "largePotion" : 1
+        },
+        "score" : 2
+      },
+      "11" : {
+        "coins" : 14,
+        "items" : {
+          "largePotion" : 1
+        },
+        "score" : 2
+      },
+      "15" : {
+        "coins" : 14,
+        "items" : {
+          "smallPotion" : 1
+        },
+        "score" : 2
+      },
+      "18" : {
+        "coins" : 14,
+        "items" : {
+          "shieldPotion" : 1,
+          "smallPotion" : 1
+        },
+        "score" : 2
+      },
+      "23" : {
+        "coins" : 14,
+        "items" : {
+          "smallPotion" : 1
+        },
+        "score" : 2
+      },
+      "28" : {
+        "coins" : 14,
+        "items" : {
+          "smallPotion" : 1
+        },
+        "score" : 2
+      },
+      "4" : {
+        "coins" : 14,
+        "items" : {
+          "smallPotion" : 1
+        },
+        "score" : 2
+      },
+      "6" : {
+        "coins" : 13,
+        "items" : {
+          "largePotion" : 1
+        },
+        "score" : 2
+      },
+      "9" : {
+        "coins" : 13,
+        "items" : {
+          "largePotion" : 1,
+          "revivalStone" : 1
+        },
+        "score" : 2
+      }
+    },
+    "startingCoins" : {
+      "p1" : 4,
+      "p2" : 4
+    },
+    "treeTourDistance" : 12423.779336606338
+  }
+}

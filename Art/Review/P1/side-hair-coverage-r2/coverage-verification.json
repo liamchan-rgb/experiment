@@ -1,0 +1,671 @@
+{
+  "beforeSourceCommit": "ec0cf30811054c1e883841894914afdb43c07593",
+  "sixStylesFourRepairedViews": true,
+  "coverage": [
+    {
+      "hair": "p1-custom-hair-m1-short-v1",
+      "direction": "down",
+      "beforeHairPixels": 910,
+      "afterHairPixels": 910,
+      "visibleEyePixelsCovered": 0
+    },
+    {
+      "hair": "p1-custom-hair-m1-short-v1",
+      "direction": "down-left",
+      "beforeHairPixels": 956,
+      "afterHairPixels": 1144,
+      "visibleEyePixelsCovered": 0
+    },
+    {
+      "hair": "p1-custom-hair-m1-short-v1",
+      "direction": "left",
+      "beforeHairPixels": 854,
+      "afterHairPixels": 1137,
+      "visibleEyePixelsCovered": 0
+    },
+    {
+      "hair": "p1-custom-hair-m1-short-v1",
+      "direction": "up-left",
+      "beforeHairPixels": 1556,
+      "afterHairPixels": 1556,
+      "visibleEyePixelsCovered": 0
+    },
+    {
+      "hair": "p1-custom-hair-m1-short-v1",
+      "direction": "up",
+      "beforeHairPixels": 1702,
+      "afterHairPixels": 1702,
+      "visibleEyePixelsCovered": 0
+    },
+    {
+      "hair": "p1-custom-hair-m1-short-v1",
+      "direction": "up-right",
+      "beforeHairPixels": 1556,
+      "afterHairPixels": 1556,
+      "visibleEyePixelsCovered": 0
+    },
+    {
+      "hair": "p1-custom-hair-m1-short-v1",
+      "direction": "right",
+      "beforeHairPixels": 849,
+      "afterHairPixels": 1137,
+      "visibleEyePixelsCovered": 0
+    },
+    {
+      "hair": "p1-custom-hair-m1-short-v1",
+      "direction": "down-right",
+      "beforeHairPixels": 946,
+      "afterHairPixels": 1144,
+      "visibleEyePixelsCovered": 0
+    },
+    {
+      "hair": "p1-custom-hair-m2-sidepart-v1",
+      "direction": "down",
+      "beforeHairPixels": 1085,
+      "afterHairPixels": 1085,
+      "visibleEyePixelsCovered": 0
+    },
+    {
+      "hair": "p1-custom-hair-m2-sidepart-v1",
+      "direction": "down-left",
+      "beforeHairPixels": 1026,
+      "afterHairPixels": 1215,
+      "visibleEyePixelsCovered": 0
+    },
+    {
+      "hair": "p1-custom-hair-m2-sidepart-v1",
+      "direction": "left",
+      "beforeHairPixels": 981,
+      "afterHairPixels": 1208,
+      "visibleEyePixelsCovered": 0
+    },
+    {
+      "hair": "p1-custom-hair-m2-sidepart-v1",
+      "direction": "up-left",
+      "beforeHairPixels": 1788,
+      "afterHairPixels": 1788,
+      "visibleEyePixelsCovered": 0
+    },
+    {
+      "hair": "p1-custom-hair-m2-sidepart-v1",
+      "direction": "up",
+      "beforeHairPixels": 1945,
+      "afterHairPixels": 1945,
+      "visibleEyePixelsCovered": 0
+    },
+    {
+      "hair": "p1-custom-hair-m2-sidepart-v1",
+      "direction": "up-right",
+      "beforeHairPixels": 1788,
+      "afterHairPixels": 1788,
+      "visibleEyePixelsCovered": 0
+    },
+    {
+      "hair": "p1-custom-hair-m2-sidepart-v1",
+      "direction": "right",
+      "beforeHairPixels": 976,
+      "afterHairPixels": 1208,
+      "visibleEyePixelsCovered": 0
+    },
+    {
+      "hair": "p1-custom-hair-m2-sidepart-v1",
+      "direction": "down-right",
+      "beforeHairPixels": 1016,
+      "afterHairPixels": 1215,
+      "visibleEyePixelsCovered": 0
+    },
+    {
+      "hair": "p1-custom-hair-m3-topknot-v1",
+      "direction": "down",
+      "beforeHairPixels": 1037,
+      "afterHairPixels": 1037,
+      "visibleEyePixelsCovered": 0
+    },
+    {
+      "hair": "p1-custom-hair-m3-topknot-v1",
+      "direction": "down-left",
+      "beforeHairPixels": 1070,
+      "afterHairPixels": 1295,
+      "visibleEyePixelsCovered": 0
+    },
+    {
+      "hair": "p1-custom-hair-m3-topknot-v1",
+      "direction": "left",
+      "beforeHairPixels": 1018,
+      "afterHairPixels": 1275,
+      "visibleEyePixelsCovered": 0
+    },
+    {
+      "hair": "p1-custom-hair-m3-topknot-v1",
+      "direction": "up-left",
+      "beforeHairPixels": 1825,
+      "afterHairPixels": 1825,
+      "visibleEyePixelsCovered": 0
+    },
+    {
+      "hair": "p1-custom-hair-m3-topknot-v1",
+      "direction": "up",
+      "beforeHairPixels": 1957,
+      "afterHairPixels": 1957,
+      "visibleEyePixelsCovered": 0
+    },
+    {
+      "hair": "p1-custom-hair-m3-topknot-v1",
+      "direction": "up-right",
+      "beforeHairPixels": 1825,
+      "afterHairPixels": 1825,
+      "visibleEyePixelsCovered": 0
+    },
+    {
+      "hair": "p1-custom-hair-m3-topknot-v1",
+      "direction": "right",
+      "beforeHairPixels": 1013,
+      "afterHairPixels": 1275,
+      "visibleEyePixelsCovered": 0
+    },
+    {
+      "hair": "p1-custom-hair-m3-topknot-v1",
+      "direction": "down-right",
+      "beforeHairPixels": 1062,
+      "afterHairPixels": 1294,
+      "visibleEyePixelsCovered": 0
+    },
+    {
+      "hair": "p1-custom-hair-f1-bob-v1",
+      "direction": "down",
+      "beforeHairPixels": 1433,
+      "afterHairPixels": 1433,
+      "visibleEyePixelsCovered": 0
+    },
+    {
+      "hair": "p1-custom-hair-f1-bob-v1",
+      "direction": "down-left",
+      "beforeHairPixels": 1142,
+      "afterHairPixels": 1466,
+      "visibleEyePixelsCovered": 0
+    },
+    {
+      "hair": "p1-custom-hair-f1-bob-v1",
+      "direction": "left",
+      "beforeHairPixels": 1142,
+      "afterHairPixels": 1436,
+      "visibleEyePixelsCovered": 0
+    },
+    {
+      "hair": "p1-custom-hair-f1-bob-v1",
+      "direction": "up-left",
+      "beforeHairPixels": 2256,
+      "afterHairPixels": 2256,
+      "visibleEyePixelsCovered": 0
+    },
+    {
+      "hair": "p1-custom-hair-f1-bob-v1",
+      "direction": "up",
+      "beforeHairPixels": 2256,
+      "afterHairPixels": 2256,
+      "visibleEyePixelsCovered": 0
+    },
+    {
+      "hair": "p1-custom-hair-f1-bob-v1",
+      "direction": "up-right",
+      "beforeHairPixels": 2246,
+      "afterHairPixels": 2246,
+      "visibleEyePixelsCovered": 0
+    },
+    {
+      "hair": "p1-custom-hair-f1-bob-v1",
+      "direction": "right",
+      "beforeHairPixels": 1132,
+      "afterHairPixels": 1436,
+      "visibleEyePixelsCovered": 0
+    },
+    {
+      "hair": "p1-custom-hair-f1-bob-v1",
+      "direction": "down-right",
+      "beforeHairPixels": 1132,
+      "afterHairPixels": 1466,
+      "visibleEyePixelsCovered": 0
+    },
+    {
+      "hair": "p1-custom-hair-f2-ponytail-v1",
+      "direction": "down",
+      "beforeHairPixels": 1155,
+      "afterHairPixels": 1155,
+      "visibleEyePixelsCovered": 0
+    },
+    {
+      "hair": "p1-custom-hair-f2-ponytail-v1",
+      "direction": "down-left",
+      "beforeHairPixels": 1184,
+      "afterHairPixels": 1373,
+      "visibleEyePixelsCovered": 0
+    },
+    {
+      "hair": "p1-custom-hair-f2-ponytail-v1",
+      "direction": "left",
+      "beforeHairPixels": 1099,
+      "afterHairPixels": 1368,
+      "visibleEyePixelsCovered": 0
+    },
+    {
+      "hair": "p1-custom-hair-f2-ponytail-v1",
+      "direction": "up-left",
+      "beforeHairPixels": 1937,
+      "afterHairPixels": 1937,
+      "visibleEyePixelsCovered": 0
+    },
+    {
+      "hair": "p1-custom-hair-f2-ponytail-v1",
+      "direction": "up",
+      "beforeHairPixels": 2061,
+      "afterHairPixels": 2061,
+      "visibleEyePixelsCovered": 0
+    },
+    {
+      "hair": "p1-custom-hair-f2-ponytail-v1",
+      "direction": "up-right",
+      "beforeHairPixels": 1871,
+      "afterHairPixels": 1871,
+      "visibleEyePixelsCovered": 0
+    },
+    {
+      "hair": "p1-custom-hair-f2-ponytail-v1",
+      "direction": "right",
+      "beforeHairPixels": 1030,
+      "afterHairPixels": 1303,
+      "visibleEyePixelsCovered": 0
+    },
+    {
+      "hair": "p1-custom-hair-f2-ponytail-v1",
+      "direction": "down-right",
+      "beforeHairPixels": 1107,
+      "afterHairPixels": 1305,
+      "visibleEyePixelsCovered": 0
+    },
+    {
+      "hair": "p1-custom-hair-f3-bun-v1",
+      "direction": "down",
+      "beforeHairPixels": 1064,
+      "afterHairPixels": 1064,
+      "visibleEyePixelsCovered": 0
+    },
+    {
+      "hair": "p1-custom-hair-f3-bun-v1",
+      "direction": "down-left",
+      "beforeHairPixels": 1106,
+      "afterHairPixels": 1336,
+      "visibleEyePixelsCovered": 0
+    },
+    {
+      "hair": "p1-custom-hair-f3-bun-v1",
+      "direction": "left",
+      "beforeHairPixels": 1049,
+      "afterHairPixels": 1307,
+      "visibleEyePixelsCovered": 0
+    },
+    {
+      "hair": "p1-custom-hair-f3-bun-v1",
+      "direction": "up-left",
+      "beforeHairPixels": 1851,
+      "afterHairPixels": 1851,
+      "visibleEyePixelsCovered": 0
+    },
+    {
+      "hair": "p1-custom-hair-f3-bun-v1",
+      "direction": "up",
+      "beforeHairPixels": 1980,
+      "afterHairPixels": 1980,
+      "visibleEyePixelsCovered": 0
+    },
+    {
+      "hair": "p1-custom-hair-f3-bun-v1",
+      "direction": "up-right",
+      "beforeHairPixels": 1852,
+      "afterHairPixels": 1852,
+      "visibleEyePixelsCovered": 0
+    },
+    {
+      "hair": "p1-custom-hair-f3-bun-v1",
+      "direction": "right",
+      "beforeHairPixels": 1047,
+      "afterHairPixels": 1308,
+      "visibleEyePixelsCovered": 0
+    },
+    {
+      "hair": "p1-custom-hair-f3-bun-v1",
+      "direction": "down-right",
+      "beforeHairPixels": 1099,
+      "afterHairPixels": 1337,
+      "visibleEyePixelsCovered": 0
+    }
+  ],
+  "changedDirectionalHairPNGs": [
+    {
+      "path": "Art/Parts/P1-v1/custom-heads-v1/hair-m1-short/masters/down-left/hair.front.png",
+      "beforeSHA256": "30c8a1592e9b483423ea6330d8d939c599f84befad69c613c27188446abf1e37",
+      "afterSHA256": "534c192fe2c587e4d9a6bb98a2ba2dcd118de154a4f09f88ee2c2a766a6b9223"
+    },
+    {
+      "path": "Art/Parts/P1-v1/custom-heads-v1/hair-m1-short/masters/left/hair.front.png",
+      "beforeSHA256": "e851f187b2557e8bd16bd16d21e07a4c3f4ed99fb9a08a1444437c753a0b7ca3",
+      "afterSHA256": "328fe49ad9334cb299aa44cea463ed8045c107edc55784fc90f8c6bc1b904fb6"
+    },
+    {
+      "path": "Art/Parts/P1-v1/custom-heads-v1/hair-m1-short/masters/right/hair.front.png",
+      "beforeSHA256": "72d95d2622c4d059e3cf45f4cbbc52b1f5bbc8ff076e423de49411a8f0952460",
+      "afterSHA256": "fc789e774aa1d3340a752f77f111e1790717259e77e2a3326288691dfe700061"
+    },
+    {
+      "path": "Art/Parts/P1-v1/custom-heads-v1/hair-m1-short/masters/down-right/hair.front.png",
+      "beforeSHA256": "fb75c1430c16c839802a0b38424ea81b65b75ee131f3ce2ddaf5c5db9630b70a",
+      "afterSHA256": "80c3c09496694562b9f8bddbc91174f0b3e919ed439edef833d6e2f8ad212ca5"
+    },
+    {
+      "path": "Art/Parts/P1-v1/custom-heads-v1/hair-m2-sidepart/masters/down-left/hair.front.png",
+      "beforeSHA256": "9a6f7355a52f80326cd4ac4a8be4bd7f555470614e6646de55cad1ded0823922",
+      "afterSHA256": "2925ebe407f9ccdf5cab775c1f5cdbd236381354afd89de6857c4b2649ddcafd"
+    },
+    {
+      "path": "Art/Parts/P1-v1/custom-heads-v1/hair-m2-sidepart/masters/left/hair.front.png",
+      "beforeSHA256": "06d41ac3354d3ce2bb6bd8f2a6a6434533c46ea55dcd1d9b79d6e1d1529c9d0c",
+      "afterSHA256": "06f14d3701b71bd245dd3177cb0a2cafdfc9c4b366017c129cf437d28a07b8a1"
+    },
+    {
+      "path": "Art/Parts/P1-v1/custom-heads-v1/hair-m2-sidepart/masters/right/hair.front.png",
+      "beforeSHA256": "b7630d2efa2710556054bc8306a3926822816f20832824e03df96da78a96f33f",
+      "afterSHA256": "a1f43a431d00ba078885a01f804f4966ba51006f505910ff2f60cd65b20dbf6f"
+    },
+    {
+      "path": "Art/Parts/P1-v1/custom-heads-v1/hair-m2-sidepart/masters/down-right/hair.front.png",
+      "beforeSHA256": "6a73fcb04d315975b14ab07041d7c5b212a679c2b1f48f244283abbf273d9fd9",
+      "afterSHA256": "d3874fc91571c0f48527f10f341e29530751ae428ab6bfa732d91871a8d0d752"
+    },
+    {
+      "path": "Art/Parts/P1-v1/custom-heads-v1/hair-m3-topknot/masters/down-left/hair.front.png",
+      "beforeSHA256": "42eaf72db41700aaaa997f1f7b5dcece099fc415fa3bbfb4e187c739ca30a3b3",
+      "afterSHA256": "581709c0d10556faa6e7503c95ca6d5218c1882b028308c6706a0ee11aeb55fa"
+    },
+    {
+      "path": "Art/Parts/P1-v1/custom-heads-v1/hair-m3-topknot/masters/left/hair.front.png",
+      "beforeSHA256": "c54538dce28f20652b168c402943c53a5e6322bae0bb63558b2716627a58489d",
+      "afterSHA256": "0dc3a15b21d232f9c29e3180f18e29931b998170a5756587677542200c774aff"
+    },
+    {
+      "path": "Art/Parts/P1-v1/custom-heads-v1/hair-m3-topknot/masters/right/hair.front.png",
+      "beforeSHA256": "2cf689e40469c40b338a6d6fa94102fbbd2f496f06cb5202c6d6843352579a8e",
+      "afterSHA256": "9f9f0c530095da293b11599172b3444a303f605d8759e25741456df0f7df02a7"
+    },
+    {
+      "path": "Art/Parts/P1-v1/custom-heads-v1/hair-m3-topknot/masters/down-right/hair.front.png",
+      "beforeSHA256": "3afcb28043f31f56fe2617a1debc7b8f01de5e0fd682203e1ca2ba24e1c318a3",
+      "afterSHA256": "e316de2f2d744a08fb278da3a4bb4397e63a05617d1fc0e431ea675504e5aef2"
+    },
+    {
+      "path": "Art/Parts/P1-v1/custom-heads-v1/hair-f1-bob/masters/down-left/hair.front.png",
+      "beforeSHA256": "3e944b7d75cd2232e57887a3a7a10097ad5cf996601bc3ee8e63688ef6b97fd7",
+      "afterSHA256": "353beada804be161523768f302f037b3df5e36ffec695459f58973568689e2be"
+    },
+    {
+      "path": "Art/Parts/P1-v1/custom-heads-v1/hair-f1-bob/masters/left/hair.front.png",
+      "beforeSHA256": "a11d76b54840ad71b0d88c50bec3ec3d392d76aa29ac0b40f6b150e147030da1",
+      "afterSHA256": "e75148cdfc788b8d1603f50617b41f2030702a6700126ef0c75afc87315a015c"
+    },
+    {
+      "path": "Art/Parts/P1-v1/custom-heads-v1/hair-f1-bob/masters/right/hair.front.png",
+      "beforeSHA256": "b979dc9f2b9e9e0afd1ad2949f7c75dd55e45a1da5098f73f84db0c95ef1a30d",
+      "afterSHA256": "e02a61251fdb01b00465825eff24d9f4a59eceba8e77026c89454e7d46a02ba2"
+    },
+    {
+      "path": "Art/Parts/P1-v1/custom-heads-v1/hair-f1-bob/masters/down-right/hair.front.png",
+      "beforeSHA256": "ef8865af7caf4fbd21e21217e903831effc5fc97685d9213911828dc67da9e85",
+      "afterSHA256": "d1a66a4ae297c3657b76915098f45abaee9956ca8c82e27e1d4bb20362746506"
+    },
+    {
+      "path": "Art/Parts/P1-v1/custom-heads-v1/hair-f2-ponytail/masters/down-left/hair.front.png",
+      "beforeSHA256": "7d9ac736d132fdd532ff3b0393e81e4d2fc550dd6d834e7610b9caa2bd2a201b",
+      "afterSHA256": "c4c4a1e1ab80c5f2987ab6af89f88555aa6bcd6e1bbf010781b63bfbab478e3f"
+    },
+    {
+      "path": "Art/Parts/P1-v1/custom-heads-v1/hair-f2-ponytail/masters/left/hair.front.png",
+      "beforeSHA256": "367acd9a7fd8203b8f6646f7187ad40b21ca4b0f6eda3262c26e98f1c6300ca5",
+      "afterSHA256": "4811d6d81fb417ab1f9a64e128e459638dde7c91c2065fae7390c7eed0ffde4b"
+    },
+    {
+      "path": "Art/Parts/P1-v1/custom-heads-v1/hair-f2-ponytail/masters/right/hair.front.png",
+      "beforeSHA256": "f765f8794397a96156d47d8e998dc60a9643a51c4c04bfb0927c99cef9cc242e",
+      "afterSHA256": "7c9bf363cfaee88d4e1de9cc3ccd811509c70b6481d9e88af45ab8c35071a46a"
+    },
+    {
+      "path": "Art/Parts/P1-v1/custom-heads-v1/hair-f2-ponytail/masters/down-right/hair.front.png",
+      "beforeSHA256": "4854acfe76e000bc3913e29b6f0fed5d6203333fff3e8fb9e2366f1b08c8c20f",
+      "afterSHA256": "727167a2d48fe1b95c96d89959a42f24900e11556f9696a8acb9fb61ef1325ed"
+    },
+    {
+      "path": "Art/Parts/P1-v1/custom-heads-v1/hair-f3-bun/masters/down-left/hair.front.png",
+      "beforeSHA256": "ebf13c77b65bc7d43c82d677eff533cbde0cb8e578e05ad4221c33098fa68e0d",
+      "afterSHA256": "80371a19cb606bb04fa78db46da52c73630fde2aa5a8465f2b8905709085b952"
+    },
+    {
+      "path": "Art/Parts/P1-v1/custom-heads-v1/hair-f3-bun/masters/left/hair.front.png",
+      "beforeSHA256": "5f5e5f023ddbb8c529c494ac5336040ba34da199e08e6ab0be3429ed457a7cf1",
+      "afterSHA256": "cb43cdeb6cbac04411abf95d0e16a577f033a8942cb1658872a87a27c6619307"
+    },
+    {
+      "path": "Art/Parts/P1-v1/custom-heads-v1/hair-f3-bun/masters/right/hair.front.png",
+      "beforeSHA256": "9aad0654bca41bb2170abf0ff047b4aed1a5803d6c67c16ac8fe68fb21afcabd",
+      "afterSHA256": "0caf3ba538653b574802d025d0f10223e2e72299d906846ec9e94fe03d212688"
+    },
+    {
+      "path": "Art/Parts/P1-v1/custom-heads-v1/hair-f3-bun/masters/down-right/hair.front.png",
+      "beforeSHA256": "ae5a5849241e15e45f2b19dfc8c25700fd40c93f5dbd0287a13556c8a9e6ec5d",
+      "afterSHA256": "636ef3f7cd2af8ab32a75edea8b27cb77ee24b90094d90ff2acd75463cf177b1"
+    }
+  ],
+  "battleHairPNGsUpdated": 6,
+  "eyesFaceSkinBodyClothingUnchanged": true,
+  "unchangedResourcePNGCount": 196,
+  "unchangedPNGPaths": [
+    "Art/Parts/P1-v1/custom-heads-v1/face-f1-gentle/battle/face.brows.png",
+    "Art/Parts/P1-v1/custom-heads-v1/face-f1-gentle/battle/face.eyes.png",
+    "Art/Parts/P1-v1/custom-heads-v1/face-f1-gentle/battle/face.mouth.png",
+    "Art/Parts/P1-v1/custom-heads-v1/face-f1-gentle/battle/face.nose.png",
+    "Art/Parts/P1-v1/custom-heads-v1/face-f1-gentle/battle/face.png",
+    "Art/Parts/P1-v1/custom-heads-v1/face-f1-gentle/masters/down/face.brows.png",
+    "Art/Parts/P1-v1/custom-heads-v1/face-f1-gentle/masters/down/face.eyes.png",
+    "Art/Parts/P1-v1/custom-heads-v1/face-f1-gentle/masters/down/face.mouth.png",
+    "Art/Parts/P1-v1/custom-heads-v1/face-f1-gentle/masters/down/face.nose.png",
+    "Art/Parts/P1-v1/custom-heads-v1/face-f1-gentle/masters/down-left/face.brows.png",
+    "Art/Parts/P1-v1/custom-heads-v1/face-f1-gentle/masters/down-left/face.eyes.png",
+    "Art/Parts/P1-v1/custom-heads-v1/face-f1-gentle/masters/down-left/face.mouth.png",
+    "Art/Parts/P1-v1/custom-heads-v1/face-f1-gentle/masters/down-left/face.nose.png",
+    "Art/Parts/P1-v1/custom-heads-v1/face-f1-gentle/masters/down-right/face.brows.png",
+    "Art/Parts/P1-v1/custom-heads-v1/face-f1-gentle/masters/down-right/face.eyes.png",
+    "Art/Parts/P1-v1/custom-heads-v1/face-f1-gentle/masters/down-right/face.mouth.png",
+    "Art/Parts/P1-v1/custom-heads-v1/face-f1-gentle/masters/down-right/face.nose.png",
+    "Art/Parts/P1-v1/custom-heads-v1/face-f1-gentle/masters/left/face.brows.png",
+    "Art/Parts/P1-v1/custom-heads-v1/face-f1-gentle/masters/left/face.eyes.png",
+    "Art/Parts/P1-v1/custom-heads-v1/face-f1-gentle/masters/left/face.mouth.png",
+    "Art/Parts/P1-v1/custom-heads-v1/face-f1-gentle/masters/left/face.nose.png",
+    "Art/Parts/P1-v1/custom-heads-v1/face-f1-gentle/masters/right/face.brows.png",
+    "Art/Parts/P1-v1/custom-heads-v1/face-f1-gentle/masters/right/face.eyes.png",
+    "Art/Parts/P1-v1/custom-heads-v1/face-f1-gentle/masters/right/face.mouth.png",
+    "Art/Parts/P1-v1/custom-heads-v1/face-f1-gentle/masters/right/face.nose.png",
+    "Art/Parts/P1-v1/custom-heads-v1/face-f1-gentle/masters/up/face.brows.png",
+    "Art/Parts/P1-v1/custom-heads-v1/face-f1-gentle/masters/up/face.eyes.png",
+    "Art/Parts/P1-v1/custom-heads-v1/face-f1-gentle/masters/up/face.mouth.png",
+    "Art/Parts/P1-v1/custom-heads-v1/face-f1-gentle/masters/up/face.nose.png",
+    "Art/Parts/P1-v1/custom-heads-v1/face-f1-gentle/masters/up-left/face.brows.png",
+    "Art/Parts/P1-v1/custom-heads-v1/face-f1-gentle/masters/up-left/face.eyes.png",
+    "Art/Parts/P1-v1/custom-heads-v1/face-f1-gentle/masters/up-left/face.mouth.png",
+    "Art/Parts/P1-v1/custom-heads-v1/face-f1-gentle/masters/up-left/face.nose.png",
+    "Art/Parts/P1-v1/custom-heads-v1/face-f1-gentle/masters/up-right/face.brows.png",
+    "Art/Parts/P1-v1/custom-heads-v1/face-f1-gentle/masters/up-right/face.eyes.png",
+    "Art/Parts/P1-v1/custom-heads-v1/face-f1-gentle/masters/up-right/face.mouth.png",
+    "Art/Parts/P1-v1/custom-heads-v1/face-f1-gentle/masters/up-right/face.nose.png",
+    "Art/Parts/P1-v1/custom-heads-v1/face-f2-clear/battle/face.brows.png",
+    "Art/Parts/P1-v1/custom-heads-v1/face-f2-clear/battle/face.eyes.png",
+    "Art/Parts/P1-v1/custom-heads-v1/face-f2-clear/battle/face.mouth.png",
+    "Art/Parts/P1-v1/custom-heads-v1/face-f2-clear/battle/face.nose.png",
+    "Art/Parts/P1-v1/custom-heads-v1/face-f2-clear/battle/face.png",
+    "Art/Parts/P1-v1/custom-heads-v1/face-f2-clear/masters/down/face.brows.png",
+    "Art/Parts/P1-v1/custom-heads-v1/face-f2-clear/masters/down/face.eyes.png",
+    "Art/Parts/P1-v1/custom-heads-v1/face-f2-clear/masters/down/face.mouth.png",
+    "Art/Parts/P1-v1/custom-heads-v1/face-f2-clear/masters/down/face.nose.png",
+    "Art/Parts/P1-v1/custom-heads-v1/face-f2-clear/masters/down-left/face.brows.png",
+    "Art/Parts/P1-v1/custom-heads-v1/face-f2-clear/masters/down-left/face.eyes.png",
+    "Art/Parts/P1-v1/custom-heads-v1/face-f2-clear/masters/down-left/face.mouth.png",
+    "Art/Parts/P1-v1/custom-heads-v1/face-f2-clear/masters/down-left/face.nose.png",
+    "Art/Parts/P1-v1/custom-heads-v1/face-f2-clear/masters/down-right/face.brows.png",
+    "Art/Parts/P1-v1/custom-heads-v1/face-f2-clear/masters/down-right/face.eyes.png",
+    "Art/Parts/P1-v1/custom-heads-v1/face-f2-clear/masters/down-right/face.mouth.png",
+    "Art/Parts/P1-v1/custom-heads-v1/face-f2-clear/masters/down-right/face.nose.png",
+    "Art/Parts/P1-v1/custom-heads-v1/face-f2-clear/masters/left/face.brows.png",
+    "Art/Parts/P1-v1/custom-heads-v1/face-f2-clear/masters/left/face.eyes.png",
+    "Art/Parts/P1-v1/custom-heads-v1/face-f2-clear/masters/left/face.mouth.png",
+    "Art/Parts/P1-v1/custom-heads-v1/face-f2-clear/masters/left/face.nose.png",
+    "Art/Parts/P1-v1/custom-heads-v1/face-f2-clear/masters/right/face.brows.png",
+    "Art/Parts/P1-v1/custom-heads-v1/face-f2-clear/masters/right/face.eyes.png",
+    "Art/Parts/P1-v1/custom-heads-v1/face-f2-clear/masters/right/face.mouth.png",
+    "Art/Parts/P1-v1/custom-heads-v1/face-f2-clear/masters/right/face.nose.png",
+    "Art/Parts/P1-v1/custom-heads-v1/face-f2-clear/masters/up/face.brows.png",
+    "Art/Parts/P1-v1/custom-heads-v1/face-f2-clear/masters/up/face.eyes.png",
+    "Art/Parts/P1-v1/custom-heads-v1/face-f2-clear/masters/up/face.mouth.png",
+    "Art/Parts/P1-v1/custom-heads-v1/face-f2-clear/masters/up/face.nose.png",
+    "Art/Parts/P1-v1/custom-heads-v1/face-f2-clear/masters/up-left/face.brows.png",
+    "Art/Parts/P1-v1/custom-heads-v1/face-f2-clear/masters/up-left/face.eyes.png",
+    "Art/Parts/P1-v1/custom-heads-v1/face-f2-clear/masters/up-left/face.mouth.png",
+    "Art/Parts/P1-v1/custom-heads-v1/face-f2-clear/masters/up-left/face.nose.png",
+    "Art/Parts/P1-v1/custom-heads-v1/face-f2-clear/masters/up-right/face.brows.png",
+    "Art/Parts/P1-v1/custom-heads-v1/face-f2-clear/masters/up-right/face.eyes.png",
+    "Art/Parts/P1-v1/custom-heads-v1/face-f2-clear/masters/up-right/face.mouth.png",
+    "Art/Parts/P1-v1/custom-heads-v1/face-f2-clear/masters/up-right/face.nose.png",
+    "Art/Parts/P1-v1/custom-heads-v1/face-m1-bright/battle/face.brows.png",
+    "Art/Parts/P1-v1/custom-heads-v1/face-m1-bright/battle/face.eyes.png",
+    "Art/Parts/P1-v1/custom-heads-v1/face-m1-bright/battle/face.mouth.png",
+    "Art/Parts/P1-v1/custom-heads-v1/face-m1-bright/battle/face.nose.png",
+    "Art/Parts/P1-v1/custom-heads-v1/face-m1-bright/battle/face.png",
+    "Art/Parts/P1-v1/custom-heads-v1/face-m1-bright/masters/down/face.brows.png",
+    "Art/Parts/P1-v1/custom-heads-v1/face-m1-bright/masters/down/face.eyes.png",
+    "Art/Parts/P1-v1/custom-heads-v1/face-m1-bright/masters/down/face.mouth.png",
+    "Art/Parts/P1-v1/custom-heads-v1/face-m1-bright/masters/down/face.nose.png",
+    "Art/Parts/P1-v1/custom-heads-v1/face-m1-bright/masters/down-left/face.brows.png",
+    "Art/Parts/P1-v1/custom-heads-v1/face-m1-bright/masters/down-left/face.eyes.png",
+    "Art/Parts/P1-v1/custom-heads-v1/face-m1-bright/masters/down-left/face.mouth.png",
+    "Art/Parts/P1-v1/custom-heads-v1/face-m1-bright/masters/down-left/face.nose.png",
+    "Art/Parts/P1-v1/custom-heads-v1/face-m1-bright/masters/down-right/face.brows.png",
+    "Art/Parts/P1-v1/custom-heads-v1/face-m1-bright/masters/down-right/face.eyes.png",
+    "Art/Parts/P1-v1/custom-heads-v1/face-m1-bright/masters/down-right/face.mouth.png",
+    "Art/Parts/P1-v1/custom-heads-v1/face-m1-bright/masters/down-right/face.nose.png",
+    "Art/Parts/P1-v1/custom-heads-v1/face-m1-bright/masters/left/face.brows.png",
+    "Art/Parts/P1-v1/custom-heads-v1/face-m1-bright/masters/left/face.eyes.png",
+    "Art/Parts/P1-v1/custom-heads-v1/face-m1-bright/masters/left/face.mouth.png",
+    "Art/Parts/P1-v1/custom-heads-v1/face-m1-bright/masters/left/face.nose.png",
+    "Art/Parts/P1-v1/custom-heads-v1/face-m1-bright/masters/right/face.brows.png",
+    "Art/Parts/P1-v1/custom-heads-v1/face-m1-bright/masters/right/face.eyes.png",
+    "Art/Parts/P1-v1/custom-heads-v1/face-m1-bright/masters/right/face.mouth.png",
+    "Art/Parts/P1-v1/custom-heads-v1/face-m1-bright/masters/right/face.nose.png",
+    "Art/Parts/P1-v1/custom-heads-v1/face-m1-bright/masters/up/face.brows.png",
+    "Art/Parts/P1-v1/custom-heads-v1/face-m1-bright/masters/up/face.eyes.png",
+    "Art/Parts/P1-v1/custom-heads-v1/face-m1-bright/masters/up/face.mouth.png",
+    "Art/Parts/P1-v1/custom-heads-v1/face-m1-bright/masters/up/face.nose.png",
+    "Art/Parts/P1-v1/custom-heads-v1/face-m1-bright/masters/up-left/face.brows.png",
+    "Art/Parts/P1-v1/custom-heads-v1/face-m1-bright/masters/up-left/face.eyes.png",
+    "Art/Parts/P1-v1/custom-heads-v1/face-m1-bright/masters/up-left/face.mouth.png",
+    "Art/Parts/P1-v1/custom-heads-v1/face-m1-bright/masters/up-left/face.nose.png",
+    "Art/Parts/P1-v1/custom-heads-v1/face-m1-bright/masters/up-right/face.brows.png",
+    "Art/Parts/P1-v1/custom-heads-v1/face-m1-bright/masters/up-right/face.eyes.png",
+    "Art/Parts/P1-v1/custom-heads-v1/face-m1-bright/masters/up-right/face.mouth.png",
+    "Art/Parts/P1-v1/custom-heads-v1/face-m1-bright/masters/up-right/face.nose.png",
+    "Art/Parts/P1-v1/custom-heads-v1/face-m2-calm/battle/face.brows.png",
+    "Art/Parts/P1-v1/custom-heads-v1/face-m2-calm/battle/face.eyes.png",
+    "Art/Parts/P1-v1/custom-heads-v1/face-m2-calm/battle/face.mouth.png",
+    "Art/Parts/P1-v1/custom-heads-v1/face-m2-calm/battle/face.nose.png",
+    "Art/Parts/P1-v1/custom-heads-v1/face-m2-calm/battle/face.png",
+    "Art/Parts/P1-v1/custom-heads-v1/face-m2-calm/masters/down/face.brows.png",
+    "Art/Parts/P1-v1/custom-heads-v1/face-m2-calm/masters/down/face.eyes.png",
+    "Art/Parts/P1-v1/custom-heads-v1/face-m2-calm/masters/down/face.mouth.png",
+    "Art/Parts/P1-v1/custom-heads-v1/face-m2-calm/masters/down/face.nose.png",
+    "Art/Parts/P1-v1/custom-heads-v1/face-m2-calm/masters/down-left/face.brows.png",
+    "Art/Parts/P1-v1/custom-heads-v1/face-m2-calm/masters/down-left/face.eyes.png",
+    "Art/Parts/P1-v1/custom-heads-v1/face-m2-calm/masters/down-left/face.mouth.png",
+    "Art/Parts/P1-v1/custom-heads-v1/face-m2-calm/masters/down-left/face.nose.png",
+    "Art/Parts/P1-v1/custom-heads-v1/face-m2-calm/masters/down-right/face.brows.png",
+    "Art/Parts/P1-v1/custom-heads-v1/face-m2-calm/masters/down-right/face.eyes.png",
+    "Art/Parts/P1-v1/custom-heads-v1/face-m2-calm/masters/down-right/face.mouth.png",
+    "Art/Parts/P1-v1/custom-heads-v1/face-m2-calm/masters/down-right/face.nose.png",
+    "Art/Parts/P1-v1/custom-heads-v1/face-m2-calm/masters/left/face.brows.png",
+    "Art/Parts/P1-v1/custom-heads-v1/face-m2-calm/masters/left/face.eyes.png",
+    "Art/Parts/P1-v1/custom-heads-v1/face-m2-calm/masters/left/face.mouth.png",
+    "Art/Parts/P1-v1/custom-heads-v1/face-m2-calm/masters/left/face.nose.png",
+    "Art/Parts/P1-v1/custom-heads-v1/face-m2-calm/masters/right/face.brows.png",
+    "Art/Parts/P1-v1/custom-heads-v1/face-m2-calm/masters/right/face.eyes.png",
+    "Art/Parts/P1-v1/custom-heads-v1/face-m2-calm/masters/right/face.mouth.png",
+    "Art/Parts/P1-v1/custom-heads-v1/face-m2-calm/masters/right/face.nose.png",
+    "Art/Parts/P1-v1/custom-heads-v1/face-m2-calm/masters/up/face.brows.png",
+    "Art/Parts/P1-v1/custom-heads-v1/face-m2-calm/masters/up/face.eyes.png",
+    "Art/Parts/P1-v1/custom-heads-v1/face-m2-calm/masters/up/face.mouth.png",
+    "Art/Parts/P1-v1/custom-heads-v1/face-m2-calm/masters/up/face.nose.png",
+    "Art/Parts/P1-v1/custom-heads-v1/face-m2-calm/masters/up-left/face.brows.png",
+    "Art/Parts/P1-v1/custom-heads-v1/face-m2-calm/masters/up-left/face.eyes.png",
+    "Art/Parts/P1-v1/custom-heads-v1/face-m2-calm/masters/up-left/face.mouth.png",
+    "Art/Parts/P1-v1/custom-heads-v1/face-m2-calm/masters/up-left/face.nose.png",
+    "Art/Parts/P1-v1/custom-heads-v1/face-m2-calm/masters/up-right/face.brows.png",
+    "Art/Parts/P1-v1/custom-heads-v1/face-m2-calm/masters/up-right/face.eyes.png",
+    "Art/Parts/P1-v1/custom-heads-v1/face-m2-calm/masters/up-right/face.mouth.png",
+    "Art/Parts/P1-v1/custom-heads-v1/face-m2-calm/masters/up-right/face.nose.png",
+    "Art/Parts/P1-v1/custom-heads-v1/hair-f1-bob/masters/down/hair.front.png",
+    "Art/Parts/P1-v1/custom-heads-v1/hair-f1-bob/masters/up/hair.front.png",
+    "Art/Parts/P1-v1/custom-heads-v1/hair-f1-bob/masters/up-left/hair.front.png",
+    "Art/Parts/P1-v1/custom-heads-v1/hair-f1-bob/masters/up-right/hair.front.png",
+    "Art/Parts/P1-v1/custom-heads-v1/hair-f2-ponytail/masters/down/hair.front.png",
+    "Art/Parts/P1-v1/custom-heads-v1/hair-f2-ponytail/masters/up/hair.front.png",
+    "Art/Parts/P1-v1/custom-heads-v1/hair-f2-ponytail/masters/up-left/hair.front.png",
+    "Art/Parts/P1-v1/custom-heads-v1/hair-f2-ponytail/masters/up-right/hair.front.png",
+    "Art/Parts/P1-v1/custom-heads-v1/hair-f3-bun/masters/down/hair.front.png",
+    "Art/Parts/P1-v1/custom-heads-v1/hair-f3-bun/masters/up/hair.front.png",
+    "Art/Parts/P1-v1/custom-heads-v1/hair-f3-bun/masters/up-left/hair.front.png",
+    "Art/Parts/P1-v1/custom-heads-v1/hair-f3-bun/masters/up-right/hair.front.png",
+    "Art/Parts/P1-v1/custom-heads-v1/hair-m1-short/masters/down/hair.front.png",
+    "Art/Parts/P1-v1/custom-heads-v1/hair-m1-short/masters/up/hair.front.png",
+    "Art/Parts/P1-v1/custom-heads-v1/hair-m1-short/masters/up-left/hair.front.png",
+    "Art/Parts/P1-v1/custom-heads-v1/hair-m1-short/masters/up-right/hair.front.png",
+    "Art/Parts/P1-v1/custom-heads-v1/hair-m2-sidepart/masters/down/hair.front.png",
+    "Art/Parts/P1-v1/custom-heads-v1/hair-m2-sidepart/masters/up/hair.front.png",
+    "Art/Parts/P1-v1/custom-heads-v1/hair-m2-sidepart/masters/up-left/hair.front.png",
+    "Art/Parts/P1-v1/custom-heads-v1/hair-m2-sidepart/masters/up-right/hair.front.png",
+    "Art/Parts/P1-v1/custom-heads-v1/hair-m3-topknot/masters/down/hair.front.png",
+    "Art/Parts/P1-v1/custom-heads-v1/hair-m3-topknot/masters/up/hair.front.png",
+    "Art/Parts/P1-v1/custom-heads-v1/hair-m3-topknot/masters/up-left/hair.front.png",
+    "Art/Parts/P1-v1/custom-heads-v1/hair-m3-topknot/masters/up-right/hair.front.png",
+    "Art/Parts/P1-Battle/chat-apparel-b-v1/dragonArmor/bow/atlas.png",
+    "Art/Parts/P1-Battle/chat-apparel-b-v1/dragonArmor/bow/torso.png",
+    "Art/Parts/P1-Battle/chat-apparel-b-v1/dragonArmor/generic/MeadowBattleHeroArmNearForearmWardrobe.png",
+    "Art/Parts/P1-Battle/chat-apparel-b-v1/dragonArmor/generic/MeadowBattleHeroArmNearUpperWardrobe.png",
+    "Art/Parts/P1-Battle/chat-apparel-b-v1/dragonArmor/generic/MeadowBattleHeroHemFarWardrobe.png",
+    "Art/Parts/P1-Battle/chat-apparel-b-v1/dragonArmor/generic/MeadowBattleHeroHemNearWardrobe.png",
+    "Art/Parts/P1-Battle/chat-apparel-b-v1/dragonArmor/generic/MeadowBattleHeroPauldronNearWardrobe.png",
+    "Art/Parts/P1-Battle/chat-apparel-b-v1/dragonArmor/generic/MeadowBattleHeroWardrobeCore.png",
+    "Art/Parts/P1-Battle/chat-apparel-b-v1/dragonArmor/masters/outfit.hem.front.png",
+    "Art/Parts/P1-Battle/chat-apparel-b-v1/dragonArmor/masters/outfit.sleeve.left.png",
+    "Art/Parts/P1-Battle/chat-apparel-b-v1/dragonArmor/masters/outfit.sleeve.right.png",
+    "Art/Parts/P1-Battle/chat-apparel-b-v1/dragonArmor/masters/outfit.torso.png",
+    "Art/Parts/P1-Battle/chat-apparel-b-v1/starlightArmor/bow/atlas.png",
+    "Art/Parts/P1-Battle/chat-apparel-b-v1/starlightArmor/bow/torso.png",
+    "Art/Parts/P1-Battle/chat-apparel-b-v1/starlightArmor/generic/MeadowBattleHeroArmNearForearmWardrobe.png",
+    "Art/Parts/P1-Battle/chat-apparel-b-v1/starlightArmor/generic/MeadowBattleHeroArmNearUpperWardrobe.png",
+    "Art/Parts/P1-Battle/chat-apparel-b-v1/starlightArmor/generic/MeadowBattleHeroHemFarWardrobe.png",
+    "Art/Parts/P1-Battle/chat-apparel-b-v1/starlightArmor/generic/MeadowBattleHeroHemNearWardrobe.png",
+    "Art/Parts/P1-Battle/chat-apparel-b-v1/starlightArmor/generic/MeadowBattleHeroPauldronNearWardrobe.png",
+    "Art/Parts/P1-Battle/chat-apparel-b-v1/starlightArmor/generic/MeadowBattleHeroWardrobeCore.png",
+    "Art/Parts/P1-Battle/chat-apparel-b-v1/starlightArmor/masters/outfit.hem.front.png",
+    "Art/Parts/P1-Battle/chat-apparel-b-v1/starlightArmor/masters/outfit.sleeve.left.png",
+    "Art/Parts/P1-Battle/chat-apparel-b-v1/starlightArmor/masters/outfit.sleeve.right.png",
+    "Art/Parts/P1-Battle/chat-apparel-b-v1/starlightArmor/masters/outfit.torso.png"
+  ],
+  "unchangedFrontAndThreeBackViews": true,
+  "walkingGIFs": 6,
+  "walkingCadenceMs": 120,
+  "newArtApproval": null,
+  "runtimeImported": false,
+  "appSimulatorOrDeviceRun": false
+}

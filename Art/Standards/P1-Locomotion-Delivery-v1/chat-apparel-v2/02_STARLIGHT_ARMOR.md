@@ -1,6 +1,6 @@
 # 资源一：星辉甲 starlightArmor
 
-新ID：`p1-chat-starlight-armor-v2`。新目录：`Art/Parts/P1-v1/chat-apparel-v2/starlightArmor/`。不覆盖旧 `b5-set-armors-v1/starlightArmor`。当前 `selectedDesign=null`。
+新ID：`p1-chat-starlight-armor-v2`。新目录：`Art/Parts/P1-v1/chat-apparel-v2/starlightArmor/`。不覆盖旧 `b5-set-armors-v1/starlightArmor`。当前 `selectedDesign=B`（天仪礼甲，2026-11-07用户“两个都选择b”）。
 
 ## 设计目标与三套可选方案
 

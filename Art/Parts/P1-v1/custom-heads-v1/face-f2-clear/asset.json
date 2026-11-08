@@ -1,0 +1,1192 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "p1-custom-face-f2-clear-v1",
+  "version": "1.0.0",
+  "part": "face",
+  "compatibility": {
+    "rig": "p1-chibi-v1",
+    "bodyProfile": "p1-standard",
+    "actionSet": "locomotion-v1"
+  },
+  "mode": "head-local",
+  "slots": [
+    "face.eyes",
+    "face.brows",
+    "face.nose",
+    "face.mouth"
+  ],
+  "directions": [
+    "down",
+    "down-left",
+    "left",
+    "up-left",
+    "up",
+    "up-right",
+    "right",
+    "down-right"
+  ],
+  "clips": [
+    "idle",
+    "walk",
+    "walk-start",
+    "walk-stop"
+  ],
+  "sourceFiles": [
+    "editable/down.svg",
+    "editable/down-left.svg",
+    "editable/left.svg",
+    "editable/up-left.svg",
+    "editable/up.svg",
+    "editable/up-right.svg",
+    "editable/right.svg",
+    "editable/down-right.svg",
+    "authoring.json",
+    "palette.json"
+  ],
+  "bindings": [
+    {
+      "direction": "down",
+      "clip": "idle",
+      "frame": 0,
+      "layers": {
+        "face.eyes": "masters/down/face.eyes.png",
+        "face.brows": "masters/down/face.brows.png",
+        "face.nose": "masters/down/face.nose.png",
+        "face.mouth": "masters/down/face.mouth.png"
+      }
+    },
+    {
+      "direction": "down",
+      "clip": "walk",
+      "frame": 1,
+      "layers": {
+        "face.eyes": "masters/down/face.eyes.png",
+        "face.brows": "masters/down/face.brows.png",
+        "face.nose": "masters/down/face.nose.png",
+        "face.mouth": "masters/down/face.mouth.png"
+      }
+    },
+    {
+      "direction": "down",
+      "clip": "walk",
+      "frame": 2,
+      "layers": {
+        "face.eyes": "masters/down/face.eyes.png",
+        "face.brows": "masters/down/face.brows.png",
+        "face.nose": "masters/down/face.nose.png",
+        "face.mouth": "masters/down/face.mouth.png"
+      }
+    },
+    {
+      "direction": "down",
+      "clip": "walk",
+      "frame": 3,
+      "layers": {
+        "face.eyes": "masters/down/face.eyes.png",
+        "face.brows": "masters/down/face.brows.png",
+        "face.nose": "masters/down/face.nose.png",
+        "face.mouth": "masters/down/face.mouth.png"
+      }
+    },
+    {
+      "direction": "down",
+      "clip": "walk",
+      "frame": 4,
+      "layers": {
+        "face.eyes": "masters/down/face.eyes.png",
+        "face.brows": "masters/down/face.brows.png",
+        "face.nose": "masters/down/face.nose.png",
+        "face.mouth": "masters/down/face.mouth.png"
+      }
+    },
+    {
+      "direction": "down",
+      "clip": "walk",
+      "frame": 5,
+      "layers": {
+        "face.eyes": "masters/down/face.eyes.png",
+        "face.brows": "masters/down/face.brows.png",
+        "face.nose": "masters/down/face.nose.png",
+        "face.mouth": "masters/down/face.mouth.png"
+      }
+    },
+    {
+      "direction": "down",
+      "clip": "walk",
+      "frame": 6,
+      "layers": {
+        "face.eyes": "masters/down/face.eyes.png",
+        "face.brows": "masters/down/face.brows.png",
+        "face.nose": "masters/down/face.nose.png",
+        "face.mouth": "masters/down/face.mouth.png"
+      }
+    },
+    {
+      "direction": "down",
+      "clip": "walk",
+      "frame": 7,
+      "layers": {
+        "face.eyes": "masters/down/face.eyes.png",
+        "face.brows": "masters/down/face.brows.png",
+        "face.nose": "masters/down/face.nose.png",
+        "face.mouth": "masters/down/face.mouth.png"
+      }
+    },
+    {
+      "direction": "down",
+      "clip": "walk",
+      "frame": 8,
+      "layers": {
+        "face.eyes": "masters/down/face.eyes.png",
+        "face.brows": "masters/down/face.brows.png",
+        "face.nose": "masters/down/face.nose.png",
+        "face.mouth": "masters/down/face.mouth.png"
+      }
+    },
+    {
+      "direction": "down",
+      "clip": "walk-start",
+      "frame": 1,
+      "layers": {
+        "face.eyes": "masters/down/face.eyes.png",
+        "face.brows": "masters/down/face.brows.png",
+        "face.nose": "masters/down/face.nose.png",
+        "face.mouth": "masters/down/face.mouth.png"
+      }
+    },
+    {
+      "direction": "down",
+      "clip": "walk-start",
+      "frame": 2,
+      "layers": {
+        "face.eyes": "masters/down/face.eyes.png",
+        "face.brows": "masters/down/face.brows.png",
+        "face.nose": "masters/down/face.nose.png",
+        "face.mouth": "masters/down/face.mouth.png"
+      }
+    },
+    {
+      "direction": "down",
+      "clip": "walk-stop",
+      "frame": 1,
+      "layers": {
+        "face.eyes": "masters/down/face.eyes.png",
+        "face.brows": "masters/down/face.brows.png",
+        "face.nose": "masters/down/face.nose.png",
+        "face.mouth": "masters/down/face.mouth.png"
+      }
+    },
+    {
+      "direction": "down",
+      "clip": "walk-stop",
+      "frame": 2,
+      "layers": {
+        "face.eyes": "masters/down/face.eyes.png",
+        "face.brows": "masters/down/face.brows.png",
+        "face.nose": "masters/down/face.nose.png",
+        "face.mouth": "masters/down/face.mouth.png"
+      }
+    },
+    {
+      "direction": "down-left",
+      "clip": "idle",
+      "frame": 0,
+      "layers": {
+        "face.eyes": "masters/down-left/face.eyes.png",
+        "face.brows": "masters/down-left/face.brows.png",
+        "face.nose": "masters/down-left/face.nose.png",
+        "face.mouth": "masters/down-left/face.mouth.png"
+      }
+    },
+    {
+      "direction": "down-left",
+      "clip": "walk",
+      "frame": 1,
+      "layers": {
+        "face.eyes": "masters/down-left/face.eyes.png",
+        "face.brows": "masters/down-left/face.brows.png",
+        "face.nose": "masters/down-left/face.nose.png",
+        "face.mouth": "masters/down-left/face.mouth.png"
+      }
+    },
+    {
+      "direction": "down-left",
+      "clip": "walk",
+      "frame": 2,
+      "layers": {
+        "face.eyes": "masters/down-left/face.eyes.png",
+        "face.brows": "masters/down-left/face.brows.png",
+        "face.nose": "masters/down-left/face.nose.png",
+        "face.mouth": "masters/down-left/face.mouth.png"
+      }
+    },
+    {
+      "direction": "down-left",
+      "clip": "walk",
+      "frame": 3,
+      "layers": {
+        "face.eyes": "masters/down-left/face.eyes.png",
+        "face.brows": "masters/down-left/face.brows.png",
+        "face.nose": "masters/down-left/face.nose.png",
+        "face.mouth": "masters/down-left/face.mouth.png"
+      }
+    },
+    {
+      "direction": "down-left",
+      "clip": "walk",
+      "frame": 4,
+      "layers": {
+        "face.eyes": "masters/down-left/face.eyes.png",
+        "face.brows": "masters/down-left/face.brows.png",
+        "face.nose": "masters/down-left/face.nose.png",
+        "face.mouth": "masters/down-left/face.mouth.png"
+      }
+    },
+    {
+      "direction": "down-left",
+      "clip": "walk",
+      "frame": 5,
+      "layers": {
+        "face.eyes": "masters/down-left/face.eyes.png",
+        "face.brows": "masters/down-left/face.brows.png",
+        "face.nose": "masters/down-left/face.nose.png",
+        "face.mouth": "masters/down-left/face.mouth.png"
+      }
+    },
+    {
+      "direction": "down-left",
+      "clip": "walk",
+      "frame": 6,
+      "layers": {
+        "face.eyes": "masters/down-left/face.eyes.png",
+        "face.brows": "masters/down-left/face.brows.png",
+        "face.nose": "masters/down-left/face.nose.png",
+        "face.mouth": "masters/down-left/face.mouth.png"
+      }
+    },
+    {
+      "direction": "down-left",
+      "clip": "walk",
+      "frame": 7,
+      "layers": {
+        "face.eyes": "masters/down-left/face.eyes.png",
+        "face.brows": "masters/down-left/face.brows.png",
+        "face.nose": "masters/down-left/face.nose.png",
+        "face.mouth": "masters/down-left/face.mouth.png"
+      }
+    },
+    {
+      "direction": "down-left",
+      "clip": "walk",
+      "frame": 8,
+      "layers": {
+        "face.eyes": "masters/down-left/face.eyes.png",
+        "face.brows": "masters/down-left/face.brows.png",
+        "face.nose": "masters/down-left/face.nose.png",
+        "face.mouth": "masters/down-left/face.mouth.png"
+      }
+    },
+    {
+      "direction": "down-left",
+      "clip": "walk-start",
+      "frame": 1,
+      "layers": {
+        "face.eyes": "masters/down-left/face.eyes.png",
+        "face.brows": "masters/down-left/face.brows.png",
+        "face.nose": "masters/down-left/face.nose.png",
+        "face.mouth": "masters/down-left/face.mouth.png"
+      }
+    },
+    {
+      "direction": "down-left",
+      "clip": "walk-start",
+      "frame": 2,
+      "layers": {
+        "face.eyes": "masters/down-left/face.eyes.png",
+        "face.brows": "masters/down-left/face.brows.png",
+        "face.nose": "masters/down-left/face.nose.png",
+        "face.mouth": "masters/down-left/face.mouth.png"
+      }
+    },
+    {
+      "direction": "down-left",
+      "clip": "walk-stop",
+      "frame": 1,
+      "layers": {
+        "face.eyes": "masters/down-left/face.eyes.png",
+        "face.brows": "masters/down-left/face.brows.png",
+        "face.nose": "masters/down-left/face.nose.png",
+        "face.mouth": "masters/down-left/face.mouth.png"
+      }
+    },
+    {
+      "direction": "down-left",
+      "clip": "walk-stop",
+      "frame": 2,
+      "layers": {
+        "face.eyes": "masters/down-left/face.eyes.png",
+        "face.brows": "masters/down-left/face.brows.png",
+        "face.nose": "masters/down-left/face.nose.png",
+        "face.mouth": "masters/down-left/face.mouth.png"
+      }
+    },
+    {
+      "direction": "left",
+      "clip": "idle",
+      "frame": 0,
+      "layers": {
+        "face.eyes": "masters/left/face.eyes.png",
+        "face.brows": "masters/left/face.brows.png",
+        "face.nose": "masters/left/face.nose.png",
+        "face.mouth": "masters/left/face.mouth.png"
+      }
+    },
+    {
+      "direction": "left",
+      "clip": "walk",
+      "frame": 1,
+      "layers": {
+        "face.eyes": "masters/left/face.eyes.png",
+        "face.brows": "masters/left/face.brows.png",
+        "face.nose": "masters/left/face.nose.png",
+        "face.mouth": "masters/left/face.mouth.png"
+      }
+    },
+    {
+      "direction": "left",
+      "clip": "walk",
+      "frame": 2,
+      "layers": {
+        "face.eyes": "masters/left/face.eyes.png",
+        "face.brows": "masters/left/face.brows.png",
+        "face.nose": "masters/left/face.nose.png",
+        "face.mouth": "masters/left/face.mouth.png"
+      }
+    },
+    {
+      "direction": "left",
+      "clip": "walk",
+      "frame": 3,
+      "layers": {
+        "face.eyes": "masters/left/face.eyes.png",
+        "face.brows": "masters/left/face.brows.png",
+        "face.nose": "masters/left/face.nose.png",
+        "face.mouth": "masters/left/face.mouth.png"
+      }
+    },
+    {
+      "direction": "left",
+      "clip": "walk",
+      "frame": 4,
+      "layers": {
+        "face.eyes": "masters/left/face.eyes.png",
+        "face.brows": "masters/left/face.brows.png",
+        "face.nose": "masters/left/face.nose.png",
+        "face.mouth": "masters/left/face.mouth.png"
+      }
+    },
+    {
+      "direction": "left",
+      "clip": "walk",
+      "frame": 5,
+      "layers": {
+        "face.eyes": "masters/left/face.eyes.png",
+        "face.brows": "masters/left/face.brows.png",
+        "face.nose": "masters/left/face.nose.png",
+        "face.mouth": "masters/left/face.mouth.png"
+      }
+    },
+    {
+      "direction": "left",
+      "clip": "walk",
+      "frame": 6,
+      "layers": {
+        "face.eyes": "masters/left/face.eyes.png",
+        "face.brows": "masters/left/face.brows.png",
+        "face.nose": "masters/left/face.nose.png",
+        "face.mouth": "masters/left/face.mouth.png"
+      }
+    },
+    {
+      "direction": "left",
+      "clip": "walk",
+      "frame": 7,
+      "layers": {
+        "face.eyes": "masters/left/face.eyes.png",
+        "face.brows": "masters/left/face.brows.png",
+        "face.nose": "masters/left/face.nose.png",
+        "face.mouth": "masters/left/face.mouth.png"
+      }
+    },
+    {
+      "direction": "left",
+      "clip": "walk",
+      "frame": 8,
+      "layers": {
+        "face.eyes": "masters/left/face.eyes.png",
+        "face.brows": "masters/left/face.brows.png",
+        "face.nose": "masters/left/face.nose.png",
+        "face.mouth": "masters/left/face.mouth.png"
+      }
+    },
+    {
+      "direction": "left",
+      "clip": "walk-start",
+      "frame": 1,
+      "layers": {
+        "face.eyes": "masters/left/face.eyes.png",
+        "face.brows": "masters/left/face.brows.png",
+        "face.nose": "masters/left/face.nose.png",
+        "face.mouth": "masters/left/face.mouth.png"
+      }
+    },
+    {
+      "direction": "left",
+      "clip": "walk-start",
+      "frame": 2,
+      "layers": {
+        "face.eyes": "masters/left/face.eyes.png",
+        "face.brows": "masters/left/face.brows.png",
+        "face.nose": "masters/left/face.nose.png",
+        "face.mouth": "masters/left/face.mouth.png"
+      }
+    },
+    {
+      "direction": "left",
+      "clip": "walk-stop",
+      "frame": 1,
+      "layers": {
+        "face.eyes": "masters/left/face.eyes.png",
+        "face.brows": "masters/left/face.brows.png",
+        "face.nose": "masters/left/face.nose.png",
+        "face.mouth": "masters/left/face.mouth.png"
+      }
+    },
+    {
+      "direction": "left",
+      "clip": "walk-stop",
+      "frame": 2,
+      "layers": {
+        "face.eyes": "masters/left/face.eyes.png",
+        "face.brows": "masters/left/face.brows.png",
+        "face.nose": "masters/left/face.nose.png",
+        "face.mouth": "masters/left/face.mouth.png"
+      }
+    },
+    {
+      "direction": "up-left",
+      "clip": "idle",
+      "frame": 0,
+      "layers": {
+        "face.eyes": "masters/up-left/face.eyes.png",
+        "face.brows": "masters/up-left/face.brows.png",
+        "face.nose": "masters/up-left/face.nose.png",
+        "face.mouth": "masters/up-left/face.mouth.png"
+      }
+    },
+    {
+      "direction": "up-left",
+      "clip": "walk",
+      "frame": 1,
+      "layers": {
+        "face.eyes": "masters/up-left/face.eyes.png",
+        "face.brows": "masters/up-left/face.brows.png",
+        "face.nose": "masters/up-left/face.nose.png",
+        "face.mouth": "masters/up-left/face.mouth.png"
+      }
+    },
+    {
+      "direction": "up-left",
+      "clip": "walk",
+      "frame": 2,
+      "layers": {
+        "face.eyes": "masters/up-left/face.eyes.png",
+        "face.brows": "masters/up-left/face.brows.png",
+        "face.nose": "masters/up-left/face.nose.png",
+        "face.mouth": "masters/up-left/face.mouth.png"
+      }
+    },
+    {
+      "direction": "up-left",
+      "clip": "walk",
+      "frame": 3,
+      "layers": {
+        "face.eyes": "masters/up-left/face.eyes.png",
+        "face.brows": "masters/up-left/face.brows.png",
+        "face.nose": "masters/up-left/face.nose.png",
+        "face.mouth": "masters/up-left/face.mouth.png"
+      }
+    },
+    {
+      "direction": "up-left",
+      "clip": "walk",
+      "frame": 4,
+      "layers": {
+        "face.eyes": "masters/up-left/face.eyes.png",
+        "face.brows": "masters/up-left/face.brows.png",
+        "face.nose": "masters/up-left/face.nose.png",
+        "face.mouth": "masters/up-left/face.mouth.png"
+      }
+    },
+    {
+      "direction": "up-left",
+      "clip": "walk",
+      "frame": 5,
+      "layers": {
+        "face.eyes": "masters/up-left/face.eyes.png",
+        "face.brows": "masters/up-left/face.brows.png",
+        "face.nose": "masters/up-left/face.nose.png",
+        "face.mouth": "masters/up-left/face.mouth.png"
+      }
+    },
+    {
+      "direction": "up-left",
+      "clip": "walk",
+      "frame": 6,
+      "layers": {
+        "face.eyes": "masters/up-left/face.eyes.png",
+        "face.brows": "masters/up-left/face.brows.png",
+        "face.nose": "masters/up-left/face.nose.png",
+        "face.mouth": "masters/up-left/face.mouth.png"
+      }
+    },
+    {
+      "direction": "up-left",
+      "clip": "walk",
+      "frame": 7,
+      "layers": {
+        "face.eyes": "masters/up-left/face.eyes.png",
+        "face.brows": "masters/up-left/face.brows.png",
+        "face.nose": "masters/up-left/face.nose.png",
+        "face.mouth": "masters/up-left/face.mouth.png"
+      }
+    },
+    {
+      "direction": "up-left",
+      "clip": "walk",
+      "frame": 8,
+      "layers": {
+        "face.eyes": "masters/up-left/face.eyes.png",
+        "face.brows": "masters/up-left/face.brows.png",
+        "face.nose": "masters/up-left/face.nose.png",
+        "face.mouth": "masters/up-left/face.mouth.png"
+      }
+    },
+    {
+      "direction": "up-left",
+      "clip": "walk-start",
+      "frame": 1,
+      "layers": {
+        "face.eyes": "masters/up-left/face.eyes.png",
+        "face.brows": "masters/up-left/face.brows.png",
+        "face.nose": "masters/up-left/face.nose.png",
+        "face.mouth": "masters/up-left/face.mouth.png"
+      }
+    },
+    {
+      "direction": "up-left",
+      "clip": "walk-start",
+      "frame": 2,
+      "layers": {
+        "face.eyes": "masters/up-left/face.eyes.png",
+        "face.brows": "masters/up-left/face.brows.png",
+        "face.nose": "masters/up-left/face.nose.png",
+        "face.mouth": "masters/up-left/face.mouth.png"
+      }
+    },
+    {
+      "direction": "up-left",
+      "clip": "walk-stop",
+      "frame": 1,
+      "layers": {
+        "face.eyes": "masters/up-left/face.eyes.png",
+        "face.brows": "masters/up-left/face.brows.png",
+        "face.nose": "masters/up-left/face.nose.png",
+        "face.mouth": "masters/up-left/face.mouth.png"
+      }
+    },
+    {
+      "direction": "up-left",
+      "clip": "walk-stop",
+      "frame": 2,
+      "layers": {
+        "face.eyes": "masters/up-left/face.eyes.png",
+        "face.brows": "masters/up-left/face.brows.png",
+        "face.nose": "masters/up-left/face.nose.png",
+        "face.mouth": "masters/up-left/face.mouth.png"
+      }
+    },
+    {
+      "direction": "up",
+      "clip": "idle",
+      "frame": 0,
+      "layers": {
+        "face.eyes": "masters/up/face.eyes.png",
+        "face.brows": "masters/up/face.brows.png",
+        "face.nose": "masters/up/face.nose.png",
+        "face.mouth": "masters/up/face.mouth.png"
+      }
+    },
+    {
+      "direction": "up",
+      "clip": "walk",
+      "frame": 1,
+      "layers": {
+        "face.eyes": "masters/up/face.eyes.png",
+        "face.brows": "masters/up/face.brows.png",
+        "face.nose": "masters/up/face.nose.png",
+        "face.mouth": "masters/up/face.mouth.png"
+      }
+    },
+    {
+      "direction": "up",
+      "clip": "walk",
+      "frame": 2,
+      "layers": {
+        "face.eyes": "masters/up/face.eyes.png",
+        "face.brows": "masters/up/face.brows.png",
+        "face.nose": "masters/up/face.nose.png",
+        "face.mouth": "masters/up/face.mouth.png"
+      }
+    },
+    {
+      "direction": "up",
+      "clip": "walk",
+      "frame": 3,
+      "layers": {
+        "face.eyes": "masters/up/face.eyes.png",
+        "face.brows": "masters/up/face.brows.png",
+        "face.nose": "masters/up/face.nose.png",
+        "face.mouth": "masters/up/face.mouth.png"
+      }
+    },
+    {
+      "direction": "up",
+      "clip": "walk",
+      "frame": 4,
+      "layers": {
+        "face.eyes": "masters/up/face.eyes.png",
+        "face.brows": "masters/up/face.brows.png",
+        "face.nose": "masters/up/face.nose.png",
+        "face.mouth": "masters/up/face.mouth.png"
+      }
+    },
+    {
+      "direction": "up",
+      "clip": "walk",
+      "frame": 5,
+      "layers": {
+        "face.eyes": "masters/up/face.eyes.png",
+        "face.brows": "masters/up/face.brows.png",
+        "face.nose": "masters/up/face.nose.png",
+        "face.mouth": "masters/up/face.mouth.png"
+      }
+    },
+    {
+      "direction": "up",
+      "clip": "walk",
+      "frame": 6,
+      "layers": {
+        "face.eyes": "masters/up/face.eyes.png",
+        "face.brows": "masters/up/face.brows.png",
+        "face.nose": "masters/up/face.nose.png",
+        "face.mouth": "masters/up/face.mouth.png"
+      }
+    },
+    {
+      "direction": "up",
+      "clip": "walk",
+      "frame": 7,
+      "layers": {
+        "face.eyes": "masters/up/face.eyes.png",
+        "face.brows": "masters/up/face.brows.png",
+        "face.nose": "masters/up/face.nose.png",
+        "face.mouth": "masters/up/face.mouth.png"
+      }
+    },
+    {
+      "direction": "up",
+      "clip": "walk",
+      "frame": 8,
+      "layers": {
+        "face.eyes": "masters/up/face.eyes.png",
+        "face.brows": "masters/up/face.brows.png",
+        "face.nose": "masters/up/face.nose.png",
+        "face.mouth": "masters/up/face.mouth.png"
+      }
+    },
+    {
+      "direction": "up",
+      "clip": "walk-start",
+      "frame": 1,
+      "layers": {
+        "face.eyes": "masters/up/face.eyes.png",
+        "face.brows": "masters/up/face.brows.png",
+        "face.nose": "masters/up/face.nose.png",
+        "face.mouth": "masters/up/face.mouth.png"
+      }
+    },
+    {
+      "direction": "up",
+      "clip": "walk-start",
+      "frame": 2,
+      "layers": {
+        "face.eyes": "masters/up/face.eyes.png",
+        "face.brows": "masters/up/face.brows.png",
+        "face.nose": "masters/up/face.nose.png",
+        "face.mouth": "masters/up/face.mouth.png"
+      }
+    },
+    {
+      "direction": "up",
+      "clip": "walk-stop",
+      "frame": 1,
+      "layers": {
+        "face.eyes": "masters/up/face.eyes.png",
+        "face.brows": "masters/up/face.brows.png",
+        "face.nose": "masters/up/face.nose.png",
+        "face.mouth": "masters/up/face.mouth.png"
+      }
+    },
+    {
+      "direction": "up",
+      "clip": "walk-stop",
+      "frame": 2,
+      "layers": {
+        "face.eyes": "masters/up/face.eyes.png",
+        "face.brows": "masters/up/face.brows.png",
+        "face.nose": "masters/up/face.nose.png",
+        "face.mouth": "masters/up/face.mouth.png"
+      }
+    },
+    {
+      "direction": "up-right",
+      "clip": "idle",
+      "frame": 0,
+      "layers": {
+        "face.eyes": "masters/up-right/face.eyes.png",
+        "face.brows": "masters/up-right/face.brows.png",
+        "face.nose": "masters/up-right/face.nose.png",
+        "face.mouth": "masters/up-right/face.mouth.png"
+      }
+    },
+    {
+      "direction": "up-right",
+      "clip": "walk",
+      "frame": 1,
+      "layers": {
+        "face.eyes": "masters/up-right/face.eyes.png",
+        "face.brows": "masters/up-right/face.brows.png",
+        "face.nose": "masters/up-right/face.nose.png",
+        "face.mouth": "masters/up-right/face.mouth.png"
+      }
+    },
+    {
+      "direction": "up-right",
+      "clip": "walk",
+      "frame": 2,
+      "layers": {
+        "face.eyes": "masters/up-right/face.eyes.png",
+        "face.brows": "masters/up-right/face.brows.png",
+        "face.nose": "masters/up-right/face.nose.png",
+        "face.mouth": "masters/up-right/face.mouth.png"
+      }
+    },
+    {
+      "direction": "up-right",
+      "clip": "walk",
+      "frame": 3,
+      "layers": {
+        "face.eyes": "masters/up-right/face.eyes.png",
+        "face.brows": "masters/up-right/face.brows.png",
+        "face.nose": "masters/up-right/face.nose.png",
+        "face.mouth": "masters/up-right/face.mouth.png"
+      }
+    },
+    {
+      "direction": "up-right",
+      "clip": "walk",
+      "frame": 4,
+      "layers": {
+        "face.eyes": "masters/up-right/face.eyes.png",
+        "face.brows": "masters/up-right/face.brows.png",
+        "face.nose": "masters/up-right/face.nose.png",
+        "face.mouth": "masters/up-right/face.mouth.png"
+      }
+    },
+    {
+      "direction": "up-right",
+      "clip": "walk",
+      "frame": 5,
+      "layers": {
+        "face.eyes": "masters/up-right/face.eyes.png",
+        "face.brows": "masters/up-right/face.brows.png",
+        "face.nose": "masters/up-right/face.nose.png",
+        "face.mouth": "masters/up-right/face.mouth.png"
+      }
+    },
+    {
+      "direction": "up-right",
+      "clip": "walk",
+      "frame": 6,
+      "layers": {
+        "face.eyes": "masters/up-right/face.eyes.png",
+        "face.brows": "masters/up-right/face.brows.png",
+        "face.nose": "masters/up-right/face.nose.png",
+        "face.mouth": "masters/up-right/face.mouth.png"
+      }
+    },
+    {
+      "direction": "up-right",
+      "clip": "walk",
+      "frame": 7,
+      "layers": {
+        "face.eyes": "masters/up-right/face.eyes.png",
+        "face.brows": "masters/up-right/face.brows.png",
+        "face.nose": "masters/up-right/face.nose.png",
+        "face.mouth": "masters/up-right/face.mouth.png"
+      }
+    },
+    {
+      "direction": "up-right",
+      "clip": "walk",
+      "frame": 8,
+      "layers": {
+        "face.eyes": "masters/up-right/face.eyes.png",
+        "face.brows": "masters/up-right/face.brows.png",
+        "face.nose": "masters/up-right/face.nose.png",
+        "face.mouth": "masters/up-right/face.mouth.png"
+      }
+    },
+    {
+      "direction": "up-right",
+      "clip": "walk-start",
+      "frame": 1,
+      "layers": {
+        "face.eyes": "masters/up-right/face.eyes.png",
+        "face.brows": "masters/up-right/face.brows.png",
+        "face.nose": "masters/up-right/face.nose.png",
+        "face.mouth": "masters/up-right/face.mouth.png"
+      }
+    },
+    {
+      "direction": "up-right",
+      "clip": "walk-start",
+      "frame": 2,
+      "layers": {
+        "face.eyes": "masters/up-right/face.eyes.png",
+        "face.brows": "masters/up-right/face.brows.png",
+        "face.nose": "masters/up-right/face.nose.png",
+        "face.mouth": "masters/up-right/face.mouth.png"
+      }
+    },
+    {
+      "direction": "up-right",
+      "clip": "walk-stop",
+      "frame": 1,
+      "layers": {
+        "face.eyes": "masters/up-right/face.eyes.png",
+        "face.brows": "masters/up-right/face.brows.png",
+        "face.nose": "masters/up-right/face.nose.png",
+        "face.mouth": "masters/up-right/face.mouth.png"
+      }
+    },
+    {
+      "direction": "up-right",
+      "clip": "walk-stop",
+      "frame": 2,
+      "layers": {
+        "face.eyes": "masters/up-right/face.eyes.png",
+        "face.brows": "masters/up-right/face.brows.png",
+        "face.nose": "masters/up-right/face.nose.png",
+        "face.mouth": "masters/up-right/face.mouth.png"
+      }
+    },
+    {
+      "direction": "right",
+      "clip": "idle",
+      "frame": 0,
+      "layers": {
+        "face.eyes": "masters/right/face.eyes.png",
+        "face.brows": "masters/right/face.brows.png",
+        "face.nose": "masters/right/face.nose.png",
+        "face.mouth": "masters/right/face.mouth.png"
+      }
+    },
+    {
+      "direction": "right",
+      "clip": "walk",
+      "frame": 1,
+      "layers": {
+        "face.eyes": "masters/right/face.eyes.png",
+        "face.brows": "masters/right/face.brows.png",
+        "face.nose": "masters/right/face.nose.png",
+        "face.mouth": "masters/right/face.mouth.png"
+      }
+    },
+    {
+      "direction": "right",
+      "clip": "walk",
+      "frame": 2,
+      "layers": {
+        "face.eyes": "masters/right/face.eyes.png",
+        "face.brows": "masters/right/face.brows.png",
+        "face.nose": "masters/right/face.nose.png",
+        "face.mouth": "masters/right/face.mouth.png"
+      }
+    },
+    {
+      "direction": "right",
+      "clip": "walk",
+      "frame": 3,
+      "layers": {
+        "face.eyes": "masters/right/face.eyes.png",
+        "face.brows": "masters/right/face.brows.png",
+        "face.nose": "masters/right/face.nose.png",
+        "face.mouth": "masters/right/face.mouth.png"
+      }
+    },
+    {
+      "direction": "right",
+      "clip": "walk",
+      "frame": 4,
+      "layers": {
+        "face.eyes": "masters/right/face.eyes.png",
+        "face.brows": "masters/right/face.brows.png",
+        "face.nose": "masters/right/face.nose.png",
+        "face.mouth": "masters/right/face.mouth.png"
+      }
+    },
+    {
+      "direction": "right",
+      "clip": "walk",
+      "frame": 5,
+      "layers": {
+        "face.eyes": "masters/right/face.eyes.png",
+        "face.brows": "masters/right/face.brows.png",
+        "face.nose": "masters/right/face.nose.png",
+        "face.mouth": "masters/right/face.mouth.png"
+      }
+    },
+    {
+      "direction": "right",
+      "clip": "walk",
+      "frame": 6,
+      "layers": {
+        "face.eyes": "masters/right/face.eyes.png",
+        "face.brows": "masters/right/face.brows.png",
+        "face.nose": "masters/right/face.nose.png",
+        "face.mouth": "masters/right/face.mouth.png"
+      }
+    },
+    {
+      "direction": "right",
+      "clip": "walk",
+      "frame": 7,
+      "layers": {
+        "face.eyes": "masters/right/face.eyes.png",
+        "face.brows": "masters/right/face.brows.png",
+        "face.nose": "masters/right/face.nose.png",
+        "face.mouth": "masters/right/face.mouth.png"
+      }
+    },
+    {
+      "direction": "right",
+      "clip": "walk",
+      "frame": 8,
+      "layers": {
+        "face.eyes": "masters/right/face.eyes.png",
+        "face.brows": "masters/right/face.brows.png",
+        "face.nose": "masters/right/face.nose.png",
+        "face.mouth": "masters/right/face.mouth.png"
+      }
+    },
+    {
+      "direction": "right",
+      "clip": "walk-start",
+      "frame": 1,
+      "layers": {
+        "face.eyes": "masters/right/face.eyes.png",
+        "face.brows": "masters/right/face.brows.png",
+        "face.nose": "masters/right/face.nose.png",
+        "face.mouth": "masters/right/face.mouth.png"
+      }
+    },
+    {
+      "direction": "right",
+      "clip": "walk-start",
+      "frame": 2,
+      "layers": {
+        "face.eyes": "masters/right/face.eyes.png",
+        "face.brows": "masters/right/face.brows.png",
+        "face.nose": "masters/right/face.nose.png",
+        "face.mouth": "masters/right/face.mouth.png"
+      }
+    },
+    {
+      "direction": "right",
+      "clip": "walk-stop",
+      "frame": 1,
+      "layers": {
+        "face.eyes": "masters/right/face.eyes.png",
+        "face.brows": "masters/right/face.brows.png",
+        "face.nose": "masters/right/face.nose.png",
+        "face.mouth": "masters/right/face.mouth.png"
+      }
+    },
+    {
+      "direction": "right",
+      "clip": "walk-stop",
+      "frame": 2,
+      "layers": {
+        "face.eyes": "masters/right/face.eyes.png",
+        "face.brows": "masters/right/face.brows.png",
+        "face.nose": "masters/right/face.nose.png",
+        "face.mouth": "masters/right/face.mouth.png"
+      }
+    },
+    {
+      "direction": "down-right",
+      "clip": "idle",
+      "frame": 0,
+      "layers": {
+        "face.eyes": "masters/down-right/face.eyes.png",
+        "face.brows": "masters/down-right/face.brows.png",
+        "face.nose": "masters/down-right/face.nose.png",
+        "face.mouth": "masters/down-right/face.mouth.png"
+      }
+    },
+    {
+      "direction": "down-right",
+      "clip": "walk",
+      "frame": 1,
+      "layers": {
+        "face.eyes": "masters/down-right/face.eyes.png",
+        "face.brows": "masters/down-right/face.brows.png",
+        "face.nose": "masters/down-right/face.nose.png",
+        "face.mouth": "masters/down-right/face.mouth.png"
+      }
+    },
+    {
+      "direction": "down-right",
+      "clip": "walk",
+      "frame": 2,
+      "layers": {
+        "face.eyes": "masters/down-right/face.eyes.png",
+        "face.brows": "masters/down-right/face.brows.png",
+        "face.nose": "masters/down-right/face.nose.png",
+        "face.mouth": "masters/down-right/face.mouth.png"
+      }
+    },
+    {
+      "direction": "down-right",
+      "clip": "walk",
+      "frame": 3,
+      "layers": {
+        "face.eyes": "masters/down-right/face.eyes.png",
+        "face.brows": "masters/down-right/face.brows.png",
+        "face.nose": "masters/down-right/face.nose.png",
+        "face.mouth": "masters/down-right/face.mouth.png"
+      }
+    },
+    {
+      "direction": "down-right",
+      "clip": "walk",
+      "frame": 4,
+      "layers": {
+        "face.eyes": "masters/down-right/face.eyes.png",
+        "face.brows": "masters/down-right/face.brows.png",
+        "face.nose": "masters/down-right/face.nose.png",
+        "face.mouth": "masters/down-right/face.mouth.png"
+      }
+    },
+    {
+      "direction": "down-right",
+      "clip": "walk",
+      "frame": 5,
+      "layers": {
+        "face.eyes": "masters/down-right/face.eyes.png",
+        "face.brows": "masters/down-right/face.brows.png",
+        "face.nose": "masters/down-right/face.nose.png",
+        "face.mouth": "masters/down-right/face.mouth.png"
+      }
+    },
+    {
+      "direction": "down-right",
+      "clip": "walk",
+      "frame": 6,
+      "layers": {
+        "face.eyes": "masters/down-right/face.eyes.png",
+        "face.brows": "masters/down-right/face.brows.png",
+        "face.nose": "masters/down-right/face.nose.png",
+        "face.mouth": "masters/down-right/face.mouth.png"
+      }
+    },
+    {
+      "direction": "down-right",
+      "clip": "walk",
+      "frame": 7,
+      "layers": {
+        "face.eyes": "masters/down-right/face.eyes.png",
+        "face.brows": "masters/down-right/face.brows.png",
+        "face.nose": "masters/down-right/face.nose.png",
+        "face.mouth": "masters/down-right/face.mouth.png"
+      }
+    },
+    {
+      "direction": "down-right",
+      "clip": "walk",
+      "frame": 8,
+      "layers": {
+        "face.eyes": "masters/down-right/face.eyes.png",
+        "face.brows": "masters/down-right/face.brows.png",
+        "face.nose": "masters/down-right/face.nose.png",
+        "face.mouth": "masters/down-right/face.mouth.png"
+      }
+    },
+    {
+      "direction": "down-right",
+      "clip": "walk-start",
+      "frame": 1,
+      "layers": {
+        "face.eyes": "masters/down-right/face.eyes.png",
+        "face.brows": "masters/down-right/face.brows.png",
+        "face.nose": "masters/down-right/face.nose.png",
+        "face.mouth": "masters/down-right/face.mouth.png"
+      }
+    },
+    {
+      "direction": "down-right",
+      "clip": "walk-start",
+      "frame": 2,
+      "layers": {
+        "face.eyes": "masters/down-right/face.eyes.png",
+        "face.brows": "masters/down-right/face.brows.png",
+        "face.nose": "masters/down-right/face.nose.png",
+        "face.mouth": "masters/down-right/face.mouth.png"
+      }
+    },
+    {
+      "direction": "down-right",
+      "clip": "walk-stop",
+      "frame": 1,
+      "layers": {
+        "face.eyes": "masters/down-right/face.eyes.png",
+        "face.brows": "masters/down-right/face.brows.png",
+        "face.nose": "masters/down-right/face.nose.png",
+        "face.mouth": "masters/down-right/face.mouth.png"
+      }
+    },
+    {
+      "direction": "down-right",
+      "clip": "walk-stop",
+      "frame": 2,
+      "layers": {
+        "face.eyes": "masters/down-right/face.eyes.png",
+        "face.brows": "masters/down-right/face.brows.png",
+        "face.nose": "masters/down-right/face.nose.png",
+        "face.mouth": "masters/down-right/face.mouth.png"
+      }
+    }
+  ]
+}
