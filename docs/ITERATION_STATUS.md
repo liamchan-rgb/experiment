@@ -1,5 +1,7 @@
 ## 行走/战斗发型与五官同步审核修订（2026-11-08）
 
+交付核验补记：本轮绑定/预览源提交 `ece5c5892ab40b0c60869af60d6af93ab67e58af`，原226PNG仍来自3ef48ebdb43d608d459fc438714fe0f6e1ed6d29，未改其像素。发布run42434021318/job128588869390全部步骤成功，115项公开文件完整GET200、共24456267字节，逐项SHA256匹配；回执 Art/Review/Battle/appearance-synchronized-v1/public-downloads.json。临时上传分支与工作流已清除，无重复发布任务；收尾仅补日志/回执，不推进App/课堂版本。
+
 用户要求“战斗的时候也要把五官和发型同步”。查明上轮已做新头部注册/持弓预览，但服装战斗总览仍用旧默认头。新权威审核页 Art/Review/Battle/appearance-synchronized-v1，正常并排GIF左行走右战斗，同一玩家同一发型/脸/衣服选择；原页已标历史并指向新版。
 
 scene-bindings.json 和 scripts/appearance-scene-binding.py 将同一稳定ID映射两场景资源，逐玩家不可变完整选择，验证后原子替换；非法脸不丢原选择、编辑一人不改另一人、未知玩家拒绝。Renderer.for_appearance同时替换头发和脸，原弓新头只跟一次torso，不叠原native旧头。战斗默认导出和头部行走/持弓重导也从同一预设读取，不按武器或性别另猜头部。
