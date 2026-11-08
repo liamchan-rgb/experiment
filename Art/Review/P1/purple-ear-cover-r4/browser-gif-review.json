@@ -1,0 +1,54 @@
+{
+  "scope": "Actual exported GIFs in independent Chromium; not App execution, performance measurement or user art approval",
+  "appSimulatorOrDeviceRun": false,
+  "records": [
+    {
+      "path": "Art/Review/P1/purple-ear-cover-r4/ear-cover-eight-way-normal.gif",
+      "dimensions": {
+        "complete": true,
+        "width": 1024,
+        "height": 560
+      },
+      "intervalMs": 130,
+      "sampleHashes": [
+        "90918caaa54bb751b64a443ea002ded964a2a10be9b25d26d279701837b482d9",
+        "5ac57d8a5e671c1a8c1438a77a728925a8ddf32ffbde8edcb58eb2a417a5b89b",
+        "e37b0d6243fcfd55f17194f8df10737ea49e75253cdb41ee246db599b45e8181",
+        "cd13442caa59078c696dd0891fde0bc1e152345a5771546b391fe5ae59dbd797",
+        "d2cd527d802120f56ef3b19b9c7a0f0413f6cb787ed8392919da75e0a83b8d21",
+        "564c342ba0dd375d245cbd046f23cd12f63e3acf26980715c075c95672cd6d4f",
+        "5ac57d8a5e671c1a8c1438a77a728925a8ddf32ffbde8edcb58eb2a417a5b89b",
+        "e37b0d6243fcfd55f17194f8df10737ea49e75253cdb41ee246db599b45e8181",
+        "cd13442caa59078c696dd0891fde0bc1e152345a5771546b391fe5ae59dbd797",
+        "d2cd527d802120f56ef3b19b9c7a0f0413f6cb787ed8392919da75e0a83b8d21",
+        "564c342ba0dd375d245cbd046f23cd12f63e3acf26980715c075c95672cd6d4f",
+        "90918caaa54bb751b64a443ea002ded964a2a10be9b25d26d279701837b482d9"
+      ],
+      "distinctScreenshotHashes": 6
+    },
+    {
+      "path": "Art/Review/P1/purple-ear-cover-r4/ear-cover-walk-battle-normal.gif",
+      "dimensions": {
+        "complete": true,
+        "width": 1280,
+        "height": 560
+      },
+      "intervalMs": 130,
+      "sampleHashes": [
+        "93191443eaaa580120df72ca9a4076471f589f3093a8d0ebfcea5edd729f184f",
+        "33e8fdd7e12357f13b89d0b3dba5ea4629bcc0a4ca2dce6c70ca31cc9368a29a",
+        "a3b14c70ccba155ea340f8338627f68596a6c99b4c6ae7e2d4c4b847531059a6",
+        "6a17182de54686b3c7d88ed55d197f3b9feb1b54e822eeb14dc3618b5d8e24a4",
+        "5b56856f67f5cf2ee315b8399ba2578cb62e2602deeb7e893e3aa4924d639cab",
+        "0002b31e98c287198beb2943c51b48dbcbe973440896e518a85ce44337e2ddd7",
+        "98a35245002498fff3f99df5c0df684423fceae98dcddb5a17fced2e2250d50d",
+        "4c23d2303d2ecb2eef281aeb1fc9a8bfdf95db28b8a79211b7710ef3695d5dd1",
+        "234bb178fa751e55600f393124ac0c58061a5583896d08cb00f7e55870e34c2d",
+        "26fa6b7b7c373aed76dec89bed5a34cd62fc29ebdb67aab5f2272dcaf38931db",
+        "0f7d79ab1d9a3ee01b06a96b6b4345a0ff01424464fc5f0ff828d3739446fde7",
+        "33e8fdd7e12357f13b89d0b3dba5ea4629bcc0a4ca2dce6c70ca31cc9368a29a"
+      ],
+      "distinctScreenshotHashes": 11
+    }
+  ]
+}

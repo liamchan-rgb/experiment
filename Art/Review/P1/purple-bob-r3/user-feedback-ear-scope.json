@@ -1,0 +1,10 @@
+{
+  "messages": [
+    "你只改战斗部分的就可以了，明明正面视图是长发盖住耳朵，换到侧面就不是了",
+    "不对是所有的侧面正方向侧面"
+  ],
+  "latestScope": "all orthogonal side views, including walking left/right and battle side",
+  "r3WholeStyleRedesignAccepted": false,
+  "frontReferenceCommit": "42df0a0a3c2b15f8e67bf3787d47e7d8ae6564f5",
+  "followup": "Art/Review/P1/purple-ear-cover-r4"
+}
