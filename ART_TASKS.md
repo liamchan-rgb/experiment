@@ -38,3 +38,7 @@
 ## 侧面发量 r2
 
 六款hair1.0.1，ID不变，四向+战斗同步，当前以 [r2页](Art/Review/P1/side-hair-coverage-r2/README.md) 为准。眼/脸/身体不改，未接入App UI/存档。
+
+## 紫发F1 r3
+
+F1改为偏分层次短发，1.0.2/原ID；当前 [r3审核页](Art/Review/P1/purple-bob-r3/README.md)。只更新此款九头发PNG，其他款/脸/身体保持。仍为离线资源审核，未改App UI/存档。

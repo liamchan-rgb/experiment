@@ -20,7 +20,7 @@ HAIR={
  'm1-short':{'label':'M1 Short crop','genderStyle':'male','shape':'crop','colors':['#211a16','#493527','#785036','#a6744a','#d4a46b']},
  'm2-sidepart':{'label':'M2 Side part','genderStyle':'male','shape':'part','colors':['#111720','#25303c','#415264','#627a8c','#9aaeba']},
  'm3-topknot':{'label':'M3 Swept knot','genderStyle':'male','shape':'knot','colors':['#262129','#49404a','#756776','#a795a5','#d1bec7']},
- 'f1-bob':{'label':'F1 Soft bob','genderStyle':'female','shape':'bob','colors':['#201b2b','#373044','#584b67','#80708e','#b1a0be']},
+ 'f1-bob':{'label':'F1 Layered bob','genderStyle':'female','shape':'bob','version':'1.0.2','colors':['#221b31','#3b2d53','#624c7c','#9176ab','#bca8d0']},
  'f2-ponytail':{'label':'F2 Side pony','genderStyle':'female','shape':'pony','colors':['#2b171b','#563038','#8b4b4b','#bd7465','#e7aa8d']},
  'f3-bun':{'label':'F3 Braided bun','genderStyle':'female','shape':'bun','colors':['#382919','#71512f','#a87f43','#d7ad65','#f4d99a']},
 }
@@ -58,14 +58,16 @@ def shape_points(direction,shape):
    if source=='down' and 30<=p[0]<=48 and 42<=p[1]<=50:p[1]+=4
    if source=='left' and 30<=p[0]<=44 and 37<=p[1]<=42:p[1]+=3
  elif shape=='bob':
-  if source=='down':
-   points=[(24,71),(22,54),(23,39),(27,31),(35,25),(47,23),(60,26),(69,33),(74,45),(73,72),(64,73),(66,61),(66,47),(61,44),(54,44),(48,46),(41,44),(33,46),(30,60),(33,73)]
-  elif source=='left':
-   points=[(29,42),(28,34),(34,27),(44,24),(56,24),(67,29),(74,39),(76,53),(73,72),(63,74),(61,67),(61,60),(60,54),(57,49),(52,48),(49,51),(48,58),(45,61),(43,60),(43,51),(41,47),(38,44),(33,44),(29,45)]
-  elif source=='down-left':
-   points=[(29,43),(28,34),(34,27),(44,24),(56,24),(67,29),(74,39),(76,53),(73,72),(63,74),(61,67),(61,58),(59,53),(57,50),(56,58),(55,61),(54,59),(54,51),(48,49),(43,48),(38,49),(34,50),(31,52)]
-  else:
-   points=[(25,45),(25,35),(32,28),(43,24),(56,24),(67,29),(74,39),(75,54),(71,73),(59,74),(47,72),(36,74),(28,68)]
+  # Side-swept fringe, tapered ear locks and staggered nape. The back is
+  # curved and light rather than a long rectangle with a straight bottom.
+  shapes={
+   'down':[(24,55),(22,47),(23,37),(27,30),(34,26),(43,23),(53,23),(63,27),(70,34),(73,44),(72,55),(69,61),(70,65),(66,64),(64,69),(61,67),(65,61),(67,54),(66,47),(61,43),(57,42),(53,44),(48,47),(45,48),(43,45),(40,44),(36,45),(31,48),(29,54),(30,60),(29,65),(26,64),(27,59)],
+   'left':[(29,42),(28,35),(32,29),(40,25),(49,23),(58,25),(65,28),(71,34),(74,41),(74,51),(72,58),(74,62),(71,61),(71,66),(67,64),(66,69),(61,68),(58,65),(60,59),(59,54),(56,50),(52,48),(49,50),(48,55),(47,59),(44,60),(43,57),(44,51),(42,47),(39,44),(35,44),(32,45),(29,43)],
+   'down-left':[(29,43),(27,36),(31,29),(40,25),(50,23),(60,25),(68,30),(73,39),(75,48),(74,56),(71,62),(72,66),(68,64),(66,70),(62,68),(60,64),(61,59),(59,54),(57,51),(56,57),(55,61),(54,60),(54,52),(51,49),(47,49),(43,48),(39,48),(35,50),(32,52),(30,50)],
+   'up-left':[(27,45),(26,36),(30,30),(38,25),(48,23),(58,25),(67,30),(72,38),(74,47),(73,56),(70,61),(71,65),(67,63),(65,69),(61,67),(57,70),(52,68),(47,70),(43,68),(39,70),(36,65),(32,65),(32,59),(29,57)],
+   'up':[(24,45),(24,37),(29,30),(35,26),(43,23),(54,24),(63,28),(69,35),(72,44),(72,53),(69,60),(70,64),(66,63),(64,68),(60,66),(56,70),(51,68),(47,70),(42,68),(38,70),(34,65),(30,66),(30,61),(27,60)]
+  }
+  points=shapes[source]
  # Align scalp to the actual directional guide, rather than alpha bounds.
  guides=PROFILE['headLayouts'];guide=guides[direction]
  if 'skullGuide' in guide:cx=(guide['skullGuide'][0]+guide['skullGuide'][2])/2
@@ -91,11 +93,16 @@ def native_hair_texture(direction,style):
  rgb=source[nearest[0],nearest[1],:3].astype(float)
  lum=rgb@np.array([.3,.59,.11]);shade=np.clip((lum-18)/170,0,1)
  yy,xx=np.mgrid[:96,:96]
- # Bob ends receive actual vertical locks rather than stretched scalp pixels.
+ # The layered bob has broad curved locks, not vertical barcode stripes.
  if cfg['shape']=='bob':
-  lower=(yy>49)&((xx<34)|(xx>61)|(direction in ['up','up-left','up-right']))
-  strands=.44+.10*np.sin(xx*1.7)+.035*np.sin(yy*.25+xx*.4)-.11*np.clip((xx-42)/40,0,1)
-  shade[lower]=strands[lower]
+  side=-1 if direction in ['left','down-left'] else 1
+  if direction in ['up','up-left','up-right']:
+   flow=(xx-48)/(1+.018*np.clip(yy-28,0,45))+48
+  else:flow=xx+side*.010*(yy-39)**2
+  ribbons=np.maximum(0,np.cos(flow*.62+.4))**4
+  strands=.35+.13*ribbons+.045*np.cos(flow*.23-yy*.06)+.07*(1-np.clip((xx-25)/55,0,1))-.05*np.clip((yy-47)/24,0,1)
+  blend=np.clip((yy-45)/11,0,1)
+  shade=shade*(1-blend)+strands*blend
  pal=np.array([[int(c[j:j+2],16) for j in [1,3,5]] for c in cfg['colors']],float)
  phase=shade*4;lo=np.minimum(3,phase.astype(int));f=(phase-lo)[:,:,None]
  out=np.rint(pal[lo]*(1-f)+pal[lo+1]*f).astype('uint8')
@@ -163,6 +170,12 @@ def hair_svg(direction,style):
  paint=native_hair_texture(direction,style)
  if shape in ['part','knot','bun']:
   paint+=line([(round(cx+8),27),(round(cx+4),32),(round(cx+1),38)],colors[1])
+ if shape=='bob':
+  source={'right':'left','down-right':'down-left','up-right':'up-left'}.get(direction,direction)
+  part={'down':[(55,27),(51,31),(47,36),(41,40)],'left':[(56,27),(48,30),(40,35),(34,40)],'down-left':[(57,28),(51,32),(44,38),(36,44)]}.get(source)
+  if part:
+   if direction!=source:part=[(96-x,y) for x,y in part]
+   paint+=line(part,colors[1]);paint+=line([(x-1,y-2) for x,y in part[:-1]],colors[3])
  if shape=='bun':
   for y in [37,41,45]:paint+=line([(68,y),(65,y+2),(68,y+4)],colors[3])
  outline='<polygon points="'+' '.join(f'{x},{y}' for x,y in points)+'" fill="none" stroke="'+colors[0]+'" stroke-width="1"/>'
@@ -265,7 +278,7 @@ def build():
       output.parent.mkdir(parents=True,exist_ok=True);Image.new('RGBA',(96,96)).save(output)
      else:render_svg(svg,slot,output)
      paths[d][slot]=output.relative_to(folder).as_posix()
-   asset=copy.deepcopy(template);asset['id']='p1-custom-'+part+'-'+style+'-v1';asset['version']='1.0.1' if part=='hair' else '1.0.0';asset['sourceFiles']=sources+['authoring.json','palette.json']
+   asset=copy.deepcopy(template);asset['id']='p1-custom-'+part+'-'+style+'-v1';asset['version']=cfg.get('version','1.0.1') if part=='hair' else '1.0.0';asset['sourceFiles']=sources+['authoring.json','palette.json']
    asset['bindings']=[{'direction':b['direction'],'clip':b['clip'],'frame':b['frame'],'layers':paths[b['direction']]} for b in template['bindings']]
    write(folder/'palette.json',{'colorSpace':'sRGB','roleColors':cfg.get('colors',{k:cfg[k] for k in ['eye','shadow','brow'] if k in cfg})});write(folder/'asset.json',asset);write(folder/'authoring.json',{'label':cfg['label'],'genderStyle':cfg['genderStyle'],'scope':'gender-styled appearance preset on unchanged shared body; not a separate female body','headCanvas':[96,96],'headToCanvasSource':'original motion, unchanged','slots':asset['slots'],'noSkinEarsJawOrBodyPixels':True,'fullEightDirections':True,'bindingCount':104,'uniqueDirectionalLayerPNGs':8*len(asset['slots']),'hairBackContractChanged':False,'artApproval':None,'runtimeImported':False})
    manifests.append({'id':asset['id'],'manifest':(folder/'asset.json').relative_to(R).as_posix()})

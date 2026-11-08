@@ -1,0 +1,16 @@
+{
+  "reviewer": "main agent",
+  "wholeFigureFirst": true,
+  "views": [
+    "before-after-eight-directions-1x.png",
+    "before-after-eight-directions-2x.png",
+    "standing-and-battle-2x.png",
+    "battle-states-2-1x.png",
+    "purple-walk-battle-normal-decoded-042.png"
+  ],
+  "all1504MechanicalFiguresVisuallyReviewed": false,
+  "firstFrontEyeCornerOverlapFixedInGeometry": true,
+  "noFaceSkinBodyOrHandChanges": true,
+  "newArtApproval": null,
+  "appSimulatorOrDeviceRun": false
+}

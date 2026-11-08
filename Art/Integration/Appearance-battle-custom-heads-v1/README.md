@@ -1,5 +1,7 @@
 # 双 B 战斗服装与自定义头部 · 2026-11-08
 
+**紫发F1最新修订：** [r3偏分层次短发与正常GIF](../../Review/P1/purple-bob-r3/README.md)；其他五款仍以r2为准。本页旧图按原提交保留历史。
+
 **最新侧面发量：** [r2同步审核](../../Review/P1/side-hair-coverage-r2/README.md)。本页旧图/校验保留原时点事实，当前30张头发PNG已更新。
 
 **2026-11-08 同步修订：** 当前行走/战斗必须共用同一发型、五官和衣服选择。请优先看 [同步批量审核页](../../Review/Battle/appearance-synchronized-v1/README.md) 与 [并排正常GIF](../../Review/Battle/appearance-synchronized-v1/walking-battle-same-head-normal.gif)。下方旧战斗总览为首轮服装审核证据，头部不是当前展示组合；新资源仍未接入App UI/存档。

@@ -49,7 +49,7 @@
     },
     {
       "id": "p1-custom-hair-f1-bob-v1",
-      "label": "F1 Soft bob",
+      "label": "F1 Layered bob",
       "genderStyle": "female",
       "locomotionManifest": "Art/Parts/P1-v1/custom-heads-v1/hair-f1-bob/asset.json",
       "battleLayers": {
@@ -160,6 +160,6 @@
   "appRuntimeIntegrated": false,
   "newArtApproval": null,
   "originalArtSourceCommit": "3ef48ebdb43d608d459fc438714fe0f6e1ed6d29",
-  "hairRevision": "side-hair-coverage-r2 / asset 1.0.1",
+  "hairRevision": "side-hair-coverage-r2; F1 purple-bob-r3 / asset 1.0.2",
   "currentHairSource": "same published revision as this binding; originalArtSourceCommit is the earlier baseline"
 }

@@ -1,5 +1,5 @@
 {
-  "label": "F1 Soft bob",
+  "label": "F1 Layered bob",
   "genderStyle": "female",
   "scope": "gender-styled appearance preset on unchanged shared body; not a separate female body",
   "headCanvas": [
@@ -17,5 +17,6 @@
   "hairBackContractChanged": false,
   "artApproval": null,
   "runtimeImported": false,
-  "sideHairCoverageRevision": "r2 lowered side hairline and temples; ear-front locks; unchanged face/skin/registration"
+  "sideHairCoverageRevision": "r2 lowered side hairline and temples; ear-front locks; unchanged face/skin/registration",
+  "designRevision": "r3 side-swept fringe, light tapered nape, curved locks; same body/face/registration"
 }
