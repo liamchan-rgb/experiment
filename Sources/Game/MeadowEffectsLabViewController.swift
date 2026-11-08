@@ -17,6 +17,18 @@ final class MeadowEffectsLabViewController: UIViewController {
     private var weapon = "trainingSword"
     private var species = ["slime", "wolf"]
     private var sequence: Timer?
+    /// Formations the full game uses: heroes (left) against monsters, or two hero teams (PvP, the right team mirrored).
+    private static let formations: [(name: String, heroes: Int, foes: Int, pvp: Bool)] = [("2v2", 2, 2, false), ("4v3", 4, 3, false), ("7v3", 7, 3, false), ("PvP4", 4, 4, true), ("PvP7", 7, 7, true)]
+    private var formation = 0
+    private var pvp: Bool { Self.formations[formation].pvp }
+    /// The left team (P1 is always the one acting) and the right team (monsters, or the PvP rivals).
+    private var allies: [String] { (1...Self.formations[formation].heroes).map { "p\($0)" } }
+    private var foes: [String] {
+        let f = Self.formations[formation]
+        return pvp ? (1...f.foes).map { "p\(f.heroes + $0)" } : (1...f.foes).map { "m\($0)" }
+    }
+    private var foe1: String { foes[0] }
+    private var foe2: String { foes.count > 1 ? foes[1] : foes[0] }
 
     private static let monsters: [(id: String, name: String)] = [("slime", "史莱姆"), ("wolf", "森林狼"), ("goblinArcher", "哥布林弓手"), ("stoneGuardian", "石像守卫"), ("caveTroll", "洞穴巨魔"), ("ruinDragon", "遗迹魔龙")]
     private static let weapons: [(id: String, name: String)] = [("trainingSword", "短剑"), ("greatSword", "巨剑"), ("huntingBow", "弓"), ("legendaryStaff", "法杖")]
@@ -41,7 +53,6 @@ final class MeadowEffectsLabViewController: UIViewController {
         do {
             let encounter = try PartyEncounter(playerClassID: "adventurer")
             model = encounter; base = encounter.state
-            stage.configureMonsters(encounter.monsterIDs)
             stage.start()
             resetScene()
         } catch { status.text = "载入失败：\(error.localizedDescription)" }
@@ -49,11 +60,24 @@ final class MeadowEffectsLabViewController: UIViewController {
 
     /// Both monsters get the chosen species, P1 the chosen weapon; everyone is alive and unshielded.
     private func resetScene() {
-        guard let model, var state = base else { return }
-        for (i, id) in ["m1", "m2"].enumerated() where state.units[id] != nil { state.units[id]?.templateID = species[i] }
-        for id in state.units.keys { state.units[id]?.shield = 0 }
-        state.units["p1"]?.equipment.weapon = weapon
-        stage.labReset(state, catalog: model.engine.catalog)
+        guard let model, var state = base, let hero1 = state.units["p1"], let hero2 = state.units["p2"], let monster = state.units["m2"] ?? state.units["m1"] else { return }
+        // Extra heroes copy P1 / P2 by turns (and in PvP so does the other team); a third monster copies the second.
+        var units: [String: GameUnit] = [:]
+        for (i, id) in (allies + (pvp ? foes : [])).enumerated() {
+            var unit = i % 2 == 0 ? hero1 : hero2
+            unit.id = id; unit.name = id.uppercased(); units[id] = unit
+        }
+        if !pvp {
+            for (i, id) in foes.enumerated() {
+                var unit = state.units[id] ?? monster
+                unit.id = id; unit.templateID = species[i % 2]; units[id] = unit
+            }
+        }
+        for id in units.keys { units[id]?.shield = 0; units[id]?.health = units[id]?.baseAttributes.maximumHealth ?? 1 }
+        units["p1"]?.equipment.weapon = weapon
+        state.units = units
+        stage.configureUnits(players: allies, foes: foes, pvp: pvp)
+        stage.labReset(state, catalog: model.engine.catalog, foe: foe1)
     }
 
     private func buildPanel() {
@@ -65,7 +89,9 @@ final class MeadowEffectsLabViewController: UIViewController {
             guard let self else { return }
             self.weapon = Self.weapons[i].id; self.stage.labSetWeapon("p1", self.weapon)
         })
-        column.addArrangedSubview(label("怪物 1（m1，审核台里的怪物动作都由它来做）"))
+        column.addArrangedSubview(label("阵型（正式版最多 7 人 / 3 怪；PvP 右队镜像朝左）"))
+        column.addArrangedSubview(segmented(Self.formations.map { $0.name }, selected: 0) { [weak self] i in self?.formation = i; self?.resetScene(); self?.say("阵型 · " + Self.formations[i].name) })
+        column.addArrangedSubview(label("怪物 1（m1，审核台里的怪物动作都由它来做；PvP 时由对面第一名来做）"))
         column.addArrangedSubview(segmented(Self.monsters.map { $0.name }, selected: 0) { [weak self] i in self?.species[0] = Self.monsters[i].id; self?.resetScene() })
         column.addArrangedSubview(label("怪物 2（m2）"))
         column.addArrangedSubview(segmented(Self.monsters.map { $0.name }, selected: 1) { [weak self] i in self?.species[1] = Self.monsters[i].id; self?.resetScene() })
@@ -76,13 +102,13 @@ final class MeadowEffectsLabViewController: UIViewController {
         column.addArrangedSubview(action("强击") { [weak self] in self?.attack(.heavyStrike, name: "强击") })
         column.addArrangedSubview(action("突袭") { [weak self] in self?.attack(.ambush, name: "突袭") })
         column.addArrangedSubview(action("自然 20（一击必杀）", color: .systemOrange) { [weak self] in self?.naturalTwenty() })
-        column.addArrangedSubview(heading("P1 动作 · 技能打怪物"))
+        column.addArrangedSubview(heading("P1 动作 · 技能打全部敌人"))
         for (a, name) in [(PartyAction.starlightPulse, "星辉脉冲"), (.runeSlash, "符文斩"), (.dragonFlame, "龙焰"), (.sweep, "横扫")] {
             column.addArrangedSubview(action(name) { [weak self] in self?.offensiveSkill(a, name: name) })
         }
         column.addArrangedSubview(heading("P1 动作 · 增益与护盾"))
         for (a, name, shield, heal, buff) in [(PartyAction.rally, "振奋", 0, 0, 2), (.dragonSoulWard, "龙魂庇护", 10, 10, 3), (.dragonScaleWard, "龙鳞庇护", 10, 12, 2), (.runeWard, "符文庇护", 6, 8, 0), (.battleRune, "战斗符文", 4, 0, 3), (.dragonOrder, "龙之号令", 8, 6, 4)] {
-            column.addArrangedSubview(action(name) { [weak self] in self?.supportSkill(a, name: name, targets: ["p1", "p2"], shield: shield, heal: heal, buff: buff) })
+            column.addArrangedSubview(action(name) { [weak self] in self?.supportSkill(a, name: name, targets: self?.allies ?? ["p1"], shield: shield, heal: heal, buff: buff) })
         }
         column.addArrangedSubview(action("简易防护") { [weak self] in self?.supportSkill(.simpleGuard, name: "简易防护", targets: ["p1"], shield: 4) })
         column.addArrangedSubview(action("援护（P1 → P2）") { [weak self] in self?.supportSkill(.support, name: "援护", targets: ["p2"], shield: 4, heal: 6) })
@@ -93,31 +119,31 @@ final class MeadowEffectsLabViewController: UIViewController {
         column.addArrangedSubview(action("护盾药水") { [weak self] in self?.supportSkill(.shieldPotion, name: "护盾药水", targets: ["p1"], shield: 8) })
         column.addArrangedSubview(action("复活石（先让 P2 倒地）") { [weak self] in self?.revivalStone() })
 
-        column.addArrangedSubview(heading("怪物 1 动作"))
-        column.addArrangedSubview(action("怪物攻击（按种类）") { [weak self] in self?.monsterAttack() })
-        column.addArrangedSubview(action("石肤（护盾）") { [weak self] in self?.monsterSkill(.simpleGuard, name: "石肤", targets: ["m1"], shield: 6) })
-        column.addArrangedSubview(action("再生（恢复）") { [weak self] in self?.monsterSkill(.regeneration, name: "再生", targets: ["m1"], heal: 8) })
-        column.addArrangedSubview(action("横扫（打两名玩家）") { [weak self] in self?.monsterSkill(.sweep, name: "横扫", targets: ["p1", "p2"], damage: 7) })
-        column.addArrangedSubview(action("龙焰（打两名玩家）") { [weak self] in self?.monsterSkill(.dragonFlame, name: "龙焰", targets: ["p1", "p2"], damage: 12) })
-        column.addArrangedSubview(action("龙鳞（护盾）") { [weak self] in self?.monsterSkill(.dragonScaleWard, name: "龙鳞", targets: ["m1"], shield: 10) })
+        column.addArrangedSubview(heading("敌方 1 动作（怪物 m1；PvP 为对面第一名）"))
+        column.addArrangedSubview(action("攻击 P1（怪物按种类，PvP 按武器）") { [weak self] in self?.monsterAttack() })
+        column.addArrangedSubview(action("石肤（护盾）") { [weak self] in guard let self else { return }; self.monsterSkill(.simpleGuard, name: "石肤", targets: [self.foe1], shield: 6) })
+        column.addArrangedSubview(action("再生（恢复）") { [weak self] in guard let self else { return }; self.monsterSkill(.regeneration, name: "再生", targets: [self.foe1], heal: 8) })
+        column.addArrangedSubview(action("横扫（打全部玩家）") { [weak self] in guard let self else { return }; self.monsterSkill(.sweep, name: "横扫", targets: self.allies, damage: 7) })
+        column.addArrangedSubview(action("龙焰（打全部玩家）") { [weak self] in guard let self else { return }; self.monsterSkill(.dragonFlame, name: "龙焰", targets: self.allies, damage: 12) })
+        column.addArrangedSubview(action("龙鳞（护盾）") { [weak self] in guard let self else { return }; self.monsterSkill(.dragonScaleWard, name: "龙鳞", targets: [self.foe1], shield: 10) })
 
         column.addArrangedSubview(heading("单独特效 · 死亡、倒地、复活"))
-        column.addArrangedSubview(action("怪物 1 死亡") { [weak self] in self?.stage.labKill("m1", from: "p1"); self?.say("怪物死亡 · " + (self?.species[0] ?? "")) })
-        column.addArrangedSubview(action("怪物 2 死亡") { [weak self] in self?.stage.labKill("m2", from: "p1"); self?.say("怪物死亡 · " + (self?.species[1] ?? "")) })
-        column.addArrangedSubview(action("P2 倒地") { [weak self] in self?.stage.labDown("p2", from: "m1"); self?.say("P2 倒地：人物隐去，原地留下魂晶标志") })
+        column.addArrangedSubview(action("敌方 1 死亡 / 倒地") { [weak self] in self?.defeat(0) })
+        column.addArrangedSubview(action("敌方 2 死亡 / 倒地") { [weak self] in self?.defeat(1) })
+        column.addArrangedSubview(action("P2 倒地") { [weak self] in guard let self else { return }; self.stage.labDown("p2", from: self.foe1); self.say("P2 倒地：人物隐去，原地留下魂晶标志") })
         column.addArrangedSubview(action("P2 复活（只看特效）") { [weak self] in self?.stage.labRevive("p2"); self?.say("P2 复活") })
 
         column.addArrangedSubview(heading("单独特效 · 护盾（P1）"))
         column.addArrangedSubview(action("生成 · 展开（护盾 8）") { [weak self] in
             self?.stage.labSetShield("p1", 8); self?.stage.labPlay("shieldDome", actor: "p1", targets: ["p1"], power: 1.0); self?.say("护盾生成")
         })
-        column.addArrangedSubview(action("抵挡一击（剩 5）") { [weak self] in self?.stage.labBlock("p1", from: "m1", remaining: 5); self?.say("护盾抵挡") })
+        column.addArrangedSubview(action("抵挡一击（剩 5）") { [weak self] in guard let self else { return }; self.stage.labBlock("p1", from: self.foe1, remaining: 5); self.say("护盾抵挡") })
         column.addArrangedSubview(action("护盾见底（剩 2：裂纹、闪烁、掉碎片）") { [weak self] in self?.stage.labSetShield("p1", 2); self?.say("护盾见底") })
-        column.addArrangedSubview(action("破碎") { [weak self] in self?.stage.labBreak("p1", from: "m1"); self?.say("护盾破碎") })
+        column.addArrangedSubview(action("破碎") { [weak self] in guard let self else { return }; self.stage.labBreak("p1", from: self.foe1); self.say("护盾破碎") })
 
         column.addArrangedSubview(heading("单独特效 · 增伤持续"))
-        for (amount, name) in [(2, "增伤 +2（P1、P2）"), (4, "增伤 +4（P1、P2）"), (0, "清除增伤")] {
-            column.addArrangedSubview(action(name) { [weak self] in self?.stage.labSetBuff("p1", amount); self?.stage.labSetBuff("p2", amount); self?.say(name) })
+        for (amount, name) in [(2, "增伤 +2（我方全体）"), (4, "增伤 +4（我方全体）"), (0, "清除增伤")] {
+            column.addArrangedSubview(action(name) { [weak self] in guard let self else { return }; for id in self.allies { self.stage.labSetBuff(id, amount) }; self.say(name) })
         }
         column.addArrangedSubview(heading("镜头震动"))
         for (i, name) in ["轻震", "中震", "重震"].enumerated() {
@@ -144,34 +170,37 @@ final class MeadowEffectsLabViewController: UIViewController {
         let template = state.units[actor]?.templateID
         let ranged = enemy && act == .attack && (template == "goblinArcher" || template == "ruinDragon")
         let intent = PartyIntent(id: UUID().uuidString, action: act, actor: actor, target: targets[0], targets: targets, command: .monsterStep, enemy: enemy,
-                                 weaponID: enemy ? nil : weapon, monsterTemplateID: enemy ? template : nil, enemyRanged: ranged)
+                                 weaponID: enemy ? nil : (state.units[actor]?.equipment.weapon ?? weapon), monsterTemplateID: enemy ? template : nil, enemyRanged: ranged)
         stage.play(intent, before: state, confirmed: nil, onImpact: { nil }, completion: { [weak self] in self?.stage.preview(nil, target: targets[0]) })
         say(name + " · " + ["轻击", "中击", "重击"][strength])
         return intent.impactAge
     }
 
-    private func blowID() -> String {
-        switch weapon { case "greatSword": return "hitGreat"; case "huntingBow": return "hitBow"; case "legendaryStaff": return "hitStaff"; default: return "hitBlade" }
+    private func blowID(_ weapon: String? = nil) -> String {
+        switch weapon ?? self.weapon { case "greatSword": return "hitGreat"; case "huntingBow": return "hitBow"; case "legendaryStaff": return "hitStaff"; default: return "hitBlade" }
     }
 
     private func attack(_ act: PartyAction, name: String) {
-        guard let impact = perform(act, actor: "p1", targets: ["m1"], enemy: false, name: name) else { return }
+        let target = foe1
+        guard let impact = perform(act, actor: "p1", targets: [target], enemy: false, name: name) else { return }
         let scale = act == .heavyStrike ? 1.2 : 1.0
-        stage.labPlay(act == .ambush ? "hitAmbush" : blowID(), actor: "p1", targets: ["m1"], power: power * scale, weaponID: weapon, delay: impact)
+        stage.labPlay(act == .ambush ? "hitAmbush" : blowID(), actor: "p1", targets: [target], power: power * scale, weaponID: weapon, delay: impact)
         stage.labShake(tier, delay: impact)
-        stage.labNumber("−\(damage(act == .heavyStrike ? 10 : 8))", target: "m1", kind: .damage, rank: strength, delay: impact)
+        stage.labNumber("−\(damage(act == .heavyStrike ? 10 : 8))", target: target, kind: .damage, rank: strength, delay: impact)
     }
 
     private func naturalTwenty() {
-        guard let impact = perform(.attack, actor: "p1", targets: ["m1"], enemy: false, name: "自然 20") else { return }
-        stage.labPlay("natural20", actor: "p1", targets: ["m1"], power: 1.0, weaponID: weapon, delay: impact)
-        stage.labNumber("20!", target: "m1", kind: .crit, rank: 2, delay: impact)
-        DispatchQueue.main.asyncAfter(deadline: .now() + impact + 0.25) { [weak self] in self?.stage.labKill("m1", from: "p1") }
+        let target = foe1
+        guard let impact = perform(.attack, actor: "p1", targets: [target], enemy: false, name: "自然 20") else { return }
+        stage.labPlay("natural20", actor: "p1", targets: [target], power: 1.0, weaponID: weapon, delay: impact)
+        stage.labNumber("20!", target: target, kind: .crit, rank: 2, delay: impact)
+        DispatchQueue.main.asyncAfter(deadline: .now() + impact + 0.25) { [weak self] in self?.defeat(0) }
     }
 
     private func offensiveSkill(_ act: PartyAction, name: String) {
-        guard let impact = perform(act, actor: "p1", targets: ["m1", "m2"], enemy: false, name: name) else { return }
-        for (i, id) in ["m1", "m2"].enumerated() { stage.labNumber("−\(damage(12))", target: id, kind: .damage, rank: strength, delay: impact + 0.07 * Double(i)) }
+        let targets = foes
+        guard let impact = perform(act, actor: "p1", targets: targets, enemy: false, name: name) else { return }
+        for (i, id) in targets.enumerated() { stage.labNumber("−\(damage(12))", target: id, kind: .damage, rank: strength, delay: impact + 0.07 * Double(i)) }
     }
 
     private func supportSkill(_ act: PartyAction, name: String, targets: [String], shield: Int, heal: Int = 6, buff: Int = 0) {
@@ -187,13 +216,28 @@ final class MeadowEffectsLabViewController: UIViewController {
 
     private func revivalStone() {
         guard let state = stage.labState else { return }
-        if state.units["p2"]?.isAlive ?? true { stage.labDown("p2", from: "m1"); say("P2 先倒地，再点一次复活石"); return }
+        if state.units["p2"]?.isAlive ?? true { stage.labDown("p2", from: foe1); say("P2 先倒地，再点一次复活石"); return }
         guard let impact = perform(.revivalStone, actor: "p1", targets: ["p2"], enemy: false, name: "复活石") else { return }
         DispatchQueue.main.asyncAfter(deadline: .now() + impact) { [weak self] in self?.stage.labRevive("p2") }
     }
 
+    /// The first foe falls: a monster dies in the way of its species, a PvP rival goes down like any hero.
+    private func defeat(_ index: Int) {
+        let id = index == 0 ? foe1 : foe2
+        if pvp { stage.labDown(id, from: "p1"); say(id.uppercased() + " 倒地") } else { stage.labKill(id, from: "p1"); say("怪物死亡 · " + species[index % 2]) }
+    }
+
     /// m1 attacks P1 in the way of its species (the archer and the dragon shoot first: their missile comes from the attack itself).
+    /// In PvP the first rival attacks P1 with its own weapon, from the right, mirrored.
     private func monsterAttack() {
+        if pvp {
+            let actor = foe1, weaponID = stage.labState?.units[actor]?.equipment.weapon
+            guard let impact = perform(.attack, actor: actor, targets: ["p1"], enemy: false, name: "对面攻击 · " + actor.uppercased()) else { return }
+            stage.labPlay(blowID(weaponID), actor: actor, targets: ["p1"], power: power, weaponID: weaponID, delay: impact)
+            stage.labShake(tier, delay: impact)
+            stage.labNumber("−\(damage(6))", target: "p1", kind: .damage, rank: strength, delay: impact)
+            return
+        }
         let kind = species[0], hit: String
         switch kind {
         case "slime": hit = "hitSlime"; case "wolf": hit = "hitWolf"; case "goblinArcher": hit = "hitArrowM"
@@ -207,10 +251,11 @@ final class MeadowEffectsLabViewController: UIViewController {
     }
 
     private func monsterSkill(_ act: PartyAction, name: String, targets: [String], shield: Int = 0, heal: Int = 0, damage dmg: Int = 0) {
-        guard let impact = perform(act, actor: "m1", targets: targets, enemy: true, name: name) else { return }
+        let actor = foe1
+        guard let impact = perform(act, actor: actor, targets: targets, enemy: !pvp, name: name) else { return }
         for (i, id) in targets.enumerated() {
             if dmg > 0 { stage.labNumber("−\(damage(dmg))", target: id, kind: .damage, rank: strength, delay: impact + 0.07 * Double(i)) }
-            if heal > 0 { stage.labPlay("healStandard", actor: "m1", targets: [id], power: 1.0, delay: impact); stage.labNumber("+\(heal)", target: id, kind: .heal, rank: 1, delay: impact) }
+            if heal > 0 { stage.labPlay("healStandard", actor: actor, targets: [id], power: 1.0, delay: impact); stage.labNumber("+\(heal)", target: id, kind: .heal, rank: 1, delay: impact) }
             if shield > 0 { stage.labNumber("+\(shield)", target: id, kind: .shield, rank: 1, delay: impact) }
         }
         if shield > 0 { DispatchQueue.main.asyncAfter(deadline: .now() + impact) { [weak self] in for id in targets { self?.stage.labSetShield(id, shield) } } }
@@ -227,14 +272,14 @@ final class MeadowEffectsLabViewController: UIViewController {
             { [weak self] in self?.offensiveSkill(.runeSlash, name: "符文斩") },
             { [weak self] in self?.offensiveSkill(.dragonFlame, name: "龙焰") },
             { [weak self] in self?.offensiveSkill(.sweep, name: "横扫") },
-            { [weak self] in self?.supportSkill(.rally, name: "振奋", targets: ["p1", "p2"], shield: 0, heal: 0, buff: 2) },
-            { [weak self] in self?.supportSkill(.dragonSoulWard, name: "龙魂庇护", targets: ["p1", "p2"], shield: 10) },
-            { [weak self] in self?.supportSkill(.dragonScaleWard, name: "龙鳞庇护", targets: ["p1", "p2"], shield: 10) },
-            { [weak self] in self?.supportSkill(.runeWard, name: "符文庇护", targets: ["p1", "p2"], shield: 6) },
-            { [weak self] in self?.supportSkill(.battleRune, name: "战斗符文", targets: ["p1", "p2"], shield: 4) },
-            { [weak self] in self?.supportSkill(.dragonOrder, name: "龙之号令", targets: ["p1", "p2"], shield: 8) },
+            { [weak self] in self?.supportSkill(.rally, name: "振奋", targets: self?.allies ?? ["p1"], shield: 0, heal: 0, buff: 2) },
+            { [weak self] in self?.supportSkill(.dragonSoulWard, name: "龙魂庇护", targets: self?.allies ?? ["p1"], shield: 10) },
+            { [weak self] in self?.supportSkill(.dragonScaleWard, name: "龙鳞庇护", targets: self?.allies ?? ["p1"], shield: 10) },
+            { [weak self] in self?.supportSkill(.runeWard, name: "符文庇护", targets: self?.allies ?? ["p1"], shield: 6) },
+            { [weak self] in self?.supportSkill(.battleRune, name: "战斗符文", targets: self?.allies ?? ["p1"], shield: 4) },
+            { [weak self] in self?.supportSkill(.dragonOrder, name: "龙之号令", targets: self?.allies ?? ["p1"], shield: 8) },
             { [weak self] in self?.monsterAttack() },
-            { [weak self] in self?.monsterSkill(.dragonFlame, name: "龙焰（怪物）", targets: ["p1", "p2"], damage: 12) },
+            { [weak self] in self?.monsterSkill(.dragonFlame, name: "龙焰（怪物）", targets: self?.allies ?? ["p1"], damage: 12) },
             { [weak self] in self?.naturalTwenty() }
         ]
         var index = 0
@@ -250,6 +295,8 @@ final class MeadowEffectsLabViewController: UIViewController {
     private func close() {
         sequence?.invalidate(); sequence = nil
         stage.stop()
+        // Back to the classic stand, so nothing of the lab's formation is left in the shared foot table.
+        stage.configureUnits(players: ["p1", "p2"], foes: ["m1", "m2"], pvp: false)
         dismiss(animated: true)
     }
 

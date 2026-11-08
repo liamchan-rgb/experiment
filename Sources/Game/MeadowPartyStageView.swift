@@ -8,8 +8,15 @@ final class MeadowPartyStageView:UIView {
     private let world=UIView(),dim=UIView(),wash=UIView()
     private let clock=MeadowBattleSceneClock()
     private let fx=MeadowPartyEffectsView()
-    private var monsterIDs=["m1","m2"]
-    private var renderIDs:[String] {["p1","p2"]+monsterIDs}
+    private var monsterIDs=["m1","m2"],playerIDs=["p1","p2"]
+    private var renderIDs:[String] {playerIDs+monsterIDs}
+    /// World zoom of the current formation (`MeadowBattleFormation`): the world is 1000Z x 600Z, so a bigger party gets more meadow, not smaller people.
+    private(set) var zoom=1.0
+    private var worldWidth:Double { 1000*zoom }
+    private var worldHeight:Double { 600*zoom }
+    private var plates:[UIImageView]=[]
+    /// PvP: the hero team on the right (mirrored).
+    private var rivalIDs:[String]=[]
     private var actors:[String:MeadowBattleActorView]=[:]
     private let afterimages=(0..<3).map { _ in UIImageView() }
     private var monsters:[String:UIImageView]=[:],winds:[String:UIImageView]=[:]
@@ -71,7 +78,7 @@ final class MeadowPartyStageView:UIView {
         for (i,name) in MeadowBattleCanvasGeometry.sceneLayerOrder.enumerated() {
             let image=MeadowBattlePlateProcessor.image(named:name,role:[.farForest,.ground,.midground,.foreground][i])
             let view=UIImageView(image:image);view.frame=CGRect(x:0,y:-159,width:1000,height:1000*1201/1309)
-            view.layer.zPosition=i==3 ? 900:CGFloat(-100+i);world.addSubview(view)
+            view.layer.zPosition=i==3 ? 900:CGFloat(-100+i);world.addSubview(view);plates.append(view)
         }
         dim.backgroundColor = .black;dim.frame=CGRect(x:0,y:-500,width:1000,height:1600);dim.layer.zPosition=100;dim.isUserInteractionEnabled=false;world.addSubview(dim)
         // Pane-wide colour wash for skill light and screen flashes: same coverage as `dim`, so neither has an edge at the world rectangle.
@@ -80,10 +87,11 @@ final class MeadowPartyStageView:UIView {
         for id in renderIDs { installUnit(id) }
         diceView.layer.zPosition=1200;world.addSubview(diceView)
         for ghost in afterimages { ghost.isHidden=true;ghost.isUserInteractionEnabled=false;ghost.layer.magnificationFilter = .nearest;world.addSubview(ghost) }
-        fx.frame=MeadowPartyEffectsView.worldRect;fx.contentScaleFactor=MeadowPartyEffectsView.drawScale;fx.layer.zPosition=1000;world.addSubview(fx)
-        if let view=MeadowSkillGPUView(worldRect:MeadowPartyEffectsView.worldRect) { view.layer.zPosition=1000;fx.layer.zPosition=1001;world.insertSubview(view,belowSubview:fx);gpu=view;fx.gpuDrawsSkills=true }
+        fx.frame=fx.worldRect;fx.contentScaleFactor=fx.drawScale;fx.layer.zPosition=1000;world.addSubview(fx)
+        if let view=MeadowSkillGPUView(worldRect:fx.worldRect) { view.layer.zPosition=1000;fx.layer.zPosition=1001;world.insertSubview(view,belowSubview:fx);gpu=view;fx.gpuDrawsSkills=true }
         fx.onFlash={ [weak self] flash in guard let self else { return };self.wash.backgroundColor=flash ?? self.washBase }
         clock.onTick={ [weak self] delta in self?.advance(delta) }
+        applyFormation(pvp:false)
     }
     private func installUnit(_ id:String) {
         let shadow:MeadowBattleGroundingView
@@ -99,19 +107,50 @@ final class MeadowPartyStageView:UIView {
             let wind=UIImageView();wind.layer.magnificationFilter = .nearest;wind.layer.zPosition=950;winds[id]=wind;world.addSubview(wind)
             shadow=MeadowBattleGroundingView(image:image,soleY:240,contacts:[.init(point:CGPoint(x:84,y:240),radius:15),.init(point:CGPoint(x:172,y:240),radius:15),.init(point:CGPoint(x:230,y:240),radius:15),.init(point:CGPoint(x:314,y:240),radius:15)])
         }
-        shadows[id]=shadow;shadow.layer.zPosition=200;shadow.frame=world.bounds;world.addSubview(shadow)
+        shadows[id]=shadow;shadow.layer.zPosition=200;shadow.bounds=world.bounds;shadow.center=CGPoint(x:world.bounds.midX,y:world.bounds.midY);world.addSubview(shadow)
         let label=MeadowBattleVitalsView();label.layer.zPosition=1100;labels[id]=label;world.addSubview(label)
     
     }
-    func configureMonsters(_ ids:[String]) {
-        guard ids != monsterIDs else{return}
-        for id in monsterIDs {
-            monsters.removeValue(forKey:id)?.removeFromSuperview();winds.removeValue(forKey:id)?.removeFromSuperview()
+    func configureMonsters(_ ids:[String]) { configureUnits(players:playerIDs,foes:ids,pvp:false) }
+    /// Who is on the field: up to 7 heroes on the left, and on the right up to 3 monsters - or, in PvP, another hero team drawn mirrored.
+    /// Places everyone by `MeadowBattleFormation` and grows the world to fit; units keep their size.
+    func configureUnits(players:[String],foes:[String],pvp:Bool) {
+        let gone=Set(renderIDs).subtracting(players+foes)
+        for id in gone {
+            actors.removeValue(forKey:id)?.removeFromSuperview();monsters.removeValue(forKey:id)?.removeFromSuperview();winds.removeValue(forKey:id)?.removeFromSuperview()
             attached.removeValue(forKey:id)?.removeFromSuperview();monsterFlash.removeValue(forKey:id)?.removeFromSuperview();shadows.removeValue(forKey:id)?.removeFromSuperview();labels.removeValue(forKey:id)?.removeFromSuperview()
+            poseKeys[id]=nil
         }
-        monsterIDs=ids;for id in ids {installUnit(id)}
+        let added=(players+foes).filter { !renderIDs.contains($0) }
+        if pvp { playerIDs=players+foes;monsterIDs=[];rivalIDs=foes } else { playerIDs=players;monsterIDs=foes;rivalIDs=[] }
+        for id in added { installUnit(id) }
+        applyFormation(pvp:pvp)
+    }
+    /// Sets `PartyVisual.feet` / `mirrored` for the units on the field and sizes the world, plates, overlays and effect layers to the zoom.
+    private func applyFormation(pvp:Bool) {
+        let left=playerIDs.filter { !rivalIDs.contains($0) },right=pvp ? rivalIDs:monsterIDs
+        let layout=MeadowBattleFormation.layout(players:left.map(PartyVisual.slot),foes:right.map(PartyVisual.slot),pvp:pvp)
+        var feet=PartyVisual.classicFeet
+        for (slot,p) in layout.feet { feet[slot]=PartyPoint(p.x,p.y) }
+        PartyVisual.feet=feet;PartyVisual.mirrored=layout.mirrored
+        zoom=layout.zoom
+        let z=CGFloat(zoom),w=CGFloat(worldWidth),h=CGFloat(worldHeight)
+        world.bounds=CGRect(x:0,y:0,width:w,height:h)
+        for plate in plates { plate.frame=CGRect(x:0,y:-159*z,width:w,height:w*1201/1309) }
+        dim.frame=CGRect(x:0,y:-500*z,width:w,height:1600*z);wash.frame=dim.frame
+        for shadow in shadows.values { shadow.transform = .identity;shadow.bounds=world.bounds;shadow.center=CGPoint(x:w/2,y:h/2) }
+        let rect=CGRect(x:0,y:-200*z,width:w,height:w)
+        fx.worldRect=rect;fx.drawScale=MeadowPartyEffectsView.baseDrawScale/z;fx.frame=rect;fx.contentScaleFactor=fx.drawScale
+        gpu?.setWorldRect(rect)
+        cameraTransform=nil;poseKeys=[:];setNeedsLayout()
     }
     required init?(coder:NSCoder) { fatalError("init(coder:) has not been implemented") }
+    /// Puts a sprite view at `rect` (world units); with `mirroredAbout` it is flipped left-right about that x (a hero of the PvP right-hand team).
+    private func place(_ view:UIView,_ rect:CGRect,mirroredAbout axis:CGFloat?) {
+        view.transform=axis == nil ? .identity:CGAffineTransform(scaleX:-1,y:1)
+        view.bounds=CGRect(origin:.zero,size:rect.size)
+        view.center=CGPoint(x:axis.map { 2*$0-rect.midX } ?? rect.midX,y:rect.midY)
+    }
     @objc private func tapped(_ r:UITapGestureRecognizer) { if !isPlaying,let id=r.view?.accessibilityIdentifier { onChoose?(id) } }
     func start() { MeadowBattleVFXAssets.prewarm();victoryAt=nil;sceneTime=0;recovery=[:];recoveryTier=[:];formation=[:];birth=[:];contact=[:];contactAngle=[:];revivedAt=[:];buffBirth=[:];labBuff=[:];broken=[:];deaths=[:];hurt=[:];hitFeel=[:];kickFeel=nil;messages=[];emissions=[];skillVFX=[];procVFX=[];pendingStatusCues=[];statusSnapshots=[:];poseKeys=[:];fallen=[:];diceAction=nil;diceConfirmedAt=nil;diceView.confirmationAge=nil;diceView.dice=[];diceSettledAt=nil;diceExitAt=nil;dimFrom=0;dimTarget=0;clock.start() }
     func stop() { MeadowMonsterFrames.retain([]);clock.stop();intent=nil;impact=nil;completion=nil;focus=nil;skillVFX=[];procVFX=[];pendingStatusCues=[];statusSnapshots=[:] }
@@ -180,7 +219,7 @@ final class MeadowPartyStageView:UIView {
             let templates=before.units.mapValues(\.templateID)
             var event=MeadowPartySkillVFXEvent(spec:spec,startedAt:spec.startTime(actionStart:sceneTime,impactAge:hitAge),center:PartyVisual.skillEffectCenter(targets:value.targets,actor:value.actor,templates:templates),groundY:groundY)
             event.actionStart=sceneTime;event.impactAt=sceneTime+hitAge
-            if let foot=PartyVisual.foot(value.actor) { event.casterFoot=foot;event.casterChest=PartyPoint(foot.x+5*PartyVisual.heroScale,foot.y-70*PartyVisual.heroScale) }
+            if let foot=PartyVisual.foot(value.actor) { event.casterFoot=foot;event.casterChest=PartyPoint(foot.x+5*PartyVisual.heroScale*PartyVisual.facing(value.actor),foot.y-70*PartyVisual.heroScale) }
             event.targets=value.targets.compactMap { id in PartyVisual.foot(id).map { MeadowPartySkillTarget(chest:PartyVisual.skillEffectCenter(targets:[id],actor:value.actor,templates:templates),foot:$0) } }
             skillVFX.append(event)
         }
@@ -251,11 +290,11 @@ final class MeadowPartyStageView:UIView {
         } else if value.ranged {
             let tip=BowRig.releaseArrowTip
             name="projBow";launch=BowRig.releaseAge;charge=0
-            from=PartyPoint(foot.x+(tip.x-123)*PartyVisual.heroScale,foot.y+(tip.y-214)*PartyVisual.heroScale)
+            from=PartyPoint(foot.x+(tip.x-123)*PartyVisual.heroScale*PartyVisual.facing(value.actor),foot.y+(tip.y-214)*PartyVisual.heroScale)
         } else if value.magical {
             let g=LegendaryStaffRig.gem(progress:LegendaryStaffRig.progress(age:LegendaryStaffRig.releaseAge))
             name="projStaff";launch=LegendaryStaffRig.releaseAge;charge=0.49
-            from=PartyPoint(foot.x+(g.x-123)*PartyVisual.heroScale,foot.y+(g.y-214)*PartyVisual.heroScale)
+            from=PartyPoint(foot.x+(g.x-123)*PartyVisual.heroScale*PartyVisual.facing(value.actor),foot.y+(g.y-214)*PartyVisual.heroScale)
         } else { return }
         let casterChest=PartyVisual.skillEffectCenter(targets:[value.actor],actor:value.actor,templates:templates)
         let geo=MeadowSkillProcedural.Geometry(caster:.init(from.x,from.y),casterFoot:.init(foot.x,foot.y),targets:[.init(chest:.init(to.x,to.y),foot:.init(targetFoot.x,targetFoot.y))],ground:targetFoot.y)
@@ -290,7 +329,7 @@ final class MeadowPartyStageView:UIView {
             let delayStatus=after.isAlive && (heal>0 || gain>0) && statusAt>sceneTime+0.0001
             let showsBesideOwner=intent.action.isRune || intent.action == .dragonFlame || intent.action == .starlightPulse || intent.action.isNodeSupport
             let registered=PartyVisual.hitPoint(target:id,shielded:shieldHit,weaponID:intent.weaponID,templateID:before.templateID)
-            let point=["greatSword","legendaryStaff"].contains(intent.weaponID ?? "") && id.hasPrefix("m") ? CGPoint(x:registered.x,y:registered.y):CGPoint(x:foot.x+(shieldHit ? (5+240*0.41)*PartyVisual.heroScale:(id.hasPrefix("m") ? -80:0)),y:foot.y-(id.hasPrefix("p") ? 65:72))
+            let point=["greatSword","legendaryStaff"].contains(intent.weaponID ?? "") && id.hasPrefix("m") ? CGPoint(x:registered.x,y:registered.y):CGPoint(x:foot.x+(shieldHit ? (5+240*0.41)*PartyVisual.heroScale*PartyVisual.facing(id):(id.hasPrefix("m") ? -80:0)),y:foot.y-(id.hasPrefix("p") ? 65:72))
             if delayStatus {
                 statusSnapshots[id]=(before.health,before.shield)
                 pendingStatusCues.append(.init(unitID:id,heal:heal,shieldGain:gain,at:statusAt,point:point,supportUnit:showsBesideOwner))
@@ -377,7 +416,8 @@ final class MeadowPartyStageView:UIView {
             guard i<trails.count,let intent,let actor=actors[intent.actor],let foot=PartyVisual.foot(intent.actor) else { ghost.isHidden=true;continue }
             let trail=trails[i],pose=MeadowBattleAnimation.sample(clip:"attack",progress:CGFloat(trail.progress)),s=PartyVisual.heroScale
             ghost.image=actor.trailImage(progress:CGFloat(trail.progress));ghost.alpha=trail.alpha;ghost.isHidden=false;ghost.layer.zPosition=foot.y-1
-            ghost.frame=CGRect(x:foot.x+trail.offset.x+(Double(pose.rootOffset.x)-123)*s,y:foot.y+trail.offset.y+(Double(pose.rootOffset.y)-214)*s,width:256*s,height:256*s)
+            let r=CGRect(x:foot.x+trail.offset.x+(Double(pose.rootOffset.x)-123)*s,y:foot.y+trail.offset.y+(Double(pose.rootOffset.y)-214)*s,width:256*s,height:256*s)
+            place(ghost,r,mirroredAbout:PartyVisual.facing(intent.actor)<0 ? CGFloat(foot.x+trail.offset.x):nil)
         }
         for id in renderIDs {
             guard let unit=state.units[id],let f=PartyVisual.foot(id) else { continue }
@@ -393,16 +433,18 @@ final class MeadowPartyStageView:UIView {
                 let clip=pose.clip,progress=pose.progress
                 actor.setPose(clip:clip,progress:CGFloat(progress))
                 let s=CGFloat(PartyVisual.heroScale),root=actor.poseRootOffset
-                actor.frame=CGRect(x:foot.x-123*s+root.x*s,y:foot.y-214*s+root.y*s,width:256*s,height:256*s)
+                let mirrored=PartyVisual.facing(id)<0,spriteRect=CGRect(x:foot.x-123*s+root.x*s,y:foot.y-214*s+root.y*s,width:256*s,height:256*s)
+                place(actor,spriteRect,mirroredAbout:mirrored ? foot.x:nil)
+                // The shadow is drawn from the unmirrored sprite and the whole shadow layer is flipped about the same foot.
+                shadows[id]?.transform=mirrored ? CGAffineTransform(translationX:2*(foot.x-CGFloat(worldWidth)/2),y:0).scaledBy(x:-1,y:1):.identity
                 actor.layer.zPosition=CGFloat(f.y)
                 // A fallen hero is taken off the field (a soul crystal marks the spot, see downAura) and fades back in when revived.
                 let shown:CGFloat=unit.isAlive ? CGFloat(revivedAt[id].map { MeadowSkillProcedural.smooth((sceneTime-$0-0.35)/0.5) } ?? 1):CGFloat(1-MeadowSkillProcedural.smooth(((fallen[id].map { sceneTime-$0 } ?? 10)-0.45)/0.4))
                 actor.alpha=shown;shadows[id]?.alpha=shown
                 let key="\(clip)-\(Int((progress*24).rounded()))-\(unit.equipment.weapon ?? "none")-\(unit.equipment.armor ?? "none")"
                 if key != poseKeys[id] { shadows[id]?.update(image:actor.poseSilhouette,soleY:actor.poseFootAnchorPx.y,contacts:actor.poseContacts.map { .init(point:$0,radius:12) });poseKeys[id]=key }
-                attached[id]?.frame=actor.bounds
                 attached[id]?.update(shield:shownVitals.shield,preview:0,time:sceneTime,formation:shownVitals.shield==0 ? formation[id].flatMap { sceneTime-$0<1.0 ? sceneTime-$0:nil }:nil,formationBase:0,birth:birth[id].map { sceneTime-$0 },contact:contact[id].map { sceneTime-$0 },broken:broken[id].map { sceneTime-$0 },recovery:unit.isAlive ? recovery[id].map { sceneTime-$0 }:nil,recoveryTier:recoveryTier[id])
-                shadows[id]?.spriteFrame=actor.frame
+                shadows[id]?.spriteFrame=spriteRect
                 labels[id]?.frame=CGRect(x:f.x-88,y:f.y-170,width:176,height:44)
             } else if let view=monsters[id] {
                 let species=MonsterVisualSpec.find(unit.templateID)
@@ -508,7 +550,7 @@ final class MeadowPartyStageView:UIView {
         fx.allyRecoveries=state.units.values.filter{renderIDs.contains($0.id) && $0.kind != .monster}.compactMap { unit in
             guard unit.isAlive,let at=recovery[unit.id],let tier=recoveryTier[unit.id],let foot=PartyVisual.foot(unit.id) else { return nil }
             let base=liveFeet[unit.id] ?? foot
-            return (foot:base,chest:PartyPoint(base.x+5*PartyVisual.heroScale,base.y-70*PartyVisual.heroScale),tier:tier,age:sceneTime-at)
+            return (foot:base,chest:PartyPoint(base.x+5*PartyVisual.heroScale*PartyVisual.facing(unit.id),base.y-70*PartyVisual.heroScale),tier:tier,age:sceneTime-at)
         }
         fx.procEffects=procVFX;fx.liveFeet=liveFeet
         fx.buffs=state.units.values.filter { renderIDs.contains($0.id) && $0.isAlive }.compactMap { unit in
@@ -559,16 +601,16 @@ final class MeadowPartyStageView:UIView {
                 if s.weight>shot.weight { shot=s }
             }
         }
-        let worldScale=bounds.width/1000,layoutUnit=bounds.width/760
+        let worldScale=bounds.width/CGFloat(worldWidth),layoutUnit=bounds.width/760
         // Zoom enough to keep the world's edge out of view while it rattles.
         let cover=CGFloat(abs(rattle.dx)+abs(kick.dx))*layoutUnit/(bounds.width/2)+CGFloat(abs(rattle.rotation)+abs(kick.rotation))*0.6
         let totalZoom=CGFloat(kick.zoom+shot.zoom+rattle.zoom)+cover,sceneScale=worldScale*(1+totalZoom)
         var shotX=CGFloat(0),shotY=CGFloat(0)
         if shot.weight>0 {
-            // Slide toward the focus, but never further than the zoom lets the plates cover (the world is 1000 wide, the plates run y -159...758).
-            let maxX=500*(1-1/(1+Double(totalZoom))),slackY=max(0,459-Double(bounds.height/(2*sceneScale)))+30
-            shotX=CGFloat(min(maxX,max(-maxX,-(shot.focusX-500)*shot.weight)))*sceneScale
-            shotY=CGFloat(min(slackY,max(-slackY,-(shot.focusY-300)*0.8*shot.weight)))*sceneScale
+            // Slide toward the focus, but never further than the zoom lets the plates cover (the world is 1000Z wide, the plates run y -159Z...758Z).
+            let maxX=worldWidth/2*(1-1/(1+Double(totalZoom))),slackY=max(0,459*zoom-Double(bounds.height/(2*sceneScale)))+30
+            shotX=CGFloat(min(maxX,max(-maxX,-(shot.focusX-worldWidth/2)*shot.weight)))*sceneScale
+            shotY=CGFloat(min(slackY,max(-slackY,-(shot.focusY-worldHeight/2)*0.8*shot.weight)))*sceneScale
         }
         var worldTransform=CGAffineTransform(translationX:(CGFloat(kick.dx+rattle.dx))*layoutUnit+shotX,y:(CGFloat(kick.dy+rattle.dy))*layoutUnit+shotY)
         worldTransform=worldTransform.rotated(by:CGFloat(kick.rotation+rattle.rotation)).scaledBy(x:sceneScale,y:sceneScale)
@@ -581,7 +623,7 @@ final class MeadowPartyStageView:UIView {
     /// UIKit lays this view out again whenever a subview changes size - and the camera's zoom changes the world's size every frame. Layout
     /// used to reset the world to its plain scale, which silently undid the whole camera (zoom, shake, director shot); it now keeps the camera.
     override func layoutSubviews() {
-        super.layoutSubviews();let scale=bounds.width/1000
+        super.layoutSubviews();let scale=bounds.width/CGFloat(worldWidth)
         gpu?.setResolution(max(1,min(3,UIScreen.main.scale*scale*1.15)))
         world.center=CGPoint(x:bounds.midX,y:bounds.midY)
         if let camera=cameraTransform,cameraWidth==bounds.width { world.transform=camera } else { world.transform=CGAffineTransform(scaleX:scale,y:scale) }
@@ -711,11 +753,13 @@ private final class MeadowPartyEffectsView:UIView {
     }
     /// The effects layer covers more than the 1000x600 world: glows that reach past the world's edge are not cut off there (that cut was a hard
     /// horizontal edge). Drawing is in world coordinates; the layer is drawn at a lower resolution, which soft light does not mind and which keeps long skills fast.
-    static let worldRect=CGRect(x:0,y:-200,width:1000,height:1000)
-    static let drawScale:CGFloat=1.5
+    /// Grows with the formation's world zoom (0, -200Z, 1000Z, 1000Z); the draw scale shrinks by the same factor, so the pixel cost stays put.
+    var worldRect=CGRect(x:0,y:-200,width:1000,height:1000)
+    static let baseDrawScale:CGFloat=1.5
+    var drawScale:CGFloat=1.5
     /// Blows (plain attacks, strong strike, ambush) are procedural effects now; the old sprite / flare impact drawing stays off.
     static let proceduralBlows=true
-    override func didMoveToWindow() { super.didMoveToWindow();contentScaleFactor=Self.drawScale }
+    override func didMoveToWindow() { super.didMoveToWindow();contentScaleFactor=drawScale }
     override init(frame:CGRect) { super.init(frame:frame);isOpaque=false;isUserInteractionEnabled=false }
     required init?(coder:NSCoder) { fatalError("init(coder:) has not been implemented") }
     /// A floating number: springs in, floats up and fades late (`MeadowBattleNumber`). It stays stuck to its unit as the unit is knocked back.
@@ -741,7 +785,7 @@ private final class MeadowPartyEffectsView:UIView {
             cx=m.point.x+60+box.width/2+sway;cy=m.point.y-55-rise+box.height/2
         }
         let half=box.width*scale/2
-        cx=min(996-half,max(4+half,cx))
+        cx=min(worldRect.maxX-4-half,max(4+half,cx))
         ctx.saveGState();ctx.setBlendMode(.normal)
         ctx.setShadow(offset:.zero,blur:CGFloat(size)*0.4,color:fill.withAlphaComponent(a*0.55).cgColor)
         ctx.translateBy(x:cx,y:cy);ctx.scaleBy(x:scale,y:scale)
@@ -750,8 +794,8 @@ private final class MeadowPartyEffectsView:UIView {
     }
     override func draw(_ rect:CGRect) {
         guard let ctx=UIGraphicsGetCurrentContext() else { return }
-        ctx.translateBy(x:-Self.worldRect.minX,y:-Self.worldRect.minY)
-        let bounds=Self.worldRect
+        ctx.translateBy(x:-worldRect.minX,y:-worldRect.minY)
+        let bounds=worldRect
         func sprite(_ im:UIImage,_ p:PartyPoint,_ w:Double,_ h:Double,_ alpha:Double) { guard alpha>0 else { return };im.draw(in:CGRect(x:p.x-w/2,y:p.y-h/2,width:w,height:h),blendMode:.plusLighter,alpha:CGFloat(alpha)) }
         func glow(_ p:PartyPoint,_ rx:Double,_ ry:Double,_ alpha:Double,_ color:UIColor) { guard alpha>0 else { return };MeadowBattleGlowCache.image(color).draw(in:CGRect(x:p.x-rx,y:p.y-ry,width:rx*2,height:ry*2),blendMode:.plusLighter,alpha:CGFloat(alpha)) }
         for (foot,power) in recoveryLights { glow(foot,105,27,power*0.65,.systemGreen);glow(PartyPoint(foot.x,foot.y-70),42,85,power*0.12,.systemGreen) }
@@ -779,7 +823,7 @@ private final class MeadowPartyEffectsView:UIView {
             }
             if !Self.proceduralBlows,intent.ranged,let foot=PartyVisual.foot(intent.actor) {
                 let tip=BowRig.releaseArrowTip
-                let from=PartyPoint(foot.x+(tip.x-123)*PartyVisual.heroScale,foot.y+(tip.y-214)*PartyVisual.heroScale)
+                let from=PartyPoint(foot.x+(tip.x-123)*PartyVisual.heroScale*PartyVisual.facing(intent.actor),foot.y+(tip.y-214)*PartyVisual.heroScale)
                 let to=hitPoint(intent.target,shielded:meetsShield)
                 let projectile=intent.enemy ? MonsterVisualSpec.find(intent.monsterTemplateID)?.projectile(age:age,foot:foot,target:to):BowRig.projectile(age:age,from:from,to:to,impact:intent.action.impact,scale:PartyVisual.heroScale)
                 if let arrow=projectile {
@@ -1105,9 +1149,9 @@ extension MeadowPartyStageView {
             let from:PartyPoint
             switch id {
             case "projBow":
-                let tip=BowRig.releaseArrowTip;from=PartyPoint(aFoot.x+(tip.x-123)*PartyVisual.heroScale,aFoot.y+(tip.y-214)*PartyVisual.heroScale)
+                let tip=BowRig.releaseArrowTip;from=PartyPoint(aFoot.x+(tip.x-123)*PartyVisual.heroScale*PartyVisual.facing(actor),aFoot.y+(tip.y-214)*PartyVisual.heroScale)
             case "projStaff":
-                let g=LegendaryStaffRig.gem(progress:LegendaryStaffRig.progress(age:LegendaryStaffRig.releaseAge));from=PartyPoint(aFoot.x+(g.x-123)*PartyVisual.heroScale,aFoot.y+(g.y-214)*PartyVisual.heroScale)
+                let g=LegendaryStaffRig.gem(progress:LegendaryStaffRig.progress(age:LegendaryStaffRig.releaseAge));from=PartyPoint(aFoot.x+(g.x-123)*PartyVisual.heroScale*PartyVisual.facing(actor),aFoot.y+(g.y-214)*PartyVisual.heroScale)
             default:
                 let spec=MonsterVisualSpec.find(templateID),goblin=id == "projArcher",scale=spec?.scale ?? 0.88
                 from=PartyPoint(aFoot.x+(goblin ? -82:-143)*scale,aFoot.y-(goblin ? 144:149)*scale)
@@ -1176,8 +1220,8 @@ extension MeadowPartyStageView {
         labPlay("revive",actor:id,targets:[id],power:1.0)
     }
     /// Back to a clean stage with the given state.
-    func labReset(_ value:GameState,catalog:GameCatalog) {
+    func labReset(_ value:GameState,catalog:GameCatalog,foe:String="m1") {
         procVFX=[];messages=[];deaths=[:];fallen=[:];contact=[:];contactAngle=[:];revivedAt=[:];buffBirth=[:];labBuff=[:];birth=[:];broken=[:];recovery=[:];recoveryTier=[:];hitFeel=[:];kickFeel=nil;hurt=[:];statusSnapshots=[:];emissions=[]
-        show(value,friend:"p1",foe:"m1",current:nil,catalog:catalog)
+        show(value,friend:"p1",foe:foe,current:nil,catalog:catalog)
     }
 }

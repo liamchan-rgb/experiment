@@ -7,3 +7,5 @@ swiftc -O "$repo_root/scripts/battle-procedural-regression.swift" "$repo_root/So
 "$build_dir/battle-procedural" "$repo_root/scripts/battle-vfx/procedural-golden.json"
 swiftc -O "$repo_root/scripts/battle-number-regression.swift" "$repo_root/Sources/Game/MeadowBattleNumber.swift" -o "$build_dir/battle-number"
 "$build_dir/battle-number"
+swiftc -O "$repo_root/scripts/battle-formation-regression.swift" "$repo_root/Sources/Game/MeadowBattleFormation.swift" -o "$build_dir/battle-formation"
+"$build_dir/battle-formation"

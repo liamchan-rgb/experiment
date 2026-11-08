@@ -117,7 +117,8 @@ final class MeadowSkillGPUView: UIView {
     private let queue: MTLCommandQueue
     private let additive: MTLRenderPipelineState
     private let mix: MTLRenderPipelineState
-    private let rect: CGRect
+    private var rect: CGRect
+    private var resolution: CGFloat = 1.5
     private var hadContent = false
     private var metalLayer: CAMetalLayer { layer as! CAMetalLayer }
 
@@ -151,8 +152,15 @@ final class MeadowSkillGPUView: UIView {
     }
     required init?(coder: NSCoder) { return nil }
 
+    /// The world rectangle this layer covers (it grows with the battle formation's world zoom).
+    func setWorldRect(_ worldRect: CGRect) {
+        guard worldRect != rect else { return }
+        rect = worldRect; frame = worldRect; setResolution(resolution)
+    }
+
     /// Drawable pixels per world unit.
     func setResolution(_ k: CGFloat) {
+        resolution = k
         let size = CGSize(width: (rect.width * k).rounded(), height: (rect.height * k).rounded())
         if metalLayer.drawableSize != size { metalLayer.drawableSize = size }
     }
