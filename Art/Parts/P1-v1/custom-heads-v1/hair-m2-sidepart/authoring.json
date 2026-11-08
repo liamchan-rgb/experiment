@@ -1,0 +1,20 @@
+{
+  "label": "M2 Side part",
+  "genderStyle": "male",
+  "scope": "gender-styled appearance preset on unchanged shared body; not a separate female body",
+  "headCanvas": [
+    96,
+    96
+  ],
+  "headToCanvasSource": "original motion, unchanged",
+  "slots": [
+    "hair.front"
+  ],
+  "noSkinEarsJawOrBodyPixels": true,
+  "fullEightDirections": true,
+  "bindingCount": 104,
+  "uniqueDirectionalLayerPNGs": 8,
+  "hairBackContractChanged": false,
+  "artApproval": null,
+  "runtimeImported": false
+}

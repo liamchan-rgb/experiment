@@ -1,0 +1,552 @@
+{
+  "sourceCommit": "1f76bce38fb33742ff6eeaef1499c186f14c0fb6",
+  "allReadOnlyInputsMatchOriginalGitBlobs": true,
+  "files": [
+    {
+      "path": "Art/Integration/P1-modular-eight-way-v1/motion.json",
+      "bytes": 241459,
+      "sha256": "f1926c10a4eb1cb8f1935157663bd22155e8444eae37ce64562453fc075e96ba",
+      "gitBlob": "25c6402413b45584916e20e06058cf494fbfb215"
+    },
+    {
+      "path": "Art/Parts/P1-v1/eight-way-v1/face-blue/asset.json",
+      "bytes": 44473,
+      "sha256": "84f66e9a9fb74a245c498b03514a310546176bef40658652ceee3cbc19cbbd8e",
+      "gitBlob": "709c7b0ed51cccec322d47b1531b37e0f035089c"
+    },
+    {
+      "path": "Art/Parts/P1-v1/eight-way-v1/face-blue/png/down-left/idle/00/face.brows.png",
+      "bytes": 219,
+      "sha256": "411a8fcbdc9eeff4cb8d26a37d6fb72e0b847cba83a76d01e30e108f9e2d41d6",
+      "gitBlob": "b17912cdf750b187dba8dd65734926ce132ba9d5"
+    },
+    {
+      "path": "Art/Parts/P1-v1/eight-way-v1/face-blue/png/down-left/idle/00/face.eyes.png",
+      "bytes": 383,
+      "sha256": "48bcae3e257e513e75111275e645261bc4810d12306d85ed21bcd7eaccd88f13",
+      "gitBlob": "d0fe72a7fc28fa4599c289af930b3ba11d24912b"
+    },
+    {
+      "path": "Art/Parts/P1-v1/eight-way-v1/face-blue/png/down-left/idle/00/face.mouth.png",
+      "bytes": 146,
+      "sha256": "f4622372731ec579505be495c211446656ea290c4e90f869eeb2a129d5f172f5",
+      "gitBlob": "df95dd4105fab7685b667b338e4ffa48ba3ccc8c"
+    },
+    {
+      "path": "Art/Parts/P1-v1/eight-way-v1/face-blue/png/down-left/idle/00/face.nose.png",
+      "bytes": 128,
+      "sha256": "f34b2c5830c126b7980af6a2949182ef6372117995e6620cfdbee837ea101d82",
+      "gitBlob": "c4a4167a43dd31a4eb1b471768842ba3da995c70"
+    },
+    {
+      "path": "Art/Parts/P1-v1/eight-way-v1/face-blue/png/down-right/idle/00/face.brows.png",
+      "bytes": 220,
+      "sha256": "9098c30dcea7381ff21534118177feef574a5211e6d682b38d5343e857a94eb5",
+      "gitBlob": "6b371fa4667f023c3db9866cc4895f00525dba88"
+    },
+    {
+      "path": "Art/Parts/P1-v1/eight-way-v1/face-blue/png/down-right/idle/00/face.eyes.png",
+      "bytes": 382,
+      "sha256": "51d24f0528d91859315b13b2ee3e78b598df48439bf538208a0644586970dd3f",
+      "gitBlob": "552504d547115547e742d847b252c760c9eb3b50"
+    },
+    {
+      "path": "Art/Parts/P1-v1/eight-way-v1/face-blue/png/down-right/idle/00/face.mouth.png",
+      "bytes": 148,
+      "sha256": "c6a40dca5d0733fc42f6a3c223428b2630b3daa99e7a0312a0b4d94e974a5831",
+      "gitBlob": "2ab430fdd922ebb6bc97e9865fb27db94581f32b"
+    },
+    {
+      "path": "Art/Parts/P1-v1/eight-way-v1/face-blue/png/down-right/idle/00/face.nose.png",
+      "bytes": 128,
+      "sha256": "ad07c983116856f3679757704ebe0fd2aca17b4704b8e782d64e7b9c305e6be7",
+      "gitBlob": "52980eabcc34658d6d5aa6f2cec530f74dde7a27"
+    },
+    {
+      "path": "Art/Parts/P1-v1/eight-way-v1/face-blue/png/down/idle/00/face.brows.png",
+      "bytes": 309,
+      "sha256": "e81c4f12b9dee4ab5de01431999717864c70e18d5552bb9292c87973f1836663",
+      "gitBlob": "90a3a736ba42a466fc57d5d513a98f7d23d6841b"
+    },
+    {
+      "path": "Art/Parts/P1-v1/eight-way-v1/face-blue/png/down/idle/00/face.eyes.png",
+      "bytes": 818,
+      "sha256": "cc5a5bbb3b57263ade3bfd9ec14bf3c73560ef58e26a441f4ffe164c5e320bba",
+      "gitBlob": "c7cfb3544bf2875ac1d17c96ea7c5f6d446c77d0"
+    },
+    {
+      "path": "Art/Parts/P1-v1/eight-way-v1/face-blue/png/down/idle/00/face.mouth.png",
+      "bytes": 189,
+      "sha256": "0b1ee713d69214543cb44ad492112b9886b827289aa6a006ecb2367185339b1d",
+      "gitBlob": "67e560a0ba64a15c9b53cf2cb91bc150c3334832"
+    },
+    {
+      "path": "Art/Parts/P1-v1/eight-way-v1/face-blue/png/down/idle/00/face.nose.png",
+      "bytes": 152,
+      "sha256": "59e68b7fbe2db66c76fe8f687f8af01e03d58d51ddaed3084b70a935a91a1a9d",
+      "gitBlob": "ac52ece85e66ae24026a1835480d3c02f2396bff"
+    },
+    {
+      "path": "Art/Parts/P1-v1/eight-way-v1/face-blue/png/left/idle/00/face.brows.png",
+      "bytes": 7700,
+      "sha256": "0b39376e6490d68306b96f99a8932f8b72debe98d7d2cbbaae217bfb52e431f0",
+      "gitBlob": "c8e16c70da35347a79f066f82ccdcd1507955fd6"
+    },
+    {
+      "path": "Art/Parts/P1-v1/eight-way-v1/face-blue/png/left/idle/00/face.eyes.png",
+      "bytes": 7698,
+      "sha256": "bea83ee0569890a148ff143be36267067cb86e65ef10cfaa25475b35c8629d1a",
+      "gitBlob": "5a12815c2442103229331f8db07e00eff1698e0e"
+    },
+    {
+      "path": "Art/Parts/P1-v1/eight-way-v1/face-blue/png/left/idle/00/face.mouth.png",
+      "bytes": 7697,
+      "sha256": "3709030dd559c7fa0d0d7271d43e141be2bbcfe3ae0e93adce86608ac282007a",
+      "gitBlob": "9fd6d5335ca8a78e7c0940c13660230559eac975"
+    },
+    {
+      "path": "Art/Parts/P1-v1/eight-way-v1/face-blue/png/left/idle/00/face.nose.png",
+      "bytes": 7697,
+      "sha256": "8e8cf23bdac91589cc67330351648410d2805d174a528329d98e04d95fb8f611",
+      "gitBlob": "ee9acc6658d4d416cf170337bb97e0a7e026fc69"
+    },
+    {
+      "path": "Art/Parts/P1-v1/eight-way-v1/face-blue/png/right/idle/00/face.brows.png",
+      "bytes": 214,
+      "sha256": "a6fad816f235840a4377d7494cd30e6015ca9835fbe25fea5b505c93074a467d",
+      "gitBlob": "2d30c3a2cc76445ac8bc4fb43bfd1b7c612b58ee"
+    },
+    {
+      "path": "Art/Parts/P1-v1/eight-way-v1/face-blue/png/right/idle/00/face.eyes.png",
+      "bytes": 304,
+      "sha256": "5f863b35f8c2d17cabcadc2d3db04601e8166dc2a03fdf2001d14066d816cc8a",
+      "gitBlob": "4f29b9ec83bd7a6f958c3b4e89cc81c5d06de5cb"
+    },
+    {
+      "path": "Art/Parts/P1-v1/eight-way-v1/face-blue/png/right/idle/00/face.mouth.png",
+      "bytes": 140,
+      "sha256": "37582dcd1a36b2a936de551c8184c0804d2fe3c7a732a67174622efca46ad41c",
+      "gitBlob": "83a5e46dbe6060f7c827193a869914f4cdb86d19"
+    },
+    {
+      "path": "Art/Parts/P1-v1/eight-way-v1/face-blue/png/right/idle/00/face.nose.png",
+      "bytes": 128,
+      "sha256": "b6c8635d537102cfb886a06685ac1ecb20333886a84ed05b1214ecb8d02f887e",
+      "gitBlob": "d1e0f44077c95cb6b9b825b4de9b81e3a5b2c68e"
+    },
+    {
+      "path": "Art/Parts/P1-v1/eight-way-v1/face-blue/png/up-left/idle/00/face.brows.png",
+      "bytes": 116,
+      "sha256": "5f05b16be0068d9440c9f8977f5861891daf677da15750cc1584e2213910cc4b",
+      "gitBlob": "f9ff7d752097fd5f4ed4c6bdd275956a67b1c781"
+    },
+    {
+      "path": "Art/Parts/P1-v1/eight-way-v1/face-blue/png/up-left/idle/00/face.eyes.png",
+      "bytes": 116,
+      "sha256": "5f05b16be0068d9440c9f8977f5861891daf677da15750cc1584e2213910cc4b",
+      "gitBlob": "f9ff7d752097fd5f4ed4c6bdd275956a67b1c781"
+    },
+    {
+      "path": "Art/Parts/P1-v1/eight-way-v1/face-blue/png/up-left/idle/00/face.mouth.png",
+      "bytes": 116,
+      "sha256": "5f05b16be0068d9440c9f8977f5861891daf677da15750cc1584e2213910cc4b",
+      "gitBlob": "f9ff7d752097fd5f4ed4c6bdd275956a67b1c781"
+    },
+    {
+      "path": "Art/Parts/P1-v1/eight-way-v1/face-blue/png/up-left/idle/00/face.nose.png",
+      "bytes": 116,
+      "sha256": "5f05b16be0068d9440c9f8977f5861891daf677da15750cc1584e2213910cc4b",
+      "gitBlob": "f9ff7d752097fd5f4ed4c6bdd275956a67b1c781"
+    },
+    {
+      "path": "Art/Parts/P1-v1/eight-way-v1/face-blue/png/up-right/idle/00/face.brows.png",
+      "bytes": 116,
+      "sha256": "5f05b16be0068d9440c9f8977f5861891daf677da15750cc1584e2213910cc4b",
+      "gitBlob": "f9ff7d752097fd5f4ed4c6bdd275956a67b1c781"
+    },
+    {
+      "path": "Art/Parts/P1-v1/eight-way-v1/face-blue/png/up-right/idle/00/face.eyes.png",
+      "bytes": 116,
+      "sha256": "5f05b16be0068d9440c9f8977f5861891daf677da15750cc1584e2213910cc4b",
+      "gitBlob": "f9ff7d752097fd5f4ed4c6bdd275956a67b1c781"
+    },
+    {
+      "path": "Art/Parts/P1-v1/eight-way-v1/face-blue/png/up-right/idle/00/face.mouth.png",
+      "bytes": 116,
+      "sha256": "5f05b16be0068d9440c9f8977f5861891daf677da15750cc1584e2213910cc4b",
+      "gitBlob": "f9ff7d752097fd5f4ed4c6bdd275956a67b1c781"
+    },
+    {
+      "path": "Art/Parts/P1-v1/eight-way-v1/face-blue/png/up-right/idle/00/face.nose.png",
+      "bytes": 116,
+      "sha256": "5f05b16be0068d9440c9f8977f5861891daf677da15750cc1584e2213910cc4b",
+      "gitBlob": "f9ff7d752097fd5f4ed4c6bdd275956a67b1c781"
+    },
+    {
+      "path": "Art/Parts/P1-v1/eight-way-v1/face-blue/png/up/idle/00/face.brows.png",
+      "bytes": 116,
+      "sha256": "5f05b16be0068d9440c9f8977f5861891daf677da15750cc1584e2213910cc4b",
+      "gitBlob": "f9ff7d752097fd5f4ed4c6bdd275956a67b1c781"
+    },
+    {
+      "path": "Art/Parts/P1-v1/eight-way-v1/face-blue/png/up/idle/00/face.eyes.png",
+      "bytes": 116,
+      "sha256": "5f05b16be0068d9440c9f8977f5861891daf677da15750cc1584e2213910cc4b",
+      "gitBlob": "f9ff7d752097fd5f4ed4c6bdd275956a67b1c781"
+    },
+    {
+      "path": "Art/Parts/P1-v1/eight-way-v1/face-blue/png/up/idle/00/face.mouth.png",
+      "bytes": 116,
+      "sha256": "5f05b16be0068d9440c9f8977f5861891daf677da15750cc1584e2213910cc4b",
+      "gitBlob": "f9ff7d752097fd5f4ed4c6bdd275956a67b1c781"
+    },
+    {
+      "path": "Art/Parts/P1-v1/eight-way-v1/face-blue/png/up/idle/00/face.nose.png",
+      "bytes": 116,
+      "sha256": "5f05b16be0068d9440c9f8977f5861891daf677da15750cc1584e2213910cc4b",
+      "gitBlob": "f9ff7d752097fd5f4ed4c6bdd275956a67b1c781"
+    },
+    {
+      "path": "Art/Parts/P1-v1/eight-way-v1/hair-chestnut/asset.json",
+      "bytes": 25866,
+      "sha256": "0817ae6cc1941174fcec0c312ad7fbde91110c61b3080a0dc1bedf6f7b7cdaae",
+      "gitBlob": "3a8f4266186bd5fe342dabd07219a3ee916083b2"
+    },
+    {
+      "path": "Art/Parts/P1-v1/eight-way-v1/hair-chestnut/png/down-left/idle/00/hair.front.png",
+      "bytes": 3466,
+      "sha256": "b6f66334414b38a5e4f41bd7d6a20b43aac58e7b0b8a0ddaeec9f98fa2018fae",
+      "gitBlob": "96c9b3fef645d086ebbb2497a9a7b8f2887957bf"
+    },
+    {
+      "path": "Art/Parts/P1-v1/eight-way-v1/hair-chestnut/png/down-right/idle/00/hair.front.png",
+      "bytes": 3561,
+      "sha256": "3a47c1805d55303c9380fad61c6b05c7cfd81f69e9a1cab24787cfd46a1883af",
+      "gitBlob": "ff0184a134a27ebf704f513c4c69ec6136602763"
+    },
+    {
+      "path": "Art/Parts/P1-v1/eight-way-v1/hair-chestnut/png/down/idle/00/hair.front.png",
+      "bytes": 4586,
+      "sha256": "f5ec280903d3f3543dd4e46ed2546ee6dc37b4e971746297c013888f3ff4c53f",
+      "gitBlob": "8957e9d7a99106287461a78faf81df032c600847"
+    },
+    {
+      "path": "Art/Parts/P1-v1/eight-way-v1/hair-chestnut/png/left/idle/00/hair.front.png",
+      "bytes": 7864,
+      "sha256": "e0380c05629f106ff944aabb2cd3a19f62916d13d5c50fc2b79e4ccaf35dabce",
+      "gitBlob": "9fdda7b0d23b17fdcfd6baca57994814d8b58d60"
+    },
+    {
+      "path": "Art/Parts/P1-v1/eight-way-v1/hair-chestnut/png/right/idle/00/hair.front.png",
+      "bytes": 3443,
+      "sha256": "d9783df83f56bf65ed52a4e7bbc857d63ba989905281c3623e1dde4d43842499",
+      "gitBlob": "a62cefd164dab11f3ccd1209f2a95c0ae553b844"
+    },
+    {
+      "path": "Art/Parts/P1-v1/eight-way-v1/hair-chestnut/png/up-left/idle/00/hair.front.png",
+      "bytes": 4415,
+      "sha256": "181c83d1b9ae0df7385ed22746bc2b66ca6217afb823bf8c88b58a12a43a894a",
+      "gitBlob": "cb32106c924d9f6538634e5febd1c67a94296cd3"
+    },
+    {
+      "path": "Art/Parts/P1-v1/eight-way-v1/hair-chestnut/png/up-right/idle/00/hair.front.png",
+      "bytes": 4419,
+      "sha256": "b1da9b9a7c437b51a873fdd10ac0eeee25e23ca510b951cbd45df07872c0a587",
+      "gitBlob": "5e2da4f584e957e0bf7e7807c1774cfb5d7bc853"
+    },
+    {
+      "path": "Art/Parts/P1-v1/eight-way-v1/hair-chestnut/png/up/idle/00/hair.front.png",
+      "bytes": 4631,
+      "sha256": "1127c481258f342d68f92f8c9f6e3055153440bd04ede055847e24f532cb51d8",
+      "gitBlob": "0e88281b90372e2561b63eaf4e15da75e670c5af"
+    },
+    {
+      "path": "Art/Review/Battle/bow-actions-r7-demo-v1/bow-poses.json",
+      "bytes": 9196435,
+      "sha256": "30cf32cff163291d970bdaedd00792493ce93bbdbbb9777162ad158a85ae8a59",
+      "gitBlob": "056d88c38d797f73a8aebb979bbcfeded5315120"
+    },
+    {
+      "path": "Art/Review/Battle/great-sword-demo-v1/great-sword-poses.json",
+      "bytes": 11295311,
+      "sha256": "bb78f6f23d0010876d3df6e6603e9523686b9b4b89b0015f46a00ff0f46b6814",
+      "gitBlob": "1ea5e64cd6c50e1216293502d9de8858e7a18fd6"
+    },
+    {
+      "path": "Art/Review/Battle/legendary-staff-demo-v1/legendary-staff-poses.json",
+      "bytes": 11311037,
+      "sha256": "5c53912e833d14a41d9fb4db561bcad816d96fef6bbf9512be386cbf1a48d680",
+      "gitBlob": "e548707d88f8f1df388b22cc7b32f6b0de62130f"
+    },
+    {
+      "path": "Art/Scenes/MeadowBattle/hero-combat-v2/clips.json",
+      "bytes": 11074,
+      "sha256": "d5467e80101cb670b1788f9ee16b8092f1396e3173906fe12130a5d42ce956b7",
+      "gitBlob": "64882f57d283a92eb1d4d09d4ac7596aa39de772"
+    },
+    {
+      "path": "Art/Scenes/MeadowBattle/hero-combat-v2/hero-v2-configuration.json",
+      "bytes": 1246,
+      "sha256": "54891fe5a3bcc9fba09bf0727d288286c3d939274d93bb8e4e0257f69885d865",
+      "gitBlob": "1d510404e9d4a059ab8e4d8fa47ecf1097cf94a8"
+    },
+    {
+      "path": "Art/Scenes/MeadowBattle/hero-combat-v2/render-review.py",
+      "bytes": 5677,
+      "sha256": "b7d4f874175889cad5a29dc625e80fd373a2aaebccd901510998f53ebc5ad354",
+      "gitBlob": "99ab5defe853c0369e1101ebd1156e478c5d087d"
+    },
+    {
+      "path": "Art/Standards/P1-Parts-v1/profile.json",
+      "bytes": 11377,
+      "sha256": "0e3e0e9ed8694cae9fc1b9c87ea321ea560190a8fdc7c3cb6fa3ebe1129fe889",
+      "gitBlob": "3eb8834ea73eb5f72e2128c4f448939b994b2689"
+    },
+    {
+      "path": "Sources/Resources/Assets.xcassets/MeadowBattleBowReviewedBodyCore.imageset/MeadowBattleBowReviewedBodyCore.png",
+      "bytes": 12912,
+      "sha256": "002d79d44bdb5b42eaae95003a3b7de983291b5cda3f4d1eb92bcb5d723b964b",
+      "gitBlob": "e6c7127fa482861844cf28a06d506d6f5394ce32"
+    },
+    {
+      "path": "Sources/Resources/Assets.xcassets/MeadowBattleBowReviewedLegFarThighWardrobe.imageset/MeadowBattleBowReviewedLegFarThighWardrobe.png",
+      "bytes": 8112,
+      "sha256": "f2ab10d0f0710811897148ceed316f1a94141b9383297266249e01ed6d3a1cd6",
+      "gitBlob": "081eb08037356aed262c2f861c026627fe19cdbe"
+    },
+    {
+      "path": "Sources/Resources/Assets.xcassets/MeadowBattleBowReviewedLegNearThighWardrobe.imageset/MeadowBattleBowReviewedLegNearThighWardrobe.png",
+      "bytes": 8624,
+      "sha256": "aa96a663a628b55994372d1e20d2ccff0186eb2f380d485454eaf9ca90b5f118",
+      "gitBlob": "412f1e2c1a960a80439aa762b811e9b19cc9abd6"
+    },
+    {
+      "path": "Sources/Resources/Assets.xcassets/MeadowBattleBowReviewedSleeves.imageset/MeadowBattleBowReviewedSleeves.png",
+      "bytes": 722470,
+      "sha256": "b1ff288653cef8cb0c2cfc3706b869a07655c2ae32a3fe914868ebb32a8f93ef",
+      "gitBlob": "29f6265099122dcb7a920dafc8b3e37b62a33699"
+    },
+    {
+      "path": "Sources/Resources/Assets.xcassets/MeadowBattleBowReviewedTorso.imageset/MeadowBattleBowReviewedTorso.png",
+      "bytes": 2513,
+      "sha256": "c81c7e6e2468055683d8d3f69ea630b47c18bd452c29c7737179e0399ac55ff0",
+      "gitBlob": "2b5148642bd90baebe51682de742d87ba9918cf4"
+    },
+    {
+      "path": "Sources/Resources/Assets.xcassets/MeadowBattleGreatSword.imageset/MeadowBattleGreatSword.png",
+      "bytes": 6442,
+      "sha256": "6f3d9f61f55876e6a89312f80b04ad44e27492372023f7e0085a0255bcc84d07",
+      "gitBlob": "ca2e6ec7da4427bc2c5a0b09bd6cb8a466134460"
+    },
+    {
+      "path": "Sources/Resources/Assets.xcassets/MeadowBattleHeroArmNearForearmBody.imageset/MeadowBattleHeroArmNearForearmBody.png",
+      "bytes": 13363,
+      "sha256": "e37bd6e21a55d7c8688756b41feee4a77c1126cbbceac93e653958b7102f64d7",
+      "gitBlob": "bd609fa5946ef227b6d2448e0dbbeca827a39d74"
+    },
+    {
+      "path": "Sources/Resources/Assets.xcassets/MeadowBattleHeroArmNearForearmWardrobe.imageset/MeadowBattleHeroArmNearForearmWardrobe.png",
+      "bytes": 9690,
+      "sha256": "4d5016f7899a08874c2c5d46fd0dd16f304ced2b5297e8cdb2b8374d9252ab0e",
+      "gitBlob": "196a435c998962f9413fe08b1e315042e0da1e94"
+    },
+    {
+      "path": "Sources/Resources/Assets.xcassets/MeadowBattleHeroArmNearUpperBody.imageset/MeadowBattleHeroArmNearUpperBody.png",
+      "bytes": 13321,
+      "sha256": "1ba79fe1a919311c386f79f182ab77bee88fa3949dc318be3109cbeb664f22e0",
+      "gitBlob": "988b7f515c14911cd6f8873b7a282d92474e39d7"
+    },
+    {
+      "path": "Sources/Resources/Assets.xcassets/MeadowBattleHeroArmNearUpperWardrobe.imageset/MeadowBattleHeroArmNearUpperWardrobe.png",
+      "bytes": 9726,
+      "sha256": "eafcd179b21732f52582d1469f981d65e0a4ca6024cbe49d9de5473b7cb875ca",
+      "gitBlob": "603d8b3ea5f033eca30cdd5b44f74f0d846def92"
+    },
+    {
+      "path": "Sources/Resources/Assets.xcassets/MeadowBattleHeroBodyCore.imageset/MeadowBattleHeroBodyCore.png",
+      "bytes": 13753,
+      "sha256": "40acbcd999ce879a445300755ef1ec25c0c2c38080325c6c5f14776fa94ddde1",
+      "gitBlob": "bd43e63535e4a6a74bfd7d7988027746fa6e79ec"
+    },
+    {
+      "path": "Sources/Resources/Assets.xcassets/MeadowBattleHeroFace.imageset/MeadowBattleHeroFace.png",
+      "bytes": 931,
+      "sha256": "11d54df5f734d6140919bd8f3bc1448795e55e35e3ad0981c05c7248eda28b64",
+      "gitBlob": "210a65b1df259bb69b704c1894bc42c6213ba18c"
+    },
+    {
+      "path": "Sources/Resources/Assets.xcassets/MeadowBattleHeroFarHand.imageset/MeadowBattleHeroFarHand.png",
+      "bytes": 783,
+      "sha256": "c37cbd0984a8b68ffc6f1721997ba33455a2d2bc5d697c2c77f318ec72ca7661",
+      "gitBlob": "c401f4478bf8f1d0f14aea4c26f657c5fa07d121"
+    },
+    {
+      "path": "Sources/Resources/Assets.xcassets/MeadowBattleHeroHair.imageset/MeadowBattleHeroHair.png",
+      "bytes": 1710,
+      "sha256": "144d8fa28d23319afe6a1e9560ccc14b8450da25d225361772b0f2cdad65a209",
+      "gitBlob": "b3b12b357ea99fbe4d147717c8d2592c04f04404"
+    },
+    {
+      "path": "Sources/Resources/Assets.xcassets/MeadowBattleHeroJointUnderlay.imageset/MeadowBattleHeroJointUnderlay.png",
+      "bytes": 9962,
+      "sha256": "9ea53c1fe83f78f1270a19f163af29fef647b0db4e1684a975e6306a3897a2e7",
+      "gitBlob": "630634bd190d69277391e9032e19beca9e3684eb"
+    },
+    {
+      "path": "Sources/Resources/Assets.xcassets/MeadowBattleHeroLegFarShinBody.imageset/MeadowBattleHeroLegFarShinBody.png",
+      "bytes": 13341,
+      "sha256": "69d05e9a44dffddfa0d7cc5f6af0afed02cfc589512812fb4268bf95a08a4016",
+      "gitBlob": "772722f870d44b852446a5c453673a76fcd13e77"
+    },
+    {
+      "path": "Sources/Resources/Assets.xcassets/MeadowBattleHeroLegFarShinWardrobe.imageset/MeadowBattleHeroLegFarShinWardrobe.png",
+      "bytes": 9757,
+      "sha256": "e2990029bf7fe14cd4af8215d8ed86b1623af288330049f197d28ba738027a2f",
+      "gitBlob": "68a38caf80b3e81ed40f67c99265e047801ad38a"
+    },
+    {
+      "path": "Sources/Resources/Assets.xcassets/MeadowBattleHeroLegFarThighBody.imageset/MeadowBattleHeroLegFarThighBody.png",
+      "bytes": 13409,
+      "sha256": "50ec5f98c5933ab2936b38b081c977785592907e4302c6b69aa5b9019802c384",
+      "gitBlob": "121b3e5dfb1137ce611a437fcb918c836f8eada4"
+    },
+    {
+      "path": "Sources/Resources/Assets.xcassets/MeadowBattleHeroLegFarThighWardrobe.imageset/MeadowBattleHeroLegFarThighWardrobe.png",
+      "bytes": 9790,
+      "sha256": "b5b31b719b9dc5b85012da0f54d47616dadec763e6c5fdd881ea844698910af5",
+      "gitBlob": "bd6437a837759f1404cb77c5319b901fcd8b9f26"
+    },
+    {
+      "path": "Sources/Resources/Assets.xcassets/MeadowBattleHeroLegNearShinBody.imageset/MeadowBattleHeroLegNearShinBody.png",
+      "bytes": 13325,
+      "sha256": "34218b1f89cf3c64ec807521cfebf8f3c3d1eb238a945e73f89c33e21ee20203",
+      "gitBlob": "05dca90a343afbbd78249b97e797e1f0d34fc457"
+    },
+    {
+      "path": "Sources/Resources/Assets.xcassets/MeadowBattleHeroLegNearShinWardrobe.imageset/MeadowBattleHeroLegNearShinWardrobe.png",
+      "bytes": 9774,
+      "sha256": "7ec76ed5aa128a3b98008aa5ec5d03aedb7567211d23afb1fb55aae4f6fb37a5",
+      "gitBlob": "7cf3417bda944a90c07141963d4d5a51c86f7018"
+    },
+    {
+      "path": "Sources/Resources/Assets.xcassets/MeadowBattleHeroLegNearThighBody.imageset/MeadowBattleHeroLegNearThighBody.png",
+      "bytes": 13381,
+      "sha256": "22f31602ce77c49aa71989fb63be514863f42ead41003d3b19acd570cfd34de0",
+      "gitBlob": "0d3b18fccaabd205bea85ddd51dda354c5a6a2d7"
+    },
+    {
+      "path": "Sources/Resources/Assets.xcassets/MeadowBattleHeroLegNearThighWardrobe.imageset/MeadowBattleHeroLegNearThighWardrobe.png",
+      "bytes": 9784,
+      "sha256": "e1c91b3d4c836da3a72d0d311f043f63c48c684c8088e55097b6bace213aaf7e",
+      "gitBlob": "4d2d5a1901ae72ee151559cfdb6c286e0a79243f"
+    },
+    {
+      "path": "Sources/Resources/Assets.xcassets/MeadowBattleHeroNearHand.imageset/MeadowBattleHeroNearHand.png",
+      "bytes": 1228,
+      "sha256": "2d69ea1ef28c8209ca81556546e25bfc57bd9f471973c22e4474e0b9a00e3399",
+      "gitBlob": "fbcc19b631bc1b88ffecef3a0f32bfe59b236c22"
+    },
+    {
+      "path": "Sources/Resources/Assets.xcassets/MeadowBattleHeroWardrobeCore.imageset/MeadowBattleHeroWardrobeCore.png",
+      "bytes": 9760,
+      "sha256": "1a946e0db6559c92e8eebcba70f62fccb2325c55afce85f42538625c66efb600",
+      "gitBlob": "11d5dc7cbbd8cd1b6b767e4ad3e41dea6ad560f5"
+    },
+    {
+      "path": "Sources/Resources/Assets.xcassets/MeadowBattleHeroWeapon.imageset/MeadowBattleHeroWeapon.png",
+      "bytes": 3093,
+      "sha256": "a4a0122c73fba3120e9c4537fd55089195a61469a1c72e098b9f430d10ceaa5c",
+      "gitBlob": "25204efabccc20ec1cad5add0322237dc1eae432"
+    },
+    {
+      "path": "Sources/Resources/Assets.xcassets/MeadowBattleHuntingBow.imageset/MeadowBattleHuntingBow.png",
+      "bytes": 900,
+      "sha256": "5492fc5082c2969af78215714aab653d9416834a8cdd7869580359181cb1002f",
+      "gitBlob": "b975360792a4ea4f97d1b7c3c31347891c791bf3"
+    },
+    {
+      "path": "Sources/Resources/Assets.xcassets/MeadowBattleLegendaryStaff.imageset/MeadowBattleLegendaryStaff.png",
+      "bytes": 5353,
+      "sha256": "44bd232b23a8301bc21fa8e1f58747ce8afc019fa867dbe1763df68a522440df",
+      "gitBlob": "627d19d14adf958f591a5df8c7819787b008e271"
+    },
+    {
+      "path": "Sources/Resources/Assets.xcassets/MeadowRuneArmorArmNearForearmBody.imageset/MeadowRuneArmorArmNearForearmBody.png",
+      "bytes": 567,
+      "sha256": "55444b86e37ed12e68fe4513adf3922052b46d36fb7419b913f733179a0e411e",
+      "gitBlob": "82735ceebfe59e6c527ed2ce4e9ea8c3da38bd20"
+    },
+    {
+      "path": "Sources/Resources/Assets.xcassets/MeadowRuneArmorArmNearForearmWardrobe.imageset/MeadowRuneArmorArmNearForearmWardrobe.png",
+      "bytes": 698,
+      "sha256": "58d43620f4c99187b8cdd467f209f9b491dbcc944068b45440746a2fc5ce8510",
+      "gitBlob": "0dd8c06cc027f3b93989dc72c03c236b8c116d6b"
+    },
+    {
+      "path": "Sources/Resources/Assets.xcassets/MeadowRuneArmorArmNearUpperBody.imageset/MeadowRuneArmorArmNearUpperBody.png",
+      "bytes": 625,
+      "sha256": "81032c972162ab5a5204c9a8e8d75e11947e5378b90677eba504a6f458a7797e",
+      "gitBlob": "346563f7c7f9d34c2ad20fa6a05d37ee7548327e"
+    },
+    {
+      "path": "Sources/Resources/Assets.xcassets/MeadowRuneArmorArmNearUpperWardrobe.imageset/MeadowRuneArmorArmNearUpperWardrobe.png",
+      "bytes": 1272,
+      "sha256": "467ffe0b2c5a7f0e1c30f52eda8acf464493078e273b4ad6cd482e0f2b2ec4f8",
+      "gitBlob": "b42c3b1cc6e4950f0c2b4ba971c8863fccfc684e"
+    },
+    {
+      "path": "Sources/Resources/Assets.xcassets/MeadowRuneArmorHemFarWardrobe.imageset/MeadowRuneArmorHemFarWardrobe.png",
+      "bytes": 1897,
+      "sha256": "bf8cd430b1937275e4f146e5dc58b1d044c62794af3ca9c9d41bb71ef5838c77",
+      "gitBlob": "458945f42973dda2204be8f0f4dc4a167ce726be"
+    },
+    {
+      "path": "Sources/Resources/Assets.xcassets/MeadowRuneArmorHemNearWardrobe.imageset/MeadowRuneArmorHemNearWardrobe.png",
+      "bytes": 1624,
+      "sha256": "1adaff8981cb413b5745c594764361d5dd9ae1d1363120156ead38c0e32c2e70",
+      "gitBlob": "30cf514ec36f65ff76b1fe0d0562ce6812e1b1d9"
+    },
+    {
+      "path": "Sources/Resources/Assets.xcassets/MeadowRuneArmorLegFarThighWardrobe.imageset/MeadowRuneArmorLegFarThighWardrobe.png",
+      "bytes": 2589,
+      "sha256": "69ef6bc80a0c1b7f6ad79088a4f3c209f8664f7d3c64ecc20a84f4a34c2f66f1",
+      "gitBlob": "4157f95264a284726440f29ad7221526328cc8a4"
+    },
+    {
+      "path": "Sources/Resources/Assets.xcassets/MeadowRuneArmorLegNearThighWardrobe.imageset/MeadowRuneArmorLegNearThighWardrobe.png",
+      "bytes": 2203,
+      "sha256": "b89606e82055c292b688a27ba873fccf695d3b35da9c78774caf4b5461cc9361",
+      "gitBlob": "2f5874f5e2789464cde0ef8d23417325c09061fb"
+    },
+    {
+      "path": "Sources/Resources/Assets.xcassets/MeadowRuneArmorPauldronNearWardrobe.imageset/MeadowRuneArmorPauldronNearWardrobe.png",
+      "bytes": 1585,
+      "sha256": "a5e954995231685480481cc53d9dd83b35af4c8a3828bc5723eb28989599ce0d",
+      "gitBlob": "390a8ff53c368c71ea371b2d0f637683e1a443f2"
+    },
+    {
+      "path": "Sources/Resources/Assets.xcassets/MeadowRuneArmorWardrobeCore.imageset/MeadowRuneArmorWardrobeCore.png",
+      "bytes": 6452,
+      "sha256": "7f057174dc245300524b3eeff1ac6dc65fbe82de79627a4be79b1a32180c6286",
+      "gitBlob": "8d22b661e4b1221501ca231fcddc211cee03d86a"
+    },
+    {
+      "path": "Sources/Resources/hero-gait.json",
+      "bytes": 59096,
+      "sha256": "44ad26e97cfd0836074eefc70ee081f2bbb5b2003961ed1e779acbfebdaaa527",
+      "gitBlob": "32848e43e82d91b7b2eaf070322df18272c5b216"
+    },
+    {
+      "path": "Vendor/ClassroomGameCore/Sources/MeadowBattleSupport/Resources/great-sword-v1.json",
+      "bytes": 82603,
+      "sha256": "dc84abb0f9d6d5c60ed0ed44226681fddf17d9defe4804dbf172a25dc1007113",
+      "gitBlob": "07a5c1e50d625baa698b31580cb0674400070911"
+    },
+    {
+      "path": "Vendor/ClassroomGameCore/Sources/MeadowBattleSupport/Resources/legendary-staff-v1.json",
+      "bytes": 82142,
+      "sha256": "882179317c28a6886f9b499c612d1eecd4d6147ca2a2fb7b4539b78b1c347c0b",
+      "gitBlob": "7e4c1c3fa4fc17ad0eca7d096fe933be94992c99"
+    }
+  ]
+}

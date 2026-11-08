@@ -1,0 +1,23 @@
+{
+  "label": "MA Bright / blue",
+  "genderStyle": "male",
+  "scope": "gender-styled appearance preset on unchanged shared body; not a separate female body",
+  "headCanvas": [
+    96,
+    96
+  ],
+  "headToCanvasSource": "original motion, unchanged",
+  "slots": [
+    "face.eyes",
+    "face.brows",
+    "face.nose",
+    "face.mouth"
+  ],
+  "noSkinEarsJawOrBodyPixels": true,
+  "fullEightDirections": true,
+  "bindingCount": 104,
+  "uniqueDirectionalLayerPNGs": 32,
+  "hairBackContractChanged": false,
+  "artApproval": null,
+  "runtimeImported": false
+}

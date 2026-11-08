@@ -1,0 +1,32 @@
+{
+  "reviewer": "main agent",
+  "userApprovalOfNewArt": null,
+  "wholeFigureFirst": true,
+  "battleStates": "2 outfits x 4 weapons x 7 clips x 5 phases = 280 whole-figure poses on eight 1x boards; corresponding 2x boards supplied",
+  "headReview": "whole-figure eight-direction boards, six-style roster at 2x, four faces on fixed M2/F1 hair, sword/bow battle registration, actual GIF samples",
+  "actualGIFDecodedContactSheetsViewed": [
+    "attack-001.png",
+    "attack-009.png",
+    "states-027.png"
+  ],
+  "allDecodedFramesVisuallyReviewed": false,
+  "allGIFFramesMechanicallyDecoded": true,
+  "fixedBeforeDelivery": [
+    "first hair material looked like a faceted helmet: replaced it with finer approved hair-only material on new silhouettes",
+    "restored original feature material/proportions instead of flat tiny eyes; calibrated battle eyes/brows/mouth against original battle skin",
+    "M1 crop nape shortened; M2 fringe made asymmetric; bun/knot/pony kept compact within original hair.front contract",
+    "fresh native bow head receives original torso transform only once, avoiding baked transform being applied twice"
+  ],
+  "focus": [
+    "shoulder/elbow/wrist continuity",
+    "fitted chest/waist and hem over moving thighs",
+    "bow grip and draw hands unchanged",
+    "no facial pixels in back views",
+    "whole-figure facial proportion, scalp/nape and independent hair-face choices"
+  ],
+  "limits": [
+    "offline parts compositor and original pose data; not an App screenshot",
+    "no new female body, long-hair back-layer contract, selection UI or save-schema implementation",
+    "no App/simulator/device run; no device performance claim"
+  ]
+}

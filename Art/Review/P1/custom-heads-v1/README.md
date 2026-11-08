@@ -1,0 +1,27 @@
+# 自定义发型与五官 · 批量审核
+
+三款男式、三款女式与四套独立五官。复用同一身体/骨骼，性别仅样式推荐，可任意交叉组合；不是新女体或已发布的游戏换装 UI。整个人物比例为主要验收尺度，不只放大脸。
+
+![发型总览](six-style-roster-2x.png)
+
+| 发型 | 样式 | 行走 |
+| --- | --- | --- |
+| M1 Short crop | 男式 | [八向正常GIF](m1-short-eight-way-normal.gif) |
+| M2 Side part | 男式 | [八向正常GIF](m2-sidepart-eight-way-normal.gif) |
+| M3 Swept knot | 男式 | [八向正常GIF](m3-topknot-eight-way-normal.gif) |
+| F1 Soft bob | 女式 | [八向正常GIF](f1-bob-eight-way-normal.gif) |
+| F2 Side pony | 女式 | [八向正常GIF](f2-ponytail-eight-way-normal.gif) |
+| F3 Braided bun | 女式 | [八向正常GIF](f3-bun-eight-way-normal.gif) |
+
+[四套五官全身比较](four-face-sets-whole-body-2x.png) · [战斗头部静态](battle-head-registration-1x.png) · [六种头部持弓正常GIF](six-heads-bow-normal.gif)
+
+![新头部实际原持弓动作](six-heads-bow-normal.gif)
+
+全八向+全六款发型固定同一五官：
+
+- [MA 明朗蓝瞳](all-hair-m1-bright-whole-body-1x.png)
+- [MB 沉静琥珀瞳](all-hair-m2-calm-whole-body-1x.png)
+- [FA 柔和绿瞳](all-hair-f1-gentle-whole-body-1x.png)
+- [FB 清晰紫瞳](all-hair-f2-clear-whole-body-1x.png)
+
+[统一交付与检查记录](../../../Integration/Appearance-battle-custom-heads-v1/README.md)；[真实分层母版/色板/绑定](../../../Parts/P1-v1/custom-heads-v1/)。新资源用户认可仍null，当前离线资产交付，未改游戏UI、存档或App版本。

@@ -40,3 +40,7 @@
 
 1. 按本页一次审核两件全部方向，集中精修用户指出的问题。
 2. 认可后按 `docs/integration/classroom-art-sync.md` 接入demo/课堂，核对成套图集与实际设备Release包，再交直接IPA。
+
+## 后续用户反馈（2026-11-08）
+
+用户“可以”接受本对话已展示的两只B八向行走预览，并授权制作战斗服装与男女发型/五官。仅登记所展示行走范围，未展示的起停、全部组合和本轮新资源不据此自动认可；原审核JSON保留原时点事实。详见 [反馈记录](user-feedback-20261108.json) 与 [新战斗/头部交付](../../../Integration/Appearance-battle-custom-heads-v1/README.md)。
