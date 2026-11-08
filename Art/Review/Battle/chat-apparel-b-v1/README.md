@@ -1,5 +1,7 @@
 # 双 B 战斗服装批量审核
 
+**当前同步预览：** 请看 [同一外观的行走/战斗对照](../appearance-synchronized-v1/README.md)。本页保留首轮资源与预览记录。
+
 沿用原人物/双手/武器/四套动作，不重画整人。星辉甲 B 天仪礼甲与龙纹甲 B 龙翼巡游甲的新分层资源在 Art/Parts/P1-Battle/chat-apparel-b-v1；当前尚未导入 App，用户认可待反馈。
 
 ![两套四武器正常攻击](both-armors-attack-normal.gif)

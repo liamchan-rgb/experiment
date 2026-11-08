@@ -1,0 +1,19 @@
+{
+  "mainAgent": true,
+  "scope": "offline full-body art inspection; not an App test",
+  "boardsViewed": [
+    "walking-battle-same-head-1x.png",
+    "male-all-faces-two-scenes-1x.png",
+    "female-all-faces-two-scenes-1x.png",
+    "male-paired-attack-phases-1x.png",
+    "female-paired-attack-phases-1x.png",
+    "dragonArmor-huntingBow-states-1x.png",
+    "starlightArmor-greatSword-states-1x.png",
+    "paired-actual-decoded-056.png",
+    "walking-battle-same-head-2x.png"
+  ],
+  "notEvery4032CompositionVisuallyReviewed": true,
+  "oldAndNewHeadsNotOverlaid": true,
+  "userArtApproval": null,
+  "runtimeIntegrated": false
+}

@@ -1,0 +1,163 @@
+{
+  "schemaVersion": 1,
+  "scope": "offline shared appearance bindings; not App selection/save/UI integration",
+  "artSourceCommit": "3ef48ebdb43d608d459fc438714fe0f6e1ed6d29",
+  "baseID": "p1-eight-way-base-v1",
+  "lowerBodyID": "p1-eight-way-lower-v1",
+  "walkingCatalog": "Art/Review/P1/custom-heads-v1/catalog.json",
+  "walkingMotion": "Art/Integration/P1-modular-eight-way-v1/motion.json",
+  "outfits": [
+    {
+      "id": "p1-chat-starlight-armor-v2",
+      "locomotionManifest": "Art/Parts/P1-v1/chat-apparel-v2/starlightArmor/asset.json",
+      "battleItem": "starlightArmor",
+      "battleManifest": "Art/Parts/P1-Battle/chat-apparel-b-v1/starlightArmor/battle-manifest.json"
+    },
+    {
+      "id": "p1-chat-dragon-armor-v2",
+      "locomotionManifest": "Art/Parts/P1-v1/chat-apparel-v2/dragonArmor/asset.json",
+      "battleItem": "dragonArmor",
+      "battleManifest": "Art/Parts/P1-Battle/chat-apparel-b-v1/dragonArmor/battle-manifest.json"
+    }
+  ],
+  "hair": [
+    {
+      "id": "p1-custom-hair-m1-short-v1",
+      "label": "M1 Short crop",
+      "genderStyle": "male",
+      "locomotionManifest": "Art/Parts/P1-v1/custom-heads-v1/hair-m1-short/asset.json",
+      "battleLayers": {
+        "MeadowBattleHeroHair": "Art/Parts/P1-v1/custom-heads-v1/hair-m1-short/battle/hair.png"
+      }
+    },
+    {
+      "id": "p1-custom-hair-m2-sidepart-v1",
+      "label": "M2 Side part",
+      "genderStyle": "male",
+      "locomotionManifest": "Art/Parts/P1-v1/custom-heads-v1/hair-m2-sidepart/asset.json",
+      "battleLayers": {
+        "MeadowBattleHeroHair": "Art/Parts/P1-v1/custom-heads-v1/hair-m2-sidepart/battle/hair.png"
+      }
+    },
+    {
+      "id": "p1-custom-hair-m3-topknot-v1",
+      "label": "M3 Swept knot",
+      "genderStyle": "male",
+      "locomotionManifest": "Art/Parts/P1-v1/custom-heads-v1/hair-m3-topknot/asset.json",
+      "battleLayers": {
+        "MeadowBattleHeroHair": "Art/Parts/P1-v1/custom-heads-v1/hair-m3-topknot/battle/hair.png"
+      }
+    },
+    {
+      "id": "p1-custom-hair-f1-bob-v1",
+      "label": "F1 Soft bob",
+      "genderStyle": "female",
+      "locomotionManifest": "Art/Parts/P1-v1/custom-heads-v1/hair-f1-bob/asset.json",
+      "battleLayers": {
+        "MeadowBattleHeroHair": "Art/Parts/P1-v1/custom-heads-v1/hair-f1-bob/battle/hair.png"
+      }
+    },
+    {
+      "id": "p1-custom-hair-f2-ponytail-v1",
+      "label": "F2 Side pony",
+      "genderStyle": "female",
+      "locomotionManifest": "Art/Parts/P1-v1/custom-heads-v1/hair-f2-ponytail/asset.json",
+      "battleLayers": {
+        "MeadowBattleHeroHair": "Art/Parts/P1-v1/custom-heads-v1/hair-f2-ponytail/battle/hair.png"
+      }
+    },
+    {
+      "id": "p1-custom-hair-f3-bun-v1",
+      "label": "F3 Braided bun",
+      "genderStyle": "female",
+      "locomotionManifest": "Art/Parts/P1-v1/custom-heads-v1/hair-f3-bun/asset.json",
+      "battleLayers": {
+        "MeadowBattleHeroHair": "Art/Parts/P1-v1/custom-heads-v1/hair-f3-bun/battle/hair.png"
+      }
+    }
+  ],
+  "faces": [
+    {
+      "id": "p1-custom-face-m1-bright-v1",
+      "label": "MA Bright / blue",
+      "genderStyle": "male",
+      "locomotionManifest": "Art/Parts/P1-v1/custom-heads-v1/face-m1-bright/asset.json",
+      "battleLayers": {
+        "MeadowBattleHeroFace": "Art/Parts/P1-v1/custom-heads-v1/face-m1-bright/battle/face.png"
+      }
+    },
+    {
+      "id": "p1-custom-face-m2-calm-v1",
+      "label": "MB Calm / amber",
+      "genderStyle": "male",
+      "locomotionManifest": "Art/Parts/P1-v1/custom-heads-v1/face-m2-calm/asset.json",
+      "battleLayers": {
+        "MeadowBattleHeroFace": "Art/Parts/P1-v1/custom-heads-v1/face-m2-calm/battle/face.png"
+      }
+    },
+    {
+      "id": "p1-custom-face-f1-gentle-v1",
+      "label": "FA Gentle / green",
+      "genderStyle": "female",
+      "locomotionManifest": "Art/Parts/P1-v1/custom-heads-v1/face-f1-gentle/asset.json",
+      "battleLayers": {
+        "MeadowBattleHeroFace": "Art/Parts/P1-v1/custom-heads-v1/face-f1-gentle/battle/face.png"
+      }
+    },
+    {
+      "id": "p1-custom-face-f2-clear-v1",
+      "label": "FB Clear / violet",
+      "genderStyle": "female",
+      "locomotionManifest": "Art/Parts/P1-v1/custom-heads-v1/face-f2-clear/asset.json",
+      "battleLayers": {
+        "MeadowBattleHeroFace": "Art/Parts/P1-v1/custom-heads-v1/face-f2-clear/battle/face.png"
+      }
+    }
+  ],
+  "presets": {
+    "m1-short": {
+      "outfit": "p1-chat-starlight-armor-v2",
+      "hair": "p1-custom-hair-m1-short-v1",
+      "face": "p1-custom-face-m1-bright-v1"
+    },
+    "m2-sidepart": {
+      "outfit": "p1-chat-starlight-armor-v2",
+      "hair": "p1-custom-hair-m2-sidepart-v1",
+      "face": "p1-custom-face-m2-calm-v1"
+    },
+    "m3-topknot": {
+      "outfit": "p1-chat-starlight-armor-v2",
+      "hair": "p1-custom-hair-m3-topknot-v1",
+      "face": "p1-custom-face-m1-bright-v1"
+    },
+    "f1-bob": {
+      "outfit": "p1-chat-dragon-armor-v2",
+      "hair": "p1-custom-hair-f1-bob-v1",
+      "face": "p1-custom-face-f1-gentle-v1"
+    },
+    "f2-ponytail": {
+      "outfit": "p1-chat-dragon-armor-v2",
+      "hair": "p1-custom-hair-f2-ponytail-v1",
+      "face": "p1-custom-face-f2-clear-v1"
+    },
+    "f3-bun": {
+      "outfit": "p1-chat-dragon-armor-v2",
+      "hair": "p1-custom-hair-f3-bun-v1",
+      "face": "p1-custom-face-f1-gentle-v1"
+    }
+  },
+  "battleReviewPresets": {
+    "starlightArmor": "m1-short",
+    "dragonArmor": "f1-bob"
+  },
+  "playerChoiceFields": [
+    "outfit",
+    "hair",
+    "face"
+  ],
+  "sameSelectionForWalkingAndBattle": true,
+  "weaponDoesNotChooseHead": true,
+  "unknownOrMissingHeadPolicy": "reject complete choice; no default head substitution or old-head overlay",
+  "appRuntimeIntegrated": false,
+  "newArtApproval": null
+}

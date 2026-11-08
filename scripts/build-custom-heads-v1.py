@@ -275,12 +275,12 @@ def review():
  # One complete eight-way walk per hairstyle with an appropriate default face;
  # face/hair remain independent choices, not a new whole-character bitmap.
  for hair,cfg in HAIR.items():
-  face='m1-bright' if cfg['genderStyle']=='male' else 'f1-gentle'
+  bindings=load('head_review_shared_appearance',R/'scripts/appearance-scene-binding.py').SceneBindings();choice=bindings.preset(hair)
   frames=[]
   for n in range(1,9):
    board=Image.new('RGB',(4*256,2*280),'#1e3428')
    for i,d in enumerate(DIRS):
-    im=c.render(art.BASE,['p1-eight-way-lower-v1','p1-chat-starlight-armor-v2','p1-custom-hair-'+hair+'-v1','p1-custom-face-'+face+'-v1'],d,'walk',n);board.paste(art.cell(im,d),(i%4*256,i//4*280))
+    im=c.render(art.BASE,bindings.walking_parts(choice),d,'walk',n);board.paste(art.cell(im,d),(i%4*256,i//4*280))
    frames.append(board)
   art.gif(frames,D/f'{hair}-eight-way-normal.gif',120)
  print('Six hair styles and four face sets exported with eight directional masters and original 104 bindings each.',flush=True)
@@ -305,9 +305,10 @@ def battle_overrides():
   write(folder/'battle/registration.json',{'sourceMasters':'masters/right/','featureTranslations':poses,'noseGeometry':'original MeadowBattleHeroFace [146,116,153,125] nose component','battlePart':'MeadowBattleHeroFace','sameUnmodifiedTorsoPose':True,'headSkinEarJawChanged':False})
  # Whole character comparison, with equal-scale head details as supplementary
  # evidence. The full figure remains the primary composition reference.
+ bindings=load('head_battle_shared_appearance',R/'scripts/appearance-scene-binding.py').SceneBindings()
  board=Image.new('RGB',(6*256,2*280),'#1e3428');dr=ImageDraw.Draw(board);font=ImageFont.truetype('/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf',12)
  for col,(hair,cfg) in enumerate(HAIR.items()):
-  face='m1-bright' if cfg['genderStyle']=='male' else 'f1-gentle';renderer=battle.Renderer('starlightArmor',hair,face)
+  renderer=battle.Renderer.for_appearance(bindings,bindings.preset(hair))
   for row,weapon in enumerate(['trainingSword','huntingBow']):
    im=renderer.actor(weapon,'idle',0);board.paste(im,(col*256,row*280),im);dr.text((col*256+5,row*280+258),cfg['label']+' '+weapon,font=font,fill='#f3e1b8')
  board.save(D/'battle-head-registration-1x.png')
@@ -317,7 +318,7 @@ def battle_overrides():
   p=max(0,age)/.86*((.86-.4)/1.2) if age<=.86 else float(np.clip((age-.4-min(.1,max(0,age-1.048)))/1.2,0,1))
   frame=Image.new('RGB',(6*256,280),'#1e3428');dr=ImageDraw.Draw(frame)
   for col,(hair,cfg) in enumerate(HAIR.items()):
-   face='m1-bright' if cfg['genderStyle']=='male' else 'f1-gentle';renderer=battle.Renderer('starlightArmor',hair,face)
+   renderer=battle.Renderer.for_appearance(bindings,bindings.preset(hair))
    im=renderer.actor('huntingBow','attack',p);frame.paste(im,(col*256,0),im);dr.text((col*256+5,258),cfg['label'],font=font,fill='#f3e1b8')
   frames.append(frame)
  art.gif(frames,D/'six-heads-bow-normal.gif',20)

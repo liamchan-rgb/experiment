@@ -30,3 +30,7 @@
 两套B已补原四武器×七状态战斗分层，并完成3男式+3女式发型、4套可独立换的五官；八向头部与战斗注册均有实际资源。批量正常GIF、全身1×/2×和复核数据见 [统一交付](Art/Integration/Appearance-battle-custom-heads-v1/README.md)。新资源用户认可待反馈，当前离线资产；未改App图集、UI/存档、课堂基线或版本。
 
 后续两步：集中确认/精修新战斗与头部；按对接协议接入人物自定义/存档与demo/课堂，再归档直接IPA。
+
+## 行走/战斗头部同步修订（2026-11-08）
+
+新默认批量预览以 [两场景同步页](Art/Review/Battle/appearance-synchronized-v1/README.md) 为准。逐玩家同一 outfit/hair/face 记录，不因近远程动作换回旧头；完整绑定见 Art/Integration/Appearance-battle-custom-heads-v1/scene-bindings.json。旧战斗服装页保留历史。当前仅资源装配与离线审核，App UI/存档尚未接入。

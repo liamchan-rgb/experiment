@@ -179,11 +179,19 @@ def wardrobe(item):
 def head_image(path):return Image.open(path).convert('RGBA')
 
 class Renderer:
- def __init__(self,item,hair=None,face=None):
+ def __init__(self,item,hair=None,face=None,head_layers=None):
   self.item=item;self.parts,self.bowAtlas,self.bowTorso=wardrobe(item)
   self.head={}
   if hair:self.head['MeadowBattleHeroHair']=head_image(str(R/f'Art/Parts/P1-v1/custom-heads-v1/hair-{hair}/battle/hair.png'))
   if face:self.head['MeadowBattleHeroFace']=head_image(str(R/f'Art/Parts/P1-v1/custom-heads-v1/face-{face}/battle/face.png'))
+  if head_layers is not None:
+   if hair or face:raise ValueError('choose shared appearance OR legacy explicit head, not both')
+   if set(head_layers)!={'MeadowBattleHeroHair','MeadowBattleHeroFace'}:raise ValueError('complete shared head required')
+   self.head={slot:head_image(str(path)) for slot,path in head_layers.items()}
+ @classmethod
+ def for_appearance(cls,bindings,choice):
+  item,layers=bindings.battle(choice)
+  return cls(item,head_layers=layers)
  def generic(self,weapon,clip,p):
   if weapon in ['greatSword','legendaryStaff']:
    q=pose_tables()[weapon][clip,round(p*600)];root=(q['rootOffset']['x'],q['rootOffset']['y']);ts={n:((t['pivot']['x'],t['pivot']['y']),(t['offset']['x'],t['offset']['y']),t['rotation']) for n,t in q['layers'].items()}
@@ -234,8 +242,13 @@ class Renderer:
   return self.bow(clip,p) if weapon=='huntingBow' else self.generic(weapon,clip,p)
 
 
-def review(stills=False):
- D.mkdir(parents=True,exist_ok=True);renderers={item:Renderer(item) for item in art.front.PALETTES}
+def review(stills=False,destination=None):
+ # Keep the first delivery's old-head boards as historical evidence. New exports
+ # must read the same identity record used by walking, including native bow.
+ D=Path(destination) if destination else R/'Art/Review/Battle/appearance-synchronized-v1'
+ bindings=load('battle_shared_appearance',R/'scripts/appearance-scene-binding.py').SceneBindings()
+ D.mkdir(parents=True,exist_ok=True)
+ renderers={item:Renderer.for_appearance(bindings,bindings.preset(name)) for item,name in bindings.data['battleReviewPresets'].items()}
  font=ImageFont.truetype('/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf',12)
  reports=[]
  for item,renderer in renderers.items():
@@ -275,7 +288,7 @@ def review(stills=False):
     for j,f in enumerate(decoded[start:start+4]):page.paste(f,(j%2*1024,j//2*560))
     path=D/'decoded'/f'{sequence}-{start//4+1:03}.png';path.parent.mkdir(exist_ok=True);page.save(path)
    reports.append({'file':f'both-armors-{sequence}-normal.gif','frames':len(decoded),'durationMs':total,'sha256':sha(D/f'both-armors-{sequence}-normal.gif')})
- write(D/'animation-checks.json',{'clips':reports,'scope':'existing production pose samples; independent layer rendering, not App or device capture','newArtApproval':None})
+ write(D/'animation-checks.json',{'appearancePresets':bindings.data['battleReviewPresets'],'sharedAppearanceBindings':'Art/Integration/Appearance-battle-custom-heads-v1/scene-bindings.json','clips':reports,'scope':'existing production pose samples; independent layer rendering, not App or device capture','newArtApproval':None})
 
 
 if __name__=='__main__':
