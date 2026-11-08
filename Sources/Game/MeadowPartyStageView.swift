@@ -29,6 +29,8 @@ final class MeadowPartyStageView:UIView {
     private let diceView=MeadowBattleDiceView()
     private var catalog=try? GameCatalog.initial()
     private var current:String?
+    /// The targets picked in the battle UI (their health bars stay in full view).
+    private var chosenFriend="p1",chosenFoe="m1"
     private var diceActor="p1",diceAction:PartyAction?,diceVisibleAt=0.0,diceSettledAt:Double?,diceExitAt:Double?,diceConfirmedAt:Double?
     private var dimFrom=0.0,dimTarget=0.0,dimChangedAt=0.0,castDim=0.0
     private var state:GameState?
@@ -145,6 +147,14 @@ final class MeadowPartyStageView:UIView {
         cameraTransform=nil;poseKeys=[:];setNeedsLayout()
     }
     required init?(coder:NSCoder) { fatalError("init(coder:) has not been implemented") }
+    /// With many units on the field only the one acting, the picked targets and whoever was just hurt keep the full name-and-numbers header;
+    /// everyone else shows a slim bar (the turn-order row above names them). The classic 2-hero battle keeps every header in full.
+    private func compactVitals(_ id:String) {
+        guard let label=labels[id] else { return }
+        let full=zoom<=1.0 || id==current || id==chosenFriend || id==chosenFoe || (hurt[id].map { sceneTime-$0<2.5 } ?? false) || (recovery[id].map { sceneTime-$0<2.0 } ?? false)
+        label.compact = !full
+        if !full { let f=label.frame;label.frame=CGRect(x:f.midX-36,y:f.maxY-14,width:72,height:12) }
+    }
     /// Puts a sprite view at `rect` (world units); with `mirroredAbout` it is flipped left-right about that x (a hero of the PvP right-hand team).
     private func place(_ view:UIView,_ rect:CGRect,mirroredAbout axis:CGFloat?) {
         view.transform=axis == nil ? .identity:CGAffineTransform(scaleX:-1,y:1)
@@ -156,7 +166,7 @@ final class MeadowPartyStageView:UIView {
     func stop() { MeadowMonsterFrames.retain([]);clock.stop();intent=nil;impact=nil;completion=nil;focus=nil;skillVFX=[];procVFX=[];pendingStatusCues=[];statusSnapshots=[:] }
     func displayedVitals(for unitID:String,health:Int,shield:Int)->(health:Int,shield:Int) { statusSnapshots[unitID] ?? (health,shield) }
     func show(_ value:GameState,friend:String,foe:String,current:String?,catalog:GameCatalog) {
-        state=value;self.current=current;self.catalog=catalog;fx.friend=friend;fx.foe=foe
+        state=value;self.current=current;self.catalog=catalog;fx.friend=friend;fx.foe=foe;fx.current=current;chosenFriend=friend;chosenFoe=foe
         MeadowMonsterFrames.retain(Set(value.units.values.filter{$0.kind == .monster && renderIDs.contains($0.id)}.compactMap{MonsterVisualSpec.find($0.templateID)?.id}))
         for id in renderIDs where value.units[id]?.isAlive==false {
             if id.hasPrefix("m"),deaths[id]==nil {deaths[id]=sceneTime-MeadowBattleVisualMotion.deathDuration}
@@ -445,7 +455,7 @@ final class MeadowPartyStageView:UIView {
                 if key != poseKeys[id] { shadows[id]?.update(image:actor.poseSilhouette,soleY:actor.poseFootAnchorPx.y,contacts:actor.poseContacts.map { .init(point:$0,radius:12) });poseKeys[id]=key }
                 attached[id]?.update(shield:shownVitals.shield,preview:0,time:sceneTime,formation:shownVitals.shield==0 ? formation[id].flatMap { sceneTime-$0<1.0 ? sceneTime-$0:nil }:nil,formationBase:0,birth:birth[id].map { sceneTime-$0 },contact:contact[id].map { sceneTime-$0 },broken:broken[id].map { sceneTime-$0 },recovery:unit.isAlive ? recovery[id].map { sceneTime-$0 }:nil,recoveryTier:recoveryTier[id])
                 shadows[id]?.spriteFrame=spriteRect
-                labels[id]?.frame=CGRect(x:f.x-88,y:f.y-170,width:176,height:44)
+                labels[id]?.frame=CGRect(x:f.x-88,y:f.y-170,width:176,height:44);compactVitals(id)
             } else if let view=monsters[id] {
                 let species=MonsterVisualSpec.find(unit.templateID)
                 let s=CGFloat(species?.scale ?? PartyVisual.enemyScale)
@@ -503,7 +513,7 @@ final class MeadowPartyStageView:UIView {
                 attached[id]?.layer.zPosition=view.layer.zPosition+2
                 attached[id]?.update(shield:unit.isAlive ? shownVitals.shield:0,preview:0,time:sceneTime,formation:shownVitals.shield==0 ? formation[id].flatMap{sceneTime-$0<1.0 ? sceneTime-$0:nil}:nil,formationBase:0,birth:birth[id].map{sceneTime-$0},contact:contact[id].map{sceneTime-$0},broken:broken[id].map{sceneTime-$0},recovery:nil,recoveryTier:nil)
                 shadows[id]?.spriteFrame=species == nil ? view.frame:baseFrame.offsetBy(dx:shadowShift,dy:0)
-                labels[id]?.frame=CGRect(x:f.x-84,y:f.y-(species == nil ? 256*Double(s)+34:224*Double(s)+46),width:168,height:44)
+                labels[id]?.frame=CGRect(x:f.x-84,y:f.y-(species == nil ? 256*Double(s)+34:224*Double(s)+46),width:168,height:44);compactVitals(id)
             }
         }
         if let value=intent {
@@ -693,6 +703,8 @@ private final class MeadowPartyEffectsView:UIView {
     private func hitPoint(_ id:String,shielded:Bool=false,weaponID:String?=nil)->PartyPoint {PartyVisual.hitPoint(target:id,shielded:shielded,weaponID:weaponID,templateID:templates[id])}
     var intent:PartyIntent?,focus:PartyAction?
     var friend="p1",foe="m1",focusTarget="p1"
+    /// The unit whose turn it is: a gold marker bobs above its head while nothing is playing.
+    var current:String?
     var meetsShield=false
     var age=0.0,time=0.0
     var messages:[MeadowPartyMessage]=[]
@@ -801,8 +813,23 @@ private final class MeadowPartyEffectsView:UIView {
         for (foot,power) in recoveryLights { glow(foot,105,27,power*0.65,.systemGreen);glow(PartyPoint(foot.x,foot.y-70),42,85,power*0.12,.systemGreen) }
         if !gpuDrawsSkills { for r in monsterRecoveries+allyRecoveries { MeadowSkillProceduralDrawing.drawHeal(r.tier,age:r.age,foot:r.foot,chest:r.chest,in:ctx,bounds:bounds) } }
         if intent==nil {
-            for (id,color) in [(friend,UIColor.systemGreen),(foe,MeadowPreviewPalette.gold)] {
-                if let p=PartyVisual.foot(id) { ctx.setStrokeColor(color.withAlphaComponent(0.65).cgColor);ctx.setLineWidth(2);ctx.strokeEllipse(in:CGRect(x:p.x-36,y:p.y-7,width:72,height:14)) }
+            // The picked targets: a wide pulsing ring on the ground, filled with soft light so it reads at a glance.
+            let pulse=0.75+0.25*sin(time*5)
+            for (id,color) in [(friend,UIColor.systemGreen),(foe,UIColor(red:1,green:0.45,blue:0.35,alpha:1))] {
+                guard let p=PartyVisual.foot(id) else { continue }
+                let ring=CGRect(x:p.x-54,y:p.y-11,width:108,height:22)
+                ctx.setFillColor(color.withAlphaComponent(0.16*pulse).cgColor);ctx.fillEllipse(in:ring)
+                ctx.setStrokeColor(color.withAlphaComponent(0.95*pulse).cgColor);ctx.setLineWidth(3.5);ctx.strokeEllipse(in:ring)
+            }
+            // Whose turn it is: a gold arrow and tag bobbing above the head (above the health header).
+            if let id=current,let foot=PartyVisual.foot(id) {
+                let px=CGFloat(foot.x),top=CGFloat(foot.y)-CGFloat(id.hasPrefix("m") ? 266:196)+CGFloat(sin(time*6)*4)
+                let tag=NSAttributedString(string:"行动中",attributes:[.font:UIFont.systemFont(ofSize:19,weight:.heavy),.foregroundColor:UIColor(red:0.12,green:0.1,blue:0.04,alpha:1)])
+                let size=tag.size(),pill=CGRect(x:px-size.width/2-9,y:top-size.height-5,width:size.width+18,height:size.height+4)
+                ctx.setFillColor(MeadowPreviewPalette.gold.cgColor);ctx.addPath(UIBezierPath(roundedRect:pill,cornerRadius:pill.height/2).cgPath);ctx.fillPath()
+                tag.draw(at:CGPoint(x:pill.minX+9,y:pill.minY+2))
+                ctx.beginPath();ctx.move(to:CGPoint(x:px-9,y:top-4));ctx.addLine(to:CGPoint(x:px+9,y:top-4));ctx.addLine(to:CGPoint(x:px,y:top+8));ctx.closePath()
+                ctx.setFillColor(MeadowPreviewPalette.gold.cgColor);ctx.fillPath()
             }
         }
         if let intent {

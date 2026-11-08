@@ -19,8 +19,8 @@ struct FormationRegression {
         }
         var cases = 0
         for pvp in [false, true] {
-            for n in 1...F.maxHeroes {
-                for k in (pvp ? 1...F.maxHeroes : 0...F.maxMonsters) {
+            for n in 1...(pvp ? F.maxPvPSide : F.maxHeroes) {
+                for k in (pvp ? 1...F.maxPvPSide : 0...F.maxMonsters) {
                     cases += 1
                     let players = (1...n).map { "p\($0)" }, foes = k == 0 ? [] : (1...k).map { pvp ? "q\($0)" : "m\($0)" }
                     let l = F.layout(players: players, foes: foes, pvp: pvp), name = "\(pvp ? "PvP " : "")\(n)v\(k)"
@@ -55,6 +55,13 @@ struct FormationRegression {
         // More units than slots: the extras are left out, nothing crashes.
         let over = F.layout(players: (1...9).map { "p\($0)" }, foes: (1...5).map { "m\($0)" }, pvp: false)
         check(over.feet.count == 10 && over.zoom == 1.45, "overflow: \(over.feet.count) placed at zoom \(over.zoom)")
+        // PvP never needs more than the 1.25 world, and 3v4 / 4v3 are mirrored slot by slot.
+        for (a, b) in [(4, 3), (3, 4)] {
+            let l = F.layout(players: (1...a).map { "p\($0)" }, foes: (1...b).map { "q\($0)" }, pvp: true)
+            check(l.zoom == 1.25 && l.feet.count == a + b, "PvP \(a)v\(b): zoom \(l.zoom), \(l.feet.count) placed")
+        }
+        let tooMany = F.layout(players: (1...7).map { "p\($0)" }, foes: (1...7).map { "q\($0)" }, pvp: true)
+        check(tooMany.feet.count == 8 && tooMany.zoom == 1.25, "PvP over the limit: \(tooMany.feet.count) placed at zoom \(tooMany.zoom)")
         if failures > 0 { print("battle formation regression: \(failures) failure(s)"); exit(1) }
         print("battle formation regression: \(cases) team sizes passed")
     }

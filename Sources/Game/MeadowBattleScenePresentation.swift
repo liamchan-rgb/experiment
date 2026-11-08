@@ -507,8 +507,16 @@ final class MeadowBattleVitalsView: UIView {
         shieldTrack.isHidden=shield==0
         accessibilityLabel=name;accessibilityValue="生命\(hp)/\(maximum)，护盾\(shield)";setNeedsLayout()
     }
+    /// A slim bar without name and numbers (for crowded battles); the owner sizes the view.
+    var compact=false { didSet { if compact != oldValue { title.isHidden=compact;backgroundColor=compact ? UIColor.black.withAlphaComponent(0.35):MeadowPreviewPalette.panel;setNeedsLayout() } } }
     override func layoutSubviews() {
-        super.layoutSubviews();title.frame=CGRect(x:3,y:1,width:bounds.width-6,height:23)
+        super.layoutSubviews()
+        if compact {
+            track.frame=CGRect(x:2,y:2,width:bounds.width-4,height:5);fill.frame=CGRect(x:0,y:0,width:track.bounds.width*hp,height:5)
+            shieldTrack.frame=CGRect(x:2,y:8,width:bounds.width-4,height:2);shieldFill.frame=CGRect(x:0,y:0,width:shieldTrack.bounds.width*ward,height:2)
+            return
+        }
+        title.frame=CGRect(x:3,y:1,width:bounds.width-6,height:23)
         track.frame=CGRect(x:6,y:27,width:bounds.width-12,height:7);fill.frame=CGRect(x:0,y:0,width:track.bounds.width*hp,height:7)
         shieldTrack.frame=CGRect(x:6,y:36,width:bounds.width-12,height:4);shieldFill.frame=CGRect(x:0,y:0,width:shieldTrack.bounds.width*ward,height:4)
     }

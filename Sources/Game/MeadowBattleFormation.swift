@@ -35,6 +35,8 @@ enum MeadowBattleFormation {
         1.45: [(940, 640), (1140, 770), (1180, 590)],
     ]
     static let maxHeroes = 7, maxMonsters = 3
+    /// PvP: at most 4 heroes per side (3v4 or 4v3 in the full game), so it never needs more than zoom 1.25.
+    static let maxPvPSide = 4
 
     /// The smallest world that holds this many units: the classic 2-hero stand keeps zoom 1 (and exactly its old feet).
     static func zoom(players: Int, foes: Int, pvp: Bool) -> Double {
@@ -45,8 +47,9 @@ enum MeadowBattleFormation {
     }
 
     /// Feet for the left team (`players`) and the right team (`foes`: monsters, or the other heroes in PvP, mirrored left-right).
-    /// Units past the slot count (more than 7 heroes / 3 monsters) are left out.
+    /// Units past the slot count (more than 7 heroes / 3 monsters, or 4 per side in PvP) are left out.
     static func layout(players: [String], foes: [String], pvp: Bool) -> Layout {
+        let players = pvp ? Array(players.prefix(maxPvPSide)) : players, foes = pvp ? Array(foes.prefix(maxPvPSide)) : foes
         let z = zoom(players: players.count, foes: foes.count, pvp: pvp), w = 1000 * z
         var feet: [String: (x: Double, y: Double)] = [:], mirrored: Set<String> = []
         let left = heroes[z]!

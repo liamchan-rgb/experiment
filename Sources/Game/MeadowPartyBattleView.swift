@@ -21,7 +21,9 @@ final class MeadowPartyBattleView:UIView {
     private let title=MeadowPreviewPalette.label("小队支援",size:26,weight:.heavy)
     private let hint=MeadowPreviewPalette.label("",size:17,weight:.semibold)
     private let header=UIView(),panel=UIView()
-    private let track=MeadowTurnTrackView(frame:.zero)
+    private let track=MeadowTurnOrderView(frame:.zero)
+    /// Touch has no hover: the first tap on a skill previews it (the lens darkens, the hint says so), the second tap commits it.
+    private var armed:PartyAction?
     private let health=MeadowBattleResourceBar(),ward=MeadowBattleResourceBar()
     private let ap=MeadowBattleActionPointsView()
     private let buff=MeadowPartyBuffButton(type:.system),shieldBuff=MeadowPartyBuffButton(type:.system)
@@ -52,6 +54,7 @@ final class MeadowPartyBattleView:UIView {
         for _ in 0..<6 { let card=MeadowPreviewCard(title:"",text:"");skills.append(card);skillScroll.addSubview(card) }
         skillScroll.addSubview(items);items.showsMenuAsPrimaryAction=true
         stage.onChoose={ [weak self] id in self?.choose(id) }
+        track.onSelect={ [weak self] id in self?.choose(id) }
         stage.onPresentationChanged={ [weak self] in self?.refresh() }
         accessibilityIdentifier="meadowPartySupportEncounter"
     }
@@ -88,12 +91,20 @@ final class MeadowPartyBattleView:UIView {
     }
     private func choose(_ id:String) {
         guard model?.pending==nil else { return }
+        disarm()
         if id.hasPrefix("p") { friend=id } else { foe=id };refresh()
     }
     private func target(_ action:PartyAction)->String { action.isOffensive ? foe:friend }
+    private func disarm() { if armed != nil { armed=nil;stage.preview(nil,target:friend) } }
+    /// A skill card was pressed: with a pointer (hover already previewed it) or on the second tap, it goes; otherwise it is only previewed.
+    private func pressed(_ action:PartyAction) {
+        if armed==action || focusedAction==action { perform(action);return }
+        armed=action;focusedAction=nil;stage.preview(action,target:target(action))
+        hint.text="已预览「\(action.title)」· 再点一次确认出手 · 点别的角色或技能可改选"
+    }
     private func perform(_ action:PartyAction) {
         guard active,let model,let intent=model.prepare(action,target:target(action)) else { return }
-        let token=generation;refresh()
+        armed=nil;let token=generation;refresh()
         stage.play(intent,before:model.state,confirmed:model.confirmedReceipt,onImpact:{ [weak self] in
             guard let self,self.active,self.generation==token else { return nil }
             do { let receipt=try model.commit(intent.id);if let receipt{self.onCommit?(receipt)};return receipt }
@@ -134,7 +145,8 @@ final class MeadowPartyBattleView:UIView {
         title.text=model.terminal ? (state.players.contains(where: \.isAlive) ? "小队胜利":"小队倒地") : (campaignEngine == nil ? "小队支援":"林地遭遇")+" · 第\(model.round)轮"
         let showing=busy ? (stage.actorInAction ?? model.pending?.actor ?? current):current
         let name=showing.flatMap { state.units[$0]?.name } ?? "演练结束"
-        hint.text=busy ? "\(name) · 动作进行中" : "\(name)行动 · 友方 \(friend.uppercased()) / 敌方 \(model.state.units[foe]?.name ?? foe) · 点角色选目标"
+        if busy { armed=nil }
+        if armed==nil { hint.text=busy ? "\(name) · 动作进行中" : "\(name)行动 · 友方 \(friend.uppercased()) / 敌方 \(model.state.units[foe]?.name ?? foe) · 点角色或上方顺序条选目标" }
         let displayActor=showing ?? "p1"
         if let unit=state.units[displayActor] {
             let visible=stage.displayedVitals(for:displayActor,health:unit.health,shield:unit.shield)
@@ -150,8 +162,15 @@ final class MeadowPartyBattleView:UIView {
             if visible.shield>0 { shieldBuff.show(title:"护盾 · \(visible.shield)",detail:"优先抵挡伤害\n新旧授盾取较高值",symbol:"shield.fill",color:.systemCyan) } else { shieldBuff.hide() }
         }
         let queue=state.battle?.queue ?? ["p1","p2"]+model.monsterIDs
-        let names=Dictionary(uniqueKeysWithValues:queue.map{($0,state.units[$0]?.name ?? $0)})
-        track.show(ids:queue,names:names,current:showing,done:state.battle?.acted.subtracting(Set([showing ?? ""])) ?? [],down:Set(state.units.values.filter { !$0.isAlive }.map(\.id)))
+        let acted=state.battle?.acted ?? []
+        let entries:[MeadowTurnOrderView.Entry]=queue.compactMap { id in
+            guard let unit=state.units[id] else { return nil }
+            let shown=stage.displayedVitals(for:id,health:unit.health,shield:unit.shield)
+            let maximum=(try? GameRules.attributes(unit,catalog:model.engine.catalog).maximumHealth) ?? unit.baseAttributes.maximumHealth
+            return MeadowTurnOrderView.Entry(id:id,name:unit.name,hp:shown.health,maxHP:maximum,shield:shown.shield,enemy:unit.kind == .monster,acted:acted.contains(id) && id != showing,down:!unit.isAlive)
+        }
+        track.show(entries:entries,current:showing,round:model.round,selected:[friend,foe],finished:model.terminal ? (state.players.contains(where: \.isAlive) ? "战斗胜利":"小队倒地"):nil)
+        UIView.animate(withDuration:0.2) { self.panel.alpha=busy ? 0.55:1 }
         stage.show(state,friend:friend,foe:foe,current:current,catalog:model.engine.catalog)
         let actions:[PartyAction]=busy ? showing.map { model.actions(for:$0) } ?? []:model.playerActions()
         if busy { focusedAction=nil }
@@ -164,11 +183,11 @@ final class MeadowPartyBattleView:UIView {
             b.previewStrength=0;b.previewColor = .clear
             b.button.removeTarget(nil,action:nil,for:.touchUpInside)
             b.button.removeAction(identifiedBy:UIAction.Identifier("party-skill"),for:.touchUpInside)
-            b.button.addAction(UIAction(identifier:UIAction.Identifier("party-skill"),handler:{ [weak self] _ in self?.perform(a) }),for:.touchUpInside)
+            b.button.addAction(UIAction(identifier:UIAction.Identifier("party-skill"),handler:{ [weak self] _ in self?.pressed(a) }),for:.touchUpInside)
             b.onFocus={ [weak self] focused in
                 guard let self else { return }
-                if focused { self.focusedAction=a;self.stage.preview(a,target:self.target(a)) }
-                else if self.focusedAction==a { self.focusedAction=nil;self.stage.preview(nil,target:self.target(a)) }
+                if focused { self.focusedAction=a;self.armed=nil;self.stage.preview(a,target:self.target(a)) }
+                else if self.focusedAction==a { self.focusedAction=nil;if self.armed==nil { self.stage.preview(nil,target:self.target(a)) } }
             }
             b.button.accessibilityHint=result.allowed ? "执行技能":result.message
         }

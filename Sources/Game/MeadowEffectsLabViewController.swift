@@ -18,7 +18,7 @@ final class MeadowEffectsLabViewController: UIViewController {
     private var species = ["slime", "wolf"]
     private var sequence: Timer?
     /// Formations the full game uses: heroes (left) against monsters, or two hero teams (PvP, the right team mirrored).
-    private static let formations: [(name: String, heroes: Int, foes: Int, pvp: Bool)] = [("2v2", 2, 2, false), ("4v3", 4, 3, false), ("7v3", 7, 3, false), ("PvP4", 4, 4, true), ("PvP7", 7, 7, true)]
+    private static let formations: [(name: String, heroes: Int, foes: Int, pvp: Bool)] = [("2v2", 2, 2, false), ("4v3", 4, 3, false), ("7v3", 7, 3, false), ("PvP 4v3", 4, 3, true), ("PvP 3v4", 3, 4, true)]
     private var formation = 0
     private var pvp: Bool { Self.formations[formation].pvp }
     /// The left team (P1 is always the one acting) and the right team (monsters, or the PvP rivals).
