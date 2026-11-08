@@ -1,0 +1,16 @@
+{
+  "rightRotationDegrees": -25,
+  "rightTranslation": [
+    -14,
+    -6
+  ],
+  "pivot": [
+    135,
+    148
+  ],
+  "method": "One rigid source registration in original torso-local coordinates; preserve sword pixels, follow original torso transform; left unchanged.",
+  "headOcclusion": "Right view grip is behind head; do not draw through skull merely to keep grip visible.",
+  "artApproval": null,
+  "owner": "root",
+  "subagentsUsed": false
+}

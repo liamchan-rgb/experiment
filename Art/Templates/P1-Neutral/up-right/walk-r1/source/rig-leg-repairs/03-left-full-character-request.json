@@ -1,0 +1,5 @@
+{
+  "artifact": "/workspace/generated_images/exec-22be8c3c-14fc-440c-b4fd-d6df5ea3358d.png",
+  "prompt": "Edit this COMPLETE small chibi game character walk frame in ordinary white undershirt and charcoal sports shorts. Keep head, neck, torso, clothing, both arms and the bent near RIGHT passing leg unchanged. Correct ONLY the FAR LEFT support leg and its complete bare foot so the stance transitions smoothly to the next walking frame. Far-left hip near (116,177), gently bent knee near(119,195), ankle near(124,209), sole/heel near(125,213), on original256 square. The second image is a simple colored technical pose guide for just that corrected far-left limb; replace all guide colors with the character's normal warm skin and thin pixel outlines. Show a complete normal character with both natural feet, no extra limbs, no missing pieces, no injury. Keep same character size and fixed rear UP-RIGHT camera, bald back of skull, back neckline, upper-left lighting. Transparent whole256 framing, do not zoom/crop. This is routine animation correction for a family-friendly 2D RPG.",
+  "status": "full-character-source-pending-semantic-leg-extraction"
+}

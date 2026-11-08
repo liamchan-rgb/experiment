@@ -1,0 +1,104 @@
+{
+  "originalSHA256": "da6df36d4152e63f91e9556280f98c50fa8ff51103ed5fb2f3d9b84d9468b937",
+  "retouchSHA256": "14e804fd5f63169b05b4deca63a919bdc52561965ba212dce79dcfbf75f2569c",
+  "items": [
+    {
+      "asset": "NodeCombatOutpost",
+      "nodeKind": "combat",
+      "canvas": [
+        512,
+        512
+      ],
+      "anchorY": 0.08,
+      "sourceCell": [
+        0,
+        0,
+        627,
+        627
+      ],
+      "matteSpillPixelsRepaired": 933,
+      "fixedCellTransform": {
+        "scale": 0.7655502392344498,
+        "translation": [
+          16,
+          16
+        ]
+      },
+      "sha256": "02aefae21fe853343b6ab3809f31d37ef818c34de00a1baacf17146f03e4bc41"
+    },
+    {
+      "asset": "NodeBossSanctum",
+      "nodeKind": "boss",
+      "canvas": [
+        512,
+        512
+      ],
+      "anchorY": 0.08,
+      "sourceCell": [
+        627,
+        0,
+        627,
+        627
+      ],
+      "matteSpillPixelsRepaired": 52,
+      "fixedCellTransform": {
+        "scale": 0.7655502392344498,
+        "translation": [
+          16,
+          16
+        ]
+      },
+      "sha256": "34e236b6c358e217aeb31d0539d6ddd76c97eb0896c63d4d394f08a475b7d346"
+    },
+    {
+      "asset": "NodeRewardCache",
+      "nodeKind": "reward",
+      "canvas": [
+        512,
+        512
+      ],
+      "anchorY": 0.08,
+      "sourceCell": [
+        0,
+        627,
+        627,
+        627
+      ],
+      "matteSpillPixelsRepaired": 949,
+      "fixedCellTransform": {
+        "scale": 0.7655502392344498,
+        "translation": [
+          16,
+          16
+        ]
+      },
+      "sha256": "befa34a89d9932b1f964d4b55fcc8e233f5f4442d9c968340ffa44315a1077a0"
+    },
+    {
+      "asset": "NodeWaystone",
+      "nodeKind": "empty",
+      "canvas": [
+        512,
+        512
+      ],
+      "anchorY": 0.08,
+      "sourceCell": [
+        627,
+        627,
+        627,
+        627
+      ],
+      "matteSpillPixelsRepaired": 367,
+      "fixedCellTransform": {
+        "scale": 0.7655502392344498,
+        "translation": [
+          16,
+          16
+        ]
+      },
+      "sha256": "ca7d4d11881d91136c34eb6385c92aa9ddc9ee32e128295a34a6b3223ce07ebb"
+    }
+  ],
+  "artApproval": null,
+  "method": "image generation + image-tool retouch; fixed atlas slicing and technical matte decontamination; source retained"
+}

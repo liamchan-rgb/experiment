@@ -88,6 +88,38 @@ class CompositorTests(unittest.TestCase):
         for slot, image in bare.items():
             self.assertTrue(np.array_equal(image, dressed[slot]))
 
+    def add_transition_frames(self, identifiers):
+        reference=copy.deepcopy(self.motion['frames'][1])
+        for clip in ['walk-start','walk-stop']:
+            for frame in [1,2]:
+                item=copy.deepcopy(reference)
+                item.update(clip=clip,frame=frame)
+                self.motion['frames'].append(item)
+        for identifier in identifiers:
+            path=self.root/identifier/'asset.json'
+            asset=json.loads(path.read_text())
+            reference=copy.deepcopy(asset['bindings'][1])
+            for clip in ['walk-start','walk-stop']:
+                asset['clips'].append(clip)
+                for frame in [1,2]:
+                    item=copy.deepcopy(reference)
+                    item.update(clip=clip,frame=frame)
+                    asset['bindings'].append(item)
+            path.write_text(json.dumps(asset))
+
+    def test_transition_poses_render_through_the_same_asset_contract(self):
+        self.add_transition_frames(['fixture-body','fixture-hair','fixture-face'])
+        engine=self.engine()
+        expected=engine.render('fixture-body',['fixture-hair','fixture-face'],'down','walk',1)
+        for clip in ['walk-start','walk-stop']:
+            for frame in [1,2]:
+                self.assertTrue(np.array_equal(engine.render('fixture-body',['fixture-hair','fixture-face'],'down',clip,frame),expected))
+
+    def test_transition_appearance_requires_its_own_coverage(self):
+        self.add_transition_frames(['fixture-body'])
+        with self.assertRaisesRegex(ValueError,'does not supply'):
+            self.engine().render('fixture-body',['fixture-hair'],'down','walk-start',1)
+
     def test_head_uses_motion_anchor_and_preserves_local_size(self):
         layers = dict(self.engine().layers('fixture-body', ['fixture-face'], 'down', 'walk', 4))
         self.assertEqual(layers['face.eyes'].getpixel((114, 115)), (20, 90, 200, 255))

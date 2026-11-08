@@ -1,0 +1,14 @@
+{
+  "nativeCanvas": [
+    256,
+    256
+  ],
+  "independentSleevePNGsMatchCompositedSurfaces": true,
+  "nativeHandLayersHaveTransparency": true,
+  "stringAndArrowMeetDrawingFinger": true,
+  "farHandAnchoredAtBowGrip": true,
+  "originalSourceAssetsListedWithSHA256": true,
+  "imageGenerationUsed": false,
+  "runtimeImported": false,
+  "userApproved": false
+}

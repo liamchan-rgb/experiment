@@ -1,0 +1,145 @@
+{
+  "status": "single-reference-tool-colour-bake-review-pending",
+  "sourceReference": "source/relight-generated.png",
+  "registration": "source/relight-registration.json",
+  "uvMaps": "source/approved-left-uv",
+  "shapeOwner": "approved down-left r1 reflected",
+  "scope": "visible source pixels only; original hidden/outline and unmatched >2px material-boundary pixels retained; no per-frame image generation or silhouette changes",
+  "textures": [
+    {
+      "texture": "shirt",
+      "file": "source/relit-textures/shirt.png",
+      "sha256": "7ba33c3029304e6a28441904952f8bc2a48c4eabb41545c0d6f55ee6939cff35",
+      "visibleSourcePixels": 806,
+      "keptOriginalOutlinePixels": 80,
+      "toolColourSamplesByMaterial": {
+        "skin": 200,
+        "white": 525,
+        "gray": 0
+      },
+      "maxReferenceSampleDistancePixels": 2.0,
+      "retainedBoundaryPixelsBeyond2px": 1,
+      "alphaDifferencePixels": 0
+    },
+    {
+      "texture": "pants",
+      "file": "source/relit-textures/pants.png",
+      "sha256": "00966256bcad273fa2a92499ed995a7a6985da2cff6fc915362218a626ef8a2a",
+      "visibleSourcePixels": 341,
+      "keptOriginalOutlinePixels": 338,
+      "toolColourSamplesByMaterial": {
+        "skin": 3,
+        "white": 0,
+        "gray": 0
+      },
+      "maxReferenceSampleDistancePixels": 0.0,
+      "retainedBoundaryPixelsBeyond2px": 0,
+      "alphaDifferencePixels": 0
+    },
+    {
+      "texture": "arm.left",
+      "file": "source/relit-textures/arm.left.png",
+      "sha256": "990174e1a93bcfa052b5b6015a2f0892f4622bb46e1e6dd54eb37b4d945c09cb",
+      "visibleSourcePixels": 293,
+      "keptOriginalOutlinePixels": 59,
+      "toolColourSamplesByMaterial": {
+        "skin": 234,
+        "white": 0,
+        "gray": 0
+      },
+      "maxReferenceSampleDistancePixels": 1.0,
+      "retainedBoundaryPixelsBeyond2px": 0,
+      "alphaDifferencePixels": 0
+    },
+    {
+      "texture": "hand.left",
+      "file": "source/relit-textures/hand.left.png",
+      "sha256": "78e5cbf1fc600134dd2b3c4cf24e94938b1eb8d8e9ab65a525d10e326605bd77",
+      "visibleSourcePixels": 71,
+      "keptOriginalOutlinePixels": 16,
+      "toolColourSamplesByMaterial": {
+        "skin": 55,
+        "white": 0,
+        "gray": 0
+      },
+      "maxReferenceSampleDistancePixels": 1.0,
+      "retainedBoundaryPixelsBeyond2px": 0,
+      "alphaDifferencePixels": 0
+    },
+    {
+      "texture": "arm.right",
+      "file": "source/relit-textures/arm.right.png",
+      "sha256": "eb43145ea43c861fdcee4d38db4488971adc0d361e64b5d802b9128d22bf5de7",
+      "visibleSourcePixels": 478,
+      "keptOriginalOutlinePixels": 68,
+      "toolColourSamplesByMaterial": {
+        "skin": 410,
+        "white": 0,
+        "gray": 0
+      },
+      "maxReferenceSampleDistancePixels": 2.0,
+      "retainedBoundaryPixelsBeyond2px": 0,
+      "alphaDifferencePixels": 0
+    },
+    {
+      "texture": "hand.right",
+      "file": "source/relit-textures/hand.right.png",
+      "sha256": "9950a9bda65724ff7a4deeb12a575c14844c843613f5cca82f2b1056f182d77e",
+      "visibleSourcePixels": 95,
+      "keptOriginalOutlinePixels": 17,
+      "toolColourSamplesByMaterial": {
+        "skin": 78,
+        "white": 0,
+        "gray": 0
+      },
+      "maxReferenceSampleDistancePixels": 0.0,
+      "retainedBoundaryPixelsBeyond2px": 0,
+      "alphaDifferencePixels": 0
+    },
+    {
+      "texture": "leg.left",
+      "file": "source/relit-textures/leg.left.png",
+      "sha256": "cb0fba2514c5265d32c1e40dd56191e3baadf7736eb7e6c5f5f6f3e4375ec11b",
+      "visibleSourcePixels": 522,
+      "keptOriginalOutlinePixels": 64,
+      "toolColourSamplesByMaterial": {
+        "skin": 458,
+        "white": 0,
+        "gray": 0
+      },
+      "maxReferenceSampleDistancePixels": 1.0,
+      "retainedBoundaryPixelsBeyond2px": 0,
+      "alphaDifferencePixels": 0
+    },
+    {
+      "texture": "leg.right",
+      "file": "source/relit-textures/leg.right.png",
+      "sha256": "eef41cb75ff32244901d2dcfd7421bb193e73ce7a8ea4a51a900a267feb017c0",
+      "visibleSourcePixels": 620,
+      "keptOriginalOutlinePixels": 76,
+      "toolColourSamplesByMaterial": {
+        "skin": 544,
+        "white": 0,
+        "gray": 0
+      },
+      "maxReferenceSampleDistancePixels": 1.0,
+      "retainedBoundaryPixelsBeyond2px": 0,
+      "alphaDifferencePixels": 0
+    },
+    {
+      "texture": "head.base",
+      "file": "source/relit-textures/head.base.png",
+      "sha256": "b231a57c38e0187c94717e6995b3058fb5e90454876215f1a1bd4f73b8a8979a",
+      "visibleSourcePixels": 1387,
+      "keptOriginalOutlinePixels": 91,
+      "toolColourSamplesByMaterial": {
+        "skin": 1296,
+        "white": 0,
+        "gray": 0
+      },
+      "maxReferenceSampleDistancePixels": 1.0,
+      "retainedBoundaryPixelsBeyond2px": 0,
+      "alphaDifferencePixels": 0
+    }
+  ]
+}

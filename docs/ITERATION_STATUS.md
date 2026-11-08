@@ -1,4 +1,1579 @@
+## 人物自定义已接入课堂 · v0.19.0/build24（2026-11-08）
+
+用户“接到人物自定义”本轮已落实到课堂运行端。教师“管理→人物档案/行程槽→人物档案”可选六发型、四五官、星辉甲B天仪礼甲/龙纹甲B龙翼巡游甲。hair/face稳定ID可独立混搭，旧body/outfit及旧档保持兼容；人物槽、新行程、完整行程、历史/导入导出与P7保留同一选择。探索、背包、战斗与阴影共用人物记录，装扮不改属性、武器仍跟装备；公开端不显示教师编辑器。
+
+美术固定来源`13cbe2e250a74a1a8e5c4a0dd026c866fd2cdfa8`，F1为原正面盖耳r4；不再用r3短发。5406源依赖Git blob/SHA核对，派生130图像名/260文件，旧175c7dfc全局基线保留，逐文件混合来源；829资源SHA、411编译资源名、3骨架JSON通过。原八向104姿势、起停/120ms与四武器七状态不改。正侧面近臂/袖前景沿原层次；native弓新rest头跟一次torso。换装时仅合成所需图集，无逐帧CPU重合成。实际App组件4992全身对比RGBA零差异；源战斗PNG未重画，正常GIF2700ms/80实际帧、独立浏览器11个不同采样。主线程看整身总览与首中末实际GIF，不把机械穷举当全部人工目检。
+
+真实设备Release编译`40335ca5f8c6ba876d59c279f2b05c8a20dec30a`、run42480618163 attempt1，413规则/后台+6绘本核心零失败，另8工具检查。CRC/经典ZIP2.0/arm64/755/版本0.19.0/build24/Metal/全部来源资源与骨架检查通过，二进制不同build23。源码快照`01c222385be32310334b45ae38c0dcfab65d1db1`与编译提交分开；标签`custom-appearance-meadow-v0.19.0-20261108`，源码/图集/JSON/工具/Git bundle/IPA/GIF永久存archive-assets，独立bundle恢复/fsck/逐项公开GET通过。直接IPA再次完整GET200、78656566字节、SHA256`94aae4eb1b3449ebf4768b665bd251e65a99c8cbc96d1b2a3db302bcf2a881de`。归档run42481372759，回执收尾不递归存档。
+
+[直接IPA](https://raw.githubusercontent.com/liamchan-rgb/classroom-boardgame/1bd467d43e70d7dcb8f00decece403a104a4144c/custom-appearance-meadow-v0.19.0-20261108/ClassroomStage2-v0.19.0-unsigned.ipa) · [正常速度全身GIF](https://raw.githubusercontent.com/liamchan-rgb/classroom-boardgame/1bd467d43e70d7dcb8f00decece403a104a4144c/custom-appearance-meadow-v0.19.0-20261108/custom-appearance-normal.gif) · [可恢复存档/校验](https://github.com/liamchan-rgb/classroom-boardgame/blob/main/archives/custom-appearance-meadow-v0.19.0-20261108.json)
+
+仍无App/模拟器/实机运行、无子智能体；真实iPad点选/存取/跨场景与电视/性能由用户反馈。experiment本体仍Build95，仅美术源与本轮课堂对接日志；已交付IPA为课堂端，不冒称experiment单机demo重打新包。后两步：按安装反馈复查人物一致性；教师常用课堂配置预设。缺独立体型只标注。
+
+## 紫发盖耳发型：正侧面一致性 r4（2026-11-08）
+
+交付核验补记：实际r4源提交 `13cbe2e250a74a1a8e5c4a0dd026c866fd2cdfa8`，发布run42467575261/job128690546967全部步骤成功。59项公开文件完整GET200，共6095692字节，逐项SHA256匹配；回执 Art/Review/P1/purple-ear-cover-r4/public-downloads.json。临时上传分支/工作流已删除，无重复发布任务；收尾只补日志/回执，不更改App/课堂版本。
+
+用户“你只改战斗部分的就可以了，明明正面视图是长发盖住耳朵，换到侧面就不是了”，随即更正“不对是所有的侧面正方向侧面”。最新范围为行走正左/正右与现有战斗侧视，不仅战斗。r3整体短发改造是主线程理解错误，本轮撤回；不得把用户问题当作再改正面/剪短整款的授权。
+
+按原42df0a0a的盖耳正面恢复六个非正侧视角SVG/PNG及色板，逐字节保持参考。只对正左/正右画与正面同长度的连续盖耳发束，登记到战斗；耳区材质跟随正面长发，避免暗色补丁。ID保持、hair1.0.3，当前 Art/Review/P1/purple-ear-cover-r4。原五官/耳/皮肤/身体/衣服/手/武器/头注册及motion不改，其他217PNG不变。
+
+正左/正右耳核心区各204/204头发覆盖（旧57/56），战斗耳区覆盖，四脸正侧面实际眼像素零相交，六参考视角PNG/SVG与42df源完全一致。832行走+672战斗姿态复查；两正常GIF完整93帧，8×120ms行走/2700ms战斗。主线程看正面双侧与战斗1×/2×整身、GIF实际抽帧及七状态；机械全覆盖不当逐张目检，独立浏览器只验证GIF推进。无子智能体，无App/模拟器/实机。
+
+仍只Art/作者脚本与记录，App UI/存档/课堂基线和版本保持，无新IPA，新美术认可null。后两步：集中精修剩余外观反馈；同一人物外观接入自定义/存档与探索/战斗，再设备归档交直接IPA。
+
+## 紫发F1偏分层次短发 r3（2026-11-08）
+
+交付核验补记：r3实际源提交 `e4e8d1b921fb7509f671e6df8f96e263f01aa691`，发布run42464421110/job128680502849全部步骤成功。55项公开文件完整GET200，共6042947字节，逐项SHA256匹配；回执 Art/Review/P1/purple-bob-r3/public-downloads.json。临时上传分支/工作流已清除，无重复发布任务；收尾只补回执/日志，不改美术源或App/课堂版本。
+
+用户判退紫发款外形，主线程只重做F1：偏分刘海、较轻的耳侧发束、收短后颈与错落发尾，背部直条纹改弯曲发束，紫色提清晰度。稳定ID保持、hair1.0.2，八向96母版+256战斗头发九PNG；其余217头部/战斗衣物PNG逐字节保持。其他5发型、4五官、身体/衣服/手/武器/motion及头注册不改。当前 Art/Review/P1/purple-bob-r3，其他款仍以r2为准。
+
+初稿正面发梢碰外眼角已自行收回，不删眼/不放宽检查。八向合同、四套实际眼避让、透明RGB与无游离像素通过；832行走整人+672战斗姿态，四脸/两衣/四武器/七状态复核。两正常GIF完整93实际帧，walk8×120ms、战斗2700ms；固定采样色板降低离线导出内存而不改节奏/重复慢放。主线程看1×/2×全身八向前后、战斗站姿/七状态和实际GIF抽帧，机械全覆盖不算逐张目检。独立浏览器只查GIF推进，无App/模拟器/实机。
+
+环境已恢复；此前本地R2草稿先打包保留，再选择性对齐已交付42df0a0a3c2b15f8e67bf3787d47e7d8ae6564f5及最新远端日志，无整体reset。只清理一份已逐字节核对永久Downloads的旧Build95验证下载缓存，不改仓库IPA。当前只Art/作者脚本/记录，无智能体；App UI/存档/课堂基线及版本保持，未新打IPA，新用户美术认可仍null。后两步：集中精修外观反馈；同一人物外观接入自定义/存档与探索/战斗，设备归档交直接IPA。
+
+## 侧面发量覆盖 r2（2026-11-08）
+
+交付核验补记：实际r2源提交 ba0a601565effe469dc1684a627ce299c4ee7528，重建run42451122457。主线程已再次查看重建实际整身与动图解码图；124项公开文件完整GET200、共14157951字节，逐项匹配Git blob/字节与SHA256，PNG CRC通过。回执 Art/Review/P1/side-hair-coverage-r2/public-downloads.json。临时重建/验证分支在本次成功后删除；本轮仍仅资源审核，不推进App/课堂版本。原环境恢复后先比对本提交与本轮文件，不整体reset或覆盖其他未提交工作。
+
+六款发型下压侧发际线、补鬓发/耳上覆盖与斜下过渡；24母版SVG/PNG及6战斗头发，hair1.0.1、ID保持，正面/后三向/脸/身体/衣服/动作与注册不改。当前审核 Art/Review/P1/side-hair-coverage-r2。短鲍伯初稿斜左保护区问题已修，六项合同/四套实际眼零相交通过；196其他PNG不变，重新4032战斗/144行走，9GIF共370帧全解码，正常120ms行走及原战斗时钟；五只独立浏览器GIF推进。机械验证不替代主线程目检。
+
+本地主要整身检查后环境断连，当前从相同源在GitHub重建，重建输出在发布前由主线程再次核对；实际源提交与全公开GET回执另记。未委派智能体，未运行App/模拟器/实机，当前仅Art/作者脚本，未接入App UI/存档，experiment仍Build95、课堂v0.18.0/build23。后两步：集中精修外观反馈；同一人物外观接入探索/战斗与存档，再设备归档交直接IPA。用户认可仍null。
+
+## 行走/战斗发型与五官同步审核修订（2026-11-08）
+
+交付核验补记：本轮绑定/预览源提交 `ece5c5892ab40b0c60869af60d6af93ab67e58af`，原226PNG仍来自3ef48ebdb43d608d459fc438714fe0f6e1ed6d29，未改其像素。发布run42434021318/job128588869390全部步骤成功，115项公开文件完整GET200、共24456267字节，逐项SHA256匹配；回执 Art/Review/Battle/appearance-synchronized-v1/public-downloads.json。临时上传分支与工作流已清除，无重复发布任务；收尾仅补日志/回执，不推进App/课堂版本。
+
+用户要求“战斗的时候也要把五官和发型同步”。查明上轮已做新头部注册/持弓预览，但服装战斗总览仍用旧默认头。新权威审核页 Art/Review/Battle/appearance-synchronized-v1，正常并排GIF左行走右战斗，同一玩家同一发型/脸/衣服选择；原页已标历史并指向新版。
+
+scene-bindings.json 和 scripts/appearance-scene-binding.py 将同一稳定ID映射两场景资源，逐玩家不可变完整选择，验证后原子替换；非法脸不丢原选择、编辑一人不改另一人、未知玩家拒绝。Renderer.for_appearance同时替换头发和脸，原弓新头只跟一次torso，不叠原native旧头。战斗默认导出和头部行走/持弓重导也从同一预设读取，不按武器或性别另猜头部。
+
+48组合×4武器×7状态×3阶段=4032战斗整人合成与144行走通过，226张既有头部/衣服PNG源SHA逐一不变。三正常GIF全解码322实际帧，时长2700/2700/4380ms，行走仍120ms。主线程亲看男/女全部脸全身对照、两张八阶段对照、重剑/弓七状态和实际GIF抽帧；机械全覆盖不等于逐张人工目检，独立浏览器只测试GIF推进。未委派智能体、未运行App/模拟器/实机。
+
+本轮是资源同步合同与离线预览，不改Sources/Vendor、外观UI或人物存档，不称游戏安装包已生效。experiment仍Build95、课堂v0.18.0/build23、资源基线保持；用户未新增认可，不重打旧IPA。后两步仍为集中确认/精修新外观；按同步协议将同一人物外观记录接入自定义/存档与探索/战斗，再设备归档交直接IPA。
+
+## 双 B 战斗衣装与男女自定义头部（2026-11-08）
+
+交付核验补记：美术资源源提交 `3ef48ebdb43d608d459fc438714fe0f6e1ed6d29`；发布run42431828753/job128582217821全部步骤成功。474项公开文件完整GET200，共30423914字节，逐项SHA256匹配，回执 `Art/Integration/Appearance-battle-custom-heads-v1/public-downloads.json`。临时上传分支及工作流已清除，无重复发布任务；本次收尾只补回执/日志，不改美术资源或App/课堂基线。
+
+用户“可以，把战斗阶段的也做了。然后做几个人物自定义发型（区分男女）和五官”授权本轮。前次展示的两只B八向行走预览接受范围单独登记，不延伸为所有未展示组合/起停/新战斗/头部认可。实际新资源与批量正常GIF见 [本轮交付](../Art/Integration/Appearance-battle-custom-heads-v1/README.md)。固定原输入1f76bce38fb33742ff6eeaef1499c186f14c0fb6，仍在fix/build33-face-grounding-camera，不改App版本。
+
+完成两件B的现有四武器/七状态战斗挂载：通用衣身、肩甲、近臂上下袖与前后短护裙六层；弓沿已认可native骨架与345帧，只改衣物材质，双手、原皮肤、头和裤腿像素/alpha保持。新增三男式短碎/侧分/小束发、三女式短鲍伯/短侧马尾/盘发及四套独立五官；八向96head-local母版，每项104绑定，性别是样式标签不锁定搭配，同一身体、无新女体。战斗256注册五官固定位置，仅跟原头身变换；弓新头只应用一次原torso，不重复baked变换。
+
+主线程自行制作/返修/审核，无智能体。已返修首版发丝大面像头盔、五官过扁与战斗眼鼻口注册，短发/侧分轮廓差异。八张整身战斗表含280关键姿态，检查袖腕、腰裙与武器遮挡；全身发型/五官表与实际GIF抽帧已看。10项原合同/226PNG/48组合×104＝4992合成通过；91原输入逐一对Git blob；9只正常GIF/353实际帧完整机械解码。实际四只GIF在独立Chromium各12次130ms采样均推进，不能当App或设备性能验证。主线程目检范围另列，不把全部解码写成全部逐帧亲看。
+
+当前仅Art分层资源、脚本、批量审核与对接说明，未改Sources/Vendor、人物自定义UI/存档、课堂568基线；experiment仍Build95，课堂仍v0.18.0/build23。新资源userArtApproval为null，不打旧包冒充。未运行App/模拟器/实机。后两步：集中确认/精修这批新战斗/头部；按同步协议接入自定义与存档、demo/课堂，再审成套图集并设备Release归档交直接IPA。缺其他美术只登记。
+
+## 星辉甲/龙纹甲双B八向服装资源（2026-11-07）
+
+交付核验补记：美术源码 `7d0f3c2ad4b57191b1fc324cd885ba488c4bb800`，发布run42404662679成功，1027项公开文件完整GET200、共16916367字节，全部逐项匹配SHA256；回执 `Art/Review/P1/chat-apparel-v2-b-eight-way-r1/public-downloads.json`。临时上传分支/工作流已随发布清除，无重复发布任务。此后收尾提交仅补记录，不改美术源，不把课堂基线或App版本冒记成已更新。
+
+
+用户“两个都选择b”分别选定星辉甲B天仪礼甲、龙纹甲B龙翼巡游甲，随后“你一路做完所有方向的”授权本轮直接完成全部方向与原模组适配，不在C2暂停。实际资源 Art/Parts/P1-v1/chat-apparel-v2，审核与正常GIF见[交付记录](Art/Review/P1/chat-apparel-v2-b-eight-way-r1/README.md)。每件5默认+3右向静态view×4层＝32母版，两件64；沿用原motion、人体、头脸、裤靴、手和背剑，导出每件104绑定/416层，两件208姿势/832层引用。不是用生成整人图切层，也不重画104次。设计选型B不等于对新像素资源/动作的认可，userArtApproval仍null。
+
+主线程亲自制作/返修，完成全部13姿势×八向1×、八向站姿2×及侧向动作2×整身审核，四只八向总览/背剑GIF全部32实际解码帧接触表已看。共36正常GIF/512实际解码帧，walk8×120ms原节奏，起停沿原入口。2发型×2五官×背剑开关×104姿势，两件1664合成通过，64母版/832动作层RGBA/ICC/透明RGB/覆盖检查通过；原2392参考PNG逐一核原Git blob，motion SHA不变。独立Chromium只加载真实GIF，8次130ms采样确认推进；不是App/性能测试，不运行App/模拟器/实机，不委派智能体。
+
+返修过侧向底衣/后斜上臂漏出、正侧面远臂摆动露肤、原参考alpha=1远处插值哨兵被错误放大为实心点。现按原语义人体轮廓生成服装内衬，再叠原运动映射甲片；不修改身体，不以肤色阈值删边，不把肩甲钉到衣身，头和手按原drawOrder最后合成。
+
+当前仅完成离线服装母版/全八向原模组资源与审核候选，未更改App资源目录/版本或课堂568源资源基线，不称已接入游戏或可任意战斗换装。本轮不打IPA，experiment本体仍Build95。后两步：按用户八向反馈集中精修并确认；再按 docs/integration/classroom-art-sync.md 把已认可资源接入demo/课堂，审核实际成套图集后设备归档交直接IPA。缺其他美术仍只登记。
+
+## 星辉甲与龙纹甲正面选型（2026-11-07）
+
+用户插入要求“之前的那两套衣服没做完的……先出正面图看看”，暂缓首批课堂美术接入。已按原任务书分别生成两套A/B/C正面全身方案，见[选型记录](Art/Review/P1/chat-apparel-v2-front-concepts-20261107/README.md)。image_gen设计稿，主线程整身检查肩腕连接、胸腹收束和腰甲裤腿关系；不是项目逐像素原人物、256注册母版或真实四层资源，未导入运行时。两套selectedDesign/artApproval独立为null，旧候选保留。当前用户限定静态正面，不制作新动作/GIF/IPA，不运行App/模拟器/实机，不委派智能体。
+
+后两步：选款后制作正面四层并审整身1×/2×；再补其余四视角并复用原模组审核八向正常动图。细鳞/细线需要落到游戏尺寸时简化，概念图不得直接当挂载验收合格。
+
+## 行程/历史筛选与美术对接 · 课堂v0.18.0/build23（2026-11-07）
+
+用户继续下一项并要求说明以后experiment的人物骨骼/配饰/技能特效/UI等如何接入课堂。课堂行程页支持标题/成员/队伍/种子搜索、探索/战斗/结算状态、1—7人数叠加、保存时间或原槽号稳定排序；原槽号不随列表重排。空槽和损坏提示单独保留，坏档不被筛选隐藏。历史支持战斗/移动/资源/组队/外观/配置分类，涉及人物/怪物、关键字/旧新姓名/原序号、升降序；后台索引、50条递增加载，查询不写档/推进RNG。回退继续使用原ID，保留所选条目、撤回其后全部原操作，包括筛选/分页隐藏项，确认显示原序号和总数，先备份再恢复并暂停。
+
+完整美术协议已镜像在两仓库AGENTS入口：本仓库docs/integration/classroom-art-sync.md及模板classroom-art-update-template.json；课堂仓库docs/integration/experiment-art-sync.md及experiment-art-update-template.json。固定完整源SHA，成套盘点PNG/图集/骨骼锚点/配饰遮挡/姿态代码/技能时序/光照粒子/公开UI，按实际路径选择性合并；保留课堂教师私有权限、6学生+P7、绘本、固定画布/镜像、存档/规则，不整仓或旧Vendor覆盖。逐文件源提交与SHA、兼容标识、正常GIF、实际编译IPA和可恢复归档都要记录，不把混合来源冒记为一个新SHA。不自动热更新。
+
+课堂tools/plan_experiment_art_update.py仅生成提交间增改删/目标映射/源旧新与课堂当前哈希/适配差异报告，不做apply。真实初始盘点固定experiment 331ccbc3a9dec4e275774396dee30999f407d9df，相对175c7dfc的37项差异全部为Media/Build95离线交付证据，无运行时资源/呈现代码变化。本轮没有导入新美术，也没有推进568源资源基线；experiment本体仍Build95。源协议在331ccbc独立提交，当前记录只同步课堂交付结果。
+
+新增14Swift+4Python盘点专项，本地及实际CI完成403规则/后台+6绘本核心零失败，另8本地Python工具检查。设备Release实际编译`7b27d32e01582a96f4611538d9db5561663388f9`、run42396956759 attempt1，版本0.18.0/build23，最低iPadOS27.0、SDKiphoneos27.2；CRC/经典ZIP2.0/arm64/755/Metal/568源资源SHA/281编译名称/3挂载JSON通过，可执行文件不同build22。未运行App/模拟器/实机；实际iPad输入/长列表/电视隐私/性能由用户复核。8秒100帧正常GIF为离线筛选/协议结构示意，主线程四阶段接触表和逐帧解码已查，不是App/UIKit截图或性能/触摸回放。
+
+源码快照`70e286f08f768bc7d40fd3fe9525de6b66c931d4`与实际编译提交分开，标签`archive-browser-meadow-v0.18.0-20261107`。源码/协议/工具/Git bundle/IPA/诊断/GIF永久保存在archive-assets，ZIP逐文件/独立bundle恢复与fsck/全部公开文件GET通过，归档run42397858759；main只放索引。直接IPA完整GET200，62916115字节，SHA256`79f4fc233667f31c85e681fe017094938282b8eac03d3dd703fb81e19c6d797a`。
+
+[直接IPA](https://raw.githubusercontent.com/liamchan-rgb/classroom-boardgame/ec0c544576c2b55da4b91f00b23b7edf668fa4e7/archive-browser-meadow-v0.18.0-20261107/ClassroomStage2-v0.18.0-unsigned.ipa) · [正常速度筛选/对接示意GIF](https://raw.githubusercontent.com/liamchan-rgb/classroom-boardgame/ec0c544576c2b55da4b91f00b23b7edf668fa4e7/archive-browser-meadow-v0.18.0-20261107/archive-browser-normal.gif) · [可恢复存档/校验](https://github.com/liamchan-rgb/classroom-boardgame/blob/main/archives/archive-browser-meadow-v0.18.0-20261107.json)
+
+后两步：教师常用课堂配置预设；有真实experiment交付后，按本协议接入首批美术更新。缺失美术只登记，不擅自补画，不自动读取或上传教师设备真实存档。
+
+本轮本地GH_TOKEN过期，GitHub连接接口仍有效；已通过连接接口与仅本轮使用的publish-verified-build23工作流完成永久归档，收尾删除该临时工作流，无重复发布任务。命令行写权限未恢复，不输出凭据；后续写入可继续使用已连接接口。
+
+## 长期美术对接入口 · experiment → 课堂端（2026-11-07）
+
+用户明确之后在experiment更新人物骨骼/配饰/技能特效/UI等，课堂端按固定源提交选择性接入。制作与接入agent先读[完整对接协议](docs/integration/classroom-art-sync.md)，按[变更模板](docs/integration/classroom-art-update-template.json)记录PNG/图集/骨架JSON/姿态代码/时序/UI依赖与实际来源SHA。课堂已演进出6学生+P7/私有教师权限/存档，禁止整仓或Vendor反向覆盖。同步后必须正常GIF、设备Release/包检、直接IPA与可恢复归档；不运行App/模拟器/实机，缺美术只登记。本轮仅建立流程，不称未来美术已同步；课堂资源基线仍175c7dfc，experiment本体仍Build95。只读盘点工具在课堂tools/plan_experiment_art_update.py。
+
+## 人物与行程存档导入导出 · 课堂v0.17.0/build22（2026-11-07）
+
+本轮执行用户“开始下一步”，完成上次第一项存档导入导出。教师档案窗口右上“导入导出”，各人物/行程槽也可单独导出；单个或勾选多个槽组成JSON，系统“文件”窗口由用户选择保存位置。当前游戏进度需先存到行程槽；导出不覆盖工作档或槽，取消也无游戏副作用。人物仅含原姓名/现有装扮，行程保留完整地图/队伍/战斗队列/RNG/移动条/道路/镜头/历史，槽标题及原保存时间不变。
+
+导入先读文件并校验，支持统一version1备份及旧人物槽/人物档案/行程槽/地图工作档四种JSON。预览来源、条目选择、逐类目标槽和已有标题，重复/非法目标拒绝，确认框逐项列来源→目标与覆盖数量。只写所选槽，不立即替换当前行程；之后返回档案页点读取才应用。安全作用域和后台文件处理，128MiB限制，错误/取消可见；从文件窗口返回保留选择和目标。私有表单/文件窗口不进公开渲染树，不额外生成地图或规则引擎。
+
+覆盖前保存所有目标原始字节，包括损坏文件，再写pending日志后逐文件原子写；失败回滚整批，应用中断后下次槽读写先恢复原状态，原为空槽删除中断写入。恢复失败保留日志并阻止返回半份数据。导入页可从最近20份覆盖前备份重新进入预览，旧文件不删除；坏历史备份独立列错，原损坏字节仍保留，不声称修复坏原件。既有12人物/8行程槽、P7、历史与公开布局保持，无新美术，基础衣装标签更正但旧blue值兼容。
+
+新增21专项。本地及实际CI完成389规则/后台+6绘本核心零失败，另4本地Python工具检查；设备Release实际编译`46ae062fbb17663f4b015b9ab847dbd4f67c8289`，run42392999420 attempt1。版本0.17.0/build22，最低iPadOS27.0、SDKiphoneos27.2，CRC/经典ZIP2.0/arm64/755/Metal/568源资源SHA/281编译名称/3挂载JSON通过，可执行文件不同build21。初稿run42392920498在补文件窗口返回状态保护后被新构建取代，未交付。未运行App/模拟器/实机，实际系统文件供应商/触摸/菜单/弹窗/投屏/性能由用户安装复核。
+
+正常GIF为8秒、100×80ms离线流程示意，主线程四阶段接触表与逐帧解码已检查，不是App/UIKit截图、触摸或性能数据；示意文件窗口不进入游戏素材。源码快照`611acfbadd47300c0da04279e6605f65e7be3c82`与实际编译提交分开，标签`archive-save-transfer-meadow-v0.17.0-20261107`。完整源码/Git bundle/IPA/诊断/GIF已存archive-assets，逐文件ZIP/独立bundle恢复和fsck/全部公开文件GET通过，归档run42393595270；main只放索引。直接IPA完整GET200，62797083字节，SHA256`76915e2623346b619791927b4d52c8a70979ab004f220a5429922987ac694af2`。
+
+[直接IPA](https://raw.githubusercontent.com/liamchan-rgb/classroom-boardgame/10fcb0e9376f1c8ba7cf261955153a839aba5446/archive-save-transfer-meadow-v0.17.0-20261107/ClassroomStage2-v0.17.0-unsigned.ipa) · [正常速度导入导出示意GIF](https://raw.githubusercontent.com/liamchan-rgb/classroom-boardgame/10fcb0e9376f1c8ba7cf261955153a839aba5446/archive-save-transfer-meadow-v0.17.0-20261107/save-transfer-normal.gif) · [可恢复存档/校验](https://github.com/liamchan-rgb/classroom-boardgame/blob/main/archives/save-transfer-meadow-v0.17.0-20261107.json)
+
+experiment本体仍Build95，只同步本轮记录；不自动读取/上传教师设备内真实资料。后两步：行程与历史分类筛选；教师常用课堂配置预设复用。本轮未自动启动这两项。
+
+## 人物档案/行程槽、历史回退与老师参战 · 课堂v0.16.0/build21（2026-11-07）
+
+用户授权开始旧后两项，新增人物名与自定义外观独立存档。教师游戏“管理→人物档案/行程槽/历史/老师参战”，绘本“存档与历史”；均私有，不进入公开捕获。12人物槽只含姓名和已认可外观/衣装装扮，读取到编辑区再确认应用，不带职业/数值/装备/金币/背包/地图。新行程逐学生读取档案，当前任意玩家含P7也可保存/应用。衣装不提供属性，武器仍按实际装备；独立体型/发型/脸/染色美术未制作，只登记，战斗复用现有骨架。
+
+8完整行程槽沿用原MeadowCampaignSave，保存地图/队伍/背包/各队移动条/道路/镜头/战斗队列/RNG/历史。覆盖确认，读档/回退/新行程覆盖前Recovery唯一备份，提供最近20份恢复入口，旧文件保留。坏槽独立报错不删除，其余槽正常；旧两人档/旧addHost命令/可选外观字段兼容，读战斗槽后暂停。历史列表倒序展开骰值及成员数值变化，回退保留选中条目、撤回后续，新记录含道路/移动/镜头检查点；旧记录无检查点则停止游标且不补满余额。回退后暂停，不重复奖励/掷骰。
+
+老师启用UI填名/职业/队伍，在探索且无道路游标、未结算时加入host=true独立P7；不占6学生，只有一名。7人沿用同一正式战斗、个人AP、组队仓库、GM、绘本状态与持久化，不新建第二引擎。地图/背包/战斗衣装跟随每名档案，按当前成员按需加载并裁减缓存；换装备预载后提交，不清掉其他成员纹理。旧“老师仅API/历史待办”已在本轮实现。
+
+新增24项专项，本地及实际CI完成368规则/后台+6绘本核心零失败，另有本地4Python检查；设备Release实际编译`a14364ba89c44a76bffebe0e6004a019f860c8cd`，run42390402952 attempt1。版本0.16.0/build21，最低iPadOS27.0、SDKiphoneos27.2，CRC/经典ZIP2.0/arm64/755/Metal/568源资源SHA/281编译名称/3挂载数据核验通过，可执行文件不同build20。未运行App/模拟器/实机，真实七人布局/点击/键盘/电视与性能由用户复核。6秒GIF是已有图集的离线流程示意，经主线程四阶段接触表与逐帧解码审核，不是App截图/触摸/性能测试。
+
+源码快照`93a899956222d958d4d257c37990010899590559`与实际编译提交分开，标签`archive-player-slots-meadow-v0.16.0-20261107`。完整源码/Git bundle/IPA/诊断/GIF已存archive-assets，逐文件ZIP/独立bundle恢复与fsck/全部公开分片GET通过，归档run42391019080；main只放索引。直接IPA完整GET200，62573595字节，SHA256`699c2d5b6e90580e6240768d16e6091a9355afc3f3a7b719fb79edbf6b415308`。
+
+[直接IPA](https://raw.githubusercontent.com/liamchan-rgb/classroom-boardgame/b6625c3fbbb9b00ae4d0e03f599fa1ec0db5c3bf/archive-player-slots-meadow-v0.16.0-20261107/ClassroomStage2-v0.16.0-unsigned.ipa) · [正常速度流程示意GIF](https://raw.githubusercontent.com/liamchan-rgb/classroom-boardgame/b6625c3fbbb9b00ae4d0e03f599fa1ec0db5c3bf/archive-player-slots-meadow-v0.16.0-20261107/player-slots-normal.gif) · [可恢复存档/校验](https://github.com/liamchan-rgb/classroom-boardgame/blob/main/archives/player-slots-meadow-v0.16.0-20261107.json)
+
+experiment本体仍Build95，本轮只同步对接记录。后两步建议：人物/行程槽手动导出导入，方便换机与课堂备份；行程筛选与历史分类，方便长课时查找。不是自动启动新任务。
+
+## 绘本状态/发放与私有玩家GM · 课堂v0.15.0/build20（2026-11-07）
+
+用户授权完成旧两项绘本待办，并新增任意玩家各项数值与个人背包GM。公开PublicBookPage底部固定真实窗口高度9%的总状态带，横排最多7人，仅姓名、HP与绿血条、黄色菱形AP/上限、金币；绘本图像独占其余91%并保持比例，页码小角标。长名字可缩小、极值简写，朗读保留全数值。ClassroomBookPlayerStatus白名单投影不含背包/备注/权限/历史。教师本地书页复用同一只读页面，备注单独私有。
+
+教师绘本页固定常用按钮、对象选择（单/多/全选）及AP/金币发放，不切游戏页；AP+1、金币+10快捷项按个人含装备上限封顶，与地图移动条独立，同一campaign/engine无第二账本。不解除绘本暂停、不推进AI/RNG，非法对象/重复/整数溢出整笔回滚。
+
+游戏右上GM及绘本GM窗口使用同一教师私有宿主，含全屏。可改姓名、当前HP/护盾/AP/金币/积分、基础最大HP/基础AP/AP上限/伤害/射程、增伤数值及轮数、技能已用次数、全部目录内个人背包数量（0移除，可搜索）。字段标签持续可见，基础与装备加成分开，身份/职业/队伍/节点/穿戴/仓库不改。提高上限不自动补满资源或移动条；降低上限需同步当前值合法。倒地清盾/增伤，复活沿用下一轮可行动；道路游标中成员设倒地先到建筑节点。GM成功单次提交后才刷新公开结果，失败保留草稿；关闭未保存不写。
+
+仅最近命令为GM/绘本发放时，可通过教师入口撤销，不能越过后续动作。专用undoPreservingPresentationPause保持当前绘本/手动/编辑/后台等显示暂停；行动者未变时保留当前剩余时钟，避免跨绘本/游戏撤销带回历史book暂停。原通用undo语义保持。原6学生+老师p7 API、一屏教师控件/原技能卡、固定1280×720画布与960×540/30Hz目标保持；不新增美术。
+
+新增15专项涵盖1—7人多窗口面积<10%、只读字段白名单、绘本暂停中多人发放/个人封顶/移动及RNG不变、无效/重复/溢出回滚、公开端拒绝GM/发放/撤销、任意玩家数字/背包与身份隔离、非法属性/物品/技能拒绝、背包0移除、增伤/技能次数、倒地/复活、存档/撤销、磁盘失败、道路游标保护、跨页面撤销暂停保持。本地15专项通过；实际编译`92ad2d39e09bd8b289727b3be29544953a4193fa`、run42380512294 attempt1完成344规则/后台+6绘本核心零失败、4项Python CI工具及设备Release归档。IPA0.15.0/build20，最低iPadOS27.0、SDKiphoneos27.2；arm64/755/CRC/经典ZIP2.0、Metal、568源资源SHA/281编译名称/3挂载JSON通过，可执行文件不同于build19。
+
+正常GIF是6秒离线布局/状态更新示意，7人含老师仅作容量示例，不表示老师启用UI已上线；示意页不会写入PPT或美术资源。主线程查看初始/私有草稿/保存后三幅接触表并逐帧解码。非App/UIKit/触摸回放/性能验证，未运行App/模拟器/实机；真正阅读密度、键盘/菜单、电视隐私与性能由用户安装验收。缺P3—P7独立外观仍只登记。
+
+源码快照`eb1a922ced394361543f3faf0fc9bd85c74dbf2d`与实际编译提交分开，标签`archive-book-gm-meadow-v0.15.0-20261107`。源码/Git bundle/IPA/诊断/GIF已存archive-assets，ZIP逐文件、独立bundle恢复/fsck、全部公开分片GET通过，归档run42381086078；main仅索引。直接IPA完整GET200，62351059字节，SHA256`ed92c030c08017c28b798a427d2ac78eecdd0d5101d61b92075f32c5d75d84cc`。
+
+[直接IPA](https://raw.githubusercontent.com/liamchan-rgb/classroom-boardgame/1a95393811f8dd62086d3922d84455ace597d823/archive-book-gm-meadow-v0.15.0-20261107/ClassroomStage2-v0.15.0-unsigned.ipa) · [正常速度绘本/GM离线示意GIF](https://raw.githubusercontent.com/liamchan-rgb/classroom-boardgame/1a95393811f8dd62086d3922d84455ace597d823/archive-book-gm-meadow-v0.15.0-20261107/book-gm-normal.gif) · [可恢复存档/校验](https://github.com/liamchan-rgb/classroom-boardgame/blob/main/archives/book-gm-meadow-v0.15.0-20261107.json)
+
+experiment本体仍Build95，本轮只同步对接记录。旧绘本两项已实现，不能继续写“未实施”。建议后两步：教师操作历史列表与按记录回退；老师参战启用入口与7人完整流程，本轮未顺带实施。
+
+## 六名学生组队与老师独立席位 · 课堂v0.14.0/build19（2026-11-07）
+
+按桌游仓库docs/课堂桌游_需求设计_v1.md §1.2/3.1/3.2/8.1/9.1/10.1接入，当前用户的独立距离移动条覆盖原移动AP描述。新行程1—6名学生，逐人姓名/职业，默认同队；旧双人档兼容，继续保留原人数/地图/资产/队列/RNG，不强制转六人。
+
+教师管理→队伍与仓库可建队、拆队、调成员、改名、合并、查看实时队分和仓库。同队金币/个人背包物品互转与仓库存取限探索，不扣AP、无同节点要求，跨队普通转移和战斗取仓拒绝，教师可显式跨队调拨并记录后台事件；已穿戴装备须先卸下。换队仅改teamID，个人资产/HP/AP/技能次数保留，旧队仓库留原队；合并一次提交成员与两仓库，空原队保留历史。原GameEngine命令原子保存、历史回执、撤销，失败回滚，无第二规则/AI/RNG。
+
+不同队不随所选队移动，当前队最大AP平均×50为上限，分队距离余额独立；购买仅用本队金币，战斗AP保持个人独立。地图演员/步态/诊断索引、血条、行囊成员和用药目标、战斗演员/站位/血条/命中动态人数，原队列支持全部学生。主持人API ClassroomGameBackend.joinTeacher(name:classID:team:role:)仅教师可调用，预留host=true的p7，不占六名学生；最多一名，沿用同套资源/计分规则和教师后台权限，无启用UI。未来调用后重装同会话渲染器刷新人数。P3—P7独立外观缺失，复用现有资源并以编号姓名区分，未新画美术。
+
+新增12专项：1—6人存档往返/非法人数、主持人权限与限额、成员字段与RNG保留、队分、仓库守恒/合并/撤销、原队仓库保留、跨队/透支/战斗拒绝、保存失败回滚、六人战斗队列、不同队不跟随、分队移动与AP独立。此前317测试和12专项在Linux通过；实际编译`99b25d16d0e40ed6ddfe094b91bbfa16945aa8e1`、run42375834060 attempt1完成329规则/后台+6绘本核心零失败、4项Python CI工具检查、设备Release归档。IPA0.14.0/build19，最低iPadOS27.0、SDKiphoneos27.2；arm64/755/CRC/经典ZIP2.0、Metal、568源资源SHA/281编译名称/3挂载JSON通过，可执行文件不同于build18。
+
+原一屏教师控件/原技能卡点击与悬停、固定1280×720画布、教师960×540/30Hz和电视60Hz目标保持。私有分组仓库表单不进入公开捕获，公开端无法调用组队/主持人接口。正常GIF为6秒离线结构/站位示意，复用既有演员资源；主线程查看起中末接触表并逐帧解码。非App/UIKit/触摸回放/性能测试，无App/模拟器/实机运行；六人密度/实际点击/帧率/电视隐私由用户安装复核。
+
+源码快照`0d266cc2b1874a2a9c337a3fd4758a7f771a170f`与实际编译提交分开，标签`archive-team-module-meadow-v0.14.0-20261107`。完整源码/Git bundle/IPA/诊断/GIF在archive-assets；ZIP逐文件校验、独立bundle恢复/fsck、全部公开分片GET通过，归档run42376363859；main仅索引。直接IPA完整GET200，62227227字节，SHA256`f60a1f9fb1b856554453316d5909b99a8da854acbbfe753b67c1b0410300dec9`。
+
+[直接IPA](https://raw.githubusercontent.com/liamchan-rgb/classroom-boardgame/5a314ebd8da584a173b7c2139cbfd328f3e3e1fa/archive-team-module-meadow-v0.14.0-20261107/ClassroomStage2-v0.14.0-unsigned.ipa) · [正常速度组队离线示意GIF](https://raw.githubusercontent.com/liamchan-rgb/classroom-boardgame/5a314ebd8da584a173b7c2139cbfd328f3e3e1fa/archive-team-module-meadow-v0.14.0-20261107/team-module-normal.gif) · [可恢复存档/校验](https://github.com/liamchan-rgb/classroom-boardgame/blob/main/archives/team-module-meadow-v0.14.0-20261107.json)
+
+experiment本体仍Build95，本轮只同步对接记录。后两步仍为绘本人物状态区≤画面10%；教师绘本页发放AP/金币。本轮未实施。
+
+## 教师游戏窗口一屏操作 · 课堂v0.13.4/build18（2026-11-07）
+
+用户要求教师按钮尽量移入游戏窗口、无须上下翻页，技能必须合并到游戏原画面。本轮删除后台整页ScrollView、画外按钮和独立battleControls技能网格，改固定管理栏44pt、阶段操作栏48pt、自适应真实游戏画面、单行状态28pt。探索常用选人/选地点编辑/修改内容/交互/行囊/补移动/暂停在窗口内；低频新行程/续档/保存/资源调整/发奖/队伍/路线/节点编辑收进管理菜单。全屏复用同一结构。
+
+战斗直接点击原公开MeadowPartyBattleView技能卡，无第二套技能按钮；鼠标悬停走原骰子预览，点角色或血条选目标。紧凑工具栏提供目标/道具/暂停/结束行动。命中先还原固定1280×720画布，再按真实UIView坐标转换查询原卡/角色位置，经requireTeacher与原后台battleTarget校验执行；公开源技能/角色回调仍禁用，不启用电视操作，不创建第二份引擎/AI/RNG。课堂技能卡均分可用宽度，移除已删除道具占位，不需横向滚动。地图拖动捏合和点路保留，技能tap与相机pan分别判定。全屏私有表单通过当前教师呈现宿主打开，实际弹窗仍停止输入/回传。
+
+私有工具栏属于教师宿主兄弟视图，不进入游戏控制器捕获；电视仍仅游戏/玩家面板/绘本，无权限按钮/备注/编辑界面。教师960×540/30Hz和电视60Hz仍为目标，不称实机稳定帧率。缺失美术只登记，本轮没有新人物/技能资源。
+
+实际编译`2d6607489fa9f353c108d8b63fa98c616a0942b4`、run42365112217 attempt1完成317规则/后台+6绘本核心零失败、4项Python CI工具检查和设备Release归档；包版本0.13.4/build18、最低iPadOS27.0、SDKiphoneos27.2。arm64/755/CRC/经典ZIP2.0、Metal、568源资源SHA/281编译名称/3挂载JSON通过；可执行文件与build17不同。未运行App/模拟器/实机，原技能点击命中、菜单与单页布局、投屏隔离由用户安装复核。
+
+正常GIF复用已有符文斩战斗采样与原资源，40ms采样，展示单页结构/原卡位置/窗口工具栏；主线程查看起中末接触表并逐帧解码。仅离线结构示意，CPU布局/道路/阴影近似，不称UIKit截图/触摸回放/性能测试或新美术认可。
+
+源码快照`29d64e673be47c97c57e89d4a1bb85b355155c1d`与IPA实际编译提交分开，标签`archive-teacher-window-meadow-v0.13.4-20261107`。完整源码/Git bundle/IPA/诊断/正常GIF已存archive-assets；ZIP逐文件校验、独立bundle恢复/fsck及全部公开分片GET通过，归档run42365742197。main仅索引。直接IPA完整GET200，62106787字节，SHA256`7293052f23de2149081c45304da1f70d7cd2762a919e3e12542bccff08ae3abc`。
+
+[直接IPA](https://raw.githubusercontent.com/liamchan-rgb/classroom-boardgame/c5ef4b871590ef9bb965f41908cfe7826c40700e/archive-teacher-window-meadow-v0.13.4-20261107/ClassroomStage2-v0.13.4-unsigned.ipa) · [正常速度离线窗口示意GIF](https://raw.githubusercontent.com/liamchan-rgb/classroom-boardgame/c5ef4b871590ef9bb965f41908cfe7826c40700e/archive-teacher-window-meadow-v0.13.4-20261107/teacher-window-normal.gif) · [可恢复存档/校验](https://github.com/liamchan-rgb/classroom-boardgame/blob/main/archives/teacher-window-meadow-v0.13.4-20261107.json)
+
+experiment本体仍Build95，本轮只同步对接记录。后两步仍为绘本生命/AP/金币状态区≤画面10%；教师在绘本页发放AP/金币，本轮未实施。
+
+## 教师高清30帧目标与拖动地图 · 课堂v0.13.3/build17（2026-11-07）
+
+用户要求提高教师部分清晰度与帧率并恢复原demo拖动。本轮在classroom-boardgame分支feat/teacher-backend-meadow-v0.13实现教师960×540/30Hz目标，覆盖v16的640×360/15Hz。真实地图CGImage直接分层显示，公开透明UIView另行缓存；静态HUD按脏最高10Hz，战斗/骰子30Hz。GPU缩小、后台utility读取、单一在途、隐藏/绘本/后台/私有弹窗暂停保持。新地图帧直接推送，阶段时钟容忍略早vsync，挂起不追补队列。理论GPU裸像素预算62,208,000字节/秒，不代表设备耗时或稳定帧率；电视原生1280×720/60Hz目标保持。没有设备CPU/GPU测量。
+
+对照原experiment panMap/pinchMap和GameScene.panBy/setZoom，教师端单指/双指/鼠标拖动平移相机、双指捏合围绕触点缩放；沿用原方向/边界/缩放规则，先换算回固定逻辑画布。tap等待拖动/捏合失败，拖动抬手不下走路命令。道路点按移动、建筑选中保持，地图拖动优先于后台ScrollView，地图外正常滚动。相机手势不扣移动值/AP、不改规则/RNG；公开电视无控制手势/后台按钮/备注/私有弹窗。单一规则/AI/计时、固定画布及设备角色权限保持。
+
+21项专项和4项CI工具检查通过，实际提交`a4a1f901a5b01bd11f3470c1c8a403ebf1616f05`、run42356713660 attempt1完成317规则/后台+6绘本核心测试零失败及设备Release归档。IPA0.13.3/build17、最低iPadOS27.0、SDKiphoneos27.2；arm64/755/CRC/经典ZIP2.0、Metal、568源资源SHA/281编译名称/3挂载JSON核验通过，二进制不同于build16。没有运行App、模拟器、实机。真实手势/清晰度/帧率/电视与断开对齐由用户安装复核。
+
+新正常GIF为60个40ms采样点、2.4秒的离线相机规则示意，复用地图素材，CPU道路/阴影仅作近似；主线程查看起始/中间/结束接触表，教师与电视相机一致，指针仅教师。它不是App/触摸回放/性能测量，不把离线示意称实机流畅度或美术认可。缺失美术只登记，本轮没有新人物/技能资源。
+
+源码快照`b9bc217f928cfd061f787f634328dd8b13fa6e62`与IPA实际编译提交分开，标签`archive-preview-drag-meadow-v0.13.3-20261107`。完整源码/Git bundle/IPA/诊断/正常GIF已存archive-assets；ZIP逐文件校验、独立bundle恢复/fsck及全部公开分片GET通过，归档run42357179451。main仅索引。直接IPA完整GET200，62091075字节，SHA256`35db2d3b18f79085a84977bd3ab0abfc6319c44144e953f1cbe18017f5fa3860`。
+
+[直接IPA](https://raw.githubusercontent.com/liamchan-rgb/classroom-boardgame/a0503327974cbb72525eeea26ea4bd20eeb98113/archive-preview-drag-meadow-v0.13.3-20261107/ClassroomStage2-v0.13.3-unsigned.ipa) · [正常速度离线拖动示意GIF](https://raw.githubusercontent.com/liamchan-rgb/classroom-boardgame/a0503327974cbb72525eeea26ea4bd20eeb98113/archive-preview-drag-meadow-v0.13.3-20261107/preview-drag-normal.gif) · [可恢复存档/校验](https://github.com/liamchan-rgb/classroom-boardgame/blob/main/archives/preview-drag-meadow-v0.13.3-20261107.json)
+
+experiment本体仍Build95，本轮仅同步对接记录。后两步仍为：绘本生命/AP/金币状态总占画面≤10%；教师在绘本界面发放AP/金币。本轮两项均未实施，先收当前设备反馈。
+
+## 教师预览开销与点击返修 · 课堂v0.13.2/build16（2026-11-07）
+
+用户反馈v15交互卡、点不动。源码确认：投屏时主线程30Hz完整1280×720游戏UIView重绘及像素复制/CGImage构造偏重；不投屏时该链路原本关闭，仍有全屏遗漏教师手势和encounter预览拦截地图输入的独立问题。未在设备测量CPU/GPU占比，不把所有卡顿归因于这一处。
+
+本轮在classroom-boardgame分支feat/teacher-backend-meadow-v0.13修改：GPU先缩小为640×360，GPU buffer读取/CGImage构造放utility队列，主线程必要公开UIView合成以半分辨率15Hz上限进行，单次在途不堆积。教师画面滚出屏幕、离开游戏页、绘本、后台、私有对话框或无电视时停止回传。界面revision改为实际状态变化发布，保留AI/超时计时。理论GPU裸像素预算110592000→13824000字节/秒（1/8），不是设备实际帧率/耗时提升8倍。电视仍为1280×720原生60Hz目标，教师辅助回传降采样；原美术资源不变，缺图仍只登记。
+
+全屏接入同一TeacherGamePreview输入，新增教师端收起预览按钮；怪物预览外可继续点道路，卡片内部只读；无效状态给提示。建筑真实命中与相机逆变换、地图/阴影固定画布、单一规则/AI/掷骰、公开端权限隔离保持。教师预览不捕获后台按钮/备注/私有弹窗。绘本≤10%生命/AP/金币状态区与教师发放入口仍只记录，未实施；后两步仍按这两项顺序。
+
+17后台/画布/预览专项在Linux通过，新增覆盖预览后导航不改战斗RNG、裸像素预算上限/独立画布、隐藏/本机/绘本/后台/私有对话框禁回传；源码审计确认全屏手势、滚动可见性、单次在途与后台队列。实际编译提交`81406b3bf1c08e11b9d70defdac90a0297a4cc7a`、run42350765946 attempt1，313规则/后台+6绘本核心测试零失败，4项CI工具检查、设备Release归档通过。过渡run42350196166/42350410685因补滚动离屏停止回传和暂停缓存策略主动取消，未发布为最终包。
+
+IPA0.13.2/build16，最低iPadOS27.0、SDKiphoneos27.2，arm64/755/CRC/经典ZIP2.0、Metal及568源资源SHA/281编译名称/3挂载JSON通过，二进制不同于build15。正常显示规则GIF复用v15同一离线5帧/8秒示意（非性能对比、非App/电视截图），不称新美术认可或实机流畅度验收。未运行App、模拟器、实机；实际触摸响应、电视对齐及帧率待用户安装复核。
+
+源码快照`2c9f395448421218f7a90f3576b1e6a22ebde451`与IPA编译提交分开，标签`archive-preview-input-meadow-v0.13.2-20261107`。完整源码/Git bundle/IPA/诊断/离线GIF已存archive-assets，ZIP逐文件、独立bundle恢复/fsck及全部公开分片GET通过，归档run42351319022；main仅索引。IPA完整GET200，62087899字节，SHA256`d335bc7fe9320357dcca960fbc556a134a97ded8b7ccc2e379a8c7efd30f355a`。
+
+[直接IPA](https://raw.githubusercontent.com/liamchan-rgb/classroom-boardgame/0b1981b3b78d07ee0ba8d4cd45f6a077c9a4bd59/archive-preview-input-meadow-v0.13.2-20261107/ClassroomStage2-v0.13.2-unsigned.ipa) · [沿用的显示规则GIF](https://raw.githubusercontent.com/liamchan-rgb/classroom-boardgame/0b1981b3b78d07ee0ba8d4cd45f6a077c9a4bd59/archive-preview-input-meadow-v0.13.2-20261107/preview-input-normal.gif) · [可恢复存档/校验](https://github.com/liamchan-rgb/classroom-boardgame/blob/main/archives/preview-input-meadow-v0.13.2-20261107.json)
+
+experiment本体仍Build95，本轮只同步对接记录，不伪造Build96。安装后打开ClassroomProbe，重点复核全屏点路、怪物预览外点路和操作按钮响应。
+
+## 电视地图对齐返修与教师实际画面同步 · 课堂v0.13.1/build15（2026-11-07）
+
+用户报告v0.13/build14初始iPad正常，连接电视后地图地面/树木/阴影错乱，断开后仍异常；截图右侧地面被截断。用户还要求教师端不单独生成简略地图，直接同步实际游戏画面，操作按钮不投放。
+
+本轮在classroom-boardgame的`feat/teacher-backend-meadow-v0.13`修复：统一1280×720逻辑画布（含只读行囊/结算），窗口仅等比居中留边；跨宿主先清UIView transform再设bounds并完成布局，禁止在变换中写frame；classroom地图SpriteKit改aspectFit，Metal关闭drawable自动缩放并固定一点一像素，地图/战斗分区使用整数像素尺寸。屏幕DPI/窗口比例不再改变地图、相机与阴影的内部坐标。这是源码修正，未声称已在用户电视复验成功。
+
+删除TeacherControlMap简图，教师端直接使用实际游戏画面。无电视时本机显示唯一原生渲染器；有电视时该渲染器投放电视，教师端异步回传其Metal完成帧与公开UIView层（上限30Hz，电视渲染目标仍60Hz，不作实机性能承诺）。仅捕获游戏控制器view的公开内容，后台按钮/节点表单/备注属于另一根窗口；无第二份地图、规则、AI或掷骰。教师点击先消除等比留边，再逆变换当前真实相机轴到世界坐标，支持放大和平移后的道路/节点选择；公开端不进入编辑模式。
+
+用户明确先记录、不在此轮实现的绘本待办：①人物生命/行动值/金币简要状态合计≤公开画面10%，不遮绘本；②教师在绘本界面直接发放AP和金币。已保存至上游docs/planning/classroom-book-status-backlog.md及本轮说明。后两步按此顺序推进，不自动扩课堂人数。
+
+新增4项纯画布/投影回归，14项后台专项在Linux通过；实际构建run 42346131666 attempt1、编译提交`7ffc6b13ab3f58c39ea21f63669e2c46440d6e2f`，完整310规则/后台+6绘本核心测试零失败，另4项CI工具测试通过，设备Release归档成功。首轮run42345436987因Apple平台CoreGraphics未显式导入而在纯包编译失败，未产IPA；补齐导入后重建。源码审计/测试不等于运行外屏验证。
+
+IPA0.13.1/build15，最低iPadOS27.0、SDKiphoneos27.2，arm64/755/CRC/经典ZIP2.0无extra、内置PPT、Metal库、568源资源SHA/281编译名称/3份挂载JSON通过。原美术复用，无新人物资源或新增认可。离线连接规则GIF实际5帧/8000ms，主线程查看全部阶段与全景；CPU道路/阴影近似，非App/Metal/电视截图，不作为设备修复证明。未运行App/模拟器/实机，安装后需用户比较初始iPad、电视投放、断开及重复连接。
+
+源码快照`5664dd2f2ae4920ccc765585857074f872be1506`与IPA实际编译提交分开，唯一标签`archive-display-mirror-meadow-v0.13.1-20261107`。完整源码/Git bundle/IPA及诊断/离线GIF已永久备份archive-assets，ZIP逐文件、独立bundle恢复/fsck及所有分片公开GET通过，归档run42346849708；main仅加索引。IPA完整公开GET200：62053723字节，SHA256`88b62f485759e72d606159497dcb1d3f74235b4f5987d675b59e950a1ef2f244`。
+
+[直接IPA](https://raw.githubusercontent.com/liamchan-rgb/classroom-boardgame/01604bc3a93627a60881da807bf923b4fc02fc07/archive-display-mirror-meadow-v0.13.1-20261107/ClassroomStage2-v0.13.1-unsigned.ipa) · [离线显示规则GIF](https://raw.githubusercontent.com/liamchan-rgb/classroom-boardgame/01604bc3a93627a60881da807bf923b4fc02fc07/archive-display-mirror-meadow-v0.13.1-20261107/display-mirror-normal.gif) · [可恢复存档与校验](https://github.com/liamchan-rgb/classroom-boardgame/blob/main/archives/display-mirror-meadow-v0.13.1-20261107.json)
+
+安装后打开ClassroomProbe → 游戏后台，实际画面支持道路点击，开启“选取地点进行后台编辑”后点建筑再编辑；权限表单仍只在教师端。experiment本体仍Build95，本轮仅同步对接记录，不伪造Build96。
+
+## 教师后台重构交付 · v0.13/build14（2026-11-07）
+
+用户更正上一版架构：删除原桌游游戏部分；当前Meadow demo的操作与教师权限移到教师后台，随机地图生成留后台；投放端只显示探索地图、按需玩家行囊/怪物预览，战斗用现有完整战斗预览。本轮在classroom-boardgame分支 `feat/teacher-backend-meadow-v0.13` 执行，覆盖此前v0.12.1“保留旧游戏/切换简化公开页”的后续安排。旧代码/旧包保留于历史存档，App里无旧游戏回退。
+
+删除原RulesLab/PVEAppSession/旧地图战斗公开页/v0.12简化适配；保留PPT导入、页面、备注、备份与iPadOS27独立公开场景。完整导入当前demo的GameViewController、Metal GameScene、MeadowBattlePreview/PartyBattle/PartyStage、动作/骰子/技能/死亡演出、规则与资源。公开模式不挂载管理按钮，根输入禁用，战斗公开回调另行拒绝；所有原游戏弹窗转交教师根presenter，公开端只读玩家信息，不含节点编辑/备注。ClassroomGameBackend持有单一正式campaign/encounter；教师后台驱动地图生成/移动、AI/时钟，公开端不创建训练局或第二份规则。战斗结束演出完成回地图；绘本/暂停保留同一会话。新行程独立ClassroomMeadow命名空间，旧个人资料不删除、不自动转旧PVE存档。
+
+后台操作地图支持道路任意点/节点编辑/镜头/角色选择/怪物预览/背包装备/移动补充/资源/奖励/队伍/路线，战斗目标、技能、悬停骰子、物品与回合操作留后台。最终检查补齐当前玩家回合/AP/库存/次数/目标校验，键盘同样守卫；校验不prepare、不掷骰、不改状态。沿用当前双人行程与平均距离移动条，不声称扩为完整课堂多成员。
+
+资源来自experiment175c7dfc4a68e62cb9693da8d837b77081619a6b，568份源资源SHA逐份一致、281编译资源名称、3份SPM挂载JSON逐字节、Assets.car与Metal库已核对；无新美术生成或新增用户认可。主线程亲看完整联系表并解码118帧/4720ms正常速度GIF，属于离线职责示意/既有资源合成，非UIKit或设备截图，不称实际窗口路由或连续播放验收。缺图仍仅登记。
+
+实际设备Release编译提交 `b20e3a95cf5c52d4724f66e5f88d219bdff48f58`，run 42341843315 attempt1，306规则/后台测试+6绘本核心测试零失败，另4项Python CI工具测试通过。IPA0.13/build14、iPhoneOS arm64/755、CRC/经典ZIP2.0无extra、内置PPT、完整地图/步态资源、Metal库头均通过；最低iPadOS27.0、SDKiphoneos27.2。未运行App、模拟器或实机，真实外屏切换/比例/触摸由用户安装截图反馈。
+
+永久源码快照 `34931ec42f8f92f614ffe2a2a6b212177b42b7b5` 与编译提交分开记录；唯一标签 `archive-teacher-backend-meadow-v0.13-20261107`。完整源码/Git bundle/本步IPA与诊断/正常GIF已存archive-assets，ZIP逐文件、独立bundle恢复/fsck及所有分片公开GET通过，归档run 42342449892。索引仅加入main，不合并代码或二进制分支。IPA完整公开GET200：62037369字节，SHA256 `7eefd10008f2820807a909ecf4fd185816d067f3c0fdf39bd405c8823cbb714c`。
+
+[直接IPA](https://raw.githubusercontent.com/liamchan-rgb/classroom-boardgame/f74f280a2598f11f440f7b0b8b8b3ae77f58a836/archive-teacher-backend-meadow-v0.13-20261107/ClassroomStage2-v0.13-unsigned.ipa) · [正常速度离线GIF](https://raw.githubusercontent.com/liamchan-rgb/classroom-boardgame/f74f280a2598f11f440f7b0b8b8b3ae77f58a836/archive-teacher-backend-meadow-v0.13-20261107/teacher-public-normal.gif) · [可恢复存档与校验](https://github.com/liamchan-rgb/classroom-boardgame/blob/main/archives/teacher-backend-meadow-v0.13-20261107.json)
+
+入口：ClassroomProbe → 游戏后台 → 随机地图与新行程 → 生成/开始。未接外屏可全屏预览；接屏后由独立公开窗口承载同一渲染器。experiment本体仍Build95，不冒称Build96。后两步：①依据教师端/投放端实机截图调操作密度、投放比例和切换；②扩展课堂更多成员与目标布局，缺图只登记。
+
+## 桌游双屏试接交付 · v0.12.1/build13（2026-11-07）
+
+用户要求尝试接入，随后明确“两个模块”指教师操作端与公开展示端。本轮在 classroom-boardgame 新分支 `feat/meadow-public-bridge-v0.12` 实际接入 PublicSurface，只收脱敏 PublicPlayFrame；原教师控制、完整教师地图、选人/目标/发奖/编辑/撤销/记录与绘本/备注隔离保留。公开端可切 Meadow/原画面，教师端“PVE课堂→预览公开画面”查看同一公开数据源。未改原 App 外接场景注册，不用教师屏镜像替代独立公开端。
+
+只有原 PVEAppSession/GameEngine 负责结算/掷骰/保存/AI/计时。新增账本 before 是 publicSnapshot，不是完整GameState；只记录真实技能ID与HP/盾变化。命中 .46 秒显示伤害/死亡，恢复/新盾 .72 秒后显示；混合技能分别处理，队列不跳未来结果，历史恢复/撤销不重放。战斗画面只取真实 queueIDs，移动用已提交路径，抵达再切战斗。原桌游仍按AP/道路/抵达开战规则；没有迁入Meadow距离移动条或覆盖存档，未建立第二套引擎。
+
+114份已有素材SHA匹配experiment 175c7dfc4a68e62cb9693da8d837b77081619a6b；蓝衣通用近战及怪物/技能特效复用。初次整景审核发现治疗盖住接敌人物，根线程自行改至人物背后并延后，符文斩峰值对齐命中；v0.12内部稿保留，最终交付v0.12.1/build13。主线程查看79个GIF解码帧的五页整景、三处1×/2×完整人物场景；正常GIF3000ms。离线Pillow合成含辉光/文字近似，不称作UIKit/外接屏截图或设备连续播放验收。默认双人adventurer/spellblade复用蓝衣近战；其余职业暂沿用原美术，职业装备/远程动作绑定、完整Metal地图及全部课堂容量视觉仍为后续，不声称全部Meadow玩法已移植；缺图只标注。
+
+实际设备Release源码 `3f1b684f978df334d4ec0ec7cf52d31f9e85afa4`，run 42319105836 attempt1，79 GameCore + 6 ProbeCore零失败，另4项CI工具检查通过。IPA版本0.12.1/build13、iPhoneOS arm64/755、CRC/经典ZIP2.0无extra、内置PPT/114素材逐文件SHA通过；二进制确实不同于build12。桌游原部署目标保留 iPadOS27.0，SDK27.2；本次不需要自定义Metal库。未运行App/模拟器/实机，不声称外接屏/PPT实际设备已验收。
+
+永久归档源码快照 `a011d69a4d85cb3832aea40f0e4264c594c68502`，标签 `archive-meadow-public-bridge-v0.12.1-20261107`，源码与实际编译提交分开记录；完整源码/Git历史bundle/交付及诊断已备份到archive-assets，ZIP逐文件、bundle独立恢复/fsck和所有分片公开GET通过。首次误触发备份因未生成新版本记录而安全退出，补齐实际成功run/artifact记录后run42319544558完成归档。索引收尾不递归归档。
+
+IPA完整公开GET200：36150190字节，SHA256 `e8618ee986a6029f702b84b68fc1f8a8f5b50a83f1f6e2f28dd7f11830d21b71`。
+
+[直接IPA](https://raw.githubusercontent.com/liamchan-rgb/classroom-boardgame/b5923d3286cfe2a2e30b10148dfc7f690f8fc4b7/archive-meadow-public-bridge-v0.12.1-20261107/ClassroomStage2-v0.12.1-unsigned.ipa) · [正常速度离线GIF](https://raw.githubusercontent.com/liamchan-rgb/classroom-boardgame/b5923d3286cfe2a2e30b10148dfc7f690f8fc4b7/archive-meadow-public-bridge-v0.12.1-20261107/meadow-public-normal.gif) · [可恢复存档/校验](https://github.com/liamchan-rgb/classroom-boardgame/blob/main/archives/meadow-public-bridge-v0.12.1-20261107.json)
+
+experiment本体仍为Build95，本轮没有伪造Build96或重打Meadow旧包。后两步：①按用户教师端/公开端实机截图修正比例、字重与信息密度；②逐职业补公开装备/远程动作绑定与精确时间轴，再扩全部课堂容量，缺图仅列清单。
+
+## Build95交付 · 服务参数编辑与桌游demo对接核查（2026-11-06）
+
+地图→编辑地点→营地/空地，设置商店/失物/清泉，营地保留商店。买卖价10—500%（100%原目录价、整数最低1），失物金币1—1000，清泉恢复1—100；最终卖价不得高于可购商品买价。字段常驻名称，取消不写入，失败保留草稿可重试，已处理事件显示只读配置且不能重置/改类型。编辑不发奖、不改个人HP/AP/库存/RNG/道路；移动/战斗/结算后拒绝。报价、确认和实际交易使用同一份保存配置；事件收益也读取该配置。可选siteConfiguration缺省保持旧SITES1和原价5金币/4回复；校验拒绝非法或套利导入，不改全局目录。
+
+Linux/Mac完整296项零失败，新增6项覆盖改价实际扣款/卖价与续档、事件类型/金币保存与处理后锁定、清泉配置封顶、范围/营地类型/套利导入拒绝、保存失败回滚重试、旧nil配置与暂停道路编辑拒绝。四专项/项目绑定/语法/设备Release通过。原27+27+24固定策略在Mac重跑并断言完整集合，与Build94保留参考逐字段相同（距离<1e−8）；未宣称本轮Linux重跑78整程或参数经济已平衡。
+
+随后只读核查classroom-boardgame main 1e9100c4c18364ea64b3ec974fe957ba4ef42f6f及战斗分支a0427b83d9233f1a83178b3c47d3fab39eed664e，确认TeacherHost/PPT/独立公开窗口、PVEAppSession/PresentationLedger/PublicPlayFrame可作入口，两分支关键会话/公开协议相同。推荐原demo为主壳，Meadow先作公开帧只读画面适配：规则/保存/AI/计时仅一处负责；已提交回执不得再次prepare/apply/commit或重掷，教师私有信息不投影。双人默认场景先验证，1—6学生+主持人、任意ID、公开外观数据、存档/撤销及移动规则模式需逐项适配。原UPSTREAM指纹是历史来源，当前Core已分叉，不能直接覆盖。方案与审计见docs/integration/tabletop-demo-bridge-plan.md和tabletop-demo-audit.json。本轮未改/未编译/未运行桌游demo，不声称真实对接完成。
+
+最终1.6.68/build95，源码175c7dfc4a68e62cb9693da8d837b77081619a6b，run 42265928750 attempt1。IPA CRC/ZIP2.0无extra/arm64及755/版本平台/Metal头/12图集6数据集通过；源资源569份SHA256匹配，原地图/步态/规则JSON字节同Build94，系统assetutil解析288条。实际SDK/编译目录摘要另记，无新美术或美术认可，缺图继续标注。未运行App/模拟器/实机。
+
+直接IPA完整公开GET200，64792405字节，SHA256 2d1ae3f9abe0fec4ac63202b37e1ed11b37ac1f0b636698c9f30328b196ef8e3；[下载](https://raw.githubusercontent.com/liamchan-rgb/experiment/ac9d4cb0d2e2c3385d5d535a2bec2a2d3d0ca6b2/Downloads/MeadowJourney-b95.ipa)。来源/日志/包检Media/Build95，设备体验由用户验收。
+
+后两项：PublicPlayFrame只读画面适配样例；验证后在桌游新分支接入公开画面开关与原功能回退。
+
+## Build95候选 · 地点服务参数编辑与桌游对接核查（2026-11-06）
+
+编辑地点后选营地/空地：营地保留商店，未处理空地可在商店/失物/清泉间切换；买卖价格比例10—500%、失物金币1—1000、清泉恢复1—100。100%指原目录价，整数价最低1，最终卖价不得高于可购商品买价。字段有常驻名称，保存失败保留草稿可重试，取消不写入。已处理事件只读查看且不能重置，编辑不发奖/不改HP/AP/库存/RNG/道路坐标；移动、战斗、结算后拒绝。新可选siteConfiguration仅在明确保存时写入，旧nil配置完全沿用SITES1和原价5金币/4回复；报价与实际扣款读取同一函数，事件数值也读保存配置。恶意导入的非法/套利配置也拒绝。
+
+Linux完整296测试通过，新增6项覆盖改价实际交易/续档、事件类型与金币持久/处理后锁定、清泉配置封顶、非法比例/营地类型/导入套利拒绝、保存失败回滚重试、旧nil配置/暂停道路禁编辑。四原专项、项目/语法检查通过；设备Release、原78固定策略及IPA/公开GET待完成。原数值/资源/美术复用，无App/模拟器/实机运行。
+
+随后只读核查桌游main及战斗分支现有demo，确认TeacherHost/PPT/独立公开窗口、PVEAppSession/PresentationLedger/PublicPlayFrame入口。建议以原demo为主壳，先做公开帧只读渲染适配，保留单一规则/保存/计时权威，避免双重结算。两库Core已分叉，原UPSTREAM指纹仅历史，不能直接覆盖存档/主程序。详见docs/integration/tabletop-demo-bridge-plan.md与审计JSON；本轮未改桌游仓库或实现真实对接。
+
+候选1.6.68/build95。美术缺口按原约定只标注，不阻塞。后两项：PublicPlayFrame只读画面适配样例；验证后在桌游新分支接入公开画面开关与原功能回退。
+
+## Build94交付 · 个人商店与一次性可选事件（2026-11-06）
+
+营地提供商店，原空地点按map.seed/nodeID的SITES1稳定混合分配行商/失物/清泉，地图预览列服务、正式地图原建筑标签显示商/泉/事，处理事件后勾号。默认31827/10节点#3为清泉。零空地不造额外事件，节点/道路/原建筑不重排；路过和打开菜单不自动交易或领事件。旧档缺siteResolved字段按未处理读，新字段只写原空地事件处理状态；SITES1算法须保持稳定，后续扩展应版本化或保留原配置，不可改常量重投旧档。
+
+买卖沿原目录价，每次1件、个人付费和个人行囊，不自动装备，不使用他人金币。仅12原有非套装、purchasePrice非空商品可买；卖仅扣行囊，不出售仍穿着而无副本的装备。确认/取消分离、可换P1/P2买家，余额不足禁用。事务id去重/冲突拒绝，写入失败整体回滚。失物给处理者5金币，清泉回复最多4生命且不超装备后个人上限；满血接受禁用、可切处理成员，暂不处理保留、明确离开结束，全队每地点一次，存取不重投、不消耗战斗RNG。移动含暂停道路/战斗/已结算拒绝；结算仍仅冻结实际所得。
+
+依用户缺图仅标注授权，正式行程P2换装及缺专属图的原装备规则入口开放。P2和未映射装备只提交规则，跳过P1专属图准备，不污染P1外观；已有图占位，未映射武器无专属图，服装用基础层。缺商人/清泉/失物建筑与演出、P2/套装专属挂载见art-gaps.md。本轮无新美术资源/动作，不称新美术验收；UIKit与标签仅源码/约束检查，未运行App/模拟器/实机。
+
+最终1.6.67/build94，源码29d60fa0d39b6b96763b298155aeab16f8778a9e，run 42257900267 attempt1。Linux/Mac完整290测试零失败，新增9项覆盖12商品/双成员个人扣款与P2买入装备/AP不补、行囊出售/id去重、写入失败重试回滚、缺钱/套装/暂停道路拒绝、固定种子及推进战斗RNG不改地点/旧档、事件跨成员续档/清泉封顶/明确离开，以及交易事件贯穿全图探索返营结算和只读恢复。1000金币/全空图为受控测试夹具，不在App赠送。四原专项、项目绑定/Swift语法、设备Release通过。原27默认+27装备代表+24双人组合在Mac重跑并断言具体集合，逐字段与Build93参考一致（距离差<1e−8）；该固定策略不主动使用新服务，不宣称新经济平衡或真人胜率，未声称本轮Linux重跑78整程。无新实机反馈，不擅改原战斗/移动系数或速度。
+
+IPA CRC/经典ZIP2.0无extra/arm64及755/版本平台/Metal头/12怪物图集6数据资产通过；源资源569份SHA256匹配，原地图/步态/规则JSON包内字节同Build93。SDK与Assets.car摘要实记，系统assetutil解析288条；编译差异不称新美术。直接IPA完整公开GET200，64774733字节，SHA256 2dc90ddcded376ae1312cf5dab37bfba3862cf10683e58c710f0c56c0a8d37e9；[下载](https://raw.githubusercontent.com/liamchan-rgb/experiment/8c9f5be65d58030c430d3692091bdaa03ec08054/Downloads/MeadowJourney-b94.ipa)。来源/原始日志/结果Media/Build94，设备体验由用户验收。
+
+后两项：商店与事件参数编辑入口；依据用户实机反馈调整行程节奏与资源。
+
+## Build94候选 · 商店与一次性地点事件（2026-11-06）
+
+营地商店保证可用；原空地点按地图seed与nodeID的独立稳定混合分配为行商/失物/清泉，不增加NodeKind或节点/道路/建筑，不消耗战斗RNG。默认10节点31827的#3为清泉。地图预览列出服务清单，正式地图原建筑上的标签显示商/泉/事、完成后勾号。只有主动点击进入商店/处理事件才执行；路过、打开菜单、取消均不扣款或结算，空地为0时仅营地有商店、不造额外事件。
+
+商品沿用目录purchasePrice/sellPrice，一次1件、无限库存、按购买者个人金币扣款并进入其个人行囊，不自动装备。只出售purchasePrice非空且非套装的12原商品；卖出只消耗个人行囊，已装备但行囊无副本不可出售。UI明确买家/金额并二次确认，可切P1/P2；不足时禁用。交易id可重试去重，同id不同请求拒绝，保存失败金币/库存/历史一起回滚。移动（含暂停道路）、战斗、结算后拒绝交易。
+
+失物给处理者5金币，清泉最多回复4HP且不超个人装备后上限，满血接受选项禁用，可换存活同地点成员；事件全队每地点一次。暂不处理不消耗，明确离开永久结束。可选siteResolved字段仅在实际处理时写入原空地点，旧档缺字段正常读，地图seed固定保证续档/开关菜单不重投；不复用补给领取标记，不改补给统计与清理/返营目标。已完成档冻结，新逻辑不能重复发奖。保留formatVersion1读取旧档，新增交易/事件命令由本版识别。
+
+按用户美术缺口不阻塞的要求，正式行程开放P2换装及原先因专属图缺失隐藏的装备规则入口。显示缺图说明，已有可用图占位；P2/未映射装备只提交规则，不进入P1图片准备流程，不改动P1外观。原有已支持P1装备保持既有图绑定。未制作新美术或宣称新美术验收；商人/清泉/失物建筑与P2/套装专属呈现缺口记art-gaps.md。
+
+Linux完整290测试零失败（新增9项：12商品/两成员个人扣款/P2装备与AP不补、仅库存出售与id去重、交易失败回滚、缺钱/套装/暂停道路拒绝、种子/旧档不耗RNG、事件跨成员/续档去重、清泉无效不消耗与回复封顶、事件失败/明确离开、交易事件贯穿全图探索与冻结结算）。四原专项、项目绑定/Swift语法通过。测试1000金币/全空图为受控夹具，不在App赠送；原78条固定策略（不主动用商店事件）需与Build93对照，不当作新经济平衡或真人胜率。无新用户实机反馈，本轮不擅改原移动系数/速度/战斗数值，先完善交互与资源衔接。
+
+候选1.6.67/build94；设备Release与最终包检/公开GET待完成。未运行App/模拟器/实机。后两项：商店与事件参数编辑入口；依据用户实机反馈调整行程节奏与资源。
+
+## Build93交付 · 合并组队资源与行程收尾（2026-11-06）
+
+战斗技能按真实施法者/实际目标或地点群体生成只读说明，个人AP、消耗、次数和库存来自该角色，禁用说明来自原preview。卡片保留两行空间，禁用时显示原因；悬停及辅助功能读出实际目标/资源。道具菜单新增双方个人资源和当前技能详情，明确查看时快照、原回合计时继续。结果页展示结束时个人AP/护盾/存活，不重置或合并个人资源。
+
+行程目标与结束确认共用真实档案说明：探索/清理进度、可选补给、未结束战斗、道路暂停续档、按存活成员查询返营实际路程与最低旅费（包括P1倒地仍被选中）、金币缺口和手动补移动条的选择、取消/失败可重试、结算只记实际所得不额外发奖。已结算展示冻结结果；沿用原原子保存、幂等结算/回滚、败北、坏档保护与格式1。
+
+按用户本轮授权，后续美术缺口仅标注用途/替代/待补，不以补画阻塞逻辑与IPA交付；不将缺失资源标为已制作/认可。清单docs/planning/random-map-v1/art-gaps.md记录现有星辉/龙纹专属挂载图与P2完整换装呈现缺口；本轮提示使用已有UIKit组件，没有新动作素材。
+
+最终1.6.66/build93，源码9faea3f267056da6a0ab17ee818bc23f7dc9e33f，run 42239424403 attempt1。Linux/Mac完整281项零失败（新增6项实际目标/群体/个人库存、只读旧档、返营路费不足和道路暂停恢复），四原专项/项目绑定/Swift语法及设备Release通过。原结算幂等/保存失败回滚/全灭/历史隔离测试仍完整执行。Mac的27默认+27装备代表+24双人组合全部精确断言具体集合，报告逐字段与Build92保留基线相同（距离差<1e−8），不宣称本轮Linux重跑78整程，不是人类胜率。
+
+包检CRC/经典ZIP2.0无extra/arm64与755/版本平台/Metal头及12怪物图集6数据资产通过。原资源569份源SHA256匹配，地图/步态/规则包内字节同Build92；实际SDK和编译Assets.car摘要另记，系统assetutil解析288条，不把SDK编译差异称新美术。无新美术认可，界面为源码约束检查，不称UIKit截图。未运行App/模拟器/实机。
+
+直接IPA完整公开GET200，64740909字节，SHA256 35828fb378632d10af4fe0618b6a24d8a833c4ffe5c838588ea62982dd866dab；[下载](https://raw.githubusercontent.com/liamchan-rgb/experiment/419c106fba8292e3c87358720e0ae506dd5a0b2f/Downloads/MeadowJourney-b93.ipa)。来源/原始日志/结果Media/Build93，设备体验由用户验收。
+
+后两步：随机事件与商店的规则入口；按用户设备反馈调整整段行程交互与数值。
+
+Build93返营边界补查：P1倒地但仍被选中时，使用存活成员查询返营路费；不切换选择/资源。补充仅P2存活状态的断言，首个run42238796689取消，最终归档使用修订源码。
+
+## Build93候选 · 组队资源提示与完整行程收尾（2026-11-06）
+
+用户要求将组队技能/资源提示与完整行程结算/失败/续档合并一轮，交付直接IPA。以后遇美术缺口仅标注用途、现有替代与待制作内容，不以补画作为本轮逻辑交付前置条件；不自动认可旧未通过素材，也不把缺图写成已完成。本轮复用原美术，已知星辉/龙纹专属装备美术及P2完整换装呈现缺口继续列账，不在此轮新制作。
+
+新增纯只读技能说明：实际施法者、经原preferredTarget解析的目标、地点群体范围、个人AP/消耗/技能剩余次数/个人物品库存和原preview不可用原因。卡片有限两行保留短公式、不可用时显示原原因；悬停显示目标/消耗，辅助功能读完整说明。道具菜单新增双方资源及当前技能明细弹窗，明确查看时快照且原回合计时继续，不暂停或赠送行动点。不修改原骰子/技能/库存扣除逻辑。
+
+行程目标和结束确认共用closingReadout，显示实际清理/探索状态、剩余可选补给、进行中战斗或道路暂停续档、目标完成但未返营时道路距离/最低金币/缺口及手动补条选项、失败可重试与结算不额外发奖；已结算读取冻结结果。沿用原原子结算、格式1、已完成档只读与坏档保护，原27+27+24固定策略行程继续核对，不把正常失败称回归错误。新增6项覆盖个人目标/AP/库存/群体、只读旧档恢复、返营金币缺口、道路暂停恢复；完整旧结算幂等/失败回滚/全灭/历史隔离测试一并运行。
+
+候选1.6.66/build93；检查、设备Release及公开完整GET待完成。未运行App/模拟器/实机。界面仅源码/约束检查，无新动作图，不称美术验收。
+
+后两步：随机事件与商店的规则入口；整段行程的交互与数值调整（依据用户设备反馈）。
+
+## Build92交付 · 双人职业配置（2026-11-06）
+
+新行程P1/P2独立选四个原职业，可重复，默认魔剑士+游侠。表单分别显示职业基础生命、基础/最大行动和真实技能；装备另计、职业与衣装/武器独立。选择仅刷新说明，不重生成地图、不耗RNG或写档；确认新建后分别继承营地装备/库存，重新创建各自职业属性、HP/AP与技能次数。继续旧档直接读取原GameUnit.templateID/已耗资源/操作成员/道路游标，格式1不改，无中途洗职业。P2换装外观原限制保持，不宣称完成新职业专属美术。
+
+P1游侠援护默认自己时改选另一存活队员；自用技能预览跟随真实施法者，原preview/command仍验证合法性。护盾条以目录盾值/当前值作为显示参考，龙鳞盾不再10/8，不增加机械上限；怪物仍自身目录容量。原属性/骰子/AI/掉落/地图/装备与动作特效资源保持。
+
+最终1.6.65/build92，源码17b0b0363199a37fa0ab8cccdb8d9545a02e6c1b，run 42232775576 attempt1。Linux/Mac完整275测试零失败、四组原专项、项目绑定/Swift语法和设备Release通过。新增8测试覆盖16对真实属性/技能和独立行动、非法职业零写入、跨职业装备继承与新建资源、路中存取/成员选择、援护/自用目标、同职业确认重建/一次提交与次数独立、护盾显示、非默认P2整程确定性。默认10节点种子31827全16职业对，加4/30节点种子0各4重复/正反职业对共24真实规则整程；断言实际具体集合，1041动作/286存取/136确认重建，与Linux逐字段一致（距离误差<1e−8）。原27默认+27装备代表与Build91逐字段一致，不重复177不变装备全矩阵，不是人类胜率。
+
+IPA CRC/经典ZIP2.0本地中央头无extra/arm64与执行权限/版本平台/Metal/12怪物图集及6数据资产通过。原资源569份逐文件SHA256匹配，原地图/步态/规则JSON包内字节同Build91；Assets.car编译字节不同，源资源摘要一致，系统assetutil解析实际目录；差异单独记录，不声明新美术。系统目录288条，SDK/摘要见Media/Build92/verification.json。原美术/动作全部复用，无新美术认可；新界面为滚动布局源码与约束检查，不称UIKit截图。未运行App/模拟器/实机。
+
+固定公开直接IPA完整GET200，64723909字节，SHA256 9016ae0177b5bdf3bdf876b1658cc24391a93c67f17910d633d370fc9b62c74b；[下载](https://raw.githubusercontent.com/liamchan-rgb/experiment/5d321900bcd3687a5fc4b33b5c92d57515cd8b4b/Downloads/MeadowJourney-b92.ipa)。来源/原始日志/实际结果Media/Build92，设备体验由用户验收。
+
+后两项：组队技能与资源提示联调；完整行程验收与异常收尾。
+
+Build92布局补查：将长编队说明移至职业与创建/续档按钮后，缩短顶部引导并给两个选择器P1/P2辅助功能标签。初始run42231291269因界面补查主动取消，最终归档必须使用包含修订的新源码；不改变规则/审计输入，不重跑已通过不变专项。
+
+## Build92候选 · 双人职业配置（2026-11-06）
+
+新行程P1/P2分别在冒险者、游侠、魔剑士、龙骑士中选择，可重复，默认仍魔剑士+游侠。显示职业基础生命/基础行动/最大行动及真实三个技能；装备另计，职业与衣装/武器独立。选择只刷新说明，不重生成地图、不耗RNG、不覆盖旧档；确认创建才按选择新建两名成员，分别继承原营地装备/库存，使用新职业属性、初始HP/AP/空技能次数。继续旧档读取原GameUnit.templateID，格式1不变，无中途洗职业。原P2换装限制保持，不把职业选择称P2装备外观完成。
+
+游侠不再限定P2，援护当所选队友为施法者时默认改为另一存活成员；自用技能预览指向实际施法者，仍由原preview/command判定合法性。显示护盾参考上限按目录盾值/当前值，不出现龙鳞盾10/8；非新玩法护盾上限，怪物仍自身目录容量。沿用原人物/装备/动作/特效，无新美术认可，不运行App/模拟器/实机。
+
+新增8项覆盖16职业对真实属性技能与独立AP/相同地图怪物资源、非法任一职业零写入、跨职业继承装备但重建基础/次数、路中存取/操作成员、P1援护与P2自用目标、同职业确认/恢复/只提交一次与次数不串用、护盾目录显示、非默认P2完整行程确定性。另24整程矩阵：默认10节点种子31827全16对；4/30节点种子0各重复冒险者/重复游侠/魔剑龙骑正反组合4对。保留原27默认行程与27装备代表矩阵并断言实际集合；固定策略真实骰子、有偿移动、合法物品/明确整备，允许正常失败，不是人类胜率。16创建读数跨平台导出，原资源逐文件摘要核对。
+
+候选1.6.65/build92，验证中；通过原专项/完整测试、设备Release及包检后交付直接IPA。来源/日志Media/Build92。滚动UIKit表单以源码约束检查，不称设备截图。
+
+后两项：组队技能与资源提示联调；完整行程验收与异常收尾。
+
+## Build91交付 · 行程编辑与续档保护（2026-11-06）
+
+地图→编辑地点→点战斗/首领建筑打开独立草稿，读取实际保存编队，提供原六物种和两种旧鹿。普通地点1—3只、各槽可混合；首领默认1只，旧合法多只编队保留原上限。固定字段与真实名字/HP/AP/普攻射程可见，增减数量恢复保留隐藏槽选择；取消不写档、不耗RNG。保存遭遇后须明确确认重置此地敌人生命，成功才刷新地图，失败保留原配置并可重试，不修改其他节点或玩家库存。复用原怪物美术与原configureEncounter规则，不更改属性/AI/掉落、地图坐标或建筑。
+
+退出/后台通过一次suspendAndCheckpoint保存暂停、道路游标、余额、操作成员和镜头，替代两次写入。失败保留持久原档与内存当前位置、资源及旧镜头，仅安全停步，重试不重复抵达；退出失败刷新暂停按钮。战斗界面在保存成功后停用，避免失败仍被停住。镜头1—3及有限数校验在有无persist时一致。历史结算逐文件收集错误，坏记录不再阻断其他正常记录，UI提示无法读取数量，原文件不重写/不删除；当前坏档仍严格拒绝加载与自动覆盖，目录枚举失败仍报错，不冒充恢复内容。格式1、旧档/手动奖励与已领取状态保持。
+
+最终1.6.64/build91，源码87c11a02cafd7cc71dbe6b972489aea1ad04e049，run 42218974754 attempt1。Linux/Mac完整267项零失败、四组原专项、项目绑定/语法及设备Release通过。新增8项覆盖单次后台提交、失败安全暂停/重试、非法镜头、8物种草稿/取消、混合编队原子编辑、已领补给编辑/重置失败与一次发放、真实坏文件夹隔离、战斗确认未命中保存后同值重建和一次提交。原27基线及27装备抽样均断言数量/唯一和具体角色/种子/规模/装备集合；与Build90对应数据逐字段相同（距离误差<1e−8），不是真人胜率。本轮不重复上轮177个不变装备组合，也不把纯规则测试称实机美术验收。
+
+IPA CRC/经典ZIP2.0本地中央头无extra/arm64及执行权限/版本平台/Metal/12怪物图集6数据资产通过。原资源569份逐文件SHA256匹配，原地图/步态/规则JSON与Build90包内字节相同；本轮Mac26/新SDK的Assets.car编译字节与Build90不同；源资源逐文件SHA256一致，系统assetutil已成功解析实际目录，编译产物差异单独记录，不声明新美术。系统解析目录288条，实际SDK与SHA记录在Media/Build91/verification.json。原人物/装备/怪物/动画/特效源图全部复用，无新美术认可；新界面为滚动布局源码与约束检查，不称UIKit截图。
+
+公开固定链接完整GET200，64534939字节，SHA256 8b7dbc0ca8e4694ad3bdee965d84f1b40daa80bc4dc5731554c124e96d1d5043；[直接IPA](https://raw.githubusercontent.com/liamchan-rgb/experiment/96bfac11b11fcc877dc274bea4d10eb1ee6e0fa6/Downloads/MeadowJourney-b91.ipa)。来源/原始日志/校验在Media/Build91；未运行App/模拟器/实机，设备体验由用户验收。
+
+后两项：小队职业配置入口；组队技能与资源提示联调。
+
+## Build91候选 · 行程编辑与续档保护（2026-11-06）
+
+怪物编辑从旧鹿二选菜单升级为独立草稿：读取实际保存的有序编队，提供原目录六物种+两旧鹿，共8种；普通地点1—3只且各槽可混合，首领默认1只，已有合法多只首领保留原数量上限避免截断。修改/缩减后恢复/取消不写档，不耗RNG，不新建画面素材。显示真实名字、HP、AP和普攻/射程；明确确认后才调用原configureEncounter一次提交，恢复该地点敌人生命及战斗状态；保存失败保留原档并允许重试。原怪物/数值/AI/掉落不改，地图坐标/建筑不改。
+
+退出/后台用suspendAndCheckpoint将暂停、当前道路游标、移动余额、操作成员及镜头合为一次原子写入，替代原先setPaused后checkpoint两次写。失败保留原持久数据、当前内存游标和所有资源，仅安全暂停道路，重试不重复抵达；退出保存失败会刷新暂停按钮。战斗界面只在保存成功后停用，避免退出失败后界面停住。镜头校验在有/无persist时一致，拒绝非有限数与1—3范围外zoom，不接受损坏状态。
+
+历史结算逐文件读取，坏文件只列入问题清单，其他正常记录仍可查看；界面提示不能读取的数量，坏文件和正常文件原字节不改。当前坏档read/新行程归档保护仍严格抛错，不静默覆盖，不伪造恢复。历史目录枚举失败仍报错，不冒充空列表。存档格式1，旧档/手动奖励与已清状态保留。
+
+Linux完整267项零失败、四组原专项回归、项目绑定/Swift语法检查通过。新增8项覆盖单次后台写、失败安全暂停/重试无重复抵达、无persist非法镜头、8物种草稿/数量/取消、混合编队原子失败重试、已领取奖励编辑/重置失败与一次发放、真实文件夹坏历史隔离、待命中骰子保存后同值恢复与只提交一次。仍运行原27基线及27装备抽样，CI显式断言各27条和完整具体集合，不能只看绿色状态。无需再重跑上轮177个不变装备组合。
+
+候选1.6.64/build91；设备Release和最终包检待执行。采用当前可用Mac26设备编译池，资源输入逐文件SHA256核对与上轮原源一致，编译car由系统assetutil解析；跨SDK编译目录/Metal字节若变化单独记录，不称新美术。原人物/怪物/装备/动画/特效源图全部复用，无新美术认可。不运行App/模拟器/实机，最终直接IPA，来源/日志Media/Build91。离线布局为UIKit滚动草稿界面源码/约束检查，不称设备截图。
+
+后两项：小队职业配置入口；组队技能与资源提示联调。
+
+## Build90交付 · 装备对照与职业行程回归（2026-11-06）
+
+行囊装备详情新增纯只读对照：个人基础/最大/当前行动、队伍地图移动上限、真实普攻骰子/射程和换装后技能。行动戒指仅提升该角色基础AP，不提高地图移动容量；换装不回血或补AP/移动，进入战斗按各自基础AP恢复。确认为降低最大AP时原writer未截断movement.remaining，存档校验因超出新容量拒绝换装；现同次保存前按新容量截断，重新提高容量不补条，保存失败完整回滚装备/生命/AP/库存和移动。原无效存档仍拒绝、不放宽校验，已封存档不变，格式1。
+
+Linux完整259项零失败，四组原专项、项目绑定/语法检查通过。新增六项覆盖36起始组合的144次武器预览/真实换装一致、个人开场AP、容量截断/重装不补、旧非法档/保存失败、套装两三件阈值和确定性装备行程。177组受控初始装备行程已用Linux Release逐例检查点完成（此前Debug长会话中断、未输出整批结果，不计作完成），结局{'victory': 146, 'defeat': 31}；共6582战斗动作、1871存取恢复、886确认动作重建。P1三职业、四武器三基础护甲/饰品配置、空手、星辉/龙纹两三件，P2仍游侠短剑；10节点三种子153组+4/30节点双种子完整套装24组。原AI/骰子/掉落/规则数值、不使用免费移动或假复活；固定策略而非真人胜率、非自然成长获装路线。
+
+初次Mac抽样实际只有6条，已保留原文件；补充纯核验run 42210542590（源码49c3c509205ec9bf7a3975960b35e64ce94fdd95）断言27条唯一且指定角色/装备/规模/种子集合匹配后，Mac对27组装备代表用例逐字段复核（含各职业、四武器、空手、完整套装及30节点），与Linux全量中的对应记录一致；原27组默认行程仍与Build89一致24通关/3正常失败、1330动作/354恢复/171确认重建。42个装备单件比较在默认/最大地图逐字段跨平台一致。全量与抽样范围分开留档，不声称177组均在Mac重跑。专属星辉/龙纹美术仍有缺口，不把规则通过称外观完成，不开放原未支持按钮；原P2换装限制保持，原人物/装备/怪物/动画/特效全复用，无新美术认可，不把规则/数学检查称实机美术验收。
+
+最终1.6.63/build90；源码ca150c5ea5d36af7db17bd35c25afccd8710b013，run 42192128843 attempt1，Mac259测试/四回归/原27基线/设备Release成功；装备27抽样由上述补充运行独立完成。Linux命令工具入口修订为a89417d92ba537f748a140792a21dfa9dac2b703；已核实App、规则/战斗/地图库及审计库输入相对设备源码无差异，原设备IPA来源不改写。IPA CRC/经典ZIP2.0本地中央头无extra/arm64执行权限/版本平台/Metal/12怪物图集及6数据资产校验；整份Assets.car及原地图/步态/规则JSON与Build89字节一致。公开固定链接完整GET200，64688885字节，SHA256 86f0338e2dab7bf8f64bd9e7340d22893656af47bb38d87c006475b92ab57c29；[直接IPA](https://raw.githubusercontent.com/liamchan-rgb/experiment/04875c29798a3ca69504863b9fd3a4f829d64d20/Downloads/MeadowJourney-b90.ipa)。来源、日志与实际数据在Media/Build90。未运行App/模拟器/实机，设备体验交用户验收。
+
+后两项：行程编辑与续档异常回归；小队职业配置入口。
+
+## Build90抽样数量补查（2026-11-06）
+
+Mac15/15-intel纯补核均等待机器，依据runner-images已登记的macos-26镜像增加同一纯核验的备用池；不改变App和规则/审计库输入。以实际首先成功并通过27条断言的补充运行记录为准，其余自有补核任务完成后取消，避免重复。
+
+最终比对发现原Mac成功任务的loadout-smoke.json实际仅6组，缺少预期21个10节点组合，因此不能据任务绿色状态声称27组已核验。Linux改用普通函数入口后的177条逐例Release输出已完整保存（146通关/31正常失败）。补充纯Mac核验模式audit_only，明确跳过App归档，只执行修订后的同一命令工具；必须断言27条唯一且具体角色/装备/规模/种子集合完全匹配，再与Linux对应27条逐字段比对。IPA仍保留实际ca150c5/run42192128843来源，未改App或规则库；补充Mac运行来源单独记录。只有补核实际通过才发布。
+
+## Build90命令工具补查（2026-11-06）
+
+Linux Swift6.0.3 Release单例CLI在顶层嵌套循环执行后出现额外的无效地图规模（请求10，下一次错误尝试49）；Debug整批和Mac原27抽样已成功执行，但此前Linux长任务会话在最后一组中断，整批JSON未落盘。将命令工具入口完整放入普通throws函数，以return收束，避免顶层循环/退出路径；同一Release单例已核实只返回请求的一组。全量177组改用逐例检查点外部驱动，结果以最终完整文件为准。此补查只改CampaignTools命令入口，不改App的Sources、原规则/战斗/地图支持库、AuditSupport或包配置；设备归档仍为实际ca150c5/run42192128843的1.6.63/build90，另记录工具提交和App输入不变证据。不得把旧中断任务说成177已完成，也不将CLI修订混称已重新归档App。
+
+## Build90候选 · 职业与装备行程回归（2026-11-06）
+
+回归覆盖P1三职业、四种已接入武器×基础/皮甲徽章/符文甲戒指共12套、空手，以及星辉/龙纹两件与三件规则夹具；P2仍原游侠/短剑。10节点三种子153组，4/30节点双种子两套完整套装24组，共177组纯命令规则行程；Mac取27组代表用例与原27组基线逐字段比对。夹具明确初始装备，不在App赠送、不修改原Catalog/掉落/AI/骰子/数值，也不把套装规则通过记为专属外观制作完成。既有固定均值策略和有偿移动、真实物品、途中/怪物回合/确认未命中存取及防重复提交继续使用；允许正常失败，不用资源修改造胜利。全量矩阵正在执行，最终计数以实际报告为准。
+
+确认为降低最大行动上限的换装保存边界：旧writer只更新archive，未截断movement.remaining，保存校验发现旧余量超过新容量而拒绝操作。现于同一次保存前按新队伍平均最大AP×50截断余量；提高容量不补移动，失败时装备/生命/AP/库存和移动一起回滚。原无效档仍拒绝，不放松校验，不改格式1，不影响已封存档。源测试直接构造旧写法的保存失败，再验证正式API成功且重新装备不补条。
+
+行囊装备详情新增纯只读对照：基础行动、行动上限、个人当前行动、队伍地图移动上限、真实普攻骰子/射程、换装后技能。行动戒指只加个人基础AP，地图上限不变；原换装不回血/不补AP，开场按各自基础AP恢复，均经检查。原P2换装限制、未接入套装外观限制保持，不制作新动作或外观，无新美术认可；本轮动作显示沿用原素材与四组专项回归，不把纯规则/数学检查称实机美术验收。
+
+Linux完整259项零失败、四组原专项回归和项目绑定/Swift语法检查通过；新增六项覆盖36起始组合的144次武器比较/换装、个人AP、最大容量截断/重装、无效档、保存失败回滚、套装技能阈值和确定性装备行程。候选1.6.63/build90，设备Release、Mac抽样、包检和公开下载待执行。不运行App/模拟器/实机，交付直接IPA。结果放Media/Build90。
+
+后两项：行程编辑与续档异常回归；小队职业配置入口。
+
+## Build89交付 · 行程路线与资源提示（2026-11-06）
+
+地图新增持续路线条：当前目的地、剩余真实道路距离、暂停/道路选点抵达状态，以及按现有移动/金币计算的最低途中旅费及缺口。薄金色导航线只画未走道路，终点环对齐实际投影/节点，途中改向和续档同步；不改步态/速度或自动推进事件，线段每0.1秒刷新。“路线与目标”显示真实个人药水/盾药/复活石和存活状态，提供按原移动规划路程最近的一处未领补给/待战地点及返回营地；选择后走原移动入口，抵达仍主动交互。原结算与手动补满/金币购买保留，无移动先补充；旅费考虑每次移动容量封顶取整、末次可由余额部分购买，不预支未领补给，实际购买可比最低预算补入更多距离。
+
+旧档直接读取实际保存的怪物/奖励/道路游标，已领/已清不列为推荐，不重投/不重发，存档格式1不变。零补给不造节点；倒地成员库存分别列出不混作可用治疗。地图移动仍平均最大AP×50、三倍速度、各角色战斗AP独立；原Catalog/怪物/地图/装备/动作/特效资源全保持，无新美术认可。小屏横屏左侧路线说明与怪物预览切换避让、右侧资源栏缩宽；五组离线尺寸检查非UIKit截图或设备测试。
+
+最终1.6.62/build89；源码9e49a8d6f4d8cd9d0c53e3114b26018efced38f6，run 42185218219 attempt1；Linux/Mac253项纯Swift、四组原回归及设备Release通过。路线默认/最大地图初始、移动17.25距离后、暂停续档导出跨平台逐字段一致（坐标误差<1e−8）。27组固定策略行程与Build88逐字段一致：24通关/3正常失败，1330动作、354存取恢复、171确认动作重建，六物种实际参战，无路费中断，不是人类胜率或所有装备覆盖。来源、逐项结果、实际日志与包检见Media/Build89。
+
+IPA CRC/经典ZIP2.0本地中央头无extra/arm64与执行权限/版本平台/Metal/12怪物图集和6数据资产通过；整份Assets.car及原地图/步态/规则JSON与Build88字节一致。公开固定链接完整GET200，64671461字节，SHA256 045aa944a29dd2f641f97c601c761425863bfc2713ed9ca5fdf466d804464edd；[直接IPA](https://raw.githubusercontent.com/liamchan-rgb/experiment/bf05594630fa59cdc09ed889440a2f0621ea0486/Downloads/MeadowJourney-b89.ipa)。未运行App/模拟器/实机，设备体验仍由用户验收。
+
+后两项：职业及装备搭配战斗回归；根据回归与用户实机反馈完善整段行程体验。
+
+## Build89候选 · 行程路线与资源提示（2026-11-06）
+
+补查窄屏预览卡片：状态栏两行缩为“存活数 / 抵达后可开战”，保持15号字体，避免原长提示在缩窄后挤成三四行；可路过说明仍在路线菜单。首个候选run42183804516因该显示补查主动取消，最终交付必须使用包含此修正的新源码归档。
+
+沿实际保存的道路游标显示目的地、剩余路程、暂停/道路选点抵达状态，以及按当前移动和金币估算的途中最低旅费/缺口。导航细金线和终点环只画剩余真实道路，方向反转/中途停点/续档同步，不画原始点击的离路位置，不消耗移动、金币或RNG。每0.1秒刷新路线线段，不逐帧重算菜单候选。
+
+“路线与目标”保留原目标/结算流程，并提供按现有移动规划路程最近的一处未领补给、一处待战地点、返回营地；确认后沿原移动入口行走，抵达仍需主动交互。无移动先补充，零补给不伪造，当前所在节点继续用原交互按钮。显示各成员真实个人药水/盾药/复活石，不将倒地成员库存混作可用队伍治疗。只读实际保存的奖励/怪物/游标，旧档无需重建、formatVersion1不变，不调用新投放方案覆盖。旅费按每次封顶条向上取整，最后允许余额部分购买；提示为至少所需，实际购买可能补入更多距离，未领补给不预支，手动满条仍可用。平均最大AP×50、三倍速度、个人战斗AP不变。
+
+沿用现有深绿金色设计和全部美术/动作，不制作新角色资源。小屏横屏路线说明与怪物预览共用左侧位置，右侧生命/地图移动栏缩宽避让；五组离线框架尺寸核对不冒充UIKit截图。纯Swift新增七项距离/折线/反向停点/存取暂停/零移动/已领已清节点/实际库存与分次购买取整检查；Linux完整253项零失败、四组原专项回归与项目绑定/Swift语法检查通过；跨平台导出和设备Release/IPA验证待执行。不运行App/模拟器/实机；直接IPA交付，结果放Media/Build89。
+
+后两项：职业及装备搭配战斗回归；根据回归与用户实机反馈完善整段行程体验。
+
+## Build88交付 · 首领与补给节奏v2（2026-11-06）
+
+新行程单首领配置普通战斗不足4或补给不足2时用洞穴巨魔，达两条件后才按原种子在巨魔/魔龙间选；多首领保留最远一处魔龙。按配置数而非职业或已清进度分配，不强制清理顺序，不改原怪物属性、AI、技能或D20。补给v2从营地较早可达且靠近首领的实际道路位置选择现有补给，大药优先交换到该点、复活石按每个首领一份分配（同点可累加）；单补给图从小药升级大药，单首领盾药前置首个补给，多首领在对应补给配盾。药水数量仍按1—3压力档，无补给图不凭空发物品，金币预算、地图/建筑位置、平均最大AP×50移动条和三倍速度保持。领取确认显示真实每人金币、积分、全部物品，旧档和手动奖励同样读实际档案。
+
+投放/补给只在创建时应用，旧档不重排/不重发，格式1，原Catalog与美术/动画全保持，无新美术认可。只调整首领选择与补给时机；原自然20与正常失败仍有。审计器追加逐战首手、轮数、战前后生命、自然20和已领补给，并修正其支付预判以匹配Build87已经支持的部分移动购买。旧4节点31827魔龙先手高群伤可首轮击倒较低生命职业，回执没有自然20；现在同点为巨魔，冒险者仍可五轮后正常失败，其余两个职业通过。
+
+最终1.6.61/build88；源码bc8776fd675a0b8db04123a264989ec84e5d4865，run 42174523111 attempt1；Mac/Linux246项纯Swift、四原回归和27组相同固定策略/树路线通过。19通关8失败→24通关3失败，1330战斗动作、354恢复、171确认动作重建，六物种实际参战、无路费中断，全部指定战前补给已在基线首领战前领取。包含真正的自然20失败，不用改资源/假复活造通关；数据不是最佳操作或人类胜率，也不覆盖所有装备。跨平台逐字段一致，路程误差<1e−8，逐战明细/对照与复现命令见Media/Build88和docs/planning/random-map-v1/build88-tempo.md。
+
+设备Release、IPA CRC、经典ZIP2.0本地/中央头无extra、arm64执行权限/平台版本/Metal与12怪物图集6数据资产校验通过；整份Assets.car及原地图/步态/规则JSON与Build87字节一致。公开固定链接完整GET200，64636685字节，SHA256 29cdc511f98888d4383632da2c313467d9c2a8adf401c3bbccca79e9f482e1d0；[直接IPA](https://raw.githubusercontent.com/liamchan-rgb/experiment/c5e97ff25b51269e56ea8d7e18275b59060c1e9e/Downloads/MeadowJourney-b88.ipa)。来源和实际日志已记录，未运行App/模拟器/实机，设备体验仍由用户验收。
+
+后两项：行程路线与资源提示；补齐职业/装备搭配的战斗回归。继续旧存档/手动编辑、主动节点交互、怪物预览、个人战斗AP及手动整备与部分移动购买。
+
+## Build88候选 · 首领与补给节奏v2（2026-11-06）
+
+新行程单首领配置：普通战斗不足4或补给不足2时用洞穴巨魔，达到两条件后才按原种子在巨魔/魔龙中选择；多首领自定义配置继续最后一处魔龙。不是锁住节点，仍可主动路过/开战，原怪物属性、AI、技能和D20规则不改。门槛按新地图配置数量，不按角色职业或清理进度，避免换职业就变怪。
+
+补给v2：按实际可走道路，优先选择从营地较早可达、又靠近首领的现有补给点放战前大药/复活石。尽量交换原有大/小药位置而非增加药水数量；单补给图把原小药升级为大药。单首领的盾药前置到首个补给，多首领按对应补给配盾药、每位首领一份复活石（可在同一补给累计）。不新增建筑，不改节点类型/位置或金币/移动预算，零补给配置不凭空发物品；领取仍每位存活成员各得一次。领取确认弹窗列出真实金币、积分和全部物品，旧档或人工配置也读实际档案。只在创建时分配，继续旧档不重投、不改奖励，格式1。
+
+诊断工具补各战的首个行动者、轮数、战前后HP、自然20回执和已领补给；并修正审计器购买判断为可支付部分距离（之前审计器仍按整条门槛判断，App的部分购买在Build87已正确）。小图31827的旧魔龙开战先手高群伤击倒较低生命职业，回执并非自然20；不通过改点数或假复活造通关。
+
+Linux246项纯Swift通过；27组相同固定策略与树路线，旧19通关/8失败→新24通关/3失败，无路费中断。1330战斗动作、354恢复、171确认动作重建，六物种全实际参战，全部指定战前补给在该基线首领战前已领取。不是最佳操作或真人胜率，冒险者仍可能正常团灭，原自然20仍保留。旧存档/人工魔龙与奖励不重排测试通过。设备Release、Mac一致性及IPA校验仍待执行；候选1.6.61/build88，未运行App/模拟器/实机，原美术/动画全部复用。后两项：行程路线与资源提示；补齐职业/装备搭配的战斗回归。
+
+## Build87交付 · 完整行程回归与整备/部分移动购买（2026-11-06）
+
+行囊与装备左栏顶部新增“手动整备”：复用原GameCore.refillExploration，按成员自己的基础AP补足、保留更高余量，生命/护盾/技能次数/物品/金币/地图移动不变；其后用药、救援照原AP和个人库存扣除。只允许站定探索态，路中/战斗/封存后禁止，保存失败回滚，已足不再写历史。修复原手动补AP入口在移动条改造后丢失导致战后不能用现有药水/复活石的衔接缺口。另购买移动改为按余额最多买50距离/币的部分条，上限截断，付款/移动一起保存，保留原免费手动满条；0金币明确禁买，不混入战斗AP。旧档可直接用，格式1无新字段，人物/怪物/动作/技能素材与原目录不改。
+
+独立MeadowCampaignAuditSupport/MeadowCampaignReview纯命令工具不接App自动操作；原骰子/AI/掉落，无资源改写、免费移动或假复活。三P1职业+P2游侠，4/10/30节点，种子0/31827/UInt64.max，默认短剑和固定均值效用策略；闭合BFS树路线共27组，19通关/8正常团灭，无路费中断，1,444战斗动作、344恢复、165确认动作重建，六正式物种全实际参战。角色结局4/5、7/2、8/1仅本组固定脚本结果，不是最佳操作或真人胜率。部分恢复受个人库存/位置等原规则限制。更绕路的先收补给策略另作压力模式，不冒充原树巡回预算。核对预览不改档、命中前隔离、重开确认不重掷、个人开场AP、重复提交、账目与胜负封存；27组Mac与Linux逐字段一致，路程误差<1e−8。可用--size/--seed/--role复现，完整数据/说明在Media/Build87与docs/planning/random-map-v1/build87-journey-audit.md。
+
+最终1.6.60/build87；源码6c60a3df90756ecd105934cf05d567a8f4767d53；run 42154159246 attempt1，Mac/Linux240项纯Swift、四组原回归、27组完整行程及设备Release通过。IPA CRC、经典ZIP2.0本地/中央头无extra、arm64执行权限/版本平台、Metal及12怪物图集/6数据资产核验；整份Assets.car及原地图/步态/规则JSON与Build86字节一致。公开固定链接完整GET200，64620141字节，SHA256 b4fdd261bfaa79fe05d042fc05e2bb022ba2c595793417d5f5e140644682f06e；[直接IPA](https://raw.githubusercontent.com/liamchan-rgb/experiment/0b5ef675f46a0f63d9863789800ad35b46fa8ba8/Downloads/MeadowJourney-b87.ipa)。实际来源、日志、校验Media/Build87。未运行App/模拟器/实机；设备体验仍由用户验收，无新美术认可。
+
+后两项：按职业/路线结果调整首领与补给节奏；完善行程目标与路线/资源提示。保留三倍速度、平均最大AP×50移动容量、主动节点交互、原怪物预览及各角色独立战斗AP。
+
+## Build87候选 · 完整行程回归与整备/部分移动购买（2026-11-06）
+
+Linux240项纯Swift与四组原回归通过；27组最终闭合树行程已完成，19通关/8正常失败，无路费中断，1,444动作/344恢复/165确认重建。原Catalog/素材未改。最终Mac矩阵与设备Release仍待构建，不能把上述规则执行称App实测。
+
+本轮做三种P1职业（P2游侠）、4/10/30节点、多种子全行程纯规则驱动，原AI/骰子/物品和掉落不改。固定均值效用策略选择合法行动，不读取确认骰值来选招；路中、怪物回合、已确认但未提交动作做存取，核对个人开场基础AP、未命中不提交、同一结果提交/重试、账目、返回营地和只读结算。工具在独立MeadowCampaignAuditSupport/MeadowCampaignReview目标，不接入App自动操作，不是App/模拟器/实机测试或真人胜率。闭合BFS树路线作为与既有路费预算相符的基线，补给优先绕行路线另作压力模式；不把绕路耗尽当崩溃，也不使用免费移动、资源改写或假复活来造通关。
+
+回归和代码复核确认两个衔接缺口：战后AP耗尽且有物品时，原手动探索补AP入口在移动条改造中丢失；行囊顶部新增“手动整备”，调用既有GameCore.refillExploration，分别补足各成员基础AP、保留更高余量，不回血/复活/重置次数/发物资或地图移动，不在路中/战斗/结算后使用，保存失败回滚。其后用药/救援仍按原AP与个人库存扣除。另原移动购买要求付完整条，余额可买一部分也被拒；现按可用金币最多购买50距离/币的部分条，上限截断，付款/路程一并保存，原手动满条仍独立，AP不互通。
+
+新增5项整备及行程回归已通过，追加部分购买/尾段不足50/保存失败测试；完整套件与27组最终基线进行中。候选1.6.60/build87；原人物/怪物/动画/特效原画不改，无新美术认可，无App/模拟器/实机运行。最终Mac回归、设备Release和包检仍待实际结果，来源和日志将放Media/Build87。后两项：按本轮路线/职业结果调整首领与补给节奏；再完善行程目标与路线/资源提示。继续直接IPA，不给ZIP。
+
+## Build86交付 · 节点怪物预览与行程补给（2026-11-06）
+
+选中普通/首领建筑立即出现非模态怪物卡片，保持原即时道路行走；读真实保存的1—3只怪物、当前HP条/盾/开场AP黄菱形/普攻骰子/自身技能，包含手动编辑与旧鹿。抵达后可主动开战，预览不耗RNG、不发奖励；路中/战斗/结算后不能再开战，死亡条隐藏，小屏可滚动、单敌缩高。补给编辑新增复活石、标注每人金币积分，并保留未列出的奖励物品。原人物/怪物/特效资源和动作不改；[离线参考](https://raw.githubusercontent.com/liamchan-rgb/experiment/a734cbb5f99b0cc70959fcdb2d41794897ce8c61/Art/Review/Map/encounter-preview-v1/preview-cards.png)仅排版/源图合成，不是UIKit截图。
+
+新行程补给v1按真实道路的闭合树遍历、整条移动购买及一条储备预算发旅费，先覆盖最近补给，剩余按每位领取者规则分入奖励；无补给图全数放起步旅费。药水密度按敌方总HP分1—3，末段有首领则补盾药和复活石。默认图全队起步16，三补给各给每人12；每人小药1、小药1、末段大药1+盾药1+复活1。原桌游属性、技能/AP、效果/掉落不变；预算以双人存活领取和树遍历为参考，不保证任意绕路或所有职业自动获胜。旧档资源/自定义奖励继续原值，不重发，存档格式1。完整职业与胜率联调下一轮继续。
+
+最终1.6.59/build86；源码a734cbb5f99b0cc70959fcdb2d41794897ce8c61，run 42148753331 attempt1，Linux/Mac233纯Swift测试、四组回归与设备Release通过；跨平台默认/最大规模预览和补给数据一致（路程误差<1e−8）。IPA CRC/经典ZIP2.0本地及中央头无extra/arm64执行权限/版本平台/Metal与图集核验通过，整份Assets.car、原地图/步态/规则JSON与Build85字节一致。公开固定链接完整GET200，64619861字节，SHA256 7273dfd7793ee90f32d1392b02fc472accbb04a9e9ea3d46683b9d9ea4dbe24c；[直接IPA](https://raw.githubusercontent.com/liamchan-rgb/experiment/94a33eb2307821c74b754173977226117fb075e6/Downloads/MeadowJourney-b86.ipa)。来源、实际日志及校验Media/Build86；未运行App/模拟器/实机，用户验收设备体验。较早两次尝试因补给编辑补查主动取消，不用旧尝试产物替代最终源。
+
+后两项：队伍职业与不同遭遇组合的整段行程回归；依据回归和用户实机反馈继续调整首领及补给节奏。继续三倍速度、平均最大AP×50独立移动条、主动交互及每角色独立战斗AP。
+
+## Build86候选 · 节点怪物预览与行程补给（2026-11-06）
+
+补给字段使用“每人金币/每人积分”短文案，保证固定左标签完整显示；物品数量说明同样明确按领取者发放。最终归档以该可读性复核后的源码为准。
+
+补查补给编辑：现在只修改界面列出的四类消耗品数量，保留旧档或手动配置中未列出的装备等奖励，避免修改金币时无意删除其他物品。最终归档以包含本修正的源码为准。
+
+用户继续资源联调并要求选中战斗地点后的怪物预览。地图点建筑立即沿原逻辑行走，同时显示可关闭的非模态卡片：真实存档1—3只/首领图像、当前生命条/护盾、开场AP黄菱形、普攻骰子和自身技能。抵达后才可从卡片开战，查看不消耗RNG/资源；路中/战斗/已结算不能重复开战。旧鹿和已清理地点可查看，死亡条不显示；点道路关闭卡片，编辑选点仍走原流程。小屏卡片可滚动，单敌高度收紧。不调用新行程规划器来伪造旧档预览。
+
+新行程补给v1按实际道路生成确定性闭合树遍历路费预算，含一次整条移动储备，不预支随机掉落；起步旅费先覆盖抵达最近补给，剩余预算按现有每位存活领取者规则除以双人后分入补给，避免误算双倍。无补给图把路费预算放起步包。药水数量按敌方总HP密度取1—3，前段小药水、压力较高/后段大药水；有首领的最远补给再加盾药/复活石。默认图全队起步16，三补给每人12；药水每人小1、小1、末段大1+盾1+复活1。补给编辑新增复活石并常驻标注金币/积分每人。沿用原怪物/职业属性、技能效果、AP和掉落概率，未修改桌游目录，不宣称整体胜率已经平衡；绕路额外开销、队员倒地少领和战斗消耗仍由玩家规划，可用已有手动补充。
+
+只在创建时应用，旧档/手动奖励/库存、存档版本1不重发。人物、怪物与技能资源/动作全保持；本轮UI离线参考在Art/Review/Map/encounter-preview-v1，明确不是UIKit截图。主线程亲查三怪和单首领排版并收紧单怪卡片；Linux233纯Swift测试、四项原回归及项目绑定检查通过。候选1.6.59/build86；设备Release与包检待执行，不运行App/模拟器/实机。后两项：队伍职业与不同遭遇组合的整段行程回归；依据回归与用户实机反馈继续调整首领和补给节奏。
+
+## Build85交付 · 正式随机怪物遭遇（2026-11-06）
+
+新行程启用独立种子遭遇规划v1：按最短实际道路距离排列普通战斗，最近单史莱姆，中段狼/哥布林/史莱姆混合，深段石像或最多三怪；单首领按种子选巨魔/魔龙，多首领最远魔龙、其余巨魔。生成预览显示真实节点与组合；原目录数值/技能/掉落、节点配额/道路/装饰及战斗RNG不改。新建时写入实际单位；旧鹿与手动编辑、战斗中续档继续按存档，不重排，不改formatVersion=1。本轮复用Build84美术与动作，无新美术认可。
+
+最终1.6.58/build85；源9195d66827b958e5fe65a083ccfbf93492368faa；run 42141658137 attempt1，Linux/Mac226纯Swift与四组回归/设备Release通过。跨平台默认10节点及最大30节点遭遇模板/分层完全一致，路程误差<1e−8。IPA CRC、ZIP2.0无extra、arm64/执行权限/版本平台、Metal/Assets.car与12怪物图集名称校验；原地图/步态/规则JSON与Build84字节一致。公开固定链接完整GET200，64568149字节，SHA256 22a668721026ce8ee56c0194d2672757390b6bcfab9bf4d2e3c1297cc62e78ee。来源/原日志/验证见Media/Build85；[直接IPA](https://raw.githubusercontent.com/liamchan-rgb/experiment/974d0e5d26fccd60fb13cf0c9d350b0452d62e97/Downloads/MeadowJourney-b85.ipa)。未运行App/模拟器/实机，设备验收交用户。保留三倍速度、平均最大AP×50移动条、主动节点交互和各角色独立战斗AP。
+
+后两项：战斗数值与金币/药水资源投放联调；队伍职业与不同遭遇组合的整段行程回归。本轮未宣称整体难度已经平衡。
+
+## Build85候选 · 正式随机遭遇组合（2026-11-06）
+
+Linux Swift6.0.3完整226项零失败、四组原独立回归与项目资源检查通过；固定种子实际导出已留存。新增种子快照断言补跑通过后提交设备归档，最终Mac仍需完整226项和设备Release。本轮没有运行App。
+
+新行程按最短实际道路距离排列普通战斗：最近地点单只史莱姆，中段森林狼/哥布林或带史莱姆，深段石像守卫/近远程混合/最多三怪。首领单只，多首领图较近巨魔、最远魔龙；单首领由种子选巨魔或魔龙。规划器v1使用独立域的稳定种子，不消耗战斗RNG、不改变布局/节点配额/道路/原怪物属性技能与掉落。生成道路预览同时列出真实节点编号及将投放的怪物；开始新行程使用同一规划器。数字和奖励平衡留下一项，不宣称已经平衡。
+
+只在新建时分配；加载仍使用保存的单位，旧鹿灵/鹿王目录保持，formatVersion=1不变。地点编辑可覆盖，存取后不重排；继续主动节点交互、独立战斗AP、均值最大AP×50移动条与三倍速度。本轮复用Build84怪物图集和所有原动作，不制作新动作，不把旧GIF称新实机录像。候选1.6.58/build85；新增完整4—30规模/种子/全战斗和全首领配额、道路分层、预览一致、RNG隔离与旧档/编辑保留测试。当前设备Release及完整回归尚待执行；不运行App/模拟器/实机，最终来源与交付在Media/Build85记录。后两项：战斗数值与资源投放联调；随后按实测反馈调整整段行程难度和节奏。
+
+## Build84交付 · 六种怪物与批量动作检视（2026-11-05）
+
+本轮补齐史莱姆、森林狼、哥布林弓手、石像守卫、洞穴巨魔、遗迹魔龙候选母版与各自56常规源姿态（待机12/短出招24/施法12/受击8）、40右吹死亡帧；同一母版连续表面形变，不独立随机重画每帧，不称完整骨骼行走。普通0.88、首领1.04，主角0.83原尺寸保留；主体体量与可信比例同屏比较，原鹿资源及人物/装备/步态原图不改。史莱姆原atlas触左边已换完整独立母版；新资源都有真实透明边缘，无文字/格线，死亡首帧与原身只差32透明行，末帧完全透明，保持各自剪影/色彩，不套鹿。
+
+新增“开始新行程”设置→“怪物动作检视”，可切换六种/重播自动阶段，不消耗行程资源。正式行程“编辑地点”选择原已登记的六种时显示新图；普通1—3只、首领1只，修复旧显示只接收2只与编辑3只不一致，m3有独立位置/真实ID/骰子锚点及续档AI回归。默认随机地图仍旧鹿灵/鹿王；自动遭遇分配下一轮处理，不能把本轮描述为已完成新投放。
+
+近战各物种前缘接触；弓手/魔龙的远程普攻不冲撞，箭/能量从实际持弓/口部发出。石肤/再生/龙鳞/龙焰复用既有动作与技能反馈，敌方技能按实际时长收尾，不再统一1.1秒截断。sourceSkillID从怪物自身技能列表定位，避免同名龙焰混用玩家定义；骰子固定盾6/10与D20按原怪物定义/确认回执，护盾条也取6/10容量。正向HP/护盾仍在特效后半显示，不修改原目录/规则/数值/AP/掉落或RNG。
+
+六种独立主体受击点位于腰腹/前躯、都经PNG Alpha实测；武器接敌沿原认可相对关系加注册差值，所有箭矢/法杖/符文/龙焰/节点光效、受击/死亡粒子、伤害数字共用。新脚底回归保持与目标地面Y−12差，不抬升主角去够首领胸口；接敌骰子同步避开血条。原鹿/未映射模板的命中/移动保持旧逻辑。
+
+主线程自审24页336源姿态、六组2×关键整身、整场各阶段、接敌注册与三敌站位；240死亡源帧/GIF完整解码作技术检查。32个既有人物/场景参考输入与上轮发布树逐字节相同。正常GIF6.4s/1200×528，重复静止帧合并但速度不变；公开完整GET与独立HTTPS浏览器GIF推进检查通过，[正常GIF](https://raw.githubusercontent.com/liamchan-rgb/experiment/7734f149fd326ff03eba2a5a6c1feac57c5a59cb/Art/Review/Battle/bestiary-v1/bestiary-normal.gif)、[MP4](https://raw.githubusercontent.com/liamchan-rgb/experiment/7734f149fd326ff03eba2a5a6c1feac57c5a59cb/Art/Review/Battle/bestiary-v1/bestiary-normal.mp4)、[接敌图](https://raw.githubusercontent.com/liamchan-rgb/experiment/7734f149fd326ff03eba2a5a6c1feac57c5a59cb/Art/Review/Battle/bestiary-v1/incoming-registration.jpg)。离线合成，光影/UI近似，未叠加正式全部照明/粒子；不冒充UIKit录屏、每帧全分辨率人工连续播放或设备60fps测量。新美术用户认可null。
+
+最终版本1.6.57/build84；实际源ce75138d8748325f7b7dbcb302228d0ccde65246；设备Release run 42074953267 attempt1成功，Mac/Linux221纯Swift测试与四组原回归通过；Native导出1920样本与Linux逐项比较，最大数值误差0（阈值1e−9，姿态/阶段/布尔严格相同）。更早7fac/904成功归档只属历史，本包含最后脚底修正。IPA CRC/ZIP2.0无extra/arm64执行权限/平台版本/Metal与Assets.car、12新图集及数据资产名称、与Build83的原地图/步态/规则JSON一致校验通过。公开完整GET200，64534597字节，SHA256 a96be8330d8b95fde9a04a1bc61b256824e8f383d35723e642a1b1df6e76630b。只做纯规则执行、设备编译、离线美术与包检；未运行App/模拟器/实机，设备交用户。源母版/构建脚本/清单在Art/Monsters/bestiary-v1，审核在Art/Review/Battle/bestiary-v1，实际日志Media/Build84。仅发布本项所需文件，未整体提交脏工作区。
+
+后两项：正式随机地图怪物/首领遭遇配置与组合；战斗数值与资源投放联调。继续保留三倍移动、平均最大AP×50独立移动条、主动节点交互、个人战斗AP与已完成行程只读/历史结算。
+
+## Build84接敌脚底复核（2026-11-05）
+
+接敌图发现按高处胸口平移角色会使脚底离地。最终受击点改为主角现有挥剑高度可触及的怪物腰腹/前躯：普通源坐标Y158，首领Y171；均在不透明身体上，不靠抬高人物够到胸口。保留原战场脚底差（目标节点Y−12），固定注册测试新增该约束，4项MonsterVisualTests通过；上轮全套Linux221项通过，最终Mac仍须完整221项。六种源PNG不改，原P1武器/骨架不改，模型导出的入场/命中注册图已经重新按整场核对。
+
+以包含本条脚底修正的源码为最终候选；904aaa源虽设备归档成功，仍是更早注册稿，不冒充最终包。版本仍为尚未发布的1.6.57/build84。正常怪物出招/受击/施法/死亡图像采样与上轮完全相同，只有玩家接敌与命中注册字段变化，已逐字段比较；离线预览可复用已验源帧并更新接敌图与数据摘要。实机运行/设备帧率由用户验收，美术认可null。
+
+## Build84受击注册复查（2026-11-05）
+
+六种怪物已分别登记主体受击锚点，尤其弓手不能继续使用鹿的左侧空白位置。PartyIntent带目标模板，近战世界位移在原认可武器到命中点的相对关系上加注册差值；巨剑Rig、弓箭/法杖投射物、符文斩/龙焰/节点技能、伤害/自然20数字及受击/死亡粒子共用该点，玩家接敌骰子同时避让新位置的血条。旧鹿及未映射目标仍走旧锚点/原位移；人物原画/关节/武器Rig不重画。新注册和原近战关系/第三敌/原怪物技能骰值断言的Linux221项全部通过，源动画PNG未再修改。CLI导出增加主体锚点与玩家接敌位移，须据实际输出复核身体Alpha和整场。
+
+本轮设备归档以包含该注册修正的最后源码为准；较早7fac4bc源的Build84成功归档仅历史，不冒充最终包。版本1.6.57/84，当前继续离线审核与最后设备归档，不运行App/模拟器/实机，美术用户认可仍null。
+
+## Build84 结算显示复查：怪物技能与护盾容量（2026-11-05）
+
+检查发现“龙焰”在玩家和怪物目录中同名，直接按全目录名称查找会混用定义；改从当前怪物自身技能列表定位sourceSkillID，再传入骰子显示。石肤6、龙鳞10和怪物龙焰D20取原始怪物定义与确认回执，不使用玩家动作别名的固定值，也不额外显示玩家龙焰授盾。动作仍复用既有近远程/护盾/恢复反馈，不修改规则目录、AP、掉落或RNG。新怪物护盾条按自身已登记护盾技能容量6/10显示，原玩家默认8不变。
+
+补上上述真实AI与骰值断言后，Linux纯Swift221项全部通过；原视觉资源夹具由远端逐字节恢复，本轮未修改旧人物/地图资源。原失败仅本地稀疏副本缺夹具，修复后全套通过，不把旧失败混成产品规则错误。最终版本核定1.6.57/build84，两个配置均已更新。设备Release仍待最终实际成功run；不得用build83内容改名交付。原生成候选与艺术审核/正常GIF要求继续，artApproval=null，无App/模拟器/实机运行。
+
+## Build84候选 · 六种怪物外观与动作（2026-11-05）
+
+用户“开始下一步”授权集中完善怪物。本轮新增史莱姆、森林狼、哥布林弓手、石像守卫、洞穴巨魔、遗迹魔龙候选母版及各自待机/短出招/施法/受击/右吹退场。共享连续表面形变，不是新画每帧或完整骨骼行走。保留生成原图/脚本/清单，参考Art/Monsters/bestiary-v1；主角、原鹿和规则目录不变。原atlas史莱姆左缘触边已换独立完整母版。
+
+修正三怪地点与仅双敌显示的冲突：三敌入口、唯一m3站位、定位/骰子与续档仍保留真实ID；近战按物种接触点，远程弓手/魔龙不冲撞，投射物从实际持弓/口部发出；怪物石肤/龙鳞/龙焰映射原有护盾/技能反馈，时长按实际技能，不再一律1.1秒截断。加怪物护盾附着，正向状态仍在特效后半显示。六种独立死亡剪影，不用鹿身体顶替。设置新增“怪物动作检视”，不关联行程资源。
+
+候选1.6.57/build84；已有Alpha/锚点/原身体死亡首帧/完全消散/动作端点检查，正常离线审核与设备归档/221项纯Swift测试待最终构建验证，不声称通过或设备实测。无智能体；美术由主线程修复/审核，artApproval=null。仅提交本轮所需文件，不整体提交脏工作区。默认随机投放仍鹿灵/鹿王；新资源可用编辑地点/检视入口核验。后两项：正式随机地图怪物/首领遭遇组合；战斗数值与资源投放联调。
+
+## Build83 · 完整行程结算与通关收尾（2026-11-05）
+
+正式行程新增顶部“行程目标”：清理全部普通战斗/首领地点，再由存活成员返回起点营地，才可“结束并结算”；补给领取可选，无敌人地图则须先探索全部地点再返回。全员倒地可结束失败行程，正在进行的战斗在同一持久化事务中关闭。结果记录完成时间、地图种子、探索/清理/补给数量、实际累计移动及移动购买花费，以及各成员最终生命、金币、积分、装备和行囊；仅汇总实际资源，不额外发奖。
+
+结算快照绑定gameID并校验，重复确认返回同一结果；保存失败回滚，允许重试。结算后只读，仍可移动镜头、查看结果、切换查看成员和返回设置，不能继续移动/买移动条/改地点/改资源/用药/换装。重新进入已结算行程显示结果；设置新增“历史结算”，新建行程前先备份已结算旧档到Completed目录，备份失败不覆盖；按gameID去重。存档格式维持1，completion为可选字段，旧档可继续。未结算旧档开启新行程仍有原有覆盖确认。
+
+Build83版本1.6.56；源ec6346010f6bd3ac293cb85d0c412c9baef04abe；run 42016859309 attempt1设备Release、215项纯Swift测试及四组回归通过。新增覆盖通关返营/空战斗地图探索、可选补给、重复结算、只读封存、保存失败重试、历史备份去重及失败战斗原子关闭。补查确认弹窗到结果页的切换，等待弹窗消失后显示，避免拦截。IPA CRC/ZIP2.0、arm64/权限、Metal/Assets.car、与Build82的原地图/步态/规则JSON一致校验通过；固定公开完整GET HTTP200，60517165字节，SHA256 bfefe1201ea4c0a60372c19f1e4bcdf5167fc437824c2631f90ce09a1f03f975。未运行App/模拟器/实机，设备交用户验收；没有新增美术或宣称UI设备实测。Media/Build83保存实际日志和来源。
+
+后两项：集中完善怪物动作与外观；再完善随机地图怪物/首领遭遇配置与组合（现有鹿灵/鹿王仍借用原wolf/caveTroll规则）。保持三倍速度、均值行动上限×50独立移动条、主动节点交互和各成员独立战斗AP。
+
+## Build82 · 道路任意选点、独立战斗AP与队伍入口（2026-11-05）
+
+大地图允许点击道路任意位置，立即显示反馈圈并沿道路走到该点；途中可重新点选，含原路反向返回，保持真实当前位置，不跳转节点。道路终点记录可选stopDistance，路中停靠仍保留游标，后续点选按当前位置规划。已到达道路选点时隐藏播放按钮；途中耗尽则保留继续入口，补满后播放。到节点仍主动交互；编辑地点模式只处理建筑选点。保存失败保留旧路线/资源。
+
+移动上限系数从150降为50，成员最大AP均值为8时上限400。均值算法仍为成员最大AP总和除以人数，测试采用不同的10/6上限验证均值8。购买仍每50距离1金币、向上取整补满，全队支付；旧版移动条按剩余比例从150系数迁移到50，累计实际路程保持。旧档中缺失移动字段时初始化新上限。
+
+纠正Build81人物开场填至maximumAP存储上限的行为：下一次开战按各自baseAP（含装备加成）补满，战斗扣点按actor独立；共享底栏明确显示P1/P2所属行动点，不合并。地图容量仍用maximumAP。旧正在进行战斗不重置消耗。
+
+队伍配置初版沿用当前P1/P2双人成员：新行程P1可选冒险者、魔剑士、龙骑士，P2沿用游侠；地图“队伍与成员”展示各自基础行动和行动上限，可切换操作成员并持久化，点击人物选择也保存。复用已有角色/动作/职业技能，不新造人物美术或扩大P2装备挂载范围。后续通关结算与怪物外观/动作仍待完善。
+
+Build82版本1.6.55；源bd4905f2330e93a8e71fefc51720e4ddde91ea95；run 42012589074设备Release、209项纯Swift测试及四组回归通过。新增道路精准停靠/续档、途中反向不跳位、移动系数按比例迁移、职业/成员选择续档、单角色战斗扣点不改变队友等覆盖。IPA CRC/ZIP2.0、arm64/权限、Metal/Assets.car、原地图/步态/规则JSON校验通过；固定公开GET HTTP200，60432573字节，SHA256 8ab5608862f71f731b4ecdaa68439af2112985f143e26935a6a21a189f27d19f。未运行App/模拟器/实机，用户负责设备验收。Media/Build82保存实际日志和来源。
+
+后两项：完整行程结算与通关收尾；集中完善怪物动作与外观。
+
+## Build81 · 独立移动条与主动地点交互（2026-11-05）
+
+用户本轮明确指定：大地图移动资源与战斗AP独立，移动条由最大行动点上限换算，组队取平均；初版距离/金币价格由Codex设定。现为每1最大AP=150世界路程，队伍移动条上限=成员最大AP平均值×150；每150缺失距离收1金币，补满价格向上取整，全队金币依P1/P2顺序支付。地图按钮提供金币补满及人为手动补满，两者不增加战斗AP。金额在确认前展示；金币不足不扣款。途中耗尽保留道路游标并暂停，补充后点播放沿原路继续。
+
+实际道路折线距离连续扣条，缩放不影响扣除；大地图移动不再扣战斗AP。所有节点允许路过，奖励和怪物均不强制触发；抵达后点“交互地点”或再次点击当前位置建筑确认交互。奖励明确领取一次，编辑已领取补给仍不重发，重置后须再主动交互领取。人物每次主动开战前AP补至各自最大值，移动条独立保留，怪物沿原战斗机制。地图HUD显示共享移动条和每个成员的行动上限/生命，战斗HUD沿用原样。
+
+奖励编辑各输入框左侧常驻显示“金币、积分、小型药水、大型药水、护盾药水”，数字填入后仍可辨认。旧存档可读取，缺少新移动字段时一次初始化满条；人物位置、原资源和旧战斗AP不改变，旧道路游标暂停恢复。存档版本号维持1，新增可选movement字段；后台/到站/耗尽保存游标与移动条，付款和补满与引擎回执同步提交，失败回滚。首轮回归捕获了读写同一移动状态引起的Swift独占访问崩溃，已改用局部值计算后再提交，最终完整回归通过。
+
+Build81版本1.6.54；源851df21e958360b1f975a98ccae66733d61fcda4；run 42005907563设备Release、204项纯Swift测试与四组回归通过。覆盖平均最大AP、不受剩余AP影响、分段距离扣除/途中耗尽续行、金币与保存失败回滚、非强制事件、奖励一次领取、每场新战斗满AP、旧道路存档迁移。IPA CRC/ZIP2.0、arm64/执行权限、Metal/Assets.car、原地图/步态/规则资源核验通过。固定公开链接完整GET HTTP200，60415629字节，SHA256 95d347cb45142e30ec09b0c0943b2a8fd8d6e969da72a3f86753f1d47f1292a4。未运行App/模拟器/实机，实机交用户。记录Media/Build81。
+
+后两项仍为：M6队伍配置与成员切换；完整行程结算与通关收尾。
+
+## Build80 · 正式行程行囊与P1装备（2026-11-05）
+
+正式行程“道具”入口升级为“行囊与装备”：分别查看P1/P2个人背包、生命/行动/金币/积分与当前装备；补给可选择使用者及目标，数量和AP只扣使用者自己的。P1支持原有八件可挂载装备的装备/卸下与属性比较，沿用既有外观资源；P2装备仅查看，P2挂载外观尚未接入。换装不回血或补AP。物品无实际恢复效果时不消耗；移动或战斗期间禁止管理行囊。
+
+界面复用既有行囊三栏布局和属性条；深色列表使用浅色字，金色选中行使用深色字，成员和目标切换框采用明确的选中配色。
+
+所有操作经当前GameEngine记录并保存；换装先准备外观再提交持久化，失败恢复旧外观/资源/背包。旧行程保持原物资；新行程复制营地的完整背包与装备快照，修复旧初始化漏带备用装备、额外复制已穿装备的问题。营地源档保持独立，存档格式与原规则不变。
+
+Build80版本1.6.53；源f2ac05fa6606cf918aea93c0ae7a4392a056d793；run 41998082749设备Release归档、199纯Swift测试及四组既有回归通过。新增测试覆盖完整背包复制/装备不额外复制、候选不修改原状态/换装用药保存失败回滚、分成员消耗、续档、移动战斗禁止。IPA经CRC/ZIP2.0、arm64/权限、Metal/Assets.car及原地图/步态/规则资源核对；固定链接完整GET HTTP200，60381293字节，SHA256 93321b7b548c49f90faaabce36557e9ac653fc99a5f0024d3d7cf850746020d8。未运行App/模拟器/实机，实机交用户。记录Media/Build80。
+
+下一步两项：M6队伍配置与成员切换；随后完善完整行程结算与通关收尾。
+
+## Build79 · 地图点击选点编辑（2026-11-05）
+
+用户确认正式新行程中已有编辑入口；本轮将地点列表改为地图选点。点击“编辑地点”后按钮变为“取消选点”，底部持续提示。点击战斗/首领/补给建筑打开该节点编辑；起点/空地点保留选点模式并提示重新选择；选点期间不发出移动命令。选择有效地点、再次点击取消或保存返回后恢复正常点选行走。战斗规则、存档格式与三倍移动不变。
+
+Build79版本1.6.52；源317d1b2ac1382a20d7006c1b6c9e5ced1b929697；run 41993649760设备Release归档、196纯Swift测试及四组既有回归通过。IPA经CRC/ZIP2.0、arm64/执行权限、Metal/Assets.car与原地图/步态资源核验；公开固定链接完整GET HTTP200，60330605字节，SHA256 d16acec15fb39b0fa0414b4608082161c57acf13124a99979e4e09cbec9eb244。未运行App/模拟器/实机，设备验证交用户。记录Media/Build79。
+
+后两项：M5行程行囊与装备管理；M6队伍配置与成员切换。
+
+## Build78 已完成 · 随机地图地点内容编辑（2026-11-05）
+
+正式行程新增暂停时编辑地点：普通战斗地点替换1—3只已登记怪物，首领地点1只；补给可配置金币、积分与药水。修改已领取补给保留领取标记，不再次发奖；只有单独确认重置后，再次真实抵达才结算一次。移动/战斗期间禁止编辑，全部由游戏命令记录进操作历史并落盘。四个底部操作按钮随屏宽自适应。存档版本1不变。
+
+源码 727f7afee42fdf84c666af5341551712bd147d9e，GitHub Actions run 41979021884 attempt1成功。macOS 196项纯Swift测试、道路/遭遇/战斗特效/模组四组回归及iOS设备Release归档全通过。IPA 1.6.51/build78，60,330,605字节，SHA-256 2458759bff628243a33cfe3cc80c8c24ad151a33302f10560d123643ec6fd1e8；完整CRC/经典ZIP2.0无额外字段、iPhoneOS arm64、执行权限、Metal/Assets.car/节点建筑资源与编辑代码字符串核对通过。公开直接IPA完整GET HTTP200及字节/哈希相同，回执Media/Build78/public-downloads.json。SideStore需重签；未运行App/模拟器/实机。
+
+流程校正：首个候选CI只暴露测试夹具往返移动后未按游戏规则补足行动点；已修正测试，最终版本的196项全部通过。
+
+下一步两项：M5行程行囊与装备管理；M6队伍配置与成员切换。
+
+## Build77公开下载已验证（2026-11-05）
+
+实际run41869668339 attempt3成功。直接IPA完整GET HTTP200，60297013字节，SHA256 615f7029f8ffd8753a6c7be07fb4e66e2214039c2e2cc00fa6fd75892e7c563c，远程内容CRC通过；原正常GIF完整GET/hash/238×20ms解码一致。回执Media/Build77/public-downloads.json；IPA固定版本链接 https://raw.githubusercontent.com/liamchan-rgb/experiment/ae8ee54a30f02825e6657397f6b23c732df0dbd7/Downloads/MeadowJourney-b77.ipa 。未运行App/模拟器/实机，设备验证交用户。下一步M4节点内容编辑，再行程行囊/换装与队伍配置。
+
+## Build77 已归档交付 · 正式怪物骰子空值崩溃修复（2026-11-05）
+
+GitHub Actions已恢复，41869668339 attempt3设备Release成功，实际源a3508591fd6934e4389d01bed98aa7cc65400835，1.6.50/77，Linux/Mac194纯Swift测试与四组回归通过。修复真实m-node-index怪物ID的头顶骰子定位强制解包，actor/target统一foot/slot，接敌骰子避让也保持。旧函数纯回归已复现fatal/signal4，真实怪物AI两轮/续档/首领再生与多站位/多骰显示均覆盖。无需清档，移动三倍、原资源/动作/规则/存档格式不变。
+
+直接IPA Downloads/MeadowJourney-b77.ipa，Media/Build77验证CRC/经典ZIP2.0/arm64/权限/版本/Metal/资产/原地图/步态/规则与来源；公开完整GET回执见public-downloads.json。之前排队/失败状态仅历史，最终以本次实际成功attempt及verification.json为准。原故障记录仍保留，不误称编译失败；也不得用旧Build76改名代替修复包。
+
+正常怪物回合GIF238×20ms及完整MP4/4页实际解码帧接触表已主线程独审并公开，Art/Review/Battle/campaign-crashfix-v1；包含真正持久化ID的diceAnchor/channels/poly，不再漏测HUD定位。光影/UI为离线近似，未运行App/模拟器/实机，设备稳定性待用户验证，新美术认可null。每次交付仍发正常GIF和直接IPA，后两项M4节点内容编辑、行程行囊/换装与队伍配置。
+
+## Build77 IPA核查与第三次构建尝试（2026-11-05）
+
+此前Intel/ARM两次attempt2均已failure结束，归档任务零步骤，均无artifact；不得继续报告旧尝试仍排队。GitHub官方状态正常，已重试Intel41869668339 attempt3，源a3508591不变。此次观测状态in_progress，具体步骤见Media/Build77/build-status.json；尚无新IPA，不冒称已编译或已交付。原194项本地测试/四组回归为此前结果，本轮没有重跑或运行App/模拟器/实机。归档成功后才核包并交直接IPA。后两项仍为M4单节点内容编辑、行程行囊/换装与队伍配置。
+
+## 美术任务改为仓库直接读取（2026-11-05）
+
+按用户要求新增根目录ART_TASKS.md，AGENTS.md首段指向任务入口；任务书首页、CHAT_START.txt与CHAT_PROMPT_APPAREL.md改为直接读取工作分支内的说明、实际PNG/SVG示例与模板。已有资源原位保存，无需用户重复下载上传或复制整份指令；ZIP/TXT旧离线交付保持原版本，仅作为备用。未改变设计/母版/游戏资源或认可状态，当前仍是C0/C1概念选型，不自动启动绘图、游戏功能或IPA。后两步：分别选定星辉/龙纹设计，再做五视角分层母版交Codex复用模组适配。
+
+## 母版任务书v2公开下载核验完成（2026-11-05）
+
+最终资料提交3d4544132f1447b2f70de569f60210a1c4225c3a。ZIP/TXT/任务书首页/母版复用示例图/正常GIF五个公开链接均完整GET、HTTP200、字节/SHA256与本地相同；ZIP CRC通过、96文件，GIF8×120ms。ZIP SHA256 260c16790be3d6cc3db9942d6801f0df32f79a2d2b3b1c77f2c950e61a1bce65，回执Downloads/Chat-Apparel-Masters-v2-public-downloads.json。压缩包独立解压后20层母版检查可直接运行，20组SVG/PNG匹配、40项Chat母版与832项Codex程序输出分工、14相对链接已核。新增明确：256已注册母版不能再套旧1774总图裁片坐标。未新画目标服装、未修改原人物/动作/游戏资源，未运行App/模拟器/实机；新选型/认可null。
+
+下一步：绘图Chat先交两件各3个设计让用户分别选择；再按所选设计交五视角四层母版，由Codex复用模组适配与审核，不逐帧重画。
+
+## Chat服装任务书v2：画母版、复用模组，不逐帧重画（2026-11-05）
+
+用户要求细化之前给Chat的美术任务、示例和验收，并明确质疑不应逐帧挂载重画。已以五视角母版路线替换旧CHAT_PROMPT_APPAREL：每件星辉甲/龙纹甲默认5静态view×4衣物层＝20PNG，两件40母版引用；这是五张视角画稿分层导出，不是20次独立随机生成，更不是104次手绘。Chat负责C0—C4设计/正面样板/五视角/母版交接；Codex负责I1—I3登记裁片/控制点，复用原motion/表面映射/挂点批量出104姿势/416引用，必要右向补图或少数可重导帧精修。40项Chat清单与832项Codex输出计划已分目录，不能把后者派给绘图对话手画。
+
+入口Art/Standards/P1-Locomotion-Delivery-v1/chat-apparel-v2/README.md；两件独立A/B/C结构方案、四层步骤、明确母版验收与输出验收/职责、母版模板与原始输入摘要齐全。Downloads/Chat-Apparel-Masters-v2.zip约1.7MB，含96文件，可直接上传Chat，再复制同名TXT。提供五视角原人体/关节、真实分层/可编辑SVG、注册裁片、母版到8帧技术图与正常GIF。现有采样器从旧B5母版重导64图层逐像素相等；旧造型被认为朴素，不作为新设计认可；符文甲认可只借用原左/右袖腕修正范围。
+
+示例静态蓝衣20层中7层教学副本仅清除alpha0处不可见RGB，所有可见RGBA/alpha保持，原PNG不改；蓝衣可见层只示位置，隐藏裁片另附原采样器注册母版，不能把远侧小片当完整隐藏袖面。压缩CRC、96文件依赖、20SVG图组/PNG匹配、40与832计划及owner、14本地链接、解压后的独立母版检查通过。5958原身体/旧B5文件前后树摘要相同。参考包没有新制星辉/龙纹母版，没有改变原动作/身体/运行资源/规则或新打IPA，未运行App/模拟器/实机；选型/新认可null。B5旧稿的实际重设计反馈已记录，不能再把内部技术通过外推为用户认可。
+
+后两步（此美术工作流）：Chat先出两件各3方案供用户分别选型；选定后交五视角分层母版，再由Codex适配审核。游戏原计划M4节点编辑/行囊换装保持独立，Build77闪退修复包仍未完成交付，本任务不把文档包冒充安装包。
+
+## Build77 再核查：官方恢复正常，Mac重试仍未分配机器（2026-11-04）
+
+GitHub官方状态恢复All Systems Operational，Actions operational。旧Intel41869668339 attempt1已确认因取不到hosted runner失败，零编译步骤。现已重跑Intel41869668339 attempt2及备用macos-15池41864553920 attempt2，两者当前queued、没有编译步骤。源码分别a3508591/06e75552，差异仅文档/验证记录，实际修复代码与1.6.50/77版本逐字节相同；194本地测试及原正常GIF审核仍有效。官方状态恢复不代表本任务已取得Mac构建机，当前仍无新IPA。
+
+后续先检查这两个重试任务，采用先成功的实际headSha/attempt与artifact，重新核194测试/设备Release/版本/ZIP/CRC/arm64/资源/来源，再发布直接IPA并完整公开GET。无需新美术或重跑App/模拟器/实机；用户负责实机验证。旧候选源及失败队列仅历史。后两项功能仍是M4节点内容编辑、行程行囊/换装与队伍配置。
+
+## Build77 恢复核查：Actions仍部分中断，Intel池重试（2026-11-04）
+
+用户要求检查恢复。官方Actions为partial_outage、Incident with Actions and Pages仍investigating。旧41864553920因“The job was not acquired by Runner of type hosted even after multiple attempts”失败，零编译步骤；另有macOS arm64容量限制注记，不是源码失败。已重新提交Intel池41869668339，当前queued、源a3508591fd6934e4389d01bed98aa7cc65400835；修复源码/版本与06e75552逐字节一致，194本地测试与原审核仍有效。最新状态Media/Build77/build-status.json，尚无修复IPA。恢复后先检查此新任务，成功下载对应artifact并按Build77规范包检、直接IPA与公开完整GET后交付。不得交付Build76替代、不得运行App/模拟器/实机。后两项功能仍为M4节点内容编辑、行程行囊/换装与队伍配置。
+
+## Build77 当前阻塞：GitHub Actions服务故障，尚无新IPA（2026-11-04）
+
+正式怪物头顶骰子空值崩溃已复现并修复；194纯Swift测试、四组回归、含真正diceAnchor/channels/poly的真实行程导出通过。正常怪物回合GIF238×20ms、全场关键图/4页实际解码接触表已主线程独审并公开GET，Art/Review/Battle/campaign-crashfix-v1。移动三倍、原资源/规则/存档格式保持，不要求删档。
+
+GitHub官方报告Actions degraded_performance及Incident with Actions and Pages investigating，Mac任务持续queued、无runner/步骤；不是编译失败。最新保留41864553920（源06e7555235b08bc7f2873295fea19a07c2b71896，原修复4fd9c11b7b0fe9e9c446f3c6ea6b9ec2e2250eb3），macos-15池已独立并发组；旧41862780361/41863686510已请求取消，不能说已取消或已成功。Media/Build77/build-status.json记录观测；README/日志/四个公开预览匹配回执已保存。**无Build77 IPA，不能以Build76改名或旧包顶替。**后续先查最新任务，成功后下载对应artifact、核194测试/版本1.6.50/77/CRC/ZIP2.0/arm64/来源/资源，再发布直接IPA并做完整公开GET。未运行App/模拟器/实机，用户设备稳定性未验证。
+
+战斗接入真实持久化ID后，回归和离线导出必须调用真实显示定位（含骰子），不能先映射为演练m1/m2再称显示路径已覆盖。下一步先完成修复归档交付；此后仍是M4单节点内容编辑，再行程行囊/换装与队伍配置。
+
+## Build77 返修 · 正式怪物回合骰子空值崩溃（2026-11-04）
+
+用户报告Build76新/旧档战斗一轮闪退。旧BattleDice.swift:91对m-node-index真实怪物ID直接查feet并强制解包，独立纯Swift测试复现fatal/signal4。骰子actor/target统一走已有foot/slot映射；真实规则ID不变，玩家接敌的骰子血条避让也恢复。194纯测试通过：多节点双敌站位/1、2、5骰/多攻击及真实AI两轮、怪物回合读档与首领再生。旧复现日志和说明见Media/Build77、docs/planning/random-map-v1/build77-monster-dice-crash.md。导出与离线预览补真正diceAnchor/channels/poly调用，不能仅用规则回执通过替代显示路径覆盖。
+
+候选1.6.50/build77，设备编译/包检/交付状态见Media/Build77；不运行App/模拟器/实机，设备稳定性由用户验证。无需清档；三倍移动、原动作/资源/规则/存档格式保持。新美术认可null。当前优先修崩溃，不自动推进功能；后两项M4节点编辑、行程行囊/换装与队伍配置。
+
+## Build76 交付 · M3正式行程与三倍速度（2026-11-04）
+
+正式双人行程、逐边到站结算、同一GameEngine真实遭遇/胜利继续、独立campaign-v1.json及暂停游标恢复已接。P1魔剑士/P2游侠，原演示三人保留；营地装备/衣装复制到新行程，跨战斗/读档不重置生命/物资/装备/金币/RNG。普通鹿灵/鹿王仅本地模板分别复制原wolf/caveTroll全部规则，复用鹿美术，六种怪物外观未补齐。
+
+用户明确要求移动三倍，75/114/135，同行按最低75；优先于历史25约束，后续保留。191纯测试和四组回归、最终设备Release41849402511成功，源06c12505cdb963b6c981cf3f84e682a0c5e8159a。干净会话导出复现通过。正常GIF/完整MP4与主线程审核见Art/Review/Map/campaign-v1，日志/包检Media/Build76，直接IPA Downloads/MeadowJourney-b76.ipa。包已核CRC/经典ZIP/arm64/权限/版本/规则与原画资源，未运行App/模拟器/实机，不宣称60fps实测。新美术认可null，上一轮用户“没问题”仅认可Build75地图，不外推本轮。后两项M4单节点内容编辑，行程行囊/换装与队伍配置。
+
+## Build76 · M3双人正式行程与移动三倍（2026-11-04）
+
+用户认可Build75并授权下一步，明确移动速度现有三倍。已新增MeadowCampaignSession/独立campaign-v1.json：规则按道路数预检，实际逐边行走到站才扣AP/揭示/奖励/遇敌，途中游标/镜头/真实布局与完整GameArchive保存，读档先暂停，失败不覆盖旧档/不结算。PartyEncounter注入同一引擎，真实命中apply持久化，未命中取消不消费RNG，正式AI沿原monsterStep。沿用双人布局（P1魔剑士/P2游侠），药水/救援/AP补足、战斗续档/胜利返回；不重置跨战生命/补给。鹿灵/鹿王本地模板仅ID/名称改为现有外观，原wolf/caveTroll数值AI掉落与六原怪物/19技能/18物品保持。唯一速度倍率3：演示三人75/114/135，正式同行取队伍最慢；距离驱动步相不重画，战斗出招不加速。详见docs/planning/random-map-v1/build76-campaign.md。191纯测试/四原回归已过，设备归档/包检见Media/Build76；正常离线GIF/自审见Art/Review/Map/campaign-v1，不冒称UIKit/设备/帧率实测。无智能体，主线程独审，新认可null。下两项M4节点编辑、行程行囊/换装与队伍配置；六物种独立美术尚未制作。
+
+## Build75 归档与交付（2026-11-04）
+
+最终设备Release41811725340成功，源5239d632296dc0f63b9ba7b3d5a11295c79ee9c0，1.6.48/75；182纯测试和道路/战斗/特效/模组四组回归通过。648图/24极端配额/36方向退化/78正式道路/门前落点/建筑避让/无假交叉、132实际轮廓徽记检查；正常GIF400解码帧/九布局对照主线程独自已审，新认可null。直接unsigned IPA见Downloads/MeadowJourney-b75.ipa与Media/Build75，CRC/ZIP2.0/权限/arm64/版本/Metal/四建筑资源和原地图/步态/目录均核。未运行App/模拟器/实机。不得交付已取消41809883145/41809981300或失败41810507195中间构建。仍仅预览，后两项M3正式探索/结算/存档、M4单节点编辑。
+
+## Build75 · 不规则地图与建筑节点返修（2026-11-04）
+
+用户拒绝Build74方正路网/建筑分离。v3改散点/物理排斥/Delaunay候选与连通树+精确环路；建筑正后26单位就是实际道路节点，点建筑到门前，徽记按PNG实际轮廓顶+14挂载。缩略图画真实比例建筑，生成道路按已校验采样行走，不二次平滑。详见docs/planning/random-map-v1/build75-organic-landmarks.md。原图/人物/装备/动作保持；主线程独自返修审核，无智能体。182纯测试、648图/24极端配额与36方向退化检查、78实际道路/门前对齐/建筑避让/无假交叉检查已过，正常GIF/整图见Art/Review/Map/random-map-v3。设备归档/包检状态见Media/Build75；未运行App/模拟器/实机，用户测试；新认可null。仍仅地图预览，无正式探索结算/存档。后两项M3正式探索/结算与地图存档、M4单节点编辑。
+
+## Build74 归档与交付（2026-11-04）
+
+设备Release运行41803969748成功，源09ec0902e04d5042d4044bb3133ffb502c454414；181纯测试和道路/战斗/特效/模组四组回归检查通过。1.6.47/74 unsigned直接IPA见Downloads/MeadowJourney-b74.ipa与Media/Build74；CRC/经典ZIP2.0/无extra/arm64/权限/地图UI/生成器/Metal/四建筑名编入Assets.car、原SceneMap/hero-gait/规则目录均核。离线正常GIF与建筑/整图见Art/Review/Map/random-map-v2，主线程已独自审核400解码帧接触表及整图，新认可null。无App/模拟器/实机执行；后两项M3正式探索/结算/地图存档，M4单节点编辑。
+
+# Build74 · 节点建筑与数量联动（2026-11-04）
+
+总数4—30及战斗/Boss/奖励/空地/额外道路同时支持数字与整数滑块；改总数自动分配，改单类保留值/优先空地补差，所有类别+起点1始终匹配总数。每节点一建筑：既有营地/新增红木寨/紫晶石门/绿补给棚/井与路标；绑定nodeID，点击仍到实际道路节点。生成器v2扩大密集地图地块，地面/道路Mask/Metal/雾/相机/缩略图共用worldBounds，有限回溯不丢建筑。详见docs/planning/random-map-v1/build74-landmarks-controls.md与Art/Parts/Map/meadow-locations-v1。
+
+主线程独自制作修整与审核，新认可null。181纯Swift测试、648地图与24极端配额及78生产几何检查；正常行走GIF/整图在Art/Review/Map/random-map-v2（离线光影近似），不得把编译或离线图说成设备验收。该版仍是预览，无正式战斗/奖励/地图存档；原营地档保持。归档/包检/直接IPA状态见Media/Build74，未运行App/模拟器/实机。后两项：M3正式探索/结算与地图存档，M4单节点编辑。
+
+## 当前美术候选：B5 星辉甲与龙纹甲八向服装（2026-11-01）
+
+## Build73 · 可控随机地图生成与林地预览（2026-11-04）
+用户授权按研究方案实施M1/M2。已新增MeadowWorldSupport纯生成器：4—30总节点、起点1、战斗/Boss/奖励/空地精确配额、额外环路与种子；图连通，数量不符禁生成、条件不满足有限失败，独立装饰种子不影响道路与类型。原地图左下“随机地图”进入原生两列可滚动设置，采用建议才覆盖手动数量，后台预览有revision防迟到覆盖，再进入原SpriteKit/Metal林地加载。实际节点/道路同源，生成巡逻不再硬拼前两边，出生来自起点；修营地边缘/遮挡、节点顶边与三人间距。返回原图不改营地存档，地点预览明确不结算战斗/奖励。正式探索/怪物投放/奖励领取/行程存档/节点编辑尚未接入。
+源码7c558bed56b8057300433d1222e9aeaaca04fa9f，Intel Release41776982266成功，1.6.46/build73；179纯测试、648数量/种子图检查、78正式道路/适配/巡逻/占地/无假交叉、9组数据独立重导一致，原13核心/目录摘要保持。主线程亲看4/10/30整场1×、16关键帧、10页最终正常GIF解码400帧（240×135），不称每帧全分辨率/连续播放；离线材质/光影近似，人物PNG/动作不重画。真实IPA59177013字节，SHA256 3a49e18944e09494a5a424ba9965c4d99b68e317097c265519a3eb0a71d1d546，CRC/ZIP2.0/权限/arm64/版本/地图UI及生成器/Metal/地图步态目录已核。见Media/Build73、Art/Review/Map/random-map-v1、docs/planning/random-map-v1/implementation.md。原60048448初稿构建不作交付，最终只交7c558bed源包；意外触发的通用iOS工作流在checkout阶段取消，模拟器/录屏步骤均跳过。本轮无App/模拟器/实机运行、无智能体；安装由用户测，新认可null。正常GIF与直接IPA均已公开完整GET，状态200、字节数与SHA256匹配；GIF400×20ms/循环已核，回执Media/Build73/public-downloads.json。
+后两项：M3正式探索共享规则引擎/遇敌奖励与实际地图存档，再M4节点内容编辑，不把当前可走预览冒称正式战役。
+
+## 2026-11-04 · 可控节点数量随机地图研究（未实现）
+
+完成现有SceneMap/TrailNetwork/JourneySimulation、SpriteKit/Metal道路与布景、GameMap/移动AP/奖励规则和原桌游地图需求只读调研。方案与证据见[随机地图研究](planning/random-map-v1/README.md)：沿原默认10节点（起点1/战斗4/Boss1/奖励3/空地1）、首版4—30预设，各类配额精确手改/Boss可0；拓扑/布局/内容/装饰独立种子流，共用规则道路与画面道路，保存实际地图与布局而非只存seed。示例配置仅提案，App尚不读取。
+
+当前固定图5道路节点/4道路/2发现点/120手工props；可复用草地、动态道路遮罩、树石营地、人物步态和阴影。需处理固定出生/营地避让/bounds、巡逻硬取前两边、discoveries[1]、几何最短路与按道路数AP差异；独立战斗演练不能冒充共享正式探索。后两项建议M1纯Foundation生成器与配额/确定性验证，再M2原生数量设置及现有林地预览；之后M3共享探索战斗会话与存档、M4节点内容编辑。仅研究/JSON数量核对，无生成器/运行测试/IPA，原上游仓库只读。
+
+按已认可的P1行走服装合同补齐清单中剩余的两套衣物：星辉甲和龙纹甲。每套提供八方向 `idle + 8 walk + 2 start + 2 stop`，共104个姿势映射、416张256×256 RGBA分层图，拆分躯干、左右袖甲和前裙甲；复用现有身体、下装、动作、关节、遮挡与步相，不改旧人物/服装或运行时代码。五视角可编辑源与固定表面导出一并保存。
+
+主线程逐方向检查两套1×/2×的13姿势整身页（共208个方向姿势），重点看肩袖接缝、袖口贴腕、衣摆/裤腿边界、后背剑遮挡和帧间闪动；并查看解码后的八向步行及起停GIF接触表。32段GIF共480帧，步行8×120ms，起停480ms + 20×120ms + 480ms。两清单通过 `scripts/check-character-part.py`；16种发型/五官/背剑组合已用真实Compositor生成1664张整身姿势。查看[审核页](../Art/Review/P1/b5-set-armors-v1/README.md)、[核验记录](../Art/Review/P1/b5-set-armors-v1/verification.json)和[公开链接回执](../Art/Review/P1/b5-set-armors-v1/delivery.json)。
+
+美术资源已发布于提交 `c0cb41cb46476b56370de78e4db212359c3be3e4`；39份公开文件完成HTTPS完整GET，HTTP 200，MIME／字节数／SHA-256匹配，32段远程GIF也从下载内容核验了帧时长和循环，回执见 `Art/Review/P1/b5-set-armors-v1/delivery.json`。两套美术认可仍为null。本轮只交付行走服装层：未制作Battle姿态挂载、未接入营地/背包/套装效果、未打IPA，也未运行App/模拟器/设备。下一步先把两套衣甲挂到现有Battle姿态做一组离线审核，再接B5套装物品与技能规则。
+
+---
+
+## 当前交付：Build71 五套技能特效接入（2026-11-01）
+用户提交的星辉脉冲、振奋、横扫、龙魂庇护、龙鳞庇护五包均已归档到 `Art/Parts/BattleVFX/`，原 ZIP、交付说明、精灵表及拆分帧保留。逐格对照共100帧，运行时图集与原帧像素完全一致；没有重画素材。攻击类分别复用现有远程／近身动作，辅助类复用防护动作；横扫由已有洞穴巨魔技能调用、命中同节点玩家。每节点只播一次范围特效，结算仍使用真实恢复／护盾／增益回执，没有新制作人物动作。
+
+五段720×432、正常速度全场景审核GIF及逐帧接触表位于 [`Art/Review/Battle/skill-vfx-v1/`](../Art/Review/Battle/skill-vfx-v1/README.md)：星辉脉冲、振奋、横扫、龙魂庇护、龙鳞庇护各一段。`scripts/verify-skill-vfx-assets.py` 与项目结构验证通过；GitHub Actions 纯 Swift 测试173项零失败。设备 Release 归档、IPA CRC、`iPhoneOS` 标记和 arm64 Mach-O 均通过。首次 Actions 发布步骤因架构校验命令参数顺序错误停止；修正校验后确认归档包含 arm64，并经 Git 大文件提交上传（GitHub Contents API不接受该大小），公开 Raw URL 完整GET的字节数与 SHA-256 均匹配。未运行模拟器或实机，安装和运行时体验由用户验收；美术认可仍待用户审阅。
+
+**直接 IPA：** [MeadowJourney-build71.ipa（1.6.45，59,058,237字节）](https://raw.githubusercontent.com/liamchan-rgb/experiment/fix/build33-face-grounding-camera/Downloads/MeadowJourney-build71.ipa)。SHA-256：`326a4d199237de1eb11a5c23e4429704017ac4c68ad564714e9b4569ce189816`；远端完整下载的字节数与校验值均和记录一致。校验记录见 [`Downloads/MeadowJourney-build71.json`](../Downloads/MeadowJourney-build71.json)，五段GIF入口见[审核说明](../Art/Review/Battle/skill-vfx-v1/README.md)。构建归档来自 [Actions 运行 #41266049040](https://github.com/liamchan-rgb/experiment/actions/runs/41266049040)。
+
+后两项：细修龙鳞庇护的护盾接触与破碎反馈；在多人洞穴巨魔战斗中核对横扫的目标命中与实际回执。实机由用户验收，不自动新增动作。
+
+---
+
+## 当前交付：Build69 三档治疗特效接入（2026-10-30）
+用户提供三套更新版治疗特效 ZIP，保存原始压缩包并按 5×4 逐帧接入资产目录。真实治疗回执按最大 HP 截断后的实际 HP 增量选档：1–3 微量、4–8 标准、9+ 强效，0 不触发。每档 20 帧，显示端以 60Hz 淡化相邻帧；原透明画布保持一致，三套素材分别校正脚底锚点。绿光同时作用于人物周边与地面，强度按档位增加；图集后台预热。
+帧资源校验通过：每套 20 张 RGBA、App 图集逐像素与来源匹配；168 项纯 Swift 测试通过，其中含真实恢复量分档、最大 HP 截断、终止淡出与地面定位。354帧×20ms全场 GIF 已由原战斗素材与实际 GameCore 回执离线合成并亲审；不是UIKit／模拟器／实机录屏。1.6.43/build69 Intel 设备 Release 归档成功，经典 ZIP CRC、版本、arm64、无签名与 Assets.car 已核。IPA 51813621 字节，SHA-256 b94dac28fa4d3ed3ea3b4a73eb30c5610d7a257984889e9d085ac9c6e86fbbde。IPA、GIF 与对照图已完成公开 Raw URL 完整 GET（200），字节数及 SHA-256 均匹配。未运行 App、模拟器或实机；安装与实机体验由用户验收。
+来源提交 f4e7365139fa1fda04f519bfbbdc3b3e02fef544，设备归档工作流 40997932520。后续两项：龙鳞守护圆盾及碎裂反馈；龙之号令增益反馈。
+
 # 林间行旅迭代进度 · 2026-10-19
+
+## Build67 已交付：符文斩接入用户精灵表（2026-10-29）
+来源 `rune_slash_spritesheet_2048x256.png` 按原尺寸精确拆成8张256×256 RGBA帧，原图、帧名和阶段/时序清单保存在 `Art/Parts/BattleVFX/rune-slash-v1/`。源格与运行资源逐像素相同，八帧透明画布边界无残留；这仍是用户注明的概念裁切初版，等待用户审核，不标成最终逐像素生产美术。
+符文斩使用八帧序列，攻击者沿近战轨迹接敌、使用原重剑攻击姿势并回位；命中帧05从原动作时钟1.048秒开始，沿用原伤害／恢复／护盾回执。完整场景正常速度动图在 `Art/Review/Battle/spellblade-demo-v1/runeSlash-normal.gif`，235帧×20ms；为生产字段和原图集离线合成，不是 UIKit、模拟器或实机录屏。
+Build67为1.6.41／67，162项Swift测试、五组纯逻辑检查、13组Mac/Linux导出比对、IPA ZIP/CRC/arm64/Metal/八张符文斩资源检查均通过。unsigned IPA位于 `Downloads/MeadowJourney-b67.ipa`；安装与实机操作交用户验证。新美术认可仍为null。后两项：B4龙骑士三技能（龙焰、龙鳞庇护、龙之号令）；B5星辉／龙纹套装及套装技能。
+## 当前交付：Build66 魔剑士三技能已归档（2026-10-29）
+小队演练P1默认魔剑士，“演练设置”可切回冒险者／重置；初始P2先行动，结束P2后轮到P1。营地衣装／装备／存档格式保持。符文斩2AP／2D12+2，对敌刻印斩裂并使自己恢复4／护盾至4；符文庇护2AP，所选地点存活队友恢复8／护盾至6；战斗符文1AP，该地点队友护盾至4／增伤+3两轮，三技各2次。增伤施放当轮不减时长，强盾不降级。
+连续符文刻印、交错斩裂、青紫白命中光、弹跳碎片与地面照明；辅助符文按实际受益者独立展开／退场。8点治疗的绿色交叉双螺旋按sqrt(8/4)比4点加粗增亮。悬停骰子与强度压暗，确认只冻结一次回执，命中才提交；伤害绑定真实命中，辅助数字位于人物左下避开血条。怪物死亡同步隐血条／伤害数字与向右吹散。复用既有完整guard姿态曲线，不改任何人物／衣装／武器PNG、握点、Rig、步态或原规则。
+本轮为独立职业演练，营地存档仍P1冒险者，选魔剑士不会改写档案，每场HP／补给重置；旧单人仍固定5伤＋装备增伤。未制作魔剑士新皮肤。帧率目标60，未测设备实际FPS。离线预览由原图集和生产字段合成，场景光影／UI近似，不是UIKit或设备录屏。安装与实机操作由用户测试。
+源6371e680b640e83be57c50e0dd01814d82f98eed，Intel设备Release 40850367339成功，1.6.40/build66；162纯测试／五原检查／13组Mac/Linux导出在1e-6内一致，旧11组无回归。402原资源／规则／步态路径保持，708构建相关路径匹配源提交。66护甲资源、两饰品图标、三武器JSON、当前步态、原目录逐字节／资源名已核，版本／经典ZIP2.0／CRC／权限／arm64／Metal已核。IPA 49443349字节，SHA256 0390e647d1005820baccbfae264d6f0d757583c6c5638cd76f2b46b840de3255。
+主线程亲看四段正常GIF的40页接触表／940独立帧（每格256×192）、18张整场关键PNG及25种挂载姿态全身1×/2×；未称每帧全分辨率验收。三技能合辑705×20ms=14100ms，各独立段235×20ms=4700ms。首轮辅助数字压住队友血条已拒绝、留存并修正重新构建。十个公开媒体／数据完整GET匹配，五段远程GIF在独立浏览器加载／推进已核，浏览器截图已亲看。无App／UIKit／模拟器／实机，无智能体或图像生成；新运行时用户认可null。
+直接IPA完整GET的字节数与SHA256已和本地审核包匹配，回执见Media/Build66/public-downloads.json。
+后两项：B4龙骑士三技能（龙焰、龙鳞庇护、龙之号令）；B5星辉／龙纹套装及套装技能，不自动开始。
+
+
+## Build66 离线美术审核完成（2026-10-29）
+主线程亲看四段正常GIF的40页接触表／940独立帧、18张整场关键PNG、五挂载×五guard姿态的全身1×/2×。接触表格256×192，未称每帧全分辨率或设备验收。首轮回血／盾文字侵入队友血条已拒绝，修后左下分行且伤害留在实际命中部位。完整展开／爆发／恢复／回位／死亡同帧隐血条已检查；不重新生成角色，原402资源／规则路径保持。
+1.6.40/build66源6371e680b640e83be57c50e0dd01814d82f98eed，Intel设备Release40850367339成功，162纯测试／五原检查／13组Mac/Linux数据比对及经典ZIP2.0／CRC／权限／arm64／Metal／版本／66护甲资源／当前步态／三武器JSON校验通过。IPA49443349字节，SHA256 0390e647d1005820baccbfae264d6f0d757583c6c5638cd76f2b46b840de3255。待公开媒体／IPA完整GET，不能提前称已交付。无App／模拟器／实机，无智能体／图像生成。下一步B4龙骑士三技，再后B5两套装及技能，不自动开始。
+
+
+## Build66 整场文字位置返修（2026-10-29）
+首轮设备归档40848622637成功，但整幅离线审核发现符文斩／庇护的回血和盾字从P1右侧飘入P2血条。未放行／未发此IPA，初稿截图保留Art/Review/Battle/spellblade-demo-v1/draft-label-overlap。新技能非伤害提示改为受益人物左下侧按实际字宽靠边、间隔36px，完整1秒漂移仍位于血条下；伤害仍绑定实际命中。增加越界／血条和营地档案不被职业演练改写的测试，162项通过，重新同版本归档。原11组导出／人物资源／原规则保持，未运行App／模拟器／实机。
+
+
+## 当前：Build66 魔剑士三技能（2026-10-29）
+用户认可Build65后授权下一步B3。小队演练P1默认魔剑士，可在“演练设置”切回冒险者／重置；营地衣装装备／存档和旧单人演练保持。原spellblade职业生命24、3基础AP，原技能符文斩2AP／2D12+2／施法者回血4盾4，符文庇护2AP／所选地点全部存活队友回血8盾6，战斗符文1AP／该地点队友盾4增伤3两轮，三技各2次；施放当轮不扣增伤时长。规则／目录／RNG／一次回执不改，点击只确认骰值，命中时一次提交。
+独立连续符文刻印／双斩裂／定向引导、青紫白爆发、碎片弹跳与地面照明；辅助按节点实际对象分别展开符文及圆盾。悬停仍仅骰子＋强度压暗，不加脚底圈；符文斩为定点施法（复用既有完整guard曲线），不另改弓／杖握持或近战骨架，不冒称新魔剑士皮肤。回血只绑真实受益者，4点沿原双螺旋，8点按sqrt(8/4)加粗／增亮，后续更强恢复继续此规范。新效果在动作窗口内连续退场，数字按真实回执且治疗／盾／增伤错开36px，死亡同步隐血条／右吹保持。
+162纯测试／语法／项目检查通过，13组Linux导出含1175符文帧／3525光场请求。待主线程整场／整身／正常GIF美术审核、Intel Release、跨平台／包校验与公开下载；候选1.6.40/build66，新特效认可null。原人物／护甲／武器像素、Rig／JSON／步态、营地存档格式不改，无智能体／整人生成，无App／模拟器／实机。必须实际发正常GIF、站姿、核验HTTPS、直接IPA。后两项：B4龙骑士三技能；B5星辉／龙纹套装及套装技能，不自动开始。
+
+
+## 当前交付：Build65 P1行囊、装备与存档已归档（2026-10-29）
+地图顶部“行囊装备”进入P1原生三栏界面：当前衣装／站姿与8帧正常步态、血条与黄色菱形AP、三装备槽；背包五类筛选／实际数量；详情原规则换装比较或P1/P2道具目标，主按钮固定底部。原.useItem／.rescue执行道具与AP，换装不补HP/AP。营地初建一次性补给，读档不重发。原人物／武器／护甲／动作像素及hero-gait、原规则目录不改。
+Application Support/MeadowCamp/camp-v1.json保存三槽、两衣装、营地库存／资源／原操作档案。原子写入成功后原GameEngine才提交，写失败不改变装备／物品／衣装；重启在地图首帧前恢复并一次同步图集。JSON导入校验营地／目录／版本／外观并保留旧配置，导出可分享；坏档原文件保留，明确临时试装，点按保留旧档后才启用保存。
+当前行囊仅P1，P2可作道具目标且地图外观保持。林地单人／小队仍独立演练，HP与补给每场重置，不扣营地库存；旧单人仍固定5伤＋装备增伤。存档不含道路位置或战斗中途续战，不冒称正式桌游全进度迁移。Build64无持久配置，不能恢复此前未保存的会话选择。
+源90eb1f675d0cb9b1e5c8bcf2bc2421e74c7d912e，Intel设备Release 40843673369成功，1.6.39/build65；150纯测试／五原检查及11组Mac/Linux导出在1e-6内一致（含7营地投影／安全区布局）。新UIKit控制器／CampInventorySession已编入，原66护甲资源与两饰品图标、三武器JSON／当前步态／原目录、版本／经典ZIP2.0／CRC／权限／arm64／Metal已核。IPA 49391101字节，SHA256 5dd41203ba5264c5dfc138ddafa7412d3613dc658a5b8aa9e1cf218c941d561a。
+主线程亲看14整页平板／手机PNG、正常GIF实际解码全部8整页和原生8格全身1×/2×。人物不重合成；离线预览用生产状态／几何和原图集，8×120ms=960ms，不是UIKit／设备录屏。402原资源／核心／武器Rig路径字节保持，704构建相关路径与源码一致。八个公开媒体／数据完整GET匹配，独立GIF浏览器加载／推进已核且截图已亲看。无App／模拟器／实机、智能体或图像生成，新UI与运行时美术认可null。实际触控与安装由用户测试。
+直接IPA完整GET的字节数与SHA256已和本地审核包匹配，回执见Media/Build65/public-downloads.json。
+后两项：B3魔剑士符文斩／符文庇护／战斗符文；B4龙骑士龙焰／龙鳞庇护／龙之号令，不自动开始。
+
+
+## 当前：Build65 营地行囊、装备与存档（2026-10-29）
+用户认可Build64后授权下一项。主线程接入P1三栏行囊／物品筛选／三装备槽／真实换装对比／原图标／原生站姿与8×120ms步态预览，道具通过原.useItem／.rescue及AP规则；首建一次性营地补给，载入不重发。营地三槽、两衣装、库存／资源／原操作档案保存在Application Support/MeadowCamp/camp-v1.json，原GameEngine持久化回调先原子写入再提交，写入失败不改变装备／物品／衣装。导出JSON、校验后导入并保留旧档；坏档保留且明确临时试装，须点按保留旧档再启用保存。重启在地图首帧前同步已存衣装／图集／武器／护甲，三项一次更新，预热保留当前图集直到事务成功。
+目标选择与衣装控件采用共用字色／金棕选中态，暗底滚动指示为白色。人物预览按可用高度放大，手机三栏独立滚动、主要装备／使用按钮固定底部可触达。150纯测试／语法／项目检查已过，11组Linux导出含7个实际行囊状态及安全区布局；待整页离线美术审核、Intel设备Release、包内资源与11组Mac/Linux比对、公开完整GET。林地战斗仍独立演练（每场补给／HP复位，不扣营地背包），旧单人仍固定5伤＋装备增伤；营地存档不含道路位置／对局中途续战，不冒称正式桌游全进度迁移。P2维持原地图外观；不开放尚未制作的套装挂载。
+原人物／武器／护甲像素与时序、hero-gait及原规则／目录保持，无智能体／图像生成，无App／模拟器／实机。候选1.6.39/build65，新UI／运行时美术认可null。必须实际交付正常GIF、全身站姿、已核HTTPS、直接IPA；本轮新增UI预览是离线字段合成，不称UIKit录屏。后两项：B3魔剑士三技能；B4龙骑士三技能，不自动开始。
+
+
+Build65离线审核补记：主线程亲看7平板＋7手机整页PNG、正常GIF实际解码全8页和原生8格全身1×/2×。402原资源／核心／武器Rig路径保持，704远端构建相关路径与本地一致；没有人物新合成、App／UIKit／设备运行或真实触控验收。详见Art/Review/Equipment/camp-inventory-v1。
+
+
+## 当前交付：Build64 两饰品已归档（2026-10-29）
+营地→P1装备→饰品。力量徽章伤害＋2；行动戒指基础AP＋1（冒险者3→4），上限仍8；两件共用原单一accessory槽，换装不补HP/AP。共用单人／小队常驻小图标及悬停／点按详情，小队黄色加值与真实回执一致，行动菱形读实际属性且保留本轮容量。原人物／武器／动作／原规则目录不改，图标复用原B2素材。旧单人仍固定5伤＋永久装备增伤，非完整骰子规则迁移。仅P1营地借用，完整背包／存档待下项。
+源221af86cf549dddd125b5c3c8dca7a230427074d，Intel设备Release 40838235939成功，1.6.38/build64；140纯测试／五旧检查及10组Mac/Linux导出一致，两新饰品图标与66护甲资源名编入，包内三武器JSON／当前步态／原目录逐字节匹配，版本／经典ZIP2.0／CRC／权限／arm64／Metal已核。IPA 49302869字节，SHA256 fee9d7d9ae5206aa3955fce1366d3476d7fc18700129cfa9cdf76ceed23caaec。
+主线程亲看三配置整幅关键解码帧及站姿；三段正常GIF各190帧×20ms，3800ms。离线近似UI合成使用生产字段，非UIKit录屏，未称570帧全部视觉审核。六个公开媒体完整GET匹配、独立GIF浏览器加载与推进已核，浏览器截图已亲看。无App／模拟器／实机，无智能体／图像生成，新运行时用户认可null。
+直接IPA完整GET的字节数与SHA256已和本地审核包匹配，回执见Media/Build64/public-downloads.json。
+后两项：B2完整背包装备界面与存档；B3魔剑士符文斩／符文庇护／战斗符文。不自动开始，实机安装由用户测试。
+
+
+## Build64 包校验拦截缺失图标（2026-10-29）
+首轮Intel归档40836903456成功，但包检查发现两饰品图标未编入。主线程选择发布路径误写Sources/Assets.xcassets，真实目录为Sources/Resources/Assets.xcassets，空枚举漏了四文件；本地原图正确，旧资源保持。当前IPA不发布，补发精确四路径并断言文件存在，重新同版本设备Release。失败回执Media/Build64/rejected-missing-icons-40836903456。仍无App／模拟器／实机运行。
+
+
+## 当前：Build64 两饰品接入（2026-10-29）
+用户取消FrameRonin调查后授权继续下一项。营地P1装备菜单接入力量徽章／行动戒指，复用原单一accessory槽、库存与.equip，互斥且换装不补HP/AP；徽章原伤害＋2，与临时增伤分开，戒指基础AP＋1（冒险者3→4），上限仍8。单人／小队共用原图标、独立常驻小方框与悬停／点按详情；小队首轮走原refill、保留积攒AP，行动菱形读实际属性并保持本轮容量。旧单人仍固定5伤＋真实装备增伤，非完整骰子规则迁移。只开放P1营地受控借用，无完整背包／存档。
+140纯测试、原单人检查、语法／项目检查通过；10组Linux导出含真实饰品回执，旧九组与既有数据1e-6内一致。389原资产／核心规则路径字节保持，两个图标直接复用B2原图；无人物重新合成或动作修改。主线程亲看三配置整场关键GIF解码帧（悬停／锁定／命中／收势）与站姿，预览是生产字段的离线近似布局，不称UIKit／连续播放／设备验收；未逐帧重审旧人物库。新美术认可null，无App／模拟器／实机，无智能体／图像生成。候选1.6.38/build64，待Intel Release与包／公开GET校验。必须实际发正常GIF、站姿、核验HTTPS与直接IPA。后两项：B2完整背包装备界面与存档；B3魔剑士符文斩／符文庇护／战斗符文，不自动开始。
+
+
+## 当前交付：Build63 上臂衣片返修已归档（2026-10-29）
+环境恢复后完成皮甲右大臂与臂甲错位、符文甲右上臂蓝布残角返修；撤回Build62对应内部美术放行，保留旧稿／中断试稿。主线程将两件原上臂材质重新贴合固定肩肘轴，皮甲独立收齐短袖口／清除重复亮边，符文甲裁齐臂形外蓝布。仅两张ArmNearUpperWardrobe像素变化；22其他映射护甲／猎弓图、hero-gait、UIKit层序／骨架、三武器Rig/JSON逐字节保持，原双手／握点／头脸／前臂／下摆／护肩／步态／玩法不改。亲审六状态整身1×/2×及三通用武器全部462实际GIF解码帧；主GIF用短剑展示抬臂、固定调色板，正常3800ms；权杖首尾RGBA相同。源07dd70c85a307ee94c9f682f1c5b3e5ae1571a48，Intel Release40826021957成功，1.6.37/build63；132纯测试／五旧检查及九组Mac/Linux导出一致，66护甲资源名／包内三武器JSON／步态／原目录／经典ZIP2.0／CRC／权限／arm64／Metal已核。IPA48938928字节，SHA256 1926d4db68de0748dd111ebf37b047631396785045d53eb19c297b4684717fec。八媒体完整公开GET匹配、独立GIF浏览器推进已核；直接IPA完整GET的字节数与SHA256已和本地审核包匹配，回执见Media/Build63/public-downloads.json。新用户认可null，无App／模拟器／实机，无智能体／整人生成。必须实际发正常全身GIF／站姿／已核HTTPS／直接IPA。后两项仍为饰品槽及属性反馈、B2背包装备界面与存档，不自动开始。
+永久补充：补齐裸臂后必须反查甲片的横向中心、袖口倾角和沿肩肘轴的贴合，不得只确认皮肤连通。旧袖子分层切割不等于裁净残布；去除臂形外片角时，不能将正常贴臂内衬一并阈值抠空。
+
+## 当前：Build63 上臂衣片返修候选（2026-10-29）
+环境恢复后继续用户指出的皮甲右大臂与甲片错位、符文甲右上臂蓝布残角；撤回Build62对应内部美术放行，旧稿和中断候选保留。主线程将旧上臂材质在固定肩(117,141)→肘(128,158)轴上重新贴合，皮甲短袖口独立收齐、去旧袖口重复亮边，符文甲蓝布收在真实臂形内；只替换两张ArmNearUpperWardrobe。22个其他护甲映射／猎弓材质、hero-gait、UIKit层序／骨架、三武器Rig与JSON逐字节保持，原双手／握点／头脸／前臂／护肩／下摆／步态／玩法不改。主线程亲审六状态整身1×/2×、三通用武器全部462实际GIF解码帧、四武器板；权杖idle/attack0/attack1整人RGBA一致。正常GIF/站姿已生成，主对比GIF展示抬臂更充分的短剑动作，固定全程调色板避免二次编码色阶跳变；纯资产回归通过，待Intel设备Release／包校验／公开GET，候选1.6.37/build63。新美术用户认可null，无App／模拟器／实机，无智能体／整人生成。必须实际发正常全身GIF、站姿、已核HTTPS和直接IPA，不能只报告环境恢复。后两项仍为饰品槽及属性反馈、B2背包装备界面与存档，本轮不自动开始。
+
+## 中断记录：护甲上臂返修未完成（2026-10-29）
+用户继续指出皮甲右大臂与臂甲错位、符文甲右臂蓝布残角；撤回 Build62 上臂衣片相关内部美术放行，原交付与旧稿保留。主线程检查分层原图：补齐皮肤沿肩(117,141)→肘(128,158)，旧衣片仍横向偏离骨轴，符文甲衣片末端留下伸出的蓝色布角。当前已在工作区生成 r2 试稿：只把两件上臂衣片的原材质贴合既有肩肘轴，收齐短袖口／蓝布轮廓；双手、握点、头脸、骨架、护肩、前臂、下摆和原武器动作不改。试稿尚未成功打开图片审查，不能认定修复通过。
+随后执行环境变为 unavailable，exec/view_image 报 No usable execution environment / exec-server transport closed。云环境连接状态接口仍报 running，但实际终端不可用；以真实工具失败为准，不假装审核完成。无 Build63、无新 IPA、无新美术认可。恢复后先核对本地文件是否仍在（不要假设已持久化），必要时按候选脚本重新生成，再亲审原尺寸／放大全身、抬臂／屈肘／收势与正常速度 GIF 实际帧；不再只看数值或皮肤连通。通过后同步资源、日志并设备 Release／包校验，交付新正常全身 GIF、站姿、已核 HTTPS 与直接 IPA。禁止 App／模拟器／实机运行、智能体返修及整人图像生成。
+候选脚本备份见 Art/Review/Battle/armor-fit-r2/recovery-candidate.py，仅待审恢复材料，不接入生产导入器。原 GitHub 正式交付仍 Build62，但存在上述已知缺陷，不能拿旧包作为本轮修复交付。
+后两项仍为饰品槽及属性反馈、B2 背包装备界面与存档，本轮继续优先返修。
+
+## 当前交付：Build62 护甲手腕／袖口／下摆返修已归档（2026-10-29）
+用户指出皮甲右腕缺失、符文甲方形袖口、两甲下摆与裤子交叠；撤回Build61对应内部美术通过，保留旧稿。主线程补齐独立上臂／前臂皮肤，贴腕符文甲袖口，清除裤腿甲片并拆出近远下摆，腰带下重叠衔接／有限随髋。UIKit／阴影／离线共用battleLayerOrder，原头脸／双手／握点／骨架／武器Rig与JSON／步态／猎弓专用部件／玩法不改。亲审六状态全身1×/2×及三通用武器全部462实际GIF解码帧，四武器板；50原图／原绑定回归。源012dedc55c0441f2b4f4be6c94f85c38d0e71134，Intel Release40810525755成功，1.6.36/build62；132纯测试／五旧检查及九组Mac/Linux导出一致，包内66甲资源／三武器JSON／步态／原目录／经典ZIP2.0／CRC／权限／arm64／Metal已核。IPA48940192字节，SHA256 cbce9fa2caeb669f4c427b054d5e0562192449d70beeeebacb7fa9a4f8a777ad。八个媒体完整公开GET匹配，独立GIF浏览器推进已核；直接IPA完整GET的字节数与SHA256已和本地审核包匹配，回执见Media/Build62/public-downloads.json。新用户认可null，无App／模拟器／实机，无智能体／整人生成。必须实际发正常全身GIF／站姿／已核HTTPS／直接IPA。后两项仍为两饰品槽及属性反馈、B2背包装备界面与存档，本轮不自动开始。
+永久补充：换短袖／无袖甲前必须检查整条近远肩肘腕皮肤，旧长袖下的拳头碎片不得当完整前臂。衣摆不能烘焙进裤腿后再被裤腿覆盖；独立面板须验证腰带衔接与抬腿、蹲伏时真实遮挡。腕点／全身alpha连通和自动测试都不能代替整身美术检查。
+
+## 当前：Build62 护甲手腕／袖口／下摆返修（2026-10-29）
+用户指出皮甲右腕缺失、符文甲方形袖口、两甲下摆与裤子交叠，撤回Build61对应内部美术通过，保留旧稿。主线程自行追查：原近侧前臂底层仅拳头与碎片，短袖下缺少完整皮肤；旧上臂轴裁袖产生方袖口；下摆烘焙裤腿且先于裤腿绘制导致截断。现独立完整上臂／前臂皮肤、贴腕符文甲袖口、干净裤腿与独立近远衣摆；衣摆在腰带下重叠、有限随髋，数据battleLayerOrder共用UIKit／阴影／离线审核。原头脸／双手／握点／骨架／三武器Rig与JSON／步态／猎弓原生衣袖／玩法不改。主线程亲审六状态全身1×/2×与三通用武器全部462实际GIF解码帧，四武器整身板；50原图与旧绑定逐字节回归、132纯测试及原姿态检查通过。候选1.6.36/build62，待Intel Release／包校验／公开GET。新用户认可null，无App／模拟器／实机，无智能体／整人生成。必须实际发正常全身GIF／站姿／已核HTTPS／直接IPA。后两项仍为两饰品槽及属性反馈、B2背包装备界面与存档，本轮不自动开始。
+
+## 当前交付：Build61 两甲装备与战斗挂载已归档（2026-10-28）
+用户“继续下一步”完成本轮两甲接入。营地P1→护甲，原.equip库存与护甲槽；两外观／两甲／五武器选项（含空手）2080八向绑定、40图集，Metal换装仅预热当前两张并释放旧甲缓存。共用单人／小队衣片与有限随动护肩；猎弓345认可采样／手臂轮廓保留，原胸甲纹样贴合新独立袖／衣身，持弓仍合身短衣摆款，不称与通用甲同轮廓。原武器Rig/JSON、步态绑定、规则／目录保持。GameRules最大HP皮甲＋4／符文甲＋8，换装不回血／卸下截断；小队血条／治疗／复活骰预览同读，旧单人上限也同步，仍旧固定5伤和原授盾。战斗共用原头脸，通用身体非攻击复用，不称新完整倒地。源bd9d8156bc761c4efbfd7561c67aa5620a592d26，Intel Release40742600629成功，1.6.35/build61；132纯测试／五旧检查、Mac/Linux九组导出一致，包内当前步态／原目录／三武器JSON逐字节、两甲58资源名称／经典ZIP2.0/CRC/平台/权限/Metal已核。IPA48929910字节，SHA256 f63797f5ebb4abc9c213b4189f99121c427fa136087dca5970529656134300fe。主线程亲审240状态全身／416行走姿势和462整身／190场景／32行走实际GIF帧及放大全身；10公开媒体＋两甲比较GIF/站姿完整GET匹配，独立GIF浏览器可见推进；直接IPA完整GET的字节数与SHA256已和本地审核包匹配，回执见Media/Build61/public-downloads.json。新美术用户认可null，无App/模拟器/实机，无智能体／整人生成。必须实际发正常GIF/站姿/核验HTTPS/直接IPA，每完成一步提示后两项：两饰品装备槽与属性反馈；B2背包装备界面及存档，本轮不自动开始新项。
+
+## Build61 补齐规则模块显式导入（2026-10-28）
+第二轮40739168820中图集预热已编译通过，但GameViewController新生命上限提示用GameRules时漏写ClassroomGameCore导入，Xcode再次拦截；主线程补齐import并复查本轮其余使用GameRules的三文件均已导入。132纯测试／五旧检查仍通过，未生成／发布IPA。失败回执Media/Build61/rejected-40739168820。设备稀疏拉取11秒完成，包含全部生产输入；继续同一美术／规则／1.6.35/build61重新归档，禁止App/模拟器/实机。
+
+## Build61 设备编译拦截并修正（2026-10-28）
+首轮Intel归档40735963209的132纯测试／五旧检查通过，但新护甲图集预热方法错误调用初始化器内的局部assetImage，Xcode报cannot find assetImage in scope。主线程已改为UIImage(named:)?.cgImage；不改变美术／骨架／规则。无IPA生成或发布，失败证据保留Media/Build61/rejected-40735963209。首轮拉取历史包和审核档耗414秒；设备归档工作流改为只拉Sources/Vendor/scripts/Tests/UITests/项目/.github及根文件，所需编译／原检查输入完整，排除Downloads/Art/Media历史大档，重新全量检查和归档。仍仅设备Release，禁止App／模拟器／实机。
+
+## 当前：Build61 皮甲／符文甲装备与战斗挂载候选（2026-10-28）
+用户“继续下一步”授权两甲接入。主线程自行复用r4皮甲／r5符文甲八向，原.equip库存／独立armor槽、两外观×两甲×五武器共2080绑定／40图集、短剑／重剑／权杖衣片及有限随动独立护肩、猎弓独立衣袖材质与胸甲纹样贴合进入共用单人／小队视图。猎弓保留345采样、alpha／双手／头脸／骨架，持弓是原合身短衣摆款，不冒称与通用甲同轮廓。原武器Rig/JSON、原目录/规则/旧步态绑定保持。皮甲＋4／符文甲＋8最大HP来自原GameRules，穿戴不回血／卸下截断；小队血条、治疗触发、复活骰预览同读实际上限；旧单人上限也更新，仍旧固定5伤和原授盾练习。Metal营地换装只预热当前两张甲图集并清旧缓存，不常驻40组合。战斗仍共用原头脸，通用非攻击复用，不称新全套倒地。132纯测试／五旧检查／语法与项目校验通过；主线程亲审240状态全身、416行走姿势、462整身／190场景／32行走实际GIF帧和放大全身。新美术认可null，不使用智能体／整人生成，不运行App／模拟器／实机。候选1.6.35/build61，待Intel Release和包/公开GET校验，必须实际交付正常GIF/站姿/已核HTTPS/直接IPA。后两项：两饰品装备槽与属性反馈；B2背包装备界面及存档，不自动开始新项。
+
+## 当前交付：Build60 权杖首帧遮挡修正完成（2026-10-28）
+用户指出Build59第一帧法杖与腿错位，主线程确认idle层序把杖杆藏在裤腿后，只剩下端宝石，施法又变前景；撤回此前待机美术通过。现在权杖全部状态共用资源layerOrder，杖在腿前、手在杖前，UIKit/阴影/离线审核同读；统一关节补底显隐，去除髋部8像素首尾闪动，idle0/attack0/attack1整人RGBA一致。原关节/握点/时序/武器像素/玩法保持，其他装备不改。源9ab46b21e0980d20f81021eb2c50c3f3dc62f00f，Intel Release40721530191成功，1.6.34/build60，128纯测试/五旧检查和Mac/Linux九组导出一致，包内带新层序的权杖JSON、旧猎弓/重剑JSON、原目录/步态与经典ZIP2.0/CRC/架构/权限/Metal/图集均核。IPA38263628字节，SHA256 c9719a152b96c9b64231542b16a6fb1c2b24305d6d2b0f8d35467299d57c938d；公开完整GET回执见Media/Build60/public-downloads.json。主线程审380正常GIF实际解码帧20页、首帧原尺寸/放大全身、六状态30姿势1×/2×和使用交付Build59像素的前后对照；公开媒体完整GET与独立GIF浏览器可见推进已核。新美术用户认可null，无App/模拟器/实机，无智能体/整人图像生成。必须实际发正常GIF/站姿/核验HTTPS和直接IPA。永久要求：新装备先比加载首帧、idle→attack0、最后收势→idle的整身/完整武器轮廓和真实遮挡，不准只看曲线/握点/施法中段；App与离线层序/补底显隐保持一致。后两项：两甲装备与战斗挂载；两饰品装备槽与属性反馈，本轮不自动开始新项。以后归档显式-f macos_runner=macos-15-intel；版本两处带引号配置和包内版本须同核。
+
+## 当前：Build60 修正权杖首帧与腿部遮挡（2026-10-28）
+用户指出Build59第一帧法杖与腿错位，撤回此前对该待机画面的内部放行。主线程确认idle把武器排在身体后面、施法排在前面，导致杖杆被裤腿截断、只剩下端宝石悬空；不是曲线数值正确就能通过美术。权杖资源新增共用layerOrder，待机/起手/收势统一杖在腿前、手在杖前，UIKit/阴影/离线审核同读；同时统一关节补底显隐，消除首尾髋部8像素差异。待机/attack0/attack1整人RGBA一致，关节/时序/武器像素/玩法保持，其他装备层序保持。新审核 Art/Review/Battle/legendary-staff-layering-r1；主线程亲审380正常GIF实际解码帧20页、六状态30姿势整身1×/2×、首帧整身与前后对照（左图为交付Build59像素）。128纯测试/项目及语法检查通过，版本两处正确为1.6.34/build60；待Intel设备Release及包校验，禁止App/模拟器/设备运行，无智能体/整人图像生成。必须实际交付正常GIF、站姿、已核HTTPS和直接IPA，新用户认可null。
+永久补充：每次装备审核必须对比加载后首帧、idle→attack0、最后收势→idle的完整武器轮廓及前后遮挡，特别检查握点以下杖杆与裤腿，不准再只核对动作曲线/握点或只看施法中段；离线与App层序、补底显隐必须一致。完成后提示后两项：两甲装备与战斗挂载；两饰品装备槽及属性反馈，不自动扩展本轮。
+
+## 当前交付：Build59 传奇权杖已归档并完成包校验（2026-10-28）
+用户“没问题继续下一项”完成权杖接入。源5850bfa0138454873965747a1002cd709d6a1f91，Release40714973471成功，1.6.33/build59，128纯测试/五旧检查通过，Mac/Linux九组导出含3606权杖姿态/201效果及原猎弓/重剑一致。IPA38262895字节、SHA256 a83dd2d3dd8c01a0a62c779902c18ac0eda9af4e33d07ee146afd46246fc9c9a；经典ZIP2.0/CRC/平台/权限/Metal/编译图集及权杖/猎弓/重剑JSON、原目录和当前步态逐字节已核。原13核心/目录及旧武器Rig/JSON保持。两衣装208背负、单人/小队共用独立杖头施法/弧线投射/蓝白受击和地面反光/落地反弹碎光，修过粒子尾段超过动作窗口截断。小队原D20、强击D6+2、自然20原回执击杀/增强爆发/提示，0.8384秒出手/1.048秒一次结算/1.70秒窗口保持；旧单人仍固定5伤练习，不称正式规则迁移。非攻击复用旧共用身体状态/护脸腕角，不称新制作完整倒地；战斗仍旧共用蓝衣。主线程亲审208绑定、22行走解码、950战斗/整身解码50页、202状态11页和六状态30姿势1×/2×；公开9媒体完整GET及独立GIF浏览器可见推进已核。直接IPA完整GET的字节数和SHA256与本地审核包一致，回执见Media/Build59/public-downloads.json。无App/模拟器/实机运行，无智能体/整人图像生成，新运行时美术认可null。后续归档优先显式传-f macos_runner=macos-15-intel，macos-15/macOS14现为ARM池，曾因容量不足分配失败。新build须同时更新两处带引号的CURRENT_PROJECT_VERSION与MARKETING_VERSION，并核对包内版本。必须实际发正常GIF/站姿/核验HTTPS/直接IPA，不发ZIP。每步结束提示后两项：皮甲/符文甲装备与战斗挂载；力量徽章/行动戒指装备槽及属性反馈，本轮不自动开始新项。
+
+## Build59 包校验拦截版本号并重归档（2026-10-28）
+Intel归档40711626440成功、128纯测试/五旧检查及九组Mac/Linux导出一致，经典ZIP/CRC/资源检查也通过。但主线程包校验发现CFBundleVersion仍58，MARKETING_VERSION已1.6.33：前次修改漏了带引号的CURRENT_PROJECT_VERSION。未发布该IPA，修正Debug/Release两处为59后重新设备Release归档，运行时/美术资源不改，最终包仍须完整校验与公开GET后交付。仍不运行App/模拟器/实机。
+
+## Build59 归档运行器重试（2026-10-28）
+首轮40708585095在15分钟后返回“The job was not acquired by Runner of type hosted even after multiple attempts”，并提示ARM运行器容量不足，未进入编译；备用macos-14也是ARM池。依据actions/runner-images官方README，给ios.yml可选运行器增加macos-15-intel，使用官方x64池重试。只改调度选项，人物/效果/规则/资源和已审动图不变，仍仅设备Release，不运行App/模拟器/实机。旧运行美术源5da456a15ab8e8489fb51385063b92542392ff16有效，最终归档SHA和包校验另记。
+
+## 当前：Build59 传奇权杖动作与投射接入候选（2026-10-28）
+用户“没问题继续下一项”授权权杖接入。主线程独自复用B2已认可杖身/241施法曲线，借用.equip切换、两衣装208八向背负，单人/小队共用独立武器/变换后杖头起点/蓝白弧线投射/命中与地面反光/落地反弹粒子。0.8384秒出手、1.048秒一次结算、0.1秒停顿及1.70秒窗口保持；修粒子尾段超过窗口导致切换截断，改为窗口内落地淡出。小队原普攻1D20、强击仍1D6+2，自然20原回执击杀/更大爆发/提示，不把加值凑20误判。单人仍旧固定5伤演练，不声称正式规则已迁移。非攻击复用共用身体状态/护脸腕角，不称新制作完整倒地；战斗仍旧共用蓝衣。128纯测试/五旧检查、601施法姿态与认可源变换maxerror0、3606避脸、208武器外人物不改和旧步态绑定保持；原13核心/目录、猎弓/重剑Rig及JSON保持。主线程亲审208原生绑定/16整身板+4放大板、22行走实际解码、950战斗/整身解码50页、202状态11页和六状态30姿势整身1×/2×。当前待设备Release归档/包校验。必须实际交付正常GIF/站姿/核验HTTPS/直接IPA，不发ZIP，不运行App/模拟器/实机，不用智能体，新运行时美术认可null。每步结束后提示后两项：皮甲/符文甲装备及战斗挂载；力量徽章/行动戒指装备槽及属性反馈；本轮不自动开始新项。
+
+## 当前交付：Build58 重剑接入归档与包校验完成（2026-10-28）
+用户“继续下一项/继续工作”已完成重剑动作与装备切换demo接入。源aac397dd02d781b6918f23f97b14f0500a9976a0，Release40684811523成功，1.6.32/build58，120纯测试/五旧检查及Mac/Linux七组导出一致，含3606重剑姿态/201接触时钟和原3606猎弓姿态；IPA36838157字节，SHA256 d82ac2d6da8fa5ec8980c64532ee320919b154843d08f56c2b4a45eb5f2dabe3。包内新重剑与原猎弓JSON逐字节匹配，经典ZIP2.0/CRC/平台/权限/Metal/图集和原目录/当前步态已核。两衣装208背负格武器外原人物不改，所有旧步态/武器绑定语义保持。小队普攻原1D12，强击仍1D6+2，单人仍旧固定5伤练习，不冒称正式单人规则迁移。动作接已认可挥击源；修过通用命中在轮廓外、非攻击宽剑遮脸；剑尖/伤害数字/粒子同可见点。非攻击身体复用旧骨架，不称新制作完整倒地。主线程亲审22行走、760战斗/整身、202状态实际解码帧及原尺寸/放大全身和六状态，正常GIF/站姿公开完整GET及独立GIF浏览器推进已核。直接IPA完整GET的字节数和SHA256与本地审核包一致，回执见Media/Build58/public-downloads.json。无App/模拟器/实机运行，无智能体，无整人图像生成，新运行时美术认可null。必须实际发正常GIF/站姿/核验HTTPS和直接IPA，不发ZIP。每完成一步提示后两项：传奇权杖施法/投射；皮甲和符文甲装备切换/战斗挂载，不自动在此轮启动。
+
+## 当前：Build58 重剑动作与装备接入候选（2026-10-28）
+用户授权“继续下一项/继续工作”，下一项为重剑，不自动扩展权杖。主线程复用B2已认可重剑贴图/241个挥击曲线采样，新增营地借剑.equip库存切换、两衣装208背负绑定、单人/小队共用动作及剑尖轨迹、接触停顿和回跳。小队普攻1D12，强击仍1D6+2，一次确认锁骰和1.048秒一次结算；单人保持旧固定5伤练习，不冒称正式规则已迁移。原13核心/目录、猎弓BowRig及动作JSON未改，旧步态/所有武器绑定语义保持。主线程修过通用击打点在轮廓外及防御/受击/胜利宽剑遮脸：伤害/剑尖/粒子共用怪物(94,152)可见点，八怪帧有效，3606全姿态脸部遮挡检查通过；非攻击身体仍复用原共用模组，不称新制作完整倒地。120纯测试/五旧检查通过，原尺寸/放大全身、22行走解码帧、760战斗/整身解码帧40页及六状态30姿势亲审。最终媒体 Art/Review/Battle/great-sword-demo-v1 和 Art/Review/P1/great-sword-demo-v1。必须实际交付正常GIF/站姿/核验HTTPS和直接IPA，不发ZIP；新运行时美术待用户反馈，不继承离线认可。无App/模拟器/设备运行，无智能体，无整人图像生成。每完成一步提示后两项：传奇权杖施法/投射接入；皮甲与符文甲装备切换/战斗挂载接入。当前待设备Release归档及包校验。
+
+## 当前交付：Build57 猎弓整套状态归档与包校验完成（2026-10-28）
+用户要求“其余动作做完再打包”已完成：防御/受击/胜利/跪地撑地202个原生分层采样及反向复起；保留143个认可射击采样。编译源63cb4363420bdb9f507c1f41eec8051a9a3cdf34，Release40667152183成功，1.6.31/build57。114纯测试/五旧检查通过，Mac/Linux五组导出含3606姿势一致；包内动作JSON逐字节匹配，经典ZIP2.0/CRC/平台/权限/Metal/原步态及目录已核，IPA35465853字节、SHA256 2351cc1a16b4fd801866d80a52d33e895d2548e17a8905bd35b1be6cbbce478b。主线程审最终新动作GIF全部224实际解码帧12页及原尺寸/放大全身，另六全场离线状态板；返修过裤脚低于地面残片、透明余边误作支点和复起预览缓动。正常GIF/站姿公开完整GET与独立GIF浏览器推进已核，直接IPA完整GET的字节数和SHA256与本地审核包一致，回执见Media/Build57/public-downloads.json。必须实际交付正常GIF、站姿、已核HTTPS和直接IPA，不发ZIP；实机由用户负责，无App/模拟器/实机运行，无智能体，新美术用户认可null。每完成一步提示后两项：重剑动作/装备切换接入demo；传奇权杖施法/投射及反馈接入demo，复用前期已审核源并重新亲审。此轮不自动继续这些新项。
+
+## 当前：Build57 猎弓其余动作制作和共用接入（2026-10-28）
+用户授权“那把猎弓的其余动作做完再打包”，继续完成，不停在提议。主线程独自以认可r7项目原生层制作防御、受击、胜利、倒地202个20ms采样；复起反向复用倒地，原143射击采样不改。新部件canvasBaked，禁止运行时再次套旧躯干倾斜；靴底/接触影随实际不透明像素，修过倒地裤脚地面以下残片及alpha=1透明余边误当支点。防御/受击始末与认可站姿整人逐字节一致，345个导入合成与源一致。单人/小队共用BowRig，小队收势后触发胜利，倒地者保持；114纯测试和五旧检查通过。美术 Art/Parts/P1-Battle/hunting-bow-actions-r7-v1，最终生产Swift装配GIF Art/Review/Battle/bow-actions-r7-demo-v1。必须主线程审核正常整身、实际GIF解码并实际交付动图/站姿/已核HTTPS和直接IPA，不能只说已有。新美术待用户反馈，不继承射击认可。不运行App/模拟器/实机，不用智能体，不整人图像生成。每完成一步提示后两步：本轮动作接入后→美术全帧复核；再→设备归档/包校验及直接IPA交付。下一轮用户实机测试后，再按原计划下一类武器/技能。
+
+## 2026-10-28 · Build56 猎弓接入归档与包校验完成
+
+Release40656603531成功，源eaee324ab7e8f14c42878fcfc8aa11c726bf5310，1.6.30/build56。111纯测试/五原检查通过，Mac/Linux五组导出一致，IPA内新动作JSON逐字节保持；包34,539,875字节，SHA256 5f41b1dcf96f3e855bc87595b66f901f2a1166ad7495fbec22c7591e21f58247，CRC/经典ZIP2.0/平台/权限/原目录与步态均核验。主线程审核三GIF570帧及30整身关键帧，GIF无损优化前后逐帧RGB/时长保持，远程独立GIF浏览器可推进。[包证据](../Media/Build56/package.json)、[正常动图/站姿](../Art/Review/Battle/reviewed-bow-r7-demo-v1/README.md)。IPA已发布并完整GET核验匹配本地包，直接链接见 Media/Build56/public-downloads.json；无App/模拟器/实机运行。后两步：用户实机验收本包；再完善猎弓防御/受击/倒地专属动作。
+
+## 2026-10-28 · Build56 认可版猎弓接入进行中
+
+Build56 美术复核：三正常GIF（整身/普通攻击/击杀）各190×20ms，主线程检查全部570解码帧/30页及六动作30整身姿态1×/2×，全部143原生源合成逐像素保持。修正准备动作过急，确认即开始、出手与结算时刻保持。设备Release归档40656603531进行中，源eaee324ab7e8f14c42878fcfc8aa11c726bf5310；未运行App/模拟器/实机。下一步归档与包校验，再交付直接IPA和正常GIF。
+
+用户授权开始，并要求每完成一步提示后面两步。已接入单人与小队共用原生分层，影子共用原生姿势；核对原出手/命中时钟和D8规则，飞行箭长度按人物尺度统一；110纯测试、模块编译、项目/语法校验通过。导入143个完整合成与已认可源逐像素一致，未导入整人帧。整身/整场正常GIF制作和主线程审核、iOS Release归档/IPA校验与交付继续推进，无App/模拟器/实机运行或智能体。证据见 Art/Integration/Battle-reviewed-bow-r7-v1 与 Art/Review/Battle/reviewed-bow-r7-demo-v1。
+
+## 2026-10-28 · 完整猎弓离线射击已获认可
+
+用户“没问题，下一项工作是？”认可完整流程 v1 已展示部分，范围见 [approval.json](../Art/Review/Battle/hunting-bow-full-cycle-r7-v1/approval.json)。下一项：单人/小队共用运行时接入 → 箭矢/命中及状态切换核对 → 主线程整身/整场正常GIF复核交付 → Release归档及直接IPA。原伤害规则/结算时刻保持；其他外观、未展示动作与设备表现不自动通过。本轮只记认可与计划，无运行时修改或设备运行。
+
+## 2026-10-28 · r7 猎弓完整流程 v1 新前段
+
+用户授权补齐当前弓动作。主线程以原生独立袖层/手形制作持箭待发、抬弓搭箭与拉弦，58个20ms新采样帧后接逐字节保持的已认可v3后段85帧。全片2.86秒，正常GIF实际解码81帧；已检查全部7页解码整身与放大关键帧，修复中间稿弦心落后手指的问题，搭箭后指尖/弦心/箭尾始终同点。[完整正常GIF与关键帧](../Art/Review/Battle/hunting-bow-full-cycle-r7-v1/README.md)待审核。初始已有箭，不含取箭袋；未接demo/新IPA、图像生成、设备运行或智能体。仅当前弓适配，换同类弓仍需其握点与弦点配置。
+
+## 2026-10-28 · r7 v3 射后动画用户认可与后续顺序
+
+用户“可以了，下一步工作是什么”认可已展示的 v3 满弓→放箭→收手→放低弓，范围与 GIF 摘要见 [approval.json](../Art/Review/Battle/hunting-bow-followthrough-r7-v3/approval.json)。后续顺序：补新版持弓待机及抬弓/搭箭/拉弦前段 → 整段正常 GIF 审核 → 单人与小队共用接入及箭矢/命中对齐 → 美术复核/直接 IPA。旧运行时代码含旧抬弓拉弦，尚未适配本版，不算新版全流程完成。本轮只记录认可与计划，未制作新动作或运行设备。
+
+## 2026-10-28 · r7 后续动作 v3 返修右臂结构
+
+用户再次判退 v2 右臂。此前补袖片而未纠正大臂短缩、肩肘转折和前臂袖管轮廓，撤回内部放行。本轮主线程亲自调整近侧下放投影与连续袖形，固定肩根，首帧与 r7 完全一致；脸/手形源/持弓侧和弓箭时序保持。[正常GIF、整身对照与资源](../Art/Review/Battle/hunting-bow-followthrough-r7-v3/README.md)待复审，已逐帧检查实际导出画面；机械连通不代替人体美术审核。无 demo 接入、IPA、图像生成、设备运行或智能体。
+
+## 2026-10-28 · r7 后续动作 v2 补齐肩头与大臂
+
+用户指出 v1 右臂下放时肩头/大臂被躯干遮掉。新增独立前景袖片，置于衣身与前臂之间，首帧仍与 r7 完全相同，动作/臂长/手形及弓箭位置不变。[正常GIF、解码帧与整身对照](../Art/Review/Battle/hunting-bow-followthrough-r7-v2/README.md)已检查，v2 待用户复审；不把源层重叠当成最终画面没有缺失。无 demo 接入、IPA、图像生成或设备运行。
+
+## 2026-10-28 · r7 首帧之后的放箭与收势动作
+
+用户选定 r7 作为动作依据。已制作原生分层后续帧：松弦/箭飞出、近侧手 0.32 秒收回、远侧手与弓放低停稳。首帧与 r7 完全相同，双臂几何长度和肩根保持，修复收手后露出的领口残片。85 个 20ms 采样帧含停留，[正常速度 GIF/关键帧/原生资源](../Art/Review/Battle/hunting-bow-followthrough-r7-v1/README.md)待用户审核。主线程检查整身与全部 GIF 解码画面；没有整图生成、demo 接入、IPA 或设备运行。
+
+## 2026-10-28 · 第一关键帧 r7 略缩双臂
+
+按用户要求固定两侧肩根，双臂水平伸出长度约缩短一成，保持手形和袖层高度；双手位置随臂端调整，弓随持弓手回收、指尖仍接弦。衣身和腰部不改。[整身/原尺寸/对照](../Art/Review/Battle/hunting-bow-aim-project-r7/README.md)待用户复审。仅静态单帧，无图像生成、新动画、IPA 或设备运行。
+
+## 2026-10-28 · 第一关键帧 r6 腰带清理与胸口压平
+
+按反馈重建腰带/搭扣/衣摆，清理旧衣片残块并保留裤腰连接；回收胸口轮廓，去掉圆形高光。双手、双臂和关节不变。[整身/原尺寸/对照](../Art/Review/Battle/hunting-bow-aim-project-r6/README.md)已检查，新单帧待用户复审。无图像生成、动画扩展、IPA 或设备运行。
+
+## 2026-10-27 · 第一关键帧 r5 修衣身贴合
+
+按用户反馈收小腋下到腰侧余量，门襟随胸腰收束，调整抬臂褶皱并取消重复旧衣边叠加。保留衣料/包边/腰带，手、手臂、关节不变。[整身/原尺寸/对照](../Art/Review/Battle/hunting-bow-aim-project-r5/README.md)待用户复审。仅静态单帧，无动画扩展、IPA、图像生成和设备运行。
+
+## 2026-10-27 · 第一关键帧 r4 恢复外套材质与结构
+
+按用户要求，以原战斗外套 PNG 恢复躯干布料明暗、门襟包边、腰带与衣摆，补齐旧持剑袖遮住的门襟，调整自然松量。[整身/原尺寸/三栏对照](../Art/Review/Battle/hunting-bow-aim-project-r4/README.md)已由主线程检查，待用户复审。双手、双臂和关节未改。仅静态一帧，无图像生成、动画扩展、IPA 或设备运行。
+
+## 2026-10-27 · 第一关键帧 r3 仅修腹部
+
+用户明确手不用改，仅修衣服大肚子。本轮收窄外套腹部、改平亮色块、清理旧重复衣物边；双手、双臂和关节与 r2 相同，变化只在腹部，其余整身像素不变。[单帧整身图和记录](../Art/Review/Battle/hunting-bow-aim-project-r3/README.md)待用户复审，无新动画、IPA、图像生成或设备运行。
+
+## 2026-10-27 · 第一关键帧 r2 接合和层序返修
+
+用户指出肩根、背心、袖口和躯干遮挡问题。本轮拆开近侧上/前臂，近侧上臂与持弓臂放到外套后方，补齐外套与袖口，清理头部裁片夹带的背心。[整身及原尺寸审核图](../Art/Review/Battle/hunting-bow-aim-project-r2/README.md)待用户复审。仍仅单帧原生资源候选，尚未迁移运行时动画，无图像生成、IPA 或设备运行。
+
+## 2026-10-27 · 按项目原生分层重做猎弓第一关键帧
+
+用户明确要项目资源而非生成整图。主线程制作 256×256 独立衣袖层、独立手部及 BowRigSample 格式单帧配置，复用原人物和弓资源、现有合成器；13 个复用素材字节与仓库一致。审核[整身和原尺寸图](../Art/Review/Battle/hunting-bow-aim-project-r1/README.md)，资源见对应 Art/Parts。未调用图像生成；只有单张待审关键帧，未制作后续动作、未接运行时或打新包。
+
+## 2026-10-27 · build55 判退，先审单张姿势
+
+用户指出两臂仍不自然，撤回内部美术放行。本轮只制作[拉满弓第一关键帧草图](../Art/Review/Battle/hunting-bow-first-frame-r1/README.md)，重点重新确定后肘袖形、双臂比例与手腕/握弓关系。图像为静态姿势候选，待用户审核，尚未拆层接入游戏或制作后续动作，无新 IPA。
+
+## 2026-10-27 · A 图猎弓动作接入项目
+
+用户要求保留头部并将参考动作复刻进项目。近侧手拉弦、远侧手握弓，放箭后拉弦手约 0.32 秒收回；项目原人物头部保持，适配原人物比例而非替换整张参考图。共用战斗动作和箭矢起点，未改命中时序；离线整身与战斗场景正常动图见 [审核记录](../Art/Review/Battle/hunting-bow-a-project-r1/README.md)，效果待用户复审。主线程完成制作和美术检查；没有运行 App、模拟器或实机。
+
+## 2026-10-27 · A 图放箭 r6 固定嘴部
+
+用户要求只让嘴部不动。主线程在 r5 动图上仅对齐嘴部及紧邻轮廓，保留弓弦遮挡；46 帧逐帧对比，16×13 修改区域外 0 个像素变化。[r6 动图](../Art/Review/Battle/hunting-bow-a-followthrough-r6/README.md)待用户审核；未接 demo、未打包、未运行设备。
+
+## 2026-10-27 · A 图收手与头部配准 r5
+
+用户认可 r4 速度，反馈手略抖、鼻子以上错位。主线程统一上脸像素，重新生成并配准收手及袖口姿势，保留 0.32 秒收手/收稳时段；[r5 动图](../Art/Review/Battle/hunting-bow-a-followthrough-r5/README.md)待用户审核。没有接 demo、打包或运行设备。
+
+## 2026-10-27 · A 图放箭收手再次加快 r4
+
+用户反馈 r3 仍慢；主线程保留收手姿势顺序，将收手段由 0.64 秒缩短至 0.32 秒，[r4 动图](../Art/Review/Battle/hunting-bow-a-followthrough-r4/README.md)待审核。未新增中间姿势、未接 demo、无 IPA 和设备运行。
+
+## 2026-10-27 · A 图放箭收手加快 r3
+
+用户要求放手更快、更连贯；主线程统一收手的姿势切换节奏，由 0.96 秒缩短至 0.64 秒，[r3 正常动图](../Art/Review/Battle/hunting-bow-a-followthrough-r3/README.md)待审核。未新增中间姿势、未接 demo、无 IPA 和设备运行；编码帧率并非设备实测帧率。
+
+## 2026-10-27 · A 图放箭收手抽搐反馈
+
+用户指出放箭后收手抽搐。主线程去掉导致向下再向上反弹的旧帧并调整收势时序，[r2 动图和记录](../Art/Review/Battle/hunting-bow-a-followthrough-r2/README.md)待用户审核；未新增中间动作，关键姿势间仍有离散变化，不能称作完成逐帧重绘。无 demo 修改、IPA、App/模拟器/实机运行。
+
+## 2026-10-27 · 基于 A 图的放箭与收手草稿
+
+用户明确以已提供的 A 图继续动作。主线程制作了放箭、箭飞出和收手的 A 图衍生动作，检查整身关键帧与放箭解码帧；[正常速度 GIF 与说明](../Art/Review/Battle/hunting-bow-a-followthrough-v1/README.md)。12 个姿势、单次播放，用户尚未审核；这是离线平面草稿，未接 demo、未打包、无 App/模拟器/实机运行。中途执行环境断开，恢复后取回并核对草稿。
+
+## 2026-10-27 · 用户明确沿用 A 动作
+
+用户纠正，应直接基于先前选定的 A 动作，未采用另外生成的空手人物；A 为姿势参考，现有非像素草稿弓弦与箭尾的接触仍需解决，见 Art/Review/Battle/hunting-bow-nonpixel-study-v1/user-direction.json。
+
+## 2026-10-27 · 非像素化猎弓姿势草稿
+
+用户希望先做非像素化原型，确定结构后再像素化。[草稿](../Art/Review/Battle/hunting-bow-nonpixel-study-v1/README.md)的上下弓弦与指尖/箭尾交汇不够清楚，未获认可。图形工具进一步调整弓弦和箭尾时被自动审核以 violence 类别拒绝；未改游戏或打包。
+
+## 2026-10-27 · 猎弓 A 手形与袖口返修 r2
+
+用户判退上版方块手及肩肘连接后，主线程独立重做近侧拉弦手、远侧握弓手和袖口，修正手腕与弦点的关系及手和下颌的间距，重新导出射出位置；见 [候选记录](../Art/Review/Battle/hunting-bow-hands-r2/README.md)。正常整身/整场 GIF 为离线美术合成，成品待用户复审；107纯测试、三项既有独立检查与项目绑定检查通过，未做完整 Xcode 构建、IPA 或 App/模拟器/实机运行。原 PNG/行走资源保持；旧受击和倒地腿部变换的单像素残留见扫描报告。生成的参考草图弓弦穿脸并重绘人物，已弃用。
+
+## 2026-10-27 · 猎弓 A 动作手形判退
+
+用户指出手不对劲并要求开始修改；近侧拉弦手、远侧握弓手、袖口和肩肘交界均需重做，上一版内部美术放行撤回。静态 A 姿势仍为参考，见 [反馈](../Art/Review/Battle/hunting-bow-pose-a-r1/user-rejection.json)；返修进行中。
+
+## 2026-10-27 · 按用户选择 A 重做猎弓近侧拉弦动作
+
+用户选定 A，主线程独立制作：近侧手拉弦/肘向后、远侧手前伸握弓；新弓专用连续袖形和手形替代旋转的持剑残片，胸口底层补齐，原脸/发/领口/腰带/步态不重画。关节角度过渡保持臂长，弓弦与箭尾贴近侧手，松弦手短随后退并平滑回位。见 [本轮记录](../Art/Review/Battle/hunting-bow-pose-a-r1/README.md)。107纯测试、五项独立检查及项目绑定检查通过；整身/整场各190帧正常GIF、六动作姿势和原尺寸/放大联系页已生成并由主线程审核。本轮未打新IPA；UIKit适配仅语法检查，未做完整Xcode设备编译；无App/模拟器/实机或智能体，成品动作待用户复审。旧 v7 私人页未更新，本轮看新GIF；旧受击/倒地腿部单像素残留如实记在扫描报告，不视为本轮清零。
+
+## 2026-10-27 · 猎弓持弓动作被判退，先比较姿势草图
+
+用户指出 build54 持弓手和拉弓手反了、姿态怪且杂色未清干净，要求先看几版效果图；此前内部美术放行撤回。[三版姿势概念](../Art/Review/Battle/hunting-bow-pose-concepts-v1/README.md)仅供确认近侧拉弦、远侧持弓和站姿，非原角色像素资源或动画；衣物与边缘须在用户选择后按原稿重做。本轮没有修改游戏代码、打 IPA 或运行设备。
+
+## 2026-10-27 · build54 猎弓持弓修正候选
+
+用户认可上一轮展示的重剑和权杖离线演出，记录 `Art/Review/Battle/b2-weapons-v1/user-approval.json`；提出旧猎弓手与弓对不上。本轮修复实际共享战斗 BowRig、前后手层序与单人/小队射出点：先接弦再搭箭，拉弦手指朝箭尾，放弦后手向后跟随。主线程查看完整整身/整场 GIF 各190个实际解码帧、六动作关键姿势和整场样本；六动作3606个几何采样与107纯测试、五项独立检查通过。未运行App、模拟器或实机，离线动图非设备录屏，新修复待用户审核。源码 `50e555778208b2b823d1e7a208d552f3bfeb69e2`，设备 Release 归档 40447896365 和 IPA 结构、CRC、架构及 macOS/Linux 导出数据校验通过，见 Media/Build54；交付提交 `62d105042220070606aa56ba3957ab3e518108f7`，IPA及两正常GIF完成公开GET和浏览器显示核验，私人审核页已更新；行走背弓和战斗数值保持。
+
+## 2026-10-27 · B2 重剑与传奇权杖离线动作候选
+
+上轮“没问题继续下一步工作”仅记为符文甲正左、正右袖腕修正及已展示行走预览认可，见 Art/Review/Equipment/b2-batch-v5/user-approval-profile.json。继续B2，新增重剑近身挥击/回位与传奇权杖投射两段独立待审场景；命中位置对准怪物身体，包含环境照明、受击与落地粒子。旧四件通过素材、人物和装备素材保持；两甲其他范围待审。本人检查正常GIF实际解码帧的整场/整身联系页及视频抽帧，另做60Hz几何交叠核验；[审核记录](../Art/Review/Battle/b2-weapons-v1/README.md)、[批量审核](../Art/Review/Equipment/b2-batch-v6/README.md)。候选提交 `a26ff2a066099fdca958fdcd07552ffcabc3b18b`，原私有审核页已部署；七条公开资源完整下载、55条提交路径核验，固定版本正常GIF浏览器加载通过，见 delivery.json / deployment.json。两段视频均为离线60fps，不表示设备测得60fps；未接demo、未运行App/模拟器/实机、未制作IPA，新动作的用户认可为空。
+
+## 2026-10-25 · build43护盾跟随、回血与技能动态
+
+交付提交 `ca91b214d23d3b039f19a12500fa17bfa73a0a19`：直接IPA（固定提交/分支）、三正常GIF、完整圆盾站姿/普通站姿/命中图共8个HTTPS实际GET200，MIME/长度/SHA256一致；GIF165/180/95帧均40ms。82条选定交付路径与13条本轮编译源码/资源远端字节一致，17813条旧美术/行走路径保留，其中17395条本地可用文件字节匹配，418条历史文件未落本地但GitHub对象保持。最终回执 `Art/Review/Battle/skill-flow-demo-v1/delivery.json`，无外层ZIP。
+
+用户上传73.93秒视频作为战斗美术理想标准，仅参考技能特效/场景光影，不考虑运镜。全段2fps概览148帧及辅助/金色冲击12fps密集抽帧分析已记reference-notes.md/reference.json，并在AGENTS/战斗README设必读入口；不声称连续看完4434帧，不复制其贴图或上传录屏/社交/系统UI。记录不同属性应有各自形状/方向/节奏，当前只改已有强击/防护/回血，不增加全部属性技能。
+
+圆盾改为hero直接子视图，与人物同一非动画事务更新，中心原生(128,144)/直径240，不再按交替支撑脚定位；加入沿边流光/亮度呼吸，碰撞点/破片圆周匹配新尺寸，落地碎片仍独立世界坐标。505活体姿态可辨alpha≥2轮廓（含发/靴/剑）最远84.024，内圈98.4，余量14.375；圈外仅既有alpha1/255残留并保留原图。离线180帧人物移动162.34世界单位，盾相对根偏移变化0；实际延迟由用户设备反馈。回血改绿金两侧光缕/上升粒子/柔光柱/恢复短亮核/短地面绿波，HP8→12与+4同第27帧，仍1AP/4恢复只一次，视觉1.2秒/尾粒1.8秒。强击主弧扫动/延迟弱回声/光浪分阶段，原暗场/100ms停顿、无蓄力、出招后无提示圈、HP0/数字/右吹同事件、动作/行走/相机代码保持。
+
+主线程独自制作修正审核。回血过淡初稿判退并保留drafts/subtle-healing-v1，最终扩大两侧光缕与星点，增强绿白恢复亮核和地面光，保持面部/衣物可读。亲看最终强击165/盾跟随180/回血95帧共440实际GIF解码帧，均40ms正常速度，原尺寸关键帧和新完整人物1×/2×图；旧攻击整身四页原样复用。生产Swift直接导出440帧粒子/回血/盾几何，照明/混光为离线近似，不称UIKit/GPU画面、连续播放或实机验收，新artApproval=null。
+
+首轮40178762700在纯Swift阶段被Xcode16.4的compactMap类型推断超时拦下，未归档；改明确Double与逐项构造后重跑。最终源码 `0c9f1e7a9397f26e64824412fc2d20a4472fa23f`、设备Release归档40179386404及五项纯Swift通过，macOS/Linux轨迹全部字段/浮点在1e-6内一致。IPA1.6.17/build43，28,133,914字节，SHA256 `40092768e150fd663d62181b95347be7d8ff95a2e6817b118e177cc98c33957f`；工件/包CRC、结构/平台/版本/权限/Metal/新光学与行走数据核对。无App/模拟器/实机执行；直接IPA、三正常GIF、站姿与HTTPS/远端字节回执见skill-flow-demo-v1，用户测试实际光影/跟随/输入/帧率，不发ZIP。
+
+## 2026-10-25 · build42发光粒子、地面碰撞和圆盾
+
+交付提交 `89ff3ccb23f8e34ee2b3cc5528ae2dc5f499e257`：直接IPA（固定提交和分支URL）、两正常GIF、两站姿与命中图共7个HTTPS实际GET200，MIME/长度/SHA256一致；GIF165×40ms/6600ms和120×40ms/4800ms。59条选定交付路径与12条本轮编译源码/资源路径远端字节一致；17767条旧美术/行走路径在远端保留，17349条本地可用文件逐字节匹配，418条历史文件未落本地但远端对象保持。最终回执 `Art/Review/Battle/particles-round-shield-demo-v1/delivery.json`。
+
+用户确认build41特效可用，追加受击/怪物死亡发光粒子、照亮环境和地面碰撞，以及圆形、更鲜明的护盾与碎裂。build41认可另存impact-shield-demo-v1/approval.json，新build42仍artApproval=null。主线程独自制作修正审核；原强击/暗场/100ms停顿、HP0/数字/右吹同事件、数值和行走资源保持。
+
+新增生产纯Swift解析弹道，受击34粒、死亡52粒分批、盾接触12粒、耗尽32蓝碎片，重力/减速反弹/接地停留，局部环境光晕、落地短光斑/溅射与死亡暖光带；发射时固定世界位置，不被后续防御动作拖走，3秒清理、退出/重试清空。圆盾132×132、透明中心，蓝青/白边与破裂更强；鹿灵有盾时冲撞终点在盾面，盾消耗后不突然穿入人物。
+
+最终源码 `3894119b1d96f102e79e3635aa592a3dbfceb0e5`、Xcode16.4设备Release归档40175880891和五项纯Swift检查通过。模型覆盖15/30/60/120Hz门控/HP0/非致死/取消/盾值与无状态粒子弹道、不穿地/接地/反弹；macOS与Linux全部字段/浮点在1e-6内一致。IPA1.6.16/build42，27,661,018字节，SHA256 `128f620175ec552817ec17779c52f8b8df6e2461066ab8e6dfd1a0934fd71de5`；工件/包CRC、结构/平台/版本/权限/Metal/新资源和行走数据核对完成。无App/模拟器/实机运行。
+
+主线程亲看最终强击165帧、圆盾120帧全部解码联系页，原尺寸展开/持续/接触/碎裂/两类落地关键帧；四张人物整身1×/2×页与build41字节相同复用。生产Swift直接导出285帧粒子轨迹用于离线美术合成，不另写一套物理。GIF均40ms正常速度，照明/混光/相机仅近似，不称UIKit/GPU一致或连续播放验收；用户测试实机。原图/固定UV/提示词、审核/生产轨迹/保留/包与HTTPS回执在particles-round-shield-v1及particles-round-shield-demo-v1，直接IPA与正常两GIF/站姿实际交付，不发ZIP。
+
+## 2026-10-25 · build41强击冲击力与护盾演出
+
+交付提交 `45ff35fa187cd8e93694936a8efdfdc37ba9ca5b`：直接IPA（固定提交与分支链接）、两正常GIF、两站姿及命中图共7个HTTPS实际GET200，MIME/长度/SHA256一致；GIF分别165×40ms/6600ms和120×40ms/4800ms。55条选定交付路径及18条本轮编译源码/资源路径远端字节一致，17724条既有美术/行走路径远端保留，其中17306条本地可用文件也逐字节匹配；418条历史文件未落本地但GitHub对象保持。最终回执 `Art/Review/Battle/impact-shield-demo-v1/delivery.json`。
+
+用户参考图要求更强冲击力，并追加护盾特效。主线程独自制作返修与审核，没有委派：工具初稿护盾中心挡人/越切片边、金弧闭合过满已判退，修订原稿/提示词保留。强击改胸腹接触、开放冲击弧/白金核心/方向喷射/贴地光浪，更深暗场及100ms停顿，只世界轻震/推近，HUD固定；护盾透明中心按展开/持续/实际吸收波纹/最后盾值归零破裂分阶段。5点强击/+4护盾/4点敌攻不改，无蓄力等级，致死同事件右吹与出招无残留脚下环保持。原动作备份，旧光效与行走资源保留。
+
+最终源码 `fd019f8f542f863c9b45ef80ab5031aa1d53d974`、Xcode16.4设备Release归档40173101137及五项纯Swift检查通过；生产模型覆盖15/30/60/120Hz、一次命中/HP0/非致死/取消重试、8→4→0护盾，macOS/Linux轨迹浮点1e-6内一致。IPA1.6.15/build41，26,986,898字节、SHA256 `c5361f015e4edaaa261992306ee3833d872a37ccc737f58b3c684a05f167e4cd`；外层工件摘要/CRC、IPA结构/版本/平台/权限/Metal/新光效及两套P1资源/gait原字节已核对。没有启动模拟器/App/实机，设备光照/输入/安装/性能由用户反馈。
+
+主线程亲看强击165帧/护盾120帧最终GIF解码页、原尺寸命中/展开/格挡/破裂与16攻击姿势整身1×/2×；均40ms正常速度，不以局部放大替代全场/全身判断。两GIF共享导入素材与生产时钟，是离线光照近似，不声称UIKit/GPU画面或连续播放验收；新artApproval=null。审核、模型来源、保留与交付GET回执见 `Art/Review/Battle/impact-shield-demo-v1/`；直接IPA和两正常GIF/站姿实际交付，不发外层ZIP。
+
+## 2026-10-25 · 战斗光效接入demo · build40
+
+交付提交 `bc25464ea739b4b64be909c4d4618b92d7f99756`：直接IPA、正常整场GIF、站姿与命中图四个HTTPS均实际GET200，MIME/长度/SHA256与本地一致；GIF180×40ms/7200ms。46条选定交付路径与22条最终编译源码/资源路径已核对远端字节，回执 `Art/Review/Battle/effects-demo-v1/delivery.json`。IPA直接下载，无外层ZIP；用户实机验证输入/光效/安装。
+
+最终源码 `2f1d2475b119eb57e96c69200a2fc25468c8c2c8`、设备归档40167117136通过（Xcode16.4），五项纯Swift检查/项目校验完成；未执行模拟器/App/实机。build40/1.6.14 IPA25,176,986字节，SHA256 `2ed99a131c16c1030d22dc9a90070945009c04c6c2c76a9c56268d84a27267be`，外层工件摘要/CRC、IPA/版本/权限/Metal/VFX与两P1预设资源名/gait一致性通过。正常离线动图180帧×40ms已由root亲看最终解码联系页及命中关键帧，导入48实体/粒子单元及末帧为空核对；16姿势整身1×/2×联系页与v3相同，5307旧美术/行走文件不变。macOS生产模型trace与Linux字段/浮点一致范围见controller-provenance；审核详见effects-demo-v1/art-review.md。包与四个HTTPS已实取核对，最终回执见本条顶部。
+
+首轮40166836747（源码5754bb0）设备Release归档及五项纯Swift检查通过，无模拟器执行；收尾补完整格挡恢复时长、接触相对受击回弹，以及图集alpha0隐藏RGB清理，最终归档另行重跑，不把首轮包当最终交付。
+
+用户“可以的做进demo里面试试”授权将v3展示范围接入并交付IPA，认可不扩展到尚未展示的输入/设备效果。新增事件门控把点击即扣血改为接触时结算，同一事件驱动HP/伤害数字/HP0右吹粒子；现有5点伤害/AP保持。技能卡鼠标悬浮/键盘焦点/触屏按住提供固定强度预示，强击发光同步压暗，确认光照连续；起势结束光圈消失。导入原光学PNG、局部命中mask、48帧实体/粒子UV图集及v3攻击曲线，旧数据备份，阴影取剩余实体；行走资源保持。
+
+本地旧战斗纯Swift与新门控检查通过，覆盖15/30/60/120Hz、一次结算/非致死/HP0/取消重试/护盾；项目资源检查通过。上述本地检查为接入过程记录；最终归档/共享素材审核与交付状态以上方当前记录及delivery回执为准，不称实机通过。未运行模拟器、实机或UIKit输入；用户测试设备效果。
+
+## 2026-10-25 · 战斗光效v3：致死命中同时向右吹散
+
+美术/源码已发布 `d2eb899dc786720f116a859a833e71113dcb2ec3`，31条选定路径远端字节一致。正常GIF、站姿及命中PNG三个HTTPS实际GET200、MIME/长度/SHA256一致；GIF180帧各40ms/总7200ms。回执 `Art/Review/Battle/effects-v3/delivery.json`，同帧触发证据见event-check.json。
+
+用户要求粒子改为向右吹散，HP清空立即触发，并与伤害数字同时出现。新增effects-v3素材说明/事件数据、独立合成脚本及正常整场GIF/解码审核。离线命中事件3.648秒统一驱动HP、伤害数字与死亡，不再等4.28秒攻击收尾；40ms采样下HP0、数字、死亡、首批粒子和轮廓缺失均首次出现在92帧/3.680秒，前一帧3.640秒未触发。非致死5点伤害不触发死亡。650个原怪物UV碎片以正向水平速度向右加速，仅轻微上下漂移；实体760ms内消散，粒子尾部继续右飘淡出，阴影同步退场。
+
+root独自修复/审核最终180帧解码联系页及命中/风化原尺寸关键帧，详见v3/art-review.md。动作与四张1×/2×整身姿势页复用v2且字节相同；施放无光圈、强技能悬浮发光/压暗、确认连续衔接保持。Python编译、事件同帧、非致死门控、粒子正向位移、单调消散/末帧为空、明暗连续与原实体接触检查通过；229个旧战斗/场景/v1/v2文件与远端基线字节一致。数值与静帧不称连续播放或用户美术认可。
+
+AGENTS与战斗美术README同步新规则。仍是离线候选，artApproval=null；未改真实App的5点伤害/HP/菜单，无实际输入接入、App/GPU/模拟器/实机执行或IPA。正常GIF/站姿/命中图及远端HTTPS实取回执见 `Art/Review/Battle/effects-v3/`；旧版本保留。
+
+## 2026-10-25 · 战斗光效v2：光圈按施放退场、强技能预示同步压暗
+
+已发布美术/源码提交 `4e05336f4396280907e78b275d4ced7b72fa8c91`，31条选定路径远端字节一致；正常GIF/站姿/命中PNG三个HTTPS均实际GET200、MIME及长度/SHA256一致，GIF180帧各40ms。交付链接指向不可变提交，详见 `Art/Review/Battle/effects-v2/delivery.json`。
+
+用户指出施放时人物已冲出、光圈仍在原地，并要求强技能发光时压暗画面。新增 `Art/Scenes/MeadowBattle/effects-v2/`、`Art/Review/Battle/effects-v2/` 和独立v2合成脚本；v1全部保留。光圈只用于选择/出招前，2.84–3.00秒淡出，3.00秒施放后全阶段为0，不留原地也不跟随人物。强技能悬浮时光点/光晕/背景压暗共用入场包络，稳定降低背景亮度34%，确认后连续衔接释放56%暗场；普通提示不压暗，固定技能强度不随悬浮时间升级。AGENTS与战斗美术README已同步。
+
+root独自返修，撤回v1对应漏检项的内部通过判断。亲看最终180帧GIF解码联系页、悬浮/淡环/冲刺/命中原尺寸关键帧及16姿势整身1×/2×联系页，范围详见art-review.md；静帧不称连续播放或设备验收。180×40ms/7200ms、施放后/位移时无环、稳定悬浮34%暗场及确认连续衔接、固定功率、明暗连续、原接触/消散检查通过；200个既有战斗/场景/v1文件与远端基线保持，四张人物姿势联系页与v1字节相同。没有重画人物/怪物或新增蓄力等级、真实技能/伤害规则。
+
+本轮仍为离线候选，artApproval=null；无UIKit/触摸/键盘/指针真实接入，无App/GPU/模拟器/实机执行或IPA。正常GIF、站姿、关键帧及远端/HTTPS交付回执见v2目录，尚待用户查看新效果。
+
+## 2026-10-25 · 记录后续怪物美术方向
+
+用户补充长期要求：怪物参考《八方旅人》，比主角更大，有压迫感，比例更真实。已写入AGENTS.md顶部必读提醒及 `Art/Scenes/MeadowBattle/README.md`，明确主体体量、可信头身/躯干/四肢与承重、轮廓姿态、同战场透视和地面尺度下与主角比较，并要求整场及1×/2×整身审核。未指定统一尺寸倍数，不将角/光效范围、透明画布或缩小主角当作体量依据。
+
+本轮仅记录文档要求并核对链接/远端内容，没有修改怪物PNG、动作、光效、运行代码或安装包，没有新增动图或重跑美术/设备检查，也不扩大现有怪物或光效候选的认可范围。
+
+## 2026-10-25 · 战斗光效v1离线候选
+
+已发布美术/源码提交 `5c36a50006027eaa55c5b0c2c5a52596ff753da4`，32条选定路径远端Git blob与本地字节一致；正常GIF、站姿与命中PNG三个HTTPS实际GET200且摘要一致，GIF MIME为image/gif、180帧各40ms/总7200ms。GitHub原始大GIF响应为application/octet-stream；交付浏览器链接采用指向同一不可变GitHub提交的jsDelivr，实际内容逐字节一致。回执delivery.json记录准确链接、长度与SHA256。
+
+用户要求开始做一版效果，并明确没有蓄力层级；改为更强技能在选择框悬浮时具有更强光效。新增 `Art/Scenes/MeadowBattle/effects-v1/` 素材/固定强度与时序、新攻击曲线副本/原图提示词，`scripts/review-battle-effects-v1.py` 及 `Art/Review/Battle/effects-v1/` 正常整场GIF、站姿、命中图、最终GIF解码联系页与主线程审核。普通/强技能先后作固定强度提示，确认后压暗、实际刀尖接触局部白金爆光与地面暖光、怪物受击/粒子解体/阴影退去、环境恢复。7.2秒180帧×40ms；不新增Boost/蓄力等级，悬浮停留不增加威力。
+
+root独自返修和审核：修初稿低接触点/整怪泛白、明暗平台跳变、过大消散方块；alpha实体检查进一步拦截透明处接触，调整终点后通过，未放宽检查。亲看解码联系页覆盖全180帧、关键帧原尺寸及16个攻击姿势1×/2×整身，具体范围见art-review.md；静帧不称连续播放或实机验证。原始/旧稿保留，169个既有场景/战斗文件与起始远端字节一致；Python编译、GIF时序、固定悬浮强度、明暗连续、单调消散及透明素材检查通过。新美术认可null。
+
+本轮是离线演出/选择框概念样片；没有接入真实悬浮/触摸/键盘或技能规则，样片18点只为致死展示，真实5点伤害未改。人物死亡、其他属性、声音、战斗换装/性能仍待做；无App/模拟器/设备执行或IPA。AGENTS已写入无蓄力/固定强度及真实完成范围。发布及HTTPS实取回执见 `Art/Review/Battle/effects-v1/delivery.json`。
+
+## 2026-10-25 · 固化当前行走外观美术交付标准v1
+
+用户要求将当前行走美术资源要求保存到GitHub，供后续agent生成新外观。新增 [交付标准v1](../Art/Standards/P1-Locomotion-Delivery-v1/README.md)、[可复制agent任务书](../Art/Standards/P1-Locomotion-Delivery-v1/AGENT_BRIEF.md)、机器可读contract与未填写的handoff模板。以当前build39实际身体、motion、schema/profile、部件与导入格式为依据，固化八向各13姿势/104绑定、256整画布/96头局部、独立槽位、固定坐标与相位、左右/近远/背剑、源稿与可编辑分层、全组合/开关/原像素保护、主线程整身1×/2×与正常GIF检查及HTTPS交付要求。
+
+明确已统一模板不再重复做旧平移/步相旋转；当前motion的hair.back/hem.back不全向支持，不能偷偷改动作合同；只换鞋不能与包含靴槽的完整lower重复占槽。指定起停与runtime13源列/25..28虚拟帧及前景/阴影一致性有表，当前在原地补循环尾部的收步限制如实保留。仅美术任务不自动打IPA，demo/打包任务才导入；女性新体型/实时自由混搭/新制动等不自动扩展。
+
+在AGENTS、旧标准README、部件README和方向进度加必读入口，标明旧草案72条/向下九帧/持握说明是历史要求；旧记录保留，draft profile和已有认可不改。仅更新文档/规格与索引，没有改PNG、动作、运行源码或安装包，没有新增美术候选、动图或构建，也不把本次文档核对算作重跑美术/设备测试。核对相对链接、JSON、基线摘要、104覆盖/槽位/相位/运行映射及远端发布；具体结果见标准目录verification.json。
+
+## 2026-10-25 · 新八向模组demo接入 · build39
+
+交付提交 `56f9887ff57e917d028cade1d2693bf01932d754`：[IPA直链](https://raw.githubusercontent.com/liamchan-rgb/experiment/56f9887ff57e917d028cade1d2693bf01932d754/Downloads/MeadowJourney-b39.ipa)、正常八向起停/切向/道路采样GIF和站姿共五份HTTPS均已实际GET，HTTP200/MIME/长度/SHA256一致，GIF帧数/时序/循环与IPA CRC通过；本次97条源与交付路径远端字节一致。回执 `Art/Review/P1/modular-demo-v1/delivery.json`。
+
+新统一八向分层资源已接入demo，build39 /1.6.13。用户“开始下一项工作”授权集成，不扩大新美术认可。当前提供两套已展示预设“林间绿衣”“行旅蓝衣”，同一baseID，主地图/步态测试可从“P1 衣装”选择；位置/方向/距离相位不重置。部件仍由通用装配器离线烘焙，不宣称任意部件实时自由混搭已完成。
+
+新增13列源图集、起停运行帧25..28与足点，前景与Metal阴影使用相同UV/外观快照，阴影图集预传而非逐帧上传。P2/P3保持原资源/足点；旧P1图集和footJSON备份在 `Art/Integration/P1-modular-demo-v1/source/`。同一208格实际装配/导入逐像素保持，16894既有美术文件不改，11个导入输出重导逐字节一致。原五度方向防抖、投影距离度量和24刻度采样保留，浮点刻度边界加1e-9容差。
+
+专用起步两帧暂缓P1路线，其他角色不受影响；收步从当前循环走到各向原定出口，再播放两收步。停步请求后的循环余段会在原地播放；恢复可取消尚未进入收步的排队。这不是新绘任意相位过渡或无延迟精确刹停，后续制动仍单列。
+
+设备构建40151137040（源码d5d0457ea6da51a97ede591eb7376da2bb932cc7，Xcode16.4/16F6）Release归档及四项纯Swift检查通过。新增控制器检查覆盖八向入口/出口、64指令相位经指定出口、24种30/60/120Hz计时、64切向采样、1200步真实道路逻辑（暂停/恢复/改目标）；Linux Swift6交叉检查离散帧/方向/状态相同，浮点误差<1e-6。首次40150752383在检查脚本缺CoreGraphics导入时拦截，未归档，修正后完整重跑通过。XCTest图集格式旧假设同步维护并补起停/两外观UV检查，但未运行模拟器/XCTest/UI测试。
+
+root独自亲看实际导入图集两预设八向各13姿势1×/2×整身，共208姿势；追踪四肢链、袖口/裤口/靴底/原手、整体脸部与发际/后颈、衣摆金线、背剑护手/近远。最终正常GIF实际解码176起停帧、64切向帧、100道路控制器采样帧均亲看；查看器静帧，不称连续播放或设备验收。新美术/集成artApproval=null。
+
+[正常八向起停GIF](../Art/Review/P1/modular-demo-v1/demo-eight-way-start-stop-120ms.gif) · [切向GIF](../Art/Review/P1/modular-demo-v1/demo-turn-120ms.gif) · [站姿](../Art/Review/P1/modular-demo-v1/demo-idle-2x.png) · [主线程审核](../Art/Review/P1/modular-demo-v1/art-review.md) · [直接IPA](../Downloads/MeadowJourney-b39.ipa)
+
+IPA23,616,706字节，SHA256 `9d68ac09c8e46c592a4a5fa9f1ddad837c57c06b430506fc34ada2449b5e112d`。外层artifact摘要/CRC、内部CRC/ZIP_STORED/无额外字段或Zip64、iPhoneOS/arm64/15.0/iPhone+iPad、权限、Metal、两外观编译资产、包内hero-gait逐字一致、远端打包摘要通过。来源见 `Media/Build39/package.json`；浏览器直链实际GET以交付回执为准。未运行模拟器或物理设备，实机画面与触控仍由用户反馈。女性、第三件全八向新资源验收、完整骨架标记统一与任意相位制动不在本轮宣称完成。
+
+
+## 2026-10-24 · 八向统一组合、相位与离线切向复核
+
+美术提交 `ecfb101846a50219797b9e7099ce2863bb8ea5b4`；[正常切向GIF直链](https://raw.githubusercontent.com/liamchan-rgb/experiment/ecfb101846a50219797b9e7099ce2863bb8ea5b4/Art/Review/P1/modular-eight-way-v1/turn-comparison-120ms.gif)及两套八向步行/指定起停、站姿共六份HTTPS均HTTP200/MIME/SHA256与本地一致，时序/循环通过；远端9864条资源/源稿/公共依赖字节一致，见 `Art/Review/P1/modular-eight-way-v1/delivery.json`。新整合仍待用户认可。
+
+用户“没问题，继续下一项”认可上一轮实际展示的正右独立外观，范围见 `Art/Review/P1/modular-right-appearance-v1/approval.json`。本轮完成八向离线统一候选：同一个身体ID、一个catalog/motion，九个完整八向包；两上衣、共用裤靴、两头发、两五官、背剑可使用同一选择跨八向装配。三种背向五官透明符合原导板，不记作缺脸。新整合和修订artApproval=null。
+
+root亲自发现并修复：正下裤靴拆入共用包；各向步行循环起点不一致，统一为同物理支撑脚，只旋转原八帧起点、不丢帧/重复/变速；原neck固定父平移注册，保留逐帧头部轻摆，不用定义不同的hip点或alpha边框适配。蓝色长外套四斜向/正上原为短下摆，工具绘制13姿势长摆后独立提取，返修初稿含剑污染，保留原身体/袖子/手脚。右上v6镜像造成换肩，新包复用原v1的右肩→左髋斜背13姿势并修遮挡，旧v6/认可不覆盖。
+
+技术验证：9清单；16逻辑搭配×8方向×13姿势=1664真实装配；832身体层保持、52正下共用裤靴字节相同、64步行相位映射、2048邻向/相位/搭配支撑元数据检查；3328可见原手贡献、4992项无新增>5%底模暴露、832背剑开关、1092未涉修订的整身像素保持。11611旧文件未改，5411文件重导逐字节一致；本轮合同26/装配器21测试通过。
+
+主线程亲看两主搭配八向各13姿势1×/2×整身（208姿势），重点衣摆65姿势、逐侧四肢链/接缝/衣裤边/靴底、整体脸部比例、发际/后颈、背剑护手和近远遮挡；另亲看最终行走GIF各8个实际解码帧、切向GIF全部64实际解码帧，并核指定起停入口/出口。查看器静帧，不称连续播放或设备验收；其余交叉搭配实际装配和区域检查，不称1664张均2×人工逐张查看。
+
+[正常切向GIF](../Art/Review/P1/modular-eight-way-v1/turn-comparison-120ms.gif) · [绿衣八向步行](../Art/Review/P1/modular-eight-way-v1/forester-eight-way-walk-120ms.gif) · [蓝衣八向步行](../Art/Review/P1/modular-eight-way-v1/wayfarer-eight-way-walk-120ms.gif) · [站姿](../Art/Review/P1/modular-eight-way-v1/outfits-idle-2x.png) · [主线程复核](../Art/Review/P1/modular-eight-way-v1/art-review.md)
+
+旧demo八向切换已存在；本轮新统一分层包及指定起停尚未接入demo。下一阶段是新资源接入并保留既有距离相位/方向防抖。指定起停仍沿原walk01/08，entryPhase/exitPhase逐向记录；任意相位停车、完整统一骨架标记重定义、第三件全八向新外观零引擎修改验收仍单列，女性延后。本轮不运行设备或制作IPA。
+
+## 2026-10-24 · 正右独立五官/发型/两衣型/裤靴/背剑
+
+美术提交 `e4dc95a3fa69d7cb84da6c2ede3df5e46715c5fc`；[正常GIF直链](https://raw.githubusercontent.com/liamchan-rgb/experiment/e4dc95a3fa69d7cb84da6c2ede3df5e46715c5fc/Art/Review/P1/modular-right-appearance-v1/outfits-walk-120ms.gif)、指定起停及站姿均HTTP200/MIME/SHA256与本地一致，GIF时序/循环正确；远端1328条资源/源稿/公共依赖字节一致，回执见 `Art/Review/P1/modular-right-appearance-v1/delivery.json`。
+
+用户“没问题，继续下一项”认可上一轮正右中性身体/13姿势的实际展示，范围见 `Art/Review/P1/neutral-right-r1-mirror/approval.json`。本轮沿同一身体/关节/头挂点/步相补正右独立外观：棕发/银发、蓝眼/琥珀眼、绿短衣/蓝长外套、共用裤靴与背剑，共8资源包。新外观待用户认可，不继承中性身体或左向的认可。
+
+root独自制作、修复和审核。原左向外观逐层镜像并转换左右槽位，头部96局部与右向导板对应；五官仍分眼/眉/鼻/口四层，不混入头皮/耳部，身体不替换。两张工具头发色稿提供固定左上光照，原头发轮廓保持；衣物用同一工具材质色阶及同衣型共享中值，裤腿逐侧保持色调，靴子用全13姿势共用锚点保留原鞋面/鞋底明暗。所有原衣物alpha、边界、镶边及墨线保持，RGBA的透明像素清零。背剑按左向侧视投影固定反射，对照柄/护手/鞘尖，不移到身体中轴去避让。
+
+技术检查：9清单、16搭配×13姿势=208实际装配，13裸身体及1664身体层保持，286部件alpha映射、208整身alpha映射通过；1040衣物覆盖贡献检查无>5%漏底，208可见原手保持、104背剑开关、13背剑姿势映射、832五官可见贡献检查通过。覆盖只排除真实领口开口x123..135/y128..137，不把正常颈皮当漏衣；其余全量检查。10967旧部件/模板/图集/导入文件保持，874文件重导逐字节一致；本轮现有合同26、装配器21测试通过。
+
+主线程亲看两衣型×两发型×两五官共8个带剑搭配的全部13姿势整身1×/2×、主展示站姿及正常GIF真实8解码帧，并核起停路径。重点检查整体脸部眉眼鼻口间距/耳颌关系、刘海遮挡、肩肘腕与髋膝踝足、袖口/裤口/靴筒/靴底、近远层次、衣摆运动和背剑位置。空背由实际装配和开关检查覆盖，不声称全部208张逐张2×复核。查看器仅静帧，不称连续播放或实机验收；数字通过不代表用户认可。
+
+[正常全身GIF](../Art/Review/P1/modular-right-appearance-v1/outfits-walk-120ms.gif) · [指定起停](../Art/Review/P1/modular-right-appearance-v1/outfits-start-stop-120ms.gif) · [站姿](../Art/Review/P1/modular-right-appearance-v1/outfits-idle-2x.png) · [主线程复核](../Art/Review/P1/modular-right-appearance-v1/art-review.md)
+
+当前为正右独立外观候选，八向基本资源已有逐方向成果，仍待统一组合、跨方向挂点/相位/起停及切向复核与运行时接入；不能把旧demo已有八向切换说成没做，也不能把当前新分层统一接入说成完成。指定起停仅idle→walk01及walk08→idle，任意相位中断未验收。女性延后，本轮无App/模拟器/设备或IPA。
+
+## 2026-10-24 · 正右统一中性身体/步态/起停分层
+
+美术提交 `451778c0e599735976a9c52c741f57d5eea1a2b1`；[正常GIF直链](https://raw.githubusercontent.com/liamchan-rgb/experiment/451778c0e599735976a9c52c741f57d5eea1a2b1/Art/Review/P1/neutral-right-r1-mirror/walk-120ms.gif)、指定起停/站姿/左右协调四份HTTPS均实测HTTP200/MIME/SHA256一致，GIF时序/循环通过；远端278条资源/消耗源/公共依赖字节一致，回执见 `Art/Review/P1/neutral-right-r1-mirror/delivery.json`。
+
+用户“没问题继续下一项”认可上一轮实际展示的正下自然空手起停，限定范围见其approval.json。当前补正右统一中性身体/动作分层：复用已认可左向r3的13姿势，逐层反射并同时交换左右语义、近远遮挡、关节、支撑标签、脚底及96局部头挂点。旧正右完整人物r1与demo原图保持；旧步态已制作/已认可，不重新记作未制作，也不将旧认可自动扩展到当前新中性稿。
+
+root独自返修与审核。初始空间转色出现暖白衣料误采到皮肤及小腿色块，已拦截保留。仅固定色盘仍继承旧画稿的逐帧深浅差，继续修为：同一工具RGB源提供近/远肤色阶，原肤色中值锚定到共同中间色，同侧整臂/手共用锚点；保留原材质相对阴影边界，所有安全衣裤、墨线和alpha保持。头部固定一张96局部色稿按原反射headToCanvas轻摆，不逐帧生成头。工具原稿新形体/alpha/红色外缘不导入。
+
+技术检查：13实际compositor、104语义层alpha反射、13头局部投影、13左右/关节/支撑/脚底映射、52肢链保持、91固定色盘及26腿部色调检查通过；近/远腿13帧肤色亮度中值各自稳定，保留近远层次。新接缝孔洞0，10808旧部件/模板/图集/导入文件保持；左向认可原图及旧正右strip/正常GIF摘要通过。174文件重导逐字节一致；本轮现有合同26、装配器21测试通过。
+
+主线程亲看全13姿势整身1×/2×，逐侧追踪肩肘腕及髋膝踝足、背心/短裤边界、手型/脚趾、近远遮挡与站姿/首尾/指定起停；同时看实际GIF八个解码帧及左右整身协调图。查看器仅提供静帧，不称连续播放、任意相位起停或设备验收。数值检查只辅助美术判断，新中性稿artApproval=null。
+
+[正常全身步态](../Art/Review/P1/neutral-right-r1-mirror/walk-120ms.gif) · [指定起停](../Art/Review/P1/neutral-right-r1-mirror/start-stop-120ms.gif) · [站姿](../Art/Review/P1/neutral-right-r1-mirror/idle-review-2x.png) · [左右协调](../Art/Review/P1/neutral-right-r1-mirror/walk-comparison-120ms.gif) · [详细审核](../Art/Review/P1/neutral-right-r1-mirror/art-review.md)
+
+本轮先审正右共用中性身体，独立发型/五官/两衣型/裤靴/背剑为下一阶段；空白脸与安全衣裤属于中性底模，不是独立外观成品。全八向统一组合、切向与运行时接入仍待完成；原左向隐藏补片按既有范围保留，不声称完整隐藏人体已验收。女性延后，无App、设备运行或IPA。
+
+## 2026-10-24 · 正下自然空手专用起停及既有资源补同步
+
+美术提交 `6fef130da1e1cfbeb09f8d6fb2f6df5a863b994e`；[正常起停GIF直链](https://raw.githubusercontent.com/liamchan-rgb/experiment/6fef130da1e1cfbeb09f8d6fb2f6df5a863b994e/Art/Review/P1/modular-down-transitions-v1/outfits-start-stop-120ms.gif)、原步态循环和站姿均HTTP200/MIME/SHA256一致，GIF时序正确；远端1012条包/公共依赖字节一致，原缺失560条源路径已补齐，1242份旧资源/审核核对通过，正下此次同步缺口已解决。回执见 `Art/Review/P1/modular-down-transitions-v1/delivery.json`。
+
+用户“没问题，继续下一项”认可上一轮实际展示的正上两套外观，范围见 `Art/Review/P1/modular-up-appearance-v1/approval.json`。按既定顺序，本轮补正下自然空手专用起步/收步：idle→start01→start02→walk01，以及walk08→stop01→stop02→idle。原站姿与八帧循环像素保留，不重画已有衣物或头部。新过渡待用户认可。
+
+root独自制作/修复/审核。四个新姿势沿已保留的正下源图生成，同侧整条自然空手臂、手和袖子共用肩枢轴变换；人体腿、裤腿、靴子共用同一份单调UV场，髋/膝/踝/脚底逐段过渡，不把裤子固定在躯干上，也不混合两张半透明人物。蓝衣两尾片沿原腰下枢轴缓动，背剑随原躯干，不移动剑去躲衣摆。头部沿原挂点，回落过程中同步身体。
+
+审查发现旧motion里的肘/腕挂点仍是握剑时期的记录，与r6自然空手源不符；新motion按实际自然空手源锚点及同一变换修正肩/肘/腕位置。另按可见落地脚修正walk04/08的支撑标签。原motion保留，这些元数据修正不改变原九姿势像素。
+
+技术检查：9清单、36搭配×13姿势=468实际装配，原九姿势324张搭配结果逐像素不变，324项原层绑定文件字节检查保持；3744项身体层保持，1560项穿衣可见贡献检查无>5%漏底，234背剑开关不影响剑alpha之外及不透明头部/五官/手。26臂手链/26腿链、40同侧身体-裤靴UV一致与4新姿势不同于端点通过；10314旧部件/模板/图集/导入文件保持。984个资源/输出文件重导逐字节一致；本轮现有合同26、装配器21测试通过。步行GIF与旧已展示版本逐字节相同。
+
+主线程亲看三发型×两衣型、蓝眼、带剑共6组合的全13姿势整身1×/2×，中性全13姿势、起停整身边界图及实际GIF解码边界帧。逐侧追踪肩肘腕、髋膝踝足，检查袖口/裤口/靴底、手型、衣摆、后背剑柄/鞘尖、眉眼鼻口整体比例和首尾/起停相位。琥珀五官、内衣/空背等其余组合由实际装配及技术检查覆盖，不声称全部468张逐张2×美术审核。查看器只返回静帧，未称连续播放或设备验收。
+
+[正常速度起停GIF](../Art/Review/P1/modular-down-transitions-v1/outfits-start-stop-120ms.gif) · [原步态循环](../Art/Review/P1/modular-down-transitions-v1/outfits-walk-120ms.gif) · [站姿](../Art/Review/P1/modular-down-transitions-v1/outfits-idle-2x.png) · [主线程复核](../Art/Review/P1/modular-down-transitions-v1/art-review.md)
+
+补同步已有正下r6、绿衣覆盖v2、蓝长外套v1、背剑v1、v8/v9及既往审核材料；旧成果只作保留/复用，不把历史审核数字充当本轮新测试。原7分支库存与同步缺口审计保留为历史，本次资源依赖以当前提交及delivery.json回执核验为准。
+
+范围仅指定idle→walk01、walk08→idle，不代表任意步相中断/加减速已完成。正右当前合同分层适配仍是统一八向复核的前置依赖；新分层全八向组合、切向/运行时接入及女性资源未完成。本轮没有App、模拟器/设备或IPA。
+
+## 2026-10-24 · 正上独立头发/两衣型/裤靴/背剑分层
+
+美术提交 `f8381286801cfbf643898ee1c36ddbdcee49e84e`；[正常GIF直链](https://raw.githubusercontent.com/liamchan-rgb/experiment/f8381286801cfbf643898ee1c36ddbdcee49e84e/Art/Review/P1/modular-up-appearance-v1/outfits-walk-120ms.gif)、指定起停及站姿实测HTTP200/MIME/SHA256与本地一致，GIF时序/循环正确；远端564条包/公共依赖存在且字节一致。回执见 `Art/Review/P1/modular-up-appearance-v1/delivery.json`。
+
+用户“没问题”认可上一轮正上中性身体/步态的实际展示，限定范围见 `Art/Review/P1/neutral-up-layered-r1/approval.json`。本轮在同一身体、13姿势、关节/足底/头挂点及120ms步相上新增正后视独立外观：棕/银两配色短发（共用已对齐短发轮廓）、绿衣/蓝衣、裤靴和右肩至左髋斜背剑，六个独立资源包。纯背视不挂五官。新外观待用户认可，不能继承中性动作的认可。
+
+root独自完成返修与审核：修银发冠顶alpha缺口，采用同一工具绘制短发轮廓及独立银发RGB登记；保留耳根/后颈正常露肤。发现右臂后摆时袖子遮断剑护手，保持剑的位置/斜角，只将weapon.back放在两袖与衣服之后、头发之前，全部姿势的剑柄/护手连续。裤口/裤脚分别沿原腿UV，靴面滚动RGB跟随原footArtState；蓝衣背衩下使用灰裤腰，遮住原白背心/短裤。
+
+已亲看四个带剑组合全13姿势整身1×/2×、站姿及实际正常GIF八个解码帧，逐侧检查肩肘腕、髋膝踝足、衣袖/裤口/靴底、头发/颈部与剑的遮挡和首尾/起停帧序。查看器仅提供静帧，未称连续播放或设备验收。技术验证：7清单、8组合104实际装配、13原身体不变、832身体层保持、624衣物覆盖、208手部保持、104冠顶覆盖、52背剑开关及52护手可见；15855旧文件保持，461文件重导逐字节一致；现有合同26/装配器21测试通过。
+
+[正常行走](../Art/Review/P1/modular-up-appearance-v1/outfits-walk-120ms.gif) · [指定起停](../Art/Review/P1/modular-up-appearance-v1/outfits-start-stop-120ms.gif) · [站姿](../Art/Review/P1/modular-up-appearance-v1/outfits-idle-2x.png) · [主线程复核](../Art/Review/P1/modular-up-appearance-v1/art-review.md)
+
+正下r6/v9已有成果同步缺口、自然空手专用起停、正右当前合同分层适配及新分层八向统一组合/切向接入仍未完成。后续按用户顺序推进，女性角色延后；本轮无App、设备运行或IPA。
+
+## 2026-10-24 · 按用户表格首项，补正上中性步态分层
+
+美术提交 `d09826aa8b84855874672a807a266ab6262d8954`；[正常GIF直链](https://raw.githubusercontent.com/liamchan-rgb/experiment/d09826aa8b84855874672a807a266ab6262d8954/Art/Review/P1/neutral-up-layered-r1/walk-120ms.gif)、指定起停及站姿实测HTTP200/MIME/SHA256与本地一致，GIF时序/循环正确；远端253条包依赖存在，asset/motion字节一致，回执见 `Art/Review/P1/neutral-up-layered-r1/delivery.json`。
+
+用户明确按表格先后“第一补齐正向步态的分层”，结合上一答首项正上执行，覆盖此前正右优先/先处理正下同步的排程；同步漏项仍保留。本轮root独自沿旧正上背视角/左右语义/支撑相位制作当前统一规格中性身体分层，旧认可完整图集不改；新中性稿及投影运动单独待审，不声称逐像素复用旧衣物整人图。13姿势含站姿、8步态、指定2起步+2收步，8合同层共104张，91源UV与ORA/SVG/关节/头局部/足底留存。
+
+主线程修源衣边归属、初稿脚面固定、髋点偏低导致裤口跟随太弱；采用两张足面工具源的脚部RGB及原alpha/挂点，校回骨盆内髋点与膝踝跟随。亲看全13姿势整身1×/2×、站姿、首尾/起停及GIF实际8解码帧，无新游离边/肩腕髋孔洞。查看器仅静帧，不称连续播放器或设备验收。
+
+13真实compositor/104层、26臂手、13头局部、52膝踝材质点、接缝洞0、站姿RGBA重组差异0通过；8步相有7种裤子栅格，15478旧文件保持，371文件重导逐字节一致。公共装配器/合同/profile不改，8个远端公共依赖已核对字节一致；现有合同26/装配器21测试通过。新外观认可为空，独立正后视发型/衣物/裤靴/背剑尚待，没有App/设备/IPA。
+
+[正常行走](../Art/Review/P1/neutral-up-layered-r1/walk-120ms.gif) · [指定起停](../Art/Review/P1/neutral-up-layered-r1/start-stop-120ms.gif) · [站姿](../Art/Review/P1/neutral-up-layered-r1/idle-review-2x.png) · [主线程复核](../Art/Review/P1/neutral-up-layered-r1/art-review.md)。HTTPS实测回执见审核目录。
+
+## 2026-10-24 · 复核剩余项目，发现正下成果同步遗漏
+
+用户追问“其他的未完成项目是真的没做过吗”。已直接核对远端正上认可strip/GIF摘要、当前demo正上行、清单、既有组合审核与八向运行代码：正上旧步态确实已认可/导入；换装已做多轮逐方向实际装配；旧demo八向切换、防抖、距离相位和道路离线复核均已有，不能列作全新未制作。
+
+明确缺口：当前正右/正上完整统一分层包、正下自然空手walk-start/walk-stop专用帧、新分层八向统一组合/切方向记录及完整运行接入。工作区旧grip-transition仅修握手/臂像素，仍只有idle/walk，不是起停。
+
+另外查出同步遗漏：正下自然空手r6、v9第二衣型模板和36组合324姿势audit在工作区存在，7个远端分支tree均无对应文件；当前v9 catalog依赖的r6身体、forester-cover-v2、背剑、wayfarer-coat四个清单远端缺失。须作为“已做未同步”单列，不能误报成未制作或已完整在GitHub。逐方向既有组合证据：下36/324在工作区；左72/936、上斜双向16/208、左下和右下各16/208在远端。此项记录缺口，没有批量同步未经复核的旧本地素材。
+
+完整证据及7分支库存见 `docs/P1_DIRECTION_MODULE_AUDIT.json`，已更新路线、AGENTS和总review记录。只检查旧数据/代码及更正文档，无人物美术、App/IPA/设备改动，也未把旧技术验证记成重新测试或完整用户认可。后续先复用既有成果和处理同步依赖，再补实际空缺。
+
+## 2026-10-24 · 核查正右既有成果，更正“没做过”的表述
+
+用户提醒“检查一下仓库，我记得正右好像做过”。检查远端7个分支树（均未截断）、当前美术分支完整资源清单、历史审核及demo导入记录后确认：正右r1已有一张站姿和八张步态，2026-10-18由用户认可，2026-10-21导入demo。远端正右strip和正常GIF均与approval.json摘要相符，GIF8×120ms；当前远端Hero1Directions图集第4行与该认可strip逐像素相同。证据：`Art/Review/P1/directions/right/revisions/r1/approval.json`、该目录README、`Art/Integration/P1-approved-gait-v1/integration.json`。
+
+当前没有`Art/Templates/P1-Neutral/right/`及同合同右向Parts/Wardrobe包；另有战斗侧视待机、隐藏层与单步姿势研究，它们说明右向分层做过部分探索，不构成13姿势统一行走模块。正确缺口是“复用已有成果补齐当前分层/挂载/起停适配”，不是“正右走路从未制作”。正上旧r1步态同样已有认可。已更正八向进度表及AGENTS，避免重复重画已认可动作。
+
+用户此前“可以，我们的走路动作模组是不是做完了”同时认可右下实际展示两组合，已增加限定范围approval.json；未扩展到未展示组合、其他方向及运行时。本轮只核查并更新记录，不修改人物PNG/GIF、动作代码、App或IPA；无需新美术测试。
+
+## 2026-10-24 · 右下独立头部/两衣型/裤靴/背剑v1
+
+美术提交 `ccc65c7035412bf1c7d15b69e29573258ab4f985`；[正常GIF直链](https://raw.githubusercontent.com/liamchan-rgb/experiment/ccc65c7035412bf1c7d15b69e29573258ab4f985/Art/Review/P1/modular-down-right-appearance-v1/outfits-walk-120ms.gif)、起停和站姿均实测HTTP200/MIME/SHA256与本地一致，GIF时序/循环通过；593文件重导逐字节一致。完整HTTPS回执见 `Art/Review/P1/modular-down-right-appearance-v1/delivery.json`。
+
+用户“没问题下一步工作开始”认可上一轮实际展示的左下整身两组，新增限定范围approval.json；未把未展示交叉组合及其他方向自动认可。本轮root独自补右下8个独立资源，沿原右下r1身体/13姿势，16组合208图。镜像同时转换左右语义/头部局部/近远层序；头发和服装通过完整固定画布RGB参考校正左上光源，原alpha/形体/手/五官不变。背剑单独校正同一右肩斜背投影，修掉部分步态腿边鞘尖细线，保留试稿；不裁剑、不逐帧擦像素、不竖到脊柱。
+
+已亲看8种带剑组合全13帧整身1×/2×、主要站姿和实际正常GIF全部8解码帧，追踪肢链/袖裤/靴底/首尾与起停；工具只能静帧，不宣称连续播放器或设备验收。9清单、208实际装配、1664身体层、2496外观反射alpha、1248覆盖/416手/624五官/104武器切换检查通过，14876旧文件保持，合同26/装配器21既有测试通过。公共装配器/合同未改，仅新增右下头导板。新右下外观认可为空，无App/设备/IPA。
+
+[正常全身GIF](../Art/Review/P1/modular-down-right-appearance-v1/outfits-walk-120ms.gif) · [正常起停](../Art/Review/P1/modular-down-right-appearance-v1/outfits-start-stop-120ms.gif) · [站姿](../Art/Review/P1/modular-down-right-appearance-v1/outfits-idle-2x.png) · [主线程复核](../Art/Review/P1/modular-down-right-appearance-v1/art-review.md)。重导和HTTPS回执见审核目录。下一项正右，再正上/正下自然空手起停/八向统一复核，女性延后。
+
+## 2026-10-24 · 先完成八方向；左下衣物/裤靴/背剑v1
+
+美术提交 `f4dfa7e2564500d46d65e966b4be4c25d6ee887f`；[正常行走HTTPS](https://raw.githubusercontent.com/liamchan-rgb/experiment/f4dfa7e2564500d46d65e966b4be4c25d6ee887f/Art/Review/P1/modular-down-left-wardrobe-v1/outfits-walk-120ms.gif)、正常起停及站姿三份文件已实测HTTP200、MIME/哈希及GIF时序一致，回执见 `Art/Review/P1/modular-down-left-wardrobe-v1/delivery.json`。641份文件重导逐字节一致。
+
+用户明确先完成各方向模组，女性角色延后。真实分层八向现状与剩余顺序已记录 `docs/P1_DIRECTION_MODULES.md`：左下当前外观→右下外观→正右→正上→正下自然空手起停→八向统一复核。旧整张八向步态不算新模组完成。
+
+本轮root独自补左下绿短上衣、蓝分叉短外套、共用灰裤低靴、背剑四包，复用原头部四包、身体和13姿势，16搭配208图。首稿躯干比例失准已退回重画；背剑前视投影修掉下巴旁/腿边细线，保留同一右肩斜背与真实遮挡。衣物使用共同源UV和原人体matte，不缩放肢体、不改身体/动作、公共装配器/合同/profile保持。
+
+主线程查看主要两组全部13帧整身1×/2×、配对站姿、首尾/起停与挂点遮挡。9清单通过、208图真实装配匹配，1248覆盖/416手部/624五官/104背剑开关检查通过，8044旧文件保持。新外观无用户认可，工具只能逐帧，不称连续播放器验收，无App/设备/IPA工作。
+
+[正常行走](../Art/Review/P1/modular-down-left-wardrobe-v1/outfits-walk-120ms.gif)、[起停](../Art/Review/P1/modular-down-left-wardrobe-v1/outfits-start-stop-120ms.gif)、[站姿](../Art/Review/P1/modular-down-left-wardrobe-v1/outfits-idle-2x.png)、[具体复核](../Art/Review/P1/modular-down-left-wardrobe-v1/art-review.md)。重导与HTTPS发布回执见审核目录。
+
+## 2026-10-24 · 左下独立头部外观 v1
+
+美术提交 `c3359210e38d0c530fecfc12d5e55bb8f4ae2459`；[正常行走HTTPS](https://raw.githubusercontent.com/liamchan-rgb/experiment/c3359210e38d0c530fecfc12d5e55bb8f4ae2459/Art/Review/P1/modular-down-left-heads-v1/walk-comparison-120ms.gif)、正常起停及站姿三份文件已实测HTTP200、MIME/哈希及GIF时序一致，回执见 `Art/Review/P1/modular-down-left-heads-v1/delivery.json`。135份文件重导逐字节一致。
+
+用户“没问题开始做下一步”，认可前次已展示右下中性站姿/正常行走/指定起停，认可单独记录在 `Art/Review/P1/neutral-down-right-r1-mirror/approval.json`。本轮先补左下独立头部：棕/银两发型、蓝/琥珀两五官，四组合×13姿势=52张。原中性身体/动作不变，新外观未获用户认可。
+
+主线程独自制作及修复：眉眼鼻嘴分层并校准纵向间距，修掉细嘴线漏采；棕发刘海单独重画以清远眼角，未改中性头皮/耳颈或身体。全部外观沿同一96px头部矩阵随步，四包只提供头发/五官。profile只增加左下头部导板数据，旧字段保持；公共装配器/合同无代码修改，未加外观ID分支。
+
+主线程查看四组合全部52帧完整1×/2×、同屏站姿、首尾/起停与交叉搭配。52张公共装配匹配，416次中性层比较不变，13张空外观与原RGBA一致；156次眼鼻嘴完整显示，7132份旧文件保持。合同26项、装配21项通过，重导报告及HTTPS发布回执见审核目录。工具只能逐帧，不称连续播放验收；无App/设备/IPA工作。
+
+[正常行走](../Art/Review/P1/modular-down-left-heads-v1/walk-comparison-120ms.gif)、[正常起停](../Art/Review/P1/modular-down-left-heads-v1/start-stop-comparison-120ms.gif)、[整身站姿](../Art/Review/P1/modular-down-left-heads-v1/idle-comparison-2x.png)、[具体复核](../Art/Review/P1/modular-down-left-heads-v1/art-review.md)。衣物与背剑随后独立制作审核。
+
+## 2026-10-24 · 右下r1镜像动作模组
+
+美术提交 `a950fb0b635bf6c1312572942702a699a07983eb`；[正常行走HTTPS](https://raw.githubusercontent.com/liamchan-rgb/experiment/a950fb0b635bf6c1312572942702a699a07983eb/Art/Review/P1/neutral-down-right-r1-mirror/walk-120ms.gif)、正常起停及站姿三份文件已实测HTTP200、MIME/哈希及GIF时序一致，回执见 `Art/Review/P1/neutral-down-right-r1-mirror/delivery.json`。386份文件重导逐字节一致。
+
+用户“没问题，可以试一下镜像来做右下的动画”，认可左下已展示站姿、正常步态和指定起停；认可记录见 `Art/Review/P1/neutral-down-left-r1/approval.json`，不扩大到外观或任意动作中断。
+
+主线程独自将左下13姿势逐层反射，交换左右语义、关节、脚底、支撑、近远层级及96px头部局部坐标；源人体和动作保持，右下104层alpha精确等于左下反射。单张imagegen参考仅提供固定左上光照颜色，通过源UV绑定复用所有动作。修掉首轮肤色/衣料取色混杂、背心碎色及两帧头部仿射取整差异；后者离线采样相位登记最大0.0015px，实际头部UV/轮廓保持反射。
+
+主线程查看全部13姿势完整1×/2×、左右站姿和首尾/起停帧序；13张实际公共装配匹配、104层alpha镜像、13次头部局部RGBA匹配、26整臂分区一致，近手全保留，关节缺口0，8张裤片独立运动、13帧头顶高光左上。6019份旧文件保持；公共装配器/合同/profile不改。新右下无用户美术认可，工具只能逐帧，不称连续播放器验收，无App/设备/IPA工作。
+
+[正常行走](../Art/Review/P1/neutral-down-right-r1-mirror/walk-120ms.gif)、[起停](../Art/Review/P1/neutral-down-right-r1-mirror/start-stop-120ms.gif)、[站姿](../Art/Review/P1/neutral-down-right-r1-mirror/idle-review-2x.png)、[具体复核](../Art/Review/P1/neutral-down-right-r1-mirror/art-review.md)。重导及HTTPS回执见审核目录。
+
+## 2026-10-24 · 左下中性动作模组 r1
+
+美术提交 `2b4f0e83185896c36a4377f4c2ca7dccfef74d76`；[正常行走HTTPS](https://raw.githubusercontent.com/liamchan-rgb/experiment/2b4f0e83185896c36a4377f4c2ca7dccfef74d76/Art/Review/P1/neutral-down-left-r1/walk-120ms.gif)、正常起停及站姿三份文件已实测HTTP200、MIME/哈希及GIF时序一致，回执见 `Art/Review/P1/neutral-down-left-r1/delivery.json`。265份文件重导逐字节一致。
+
+用户“Ok开始左下方动作模组的制作”，认可上一项已展示的上斜v6并授权新方向；认可不扩大到未展示组合或完整模板。主线程独自制作左下正面斜向中性底模，站姿1、行走8、起步2、收步2，均可按共同合同装配。新左下美术认可为空。
+
+固定登记单张新源，明确近侧左肢（屏右）与远侧右肢；修掉裤边混入臂层、近脚像素混入远脚层及腿根一像素小孔，膝部改按本方向原姿态投影；背心/短裤/四肢共用肩腰裤口空间域，保留轻微头摆。原中性/上斜/旧左下6052份文件不变，公共装配器/合同/profile不变。
+
+主线程复核全13姿势整身1×/2×、首尾与起停帧序。13张实际装配匹配、104语义层无游离块、26臂手重组一致、关节透明缺口0、近手无削切、8张裤片各自运动。正常行走8×120ms，正常起停22帧，重导/回执见审核目录。工具只能逐帧，不称连续播放器验收；仅美术，无App/设备/IPA工作。
+
+[正常行走](../Art/Review/P1/neutral-down-left-r1/walk-120ms.gif)、[正常起停](../Art/Review/P1/neutral-down-left-r1/start-stop-120ms.gif)、[站姿](../Art/Review/P1/neutral-down-left-r1/idle-review-2x.png)、[具体复核](../Art/Review/P1/neutral-down-left-r1/art-review.md)。
+
+## 2026-10-24 · 上斜v6：撤销中轴竖背，匹配左上斜背
+
+美术提交 `2e92d5c562172cd42853946f9bbdac23e257b6a2`；[正常行走HTTPS直链](https://raw.githubusercontent.com/liamchan-rgb/experiment/2e92d5c562172cd42853946f9bbdac23e257b6a2/Art/Review/P1/modular-upper-wardrobe-v6/outfits-walk-120ms.gif)、正常起停及站姿三份文件已实测HTTP200、MIME/哈希一致，正常GIF帧速正确，回执见 `Art/Review/P1/modular-upper-wardrobe-v6/delivery.json`。372份文件重导逐字节一致，2312份原中性及旧换装文件保持。
+
+用户明确判退v5，要求右上剑的位置与左上动作吻合。主线程承认此前为零交集而破坏背负一致性，v5完整保留。v6右上13姿势严格镜像左上剑参考，无额外位移/旋转/缩放，保留斜角、长度、柄/护手/鞘尖和随身动作。近侧肩袖不截断剑鞘，远肩相叠沿用左上对应关系。
+
+主线程复核左右同屏站姿和右上两衣型全部13姿势整身1×/2×、首尾/起停与交叉发色。16搭配208图通过，13张右上武器层与左上镜像像素一致；左上、空背和非武器画面保持。新美术未获用户认可，工具只能逐帧，不称连续播放验收。
+
+[正常行走](../Art/Review/P1/modular-upper-wardrobe-v6/outfits-walk-120ms.gif)、[起停](../Art/Review/P1/modular-upper-wardrobe-v6/outfits-start-stop-120ms.gif)、[站姿](../Art/Review/P1/modular-upper-wardrobe-v6/outfits-idle-2x.png)、[具体复核](../Art/Review/P1/modular-upper-wardrobe-v6/art-review.md)。原资源保留，无App/设备/IPA工作。
+
+## 2026-10-24 · 上斜v5：右上背剑避让肩袖
+
+美术提交 `9899cac518a27d4e22f83deafe0cda2c4cbb6d2a`；[正常行走HTTPS直链](https://raw.githubusercontent.com/liamchan-rgb/experiment/9899cac518a27d4e22f83deafe0cda2c4cbb6d2a/Art/Review/P1/modular-upper-wardrobe-v5/outfits-walk-120ms.gif)、正常起停及站姿三份文件已实测HTTP200、MIME/哈希一致，正常GIF帧速正确，回执见 `Art/Review/P1/modular-upper-wardrobe-v5/delivery.json`。372份文件重导逐字节一致，2225份原中性及旧换装文件保持。
+
+用户指出右上动作剑穿模。主线程分层确认原挂载中段与近侧肩袖投影重叠，摆臂造成剑鞘断口，原内部美术通过撤回。另存背剑v5：右上以躯干局部固定旋转/偏移重新登记，并排除原后颈遮挡区；剑柄由头部正常遮住，剑鞘保持在背部。左上和空背搭配不变，后颈肤色/裤靴/人体/动作保持。
+
+右上两衣型全部13姿势整身1×/2×、起停/首尾与换发站姿由主线程复核。16组合208图检查通过；右上武器与双袖无交集，露出剑鞘连续；改动只在武器范围，全部左上/空背组合与v4像素一致。工具只能逐帧，不称连续播放器验收，新美术未获认可。
+
+[正常行走GIF](../Art/Review/P1/modular-upper-wardrobe-v5/outfits-walk-120ms.gif)、[起停GIF](../Art/Review/P1/modular-upper-wardrobe-v5/outfits-start-stop-120ms.gif)、[站姿](../Art/Review/P1/modular-upper-wardrobe-v5/outfits-idle-2x.png)、[具体复核](../Art/Review/P1/modular-upper-wardrobe-v5/art-review.md)。原资源保留，无App/设备/IPA工作。
+
+## 2026-10-24 · 上斜v4：后颈连续肤色与边缘过渡
+
+美术提交 `8a5a44025fe282ebcb01e8d377784b3d7bb3bb9c`；[正常行走HTTPS直链](https://raw.githubusercontent.com/liamchan-rgb/experiment/8a5a44025fe282ebcb01e8d377784b3d7bb3bb9c/Art/Review/P1/modular-upper-wardrobe-v4/outfits-walk-120ms.gif)、正常起停及站姿三份文件已实测HTTP200、MIME/哈希一致，正常GIF帧速正确，回执见 `Art/Review/P1/modular-upper-wardrobe-v4/delivery.json`。592份文件重导逐字节一致，1920份原中性及旧换装文件保持。
+
+用户指出v3后颈色块不均匀。主线程确认离散暗像素被较亮补色替换，缺乏与周围阴影的融合，撤回v3内部美术通过。另存v4，以连续绘制颈部肤色场处理整个交界，源边缘采用2px合成过渡，原alpha/头形/动作和六个外观包保持。
+
+最终两方向两衣型全部13姿势整身1×/2×和新旧颈部帧序复核；孤立亮点与硬补丁边界已不明显。16组合208姿势检查通过，后颈影响区外与v2像素一致，无漏底/新增可见游离块。工具只能逐帧，不称连续播放器验收；新修订未获用户认可。原v3和更早资源保留。
+
+[正常行走](../Art/Review/P1/modular-upper-wardrobe-v4/outfits-walk-120ms.gif)、[起停](../Art/Review/P1/modular-upper-wardrobe-v4/outfits-start-stop-120ms.gif)、[整身站姿](../Art/Review/P1/modular-upper-wardrobe-v4/outfits-idle-2x.png)、[具体检查](../Art/Review/P1/modular-upper-wardrobe-v4/art-review.md)。无App/设备/IPA工作。
+
+## 2026-10-24 · 上斜v3后颈接缝黑线修正
+
+美术提交 `eededb5c11a548cf9f0aad856782ba8e2b8b9b08`；[正常行走HTTPS直链](https://raw.githubusercontent.com/liamchan-rgb/experiment/eededb5c11a548cf9f0aad856782ba8e2b8b9b08/Art/Review/P1/modular-upper-wardrobe-v3/outfits-walk-120ms.gif)、正常起停及站姿三份文件已实测HTTP200、MIME/哈希一致，正常GIF帧速正确，回执见 `Art/Review/P1/modular-upper-wardrobe-v3/delivery.json`。595份文件重导逐字节一致，1613份原中性及旧换装文件保持。
+
+用户指出后颈黑线并要求继续。主线程定位为头部下缘与颈部底图的近黑切线重叠，上轮漏检，撤回v2内部美术通过并保留原稿。现单独登记共同底模r7，仅调整左上头4/颈10、右上头4/颈9枚源像素颜色，暖肤色阴影衔接；头部仍沿原矩阵轻微摆动，躯干补丁仍沿原共同场，未用发片遮盖或固定帧贴片。
+
+两方向两衣型13姿势最终整身1×/2×、后颈旧新序列与交叉发色站姿由主线程复核；16组合208图与v2相比仅后颈源补丁影响区变化，原alpha/轮廓/关节/支撑脚/脚底/时序保持，六个外观包保持。覆盖/手掌/背剑检查通过，合同26项、装配21项通过。当前工具只能逐帧，不称连续播放器验收；新修订无用户认可。
+
+[正常行走GIF](../Art/Review/P1/modular-upper-wardrobe-v3/outfits-walk-120ms.gif)、[指定起停GIF](../Art/Review/P1/modular-upper-wardrobe-v3/outfits-start-stop-120ms.gif)、[站姿](../Art/Review/P1/modular-upper-wardrobe-v3/outfits-idle-2x.png)、[具体复核与范围](../Art/Review/P1/modular-upper-wardrobe-v3/art-review.md)。无App/设备/IPA工作。
+
+## 2026-10-24 · 上斜裤靴 v2：重做低靴与腿部比例
+
+美术提交 `04ce1ac1ef23f06fe34c96c3c63ef5ce770c3418`；[正常行走HTTPS直链](https://raw.githubusercontent.com/liamchan-rgb/experiment/04ce1ac1ef23f06fe34c96c3c63ef5ce770c3418/Art/Review/P1/modular-upper-wardrobe-v2/outfits-walk-120ms.gif)、正常起停及站姿三份文件已实测HTTP200、MIME/哈希一致，正常GIF帧速正确，回执见 `Art/Review/P1/modular-upper-wardrobe-v2/delivery.json`。479份文件重导逐字节一致，1421份原中性及旧换装文件保持。
+
+用户要求“那你开始改”。主线程独自重画裤靴、修复并检查，未使用智能体。弃用横宽/纵压腿片适配，按原腿/骨盆几何登记衣物轮廓，加1px衣料厚度；保留原人体与动作。重画膝褶和小腿收束，靴层起点195→202、源宽31–35px→25px，原鞋底近远高度保持，远侧颜色更暗。源稿位移失准、边缘漏底及出血稿鞋底被裁等中间问题由主线程退回，保留中间稿；最终补齐腰侧三枚底模边缘。
+
+最终两方向×两衣型全部13姿势整身1×/2×、首尾与指定起停逐帧复核，16组合208实际装配检查无漏底/可见游离块；原可见手掌416次保持，背剑104次切换通过；26张原中性渲染像素一致，合同26项、装配21项通过。技术检查不能代表用户美术认可；当前查看器不能连续播放，不写作播放器验收。
+
+[正常行走GIF](../Art/Review/P1/modular-upper-wardrobe-v2/outfits-walk-120ms.gif)、[正常起停GIF](../Art/Review/P1/modular-upper-wardrobe-v2/outfits-start-stop-120ms.gif)、[整身站姿](../Art/Review/P1/modular-upper-wardrobe-v2/outfits-idle-2x.png)、[具体修复/范围](../Art/Review/P1/modular-upper-wardrobe-v2/art-review.md)。原问题版和内部通过撤回记录保留，新v2尚待用户评价。无App/设备/IPA工作。
+
+## 2026-10-24 · 上斜外观腿部复查，撤回内部美术通过
+
+用户指出腿部观感异常，要求说明原因。主线程重新查看整身全部姿势及裤靴源：靴筒粗高、膝踝轮廓被吞、鞋面透视偏侧面、近远腿层次不足；源片横向加宽/纵向压缩适配虽然避免漏底，却破坏服装比例与关节可读性。覆盖/重导检查不能代表腿型成立。撤回上一轮内部美术通过，新外观从未获用户认可；[具体复查](../Art/Review/P1/modular-upper-wardrobe-v1/leg-reinspection-2026-10-24.md)。本轮只诊断，无图片/动作/运行资源修改。
+
+## 2026-10-23 · 左上/右上独立外观 v1
+
+美术提交 `719789d83e61466fafd19cdb9c01294001235807`；[正常行走HTTPS直链](https://raw.githubusercontent.com/liamchan-rgb/experiment/719789d83e61466fafd19cdb9c01294001235807/Art/Review/P1/modular-upper-wardrobe-v1/outfits-walk-120ms.gif)、正常起停及站姿三份文件已实测HTTP200、MIME/哈希一致，正常GIF帧速正确，回执见 `Art/Review/P1/modular-upper-wardrobe-v1/delivery.json`。1110份文件重导逐字节一致，600份原中性模板文件保持。
+
+用户要求开始下一项并继续工作。主线程独自制作与修复六个独立资源包：绿短上衣、蓝分叉外套、共用裤靴、棕发、银发、背剑；原认可r6人体/动作保持。修掉首稿串入另一条腿的黑边、隐藏裤片不足、袖口/肩覆盖不足、衣物削手及右上剑柄遮挡，原判退首稿保留。
+
+两方向×两衣型全部13姿势整身1×/2×及交叉发色已由主线程查看；查看器只能逐帧，未宣称连续播放验收。16组合实际208姿势，1040次覆盖/416次手掌保持/104次背剑开关检查通过；26张无外观原底模渲染逐像素不变。合同26项、装配21项通过，重导及600份原模板保持记录见候选目录。新外观美术认可为空。
+
+[正常行走GIF](../Art/Review/P1/modular-upper-wardrobe-v1/outfits-walk-120ms.gif)、[指定起停GIF](../Art/Review/P1/modular-upper-wardrobe-v1/outfits-start-stop-120ms.gif)、[整身站姿](../Art/Review/P1/modular-upper-wardrobe-v1/outfits-idle-2x.png)、[具体检查与限制](../Art/Review/P1/modular-upper-wardrobe-v1/art-review.md)。行走8×120ms，起停首末480ms、其余120ms；没有App/设备测试或IPA。
+
+## 2026-10-23 · 上斜起停展示获准继续，开始独立外观挂载
+
+用户回复“开始下一项”。记录对已展示左右上斜整身/正常步行及指定起停路径的认可并绑定交付哈希，不扩大到任意步相中断、隐藏解剖或新衣物。本轮由主线程独自制作、修复与审核上斜独立衣物、发型和背负装备；同一人体/步态保留，逐帧检查衣物覆盖、手脚边界、镜像语义与光照，再交付正常速度GIF和HTTPS直链。无App/实机/IPA范围。
+
+
+## 2026-10-23 · 左上／右上r6指定起停过渡
+
+美术提交 `53e3a9b2077a1f218c21ecc1ac7f2d849a31b536` 已发布；[正常同屏起停GIF直链](https://raw.githubusercontent.com/liamchan-rgb/experiment/53e3a9b2077a1f218c21ecc1ac7f2d849a31b536/Art/Review/P1/neutral-upper-transitions-r6/start-stop-120ms.gif)、原行走GIF、站姿及两个方向单独起停GIF共五份交付实测HTTP200、MIME/哈希/时序一致，见 `Art/Review/P1/neutral-upper-transitions-r6/delivery.json`。
+
+用户认可右上r5并要求继续下一步。按此前向左的推进顺序，主线程独自补上斜起停过渡，未使用智能体。原两方向18张认可站姿/步行帧及144张分层逐字节保留，每方向新增两起步与两停步姿势；共同肩/腰/裤口域继续耦合，右上同步镜像左右语义/支撑足/头部局部挂点，复用原固定光照源。
+
+初版收步发现两脚同时悬空，主线程修正为先落脚承重再收回另一脚，末帧双足着地；起步后侧支撑足也按地面锚点校正。整身1×/2×全部26姿势及起停边界序列已亲自检查，未见新增肩髋孔隙、游离边线或近侧手裁切；当前查看器不能连续播放，不写作连续播放器验收。新起停用户认可为空。
+
+26帧公共装配逐像素一致、208语义层无孤立块，肩髋参考区新增透明洞0；右上13次头部局部挂载/左右语义与固定光源核对通过。起步相邻关节最大位移约2.99px（原直接切换7.33px），停步约3.19px（原8.52px）。600份文件两轮重导一致，原432份认可模板文件保持一致，6份GIF重导一致；合同26项、装配21项通过。
+
+[左右同屏正常起停GIF](../Art/Review/P1/neutral-upper-transitions-r6/start-stop-120ms.gif)为22帧：首末站姿各480ms，其余20帧各120ms；[原正常行走](../Art/Review/P1/neutral-upper-transitions-r6/walk-120ms.gif)仍8×120ms。[整身站姿](../Art/Review/P1/neutral-upper-transitions-r6/idle-review-2x.png)、[主线程检查](../Art/Review/P1/neutral-upper-transitions-r6/art-review.md)。HTTPS直链已实测并记录交付回执。
+
+此项只覆盖idle00接walk01、walk08收至idle00，不扩大为任意步相中断、完整隐藏人体或全外观组合。下一项继续两个上斜方向独立衣物/头部资源与背负装备。未改App运行资源、未运行模拟器或设备、未打包IPA。
+
+
+## 2026-10-23 · 右上r5展示获认可，继续上斜起停过渡
+
+用户表示“没问题，开始下一步”。已记录对右上r5镜像版整身站姿和正常步态的限定认可，绑定原美术提交及展示哈希；原左上认可不变。下一项按此前向左的顺序补两个上斜方向的指定起步/停步过渡，再进行独立衣物挂载。保留原18张认可画面，右上沿用同步语义镜像与固定光照，主线程独自制作、逐帧审核并交付正常速度动图。新起停尚未获得认可，不扩大为任意步相急停、完整隐藏解剖或App/设备测试。
+
+
+## 2026-10-23 · 右上r5镜像试版：复用认可左上步态，校正固定光照
+
+美术提交 `a200c25458a200459b8efbb2b7de9e0c70a6710d` 已发布；[正常动图直链](https://raw.githubusercontent.com/liamchan-rgb/experiment/a200c25458a200459b8efbb2b7de9e0c70a6710d/Art/Review/P1/neutral-up-right-r5-mirror/walk-120ms.gif)与站姿均实测HTTP200、MIME/哈希一致，GIF八帧各120ms无限循环。交付回执见 `Art/Review/P1/neutral-up-right-r5-mirror/delivery.json`。
+
+用户明确要求开始用镜像方式制作右上。主线程独自制作、修复及审核，未使用智能体。以已认可左上r5为源，逐层镜像并交换左右语义、关节、脚底标记、支撑脚、近远遮挡和头部96px局部挂点；原八帧/120ms时序、裤子跟随、接缝处理和近侧手遮挡均保留。左上认可画面和源清单哈希未改变，旧右上r4判退稿保留。
+
+直接翻图会反转头顶高光。本轮用imagegen提供一份左上方照明参考，主线程固定注册并将颜色绑定到同一源像素坐标，所有动作帧复用；原描边与所有alpha/轮廓保持认可版镜像，不采用参考图的形体或边缘。没有逐帧重新生成人物，也没有运行时拟合/重着色或外观ID分支。
+
+主线程亲自看最终1×/2×整身全部九姿势及01→08→01首尾序列，未发现新增拼接洞、游离边线或近侧手被衣物裁切；光照已回到左上。查看器仅显示GIF静帧，未声称实际观看连续播放器；右上用户美术认可仍为空。
+
+公共装配九帧逐像素一致，72层alpha精确等于认可左上各层反射；九次头部局部RGBA挂载一致，关节/支撑脚/层级转换通过，肩髋源参考区新增透明洞0，18次整臂/手分区组合一致，近侧手九帧完整。短裤八帧均独立变化，头顶高光九帧保持左上；256份源/输出重导逐字节相同，契约26项、装配21项通过。
+
+[正常8×120ms动图](../Art/Review/P1/neutral-up-right-r5-mirror/walk-120ms.gif)、[整身站姿](../Art/Review/P1/neutral-up-right-r5-mirror/idle-review-2x.png)、[主线程检查](../Art/Review/P1/neutral-up-right-r5-mirror/art-review.md)、[技术验证](../Art/Review/P1/neutral-up-right-r5-mirror/validation.json)。本次不扩大到非对称发型/衣物/背剑、完整隐藏人体、起停或App/设备/IPA。HTTPS直链已验证并记录回执。
+
+
+## 2026-10-23 · 用户认可左上r5展示，讨论右上镜像复用
+
+用户表示“可以的，我在想右上的动作可以基于这个来镜像吗”。已记录对交付左上r5整身站姿和正常步态动图的认可，绑定原美术提交及两份展示文件的SHA-256，见 `Art/Review/P1/neutral-up-left-r5/approval.json`。认可范围不扩大到完整隐藏人体、其他外观、起停、右上或App/设备；主线程原有逐帧审核范围也不改写为连续播放器观看。
+
+右上可以复用这套左右基本对称的中性底模步态：人物图层、动作关节点和裤口跟随一起镜像，左右语义与前后遮挡相应转换；固定光源及后续非对称头发/衣物/背剑需单独校正。当前仅回答方案并记录左上认可，没有生成右上新素材或默认认可镜像结果。本次未改图片、动作、App或安装包。
+
+
+## 2026-10-23 · 仅左上r5：修连接裂缝/残边，短裤随骨盆和两侧腿运动
+
+美术提交 `a691986d986e96822903edb642bf875aa20b2655` 已发布。[正常动图直链](https://raw.githubusercontent.com/liamchan-rgb/experiment/a691986d986e96822903edb642bf875aa20b2655/Art/Review/P1/neutral-up-left-r5/walk-120ms.gif)与站姿均实测HTTP200、MIME/哈希一致；GIF为8×120ms无限循环。浏览器交付回执见 `Art/Review/P1/neutral-up-left-r5/delivery.json`。
+
+用户指出r4仍有拼接痕、运动间隙、左上残边，且腿动裤子不动，并要求先修左上。撤回r4内部修好结论，右上暂缓；本轮由主线程独自修复和审核，无智能体。
+
+根因复查：r4的pelvis源为空，短裤仍合在torso里；腿根从178行裁窄，肩口/裤口与肢体使用不同变形域，源区域还混有相邻肢体外缘。现独立短裤源，裤腰随骨盆，左右裤口跟随对应上腿；连接区域共用变形域，恢复更宽的原稿上腿根，清掉躯干/手里混入的边线。再修近侧手在首尾被短裤遮去部分像素的问题，保留肩部衣物覆盖和近远层次。
+
+主线程检查最终1×/2×全身九姿势及01→08→01顺序。当前查看器只显示GIF静帧，未宣称实际观看连续播放器；用户美术认可为空。公共装配九姿势逐像素一致，肩/髋源区域对照新增透明缺口0，72层无游离分量，18次臂手分区组合无像素差，九帧近侧手完整，八个短裤帧均独立变化；174份源/输出重导逐字节相同，契约26项、装配21项通过。隐藏源切口若被衣物完整覆盖不视为可见裂缝，但不将其称为完整隐藏人体。
+
+[正常8×120ms动图](../Art/Review/P1/neutral-up-left-r5/walk-120ms.gif)、[站姿](../Art/Review/P1/neutral-up-left-r5/idle-review-2x.png)、[主线程修复记录](../Art/Review/P1/neutral-up-left-r5/art-review.md)、[技术检查](../Art/Review/P1/neutral-up-left-r5/validation.json)。右上素材未变，公共运行装配器未变，没有App/设备/IPA工作。HTTPS直链已验证并记录回执。
+
+
+## 2026-10-23 · 上斜r4：主线程重做髋关节与连续轮廓，清理衣物/肢体归属
+
+美术提交 `295e0ae27829a3b2f496eed11dc2be6cad8a4480` 已发布；[正常同屏GIF直链](https://raw.githubusercontent.com/liamchan-rgb/experiment/295e0ae27829a3b2f496eed11dc2be6cad8a4480/Art/Review/P1/neutral-upper-diagonals-r4/walk-comparison-120ms.gif)及两个单方向GIF、站姿已实测HTTP200，MIME/哈希与本地一致，GIF为8×120ms无限循环。交付验证不等于连续播放器美术验收。
+
+用户判退制作中的r3后继续要求工作。本次由主线程独自返修并审核，无智能体参与。将髋关节移入短裤内部，用整侧连续网格取代圆补片拼接；取消按肤色侵蚀边界，背心/裤口留给躯干，手部与手臂共用网格域。修掉臂上白边、髋根缺口、旧头层颈肩杂线，以及脚源混入另一侧像素。整套重画试稿仍有动作/风格问题，未采用，保留在rejected-probes。
+
+主线程亲自检查两方向实际装配1×/2×全部18姿势和01→08→01顺序。当前工具只显示GIF静帧，未宣称完成连续播放器观看；用户美术认可仍为空。此次是源轮廓/关节返修候选，不能把技术通过写成自然步态已获认可。
+
+公共装配18姿势逐像素一致，144层无游离分量，36同侧腕连接、36整腿连通、72臂/手无衣物灰白、36髋部3像素宽实体走廊通过；源与输出226文件重导逐字节一致；契约26项、装配21项检查通过。已认可方向和公共运行装配器未修改；没有App/设备/IPA工作。
+
+[正常8×120ms同屏GIF](../Art/Review/P1/neutral-upper-diagonals-r4/walk-comparison-120ms.gif)、[站姿](../Art/Review/P1/neutral-upper-diagonals-r4/idle-comparison-2x.png)、[主线程检查](../Art/Review/P1/neutral-upper-diagonals-r4/art-review.md)、[技术记录](../Art/Review/P1/neutral-upper-diagonals-r4/validation.json)。HTTPS直链已验证，回执见 `Art/Review/P1/neutral-upper-diagonals-r4/delivery.json`。
+
+
+## 2026-10-23 · 制作中的上斜r3判退：腿部扭曲与衣物边界破碎
+
+用户指出“你目前思考的这一版肯定不行，腿部角度扭曲，四肢和衣物边界模糊”。主线程复看全身九帧确认：投影关节驱动使数帧膝盖向外折，膝/踝/脚掌朝向不一致；按颜色筛肤色及关节补片造成裤口和肩口碎边。r3撤回交付候选，保留源与输出供追溯，不能用连通或骨长检查代替自然姿态。
+
+本次无智能体参与，返修和漏检由主线程负责。下一稿从完整、连贯的姿势及清楚的衣物轮廓重新制作，先检查源稿再分层；仍在返工，未完成美术验收，未更改App/已认可方向，也未打包。
+
+
+## 2026-10-23 · 用户指定主线程独自返修并审核，追加四处漏检
+
+用户进一步指出右上右手抠图不成形、臂上残留背心白边、左臀与大腿交界持续空缺，以及左上左臂有游离轮廓线。此前r2复查描述遗漏了这些具体源稿/分层问题，责任由主线程承担。
+
+用户明确禁止本次返修使用智能体，并要求以后智能体产物出错由主线程全权修复及审核。已将原话范围写入AGENTS.md，覆盖本次此前三名Luna返修授权。本轮由主线程亲自重审源稿、分层边界、完整九姿势与首尾序列，修订另存r3；当前制作中，不标美术通过，不运行设备或打包。完成后仍须实际交付正常120ms全身GIF和验证过的浏览器HTTPS直链。
+
+
+## 2026-10-23 · 上斜r2再次判退，主线程重新描述问题
+
+用户要求“还是不行，你自己再检查一下有什么问题，自己描述一下”。本次不改图、不调动作、不打包，只重新对照最终1×/2×整身全部八帧与作者机制。撤回r2内部美术通过/足够交付结论：上身站桩、臂手整块摆动、膝踝软管式变形、脚掌固定平移而无落跟蹬地、交叠姿态难读、右上远近脚朝向不一致。详细证据见 [主线程复查](../Art/Review/P1/neutral-upper-diagonals-r2/reinspection-r2-rejected.md)。
+
+此前连通、骨长与重导只说明有限技术性质，不能推出自然步态；查看器只显示GIF静帧，主线程实际未完成连续播放器观看，不再将逐帧检查称作完整动态验收。保留图、源与技术记录，新方向美术认可为空。
+
+
+## 2026-10-23 · 用户判退上斜r1，返修同侧手臂连接与腿闪烁r2
+
+已发布美术提交 `850dab930f42d68800e03b3c5c9f0bf2824e22b1`。[正常同屏GIF直链](https://raw.githubusercontent.com/liamchan-rgb/experiment/850dab930f42d68800e03b3c5c9f0bf2824e22b1/Art/Review/P1/neutral-upper-diagonals-r2/walk-comparison-120ms.gif)及两方向GIF实测HTTP200、image/gif、8×120ms、循环开启、SHA-256与本地一致；站姿HTTP200/image/png/哈希一致，交付回执见 `Art/Review/P1/neutral-upper-diagonals-r2/delivery.json`。
+
+用户指出“这走起来手都要剥离身体了”“腿部也是在疯狂闪烁”。撤回此前内部美术通过结论；原图、作者数据和技术证据保留。根因是逐帧独立腿形/错误像素归属和不稳定关节链，整身连通检查掩盖了局部脱手/抽腿，属于主线程漏检。
+
+主线程重做：每侧臂/手共用固定肩旋转，一份完整腿用严格单调行网格连续变形；固定矢状骨长和连续投影，不逐帧换肢体或抢近远掩膜。清掉误归腿的旧短裤裆边；初次硬分段/过窄步幅方案另存判退，最终增加抬脚迈步量、收小摆臂并修同侧手腿相位。头/躯干原像素保留，公共运行装配器不变。
+
+主线程查看最终1×/2×全身18姿势和01→08→01顺序；当前工具仅显示GIF静帧，未声称已实际观看连续播放。18公共装配零差、36同侧手腕连接、36完整腿、72肩髋连接、36足标、16固定骨长、198文件重导一致通过。正常GIF八帧×120ms，原版内部通过撤回，新版用户认可为空。
+
+[正常同屏GIF](../Art/Review/P1/neutral-upper-diagonals-r2/walk-comparison-120ms.gif)、[站姿](../Art/Review/P1/neutral-upper-diagonals-r2/idle-comparison-2x.png)、[主线程具体返修](../Art/Review/P1/neutral-upper-diagonals-r2/art-review.md)。本轮仅返修两方向idle/walk，没有App/模拟器/设备/IPA工作；发布后验证浏览器HTTPS直链并存delivery.json。
+
+
+## 2026-10-23 · 同时完成左上／右上中性底模与正常步态候选
+
+已发布美术提交 `ee8b719d8ae477eddcd9579e27f3cd2b38993a33`。[正常同屏GIF直链](https://raw.githubusercontent.com/liamchan-rgb/experiment/ee8b719d8ae477eddcd9579e27f3cd2b38993a33/Art/Review/P1/neutral-upper-diagonals-v1/walk-comparison-120ms.gif)及两方向GIF实测HTTP200、image/gif、8×120ms、循环开启、SHA-256与本地一致；站姿HTTP200/image/png/哈希一致，交付回执见 `Art/Review/P1/neutral-upper-diagonals-v1/delivery.json`。
+
+用户要求两个方向同时推进并由主线程亲自纠正智能体问题。三名Luna辅助制作／审核后，主线程判退侧脸、重复支撑、相位错位和不准的分层，修复第三手、跨背摆臂、躯干洞、交叉腿归属、落脚过渡及肩旁残边；原稿和判退记录均保留。每方向idle00+walk01–08，复用共同头／躯干，头部轻微摆动，离线组件注册显式记录。
+
+主线程检查实际装配的1×/2×全身及全部01→08→01序列。正常同屏GIF为8×120ms；当前查看器仅显示GIF静帧，未声称已实际观看连续播放。2清单、18实际装配、144层、18头变换、36足底标记、源所有权/作者合成零差及可见脱离组件0通过；重导字节一致，26合同/21装配器回归通过。技术证据不代替用户美术认可。
+
+[正常同屏GIF](../Art/Review/P1/neutral-upper-diagonals-v1/walk-comparison-120ms.gif)、[同屏站姿](../Art/Review/P1/neutral-upper-diagonals-v1/idle-comparison-2x.png)、[具体返修](../Art/Review/P1/neutral-upper-diagonals-v1/art-review.md)。新方向美术认可仍为空；独立外观、完整隐藏人体与起停后续继续，当前无App/模拟器/设备/IPA工作。发布后核对HTTPS直链并记录delivery.json。
+
+## 2026-10-22 · 左向衣物v2获认可，同时建立左上/右上中性底模
+
+用户回复“没问题，下一个直接同时做左上和右上的，你注意检查不要随便被智能体糊弄”。已按展示范围保存向左v2两衣型全身、正常循环及指定起停路径认可和交付摘要，不扩大到未展示组合/运行接入。同步记录本轮同时推进两个方向的授权，覆盖此前一次一个方向的顺序限制。
+
+当前两名Luna辅助各自方向的源稿/作者分层，一名只读复核相位与近远规则；主线程负责图像生成、统一导出与最终整身/正常速质检。先建立两个方向的中性人体、idle00+walk01–08分层及挂点，再按共同底模制作独立外观。左上采用contact-r1、右上采用loop-r2动作参照，保留原修订；最终逐稿按作者肩髋/足底标作显式固定注册，不按alpha边界各自适配；原导板仅作意图参考。当前新方向美术认可为空，未进行App/设备/IPA工作。
+
+
+
+## 2026-10-22 · 向左衣物v2，主线程修正并重新合成
+
+已提交GitHub `cd71944fdc7b4c37cd1b8c344b1eaaf97c5082cf`。[正常行走浏览器直链](https://raw.githubusercontent.com/liamchan-rgb/experiment/cd71944fdc7b4c37cd1b8c344b1eaaf97c5082cf/Art/Review/P1/modular-left-wardrobe-v2/outfits-comparison-120ms.gif)及[正常起停直链](https://raw.githubusercontent.com/liamchan-rgb/experiment/cd71944fdc7b4c37cd1b8c344b1eaaf97c5082cf/Art/Review/P1/modular-left-wardrobe-v2/start-stop-comparison-120ms.gif)实测HTTP200、image/gif、SHA-256与本地一致；站姿同样HTTP200/哈希一致。四份交付核对见 `Art/Review/P1/modular-left-wardrobe-v2/delivery.json`。
+
+用户判退v1后，由主线程修正源稿提取、分层和变形，不沿用智能体/前轮内部通过结论。两张13姿势衣物原稿保留，固定整表注册，仅提取衣物；绿衣完整描边/金边恢复，灰裤改为每步相褶皱，棕靴保留鞋面/跟/底，蓝衣摆不再硬缩放成两块长条。复查另修金边被肤色分类误删、固定靴口把裤脚涂棕、较宽衣片覆盖后侧拳缘，头/手原像素归共同身体独占。
+
+主线程检查两衣型1×/2×整身、两组13姿势、六组头部整身、正常序列及08→01和指定起停衔接。实际72搭配936姿势，3120身体覆盖、624穿衣原手掌保留、468背剑切换、26衣物孤立块检查失败均0；13裸身与r3逐像素相同，原身体/动作/公共compositor摘要不变。10清单与221个PNG/ORA/SVG两轮重导通过，26合同/21装配器回归通过，没有跳过。
+
+[两衣型正常动图](../Art/Review/P1/modular-left-wardrobe-v2/outfits-comparison-120ms.gif)8×120ms；[正常起停动图](../Art/Review/P1/modular-left-wardrobe-v2/start-stop-comparison-120ms.gif)22帧、首末480ms、其余120ms；[站姿](../Art/Review/P1/modular-left-wardrobe-v2/outfits-comparison-2x.png)、[具体返修依据](../Art/Review/P1/modular-left-wardrobe-v2/art-review.md)。新外观仍待用户审核，旧v1判退与撤回说明保留，没有App/模拟器/实机/IPA工作。GitHub主线程质检责任提示已另提交并实测，浏览器动图直链待本次发布核对后记录。
+
+
+## 2026-10-22 · 用户判退向左外观v1，撤回内部美术通过并返修
+
+用户反馈“智能体画的效果有问题你就自己修一下”，明确要求同步GitHub提示词。已在AGENTS.md及人物审核说明置顶主线程责任：亲自检查1×/2×全身、全部当前动作和正常循环；发现问题自己修源稿/分层/变形，不能凭智能体结论或覆盖数字交付。原v1内部美术通过撤回，保留旧稿与原有限技术证据，不标用户认可。
+
+重新核对原稿与合成发现绿衣轮廓/镶边丢失、裤腿块状拉伸、靴子鞋面鞋底层次丢失，以及蓝外套硬片状下摆。当前由主线程返修部件提取和衣物动作，不改已认可人体/原步态；修后须再交实际正常速全身动图。未运行模拟器/设备。
+
+
+## 2026-10-22 · 向左独立外观 v1 完成内部复核，提交正常动图
+
+已提交GitHub `1b9dffb1d7bef6f61e774614711b197e085c85bf`。[正常行走浏览器直链](https://raw.githubusercontent.com/liamchan-rgb/experiment/1b9dffb1d7bef6f61e774614711b197e085c85bf/Art/Review/P1/modular-left-wardrobe-v1/outfits-comparison-120ms.gif)及[正常起停直链](https://raw.githubusercontent.com/liamchan-rgb/experiment/1b9dffb1d7bef6f61e774614711b197e085c85bf/Art/Review/P1/modular-left-wardrobe-v1/start-stop-comparison-120ms.gif)实测HTTP200、image/gif、SHA-256与本地一致；站姿同样HTTP200/哈希一致。四份交付核对见 `Art/Review/P1/modular-left-wardrobe-v1/delivery.json`。
+
+在原r3向左13姿势上完成三发型、两五官、Forester绿短上衣、Wayfarer蓝长外套、共用灰裤棕靴和独立背剑，新增9资源包。三名Luna并行制作/复核，主线程负责实际装配、全身1×/2×与正常速序列审核。初审查出安全短裤/袖靴漏盖、蓝衣摆重复原袖口与裤色矩形、五官误带下颌、银发高光被删；逐项另存修订。最终又清除walk01/06袖旁、walk06靴旁孤立变形色块，未改身体与原动作。
+
+72组合×13姿势=936实际合成，3120项身体贡献无>5%漏盖（仅排除解剖颈口）；468组背剑开关无轮廓外/不透明手变化；26衣装姿势颈下孤立块为0。13裸身逐像素等于原帧；身体/动作/公共compositor摘要不变。10清单通过，264个PNG/ORA/SVG连续两轮由保留原稿重导一致；26合同与21装配器回归通过，原72认可帧摘要通过，没有跳过。
+
+[两衣型正常动图](../Art/Review/P1/modular-left-wardrobe-v1/outfits-comparison-120ms.gif)8×120ms；[正常起停对照](../Art/Review/P1/modular-left-wardrobe-v1/start-stop-comparison-120ms.gif)22帧、首末480ms其余120ms；[站姿](../Art/Review/P1/modular-left-wardrobe-v1/outfits-comparison-2x.png)、[完整复核](../Art/Review/P1/modular-left-wardrobe-v1/art-review.md)、[重导/清单核对](../Art/Review/P1/modular-left-wardrobe-v1/checks.json)。新增外观用户认可为空，仍只提交向左；其他方向和任意步相起停尚未完成，没有App/模拟器/设备或IPA工作。浏览器直链待发布后实测并另记交付回执。
+
+用户询问八方向与行业做法，已说明2/4/8方向因项目而异；本项目最终组合覆盖八方向，但不要求每件原始部件从零画八遍。头发/五官同向复用、刚性背剑多姿势共图、衣物按模板导出；左右镜像须检查非对称装备和遮挡。这是离线逐帧分层装配，不是已完成的运行时骨骼系统。
+
+
+## 2026-10-22 · 向左起停展示获认可，开始独立外观挂载
+
+用户回复“没问题，继续下一个工作”，随后“继续”。已保存r3展示的全身外观、八帧循环与指定起停路径的限定认可及交付物摘要；隐藏探针仍只是技术证据，不扩大为完整隐藏人体/任意步相中断。下一轮在同一13姿势身体与动作上制作独立向左发型、五官、Forester绿短上衣、Wayfarer蓝长外套、共用裤靴与背负武器；共用动作和分层规范，不按外观ID切换人体或新增渲染分支。用户另问八方向资源与行业做法，已说明方向覆盖需求和镜像/部件变形复用的区别，本轮仍只推进向左。当前制作中，完成后交付正常速度全身GIF、浏览器HTTPS直链及日志；不运行设备/模拟器。
+
+## 2026-10-22 · 向左隐藏连接与起停过渡 r3 完成
+
+已提交GitHub `8b0c600cb3f3ca66fc157c40002d5543a43810c6`（开发分支）。[起停GIF浏览器直链](https://raw.githubusercontent.com/liamchan-rgb/experiment/8b0c600cb3f3ca66fc157c40002d5543a43810c6/Art/Review/P1/neutral-left-complete-transitions-v1/start-stop-120ms.gif)及原行走GIF均实测HTTP200、image/gif、SHA-256与本地一致；站姿PNG同样HTTP200且哈希一致。交付核对见 `Art/Review/P1/neutral-left-complete-transitions-v1/delivery.json`。
+
+用户认可r2展示后，已保存原话“没问题开始下一步工作”及限定范围。新r3另存共同底模13姿势：原idle00/walk01–08的可见RGBA逐点不变，新增两起步、两停步关键姿势和91张同槽隐藏肩腕/髋根补片；固定1254²源注册，不按透明包围框调整。起步只覆盖idle00接walk01，停步只覆盖walk08收至idle00，不代表任意行走相位中断。通用合同增加可选walk-start/walk-stop，每动作2姿势、120ms，旧资源继续使用9姿势；缺帧明确拒绝，没有按外观ID改引擎或回退另一身体。
+
+两名Luna并行完成源稿/隐藏连接，主线程整合与复核。首审漏检start01/stop02第三手，主审逐臂追踪发现后退回imagegen重画；原稿保留。主审另发现手脚深色轮廓误留躯干，已在固定作者归属中转归1676源像素，完整源RGBA不改。独立全身/分层复审确认新四姿势没有残留第三手、torso不再带整圈腿/拳头描边；短裤与腿交界、拳缘短轮廓作为后续衣物覆盖复核点。合入隐藏颈根时的6像素纹理覆盖差异已修正层序，未放宽像素检查。
+
+实际公共compositor核对13姿势，13头部局部变换、13头颈连接、26足底标记及13份ORA通过；143份PNG/ORA/SVG重导字节一致。91补片的同侧材料色域正确、原可见RGBA不变，832次±1/±2局部接缝核心探针无新透明点；只证明当前肩腕/髋根范围，不宣称完整隐藏人体或任意骨骼动作。26合同检查、21装配器检查通过，原72认可动作哈希未变。正常全身GIF为22帧，首末idle各480ms，其余20动作帧均120ms；原行走循环仍8×120ms。
+
+证据：[正常起停动图](../Art/Review/P1/neutral-left-complete-transitions-v1/start-stop-120ms.gif)、[全身关键姿势](../Art/Review/P1/neutral-left-complete-transitions-v1/start-stop-keyposes-fullbody-1x.png)、[内部复核](../Art/Review/P1/neutral-left-complete-transitions-v1/art-review.md)、[可复现核对](../Art/Review/P1/neutral-left-complete-transitions-v1/verify.py)、[底模与源文件](../Art/Templates/P1-Neutral/left/walk-r3-complete-transitions/README.md)。新稿美术认可为空；独立左向发型/五官、两衣型及背剑后续制作。未改App运行资源、未运行模拟器/设备、未打包IPA。按规则实际交付全身正常动图和验证后的浏览器HTTPS直链。
+
+## 2026-10-22 · 向左头部轻微摆动 r2
+
+用户反馈“头太固定了，应该有轻微摆动才自然”。新r2保留同一头图，绕颈根(125,129)加入-0.6°至+1°点动与上下1px起伏：02/06承重下沉、04/08摆腿末段回升，正常8帧×120ms。10个原颈部不透明像素向上延一行作隐藏重叠，清除2处alpha1头外注册残片，头颈之外像素和腿臂步相保留；后续五官/发型挂载矩阵同步跟随头部。旧r1保留并记录头太固定的修订反馈。
+
+主审核与独立审核查看全身和正常速循环，头不再完全固定，幅度仍轻微，未见过度点头、首尾跳闪或颈根断缝。实际装配器9姿势、9个头部局部挂载矩阵、9头颈连通及18足底标记核对通过，99文件重导字节一致；旧r1重导99文件字节也保持一致。证据：[正常动图](../Art/Review/P1/neutral-left-walk-r2-head-motion/walk-120ms.gif)、[前后正常速对照](../Art/Review/P1/neutral-left-walk-r2-head-motion/before-after-120ms.gif)、[复核](../Art/Review/P1/neutral-left-walk-r2-head-motion/art-review.md)。
+
+当前新修订美术认可为空；自然起停、完整隐藏关节及独立外观仍待后续，没有App接入、模拟器/实机运行或IPA。按交付规则同时发布正常速全身GIF及浏览器HTTPS链接。
+
+## 2026-10-22 · 动图必须实际送达，提醒置顶并补发浏览器链接
+
+用户再次反馈聊天里没有看到动图，要求把提醒写进GitHub中经常读取的位置。已将“最终回复实际附正常速全身GIF＋浏览器HTTPS直链、发送前重读并验证链接、显示失败立即补直链”的规则置于AGENTS.md和人物审核说明顶部。补传当前向左中性人体walk-120ms.gif及站姿到开发分支；GIF核对为8帧、每帧120ms、循环播放。仅补交付与协作规则，没有修改美术像素、运行资源或认可状态。动图SHA-256：6881b9fded8f87621fc890518d1030ad958ac5fc575e7963453c048f84a24e57。
 
 **2026-10-19 最新进展：战场静态样板与独立环境四层重组已获认可；[向右侧视待机中性人体 r2](../Art/Templates/P1-Neutral/battle-side/right-idle-r2/README.md)的姿态与近侧右手方向已获认可。[隐藏人体底层 v2](../Art/Templates/P1-Neutral/battle-side/right-idle-parts-v2/README.md)已修复八层像素归属，静态重组与 r2 逐像素一致；肩髋四个局部根部窗口的小位移覆盖检查通过。整段肢体平移会改变外轮廓，因此全动作接缝、完整隐藏人体与运行时接入仍未完成。向下正手垂剑 v5 的单帧认可保留；[强击 × 训练短剑首组特效](../Art/Effects/P1-Boardgame/heavyStrike-trainingSword-v1/README.md)正常速度原型仍待独立审美审核。**
 
@@ -844,3 +2419,423 @@ r5/04.png 原样复制进入 raw/04.png，00–03、05–08 从上一完整循�
 最终取景版 `cd86161fd817eda49e3750570060e5b644abcb01` 在专项 `39421546572` 通过4项原生和2项iPad UI检查（0失败），Xcode15.4／iOS17.5／iPad Pro13 M4。实际三态截图已导出（stills 12263897192、完整结果12265085671）；自审确认怪物回合上下黑边消失，人物、剑尖、鹿角与尾巴完整，脚底同处地面带且有接触影。`Media/Build33` 保存三份字节不变的XCTest原附件，并仅按EXIF方向转存为横屏PNG；三张转存后的像素签名与原附件方向归一化后完全一致。另提供缩小预览，未修图冒充实屏。设备归档39422558233已从同一源码开始；安装包待归档后本地校验。
 
 设备归档 `39422558233` 成功（同一源码cd86161，Xcode15.4，IPA工件12264781729、日志12263733126）。交付 `Downloads/MeadowJourney-b33.ipa`，1.6.8 build33，23,079,780字节，SHA-256 `b149816658ff8cf61f8a548f53320fbdea9b5d301d89c56b30099004f069d19d`。本地验证CRC、ZIP_STORED、无Zip64／额外字段、iPhoneOS arm64、最低15.0、iPhone／iPad设备族、Metal库、0755执行权限和无签名均通过。更新下载页、构建元数据、实际截图索引与人物审核状态。用户以SideStore重签安装；未在物理iPad测试，静态构图／换装候选不等于真实战斗、动画或通用换装生产合同通过。本次没有新增慢动作预览，也未修改桌游原仓库。
+
+## 2026-10-20 · 修复 build33 战场静态候选的五官、接地和回合缩放
+
+回看用户指出的 build33 iPad 图后确认：脸部图层本来就在头发上方，消失感来自特征只占11×15px、眼睛紧贴脸部右轮廓；将独立五官 SVG 修订为 face-blue v3，眼睛、眉、鼻和闭口整体内收，保持256×256注册及已认可r2身体／头发不变。新素材已复制到运行资产并机械重组全身候选图；相关更新图是素材预览，不冒充运行截图，美术认可仍为空。
+
+同时增强轮廓投影和靴底／四蹄接触影，使高亮地面上能辨认；固定战斗场景按视窗宽度缩放并顶端锚定，怪物回合打开后稳定角色尺度，额外的竖向空间用柔化环境填充。未改怪物图稿、服装或已认可人体。代码静态检查、SVG导出及PNG尺寸检查通过；本次未运行Xcode/iPad工作流，故实际运行截图和编译结果仍待确认。
+
+## 2026-10-20 · build34 战场画面补齐
+
+沿用 build33 认可的营地场景和 r2 人体注册，修完本次发现的三处观感问题：五官 v5 将鼻口各内收1px，鼻子加两阶肤色和暗点、嘴改为连续3px深色线；两位内部审核者在全幅256px素材图中确认鼻口分离，仍待模拟器中的实际显示尺寸确认。衣层只将绿色调映射为更明亮、饱和的 P1 蓝色，保留原 alpha、边缘、裤靴和脚底；鹿灵重绘为透明像素稿，按旧 bounds `(13,9)-(344,241)` 与 y=240 蹄底线注册，独立投影不烘进角色图。四个接触影中心改为新稿蹄位，固定宽度镜头和较高视窗的环境延展保留。
+
+版本号改为 1.6.8 build34。离线资产重组、两张 PNG 256×256/384×256、鹿灵透明边界及像素脚底核对通过。Xcode 编译、iPad 模拟器三态截图、接触影画面复核和 IPA 归档尚待 PR 工作流完成；新服装、五官组合与鹿灵仍是用户未审批的静态美术候选。
+
+PR 的 macos-15 任务持续排队时，发现工作流已有的 `macos_runner` 输入只传给快速工作流，没有作用于完整 IPA 任务。现让手动完整构建使用已声明的 macos-14/macOS-15 选择值，PR 默认仍走 macos-15；以相同提交在 macos-14 手动触发完整构建，以取得三态模拟器证据和 IPA。项目引用与资源清单离线校验通过，远程 Xcode 验证进行中。
+
+build34 首次远程编译在既有 `HeroFrames.stops` 的 `Sequence.max(by:)` 闭包触发 Xcode 15.4 类型检查超时，故未进入模拟器或归档。将最大相邻间隔查找拆成显式循环和 midpoint 计算，保持原网格点选择规则；同一完整构建重跑中。
+
+同一提交 `b06ef55` 的完整 iPad 运行 `39451005206` 编译与模拟器启动通过，但全套测试暴露旧问题：17 个整帧步态差异阈值失败与 build33 基线 `cd28a0b` 的既有结果相同；战场几何测试仍按先前的垂直居中／sharp canvas 单独铺满规则断言，与 build34 为保持角色尺度、由柔化 backdrop 填充额外空间的现行合同不符；两项地图交互 UI 用例在资源加载期间点击禁用按钮，步态预览状态则写在子 SpriteKit view 而测试读取父地图 accessibility value。Xcode 15.4 还不支持 `xcresulttool export attachments`，令截图导出步骤失败。现已更新几何断言与背景覆盖检查、收紧步态差异测量阈值到仍可分辨实际帧差的0.20、把步态预览状态同步到测试所读的地图元素、等待地图就绪后再点击，并让完整工作流在旧版 Xcode 调用已有兼容附件导出脚本。下一次完整 iPad 测试、截图检查与build34 IPA归档待验证；此次失败运行未产生IPA。
+
+## 2026-10-20 · face v5 撤回、v6 全身比例修订
+
+用户指出 v5 的鼻口判断不能只看局部放大，并指出眼、鼻、嘴挤在眼睛附近。撤回“v5 已清楚”的结论；尝试的 v6 又因鼻子成块、嘴部脱节被用户质疑“你现在这个是人脸？”，现已归档到 `face-blue/revisions/v6/` 并标为废稿，不打入安装包。
+
+修复build34旧图中锐利战场结束处的水平错位带：模糊底图改用锐利画布相同的宽度缩放与顶端锚点，超高区域从模糊底边延展，锐利画布最后12%渐隐到柔焦层。测试断言随之改为 `scaleToFill` 与统一相机变换。服装、鹿灵和接触影资产注册未改。按用户要求不做实机验收；由用户安装 IPA、运行并发截图。本轮编译、IPA与新画面目视结果待确认。
+
+## 2026-10-20 · v7 完整人物侧脸候选
+
+v7 改用整个人物生成稿中的脸部设计，仅以固定256/1254画布缩放和(-4,0)特征组注册提取眉、单只蓝眼、鼻和闭口。原始生成图、提示、四个独立透明部件、可编辑SVG分组及提取脚本均保留；生成图的人体、头发、耳朵、衣物和武器不进入运行资产。已从256原尺寸和3倍全身图检查眉眼、鼻口间距及侧脸轮廓连续性，不再以面部放大图作为比例判据；用户审美认可仍为空。
+
+相机底图另补充Core Image底部原点的顶边对齐变换，保证延展发生在画面下方，并增加相应几何断言。项目路径、JSON、SVG资源引用、PNG注册、运行复制与清单摘要校验已通过；SVG导出与当前PNG仅有5个像素的单通道1级渲染取整差异，运行图以提取脚本输出为准。
+
+此前 `e39ffca` 的完整运行 `39456061836` 已通过测试与归档，但其v5脸部与底图横带仍有问题，因此未交付。当前v7本轮只做设备编译归档和IPA完整性检查，实机运行／截图由用户完成。
+
+## 2026-10-20 · 按箭头清理额前／肩部，修改后脑，暂停打包
+
+用户明确“别急着打包”，指出额前和左肩多余像素、后脑勺过圆。包工作流 `39465865631` 已先于暂停请求完成（源码 `d988299`、设备归档成功），取消请求返回已完成；该v7包暂不交付。此后没有触发新打包或实机／模拟器运行。
+
+另存 `Art/Parts/P1-Battle/right-idle-v2/`，当前单张为清理稿v8：额前的10个像素来自v7五官提取框误带的轮廓碎片，已从眉眼层剔除；左肩26个像素清掉重复黑边与暖色残边，蓝色袖肩连成一个轮廓。后发最左边收窄3px、轮廓向耳后和颈部收拢，头顶高度及x≥120的前发像素不变。为避免收窄头发露出旧后脑凸起，另存共同中性头型r3轮廓候选，仅改后脑区域97个像素；r2原图未改，y≥128全身、脸／耳前区和脚底注册不变，没有按外观ID切换身体的代码。
+
+已核对完整256图与3倍全身图，像素差异仅落在此次头部／额前／肩部指定区域；脚本语法、SVG引用及变化范围检查通过。新稿尚未导入运行资源、未打IPA，用户审美认可为空；当前只提交同一张全身图继续审核。收到美术反馈后继续修，实机运行与截图仍由用户完成。
+
+## 2026-10-20 · v9 以肩背暗面和后侧袖子拉开层次
+
+用户指出v8左肩还有黑边，并建议参考之前左右向行走素材的近远明暗。已查看获认可的left/right r1第03帧及对应说明，采用其后侧肢体整块压暗、近侧肢体保留亮面的处理。另存 `Art/Parts/P1-Battle/right-idle-v3/`：去掉残留的斜向肩缝和外侧硬黑条，改用与肩背相连的蓝色过渡；肩背加入连续冷蓝暗面，后侧袖子进一步压暗，前侧持剑臂亮面保留。保留生成参考图与提示，实际衣层由可编辑SVG色面和乘色源构建，参考图像素未进入素材。
+
+只改v8衣层肩背／后袖区域RGB，共209个像素，变化边界为`[102,133,119,168)`；alpha与头脸、后脑轮廓、手、剑、姿势、脚底注册不变。已从原尺寸及3倍全身图自审层次，SVG／JSON／脚本语法及变化范围检查通过，重新构建的PNG摘要一致。本轮没有生成动作或新慢速图，没有接入App、运行设备或打包。新稿待用户审核，IPA仍暂停。
+
+## 2026-10-21 · 完成后无需打包交付
+
+用户明确“做完了之后不必打包发我，记日志”。本轮人物美术修订完成后只保留修改稿、自审记录及项目日志，不触发新的IPA构建、归档或交付；后续如需安装包，再按用户新指示执行。当前v9美术仍是单张待审核候选，本条指示不作为美术认可，也不推进下一张。
+
+本次仅更新协作约定与日志；未修改代码、运行资源或美术，未打包、未发送IPA，未运行实机／模拟器。
+
+## 2026-10-21 · 恢复打包，已认可八方向步态接入 demo
+
+用户撤回刚才“无需打包”要求，现要求打包，并把此前确认好的步态更新到demo。已同步AGENTS协作约定；此前暂停记录作为历史保留。P1使用已认可的下／左／上／右／右下／左下／右上r1与左上r6，逐条核对认可文件中的源PNG摘要。运行图集按原RGBA装入9列（站姿＋8张步行），不缩放、不改画、不插值或烘焙重复帧。共享24tick距离时钟离散映射8姿势；正常预览120ms／姿势、960ms／周期，单步按完整姿势前进，主地图Metal阴影与投影实验室同步采样。P2／P3原图与足底数据保持不变。
+
+足底记录另存 `Art/Integration/P1-approved-gait-v1/footprints.json`，从靴底位置初取并用全身标记图核对、修正重叠靴位置；抬脚数据为保守源像素设定，真实设备观感仍由用户截图验证。独立审核确认主前景／阴影的9列与24tick映射一致，同时发现旧24帧蓝靴分层对照已不适合与新步态并排，故保留素材并暂隐旧入口，不把该历史原型当作新换装模板。
+
+此前修好的v9肩背层次、v8额前清理／后发及共同r3后脑轮廓也已按固定画布复制到运行资源；导入不作裁切或重采样，原始各版保留，用户美术认可不因打包而自动改为通过。版本升至1.6.9 build35，并同步项目生成器，防止重新生成项目退回旧版本。
+
+目前已通过项目资源引用、原稿摘要、72张姿势RGBA一致、P2／P3资源保持、足底与图集采样映射的离线核验；更新了相应单测／UI断言，但本轮不执行模拟器或实机运行。下一步只触发设备Release归档与IPA完整性核对，完成后交付用户；远程编译和归档尚待结果。
+
+设备Release归档 `39530852893` 已成功，源码提交 `01cb73a66542443d3178ed82374383f6a4018bcf`，Xcode15.4，版本1.6.9 build35。已下载IPA并核对GitHub artifact摘要、外层／IPA内层CRC、iPhoneOS平台、arm64可执行文件、可执行权限、版本号、编译资产、打包后的步态JSON与源码一致，以及远程打包日志SHA256；全部通过。IPA为23,598,869字节，SHA256为`9bf3017cd69b65a60f1d669643f5671dbbcba57cb3911aebc91079e396d73214`，保留既有SideStore重签所需的stored-ZIP格式。交付记录见 `Media/Build35/package.json`，GitHub IPA artifact编号`12315013547`；安装包未提交Git仓库。本轮只执行设备编译／归档，模拟器任务跳过，实机安装运行与截图交由用户；美术与设备观感认可仍待用户反馈。
+
+## 2026-10-21 · 斜向首尾接缝修订、战斗认可并推进迈步关键姿势
+
+用户要求以后只给可复制到浏览器、直接下载`.ipa`的地址，不再提供ZIP链接；已更新AGENTS，后续采用本仓库既有Downloads原始IPA直链方式。用户指出四个斜方向08→01衔接跳动，明确要求单开智能体修并合成正常速度动图自审。已新开diagonal_loop_repair，负责右下／左下／左上／右上另存loop-r1修订，检查07→08→01→02和全循环；原r1／r6与认可记录保留，不把自审当作用户新美术认可。
+
+用户同时允许战斗按当前效果继续下一步，认可范围记录为build35的v9静态战斗呈现，不外推到新动作或完整模板。原计划的侧向步态现推进到第一张穿衣小步关键姿势：共同动作模组沿用r3头／躯干／手／髋根，y≥180腿部使用既有小步人体研究，前脚支撑、后跟抬起；衣层由生成参考、固定注册和可编辑的裤装／靴口覆盖层制作，按共同身体裁切材质，不按外观切换身体。首次试穿露底稿保留在drafts，已补齐遮挡。上半身y<180与认可v9逐像素一致，前脚可见落地线y=214不变；新增1665个可见像素变化仅在腿部区域，原尺寸及全身3倍图自审通过。该项是新单帧候选，未接入App，也不宣称完成战斗行走或攻击动画。
+
+斜向智能体修订与动图自审、运行元数据同步、新IPA设备归档及直链交付待完成；本轮仍由用户负责实机运行与截图，不运行模拟器。
+
+四向末帧已完成并导入：右下／左下／左上使用loop-r1，右上使用loop-r2。主审核退回了右上r1的错误换支撑脚，r2现让07／08／01保留同一左支撑脚、右脚低幅回收；失败稿和各次原始生成／提示均保留。已合成并解码检查8帧×120ms的正常速GIF，同时以完整人物检查07→08→01→02；不生成新慢动作。00–07保留原RGBA，四个斜向各只替换08，四个正交方向与P2／P3未改。新的08靴位已实测并更新12个共享时间采样的足底数据；注册线224保持不变并不等于单靴坐标未改。活动选择及来源摘要见 `Art/Integration/P1-gait-selection.json`、`Art/Integration/P1-diagonal-loop-v2/integration.json`。
+
+运行导入脚本现区分既有认可原件和本次用户授权的自主修复稿，原认可记录保留，不用伪造“已认可”状态接入新图。原稿摘要、各新横条／运行图集RGBA、GIF时长／序列、变化范围、未改角色资源与项目引用检查通过。版本升至1.6.10 build36，下一步执行设备Release归档，完成后将原始IPA置于Downloads并验证浏览器直链；战斗新的迈步单帧继续作为美术审核项，不混入已认可的运行待机。
+
+设备Release归档 `39560271325` 成功，源码 `94c00a15e6de982df69b8b5fde1f5fd1c46a6c5a`，Xcode15.4，1.6.10 build36。已核对GitHub artifact摘要、外／内CRC、arm64设备架构、iPhoneOS平台、可执行权限、版本号、编译资产、包内步态JSON及远程打包日志校验值，均通过；未运行模拟器或实机。IPA为23,592,463字节，SHA256 `bd486f94ea64153e9fcf1ff593cf2b2495c48c1766862854ab6e818ac8738cec`。原始IPA复制到 `Downloads/MeadowJourney-b36.ipa`，保留历史版本；来源与核验见 `Media/Build36/package.json`。上传后将实际GET原始IPA直链核对返回文件，不向用户交付外层ZIP。
+
+原始IPA直链上传完成后已实际GET：HTTP200、Content-Type application/octet-stream，读取23,592,463字节并计算SHA256，与本地IPA／远程归档日志完全一致。Downloads索引已更新为build36直接IPA地址，用户无需登录Actions或解压外层ZIP；版本、元数据、校验表和制作／审核记录均已同步。实机验证仍由用户执行。
+
+## 2026-10-22 · 道路动作与可交互战斗并行修复（进行中）
+
+用户反馈斜下方向只在道路上严重跳动、独立预览正常，斜上仍有抽帧。已开三个独立Luna6智能体，分别查道路运动／渲染采样、实现战斗状态与交互、制作分层角色动作；主审负责场景动画、投影同步与全身／正常速美术复核。现已确认道路P1原始姿势切换约71ms，而预览120ms，继续检查方向性跳动来源，不将降速当作完整修复。当前开始接入独立P1对鹿灵遭遇，目标选择、AP、技能、敌方回合、胜负／重试与动作反馈都需闭环。原图与历史修订保留；新稿仅内部审核，用户审美认可不自动扩展。本轮只做离线美术／逻辑核对及设备Release归档，不运行模拟器或实机。
+
+战斗交互已改由真实局部状态驱动：P1对一只18HP鹿灵，3AP／回合，5点固定伤害强击、各限2次的回血／护盾、结束回合后可见预备与敌方行动、胜负／重试。不会把旧7玩家／3怪物装饰队列当作真实参战者；关闭取消延迟并使回调失效。主审移出独立Landscape文件，接入同一30Hz战斗时钟、目标点击、AP控制、动作与投影同步、命中斩弧／回血／防护反馈和脚下生命条；入口改为“林地战斗”。首版攻击因全体倾斜、缺少关节发力被主审退回，另做v2分区关节动作；其研究稿保留。鹿灵正在从原始角色参考生成8姿势冲撞动画并修正sheet边缘裁切；不以生成原图直接视为运行美术通过。
+
+本轮完成并准备1.6.11 build37：P1道路速度从42降到按图集120ms导出的25单位／秒，P2／P3保持38／45；Renderer改用完整hero索引、脚底、方向、帧、相位状态比较，移动时前景与投影同帧更新，消除旧方向×4缓存别名及同姿势内影子30Hz拖后；停止时清旧距离相位。四向道路正常速离线合成使用生产路网／图集，不作为GPU或设备运行证据。没有证据证明斜下方向存在独有的投影公式错误，故记录为消除已证实的预览／道路差异，实机跳动是否完全消失仍由用户截图确认。
+
+战斗v2增加近臂上／下段、两腿大／小腿的共同注册分区和数据姿势，运行与正常GIF同源JSON。主审退回整体倾斜v1，修完关节缝、原靴残片、剑被躯干吞掉／挡脸、错误支撑脚地平面和重复接触影。原v9脸／后脑／肩背保留，idle与build35七层运行合成一致；旧assembled对runtime的630像素差为最大单通道1级的合成舍入，头脸无新增差异。鹿灵新增8姿势完整蓄势／冲撞／回收，原站姿与三轮生成源均保留；统一缩放、脚底和接触点，不逐姿势重新拟合体量。完整人物／全场景正常速GIF、脚底、遮挡与缩放自审见Media/Build37/art-review.json；不把内部审核扩展为用户美术认可或完整换装模组完成。
+
+交互与场景时序已联通：AP／目标／HP／护盾、强击／喘息／防护、敌方预备与攻击、胜负／重试，动作中禁重复输入；关闭取消延迟与旧回调。命中位置跟实际剑尖，落脚／轮廓影同姿势更新，护盾与HP在命中阶段更新；敌方动作后保留完整受击／格挡恢复时长。原UI与布局单测源码已适配新遭遇，未执行模拟器；设备归档前将在macOS仅编译运行生产Foundation状态机、道路逻辑和提取的生产姿势数学三个回归脚本，再做设备Release编译。工程生成器／项目版本均为1.6.11 build37。
+
+源码75c50ee已推送，手动设备归档39733557955已排队；package_only=true，所有模拟器任务跳过。补充Media/Build37阅读索引，明确正常25fps全场景合成为离线美术检查（使用同源动作JSON与固定palette），不是UIKit／GPU运行截图；原始120ms动作／步态GIF同时保留。归档与真实Swift检查待构建机执行，尚未交付IPA。
+
+设备构建macOS14通道39733557955长时间排队后增开macOS15通道39733975860（Xcode16.4）。后者已通过项目检查和真实战斗状态机回归，但macOS命令行道路测试缺少CoreGraphics导入，CGPoint.zero／Equatable无法解析，故在归档前停止、无IPA。已给道路harness及提取的姿势数学harness明确导入CoreGraphics；不改iOS运行代码或美术。修正后重跑全部三项和设备归档。
+
+最终布局几何复核发现16:9窄高战场的脚下HP标签会接近视窗底边，已移到完整角色／鹿角上方，并保留48pt标题安全线；不改获认可的世界相机、角色尺度或落脚位置。此为静态布局检查发现的问题，须包含到最终设备归档，未跑模拟器。
+
+重跑39734301977的状态机再次通过，道路测试发现harness将反向道路端点固定当45°斜向，实际平滑曲线端点可能是正交切线，故断言失败、未归档。现以四个标准斜向向量严格验证朝向映射，生产曲线则验证端点切线所属行进象限／连续性；未改生产方向分类。三个脚本改为全部执行后汇总退出，后续失败时能同时看到姿势数学结果，避免前项断言遮蔽后项；任何失败仍禁止归档。
+
+39734788361已通过真实战斗、道路和姿势数学全部回归；设备Release编译只报场景对非可空poseSilhouette误用?.的接线错误，已改为直接调用。无美术／时序变化，尚未产生IPA，继续相同设备归档。
+
+设备Release归档39735185139成功，实际编译源码dca8fd997ce78706ed82277c50eedfd85fc79093、Xcode 16.4 / Build version 16F6、1.6.11 build37。真实Swift战斗／道路／姿势数学三项全部通过，模拟器和实机均未运行。IPA已核对外层artifact摘要与CRC、内部CRC／ZIP_STORED／无额外字段、iPhoneOS平台、arm64可执行文件与权限、版本号、Metal库／编译资产、包内步态JSON逐字一致，以及远程打包日志SHA；全部通过。原始IPA为24,200,213字节，SHA256 0bc40e083b12b0ee7f7ccd424cb2dc8c07a1c7381300697454c4c78d2e04ccfd，现复制至Downloads/MeadowJourney-b37.ipa。来源／检查见Media/Build37/package.json，接下来上传并实际GET直链，不交付外层ZIP。
+
+原始IPA直链已实际匿名GET：HTTP200、application/octet-stream、24,200,213字节，SHA256 0bc40e083b12b0ee7f7ccd424cb2dc8c07a1c7381300697454c4c78d2e04ccfd，与本地／远程归档日志一致。Downloads当前索引、校验表、Media/Build37与交付元数据已同步；保留build36与历史原件。交付直接IPA，不使用外层ZIP。实机安装、帧率／触控与截图仍由用户验收，本轮没有设备／模拟器运行。
+
+## 2026-10-22 · build38 左上左脚落地过渡修订（已交付）
+
+用户反馈左上移动时左脚从抬起到落地没有过渡。本轮沿用自主美术审核、记日志与IPA直链交付约定，开独立Luna6高强度智能体up_left_contact_repair与主审并行。已从完整人物定位为01→02左侧靴可见鞋底末行约210→223（接触边界224）的一帧突降；不以08首尾修订代替此次中段问题。拟另存contact-r1，02增加下降接地前姿势、保留右脚支撑，再衔接03承重，整组120ms正常循环和道路合成自审。原r6／loop-r1与认可记录保留，不改标用户认可；实机／模拟器仍不运行，设备编译与归档完成后交IPA。
+
+contact-r1完成并由主审接入：01→02→03左靴最后可见行210→215→223，右靴223→223→213，02保持右脚支撑、左脚下降后03接触承重；120ms节奏不变。完整人物比例／注册、全循环与07→08→01→02→03逐姿势顺序已自审，另存48帧正常速道路离线合成。最初两个生成稿因头／上身漂移退回，最终完整02统一注册，生成源与精确提示保留。发现继承单帧与旧strip透明区域隐藏RGB有细微差异，改从原始strip裁切未改8帧，确保运行图集RGBA仅左上02改变。
+
+新足底使用既有边界口径：右支撑[142,224,0]，左下降[110,216,8]，同步到映射02的三个距离时钟采样。八原认可strip摘要、新strip到运行RGBA、其余角色／方向、旧认可记录、GIF8×120ms、道路48×120ms与项目资源检查通过。原r6／loop-r1及build37审核证据保留；新修订仍为内部审核，不记用户新认可。版本1.6.12 build38，下一步仅跑构建机真实Swift逻辑／姿势回归与generic iOS设备Release归档，无模拟器／实机运行。
+
+设备Release归档39742884627成功，实际编译源码06827e1d9f7a7654d0a6646442ed9b5a58671f83、Xcode16.4／16F6、版本1.6.12 build38。真实Swift战斗／道路／姿势三项回归通过；无模拟器或实机运行。已核对外层artifact摘要与CRC、IPA内部CRC／ZIP_STORED／无额外字段、iPhoneOS平台、arm64与可执行权限、版本、Metal／编译资产、包内hero-gait逐字一致、远程归档成功与打包SHA。原始IPA24,201,944字节，SHA256 d36b0a78bb48345fd829ce3967d139faeb3d604020c4250cdabca485ae5673fe，复制到Downloads/MeadowJourney-b38.ipa；来源见Media/Build38/package.json。下一步上传并实际匿名GET直链；尚未把未验证地址记为交付成功。
+
+原始IPA直链已实际匿名GET通过：HTTP200、application/octet-stream、24,201,944字节，SHA256 d36b0a78bb48345fd829ce3967d139faeb3d604020c4250cdabca485ae5673fe，与本地IPA／远程打包日志一致。Downloads当前索引、校验表、Media/Build38审核及交付元数据同步；保留build37历史包。用户复制链接即可下载IPA；未进行模拟器或实机运行，实际步态仍由用户安装反馈。
+
+
+## 2026-10-25 build44 返修进行中：连续特效与状态栏
+
+用户指出回血抽帧、护盾突然出现、攻击粒子采样偏低，并要求更大更粗的统一字形、血条与可悬停说明的方形buff。
+主线程独自修复：30Hz更新改目标60Hz；实际时间推进仅对超过250ms的长停顿封顶；死亡原650颗同UV粒子重新60Hz采样，体48帧/风116帧，风图集只裁屏幕右侧不可见余量；异步预热解码。回血取消cos过零瞬间翻面，连续缩放与旋转，26星点稳定ID。护盾从施法开始0.46s渐入，生效点亮度连续，完整包裹/直接随hero和破碎事件保持。前后景共用粒子计算，光池缓存遮罩、投影阴影缓存小图，减少逐帧梯度/模糊开销。记录真实display-link间隔和更新CPU到Documents/BattleFrameTiming.json（只写动作完成/退出，不虚构GPU/设备测量）。
+界面沿深绿/金边/米白，较大粗衬线字体（系统中文回退）；HP/护盾/AP条，移除说明占位卡保留三技能卡。护盾buff以方框展示，hover/键盘焦点/点按显示剩余值、吸收优先与耗尽移除，不添加假buff或改变规则。
+目前新增连续性纯Swift回归已通过；正常50fps GIF正在离线合成（正常时长，runtime目标60Hz）；美术审核、Xcode设备Release归档和IPA交付待完成。无App/模拟器/实机运行，性能最终由用户实机反馈；artApproval=null。旧角色/动作JSON/行走资源和相机参数不变，历史文件保留。
+
+
+### build44 完成核对（2026-10-25）
+
+源码1236b9010352db5417665432066b079c7ff6b7fc，iPhoneOS Release归档40182000958成功，五项纯Swift通过；macOS/Linux控制轨迹逐字段一致（浮点1e-6）。无App/模拟器/实机执行。归档IPA内部版本1.6.18/build44、arm64、资源/Metal/双外观/步态摘要与ZIP完整性已核，30,292,842字节，SHA256 b2f1587658e56e6019c3b448310da16297a453ce1f4cb13bd648c02e5736791c。
+
+主线程退回离线HUD重叠稿，重排三技能卡、状态条与大粗衬线字；保留drafts/overlap-review-hud。已看最终三GIF23页/880实际解码帧与原尺寸关键帧（静态序列不称连续播放），正常50fps：强击330帧6.6s，盾360帧7.2s，回血190帧3.8s；无损压缩与等比缩放，不改时间。另做整身1×/2×图。产物Art/Review/Battle/smooth-status-demo-v1、Art/Integration/Battle-smooth-status-demo-v1与Media/Build44。原素材/行走/动作JSON/相机代码保持，505姿态圆盾覆盖继续通过。运行目标60Hz而非设备性能实测；新图集解码约83.6MiB，GPU/实机性能由用户反馈。buff当前仅已有护盾，未添加其他机制。新美术认可null。
+
+交付提交f8822c9dd6faef9422283371b6048d618a95617b已发布；86个选定交付路径与11个归档输入路径逐字节核对，17882旧美术/步态远端路径保持。8个HTTPS（含不可变与分支IPA、三GIF、三PNG）均实际GET200、MIME/完整字节核对，GIF全部20ms/帧且正常时长。回执Art/Review/Battle/smooth-status-demo-v1/delivery.json。IPA直接链接https://raw.githubusercontent.com/liamchan-rgb/experiment/fix/build33-face-grounding-camera/Downloads/MeadowJourney-b44.ipa。
+
+
+## 2026-10-25 build44 安装兼容重封装 r1
+
+用户截图SideStore“Archive appears to be corrupt: MeadowJourney-b44.ipa”。本轮重新GET原公开IPA，30,292,842字节/SHA b2f158...与本地/设备归档相同；CRC通过，原43与44除版本号外Info.plist无变更，同arm64/iOS15最低版本，无加密，未复现设备错误，不能断言已定位根因或安装通过。
+
+复用scripts/repack-ipa.py经典ZIP2.0重封装为Downloads/MeadowJourney-b44-r1.ipa，清除扩展/注释，无压缩/无ZIP64；逐文件确认全部App内容、路径和权限不变，本地头与中央目录CRC/大小/版本字段一致。仍1.6.18/build44、同源码1236b901/归档40182000958，无新功能/素材变化或App/设备/模拟器运行。新包30,292,842字节，SHA256 945bdd2f930f4944a30e4e76a07d33d3e159944e26c6af7d61222f16ac103449，旧包保留。后续package-ipa.sh自动走同一规范化步骤，bash语法检查；真实SideStore安装待用户复测。新文件名用于避开原下载缓存；重封装提交7b86b0d731ddb21e7749905cd8ecfb96ac40d51c；新不可变链接实际GET200、全部30,292,842字节与SHA验证通过，下载回执见Downloads/MeadowJourney-build44-r1.json。实际安装仍待用户反馈。
+
+
+## 2026-10-25 build45 统一60帧目标（进行中）
+
+用户要求帧率提升到60。核查build44已有地图MTKView输出60与战斗display-link60请求，但静止地图的光影/雾背景重绘仍30Hz；步态审核SKView此前用系统默认值。本轮明确战斗CADisplayLink的minimum/maximum/preferred均60，地图/步态SKView显式60；取消环境30Hz门控，让动态环境跟随每次提交的scene时间样本，静态无环境的步态底图仍可复用。角色位移、步相、光影均按真实时间推进，不加快已认可动作/改画角色或重设技能数值。战斗诊断build号改读取实际Bundle，避免固定44。
+
+只设60目标不等于实机稳定60；不运行App/模拟器/实机，待用户反馈。沿用build44-r1的经典ZIP2.0无压缩规范化打包，安装问题根因和设备结果仍未确认，旧包保留。计划1.6.19/build45，纯Swift/设备归档和新下载核验待完成。本轮无美术源或动作数据变更，不生成冒充实机60fps的离线GIF。
+
+另外核对到build44三份元数据复制了build43的sourceCommit（0c9f1e7），已更正为其真实归档40182000958输入1236b901。IPA内容/摘要/实际CI输入和先前交付源码核验均未变；这是元数据纠错，和安装报错未建立因果。
+
+
+### build45 完成归档与封装核对（2026-10-25）
+
+源码abcaa88f41787630c6c63d0460f6b96de2d7e935，归档40201819354五项纯Swift和iPhoneOS Release通过，无App/模拟器/实机执行。Linux/macOS控制轨迹逐字段相符（浮点1e-6）；10806旧美术/资源路径和动作/移动/技能模型、相机代码保持。未生成新美术/动作图集或用离线GIF声称实机60fps。
+
+IPA1.6.19/build45、arm64/Phone+Pad/最低iOS15、可执行权限/Metal/现有60HzVFX/两套P1外观/步态字节已核；经典ZIP2.0中央与本地头、无压缩/无扩展/注释/ZIP64、全部CRC通过，30,293,018字节，SHA256 67a5ad78757864506d53f7b8477ec80b90ea340ceaa7ebf0b08ff3bafe9a3d07。沿用SideStore重签，真实安装和稳定FPS仍待用户测试。交付提交3ada1140013b75947c2b1a4969c57797c769c7e1，17个选定交付文件与6个运行/打包输入逐字节核对；不可变与分支两个直接IPA链接均实际GET200、完整字节/摘要一致。回执Media/Build45/delivery.json。真实安装与稳定60fps仍待用户反馈。
+
+
+## 2026-10-25 桌游技能与物品清单核查／制作计划 v1
+
+用户仅要求检查清单并列制作计划，本轮未开制作、改规则或打IPA。只读classroom-boardgame的9分支（8源码/1二进制归档）；8源码分支initial-content blob同为8d1de78b54fc049dbe579026e5afcf0a79f36a11。main1e9100c4c18364ea64b3ec974fe957ba4ef42f6f与战斗分支a0427b83d9233f1a83178b3c47d3fab39eed664e的内容/资源清单一致；catalog SHA256 aaab980fd5f3154ac813a02dc907a835ee0e0181c4149f2b7803d9594795f34a。实际为19技能（12职业、2套装、5怪物）、18物品（6武器、4甲、4饰品、4消耗/救援）、2套装，19/18按ID完整保留并各入一次制作批次。旧18物品图标实际下载匹配bindings SHA256，主线程查看18图联系页；旧12通用8帧特效及基础变换动画存在，不能因早期manifest仍planned误报没做。旧独立heavyStrike-trainingSword稿也已从GitHub核回，保留历史不自动升级认可。
+
+提议B0复用现有三技能、规则回执/多目标/buff底座，B1援护/振奋+四道具，B2突袭+八基础装备，B3符文三技能，B4龙骑三技能，B5六套装件/两技能，B6五怪物技能。武器/甲按八向13行走绑定与战斗独立挂载；饰品/药水优先复用图标，技能效果按方向/挂点参数化，避免所有东西都画八套。明确现demo固定5/不限次/叠盾与正式D6+2/2次/max盾不同，接规则另列；复活石同节点2AP恢复半最大生命/下轮行动，玩家倒地形体保留；自然20读原伤害骰，玩家/怪物龙焰独立，群体按目标节点，不能按特效推断规则。当前鹿灵不等于正式6怪已做；三有技能怪的身体/挂点、其余普通攻击是依赖。
+
+可恢复文档、保留定义的完整目录快照/旧绑定/动画清单、9分支审计、旧图标联系页在docs/planning/boardgame-skills-items-v1。计划仅存experiment，不修改桌游原开发计划、任何classroom-boardgame分支/存档索引或App资源；本轮无新美术、逻辑测试、设备构建或模拟器/实机运行。原有认可不扩大，新制作尚未开始。文档ID覆盖/源定义逐字段保持检查通过。
+
+
+## 2026-10-25 build46 B0/B1 开工：原规则核心、小队支援与道具（进行中）
+
+用户“按你的计划开始做”授权执行。新增独立小队支援演练入口，保留单人原演练；2玩家/2鹿灵目标，复用现有P1身体/鹿灵/场景/回血圆盾素材，复用桌游4道具图标原字节。只读固定桌游main1e9100c4的GameCore，Sources与初始19技能/18物品字节保持，清单UPSTREAM.json；原72纯逻辑测试保留。SPM manifest适配纯Foundation最低iOS15并新增独立MeadowBattleSupport模块，不改桌游源仓库。内存仅追加训练鹿灵模板，不把复用外观算成正式狼/巨魔/魔龙完成。
+
+原GameEngine preview仅验证，实际效果在视觉命中点apply一次，session/operation ID重放不重扣；援护合法友方恢复6/授盾至4，振奋节点队友增伤2/1轮；原授盾max/增益覆盖与轮数、骰子/次数/AP均原核心结算。小/大治疗药水、盾药水、复活石共用入口，真实库存扣除，救援2AP半血/下轮行动。玩家倒地保留并反向既有defeat动作起身，不用怪物消散；单人固定伤害测试区保留并区分小队正式规则适配。现有基础核心75测试已通过，新增救援/增伤/轮数/帧率/取消检查正在验证；真实UIKit/美术复核、正常GIF/站姿、设备归档/IPA均待完成，无App/模拟器/实机运行。目标60Hz沿用，真人测试由用户负责。新美术认可null。
+
+
+### build46 主线程首稿复核返修
+
+首源码d0444cadc3a9dea1232c6fc274aa156ff70f300d的归档40211008335已通过78纯GameCore/适配测试、既有五纯Swift与设备Release，没有App/模拟器执行。整场原尺寸审核发现治疗/授盾浮字遮挡P1脸部，已移到人物右方并重新合成；首稿关键帧/原因保留，不能交付这个旧包代替返修版。玩家受击倒地补0.6s连续既有defeat姿态、复活逆向起身，HP0/半血事件保持原核心；新增连续性断言。重新归档/正常动图与核验待完成。
+
+
+### build46 结算演练复核补充
+
+援护/振奋/三药水/救援导出改为五段实际GameCore受控轨迹，包含小/大治疗与护盾药水真实库存消耗，另加增伤普攻致死及盾面接触场景（该审核场景将敌甲初始HP设3，明确为受控审核，不冒充默认开局/实机）。源场景默认18HP仍保持。查出新多单位冲撞需要按目标原护盾截停，已将接触点与实际圆盾半径注册，并加前沿精确重合断言，避免照搬无盾推进后穿盾。玩家起身/倒地连续、主角右方浮字、剩余技能按钮等宽占满实际可用空间；最后一AP提前切换逻辑队列时，动作字幕仍标记真实施法者。CI额外导出纯规则审核轨迹供Linux/macOS逐字段比对；最终归档与美术/下载核验待完成。
+
+
+### build46 完成B0/B1候选与归档（2026-10-25）
+
+本轮B0/B1小队支援已接入：援护、振奋、三种药水与复活石，2玩家/2敌目标、真实buff/AP/次数/库存与一次结算。入口为林地战斗→左上“小队支援”，原单人演练保留。正式盾max、buff轮数、救援2AP/半血/下轮行动由原GameCore执行。角色/步态与原资源10806路径保持，原13核心源文件/目录SHA匹配；两个P1与训练鹿灵复用不算新职业皮肤/正式怪完成。
+
+首稿浮字遮脸/倒地突变与新盾面穿入问题由主线程自己修复，旧稿关键图保留；最终亲看五正常GIF全部1190解码帧/31页、12完整人物1×/2×共4板与关键帧。援护连流、振奋上升、三药水与复活连续起身、增伤击杀/盾面接触均有独立预览；每帧20ms，正常总时长3.2/3.2/7.4/3.6/6.4秒。只有离线合成/静态序列检查，非UIKit/连续播放/设备录制。复活和致死预览用受控初始状态，默认App仍两敌18HP，不虚称倒地新平躺美术。新artApproval=null。
+
+最终源码cf245fe98d2234941423e487bacc8be0f67685be，归档40212372613通过79纯GameCore/适配测试、原五纯Swift、iPhoneOS Release；Mac/Linux审核导出逐字段匹配1e-6。IPA1.6.20/build46，31,740,108字节/SHA256 3cd7c942e82d91a238ba9f11f4921c88f24a640734fbb38154f1e008f04e855d。经典ZIP2.0/CRC/平台/版本/权限/Metal/图标/VFX/行走及原内容表入包已核，元数据sourceCommit明确为本次输入。目标60Hz，原地图在小队全场时停渲染；无App/模拟器/实机执行，安装/输入/稳定FPS由用户反馈。正常五GIF/站姿/审核/包见party-support-demo-v1、Media/Build46；直接IPA与公开下载待本次发布核验回执。
+
+
+build46公开交付核验完成：提交 5b5114ed751e7020f1bb7823805cb76b179cc254，105条选定交付路径Git blob核对；241编译输入与最终归档源码逐字节一致。固定提交/分支两个直接IPA、五正常GIF、六关键PNG共13个HTTPS完整GET200，MIME/完整长度/SHA256与本地一致，五GIF分别160/160/370/180/320帧且均20ms。回执Art/Review/Battle/party-support-demo-v1/delivery.json。直接IPA和正常动图实际交付，不发ZIP；真实安装/输入/稳定60FPS和用户美术认可仍待反馈。
+
+
+## 2026-10-25 build47：多人共享布局/回合进度、头顶骰子与怪物动作（进行中）
+
+用户判退小队另设UI与缺怪物动作，要求悬停压暗保留、改分类摇动骰子并过渡真实结果。改复用单人布局、回合轨道/四token、技能卡与状态条，恢复左侧地图渲染；各单位头顶生命/盾条，下方显示当前行动者生命/盾/AP与buff。骰子解析时间持续摇动，在原核心命中回执到达后0.36s停稳/交叉淡入结果，定值治疗/授盾/增益保持原规则；伤害骰值来自receipt而非特效重掷。援护绿/蓝，攻击红/有增伤附黄。单人旧定值演练同步同一骰子组件，不冒充已改正式随机伤害。鹿灵复用原攻击八帧，加足底注册待机/蓄势/受击闪白后退/回收；不声称新绘六正式怪物或五怪物技能完成。83纯规则/适配测试通过，语法解析通过；设备归档与美术/下载核验待完成。无App/模拟器/实机运行，目标60非设备测量，新认可null。
+
+
+build47主审再修：整场比例发现前冲末端双骰贴近敌HP条，现随推进连续内收18原生单位、回位平滑还原，并加实际间距断言；初稿图与原因保留。战场用同源注册层overscan填满共享卡片，角色/镜头动作不变。单人胜负过渡补骰子淡出；84纯规则/适配测试通过，最终正常动图与新设备归档重新核验。
+
+
+### build47最终审核与归档（2026-10-25）
+
+多人战斗已恢复单人同款左右地图/战场、回合进度条、技能卡与生命/护盾/AP条；四单位进度token与当前行动者状态同步。预备人物光效改头顶持续摇动骰子，仍按技能固定强度压暗。红伤害、黄增伤、绿恢复、蓝护盾，援护绿蓝同时出现；确认后沿人物前冲跟随，命中回执到达后0.36s平滑停稳，保持可读后淡出。 单人演练同步共享骰子（保留定值伤害5）；分类恢复/盾/增益不额外随机，药水名义12受HP上限实际恢复6，数值规则保持。
+
+鹿灵补注册足底的轻微待机/蓄势/受击闪白后退/回收，原八帧冲撞与HP0/数字同时右吹保持，不称新增全动作库/六正式怪/B6完成。root独自复核五正常GIF共1060实际解码帧/38页，以及6人物/6怪物整身1×/2×共4板与原尺寸关键帧；双骰贴敌HP条首稿修平滑内收18，图/原因留drafts。静态序列检查不冒充连续播放或UIKit/GPU画面，地图/光照/UI近似；固定seed47和致死预设敌3HP明确标示，新认可null。原10814资源路径/核心13文件摘要保持。
+
+最终源码463d221dbf80752a75d3d1449b859f76d841b03f、归档40217822252通过84纯规则/适配测试、既有五检查和iPhoneOS Release。Linux/Mac1060帧Dice/monster/queue逐字段一致1e-6（acted无序集合按集合比对），原轨迹/请求一致。IPA1.6.21/build47，31791196字节，SHA256 be893efe718c77d250d4b323b268fb5791dc00b730f68c44fc0b2e45daf6525e；工件摘要/包CRC、经典ZIP2.0本地/中央头/权限/平台/版本/Metal/VFX/图标/行走/原内容表资源核对通过。无App/模拟器/实机/UI运行，实际安装/交互/稳定60FPS由用户测试。公开交付/完整GET核验回执待本次上传，依据dice-party-demo-v1与Media/Build47。
+
+
+### 2026-10-26 build47公开交付核验完成
+
+交付提交 4c8879729872f9a5e331ac264515a50796d135f9，110条选定交付路径Git blob核对，242编译输入与最终归档源码逐字节一致。固定提交/分支两个直接IPA、五正常GIF、六关键PNG共13个HTTPS完整GET200，MIME/完整长度/SHA256一致；GIF300/190/190/190/190帧、均20ms。回执Art/Review/Battle/dice-party-demo-v1/delivery.json。直接IPA/正常动图实际交付，不发ZIP；真实安装、输入、稳定60FPS与用户美术认可仍待反馈。
+
+
+## 2026-10-26 build48：真实多面骰翻面、公式与逐骰回执（进行中）
+
+用户指出仅变数字无翻面感，要求D4/D6/D8/D12/D20与不同加成骰型。新增纯Swift四/六/八/十二/二十面几何（另兼容原目录允许的D10），凸闭合拓扑、固定面值、法线光照/背面剔除/透视与面内文字投影。悬停持续三轴翻滚，实际命中回执后用积分减速和四元数插值0.65s停至结果面，数字跟随其面翻转，不悬停重掷或预知结果。保留技能强度压暗、整场UI/进度条、怪物与角色原图/动作、释放/粒子/回血/圆盾和HP0同时右吹。
+
+普通攻击悬停改读真实武器GameRules.attack（D6短剑/D8猎弓/D12重剑/D20权杖），技能逐effect.dice/count/flat展开所有骰子，原2D8/2D12均两颗且各读receipt.values，不拿总值或第一颗伪装。原定值治疗/授盾/增益不改随机规则，单独类别牌标明固定值；实际结算仍原核心一次apply。D4/D10为本轮离线目录夹具，不写源目录或默认App装备，不声称新武器/突袭/符文整套动作完成。第一版落定过正/数字字幕越界已主审判退保留，现按骰型修倾角、D10比例与字幕布局。90纯规则/适配/几何/落面/连续性测试与语法/项目校验通过；正常GIF、美术复核、设备Release与兼容封装直接IPA仍在核验。无App/模拟器/实机运行，新认可null。
+
+
+### 2026-10-26 build48 多面骰最终候选与设备归档
+
+用户指出骰子应有翻面感，按实际公式使用D4/D6/D8/D12/D20。主线程独自实现真实多面体/三轴四元数/透视/前后面遮挡与面数字投影，另兼容原规则D10。收到原回执后0.65秒连续减速至真实结果面；普通攻击预览读取真实武器公式，skill各effect/count/flat逐颗绑定，固定增伤/恢复/盾显示分类牌，不改原规则。原短剑D6、猎弓D8、重剑D12、权杖D20按公式映射；D4/D10离线临时夹具只审形状，多骰突袭/符文仅审公式，B2/B3完整演出/装备界面不算完成。
+
+首稿D4/D6停稳过平、D10拉长、标签越界，主线程退回修正并保留drafts。最终四正常50fpsGIF合计850帧/29解码页已查看；6全场1×/2×、复用12人物/怪物整身1×/2×四板再次亲看，检查翻面/减速/结果可读性/头顶跟随和人物血条间距。静态解码审核不写成连续播放。角色/步态/场景原10814路径与13原核心/目录摘要保持，单人原结算不变；未来多通道技能布局需另审。
+
+归档源码4bc9855e4fe71b39022095741e64a95b05b3e133，设备Release40264624021通过90原规则/小队/几何测试及五旧纯Swift检查；Mac/Linux1190小队/3570请求/1060骰子怪物/360多面骰样本逐项比较，浮点容差1e-6，仅acted集合无序。IPA1.6.22/build48，31844500字节，SHA256 2f4bf3dbf66522c5dea71e55b93343f3734241d04c3148ce1d93ae2b3b7d155f，经典ZIP2.0/arm64/CRC/权限/当前资源/原目录包内检查通过。审核与四GIF/完整站姿在Art/Review/Battle/poly-dice-demo-v1；集成与包记录分别Art/Integration/Battle-poly-dice-demo-v1、Media/Build48。无App/模拟器/实机执行，目标60未测；实际安装/输入/FPS由用户反馈，新美术认可null。
+
+
+### 2026-10-26 build48公开交付核验完成
+
+交付提交ca7f285b5140dcc9c438fe81dd5b45041b78a6d9，104条选定交付路径Git blob与本地逐字节一致，244编译输入与最终归档源码一致。固定提交/分支两个直接IPA、四正常GIF、六关键PNG共12个HTTPS完整GET200，MIME/长度/SHA256一致；GIF180/180/300/190帧均20ms。公开回执Art/Review/Battle/poly-dice-demo-v1/delivery.json。正常GIF/浏览器直链/站姿/直接IPA一并交付，不给ZIP；未运行App/模拟器/实机，安装与实际FPS等待用户反馈，新认可null。
+
+
+### 2026-10-26 build49开工：突袭、交叉上升回血与骰子显示修复
+
+用户确认B2先突袭再基础装备，并授权本轮同时将回血绿光改为交叉螺旋上升。主线程独自开工；游侠新增突袭可操作入口，原清单2AP/2次/2D8+2/本人回血3不变，快进残影/两道视觉斩痕/命中/回位只对应一次原核心回执，末敌死亡亦保留回血。选中固定加值/治疗/授盾/复活即显示真实已知值，随机骰仍等待回执；骰面动画及落定字幕移除D类型文字。原单人定值演练同步立即显示。
+
+回血替换长光纹左右晃为连续双螺旋曲线：相差半周、向上相位流动、前后深度穿插，后半由身体实际遮挡，附着同一人物根，星点沿同轨上升；短亮核/绿地光与尾光仍保留。现94纯规则测试与VFX连续/双链对称深度检查通过。正在合成整场正常速度动图复核，无新武器/装备/B3制作，无App/模拟器/实机执行，新认可null。
+
+
+### 2026-10-26 build49最终审核与归档
+
+突袭已接入游侠技能栏：按原规则2AP、每场2次，伤害2D8＋2、自身恢复3。演出为预备→快速突进/三道淡残影→双斩痕/受击局部爆光与落地光粒→回位；两道斩痕仅一次原核心结算，目标受击与施法者回血分开注册。最后敌人死亡时仍完成本人回血与回位，满血不额外触发回血光效。原身体/攻击姿势重定时复用，不声称重绘人物或已完成八件装备。
+
+回血绿光改为两股相差半周的连续上升螺旋，绕完整人物的前后深度交替，后半由身体遮挡；星点沿同一轨道连续上升，减弱原静态长光柱/亮核，保留恢复亮点、局部地面绿光和渐隐尾光。前后光带与圆盾直接挂同一人物父节点，回位中同步移动。单人/小队的治疗与药水均复用新效果。
+
+固定加值、增伤、恢复、授盾和复活值在选中时即显示，不再等待命中才从问号变化；随机骰仍由原回执决定结果。动画不再显示D6/D8等骰型文字，落定读数只显示结果；技能卡的公式说明保留。根线程全场检查发现P2四/五通道回位后挤到P1生命条，已按整组实际半宽调整锚点，并复核前冲末端与敌生命条间距。
+
+主线程独自亲看30页820实际GIF解码帧，六完整人物、六整场1×/2×共四板；修复P2四/五通道压P1血条，保留初稿。另保留离线合成alpha错误初稿，修复预览工具后复查，不将其当App问题。静态解码检查不称连续播放或设备测试；字体/地图/光照/UI近似。原10814美术/资源路径、13原核心/目录摘要与单人规则/时钟前缀保持。
+
+最终源码`a5547de7ad20b5737443960bacc89d80f52ee2eb`，设备Release [40268729691](https://github.com/liamchan-rgb/experiment/actions/runs/40268729691)通过94规则/适配/几何测试及五项旧纯Swift检查。Mac/Linux1190小队帧、3570请求、1500骰子/怪物/突袭帧与360公式图库逐字段比较在1e-6内一致，仅acted集合无序。双链镜像深度/连续性由生产纯数学检查覆盖；4500离线光场样本不是实机捕获。
+
+IPA1.6.23/build49、31878244字节，SHA256 c4dae118ee027eb2c6e595ad34bede6bd734f84ddb65b05a09f844cdc2d1d65d，包工件摘要/CRC/经典ZIP2.0本地中央头/权限/平台/Metal/当前资源/原目录已核。正常四GIF/站姿/整身与审核在Art/Review/Battle/ambush-helix-demo-v1，集成与包分别Art/Integration/Battle-ambush-helix-demo-v1、Media/Build49。无App/模拟器/实机/UI执行，实际安装/输入/FPS由用户反馈，新认可null；B2八件基础装备下一小批，B3—B6未做。
+
+
+### 2026-10-26 build49公开交付核验完成
+
+交付提交a947bce4a124a79c2750db8ce83c0a06c57a4f4b，118条选定交付路径Git blob与本地逐字节一致，245编译输入与最终归档源码一致。固定提交/分支两个直接IPA、四正常GIF、六关键PNG共12个HTTPS完整GET200，MIME/长度/SHA256一致；GIF220/220/190/190帧均20ms。公开回执Art/Review/Battle/ambush-helix-demo-v1/delivery.json。正常GIF/浏览器直链/站姿/直接IPA一并交付，不给ZIP；未运行App/模拟器/实机，安装与实际FPS等待用户反馈，新认可null。
+
+
+### 2026-10-26 build50开工：确认停骰、方块无字幕与击打点伤害
+
+用户要求治疗技能越强、光带越粗越华丽，已记录Art/Standards/BattleHealing-v1及AGENTS，不以此声称本轮已完成所有治疗分级。本轮骰子确认时立即锁定原核心本次结果，隔离GameEngine事务暂存，活跃HP/AP/RNG/历史到命中才提交且不重掷；取消/过期状态保护。固定值方块去下方字幕，随机骰无骰型字幕继续保持。伤害/格挡数字在实际怪物身体或盾面击打点居中出现后轻微上浮，回血浮字保持独立位置。原规则/清单/人物/步态/螺旋/圆盾/击杀右吹保持；无App/模拟器/实机，新认可null。
+
+
+### 2026-10-26 build50最终审核与归档
+
+悬停时骰子继续翻动，点击确认技能时立即停在本次原GameCore掷骰结果面并显示点数，随后保持到命中后淡出；取消原来的“命中后再减速停骰”。确认只在隔离事务中求值一次，活跃HP/AP/次数/库存/RNG/历史仍到实际命中提交，没有提前扣血或第二次掷骰；取消丢弃，状态被外部修改则拒绝旧事务。固定加值方块仅保留色块和数值，下方字幕全部移除。伤害/格挡数字改在怪物身体或玩家/盾面实际击打点居中出现，再轻微上浮，回血浮字保持独立位置。单人原定值演练同步方块无字幕与击打点数字。怪物显示使用当前演练目录，保留本地训练模板的真实骰型。
+
+长期标准已写入Art/Standards/BattleHealing-v1/README.md并加入AGENTS：恢复技能越强，光带越粗、光核/粒子/地面染光与收尾层次越华丽；强度来自技能本身，不随悬停增加、不新增蓄力层级。本轮记录标准，不声称已将所有恢复技能重新分级制作。
+
+主线程亲看25页710实际解码帧及六完整人物/六全场1×/2×四板；确认停骰、未提前扣值、击打数字中心/上浮/致死同事件和方块无字幕复核。离线字体/混合/地图/光照/UI近似，静态序列检查不称连续播放或实机。源码`a47f5d1ccf852337a784e3373e42a655ce1b2e54`、设备Release [40272222309](https://github.com/liamchan-rgb/experiment/actions/runs/40272222309)，97纯规则/适配/几何/事务测试与五旧纯Swift检查通过。Mac/Linux1190小队帧/3570请求/1500骰子与怪物帧/360公式图库在1e-6内一致，只有acted集合按无序比较。原10814美术/资源路径、13原核心/清单摘要与单人模型/时钟前缀保持。
+
+IPA1.6.24/build50，31878612字节，SHA256 ee3e6dcd9c253a374ed117aa2aeabe294cfbe68dabbbf432c28a8f9041c05cc9，工件摘要/经典ZIP2.0本地中央头/无压缩/无extra/comment/ZIP64/CRC/平台/权限/Metal/当前资源/原目录已核。无App/模拟器/实机执行，安装/输入/FPS用户测试，新认可null；正常三GIF/站姿/整身见Art/Review/Battle/confirm-impact-demo-v1，包见Media/Build50。
+
+
+### 2026-10-26 build50公开交付核验完成
+
+交付提交4858744e4dbcc24b9e9144ad38c71e3adbd4767f，96条选定交付路径Git blob与本地逐字节一致，246编译输入与最终归档源码一致。固定提交/分支两个直接IPA、三正常GIF、五关键PNG共10个HTTPS完整GET200，MIME/长度/SHA256一致；GIF220/300/190帧均20ms。公开回执Art/Review/Battle/confirm-impact-demo-v1/delivery.json。正常GIF/浏览器直链/站姿/直接IPA一并交付，不给ZIP；未运行App/模拟器/实机，安装与实际FPS等待用户反馈，新认可null。
+
+
+### 2026-10-26 build51开工：停骰摆正、去重复数字、死亡隐条、黄色菱形AP
+
+用户截图指出停骰歪斜、下方冗余数值和死亡0血条。确认仍一次保留原核心结果，不改命中才提交的事务时序；各面几何采用统一朝上基，结果面正对屏幕，所有随机骰移除下方重复数字，固定方块无下字幕保持。怪物HP0同一更新隐藏完整状态牌；复位自然重新显示，玩家倒地状态保持。单人/小队AP共用黄色菱形，剩余填亮/消耗暗空心，保留原槽位/行动队列布局。新增所有支持骰型/全部结果面的朝向、正字、稳定投影检查；98纯测试通过。治疗强度标准、原双螺旋/圆盾/击杀右吹/源人物步态和原核心清单保持。本轮无App/模拟器/实机，新认可null，之后检查离线正常GIF与整身再交付IPA。
+
+
+### build51归档比对返修
+首次设备归档40277719223成功，但Mac/Linux多面图库在正对屏幕后的等深度侧面有浮点排序差异；原几何/数值一致，未交付该包。主线程修正生产排序：深度量化至1e-9并按面数值打破同深度平局，不能只放宽比对、隐藏差异或复用旧IPA。重新导出/合成审核与归档后才交付。
+
+
+### 2026-10-26 build51最终审核与归档
+
+确认技能时仍立即锁定原核心本次结果，结果面正对屏幕、面上数字朝上；各面统一朝上的几何基，停止时不再保留三轴倾角，也不因四元数正负等价表示变化而抖动；深度量化与面值平局规则固定跨平台等深度面的绘制次序。D4/D6/D8/D10/D12/D20全部结果面均检查。随机骰移除下方重复数字，数值只留在骰面；固定加值方块内的数值保留，下字幕继续隐藏。怪物HP0同一次呈现更新隐藏完整名称与生命/护盾条，并同步伤害数字及右吹消散；重置重新显示，玩家倒地牌保留。单人和小队共用黄色菱形AP，亮实心表示剩余、暗空心表示已耗，上限取原状态数据，保留原槽位与行动进度队列。
+
+源码`850ea80801ee4ab0e57cbed4cd37b93f9febe942`，设备Release [40278764694](https://github.com/liamchan-rgb/experiment/actions/runs/40278764694)成功；98纯规则/事务/几何测试及五旧纯Swift检查通过。Mac/Linux1190小队帧、3570请求、1500骰子/怪物帧与360骰型/公式帧逐字段在1e-6内一致，acted集合按无序比较。原10814美术/资源路径、13原核心/清单摘要与单人模型/时钟前缀保持。
+
+主线程亲看25页710实际GIF解码帧及六人物/六全场1×/2×四板、六骰型。最初图库取3.58秒已淡出的空白帧，改取2.0秒有效落面后重新亲看；无源美术返工。离线正常20ms帧，非UIKit/实机与连续播放验收。致死夹具HP3，2.04秒仍有血条，2.06秒HP0/死亡age0/数字/隐条同时，默认怪仍18HP。起初Linux缓存挂载路径不匹配，恢复原/repo挂载后通过；新增检查发现停稳四元数等价正负表示随时间变，改为满停时直接返回统一目标四元数后98项全通过，不放松方向判定。
+
+IPA1.6.25/build51，31878628字节，SHA256 0121c60bd65e150dd4b02e913ad76a9fd82dbe1a75d24da9fa68e2ae4a0e9523；工件摘要/经典ZIP2.0头/无压缩/无extra/comment/ZIP64/CRC/平台/权限/Metal/当前资源/原目录已核。GitHub工作流使用已有ios.yml的quick_lab=true/package_only=true，未运行App/模拟器/实机；安装/输入/FPS用户测试。正常三GIF/站姿/图库见Art/Review/Battle/upright-dice-hud-demo-v1，包见Media/Build51，新认可null。
+
+
+build51公开链接核验发现交付脚本继承旧的b50文件名；立即恢复原build50字节，build51原始归档字节另存Downloads/MeadowJourney-b51.ipa并修正包元数据。不改App或归档内容，不复用先前错误路径的下载回执。重新完整GET验证b51固定提交/分支直链后再交付。
+
+
+### 2026-10-26 build51公开交付校验
+
+交付提交07168742de9643f3b7163a98e361f97d7e0dea61，97条选定路径Git blob与本地一致，246编译输入与最终源码相同。固定提交和分支直接IPA、三正常GIF、五关键PNG共10个公开HTTPS完整GET200，MIME/长度/SHA256一致；GIF220/300/190帧均20ms。回执Art/Review/Battle/upright-dice-hud-demo-v1/delivery.json，正常GIF/浏览器直链/站姿/直接IPA实际交付，不发ZIP。无App/模拟器/实机，新认可null。
+
+
+### 2026-10-26 build52开工：B2训练短剑与连续停骰
+
+用户授权下一项训练短剑，并追加停骰不要直接跳停。复用原独立背剑104绑定×两衣装与战斗6clip/原图标，绑定正式trainingSword；104姿势原带剑图208格逐像素保持，新导出208空槽格不重绘身体/衣物/motion。探索原.equip命令处理装备/卸下与库存；通过现有P1菜单选择，地图与Metal阴影共享武器键，小队新战斗读取装备快照，单人旧练习同步可见武器和禁用空手普攻。无战斗中换装/完整背包或存档迁移，不将其余装备标完成。骰子逻辑确认锁值不变，视觉确认起0.32秒从实时摇动连续减速/正向落面，命中后才淡出，覆盖此前瞬间硬停要求；无字幕数值/怪物隐条/黄色菱形保留。新增原装备库存/禁止战斗换装/空手普攻/数据映射/所有骰型平滑轨迹等5项，103纯测试通过。无App/模拟器/实机，新认可null，待主线程整身/全帧美术和归档交付。
+
+
+### 2026-10-26 build52最终美术检查与归档
+
+训练短剑trainingSword正式物品ID绑定既有背剑部件、战斗剑层和原图标。两衣装×八方向×13姿势=208带剑格逐像素保持，新增208空槽格由相同身体/motion/逐帧层序装配。现有P1菜单新增武器选择，探索态原.equip命令处理装备/卸下和背包数量；地图前景与Metal投影同选型，保持路线/朝向/步相/脚点，战斗人物/接地阴影/残影同武器层。小队新演练读取装备快照；单人旧练习同步可见武器与空手禁用普攻。装备短剑普攻仍1D6，战斗中不能换装。
+
+确认技能逻辑仍一次锁定原核心结果，但视觉从点击时的真实旋转姿态和浮动连续减速，在0.32秒内转正结果面；不再直接跳停，也不等命中后才开始转正。数字固定在骰面，无下方重复字幕；固定加值选中即显，HP/AP/RNG/历史仍到命中才提交，命中只启动淡出而不重置落面。黄色菱形AP、HP0/伤害数字/右吹死亡/血条隐藏同事件、双螺旋与圆盾保留。
+
+主线程亲看16组八向完整13姿势的1×/2×32板共416整身、8行走+13起停=21实际GIF解码帧及两页；3战斗GIF600解码帧22页，六原尺寸人物/六全场1×/2×、36战斗装备开关整身1×/2×和0.98/1.00/1.08/1.16/1.24/1.32秒全场停骰板。修正离线起停序列重复出口造成GIF合并240ms，移除重复并重导13×120ms后审核。素材/层序/握点/阴影键均核；仅静态序列检查，不称连续播放/实机/GPU对照。源码`0da70730b77038c9eb08c6eee4dd521ebca3b311`；[设备Release40281675931](https://github.com/liamchan-rgb/experiment/actions/runs/40281675931)成功，103纯测试（原98+装备3+连续落面2）和五旧纯Swift检查通过。Mac/Linux1190小队帧/3570请求/1690骰子与怪物帧/360公式图库在1e-6内逐字段一致，面数组仍按绘制顺序比较，只有acted集合按无序。原10814资源/美术路径中10813字节保持；hero-gait.json仅新增装备映射，删除新增字段后与旧JSON完全相同。原13核心/目录摘要、身体/动作/脚点/已存在人物PNG保持。
+
+IPA1.6.26/build52，32901808字节，SHA256 5c1bf5b2c1053cbabc05c9c168797f8f08fdf99db5982ab333052b7147eb767c；工件摘要与CRC、经典ZIP2.0头、平台/资源/权限均通过。无App/模拟器/实机，实际操作/FPS/安装用户测试。新认可null，完整背包/存档及其余7基础装备不算完成，下一件猎弓。
+
+
+### 2026-10-26 build52公开交付校验
+
+交付提交37e1becb3d1232eb7f3454ca1324b528899a59b8，141条选定路径Git blob与本地一致，258编译输入与最终源码相同。固定提交和分支直接IPA、三战斗GIF、两行走GIF、五关键PNG共12个公开HTTPS完整GET200，MIME/长度/SHA256一致；战斗GIF220/190/190帧均20ms，行走GIF8/13帧均120ms；根线程已查看600战斗与21行走实际解码帧，416行走全身姿势与36战斗开关武器姿势。回执Art/Review/Battle/training-sword-smooth-demo-v1/delivery.json，正常GIF/浏览器直链/站姿/直接IPA实际交付，不发ZIP。无App/模拟器/实机，新认可null。
+
+
+### 2026-10-26 build53 猎弓制作中
+
+用户继续B2下一件huntingBow。原目录1D8/射程1、原图标复用，营地受控借弓和原.equip库存；两衣装完整八向104背弓绑定，body/motion/原剑和空背不动；新增back-bow严格携带合同与可编辑SVG，记录schema/profile扩展而非声称两文件未改。原地射击、独立刚性双臂/弓弦和箭、原结算时点；逻辑确认锁值与0.32秒平滑停骰保留。主线程发现并修复初稿骨长超出、弓上端遮脸、固定后袖/旧手/腿部误归属袖口残像；待最终整身/正常动图与归档校验。旧单人是固定5伤练习不迁移正式规则，武器视觉和远射同步；小队读取真实猎弓D8。原核心与目录只读，新认可null，无App/模拟器/实机。
+
+
+build53第一次CI40288475250：106纯测试/其余纯检查通过，独立Foundation姿势检查因提取前缀误包含MeadowBattleSupport import而失败，未执行归档。把仅Actor使用的import移到采样器前缀之外，保留原独立检查与所有断言；重新提交归档。无美术/规则变更。
+
+
+build53第二次CI40289536584：106纯测试和五独立检查全部通过；设备编译发现Dictionary.values是属性、不能按函数调用。修正Array(bowImages.values)，不改美术/规则/采样；第三次归档继续。
+
+
+### 2026-10-26 build53 猎弓完成归档与主线程美术复核
+
+最终源码d420e5dd623c08a1df96adf5d90f8e9ac5edd74f，设备Release 40290508782成功。106纯测试/五既有纯检查通过，无App/模拟器/实机；源码与278编译输入匹配。Mac/Linux1190party frames、3570requests、2260dice/monster/projectile rows、360poly rows、3606BowRig poses所有字段在1e-6内匹配，acted集合按集合对比。原13核心/目录摘要保持，既有10824美术/资源路径10823字节保持，只有hero-gait新增bow装备绑定，移除新键后与build52完全一致；原身体/动作/短剑/空背保留，新弓208姿势新目录。schema/profile明确扩展back-bow，同样严格检查，无阈值放宽。214新源稿/绑定路径重导字节一致，所有278编译输入重导后与归档源码一致。
+
+主线程亲看32张native-*.png（16板1×/2×）208新背弓整身、11页21行走GIF帧、21页570战斗GIF帧、7页190整身射击GIF帧、30六clip关键姿势1×/2×四板、六全场样本1×/2×两板。发现与返修含初稿超长后腕、弓端遮脸、固定后袖/旧手和误归属裤腿层的袖口残像，均由root独自处理；当前弦回弹与松手随动分开，架弓与收势连续，远射无挥剑冲刺。审核是离线生产字段合成和逐帧，不称连续播放或UIKit运行。
+
+IPA1.6.27/build53，33933808字节，SHA256 184e795912bc14f65b4fdab318bd1acf70baac32073ff037da2a257e873ab832，经典ZIP2.0/CRC/arm64/iPhoneOS/Phone+Pad/Metal/新四方向图集与弓资源/权限/目录唯一绑定全部通过。直接Downloads/MeadowJourney-b53.ipa，不发ZIP；四战斗/整身GIF、两行走GIF/站姿/HTTPS直链交付。新认可null，实际安装/输入/阴影/FPS由用户测试。
+
+营地P1菜单→武器→猎弓；林地战斗→小队支援，结束P2行动后操作P1，普攻真实1D8/射程1，强击原1D6+2（1AP/2次）；旧单人仅固定5伤练习但姿态与远射随选中武器。只暴露P1受控借弓，没有完整背包/装备/存档迁移。其余6基础件仍未完成，下件greatSword重剑；不把本轮算作B3—B6完成。
+
+
+### 2026-10-26 build53公开交付校验
+
+交付提交7a9fb088b699754c05df9362e6e7bbef663df09e，195条选定路径Git blob与本地一致，278编译输入与最终归档源码相同。固定提交和分支直接IPA、四战斗/整身GIF、两行走GIF、五关键PNG共13个公开HTTPS完整GET200，MIME/长度/SHA256一致；战斗/整身GIF四段各190帧/20ms，行走8/13帧均120ms。root已查看570整场+190整身+21行走实际解码帧、208新背弓整身1×/2×及30六clip关键姿势/六全场1×/2×。回执Art/Review/Battle/hunting-bow-demo-v1/delivery.json，正常GIF/浏览器直链/站姿/直接IPA实际交付，不发ZIP。无App/模拟器/实机，新认可null。
+
+
+### 2026-10-26 B2素材批量审核页
+
+用户要求素材类尽量一次做完、一个界面批量审核，覆盖逐件推进/打包。本批集中重剑、传奇权杖、皮甲、符文甲、力量徽章、行动戒指。四可见件各104八向绑定，原身体/motion/头/裤靴复用，两组合832格；两饰品复用原图标、原属性说明。新增侧向完整人物六动作挂载候选和正常GIF；root修复新武器抬手挡脸（攻击/防护/受击/胜利）、背剑侧向过低及护胸平涂，旧生产库保持。新增严格back-staff携带类型，不放宽检查。
+
+统一审核页使用Sites静态发布：六件切换、正常行走/起停/六动作、八向同看、1×/2×与背景；单件/批量状态、文字与方向/帧定位、浏览器本地保存、带资源revision的JSON导出导入。浏览器实际检查桌面/手机/平板布局和上述操作，已修复战斗模式转饰品时frameMs读空；不会自动向GitHub提交用户反馈。根线程独自检查标准人物新增挂载与第二组合碰撞，具体依据见Art/Review/Equipment/b2-batch-v1。
+
+本轮为素材候选审核，非build54，不修改build53 demo、不发假装包含新素材的旧IPA。专用权杖投射/自然20及装备/属性/UI/保存接入仍未完成，原19技能/18目录保持，B3—B6未完成，新美术认可null。未运行App/模拟器/实机；页面浏览器QA不等于游戏运行。待记录最终站点部署与公开资源回执。
+
+B2批量素材最终检查：四包416显式绑定/两组合832整身格，原5414运行/人体/动作/核心目录相关路径Git blob相同；26既有部件合同测试、四包文件/区域/104姿势和832衣物层alpha保持检查通过。root亲看标准人物416姿势/32板、第二组合64碰撞姿势/4板、266攻击GIF实际解码帧/9页、其他动作100整身关键姿势/4板与8帧正常总览；仅新挂载检查，不重复逐帧审核全部旧人物。正常GIF八段加总览、站姿齐全，浏览器24动作源和状态/定位/导出导入/刷新保存/干净初始态及手机平板无横溢检查通过，截图已查看。网页检查不等于游戏运行。
+
+B2批量审核页已成功发布：https://meadow-equipment-review.smokytide.chatgpt.site，Sites私有部署appgdep_6adf65397a908191ad19f8a3699a6c03、站点源码4fc54307c3640d3366b19cc51e539b597b784385。GitHub候选e941d32e3f9f831a0547b544bfee64609f14455d，2232选定路径与本地一致，9正常GIF/5站姿/1清单共15公开HTTPS完整GET200并核MIME/长度/SHA；站点同一revision逐字节匹配。正常总览GIF/站姿和审核入口实际交付，无新IPA，无App/模拟器/实机，新认可null。
+
+
+### 2026-10-26 B2用户反馈与两甲结构返修
+
+用户上传原批精确revision的审核JSON，四件通过（重剑/传奇权杖/徽章/戒指），两甲判退：只换色、观感奇怪。原反馈和有限认可独立存档，不能继续称全部认可null，也不能把四件认可扩大到新两甲、专用施法或demo接入。两甲另存r2：用独立结构源，成形胸背/叠层肩甲/内衬袖/短分片护裙，各104八向绑定，保留原身体/动作/旧件；root自查并返修肘腕注册、误把裤层当旧衣摆清空、旧蓝白衣边以及侧向将胸晶误归入远袖问题。原通过四件保持，浏览器新批只两甲待审。无App/模拟器/实机，无新IPA，新两甲认可null；验证/动图/部署随后记入本轮目录。
+
+两甲r2最终技术检查：两包各104绑定，832衣物层alpha相对旧外套全部不同，透明RGB归零；7518原运行/人体/动作/目录及旧B2源路径Git blob保持，已通过四件的26媒体文件在站点字节保持。root查看标准人物208姿势/16板、第二组合32碰撞姿势/2板、120战斗GIF解码帧/4页与其他动作50整身姿势/2板、正常总览8帧/2页，以及桌面/手机/平板浏览器图。网页24动作源、暂停逐帧/批量标记/导出导入/刷新保存/四通过继承两待审和无横溢检查通过；不扩称连续播放或实机验收。新两甲认可null，待最终部署与链接回执。
+
+两甲r2审核页已发布：https://meadow-equipment-review.smokytide.chatgpt.site，私有部署appgdep_6adf7312e1008191828e08c52cb5b007成功，站点源码a3019b691bd2ce597d7e2982e10711c824ddf859。候选43dd163821f1d1a50463991aa534f66a8ca12d1d，1758选定路径匹配；5正常GIF/3站姿/1清单共9公开HTTPS完整GET200并核MIME/长度/SHA，站点媒体与最终revision一致。保留四通过、两甲待审；正常总览GIF/站姿/同页入口实际交付，无新IPA或App/模拟器/实机，新两甲认可null。
+
+
+### 2026-10-26 B2两甲r2再次判退
+
+用户明确“两个都不行，而且都是共性问题，很多的错位而且不自然”，对应b2-batch-v2/r2两甲。此前主线程内部美术放行结论撤回，技术计数不能作为美术通过证据。见Art/Review/Equipment/b2-batch-v2/user-rejection.json。根线程亲自修复源版型/肩肘腕配准/胸腰连续变形/近远透视和遮挡，先整身站姿与正常循环验证共用方案，未解决不得批量导出交用户或接demo；保持原身体/motion和四件已通过装备。当前r3试验未获放行，无新IPA，无App/模拟器/实机。
+
+
+### 2026-10-26 B2两甲r3共同贴合返修候选
+
+r2用户明确判退，不能再引用其内部美术放行。root亲自返修：独立五视角衣物源，按原人物一次裁制；胸腰/护裙根部共用表面，袖面连续肩肘腕，肘部角度过渡不反折，肩甲留肩口、后袖压暗；战斗按其自身肩肘腕处理，不直接套行走。见Art/Review/Equipment/b2-batch-v3；两甲仍待用户复审，不接demo，不打包。四件原通过范围/字节保持，原身体/步态/build53保持。正常GIF/站姿/核验HTTPS和同一私有审核页仍必须实际交付，不能只报技术检查；不运行App/模拟器/实机，不委派智能体。
+
+此前交付过分依赖文件/测试完成而忽略整身关系，r2结论撤回。新源修正皮甲背面胸扣和斜前透视；先原生整身对照，再修侧向袖面折回、肩甲后翘和远袖亮边，禁止以新候选null写成用户通过。
+
+B2两甲r3交付回执：候选 `fb72eb5f773d178dece199d0069cbf4b34ad245c`，资源 `065f0efc4faa649090f899f4a2b1317c3cf422efc0373e19adb5da387c9d99b9`；原私有审核页部署成功 `appgdep_6adf842cbe788191bb55f292fad931b7`，四通过/两待审；九个媒体与清单GET200及完整摘要匹配，1785远端选定路径匹配。正常GIF和站姿直链见Art/Review/Equipment/b2-batch-v3/delivery.json。本轮未接demo/无IPA/无设备运行。
+
+
+### 2026-10-26 B2两甲r4正下与护肩动作返修
+
+用户反馈r3正下肩部像在扭，其他方向手动但护肩静止；记录Art/Review/Equipment/b2-batch-v3/user-feedback-shoulders.json。r4正下胸甲按原颈/髋驱动而不跟左右肩高度差拧转；护肩随对应手臂小幅旋转/平移，保留肩袖搭接及后侧阴影，其他八向都应有可辨随动，禁止再简单固定肩甲或让整个胸甲跟肩扭。离线战斗预览加小幅随动层，未集成demo。新两甲仍待用户审核，四件原通过仅沿用原素材范围；全身/正常GIF/起收/战斗和GitHub日志见Art/Review/Equipment/b2-batch-v4。不运行App/模拟器/实机，不委派智能体。
+
+B2两甲r4交付回执：候选 `ef010664bdfb31e632bc599231c8cd08100c5321`，资源 `2be82f5fa68e9591ece08e2108d7e66874fb3e7e4921f3f70cad7b75690b2913`；原私有审核页部署成功 `appgdep_6adfd29e5b1081918a87d142ba2321cc`，四通过/两待审。13个媒体/清单HTTPS GET200、1816路径对象一致；正下与正左整身正常GIF见Art/Review/Equipment/b2-batch-v4/delivery.json。无demo集成、IPA或设备运行。
+
+### 2026-10-27 符文甲正左、正右袖腕返修
+
+用户指出 r4 符文甲侧向袖子和手腕错位。r5 按原动作袖形和实际手部轮廓重做两侧袖子与连续腕甲，补齐远侧原身体露肤，保留护肩随动；第一版腕甲亮色碎裂已自行退回。本人查看两组人物、两方向全部52个站姿/行走/起收整身姿态的1×和2×，并检查两只正常GIF实际解码帧。104绑定/416层及SVG/52整身重组/其余156格不变检查见Art/Review/Equipment/b2-batch-v5。未改皮甲、原四件通过资源、其他方向、战斗预览及原身体动作；两甲尚待用户复审，未接demo，未运行App/模拟器/实机，未打IPA。
+
+符文甲 r5 交付：候选 `daad0934269e9810c65616ad685ade3101ab4013`，资源 `1712316d3fc209b10f2a40ff2daac99706de1bee87d2440cf9a68d864ecdc2ef`，原私有审核页部署成功 `appgdep_6adffa9c4e088191a176ea5931fd41d3`；两只正常速度左右行走 GIF、起收 GIF 和站姿共 8 条 HTTPS 资源完整核验，905 个发布路径与提交对象一致。四件原通过、两甲待审；未接 demo，未运行设备。
+
+### 2026-11-01 build72 符文与战斗状态反馈后置
+
+用户补交 rune_slash_delivery.zip 与 rune_ward_deliverables.zip。两包分别与已存档符文斩、符文庇护包 SHA-256 相同，保留原始资产，不重复创建副本。生产状态回执仍在真实接触点提交；新治疗数值／血条增加／新增护盾视觉延迟至 `max(hit, effectOnset + 58% × effectDuration)`，120ms 淡入。已有满值护盾不重复播放生成效果。适用符文斩、符文庇护、龙焰、星辉脉冲、龙魂庇护、龙鳞庇护、战斗符文和三档治疗；振奋／横扫无正向血量或护盾回执，不生成该类提示。三档按实际回血1–3/4–8/9+，零回血不触发。
+
+40张符文帧、上一轮5套技能100张帧和治疗资源审计通过；离线反馈时序测试通过。root查看正常速度全场动图、命中帧及状态提示出现帧；完整文件索引在 `Art/Review/Battle/`。动画仍使用现有近身／远程／防护动作，不新增角色动作。IPA 1.6.45/build72，59,083,877字节，SHA-256 `461040702e39e21746ae4c8a0878b54e6fdfaf7c16e1a235ead718ac441da12f`；ZIP CRC、Info.plist、arm64、iPhoneOS/Phone+Pad 均通过。源码 `e582ddc5f66f0dcf310e5b6c66ce74b3196ebf71`，Actions运行 [#41285365973]({run})。美术动图由生产战斗状态离线合成，不是 UIKit、模拟器或实机画面；无设备测试，用户安装验收待完成。美术认可仍待用户确认。
+
+下一步两项：用户在设备检查治疗／护盾的出现时点；继续制作龙之号令增益特效，并完善龙鳞护盾接触／破碎反馈。

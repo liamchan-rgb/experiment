@@ -1,0 +1,63 @@
+{
+  "format": 1,
+  "source_revision": "r1",
+  "final_generation": {
+    "tool": "image_gen.imagegen",
+    "raw_image": "generated-08.png",
+    "raw_sha256": "a69719f8bfb46fdeb65f80a4c428ff96aa775691a5611d0d2837346be90c4afb",
+    "input_reference_order": [
+      "Art/Review/P1/directions/down-right/revisions/r1/strip.png#frame-08",
+      "Art/Review/P1/directions/down-right/revisions/r1/strip.png#frame-07",
+      "Art/Review/P1/directions/down-right/revisions/r1/strip.png#frame-01",
+      "Art/Review/P1/directions/down-right/revisions/r1/strip.png#frame-02"
+    ],
+    "prompt": "Revise the first reference (frame 08) into a corrected full-body pixel-art sprite frame 08 for a seamless walk-cycle loop. The other references are adjacent frames: frame 07, frame 01, frame 02. Output one complete character on transparent background. Preserve the established youthful character, chestnut spiky hair, blue scarf, blue tunic with gold trim, brown gloves, pants, detailed brown boots, exact three-quarter front view facing diagonally down right, original palette, crisp dark outline, highlights, small 16-bit sprite style, proportions, and short stride. This is the late-swing step after frame 07 and immediately before frame 01: the right foot moves low into the upcoming contact while the left leg supports and begins recovery; arms swing naturally opposite the legs. Keep frame 08 distinct from 01 but make the whole pose transition smoothly 07→08→01→02. Keep the full character at the same scale and fixed square canvas, approximately 154 pixels from hair top to sole. Do not crop, add ground/shadow, change camera/clothing, enlarge boots, or stretch individual limbs.",
+    "accepted_for_assembly": true
+  },
+  "unselected_generation_attempt": {
+    "raw_image": "drafts/attempt-01-misordered.png",
+    "raw_source_path": "/workspace/generated_images/exec-a05a0616-d299-4936-beb8-410c133be55a.png",
+    "raw_sha256": "a8681136612e014b520692d71c15aa4f70b211e5caa83f670f6659a0ec29dc92",
+    "input_reference_order": [
+      "Art/Review/P1/directions/down-right/revisions/r1/strip.png#frame-01",
+      "Art/Review/P1/directions/down-right/revisions/r1/strip.png#frame-02",
+      "Art/Review/P1/directions/down-right/revisions/r1/strip.png#frame-07",
+      "Art/Review/P1/directions/down-right/revisions/r1/strip.png#frame-08"
+    ],
+    "prompt": "Redraw only the first reference as a corrected full-body pixel-art sprite frame 08 for a seamless loop; later references provide the same character and adjacent-pose context. Output exactly one complete character on transparent background on the same fixed square sprite canvas. Preserve the established youthful character, chestnut spiky hair, blue scarf, blue tunic with gold trim, brown gloves, pants, detailed brown boots, exact three-quarter front view facing diagonally down right, palette, crisp dark outline, highlights, and original small 16-bit sprite style. This is the late-swing step after frame 07 and before frame 01: keep a compact short-step gait and natural opposing arm swing, with the right foot low and reaching forward into frame 01's contact phase, while the left leg supports and begins recovery. Keep head, torso, pelvis, and whole-body scale consistent with adjacent frames. Make the whole silhouette flow naturally from 07 through this late-swing frame into 01 and then 02. Keep this pose distinct from 01. Do not enlarge boots, stretch limbs, crop, change camera, add props, or add ground/shadow. Match the original crisp outlined 16-bit pixel-art rendering, palette, highlights, small sprite scale, and about 154-pixel full silhouette height and shared foot registration.",
+    "accepted_for_assembly": false,
+    "reason": "Reference order placed frame 01 first, so the model could treat the contact pose as the target; retained for audit, not assembled."
+  },
+  "whole_pose_registration": {
+    "method": "uniform whole-pose nearest-neighbor resize to 154 px opaque height, then horizontal translation to align the warm-hair centroid with the mean of source frames 08 and 01",
+    "x_offset_pixels": 16,
+    "vertical_bounds": [
+      70,
+      224
+    ],
+    "sole_envelope_y": 224
+  },
+  "source_frames": {
+    "00-07": "copied pixel-for-pixel from approved source strip",
+    "frames_08_target_and_neighbors": [
+      "Art/Review/P1/directions/down-right/revisions/r1/strip.png#frame-08",
+      "Art/Review/P1/directions/down-right/revisions/r1/strip.png#frame-07",
+      "Art/Review/P1/directions/down-right/revisions/r1/strip.png#frame-01",
+      "Art/Review/P1/directions/down-right/revisions/r1/strip.png#frame-02"
+    ]
+  },
+  "initial_generation_attempt": {
+    "raw_image": "drafts/attempt-00-initial-correct-input.png",
+    "raw_source_path": "/workspace/generated_images/exec-34ae050b-6c0d-40b7-93b7-2a03418cbb44.png",
+    "raw_sha256": "3a03e04993e330266510ac957cde0630ac6af1d2eae005627fe9cea6ab60a4cf",
+    "input_reference_order": [
+      "Art/Review/P1/directions/down-right/revisions/r1/strip.png#frame-08",
+      "Art/Review/P1/directions/down-right/revisions/r1/strip.png#frame-07",
+      "Art/Review/P1/directions/down-right/revisions/r1/strip.png#frame-01",
+      "Art/Review/P1/directions/down-right/revisions/r1/strip.png#frame-02"
+    ],
+    "accepted_for_assembly": false,
+    "reason": "Initial single-direction result was superseded by the four-direction matched redraw.",
+    "prompt": "Create a corrected pixel-art sprite frame 08 for a seamless walk-cycle loop, using the first reference image as the pose to revise and the later images as adjacent-frame context. Render exactly one full character on a transparent background, centered in the same fixed 256×256 sprite canvas. Preserve the established character identity, youthful proportions, chestnut spiky hair, blue scarf, blue tunic with gold trim, brown gloves, pants, and detailed brown boots; preserve the exact three-quarter front view facing diagonally down-right. This is the late-swing pose after frame 07 and immediately before frame 01: keep the same compact short-step gait and natural opposing arm swing, with the right foot low and reaching forward toward the frame-01 contact position, the other leg supporting and beginning recovery. Keep the head, torso, pelvis, and overall scale consistent with neighboring frames. Make the silhouette and body root flow naturally from frame 07 through this pose into frame 01 and then frame 02. Do not copy frame 01 exactly; create a distinct in-between late-swing pose. Do not enlarge the boot, stretch any limb, crop the character, change the camera, add props, or include a ground/shadow. Maintain the original crisp outlined 16-bit pixel-art rendering, color palette, details, lighting, and small sprite scale. Use the same approximately 154-pixel full silhouette height and foot registration as the references."
+  }
+}

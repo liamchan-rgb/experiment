@@ -1,0 +1,81 @@
+{
+  "format": 1,
+  "revision": "loop-r2",
+  "source_revision": "loop-r1",
+  "purpose": "Correct up-right 07\u219208\u219201 support-foot phase continuity; loop-r1 frame08 retained as draft.",
+  "final_generation": {
+    "tool": "image_gen.imagegen",
+    "raw_image": "generated-08-attempt-03.png",
+    "raw_sha256": "1373c45492f74768fddd9c026cd92a7f4addd8c9a7e8fc535e29e433fd26ec4a",
+    "accepted_for_assembly": true,
+    "input_reference_order": [
+      "loop-r2/generated-08-attempt-02.png",
+      "loop-r1/frames/07.png",
+      "loop-r1/frames/01.png",
+      "loop-r1/frames/02.png"
+    ],
+    "prompt": "Refine the first complete up-right sprite pose while retaining its correct support phase. Keep the screen-left/near boot planted to y=224 and lower the screen-right/rear recovery boot by about four pixels toward a low lift near y=211, reducing visible sole. Preserve whole-body proportions, identity, clothing, crisp pixel-art rendering, head/root alignment, transparent square canvas, and a short natural step. Maintain 07\u219208\u219201 continuity; do not swap the support leg, resemble frame 02, crop, add ground/shadow, or alter individual limbs by stretching.",
+    "note": "Same raw generation as attempts[2], uniformly whole-pose normalized and registered for frames/08.png."
+  },
+  "attempts": [
+    {
+      "raw_image": "generated-08.png",
+      "raw_sha256": "0ef39555bf1a6a08a2a4b2a0eb8c15d08e170e0c0eddf1a5b14e449e91311cca",
+      "accepted_for_assembly": false,
+      "input_reference_order": [
+        "loop-r1/frames/08.png",
+        "loop-r1/frames/07.png",
+        "loop-r1/frames/01.png",
+        "loop-r1/frames/02.png"
+      ],
+      "prompt": "Redraw frame 08 as a complete up-right diagonal walk pose with the screen-left/near foot supporting at y=224 and the screen-right/rear foot lifted in low recovery near y=211. Preserve character identity, outfit, palette, outline, scale, transparent background, and full-body proportions. Keep head/root alignment and make 07\u219208\u219201 continuous. Do not switch support feet, resemble frame 02, enlarge the raised shoe sole, crop, add shadows, or stretch individual limbs.",
+      "reason": "Repeated the loop-r1 support-foot reversal; rejected after inspecting 07\u219208\u219201."
+    },
+    {
+      "raw_image": "generated-08-attempt-02.png",
+      "raw_sha256": "26970f5d362560161af8f5d1f59a373d9e02ed3cb08c65ed7df68aa4532e8ed4",
+      "accepted_for_assembly": false,
+      "input_reference_order": [
+        "loop-r1/frames/07.png",
+        "loop-r1/frames/01.png",
+        "loop-r1/frames/02.png"
+      ],
+      "prompt": "Create a complete full-body up-right diagonal rear-view pixel-art frame 08. Use frame 07 and 01 as the phase references: the screen-left/near shoe stays low as the support foot at the y=224 line, while the screen-right/rear shoe is only slightly raised in low recovery near y=211. Keep the same character, clothing, proportions, outline, palette, 256-square transparent cell, and aligned head/root. Avoid a support-leg swap or a frame-02-like pose; keep the lift subtle and do not expose a large sole. No crop, ground, shadow, props, or limb stretching.",
+      "reason": "Correct support relationship, but right/rear boot was lifted too high and showed more sole than desired."
+    },
+    {
+      "raw_image": "generated-08-attempt-03.png",
+      "raw_sha256": "1373c45492f74768fddd9c026cd92a7f4addd8c9a7e8fc535e29e433fd26ec4a",
+      "accepted_for_assembly": true,
+      "input_reference_order": [
+        "loop-r2/generated-08-attempt-02.png",
+        "loop-r1/frames/07.png",
+        "loop-r1/frames/01.png",
+        "loop-r1/frames/02.png"
+      ],
+      "prompt": "Refine the first complete up-right sprite pose while retaining its correct support phase. Keep the screen-left/near boot planted to y=224 and lower the screen-right/rear recovery boot by about four pixels toward a low lift near y=211, reducing visible sole. Preserve whole-body proportions, identity, clothing, crisp pixel-art rendering, head/root alignment, transparent square canvas, and a short natural step. Maintain 07\u219208\u219201 continuity; do not swap the support leg, resemble frame 02, crop, add ground/shadow, or alter individual limbs by stretching.",
+      "reason": "Selected for assembly after full-cycle visual review; raw pose retained as generated-08-attempt-03.png."
+    }
+  ],
+  "registration": {
+    "method": "Uniform whole-pose nearest-neighbor resize to 154 opaque pixels high; translate whole pose to align head/hair proxy and support sole envelope. No separate limb, shoe, or head transformation.",
+    "x_offset_pixels": -4,
+    "y_offset_pixels": 0,
+    "alpha_bounds": [
+      70,
+      70,
+      178,
+      224
+    ],
+    "sole_envelope_y": 224
+  },
+  "source_frames": {
+    "00-07": "pixel-identical copies of loop-r1 frames 00\u201307",
+    "frame_08_context": [
+      "loop-r1/frames/07.png",
+      "loop-r1/frames/01.png",
+      "loop-r1/frames/02.png"
+    ],
+    "superseded_loop_r1_08": "drafts/loop-r1-frame-08.png"
+  }
+}

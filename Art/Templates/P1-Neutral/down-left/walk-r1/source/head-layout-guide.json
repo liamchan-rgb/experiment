@@ -1,0 +1,27 @@
+{
+  "direction": "down-left",
+  "status": "neutral-source-registration-only",
+  "headCanvas": [
+    96,
+    96
+  ],
+  "headLocalOrigin": [
+    76,
+    61
+  ],
+  "neckLocal": [
+    51,
+    70
+  ],
+  "sourceHeadBoundsLocal": [
+    31,
+    27,
+    73,
+    69
+  ],
+  "featureArtSupplied": false,
+  "hairArtSupplied": false,
+  "artApproval": null,
+  "fixedLight": "upper-left",
+  "note": "Head moves using motion.headToCanvas; subsequent face/hair artwork must be authored and reviewed on this guide. No shared profile or engine change."
+}

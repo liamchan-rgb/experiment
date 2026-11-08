@@ -1,0 +1,19 @@
+{
+  "light": "fixed upper left",
+  "colors": {
+    "ink": "#1b191b",
+    "clothShadow": "#30262a",
+    "cloth": "#52333b",
+    "clothLight": "#89515a",
+    "metalShadow": "#303138",
+    "metal": "#484b50",
+    "metalLight": "#68696b",
+    "metalEdge": "#92918a",
+    "goldShadow": "#795235",
+    "gold": "#b98b55",
+    "goldLight": "#e1b978",
+    "gemShadow": "#39212a",
+    "gem": "#854c4e",
+    "gemLight": "#ac6a5c"
+  }
+}

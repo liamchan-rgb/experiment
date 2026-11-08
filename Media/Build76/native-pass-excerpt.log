@@ -1,0 +1,5 @@
+2026-11-04T14:42:13.3847710Z 	 Executed 191 tests, with 0 failures (0 unexpected) in 137.264 (137.296) seconds
+2026-11-04T14:42:13.3852890Z 	 Executed 191 tests, with 0 failures (0 unexpected) in 137.264 (137.299) seconds
+2026-11-04T14:42:37.6191900Z PASS: production WalkCycle, Trail, TrailNetwork, JourneySimulation; P1 speed=75.0, pause/reset and four road directions
+2026-11-04T14:43:01.2705050Z PASS:8specified paths,64command phases via designated exit,24render cadence cases,64phase-preserving turn samples
+2026-11-04T14:47:13.4106860Z ** ARCHIVE SUCCEEDED **

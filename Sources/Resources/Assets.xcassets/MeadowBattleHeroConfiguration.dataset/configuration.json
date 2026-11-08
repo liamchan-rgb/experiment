@@ -18,5 +18,7 @@
     "MeadowBattleHeroFarHand"
   ],
   "status": "single-static-pose-candidate",
-  "poseReference": "Art/Templates/P1-Neutral/battle-side/right-idle-r2/registration.json"
+  "poseReference": "Art/Templates/P1-Neutral/battle-side/right-idle-r2/registration.json",
+  "appearanceRevision": "v9",
+  "headContourSource": "Art/Templates/P1-Neutral/battle-side/right-idle-r3-head-contour"
 }

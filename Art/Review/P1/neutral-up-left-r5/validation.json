@@ -1,0 +1,308 @@
+{
+  "status": "technical-junction-and-clothing-checks-pass",
+  "artApproval": null,
+  "repairAndReviewOwner": "root",
+  "subagentsUsed": false,
+  "direction": "up-left",
+  "actualCompositorPoses": 9,
+  "semanticLayersWithoutOrphans": 72,
+  "visibleEnclosedAlphaHoles": 0,
+  "wholeSourceJunctionComparisons": 9,
+  "newJunctionAlphaHoles": 0,
+  "completeArmPartitionChecks": 18,
+  "sameSideWristContacts": 18,
+  "armsAndHandsWithoutFabric": 36,
+  "nearHandsPreservedWithoutClothesClipping": 9,
+  "independentPantsWalkFrames": 8,
+  "hemDeviationFromRigidTorsoPixels": {
+    "left": [
+      1.7972887288097927,
+      1.219917470139531,
+      0.804673252709875,
+      0.703064148257442,
+      0.5307314239082568,
+      0.9689632565539774,
+      1.6960628277788736,
+      2.10145582600714
+    ],
+    "right": [
+      0.018747091039979482,
+      0.462856867287563,
+      1.1829969345589089,
+      1.6481093545418724,
+      1.3100024817270857,
+      0.6542890452155145,
+      0.42560142230464443,
+      0.30930289305497116
+    ]
+  },
+  "normalFrameDurationsMs": [
+    120,
+    120,
+    120,
+    120,
+    120,
+    120,
+    120,
+    120
+  ],
+  "poses": [
+    {
+      "frame": 0,
+      "actualCompositorDifferencePixels": 0,
+      "sides": {
+        "left": {
+          "wristContactPixels": 11,
+          "armAndHandFabricPixels": 0,
+          "completeArmPartitionDifferencePixels": 0,
+          "handPixels": 105,
+          "visibleHandPixels": 105,
+          "projectedKneeBendDegrees": 4.763641690726296,
+          "legAreaPixels": 808
+        },
+        "right": {
+          "wristContactPixels": 8,
+          "armAndHandFabricPixels": 0,
+          "completeArmPartitionDifferencePixels": 0,
+          "handPixels": 59,
+          "visibleHandPixels": 59,
+          "projectedKneeBendDegrees": 7.594643368591447,
+          "legAreaPixels": 700
+        }
+      },
+      "junctionReferenceOpaquePixels": 767,
+      "newJunctionAlphaHoles": 0,
+      "shirtPantsOverlapPixels": 62,
+      "pantsPixels": 519
+    },
+    {
+      "frame": 1,
+      "actualCompositorDifferencePixels": 0,
+      "sides": {
+        "left": {
+          "wristContactPixels": 11,
+          "armAndHandFabricPixels": 0,
+          "completeArmPartitionDifferencePixels": 0,
+          "handPixels": 105,
+          "visibleHandPixels": 105,
+          "projectedKneeBendDegrees": 24.881725144017224,
+          "legAreaPixels": 805
+        },
+        "right": {
+          "wristContactPixels": 9,
+          "armAndHandFabricPixels": 0,
+          "completeArmPartitionDifferencePixels": 0,
+          "handPixels": 60,
+          "visibleHandPixels": 25,
+          "projectedKneeBendDegrees": 19.134904628039823,
+          "legAreaPixels": 711
+        }
+      },
+      "junctionReferenceOpaquePixels": 762,
+      "newJunctionAlphaHoles": 0,
+      "shirtPantsOverlapPixels": 62,
+      "pantsPixels": 522
+    },
+    {
+      "frame": 2,
+      "actualCompositorDifferencePixels": 0,
+      "sides": {
+        "left": {
+          "wristContactPixels": 11,
+          "armAndHandFabricPixels": 0,
+          "completeArmPartitionDifferencePixels": 0,
+          "handPixels": 105,
+          "visibleHandPixels": 105,
+          "projectedKneeBendDegrees": 17.509844437523387,
+          "legAreaPixels": 810
+        },
+        "right": {
+          "wristContactPixels": 9,
+          "armAndHandFabricPixels": 0,
+          "completeArmPartitionDifferencePixels": 0,
+          "handPixels": 59,
+          "visibleHandPixels": 34,
+          "projectedKneeBendDegrees": 28.18828531581935,
+          "legAreaPixels": 699
+        }
+      },
+      "junctionReferenceOpaquePixels": 767,
+      "newJunctionAlphaHoles": 0,
+      "shirtPantsOverlapPixels": 62,
+      "pantsPixels": 522
+    },
+    {
+      "frame": 3,
+      "actualCompositorDifferencePixels": 0,
+      "sides": {
+        "left": {
+          "wristContactPixels": 12,
+          "armAndHandFabricPixels": 0,
+          "completeArmPartitionDifferencePixels": 0,
+          "handPixels": 106,
+          "visibleHandPixels": 106,
+          "projectedKneeBendDegrees": 11.942834139783212,
+          "legAreaPixels": 831
+        },
+        "right": {
+          "wristContactPixels": 8,
+          "armAndHandFabricPixels": 0,
+          "completeArmPartitionDifferencePixels": 0,
+          "handPixels": 59,
+          "visibleHandPixels": 56,
+          "projectedKneeBendDegrees": 35.11428349389925,
+          "legAreaPixels": 671
+        }
+      },
+      "junctionReferenceOpaquePixels": 766,
+      "newJunctionAlphaHoles": 0,
+      "shirtPantsOverlapPixels": 62,
+      "pantsPixels": 519
+    },
+    {
+      "frame": 4,
+      "actualCompositorDifferencePixels": 0,
+      "sides": {
+        "left": {
+          "wristContactPixels": 11,
+          "armAndHandFabricPixels": 0,
+          "completeArmPartitionDifferencePixels": 0,
+          "handPixels": 104,
+          "visibleHandPixels": 104,
+          "projectedKneeBendDegrees": 16.02698176498582,
+          "legAreaPixels": 821
+        },
+        "right": {
+          "wristContactPixels": 9,
+          "armAndHandFabricPixels": 0,
+          "completeArmPartitionDifferencePixels": 0,
+          "handPixels": 59,
+          "visibleHandPixels": 59,
+          "projectedKneeBendDegrees": 34.36911505298276,
+          "legAreaPixels": 658
+        }
+      },
+      "junctionReferenceOpaquePixels": 758,
+      "newJunctionAlphaHoles": 0,
+      "shirtPantsOverlapPixels": 62,
+      "pantsPixels": 515
+    },
+    {
+      "frame": 5,
+      "actualCompositorDifferencePixels": 0,
+      "sides": {
+        "left": {
+          "wristContactPixels": 10,
+          "armAndHandFabricPixels": 0,
+          "completeArmPartitionDifferencePixels": 0,
+          "handPixels": 104,
+          "visibleHandPixels": 104,
+          "projectedKneeBendDegrees": 18.774595845890797,
+          "legAreaPixels": 826
+        },
+        "right": {
+          "wristContactPixels": 9,
+          "armAndHandFabricPixels": 0,
+          "completeArmPartitionDifferencePixels": 0,
+          "handPixels": 60,
+          "visibleHandPixels": 60,
+          "projectedKneeBendDegrees": 25.135160027666792,
+          "legAreaPixels": 663
+        }
+      },
+      "junctionReferenceOpaquePixels": 755,
+      "newJunctionAlphaHoles": 0,
+      "shirtPantsOverlapPixels": 62,
+      "pantsPixels": 502
+    },
+    {
+      "frame": 6,
+      "actualCompositorDifferencePixels": 0,
+      "sides": {
+        "left": {
+          "wristContactPixels": 11,
+          "armAndHandFabricPixels": 0,
+          "completeArmPartitionDifferencePixels": 0,
+          "handPixels": 105,
+          "visibleHandPixels": 105,
+          "projectedKneeBendDegrees": 26.776892800455656,
+          "legAreaPixels": 824
+        },
+        "right": {
+          "wristContactPixels": 8,
+          "armAndHandFabricPixels": 0,
+          "completeArmPartitionDifferencePixels": 0,
+          "handPixels": 60,
+          "visibleHandPixels": 60,
+          "projectedKneeBendDegrees": 14.178364582828378,
+          "legAreaPixels": 687
+        }
+      },
+      "junctionReferenceOpaquePixels": 774,
+      "newJunctionAlphaHoles": 0,
+      "shirtPantsOverlapPixels": 62,
+      "pantsPixels": 519
+    },
+    {
+      "frame": 7,
+      "actualCompositorDifferencePixels": 0,
+      "sides": {
+        "left": {
+          "wristContactPixels": 11,
+          "armAndHandFabricPixels": 0,
+          "completeArmPartitionDifferencePixels": 0,
+          "handPixels": 105,
+          "visibleHandPixels": 105,
+          "projectedKneeBendDegrees": 32.85252699817789,
+          "legAreaPixels": 801
+        },
+        "right": {
+          "wristContactPixels": 8,
+          "armAndHandFabricPixels": 0,
+          "completeArmPartitionDifferencePixels": 0,
+          "handPixels": 59,
+          "visibleHandPixels": 53,
+          "projectedKneeBendDegrees": 4.516357180240609,
+          "legAreaPixels": 728
+        }
+      },
+      "junctionReferenceOpaquePixels": 777,
+      "newJunctionAlphaHoles": 0,
+      "shirtPantsOverlapPixels": 65,
+      "pantsPixels": 528
+    },
+    {
+      "frame": 8,
+      "actualCompositorDifferencePixels": 0,
+      "sides": {
+        "left": {
+          "wristContactPixels": 11,
+          "armAndHandFabricPixels": 0,
+          "completeArmPartitionDifferencePixels": 0,
+          "handPixels": 105,
+          "visibleHandPixels": 105,
+          "projectedKneeBendDegrees": 31.963821732360046,
+          "legAreaPixels": 803
+        },
+        "right": {
+          "wristContactPixels": 9,
+          "armAndHandFabricPixels": 0,
+          "completeArmPartitionDifferencePixels": 0,
+          "handPixels": 58,
+          "visibleHandPixels": 36,
+          "projectedKneeBendDegrees": 14.572799026297245,
+          "legAreaPixels": 713
+        }
+      },
+      "junctionReferenceOpaquePixels": 778,
+      "newJunctionAlphaHoles": 0,
+      "shirtPantsOverlapPixels": 62,
+      "pantsPixels": 529
+    }
+  ],
+  "limits": [
+    "Main personally reviews whole-body frames; numeric checks are not artwork approval",
+    "No continuous-player playback claimed with still-only image viewer",
+    "No up-right repair or approval, wardrobe combination, App/device test or IPA"
+  ]
+}

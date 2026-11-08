@@ -1,0 +1,10 @@
+{
+  "status": "delivered",
+  "sourceCommit": "6c60a3df90756ecd105934cf05d567a8f4767d53",
+  "runID": 42154159246,
+  "runAttempt": 1,
+  "releaseCommit": "0b5ef675f46a0f63d9863789800ad35b46fa8ba8",
+  "directIPA": "https://raw.githubusercontent.com/liamchan-rgb/experiment/0b5ef675f46a0f63d9863789800ad35b46fa8ba8/Downloads/MeadowJourney-b87.ipa",
+  "publicVerified": true,
+  "appSimulatorDeviceRun": false
+}

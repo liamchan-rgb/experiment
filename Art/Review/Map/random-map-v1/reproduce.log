@@ -1,0 +1,30 @@
+Building for debugging...
+[0/10] Write sources
+[0/10] Copying initial-content.json
+[0/10] Write sources
+[4/10] Write swift-version--6CC1FD8C7F4CAE66.txt
+[6/20] Emitting module ClassroomGameCore
+[7/24] Compiling ClassroomGameCore MonsterAI.swift
+[8/24] Compiling ClassroomGameCore PVEPlaySession.swift
+[9/24] Compiling ClassroomGameCore PlayProjection.swift
+[10/24] Compiling ClassroomGameCore Presentation.swift
+[11/24] Compiling ClassroomGameCore PublicProjection.swift
+[12/24] Compiling ClassroomGameCore RuleExamples.swift
+[13/24] Compiling ClassroomGameCore Rules.swift
+[14/24] Compiling ClassroomGameCore resource_bundle_accessor.swift
+[15/24] Compiling ClassroomGameCore ActionPlanning.swift
+[16/24] Compiling ClassroomGameCore Catalog.swift
+[17/24] Compiling ClassroomGameCore GameEngine.swift
+[18/24] Compiling ClassroomGameCore GameState.swift
+[19/24] Compiling ClassroomGameCore MapPresentation.swift
+[20/25] Wrapping AST for ClassroomGameCore for debugging
+[22/27] Emitting module MeadowWorldSupport
+[23/27] Compiling MeadowWorldSupport RandomMap.swift
+[24/28] Wrapping AST for MeadowWorldSupport for debugging
+[26/30] Compiling MeadowMapExport main.swift
+[27/30] Emitting module MeadowMapExport
+[28/31] Wrapping AST for MeadowMapExport for debugging
+[29/31] Write Objects.LinkFileList
+[30/31] Linking MeadowMapExport
+Build of product 'MeadowMapExport' complete! (10.19s)
+PASS 78 production adapter/smoothed road/patrol/prop-clearance/no-false-crossing cases

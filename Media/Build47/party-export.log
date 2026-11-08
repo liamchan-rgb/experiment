@@ -1,0 +1,6 @@
+[0/1] Planning build
+Building for debugging...
+[0/3] Write swift-version--79AA4F9932D1E87A.txt
+Build of product 'MeadowSupportReviewExport' complete! (0.38s)
+Exported 1060 receipt-bound dice / monster / queue frames
+Exported 1190 actual GameCore support/item frames and 3570 attachment samples

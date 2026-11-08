@@ -1,0 +1,10 @@
+Build 1.6.41 (67) IPA verification passed.
+Workflow: 40914603016
+Source: c6ee157f63a19237cf101382920e7c591152ba73
+IPA bytes: 49938573
+IPA SHA256: 2cfe07cfd90ef1f3b0ae36ee7154763d420a2d96ac37b16dcce1380d67090816
+ZIP CRC, stored ZIP 2.0 headers, arm64, iPhoneOS, iPhone/iPad, executable permissions, unsigned package, Metal, eight Rune Slash assets: PASS
+Pure Swift tests: 162 passed
+Battle/road checks: 5 passed
+Mac/Linux JSON comparisons: 13 files, each within 1e-6
+App or device runtime: not run.

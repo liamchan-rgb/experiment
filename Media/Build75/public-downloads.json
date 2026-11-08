@@ -1,0 +1,70 @@
+{
+  "build": 75,
+  "sourceCommit": "5239d632296dc0f63b9ba7b3d5a11295c79ee9c0",
+  "releaseCommit": "9c4121549b67aa53b6d8dc8b985db705fd340900",
+  "artCommit": "ef56f989fa1ce8bfa7b6a76f5cf51ae1c7f0bad0",
+  "downloads": [
+    {
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ef56f989fa1ce8bfa7b6a76f5cf51ae1c7f0bad0/Art/Review/Map/random-map-v3/walk-normal.gif",
+      "bytes": 1667105,
+      "sha256": "ceaf404389083b5ccb41e523744896d68944dc9ef9af39e2cc03a5cf714d9e8a",
+      "verified": true,
+      "size": [
+        960,
+        540
+      ],
+      "frames": 400
+    },
+    {
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ef56f989fa1ce8bfa7b6a76f5cf51ae1c7f0bad0/Art/Review/Map/random-map-v3/map-4-overview.png",
+      "bytes": 1783882,
+      "sha256": "d18ccfa33e9e1ffa2d9967ba75d9d391f784360659234d717507824964d5be27",
+      "verified": true,
+      "size": [
+        1280,
+        860
+      ]
+    },
+    {
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ef56f989fa1ce8bfa7b6a76f5cf51ae1c7f0bad0/Art/Review/Map/random-map-v3/map-10-overview.png",
+      "bytes": 2169660,
+      "sha256": "fe9bfef882563c6ce66f762036053ba8f0bbe5fde1daea2e0eaa4a9ff7b47442",
+      "verified": true,
+      "size": [
+        1280,
+        1050
+      ]
+    },
+    {
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ef56f989fa1ce8bfa7b6a76f5cf51ae1c7f0bad0/Art/Review/Map/random-map-v3/map-30-overview.png",
+      "bytes": 4086037,
+      "sha256": "16bc912b36776f2e23ad45c49a1e7206606e3fcb7fc8a9095e3d780e493cbbd7",
+      "verified": true,
+      "size": [
+        1280,
+        2150
+      ]
+    },
+    {
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ef56f989fa1ce8bfa7b6a76f5cf51ae1c7f0bad0/Art/Review/Map/random-map-v3/sizes-seeds.png",
+      "bytes": 2100801,
+      "sha256": "69f5d2a580631d92c4dbfac85f2ab54e787402e089890ab32762418e84408dd5",
+      "verified": true,
+      "size": [
+        1290,
+        1620
+      ]
+    },
+    {
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/9c4121549b67aa53b6d8dc8b985db705fd340900/Downloads/MeadowJourney-b75.ipa",
+      "bytes": 60161365,
+      "sha256": "2624a4cdc63c4a1b0ccf2d63f6531c0b17f252071dc1d20d868a0682405e438b",
+      "verified": true
+    }
+  ],
+  "normalGifFrames": 400,
+  "normalGifMs": 20,
+  "ipaDirect": true,
+  "noAppSimulatorDeviceRun": true,
+  "artApproval": null
+}

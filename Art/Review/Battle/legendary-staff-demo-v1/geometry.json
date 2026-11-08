@@ -1,0 +1,11 @@
+{
+  "601PoseSamplesMatchApprovedCurvesWithin1e8": true,
+  "maximumTransformError": 0,
+  "contactInsideAll8MonsterPoses": true,
+  "208NativeCarryCellsMatchHashes": true,
+  "existingBodyAndGarmentPixelsPreservedOutsideWeapon": true,
+  "allEarlierGaitAndWeaponBindingsSemanticallyUnchanged": true,
+  "approvedBattleWeaponPixelsExact": true,
+  "all3606WeaponFaceChecksClear": true,
+  "meaning": "Mechanical supplements; main-thread whole-body decoded GIF art review required."
+}

@@ -1,0 +1,341 @@
+{
+  "status": "fixed ownership exported; authoring visual self-review complete; shared head still parent integration",
+  "artApproval": null,
+  "sourceRegistration": {
+    "scale": 0.194,
+    "translation": [
+      4.72,
+      6.4
+    ],
+    "sourceCanvas": [
+      1254,
+      1254
+    ]
+  },
+  "sharedHeadPreview": "generated start01 head used consistently as a temporary preview; parent integration replaces it with walk-r2 shared head",
+  "durationMs": 120,
+  "checks": [
+    {
+      "pose": "start01",
+      "clip": "walk-start",
+      "frame": 1,
+      "sourceSHA256": "d8ddbda3e72e8878da6f664493bf8e23d4cc98738f1ed88502155efdef9bde0d",
+      "sourceVisibleBodyPixels": 2327,
+      "layerPixelCounts": {
+        "body.leg.right": 224,
+        "body.leg.left": 634,
+        "body.arm.right": 80,
+        "body.hand.right": 34,
+        "body.torso": 891,
+        "body.arm.left": 333,
+        "body.hand.left": 131
+      },
+      "missingPixels": 0,
+      "overlapPixels": 0,
+      "bodyRecompositionDifferencePixels": 0,
+      "soleMarkerAlphaChecks": {
+        "left": {
+          "coordinate": [
+            122,
+            214
+          ],
+          "layer": "body.leg.left",
+          "alpha": 244,
+          "passed": true
+        },
+        "right": {
+          "coordinate": [
+            113,
+            211
+          ],
+          "layer": "body.leg.right",
+          "alpha": 255,
+          "passed": true
+        }
+      },
+      "discardedAlpha1RegistrationSpecks": [
+        [
+          88,
+          41
+        ],
+        [
+          84,
+          51
+        ],
+        [
+          148,
+          69
+        ],
+        [
+          79,
+          106
+        ],
+        [
+          166,
+          108
+        ],
+        [
+          169,
+          109
+        ],
+        [
+          162,
+          113
+        ],
+        [
+          184,
+          185
+        ],
+        [
+          227,
+          210
+        ],
+        [
+          242,
+          219
+        ],
+        [
+          171,
+          226
+        ],
+        [
+          67,
+          232
+        ],
+        [
+          105,
+          249
+        ],
+        [
+          106,
+          249
+        ],
+        [
+          107,
+          249
+        ]
+      ],
+      "layerSHA256": {
+        "body.leg.right": "505cee1c671d13de2127fa77cb3f35a3af386da5e4052a9823eb73b2ddc83846",
+        "body.leg.left": "9f9a518ec49c98ccea5d404c3c3bf91368498071f33b3ed58ab1138ee3766633",
+        "body.arm.right": "9d0d751df5ea4574e9233afafdfe989a7c26bdec4c1be3e52e5ab1be87c83536",
+        "body.hand.right": "616044d21a1ed8528fa014dbae7aa5d04ca0facbb21e793879db1fff86df96e7",
+        "body.torso": "f2822d77fabdc3d2508895f4754f84f0bb97faad9c48067888e10bc948974a1c",
+        "head.base": "cc2930a677317b0559f4138d991e3a826a7c7fa5b5618c1515ef128a48a09356",
+        "body.arm.left": "cc6897b489b0de576d540c82d11d673b4dc2e6febb2e1c259076af189703af39",
+        "body.hand.left": "e05bd64a3016fd63b962ea6e87dc6797ca1b08f3972e1561c21417b41962ce49"
+      }
+    },
+    {
+      "pose": "start02",
+      "clip": "walk-start",
+      "frame": 2,
+      "sourceSHA256": "23bd8b91f9b35e1c0b401737861be78ce9f72916081321d10fac829f6a592af6",
+      "sourceVisibleBodyPixels": 2982,
+      "layerPixelCounts": {
+        "body.leg.right": 569,
+        "body.leg.left": 511,
+        "body.arm.right": 165,
+        "body.hand.right": 183,
+        "body.torso": 1037,
+        "body.arm.left": 326,
+        "body.hand.left": 191
+      },
+      "missingPixels": 0,
+      "overlapPixels": 0,
+      "bodyRecompositionDifferencePixels": 0,
+      "soleMarkerAlphaChecks": {
+        "left": {
+          "coordinate": [
+            106,
+            212
+          ],
+          "layer": "body.leg.left",
+          "alpha": 242,
+          "passed": true
+        },
+        "right": {
+          "coordinate": [
+            137,
+            211
+          ],
+          "layer": "body.leg.right",
+          "alpha": 249,
+          "passed": true
+        }
+      },
+      "discardedAlpha1RegistrationSpecks": [
+        [
+          28,
+          99
+        ],
+        [
+          93,
+          231
+        ],
+        [
+          159,
+          236
+        ]
+      ],
+      "layerSHA256": {
+        "body.leg.right": "b85e3356b6a176b10c0191f10514832d74fee1c1ca446e7b8226f931a5fe1901",
+        "body.leg.left": "88104921e12cc1f5b8e4d54357e3a6ad2f8415c576a128bc27f3cd197d36173c",
+        "body.arm.right": "6bf139ea2dc02f83c877892871418f23c0507bfb83b7110c1b87913cf40dd163",
+        "body.hand.right": "b36b862d52694eed230e8b4723bc893dccbf55a8d10092acebf94ed3d8ee215d",
+        "body.torso": "0f73e912db98f3bee6ff8d36fffe9bf9bfa1402cd376d6f239e9b5506bd69eae",
+        "head.base": "cc2930a677317b0559f4138d991e3a826a7c7fa5b5618c1515ef128a48a09356",
+        "body.arm.left": "dcba347d9a74a21e9d50cad3dd26a5a800a22db6f72f54f6107badd7b7e6739c",
+        "body.hand.left": "812df15b8468c9f71500a1f99bcecbfe89cc58a8d8841442e5298fcfdead507d"
+      }
+    },
+    {
+      "pose": "stop01",
+      "clip": "walk-stop",
+      "frame": 1,
+      "sourceSHA256": "12b2cdd7404512e94a15d1fcd84b32e4ac7fdbebdd52e6bb5527223f1c92262f",
+      "sourceVisibleBodyPixels": 2586,
+      "layerPixelCounts": {
+        "body.leg.right": 609,
+        "body.leg.left": 344,
+        "body.arm.right": 96,
+        "body.hand.right": 172,
+        "body.torso": 901,
+        "body.arm.left": 336,
+        "body.hand.left": 128
+      },
+      "missingPixels": 0,
+      "overlapPixels": 0,
+      "bodyRecompositionDifferencePixels": 0,
+      "soleMarkerAlphaChecks": {
+        "left": {
+          "coordinate": [
+            104,
+            211
+          ],
+          "layer": "body.leg.left",
+          "alpha": 214,
+          "passed": true
+        },
+        "right": {
+          "coordinate": [
+            125,
+            210
+          ],
+          "layer": "body.leg.right",
+          "alpha": 249,
+          "passed": true
+        }
+      },
+      "discardedAlpha1RegistrationSpecks": [
+        [
+          93,
+          17
+        ],
+        [
+          137,
+          23
+        ],
+        [
+          45,
+          63
+        ],
+        [
+          137,
+          232
+        ],
+        [
+          103,
+          235
+        ]
+      ],
+      "layerSHA256": {
+        "body.leg.right": "13213c331204111b2ac8628c4bed2e9ec1e43fc3ef9fd74c5d151465c2c5f77f",
+        "body.leg.left": "21a2c82a583181e3c1ab13fed14653557d85ad52401dbcd3b02bcee019df8e3a",
+        "body.arm.right": "bf2053dd65fb9404c38adb3cffcae700522e46aa54b00c61f9d5957e40583c13",
+        "body.hand.right": "1814768f8b37774cabb75f89d63a312038aeb6a403aa1fbe0ed7f73ab684b1f1",
+        "body.torso": "3d1d05d4bddbe616b458faed76edd7f223fdbe0ebb5fc7754a9cf4157627790c",
+        "head.base": "cc2930a677317b0559f4138d991e3a826a7c7fa5b5618c1515ef128a48a09356",
+        "body.arm.left": "807b346c661784f434a843f5f78bb33f742005df3f13f819a7ebdb5068c2724b",
+        "body.hand.left": "04d9b6fce21d190de6ae92096b53b519e3a33ca120cb5e556c676aeeb13539c2"
+      }
+    },
+    {
+      "pose": "stop02",
+      "clip": "walk-stop",
+      "frame": 2,
+      "sourceSHA256": "aecd5e710d3ac69c98c8815c7bd8e5a7033d944d656ff43d86f70e6a5ce78d8b",
+      "sourceVisibleBodyPixels": 2225,
+      "layerPixelCounts": {
+        "body.leg.right": 231,
+        "body.leg.left": 493,
+        "body.arm.right": 84,
+        "body.hand.right": 64,
+        "body.torso": 922,
+        "body.arm.left": 330,
+        "body.hand.left": 101
+      },
+      "missingPixels": 0,
+      "overlapPixels": 0,
+      "bodyRecompositionDifferencePixels": 0,
+      "soleMarkerAlphaChecks": {
+        "left": {
+          "coordinate": [
+            123,
+            214
+          ],
+          "layer": "body.leg.left",
+          "alpha": 255,
+          "passed": true
+        },
+        "right": {
+          "coordinate": [
+            118,
+            214
+          ],
+          "layer": "body.leg.right",
+          "alpha": 255,
+          "passed": true
+        }
+      },
+      "discardedAlpha1RegistrationSpecks": [
+        [
+          213,
+          65
+        ],
+        [
+          174,
+          101
+        ],
+        [
+          56,
+          110
+        ]
+      ],
+      "layerSHA256": {
+        "body.leg.right": "57fb226e251bc644ed1fe58d78fe3899052a704899577fe1d623680b5b58e832",
+        "body.leg.left": "a2f585689391b2a626beb79957e89f7b4e1d2a93e718a1a60615085546b113b6",
+        "body.arm.right": "3f8116ebef77be829d502b14ba1fd3941f4a97df2451ae6df3b6be38d20ec928",
+        "body.hand.right": "bda153e01206fc747956da1f45eecb1711cbd8b9c3abf10e7bbd49e0a9f58bf3",
+        "body.torso": "adcbc065bfd0790ef27a1fd73b0e5ae43cf37f5dde503642409a249be695cc5d",
+        "head.base": "cc2930a677317b0559f4138d991e3a826a7c7fa5b5618c1515ef128a48a09356",
+        "body.arm.left": "d4f6381467b24d05c4e3c8572e912c5d0430723a836138f0415e66a250833eeb",
+        "body.hand.left": "1161069c90a10ac5a3662d16b98b12f5753b36c14d9b8d24963a9e81a35168fa"
+      }
+    }
+  ],
+  "files": {
+    "startGif": "review/start-transition-120ms.gif",
+    "stopGif": "review/stop-transition-120ms.gif",
+    "contactSheet": "review/start-stop-contact-2x.png",
+    "layerAtlas": "review/layer-atlas-2x.png",
+    "ownershipTint": "review/ownership-tint-2x.png",
+    "armHandBoundaries": "review/arm-hand-boundaries-4x.png"
+  },
+  "limits": [
+    "visible ownership only; hidden anatomy not reconstructed",
+    "temporary generated head in preview",
+    "no app/runtime/device integration"
+  ],
+  "rootFollowup": "Initial RGBA coverage checks did not detect limb/hand outlines owned by torso. Root reassigned 1676 pixels in r3 without repaint; final table is ../walk-r3-complete-transitions/source/transition-authoring.json. This directory retains the earlier authoring snapshot."
+}

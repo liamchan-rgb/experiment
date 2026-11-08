@@ -1,0 +1,30 @@
+{
+  "id": "p1-battle-side-right-idle-art-cleanup-v8",
+  "status": "single-frame-candidate-awaiting-user-art-review",
+  "date": "2026-10-20",
+  "reviewImage": "review.png",
+  "nativeComposite": "assembled.png",
+  "canvasPx": [
+    256,
+    256
+  ],
+  "footAnchorPx": [
+    123,
+    214
+  ],
+  "poseApprovalReference": "p1-neutral-battle-side-right-idle-r2; pose only",
+  "bodyHeadCandidate": "../../../Templates/P1-Neutral/battle-side/right-idle-r3-head-contour/00.png",
+  "userFeedback": "别急着打包；清理额前和左肩箭头处多余像素，后脑勺太圆需要修改。",
+  "referenceStudy": "reference/cleanup-study.png; imagegen reference only, no pixels imported",
+  "sourceRegistration": "fixed shared canvas; no alpha fitting",
+  "runtimeIntegrated": false,
+  "packaging": "paused by user",
+  "userArtApproval": null,
+  "hashes": {
+    "assembled.png": "1cd0e7f0d7b6c0c876d6f10c825dc4e66e37428fe41bec5cd2443ebd24240012",
+    "face-blue/face.png": "11d54df5f734d6140919bd8f3bc1448795e55e35e3ad0981c05c7248eda28b64",
+    "hair-chestnut/hair.png": "144d8fa28d23319afe6a1e9560ccc14b8450da25d225361772b0f2cdad65a209",
+    "outfit-forester/wardrobe.png": "795b74b95bc6ebc92d9245ce162907db49c21589e16715c7856ea704882602d8",
+    "reference/cleanup-study.png": "25fad93fba16cbc5426b2725b8992589ee7b0546f19098612555a7cdb1932def"
+  }
+}

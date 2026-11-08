@@ -1,0 +1,7 @@
+{
+  "workflowRun": 40848622637,
+  "sourceCommit": "4f139d1602e20d8a14b7ccfeea48d819bba80a80",
+  "ipaPublished": false,
+  "reason": "Whole-scene art review found P1 support numbers entering P2 HP header. Move new-skill support messages to the actual recipient left side, below HP headers throughout their life; retain native damage contact. Preserve draft images and rebuild.",
+  "ruleAndCharacterArtUnchanged": true
+}

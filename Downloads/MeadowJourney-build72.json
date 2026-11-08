@@ -1,0 +1,31 @@
+{
+  "product": "MeadowJourney",
+  "shortVersion": "1.6.45",
+  "build": 72,
+  "file": "MeadowJourney-build72.ipa",
+  "bytes": 59083877,
+  "sha256": "461040702e39e21746ae4c8a0878b54e6fdfaf7c16e1a235ead718ac441da12f",
+  "package": "Unsigned iOS device IPA for SideStore signing",
+  "platform": "iPhoneOS",
+  "architectures": [
+    "arm64"
+  ],
+  "minimumOSVersion": "15.0",
+  "deviceFamilies": [
+    "iPhone",
+    "iPad"
+  ],
+  "sourceCommit": "e582ddc5f66f0dcf310e5b6c66ce74b3196ebf71",
+  "workflowRun": "https://github.com/liamchan-rgb/experiment/actions/runs/41285365973",
+  "validation": {
+    "zipCRC": "passed",
+    "InfoPlist": "passed",
+    "MachOArm64": "passed",
+    "statusTimingTests": "passed",
+    "runeFrames": "40/40 source and runtime pixels exact",
+    "previousSkillFrames": "100/100 source and runtime pixels exact",
+    "healingTiers": "micro 1-3, standard 4-8, strong 9+ actual HP gained"
+  },
+  "deviceTesting": "No simulator/device run; installation and hardware visual check are for the user.",
+  "reviewIndex": "Art/Review/Battle/spellblade-demo-v1/README.md"
+}

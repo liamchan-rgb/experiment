@@ -1,0 +1,53 @@
+{
+  "date": "2026-10-27",
+  "status": "user-rejected-hand-form-and-arm-continuity",
+  "reviewer": "root",
+  "subagentsUsed": false,
+  "selection": {
+    "date": "2026-10-27",
+    "message": "那你按a来做",
+    "selectedConcept": "A / balanced",
+    "scope": "Concept stance and near-draw/far-hold interpretation; not approval of subsequent production animation, pixel cleanup or build54.",
+    "animationApproval": null
+  },
+  "handRoles": {
+    "near": "draw string, elbow backward",
+    "far": "hold bow forward"
+  },
+  "methods": [
+    "normal-scale entire character decoded-frame review",
+    "whole battle decoded frames",
+    "native keyposes and 2x boards",
+    "Swift production geometry export",
+    "supplementary pixel component scan"
+  ],
+  "normalSpeedGifs": [
+    "bow-body-normal.gif",
+    "bow-normal.gif"
+  ],
+  "framesPerGif": 190,
+  "frameDurationMs": 20,
+  "durationMs": 3800,
+  "exportedRigSamples": 3606,
+  "packageTestsPassed": 107,
+  "independentChecksPassed": 5,
+  "projectBindingsPassed": true,
+  "UIKitSyntaxCheckPassed": true,
+  "fullXcodeCompile": false,
+  "ipaCreated": false,
+  "appSimulatorOrDeviceRun": false,
+  "productionAnimationUserApproval": null,
+  "oldPrivateReviewSiteUpdated": false,
+  "limitations": [
+    "Offline composition, not UIKit/GPU capture or measured device performance.",
+    "Only static concept A selected by user; finished animation still pending.",
+    "Original lower-body transforms have 64 isolated single-pixel instances across sampled hit/defeat poses (min y184); idle and attack scan clean. See pixel-components.json.",
+    "UIKit implementation has not yet had full Xcode compile."
+  ],
+  "finalInternalCorrections": [
+    "Filled missing cloth under original sword sleeve.",
+    "Replaced wrist-position blending with fixed-length joint-angle arcs after intermediate limb-length check failed.",
+    "Original head composited once above sleeves so raising elbow cannot cover jaw."
+  ],
+  "rejection": "user-rejection.json"
+}

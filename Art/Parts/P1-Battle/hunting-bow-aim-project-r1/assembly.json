@@ -1,0 +1,49 @@
+{
+  "canvas": [
+    256,
+    256
+  ],
+  "pose": "aim / fully drawn",
+  "poseContract": "BowRigSample",
+  "poseFile": "pose.json",
+  "sourceAssets": {
+    "Sources/Resources/Assets.xcassets/MeadowBattleBowBodyCore.imageset/MeadowBattleBowBodyCore.png": "bf80404ea2dc3a4bbc2f860b6597a9ba4580e7dee69059e20ba027aaf2231085",
+    "Sources/Resources/Assets.xcassets/MeadowBattleHeroLegNearThighBody.imageset/MeadowBattleHeroLegNearThighBody.png": "22f31602ce77c49aa71989fb63be514863f42ead41003d3b19acd570cfd34de0",
+    "Sources/Resources/Assets.xcassets/MeadowBattleHeroLegNearShinBody.imageset/MeadowBattleHeroLegNearShinBody.png": "34218b1f89cf3c64ec807521cfebf8f3c3d1eb238a945e73f89c33e21ee20203",
+    "Sources/Resources/Assets.xcassets/MeadowBattleHeroLegFarThighBody.imageset/MeadowBattleHeroLegFarThighBody.png": "50ec5f98c5933ab2936b38b081c977785592907e4302c6b69aa5b9019802c384",
+    "Sources/Resources/Assets.xcassets/MeadowBattleHeroLegFarShinBody.imageset/MeadowBattleHeroLegFarShinBody.png": "69d05e9a44dffddfa0d7cc5f6af0afed02cfc589512812fb4268bf95a08a4016",
+    "Sources/Resources/Assets.xcassets/MeadowBattleHeroLegNearThighWardrobe.imageset/MeadowBattleHeroLegNearThighWardrobe.png": "e1c91b3d4c836da3a72d0d311f043f63c48c684c8088e55097b6bace213aaf7e",
+    "Sources/Resources/Assets.xcassets/MeadowBattleHeroLegNearShinWardrobe.imageset/MeadowBattleHeroLegNearShinWardrobe.png": "7ec76ed5aa128a3b98008aa5ec5d03aedb7567211d23afb1fb55aae4f6fb37a5",
+    "Sources/Resources/Assets.xcassets/MeadowBattleBowLegFarThighWardrobe.imageset/MeadowBattleBowLegFarThighWardrobe.png": "50598ec8f96632e607600efc6575caa0bb158749c4a56d0164f4d85d2af0abff",
+    "Sources/Resources/Assets.xcassets/MeadowBattleHeroLegFarShinWardrobe.imageset/MeadowBattleHeroLegFarShinWardrobe.png": "e2990029bf7fe14cd4af8215d8ed86b1623af288330049f197d28ba738027a2f",
+    "Sources/Resources/Assets.xcassets/MeadowBattleBowWardrobeCore.imageset/MeadowBattleBowWardrobeCore.png": "bb35bbb91fd62aa7f57ca87958052a02c20bbe6630581a275adbe7b5df62a6ec",
+    "Sources/Resources/Assets.xcassets/MeadowBattleHeroHair.imageset/MeadowBattleHeroHair.png": "144d8fa28d23319afe6a1e9560ccc14b8450da25d225361772b0f2cdad65a209",
+    "Sources/Resources/Assets.xcassets/MeadowBattleHeroFace.imageset/MeadowBattleHeroFace.png": "11d54df5f734d6140919bd8f3bc1448795e55e35e3ad0981c05c7248eda28b64",
+    "Sources/Resources/Assets.xcassets/MeadowBattleHuntingBow.imageset/MeadowBattleHuntingBow.png": "5492fc5082c2969af78215714aab653d9416834a8cdd7869580359181cb1002f"
+  },
+  "replacementLayers": {
+    "nearArm": "nearArm.png",
+    "farArm": "farArm.png",
+    "nearHand": "drawing-hand.png",
+    "farHand": "grip-hand.png"
+  },
+  "handDrawBounds": {
+    "nearHand": [
+      -14,
+      -6,
+      16,
+      12
+    ],
+    "farHand": [
+      -8,
+      -6,
+      14,
+      12
+    ]
+  },
+  "renderer": "scripts/review-hunting-bow-a-project-r1.py:gear_render",
+  "regenerate": "python scripts/review-bow-aim-project-r1.py",
+  "imageGenerationUsed": false,
+  "runtimeImported": false,
+  "userApproved": false
+}

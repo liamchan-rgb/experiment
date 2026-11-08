@@ -1,0 +1,30 @@
+{
+  "reviewer": "root; independent repair and visual inspection, no subagents",
+  "status": "reviewed candidate; user approval pending",
+  "artApproval": null,
+  "scope": "offline shared production motion/geometry and actor sources; light and UI approximation, not UIKit/device capture",
+  "normalGIFDecodedFrames": {
+    "attack": 330,
+    "shield": 360,
+    "heal": 190
+  },
+  "decodedPagesInspected": 23,
+  "checks": [
+    "shield gradual formation at full protective diameter; no flash jump at +4",
+    "hero-parent following preserved through attack and return",
+    "recovery continuous positive scale, rotation, 26 stable star identities",
+    "death body and rightward wind actual 60Hz re-sampling of original UV particles",
+    "warm light and contact/rebound remain; death and damage same event",
+    "large bold serif/cream with green-gold bars; square shield status and tooltip example",
+    "whole-scene proportions and original key PNGs; eight full-body 1x/2x images inspected"
+  ],
+  "rejectedDraft": "drafts/overlap-review-hud: offline caption overlapped status labels; corrected before delivery, no runtime art changed",
+  "limitations": [
+    "Static sequences inspected; no claim of continuous playback",
+    "No UIKit input execution, App, simulator or device run",
+    "60Hz is a target, not measured device FPS; device display intervals are recorded by shipped app",
+    "new atlases decoded minimum83.6MiB; actual GPU/memory/device performance not measured",
+    "offline action bar demonstrates a fixed value; product value reads actual encounter state"
+  ],
+  "wholeBodyImagesInspected": 8
+}

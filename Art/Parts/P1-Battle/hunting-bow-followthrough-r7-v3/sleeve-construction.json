@@ -1,0 +1,39 @@
+{
+  "shoulder": {
+    "x": 117,
+    "y": 141
+  },
+  "drawnElbow": {
+    "x": 104,
+    "y": 136
+  },
+  "loweredElbow": {
+    "x": 112,
+    "y": 159
+  },
+  "drawnCuff": {
+    "x": 130,
+    "y": 139
+  },
+  "loweredProjectedElbowToCuffLength": 21,
+  "foreRotationDelta": 0.12,
+  "upperRadius": [
+    4,
+    6
+  ],
+  "elbowRadius": [
+    4,
+    5.2
+  ],
+  "projectedForeWidthScale": [
+    1,
+    0.87
+  ],
+  "proximalForeBulbLengthScale": [
+    1,
+    0.5
+  ],
+  "foregroundLayer": "nearSleeveConnected.png",
+  "sourceSurfaces": "r7 nearForeArm",
+  "reason": "The upper arm unfolds out of the foreshortened drawing pose; a single continuous outline replaces overlapping cutout seams."
+}

@@ -1,0 +1,24 @@
+{
+  "date": "2026-10-24",
+  "status": "approved-shown-scope",
+  "userStatement": "没问题，继续下一项",
+  "artCommit": "f8381286801cfbf643898ee1c36ddbdcee49e84e",
+  "scope": "Presented forester/chestnut/back and wayfarer/silver/back whole-body up appearance, normal walk and specified start-stop only. Does not approve unshown cross combinations, other directions, arbitrary phase interruptions or runtime.",
+  "files": [
+    {
+      "file": "Art/Review/P1/modular-up-appearance-v1/outfits-walk-120ms.gif",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/f8381286801cfbf643898ee1c36ddbdcee49e84e/Art/Review/P1/modular-up-appearance-v1/outfits-walk-120ms.gif",
+      "sha256": "2c3ea902ecf18538081f3191ad9d98b2afb59ea71cc84398ac9eee0934262e3e"
+    },
+    {
+      "file": "Art/Review/P1/modular-up-appearance-v1/outfits-start-stop-120ms.gif",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/f8381286801cfbf643898ee1c36ddbdcee49e84e/Art/Review/P1/modular-up-appearance-v1/outfits-start-stop-120ms.gif",
+      "sha256": "a18ba28ec92314ca4a928c0496bf662b56866848ca7c4b565275bba6cce83e39"
+    },
+    {
+      "file": "Art/Review/P1/modular-up-appearance-v1/outfits-idle-2x.png",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/f8381286801cfbf643898ee1c36ddbdcee49e84e/Art/Review/P1/modular-up-appearance-v1/outfits-idle-2x.png",
+      "sha256": "9f17e303a736c5265b8533ef1851d5b24b9b25fa1252f1222cc60cec81b3bd57"
+    }
+  ]
+}

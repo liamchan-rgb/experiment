@@ -1,0 +1,31 @@
+{
+  "travel-normal": {
+    "frames": 370,
+    "durationMs": 7400,
+    "frameMs": 20,
+    "loop": 0,
+    "bytes": 1348188,
+    "size": [
+      960,
+      622
+    ]
+  },
+  "encounter-normal": {
+    "frames": 298,
+    "durationMs": 5960,
+    "frameMs": 20,
+    "loop": 0,
+    "bytes": 14139476,
+    "size": [
+      640,
+      468
+    ]
+  },
+  "video": {
+    "width": 720,
+    "height": 526,
+    "r_frame_rate": "50/1",
+    "duration": "18.960000",
+    "nb_frames": "948"
+  }
+}

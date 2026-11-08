@@ -1,0 +1,20 @@
+{
+  "cases": 27,
+  "outcomes": {
+    "victory": 19,
+    "defeat": 8
+  },
+  "actions": 1444,
+  "resumes": 344,
+  "stagedRestarts": 165,
+  "species": [
+    "caveTroll",
+    "goblinArcher",
+    "ruinDragon",
+    "slime",
+    "stoneGuardian",
+    "wolf"
+  ],
+  "scope": "fixed mean-effect policy; closed-tree itinerary; default starter equipment; not runtime or human win rate",
+  "appSimulatorDeviceRun": false
+}

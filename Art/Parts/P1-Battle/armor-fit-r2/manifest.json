@@ -1,0 +1,38 @@
+{
+  "repairs": [
+    {
+      "item": "leatherArmor",
+      "source": "armor-fit-r1/leatherArmor/MeadowBattleHeroArmNearUpperWardrobe.png",
+      "replacement": "MeadowLeatherArmorArmNearUpperWardrobe",
+      "sameShoulder": [
+        117,
+        141
+      ],
+      "sameElbow": [
+        128,
+        158
+      ],
+      "sleeveEndAlongUpperArm": 15.5,
+      "crossSectionAxisMatchesSkin": true,
+      "onlyUpperGarmentPixelsChanged": true
+    },
+    {
+      "item": "runeArmor",
+      "source": "armor-fit-r1/runeArmor/MeadowBattleHeroArmNearUpperWardrobe.png",
+      "replacement": "MeadowRuneArmorArmNearUpperWardrobe",
+      "sameShoulder": [
+        117,
+        141
+      ],
+      "sameElbow": [
+        128,
+        158
+      ],
+      "sleeveEndAlongUpperArm": 20.7,
+      "crossSectionAxisMatchesSkin": true,
+      "onlyUpperGarmentPixelsChanged": true
+    }
+  ],
+  "originalHandsHeadBodyWeaponMotionHemAndPauldronUnchanged": true,
+  "userApproval": null
+}

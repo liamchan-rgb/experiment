@@ -1,0 +1,6 @@
+{
+  "unchangedSite": "https://meadow-equipment-review.smokytide.chatgpt.site",
+  "newArmorPathPrefix": "armor-r3-065f0efc4f",
+  "reason": "immutable revision routes prevent old cached armor images being mistaken for new candidate",
+  "approvedFourRoutesAndBytesUnchanged": true
+}

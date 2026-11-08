@@ -1,0 +1,189 @@
+{
+  "status": "technical-checks-pass",
+  "artApproval": null,
+  "authorAndReviewer": "root",
+  "subagentsUsed": false,
+  "actualCompositorPoses": 13,
+  "semanticLayerAlphaReflections": 104,
+  "headLocalAttachmentChecks": 13,
+  "anatomicalRigAndSupportChecks": 13,
+  "retainedLimbChainChecks": 52,
+  "deterministicBodyPaletteChecks": 91,
+  "legMaterialToneChecks": 26,
+  "legMedianLuminanceBySide": {
+    "left": [
+      202.574,
+      202.574,
+      202.574,
+      202.574,
+      202.574,
+      202.574,
+      202.574,
+      202.574,
+      202.574,
+      202.574,
+      202.574,
+      202.574,
+      202.574
+    ],
+    "right": [
+      208.799,
+      208.799,
+      208.799,
+      208.799,
+      208.799,
+      208.799,
+      208.799,
+      208.799,
+      208.799,
+      208.799,
+      208.799,
+      208.799,
+      208.799
+    ]
+  },
+  "newJunctionAlphaHoles": 0,
+  "relitVisibleLayerPixels": 46032,
+  "preservedFiles": 10808,
+  "sourceApprovedArtifactsUnchanged": true,
+  "oldRightApprovedArtifactsUnchanged": true,
+  "safetyClothingInkAndBoundaryPixelsUnchanged": true,
+  "records": [
+    {
+      "index": 0,
+      "clip": "idle",
+      "frame": 0,
+      "actualCompositionMatches": true,
+      "semanticAlphaReflections": 8,
+      "headLocalMatches": true,
+      "newJunctionHoles": 0,
+      "support": "both"
+    },
+    {
+      "index": 1,
+      "clip": "walk",
+      "frame": 1,
+      "actualCompositionMatches": true,
+      "semanticAlphaReflections": 8,
+      "headLocalMatches": true,
+      "newJunctionHoles": 0,
+      "support": "right-contact"
+    },
+    {
+      "index": 2,
+      "clip": "walk",
+      "frame": 2,
+      "actualCompositionMatches": true,
+      "semanticAlphaReflections": 8,
+      "headLocalMatches": true,
+      "newJunctionHoles": 0,
+      "support": "right-support"
+    },
+    {
+      "index": 3,
+      "clip": "walk",
+      "frame": 3,
+      "actualCompositionMatches": true,
+      "semanticAlphaReflections": 8,
+      "headLocalMatches": true,
+      "newJunctionHoles": 0,
+      "support": "right-support-left-passing"
+    },
+    {
+      "index": 4,
+      "clip": "walk",
+      "frame": 4,
+      "actualCompositionMatches": true,
+      "semanticAlphaReflections": 8,
+      "headLocalMatches": true,
+      "newJunctionHoles": 0,
+      "support": "right-toeoff-left-late-swing"
+    },
+    {
+      "index": 5,
+      "clip": "walk",
+      "frame": 5,
+      "actualCompositionMatches": true,
+      "semanticAlphaReflections": 8,
+      "headLocalMatches": true,
+      "newJunctionHoles": 0,
+      "support": "left-contact"
+    },
+    {
+      "index": 6,
+      "clip": "walk",
+      "frame": 6,
+      "actualCompositionMatches": true,
+      "semanticAlphaReflections": 8,
+      "headLocalMatches": true,
+      "newJunctionHoles": 0,
+      "support": "left-support-right-recovery"
+    },
+    {
+      "index": 7,
+      "clip": "walk",
+      "frame": 7,
+      "actualCompositionMatches": true,
+      "semanticAlphaReflections": 8,
+      "headLocalMatches": true,
+      "newJunctionHoles": 0,
+      "support": "left-support-right-passing"
+    },
+    {
+      "index": 8,
+      "clip": "walk",
+      "frame": 8,
+      "actualCompositionMatches": true,
+      "semanticAlphaReflections": 8,
+      "headLocalMatches": true,
+      "newJunctionHoles": 0,
+      "support": "right-late-swing"
+    },
+    {
+      "index": 9,
+      "clip": "walk-start",
+      "frame": 1,
+      "actualCompositionMatches": true,
+      "semanticAlphaReflections": 8,
+      "headLocalMatches": true,
+      "newJunctionHoles": 0,
+      "support": "both"
+    },
+    {
+      "index": 10,
+      "clip": "walk-start",
+      "frame": 2,
+      "actualCompositionMatches": true,
+      "semanticAlphaReflections": 8,
+      "headLocalMatches": true,
+      "newJunctionHoles": 0,
+      "support": "right-forward-contact-left-trailing"
+    },
+    {
+      "index": 11,
+      "clip": "walk-stop",
+      "frame": 1,
+      "actualCompositionMatches": true,
+      "semanticAlphaReflections": 8,
+      "headLocalMatches": true,
+      "newJunctionHoles": 0,
+      "support": "both-decelerating"
+    },
+    {
+      "index": 12,
+      "clip": "walk-stop",
+      "frame": 2,
+      "actualCompositionMatches": true,
+      "semanticAlphaReflections": 8,
+      "headLocalMatches": true,
+      "newJunctionHoles": 0,
+      "support": "both-settling"
+    }
+  ],
+  "limits": [
+    "New right neutral candidate only; old right whole-character artwork preserved, not inherited approval",
+    "Static tool head RGB and common per-side tool skin palettes; generated reference shapes ignored",
+    "Main reviews whole13 poses and normal GIF decoded frames; no continuous playback claim",
+    "Independent right appearances, full8direction integration and arbitrary phase interruptions remain; no App/device/IPA"
+  ]
+}

@@ -1,0 +1,1522 @@
+[
+  {
+    "frame": 0,
+    "timeMs": 0,
+    "heroHP": 8,
+    "enemyHP": 18,
+    "shield": 0,
+    "deathActive": false,
+    "damageVisible": false,
+    "ringAlpha": 0,
+    "actorRoot": [
+      109.9888636363636,
+      288.8325757575757
+    ],
+    "shieldCenter": null,
+    "recoveryPower": 0
+  },
+  {
+    "frame": 1,
+    "timeMs": 40,
+    "heroHP": 8,
+    "enemyHP": 18,
+    "shield": 0,
+    "deathActive": false,
+    "damageVisible": false,
+    "ringAlpha": 0,
+    "actorRoot": [
+      109.9888636363636,
+      288.84039496129617
+    ],
+    "shieldCenter": null,
+    "recoveryPower": 0
+  },
+  {
+    "frame": 2,
+    "timeMs": 80,
+    "heroHP": 8,
+    "enemyHP": 18,
+    "shield": 0,
+    "deathActive": false,
+    "damageVisible": false,
+    "ringAlpha": 0,
+    "actorRoot": [
+      109.9888636363636,
+      288.84823344306255
+    ],
+    "shieldCenter": null,
+    "recoveryPower": 0
+  },
+  {
+    "frame": 3,
+    "timeMs": 120,
+    "heroHP": 8,
+    "enemyHP": 18,
+    "shield": 0,
+    "deathActive": false,
+    "damageVisible": false,
+    "ringAlpha": 0,
+    "actorRoot": [
+      109.9888636363636,
+      288.85609121331913
+    ],
+    "shieldCenter": null,
+    "recoveryPower": 0
+  },
+  {
+    "frame": 4,
+    "timeMs": 160,
+    "heroHP": 8,
+    "enemyHP": 18,
+    "shield": 0,
+    "deathActive": false,
+    "damageVisible": false,
+    "ringAlpha": 0,
+    "actorRoot": [
+      109.9888636363636,
+      288.8639682824981
+    ],
+    "shieldCenter": null,
+    "recoveryPower": 0
+  },
+  {
+    "frame": 5,
+    "timeMs": 200,
+    "heroHP": 8,
+    "enemyHP": 18,
+    "shield": 0,
+    "deathActive": false,
+    "damageVisible": false,
+    "ringAlpha": 0,
+    "actorRoot": [
+      109.9888636363636,
+      288.87186466102054
+    ],
+    "shieldCenter": null,
+    "recoveryPower": 0
+  },
+  {
+    "frame": 6,
+    "timeMs": 240,
+    "heroHP": 8,
+    "enemyHP": 18,
+    "shield": 0,
+    "deathActive": false,
+    "damageVisible": false,
+    "ringAlpha": 0,
+    "actorRoot": [
+      109.9888636363636,
+      288.87978035929547
+    ],
+    "shieldCenter": null,
+    "recoveryPower": 0
+  },
+  {
+    "frame": 7,
+    "timeMs": 280,
+    "heroHP": 8,
+    "enemyHP": 18,
+    "shield": 0,
+    "deathActive": false,
+    "damageVisible": false,
+    "ringAlpha": 0,
+    "actorRoot": [
+      109.9888636363636,
+      288.88771538772016
+    ],
+    "shieldCenter": null,
+    "recoveryPower": 0
+  },
+  {
+    "frame": 8,
+    "timeMs": 320,
+    "heroHP": 8,
+    "enemyHP": 18,
+    "shield": 0,
+    "deathActive": false,
+    "damageVisible": false,
+    "ringAlpha": 0,
+    "actorRoot": [
+      109.9888636363636,
+      288.8956697566804
+    ],
+    "shieldCenter": null,
+    "recoveryPower": 0
+  },
+  {
+    "frame": 9,
+    "timeMs": 360,
+    "heroHP": 8,
+    "enemyHP": 18,
+    "shield": 0,
+    "deathActive": false,
+    "damageVisible": false,
+    "ringAlpha": 0,
+    "actorRoot": [
+      109.9888636363636,
+      288.90364347655014
+    ],
+    "shieldCenter": null,
+    "recoveryPower": 0
+  },
+  {
+    "frame": 10,
+    "timeMs": 400,
+    "heroHP": 8,
+    "enemyHP": 18,
+    "shield": 0,
+    "deathActive": false,
+    "damageVisible": false,
+    "ringAlpha": 0,
+    "actorRoot": [
+      109.9888636363636,
+      288.9116365576917
+    ],
+    "shieldCenter": null,
+    "recoveryPower": 0
+  },
+  {
+    "frame": 11,
+    "timeMs": 440,
+    "heroHP": 8,
+    "enemyHP": 18,
+    "shield": 0,
+    "deathActive": false,
+    "damageVisible": false,
+    "ringAlpha": 0,
+    "actorRoot": [
+      109.9888636363636,
+      288.9196490104555
+    ],
+    "shieldCenter": null,
+    "recoveryPower": 0
+  },
+  {
+    "frame": 12,
+    "timeMs": 480,
+    "heroHP": 8,
+    "enemyHP": 18,
+    "shield": 0,
+    "deathActive": false,
+    "damageVisible": false,
+    "ringAlpha": 0,
+    "actorRoot": [
+      109.9888636363636,
+      288.9276808451804
+    ],
+    "shieldCenter": null,
+    "recoveryPower": 0
+  },
+  {
+    "frame": 13,
+    "timeMs": 520,
+    "heroHP": 8,
+    "enemyHP": 18,
+    "shield": 0,
+    "deathActive": false,
+    "damageVisible": false,
+    "ringAlpha": 0,
+    "actorRoot": [
+      109.9888636363636,
+      288.9357320721935
+    ],
+    "shieldCenter": null,
+    "recoveryPower": 0
+  },
+  {
+    "frame": 14,
+    "timeMs": 560,
+    "heroHP": 8,
+    "enemyHP": 18,
+    "shield": 0,
+    "deathActive": false,
+    "damageVisible": false,
+    "ringAlpha": 0,
+    "actorRoot": [
+      109.9888636363636,
+      288.94380270181
+    ],
+    "shieldCenter": null,
+    "recoveryPower": 0
+  },
+  {
+    "frame": 15,
+    "timeMs": 600,
+    "heroHP": 8,
+    "enemyHP": 18,
+    "shield": 0,
+    "deathActive": false,
+    "damageVisible": false,
+    "ringAlpha": 0,
+    "actorRoot": [
+      109.9888636363636,
+      288.8325757575757
+    ],
+    "shieldCenter": null,
+    "recoveryPower": 0
+  },
+  {
+    "frame": 16,
+    "timeMs": 640,
+    "heroHP": 8,
+    "enemyHP": 18,
+    "shield": 0,
+    "deathActive": false,
+    "damageVisible": false,
+    "ringAlpha": 0,
+    "actorRoot": [
+      109.9888636363636,
+      288.84823344306255
+    ],
+    "shieldCenter": null,
+    "recoveryPower": 0.021369277554039636
+  },
+  {
+    "frame": 17,
+    "timeMs": 680,
+    "heroHP": 8,
+    "enemyHP": 18,
+    "shield": 0,
+    "deathActive": false,
+    "damageVisible": false,
+    "ringAlpha": 0,
+    "actorRoot": [
+      109.9888636363636,
+      288.8639682824981
+    ],
+    "shieldCenter": null,
+    "recoveryPower": 0.08021698035670267
+  },
+  {
+    "frame": 18,
+    "timeMs": 720,
+    "heroHP": 8,
+    "enemyHP": 18,
+    "shield": 0,
+    "deathActive": false,
+    "damageVisible": false,
+    "ringAlpha": 0,
+    "actorRoot": [
+      109.9888636363636,
+      288.87978035929547
+    ],
+    "shieldCenter": null,
+    "recoveryPower": 0.16865291361880494
+  },
+  {
+    "frame": 19,
+    "timeMs": 760,
+    "heroHP": 8,
+    "enemyHP": 18,
+    "shield": 0,
+    "deathActive": false,
+    "damageVisible": false,
+    "ringAlpha": 0,
+    "actorRoot": [
+      109.9888636363636,
+      288.8956697566804
+    ],
+    "shieldCenter": null,
+    "recoveryPower": 0.2787868825511632
+  },
+  {
+    "frame": 20,
+    "timeMs": 800,
+    "heroHP": 8,
+    "enemyHP": 18,
+    "shield": 0,
+    "deathActive": false,
+    "damageVisible": false,
+    "ringAlpha": 0,
+    "actorRoot": [
+      109.9888636363636,
+      288.9116365576917
+    ],
+    "shieldCenter": null,
+    "recoveryPower": 0.40272869236459313
+  },
+  {
+    "frame": 21,
+    "timeMs": 840,
+    "heroHP": 8,
+    "enemyHP": 18,
+    "shield": 0,
+    "deathActive": false,
+    "damageVisible": false,
+    "ringAlpha": 0,
+    "actorRoot": [
+      109.9888636363636,
+      288.9276808451804
+    ],
+    "shieldCenter": null,
+    "recoveryPower": 0.5325881482699104
+  },
+  {
+    "frame": 22,
+    "timeMs": 880,
+    "heroHP": 8,
+    "enemyHP": 18,
+    "shield": 0,
+    "deathActive": false,
+    "damageVisible": false,
+    "ringAlpha": 0,
+    "actorRoot": [
+      109.9888636363636,
+      288.94380270181
+    ],
+    "shieldCenter": null,
+    "recoveryPower": 0.6604750554779322
+  },
+  {
+    "frame": 23,
+    "timeMs": 920,
+    "heroHP": 8,
+    "enemyHP": 18,
+    "shield": 0,
+    "deathActive": false,
+    "damageVisible": false,
+    "ringAlpha": 0,
+    "actorRoot": [
+      109.9888636363636,
+      288.96000221005596
+    ],
+    "shieldCenter": null,
+    "recoveryPower": 0.7784992191994744
+  },
+  {
+    "frame": 24,
+    "timeMs": 960,
+    "heroHP": 8,
+    "enemyHP": 18,
+    "shield": 0,
+    "deathActive": false,
+    "damageVisible": false,
+    "ringAlpha": 0,
+    "actorRoot": [
+      109.9888636363636,
+      288.9762794522055
+    ],
+    "shieldCenter": null,
+    "recoveryPower": 0.878770444645352
+  },
+  {
+    "frame": 25,
+    "timeMs": 1000,
+    "heroHP": 8,
+    "enemyHP": 18,
+    "shield": 0,
+    "deathActive": false,
+    "damageVisible": false,
+    "ringAlpha": 0,
+    "actorRoot": [
+      109.9888636363636,
+      288.9926345103576
+    ],
+    "shieldCenter": null,
+    "recoveryPower": 0.9533985370263829
+  },
+  {
+    "frame": 26,
+    "timeMs": 1040,
+    "heroHP": 8,
+    "enemyHP": 18,
+    "shield": 0,
+    "deathActive": false,
+    "damageVisible": false,
+    "ringAlpha": 0,
+    "actorRoot": [
+      109.9888636363636,
+      289.0090674664227
+    ],
+    "shieldCenter": null,
+    "recoveryPower": 0.9944933015533822
+  },
+  {
+    "frame": 27,
+    "timeMs": 1080,
+    "heroHP": 12,
+    "enemyHP": 18,
+    "shield": 0,
+    "deathActive": false,
+    "damageVisible": false,
+    "ringAlpha": 0,
+    "actorRoot": [
+      109.9888636363636,
+      289.02557840212233
+    ],
+    "shieldCenter": null,
+    "recoveryPower": 0.9985404663923182
+  },
+  {
+    "frame": 28,
+    "timeMs": 1120,
+    "heroHP": 12,
+    "enemyHP": 18,
+    "shield": 0,
+    "deathActive": false,
+    "damageVisible": false,
+    "ringAlpha": 0,
+    "actorRoot": [
+      109.9888636363636,
+      289.0421673989891
+    ],
+    "shieldCenter": null,
+    "recoveryPower": 0.9872592592592592
+  },
+  {
+    "frame": 29,
+    "timeMs": 1160,
+    "heroHP": 12,
+    "enemyHP": 18,
+    "shield": 0,
+    "deathActive": false,
+    "damageVisible": false,
+    "ringAlpha": 0,
+    "actorRoot": [
+      109.9888636363636,
+      289.05883453836634
+    ],
+    "shieldCenter": null,
+    "recoveryPower": 0.9657064471879288
+  },
+  {
+    "frame": 30,
+    "timeMs": 1200,
+    "heroHP": 12,
+    "enemyHP": 18,
+    "shield": 0,
+    "deathActive": false,
+    "damageVisible": false,
+    "ringAlpha": 0,
+    "actorRoot": [
+      109.9888636363636,
+      289.0755799014081
+    ],
+    "shieldCenter": null,
+    "recoveryPower": 0.9349355281207133
+  },
+  {
+    "frame": 31,
+    "timeMs": 1240,
+    "heroHP": 12,
+    "enemyHP": 18,
+    "shield": 0,
+    "deathActive": false,
+    "damageVisible": false,
+    "ringAlpha": 0,
+    "actorRoot": [
+      109.9888636363636,
+      289.05883453836634
+    ],
+    "shieldCenter": null,
+    "recoveryPower": 0.896
+  },
+  {
+    "frame": 32,
+    "timeMs": 1280,
+    "heroHP": 12,
+    "enemyHP": 18,
+    "shield": 0,
+    "deathActive": false,
+    "damageVisible": false,
+    "ringAlpha": 0,
+    "actorRoot": [
+      109.9888636363636,
+      289.0421673989891
+    ],
+    "shieldCenter": null,
+    "recoveryPower": 0.8499533607681755
+  },
+  {
+    "frame": 33,
+    "timeMs": 1320,
+    "heroHP": 12,
+    "enemyHP": 18,
+    "shield": 0,
+    "deathActive": false,
+    "damageVisible": false,
+    "ringAlpha": 0,
+    "actorRoot": [
+      109.9888636363636,
+      289.02557840212233
+    ],
+    "shieldCenter": null,
+    "recoveryPower": 0.7978491083676265
+  },
+  {
+    "frame": 34,
+    "timeMs": 1360,
+    "heroHP": 12,
+    "enemyHP": 18,
+    "shield": 0,
+    "deathActive": false,
+    "damageVisible": false,
+    "ringAlpha": 0,
+    "actorRoot": [
+      109.9888636363636,
+      289.0090674664227
+    ],
+    "shieldCenter": null,
+    "recoveryPower": 0.7407407407407403
+  },
+  {
+    "frame": 35,
+    "timeMs": 1400,
+    "heroHP": 12,
+    "enemyHP": 18,
+    "shield": 0,
+    "deathActive": false,
+    "damageVisible": false,
+    "ringAlpha": 0,
+    "actorRoot": [
+      109.9888636363636,
+      288.9926345103576
+    ],
+    "shieldCenter": null,
+    "recoveryPower": 0.6796817558299034
+  },
+  {
+    "frame": 36,
+    "timeMs": 1440,
+    "heroHP": 12,
+    "enemyHP": 18,
+    "shield": 0,
+    "deathActive": false,
+    "damageVisible": false,
+    "ringAlpha": 0,
+    "actorRoot": [
+      109.9888636363636,
+      288.9762794522055
+    ],
+    "shieldCenter": null,
+    "recoveryPower": 0.6157256515775035
+  },
+  {
+    "frame": 37,
+    "timeMs": 1480,
+    "heroHP": 12,
+    "enemyHP": 18,
+    "shield": 0,
+    "deathActive": false,
+    "damageVisible": false,
+    "ringAlpha": 0,
+    "actorRoot": [
+      109.9888636363636,
+      288.96000221005596
+    ],
+    "shieldCenter": null,
+    "recoveryPower": 0.5499259259259259
+  },
+  {
+    "frame": 38,
+    "timeMs": 1520,
+    "heroHP": 12,
+    "enemyHP": 18,
+    "shield": 0,
+    "deathActive": false,
+    "damageVisible": false,
+    "ringAlpha": 0,
+    "actorRoot": [
+      109.9888636363636,
+      288.94380270181
+    ],
+    "shieldCenter": null,
+    "recoveryPower": 0.4833360768175584
+  },
+  {
+    "frame": 39,
+    "timeMs": 1560,
+    "heroHP": 12,
+    "enemyHP": 18,
+    "shield": 0,
+    "deathActive": false,
+    "damageVisible": false,
+    "ringAlpha": 0,
+    "actorRoot": [
+      109.9888636363636,
+      288.9276808451804
+    ],
+    "shieldCenter": null,
+    "recoveryPower": 0.41700960219478744
+  },
+  {
+    "frame": 40,
+    "timeMs": 1600,
+    "heroHP": 12,
+    "enemyHP": 18,
+    "shield": 0,
+    "deathActive": false,
+    "damageVisible": false,
+    "ringAlpha": 0,
+    "actorRoot": [
+      109.9888636363636,
+      288.9116365576917
+    ],
+    "shieldCenter": null,
+    "recoveryPower": 0.352
+  },
+  {
+    "frame": 41,
+    "timeMs": 1640,
+    "heroHP": 12,
+    "enemyHP": 18,
+    "shield": 0,
+    "deathActive": false,
+    "damageVisible": false,
+    "ringAlpha": 0,
+    "actorRoot": [
+      109.9888636363636,
+      288.8956697566804
+    ],
+    "shieldCenter": null,
+    "recoveryPower": 0.28936076817558287
+  },
+  {
+    "frame": 42,
+    "timeMs": 1680,
+    "heroHP": 12,
+    "enemyHP": 18,
+    "shield": 0,
+    "deathActive": false,
+    "damageVisible": false,
+    "ringAlpha": 0,
+    "actorRoot": [
+      109.9888636363636,
+      288.87978035929547
+    ],
+    "shieldCenter": null,
+    "recoveryPower": 0.23014540466392308
+  },
+  {
+    "frame": 43,
+    "timeMs": 1720,
+    "heroHP": 12,
+    "enemyHP": 18,
+    "shield": 0,
+    "deathActive": false,
+    "damageVisible": false,
+    "ringAlpha": 0,
+    "actorRoot": [
+      109.9888636363636,
+      288.8639682824981
+    ],
+    "shieldCenter": null,
+    "recoveryPower": 0.17540740740740723
+  },
+  {
+    "frame": 44,
+    "timeMs": 1760,
+    "heroHP": 12,
+    "enemyHP": 18,
+    "shield": 0,
+    "deathActive": false,
+    "damageVisible": false,
+    "ringAlpha": 0,
+    "actorRoot": [
+      109.9888636363636,
+      288.84823344306255
+    ],
+    "shieldCenter": null,
+    "recoveryPower": 0.12620027434842263
+  },
+  {
+    "frame": 45,
+    "timeMs": 1800,
+    "heroHP": 12,
+    "enemyHP": 18,
+    "shield": 0,
+    "deathActive": false,
+    "damageVisible": false,
+    "ringAlpha": 0,
+    "actorRoot": [
+      109.9888636363636,
+      288.9518927443336
+    ],
+    "shieldCenter": null,
+    "recoveryPower": 0.08357750342935488
+  },
+  {
+    "frame": 46,
+    "timeMs": 1840,
+    "heroHP": 12,
+    "enemyHP": 18,
+    "shield": 0,
+    "deathActive": false,
+    "damageVisible": false,
+    "ringAlpha": 0,
+    "actorRoot": [
+      109.9888636363636,
+      288.94380270181
+    ],
+    "shieldCenter": null,
+    "recoveryPower": 0.04859259259259219
+  },
+  {
+    "frame": 47,
+    "timeMs": 1880,
+    "heroHP": 12,
+    "enemyHP": 18,
+    "shield": 0,
+    "deathActive": false,
+    "damageVisible": false,
+    "ringAlpha": 0,
+    "actorRoot": [
+      109.9888636363636,
+      288.9357320721935
+    ],
+    "shieldCenter": null,
+    "recoveryPower": 0.022299039780520835
+  },
+  {
+    "frame": 48,
+    "timeMs": 1920,
+    "heroHP": 12,
+    "enemyHP": 18,
+    "shield": 0,
+    "deathActive": false,
+    "damageVisible": false,
+    "ringAlpha": 0,
+    "actorRoot": [
+      109.9888636363636,
+      288.9276808451804
+    ],
+    "shieldCenter": null,
+    "recoveryPower": 0.00575034293552823
+  },
+  {
+    "frame": 49,
+    "timeMs": 1960,
+    "heroHP": 12,
+    "enemyHP": 18,
+    "shield": 0,
+    "deathActive": false,
+    "damageVisible": false,
+    "ringAlpha": 0,
+    "actorRoot": [
+      109.9888636363636,
+      288.9196490104555
+    ],
+    "shieldCenter": null,
+    "recoveryPower": 0
+  },
+  {
+    "frame": 50,
+    "timeMs": 2000,
+    "heroHP": 12,
+    "enemyHP": 18,
+    "shield": 0,
+    "deathActive": false,
+    "damageVisible": false,
+    "ringAlpha": 0,
+    "actorRoot": [
+      109.9888636363636,
+      288.9116365576917
+    ],
+    "shieldCenter": null,
+    "recoveryPower": 0
+  },
+  {
+    "frame": 51,
+    "timeMs": 2040,
+    "heroHP": 12,
+    "enemyHP": 18,
+    "shield": 0,
+    "deathActive": false,
+    "damageVisible": false,
+    "ringAlpha": 0,
+    "actorRoot": [
+      109.9888636363636,
+      288.90364347655014
+    ],
+    "shieldCenter": null,
+    "recoveryPower": 0
+  },
+  {
+    "frame": 52,
+    "timeMs": 2080,
+    "heroHP": 12,
+    "enemyHP": 18,
+    "shield": 0,
+    "deathActive": false,
+    "damageVisible": false,
+    "ringAlpha": 0,
+    "actorRoot": [
+      109.9888636363636,
+      288.8956697566804
+    ],
+    "shieldCenter": null,
+    "recoveryPower": 0
+  },
+  {
+    "frame": 53,
+    "timeMs": 2120,
+    "heroHP": 12,
+    "enemyHP": 18,
+    "shield": 0,
+    "deathActive": false,
+    "damageVisible": false,
+    "ringAlpha": 0,
+    "actorRoot": [
+      109.9888636363636,
+      288.88771538772016
+    ],
+    "shieldCenter": null,
+    "recoveryPower": 0
+  },
+  {
+    "frame": 54,
+    "timeMs": 2160,
+    "heroHP": 12,
+    "enemyHP": 18,
+    "shield": 0,
+    "deathActive": false,
+    "damageVisible": false,
+    "ringAlpha": 0,
+    "actorRoot": [
+      109.9888636363636,
+      288.87978035929547
+    ],
+    "shieldCenter": null,
+    "recoveryPower": 0
+  },
+  {
+    "frame": 55,
+    "timeMs": 2200,
+    "heroHP": 12,
+    "enemyHP": 18,
+    "shield": 0,
+    "deathActive": false,
+    "damageVisible": false,
+    "ringAlpha": 0,
+    "actorRoot": [
+      109.9888636363636,
+      288.87186466102054
+    ],
+    "shieldCenter": null,
+    "recoveryPower": 0
+  },
+  {
+    "frame": 56,
+    "timeMs": 2240,
+    "heroHP": 12,
+    "enemyHP": 18,
+    "shield": 0,
+    "deathActive": false,
+    "damageVisible": false,
+    "ringAlpha": 0,
+    "actorRoot": [
+      109.9888636363636,
+      288.8639682824981
+    ],
+    "shieldCenter": null,
+    "recoveryPower": 0
+  },
+  {
+    "frame": 57,
+    "timeMs": 2280,
+    "heroHP": 12,
+    "enemyHP": 18,
+    "shield": 0,
+    "deathActive": false,
+    "damageVisible": false,
+    "ringAlpha": 0,
+    "actorRoot": [
+      109.9888636363636,
+      288.85609121331913
+    ],
+    "shieldCenter": null,
+    "recoveryPower": 0
+  },
+  {
+    "frame": 58,
+    "timeMs": 2320,
+    "heroHP": 12,
+    "enemyHP": 18,
+    "shield": 0,
+    "deathActive": false,
+    "damageVisible": false,
+    "ringAlpha": 0,
+    "actorRoot": [
+      109.9888636363636,
+      288.84823344306255
+    ],
+    "shieldCenter": null,
+    "recoveryPower": 0
+  },
+  {
+    "frame": 59,
+    "timeMs": 2360,
+    "heroHP": 12,
+    "enemyHP": 18,
+    "shield": 0,
+    "deathActive": false,
+    "damageVisible": false,
+    "ringAlpha": 0,
+    "actorRoot": [
+      109.9888636363636,
+      288.84039496129617
+    ],
+    "shieldCenter": null,
+    "recoveryPower": 0
+  },
+  {
+    "frame": 60,
+    "timeMs": 2400,
+    "heroHP": 12,
+    "enemyHP": 18,
+    "shield": 0,
+    "deathActive": false,
+    "damageVisible": false,
+    "ringAlpha": 0,
+    "actorRoot": [
+      109.9888636363636,
+      288.8325757575757
+    ],
+    "shieldCenter": null,
+    "recoveryPower": 0
+  },
+  {
+    "frame": 61,
+    "timeMs": 2440,
+    "heroHP": 12,
+    "enemyHP": 18,
+    "shield": 0,
+    "deathActive": false,
+    "damageVisible": false,
+    "ringAlpha": 0,
+    "actorRoot": [
+      109.9888636363636,
+      288.84039496129617
+    ],
+    "shieldCenter": null,
+    "recoveryPower": 0
+  },
+  {
+    "frame": 62,
+    "timeMs": 2480,
+    "heroHP": 12,
+    "enemyHP": 18,
+    "shield": 0,
+    "deathActive": false,
+    "damageVisible": false,
+    "ringAlpha": 0,
+    "actorRoot": [
+      109.9888636363636,
+      288.84823344306255
+    ],
+    "shieldCenter": null,
+    "recoveryPower": 0
+  },
+  {
+    "frame": 63,
+    "timeMs": 2520,
+    "heroHP": 12,
+    "enemyHP": 18,
+    "shield": 0,
+    "deathActive": false,
+    "damageVisible": false,
+    "ringAlpha": 0,
+    "actorRoot": [
+      109.9888636363636,
+      288.85609121331913
+    ],
+    "shieldCenter": null,
+    "recoveryPower": 0
+  },
+  {
+    "frame": 64,
+    "timeMs": 2560,
+    "heroHP": 12,
+    "enemyHP": 18,
+    "shield": 0,
+    "deathActive": false,
+    "damageVisible": false,
+    "ringAlpha": 0,
+    "actorRoot": [
+      109.9888636363636,
+      288.8639682824981
+    ],
+    "shieldCenter": null,
+    "recoveryPower": 0
+  },
+  {
+    "frame": 65,
+    "timeMs": 2600,
+    "heroHP": 12,
+    "enemyHP": 18,
+    "shield": 0,
+    "deathActive": false,
+    "damageVisible": false,
+    "ringAlpha": 0,
+    "actorRoot": [
+      109.9888636363636,
+      288.87186466102054
+    ],
+    "shieldCenter": null,
+    "recoveryPower": 0
+  },
+  {
+    "frame": 66,
+    "timeMs": 2640,
+    "heroHP": 12,
+    "enemyHP": 18,
+    "shield": 0,
+    "deathActive": false,
+    "damageVisible": false,
+    "ringAlpha": 0,
+    "actorRoot": [
+      109.9888636363636,
+      288.87978035929547
+    ],
+    "shieldCenter": null,
+    "recoveryPower": 0
+  },
+  {
+    "frame": 67,
+    "timeMs": 2680,
+    "heroHP": 12,
+    "enemyHP": 18,
+    "shield": 0,
+    "deathActive": false,
+    "damageVisible": false,
+    "ringAlpha": 0,
+    "actorRoot": [
+      109.9888636363636,
+      288.88771538772016
+    ],
+    "shieldCenter": null,
+    "recoveryPower": 0
+  },
+  {
+    "frame": 68,
+    "timeMs": 2720,
+    "heroHP": 12,
+    "enemyHP": 18,
+    "shield": 0,
+    "deathActive": false,
+    "damageVisible": false,
+    "ringAlpha": 0,
+    "actorRoot": [
+      109.9888636363636,
+      288.8956697566804
+    ],
+    "shieldCenter": null,
+    "recoveryPower": 0
+  },
+  {
+    "frame": 69,
+    "timeMs": 2760,
+    "heroHP": 12,
+    "enemyHP": 18,
+    "shield": 0,
+    "deathActive": false,
+    "damageVisible": false,
+    "ringAlpha": 0,
+    "actorRoot": [
+      109.9888636363636,
+      288.9036434765502
+    ],
+    "shieldCenter": null,
+    "recoveryPower": 0
+  },
+  {
+    "frame": 70,
+    "timeMs": 2800,
+    "heroHP": 12,
+    "enemyHP": 18,
+    "shield": 0,
+    "deathActive": false,
+    "damageVisible": false,
+    "ringAlpha": 0,
+    "actorRoot": [
+      109.9888636363636,
+      288.9116365576917
+    ],
+    "shieldCenter": null,
+    "recoveryPower": 0
+  },
+  {
+    "frame": 71,
+    "timeMs": 2840,
+    "heroHP": 12,
+    "enemyHP": 18,
+    "shield": 0,
+    "deathActive": false,
+    "damageVisible": false,
+    "ringAlpha": 0,
+    "actorRoot": [
+      109.9888636363636,
+      288.9196490104555
+    ],
+    "shieldCenter": null,
+    "recoveryPower": 0
+  },
+  {
+    "frame": 72,
+    "timeMs": 2880,
+    "heroHP": 12,
+    "enemyHP": 18,
+    "shield": 0,
+    "deathActive": false,
+    "damageVisible": false,
+    "ringAlpha": 0,
+    "actorRoot": [
+      109.9888636363636,
+      288.9276808451804
+    ],
+    "shieldCenter": null,
+    "recoveryPower": 0
+  },
+  {
+    "frame": 73,
+    "timeMs": 2920,
+    "heroHP": 12,
+    "enemyHP": 18,
+    "shield": 0,
+    "deathActive": false,
+    "damageVisible": false,
+    "ringAlpha": 0,
+    "actorRoot": [
+      109.9888636363636,
+      288.9357320721935
+    ],
+    "shieldCenter": null,
+    "recoveryPower": 0
+  },
+  {
+    "frame": 74,
+    "timeMs": 2960,
+    "heroHP": 12,
+    "enemyHP": 18,
+    "shield": 0,
+    "deathActive": false,
+    "damageVisible": false,
+    "ringAlpha": 0,
+    "actorRoot": [
+      109.9888636363636,
+      288.94380270181
+    ],
+    "shieldCenter": null,
+    "recoveryPower": 0
+  },
+  {
+    "frame": 75,
+    "timeMs": 3000,
+    "heroHP": 12,
+    "enemyHP": 18,
+    "shield": 0,
+    "deathActive": false,
+    "damageVisible": false,
+    "ringAlpha": 0,
+    "actorRoot": [
+      109.9888636363636,
+      288.9518927443336
+    ],
+    "shieldCenter": null,
+    "recoveryPower": 0
+  },
+  {
+    "frame": 76,
+    "timeMs": 3040,
+    "heroHP": 12,
+    "enemyHP": 18,
+    "shield": 0,
+    "deathActive": false,
+    "damageVisible": false,
+    "ringAlpha": 0,
+    "actorRoot": [
+      109.9888636363636,
+      288.96000221005596
+    ],
+    "shieldCenter": null,
+    "recoveryPower": 0
+  },
+  {
+    "frame": 77,
+    "timeMs": 3080,
+    "heroHP": 12,
+    "enemyHP": 18,
+    "shield": 0,
+    "deathActive": false,
+    "damageVisible": false,
+    "ringAlpha": 0,
+    "actorRoot": [
+      109.9888636363636,
+      288.9681311092572
+    ],
+    "shieldCenter": null,
+    "recoveryPower": 0
+  },
+  {
+    "frame": 78,
+    "timeMs": 3120,
+    "heroHP": 12,
+    "enemyHP": 18,
+    "shield": 0,
+    "deathActive": false,
+    "damageVisible": false,
+    "ringAlpha": 0,
+    "actorRoot": [
+      109.9888636363636,
+      288.9762794522055
+    ],
+    "shieldCenter": null,
+    "recoveryPower": 0
+  },
+  {
+    "frame": 79,
+    "timeMs": 3160,
+    "heroHP": 12,
+    "enemyHP": 18,
+    "shield": 0,
+    "deathActive": false,
+    "damageVisible": false,
+    "ringAlpha": 0,
+    "actorRoot": [
+      109.9888636363636,
+      288.9844472491574
+    ],
+    "shieldCenter": null,
+    "recoveryPower": 0
+  },
+  {
+    "frame": 80,
+    "timeMs": 3200,
+    "heroHP": 12,
+    "enemyHP": 18,
+    "shield": 0,
+    "deathActive": false,
+    "damageVisible": false,
+    "ringAlpha": 0,
+    "actorRoot": [
+      109.9888636363636,
+      288.9926345103576
+    ],
+    "shieldCenter": null,
+    "recoveryPower": 0
+  },
+  {
+    "frame": 81,
+    "timeMs": 3240,
+    "heroHP": 12,
+    "enemyHP": 18,
+    "shield": 0,
+    "deathActive": false,
+    "damageVisible": false,
+    "ringAlpha": 0,
+    "actorRoot": [
+      109.9888636363636,
+      289.00084124603904
+    ],
+    "shieldCenter": null,
+    "recoveryPower": 0
+  },
+  {
+    "frame": 82,
+    "timeMs": 3280,
+    "heroHP": 12,
+    "enemyHP": 18,
+    "shield": 0,
+    "deathActive": false,
+    "damageVisible": false,
+    "ringAlpha": 0,
+    "actorRoot": [
+      109.9888636363636,
+      289.0090674664227
+    ],
+    "shieldCenter": null,
+    "recoveryPower": 0
+  },
+  {
+    "frame": 83,
+    "timeMs": 3320,
+    "heroHP": 12,
+    "enemyHP": 18,
+    "shield": 0,
+    "deathActive": false,
+    "damageVisible": false,
+    "ringAlpha": 0,
+    "actorRoot": [
+      109.9888636363636,
+      289.017313181718
+    ],
+    "shieldCenter": null,
+    "recoveryPower": 0
+  },
+  {
+    "frame": 84,
+    "timeMs": 3360,
+    "heroHP": 12,
+    "enemyHP": 18,
+    "shield": 0,
+    "deathActive": false,
+    "damageVisible": false,
+    "ringAlpha": 0,
+    "actorRoot": [
+      109.9888636363636,
+      289.02557840212233
+    ],
+    "shieldCenter": null,
+    "recoveryPower": 0
+  },
+  {
+    "frame": 85,
+    "timeMs": 3400,
+    "heroHP": 12,
+    "enemyHP": 18,
+    "shield": 0,
+    "deathActive": false,
+    "damageVisible": false,
+    "ringAlpha": 0,
+    "actorRoot": [
+      109.9888636363636,
+      289.03386313782147
+    ],
+    "shieldCenter": null,
+    "recoveryPower": 0
+  },
+  {
+    "frame": 86,
+    "timeMs": 3440,
+    "heroHP": 12,
+    "enemyHP": 18,
+    "shield": 0,
+    "deathActive": false,
+    "damageVisible": false,
+    "ringAlpha": 0,
+    "actorRoot": [
+      109.9888636363636,
+      289.0421673989891
+    ],
+    "shieldCenter": null,
+    "recoveryPower": 0
+  },
+  {
+    "frame": 87,
+    "timeMs": 3480,
+    "heroHP": 12,
+    "enemyHP": 18,
+    "shield": 0,
+    "deathActive": false,
+    "damageVisible": false,
+    "ringAlpha": 0,
+    "actorRoot": [
+      109.9888636363636,
+      289.05049119578734
+    ],
+    "shieldCenter": null,
+    "recoveryPower": 0
+  },
+  {
+    "frame": 88,
+    "timeMs": 3520,
+    "heroHP": 12,
+    "enemyHP": 18,
+    "shield": 0,
+    "deathActive": false,
+    "damageVisible": false,
+    "ringAlpha": 0,
+    "actorRoot": [
+      109.9888636363636,
+      289.05883453836634
+    ],
+    "shieldCenter": null,
+    "recoveryPower": 0
+  },
+  {
+    "frame": 89,
+    "timeMs": 3560,
+    "heroHP": 12,
+    "enemyHP": 18,
+    "shield": 0,
+    "deathActive": false,
+    "damageVisible": false,
+    "ringAlpha": 0,
+    "actorRoot": [
+      109.9888636363636,
+      289.0671974368645
+    ],
+    "shieldCenter": null,
+    "recoveryPower": 0
+  },
+  {
+    "frame": 90,
+    "timeMs": 3600,
+    "heroHP": 12,
+    "enemyHP": 18,
+    "shield": 0,
+    "deathActive": false,
+    "damageVisible": false,
+    "ringAlpha": 0,
+    "actorRoot": [
+      109.9888636363636,
+      289.0755799014081
+    ],
+    "shieldCenter": null,
+    "recoveryPower": 0
+  },
+  {
+    "frame": 91,
+    "timeMs": 3640,
+    "heroHP": 12,
+    "enemyHP": 18,
+    "shield": 0,
+    "deathActive": false,
+    "damageVisible": false,
+    "ringAlpha": 0,
+    "actorRoot": [
+      109.9888636363636,
+      289.0671974368645
+    ],
+    "shieldCenter": null,
+    "recoveryPower": 0
+  },
+  {
+    "frame": 92,
+    "timeMs": 3680,
+    "heroHP": 12,
+    "enemyHP": 18,
+    "shield": 0,
+    "deathActive": false,
+    "damageVisible": false,
+    "ringAlpha": 0,
+    "actorRoot": [
+      109.9888636363636,
+      289.05883453836634
+    ],
+    "shieldCenter": null,
+    "recoveryPower": 0
+  },
+  {
+    "frame": 93,
+    "timeMs": 3720,
+    "heroHP": 12,
+    "enemyHP": 18,
+    "shield": 0,
+    "deathActive": false,
+    "damageVisible": false,
+    "ringAlpha": 0,
+    "actorRoot": [
+      109.9888636363636,
+      289.05049119578734
+    ],
+    "shieldCenter": null,
+    "recoveryPower": 0
+  },
+  {
+    "frame": 94,
+    "timeMs": 3760,
+    "heroHP": 12,
+    "enemyHP": 18,
+    "shield": 0,
+    "deathActive": false,
+    "damageVisible": false,
+    "ringAlpha": 0,
+    "actorRoot": [
+      109.9888636363636,
+      289.0421673989891
+    ],
+    "shieldCenter": null,
+    "recoveryPower": 0
+  }
+]

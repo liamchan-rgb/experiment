@@ -1,0 +1,33 @@
+{
+  "scope": "Full GET of public raw GitHub files; proves byte-for-byte delivery only, not an App/device runtime test",
+  "ipa": {
+    "path": "Downloads/MeadowJourney-b67.ipa",
+    "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/b046d5f15b62dad77638f48ad108639f14404235/Downloads/MeadowJourney-b67.ipa",
+    "status": 200,
+    "contentType": "application/octet-stream",
+    "contentLengthHeader": "49938573",
+    "bytes": 49938573,
+    "sha256": "2cfe07cfd90ef1f3b0ae36ee7154763d420a2d96ac37b16dcce1380d67090816",
+    "matchesLocal": true
+  },
+  "gif": {
+    "path": "Art/Review/Battle/spellblade-demo-v1/runeSlash-normal.gif",
+    "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/c6ee157f63a19237cf101382920e7c591152ba73/Art/Review/Battle/spellblade-demo-v1/runeSlash-normal.gif",
+    "status": 200,
+    "contentType": "image/gif",
+    "bytes": 6722529,
+    "sha256": "cf55ff951da38e5df8c9d66cb3ece51bf277fa2509670dab69f867659092e1a3",
+    "matchesLocal": true,
+    "browserPlayback": {
+      "dimensions": [
+        1020,
+        765
+      ],
+      "frameIntervalMs": 20,
+      "uniqueScreenshots": 6,
+      "loadedAndAdvanced": true
+    }
+  },
+  "workflowRun": 40914603016,
+  "physicalDeviceRunPerformed": false
+}

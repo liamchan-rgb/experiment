@@ -1,0 +1,39 @@
+{
+  "animations": [
+    {
+      "file": "leatherArmor-attack-normal.gif",
+      "decodedFrames": 76,
+      "durationMs": 3800
+    },
+    {
+      "file": "leatherArmor-states-normal.gif",
+      "decodedFrames": 155,
+      "durationMs": 3960
+    },
+    {
+      "file": "runeArmor-attack-normal.gif",
+      "decodedFrames": 76,
+      "durationMs": 3800
+    },
+    {
+      "file": "runeArmor-states-normal.gif",
+      "decodedFrames": 155,
+      "durationMs": 3960
+    }
+  ],
+  "scope": "Production weapon pose exports; current armor atlas and layer mapping; offline, no device capture",
+  "walkingBindings": 2080,
+  "bowScope": "Material-only garment adaptation, original silhouette and grips retained",
+  "userApproval": null,
+  "primaryReviewer": "root",
+  "actualDecodedWholeBodyFramesViewed": 462,
+  "actualDecodedBattleFramesViewed": 190,
+  "actualDecodedWalkingFramesViewed": 32,
+  "wholeBodySixStatePosesViewed": 240,
+  "walkingPoseCellsViewed": 416,
+  "enlargedWholeBodySpotReview": [
+    "runeArmor-huntingBow",
+    "runeArmor-legendaryStaff"
+  ],
+  "newArtApproval": null
+}

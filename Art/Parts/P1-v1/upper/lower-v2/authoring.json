@@ -1,0 +1,55 @@
+{
+  "status": "candidate",
+  "artApproval": null,
+  "rawSource": "source/generated.png",
+  "sourceGuide": "source/tight-anatomy-guide.png",
+  "registration": "Uniform full-canvas resize plus fixed crop origin only; no per-limb width/height rescaling. Artist-painted bleed is cut by unchanged body-source alpha plus one pixel of garment thickness.",
+  "bootTopY": {
+    "up-left": {
+      "left": 202,
+      "right": 202
+    },
+    "up-right": {
+      "left": 202,
+      "right": 202
+    }
+  },
+  "sourceUV": "Art/Parts/P1-v1/upper/wardrobe-v1/source/common-left-uv",
+  "base": "Art/Templates/P1-Neutral/{direction}/walk-r6-transitions",
+  "owner": "root",
+  "subagentsUsed": false,
+  "sheetSize": 192,
+  "tileOrigin": [
+    80,
+    140
+  ],
+  "anatomicalMatte": true,
+  "matteAllowancePixels": 1,
+  "textureGuide": "source/minimum-garment-stencil.png",
+  "textureRegistration": "Uniform whole-canvas resize and fixed tile origin; nearest author-painted opaque RGB is clamped into the small texture gutter before applying the anatomical matte. No body pixels copied, no per-frame painting or geometry resizing.",
+  "maxTextureGutterPixels": 6,
+  "paintOffsets": {
+    "up-left": {
+      "left": [
+        0,
+        0
+      ],
+      "right": [
+        0,
+        -2
+      ]
+    },
+    "up-right": {
+      "left": [
+        0,
+        6
+      ],
+      "right": [
+        0,
+        7
+      ]
+    }
+  },
+  "paintRegistrationLandmarks": "Explicit paint sole-height alignment only: source upper-right sole218 to target216; bottom-left210 to216; bottom-right211 to218. No width or length rescaling; matte determines unchanged anatomical geometry.",
+  "pelvisRootLastY": 178
+}

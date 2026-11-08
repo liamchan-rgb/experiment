@@ -1,0 +1,10 @@
+{
+  "scope": "static apparel master taskbook and existing-art reference examples, not an IPA",
+  "zip": "Chat-Apparel-Masters-v2.zip",
+  "bytes": 1746002,
+  "sha256": "260c16790be3d6cc3db9942d6801f0df32f79a2d2b3b1c77f2c950e61a1bce65",
+  "files": 96,
+  "chatMasterReferences": 40,
+  "codexPoseOutputReferences": 832,
+  "newDesignApproved": false
+}

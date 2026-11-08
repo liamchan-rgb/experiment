@@ -1,0 +1,13 @@
+{
+  "date": "2026-10-23",
+  "reviewer": "user",
+  "statement": "可以的，我在想右上的动作可以基于这个来镜像吗",
+  "status": "approved",
+  "scope": "Presented up-left r5 neutral full-body standing appearance and normal walking loop only. Excludes hidden complete anatomy, new outfits, start-stop, up-right and App/device/IPA integration.",
+  "sourceCommit": "a691986d986e96822903edb642bf875aa20b2655",
+  "artifacts": {
+    "walk-120ms.gif": "a1960994b1116ceaa89aac171c95c5ce04999ca799cdf0815a19190d6a00be22",
+    "idle-review-2x.png": "313c8b8dc43e18e56c64d3c51ce02a54e05cba53ecf29a77b693f4c0609d9649"
+  },
+  "nextDiscussion": "User asks whether up-right can be mirrored from this approved up-left version; no up-right artwork acceptance or new up-right asset is implied."
+}

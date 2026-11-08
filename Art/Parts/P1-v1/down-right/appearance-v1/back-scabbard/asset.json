@@ -1,0 +1,163 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "p1-down-right-back-scabbard-v1",
+  "version": "1.0.0",
+  "part": "weapon",
+  "compatibility": {
+    "rig": "p1-chibi-v1",
+    "bodyProfile": "p1-standard",
+    "actionSet": "locomotion-v1"
+  },
+  "mode": "pose-map",
+  "slots": [
+    "weapon.back"
+  ],
+  "directions": [
+    "down-right"
+  ],
+  "clips": [
+    "idle",
+    "walk",
+    "walk-start",
+    "walk-stop"
+  ],
+  "bindings": [
+    {
+      "direction": "down-right",
+      "clip": "idle",
+      "frame": 0,
+      "layers": {
+        "weapon.back": "png/00/weapon.back.png"
+      }
+    },
+    {
+      "direction": "down-right",
+      "clip": "walk",
+      "frame": 1,
+      "layers": {
+        "weapon.back": "png/01/weapon.back.png"
+      }
+    },
+    {
+      "direction": "down-right",
+      "clip": "walk",
+      "frame": 2,
+      "layers": {
+        "weapon.back": "png/02/weapon.back.png"
+      }
+    },
+    {
+      "direction": "down-right",
+      "clip": "walk",
+      "frame": 3,
+      "layers": {
+        "weapon.back": "png/03/weapon.back.png"
+      }
+    },
+    {
+      "direction": "down-right",
+      "clip": "walk",
+      "frame": 4,
+      "layers": {
+        "weapon.back": "png/04/weapon.back.png"
+      }
+    },
+    {
+      "direction": "down-right",
+      "clip": "walk",
+      "frame": 5,
+      "layers": {
+        "weapon.back": "png/05/weapon.back.png"
+      }
+    },
+    {
+      "direction": "down-right",
+      "clip": "walk",
+      "frame": 6,
+      "layers": {
+        "weapon.back": "png/06/weapon.back.png"
+      }
+    },
+    {
+      "direction": "down-right",
+      "clip": "walk",
+      "frame": 7,
+      "layers": {
+        "weapon.back": "png/07/weapon.back.png"
+      }
+    },
+    {
+      "direction": "down-right",
+      "clip": "walk",
+      "frame": 8,
+      "layers": {
+        "weapon.back": "png/08/weapon.back.png"
+      }
+    },
+    {
+      "direction": "down-right",
+      "clip": "walk-start",
+      "frame": 1,
+      "layers": {
+        "weapon.back": "png/09/weapon.back.png"
+      }
+    },
+    {
+      "direction": "down-right",
+      "clip": "walk-start",
+      "frame": 2,
+      "layers": {
+        "weapon.back": "png/10/weapon.back.png"
+      }
+    },
+    {
+      "direction": "down-right",
+      "clip": "walk-stop",
+      "frame": 1,
+      "layers": {
+        "weapon.back": "png/11/weapon.back.png"
+      }
+    },
+    {
+      "direction": "down-right",
+      "clip": "walk-stop",
+      "frame": 2,
+      "layers": {
+        "weapon.back": "png/12/weapon.back.png"
+      }
+    }
+  ],
+  "sourceFiles": [
+    "authoring.json",
+    "source/original.png",
+    "source/prompt.txt",
+    "source/weapon.back.png",
+    "editable/00.ora",
+    "editable/00.svg",
+    "editable/01.ora",
+    "editable/01.svg",
+    "editable/02.ora",
+    "editable/02.svg",
+    "editable/03.ora",
+    "editable/03.svg",
+    "editable/04.ora",
+    "editable/04.svg",
+    "editable/05.ora",
+    "editable/05.svg",
+    "editable/06.ora",
+    "editable/06.svg",
+    "editable/07.ora",
+    "editable/07.svg",
+    "editable/08.ora",
+    "editable/08.svg",
+    "editable/09.ora",
+    "editable/09.svg",
+    "editable/10.ora",
+    "editable/10.svg",
+    "editable/11.ora",
+    "editable/11.svg",
+    "editable/12.ora",
+    "editable/12.svg"
+  ],
+  "carryProfile": "back-scabbard"
+}

@@ -1,0 +1,352 @@
+{
+  "status": "eight-way-authoring-candidate",
+  "artApproval": null,
+  "authorAndReviewer": "root",
+  "subagentsUsed": false,
+  "directions": {
+    "down": {
+      "catalog": "Art/Templates/P1-Wardrobe/down/v10-transitions/catalog.json",
+      "motion": "Art/Templates/P1-Wardrobe/down/v10-transitions/motion.json",
+      "catalogSHA256": "1a692344b825f13cbdbe3fd5f0b95e088bf8edc73ed6821bd20ad3198c5c99be",
+      "motionSHA256": "32a92aed9e6d0b19e3417cca29a68c881cc7c30f0779046364edac3d7617b57d",
+      "roles": {
+        "base": "p1-neutral-down-walk-r7-transitions",
+        "forester": "p1-down-forester-transitions-v1",
+        "wayfarer": "p1-down-wayfarer-transitions-v1",
+        "weapon": "p1-down-back-scabbard-transitions-v1",
+        "hair-chestnut": "p1-down-hair-chestnut-transitions-v1",
+        "hair-silver": "p1-down-hair-silver-transitions-v1",
+        "face-blue": "p1-down-face-blue-transitions-v1",
+        "face-amber": "p1-down-face-amber-transitions-v1"
+      },
+      "faceVisibility": "visible",
+      "registration": [
+        4,
+        -1
+      ],
+      "walkSourceOrder": [
+        8,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "entryPhase": 1,
+      "exitPhase": 0
+    },
+    "down-left": {
+      "catalog": "Art/Templates/P1-Wardrobe/down-left/v1-independent/catalog.json",
+      "motion": "Art/Templates/P1-Wardrobe/down-left/v1-independent/motion.json",
+      "catalogSHA256": "05784c8a21bb9d2437f0437b832e00b77aa30aa77fddeb52e926d7ada287ba7f",
+      "motionSHA256": "782ed08caa0bb96b6c2f142a8e223093a3097647dce7f0db6913912ee0ef3893",
+      "roles": {
+        "base": "p1-neutral-down-left-walk-r1",
+        "hair-chestnut": "p1-hair-chestnut-down-left-v1",
+        "hair-silver": "p1-hair-silver-down-left-v1",
+        "face-blue": "p1-face-blue-down-left-v1",
+        "face-amber": "p1-face-amber-down-left-v1",
+        "forester": "p1-down-left-forester-v1",
+        "wayfarer": "p1-down-left-wayfarer-v1",
+        "lower": "p1-down-left-lower-v1",
+        "weapon": "p1-down-left-back-scabbard-v1"
+      },
+      "faceVisibility": "visible",
+      "registration": [
+        1,
+        1
+      ],
+      "walkSourceOrder": [
+        5,
+        6,
+        7,
+        8,
+        1,
+        2,
+        3,
+        4
+      ],
+      "entryPhase": 4,
+      "exitPhase": 3
+    },
+    "left": {
+      "catalog": "Art/Templates/P1-Wardrobe/left/v2-painted-poses/catalog.json",
+      "motion": "Art/Templates/P1-Wardrobe/left/v2-painted-poses/motion.json",
+      "catalogSHA256": "59cecac06ce32eb09450a40f39509787855fcb65f62e41e7c2bf6b8559027937",
+      "motionSHA256": "1133fcbeb70d8a2e37a89d4d2a6fffe99bf5ead2f1789ec359ade2d4c7b0de12",
+      "roles": {
+        "base": "p1-neutral-left-walk-r3-complete-transitions",
+        "forester": "p1-left-forester-v2",
+        "lower": "p1-left-traveler-lower-v2",
+        "wayfarer": "p1-left-wayfarer-coat-v2",
+        "weapon": "p1-weapon-back-scabbard-left-v1",
+        "hair-chestnut": "p1-hair-chestnut-left",
+        "hair-silver": "p1-hair-silver-left",
+        "face-blue": "p1-face-blue-left",
+        "face-amber": "p1-face-amber-left"
+      },
+      "faceVisibility": "visible",
+      "registration": [
+        3,
+        0
+      ],
+      "walkSourceOrder": [
+        5,
+        6,
+        7,
+        8,
+        1,
+        2,
+        3,
+        4
+      ],
+      "entryPhase": 4,
+      "exitPhase": 3
+    },
+    "up-left": {
+      "catalog": "Art/Templates/P1-Wardrobe/upper/v6-matched-back-carry/catalog.json",
+      "motion": "Art/Templates/P1-Wardrobe/upper/v6-matched-back-carry/up-left-motion.json",
+      "catalogSHA256": "6ed9f9b221eba5e39eac47d54c3f1cf0fb1739fada74c5aa6f3343f1f492e1cf",
+      "motionSHA256": "c1ade95238aa23e85accf26f2e8a09b179d26367b9aeb2253c2e4ac352f1d7da",
+      "roles": {
+        "base": "p1-neutral-up-left-r8-nape-gradient",
+        "forester": "p1-upper-forester-v1",
+        "wayfarer": "p1-upper-wayfarer-v1",
+        "lower": "p1-upper-lower-v2",
+        "hair-chestnut": "p1-upper-hair-chestnut-v1",
+        "hair-silver": "p1-upper-hair-silver-v1",
+        "weapon": "p1-upper-back-carry-v6"
+      },
+      "faceVisibility": "hidden-in-back-view",
+      "registration": [
+        0,
+        0
+      ],
+      "walkSourceOrder": [
+        5,
+        6,
+        7,
+        8,
+        1,
+        2,
+        3,
+        4
+      ],
+      "entryPhase": 4,
+      "exitPhase": 3
+    },
+    "up": {
+      "catalog": "Art/Templates/P1-Wardrobe/up/v1-independent/catalog.json",
+      "motion": "Art/Templates/P1-Wardrobe/up/v1-independent/motion.json",
+      "catalogSHA256": "34a6c8de08d418990d3ee4164e4105b99148bd41e6d806b77f75d1857e7e1633",
+      "motionSHA256": "af692c9d766a4593b5f2fa671eb21187d33aa43e22cbcef745a68fee1e833da5",
+      "roles": {
+        "base": "p1-neutral-up-walk-r1-layered",
+        "forester": "p1-up-forester-v1",
+        "wayfarer": "p1-up-wayfarer-v1",
+        "lower": "p1-up-lower-v1",
+        "hair-chestnut": "p1-up-hair-chestnut-v1",
+        "hair-silver": "p1-up-hair-silver-v1",
+        "weapon": "p1-up-back-scabbard-v1"
+      },
+      "faceVisibility": "hidden-in-back-view",
+      "registration": [
+        0,
+        2
+      ],
+      "walkSourceOrder": [
+        5,
+        6,
+        7,
+        8,
+        1,
+        2,
+        3,
+        4
+      ],
+      "entryPhase": 4,
+      "exitPhase": 3
+    },
+    "up-right": {
+      "catalog": "Art/Templates/P1-Wardrobe/upper/v6-matched-back-carry/catalog.json",
+      "motion": "Art/Templates/P1-Wardrobe/upper/v6-matched-back-carry/up-right-motion.json",
+      "catalogSHA256": "6ed9f9b221eba5e39eac47d54c3f1cf0fb1739fada74c5aa6f3343f1f492e1cf",
+      "motionSHA256": "78f2aaf8c3dd238db26520330617a295824ca482c3fbe4f2c615cbdc67b4dbcb",
+      "roles": {
+        "base": "p1-neutral-up-right-r8-nape-gradient",
+        "forester": "p1-upper-forester-v1",
+        "wayfarer": "p1-upper-wayfarer-v1",
+        "lower": "p1-upper-lower-v2",
+        "hair-chestnut": "p1-upper-hair-chestnut-v1",
+        "hair-silver": "p1-upper-hair-silver-v1",
+        "weapon": "p1-upper-back-carry-v6"
+      },
+      "faceVisibility": "hidden-in-back-view",
+      "registration": [
+        1,
+        0
+      ],
+      "walkSourceOrder": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "entryPhase": 0,
+      "exitPhase": 7
+    },
+    "right": {
+      "catalog": "Art/Templates/P1-Wardrobe/right/v1-independent/catalog.json",
+      "motion": "Art/Templates/P1-Wardrobe/right/v1-independent/motion.json",
+      "catalogSHA256": "64a20db61b32ddd9a495e51d6a39830093bc27f4634f41181f12cc6065736f65",
+      "motionSHA256": "ef11df1eed8f0c043a11ead959d306e76477b7ad2c833a9316d0e5dbe23e64a0",
+      "roles": {
+        "base": "p1-neutral-right-walk-r1-mirror",
+        "forester": "p1-right-forester-v1",
+        "wayfarer": "p1-right-wayfarer-v1",
+        "lower": "p1-right-lower-v1",
+        "weapon": "p1-right-back-scabbard-v1",
+        "hair-chestnut": "p1-right-hair-chestnut-v1",
+        "hair-silver": "p1-right-hair-silver-v1",
+        "face-blue": "p1-right-face-blue-v1",
+        "face-amber": "p1-right-face-amber-v1"
+      },
+      "faceVisibility": "visible",
+      "registration": [
+        -2,
+        0
+      ],
+      "walkSourceOrder": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "entryPhase": 0,
+      "exitPhase": 7
+    },
+    "down-right": {
+      "catalog": "Art/Templates/P1-Wardrobe/down-right/v1-independent/catalog.json",
+      "motion": "Art/Templates/P1-Wardrobe/down-right/v1-independent/motion.json",
+      "catalogSHA256": "244a8e31b452985119c55c66d9bb1749e50dcc96087cadecf0deb16c335aff74",
+      "motionSHA256": "ea6d4c832d2dc987603a30b546bf80d4f839a77dc572e64e5c0a8d87114eb5a4",
+      "roles": {
+        "base": "p1-neutral-down-right-walk-r1-mirrored-down-left",
+        "hair-chestnut": "p1-hair-chestnut-down-right-v1",
+        "hair-silver": "p1-hair-silver-down-right-v1",
+        "face-blue": "p1-face-blue-down-right-v1",
+        "face-amber": "p1-face-amber-down-right-v1",
+        "forester": "p1-down-right-forester-v1",
+        "wayfarer": "p1-down-right-wayfarer-v1",
+        "lower": "p1-down-right-lower-v1",
+        "weapon": "p1-down-right-back-scabbard-v1"
+      },
+      "faceVisibility": "visible",
+      "registration": [
+        0,
+        1
+      ],
+      "walkSourceOrder": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "entryPhase": 0,
+      "exitPhase": 7
+    }
+  },
+  "directionOrder": [
+    "down",
+    "down-left",
+    "left",
+    "up-left",
+    "up",
+    "up-right",
+    "right",
+    "down-right"
+  ],
+  "families": {
+    "outfits": [
+      "forester",
+      "wayfarer"
+    ],
+    "hair": [
+      "chestnut",
+      "silver"
+    ],
+    "face": [
+      "blue",
+      "amber"
+    ],
+    "carry": [
+      "empty",
+      "back"
+    ]
+  },
+  "normalFrameDurationMs": 120,
+  "sequence": [
+    0,
+    9,
+    10,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    11,
+    12,
+    0
+  ],
+  "durationsMs": [
+    480,
+    120,
+    120,
+    120,
+    120,
+    120,
+    120,
+    120,
+    120,
+    120,
+    120,
+    120,
+    120,
+    120,
+    120,
+    120,
+    120,
+    120,
+    120,
+    120,
+    120,
+    480
+  ],
+  "runtimeIntegrated": false,
+  "ipaBuilt": false
+}

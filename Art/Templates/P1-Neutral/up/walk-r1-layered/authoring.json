@@ -1,0 +1,410 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "p1-neutral-up-walk-r1-layered",
+  "direction": "up",
+  "facing": [
+    0,
+    -1
+  ],
+  "status": "candidate-awaiting-user-review",
+  "artApproval": null,
+  "authorAndReviewer": "root",
+  "subagentsUsed": false,
+  "compatibility": {
+    "rig": "p1-chibi-v1",
+    "bodyProfile": "p1-standard",
+    "actionSet": "locomotion-v1"
+  },
+  "sourceRegistration": {
+    "image": "source/generated-idle-original.png",
+    "sourceCanvas": [
+      1254,
+      1254
+    ],
+    "uniformScale": 0.20414673046251994,
+    "translation": [
+      0,
+      0
+    ],
+    "alphaThreshold": 128,
+    "alphaFit": false,
+    "sha256": "2f7fc08ee918f913a7c35485cf4bba05794834c42ab1ce76dde1c6aec2c12d8f",
+    "prompt": "source/prompts/neutral-up.txt"
+  },
+  "headLocalOrigin": [
+    80,
+    61
+  ],
+  "headSource": {
+    "image": "source/head.base.png",
+    "sha256": "9a7ec15965b0e26110f777f42ec96022d198a58fb3b9d84e12cf5652e00bfb36"
+  },
+  "parts": {
+    "shirt": {
+      "image": "source/shirt.png",
+      "sha256": "c5439a5da33dec5fb9f209ab485b71b02334175c8b6ce1aad5c2fcb5dab84163"
+    },
+    "pants": {
+      "image": "source/pants.png",
+      "sha256": "30e342e55bf8c1f90e3cbc64e4c1f02934156aaa86ef2c9a79134084c923baeb"
+    },
+    "arm.left": {
+      "image": "source/arm.left.png",
+      "sha256": "0ad3bb8248ddae080b0a34f52f99e9e68a8c44e6861e2899152261bdbaccb841"
+    },
+    "arm.right": {
+      "image": "source/arm.right.png",
+      "sha256": "000a38660431940809ae1ad28235d49810109c2282d3c96c5d367bf34b949d70"
+    },
+    "leg.left": {
+      "image": "source/leg.left.png",
+      "sha256": "aadc1255d33c13ee48887546f92b989c2cc01e23a7e2c344619bf9d9b1ab8bfc"
+    },
+    "leg.right": {
+      "image": "source/leg.right.png",
+      "sha256": "5b8c4f5655de6afc007d672e516e4a04121b59a0c2fdce9fcd0f537af69409b0"
+    },
+    "hand.left": {
+      "image": "source/hand.left.png",
+      "sha256": "909d0299153a26d8dd788c2283af3b9622b15cae64a517afe5aab4e6df34893c",
+      "sameDomainAsArm": true
+    },
+    "hand.right": {
+      "image": "source/hand.right.png",
+      "sha256": "2c9c9e0fd9bbcaded484fa6db3e899b1e0523f0fd0c9ce1851caac1378a50028",
+      "sameDomainAsArm": true
+    },
+    "junction-reference": {
+      "image": "source/junction-reference.png",
+      "sha256": "a058af54ad13f40137765cd01152cb61d54d1d95363fa2296cb6d4db8fb3d1a1"
+    }
+  },
+  "joints": {
+    "neck": [
+      128,
+      130
+    ],
+    "waist": [
+      128,
+      159
+    ],
+    "pelvis": [
+      128,
+      168
+    ],
+    "shoulderLeft": [
+      112,
+      138
+    ],
+    "elbowLeft": [
+      108,
+      153
+    ],
+    "wristLeft": [
+      104,
+      166
+    ],
+    "shoulderRight": [
+      143,
+      138
+    ],
+    "elbowRight": [
+      148,
+      153
+    ],
+    "wristRight": [
+      151,
+      166
+    ],
+    "hipLeft": [
+      119,
+      166
+    ],
+    "kneeLeft": [
+      119,
+      190
+    ],
+    "ankleLeft": [
+      118,
+      208
+    ],
+    "hipRight": [
+      136,
+      166
+    ],
+    "kneeRight": [
+      137,
+      190
+    ],
+    "ankleRight": [
+      137,
+      208
+    ]
+  },
+  "headOwnership": "source y<=127; existing source neck pixels x122..133 y125..127 duplicate as underlap behind moving skull, no new pigment",
+  "shirtRows": {
+    "128": [
+      121,
+      134
+    ],
+    "129": [
+      120,
+      135
+    ],
+    "130": [
+      117,
+      138
+    ],
+    "131": [
+      116,
+      139
+    ],
+    "132": [
+      116,
+      139
+    ],
+    "133": [
+      116,
+      139
+    ],
+    "134": [
+      117,
+      138
+    ],
+    "135": [
+      117,
+      138
+    ],
+    "136": [
+      117,
+      138
+    ],
+    "137": [
+      118,
+      137
+    ],
+    "138": [
+      118,
+      137
+    ],
+    "139": [
+      118,
+      137
+    ],
+    "140": [
+      118,
+      137
+    ],
+    "141": [
+      118,
+      137
+    ],
+    "142": [
+      118,
+      137
+    ],
+    "143": [
+      118,
+      137
+    ],
+    "144": [
+      117,
+      138
+    ],
+    "145": [
+      117,
+      138
+    ],
+    "146": [
+      116,
+      139
+    ],
+    "147": [
+      115,
+      140
+    ],
+    "148": [
+      115,
+      140
+    ],
+    "149": [
+      116,
+      139
+    ],
+    "150": [
+      116,
+      139
+    ],
+    "151": [
+      116,
+      139
+    ],
+    "152": [
+      115,
+      140
+    ],
+    "153": [
+      115,
+      140
+    ],
+    "154": [
+      115,
+      140
+    ],
+    "155": [
+      115,
+      140
+    ],
+    "156": [
+      114,
+      141
+    ],
+    "157": [
+      113,
+      141
+    ],
+    "158": [
+      112,
+      142
+    ],
+    "159": [
+      112,
+      143
+    ],
+    "160": [
+      112,
+      144
+    ],
+    "161": [
+      116,
+      139
+    ],
+    "162": [
+      119,
+      135
+    ]
+  },
+  "pantsRows": "explicit hem ownership in author script; not a colour skin cut",
+  "sourceLight": "upper-left",
+  "oldApprovedReference": "Art/Review/P1/directions/up/revisions/r1/approval.json",
+  "referenceUse": "Back camera, left/right semantic convention, left-plant01/right-plant05, arm opposition and pass phases. Old source pixels/approval preserved. New neutral artwork/rig is a separate candidate, not pixel-identical reuse of clothed frames.",
+  "walk": {
+    "stride": 5,
+    "depthProjection": 0.55,
+    "lift": 6,
+    "bodyBob": 0.4,
+    "weightShift": 0.4,
+    "torsoTurn": 0.55,
+    "pelvisTurn": 0.4,
+    "armReachY": 2.3,
+    "armReachX": 0.45,
+    "kneeAnkleFollow": 0.6,
+    "headSwingDegrees": 0.4,
+    "durationMs": 120
+  },
+  "coupling": {
+    "domain": [
+      88,
+      118,
+      168,
+      230
+    ],
+    "gridStep": 1,
+    "waistY": [
+      152,
+      164
+    ],
+    "hemFollowY": [
+      164,
+      176
+    ],
+    "legIndependentY": [
+      177,
+      186
+    ],
+    "armRadius": [
+      7,
+      10
+    ],
+    "shoulderBlendY": [
+      4,
+      10
+    ]
+  },
+  "footContacts.left": {
+    "flat": [
+      118,
+      216
+    ]
+  },
+  "footContacts.right": {
+    "flat": [
+      137,
+      216
+    ]
+  },
+  "transitionPoses": [
+    {
+      "clip": "walk-start",
+      "frame": 1,
+      "phase": 0,
+      "amount": 0.3333333333333333,
+      "support": "right",
+      "footLift": {
+        "left": 1.2
+      }
+    },
+    {
+      "clip": "walk-start",
+      "frame": 2,
+      "phase": 0,
+      "amount": 0.6666666666666666,
+      "support": "right",
+      "footLift": {
+        "left": 0.7
+      }
+    },
+    {
+      "clip": "walk-stop",
+      "frame": 1,
+      "phase": 0.875,
+      "amount": 0.6666666666666666,
+      "support": "left",
+      "footLift": {
+        "right": 0.7
+      }
+    },
+    {
+      "clip": "walk-stop",
+      "frame": 2,
+      "phase": 0.875,
+      "amount": 0.3333333333333333,
+      "support": "both",
+      "footLift": {}
+    }
+  ],
+  "transitionScope": "Specified idle->walk01 and walk08->idle only; no arbitrary interruption acceptance",
+  "footRollStates": {
+    "half-rolled": {
+      "left": {
+        "image": "source/leg.left-half-rolled.png",
+        "sha256": "4a165fd1442d2c76f99fc5f2a70aeeea84323cbae1d9bc0a55beec43547ae1af"
+      },
+      "right": {
+        "image": "source/leg.right-half-rolled.png",
+        "sha256": "57a6cc2d9981891b478b8cc02880d38511d97d86230d2aef0e3b345088efae14"
+      }
+    },
+    "rolled": {
+      "left": {
+        "image": "source/leg.left-rolled.png",
+        "sha256": "8cceb43dac21164672eab863732f01ecec2acb48f516dfbd2aa799a95bfaba3c"
+      },
+      "right": {
+        "image": "source/leg.right-rolled.png",
+        "sha256": "0b566cf87a12b7989d902c7b9f3d166408390b33adc9e5973c4be0a9dfdb2cea"
+      }
+    }
+  },
+  "footRollScope": "Two source-paint RGB variants through the unchanged foot silhouette/ankle/UV. Flat -> half -> rolled -> half -> flat; no generated body/limb geometry imported."
+}

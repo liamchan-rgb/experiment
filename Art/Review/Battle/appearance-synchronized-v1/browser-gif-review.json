@@ -1,0 +1,78 @@
+{
+  "scope": "Actual exported GIFs in independent Chromium; not App execution, performance measurement or user art approval",
+  "appSimulatorOrDeviceRun": false,
+  "records": [
+    {
+      "path": "Art/Review/Battle/appearance-synchronized-v1/walking-battle-same-head-normal.gif",
+      "dimensions": {
+        "complete": true,
+        "width": 1536,
+        "height": 560
+      },
+      "intervalMs": 130,
+      "sampleHashes": [
+        "c96c8794e02c5df752d0fbdc463773e670df194d4aee896a065afcda38f71804",
+        "d091a55aaf28080259dba98179b1b6a861584730fa92e4290fd1c7e8d9142eea",
+        "253c3ae68560979a796885a128af3c86a721e6852a3d61c090e9755221320923",
+        "ce430e5ae91ab4ed407a4c35b1e777b0326fbb9a12ec2209cb6987671e798043",
+        "05fb5ac8aa0d72bed940635e6b34c31cc89bc7af5f49d84c6fa9450d85ae06da",
+        "c5b35c019daba1a2eae19f413e6db0f1861cd3e1d65dd56e5794b797284df6cd",
+        "44eef6c2461fd18d78df42e17eb4719cc390883fb3671c0ae27464f7934536e9",
+        "6e0415db3af8d985932effacb35bd2610a8e8ccc29dc2d75ad8e4158d04c4316",
+        "065922ac6cb8377aca54bbff65f75410fd9e446ba91e869cb84f8df2829ef20f",
+        "7602b609b78d2fb38ce1ab2e33cc404adf3cae8c5acbbc70d6b1c0e7a25fea72",
+        "bdbf4f10e0cb4ec34ebdbbcce44621d92fcced0de87eb323651dfb4e2ff0b50b",
+        "9b78df0c75dca58ca90861f60125732997c37a8342aec79ae98b5370f41c1edc"
+      ],
+      "distinctScreenshotHashes": 12
+    },
+    {
+      "path": "Art/Review/Battle/appearance-synchronized-v1/both-armors-attack-normal.gif",
+      "dimensions": {
+        "complete": true,
+        "width": 1024,
+        "height": 560
+      },
+      "intervalMs": 130,
+      "sampleHashes": [
+        "f3ba4245976e32d5a5182204fc801ee15adb961318c92233d08a174feb7ddb61",
+        "f3ba4245976e32d5a5182204fc801ee15adb961318c92233d08a174feb7ddb61",
+        "1df0d0abf15ca4c669f1d3e93b9a383528730525e8ab2481f0e1822789721487",
+        "3749a6414874b6a6b45ef4a43f08e95b4fc381a0f20ae8a6df5b88a826778672",
+        "10a857c19decbdb4f9b44382404a0c4e1f730927a80b1f8898515bbc89c8236a",
+        "47f6a4b662377f1a0b5150dcd70bab8bbcadb763f562457b2ef2d813a526fc50",
+        "e8b3b484d9054a20ea570d4e39598f98f825b4ddee93ab837f39a396d22b68c9",
+        "f530319734e2be3e7af293fa8ef32dc79a492f4d856d4de2970f74745c6b3fd3",
+        "51dfddad1bc17e6aad90d274f41f02b2de73ddad6e8fad11da1650ed75b51396",
+        "736f9de4340dfdbc050d1e36f3e629fe7561e7a7edf5b3df148875c2a8d085e8",
+        "ccea5dabc2315a02f6dc3eaa404a0fb2096d1420e12dea35f3f251ec2553f9f5",
+        "edc9f51b5e845714bcbc8e0a39106777908bea16ff8b7e3309471c99898170fb"
+      ],
+      "distinctScreenshotHashes": 11
+    },
+    {
+      "path": "Art/Review/Battle/appearance-synchronized-v1/both-armors-states-normal.gif",
+      "dimensions": {
+        "complete": true,
+        "width": 1024,
+        "height": 560
+      },
+      "intervalMs": 130,
+      "sampleHashes": [
+        "8e3b8b18fdadb34b2805f71758d184dec3e507eb13185faee7d6c230f6bd86e6",
+        "8045db085ee8b408af93bfd74ac970dce3ec060f676dee258a2ef0276c4dcc71",
+        "8045db085ee8b408af93bfd74ac970dce3ec060f676dee258a2ef0276c4dcc71",
+        "8045db085ee8b408af93bfd74ac970dce3ec060f676dee258a2ef0276c4dcc71",
+        "8045db085ee8b408af93bfd74ac970dce3ec060f676dee258a2ef0276c4dcc71",
+        "b1070ba20fea079da62add1ce6a22b79a1d083e6b351b97c017f07dc53ac7999",
+        "d9eaf2a7718d86c346c434ff079eba349e970813a28ac586206ec3cf921a13b0",
+        "b6d6848146d79bcd20db1f7df1f8238ca01b94905902bd56158a6e0bc2880e58",
+        "4d8a27366b3e061840b4cfe969eba78b49f766ca6cf278218692cf60b034e9e1",
+        "6c45cccb90d696175ca81a50d6745619f4a97b0427da933d674db614c396258b",
+        "34db90816204822fc8b53705aec594080591f043696f73c7b6feee98326f20d9",
+        "02e05d0f3c4c45b6b9f9f3f8d29cb45b74f2f40081632fe138a2349c46ff4915"
+      ],
+      "distinctScreenshotHashes": 9
+    }
+  ]
+}

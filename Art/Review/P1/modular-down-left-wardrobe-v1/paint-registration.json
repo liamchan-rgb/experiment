@@ -1,0 +1,76 @@
+{
+  "registration": "Uniform whole-canvas256/native side length for each full-body paint source, no alpha bounds fit, per-limb width/height scaling or geometry change",
+  "mattesDetermineGeometry": true,
+  "records": [
+    {
+      "pack": "forester",
+      "slot": "outfit.torso",
+      "textureGutterPixelsFilled": 34,
+      "maxTextureGutterDistance": 1.4142135623730951,
+      "bodyGeometryRescaled": false
+    },
+    {
+      "pack": "forester",
+      "slot": "outfit.sleeve.left",
+      "textureGutterPixelsFilled": 60,
+      "maxTextureGutterDistance": 2.0,
+      "bodyGeometryRescaled": false
+    },
+    {
+      "pack": "forester",
+      "slot": "outfit.sleeve.right",
+      "textureGutterPixelsFilled": 30,
+      "maxTextureGutterDistance": 2.0,
+      "bodyGeometryRescaled": false
+    },
+    {
+      "pack": "wayfarer",
+      "slot": "outfit.torso",
+      "textureGutterPixelsFilled": 30,
+      "maxTextureGutterDistance": 2.23606797749979,
+      "bodyGeometryRescaled": false
+    },
+    {
+      "pack": "wayfarer",
+      "slot": "outfit.sleeve.left",
+      "textureGutterPixelsFilled": 54,
+      "maxTextureGutterDistance": 2.0,
+      "bodyGeometryRescaled": false
+    },
+    {
+      "pack": "wayfarer",
+      "slot": "outfit.sleeve.right",
+      "textureGutterPixelsFilled": 24,
+      "maxTextureGutterDistance": 2.0,
+      "bodyGeometryRescaled": false
+    },
+    {
+      "pack": "lower",
+      "slot": "outfit.pants.left",
+      "textureGutterPixelsFilled": 60,
+      "maxTextureGutterDistance": 2.23606797749979,
+      "bodyGeometryRescaled": false
+    },
+    {
+      "pack": "lower",
+      "slot": "outfit.boot.left",
+      "textureGutterPixelsFilled": 38,
+      "maxTextureGutterDistance": 2.23606797749979,
+      "bodyGeometryRescaled": false
+    },
+    {
+      "pack": "lower",
+      "slot": "outfit.pants.right",
+      "textureGutterPixelsFilled": 53,
+      "maxTextureGutterDistance": 2.23606797749979,
+      "bodyGeometryRescaled": false
+    },
+    {
+      "pack": "lower",
+      "slot": "outfit.boot.right",
+      "textureGutterPixelsFilled": 50,
+      "maxTextureGutterDistance": 2.0,
+      "bodyGeometryRescaled": false
+    }
+  ]
+}

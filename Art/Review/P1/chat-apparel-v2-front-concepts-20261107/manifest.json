@@ -1,0 +1,42 @@
+{
+  "stage": "C1-front-only",
+  "status": "design_selected",
+  "created": "2026-11-07",
+  "sourceCommit": "ace14ef867cf47d62e7ad8f2618d7b1310193ea4",
+  "generatedWith": "image_gen",
+  "selectedDesign": {
+    "starlightArmor": "B",
+    "dragonArmor": "B"
+  },
+  "artApproval": null,
+  "registeredGameLayers": false,
+  "runtimeImported": false,
+  "files": [
+    {
+      "file": "starlight-front-ABC.png",
+      "bytes": 1513432,
+      "sha256": "00358916a1879348be8f1a536683a60ccfe88df514344095fb7f0db5470d5bf0",
+      "size": [
+        1536,
+        1024
+      ],
+      "mode": "RGB"
+    },
+    {
+      "file": "dragon-front-ABC.png",
+      "bytes": 1774278,
+      "sha256": "78236a496d3586b0ecc6e004641771cda9d88550f5d05293e62b1bcdcde4eb8b",
+      "size": [
+        1536,
+        1024
+      ],
+      "mode": "RGB"
+    }
+  ],
+  "designSelection": {
+    "userStatement": "两个都选择b",
+    "date": "2026-11-07",
+    "scope": "shown front concept B for each outfit; not final sprite/motion approval"
+  },
+  "subsequentUserInstruction": "你一路做完所有方向的"
+}

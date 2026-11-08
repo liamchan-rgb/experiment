@@ -1,0 +1,12 @@
+{
+  "sourceTemplate": "Art/Templates/P1-Neutral/down-left/walk-r1",
+  "sourceManifestSHA256": "c193f919c6f4667d44cb08857ebbf2d0958401535fa3fd0db3d166e1635c8fd1",
+  "frames": 13,
+  "sourcePixelsUnchanged": true,
+  "uvChannels": {
+    "R": "source x pixel centre",
+    "G": "source y pixel centre",
+    "A": "valid coordinate"
+  },
+  "sampling": "nearest identical to approved offline exporter"
+}

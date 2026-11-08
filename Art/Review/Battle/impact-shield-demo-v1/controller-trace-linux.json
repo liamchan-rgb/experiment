@@ -1,0 +1,8368 @@
+{
+  "lastStrike" : [
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.06666666666666667,
+      "fps" : 15,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.13333333333333333,
+      "fps" : 15,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.2,
+      "fps" : 15,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.26666666666666666,
+      "fps" : 15,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.3333333333333333,
+      "fps" : 15,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.39999999999999997,
+      "fps" : 15,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.4666666666666666,
+      "fps" : 15,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.0555555555555555
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.5333333333333333,
+      "fps" : 15,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.11111111111111109
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.6,
+      "fps" : 15,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.16666666666666663
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.6666666666666666,
+      "fps" : 15,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.22222222222222218
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.7333333333333333,
+      "fps" : 15,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.27777777777777773
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.7999999999999999,
+      "fps" : 15,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.33333333333333326
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.8666666666666666,
+      "fps" : 15,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.38888888888888884
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.9333333333333332,
+      "fps" : 15,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.44444444444444436
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.9999999999999999,
+      "fps" : 15,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.4999999999999999
+    },
+    {
+      "damage" : 3,
+      "defeated" : true,
+      "elapsed" : 1.0666666666666667,
+      "fps" : 15,
+      "hp" : 0,
+      "impact" : true,
+      "poseProgress" : 0.54
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.1333333333333333,
+      "fps" : 15,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.54
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.2,
+      "fps" : 15,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.5833333333333334
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.2666666666666666,
+      "fps" : 15,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.6388888888888888
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.3333333333333333,
+      "fps" : 15,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.6944444444444444
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.4,
+      "fps" : 15,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.75
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.4666666666666666,
+      "fps" : 15,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.8055555555555554
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.5333333333333332,
+      "fps" : 15,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.861111111111111
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.5999999999999999,
+      "fps" : 15,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.9166666666666664
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.6666666666666665,
+      "fps" : 15,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.9722222222222221
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.7,
+      "fps" : 15,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.9999999999999998
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.03333333333333333,
+      "fps" : 30,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.06666666666666667,
+      "fps" : 30,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.1,
+      "fps" : 30,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.13333333333333333,
+      "fps" : 30,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.16666666666666666,
+      "fps" : 30,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.19999999999999998,
+      "fps" : 30,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.2333333333333333,
+      "fps" : 30,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.26666666666666666,
+      "fps" : 30,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.3,
+      "fps" : 30,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.3333333333333333,
+      "fps" : 30,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.36666666666666664,
+      "fps" : 30,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.39999999999999997,
+      "fps" : 30,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.4333333333333333,
+      "fps" : 30,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.027777777777777728
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.4666666666666666,
+      "fps" : 30,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.0555555555555555
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.49999999999999994,
+      "fps" : 30,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.08333333333333327
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.5333333333333333,
+      "fps" : 30,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.11111111111111109
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.5666666666666667,
+      "fps" : 30,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.13888888888888887
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.6,
+      "fps" : 30,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.16666666666666663
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.6333333333333333,
+      "fps" : 30,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.19444444444444442
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.6666666666666666,
+      "fps" : 30,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.22222222222222218
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.7,
+      "fps" : 30,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.24999999999999994
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.7333333333333333,
+      "fps" : 30,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.27777777777777773
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.7666666666666666,
+      "fps" : 30,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.3055555555555555
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.7999999999999999,
+      "fps" : 30,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.33333333333333326
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.8333333333333333,
+      "fps" : 30,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.36111111111111105
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.8666666666666666,
+      "fps" : 30,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.38888888888888884
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.8999999999999999,
+      "fps" : 30,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.4166666666666666
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.9333333333333332,
+      "fps" : 30,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.44444444444444436
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.9666666666666666,
+      "fps" : 30,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.47222222222222215
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.9999999999999999,
+      "fps" : 30,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.4999999999999999
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 1.0333333333333332,
+      "fps" : 30,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.5277777777777777
+    },
+    {
+      "damage" : 3,
+      "defeated" : true,
+      "elapsed" : 1.0666666666666667,
+      "fps" : 30,
+      "hp" : 0,
+      "impact" : true,
+      "poseProgress" : 0.54
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.1,
+      "fps" : 30,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.54
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.1333333333333335,
+      "fps" : 30,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.54
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.166666666666667,
+      "fps" : 30,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.5555555555555558
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.2000000000000004,
+      "fps" : 30,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.5833333333333337
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.2333333333333338,
+      "fps" : 30,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.6111111111111116
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.2666666666666673,
+      "fps" : 30,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.6388888888888894
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.3000000000000007,
+      "fps" : 30,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.6666666666666673
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.3333333333333341,
+      "fps" : 30,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.6944444444444452
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.3666666666666676,
+      "fps" : 30,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.722222222222223
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.400000000000001,
+      "fps" : 30,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.7500000000000008
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.4333333333333345,
+      "fps" : 30,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.7777777777777788
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.466666666666668,
+      "fps" : 30,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.8055555555555565
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.5000000000000013,
+      "fps" : 30,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.8333333333333345
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.5333333333333348,
+      "fps" : 30,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.8611111111111122
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.5666666666666682,
+      "fps" : 30,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.8888888888888902
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.6000000000000016,
+      "fps" : 30,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.9166666666666679
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.633333333333335,
+      "fps" : 30,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.944444444444446
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.6666666666666685,
+      "fps" : 30,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.9722222222222237
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.7,
+      "fps" : 30,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.9999999999999998
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.016666666666666666,
+      "fps" : 60,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.03333333333333333,
+      "fps" : 60,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.05,
+      "fps" : 60,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.06666666666666667,
+      "fps" : 60,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.08333333333333333,
+      "fps" : 60,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.09999999999999999,
+      "fps" : 60,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.11666666666666665,
+      "fps" : 60,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.13333333333333333,
+      "fps" : 60,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.15,
+      "fps" : 60,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.16666666666666666,
+      "fps" : 60,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.18333333333333332,
+      "fps" : 60,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.19999999999999998,
+      "fps" : 60,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.21666666666666665,
+      "fps" : 60,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.2333333333333333,
+      "fps" : 60,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.24999999999999997,
+      "fps" : 60,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.26666666666666666,
+      "fps" : 60,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.2833333333333333,
+      "fps" : 60,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.3,
+      "fps" : 60,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.31666666666666665,
+      "fps" : 60,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.3333333333333333,
+      "fps" : 60,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.35,
+      "fps" : 60,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.36666666666666664,
+      "fps" : 60,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.3833333333333333,
+      "fps" : 60,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.39999999999999997,
+      "fps" : 60,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.41666666666666663,
+      "fps" : 60,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.01388888888888884
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.4333333333333333,
+      "fps" : 60,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.027777777777777728
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.44999999999999996,
+      "fps" : 60,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.041666666666666616
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.4666666666666666,
+      "fps" : 60,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.0555555555555555
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.4833333333333333,
+      "fps" : 60,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.06944444444444439
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.49999999999999994,
+      "fps" : 60,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.08333333333333327
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.5166666666666666,
+      "fps" : 60,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.09722222222222215
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.5333333333333333,
+      "fps" : 60,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.11111111111111109
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.55,
+      "fps" : 60,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.12500000000000003
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.5666666666666668,
+      "fps" : 60,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.13888888888888895
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.5833333333333335,
+      "fps" : 60,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.1527777777777779
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.6000000000000002,
+      "fps" : 60,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.16666666666666682
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.6166666666666669,
+      "fps" : 60,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.18055555555555575
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.6333333333333336,
+      "fps" : 60,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.1944444444444447
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.6500000000000004,
+      "fps" : 60,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.20833333333333362
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.6666666666666671,
+      "fps" : 60,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.22222222222222254
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.6833333333333338,
+      "fps" : 60,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.2361111111111115
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.7000000000000005,
+      "fps" : 60,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.25000000000000044
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.7166666666666672,
+      "fps" : 60,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.26388888888888934
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.733333333333334,
+      "fps" : 60,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.2777777777777783
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.7500000000000007,
+      "fps" : 60,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.29166666666666724
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.7666666666666674,
+      "fps" : 60,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.30555555555555614
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.7833333333333341,
+      "fps" : 60,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.3194444444444451
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.8000000000000008,
+      "fps" : 60,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.33333333333333404
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.8166666666666675,
+      "fps" : 60,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.34722222222222293
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.8333333333333343,
+      "fps" : 60,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.3611111111111119
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.850000000000001,
+      "fps" : 60,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.37500000000000083
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.8666666666666677,
+      "fps" : 60,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.3888888888888897
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.8833333333333344,
+      "fps" : 60,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.4027777777777787
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.9000000000000011,
+      "fps" : 60,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.41666666666666763
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.9166666666666679,
+      "fps" : 60,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.4305555555555565
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.9333333333333346,
+      "fps" : 60,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.4444444444444455
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.9500000000000013,
+      "fps" : 60,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.4583333333333344
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.966666666666668,
+      "fps" : 60,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.4722222222222233
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.9833333333333347,
+      "fps" : 60,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.48611111111111227
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 1.0000000000000013,
+      "fps" : 60,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.5000000000000011
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 1.016666666666668,
+      "fps" : 60,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.51388888888889
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 1.0333333333333345,
+      "fps" : 60,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.5277777777777788
+    },
+    {
+      "damage" : 3,
+      "defeated" : true,
+      "elapsed" : 1.0500000000000012,
+      "fps" : 60,
+      "hp" : 0,
+      "impact" : true,
+      "poseProgress" : 0.54
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.0666666666666678,
+      "fps" : 60,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.54
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.0833333333333344,
+      "fps" : 60,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.54
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.100000000000001,
+      "fps" : 60,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.54
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.1166666666666676,
+      "fps" : 60,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.54
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.1333333333333342,
+      "fps" : 60,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.54
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.1500000000000008,
+      "fps" : 60,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.5416666666666674
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.1666666666666674,
+      "fps" : 60,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.5555555555555562
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.183333333333334,
+      "fps" : 60,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.5694444444444451
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.2000000000000006,
+      "fps" : 60,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.5833333333333339
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.2166666666666672,
+      "fps" : 60,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.5972222222222228
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.2333333333333338,
+      "fps" : 60,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.6111111111111116
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.2500000000000004,
+      "fps" : 60,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.6250000000000004
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.266666666666667,
+      "fps" : 60,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.6388888888888893
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.2833333333333337,
+      "fps" : 60,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.6527777777777781
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.3000000000000003,
+      "fps" : 60,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.666666666666667
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.3166666666666669,
+      "fps" : 60,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.6805555555555558
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.3333333333333335,
+      "fps" : 60,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.6944444444444446
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.35,
+      "fps" : 60,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.7083333333333335
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.3666666666666667,
+      "fps" : 60,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.7222222222222223
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.3833333333333333,
+      "fps" : 60,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.7361111111111112
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.4,
+      "fps" : 60,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.75
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.4166666666666665,
+      "fps" : 60,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.7638888888888888
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.4333333333333331,
+      "fps" : 60,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.7777777777777777
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.4499999999999997,
+      "fps" : 60,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.7916666666666665
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.4666666666666663,
+      "fps" : 60,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.8055555555555554
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.483333333333333,
+      "fps" : 60,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.8194444444444442
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.4999999999999996,
+      "fps" : 60,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.833333333333333
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.5166666666666662,
+      "fps" : 60,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.8472222222222219
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.5333333333333328,
+      "fps" : 60,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.8611111111111107
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.5499999999999994,
+      "fps" : 60,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.8749999999999996
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.566666666666666,
+      "fps" : 60,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.8888888888888884
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.5833333333333326,
+      "fps" : 60,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.9027777777777772
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.5999999999999992,
+      "fps" : 60,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.9166666666666661
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.6166666666666658,
+      "fps" : 60,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.9305555555555549
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.6333333333333324,
+      "fps" : 60,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.9444444444444438
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.649999999999999,
+      "fps" : 60,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.9583333333333326
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.6666666666666656,
+      "fps" : 60,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.9722222222222214
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.6833333333333322,
+      "fps" : 60,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.9861111111111103
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.6999999999999988,
+      "fps" : 60,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.9999999999999991
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.7,
+      "fps" : 60,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.9999999999999998
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.008333333333333333,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.016666666666666666,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.025,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.03333333333333333,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.041666666666666664,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.049999999999999996,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.05833333333333333,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.06666666666666667,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.075,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.08333333333333333,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.09166666666666666,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.09999999999999999,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.10833333333333332,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.11666666666666665,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.12499999999999999,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.13333333333333333,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.14166666666666666,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.15,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.15833333333333333,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.16666666666666666,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.175,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.18333333333333332,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.19166666666666665,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.19999999999999998,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.20833333333333331,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.21666666666666665,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.22499999999999998,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.2333333333333333,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.24166666666666664,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.24999999999999997,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.2583333333333333,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.26666666666666666,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.275,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.2833333333333334,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.29166666666666674,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.3000000000000001,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.30833333333333346,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.3166666666666668,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.3250000000000002,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.33333333333333354,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.3416666666666669,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.35000000000000026,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.3583333333333336,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.366666666666667,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.37500000000000033,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.3833333333333337,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.39166666666666705,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.4000000000000004,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 3.23815048849004e-16
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.40833333333333377,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.00694444444444479
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.41666666666666713,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.013888888888889256
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.4250000000000005,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.020833333333333724
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.43333333333333385,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.02777777777777819
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.4416666666666672,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.034722222222222654
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.45000000000000057,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.04166666666666712
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.4583333333333339,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.04861111111111159
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.4666666666666673,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.05555555555555605
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.47500000000000064,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.06250000000000053
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.483333333333334,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.06944444444444499
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.49166666666666736,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.07638888888888945
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.5000000000000007,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.08333333333333387
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.508333333333334,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.09027777777777829
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.5166666666666673,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.09722222222222271
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.5250000000000006,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.10416666666666713
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.5333333333333339,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.11111111111111155
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.5416666666666672,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.11805555555555597
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.5500000000000005,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.1250000000000004
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.5583333333333338,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.1319444444444448
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.5666666666666671,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.13888888888888923
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.5750000000000004,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.14583333333333365
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.5833333333333337,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.15277777777777807
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.591666666666667,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.1597222222222225
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.6000000000000003,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.1666666666666669
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.6083333333333336,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.17361111111111133
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.6166666666666669,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.18055555555555575
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.6250000000000002,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.18750000000000017
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.6333333333333335,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.1944444444444446
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.6416666666666668,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.201388888888889
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.6500000000000001,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.20833333333333343
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.6583333333333334,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.21527777777777785
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.6666666666666667,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.22222222222222227
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.675,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.22916666666666669
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.6833333333333333,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.2361111111111111
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.6916666666666667,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.24305555555555552
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.7,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.24999999999999994
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.7083333333333333,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.25694444444444436
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.7166666666666666,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.2638888888888888
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.7249999999999999,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.2708333333333332
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.7333333333333332,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.2777777777777776
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.7416666666666665,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.28472222222222204
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.7499999999999998,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.29166666666666646
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.7583333333333331,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.2986111111111109
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.7666666666666664,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.3055555555555553
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.7749999999999997,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.3124999999999997
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.783333333333333,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.31944444444444414
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.7916666666666663,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.32638888888888856
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.7999999999999996,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.333333333333333
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.8083333333333329,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.3402777777777774
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.8166666666666662,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.3472222222222218
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.8249999999999995,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.35416666666666624
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.8333333333333328,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.36111111111111066
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.8416666666666661,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.3680555555555551
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.8499999999999994,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.3749999999999995
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.8583333333333327,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.3819444444444439
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.866666666666666,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.38888888888888834
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.8749999999999993,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.39583333333333276
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.8833333333333326,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.4027777777777772
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.8916666666666659,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.4097222222222216
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.8999999999999992,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.416666666666666
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.9083333333333325,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.42361111111111044
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.9166666666666659,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.43055555555555486
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.9249999999999992,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.4374999999999993
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.9333333333333325,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.4444444444444437
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.9416666666666658,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.4513888888888881
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.9499999999999991,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.45833333333333254
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.9583333333333324,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.46527777777777696
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.9666666666666657,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.4722222222222214
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.974999999999999,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.4791666666666658
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.9833333333333323,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.4861111111111102
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.9916666666666656,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.49305555555555464
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 0.9999999999999989,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.49999999999999906
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 1.0083333333333322,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.5069444444444435
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 1.0166666666666655,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.513888888888888
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 1.0249999999999988,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.5208333333333324
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 1.033333333333332,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.5277777777777768
+    },
+    {
+      "damage" : 0,
+      "defeated" : false,
+      "elapsed" : 1.0416666666666654,
+      "fps" : 120,
+      "hp" : 3,
+      "impact" : false,
+      "poseProgress" : 0.5347222222222212
+    },
+    {
+      "damage" : 3,
+      "defeated" : true,
+      "elapsed" : 1.0499999999999987,
+      "fps" : 120,
+      "hp" : 0,
+      "impact" : true,
+      "poseProgress" : 0.54
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.058333333333332,
+      "fps" : 120,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.54
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.0666666666666653,
+      "fps" : 120,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.54
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.0749999999999986,
+      "fps" : 120,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.54
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.083333333333332,
+      "fps" : 120,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.54
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.0916666666666652,
+      "fps" : 120,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.54
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.0999999999999985,
+      "fps" : 120,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.54
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.1083333333333318,
+      "fps" : 120,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.54
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.1166666666666651,
+      "fps" : 120,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.54
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.1249999999999984,
+      "fps" : 120,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.54
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.1333333333333317,
+      "fps" : 120,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.54
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.141666666666665,
+      "fps" : 120,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.54
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.1499999999999984,
+      "fps" : 120,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.5416666666666653
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.1583333333333317,
+      "fps" : 120,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.5486111111111097
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.166666666666665,
+      "fps" : 120,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.5555555555555541
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.1749999999999983,
+      "fps" : 120,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.5624999999999986
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.1833333333333316,
+      "fps" : 120,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.569444444444443
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.1916666666666649,
+      "fps" : 120,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.5763888888888874
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.1999999999999982,
+      "fps" : 120,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.5833333333333318
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.2083333333333315,
+      "fps" : 120,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.5902777777777762
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.2166666666666648,
+      "fps" : 120,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.5972222222222207
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.224999999999998,
+      "fps" : 120,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.6041666666666651
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.2333333333333314,
+      "fps" : 120,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.6111111111111095
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.2416666666666647,
+      "fps" : 120,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.6180555555555539
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.249999999999998,
+      "fps" : 120,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.6249999999999983
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.2583333333333313,
+      "fps" : 120,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.6319444444444428
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.2666666666666646,
+      "fps" : 120,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.6388888888888872
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.274999999999998,
+      "fps" : 120,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.6458333333333316
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.2833333333333312,
+      "fps" : 120,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.652777777777776
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.2916666666666645,
+      "fps" : 120,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.6597222222222204
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.2999999999999978,
+      "fps" : 120,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.6666666666666649
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.3083333333333311,
+      "fps" : 120,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.6736111111111093
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.3166666666666644,
+      "fps" : 120,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.6805555555555537
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.3249999999999977,
+      "fps" : 120,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.6874999999999981
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.333333333333331,
+      "fps" : 120,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.6944444444444425
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.3416666666666643,
+      "fps" : 120,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.701388888888887
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.3499999999999976,
+      "fps" : 120,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.7083333333333314
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.358333333333331,
+      "fps" : 120,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.7152777777777758
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.3666666666666643,
+      "fps" : 120,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.7222222222222202
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.3749999999999976,
+      "fps" : 120,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.7291666666666646
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.3833333333333309,
+      "fps" : 120,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.736111111111109
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.3916666666666642,
+      "fps" : 120,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.7430555555555535
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.3999999999999975,
+      "fps" : 120,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.7499999999999979
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.4083333333333308,
+      "fps" : 120,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.7569444444444422
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.416666666666664,
+      "fps" : 120,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.7638888888888866
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.4249999999999974,
+      "fps" : 120,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.770833333333331
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.4333333333333307,
+      "fps" : 120,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.7777777777777755
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.441666666666664,
+      "fps" : 120,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.7847222222222199
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.4499999999999973,
+      "fps" : 120,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.7916666666666643
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.4583333333333306,
+      "fps" : 120,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.7986111111111087
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.466666666666664,
+      "fps" : 120,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.8055555555555531
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.4749999999999972,
+      "fps" : 120,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.8124999999999976
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.4833333333333305,
+      "fps" : 120,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.819444444444442
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.4916666666666638,
+      "fps" : 120,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.8263888888888864
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.4999999999999971,
+      "fps" : 120,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.8333333333333308
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.5083333333333304,
+      "fps" : 120,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.8402777777777752
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.5166666666666637,
+      "fps" : 120,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.8472222222222197
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.524999999999997,
+      "fps" : 120,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.8541666666666641
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.5333333333333303,
+      "fps" : 120,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.8611111111111085
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.5416666666666636,
+      "fps" : 120,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.8680555555555529
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.549999999999997,
+      "fps" : 120,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.8749999999999973
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.5583333333333302,
+      "fps" : 120,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.8819444444444418
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.5666666666666635,
+      "fps" : 120,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.8888888888888862
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.5749999999999968,
+      "fps" : 120,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.8958333333333306
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.5833333333333302,
+      "fps" : 120,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.902777777777775
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.5916666666666635,
+      "fps" : 120,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.9097222222222194
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.5999999999999968,
+      "fps" : 120,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.9166666666666639
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.60833333333333,
+      "fps" : 120,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.9236111111111083
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.6166666666666634,
+      "fps" : 120,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.9305555555555527
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.6249999999999967,
+      "fps" : 120,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.9374999999999971
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.63333333333333,
+      "fps" : 120,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.9444444444444415
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.6416666666666633,
+      "fps" : 120,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.951388888888886
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.6499999999999966,
+      "fps" : 120,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.9583333333333304
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.6583333333333299,
+      "fps" : 120,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.9652777777777748
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.6666666666666632,
+      "fps" : 120,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.9722222222222192
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.6749999999999965,
+      "fps" : 120,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.9791666666666636
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.6833333333333298,
+      "fps" : 120,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.986111111111108
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.691666666666663,
+      "fps" : 120,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.9930555555555525
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.6999999999999964,
+      "fps" : 120,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.9999999999999969
+    },
+    {
+      "damage" : 0,
+      "defeated" : true,
+      "elapsed" : 1.7,
+      "fps" : 120,
+      "hp" : 0,
+      "impact" : false,
+      "poseProgress" : 0.9999999999999998
+    }
+  ],
+  "scope" : "production model and one-shot impact clock; no UI\/device execution",
+  "shieldSequence" : [
+    {
+      "absorbed" : 0,
+      "fps" : 15,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 0,
+      "time" : 0.06666666666666667
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 15,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 0,
+      "time" : 0.13333333333333333
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 15,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 0,
+      "time" : 0.2
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 15,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 0,
+      "time" : 0.26666666666666666
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 15,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 0,
+      "time" : 0.3333333333333333
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 15,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 0,
+      "time" : 0.39999999999999997
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 15,
+      "gained" : 4,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 4,
+      "time" : 0.4666666666666666
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 15,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 4,
+      "time" : 0.5333333333333333
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 15,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 4,
+      "time" : 0.6
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 15,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 4,
+      "time" : 0.6666666666666666
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 15,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 4,
+      "time" : 0.7333333333333333
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 15,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 4,
+      "time" : 0.7999999999999999
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 15,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 4,
+      "time" : 0.8666666666666666
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 15,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 4,
+      "time" : 0.9333333333333332
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 15,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 4,
+      "time" : 0.96
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 15,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 4,
+      "time" : 2.066666666666667
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 15,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 4,
+      "time" : 2.1333333333333333
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 15,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 4,
+      "time" : 2.2
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 15,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 4,
+      "time" : 2.2666666666666666
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 15,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 4,
+      "time" : 2.3333333333333335
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 15,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 4,
+      "time" : 2.4
+    },
+    {
+      "absorbed" : 4,
+      "fps" : 15,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 2.466666666666667
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 15,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 2.533333333333333
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 15,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 2.6
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 15,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 2.6666666666666665
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 15,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 2.7333333333333334
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 15,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 2.8
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 15,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 2.8666666666666667
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 15,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 2.933333333333333
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 15,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 3
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 15,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 3.0666666666666664
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 15,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 3.1333333333333333
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 15,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 3.2
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 15,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 3.2666666666666666
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 15,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 3.333333333333333
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 15,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 3.4
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 15,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 3.44
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 30,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 0,
+      "time" : 0.03333333333333333
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 30,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 0,
+      "time" : 0.06666666666666667
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 30,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 0,
+      "time" : 0.1
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 30,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 0,
+      "time" : 0.13333333333333333
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 30,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 0,
+      "time" : 0.16666666666666666
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 30,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 0,
+      "time" : 0.19999999999999998
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 30,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 0,
+      "time" : 0.2333333333333333
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 30,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 0,
+      "time" : 0.26666666666666666
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 30,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 0,
+      "time" : 0.3
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 30,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 0,
+      "time" : 0.3333333333333333
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 30,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 0,
+      "time" : 0.36666666666666664
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 30,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 0,
+      "time" : 0.39999999999999997
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 30,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 0,
+      "time" : 0.4333333333333333
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 30,
+      "gained" : 4,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 4,
+      "time" : 0.4666666666666666
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 30,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 4,
+      "time" : 0.49999999999999994
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 30,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 4,
+      "time" : 0.5333333333333333
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 30,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 4,
+      "time" : 0.5666666666666667
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 30,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 4,
+      "time" : 0.6
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 30,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 4,
+      "time" : 0.6333333333333333
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 30,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 4,
+      "time" : 0.6666666666666666
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 30,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 4,
+      "time" : 0.7
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 30,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 4,
+      "time" : 0.7333333333333333
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 30,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 4,
+      "time" : 0.7666666666666666
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 30,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 4,
+      "time" : 0.7999999999999999
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 30,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 4,
+      "time" : 0.8333333333333333
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 30,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 4,
+      "time" : 0.8666666666666666
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 30,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 4,
+      "time" : 0.8999999999999999
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 30,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 4,
+      "time" : 0.9333333333333332
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 30,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 4,
+      "time" : 0.96
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 30,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 4,
+      "time" : 2.033333333333333
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 30,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 4,
+      "time" : 2.066666666666667
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 30,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 4,
+      "time" : 2.1
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 30,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 4,
+      "time" : 2.1333333333333333
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 30,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 4,
+      "time" : 2.1666666666666665
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 30,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 4,
+      "time" : 2.2
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 30,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 4,
+      "time" : 2.2333333333333334
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 30,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 4,
+      "time" : 2.2666666666666666
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 30,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 4,
+      "time" : 2.3
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 30,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 4,
+      "time" : 2.3333333333333335
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 30,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 4,
+      "time" : 2.3666666666666667
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 30,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 4,
+      "time" : 2.4
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 30,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 4,
+      "time" : 2.433333333333333
+    },
+    {
+      "absorbed" : 4,
+      "fps" : 30,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 2.466666666666667
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 30,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 2.5
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 30,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 2.533333333333333
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 30,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 2.5666666666666664
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 30,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 2.6
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 30,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 2.6333333333333333
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 30,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 2.6666666666666665
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 30,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 2.7
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 30,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 2.7333333333333334
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 30,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 2.7666666666666666
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 30,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 2.8
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 30,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 2.833333333333333
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 30,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 2.8666666666666667
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 30,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 2.9
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 30,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 2.933333333333333
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 30,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 2.966666666666667
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 30,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 3
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 30,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 3.033333333333333
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 30,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 3.0666666666666664
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 30,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 3.1
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 30,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 3.1333333333333337
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 30,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 3.166666666666667
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 30,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 3.2
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 30,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 3.233333333333334
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 30,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 3.2666666666666675
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 30,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 3.3000000000000007
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 30,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 3.333333333333334
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 30,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 3.3666666666666676
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 30,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 3.4000000000000012
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 30,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 3.4333333333333345
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 30,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 3.44
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 60,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 0,
+      "time" : 0.016666666666666666
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 60,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 0,
+      "time" : 0.03333333333333333
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 60,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 0,
+      "time" : 0.05
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 60,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 0,
+      "time" : 0.06666666666666667
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 60,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 0,
+      "time" : 0.08333333333333333
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 60,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 0,
+      "time" : 0.09999999999999999
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 60,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 0,
+      "time" : 0.11666666666666665
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 60,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 0,
+      "time" : 0.13333333333333333
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 60,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 0,
+      "time" : 0.15
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 60,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 0,
+      "time" : 0.16666666666666666
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 60,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 0,
+      "time" : 0.18333333333333332
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 60,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 0,
+      "time" : 0.19999999999999998
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 60,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 0,
+      "time" : 0.21666666666666665
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 60,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 0,
+      "time" : 0.2333333333333333
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 60,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 0,
+      "time" : 0.24999999999999997
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 60,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 0,
+      "time" : 0.26666666666666666
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 60,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 0,
+      "time" : 0.2833333333333333
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 60,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 0,
+      "time" : 0.3
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 60,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 0,
+      "time" : 0.31666666666666665
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 60,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 0,
+      "time" : 0.3333333333333333
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 60,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 0,
+      "time" : 0.35
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 60,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 0,
+      "time" : 0.36666666666666664
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 60,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 0,
+      "time" : 0.3833333333333333
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 60,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 0,
+      "time" : 0.39999999999999997
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 60,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 0,
+      "time" : 0.41666666666666663
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 60,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 0,
+      "time" : 0.4333333333333333
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 60,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 0,
+      "time" : 0.44999999999999996
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 60,
+      "gained" : 4,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 4,
+      "time" : 0.4666666666666666
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 60,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 4,
+      "time" : 0.4833333333333333
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 60,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 4,
+      "time" : 0.49999999999999994
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 60,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 4,
+      "time" : 0.5166666666666666
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 60,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 4,
+      "time" : 0.5333333333333333
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 60,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 4,
+      "time" : 0.55
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 60,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 4,
+      "time" : 0.5666666666666668
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 60,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 4,
+      "time" : 0.5833333333333335
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 60,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 4,
+      "time" : 0.6000000000000002
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 60,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 4,
+      "time" : 0.6166666666666669
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 60,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 4,
+      "time" : 0.6333333333333336
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 60,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 4,
+      "time" : 0.6500000000000004
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 60,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 4,
+      "time" : 0.6666666666666671
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 60,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 4,
+      "time" : 0.6833333333333338
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 60,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 4,
+      "time" : 0.7000000000000005
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 60,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 4,
+      "time" : 0.7166666666666672
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 60,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 4,
+      "time" : 0.733333333333334
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 60,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 4,
+      "time" : 0.7500000000000007
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 60,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 4,
+      "time" : 0.7666666666666674
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 60,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 4,
+      "time" : 0.7833333333333341
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 60,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 4,
+      "time" : 0.8000000000000008
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 60,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 4,
+      "time" : 0.8166666666666675
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 60,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 4,
+      "time" : 0.8333333333333343
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 60,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 4,
+      "time" : 0.850000000000001
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 60,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 4,
+      "time" : 0.8666666666666677
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 60,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 4,
+      "time" : 0.8833333333333344
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 60,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 4,
+      "time" : 0.9000000000000011
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 60,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 4,
+      "time" : 0.9166666666666679
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 60,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 4,
+      "time" : 0.9333333333333346
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 60,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 4,
+      "time" : 0.9500000000000013
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 60,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 4,
+      "time" : 0.96
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 60,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 4,
+      "time" : 2.0166666666666666
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 60,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 4,
+      "time" : 2.033333333333333
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 60,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 4,
+      "time" : 2.05
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 60,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 4,
+      "time" : 2.066666666666667
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 60,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 4,
+      "time" : 2.0833333333333335
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 60,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 4,
+      "time" : 2.1
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 60,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 4,
+      "time" : 2.1166666666666667
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 60,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 4,
+      "time" : 2.1333333333333333
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 60,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 4,
+      "time" : 2.15
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 60,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 4,
+      "time" : 2.1666666666666665
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 60,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 4,
+      "time" : 2.183333333333333
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 60,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 4,
+      "time" : 2.2
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 60,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 4,
+      "time" : 2.216666666666667
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 60,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 4,
+      "time" : 2.2333333333333334
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 60,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 4,
+      "time" : 2.25
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 60,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 4,
+      "time" : 2.2666666666666666
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 60,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 4,
+      "time" : 2.283333333333333
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 60,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 4,
+      "time" : 2.3
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 60,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 4,
+      "time" : 2.3166666666666664
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 60,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 4,
+      "time" : 2.3333333333333335
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 60,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 4,
+      "time" : 2.35
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 60,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 4,
+      "time" : 2.3666666666666667
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 60,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 4,
+      "time" : 2.3833333333333333
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 60,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 4,
+      "time" : 2.4
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 60,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 4,
+      "time" : 2.4166666666666665
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 60,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 4,
+      "time" : 2.433333333333333
+    },
+    {
+      "absorbed" : 4,
+      "fps" : 60,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 2.45
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 60,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 2.466666666666667
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 60,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 2.4833333333333334
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 60,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 2.5
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 60,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 2.5166666666666666
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 60,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 2.533333333333333
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 60,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 2.55
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 60,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 2.566666666666667
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 60,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 2.5833333333333335
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 60,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 2.6
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 60,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 2.616666666666667
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 60,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 2.6333333333333337
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 60,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 2.6500000000000004
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 60,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 2.666666666666667
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 60,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 2.6833333333333336
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 60,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 2.7000000000000006
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 60,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 2.7166666666666672
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 60,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 2.733333333333334
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 60,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 2.750000000000001
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 60,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 2.7666666666666675
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 60,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 2.783333333333334
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 60,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 2.8000000000000007
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 60,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 2.8166666666666673
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 60,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 2.8333333333333344
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 60,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 2.850000000000001
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 60,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 2.8666666666666676
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 60,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 2.8833333333333346
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 60,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 2.9000000000000012
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 60,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 2.916666666666668
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 60,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 2.9333333333333345
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 60,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 2.950000000000001
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 60,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 2.966666666666668
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 60,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 2.9833333333333347
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 60,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 3.0000000000000013
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 60,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 3.016666666666668
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 60,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 3.0333333333333345
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 60,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 3.050000000000001
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 60,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 3.0666666666666678
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 60,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 3.0833333333333344
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 60,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 3.100000000000001
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 60,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 3.1166666666666676
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 60,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 3.133333333333334
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 60,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 3.150000000000001
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 60,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 3.1666666666666674
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 60,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 3.183333333333334
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 60,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 3.2000000000000006
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 60,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 3.2166666666666672
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 60,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 3.233333333333334
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 60,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 3.2500000000000004
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 60,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 3.266666666666667
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 60,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 3.2833333333333337
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 60,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 3.3000000000000003
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 60,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 3.316666666666667
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 60,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 3.3333333333333335
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 60,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 3.35
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 60,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 3.3666666666666667
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 60,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 3.3833333333333333
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 60,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 3.4
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 60,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 3.4166666666666665
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 60,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 3.433333333333333
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 60,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 3.44
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 0,
+      "time" : 0.008333333333333333
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 0,
+      "time" : 0.016666666666666666
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 0,
+      "time" : 0.025
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 0,
+      "time" : 0.03333333333333333
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 0,
+      "time" : 0.041666666666666664
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 0,
+      "time" : 0.049999999999999996
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 0,
+      "time" : 0.05833333333333333
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 0,
+      "time" : 0.06666666666666667
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 0,
+      "time" : 0.075
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 0,
+      "time" : 0.08333333333333333
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 0,
+      "time" : 0.09166666666666666
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 0,
+      "time" : 0.09999999999999999
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 0,
+      "time" : 0.10833333333333332
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 0,
+      "time" : 0.11666666666666665
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 0,
+      "time" : 0.12499999999999999
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 0,
+      "time" : 0.13333333333333333
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 0,
+      "time" : 0.14166666666666666
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 0,
+      "time" : 0.15
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 0,
+      "time" : 0.15833333333333333
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 0,
+      "time" : 0.16666666666666666
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 0,
+      "time" : 0.175
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 0,
+      "time" : 0.18333333333333332
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 0,
+      "time" : 0.19166666666666665
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 0,
+      "time" : 0.19999999999999998
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 0,
+      "time" : 0.20833333333333331
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 0,
+      "time" : 0.21666666666666665
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 0,
+      "time" : 0.22499999999999998
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 0,
+      "time" : 0.2333333333333333
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 0,
+      "time" : 0.24166666666666664
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 0,
+      "time" : 0.24999999999999997
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 0,
+      "time" : 0.2583333333333333
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 0,
+      "time" : 0.26666666666666666
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 0,
+      "time" : 0.275
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 0,
+      "time" : 0.2833333333333334
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 0,
+      "time" : 0.29166666666666674
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 0,
+      "time" : 0.3000000000000001
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 0,
+      "time" : 0.30833333333333346
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 0,
+      "time" : 0.3166666666666668
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 0,
+      "time" : 0.3250000000000002
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 0,
+      "time" : 0.33333333333333354
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 0,
+      "time" : 0.3416666666666669
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 0,
+      "time" : 0.35000000000000026
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 0,
+      "time" : 0.3583333333333336
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 0,
+      "time" : 0.366666666666667
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 0,
+      "time" : 0.37500000000000033
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 0,
+      "time" : 0.3833333333333337
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 0,
+      "time" : 0.39166666666666705
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 0,
+      "time" : 0.4000000000000004
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 0,
+      "time" : 0.40833333333333377
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 0,
+      "time" : 0.41666666666666713
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 0,
+      "time" : 0.4250000000000005
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 0,
+      "time" : 0.43333333333333385
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 0,
+      "time" : 0.4416666666666672
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 0,
+      "time" : 0.45000000000000057
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 0,
+      "time" : 0.4583333333333339
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 4,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 4,
+      "time" : 0.4666666666666673
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 4,
+      "time" : 0.47500000000000064
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 4,
+      "time" : 0.483333333333334
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 4,
+      "time" : 0.49166666666666736
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 4,
+      "time" : 0.5000000000000007
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 4,
+      "time" : 0.508333333333334
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 4,
+      "time" : 0.5166666666666673
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 4,
+      "time" : 0.5250000000000006
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 4,
+      "time" : 0.5333333333333339
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 4,
+      "time" : 0.5416666666666672
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 4,
+      "time" : 0.5500000000000005
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 4,
+      "time" : 0.5583333333333338
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 4,
+      "time" : 0.5666666666666671
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 4,
+      "time" : 0.5750000000000004
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 4,
+      "time" : 0.5833333333333337
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 4,
+      "time" : 0.591666666666667
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 4,
+      "time" : 0.6000000000000003
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 4,
+      "time" : 0.6083333333333336
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 4,
+      "time" : 0.6166666666666669
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 4,
+      "time" : 0.6250000000000002
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 4,
+      "time" : 0.6333333333333335
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 4,
+      "time" : 0.6416666666666668
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 4,
+      "time" : 0.6500000000000001
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 4,
+      "time" : 0.6583333333333334
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 4,
+      "time" : 0.6666666666666667
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 4,
+      "time" : 0.675
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 4,
+      "time" : 0.6833333333333333
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 4,
+      "time" : 0.6916666666666667
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 4,
+      "time" : 0.7
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 4,
+      "time" : 0.7083333333333333
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 4,
+      "time" : 0.7166666666666666
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 4,
+      "time" : 0.7249999999999999
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 4,
+      "time" : 0.7333333333333332
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 4,
+      "time" : 0.7416666666666665
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 4,
+      "time" : 0.7499999999999998
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 4,
+      "time" : 0.7583333333333331
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 4,
+      "time" : 0.7666666666666664
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 4,
+      "time" : 0.7749999999999997
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 4,
+      "time" : 0.783333333333333
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 4,
+      "time" : 0.7916666666666663
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 4,
+      "time" : 0.7999999999999996
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 4,
+      "time" : 0.8083333333333329
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 4,
+      "time" : 0.8166666666666662
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 4,
+      "time" : 0.8249999999999995
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 4,
+      "time" : 0.8333333333333328
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 4,
+      "time" : 0.8416666666666661
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 4,
+      "time" : 0.8499999999999994
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 4,
+      "time" : 0.8583333333333327
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 4,
+      "time" : 0.866666666666666
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 4,
+      "time" : 0.8749999999999993
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 4,
+      "time" : 0.8833333333333326
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 4,
+      "time" : 0.8916666666666659
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 4,
+      "time" : 0.8999999999999992
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 4,
+      "time" : 0.9083333333333325
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 4,
+      "time" : 0.9166666666666659
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 4,
+      "time" : 0.9249999999999992
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 4,
+      "time" : 0.9333333333333325
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 4,
+      "time" : 0.9416666666666658
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 4,
+      "time" : 0.9499999999999991
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 4,
+      "time" : 0.9583333333333324
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "generate",
+      "shield" : 4,
+      "time" : 0.96
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 4,
+      "time" : 2.0083333333333333
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 4,
+      "time" : 2.0166666666666666
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 4,
+      "time" : 2.025
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 4,
+      "time" : 2.033333333333333
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 4,
+      "time" : 2.0416666666666665
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 4,
+      "time" : 2.05
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 4,
+      "time" : 2.058333333333333
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 4,
+      "time" : 2.066666666666667
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 4,
+      "time" : 2.075
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 4,
+      "time" : 2.0833333333333335
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 4,
+      "time" : 2.091666666666667
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 4,
+      "time" : 2.1
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 4,
+      "time" : 2.1083333333333334
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 4,
+      "time" : 2.1166666666666667
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 4,
+      "time" : 2.125
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 4,
+      "time" : 2.1333333333333333
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 4,
+      "time" : 2.1416666666666666
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 4,
+      "time" : 2.15
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 4,
+      "time" : 2.158333333333333
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 4,
+      "time" : 2.1666666666666665
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 4,
+      "time" : 2.175
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 4,
+      "time" : 2.183333333333333
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 4,
+      "time" : 2.1916666666666664
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 4,
+      "time" : 2.2
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 4,
+      "time" : 2.2083333333333335
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 4,
+      "time" : 2.216666666666667
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 4,
+      "time" : 2.225
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 4,
+      "time" : 2.2333333333333334
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 4,
+      "time" : 2.2416666666666667
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 4,
+      "time" : 2.25
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 4,
+      "time" : 2.2583333333333333
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 4,
+      "time" : 2.2666666666666666
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 4,
+      "time" : 2.275
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 4,
+      "time" : 2.283333333333333
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 4,
+      "time" : 2.291666666666667
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 4,
+      "time" : 2.3000000000000003
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 4,
+      "time" : 2.3083333333333336
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 4,
+      "time" : 2.316666666666667
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 4,
+      "time" : 2.325
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 4,
+      "time" : 2.3333333333333335
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 4,
+      "time" : 2.341666666666667
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 4,
+      "time" : 2.35
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 4,
+      "time" : 2.3583333333333334
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 4,
+      "time" : 2.366666666666667
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 4,
+      "time" : 2.3750000000000004
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 4,
+      "time" : 2.3833333333333337
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 4,
+      "time" : 2.391666666666667
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 4,
+      "time" : 2.4000000000000004
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 4,
+      "time" : 2.4083333333333337
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 4,
+      "time" : 2.416666666666667
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 4,
+      "time" : 2.4250000000000007
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 4,
+      "time" : 2.433333333333334
+    },
+    {
+      "absorbed" : 4,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 2.4416666666666673
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 2.4500000000000006
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 2.458333333333334
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 2.4666666666666672
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 2.4750000000000005
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 2.483333333333334
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 2.491666666666667
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 2.500000000000001
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 2.5083333333333337
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 2.5166666666666675
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 2.5250000000000004
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 2.533333333333334
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 2.541666666666667
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 2.5500000000000007
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 2.5583333333333336
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 2.5666666666666673
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 2.575
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 2.583333333333334
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 2.591666666666667
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 2.6000000000000005
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 2.6083333333333334
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 2.616666666666667
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 2.625
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 2.6333333333333337
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 2.6416666666666666
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 2.6500000000000004
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 2.658333333333333
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 2.666666666666667
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 2.675
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 2.6833333333333336
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 2.6916666666666664
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 2.7
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 2.708333333333333
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 2.716666666666667
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 2.7249999999999996
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 2.7333333333333334
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 2.7416666666666663
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 2.75
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 2.758333333333333
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 2.7666666666666666
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 2.7749999999999995
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 2.783333333333333
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 2.791666666666666
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 2.8
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 2.8083333333333327
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 2.8166666666666664
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 2.8249999999999993
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 2.833333333333333
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 2.841666666666666
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 2.8499999999999996
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 2.8583333333333325
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 2.8666666666666663
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 2.874999999999999
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 2.883333333333333
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 2.8916666666666657
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 2.8999999999999995
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 2.9083333333333323
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 2.916666666666666
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 2.924999999999999
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 2.9333333333333327
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 2.9416666666666655
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 2.9499999999999993
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 2.958333333333332
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 2.966666666666666
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 2.9749999999999988
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 2.9833333333333325
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 2.9916666666666654
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 2.999999999999999
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 3.008333333333332
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 3.0166666666666657
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 3.0249999999999986
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 3.0333333333333323
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 3.041666666666665
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 3.049999999999999
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 3.058333333333332
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 3.0666666666666655
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 3.0749999999999984
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 3.083333333333332
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 3.091666666666665
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 3.0999999999999988
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 3.1083333333333316
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 3.1166666666666654
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 3.1249999999999982
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 3.133333333333332
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 3.141666666666665
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 3.1499999999999986
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 3.1583333333333314
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 3.166666666666665
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 3.174999999999998
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 3.183333333333332
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 3.1916666666666647
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 3.1999999999999984
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 3.2083333333333313
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 3.216666666666665
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 3.224999999999998
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 3.2333333333333316
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 3.2416666666666645
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 3.2499999999999982
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 3.258333333333331
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 3.266666666666665
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 3.2749999999999977
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 3.2833333333333314
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 3.2916666666666643
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 3.299999999999998
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 3.308333333333331
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 3.3166666666666647
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 3.3249999999999975
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 3.3333333333333313
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 3.341666666666664
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 3.349999999999998
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 3.3583333333333307
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 3.3666666666666645
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 3.3749999999999973
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 3.383333333333331
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 3.391666666666664
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 3.3999999999999977
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 3.4083333333333306
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 3.4166666666666643
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 3.424999999999997
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 3.433333333333331
+    },
+    {
+      "absorbed" : 0,
+      "fps" : 120,
+      "gained" : 0,
+      "hp" : 12,
+      "phase" : "blockBreak",
+      "shield" : 0,
+      "time" : 3.44
+    }
+  ]
+}

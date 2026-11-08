@@ -1,0 +1,1073 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "p1-neutral-up-right-walk-r3-clean-joints",
+  "direction": "up-right",
+  "facing": [
+    1,
+    -1
+  ],
+  "compatibility": {
+    "rig": "p1-chibi-v1",
+    "bodyProfile": "p1-standard",
+    "actionSet": "locomotion-v1"
+  },
+  "status": "main-authored-repair-candidate",
+  "artApproval": null,
+  "author": "root only; no subagents used for this repair or audit",
+  "sourceRegistration": {
+    "uniformScale": 0.14,
+    "translation": [
+      43,
+      58
+    ],
+    "bodyMatrix": [
+      1.08,
+      0,
+      0,
+      1.04,
+      -8.159999999999997,
+      -6.200000000000017
+    ],
+    "alphaFit": false
+  },
+  "sourcePolygons": {
+    "arm.left": [
+      [
+        112,
+        130
+      ],
+      [
+        117,
+        130
+      ],
+      [
+        119,
+        134
+      ],
+      [
+        118,
+        141
+      ],
+      [
+        117,
+        146
+      ],
+      [
+        115,
+        151
+      ],
+      [
+        115,
+        156
+      ],
+      [
+        115,
+        160
+      ],
+      [
+        117,
+        164
+      ],
+      [
+        117,
+        168
+      ],
+      [
+        113,
+        170
+      ],
+      [
+        107,
+        168
+      ],
+      [
+        106,
+        164
+      ],
+      [
+        107,
+        159
+      ],
+      [
+        106,
+        154
+      ],
+      [
+        105,
+        150
+      ],
+      [
+        106,
+        144
+      ],
+      [
+        109,
+        140
+      ],
+      [
+        109,
+        135
+      ]
+    ],
+    "arm.right": [
+      [
+        137,
+        129
+      ],
+      [
+        143,
+        130
+      ],
+      [
+        147,
+        133
+      ],
+      [
+        148,
+        141
+      ],
+      [
+        150,
+        147
+      ],
+      [
+        151,
+        153
+      ],
+      [
+        154,
+        159
+      ],
+      [
+        156,
+        162
+      ],
+      [
+        159,
+        165
+      ],
+      [
+        160,
+        171
+      ],
+      [
+        157,
+        175
+      ],
+      [
+        150,
+        175
+      ],
+      [
+        148,
+        171
+      ],
+      [
+        148,
+        167
+      ],
+      [
+        146,
+        162
+      ],
+      [
+        143,
+        158
+      ],
+      [
+        141,
+        152
+      ],
+      [
+        139,
+        148
+      ],
+      [
+        137,
+        143
+      ],
+      [
+        137,
+        136
+      ]
+    ],
+    "torso": [
+      [
+        122,
+        119
+      ],
+      [
+        132,
+        119
+      ],
+      [
+        135,
+        125
+      ],
+      [
+        141,
+        129
+      ],
+      [
+        140,
+        135
+      ],
+      [
+        138,
+        140
+      ],
+      [
+        139,
+        148
+      ],
+      [
+        140,
+        155
+      ],
+      [
+        141,
+        160
+      ],
+      [
+        128,
+        161
+      ],
+      [
+        116,
+        160
+      ],
+      [
+        116,
+        155
+      ],
+      [
+        116,
+        149
+      ],
+      [
+        118,
+        143
+      ],
+      [
+        118,
+        138
+      ],
+      [
+        117,
+        133
+      ],
+      [
+        114,
+        130
+      ],
+      [
+        119,
+        126
+      ]
+    ],
+    "pelvis": [
+      [
+        116,
+        155
+      ],
+      [
+        141,
+        155
+      ],
+      [
+        143,
+        160
+      ],
+      [
+        145,
+        167
+      ],
+      [
+        144,
+        173
+      ],
+      [
+        139,
+        176
+      ],
+      [
+        130,
+        176
+      ],
+      [
+        127,
+        175
+      ],
+      [
+        123,
+        176
+      ],
+      [
+        116,
+        175
+      ],
+      [
+        113,
+        171
+      ],
+      [
+        113,
+        165
+      ],
+      [
+        115,
+        160
+      ]
+    ],
+    "leg.left": [
+      [
+        115,
+        171
+      ],
+      [
+        129,
+        171
+      ],
+      [
+        130,
+        179
+      ],
+      [
+        127,
+        184
+      ],
+      [
+        126,
+        189
+      ],
+      [
+        126,
+        195
+      ],
+      [
+        124,
+        200
+      ],
+      [
+        125,
+        203
+      ],
+      [
+        130,
+        204
+      ],
+      [
+        130,
+        208
+      ],
+      [
+        126,
+        211
+      ],
+      [
+        118,
+        213
+      ],
+      [
+        113,
+        211
+      ],
+      [
+        112,
+        207
+      ],
+      [
+        114,
+        201
+      ],
+      [
+        114,
+        196
+      ],
+      [
+        113,
+        192
+      ],
+      [
+        114,
+        187
+      ],
+      [
+        116,
+        182
+      ]
+    ],
+    "leg.right": [
+      [
+        129,
+        171
+      ],
+      [
+        144,
+        171
+      ],
+      [
+        145,
+        178
+      ],
+      [
+        143,
+        183
+      ],
+      [
+        142,
+        187
+      ],
+      [
+        144,
+        191
+      ],
+      [
+        143,
+        198
+      ],
+      [
+        141,
+        203
+      ],
+      [
+        140,
+        205
+      ],
+      [
+        145,
+        206
+      ],
+      [
+        149,
+        209
+      ],
+      [
+        149,
+        213
+      ],
+      [
+        146,
+        216
+      ],
+      [
+        133,
+        216
+      ],
+      [
+        129,
+        214
+      ],
+      [
+        128,
+        210
+      ],
+      [
+        130,
+        206
+      ],
+      [
+        131,
+        201
+      ],
+      [
+        130,
+        195
+      ],
+      [
+        130,
+        188
+      ],
+      [
+        130,
+        182
+      ]
+    ]
+  },
+  "sourceJoints": {
+    "neck": [
+      127,
+      130
+    ],
+    "waist": [
+      128,
+      156
+    ],
+    "pelvis": [
+      128,
+      168
+    ],
+    "shoulderLeft": [
+      114,
+      134
+    ],
+    "elbowLeft": [
+      111,
+      147
+    ],
+    "wristLeft": [
+      112,
+      161
+    ],
+    "shoulderRight": [
+      140,
+      132
+    ],
+    "elbowRight": [
+      145,
+      149
+    ],
+    "wristRight": [
+      152,
+      165
+    ],
+    "hipLeft": [
+      120,
+      174
+    ],
+    "kneeLeft": [
+      120,
+      187
+    ],
+    "ankleLeft": [
+      118,
+      202
+    ],
+    "hipRight": [
+      136,
+      175
+    ],
+    "kneeRight": [
+      136,
+      190
+    ],
+    "ankleRight": [
+      136,
+      205
+    ]
+  },
+  "joints": {
+    "neck": [
+      129.0,
+      129.0
+    ],
+    "waist": [
+      130.08,
+      156.04
+    ],
+    "pelvis": [
+      130.08,
+      168.51999999999998
+    ],
+    "shoulderLeft": [
+      114.96000000000001,
+      133.16
+    ],
+    "elbowLeft": [
+      111.72000000000001,
+      146.67999999999998
+    ],
+    "wristLeft": [
+      112.80000000000001,
+      161.23999999999998
+    ],
+    "shoulderRight": [
+      143.04000000000002,
+      131.07999999999998
+    ],
+    "elbowRight": [
+      148.44000000000003,
+      148.76
+    ],
+    "wristRight": [
+      156.00000000000003,
+      165.39999999999998
+    ],
+    "hipLeft": [
+      121.44000000000003,
+      174.76
+    ],
+    "kneeLeft": [
+      121.44000000000003,
+      188.28
+    ],
+    "ankleLeft": [
+      119.28000000000002,
+      203.88
+    ],
+    "hipRight": [
+      138.72,
+      175.79999999999998
+    ],
+    "kneeRight": [
+      138.72,
+      191.39999999999998
+    ],
+    "ankleRight": [
+      138.72,
+      207.0
+    ]
+  },
+  "parts": {
+    "torso": {
+      "image": "source/torso.png",
+      "sha256": "1b3909199c7b739a8f34015c1081c49b0136cf5ff0ae699ecfff5047c112fbba",
+      "sourcePolygon": "torso",
+      "noLimbSkinInGarment": true
+    },
+    "pelvis": {
+      "image": "source/pelvis.png",
+      "sha256": "a8f1e6526c4a157bca3bbc490fced33481a7575790a525fadf4fe8e773a99b7e",
+      "sourcePolygon": "pelvis",
+      "noLimbSkinInGarment": true
+    },
+    "upperarm.left": {
+      "image": "source/upperarm.left.png",
+      "sha256": "e800f35feeea554547ed1f6ec7ea18091563131e6b0e7362933b427fbbf64f15",
+      "source": "arm",
+      "start": [
+        114.96000000000001,
+        133.16
+      ],
+      "end": [
+        111.72000000000001,
+        146.67999999999998
+      ],
+      "roundJointCaps": true,
+      "hipUnderlap": false,
+      "shoulderUnderlap": true
+    },
+    "forearm.left": {
+      "image": "source/forearm.left.png",
+      "sha256": "0d4cb876bfcb9511be3650fcf2cbeb79164fdc9abad500e2b275ae2fbb28b8a7",
+      "source": "arm",
+      "start": [
+        111.72000000000001,
+        146.67999999999998
+      ],
+      "end": [
+        112.80000000000001,
+        161.23999999999998
+      ],
+      "roundJointCaps": true,
+      "hipUnderlap": false,
+      "shoulderUnderlap": false
+    },
+    "thigh.left": {
+      "image": "source/thigh.left.png",
+      "sha256": "33af016e499ae7e14060597e9c1b18868b293218476d0712392ba97b6e91f6bb",
+      "source": "leg",
+      "start": [
+        121.44000000000003,
+        174.76
+      ],
+      "end": [
+        121.44000000000003,
+        188.28
+      ],
+      "roundJointCaps": true,
+      "hipUnderlap": true,
+      "shoulderUnderlap": false
+    },
+    "shin.left": {
+      "image": "source/shin.left.png",
+      "sha256": "0a2c712029b0a98efd29490c6c7765de7b09d8e0a17479a9cbc96d55e4d81121",
+      "source": "leg",
+      "start": [
+        121.44000000000003,
+        188.28
+      ],
+      "end": [
+        119.28000000000002,
+        203.88
+      ],
+      "roundJointCaps": true,
+      "hipUnderlap": false,
+      "shoulderUnderlap": false
+    },
+    "hand.left": {
+      "image": "source/hand.left.png",
+      "sha256": "a6a1ace19e9d8235b260cc0ebc21891a723fafd56434899b10edfb953bdd9aa0",
+      "start": [
+        112.80000000000001,
+        161.23999999999998
+      ],
+      "emptyRelaxedHand": true
+    },
+    "foot.left": {
+      "image": "source/foot.left.png",
+      "sha256": "ecd7dc64f29bc8b10e3dcba9282120fb55ad33767e1f2970463448c5c1157f55",
+      "start": [
+        119.28000000000002,
+        203.88
+      ],
+      "toe": [
+        124.68,
+        208.04
+      ],
+      "heel": [
+        114.96000000000001,
+        209.07999999999998
+      ],
+      "flat": [
+        120,
+        210
+      ],
+      "contactPolygon": [
+        [
+          115,
+          206
+        ],
+        [
+          116,
+          203
+        ],
+        [
+          118,
+          201
+        ],
+        [
+          120,
+          201
+        ],
+        [
+          127,
+          204
+        ],
+        [
+          131,
+          206
+        ],
+        [
+          130,
+          207
+        ],
+        [
+          123,
+          210
+        ],
+        [
+          116,
+          210
+        ],
+        [
+          115,
+          209
+        ]
+      ]
+    },
+    "upperarm.right": {
+      "image": "source/upperarm.right.png",
+      "sha256": "c820fff6f6ee9d60c32391b2044457b52db4362415b1118859aac1dd8f4379b4",
+      "source": "arm",
+      "start": [
+        143.04000000000002,
+        131.07999999999998
+      ],
+      "end": [
+        148.44000000000003,
+        148.76
+      ],
+      "roundJointCaps": true,
+      "hipUnderlap": false,
+      "shoulderUnderlap": true
+    },
+    "forearm.right": {
+      "image": "source/forearm.right.png",
+      "sha256": "024c936a69aeb2eca3f682f0fcefa6cd743442107065a218b3a833642d1400ea",
+      "source": "arm",
+      "start": [
+        148.44000000000003,
+        148.76
+      ],
+      "end": [
+        156.00000000000003,
+        165.39999999999998
+      ],
+      "roundJointCaps": true,
+      "hipUnderlap": false,
+      "shoulderUnderlap": false
+    },
+    "thigh.right": {
+      "image": "source/thigh.right.png",
+      "sha256": "736bcaafe65c2a4a5604b39b587c711162d02adc9ac86a9f72f34c8a82e0c68b",
+      "source": "leg",
+      "start": [
+        138.72,
+        175.79999999999998
+      ],
+      "end": [
+        138.72,
+        191.39999999999998
+      ],
+      "roundJointCaps": true,
+      "hipUnderlap": true,
+      "shoulderUnderlap": false
+    },
+    "shin.right": {
+      "image": "source/shin.right.png",
+      "sha256": "66641664492844ef4c97522555df252ebe19836277ede820d13c145dfbc2e93e",
+      "source": "leg",
+      "start": [
+        138.72,
+        191.39999999999998
+      ],
+      "end": [
+        138.72,
+        207.0
+      ],
+      "roundJointCaps": true,
+      "hipUnderlap": false,
+      "shoulderUnderlap": false
+    },
+    "hand.right": {
+      "image": "source/hand.right.png",
+      "sha256": "332949f5598416cb812e63ad0b8e36c02d052677d0d36c968ef5dadcfc1c6fd5",
+      "start": [
+        156.00000000000003,
+        165.39999999999998
+      ],
+      "emptyRelaxedHand": true
+    },
+    "foot.right": {
+      "image": "source/foot.right.png",
+      "sha256": "24c84be1a4b31b28ec8441f7c5bcf9e85a2f7a668f8405510c02647a82d54424",
+      "start": [
+        138.72,
+        207.0
+      ],
+      "toe": [
+        149.52,
+        213.23999999999998
+      ],
+      "heel": [
+        133.32000000000002,
+        213.23999999999998
+      ],
+      "flat": [
+        139,
+        215
+      ],
+      "contactPolygon": [
+        [
+          133,
+          213
+        ],
+        [
+          133,
+          209
+        ],
+        [
+          138,
+          204
+        ],
+        [
+          140,
+          204
+        ],
+        [
+          152,
+          210
+        ],
+        [
+          153,
+          211
+        ],
+        [
+          153,
+          212
+        ],
+        [
+          148,
+          214
+        ],
+        [
+          142,
+          215
+        ],
+        [
+          135,
+          215
+        ]
+      ]
+    }
+  },
+  "skinClassifier": "warm R>=G+4, G>=B+2 OR dark max<26 and R>=G,B; masks explicitly trace skin side of vest; no white fabric belongs to limbs",
+  "headLocalOrigin": [
+    76,
+    61
+  ],
+  "sourceRemovedIslands": {
+    "arm.left": [],
+    "leg.left": [],
+    "arm.right": [],
+    "leg.right": []
+  },
+  "headSourceRemovedShoulderStrokePixels": [
+    [
+      115,
+      128
+    ],
+    [
+      116,
+      128
+    ],
+    [
+      117,
+      128
+    ],
+    [
+      118,
+      128
+    ],
+    [
+      119,
+      128
+    ],
+    [
+      120,
+      128
+    ],
+    [
+      121,
+      128
+    ],
+    [
+      115,
+      129
+    ],
+    [
+      116,
+      129
+    ],
+    [
+      117,
+      129
+    ],
+    [
+      118,
+      129
+    ],
+    [
+      119,
+      129
+    ],
+    [
+      120,
+      129
+    ],
+    [
+      121,
+      129
+    ],
+    [
+      140,
+      129
+    ],
+    [
+      116,
+      130
+    ],
+    [
+      117,
+      130
+    ],
+    [
+      118,
+      130
+    ],
+    [
+      119,
+      130
+    ],
+    [
+      120,
+      130
+    ],
+    [
+      121,
+      130
+    ],
+    [
+      140,
+      130
+    ],
+    [
+      118,
+      131
+    ],
+    [
+      119,
+      131
+    ],
+    [
+      120,
+      131
+    ],
+    [
+      121,
+      131
+    ],
+    [
+      140,
+      131
+    ],
+    [
+      141,
+      131
+    ],
+    [
+      119,
+      132
+    ],
+    [
+      120,
+      132
+    ],
+    [
+      121,
+      132
+    ],
+    [
+      121,
+      133
+    ],
+    [
+      122,
+      133
+    ],
+    [
+      123,
+      133
+    ],
+    [
+      128,
+      133
+    ],
+    [
+      123,
+      134
+    ]
+  ],
+  "headSource": {
+    "image": "source/head.base.png",
+    "sha256": "80b8637c7170e1525ddb57f8dc6d47f32f3b36244b6435d6d4e38f28a5473c36",
+    "preservedFrom": "../walk-r2-fixed-limbs/source/head.base.png; explicit old shoulder stroke removed"
+  },
+  "walk": {
+    "stride": 6.5,
+    "lift": 5.5,
+    "bodyBob": 0.65,
+    "weightShift": 1.0,
+    "torsoTurn": 1.2,
+    "pelvisTurn": 0.8,
+    "boneMargin": 0.65,
+    "armSwing": 9,
+    "elbowFlex": 5,
+    "wristFollow": 2,
+    "forwardScale": 0.95,
+    "heightScale": 0.92,
+    "forwardToScreenY": -0.3,
+    "durationMs": 120
+  }
+}

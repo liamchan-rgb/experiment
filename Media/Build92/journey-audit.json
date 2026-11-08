@@ -1,0 +1,6690 @@
+[
+  {
+    "actions" : 14,
+    "actionsUsed" : {
+      "enemy:attack" : 1,
+      "enemy:regeneration" : 1,
+      "enemy:sweep" : 1,
+      "player:ambush" : 3,
+      "player:attack" : 4,
+      "player:heavyStrike" : 2,
+      "player:rally" : 1,
+      "player:shieldPotion" : 1
+    },
+    "battleDetails" : [
+      {
+        "collectedSupplies" : [
+          2
+        ],
+        "firstActor" : "slime",
+        "healthAfter" : {
+          "p1" : 8,
+          "p2" : 18
+        },
+        "healthBefore" : {
+          "p1" : 12,
+          "p2" : 18
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 0,
+        "outcome" : "victory",
+        "rounds" : 1,
+        "templates" : [
+          "slime"
+        ]
+      },
+      {
+        "collectedSupplies" : [
+          2
+        ],
+        "firstActor" : "p1",
+        "healthAfter" : {
+          "p1" : 8,
+          "p2" : 14
+        },
+        "healthBefore" : {
+          "p1" : 8,
+          "p2" : 18
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 3,
+        "outcome" : "victory",
+        "rounds" : 2,
+        "templates" : [
+          "caveTroll"
+        ]
+      }
+    ],
+    "battles" : 2,
+    "blockedRecovery" : 0,
+    "cleared" : 2,
+    "collected" : [
+      2
+    ],
+    "dropCoins" : 30,
+    "finalAP" : {
+      "p1" : 3,
+      "p2" : 3
+    },
+    "finalCoins" : 38,
+    "finalHealth" : {
+      "p1" : 8,
+      "p2" : 14
+    },
+    "foughtSpecies" : [
+      "caveTroll",
+      "slime"
+    ],
+    "itinerary" : "closed-tree",
+    "manualActionRefills" : 2,
+    "monsterActions" : 3,
+    "movementSpent" : 32,
+    "nodeCoins" : 32,
+    "outcome" : "victory",
+    "plannedSpecies" : [
+      "caveTroll",
+      "slime"
+    ],
+    "resumes" : 6,
+    "role" : "adventurer",
+    "seed" : "0",
+    "size" : 4,
+    "stagedRestarts" : 2,
+    "startingCoins" : 8,
+    "totalDistance" : 1760.0898330904702,
+    "visited" : [
+      0,
+      1,
+      2,
+      3
+    ]
+  },
+  {
+    "actions" : 9,
+    "actionsUsed" : {
+      "enemy:attack" : 1,
+      "enemy:regeneration" : 1,
+      "enemy:sweep" : 1,
+      "player:ambush" : 2,
+      "player:attack" : 1,
+      "player:battleRune" : 1,
+      "player:runeSlash" : 2
+    },
+    "battleDetails" : [
+      {
+        "collectedSupplies" : [
+          2
+        ],
+        "firstActor" : "slime",
+        "healthAfter" : {
+          "p1" : 20,
+          "p2" : 18
+        },
+        "healthBefore" : {
+          "p1" : 24,
+          "p2" : 18
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 0,
+        "outcome" : "victory",
+        "rounds" : 1,
+        "templates" : [
+          "slime"
+        ]
+      },
+      {
+        "collectedSupplies" : [
+          2
+        ],
+        "firstActor" : "p1",
+        "healthAfter" : {
+          "p1" : 24,
+          "p2" : 18
+        },
+        "healthBefore" : {
+          "p1" : 20,
+          "p2" : 18
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 3,
+        "outcome" : "victory",
+        "rounds" : 2,
+        "templates" : [
+          "caveTroll"
+        ]
+      }
+    ],
+    "battles" : 2,
+    "blockedRecovery" : 0,
+    "cleared" : 2,
+    "collected" : [
+      2
+    ],
+    "dropCoins" : 30,
+    "finalAP" : {
+      "p1" : 3,
+      "p2" : 3
+    },
+    "finalCoins" : 38,
+    "finalHealth" : {
+      "p1" : 24,
+      "p2" : 18
+    },
+    "foughtSpecies" : [
+      "caveTroll",
+      "slime"
+    ],
+    "itinerary" : "closed-tree",
+    "manualActionRefills" : 2,
+    "monsterActions" : 3,
+    "movementSpent" : 32,
+    "nodeCoins" : 32,
+    "outcome" : "victory",
+    "plannedSpecies" : [
+      "caveTroll",
+      "slime"
+    ],
+    "resumes" : 6,
+    "role" : "spellblade",
+    "seed" : "0",
+    "size" : 4,
+    "stagedRestarts" : 2,
+    "startingCoins" : 8,
+    "totalDistance" : 1760.0898330904702,
+    "visited" : [
+      0,
+      1,
+      2,
+      3
+    ]
+  },
+  {
+    "actions" : 10,
+    "actionsUsed" : {
+      "enemy:attack" : 2,
+      "enemy:sweep" : 1,
+      "player:ambush" : 2,
+      "player:attack" : 3,
+      "player:dragonFlame" : 1,
+      "player:dragonOrder" : 1
+    },
+    "battleDetails" : [
+      {
+        "collectedSupplies" : [
+          2
+        ],
+        "firstActor" : "slime",
+        "healthAfter" : {
+          "p1" : 28,
+          "p2" : 18
+        },
+        "healthBefore" : {
+          "p1" : 32,
+          "p2" : 18
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 0,
+        "outcome" : "victory",
+        "rounds" : 1,
+        "templates" : [
+          "slime"
+        ]
+      },
+      {
+        "collectedSupplies" : [
+          2
+        ],
+        "firstActor" : "p1",
+        "healthAfter" : {
+          "p1" : 32,
+          "p2" : 18
+        },
+        "healthBefore" : {
+          "p1" : 28,
+          "p2" : 18
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 3,
+        "outcome" : "victory",
+        "rounds" : 2,
+        "templates" : [
+          "caveTroll"
+        ]
+      }
+    ],
+    "battles" : 2,
+    "blockedRecovery" : 0,
+    "cleared" : 2,
+    "collected" : [
+      2
+    ],
+    "dropCoins" : 30,
+    "finalAP" : {
+      "p1" : 3,
+      "p2" : 3
+    },
+    "finalCoins" : 38,
+    "finalHealth" : {
+      "p1" : 32,
+      "p2" : 18
+    },
+    "foughtSpecies" : [
+      "caveTroll",
+      "slime"
+    ],
+    "itinerary" : "closed-tree",
+    "manualActionRefills" : 2,
+    "monsterActions" : 3,
+    "movementSpent" : 32,
+    "nodeCoins" : 32,
+    "outcome" : "victory",
+    "plannedSpecies" : [
+      "caveTroll",
+      "slime"
+    ],
+    "resumes" : 6,
+    "role" : "dragonKnight",
+    "seed" : "0",
+    "size" : 4,
+    "stagedRestarts" : 2,
+    "startingCoins" : 8,
+    "totalDistance" : 1760.0898330904702,
+    "visited" : [
+      0,
+      1,
+      2,
+      3
+    ]
+  },
+  {
+    "actions" : 21,
+    "actionsUsed" : {
+      "enemy:attack" : 10,
+      "enemy:sweep" : 2,
+      "player:heavyStrike" : 2,
+      "player:largePotion" : 2,
+      "player:revivalStone" : 3,
+      "player:smallPotion" : 1,
+      "player:support" : 1
+    },
+    "battleDetails" : [
+      {
+        "collectedSupplies" : [
+          0
+        ],
+        "firstActor" : "caveTroll",
+        "healthAfter" : {
+          "p1" : 0,
+          "p2" : 0
+        },
+        "healthBefore" : {
+          "p1" : 12,
+          "p2" : 18
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 1,
+        "outcome" : "defeat",
+        "rounds" : 5,
+        "templates" : [
+          "caveTroll"
+        ]
+      }
+    ],
+    "battles" : 1,
+    "blockedRecovery" : 0,
+    "cleared" : 0,
+    "collected" : [
+      0
+    ],
+    "dropCoins" : 0,
+    "finalAP" : {
+      "p1" : 3,
+      "p2" : 3
+    },
+    "finalCoins" : 40,
+    "finalHealth" : {
+      "p1" : 0,
+      "p2" : 0
+    },
+    "foughtSpecies" : [
+      "caveTroll"
+    ],
+    "itinerary" : "closed-tree",
+    "manualActionRefills" : 0,
+    "monsterActions" : 12,
+    "movementSpent" : 8,
+    "nodeCoins" : 40,
+    "outcome" : "defeat",
+    "plannedSpecies" : [
+      "caveTroll",
+      "slime"
+    ],
+    "resumes" : 4,
+    "role" : "adventurer",
+    "seed" : "31827",
+    "size" : 4,
+    "stagedRestarts" : 1,
+    "startingCoins" : 8,
+    "totalDistance" : 702.1752628211816,
+    "visited" : [
+      0,
+      1,
+      2
+    ]
+  },
+  {
+    "actions" : 13,
+    "actionsUsed" : {
+      "enemy:attack" : 2,
+      "enemy:sweep" : 2,
+      "player:ambush" : 3,
+      "player:attack" : 2,
+      "player:battleRune" : 1,
+      "player:largePotion" : 2,
+      "player:runeSlash" : 1
+    },
+    "battleDetails" : [
+      {
+        "collectedSupplies" : [
+          0
+        ],
+        "firstActor" : "caveTroll",
+        "healthAfter" : {
+          "p1" : 24,
+          "p2" : 18
+        },
+        "healthBefore" : {
+          "p1" : 24,
+          "p2" : 18
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 1,
+        "outcome" : "victory",
+        "rounds" : 2,
+        "templates" : [
+          "caveTroll"
+        ]
+      },
+      {
+        "collectedSupplies" : [
+          0
+        ],
+        "firstActor" : "p2",
+        "healthAfter" : {
+          "p1" : 24,
+          "p2" : 18
+        },
+        "healthBefore" : {
+          "p1" : 24,
+          "p2" : 18
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 3,
+        "outcome" : "victory",
+        "rounds" : 1,
+        "templates" : [
+          "slime"
+        ]
+      }
+    ],
+    "battles" : 2,
+    "blockedRecovery" : 0,
+    "cleared" : 2,
+    "collected" : [
+      0
+    ],
+    "dropCoins" : 30,
+    "finalAP" : {
+      "p1" : 3,
+      "p2" : 3
+    },
+    "finalCoins" : 38,
+    "finalHealth" : {
+      "p1" : 24,
+      "p2" : 18
+    },
+    "foughtSpecies" : [
+      "caveTroll",
+      "slime"
+    ],
+    "itinerary" : "closed-tree",
+    "manualActionRefills" : 2,
+    "monsterActions" : 4,
+    "movementSpent" : 40,
+    "nodeCoins" : 40,
+    "outcome" : "victory",
+    "plannedSpecies" : [
+      "caveTroll",
+      "slime"
+    ],
+    "resumes" : 5,
+    "role" : "spellblade",
+    "seed" : "31827",
+    "size" : 4,
+    "stagedRestarts" : 2,
+    "startingCoins" : 8,
+    "totalDistance" : 2150.5032414608218,
+    "visited" : [
+      0,
+      1,
+      2,
+      3
+    ]
+  },
+  {
+    "actions" : 13,
+    "actionsUsed" : {
+      "enemy:attack" : 1,
+      "enemy:regeneration" : 1,
+      "enemy:sweep" : 2,
+      "player:ambush" : 1,
+      "player:attack" : 5,
+      "player:dragonFlame" : 1,
+      "player:dragonOrder" : 2
+    },
+    "battleDetails" : [
+      {
+        "collectedSupplies" : [
+          0
+        ],
+        "firstActor" : "caveTroll",
+        "healthAfter" : {
+          "p1" : 32,
+          "p2" : 12
+        },
+        "healthBefore" : {
+          "p1" : 32,
+          "p2" : 18
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 1,
+        "outcome" : "victory",
+        "rounds" : 2,
+        "templates" : [
+          "caveTroll"
+        ]
+      },
+      {
+        "collectedSupplies" : [
+          0
+        ],
+        "firstActor" : "p1",
+        "healthAfter" : {
+          "p1" : 32,
+          "p2" : 18
+        },
+        "healthBefore" : {
+          "p1" : 32,
+          "p2" : 12
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 3,
+        "outcome" : "victory",
+        "rounds" : 1,
+        "templates" : [
+          "slime"
+        ]
+      }
+    ],
+    "battles" : 2,
+    "blockedRecovery" : 0,
+    "cleared" : 2,
+    "collected" : [
+      0
+    ],
+    "dropCoins" : 30,
+    "finalAP" : {
+      "p1" : 3,
+      "p2" : 3
+    },
+    "finalCoins" : 38,
+    "finalHealth" : {
+      "p1" : 32,
+      "p2" : 18
+    },
+    "foughtSpecies" : [
+      "caveTroll",
+      "slime"
+    ],
+    "itinerary" : "closed-tree",
+    "manualActionRefills" : 2,
+    "monsterActions" : 4,
+    "movementSpent" : 40,
+    "nodeCoins" : 40,
+    "outcome" : "victory",
+    "plannedSpecies" : [
+      "caveTroll",
+      "slime"
+    ],
+    "resumes" : 5,
+    "role" : "dragonKnight",
+    "seed" : "31827",
+    "size" : 4,
+    "stagedRestarts" : 2,
+    "startingCoins" : 8,
+    "totalDistance" : 2150.5032414608218,
+    "visited" : [
+      0,
+      1,
+      2,
+      3
+    ]
+  },
+  {
+    "actions" : 16,
+    "actionsUsed" : {
+      "enemy:attack" : 1,
+      "enemy:regeneration" : 1,
+      "enemy:sweep" : 2,
+      "player:ambush" : 3,
+      "player:attack" : 5,
+      "player:heavyStrike" : 2,
+      "player:largePotion" : 1,
+      "player:rally" : 1
+    },
+    "battleDetails" : [
+      {
+        "collectedSupplies" : [
+          1
+        ],
+        "firstActor" : "p2",
+        "healthAfter" : {
+          "p1" : 12,
+          "p2" : 18
+        },
+        "healthBefore" : {
+          "p1" : 12,
+          "p2" : 18
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 0,
+        "outcome" : "victory",
+        "rounds" : 1,
+        "templates" : [
+          "slime"
+        ]
+      },
+      {
+        "collectedSupplies" : [
+          1
+        ],
+        "firstActor" : "p2",
+        "healthAfter" : {
+          "p1" : 10,
+          "p2" : 14
+        },
+        "healthBefore" : {
+          "p1" : 12,
+          "p2" : 18
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 3,
+        "outcome" : "victory",
+        "rounds" : 3,
+        "templates" : [
+          "caveTroll"
+        ]
+      }
+    ],
+    "battles" : 2,
+    "blockedRecovery" : 0,
+    "cleared" : 2,
+    "collected" : [
+      1
+    ],
+    "dropCoins" : 35,
+    "finalAP" : {
+      "p1" : 3,
+      "p2" : 3
+    },
+    "finalCoins" : 43,
+    "finalHealth" : {
+      "p1" : 10,
+      "p2" : 14
+    },
+    "foughtSpecies" : [
+      "caveTroll",
+      "slime"
+    ],
+    "itinerary" : "closed-tree",
+    "manualActionRefills" : 2,
+    "monsterActions" : 4,
+    "movementSpent" : 32,
+    "nodeCoins" : 32,
+    "outcome" : "victory",
+    "plannedSpecies" : [
+      "caveTroll",
+      "slime"
+    ],
+    "resumes" : 5,
+    "role" : "adventurer",
+    "seed" : "18446744073709551615",
+    "size" : 4,
+    "stagedRestarts" : 2,
+    "startingCoins" : 8,
+    "totalDistance" : 1784.0994544713205,
+    "visited" : [
+      0,
+      1,
+      2,
+      3
+    ]
+  },
+  {
+    "actions" : 12,
+    "actionsUsed" : {
+      "enemy:attack" : 1,
+      "enemy:regeneration" : 1,
+      "enemy:sweep" : 2,
+      "player:ambush" : 3,
+      "player:attack" : 1,
+      "player:battleRune" : 1,
+      "player:rally" : 1,
+      "player:runeSlash" : 2
+    },
+    "battleDetails" : [
+      {
+        "collectedSupplies" : [
+          1
+        ],
+        "firstActor" : "p2",
+        "healthAfter" : {
+          "p1" : 24,
+          "p2" : 18
+        },
+        "healthBefore" : {
+          "p1" : 24,
+          "p2" : 18
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 0,
+        "outcome" : "victory",
+        "rounds" : 1,
+        "templates" : [
+          "slime"
+        ]
+      },
+      {
+        "collectedSupplies" : [
+          1
+        ],
+        "firstActor" : "p2",
+        "healthAfter" : {
+          "p1" : 24,
+          "p2" : 12
+        },
+        "healthBefore" : {
+          "p1" : 24,
+          "p2" : 18
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 3,
+        "outcome" : "victory",
+        "rounds" : 2,
+        "templates" : [
+          "caveTroll"
+        ]
+      }
+    ],
+    "battles" : 2,
+    "blockedRecovery" : 0,
+    "cleared" : 2,
+    "collected" : [
+      1
+    ],
+    "dropCoins" : 35,
+    "finalAP" : {
+      "p1" : 3,
+      "p2" : 3
+    },
+    "finalCoins" : 43,
+    "finalHealth" : {
+      "p1" : 24,
+      "p2" : 12
+    },
+    "foughtSpecies" : [
+      "caveTroll",
+      "slime"
+    ],
+    "itinerary" : "closed-tree",
+    "manualActionRefills" : 2,
+    "monsterActions" : 4,
+    "movementSpent" : 32,
+    "nodeCoins" : 32,
+    "outcome" : "victory",
+    "plannedSpecies" : [
+      "caveTroll",
+      "slime"
+    ],
+    "resumes" : 5,
+    "role" : "spellblade",
+    "seed" : "18446744073709551615",
+    "size" : 4,
+    "stagedRestarts" : 2,
+    "startingCoins" : 8,
+    "totalDistance" : 1784.0994544713205,
+    "visited" : [
+      0,
+      1,
+      2,
+      3
+    ]
+  },
+  {
+    "actions" : 12,
+    "actionsUsed" : {
+      "enemy:attack" : 1,
+      "enemy:regeneration" : 1,
+      "enemy:sweep" : 2,
+      "player:ambush" : 3,
+      "player:attack" : 2,
+      "player:dragonFlame" : 1,
+      "player:dragonOrder" : 1,
+      "player:rally" : 1
+    },
+    "battleDetails" : [
+      {
+        "collectedSupplies" : [
+          1
+        ],
+        "firstActor" : "p2",
+        "healthAfter" : {
+          "p1" : 32,
+          "p2" : 18
+        },
+        "healthBefore" : {
+          "p1" : 32,
+          "p2" : 18
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 0,
+        "outcome" : "victory",
+        "rounds" : 1,
+        "templates" : [
+          "slime"
+        ]
+      },
+      {
+        "collectedSupplies" : [
+          1
+        ],
+        "firstActor" : "p2",
+        "healthAfter" : {
+          "p1" : 32,
+          "p2" : 15
+        },
+        "healthBefore" : {
+          "p1" : 32,
+          "p2" : 18
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 3,
+        "outcome" : "victory",
+        "rounds" : 2,
+        "templates" : [
+          "caveTroll"
+        ]
+      }
+    ],
+    "battles" : 2,
+    "blockedRecovery" : 0,
+    "cleared" : 2,
+    "collected" : [
+      1
+    ],
+    "dropCoins" : 35,
+    "finalAP" : {
+      "p1" : 3,
+      "p2" : 3
+    },
+    "finalCoins" : 43,
+    "finalHealth" : {
+      "p1" : 32,
+      "p2" : 15
+    },
+    "foughtSpecies" : [
+      "caveTroll",
+      "slime"
+    ],
+    "itinerary" : "closed-tree",
+    "manualActionRefills" : 2,
+    "monsterActions" : 4,
+    "movementSpent" : 32,
+    "nodeCoins" : 32,
+    "outcome" : "victory",
+    "plannedSpecies" : [
+      "caveTroll",
+      "slime"
+    ],
+    "resumes" : 5,
+    "role" : "dragonKnight",
+    "seed" : "18446744073709551615",
+    "size" : 4,
+    "stagedRestarts" : 2,
+    "startingCoins" : 8,
+    "totalDistance" : 1784.0994544713205,
+    "visited" : [
+      0,
+      1,
+      2,
+      3
+    ]
+  },
+  {
+    "actions" : 57,
+    "actionsUsed" : {
+      "enemy:attack" : 13,
+      "enemy:dragonFlame" : 1,
+      "enemy:dragonScaleWard" : 2,
+      "player:ambush" : 5,
+      "player:attack" : 17,
+      "player:heavyStrike" : 5,
+      "player:largePotion" : 3,
+      "player:rally" : 5,
+      "player:shieldPotion" : 2,
+      "player:smallPotion" : 3,
+      "player:support" : 1
+    },
+    "battleDetails" : [
+      {
+        "collectedSupplies" : [
+          0,
+          1
+        ],
+        "firstActor" : "slime",
+        "healthAfter" : {
+          "p1" : 8,
+          "p2" : 18
+        },
+        "healthBefore" : {
+          "p1" : 12,
+          "p2" : 18
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 2,
+        "outcome" : "victory",
+        "rounds" : 1,
+        "templates" : [
+          "slime"
+        ]
+      },
+      {
+        "collectedSupplies" : [
+          0,
+          1
+        ],
+        "firstActor" : "p1",
+        "healthAfter" : {
+          "p1" : 6,
+          "p2" : 14
+        },
+        "healthBefore" : {
+          "p1" : 8,
+          "p2" : 18
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 5,
+        "outcome" : "victory",
+        "rounds" : 5,
+        "templates" : [
+          "ruinDragon"
+        ]
+      },
+      {
+        "collectedSupplies" : [
+          0,
+          1
+        ],
+        "firstActor" : "p1",
+        "healthAfter" : {
+          "p1" : 12,
+          "p2" : 18
+        },
+        "healthBefore" : {
+          "p1" : 6,
+          "p2" : 14
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 7,
+        "outcome" : "victory",
+        "rounds" : 2,
+        "templates" : [
+          "wolf",
+          "goblinArcher"
+        ]
+      },
+      {
+        "collectedSupplies" : [
+          0,
+          1,
+          9
+        ],
+        "firstActor" : "stoneGuardian",
+        "healthAfter" : {
+          "p1" : 8,
+          "p2" : 18
+        },
+        "healthBefore" : {
+          "p1" : 12,
+          "p2" : 18
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 4,
+        "outcome" : "victory",
+        "rounds" : 1,
+        "templates" : [
+          "stoneGuardian"
+        ]
+      },
+      {
+        "collectedSupplies" : [
+          0,
+          1,
+          9
+        ],
+        "firstActor" : "p2",
+        "healthAfter" : {
+          "p1" : 8,
+          "p2" : 18
+        },
+        "healthBefore" : {
+          "p1" : 8,
+          "p2" : 18
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 8,
+        "outcome" : "victory",
+        "rounds" : 1,
+        "templates" : [
+          "wolf"
+        ]
+      }
+    ],
+    "battles" : 5,
+    "blockedRecovery" : 0,
+    "cleared" : 5,
+    "collected" : [
+      0,
+      1,
+      9
+    ],
+    "dropCoins" : 40,
+    "finalAP" : {
+      "p1" : 3,
+      "p2" : 3
+    },
+    "finalCoins" : 48,
+    "finalHealth" : {
+      "p1" : 8,
+      "p2" : 18
+    },
+    "foughtSpecies" : [
+      "goblinArcher",
+      "ruinDragon",
+      "slime",
+      "stoneGuardian",
+      "wolf"
+    ],
+    "itinerary" : "closed-tree",
+    "manualActionRefills" : 5,
+    "monsterActions" : 16,
+    "movementSpent" : 80,
+    "nodeCoins" : 80,
+    "outcome" : "victory",
+    "plannedSpecies" : [
+      "goblinArcher",
+      "ruinDragon",
+      "slime",
+      "stoneGuardian",
+      "wolf"
+    ],
+    "resumes" : 11,
+    "role" : "adventurer",
+    "seed" : "0",
+    "size" : 10,
+    "stagedRestarts" : 5,
+    "startingCoins" : 8,
+    "totalDistance" : 4250.658135506265,
+    "visited" : [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ]
+  },
+  {
+    "actions" : 41,
+    "actionsUsed" : {
+      "enemy:attack" : 10,
+      "enemy:dragonFlame" : 1,
+      "enemy:dragonScaleWard" : 2,
+      "enemy:simpleGuard" : 1,
+      "player:ambush" : 5,
+      "player:attack" : 10,
+      "player:battleRune" : 4,
+      "player:largePotion" : 1,
+      "player:rally" : 2,
+      "player:runeSlash" : 5
+    },
+    "battleDetails" : [
+      {
+        "collectedSupplies" : [
+          0,
+          1
+        ],
+        "firstActor" : "slime",
+        "healthAfter" : {
+          "p1" : 20,
+          "p2" : 18
+        },
+        "healthBefore" : {
+          "p1" : 24,
+          "p2" : 18
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 2,
+        "outcome" : "victory",
+        "rounds" : 1,
+        "templates" : [
+          "slime"
+        ]
+      },
+      {
+        "collectedSupplies" : [
+          0,
+          1
+        ],
+        "firstActor" : "p1",
+        "healthAfter" : {
+          "p1" : 24,
+          "p2" : 11
+        },
+        "healthBefore" : {
+          "p1" : 20,
+          "p2" : 18
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 5,
+        "outcome" : "victory",
+        "rounds" : 3,
+        "templates" : [
+          "ruinDragon"
+        ]
+      },
+      {
+        "collectedSupplies" : [
+          0,
+          1
+        ],
+        "firstActor" : "wolf",
+        "healthAfter" : {
+          "p1" : 24,
+          "p2" : 18
+        },
+        "healthBefore" : {
+          "p1" : 24,
+          "p2" : 11
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 7,
+        "outcome" : "victory",
+        "rounds" : 2,
+        "templates" : [
+          "wolf",
+          "goblinArcher"
+        ]
+      },
+      {
+        "collectedSupplies" : [
+          0,
+          1,
+          9
+        ],
+        "firstActor" : "p2",
+        "healthAfter" : {
+          "p1" : 24,
+          "p2" : 18
+        },
+        "healthBefore" : {
+          "p1" : 24,
+          "p2" : 18
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 4,
+        "outcome" : "victory",
+        "rounds" : 2,
+        "templates" : [
+          "stoneGuardian"
+        ]
+      },
+      {
+        "collectedSupplies" : [
+          0,
+          1,
+          9
+        ],
+        "firstActor" : "wolf",
+        "healthAfter" : {
+          "p1" : 24,
+          "p2" : 15
+        },
+        "healthBefore" : {
+          "p1" : 24,
+          "p2" : 18
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 8,
+        "outcome" : "victory",
+        "rounds" : 1,
+        "templates" : [
+          "wolf"
+        ]
+      }
+    ],
+    "battles" : 5,
+    "blockedRecovery" : 0,
+    "cleared" : 5,
+    "collected" : [
+      0,
+      1,
+      9
+    ],
+    "dropCoins" : 40,
+    "finalAP" : {
+      "p1" : 3,
+      "p2" : 3
+    },
+    "finalCoins" : 48,
+    "finalHealth" : {
+      "p1" : 24,
+      "p2" : 15
+    },
+    "foughtSpecies" : [
+      "goblinArcher",
+      "ruinDragon",
+      "slime",
+      "stoneGuardian",
+      "wolf"
+    ],
+    "itinerary" : "closed-tree",
+    "manualActionRefills" : 5,
+    "monsterActions" : 14,
+    "movementSpent" : 80,
+    "nodeCoins" : 80,
+    "outcome" : "victory",
+    "plannedSpecies" : [
+      "goblinArcher",
+      "ruinDragon",
+      "slime",
+      "stoneGuardian",
+      "wolf"
+    ],
+    "resumes" : 12,
+    "role" : "spellblade",
+    "seed" : "0",
+    "size" : 10,
+    "stagedRestarts" : 5,
+    "startingCoins" : 8,
+    "totalDistance" : 4250.658135506265,
+    "visited" : [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ]
+  },
+  {
+    "actions" : 44,
+    "actionsUsed" : {
+      "enemy:attack" : 11,
+      "enemy:dragonFlame" : 1,
+      "enemy:dragonScaleWard" : 2,
+      "enemy:simpleGuard" : 1,
+      "player:ambush" : 5,
+      "player:attack" : 14,
+      "player:dragonFlame" : 2,
+      "player:dragonOrder" : 3,
+      "player:dragonScaleWard" : 1,
+      "player:largePotion" : 2,
+      "player:rally" : 1,
+      "player:shieldPotion" : 1
+    },
+    "battleDetails" : [
+      {
+        "collectedSupplies" : [
+          0,
+          1
+        ],
+        "firstActor" : "slime",
+        "healthAfter" : {
+          "p1" : 28,
+          "p2" : 18
+        },
+        "healthBefore" : {
+          "p1" : 32,
+          "p2" : 18
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 2,
+        "outcome" : "victory",
+        "rounds" : 1,
+        "templates" : [
+          "slime"
+        ]
+      },
+      {
+        "collectedSupplies" : [
+          0,
+          1
+        ],
+        "firstActor" : "p1",
+        "healthAfter" : {
+          "p1" : 32,
+          "p2" : 18
+        },
+        "healthBefore" : {
+          "p1" : 28,
+          "p2" : 18
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 5,
+        "outcome" : "victory",
+        "rounds" : 4,
+        "templates" : [
+          "ruinDragon"
+        ]
+      },
+      {
+        "collectedSupplies" : [
+          0,
+          1
+        ],
+        "firstActor" : "goblinArcher",
+        "healthAfter" : {
+          "p1" : 32,
+          "p2" : 18
+        },
+        "healthBefore" : {
+          "p1" : 32,
+          "p2" : 18
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 7,
+        "outcome" : "victory",
+        "rounds" : 1,
+        "templates" : [
+          "wolf",
+          "goblinArcher"
+        ]
+      },
+      {
+        "collectedSupplies" : [
+          0,
+          1,
+          9
+        ],
+        "firstActor" : "p1",
+        "healthAfter" : {
+          "p1" : 32,
+          "p2" : 18
+        },
+        "healthBefore" : {
+          "p1" : 32,
+          "p2" : 18
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 4,
+        "outcome" : "victory",
+        "rounds" : 2,
+        "templates" : [
+          "stoneGuardian"
+        ]
+      },
+      {
+        "collectedSupplies" : [
+          0,
+          1,
+          9
+        ],
+        "firstActor" : "wolf",
+        "healthAfter" : {
+          "p1" : 32,
+          "p2" : 18
+        },
+        "healthBefore" : {
+          "p1" : 32,
+          "p2" : 18
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 8,
+        "outcome" : "victory",
+        "rounds" : 1,
+        "templates" : [
+          "wolf"
+        ]
+      }
+    ],
+    "battles" : 5,
+    "blockedRecovery" : 0,
+    "cleared" : 5,
+    "collected" : [
+      0,
+      1,
+      9
+    ],
+    "dropCoins" : 40,
+    "finalAP" : {
+      "p1" : 3,
+      "p2" : 3
+    },
+    "finalCoins" : 48,
+    "finalHealth" : {
+      "p1" : 32,
+      "p2" : 18
+    },
+    "foughtSpecies" : [
+      "goblinArcher",
+      "ruinDragon",
+      "slime",
+      "stoneGuardian",
+      "wolf"
+    ],
+    "itinerary" : "closed-tree",
+    "manualActionRefills" : 5,
+    "monsterActions" : 15,
+    "movementSpent" : 80,
+    "nodeCoins" : 80,
+    "outcome" : "victory",
+    "plannedSpecies" : [
+      "goblinArcher",
+      "ruinDragon",
+      "slime",
+      "stoneGuardian",
+      "wolf"
+    ],
+    "resumes" : 12,
+    "role" : "dragonKnight",
+    "seed" : "0",
+    "size" : 10,
+    "stagedRestarts" : 5,
+    "startingCoins" : 8,
+    "totalDistance" : 4250.658135506265,
+    "visited" : [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ]
+  },
+  {
+    "actions" : 61,
+    "actionsUsed" : {
+      "enemy:attack" : 15,
+      "enemy:dragonFlame" : 1,
+      "enemy:dragonScaleWard" : 2,
+      "player:ambush" : 4,
+      "player:attack" : 18,
+      "player:heavyStrike" : 8,
+      "player:largePotion" : 3,
+      "player:rally" : 4,
+      "player:shieldPotion" : 3,
+      "player:smallPotion" : 2,
+      "player:support" : 1
+    },
+    "battleDetails" : [
+      {
+        "collectedSupplies" : [
+
+        ],
+        "firstActor" : "slime",
+        "healthAfter" : {
+          "p1" : 10,
+          "p2" : 18
+        },
+        "healthBefore" : {
+          "p1" : 12,
+          "p2" : 18
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 2,
+        "outcome" : "victory",
+        "rounds" : 1,
+        "templates" : [
+          "slime"
+        ]
+      },
+      {
+        "collectedSupplies" : [
+          0,
+          5,
+          8
+        ],
+        "firstActor" : "p1",
+        "healthAfter" : {
+          "p1" : 10,
+          "p2" : 18
+        },
+        "healthBefore" : {
+          "p1" : 10,
+          "p2" : 18
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 6,
+        "outcome" : "victory",
+        "rounds" : 1,
+        "templates" : [
+          "goblinArcher"
+        ]
+      },
+      {
+        "collectedSupplies" : [
+          0,
+          5,
+          8
+        ],
+        "firstActor" : "p2",
+        "healthAfter" : {
+          "p1" : 10,
+          "p2" : 18
+        },
+        "healthBefore" : {
+          "p1" : 10,
+          "p2" : 18
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 1,
+        "outcome" : "victory",
+        "rounds" : 1,
+        "templates" : [
+          "wolf",
+          "goblinArcher"
+        ]
+      },
+      {
+        "collectedSupplies" : [
+          0,
+          5,
+          8
+        ],
+        "firstActor" : "ruinDragon",
+        "healthAfter" : {
+          "p1" : 8,
+          "p2" : 18
+        },
+        "healthBefore" : {
+          "p1" : 10,
+          "p2" : 18
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 4,
+        "outcome" : "victory",
+        "rounds" : 5,
+        "templates" : [
+          "ruinDragon"
+        ]
+      },
+      {
+        "collectedSupplies" : [
+          0,
+          5,
+          8
+        ],
+        "firstActor" : "slime",
+        "healthAfter" : {
+          "p1" : 8,
+          "p2" : 12
+        },
+        "healthBefore" : {
+          "p1" : 8,
+          "p2" : 18
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 9,
+        "outcome" : "victory",
+        "rounds" : 2,
+        "templates" : [
+          "slime",
+          "wolf",
+          "goblinArcher"
+        ]
+      }
+    ],
+    "battles" : 5,
+    "blockedRecovery" : 0,
+    "cleared" : 5,
+    "collected" : [
+      0,
+      5,
+      8
+    ],
+    "dropCoins" : 50,
+    "finalAP" : {
+      "p1" : 3,
+      "p2" : 3
+    },
+    "finalCoins" : 58,
+    "finalHealth" : {
+      "p1" : 8,
+      "p2" : 12
+    },
+    "foughtSpecies" : [
+      "goblinArcher",
+      "ruinDragon",
+      "slime",
+      "wolf"
+    ],
+    "itinerary" : "closed-tree",
+    "manualActionRefills" : 5,
+    "monsterActions" : 18,
+    "movementSpent" : 80,
+    "nodeCoins" : 72,
+    "outcome" : "victory",
+    "plannedSpecies" : [
+      "goblinArcher",
+      "ruinDragon",
+      "slime",
+      "wolf"
+    ],
+    "resumes" : 10,
+    "role" : "adventurer",
+    "seed" : "31827",
+    "size" : 10,
+    "stagedRestarts" : 5,
+    "startingCoins" : 16,
+    "totalDistance" : 4336.887134800675,
+    "visited" : [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ]
+  },
+  {
+    "actions" : 55,
+    "actionsUsed" : {
+      "enemy:attack" : 18,
+      "enemy:dragonFlame" : 1,
+      "enemy:dragonScaleWard" : 2,
+      "player:ambush" : 5,
+      "player:attack" : 11,
+      "player:battleRune" : 6,
+      "player:largePotion" : 3,
+      "player:rally" : 3,
+      "player:runeSlash" : 6
+    },
+    "battleDetails" : [
+      {
+        "collectedSupplies" : [
+
+        ],
+        "firstActor" : "slime",
+        "healthAfter" : {
+          "p1" : 24,
+          "p2" : 18
+        },
+        "healthBefore" : {
+          "p1" : 24,
+          "p2" : 18
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 2,
+        "outcome" : "victory",
+        "rounds" : 1,
+        "templates" : [
+          "slime"
+        ]
+      },
+      {
+        "collectedSupplies" : [
+          0,
+          5,
+          8
+        ],
+        "firstActor" : "p1",
+        "healthAfter" : {
+          "p1" : 24,
+          "p2" : 18
+        },
+        "healthBefore" : {
+          "p1" : 24,
+          "p2" : 18
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 6,
+        "outcome" : "victory",
+        "rounds" : 1,
+        "templates" : [
+          "goblinArcher"
+        ]
+      },
+      {
+        "collectedSupplies" : [
+          0,
+          5,
+          8
+        ],
+        "firstActor" : "p1",
+        "healthAfter" : {
+          "p1" : 23,
+          "p2" : 18
+        },
+        "healthBefore" : {
+          "p1" : 24,
+          "p2" : 18
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 1,
+        "outcome" : "victory",
+        "rounds" : 1,
+        "templates" : [
+          "wolf",
+          "goblinArcher"
+        ]
+      },
+      {
+        "collectedSupplies" : [
+          0,
+          5,
+          8
+        ],
+        "firstActor" : "ruinDragon",
+        "healthAfter" : {
+          "p1" : 20,
+          "p2" : 13
+        },
+        "healthBefore" : {
+          "p1" : 23,
+          "p2" : 18
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 4,
+        "outcome" : "victory",
+        "rounds" : 4,
+        "templates" : [
+          "ruinDragon"
+        ]
+      },
+      {
+        "collectedSupplies" : [
+          0,
+          5,
+          8
+        ],
+        "firstActor" : "slime",
+        "healthAfter" : {
+          "p1" : 24,
+          "p2" : 15
+        },
+        "healthBefore" : {
+          "p1" : 20,
+          "p2" : 13
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 9,
+        "outcome" : "victory",
+        "rounds" : 2,
+        "templates" : [
+          "slime",
+          "wolf",
+          "goblinArcher"
+        ]
+      }
+    ],
+    "battles" : 5,
+    "blockedRecovery" : 0,
+    "cleared" : 5,
+    "collected" : [
+      0,
+      5,
+      8
+    ],
+    "dropCoins" : 50,
+    "finalAP" : {
+      "p1" : 3,
+      "p2" : 3
+    },
+    "finalCoins" : 58,
+    "finalHealth" : {
+      "p1" : 24,
+      "p2" : 15
+    },
+    "foughtSpecies" : [
+      "goblinArcher",
+      "ruinDragon",
+      "slime",
+      "wolf"
+    ],
+    "itinerary" : "closed-tree",
+    "manualActionRefills" : 5,
+    "monsterActions" : 21,
+    "movementSpent" : 80,
+    "nodeCoins" : 72,
+    "outcome" : "victory",
+    "plannedSpecies" : [
+      "goblinArcher",
+      "ruinDragon",
+      "slime",
+      "wolf"
+    ],
+    "resumes" : 11,
+    "role" : "spellblade",
+    "seed" : "31827",
+    "size" : 10,
+    "stagedRestarts" : 5,
+    "startingCoins" : 16,
+    "totalDistance" : 4336.887134800675,
+    "visited" : [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ]
+  },
+  {
+    "actions" : 27,
+    "actionsUsed" : {
+      "enemy:attack" : 8,
+      "enemy:dragonFlame" : 1,
+      "enemy:dragonScaleWard" : 1,
+      "player:ambush" : 3,
+      "player:attack" : 7,
+      "player:dragonFlame" : 3,
+      "player:dragonOrder" : 3,
+      "player:rally" : 1
+    },
+    "battleDetails" : [
+      {
+        "collectedSupplies" : [
+
+        ],
+        "firstActor" : "slime",
+        "healthAfter" : {
+          "p1" : 32,
+          "p2" : 18
+        },
+        "healthBefore" : {
+          "p1" : 32,
+          "p2" : 18
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 2,
+        "outcome" : "victory",
+        "rounds" : 1,
+        "templates" : [
+          "slime"
+        ]
+      },
+      {
+        "collectedSupplies" : [
+          0,
+          5,
+          8
+        ],
+        "firstActor" : "p1",
+        "healthAfter" : {
+          "p1" : 32,
+          "p2" : 18
+        },
+        "healthBefore" : {
+          "p1" : 32,
+          "p2" : 18
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 6,
+        "outcome" : "victory",
+        "rounds" : 1,
+        "templates" : [
+          "goblinArcher"
+        ]
+      },
+      {
+        "collectedSupplies" : [
+          0,
+          5,
+          8
+        ],
+        "firstActor" : "p1",
+        "healthAfter" : {
+          "p1" : 32,
+          "p2" : 18
+        },
+        "healthBefore" : {
+          "p1" : 32,
+          "p2" : 18
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 1,
+        "outcome" : "victory",
+        "rounds" : 1,
+        "templates" : [
+          "wolf",
+          "goblinArcher"
+        ]
+      },
+      {
+        "collectedSupplies" : [
+          0,
+          5,
+          8
+        ],
+        "firstActor" : "ruinDragon",
+        "healthAfter" : {
+          "p1" : 31,
+          "p2" : 18
+        },
+        "healthBefore" : {
+          "p1" : 32,
+          "p2" : 18
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 4,
+        "outcome" : "victory",
+        "rounds" : 2,
+        "templates" : [
+          "ruinDragon"
+        ]
+      },
+      {
+        "collectedSupplies" : [
+          0,
+          5,
+          8
+        ],
+        "firstActor" : "goblinArcher",
+        "healthAfter" : {
+          "p1" : 32,
+          "p2" : 18
+        },
+        "healthBefore" : {
+          "p1" : 31,
+          "p2" : 18
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 9,
+        "outcome" : "victory",
+        "rounds" : 1,
+        "templates" : [
+          "slime",
+          "wolf",
+          "goblinArcher"
+        ]
+      }
+    ],
+    "battles" : 5,
+    "blockedRecovery" : 0,
+    "cleared" : 5,
+    "collected" : [
+      0,
+      5,
+      8
+    ],
+    "dropCoins" : 45,
+    "finalAP" : {
+      "p1" : 3,
+      "p2" : 3
+    },
+    "finalCoins" : 53,
+    "finalHealth" : {
+      "p1" : 32,
+      "p2" : 18
+    },
+    "foughtSpecies" : [
+      "goblinArcher",
+      "ruinDragon",
+      "slime",
+      "wolf"
+    ],
+    "itinerary" : "closed-tree",
+    "manualActionRefills" : 5,
+    "monsterActions" : 10,
+    "movementSpent" : 80,
+    "nodeCoins" : 72,
+    "outcome" : "victory",
+    "plannedSpecies" : [
+      "goblinArcher",
+      "ruinDragon",
+      "slime",
+      "wolf"
+    ],
+    "resumes" : 10,
+    "role" : "dragonKnight",
+    "seed" : "31827",
+    "size" : 10,
+    "stagedRestarts" : 5,
+    "startingCoins" : 16,
+    "totalDistance" : 4336.887134800675,
+    "visited" : [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ]
+  },
+  {
+    "actions" : 98,
+    "actionsUsed" : {
+      "enemy:attack" : 33,
+      "enemy:dragonFlame" : 1,
+      "enemy:dragonScaleWard" : 2,
+      "player:ambush" : 6,
+      "player:attack" : 23,
+      "player:breather" : 2,
+      "player:heavyStrike" : 6,
+      "player:largePotion" : 4,
+      "player:rally" : 5,
+      "player:revivalStone" : 3,
+      "player:shieldPotion" : 4,
+      "player:smallPotion" : 5,
+      "player:support" : 4
+    },
+    "battleDetails" : [
+      {
+        "collectedSupplies" : [
+
+        ],
+        "firstActor" : "p2",
+        "healthAfter" : {
+          "p1" : 12,
+          "p2" : 18
+        },
+        "healthBefore" : {
+          "p1" : 12,
+          "p2" : 18
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 2,
+        "outcome" : "victory",
+        "rounds" : 1,
+        "templates" : [
+          "slime"
+        ]
+      },
+      {
+        "collectedSupplies" : [
+
+        ],
+        "firstActor" : "p2",
+        "healthAfter" : {
+          "p1" : 12,
+          "p2" : 18
+        },
+        "healthBefore" : {
+          "p1" : 12,
+          "p2" : 18
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 0,
+        "outcome" : "victory",
+        "rounds" : 1,
+        "templates" : [
+          "goblinArcher"
+        ]
+      },
+      {
+        "collectedSupplies" : [
+          3
+        ],
+        "firstActor" : "p1",
+        "healthAfter" : {
+          "p1" : 8,
+          "p2" : 14
+        },
+        "healthBefore" : {
+          "p1" : 12,
+          "p2" : 18
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 8,
+        "outcome" : "victory",
+        "rounds" : 8,
+        "templates" : [
+          "ruinDragon"
+        ]
+      },
+      {
+        "collectedSupplies" : [
+          1,
+          3,
+          6
+        ],
+        "firstActor" : "wolf",
+        "healthAfter" : {
+          "p1" : 11,
+          "p2" : 18
+        },
+        "healthBefore" : {
+          "p1" : 8,
+          "p2" : 14
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 9,
+        "outcome" : "victory",
+        "rounds" : 3,
+        "templates" : [
+          "slime",
+          "wolf",
+          "goblinArcher"
+        ]
+      },
+      {
+        "collectedSupplies" : [
+          1,
+          3,
+          6
+        ],
+        "firstActor" : "p1",
+        "healthAfter" : {
+          "p1" : 11,
+          "p2" : 10
+        },
+        "healthBefore" : {
+          "p1" : 11,
+          "p2" : 18
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 7,
+        "outcome" : "victory",
+        "rounds" : 2,
+        "templates" : [
+          "slime",
+          "wolf",
+          "goblinArcher"
+        ]
+      }
+    ],
+    "battles" : 5,
+    "blockedRecovery" : 0,
+    "cleared" : 5,
+    "collected" : [
+      1,
+      3,
+      6
+    ],
+    "dropCoins" : 45,
+    "finalAP" : {
+      "p1" : 3,
+      "p2" : 3
+    },
+    "finalCoins" : 53,
+    "finalHealth" : {
+      "p1" : 11,
+      "p2" : 10
+    },
+    "foughtSpecies" : [
+      "goblinArcher",
+      "ruinDragon",
+      "slime",
+      "wolf"
+    ],
+    "itinerary" : "closed-tree",
+    "manualActionRefills" : 5,
+    "monsterActions" : 36,
+    "movementSpent" : 80,
+    "nodeCoins" : 72,
+    "outcome" : "victory",
+    "plannedSpecies" : [
+      "goblinArcher",
+      "ruinDragon",
+      "slime",
+      "wolf"
+    ],
+    "resumes" : 11,
+    "role" : "adventurer",
+    "seed" : "18446744073709551615",
+    "size" : 10,
+    "stagedRestarts" : 5,
+    "startingCoins" : 16,
+    "totalDistance" : 4251.410192345606,
+    "visited" : [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ]
+  },
+  {
+    "actions" : 13,
+    "actionsUsed" : {
+      "enemy:attack" : 2,
+      "enemy:dragonFlame" : 1,
+      "enemy:dragonScaleWard" : 1,
+      "player:ambush" : 3,
+      "player:attack" : 2,
+      "player:battleRune" : 2,
+      "player:rally" : 1,
+      "player:runeSlash" : 1
+    },
+    "battleDetails" : [
+      {
+        "collectedSupplies" : [
+
+        ],
+        "firstActor" : "p2",
+        "healthAfter" : {
+          "p1" : 24,
+          "p2" : 18
+        },
+        "healthBefore" : {
+          "p1" : 24,
+          "p2" : 18
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 2,
+        "outcome" : "victory",
+        "rounds" : 1,
+        "templates" : [
+          "slime"
+        ]
+      },
+      {
+        "collectedSupplies" : [
+
+        ],
+        "firstActor" : "p2",
+        "healthAfter" : {
+          "p1" : 17,
+          "p2" : 18
+        },
+        "healthBefore" : {
+          "p1" : 24,
+          "p2" : 18
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 0,
+        "outcome" : "victory",
+        "rounds" : 1,
+        "templates" : [
+          "goblinArcher"
+        ]
+      },
+      {
+        "collectedSupplies" : [
+          3
+        ],
+        "firstActor" : "p1",
+        "healthAfter" : {
+          "p1" : 0,
+          "p2" : 0
+        },
+        "healthBefore" : {
+          "p1" : 17,
+          "p2" : 18
+        },
+        "naturalTwenties" : {
+          "ruinDragon\/monsterDragonFlame" : 1
+        },
+        "node" : 8,
+        "outcome" : "defeat",
+        "rounds" : 1,
+        "templates" : [
+          "ruinDragon"
+        ]
+      }
+    ],
+    "battles" : 3,
+    "blockedRecovery" : 0,
+    "cleared" : 2,
+    "collected" : [
+      3
+    ],
+    "dropCoins" : 5,
+    "finalAP" : {
+      "p1" : 0,
+      "p2" : 0
+    },
+    "finalCoins" : 29,
+    "finalHealth" : {
+      "p1" : 0,
+      "p2" : 0
+    },
+    "foughtSpecies" : [
+      "goblinArcher",
+      "ruinDragon",
+      "slime"
+    ],
+    "itinerary" : "closed-tree",
+    "manualActionRefills" : 2,
+    "monsterActions" : 4,
+    "movementSpent" : 16,
+    "nodeCoins" : 24,
+    "outcome" : "defeat",
+    "plannedSpecies" : [
+      "goblinArcher",
+      "ruinDragon",
+      "slime",
+      "wolf"
+    ],
+    "resumes" : 7,
+    "role" : "spellblade",
+    "seed" : "18446744073709551615",
+    "size" : 10,
+    "stagedRestarts" : 3,
+    "startingCoins" : 16,
+    "totalDistance" : 898.610330367759,
+    "visited" : [
+      0,
+      2,
+      3,
+      5,
+      8
+    ]
+  },
+  {
+    "actions" : 25,
+    "actionsUsed" : {
+      "enemy:attack" : 8,
+      "enemy:dragonFlame" : 1,
+      "enemy:dragonScaleWard" : 1,
+      "player:ambush" : 4,
+      "player:attack" : 3,
+      "player:dragonFlame" : 3,
+      "player:dragonOrder" : 2,
+      "player:largePotion" : 1,
+      "player:rally" : 2
+    },
+    "battleDetails" : [
+      {
+        "collectedSupplies" : [
+
+        ],
+        "firstActor" : "p2",
+        "healthAfter" : {
+          "p1" : 32,
+          "p2" : 18
+        },
+        "healthBefore" : {
+          "p1" : 32,
+          "p2" : 18
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 2,
+        "outcome" : "victory",
+        "rounds" : 1,
+        "templates" : [
+          "slime"
+        ]
+      },
+      {
+        "collectedSupplies" : [
+
+        ],
+        "firstActor" : "p2",
+        "healthAfter" : {
+          "p1" : 31,
+          "p2" : 18
+        },
+        "healthBefore" : {
+          "p1" : 32,
+          "p2" : 18
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 0,
+        "outcome" : "victory",
+        "rounds" : 1,
+        "templates" : [
+          "goblinArcher"
+        ]
+      },
+      {
+        "collectedSupplies" : [
+          3
+        ],
+        "firstActor" : "p1",
+        "healthAfter" : {
+          "p1" : 29,
+          "p2" : 9
+        },
+        "healthBefore" : {
+          "p1" : 31,
+          "p2" : 18
+        },
+        "naturalTwenties" : {
+          "p1\/dragonFlame" : 1
+        },
+        "node" : 8,
+        "outcome" : "victory",
+        "rounds" : 2,
+        "templates" : [
+          "ruinDragon"
+        ]
+      },
+      {
+        "collectedSupplies" : [
+          1,
+          3,
+          6
+        ],
+        "firstActor" : "slime",
+        "healthAfter" : {
+          "p1" : 32,
+          "p2" : 7
+        },
+        "healthBefore" : {
+          "p1" : 29,
+          "p2" : 9
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 9,
+        "outcome" : "victory",
+        "rounds" : 1,
+        "templates" : [
+          "slime",
+          "wolf",
+          "goblinArcher"
+        ]
+      },
+      {
+        "collectedSupplies" : [
+          1,
+          3,
+          6
+        ],
+        "firstActor" : "slime",
+        "healthAfter" : {
+          "p1" : 32,
+          "p2" : 18
+        },
+        "healthBefore" : {
+          "p1" : 32,
+          "p2" : 13
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 7,
+        "outcome" : "victory",
+        "rounds" : 1,
+        "templates" : [
+          "slime",
+          "wolf",
+          "goblinArcher"
+        ]
+      }
+    ],
+    "battles" : 5,
+    "blockedRecovery" : 0,
+    "cleared" : 5,
+    "collected" : [
+      1,
+      3,
+      6
+    ],
+    "dropCoins" : 55,
+    "finalAP" : {
+      "p1" : 3,
+      "p2" : 3
+    },
+    "finalCoins" : 63,
+    "finalHealth" : {
+      "p1" : 32,
+      "p2" : 18
+    },
+    "foughtSpecies" : [
+      "goblinArcher",
+      "ruinDragon",
+      "slime",
+      "wolf"
+    ],
+    "itinerary" : "closed-tree",
+    "manualActionRefills" : 5,
+    "monsterActions" : 10,
+    "movementSpent" : 80,
+    "nodeCoins" : 72,
+    "outcome" : "victory",
+    "plannedSpecies" : [
+      "goblinArcher",
+      "ruinDragon",
+      "slime",
+      "wolf"
+    ],
+    "resumes" : 11,
+    "role" : "dragonKnight",
+    "seed" : "18446744073709551615",
+    "size" : 10,
+    "stagedRestarts" : 5,
+    "startingCoins" : 16,
+    "totalDistance" : 4251.410192345606,
+    "visited" : [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ]
+  },
+  {
+    "actions" : 124,
+    "actionsUsed" : {
+      "enemy:attack" : 34,
+      "enemy:regeneration" : 1,
+      "enemy:simpleGuard" : 3,
+      "enemy:sweep" : 2,
+      "player:ambush" : 16,
+      "player:attack" : 25,
+      "player:heavyStrike" : 21,
+      "player:largePotion" : 6,
+      "player:rally" : 10,
+      "player:revivalStone" : 1,
+      "player:shieldPotion" : 2,
+      "player:smallPotion" : 1,
+      "player:support" : 2
+    },
+    "battleDetails" : [
+      {
+        "collectedSupplies" : [
+
+        ],
+        "firstActor" : "slime",
+        "healthAfter" : {
+          "p1" : 8,
+          "p2" : 18
+        },
+        "healthBefore" : {
+          "p1" : 12,
+          "p2" : 18
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 19,
+        "outcome" : "victory",
+        "rounds" : 1,
+        "templates" : [
+          "slime"
+        ]
+      },
+      {
+        "collectedSupplies" : [
+
+        ],
+        "firstActor" : "p1",
+        "healthAfter" : {
+          "p1" : 8,
+          "p2" : 18
+        },
+        "healthBefore" : {
+          "p1" : 8,
+          "p2" : 18
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 11,
+        "outcome" : "victory",
+        "rounds" : 1,
+        "templates" : [
+          "slime",
+          "wolf"
+        ]
+      },
+      {
+        "collectedSupplies" : [
+
+        ],
+        "firstActor" : "p2",
+        "healthAfter" : {
+          "p1" : 8,
+          "p2" : 18
+        },
+        "healthBefore" : {
+          "p1" : 8,
+          "p2" : 18
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 6,
+        "outcome" : "victory",
+        "rounds" : 1,
+        "templates" : [
+          "slime",
+          "goblinArcher"
+        ]
+      },
+      {
+        "collectedSupplies" : [
+          1,
+          9
+        ],
+        "firstActor" : "p2",
+        "healthAfter" : {
+          "p1" : 8,
+          "p2" : 18
+        },
+        "healthBefore" : {
+          "p1" : 8,
+          "p2" : 18
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 3,
+        "outcome" : "victory",
+        "rounds" : 1,
+        "templates" : [
+          "slime",
+          "goblinArcher"
+        ]
+      },
+      {
+        "collectedSupplies" : [
+          1,
+          9,
+          16
+        ],
+        "firstActor" : "wolf",
+        "healthAfter" : {
+          "p1" : 9,
+          "p2" : 14
+        },
+        "healthBefore" : {
+          "p1" : 8,
+          "p2" : 18
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 29,
+        "outcome" : "victory",
+        "rounds" : 2,
+        "templates" : [
+          "wolf",
+          "goblinArcher"
+        ]
+      },
+      {
+        "collectedSupplies" : [
+          1,
+          8,
+          9,
+          16,
+          21
+        ],
+        "firstActor" : "p2",
+        "healthAfter" : {
+          "p1" : 12,
+          "p2" : 18
+        },
+        "healthBefore" : {
+          "p1" : 9,
+          "p2" : 14
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 2,
+        "outcome" : "victory",
+        "rounds" : 2,
+        "templates" : [
+          "stoneGuardian"
+        ]
+      },
+      {
+        "collectedSupplies" : [
+          1,
+          5,
+          8,
+          9,
+          16,
+          21
+        ],
+        "firstActor" : "wolf",
+        "healthAfter" : {
+          "p1" : 12,
+          "p2" : 12
+        },
+        "healthBefore" : {
+          "p1" : 12,
+          "p2" : 18
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 13,
+        "outcome" : "victory",
+        "rounds" : 2,
+        "templates" : [
+          "wolf",
+          "goblinArcher"
+        ]
+      },
+      {
+        "collectedSupplies" : [
+          1,
+          5,
+          8,
+          9,
+          16,
+          21
+        ],
+        "firstActor" : "goblinArcher",
+        "healthAfter" : {
+          "p1" : 6,
+          "p2" : 18
+        },
+        "healthBefore" : {
+          "p1" : 12,
+          "p2" : 12
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 26,
+        "outcome" : "victory",
+        "rounds" : 3,
+        "templates" : [
+          "slime",
+          "wolf",
+          "goblinArcher"
+        ]
+      },
+      {
+        "collectedSupplies" : [
+          1,
+          5,
+          8,
+          9,
+          16,
+          21
+        ],
+        "firstActor" : "p2",
+        "healthAfter" : {
+          "p1" : 12,
+          "p2" : 18
+        },
+        "healthBefore" : {
+          "p1" : 6,
+          "p2" : 18
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 18,
+        "outcome" : "victory",
+        "rounds" : 2,
+        "templates" : [
+          "stoneGuardian",
+          "slime"
+        ]
+      },
+      {
+        "collectedSupplies" : [
+          1,
+          5,
+          8,
+          9,
+          12,
+          16,
+          21
+        ],
+        "firstActor" : "p2",
+        "healthAfter" : {
+          "p1" : 12,
+          "p2" : 18
+        },
+        "healthBefore" : {
+          "p1" : 12,
+          "p2" : 18
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 25,
+        "outcome" : "victory",
+        "rounds" : 2,
+        "templates" : [
+          "stoneGuardian",
+          "slime"
+        ]
+      },
+      {
+        "collectedSupplies" : [
+          1,
+          5,
+          8,
+          9,
+          12,
+          16,
+          20,
+          21
+        ],
+        "firstActor" : "caveTroll",
+        "healthAfter" : {
+          "p1" : 10,
+          "p2" : 15
+        },
+        "healthBefore" : {
+          "p1" : 12,
+          "p2" : 18
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 23,
+        "outcome" : "victory",
+        "rounds" : 2,
+        "templates" : [
+          "caveTroll"
+        ]
+      },
+      {
+        "collectedSupplies" : [
+          1,
+          5,
+          8,
+          9,
+          12,
+          16,
+          17,
+          20,
+          21
+        ],
+        "firstActor" : "slime",
+        "healthAfter" : {
+          "p1" : 12,
+          "p2" : 16
+        },
+        "healthBefore" : {
+          "p1" : 10,
+          "p2" : 15
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 14,
+        "outcome" : "victory",
+        "rounds" : 2,
+        "templates" : [
+          "slime",
+          "wolf"
+        ]
+      },
+      {
+        "collectedSupplies" : [
+          1,
+          5,
+          8,
+          9,
+          12,
+          16,
+          17,
+          20,
+          21
+        ],
+        "firstActor" : "wolf",
+        "healthAfter" : {
+          "p1" : 12,
+          "p2" : 18
+        },
+        "healthBefore" : {
+          "p1" : 12,
+          "p2" : 16
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 22,
+        "outcome" : "victory",
+        "rounds" : 1,
+        "templates" : [
+          "wolf"
+        ]
+      }
+    ],
+    "battles" : 13,
+    "blockedRecovery" : 0,
+    "cleared" : 13,
+    "collected" : [
+      1,
+      5,
+      8,
+      9,
+      12,
+      16,
+      17,
+      20,
+      21
+    ],
+    "dropCoins" : 85,
+    "finalAP" : {
+      "p1" : 3,
+      "p2" : 3
+    },
+    "finalCoins" : 93,
+    "finalHealth" : {
+      "p1" : 12,
+      "p2" : 18
+    },
+    "foughtSpecies" : [
+      "caveTroll",
+      "goblinArcher",
+      "slime",
+      "stoneGuardian",
+      "wolf"
+    ],
+    "itinerary" : "closed-tree",
+    "manualActionRefills" : 13,
+    "monsterActions" : 40,
+    "movementSpent" : 240,
+    "nodeCoins" : 224,
+    "outcome" : "victory",
+    "plannedSpecies" : [
+      "caveTroll",
+      "goblinArcher",
+      "slime",
+      "stoneGuardian",
+      "wolf"
+    ],
+    "resumes" : 26,
+    "role" : "adventurer",
+    "seed" : "0",
+    "size" : 30,
+    "stagedRestarts" : 13,
+    "startingCoins" : 24,
+    "totalDistance" : 12358.647185014848,
+    "visited" : [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29
+    ]
+  },
+  {
+    "actions" : 90,
+    "actionsUsed" : {
+      "enemy:attack" : 24,
+      "enemy:regeneration" : 1,
+      "enemy:simpleGuard" : 3,
+      "enemy:sweep" : 1,
+      "player:ambush" : 12,
+      "player:attack" : 18,
+      "player:battleRune" : 10,
+      "player:rally" : 7,
+      "player:runeSlash" : 11,
+      "player:support" : 3
+    },
+    "battleDetails" : [
+      {
+        "collectedSupplies" : [
+
+        ],
+        "firstActor" : "slime",
+        "healthAfter" : {
+          "p1" : 20,
+          "p2" : 18
+        },
+        "healthBefore" : {
+          "p1" : 24,
+          "p2" : 18
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 19,
+        "outcome" : "victory",
+        "rounds" : 1,
+        "templates" : [
+          "slime"
+        ]
+      },
+      {
+        "collectedSupplies" : [
+
+        ],
+        "firstActor" : "p1",
+        "healthAfter" : {
+          "p1" : 24,
+          "p2" : 18
+        },
+        "healthBefore" : {
+          "p1" : 20,
+          "p2" : 18
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 11,
+        "outcome" : "victory",
+        "rounds" : 1,
+        "templates" : [
+          "slime",
+          "wolf"
+        ]
+      },
+      {
+        "collectedSupplies" : [
+
+        ],
+        "firstActor" : "slime",
+        "healthAfter" : {
+          "p1" : 24,
+          "p2" : 18
+        },
+        "healthBefore" : {
+          "p1" : 24,
+          "p2" : 18
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 6,
+        "outcome" : "victory",
+        "rounds" : 1,
+        "templates" : [
+          "slime",
+          "goblinArcher"
+        ]
+      },
+      {
+        "collectedSupplies" : [
+          1,
+          9
+        ],
+        "firstActor" : "p2",
+        "healthAfter" : {
+          "p1" : 24,
+          "p2" : 18
+        },
+        "healthBefore" : {
+          "p1" : 24,
+          "p2" : 18
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 3,
+        "outcome" : "victory",
+        "rounds" : 1,
+        "templates" : [
+          "slime",
+          "goblinArcher"
+        ]
+      },
+      {
+        "collectedSupplies" : [
+          1,
+          9,
+          16
+        ],
+        "firstActor" : "wolf",
+        "healthAfter" : {
+          "p1" : 24,
+          "p2" : 15
+        },
+        "healthBefore" : {
+          "p1" : 24,
+          "p2" : 18
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 29,
+        "outcome" : "victory",
+        "rounds" : 2,
+        "templates" : [
+          "wolf",
+          "goblinArcher"
+        ]
+      },
+      {
+        "collectedSupplies" : [
+          1,
+          8,
+          9,
+          16,
+          21
+        ],
+        "firstActor" : "p1",
+        "healthAfter" : {
+          "p1" : 20,
+          "p2" : 18
+        },
+        "healthBefore" : {
+          "p1" : 24,
+          "p2" : 15
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 2,
+        "outcome" : "victory",
+        "rounds" : 2,
+        "templates" : [
+          "stoneGuardian"
+        ]
+      },
+      {
+        "collectedSupplies" : [
+          1,
+          5,
+          8,
+          9,
+          16,
+          21
+        ],
+        "firstActor" : "goblinArcher",
+        "healthAfter" : {
+          "p1" : 21,
+          "p2" : 17
+        },
+        "healthBefore" : {
+          "p1" : 20,
+          "p2" : 18
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 13,
+        "outcome" : "victory",
+        "rounds" : 2,
+        "templates" : [
+          "wolf",
+          "goblinArcher"
+        ]
+      },
+      {
+        "collectedSupplies" : [
+          1,
+          5,
+          8,
+          9,
+          16,
+          21
+        ],
+        "firstActor" : "p2",
+        "healthAfter" : {
+          "p1" : 21,
+          "p2" : 18
+        },
+        "healthBefore" : {
+          "p1" : 21,
+          "p2" : 17
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 26,
+        "outcome" : "victory",
+        "rounds" : 2,
+        "templates" : [
+          "slime",
+          "wolf",
+          "goblinArcher"
+        ]
+      },
+      {
+        "collectedSupplies" : [
+          1,
+          5,
+          8,
+          9,
+          16,
+          21
+        ],
+        "firstActor" : "stoneGuardian",
+        "healthAfter" : {
+          "p1" : 24,
+          "p2" : 18
+        },
+        "healthBefore" : {
+          "p1" : 21,
+          "p2" : 18
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 18,
+        "outcome" : "victory",
+        "rounds" : 2,
+        "templates" : [
+          "stoneGuardian",
+          "slime"
+        ]
+      },
+      {
+        "collectedSupplies" : [
+          1,
+          5,
+          8,
+          9,
+          12,
+          16,
+          21
+        ],
+        "firstActor" : "slime",
+        "healthAfter" : {
+          "p1" : 24,
+          "p2" : 18
+        },
+        "healthBefore" : {
+          "p1" : 24,
+          "p2" : 18
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 25,
+        "outcome" : "victory",
+        "rounds" : 2,
+        "templates" : [
+          "stoneGuardian",
+          "slime"
+        ]
+      },
+      {
+        "collectedSupplies" : [
+          1,
+          5,
+          8,
+          9,
+          12,
+          16,
+          20,
+          21
+        ],
+        "firstActor" : "p2",
+        "healthAfter" : {
+          "p1" : 21,
+          "p2" : 18
+        },
+        "healthBefore" : {
+          "p1" : 24,
+          "p2" : 18
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 23,
+        "outcome" : "victory",
+        "rounds" : 2,
+        "templates" : [
+          "caveTroll"
+        ]
+      },
+      {
+        "collectedSupplies" : [
+          1,
+          5,
+          8,
+          9,
+          12,
+          16,
+          17,
+          20,
+          21
+        ],
+        "firstActor" : "p1",
+        "healthAfter" : {
+          "p1" : 24,
+          "p2" : 18
+        },
+        "healthBefore" : {
+          "p1" : 21,
+          "p2" : 18
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 14,
+        "outcome" : "victory",
+        "rounds" : 1,
+        "templates" : [
+          "slime",
+          "wolf"
+        ]
+      },
+      {
+        "collectedSupplies" : [
+          1,
+          5,
+          8,
+          9,
+          12,
+          16,
+          17,
+          20,
+          21
+        ],
+        "firstActor" : "wolf",
+        "healthAfter" : {
+          "p1" : 24,
+          "p2" : 18
+        },
+        "healthBefore" : {
+          "p1" : 24,
+          "p2" : 18
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 22,
+        "outcome" : "victory",
+        "rounds" : 1,
+        "templates" : [
+          "wolf"
+        ]
+      }
+    ],
+    "battles" : 13,
+    "blockedRecovery" : 0,
+    "cleared" : 13,
+    "collected" : [
+      1,
+      5,
+      8,
+      9,
+      12,
+      16,
+      17,
+      20,
+      21
+    ],
+    "dropCoins" : 85,
+    "finalAP" : {
+      "p1" : 3,
+      "p2" : 3
+    },
+    "finalCoins" : 93,
+    "finalHealth" : {
+      "p1" : 24,
+      "p2" : 18
+    },
+    "foughtSpecies" : [
+      "caveTroll",
+      "goblinArcher",
+      "slime",
+      "stoneGuardian",
+      "wolf"
+    ],
+    "itinerary" : "closed-tree",
+    "manualActionRefills" : 13,
+    "monsterActions" : 29,
+    "movementSpent" : 240,
+    "nodeCoins" : 224,
+    "outcome" : "victory",
+    "plannedSpecies" : [
+      "caveTroll",
+      "goblinArcher",
+      "slime",
+      "stoneGuardian",
+      "wolf"
+    ],
+    "resumes" : 25,
+    "role" : "spellblade",
+    "seed" : "0",
+    "size" : 30,
+    "stagedRestarts" : 13,
+    "startingCoins" : 24,
+    "totalDistance" : 12358.647185014848,
+    "visited" : [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29
+    ]
+  },
+  {
+    "actions" : 71,
+    "actionsUsed" : {
+      "enemy:attack" : 17,
+      "enemy:regeneration" : 1,
+      "enemy:simpleGuard" : 2,
+      "enemy:sweep" : 2,
+      "player:ambush" : 11,
+      "player:attack" : 17,
+      "player:dragonFlame" : 8,
+      "player:dragonOrder" : 5,
+      "player:largePotion" : 1,
+      "player:rally" : 7
+    },
+    "battleDetails" : [
+      {
+        "collectedSupplies" : [
+
+        ],
+        "firstActor" : "slime",
+        "healthAfter" : {
+          "p1" : 28,
+          "p2" : 18
+        },
+        "healthBefore" : {
+          "p1" : 32,
+          "p2" : 18
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 19,
+        "outcome" : "victory",
+        "rounds" : 1,
+        "templates" : [
+          "slime"
+        ]
+      },
+      {
+        "collectedSupplies" : [
+
+        ],
+        "firstActor" : "p1",
+        "healthAfter" : {
+          "p1" : 32,
+          "p2" : 18
+        },
+        "healthBefore" : {
+          "p1" : 28,
+          "p2" : 18
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 11,
+        "outcome" : "victory",
+        "rounds" : 1,
+        "templates" : [
+          "slime",
+          "wolf"
+        ]
+      },
+      {
+        "collectedSupplies" : [
+
+        ],
+        "firstActor" : "goblinArcher",
+        "healthAfter" : {
+          "p1" : 32,
+          "p2" : 18
+        },
+        "healthBefore" : {
+          "p1" : 32,
+          "p2" : 18
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 6,
+        "outcome" : "victory",
+        "rounds" : 2,
+        "templates" : [
+          "slime",
+          "goblinArcher"
+        ]
+      },
+      {
+        "collectedSupplies" : [
+          1,
+          9
+        ],
+        "firstActor" : "p2",
+        "healthAfter" : {
+          "p1" : 32,
+          "p2" : 18
+        },
+        "healthBefore" : {
+          "p1" : 32,
+          "p2" : 18
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 3,
+        "outcome" : "victory",
+        "rounds" : 2,
+        "templates" : [
+          "slime",
+          "goblinArcher"
+        ]
+      },
+      {
+        "collectedSupplies" : [
+          1,
+          9,
+          16
+        ],
+        "firstActor" : "p1",
+        "healthAfter" : {
+          "p1" : 32,
+          "p2" : 18
+        },
+        "healthBefore" : {
+          "p1" : 32,
+          "p2" : 18
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 29,
+        "outcome" : "victory",
+        "rounds" : 1,
+        "templates" : [
+          "wolf",
+          "goblinArcher"
+        ]
+      },
+      {
+        "collectedSupplies" : [
+          1,
+          8,
+          9,
+          16,
+          21
+        ],
+        "firstActor" : "p1",
+        "healthAfter" : {
+          "p1" : 32,
+          "p2" : 18
+        },
+        "healthBefore" : {
+          "p1" : 32,
+          "p2" : 18
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 2,
+        "outcome" : "victory",
+        "rounds" : 2,
+        "templates" : [
+          "stoneGuardian"
+        ]
+      },
+      {
+        "collectedSupplies" : [
+          1,
+          5,
+          8,
+          9,
+          16,
+          21
+        ],
+        "firstActor" : "wolf",
+        "healthAfter" : {
+          "p1" : 32,
+          "p2" : 18
+        },
+        "healthBefore" : {
+          "p1" : 32,
+          "p2" : 18
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 13,
+        "outcome" : "victory",
+        "rounds" : 1,
+        "templates" : [
+          "wolf",
+          "goblinArcher"
+        ]
+      },
+      {
+        "collectedSupplies" : [
+          1,
+          5,
+          8,
+          9,
+          16,
+          21
+        ],
+        "firstActor" : "p2",
+        "healthAfter" : {
+          "p1" : 32,
+          "p2" : 18
+        },
+        "healthBefore" : {
+          "p1" : 32,
+          "p2" : 18
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 26,
+        "outcome" : "victory",
+        "rounds" : 1,
+        "templates" : [
+          "slime",
+          "wolf",
+          "goblinArcher"
+        ]
+      },
+      {
+        "collectedSupplies" : [
+          1,
+          5,
+          8,
+          9,
+          16,
+          21
+        ],
+        "firstActor" : "slime",
+        "healthAfter" : {
+          "p1" : 32,
+          "p2" : 18
+        },
+        "healthBefore" : {
+          "p1" : 32,
+          "p2" : 18
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 18,
+        "outcome" : "victory",
+        "rounds" : 1,
+        "templates" : [
+          "stoneGuardian",
+          "slime"
+        ]
+      },
+      {
+        "collectedSupplies" : [
+          1,
+          5,
+          8,
+          9,
+          12,
+          16,
+          21
+        ],
+        "firstActor" : "slime",
+        "healthAfter" : {
+          "p1" : 32,
+          "p2" : 18
+        },
+        "healthBefore" : {
+          "p1" : 32,
+          "p2" : 18
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 25,
+        "outcome" : "victory",
+        "rounds" : 2,
+        "templates" : [
+          "stoneGuardian",
+          "slime"
+        ]
+      },
+      {
+        "collectedSupplies" : [
+          1,
+          5,
+          8,
+          9,
+          12,
+          16,
+          20,
+          21
+        ],
+        "firstActor" : "p2",
+        "healthAfter" : {
+          "p1" : 32,
+          "p2" : 15
+        },
+        "healthBefore" : {
+          "p1" : 32,
+          "p2" : 18
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 23,
+        "outcome" : "victory",
+        "rounds" : 3,
+        "templates" : [
+          "caveTroll"
+        ]
+      },
+      {
+        "collectedSupplies" : [
+          1,
+          5,
+          8,
+          9,
+          12,
+          16,
+          17,
+          20,
+          21
+        ],
+        "firstActor" : "slime",
+        "healthAfter" : {
+          "p1" : 32,
+          "p2" : 15
+        },
+        "healthBefore" : {
+          "p1" : 32,
+          "p2" : 15
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 14,
+        "outcome" : "victory",
+        "rounds" : 1,
+        "templates" : [
+          "slime",
+          "wolf"
+        ]
+      },
+      {
+        "collectedSupplies" : [
+          1,
+          5,
+          8,
+          9,
+          12,
+          16,
+          17,
+          20,
+          21
+        ],
+        "firstActor" : "p1",
+        "healthAfter" : {
+          "p1" : 32,
+          "p2" : 18
+        },
+        "healthBefore" : {
+          "p1" : 32,
+          "p2" : 15
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 22,
+        "outcome" : "victory",
+        "rounds" : 1,
+        "templates" : [
+          "wolf"
+        ]
+      }
+    ],
+    "battles" : 13,
+    "blockedRecovery" : 0,
+    "cleared" : 13,
+    "collected" : [
+      1,
+      5,
+      8,
+      9,
+      12,
+      16,
+      17,
+      20,
+      21
+    ],
+    "dropCoins" : 95,
+    "finalAP" : {
+      "p1" : 3,
+      "p2" : 3
+    },
+    "finalCoins" : 103,
+    "finalHealth" : {
+      "p1" : 32,
+      "p2" : 18
+    },
+    "foughtSpecies" : [
+      "caveTroll",
+      "goblinArcher",
+      "slime",
+      "stoneGuardian",
+      "wolf"
+    ],
+    "itinerary" : "closed-tree",
+    "manualActionRefills" : 13,
+    "monsterActions" : 22,
+    "movementSpent" : 240,
+    "nodeCoins" : 224,
+    "outcome" : "victory",
+    "plannedSpecies" : [
+      "caveTroll",
+      "goblinArcher",
+      "slime",
+      "stoneGuardian",
+      "wolf"
+    ],
+    "resumes" : 24,
+    "role" : "dragonKnight",
+    "seed" : "0",
+    "size" : 30,
+    "stagedRestarts" : 13,
+    "startingCoins" : 24,
+    "totalDistance" : 12358.647185014848,
+    "visited" : [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29
+    ]
+  },
+  {
+    "actions" : 105,
+    "actionsUsed" : {
+      "enemy:attack" : 43,
+      "enemy:simpleGuard" : 4,
+      "player:ambush" : 9,
+      "player:attack" : 18,
+      "player:heavyStrike" : 10,
+      "player:largePotion" : 2,
+      "player:rally" : 6,
+      "player:revivalStone" : 2,
+      "player:shieldPotion" : 4,
+      "player:smallPotion" : 5,
+      "player:support" : 2
+    },
+    "battleDetails" : [
+      {
+        "collectedSupplies" : [
+          9,
+          14
+        ],
+        "firstActor" : "p1",
+        "healthAfter" : {
+          "p1" : 12,
+          "p2" : 17
+        },
+        "healthBefore" : {
+          "p1" : 12,
+          "p2" : 18
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 6,
+        "outcome" : "victory",
+        "rounds" : 2,
+        "templates" : [
+          "wolf",
+          "goblinArcher"
+        ]
+      },
+      {
+        "collectedSupplies" : [
+          9,
+          14
+        ],
+        "firstActor" : "p1",
+        "healthAfter" : {
+          "p1" : 8,
+          "p2" : 18
+        },
+        "healthBefore" : {
+          "p1" : 12,
+          "p2" : 17
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 19,
+        "outcome" : "victory",
+        "rounds" : 3,
+        "templates" : [
+          "stoneGuardian",
+          "slime"
+        ]
+      },
+      {
+        "collectedSupplies" : [
+          9,
+          14
+        ],
+        "firstActor" : "slime",
+        "healthAfter" : {
+          "p1" : 12,
+          "p2" : 18
+        },
+        "healthBefore" : {
+          "p1" : 8,
+          "p2" : 18
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 7,
+        "outcome" : "victory",
+        "rounds" : 1,
+        "templates" : [
+          "slime",
+          "goblinArcher"
+        ]
+      },
+      {
+        "collectedSupplies" : [
+          9,
+          14
+        ],
+        "firstActor" : "wolf",
+        "healthAfter" : {
+          "p1" : 12,
+          "p2" : 18
+        },
+        "healthBefore" : {
+          "p1" : 12,
+          "p2" : 18
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 15,
+        "outcome" : "victory",
+        "rounds" : 1,
+        "templates" : [
+          "wolf"
+        ]
+      },
+      {
+        "collectedSupplies" : [
+          2,
+          9,
+          14
+        ],
+        "firstActor" : "stoneGuardian",
+        "healthAfter" : {
+          "p1" : 12,
+          "p2" : 18
+        },
+        "healthBefore" : {
+          "p1" : 12,
+          "p2" : 18
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 3,
+        "outcome" : "victory",
+        "rounds" : 2,
+        "templates" : [
+          "stoneGuardian",
+          "slime"
+        ]
+      },
+      {
+        "collectedSupplies" : [
+          2,
+          9,
+          14
+        ],
+        "firstActor" : "stoneGuardian",
+        "healthAfter" : {
+          "p1" : 6,
+          "p2" : 13
+        },
+        "healthBefore" : {
+          "p1" : 12,
+          "p2" : 18
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 11,
+        "outcome" : "victory",
+        "rounds" : 2,
+        "templates" : [
+          "stoneGuardian"
+        ]
+      },
+      {
+        "collectedSupplies" : [
+          2,
+          9,
+          14
+        ],
+        "firstActor" : "wolf",
+        "healthAfter" : {
+          "p1" : 0,
+          "p2" : 14
+        },
+        "healthBefore" : {
+          "p1" : 6,
+          "p2" : 13
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 8,
+        "outcome" : "victory",
+        "rounds" : 7,
+        "templates" : [
+          "slime",
+          "wolf",
+          "goblinArcher"
+        ]
+      },
+      {
+        "collectedSupplies" : [
+          2,
+          9,
+          10,
+          13,
+          14,
+          18,
+          26
+        ],
+        "firstActor" : "ruinDragon",
+        "healthAfter" : {
+          "p1" : 0,
+          "p2" : 0
+        },
+        "healthBefore" : {
+          "p1" : 0,
+          "p2" : 14
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 23,
+        "outcome" : "defeat",
+        "rounds" : 1,
+        "templates" : [
+          "ruinDragon"
+        ]
+      }
+    ],
+    "battles" : 8,
+    "blockedRecovery" : 1,
+    "cleared" : 7,
+    "collected" : [
+      2,
+      9,
+      10,
+      13,
+      14,
+      18,
+      26
+    ],
+    "dropCoins" : 20,
+    "finalAP" : {
+      "p1" : 3,
+      "p2" : 3
+    },
+    "finalCoins" : 61,
+    "finalHealth" : {
+      "p1" : 0,
+      "p2" : 0
+    },
+    "foughtSpecies" : [
+      "goblinArcher",
+      "ruinDragon",
+      "slime",
+      "stoneGuardian",
+      "wolf"
+    ],
+    "itinerary" : "closed-tree",
+    "manualActionRefills" : 7,
+    "monsterActions" : 47,
+    "movementSpent" : 104,
+    "nodeCoins" : 129,
+    "outcome" : "defeat",
+    "plannedSpecies" : [
+      "goblinArcher",
+      "ruinDragon",
+      "slime",
+      "stoneGuardian",
+      "wolf"
+    ],
+    "resumes" : 17,
+    "role" : "adventurer",
+    "seed" : "31827",
+    "size" : 30,
+    "stagedRestarts" : 7,
+    "startingCoins" : 16,
+    "totalDistance" : 5479.848780517756,
+    "visited" : [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      13,
+      14,
+      15,
+      17,
+      18,
+      19,
+      23,
+      25,
+      26,
+      27
+    ]
+  },
+  {
+    "actions" : 85,
+    "actionsUsed" : {
+      "enemy:attack" : 22,
+      "enemy:dragonFlame" : 1,
+      "enemy:dragonScaleWard" : 2,
+      "enemy:simpleGuard" : 3,
+      "player:ambush" : 13,
+      "player:attack" : 17,
+      "player:battleRune" : 9,
+      "player:largePotion" : 2,
+      "player:rally" : 4,
+      "player:runeSlash" : 12
+    },
+    "battleDetails" : [
+      {
+        "collectedSupplies" : [
+          9,
+          14
+        ],
+        "firstActor" : "p1",
+        "healthAfter" : {
+          "p1" : 22,
+          "p2" : 18
+        },
+        "healthBefore" : {
+          "p1" : 24,
+          "p2" : 18
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 6,
+        "outcome" : "victory",
+        "rounds" : 1,
+        "templates" : [
+          "wolf",
+          "goblinArcher"
+        ]
+      },
+      {
+        "collectedSupplies" : [
+          9,
+          14
+        ],
+        "firstActor" : "p1",
+        "healthAfter" : {
+          "p1" : 24,
+          "p2" : 18
+        },
+        "healthBefore" : {
+          "p1" : 22,
+          "p2" : 18
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 19,
+        "outcome" : "victory",
+        "rounds" : 2,
+        "templates" : [
+          "stoneGuardian",
+          "slime"
+        ]
+      },
+      {
+        "collectedSupplies" : [
+          9,
+          14
+        ],
+        "firstActor" : "slime",
+        "healthAfter" : {
+          "p1" : 24,
+          "p2" : 18
+        },
+        "healthBefore" : {
+          "p1" : 24,
+          "p2" : 18
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 7,
+        "outcome" : "victory",
+        "rounds" : 1,
+        "templates" : [
+          "slime",
+          "goblinArcher"
+        ]
+      },
+      {
+        "collectedSupplies" : [
+          9,
+          14
+        ],
+        "firstActor" : "p2",
+        "healthAfter" : {
+          "p1" : 24,
+          "p2" : 18
+        },
+        "healthBefore" : {
+          "p1" : 24,
+          "p2" : 18
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 15,
+        "outcome" : "victory",
+        "rounds" : 1,
+        "templates" : [
+          "wolf"
+        ]
+      },
+      {
+        "collectedSupplies" : [
+          2,
+          9,
+          14
+        ],
+        "firstActor" : "p1",
+        "healthAfter" : {
+          "p1" : 24,
+          "p2" : 18
+        },
+        "healthBefore" : {
+          "p1" : 24,
+          "p2" : 18
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 3,
+        "outcome" : "victory",
+        "rounds" : 2,
+        "templates" : [
+          "stoneGuardian",
+          "slime"
+        ]
+      },
+      {
+        "collectedSupplies" : [
+          2,
+          9,
+          14
+        ],
+        "firstActor" : "stoneGuardian",
+        "healthAfter" : {
+          "p1" : 22,
+          "p2" : 18
+        },
+        "healthBefore" : {
+          "p1" : 24,
+          "p2" : 18
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 11,
+        "outcome" : "victory",
+        "rounds" : 2,
+        "templates" : [
+          "stoneGuardian"
+        ]
+      },
+      {
+        "collectedSupplies" : [
+          2,
+          9,
+          14
+        ],
+        "firstActor" : "p1",
+        "healthAfter" : {
+          "p1" : 24,
+          "p2" : 18
+        },
+        "healthBefore" : {
+          "p1" : 22,
+          "p2" : 18
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 8,
+        "outcome" : "victory",
+        "rounds" : 2,
+        "templates" : [
+          "slime",
+          "wolf",
+          "goblinArcher"
+        ]
+      },
+      {
+        "collectedSupplies" : [
+          2,
+          9,
+          10,
+          13,
+          14,
+          18,
+          26
+        ],
+        "firstActor" : "p1",
+        "healthAfter" : {
+          "p1" : 24,
+          "p2" : 16
+        },
+        "healthBefore" : {
+          "p1" : 24,
+          "p2" : 18
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 23,
+        "outcome" : "victory",
+        "rounds" : 3,
+        "templates" : [
+          "ruinDragon"
+        ]
+      },
+      {
+        "collectedSupplies" : [
+          2,
+          9,
+          10,
+          13,
+          14,
+          18,
+          21,
+          26
+        ],
+        "firstActor" : "stoneGuardian",
+        "healthAfter" : {
+          "p1" : 24,
+          "p2" : 18
+        },
+        "healthBefore" : {
+          "p1" : 24,
+          "p2" : 16
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 29,
+        "outcome" : "victory",
+        "rounds" : 1,
+        "templates" : [
+          "stoneGuardian"
+        ]
+      },
+      {
+        "collectedSupplies" : [
+          2,
+          9,
+          10,
+          13,
+          14,
+          18,
+          21,
+          24,
+          26
+        ],
+        "firstActor" : "slime",
+        "healthAfter" : {
+          "p1" : 24,
+          "p2" : 18
+        },
+        "healthBefore" : {
+          "p1" : 24,
+          "p2" : 18
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 12,
+        "outcome" : "victory",
+        "rounds" : 1,
+        "templates" : [
+          "slime"
+        ]
+      },
+      {
+        "collectedSupplies" : [
+          2,
+          9,
+          10,
+          13,
+          14,
+          18,
+          21,
+          24,
+          26
+        ],
+        "firstActor" : "p2",
+        "healthAfter" : {
+          "p1" : 24,
+          "p2" : 18
+        },
+        "healthBefore" : {
+          "p1" : 24,
+          "p2" : 18
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 20,
+        "outcome" : "victory",
+        "rounds" : 2,
+        "templates" : [
+          "slime",
+          "goblinArcher"
+        ]
+      },
+      {
+        "collectedSupplies" : [
+          2,
+          9,
+          10,
+          13,
+          14,
+          18,
+          21,
+          24,
+          26
+        ],
+        "firstActor" : "goblinArcher",
+        "healthAfter" : {
+          "p1" : 24,
+          "p2" : 18
+        },
+        "healthBefore" : {
+          "p1" : 24,
+          "p2" : 18
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 28,
+        "outcome" : "victory",
+        "rounds" : 1,
+        "templates" : [
+          "goblinArcher"
+        ]
+      },
+      {
+        "collectedSupplies" : [
+          2,
+          9,
+          10,
+          13,
+          14,
+          18,
+          21,
+          24,
+          26
+        ],
+        "firstActor" : "p2",
+        "healthAfter" : {
+          "p1" : 24,
+          "p2" : 18
+        },
+        "healthBefore" : {
+          "p1" : 24,
+          "p2" : 18
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 22,
+        "outcome" : "victory",
+        "rounds" : 1,
+        "templates" : [
+          "wolf"
+        ]
+      }
+    ],
+    "battles" : 13,
+    "blockedRecovery" : 0,
+    "cleared" : 13,
+    "collected" : [
+      2,
+      9,
+      10,
+      13,
+      14,
+      18,
+      21,
+      24,
+      26
+    ],
+    "dropCoins" : 75,
+    "finalAP" : {
+      "p1" : 3,
+      "p2" : 3
+    },
+    "finalCoins" : 83,
+    "finalHealth" : {
+      "p1" : 24,
+      "p2" : 18
+    },
+    "foughtSpecies" : [
+      "goblinArcher",
+      "ruinDragon",
+      "slime",
+      "stoneGuardian",
+      "wolf"
+    ],
+    "itinerary" : "closed-tree",
+    "manualActionRefills" : 13,
+    "monsterActions" : 28,
+    "movementSpent" : 240,
+    "nodeCoins" : 232,
+    "outcome" : "victory",
+    "plannedSpecies" : [
+      "goblinArcher",
+      "ruinDragon",
+      "slime",
+      "stoneGuardian",
+      "wolf"
+    ],
+    "resumes" : 26,
+    "role" : "spellblade",
+    "seed" : "31827",
+    "size" : 30,
+    "stagedRestarts" : 13,
+    "startingCoins" : 16,
+    "totalDistance" : 12393.134564285185,
+    "visited" : [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29
+    ]
+  },
+  {
+    "actions" : 86,
+    "actionsUsed" : {
+      "enemy:attack" : 27,
+      "enemy:dragonFlame" : 1,
+      "enemy:dragonScaleWard" : 2,
+      "enemy:simpleGuard" : 2,
+      "player:ambush" : 13,
+      "player:attack" : 22,
+      "player:dragonFlame" : 7,
+      "player:dragonOrder" : 5,
+      "player:dragonScaleWard" : 2,
+      "player:rally" : 5
+    },
+    "battleDetails" : [
+      {
+        "collectedSupplies" : [
+          9,
+          14
+        ],
+        "firstActor" : "p1",
+        "healthAfter" : {
+          "p1" : 32,
+          "p2" : 18
+        },
+        "healthBefore" : {
+          "p1" : 32,
+          "p2" : 18
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 6,
+        "outcome" : "victory",
+        "rounds" : 1,
+        "templates" : [
+          "wolf",
+          "goblinArcher"
+        ]
+      },
+      {
+        "collectedSupplies" : [
+          9,
+          14
+        ],
+        "firstActor" : "slime",
+        "healthAfter" : {
+          "p1" : 32,
+          "p2" : 18
+        },
+        "healthBefore" : {
+          "p1" : 32,
+          "p2" : 18
+        },
+        "naturalTwenties" : {
+          "p1\/dragonFlame" : 1
+        },
+        "node" : 19,
+        "outcome" : "victory",
+        "rounds" : 1,
+        "templates" : [
+          "stoneGuardian",
+          "slime"
+        ]
+      },
+      {
+        "collectedSupplies" : [
+          9,
+          14
+        ],
+        "firstActor" : "p2",
+        "healthAfter" : {
+          "p1" : 32,
+          "p2" : 18
+        },
+        "healthBefore" : {
+          "p1" : 32,
+          "p2" : 18
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 7,
+        "outcome" : "victory",
+        "rounds" : 2,
+        "templates" : [
+          "slime",
+          "goblinArcher"
+        ]
+      },
+      {
+        "collectedSupplies" : [
+          9,
+          14
+        ],
+        "firstActor" : "wolf",
+        "healthAfter" : {
+          "p1" : 32,
+          "p2" : 18
+        },
+        "healthBefore" : {
+          "p1" : 32,
+          "p2" : 18
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 15,
+        "outcome" : "victory",
+        "rounds" : 1,
+        "templates" : [
+          "wolf"
+        ]
+      },
+      {
+        "collectedSupplies" : [
+          2,
+          9,
+          14
+        ],
+        "firstActor" : "slime",
+        "healthAfter" : {
+          "p1" : 32,
+          "p2" : 18
+        },
+        "healthBefore" : {
+          "p1" : 32,
+          "p2" : 18
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 3,
+        "outcome" : "victory",
+        "rounds" : 1,
+        "templates" : [
+          "stoneGuardian",
+          "slime"
+        ]
+      },
+      {
+        "collectedSupplies" : [
+          2,
+          9,
+          14
+        ],
+        "firstActor" : "stoneGuardian",
+        "healthAfter" : {
+          "p1" : 32,
+          "p2" : 18
+        },
+        "healthBefore" : {
+          "p1" : 32,
+          "p2" : 18
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 11,
+        "outcome" : "victory",
+        "rounds" : 2,
+        "templates" : [
+          "stoneGuardian"
+        ]
+      },
+      {
+        "collectedSupplies" : [
+          2,
+          9,
+          14
+        ],
+        "firstActor" : "wolf",
+        "healthAfter" : {
+          "p1" : 32,
+          "p2" : 18
+        },
+        "healthBefore" : {
+          "p1" : 32,
+          "p2" : 18
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 8,
+        "outcome" : "victory",
+        "rounds" : 2,
+        "templates" : [
+          "slime",
+          "wolf",
+          "goblinArcher"
+        ]
+      },
+      {
+        "collectedSupplies" : [
+          2,
+          9,
+          10,
+          13,
+          14,
+          18,
+          26
+        ],
+        "firstActor" : "p1",
+        "healthAfter" : {
+          "p1" : 32,
+          "p2" : 18
+        },
+        "healthBefore" : {
+          "p1" : 32,
+          "p2" : 18
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 23,
+        "outcome" : "victory",
+        "rounds" : 4,
+        "templates" : [
+          "ruinDragon"
+        ]
+      },
+      {
+        "collectedSupplies" : [
+          2,
+          9,
+          10,
+          13,
+          14,
+          18,
+          21,
+          26
+        ],
+        "firstActor" : "p2",
+        "healthAfter" : {
+          "p1" : 32,
+          "p2" : 18
+        },
+        "healthBefore" : {
+          "p1" : 32,
+          "p2" : 18
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 29,
+        "outcome" : "victory",
+        "rounds" : 2,
+        "templates" : [
+          "stoneGuardian"
+        ]
+      },
+      {
+        "collectedSupplies" : [
+          2,
+          9,
+          10,
+          13,
+          14,
+          18,
+          21,
+          24,
+          26
+        ],
+        "firstActor" : "slime",
+        "healthAfter" : {
+          "p1" : 32,
+          "p2" : 18
+        },
+        "healthBefore" : {
+          "p1" : 32,
+          "p2" : 18
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 12,
+        "outcome" : "victory",
+        "rounds" : 1,
+        "templates" : [
+          "slime"
+        ]
+      },
+      {
+        "collectedSupplies" : [
+          2,
+          9,
+          10,
+          13,
+          14,
+          18,
+          21,
+          24,
+          26
+        ],
+        "firstActor" : "p2",
+        "healthAfter" : {
+          "p1" : 32,
+          "p2" : 18
+        },
+        "healthBefore" : {
+          "p1" : 32,
+          "p2" : 18
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 20,
+        "outcome" : "victory",
+        "rounds" : 1,
+        "templates" : [
+          "slime",
+          "goblinArcher"
+        ]
+      },
+      {
+        "collectedSupplies" : [
+          2,
+          9,
+          10,
+          13,
+          14,
+          18,
+          21,
+          24,
+          26
+        ],
+        "firstActor" : "p2",
+        "healthAfter" : {
+          "p1" : 32,
+          "p2" : 18
+        },
+        "healthBefore" : {
+          "p1" : 32,
+          "p2" : 18
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 28,
+        "outcome" : "victory",
+        "rounds" : 1,
+        "templates" : [
+          "goblinArcher"
+        ]
+      },
+      {
+        "collectedSupplies" : [
+          2,
+          9,
+          10,
+          13,
+          14,
+          18,
+          21,
+          24,
+          26
+        ],
+        "firstActor" : "wolf",
+        "healthAfter" : {
+          "p1" : 32,
+          "p2" : 18
+        },
+        "healthBefore" : {
+          "p1" : 32,
+          "p2" : 18
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 22,
+        "outcome" : "victory",
+        "rounds" : 1,
+        "templates" : [
+          "wolf"
+        ]
+      }
+    ],
+    "battles" : 13,
+    "blockedRecovery" : 0,
+    "cleared" : 13,
+    "collected" : [
+      2,
+      9,
+      10,
+      13,
+      14,
+      18,
+      21,
+      24,
+      26
+    ],
+    "dropCoins" : 70,
+    "finalAP" : {
+      "p1" : 3,
+      "p2" : 3
+    },
+    "finalCoins" : 78,
+    "finalHealth" : {
+      "p1" : 32,
+      "p2" : 18
+    },
+    "foughtSpecies" : [
+      "goblinArcher",
+      "ruinDragon",
+      "slime",
+      "stoneGuardian",
+      "wolf"
+    ],
+    "itinerary" : "closed-tree",
+    "manualActionRefills" : 13,
+    "monsterActions" : 32,
+    "movementSpent" : 240,
+    "nodeCoins" : 232,
+    "outcome" : "victory",
+    "plannedSpecies" : [
+      "goblinArcher",
+      "ruinDragon",
+      "slime",
+      "stoneGuardian",
+      "wolf"
+    ],
+    "resumes" : 26,
+    "role" : "dragonKnight",
+    "seed" : "31827",
+    "size" : 30,
+    "stagedRestarts" : 13,
+    "startingCoins" : 16,
+    "totalDistance" : 12393.134564285185,
+    "visited" : [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29
+    ]
+  },
+  {
+    "actions" : 104,
+    "actionsUsed" : {
+      "enemy:attack" : 19,
+      "enemy:regeneration" : 1,
+      "enemy:simpleGuard" : 2,
+      "enemy:sweep" : 2,
+      "player:ambush" : 14,
+      "player:attack" : 22,
+      "player:heavyStrike" : 20,
+      "player:largePotion" : 6,
+      "player:rally" : 12,
+      "player:shieldPotion" : 5,
+      "player:support" : 1
+    },
+    "battleDetails" : [
+      {
+        "collectedSupplies" : [
+          18,
+          23
+        ],
+        "firstActor" : "p2",
+        "healthAfter" : {
+          "p1" : 12,
+          "p2" : 18
+        },
+        "healthBefore" : {
+          "p1" : 12,
+          "p2" : 18
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 10,
+        "outcome" : "victory",
+        "rounds" : 1,
+        "templates" : [
+          "slime"
+        ]
+      },
+      {
+        "collectedSupplies" : [
+          15,
+          18,
+          23,
+          28
+        ],
+        "firstActor" : "p2",
+        "healthAfter" : {
+          "p1" : 12,
+          "p2" : 18
+        },
+        "healthBefore" : {
+          "p1" : 12,
+          "p2" : 18
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 20,
+        "outcome" : "victory",
+        "rounds" : 1,
+        "templates" : [
+          "goblinArcher"
+        ]
+      },
+      {
+        "collectedSupplies" : [
+          15,
+          18,
+          23,
+          28
+        ],
+        "firstActor" : "p1",
+        "healthAfter" : {
+          "p1" : 12,
+          "p2" : 18
+        },
+        "healthBefore" : {
+          "p1" : 12,
+          "p2" : 18
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 12,
+        "outcome" : "victory",
+        "rounds" : 2,
+        "templates" : [
+          "stoneGuardian",
+          "slime"
+        ]
+      },
+      {
+        "collectedSupplies" : [
+          1,
+          4,
+          6,
+          9,
+          11,
+          15,
+          18,
+          23,
+          28
+        ],
+        "firstActor" : "p2",
+        "healthAfter" : {
+          "p1" : 12,
+          "p2" : 17
+        },
+        "healthBefore" : {
+          "p1" : 12,
+          "p2" : 18
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 14,
+        "outcome" : "victory",
+        "rounds" : 3,
+        "templates" : [
+          "caveTroll"
+        ]
+      },
+      {
+        "collectedSupplies" : [
+          1,
+          4,
+          6,
+          9,
+          11,
+          15,
+          18,
+          23,
+          28
+        ],
+        "firstActor" : "p2",
+        "healthAfter" : {
+          "p1" : 12,
+          "p2" : 18
+        },
+        "healthBefore" : {
+          "p1" : 12,
+          "p2" : 17
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 27,
+        "outcome" : "victory",
+        "rounds" : 2,
+        "templates" : [
+          "wolf",
+          "goblinArcher"
+        ]
+      },
+      {
+        "collectedSupplies" : [
+          1,
+          4,
+          6,
+          9,
+          11,
+          15,
+          18,
+          23,
+          28
+        ],
+        "firstActor" : "p2",
+        "healthAfter" : {
+          "p1" : 12,
+          "p2" : 18
+        },
+        "healthBefore" : {
+          "p1" : 12,
+          "p2" : 18
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 19,
+        "outcome" : "victory",
+        "rounds" : 1,
+        "templates" : [
+          "stoneGuardian"
+        ]
+      },
+      {
+        "collectedSupplies" : [
+          1,
+          4,
+          6,
+          9,
+          11,
+          15,
+          18,
+          23,
+          28
+        ],
+        "firstActor" : "p2",
+        "healthAfter" : {
+          "p1" : 12,
+          "p2" : 18
+        },
+        "healthBefore" : {
+          "p1" : 12,
+          "p2" : 18
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 24,
+        "outcome" : "victory",
+        "rounds" : 1,
+        "templates" : [
+          "stoneGuardian"
+        ]
+      },
+      {
+        "collectedSupplies" : [
+          1,
+          4,
+          6,
+          9,
+          11,
+          15,
+          18,
+          23,
+          28
+        ],
+        "firstActor" : "p2",
+        "healthAfter" : {
+          "p1" : 12,
+          "p2" : 18
+        },
+        "healthBefore" : {
+          "p1" : 12,
+          "p2" : 18
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 0,
+        "outcome" : "victory",
+        "rounds" : 1,
+        "templates" : [
+          "goblinArcher"
+        ]
+      },
+      {
+        "collectedSupplies" : [
+          1,
+          4,
+          6,
+          9,
+          11,
+          15,
+          18,
+          23,
+          28
+        ],
+        "firstActor" : "slime",
+        "healthAfter" : {
+          "p1" : 12,
+          "p2" : 18
+        },
+        "healthBefore" : {
+          "p1" : 12,
+          "p2" : 18
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 3,
+        "outcome" : "victory",
+        "rounds" : 1,
+        "templates" : [
+          "slime",
+          "goblinArcher"
+        ]
+      },
+      {
+        "collectedSupplies" : [
+          1,
+          4,
+          6,
+          9,
+          11,
+          15,
+          18,
+          23,
+          28
+        ],
+        "firstActor" : "wolf",
+        "healthAfter" : {
+          "p1" : 10,
+          "p2" : 18
+        },
+        "healthBefore" : {
+          "p1" : 12,
+          "p2" : 18
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 5,
+        "outcome" : "victory",
+        "rounds" : 1,
+        "templates" : [
+          "wolf"
+        ]
+      },
+      {
+        "collectedSupplies" : [
+          1,
+          4,
+          6,
+          9,
+          11,
+          15,
+          18,
+          23,
+          28
+        ],
+        "firstActor" : "goblinArcher",
+        "healthAfter" : {
+          "p1" : 10,
+          "p2" : 18
+        },
+        "healthBefore" : {
+          "p1" : 10,
+          "p2" : 18
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 29,
+        "outcome" : "victory",
+        "rounds" : 1,
+        "templates" : [
+          "slime",
+          "goblinArcher"
+        ]
+      },
+      {
+        "collectedSupplies" : [
+          1,
+          4,
+          6,
+          9,
+          11,
+          15,
+          18,
+          23,
+          28
+        ],
+        "firstActor" : "wolf",
+        "healthAfter" : {
+          "p1" : 12,
+          "p2" : 18
+        },
+        "healthBefore" : {
+          "p1" : 10,
+          "p2" : 18
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 8,
+        "outcome" : "victory",
+        "rounds" : 2,
+        "templates" : [
+          "wolf",
+          "goblinArcher"
+        ]
+      },
+      {
+        "collectedSupplies" : [
+          1,
+          4,
+          6,
+          9,
+          11,
+          15,
+          18,
+          23,
+          28
+        ],
+        "firstActor" : "p2",
+        "healthAfter" : {
+          "p1" : 12,
+          "p2" : 18
+        },
+        "healthBefore" : {
+          "p1" : 12,
+          "p2" : 18
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 16,
+        "outcome" : "victory",
+        "rounds" : 2,
+        "templates" : [
+          "stoneGuardian"
+        ]
+      }
+    ],
+    "battles" : 13,
+    "blockedRecovery" : 0,
+    "cleared" : 13,
+    "collected" : [
+      1,
+      4,
+      6,
+      9,
+      11,
+      15,
+      18,
+      23,
+      28
+    ],
+    "dropCoins" : 70,
+    "finalAP" : {
+      "p1" : 3,
+      "p2" : 3
+    },
+    "finalCoins" : 78,
+    "finalHealth" : {
+      "p1" : 12,
+      "p2" : 18
+    },
+    "foughtSpecies" : [
+      "caveTroll",
+      "goblinArcher",
+      "slime",
+      "stoneGuardian",
+      "wolf"
+    ],
+    "itinerary" : "closed-tree",
+    "manualActionRefills" : 13,
+    "monsterActions" : 24,
+    "movementSpent" : 248,
+    "nodeCoins" : 248,
+    "outcome" : "victory",
+    "plannedSpecies" : [
+      "caveTroll",
+      "goblinArcher",
+      "slime",
+      "stoneGuardian",
+      "wolf"
+    ],
+    "resumes" : 24,
+    "role" : "adventurer",
+    "seed" : "18446744073709551615",
+    "size" : 30,
+    "stagedRestarts" : 13,
+    "startingCoins" : 8,
+    "totalDistance" : 12423.779336606332,
+    "visited" : [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29
+    ]
+  },
+  {
+    "actions" : 66,
+    "actionsUsed" : {
+      "enemy:attack" : 13,
+      "enemy:regeneration" : 1,
+      "enemy:sweep" : 1,
+      "player:ambush" : 10,
+      "player:attack" : 11,
+      "player:battleRune" : 11,
+      "player:rally" : 7,
+      "player:runeSlash" : 11,
+      "player:shieldPotion" : 1
+    },
+    "battleDetails" : [
+      {
+        "collectedSupplies" : [
+          18,
+          23
+        ],
+        "firstActor" : "p2",
+        "healthAfter" : {
+          "p1" : 24,
+          "p2" : 18
+        },
+        "healthBefore" : {
+          "p1" : 24,
+          "p2" : 18
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 10,
+        "outcome" : "victory",
+        "rounds" : 1,
+        "templates" : [
+          "slime"
+        ]
+      },
+      {
+        "collectedSupplies" : [
+          15,
+          18,
+          23,
+          28
+        ],
+        "firstActor" : "p2",
+        "healthAfter" : {
+          "p1" : 17,
+          "p2" : 18
+        },
+        "healthBefore" : {
+          "p1" : 24,
+          "p2" : 18
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 20,
+        "outcome" : "victory",
+        "rounds" : 1,
+        "templates" : [
+          "goblinArcher"
+        ]
+      },
+      {
+        "collectedSupplies" : [
+          15,
+          18,
+          23,
+          28
+        ],
+        "firstActor" : "p1",
+        "healthAfter" : {
+          "p1" : 21,
+          "p2" : 18
+        },
+        "healthBefore" : {
+          "p1" : 17,
+          "p2" : 18
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 12,
+        "outcome" : "victory",
+        "rounds" : 1,
+        "templates" : [
+          "stoneGuardian",
+          "slime"
+        ]
+      },
+      {
+        "collectedSupplies" : [
+          1,
+          4,
+          6,
+          9,
+          11,
+          15,
+          18,
+          23,
+          28
+        ],
+        "firstActor" : "p1",
+        "healthAfter" : {
+          "p1" : 24,
+          "p2" : 17
+        },
+        "healthBefore" : {
+          "p1" : 21,
+          "p2" : 18
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 14,
+        "outcome" : "victory",
+        "rounds" : 2,
+        "templates" : [
+          "caveTroll"
+        ]
+      },
+      {
+        "collectedSupplies" : [
+          1,
+          4,
+          6,
+          9,
+          11,
+          15,
+          18,
+          23,
+          28
+        ],
+        "firstActor" : "p2",
+        "healthAfter" : {
+          "p1" : 24,
+          "p2" : 18
+        },
+        "healthBefore" : {
+          "p1" : 24,
+          "p2" : 17
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 27,
+        "outcome" : "victory",
+        "rounds" : 2,
+        "templates" : [
+          "wolf",
+          "goblinArcher"
+        ]
+      },
+      {
+        "collectedSupplies" : [
+          1,
+          4,
+          6,
+          9,
+          11,
+          15,
+          18,
+          23,
+          28
+        ],
+        "firstActor" : "stoneGuardian",
+        "healthAfter" : {
+          "p1" : 24,
+          "p2" : 18
+        },
+        "healthBefore" : {
+          "p1" : 24,
+          "p2" : 18
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 19,
+        "outcome" : "victory",
+        "rounds" : 1,
+        "templates" : [
+          "stoneGuardian"
+        ]
+      },
+      {
+        "collectedSupplies" : [
+          1,
+          4,
+          6,
+          9,
+          11,
+          15,
+          18,
+          23,
+          28
+        ],
+        "firstActor" : "stoneGuardian",
+        "healthAfter" : {
+          "p1" : 24,
+          "p2" : 18
+        },
+        "healthBefore" : {
+          "p1" : 24,
+          "p2" : 18
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 24,
+        "outcome" : "victory",
+        "rounds" : 1,
+        "templates" : [
+          "stoneGuardian"
+        ]
+      },
+      {
+        "collectedSupplies" : [
+          1,
+          4,
+          6,
+          9,
+          11,
+          15,
+          18,
+          23,
+          28
+        ],
+        "firstActor" : "p2",
+        "healthAfter" : {
+          "p1" : 20,
+          "p2" : 18
+        },
+        "healthBefore" : {
+          "p1" : 24,
+          "p2" : 18
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 0,
+        "outcome" : "victory",
+        "rounds" : 1,
+        "templates" : [
+          "goblinArcher"
+        ]
+      },
+      {
+        "collectedSupplies" : [
+          1,
+          4,
+          6,
+          9,
+          11,
+          15,
+          18,
+          23,
+          28
+        ],
+        "firstActor" : "p2",
+        "healthAfter" : {
+          "p1" : 23,
+          "p2" : 17
+        },
+        "healthBefore" : {
+          "p1" : 20,
+          "p2" : 18
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 3,
+        "outcome" : "victory",
+        "rounds" : 1,
+        "templates" : [
+          "slime",
+          "goblinArcher"
+        ]
+      },
+      {
+        "collectedSupplies" : [
+          1,
+          4,
+          6,
+          9,
+          11,
+          15,
+          18,
+          23,
+          28
+        ],
+        "firstActor" : "p1",
+        "healthAfter" : {
+          "p1" : 24,
+          "p2" : 17
+        },
+        "healthBefore" : {
+          "p1" : 23,
+          "p2" : 17
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 5,
+        "outcome" : "victory",
+        "rounds" : 1,
+        "templates" : [
+          "wolf"
+        ]
+      },
+      {
+        "collectedSupplies" : [
+          1,
+          4,
+          6,
+          9,
+          11,
+          15,
+          18,
+          23,
+          28
+        ],
+        "firstActor" : "slime",
+        "healthAfter" : {
+          "p1" : 24,
+          "p2" : 17
+        },
+        "healthBefore" : {
+          "p1" : 24,
+          "p2" : 17
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 29,
+        "outcome" : "victory",
+        "rounds" : 1,
+        "templates" : [
+          "slime",
+          "goblinArcher"
+        ]
+      },
+      {
+        "collectedSupplies" : [
+          1,
+          4,
+          6,
+          9,
+          11,
+          15,
+          18,
+          23,
+          28
+        ],
+        "firstActor" : "p1",
+        "healthAfter" : {
+          "p1" : 24,
+          "p2" : 18
+        },
+        "healthBefore" : {
+          "p1" : 24,
+          "p2" : 17
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 8,
+        "outcome" : "victory",
+        "rounds" : 1,
+        "templates" : [
+          "wolf",
+          "goblinArcher"
+        ]
+      },
+      {
+        "collectedSupplies" : [
+          1,
+          4,
+          6,
+          9,
+          11,
+          15,
+          18,
+          23,
+          28
+        ],
+        "firstActor" : "p2",
+        "healthAfter" : {
+          "p1" : 24,
+          "p2" : 18
+        },
+        "healthBefore" : {
+          "p1" : 24,
+          "p2" : 18
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 16,
+        "outcome" : "victory",
+        "rounds" : 1,
+        "templates" : [
+          "stoneGuardian"
+        ]
+      }
+    ],
+    "battles" : 13,
+    "blockedRecovery" : 0,
+    "cleared" : 13,
+    "collected" : [
+      1,
+      4,
+      6,
+      9,
+      11,
+      15,
+      18,
+      23,
+      28
+    ],
+    "dropCoins" : 75,
+    "finalAP" : {
+      "p1" : 3,
+      "p2" : 3
+    },
+    "finalCoins" : 83,
+    "finalHealth" : {
+      "p1" : 24,
+      "p2" : 18
+    },
+    "foughtSpecies" : [
+      "caveTroll",
+      "goblinArcher",
+      "slime",
+      "stoneGuardian",
+      "wolf"
+    ],
+    "itinerary" : "closed-tree",
+    "manualActionRefills" : 13,
+    "monsterActions" : 15,
+    "movementSpent" : 248,
+    "nodeCoins" : 248,
+    "outcome" : "victory",
+    "plannedSpecies" : [
+      "caveTroll",
+      "goblinArcher",
+      "slime",
+      "stoneGuardian",
+      "wolf"
+    ],
+    "resumes" : 23,
+    "role" : "spellblade",
+    "seed" : "18446744073709551615",
+    "size" : 30,
+    "stagedRestarts" : 13,
+    "startingCoins" : 8,
+    "totalDistance" : 12423.779336606332,
+    "visited" : [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29
+    ]
+  },
+  {
+    "actions" : 58,
+    "actionsUsed" : {
+      "enemy:attack" : 11,
+      "enemy:regeneration" : 1,
+      "enemy:simpleGuard" : 1,
+      "enemy:sweep" : 1,
+      "player:ambush" : 12,
+      "player:attack" : 15,
+      "player:dragonFlame" : 7,
+      "player:dragonOrder" : 4,
+      "player:rally" : 6
+    },
+    "battleDetails" : [
+      {
+        "collectedSupplies" : [
+          18,
+          23
+        ],
+        "firstActor" : "p2",
+        "healthAfter" : {
+          "p1" : 32,
+          "p2" : 18
+        },
+        "healthBefore" : {
+          "p1" : 32,
+          "p2" : 18
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 10,
+        "outcome" : "victory",
+        "rounds" : 1,
+        "templates" : [
+          "slime"
+        ]
+      },
+      {
+        "collectedSupplies" : [
+          15,
+          18,
+          23,
+          28
+        ],
+        "firstActor" : "p2",
+        "healthAfter" : {
+          "p1" : 31,
+          "p2" : 18
+        },
+        "healthBefore" : {
+          "p1" : 32,
+          "p2" : 18
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 20,
+        "outcome" : "victory",
+        "rounds" : 1,
+        "templates" : [
+          "goblinArcher"
+        ]
+      },
+      {
+        "collectedSupplies" : [
+          15,
+          18,
+          23,
+          28
+        ],
+        "firstActor" : "p1",
+        "healthAfter" : {
+          "p1" : 32,
+          "p2" : 18
+        },
+        "healthBefore" : {
+          "p1" : 31,
+          "p2" : 18
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 12,
+        "outcome" : "victory",
+        "rounds" : 1,
+        "templates" : [
+          "stoneGuardian",
+          "slime"
+        ]
+      },
+      {
+        "collectedSupplies" : [
+          1,
+          4,
+          6,
+          9,
+          11,
+          15,
+          18,
+          23,
+          28
+        ],
+        "firstActor" : "p1",
+        "healthAfter" : {
+          "p1" : 32,
+          "p2" : 18
+        },
+        "healthBefore" : {
+          "p1" : 32,
+          "p2" : 18
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 14,
+        "outcome" : "victory",
+        "rounds" : 2,
+        "templates" : [
+          "caveTroll"
+        ]
+      },
+      {
+        "collectedSupplies" : [
+          1,
+          4,
+          6,
+          9,
+          11,
+          15,
+          18,
+          23,
+          28
+        ],
+        "firstActor" : "p1",
+        "healthAfter" : {
+          "p1" : 32,
+          "p2" : 18
+        },
+        "healthBefore" : {
+          "p1" : 32,
+          "p2" : 18
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 27,
+        "outcome" : "victory",
+        "rounds" : 1,
+        "templates" : [
+          "wolf",
+          "goblinArcher"
+        ]
+      },
+      {
+        "collectedSupplies" : [
+          1,
+          4,
+          6,
+          9,
+          11,
+          15,
+          18,
+          23,
+          28
+        ],
+        "firstActor" : "stoneGuardian",
+        "healthAfter" : {
+          "p1" : 32,
+          "p2" : 18
+        },
+        "healthBefore" : {
+          "p1" : 32,
+          "p2" : 18
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 19,
+        "outcome" : "victory",
+        "rounds" : 1,
+        "templates" : [
+          "stoneGuardian"
+        ]
+      },
+      {
+        "collectedSupplies" : [
+          1,
+          4,
+          6,
+          9,
+          11,
+          15,
+          18,
+          23,
+          28
+        ],
+        "firstActor" : "p1",
+        "healthAfter" : {
+          "p1" : 32,
+          "p2" : 18
+        },
+        "healthBefore" : {
+          "p1" : 32,
+          "p2" : 18
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 24,
+        "outcome" : "victory",
+        "rounds" : 1,
+        "templates" : [
+          "stoneGuardian"
+        ]
+      },
+      {
+        "collectedSupplies" : [
+          1,
+          4,
+          6,
+          9,
+          11,
+          15,
+          18,
+          23,
+          28
+        ],
+        "firstActor" : "p2",
+        "healthAfter" : {
+          "p1" : 32,
+          "p2" : 18
+        },
+        "healthBefore" : {
+          "p1" : 32,
+          "p2" : 18
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 0,
+        "outcome" : "victory",
+        "rounds" : 1,
+        "templates" : [
+          "goblinArcher"
+        ]
+      },
+      {
+        "collectedSupplies" : [
+          1,
+          4,
+          6,
+          9,
+          11,
+          15,
+          18,
+          23,
+          28
+        ],
+        "firstActor" : "p2",
+        "healthAfter" : {
+          "p1" : 32,
+          "p2" : 18
+        },
+        "healthBefore" : {
+          "p1" : 32,
+          "p2" : 18
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 3,
+        "outcome" : "victory",
+        "rounds" : 1,
+        "templates" : [
+          "slime",
+          "goblinArcher"
+        ]
+      },
+      {
+        "collectedSupplies" : [
+          1,
+          4,
+          6,
+          9,
+          11,
+          15,
+          18,
+          23,
+          28
+        ],
+        "firstActor" : "p2",
+        "healthAfter" : {
+          "p1" : 32,
+          "p2" : 18
+        },
+        "healthBefore" : {
+          "p1" : 32,
+          "p2" : 18
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 5,
+        "outcome" : "victory",
+        "rounds" : 1,
+        "templates" : [
+          "wolf"
+        ]
+      },
+      {
+        "collectedSupplies" : [
+          1,
+          4,
+          6,
+          9,
+          11,
+          15,
+          18,
+          23,
+          28
+        ],
+        "firstActor" : "p2",
+        "healthAfter" : {
+          "p1" : 32,
+          "p2" : 18
+        },
+        "healthBefore" : {
+          "p1" : 32,
+          "p2" : 18
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 29,
+        "outcome" : "victory",
+        "rounds" : 1,
+        "templates" : [
+          "slime",
+          "goblinArcher"
+        ]
+      },
+      {
+        "collectedSupplies" : [
+          1,
+          4,
+          6,
+          9,
+          11,
+          15,
+          18,
+          23,
+          28
+        ],
+        "firstActor" : "goblinArcher",
+        "healthAfter" : {
+          "p1" : 32,
+          "p2" : 18
+        },
+        "healthBefore" : {
+          "p1" : 32,
+          "p2" : 18
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 8,
+        "outcome" : "victory",
+        "rounds" : 1,
+        "templates" : [
+          "wolf",
+          "goblinArcher"
+        ]
+      },
+      {
+        "collectedSupplies" : [
+          1,
+          4,
+          6,
+          9,
+          11,
+          15,
+          18,
+          23,
+          28
+        ],
+        "firstActor" : "p1",
+        "healthAfter" : {
+          "p1" : 32,
+          "p2" : 18
+        },
+        "healthBefore" : {
+          "p1" : 32,
+          "p2" : 18
+        },
+        "naturalTwenties" : {
+
+        },
+        "node" : 16,
+        "outcome" : "victory",
+        "rounds" : 2,
+        "templates" : [
+          "stoneGuardian"
+        ]
+      }
+    ],
+    "battles" : 13,
+    "blockedRecovery" : 0,
+    "cleared" : 13,
+    "collected" : [
+      1,
+      4,
+      6,
+      9,
+      11,
+      15,
+      18,
+      23,
+      28
+    ],
+    "dropCoins" : 70,
+    "finalAP" : {
+      "p1" : 3,
+      "p2" : 3
+    },
+    "finalCoins" : 78,
+    "finalHealth" : {
+      "p1" : 32,
+      "p2" : 18
+    },
+    "foughtSpecies" : [
+      "caveTroll",
+      "goblinArcher",
+      "slime",
+      "stoneGuardian",
+      "wolf"
+    ],
+    "itinerary" : "closed-tree",
+    "manualActionRefills" : 13,
+    "monsterActions" : 14,
+    "movementSpent" : 248,
+    "nodeCoins" : 248,
+    "outcome" : "victory",
+    "plannedSpecies" : [
+      "caveTroll",
+      "goblinArcher",
+      "slime",
+      "stoneGuardian",
+      "wolf"
+    ],
+    "resumes" : 21,
+    "role" : "dragonKnight",
+    "seed" : "18446744073709551615",
+    "size" : 30,
+    "stagedRestarts" : 13,
+    "startingCoins" : 8,
+    "totalDistance" : 12423.779336606332,
+    "visited" : [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29
+    ]
+  }
+]

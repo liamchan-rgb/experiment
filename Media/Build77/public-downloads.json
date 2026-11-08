@@ -1,0 +1,27 @@
+{
+  "observedAt": "2026-11-05T03:42:29.073264+00:00",
+  "publicationCommit": "ae8ee54a30f02825e6657397f6b23c732df0dbd7",
+  "runAttempt": 3,
+  "artifactID": 13381339689,
+  "sourceCommit": "a3508591fd6934e4389d01bed98aa7cc65400835",
+  "downloads": [
+    {
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ae8ee54a30f02825e6657397f6b23c732df0dbd7/Downloads/MeadowJourney-b77.ipa",
+      "httpStatus": 200,
+      "bytes": 60297013,
+      "sha256": "615f7029f8ffd8753a6c7be07fb4e66e2214039c2e2cc00fa6fd75892e7c563c",
+      "crcPassed": true,
+      "verified": true
+    },
+    {
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/c2d39b59eac8c9db5e2f772545cf4a8dacf6fb8b/Art/Review/Battle/campaign-crashfix-v1/monster-turn-normal.gif",
+      "bytes": 11392829,
+      "sha256": "ba1112a33ca9cbb1a16db853f24ca06b75c8856d8a1e60da0d4a75c813466ffd",
+      "verified": true,
+      "frames": 238,
+      "frameMs": 20,
+      "httpStatus": 200,
+      "frameDurationsMs": 20
+    }
+  ]
+}

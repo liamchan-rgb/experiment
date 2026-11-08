@@ -1,0 +1,10 @@
+{
+  "itemID": "huntingBow",
+  "walkingAsset": "p1-hunting-bow-v1",
+  "bindingCountPerAppearance": 104,
+  "appearances": 2,
+  "battleAsset": "MeadowBattleHuntingBow",
+  "battleRig": "BowRig.swift",
+  "originalIconSHA256": "3fee4deeb573172ebac211a2d2bf01425e36baae1bf11e6099deeb5152b832f5",
+  "newArtApproval": null
+}

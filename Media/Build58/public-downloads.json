@@ -1,0 +1,88 @@
+{
+  "ipa": {
+    "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/0e67885a8daccdc74a48f0cf8a2a234237b71691/Downloads/MeadowJourney-b58.ipa",
+    "bytes": 36838157,
+    "sha256": "d82ac2d6da8fa5ec8980c64532ee320919b154843d08f56c2b4a45eb5f2dabe3",
+    "matchesLocalVerifiedIPA": true,
+    "headers": {
+      "contentType": "application/octet-stream",
+      "contentLength": "36838157"
+    }
+  },
+  "media": [
+    {
+      "file": "body-normal.gif",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/aac397dd02d781b6918f23f97b14f0500a9976a0/Art/Review/Battle/great-sword-demo-v1/body-normal.gif",
+      "bytes": 1354863,
+      "sha256": "b992cf8e6c7b3427777a3aed8f3f14b11bf638ddee9dbdb1f43e69c34c7e13d7",
+      "matchesLocal": true
+    },
+    {
+      "file": "great-sword-normal.gif",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/aac397dd02d781b6918f23f97b14f0500a9976a0/Art/Review/Battle/great-sword-demo-v1/great-sword-normal.gif",
+      "bytes": 6201854,
+      "sha256": "9431adbed154d436bd24ab52374a456e2a7e3fb5db5c1debefd8ba5fc66335d2",
+      "matchesLocal": true
+    },
+    {
+      "file": "body-standing.png",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/aac397dd02d781b6918f23f97b14f0500a9976a0/Art/Review/Battle/great-sword-demo-v1/body-standing.png",
+      "bytes": 30048,
+      "sha256": "bd8609979ba13f288ad678ad8c09745147c03f5fafd0a61f9e0b36b9a00c9cd3",
+      "matchesLocal": true
+    },
+    {
+      "file": "states-normal.gif",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/aac397dd02d781b6918f23f97b14f0500a9976a0/Art/Review/Battle/great-sword-demo-v1/states-normal.gif",
+      "bytes": 1689154,
+      "sha256": "c0ddea9bd09f4bb93d15e1d5ed7d7142856d36a292fa1c46ba160944a0cf06ee",
+      "matchesLocal": true
+    },
+    {
+      "file": "great-sword-heavy-normal.gif",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/aac397dd02d781b6918f23f97b14f0500a9976a0/Art/Review/Battle/great-sword-demo-v1/great-sword-heavy-normal.gif",
+      "bytes": 4973273,
+      "sha256": "dc5b629566cdd8e92ac3c1d5a34b1d9dd9835cd0ba7252b9c6f8ce1487683818",
+      "matchesLocal": true
+    },
+    {
+      "file": "great-sword-lethal-normal.gif",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/aac397dd02d781b6918f23f97b14f0500a9976a0/Art/Review/Battle/great-sword-demo-v1/great-sword-lethal-normal.gif",
+      "bytes": 5284409,
+      "sha256": "ee419903d245ee36e7dd34cc3f4a8791343385a07702178a2c6455c4dbac13f6",
+      "matchesLocal": true
+    },
+    {
+      "file": "walk-normal.gif",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/aac397dd02d781b6918f23f97b14f0500a9976a0/Art/Review/P1/great-sword-demo-v1/walk-normal.gif",
+      "bytes": 733548,
+      "sha256": "9aade338f5b634af50bf514ce1c809218a170cbdc401cd9299019b41c47fb3c8",
+      "matchesLocal": true
+    },
+    {
+      "file": "transitions-normal.gif",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/aac397dd02d781b6918f23f97b14f0500a9976a0/Art/Review/P1/great-sword-demo-v1/transitions-normal.gif",
+      "bytes": 1280910,
+      "sha256": "5f1944fc0a004483d79c1713ca2257d38c29ceeb95cafab17656c83e8c459832",
+      "matchesLocal": true
+    }
+  ],
+  "standaloneGIFBrowser": {
+    "scope": "Only standalone GIF images loaded in browser; no game/App executed.",
+    "dimensions": [
+      [
+        768,
+        840
+      ],
+      [
+        1020,
+        765
+      ]
+    ],
+    "bodyGifVisiblyAdvanced": true
+  },
+  "appRunPerformed": false,
+  "simulatorRunPerformed": false,
+  "physicalDeviceRunPerformed": false,
+  "newRuntimeArtApproval": null
+}

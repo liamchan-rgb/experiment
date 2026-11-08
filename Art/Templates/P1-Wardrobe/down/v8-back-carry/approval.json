@@ -1,0 +1,11 @@
+{
+  "date": "2026-10-22",
+  "reviewer": "user",
+  "statement": "可以的，接下来该做什么",
+  "status": "approved",
+  "scope": "The presented down-facing v8 full-body appearance and normal-speed 8-frame walk loop only. Excludes unshown combinations, other directions, start/stop transitions and runtime/device integration.",
+  "artifacts": {
+    "idle-review-2x.png": "51fee2b50d78333d3472a47dc090fb4c3b41f01d71021a51ae0b39d75382a4d3",
+    "walk-120ms.gif": "c0bf14caa1037370168f616e90c5ec930423705215ec9a360993c1c008f6cdc3"
+  }
+}

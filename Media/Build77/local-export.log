@@ -1,0 +1,45 @@
+Building for debugging...
+[0/7] Write sources
+[2/7] Copying legendary-staff-v1.json
+[3/7] Copying great-sword-v1.json
+[3/7] Copying reviewed-bow-r7.json
+[5/7] Copying initial-content.json
+[6/7] Write swift-version--6CC1FD8C7F4CAE66.txt
+[8/17] Emitting module ClassroomGameCore
+[9/21] Compiling ClassroomGameCore PublicProjection.swift
+[10/21] Compiling ClassroomGameCore RuleExamples.swift
+[11/21] Compiling ClassroomGameCore Rules.swift
+[12/21] Compiling ClassroomGameCore resource_bundle_accessor.swift
+[13/21] Compiling ClassroomGameCore MonsterAI.swift
+[14/21] Compiling ClassroomGameCore PVEPlaySession.swift
+[15/21] Compiling ClassroomGameCore PlayProjection.swift
+[16/21] Compiling ClassroomGameCore Presentation.swift
+[17/21] Compiling ClassroomGameCore ActionPlanning.swift
+[18/21] Compiling ClassroomGameCore Catalog.swift
+[19/21] Compiling ClassroomGameCore GameEngine.swift
+[20/21] Compiling ClassroomGameCore GameState.swift
+[21/21] Compiling ClassroomGameCore MapPresentation.swift
+[23/32] Emitting module MeadowBattleSupport
+[24/36] Compiling MeadowBattleSupport LegendaryStaffEffects.swift
+[25/36] Compiling MeadowBattleSupport LegendaryStaffRig.swift
+[26/36] Compiling MeadowBattleSupport PartyEncounter.swift
+[27/36] Compiling MeadowBattleSupport PartyVisual.swift
+[28/36] Compiling MeadowBattleSupport BattleDice.swift
+[29/36] Compiling MeadowBattleSupport BowRig.swift
+[30/36] Compiling MeadowBattleSupport CampInventory.swift
+[31/36] Compiling MeadowBattleSupport GreatSwordRig.swift
+[32/36] Compiling MeadowBattleSupport HealingEffectTier.swift
+[33/36] Compiling MeadowBattleSupport PolyhedralDice.swift
+[34/36] Compiling MeadowBattleSupport SpellbladeEffects.swift
+[35/36] Compiling MeadowBattleSupport TrainingLoadout.swift
+[36/36] Compiling MeadowBattleSupport resource_bundle_accessor.swift
+Build of target: 'MeadowBattleSupport' complete! (16.31s)
+[0/1] Planning build
+Building for debugging...
+[0/1] Write sources
+[1/2] Write swift-version--6CC1FD8C7F4CAE66.txt
+[3/5] Emitting module MeadowWorldSupport
+[4/5] Compiling MeadowWorldSupport RandomMap.swift
+[5/5] Compiling MeadowWorldSupport Campaign.swift
+Build of target: 'MeadowWorldSupport' complete! (2.09s)
+Exported actual campaign movement/encounter/receipts/death/particles/resume; frames 370 948

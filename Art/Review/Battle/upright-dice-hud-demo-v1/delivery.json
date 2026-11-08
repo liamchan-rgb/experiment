@@ -1,0 +1,98 @@
+{
+  "date": "2026-10-26",
+  "deliveryCommit": "07168742de9643f3b7163a98e361f97d7e0dea61",
+  "sourceCommit": "850ea80801ee4ab0e57cbed4cd37b93f9febe942",
+  "selectedPathsChecked": 97,
+  "compiledInputsChecked": 246,
+  "publicCompleteGETs": [
+    {
+      "path": "Downloads/MeadowJourney-b51.ipa",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/07168742de9643f3b7163a98e361f97d7e0dea61/Downloads/MeadowJourney-b51.ipa",
+      "status": 200,
+      "mime": "application/octet-stream",
+      "bytes": 31878628,
+      "sha256": "0121c60bd65e150dd4b02e913ad76a9fd82dbe1a75d24da9fa68e2ae4a0e9523"
+    },
+    {
+      "path": "Downloads/MeadowJourney-b51.ipa",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/fix/build33-face-grounding-camera/Downloads/MeadowJourney-b51.ipa",
+      "status": 200,
+      "mime": "application/octet-stream",
+      "bytes": 31878628,
+      "sha256": "0121c60bd65e150dd4b02e913ad76a9fd82dbe1a75d24da9fa68e2ae4a0e9523"
+    },
+    {
+      "path": "Art/Review/Battle/upright-dice-hud-demo-v1/ambush-normal.gif",
+      "url": "https://cdn.jsdelivr.net/gh/liamchan-rgb/experiment@07168742de9643f3b7163a98e361f97d7e0dea61/Art/Review/Battle/upright-dice-hud-demo-v1/ambush-normal.gif",
+      "status": 200,
+      "mime": "image/gif",
+      "bytes": 10279492,
+      "sha256": "4104374f21a988db3b47eba5de5cde8ab1a4ac24de5728131bc278aabe8a6300",
+      "frames": 220,
+      "durationMs": 4400
+    },
+    {
+      "path": "Art/Review/Battle/upright-dice-hud-demo-v1/attack-buff-normal.gif",
+      "url": "https://cdn.jsdelivr.net/gh/liamchan-rgb/experiment@07168742de9643f3b7163a98e361f97d7e0dea61/Art/Review/Battle/upright-dice-hud-demo-v1/attack-buff-normal.gif",
+      "status": 200,
+      "mime": "image/gif",
+      "bytes": 12940670,
+      "sha256": "5030dcb303721f0491119d37b0f58b25c5f4d933a2d27a3b2e158f5a3e773d67",
+      "frames": 300,
+      "durationMs": 6000
+    },
+    {
+      "path": "Art/Review/Battle/upright-dice-hud-demo-v1/lethal-normal.gif",
+      "url": "https://cdn.jsdelivr.net/gh/liamchan-rgb/experiment@07168742de9643f3b7163a98e361f97d7e0dea61/Art/Review/Battle/upright-dice-hud-demo-v1/lethal-normal.gif",
+      "status": 200,
+      "mime": "image/gif",
+      "bytes": 8878633,
+      "sha256": "94df32b821101dd96c39cf8b7acf85ca6bbe421706f1a4e6311c3d80195c5317",
+      "frames": 190,
+      "durationMs": 3800
+    },
+    {
+      "path": "Art/Review/Battle/upright-dice-hud-demo-v1/ambush-standing.png",
+      "url": "https://cdn.jsdelivr.net/gh/liamchan-rgb/experiment@07168742de9643f3b7163a98e361f97d7e0dea61/Art/Review/Battle/upright-dice-hud-demo-v1/ambush-standing.png",
+      "status": 200,
+      "mime": "image/png",
+      "bytes": 1847454,
+      "sha256": "704ebc68f8a65380ec822fc5d12596240f459c5965de3bc05c97f63a320163b0"
+    },
+    {
+      "path": "Art/Review/Battle/upright-dice-hud-demo-v1/ambush-dash.png",
+      "url": "https://cdn.jsdelivr.net/gh/liamchan-rgb/experiment@07168742de9643f3b7163a98e361f97d7e0dea61/Art/Review/Battle/upright-dice-hud-demo-v1/ambush-dash.png",
+      "status": 200,
+      "mime": "image/png",
+      "bytes": 1746051,
+      "sha256": "e41fdef96c3717ba81a26fdef508be7195473e1716087ceeb6b111026eeb92f2"
+    },
+    {
+      "path": "Art/Review/Battle/upright-dice-hud-demo-v1/dice-upright-gallery.png",
+      "url": "https://cdn.jsdelivr.net/gh/liamchan-rgb/experiment@07168742de9643f3b7163a98e361f97d7e0dea61/Art/Review/Battle/upright-dice-hud-demo-v1/dice-upright-gallery.png",
+      "status": 200,
+      "mime": "image/png",
+      "bytes": 80066,
+      "sha256": "d316fb4d929d13ae8f3fcbd1dec6768b0a54af4bda1194541864f3eb5980141d"
+    },
+    {
+      "path": "Art/Review/Battle/upright-dice-hud-demo-v1/lethal-impact.png",
+      "url": "https://cdn.jsdelivr.net/gh/liamchan-rgb/experiment@07168742de9643f3b7163a98e361f97d7e0dea61/Art/Review/Battle/upright-dice-hud-demo-v1/lethal-impact.png",
+      "status": 200,
+      "mime": "image/png",
+      "bytes": 1747900,
+      "sha256": "1f79009476b0fa18908445fcde0a04ecea24ff50baba52e5910eb4f143488b9e"
+    },
+    {
+      "path": "Art/Review/Battle/upright-dice-hud-demo-v1/lethal-recovery.png",
+      "url": "https://cdn.jsdelivr.net/gh/liamchan-rgb/experiment@07168742de9643f3b7163a98e361f97d7e0dea61/Art/Review/Battle/upright-dice-hud-demo-v1/lethal-recovery.png",
+      "status": 200,
+      "mime": "image/png",
+      "bytes": 1783770,
+      "sha256": "003b22466e723e362ae22fe326fd1644e43de1112a40a59566409a6d2645f819"
+    }
+  ],
+  "simulatorRun": false,
+  "deviceRun": false,
+  "newArtApproval": null
+}

@@ -1,0 +1,56 @@
+{
+  "publicationCommit": "3d4544132f1447b2f70de569f60210a1c4225c3a",
+  "downloads": [
+    {
+      "path": "Downloads/Chat-Apparel-Masters-v2.zip",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/3d4544132f1447b2f70de569f60210a1c4225c3a/Downloads/Chat-Apparel-Masters-v2.zip",
+      "httpStatus": 200,
+      "contentType": "application/zip",
+      "bytes": 1746002,
+      "sha256": "260c16790be3d6cc3db9942d6801f0df32f79a2d2b3b1c77f2c950e61a1bce65",
+      "matchesLocal": true,
+      "zipCRC": true,
+      "zipFiles": 96
+    },
+    {
+      "path": "Downloads/Chat-Apparel-Masters-v2.txt",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/3d4544132f1447b2f70de569f60210a1c4225c3a/Downloads/Chat-Apparel-Masters-v2.txt",
+      "httpStatus": 200,
+      "contentType": "text/plain; charset=utf-8",
+      "bytes": 4204,
+      "sha256": "8b88be401907257c9ca488bea147b3599bc5fec7174877ccb6547d648689f0bd",
+      "matchesLocal": true
+    },
+    {
+      "path": "Art/Standards/P1-Locomotion-Delivery-v1/chat-apparel-v2/README.md",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/3d4544132f1447b2f70de569f60210a1c4225c3a/Art/Standards/P1-Locomotion-Delivery-v1/chat-apparel-v2/README.md",
+      "httpStatus": 200,
+      "contentType": "text/plain; charset=utf-8",
+      "bytes": 4120,
+      "sha256": "64d40ef29fa7366172f298aeb07f9e72080015aa2957222d5f8f2f4853e7a6db",
+      "matchesLocal": true
+    },
+    {
+      "path": "Art/Standards/P1-Locomotion-Delivery-v1/chat-apparel-v2/examples/03-one-master-to-eight-frames.png",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/3d4544132f1447b2f70de569f60210a1c4225c3a/Art/Standards/P1-Locomotion-Delivery-v1/chat-apparel-v2/examples/03-one-master-to-eight-frames.png",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "bytes": 183447,
+      "sha256": "a9dd7b332d5b046357e528cc4489901c1fb3278296a1866ff6102eb184fa2fec",
+      "matchesLocal": true
+    },
+    {
+      "path": "Art/Standards/P1-Locomotion-Delivery-v1/chat-apparel-v2/examples/03-reuse-demo-normal.gif",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/3d4544132f1447b2f70de569f60210a1c4225c3a/Art/Standards/P1-Locomotion-Delivery-v1/chat-apparel-v2/examples/03-reuse-demo-normal.gif",
+      "httpStatus": 200,
+      "contentType": "image/gif",
+      "bytes": 47299,
+      "sha256": "ccc8a2b51cf6e12272af39c869155fa4a58c45fd5ca2ddd6d0e596672d09bb4c",
+      "matchesLocal": true,
+      "frames": 8,
+      "frameMs": 120
+    }
+  ],
+  "newArmorCreated": false,
+  "userDesignChoice": null
+}

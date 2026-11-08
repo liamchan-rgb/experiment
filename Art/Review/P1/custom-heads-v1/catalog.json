@@ -1,0 +1,88 @@
+{
+  "assets": [
+    {
+      "id": "p1-eight-way-base-v1",
+      "manifest": "Art/Parts/P1-v1/eight-way-v1/base/asset.json"
+    },
+    {
+      "id": "p1-eight-way-forester-v1",
+      "manifest": "Art/Parts/P1-v1/eight-way-v1/forester/asset.json"
+    },
+    {
+      "id": "p1-eight-way-wayfarer-v1",
+      "manifest": "Art/Parts/P1-v1/eight-way-v1/wayfarer/asset.json"
+    },
+    {
+      "id": "p1-eight-way-lower-v1",
+      "manifest": "Art/Parts/P1-v1/eight-way-v1/lower/asset.json"
+    },
+    {
+      "id": "p1-eight-way-hair-chestnut-v1",
+      "manifest": "Art/Parts/P1-v1/eight-way-v1/hair-chestnut/asset.json"
+    },
+    {
+      "id": "p1-eight-way-hair-silver-v1",
+      "manifest": "Art/Parts/P1-v1/eight-way-v1/hair-silver/asset.json"
+    },
+    {
+      "id": "p1-eight-way-face-blue-v1",
+      "manifest": "Art/Parts/P1-v1/eight-way-v1/face-blue/asset.json"
+    },
+    {
+      "id": "p1-eight-way-face-amber-v1",
+      "manifest": "Art/Parts/P1-v1/eight-way-v1/face-amber/asset.json"
+    },
+    {
+      "id": "p1-eight-way-weapon-v1",
+      "manifest": "Art/Parts/P1-v1/eight-way-v1/weapon/asset.json"
+    },
+    {
+      "id": "p1-chat-starlight-armor-v2",
+      "manifest": "Art/Parts/P1-v1/chat-apparel-v2/starlightArmor/asset.json"
+    },
+    {
+      "id": "p1-chat-dragon-armor-v2",
+      "manifest": "Art/Parts/P1-v1/chat-apparel-v2/dragonArmor/asset.json"
+    },
+    {
+      "id": "p1-custom-hair-m1-short-v1",
+      "manifest": "Art/Parts/P1-v1/custom-heads-v1/hair-m1-short/asset.json"
+    },
+    {
+      "id": "p1-custom-hair-m2-sidepart-v1",
+      "manifest": "Art/Parts/P1-v1/custom-heads-v1/hair-m2-sidepart/asset.json"
+    },
+    {
+      "id": "p1-custom-hair-m3-topknot-v1",
+      "manifest": "Art/Parts/P1-v1/custom-heads-v1/hair-m3-topknot/asset.json"
+    },
+    {
+      "id": "p1-custom-hair-f1-bob-v1",
+      "manifest": "Art/Parts/P1-v1/custom-heads-v1/hair-f1-bob/asset.json"
+    },
+    {
+      "id": "p1-custom-hair-f2-ponytail-v1",
+      "manifest": "Art/Parts/P1-v1/custom-heads-v1/hair-f2-ponytail/asset.json"
+    },
+    {
+      "id": "p1-custom-hair-f3-bun-v1",
+      "manifest": "Art/Parts/P1-v1/custom-heads-v1/hair-f3-bun/asset.json"
+    },
+    {
+      "id": "p1-custom-face-m1-bright-v1",
+      "manifest": "Art/Parts/P1-v1/custom-heads-v1/face-m1-bright/asset.json"
+    },
+    {
+      "id": "p1-custom-face-m2-calm-v1",
+      "manifest": "Art/Parts/P1-v1/custom-heads-v1/face-m2-calm/asset.json"
+    },
+    {
+      "id": "p1-custom-face-f1-gentle-v1",
+      "manifest": "Art/Parts/P1-v1/custom-heads-v1/face-f1-gentle/asset.json"
+    },
+    {
+      "id": "p1-custom-face-f2-clear-v1",
+      "manifest": "Art/Parts/P1-v1/custom-heads-v1/face-f2-clear/asset.json"
+    }
+  ]
+}

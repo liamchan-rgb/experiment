@@ -1,0 +1,48 @@
+{
+  "status": "single-static-pose-candidate",
+  "copies": [
+    {
+      "asset": "MeadowBattleHeroBody",
+      "source": "Art/Templates/P1-Neutral/battle-side/right-idle-r3-head-contour/00.png",
+      "sha256": "6fdb0f71ac32e530e7242f02750bb1ccfb50f4e50a19efd0ae3dce3664a4418c"
+    },
+    {
+      "asset": "MeadowBattleHeroWeapon",
+      "source": "Art/Parts/P1-Battle/right-idle-v1/weapon-short-sword/weapon.png",
+      "sha256": "a4a0122c73fba3120e9c4537fd55089195a61469a1c72e098b9f430d10ceaa5c"
+    },
+    {
+      "asset": "MeadowBattleHeroWardrobe",
+      "source": "Art/Parts/P1-Battle/right-idle-v3/outfit-forester/wardrobe.png",
+      "sha256": "74abfbe6d6da043bc1fe7d936be1fba1915cfadc5c72803b1cd0259aa164717c"
+    },
+    {
+      "asset": "MeadowBattleHeroHair",
+      "source": "Art/Parts/P1-Battle/right-idle-v2/hair-chestnut/hair.png",
+      "sha256": "144d8fa28d23319afe6a1e9560ccc14b8450da25d225361772b0f2cdad65a209"
+    },
+    {
+      "asset": "MeadowBattleHeroFace",
+      "source": "Art/Parts/P1-Battle/right-idle-v2/face-blue/face.png",
+      "sha256": "11d54df5f734d6140919bd8f3bc1448795e55e35e3ad0981c05c7248eda28b64"
+    },
+    {
+      "asset": "MeadowBattleHeroNearHand",
+      "source": "Art/Templates/P1-Neutral/battle-side/right-idle-parts-v2/parts/body.hand.right.near.png",
+      "sha256": "2d69ea1ef28c8209ca81556546e25bfc57bd9f471973c22e4474e0b9a00e3399"
+    },
+    {
+      "asset": "MeadowBattleHeroFarHand",
+      "source": "Art/Parts/P1-Battle/right-idle-v1/hand-foreground/far.png",
+      "sha256": "c37cbd0984a8b68ffc6f1721997ba33455a2d2bc5d697c2c77f318ec72ca7661"
+    },
+    {
+      "asset": "MeadowBattleForestWarden",
+      "source": "Art/Scenes/MeadowBattle/enemies/forest-warden-v2/idle.png",
+      "sha256": "b604bf43409d7e124c71ed5b3c2c0479ccf40c792c6e9ac8834eb30fe7d67c0e"
+    }
+  ],
+  "transformsAtImport": "none",
+  "animationDelivered": false,
+  "userArtApproval": null
+}

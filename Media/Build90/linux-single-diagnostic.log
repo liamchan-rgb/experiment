@@ -1,0 +1,47 @@
+Loadout 10/0/adventurer/trainingSword-plain
+Loadout 49/0/adventurer/trainingSword-plain
+Swift/ErrorType.swift:253: Fatal error: Error raised at top level: ClassroomGameCore.GameError(message: "总节点数须为4—30。")
+
+*** Signal 4: Backtracing from 0x7fb5effafb6f... done ***
+
+*** Program crashed: Illegal instruction at 0x00007fb5effafb6f ***
+
+Thread 0 "MeadowCampaignR" crashed:
+
+0               0x00007fb5effafb6f _assertionFailure(_:_:file:line:flags:) + 351 in libswiftCore.so
+1 [ra]          0x00007fb5efffffee swift_errorInMain + 829 in libswiftCore.so
+2 [ra] [system] 0x000055f917217077 MeadowCampaignReview_main + 7430 in MeadowCampaignReview at //<compiler-generated>
+
+
+Registers:
+
+rax 0x0000000200000003  8589934595
+rdx 0x00007fb5f028fa28  46 61 74 61 6c 20 65 72 72 6f 72 00 6f 66 66 73  Fatal error·offs
+rcx 0xfffffffe00000000  18446744065119617024
+rbx 0x0000000000000003  3
+rsi 0x000055f954667008  03 00 00 00 00 00 00 00 70 00 00 00 00 00 00 80  ········p·······
+rdi 0x0000000000000006  6
+rbp 0x00007ffd7f991bd0  60 1c 99 7f fd 7f 00 00 ee ff ff ef b5 7f 00 00  `···ý···îÿÿïµ···
+rsp 0x00007ffd7f991b30  01 00 00 00 00 00 00 00 d0 3d 62 54 f9 55 00 00  ········Ð=bTùU··
+ r8 0x0000000000000080  128
+ r9 0x000000000000005e  94
+r10 0x0000000000000000  0
+r11 0x0000000000000000  0
+r12 0x00007fb5f029caa0  53 77 69 66 74 2f 45 72 72 6f 72 54 79 70 65 2e  Swift/ErrorType.
+r13 0x000000000000005e  94
+r14 0x000055f954667000  70 e3 27 f0 b5 7f 00 00 03 00 00 00 00 00 00 00  pã'ðµ···········
+r15 0x000000000000000b  11
+rip 0x00007fb5effafb6f  0f 0b 48 83 ec 08 48 8d 05 94 bd 2e 00 48 8d 3d  ··H·ì·H···½.·H·=
+
+rflags 0x0000000000010246  ZF PF
+
+cs 0x0033  fs 0x0000  gs 0x0000
+
+
+Images (17 omitted):
+
+0x000055f91708d000–0x000055f917276285 <no build ID>                            MeadowCampaignReview /workspace/experiment/Vendor/ClassroomGameCore/.build/x86_64-unknown-linux-gnu/release/MeadowCampaignReview
+0x00007fb5efccd000–0x00007fb5f0262930 b9f29f81b467904a40bdaaa0b0f84468865569b7 libswiftCore.so      /workspace/swift-toolchain/usr/lib/swift/linux/libswiftCore.so
+
+Backtrace took 0.52s
+

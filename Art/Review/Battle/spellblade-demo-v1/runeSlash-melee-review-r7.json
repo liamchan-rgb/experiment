@@ -1,0 +1,15 @@
+{
+  "file": "runeSlash-melee-review-r7.gif",
+  "frames": 95,
+  "durationMs": 1900,
+  "frameDurationMs": 20,
+  "dimensions": [
+    1020,
+    765
+  ],
+  "bytes": 7002091,
+  "sha256": "823f9eef7c10dddd9ea47fb117bac192f2108f829c37ac0fe1be687dc2e66982",
+  "style": "blue-white stepped arc; ancient gold runes; broken geometric halo; sparse pixel shards and star glints",
+  "scope": "Offline review composition only; not integrated into runtime",
+  "approval": null
+}

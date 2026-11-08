@@ -102,9 +102,10 @@ final class ShadowLabRenderer: NSObject, MTKViewDelegate {
             textures[name] = try upload(image)
         }
         guard let atlas = UIImage(named: "Hero1Directions")?.cgImage else { throw ShadowLabError.setup("缺少人物素材") }
-        let cell = atlas.width / HeroFrames.columns
+        let cell = atlas.height / HeroFrames.atlasRows
         for frame in 0..<HeroFrames.columns {
-            guard let image = atlas.cropping(to: CGRect(x: frame * cell, y: cell, width: cell, height: cell)) else { throw ShadowLabError.setup("人物切片失败") }
+            let column = HeroFrames.sourceColumn(frame: frame)
+            guard let image = atlas.cropping(to: CGRect(x: column * cell, y: cell, width: cell, height: cell)) else { throw ShadowLabError.setup("人物切片失败") }
             textures["hero\(frame)"] = try upload(image)
         }
     }

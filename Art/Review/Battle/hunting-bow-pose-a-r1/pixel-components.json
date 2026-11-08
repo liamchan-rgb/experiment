@@ -1,0 +1,843 @@
+{
+  "samples": 726,
+  "alphaThreshold": 64,
+  "connectivity": 8,
+  "smallComponents": [
+    {
+      "clip": "hit",
+      "progress": 0.15833333333333333,
+      "islands": [
+        [
+          112,
+          213,
+          113,
+          214,
+          1
+        ]
+      ]
+    },
+    {
+      "clip": "hit",
+      "progress": 0.225,
+      "islands": [
+        [
+          112,
+          213,
+          113,
+          214,
+          1
+        ]
+      ]
+    },
+    {
+      "clip": "hit",
+      "progress": 0.23333333333333334,
+      "islands": [
+        [
+          112,
+          213,
+          113,
+          214,
+          1
+        ]
+      ]
+    },
+    {
+      "clip": "hit",
+      "progress": 0.85,
+      "islands": [
+        [
+          110,
+          213,
+          111,
+          214,
+          1
+        ]
+      ]
+    },
+    {
+      "clip": "defeat",
+      "progress": 0.24166666666666667,
+      "islands": [
+        [
+          130,
+          184,
+          131,
+          185,
+          1
+        ]
+      ]
+    },
+    {
+      "clip": "defeat",
+      "progress": 0.25,
+      "islands": [
+        [
+          130,
+          184,
+          131,
+          185,
+          1
+        ]
+      ]
+    },
+    {
+      "clip": "defeat",
+      "progress": 0.25833333333333336,
+      "islands": [
+        [
+          130,
+          184,
+          131,
+          185,
+          1
+        ]
+      ]
+    },
+    {
+      "clip": "defeat",
+      "progress": 0.26666666666666666,
+      "islands": [
+        [
+          130,
+          184,
+          131,
+          185,
+          1
+        ]
+      ]
+    },
+    {
+      "clip": "defeat",
+      "progress": 0.4666666666666667,
+      "islands": [
+        [
+          109,
+          215,
+          110,
+          216,
+          1
+        ]
+      ]
+    },
+    {
+      "clip": "defeat",
+      "progress": 0.475,
+      "islands": [
+        [
+          109,
+          215,
+          110,
+          216,
+          1
+        ]
+      ]
+    },
+    {
+      "clip": "defeat",
+      "progress": 0.5416666666666666,
+      "islands": [
+        [
+          109,
+          216,
+          110,
+          217,
+          1
+        ]
+      ]
+    },
+    {
+      "clip": "defeat",
+      "progress": 0.55,
+      "islands": [
+        [
+          109,
+          216,
+          110,
+          217,
+          1
+        ]
+      ]
+    },
+    {
+      "clip": "defeat",
+      "progress": 0.5583333333333333,
+      "islands": [
+        [
+          109,
+          216,
+          110,
+          217,
+          1
+        ]
+      ]
+    },
+    {
+      "clip": "defeat",
+      "progress": 0.5666666666666667,
+      "islands": [
+        [
+          109,
+          216,
+          110,
+          217,
+          1
+        ]
+      ]
+    },
+    {
+      "clip": "defeat",
+      "progress": 0.575,
+      "islands": [
+        [
+          109,
+          216,
+          110,
+          217,
+          1
+        ]
+      ]
+    },
+    {
+      "clip": "defeat",
+      "progress": 0.5833333333333334,
+      "islands": [
+        [
+          109,
+          216,
+          110,
+          217,
+          1
+        ]
+      ]
+    },
+    {
+      "clip": "defeat",
+      "progress": 0.5916666666666667,
+      "islands": [
+        [
+          109,
+          216,
+          110,
+          217,
+          1
+        ]
+      ]
+    },
+    {
+      "clip": "defeat",
+      "progress": 0.6,
+      "islands": [
+        [
+          109,
+          216,
+          110,
+          217,
+          1
+        ]
+      ]
+    },
+    {
+      "clip": "defeat",
+      "progress": 0.6083333333333333,
+      "islands": [
+        [
+          109,
+          216,
+          110,
+          217,
+          1
+        ]
+      ]
+    },
+    {
+      "clip": "defeat",
+      "progress": 0.6166666666666667,
+      "islands": [
+        [
+          109,
+          216,
+          110,
+          217,
+          1
+        ]
+      ]
+    },
+    {
+      "clip": "defeat",
+      "progress": 0.625,
+      "islands": [
+        [
+          109,
+          216,
+          110,
+          217,
+          1
+        ]
+      ]
+    },
+    {
+      "clip": "defeat",
+      "progress": 0.65,
+      "islands": [
+        [
+          108,
+          216,
+          109,
+          217,
+          1
+        ]
+      ]
+    },
+    {
+      "clip": "defeat",
+      "progress": 0.6583333333333333,
+      "islands": [
+        [
+          108,
+          216,
+          109,
+          217,
+          1
+        ]
+      ]
+    },
+    {
+      "clip": "defeat",
+      "progress": 0.6666666666666666,
+      "islands": [
+        [
+          108,
+          217,
+          109,
+          218,
+          1
+        ]
+      ]
+    },
+    {
+      "clip": "defeat",
+      "progress": 0.675,
+      "islands": [
+        [
+          108,
+          217,
+          109,
+          218,
+          1
+        ]
+      ]
+    },
+    {
+      "clip": "defeat",
+      "progress": 0.6833333333333333,
+      "islands": [
+        [
+          108,
+          217,
+          109,
+          218,
+          1
+        ]
+      ]
+    },
+    {
+      "clip": "defeat",
+      "progress": 0.6916666666666667,
+      "islands": [
+        [
+          108,
+          217,
+          109,
+          218,
+          1
+        ]
+      ]
+    },
+    {
+      "clip": "defeat",
+      "progress": 0.7,
+      "islands": [
+        [
+          108,
+          217,
+          109,
+          218,
+          1
+        ]
+      ]
+    },
+    {
+      "clip": "defeat",
+      "progress": 0.7083333333333334,
+      "islands": [
+        [
+          108,
+          217,
+          109,
+          218,
+          1
+        ]
+      ]
+    },
+    {
+      "clip": "defeat",
+      "progress": 0.7166666666666667,
+      "islands": [
+        [
+          108,
+          217,
+          109,
+          218,
+          1
+        ]
+      ]
+    },
+    {
+      "clip": "defeat",
+      "progress": 0.725,
+      "islands": [
+        [
+          108,
+          217,
+          109,
+          218,
+          1
+        ]
+      ]
+    },
+    {
+      "clip": "defeat",
+      "progress": 0.7333333333333333,
+      "islands": [
+        [
+          108,
+          217,
+          109,
+          218,
+          1
+        ]
+      ]
+    },
+    {
+      "clip": "defeat",
+      "progress": 0.7416666666666667,
+      "islands": [
+        [
+          108,
+          217,
+          109,
+          218,
+          1
+        ]
+      ]
+    },
+    {
+      "clip": "defeat",
+      "progress": 0.75,
+      "islands": [
+        [
+          108,
+          217,
+          109,
+          218,
+          1
+        ]
+      ]
+    },
+    {
+      "clip": "defeat",
+      "progress": 0.7583333333333333,
+      "islands": [
+        [
+          108,
+          217,
+          109,
+          218,
+          1
+        ]
+      ]
+    },
+    {
+      "clip": "defeat",
+      "progress": 0.7666666666666667,
+      "islands": [
+        [
+          108,
+          217,
+          109,
+          218,
+          1
+        ]
+      ]
+    },
+    {
+      "clip": "defeat",
+      "progress": 0.775,
+      "islands": [
+        [
+          108,
+          217,
+          109,
+          218,
+          1
+        ]
+      ]
+    },
+    {
+      "clip": "defeat",
+      "progress": 0.7833333333333333,
+      "islands": [
+        [
+          108,
+          217,
+          109,
+          218,
+          1
+        ]
+      ]
+    },
+    {
+      "clip": "defeat",
+      "progress": 0.7916666666666666,
+      "islands": [
+        [
+          108,
+          217,
+          109,
+          218,
+          1
+        ]
+      ]
+    },
+    {
+      "clip": "defeat",
+      "progress": 0.8,
+      "islands": [
+        [
+          108,
+          217,
+          109,
+          218,
+          1
+        ]
+      ]
+    },
+    {
+      "clip": "defeat",
+      "progress": 0.8083333333333333,
+      "islands": [
+        [
+          108,
+          217,
+          109,
+          218,
+          1
+        ]
+      ]
+    },
+    {
+      "clip": "defeat",
+      "progress": 0.8166666666666667,
+      "islands": [
+        [
+          108,
+          217,
+          109,
+          218,
+          1
+        ]
+      ]
+    },
+    {
+      "clip": "defeat",
+      "progress": 0.825,
+      "islands": [
+        [
+          108,
+          217,
+          109,
+          218,
+          1
+        ]
+      ]
+    },
+    {
+      "clip": "defeat",
+      "progress": 0.8333333333333334,
+      "islands": [
+        [
+          108,
+          217,
+          109,
+          218,
+          1
+        ]
+      ]
+    },
+    {
+      "clip": "defeat",
+      "progress": 0.8416666666666667,
+      "islands": [
+        [
+          108,
+          217,
+          109,
+          218,
+          1
+        ]
+      ]
+    },
+    {
+      "clip": "defeat",
+      "progress": 0.85,
+      "islands": [
+        [
+          108,
+          217,
+          109,
+          218,
+          1
+        ]
+      ]
+    },
+    {
+      "clip": "defeat",
+      "progress": 0.8583333333333333,
+      "islands": [
+        [
+          108,
+          217,
+          109,
+          218,
+          1
+        ]
+      ]
+    },
+    {
+      "clip": "defeat",
+      "progress": 0.8666666666666667,
+      "islands": [
+        [
+          108,
+          217,
+          109,
+          218,
+          1
+        ]
+      ]
+    },
+    {
+      "clip": "defeat",
+      "progress": 0.875,
+      "islands": [
+        [
+          108,
+          217,
+          109,
+          218,
+          1
+        ]
+      ]
+    },
+    {
+      "clip": "defeat",
+      "progress": 0.8833333333333333,
+      "islands": [
+        [
+          108,
+          217,
+          109,
+          218,
+          1
+        ]
+      ]
+    },
+    {
+      "clip": "defeat",
+      "progress": 0.8916666666666667,
+      "islands": [
+        [
+          108,
+          217,
+          109,
+          218,
+          1
+        ]
+      ]
+    },
+    {
+      "clip": "defeat",
+      "progress": 0.9,
+      "islands": [
+        [
+          108,
+          217,
+          109,
+          218,
+          1
+        ]
+      ]
+    },
+    {
+      "clip": "defeat",
+      "progress": 0.9083333333333333,
+      "islands": [
+        [
+          108,
+          217,
+          109,
+          218,
+          1
+        ]
+      ]
+    },
+    {
+      "clip": "defeat",
+      "progress": 0.9166666666666666,
+      "islands": [
+        [
+          108,
+          217,
+          109,
+          218,
+          1
+        ]
+      ]
+    },
+    {
+      "clip": "defeat",
+      "progress": 0.925,
+      "islands": [
+        [
+          108,
+          217,
+          109,
+          218,
+          1
+        ]
+      ]
+    },
+    {
+      "clip": "defeat",
+      "progress": 0.9333333333333333,
+      "islands": [
+        [
+          108,
+          217,
+          109,
+          218,
+          1
+        ]
+      ]
+    },
+    {
+      "clip": "defeat",
+      "progress": 0.9416666666666667,
+      "islands": [
+        [
+          108,
+          217,
+          109,
+          218,
+          1
+        ]
+      ]
+    },
+    {
+      "clip": "defeat",
+      "progress": 0.95,
+      "islands": [
+        [
+          108,
+          217,
+          109,
+          218,
+          1
+        ]
+      ]
+    },
+    {
+      "clip": "defeat",
+      "progress": 0.9583333333333334,
+      "islands": [
+        [
+          108,
+          217,
+          109,
+          218,
+          1
+        ]
+      ]
+    },
+    {
+      "clip": "defeat",
+      "progress": 0.9666666666666667,
+      "islands": [
+        [
+          108,
+          217,
+          109,
+          218,
+          1
+        ]
+      ]
+    },
+    {
+      "clip": "defeat",
+      "progress": 0.975,
+      "islands": [
+        [
+          108,
+          217,
+          109,
+          218,
+          1
+        ]
+      ]
+    },
+    {
+      "clip": "defeat",
+      "progress": 0.9833333333333333,
+      "islands": [
+        [
+          108,
+          217,
+          109,
+          218,
+          1
+        ]
+      ]
+    },
+    {
+      "clip": "defeat",
+      "progress": 0.9916666666666667,
+      "islands": [
+        [
+          108,
+          217,
+          109,
+          218,
+          1
+        ]
+      ]
+    },
+    {
+      "clip": "defeat",
+      "progress": 1.0,
+      "islands": [
+        [
+          108,
+          217,
+          109,
+          218,
+          1
+        ]
+      ]
+    }
+  ],
+  "scope": "Supplementary visible-alpha component scan, not art approval.",
+  "allSmallPixelsAlsoPresentInOriginalLowerBody": true,
+  "smallPixelMinY": 184,
+  "attackAndIdleSmallComponents": 0
+}

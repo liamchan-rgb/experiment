@@ -1,0 +1,832 @@
+{
+  "publishedCommit": "ece5c5892ab40b0c60869af60d6af93ab67e58af",
+  "publishedTree": "ea5c1159017cf83b15c525b10a12f72c408f018b",
+  "sourceParent": "067e019e7c03b20975ea99365390e81bdcf41333",
+  "runID": 42434021318,
+  "payloadSHA256": "c9d44ff8e22d451942abe305bc767362007653c82a3e4915789f46abebe68113",
+  "fileCount": 115,
+  "verifiedFileCount": 115,
+  "bytes": 24456267,
+  "allPublicGETsByteAndSHA256Matched": true,
+  "transportBranchDeleted": true,
+  "appOrSimulatorRun": false,
+  "files": [
+    {
+      "path": "AGENTS.md",
+      "status": 200,
+      "bytes": 261541,
+      "sha256": "0573500c1d00d492b261ae250130a05fbff6be62fbb1c63a9a0f1220c8dae191",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ece5c5892ab40b0c60869af60d6af93ab67e58af/AGENTS.md"
+    },
+    {
+      "path": "ART_TASKS.md",
+      "status": 200,
+      "bytes": 3768,
+      "sha256": "c0abc1df7accc9980586799fe2cb2c48249f32ffe345f594fad77e896fc1feb8",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ece5c5892ab40b0c60869af60d6af93ab67e58af/ART_TASKS.md"
+    },
+    {
+      "path": "Art/Integration/Appearance-battle-custom-heads-v1/README.md",
+      "status": 200,
+      "bytes": 5496,
+      "sha256": "174846dfd8b235f898c4b9e996567deb8a9bffc6264d9507d7a75960eb1a07bb",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ece5c5892ab40b0c60869af60d6af93ab67e58af/Art/Integration/Appearance-battle-custom-heads-v1/README.md"
+    },
+    {
+      "path": "Art/Integration/Appearance-battle-custom-heads-v1/scene-bindings.json",
+      "status": 200,
+      "bytes": 5732,
+      "sha256": "1660740fd43d3883fb4a09c6f4bb8401907c1cf5b0174efad69b7478c81bf5f8",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ece5c5892ab40b0c60869af60d6af93ab67e58af/Art/Integration/Appearance-battle-custom-heads-v1/scene-bindings.json"
+    },
+    {
+      "path": "Art/Review/Battle/appearance-synchronized-v1/README.md",
+      "status": 200,
+      "bytes": 4352,
+      "sha256": "c2a1f942d5c945976618487f877e3ce535a6dcf9637914c8c9e826499db44260",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ece5c5892ab40b0c60869af60d6af93ab67e58af/Art/Review/Battle/appearance-synchronized-v1/README.md"
+    },
+    {
+      "path": "Art/Review/Battle/appearance-synchronized-v1/animation-checks.json",
+      "status": 200,
+      "bytes": 723,
+      "sha256": "86667b196e22e8edfec13670e95b63d7406b2e046dc3011b4f0145dccb251c78",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ece5c5892ab40b0c60869af60d6af93ab67e58af/Art/Review/Battle/appearance-synchronized-v1/animation-checks.json"
+    },
+    {
+      "path": "Art/Review/Battle/appearance-synchronized-v1/both-armors-attack-normal.gif",
+      "status": 200,
+      "bytes": 1297244,
+      "sha256": "70dd2948b23d4b1b43842f3c2b5c3346893e807ad3d7a020a33a4b6ef5fe6790",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ece5c5892ab40b0c60869af60d6af93ab67e58af/Art/Review/Battle/appearance-synchronized-v1/both-armors-attack-normal.gif"
+    },
+    {
+      "path": "Art/Review/Battle/appearance-synchronized-v1/both-armors-states-normal.gif",
+      "status": 200,
+      "bytes": 2838053,
+      "sha256": "1e711a1790c2142dc64c8f1a1fa146e096f3292a02e8f1deb36bd0300fd0f81a",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ece5c5892ab40b0c60869af60d6af93ab67e58af/Art/Review/Battle/appearance-synchronized-v1/both-armors-states-normal.gif"
+    },
+    {
+      "path": "Art/Review/Battle/appearance-synchronized-v1/browser-gif-review.json",
+      "status": 200,
+      "bytes": 3826,
+      "sha256": "f05ba208f3aef7acb75008968e685143bbf38420deab0078066fea0f5f39fcf6",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ece5c5892ab40b0c60869af60d6af93ab67e58af/Art/Review/Battle/appearance-synchronized-v1/browser-gif-review.json"
+    },
+    {
+      "path": "Art/Review/Battle/appearance-synchronized-v1/browser-gif-review/1-sample-01.png",
+      "status": 200,
+      "bytes": 63856,
+      "sha256": "c96c8794e02c5df752d0fbdc463773e670df194d4aee896a065afcda38f71804",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ece5c5892ab40b0c60869af60d6af93ab67e58af/Art/Review/Battle/appearance-synchronized-v1/browser-gif-review/1-sample-01.png"
+    },
+    {
+      "path": "Art/Review/Battle/appearance-synchronized-v1/browser-gif-review/1-sample-06.png",
+      "status": 200,
+      "bytes": 62461,
+      "sha256": "c5b35c019daba1a2eae19f413e6db0f1861cd3e1d65dd56e5794b797284df6cd",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ece5c5892ab40b0c60869af60d6af93ab67e58af/Art/Review/Battle/appearance-synchronized-v1/browser-gif-review/1-sample-06.png"
+    },
+    {
+      "path": "Art/Review/Battle/appearance-synchronized-v1/browser-gif-review/1-sample-12.png",
+      "status": 200,
+      "bytes": 64363,
+      "sha256": "9b78df0c75dca58ca90861f60125732997c37a8342aec79ae98b5370f41c1edc",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ece5c5892ab40b0c60869af60d6af93ab67e58af/Art/Review/Battle/appearance-synchronized-v1/browser-gif-review/1-sample-12.png"
+    },
+    {
+      "path": "Art/Review/Battle/appearance-synchronized-v1/browser-gif-review/2-sample-01.png",
+      "status": 200,
+      "bytes": 55279,
+      "sha256": "f3ba4245976e32d5a5182204fc801ee15adb961318c92233d08a174feb7ddb61",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ece5c5892ab40b0c60869af60d6af93ab67e58af/Art/Review/Battle/appearance-synchronized-v1/browser-gif-review/2-sample-01.png"
+    },
+    {
+      "path": "Art/Review/Battle/appearance-synchronized-v1/browser-gif-review/2-sample-06.png",
+      "status": 200,
+      "bytes": 76103,
+      "sha256": "47f6a4b662377f1a0b5150dcd70bab8bbcadb763f562457b2ef2d813a526fc50",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ece5c5892ab40b0c60869af60d6af93ab67e58af/Art/Review/Battle/appearance-synchronized-v1/browser-gif-review/2-sample-06.png"
+    },
+    {
+      "path": "Art/Review/Battle/appearance-synchronized-v1/browser-gif-review/2-sample-12.png",
+      "status": 200,
+      "bytes": 60833,
+      "sha256": "edc9f51b5e845714bcbc8e0a39106777908bea16ff8b7e3309471c99898170fb",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ece5c5892ab40b0c60869af60d6af93ab67e58af/Art/Review/Battle/appearance-synchronized-v1/browser-gif-review/2-sample-12.png"
+    },
+    {
+      "path": "Art/Review/Battle/appearance-synchronized-v1/browser-gif-review/3-sample-01.png",
+      "status": 200,
+      "bytes": 59502,
+      "sha256": "8e3b8b18fdadb34b2805f71758d184dec3e507eb13185faee7d6c230f6bd86e6",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ece5c5892ab40b0c60869af60d6af93ab67e58af/Art/Review/Battle/appearance-synchronized-v1/browser-gif-review/3-sample-01.png"
+    },
+    {
+      "path": "Art/Review/Battle/appearance-synchronized-v1/browser-gif-review/3-sample-06.png",
+      "status": 200,
+      "bytes": 61665,
+      "sha256": "b1070ba20fea079da62add1ce6a22b79a1d083e6b351b97c017f07dc53ac7999",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ece5c5892ab40b0c60869af60d6af93ab67e58af/Art/Review/Battle/appearance-synchronized-v1/browser-gif-review/3-sample-06.png"
+    },
+    {
+      "path": "Art/Review/Battle/appearance-synchronized-v1/browser-gif-review/3-sample-12.png",
+      "status": 200,
+      "bytes": 59468,
+      "sha256": "02e05d0f3c4c45b6b9f9f3f8d29cb45b74f2f40081632fe138a2349c46ff4915",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ece5c5892ab40b0c60869af60d6af93ab67e58af/Art/Review/Battle/appearance-synchronized-v1/browser-gif-review/3-sample-12.png"
+    },
+    {
+      "path": "Art/Review/Battle/appearance-synchronized-v1/decoded/attack-001.png",
+      "status": 200,
+      "bytes": 135130,
+      "sha256": "14811d7f63b0cea261fcfd19bf0915d18de9faea84eb438b44f92df3c0d5252c",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ece5c5892ab40b0c60869af60d6af93ab67e58af/Art/Review/Battle/appearance-synchronized-v1/decoded/attack-001.png"
+    },
+    {
+      "path": "Art/Review/Battle/appearance-synchronized-v1/decoded/attack-002.png",
+      "status": 200,
+      "bytes": 156341,
+      "sha256": "2b57e11d838089c71459ad3fa8b0ab08fdaa38d7d036c786ddcc298e2d82ccfa",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ece5c5892ab40b0c60869af60d6af93ab67e58af/Art/Review/Battle/appearance-synchronized-v1/decoded/attack-002.png"
+    },
+    {
+      "path": "Art/Review/Battle/appearance-synchronized-v1/decoded/attack-003.png",
+      "status": 200,
+      "bytes": 168314,
+      "sha256": "96e44b0db536f9ee9f6798880407cb66ba343abd9471ed83042b07dad34f46d0",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ece5c5892ab40b0c60869af60d6af93ab67e58af/Art/Review/Battle/appearance-synchronized-v1/decoded/attack-003.png"
+    },
+    {
+      "path": "Art/Review/Battle/appearance-synchronized-v1/decoded/attack-004.png",
+      "status": 200,
+      "bytes": 181391,
+      "sha256": "f30978121332e3d954334df973de67466216f8aae807762431a1694e3325a541",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ece5c5892ab40b0c60869af60d6af93ab67e58af/Art/Review/Battle/appearance-synchronized-v1/decoded/attack-004.png"
+    },
+    {
+      "path": "Art/Review/Battle/appearance-synchronized-v1/decoded/attack-005.png",
+      "status": 200,
+      "bytes": 199522,
+      "sha256": "7f9b9cd37da4faf2292a36276bc084c5091793a8895b8eab19494ad565b83e96",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ece5c5892ab40b0c60869af60d6af93ab67e58af/Art/Review/Battle/appearance-synchronized-v1/decoded/attack-005.png"
+    },
+    {
+      "path": "Art/Review/Battle/appearance-synchronized-v1/decoded/attack-006.png",
+      "status": 200,
+      "bytes": 210091,
+      "sha256": "0f33f5fe50fb967d30ba4c06c7093bce2f9dcf1cd2b08425046aefcbb59d5a5d",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ece5c5892ab40b0c60869af60d6af93ab67e58af/Art/Review/Battle/appearance-synchronized-v1/decoded/attack-006.png"
+    },
+    {
+      "path": "Art/Review/Battle/appearance-synchronized-v1/decoded/attack-007.png",
+      "status": 200,
+      "bytes": 216366,
+      "sha256": "eac341601ef77a09e55b1e58b2381e5017ef57789e58b65930ee2571167f03be",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ece5c5892ab40b0c60869af60d6af93ab67e58af/Art/Review/Battle/appearance-synchronized-v1/decoded/attack-007.png"
+    },
+    {
+      "path": "Art/Review/Battle/appearance-synchronized-v1/decoded/attack-008.png",
+      "status": 200,
+      "bytes": 211592,
+      "sha256": "736737f8a541e2900099875397821f9dd729edc550f6b1a8ac6375065d6627c7",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ece5c5892ab40b0c60869af60d6af93ab67e58af/Art/Review/Battle/appearance-synchronized-v1/decoded/attack-008.png"
+    },
+    {
+      "path": "Art/Review/Battle/appearance-synchronized-v1/decoded/attack-009.png",
+      "status": 200,
+      "bytes": 217590,
+      "sha256": "070d0d638c70c0884f47263fe6004f96c1de1f2bc73339516a47424712c4dd26",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ece5c5892ab40b0c60869af60d6af93ab67e58af/Art/Review/Battle/appearance-synchronized-v1/decoded/attack-009.png"
+    },
+    {
+      "path": "Art/Review/Battle/appearance-synchronized-v1/decoded/attack-010.png",
+      "status": 200,
+      "bytes": 200753,
+      "sha256": "cfc9bef2ec41780b91d08250b22ce2bdc56ee4f182564ffc8e9df93420f34838",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ece5c5892ab40b0c60869af60d6af93ab67e58af/Art/Review/Battle/appearance-synchronized-v1/decoded/attack-010.png"
+    },
+    {
+      "path": "Art/Review/Battle/appearance-synchronized-v1/decoded/attack-011.png",
+      "status": 200,
+      "bytes": 203544,
+      "sha256": "f93ab32b8e5575ed009e1698e34781e062458b99bc973f5c7e0b5b52e98fcde4",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ece5c5892ab40b0c60869af60d6af93ab67e58af/Art/Review/Battle/appearance-synchronized-v1/decoded/attack-011.png"
+    },
+    {
+      "path": "Art/Review/Battle/appearance-synchronized-v1/decoded/attack-012.png",
+      "status": 200,
+      "bytes": 198659,
+      "sha256": "4a44684ebada4c9b3f191fdf1b7900338e3adedf468e2427b108e09d2eb2da68",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ece5c5892ab40b0c60869af60d6af93ab67e58af/Art/Review/Battle/appearance-synchronized-v1/decoded/attack-012.png"
+    },
+    {
+      "path": "Art/Review/Battle/appearance-synchronized-v1/decoded/attack-013.png",
+      "status": 200,
+      "bytes": 216508,
+      "sha256": "a24e707da009491cd17f4cf915763ae9d285b2f09df32b1dac5736266fe04635",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ece5c5892ab40b0c60869af60d6af93ab67e58af/Art/Review/Battle/appearance-synchronized-v1/decoded/attack-013.png"
+    },
+    {
+      "path": "Art/Review/Battle/appearance-synchronized-v1/decoded/attack-014.png",
+      "status": 200,
+      "bytes": 205571,
+      "sha256": "66ba2fd3a44f8caa0bcc86950c0a71727b5db9dd006b061d4917041f2df9023b",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ece5c5892ab40b0c60869af60d6af93ab67e58af/Art/Review/Battle/appearance-synchronized-v1/decoded/attack-014.png"
+    },
+    {
+      "path": "Art/Review/Battle/appearance-synchronized-v1/decoded/attack-015.png",
+      "status": 200,
+      "bytes": 197793,
+      "sha256": "632e8010a8bc320dcc6bbddf66cf9125c09c35c8dcc34cadf89023be91164e77",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ece5c5892ab40b0c60869af60d6af93ab67e58af/Art/Review/Battle/appearance-synchronized-v1/decoded/attack-015.png"
+    },
+    {
+      "path": "Art/Review/Battle/appearance-synchronized-v1/decoded/attack-016.png",
+      "status": 200,
+      "bytes": 191494,
+      "sha256": "ffd8382724fb8d7b1da024f7e37fe64e34f1a318b4267883bf08b9deb32b5516",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ece5c5892ab40b0c60869af60d6af93ab67e58af/Art/Review/Battle/appearance-synchronized-v1/decoded/attack-016.png"
+    },
+    {
+      "path": "Art/Review/Battle/appearance-synchronized-v1/decoded/attack-017.png",
+      "status": 200,
+      "bytes": 181251,
+      "sha256": "b3f13903644651ccf081ca17c2ef3464e2e1400c4b2afabb8a87f5d1bee1ff6d",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ece5c5892ab40b0c60869af60d6af93ab67e58af/Art/Review/Battle/appearance-synchronized-v1/decoded/attack-017.png"
+    },
+    {
+      "path": "Art/Review/Battle/appearance-synchronized-v1/decoded/attack-018.png",
+      "status": 200,
+      "bytes": 173135,
+      "sha256": "3693ddad85b9e3e52e4c4393effde638a4f8b074262a85acfa08ac8b352d96a2",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ece5c5892ab40b0c60869af60d6af93ab67e58af/Art/Review/Battle/appearance-synchronized-v1/decoded/attack-018.png"
+    },
+    {
+      "path": "Art/Review/Battle/appearance-synchronized-v1/decoded/attack-019.png",
+      "status": 200,
+      "bytes": 141213,
+      "sha256": "ca6d3078a18e40407830c2cf40b3eae0904d8e27fb9898d490b54ddf459695b6",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ece5c5892ab40b0c60869af60d6af93ab67e58af/Art/Review/Battle/appearance-synchronized-v1/decoded/attack-019.png"
+    },
+    {
+      "path": "Art/Review/Battle/appearance-synchronized-v1/decoded/states-001.png",
+      "status": 200,
+      "bytes": 145174,
+      "sha256": "c09ad8f689e782927a631044e3d3090eedf469ebdb83d7957b65ba839471cde8",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ece5c5892ab40b0c60869af60d6af93ab67e58af/Art/Review/Battle/appearance-synchronized-v1/decoded/states-001.png"
+    },
+    {
+      "path": "Art/Review/Battle/appearance-synchronized-v1/decoded/states-002.png",
+      "status": 200,
+      "bytes": 157395,
+      "sha256": "1eb3f3f49394b1d8d73e37953100404e82a8c4732d725810c230e51462d349f7",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ece5c5892ab40b0c60869af60d6af93ab67e58af/Art/Review/Battle/appearance-synchronized-v1/decoded/states-002.png"
+    },
+    {
+      "path": "Art/Review/Battle/appearance-synchronized-v1/decoded/states-003.png",
+      "status": 200,
+      "bytes": 163329,
+      "sha256": "94af9717ebdf329fab8a53adef06e41b7ca09ef3116ee723f7baef6dc6187833",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ece5c5892ab40b0c60869af60d6af93ab67e58af/Art/Review/Battle/appearance-synchronized-v1/decoded/states-003.png"
+    },
+    {
+      "path": "Art/Review/Battle/appearance-synchronized-v1/decoded/states-004.png",
+      "status": 200,
+      "bytes": 174689,
+      "sha256": "d02dee1b46f0ea96f535df708840b47df7cef0898741c8db006c71564709d67d",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ece5c5892ab40b0c60869af60d6af93ab67e58af/Art/Review/Battle/appearance-synchronized-v1/decoded/states-004.png"
+    },
+    {
+      "path": "Art/Review/Battle/appearance-synchronized-v1/decoded/states-005.png",
+      "status": 200,
+      "bytes": 148137,
+      "sha256": "babcb3ea5565bd1b13d77637e0791f04339870400a5b353dfb3c3070aadf477f",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ece5c5892ab40b0c60869af60d6af93ab67e58af/Art/Review/Battle/appearance-synchronized-v1/decoded/states-005.png"
+    },
+    {
+      "path": "Art/Review/Battle/appearance-synchronized-v1/decoded/states-006.png",
+      "status": 200,
+      "bytes": 165646,
+      "sha256": "32ee46a1a7d7fce3c78cf3e16992459943f9ebc483e8a1dbd9d8965c5a594e11",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ece5c5892ab40b0c60869af60d6af93ab67e58af/Art/Review/Battle/appearance-synchronized-v1/decoded/states-006.png"
+    },
+    {
+      "path": "Art/Review/Battle/appearance-synchronized-v1/decoded/states-007.png",
+      "status": 200,
+      "bytes": 170956,
+      "sha256": "a0be5a0ddb29668d6102d6ca0a3ca68f6c9bf614da414f5def7eaa2a36e4bea8",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ece5c5892ab40b0c60869af60d6af93ab67e58af/Art/Review/Battle/appearance-synchronized-v1/decoded/states-007.png"
+    },
+    {
+      "path": "Art/Review/Battle/appearance-synchronized-v1/decoded/states-008.png",
+      "status": 200,
+      "bytes": 157205,
+      "sha256": "a3c78a11e01863c4042246ee42ab6422d9905437702769ec3e155f27ac0311e2",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ece5c5892ab40b0c60869af60d6af93ab67e58af/Art/Review/Battle/appearance-synchronized-v1/decoded/states-008.png"
+    },
+    {
+      "path": "Art/Review/Battle/appearance-synchronized-v1/decoded/states-009.png",
+      "status": 200,
+      "bytes": 158874,
+      "sha256": "76b23e1d63106372c4ce1869832e61662ad23a43b756703450847a6e1c4e07f5",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ece5c5892ab40b0c60869af60d6af93ab67e58af/Art/Review/Battle/appearance-synchronized-v1/decoded/states-009.png"
+    },
+    {
+      "path": "Art/Review/Battle/appearance-synchronized-v1/decoded/states-010.png",
+      "status": 200,
+      "bytes": 152034,
+      "sha256": "6cb9c5326a2eb04f15d278671e1bd33cad43e50d9cb61dd5f9a1f7c177889872",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ece5c5892ab40b0c60869af60d6af93ab67e58af/Art/Review/Battle/appearance-synchronized-v1/decoded/states-010.png"
+    },
+    {
+      "path": "Art/Review/Battle/appearance-synchronized-v1/decoded/states-011.png",
+      "status": 200,
+      "bytes": 199401,
+      "sha256": "f20f4016e4ab56b7dc1cb466b70f4fa6ee9f1f1fc33f4d3862f9b93d4c211b7b",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ece5c5892ab40b0c60869af60d6af93ab67e58af/Art/Review/Battle/appearance-synchronized-v1/decoded/states-011.png"
+    },
+    {
+      "path": "Art/Review/Battle/appearance-synchronized-v1/decoded/states-012.png",
+      "status": 200,
+      "bytes": 183632,
+      "sha256": "24174e164fdc04490a0a9c566628dea546512160f495fe77d134916982e512a2",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ece5c5892ab40b0c60869af60d6af93ab67e58af/Art/Review/Battle/appearance-synchronized-v1/decoded/states-012.png"
+    },
+    {
+      "path": "Art/Review/Battle/appearance-synchronized-v1/decoded/states-013.png",
+      "status": 200,
+      "bytes": 187025,
+      "sha256": "809cb8154a2f5d0766b173bc014c7a6651390317d08902c1c3d5047cc4564379",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ece5c5892ab40b0c60869af60d6af93ab67e58af/Art/Review/Battle/appearance-synchronized-v1/decoded/states-013.png"
+    },
+    {
+      "path": "Art/Review/Battle/appearance-synchronized-v1/decoded/states-014.png",
+      "status": 200,
+      "bytes": 178049,
+      "sha256": "af55eb1d7af09c4ca6176bb10b89870f9bc2cc3fb32dcc87b4aa3f2cf7c1304a",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ece5c5892ab40b0c60869af60d6af93ab67e58af/Art/Review/Battle/appearance-synchronized-v1/decoded/states-014.png"
+    },
+    {
+      "path": "Art/Review/Battle/appearance-synchronized-v1/decoded/states-015.png",
+      "status": 200,
+      "bytes": 172746,
+      "sha256": "1b6cb1d3bafef8c1fe5ebffa591eca49efa72d1cb346bcc63a18302c5186a70f",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ece5c5892ab40b0c60869af60d6af93ab67e58af/Art/Review/Battle/appearance-synchronized-v1/decoded/states-015.png"
+    },
+    {
+      "path": "Art/Review/Battle/appearance-synchronized-v1/decoded/states-016.png",
+      "status": 200,
+      "bytes": 171296,
+      "sha256": "47b265f565807146701e1bf875389d5b7ca3aa692daff70e3b475cf8a43e1fd5",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ece5c5892ab40b0c60869af60d6af93ab67e58af/Art/Review/Battle/appearance-synchronized-v1/decoded/states-016.png"
+    },
+    {
+      "path": "Art/Review/Battle/appearance-synchronized-v1/decoded/states-017.png",
+      "status": 200,
+      "bytes": 166189,
+      "sha256": "0e304f20709565a7465c8891af3863fd6ecf347507036e8ff2fbaa7f27ab6172",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ece5c5892ab40b0c60869af60d6af93ab67e58af/Art/Review/Battle/appearance-synchronized-v1/decoded/states-017.png"
+    },
+    {
+      "path": "Art/Review/Battle/appearance-synchronized-v1/decoded/states-018.png",
+      "status": 200,
+      "bytes": 145229,
+      "sha256": "463789170513669339255d8c5a84319aab21e6050f7ed61d858528ae0b57427d",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ece5c5892ab40b0c60869af60d6af93ab67e58af/Art/Review/Battle/appearance-synchronized-v1/decoded/states-018.png"
+    },
+    {
+      "path": "Art/Review/Battle/appearance-synchronized-v1/decoded/states-019.png",
+      "status": 200,
+      "bytes": 137159,
+      "sha256": "70153b0eda653aa62bc54b93a9e5aa76d856f267355b561e12406f8000d0ac73",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ece5c5892ab40b0c60869af60d6af93ab67e58af/Art/Review/Battle/appearance-synchronized-v1/decoded/states-019.png"
+    },
+    {
+      "path": "Art/Review/Battle/appearance-synchronized-v1/decoded/states-020.png",
+      "status": 200,
+      "bytes": 151811,
+      "sha256": "d3f627f2fb6885286d260c9fa1e6e1358dae4f18f7540b7b11e0a74fe225ee81",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ece5c5892ab40b0c60869af60d6af93ab67e58af/Art/Review/Battle/appearance-synchronized-v1/decoded/states-020.png"
+    },
+    {
+      "path": "Art/Review/Battle/appearance-synchronized-v1/decoded/states-021.png",
+      "status": 200,
+      "bytes": 161646,
+      "sha256": "41b38910fa8260cc966143c3314c4246f7cd960fd514de3829c7b72f40f8d3d1",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ece5c5892ab40b0c60869af60d6af93ab67e58af/Art/Review/Battle/appearance-synchronized-v1/decoded/states-021.png"
+    },
+    {
+      "path": "Art/Review/Battle/appearance-synchronized-v1/decoded/states-022.png",
+      "status": 200,
+      "bytes": 157264,
+      "sha256": "57e596098bab5e2be2c5845bbd47898c911da582588fb06d7370dd2b7af323bb",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ece5c5892ab40b0c60869af60d6af93ab67e58af/Art/Review/Battle/appearance-synchronized-v1/decoded/states-022.png"
+    },
+    {
+      "path": "Art/Review/Battle/appearance-synchronized-v1/decoded/states-023.png",
+      "status": 200,
+      "bytes": 150657,
+      "sha256": "a4a680594dc37f656494cf5d279189eb67c2d9e932d6bba55d00381299b26e13",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ece5c5892ab40b0c60869af60d6af93ab67e58af/Art/Review/Battle/appearance-synchronized-v1/decoded/states-023.png"
+    },
+    {
+      "path": "Art/Review/Battle/appearance-synchronized-v1/decoded/states-024.png",
+      "status": 200,
+      "bytes": 145543,
+      "sha256": "8fc6359bd2955785a4f42c987f69f50679870db191107df3bbbccec0b1ab7108",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ece5c5892ab40b0c60869af60d6af93ab67e58af/Art/Review/Battle/appearance-synchronized-v1/decoded/states-024.png"
+    },
+    {
+      "path": "Art/Review/Battle/appearance-synchronized-v1/decoded/states-025.png",
+      "status": 200,
+      "bytes": 154691,
+      "sha256": "307968de638c2ca93966d374e800c84bc11b7bf321cca086382c1fdde418574b",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ece5c5892ab40b0c60869af60d6af93ab67e58af/Art/Review/Battle/appearance-synchronized-v1/decoded/states-025.png"
+    },
+    {
+      "path": "Art/Review/Battle/appearance-synchronized-v1/decoded/states-026.png",
+      "status": 200,
+      "bytes": 153979,
+      "sha256": "516f8196b0eb96f4bf68f3d9761bdbe2eae09a88416ab4bd5ea1f0f4bb1b9a2e",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ece5c5892ab40b0c60869af60d6af93ab67e58af/Art/Review/Battle/appearance-synchronized-v1/decoded/states-026.png"
+    },
+    {
+      "path": "Art/Review/Battle/appearance-synchronized-v1/decoded/states-027.png",
+      "status": 200,
+      "bytes": 151924,
+      "sha256": "ece25118212d352727d08d9d648993b4d3fae72b3e8c49a3450f611c07154371",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ece5c5892ab40b0c60869af60d6af93ab67e58af/Art/Review/Battle/appearance-synchronized-v1/decoded/states-027.png"
+    },
+    {
+      "path": "Art/Review/Battle/appearance-synchronized-v1/decoded/states-028.png",
+      "status": 200,
+      "bytes": 166983,
+      "sha256": "d6948568e883ca2e5523f723357ecbba22303c2210b51f5ad5ab5ebc3b9424cf",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ece5c5892ab40b0c60869af60d6af93ab67e58af/Art/Review/Battle/appearance-synchronized-v1/decoded/states-028.png"
+    },
+    {
+      "path": "Art/Review/Battle/appearance-synchronized-v1/decoded/states-029.png",
+      "status": 200,
+      "bytes": 180193,
+      "sha256": "d344fbb60e33536a0186f17756c5babfe280ed6ace68d8f423739b5a3f8653f3",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ece5c5892ab40b0c60869af60d6af93ab67e58af/Art/Review/Battle/appearance-synchronized-v1/decoded/states-029.png"
+    },
+    {
+      "path": "Art/Review/Battle/appearance-synchronized-v1/decoded/states-030.png",
+      "status": 200,
+      "bytes": 209735,
+      "sha256": "36e9409933bb114434b18e59f5647292cb1b94ba8a1e5739bb4cf644f15526ca",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ece5c5892ab40b0c60869af60d6af93ab67e58af/Art/Review/Battle/appearance-synchronized-v1/decoded/states-030.png"
+    },
+    {
+      "path": "Art/Review/Battle/appearance-synchronized-v1/decoded/states-031.png",
+      "status": 200,
+      "bytes": 215673,
+      "sha256": "9e9f3c17cd349ec1294b7b10cdb419e4a1a15d444af8e14288d97e68c8d50d91",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ece5c5892ab40b0c60869af60d6af93ab67e58af/Art/Review/Battle/appearance-synchronized-v1/decoded/states-031.png"
+    },
+    {
+      "path": "Art/Review/Battle/appearance-synchronized-v1/decoded/states-032.png",
+      "status": 200,
+      "bytes": 220612,
+      "sha256": "d1ff0c93c7f918d9c1fa9937d0e0b30aef413927c8186ffa35dee664a2ece984",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ece5c5892ab40b0c60869af60d6af93ab67e58af/Art/Review/Battle/appearance-synchronized-v1/decoded/states-032.png"
+    },
+    {
+      "path": "Art/Review/Battle/appearance-synchronized-v1/decoded/states-033.png",
+      "status": 200,
+      "bytes": 217750,
+      "sha256": "55e8463cd5603907c44c5beea8bc641a838a2bc28f7e08b3add8f189e192c060",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ece5c5892ab40b0c60869af60d6af93ab67e58af/Art/Review/Battle/appearance-synchronized-v1/decoded/states-033.png"
+    },
+    {
+      "path": "Art/Review/Battle/appearance-synchronized-v1/decoded/states-034.png",
+      "status": 200,
+      "bytes": 170163,
+      "sha256": "f552225b5d3f3564b5680da8cbd12932924d910a059bc2d1378616f0e6be9f95",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ece5c5892ab40b0c60869af60d6af93ab67e58af/Art/Review/Battle/appearance-synchronized-v1/decoded/states-034.png"
+    },
+    {
+      "path": "Art/Review/Battle/appearance-synchronized-v1/decoded/states-035.png",
+      "status": 200,
+      "bytes": 154353,
+      "sha256": "a05a838fa5410a116795f316398cc71ce5ab200f6d71006c2e739df139f1b3c5",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ece5c5892ab40b0c60869af60d6af93ab67e58af/Art/Review/Battle/appearance-synchronized-v1/decoded/states-035.png"
+    },
+    {
+      "path": "Art/Review/Battle/appearance-synchronized-v1/decoded/states-036.png",
+      "status": 200,
+      "bytes": 188092,
+      "sha256": "c1e008358e3979df8603b68a3a76b4c7b04a10eb2f632dea3a1537956660d887",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ece5c5892ab40b0c60869af60d6af93ab67e58af/Art/Review/Battle/appearance-synchronized-v1/decoded/states-036.png"
+    },
+    {
+      "path": "Art/Review/Battle/appearance-synchronized-v1/decoded/states-037.png",
+      "status": 200,
+      "bytes": 220135,
+      "sha256": "6818246b691cdd06913cd4f9378c7668278ca911031fcf471ccd1d39ada0af65",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ece5c5892ab40b0c60869af60d6af93ab67e58af/Art/Review/Battle/appearance-synchronized-v1/decoded/states-037.png"
+    },
+    {
+      "path": "Art/Review/Battle/appearance-synchronized-v1/decoded/states-038.png",
+      "status": 200,
+      "bytes": 217403,
+      "sha256": "6611cfb0bd54aa0a9496399f808415261ef39b940056d1ab3ad37bcd8c93fe92",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ece5c5892ab40b0c60869af60d6af93ab67e58af/Art/Review/Battle/appearance-synchronized-v1/decoded/states-038.png"
+    },
+    {
+      "path": "Art/Review/Battle/appearance-synchronized-v1/decoded/states-039.png",
+      "status": 200,
+      "bytes": 201724,
+      "sha256": "5ba1e5d8b48a84860e3aca838c23354d5a6ba7488f5dc914c39ac1b0f398b587",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ece5c5892ab40b0c60869af60d6af93ab67e58af/Art/Review/Battle/appearance-synchronized-v1/decoded/states-039.png"
+    },
+    {
+      "path": "Art/Review/Battle/appearance-synchronized-v1/decoded/states-040.png",
+      "status": 200,
+      "bytes": 166329,
+      "sha256": "724667c86f447e018827a961c6571f240c29affe534664dbc3a64c8b5e9e9ba0",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ece5c5892ab40b0c60869af60d6af93ab67e58af/Art/Review/Battle/appearance-synchronized-v1/decoded/states-040.png"
+    },
+    {
+      "path": "Art/Review/Battle/appearance-synchronized-v1/decoded/states-041.png",
+      "status": 200,
+      "bytes": 66418,
+      "sha256": "0fd7bf64d4e4e3d975257d92c87c58f28a1e655e6e1ed1318d6e5843d5c6e453",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ece5c5892ab40b0c60869af60d6af93ab67e58af/Art/Review/Battle/appearance-synchronized-v1/decoded/states-041.png"
+    },
+    {
+      "path": "Art/Review/Battle/appearance-synchronized-v1/dragonArmor-greatSword-states-1x.png",
+      "status": 200,
+      "bytes": 281098,
+      "sha256": "362ef3b17ab7d380594d408609e42fcc64b38f7b67585a8e1485f3a45069f14d",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ece5c5892ab40b0c60869af60d6af93ab67e58af/Art/Review/Battle/appearance-synchronized-v1/dragonArmor-greatSword-states-1x.png"
+    },
+    {
+      "path": "Art/Review/Battle/appearance-synchronized-v1/dragonArmor-greatSword-states-2x.png",
+      "status": 200,
+      "bytes": 391634,
+      "sha256": "4c2b490442818f6c96d1babe7c4d2085ddeedbf9e96153129a460d193c720d97",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ece5c5892ab40b0c60869af60d6af93ab67e58af/Art/Review/Battle/appearance-synchronized-v1/dragonArmor-greatSword-states-2x.png"
+    },
+    {
+      "path": "Art/Review/Battle/appearance-synchronized-v1/dragonArmor-huntingBow-states-1x.png",
+      "status": 200,
+      "bytes": 222602,
+      "sha256": "edc6f4d3efa10394eb56aaaab2d808061fa75584b966f34cf56b3c774b515d2f",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ece5c5892ab40b0c60869af60d6af93ab67e58af/Art/Review/Battle/appearance-synchronized-v1/dragonArmor-huntingBow-states-1x.png"
+    },
+    {
+      "path": "Art/Review/Battle/appearance-synchronized-v1/dragonArmor-huntingBow-states-2x.png",
+      "status": 200,
+      "bytes": 319215,
+      "sha256": "e13b23a581546ef0c616da1f50df8900b807d6f45222d60a4017670f28363bd1",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ece5c5892ab40b0c60869af60d6af93ab67e58af/Art/Review/Battle/appearance-synchronized-v1/dragonArmor-huntingBow-states-2x.png"
+    },
+    {
+      "path": "Art/Review/Battle/appearance-synchronized-v1/dragonArmor-legendaryStaff-states-1x.png",
+      "status": 200,
+      "bytes": 259433,
+      "sha256": "b7ebfe5334c860a3391c23cee1ee08675c59bb9025be9256b480b1e8738cf77c",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ece5c5892ab40b0c60869af60d6af93ab67e58af/Art/Review/Battle/appearance-synchronized-v1/dragonArmor-legendaryStaff-states-1x.png"
+    },
+    {
+      "path": "Art/Review/Battle/appearance-synchronized-v1/dragonArmor-legendaryStaff-states-2x.png",
+      "status": 200,
+      "bytes": 358258,
+      "sha256": "a50698a7c7bc502220b3b6333a05d8f732815ae69ff04a4ac17116e7509e12f4",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ece5c5892ab40b0c60869af60d6af93ab67e58af/Art/Review/Battle/appearance-synchronized-v1/dragonArmor-legendaryStaff-states-2x.png"
+    },
+    {
+      "path": "Art/Review/Battle/appearance-synchronized-v1/dragonArmor-trainingSword-states-1x.png",
+      "status": 200,
+      "bytes": 221559,
+      "sha256": "dda3f99db68a219816418944975bfc7540c55ba72d4b878f64bf57d0de876f0e",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ece5c5892ab40b0c60869af60d6af93ab67e58af/Art/Review/Battle/appearance-synchronized-v1/dragonArmor-trainingSword-states-1x.png"
+    },
+    {
+      "path": "Art/Review/Battle/appearance-synchronized-v1/dragonArmor-trainingSword-states-2x.png",
+      "status": 200,
+      "bytes": 309874,
+      "sha256": "7ed1005d78d80f9a217dc0a26a77fb778e554f681651a02e937ec71297942bea",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ece5c5892ab40b0c60869af60d6af93ab67e58af/Art/Review/Battle/appearance-synchronized-v1/dragonArmor-trainingSword-states-2x.png"
+    },
+    {
+      "path": "Art/Review/Battle/appearance-synchronized-v1/female-all-faces-two-scenes-1x.png",
+      "status": 200,
+      "bytes": 130979,
+      "sha256": "37cf62734a811c78f45be94e9b5ed173753ec0329ecd52babd899b61fddd7b74",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ece5c5892ab40b0c60869af60d6af93ab67e58af/Art/Review/Battle/appearance-synchronized-v1/female-all-faces-two-scenes-1x.png"
+    },
+    {
+      "path": "Art/Review/Battle/appearance-synchronized-v1/female-paired-attack-phases-1x.png",
+      "status": 200,
+      "bytes": 395403,
+      "sha256": "a34b178b865c8e4fe04cb62326362dca582b7d333927afc764b0dd1b6c849b2a",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ece5c5892ab40b0c60869af60d6af93ab67e58af/Art/Review/Battle/appearance-synchronized-v1/female-paired-attack-phases-1x.png"
+    },
+    {
+      "path": "Art/Review/Battle/appearance-synchronized-v1/main-agent-art-review.json",
+      "status": 200,
+      "bytes": 627,
+      "sha256": "d95cb33263fb9297fec63ae1e328a7616c6b1aee6a7f0a3bf7bd9a4dba9f80cd",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ece5c5892ab40b0c60869af60d6af93ab67e58af/Art/Review/Battle/appearance-synchronized-v1/main-agent-art-review.json"
+    },
+    {
+      "path": "Art/Review/Battle/appearance-synchronized-v1/male-all-faces-two-scenes-1x.png",
+      "status": 200,
+      "bytes": 130014,
+      "sha256": "66ddfc14d9ea89156c28c4c1b0a810ddfa903be365cdfeab932a7be1ed0ab02a",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ece5c5892ab40b0c60869af60d6af93ab67e58af/Art/Review/Battle/appearance-synchronized-v1/male-all-faces-two-scenes-1x.png"
+    },
+    {
+      "path": "Art/Review/Battle/appearance-synchronized-v1/male-paired-attack-phases-1x.png",
+      "status": 200,
+      "bytes": 375448,
+      "sha256": "32400d384f22b16c947fedd841f169cbc1f4aae99a5941682a9ebcf823b81afb",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ece5c5892ab40b0c60869af60d6af93ab67e58af/Art/Review/Battle/appearance-synchronized-v1/male-paired-attack-phases-1x.png"
+    },
+    {
+      "path": "Art/Review/Battle/appearance-synchronized-v1/paired-actual-decoded-000.png",
+      "status": 200,
+      "bytes": 80499,
+      "sha256": "0a6b7944a8c3217f071ec7b3864221257b704c7c8b98799a5a3fb957bde57c8c",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ece5c5892ab40b0c60869af60d6af93ab67e58af/Art/Review/Battle/appearance-synchronized-v1/paired-actual-decoded-000.png"
+    },
+    {
+      "path": "Art/Review/Battle/appearance-synchronized-v1/paired-actual-decoded-028.png",
+      "status": 200,
+      "bytes": 93206,
+      "sha256": "55943df04789bb8694a3ec00d3dbb6bfd52a683667d1c6209123debf648f03fe",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ece5c5892ab40b0c60869af60d6af93ab67e58af/Art/Review/Battle/appearance-synchronized-v1/paired-actual-decoded-028.png"
+    },
+    {
+      "path": "Art/Review/Battle/appearance-synchronized-v1/paired-actual-decoded-056.png",
+      "status": 200,
+      "bytes": 87700,
+      "sha256": "0f1e83dcd28c93c6e46af951b5328522c27aa3ea295e2b2184238fb7ce32deb9",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ece5c5892ab40b0c60869af60d6af93ab67e58af/Art/Review/Battle/appearance-synchronized-v1/paired-actual-decoded-056.png"
+    },
+    {
+      "path": "Art/Review/Battle/appearance-synchronized-v1/paired-actual-decoded-084.png",
+      "status": 200,
+      "bytes": 78100,
+      "sha256": "0c402cece6d0371f4514442cba71cd7ed642cecd6fe4d1683b2028f7872be59b",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ece5c5892ab40b0c60869af60d6af93ab67e58af/Art/Review/Battle/appearance-synchronized-v1/paired-actual-decoded-084.png"
+    },
+    {
+      "path": "Art/Review/Battle/appearance-synchronized-v1/starlightArmor-greatSword-states-1x.png",
+      "status": 200,
+      "bytes": 283670,
+      "sha256": "2d341edc41970cd56b31e9a348263c2ba9e995a76085b419180f8890917ba2ca",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ece5c5892ab40b0c60869af60d6af93ab67e58af/Art/Review/Battle/appearance-synchronized-v1/starlightArmor-greatSword-states-1x.png"
+    },
+    {
+      "path": "Art/Review/Battle/appearance-synchronized-v1/starlightArmor-greatSword-states-2x.png",
+      "status": 200,
+      "bytes": 393351,
+      "sha256": "59273f0b4af5858c7bec2108e73112d74bdc7a3cfa926860b729504d723e802a",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ece5c5892ab40b0c60869af60d6af93ab67e58af/Art/Review/Battle/appearance-synchronized-v1/starlightArmor-greatSword-states-2x.png"
+    },
+    {
+      "path": "Art/Review/Battle/appearance-synchronized-v1/starlightArmor-huntingBow-states-1x.png",
+      "status": 200,
+      "bytes": 224478,
+      "sha256": "c22aaea9ba8b839a788f3f0e7cd36c3d516d463b870bc7bf1bfa18961dd9b72d",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ece5c5892ab40b0c60869af60d6af93ab67e58af/Art/Review/Battle/appearance-synchronized-v1/starlightArmor-huntingBow-states-1x.png"
+    },
+    {
+      "path": "Art/Review/Battle/appearance-synchronized-v1/starlightArmor-huntingBow-states-2x.png",
+      "status": 200,
+      "bytes": 319324,
+      "sha256": "46272a49994d6cdbdfa40627a5081e4d66d2845d47fcdda9423a2e8a5d93aef0",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ece5c5892ab40b0c60869af60d6af93ab67e58af/Art/Review/Battle/appearance-synchronized-v1/starlightArmor-huntingBow-states-2x.png"
+    },
+    {
+      "path": "Art/Review/Battle/appearance-synchronized-v1/starlightArmor-legendaryStaff-states-1x.png",
+      "status": 200,
+      "bytes": 264309,
+      "sha256": "532a1736d04ad546f7a5ee3bf63a60036329c90a4c1eabe9c0172dfdea326e1c",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ece5c5892ab40b0c60869af60d6af93ab67e58af/Art/Review/Battle/appearance-synchronized-v1/starlightArmor-legendaryStaff-states-1x.png"
+    },
+    {
+      "path": "Art/Review/Battle/appearance-synchronized-v1/starlightArmor-legendaryStaff-states-2x.png",
+      "status": 200,
+      "bytes": 364283,
+      "sha256": "9f1db8983b9f4b4429ade210fb1aa465d709f69b54ccf9131b221290c20ff2a2",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ece5c5892ab40b0c60869af60d6af93ab67e58af/Art/Review/Battle/appearance-synchronized-v1/starlightArmor-legendaryStaff-states-2x.png"
+    },
+    {
+      "path": "Art/Review/Battle/appearance-synchronized-v1/starlightArmor-trainingSword-states-1x.png",
+      "status": 200,
+      "bytes": 224481,
+      "sha256": "6e6bda3524a177e60e0e22cb1d3f7874103283f23c00cbb172f9747233936dc0",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ece5c5892ab40b0c60869af60d6af93ab67e58af/Art/Review/Battle/appearance-synchronized-v1/starlightArmor-trainingSword-states-1x.png"
+    },
+    {
+      "path": "Art/Review/Battle/appearance-synchronized-v1/starlightArmor-trainingSword-states-2x.png",
+      "status": 200,
+      "bytes": 313676,
+      "sha256": "ef07de2b4df9435c371960a95d12eaabc2667d8b868a06e280218d67a094ca43",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ece5c5892ab40b0c60869af60d6af93ab67e58af/Art/Review/Battle/appearance-synchronized-v1/starlightArmor-trainingSword-states-2x.png"
+    },
+    {
+      "path": "Art/Review/Battle/appearance-synchronized-v1/sync-verification.json",
+      "status": 200,
+      "bytes": 427007,
+      "sha256": "2ebd7fdcb49d7232d9950cd896124be6cf7f8b81963a46d7f5352684d2da0813",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ece5c5892ab40b0c60869af60d6af93ab67e58af/Art/Review/Battle/appearance-synchronized-v1/sync-verification.json"
+    },
+    {
+      "path": "Art/Review/Battle/appearance-synchronized-v1/unchanged-art-inputs.json",
+      "status": 200,
+      "bytes": 58507,
+      "sha256": "6d3a9c825178de2c1eb81d2c4325bc0817b076e2b27ad196d2eae8807af67398",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ece5c5892ab40b0c60869af60d6af93ab67e58af/Art/Review/Battle/appearance-synchronized-v1/unchanged-art-inputs.json"
+    },
+    {
+      "path": "Art/Review/Battle/appearance-synchronized-v1/walking-battle-same-head-1x.png",
+      "status": 200,
+      "bytes": 91772,
+      "sha256": "48c6a858c3312b9c00d397bef99c16aa2066b8f3f7abb400542c17f583f6d7f6",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ece5c5892ab40b0c60869af60d6af93ab67e58af/Art/Review/Battle/appearance-synchronized-v1/walking-battle-same-head-1x.png"
+    },
+    {
+      "path": "Art/Review/Battle/appearance-synchronized-v1/walking-battle-same-head-2x.png",
+      "status": 200,
+      "bytes": 124680,
+      "sha256": "82dbc0ad98effeae98e818f376034a02e4bbccdb4b2bdcb49aeba402848ea5f5",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ece5c5892ab40b0c60869af60d6af93ab67e58af/Art/Review/Battle/appearance-synchronized-v1/walking-battle-same-head-2x.png"
+    },
+    {
+      "path": "Art/Review/Battle/appearance-synchronized-v1/walking-battle-same-head-normal.gif",
+      "status": 200,
+      "bytes": 1478176,
+      "sha256": "e5965d7c41572c7a70d19da9f580555d986389e9573f2ae24579d976effa963d",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ece5c5892ab40b0c60869af60d6af93ab67e58af/Art/Review/Battle/appearance-synchronized-v1/walking-battle-same-head-normal.gif"
+    },
+    {
+      "path": "Art/Review/Battle/chat-apparel-b-v1/README.md",
+      "status": 200,
+      "bytes": 1900,
+      "sha256": "a414a85a05fa33f728873d909050defcaf344a80739d233a607f2e3dbbb777da",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ece5c5892ab40b0c60869af60d6af93ab67e58af/Art/Review/Battle/chat-apparel-b-v1/README.md"
+    },
+    {
+      "path": "Art/Review/P1/custom-heads-v1/README.md",
+      "status": 200,
+      "bytes": 1800,
+      "sha256": "4a5965c0ffa2fe95941cf65f164b8834b9d7120a16b626f9a9f592d670286797",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ece5c5892ab40b0c60869af60d6af93ab67e58af/Art/Review/P1/custom-heads-v1/README.md"
+    },
+    {
+      "path": "docs/ITERATION_STATUS.md",
+      "status": 200,
+      "bytes": 546574,
+      "sha256": "2b837590e4b27cce1c722220abe25335334d1540a7ba24a6db7d3509ca0ebca8",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ece5c5892ab40b0c60869af60d6af93ab67e58af/docs/ITERATION_STATUS.md"
+    },
+    {
+      "path": "scripts/appearance-scene-binding.py",
+      "status": 200,
+      "bytes": 3528,
+      "sha256": "fe3c2f8aef67954183e1bd20bf59ebe893bc8b943ae92afbce06013d209352b4",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ece5c5892ab40b0c60869af60d6af93ab67e58af/scripts/appearance-scene-binding.py"
+    },
+    {
+      "path": "scripts/build-chat-apparel-b-battle.py",
+      "status": 200,
+      "bytes": 20745,
+      "sha256": "30f55cec3f0fb329960c8666a584547ed7a9383bbc049efd07e4d9e078283155",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ece5c5892ab40b0c60869af60d6af93ab67e58af/scripts/build-chat-apparel-b-battle.py"
+    },
+    {
+      "path": "scripts/build-custom-heads-v1.py",
+      "status": 200,
+      "bytes": 22392,
+      "sha256": "2ec73e7b5c1e53b0ddf95f4b1ae24fd335e281f483a9c9d004a0704e541e1efb",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ece5c5892ab40b0c60869af60d6af93ab67e58af/scripts/build-custom-heads-v1.py"
+    },
+    {
+      "path": "scripts/review-synchronized-appearance.py",
+      "status": 200,
+      "bytes": 8199,
+      "sha256": "dc56171c4cc7d464701fd97822f909fa70c011e7723cef96fd49d4ebe319cf86",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ece5c5892ab40b0c60869af60d6af93ab67e58af/scripts/review-synchronized-appearance.py"
+    }
+  ],
+  "failures": [],
+  "publicationJob": {
+    "runID": 42434021318,
+    "jobID": 128588869390,
+    "status": "completed",
+    "conclusion": "success",
+    "transportHead": "8d5649f2759964210a5d99fa6dce79a21d1820ac",
+    "allStepsSucceeded": true,
+    "temporaryBranchAndWorkflowRemoved": true
+  },
+  "original226PNGSource": "3ef48ebdb43d608d459fc438714fe0f6e1ed6d29",
+  "runtimeIntegrated": false
+}

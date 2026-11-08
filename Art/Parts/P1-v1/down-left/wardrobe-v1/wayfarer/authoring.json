@@ -1,0 +1,28 @@
+{
+  "pack": "wayfarer",
+  "recipe": {
+    "paint": {
+      "image": "source/wayfarer-generated.png",
+      "canvas": [
+        1254,
+        1254
+      ],
+      "sha256": "5d937e1cd1d1fa50b7fbe37078eba7d72a647ea35db48ca935e4c31e058822ff",
+      "scale": 0.20414673046251994,
+      "translation": [
+        0,
+        0
+      ]
+    },
+    "mattes": {
+      "outfit.torso": "source/mattes/wayfarer-outfit.torso.png",
+      "outfit.sleeve.left": "source/mattes/wayfarer-outfit.sleeve.left.png",
+      "outfit.sleeve.right": "source/mattes/wayfarer-outfit.sleeve.right.png"
+    },
+    "sourceUV": "source/common-uv"
+  },
+  "originalSource": "source/original.png",
+  "authorAndReviewer": "root",
+  "artApproval": null,
+  "geometryFit": false
+}

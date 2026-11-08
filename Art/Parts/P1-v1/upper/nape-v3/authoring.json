@@ -1,0 +1,36 @@
+{
+  "rawSource": "source/generated.png",
+  "repairROI": {
+    "up-left": [
+      130,
+      123,
+      140,
+      131
+    ],
+    "up-right": [
+      115,
+      123,
+      125,
+      131
+    ]
+  },
+  "darkEdgeMax": 90,
+  "sourceGuide": "source/neutral-neck-guide.png",
+  "registration": "Uniform full-canvas192x96; fixed tile origin80,64; no alpha fitting",
+  "sourceSelection": "Only dark nape pixels in explicit joint ROI; head pixels must overlap original torso skin",
+  "preserve": "All alpha, limbs, head geometry, joints, motion, outfits, hair and lower-v2",
+  "owner": "root",
+  "subagentsUsed": false,
+  "artApproval": null,
+  "paintSampleOffset": {
+    "up-left": [
+      -4,
+      2
+    ],
+    "up-right": [
+      4,
+      2
+    ]
+  },
+  "paintSampleOffsetReason": "Explicit sample registration to artist-painted interior nape skin; preserve original geometry and avoid generated external head outline."
+}

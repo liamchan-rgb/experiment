@@ -1,0 +1,259 @@
+{
+  "source": "motion joints; missing profile wrist uses existing cuff_marker on original hand pixels",
+  "views": {
+    "front": {
+      "shoulderRight": [
+        114.0,
+        136.0
+      ],
+      "shoulderLeft": [
+        144.0,
+        136.0
+      ],
+      "elbowRight": [
+        108.0,
+        153.0
+      ],
+      "elbowLeft": [
+        150.0,
+        153.0
+      ],
+      "hipRight": [
+        121,
+        175
+      ],
+      "hipLeft": [
+        139,
+        175
+      ],
+      "kneeRight": [
+        122,
+        187
+      ],
+      "kneeLeft": [
+        138,
+        187
+      ],
+      "ankleRight": [
+        120,
+        204
+      ],
+      "ankleLeft": [
+        138,
+        204
+      ],
+      "neck": [
+        128,
+        132
+      ],
+      "wristLeft": [
+        152.0,
+        167.0
+      ],
+      "wristRight": [
+        106.0,
+        167.0
+      ]
+    },
+    "front-quarter-left": {
+      "hipLeft": [
+        136.0,
+        171.0
+      ],
+      "kneeLeft": [
+        140.0,
+        188.0
+      ],
+      "ankleLeft": [
+        141.0,
+        206.0
+      ],
+      "shoulderLeft": [
+        141.0,
+        139.0
+      ],
+      "elbowLeft": [
+        147.0,
+        152.0
+      ],
+      "wristLeft": [
+        151.0,
+        167.0
+      ],
+      "hipRight": [
+        120.0,
+        170.0
+      ],
+      "kneeRight": [
+        119.0,
+        184.0
+      ],
+      "ankleRight": [
+        120.0,
+        199.0
+      ],
+      "shoulderRight": [
+        115.0,
+        137.0
+      ],
+      "elbowRight": [
+        111.0,
+        149.0
+      ],
+      "wristRight": [
+        108.0,
+        161.0
+      ],
+      "neck": [
+        128.0,
+        132.0
+      ]
+    },
+    "profile-left": {
+      "neck": [
+        128,
+        132
+      ],
+      "shoulderLeft": [
+        132,
+        138
+      ],
+      "shoulderRight": [
+        125,
+        140
+      ],
+      "elbowLeft": [
+        134,
+        153
+      ],
+      "elbowRight": [
+        142,
+        152
+      ],
+      "hipLeft": [
+        132,
+        176
+      ],
+      "hipRight": [
+        125,
+        176
+      ],
+      "wristLeft": [
+        130.2,
+        165.2
+      ],
+      "wristRight": [
+        143.2,
+        162.2
+      ]
+    },
+    "rear-quarter-left": {
+      "hipLeft": [
+        119.0,
+        168.0
+      ],
+      "kneeLeft": [
+        122.0,
+        189.0
+      ],
+      "ankleLeft": [
+        123.0,
+        206.0
+      ],
+      "shoulderLeft": [
+        115.0,
+        137.0
+      ],
+      "elbowLeft": [
+        110.0,
+        153.0
+      ],
+      "wristLeft": [
+        104.0,
+        167.0
+      ],
+      "hipRight": [
+        137.0,
+        168.0
+      ],
+      "kneeRight": [
+        137.0,
+        189.0
+      ],
+      "ankleRight": [
+        139.0,
+        204.0
+      ],
+      "shoulderRight": [
+        143.0,
+        137.0
+      ],
+      "elbowRight": [
+        147.0,
+        152.0
+      ],
+      "wristRight": [
+        150.0,
+        166.0
+      ],
+      "neck": [
+        128.0,
+        132.0
+      ]
+    },
+    "back": {
+      "hipLeft": [
+        119.0,
+        168.0
+      ],
+      "kneeLeft": [
+        119.0,
+        192.0
+      ],
+      "ankleLeft": [
+        118.0,
+        210.0
+      ],
+      "shoulderLeft": [
+        112.0,
+        140.0
+      ],
+      "elbowLeft": [
+        108.0,
+        155.0
+      ],
+      "wristLeft": [
+        104.0,
+        168.0
+      ],
+      "hipRight": [
+        136.0,
+        168.0
+      ],
+      "kneeRight": [
+        137.0,
+        192.0
+      ],
+      "ankleRight": [
+        137.0,
+        210.0
+      ],
+      "shoulderRight": [
+        143.0,
+        140.0
+      ],
+      "elbowRight": [
+        148.0,
+        155.0
+      ],
+      "wristRight": [
+        151.0,
+        168.0
+      ],
+      "neck": [
+        128.0,
+        132.0
+      ]
+    }
+  }
+}

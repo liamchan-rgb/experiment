@@ -14,7 +14,7 @@ struct PreparedMeadow {
 enum MeadowLoader {
     private static let queue = DispatchQueue(label: "meadow.loading", qos: .userInitiated)
 
-    static func load(device: MTLDevice?, diagnosticSize: CGSize? = nil, progress: @escaping (Float, String) -> Void,
+    static func load(device: MTLDevice?, definition supplied: SceneDefinition? = nil, diagnosticSize: CGSize? = nil, progress: @escaping (Float, String) -> Void,
                      completion: @escaping (Result<PreparedMeadow, Error>) -> Void) {
         func report(_ value: Double, _ text: String) {
             DispatchQueue.main.async { progress(Float(value), text) }
@@ -22,9 +22,9 @@ enum MeadowLoader {
         queue.async {
             do {
                 report(0.02, "读取地图")
-                let definition = SceneDefinition.load()
-                let network = TrailNetwork(roads: definition.roads)
-                let mask = MeadowRoadMask.make(network: network, bounds: LivingWorld.bounds) {
+                let definition = supplied ?? SceneDefinition.load()
+                let network = TrailNetwork(roads: definition.roads, patrolStart: definition.startNodeID)
+                let mask = MeadowRoadMask.make(network: network, bounds: definition.worldBounds) {
                     report(0.05 + $0 * 0.22, "准备道路")
                 }
                 let props = definition.props + LivingWorld.meadowDetails(definition: definition, network: network)
@@ -32,7 +32,7 @@ enum MeadowLoader {
                 var images: [String: CGImage] = [:]
                 var textures: [String: SKTexture] = [:]
                 let names = Set(props.map(\.asset) + ["MeadowGround", "Banner"]
-                    + (1...3).flatMap { ["Hero\($0)Directions", "Hero\($0)Diagonals"] }).sorted()
+                    + HeroFrames.atlasNames).sorted()
                 for (index, name) in names.enumerated() {
                     guard let image = UIImage(named: name)?.cgImage else { throw ShadowLabError.setup("素材缺失：\(name)") }
                     images[name] = image
@@ -42,7 +42,7 @@ enum MeadowLoader {
                 if let device {
                     report(0.50, "准备实时投影")
                     var lastStage = ""
-                    renderer = try MeadowShadowRenderer(device: device, props: props, roadMask: mask, images: images) {
+                    renderer = try MeadowShadowRenderer(device: device, props: props, roadMask: mask, bounds: definition.worldBounds, images: images) {
                         report(0.50 + $0 * 0.23, $1)
                         if diagnosticSize != nil, lastStage != $1 {
                             lastStage = $1
@@ -55,7 +55,7 @@ enum MeadowLoader {
                 } else { renderer = nil }
                 // Construct/preload SpriteKit resources only after the native
                 // probes, so a prior SpriteKit fault cannot poison A01...A04.
-                for name in names where !name.hasPrefix("Hero") {
+                for name in names where !HeroFrames.atlasNames.contains(name) {
                     let texture = SKTexture(cgImage: images[name]!); texture.filteringMode = .linear
                     textures[name] = texture
                 }
@@ -64,7 +64,7 @@ enum MeadowLoader {
                     heroes.append(HeroFrames.load(index))
                     report(0.83 + Double(index) * 0.003, "准备旅人")
                 }
-                let effects = EnvironmentShaders()
+                let effects = EnvironmentShaders(worldHeight:definition.worldBounds.height)
                 let prepared = PreparedMeadow(definition: definition, roadMask: mask, props: props,
                                              textures: textures, heroes: heroes, effects: effects, renderer: renderer)
                 report(0.84, "上传场景纹理")

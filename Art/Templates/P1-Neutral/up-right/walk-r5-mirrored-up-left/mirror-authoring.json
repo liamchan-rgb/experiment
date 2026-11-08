@@ -1,0 +1,30 @@
+{
+  "id": "p1-neutral-up-right-walk-r5-mirrored-up-left",
+  "direction": "up-right",
+  "sourceTemplate": "Art/Templates/P1-Neutral/up-left/walk-r5-coupled-clothing",
+  "sourceApproval": "Art/Review/P1/neutral-up-left-r5/approval.json",
+  "sourceManifestSHA256": "5fcbe815e964a50dd82c3f4ec83f5c88371b61fc51ff8ee27e48523797b188e4",
+  "sourceMotionSHA256": "49e1abdebd64414115765642f8b9f8b4c61d26d1c07683eab76aa75a8ddbb0d8",
+  "headLocalCanvas": [
+    96,
+    96
+  ],
+  "mirrorAxisX": 127.5,
+  "status": "main-only-mirror-lighting-candidate",
+  "artApproval": null,
+  "repairAndReviewOwner": "root",
+  "subagentsUsed": false,
+  "lighting": {
+    "mode": "static-source-uv-colours",
+    "textures": "source/relit-textures",
+    "uv": "source/approved-left-uv",
+    "bakeRecord": "source/lighting-bake.json",
+    "reference": "source/relight-generated.png",
+    "alphaOwner": "approved reflection"
+  },
+  "headLocalOriginMirrored": [
+    84,
+    61
+  ],
+  "headLocalTexture": "source/relit-textures/head-local.png"
+}

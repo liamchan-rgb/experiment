@@ -1,0 +1,633 @@
+{
+  "id": "b2-batch-v6",
+  "title": "B2 武器专属演出 · 批量审核",
+  "date": "2026-10-27",
+  "bodyCanvas": [
+    256,
+    256
+  ],
+  "walkFrameMs": 120,
+  "directions": [
+    "down",
+    "down-left",
+    "left",
+    "up-left",
+    "up",
+    "up-right",
+    "right",
+    "down-right"
+  ],
+  "directionLabels": [
+    "正下",
+    "左下",
+    "正左",
+    "左上",
+    "正上",
+    "右上",
+    "正右",
+    "右下"
+  ],
+  "columns": [
+    {
+      "clip": "idle",
+      "frame": 0
+    },
+    {
+      "clip": "walk",
+      "frame": 1
+    },
+    {
+      "clip": "walk",
+      "frame": 2
+    },
+    {
+      "clip": "walk",
+      "frame": 3
+    },
+    {
+      "clip": "walk",
+      "frame": 4
+    },
+    {
+      "clip": "walk",
+      "frame": 5
+    },
+    {
+      "clip": "walk",
+      "frame": 6
+    },
+    {
+      "clip": "walk",
+      "frame": 7
+    },
+    {
+      "clip": "walk",
+      "frame": 8
+    },
+    {
+      "clip": "walk-start",
+      "frame": 1
+    },
+    {
+      "clip": "walk-start",
+      "frame": 2
+    },
+    {
+      "clip": "walk-stop",
+      "frame": 1
+    },
+    {
+      "clip": "walk-stop",
+      "frame": 2
+    }
+  ],
+  "items": [
+    {
+      "id": "greatSword",
+      "name": "重剑",
+      "kind": "weapon",
+      "icon": "greatSword/icon.png",
+      "definition": {
+        "id": "greatSword",
+        "name": "重剑",
+        "kind": "equipment",
+        "slot": "weapon",
+        "attributes": {
+          "maximumHealth": 0,
+          "damage": 0,
+          "baseAP": 0,
+          "maximumAP": 0,
+          "range": 0
+        },
+        "attack": {
+          "dice": {
+            "sides": 12,
+            "count": 1,
+            "flat": 0
+          },
+          "range": 0
+        },
+        "purchasePrice": 100,
+        "sellPrice": 50,
+        "setID": null,
+        "heal": 0,
+        "shield": 0,
+        "range": 0
+      },
+      "artApproval": null,
+      "runtimeIntegrated": false,
+      "revision": "b2-batch-v1",
+      "walk": {
+        "forester": "greatSword/forester-walk.png",
+        "wayfarer": "greatSword/wayfarer-walk.png"
+      },
+      "battle": {
+        "idle": {
+          "file": "greatSword/battle-idle.png",
+          "frames": 120,
+          "frameMs": 20,
+          "columns": 10
+        },
+        "attack": {
+          "file": "greatSword/battle-attack.png",
+          "frames": 90,
+          "frameMs": 20,
+          "columns": 10
+        },
+        "guard": {
+          "file": "greatSword/battle-guard.png",
+          "frames": 48,
+          "frameMs": 20,
+          "columns": 10
+        },
+        "hit": {
+          "file": "greatSword/battle-hit.png",
+          "frames": 42,
+          "frameMs": 20,
+          "columns": 10
+        },
+        "victory": {
+          "file": "greatSword/battle-victory.png",
+          "frames": 54,
+          "frameMs": 20,
+          "columns": 10
+        },
+        "defeat": {
+          "file": "greatSword/battle-defeat.png",
+          "frames": 54,
+          "frameMs": 20,
+          "columns": 10
+        }
+      },
+      "checks": [
+        {
+          "appearance": "forester",
+          "bindings": 104
+        },
+        {
+          "appearance": "wayfarer",
+          "bindings": 104
+        }
+      ],
+      "gif": "greatSword/walk-normal.gif",
+      "standing": "greatSword/standing.png",
+      "battleGif": "greatSword/battle-normal.gif",
+      "battleScope": "侧向完整人物持握/衣物挂载候选；不代表技能光效或原子结算接入",
+      "approvalSource": "../b2-batch-v1/user-approval.json",
+      "sourceMediaDirectory": "../b2-batch-v1/greatSword"
+    },
+    {
+      "id": "legendaryStaff",
+      "name": "传奇权杖",
+      "kind": "weapon",
+      "icon": "legendaryStaff/icon.png",
+      "definition": {
+        "id": "legendaryStaff",
+        "name": "传奇权杖",
+        "kind": "equipment",
+        "slot": "weapon",
+        "attributes": {
+          "maximumHealth": 0,
+          "damage": 0,
+          "baseAP": 0,
+          "maximumAP": 0,
+          "range": 0
+        },
+        "attack": {
+          "dice": {
+            "sides": 20,
+            "count": 1,
+            "flat": 0
+          },
+          "range": 1
+        },
+        "purchasePrice": 200,
+        "sellPrice": 100,
+        "setID": null,
+        "heal": 0,
+        "shield": 0,
+        "range": 0
+      },
+      "artApproval": null,
+      "runtimeIntegrated": false,
+      "revision": "b2-batch-v1",
+      "walk": {
+        "forester": "legendaryStaff/forester-walk.png",
+        "wayfarer": "legendaryStaff/wayfarer-walk.png"
+      },
+      "battle": {
+        "idle": {
+          "file": "legendaryStaff/battle-idle.png",
+          "frames": 120,
+          "frameMs": 20,
+          "columns": 10
+        },
+        "attack": {
+          "file": "legendaryStaff/battle-attack.png",
+          "frames": 60,
+          "frameMs": 20,
+          "columns": 10
+        },
+        "guard": {
+          "file": "legendaryStaff/battle-guard.png",
+          "frames": 48,
+          "frameMs": 20,
+          "columns": 10
+        },
+        "hit": {
+          "file": "legendaryStaff/battle-hit.png",
+          "frames": 42,
+          "frameMs": 20,
+          "columns": 10
+        },
+        "victory": {
+          "file": "legendaryStaff/battle-victory.png",
+          "frames": 54,
+          "frameMs": 20,
+          "columns": 10
+        },
+        "defeat": {
+          "file": "legendaryStaff/battle-defeat.png",
+          "frames": 54,
+          "frameMs": 20,
+          "columns": 10
+        }
+      },
+      "checks": [
+        {
+          "appearance": "forester",
+          "bindings": 104
+        },
+        {
+          "appearance": "wayfarer",
+          "bindings": 104
+        }
+      ],
+      "gif": "legendaryStaff/walk-normal.gif",
+      "standing": "legendaryStaff/standing.png",
+      "battleGif": "legendaryStaff/battle-normal.gif",
+      "battleScope": "现有侧向六动作的权杖持握检查；专用投射/施法演出尚待整合，不算已完成",
+      "approvalSource": "../b2-batch-v1/user-approval.json",
+      "sourceMediaDirectory": "../b2-batch-v1/legendaryStaff"
+    },
+    {
+      "id": "leatherArmor",
+      "name": "皮甲",
+      "kind": "armor",
+      "icon": "leatherArmor/icon.png",
+      "definition": {
+        "id": "leatherArmor",
+        "name": "皮甲",
+        "kind": "equipment",
+        "slot": "armor",
+        "attributes": {
+          "maximumHealth": 4,
+          "damage": 0,
+          "baseAP": 0,
+          "maximumAP": 0,
+          "range": 0
+        },
+        "attack": null,
+        "purchasePrice": 30,
+        "sellPrice": 15,
+        "setID": null,
+        "heal": 0,
+        "shield": 0,
+        "range": 0
+      },
+      "artApproval": null,
+      "runtimeIntegrated": false,
+      "revision": "b2-armor-r4",
+      "walk": {
+        "forester": "leatherArmor/forester-walk.png",
+        "wayfarer": "leatherArmor/wayfarer-walk.png"
+      },
+      "battle": {
+        "idle": {
+          "file": "leatherArmor/battle-idle.png",
+          "frames": 120,
+          "frameMs": 20,
+          "columns": 10
+        },
+        "attack": {
+          "file": "leatherArmor/battle-attack.png",
+          "frames": 60,
+          "frameMs": 20,
+          "columns": 10
+        },
+        "guard": {
+          "file": "leatherArmor/battle-guard.png",
+          "frames": 48,
+          "frameMs": 20,
+          "columns": 10
+        },
+        "hit": {
+          "file": "leatherArmor/battle-hit.png",
+          "frames": 42,
+          "frameMs": 20,
+          "columns": 10
+        },
+        "victory": {
+          "file": "leatherArmor/battle-victory.png",
+          "frames": 54,
+          "frameMs": 20,
+          "columns": 10
+        },
+        "defeat": {
+          "file": "leatherArmor/battle-defeat.png",
+          "frames": 54,
+          "frameMs": 20,
+          "columns": 10
+        }
+      },
+      "checks": [
+        {
+          "appearance": "forester",
+          "bindings": 104
+        },
+        {
+          "appearance": "wayfarer",
+          "bindings": 104
+        }
+      ],
+      "gif": "leatherArmor/walk-normal.gif",
+      "standing": "leatherArmor/standing.png",
+      "battleGif": "leatherArmor/battle-normal.gif",
+      "battleScope": "护肩随战斗手臂适度旋转；六原动作离线挂载候选，非实机",
+      "scope": "正向胸甲跟随身体起伏；护肩随对应手臂有节制地摆动，原人物步态保持"
+    },
+    {
+      "id": "runeArmor",
+      "name": "符文甲",
+      "kind": "armor",
+      "icon": "runeArmor/icon.png",
+      "definition": {
+        "id": "runeArmor",
+        "name": "符文甲",
+        "kind": "equipment",
+        "slot": "armor",
+        "attributes": {
+          "maximumHealth": 8,
+          "damage": 0,
+          "baseAP": 0,
+          "maximumAP": 0,
+          "range": 0
+        },
+        "attack": null,
+        "purchasePrice": 60,
+        "sellPrice": 30,
+        "setID": null,
+        "heal": 0,
+        "shield": 0,
+        "range": 0
+      },
+      "artApproval": null,
+      "runtimeIntegrated": false,
+      "revision": "b2-armor-r5",
+      "walk": {
+        "forester": "runeArmor/forester-walk.png",
+        "wayfarer": "runeArmor/wayfarer-walk.png"
+      },
+      "battle": {
+        "idle": {
+          "file": "runeArmor/battle-idle.png",
+          "frames": 120,
+          "frameMs": 20,
+          "columns": 10
+        },
+        "attack": {
+          "file": "runeArmor/battle-attack.png",
+          "frames": 60,
+          "frameMs": 20,
+          "columns": 10
+        },
+        "guard": {
+          "file": "runeArmor/battle-guard.png",
+          "frames": 48,
+          "frameMs": 20,
+          "columns": 10
+        },
+        "hit": {
+          "file": "runeArmor/battle-hit.png",
+          "frames": 42,
+          "frameMs": 20,
+          "columns": 10
+        },
+        "victory": {
+          "file": "runeArmor/battle-victory.png",
+          "frames": 54,
+          "frameMs": 20,
+          "columns": 10
+        },
+        "defeat": {
+          "file": "runeArmor/battle-defeat.png",
+          "frames": 54,
+          "frameMs": 20,
+          "columns": 10
+        }
+      },
+      "checks": [
+        {
+          "appearance": "forester",
+          "bindings": 104
+        },
+        {
+          "appearance": "wayfarer",
+          "bindings": 104
+        }
+      ],
+      "gif": "runeArmor/walk-normal.gif",
+      "standing": "runeArmor/standing.png",
+      "battleGif": "runeArmor/battle-normal.gif",
+      "battleScope": "护肩随战斗手臂适度旋转；六原动作离线挂载候选，非实机",
+      "scope": "正左、正右袖形及腕甲按原动作袖口与手部逐帧贴合；远侧袖面补齐，护肩保留随动"
+    },
+    {
+      "id": "powerBadge",
+      "name": "力量徽章",
+      "kind": "accessory",
+      "icon": "powerBadge/icon.png",
+      "definition": {
+        "id": "powerBadge",
+        "name": "力量徽章",
+        "kind": "equipment",
+        "slot": "accessory",
+        "attributes": {
+          "maximumHealth": 0,
+          "damage": 2,
+          "baseAP": 0,
+          "maximumAP": 0,
+          "range": 0
+        },
+        "attack": null,
+        "purchasePrice": 50,
+        "sellPrice": 25,
+        "setID": null,
+        "heal": 0,
+        "shield": 0,
+        "range": 0
+      },
+      "artApproval": null,
+      "runtimeIntegrated": false,
+      "revision": "b2-batch-v1",
+      "walk": {},
+      "battle": {},
+      "checks": [],
+      "scope": "图标与装备信息；不制作夸大尺寸的人物挂件",
+      "existingIconReused": true,
+      "approvalSource": "../b2-batch-v1/user-approval.json",
+      "sourceMediaDirectory": "../b2-batch-v1/powerBadge"
+    },
+    {
+      "id": "actionRing",
+      "name": "行动戒指",
+      "kind": "accessory",
+      "icon": "actionRing/icon.png",
+      "definition": {
+        "id": "actionRing",
+        "name": "行动戒指",
+        "kind": "equipment",
+        "slot": "accessory",
+        "attributes": {
+          "maximumHealth": 0,
+          "damage": 0,
+          "baseAP": 1,
+          "maximumAP": 0,
+          "range": 0
+        },
+        "attack": null,
+        "purchasePrice": 100,
+        "sellPrice": 50,
+        "setID": null,
+        "heal": 0,
+        "shield": 0,
+        "range": 0
+      },
+      "artApproval": null,
+      "runtimeIntegrated": false,
+      "revision": "b2-batch-v1",
+      "walk": {},
+      "battle": {},
+      "checks": [],
+      "scope": "图标与装备信息；不制作夸大尺寸的人物挂件",
+      "existingIconReused": true,
+      "approvalSource": "../b2-batch-v1/user-approval.json",
+      "sourceMediaDirectory": "../b2-batch-v1/actionRing"
+    },
+    {
+      "id": "greatSwordAction",
+      "name": "重剑·重斩演出",
+      "kind": "scene",
+      "icon": "greatSword/icon.png",
+      "definition": {
+        "id": "greatSword",
+        "name": "重剑",
+        "kind": "equipment",
+        "slot": "weapon",
+        "attributes": {
+          "maximumHealth": 0,
+          "damage": 0,
+          "baseAP": 0,
+          "maximumAP": 0,
+          "range": 0
+        },
+        "attack": {
+          "dice": {
+            "sides": 12,
+            "count": 1,
+            "flat": 0
+          },
+          "range": 0
+        },
+        "purchasePrice": 100,
+        "sellPrice": 50,
+        "setID": null,
+        "heal": 0,
+        "shield": 0,
+        "range": 0
+      },
+      "scope": "重剑贴近目标，挥击、受击亮光和落地粒子共同作用；原装备素材不变。",
+      "revision": "b2-weapon-actions-v1",
+      "scene": {
+        "video": "greatSword-scene-60fps.mp4",
+        "gif": "greatSword-scene-normal.gif",
+        "poster": "greatSword-1.04.png"
+      },
+      "artApproval": null,
+      "runtimeIntegrated": false,
+      "sourceItemID": "greatSword"
+    },
+    {
+      "id": "legendaryStaffAction",
+      "name": "权杖·施法演出",
+      "kind": "scene",
+      "icon": "legendaryStaff/icon.png",
+      "definition": {
+        "id": "legendaryStaff",
+        "name": "传奇权杖",
+        "kind": "equipment",
+        "slot": "weapon",
+        "attributes": {
+          "maximumHealth": 0,
+          "damage": 0,
+          "baseAP": 0,
+          "maximumAP": 0,
+          "range": 0
+        },
+        "attack": {
+          "dice": {
+            "sides": 20,
+            "count": 1,
+            "flat": 0
+          },
+          "range": 1
+        },
+        "purchasePrice": 200,
+        "sellPrice": 100,
+        "setID": null,
+        "heal": 0,
+        "shield": 0,
+        "range": 0
+      },
+      "scope": "杖头发出蓝色光弹，在目标身体上爆发并留下少量粒子；原装备素材不变。",
+      "revision": "b2-weapon-actions-v1",
+      "scene": {
+        "video": "legendaryStaff-scene-60fps.mp4",
+        "gif": "legendaryStaff-scene-normal.gif",
+        "poster": "legendaryStaff-1.48.png"
+      },
+      "artApproval": null,
+      "runtimeIntegrated": false,
+      "sourceItemID": "legendaryStaff"
+    }
+  ],
+  "scope": "原六件素材维持原样；新增两段独立武器场景演出，仅供美术审核",
+  "sourceBodyManifestSHA256": "c98464ddadd4571a3300cee3bfebd98f8f9d69eee1f9287f94f2c2172be955e8",
+  "sourceMotionSHA256": "f1926c10a4eb1cb8f1935157663bd22155e8444eae37ce64562453fc075e96ba",
+  "newArtApproval": null,
+  "resourceRevisionSHA256": "b2db514f0ee2a5a8ebce86ff6e5ad078ae1203603c3527d5a9cbc7ce3410c915",
+  "previousBatch": "b2-batch-v5",
+  "previousResourceRevisionSHA256": "1712316d3fc209b10f2a40ff2daac99706de1bee87d2440cf9a68d864ecdc2ef",
+  "carriedApprovals": {
+    "greatSword": {
+      "status": "pass",
+      "sourceBatch": "b2-batch-v1",
+      "sourceRevision": "d0979a710bd2413811d27ed94e86bcda3422bae823a046405db50b3a26d6e09f"
+    },
+    "legendaryStaff": {
+      "status": "pass",
+      "sourceBatch": "b2-batch-v1",
+      "sourceRevision": "d0979a710bd2413811d27ed94e86bcda3422bae823a046405db50b3a26d6e09f"
+    },
+    "powerBadge": {
+      "status": "pass",
+      "sourceBatch": "b2-batch-v1",
+      "sourceRevision": "d0979a710bd2413811d27ed94e86bcda3422bae823a046405db50b3a26d6e09f"
+    },
+    "actionRing": {
+      "status": "pass",
+      "sourceBatch": "b2-batch-v1",
+      "sourceRevision": "d0979a710bd2413811d27ed94e86bcda3422bae823a046405db50b3a26d6e09f"
+    }
+  }
+}

@@ -1,0 +1,877 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "p1-custom-hair-m3-topknot-v1",
+  "version": "1.0.1",
+  "part": "hair",
+  "compatibility": {
+    "rig": "p1-chibi-v1",
+    "bodyProfile": "p1-standard",
+    "actionSet": "locomotion-v1"
+  },
+  "mode": "head-local",
+  "slots": [
+    "hair.front"
+  ],
+  "directions": [
+    "down",
+    "down-left",
+    "left",
+    "up-left",
+    "up",
+    "up-right",
+    "right",
+    "down-right"
+  ],
+  "clips": [
+    "idle",
+    "walk",
+    "walk-start",
+    "walk-stop"
+  ],
+  "sourceFiles": [
+    "editable/down.svg",
+    "editable/down-left.svg",
+    "editable/left.svg",
+    "editable/up-left.svg",
+    "editable/up.svg",
+    "editable/up-right.svg",
+    "editable/right.svg",
+    "editable/down-right.svg",
+    "authoring.json",
+    "palette.json"
+  ],
+  "bindings": [
+    {
+      "direction": "down",
+      "clip": "idle",
+      "frame": 0,
+      "layers": {
+        "hair.front": "masters/down/hair.front.png"
+      }
+    },
+    {
+      "direction": "down",
+      "clip": "walk",
+      "frame": 1,
+      "layers": {
+        "hair.front": "masters/down/hair.front.png"
+      }
+    },
+    {
+      "direction": "down",
+      "clip": "walk",
+      "frame": 2,
+      "layers": {
+        "hair.front": "masters/down/hair.front.png"
+      }
+    },
+    {
+      "direction": "down",
+      "clip": "walk",
+      "frame": 3,
+      "layers": {
+        "hair.front": "masters/down/hair.front.png"
+      }
+    },
+    {
+      "direction": "down",
+      "clip": "walk",
+      "frame": 4,
+      "layers": {
+        "hair.front": "masters/down/hair.front.png"
+      }
+    },
+    {
+      "direction": "down",
+      "clip": "walk",
+      "frame": 5,
+      "layers": {
+        "hair.front": "masters/down/hair.front.png"
+      }
+    },
+    {
+      "direction": "down",
+      "clip": "walk",
+      "frame": 6,
+      "layers": {
+        "hair.front": "masters/down/hair.front.png"
+      }
+    },
+    {
+      "direction": "down",
+      "clip": "walk",
+      "frame": 7,
+      "layers": {
+        "hair.front": "masters/down/hair.front.png"
+      }
+    },
+    {
+      "direction": "down",
+      "clip": "walk",
+      "frame": 8,
+      "layers": {
+        "hair.front": "masters/down/hair.front.png"
+      }
+    },
+    {
+      "direction": "down",
+      "clip": "walk-start",
+      "frame": 1,
+      "layers": {
+        "hair.front": "masters/down/hair.front.png"
+      }
+    },
+    {
+      "direction": "down",
+      "clip": "walk-start",
+      "frame": 2,
+      "layers": {
+        "hair.front": "masters/down/hair.front.png"
+      }
+    },
+    {
+      "direction": "down",
+      "clip": "walk-stop",
+      "frame": 1,
+      "layers": {
+        "hair.front": "masters/down/hair.front.png"
+      }
+    },
+    {
+      "direction": "down",
+      "clip": "walk-stop",
+      "frame": 2,
+      "layers": {
+        "hair.front": "masters/down/hair.front.png"
+      }
+    },
+    {
+      "direction": "down-left",
+      "clip": "idle",
+      "frame": 0,
+      "layers": {
+        "hair.front": "masters/down-left/hair.front.png"
+      }
+    },
+    {
+      "direction": "down-left",
+      "clip": "walk",
+      "frame": 1,
+      "layers": {
+        "hair.front": "masters/down-left/hair.front.png"
+      }
+    },
+    {
+      "direction": "down-left",
+      "clip": "walk",
+      "frame": 2,
+      "layers": {
+        "hair.front": "masters/down-left/hair.front.png"
+      }
+    },
+    {
+      "direction": "down-left",
+      "clip": "walk",
+      "frame": 3,
+      "layers": {
+        "hair.front": "masters/down-left/hair.front.png"
+      }
+    },
+    {
+      "direction": "down-left",
+      "clip": "walk",
+      "frame": 4,
+      "layers": {
+        "hair.front": "masters/down-left/hair.front.png"
+      }
+    },
+    {
+      "direction": "down-left",
+      "clip": "walk",
+      "frame": 5,
+      "layers": {
+        "hair.front": "masters/down-left/hair.front.png"
+      }
+    },
+    {
+      "direction": "down-left",
+      "clip": "walk",
+      "frame": 6,
+      "layers": {
+        "hair.front": "masters/down-left/hair.front.png"
+      }
+    },
+    {
+      "direction": "down-left",
+      "clip": "walk",
+      "frame": 7,
+      "layers": {
+        "hair.front": "masters/down-left/hair.front.png"
+      }
+    },
+    {
+      "direction": "down-left",
+      "clip": "walk",
+      "frame": 8,
+      "layers": {
+        "hair.front": "masters/down-left/hair.front.png"
+      }
+    },
+    {
+      "direction": "down-left",
+      "clip": "walk-start",
+      "frame": 1,
+      "layers": {
+        "hair.front": "masters/down-left/hair.front.png"
+      }
+    },
+    {
+      "direction": "down-left",
+      "clip": "walk-start",
+      "frame": 2,
+      "layers": {
+        "hair.front": "masters/down-left/hair.front.png"
+      }
+    },
+    {
+      "direction": "down-left",
+      "clip": "walk-stop",
+      "frame": 1,
+      "layers": {
+        "hair.front": "masters/down-left/hair.front.png"
+      }
+    },
+    {
+      "direction": "down-left",
+      "clip": "walk-stop",
+      "frame": 2,
+      "layers": {
+        "hair.front": "masters/down-left/hair.front.png"
+      }
+    },
+    {
+      "direction": "left",
+      "clip": "idle",
+      "frame": 0,
+      "layers": {
+        "hair.front": "masters/left/hair.front.png"
+      }
+    },
+    {
+      "direction": "left",
+      "clip": "walk",
+      "frame": 1,
+      "layers": {
+        "hair.front": "masters/left/hair.front.png"
+      }
+    },
+    {
+      "direction": "left",
+      "clip": "walk",
+      "frame": 2,
+      "layers": {
+        "hair.front": "masters/left/hair.front.png"
+      }
+    },
+    {
+      "direction": "left",
+      "clip": "walk",
+      "frame": 3,
+      "layers": {
+        "hair.front": "masters/left/hair.front.png"
+      }
+    },
+    {
+      "direction": "left",
+      "clip": "walk",
+      "frame": 4,
+      "layers": {
+        "hair.front": "masters/left/hair.front.png"
+      }
+    },
+    {
+      "direction": "left",
+      "clip": "walk",
+      "frame": 5,
+      "layers": {
+        "hair.front": "masters/left/hair.front.png"
+      }
+    },
+    {
+      "direction": "left",
+      "clip": "walk",
+      "frame": 6,
+      "layers": {
+        "hair.front": "masters/left/hair.front.png"
+      }
+    },
+    {
+      "direction": "left",
+      "clip": "walk",
+      "frame": 7,
+      "layers": {
+        "hair.front": "masters/left/hair.front.png"
+      }
+    },
+    {
+      "direction": "left",
+      "clip": "walk",
+      "frame": 8,
+      "layers": {
+        "hair.front": "masters/left/hair.front.png"
+      }
+    },
+    {
+      "direction": "left",
+      "clip": "walk-start",
+      "frame": 1,
+      "layers": {
+        "hair.front": "masters/left/hair.front.png"
+      }
+    },
+    {
+      "direction": "left",
+      "clip": "walk-start",
+      "frame": 2,
+      "layers": {
+        "hair.front": "masters/left/hair.front.png"
+      }
+    },
+    {
+      "direction": "left",
+      "clip": "walk-stop",
+      "frame": 1,
+      "layers": {
+        "hair.front": "masters/left/hair.front.png"
+      }
+    },
+    {
+      "direction": "left",
+      "clip": "walk-stop",
+      "frame": 2,
+      "layers": {
+        "hair.front": "masters/left/hair.front.png"
+      }
+    },
+    {
+      "direction": "up-left",
+      "clip": "idle",
+      "frame": 0,
+      "layers": {
+        "hair.front": "masters/up-left/hair.front.png"
+      }
+    },
+    {
+      "direction": "up-left",
+      "clip": "walk",
+      "frame": 1,
+      "layers": {
+        "hair.front": "masters/up-left/hair.front.png"
+      }
+    },
+    {
+      "direction": "up-left",
+      "clip": "walk",
+      "frame": 2,
+      "layers": {
+        "hair.front": "masters/up-left/hair.front.png"
+      }
+    },
+    {
+      "direction": "up-left",
+      "clip": "walk",
+      "frame": 3,
+      "layers": {
+        "hair.front": "masters/up-left/hair.front.png"
+      }
+    },
+    {
+      "direction": "up-left",
+      "clip": "walk",
+      "frame": 4,
+      "layers": {
+        "hair.front": "masters/up-left/hair.front.png"
+      }
+    },
+    {
+      "direction": "up-left",
+      "clip": "walk",
+      "frame": 5,
+      "layers": {
+        "hair.front": "masters/up-left/hair.front.png"
+      }
+    },
+    {
+      "direction": "up-left",
+      "clip": "walk",
+      "frame": 6,
+      "layers": {
+        "hair.front": "masters/up-left/hair.front.png"
+      }
+    },
+    {
+      "direction": "up-left",
+      "clip": "walk",
+      "frame": 7,
+      "layers": {
+        "hair.front": "masters/up-left/hair.front.png"
+      }
+    },
+    {
+      "direction": "up-left",
+      "clip": "walk",
+      "frame": 8,
+      "layers": {
+        "hair.front": "masters/up-left/hair.front.png"
+      }
+    },
+    {
+      "direction": "up-left",
+      "clip": "walk-start",
+      "frame": 1,
+      "layers": {
+        "hair.front": "masters/up-left/hair.front.png"
+      }
+    },
+    {
+      "direction": "up-left",
+      "clip": "walk-start",
+      "frame": 2,
+      "layers": {
+        "hair.front": "masters/up-left/hair.front.png"
+      }
+    },
+    {
+      "direction": "up-left",
+      "clip": "walk-stop",
+      "frame": 1,
+      "layers": {
+        "hair.front": "masters/up-left/hair.front.png"
+      }
+    },
+    {
+      "direction": "up-left",
+      "clip": "walk-stop",
+      "frame": 2,
+      "layers": {
+        "hair.front": "masters/up-left/hair.front.png"
+      }
+    },
+    {
+      "direction": "up",
+      "clip": "idle",
+      "frame": 0,
+      "layers": {
+        "hair.front": "masters/up/hair.front.png"
+      }
+    },
+    {
+      "direction": "up",
+      "clip": "walk",
+      "frame": 1,
+      "layers": {
+        "hair.front": "masters/up/hair.front.png"
+      }
+    },
+    {
+      "direction": "up",
+      "clip": "walk",
+      "frame": 2,
+      "layers": {
+        "hair.front": "masters/up/hair.front.png"
+      }
+    },
+    {
+      "direction": "up",
+      "clip": "walk",
+      "frame": 3,
+      "layers": {
+        "hair.front": "masters/up/hair.front.png"
+      }
+    },
+    {
+      "direction": "up",
+      "clip": "walk",
+      "frame": 4,
+      "layers": {
+        "hair.front": "masters/up/hair.front.png"
+      }
+    },
+    {
+      "direction": "up",
+      "clip": "walk",
+      "frame": 5,
+      "layers": {
+        "hair.front": "masters/up/hair.front.png"
+      }
+    },
+    {
+      "direction": "up",
+      "clip": "walk",
+      "frame": 6,
+      "layers": {
+        "hair.front": "masters/up/hair.front.png"
+      }
+    },
+    {
+      "direction": "up",
+      "clip": "walk",
+      "frame": 7,
+      "layers": {
+        "hair.front": "masters/up/hair.front.png"
+      }
+    },
+    {
+      "direction": "up",
+      "clip": "walk",
+      "frame": 8,
+      "layers": {
+        "hair.front": "masters/up/hair.front.png"
+      }
+    },
+    {
+      "direction": "up",
+      "clip": "walk-start",
+      "frame": 1,
+      "layers": {
+        "hair.front": "masters/up/hair.front.png"
+      }
+    },
+    {
+      "direction": "up",
+      "clip": "walk-start",
+      "frame": 2,
+      "layers": {
+        "hair.front": "masters/up/hair.front.png"
+      }
+    },
+    {
+      "direction": "up",
+      "clip": "walk-stop",
+      "frame": 1,
+      "layers": {
+        "hair.front": "masters/up/hair.front.png"
+      }
+    },
+    {
+      "direction": "up",
+      "clip": "walk-stop",
+      "frame": 2,
+      "layers": {
+        "hair.front": "masters/up/hair.front.png"
+      }
+    },
+    {
+      "direction": "up-right",
+      "clip": "idle",
+      "frame": 0,
+      "layers": {
+        "hair.front": "masters/up-right/hair.front.png"
+      }
+    },
+    {
+      "direction": "up-right",
+      "clip": "walk",
+      "frame": 1,
+      "layers": {
+        "hair.front": "masters/up-right/hair.front.png"
+      }
+    },
+    {
+      "direction": "up-right",
+      "clip": "walk",
+      "frame": 2,
+      "layers": {
+        "hair.front": "masters/up-right/hair.front.png"
+      }
+    },
+    {
+      "direction": "up-right",
+      "clip": "walk",
+      "frame": 3,
+      "layers": {
+        "hair.front": "masters/up-right/hair.front.png"
+      }
+    },
+    {
+      "direction": "up-right",
+      "clip": "walk",
+      "frame": 4,
+      "layers": {
+        "hair.front": "masters/up-right/hair.front.png"
+      }
+    },
+    {
+      "direction": "up-right",
+      "clip": "walk",
+      "frame": 5,
+      "layers": {
+        "hair.front": "masters/up-right/hair.front.png"
+      }
+    },
+    {
+      "direction": "up-right",
+      "clip": "walk",
+      "frame": 6,
+      "layers": {
+        "hair.front": "masters/up-right/hair.front.png"
+      }
+    },
+    {
+      "direction": "up-right",
+      "clip": "walk",
+      "frame": 7,
+      "layers": {
+        "hair.front": "masters/up-right/hair.front.png"
+      }
+    },
+    {
+      "direction": "up-right",
+      "clip": "walk",
+      "frame": 8,
+      "layers": {
+        "hair.front": "masters/up-right/hair.front.png"
+      }
+    },
+    {
+      "direction": "up-right",
+      "clip": "walk-start",
+      "frame": 1,
+      "layers": {
+        "hair.front": "masters/up-right/hair.front.png"
+      }
+    },
+    {
+      "direction": "up-right",
+      "clip": "walk-start",
+      "frame": 2,
+      "layers": {
+        "hair.front": "masters/up-right/hair.front.png"
+      }
+    },
+    {
+      "direction": "up-right",
+      "clip": "walk-stop",
+      "frame": 1,
+      "layers": {
+        "hair.front": "masters/up-right/hair.front.png"
+      }
+    },
+    {
+      "direction": "up-right",
+      "clip": "walk-stop",
+      "frame": 2,
+      "layers": {
+        "hair.front": "masters/up-right/hair.front.png"
+      }
+    },
+    {
+      "direction": "right",
+      "clip": "idle",
+      "frame": 0,
+      "layers": {
+        "hair.front": "masters/right/hair.front.png"
+      }
+    },
+    {
+      "direction": "right",
+      "clip": "walk",
+      "frame": 1,
+      "layers": {
+        "hair.front": "masters/right/hair.front.png"
+      }
+    },
+    {
+      "direction": "right",
+      "clip": "walk",
+      "frame": 2,
+      "layers": {
+        "hair.front": "masters/right/hair.front.png"
+      }
+    },
+    {
+      "direction": "right",
+      "clip": "walk",
+      "frame": 3,
+      "layers": {
+        "hair.front": "masters/right/hair.front.png"
+      }
+    },
+    {
+      "direction": "right",
+      "clip": "walk",
+      "frame": 4,
+      "layers": {
+        "hair.front": "masters/right/hair.front.png"
+      }
+    },
+    {
+      "direction": "right",
+      "clip": "walk",
+      "frame": 5,
+      "layers": {
+        "hair.front": "masters/right/hair.front.png"
+      }
+    },
+    {
+      "direction": "right",
+      "clip": "walk",
+      "frame": 6,
+      "layers": {
+        "hair.front": "masters/right/hair.front.png"
+      }
+    },
+    {
+      "direction": "right",
+      "clip": "walk",
+      "frame": 7,
+      "layers": {
+        "hair.front": "masters/right/hair.front.png"
+      }
+    },
+    {
+      "direction": "right",
+      "clip": "walk",
+      "frame": 8,
+      "layers": {
+        "hair.front": "masters/right/hair.front.png"
+      }
+    },
+    {
+      "direction": "right",
+      "clip": "walk-start",
+      "frame": 1,
+      "layers": {
+        "hair.front": "masters/right/hair.front.png"
+      }
+    },
+    {
+      "direction": "right",
+      "clip": "walk-start",
+      "frame": 2,
+      "layers": {
+        "hair.front": "masters/right/hair.front.png"
+      }
+    },
+    {
+      "direction": "right",
+      "clip": "walk-stop",
+      "frame": 1,
+      "layers": {
+        "hair.front": "masters/right/hair.front.png"
+      }
+    },
+    {
+      "direction": "right",
+      "clip": "walk-stop",
+      "frame": 2,
+      "layers": {
+        "hair.front": "masters/right/hair.front.png"
+      }
+    },
+    {
+      "direction": "down-right",
+      "clip": "idle",
+      "frame": 0,
+      "layers": {
+        "hair.front": "masters/down-right/hair.front.png"
+      }
+    },
+    {
+      "direction": "down-right",
+      "clip": "walk",
+      "frame": 1,
+      "layers": {
+        "hair.front": "masters/down-right/hair.front.png"
+      }
+    },
+    {
+      "direction": "down-right",
+      "clip": "walk",
+      "frame": 2,
+      "layers": {
+        "hair.front": "masters/down-right/hair.front.png"
+      }
+    },
+    {
+      "direction": "down-right",
+      "clip": "walk",
+      "frame": 3,
+      "layers": {
+        "hair.front": "masters/down-right/hair.front.png"
+      }
+    },
+    {
+      "direction": "down-right",
+      "clip": "walk",
+      "frame": 4,
+      "layers": {
+        "hair.front": "masters/down-right/hair.front.png"
+      }
+    },
+    {
+      "direction": "down-right",
+      "clip": "walk",
+      "frame": 5,
+      "layers": {
+        "hair.front": "masters/down-right/hair.front.png"
+      }
+    },
+    {
+      "direction": "down-right",
+      "clip": "walk",
+      "frame": 6,
+      "layers": {
+        "hair.front": "masters/down-right/hair.front.png"
+      }
+    },
+    {
+      "direction": "down-right",
+      "clip": "walk",
+      "frame": 7,
+      "layers": {
+        "hair.front": "masters/down-right/hair.front.png"
+      }
+    },
+    {
+      "direction": "down-right",
+      "clip": "walk",
+      "frame": 8,
+      "layers": {
+        "hair.front": "masters/down-right/hair.front.png"
+      }
+    },
+    {
+      "direction": "down-right",
+      "clip": "walk-start",
+      "frame": 1,
+      "layers": {
+        "hair.front": "masters/down-right/hair.front.png"
+      }
+    },
+    {
+      "direction": "down-right",
+      "clip": "walk-start",
+      "frame": 2,
+      "layers": {
+        "hair.front": "masters/down-right/hair.front.png"
+      }
+    },
+    {
+      "direction": "down-right",
+      "clip": "walk-stop",
+      "frame": 1,
+      "layers": {
+        "hair.front": "masters/down-right/hair.front.png"
+      }
+    },
+    {
+      "direction": "down-right",
+      "clip": "walk-stop",
+      "frame": 2,
+      "layers": {
+        "hair.front": "masters/down-right/hair.front.png"
+      }
+    }
+  ]
+}

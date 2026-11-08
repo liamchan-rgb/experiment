@@ -1,0 +1,5 @@
+{
+  "inventoryAPRest": true,
+  "partialMovementQuote": true,
+  "noCoinsPurchaseLabel": true
+}

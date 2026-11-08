@@ -1,0 +1,19 @@
+xcode-version.log
+Xcode 16.4
+Build version 16F6
+
+project-validation.log
+Project paths, Swift file references, asset bindings, orientations and shared test scheme valid.
+
+battle-logic.log
+MeadowBattleEncounter checks passed: target/AP, victory across rounds, shield/heal uses, defeat, retry and map return.
+
+road-logic.log
+down-right: facing=4, frame=6, scale=0.530582527565328
+up-left: facing=1, frame=4, scale=0.9859097158124583
+up-right: facing=7, frame=6, scale=0.5956414377755788
+down-left: facing=5, frame=6, scale=0.5592669475786143
+PASS: production WalkCycle, Trail, TrailNetwork, JourneySimulation; P1 speed=25.0, pause/reset and four road directions
+
+battle-pose.log
+Battle pose checks passed: real JSON sampler, support plane, at most two planted contacts, head/face registration and weapon grip across six clips.

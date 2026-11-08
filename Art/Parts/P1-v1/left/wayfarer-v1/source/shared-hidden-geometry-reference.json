@@ -1,0 +1,1820 @@
+{
+  "schemaVersion": "1.2.0",
+  "id": "p1-neutral-left-hidden-joints-v1",
+  "base": "walk-r3-complete-transitions",
+  "visibleInputs": {
+    "layers": "source/visible-layers",
+    "frames": "source/visible-frames"
+  },
+  "canvas": [
+    256,
+    256
+  ],
+  "registration": {
+    "sourceCanvas": [
+      1254,
+      1254
+    ],
+    "scale": 0.194,
+    "translation": [
+      4.72,
+      6.4
+    ]
+  },
+  "generation": "All anatomy is authored as fixed masks. For transition poses, hand centers and sole markers come from source/transition-authoring.json; shoulder, elbow, and hip joints come from r3 authoring.json. Skin caps use a deterministic swatch from the matching immutable pre-underlay visible hand slot; vest and shorts use pixels from the pre-underlay torso-slot local garment regions. When source/visible-layers and source/visible-frames exist they are preferred, so already merged underlays never affect palette selection, occlusion masks, composite checks, or joint probes. No flattened composite pixel is copied into a different anatomy slot.",
+  "slotOrder": "same-slot underlay immediately before original slot; respect source drawOrder; far right limbs remain behind torso; near left arm remains over torso",
+  "geometry": {
+    "body.torso": "central neck/vest/waist/pelvis islands; excludes arm-shaped source fragments; shorts use a separate lower pelvis island",
+    "body.arm.left": "shoulderLeft\u2192elbowLeft\u2192wristLeft connected radius-5 skin cap, swatch from body.hand.left",
+    "body.arm.right": "shoulderRight\u2192elbowRight\u2192wristRight connected radius-6 skin cap, swatch from body.hand.right",
+    "body.hand.left": "radius-4 wrist cuff, same-side skin swatch",
+    "body.hand.right": "radius-4 wrist cuff, same-side skin swatch",
+    "body.leg.left": "hip-to-knee radius-6 upper-leg root cap, same-side skin swatch",
+    "body.leg.right": "hip-to-knee radius-7 upper-leg root cap, same-side skin swatch"
+  },
+  "occlusion": "Only cap pixels covered by an opaque later visible slot are exported. This preserves the fixed-pose original composite exactly and prevents the near shoulder cap from painting over the vest.",
+  "probeScope": "\u00b11/\u00b12px eight-direction translation of each arm at shoulder/wrist contacts and each leg at hip-root only; counts gaps in opaque core pixels only. Antialiased outline pixels, knees, and ankles are excluded. Source poses omitted for art revision are listed by --exclude-indices. This is not an arbitrary-action or eight-direction completion claim.",
+  "poses": [
+    {
+      "frame": 0,
+      "phase": "idle",
+      "guideSources": {
+        "shouldersElbowsAndHips": "authoring.json joints",
+        "transitionHandsAndSoles": "authoring.json / fixed pose guide"
+      },
+      "neck": [
+        125,
+        132
+      ],
+      "shoulders": {
+        "near-left": [
+          129,
+          138
+        ],
+        "far-right": [
+          122,
+          140
+        ]
+      },
+      "arms": {
+        "body.arm.left": {
+          "shoulder": [
+            129,
+            138
+          ],
+          "elbow": [
+            131,
+            153
+          ],
+          "wrist": [
+            128,
+            170
+          ]
+        },
+        "body.arm.right": {
+          "shoulder": [
+            122,
+            140
+          ],
+          "elbow": [
+            139,
+            152
+          ],
+          "wrist": [
+            140,
+            166
+          ]
+        }
+      },
+      "hips": {
+        "near-left": [
+          129,
+          176
+        ],
+        "far-right": [
+          122,
+          176
+        ]
+      },
+      "legs": {
+        "body.leg.left": {
+          "hip": [
+            129,
+            176
+          ],
+          "root": [
+            129,
+            179
+          ],
+          "knee": [
+            128,
+            195
+          ],
+          "ankle": [
+            124,
+            211
+          ]
+        },
+        "body.leg.right": {
+          "hip": [
+            122,
+            176
+          ],
+          "root": [
+            122,
+            179
+          ],
+          "knee": [
+            119,
+            194
+          ],
+          "ankle": [
+            112,
+            208
+          ]
+        }
+      },
+      "soleMarkers": {
+        "left": [
+          124,
+          214
+        ],
+        "right": [
+          112,
+          211
+        ]
+      },
+      "materials": {
+        "skin.near": [
+          253,
+          205,
+          158
+        ],
+        "skin.far": [
+          224,
+          133,
+          83
+        ],
+        "skin.neck": [
+          253,
+          205,
+          158
+        ],
+        "cloth.vest": [
+          251,
+          236,
+          217
+        ],
+        "cloth.shorts": [
+          65,
+          57,
+          62
+        ]
+      }
+    },
+    {
+      "frame": 1,
+      "phase": "left-near-contact",
+      "guideSources": {
+        "shouldersElbowsAndHips": "authoring.json joints",
+        "transitionHandsAndSoles": "authoring.json / fixed pose guide"
+      },
+      "neck": [
+        125,
+        132
+      ],
+      "shoulders": {
+        "near-left": [
+          129,
+          138
+        ],
+        "far-right": [
+          122,
+          140
+        ]
+      },
+      "arms": {
+        "body.arm.left": {
+          "shoulder": [
+            129,
+            138
+          ],
+          "elbow": [
+            140,
+            155
+          ],
+          "wrist": [
+            147,
+            170
+          ]
+        },
+        "body.arm.right": {
+          "shoulder": [
+            122,
+            140
+          ],
+          "elbow": [
+            111,
+            155
+          ],
+          "wrist": [
+            97,
+            162
+          ]
+        }
+      },
+      "hips": {
+        "near-left": [
+          129,
+          176
+        ],
+        "far-right": [
+          122,
+          176
+        ]
+      },
+      "legs": {
+        "body.leg.left": {
+          "hip": [
+            129,
+            176
+          ],
+          "root": [
+            129,
+            179
+          ],
+          "knee": [
+            117,
+            198
+          ],
+          "ankle": [
+            111,
+            212
+          ]
+        },
+        "body.leg.right": {
+          "hip": [
+            122,
+            176
+          ],
+          "root": [
+            122,
+            179
+          ],
+          "knee": [
+            141,
+            190
+          ],
+          "ankle": [
+            153,
+            203
+          ]
+        }
+      },
+      "soleMarkers": {
+        "left": [
+          104,
+          215
+        ],
+        "right": [
+          141,
+          213
+        ]
+      },
+      "materials": {
+        "skin.near": [
+          253,
+          201,
+          155
+        ],
+        "skin.far": [
+          250,
+          203,
+          158
+        ],
+        "skin.neck": [
+          253,
+          202,
+          154
+        ],
+        "cloth.vest": [
+          250,
+          236,
+          221
+        ],
+        "cloth.shorts": [
+          63,
+          55,
+          61
+        ]
+      }
+    },
+    {
+      "frame": 2,
+      "phase": "left-support",
+      "guideSources": {
+        "shouldersElbowsAndHips": "authoring.json joints",
+        "transitionHandsAndSoles": "authoring.json / fixed pose guide"
+      },
+      "neck": [
+        125,
+        132
+      ],
+      "shoulders": {
+        "near-left": [
+          129,
+          138
+        ],
+        "far-right": [
+          122,
+          140
+        ]
+      },
+      "arms": {
+        "body.arm.left": {
+          "shoulder": [
+            129,
+            138
+          ],
+          "elbow": [
+            136,
+            155
+          ],
+          "wrist": [
+            142,
+            168
+          ]
+        },
+        "body.arm.right": {
+          "shoulder": [
+            122,
+            140
+          ],
+          "elbow": [
+            112,
+            155
+          ],
+          "wrist": [
+            103,
+            160
+          ]
+        }
+      },
+      "hips": {
+        "near-left": [
+          129,
+          176
+        ],
+        "far-right": [
+          122,
+          176
+        ]
+      },
+      "legs": {
+        "body.leg.left": {
+          "hip": [
+            129,
+            176
+          ],
+          "root": [
+            129,
+            179
+          ],
+          "knee": [
+            119,
+            197
+          ],
+          "ankle": [
+            113,
+            211
+          ]
+        },
+        "body.leg.right": {
+          "hip": [
+            122,
+            176
+          ],
+          "root": [
+            122,
+            179
+          ],
+          "knee": [
+            143,
+            189
+          ],
+          "ankle": [
+            151,
+            201
+          ]
+        }
+      },
+      "soleMarkers": {
+        "left": [
+          111,
+          214
+        ],
+        "right": [
+          146,
+          208
+        ]
+      },
+      "materials": {
+        "skin.near": [
+          252,
+          199,
+          152
+        ],
+        "skin.far": [
+          229,
+          139,
+          93
+        ],
+        "skin.neck": [
+          253,
+          205,
+          158
+        ],
+        "cloth.vest": [
+          250,
+          233,
+          216
+        ],
+        "cloth.shorts": [
+          65,
+          57,
+          63
+        ]
+      }
+    },
+    {
+      "frame": 3,
+      "phase": "right-far-passing",
+      "guideSources": {
+        "shouldersElbowsAndHips": "authoring.json joints",
+        "transitionHandsAndSoles": "authoring.json / fixed pose guide"
+      },
+      "neck": [
+        125,
+        132
+      ],
+      "shoulders": {
+        "near-left": [
+          129,
+          138
+        ],
+        "far-right": [
+          122,
+          140
+        ]
+      },
+      "arms": {
+        "body.arm.left": {
+          "shoulder": [
+            129,
+            138
+          ],
+          "elbow": [
+            132,
+            153
+          ],
+          "wrist": [
+            127,
+            170
+          ]
+        },
+        "body.arm.right": {
+          "shoulder": [
+            122,
+            140
+          ],
+          "elbow": [
+            114,
+            159
+          ],
+          "wrist": [
+            108,
+            164
+          ]
+        }
+      },
+      "hips": {
+        "near-left": [
+          129,
+          176
+        ],
+        "far-right": [
+          122,
+          176
+        ]
+      },
+      "legs": {
+        "body.leg.left": {
+          "hip": [
+            129,
+            176
+          ],
+          "root": [
+            129,
+            179
+          ],
+          "knee": [
+            122,
+            198
+          ],
+          "ankle": [
+            119,
+            207
+          ]
+        },
+        "body.leg.right": {
+          "hip": [
+            122,
+            176
+          ],
+          "root": [
+            122,
+            179
+          ],
+          "knee": [
+            137,
+            195
+          ],
+          "ankle": [
+            127,
+            215
+          ]
+        }
+      },
+      "soleMarkers": {
+        "left": [
+          126,
+          214
+        ],
+        "right": [
+          115,
+          204
+        ]
+      },
+      "materials": {
+        "skin.near": [
+          253,
+          200,
+          156
+        ],
+        "skin.far": [
+          239,
+          152,
+          100
+        ],
+        "skin.neck": [
+          252,
+          199,
+          154
+        ],
+        "cloth.vest": [
+          247,
+          230,
+          216
+        ],
+        "cloth.shorts": [
+          64,
+          55,
+          60
+        ]
+      }
+    },
+    {
+      "frame": 4,
+      "phase": "right-far-late-swing",
+      "guideSources": {
+        "shouldersElbowsAndHips": "authoring.json joints",
+        "transitionHandsAndSoles": "authoring.json / fixed pose guide"
+      },
+      "neck": [
+        125,
+        132
+      ],
+      "shoulders": {
+        "near-left": [
+          129,
+          138
+        ],
+        "far-right": [
+          122,
+          140
+        ]
+      },
+      "arms": {
+        "body.arm.left": {
+          "shoulder": [
+            129,
+            138
+          ],
+          "elbow": [
+            123,
+            153
+          ],
+          "wrist": [
+            99,
+            154
+          ]
+        },
+        "body.arm.right": {
+          "shoulder": [
+            122,
+            140
+          ],
+          "elbow": [
+            143,
+            155
+          ],
+          "wrist": [
+            148,
+            165
+          ]
+        }
+      },
+      "hips": {
+        "near-left": [
+          129,
+          176
+        ],
+        "far-right": [
+          122,
+          176
+        ]
+      },
+      "legs": {
+        "body.leg.left": {
+          "hip": [
+            129,
+            176
+          ],
+          "root": [
+            129,
+            179
+          ],
+          "knee": [
+            114,
+            191
+          ],
+          "ankle": [
+            111,
+            207
+          ]
+        },
+        "body.leg.right": {
+          "hip": [
+            122,
+            176
+          ],
+          "root": [
+            122,
+            179
+          ],
+          "knee": [
+            145,
+            196
+          ],
+          "ankle": [
+            158,
+            211
+          ]
+        }
+      },
+      "soleMarkers": {
+        "left": [
+          146,
+          213
+        ],
+        "right": [
+          108,
+          206
+        ]
+      },
+      "materials": {
+        "skin.near": [
+          252,
+          198,
+          152
+        ],
+        "skin.far": [
+          240,
+          159,
+          105
+        ],
+        "skin.neck": [
+          253,
+          205,
+          158
+        ],
+        "cloth.vest": [
+          251,
+          235,
+          219
+        ],
+        "cloth.shorts": [
+          60,
+          55,
+          59
+        ]
+      }
+    },
+    {
+      "frame": 5,
+      "phase": "right-far-contact",
+      "guideSources": {
+        "shouldersElbowsAndHips": "authoring.json joints",
+        "transitionHandsAndSoles": "authoring.json / fixed pose guide"
+      },
+      "neck": [
+        125,
+        132
+      ],
+      "shoulders": {
+        "near-left": [
+          129,
+          138
+        ],
+        "far-right": [
+          122,
+          140
+        ]
+      },
+      "arms": {
+        "body.arm.left": {
+          "shoulder": [
+            129,
+            138
+          ],
+          "elbow": [
+            124,
+            154
+          ],
+          "wrist": [
+            101,
+            160
+          ]
+        },
+        "body.arm.right": {
+          "shoulder": [
+            122,
+            140
+          ],
+          "elbow": [
+            140,
+            155
+          ],
+          "wrist": [
+            147,
+            165
+          ]
+        }
+      },
+      "hips": {
+        "near-left": [
+          129,
+          176
+        ],
+        "far-right": [
+          122,
+          176
+        ]
+      },
+      "legs": {
+        "body.leg.left": {
+          "hip": [
+            129,
+            176
+          ],
+          "root": [
+            129,
+            179
+          ],
+          "knee": [
+            116,
+            192
+          ],
+          "ankle": [
+            111,
+            207
+          ]
+        },
+        "body.leg.right": {
+          "hip": [
+            122,
+            176
+          ],
+          "root": [
+            122,
+            179
+          ],
+          "knee": [
+            145,
+            196
+          ],
+          "ankle": [
+            157,
+            211
+          ]
+        }
+      },
+      "soleMarkers": {
+        "left": [
+          148,
+          211
+        ],
+        "right": [
+          108,
+          214
+        ]
+      },
+      "materials": {
+        "skin.near": [
+          253,
+          200,
+          155
+        ],
+        "skin.far": [
+          241,
+          155,
+          105
+        ],
+        "skin.neck": [
+          253,
+          205,
+          158
+        ],
+        "cloth.vest": [
+          249,
+          234,
+          222
+        ],
+        "cloth.shorts": [
+          63,
+          55,
+          60
+        ]
+      }
+    },
+    {
+      "frame": 6,
+      "phase": "right-far-support-left-recovery",
+      "guideSources": {
+        "shouldersElbowsAndHips": "authoring.json joints",
+        "transitionHandsAndSoles": "authoring.json / fixed pose guide"
+      },
+      "neck": [
+        125,
+        132
+      ],
+      "shoulders": {
+        "near-left": [
+          129,
+          138
+        ],
+        "far-right": [
+          122,
+          140
+        ]
+      },
+      "arms": {
+        "body.arm.left": {
+          "shoulder": [
+            129,
+            138
+          ],
+          "elbow": [
+            124,
+            153
+          ],
+          "wrist": [
+            104,
+            161
+          ]
+        },
+        "body.arm.right": {
+          "shoulder": [
+            122,
+            140
+          ],
+          "elbow": [
+            141,
+            154
+          ],
+          "wrist": [
+            146,
+            166
+          ]
+        }
+      },
+      "hips": {
+        "near-left": [
+          129,
+          176
+        ],
+        "far-right": [
+          122,
+          176
+        ]
+      },
+      "legs": {
+        "body.leg.left": {
+          "hip": [
+            129,
+            176
+          ],
+          "root": [
+            129,
+            179
+          ],
+          "knee": [
+            119,
+            195
+          ],
+          "ankle": [
+            121,
+            211
+          ]
+        },
+        "body.leg.right": {
+          "hip": [
+            122,
+            176
+          ],
+          "root": [
+            122,
+            179
+          ],
+          "knee": [
+            147,
+            199
+          ],
+          "ankle": [
+            151,
+            214
+          ]
+        }
+      },
+      "soleMarkers": {
+        "left": [
+          142,
+          205
+        ],
+        "right": [
+          120,
+          215
+        ]
+      },
+      "materials": {
+        "skin.near": [
+          253,
+          208,
+          164
+        ],
+        "skin.far": [
+          244,
+          164,
+          108
+        ],
+        "skin.neck": [
+          253,
+          205,
+          158
+        ],
+        "cloth.vest": [
+          252,
+          237,
+          221
+        ],
+        "cloth.shorts": [
+          67,
+          61,
+          67
+        ]
+      }
+    },
+    {
+      "frame": 7,
+      "phase": "left-near-passing",
+      "guideSources": {
+        "shouldersElbowsAndHips": "authoring.json joints",
+        "transitionHandsAndSoles": "authoring.json / fixed pose guide"
+      },
+      "neck": [
+        125,
+        132
+      ],
+      "shoulders": {
+        "near-left": [
+          129,
+          138
+        ],
+        "far-right": [
+          122,
+          140
+        ]
+      },
+      "arms": {
+        "body.arm.left": {
+          "shoulder": [
+            129,
+            138
+          ],
+          "elbow": [
+            129,
+            155
+          ],
+          "wrist": [
+            116,
+            169
+          ]
+        },
+        "body.arm.right": {
+          "shoulder": [
+            122,
+            140
+          ],
+          "elbow": [
+            141,
+            155
+          ],
+          "wrist": [
+            142,
+            167
+          ]
+        }
+      },
+      "hips": {
+        "near-left": [
+          129,
+          176
+        ],
+        "far-right": [
+          122,
+          176
+        ]
+      },
+      "legs": {
+        "body.leg.left": {
+          "hip": [
+            129,
+            176
+          ],
+          "root": [
+            129,
+            179
+          ],
+          "knee": [
+            121,
+            198
+          ],
+          "ankle": [
+            124,
+            214
+          ]
+        },
+        "body.leg.right": {
+          "hip": [
+            122,
+            176
+          ],
+          "root": [
+            122,
+            179
+          ],
+          "knee": [
+            143,
+            194
+          ],
+          "ankle": [
+            138,
+            207
+          ]
+        }
+      },
+      "soleMarkers": {
+        "left": [
+          135,
+          210
+        ],
+        "right": [
+          119,
+          214
+        ]
+      },
+      "materials": {
+        "skin.near": [
+          253,
+          206,
+          160
+        ],
+        "skin.far": [
+          235,
+          144,
+          94
+        ],
+        "skin.neck": [
+          252,
+          204,
+          157
+        ],
+        "cloth.vest": [
+          251,
+          236,
+          221
+        ],
+        "cloth.shorts": [
+          52,
+          46,
+          51
+        ]
+      }
+    },
+    {
+      "frame": 8,
+      "phase": "left-near-late-swing",
+      "guideSources": {
+        "shouldersElbowsAndHips": "authoring.json joints",
+        "transitionHandsAndSoles": "authoring.json / fixed pose guide"
+      },
+      "neck": [
+        125,
+        132
+      ],
+      "shoulders": {
+        "near-left": [
+          129,
+          138
+        ],
+        "far-right": [
+          122,
+          140
+        ]
+      },
+      "arms": {
+        "body.arm.left": {
+          "shoulder": [
+            129,
+            138
+          ],
+          "elbow": [
+            139,
+            155
+          ],
+          "wrist": [
+            144,
+            168
+          ]
+        },
+        "body.arm.right": {
+          "shoulder": [
+            122,
+            140
+          ],
+          "elbow": [
+            111,
+            156
+          ],
+          "wrist": [
+            100,
+            160
+          ]
+        }
+      },
+      "hips": {
+        "near-left": [
+          129,
+          176
+        ],
+        "far-right": [
+          122,
+          176
+        ]
+      },
+      "legs": {
+        "body.leg.left": {
+          "hip": [
+            129,
+            176
+          ],
+          "root": [
+            129,
+            179
+          ],
+          "knee": [
+            119,
+            193
+          ],
+          "ankle": [
+            112,
+            208
+          ]
+        },
+        "body.leg.right": {
+          "hip": [
+            122,
+            176
+          ],
+          "root": [
+            122,
+            179
+          ],
+          "knee": [
+            140,
+            194
+          ],
+          "ankle": [
+            151,
+            211
+          ]
+        }
+      },
+      "soleMarkers": {
+        "left": [
+          110,
+          211
+        ],
+        "right": [
+          137,
+          213
+        ]
+      },
+      "materials": {
+        "skin.near": [
+          253,
+          200,
+          156
+        ],
+        "skin.far": [
+          251,
+          163,
+          101
+        ],
+        "skin.neck": [
+          253,
+          205,
+          158
+        ],
+        "cloth.vest": [
+          250,
+          235,
+          220
+        ],
+        "cloth.shorts": [
+          63,
+          57,
+          63
+        ]
+      }
+    },
+    {
+      "frame": 9,
+      "phase": "walk-start-01",
+      "guideSources": {
+        "shouldersElbowsAndHips": "authoring.json joints",
+        "transitionHandsAndSoles": "source/transition-authoring.json"
+      },
+      "neck": [
+        125,
+        132
+      ],
+      "shoulders": {
+        "near-left": [
+          129,
+          138
+        ],
+        "far-right": [
+          122,
+          140
+        ]
+      },
+      "arms": {
+        "body.arm.left": {
+          "shoulder": [
+            129,
+            138
+          ],
+          "elbow": [
+            137,
+            151
+          ],
+          "wrist": [
+            136,
+            168
+          ]
+        },
+        "body.arm.right": {
+          "shoulder": [
+            122,
+            140
+          ],
+          "elbow": [
+            110,
+            151
+          ],
+          "wrist": [
+            113,
+            162
+          ]
+        }
+      },
+      "hips": {
+        "near-left": [
+          129,
+          176
+        ],
+        "far-right": [
+          122,
+          176
+        ]
+      },
+      "legs": {
+        "body.leg.left": {
+          "hip": [
+            129,
+            176
+          ],
+          "root": [
+            129,
+            179
+          ],
+          "knee": [
+            128,
+            195
+          ],
+          "ankle": [
+            127,
+            211
+          ]
+        },
+        "body.leg.right": {
+          "hip": [
+            122,
+            176
+          ],
+          "root": [
+            122,
+            179
+          ],
+          "knee": [
+            119,
+            194
+          ],
+          "ankle": [
+            112,
+            209
+          ]
+        }
+      },
+      "soleMarkers": {
+        "left": [
+          128,
+          214
+        ],
+        "right": [
+          112,
+          212
+        ]
+      },
+      "materials": {
+        "skin.near": [
+          252,
+          203,
+          158
+        ],
+        "skin.far": [
+          247,
+          181,
+          126
+        ],
+        "skin.neck": [
+          253,
+          205,
+          158
+        ],
+        "cloth.vest": [
+          252,
+          239,
+          227
+        ],
+        "cloth.shorts": [
+          63,
+          60,
+          64
+        ]
+      }
+    },
+    {
+      "frame": 10,
+      "phase": "walk-start-02",
+      "guideSources": {
+        "shouldersElbowsAndHips": "authoring.json joints",
+        "transitionHandsAndSoles": "source/transition-authoring.json"
+      },
+      "neck": [
+        125,
+        132
+      ],
+      "shoulders": {
+        "near-left": [
+          129,
+          138
+        ],
+        "far-right": [
+          122,
+          140
+        ]
+      },
+      "arms": {
+        "body.arm.left": {
+          "shoulder": [
+            129,
+            138
+          ],
+          "elbow": [
+            141,
+            151
+          ],
+          "wrist": [
+            144,
+            165
+          ]
+        },
+        "body.arm.right": {
+          "shoulder": [
+            122,
+            140
+          ],
+          "elbow": [
+            108,
+            151
+          ],
+          "wrist": [
+            103,
+            161
+          ]
+        }
+      },
+      "hips": {
+        "near-left": [
+          129,
+          176
+        ],
+        "far-right": [
+          122,
+          176
+        ]
+      },
+      "legs": {
+        "body.leg.left": {
+          "hip": [
+            129,
+            176
+          ],
+          "root": [
+            129,
+            179
+          ],
+          "knee": [
+            118,
+            194
+          ],
+          "ankle": [
+            108,
+            209
+          ]
+        },
+        "body.leg.right": {
+          "hip": [
+            122,
+            176
+          ],
+          "root": [
+            122,
+            179
+          ],
+          "knee": [
+            131,
+            194
+          ],
+          "ankle": [
+            135,
+            208
+          ]
+        }
+      },
+      "soleMarkers": {
+        "left": [
+          109,
+          212
+        ],
+        "right": [
+          130,
+          211
+        ]
+      },
+      "materials": {
+        "skin.near": [
+          253,
+          202,
+          156
+        ],
+        "skin.far": [
+          253,
+          200,
+          151
+        ],
+        "skin.neck": [
+          253,
+          202,
+          155
+        ],
+        "cloth.vest": [
+          252,
+          239,
+          223
+        ],
+        "cloth.shorts": [
+          67,
+          61,
+          66
+        ]
+      }
+    },
+    {
+      "frame": 11,
+      "phase": "walk-stop-01",
+      "guideSources": {
+        "shouldersElbowsAndHips": "authoring.json joints",
+        "transitionHandsAndSoles": "source/transition-authoring.json"
+      },
+      "neck": [
+        125,
+        132
+      ],
+      "shoulders": {
+        "near-left": [
+          129,
+          138
+        ],
+        "far-right": [
+          122,
+          140
+        ]
+      },
+      "arms": {
+        "body.arm.left": {
+          "shoulder": [
+            129,
+            138
+          ],
+          "elbow": [
+            137,
+            151
+          ],
+          "wrist": [
+            135,
+            166
+          ]
+        },
+        "body.arm.right": {
+          "shoulder": [
+            122,
+            140
+          ],
+          "elbow": [
+            109,
+            153
+          ],
+          "wrist": [
+            108,
+            162
+          ]
+        }
+      },
+      "hips": {
+        "near-left": [
+          129,
+          176
+        ],
+        "far-right": [
+          122,
+          176
+        ]
+      },
+      "legs": {
+        "body.leg.left": {
+          "hip": [
+            129,
+            176
+          ],
+          "root": [
+            129,
+            179
+          ],
+          "knee": [
+            119,
+            193
+          ],
+          "ankle": [
+            104,
+            208
+          ]
+        },
+        "body.leg.right": {
+          "hip": [
+            122,
+            176
+          ],
+          "root": [
+            122,
+            179
+          ],
+          "knee": [
+            130,
+            193
+          ],
+          "ankle": [
+            128,
+            207
+          ]
+        }
+      },
+      "soleMarkers": {
+        "left": [
+          109,
+          211
+        ],
+        "right": [
+          130,
+          210
+        ]
+      },
+      "materials": {
+        "skin.near": [
+          252,
+          198,
+          154
+        ],
+        "skin.far": [
+          253,
+          167,
+          108
+        ],
+        "skin.neck": [
+          252,
+          201,
+          159
+        ],
+        "cloth.vest": [
+          251,
+          236,
+          223
+        ],
+        "cloth.shorts": [
+          62,
+          56,
+          63
+        ]
+      }
+    },
+    {
+      "frame": 12,
+      "phase": "walk-stop-02",
+      "guideSources": {
+        "shouldersElbowsAndHips": "authoring.json joints",
+        "transitionHandsAndSoles": "source/transition-authoring.json"
+      },
+      "neck": [
+        125,
+        132
+      ],
+      "shoulders": {
+        "near-left": [
+          129,
+          138
+        ],
+        "far-right": [
+          122,
+          140
+        ]
+      },
+      "arms": {
+        "body.arm.left": {
+          "shoulder": [
+            129,
+            138
+          ],
+          "elbow": [
+            136,
+            151
+          ],
+          "wrist": [
+            132,
+            168
+          ]
+        },
+        "body.arm.right": {
+          "shoulder": [
+            122,
+            140
+          ],
+          "elbow": [
+            147,
+            151
+          ],
+          "wrist": [
+            140,
+            163
+          ]
+        }
+      },
+      "hips": {
+        "near-left": [
+          129,
+          176
+        ],
+        "far-right": [
+          122,
+          176
+        ]
+      },
+      "legs": {
+        "body.leg.left": {
+          "hip": [
+            129,
+            176
+          ],
+          "root": [
+            129,
+            179
+          ],
+          "knee": [
+            127,
+            195
+          ],
+          "ankle": [
+            127,
+            211
+          ]
+        },
+        "body.leg.right": {
+          "hip": [
+            122,
+            176
+          ],
+          "root": [
+            122,
+            179
+          ],
+          "knee": [
+            121,
+            194
+          ],
+          "ankle": [
+            119,
+            211
+          ]
+        }
+      },
+      "soleMarkers": {
+        "left": [
+          126,
+          214
+        ],
+        "right": [
+          119,
+          214
+        ]
+      },
+      "materials": {
+        "skin.near": [
+          252,
+          200,
+          150
+        ],
+        "skin.far": [
+          240,
+          157,
+          100
+        ],
+        "skin.neck": [
+          252,
+          202,
+          153
+        ],
+        "cloth.vest": [
+          251,
+          240,
+          226
+        ],
+        "cloth.shorts": [
+          61,
+          57,
+          62
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,5679 @@
+{
+  "authorAndReviewer": "root",
+  "subagentsUsed": false,
+  "artApproval": null,
+  "geometryOwner": "Art/Templates/P1-Neutral/left/walk-r3-complete-transitions",
+  "toolReference": "source/relight-generated.png",
+  "referenceAlphaIgnored": true,
+  "headSource": "single static relit96 source on unchanged head transforms",
+  "poses": [
+    {
+      "index": 0,
+      "sourceClip": "idle",
+      "sourceFrame": 0,
+      "semanticSidesExchanged": true,
+      "allLayerAlphaDifferencePixels": 0,
+      "support": "both",
+      "lightTransfers": [
+        {
+          "slot": "body.leg.left",
+          "method": "static tool-sampled skin palette; original material shading boundaries",
+          "records": [
+            {
+              "material": "skin",
+              "method": "static tool-sampled ramp, source median anchored to common midtone; arm and hand share anchor",
+              "sourceMedianRGB": [
+                224.0,
+                133.0,
+                83.0
+              ],
+              "sourcePaletteXY": [
+                [
+                  116,
+                  165
+                ],
+                [
+                  116,
+                  148
+                ],
+                [
+                  118,
+                  161
+                ],
+                [
+                  121,
+                  146
+                ]
+              ],
+              "paletteRGB": [
+                [
+                  186,
+                  107,
+                  60
+                ],
+                [
+                  200,
+                  153,
+                  111
+                ],
+                [
+                  251,
+                  195,
+                  135
+                ],
+                [
+                  249,
+                  202,
+                  150
+                ]
+              ],
+              "nearSide": false,
+              "toolRGBTransferredPixels": 410,
+              "originalSafetyClothingAndInkPreserved": true
+            }
+          ],
+          "alphaDifferencePixels": 0
+        },
+        {
+          "slot": "body.leg.right",
+          "method": "static tool-sampled skin palette; original material shading boundaries",
+          "records": [
+            {
+              "material": "skin",
+              "method": "static tool-sampled ramp, source median anchored to common midtone; arm and hand share anchor",
+              "sourceMedianRGB": [
+                252.0,
+                204.0,
+                156.0
+              ],
+              "sourcePaletteXY": [
+                [
+                  130,
+                  160
+                ],
+                [
+                  118,
+                  153
+                ],
+                [
+                  122,
+                  168
+                ],
+                [
+                  123,
+                  145
+                ]
+              ],
+              "paletteRGB": [
+                [
+                  180,
+                  133,
+                  104
+                ],
+                [
+                  240,
+                  169,
+                  111
+                ],
+                [
+                  253,
+                  202,
+                  146
+                ],
+                [
+                  250,
+                  205,
+                  157
+                ]
+              ],
+              "nearSide": true,
+              "toolRGBTransferredPixels": 575,
+              "originalSafetyClothingAndInkPreserved": true
+            }
+          ],
+          "alphaDifferencePixels": 0
+        },
+        {
+          "slot": "body.arm.left",
+          "method": "static tool-sampled skin palette; original material shading boundaries",
+          "records": [
+            {
+              "material": "skin",
+              "method": "static tool-sampled ramp, source median anchored to common midtone; arm and hand share anchor",
+              "sourceMedianRGB": [
+                224.0,
+                133.0,
+                83.0
+              ],
+              "sourcePaletteXY": [
+                [
+                  116,
+                  165
+                ],
+                [
+                  116,
+                  148
+                ],
+                [
+                  118,
+                  161
+                ],
+                [
+                  121,
+                  146
+                ]
+              ],
+              "paletteRGB": [
+                [
+                  186,
+                  107,
+                  60
+                ],
+                [
+                  200,
+                  153,
+                  111
+                ],
+                [
+                  251,
+                  195,
+                  135
+                ],
+                [
+                  249,
+                  202,
+                  150
+                ]
+              ],
+              "nearSide": false,
+              "toolRGBTransferredPixels": 423,
+              "originalSafetyClothingAndInkPreserved": true
+            }
+          ],
+          "alphaDifferencePixels": 0
+        },
+        {
+          "slot": "body.hand.left",
+          "method": "static tool-sampled skin palette; original material shading boundaries",
+          "records": [
+            {
+              "material": "skin",
+              "method": "static tool-sampled ramp, source median anchored to common midtone; arm and hand share anchor",
+              "sourceMedianRGB": [
+                224.0,
+                133.0,
+                83.0
+              ],
+              "sourcePaletteXY": [
+                [
+                  116,
+                  165
+                ],
+                [
+                  116,
+                  148
+                ],
+                [
+                  118,
+                  161
+                ],
+                [
+                  121,
+                  146
+                ]
+              ],
+              "paletteRGB": [
+                [
+                  186,
+                  107,
+                  60
+                ],
+                [
+                  200,
+                  153,
+                  111
+                ],
+                [
+                  251,
+                  195,
+                  135
+                ],
+                [
+                  249,
+                  202,
+                  150
+                ]
+              ],
+              "nearSide": false,
+              "toolRGBTransferredPixels": 31,
+              "originalSafetyClothingAndInkPreserved": true
+            }
+          ],
+          "alphaDifferencePixels": 0
+        },
+        {
+          "slot": "body.torso",
+          "method": "static tool-sampled skin palette; original material shading boundaries",
+          "records": [
+            {
+              "material": "skin",
+              "method": "static tool-sampled ramp, source median anchored to common midtone; arm and hand share anchor",
+              "sourceMedianRGB": [
+                252.0,
+                203.0,
+                158.0
+              ],
+              "sourcePaletteXY": [
+                [
+                  130,
+                  160
+                ],
+                [
+                  118,
+                  153
+                ],
+                [
+                  122,
+                  168
+                ],
+                [
+                  123,
+                  145
+                ]
+              ],
+              "paletteRGB": [
+                [
+                  180,
+                  133,
+                  104
+                ],
+                [
+                  240,
+                  169,
+                  111
+                ],
+                [
+                  253,
+                  202,
+                  146
+                ],
+                [
+                  250,
+                  205,
+                  157
+                ]
+              ],
+              "nearSide": true,
+              "toolRGBTransferredPixels": 105,
+              "originalSafetyClothingAndInkPreserved": true
+            }
+          ],
+          "alphaDifferencePixels": 0
+        },
+        {
+          "slot": "head.base",
+          "method": "static head-local source",
+          "records": [
+            {
+              "material": "skin",
+              "toolRGBTransferredPixels": 1389,
+              "oldRGBRetainedOutside6pxOrInk": 0,
+              "maximumToolSampleDistance": 1.0
+            }
+          ],
+          "alphaDifferencePixels": 0
+        },
+        {
+          "slot": "body.arm.right",
+          "method": "static tool-sampled skin palette; original material shading boundaries",
+          "records": [
+            {
+              "material": "skin",
+              "method": "static tool-sampled ramp, source median anchored to common midtone; arm and hand share anchor",
+              "sourceMedianRGB": [
+                252.0,
+                204.0,
+                156.5
+              ],
+              "sourcePaletteXY": [
+                [
+                  130,
+                  160
+                ],
+                [
+                  118,
+                  153
+                ],
+                [
+                  122,
+                  168
+                ],
+                [
+                  123,
+                  145
+                ]
+              ],
+              "paletteRGB": [
+                [
+                  180,
+                  133,
+                  104
+                ],
+                [
+                  240,
+                  169,
+                  111
+                ],
+                [
+                  253,
+                  202,
+                  146
+                ],
+                [
+                  250,
+                  205,
+                  157
+                ]
+              ],
+              "nearSide": true,
+              "toolRGBTransferredPixels": 418,
+              "originalSafetyClothingAndInkPreserved": true
+            }
+          ],
+          "alphaDifferencePixels": 0
+        },
+        {
+          "slot": "body.hand.right",
+          "method": "static tool-sampled skin palette; original material shading boundaries",
+          "records": [
+            {
+              "material": "skin",
+              "method": "static tool-sampled ramp, source median anchored to common midtone; arm and hand share anchor",
+              "sourceMedianRGB": [
+                252.0,
+                204.0,
+                156.5
+              ],
+              "sourcePaletteXY": [
+                [
+                  130,
+                  160
+                ],
+                [
+                  118,
+                  153
+                ],
+                [
+                  122,
+                  168
+                ],
+                [
+                  123,
+                  145
+                ]
+              ],
+              "paletteRGB": [
+                [
+                  180,
+                  133,
+                  104
+                ],
+                [
+                  240,
+                  169,
+                  111
+                ],
+                [
+                  253,
+                  202,
+                  146
+                ],
+                [
+                  250,
+                  205,
+                  157
+                ]
+              ],
+              "nearSide": true,
+              "toolRGBTransferredPixels": 92,
+              "originalSafetyClothingAndInkPreserved": true
+            }
+          ],
+          "alphaDifferencePixels": 0
+        }
+      ]
+    },
+    {
+      "index": 1,
+      "sourceClip": "walk",
+      "sourceFrame": 1,
+      "semanticSidesExchanged": true,
+      "allLayerAlphaDifferencePixels": 0,
+      "support": "right-contact",
+      "lightTransfers": [
+        {
+          "slot": "body.leg.left",
+          "method": "static tool-sampled skin palette; original material shading boundaries",
+          "records": [
+            {
+              "material": "skin",
+              "method": "static tool-sampled ramp, source median anchored to common midtone; arm and hand share anchor",
+              "sourceMedianRGB": [
+                241.0,
+                157.0,
+                104.0
+              ],
+              "sourcePaletteXY": [
+                [
+                  116,
+                  165
+                ],
+                [
+                  116,
+                  148
+                ],
+                [
+                  118,
+                  161
+                ],
+                [
+                  121,
+                  146
+                ]
+              ],
+              "paletteRGB": [
+                [
+                  186,
+                  107,
+                  60
+                ],
+                [
+                  200,
+                  153,
+                  111
+                ],
+                [
+                  251,
+                  195,
+                  135
+                ],
+                [
+                  249,
+                  202,
+                  150
+                ]
+              ],
+              "nearSide": false,
+              "toolRGBTransferredPixels": 579,
+              "originalSafetyClothingAndInkPreserved": true
+            }
+          ],
+          "alphaDifferencePixels": 0
+        },
+        {
+          "slot": "body.leg.right",
+          "method": "static tool-sampled skin palette; original material shading boundaries",
+          "records": [
+            {
+              "material": "skin",
+              "method": "static tool-sampled ramp, source median anchored to common midtone; arm and hand share anchor",
+              "sourceMedianRGB": [
+                253.0,
+                201.0,
+                154.0
+              ],
+              "sourcePaletteXY": [
+                [
+                  130,
+                  160
+                ],
+                [
+                  118,
+                  153
+                ],
+                [
+                  122,
+                  168
+                ],
+                [
+                  123,
+                  145
+                ]
+              ],
+              "paletteRGB": [
+                [
+                  180,
+                  133,
+                  104
+                ],
+                [
+                  240,
+                  169,
+                  111
+                ],
+                [
+                  253,
+                  202,
+                  146
+                ],
+                [
+                  250,
+                  205,
+                  157
+                ]
+              ],
+              "nearSide": true,
+              "toolRGBTransferredPixels": 583,
+              "originalSafetyClothingAndInkPreserved": true
+            }
+          ],
+          "alphaDifferencePixels": 0
+        },
+        {
+          "slot": "body.arm.left",
+          "method": "static tool-sampled skin palette; original material shading boundaries",
+          "records": [
+            {
+              "material": "skin",
+              "method": "static tool-sampled ramp, source median anchored to common midtone; arm and hand share anchor",
+              "sourceMedianRGB": [
+                250.0,
+                203.0,
+                158.0
+              ],
+              "sourcePaletteXY": [
+                [
+                  116,
+                  165
+                ],
+                [
+                  116,
+                  148
+                ],
+                [
+                  118,
+                  161
+                ],
+                [
+                  121,
+                  146
+                ]
+              ],
+              "paletteRGB": [
+                [
+                  186,
+                  107,
+                  60
+                ],
+                [
+                  200,
+                  153,
+                  111
+                ],
+                [
+                  251,
+                  195,
+                  135
+                ],
+                [
+                  249,
+                  202,
+                  150
+                ]
+              ],
+              "nearSide": false,
+              "toolRGBTransferredPixels": 426,
+              "originalSafetyClothingAndInkPreserved": true
+            }
+          ],
+          "alphaDifferencePixels": 0
+        },
+        {
+          "slot": "body.hand.left",
+          "method": "static tool-sampled skin palette; original material shading boundaries",
+          "records": [
+            {
+              "material": "skin",
+              "method": "static tool-sampled ramp, source median anchored to common midtone; arm and hand share anchor",
+              "sourceMedianRGB": [
+                250.0,
+                203.0,
+                158.0
+              ],
+              "sourcePaletteXY": [
+                [
+                  116,
+                  165
+                ],
+                [
+                  116,
+                  148
+                ],
+                [
+                  118,
+                  161
+                ],
+                [
+                  121,
+                  146
+                ]
+              ],
+              "paletteRGB": [
+                [
+                  186,
+                  107,
+                  60
+                ],
+                [
+                  200,
+                  153,
+                  111
+                ],
+                [
+                  251,
+                  195,
+                  135
+                ],
+                [
+                  249,
+                  202,
+                  150
+                ]
+              ],
+              "nearSide": false,
+              "toolRGBTransferredPixels": 30,
+              "originalSafetyClothingAndInkPreserved": true
+            }
+          ],
+          "alphaDifferencePixels": 0
+        },
+        {
+          "slot": "body.torso",
+          "method": "static tool-sampled skin palette; original material shading boundaries",
+          "records": [
+            {
+              "material": "skin",
+              "method": "static tool-sampled ramp, source median anchored to common midtone; arm and hand share anchor",
+              "sourceMedianRGB": [
+                252.0,
+                201.0,
+                154.0
+              ],
+              "sourcePaletteXY": [
+                [
+                  130,
+                  160
+                ],
+                [
+                  118,
+                  153
+                ],
+                [
+                  122,
+                  168
+                ],
+                [
+                  123,
+                  145
+                ]
+              ],
+              "paletteRGB": [
+                [
+                  180,
+                  133,
+                  104
+                ],
+                [
+                  240,
+                  169,
+                  111
+                ],
+                [
+                  253,
+                  202,
+                  146
+                ],
+                [
+                  250,
+                  205,
+                  157
+                ]
+              ],
+              "nearSide": true,
+              "toolRGBTransferredPixels": 93,
+              "originalSafetyClothingAndInkPreserved": true
+            }
+          ],
+          "alphaDifferencePixels": 0
+        },
+        {
+          "slot": "head.base",
+          "method": "static head-local source",
+          "records": [
+            {
+              "material": "skin",
+              "toolRGBTransferredPixels": 1389,
+              "oldRGBRetainedOutside6pxOrInk": 0,
+              "maximumToolSampleDistance": 1.0
+            }
+          ],
+          "alphaDifferencePixels": 0
+        },
+        {
+          "slot": "body.arm.right",
+          "method": "static tool-sampled skin palette; original material shading boundaries",
+          "records": [
+            {
+              "material": "skin",
+              "method": "static tool-sampled ramp, source median anchored to common midtone; arm and hand share anchor",
+              "sourceMedianRGB": [
+                253.0,
+                201.0,
+                155.0
+              ],
+              "sourcePaletteXY": [
+                [
+                  130,
+                  160
+                ],
+                [
+                  118,
+                  153
+                ],
+                [
+                  122,
+                  168
+                ],
+                [
+                  123,
+                  145
+                ]
+              ],
+              "paletteRGB": [
+                [
+                  180,
+                  133,
+                  104
+                ],
+                [
+                  240,
+                  169,
+                  111
+                ],
+                [
+                  253,
+                  202,
+                  146
+                ],
+                [
+                  250,
+                  205,
+                  157
+                ]
+              ],
+              "nearSide": true,
+              "toolRGBTransferredPixels": 425,
+              "originalSafetyClothingAndInkPreserved": true
+            }
+          ],
+          "alphaDifferencePixels": 0
+        },
+        {
+          "slot": "body.hand.right",
+          "method": "static tool-sampled skin palette; original material shading boundaries",
+          "records": [
+            {
+              "material": "skin",
+              "method": "static tool-sampled ramp, source median anchored to common midtone; arm and hand share anchor",
+              "sourceMedianRGB": [
+                253.0,
+                201.0,
+                155.0
+              ],
+              "sourcePaletteXY": [
+                [
+                  130,
+                  160
+                ],
+                [
+                  118,
+                  153
+                ],
+                [
+                  122,
+                  168
+                ],
+                [
+                  123,
+                  145
+                ]
+              ],
+              "paletteRGB": [
+                [
+                  180,
+                  133,
+                  104
+                ],
+                [
+                  240,
+                  169,
+                  111
+                ],
+                [
+                  253,
+                  202,
+                  146
+                ],
+                [
+                  250,
+                  205,
+                  157
+                ]
+              ],
+              "nearSide": true,
+              "toolRGBTransferredPixels": 50,
+              "originalSafetyClothingAndInkPreserved": true
+            }
+          ],
+          "alphaDifferencePixels": 0
+        }
+      ]
+    },
+    {
+      "index": 2,
+      "sourceClip": "walk",
+      "sourceFrame": 2,
+      "semanticSidesExchanged": true,
+      "allLayerAlphaDifferencePixels": 0,
+      "support": "right-support",
+      "lightTransfers": [
+        {
+          "slot": "body.leg.left",
+          "method": "static tool-sampled skin palette; original material shading boundaries",
+          "records": [
+            {
+              "material": "skin",
+              "method": "static tool-sampled ramp, source median anchored to common midtone; arm and hand share anchor",
+              "sourceMedianRGB": [
+                232.0,
+                142.0,
+                93.0
+              ],
+              "sourcePaletteXY": [
+                [
+                  116,
+                  165
+                ],
+                [
+                  116,
+                  148
+                ],
+                [
+                  118,
+                  161
+                ],
+                [
+                  121,
+                  146
+                ]
+              ],
+              "paletteRGB": [
+                [
+                  186,
+                  107,
+                  60
+                ],
+                [
+                  200,
+                  153,
+                  111
+                ],
+                [
+                  251,
+                  195,
+                  135
+                ],
+                [
+                  249,
+                  202,
+                  150
+                ]
+              ],
+              "nearSide": false,
+              "toolRGBTransferredPixels": 538,
+              "originalSafetyClothingAndInkPreserved": true
+            }
+          ],
+          "alphaDifferencePixels": 0
+        },
+        {
+          "slot": "body.leg.right",
+          "method": "static tool-sampled skin palette; original material shading boundaries",
+          "records": [
+            {
+              "material": "skin",
+              "method": "static tool-sampled ramp, source median anchored to common midtone; arm and hand share anchor",
+              "sourceMedianRGB": [
+                252.0,
+                198.0,
+                152.0
+              ],
+              "sourcePaletteXY": [
+                [
+                  130,
+                  160
+                ],
+                [
+                  118,
+                  153
+                ],
+                [
+                  122,
+                  168
+                ],
+                [
+                  123,
+                  145
+                ]
+              ],
+              "paletteRGB": [
+                [
+                  180,
+                  133,
+                  104
+                ],
+                [
+                  240,
+                  169,
+                  111
+                ],
+                [
+                  253,
+                  202,
+                  146
+                ],
+                [
+                  250,
+                  205,
+                  157
+                ]
+              ],
+              "nearSide": true,
+              "toolRGBTransferredPixels": 523,
+              "originalSafetyClothingAndInkPreserved": true
+            }
+          ],
+          "alphaDifferencePixels": 0
+        },
+        {
+          "slot": "body.arm.left",
+          "method": "static tool-sampled skin palette; original material shading boundaries",
+          "records": [
+            {
+              "material": "skin",
+              "method": "static tool-sampled ramp, source median anchored to common midtone; arm and hand share anchor",
+              "sourceMedianRGB": [
+                229.0,
+                139.0,
+                93.0
+              ],
+              "sourcePaletteXY": [
+                [
+                  116,
+                  165
+                ],
+                [
+                  116,
+                  148
+                ],
+                [
+                  118,
+                  161
+                ],
+                [
+                  121,
+                  146
+                ]
+              ],
+              "paletteRGB": [
+                [
+                  186,
+                  107,
+                  60
+                ],
+                [
+                  200,
+                  153,
+                  111
+                ],
+                [
+                  251,
+                  195,
+                  135
+                ],
+                [
+                  249,
+                  202,
+                  150
+                ]
+              ],
+              "nearSide": false,
+              "toolRGBTransferredPixels": 417,
+              "originalSafetyClothingAndInkPreserved": true
+            }
+          ],
+          "alphaDifferencePixels": 0
+        },
+        {
+          "slot": "body.hand.left",
+          "method": "static tool-sampled skin palette; original material shading boundaries",
+          "records": [
+            {
+              "material": "skin",
+              "method": "static tool-sampled ramp, source median anchored to common midtone; arm and hand share anchor",
+              "sourceMedianRGB": [
+                229.0,
+                139.0,
+                93.0
+              ],
+              "sourcePaletteXY": [
+                [
+                  116,
+                  165
+                ],
+                [
+                  116,
+                  148
+                ],
+                [
+                  118,
+                  161
+                ],
+                [
+                  121,
+                  146
+                ]
+              ],
+              "paletteRGB": [
+                [
+                  186,
+                  107,
+                  60
+                ],
+                [
+                  200,
+                  153,
+                  111
+                ],
+                [
+                  251,
+                  195,
+                  135
+                ],
+                [
+                  249,
+                  202,
+                  150
+                ]
+              ],
+              "nearSide": false,
+              "toolRGBTransferredPixels": 51,
+              "originalSafetyClothingAndInkPreserved": true
+            }
+          ],
+          "alphaDifferencePixels": 0
+        },
+        {
+          "slot": "body.torso",
+          "method": "static tool-sampled skin palette; original material shading boundaries",
+          "records": [
+            {
+              "material": "skin",
+              "method": "static tool-sampled ramp, source median anchored to common midtone; arm and hand share anchor",
+              "sourceMedianRGB": [
+                251.0,
+                198.0,
+                156.0
+              ],
+              "sourcePaletteXY": [
+                [
+                  130,
+                  160
+                ],
+                [
+                  118,
+                  153
+                ],
+                [
+                  122,
+                  168
+                ],
+                [
+                  123,
+                  145
+                ]
+              ],
+              "paletteRGB": [
+                [
+                  180,
+                  133,
+                  104
+                ],
+                [
+                  240,
+                  169,
+                  111
+                ],
+                [
+                  253,
+                  202,
+                  146
+                ],
+                [
+                  250,
+                  205,
+                  157
+                ]
+              ],
+              "nearSide": true,
+              "toolRGBTransferredPixels": 113,
+              "originalSafetyClothingAndInkPreserved": true
+            }
+          ],
+          "alphaDifferencePixels": 0
+        },
+        {
+          "slot": "head.base",
+          "method": "static head-local source",
+          "records": [
+            {
+              "material": "skin",
+              "toolRGBTransferredPixels": 1389,
+              "oldRGBRetainedOutside6pxOrInk": 0,
+              "maximumToolSampleDistance": 1.0
+            }
+          ],
+          "alphaDifferencePixels": 0
+        },
+        {
+          "slot": "body.arm.right",
+          "method": "static tool-sampled skin palette; original material shading boundaries",
+          "records": [
+            {
+              "material": "skin",
+              "method": "static tool-sampled ramp, source median anchored to common midtone; arm and hand share anchor",
+              "sourceMedianRGB": [
+                252.0,
+                199.0,
+                152.0
+              ],
+              "sourcePaletteXY": [
+                [
+                  130,
+                  160
+                ],
+                [
+                  118,
+                  153
+                ],
+                [
+                  122,
+                  168
+                ],
+                [
+                  123,
+                  145
+                ]
+              ],
+              "paletteRGB": [
+                [
+                  180,
+                  133,
+                  104
+                ],
+                [
+                  240,
+                  169,
+                  111
+                ],
+                [
+                  253,
+                  202,
+                  146
+                ],
+                [
+                  250,
+                  205,
+                  157
+                ]
+              ],
+              "nearSide": true,
+              "toolRGBTransferredPixels": 392,
+              "originalSafetyClothingAndInkPreserved": true
+            }
+          ],
+          "alphaDifferencePixels": 0
+        },
+        {
+          "slot": "body.hand.right",
+          "method": "static tool-sampled skin palette; original material shading boundaries",
+          "records": [
+            {
+              "material": "skin",
+              "method": "static tool-sampled ramp, source median anchored to common midtone; arm and hand share anchor",
+              "sourceMedianRGB": [
+                252.0,
+                199.0,
+                152.0
+              ],
+              "sourcePaletteXY": [
+                [
+                  130,
+                  160
+                ],
+                [
+                  118,
+                  153
+                ],
+                [
+                  122,
+                  168
+                ],
+                [
+                  123,
+                  145
+                ]
+              ],
+              "paletteRGB": [
+                [
+                  180,
+                  133,
+                  104
+                ],
+                [
+                  240,
+                  169,
+                  111
+                ],
+                [
+                  253,
+                  202,
+                  146
+                ],
+                [
+                  250,
+                  205,
+                  157
+                ]
+              ],
+              "nearSide": true,
+              "toolRGBTransferredPixels": 65,
+              "originalSafetyClothingAndInkPreserved": true
+            }
+          ],
+          "alphaDifferencePixels": 0
+        }
+      ]
+    },
+    {
+      "index": 3,
+      "sourceClip": "walk",
+      "sourceFrame": 3,
+      "semanticSidesExchanged": true,
+      "allLayerAlphaDifferencePixels": 0,
+      "support": "right-support-left-passing",
+      "lightTransfers": [
+        {
+          "slot": "body.leg.left",
+          "method": "static tool-sampled skin palette; original material shading boundaries",
+          "records": [
+            {
+              "material": "skin",
+              "method": "static tool-sampled ramp, source median anchored to common midtone; arm and hand share anchor",
+              "sourceMedianRGB": [
+                239.0,
+                152.0,
+                100.0
+              ],
+              "sourcePaletteXY": [
+                [
+                  116,
+                  165
+                ],
+                [
+                  116,
+                  148
+                ],
+                [
+                  118,
+                  161
+                ],
+                [
+                  121,
+                  146
+                ]
+              ],
+              "paletteRGB": [
+                [
+                  186,
+                  107,
+                  60
+                ],
+                [
+                  200,
+                  153,
+                  111
+                ],
+                [
+                  251,
+                  195,
+                  135
+                ],
+                [
+                  249,
+                  202,
+                  150
+                ]
+              ],
+              "nearSide": false,
+              "toolRGBTransferredPixels": 656,
+              "originalSafetyClothingAndInkPreserved": true
+            }
+          ],
+          "alphaDifferencePixels": 0
+        },
+        {
+          "slot": "body.leg.right",
+          "method": "static tool-sampled skin palette; original material shading boundaries",
+          "records": [
+            {
+              "material": "skin",
+              "method": "static tool-sampled ramp, source median anchored to common midtone; arm and hand share anchor",
+              "sourceMedianRGB": [
+                252.0,
+                199.0,
+                155.0
+              ],
+              "sourcePaletteXY": [
+                [
+                  130,
+                  160
+                ],
+                [
+                  118,
+                  153
+                ],
+                [
+                  122,
+                  168
+                ],
+                [
+                  123,
+                  145
+                ]
+              ],
+              "paletteRGB": [
+                [
+                  180,
+                  133,
+                  104
+                ],
+                [
+                  240,
+                  169,
+                  111
+                ],
+                [
+                  253,
+                  202,
+                  146
+                ],
+                [
+                  250,
+                  205,
+                  157
+                ]
+              ],
+              "nearSide": true,
+              "toolRGBTransferredPixels": 547,
+              "originalSafetyClothingAndInkPreserved": true
+            }
+          ],
+          "alphaDifferencePixels": 0
+        },
+        {
+          "slot": "body.arm.left",
+          "method": "static tool-sampled skin palette; original material shading boundaries",
+          "records": [
+            {
+              "material": "skin",
+              "method": "static tool-sampled ramp, source median anchored to common midtone; arm and hand share anchor",
+              "sourceMedianRGB": [
+                239.0,
+                152.0,
+                100.0
+              ],
+              "sourcePaletteXY": [
+                [
+                  116,
+                  165
+                ],
+                [
+                  116,
+                  148
+                ],
+                [
+                  118,
+                  161
+                ],
+                [
+                  121,
+                  146
+                ]
+              ],
+              "paletteRGB": [
+                [
+                  186,
+                  107,
+                  60
+                ],
+                [
+                  200,
+                  153,
+                  111
+                ],
+                [
+                  251,
+                  195,
+                  135
+                ],
+                [
+                  249,
+                  202,
+                  150
+                ]
+              ],
+              "nearSide": false,
+              "toolRGBTransferredPixels": 445,
+              "originalSafetyClothingAndInkPreserved": true
+            }
+          ],
+          "alphaDifferencePixels": 0
+        },
+        {
+          "slot": "body.hand.left",
+          "method": "static tool-sampled skin palette; original material shading boundaries",
+          "records": [
+            {
+              "material": "skin",
+              "method": "static tool-sampled ramp, source median anchored to common midtone; arm and hand share anchor",
+              "sourceMedianRGB": [
+                239.0,
+                152.0,
+                100.0
+              ],
+              "sourcePaletteXY": [
+                [
+                  116,
+                  165
+                ],
+                [
+                  116,
+                  148
+                ],
+                [
+                  118,
+                  161
+                ],
+                [
+                  121,
+                  146
+                ]
+              ],
+              "paletteRGB": [
+                [
+                  186,
+                  107,
+                  60
+                ],
+                [
+                  200,
+                  153,
+                  111
+                ],
+                [
+                  251,
+                  195,
+                  135
+                ],
+                [
+                  249,
+                  202,
+                  150
+                ]
+              ],
+              "nearSide": false,
+              "toolRGBTransferredPixels": 48,
+              "originalSafetyClothingAndInkPreserved": true
+            }
+          ],
+          "alphaDifferencePixels": 0
+        },
+        {
+          "slot": "body.torso",
+          "method": "static tool-sampled skin palette; original material shading boundaries",
+          "records": [
+            {
+              "material": "skin",
+              "method": "static tool-sampled ramp, source median anchored to common midtone; arm and hand share anchor",
+              "sourceMedianRGB": [
+                252.0,
+                199.0,
+                154.0
+              ],
+              "sourcePaletteXY": [
+                [
+                  130,
+                  160
+                ],
+                [
+                  118,
+                  153
+                ],
+                [
+                  122,
+                  168
+                ],
+                [
+                  123,
+                  145
+                ]
+              ],
+              "paletteRGB": [
+                [
+                  180,
+                  133,
+                  104
+                ],
+                [
+                  240,
+                  169,
+                  111
+                ],
+                [
+                  253,
+                  202,
+                  146
+                ],
+                [
+                  250,
+                  205,
+                  157
+                ]
+              ],
+              "nearSide": true,
+              "toolRGBTransferredPixels": 87,
+              "originalSafetyClothingAndInkPreserved": true
+            }
+          ],
+          "alphaDifferencePixels": 0
+        },
+        {
+          "slot": "head.base",
+          "method": "static head-local source",
+          "records": [
+            {
+              "material": "skin",
+              "toolRGBTransferredPixels": 1389,
+              "oldRGBRetainedOutside6pxOrInk": 0,
+              "maximumToolSampleDistance": 1.0
+            }
+          ],
+          "alphaDifferencePixels": 0
+        },
+        {
+          "slot": "body.arm.right",
+          "method": "static tool-sampled skin palette; original material shading boundaries",
+          "records": [
+            {
+              "material": "skin",
+              "method": "static tool-sampled ramp, source median anchored to common midtone; arm and hand share anchor",
+              "sourceMedianRGB": [
+                252.0,
+                200.0,
+                155.0
+              ],
+              "sourcePaletteXY": [
+                [
+                  130,
+                  160
+                ],
+                [
+                  118,
+                  153
+                ],
+                [
+                  122,
+                  168
+                ],
+                [
+                  123,
+                  145
+                ]
+              ],
+              "paletteRGB": [
+                [
+                  180,
+                  133,
+                  104
+                ],
+                [
+                  240,
+                  169,
+                  111
+                ],
+                [
+                  253,
+                  202,
+                  146
+                ],
+                [
+                  250,
+                  205,
+                  157
+                ]
+              ],
+              "nearSide": true,
+              "toolRGBTransferredPixels": 381,
+              "originalSafetyClothingAndInkPreserved": true
+            }
+          ],
+          "alphaDifferencePixels": 0
+        },
+        {
+          "slot": "body.hand.right",
+          "method": "static tool-sampled skin palette; original material shading boundaries",
+          "records": [
+            {
+              "material": "skin",
+              "method": "static tool-sampled ramp, source median anchored to common midtone; arm and hand share anchor",
+              "sourceMedianRGB": [
+                252.0,
+                200.0,
+                155.0
+              ],
+              "sourcePaletteXY": [
+                [
+                  130,
+                  160
+                ],
+                [
+                  118,
+                  153
+                ],
+                [
+                  122,
+                  168
+                ],
+                [
+                  123,
+                  145
+                ]
+              ],
+              "paletteRGB": [
+                [
+                  180,
+                  133,
+                  104
+                ],
+                [
+                  240,
+                  169,
+                  111
+                ],
+                [
+                  253,
+                  202,
+                  146
+                ],
+                [
+                  250,
+                  205,
+                  157
+                ]
+              ],
+              "nearSide": true,
+              "toolRGBTransferredPixels": 100,
+              "originalSafetyClothingAndInkPreserved": true
+            }
+          ],
+          "alphaDifferencePixels": 0
+        }
+      ]
+    },
+    {
+      "index": 4,
+      "sourceClip": "walk",
+      "sourceFrame": 4,
+      "semanticSidesExchanged": true,
+      "allLayerAlphaDifferencePixels": 0,
+      "support": "right-toeoff-left-late-swing",
+      "lightTransfers": [
+        {
+          "slot": "body.leg.left",
+          "method": "static tool-sampled skin palette; original material shading boundaries",
+          "records": [
+            {
+              "material": "skin",
+              "method": "static tool-sampled ramp, source median anchored to common midtone; arm and hand share anchor",
+              "sourceMedianRGB": [
+                240.0,
+                159.0,
+                105.0
+              ],
+              "sourcePaletteXY": [
+                [
+                  116,
+                  165
+                ],
+                [
+                  116,
+                  148
+                ],
+                [
+                  118,
+                  161
+                ],
+                [
+                  121,
+                  146
+                ]
+              ],
+              "paletteRGB": [
+                [
+                  186,
+                  107,
+                  60
+                ],
+                [
+                  200,
+                  153,
+                  111
+                ],
+                [
+                  251,
+                  195,
+                  135
+                ],
+                [
+                  249,
+                  202,
+                  150
+                ]
+              ],
+              "nearSide": false,
+              "toolRGBTransferredPixels": 718,
+              "originalSafetyClothingAndInkPreserved": true
+            }
+          ],
+          "alphaDifferencePixels": 0
+        },
+        {
+          "slot": "body.leg.right",
+          "method": "static tool-sampled skin palette; original material shading boundaries",
+          "records": [
+            {
+              "material": "skin",
+              "method": "static tool-sampled ramp, source median anchored to common midtone; arm and hand share anchor",
+              "sourceMedianRGB": [
+                252.0,
+                196.0,
+                150.0
+              ],
+              "sourcePaletteXY": [
+                [
+                  130,
+                  160
+                ],
+                [
+                  118,
+                  153
+                ],
+                [
+                  122,
+                  168
+                ],
+                [
+                  123,
+                  145
+                ]
+              ],
+              "paletteRGB": [
+                [
+                  180,
+                  133,
+                  104
+                ],
+                [
+                  240,
+                  169,
+                  111
+                ],
+                [
+                  253,
+                  202,
+                  146
+                ],
+                [
+                  250,
+                  205,
+                  157
+                ]
+              ],
+              "nearSide": true,
+              "toolRGBTransferredPixels": 481,
+              "originalSafetyClothingAndInkPreserved": true
+            }
+          ],
+          "alphaDifferencePixels": 0
+        },
+        {
+          "slot": "body.arm.left",
+          "method": "static tool-sampled skin palette; original material shading boundaries",
+          "records": [
+            {
+              "material": "skin",
+              "method": "static tool-sampled ramp, source median anchored to common midtone; arm and hand share anchor",
+              "sourceMedianRGB": [
+                240.0,
+                159.0,
+                105.0
+              ],
+              "sourcePaletteXY": [
+                [
+                  116,
+                  165
+                ],
+                [
+                  116,
+                  148
+                ],
+                [
+                  118,
+                  161
+                ],
+                [
+                  121,
+                  146
+                ]
+              ],
+              "paletteRGB": [
+                [
+                  186,
+                  107,
+                  60
+                ],
+                [
+                  200,
+                  153,
+                  111
+                ],
+                [
+                  251,
+                  195,
+                  135
+                ],
+                [
+                  249,
+                  202,
+                  150
+                ]
+              ],
+              "nearSide": false,
+              "toolRGBTransferredPixels": 468,
+              "originalSafetyClothingAndInkPreserved": true
+            }
+          ],
+          "alphaDifferencePixels": 0
+        },
+        {
+          "slot": "body.hand.left",
+          "method": "static tool-sampled skin palette; original material shading boundaries",
+          "records": [
+            {
+              "material": "skin",
+              "method": "static tool-sampled ramp, source median anchored to common midtone; arm and hand share anchor",
+              "sourceMedianRGB": [
+                240.0,
+                159.0,
+                105.0
+              ],
+              "sourcePaletteXY": [
+                [
+                  116,
+                  165
+                ],
+                [
+                  116,
+                  148
+                ],
+                [
+                  118,
+                  161
+                ],
+                [
+                  121,
+                  146
+                ]
+              ],
+              "paletteRGB": [
+                [
+                  186,
+                  107,
+                  60
+                ],
+                [
+                  200,
+                  153,
+                  111
+                ],
+                [
+                  251,
+                  195,
+                  135
+                ],
+                [
+                  249,
+                  202,
+                  150
+                ]
+              ],
+              "nearSide": false,
+              "toolRGBTransferredPixels": 39,
+              "originalSafetyClothingAndInkPreserved": true
+            }
+          ],
+          "alphaDifferencePixels": 0
+        },
+        {
+          "slot": "body.torso",
+          "method": "static tool-sampled skin palette; original material shading boundaries",
+          "records": [
+            {
+              "material": "skin",
+              "method": "static tool-sampled ramp, source median anchored to common midtone; arm and hand share anchor",
+              "sourceMedianRGB": [
+                240.0,
+                199.0,
+                158.0
+              ],
+              "sourcePaletteXY": [
+                [
+                  130,
+                  160
+                ],
+                [
+                  118,
+                  153
+                ],
+                [
+                  122,
+                  168
+                ],
+                [
+                  123,
+                  145
+                ]
+              ],
+              "paletteRGB": [
+                [
+                  180,
+                  133,
+                  104
+                ],
+                [
+                  240,
+                  169,
+                  111
+                ],
+                [
+                  253,
+                  202,
+                  146
+                ],
+                [
+                  250,
+                  205,
+                  157
+                ]
+              ],
+              "nearSide": true,
+              "toolRGBTransferredPixels": 222,
+              "originalSafetyClothingAndInkPreserved": true
+            }
+          ],
+          "alphaDifferencePixels": 0
+        },
+        {
+          "slot": "head.base",
+          "method": "static head-local source",
+          "records": [
+            {
+              "material": "skin",
+              "toolRGBTransferredPixels": 1389,
+              "oldRGBRetainedOutside6pxOrInk": 0,
+              "maximumToolSampleDistance": 1.0
+            }
+          ],
+          "alphaDifferencePixels": 0
+        },
+        {
+          "slot": "body.arm.right",
+          "method": "static tool-sampled skin palette; original material shading boundaries",
+          "records": [
+            {
+              "material": "skin",
+              "method": "static tool-sampled ramp, source median anchored to common midtone; arm and hand share anchor",
+              "sourceMedianRGB": [
+                252.0,
+                196.0,
+                150.0
+              ],
+              "sourcePaletteXY": [
+                [
+                  130,
+                  160
+                ],
+                [
+                  118,
+                  153
+                ],
+                [
+                  122,
+                  168
+                ],
+                [
+                  123,
+                  145
+                ]
+              ],
+              "paletteRGB": [
+                [
+                  180,
+                  133,
+                  104
+                ],
+                [
+                  240,
+                  169,
+                  111
+                ],
+                [
+                  253,
+                  202,
+                  146
+                ],
+                [
+                  250,
+                  205,
+                  157
+                ]
+              ],
+              "nearSide": true,
+              "toolRGBTransferredPixels": 363,
+              "originalSafetyClothingAndInkPreserved": true
+            }
+          ],
+          "alphaDifferencePixels": 0
+        },
+        {
+          "slot": "body.hand.right",
+          "method": "static tool-sampled skin palette; original material shading boundaries",
+          "records": [
+            {
+              "material": "skin",
+              "method": "static tool-sampled ramp, source median anchored to common midtone; arm and hand share anchor",
+              "sourceMedianRGB": [
+                252.0,
+                196.0,
+                150.0
+              ],
+              "sourcePaletteXY": [
+                [
+                  130,
+                  160
+                ],
+                [
+                  118,
+                  153
+                ],
+                [
+                  122,
+                  168
+                ],
+                [
+                  123,
+                  145
+                ]
+              ],
+              "paletteRGB": [
+                [
+                  180,
+                  133,
+                  104
+                ],
+                [
+                  240,
+                  169,
+                  111
+                ],
+                [
+                  253,
+                  202,
+                  146
+                ],
+                [
+                  250,
+                  205,
+                  157
+                ]
+              ],
+              "nearSide": true,
+              "toolRGBTransferredPixels": 91,
+              "originalSafetyClothingAndInkPreserved": true
+            }
+          ],
+          "alphaDifferencePixels": 0
+        }
+      ]
+    },
+    {
+      "index": 5,
+      "sourceClip": "walk",
+      "sourceFrame": 5,
+      "semanticSidesExchanged": true,
+      "allLayerAlphaDifferencePixels": 0,
+      "support": "left-contact",
+      "lightTransfers": [
+        {
+          "slot": "body.leg.left",
+          "method": "static tool-sampled skin palette; original material shading boundaries",
+          "records": [
+            {
+              "material": "skin",
+              "method": "static tool-sampled ramp, source median anchored to common midtone; arm and hand share anchor",
+              "sourceMedianRGB": [
+                241.0,
+                155.0,
+                105.0
+              ],
+              "sourcePaletteXY": [
+                [
+                  116,
+                  165
+                ],
+                [
+                  116,
+                  148
+                ],
+                [
+                  118,
+                  161
+                ],
+                [
+                  121,
+                  146
+                ]
+              ],
+              "paletteRGB": [
+                [
+                  186,
+                  107,
+                  60
+                ],
+                [
+                  200,
+                  153,
+                  111
+                ],
+                [
+                  251,
+                  195,
+                  135
+                ],
+                [
+                  249,
+                  202,
+                  150
+                ]
+              ],
+              "nearSide": false,
+              "toolRGBTransferredPixels": 867,
+              "originalSafetyClothingAndInkPreserved": true
+            }
+          ],
+          "alphaDifferencePixels": 0
+        },
+        {
+          "slot": "body.leg.right",
+          "method": "static tool-sampled skin palette; original material shading boundaries",
+          "records": [
+            {
+              "material": "skin",
+              "method": "static tool-sampled ramp, source median anchored to common midtone; arm and hand share anchor",
+              "sourceMedianRGB": [
+                253.0,
+                200.0,
+                154.0
+              ],
+              "sourcePaletteXY": [
+                [
+                  130,
+                  160
+                ],
+                [
+                  118,
+                  153
+                ],
+                [
+                  122,
+                  168
+                ],
+                [
+                  123,
+                  145
+                ]
+              ],
+              "paletteRGB": [
+                [
+                  180,
+                  133,
+                  104
+                ],
+                [
+                  240,
+                  169,
+                  111
+                ],
+                [
+                  253,
+                  202,
+                  146
+                ],
+                [
+                  250,
+                  205,
+                  157
+                ]
+              ],
+              "nearSide": true,
+              "toolRGBTransferredPixels": 501,
+              "originalSafetyClothingAndInkPreserved": true
+            }
+          ],
+          "alphaDifferencePixels": 0
+        },
+        {
+          "slot": "body.arm.left",
+          "method": "static tool-sampled skin palette; original material shading boundaries",
+          "records": [
+            {
+              "material": "skin",
+              "method": "static tool-sampled ramp, source median anchored to common midtone; arm and hand share anchor",
+              "sourceMedianRGB": [
+                241.0,
+                155.0,
+                105.0
+              ],
+              "sourcePaletteXY": [
+                [
+                  116,
+                  165
+                ],
+                [
+                  116,
+                  148
+                ],
+                [
+                  118,
+                  161
+                ],
+                [
+                  121,
+                  146
+                ]
+              ],
+              "paletteRGB": [
+                [
+                  186,
+                  107,
+                  60
+                ],
+                [
+                  200,
+                  153,
+                  111
+                ],
+                [
+                  251,
+                  195,
+                  135
+                ],
+                [
+                  249,
+                  202,
+                  150
+                ]
+              ],
+              "nearSide": false,
+              "toolRGBTransferredPixels": 529,
+              "originalSafetyClothingAndInkPreserved": true
+            }
+          ],
+          "alphaDifferencePixels": 0
+        },
+        {
+          "slot": "body.hand.left",
+          "method": "static tool-sampled skin palette; original material shading boundaries",
+          "records": [
+            {
+              "material": "skin",
+              "method": "static tool-sampled ramp, source median anchored to common midtone; arm and hand share anchor",
+              "sourceMedianRGB": [
+                241.0,
+                155.0,
+                105.0
+              ],
+              "sourcePaletteXY": [
+                [
+                  116,
+                  165
+                ],
+                [
+                  116,
+                  148
+                ],
+                [
+                  118,
+                  161
+                ],
+                [
+                  121,
+                  146
+                ]
+              ],
+              "paletteRGB": [
+                [
+                  186,
+                  107,
+                  60
+                ],
+                [
+                  200,
+                  153,
+                  111
+                ],
+                [
+                  251,
+                  195,
+                  135
+                ],
+                [
+                  249,
+                  202,
+                  150
+                ]
+              ],
+              "nearSide": false,
+              "toolRGBTransferredPixels": 64,
+              "originalSafetyClothingAndInkPreserved": true
+            }
+          ],
+          "alphaDifferencePixels": 0
+        },
+        {
+          "slot": "body.torso",
+          "method": "static tool-sampled skin palette; original material shading boundaries",
+          "records": [
+            {
+              "material": "skin",
+              "method": "static tool-sampled ramp, source median anchored to common midtone; arm and hand share anchor",
+              "sourceMedianRGB": [
+                251.0,
+                202.0,
+                158.0
+              ],
+              "sourcePaletteXY": [
+                [
+                  130,
+                  160
+                ],
+                [
+                  118,
+                  153
+                ],
+                [
+                  122,
+                  168
+                ],
+                [
+                  123,
+                  145
+                ]
+              ],
+              "paletteRGB": [
+                [
+                  180,
+                  133,
+                  104
+                ],
+                [
+                  240,
+                  169,
+                  111
+                ],
+                [
+                  253,
+                  202,
+                  146
+                ],
+                [
+                  250,
+                  205,
+                  157
+                ]
+              ],
+              "nearSide": true,
+              "toolRGBTransferredPixels": 115,
+              "originalSafetyClothingAndInkPreserved": true
+            }
+          ],
+          "alphaDifferencePixels": 0
+        },
+        {
+          "slot": "head.base",
+          "method": "static head-local source",
+          "records": [
+            {
+              "material": "skin",
+              "toolRGBTransferredPixels": 1389,
+              "oldRGBRetainedOutside6pxOrInk": 0,
+              "maximumToolSampleDistance": 1.0
+            }
+          ],
+          "alphaDifferencePixels": 0
+        },
+        {
+          "slot": "body.arm.right",
+          "method": "static tool-sampled skin palette; original material shading boundaries",
+          "records": [
+            {
+              "material": "skin",
+              "method": "static tool-sampled ramp, source median anchored to common midtone; arm and hand share anchor",
+              "sourceMedianRGB": [
+                252.0,
+                200.0,
+                154.0
+              ],
+              "sourcePaletteXY": [
+                [
+                  130,
+                  160
+                ],
+                [
+                  118,
+                  153
+                ],
+                [
+                  122,
+                  168
+                ],
+                [
+                  123,
+                  145
+                ]
+              ],
+              "paletteRGB": [
+                [
+                  180,
+                  133,
+                  104
+                ],
+                [
+                  240,
+                  169,
+                  111
+                ],
+                [
+                  253,
+                  202,
+                  146
+                ],
+                [
+                  250,
+                  205,
+                  157
+                ]
+              ],
+              "nearSide": true,
+              "toolRGBTransferredPixels": 447,
+              "originalSafetyClothingAndInkPreserved": true
+            }
+          ],
+          "alphaDifferencePixels": 0
+        },
+        {
+          "slot": "body.hand.right",
+          "method": "static tool-sampled skin palette; original material shading boundaries",
+          "records": [
+            {
+              "material": "skin",
+              "method": "static tool-sampled ramp, source median anchored to common midtone; arm and hand share anchor",
+              "sourceMedianRGB": [
+                252.0,
+                200.0,
+                154.0
+              ],
+              "sourcePaletteXY": [
+                [
+                  130,
+                  160
+                ],
+                [
+                  118,
+                  153
+                ],
+                [
+                  122,
+                  168
+                ],
+                [
+                  123,
+                  145
+                ]
+              ],
+              "paletteRGB": [
+                [
+                  180,
+                  133,
+                  104
+                ],
+                [
+                  240,
+                  169,
+                  111
+                ],
+                [
+                  253,
+                  202,
+                  146
+                ],
+                [
+                  250,
+                  205,
+                  157
+                ]
+              ],
+              "nearSide": true,
+              "toolRGBTransferredPixels": 94,
+              "originalSafetyClothingAndInkPreserved": true
+            }
+          ],
+          "alphaDifferencePixels": 0
+        }
+      ]
+    },
+    {
+      "index": 6,
+      "sourceClip": "walk",
+      "sourceFrame": 6,
+      "semanticSidesExchanged": true,
+      "allLayerAlphaDifferencePixels": 0,
+      "support": "left-support-right-recovery",
+      "lightTransfers": [
+        {
+          "slot": "body.leg.left",
+          "method": "static tool-sampled skin palette; original material shading boundaries",
+          "records": [
+            {
+              "material": "skin",
+              "method": "static tool-sampled ramp, source median anchored to common midtone; arm and hand share anchor",
+              "sourceMedianRGB": [
+                244.0,
+                164.0,
+                108.0
+              ],
+              "sourcePaletteXY": [
+                [
+                  116,
+                  165
+                ],
+                [
+                  116,
+                  148
+                ],
+                [
+                  118,
+                  161
+                ],
+                [
+                  121,
+                  146
+                ]
+              ],
+              "paletteRGB": [
+                [
+                  186,
+                  107,
+                  60
+                ],
+                [
+                  200,
+                  153,
+                  111
+                ],
+                [
+                  251,
+                  195,
+                  135
+                ],
+                [
+                  249,
+                  202,
+                  150
+                ]
+              ],
+              "nearSide": false,
+              "toolRGBTransferredPixels": 816,
+              "originalSafetyClothingAndInkPreserved": true
+            }
+          ],
+          "alphaDifferencePixels": 0
+        },
+        {
+          "slot": "body.leg.right",
+          "method": "static tool-sampled skin palette; original material shading boundaries",
+          "records": [
+            {
+              "material": "skin",
+              "method": "static tool-sampled ramp, source median anchored to common midtone; arm and hand share anchor",
+              "sourceMedianRGB": [
+                252.0,
+                207.0,
+                162.0
+              ],
+              "sourcePaletteXY": [
+                [
+                  130,
+                  160
+                ],
+                [
+                  118,
+                  153
+                ],
+                [
+                  122,
+                  168
+                ],
+                [
+                  123,
+                  145
+                ]
+              ],
+              "paletteRGB": [
+                [
+                  180,
+                  133,
+                  104
+                ],
+                [
+                  240,
+                  169,
+                  111
+                ],
+                [
+                  253,
+                  202,
+                  146
+                ],
+                [
+                  250,
+                  205,
+                  157
+                ]
+              ],
+              "nearSide": true,
+              "toolRGBTransferredPixels": 339,
+              "originalSafetyClothingAndInkPreserved": true
+            }
+          ],
+          "alphaDifferencePixels": 0
+        },
+        {
+          "slot": "body.arm.left",
+          "method": "static tool-sampled skin palette; original material shading boundaries",
+          "records": [
+            {
+              "material": "skin",
+              "method": "static tool-sampled ramp, source median anchored to common midtone; arm and hand share anchor",
+              "sourceMedianRGB": [
+                244.0,
+                164.0,
+                108.0
+              ],
+              "sourcePaletteXY": [
+                [
+                  116,
+                  165
+                ],
+                [
+                  116,
+                  148
+                ],
+                [
+                  118,
+                  161
+                ],
+                [
+                  121,
+                  146
+                ]
+              ],
+              "paletteRGB": [
+                [
+                  186,
+                  107,
+                  60
+                ],
+                [
+                  200,
+                  153,
+                  111
+                ],
+                [
+                  251,
+                  195,
+                  135
+                ],
+                [
+                  249,
+                  202,
+                  150
+                ]
+              ],
+              "nearSide": false,
+              "toolRGBTransferredPixels": 473,
+              "originalSafetyClothingAndInkPreserved": true
+            }
+          ],
+          "alphaDifferencePixels": 0
+        },
+        {
+          "slot": "body.hand.left",
+          "method": "static tool-sampled skin palette; original material shading boundaries",
+          "records": [
+            {
+              "material": "skin",
+              "method": "static tool-sampled ramp, source median anchored to common midtone; arm and hand share anchor",
+              "sourceMedianRGB": [
+                244.0,
+                164.0,
+                108.0
+              ],
+              "sourcePaletteXY": [
+                [
+                  116,
+                  165
+                ],
+                [
+                  116,
+                  148
+                ],
+                [
+                  118,
+                  161
+                ],
+                [
+                  121,
+                  146
+                ]
+              ],
+              "paletteRGB": [
+                [
+                  186,
+                  107,
+                  60
+                ],
+                [
+                  200,
+                  153,
+                  111
+                ],
+                [
+                  251,
+                  195,
+                  135
+                ],
+                [
+                  249,
+                  202,
+                  150
+                ]
+              ],
+              "nearSide": false,
+              "toolRGBTransferredPixels": 41,
+              "originalSafetyClothingAndInkPreserved": true
+            }
+          ],
+          "alphaDifferencePixels": 0
+        },
+        {
+          "slot": "body.torso",
+          "method": "static tool-sampled skin palette; original material shading boundaries",
+          "records": [
+            {
+              "material": "skin",
+              "method": "static tool-sampled ramp, source median anchored to common midtone; arm and hand share anchor",
+              "sourceMedianRGB": [
+                252.0,
+                205.0,
+                158.5
+              ],
+              "sourcePaletteXY": [
+                [
+                  130,
+                  160
+                ],
+                [
+                  118,
+                  153
+                ],
+                [
+                  122,
+                  168
+                ],
+                [
+                  123,
+                  145
+                ]
+              ],
+              "paletteRGB": [
+                [
+                  180,
+                  133,
+                  104
+                ],
+                [
+                  240,
+                  169,
+                  111
+                ],
+                [
+                  253,
+                  202,
+                  146
+                ],
+                [
+                  250,
+                  205,
+                  157
+                ]
+              ],
+              "nearSide": true,
+              "toolRGBTransferredPixels": 96,
+              "originalSafetyClothingAndInkPreserved": true
+            }
+          ],
+          "alphaDifferencePixels": 0
+        },
+        {
+          "slot": "head.base",
+          "method": "static head-local source",
+          "records": [
+            {
+              "material": "skin",
+              "toolRGBTransferredPixels": 1389,
+              "oldRGBRetainedOutside6pxOrInk": 0,
+              "maximumToolSampleDistance": 1.0
+            }
+          ],
+          "alphaDifferencePixels": 0
+        },
+        {
+          "slot": "body.arm.right",
+          "method": "static tool-sampled skin palette; original material shading boundaries",
+          "records": [
+            {
+              "material": "skin",
+              "method": "static tool-sampled ramp, source median anchored to common midtone; arm and hand share anchor",
+              "sourceMedianRGB": [
+                253.0,
+                207.0,
+                163.0
+              ],
+              "sourcePaletteXY": [
+                [
+                  130,
+                  160
+                ],
+                [
+                  118,
+                  153
+                ],
+                [
+                  122,
+                  168
+                ],
+                [
+                  123,
+                  145
+                ]
+              ],
+              "paletteRGB": [
+                [
+                  180,
+                  133,
+                  104
+                ],
+                [
+                  240,
+                  169,
+                  111
+                ],
+                [
+                  253,
+                  202,
+                  146
+                ],
+                [
+                  250,
+                  205,
+                  157
+                ]
+              ],
+              "nearSide": true,
+              "toolRGBTransferredPixels": 414,
+              "originalSafetyClothingAndInkPreserved": true
+            }
+          ],
+          "alphaDifferencePixels": 0
+        },
+        {
+          "slot": "body.hand.right",
+          "method": "static tool-sampled skin palette; original material shading boundaries",
+          "records": [
+            {
+              "material": "skin",
+              "method": "static tool-sampled ramp, source median anchored to common midtone; arm and hand share anchor",
+              "sourceMedianRGB": [
+                253.0,
+                207.0,
+                163.0
+              ],
+              "sourcePaletteXY": [
+                [
+                  130,
+                  160
+                ],
+                [
+                  118,
+                  153
+                ],
+                [
+                  122,
+                  168
+                ],
+                [
+                  123,
+                  145
+                ]
+              ],
+              "paletteRGB": [
+                [
+                  180,
+                  133,
+                  104
+                ],
+                [
+                  240,
+                  169,
+                  111
+                ],
+                [
+                  253,
+                  202,
+                  146
+                ],
+                [
+                  250,
+                  205,
+                  157
+                ]
+              ],
+              "nearSide": true,
+              "toolRGBTransferredPixels": 82,
+              "originalSafetyClothingAndInkPreserved": true
+            }
+          ],
+          "alphaDifferencePixels": 0
+        }
+      ]
+    },
+    {
+      "index": 7,
+      "sourceClip": "walk",
+      "sourceFrame": 7,
+      "semanticSidesExchanged": true,
+      "allLayerAlphaDifferencePixels": 0,
+      "support": "left-support-right-passing",
+      "lightTransfers": [
+        {
+          "slot": "body.leg.left",
+          "method": "static tool-sampled skin palette; original material shading boundaries",
+          "records": [
+            {
+              "material": "skin",
+              "method": "static tool-sampled ramp, source median anchored to common midtone; arm and hand share anchor",
+              "sourceMedianRGB": [
+                235.0,
+                144.0,
+                94.0
+              ],
+              "sourcePaletteXY": [
+                [
+                  116,
+                  165
+                ],
+                [
+                  116,
+                  148
+                ],
+                [
+                  118,
+                  161
+                ],
+                [
+                  121,
+                  146
+                ]
+              ],
+              "paletteRGB": [
+                [
+                  186,
+                  107,
+                  60
+                ],
+                [
+                  200,
+                  153,
+                  111
+                ],
+                [
+                  251,
+                  195,
+                  135
+                ],
+                [
+                  249,
+                  202,
+                  150
+                ]
+              ],
+              "nearSide": false,
+              "toolRGBTransferredPixels": 528,
+              "originalSafetyClothingAndInkPreserved": true
+            }
+          ],
+          "alphaDifferencePixels": 0
+        },
+        {
+          "slot": "body.leg.right",
+          "method": "static tool-sampled skin palette; original material shading boundaries",
+          "records": [
+            {
+              "material": "skin",
+              "method": "static tool-sampled ramp, source median anchored to common midtone; arm and hand share anchor",
+              "sourceMedianRGB": [
+                253.0,
+                205.0,
+                159.0
+              ],
+              "sourcePaletteXY": [
+                [
+                  130,
+                  160
+                ],
+                [
+                  118,
+                  153
+                ],
+                [
+                  122,
+                  168
+                ],
+                [
+                  123,
+                  145
+                ]
+              ],
+              "paletteRGB": [
+                [
+                  180,
+                  133,
+                  104
+                ],
+                [
+                  240,
+                  169,
+                  111
+                ],
+                [
+                  253,
+                  202,
+                  146
+                ],
+                [
+                  250,
+                  205,
+                  157
+                ]
+              ],
+              "nearSide": true,
+              "toolRGBTransferredPixels": 498,
+              "originalSafetyClothingAndInkPreserved": true
+            }
+          ],
+          "alphaDifferencePixels": 0
+        },
+        {
+          "slot": "body.arm.left",
+          "method": "static tool-sampled skin palette; original material shading boundaries",
+          "records": [
+            {
+              "material": "skin",
+              "method": "static tool-sampled ramp, source median anchored to common midtone; arm and hand share anchor",
+              "sourceMedianRGB": [
+                235.0,
+                144.0,
+                94.0
+              ],
+              "sourcePaletteXY": [
+                [
+                  116,
+                  165
+                ],
+                [
+                  116,
+                  148
+                ],
+                [
+                  118,
+                  161
+                ],
+                [
+                  121,
+                  146
+                ]
+              ],
+              "paletteRGB": [
+                [
+                  186,
+                  107,
+                  60
+                ],
+                [
+                  200,
+                  153,
+                  111
+                ],
+                [
+                  251,
+                  195,
+                  135
+                ],
+                [
+                  249,
+                  202,
+                  150
+                ]
+              ],
+              "nearSide": false,
+              "toolRGBTransferredPixels": 469,
+              "originalSafetyClothingAndInkPreserved": true
+            }
+          ],
+          "alphaDifferencePixels": 0
+        },
+        {
+          "slot": "body.hand.left",
+          "method": "static tool-sampled skin palette; original material shading boundaries",
+          "records": [
+            {
+              "material": "skin",
+              "method": "static tool-sampled ramp, source median anchored to common midtone; arm and hand share anchor",
+              "sourceMedianRGB": [
+                235.0,
+                144.0,
+                94.0
+              ],
+              "sourcePaletteXY": [
+                [
+                  116,
+                  165
+                ],
+                [
+                  116,
+                  148
+                ],
+                [
+                  118,
+                  161
+                ],
+                [
+                  121,
+                  146
+                ]
+              ],
+              "paletteRGB": [
+                [
+                  186,
+                  107,
+                  60
+                ],
+                [
+                  200,
+                  153,
+                  111
+                ],
+                [
+                  251,
+                  195,
+                  135
+                ],
+                [
+                  249,
+                  202,
+                  150
+                ]
+              ],
+              "nearSide": false,
+              "toolRGBTransferredPixels": 46,
+              "originalSafetyClothingAndInkPreserved": true
+            }
+          ],
+          "alphaDifferencePixels": 0
+        },
+        {
+          "slot": "body.torso",
+          "method": "static tool-sampled skin palette; original material shading boundaries",
+          "records": [
+            {
+              "material": "skin",
+              "method": "static tool-sampled ramp, source median anchored to common midtone; arm and hand share anchor",
+              "sourceMedianRGB": [
+                251.0,
+                204.0,
+                157.0
+              ],
+              "sourcePaletteXY": [
+                [
+                  130,
+                  160
+                ],
+                [
+                  118,
+                  153
+                ],
+                [
+                  122,
+                  168
+                ],
+                [
+                  123,
+                  145
+                ]
+              ],
+              "paletteRGB": [
+                [
+                  180,
+                  133,
+                  104
+                ],
+                [
+                  240,
+                  169,
+                  111
+                ],
+                [
+                  253,
+                  202,
+                  146
+                ],
+                [
+                  250,
+                  205,
+                  157
+                ]
+              ],
+              "nearSide": true,
+              "toolRGBTransferredPixels": 109,
+              "originalSafetyClothingAndInkPreserved": true
+            }
+          ],
+          "alphaDifferencePixels": 0
+        },
+        {
+          "slot": "head.base",
+          "method": "static head-local source",
+          "records": [
+            {
+              "material": "skin",
+              "toolRGBTransferredPixels": 1389,
+              "oldRGBRetainedOutside6pxOrInk": 0,
+              "maximumToolSampleDistance": 1.0
+            }
+          ],
+          "alphaDifferencePixels": 0
+        },
+        {
+          "slot": "body.arm.right",
+          "method": "static tool-sampled skin palette; original material shading boundaries",
+          "records": [
+            {
+              "material": "skin",
+              "method": "static tool-sampled ramp, source median anchored to common midtone; arm and hand share anchor",
+              "sourceMedianRGB": [
+                253.0,
+                206.0,
+                160.0
+              ],
+              "sourcePaletteXY": [
+                [
+                  130,
+                  160
+                ],
+                [
+                  118,
+                  153
+                ],
+                [
+                  122,
+                  168
+                ],
+                [
+                  123,
+                  145
+                ]
+              ],
+              "paletteRGB": [
+                [
+                  180,
+                  133,
+                  104
+                ],
+                [
+                  240,
+                  169,
+                  111
+                ],
+                [
+                  253,
+                  202,
+                  146
+                ],
+                [
+                  250,
+                  205,
+                  157
+                ]
+              ],
+              "nearSide": true,
+              "toolRGBTransferredPixels": 411,
+              "originalSafetyClothingAndInkPreserved": true
+            }
+          ],
+          "alphaDifferencePixels": 0
+        },
+        {
+          "slot": "body.hand.right",
+          "method": "static tool-sampled skin palette; original material shading boundaries",
+          "records": [
+            {
+              "material": "skin",
+              "method": "static tool-sampled ramp, source median anchored to common midtone; arm and hand share anchor",
+              "sourceMedianRGB": [
+                253.0,
+                206.0,
+                160.0
+              ],
+              "sourcePaletteXY": [
+                [
+                  130,
+                  160
+                ],
+                [
+                  118,
+                  153
+                ],
+                [
+                  122,
+                  168
+                ],
+                [
+                  123,
+                  145
+                ]
+              ],
+              "paletteRGB": [
+                [
+                  180,
+                  133,
+                  104
+                ],
+                [
+                  240,
+                  169,
+                  111
+                ],
+                [
+                  253,
+                  202,
+                  146
+                ],
+                [
+                  250,
+                  205,
+                  157
+                ]
+              ],
+              "nearSide": true,
+              "toolRGBTransferredPixels": 99,
+              "originalSafetyClothingAndInkPreserved": true
+            }
+          ],
+          "alphaDifferencePixels": 0
+        }
+      ]
+    },
+    {
+      "index": 8,
+      "sourceClip": "walk",
+      "sourceFrame": 8,
+      "semanticSidesExchanged": true,
+      "allLayerAlphaDifferencePixels": 0,
+      "support": "right-late-swing",
+      "lightTransfers": [
+        {
+          "slot": "body.leg.left",
+          "method": "static tool-sampled skin palette; original material shading boundaries",
+          "records": [
+            {
+              "material": "skin",
+              "method": "static tool-sampled ramp, source median anchored to common midtone; arm and hand share anchor",
+              "sourceMedianRGB": [
+                251.0,
+                165.0,
+                107.0
+              ],
+              "sourcePaletteXY": [
+                [
+                  116,
+                  165
+                ],
+                [
+                  116,
+                  148
+                ],
+                [
+                  118,
+                  161
+                ],
+                [
+                  121,
+                  146
+                ]
+              ],
+              "paletteRGB": [
+                [
+                  186,
+                  107,
+                  60
+                ],
+                [
+                  200,
+                  153,
+                  111
+                ],
+                [
+                  251,
+                  195,
+                  135
+                ],
+                [
+                  249,
+                  202,
+                  150
+                ]
+              ],
+              "nearSide": false,
+              "toolRGBTransferredPixels": 535,
+              "originalSafetyClothingAndInkPreserved": true
+            }
+          ],
+          "alphaDifferencePixels": 0
+        },
+        {
+          "slot": "body.leg.right",
+          "method": "static tool-sampled skin palette; original material shading boundaries",
+          "records": [
+            {
+              "material": "skin",
+              "method": "static tool-sampled ramp, source median anchored to common midtone; arm and hand share anchor",
+              "sourceMedianRGB": [
+                253.0,
+                200.0,
+                156.0
+              ],
+              "sourcePaletteXY": [
+                [
+                  130,
+                  160
+                ],
+                [
+                  118,
+                  153
+                ],
+                [
+                  122,
+                  168
+                ],
+                [
+                  123,
+                  145
+                ]
+              ],
+              "paletteRGB": [
+                [
+                  180,
+                  133,
+                  104
+                ],
+                [
+                  240,
+                  169,
+                  111
+                ],
+                [
+                  253,
+                  202,
+                  146
+                ],
+                [
+                  250,
+                  205,
+                  157
+                ]
+              ],
+              "nearSide": true,
+              "toolRGBTransferredPixels": 444,
+              "originalSafetyClothingAndInkPreserved": true
+            }
+          ],
+          "alphaDifferencePixels": 0
+        },
+        {
+          "slot": "body.arm.left",
+          "method": "static tool-sampled skin palette; original material shading boundaries",
+          "records": [
+            {
+              "material": "skin",
+              "method": "static tool-sampled ramp, source median anchored to common midtone; arm and hand share anchor",
+              "sourceMedianRGB": [
+                251.0,
+                163.0,
+                101.0
+              ],
+              "sourcePaletteXY": [
+                [
+                  116,
+                  165
+                ],
+                [
+                  116,
+                  148
+                ],
+                [
+                  118,
+                  161
+                ],
+                [
+                  121,
+                  146
+                ]
+              ],
+              "paletteRGB": [
+                [
+                  186,
+                  107,
+                  60
+                ],
+                [
+                  200,
+                  153,
+                  111
+                ],
+                [
+                  251,
+                  195,
+                  135
+                ],
+                [
+                  249,
+                  202,
+                  150
+                ]
+              ],
+              "nearSide": false,
+              "toolRGBTransferredPixels": 434,
+              "originalSafetyClothingAndInkPreserved": true
+            }
+          ],
+          "alphaDifferencePixels": 0
+        },
+        {
+          "slot": "body.hand.left",
+          "method": "static tool-sampled skin palette; original material shading boundaries",
+          "records": [
+            {
+              "material": "skin",
+              "method": "static tool-sampled ramp, source median anchored to common midtone; arm and hand share anchor",
+              "sourceMedianRGB": [
+                251.0,
+                163.0,
+                101.0
+              ],
+              "sourcePaletteXY": [
+                [
+                  116,
+                  165
+                ],
+                [
+                  116,
+                  148
+                ],
+                [
+                  118,
+                  161
+                ],
+                [
+                  121,
+                  146
+                ]
+              ],
+              "paletteRGB": [
+                [
+                  186,
+                  107,
+                  60
+                ],
+                [
+                  200,
+                  153,
+                  111
+                ],
+                [
+                  251,
+                  195,
+                  135
+                ],
+                [
+                  249,
+                  202,
+                  150
+                ]
+              ],
+              "nearSide": false,
+              "toolRGBTransferredPixels": 33,
+              "originalSafetyClothingAndInkPreserved": true
+            }
+          ],
+          "alphaDifferencePixels": 0
+        },
+        {
+          "slot": "body.torso",
+          "method": "static tool-sampled skin palette; original material shading boundaries",
+          "records": [
+            {
+              "material": "skin",
+              "method": "static tool-sampled ramp, source median anchored to common midtone; arm and hand share anchor",
+              "sourceMedianRGB": [
+                252.0,
+                203.0,
+                158.0
+              ],
+              "sourcePaletteXY": [
+                [
+                  130,
+                  160
+                ],
+                [
+                  118,
+                  153
+                ],
+                [
+                  122,
+                  168
+                ],
+                [
+                  123,
+                  145
+                ]
+              ],
+              "paletteRGB": [
+                [
+                  180,
+                  133,
+                  104
+                ],
+                [
+                  240,
+                  169,
+                  111
+                ],
+                [
+                  253,
+                  202,
+                  146
+                ],
+                [
+                  250,
+                  205,
+                  157
+                ]
+              ],
+              "nearSide": true,
+              "toolRGBTransferredPixels": 89,
+              "originalSafetyClothingAndInkPreserved": true
+            }
+          ],
+          "alphaDifferencePixels": 0
+        },
+        {
+          "slot": "head.base",
+          "method": "static head-local source",
+          "records": [
+            {
+              "material": "skin",
+              "toolRGBTransferredPixels": 1389,
+              "oldRGBRetainedOutside6pxOrInk": 0,
+              "maximumToolSampleDistance": 1.0
+            }
+          ],
+          "alphaDifferencePixels": 0
+        },
+        {
+          "slot": "body.arm.right",
+          "method": "static tool-sampled skin palette; original material shading boundaries",
+          "records": [
+            {
+              "material": "skin",
+              "method": "static tool-sampled ramp, source median anchored to common midtone; arm and hand share anchor",
+              "sourceMedianRGB": [
+                253.0,
+                200.0,
+                156.0
+              ],
+              "sourcePaletteXY": [
+                [
+                  130,
+                  160
+                ],
+                [
+                  118,
+                  153
+                ],
+                [
+                  122,
+                  168
+                ],
+                [
+                  123,
+                  145
+                ]
+              ],
+              "paletteRGB": [
+                [
+                  180,
+                  133,
+                  104
+                ],
+                [
+                  240,
+                  169,
+                  111
+                ],
+                [
+                  253,
+                  202,
+                  146
+                ],
+                [
+                  250,
+                  205,
+                  157
+                ]
+              ],
+              "nearSide": true,
+              "toolRGBTransferredPixels": 421,
+              "originalSafetyClothingAndInkPreserved": true
+            }
+          ],
+          "alphaDifferencePixels": 0
+        },
+        {
+          "slot": "body.hand.right",
+          "method": "static tool-sampled skin palette; original material shading boundaries",
+          "records": [
+            {
+              "material": "skin",
+              "method": "static tool-sampled ramp, source median anchored to common midtone; arm and hand share anchor",
+              "sourceMedianRGB": [
+                253.0,
+                200.0,
+                156.0
+              ],
+              "sourcePaletteXY": [
+                [
+                  130,
+                  160
+                ],
+                [
+                  118,
+                  153
+                ],
+                [
+                  122,
+                  168
+                ],
+                [
+                  123,
+                  145
+                ]
+              ],
+              "paletteRGB": [
+                [
+                  180,
+                  133,
+                  104
+                ],
+                [
+                  240,
+                  169,
+                  111
+                ],
+                [
+                  253,
+                  202,
+                  146
+                ],
+                [
+                  250,
+                  205,
+                  157
+                ]
+              ],
+              "nearSide": true,
+              "toolRGBTransferredPixels": 60,
+              "originalSafetyClothingAndInkPreserved": true
+            }
+          ],
+          "alphaDifferencePixels": 0
+        }
+      ]
+    },
+    {
+      "index": 9,
+      "sourceClip": "walk-start",
+      "sourceFrame": 1,
+      "semanticSidesExchanged": true,
+      "allLayerAlphaDifferencePixels": 0,
+      "support": "both",
+      "lightTransfers": [
+        {
+          "slot": "body.leg.left",
+          "method": "static tool-sampled skin palette; original material shading boundaries",
+          "records": [
+            {
+              "material": "skin",
+              "method": "static tool-sampled ramp, source median anchored to common midtone; arm and hand share anchor",
+              "sourceMedianRGB": [
+                247.0,
+                181.0,
+                126.0
+              ],
+              "sourcePaletteXY": [
+                [
+                  116,
+                  165
+                ],
+                [
+                  116,
+                  148
+                ],
+                [
+                  118,
+                  161
+                ],
+                [
+                  121,
+                  146
+                ]
+              ],
+              "paletteRGB": [
+                [
+                  186,
+                  107,
+                  60
+                ],
+                [
+                  200,
+                  153,
+                  111
+                ],
+                [
+                  251,
+                  195,
+                  135
+                ],
+                [
+                  249,
+                  202,
+                  150
+                ]
+              ],
+              "nearSide": false,
+              "toolRGBTransferredPixels": 430,
+              "originalSafetyClothingAndInkPreserved": true
+            }
+          ],
+          "alphaDifferencePixels": 0
+        },
+        {
+          "slot": "body.leg.right",
+          "method": "static tool-sampled skin palette; original material shading boundaries",
+          "records": [
+            {
+              "material": "skin",
+              "method": "static tool-sampled ramp, source median anchored to common midtone; arm and hand share anchor",
+              "sourceMedianRGB": [
+                251.0,
+                201.0,
+                154.0
+              ],
+              "sourcePaletteXY": [
+                [
+                  130,
+                  160
+                ],
+                [
+                  118,
+                  153
+                ],
+                [
+                  122,
+                  168
+                ],
+                [
+                  123,
+                  145
+                ]
+              ],
+              "paletteRGB": [
+                [
+                  180,
+                  133,
+                  104
+                ],
+                [
+                  240,
+                  169,
+                  111
+                ],
+                [
+                  253,
+                  202,
+                  146
+                ],
+                [
+                  250,
+                  205,
+                  157
+                ]
+              ],
+              "nearSide": true,
+              "toolRGBTransferredPixels": 621,
+              "originalSafetyClothingAndInkPreserved": true
+            }
+          ],
+          "alphaDifferencePixels": 0
+        },
+        {
+          "slot": "body.arm.left",
+          "method": "static tool-sampled skin palette; original material shading boundaries",
+          "records": [
+            {
+              "material": "skin",
+              "method": "static tool-sampled ramp, source median anchored to common midtone; arm and hand share anchor",
+              "sourceMedianRGB": [
+                247.0,
+                181.0,
+                126.0
+              ],
+              "sourcePaletteXY": [
+                [
+                  116,
+                  165
+                ],
+                [
+                  116,
+                  148
+                ],
+                [
+                  118,
+                  161
+                ],
+                [
+                  121,
+                  146
+                ]
+              ],
+              "paletteRGB": [
+                [
+                  186,
+                  107,
+                  60
+                ],
+                [
+                  200,
+                  153,
+                  111
+                ],
+                [
+                  251,
+                  195,
+                  135
+                ],
+                [
+                  249,
+                  202,
+                  150
+                ]
+              ],
+              "nearSide": false,
+              "toolRGBTransferredPixels": 292,
+              "originalSafetyClothingAndInkPreserved": true
+            }
+          ],
+          "alphaDifferencePixels": 0
+        },
+        {
+          "slot": "body.hand.left",
+          "method": "static tool-sampled skin palette; original material shading boundaries",
+          "records": [
+            {
+              "material": "skin",
+              "method": "static tool-sampled ramp, source median anchored to common midtone; arm and hand share anchor",
+              "sourceMedianRGB": [
+                247.0,
+                181.0,
+                126.0
+              ],
+              "sourcePaletteXY": [
+                [
+                  116,
+                  165
+                ],
+                [
+                  116,
+                  148
+                ],
+                [
+                  118,
+                  161
+                ],
+                [
+                  121,
+                  146
+                ]
+              ],
+              "paletteRGB": [
+                [
+                  186,
+                  107,
+                  60
+                ],
+                [
+                  200,
+                  153,
+                  111
+                ],
+                [
+                  251,
+                  195,
+                  135
+                ],
+                [
+                  249,
+                  202,
+                  150
+                ]
+              ],
+              "nearSide": false,
+              "toolRGBTransferredPixels": 24,
+              "originalSafetyClothingAndInkPreserved": true
+            }
+          ],
+          "alphaDifferencePixels": 0
+        },
+        {
+          "slot": "body.torso",
+          "method": "static tool-sampled skin palette; original material shading boundaries",
+          "records": [
+            {
+              "material": "skin",
+              "method": "static tool-sampled ramp, source median anchored to common midtone; arm and hand share anchor",
+              "sourceMedianRGB": [
+                253.0,
+                205.0,
+                158.0
+              ],
+              "sourcePaletteXY": [
+                [
+                  130,
+                  160
+                ],
+                [
+                  118,
+                  153
+                ],
+                [
+                  122,
+                  168
+                ],
+                [
+                  123,
+                  145
+                ]
+              ],
+              "paletteRGB": [
+                [
+                  180,
+                  133,
+                  104
+                ],
+                [
+                  240,
+                  169,
+                  111
+                ],
+                [
+                  253,
+                  202,
+                  146
+                ],
+                [
+                  250,
+                  205,
+                  157
+                ]
+              ],
+              "nearSide": true,
+              "toolRGBTransferredPixels": 76,
+              "originalSafetyClothingAndInkPreserved": true
+            }
+          ],
+          "alphaDifferencePixels": 0
+        },
+        {
+          "slot": "head.base",
+          "method": "static head-local source",
+          "records": [
+            {
+              "material": "skin",
+              "toolRGBTransferredPixels": 1389,
+              "oldRGBRetainedOutside6pxOrInk": 0,
+              "maximumToolSampleDistance": 1.0
+            }
+          ],
+          "alphaDifferencePixels": 0
+        },
+        {
+          "slot": "body.arm.right",
+          "method": "static tool-sampled skin palette; original material shading boundaries",
+          "records": [
+            {
+              "material": "skin",
+              "method": "static tool-sampled ramp, source median anchored to common midtone; arm and hand share anchor",
+              "sourceMedianRGB": [
+                252.0,
+                202.0,
+                156.0
+              ],
+              "sourcePaletteXY": [
+                [
+                  130,
+                  160
+                ],
+                [
+                  118,
+                  153
+                ],
+                [
+                  122,
+                  168
+                ],
+                [
+                  123,
+                  145
+                ]
+              ],
+              "paletteRGB": [
+                [
+                  180,
+                  133,
+                  104
+                ],
+                [
+                  240,
+                  169,
+                  111
+                ],
+                [
+                  253,
+                  202,
+                  146
+                ],
+                [
+                  250,
+                  205,
+                  157
+                ]
+              ],
+              "nearSide": true,
+              "toolRGBTransferredPixels": 389,
+              "originalSafetyClothingAndInkPreserved": true
+            }
+          ],
+          "alphaDifferencePixels": 0
+        },
+        {
+          "slot": "body.hand.right",
+          "method": "static tool-sampled skin palette; original material shading boundaries",
+          "records": [
+            {
+              "material": "skin",
+              "method": "static tool-sampled ramp, source median anchored to common midtone; arm and hand share anchor",
+              "sourceMedianRGB": [
+                252.0,
+                202.0,
+                156.0
+              ],
+              "sourcePaletteXY": [
+                [
+                  130,
+                  160
+                ],
+                [
+                  118,
+                  153
+                ],
+                [
+                  122,
+                  168
+                ],
+                [
+                  123,
+                  145
+                ]
+              ],
+              "paletteRGB": [
+                [
+                  180,
+                  133,
+                  104
+                ],
+                [
+                  240,
+                  169,
+                  111
+                ],
+                [
+                  253,
+                  202,
+                  146
+                ],
+                [
+                  250,
+                  205,
+                  157
+                ]
+              ],
+              "nearSide": true,
+              "toolRGBTransferredPixels": 89,
+              "originalSafetyClothingAndInkPreserved": true
+            }
+          ],
+          "alphaDifferencePixels": 0
+        }
+      ]
+    },
+    {
+      "index": 10,
+      "sourceClip": "walk-start",
+      "sourceFrame": 2,
+      "semanticSidesExchanged": true,
+      "allLayerAlphaDifferencePixels": 0,
+      "support": "right-forward-contact-left-trailing",
+      "lightTransfers": [
+        {
+          "slot": "body.leg.left",
+          "method": "static tool-sampled skin palette; original material shading boundaries",
+          "records": [
+            {
+              "material": "skin",
+              "method": "static tool-sampled ramp, source median anchored to common midtone; arm and hand share anchor",
+              "sourceMedianRGB": [
+                252.0,
+                189.0,
+                134.0
+              ],
+              "sourcePaletteXY": [
+                [
+                  116,
+                  165
+                ],
+                [
+                  116,
+                  148
+                ],
+                [
+                  118,
+                  161
+                ],
+                [
+                  121,
+                  146
+                ]
+              ],
+              "paletteRGB": [
+                [
+                  186,
+                  107,
+                  60
+                ],
+                [
+                  200,
+                  153,
+                  111
+                ],
+                [
+                  251,
+                  195,
+                  135
+                ],
+                [
+                  249,
+                  202,
+                  150
+                ]
+              ],
+              "nearSide": false,
+              "toolRGBTransferredPixels": 546,
+              "originalSafetyClothingAndInkPreserved": true
+            }
+          ],
+          "alphaDifferencePixels": 0
+        },
+        {
+          "slot": "body.leg.right",
+          "method": "static tool-sampled skin palette; original material shading boundaries",
+          "records": [
+            {
+              "material": "skin",
+              "method": "static tool-sampled ramp, source median anchored to common midtone; arm and hand share anchor",
+              "sourceMedianRGB": [
+                253.0,
+                202.0,
+                155.0
+              ],
+              "sourcePaletteXY": [
+                [
+                  130,
+                  160
+                ],
+                [
+                  118,
+                  153
+                ],
+                [
+                  122,
+                  168
+                ],
+                [
+                  123,
+                  145
+                ]
+              ],
+              "paletteRGB": [
+                [
+                  180,
+                  133,
+                  104
+                ],
+                [
+                  240,
+                  169,
+                  111
+                ],
+                [
+                  253,
+                  202,
+                  146
+                ],
+                [
+                  250,
+                  205,
+                  157
+                ]
+              ],
+              "nearSide": true,
+              "toolRGBTransferredPixels": 496,
+              "originalSafetyClothingAndInkPreserved": true
+            }
+          ],
+          "alphaDifferencePixels": 0
+        },
+        {
+          "slot": "body.arm.left",
+          "method": "static tool-sampled skin palette; original material shading boundaries",
+          "records": [
+            {
+              "material": "skin",
+              "method": "static tool-sampled ramp, source median anchored to common midtone; arm and hand share anchor",
+              "sourceMedianRGB": [
+                253.0,
+                200.0,
+                151.0
+              ],
+              "sourcePaletteXY": [
+                [
+                  116,
+                  165
+                ],
+                [
+                  116,
+                  148
+                ],
+                [
+                  118,
+                  161
+                ],
+                [
+                  121,
+                  146
+                ]
+              ],
+              "paletteRGB": [
+                [
+                  186,
+                  107,
+                  60
+                ],
+                [
+                  200,
+                  153,
+                  111
+                ],
+                [
+                  251,
+                  195,
+                  135
+                ],
+                [
+                  249,
+                  202,
+                  150
+                ]
+              ],
+              "nearSide": false,
+              "toolRGBTransferredPixels": 375,
+              "originalSafetyClothingAndInkPreserved": true
+            }
+          ],
+          "alphaDifferencePixels": 0
+        },
+        {
+          "slot": "body.hand.left",
+          "method": "static tool-sampled skin palette; original material shading boundaries",
+          "records": [
+            {
+              "material": "skin",
+              "method": "static tool-sampled ramp, source median anchored to common midtone; arm and hand share anchor",
+              "sourceMedianRGB": [
+                253.0,
+                200.0,
+                151.0
+              ],
+              "sourcePaletteXY": [
+                [
+                  116,
+                  165
+                ],
+                [
+                  116,
+                  148
+                ],
+                [
+                  118,
+                  161
+                ],
+                [
+                  121,
+                  146
+                ]
+              ],
+              "paletteRGB": [
+                [
+                  186,
+                  107,
+                  60
+                ],
+                [
+                  200,
+                  153,
+                  111
+                ],
+                [
+                  251,
+                  195,
+                  135
+                ],
+                [
+                  249,
+                  202,
+                  150
+                ]
+              ],
+              "nearSide": false,
+              "toolRGBTransferredPixels": 78,
+              "originalSafetyClothingAndInkPreserved": true
+            }
+          ],
+          "alphaDifferencePixels": 0
+        },
+        {
+          "slot": "body.torso",
+          "method": "static tool-sampled skin palette; original material shading boundaries",
+          "records": [
+            {
+              "material": "skin",
+              "method": "static tool-sampled ramp, source median anchored to common midtone; arm and hand share anchor",
+              "sourceMedianRGB": [
+                252.0,
+                201.5,
+                155.0
+              ],
+              "sourcePaletteXY": [
+                [
+                  130,
+                  160
+                ],
+                [
+                  118,
+                  153
+                ],
+                [
+                  122,
+                  168
+                ],
+                [
+                  123,
+                  145
+                ]
+              ],
+              "paletteRGB": [
+                [
+                  180,
+                  133,
+                  104
+                ],
+                [
+                  240,
+                  169,
+                  111
+                ],
+                [
+                  253,
+                  202,
+                  146
+                ],
+                [
+                  250,
+                  205,
+                  157
+                ]
+              ],
+              "nearSide": true,
+              "toolRGBTransferredPixels": 114,
+              "originalSafetyClothingAndInkPreserved": true
+            }
+          ],
+          "alphaDifferencePixels": 0
+        },
+        {
+          "slot": "head.base",
+          "method": "static head-local source",
+          "records": [
+            {
+              "material": "skin",
+              "toolRGBTransferredPixels": 1389,
+              "oldRGBRetainedOutside6pxOrInk": 0,
+              "maximumToolSampleDistance": 1.0
+            }
+          ],
+          "alphaDifferencePixels": 0
+        },
+        {
+          "slot": "body.arm.right",
+          "method": "static tool-sampled skin palette; original material shading boundaries",
+          "records": [
+            {
+              "material": "skin",
+              "method": "static tool-sampled ramp, source median anchored to common midtone; arm and hand share anchor",
+              "sourceMedianRGB": [
+                253.0,
+                202.0,
+                155.0
+              ],
+              "sourcePaletteXY": [
+                [
+                  130,
+                  160
+                ],
+                [
+                  118,
+                  153
+                ],
+                [
+                  122,
+                  168
+                ],
+                [
+                  123,
+                  145
+                ]
+              ],
+              "paletteRGB": [
+                [
+                  180,
+                  133,
+                  104
+                ],
+                [
+                  240,
+                  169,
+                  111
+                ],
+                [
+                  253,
+                  202,
+                  146
+                ],
+                [
+                  250,
+                  205,
+                  157
+                ]
+              ],
+              "nearSide": true,
+              "toolRGBTransferredPixels": 385,
+              "originalSafetyClothingAndInkPreserved": true
+            }
+          ],
+          "alphaDifferencePixels": 0
+        },
+        {
+          "slot": "body.hand.right",
+          "method": "static tool-sampled skin palette; original material shading boundaries",
+          "records": [
+            {
+              "material": "skin",
+              "method": "static tool-sampled ramp, source median anchored to common midtone; arm and hand share anchor",
+              "sourceMedianRGB": [
+                253.0,
+                202.0,
+                155.0
+              ],
+              "sourcePaletteXY": [
+                [
+                  130,
+                  160
+                ],
+                [
+                  118,
+                  153
+                ],
+                [
+                  122,
+                  168
+                ],
+                [
+                  123,
+                  145
+                ]
+              ],
+              "paletteRGB": [
+                [
+                  180,
+                  133,
+                  104
+                ],
+                [
+                  240,
+                  169,
+                  111
+                ],
+                [
+                  253,
+                  202,
+                  146
+                ],
+                [
+                  250,
+                  205,
+                  157
+                ]
+              ],
+              "nearSide": true,
+              "toolRGBTransferredPixels": 99,
+              "originalSafetyClothingAndInkPreserved": true
+            }
+          ],
+          "alphaDifferencePixels": 0
+        }
+      ]
+    },
+    {
+      "index": 11,
+      "sourceClip": "walk-stop",
+      "sourceFrame": 1,
+      "semanticSidesExchanged": true,
+      "allLayerAlphaDifferencePixels": 0,
+      "support": "both-decelerating",
+      "lightTransfers": [
+        {
+          "slot": "body.leg.left",
+          "method": "static tool-sampled skin palette; original material shading boundaries",
+          "records": [
+            {
+              "material": "skin",
+              "method": "static tool-sampled ramp, source median anchored to common midtone; arm and hand share anchor",
+              "sourceMedianRGB": [
+                253.0,
+                167.0,
+                110.0
+              ],
+              "sourcePaletteXY": [
+                [
+                  116,
+                  165
+                ],
+                [
+                  116,
+                  148
+                ],
+                [
+                  118,
+                  161
+                ],
+                [
+                  121,
+                  146
+                ]
+              ],
+              "paletteRGB": [
+                [
+                  186,
+                  107,
+                  60
+                ],
+                [
+                  200,
+                  153,
+                  111
+                ],
+                [
+                  251,
+                  195,
+                  135
+                ],
+                [
+                  249,
+                  202,
+                  150
+                ]
+              ],
+              "nearSide": false,
+              "toolRGBTransferredPixels": 521,
+              "originalSafetyClothingAndInkPreserved": true
+            }
+          ],
+          "alphaDifferencePixels": 0
+        },
+        {
+          "slot": "body.leg.right",
+          "method": "static tool-sampled skin palette; original material shading boundaries",
+          "records": [
+            {
+              "material": "skin",
+              "method": "static tool-sampled ramp, source median anchored to common midtone; arm and hand share anchor",
+              "sourceMedianRGB": [
+                252.0,
+                198.0,
+                154.0
+              ],
+              "sourcePaletteXY": [
+                [
+                  130,
+                  160
+                ],
+                [
+                  118,
+                  153
+                ],
+                [
+                  122,
+                  168
+                ],
+                [
+                  123,
+                  145
+                ]
+              ],
+              "paletteRGB": [
+                [
+                  180,
+                  133,
+                  104
+                ],
+                [
+                  240,
+                  169,
+                  111
+                ],
+                [
+                  253,
+                  202,
+                  146
+                ],
+                [
+                  250,
+                  205,
+                  157
+                ]
+              ],
+              "nearSide": true,
+              "toolRGBTransferredPixels": 428,
+              "originalSafetyClothingAndInkPreserved": true
+            }
+          ],
+          "alphaDifferencePixels": 0
+        },
+        {
+          "slot": "body.arm.left",
+          "method": "static tool-sampled skin palette; original material shading boundaries",
+          "records": [
+            {
+              "material": "skin",
+              "method": "static tool-sampled ramp, source median anchored to common midtone; arm and hand share anchor",
+              "sourceMedianRGB": [
+                253.0,
+                167.0,
+                108.0
+              ],
+              "sourcePaletteXY": [
+                [
+                  116,
+                  165
+                ],
+                [
+                  116,
+                  148
+                ],
+                [
+                  118,
+                  161
+                ],
+                [
+                  121,
+                  146
+                ]
+              ],
+              "paletteRGB": [
+                [
+                  186,
+                  107,
+                  60
+                ],
+                [
+                  200,
+                  153,
+                  111
+                ],
+                [
+                  251,
+                  195,
+                  135
+                ],
+                [
+                  249,
+                  202,
+                  150
+                ]
+              ],
+              "nearSide": false,
+              "toolRGBTransferredPixels": 351,
+              "originalSafetyClothingAndInkPreserved": true
+            }
+          ],
+          "alphaDifferencePixels": 0
+        },
+        {
+          "slot": "body.hand.left",
+          "method": "static tool-sampled skin palette; original material shading boundaries",
+          "records": [
+            {
+              "material": "skin",
+              "method": "static tool-sampled ramp, source median anchored to common midtone; arm and hand share anchor",
+              "sourceMedianRGB": [
+                253.0,
+                167.0,
+                108.0
+              ],
+              "sourcePaletteXY": [
+                [
+                  116,
+                  165
+                ],
+                [
+                  116,
+                  148
+                ],
+                [
+                  118,
+                  161
+                ],
+                [
+                  121,
+                  146
+                ]
+              ],
+              "paletteRGB": [
+                [
+                  186,
+                  107,
+                  60
+                ],
+                [
+                  200,
+                  153,
+                  111
+                ],
+                [
+                  251,
+                  195,
+                  135
+                ],
+                [
+                  249,
+                  202,
+                  150
+                ]
+              ],
+              "nearSide": false,
+              "toolRGBTransferredPixels": 61,
+              "originalSafetyClothingAndInkPreserved": true
+            }
+          ],
+          "alphaDifferencePixels": 0
+        },
+        {
+          "slot": "body.torso",
+          "method": "static tool-sampled skin palette; original material shading boundaries",
+          "records": [
+            {
+              "material": "skin",
+              "method": "static tool-sampled ramp, source median anchored to common midtone; arm and hand share anchor",
+              "sourceMedianRGB": [
+                252.0,
+                200.0,
+                158.0
+              ],
+              "sourcePaletteXY": [
+                [
+                  130,
+                  160
+                ],
+                [
+                  118,
+                  153
+                ],
+                [
+                  122,
+                  168
+                ],
+                [
+                  123,
+                  145
+                ]
+              ],
+              "paletteRGB": [
+                [
+                  180,
+                  133,
+                  104
+                ],
+                [
+                  240,
+                  169,
+                  111
+                ],
+                [
+                  253,
+                  202,
+                  146
+                ],
+                [
+                  250,
+                  205,
+                  157
+                ]
+              ],
+              "nearSide": true,
+              "toolRGBTransferredPixels": 115,
+              "originalSafetyClothingAndInkPreserved": true
+            }
+          ],
+          "alphaDifferencePixels": 0
+        },
+        {
+          "slot": "head.base",
+          "method": "static head-local source",
+          "records": [
+            {
+              "material": "skin",
+              "toolRGBTransferredPixels": 1389,
+              "oldRGBRetainedOutside6pxOrInk": 0,
+              "maximumToolSampleDistance": 1.0
+            }
+          ],
+          "alphaDifferencePixels": 0
+        },
+        {
+          "slot": "body.arm.right",
+          "method": "static tool-sampled skin palette; original material shading boundaries",
+          "records": [
+            {
+              "material": "skin",
+              "method": "static tool-sampled ramp, source median anchored to common midtone; arm and hand share anchor",
+              "sourceMedianRGB": [
+                252.0,
+                198.0,
+                156.0
+              ],
+              "sourcePaletteXY": [
+                [
+                  130,
+                  160
+                ],
+                [
+                  118,
+                  153
+                ],
+                [
+                  122,
+                  168
+                ],
+                [
+                  123,
+                  145
+                ]
+              ],
+              "paletteRGB": [
+                [
+                  180,
+                  133,
+                  104
+                ],
+                [
+                  240,
+                  169,
+                  111
+                ],
+                [
+                  253,
+                  202,
+                  146
+                ],
+                [
+                  250,
+                  205,
+                  157
+                ]
+              ],
+              "nearSide": true,
+              "toolRGBTransferredPixels": 345,
+              "originalSafetyClothingAndInkPreserved": true
+            }
+          ],
+          "alphaDifferencePixels": 0
+        },
+        {
+          "slot": "body.hand.right",
+          "method": "static tool-sampled skin palette; original material shading boundaries",
+          "records": [
+            {
+              "material": "skin",
+              "method": "static tool-sampled ramp, source median anchored to common midtone; arm and hand share anchor",
+              "sourceMedianRGB": [
+                252.0,
+                198.0,
+                156.0
+              ],
+              "sourcePaletteXY": [
+                [
+                  130,
+                  160
+                ],
+                [
+                  118,
+                  153
+                ],
+                [
+                  122,
+                  168
+                ],
+                [
+                  123,
+                  145
+                ]
+              ],
+              "paletteRGB": [
+                [
+                  180,
+                  133,
+                  104
+                ],
+                [
+                  240,
+                  169,
+                  111
+                ],
+                [
+                  253,
+                  202,
+                  146
+                ],
+                [
+                  250,
+                  205,
+                  157
+                ]
+              ],
+              "nearSide": true,
+              "toolRGBTransferredPixels": 88,
+              "originalSafetyClothingAndInkPreserved": true
+            }
+          ],
+          "alphaDifferencePixels": 0
+        }
+      ]
+    },
+    {
+      "index": 12,
+      "sourceClip": "walk-stop",
+      "sourceFrame": 2,
+      "semanticSidesExchanged": true,
+      "allLayerAlphaDifferencePixels": 0,
+      "support": "both-settling",
+      "lightTransfers": [
+        {
+          "slot": "body.leg.left",
+          "method": "static tool-sampled skin palette; original material shading boundaries",
+          "records": [
+            {
+              "material": "skin",
+              "method": "static tool-sampled ramp, source median anchored to common midtone; arm and hand share anchor",
+              "sourceMedianRGB": [
+                240.0,
+                157.0,
+                100.0
+              ],
+              "sourcePaletteXY": [
+                [
+                  116,
+                  165
+                ],
+                [
+                  116,
+                  148
+                ],
+                [
+                  118,
+                  161
+                ],
+                [
+                  121,
+                  146
+                ]
+              ],
+              "paletteRGB": [
+                [
+                  186,
+                  107,
+                  60
+                ],
+                [
+                  200,
+                  153,
+                  111
+                ],
+                [
+                  251,
+                  195,
+                  135
+                ],
+                [
+                  249,
+                  202,
+                  150
+                ]
+              ],
+              "nearSide": false,
+              "toolRGBTransferredPixels": 436,
+              "originalSafetyClothingAndInkPreserved": true
+            }
+          ],
+          "alphaDifferencePixels": 0
+        },
+        {
+          "slot": "body.leg.right",
+          "method": "static tool-sampled skin palette; original material shading boundaries",
+          "records": [
+            {
+              "material": "skin",
+              "method": "static tool-sampled ramp, source median anchored to common midtone; arm and hand share anchor",
+              "sourceMedianRGB": [
+                252.0,
+                200.0,
+                150.0
+              ],
+              "sourcePaletteXY": [
+                [
+                  130,
+                  160
+                ],
+                [
+                  118,
+                  153
+                ],
+                [
+                  122,
+                  168
+                ],
+                [
+                  123,
+                  145
+                ]
+              ],
+              "paletteRGB": [
+                [
+                  180,
+                  133,
+                  104
+                ],
+                [
+                  240,
+                  169,
+                  111
+                ],
+                [
+                  253,
+                  202,
+                  146
+                ],
+                [
+                  250,
+                  205,
+                  157
+                ]
+              ],
+              "nearSide": true,
+              "toolRGBTransferredPixels": 518,
+              "originalSafetyClothingAndInkPreserved": true
+            }
+          ],
+          "alphaDifferencePixels": 0
+        },
+        {
+          "slot": "body.arm.left",
+          "method": "static tool-sampled skin palette; original material shading boundaries",
+          "records": [
+            {
+              "material": "skin",
+              "method": "static tool-sampled ramp, source median anchored to common midtone; arm and hand share anchor",
+              "sourceMedianRGB": [
+                240.0,
+                157.0,
+                100.0
+              ],
+              "sourcePaletteXY": [
+                [
+                  116,
+                  165
+                ],
+                [
+                  116,
+                  148
+                ],
+                [
+                  118,
+                  161
+                ],
+                [
+                  121,
+                  146
+                ]
+              ],
+              "paletteRGB": [
+                [
+                  186,
+                  107,
+                  60
+                ],
+                [
+                  200,
+                  153,
+                  111
+                ],
+                [
+                  251,
+                  195,
+                  135
+                ],
+                [
+                  249,
+                  202,
+                  150
+                ]
+              ],
+              "nearSide": false,
+              "toolRGBTransferredPixels": 400,
+              "originalSafetyClothingAndInkPreserved": true
+            }
+          ],
+          "alphaDifferencePixels": 0
+        },
+        {
+          "slot": "body.hand.left",
+          "method": "static tool-sampled skin palette; original material shading boundaries",
+          "records": [
+            {
+              "material": "skin",
+              "method": "static tool-sampled ramp, source median anchored to common midtone; arm and hand share anchor",
+              "sourceMedianRGB": [
+                240.0,
+                157.0,
+                100.0
+              ],
+              "sourcePaletteXY": [
+                [
+                  116,
+                  165
+                ],
+                [
+                  116,
+                  148
+                ],
+                [
+                  118,
+                  161
+                ],
+                [
+                  121,
+                  146
+                ]
+              ],
+              "paletteRGB": [
+                [
+                  186,
+                  107,
+                  60
+                ],
+                [
+                  200,
+                  153,
+                  111
+                ],
+                [
+                  251,
+                  195,
+                  135
+                ],
+                [
+                  249,
+                  202,
+                  150
+                ]
+              ],
+              "nearSide": false,
+              "toolRGBTransferredPixels": 44,
+              "originalSafetyClothingAndInkPreserved": true
+            }
+          ],
+          "alphaDifferencePixels": 0
+        },
+        {
+          "slot": "body.torso",
+          "method": "static tool-sampled skin palette; original material shading boundaries",
+          "records": [
+            {
+              "material": "skin",
+              "method": "static tool-sampled ramp, source median anchored to common midtone; arm and hand share anchor",
+              "sourceMedianRGB": [
+                252.0,
+                202.0,
+                153.0
+              ],
+              "sourcePaletteXY": [
+                [
+                  130,
+                  160
+                ],
+                [
+                  118,
+                  153
+                ],
+                [
+                  122,
+                  168
+                ],
+                [
+                  123,
+                  145
+                ]
+              ],
+              "paletteRGB": [
+                [
+                  180,
+                  133,
+                  104
+                ],
+                [
+                  240,
+                  169,
+                  111
+                ],
+                [
+                  253,
+                  202,
+                  146
+                ],
+                [
+                  250,
+                  205,
+                  157
+                ]
+              ],
+              "nearSide": true,
+              "toolRGBTransferredPixels": 93,
+              "originalSafetyClothingAndInkPreserved": true
+            }
+          ],
+          "alphaDifferencePixels": 0
+        },
+        {
+          "slot": "head.base",
+          "method": "static head-local source",
+          "records": [
+            {
+              "material": "skin",
+              "toolRGBTransferredPixels": 1389,
+              "oldRGBRetainedOutside6pxOrInk": 0,
+              "maximumToolSampleDistance": 1.0
+            }
+          ],
+          "alphaDifferencePixels": 0
+        },
+        {
+          "slot": "body.arm.right",
+          "method": "static tool-sampled skin palette; original material shading boundaries",
+          "records": [
+            {
+              "material": "skin",
+              "method": "static tool-sampled ramp, source median anchored to common midtone; arm and hand share anchor",
+              "sourceMedianRGB": [
+                252.0,
+                200.0,
+                150.0
+              ],
+              "sourcePaletteXY": [
+                [
+                  130,
+                  160
+                ],
+                [
+                  118,
+                  153
+                ],
+                [
+                  122,
+                  168
+                ],
+                [
+                  123,
+                  145
+                ]
+              ],
+              "paletteRGB": [
+                [
+                  180,
+                  133,
+                  104
+                ],
+                [
+                  240,
+                  169,
+                  111
+                ],
+                [
+                  253,
+                  202,
+                  146
+                ],
+                [
+                  250,
+                  205,
+                  157
+                ]
+              ],
+              "nearSide": true,
+              "toolRGBTransferredPixels": 401,
+              "originalSafetyClothingAndInkPreserved": true
+            }
+          ],
+          "alphaDifferencePixels": 0
+        },
+        {
+          "slot": "body.hand.right",
+          "method": "static tool-sampled skin palette; original material shading boundaries",
+          "records": [
+            {
+              "material": "skin",
+              "method": "static tool-sampled ramp, source median anchored to common midtone; arm and hand share anchor",
+              "sourceMedianRGB": [
+                252.0,
+                200.0,
+                150.0
+              ],
+              "sourcePaletteXY": [
+                [
+                  130,
+                  160
+                ],
+                [
+                  118,
+                  153
+                ],
+                [
+                  122,
+                  168
+                ],
+                [
+                  123,
+                  145
+                ]
+              ],
+              "paletteRGB": [
+                [
+                  180,
+                  133,
+                  104
+                ],
+                [
+                  240,
+                  169,
+                  111
+                ],
+                [
+                  253,
+                  202,
+                  146
+                ],
+                [
+                  250,
+                  205,
+                  157
+                ]
+              ],
+              "nearSide": true,
+              "toolRGBTransferredPixels": 121,
+              "originalSafetyClothingAndInkPreserved": true
+            }
+          ],
+          "alphaDifferencePixels": 0
+        }
+      ]
+    }
+  ]
+}

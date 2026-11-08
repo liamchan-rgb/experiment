@@ -1,0 +1,30 @@
+{
+  "frame": 8,
+  "side": "right",
+  "path": [
+    [
+      136,
+      178
+    ],
+    [
+      129,
+      198
+    ],
+    [
+      124,
+      215
+    ],
+    [
+      125,
+      220
+    ]
+  ],
+  "artifact": "/workspace/generated_images/exec-4049cc97-743a-437f-ae35-cc6d7e11b803.png",
+  "prompt": "Render ONLY ONE isolated bare right LEG of the exact neutral pixel-art character in images2/3, UP-RIGHT REAR THREE-QUARTER AWAY view. Image1 is mandatory blocking: hip/knee/ankle/sole in256 coordinates=[[136,178],[129,198],[124,215],[125,220]]. Replace green/blue with natural warm skin thigh, kneecap, shin, ankle and COMPLETE bare foot pointing diagonally UP-RIGHT, proper heel/arch/toes. NEAR anatomical RIGHT leg lit upper-left. Keep chibi limb girth, style and full original256-square registration. LATE support stance with heel just unloading, foot still low and supporting. Rest of canvas EMPTY, transparent square. NO shorts/fabric or other leg/torso/head/arms/labels/colored guides/shadow. Start at bare thigh beneath hip, keep exact placement; do not crop/zoom leg to fill canvas. Same body's repair component, not new character.",
+  "references": [
+    "/workspace/experiment/Art/Templates/P1-Neutral/up-right/walk-r1/source/rig-leg-repairs/08-right-guide.png",
+    "/workspace/experiment/Art/Templates/P1-Neutral/up-right/walk-r1/frames/08.png",
+    "/workspace/experiment/Art/Templates/P1-Neutral/up-right/walk-r1/source/00.png"
+  ],
+  "status": "generated-pending-main-registration-review"
+}

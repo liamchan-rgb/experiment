@@ -1,0 +1,5 @@
+{
+  "status": "internally-rejected",
+  "reason": "Whole-canvas generation shifted individual tile limbs and enlarged anatomical length. Do not use or fit with unequal width/height scale.",
+  "final": false
+}

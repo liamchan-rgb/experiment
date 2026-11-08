@@ -1,0 +1,23 @@
+{
+  "scope": "Standalone public GIF browser check only; no game/App/UIKit/simulator/device run",
+  "checks": [
+    {
+      "path": "Art/Review/Battle/spellblade-demo-v1/runeSlash-normal.gif",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/c6ee157f63a19237cf101382920e7c591152ba73/Art/Review/Battle/spellblade-demo-v1/runeSlash-normal.gif",
+      "dimensions": [
+        1020,
+        765
+      ],
+      "loadsAndAdvances": true,
+      "uniqueScreenshots": 6
+    }
+  ],
+  "frameMs": 20,
+  "fullGET": {
+    "status": 200,
+    "contentType": "image/gif",
+    "bytes": 6722529,
+    "sha256": "cf55ff951da38e5df8c9d66cb3ece51bf277fa2509670dab69f867659092e1a3",
+    "matchesLocal": true
+  }
+}

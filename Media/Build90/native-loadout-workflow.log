@@ -1,0 +1,199 @@
+audit_loadouts	Set up job	﻿2026-11-06T11:28:54.5364990Z Current runner version: '2.338.2'
+audit_loadouts	Set up job	2026-11-06T11:28:54.5385030Z ##[group]Runner Image Provisioner
+audit_loadouts	Set up job	2026-11-06T11:28:54.5385600Z Hosted Compute Agent
+audit_loadouts	Set up job	2026-11-06T11:28:54.5385990Z Version: 20261021.618
+audit_loadouts	Set up job	2026-11-06T11:28:54.5386400Z Commit: 21505ad2541d5be6135ed84fc33697146cf75b8e
+audit_loadouts	Set up job	2026-11-06T11:28:54.5386870Z Build Date: 2026-10-21T00:45:21Z
+audit_loadouts	Set up job	2026-11-06T11:28:54.5387310Z Worker ID: {47991d28-1faf-4f82-8f7e-ed8131aec940}
+audit_loadouts	Set up job	2026-11-06T11:28:54.5387770Z Region: westus
+audit_loadouts	Set up job	2026-11-06T11:28:54.5388120Z Cloud: MacCloud
+audit_loadouts	Set up job	2026-11-06T11:28:54.5388470Z ##[endgroup]
+audit_loadouts	Set up job	2026-11-06T11:28:54.5389340Z ##[group]Operating System
+audit_loadouts	Set up job	2026-11-06T11:28:54.5389820Z macOS
+audit_loadouts	Set up job	2026-11-06T11:28:54.5390160Z 26.6.2
+audit_loadouts	Set up job	2026-11-06T11:28:54.5390480Z 25G83
+audit_loadouts	Set up job	2026-11-06T11:28:54.5390820Z ##[endgroup]
+audit_loadouts	Set up job	2026-11-06T11:28:54.5391180Z ##[group]Runner Image
+audit_loadouts	Set up job	2026-11-06T11:28:54.5391550Z Image: macos-26-arm64
+audit_loadouts	Set up job	2026-11-06T11:28:54.5391930Z Version: 20261026.0455.2
+audit_loadouts	Set up job	2026-11-06T11:28:54.5392670Z Included Software: https://github.com/actions/runner-images/blob/macos-26-arm64/20261026.0455/images/macos/macos-26-arm64-Readme.md
+audit_loadouts	Set up job	2026-11-06T11:28:54.5393800Z Image Release: https://github.com/actions/runner-images/releases/tag/macos-26-arm64%2F20261026.0455
+audit_loadouts	Set up job	2026-11-06T11:28:54.5394520Z ##[endgroup]
+audit_loadouts	Set up job	2026-11-06T11:28:54.5395280Z ##[group]GITHUB_TOKEN Permissions
+audit_loadouts	Set up job	2026-11-06T11:28:54.5396320Z Contents: read
+audit_loadouts	Set up job	2026-11-06T11:28:54.5396700Z Metadata: read
+audit_loadouts	Set up job	2026-11-06T11:28:54.5397050Z ##[endgroup]
+audit_loadouts	Set up job	2026-11-06T11:28:54.5398410Z Secret source: Actions
+audit_loadouts	Set up job	2026-11-06T11:28:54.5398970Z Cache mode: write
+audit_loadouts	Set up job	2026-11-06T11:28:54.5399420Z Prepare workflow directory
+audit_loadouts	Set up job	2026-11-06T11:28:54.5930340Z Prepare all required actions
+audit_loadouts	Set up job	2026-11-06T11:28:54.5966320Z Getting action download info
+audit_loadouts	Set up job	2026-11-06T11:28:55.0708620Z Download action repository 'actions/checkout@v7' (SHA:3d3c42e5aac5ba805825da76410c181273ba90b1)
+audit_loadouts	Set up job	2026-11-06T11:28:55.3406170Z Download action repository 'actions/upload-artifact@v7' (SHA:cf430e030ddbb5b0abf93d22962f4752f3646cd9)
+audit_loadouts	Set up job	2026-11-06T11:28:55.4930200Z Complete job name: audit_loadouts
+audit_loadouts	Run actions/checkout@v7	﻿2026-11-06T11:28:55.5548950Z ##[group]Run actions/checkout@v7
+audit_loadouts	Run actions/checkout@v7	2026-11-06T11:28:55.5549670Z with:
+audit_loadouts	Run actions/checkout@v7	2026-11-06T11:28:55.5550020Z   sparse-checkout: Vendor
+audit_loadouts	Run actions/checkout@v7	
+audit_loadouts	Run actions/checkout@v7	2026-11-06T11:28:55.5550420Z   repository: liamchan-rgb/experiment
+audit_loadouts	Run actions/checkout@v7	2026-11-06T11:28:55.5556960Z   token: ***
+audit_loadouts	Run actions/checkout@v7	2026-11-06T11:28:55.5557470Z   ssh-strict: true
+audit_loadouts	Run actions/checkout@v7	2026-11-06T11:28:55.5557930Z   ssh-user: git
+audit_loadouts	Run actions/checkout@v7	2026-11-06T11:28:55.5558360Z   persist-credentials: true
+audit_loadouts	Run actions/checkout@v7	2026-11-06T11:28:55.5558760Z   clean: true
+audit_loadouts	Run actions/checkout@v7	2026-11-06T11:28:55.5559270Z   sparse-checkout-cone-mode: true
+audit_loadouts	Run actions/checkout@v7	2026-11-06T11:28:55.5559760Z   fetch-depth: 1
+audit_loadouts	Run actions/checkout@v7	2026-11-06T11:28:55.5560140Z   fetch-tags: false
+audit_loadouts	Run actions/checkout@v7	2026-11-06T11:28:55.5560540Z   show-progress: true
+audit_loadouts	Run actions/checkout@v7	2026-11-06T11:28:55.5560940Z   lfs: false
+audit_loadouts	Run actions/checkout@v7	2026-11-06T11:28:55.5561260Z   submodules: false
+audit_loadouts	Run actions/checkout@v7	2026-11-06T11:28:55.5561600Z   set-safe-directory: true
+audit_loadouts	Run actions/checkout@v7	2026-11-06T11:28:55.5561990Z   allow-unsafe-pr-checkout: false
+audit_loadouts	Run actions/checkout@v7	2026-11-06T11:28:55.5563030Z ##[endgroup]
+audit_loadouts	Run actions/checkout@v7	2026-11-06T11:28:56.0090370Z Syncing repository: liamchan-rgb/experiment
+audit_loadouts	Run actions/checkout@v7	2026-11-06T11:28:56.0092610Z ##[group]Getting Git version info
+audit_loadouts	Run actions/checkout@v7	2026-11-06T11:28:56.0093370Z Working directory is '/Users/runner/work/experiment/experiment'
+audit_loadouts	Run actions/checkout@v7	2026-11-06T11:28:56.0094360Z [command]/opt/homebrew/bin/git version
+audit_loadouts	Run actions/checkout@v7	2026-11-06T11:28:56.0336880Z git version 2.56.0
+audit_loadouts	Run actions/checkout@v7	2026-11-06T11:28:56.0349010Z ##[endgroup]
+audit_loadouts	Run actions/checkout@v7	2026-11-06T11:28:56.0356470Z Copying '/Users/runner/.gitconfig' to '/Users/runner/work/_temp/5c3cf7aa-cca4-4d67-8144-246aa3fe0a37/.gitconfig'
+audit_loadouts	Run actions/checkout@v7	2026-11-06T11:28:56.0363710Z Temporarily overriding HOME='/Users/runner/work/_temp/5c3cf7aa-cca4-4d67-8144-246aa3fe0a37' before making global git config changes
+audit_loadouts	Run actions/checkout@v7	2026-11-06T11:28:56.0364960Z Adding repository directory to the temporary git global config as a safe directory
+audit_loadouts	Run actions/checkout@v7	2026-11-06T11:28:56.0367640Z [command]/opt/homebrew/bin/git config --global --add safe.directory /Users/runner/work/experiment/experiment
+audit_loadouts	Run actions/checkout@v7	2026-11-06T11:28:56.0477890Z Deleting the contents of '/Users/runner/work/experiment/experiment'
+audit_loadouts	Run actions/checkout@v7	2026-11-06T11:28:56.0481150Z ##[group]Determining repository object format
+audit_loadouts	Run actions/checkout@v7	2026-11-06T11:28:56.0482220Z ##[endgroup]
+audit_loadouts	Run actions/checkout@v7	2026-11-06T11:28:56.0484020Z ##[group]Initializing the repository
+audit_loadouts	Run actions/checkout@v7	2026-11-06T11:28:56.0484960Z [command]/opt/homebrew/bin/git init /Users/runner/work/experiment/experiment
+audit_loadouts	Run actions/checkout@v7	2026-11-06T11:28:56.0709830Z hint: Using 'master' as the name for the initial branch. This default branch name
+audit_loadouts	Run actions/checkout@v7	2026-11-06T11:28:56.0710940Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+audit_loadouts	Run actions/checkout@v7	2026-11-06T11:28:56.0711810Z hint: to use in all of your new repositories, which will suppress this warning,
+audit_loadouts	Run actions/checkout@v7	2026-11-06T11:28:56.0713040Z hint: call:
+audit_loadouts	Run actions/checkout@v7	2026-11-06T11:28:56.0713450Z hint:
+audit_loadouts	Run actions/checkout@v7	2026-11-06T11:28:56.0713930Z hint: 	git config --global init.defaultBranch <name>
+audit_loadouts	Run actions/checkout@v7	2026-11-06T11:28:56.0714600Z hint:
+audit_loadouts	Run actions/checkout@v7	2026-11-06T11:28:56.0715200Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+audit_loadouts	Run actions/checkout@v7	2026-11-06T11:28:56.0715990Z hint: 'development'. The just-created branch can be renamed via this command:
+audit_loadouts	Run actions/checkout@v7	2026-11-06T11:28:56.0716700Z hint:
+audit_loadouts	Run actions/checkout@v7	2026-11-06T11:28:56.0717160Z hint: 	git branch -m <name>
+audit_loadouts	Run actions/checkout@v7	2026-11-06T11:28:56.0717560Z hint:
+audit_loadouts	Run actions/checkout@v7	2026-11-06T11:28:56.0718290Z hint: Disable this message with "git config set advice.defaultBranchName false"
+audit_loadouts	Run actions/checkout@v7	2026-11-06T11:28:56.0719300Z Initialized empty Git repository in /Users/runner/work/experiment/experiment/.git/
+audit_loadouts	Run actions/checkout@v7	2026-11-06T11:28:56.0727130Z [command]/opt/homebrew/bin/git remote add origin https://github.com/liamchan-rgb/experiment
+audit_loadouts	Run actions/checkout@v7	2026-11-06T11:28:56.0810960Z ##[endgroup]
+audit_loadouts	Run actions/checkout@v7	2026-11-06T11:28:56.0811880Z ##[group]Disabling automatic garbage collection
+audit_loadouts	Run actions/checkout@v7	2026-11-06T11:28:56.0813320Z [command]/opt/homebrew/bin/git config --local gc.auto 0
+audit_loadouts	Run actions/checkout@v7	2026-11-06T11:28:56.0895460Z ##[endgroup]
+audit_loadouts	Run actions/checkout@v7	2026-11-06T11:28:56.0896390Z ##[group]Setting up auth
+audit_loadouts	Run actions/checkout@v7	2026-11-06T11:28:56.0897300Z Removing SSH command configuration
+audit_loadouts	Run actions/checkout@v7	2026-11-06T11:28:56.0901720Z [command]/opt/homebrew/bin/git config --local --name-only --get-regexp core\.sshCommand
+audit_loadouts	Run actions/checkout@v7	2026-11-06T11:28:56.0984550Z [command]/opt/homebrew/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+audit_loadouts	Run actions/checkout@v7	2026-11-06T11:28:56.1985480Z Removing HTTP extra header
+audit_loadouts	Run actions/checkout@v7	2026-11-06T11:28:56.1989730Z [command]/opt/homebrew/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+audit_loadouts	Run actions/checkout@v7	2026-11-06T11:28:56.2056140Z [command]/opt/homebrew/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+audit_loadouts	Run actions/checkout@v7	2026-11-06T11:28:56.2990770Z Removing includeIf entries pointing to credentials config files
+audit_loadouts	Run actions/checkout@v7	2026-11-06T11:28:56.2998590Z [command]/opt/homebrew/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+audit_loadouts	Run actions/checkout@v7	2026-11-06T11:28:56.3070450Z [command]/opt/homebrew/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+audit_loadouts	Run actions/checkout@v7	2026-11-06T11:28:56.4888590Z [command]/opt/homebrew/bin/git config --file /Users/runner/work/_temp/git-credentials-d233f697-fe04-40d1-ab4d-29e3114ead10.config http.https://github.com/.extraheader AUTHORIZATION: basic ***
+audit_loadouts	Run actions/checkout@v7	2026-11-06T11:28:56.4938850Z [command]/opt/homebrew/bin/git config --local includeIf.gitdir:/Users/runner/work/experiment/experiment/.git.path /Users/runner/work/_temp/git-credentials-d233f697-fe04-40d1-ab4d-29e3114ead10.config
+audit_loadouts	Run actions/checkout@v7	2026-11-06T11:28:56.5198050Z [command]/opt/homebrew/bin/git config --local includeIf.gitdir:/Users/runner/work/experiment/experiment/.git/worktrees/*.path /Users/runner/work/_temp/git-credentials-d233f697-fe04-40d1-ab4d-29e3114ead10.config
+audit_loadouts	Run actions/checkout@v7	2026-11-06T11:28:56.5290930Z [command]/opt/homebrew/bin/git config --local includeIf.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-d233f697-fe04-40d1-ab4d-29e3114ead10.config
+audit_loadouts	Run actions/checkout@v7	2026-11-06T11:28:56.5454320Z [command]/opt/homebrew/bin/git config --local includeIf.gitdir:/github/workspace/.git/worktrees/*.path /github/runner_temp/git-credentials-d233f697-fe04-40d1-ab4d-29e3114ead10.config
+audit_loadouts	Run actions/checkout@v7	2026-11-06T11:28:56.5573420Z ##[endgroup]
+audit_loadouts	Run actions/checkout@v7	2026-11-06T11:28:56.5575020Z ##[group]Fetching the repository
+audit_loadouts	Run actions/checkout@v7	2026-11-06T11:28:56.5579310Z [command]/opt/homebrew/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --filter=blob:none --depth=1 origin +49c3c509205ec9bf7a3975960b35e64ce94fdd95:refs/remotes/origin/fix/build33-face-grounding-camera
+audit_loadouts	Run actions/checkout@v7	2026-11-06T11:28:57.3048780Z From https://github.com/liamchan-rgb/experiment
+audit_loadouts	Run actions/checkout@v7	2026-11-06T11:28:57.3150820Z  * [new ref]         49c3c509205ec9bf7a3975960b35e64ce94fdd95 -> origin/fix/build33-face-grounding-camera
+audit_loadouts	Run actions/checkout@v7	2026-11-06T11:28:57.3461300Z [command]/opt/homebrew/bin/git branch --list --remote origin/fix/build33-face-grounding-camera
+audit_loadouts	Run actions/checkout@v7	2026-11-06T11:28:57.3561490Z   origin/fix/build33-face-grounding-camera
+audit_loadouts	Run actions/checkout@v7	2026-11-06T11:28:57.3641490Z [command]/opt/homebrew/bin/git rev-parse refs/remotes/origin/fix/build33-face-grounding-camera
+audit_loadouts	Run actions/checkout@v7	2026-11-06T11:28:57.3677520Z 49c3c509205ec9bf7a3975960b35e64ce94fdd95
+audit_loadouts	Run actions/checkout@v7	2026-11-06T11:28:57.3682060Z ##[endgroup]
+audit_loadouts	Run actions/checkout@v7	2026-11-06T11:28:57.3686550Z ##[group]Determining the checkout info
+audit_loadouts	Run actions/checkout@v7	2026-11-06T11:28:57.3689780Z ##[endgroup]
+audit_loadouts	Run actions/checkout@v7	2026-11-06T11:28:57.3691750Z ##[group]Setting up sparse checkout
+audit_loadouts	Run actions/checkout@v7	2026-11-06T11:28:57.3693170Z [command]/opt/homebrew/bin/git sparse-checkout set Vendor
+audit_loadouts	Run actions/checkout@v7	2026-11-06T11:28:57.3700520Z ##[endgroup]
+audit_loadouts	Run actions/checkout@v7	2026-11-06T11:28:57.3702080Z ##[group]Checking out the ref
+audit_loadouts	Run actions/checkout@v7	2026-11-06T11:28:57.3705090Z [command]/opt/homebrew/bin/git checkout --progress --force -B fix/build33-face-grounding-camera refs/remotes/origin/fix/build33-face-grounding-camera
+audit_loadouts	Run actions/checkout@v7	2026-11-06T11:28:57.9682160Z Switched to a new branch 'fix/build33-face-grounding-camera'
+audit_loadouts	Run actions/checkout@v7	2026-11-06T11:28:57.9699340Z branch 'fix/build33-face-grounding-camera' set up to track 'origin/fix/build33-face-grounding-camera'.
+audit_loadouts	Run actions/checkout@v7	2026-11-06T11:28:57.9712830Z ##[endgroup]
+audit_loadouts	Run actions/checkout@v7	2026-11-06T11:28:57.9856570Z [command]/opt/homebrew/bin/git log -1 --format=%H
+audit_loadouts	Run actions/checkout@v7	2026-11-06T11:28:58.0026550Z 49c3c509205ec9bf7a3975960b35e64ce94fdd95
+audit_loadouts	Verify complete loadout sample without running app	﻿2026-11-06T11:28:58.0228760Z ##[group]Run set -euo pipefail
+audit_loadouts	Verify complete loadout sample without running app	2026-11-06T11:28:58.0229170Z [36;1mset -euo pipefail[0m
+audit_loadouts	Verify complete loadout sample without running app	2026-11-06T11:28:58.0229430Z [36;1mmkdir -p build[0m
+audit_loadouts	Verify complete loadout sample without running app	2026-11-06T11:28:58.0230070Z [36;1mswift run -c release --package-path Vendor/ClassroomGameCore MeadowCampaignReview --loadout-smoke > build/loadout-smoke.json 2> build/loadout-smoke.log[0m
+audit_loadouts	Verify complete loadout sample without running app	2026-11-06T11:28:58.0230690Z [36;1mpython3 - <<'PY'[0m
+audit_loadouts	Verify complete loadout sample without running app	2026-11-06T11:28:58.0230920Z [36;1mimport json[0m
+audit_loadouts	Verify complete loadout sample without running app	2026-11-06T11:28:58.0231130Z [36;1mfrom pathlib import Path[0m
+audit_loadouts	Verify complete loadout sample without running app	2026-11-06T11:28:58.0231440Z [36;1mrows=json.loads(Path('build/loadout-smoke.json').read_text())[0m
+audit_loadouts	Verify complete loadout sample without running app	2026-11-06T11:28:58.0231840Z [36;1mroles=['adventurer','spellblade','dragonKnight'][0m
+audit_loadouts	Verify complete loadout sample without running app	2026-11-06T11:28:58.0232520Z [36;1mkits=['trainingSword-plain','huntingBow-leather-badge','greatSword-rune-ring','legendaryStaff-rune-ring','starlight-three','dragon-three','unarmed-rune-ring'][0m
+audit_loadouts	Verify complete loadout sample without running app	2026-11-06T11:28:58.0233560Z [36;1mexpected={(10,'31827',r,k) for r in roles for k in kits}|{(30,'0',r,k) for r in roles for k in ['starlight-three','dragon-three']}[0m
+audit_loadouts	Verify complete loadout sample without running app	2026-11-06T11:28:58.0234290Z [36;1mactual=[(r['journey']['size'],r['journey']['seed'],r['journey']['role'],r['loadout']['id']) for r in rows][0m
+audit_loadouts	Verify complete loadout sample without running app	2026-11-06T11:28:58.0234840Z [36;1massert len(rows)==27 and len(set(actual))==27 and set(actual)==expected[0m
+audit_loadouts	Verify complete loadout sample without running app	2026-11-06T11:28:58.0235570Z [36;1mPath('build/loadout-count-check.json').write_text(json.dumps({'cases':27,'uniqueCases':27,'expectedCasesMatched':True,'appSimulatorDeviceRun':False},indent=2)+'\n')[0m
+audit_loadouts	Verify complete loadout sample without running app	2026-11-06T11:28:58.0236210Z [36;1mPY[0m
+audit_loadouts	Verify complete loadout sample without running app	2026-11-06T11:28:58.0277230Z shell: /bin/bash -e {0}
+audit_loadouts	Verify complete loadout sample without running app	2026-11-06T11:28:58.0277490Z ##[endgroup]
+audit_loadouts	Run actions/upload-artifact@v7	﻿2026-11-06T11:31:32.3631620Z ##[group]Run actions/upload-artifact@v7
+audit_loadouts	Run actions/upload-artifact@v7	2026-11-06T11:31:32.3632040Z with:
+audit_loadouts	Run actions/upload-artifact@v7	2026-11-06T11:31:32.3632210Z   name: loadout-verification-42210542590
+audit_loadouts	Run actions/upload-artifact@v7	2026-11-06T11:31:32.3632440Z   path: build/*.json
+audit_loadouts	Run actions/upload-artifact@v7	build/*.log
+audit_loadouts	Run actions/upload-artifact@v7	
+audit_loadouts	Run actions/upload-artifact@v7	2026-11-06T11:31:32.3632630Z   if-no-files-found: error
+audit_loadouts	Run actions/upload-artifact@v7	2026-11-06T11:31:32.3632810Z   retention-days: 30
+audit_loadouts	Run actions/upload-artifact@v7	2026-11-06T11:31:32.3632970Z   compression-level: 6
+audit_loadouts	Run actions/upload-artifact@v7	2026-11-06T11:31:32.3633610Z   overwrite: false
+audit_loadouts	Run actions/upload-artifact@v7	2026-11-06T11:31:32.3633820Z   include-hidden-files: false
+audit_loadouts	Run actions/upload-artifact@v7	2026-11-06T11:31:32.3639120Z   archive: true
+audit_loadouts	Run actions/upload-artifact@v7	2026-11-06T11:31:32.3639380Z ##[endgroup]
+audit_loadouts	Run actions/upload-artifact@v7	2026-11-06T11:31:33.0495150Z With the provided path, there will be 3 files uploaded
+audit_loadouts	Run actions/upload-artifact@v7	2026-11-06T11:31:33.0497150Z Artifact name is valid!
+audit_loadouts	Run actions/upload-artifact@v7	2026-11-06T11:31:33.0501160Z Root directory input is valid!
+audit_loadouts	Run actions/upload-artifact@v7	2026-11-06T11:31:33.6010870Z Uploading artifact: loadout-verification-42210542590.zip
+audit_loadouts	Run actions/upload-artifact@v7	2026-11-06T11:31:33.6262180Z Beginning upload of artifact content to blob storage
+audit_loadouts	Run actions/upload-artifact@v7	2026-11-06T11:31:34.2301660Z Uploaded bytes 6068
+audit_loadouts	Run actions/upload-artifact@v7	2026-11-06T11:31:34.3100930Z Finished uploading artifact content to blob storage!
+audit_loadouts	Run actions/upload-artifact@v7	2026-11-06T11:31:34.3103010Z SHA256 digest of uploaded artifact is d3c00239bcb92bf0247d4797ed34a652be5503b4d6b3cb6259b388b47cbf7e84
+audit_loadouts	Run actions/upload-artifact@v7	2026-11-06T11:31:34.3104360Z Finalizing artifact upload
+audit_loadouts	Run actions/upload-artifact@v7	2026-11-06T11:31:34.9231310Z Artifact loadout-verification-42210542590 successfully finalized. Artifact ID 13499130214
+audit_loadouts	Run actions/upload-artifact@v7	2026-11-06T11:31:34.9238820Z Artifact loadout-verification-42210542590 has been successfully uploaded! Final size is 6068 bytes. Artifact ID is 13499130214
+audit_loadouts	Run actions/upload-artifact@v7	2026-11-06T11:31:34.9242310Z Artifact download URL: https://github.com/liamchan-rgb/experiment/actions/runs/42210542590/artifacts/13499130214
+audit_loadouts	Post Run actions/checkout@v7	﻿2026-11-06T11:31:34.9433540Z Post job cleanup.
+audit_loadouts	Post Run actions/checkout@v7	2026-11-06T11:31:35.0898490Z [command]/opt/homebrew/bin/git version
+audit_loadouts	Post Run actions/checkout@v7	2026-11-06T11:31:35.1224320Z git version 2.56.0
+audit_loadouts	Post Run actions/checkout@v7	2026-11-06T11:31:35.1300450Z Copying '/Users/runner/.gitconfig' to '/Users/runner/work/_temp/f34b34e3-e990-4284-9325-f805b6f5652c/.gitconfig'
+audit_loadouts	Post Run actions/checkout@v7	2026-11-06T11:31:35.1306790Z Temporarily overriding HOME='/Users/runner/work/_temp/f34b34e3-e990-4284-9325-f805b6f5652c' before making global git config changes
+audit_loadouts	Post Run actions/checkout@v7	2026-11-06T11:31:35.1307550Z Adding repository directory to the temporary git global config as a safe directory
+audit_loadouts	Post Run actions/checkout@v7	2026-11-06T11:31:35.1308210Z [command]/opt/homebrew/bin/git config --global --add safe.directory /Users/runner/work/experiment/experiment
+audit_loadouts	Post Run actions/checkout@v7	2026-11-06T11:31:35.1427200Z Removing SSH command configuration
+audit_loadouts	Post Run actions/checkout@v7	2026-11-06T11:31:35.1434320Z [command]/opt/homebrew/bin/git config --local --name-only --get-regexp core\.sshCommand
+audit_loadouts	Post Run actions/checkout@v7	2026-11-06T11:31:35.1526730Z [command]/opt/homebrew/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+audit_loadouts	Post Run actions/checkout@v7	2026-11-06T11:31:35.3331480Z Removing HTTP extra header
+audit_loadouts	Post Run actions/checkout@v7	2026-11-06T11:31:35.3339240Z [command]/opt/homebrew/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+audit_loadouts	Post Run actions/checkout@v7	2026-11-06T11:31:35.3411430Z [command]/opt/homebrew/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+audit_loadouts	Post Run actions/checkout@v7	2026-11-06T11:31:35.4478350Z Removing includeIf entries pointing to credentials config files
+audit_loadouts	Post Run actions/checkout@v7	2026-11-06T11:31:35.4484270Z [command]/opt/homebrew/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+audit_loadouts	Post Run actions/checkout@v7	2026-11-06T11:31:35.4572510Z includeif.gitdir:/Users/runner/work/experiment/experiment/.git.path
+audit_loadouts	Post Run actions/checkout@v7	2026-11-06T11:31:35.4597640Z includeif.gitdir:/Users/runner/work/experiment/experiment/.git/worktrees/*.path
+audit_loadouts	Post Run actions/checkout@v7	2026-11-06T11:31:35.4598400Z includeif.gitdir:/github/workspace/.git.path
+audit_loadouts	Post Run actions/checkout@v7	2026-11-06T11:31:35.4599040Z includeif.gitdir:/github/workspace/.git/worktrees/*.path
+audit_loadouts	Post Run actions/checkout@v7	2026-11-06T11:31:35.4601390Z [command]/opt/homebrew/bin/git config --local --get-all includeif.gitdir:/Users/runner/work/experiment/experiment/.git.path
+audit_loadouts	Post Run actions/checkout@v7	2026-11-06T11:31:35.4638340Z /Users/runner/work/_temp/git-credentials-d233f697-fe04-40d1-ab4d-29e3114ead10.config
+audit_loadouts	Post Run actions/checkout@v7	2026-11-06T11:31:35.4646050Z [command]/opt/homebrew/bin/git config --local --unset includeif.gitdir:/Users/runner/work/experiment/experiment/.git.path \/Users\/runner\/work\/_temp\/git\-credentials\-d233f697\-fe04\-40d1\-ab4d\-29e3114ead10\.config
+audit_loadouts	Post Run actions/checkout@v7	2026-11-06T11:31:35.4768690Z [command]/opt/homebrew/bin/git config --local --get-all includeif.gitdir:/Users/runner/work/experiment/experiment/.git/worktrees/*.path
+audit_loadouts	Post Run actions/checkout@v7	2026-11-06T11:31:35.4897950Z /Users/runner/work/_temp/git-credentials-d233f697-fe04-40d1-ab4d-29e3114ead10.config
+audit_loadouts	Post Run actions/checkout@v7	2026-11-06T11:31:35.5054800Z [command]/opt/homebrew/bin/git config --local --unset includeif.gitdir:/Users/runner/work/experiment/experiment/.git/worktrees/*.path \/Users\/runner\/work\/_temp\/git\-credentials\-d233f697\-fe04\-40d1\-ab4d\-29e3114ead10\.config
+audit_loadouts	Post Run actions/checkout@v7	2026-11-06T11:31:35.5066990Z [command]/opt/homebrew/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git.path
+audit_loadouts	Post Run actions/checkout@v7	2026-11-06T11:31:35.5113910Z /github/runner_temp/git-credentials-d233f697-fe04-40d1-ab4d-29e3114ead10.config
+audit_loadouts	Post Run actions/checkout@v7	2026-11-06T11:31:35.5118450Z [command]/opt/homebrew/bin/git config --local --unset includeif.gitdir:/github/workspace/.git.path \/github\/runner_temp\/git\-credentials\-d233f697\-fe04\-40d1\-ab4d\-29e3114ead10\.config
+audit_loadouts	Post Run actions/checkout@v7	2026-11-06T11:31:35.5187830Z [command]/opt/homebrew/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git/worktrees/*.path
+audit_loadouts	Post Run actions/checkout@v7	2026-11-06T11:31:35.5247910Z /github/runner_temp/git-credentials-d233f697-fe04-40d1-ab4d-29e3114ead10.config
+audit_loadouts	Post Run actions/checkout@v7	2026-11-06T11:31:35.5252160Z [command]/opt/homebrew/bin/git config --local --unset includeif.gitdir:/github/workspace/.git/worktrees/*.path \/github\/runner_temp\/git\-credentials\-d233f697\-fe04\-40d1\-ab4d\-29e3114ead10\.config
+audit_loadouts	Post Run actions/checkout@v7	2026-11-06T11:31:35.5327330Z [command]/opt/homebrew/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+audit_loadouts	Post Run actions/checkout@v7	2026-11-06T11:31:35.6385450Z Removing credentials config '/Users/runner/work/_temp/git-credentials-d233f697-fe04-40d1-ab4d-29e3114ead10.config'
+audit_loadouts	Complete job	﻿2026-11-06T11:31:35.6511170Z Cleaning up orphan processes

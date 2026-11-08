@@ -1,0 +1,23 @@
+{
+  "rawSource": "source/generated.png",
+  "repairROI": {
+    "up-left": [
+      123,
+      122,
+      141,
+      132
+    ],
+    "up-right": [
+      114,
+      122,
+      132,
+      132
+    ]
+  },
+  "featherPixels": 2,
+  "sourceSelection": "Contiguous neck overlap region with 2px source compositing feather, no isolated dark-pixel replacement",
+  "sourceGuide": "source/neck-context-guide.png",
+  "owner": "root",
+  "subagentsUsed": false,
+  "artApproval": null
+}

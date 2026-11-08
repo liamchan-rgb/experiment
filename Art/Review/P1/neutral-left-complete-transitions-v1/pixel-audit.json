@@ -1,0 +1,77 @@
+{
+  "status": "technical checks only; visual review required",
+  "artApproval": null,
+  "checks": [
+    {
+      "frame": 0,
+      "sourceNonHeadRGBARecompositionDifferencePixels": 0,
+      "sha256": "083c586bd453f93cd6761e276c333e40f80e00512592a923e562f357ed7edf55"
+    },
+    {
+      "frame": 1,
+      "sourceNonHeadRGBARecompositionDifferencePixels": 0,
+      "sha256": "cf416a6f381a969aaf1fa97280aa716a5fcc119c7bdca00d834cbb6705a2cae6"
+    },
+    {
+      "frame": 2,
+      "sourceNonHeadRGBARecompositionDifferencePixels": 0,
+      "sha256": "35b23a12a2d39a18b32bccb7cca289e202c878c117457b4acdc6ec65fc4a4492"
+    },
+    {
+      "frame": 3,
+      "sourceNonHeadRGBARecompositionDifferencePixels": 0,
+      "sha256": "17e8d2c3a2a418bd3ebaf2a3e8b82a95f536e1ca63679710fda524c3c7fed512"
+    },
+    {
+      "frame": 4,
+      "sourceNonHeadRGBARecompositionDifferencePixels": 0,
+      "sha256": "c89472c5eeffe01c4ef967ce7dae09cb284bf8c8e18edea4f3c329112552bed6"
+    },
+    {
+      "frame": 5,
+      "sourceNonHeadRGBARecompositionDifferencePixels": 0,
+      "sha256": "431393449db0b3e7b51a67566f5f9c3ce1f70ed79e0bc8526561b70a9d9b1ae6"
+    },
+    {
+      "frame": 6,
+      "sourceNonHeadRGBARecompositionDifferencePixels": 0,
+      "sha256": "db27d3583c7ea9cd7dd8e43c9b1472404f690c6300b4ed8ef743cff898170fcc"
+    },
+    {
+      "frame": 7,
+      "sourceNonHeadRGBARecompositionDifferencePixels": 0,
+      "sha256": "f05ed195c41f2377eb93c182cc5736565221b33278435f12c74e297a573d1c2f"
+    },
+    {
+      "frame": 8,
+      "sourceNonHeadRGBARecompositionDifferencePixels": 0,
+      "sha256": "628052570e689618d498ccd2dc7c0cfd2c8ac0e80dc813c90fd4b8aa2739a69d"
+    },
+    {
+      "frame": 9,
+      "sourceNonHeadRGBARecompositionDifferencePixels": 0,
+      "sha256": "339caece7b2dbacb62e49c537a6f32a46ee00ba3d28bde3684e5927b777d0bb6"
+    },
+    {
+      "frame": 10,
+      "sourceNonHeadRGBARecompositionDifferencePixels": 0,
+      "sha256": "1479ece4e753eb69639b63bad638125ae6a4822392e30cc92d42fc1f29e64bf8"
+    },
+    {
+      "frame": 11,
+      "sourceNonHeadRGBARecompositionDifferencePixels": 0,
+      "sha256": "bd6dd2b22fe1922ec60dee5b928ba2efd84da30fdbb8eca299335da97425696d"
+    },
+    {
+      "frame": 12,
+      "sourceNonHeadRGBARecompositionDifferencePixels": 0,
+      "sha256": "160ee6c5bc432cc48b88802bd1b85086c122dc3011d1588f3304b2aafa0d8ec9"
+    }
+  ],
+  "headSource": "idle00 shared artwork; authored neck-pivot motion",
+  "limits": [
+    "left neutral candidate only",
+    "ownership masks do not establish full hidden anatomy",
+    "no apparel or runtime integration"
+  ]
+}

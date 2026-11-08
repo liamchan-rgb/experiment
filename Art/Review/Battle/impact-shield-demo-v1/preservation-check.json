@@ -1,0 +1,9 @@
+{
+  "referenceCommit": "28e0428cd42c9d41b04077e2e63a8cb60d4120cf",
+  "remoteOldArtAndWalkFilesUnchanged": 17724,
+  "availableLocalFilesByteMatched": 17306,
+  "legacyFilesAbsentLocallyButPreservedOnGitHub": 418,
+  "noLegacyArtOverwritten": true,
+  "runtimeAnimationChangedIntentionally": "attack only; original source/build40-animation.json retained",
+  "deviceExecution": false
+}

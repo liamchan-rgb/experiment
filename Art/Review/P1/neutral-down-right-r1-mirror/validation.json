@@ -1,0 +1,763 @@
+{
+  "status": "mirrored-geometry-and-lighting-technical-checks-pass",
+  "artApproval": null,
+  "repairAndReviewOwner": "root",
+  "subagentsUsed": false,
+  "sourceApproval": "Art/Review/P1/neutral-down-left-r1/approval.json",
+  "sourceApprovedArtifactsUnchanged": true,
+  "actualCompositorPoses": 13,
+  "semanticLayerAlphaReflections": 104,
+  "headLocalAttachmentChecks": 13,
+  "anatomicalSideAndSupportMappingChecks": 13,
+  "newJunctionAlphaHoles": 0,
+  "completeArmPartitionChecks": 26,
+  "nearHandsPreserved": 13,
+  "independentPantsWalkFrames": 8,
+  "headHighlightsStayUpperLeft": 13,
+  "preservedFiles": 6019,
+  "normalFrameDurationsMs": [
+    120,
+    120,
+    120,
+    120,
+    120,
+    120,
+    120,
+    120
+  ],
+  "poses": [
+    {
+      "pose": 0,
+      "clip": "idle",
+      "frame": 0,
+      "actualCompositorDifferencePixels": 0,
+      "alphaDifferenceFromApprovedReflection": 0,
+      "geometryAndSemanticLayerChecks": [
+        {
+          "slot": "body.leg.left",
+          "alphaDifferencePixels": 0,
+          "lightingRGBChangedPixels": 458
+        },
+        {
+          "slot": "body.leg.right",
+          "alphaDifferencePixels": 0,
+          "lightingRGBChangedPixels": 544
+        },
+        {
+          "slot": "body.arm.left",
+          "alphaDifferencePixels": 0,
+          "lightingRGBChangedPixels": 179
+        },
+        {
+          "slot": "body.hand.left",
+          "alphaDifferencePixels": 0,
+          "lightingRGBChangedPixels": 55
+        },
+        {
+          "slot": "body.torso",
+          "alphaDifferencePixels": 0,
+          "lightingRGBChangedPixels": 728
+        },
+        {
+          "slot": "body.arm.right",
+          "alphaDifferencePixels": 0,
+          "lightingRGBChangedPixels": 332
+        },
+        {
+          "slot": "body.hand.right",
+          "alphaDifferencePixels": 0,
+          "lightingRGBChangedPixels": 78
+        },
+        {
+          "slot": "head.base",
+          "alphaDifferencePixels": 0,
+          "lightingRGBChangedPixels": 1296
+        }
+      ],
+      "support": "both",
+      "headLocalAttachmentDifferencePixels": 0,
+      "headHighlightCentre": [
+        121.31182795698925,
+        98.95698924731182
+      ],
+      "junctionReferenceMissingPixels": 0
+    },
+    {
+      "pose": 1,
+      "clip": "walk",
+      "frame": 1,
+      "actualCompositorDifferencePixels": 0,
+      "alphaDifferenceFromApprovedReflection": 0,
+      "geometryAndSemanticLayerChecks": [
+        {
+          "slot": "body.leg.left",
+          "alphaDifferencePixels": 0,
+          "lightingRGBChangedPixels": 421
+        },
+        {
+          "slot": "body.leg.right",
+          "alphaDifferencePixels": 0,
+          "lightingRGBChangedPixels": 551
+        },
+        {
+          "slot": "body.arm.left",
+          "alphaDifferencePixels": 0,
+          "lightingRGBChangedPixels": 178
+        },
+        {
+          "slot": "body.hand.left",
+          "alphaDifferencePixels": 0,
+          "lightingRGBChangedPixels": 55
+        },
+        {
+          "slot": "body.torso",
+          "alphaDifferencePixels": 0,
+          "lightingRGBChangedPixels": 736
+        },
+        {
+          "slot": "body.arm.right",
+          "alphaDifferencePixels": 0,
+          "lightingRGBChangedPixels": 325
+        },
+        {
+          "slot": "body.hand.right",
+          "alphaDifferencePixels": 0,
+          "lightingRGBChangedPixels": 78
+        },
+        {
+          "slot": "head.base",
+          "alphaDifferencePixels": 0,
+          "lightingRGBChangedPixels": 1296
+        }
+      ],
+      "support": "right",
+      "headLocalAttachmentDifferencePixels": 0,
+      "headHighlightCentre": [
+        121.31182795698925,
+        99.95698924731182
+      ],
+      "junctionReferenceMissingPixels": 0
+    },
+    {
+      "pose": 2,
+      "clip": "walk",
+      "frame": 2,
+      "actualCompositorDifferencePixels": 0,
+      "alphaDifferenceFromApprovedReflection": 0,
+      "geometryAndSemanticLayerChecks": [
+        {
+          "slot": "body.leg.left",
+          "alphaDifferencePixels": 0,
+          "lightingRGBChangedPixels": 410
+        },
+        {
+          "slot": "body.leg.right",
+          "alphaDifferencePixels": 0,
+          "lightingRGBChangedPixels": 553
+        },
+        {
+          "slot": "body.arm.left",
+          "alphaDifferencePixels": 0,
+          "lightingRGBChangedPixels": 178
+        },
+        {
+          "slot": "body.hand.left",
+          "alphaDifferencePixels": 0,
+          "lightingRGBChangedPixels": 55
+        },
+        {
+          "slot": "body.torso",
+          "alphaDifferencePixels": 0,
+          "lightingRGBChangedPixels": 736
+        },
+        {
+          "slot": "body.arm.right",
+          "alphaDifferencePixels": 0,
+          "lightingRGBChangedPixels": 329
+        },
+        {
+          "slot": "body.hand.right",
+          "alphaDifferencePixels": 0,
+          "lightingRGBChangedPixels": 78
+        },
+        {
+          "slot": "head.base",
+          "alphaDifferencePixels": 0,
+          "lightingRGBChangedPixels": 1296
+        }
+      ],
+      "support": "right",
+      "headLocalAttachmentDifferencePixels": 0,
+      "headHighlightCentre": [
+        122.31182795698925,
+        98.95698924731182
+      ],
+      "junctionReferenceMissingPixels": 0
+    },
+    {
+      "pose": 3,
+      "clip": "walk",
+      "frame": 3,
+      "actualCompositorDifferencePixels": 0,
+      "alphaDifferenceFromApprovedReflection": 0,
+      "geometryAndSemanticLayerChecks": [
+        {
+          "slot": "body.leg.left",
+          "alphaDifferencePixels": 0,
+          "lightingRGBChangedPixels": 425
+        },
+        {
+          "slot": "body.leg.right",
+          "alphaDifferencePixels": 0,
+          "lightingRGBChangedPixels": 545
+        },
+        {
+          "slot": "body.arm.left",
+          "alphaDifferencePixels": 0,
+          "lightingRGBChangedPixels": 179
+        },
+        {
+          "slot": "body.hand.left",
+          "alphaDifferencePixels": 0,
+          "lightingRGBChangedPixels": 55
+        },
+        {
+          "slot": "body.torso",
+          "alphaDifferencePixels": 0,
+          "lightingRGBChangedPixels": 728
+        },
+        {
+          "slot": "body.arm.right",
+          "alphaDifferencePixels": 0,
+          "lightingRGBChangedPixels": 332
+        },
+        {
+          "slot": "body.hand.right",
+          "alphaDifferencePixels": 0,
+          "lightingRGBChangedPixels": 79
+        },
+        {
+          "slot": "head.base",
+          "alphaDifferencePixels": 0,
+          "lightingRGBChangedPixels": 1296
+        }
+      ],
+      "support": "right",
+      "headLocalAttachmentDifferencePixels": 0,
+      "headHighlightCentre": [
+        122.31182795698925,
+        97.95698924731182
+      ],
+      "junctionReferenceMissingPixels": 0
+    },
+    {
+      "pose": 4,
+      "clip": "walk",
+      "frame": 4,
+      "actualCompositorDifferencePixels": 0,
+      "alphaDifferenceFromApprovedReflection": 0,
+      "geometryAndSemanticLayerChecks": [
+        {
+          "slot": "body.leg.left",
+          "alphaDifferencePixels": 0,
+          "lightingRGBChangedPixels": 459
+        },
+        {
+          "slot": "body.leg.right",
+          "alphaDifferencePixels": 0,
+          "lightingRGBChangedPixels": 537
+        },
+        {
+          "slot": "body.arm.left",
+          "alphaDifferencePixels": 0,
+          "lightingRGBChangedPixels": 179
+        },
+        {
+          "slot": "body.hand.left",
+          "alphaDifferencePixels": 0,
+          "lightingRGBChangedPixels": 54
+        },
+        {
+          "slot": "body.torso",
+          "alphaDifferencePixels": 0,
+          "lightingRGBChangedPixels": 715
+        },
+        {
+          "slot": "body.arm.right",
+          "alphaDifferencePixels": 0,
+          "lightingRGBChangedPixels": 334
+        },
+        {
+          "slot": "body.hand.right",
+          "alphaDifferencePixels": 0,
+          "lightingRGBChangedPixels": 78
+        },
+        {
+          "slot": "head.base",
+          "alphaDifferencePixels": 0,
+          "lightingRGBChangedPixels": 1296
+        }
+      ],
+      "support": "right",
+      "headLocalAttachmentDifferencePixels": 0,
+      "headHighlightCentre": [
+        122.31182795698925,
+        98.95698924731182
+      ],
+      "junctionReferenceMissingPixels": 0
+    },
+    {
+      "pose": 5,
+      "clip": "walk",
+      "frame": 5,
+      "actualCompositorDifferencePixels": 0,
+      "alphaDifferenceFromApprovedReflection": 0,
+      "geometryAndSemanticLayerChecks": [
+        {
+          "slot": "body.leg.left",
+          "alphaDifferencePixels": 0,
+          "lightingRGBChangedPixels": 488
+        },
+        {
+          "slot": "body.leg.right",
+          "alphaDifferencePixels": 0,
+          "lightingRGBChangedPixels": 516
+        },
+        {
+          "slot": "body.arm.left",
+          "alphaDifferencePixels": 0,
+          "lightingRGBChangedPixels": 180
+        },
+        {
+          "slot": "body.hand.left",
+          "alphaDifferencePixels": 0,
+          "lightingRGBChangedPixels": 55
+        },
+        {
+          "slot": "body.torso",
+          "alphaDifferencePixels": 0,
+          "lightingRGBChangedPixels": 720
+        },
+        {
+          "slot": "body.arm.right",
+          "alphaDifferencePixels": 0,
+          "lightingRGBChangedPixels": 331
+        },
+        {
+          "slot": "body.hand.right",
+          "alphaDifferencePixels": 0,
+          "lightingRGBChangedPixels": 77
+        },
+        {
+          "slot": "head.base",
+          "alphaDifferencePixels": 0,
+          "lightingRGBChangedPixels": 1296
+        }
+      ],
+      "support": "left",
+      "headLocalAttachmentDifferencePixels": 0,
+      "headHighlightCentre": [
+        121.31182795698925,
+        99.95698924731182
+      ],
+      "junctionReferenceMissingPixels": 0
+    },
+    {
+      "pose": 6,
+      "clip": "walk",
+      "frame": 6,
+      "actualCompositorDifferencePixels": 0,
+      "alphaDifferenceFromApprovedReflection": 0,
+      "geometryAndSemanticLayerChecks": [
+        {
+          "slot": "body.leg.left",
+          "alphaDifferencePixels": 0,
+          "lightingRGBChangedPixels": 482
+        },
+        {
+          "slot": "body.leg.right",
+          "alphaDifferencePixels": 0,
+          "lightingRGBChangedPixels": 509
+        },
+        {
+          "slot": "body.arm.left",
+          "alphaDifferencePixels": 0,
+          "lightingRGBChangedPixels": 180
+        },
+        {
+          "slot": "body.hand.left",
+          "alphaDifferencePixels": 0,
+          "lightingRGBChangedPixels": 55
+        },
+        {
+          "slot": "body.torso",
+          "alphaDifferencePixels": 0,
+          "lightingRGBChangedPixels": 720
+        },
+        {
+          "slot": "body.arm.right",
+          "alphaDifferencePixels": 0,
+          "lightingRGBChangedPixels": 333
+        },
+        {
+          "slot": "body.hand.right",
+          "alphaDifferencePixels": 0,
+          "lightingRGBChangedPixels": 79
+        },
+        {
+          "slot": "head.base",
+          "alphaDifferencePixels": 0,
+          "lightingRGBChangedPixels": 1296
+        }
+      ],
+      "support": "left",
+      "headLocalAttachmentDifferencePixels": 0,
+      "headHighlightCentre": [
+        120.31182795698925,
+        98.95698924731182
+      ],
+      "junctionReferenceMissingPixels": 0
+    },
+    {
+      "pose": 7,
+      "clip": "walk",
+      "frame": 7,
+      "actualCompositorDifferencePixels": 0,
+      "alphaDifferenceFromApprovedReflection": 0,
+      "geometryAndSemanticLayerChecks": [
+        {
+          "slot": "body.leg.left",
+          "alphaDifferencePixels": 0,
+          "lightingRGBChangedPixels": 457
+        },
+        {
+          "slot": "body.leg.right",
+          "alphaDifferencePixels": 0,
+          "lightingRGBChangedPixels": 517
+        },
+        {
+          "slot": "body.arm.left",
+          "alphaDifferencePixels": 0,
+          "lightingRGBChangedPixels": 179
+        },
+        {
+          "slot": "body.hand.left",
+          "alphaDifferencePixels": 0,
+          "lightingRGBChangedPixels": 55
+        },
+        {
+          "slot": "body.torso",
+          "alphaDifferencePixels": 0,
+          "lightingRGBChangedPixels": 726
+        },
+        {
+          "slot": "body.arm.right",
+          "alphaDifferencePixels": 0,
+          "lightingRGBChangedPixels": 332
+        },
+        {
+          "slot": "body.hand.right",
+          "alphaDifferencePixels": 0,
+          "lightingRGBChangedPixels": 78
+        },
+        {
+          "slot": "head.base",
+          "alphaDifferencePixels": 0,
+          "lightingRGBChangedPixels": 1296
+        }
+      ],
+      "support": "left",
+      "headLocalAttachmentDifferencePixels": 0,
+      "headHighlightCentre": [
+        120.31182795698925,
+        98.1146953405018
+      ],
+      "junctionReferenceMissingPixels": 0
+    },
+    {
+      "pose": 8,
+      "clip": "walk",
+      "frame": 8,
+      "actualCompositorDifferencePixels": 0,
+      "alphaDifferenceFromApprovedReflection": 0,
+      "geometryAndSemanticLayerChecks": [
+        {
+          "slot": "body.leg.left",
+          "alphaDifferencePixels": 0,
+          "lightingRGBChangedPixels": 437
+        },
+        {
+          "slot": "body.leg.right",
+          "alphaDifferencePixels": 0,
+          "lightingRGBChangedPixels": 538
+        },
+        {
+          "slot": "body.arm.left",
+          "alphaDifferencePixels": 0,
+          "lightingRGBChangedPixels": 178
+        },
+        {
+          "slot": "body.hand.left",
+          "alphaDifferencePixels": 0,
+          "lightingRGBChangedPixels": 55
+        },
+        {
+          "slot": "body.torso",
+          "alphaDifferencePixels": 0,
+          "lightingRGBChangedPixels": 740
+        },
+        {
+          "slot": "body.arm.right",
+          "alphaDifferencePixels": 0,
+          "lightingRGBChangedPixels": 331
+        },
+        {
+          "slot": "body.hand.right",
+          "alphaDifferencePixels": 0,
+          "lightingRGBChangedPixels": 78
+        },
+        {
+          "slot": "head.base",
+          "alphaDifferencePixels": 0,
+          "lightingRGBChangedPixels": 1296
+        }
+      ],
+      "support": "left",
+      "headLocalAttachmentDifferencePixels": 0,
+      "headHighlightCentre": [
+        120.31182795698925,
+        98.95698924731182
+      ],
+      "junctionReferenceMissingPixels": 0
+    },
+    {
+      "pose": 9,
+      "clip": "walk-start",
+      "frame": 1,
+      "actualCompositorDifferencePixels": 0,
+      "alphaDifferenceFromApprovedReflection": 0,
+      "geometryAndSemanticLayerChecks": [
+        {
+          "slot": "body.leg.left",
+          "alphaDifferencePixels": 0,
+          "lightingRGBChangedPixels": 444
+        },
+        {
+          "slot": "body.leg.right",
+          "alphaDifferencePixels": 0,
+          "lightingRGBChangedPixels": 531
+        },
+        {
+          "slot": "body.arm.left",
+          "alphaDifferencePixels": 0,
+          "lightingRGBChangedPixels": 179
+        },
+        {
+          "slot": "body.hand.left",
+          "alphaDifferencePixels": 0,
+          "lightingRGBChangedPixels": 55
+        },
+        {
+          "slot": "body.torso",
+          "alphaDifferencePixels": 0,
+          "lightingRGBChangedPixels": 728
+        },
+        {
+          "slot": "body.arm.right",
+          "alphaDifferencePixels": 0,
+          "lightingRGBChangedPixels": 332
+        },
+        {
+          "slot": "body.hand.right",
+          "alphaDifferencePixels": 0,
+          "lightingRGBChangedPixels": 78
+        },
+        {
+          "slot": "head.base",
+          "alphaDifferencePixels": 0,
+          "lightingRGBChangedPixels": 1296
+        }
+      ],
+      "support": "left",
+      "headLocalAttachmentDifferencePixels": 0,
+      "headHighlightCentre": [
+        121.31182795698925,
+        98.95698924731182
+      ],
+      "junctionReferenceMissingPixels": 0
+    },
+    {
+      "pose": 10,
+      "clip": "walk-start",
+      "frame": 2,
+      "actualCompositorDifferencePixels": 0,
+      "alphaDifferenceFromApprovedReflection": 0,
+      "geometryAndSemanticLayerChecks": [
+        {
+          "slot": "body.leg.left",
+          "alphaDifferencePixels": 0,
+          "lightingRGBChangedPixels": 436
+        },
+        {
+          "slot": "body.leg.right",
+          "alphaDifferencePixels": 0,
+          "lightingRGBChangedPixels": 537
+        },
+        {
+          "slot": "body.arm.left",
+          "alphaDifferencePixels": 0,
+          "lightingRGBChangedPixels": 177
+        },
+        {
+          "slot": "body.hand.left",
+          "alphaDifferencePixels": 0,
+          "lightingRGBChangedPixels": 55
+        },
+        {
+          "slot": "body.torso",
+          "alphaDifferencePixels": 0,
+          "lightingRGBChangedPixels": 727
+        },
+        {
+          "slot": "body.arm.right",
+          "alphaDifferencePixels": 0,
+          "lightingRGBChangedPixels": 335
+        },
+        {
+          "slot": "body.hand.right",
+          "alphaDifferencePixels": 0,
+          "lightingRGBChangedPixels": 78
+        },
+        {
+          "slot": "head.base",
+          "alphaDifferencePixels": 0,
+          "lightingRGBChangedPixels": 1296
+        }
+      ],
+      "support": "left",
+      "headLocalAttachmentDifferencePixels": 0,
+      "headHighlightCentre": [
+        121.31182795698925,
+        98.95698924731182
+      ],
+      "junctionReferenceMissingPixels": 0
+    },
+    {
+      "pose": 11,
+      "clip": "walk-stop",
+      "frame": 1,
+      "actualCompositorDifferencePixels": 0,
+      "alphaDifferenceFromApprovedReflection": 0,
+      "geometryAndSemanticLayerChecks": [
+        {
+          "slot": "body.leg.left",
+          "alphaDifferencePixels": 0,
+          "lightingRGBChangedPixels": 443
+        },
+        {
+          "slot": "body.leg.right",
+          "alphaDifferencePixels": 0,
+          "lightingRGBChangedPixels": 554
+        },
+        {
+          "slot": "body.arm.left",
+          "alphaDifferencePixels": 0,
+          "lightingRGBChangedPixels": 178
+        },
+        {
+          "slot": "body.hand.left",
+          "alphaDifferencePixels": 0,
+          "lightingRGBChangedPixels": 55
+        },
+        {
+          "slot": "body.torso",
+          "alphaDifferencePixels": 0,
+          "lightingRGBChangedPixels": 734
+        },
+        {
+          "slot": "body.arm.right",
+          "alphaDifferencePixels": 0,
+          "lightingRGBChangedPixels": 332
+        },
+        {
+          "slot": "body.hand.right",
+          "alphaDifferencePixels": 0,
+          "lightingRGBChangedPixels": 78
+        },
+        {
+          "slot": "head.base",
+          "alphaDifferencePixels": 0,
+          "lightingRGBChangedPixels": 1296
+        }
+      ],
+      "support": "right",
+      "headLocalAttachmentDifferencePixels": 0,
+      "headHighlightCentre": [
+        121.31182795698925,
+        98.95698924731182
+      ],
+      "junctionReferenceMissingPixels": 0
+    },
+    {
+      "pose": 12,
+      "clip": "walk-stop",
+      "frame": 2,
+      "actualCompositorDifferencePixels": 0,
+      "alphaDifferenceFromApprovedReflection": 0,
+      "geometryAndSemanticLayerChecks": [
+        {
+          "slot": "body.leg.left",
+          "alphaDifferencePixels": 0,
+          "lightingRGBChangedPixels": 458
+        },
+        {
+          "slot": "body.leg.right",
+          "alphaDifferencePixels": 0,
+          "lightingRGBChangedPixels": 547
+        },
+        {
+          "slot": "body.arm.left",
+          "alphaDifferencePixels": 0,
+          "lightingRGBChangedPixels": 179
+        },
+        {
+          "slot": "body.hand.left",
+          "alphaDifferencePixels": 0,
+          "lightingRGBChangedPixels": 55
+        },
+        {
+          "slot": "body.torso",
+          "alphaDifferencePixels": 0,
+          "lightingRGBChangedPixels": 728
+        },
+        {
+          "slot": "body.arm.right",
+          "alphaDifferencePixels": 0,
+          "lightingRGBChangedPixels": 332
+        },
+        {
+          "slot": "body.hand.right",
+          "alphaDifferencePixels": 0,
+          "lightingRGBChangedPixels": 78
+        },
+        {
+          "slot": "head.base",
+          "alphaDifferencePixels": 0,
+          "lightingRGBChangedPixels": 1296
+        }
+      ],
+      "support": "both",
+      "headLocalAttachmentDifferencePixels": 0,
+      "headHighlightCentre": [
+        121.31182795698925,
+        98.95698924731182
+      ],
+      "junctionReferenceMissingPixels": 0
+    }
+  ],
+  "limits": [
+    "Right-down artwork has no user approval",
+    "Main uses1x/2x complete frame review; no continuous-player viewing claimed",
+    "No wardrobe, complete hidden anatomy, arbitrary phase interruption, App/device or IPA acceptance"
+  ]
+}

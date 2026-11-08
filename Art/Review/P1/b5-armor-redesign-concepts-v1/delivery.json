@@ -1,0 +1,355 @@
+{
+  "schemaVersion": "1.0.0",
+  "delivery": "B5 armor redesign concept selection",
+  "status": "awaiting user selection; concepts are not approved production assets",
+  "userArtApproval": null,
+  "poseScope": "down-facing idle + existing 8-frame down-facing walk preview; no full 104-pose package created",
+  "options": [
+    {
+      "id": "star-a-starforged",
+      "family": "starlight",
+      "label": "星辉甲 A · 星铸骑士",
+      "material": "午夜蓝钢 · 银白星冠 · 明金纹章",
+      "description": "加宽星钢胸甲、八芒徽、双层银肩甲",
+      "idle": "options/star-a-starforged-idle-2x.png",
+      "walkGIF": "options/star-a-starforged-walk-120ms.gif",
+      "sourceSVG": "source/star-a-starforged.svg"
+    },
+    {
+      "id": "star-b-corona",
+      "family": "starlight",
+      "label": "星辉甲 B · 日冕圣卫",
+      "material": "象牙白金属 · 皇家蓝衬 · 日轮金饰",
+      "description": "象牙金胸甲、日轮徽、蓝色侧嵌",
+      "idle": "options/star-b-corona-idle-2x.png",
+      "walkGIF": "options/star-b-corona-walk-120ms.gif",
+      "sourceSVG": "source/star-b-corona.svg"
+    },
+    {
+      "id": "star-c-eclipse",
+      "family": "starlight",
+      "label": "星辉甲 C · 星蚀守望",
+      "material": "暮紫星钢 · 冷银边 · 暗金星图",
+      "description": "暮紫星钢、月蚀徽、非对称银肩",
+      "idle": "options/star-c-eclipse-idle-2x.png",
+      "walkGIF": "options/star-c-eclipse-walk-120ms.gif",
+      "sourceSVG": "source/star-c-eclipse.svg"
+    },
+    {
+      "id": "dragon-a-jade-scale",
+      "family": "dragon",
+      "label": "龙纹甲 A · 青玉龙鳞",
+      "material": "翡翠鳞钢 · 古铜骨架 · 玉色龙徽",
+      "description": "青玉叠鳞、古铜边、分片护腰",
+      "idle": "options/dragon-a-jade-scale-idle-2x.png",
+      "walkGIF": "options/dragon-a-jade-scale-walk-120ms.gif",
+      "sourceSVG": "source/dragon-a-jade-scale.svg"
+    },
+    {
+      "id": "dragon-b-ember-vanguard",
+      "family": "dragon",
+      "label": "龙纹甲 B · 赤焰龙骑",
+      "material": "熔岩赤甲 · 黑铁边 · 炽金龙徽",
+      "description": "赤焰重甲、火棘肩甲、龙火胸徽",
+      "idle": "options/dragon-b-ember-vanguard-idle-2x.png",
+      "walkGIF": "options/dragon-b-ember-vanguard-walk-120ms.gif",
+      "sourceSVG": "source/dragon-b-ember-vanguard.svg"
+    },
+    {
+      "id": "dragon-c-onyx-commander",
+      "family": "dragon",
+      "label": "龙纹甲 C · 玄金御龙",
+      "material": "曜石黑甲 · 亮金骨线 · 赤玉龙眼",
+      "description": "玄铁黑金、龙翼肩甲、红玉徽眼",
+      "idle": "options/dragon-c-onyx-commander-idle-2x.png",
+      "walkGIF": "options/dragon-c-onyx-commander-walk-120ms.gif",
+      "sourceSVG": "source/dragon-c-onyx-commander.svg"
+    }
+  ],
+  "checks": {
+    "optionCount": 6,
+    "walkGifFrames": 8,
+    "walkGifFrameDurationMs": 120,
+    "rendering": "same P1 body, face, hair, lower outfit, back sword, compositor and motion; armor surface replaced through project sampler"
+  },
+  "files": [
+    {
+      "path": "README.md",
+      "bytes": 1918,
+      "sha256": "5a969e3c81bf43284d8de4b91613a1b3ea26d2f5210fa9673c555d022ef6dee5"
+    },
+    {
+      "path": "concepts.json",
+      "bytes": 3142,
+      "sha256": "c0633a351852cdf4e5a7bba71b96df3bd86aaea89bc1353faf9896af33d14ecc"
+    },
+    {
+      "path": "options/dragon-a-jade-scale-idle-2x.png",
+      "bytes": 23420,
+      "sha256": "9444f210fd36465573e864607182c0d4a2344f41cc9d1d356bc1779a43b7c5bf",
+      "dimensions": [
+        512,
+        512
+      ]
+    },
+    {
+      "path": "options/dragon-a-jade-scale-walk-120ms.gif",
+      "bytes": 90542,
+      "sha256": "9997149c4d8ba42c40f6104e33a4195fbd8715fce43618a4fee9d1679d654c7d",
+      "dimensions": [
+        512,
+        512
+      ],
+      "frames": 8,
+      "frameDurationsMs": [
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120
+      ]
+    },
+    {
+      "path": "options/dragon-b-ember-vanguard-idle-2x.png",
+      "bytes": 23462,
+      "sha256": "419186fa280b67565b07631a3638acc5d9b1b26f79609a3fab355c3c09ba2baf",
+      "dimensions": [
+        512,
+        512
+      ]
+    },
+    {
+      "path": "options/dragon-b-ember-vanguard-walk-120ms.gif",
+      "bytes": 88344,
+      "sha256": "28c401cf174b939c8116f8236b5ca6921603a944f2ef59b5df696115edb8366b",
+      "dimensions": [
+        512,
+        512
+      ],
+      "frames": 8,
+      "frameDurationsMs": [
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120
+      ]
+    },
+    {
+      "path": "options/dragon-c-onyx-commander-idle-2x.png",
+      "bytes": 23439,
+      "sha256": "be0ff5b25a95f912a3421dabd11df9fda295d14b94ff06c20cb075d8761df3a7",
+      "dimensions": [
+        512,
+        512
+      ]
+    },
+    {
+      "path": "options/dragon-c-onyx-commander-walk-120ms.gif",
+      "bytes": 88410,
+      "sha256": "7dd11bc63a40d430a5769803aa54e9277791d54c7e92423cb3fae3d875cc5f71",
+      "dimensions": [
+        512,
+        512
+      ],
+      "frames": 8,
+      "frameDurationsMs": [
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120
+      ]
+    },
+    {
+      "path": "options/star-a-starforged-idle-2x.png",
+      "bytes": 23201,
+      "sha256": "8dc450e60e384f0bd1956d4fdd11a2c140cc503d3454f3b4b7f5c9960f135d51",
+      "dimensions": [
+        512,
+        512
+      ]
+    },
+    {
+      "path": "options/star-a-starforged-walk-120ms.gif",
+      "bytes": 89031,
+      "sha256": "ff94c7ce4f990646fd698253d8959b084ca8e899943442315793667a515c9951",
+      "dimensions": [
+        512,
+        512
+      ],
+      "frames": 8,
+      "frameDurationsMs": [
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120
+      ]
+    },
+    {
+      "path": "options/star-b-corona-idle-2x.png",
+      "bytes": 22984,
+      "sha256": "0bf41c9abce291f93410c10fe4ae268bd6070da6b2f67c626d1007bf4cec4cf0",
+      "dimensions": [
+        512,
+        512
+      ]
+    },
+    {
+      "path": "options/star-b-corona-walk-120ms.gif",
+      "bytes": 88470,
+      "sha256": "4adadb7558cc6d7c854054a95b908bbde9a284a0a6dadeda23614d2203fcd5cf",
+      "dimensions": [
+        512,
+        512
+      ],
+      "frames": 8,
+      "frameDurationsMs": [
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120
+      ]
+    },
+    {
+      "path": "options/star-c-eclipse-idle-2x.png",
+      "bytes": 23249,
+      "sha256": "ffea89d4bcfb03201eec0872fdf59de310cf56239a334d13425343e7f70e99b8",
+      "dimensions": [
+        512,
+        512
+      ]
+    },
+    {
+      "path": "options/star-c-eclipse-walk-120ms.gif",
+      "bytes": 89669,
+      "sha256": "f26f68fad7d3b88103e0c893c178e52ca58d1d9dff9b55d6fc7cb9420e68c889",
+      "dimensions": [
+        512,
+        512
+      ],
+      "frames": 8,
+      "frameDurationsMs": [
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120
+      ]
+    },
+    {
+      "path": "selection-board.png",
+      "bytes": 144283,
+      "sha256": "87a74f70393f46341ec213e7504adb5343736f1a896aee620afa6451e0c45180",
+      "dimensions": [
+        1200,
+        1120
+      ]
+    },
+    {
+      "path": "source/dragon-a-jade-scale-sheet.png",
+      "bytes": 233061,
+      "sha256": "550e08e58641c1d0d502d386bf9cea5657d63e44b70ed0bfa42ef30c09e88495",
+      "dimensions": [
+        1774,
+        887
+      ]
+    },
+    {
+      "path": "source/dragon-a-jade-scale.svg",
+      "bytes": 48143,
+      "sha256": "337fe344a54547f788ad4c8846f55a2bf6340c9dda8e4da3a0dd9680565b9d5c"
+    },
+    {
+      "path": "source/dragon-b-ember-vanguard-sheet.png",
+      "bytes": 234333,
+      "sha256": "39ab7c61069d802ae35a1fe28f3d7e64807e748ff8e5876a7beb1cc12de46f1a",
+      "dimensions": [
+        1774,
+        887
+      ]
+    },
+    {
+      "path": "source/dragon-b-ember-vanguard.svg",
+      "bytes": 47127,
+      "sha256": "f75163c8705fd3cc97f24021474a1dc472451e661ac83a8b9719ddf2eaa5dec2"
+    },
+    {
+      "path": "source/dragon-c-onyx-commander-sheet.png",
+      "bytes": 233711,
+      "sha256": "f24d6638de67132d0d6e613d3de82b9a4d83a113145a7220b62259a65e12d501",
+      "dimensions": [
+        1774,
+        887
+      ]
+    },
+    {
+      "path": "source/dragon-c-onyx-commander.svg",
+      "bytes": 47558,
+      "sha256": "98ce957360271424e6b379f5f6778104f8d21217bea443e9257d2493fdb58e16"
+    },
+    {
+      "path": "source/star-a-starforged-sheet.png",
+      "bytes": 224750,
+      "sha256": "99385851108ff53c8008e0824b8ac891da716f18ac8209c04010a6fe5ce1b436",
+      "dimensions": [
+        1774,
+        887
+      ]
+    },
+    {
+      "path": "source/star-a-starforged.svg",
+      "bytes": 49348,
+      "sha256": "d94ab8583ddb9cd435410a712b0e1bf7ddd571e296f40a5ec74f58a13fb70e87"
+    },
+    {
+      "path": "source/star-b-corona-sheet.png",
+      "bytes": 210792,
+      "sha256": "58ae21d06a8bca7ce8dff0f378cca651c7ad0884493eb11d97cc442ce738a3e0",
+      "dimensions": [
+        1774,
+        887
+      ]
+    },
+    {
+      "path": "source/star-b-corona.svg",
+      "bytes": 50909,
+      "sha256": "1420fbbfd597578ac280419721cdcec78be6a68fbf68567c59132b1fa816a8cd"
+    },
+    {
+      "path": "source/star-c-eclipse-sheet.png",
+      "bytes": 224752,
+      "sha256": "bc91d430270f6c0e7de0b45b12c8aae88941a347a4f33b29423d7372686f5615",
+      "dimensions": [
+        1774,
+        887
+      ]
+    },
+    {
+      "path": "source/star-c-eclipse.svg",
+      "bytes": 47202,
+      "sha256": "4029bec7ea32e6c7b5e3f757ec9dde2a3772db24c0c556cb9c9183898936bfed"
+    }
+  ],
+  "generator": "scripts/build-b5-armor-redesign-concepts.py"
+}

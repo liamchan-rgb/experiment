@@ -1,0 +1,100 @@
+{
+  "https": [
+    {
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/5da456a15ab8e8489fb51385063b92542392ff16/Art/Review/Battle/legendary-staff-demo-v1/body-normal.gif",
+      "path": "Art/Review/Battle/legendary-staff-demo-v1/body-normal.gif",
+      "bytes": 814183,
+      "sha256": "59934bbba9f9f9b7218540b5f6a86f36f432722f2fe45467167c657886bdfa26",
+      "contentType": "image/gif",
+      "fullGETMatchesLocal": true
+    },
+    {
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/5da456a15ab8e8489fb51385063b92542392ff16/Art/Review/Battle/legendary-staff-demo-v1/legendary-staff-normal.gif",
+      "path": "Art/Review/Battle/legendary-staff-demo-v1/legendary-staff-normal.gif",
+      "bytes": 5610869,
+      "sha256": "c0a37e3b1a2ddae238498a3c69647f8a73f8e38947f6a57704f6fcff716394a5",
+      "contentType": "image/gif",
+      "fullGETMatchesLocal": true
+    },
+    {
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/5da456a15ab8e8489fb51385063b92542392ff16/Art/Review/Battle/legendary-staff-demo-v1/legendary-staff-heavy-normal.gif",
+      "path": "Art/Review/Battle/legendary-staff-demo-v1/legendary-staff-heavy-normal.gif",
+      "bytes": 4796521,
+      "sha256": "ab0a2581e84db6a05054f6efbd4363e7947e5761ed74099813c6de8dbed7074c",
+      "contentType": "image/gif",
+      "fullGETMatchesLocal": true
+    },
+    {
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/5da456a15ab8e8489fb51385063b92542392ff16/Art/Review/Battle/legendary-staff-demo-v1/legendary-staff-lethal-normal.gif",
+      "path": "Art/Review/Battle/legendary-staff-demo-v1/legendary-staff-lethal-normal.gif",
+      "bytes": 5144261,
+      "sha256": "932768ca71511967be3fd426803288ef69700c357757b99a7123fc1e9954ea5a",
+      "contentType": "image/gif",
+      "fullGETMatchesLocal": true
+    },
+    {
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/5da456a15ab8e8489fb51385063b92542392ff16/Art/Review/Battle/legendary-staff-demo-v1/legendary-staff-natural20-normal.gif",
+      "path": "Art/Review/Battle/legendary-staff-demo-v1/legendary-staff-natural20-normal.gif",
+      "bytes": 6702847,
+      "sha256": "da8d3d5f1e6e0ba1c9c62f4db0610bf3eefc849708087ca161c7d978a6ae42a2",
+      "contentType": "image/gif",
+      "fullGETMatchesLocal": true
+    },
+    {
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/5da456a15ab8e8489fb51385063b92542392ff16/Art/Review/Battle/legendary-staff-demo-v1/states-normal.gif",
+      "path": "Art/Review/Battle/legendary-staff-demo-v1/states-normal.gif",
+      "bytes": 1576460,
+      "sha256": "00a16cdb87060d4060dd72beacee08730591bf008f082e4f92b26c4e52bc0cef",
+      "contentType": "image/gif",
+      "fullGETMatchesLocal": true
+    },
+    {
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/5da456a15ab8e8489fb51385063b92542392ff16/Art/Review/Battle/legendary-staff-demo-v1/body-standing.png",
+      "path": "Art/Review/Battle/legendary-staff-demo-v1/body-standing.png",
+      "bytes": 29171,
+      "sha256": "468c85012ba7150c5ba3d67490abf813174f1f3f98a3be4967e8de1a0f7430ef",
+      "contentType": "image/png",
+      "fullGETMatchesLocal": true
+    },
+    {
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/5da456a15ab8e8489fb51385063b92542392ff16/Art/Review/P1/legendary-staff-demo-v1/walk-normal.gif",
+      "path": "Art/Review/P1/legendary-staff-demo-v1/walk-normal.gif",
+      "bytes": 750478,
+      "sha256": "2d3d7a45d826b24d2c421356b64e41d776b9d9cda1702a83c4e0b033c2c8f9dd",
+      "contentType": "image/gif",
+      "fullGETMatchesLocal": true
+    },
+    {
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/5da456a15ab8e8489fb51385063b92542392ff16/Art/Review/P1/legendary-staff-demo-v1/transitions-normal.gif",
+      "path": "Art/Review/P1/legendary-staff-demo-v1/transitions-normal.gif",
+      "bytes": 1306449,
+      "sha256": "2861404c6a25f1286a8441ca35de5ec99460d947de3a86e200b2b4777b32423d",
+      "contentType": "image/gif",
+      "fullGETMatchesLocal": true
+    }
+  ],
+  "browserImageCheck": {
+    "scope": "Only standalone GIF images loaded in browser; no game/App executed.",
+    "dimensions": [
+      [
+        768,
+        840
+      ],
+      [
+        1020,
+        765
+      ]
+    ],
+    "bodyGifVisiblyAdvanced": true
+  },
+  "version": "1.6.33",
+  "build": 59,
+  "sourceCommit": "5850bfa0138454873965747a1002cd709d6a1f91",
+  "workflowRun": 40714973471,
+  "ipaFilename": "Downloads/MeadowJourney-b59.ipa",
+  "ipaBytes": 38262895,
+  "ipaSHA256": "a83dd2d3dd8c01a0a62c779902c18ac0eda9af4e33d07ee146afd46246fc9c9a",
+  "pureTestsPassed": 128,
+  "macLinuxNineExportSetsMatched": true,
+  "newRuntimeArtApproval": null
+}

@@ -1,0 +1,30 @@
+{
+  "selectedDesign": {
+    "starlightArmor": "B",
+    "dragonArmor": "B"
+  },
+  "userStatements": [
+    "两个都选择b",
+    "你一路做完所有方向的"
+  ],
+  "stage": "C4-and-offline-I1-I3-complete",
+  "actualStaticViewsPerItem": 8,
+  "actualLayersPerItem": 32,
+  "actualPoseBindingsPerItem": 104,
+  "actualPoseLayerReferencesPerItem": 416,
+  "actualSourceSVGs": 16,
+  "originalMotionSHA256": "f1926c10a4eb1cb8f1935157663bd22155e8444eae37ce64562453fc075e96ba",
+  "bodyMotionJointMapDrawOrderChanged": false,
+  "appResourceCatalogChanged": false,
+  "runtimeImported": false,
+  "newArtApproval": null,
+  "verification": "verification.json",
+  "normalGIFs": [
+    "starlightArmor/eight-way-walk-normal.gif",
+    "dragonArmor/eight-way-walk-normal.gif"
+  ],
+  "remaining": [
+    "user review/refinement",
+    "actual App/teacher/classroom atlas integration and archive after approval"
+  ]
+}

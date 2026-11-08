@@ -1,0 +1,40 @@
+{
+  "tool": "image_gen",
+  "owner": "root",
+  "subagentsUsed": false,
+  "promptsAreSummaries": true,
+  "finalSource": "generated.png",
+  "sources": [
+    {
+      "file": "generated.png",
+      "sha256": "52d28777b37c8dd12b5e1423a0cf7781d3a9859c381c95f83f35582dfa48cf90",
+      "promptSummary": "Final material painting on tight anatomical stencil; near legs brighter, far legs darker; small ankle boots and knee creases. Used with anatomical matte and technical texture gutter clamp."
+    },
+    {
+      "file": "rejected-registration-drift/generated.png",
+      "sha256": "1458a58b0a9af80cbbdddb4ecb4b70929eca1e753511a021cc2751ad34563351",
+      "promptSummary": "Rejected: enlarged and shifted anatomy in wide-margin four-leg guide."
+    },
+    {
+      "file": "before-coverage-repair/generated.png",
+      "sha256": "bcffcfb70c3ec8b058ceac29b1fad53c75a5173b499ccbf468052f446bbe0de9",
+      "promptSummary": "Intermediate tight guide painting: natural proportions but source edge coverage incomplete."
+    },
+    {
+      "file": "before-coverage-repair/magenta-repair-generated.png",
+      "sha256": "f151d21d283dddee0940b966912f1e763f45e81db371ac2f4e8f570248a69f29",
+      "promptSummary": "Intermediate magenta stencil repair: incomplete coverage."
+    },
+    {
+      "file": "before-coverage-repair/stencil-attempt-generated.png",
+      "sha256": "52d28777b37c8dd12b5e1423a0cf7781d3a9859c381c95f83f35582dfa48cf90",
+      "promptSummary": "Same final painting saved before matte/gutter source extraction."
+    },
+    {
+      "file": "before-coverage-repair/oversized-bleed-generated.png",
+      "sha256": "7b83f3c5df8c4c3b030d3a328dbbf838803e1e0ac4d5c39bf26b44151b93b2d1",
+      "promptSummary": "Rejected enlarged print-bleed painting: assembled sole detail was clipped by final anatomy matte; final uses tighter material painting instead."
+    }
+  ],
+  "technicalExtraction": "Original body/pelvis alpha plus one pixel is a geometry matte only. All visible garment RGB comes from artist-painted garment material; edge gutters clamp to nearest opaque garment texel. Explicit paint registration uses translation only, no anatomical width/height scaling."
+}

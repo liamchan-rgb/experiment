@@ -1,0 +1,126 @@
+{
+  "date": "2026-10-26",
+  "deliveryCommit": "4c8879729872f9a5e331ac264515a50796d135f9",
+  "sourceCommit": "463d221dbf80752a75d3d1449b859f76d841b03f",
+  "selectedPathsChecked": 110,
+  "compiledInputsChecked": 242,
+  "publicCompleteGETs": [
+    {
+      "path": "Downloads/MeadowJourney-b47.ipa",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/4c8879729872f9a5e331ac264515a50796d135f9/Downloads/MeadowJourney-b47.ipa",
+      "status": 200,
+      "mime": "application/octet-stream",
+      "bytes": 31791196,
+      "sha256": "be893efe718c77d250d4b323b268fb5791dc00b730f68c44fc0b2e45daf6525e"
+    },
+    {
+      "path": "Downloads/MeadowJourney-b47.ipa",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/fix/build33-face-grounding-camera/Downloads/MeadowJourney-b47.ipa",
+      "status": 200,
+      "mime": "application/octet-stream",
+      "bytes": 31791196,
+      "sha256": "be893efe718c77d250d4b323b268fb5791dc00b730f68c44fc0b2e45daf6525e"
+    },
+    {
+      "path": "Art/Review/Battle/dice-party-demo-v1/attack-buff-normal.gif",
+      "url": "https://cdn.jsdelivr.net/gh/liamchan-rgb/experiment@4c8879729872f9a5e331ac264515a50796d135f9/Art/Review/Battle/dice-party-demo-v1/attack-buff-normal.gif",
+      "status": 200,
+      "mime": "image/gif",
+      "bytes": 9666504,
+      "sha256": "afa4901775a5b21fe53989f7e71f1c79f58cd6db9ce7a333f5498121c7c15942",
+      "frames": 300,
+      "durationMs": 6000
+    },
+    {
+      "path": "Art/Review/Battle/dice-party-demo-v1/support-normal.gif",
+      "url": "https://cdn.jsdelivr.net/gh/liamchan-rgb/experiment@4c8879729872f9a5e331ac264515a50796d135f9/Art/Review/Battle/dice-party-demo-v1/support-normal.gif",
+      "status": 200,
+      "mime": "image/gif",
+      "bytes": 4019790,
+      "sha256": "83870ad855d3aefcb96c312baa601bdf83ff097e78bde0b211db9d3a625c37fe",
+      "frames": 190,
+      "durationMs": 3800
+    },
+    {
+      "path": "Art/Review/Battle/dice-party-demo-v1/shield-normal.gif",
+      "url": "https://cdn.jsdelivr.net/gh/liamchan-rgb/experiment@4c8879729872f9a5e331ac264515a50796d135f9/Art/Review/Battle/dice-party-demo-v1/shield-normal.gif",
+      "status": 200,
+      "mime": "image/gif",
+      "bytes": 5931712,
+      "sha256": "2fc16c3e990a9497805f2b351f9fe5f749e9e44cb8c06cc4d20ac955c25dbe11",
+      "frames": 190,
+      "durationMs": 3800
+    },
+    {
+      "path": "Art/Review/Battle/dice-party-demo-v1/heal-normal.gif",
+      "url": "https://cdn.jsdelivr.net/gh/liamchan-rgb/experiment@4c8879729872f9a5e331ac264515a50796d135f9/Art/Review/Battle/dice-party-demo-v1/heal-normal.gif",
+      "status": 200,
+      "mime": "image/gif",
+      "bytes": 5156037,
+      "sha256": "32e5f8c1b17b76a6d87ca04bdc67096ab98a998bec08d316eeee01ed1a58a78a",
+      "frames": 190,
+      "durationMs": 3800
+    },
+    {
+      "path": "Art/Review/Battle/dice-party-demo-v1/lethal-normal.gif",
+      "url": "https://cdn.jsdelivr.net/gh/liamchan-rgb/experiment@4c8879729872f9a5e331ac264515a50796d135f9/Art/Review/Battle/dice-party-demo-v1/lethal-normal.gif",
+      "status": 200,
+      "mime": "image/gif",
+      "bytes": 6573120,
+      "sha256": "fc87ae9c594a9d25eed20b8bc2aa8f3469e2308cbd815b2a8eb0e068f3b26141",
+      "frames": 190,
+      "durationMs": 3800
+    },
+    {
+      "path": "Art/Review/Battle/dice-party-demo-v1/layout-standing.png",
+      "url": "https://cdn.jsdelivr.net/gh/liamchan-rgb/experiment@4c8879729872f9a5e331ac264515a50796d135f9/Art/Review/Battle/dice-party-demo-v1/layout-standing.png",
+      "status": 200,
+      "mime": "image/png",
+      "bytes": 1843192,
+      "sha256": "ff6bfcb1a8f23a06c6770fc0ddde711f0862b27c03dd5a4827c5498c37e9c902"
+    },
+    {
+      "path": "Art/Review/Battle/dice-party-demo-v1/attack-buff-hover.png",
+      "url": "https://cdn.jsdelivr.net/gh/liamchan-rgb/experiment@4c8879729872f9a5e331ac264515a50796d135f9/Art/Review/Battle/dice-party-demo-v1/attack-buff-hover.png",
+      "status": 200,
+      "mime": "image/png",
+      "bytes": 1809322,
+      "sha256": "56590a00cf4de65126913db8b9adaf13c7c3433f07b929c6237f5f23d909e36c"
+    },
+    {
+      "path": "Art/Review/Battle/dice-party-demo-v1/dice-settled.png",
+      "url": "https://cdn.jsdelivr.net/gh/liamchan-rgb/experiment@4c8879729872f9a5e331ac264515a50796d135f9/Art/Review/Battle/dice-party-demo-v1/dice-settled.png",
+      "status": 200,
+      "mime": "image/png",
+      "bytes": 1017436,
+      "sha256": "046c9a8e80aa6088cd08ea1672b6981b877cf71c0625c28390b718186fc81a9d"
+    },
+    {
+      "path": "Art/Review/Battle/dice-party-demo-v1/monster-contact.png",
+      "url": "https://cdn.jsdelivr.net/gh/liamchan-rgb/experiment@4c8879729872f9a5e331ac264515a50796d135f9/Art/Review/Battle/dice-party-demo-v1/monster-contact.png",
+      "status": 200,
+      "mime": "image/png",
+      "bytes": 965988,
+      "sha256": "d3d3c9df6cdbaa47d181fa9b2081e84f21981c9b59a60585a568d4a8ab83a835"
+    },
+    {
+      "path": "Art/Review/Battle/dice-party-demo-v1/support-result.png",
+      "url": "https://cdn.jsdelivr.net/gh/liamchan-rgb/experiment@4c8879729872f9a5e331ac264515a50796d135f9/Art/Review/Battle/dice-party-demo-v1/support-result.png",
+      "status": 200,
+      "mime": "image/png",
+      "bytes": 1795666,
+      "sha256": "c45c30ed0b67e38fad9a6f84eee4ffc902dfc0cb8c7ca8da14a112da3bf5c43e"
+    },
+    {
+      "path": "Art/Review/Battle/dice-party-demo-v1/shield-result.png",
+      "url": "https://cdn.jsdelivr.net/gh/liamchan-rgb/experiment@4c8879729872f9a5e331ac264515a50796d135f9/Art/Review/Battle/dice-party-demo-v1/shield-result.png",
+      "status": 200,
+      "mime": "image/png",
+      "bytes": 1797128,
+      "sha256": "b6966b2787504d7a017d5ad34adf8e50a51f32f76c082369f02224818fd5c3d6"
+    }
+  ],
+  "simulatorRun": false,
+  "deviceRun": false,
+  "newArtApproval": null
+}

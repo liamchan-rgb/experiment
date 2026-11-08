@@ -1,0 +1,95 @@
+{
+  "date": "2026-10-26",
+  "reviewer": "root",
+  "delegated": false,
+  "sourceCommit": "d420e5dd623c08a1df96adf5d90f8e9ac5edd74f",
+  "battleGIFDecodedFramesInspected": 570,
+  "battleDecodedPagesInspected": 21,
+  "nativeBodyGIFDecodedFramesInspected": 190,
+  "nativeBodyDecodedPagesInspected": 7,
+  "walkingGIFDecodedFramesInspected": 21,
+  "walkingDecodedPagesInspected": 11,
+  "newBowWalkingWholeBodyPoses": 208,
+  "nativeWalkingPoseBoards": 16,
+  "nativeWalkingBoardScales": [
+    1,
+    2
+  ],
+  "nativeWalkingBoardFilesInspected": 32,
+  "emptyWalkingStates": "all208 cells byte-identical to build52 previously reviewed states",
+  "battleSixClipKeyPoses": 30,
+  "battleKeyPoseBoardScales": [
+    1,
+    2
+  ],
+  "battleKeyPoseBoardFiles": 4,
+  "wholeSceneSamples": 6,
+  "wholeSceneBoardScales": [
+    1,
+    2
+  ],
+  "animations": {
+    "bow": {
+      "file": "bow-normal.gif",
+      "frames": 190,
+      "frameDurationMs": 20,
+      "durationMs": 3800,
+      "dimensions": [
+        1224,
+        918
+      ],
+      "bytes": 9848415
+    },
+    "bow-heavy": {
+      "file": "bow-heavy-normal.gif",
+      "frames": 190,
+      "frameDurationMs": 20,
+      "durationMs": 3800,
+      "dimensions": [
+        1224,
+        918
+      ],
+      "bytes": 8051233
+    },
+    "bow-lethal": {
+      "file": "bow-lethal-normal.gif",
+      "frames": 190,
+      "frameDurationMs": 20,
+      "durationMs": 3800,
+      "dimensions": [
+        1224,
+        918
+      ],
+      "bytes": 8297694
+    }
+  },
+  "nativeBodyAnimation": {
+    "file": "bow-body-normal.gif",
+    "frames": 190,
+    "durationMs": 3800,
+    "frameDurationMs": 20,
+    "dimensions": [
+      512,
+      560
+    ],
+    "bytes": 3140266
+  },
+  "findings": [
+    "Fixed initial unreachable rear wrist by moving relaxed anchor within the unchanged rigid bone lengths; connections tested601progress samples.",
+    "Removed old rear-arm pixels from dedicated copies of body/clothes and the misassigned rear cuff from a dedicated thigh-clothes copy; original files unchanged.",
+    "Tilted upper bow limb forward to clear face, raised aiming hands, separated slow release-hand follow-through from string snapback, eased nocked-arrow entry.",
+    "Both appearances and all8directions checked at1x/2x; carry follows registered torso and original per-pose occlusion; front-facing bow can be occluded.",
+    "Stationary drawing/release/recovery reviewed in native full-body GIF and full scene; P1 normal shot is1D8, heavyStrike retains original1D6+2; projectile and committed hit use1.048s.",
+    "Death fixture3HP shows HP0/vitals disappearance, damage label and rightward dissolution together; default monsters18HP retained.",
+    "Dice confirmation0.32s upright landing, no repeated captions, gold diamond AP and contact damage labels retained."
+  ],
+  "limitations": [
+    "Offline composition from actual production Swift BowRig/mesh/fields and original GameCore receipts; UIKit fonts/blends/map/lighting/UI approximated.",
+    "Root inspected decoded frame sequences and full-body boards, not continuous playback or device capture.",
+    "Only P1 training camp weapon menu exposes bow; one loan bow for controlled staging; no full inventory/equipment/save UI.",
+    "Legacy solo remains a fixed5damage practice; selected bow changes its pose/projectile; real1D8 rules are in the party encounter.",
+    "Existing walking bodies and motion unchanged; new bow artwork is a candidate with approvalnull.",
+    "No App/simulator/device/UI execution; actual installation/input/shadows/performance remain user-tested."
+  ],
+  "newArtApproval": null
+}

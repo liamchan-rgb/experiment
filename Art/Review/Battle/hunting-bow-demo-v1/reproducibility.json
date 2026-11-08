@@ -1,0 +1,9 @@
+{
+  "sourceCommit": "d420e5dd623c08a1df96adf5d90f8e9ac5edd74f",
+  "compiledInputsChecked": 278,
+  "allCompiledInputsMatch": true,
+  "newSourceAndBindingPathsReproduced": 214,
+  "newSourceAndBindingBytesIdentical": true,
+  "regenerationCommand": "python scripts/import-hunting-bow-demo.py",
+  "newArtApproval": null
+}

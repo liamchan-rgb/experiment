@@ -1,0 +1,68 @@
+{
+  "artDirection": "Down-facing short sword fully sheathed and carried on the back. The weapon is independent and owns only weapon.back; it never requires body.hand.right or a grip socket.",
+  "sourceArt": "source/imagegen-original.png",
+  "registeredArt": "png/00/weapon.back.png",
+  "registeredCanvas": [
+    256,
+    256
+  ],
+  "registeredSolidSpriteBounds": [
+    84,
+    125,
+    152,
+    188
+  ],
+  "registeredSpriteSize": [
+    68,
+    63
+  ],
+  "positionByPose": {
+    "0": [
+      84,
+      125
+    ],
+    "1": [
+      84,
+      125
+    ],
+    "2": [
+      84,
+      127
+    ],
+    "3": [
+      84,
+      124
+    ],
+    "4": [
+      84,
+      123
+    ],
+    "5": [
+      84,
+      125
+    ],
+    "6": [
+      84,
+      127
+    ],
+    "7": [
+      84,
+      124
+    ],
+    "8": [
+      84,
+      123
+    ]
+  },
+  "poseTranslationSource": "P1 down r5 grip-transition candidate motion bodyTranslation values; integral pixel offsets only",
+  "drawOrderRequirement": "weapon.back must be drawn before body parts, head, hair, and outfit; host compositor owns this layer order.",
+  "noPerAppearanceBranches": true,
+  "noPerPoseScaling": true,
+  "artApproval": null,
+  "orientationTransform": "fixed full-source affine, scale 0.12, Pillow positive 18 degrees, anchored at source (460,340) to idle00 cell (90,130); no extra global translation",
+  "position00": [
+    84,
+    125
+  ],
+  "placementReview": "The final single registration was selected against actual v8 commonbase+outfit compositor output. It keeps the hilt clear outside the screen-left shoulder and exposes a continuous sheath tip below the screen-right waist; see review/v8-relaxed-clothed-angle18-nine-poses.png."
+}

@@ -1,0 +1,36 @@
+{
+  "date": "2026-10-24",
+  "authorAndReviewer": "root",
+  "subagentsUsed": false,
+  "artApproval": null,
+  "paintSources": [
+    {
+      "id": "forester",
+      "tool": "image_gen.imagegen",
+      "source": "source/forester-generated.png",
+      "sha256": "0e1882a1377540fc5ee6ce0e1cc90b4ef73402524d84bf2478bacab18b70e429",
+      "prompt": "source/prompts/forester.txt",
+      "references": [
+        "source/body-reference-4x.png",
+        "Art/Review/P1/modular-down-left-wardrobe-v1/rejected-probes/zoomed-headless-sheet.png"
+      ],
+      "used": "Only registered clothing RGB; generated head/body/hands/pose/alpha discarded"
+    },
+    {
+      "id": "wayfarer",
+      "tool": "image_gen.imagegen",
+      "source": "source/wayfarer-generated.png",
+      "sha256": "5d937e1cd1d1fa50b7fbe37078eba7d72a647ea35db48ca935e4c31e058822ff",
+      "prompt": "source/prompts/wayfarer.txt",
+      "references": [
+        "source/body-reference-4x.png",
+        "Art/Review/P1/modular-down-left-wardrobe-v1/rejected-probes/zoomed-headless-sheet.png"
+      ],
+      "used": "Only registered clothing RGB; generated head/body/hands/pose/alpha discarded"
+    }
+  ],
+  "stencilSource": "source/garment-stencil-3x.png",
+  "rejectedFirstPrompt": "source/prompts/rejected-sheet.txt",
+  "geometryOwner": "Art/Templates/P1-Neutral/down-left/walk-r1",
+  "geometryFitting": false
+}

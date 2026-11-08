@@ -1,0 +1,70 @@
+{
+  "build": 74,
+  "sourceCommit": "09ec0902e04d5042d4044bb3133ffb502c454414",
+  "releaseCommit": "8d9f08d3fcc197fda981b5a3322e2bcc6ec3f0cf",
+  "artCommit": "cbdbac478228e0eb3d4b71e640851d335f71f07f",
+  "downloads": [
+    {
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/cbdbac478228e0eb3d4b71e640851d335f71f07f/Art/Review/Map/random-map-v2/walk-normal.gif",
+      "bytes": 1557218,
+      "sha256": "0280cb3575242def334c4d5c878f2a9087624038b2cbe75823d964b10038563e",
+      "verified": true,
+      "size": [
+        960,
+        540
+      ],
+      "frames": 400
+    },
+    {
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/cbdbac478228e0eb3d4b71e640851d335f71f07f/Art/Review/Map/random-map-v2/map-4-overview.png",
+      "bytes": 1521086,
+      "sha256": "44f60c0a590ad67255c55305e1e779dcdcc7a9543b56a6559b97f6e5d2f1a0ef",
+      "verified": true,
+      "size": [
+        1280,
+        720
+      ]
+    },
+    {
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/cbdbac478228e0eb3d4b71e640851d335f71f07f/Art/Review/Map/random-map-v2/map-10-overview.png",
+      "bytes": 1844449,
+      "sha256": "0d1e6cce72cafd0670d794bc3f36b339648d75bbc0d7371a1de4c008397f0ac5",
+      "verified": true,
+      "size": [
+        1280,
+        880
+      ]
+    },
+    {
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/cbdbac478228e0eb3d4b71e640851d335f71f07f/Art/Review/Map/random-map-v2/map-30-overview.png",
+      "bytes": 2892186,
+      "sha256": "c79a95399550d88e05157d49c4c17a9518d9b682b844def91a5f3c537fe90d1c",
+      "verified": true,
+      "size": [
+        1280,
+        1320
+      ]
+    },
+    {
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/cbdbac478228e0eb3d4b71e640851d335f71f07f/Art/Parts/Map/meadow-locations-v1/buildings-on-green.png",
+      "bytes": 957939,
+      "sha256": "5823e38b7fec7cae73a968ca53c8f46422dbc0d058404ef4ae88db7102c98dad",
+      "verified": true,
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/8d9f08d3fcc197fda981b5a3322e2bcc6ec3f0cf/Downloads/MeadowJourney-b74.ipa",
+      "bytes": 60144893,
+      "sha256": "19435ab36153076423a4168992a986953a5f8d70e58d939aceccb9279afb3066",
+      "verified": true
+    }
+  ],
+  "normalGifFrames": 400,
+  "normalGifMs": 20,
+  "ipaDirect": true,
+  "noAppSimulatorDeviceRun": true,
+  "artApproval": null
+}

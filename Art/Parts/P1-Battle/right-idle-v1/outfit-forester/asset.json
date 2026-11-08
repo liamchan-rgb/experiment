@@ -47,5 +47,19 @@
     "source/boot-underlap.svg"
   ],
   "build": "./build.sh",
-  "review_composite": "review-runtime-order.png"
+  "review_composite": "review-runtime-order.png",
+  "palette_colorway": "P1 blue; tuned from the original green tunic while preserving alpha and all non-green pixels",
+  "palette_transform": {
+    "colorspace": "HSL",
+    "green_hue_range": [
+      0.26,
+      0.42
+    ],
+    "min_saturation": 0.15,
+    "min_lightness": 0.12,
+    "blue_hue": 0.6,
+    "blue_saturation_scale": 1.6,
+    "blue_lightness_scale": 1.3,
+    "alphaPreserved": true
+  }
 }

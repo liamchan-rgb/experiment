@@ -1,0 +1,8 @@
+2026-11-04T10:04:44.4117920Z Project paths, Swift file references, asset bindings, orientations and shared test scheme valid.
+2026-11-04T10:06:56.1989700Z 	 Executed 182 tests, with 0 failures (0 unexpected) in 75.682 (75.698) seconds
+2026-11-04T10:06:56.1991180Z 	 Executed 182 tests, with 0 failures (0 unexpected) in 75.682 (75.701) seconds
+2026-11-04T10:07:09.7889890Z PASS: production WalkCycle, Trail, TrailNetwork, JourneySimulation; P1 speed=25.0, pause/reset and four road directions
+2026-11-04T10:07:14.8834370Z MeadowBattleEncounter checks passed: target/AP, victory across rounds, shield/heal uses, defeat, retry and map return.
+2026-11-04T10:07:17.0906980Z Battle VFX checks passed: deferred HP/AP, single impact, lethal same-event transition, nonlethal survival, cancel/retry, shield, contact hold and deterministic ground-bouncing light debris and one-shot recovery at 15/30/60/120Hz.
+2026-11-04T10:07:26.9571570Z PASS:8specified paths,64command phases via designated exit,24render cadence cases,64phase-preserving turn samples
+2026-11-04T10:09:49.4341370Z ** ARCHIVE SUCCEEDED **

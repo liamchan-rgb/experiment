@@ -1,0 +1,25 @@
+{
+  "build": 77,
+  "sourceCommit": "1d506468d7d93aeb124b3b85c54b53f388220c2b",
+  "fixCommit": "4fd9c11b7b0fe9e9c446f3c6ea6b9ec2e2250eb3",
+  "originalFunctionReproducedSignal4": true,
+  "reproductionScope": "pure Swift production diceAnchor; not a device crash log",
+  "swiftTests": 194,
+  "newTests": 3,
+  "upgradedBossRegenerationCoverage": true,
+  "fourRegressionsPassed": true,
+  "realCampaignExportFrames": 948,
+  "diceUsesPersistentIDsBeforeAnyArtAlias": true,
+  "artReview": {
+    "agent": "root",
+    "decodedGIFFrames": 238,
+    "contactSheets": 4,
+    "wholeFrameKeysAndPlayerDiceAndVictoryChecked": true,
+    "not948FullResolutionFrames": true
+  },
+  "noAppSimulatorDeviceRun": true,
+  "movementMultiplier": 3,
+  "saveFormatChanged": false,
+  "resourcesChanged": false,
+  "userArtApproval": null
+}

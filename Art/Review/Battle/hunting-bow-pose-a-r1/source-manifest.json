@@ -1,0 +1,10 @@
+{
+  "Sources/Game/MeadowBattleActorView.swift": "0d3ca44ca8d5d3bd9d304f26f9ed431f0630319ce2cd46508434028532381c48",
+  "Vendor/ClassroomGameCore/Sources/MeadowBattleSupport/BowRig.swift": "5e34bd0107cfa7e8df10c2254fc5e52f8f638c5e52499f9d8ffd993c3ffb7d22",
+  "Vendor/ClassroomGameCore/Tests/MeadowBattleSupportTests/BowTests.swift": "2ec19ce2873d2b1587b7016e99d0fd081a0147c58fd48d470367aeb5f7bc454b",
+  "Vendor/ClassroomGameCore/Tools/ReviewExporter.swift": "e3eb0678b79187a6ddb73ea14335a0af5fe116ea9368b7ad9a59e530aa23abe1",
+  "scripts/review-hunting-bow-pose-a-r1.py": "b438eaaccdb3e9523f68c11354c9fd88e21aff7d3929971c6a1d2a5895e6d27b",
+  "scripts/review-hunting-bow-pose-a-details-r1.py": "65c4e10c58fe02bb8aae6bfc4c002fd5bc53d7f9c7694773bbbf12c67ff0ed7e",
+  "scripts/verify-hunting-bow-pose-a-r1.py": "947616b6df5faa3f9b49ab712588923db340e1ecf33f5a152f227889adbffff9",
+  "scripts/review-hunting-bow-pose-a-stills-r1.py": "0a273cb672df4492b860e1b8caf12a1b38f6b69ae2946bb4a2f4c67615a93e66"
+}

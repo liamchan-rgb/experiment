@@ -1,0 +1,10 @@
+{
+  "sourceMaster": "masters/right/hair.front.png",
+  "translation": [
+    82,
+    60
+  ],
+  "battlePart": "MeadowBattleHeroHair",
+  "sameUnmodifiedTorsoPose": true,
+  "canvasBakedBowHandling": "transform fresh local head by original torso, do not transform an already baked tile twice"
+}

@@ -1,0 +1,27 @@
+[0/1] Planning build
+Building for debugging...
+[0/5] Write sources
+[1/5] Write swift-version--3C8F63DB8035BADF.txt
+[3/7] Emitting module MeadowWorldSupportTests
+[4/7] Compiling MeadowWorldSupportTests EncounterPlannerTests.swift
+[5/8] /workspace/experiment/Vendor/ClassroomGameCore/.build/x86_64-unknown-linux-gnu/debug/ClassroomGameCorePackageDiscoveredTests.derived/all-discovered-tests.swift
+[6/9] Write sources
+[8/13] Emitting module ClassroomGameCorePackageDiscoveredTests
+[9/13] Compiling ClassroomGameCorePackageDiscoveredTests ClassroomGameCoreTests.swift
+[10/13] Compiling ClassroomGameCorePackageDiscoveredTests MeadowBattleSupportTests.swift
+[11/13] Compiling ClassroomGameCorePackageDiscoveredTests MeadowWorldSupportTests.swift
+[12/14] Compiling ClassroomGameCorePackageDiscoveredTests all-discovered-tests.swift
+[13/15] Write Objects.LinkFileList
+[14/15] Linking ClassroomGameCorePackageTests.xctest
+Build complete! (3.67s)
+Test Suite 'Selected tests' started at 2026-11-06 01:06:52.185
+Test Suite 'EncounterPlannerTests' started at 2026-11-06 01:06:52.186
+Test Case 'EncounterPlannerTests.testPreviewExactlyDescribesSpawnedRosterAndEmptyMap' started at 2026-11-06 01:06:52.186
+Test Case 'EncounterPlannerTests.testPreviewExactlyDescribesSpawnedRosterAndEmptyMap' passed (0.053 seconds)
+Test Suite 'EncounterPlannerTests' passed at 2026-11-06 01:06:52.239
+	 Executed 1 test, with 0 failures (0 unexpected) in 0.053 (0.053) seconds
+Test Suite 'Selected tests' passed at 2026-11-06 01:06:52.239
+	 Executed 1 test, with 0 failures (0 unexpected) in 0.053 (0.053) seconds
+◇ Test run started.
+↳ Testing Library Version: 6.0.3 (18c42c19cac3faf)
+✔ Test run with 0 tests passed after 0.001 seconds.

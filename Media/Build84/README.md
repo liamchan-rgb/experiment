@@ -1,0 +1,20 @@
+# Build84 · 六种怪物与批量检视
+
+[直接IPA](https://raw.githubusercontent.com/liamchan-rgb/experiment/e57c23e96c94d7b10f1b1538eaa1256f99d7a553/Downloads/MeadowJourney-b84.ipa) · [包检](verification.json) · [构建](https://github.com/liamchan-rgb/experiment/actions/runs/42074953267)
+
+## Build84交付 · 六种怪物与批量动作检视（2026-11-05）
+
+本轮补齐史莱姆、森林狼、哥布林弓手、石像守卫、洞穴巨魔、遗迹魔龙候选母版与各自56常规源姿态（待机12/短出招24/施法12/受击8）、40右吹死亡帧；同一母版连续表面形变，不独立随机重画每帧，不称完整骨骼行走。普通0.88、首领1.04，主角0.83原尺寸保留；主体体量与可信比例同屏比较，原鹿资源及人物/装备/步态原图不改。史莱姆原atlas触左边已换完整独立母版；新资源都有真实透明边缘，无文字/格线，死亡首帧与原身只差32透明行，末帧完全透明，保持各自剪影/色彩，不套鹿。
+
+新增“开始新行程”设置→“怪物动作检视”，可切换六种/重播自动阶段，不消耗行程资源。正式行程“编辑地点”选择原已登记的六种时显示新图；普通1—3只、首领1只，修复旧显示只接收2只与编辑3只不一致，m3有独立位置/真实ID/骰子锚点及续档AI回归。默认随机地图仍旧鹿灵/鹿王；自动遭遇分配下一轮处理，不能把本轮描述为已完成新投放。
+
+近战各物种前缘接触；弓手/魔龙的远程普攻不冲撞，箭/能量从实际持弓/口部发出。石肤/再生/龙鳞/龙焰复用既有动作与技能反馈，敌方技能按实际时长收尾，不再统一1.1秒截断。sourceSkillID从怪物自身技能列表定位，避免同名龙焰混用玩家定义；骰子固定盾6/10与D20按原怪物定义/确认回执，护盾条也取6/10容量。正向HP/护盾仍在特效后半显示，不修改原目录/规则/数值/AP/掉落或RNG。
+
+六种独立主体受击点位于腰腹/前躯、都经PNG Alpha实测；武器接敌沿原认可相对关系加注册差值，所有箭矢/法杖/符文/龙焰/节点光效、受击/死亡粒子、伤害数字共用。新脚底回归保持与目标地面Y−12差，不抬升主角去够首领胸口；接敌骰子同步避开血条。原鹿/未映射模板的命中/移动保持旧逻辑。
+
+主线程自审24页336源姿态、六组2×关键整身、整场各阶段、接敌注册与三敌站位；240死亡源帧/GIF完整解码作技术检查。32个既有人物/场景参考输入与上轮发布树逐字节相同。正常GIF6.4s/1200×528，重复静止帧合并但速度不变；公开完整GET与独立HTTPS浏览器GIF推进检查通过，[正常GIF](https://raw.githubusercontent.com/liamchan-rgb/experiment/7734f149fd326ff03eba2a5a6c1feac57c5a59cb/Art/Review/Battle/bestiary-v1/bestiary-normal.gif)、[MP4](https://raw.githubusercontent.com/liamchan-rgb/experiment/7734f149fd326ff03eba2a5a6c1feac57c5a59cb/Art/Review/Battle/bestiary-v1/bestiary-normal.mp4)、[接敌图](https://raw.githubusercontent.com/liamchan-rgb/experiment/7734f149fd326ff03eba2a5a6c1feac57c5a59cb/Art/Review/Battle/bestiary-v1/incoming-registration.jpg)。离线合成，光影/UI近似，未叠加正式全部照明/粒子；不冒充UIKit录屏、每帧全分辨率人工连续播放或设备60fps测量。新美术用户认可null。
+
+最终版本1.6.57/build84；实际源ce75138d8748325f7b7dbcb302228d0ccde65246；设备Release run 42074953267 attempt1成功，Mac/Linux221纯Swift测试与四组原回归通过；Native导出1920样本与Linux逐项比较，最大数值误差0（阈值1e−9，姿态/阶段/布尔严格相同）。更早7fac/904成功归档只属历史，本包含最后脚底修正。IPA CRC/ZIP2.0无extra/arm64执行权限/平台版本/Metal与Assets.car、12新图集及数据资产名称、与Build83的原地图/步态/规则JSON一致校验通过。公开完整GET200，64534597字节，SHA256 a96be8330d8b95fde9a04a1bc61b256824e8f383d35723e642a1b1df6e76630b。只做纯规则执行、设备编译、离线美术与包检；未运行App/模拟器/实机，设备交用户。源母版/构建脚本/清单在Art/Monsters/bestiary-v1，审核在Art/Review/Battle/bestiary-v1，实际日志Media/Build84。仅发布本项所需文件，未整体提交脏工作区。
+
+后两项：正式随机地图怪物/首领遭遇配置与组合；战斗数值与资源投放联调。继续保留三倍移动、平均最大AP×50独立移动条、主动节点交互、个人战斗AP与已完成行程只读/历史结算。
+

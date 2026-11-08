@@ -1,0 +1,9 @@
+{
+  "baseline": "fc6c2387b3a6378515aa6db3f3d1205176cada23",
+  "sourceCommit": "4bc9855e4fe71b39022095741e64a95b05b3e133",
+  "oldArtAndResourcePathsUnchanged": 10814,
+  "originalCoreSourceAndCatalogHashesMatched": 13,
+  "actorAndGaitPixelsAndPoseJSONChanged": false,
+  "originalSingleEncounterRulesUnchanged": true,
+  "retainedBodyBoardsReusedFromBuild47AndInspectedAgain": 4
+}

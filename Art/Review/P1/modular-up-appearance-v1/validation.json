@@ -1,0 +1,963 @@
+{
+  "status": "technical-checks-pass",
+  "artApproval": null,
+  "authorAndReviewer": "root",
+  "subagentsUsed": false,
+  "manifestsChecked": 7,
+  "combinations": 8,
+  "actualCompositorPoses": 104,
+  "bareBodyPosesUnchanged": 13,
+  "bodyLayerPreservationChecks": 832,
+  "clothingCoverageChecks": 624,
+  "handPreservationChecks": 208,
+  "crownCoverageChecks": 104,
+  "weaponToggleChecks": 52,
+  "guardVisibilityChecks": 52,
+  "preservedFiles": 15855,
+  "profileChange": "Only new up back-head guide data; all old entries unchanged",
+  "footRollSourceAlphaUnchanged": true,
+  "records": [
+    {
+      "pose": 0,
+      "combination": "forester__chestnut__empty",
+      "actualCompositorDifferencePixels": 0,
+      "clothingCoverageGaps": 0,
+      "handsPreserved": true,
+      "crownExposedPixels": 0,
+      "bodyLayersUnchanged": true
+    },
+    {
+      "pose": 0,
+      "combination": "forester__chestnut__back",
+      "actualCompositorDifferencePixels": 0,
+      "clothingCoverageGaps": 0,
+      "handsPreserved": true,
+      "crownExposedPixels": 0,
+      "bodyLayersUnchanged": true
+    },
+    {
+      "pose": 0,
+      "combination": "forester__silver__empty",
+      "actualCompositorDifferencePixels": 0,
+      "clothingCoverageGaps": 0,
+      "handsPreserved": true,
+      "crownExposedPixels": 0,
+      "bodyLayersUnchanged": true
+    },
+    {
+      "pose": 0,
+      "combination": "forester__silver__back",
+      "actualCompositorDifferencePixels": 0,
+      "clothingCoverageGaps": 0,
+      "handsPreserved": true,
+      "crownExposedPixels": 0,
+      "bodyLayersUnchanged": true
+    },
+    {
+      "pose": 0,
+      "combination": "wayfarer__chestnut__empty",
+      "actualCompositorDifferencePixels": 0,
+      "clothingCoverageGaps": 0,
+      "handsPreserved": true,
+      "crownExposedPixels": 0,
+      "bodyLayersUnchanged": true
+    },
+    {
+      "pose": 0,
+      "combination": "wayfarer__chestnut__back",
+      "actualCompositorDifferencePixels": 0,
+      "clothingCoverageGaps": 0,
+      "handsPreserved": true,
+      "crownExposedPixels": 0,
+      "bodyLayersUnchanged": true
+    },
+    {
+      "pose": 0,
+      "combination": "wayfarer__silver__empty",
+      "actualCompositorDifferencePixels": 0,
+      "clothingCoverageGaps": 0,
+      "handsPreserved": true,
+      "crownExposedPixels": 0,
+      "bodyLayersUnchanged": true
+    },
+    {
+      "pose": 0,
+      "combination": "wayfarer__silver__back",
+      "actualCompositorDifferencePixels": 0,
+      "clothingCoverageGaps": 0,
+      "handsPreserved": true,
+      "crownExposedPixels": 0,
+      "bodyLayersUnchanged": true
+    },
+    {
+      "pose": 1,
+      "combination": "forester__chestnut__empty",
+      "actualCompositorDifferencePixels": 0,
+      "clothingCoverageGaps": 0,
+      "handsPreserved": true,
+      "crownExposedPixels": 0,
+      "bodyLayersUnchanged": true
+    },
+    {
+      "pose": 1,
+      "combination": "forester__chestnut__back",
+      "actualCompositorDifferencePixels": 0,
+      "clothingCoverageGaps": 0,
+      "handsPreserved": true,
+      "crownExposedPixels": 0,
+      "bodyLayersUnchanged": true
+    },
+    {
+      "pose": 1,
+      "combination": "forester__silver__empty",
+      "actualCompositorDifferencePixels": 0,
+      "clothingCoverageGaps": 0,
+      "handsPreserved": true,
+      "crownExposedPixels": 0,
+      "bodyLayersUnchanged": true
+    },
+    {
+      "pose": 1,
+      "combination": "forester__silver__back",
+      "actualCompositorDifferencePixels": 0,
+      "clothingCoverageGaps": 0,
+      "handsPreserved": true,
+      "crownExposedPixels": 0,
+      "bodyLayersUnchanged": true
+    },
+    {
+      "pose": 1,
+      "combination": "wayfarer__chestnut__empty",
+      "actualCompositorDifferencePixels": 0,
+      "clothingCoverageGaps": 0,
+      "handsPreserved": true,
+      "crownExposedPixels": 0,
+      "bodyLayersUnchanged": true
+    },
+    {
+      "pose": 1,
+      "combination": "wayfarer__chestnut__back",
+      "actualCompositorDifferencePixels": 0,
+      "clothingCoverageGaps": 0,
+      "handsPreserved": true,
+      "crownExposedPixels": 0,
+      "bodyLayersUnchanged": true
+    },
+    {
+      "pose": 1,
+      "combination": "wayfarer__silver__empty",
+      "actualCompositorDifferencePixels": 0,
+      "clothingCoverageGaps": 0,
+      "handsPreserved": true,
+      "crownExposedPixels": 0,
+      "bodyLayersUnchanged": true
+    },
+    {
+      "pose": 1,
+      "combination": "wayfarer__silver__back",
+      "actualCompositorDifferencePixels": 0,
+      "clothingCoverageGaps": 0,
+      "handsPreserved": true,
+      "crownExposedPixels": 0,
+      "bodyLayersUnchanged": true
+    },
+    {
+      "pose": 2,
+      "combination": "forester__chestnut__empty",
+      "actualCompositorDifferencePixels": 0,
+      "clothingCoverageGaps": 0,
+      "handsPreserved": true,
+      "crownExposedPixels": 0,
+      "bodyLayersUnchanged": true
+    },
+    {
+      "pose": 2,
+      "combination": "forester__chestnut__back",
+      "actualCompositorDifferencePixels": 0,
+      "clothingCoverageGaps": 0,
+      "handsPreserved": true,
+      "crownExposedPixels": 0,
+      "bodyLayersUnchanged": true
+    },
+    {
+      "pose": 2,
+      "combination": "forester__silver__empty",
+      "actualCompositorDifferencePixels": 0,
+      "clothingCoverageGaps": 0,
+      "handsPreserved": true,
+      "crownExposedPixels": 0,
+      "bodyLayersUnchanged": true
+    },
+    {
+      "pose": 2,
+      "combination": "forester__silver__back",
+      "actualCompositorDifferencePixels": 0,
+      "clothingCoverageGaps": 0,
+      "handsPreserved": true,
+      "crownExposedPixels": 0,
+      "bodyLayersUnchanged": true
+    },
+    {
+      "pose": 2,
+      "combination": "wayfarer__chestnut__empty",
+      "actualCompositorDifferencePixels": 0,
+      "clothingCoverageGaps": 0,
+      "handsPreserved": true,
+      "crownExposedPixels": 0,
+      "bodyLayersUnchanged": true
+    },
+    {
+      "pose": 2,
+      "combination": "wayfarer__chestnut__back",
+      "actualCompositorDifferencePixels": 0,
+      "clothingCoverageGaps": 0,
+      "handsPreserved": true,
+      "crownExposedPixels": 0,
+      "bodyLayersUnchanged": true
+    },
+    {
+      "pose": 2,
+      "combination": "wayfarer__silver__empty",
+      "actualCompositorDifferencePixels": 0,
+      "clothingCoverageGaps": 0,
+      "handsPreserved": true,
+      "crownExposedPixels": 0,
+      "bodyLayersUnchanged": true
+    },
+    {
+      "pose": 2,
+      "combination": "wayfarer__silver__back",
+      "actualCompositorDifferencePixels": 0,
+      "clothingCoverageGaps": 0,
+      "handsPreserved": true,
+      "crownExposedPixels": 0,
+      "bodyLayersUnchanged": true
+    },
+    {
+      "pose": 3,
+      "combination": "forester__chestnut__empty",
+      "actualCompositorDifferencePixels": 0,
+      "clothingCoverageGaps": 0,
+      "handsPreserved": true,
+      "crownExposedPixels": 0,
+      "bodyLayersUnchanged": true
+    },
+    {
+      "pose": 3,
+      "combination": "forester__chestnut__back",
+      "actualCompositorDifferencePixels": 0,
+      "clothingCoverageGaps": 0,
+      "handsPreserved": true,
+      "crownExposedPixels": 0,
+      "bodyLayersUnchanged": true
+    },
+    {
+      "pose": 3,
+      "combination": "forester__silver__empty",
+      "actualCompositorDifferencePixels": 0,
+      "clothingCoverageGaps": 0,
+      "handsPreserved": true,
+      "crownExposedPixels": 0,
+      "bodyLayersUnchanged": true
+    },
+    {
+      "pose": 3,
+      "combination": "forester__silver__back",
+      "actualCompositorDifferencePixels": 0,
+      "clothingCoverageGaps": 0,
+      "handsPreserved": true,
+      "crownExposedPixels": 0,
+      "bodyLayersUnchanged": true
+    },
+    {
+      "pose": 3,
+      "combination": "wayfarer__chestnut__empty",
+      "actualCompositorDifferencePixels": 0,
+      "clothingCoverageGaps": 0,
+      "handsPreserved": true,
+      "crownExposedPixels": 0,
+      "bodyLayersUnchanged": true
+    },
+    {
+      "pose": 3,
+      "combination": "wayfarer__chestnut__back",
+      "actualCompositorDifferencePixels": 0,
+      "clothingCoverageGaps": 0,
+      "handsPreserved": true,
+      "crownExposedPixels": 0,
+      "bodyLayersUnchanged": true
+    },
+    {
+      "pose": 3,
+      "combination": "wayfarer__silver__empty",
+      "actualCompositorDifferencePixels": 0,
+      "clothingCoverageGaps": 0,
+      "handsPreserved": true,
+      "crownExposedPixels": 0,
+      "bodyLayersUnchanged": true
+    },
+    {
+      "pose": 3,
+      "combination": "wayfarer__silver__back",
+      "actualCompositorDifferencePixels": 0,
+      "clothingCoverageGaps": 0,
+      "handsPreserved": true,
+      "crownExposedPixels": 0,
+      "bodyLayersUnchanged": true
+    },
+    {
+      "pose": 4,
+      "combination": "forester__chestnut__empty",
+      "actualCompositorDifferencePixels": 0,
+      "clothingCoverageGaps": 0,
+      "handsPreserved": true,
+      "crownExposedPixels": 0,
+      "bodyLayersUnchanged": true
+    },
+    {
+      "pose": 4,
+      "combination": "forester__chestnut__back",
+      "actualCompositorDifferencePixels": 0,
+      "clothingCoverageGaps": 0,
+      "handsPreserved": true,
+      "crownExposedPixels": 0,
+      "bodyLayersUnchanged": true
+    },
+    {
+      "pose": 4,
+      "combination": "forester__silver__empty",
+      "actualCompositorDifferencePixels": 0,
+      "clothingCoverageGaps": 0,
+      "handsPreserved": true,
+      "crownExposedPixels": 0,
+      "bodyLayersUnchanged": true
+    },
+    {
+      "pose": 4,
+      "combination": "forester__silver__back",
+      "actualCompositorDifferencePixels": 0,
+      "clothingCoverageGaps": 0,
+      "handsPreserved": true,
+      "crownExposedPixels": 0,
+      "bodyLayersUnchanged": true
+    },
+    {
+      "pose": 4,
+      "combination": "wayfarer__chestnut__empty",
+      "actualCompositorDifferencePixels": 0,
+      "clothingCoverageGaps": 0,
+      "handsPreserved": true,
+      "crownExposedPixels": 0,
+      "bodyLayersUnchanged": true
+    },
+    {
+      "pose": 4,
+      "combination": "wayfarer__chestnut__back",
+      "actualCompositorDifferencePixels": 0,
+      "clothingCoverageGaps": 0,
+      "handsPreserved": true,
+      "crownExposedPixels": 0,
+      "bodyLayersUnchanged": true
+    },
+    {
+      "pose": 4,
+      "combination": "wayfarer__silver__empty",
+      "actualCompositorDifferencePixels": 0,
+      "clothingCoverageGaps": 0,
+      "handsPreserved": true,
+      "crownExposedPixels": 0,
+      "bodyLayersUnchanged": true
+    },
+    {
+      "pose": 4,
+      "combination": "wayfarer__silver__back",
+      "actualCompositorDifferencePixels": 0,
+      "clothingCoverageGaps": 0,
+      "handsPreserved": true,
+      "crownExposedPixels": 0,
+      "bodyLayersUnchanged": true
+    },
+    {
+      "pose": 5,
+      "combination": "forester__chestnut__empty",
+      "actualCompositorDifferencePixels": 0,
+      "clothingCoverageGaps": 0,
+      "handsPreserved": true,
+      "crownExposedPixels": 0,
+      "bodyLayersUnchanged": true
+    },
+    {
+      "pose": 5,
+      "combination": "forester__chestnut__back",
+      "actualCompositorDifferencePixels": 0,
+      "clothingCoverageGaps": 0,
+      "handsPreserved": true,
+      "crownExposedPixels": 0,
+      "bodyLayersUnchanged": true
+    },
+    {
+      "pose": 5,
+      "combination": "forester__silver__empty",
+      "actualCompositorDifferencePixels": 0,
+      "clothingCoverageGaps": 0,
+      "handsPreserved": true,
+      "crownExposedPixels": 0,
+      "bodyLayersUnchanged": true
+    },
+    {
+      "pose": 5,
+      "combination": "forester__silver__back",
+      "actualCompositorDifferencePixels": 0,
+      "clothingCoverageGaps": 0,
+      "handsPreserved": true,
+      "crownExposedPixels": 0,
+      "bodyLayersUnchanged": true
+    },
+    {
+      "pose": 5,
+      "combination": "wayfarer__chestnut__empty",
+      "actualCompositorDifferencePixels": 0,
+      "clothingCoverageGaps": 0,
+      "handsPreserved": true,
+      "crownExposedPixels": 0,
+      "bodyLayersUnchanged": true
+    },
+    {
+      "pose": 5,
+      "combination": "wayfarer__chestnut__back",
+      "actualCompositorDifferencePixels": 0,
+      "clothingCoverageGaps": 0,
+      "handsPreserved": true,
+      "crownExposedPixels": 0,
+      "bodyLayersUnchanged": true
+    },
+    {
+      "pose": 5,
+      "combination": "wayfarer__silver__empty",
+      "actualCompositorDifferencePixels": 0,
+      "clothingCoverageGaps": 0,
+      "handsPreserved": true,
+      "crownExposedPixels": 0,
+      "bodyLayersUnchanged": true
+    },
+    {
+      "pose": 5,
+      "combination": "wayfarer__silver__back",
+      "actualCompositorDifferencePixels": 0,
+      "clothingCoverageGaps": 0,
+      "handsPreserved": true,
+      "crownExposedPixels": 0,
+      "bodyLayersUnchanged": true
+    },
+    {
+      "pose": 6,
+      "combination": "forester__chestnut__empty",
+      "actualCompositorDifferencePixels": 0,
+      "clothingCoverageGaps": 0,
+      "handsPreserved": true,
+      "crownExposedPixels": 0,
+      "bodyLayersUnchanged": true
+    },
+    {
+      "pose": 6,
+      "combination": "forester__chestnut__back",
+      "actualCompositorDifferencePixels": 0,
+      "clothingCoverageGaps": 0,
+      "handsPreserved": true,
+      "crownExposedPixels": 0,
+      "bodyLayersUnchanged": true
+    },
+    {
+      "pose": 6,
+      "combination": "forester__silver__empty",
+      "actualCompositorDifferencePixels": 0,
+      "clothingCoverageGaps": 0,
+      "handsPreserved": true,
+      "crownExposedPixels": 0,
+      "bodyLayersUnchanged": true
+    },
+    {
+      "pose": 6,
+      "combination": "forester__silver__back",
+      "actualCompositorDifferencePixels": 0,
+      "clothingCoverageGaps": 0,
+      "handsPreserved": true,
+      "crownExposedPixels": 0,
+      "bodyLayersUnchanged": true
+    },
+    {
+      "pose": 6,
+      "combination": "wayfarer__chestnut__empty",
+      "actualCompositorDifferencePixels": 0,
+      "clothingCoverageGaps": 0,
+      "handsPreserved": true,
+      "crownExposedPixels": 0,
+      "bodyLayersUnchanged": true
+    },
+    {
+      "pose": 6,
+      "combination": "wayfarer__chestnut__back",
+      "actualCompositorDifferencePixels": 0,
+      "clothingCoverageGaps": 0,
+      "handsPreserved": true,
+      "crownExposedPixels": 0,
+      "bodyLayersUnchanged": true
+    },
+    {
+      "pose": 6,
+      "combination": "wayfarer__silver__empty",
+      "actualCompositorDifferencePixels": 0,
+      "clothingCoverageGaps": 0,
+      "handsPreserved": true,
+      "crownExposedPixels": 0,
+      "bodyLayersUnchanged": true
+    },
+    {
+      "pose": 6,
+      "combination": "wayfarer__silver__back",
+      "actualCompositorDifferencePixels": 0,
+      "clothingCoverageGaps": 0,
+      "handsPreserved": true,
+      "crownExposedPixels": 0,
+      "bodyLayersUnchanged": true
+    },
+    {
+      "pose": 7,
+      "combination": "forester__chestnut__empty",
+      "actualCompositorDifferencePixels": 0,
+      "clothingCoverageGaps": 0,
+      "handsPreserved": true,
+      "crownExposedPixels": 0,
+      "bodyLayersUnchanged": true
+    },
+    {
+      "pose": 7,
+      "combination": "forester__chestnut__back",
+      "actualCompositorDifferencePixels": 0,
+      "clothingCoverageGaps": 0,
+      "handsPreserved": true,
+      "crownExposedPixels": 0,
+      "bodyLayersUnchanged": true
+    },
+    {
+      "pose": 7,
+      "combination": "forester__silver__empty",
+      "actualCompositorDifferencePixels": 0,
+      "clothingCoverageGaps": 0,
+      "handsPreserved": true,
+      "crownExposedPixels": 0,
+      "bodyLayersUnchanged": true
+    },
+    {
+      "pose": 7,
+      "combination": "forester__silver__back",
+      "actualCompositorDifferencePixels": 0,
+      "clothingCoverageGaps": 0,
+      "handsPreserved": true,
+      "crownExposedPixels": 0,
+      "bodyLayersUnchanged": true
+    },
+    {
+      "pose": 7,
+      "combination": "wayfarer__chestnut__empty",
+      "actualCompositorDifferencePixels": 0,
+      "clothingCoverageGaps": 0,
+      "handsPreserved": true,
+      "crownExposedPixels": 0,
+      "bodyLayersUnchanged": true
+    },
+    {
+      "pose": 7,
+      "combination": "wayfarer__chestnut__back",
+      "actualCompositorDifferencePixels": 0,
+      "clothingCoverageGaps": 0,
+      "handsPreserved": true,
+      "crownExposedPixels": 0,
+      "bodyLayersUnchanged": true
+    },
+    {
+      "pose": 7,
+      "combination": "wayfarer__silver__empty",
+      "actualCompositorDifferencePixels": 0,
+      "clothingCoverageGaps": 0,
+      "handsPreserved": true,
+      "crownExposedPixels": 0,
+      "bodyLayersUnchanged": true
+    },
+    {
+      "pose": 7,
+      "combination": "wayfarer__silver__back",
+      "actualCompositorDifferencePixels": 0,
+      "clothingCoverageGaps": 0,
+      "handsPreserved": true,
+      "crownExposedPixels": 0,
+      "bodyLayersUnchanged": true
+    },
+    {
+      "pose": 8,
+      "combination": "forester__chestnut__empty",
+      "actualCompositorDifferencePixels": 0,
+      "clothingCoverageGaps": 0,
+      "handsPreserved": true,
+      "crownExposedPixels": 0,
+      "bodyLayersUnchanged": true
+    },
+    {
+      "pose": 8,
+      "combination": "forester__chestnut__back",
+      "actualCompositorDifferencePixels": 0,
+      "clothingCoverageGaps": 0,
+      "handsPreserved": true,
+      "crownExposedPixels": 0,
+      "bodyLayersUnchanged": true
+    },
+    {
+      "pose": 8,
+      "combination": "forester__silver__empty",
+      "actualCompositorDifferencePixels": 0,
+      "clothingCoverageGaps": 0,
+      "handsPreserved": true,
+      "crownExposedPixels": 0,
+      "bodyLayersUnchanged": true
+    },
+    {
+      "pose": 8,
+      "combination": "forester__silver__back",
+      "actualCompositorDifferencePixels": 0,
+      "clothingCoverageGaps": 0,
+      "handsPreserved": true,
+      "crownExposedPixels": 0,
+      "bodyLayersUnchanged": true
+    },
+    {
+      "pose": 8,
+      "combination": "wayfarer__chestnut__empty",
+      "actualCompositorDifferencePixels": 0,
+      "clothingCoverageGaps": 0,
+      "handsPreserved": true,
+      "crownExposedPixels": 0,
+      "bodyLayersUnchanged": true
+    },
+    {
+      "pose": 8,
+      "combination": "wayfarer__chestnut__back",
+      "actualCompositorDifferencePixels": 0,
+      "clothingCoverageGaps": 0,
+      "handsPreserved": true,
+      "crownExposedPixels": 0,
+      "bodyLayersUnchanged": true
+    },
+    {
+      "pose": 8,
+      "combination": "wayfarer__silver__empty",
+      "actualCompositorDifferencePixels": 0,
+      "clothingCoverageGaps": 0,
+      "handsPreserved": true,
+      "crownExposedPixels": 0,
+      "bodyLayersUnchanged": true
+    },
+    {
+      "pose": 8,
+      "combination": "wayfarer__silver__back",
+      "actualCompositorDifferencePixels": 0,
+      "clothingCoverageGaps": 0,
+      "handsPreserved": true,
+      "crownExposedPixels": 0,
+      "bodyLayersUnchanged": true
+    },
+    {
+      "pose": 9,
+      "combination": "forester__chestnut__empty",
+      "actualCompositorDifferencePixels": 0,
+      "clothingCoverageGaps": 0,
+      "handsPreserved": true,
+      "crownExposedPixels": 0,
+      "bodyLayersUnchanged": true
+    },
+    {
+      "pose": 9,
+      "combination": "forester__chestnut__back",
+      "actualCompositorDifferencePixels": 0,
+      "clothingCoverageGaps": 0,
+      "handsPreserved": true,
+      "crownExposedPixels": 0,
+      "bodyLayersUnchanged": true
+    },
+    {
+      "pose": 9,
+      "combination": "forester__silver__empty",
+      "actualCompositorDifferencePixels": 0,
+      "clothingCoverageGaps": 0,
+      "handsPreserved": true,
+      "crownExposedPixels": 0,
+      "bodyLayersUnchanged": true
+    },
+    {
+      "pose": 9,
+      "combination": "forester__silver__back",
+      "actualCompositorDifferencePixels": 0,
+      "clothingCoverageGaps": 0,
+      "handsPreserved": true,
+      "crownExposedPixels": 0,
+      "bodyLayersUnchanged": true
+    },
+    {
+      "pose": 9,
+      "combination": "wayfarer__chestnut__empty",
+      "actualCompositorDifferencePixels": 0,
+      "clothingCoverageGaps": 0,
+      "handsPreserved": true,
+      "crownExposedPixels": 0,
+      "bodyLayersUnchanged": true
+    },
+    {
+      "pose": 9,
+      "combination": "wayfarer__chestnut__back",
+      "actualCompositorDifferencePixels": 0,
+      "clothingCoverageGaps": 0,
+      "handsPreserved": true,
+      "crownExposedPixels": 0,
+      "bodyLayersUnchanged": true
+    },
+    {
+      "pose": 9,
+      "combination": "wayfarer__silver__empty",
+      "actualCompositorDifferencePixels": 0,
+      "clothingCoverageGaps": 0,
+      "handsPreserved": true,
+      "crownExposedPixels": 0,
+      "bodyLayersUnchanged": true
+    },
+    {
+      "pose": 9,
+      "combination": "wayfarer__silver__back",
+      "actualCompositorDifferencePixels": 0,
+      "clothingCoverageGaps": 0,
+      "handsPreserved": true,
+      "crownExposedPixels": 0,
+      "bodyLayersUnchanged": true
+    },
+    {
+      "pose": 10,
+      "combination": "forester__chestnut__empty",
+      "actualCompositorDifferencePixels": 0,
+      "clothingCoverageGaps": 0,
+      "handsPreserved": true,
+      "crownExposedPixels": 0,
+      "bodyLayersUnchanged": true
+    },
+    {
+      "pose": 10,
+      "combination": "forester__chestnut__back",
+      "actualCompositorDifferencePixels": 0,
+      "clothingCoverageGaps": 0,
+      "handsPreserved": true,
+      "crownExposedPixels": 0,
+      "bodyLayersUnchanged": true
+    },
+    {
+      "pose": 10,
+      "combination": "forester__silver__empty",
+      "actualCompositorDifferencePixels": 0,
+      "clothingCoverageGaps": 0,
+      "handsPreserved": true,
+      "crownExposedPixels": 0,
+      "bodyLayersUnchanged": true
+    },
+    {
+      "pose": 10,
+      "combination": "forester__silver__back",
+      "actualCompositorDifferencePixels": 0,
+      "clothingCoverageGaps": 0,
+      "handsPreserved": true,
+      "crownExposedPixels": 0,
+      "bodyLayersUnchanged": true
+    },
+    {
+      "pose": 10,
+      "combination": "wayfarer__chestnut__empty",
+      "actualCompositorDifferencePixels": 0,
+      "clothingCoverageGaps": 0,
+      "handsPreserved": true,
+      "crownExposedPixels": 0,
+      "bodyLayersUnchanged": true
+    },
+    {
+      "pose": 10,
+      "combination": "wayfarer__chestnut__back",
+      "actualCompositorDifferencePixels": 0,
+      "clothingCoverageGaps": 0,
+      "handsPreserved": true,
+      "crownExposedPixels": 0,
+      "bodyLayersUnchanged": true
+    },
+    {
+      "pose": 10,
+      "combination": "wayfarer__silver__empty",
+      "actualCompositorDifferencePixels": 0,
+      "clothingCoverageGaps": 0,
+      "handsPreserved": true,
+      "crownExposedPixels": 0,
+      "bodyLayersUnchanged": true
+    },
+    {
+      "pose": 10,
+      "combination": "wayfarer__silver__back",
+      "actualCompositorDifferencePixels": 0,
+      "clothingCoverageGaps": 0,
+      "handsPreserved": true,
+      "crownExposedPixels": 0,
+      "bodyLayersUnchanged": true
+    },
+    {
+      "pose": 11,
+      "combination": "forester__chestnut__empty",
+      "actualCompositorDifferencePixels": 0,
+      "clothingCoverageGaps": 0,
+      "handsPreserved": true,
+      "crownExposedPixels": 0,
+      "bodyLayersUnchanged": true
+    },
+    {
+      "pose": 11,
+      "combination": "forester__chestnut__back",
+      "actualCompositorDifferencePixels": 0,
+      "clothingCoverageGaps": 0,
+      "handsPreserved": true,
+      "crownExposedPixels": 0,
+      "bodyLayersUnchanged": true
+    },
+    {
+      "pose": 11,
+      "combination": "forester__silver__empty",
+      "actualCompositorDifferencePixels": 0,
+      "clothingCoverageGaps": 0,
+      "handsPreserved": true,
+      "crownExposedPixels": 0,
+      "bodyLayersUnchanged": true
+    },
+    {
+      "pose": 11,
+      "combination": "forester__silver__back",
+      "actualCompositorDifferencePixels": 0,
+      "clothingCoverageGaps": 0,
+      "handsPreserved": true,
+      "crownExposedPixels": 0,
+      "bodyLayersUnchanged": true
+    },
+    {
+      "pose": 11,
+      "combination": "wayfarer__chestnut__empty",
+      "actualCompositorDifferencePixels": 0,
+      "clothingCoverageGaps": 0,
+      "handsPreserved": true,
+      "crownExposedPixels": 0,
+      "bodyLayersUnchanged": true
+    },
+    {
+      "pose": 11,
+      "combination": "wayfarer__chestnut__back",
+      "actualCompositorDifferencePixels": 0,
+      "clothingCoverageGaps": 0,
+      "handsPreserved": true,
+      "crownExposedPixels": 0,
+      "bodyLayersUnchanged": true
+    },
+    {
+      "pose": 11,
+      "combination": "wayfarer__silver__empty",
+      "actualCompositorDifferencePixels": 0,
+      "clothingCoverageGaps": 0,
+      "handsPreserved": true,
+      "crownExposedPixels": 0,
+      "bodyLayersUnchanged": true
+    },
+    {
+      "pose": 11,
+      "combination": "wayfarer__silver__back",
+      "actualCompositorDifferencePixels": 0,
+      "clothingCoverageGaps": 0,
+      "handsPreserved": true,
+      "crownExposedPixels": 0,
+      "bodyLayersUnchanged": true
+    },
+    {
+      "pose": 12,
+      "combination": "forester__chestnut__empty",
+      "actualCompositorDifferencePixels": 0,
+      "clothingCoverageGaps": 0,
+      "handsPreserved": true,
+      "crownExposedPixels": 0,
+      "bodyLayersUnchanged": true
+    },
+    {
+      "pose": 12,
+      "combination": "forester__chestnut__back",
+      "actualCompositorDifferencePixels": 0,
+      "clothingCoverageGaps": 0,
+      "handsPreserved": true,
+      "crownExposedPixels": 0,
+      "bodyLayersUnchanged": true
+    },
+    {
+      "pose": 12,
+      "combination": "forester__silver__empty",
+      "actualCompositorDifferencePixels": 0,
+      "clothingCoverageGaps": 0,
+      "handsPreserved": true,
+      "crownExposedPixels": 0,
+      "bodyLayersUnchanged": true
+    },
+    {
+      "pose": 12,
+      "combination": "forester__silver__back",
+      "actualCompositorDifferencePixels": 0,
+      "clothingCoverageGaps": 0,
+      "handsPreserved": true,
+      "crownExposedPixels": 0,
+      "bodyLayersUnchanged": true
+    },
+    {
+      "pose": 12,
+      "combination": "wayfarer__chestnut__empty",
+      "actualCompositorDifferencePixels": 0,
+      "clothingCoverageGaps": 0,
+      "handsPreserved": true,
+      "crownExposedPixels": 0,
+      "bodyLayersUnchanged": true
+    },
+    {
+      "pose": 12,
+      "combination": "wayfarer__chestnut__back",
+      "actualCompositorDifferencePixels": 0,
+      "clothingCoverageGaps": 0,
+      "handsPreserved": true,
+      "crownExposedPixels": 0,
+      "bodyLayersUnchanged": true
+    },
+    {
+      "pose": 12,
+      "combination": "wayfarer__silver__empty",
+      "actualCompositorDifferencePixels": 0,
+      "clothingCoverageGaps": 0,
+      "handsPreserved": true,
+      "crownExposedPixels": 0,
+      "bodyLayersUnchanged": true
+    },
+    {
+      "pose": 12,
+      "combination": "wayfarer__silver__back",
+      "actualCompositorDifferencePixels": 0,
+      "clothingCoverageGaps": 0,
+      "handsPreserved": true,
+      "crownExposedPixels": 0,
+      "bodyLayersUnchanged": true
+    }
+  ],
+  "limits": [
+    "Main full-body artwork review is separate; numerical pass is not user art approval",
+    "Two colourways share one short back-hair silhouette; generated silver RGB is independently registered",
+    "Still viewer: complete images/GIF timing only, no continuous playback claim",
+    "Current up appearance candidate only; down sync gap/right adaptation/eight-direction integration/App/device/IPA not completed"
+  ]
+}

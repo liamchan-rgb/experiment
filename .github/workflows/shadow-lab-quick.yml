@@ -39,6 +39,9 @@ jobs:
   archive:
     name: Device Release IPA
     if: ${{ !inputs.preview_only }}
+    permissions:
+      contents: write
+      actions: read
     runs-on: ${{ inputs.macos_runner || 'macos-15' }}
     timeout-minutes: 30
     defaults:
@@ -50,6 +53,30 @@ jobs:
 
     steps:
       - uses: actions/checkout@v7
+        with:
+          # Device builds need production inputs, not the historical IPA and
+          # offline art-review archives, which made this checkout take 7 min.
+          sparse-checkout: |
+            .github
+            Art/Parts/BattleVFX/dragon-flame-v2
+            Art/Parts/BattleVFX/healing-v1
+            Art/Parts/BattleVFX/rune-slash-v2
+            Art/Parts/BattleVFX/rune-ward-v1
+            Art/Parts/BattleVFX/skill-effects-v1
+            Art/Parts/BattleVFX/starlight-pulse-v1
+            Art/Parts/BattleVFX/rally-v1
+            Art/Parts/BattleVFX/sweep-v1
+            Art/Parts/BattleVFX/dragon-soul-ward-v1
+            Art/Parts/BattleVFX/dragon-scale-ward-v1
+            Art/Integration/Battle-effects-demo-v1
+            Art/Scenes/MeadowBattle/effects-v1
+            Art/Scenes/MeadowBattle/hero-combat-v2
+            Sources
+            Vendor
+            scripts
+            Tests
+            UITests
+            MeadowJourney.xcodeproj
 
       - name: Validate project and record Xcode details
         run: |
@@ -59,6 +86,124 @@ jobs:
           xcodebuild -version 2>&1 | tee build/logs/xcode-version.log
           xcodebuild -list -project "$PROJECT" 2>&1 | tee build/logs/project.log
           python3 scripts/validate-project.py 2>&1 | tee build/logs/project-validation.log
+
+      - name: Check pure battle and road logic (no simulator)
+        run: |
+          set -euo pipefail
+          check_failed=0
+          python3 -m venv build/art-tools
+          build/art-tools/bin/python -m pip install --disable-pip-version-check --no-input Pillow numpy 2>&1 | tee build/logs/art-tools-install.log
+          build/art-tools/bin/python scripts/verify-dragon-flame-assets.py 2>&1 | tee build/logs/dragon-flame-assets.log || check_failed=1
+          build/art-tools/bin/python scripts/verify-healing-assets.py 2>&1 | tee build/logs/healing-assets.log || check_failed=1
+          build/art-tools/bin/python scripts/verify-rune-vfx-assets.py 2>&1 | tee build/logs/rune-vfx-assets.log || check_failed=1
+          build/art-tools/bin/python scripts/verify-skill-vfx-assets.py 2>&1 | tee build/logs/skill-vfx-assets.log || check_failed=1
+          swift test --package-path Vendor/ClassroomGameCore 2>&1 | tee build/logs/party-rules.log || check_failed=1
+          python3 scripts/test-review-vfx-status-timing.py 2>&1 | tee build/logs/review-vfx-status-timing.log || check_failed=1
+          swift run --package-path Vendor/ClassroomGameCore MeadowSupportReviewExport build/logs/rune-review --rune-only 2>&1 | tee build/logs/rune-export.log || check_failed=1
+          swift run --package-path Vendor/ClassroomGameCore MeadowSupportReviewExport build/logs/party-review --healing-only 2>&1 | tee build/logs/party-export.log || check_failed=1
+          swift run --package-path Vendor/ClassroomGameCore MeadowSupportReviewExport build/logs/dragon-flame-review --dragon-flame-only 2>&1 | tee build/logs/dragon-flame-export.log || check_failed=1
+          bash scripts/check-battle-encounter.sh 2>&1 | tee build/logs/battle-logic.log || check_failed=1
+          bash scripts/check-battle-effects.sh build/logs/battle-effects-trace.json 2>&1 | tee build/logs/battle-effects.log || check_failed=1
+          bash scripts/check-road-motion.sh 2>&1 | tee build/logs/road-logic.log || check_failed=1
+          bash scripts/check-modular-locomotion.sh build/logs/modular-locomotion-trace.json 2>&1 | tee build/logs/modular-locomotion.log || check_failed=1
+          bash scripts/check-battle-animation.sh 2>&1 | tee build/logs/battle-pose.log || check_failed=1
+          exit "$check_failed"
+
+      - name: Summarize pure-check diagnostics
+        if: always()
+        run: python3 scripts/summarize-ci-logs.py build/logs
+
+      - name: Install GIF optimizer for full-scene preview
+        run: |
+          if ! command -v gifsicle >/dev/null 2>&1; then brew install gifsicle; fi
+          gifsicle --version
+
+      - name: Compose normal-speed healing art review (offline)
+        run: |
+          set -euo pipefail
+          build/art-tools/bin/python scripts/review-party-support-demo.py \
+            --healing-only --input build/logs/party-review \
+            2>&1 | tee build/logs/healing-review-render.log
+
+      - name: Compose normal-speed supplied skill VFX review (offline)
+        run: |
+          set -euo pipefail
+          rune_dir=Art/Review/Battle/spellblade-demo-v1
+          flame_dir=Art/Review/Battle/dragon-flame-demo-v1
+          mkdir -p "$rune_dir" "$flame_dir"
+          bow_dir=Art/Review/Battle/bow-actions-r7-demo-v1
+          sword_dir=Art/Review/Battle/great-sword-demo-v1
+          staff_dir=Art/Review/Battle/legendary-staff-demo-v1
+          support_dir=Art/Review/Battle/party-support-demo-v1
+          dice_dir=Art/Review/Battle/hunting-bow-a-project-r1
+          parts_dir=Art/Parts/P1-Battle/hunting-bow-aim-project-r1
+          mkdir -p "$bow_dir" "$sword_dir" "$staff_dir" "$support_dir" "$dice_dir" "$parts_dir"
+          git show HEAD:Art/Review/Battle/spellblade-demo-v1/spellblade-light-samples.json > "$rune_dir/spellblade-light-samples.json"
+          git show HEAD:Art/Review/Battle/bow-actions-r7-demo-v1/bow-poses.json > "$bow_dir/bow-poses.json"
+          git show HEAD:Art/Review/Battle/great-sword-demo-v1/great-sword-poses.json > "$sword_dir/great-sword-poses.json"
+          git show HEAD:Art/Review/Battle/legendary-staff-demo-v1/great-sword-poses.json > "$staff_dir/great-sword-poses.json"
+          git show HEAD:Art/Review/Battle/legendary-staff-demo-v1/legendary-staff-poses.json > "$staff_dir/legendary-staff-poses.json"
+          git show HEAD:Art/Review/Battle/party-support-demo-v1/party-frames.json > "$support_dir/party-frames.json"
+          git show HEAD:Art/Review/Battle/party-support-demo-v1/legacy-attachment-samples.json > "$support_dir/legacy-attachment-samples.json"
+          cp build/logs/party-review/legacy-light-requests.json "$support_dir/legacy-light-requests.json"
+          git show HEAD:Art/Review/Battle/dice-party-demo-v1/dice-light-samples.json > "$dice_dir/dice-light-samples.json"
+          cp build/logs/party-review/dice-frames.json "$dice_dir/dice-frames.json"
+          cp build/logs/party-review/poly-frames.json "$dice_dir/poly-frames.json"
+          cp "$dice_dir/dice-frames.json" "$bow_dir/dice-frames.json"
+          cp "$dice_dir/dice-light-samples.json" "$bow_dir/dice-light-samples.json"
+          cp "$dice_dir/poly-frames.json" "$bow_dir/poly-frames.json"
+          cp "$dice_dir/dice-frames.json" "$staff_dir/dice-frames.json"
+          cp "$dice_dir/dice-light-samples.json" "$staff_dir/dice-light-samples.json"
+          cp "$dice_dir/poly-frames.json" "$staff_dir/poly-frames.json"
+          cp "$bow_dir/bow-poses.json" "$staff_dir/bow-poses.json"
+          git show HEAD:Art/Parts/P1-Battle/hunting-bow-aim-project-r1/pose.json > "$parts_dir/pose.json"
+          git show HEAD:Art/Parts/P1-Battle/hunting-bow-aim-project-r1/drawing-hand.png > "$parts_dir/drawing-hand.png"
+          git show HEAD:Art/Parts/P1-Battle/hunting-bow-aim-project-r1/grip-hand.png > "$parts_dir/grip-hand.png"
+          cp build/logs/rune-review/spellblade-frames.json "$rune_dir/spellblade-frames.json"
+          cp build/logs/rune-review/spellblade-light-requests.json "$rune_dir/spellblade-light-requests.json"
+          cp build/logs/dragon-flame-review/dragon-flame-frames.json "$flame_dir/dragon-flame-frames.json"
+          cp build/logs/dragon-flame-review/dragon-flame-light-requests.json "$flame_dir/dragon-flame-light-requests.json"
+          build/art-tools/bin/python scripts/review-spellblade-demo.py --rune-pair-only \
+            2>&1 | tee build/logs/rune-review-render.log
+          build/art-tools/bin/python scripts/audit-spellblade-demo.py \
+            2>&1 | tee build/logs/rune-status-timing-audit.log
+          build/art-tools/bin/python scripts/review-dragon-flame-demo.py --dragon-flame-only \
+            2>&1 | tee build/logs/dragon-flame-review-render.log
+          build/art-tools/bin/python scripts/review-skill-vfx-demo.py \
+            2>&1 | tee build/logs/skill-vfx-review-render.log
+
+      - name: Upload rune and delayed-status art review
+        uses: actions/upload-artifact@v7
+        with:
+          name: rune-status-review-${{ github.run_id }}-${{ github.run_attempt }}
+          path: |
+            Art/Review/Battle/spellblade-demo-v1/runeSlash-normal.gif
+            Art/Review/Battle/spellblade-demo-v1/runeWard-normal.gif
+            Art/Review/Battle/spellblade-demo-v1/runeSlash-*.png
+            Art/Review/Battle/spellblade-demo-v1/runeWard-*.png
+            Art/Review/Battle/spellblade-demo-v1/source-audit.json
+            Art/Review/Battle/spellblade-demo-v1/review.json
+            Art/Review/Battle/dragon-flame-demo-v1/dragon-flame-normal.gif
+            Art/Review/Battle/dragon-flame-demo-v1/dragonFlame-*.png
+            Art/Review/Battle/dragon-flame-demo-v1/review.json
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Upload supplied skill VFX art review
+        uses: actions/upload-artifact@v7
+        with:
+          name: skill-vfx-review-${{ github.run_id }}-${{ github.run_attempt }}
+          path: Art/Review/Battle/skill-vfx-v1/
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Upload offline healing art review
+        uses: actions/upload-artifact@v7
+        with:
+          name: healing-effects-review-${{ github.run_id }}-${{ github.run_attempt }}
+          path: Art/Review/Battle/healing-effects-v1/
+          if-no-files-found: error
+          retention-days: 30
 
       - name: Archive device Release build
         run: |
@@ -78,6 +223,44 @@ jobs:
             build/MeadowJourney-shadow-lab.xcarchive build/MeadowJourney-shadow-lab.ipa \
             2>&1 | tee build/logs/package-ipa.log
 
+      - name: Split IPA into downloadable transfer parts
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          from pathlib import Path
+          source=Path('build/MeadowJourney-shadow-lab.ipa').read_bytes()
+          size=20*1024*1024
+          parts=[source[i:i+size] for i in range(0,len(source),size)]
+          assert len(parts)==3, f'Expected three transfer parts for this IPA; got {len(parts)} parts / {len(source)} bytes'
+          for index,part in enumerate(parts):
+              Path(f'build/MeadowJourney-shadow-lab.ipa.part-{index:02}').write_bytes(part)
+          print(f'Split {len(source)}-byte IPA into {len(parts)} parts, each <= {size} bytes')
+          PY
+
+      - name: Upload IPA transfer part 1
+        uses: actions/upload-artifact@v7
+        with:
+          name: MeadowJourney-shadow-lab-IPA-part-01
+          path: build/MeadowJourney-shadow-lab.ipa.part-00
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Upload IPA transfer part 2
+        uses: actions/upload-artifact@v7
+        with:
+          name: MeadowJourney-shadow-lab-IPA-part-02
+          path: build/MeadowJourney-shadow-lab.ipa.part-01
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Upload IPA transfer part 3
+        uses: actions/upload-artifact@v7
+        with:
+          name: MeadowJourney-shadow-lab-IPA-part-03
+          path: build/MeadowJourney-shadow-lab.ipa.part-02
+          if-no-files-found: error
+          retention-days: 30
+
       - name: Upload shadow lab IPA
         uses: actions/upload-artifact@v7
         with:
@@ -85,6 +268,20 @@ jobs:
           path: build/MeadowJourney-shadow-lab.ipa
           if-no-files-found: error
           retention-days: 30
+
+      - name: Publish direct IPA download to the repository
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+          GITHUB_REF_NAME: ${{ github.ref_name }}
+          GITHUB_SHA: ${{ github.sha }}
+          GITHUB_RUN_ID: ${{ github.run_id }}
+          GITHUB_SERVER_URL: ${{ github.server_url }}
+        run: |
+          set -euo pipefail
+          python3 scripts/publish-ipa-download.py \
+            build/MeadowJourney-shadow-lab.ipa \
+            build/MeadowJourney-shadow-lab.xcarchive/Products/Applications/MeadowJourney.app/MeadowJourney
 
       - name: Upload archive logs
         if: ${{ always() }}
@@ -149,7 +346,7 @@ jobs:
               -only-testing:MeadowJourneyTests/TrailTests/testBattleLayoutKeepsSharedRowsAndExpandsForExplorationAndMonsterTurns
               -only-testing:MeadowJourneyTests/TrailTests/testBattlePreviewCropsAroundTravellerAndKeepsTerrainAcrossViewport
               -only-testing:MeadowJourneyTests/TrailTests/testCapturedViewportKeepsGroundAndArtworkAlignedThroughZoomAndPan
-              -only-testing:MeadowJourneyUITests/JourneyUITests/testLayeredP1ColorwayPreviewRunsBesideOriginalInTheMapScene
+              -only-testing:MeadowJourneyUITests/JourneyUITests/testApprovedP1GaitStepsWholePosesAndOmitsOutdatedLayeredComparison
               -only-testing:MeadowJourneyUITests/JourneyUITests/testMeadowBattlePreviewKeepsReferenceMapBesideLandscapeScene
             )
           else
@@ -157,7 +354,7 @@ jobs:
               -only-testing:MeadowJourneyUITests/JourneyUITests/testMapContourRendererAndInteraction
               -only-testing:MeadowJourneyUITests/JourneyUITests/testForegroundAndShadowReceiverStayAlignedAtEveryZoom
               -only-testing:MeadowJourneyUITests/JourneyUITests/testActualMapGaitControlsCoverAllDirectionsAndEveryFrame
-              -only-testing:MeadowJourneyUITests/JourneyUITests/testLayeredP1ColorwayPreviewRunsBesideOriginalInTheMapScene
+              -only-testing:MeadowJourneyUITests/JourneyUITests/testApprovedP1GaitStepsWholePosesAndOmitsOutdatedLayeredComparison
             )
             for test in \
               testShadowLabCutoutPipelineSubmitsContourModes \
@@ -168,12 +365,13 @@ jobs:
               testReliefPreservesArtCoordinatesForEveryAsset \
               testRoadMaskUsesOneUnionAtJunctions \
               testOnlyTheTowerGetsAnAdditionalBanner \
-              testAuthoredWalkUses24WholeFramesAndNoLegWarp \
+              testAuthoredWalkMapsDistanceClockToWholePosesWithoutLegWarp \
               testFootprintGroundLineFollowsAlternatingFeet \
               testHeroCasterAnchorsEachPlantedFootAndTracksLift \
-              testHeroFramesBundlesAllDirectionsAndWholeMirroredRightProfile \
+              testHeroFramesBundlesAllApprovedDirectionsAndWholeRightProfile \
               testWalkCycleVisitsEveryFrameAndWrapsWithoutRepeatingPassingArt \
               testGaitTestCoversEightRoadIndependentHeadingsAndSupportsStepping \
+              testApprovedP1GaitKeepsNormalCadenceAndStepsBetweenAuthoredPoses \
               testGaitTestReturnsToTheSameMapCameraAndActorPositions \
               testHeroPoseSpriteKitRenderingKeepsAllHeroContoursConnected; do
               focused_tests+=("-only-testing:MeadowJourneyTests/TrailTests/$test")

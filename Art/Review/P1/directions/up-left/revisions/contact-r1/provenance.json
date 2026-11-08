@@ -1,0 +1,60 @@
+{
+  "format": 1,
+  "sourceRevision": "loop-r1 (frames 00-08; only frame 02 revised)",
+  "selectedGeneration": {
+    "tool": "image_gen.imagegen",
+    "rawImage": "drafts/generated-02-edit-01.png",
+    "rawSha256": "c0f66fdbb899c29516e70391198b7f039d6cc6fe7cb35da5a7c908fb240218a2",
+    "inputReferenceOrder": [
+      "Art/Review/P1/directions/up-left/revisions/loop-r1/frames/02.png"
+    ],
+    "promptFile": "drafts/prompt-02.txt",
+    "purpose": "In-between contact pose: screen-left boot descending, about 8 px above baseline; screen-right boot planted."
+  },
+  "retainedPromptRounds": [
+    "drafts/prompt-02-initial.txt",
+    "drafts/prompt-02.txt"
+  ],
+  "wholePoseRegistration": "See registration.json; uniform nearest-neighbor resampling and whole-pose translation only.",
+  "assembly": "Only the visible pose in frame 02 changed. Frames 00,01,03-08 are direct RGBA cell crops from loop-r1/strip.png, preserving hidden RGB exactly. Frame 02 remains the accepted complete-pose generation; strip.png is the original source strip with only cell 02 replaced.",
+  "status": "Internal technical and visual self-review only; not user art approval.",
+  "unselectedGenerations": [
+    {
+      "rawImage": "drafts/generated-02-initial-unselected-01.png",
+      "originalGeneratedAssetPath": "/workspace/generated_images/exec-84232186-42f1-4470-9ebe-eccd00df0715.png",
+      "rawSha256": "a7c13a78cbf25e4bcd74dc516369ee3d388aecd54e3881d891bb8b9fb35f3d15",
+      "tool": "image_gen.imagegen",
+      "inputReferenceOrder": [
+        "Art/Review/P1/directions/up-left/revisions/loop-r1/frames/01.png",
+        "Art/Review/P1/directions/up-left/revisions/loop-r1/frames/02.png"
+      ],
+      "promptFile": "drafts/prompt-02-initial.txt",
+      "prompt": "Generate a single complete character walking pose as the in-between between reference image 1 (frame 01, earlier) and reference image 2 (frame 02, later). Preserve the same small stylized adventurer, back/upper-left-facing view, orange tousled hair, blue hood and cape, blue tunic, brown gloves, shorts, boots, colors, linework and proportions. Keep the head, torso, pelvis/root, arms and cape in a calm halfway transition between the two references, with stable body scale and consistent shoe-toe direction. The key action: the screen-left boot is lowering toward contact but is still clearly a little above the ground, halfway between its lifted position in reference 1 and planted position in reference 2; show a readable near-contact transition, sole roughly 8 pixels above the planted right/supporting boot. Keep the screen-right/support boot planted and bearing weight. Draw the whole body as one coherent pose; do not isolate, shift, rotate, or transform only a shoe or limb. One character centered in a square frame, entire silhouette visible, transparent background, clean polished hand-painted game sprite, crisp dark outlines, no ground shadow, no extra objects, no labels or text.",
+      "acceptedForAssembly": false,
+      "reason": "Initial two-reference whole-pose generation changed the source frame-02 upper-body/head rendering enough to risk a new head and cape visual jump; retained as an audit draft, not assembled."
+    },
+    {
+      "rawImage": "drafts/generated-02-initial-unselected-02.png",
+      "originalGeneratedAssetPath": "/workspace/generated_images/exec-9dd17bb1-f431-4109-ad29-35ea3892700c.png",
+      "rawSha256": "b2e8903b198aa6cc73e5b1d442fb75904cf1c3bbbe2b4143706ba8f8ccf9e864",
+      "tool": "image_gen.imagegen",
+      "inputReferenceOrder": [
+        "Art/Review/P1/directions/up-left/revisions/loop-r1/frames/01.png",
+        "Art/Review/P1/directions/up-left/revisions/loop-r1/frames/02.png"
+      ],
+      "promptFile": "drafts/prompt-02-initial.txt",
+      "prompt": "Generate a single complete character walking pose as the in-between between reference image 1 (frame 01, earlier) and reference image 2 (frame 02, later). Preserve the same small stylized adventurer, back/upper-left-facing view, orange tousled hair, blue hood and cape, blue tunic, brown gloves, shorts, boots, colors, linework and proportions. Keep the head, torso, pelvis/root, arms and cape in a calm halfway transition between the two references, with stable body scale and consistent shoe-toe direction. The key action: the screen-left boot is lowering toward contact but is still clearly a little above the ground, halfway between its lifted position in reference 1 and planted position in reference 2; show a readable near-contact transition, sole roughly 8 pixels above the planted right/supporting boot. Keep the screen-right/support boot planted and bearing weight. Draw the whole body as one coherent pose; do not isolate, shift, rotate, or transform only a shoe or limb. One character centered in a square frame, entire silhouette visible, transparent background, clean polished hand-painted game sprite, crisp dark outlines, no ground shadow, no extra objects, no labels or text.",
+      "acceptedForAssembly": false,
+      "reason": "Repeat of the initial two-reference whole-pose prompt; still changed upper-body/head rendering from source frame 02. The later single-reference edit prompt was selected to retain the established upper-body pose."
+    }
+  ],
+  "sourceStrip": {
+    "path": "Art/Review/P1/directions/up-left/revisions/loop-r1/strip.png",
+    "sha256": "d3b43c5c49e03d66b4b541253003f3bfcbb9e2e334d93db927efdb519c995a3f",
+    "cellSize": [
+      256,
+      256
+    ],
+    "role": "Authoritative source for all unmodified frames; cells were cropped directly to preserve all RGBA values, including hidden RGB where alpha=0."
+  }
+}

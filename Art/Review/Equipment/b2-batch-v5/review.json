@@ -1,0 +1,22 @@
+{
+  "reviewer": "root",
+  "subagentsUsed": false,
+  "status": "profile-wrist-revision-approved-other-armor-scopes-awaiting-user-review",
+  "userFeedback": "../b2-batch-v4/user-feedback-profile-wrists.json",
+  "resourceRevisionSHA256": "1712316d3fc209b10f2a40ff2daac99706de1bee87d2440cf9a68d864ecdc2ef",
+  "runeArmorArtApproval": null,
+  "leatherArmorArtApproval": null,
+  "fourOriginalApprovalsRetained": true,
+  "modifiedScope": "runeArmor left/right sleeve and cuff; 26 poses / 52 side layers",
+  "wholeBodyPosesViewedAt1xAnd2x": 52,
+  "decodedWalkGifFramesViewed": 16,
+  "decodedWalkGifFullBodyAppearancesViewed": 32,
+  "continuousPlaybackVisualClaim": false,
+  "appSimulatorOrDeviceRun": false,
+  "runtimeIntegrated": false,
+  "profileWristApproval": {
+    "source": "user-approval-profile.json",
+    "status": "approved-presented-side-wrist-revision-only",
+    "resourceRevisionSHA256": "1712316d3fc209b10f2a40ff2daac99706de1bee87d2440cf9a68d864ecdc2ef"
+  }
+}

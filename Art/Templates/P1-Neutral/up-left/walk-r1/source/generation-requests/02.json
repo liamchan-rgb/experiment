@@ -1,0 +1,16 @@
+{
+  "direction": "up-left",
+  "frame": 2,
+  "prompt": "Edit the FIRST exact single neutral up-left rear-three-quarter sprite into ONE WALK frame 02, preserving its character identity, bald BACK of skull, tiny edge ear with no face profile, white sleeveless undershirt/back neckline, charcoal short safety shorts, warm skin, natural bare hands and complete bare feet. Preserve the exact full 256-square registration, body size, head position, pelvis height and true diagonal UP-LEFT AWAY-facing camera. Only move arms and legs into this particular phase: LEFT leg is planted taking weight; RIGHT foot lifts BEHIND into early swing with flexed knee. LEFT supports; RIGHT arm is forward recovering while LEFT arm is back. The SECOND image is a TECHNICAL POSE GUIDE: green is anatomical LEFT limbs, blue is anatomical RIGHT limbs, white is head/torso. Use its bending and separation as guidance without copying colored strokes/circles/dots. Anatomical LEFT is the near side, RIGHT the darker far side. Follow actual hip-knee-ankle connections, never swap legs when they cross. Keep at least one foot visibly weight-bearing, natural foot heel/arch/toe form facing diagonally away, relaxed fingers/thumb/knuckle detail. Opposite arm/leg swing, no extra limbs, no repeated idle, no shoes/hair/face/gear/weapon/shadow. Pixel-art clusters and clean thin outlines like the first reference. Output ONE complete transparent character at the exact original size/location; do not zoom/crop, do not add labels or skeleton.",
+  "status": "generated-pending-art-review",
+  "references": [
+    "/workspace/experiment/Art/Templates/P1-Neutral/up-left/walk-r1/source/idle-selected-registered.png",
+    "/workspace/experiment/Art/Templates/P1-Neutral/up-left/walk-r1/source/joint-guides/02.png"
+  ],
+  "artifact": "/workspace/generated_images/exec-f23ce4a8-938a-44e8-88a3-f4838f3eabd5.png",
+  "sourceScale": 0.20414673046251994,
+  "sourceTranslation": [
+    0,
+    0
+  ]
+}

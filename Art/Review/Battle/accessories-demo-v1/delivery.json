@@ -1,0 +1,214 @@
+{
+  "version": "1.6.38",
+  "build": 64,
+  "sourceCommit": "221af86cf549dddd125b5c3c8dca7a230427074d",
+  "mediaCommit": "45652b8f63b8d1dc3c1b2860b51eef369ce0d76d",
+  "workflowRun": 40838235939,
+  "ipaPath": "Downloads/MeadowJourney-b64.ipa",
+  "ipaBytes": 49302869,
+  "ipaSHA256": "fee9d7d9ae5206aa3955fce1366d3476d7fc18700129cfa9cdf76ceed23caaec",
+  "publicMedia": [
+    {
+      "path": "Art/Review/Battle/accessories-demo-v1/accessory-none-normal.gif",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/45652b8f63b8d1dc3c1b2860b51eef369ce0d76d/Art/Review/Battle/accessories-demo-v1/accessory-none-normal.gif",
+      "bytes": 4698090,
+      "sha256": "b0483e38bf0bc717649ff34c77298dbe97bfd9c7197b7bb11a6c3acb8c3ef3a0",
+      "contentType": "image/gif",
+      "matchesLocal": true
+    },
+    {
+      "path": "Art/Review/Battle/accessories-demo-v1/accessory-none-standing.png",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/45652b8f63b8d1dc3c1b2860b51eef369ce0d76d/Art/Review/Battle/accessories-demo-v1/accessory-none-standing.png",
+      "bytes": 1024839,
+      "sha256": "55b03a6692356c181053140db193e8dc8c19adb2699a3df5c84c04b8704ef877",
+      "contentType": "image/png",
+      "matchesLocal": true
+    },
+    {
+      "path": "Art/Review/Battle/accessories-demo-v1/accessory-powerBadge-normal.gif",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/45652b8f63b8d1dc3c1b2860b51eef369ce0d76d/Art/Review/Battle/accessories-demo-v1/accessory-powerBadge-normal.gif",
+      "bytes": 4722678,
+      "sha256": "7cf81177e39a719619137381031ce1c9adbc8c66a8a99e71eb7ba23c71ee58b8",
+      "contentType": "image/gif",
+      "matchesLocal": true
+    },
+    {
+      "path": "Art/Review/Battle/accessories-demo-v1/accessory-powerBadge-standing.png",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/45652b8f63b8d1dc3c1b2860b51eef369ce0d76d/Art/Review/Battle/accessories-demo-v1/accessory-powerBadge-standing.png",
+      "bytes": 1030464,
+      "sha256": "61f72bdf0b325185b1c2d898c6ec3eaa48cb426e184cb18f0ff1bba43fe597e3",
+      "contentType": "image/png",
+      "matchesLocal": true
+    },
+    {
+      "path": "Art/Review/Battle/accessories-demo-v1/accessory-actionRing-normal.gif",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/45652b8f63b8d1dc3c1b2860b51eef369ce0d76d/Art/Review/Battle/accessories-demo-v1/accessory-actionRing-normal.gif",
+      "bytes": 4684891,
+      "sha256": "13ec151dcb5d48c23d40fc23d528acc38f4a96ec1decf2dc7ef88cdb3e885b99",
+      "contentType": "image/gif",
+      "matchesLocal": true
+    },
+    {
+      "path": "Art/Review/Battle/accessories-demo-v1/accessory-actionRing-standing.png",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/45652b8f63b8d1dc3c1b2860b51eef369ce0d76d/Art/Review/Battle/accessories-demo-v1/accessory-actionRing-standing.png",
+      "bytes": 1028978,
+      "sha256": "49ab9acfce9396f6a013bda21fc06d9a4ce50f145fadd57727f7045a1c422a70",
+      "contentType": "image/png",
+      "matchesLocal": true
+    }
+  ],
+  "artReview": {
+    "scope": "Actual original-core equipment and receipts; current production pose/dice exports; approximate offline stage/light/UI composition; no App/simulator/device",
+    "animations": [
+      {
+        "file": "accessory-actionRing-normal.gif",
+        "actualDecodedFrames": 190,
+        "durationMs": 3800
+      },
+      {
+        "file": "accessory-none-normal.gif",
+        "actualDecodedFrames": 190,
+        "durationMs": 3800
+      },
+      {
+        "file": "accessory-powerBadge-normal.gif",
+        "actualDecodedFrames": 190,
+        "durationMs": 3800
+      }
+    ],
+    "characterArtChanged": false,
+    "newArtApproval": null,
+    "rootReview": {
+      "reviewer": "root",
+      "wholeSceneKeyframes": [
+        "none contact and rest",
+        "badge hover, lock, contact",
+        "ring hover and recovery"
+      ],
+      "standingPNGsViewed": [
+        "powerBadge",
+        "actionRing"
+      ],
+      "legacyCharacterArtUnchanged": true,
+      "all570FramesVisuallyReviewed": false,
+      "continuousPlaybackClaimed": false,
+      "scope": "Offline production-field composition; not UIKit or game run"
+    }
+  },
+  "sourceAudit": {
+    "baseline": "dd5e5a75d6b483e8f3354eeeda6e1efa9b85df99",
+    "unchangedExistingAssetAndOriginalCoreFiles": 389,
+    "oldGaitBindingsByteSemanticsUnchanged": true,
+    "iconsByteExactFromExistingB2Sources": true,
+    "ruleAndCatalogUnchanged": true,
+    "actualReceiptComparison": [
+      {
+        "scenario": "accessory-actionRing",
+        "APBefore": 4,
+        "APAfter": 3,
+        "cap": 8,
+        "damage": 6,
+        "rolledIncludingSkillFlat": 6,
+        "fixedYellowValuesAtSelection": [
+          2
+        ]
+      },
+      {
+        "scenario": "accessory-none",
+        "APBefore": 3,
+        "APAfter": 2,
+        "cap": 8,
+        "damage": 6,
+        "rolledIncludingSkillFlat": 6,
+        "fixedYellowValuesAtSelection": [
+          2
+        ]
+      },
+      {
+        "scenario": "accessory-powerBadge",
+        "APBefore": 3,
+        "APAfter": 2,
+        "cap": 8,
+        "damage": 8,
+        "rolledIncludingSkillFlat": 6,
+        "fixedYellowValuesAtSelection": [
+          2,
+          2
+        ]
+      }
+    ],
+    "noNewCharacterArt": true
+  },
+  "standaloneGIFBrowser": {
+    "scope": "Standalone remote GIFs only; no game/App/simulator/device run",
+    "dimensions": [
+      [
+        1020,
+        765
+      ],
+      [
+        1020,
+        765
+      ],
+      [
+        1020,
+        765
+      ]
+    ],
+    "allThreeGIFsAdvanceVisibly": true,
+    "fullGETVerified": [
+      {
+        "path": "Art/Review/Battle/accessories-demo-v1/accessory-none-normal.gif",
+        "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/45652b8f63b8d1dc3c1b2860b51eef369ce0d76d/Art/Review/Battle/accessories-demo-v1/accessory-none-normal.gif",
+        "bytes": 4698090,
+        "sha256": "b0483e38bf0bc717649ff34c77298dbe97bfd9c7197b7bb11a6c3acb8c3ef3a0",
+        "contentType": "image/gif",
+        "matchesLocal": true
+      },
+      {
+        "path": "Art/Review/Battle/accessories-demo-v1/accessory-none-standing.png",
+        "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/45652b8f63b8d1dc3c1b2860b51eef369ce0d76d/Art/Review/Battle/accessories-demo-v1/accessory-none-standing.png",
+        "bytes": 1024839,
+        "sha256": "55b03a6692356c181053140db193e8dc8c19adb2699a3df5c84c04b8704ef877",
+        "contentType": "image/png",
+        "matchesLocal": true
+      },
+      {
+        "path": "Art/Review/Battle/accessories-demo-v1/accessory-powerBadge-normal.gif",
+        "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/45652b8f63b8d1dc3c1b2860b51eef369ce0d76d/Art/Review/Battle/accessories-demo-v1/accessory-powerBadge-normal.gif",
+        "bytes": 4722678,
+        "sha256": "7cf81177e39a719619137381031ce1c9adbc8c66a8a99e71eb7ba23c71ee58b8",
+        "contentType": "image/gif",
+        "matchesLocal": true
+      },
+      {
+        "path": "Art/Review/Battle/accessories-demo-v1/accessory-powerBadge-standing.png",
+        "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/45652b8f63b8d1dc3c1b2860b51eef369ce0d76d/Art/Review/Battle/accessories-demo-v1/accessory-powerBadge-standing.png",
+        "bytes": 1030464,
+        "sha256": "61f72bdf0b325185b1c2d898c6ec3eaa48cb426e184cb18f0ff1bba43fe597e3",
+        "contentType": "image/png",
+        "matchesLocal": true
+      },
+      {
+        "path": "Art/Review/Battle/accessories-demo-v1/accessory-actionRing-normal.gif",
+        "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/45652b8f63b8d1dc3c1b2860b51eef369ce0d76d/Art/Review/Battle/accessories-demo-v1/accessory-actionRing-normal.gif",
+        "bytes": 4684891,
+        "sha256": "13ec151dcb5d48c23d40fc23d528acc38f4a96ec1decf2dc7ef88cdb3e885b99",
+        "contentType": "image/gif",
+        "matchesLocal": true
+      },
+      {
+        "path": "Art/Review/Battle/accessories-demo-v1/accessory-actionRing-standing.png",
+        "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/45652b8f63b8d1dc3c1b2860b51eef369ce0d76d/Art/Review/Battle/accessories-demo-v1/accessory-actionRing-standing.png",
+        "bytes": 1028978,
+        "sha256": "49ab9acfce9396f6a013bda21fc06d9a4ce50f145fadd57727f7045a1c422a70",
+        "contentType": "image/png",
+        "matchesLocal": true
+      }
+    ]
+  },
+  "appRunPerformed": false,
+  "simulatorRunPerformed": false,
+  "physicalDeviceRunPerformed": false,
+  "userArtApproval": null
+}

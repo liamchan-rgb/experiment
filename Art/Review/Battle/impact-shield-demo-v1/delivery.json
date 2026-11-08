@@ -1,0 +1,84 @@
+{
+  "status": "delivered-runtime-integration-with-offline-art-review",
+  "sourceCommit": "fd019f8f542f863c9b45ef80ab5031aa1d53d974",
+  "artAndPackageCommit": "45ff35fa187cd8e93694936a8efdfdc37ba9ca5b",
+  "workflowRun": 40173101137,
+  "selectedDeliveryPathsVerified": 55,
+  "compiledSourceAndAssetsPathsVerified": 18,
+  "remoteContentsMatchLocal": true,
+  "publicArtifacts": [
+    {
+      "path": "Downloads/MeadowJourney-b41.ipa",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/45ff35fa187cd8e93694936a8efdfdc37ba9ca5b/Downloads/MeadowJourney-b41.ipa",
+      "httpStatus": 200,
+      "mime": "application/octet-stream",
+      "bytes": 26986898,
+      "sha256": "c5361f015e4edaaa261992306ee3833d872a37ccc737f58b3c684a05f167e4cd"
+    },
+    {
+      "path": "Art/Review/Battle/impact-shield-demo-v1/heavy-strike-normal.gif",
+      "url": "https://cdn.jsdelivr.net/gh/liamchan-rgb/experiment@45ff35fa187cd8e93694936a8efdfdc37ba9ca5b/Art/Review/Battle/impact-shield-demo-v1/heavy-strike-normal.gif",
+      "httpStatus": 200,
+      "mime": "image/gif",
+      "bytes": 17756792,
+      "sha256": "5f56bbd236edbabd466d0364d819fa4e316d4f0df975f7acd83bcdffc31ed26d",
+      "frames": 165,
+      "frameDurationMs": 40,
+      "totalDurationMs": 6600
+    },
+    {
+      "path": "Art/Review/Battle/impact-shield-demo-v1/shield-normal.gif",
+      "url": "https://cdn.jsdelivr.net/gh/liamchan-rgb/experiment@45ff35fa187cd8e93694936a8efdfdc37ba9ca5b/Art/Review/Battle/impact-shield-demo-v1/shield-normal.gif",
+      "httpStatus": 200,
+      "mime": "image/gif",
+      "bytes": 15471247,
+      "sha256": "33c00ec397dba707e2aac237d5a500fc97e7bd35d71d9dc01c53dbacc9d9b9ca",
+      "frames": 120,
+      "frameDurationMs": 40,
+      "totalDurationMs": 4800
+    },
+    {
+      "path": "Art/Review/Battle/impact-shield-demo-v1/attack-standing.png",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/45ff35fa187cd8e93694936a8efdfdc37ba9ca5b/Art/Review/Battle/impact-shield-demo-v1/attack-standing.png",
+      "httpStatus": 200,
+      "mime": "image/png",
+      "bytes": 879481,
+      "sha256": "8068f76826d970ab75d7f59cbecc448cce023c2b95fbddf8271e4d40f407c8b6"
+    },
+    {
+      "path": "Art/Review/Battle/impact-shield-demo-v1/shield-standing.png",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/45ff35fa187cd8e93694936a8efdfdc37ba9ca5b/Art/Review/Battle/impact-shield-demo-v1/shield-standing.png",
+      "httpStatus": 200,
+      "mime": "image/png",
+      "bytes": 879578,
+      "sha256": "46a441adf44bca1e7e5694489b502e36b0edc975f62fd3f92c032b7b0b2a82cf"
+    },
+    {
+      "path": "Art/Review/Battle/impact-shield-demo-v1/attack-impact.png",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/45ff35fa187cd8e93694936a8efdfdc37ba9ca5b/Art/Review/Battle/impact-shield-demo-v1/attack-impact.png",
+      "httpStatus": 200,
+      "mime": "image/png",
+      "bytes": 699428,
+      "sha256": "5310b0f24818460f112058b4a7f80a1529d1aa28b9b69d72b328d3d4a7242590"
+    },
+    {
+      "path": "Downloads/MeadowJourney-b41.ipa",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/fix/build33-face-grounding-camera/Downloads/MeadowJourney-b41.ipa",
+      "httpStatus": 200,
+      "mime": "application/octet-stream",
+      "bytes": 26986898,
+      "sha256": "c5361f015e4edaaa261992306ee3833d872a37ccc737f58b3c684a05f167e4cd"
+    }
+  ],
+  "runtimeIntegration": true,
+  "actualPointerKeyboardTouchExecuted": false,
+  "simulatorOrDeviceExecuted": false,
+  "ipa": "unsigned iPhoneOS arm64 for existing SideStore re-signing workflow",
+  "artApproval": null,
+  "review": "art-review.md",
+  "checks": [
+    "integration-check.json",
+    "preservation-check.json",
+    "controller-provenance.json"
+  ]
+}

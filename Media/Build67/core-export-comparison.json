@@ -1,0 +1,110 @@
+{
+  "tolerance": 1e-06,
+  "files": [
+    {
+      "name": "party-frames.json",
+      "result": "match within tolerance",
+      "localBytes": 5383240,
+      "runnerBytes": 5500309,
+      "localSHA256": "dedaeb46d3d1ce40f6b23b5a03b1906fdd5398bdae037dbd8363ceb19faeb084",
+      "runnerSHA256": "b87bd406b141dcb633c68e21bbdb547166cb23fedba1b6ebf9ad69aa52ac1f53"
+    },
+    {
+      "name": "legacy-light-requests.json",
+      "result": "match within tolerance",
+      "localBytes": 310180,
+      "runnerBytes": 351509,
+      "localSHA256": "d8187125b3d748762a21d21a28777a2192f569013e99de0d6977cbc6b1075586",
+      "runnerSHA256": "f393a2c5d918bbb3dcaca7a796b28e5ab224ee3835576bf5b6afca91ca600a90"
+    },
+    {
+      "name": "dice-frames.json",
+      "result": "match within tolerance",
+      "localBytes": 19393708,
+      "runnerBytes": 19882817,
+      "localSHA256": "78943c255f6f7cc19ef70f509cc82e3b2d9576e3e674eff580d212e1e79b3da5",
+      "runnerSHA256": "09e23c1cca3fce75ea4b0a7aa205368c266ce1a49724d3136d37c1f4a5327372"
+    },
+    {
+      "name": "poly-frames.json",
+      "result": "match within tolerance",
+      "localBytes": 4466901,
+      "runnerBytes": 4515465,
+      "localSHA256": "8063d705042286c8cec7536cc33fa83c191259d5fb1c6a0b0cc9a2aba52be847",
+      "runnerSHA256": "bb4ae69e1dd9fc5ac1260e066316abea3f2a9eaa40e1a3e7ee9fbd4c90884ca7"
+    },
+    {
+      "name": "bow-poses.json",
+      "result": "match within tolerance",
+      "localBytes": 9196435,
+      "runnerBytes": 9582735,
+      "localSHA256": "30cf32cff163291d970bdaedd00792493ce93bbdbbb9777162ad158a85ae8a59",
+      "runnerSHA256": "40e821bac767888ac353c51cfd5f228ea727b6b31f7d2139034e654b77595010"
+    },
+    {
+      "name": "great-sword-poses.json",
+      "result": "match within tolerance",
+      "localBytes": 11295311,
+      "runnerBytes": 11790906,
+      "localSHA256": "bb78f6f23d0010876d3df6e6603e9523686b9b4b89b0015f46a00ff0f46b6814",
+      "runnerSHA256": "d3136b8589bd83fe84c456809a4979cc444babd73a20fcf7c3b971c4c9b97ab1"
+    },
+    {
+      "name": "great-sword-clock.json",
+      "result": "match within tolerance",
+      "localBytes": 26400,
+      "runnerBytes": 28850,
+      "localSHA256": "a2616df5e77b412f1681fa6f17251d95f0536ef9589d300f5d8950009f86b85b",
+      "runnerSHA256": "fee094a92eb05709240a894456fe3bdb8824fd5bd17d49887347ea0509cebbce"
+    },
+    {
+      "name": "legendary-staff-poses.json",
+      "result": "match within tolerance",
+      "localBytes": 11311037,
+      "runnerBytes": 11797650,
+      "localSHA256": "5c53912e833d14a41d9fb4db561bcad816d96fef6bbf9512be386cbf1a48d680",
+      "runnerSHA256": "7c448a2125d53eabbdc33d680ce71aebbd9fa91725a6f23b1ace8e7e88bddc4e"
+    },
+    {
+      "name": "legendary-staff-clock.json",
+      "result": "match within tolerance",
+      "localBytes": 722371,
+      "runnerBytes": 722379,
+      "localSHA256": "ce967a397f6a2b94231b978a3b94dd02e4f4c953ef6520824a497c1f2edd946e",
+      "runnerSHA256": "b71706d6b66fa03d5e6b120c23980af70f107c366904529d8a7c1e2f171a9fea"
+    },
+    {
+      "name": "accessory-frames.json",
+      "result": "match within tolerance",
+      "localBytes": 4515724,
+      "runnerBytes": 4682252,
+      "localSHA256": "316249505bd383fecc20316542d3807b04ec54017d3062a6002e3160d610a43a",
+      "runnerSHA256": "4ad753135b1afdd55d20f825593764deb4d5340861b772c56fe01474786470ac"
+    },
+    {
+      "name": "inventory-frames.json",
+      "result": "match within tolerance",
+      "localBytes": 17806,
+      "runnerBytes": 17806,
+      "localSHA256": "1c196e60d645fb44d9415146dfd7bd74a49ebb22528ae9802b6bf5abb5562e56",
+      "runnerSHA256": "1c196e60d645fb44d9415146dfd7bd74a49ebb22528ae9802b6bf5abb5562e56"
+    },
+    {
+      "name": "spellblade-frames.json",
+      "result": "match within tolerance",
+      "localBytes": 15565034,
+      "runnerBytes": 15919199,
+      "localSHA256": "b75149b42eae246e236d10842018ed59ff4000eb44b0cb2d15248e104f749801",
+      "runnerSHA256": "89334e0824a233ccafa5a2296383d1bfa609cdbb6f740b947018a7b286e92114"
+    },
+    {
+      "name": "spellblade-light-requests.json",
+      "result": "match within tolerance",
+      "localBytes": 424977,
+      "runnerBytes": 474761,
+      "localSHA256": "0c1fc99f470f1834bebe58c9f412b4a1719a45c73952627ec8d16fad8fd9cf16",
+      "runnerSHA256": "500e71686b6bab1a8992c75658c1cf1ba263072047167d095975aeeb49136f4d"
+    }
+  ],
+  "comparedFiles": 13
+}

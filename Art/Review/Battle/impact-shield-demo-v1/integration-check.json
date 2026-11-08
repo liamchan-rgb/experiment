@@ -1,0 +1,37 @@
+{
+  "scope": "offline imported assets / actual production Swift traces; no UIKit or GPU execution",
+  "preservedRemoteOldArtAndWalkFiles": 17724,
+  "availableLocalFilesByteMatched": 17306,
+  "onlyAttackClipChanged": true,
+  "originalAnimationBackupVerified": true,
+  "transparentRGBEmpty": true,
+  "deathFrames": 48,
+  "bodyAlphaMonotonic": true,
+  "lastBodyAndWindEmpty": true,
+  "windFirstFrameNonempty": true,
+  "firstEventFrames": {
+    "deathActive": 92,
+    "damageVisible": 92,
+    "hpZero": 92
+  },
+  "ringAbsentFromCastStart": true,
+  "normalGIFsVerified": {
+    "attack": {
+      "frames": 165,
+      "frameDurationMs": 40,
+      "durationMs": 6600,
+      "gifBytes": 17756792,
+      "file": "heavy-strike-normal.gif"
+    },
+    "shield": {
+      "frames": 120,
+      "frameDurationMs": 40,
+      "durationMs": 4800,
+      "gifBytes": 15471247,
+      "file": "shield-normal.gif"
+    }
+  },
+  "macOSLinuxProductionTracesMatchWithin1e-6": true,
+  "shieldStackingKeepsUnspentShield": "production regression verifies 8 -> 4 -> 0",
+  "artApproval": null
+}

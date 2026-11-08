@@ -1,0 +1,24 @@
+{
+  "date": "2026-10-24",
+  "status": "approved",
+  "userStatement": "可以，我们的走路动作模组是不是做完了",
+  "scope": "Delivered right-down primary forester/chestnut/blue and wayfarer/silver/amber whole-body standing, normal walk and specified start-stop. No approval inferred for undisplayed cross combinations, other directions or runtime.",
+  "artCommit": "ccc65c7035412bf1c7d15b69e29573258ab4f985",
+  "files": [
+    {
+      "file": "Art/Review/P1/modular-down-right-appearance-v1/outfits-walk-120ms.gif",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ccc65c7035412bf1c7d15b69e29573258ab4f985/Art/Review/P1/modular-down-right-appearance-v1/outfits-walk-120ms.gif",
+      "sha256": "3699b76979aa98fdce27f9856d0ea464ed2ea366e54b7d4f56dd7be7f6c804ee"
+    },
+    {
+      "file": "Art/Review/P1/modular-down-right-appearance-v1/outfits-start-stop-120ms.gif",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ccc65c7035412bf1c7d15b69e29573258ab4f985/Art/Review/P1/modular-down-right-appearance-v1/outfits-start-stop-120ms.gif",
+      "sha256": "ac4051571cbbba489a4dcddb633124a715b574b95e1127d47457d6e8d574a70c"
+    },
+    {
+      "file": "Art/Review/P1/modular-down-right-appearance-v1/outfits-idle-2x.png",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/ccc65c7035412bf1c7d15b69e29573258ab4f985/Art/Review/P1/modular-down-right-appearance-v1/outfits-idle-2x.png",
+      "sha256": "64f9fd183c5c97f353c0a4a6401a4d858b9d5372332ddbdd40aab6dce59241d6"
+    }
+  ]
+}

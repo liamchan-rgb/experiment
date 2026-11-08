@@ -1,0 +1,17 @@
+{
+  "direction": "up-right",
+  "frame": 5,
+  "artifact": "/workspace/generated_images/exec-99f6744f-e940-4782-8f7b-cd2499e40ed3.png",
+  "prompt": "Render the FIRST technical diagram's exact pose as one transparent pixel-art sprite, SECOND image for appearance only. TRUE UP-RIGHT REAR 3/4 AWAY camera; bald BACK of skull, tiny right edge ear, NO face profile. Green=anatomicalLEFT far side; blue=anatomicalRIGHT near side. Mandatory anatomical hip/knee/ankle/toe locations in256 image: {\"left\":[[121,174],[113,193],[107,214],[107,218]],\"right\":[[135,176],[143,189],[147,201],[148,204]]}. Shoulder/elbow/wrist: {\"left\":[[118,136],[132,144],[145,151]],\"right\":[[139,137],[130,155],[114,168]]}. Do not replace this with a repeated generic walk pose; preserve exact support and arm-leg opposition. Near RIGHT arm can project across lower back when back-swinging, and far LEFT arm is occluded except appropriate hand edge. EXACTLY TWO ARMS/HANDS, no third hanging arm. Same 256-square full sprite scale and registration as appearance reference, headtop85 hip175, white back-neck undershirt, charcoal short safety shorts, natural bare feet/hands. Upper-left lighting, far limbs darker, clean thin pixel clusters, no diagram colors/labels/shadow/gear. Frame5 in common LEFT-support1–4 RIGHT-support5–8 cycle.",
+  "references": [
+    "/workspace/experiment/Art/Templates/P1-Neutral/up-right/walk-r1/source/joint-guides/phase-r3/05.png",
+    "/workspace/experiment/Art/Templates/P1-Neutral/up-right/walk-r1/source/idle-selected-registered.png"
+  ],
+  "guideRevision": "phase-r3-common-anatomy",
+  "status": "generated-r2-pending-root-review",
+  "sourceScale": 0.20414673046251994,
+  "sourceTranslation": [
+    0,
+    0
+  ]
+}

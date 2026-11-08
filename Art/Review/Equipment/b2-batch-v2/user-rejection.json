@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "batch": "b2-batch-v2",
+  "resourceRevisionSHA256": "a431585ffeee05d2736ac20bc48fabf12feb238f02e91fb754e00da1cadea4f8",
+  "candidateCommit": "43dd163821f1d1a50463991aa534f66a8ca12d1d",
+  "userFeedback": "两个都不行，而且都是共性问题，很多的错位而且不自然",
+  "items": {
+    "leatherArmor": {
+      "status": "rejected",
+      "artApproval": false
+    },
+    "runeArmor": {
+      "status": "rejected",
+      "artApproval": false
+    }
+  },
+  "previousRootVisualPassWithdrawn": true,
+  "unchangedApprovals": [
+    "greatSword",
+    "legendaryStaff",
+    "powerBadge",
+    "actionRing"
+  ],
+  "nextRepair": "root repairs shared source anatomy, view perspective and registered clothing deformation; do not integrate r2 into demo"
+}

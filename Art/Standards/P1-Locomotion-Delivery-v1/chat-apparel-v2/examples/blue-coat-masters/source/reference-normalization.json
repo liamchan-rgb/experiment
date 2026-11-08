@@ -1,0 +1,162 @@
+[
+  {
+    "view": "front",
+    "slot": "outfit.torso",
+    "originalSHA256": "5c56dbed6252e2c0f0f15be38319f74413c8d9dbe607dbffd5eae07f13a59876",
+    "referenceSHA256": "e733ecbb1aaa5cbc6fcb4313777730950ef5577ba288c233f8f62ebcba9409a6",
+    "clearedInvisibleRGBPixels": 62704,
+    "visibleRGBAAndAlphaUnchanged": true
+  },
+  {
+    "view": "front",
+    "slot": "outfit.sleeve.left",
+    "originalSHA256": "96d4e0bb80084f5b177a6cedf6f03030a26d3cb5ede5f9e9939c94351d23cc71",
+    "referenceSHA256": "3f278dae5a8b42b16dbaa4adcf3fedc4eed1d329c66ee560b6dac4f69270dc1e",
+    "clearedInvisibleRGBPixels": 63731,
+    "visibleRGBAAndAlphaUnchanged": true
+  },
+  {
+    "view": "front",
+    "slot": "outfit.sleeve.right",
+    "originalSHA256": "1c05126d067f66cdd661474bb0b62dbc87f382a55b2177e973a26ae8e297d9ad",
+    "referenceSHA256": "09939441248d38a89b1825875c588e4d90c9e43822621d373eb17794934c99c4",
+    "clearedInvisibleRGBPixels": 63709,
+    "visibleRGBAAndAlphaUnchanged": true
+  },
+  {
+    "view": "front",
+    "slot": "outfit.hem.front",
+    "originalSHA256": "f4d9564d402d9e0cc0653c92af3f88a02a0e6883a927178984d5bd1fa0fe46bf",
+    "referenceSHA256": "f4d9564d402d9e0cc0653c92af3f88a02a0e6883a927178984d5bd1fa0fe46bf",
+    "clearedInvisibleRGBPixels": 0,
+    "visibleRGBAAndAlphaUnchanged": true
+  },
+  {
+    "view": "front-quarter-left",
+    "slot": "outfit.torso",
+    "originalSHA256": "583f8e2a39b6e6c06e399db937de770ae7fbfe657db04d0b5645d3c5391f434f",
+    "referenceSHA256": "583f8e2a39b6e6c06e399db937de770ae7fbfe657db04d0b5645d3c5391f434f",
+    "clearedInvisibleRGBPixels": 0,
+    "visibleRGBAAndAlphaUnchanged": true
+  },
+  {
+    "view": "front-quarter-left",
+    "slot": "outfit.sleeve.left",
+    "originalSHA256": "2806236a97aee2bd8f7c6d3e5c89e302593a0f53b3953c527510f71a082aaa17",
+    "referenceSHA256": "2806236a97aee2bd8f7c6d3e5c89e302593a0f53b3953c527510f71a082aaa17",
+    "clearedInvisibleRGBPixels": 0,
+    "visibleRGBAAndAlphaUnchanged": true
+  },
+  {
+    "view": "front-quarter-left",
+    "slot": "outfit.sleeve.right",
+    "originalSHA256": "4833bcfa5f541de9ffdc0a3c4c8e26d8541d701c8a9b8298fd13c750fe7e0e11",
+    "referenceSHA256": "4833bcfa5f541de9ffdc0a3c4c8e26d8541d701c8a9b8298fd13c750fe7e0e11",
+    "clearedInvisibleRGBPixels": 0,
+    "visibleRGBAAndAlphaUnchanged": true
+  },
+  {
+    "view": "front-quarter-left",
+    "slot": "outfit.hem.front",
+    "originalSHA256": "feeccae6bd666f3b94a6b149ca6f6685847aef83583a334b01d16ea714c982bd",
+    "referenceSHA256": "feeccae6bd666f3b94a6b149ca6f6685847aef83583a334b01d16ea714c982bd",
+    "clearedInvisibleRGBPixels": 0,
+    "visibleRGBAAndAlphaUnchanged": true
+  },
+  {
+    "view": "profile-left",
+    "slot": "outfit.torso",
+    "originalSHA256": "4e39bc5298146707cc6439d67a6b7cf763acc5e875d2e4ac67214f27f76b2039",
+    "referenceSHA256": "11d504b9c84ecdf5a9e946e0334c08b4a58299ece4c50fee74665503013e93f5",
+    "clearedInvisibleRGBPixels": 4854,
+    "visibleRGBAAndAlphaUnchanged": true
+  },
+  {
+    "view": "profile-left",
+    "slot": "outfit.sleeve.left",
+    "originalSHA256": "91fa8a8c107f2d506a753e1ff59ff277c6768a897613db8f6417e2369ad08338",
+    "referenceSHA256": "ea1787e64c1f506badf98ceb0f2d6cfb8ae244edee045c5dbcba246a830841b1",
+    "clearedInvisibleRGBPixels": 5197,
+    "visibleRGBAAndAlphaUnchanged": true
+  },
+  {
+    "view": "profile-left",
+    "slot": "outfit.sleeve.right",
+    "originalSHA256": "47b8557d6a20f14aca436102a89447800e98f7ef405dd2a95ecf8ddcdb043cbc",
+    "referenceSHA256": "64b69adab75d204419d40909c9f8f1b47ff8ca3b4c482550f7d3765d571fd4a1",
+    "clearedInvisibleRGBPixels": 5551,
+    "visibleRGBAAndAlphaUnchanged": true
+  },
+  {
+    "view": "profile-left",
+    "slot": "outfit.hem.front",
+    "originalSHA256": "ae20a69da1797774da146b7f5aac5b5957ace2bc19a6b860564e9aae06bf38b0",
+    "referenceSHA256": "fe1d7081ae8bdaa76c19673813117831b7fd4d300295faec370e5cbf0471ed7f",
+    "clearedInvisibleRGBPixels": 5121,
+    "visibleRGBAAndAlphaUnchanged": true
+  },
+  {
+    "view": "rear-quarter-left",
+    "slot": "outfit.torso",
+    "originalSHA256": "3f017a953b37ae12553949a2b979267279f8f0decb65a5d33d8f087f935dc573",
+    "referenceSHA256": "3f017a953b37ae12553949a2b979267279f8f0decb65a5d33d8f087f935dc573",
+    "clearedInvisibleRGBPixels": 0,
+    "visibleRGBAAndAlphaUnchanged": true
+  },
+  {
+    "view": "rear-quarter-left",
+    "slot": "outfit.sleeve.left",
+    "originalSHA256": "c71bc3e852f4ef619193d0aa1072062592c50ec9dd6985811c79b77651b1efeb",
+    "referenceSHA256": "c71bc3e852f4ef619193d0aa1072062592c50ec9dd6985811c79b77651b1efeb",
+    "clearedInvisibleRGBPixels": 0,
+    "visibleRGBAAndAlphaUnchanged": true
+  },
+  {
+    "view": "rear-quarter-left",
+    "slot": "outfit.sleeve.right",
+    "originalSHA256": "22713508afcf4bea8b81aead5546585ee492779315856c81216608e5de4c3ea3",
+    "referenceSHA256": "22713508afcf4bea8b81aead5546585ee492779315856c81216608e5de4c3ea3",
+    "clearedInvisibleRGBPixels": 0,
+    "visibleRGBAAndAlphaUnchanged": true
+  },
+  {
+    "view": "rear-quarter-left",
+    "slot": "outfit.hem.front",
+    "originalSHA256": "2f874cb990615fd75da4f188c5e5d973e65c22ff5fd7bddaef308169e17c27f8",
+    "referenceSHA256": "2f874cb990615fd75da4f188c5e5d973e65c22ff5fd7bddaef308169e17c27f8",
+    "clearedInvisibleRGBPixels": 0,
+    "visibleRGBAAndAlphaUnchanged": true
+  },
+  {
+    "view": "back",
+    "slot": "outfit.torso",
+    "originalSHA256": "3e1ca5505de758bf43d56e71b80e7b663c884a2fb328f655242c1d0ee727b8a7",
+    "referenceSHA256": "3e1ca5505de758bf43d56e71b80e7b663c884a2fb328f655242c1d0ee727b8a7",
+    "clearedInvisibleRGBPixels": 0,
+    "visibleRGBAAndAlphaUnchanged": true
+  },
+  {
+    "view": "back",
+    "slot": "outfit.sleeve.left",
+    "originalSHA256": "a9b7f00039cfe9dc35333f46dda0f14014856e3f5abe2c15b0e75b4e1b076758",
+    "referenceSHA256": "a9b7f00039cfe9dc35333f46dda0f14014856e3f5abe2c15b0e75b4e1b076758",
+    "clearedInvisibleRGBPixels": 0,
+    "visibleRGBAAndAlphaUnchanged": true
+  },
+  {
+    "view": "back",
+    "slot": "outfit.sleeve.right",
+    "originalSHA256": "e01989c290706bd2b5011443541a0242cd8ffc8231ee86c09cf28ef61329f5e3",
+    "referenceSHA256": "e01989c290706bd2b5011443541a0242cd8ffc8231ee86c09cf28ef61329f5e3",
+    "clearedInvisibleRGBPixels": 0,
+    "visibleRGBAAndAlphaUnchanged": true
+  },
+  {
+    "view": "back",
+    "slot": "outfit.hem.front",
+    "originalSHA256": "6b5e00c9fafdb645c29b6542be4f52621eca248940c8333ec5d47a4c912ed9e6",
+    "referenceSHA256": "6b5e00c9fafdb645c29b6542be4f52621eca248940c8333ec5d47a4c912ed9e6",
+    "clearedInvisibleRGBPixels": 0,
+    "visibleRGBAAndAlphaUnchanged": true
+  }
+]

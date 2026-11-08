@@ -1,0 +1,467 @@
+{
+  "status": "internal art/resource candidate; artApproval null",
+  "registration": {
+    "passed": true,
+    "method": "fixed full-source affine; no source alpha threshold/crop/bbox fit",
+    "sourceCanvas": [
+      1254,
+      1254
+    ],
+    "sourceToCellAffine": {
+      "convention": "x_cell=a*x_source+c*y_source+tx; y_cell=b*x_source+d*y_source+ty",
+      "a": 0.11412678195541842,
+      "b": -0.03708203932499369,
+      "c": 0.03708203932499369,
+      "d": 0.11412678195541842,
+      "tx": 24.893786930009668,
+      "ty": 108.25463222465483,
+      "scale": 0.12,
+      "pillowPositiveAngleDegrees": 18.0
+    },
+    "overallTranslationAfterAffine": [
+      0,
+      0
+    ],
+    "anchor": {
+      "source": [
+        460.0,
+        340.0
+      ],
+      "baseAffineCell": [
+        90.0,
+        130.0
+      ],
+      "finalCell": [
+        90.0,
+        130.0
+      ],
+      "baseAffineMapped": [
+        [
+          90.0,
+          130.0
+        ]
+      ]
+    },
+    "tip": {
+      "source": [
+        790,
+        920
+      ],
+      "baseAffineCell": [
+        149.1694208537844,
+        183.95646055689477
+      ],
+      "finalCell": [
+        149.1694208537844,
+        183.95646055689477
+      ],
+      "targetIntent": [
+        149,
+        184
+      ]
+    },
+    "postTransformCleanup": {
+      "removedIsolatedPixels": [
+        [
+          105,
+          121,
+          1
+        ],
+        [
+          163,
+          153,
+          1
+        ],
+        [
+          100,
+          216,
+          1
+        ],
+        [
+          87,
+          230,
+          1
+        ]
+      ],
+      "purpose": "two disconnected low-alpha edge specks only; source image and main connected sword structure are retained without alpha-bound fitting"
+    },
+    "rejectedOrSupersededHistory": [
+      "source/registration-rejected-bbox-fit-v1.json",
+      "source/registration-angle22-superseded-v1.json",
+      "source/registration-angle18-offset-minus8-superseded-v1.json"
+    ]
+  },
+  "assetSchema": {
+    "passed": true,
+    "scope": "check-character-part.py package file/region checks",
+    "assetPath": "asset.json"
+  },
+  "contractTests": {
+    "tests": 23,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "original72ApprovedFrameHashesUnchanged": true,
+    "environmentNote": "Materialized unchanged tracked sparse-checkout baseline files from HEAD; original hash-lock test was run, not skipped."
+  },
+  "poseMap": {
+    "poseCount": 9,
+    "frames": [
+      {
+        "frame": 0,
+        "size": [
+          256,
+          256
+        ],
+        "mode": "RGBA",
+        "alphaBounds": [
+          84,
+          125,
+          152,
+          188
+        ],
+        "edgeAlphaMax": 0,
+        "alphaComponents8Connected": 1,
+        "alphaPixels": 960
+      },
+      {
+        "frame": 1,
+        "size": [
+          256,
+          256
+        ],
+        "mode": "RGBA",
+        "alphaBounds": [
+          84,
+          125,
+          152,
+          188
+        ],
+        "edgeAlphaMax": 0,
+        "alphaComponents8Connected": 1,
+        "alphaPixels": 960
+      },
+      {
+        "frame": 2,
+        "size": [
+          256,
+          256
+        ],
+        "mode": "RGBA",
+        "alphaBounds": [
+          84,
+          127,
+          152,
+          190
+        ],
+        "edgeAlphaMax": 0,
+        "alphaComponents8Connected": 1,
+        "alphaPixels": 960
+      },
+      {
+        "frame": 3,
+        "size": [
+          256,
+          256
+        ],
+        "mode": "RGBA",
+        "alphaBounds": [
+          84,
+          124,
+          152,
+          187
+        ],
+        "edgeAlphaMax": 0,
+        "alphaComponents8Connected": 1,
+        "alphaPixels": 960
+      },
+      {
+        "frame": 4,
+        "size": [
+          256,
+          256
+        ],
+        "mode": "RGBA",
+        "alphaBounds": [
+          84,
+          123,
+          152,
+          186
+        ],
+        "edgeAlphaMax": 0,
+        "alphaComponents8Connected": 1,
+        "alphaPixels": 960
+      },
+      {
+        "frame": 5,
+        "size": [
+          256,
+          256
+        ],
+        "mode": "RGBA",
+        "alphaBounds": [
+          84,
+          125,
+          152,
+          188
+        ],
+        "edgeAlphaMax": 0,
+        "alphaComponents8Connected": 1,
+        "alphaPixels": 960
+      },
+      {
+        "frame": 6,
+        "size": [
+          256,
+          256
+        ],
+        "mode": "RGBA",
+        "alphaBounds": [
+          84,
+          127,
+          152,
+          190
+        ],
+        "edgeAlphaMax": 0,
+        "alphaComponents8Connected": 1,
+        "alphaPixels": 960
+      },
+      {
+        "frame": 7,
+        "size": [
+          256,
+          256
+        ],
+        "mode": "RGBA",
+        "alphaBounds": [
+          84,
+          124,
+          152,
+          187
+        ],
+        "edgeAlphaMax": 0,
+        "alphaComponents8Connected": 1,
+        "alphaPixels": 960
+      },
+      {
+        "frame": 8,
+        "size": [
+          256,
+          256
+        ],
+        "mode": "RGBA",
+        "alphaBounds": [
+          84,
+          123,
+          152,
+          186
+        ],
+        "edgeAlphaMax": 0,
+        "alphaComponents8Connected": 1,
+        "alphaPixels": 960
+      }
+    ],
+    "bodyBobOffsets": {
+      "0": [
+        0,
+        0
+      ],
+      "1": [
+        0,
+        0
+      ],
+      "2": [
+        0,
+        2
+      ],
+      "3": [
+        0,
+        -1
+      ],
+      "4": [
+        0,
+        -2
+      ],
+      "5": [
+        0,
+        0
+      ],
+      "6": [
+        0,
+        2
+      ],
+      "7": [
+        0,
+        -1
+      ],
+      "8": [
+        0,
+        -2
+      ]
+    },
+    "allFramesMatchExactIntegerTranslationOfIdleArtwork": true,
+    "frameMatches": [
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true
+    ]
+  },
+  "actualV8Composition": {
+    "renderer": "scripts/compose-character-parts.py",
+    "catalog": "Art/Templates/P1-Wardrobe/down/v8-back-carry/catalog.json",
+    "motion": "Art/Templates/P1-Wardrobe/down/v8-back-carry/motion.json",
+    "comparisonFile": "review/v8-relaxed-clothed-angle18-comparison.json",
+    "allNineFramesRendered": true,
+    "frames": [
+      {
+        "frame": 0,
+        "visibleWeaponPixelCount": 305,
+        "visibleBoundsAfterComposition": [
+          84,
+          125,
+          152,
+          188
+        ]
+      },
+      {
+        "frame": 1,
+        "visibleWeaponPixelCount": 284,
+        "visibleBoundsAfterComposition": [
+          84,
+          125,
+          152,
+          188
+        ]
+      },
+      {
+        "frame": 2,
+        "visibleWeaponPixelCount": 283,
+        "visibleBoundsAfterComposition": [
+          84,
+          127,
+          152,
+          190
+        ]
+      },
+      {
+        "frame": 3,
+        "visibleWeaponPixelCount": 309,
+        "visibleBoundsAfterComposition": [
+          84,
+          124,
+          152,
+          187
+        ]
+      },
+      {
+        "frame": 4,
+        "visibleWeaponPixelCount": 311,
+        "visibleBoundsAfterComposition": [
+          84,
+          123,
+          152,
+          186
+        ]
+      },
+      {
+        "frame": 5,
+        "visibleWeaponPixelCount": 312,
+        "visibleBoundsAfterComposition": [
+          84,
+          125,
+          152,
+          188
+        ]
+      },
+      {
+        "frame": 6,
+        "visibleWeaponPixelCount": 307,
+        "visibleBoundsAfterComposition": [
+          84,
+          127,
+          152,
+          190
+        ]
+      },
+      {
+        "frame": 7,
+        "visibleWeaponPixelCount": 301,
+        "visibleBoundsAfterComposition": [
+          84,
+          124,
+          152,
+          187
+        ]
+      },
+      {
+        "frame": 8,
+        "visibleWeaponPixelCount": 284,
+        "visibleBoundsAfterComposition": [
+          84,
+          123,
+          152,
+          186
+        ]
+      }
+    ],
+    "visualRead": "Hilt projects beyond screen-left shoulder; continuous scabbard tip shows below screen-right waist; no isolated gold marks at wrist are visible in normal-size whole-body review."
+  },
+  "review": {
+    "fullBodyNinePoseBoard": "review/v8-relaxed-clothed-angle18-nine-poses.png",
+    "walkGif": "review/v8-relaxed-clothed-angle18-120ms.gif",
+    "gifFrameCount": 8,
+    "gifFrameDurationsMs": [
+      120,
+      120,
+      120,
+      120,
+      120,
+      120,
+      120,
+      120
+    ],
+    "editable": [
+      "editable/00.svg",
+      "editable/00.ora"
+    ]
+  },
+  "approval": "not user-approved; candidate only",
+  "limits": [
+    "down-facing pose-map only",
+    "art approval pending",
+    "no simulator/device or package validation"
+  ],
+  "hashes": {
+    "README.md": "e675247ce886b1d12cb10d80c678a0eb548a04c69f5463c2206c2cf35906f5b0",
+    "asset.json": "87a92b48f35f516b386f4473f6d641c6aa390fa606c88a90b914770c539f550b",
+    "authoring.json": "d78432e4d3318a268e41f5a6fcf6ec7408d72f886c67393b5386da4b07723d92",
+    "generation.json": "4537ad080d15fdc2bca2cf9001ccae1cee7af941a0af64667b4881712177bce1",
+    "source/registration.json": "29aa9226f21e088414c14170fd783fcde40590a770c5b6f66a162ca4eab1ee71",
+    "source/registration-rejected-bbox-fit-v1.json": "c8ad52ae0e26467cd733a6eb68930dd4225e45015a7a3cffcd680047ec1c2e10",
+    "source/registration-angle22-superseded-v1.json": "c76ee78efb73cc40f8ea594798f369ccd30918842d7a6264bdd7c9ffae0051ff",
+    "source/registration-angle18-offset-minus8-superseded-v1.json": "82a978a2f604201778a555d4e3bff551677c400065f7ad471ee87abd852301cc",
+    "source/register-back-sword.py": "94a557796a8dc7ccb2a624d89392ea599fe691c9fe40483e31e88497067bca60",
+    "source/render-v8-composition-review.py": "d195aa36c35e2136bfcb3ed0105d4b4dd24fd86e873a314837d6a77948e9e9ac",
+    "source/imagegen-original.png": "46bfa9347fc99f4ed44b295a3c77464613bfd8eccb76bbcae0758a3b29b0c619",
+    "png/00/weapon.back.png": "6a3203c480b41c4e471ed1ffd97859423cd871af113575228514c1cb0f4e619a",
+    "png/08/weapon.back.png": "f1b220a949ae1f8f65ac54d1ecb74ad5d14f31e03ee82cd9370bdecbbe8485fd",
+    "review/v8-relaxed-clothed-angle18-nine-poses.png": "aa72d44c6247852b49c25e986a3ef59835223f91865385f9145fef632a01012c",
+    "review/v8-relaxed-clothed-angle18-120ms.gif": "c408dce661d0a989e4f39d0ee2969d4c937be7a6ef59a231957422825f9c363e",
+    "review/v8-relaxed-clothed-angle18-comparison.json": "afe9deece30813e2c3ee20e49457a4a4cbf1ae5e26d72ed9dd6ea8de024bae5f",
+    "editable/00.svg": "1ba4457a1b14a7dab6720836213ce36d6ff342b730e1c59519de23d0a89d9771",
+    "editable/00.ora": "4dbc6c623c7b42393c7f9ca329cd34733d626c1f4250d57f6db9d2cc4ac77bfa"
+  },
+  "parentAudit": {
+    "path": "Art/Review/P1/modular-down-back-carry-v1/audit.json",
+    "weaponToggleChecks": 108,
+    "diffOutsideWeaponMax": 0,
+    "opaqueHandDiffMax": 0,
+    "reexportAll9PNGsByteExact": true
+  }
+}

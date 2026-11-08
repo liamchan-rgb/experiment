@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "batch": "b2-batch-v3",
+  "resourceRevisionSHA256": "065f0efc4faa649090f899f4a2b1317c3cf422efc0373e19adb5da387c9d99b9",
+  "userFeedback": "还是要改，正下方向，感觉是在扭肩膀，其余方向的手在动，但是护肩却保持禁止",
+  "interpretation": "正下方向肩部扭动，其他方向手臂运动而护肩保持静止。",
+  "items": {
+    "leatherArmor": "needs-changes",
+    "runeArmor": "needs-changes"
+  },
+  "newArmorApproval": null,
+  "fourEarlierApprovedItemsPreserved": true
+}

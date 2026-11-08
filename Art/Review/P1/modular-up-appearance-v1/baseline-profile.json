@@ -1,0 +1,504 @@
+{
+  "contractVersion": "1.0.0",
+  "id": "p1-chibi-v1",
+  "status": "draft-down-head-resources-awaiting-review",
+  "bodyProfile": "p1-standard",
+  "actionSet": "locomotion-v1",
+  "canvas": [
+    256,
+    256
+  ],
+  "directions": [
+    "down",
+    "left",
+    "up",
+    "right",
+    "down-right",
+    "down-left",
+    "up-left",
+    "up-right"
+  ],
+  "clips": {
+    "idle": [
+      0
+    ],
+    "walk": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "walk-start": [
+      1,
+      2
+    ],
+    "walk-stop": [
+      1,
+      2
+    ]
+  },
+  "frameMs": {
+    "walk": 120,
+    "walk-start": 120,
+    "walk-stop": 120
+  },
+  "headCanvas": [
+    96,
+    96
+  ],
+  "headLayouts": {
+    "down": {
+      "status": "shared-head-and-neutral-motion-approved; independent-feature-art-review-pending",
+      "neck": [
+        48,
+        72
+      ],
+      "eyes": {
+        "right": [
+          38,
+          56
+        ],
+        "left": [
+          58,
+          56
+        ]
+      },
+      "skullGuide": [
+        24,
+        24,
+        72,
+        72
+      ],
+      "faceRegions": {
+        "face.eyes": [
+          [
+            31,
+            51,
+            45,
+            62
+          ],
+          [
+            51,
+            51,
+            65,
+            62
+          ]
+        ],
+        "face.brows": [
+          [
+            30,
+            44,
+            66,
+            53
+          ]
+        ],
+        "face.nose": [
+          [
+            44,
+            57,
+            52,
+            64
+          ]
+        ],
+        "face.mouth": [
+          [
+            40,
+            63,
+            56,
+            69
+          ]
+        ]
+      },
+      "hairFrontKeepClear": [
+        [
+          35,
+          54,
+          42,
+          60
+        ],
+        [
+          55,
+          54,
+          62,
+          60
+        ]
+      ]
+    },
+    "left": {
+      "status": "candidate-independent-left-features; user art approval pending",
+      "neck": [
+        49,
+        71
+      ],
+      "eyes": {
+        "left": [
+          34,
+          51
+        ]
+      },
+      "skullGuide": [
+        27,
+        23,
+        72,
+        68
+      ],
+      "faceRegions": {
+        "face.brows": [
+          [
+            29,
+            40,
+            40,
+            46
+          ]
+        ],
+        "face.eyes": [
+          [
+            31,
+            46,
+            40,
+            55
+          ]
+        ],
+        "face.nose": [
+          [
+            25,
+            53,
+            31,
+            59
+          ]
+        ],
+        "face.mouth": [
+          [
+            28,
+            60,
+            33,
+            64
+          ]
+        ]
+      },
+      "hairFrontKeepClear": [
+        [
+          31,
+          46,
+          40,
+          55
+        ]
+      ],
+      "coordinateReview": "Feature ink reviewed on the original shared head: complete eyelid/brow kept, no skin/ear/jaw patch; mouth uses true connected lip mark, not jaw contour."
+    },
+    "up-left": {
+      "status": "candidate-rear-three-quarter-hair-layout",
+      "neck": [
+        52,
+        71
+      ],
+      "eyes": {},
+      "faceRegions": {
+        "face.eyes": [],
+        "face.brows": [],
+        "face.nose": [],
+        "face.mouth": []
+      },
+      "hairFrontKeepClear": [],
+      "coordinateReview": "Rear three-quarter neutral head: facial features occluded. Hair-only local image; no skin/ear patch, no fabricated rear facial marks."
+    },
+    "up-right": {
+      "status": "candidate-rear-three-quarter-hair-layout",
+      "neck": [
+        44,
+        71
+      ],
+      "eyes": {},
+      "faceRegions": {
+        "face.eyes": [],
+        "face.brows": [],
+        "face.nose": [],
+        "face.mouth": []
+      },
+      "hairFrontKeepClear": [],
+      "coordinateReview": "Rear three-quarter neutral head: facial features occluded. Hair-only local image; no skin/ear patch, no fabricated rear facial marks."
+    },
+    "down-left": {
+      "status": "draft-independent-head-resource-candidate",
+      "headLocalOrigin": [
+        76,
+        61
+      ],
+      "neck": [
+        51,
+        70
+      ],
+      "eyes": {
+        "right": [
+          36,
+          55
+        ],
+        "left": [
+          47,
+          56
+        ]
+      },
+      "skullGuide": [
+        31,
+        27,
+        73,
+        69
+      ],
+      "faceRegions": {
+        "face.eyes": [
+          [
+            33,
+            51,
+            40,
+            59
+          ],
+          [
+            41,
+            52,
+            53,
+            60
+          ]
+        ],
+        "face.brows": [
+          [
+            33,
+            46,
+            52,
+            53
+          ]
+        ],
+        "face.nose": [
+          [
+            34,
+            59,
+            40,
+            63
+          ]
+        ],
+        "face.mouth": [
+          [
+            37,
+            62,
+            45,
+            66
+          ]
+        ]
+      },
+      "hairFrontKeepClear": [
+        [
+          34,
+          52,
+          39,
+          58
+        ],
+        [
+          42,
+          53,
+          52,
+          60
+        ]
+      ],
+      "sourceGuide": "Art/Templates/P1-Neutral/down-left/walk-r1/source/head-layout-guide.json",
+      "artApproval": null
+    },
+    "down-right": {
+      "status": "mirrored-head-guide-candidate; fixed-upper-left-colours; separate-user-review",
+      "headLocalOrigin": [
+        84,
+        61
+      ],
+      "neck": [
+        44,
+        70
+      ],
+      "eyes": {
+        "left": [
+          59,
+          55
+        ],
+        "right": [
+          48,
+          56
+        ]
+      },
+      "skullGuide": [
+        23,
+        27,
+        65,
+        69
+      ],
+      "faceRegions": {
+        "face.eyes": [
+          [
+            56,
+            51,
+            63,
+            59
+          ],
+          [
+            43,
+            52,
+            55,
+            60
+          ]
+        ],
+        "face.brows": [
+          [
+            44,
+            46,
+            63,
+            53
+          ]
+        ],
+        "face.nose": [
+          [
+            56,
+            59,
+            62,
+            63
+          ]
+        ],
+        "face.mouth": [
+          [
+            51,
+            62,
+            59,
+            66
+          ]
+        ]
+      },
+      "hairFrontKeepClear": [
+        [
+          57,
+          52,
+          62,
+          58
+        ],
+        [
+          44,
+          53,
+          54,
+          60
+        ]
+      ],
+      "sourceGuide": "Art/Parts/P1-v1/down-right/appearance-v1/source/head-layout-guide.json",
+      "artApproval": null
+    }
+  },
+  "gripProfiles": [
+    "one-hand-closed"
+  ],
+  "parts": {
+    "base": {
+      "modes": [
+        "pose-map"
+      ],
+      "slots": [
+        "body.torso",
+        "body.arm.right",
+        "body.arm.left",
+        "body.leg.right",
+        "body.leg.left",
+        "body.hand.right",
+        "body.hand.left",
+        "head.base"
+      ]
+    },
+    "hair": {
+      "modes": [
+        "head-local",
+        "pose-map"
+      ],
+      "slots": [
+        "hair.back",
+        "hair.front"
+      ]
+    },
+    "face": {
+      "modes": [
+        "head-local"
+      ],
+      "slots": [
+        "face.eyes",
+        "face.brows",
+        "face.nose",
+        "face.mouth"
+      ]
+    },
+    "outfit": {
+      "modes": [
+        "pose-map"
+      ],
+      "slots": [
+        "outfit.torso",
+        "outfit.sleeve.right",
+        "outfit.sleeve.left",
+        "outfit.hem.back",
+        "outfit.hem.front",
+        "outfit.pants.right",
+        "outfit.pants.left",
+        "outfit.boot.right",
+        "outfit.boot.left"
+      ]
+    },
+    "weapon": {
+      "modes": [
+        "socket",
+        "pose-map"
+      ],
+      "slots": [
+        "weapon.right",
+        "weapon.left",
+        "weapon.back"
+      ],
+      "carryProfiles": [
+        "back-scabbard"
+      ]
+    }
+  },
+  "releaseBlockers": [
+    "other seven neutral body directions missing",
+    "independent head-resource artwork and facial placement pending user review",
+    "full wardrobe occlusion and real weapon grip art not reviewed",
+    "compositor supports three drawing spaces in tests; real outfit/weapon integration pending",
+    "third new resource artwork and full wardrobe acceptance not reviewed"
+  ],
+  "artStyle": {
+    "finalPixelDensity": "1x on a 256px pose canvas",
+    "nominalOutlinePx": 1,
+    "lightDirection": "upper-left",
+    "maxEdgeAntialiasPx": 1,
+    "alpha": "straight",
+    "colorSpace": "sRGB",
+    "minHiddenJointOverlapPx": 2,
+    "skinAndSkinShadingOwner": "base",
+    "optionalWorkingScale": 4,
+    "perAssetAutoFitAllowed": false
+  },
+  "neutralBodyCandidate": {
+    "direction": "down",
+    "pose": "idle 00",
+    "path": "Art/Templates/P1-Neutral/down/r1",
+    "status": "idle-approved",
+    "artApproval": "Art/Templates/P1-Neutral/down/r1/approval.json"
+  },
+  "neutralBodyWalkCandidate": {
+    "direction": "down",
+    "clips": [
+      "idle",
+      "walk"
+    ],
+    "path": "Art/Templates/P1-Neutral/down/walk-r1",
+    "status": "approved",
+    "artApproval": "Art/Templates/P1-Neutral/down/walk-r1/approval.json",
+    "motion": "Art/Templates/P1-Neutral/down/walk-r1/motion.json"
+  },
+  "genericCompositor": {
+    "path": "scripts/compose-character-parts.py",
+    "status": "prototype; head art review pending; full wardrobe acceptance pending"
+  }
+}

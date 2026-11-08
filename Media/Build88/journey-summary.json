@@ -1,0 +1,25 @@
+{
+  "cases": 27,
+  "outcomes": {
+    "victory": 24,
+    "defeat": 3
+  },
+  "actions": 1330,
+  "resumes": 354,
+  "stagedRestarts": 171,
+  "species": [
+    "caveTroll",
+    "goblinArcher",
+    "ruinDragon",
+    "slime",
+    "stoneGuardian",
+    "wolf"
+  ],
+  "baselineBuild87": {
+    "victory": 19,
+    "defeat": 8
+  },
+  "scope": "same fixed mean-effect policy, closed-tree route, starter weapons; not human win rate",
+  "allAssignedBossCachesCollectedBeforeBaselineBosses": true,
+  "appSimulatorDeviceRun": false
+}

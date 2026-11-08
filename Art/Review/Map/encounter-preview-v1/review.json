@@ -1,0 +1,7 @@
+{
+  "scope": "offline card reference; UIKit font/layout approximate, not runtime capture",
+  "input": "balance-default.json",
+  "threeMonstersAndBoss": true,
+  "sourceMonsterFramesUnchanged": true,
+  "appSimulatorDeviceRun": false
+}

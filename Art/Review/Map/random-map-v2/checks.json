@@ -1,0 +1,26 @@
+{
+  "swiftTests": 181,
+  "mapSeeds": 648,
+  "extremeQuotaCases": 24,
+  "productionGeometryCases": 78,
+  "gif": {
+    "frames": 400,
+    "msPerFrame": 20,
+    "loop": 0
+  },
+  "assetSha256": {
+    "Art/Parts/Map/meadow-locations-v1/buildings-on-green.png": "5823e38b7fec7cae73a968ca53c8f46422dbc0d058404ef4ae88db7102c98dad",
+    "Art/Parts/Map/meadow-locations-v1/NodeBossSanctum.png": "34e236b6c358e217aeb31d0539d6ddd76c97eb0896c63d4d394f08a475b7d346",
+    "Art/Parts/Map/meadow-locations-v1/NodeCombatOutpost.png": "02aefae21fe853343b6ab3809f31d37ef818c34de00a1baacf17146f03e4bc41",
+    "Art/Parts/Map/meadow-locations-v1/NodeRewardCache.png": "befa34a89d9932b1f964d4b55fcc8e233f5f4442d9c968340ffa44315a1077a0",
+    "Art/Parts/Map/meadow-locations-v1/README.md": "9a49c0ec6e8a293868e7c286eee0b9ac94ea322f4624366ff5607700708d4bfc",
+    "Art/Parts/Map/meadow-locations-v1/assets.json": "a30d4500538f43b750e3d268a889036fe2699cbaaeb4f0e5797554fa48d6f31a",
+    "Art/Parts/Map/meadow-locations-v1/NodeWaystone.png": "ca7d4d11881d91136c34eb6385c92aa9ddc9ee32e128295a34a6b3223ce07ebb",
+    "Art/Parts/Map/meadow-locations-v1/source/art-brief.md": "d5c833c6d5735902f3fa5bd93783c2e048f22a32d5531741dc0311bbafcfed4d",
+    "Art/Parts/Map/meadow-locations-v1/source/original-atlas.png": "da6df36d4152e63f91e9556280f98c50fa8ff51103ed5fb2f3d9b84d9468b937",
+    "Art/Parts/Map/meadow-locations-v1/source/retouch-atlas.png": "14e804fd5f63169b05b4deca63a919bdc52561965ba212dce79dcfbf75f2569c"
+  },
+  "originalCoreUnmodified": true,
+  "artApproval": null,
+  "runtimeVerified": false
+}

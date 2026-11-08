@@ -1,0 +1,62 @@
+{
+  "scope": "Production Swift samples plus imported independent layers; offline art composition, not UIKit/device capture",
+  "all143NativeCompositesByteExact": true,
+  "all202NewModularCompositesByteExact": true,
+  "animations": [
+    {
+      "file": "all-actions-normal.gif",
+      "nativeSamples": 274,
+      "decodedFrames": 224,
+      "durationMs": 5480
+    },
+    {
+      "file": "guard-normal.gif",
+      "nativeSamples": 71,
+      "decodedFrames": 71,
+      "durationMs": 1420
+    },
+    {
+      "file": "hit-normal.gif",
+      "nativeSamples": 36,
+      "decodedFrames": 36,
+      "durationMs": 720
+    },
+    {
+      "file": "victory-normal.gif",
+      "nativeSamples": 55,
+      "decodedFrames": 55,
+      "durationMs": 1100
+    },
+    {
+      "file": "defeat-normal.gif",
+      "nativeSamples": 31,
+      "decodedFrames": 31,
+      "durationMs": 620
+    },
+    {
+      "file": "revive-normal.gif",
+      "nativeSamples": 31,
+      "decodedFrames": 31,
+      "durationMs": 620
+    },
+    {
+      "file": "body-normal.gif",
+      "nativeSamples": 190,
+      "decodedFrames": 190,
+      "durationMs": 3800
+    },
+    {
+      "file": "bow-normal.gif",
+      "nativeSamples": 190,
+      "decodedFrames": 190,
+      "durationMs": 3800
+    },
+    {
+      "file": "bow-lethal-normal.gif",
+      "nativeSamples": 190,
+      "decodedFrames": 190,
+      "durationMs": 3800
+    }
+  ],
+  "appRunPerformed": false
+}

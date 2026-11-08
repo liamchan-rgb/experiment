@@ -1,0 +1,10 @@
+{
+  "tool": "image_gen",
+  "owner": "root",
+  "subagentsUsed": false,
+  "rawSource": "generated.png",
+  "sha256": "01857203c8f7825a6173596db1b5cbffb0df70d403080542781389536948851e",
+  "promptIsSummary": true,
+  "promptSummary": "Edit original paired rear-view neutral head/neck guide. Remove near-black nape seam in marked regions, preserve skin shading, head shape, anatomy, placement and upper-left illumination. No hair or new clothing.",
+  "finalExtraction": "Only bounded original dark head/neck source texels use artist-painted interior nape colours; original alpha and all unselected source pixels preserved. Explicit source sample offset avoids the generated external head outline."
+}

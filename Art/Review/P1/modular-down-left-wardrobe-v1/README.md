@@ -1,0 +1,11 @@
+# 左下整身外观 v1 · 当前候选
+
+[正常行走](outfits-walk-120ms.gif) · [正常起停](outfits-start-stop-120ms.gif) · [全身站姿](outfits-idle-2x.png) · [主线程复核](art-review.md) · [技术检查](validation.json) · [重导](reexport-validation.json)
+
+左为绿短上衣/棕发/蓝眼，右为蓝外套/银发/琥珀眼，均用共用灰裤低靴及背剑。原身体和13姿势保持，空背/背剑可切；四个新资源配现有四头部包共16搭配208张。combinations目录保存全部实际装配，forester/wayfarer中为主要展示全部13帧1×/2×与单独正常GIF。
+
+主线程亲自修复并看主要两组全部13姿势完整1×/2×，检查肩腕/腰裤/踝足、两手/五官、裤子与腿同步、背剑肩位及前视遮挡、首尾与起停帧序。9清单通过，208实际图匹配、1248覆盖检查、416手部保留、624五官保留、104背剑切换检查通过，原8044份文件保持。未把内部检查记为用户认可。
+
+步行8×120ms，起停22帧首尾480ms其余120ms，无新增慢放。工具只返回静帧，不声称连续播放器验收；无App/设备/IPA。HTTPS发布后回执见delivery.json。八向尚未完成，后续右下/正右/正上/正下起停见docs/P1_DIRECTION_MODULES.md。
+
+美术提交 `f4dfa7e2564500d46d65e966b4be4c25d6ee887f`。三份HTTPS文件均已实测HTTP200、MIME及SHA256/本地字节一致；GIF帧数、120ms帧速与起停停留时长符合登记。[正常行走直链](https://raw.githubusercontent.com/liamchan-rgb/experiment/f4dfa7e2564500d46d65e966b4be4c25d6ee887f/Art/Review/P1/modular-down-left-wardrobe-v1/outfits-walk-120ms.gif)；完整回执见[delivery.json](delivery.json)。641份重导文件逐字节一致。

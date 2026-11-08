@@ -1,0 +1,37 @@
+{
+  "method": "existing five-view surface sampler, no artwork/body/motion edits",
+  "items": [
+    {
+      "item": "starlightArmor",
+      "masterSourceSHA256": "73fe98e4a371122dcf27e7128df90fd84648c7a29ffaedbcf5ae7628d3dd800a",
+      "sourceCanvas": [
+        1774,
+        887
+      ],
+      "poseCount": 8,
+      "comparedLayers": 32,
+      "allPixelsMatchExistingExport": true,
+      "newDesignApproved": false
+    },
+    {
+      "item": "dragonArmor",
+      "masterSourceSHA256": "54172bb5c6010fd8d3e6333eb9f33cb15ce77d1110e3e07c667b7f301a4efd67",
+      "sourceCanvas": [
+        1774,
+        887
+      ],
+      "poseCount": 8,
+      "comparedLayers": 32,
+      "allPixelsMatchExistingExport": true,
+      "newDesignApproved": false
+    }
+  ],
+  "comparedLayers": 64,
+  "demoGIF": {
+    "frames": 8,
+    "frameMs": 120,
+    "durationMs": 960
+  },
+  "artApproval": null,
+  "appOrSimulatorRun": false
+}

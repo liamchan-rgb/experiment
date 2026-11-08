@@ -1,0 +1,81 @@
+{
+  "build": 72,
+  "sourceCommit": "e582ddc5f66f0dcf310e5b6c66ce74b3196ebf71",
+  "workflowRun": "https://github.com/liamchan-rgb/experiment/actions/runs/41285365973",
+  "policy": {
+    "gameplayResolution": "At actual impact/contact.",
+    "positiveFeedbackPresentation": "max(hit age, effect onset + 0.58 × effect duration).",
+    "heldUntilCue": [
+      "healing value overlay",
+      "health bar increase",
+      "new shield circle/value"
+    ],
+    "fadeInMs": 120,
+    "shieldRule": "Only show shield birth when the shield value increases; keep an existing shield visible without replaying its birth."
+  },
+  "timings": [
+    {
+      "action": "runeSlash",
+      "statusCueActionAgeSeconds": 1.1979,
+      "impactAgeSeconds": 1.048,
+      "effectOnsetActionAgeSeconds": 0.643,
+      "effectDurationSeconds": 0.955
+    },
+    {
+      "action": "runeWard",
+      "statusCueActionAgeSeconds": 0.8352,
+      "effectDurationSeconds": 1.44
+    },
+    {
+      "action": "dragonFlame",
+      "statusCueActionAgeSeconds": 1.2333,
+      "effectDurationSeconds": 1.333333
+    },
+    {
+      "action": "starlightPulse",
+      "statusCueSceneMs": 1468,
+      "basis": "actual hit receipt / effect cue"
+    },
+    {
+      "action": "dragonSoulWard",
+      "statusCueActionAgeSeconds": 1.5266,
+      "effectAgeSeconds": 0.9666,
+      "effectDurationSeconds": 1.667
+    },
+    {
+      "action": "dragonScaleWard",
+      "statusCueActionAgeSeconds": 1.14,
+      "effectAgeSeconds": 0.58,
+      "effectDurationSeconds": 1.0
+    },
+    {
+      "action": "battleRune",
+      "statusCueActionAgeSeconds": 1.334
+    },
+    {
+      "action": "rally",
+      "positiveHealthOrShieldReceipt": false
+    },
+    {
+      "action": "sweep",
+      "positiveHealthOrShieldReceipt": false
+    },
+    {
+      "action": "healingTiers",
+      "tiersByActualGainHP": {
+        "micro": "1–3",
+        "standard": "4–8",
+        "strong": "9+"
+      },
+      "zeroGainShowsEffect": false
+    }
+  ],
+  "validation": {
+    "offlineTimingTest": "passed",
+    "runeSourceAndRuntimeFrames": "40 exact",
+    "previousSkillSourceAndRuntimeFrames": "100 exact",
+    "healingSourceAndRuntimeFrames": "60 validated",
+    "simulatorOrDeviceRun": false,
+    "visualApproval": "pending user review"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "frame_count": 20,
+  "frame_size": [
+    256,
+    256
+  ],
+  "sheet_size": [
+    1280,
+    1024
+  ],
+  "grid": {
+    "columns": 5,
+    "rows": 4,
+    "spacing_px": 0,
+    "outer_margin_px": 0
+  },
+  "alpha": "RGBA with transparency",
+  "pixel_identity_sheet_tiles_to_frames": true,
+  "minimum_alpha_bbox_margins_px": [
+    11,
+    11,
+    30,
+    31
+  ],
+  "source_master_size": [
+    1536,
+    1024
+  ]
+}

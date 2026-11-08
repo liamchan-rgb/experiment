@@ -1,0 +1,134 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "p1-down-hair-teal-crop-transitions-v1",
+  "version": "1.0.0",
+  "part": "hair",
+  "compatibility": {
+    "rig": "p1-chibi-v1",
+    "bodyProfile": "p1-standard",
+    "actionSet": "locomotion-v1"
+  },
+  "mode": "head-local",
+  "slots": [
+    "hair.front"
+  ],
+  "directions": [
+    "down"
+  ],
+  "clips": [
+    "idle",
+    "walk",
+    "walk-start",
+    "walk-stop"
+  ],
+  "sourceFiles": [
+    "source/manifest-original.json",
+    "source/provenance.json"
+  ],
+  "bindings": [
+    {
+      "direction": "down",
+      "clip": "idle",
+      "frame": 0,
+      "layers": {
+        "hair.front": "png/hair.front.png"
+      }
+    },
+    {
+      "direction": "down",
+      "clip": "walk",
+      "frame": 1,
+      "layers": {
+        "hair.front": "png/hair.front.png"
+      }
+    },
+    {
+      "direction": "down",
+      "clip": "walk",
+      "frame": 2,
+      "layers": {
+        "hair.front": "png/hair.front.png"
+      }
+    },
+    {
+      "direction": "down",
+      "clip": "walk",
+      "frame": 3,
+      "layers": {
+        "hair.front": "png/hair.front.png"
+      }
+    },
+    {
+      "direction": "down",
+      "clip": "walk",
+      "frame": 4,
+      "layers": {
+        "hair.front": "png/hair.front.png"
+      }
+    },
+    {
+      "direction": "down",
+      "clip": "walk",
+      "frame": 5,
+      "layers": {
+        "hair.front": "png/hair.front.png"
+      }
+    },
+    {
+      "direction": "down",
+      "clip": "walk",
+      "frame": 6,
+      "layers": {
+        "hair.front": "png/hair.front.png"
+      }
+    },
+    {
+      "direction": "down",
+      "clip": "walk",
+      "frame": 7,
+      "layers": {
+        "hair.front": "png/hair.front.png"
+      }
+    },
+    {
+      "direction": "down",
+      "clip": "walk",
+      "frame": 8,
+      "layers": {
+        "hair.front": "png/hair.front.png"
+      }
+    },
+    {
+      "direction": "down",
+      "clip": "walk-start",
+      "frame": 1,
+      "layers": {
+        "hair.front": "png/hair.front.png"
+      }
+    },
+    {
+      "direction": "down",
+      "clip": "walk-start",
+      "frame": 2,
+      "layers": {
+        "hair.front": "png/hair.front.png"
+      }
+    },
+    {
+      "direction": "down",
+      "clip": "walk-stop",
+      "frame": 1,
+      "layers": {
+        "hair.front": "png/hair.front.png"
+      }
+    },
+    {
+      "direction": "down",
+      "clip": "walk-stop",
+      "frame": 2,
+      "layers": {
+        "hair.front": "png/hair.front.png"
+      }
+    }
+  ]
+}

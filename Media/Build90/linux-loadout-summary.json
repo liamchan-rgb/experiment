@@ -1,0 +1,69 @@
+{
+  "cases": 177,
+  "nativeSampleCases": 27,
+  "roles": [
+    "adventurer",
+    "dragonKnight",
+    "spellblade"
+  ],
+  "loadouts": 17,
+  "outcomes": {
+    "victory": 146,
+    "defeat": 31
+  },
+  "byRole": {
+    "adventurer": {
+      "victory": 46,
+      "defeat": 13
+    },
+    "dragonKnight": {
+      "victory": 51,
+      "defeat": 8
+    },
+    "spellblade": {
+      "victory": 49,
+      "defeat": 10
+    }
+  },
+  "actions": 6582,
+  "resumes": 1871,
+  "stagedRestarts": 886,
+  "species": [
+    "caveTroll",
+    "goblinArcher",
+    "ruinDragon",
+    "slime",
+    "stoneGuardian",
+    "wolf"
+  ],
+  "actionsUsed": {
+    "enemy:attack": 1679,
+    "enemy:dragonFlame": 159,
+    "enemy:dragonScaleWard": 243,
+    "player:ambush": 695,
+    "player:attack": 1903,
+    "player:heavyStrike": 173,
+    "player:largePotion": 237,
+    "player:rally": 350,
+    "player:shieldPotion": 112,
+    "player:smallPotion": 85,
+    "player:support": 85,
+    "player:revivalStone": 43,
+    "enemy:simpleGuard": 23,
+    "player:starlightPulse": 31,
+    "player:dragonSoulWard": 29,
+    "player:breather": 17,
+    "player:endTurn": 46,
+    "player:simpleGuard": 7,
+    "player:battleRune": 221,
+    "player:runeSlash": 112,
+    "player:runeWard": 11,
+    "player:dragonFlame": 134,
+    "player:dragonOrder": 152,
+    "player:dragonScaleWard": 12,
+    "enemy:regeneration": 6,
+    "enemy:sweep": 17
+  },
+  "scope": "controlled starting equipment; fixed original mean-effect strategy, real dice/items/paid movement; not human win rate, natural equipment progression, or artwork approval",
+  "appSimulatorDeviceRun": false
+}

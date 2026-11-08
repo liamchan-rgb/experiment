@@ -1,0 +1,102 @@
+{
+  "scope": "Actual exported GIFs in independent Chromium; not App execution, performance measurement or user art approval",
+  "appSimulatorOrDeviceRun": false,
+  "records": [
+    {
+      "path": "Art/Review/Battle/chat-apparel-b-v1/both-armors-attack-normal.gif",
+      "dimensions": {
+        "complete": true,
+        "width": 1024,
+        "height": 560
+      },
+      "intervalMs": 130,
+      "sampleHashes": [
+        "af773aabc7be19cbb183feac34ab2a9e50a9298d33c529d041c6118f8a795752",
+        "df50b8992471ebb65b008a091a836fa910fb6d09e96f8e548697436b670863f3",
+        "cd119a90c15302b67f42496a5dd1ee613ab61a6f712208127cccb4835e57c549",
+        "4941d4b5995573d4760a0d28fc237bd77894838f168987c387a739d93cba1f96",
+        "387370dbc850b29b9b2a2c0455e9181928347afcf476b9b90dc8b08d8810c4db",
+        "313a0f2ed73ab3c8f9f84bd83927176e0f2f427d928a1ae29c67074aef56c625",
+        "ce0fe366298269420b481f7fa3e10c7db1fce8b5a624c672672e1a174ec0e98e",
+        "c6a2da41b13cbe6579a4f97be7f461b4247d6ba27cc4df0578a537f68d629527",
+        "495c254760d7320f494b4eb232ceb695c95eee9a17a99c0dfe5580075f85cbfd",
+        "713ca88d261e072cc4c03bd72b66d1a432ff59af1b3462171b064f4f678b37bb",
+        "6036e4f778967145f34bbd091974646c280f7d07e6e27662abe3e3c66ace0b7c",
+        "af773aabc7be19cbb183feac34ab2a9e50a9298d33c529d041c6118f8a795752"
+      ],
+      "distinctScreenshotHashes": 11
+    },
+    {
+      "path": "Art/Review/Battle/chat-apparel-b-v1/both-armors-states-normal.gif",
+      "dimensions": {
+        "complete": true,
+        "width": 1024,
+        "height": 560
+      },
+      "intervalMs": 130,
+      "sampleHashes": [
+        "a25a323c21df9734f8b039d1b0163c1682a30404515c91057625d72be36bb21f",
+        "8be0973e8204a943a44b04dd36776bb35fe442a3eb900c2bbfb5567d2b79f638",
+        "8be0973e8204a943a44b04dd36776bb35fe442a3eb900c2bbfb5567d2b79f638",
+        "8be0973e8204a943a44b04dd36776bb35fe442a3eb900c2bbfb5567d2b79f638",
+        "8be0973e8204a943a44b04dd36776bb35fe442a3eb900c2bbfb5567d2b79f638",
+        "8349300d32a2da2a3fa7f614c72ee7233fe0878ade66acd54d79ff903a285172",
+        "d33c17815c1e7ae2fc48e0a4167a8167de4d5a182bf1169351e74cc99d12296c",
+        "c343becaa67cfef225dfe869dd707b66349bbc8ea6d1fd7603f2923534620744",
+        "e78c586cdb9af773f2d01c432e69e3419d3b480bf6a4636d22fc5e0f38c4a971",
+        "0130eb4e5c2c6aeecdbf3165bf15025677338ccdf69a3e1e7e4ad4f535ceedca",
+        "73f2b3fc8a8c563ca627403cc8618b29b9eaff2f5bcce983124c21e5ac385c70",
+        "4b434a4c84188660033f28c1ee8af767d51c2f3355559ec9943fb0a20e86a1bc"
+      ],
+      "distinctScreenshotHashes": 9
+    },
+    {
+      "path": "Art/Review/P1/custom-heads-v1/six-heads-bow-normal.gif",
+      "dimensions": {
+        "complete": true,
+        "width": 1536,
+        "height": 280
+      },
+      "intervalMs": 130,
+      "sampleHashes": [
+        "e2cd0c74b650f115dbd6174d3fad0afd33b9baf36ea420b49965079abcfaa131",
+        "c1deaf70d9ef53b3f0a95a9141812c416ca05bc81a75cd1de46b25e1c15f6f08",
+        "972884a70c6379dd106e098ad3e866ffe2655bfa4fc20f77ceec59cdd9da7374",
+        "b4e946b6f0cc50d5c31f9e312130f74bbb58ccb7430b8e2949afee6c878e25c7",
+        "e979cb25e7def9c175af01eb12f5dbe7d86b71fe334ab60ee806145d85dac38c",
+        "c2079ff2ae0a5da1bbe179c96492b5772317319d6abb113191bef131bfb89aac",
+        "8d159871d974ba7d19a0ff35a688b285c009ece8fea41b1e614d267813cec838",
+        "5e341843aef2e1553b0469208cac48c58b5ad95192e6166840354a2f325d56a2",
+        "1324a41009cec72a4f5691243365bf6dc0ac066bd32a4fe4609b5370f4ec1684",
+        "ee2ac475edee5fcc75808214ef3b5cba42990de1beceda8c70c703d17c3772b9",
+        "ee2ac475edee5fcc75808214ef3b5cba42990de1beceda8c70c703d17c3772b9",
+        "fe8416a32be04ef6084c4c302c29901eee83ef1eedfdb44286f6f79d95c574d9"
+      ],
+      "distinctScreenshotHashes": 11
+    },
+    {
+      "path": "Art/Review/P1/custom-heads-v1/f1-bob-eight-way-normal.gif",
+      "dimensions": {
+        "complete": true,
+        "width": 1024,
+        "height": 560
+      },
+      "intervalMs": 130,
+      "sampleHashes": [
+        "fa754364c8f3ab9575527c847dbfe647c9c5db2046e4e0d05a394d33d726cc1d",
+        "95ac84e7b0d7934290f7b152ce9b6be6c401d392fc46eee59cf5557dba58c495",
+        "f457fe77baf62e964e98b1f89ae4aec89c112d627c5561ad279344ae5b097d19",
+        "f01a9b8cbc8bb565d2147ebce3704b58b4e7b8427c510f1a8515007810e7c7ae",
+        "401dfed139a5a9e37ca90a18545090c75f76a8902cb2923ad64c66dd1204c6e9",
+        "a84db3a475c036e39d4ca4ebe7d79915fa55cce266230dbb57bc38ffa7e082c4",
+        "fa754364c8f3ab9575527c847dbfe647c9c5db2046e4e0d05a394d33d726cc1d",
+        "95ac84e7b0d7934290f7b152ce9b6be6c401d392fc46eee59cf5557dba58c495",
+        "f457fe77baf62e964e98b1f89ae4aec89c112d627c5561ad279344ae5b097d19",
+        "35e8617bba667895c0b9df8f5477b4766a0cda6a4f5cbf5bca96842aa865627a",
+        "401dfed139a5a9e37ca90a18545090c75f76a8902cb2923ad64c66dd1204c6e9",
+        "a84db3a475c036e39d4ca4ebe7d79915fa55cce266230dbb57bc38ffa7e082c4"
+      ],
+      "distinctScreenshotHashes": 7
+    }
+  ]
+}

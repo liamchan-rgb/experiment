@@ -1,0 +1,83 @@
+{
+  "artApproval": null,
+  "status": "candidate",
+  "source": "source/atlas.png",
+  "sha256": "73ddd849b3dd9d186759da56bce6a17596d1fa93830c094811623ab16db59755",
+  "cuts": {
+    "RoundBarrier": {
+      "region": [
+        0,
+        0,
+        627,
+        686
+      ],
+      "contentCrop": [
+        29,
+        55,
+        614,
+        637
+      ],
+      "size": [
+        585,
+        582
+      ]
+    },
+    "CyanShard": {
+      "region": [
+        686,
+        0,
+        1254,
+        686
+      ],
+      "contentCrop": [
+        177,
+        199,
+        423,
+        553
+      ],
+      "size": [
+        246,
+        354
+      ]
+    },
+    "GoldEmber": {
+      "region": [
+        0,
+        686,
+        627,
+        1254
+      ],
+      "contentCrop": [
+        182,
+        69,
+        553,
+        423
+      ],
+      "size": [
+        371,
+        354
+      ]
+    },
+    "GroundSpark": {
+      "region": [
+        627,
+        686,
+        1254,
+        1254
+      ],
+      "contentCrop": [
+        73,
+        215,
+        574,
+        453
+      ],
+      "size": [
+        501,
+        238
+      ]
+    }
+  },
+  "packing": "circle glow extends below 640; explicit non-overlapping region to y700 preserves it; no neighboring sprite enters crop",
+  "shield": "round 132x132 world units, transparent center; saturated blue rim",
+  "physics": "production MeadowBattleLightField; analytic gravity, restitution and ground contacts"
+}

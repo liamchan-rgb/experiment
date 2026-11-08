@@ -1,0 +1,8 @@
+{
+  "assets": [
+    {
+      "id": "p1-neutral-down-right-walk-r1-mirrored-down-left",
+      "manifest": "Art/Templates/P1-Neutral/down-right/walk-r1-mirrored-down-left/asset.json"
+    }
+  ]
+}

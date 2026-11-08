@@ -1,0 +1,2837 @@
+{
+  "status": "technical-checks-pass",
+  "artApproval": null,
+  "authorAndReviewer": "root",
+  "subagentsUsed": false,
+  "manifestsChecked": 9,
+  "actualCompositorPoses": 468,
+  "oldCompositePosesUnchanged": 324,
+  "oldLayerFilesByteUnchanged": 324,
+  "bodyLayerPreservationChecks": 3744,
+  "clothingCoverageChecks": 1560,
+  "weaponToggleChecks": 234,
+  "armHandChains": 26,
+  "legChains": 26,
+  "sharedLegUVChecks": 40,
+  "transitionPoseDistinctChecks": 4,
+  "combinations": 36,
+  "poses": 13,
+  "newTransitionPoses": 4,
+  "preservedFiles": 10314,
+  "records": [
+    {
+      "pose": 0,
+      "combination": "chestnut__blue__plain__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 0,
+      "combination": "chestnut__blue__plain__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 0,
+      "combination": "chestnut__blue__forester__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 0,
+      "combination": "chestnut__blue__forester__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 0,
+      "combination": "chestnut__blue__wayfarer__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 0,
+      "combination": "chestnut__blue__wayfarer__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 0,
+      "combination": "chestnut__amber__plain__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 0,
+      "combination": "chestnut__amber__plain__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 0,
+      "combination": "chestnut__amber__forester__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 0,
+      "combination": "chestnut__amber__forester__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 0,
+      "combination": "chestnut__amber__wayfarer__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 0,
+      "combination": "chestnut__amber__wayfarer__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 0,
+      "combination": "silver__blue__plain__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 0,
+      "combination": "silver__blue__plain__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 0,
+      "combination": "silver__blue__forester__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 0,
+      "combination": "silver__blue__forester__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 0,
+      "combination": "silver__blue__wayfarer__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 0,
+      "combination": "silver__blue__wayfarer__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 0,
+      "combination": "silver__amber__plain__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 0,
+      "combination": "silver__amber__plain__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 0,
+      "combination": "silver__amber__forester__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 0,
+      "combination": "silver__amber__forester__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 0,
+      "combination": "silver__amber__wayfarer__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 0,
+      "combination": "silver__amber__wayfarer__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 0,
+      "combination": "teal-crop__blue__plain__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 0,
+      "combination": "teal-crop__blue__plain__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 0,
+      "combination": "teal-crop__blue__forester__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 0,
+      "combination": "teal-crop__blue__forester__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 0,
+      "combination": "teal-crop__blue__wayfarer__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 0,
+      "combination": "teal-crop__blue__wayfarer__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 0,
+      "combination": "teal-crop__amber__plain__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 0,
+      "combination": "teal-crop__amber__plain__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 0,
+      "combination": "teal-crop__amber__forester__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 0,
+      "combination": "teal-crop__amber__forester__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 0,
+      "combination": "teal-crop__amber__wayfarer__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 0,
+      "combination": "teal-crop__amber__wayfarer__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 1,
+      "combination": "chestnut__blue__plain__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 1,
+      "combination": "chestnut__blue__plain__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 1,
+      "combination": "chestnut__blue__forester__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 1,
+      "combination": "chestnut__blue__forester__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 1,
+      "combination": "chestnut__blue__wayfarer__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 1,
+      "combination": "chestnut__blue__wayfarer__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 1,
+      "combination": "chestnut__amber__plain__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 1,
+      "combination": "chestnut__amber__plain__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 1,
+      "combination": "chestnut__amber__forester__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 1,
+      "combination": "chestnut__amber__forester__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 1,
+      "combination": "chestnut__amber__wayfarer__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 1,
+      "combination": "chestnut__amber__wayfarer__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 1,
+      "combination": "silver__blue__plain__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 1,
+      "combination": "silver__blue__plain__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 1,
+      "combination": "silver__blue__forester__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 1,
+      "combination": "silver__blue__forester__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 1,
+      "combination": "silver__blue__wayfarer__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 1,
+      "combination": "silver__blue__wayfarer__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 1,
+      "combination": "silver__amber__plain__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 1,
+      "combination": "silver__amber__plain__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 1,
+      "combination": "silver__amber__forester__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 1,
+      "combination": "silver__amber__forester__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 1,
+      "combination": "silver__amber__wayfarer__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 1,
+      "combination": "silver__amber__wayfarer__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 1,
+      "combination": "teal-crop__blue__plain__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 1,
+      "combination": "teal-crop__blue__plain__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 1,
+      "combination": "teal-crop__blue__forester__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 1,
+      "combination": "teal-crop__blue__forester__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 1,
+      "combination": "teal-crop__blue__wayfarer__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 1,
+      "combination": "teal-crop__blue__wayfarer__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 1,
+      "combination": "teal-crop__amber__plain__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 1,
+      "combination": "teal-crop__amber__plain__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 1,
+      "combination": "teal-crop__amber__forester__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 1,
+      "combination": "teal-crop__amber__forester__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 1,
+      "combination": "teal-crop__amber__wayfarer__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 1,
+      "combination": "teal-crop__amber__wayfarer__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 2,
+      "combination": "chestnut__blue__plain__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 2,
+      "combination": "chestnut__blue__plain__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 2,
+      "combination": "chestnut__blue__forester__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 2,
+      "combination": "chestnut__blue__forester__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 2,
+      "combination": "chestnut__blue__wayfarer__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 2,
+      "combination": "chestnut__blue__wayfarer__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 2,
+      "combination": "chestnut__amber__plain__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 2,
+      "combination": "chestnut__amber__plain__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 2,
+      "combination": "chestnut__amber__forester__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 2,
+      "combination": "chestnut__amber__forester__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 2,
+      "combination": "chestnut__amber__wayfarer__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 2,
+      "combination": "chestnut__amber__wayfarer__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 2,
+      "combination": "silver__blue__plain__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 2,
+      "combination": "silver__blue__plain__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 2,
+      "combination": "silver__blue__forester__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 2,
+      "combination": "silver__blue__forester__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 2,
+      "combination": "silver__blue__wayfarer__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 2,
+      "combination": "silver__blue__wayfarer__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 2,
+      "combination": "silver__amber__plain__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 2,
+      "combination": "silver__amber__plain__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 2,
+      "combination": "silver__amber__forester__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 2,
+      "combination": "silver__amber__forester__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 2,
+      "combination": "silver__amber__wayfarer__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 2,
+      "combination": "silver__amber__wayfarer__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 2,
+      "combination": "teal-crop__blue__plain__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 2,
+      "combination": "teal-crop__blue__plain__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 2,
+      "combination": "teal-crop__blue__forester__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 2,
+      "combination": "teal-crop__blue__forester__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 2,
+      "combination": "teal-crop__blue__wayfarer__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 2,
+      "combination": "teal-crop__blue__wayfarer__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 2,
+      "combination": "teal-crop__amber__plain__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 2,
+      "combination": "teal-crop__amber__plain__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 2,
+      "combination": "teal-crop__amber__forester__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 2,
+      "combination": "teal-crop__amber__forester__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 2,
+      "combination": "teal-crop__amber__wayfarer__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 2,
+      "combination": "teal-crop__amber__wayfarer__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 3,
+      "combination": "chestnut__blue__plain__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 3,
+      "combination": "chestnut__blue__plain__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 3,
+      "combination": "chestnut__blue__forester__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 3,
+      "combination": "chestnut__blue__forester__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 3,
+      "combination": "chestnut__blue__wayfarer__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 3,
+      "combination": "chestnut__blue__wayfarer__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 3,
+      "combination": "chestnut__amber__plain__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 3,
+      "combination": "chestnut__amber__plain__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 3,
+      "combination": "chestnut__amber__forester__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 3,
+      "combination": "chestnut__amber__forester__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 3,
+      "combination": "chestnut__amber__wayfarer__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 3,
+      "combination": "chestnut__amber__wayfarer__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 3,
+      "combination": "silver__blue__plain__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 3,
+      "combination": "silver__blue__plain__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 3,
+      "combination": "silver__blue__forester__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 3,
+      "combination": "silver__blue__forester__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 3,
+      "combination": "silver__blue__wayfarer__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 3,
+      "combination": "silver__blue__wayfarer__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 3,
+      "combination": "silver__amber__plain__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 3,
+      "combination": "silver__amber__plain__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 3,
+      "combination": "silver__amber__forester__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 3,
+      "combination": "silver__amber__forester__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 3,
+      "combination": "silver__amber__wayfarer__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 3,
+      "combination": "silver__amber__wayfarer__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 3,
+      "combination": "teal-crop__blue__plain__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 3,
+      "combination": "teal-crop__blue__plain__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 3,
+      "combination": "teal-crop__blue__forester__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 3,
+      "combination": "teal-crop__blue__forester__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 3,
+      "combination": "teal-crop__blue__wayfarer__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 3,
+      "combination": "teal-crop__blue__wayfarer__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 3,
+      "combination": "teal-crop__amber__plain__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 3,
+      "combination": "teal-crop__amber__plain__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 3,
+      "combination": "teal-crop__amber__forester__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 3,
+      "combination": "teal-crop__amber__forester__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 3,
+      "combination": "teal-crop__amber__wayfarer__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 3,
+      "combination": "teal-crop__amber__wayfarer__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 4,
+      "combination": "chestnut__blue__plain__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 4,
+      "combination": "chestnut__blue__plain__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 4,
+      "combination": "chestnut__blue__forester__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 4,
+      "combination": "chestnut__blue__forester__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 4,
+      "combination": "chestnut__blue__wayfarer__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 4,
+      "combination": "chestnut__blue__wayfarer__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 4,
+      "combination": "chestnut__amber__plain__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 4,
+      "combination": "chestnut__amber__plain__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 4,
+      "combination": "chestnut__amber__forester__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 4,
+      "combination": "chestnut__amber__forester__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 4,
+      "combination": "chestnut__amber__wayfarer__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 4,
+      "combination": "chestnut__amber__wayfarer__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 4,
+      "combination": "silver__blue__plain__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 4,
+      "combination": "silver__blue__plain__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 4,
+      "combination": "silver__blue__forester__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 4,
+      "combination": "silver__blue__forester__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 4,
+      "combination": "silver__blue__wayfarer__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 4,
+      "combination": "silver__blue__wayfarer__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 4,
+      "combination": "silver__amber__plain__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 4,
+      "combination": "silver__amber__plain__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 4,
+      "combination": "silver__amber__forester__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 4,
+      "combination": "silver__amber__forester__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 4,
+      "combination": "silver__amber__wayfarer__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 4,
+      "combination": "silver__amber__wayfarer__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 4,
+      "combination": "teal-crop__blue__plain__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 4,
+      "combination": "teal-crop__blue__plain__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 4,
+      "combination": "teal-crop__blue__forester__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 4,
+      "combination": "teal-crop__blue__forester__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 4,
+      "combination": "teal-crop__blue__wayfarer__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 4,
+      "combination": "teal-crop__blue__wayfarer__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 4,
+      "combination": "teal-crop__amber__plain__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 4,
+      "combination": "teal-crop__amber__plain__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 4,
+      "combination": "teal-crop__amber__forester__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 4,
+      "combination": "teal-crop__amber__forester__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 4,
+      "combination": "teal-crop__amber__wayfarer__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 4,
+      "combination": "teal-crop__amber__wayfarer__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 5,
+      "combination": "chestnut__blue__plain__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 5,
+      "combination": "chestnut__blue__plain__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 5,
+      "combination": "chestnut__blue__forester__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 5,
+      "combination": "chestnut__blue__forester__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 5,
+      "combination": "chestnut__blue__wayfarer__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 5,
+      "combination": "chestnut__blue__wayfarer__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 5,
+      "combination": "chestnut__amber__plain__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 5,
+      "combination": "chestnut__amber__plain__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 5,
+      "combination": "chestnut__amber__forester__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 5,
+      "combination": "chestnut__amber__forester__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 5,
+      "combination": "chestnut__amber__wayfarer__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 5,
+      "combination": "chestnut__amber__wayfarer__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 5,
+      "combination": "silver__blue__plain__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 5,
+      "combination": "silver__blue__plain__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 5,
+      "combination": "silver__blue__forester__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 5,
+      "combination": "silver__blue__forester__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 5,
+      "combination": "silver__blue__wayfarer__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 5,
+      "combination": "silver__blue__wayfarer__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 5,
+      "combination": "silver__amber__plain__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 5,
+      "combination": "silver__amber__plain__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 5,
+      "combination": "silver__amber__forester__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 5,
+      "combination": "silver__amber__forester__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 5,
+      "combination": "silver__amber__wayfarer__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 5,
+      "combination": "silver__amber__wayfarer__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 5,
+      "combination": "teal-crop__blue__plain__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 5,
+      "combination": "teal-crop__blue__plain__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 5,
+      "combination": "teal-crop__blue__forester__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 5,
+      "combination": "teal-crop__blue__forester__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 5,
+      "combination": "teal-crop__blue__wayfarer__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 5,
+      "combination": "teal-crop__blue__wayfarer__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 5,
+      "combination": "teal-crop__amber__plain__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 5,
+      "combination": "teal-crop__amber__plain__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 5,
+      "combination": "teal-crop__amber__forester__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 5,
+      "combination": "teal-crop__amber__forester__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 5,
+      "combination": "teal-crop__amber__wayfarer__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 5,
+      "combination": "teal-crop__amber__wayfarer__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 6,
+      "combination": "chestnut__blue__plain__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 6,
+      "combination": "chestnut__blue__plain__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 6,
+      "combination": "chestnut__blue__forester__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 6,
+      "combination": "chestnut__blue__forester__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 6,
+      "combination": "chestnut__blue__wayfarer__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 6,
+      "combination": "chestnut__blue__wayfarer__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 6,
+      "combination": "chestnut__amber__plain__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 6,
+      "combination": "chestnut__amber__plain__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 6,
+      "combination": "chestnut__amber__forester__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 6,
+      "combination": "chestnut__amber__forester__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 6,
+      "combination": "chestnut__amber__wayfarer__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 6,
+      "combination": "chestnut__amber__wayfarer__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 6,
+      "combination": "silver__blue__plain__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 6,
+      "combination": "silver__blue__plain__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 6,
+      "combination": "silver__blue__forester__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 6,
+      "combination": "silver__blue__forester__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 6,
+      "combination": "silver__blue__wayfarer__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 6,
+      "combination": "silver__blue__wayfarer__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 6,
+      "combination": "silver__amber__plain__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 6,
+      "combination": "silver__amber__plain__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 6,
+      "combination": "silver__amber__forester__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 6,
+      "combination": "silver__amber__forester__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 6,
+      "combination": "silver__amber__wayfarer__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 6,
+      "combination": "silver__amber__wayfarer__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 6,
+      "combination": "teal-crop__blue__plain__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 6,
+      "combination": "teal-crop__blue__plain__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 6,
+      "combination": "teal-crop__blue__forester__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 6,
+      "combination": "teal-crop__blue__forester__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 6,
+      "combination": "teal-crop__blue__wayfarer__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 6,
+      "combination": "teal-crop__blue__wayfarer__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 6,
+      "combination": "teal-crop__amber__plain__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 6,
+      "combination": "teal-crop__amber__plain__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 6,
+      "combination": "teal-crop__amber__forester__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 6,
+      "combination": "teal-crop__amber__forester__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 6,
+      "combination": "teal-crop__amber__wayfarer__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 6,
+      "combination": "teal-crop__amber__wayfarer__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 7,
+      "combination": "chestnut__blue__plain__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 7,
+      "combination": "chestnut__blue__plain__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 7,
+      "combination": "chestnut__blue__forester__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 7,
+      "combination": "chestnut__blue__forester__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 7,
+      "combination": "chestnut__blue__wayfarer__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 7,
+      "combination": "chestnut__blue__wayfarer__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 7,
+      "combination": "chestnut__amber__plain__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 7,
+      "combination": "chestnut__amber__plain__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 7,
+      "combination": "chestnut__amber__forester__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 7,
+      "combination": "chestnut__amber__forester__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 7,
+      "combination": "chestnut__amber__wayfarer__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 7,
+      "combination": "chestnut__amber__wayfarer__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 7,
+      "combination": "silver__blue__plain__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 7,
+      "combination": "silver__blue__plain__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 7,
+      "combination": "silver__blue__forester__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 7,
+      "combination": "silver__blue__forester__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 7,
+      "combination": "silver__blue__wayfarer__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 7,
+      "combination": "silver__blue__wayfarer__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 7,
+      "combination": "silver__amber__plain__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 7,
+      "combination": "silver__amber__plain__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 7,
+      "combination": "silver__amber__forester__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 7,
+      "combination": "silver__amber__forester__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 7,
+      "combination": "silver__amber__wayfarer__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 7,
+      "combination": "silver__amber__wayfarer__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 7,
+      "combination": "teal-crop__blue__plain__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 7,
+      "combination": "teal-crop__blue__plain__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 7,
+      "combination": "teal-crop__blue__forester__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 7,
+      "combination": "teal-crop__blue__forester__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 7,
+      "combination": "teal-crop__blue__wayfarer__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 7,
+      "combination": "teal-crop__blue__wayfarer__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 7,
+      "combination": "teal-crop__amber__plain__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 7,
+      "combination": "teal-crop__amber__plain__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 7,
+      "combination": "teal-crop__amber__forester__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 7,
+      "combination": "teal-crop__amber__forester__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 7,
+      "combination": "teal-crop__amber__wayfarer__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 7,
+      "combination": "teal-crop__amber__wayfarer__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 8,
+      "combination": "chestnut__blue__plain__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 8,
+      "combination": "chestnut__blue__plain__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 8,
+      "combination": "chestnut__blue__forester__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 8,
+      "combination": "chestnut__blue__forester__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 8,
+      "combination": "chestnut__blue__wayfarer__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 8,
+      "combination": "chestnut__blue__wayfarer__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 8,
+      "combination": "chestnut__amber__plain__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 8,
+      "combination": "chestnut__amber__plain__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 8,
+      "combination": "chestnut__amber__forester__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 8,
+      "combination": "chestnut__amber__forester__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 8,
+      "combination": "chestnut__amber__wayfarer__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 8,
+      "combination": "chestnut__amber__wayfarer__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 8,
+      "combination": "silver__blue__plain__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 8,
+      "combination": "silver__blue__plain__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 8,
+      "combination": "silver__blue__forester__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 8,
+      "combination": "silver__blue__forester__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 8,
+      "combination": "silver__blue__wayfarer__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 8,
+      "combination": "silver__blue__wayfarer__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 8,
+      "combination": "silver__amber__plain__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 8,
+      "combination": "silver__amber__plain__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 8,
+      "combination": "silver__amber__forester__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 8,
+      "combination": "silver__amber__forester__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 8,
+      "combination": "silver__amber__wayfarer__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 8,
+      "combination": "silver__amber__wayfarer__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 8,
+      "combination": "teal-crop__blue__plain__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 8,
+      "combination": "teal-crop__blue__plain__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 8,
+      "combination": "teal-crop__blue__forester__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 8,
+      "combination": "teal-crop__blue__forester__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 8,
+      "combination": "teal-crop__blue__wayfarer__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 8,
+      "combination": "teal-crop__blue__wayfarer__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 8,
+      "combination": "teal-crop__amber__plain__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 8,
+      "combination": "teal-crop__amber__plain__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 8,
+      "combination": "teal-crop__amber__forester__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 8,
+      "combination": "teal-crop__amber__forester__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 8,
+      "combination": "teal-crop__amber__wayfarer__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 8,
+      "combination": "teal-crop__amber__wayfarer__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": true
+    },
+    {
+      "pose": 9,
+      "combination": "chestnut__blue__plain__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": null
+    },
+    {
+      "pose": 9,
+      "combination": "chestnut__blue__plain__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": null
+    },
+    {
+      "pose": 9,
+      "combination": "chestnut__blue__forester__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": null
+    },
+    {
+      "pose": 9,
+      "combination": "chestnut__blue__forester__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": null
+    },
+    {
+      "pose": 9,
+      "combination": "chestnut__blue__wayfarer__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": null
+    },
+    {
+      "pose": 9,
+      "combination": "chestnut__blue__wayfarer__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": null
+    },
+    {
+      "pose": 9,
+      "combination": "chestnut__amber__plain__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": null
+    },
+    {
+      "pose": 9,
+      "combination": "chestnut__amber__plain__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": null
+    },
+    {
+      "pose": 9,
+      "combination": "chestnut__amber__forester__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": null
+    },
+    {
+      "pose": 9,
+      "combination": "chestnut__amber__forester__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": null
+    },
+    {
+      "pose": 9,
+      "combination": "chestnut__amber__wayfarer__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": null
+    },
+    {
+      "pose": 9,
+      "combination": "chestnut__amber__wayfarer__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": null
+    },
+    {
+      "pose": 9,
+      "combination": "silver__blue__plain__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": null
+    },
+    {
+      "pose": 9,
+      "combination": "silver__blue__plain__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": null
+    },
+    {
+      "pose": 9,
+      "combination": "silver__blue__forester__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": null
+    },
+    {
+      "pose": 9,
+      "combination": "silver__blue__forester__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": null
+    },
+    {
+      "pose": 9,
+      "combination": "silver__blue__wayfarer__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": null
+    },
+    {
+      "pose": 9,
+      "combination": "silver__blue__wayfarer__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": null
+    },
+    {
+      "pose": 9,
+      "combination": "silver__amber__plain__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": null
+    },
+    {
+      "pose": 9,
+      "combination": "silver__amber__plain__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": null
+    },
+    {
+      "pose": 9,
+      "combination": "silver__amber__forester__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": null
+    },
+    {
+      "pose": 9,
+      "combination": "silver__amber__forester__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": null
+    },
+    {
+      "pose": 9,
+      "combination": "silver__amber__wayfarer__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": null
+    },
+    {
+      "pose": 9,
+      "combination": "silver__amber__wayfarer__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": null
+    },
+    {
+      "pose": 9,
+      "combination": "teal-crop__blue__plain__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": null
+    },
+    {
+      "pose": 9,
+      "combination": "teal-crop__blue__plain__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": null
+    },
+    {
+      "pose": 9,
+      "combination": "teal-crop__blue__forester__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": null
+    },
+    {
+      "pose": 9,
+      "combination": "teal-crop__blue__forester__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": null
+    },
+    {
+      "pose": 9,
+      "combination": "teal-crop__blue__wayfarer__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": null
+    },
+    {
+      "pose": 9,
+      "combination": "teal-crop__blue__wayfarer__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": null
+    },
+    {
+      "pose": 9,
+      "combination": "teal-crop__amber__plain__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": null
+    },
+    {
+      "pose": 9,
+      "combination": "teal-crop__amber__plain__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": null
+    },
+    {
+      "pose": 9,
+      "combination": "teal-crop__amber__forester__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": null
+    },
+    {
+      "pose": 9,
+      "combination": "teal-crop__amber__forester__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": null
+    },
+    {
+      "pose": 9,
+      "combination": "teal-crop__amber__wayfarer__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": null
+    },
+    {
+      "pose": 9,
+      "combination": "teal-crop__amber__wayfarer__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": null
+    },
+    {
+      "pose": 10,
+      "combination": "chestnut__blue__plain__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": null
+    },
+    {
+      "pose": 10,
+      "combination": "chestnut__blue__plain__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": null
+    },
+    {
+      "pose": 10,
+      "combination": "chestnut__blue__forester__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": null
+    },
+    {
+      "pose": 10,
+      "combination": "chestnut__blue__forester__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": null
+    },
+    {
+      "pose": 10,
+      "combination": "chestnut__blue__wayfarer__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": null
+    },
+    {
+      "pose": 10,
+      "combination": "chestnut__blue__wayfarer__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": null
+    },
+    {
+      "pose": 10,
+      "combination": "chestnut__amber__plain__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": null
+    },
+    {
+      "pose": 10,
+      "combination": "chestnut__amber__plain__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": null
+    },
+    {
+      "pose": 10,
+      "combination": "chestnut__amber__forester__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": null
+    },
+    {
+      "pose": 10,
+      "combination": "chestnut__amber__forester__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": null
+    },
+    {
+      "pose": 10,
+      "combination": "chestnut__amber__wayfarer__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": null
+    },
+    {
+      "pose": 10,
+      "combination": "chestnut__amber__wayfarer__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": null
+    },
+    {
+      "pose": 10,
+      "combination": "silver__blue__plain__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": null
+    },
+    {
+      "pose": 10,
+      "combination": "silver__blue__plain__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": null
+    },
+    {
+      "pose": 10,
+      "combination": "silver__blue__forester__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": null
+    },
+    {
+      "pose": 10,
+      "combination": "silver__blue__forester__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": null
+    },
+    {
+      "pose": 10,
+      "combination": "silver__blue__wayfarer__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": null
+    },
+    {
+      "pose": 10,
+      "combination": "silver__blue__wayfarer__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": null
+    },
+    {
+      "pose": 10,
+      "combination": "silver__amber__plain__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": null
+    },
+    {
+      "pose": 10,
+      "combination": "silver__amber__plain__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": null
+    },
+    {
+      "pose": 10,
+      "combination": "silver__amber__forester__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": null
+    },
+    {
+      "pose": 10,
+      "combination": "silver__amber__forester__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": null
+    },
+    {
+      "pose": 10,
+      "combination": "silver__amber__wayfarer__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": null
+    },
+    {
+      "pose": 10,
+      "combination": "silver__amber__wayfarer__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": null
+    },
+    {
+      "pose": 10,
+      "combination": "teal-crop__blue__plain__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": null
+    },
+    {
+      "pose": 10,
+      "combination": "teal-crop__blue__plain__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": null
+    },
+    {
+      "pose": 10,
+      "combination": "teal-crop__blue__forester__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": null
+    },
+    {
+      "pose": 10,
+      "combination": "teal-crop__blue__forester__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": null
+    },
+    {
+      "pose": 10,
+      "combination": "teal-crop__blue__wayfarer__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": null
+    },
+    {
+      "pose": 10,
+      "combination": "teal-crop__blue__wayfarer__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": null
+    },
+    {
+      "pose": 10,
+      "combination": "teal-crop__amber__plain__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": null
+    },
+    {
+      "pose": 10,
+      "combination": "teal-crop__amber__plain__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": null
+    },
+    {
+      "pose": 10,
+      "combination": "teal-crop__amber__forester__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": null
+    },
+    {
+      "pose": 10,
+      "combination": "teal-crop__amber__forester__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": null
+    },
+    {
+      "pose": 10,
+      "combination": "teal-crop__amber__wayfarer__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": null
+    },
+    {
+      "pose": 10,
+      "combination": "teal-crop__amber__wayfarer__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": null
+    },
+    {
+      "pose": 11,
+      "combination": "chestnut__blue__plain__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": null
+    },
+    {
+      "pose": 11,
+      "combination": "chestnut__blue__plain__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": null
+    },
+    {
+      "pose": 11,
+      "combination": "chestnut__blue__forester__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": null
+    },
+    {
+      "pose": 11,
+      "combination": "chestnut__blue__forester__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": null
+    },
+    {
+      "pose": 11,
+      "combination": "chestnut__blue__wayfarer__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": null
+    },
+    {
+      "pose": 11,
+      "combination": "chestnut__blue__wayfarer__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": null
+    },
+    {
+      "pose": 11,
+      "combination": "chestnut__amber__plain__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": null
+    },
+    {
+      "pose": 11,
+      "combination": "chestnut__amber__plain__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": null
+    },
+    {
+      "pose": 11,
+      "combination": "chestnut__amber__forester__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": null
+    },
+    {
+      "pose": 11,
+      "combination": "chestnut__amber__forester__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": null
+    },
+    {
+      "pose": 11,
+      "combination": "chestnut__amber__wayfarer__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": null
+    },
+    {
+      "pose": 11,
+      "combination": "chestnut__amber__wayfarer__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": null
+    },
+    {
+      "pose": 11,
+      "combination": "silver__blue__plain__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": null
+    },
+    {
+      "pose": 11,
+      "combination": "silver__blue__plain__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": null
+    },
+    {
+      "pose": 11,
+      "combination": "silver__blue__forester__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": null
+    },
+    {
+      "pose": 11,
+      "combination": "silver__blue__forester__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": null
+    },
+    {
+      "pose": 11,
+      "combination": "silver__blue__wayfarer__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": null
+    },
+    {
+      "pose": 11,
+      "combination": "silver__blue__wayfarer__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": null
+    },
+    {
+      "pose": 11,
+      "combination": "silver__amber__plain__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": null
+    },
+    {
+      "pose": 11,
+      "combination": "silver__amber__plain__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": null
+    },
+    {
+      "pose": 11,
+      "combination": "silver__amber__forester__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": null
+    },
+    {
+      "pose": 11,
+      "combination": "silver__amber__forester__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": null
+    },
+    {
+      "pose": 11,
+      "combination": "silver__amber__wayfarer__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": null
+    },
+    {
+      "pose": 11,
+      "combination": "silver__amber__wayfarer__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": null
+    },
+    {
+      "pose": 11,
+      "combination": "teal-crop__blue__plain__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": null
+    },
+    {
+      "pose": 11,
+      "combination": "teal-crop__blue__plain__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": null
+    },
+    {
+      "pose": 11,
+      "combination": "teal-crop__blue__forester__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": null
+    },
+    {
+      "pose": 11,
+      "combination": "teal-crop__blue__forester__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": null
+    },
+    {
+      "pose": 11,
+      "combination": "teal-crop__blue__wayfarer__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": null
+    },
+    {
+      "pose": 11,
+      "combination": "teal-crop__blue__wayfarer__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": null
+    },
+    {
+      "pose": 11,
+      "combination": "teal-crop__amber__plain__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": null
+    },
+    {
+      "pose": 11,
+      "combination": "teal-crop__amber__plain__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": null
+    },
+    {
+      "pose": 11,
+      "combination": "teal-crop__amber__forester__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": null
+    },
+    {
+      "pose": 11,
+      "combination": "teal-crop__amber__forester__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": null
+    },
+    {
+      "pose": 11,
+      "combination": "teal-crop__amber__wayfarer__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": null
+    },
+    {
+      "pose": 11,
+      "combination": "teal-crop__amber__wayfarer__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": null
+    },
+    {
+      "pose": 12,
+      "combination": "chestnut__blue__plain__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": null
+    },
+    {
+      "pose": 12,
+      "combination": "chestnut__blue__plain__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": null
+    },
+    {
+      "pose": 12,
+      "combination": "chestnut__blue__forester__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": null
+    },
+    {
+      "pose": 12,
+      "combination": "chestnut__blue__forester__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": null
+    },
+    {
+      "pose": 12,
+      "combination": "chestnut__blue__wayfarer__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": null
+    },
+    {
+      "pose": 12,
+      "combination": "chestnut__blue__wayfarer__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": null
+    },
+    {
+      "pose": 12,
+      "combination": "chestnut__amber__plain__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": null
+    },
+    {
+      "pose": 12,
+      "combination": "chestnut__amber__plain__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": null
+    },
+    {
+      "pose": 12,
+      "combination": "chestnut__amber__forester__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": null
+    },
+    {
+      "pose": 12,
+      "combination": "chestnut__amber__forester__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": null
+    },
+    {
+      "pose": 12,
+      "combination": "chestnut__amber__wayfarer__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": null
+    },
+    {
+      "pose": 12,
+      "combination": "chestnut__amber__wayfarer__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": null
+    },
+    {
+      "pose": 12,
+      "combination": "silver__blue__plain__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": null
+    },
+    {
+      "pose": 12,
+      "combination": "silver__blue__plain__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": null
+    },
+    {
+      "pose": 12,
+      "combination": "silver__blue__forester__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": null
+    },
+    {
+      "pose": 12,
+      "combination": "silver__blue__forester__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": null
+    },
+    {
+      "pose": 12,
+      "combination": "silver__blue__wayfarer__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": null
+    },
+    {
+      "pose": 12,
+      "combination": "silver__blue__wayfarer__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": null
+    },
+    {
+      "pose": 12,
+      "combination": "silver__amber__plain__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": null
+    },
+    {
+      "pose": 12,
+      "combination": "silver__amber__plain__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": null
+    },
+    {
+      "pose": 12,
+      "combination": "silver__amber__forester__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": null
+    },
+    {
+      "pose": 12,
+      "combination": "silver__amber__forester__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": null
+    },
+    {
+      "pose": 12,
+      "combination": "silver__amber__wayfarer__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": null
+    },
+    {
+      "pose": 12,
+      "combination": "silver__amber__wayfarer__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": null
+    },
+    {
+      "pose": 12,
+      "combination": "teal-crop__blue__plain__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": null
+    },
+    {
+      "pose": 12,
+      "combination": "teal-crop__blue__plain__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": null
+    },
+    {
+      "pose": 12,
+      "combination": "teal-crop__blue__forester__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": null
+    },
+    {
+      "pose": 12,
+      "combination": "teal-crop__blue__forester__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": null
+    },
+    {
+      "pose": 12,
+      "combination": "teal-crop__blue__wayfarer__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": null
+    },
+    {
+      "pose": 12,
+      "combination": "teal-crop__blue__wayfarer__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": null
+    },
+    {
+      "pose": 12,
+      "combination": "teal-crop__amber__plain__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": null
+    },
+    {
+      "pose": 12,
+      "combination": "teal-crop__amber__plain__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": null
+    },
+    {
+      "pose": 12,
+      "combination": "teal-crop__amber__forester__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": null
+    },
+    {
+      "pose": 12,
+      "combination": "teal-crop__amber__forester__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": null
+    },
+    {
+      "pose": 12,
+      "combination": "teal-crop__amber__wayfarer__empty",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": null
+    },
+    {
+      "pose": 12,
+      "combination": "teal-crop__amber__wayfarer__back",
+      "actualCompositionMatches": true,
+      "oldPoseUnchanged": null
+    }
+  ],
+  "limits": [
+    "Actual468 poses checked numerically; whole-body visual review recorded separately",
+    "Only idle->walk01 and walk08->idle; arbitrary phase interruption not tested",
+    "Old records synced as historical evidence, new current checks distinguished",
+    "No continuous playback/device/runtime/IPA approval"
+  ]
+}

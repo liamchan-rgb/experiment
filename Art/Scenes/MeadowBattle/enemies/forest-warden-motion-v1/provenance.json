@@ -1,0 +1,25 @@
+{
+  "date": "2026-10-22",
+  "tool": "image_gen.imagegen",
+  "reference": "Art/Scenes/MeadowBattle/enemies/forest-warden-v2/idle.png",
+  "passes": [
+    {
+      "output": "reference/draft-sheet.png",
+      "request": "Exactly eight left-facing forest warden attack poses, 4x2 transparent sheet; alert, crouch, lower head, forward ram, brace, recoil, recover, alert. Preserve palette, antlers, leafy cape and four-legged anatomy.",
+      "review": "Rejected: rightmost tail touches source cell edge."
+    },
+    {
+      "output": "reference/padding-sheet.png",
+      "request": "Preserve eight poses and strict4x2 grid; reduce same shared body scale, add transparent gutters, restore all tails/antlers/hooves fully inside cells; first and last alert pose.",
+      "review": "Layout accepted; requested cleanup of fringe colors."
+    },
+    {
+      "output": "reference/cleanup-sheet.png",
+      "request": "Pixel cleanup only: preserve poses/grid/padding; remove bright red/orange fringe, keep clean dark brown pixel outlines and transparency; no extra pixels, text or effects.",
+      "review": "Selected as source; runtime exports use one shared scale and standard hard alpha."
+    }
+  ],
+  "packing": "scripts/pack-warden-motion.py",
+  "userArtApproval": null,
+  "internalReview": "Full-body 384x256 native frames, normal120ms pose order, cell padding, sole registration, contact runs, exact recovery00 copy. Source originals preserved."
+}

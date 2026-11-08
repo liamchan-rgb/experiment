@@ -1,0 +1,68 @@
+{
+  "status": "concept selection only; no production outfit package or user art approval",
+  "scope": "Each option uses the same current P1 base body, lower outfit, hair, face, back sword and down-facing motion. Only the new armor surface design changes.",
+  "motionPreview": "Down-facing walk; 8 frames × 120ms, rendered from the existing registered motion sampler. Full 8-direction/104-pose packages are not included until a design is selected.",
+  "source": "Editable SVG concepts rasterized through the project armor surface sampler and composed using the real P1 compositor.",
+  "options": [
+    {
+      "id": "star-a-starforged",
+      "family": "starlight",
+      "label": "星辉甲 A · 星铸骑士",
+      "material": "午夜蓝钢 · 银白星冠 · 明金纹章",
+      "description": "加宽星钢胸甲、八芒徽、双层银肩甲",
+      "idle": "options/star-a-starforged-idle-2x.png",
+      "walkGIF": "options/star-a-starforged-walk-120ms.gif",
+      "sourceSVG": "source/star-a-starforged.svg"
+    },
+    {
+      "id": "star-b-corona",
+      "family": "starlight",
+      "label": "星辉甲 B · 日冕圣卫",
+      "material": "象牙白金属 · 皇家蓝衬 · 日轮金饰",
+      "description": "象牙金胸甲、日轮徽、蓝色侧嵌",
+      "idle": "options/star-b-corona-idle-2x.png",
+      "walkGIF": "options/star-b-corona-walk-120ms.gif",
+      "sourceSVG": "source/star-b-corona.svg"
+    },
+    {
+      "id": "star-c-eclipse",
+      "family": "starlight",
+      "label": "星辉甲 C · 星蚀守望",
+      "material": "暮紫星钢 · 冷银边 · 暗金星图",
+      "description": "暮紫星钢、月蚀徽、非对称银肩",
+      "idle": "options/star-c-eclipse-idle-2x.png",
+      "walkGIF": "options/star-c-eclipse-walk-120ms.gif",
+      "sourceSVG": "source/star-c-eclipse.svg"
+    },
+    {
+      "id": "dragon-a-jade-scale",
+      "family": "dragon",
+      "label": "龙纹甲 A · 青玉龙鳞",
+      "material": "翡翠鳞钢 · 古铜骨架 · 玉色龙徽",
+      "description": "青玉叠鳞、古铜边、分片护腰",
+      "idle": "options/dragon-a-jade-scale-idle-2x.png",
+      "walkGIF": "options/dragon-a-jade-scale-walk-120ms.gif",
+      "sourceSVG": "source/dragon-a-jade-scale.svg"
+    },
+    {
+      "id": "dragon-b-ember-vanguard",
+      "family": "dragon",
+      "label": "龙纹甲 B · 赤焰龙骑",
+      "material": "熔岩赤甲 · 黑铁边 · 炽金龙徽",
+      "description": "赤焰重甲、火棘肩甲、龙火胸徽",
+      "idle": "options/dragon-b-ember-vanguard-idle-2x.png",
+      "walkGIF": "options/dragon-b-ember-vanguard-walk-120ms.gif",
+      "sourceSVG": "source/dragon-b-ember-vanguard.svg"
+    },
+    {
+      "id": "dragon-c-onyx-commander",
+      "family": "dragon",
+      "label": "龙纹甲 C · 玄金御龙",
+      "material": "曜石黑甲 · 亮金骨线 · 赤玉龙眼",
+      "description": "玄铁黑金、龙翼肩甲、红玉徽眼",
+      "idle": "options/dragon-c-onyx-commander-idle-2x.png",
+      "walkGIF": "options/dragon-c-onyx-commander-walk-120ms.gif",
+      "sourceSVG": "source/dragon-c-onyx-commander.svg"
+    }
+  ]
+}

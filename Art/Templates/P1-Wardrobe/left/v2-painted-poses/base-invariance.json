@@ -1,0 +1,23 @@
+{
+  "bodyManifest": "Art/Templates/P1-Neutral/left/walk-r3-complete-transitions/asset.json",
+  "bodyManifestSHA256": "07a1cbc6335db5170de3bd0bdc2010398c7b0a5c412f16b6fffbced3e80d43dd",
+  "bodyMotionSHA256": "1bf888ebf4fa45dd7a92df1cfcd05406c5568622bb2870a12420bef74a0cfc8f",
+  "genericCompositorSHA256": "828fc63caf84a4d706083a7768023671d65bb7ef8d2ff6397ef63e23a0c5f403",
+  "frames": {
+    "00.png": "083c586bd453f93cd6761e276c333e40f80e00512592a923e562f357ed7edf55",
+    "01.png": "cf416a6f381a969aaf1fa97280aa716a5fcc119c7bdca00d834cbb6705a2cae6",
+    "02.png": "35b23a12a2d39a18b32bccb7cca289e202c878c117457b4acdc6ec65fc4a4492",
+    "03.png": "17e8d2c3a2a418bd3ebaf2a3e8b82a95f536e1ca63679710fda524c3c7fed512",
+    "04.png": "c89472c5eeffe01c4ef967ce7dae09cb284bf8c8e18edea4f3c329112552bed6",
+    "05.png": "431393449db0b3e7b51a67566f5f9c3ce1f70ed79e0bc8526561b70a9d9b1ae6",
+    "06.png": "db27d3583c7ea9cd7dd8e43c9b1472404f690c6300b4ed8ef743cff898170fcc",
+    "07.png": "f05ed195c41f2377eb93c182cc5736565221b33278435f12c74e297a573d1c2f",
+    "08.png": "628052570e689618d498ccd2dc7c0cfd2c8ac0e80dc813c90fd4b8aa2739a69d",
+    "09.png": "339caece7b2dbacb62e49c537a6f32a46ee00ba3d28bde3684e5927b777d0bb6",
+    "10.png": "1479ece4e753eb69639b63bad638125ae6a4822392e30cc92d42fc1f29e64bf8",
+    "11.png": "bd6dd2b22fe1922ec60dee5b928ba2efd84da30fdbb8eca299335da97425696d",
+    "12.png": "160ee6c5bc432cc48b88802bd1b85086c122dc3011d1588f3304b2aafa0d8ec9"
+  },
+  "bodyAndJointChangesPermitted": false,
+  "wardrobeMotionDifference": "Only drawOrder adds independent appearance slots; all body joints, facing, head transforms and phase keys retained."
+}

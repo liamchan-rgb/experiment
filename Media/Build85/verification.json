@@ -1,0 +1,30 @@
+{
+  "sourceCommit": "9195d66827b958e5fe65a083ccfbf93492368faa",
+  "runID": 42141658137,
+  "artifactID": 13469025718,
+  "version": "1.6.58",
+  "build": 85,
+  "runAttempt": 1,
+  "artifactSHA256": "237843d84198c9fbdb4fdcd295b4d304584cf78ffb217d58c88a8e7134aa24db",
+  "ipaBytes": 64568149,
+  "ipaSHA256": "22a668721026ce8ee56c0194d2672757390b6bcfab9bf4d2e3c1297cc62e78ee",
+  "tests": 226,
+  "checks": {
+    "CRC": true,
+    "classicZIP2WithoutExtras": true,
+    "version": "1.6.58/85",
+    "executableDiffersFromBuild84": true,
+    "executableSHA256": "7ceb21c061506e9e6ebc315a4826d9f5dc3a489a5f7f93572147bcbea6606a30",
+    "arm64ExecutablePermissions": "0o100755",
+    "MetalAssets12MonsterAtlases6DatasetsAndFullCatalogUnchanged": true,
+    "encounters-default.json": "Mac/Linux roster identical; road distance error <1e-8",
+    "encounters-max.json": "Mac/Linux roster identical; road distance error <1e-8"
+  },
+  "preservedBuild84Resources": {
+    "Payload/MeadowJourney.app/Assets.car": "9a3431ff9f173b30db1a3c4e9d6775caf35d12a19a0c89dda7c9c7b87b0fc2c8",
+    "Payload/MeadowJourney.app/SceneMap.json": "b5d8e7c74e6038a4d6b3e266cf1c6f7184eee56cfb2c2f462b7e048ab6cd0ea5",
+    "Payload/MeadowJourney.app/ClassroomGameCore_ClassroomGameCore.bundle/initial-content.json": "aaab980fd5f3154ac813a02dc907a835ee0e0181c4149f2b7803d9594795f34a",
+    "Payload/MeadowJourney.app/hero-gait.json": "44ad26e97cfd0836074eefc70ee081f2bbb5b2003961ed1e779acbfebdaaa527"
+  },
+  "appSimulatorDeviceRun": false
+}

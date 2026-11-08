@@ -1,0 +1,10 @@
+{
+  "sourceCommit": "d5d0457ea6da51a97ede591eb7376da2bb932cc7",
+  "workflowRun": 40151137040,
+  "xcode": "Xcode 16.4\nBuild version 16F6",
+  "authoritativeTrace": "macOS pure Swift executable; actual production controller and road classes",
+  "linuxCrossCheck": "same facing/frame/column/state; all float phase/positions equal within1e-6",
+  "controllerSourceSHA256": "b06361c8cc3a6318be02999afc11343859e193fdd358962e3ee3aa2a6441e1f0",
+  "simulatorExecuted": false,
+  "deviceExecuted": false
+}

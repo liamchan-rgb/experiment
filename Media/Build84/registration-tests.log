@@ -1,0 +1,37 @@
+[0/1] Planning build
+Building for debugging...
+[0/6] Write sources
+[2/6] Write swift-version--6CC1FD8C7F4CAE66.txt
+[4/9] Compiling MeadowBattleSupport MonsterVisual.swift
+[5/9] Emitting module MeadowBattleSupport
+[6/11] Write Objects.LinkFileList
+[7/13] Linking MeadowSupportReviewExport
+[9/13] Compiling MeadowBattleSupportTests MonsterVisualTests.swift
+[10/13] Emitting module MeadowBattleSupportTests
+[11/14] /tmp/build84-swift/build/x86_64-unknown-linux-gnu/debug/ClassroomGameCorePackageDiscoveredTests.derived/all-discovered-tests.swift
+[12/15] Write sources
+[14/18] Compiling ClassroomGameCorePackageDiscoveredTests ClassroomGameCoreTests.swift
+[15/18] Compiling ClassroomGameCorePackageDiscoveredTests MeadowBattleSupportTests.swift
+[16/20] Emitting module ClassroomGameCorePackageDiscoveredTests
+[17/20] Compiling ClassroomGameCorePackageDiscoveredTests MeadowWorldSupportTests.swift
+[18/20] Compiling ClassroomGameCorePackageDiscoveredTests all-discovered-tests.swift
+[19/21] Write Objects.LinkFileList
+[20/21] Linking ClassroomGameCorePackageTests.xctest
+Build complete! (3.81s)
+Test Suite 'Selected tests' started at 2026-11-05 17:25:40.368
+Test Suite 'MonsterVisualTests' started at 2026-11-05 17:25:40.369
+Test Case 'MonsterVisualTests.testHurtInterruptsAttackAndAllSpeciesReturnToIdle' started at 2026-11-05 17:25:40.369
+Test Case 'MonsterVisualTests.testHurtInterruptsAttackAndAllSpeciesReturnToIdle' passed (0.001 seconds)
+Test Case 'MonsterVisualTests.testRangedSpeciesStayInPlaceAndMissileTerminatesAtContact' started at 2026-11-05 17:25:40.370
+Test Case 'MonsterVisualTests.testRangedSpeciesStayInPlaceAndMissileTerminatesAtContact' passed (0.101 seconds)
+Test Case 'MonsterVisualTests.testSpeciesRegistryIsSeparateFromPersistentIDsAndLegacyDeer' started at 2026-11-05 17:25:40.471
+Test Case 'MonsterVisualTests.testSpeciesRegistryIsSeparateFromPersistentIDsAndLegacyDeer' passed (0.105 seconds)
+Test Case 'MonsterVisualTests.testThreePersistentSlotsAndBossDiceAvoidTheirHeaders' started at 2026-11-05 17:25:40.576
+Test Case 'MonsterVisualTests.testThreePersistentSlotsAndBossDiceAvoidTheirHeaders' passed (0.0 seconds)
+Test Suite 'MonsterVisualTests' passed at 2026-11-05 17:25:40.576
+	 Executed 4 tests, with 0 failures (0 unexpected) in 0.207 (0.207) seconds
+Test Suite 'Selected tests' passed at 2026-11-05 17:25:40.576
+	 Executed 4 tests, with 0 failures (0 unexpected) in 0.207 (0.207) seconds
+◇ Test run started.
+↳ Testing Library Version: 6.0.3 (18c42c19cac3faf)
+✔ Test run with 0 tests passed after 0.001 seconds.

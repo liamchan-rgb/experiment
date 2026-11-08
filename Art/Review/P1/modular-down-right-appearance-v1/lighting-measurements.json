@@ -1,0 +1,25 @@
+{
+  "scope": "Source highlight/shoulder sanity checks supplement visual review; no artwork approval",
+  "measurements": [
+    {
+      "part": "hair-chestnut",
+      "brightest15PercentCenterX": 34.55102040816327,
+      "hairCenterX": 42.148870636550306
+    },
+    {
+      "part": "hair-silver",
+      "brightest15PercentCenterX": 34.673758865248224,
+      "hairCenterX": 41.336528221512246
+    },
+    {
+      "part": "forester",
+      "nearRightSleeveMean": 61.5188679245283,
+      "farLeftSleeveMean": 43.93333333333333
+    },
+    {
+      "part": "wayfarer",
+      "nearRightSleeveMean": 81.10430839002267,
+      "farLeftSleeveMean": 39.3952380952381
+    }
+  ]
+}

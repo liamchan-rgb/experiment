@@ -1,8 +1,11 @@
 import Foundation
 
 struct JourneySimulation {
+    static let movementSpeedMultiplier: CGFloat = 3
+    static func speed(for index:Int)->CGFloat { (index==0 ? HeroFrames.reviewSpeed:index==1 ? 38:45)*movementSpeedMultiplier }
     enum Mode { case patrol, destination }
     let network: TrailNetwork
+    private let spawn: CGPoint?
     private(set) var travelers: [Traveler] = []
     private(set) var routes: [Trail] = []
     private(set) var isPlaying = false
@@ -10,20 +13,32 @@ struct JourneySimulation {
     private(set) var mode = Mode.patrol
     var selected = 0
 
-    init(network: TrailNetwork) {
+    init(network: TrailNetwork, spawn: CGPoint? = nil) {
         self.network = network
+        self.spawn = spawn
         reset()
     }
 
     func point(for index: Int) -> CGPoint { routes[index].point(at: travelers[index].distance) }
 
+    func heading(for index: Int) -> CGPoint {
+        let traveler = travelers[index], trail = routes[index]
+        let here = point(for: index)
+        let ahead = trail.point(at: max(0, min(trail.length, traveler.distance + traveler.direction)))
+        return CGPoint(x: ahead.x - here.x, y: ahead.y - here.y)
+    }
+
     mutating func reset() {
         routes = Array(repeating: network.patrol, count: 3)
         travelers = [
-            Traveler(distance: network.patrol.distance(nearestTo: CGPoint(x: 440, y: 444)), direction: 1, speed: 42),
-            Traveler(distance: network.patrol.length, direction: -1, speed: 38),
-            Traveler(distance: network.patrol.distance(nearestTo: CGPoint(x: 560, y: 441)), direction: 1, speed: 45)
+            Traveler(distance: network.patrol.distance(nearestTo: CGPoint(x: 440, y: 444)), direction: 1, speed: Self.speed(for:0)),
+            Traveler(distance: network.patrol.length, direction: -1, speed: Self.speed(for:1)),
+            Traveler(distance: network.patrol.distance(nearestTo: CGPoint(x: 560, y: 441)), direction: 1, speed: Self.speed(for:2))
         ]
+        if let spawn {
+            let start = network.patrol.distance(nearestTo: spawn)
+            for i in travelers.indices { travelers[i].distance = min(network.patrol.length, start + CGFloat(i)*30); travelers[i].direction = 1 }
+        }
         isPlaying = false
         userPaused = false
         mode = .patrol
@@ -65,9 +80,10 @@ struct JourneySimulation {
         if !userPaused { isPlaying = !travelers[selected].isWaiting }
     }
 
-    mutating func advance(_ seconds: TimeInterval) {
+    mutating func advance(_ seconds: TimeInterval, p1CanTravel: Bool = true) {
         guard isPlaying else { return }
         for index in travelers.indices {
+            if index == 0 && !p1CanTravel { continue }
             let trail = routes[index], traveler = travelers[index]
             let here = trail.point(at: traveler.distance)
             let ahead = trail.point(at: max(0, min(trail.length, traveler.distance + traveler.direction * 1)))

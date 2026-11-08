@@ -1,0 +1,19 @@
+{
+  "sourceIconSHA256": "4346576b8de25b1ef4ef7ec78fcafb063ad52f28b3a0c2bca8611d72961bafcd",
+  "fixedWeaponSource": {
+    "grip": [
+      174,
+      367
+    ],
+    "axis": [
+      216,
+      -298
+    ],
+    "scale": 0.205
+  },
+  "method": "whole original icon on original right-shoulder to left-hip plane; no auto bounds fitting",
+  "bodyAndMotionModified": false,
+  "artApproval": null,
+  "carryScaleFactor": 0.88,
+  "carryGripDistanceFromRightShoulderPx": 4
+}

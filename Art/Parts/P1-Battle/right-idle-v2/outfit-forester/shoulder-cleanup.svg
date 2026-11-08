@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256" shape-rendering="crispEdges">
+  <g id="jacket.rear-shoulder-cleanup">
+    <rect x="112" y="137" width="3" height="1" fill="#27426b"/>
+    <rect x="110" y="138" width="4" height="1" fill="#27426b"/>
+    <rect x="109" y="139" width="5" height="1" fill="#27426b"/>
+    <rect x="112" y="140" width="1" height="1" fill="#244679"/>
+    <rect x="112" y="141" width="1" height="1" fill="#315386"/>
+    <rect x="112" y="142" width="1" height="1" fill="#2d5693"/>
+    <rect x="112" y="143" width="1" height="1" fill="#2c5798"/>
+    <rect x="112" y="144" width="1" height="1" fill="#305996"/>
+    <rect x="112" y="145" width="1" height="1" fill="#234476"/>
+    <rect x="112" y="146" width="1" height="1" fill="#102442"/>
+    <rect x="112" y="137" width="1" height="1" fill="#182333"/>
+    <rect x="110" y="138" width="1" height="1" fill="#182333"/>
+    <rect x="109" y="139" width="1" height="8" fill="#182333"/>
+  </g>
+</svg>

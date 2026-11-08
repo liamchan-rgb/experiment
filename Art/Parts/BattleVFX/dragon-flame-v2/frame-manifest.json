@@ -1,0 +1,314 @@
+{
+  "spriteSheetSize": [
+    1400,
+    1120
+  ],
+  "grid": [
+    5,
+    4
+  ],
+  "frameCount": 20,
+  "frames": [
+    {
+      "frame": 1,
+      "size": [
+        280,
+        280
+      ],
+      "alphaBounds": [
+        84,
+        192,
+        240,
+        268
+      ],
+      "sourceSheetCellMatches": true,
+      "sha256": "9878c7e5b5805a849f59466341b2e389f39513d9976ade6438769314757edc9d"
+    },
+    {
+      "frame": 2,
+      "size": [
+        280,
+        280
+      ],
+      "alphaBounds": [
+        45,
+        157,
+        233,
+        270
+      ],
+      "sourceSheetCellMatches": true,
+      "sha256": "f590e8f4c99f8208dd6af26b2b8a4df51e6fb9c7b2d9d0dd3862541827f8afed"
+    },
+    {
+      "frame": 3,
+      "size": [
+        280,
+        280
+      ],
+      "alphaBounds": [
+        30,
+        130,
+        242,
+        273
+      ],
+      "sourceSheetCellMatches": true,
+      "sha256": "e87ce5fc32f41d20ec02806bac9fe174c7e80b2ac9d86dbf73513c205f958856"
+    },
+    {
+      "frame": 4,
+      "size": [
+        280,
+        280
+      ],
+      "alphaBounds": [
+        4,
+        47,
+        256,
+        271
+      ],
+      "sourceSheetCellMatches": true,
+      "sha256": "949056be46815a7bf7dedf1bb287cc51b24e4c928ff0966be6d5839a6e3506c6"
+    },
+    {
+      "frame": 5,
+      "size": [
+        280,
+        280
+      ],
+      "alphaBounds": [
+        16,
+        35,
+        258,
+        276
+      ],
+      "sourceSheetCellMatches": true,
+      "sha256": "3b2601536254126e4322ccd37481f2f09b623c11ee13d94df9bed60f9a196a3a"
+    },
+    {
+      "frame": 6,
+      "size": [
+        280,
+        280
+      ],
+      "alphaBounds": [
+        24,
+        31,
+        275,
+        280
+      ],
+      "sourceSheetCellMatches": true,
+      "sha256": "4268541a356fad2b56ead83c479eed39553bd08623743e8278afb4cdee511f38"
+    },
+    {
+      "frame": 7,
+      "size": [
+        280,
+        280
+      ],
+      "alphaBounds": [
+        11,
+        34,
+        280,
+        279
+      ],
+      "sourceSheetCellMatches": true,
+      "sha256": "c59d42740998e63d3b9e80508b2d1bd28a48a0a04cf21f9383df8df5de6202f3"
+    },
+    {
+      "frame": 8,
+      "size": [
+        280,
+        280
+      ],
+      "alphaBounds": [
+        0,
+        27,
+        280,
+        280
+      ],
+      "sourceSheetCellMatches": true,
+      "sha256": "c1cc3994747a179b419b8e4326d43920b48e365de5b09123eac712b6829a7946"
+    },
+    {
+      "frame": 9,
+      "size": [
+        280,
+        280
+      ],
+      "alphaBounds": [
+        0,
+        25,
+        280,
+        280
+      ],
+      "sourceSheetCellMatches": true,
+      "sha256": "02dd5a8390ace12c996a272e4fc0d301d78d0978766ff1d50122184bc86dff4f"
+    },
+    {
+      "frame": 10,
+      "size": [
+        280,
+        280
+      ],
+      "alphaBounds": [
+        0,
+        18,
+        273,
+        280
+      ],
+      "sourceSheetCellMatches": true,
+      "sha256": "03f43d81c5d1b94f92316d4f2c6f6ed6563dadf2e224c284e5dde2f9725043ea"
+    },
+    {
+      "frame": 11,
+      "size": [
+        280,
+        280
+      ],
+      "alphaBounds": [
+        0,
+        18,
+        280,
+        280
+      ],
+      "sourceSheetCellMatches": true,
+      "sha256": "d5e24743933fad35fd2b7fc099970066733e687298e6749c3ced7dfe12fce52b"
+    },
+    {
+      "frame": 12,
+      "size": [
+        280,
+        280
+      ],
+      "alphaBounds": [
+        0,
+        3,
+        280,
+        280
+      ],
+      "sourceSheetCellMatches": true,
+      "sha256": "fe5d1c5ba9d0d0cba2a74faac380862c2e359cf2b438a0969e91b13950e7b70a"
+    },
+    {
+      "frame": 13,
+      "size": [
+        280,
+        280
+      ],
+      "alphaBounds": [
+        0,
+        0,
+        280,
+        279
+      ],
+      "sourceSheetCellMatches": true,
+      "sha256": "633b5e8dd143b167f1ed2ab290806523969d86461254fed729a8978b58505bce"
+    },
+    {
+      "frame": 14,
+      "size": [
+        280,
+        280
+      ],
+      "alphaBounds": [
+        0,
+        0,
+        280,
+        280
+      ],
+      "sourceSheetCellMatches": true,
+      "sha256": "0cd4fc1ec41451e130d0356f4a37e2ac95c2122fe5530e178fa2aff6ff3d55c1"
+    },
+    {
+      "frame": 15,
+      "size": [
+        280,
+        280
+      ],
+      "alphaBounds": [
+        0,
+        0,
+        280,
+        279
+      ],
+      "sourceSheetCellMatches": true,
+      "sha256": "961e13d52a7550a9cd2957848b924e64a0d7a5a54c61c16133e6c36cade04927"
+    },
+    {
+      "frame": 16,
+      "size": [
+        280,
+        280
+      ],
+      "alphaBounds": [
+        38,
+        0,
+        279,
+        234
+      ],
+      "sourceSheetCellMatches": true,
+      "sha256": "2ed819b3995f62985e231c971039b2d659839d82c50b9a12a092016daba6a7f2"
+    },
+    {
+      "frame": 17,
+      "size": [
+        280,
+        280
+      ],
+      "alphaBounds": [
+        24,
+        35,
+        277,
+        232
+      ],
+      "sourceSheetCellMatches": true,
+      "sha256": "660f4d89760c2cb3af3a2957c07ffd1eb34af029dd563284b4491f3c52cd721f"
+    },
+    {
+      "frame": 18,
+      "size": [
+        280,
+        280
+      ],
+      "alphaBounds": [
+        40,
+        50,
+        250,
+        233
+      ],
+      "sourceSheetCellMatches": true,
+      "sha256": "2ada36a83737861a5aa91a523085253412636e6aa614e05d3349f79178906c3b"
+    },
+    {
+      "frame": 19,
+      "size": [
+        280,
+        280
+      ],
+      "alphaBounds": [
+        32,
+        0,
+        220,
+        216
+      ],
+      "sourceSheetCellMatches": true,
+      "sha256": "bdb8d18c79e68c0ca4c944975a5d1c6e7565534242bfe8d6834173f2bb05bdee"
+    },
+    {
+      "frame": 20,
+      "size": [
+        280,
+        280
+      ],
+      "alphaBounds": [
+        68,
+        108,
+        188,
+        208
+      ],
+      "sourceSheetCellMatches": true,
+      "sha256": "b32aeee2fc20b805853ca9200ca075147023c5eb240c34a46e27966f9c45d323"
+    }
+  ],
+  "exactSheetCellMatches": true
+}

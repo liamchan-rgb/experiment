@@ -1,0 +1,49 @@
+{
+  "status": "verified-public-https-delivery",
+  "verifiedAtUTC": "2026-10-23T10:19:06.680398+00:00",
+  "sourceCommit": "a200c25458a200459b8efbb2b7de9e0c70a6710d",
+  "branch": "fix/build33-face-grounding-camera",
+  "direction": "up-right",
+  "artApproval": null,
+  "repairAndReviewOwner": "root",
+  "subagentsUsed": false,
+  "artifacts": [
+    {
+      "file": "walk-120ms.gif",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/a200c25458a200459b8efbb2b7de9e0c70a6710d/Art/Review/P1/neutral-up-right-r5-mirror/walk-120ms.gif",
+      "httpStatus": 200,
+      "contentType": "image/gif",
+      "sha256": "fdddbe86c1e56938675d8a85140beb9594985869deff2351f239577797073c23",
+      "byteCount": 109242,
+      "dimensions": [
+        512,
+        512
+      ],
+      "frames": 8,
+      "durationsMs": [
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120
+      ],
+      "loop": 0
+    },
+    {
+      "file": "idle-review-2x.png",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/a200c25458a200459b8efbb2b7de9e0c70a6710d/Art/Review/P1/neutral-up-right-r5-mirror/idle-review-2x.png",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "sha256": "b40b4770cdd0c5a08ae6e3dcb28fa901a06ae1f41a7b5c075985c20ee67b9f72",
+      "byteCount": 17754,
+      "dimensions": [
+        512,
+        512
+      ]
+    }
+  ],
+  "scope": "Up-right mirrored neutral idle/walk candidate with fixed top-left lighting. Up-left approval is not inherited; no continuous-player, wardrobe, device or IPA acceptance."
+}

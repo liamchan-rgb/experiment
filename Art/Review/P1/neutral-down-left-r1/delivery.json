@@ -1,0 +1,83 @@
+{
+  "date": "2026-10-24",
+  "artCommit": "2b4f0e83185896c36a4377f4c2ca7dccfef74d76",
+  "verified": true,
+  "artApproval": null,
+  "direction": "down-left",
+  "authorAndReviewer": "root",
+  "subagentsUsed": false,
+  "reviewScope": "All13 whole-body1x/2x poses and specified ordered transitions; still-only viewer, no continuous-playback claim",
+  "files": [
+    {
+      "file": "Art/Review/P1/neutral-down-left-r1/walk-120ms.gif",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/2b4f0e83185896c36a4377f4c2ca7dccfef74d76/Art/Review/P1/neutral-down-left-r1/walk-120ms.gif",
+      "httpStatus": 200,
+      "mime": "image/gif",
+      "bytes": 100964,
+      "sha256": "18d12aa568b559834988a1e8f3b14a8280abd0dfcae6608dd808475b3221444d",
+      "dimensions": [
+        512,
+        512
+      ],
+      "durationsMs": [
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120
+      ]
+    },
+    {
+      "file": "Art/Review/P1/neutral-down-left-r1/start-stop-120ms.gif",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/2b4f0e83185896c36a4377f4c2ca7dccfef74d76/Art/Review/P1/neutral-down-left-r1/start-stop-120ms.gif",
+      "httpStatus": 200,
+      "mime": "image/gif",
+      "bytes": 277986,
+      "sha256": "a172f73f2af0a94107ef5def854c5c1e52d6762c1be9cbd56a9703e9f787610d",
+      "dimensions": [
+        512,
+        512
+      ],
+      "durationsMs": [
+        480,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        480
+      ]
+    },
+    {
+      "file": "Art/Review/P1/neutral-down-left-r1/idle-review-2x.png",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/2b4f0e83185896c36a4377f4c2ca7dccfef74d76/Art/Review/P1/neutral-down-left-r1/idle-review-2x.png",
+      "httpStatus": 200,
+      "mime": "image/png",
+      "bytes": 17392,
+      "sha256": "1bf0e759a84f090d1d66c133f3541acde59402df16998abd608296c46f2bba8f",
+      "dimensions": [
+        512,
+        512
+      ],
+      "durationsMs": null
+    }
+  ]
+}

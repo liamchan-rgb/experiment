@@ -1,0 +1,23 @@
+{
+  "appearancePresets": {
+    "starlightArmor": "m1-short",
+    "dragonArmor": "f1-bob"
+  },
+  "sharedAppearanceBindings": "Art/Integration/Appearance-battle-custom-heads-v1/scene-bindings.json",
+  "clips": [
+    {
+      "file": "both-armors-attack-normal.gif",
+      "frames": 76,
+      "durationMs": 2700,
+      "sha256": "70dd2948b23d4b1b43842f3c2b5c3346893e807ad3d7a020a33a4b6ef5fe6790"
+    },
+    {
+      "file": "both-armors-states-normal.gif",
+      "frames": 161,
+      "durationMs": 4380,
+      "sha256": "1e711a1790c2142dc64c8f1a1fa146e096f3292a02e8f1deb36bd0300fd0f81a"
+    }
+  ],
+  "scope": "existing production pose samples; independent layer rendering, not App or device capture",
+  "newArtApproval": null
+}

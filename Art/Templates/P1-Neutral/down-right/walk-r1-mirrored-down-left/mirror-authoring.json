@@ -1,0 +1,143 @@
+{
+  "id": "p1-neutral-down-right-walk-r1-mirrored-down-left",
+  "direction": "down-right",
+  "sourceTemplate": "Art/Templates/P1-Neutral/down-left/walk-r1",
+  "sourceApproval": "Art/Review/P1/neutral-down-left-r1/approval.json",
+  "sourceManifestSHA256": "c193f919c6f4667d44cb08857ebbf2d0958401535fa3fd0db3d166e1635c8fd1",
+  "sourceMotionSHA256": "ce121954916c255f32c99229ddb2450dadc410a5cc4812e34bb9277935bf9f08",
+  "headLocalCanvas": [
+    96,
+    96
+  ],
+  "mirrorAxisX": 127.5,
+  "status": "main-only-mirror-lighting-candidate",
+  "artApproval": null,
+  "repairAndReviewOwner": "root",
+  "subagentsUsed": false,
+  "nearSide": "right",
+  "farSide": "left",
+  "sourceApprovalLimitation": "Delivered neutral down-left standing, eight-frame normal walk and specified start/stop preview only; not wardrobe, full hidden anatomy, arbitrary interruption or runtime",
+  "headLocalOriginMirrored": [
+    84,
+    61
+  ],
+  "headLocalTexture": "source/relit-textures/head-local.png",
+  "lighting": {
+    "mode": "static-source-uv-colours",
+    "textures": "source/relit-textures",
+    "uv": "source/approved-left-uv",
+    "bakeRecord": "source/lighting-bake.json",
+    "reference": "source/relight-generated.png",
+    "alphaOwner": "approved reflection"
+  },
+  "headRasterRegistration": {
+    "method": "Source-UV phase calibration for Pillow affine coefficient quantization; fixed offline metadata, no pixel painting or runtime correction",
+    "maximumAllowedTranslationPixels": 0.01,
+    "poses": [
+      {
+        "pose": 0,
+        "translationPixels": [
+          0.0,
+          0.0
+        ],
+        "sourceUVReflectionDifferencePixels": 0
+      },
+      {
+        "pose": 1,
+        "translationPixels": [
+          0.0,
+          0.0
+        ],
+        "sourceUVReflectionDifferencePixels": 0
+      },
+      {
+        "pose": 2,
+        "translationPixels": [
+          0.0,
+          0.0
+        ],
+        "sourceUVReflectionDifferencePixels": 0
+      },
+      {
+        "pose": 3,
+        "translationPixels": [
+          0.0,
+          -0.0015
+        ],
+        "sourceUVReflectionDifferencePixels": 0
+      },
+      {
+        "pose": 4,
+        "translationPixels": [
+          0.0,
+          0.0
+        ],
+        "sourceUVReflectionDifferencePixels": 0
+      },
+      {
+        "pose": 5,
+        "translationPixels": [
+          0.0,
+          0.0
+        ],
+        "sourceUVReflectionDifferencePixels": 0
+      },
+      {
+        "pose": 6,
+        "translationPixels": [
+          0.0,
+          0.0
+        ],
+        "sourceUVReflectionDifferencePixels": 0
+      },
+      {
+        "pose": 7,
+        "translationPixels": [
+          0.0,
+          0.0005
+        ],
+        "sourceUVReflectionDifferencePixels": 0
+      },
+      {
+        "pose": 8,
+        "translationPixels": [
+          0.0,
+          0.0
+        ],
+        "sourceUVReflectionDifferencePixels": 0
+      },
+      {
+        "pose": 9,
+        "translationPixels": [
+          0.0,
+          0.0
+        ],
+        "sourceUVReflectionDifferencePixels": 0
+      },
+      {
+        "pose": 10,
+        "translationPixels": [
+          0.0,
+          0.0
+        ],
+        "sourceUVReflectionDifferencePixels": 0
+      },
+      {
+        "pose": 11,
+        "translationPixels": [
+          0.0,
+          0.0
+        ],
+        "sourceUVReflectionDifferencePixels": 0
+      },
+      {
+        "pose": 12,
+        "translationPixels": [
+          0.0,
+          0.0
+        ],
+        "sourceUVReflectionDifferencePixels": 0
+      }
+    ]
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "method": "Right x=255-left x, identical y, for every original left reference pose. No additional translation, rotation or scale.",
+  "reference": "Art/Parts/P1-v1/upper/wardrobe-v1/back-scabbard/png/up-left",
+  "reason": "User explicitly requires right carry match left diagonal placement; v5 central vertical registration rejected.",
+  "occlusion": "Keep original back/arm/head semantic ordering. Near sleeve must not cut sheath; far shoulder overlap matches the left reference.",
+  "owner": "root",
+  "subagentsUsed": false,
+  "artApproval": null
+}

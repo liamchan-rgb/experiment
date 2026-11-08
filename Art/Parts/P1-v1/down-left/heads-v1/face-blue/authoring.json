@@ -1,0 +1,81 @@
+{
+  "id": "p1-face-blue-down-left-v1",
+  "source": {
+    "image": "source/chestnut-blue-original.png",
+    "canvas": [
+      1774,
+      887
+    ],
+    "sha256": "f0e491eaae442cb1d53bdd091c7597220d422da25cc8b60b18359b8a40a5bb35",
+    "prompt": "source/prompt.txt"
+  },
+  "panel": 1,
+  "registration": {
+    "face.eyes": [
+      {
+        "components": [
+          3
+        ],
+        "scale": 0.07,
+        "translation": [
+          15.3,
+          14.8
+        ]
+      },
+      {
+        "components": [
+          4
+        ],
+        "scale": 0.07,
+        "translation": [
+          15.3,
+          14.5
+        ]
+      }
+    ],
+    "face.brows": [
+      {
+        "components": [
+          1,
+          2
+        ],
+        "scale": 0.07,
+        "translation": [
+          15.3,
+          12.3
+        ]
+      }
+    ],
+    "face.nose": [
+      {
+        "components": [
+          5
+        ],
+        "scale": 0.07,
+        "translation": [
+          13.5,
+          16
+        ]
+      }
+    ],
+    "face.mouth": [
+      {
+        "components": [
+          6
+        ],
+        "scale": 0.07,
+        "translation": [
+          14.1,
+          16.5
+        ]
+      }
+    ]
+  },
+  "headLocalOrigin": [
+    76,
+    61
+  ],
+  "authorAndReviewer": "root",
+  "subagentsUsed": false,
+  "artApproval": null
+}

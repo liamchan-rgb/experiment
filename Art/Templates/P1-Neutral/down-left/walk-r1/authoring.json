@@ -1,0 +1,825 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "p1-neutral-down-left-walk-r1",
+  "direction": "down-left",
+  "facing": [
+    -1,
+    1
+  ],
+  "compatibility": {
+    "rig": "p1-chibi-v1",
+    "bodyProfile": "p1-standard",
+    "actionSet": "locomotion-v1"
+  },
+  "status": "candidate-awaiting-user-review",
+  "artApproval": null,
+  "author": "root only; no subagents",
+  "sourceRegistration": {
+    "uniformScale": 0.17,
+    "translation": [
+      24,
+      26
+    ],
+    "alphaFit": false,
+    "alphaThreshold": 128,
+    "sourceCanvas": [
+      1254,
+      1254
+    ]
+  },
+  "sourceMethod": "Single new authored standing source; explicit spatial ownership; shared shoulder/waist/hem inverse maps; no per-pose raster repair",
+  "headPartition": [
+    [
+      85,
+      75
+    ],
+    [
+      165,
+      75
+    ],
+    [
+      165,
+      121
+    ],
+    [
+      143,
+      121
+    ],
+    [
+      138,
+      124
+    ],
+    [
+      131,
+      127
+    ],
+    [
+      122,
+      129
+    ],
+    [
+      117,
+      128
+    ],
+    [
+      110,
+      124
+    ],
+    [
+      85,
+      124
+    ]
+  ],
+  "headLocalOrigin": [
+    76,
+    61
+  ],
+  "headSource": {
+    "image": "source/head.base.png",
+    "sha256": "955d121cb18a6bf3b857b9a859e8ae6c0f8e4328787693ced19d03bb29d0ab74"
+  },
+  "parts": {
+    "shirt": {
+      "image": "source/shirt.png",
+      "sha256": "d935c24cb5ec759e400ca121219c1df062f9afd46924286ded292665292ab8e6",
+      "jawNeckOwnershipPixels": [
+        [
+          113,
+          126
+        ],
+        [
+          134,
+          126
+        ],
+        [
+          135,
+          126
+        ],
+        [
+          114,
+          127
+        ],
+        [
+          132,
+          127
+        ],
+        [
+          133,
+          127
+        ],
+        [
+          135,
+          127
+        ],
+        [
+          136,
+          127
+        ],
+        [
+          115,
+          128
+        ],
+        [
+          137,
+          128
+        ],
+        [
+          114,
+          129
+        ],
+        [
+          115,
+          129
+        ],
+        [
+          139,
+          129
+        ],
+        [
+          113,
+          130
+        ],
+        [
+          114,
+          130
+        ],
+        [
+          115,
+          130
+        ],
+        [
+          141,
+          130
+        ]
+      ]
+    },
+    "pants": {
+      "image": "source/pants.png",
+      "sha256": "266e2660a3787773ed8ab51cbbc6f4ab4bd3058a54fce74607de5c708b16db6b"
+    },
+    "arm.right": {
+      "image": "source/arm.right.png",
+      "sha256": "2591d9a091d054305ad548d076b5a4f7f6c790515528d5126e3aca7abe4b42fb",
+      "sourcePolygon": [
+        [
+          110,
+          128
+        ],
+        [
+          118,
+          128
+        ],
+        [
+          119,
+          142
+        ],
+        [
+          119,
+          153
+        ],
+        [
+          115,
+          159
+        ],
+        [
+          114,
+          170
+        ],
+        [
+          99,
+          171
+        ],
+        [
+          98,
+          154
+        ],
+        [
+          104,
+          139
+        ]
+      ]
+    },
+    "hand.right": {
+      "image": "source/hand.right.png",
+      "sha256": "65966b1c5fc704a55f48106162f14dbe46cc671215f0f2ae8afb879f1c9ad300",
+      "sameMeshDomainAsArm": true
+    },
+    "arm.left": {
+      "image": "source/arm.left.png",
+      "sha256": "7f72c1ebbbb560d31b796b734216df371181eb5f796507c5c494c4bc39beff5f",
+      "sourcePolygon": [
+        [
+          139,
+          130
+        ],
+        [
+          146,
+          131
+        ],
+        [
+          153,
+          147
+        ],
+        [
+          157,
+          160
+        ],
+        [
+          159,
+          176
+        ],
+        [
+          142,
+          178
+        ],
+        [
+          141,
+          169
+        ],
+        [
+          141,
+          154
+        ],
+        [
+          135,
+          143
+        ],
+        [
+          135,
+          137
+        ]
+      ]
+    },
+    "hand.left": {
+      "image": "source/hand.left.png",
+      "sha256": "93bb0d76668f96bbfbf10664c1037af798f46042b2ffd9b5d4cb67b8d80f26a2",
+      "sameMeshDomainAsArm": true
+    },
+    "leg.right": {
+      "image": "source/leg.right.png",
+      "sha256": "94230e0b3ba7882d4f690c9bd4fdf16943d4d68e7a24019c7ed3a0bc2cc305a5",
+      "sourcePolygon": [
+        [
+          110,
+          167
+        ],
+        [
+          126,
+          167
+        ],
+        [
+          128,
+          178
+        ],
+        [
+          129,
+          194
+        ],
+        [
+          128,
+          208
+        ],
+        [
+          101,
+          209
+        ],
+        [
+          100,
+          199
+        ],
+        [
+          110,
+          191
+        ],
+        [
+          110,
+          180
+        ]
+      ]
+    },
+    "leg.left": {
+      "image": "source/leg.left.png",
+      "sha256": "5b2d752597674eea8a578cd0f2deec800adfd81b72c6bf8f3b0bebc86171b4b0",
+      "sourcePolygon": [
+        [
+          125,
+          169
+        ],
+        [
+          142,
+          169
+        ],
+        [
+          147,
+          186
+        ],
+        [
+          149,
+          201
+        ],
+        [
+          151,
+          215
+        ],
+        [
+          145,
+          220
+        ],
+        [
+          125,
+          220
+        ],
+        [
+          123,
+          209
+        ],
+        [
+          132,
+          200
+        ],
+        [
+          129,
+          190
+        ],
+        [
+          123,
+          180
+        ]
+      ]
+    },
+    "junction-reference": {
+      "image": "source/junction-reference.png",
+      "sha256": "83bf875c9329e3fda9dad1887ed04c633b3d9d33874e5991d57f16472c604d47"
+    }
+  },
+  "joints": {
+    "neck": [
+      127,
+      131
+    ],
+    "waist": [
+      126,
+      159
+    ],
+    "pelvis": [
+      127,
+      167
+    ],
+    "shoulderLeft": [
+      140,
+      138
+    ],
+    "elbowLeft": [
+      146,
+      151
+    ],
+    "wristLeft": [
+      150,
+      166
+    ],
+    "shoulderRight": [
+      114,
+      136
+    ],
+    "elbowRight": [
+      110,
+      148
+    ],
+    "wristRight": [
+      107,
+      160
+    ],
+    "hipLeft": [
+      135,
+      170
+    ],
+    "kneeLeft": [
+      139,
+      187
+    ],
+    "ankleLeft": [
+      140,
+      205
+    ],
+    "hipRight": [
+      119,
+      169
+    ],
+    "kneeRight": [
+      118,
+      183
+    ],
+    "ankleRight": [
+      119,
+      198
+    ]
+  },
+  "nearSide": "left",
+  "farSide": "right",
+  "walk": {
+    "stride": 5.0,
+    "lift": 2.8,
+    "bodyBob": 0.55,
+    "weightShift": 0.55,
+    "torsoTurn": 0.6,
+    "pelvisTurn": 1.3,
+    "boneMargin": 0.45,
+    "armSwing": 6.0,
+    "elbowFlex": 1.7,
+    "wristFollow": 0.6,
+    "forwardScale": 0.65,
+    "heightScale": 1.0,
+    "forwardToScreenY": 0.3,
+    "durationMs": 120,
+    "kneeSwingFollow": 0.8,
+    "kneeMethod": "authored rest projection, proportional hip/ankle tracking, forward swing flexion; no side-view IK imposed on front-diagonal anatomy"
+  },
+  "coupling": {
+    "domain": [
+      88,
+      118,
+      166,
+      230
+    ],
+    "gridStep": 1,
+    "waistY": [
+      153,
+      164
+    ],
+    "hemFollowY": [
+      160,
+      174
+    ],
+    "hemThighFollow": 0.65,
+    "legIndependentY": [
+      179,
+      188
+    ],
+    "shoulderBlendY": [
+      -3,
+      6
+    ],
+    "armRadius": [
+      7,
+      11
+    ],
+    "sampling": "nearest",
+    "sharedJointInverseMap": true,
+    "hemBlendCenterX": 126.5,
+    "hemBlendRadius": 2.5
+  },
+  "footContacts.left": {
+    "flat": [
+      136,
+      215
+    ],
+    "contactPolygon": [
+      [
+        129,
+        213
+      ],
+      [
+        130,
+        208
+      ],
+      [
+        137,
+        204
+      ],
+      [
+        144,
+        204
+      ],
+      [
+        147,
+        210
+      ],
+      [
+        145,
+        214
+      ],
+      [
+        141,
+        215
+      ],
+      [
+        133,
+        215
+      ]
+    ]
+  },
+  "footContacts.right": {
+    "flat": [
+      113,
+      205
+    ],
+    "contactPolygon": [
+      [
+        106,
+        204
+      ],
+      [
+        105,
+        201
+      ],
+      [
+        111,
+        198
+      ],
+      [
+        118,
+        195
+      ],
+      [
+        124,
+        198
+      ],
+      [
+        125,
+        202
+      ],
+      [
+        120,
+        204
+      ],
+      [
+        113,
+        205
+      ]
+    ]
+  },
+  "junctionZones": "source/junction-zones.png",
+  "pantsRows": {
+    "157": [
+      113,
+      140
+    ],
+    "158": [
+      113,
+      141
+    ],
+    "159": [
+      113,
+      141
+    ],
+    "160": [
+      112,
+      142
+    ],
+    "161": [
+      111,
+      142
+    ],
+    "162": [
+      111,
+      142
+    ],
+    "163": [
+      111,
+      142
+    ],
+    "164": [
+      111,
+      143
+    ],
+    "165": [
+      111,
+      143
+    ],
+    "166": [
+      111,
+      142
+    ],
+    "167": [
+      111,
+      142
+    ],
+    "168": [
+      113,
+      142
+    ],
+    "169": [
+      114,
+      142
+    ],
+    "170": [
+      117,
+      141
+    ],
+    "171": [
+      125,
+      141
+    ],
+    "172": [
+      126,
+      139
+    ],
+    "173": [
+      127,
+      136
+    ]
+  },
+  "shirtPolygon": [
+    [
+      116,
+      128
+    ],
+    [
+      134,
+      127
+    ],
+    [
+      140,
+      130
+    ],
+    [
+      139,
+      134
+    ],
+    [
+      136,
+      138
+    ],
+    [
+      136,
+      142
+    ],
+    [
+      139,
+      147
+    ],
+    [
+      140,
+      153
+    ],
+    [
+      141,
+      160
+    ],
+    [
+      132,
+      162
+    ],
+    [
+      115,
+      160
+    ],
+    [
+      114,
+      157
+    ],
+    [
+      115,
+      152
+    ],
+    [
+      117,
+      148
+    ],
+    [
+      117,
+      144
+    ],
+    [
+      115,
+      141
+    ],
+    [
+      115,
+      136
+    ],
+    [
+      116,
+      132
+    ]
+  ],
+  "transitionPoses": [
+    {
+      "clip": "walk-start",
+      "frame": 1,
+      "phase": 0,
+      "amount": 0.3333333333333333,
+      "support": "right",
+      "footLift": {
+        "left": 1.5
+      }
+    },
+    {
+      "clip": "walk-start",
+      "frame": 2,
+      "phase": 0,
+      "amount": 0.6666666666666666,
+      "support": "right",
+      "footLift": {
+        "left": 0.9
+      }
+    },
+    {
+      "clip": "walk-stop",
+      "frame": 1,
+      "phase": 0.875,
+      "amount": 0.6666666666666666,
+      "support": "left",
+      "footLift": {
+        "right": 0.7
+      }
+    },
+    {
+      "clip": "walk-stop",
+      "frame": 2,
+      "phase": 0.875,
+      "amount": 0.3333333333333333,
+      "support": "both",
+      "footLift": {}
+    }
+  ],
+  "transitionScope": {
+    "start": "idle00 -> walk-start01/02 -> walk01",
+    "stop": "walk08 -> walk-stop01/02 -> idle00",
+    "durationMs": 120,
+    "arbitraryPhaseInterrupts": false,
+    "approvalInherited": false
+  },
+  "sourceOwnershipRepairs": {
+    "farArmExcludedAtOrBelowY": 168,
+    "nearArmInnerEdge": {
+      "171": 144,
+      "172": 144,
+      "173": 146,
+      "174": 146,
+      "175andBelow": 147
+    },
+    "interThighCutYX": [
+      [
+        0,
+        126
+      ],
+      [
+        176,
+        126
+      ],
+      [
+        178,
+        126
+      ],
+      [
+        181,
+        128
+      ],
+      [
+        185,
+        130
+      ],
+      [
+        190,
+        130
+      ],
+      [
+        199,
+        128
+      ],
+      [
+        210,
+        127
+      ],
+      [
+        220,
+        127
+      ],
+      [
+        256,
+        127
+      ]
+    ],
+    "unassignedOpaqueSourcePixels": 0,
+    "sourcePixelsDiscarded": 0,
+    "method": "spatial anatomical reownership; no color filtering or per-frame erosion",
+    "sourcePixelsDiscardedScope": "Registered opaque source pixels; raw alpha threshold is separately declared"
+  },
+  "junctionLandmarks": [
+    [
+      114,
+      137
+    ],
+    [
+      140,
+      138
+    ],
+    [
+      126,
+      159
+    ],
+    [
+      136,
+      173
+    ],
+    [
+      120,
+      169
+    ],
+    [
+      127,
+      175
+    ]
+  ]
+}

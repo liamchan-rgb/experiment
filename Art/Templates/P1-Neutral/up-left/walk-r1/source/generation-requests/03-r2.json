@@ -1,0 +1,17 @@
+{
+  "direction": "up-left",
+  "frame": 3,
+  "artifact": "/workspace/generated_images/exec-89b9ec4d-cd4d-4a4c-b7cf-1ef191669036.png",
+  "prompt": "Render FIRST mandatory pose diagram in SECOND image's pixel-art neutral body appearance. ONE full transparent character UP-LEFT rear three-quarter AWAY, bald BACK of skull no face, left edge ear, white back-neck sleeveless shirt, charcoal short shorts, natural hands/bare feet. Green LEFT near side, blue RIGHT far. Anatomical LEFT near leg supports late/mid stance, sole at screen(121,211). RIGHT far knee PASSES UNDER THE PELVIS x131 y185, its lifted foot at x132 y195, NOT kicked back to screen-right. Both arms in neutral passing positions, hands roughly left110170 right148164. This bridges the right-foot-back pose02 into the right-foot-forward pose04. Exactly TWO arms and two hands, no third hanging arm. Preserve original full256-square registration headtop87 hips175, upper-left lighting and far limbs darker; no colored guides/skeleton/labels/gear/shadow. Match specified frame3 pose and limb opposition, do not substitute repeated generic walk.",
+  "references": [
+    "/workspace/experiment/Art/Templates/P1-Neutral/up-left/walk-r1/source/joint-guides/phase-r2/03.png",
+    "/workspace/experiment/Art/Templates/P1-Neutral/up-left/walk-r1/source/idle-selected-registered.png"
+  ],
+  "status": "rejected-proportions-long-stance-leg",
+  "sourceScale": 0.20414673046251994,
+  "sourceTranslation": [
+    0,
+    0
+  ],
+  "reason": "Source heel y227; preserve r1 source03 and author a rigid far-leg hip rotation for passing instead, no scaling"
+}

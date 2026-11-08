@@ -1,0 +1,34 @@
+[0/1] Planning build
+Building for debugging...
+[0/5] Write sources
+[1/5] Write swift-version--6CC1FD8C7F4CAE66.txt
+[3/5] Compiling MeadowBattleSupportTests PartyTests.swift
+[4/5] Emitting module MeadowBattleSupportTests
+[5/12] /workspace/random-map-swift-build/x86_64-unknown-linux-gnu/debug/ClassroomGameCorePackageDiscoveredTests.derived/all-discovered-tests.swift
+[6/13] Write sources
+[7/13] Wrapping AST for MeadowBattleSupportTests for debugging
+[9/17] Compiling ClassroomGameCorePackageDiscoveredTests MeadowWorldSupportTests.swift
+[10/17] Compiling ClassroomGameCorePackageDiscoveredTests ClassroomGameCoreTests.swift
+[11/17] Compiling ClassroomGameCorePackageDiscoveredTests MeadowBattleSupportTests.swift
+[12/17] Emitting module ClassroomGameCorePackageDiscoveredTests
+[13/18] Compiling ClassroomGameCorePackageDiscoveredTests all-discovered-tests.swift
+[14/19] /workspace/random-map-swift-build/x86_64-unknown-linux-gnu/debug/ClassroomGameCorePackageTests.derived/runner.swift
+[15/20] Write sources
+[16/20] Wrapping AST for ClassroomGameCorePackageDiscoveredTests for debugging
+[18/22] Emitting module ClassroomGameCorePackageTests
+[19/22] Compiling ClassroomGameCorePackageTests runner.swift
+[20/22] Write Objects.LinkFileList
+[21/22] Linking ClassroomGameCorePackageTests.xctest
+Build complete! (4.82s)
+error: Exited with unexpected signal code 4
+Test Suite 'Selected tests' started at 2026-11-04 15:52:26.768
+Test Suite 'PartyTests' started at 2026-11-04 15:52:26.771
+Test Case 'PartyTests.testPersistentMonsterDiceUseReviewedSlots' started at 2026-11-04 15:52:26.771
+MeadowBattleSupport/BattleDice.swift:91: Fatal error: Unexpectedly found nil while unwrapping an Optional value
+
+*** Signal 4: Backtracing from 0x7f8b88ea9b44...swift-backtrace: unable to fetch crash info.
+ failed ***
+
+◇ Test run started.
+↳ Testing Library Version: 6.0.3 (18c42c19cac3faf)
+✔ Test run with 0 tests passed after 0.001 seconds.

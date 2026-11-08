@@ -1,0 +1,1248 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "p1-left-forester-and-traveler-lower",
+  "compatibility": {
+    "rig": "p1-chibi-v1",
+    "bodyProfile": "p1-standard",
+    "actionSet": "locomotion-v1"
+  },
+  "mode": "pose-map",
+  "canvas": [
+    256,
+    256
+  ],
+  "source": "source/00-dressed-clean.png",
+  "drawOrder": {
+    "upper": [
+      "outfit.sleeve.right",
+      "outfit.torso",
+      "outfit.sleeve.left"
+    ],
+    "lower": [
+      "outfit.pants.right",
+      "outfit.pants.left",
+      "outfit.boot.right",
+      "outfit.boot.left"
+    ]
+  },
+  "sourceCanvas": [
+    1254,
+    1254
+  ],
+  "registration": {
+    "scale": 0.194,
+    "translation": [
+      4.72,
+      6.4
+    ],
+    "method": "fixed source-to-canvas affine; never alpha-fit"
+  },
+  "baseTemplate": "/workspace/experiment/Art/Templates/P1-Neutral/left/walk-r3-complete-transitions",
+  "poses": [
+    {
+      "storagePose": 0,
+      "clip": "idle",
+      "clipFrame": 0,
+      "layers": [
+        "outfit.torso",
+        "outfit.sleeve.left",
+        "outfit.sleeve.right",
+        "outfit.pants.left",
+        "outfit.pants.right",
+        "outfit.boot.left",
+        "outfit.boot.right"
+      ],
+      "armGuides": {
+        "body.arm.left": {
+          "shoulder": [
+            129,
+            138
+          ],
+          "elbow": [
+            131,
+            153
+          ],
+          "wrist": [
+            128,
+            170
+          ]
+        },
+        "body.arm.right": {
+          "shoulder": [
+            122,
+            140
+          ],
+          "elbow": [
+            139,
+            152
+          ],
+          "wrist": [
+            140,
+            166
+          ]
+        }
+      },
+      "legGuides": {
+        "body.leg.left": {
+          "hip": [
+            129,
+            176
+          ],
+          "root": [
+            129,
+            179
+          ],
+          "knee": [
+            128,
+            195
+          ],
+          "ankle": [
+            124,
+            211
+          ]
+        },
+        "body.leg.right": {
+          "hip": [
+            122,
+            176
+          ],
+          "root": [
+            122,
+            179
+          ],
+          "knee": [
+            119,
+            194
+          ],
+          "ankle": [
+            112,
+            208
+          ]
+        }
+      },
+      "soleMarkers": {
+        "left": [
+          124,
+          214
+        ],
+        "right": [
+          112,
+          211
+        ]
+      }
+    },
+    {
+      "storagePose": 1,
+      "clip": "walk",
+      "clipFrame": 1,
+      "layers": [
+        "outfit.torso",
+        "outfit.sleeve.left",
+        "outfit.sleeve.right",
+        "outfit.pants.left",
+        "outfit.pants.right",
+        "outfit.boot.left",
+        "outfit.boot.right"
+      ],
+      "armGuides": {
+        "body.arm.left": {
+          "shoulder": [
+            129,
+            138
+          ],
+          "elbow": [
+            140,
+            155
+          ],
+          "wrist": [
+            147,
+            170
+          ]
+        },
+        "body.arm.right": {
+          "shoulder": [
+            122,
+            140
+          ],
+          "elbow": [
+            111,
+            155
+          ],
+          "wrist": [
+            97,
+            162
+          ]
+        }
+      },
+      "legGuides": {
+        "body.leg.left": {
+          "hip": [
+            129,
+            176
+          ],
+          "root": [
+            129,
+            179
+          ],
+          "knee": [
+            117,
+            198
+          ],
+          "ankle": [
+            111,
+            212
+          ]
+        },
+        "body.leg.right": {
+          "hip": [
+            122,
+            176
+          ],
+          "root": [
+            122,
+            179
+          ],
+          "knee": [
+            141,
+            190
+          ],
+          "ankle": [
+            153,
+            203
+          ]
+        }
+      },
+      "soleMarkers": {
+        "left": [
+          104,
+          215
+        ],
+        "right": [
+          141,
+          213
+        ]
+      }
+    },
+    {
+      "storagePose": 2,
+      "clip": "walk",
+      "clipFrame": 2,
+      "layers": [
+        "outfit.torso",
+        "outfit.sleeve.left",
+        "outfit.sleeve.right",
+        "outfit.pants.left",
+        "outfit.pants.right",
+        "outfit.boot.left",
+        "outfit.boot.right"
+      ],
+      "armGuides": {
+        "body.arm.left": {
+          "shoulder": [
+            129,
+            138
+          ],
+          "elbow": [
+            136,
+            155
+          ],
+          "wrist": [
+            142,
+            168
+          ]
+        },
+        "body.arm.right": {
+          "shoulder": [
+            122,
+            140
+          ],
+          "elbow": [
+            112,
+            155
+          ],
+          "wrist": [
+            103,
+            160
+          ]
+        }
+      },
+      "legGuides": {
+        "body.leg.left": {
+          "hip": [
+            129,
+            176
+          ],
+          "root": [
+            129,
+            179
+          ],
+          "knee": [
+            119,
+            197
+          ],
+          "ankle": [
+            113,
+            211
+          ]
+        },
+        "body.leg.right": {
+          "hip": [
+            122,
+            176
+          ],
+          "root": [
+            122,
+            179
+          ],
+          "knee": [
+            143,
+            189
+          ],
+          "ankle": [
+            151,
+            201
+          ]
+        }
+      },
+      "soleMarkers": {
+        "left": [
+          111,
+          214
+        ],
+        "right": [
+          146,
+          208
+        ]
+      }
+    },
+    {
+      "storagePose": 3,
+      "clip": "walk",
+      "clipFrame": 3,
+      "layers": [
+        "outfit.torso",
+        "outfit.sleeve.left",
+        "outfit.sleeve.right",
+        "outfit.pants.left",
+        "outfit.pants.right",
+        "outfit.boot.left",
+        "outfit.boot.right"
+      ],
+      "armGuides": {
+        "body.arm.left": {
+          "shoulder": [
+            129,
+            138
+          ],
+          "elbow": [
+            132,
+            153
+          ],
+          "wrist": [
+            127,
+            170
+          ]
+        },
+        "body.arm.right": {
+          "shoulder": [
+            122,
+            140
+          ],
+          "elbow": [
+            114,
+            159
+          ],
+          "wrist": [
+            108,
+            164
+          ]
+        }
+      },
+      "legGuides": {
+        "body.leg.left": {
+          "hip": [
+            129,
+            176
+          ],
+          "root": [
+            129,
+            179
+          ],
+          "knee": [
+            122,
+            198
+          ],
+          "ankle": [
+            119,
+            207
+          ]
+        },
+        "body.leg.right": {
+          "hip": [
+            122,
+            176
+          ],
+          "root": [
+            122,
+            179
+          ],
+          "knee": [
+            137,
+            195
+          ],
+          "ankle": [
+            127,
+            215
+          ]
+        }
+      },
+      "soleMarkers": {
+        "left": [
+          126,
+          214
+        ],
+        "right": [
+          115,
+          204
+        ]
+      }
+    },
+    {
+      "storagePose": 4,
+      "clip": "walk",
+      "clipFrame": 4,
+      "layers": [
+        "outfit.torso",
+        "outfit.sleeve.left",
+        "outfit.sleeve.right",
+        "outfit.pants.left",
+        "outfit.pants.right",
+        "outfit.boot.left",
+        "outfit.boot.right"
+      ],
+      "armGuides": {
+        "body.arm.left": {
+          "shoulder": [
+            129,
+            138
+          ],
+          "elbow": [
+            123,
+            153
+          ],
+          "wrist": [
+            99,
+            154
+          ]
+        },
+        "body.arm.right": {
+          "shoulder": [
+            122,
+            140
+          ],
+          "elbow": [
+            143,
+            155
+          ],
+          "wrist": [
+            148,
+            165
+          ]
+        }
+      },
+      "legGuides": {
+        "body.leg.left": {
+          "hip": [
+            129,
+            176
+          ],
+          "root": [
+            129,
+            179
+          ],
+          "knee": [
+            114,
+            191
+          ],
+          "ankle": [
+            111,
+            207
+          ]
+        },
+        "body.leg.right": {
+          "hip": [
+            122,
+            176
+          ],
+          "root": [
+            122,
+            179
+          ],
+          "knee": [
+            145,
+            196
+          ],
+          "ankle": [
+            158,
+            211
+          ]
+        }
+      },
+      "soleMarkers": {
+        "left": [
+          146,
+          213
+        ],
+        "right": [
+          108,
+          206
+        ]
+      }
+    },
+    {
+      "storagePose": 5,
+      "clip": "walk",
+      "clipFrame": 5,
+      "layers": [
+        "outfit.torso",
+        "outfit.sleeve.left",
+        "outfit.sleeve.right",
+        "outfit.pants.left",
+        "outfit.pants.right",
+        "outfit.boot.left",
+        "outfit.boot.right"
+      ],
+      "armGuides": {
+        "body.arm.left": {
+          "shoulder": [
+            129,
+            138
+          ],
+          "elbow": [
+            124,
+            154
+          ],
+          "wrist": [
+            101,
+            160
+          ]
+        },
+        "body.arm.right": {
+          "shoulder": [
+            122,
+            140
+          ],
+          "elbow": [
+            140,
+            155
+          ],
+          "wrist": [
+            147,
+            165
+          ]
+        }
+      },
+      "legGuides": {
+        "body.leg.left": {
+          "hip": [
+            129,
+            176
+          ],
+          "root": [
+            129,
+            179
+          ],
+          "knee": [
+            116,
+            192
+          ],
+          "ankle": [
+            111,
+            207
+          ]
+        },
+        "body.leg.right": {
+          "hip": [
+            122,
+            176
+          ],
+          "root": [
+            122,
+            179
+          ],
+          "knee": [
+            145,
+            196
+          ],
+          "ankle": [
+            157,
+            211
+          ]
+        }
+      },
+      "soleMarkers": {
+        "left": [
+          148,
+          211
+        ],
+        "right": [
+          108,
+          214
+        ]
+      }
+    },
+    {
+      "storagePose": 6,
+      "clip": "walk",
+      "clipFrame": 6,
+      "layers": [
+        "outfit.torso",
+        "outfit.sleeve.left",
+        "outfit.sleeve.right",
+        "outfit.pants.left",
+        "outfit.pants.right",
+        "outfit.boot.left",
+        "outfit.boot.right"
+      ],
+      "armGuides": {
+        "body.arm.left": {
+          "shoulder": [
+            129,
+            138
+          ],
+          "elbow": [
+            124,
+            153
+          ],
+          "wrist": [
+            104,
+            161
+          ]
+        },
+        "body.arm.right": {
+          "shoulder": [
+            122,
+            140
+          ],
+          "elbow": [
+            141,
+            154
+          ],
+          "wrist": [
+            146,
+            166
+          ]
+        }
+      },
+      "legGuides": {
+        "body.leg.left": {
+          "hip": [
+            129,
+            176
+          ],
+          "root": [
+            129,
+            179
+          ],
+          "knee": [
+            119,
+            195
+          ],
+          "ankle": [
+            121,
+            211
+          ]
+        },
+        "body.leg.right": {
+          "hip": [
+            122,
+            176
+          ],
+          "root": [
+            122,
+            179
+          ],
+          "knee": [
+            147,
+            199
+          ],
+          "ankle": [
+            151,
+            214
+          ]
+        }
+      },
+      "soleMarkers": {
+        "left": [
+          142,
+          205
+        ],
+        "right": [
+          120,
+          215
+        ]
+      }
+    },
+    {
+      "storagePose": 7,
+      "clip": "walk",
+      "clipFrame": 7,
+      "layers": [
+        "outfit.torso",
+        "outfit.sleeve.left",
+        "outfit.sleeve.right",
+        "outfit.pants.left",
+        "outfit.pants.right",
+        "outfit.boot.left",
+        "outfit.boot.right"
+      ],
+      "armGuides": {
+        "body.arm.left": {
+          "shoulder": [
+            129,
+            138
+          ],
+          "elbow": [
+            129,
+            155
+          ],
+          "wrist": [
+            116,
+            169
+          ]
+        },
+        "body.arm.right": {
+          "shoulder": [
+            122,
+            140
+          ],
+          "elbow": [
+            141,
+            155
+          ],
+          "wrist": [
+            142,
+            167
+          ]
+        }
+      },
+      "legGuides": {
+        "body.leg.left": {
+          "hip": [
+            129,
+            176
+          ],
+          "root": [
+            129,
+            179
+          ],
+          "knee": [
+            121,
+            198
+          ],
+          "ankle": [
+            124,
+            214
+          ]
+        },
+        "body.leg.right": {
+          "hip": [
+            122,
+            176
+          ],
+          "root": [
+            122,
+            179
+          ],
+          "knee": [
+            143,
+            194
+          ],
+          "ankle": [
+            138,
+            207
+          ]
+        }
+      },
+      "soleMarkers": {
+        "left": [
+          135,
+          210
+        ],
+        "right": [
+          119,
+          214
+        ]
+      }
+    },
+    {
+      "storagePose": 8,
+      "clip": "walk",
+      "clipFrame": 8,
+      "layers": [
+        "outfit.torso",
+        "outfit.sleeve.left",
+        "outfit.sleeve.right",
+        "outfit.pants.left",
+        "outfit.pants.right",
+        "outfit.boot.left",
+        "outfit.boot.right"
+      ],
+      "armGuides": {
+        "body.arm.left": {
+          "shoulder": [
+            129,
+            138
+          ],
+          "elbow": [
+            139,
+            155
+          ],
+          "wrist": [
+            144,
+            168
+          ]
+        },
+        "body.arm.right": {
+          "shoulder": [
+            122,
+            140
+          ],
+          "elbow": [
+            111,
+            156
+          ],
+          "wrist": [
+            100,
+            160
+          ]
+        }
+      },
+      "legGuides": {
+        "body.leg.left": {
+          "hip": [
+            129,
+            176
+          ],
+          "root": [
+            129,
+            179
+          ],
+          "knee": [
+            119,
+            193
+          ],
+          "ankle": [
+            112,
+            208
+          ]
+        },
+        "body.leg.right": {
+          "hip": [
+            122,
+            176
+          ],
+          "root": [
+            122,
+            179
+          ],
+          "knee": [
+            140,
+            194
+          ],
+          "ankle": [
+            151,
+            211
+          ]
+        }
+      },
+      "soleMarkers": {
+        "left": [
+          110,
+          211
+        ],
+        "right": [
+          137,
+          213
+        ]
+      }
+    },
+    {
+      "storagePose": 9,
+      "clip": "walk-start",
+      "clipFrame": 1,
+      "layers": [
+        "outfit.torso",
+        "outfit.sleeve.left",
+        "outfit.sleeve.right",
+        "outfit.pants.left",
+        "outfit.pants.right",
+        "outfit.boot.left",
+        "outfit.boot.right"
+      ],
+      "armGuides": {
+        "body.arm.left": {
+          "shoulder": [
+            129,
+            138
+          ],
+          "elbow": [
+            137,
+            151
+          ],
+          "wrist": [
+            136,
+            168
+          ]
+        },
+        "body.arm.right": {
+          "shoulder": [
+            122,
+            140
+          ],
+          "elbow": [
+            110,
+            151
+          ],
+          "wrist": [
+            113,
+            162
+          ]
+        }
+      },
+      "legGuides": {
+        "body.leg.left": {
+          "hip": [
+            129,
+            176
+          ],
+          "root": [
+            129,
+            179
+          ],
+          "knee": [
+            128,
+            195
+          ],
+          "ankle": [
+            127,
+            211
+          ]
+        },
+        "body.leg.right": {
+          "hip": [
+            122,
+            176
+          ],
+          "root": [
+            122,
+            179
+          ],
+          "knee": [
+            119,
+            194
+          ],
+          "ankle": [
+            112,
+            209
+          ]
+        }
+      },
+      "soleMarkers": {
+        "left": [
+          128,
+          214
+        ],
+        "right": [
+          112,
+          212
+        ]
+      }
+    },
+    {
+      "storagePose": 10,
+      "clip": "walk-start",
+      "clipFrame": 2,
+      "layers": [
+        "outfit.torso",
+        "outfit.sleeve.left",
+        "outfit.sleeve.right",
+        "outfit.pants.left",
+        "outfit.pants.right",
+        "outfit.boot.left",
+        "outfit.boot.right"
+      ],
+      "armGuides": {
+        "body.arm.left": {
+          "shoulder": [
+            129,
+            138
+          ],
+          "elbow": [
+            141,
+            151
+          ],
+          "wrist": [
+            144,
+            165
+          ]
+        },
+        "body.arm.right": {
+          "shoulder": [
+            122,
+            140
+          ],
+          "elbow": [
+            108,
+            151
+          ],
+          "wrist": [
+            103,
+            161
+          ]
+        }
+      },
+      "legGuides": {
+        "body.leg.left": {
+          "hip": [
+            129,
+            176
+          ],
+          "root": [
+            129,
+            179
+          ],
+          "knee": [
+            118,
+            194
+          ],
+          "ankle": [
+            108,
+            209
+          ]
+        },
+        "body.leg.right": {
+          "hip": [
+            122,
+            176
+          ],
+          "root": [
+            122,
+            179
+          ],
+          "knee": [
+            131,
+            194
+          ],
+          "ankle": [
+            135,
+            208
+          ]
+        }
+      },
+      "soleMarkers": {
+        "left": [
+          109,
+          212
+        ],
+        "right": [
+          130,
+          211
+        ]
+      }
+    },
+    {
+      "storagePose": 11,
+      "clip": "walk-stop",
+      "clipFrame": 1,
+      "layers": [
+        "outfit.torso",
+        "outfit.sleeve.left",
+        "outfit.sleeve.right",
+        "outfit.pants.left",
+        "outfit.pants.right",
+        "outfit.boot.left",
+        "outfit.boot.right"
+      ],
+      "armGuides": {
+        "body.arm.left": {
+          "shoulder": [
+            129,
+            138
+          ],
+          "elbow": [
+            137,
+            151
+          ],
+          "wrist": [
+            135,
+            166
+          ]
+        },
+        "body.arm.right": {
+          "shoulder": [
+            122,
+            140
+          ],
+          "elbow": [
+            109,
+            153
+          ],
+          "wrist": [
+            108,
+            162
+          ]
+        }
+      },
+      "legGuides": {
+        "body.leg.left": {
+          "hip": [
+            129,
+            176
+          ],
+          "root": [
+            129,
+            179
+          ],
+          "knee": [
+            119,
+            193
+          ],
+          "ankle": [
+            104,
+            208
+          ]
+        },
+        "body.leg.right": {
+          "hip": [
+            122,
+            176
+          ],
+          "root": [
+            122,
+            179
+          ],
+          "knee": [
+            130,
+            193
+          ],
+          "ankle": [
+            128,
+            207
+          ]
+        }
+      },
+      "soleMarkers": {
+        "left": [
+          109,
+          211
+        ],
+        "right": [
+          130,
+          210
+        ]
+      }
+    },
+    {
+      "storagePose": 12,
+      "clip": "walk-stop",
+      "clipFrame": 2,
+      "layers": [
+        "outfit.torso",
+        "outfit.sleeve.left",
+        "outfit.sleeve.right",
+        "outfit.pants.left",
+        "outfit.pants.right",
+        "outfit.boot.left",
+        "outfit.boot.right"
+      ],
+      "armGuides": {
+        "body.arm.left": {
+          "shoulder": [
+            129,
+            138
+          ],
+          "elbow": [
+            136,
+            151
+          ],
+          "wrist": [
+            132,
+            168
+          ]
+        },
+        "body.arm.right": {
+          "shoulder": [
+            122,
+            140
+          ],
+          "elbow": [
+            147,
+            151
+          ],
+          "wrist": [
+            140,
+            163
+          ]
+        }
+      },
+      "legGuides": {
+        "body.leg.left": {
+          "hip": [
+            129,
+            176
+          ],
+          "root": [
+            129,
+            179
+          ],
+          "knee": [
+            127,
+            195
+          ],
+          "ankle": [
+            127,
+            211
+          ]
+        },
+        "body.leg.right": {
+          "hip": [
+            122,
+            176
+          ],
+          "root": [
+            122,
+            179
+          ],
+          "knee": [
+            121,
+            194
+          ],
+          "ankle": [
+            119,
+            211
+          ]
+        }
+      },
+      "soleMarkers": {
+        "left": [
+          126,
+          214
+        ],
+        "right": [
+          119,
+          214
+        ]
+      }
+    }
+  ],
+  "materialRules": {
+    "shirt": "forest green with antique-gold piping",
+    "pants": "charcoal gray",
+    "boots": "warm brown",
+    "handClearance": "sleeves stop at wrist crease; hands remain exposed",
+    "soleRule": "boot sole affine follows each authored soleMarker; no common ground clamp",
+    "detachedPixels": "sleeve/boot connected components must intersect the matching visible body slot at alpha >=32",
+    "underlap": "masks expand by 1px at clothing outline; waistband/boot tops overlap base clothing by >=2px"
+  }
+}

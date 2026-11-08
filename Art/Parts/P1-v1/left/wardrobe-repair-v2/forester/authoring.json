@@ -1,0 +1,33 @@
+{
+  "id": "p1-left-forester-v2",
+  "source": "source/garment-13poses.png",
+  "sourceSHA256": "43446fdb49d56e7d0d192bf206e5e29e05075cd83bf8ec60d6709e7ed9f02826",
+  "sourceCanvas": [
+    1254,
+    1254
+  ],
+  "fixedSheetRegistration": {
+    "scale": 0.8165869218500797,
+    "output": [
+      1024,
+      1024
+    ],
+    "grid": [
+      4,
+      4
+    ],
+    "cell": [
+      256,
+      256
+    ],
+    "poses": 13
+  },
+  "bodyTemplate": "Art/Templates/P1-Neutral/left/walk-r3-complete-transitions",
+  "artMethod": "pose-specific imagegen paint; source ink retained; no idle texture warped across the gait",
+  "underlap": "same material only, inside original body coverage; no body changes",
+  "slots": [
+    "outfit.torso",
+    "outfit.sleeve.right",
+    "outfit.sleeve.left"
+  ]
+}

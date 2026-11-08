@@ -1,0 +1,1 @@
+Reuse the existing independent sword source; fixed right-shoulder projection is authored in parent authoring.json. No new generated sword.

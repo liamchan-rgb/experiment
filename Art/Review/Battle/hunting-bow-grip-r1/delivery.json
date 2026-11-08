@@ -1,0 +1,67 @@
+{
+  "deliveryCommit": "62d105042220070606aa56ba3957ab3e518108f7",
+  "sourceCommit": "50e555778208b2b823d1e7a208d552f3bfeb69e2",
+  "workflowRun": 40447896365,
+  "checkedPublishedPaths": 74,
+  "changedPaths": 72,
+  "onlySelectedPathsChanged": true,
+  "publicGET": [
+    {
+      "path": "Downloads/MeadowJourney-b54.ipa",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/62d105042220070606aa56ba3957ab3e518108f7/Downloads/MeadowJourney-b54.ipa",
+      "status": 200,
+      "mime": "application/octet-stream",
+      "bytes": 33950264,
+      "SHA256": "a6c1edf64be6a700dd8f9938676ca06715e5997bdce93620b4c69d9f2c24b416"
+    },
+    {
+      "path": "Art/Review/Battle/hunting-bow-grip-r1/bow-body-normal.gif",
+      "url": "https://cdn.jsdelivr.net/gh/liamchan-rgb/experiment@62d105042220070606aa56ba3957ab3e518108f7/Art/Review/Battle/hunting-bow-grip-r1/bow-body-normal.gif",
+      "status": 200,
+      "mime": "image/gif",
+      "bytes": 3263902,
+      "SHA256": "aec00606e18ddbe23722e3f66244012cd5f83933febd06ca14eb7edde6c26307",
+      "frames": 190,
+      "durationMs": 3800,
+      "dimensions": [
+        512,
+        560
+      ]
+    },
+    {
+      "path": "Art/Review/Battle/hunting-bow-grip-r1/bow-normal.gif",
+      "url": "https://cdn.jsdelivr.net/gh/liamchan-rgb/experiment@62d105042220070606aa56ba3957ab3e518108f7/Art/Review/Battle/hunting-bow-grip-r1/bow-normal.gif",
+      "status": 200,
+      "mime": "image/gif",
+      "bytes": 9845083,
+      "SHA256": "12347f9d324c6da8b286a0207b6729a2ccdeb7eba6e4ac41efeada0b87aad7d7",
+      "frames": 190,
+      "durationMs": 3800,
+      "dimensions": [
+        1224,
+        918
+      ]
+    },
+    {
+      "path": "Art/Review/Battle/hunting-bow-grip-r1/bow-poster.png",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/62d105042220070606aa56ba3957ab3e518108f7/Art/Review/Battle/hunting-bow-grip-r1/bow-poster.png",
+      "status": 200,
+      "mime": "image/png",
+      "bytes": 1228795,
+      "SHA256": "46ae35ab57a418e4fd58063d56c4dfd6f27fea32a32798c2561d08324bcb114c"
+    },
+    {
+      "path": "Downloads/MeadowJourney-build54.json",
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/62d105042220070606aa56ba3957ab3e518108f7/Downloads/MeadowJourney-build54.json",
+      "status": 200,
+      "mime": "text/plain",
+      "bytes": 1643,
+      "SHA256": "61018297d366a5554e53dfb63275a1d0c43c86cc07e730da52be3f9034fedca2"
+    }
+  ],
+  "newArtApproval": null,
+  "deviceRun": false,
+  "actualDeviceFPSMeasured": false,
+  "publicGifBrowserDisplayChecked": true,
+  "siteDeployment": "deployment.json"
+}

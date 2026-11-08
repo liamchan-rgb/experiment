@@ -1,0 +1,87 @@
+{
+  "date": "2026-10-25",
+  "reviewer": "root",
+  "delegated": false,
+  "sourceCommit": "463d221dbf80752a75d3d1449b859f76d841b03f",
+  "decodedFramesInspected": 1060,
+  "decodedContactPagesInspected": 38,
+  "fullBodySamples": 12,
+  "fullBodyBoardsInspected": 4,
+  "fullBodyScales": [
+    1,
+    2
+  ],
+  "animations": {
+    "attack-buff": {
+      "file": "attack-buff-normal.gif",
+      "frames": 300,
+      "frameDurationMs": 20,
+      "durationMs": 6000,
+      "bytes": 9666504,
+      "dimensions": [
+        1080,
+        810
+      ]
+    },
+    "support": {
+      "file": "support-normal.gif",
+      "frames": 190,
+      "frameDurationMs": 20,
+      "durationMs": 3800,
+      "bytes": 4019790,
+      "dimensions": [
+        1080,
+        810
+      ]
+    },
+    "shield": {
+      "file": "shield-normal.gif",
+      "frames": 190,
+      "frameDurationMs": 20,
+      "durationMs": 3800,
+      "bytes": 5931712,
+      "dimensions": [
+        1080,
+        810
+      ]
+    },
+    "heal": {
+      "file": "heal-normal.gif",
+      "frames": 190,
+      "frameDurationMs": 20,
+      "durationMs": 3800,
+      "bytes": 5156037,
+      "dimensions": [
+        1080,
+        810
+      ]
+    },
+    "lethal": {
+      "file": "lethal-normal.gif",
+      "frames": 190,
+      "frameDurationMs": 20,
+      "durationMs": 3800,
+      "bytes": 6573120,
+      "dimensions": [
+        1080,
+        810
+      ]
+    }
+  },
+  "findings": [
+    "Whole-scene shared map/battle/track/details layout inspected.",
+    "Red damage plus yellow buff dice track advancing actor; first draft too close to enemy bar, corrected via smooth18-unit inset and checked again.",
+    "Support green/blue, healing green, shield blue: hover motion, result blend and retirement inspected.",
+    "Warden idle/preparation/attack/hit/recovery and rightward defeat inspected; antlers/hooves and shadows retained.",
+    "Current actor track and bottom resource bars remain readable; normal thumbnails use actual portrait/paw approximations."
+  ],
+  "limitations": [
+    "Offline rendering from production Swift samples and original rule receipts; map, lighting, UI and blending approximated.",
+    "Static decoded sequences inspected, not continuous playback or UIKit/Metal/device capture.",
+    "Existing attack8 art plus subtle registered breathing/preparation/recoil; no claim of newly authored full monster clip library.",
+    "Attack-buff and lethal use controlled rally setup; lethal enemy starts3HP for art review, default app monsters remain18.",
+    "Dice fixed heal/shield/buff values are nominal original amounts; actual HP/shield gains retain caps and appear separately.",
+    "No App/simulator/device/UI execution. Target60 has not been measured on device."
+  ],
+  "newArtApproval": null
+}

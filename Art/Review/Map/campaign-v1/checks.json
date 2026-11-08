@@ -1,0 +1,33 @@
+{
+  "sourceCommit": "06c12505cdb963b6c981cf3f84e682a0c5e8159a",
+  "swiftTests": 191,
+  "campaignCases": 9,
+  "roadBattleEffectsModularRegressions": true,
+  "exportReproduced": true,
+  "exportNormalization": [
+    "new-session UUID",
+    "unordered revealed/acted sets"
+  ],
+  "sourceDataAndPoses": true,
+  "visualReview": {
+    "agent": "root",
+    "contactSheets": 14,
+    "walkFrames": 370,
+    "battleFrames": 948,
+    "wholeFrameKeysAndFinalGIFDecodedKeys": true,
+    "notEveryFrameAtFullResolution": true
+  },
+  "movement": {
+    "multiplier": 3,
+    "demo": [
+      75,
+      114,
+      135
+    ],
+    "campaignGroup": 75
+  },
+  "originalCharacterPartsUnchanged": true,
+  "originalRuleCatalogUnchanged": true,
+  "noAppSimulatorDeviceRun": true,
+  "userArtApproval": null
+}

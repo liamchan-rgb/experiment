@@ -1,0 +1,12 @@
+{
+  "assets": [
+    {
+      "id": "p1-neutral-up-left-walk-r4-continuous-contours",
+      "manifest": "Art/Templates/P1-Neutral/up-left/walk-r4-continuous-contours/asset.json"
+    },
+    {
+      "id": "p1-neutral-up-right-walk-r4-continuous-contours",
+      "manifest": "Art/Templates/P1-Neutral/up-right/walk-r4-continuous-contours/asset.json"
+    }
+  ]
+}

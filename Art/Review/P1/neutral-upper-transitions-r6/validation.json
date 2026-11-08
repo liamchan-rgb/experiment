@@ -1,0 +1,897 @@
+{
+  "status": "technical-checks-pass",
+  "artApproval": null,
+  "repairAndReviewOwner": "root",
+  "subagentsUsed": false,
+  "directions": {
+    "up-left": {
+      "poses": 13,
+      "approvedFramePNGsUnchanged": 9,
+      "approvedSemanticLayersUnchanged": 72,
+      "junctionHoles": 0,
+      "continuity": {
+        "start": {
+          "directEndpointJointDistance": 7.329083123209672,
+          "steps": [
+            {
+              "from": 0,
+              "to": 9,
+              "maximumJointDistance": 2.988309990471406,
+              "joints": {
+                "hipLeft": 0.18333333333333712,
+                "kneeLeft": 2.988309990471406,
+                "ankleLeft": 2.8876335296143267,
+                "shoulderLeft": 0.18333333333333712,
+                "elbowLeft": 0.7545555002123393,
+                "wristLeft": 1.1683203500128396,
+                "hipRight": 0.18333333333333712,
+                "kneeRight": 0.16987850142931318,
+                "ankleRight": 1.2496779879851005,
+                "shoulderRight": 0.18333333333333712,
+                "elbowRight": 0.6988563107746217,
+                "wristRight": 1.2500631751563587,
+                "neck": 0.18333333333333712
+              }
+            },
+            {
+              "from": 9,
+              "to": 10,
+              "maximumJointDistance": 2.3387818870629498,
+              "joints": {
+                "hipLeft": 0.18333333333333712,
+                "kneeLeft": 2.3387818870629498,
+                "ankleLeft": 1.192051236765846,
+                "shoulderLeft": 0.18333333333333712,
+                "elbowLeft": 0.7480039672980618,
+                "wristLeft": 1.1620585082223283,
+                "hipRight": 0.18333333333333712,
+                "kneeRight": 0.18205036076211012,
+                "ankleRight": 1.2573064938017384,
+                "shoulderRight": 0.18333333333333712,
+                "elbowRight": 0.6922343159983382,
+                "wristRight": 1.2431443018836712,
+                "neck": 0.18333333333333712
+              }
+            },
+            {
+              "from": 10,
+              "to": 1,
+              "maximumJointDistance": 2.255051180771877,
+              "joints": {
+                "hipLeft": 0.18333333333333712,
+                "kneeLeft": 2.255051180771877,
+                "ankleLeft": 1.4186411418857745,
+                "shoulderLeft": 0.18333333333333712,
+                "elbowLeft": 0.7413275151650363,
+                "wristLeft": 1.1556583396549875,
+                "hipRight": 0.18333333333333712,
+                "kneeRight": 0.19430183399057285,
+                "ankleRight": 1.2654103812218012,
+                "shoulderRight": 0.18333333333333712,
+                "elbowRight": 0.6854927955342136,
+                "wristRight": 1.2361356516247377,
+                "neck": 0.18333333333333712
+              }
+            }
+          ]
+        },
+        "stop": {
+          "directEndpointJointDistance": 8.523488481795038,
+          "steps": [
+            {
+              "from": 8,
+              "to": 11,
+              "maximumJointDistance": 3.1858867251111014,
+              "joints": {
+                "hipLeft": 0.1429093392890989,
+                "kneeLeft": 3.1858867251111014,
+                "ankleLeft": 2.5194201635784306,
+                "shoulderLeft": 0.22846744912121866,
+                "elbowLeft": 0.6992343247577559,
+                "wristLeft": 1.05267638195747,
+                "hipRight": 0.13960573238991353,
+                "kneeRight": 0.3430822105049736,
+                "ankleRight": 1.3444749748801377,
+                "shoulderRight": 0.2290936201733547,
+                "elbowRight": 0.2492999755083241,
+                "wristRight": 0.7484712363917997,
+                "neck": 0.23959439839053046
+              }
+            },
+            {
+              "from": 11,
+              "to": 12,
+              "maximumJointDistance": 2.70073709220061,
+              "joints": {
+                "hipLeft": 0.1422500016493532,
+                "kneeLeft": 2.70073709220061,
+                "ankleLeft": 1.162594990187405,
+                "shoulderLeft": 0.22839595045385172,
+                "elbowLeft": 0.6973000732204224,
+                "wristLeft": 1.0505076545249932,
+                "hipRight": 0.1402677669767996,
+                "kneeRight": 0.656659331998144,
+                "ankleRight": 0.9917109784407967,
+                "shoulderRight": 0.22917758462907345,
+                "elbowRight": 0.2535922015147129,
+                "wristRight": 0.7517710438142032,
+                "neck": 0.2395953145385074
+              }
+            },
+            {
+              "from": 12,
+              "to": 0,
+              "maximumJointDistance": 2.7016893857445927,
+              "joints": {
+                "hipLeft": 0.14158993711584786,
+                "kneeLeft": 2.7016893857445927,
+                "ankleLeft": 1.1645610806037223,
+                "shoulderLeft": 0.2283240279276035,
+                "elbowLeft": 0.6952331432567027,
+                "wristLeft": 1.0482051311820293,
+                "hipRight": 0.14092918047050118,
+                "kneeRight": 0.15945608491670257,
+                "ankleRight": 0.6295414682705714,
+                "shoulderRight": 0.22926112043530383,
+                "elbowRight": 0.2580982740222664,
+                "wristRight": 0.7553185495921492,
+                "neck": 0.2395957726130956
+              }
+            }
+          ]
+        }
+      }
+    },
+    "up-right": {
+      "poses": 13,
+      "approvedFramePNGsUnchanged": 9,
+      "approvedSemanticLayersUnchanged": 72,
+      "junctionHoles": 0,
+      "continuity": {
+        "start": {
+          "directEndpointJointDistance": 7.329083123209672,
+          "steps": [
+            {
+              "from": 0,
+              "to": 9,
+              "maximumJointDistance": 2.988309990471406,
+              "joints": {
+                "hipRight": 0.18333333333333712,
+                "kneeRight": 2.988309990471406,
+                "ankleRight": 2.8876335296143267,
+                "shoulderRight": 0.18333333333333712,
+                "elbowRight": 0.754555500212327,
+                "wristRight": 1.1683203500128396,
+                "hipLeft": 0.18333333333333712,
+                "kneeLeft": 0.16987850142931318,
+                "ankleLeft": 1.2496779879851005,
+                "shoulderLeft": 0.18333333333333712,
+                "elbowLeft": 0.6988563107746217,
+                "wristLeft": 1.2500631751563587,
+                "neck": 0.18333333333333712
+              }
+            },
+            {
+              "from": 9,
+              "to": 10,
+              "maximumJointDistance": 2.3387818870629498,
+              "joints": {
+                "hipRight": 0.18333333333333712,
+                "kneeRight": 2.3387818870629498,
+                "ankleRight": 1.1920512367658318,
+                "shoulderRight": 0.18333333333333712,
+                "elbowRight": 0.748003967298087,
+                "wristRight": 1.1620585082223154,
+                "hipLeft": 0.18333333333333712,
+                "kneeLeft": 0.18205036076211012,
+                "ankleLeft": 1.2573064938017384,
+                "shoulderLeft": 0.18333333333333712,
+                "elbowLeft": 0.6922343159983382,
+                "wristLeft": 1.2431443018836712,
+                "neck": 0.18333333333333712
+              }
+            },
+            {
+              "from": 10,
+              "to": 1,
+              "maximumJointDistance": 2.255051180771877,
+              "joints": {
+                "hipRight": 0.18333333333333712,
+                "kneeRight": 2.255051180771877,
+                "ankleRight": 1.4186411418857745,
+                "shoulderRight": 0.18333333333333712,
+                "elbowRight": 0.7413275151650235,
+                "wristRight": 1.1556583396549875,
+                "hipLeft": 0.18333333333333712,
+                "kneeLeft": 0.19430183399057285,
+                "ankleLeft": 1.2654103812218012,
+                "shoulderLeft": 0.18333333333333712,
+                "elbowLeft": 0.6854927955342136,
+                "wristLeft": 1.2361356516247377,
+                "neck": 0.18333333333333712
+              }
+            }
+          ]
+        },
+        "stop": {
+          "directEndpointJointDistance": 8.523488481795038,
+          "steps": [
+            {
+              "from": 8,
+              "to": 11,
+              "maximumJointDistance": 3.185886725111112,
+              "joints": {
+                "hipRight": 0.14290933928911104,
+                "kneeRight": 3.185886725111112,
+                "ankleRight": 2.5194201635784306,
+                "shoulderRight": 0.2284674491212467,
+                "elbowRight": 0.6992343247577559,
+                "wristRight": 1.052676381957484,
+                "hipLeft": 0.13960573238991353,
+                "kneeLeft": 0.3430822105049736,
+                "ankleLeft": 1.3444749748801377,
+                "shoulderLeft": 0.2290936201733547,
+                "elbowLeft": 0.2492999755083241,
+                "wristLeft": 0.7484712363917997,
+                "neck": 0.23959439839053046
+              }
+            },
+            {
+              "from": 11,
+              "to": 12,
+              "maximumJointDistance": 2.70073709220061,
+              "joints": {
+                "hipRight": 0.1422500016493532,
+                "kneeRight": 2.70073709220061,
+                "ankleRight": 1.162594990187418,
+                "shoulderRight": 0.2283959504538237,
+                "elbowRight": 0.6973000732204083,
+                "wristRight": 1.0505076545250072,
+                "hipLeft": 0.1402677669767996,
+                "kneeLeft": 0.656659331998144,
+                "ankleLeft": 0.9917109784407967,
+                "shoulderLeft": 0.22917758462907345,
+                "elbowLeft": 0.2535922015147129,
+                "wristLeft": 0.7517710438142032,
+                "neck": 0.2395953145385074
+              }
+            },
+            {
+              "from": 12,
+              "to": 0,
+              "maximumJointDistance": 2.70168938574458,
+              "joints": {
+                "hipRight": 0.14158993711584786,
+                "kneeRight": 2.70168938574458,
+                "ankleRight": 1.1645610806037223,
+                "shoulderRight": 0.22832402792761755,
+                "elbowRight": 0.6952331432567167,
+                "wristRight": 1.0482051311820155,
+                "hipLeft": 0.14092918047050118,
+                "kneeLeft": 0.15945608491670257,
+                "ankleLeft": 0.6295414682705714,
+                "shoulderLeft": 0.22926112043530383,
+                "elbowLeft": 0.2580982740222664,
+                "wristLeft": 0.7553185495921492,
+                "neck": 0.2395957726130956
+              }
+            }
+          ]
+        }
+      }
+    }
+  },
+  "actualCompositorPoses": 26,
+  "newTransitionPoses": 8,
+  "semanticLayersWithoutOrphans": 208,
+  "newJunctionAlphaHoles": 0,
+  "headLocalMirrorAttachments": 13,
+  "soleGroundingTransitionChecks": 4,
+  "gifs": [
+    {
+      "file": "walk-120ms.gif",
+      "frames": 8,
+      "durationsMs": [
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120
+      ]
+    },
+    {
+      "file": "start-stop-120ms.gif",
+      "frames": 22,
+      "durationsMs": [
+        480,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        480
+      ]
+    },
+    {
+      "file": "up-left/walk-120ms.gif",
+      "frames": 8,
+      "durationsMs": [
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120
+      ]
+    },
+    {
+      "file": "up-left/start-stop-120ms.gif",
+      "frames": 22,
+      "durationsMs": [
+        480,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        480
+      ]
+    },
+    {
+      "file": "up-right/walk-120ms.gif",
+      "frames": 8,
+      "durationsMs": [
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120
+      ]
+    },
+    {
+      "file": "up-right/start-stop-120ms.gif",
+      "frames": 22,
+      "durationsMs": [
+        480,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        480
+      ]
+    }
+  ],
+  "poses": {
+    "up-left": [
+      {
+        "index": 0,
+        "clip": "idle",
+        "frame": 0,
+        "junctionMissingPixels": 0,
+        "sides": {
+          "left": {
+            "legPixels": 808,
+            "projectedKneeBendDeg": 4.763641690726296,
+            "visibleHandPixels": 105
+          },
+          "right": {
+            "legPixels": 700,
+            "projectedKneeBendDeg": 7.594643368591447,
+            "visibleHandPixels": 59
+          }
+        }
+      },
+      {
+        "index": 1,
+        "clip": "walk",
+        "frame": 1,
+        "junctionMissingPixels": 0,
+        "sides": {
+          "left": {
+            "legPixels": 805,
+            "projectedKneeBendDeg": 24.881725144017224,
+            "visibleHandPixels": 105
+          },
+          "right": {
+            "legPixels": 711,
+            "projectedKneeBendDeg": 19.134904628039823,
+            "visibleHandPixels": 25
+          }
+        }
+      },
+      {
+        "index": 2,
+        "clip": "walk",
+        "frame": 2,
+        "junctionMissingPixels": 0,
+        "sides": {
+          "left": {
+            "legPixels": 810,
+            "projectedKneeBendDeg": 17.509844437523387,
+            "visibleHandPixels": 105
+          },
+          "right": {
+            "legPixels": 699,
+            "projectedKneeBendDeg": 28.18828531581935,
+            "visibleHandPixels": 34
+          }
+        }
+      },
+      {
+        "index": 3,
+        "clip": "walk",
+        "frame": 3,
+        "junctionMissingPixels": 0,
+        "sides": {
+          "left": {
+            "legPixels": 831,
+            "projectedKneeBendDeg": 11.942834139783212,
+            "visibleHandPixels": 106
+          },
+          "right": {
+            "legPixels": 671,
+            "projectedKneeBendDeg": 35.11428349389925,
+            "visibleHandPixels": 56
+          }
+        }
+      },
+      {
+        "index": 4,
+        "clip": "walk",
+        "frame": 4,
+        "junctionMissingPixels": 0,
+        "sides": {
+          "left": {
+            "legPixels": 821,
+            "projectedKneeBendDeg": 16.02698176498582,
+            "visibleHandPixels": 104
+          },
+          "right": {
+            "legPixels": 658,
+            "projectedKneeBendDeg": 34.36911505298276,
+            "visibleHandPixels": 59
+          }
+        }
+      },
+      {
+        "index": 5,
+        "clip": "walk",
+        "frame": 5,
+        "junctionMissingPixels": 0,
+        "sides": {
+          "left": {
+            "legPixels": 826,
+            "projectedKneeBendDeg": 18.774595845890797,
+            "visibleHandPixels": 104
+          },
+          "right": {
+            "legPixels": 663,
+            "projectedKneeBendDeg": 25.135160027666792,
+            "visibleHandPixels": 60
+          }
+        }
+      },
+      {
+        "index": 6,
+        "clip": "walk",
+        "frame": 6,
+        "junctionMissingPixels": 0,
+        "sides": {
+          "left": {
+            "legPixels": 824,
+            "projectedKneeBendDeg": 26.776892800455656,
+            "visibleHandPixels": 105
+          },
+          "right": {
+            "legPixels": 687,
+            "projectedKneeBendDeg": 14.178364582828378,
+            "visibleHandPixels": 60
+          }
+        }
+      },
+      {
+        "index": 7,
+        "clip": "walk",
+        "frame": 7,
+        "junctionMissingPixels": 0,
+        "sides": {
+          "left": {
+            "legPixels": 801,
+            "projectedKneeBendDeg": 32.85252699817789,
+            "visibleHandPixels": 105
+          },
+          "right": {
+            "legPixels": 728,
+            "projectedKneeBendDeg": 4.516357180240609,
+            "visibleHandPixels": 53
+          }
+        }
+      },
+      {
+        "index": 8,
+        "clip": "walk",
+        "frame": 8,
+        "junctionMissingPixels": 0,
+        "sides": {
+          "left": {
+            "legPixels": 803,
+            "projectedKneeBendDeg": 31.963821732360046,
+            "visibleHandPixels": 105
+          },
+          "right": {
+            "legPixels": 713,
+            "projectedKneeBendDeg": 14.572799026297245,
+            "visibleHandPixels": 36
+          }
+        }
+      },
+      {
+        "index": 9,
+        "clip": "walk-start",
+        "frame": 1,
+        "junctionMissingPixels": 0,
+        "sides": {
+          "left": {
+            "legPixels": 779,
+            "projectedKneeBendDeg": 4.813831088202419,
+            "visibleHandPixels": 105
+          },
+          "right": {
+            "legPixels": 704,
+            "projectedKneeBendDeg": 11.690226994474836,
+            "visibleHandPixels": 51
+          }
+        }
+      },
+      {
+        "index": 10,
+        "clip": "walk-start",
+        "frame": 2,
+        "junctionMissingPixels": 0,
+        "sides": {
+          "left": {
+            "legPixels": 783,
+            "projectedKneeBendDeg": 14.998625676693816,
+            "visibleHandPixels": 105
+          },
+          "right": {
+            "legPixels": 714,
+            "projectedKneeBendDeg": 15.544323525960193,
+            "visibleHandPixels": 38
+          }
+        }
+      },
+      {
+        "index": 11,
+        "clip": "walk-stop",
+        "frame": 1,
+        "junctionMissingPixels": 0,
+        "sides": {
+          "left": {
+            "legPixels": 814,
+            "projectedKneeBendDeg": 18.239502191631335,
+            "visibleHandPixels": 104
+          },
+          "right": {
+            "legPixels": 692,
+            "projectedKneeBendDeg": 12.748652855698209,
+            "visibleHandPixels": 43
+          }
+        }
+      },
+      {
+        "index": 12,
+        "clip": "walk-stop",
+        "frame": 2,
+        "junctionMissingPixels": 0,
+        "sides": {
+          "left": {
+            "legPixels": 808,
+            "projectedKneeBendDeg": 6.456754996265798,
+            "visibleHandPixels": 105
+          },
+          "right": {
+            "legPixels": 700,
+            "projectedKneeBendDeg": 10.036354619159697,
+            "visibleHandPixels": 51
+          }
+        }
+      }
+    ],
+    "up-right": [
+      {
+        "index": 0,
+        "clip": "idle",
+        "frame": 0,
+        "junctionMissingPixels": 0,
+        "sides": {
+          "left": {
+            "legPixels": 700,
+            "projectedKneeBendDeg": 7.594643368591447,
+            "visibleHandPixels": 59
+          },
+          "right": {
+            "legPixels": 808,
+            "projectedKneeBendDeg": 4.763641690726296,
+            "visibleHandPixels": 105
+          }
+        }
+      },
+      {
+        "index": 1,
+        "clip": "walk",
+        "frame": 1,
+        "junctionMissingPixels": 0,
+        "sides": {
+          "left": {
+            "legPixels": 711,
+            "projectedKneeBendDeg": 19.134904628039823,
+            "visibleHandPixels": 25
+          },
+          "right": {
+            "legPixels": 805,
+            "projectedKneeBendDeg": 24.881725144017267,
+            "visibleHandPixels": 105
+          }
+        }
+      },
+      {
+        "index": 2,
+        "clip": "walk",
+        "frame": 2,
+        "junctionMissingPixels": 0,
+        "sides": {
+          "left": {
+            "legPixels": 699,
+            "projectedKneeBendDeg": 28.18828531581935,
+            "visibleHandPixels": 34
+          },
+          "right": {
+            "legPixels": 810,
+            "projectedKneeBendDeg": 17.509844437523387,
+            "visibleHandPixels": 105
+          }
+        }
+      },
+      {
+        "index": 3,
+        "clip": "walk",
+        "frame": 3,
+        "junctionMissingPixels": 0,
+        "sides": {
+          "left": {
+            "legPixels": 671,
+            "projectedKneeBendDeg": 35.11428349389925,
+            "visibleHandPixels": 56
+          },
+          "right": {
+            "legPixels": 831,
+            "projectedKneeBendDeg": 11.942834139783212,
+            "visibleHandPixels": 106
+          }
+        }
+      },
+      {
+        "index": 4,
+        "clip": "walk",
+        "frame": 4,
+        "junctionMissingPixels": 0,
+        "sides": {
+          "left": {
+            "legPixels": 658,
+            "projectedKneeBendDeg": 34.36911505298276,
+            "visibleHandPixels": 59
+          },
+          "right": {
+            "legPixels": 821,
+            "projectedKneeBendDeg": 16.02698176498582,
+            "visibleHandPixels": 104
+          }
+        }
+      },
+      {
+        "index": 5,
+        "clip": "walk",
+        "frame": 5,
+        "junctionMissingPixels": 0,
+        "sides": {
+          "left": {
+            "legPixels": 663,
+            "projectedKneeBendDeg": 25.135160027666792,
+            "visibleHandPixels": 60
+          },
+          "right": {
+            "legPixels": 826,
+            "projectedKneeBendDeg": 18.774595845890797,
+            "visibleHandPixels": 104
+          }
+        }
+      },
+      {
+        "index": 6,
+        "clip": "walk",
+        "frame": 6,
+        "junctionMissingPixels": 0,
+        "sides": {
+          "left": {
+            "legPixels": 687,
+            "projectedKneeBendDeg": 14.178364582828378,
+            "visibleHandPixels": 60
+          },
+          "right": {
+            "legPixels": 824,
+            "projectedKneeBendDeg": 26.776892800455826,
+            "visibleHandPixels": 105
+          }
+        }
+      },
+      {
+        "index": 7,
+        "clip": "walk",
+        "frame": 7,
+        "junctionMissingPixels": 0,
+        "sides": {
+          "left": {
+            "legPixels": 728,
+            "projectedKneeBendDeg": 4.516357180240609,
+            "visibleHandPixels": 53
+          },
+          "right": {
+            "legPixels": 801,
+            "projectedKneeBendDeg": 32.85252699817789,
+            "visibleHandPixels": 105
+          }
+        }
+      },
+      {
+        "index": 8,
+        "clip": "walk",
+        "frame": 8,
+        "junctionMissingPixels": 0,
+        "sides": {
+          "left": {
+            "legPixels": 713,
+            "projectedKneeBendDeg": 14.572799026297245,
+            "visibleHandPixels": 36
+          },
+          "right": {
+            "legPixels": 803,
+            "projectedKneeBendDeg": 31.963821732360046,
+            "visibleHandPixels": 105
+          }
+        }
+      },
+      {
+        "index": 9,
+        "clip": "walk-start",
+        "frame": 1,
+        "junctionMissingPixels": 0,
+        "sides": {
+          "left": {
+            "legPixels": 704,
+            "projectedKneeBendDeg": 11.690226994474836,
+            "visibleHandPixels": 52
+          },
+          "right": {
+            "legPixels": 779,
+            "projectedKneeBendDeg": 4.813831088202419,
+            "visibleHandPixels": 105
+          }
+        }
+      },
+      {
+        "index": 10,
+        "clip": "walk-start",
+        "frame": 2,
+        "junctionMissingPixels": 0,
+        "sides": {
+          "left": {
+            "legPixels": 714,
+            "projectedKneeBendDeg": 15.544323525960193,
+            "visibleHandPixels": 38
+          },
+          "right": {
+            "legPixels": 783,
+            "projectedKneeBendDeg": 14.998625676693893,
+            "visibleHandPixels": 105
+          }
+        }
+      },
+      {
+        "index": 11,
+        "clip": "walk-stop",
+        "frame": 1,
+        "junctionMissingPixels": 0,
+        "sides": {
+          "left": {
+            "legPixels": 692,
+            "projectedKneeBendDeg": 12.748652855698209,
+            "visibleHandPixels": 43
+          },
+          "right": {
+            "legPixels": 814,
+            "projectedKneeBendDeg": 18.239502191631214,
+            "visibleHandPixels": 104
+          }
+        }
+      },
+      {
+        "index": 12,
+        "clip": "walk-stop",
+        "frame": 2,
+        "junctionMissingPixels": 0,
+        "sides": {
+          "left": {
+            "legPixels": 700,
+            "projectedKneeBendDeg": 10.036354619159697,
+            "visibleHandPixels": 52
+          },
+          "right": {
+            "legPixels": 808,
+            "projectedKneeBendDeg": 6.456754996265685,
+            "visibleHandPixels": 105
+          }
+        }
+      }
+    ]
+  },
+  "limits": [
+    "Specified idle-to-walk01 and walk08-to-idle paths only",
+    "No continuous-player viewing claimed",
+    "No full hidden anatomy, wardrobe, runtime, device or IPA acceptance"
+  ]
+}

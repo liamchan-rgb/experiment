@@ -1,0 +1,26 @@
+{
+  "weaponID": "huntingBow",
+  "assetName": "MeadowBattleHuntingBow",
+  "referenceGrip": {
+    "x": 184,
+    "y": 152
+  },
+  "referenceUpperTip": {
+    "x": 174.0,
+    "y": 116
+  },
+  "referenceLowerTip": {
+    "x": 174.0,
+    "y": 188
+  },
+  "referenceStraightStringNock": {
+    "x": 174,
+    "y": 139
+  },
+  "referenceDrawnStringNock": {
+    "x": 141,
+    "y": 139
+  },
+  "arrowLength": 73,
+  "bindingScope": "Offline native art candidate. Other bows need their own grip/tip registration; runtime importer is not implemented in this iteration."
+}

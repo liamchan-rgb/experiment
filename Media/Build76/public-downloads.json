@@ -1,0 +1,72 @@
+{
+  "build": 76,
+  "sourceCommit": "06c12505cdb963b6c981cf3f84e682a0c5e8159a",
+  "releaseCommit": "c305ea735a5abcd470178e116974a92d8e9de152",
+  "artCommit": "48d795757cda308e412d05e65becd27abeab81f2",
+  "downloads": [
+    {
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/48d795757cda308e412d05e65becd27abeab81f2/Art/Review/Map/campaign-v1/travel-normal.gif",
+      "bytes": 1348188,
+      "sha256": "29e83cb8deeacced75502a6cfb6dac4dbb59a07ad9e00d26a7af210b1a9d92dd",
+      "verified": true,
+      "frames": 370,
+      "size": [
+        960,
+        622
+      ],
+      "durationMs": 7400
+    },
+    {
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/48d795757cda308e412d05e65becd27abeab81f2/Art/Review/Map/campaign-v1/encounter-normal.gif",
+      "bytes": 14139476,
+      "sha256": "14d8cad4aa9071fc8bbe66f24953b3217ec11527e94e29235aa355eec6303a47",
+      "verified": true,
+      "frames": 298,
+      "size": [
+        640,
+        468
+      ],
+      "durationMs": 5960
+    },
+    {
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/48d795757cda308e412d05e65becd27abeab81f2/Art/Review/Map/campaign-v1/encounter-full.mp4",
+      "bytes": 5431625,
+      "sha256": "c084d98f381154e276c8b03b068673191f948702ca2e868fa3fa15763b6865e9",
+      "verified": true
+    },
+    {
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/48d795757cda308e412d05e65becd27abeab81f2/Art/Review/Map/campaign-v1/travel-normal-decoded-0369.png",
+      "bytes": 893332,
+      "sha256": "516ff92aedf0632749390aac449ec8598d496821221e4b934fab697b9a48c630",
+      "verified": true
+    },
+    {
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/48d795757cda308e412d05e65becd27abeab81f2/Art/Review/Map/campaign-v1/encounter-normal-decoded-0297.png",
+      "bytes": 458411,
+      "sha256": "6c0b895d01df129cc19f5b28ffe3ebb09b0f44d03c50bf76590f6bfa072eb393",
+      "verified": true
+    },
+    {
+      "url": "https://raw.githubusercontent.com/liamchan-rgb/experiment/c305ea735a5abcd470178e116974a92d8e9de152/Downloads/MeadowJourney-b76.ipa",
+      "bytes": 60297013,
+      "sha256": "d8e413773fcc71da55eae4092dfe86232f36078d6857737459d716fec1d7c7ec",
+      "verified": true
+    }
+  ],
+  "walkGIF": {
+    "frames": 370,
+    "frameMs": 20
+  },
+  "victoryGIF": {
+    "frames": 298,
+    "frameMs": 20,
+    "sourceFrames": [
+      650,
+      947
+    ]
+  },
+  "fullBattleMP4Frames": 948,
+  "ipaDirect": true,
+  "noAppSimulatorDeviceRun": true,
+  "artApproval": null
+}
