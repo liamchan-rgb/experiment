@@ -1,0 +1,70 @@
+{
+  "GIFs": [
+    {
+      "path": "Art/Review/P1/side-hair-coverage-r2/both-armors-attack-normal.gif",
+      "frames": 76,
+      "durationMs": 2700,
+      "bytes": 1326409,
+      "sha256": "68c68cf89d2e58c7aba2c08e2b18095432d806c11f9cfdd8ed2eea8ee15a8dcb"
+    },
+    {
+      "path": "Art/Review/P1/side-hair-coverage-r2/both-armors-states-normal.gif",
+      "frames": 161,
+      "durationMs": 4380,
+      "bytes": 2878358,
+      "sha256": "4e3a2cee43ab9e710b37467a7830edce798529a12cd44e2dc370f48ed9c74b77"
+    },
+    {
+      "path": "Art/Review/P1/side-hair-coverage-r2/f1-bob-eight-way-normal.gif",
+      "frames": 8,
+      "durationMs": 960,
+      "bytes": 248995,
+      "sha256": "ae8c8fe352fbef09baa131e1802b7dcfe5c8eb520f68add44ecf41178bb284fe"
+    },
+    {
+      "path": "Art/Review/P1/side-hair-coverage-r2/f2-ponytail-eight-way-normal.gif",
+      "frames": 8,
+      "durationMs": 960,
+      "bytes": 247396,
+      "sha256": "8cb03ea27b5159010357fa742a75136b615b6fda47f7b8dd464d847a94057c2c"
+    },
+    {
+      "path": "Art/Review/P1/side-hair-coverage-r2/f3-bun-eight-way-normal.gif",
+      "frames": 8,
+      "durationMs": 960,
+      "bytes": 252691,
+      "sha256": "11d0519fdc4b1bb8fa06edbf118c6714c36b94186cd7bf681deb8a63f78f4b94"
+    },
+    {
+      "path": "Art/Review/P1/side-hair-coverage-r2/m1-short-eight-way-normal.gif",
+      "frames": 8,
+      "durationMs": 960,
+      "bytes": 242208,
+      "sha256": "1425d5e9cd8b56365041087dad7029d455be7ade1d946fbd2ae42125b0fb76e3"
+    },
+    {
+      "path": "Art/Review/P1/side-hair-coverage-r2/m2-sidepart-eight-way-normal.gif",
+      "frames": 8,
+      "durationMs": 960,
+      "bytes": 245029,
+      "sha256": "e480c17517cdc5de668b1240c19f123bfc5b00744fa6a8d79b6c9e686da6b614"
+    },
+    {
+      "path": "Art/Review/P1/side-hair-coverage-r2/m3-topknot-eight-way-normal.gif",
+      "frames": 8,
+      "durationMs": 960,
+      "bytes": 251999,
+      "sha256": "b4ad938c7022682ae2b04ead4b30f75ff089e864b8636a16ca5efff31e7bd942"
+    },
+    {
+      "path": "Art/Review/P1/side-hair-coverage-r2/walking-battle-same-head-normal.gif",
+      "frames": 85,
+      "durationMs": 2700,
+      "bytes": 1513047,
+      "sha256": "0f66ce86dddac14585c7dc0bb27c0f19ce6199aef09a3d635cf3aaffdf0a432b"
+    }
+  ],
+  "decodedFrames": 370,
+  "allDecoded": true,
+  "normalTimingOnly": true
+}

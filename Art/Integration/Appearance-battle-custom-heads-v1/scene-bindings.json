@@ -1,7 +1,6 @@
 {
   "schemaVersion": 1,
   "scope": "offline shared appearance bindings; not App selection/save/UI integration",
-  "artSourceCommit": "3ef48ebdb43d608d459fc438714fe0f6e1ed6d29",
   "baseID": "p1-eight-way-base-v1",
   "lowerBodyID": "p1-eight-way-lower-v1",
   "walkingCatalog": "Art/Review/P1/custom-heads-v1/catalog.json",
@@ -159,5 +158,8 @@
   "weaponDoesNotChooseHead": true,
   "unknownOrMissingHeadPolicy": "reject complete choice; no default head substitution or old-head overlay",
   "appRuntimeIntegrated": false,
-  "newArtApproval": null
+  "newArtApproval": null,
+  "originalArtSourceCommit": "3ef48ebdb43d608d459fc438714fe0f6e1ed6d29",
+  "hairRevision": "side-hair-coverage-r2 / asset 1.0.1",
+  "currentHairSource": "same published revision as this binding; originalArtSourceCommit is the earlier baseline"
 }

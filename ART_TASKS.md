@@ -34,3 +34,7 @@
 ## 行走/战斗头部同步修订（2026-11-08）
 
 新默认批量预览以 [两场景同步页](Art/Review/Battle/appearance-synchronized-v1/README.md) 为准。逐玩家同一 outfit/hair/face 记录，不因近远程动作换回旧头；完整绑定见 Art/Integration/Appearance-battle-custom-heads-v1/scene-bindings.json。旧战斗服装页保留历史。当前仅资源装配与离线审核，App UI/存档尚未接入。
+
+## 侧面发量 r2
+
+六款hair1.0.1，ID不变，四向+战斗同步，当前以 [r2页](Art/Review/P1/side-hair-coverage-r2/README.md) 为准。眼/脸/身体不改，未接入App UI/存档。

@@ -32,8 +32,8 @@ FACES={
 }
 BASES={
  'down':[(24,49),(23,39),(27,31),(35,25),(46,23),(58,25),(68,31),(73,40),(72,51),(68,57),(67,47),(61,42),(53,43),(47,46),(40,42),(32,46),(29,55)],
- 'down-left':[(28,46),(28,36),(34,29),(44,25),(56,24),(66,29),(73,38),(75,48),(70,60),(64,64),(62,58),(65,52),(62,48),(56,43),(48,45),(42,43),(35,46),(31,51)],
- 'left':[(29,39),(28,34),(34,27),(43,23),(54,23),(65,28),(73,37),(75,47),(70,59),(62,65),(59,60),(64,53),(64,47),(57,43),(49,42),(42,37),(35,40)],
+ 'down-left':[(28,46),(28,36),(34,29),(44,25),(56,24),(66,29),(73,38),(75,48),(70,60),(64,64),(61,61),(62,56),(61,52),(57,49),(56,56),(54,59),(53,56),(53,51),(49,48),(44,47),(39,48),(35,49),(31,52)],
+ 'left':[(29,41),(28,34),(34,27),(43,23),(54,23),(65,28),(73,37),(75,47),(70,59),(62,65),(59,60),(61,56),(60,51),(56,48),(52,48),(49,51),(47,57),(44,57),(44,51),(42,48),(40,44),(35,43),(31,44),(29,42)],
  'up-left':[(28,44),(27,35),(33,28),(44,24),(56,24),(67,29),(74,39),(75,49),(70,60),(59,69),(47,70),(37,66),(35,59),(31,56)],
  'up':[(24,43),(25,34),(32,27),(43,23),(54,23),(64,27),(72,35),(74,46),(70,56),(65,64),(55,70),(43,71),(32,65),(27,57)],
 }
@@ -52,7 +52,7 @@ def shape_points(direction,shape):
     if p[1]>59:p[1]-=4
  elif shape in ['knot','bun']:
   for p in points:
-   if p[1]>40 and p[0]<45:p[1]-=2
+   if source=='down' and p[1]>40 and p[0]<45:p[1]-=2
  elif shape=='part':
   for p in points:
    if source=='down' and 30<=p[0]<=48 and 42<=p[1]<=50:p[1]+=4
@@ -60,8 +60,10 @@ def shape_points(direction,shape):
  elif shape=='bob':
   if source=='down':
    points=[(24,71),(22,54),(23,39),(27,31),(35,25),(47,23),(60,26),(69,33),(74,45),(73,72),(64,73),(66,61),(66,47),(61,44),(54,44),(48,46),(41,44),(33,46),(30,60),(33,73)]
-  elif source in ['down-left','left']:
-   points=[(29,41),(28,34),(34,27),(44,24),(56,24),(67,29),(74,39),(76,53),(73,72),(63,74),(61,67),(64,58),(64,48),(56,43),(47,43),(40,39),(34,42)]
+  elif source=='left':
+   points=[(29,42),(28,34),(34,27),(44,24),(56,24),(67,29),(74,39),(76,53),(73,72),(63,74),(61,67),(61,60),(60,54),(57,49),(52,48),(49,51),(48,58),(45,61),(43,60),(43,51),(41,47),(38,44),(33,44),(29,45)]
+  elif source=='down-left':
+   points=[(29,43),(28,34),(34,27),(44,24),(56,24),(67,29),(74,39),(76,53),(73,72),(63,74),(61,67),(61,58),(59,53),(57,50),(56,58),(55,61),(54,59),(54,51),(48,49),(43,48),(38,49),(34,50),(31,52)]
   else:
    points=[(25,45),(25,35),(32,28),(43,24),(56,24),(67,29),(74,39),(75,54),(71,73),(59,74),(47,72),(36,74),(28,68)]
  # Align scalp to the actual directional guide, rather than alpha bounds.
@@ -230,9 +232,18 @@ def face_groups(direction,style):
 
 def render_svg(path,slot,output):
  output.parent.mkdir(parents=True,exist_ok=True)
- subprocess.run(['inkscape',str(path),'--export-id='+slot,'--export-id-only','--export-area-page','--export-png-antialias=0','--export-filename='+str(output)],check=True,stdout=subprocess.DEVNULL,stderr=subprocess.PIPE)
+ command=['inkscape',str(path),'--export-id='+slot,'--export-id-only','--export-area-page','--export-png-antialias=0','--export-filename='+str(output)]
+ result=subprocess.run(command,stdout=subprocess.DEVNULL,stderr=subprocess.PIPE);fallback=False
+ if result.returncode and b'export-png-antialias' in result.stderr and b'Unknown option' in result.stderr:
+  # Older Inkscape lacks the flag. Keep the SVG's crispEdges and normalize
+  # only transparent edge coverage, never skin-colour filtering or fitting.
+  command.remove('--export-png-antialias=0');fallback=True
+  result=subprocess.run(command,stdout=subprocess.DEVNULL,stderr=subprocess.PIPE)
+ if result.returncode:raise RuntimeError(result.stderr.decode('utf-8',errors='replace'))
+
  with Image.open(output) as im:
   a=np.array(im.convert('RGBA'));a[a[:,:,3]==0]=0
+ if fallback:a[a[:,:,3]<128]=0;a[a[:,:,3]>=128,3]=255
  Image.fromarray(a).save(output,icc_profile=Path('/usr/share/color/icc/sRGB.icc').read_bytes())
 
 
@@ -254,7 +265,7 @@ def build():
       output.parent.mkdir(parents=True,exist_ok=True);Image.new('RGBA',(96,96)).save(output)
      else:render_svg(svg,slot,output)
      paths[d][slot]=output.relative_to(folder).as_posix()
-   asset=copy.deepcopy(template);asset['id']='p1-custom-'+part+'-'+style+'-v1';asset['version']='1.0.0';asset['sourceFiles']=sources+['authoring.json','palette.json']
+   asset=copy.deepcopy(template);asset['id']='p1-custom-'+part+'-'+style+'-v1';asset['version']='1.0.1' if part=='hair' else '1.0.0';asset['sourceFiles']=sources+['authoring.json','palette.json']
    asset['bindings']=[{'direction':b['direction'],'clip':b['clip'],'frame':b['frame'],'layers':paths[b['direction']]} for b in template['bindings']]
    write(folder/'palette.json',{'colorSpace':'sRGB','roleColors':cfg.get('colors',{k:cfg[k] for k in ['eye','shadow','brow'] if k in cfg})});write(folder/'asset.json',asset);write(folder/'authoring.json',{'label':cfg['label'],'genderStyle':cfg['genderStyle'],'scope':'gender-styled appearance preset on unchanged shared body; not a separate female body','headCanvas':[96,96],'headToCanvasSource':'original motion, unchanged','slots':asset['slots'],'noSkinEarsJawOrBodyPixels':True,'fullEightDirections':True,'bindingCount':104,'uniqueDirectionalLayerPNGs':8*len(asset['slots']),'hairBackContractChanged':False,'artApproval':None,'runtimeImported':False})
    manifests.append({'id':asset['id'],'manifest':(folder/'asset.json').relative_to(R).as_posix()})

@@ -92,8 +92,9 @@ def run():
     board.paste(walk,(x,y),walk);board.paste(actor,(x+256,y),actor);dr.text((x+5,y+258),bindings.hair[hair]['label']+' / '+bindings.faces[face]['label'],font=font,fill='#f3e1b8')
   board.save(D/(sex+'-all-faces-two-scenes-1x.png'))
  media=[]
- assert {p.name for p in D.glob('*.gif')}=={'walking-battle-same-head-normal.gif','both-armors-attack-normal.gif','both-armors-states-normal.gif'},'export both battle GIFs before checking synchronization'
- for path in D.glob('*.gif'):
+ media_paths=[D/name for name in ['walking-battle-same-head-normal.gif','both-armors-attack-normal.gif','both-armors-states-normal.gif']]
+ assert all(p.is_file() for p in media_paths),'export both battle GIFs before checking synchronization'
+ for path in media_paths:
   with Image.open(path) as im:
    duration=0
    for i in range(im.n_frames):im.seek(i);im.convert('RGB').load();duration+=im.info['duration']

@@ -1,5 +1,7 @@
 # 双 B 战斗服装与自定义头部 · 2026-11-08
 
+**最新侧面发量：** [r2同步审核](../../Review/P1/side-hair-coverage-r2/README.md)。本页旧图/校验保留原时点事实，当前30张头发PNG已更新。
+
 **2026-11-08 同步修订：** 当前行走/战斗必须共用同一发型、五官和衣服选择。请优先看 [同步批量审核页](../../Review/Battle/appearance-synchronized-v1/README.md) 与 [并排正常GIF](../../Review/Battle/appearance-synchronized-v1/walking-battle-same-head-normal.gif)。下方旧战斗总览为首轮服装审核证据，头部不是当前展示组合；新资源仍未接入App UI/存档。
 
 本轮按用户“可以，把战斗阶段的也做了。然后做几个人物自定义发型（区分男女）和五官”制作。参考固定源 `1f76bce38fb33742ff6eeaef1499c186f14c0fb6`。主线程亲自制作、返修与审核，无智能体代修。当前是可挂载分层资源和离线审核交付，尚未替换 App/课堂图集、外观选择 UI 或人物存档字段；新资源的用户认可仍待反馈。

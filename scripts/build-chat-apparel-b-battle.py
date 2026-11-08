@@ -242,7 +242,7 @@ class Renderer:
   return self.bow(clip,p) if weapon=='huntingBow' else self.generic(weapon,clip,p)
 
 
-def review(stills=False,destination=None):
+def review(stills=False,destination=None,statesheets=True,decode_pages=True):
  # Keep the first delivery's old-head boards as historical evidence. New exports
  # must read the same identity record used by walking, including native bow.
  D=Path(destination) if destination else R/'Art/Review/Battle/appearance-synchronized-v1'
@@ -252,7 +252,7 @@ def review(stills=False,destination=None):
  font=ImageFont.truetype('/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf',12)
  reports=[]
  for item,renderer in renderers.items():
-  for weapon in WEAPONS:
+  for weapon in (WEAPONS if statesheets else []):
    board=Image.new('RGB',(5*256,7*280),'#1e3428');dr=ImageDraw.Draw(board)
    for row,clip in enumerate(['idle','attack','guard','hit','victory','defeat','revive']):
     for col,p in enumerate([0,.25,.5,.75,1]):
@@ -283,7 +283,7 @@ def review(stills=False,destination=None):
    for n in range(im.n_frames):im.seek(n);decoded.append(im.convert('RGB').copy());total+=im.info['duration']
    assert total==len(frames)*20
    # Inspect all actual decoded frames on 1x whole-body pages.
-   for start in range(0,len(decoded),4):
+   for start in (range(0,len(decoded),4) if decode_pages else []):
     page=Image.new('RGB',(2048,1120),'#1e3428')
     for j,f in enumerate(decoded[start:start+4]):page.paste(f,(j%2*1024,j//2*560))
     path=D/'decoded'/f'{sequence}-{start//4+1:03}.png';path.parent.mkdir(exist_ok=True);page.save(path)
