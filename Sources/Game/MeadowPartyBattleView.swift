@@ -35,6 +35,10 @@ final class MeadowPartyBattleView:UIView {
     private let end=MeadowPreviewPalette.button("结束行动")
     private let items=MeadowPreviewPalette.button("道具")
     private let stage=MeadowPartyStageView()
+    /// The map drawer: a pull tab on the edge between the map and the battlefield. Closed, the battlefield takes the map's place.
+    private let drawer=UIButton(type:.system)
+    private(set) var mapHidden=UserDefaults.standard.bool(forKey:"MeadowBattleMapHidden")
+    var onMapHiddenChanged:(()->Void)?
     
     private var skills:[MeadowPreviewCard]=[]
     private var focusedAction:PartyAction?
@@ -54,6 +58,12 @@ final class MeadowPartyBattleView:UIView {
         for _ in 0..<6 { let card=MeadowPreviewCard(title:"",text:"");skills.append(card);skillScroll.addSubview(card) }
         skillScroll.addSubview(items);items.showsMenuAsPrimaryAction=true
         stage.onChoose={ [weak self] id in self?.choose(id) }
+        drawer.backgroundColor=MeadowPreviewPalette.gold;drawer.tintColor=MeadowPreviewPalette.panel
+        drawer.layer.cornerRadius=10;drawer.layer.borderWidth=1.5;drawer.layer.borderColor=MeadowPreviewPalette.panel.cgColor
+        drawer.layer.shadowColor=UIColor.black.cgColor;drawer.layer.shadowOpacity=0.5;drawer.layer.shadowRadius=5;drawer.layer.shadowOffset = .zero
+        drawer.accessibilityIdentifier="battleMapDrawer"
+        drawer.addAction(UIAction { [weak self] _ in self?.toggleMap() },for:.touchUpInside)
+        addSubview(drawer)
         track.onSelect={ [weak self] id in self?.choose(id) }
         stage.onPresentationChanged={ [weak self] in self?.refresh() }
         accessibilityIdentifier="meadowPartySupportEncounter"
@@ -67,6 +77,16 @@ final class MeadowPartyBattleView:UIView {
             if campaignEngine != nil { decisionTimer=Timer.scheduledTimer(withTimeInterval:0.25,repeats:true) { [weak self] _ in self?.advanceDecisionClock() } }
         } else {
             generation += 1;scheduled?.cancel();scheduled=nil;model?.cancel();stage.stop();accessory.dismiss()
+        }
+    }
+    /// Slides the map away (or back): the battlefield glides over the map's place on a spring, the pull tab travels with its edge and its arrow turns over.
+    private func toggleMap() {
+        mapHidden.toggle();UserDefaults.standard.set(mapHidden,forKey:"MeadowBattleMapHidden")
+        onMapHiddenChanged?()
+        setNeedsLayout()
+        UIView.animate(withDuration:0.55,delay:0,usingSpringWithDamping:0.82,initialSpringVelocity:0.6,options:[.allowUserInteraction,.beginFromCurrentState]) { self.layoutIfNeeded() }
+        UIView.animate(withDuration:0.1,animations:{ self.drawer.transform=CGAffineTransform(scaleX:1.25,y:0.9) }) { _ in
+            UIView.animate(withDuration:0.4,delay:0,usingSpringWithDamping:0.45,initialSpringVelocity:0.8,options:.allowUserInteraction) { self.drawer.transform = .identity }
         }
     }
     private func configureTrainingMenu() {
@@ -248,8 +268,18 @@ final class MeadowPartyBattleView:UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         let layout=MeadowBattleLayout(size:bounds.size,safeArea:safeAreaInsets,mode:.playerTurn)
-        header.frame=layout.header;stage.frame=layout.battlefield;track.frame=layout.track;panel.frame=layout.details
+        header.frame=layout.header;track.frame=layout.track;panel.frame=layout.details
+        let field=mapHidden ? layout.map.union(layout.battlefield):layout.battlefield
+        stage.frame=field
         mapBorder.frame=layout.map;mapTitle.frame=CGRect(x:layout.map.minX+12,y:layout.map.minY+12,width:180,height:32)
+        mapBorder.alpha=mapHidden ? 0:1;mapTitle.alpha=mapHidden ? 0:1
+        // The pull tab rides the battlefield's left edge (inside it when the map is away).
+        let saved=drawer.transform;drawer.transform = .identity
+        drawer.frame=CGRect(x:mapHidden ? field.minX:field.minX-17,y:field.midY-46,width:34,height:92)
+        drawer.transform=saved
+        drawer.setImage(UIImage(systemName:mapHidden ? "chevron.right.2":"chevron.left.2",withConfiguration:UIImage.SymbolConfiguration(pointSize:17,weight:.heavy)),for:.normal)
+        drawer.accessibilityLabel=mapHidden ? "显示地图":"隐藏地图"
+        bringSubviewToFront(drawer)
         let w=header.bounds.width
         back.frame=CGRect(x:w-124,y:16,width:112,height:44)
         end.frame=CGRect(x:w-310,y:16,width:178,height:44)
