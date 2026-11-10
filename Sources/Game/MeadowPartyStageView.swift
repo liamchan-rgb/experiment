@@ -15,16 +15,35 @@ final class MeadowPartyStageView:UIView {
     private var worldWidth:Double { 1000*zoom }
     private var worldHeight:Double { 600*zoom }
     private var plates:[UIImageView]=[]
-    /// Scenery beyond the world's left and right edge for wide panes (the map drawer closed), built from the same art: the far forest and
-    /// the ground continue (flipped copies, so they join without a seam), and so do the low bushes of the foreground. The landmarks of the
-    /// midground and the tall trees of the foreground are not repeated.
-    private var sidePlates:[(view:UIImageView,layer:Int,left:Bool)]=[]
+    /// The wide scene (`MeadowCampWide*`, built by scripts/build-wide-battle-scene.py from the camp clearing and the map's scenery props):
+    /// twice as wide, with the usual scene untouched in its middle. Loaded the first time the pane is wide (the map drawer closed).
+    private var widePlates:[UIImageView]=[]
+    private var showsWideScene=false
+    private static let wideNames=["MeadowCampWideFarForest","MeadowCampWideGround","MeadowCampWideMidground","MeadowCampWideForeground"]
+    /// The pane shows more than the world's width: the wide plates replace the usual ones.
+    private func updateWideScene() {
+        guard bounds.width>0,bounds.height>0 else { return }
+        let wide=bounds.width/baseScale>CGFloat(worldWidth)*1.01
+        if wide,widePlates.isEmpty {
+            for (i,name) in Self.wideNames.enumerated() {
+                let view=UIImageView(image:MeadowBattlePlateProcessor.image(named:name,role:[.farForest,.ground,.midground,.foreground][i]))
+                view.layer.zPosition=plates[i].layer.zPosition;view.alpha=0;world.addSubview(view);widePlates.append(view)
+            }
+        }
+        let w=CGFloat(worldWidth),ph=w*1201/1309
+        for view in widePlates { view.frame=CGRect(x:-w*654/1309,y:-159*CGFloat(zoom),width:w*2,height:ph) }
+        guard wide != showsWideScene else { return }
+        showsWideScene=wide
+        if wide { widePlates.forEach { $0.alpha=1 } }
+        // The usual plates stay under the wide ones (same picture in the middle) until the pane is narrow again.
+        UIView.animate(withDuration:0.25) { self.widePlates.forEach { $0.alpha=wide ? 1:0 };self.plates.last?.alpha=wide ? 0:1 }
+    }
     /// Ground marks under the picked ally and enemy (below the characters).
     private let friendMarker=MeadowTargetMarkerView(),foeMarker=MeadowTargetMarkerView()
     /// World units per point when the camera is at rest. The world fills the pane's width - unless the pane is wide (the map drawer
     /// closed): then the units keep the size they have beside the map (about 800Z world units of height in view) and the pane shows
     /// more of the meadow to the left and right instead of a closer shot.
-    private var baseScale:CGFloat { min(bounds.width/CGFloat(worldWidth),bounds.height/CGFloat(800*zoom)) }
+    private var baseScale:CGFloat { min(bounds.width/CGFloat(worldWidth),max(bounds.height/CGFloat(800*zoom),bounds.width/CGFloat(worldWidth*2))) }
     /// The world y at the middle of the pane. Normally the world's own middle; on a wide pane (the map drawer closed) less height is in
     /// view, so the view is centred on where the units stand (heads to feet), without leaving the plates.
     private var viewCentreY:Double=300
@@ -110,12 +129,6 @@ final class MeadowPartyStageView:UIView {
             let image=MeadowBattlePlateProcessor.image(named:name,role:[.farForest,.ground,.midground,.foreground][i])
             let view=UIImageView(image:image);view.frame=CGRect(x:0,y:-159,width:1000,height:1000*1201/1309)
             view.layer.zPosition=i==3 ? 900:CGFloat(-100+i);world.addSubview(view);plates.append(view)
-            if i != 2 {
-                for left in [true,false] {
-                    let side=UIImageView(image:image);side.layer.zPosition=view.layer.zPosition;world.addSubview(side);sidePlates.append((side,i,left))
-                    if i==3 { let mask=CAGradientLayer();mask.colors=[UIColor.clear.cgColor,UIColor.clear.cgColor,UIColor.black.cgColor,UIColor.black.cgColor];mask.locations=[0,0.5,0.62,1];side.layer.mask=mask }
-                }
-            }
         }
         dim.backgroundColor = .black;dim.frame=CGRect(x:0,y:-500,width:1000,height:1600);dim.layer.zPosition=100;dim.isUserInteractionEnabled=false;world.addSubview(dim)
         // Pane-wide colour wash for skill light and screen flashes: same coverage as `dim`, so neither has an edge at the world rectangle.
@@ -177,19 +190,13 @@ final class MeadowPartyStageView:UIView {
         let z=CGFloat(zoom),w=CGFloat(worldWidth),h=CGFloat(worldHeight)
         world.bounds=CGRect(x:0,y:0,width:w,height:h)
         for plate in plates { plate.frame=CGRect(x:0,y:-159*z,width:w,height:w*1201/1309) }
-        for side in sidePlates {
-            let ph=w*1201/1309
-            side.view.transform=CGAffineTransform(scaleX:-1,y:1);side.view.bounds=CGRect(x:0,y:0,width:w,height:ph)
-            side.view.center=CGPoint(x:side.left ? -w/2:w*1.5,y:-159*z+ph/2)
-            side.view.layer.mask?.frame=CGRect(x:0,y:0,width:w,height:ph)
-        }
         dim.frame=CGRect(x:-w,y:-500*z,width:w*3,height:1600*z);wash.frame=dim.frame
         for shadow in shadows.values { shadow.transform = .identity;shadow.bounds=CGRect(x:0,y:0,width:w,height:h);shadow.center=CGPoint(x:w/2,y:h/2) }
         // The effect layers reach half a world past each side, so light is not cut at the world's edge on a wide pane.
         let rect=CGRect(x:-w*0.4,y:-200*z,width:w*1.8,height:w)
         fx.worldRect=rect;fx.drawScale=MeadowPartyEffectsView.baseDrawScale/z/1.3;fx.frame=rect;fx.contentScaleFactor=fx.drawScale
         gpu?.setWorldRect(rect)
-        updateViewCentre();cameraTransform=nil;poseKeys=[:];setNeedsLayout()
+        updateViewCentre();updateWideScene();cameraTransform=nil;poseKeys=[:];setNeedsLayout()
     }
     required init?(coder:NSCoder) { fatalError("init(coder:) has not been implemented") }
     /// The name of what is being done floats up from above the actor: fades in, drifts, fades out. Gold for the heroes, red for monsters.
@@ -710,7 +717,7 @@ final class MeadowPartyStageView:UIView {
     /// UIKit lays this view out again whenever a subview changes size - and the camera's zoom changes the world's size every frame. Layout
     /// used to reset the world to its plain scale, which silently undid the whole camera (zoom, shake, director shot); it now keeps the camera.
     override func layoutSubviews() {
-        super.layoutSubviews();let scale=baseScale;updateViewCentre()
+        super.layoutSubviews();let scale=baseScale;updateViewCentre();updateWideScene()
         gpu?.setResolution(max(1,min(3,UIScreen.main.scale*scale*1.15)))
         world.center=CGPoint(x:bounds.midX,y:bounds.midY)
         if let camera=cameraTransform,cameraWidth==bounds.width+bounds.height*4096 { world.transform=camera } else { world.transform=CGAffineTransform(scaleX:scale,y:scale) }
