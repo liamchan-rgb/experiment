@@ -25,7 +25,7 @@ final class MeadowTurnOrderView: UIView {
 
     override init(frame: CGRect) {
         super.init(frame: frame); MeadowPreviewPalette.stylePanel(self)
-        round.font = MeadowPreviewPalette.font(15, .heavy); round.textColor = MeadowPreviewPalette.gold; round.textAlignment = .center
+        round.font = .systemFont(ofSize: 15, weight: .heavy); round.textColor = MeadowPreviewPalette.gold; round.textAlignment = .center
         round.layer.cornerRadius = 9; round.layer.borderWidth = 1.5; round.layer.borderColor = MeadowPreviewPalette.gold.withAlphaComponent(0.7).cgColor
         round.backgroundColor = UIColor(red: 0.23, green: 0.19, blue: 0.07, alpha: 1); round.clipsToBounds = true
         rail.backgroundColor = UIColor.black.withAlphaComponent(0.55); rail.layer.cornerRadius = 4
@@ -117,7 +117,7 @@ private final class MeadowTurnOrderToken: UIView {
     init(id: String) {
         self.id = id
         super.init(frame: .zero); isAccessibilityElement = true; accessibilityIdentifier = "previewQueue\(id)"
-        name.font = MeadowPreviewPalette.font(11, .bold); name.textAlignment = .center; name.adjustsFontSizeToFitWidth = true; name.minimumScaleFactor = 0.7
+        name.font = .systemFont(ofSize: 11, weight: .heavy); name.textAlignment = .center; name.adjustsFontSizeToFitWidth = true; name.minimumScaleFactor = 0.7
         circle.backgroundColor = MeadowPreviewPalette.card
         portrait.contentMode = .scaleAspectFit; portrait.layer.magnificationFilter = .nearest
         badge.font = .systemFont(ofSize: 11, weight: .heavy); badge.textAlignment = .center; badge.textColor = .white; badge.layer.cornerRadius = 8; badge.clipsToBounds = true

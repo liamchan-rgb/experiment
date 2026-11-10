@@ -500,7 +500,6 @@ final class MeadowBattleVitalsView: UIView {
         // A dark plate behind the words, so they read over any scenery.
         plate.backgroundColor=UIColor(red:0.04,green:0.07,blue:0.05,alpha:0.82);plate.layer.cornerRadius=6;addSubview(plate)
         for label in [title,numbers] {
-            label.layer.shadowColor=UIColor.black.cgColor;label.layer.shadowOpacity=1;label.layer.shadowRadius=2.5;label.layer.shadowOffset = .zero
             label.adjustsFontSizeToFitWidth=true;label.minimumScaleFactor=0.6;addSubview(label)
         }
         numbers.textAlignment = .right
@@ -518,11 +517,11 @@ final class MeadowBattleVitalsView: UIView {
     required init?(coder:NSCoder) { fatalError("init(coder:) has not been implemented") }
     func show(name:String,hp value:Int,maximum:Int,shield:Int,maximumShield:Int=8) {
         let ratio=CGFloat(max(0,min(maximum,value)))/CGFloat(max(1,maximum))
-        let outline:[NSAttributedString.Key:Any]=[.strokeColor:UIColor(red:0.06,green:0.05,blue:0.03,alpha:1),.strokeWidth:-4]
-        title.attributedText=NSAttributedString(string:name.replacingOccurrences(of:"▶ ",with:""),attributes:outline.merging([.font:MeadowPreviewPalette.font(17,.heavy),.foregroundColor:UIColor.white]) { a,_ in a })
-        let text=NSMutableAttributedString(string:"\(max(0,value))",attributes:outline.merging([.font:UIFont.monospacedDigitSystemFont(ofSize:18,weight:.heavy),.foregroundColor:UIColor.white]) { a,_ in a })
-        text.append(NSAttributedString(string:"/\(maximum)",attributes:outline.merging([.font:UIFont.monospacedDigitSystemFont(ofSize:14,weight:.bold),.foregroundColor:MeadowPreviewPalette.ink]) { a,_ in a }))
-        if shield>0 { text.append(NSAttributedString(string:" ◆\(shield)",attributes:outline.merging([.font:UIFont.monospacedDigitSystemFont(ofSize:15,weight:.heavy),.foregroundColor:UIColor(red:0.45,green:0.92,blue:1,alpha:1)]) { a,_ in a })) }
+        // Flat sans-serif, like the damage numbers; the dark plate behind does the separating, so no outline is needed.
+        title.attributedText=NSAttributedString(string:name.replacingOccurrences(of:"▶ ",with:""),attributes:[.font:UIFont.systemFont(ofSize:15,weight:.heavy),.foregroundColor:UIColor.white])
+        let text=NSMutableAttributedString(string:"\(max(0,value))",attributes:[.font:UIFont.systemFont(ofSize:17,weight:.heavy),.foregroundColor:UIColor.white])
+        text.append(NSAttributedString(string:"/\(maximum)",attributes:[.font:UIFont.systemFont(ofSize:13,weight:.bold),.foregroundColor:UIColor(white:0.82,alpha:1)]))
+        if shield>0 { text.append(NSAttributedString(string:"  ◆\(shield)",attributes:[.font:UIFont.systemFont(ofSize:14,weight:.heavy),.foregroundColor:UIColor(red:0.45,green:0.92,blue:1,alpha:1)])) }
         numbers.attributedText=text
         fill.backgroundColor=ratio>0.5 ? UIColor(red:0.30,green:0.85,blue:0.36,alpha:1):ratio>0.25 ? UIColor(red:0.98,green:0.70,blue:0.20,alpha:1):UIColor(red:0.95,green:0.26,blue:0.22,alpha:1)
         ward=CGFloat(min(maximumShield,shield))/CGFloat(max(1,maximumShield))

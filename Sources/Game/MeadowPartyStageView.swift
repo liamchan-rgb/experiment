@@ -15,10 +15,16 @@ final class MeadowPartyStageView:UIView {
     private var worldWidth:Double { 1000*zoom }
     private var worldHeight:Double { 600*zoom }
     private var plates:[UIImageView]=[]
+    /// Scenery beyond the world's left and right edge for wide panes (the map drawer closed), built from the same art: the far forest and
+    /// the ground continue (flipped copies, so they join without a seam), and so do the low bushes of the foreground. The landmarks of the
+    /// midground and the tall trees of the foreground are not repeated.
+    private var sidePlates:[(view:UIImageView,layer:Int,left:Bool)]=[]
     /// Ground marks under the picked ally and enemy (below the characters).
     private let friendMarker=MeadowTargetMarkerView(),foeMarker=MeadowTargetMarkerView()
-    /// World units per point when the camera is at rest: the world always fills the pane's width.
-    private var baseScale:CGFloat { bounds.width/CGFloat(worldWidth) }
+    /// World units per point when the camera is at rest. The world fills the pane's width - unless the pane is wide (the map drawer
+    /// closed): then the units keep the size they have beside the map (about 800Z world units of height in view) and the pane shows
+    /// more of the meadow to the left and right instead of a closer shot.
+    private var baseScale:CGFloat { min(bounds.width/CGFloat(worldWidth),bounds.height/CGFloat(800*zoom)) }
     /// The world y at the middle of the pane. Normally the world's own middle; on a wide pane (the map drawer closed) less height is in
     /// view, so the view is centred on where the units stand (heads to feet), without leaving the plates.
     private var viewCentreY:Double=300
@@ -104,6 +110,12 @@ final class MeadowPartyStageView:UIView {
             let image=MeadowBattlePlateProcessor.image(named:name,role:[.farForest,.ground,.midground,.foreground][i])
             let view=UIImageView(image:image);view.frame=CGRect(x:0,y:-159,width:1000,height:1000*1201/1309)
             view.layer.zPosition=i==3 ? 900:CGFloat(-100+i);world.addSubview(view);plates.append(view)
+            if i != 2 {
+                for left in [true,false] {
+                    let side=UIImageView(image:image);side.layer.zPosition=view.layer.zPosition;world.addSubview(side);sidePlates.append((side,i,left))
+                    if i==3 { let mask=CAGradientLayer();mask.colors=[UIColor.clear.cgColor,UIColor.clear.cgColor,UIColor.black.cgColor,UIColor.black.cgColor];mask.locations=[0,0.5,0.62,1];side.layer.mask=mask }
+                }
+            }
         }
         dim.backgroundColor = .black;dim.frame=CGRect(x:0,y:-500,width:1000,height:1600);dim.layer.zPosition=100;dim.isUserInteractionEnabled=false;world.addSubview(dim)
         // Pane-wide colour wash for skill light and screen flashes: same coverage as `dim`, so neither has an edge at the world rectangle.
@@ -165,10 +177,17 @@ final class MeadowPartyStageView:UIView {
         let z=CGFloat(zoom),w=CGFloat(worldWidth),h=CGFloat(worldHeight)
         world.bounds=CGRect(x:0,y:0,width:w,height:h)
         for plate in plates { plate.frame=CGRect(x:0,y:-159*z,width:w,height:w*1201/1309) }
+        for side in sidePlates {
+            let ph=w*1201/1309
+            side.view.transform=CGAffineTransform(scaleX:-1,y:1);side.view.bounds=CGRect(x:0,y:0,width:w,height:ph)
+            side.view.center=CGPoint(x:side.left ? -w/2:w*1.5,y:-159*z+ph/2)
+            side.view.layer.mask?.frame=CGRect(x:0,y:0,width:w,height:ph)
+        }
         dim.frame=CGRect(x:-w,y:-500*z,width:w*3,height:1600*z);wash.frame=dim.frame
         for shadow in shadows.values { shadow.transform = .identity;shadow.bounds=CGRect(x:0,y:0,width:w,height:h);shadow.center=CGPoint(x:w/2,y:h/2) }
-        let rect=CGRect(x:0,y:-200*z,width:w,height:w)
-        fx.worldRect=rect;fx.drawScale=MeadowPartyEffectsView.baseDrawScale/z;fx.frame=rect;fx.contentScaleFactor=fx.drawScale
+        // The effect layers reach half a world past each side, so light is not cut at the world's edge on a wide pane.
+        let rect=CGRect(x:-w*0.4,y:-200*z,width:w*1.8,height:w)
+        fx.worldRect=rect;fx.drawScale=MeadowPartyEffectsView.baseDrawScale/z/1.3;fx.frame=rect;fx.contentScaleFactor=fx.drawScale
         gpu?.setWorldRect(rect)
         updateViewCentre();cameraTransform=nil;poseKeys=[:];setNeedsLayout()
     }
@@ -180,8 +199,7 @@ final class MeadowPartyStageView:UIView {
         let who=unit.name.components(separatedBy:" · ").first ?? unit.name
         let color:UIColor=unit.kind == .monster ? UIColor(red:1,green:0.55,blue:0.45,alpha:1):UIColor(red:1,green:0.88,blue:0.5,alpha:1)
         let label=UILabel();label.isUserInteractionEnabled=false;label.textAlignment = .center
-        label.attributedText=NSAttributedString(string:who+" · "+skill,attributes:[.font:MeadowPreviewPalette.font(34,.heavy),.foregroundColor:color,.strokeColor:UIColor(red:0.07,green:0.05,blue:0.03,alpha:1),.strokeWidth:-5])
-        label.layer.shadowColor=UIColor.black.cgColor;label.layer.shadowOpacity=0.9;label.layer.shadowRadius=6;label.layer.shadowOffset = .zero
+        label.attributedText=NSAttributedString(string:who+" · "+skill,attributes:[.font:UIFont.systemFont(ofSize:38,weight:.heavy),.foregroundColor:color,.strokeColor:UIColor(red:0.10,green:0.07,blue:0.04,alpha:1),.strokeWidth:-4])
         label.sizeToFit();label.bounds.size.width += 16
         let top=foot.y-(unit.kind == .monster ? 330:262)
         let x=min(worldWidth-Double(label.bounds.width)/2-8,max(Double(label.bounds.width)/2+8,foot.x))
@@ -856,7 +874,7 @@ private final class MeadowPartyEffectsView:UIView {
             cx=m.point.x+60+box.width/2+sway;cy=m.point.y-55-rise+box.height/2
         }
         let half=box.width*scale/2
-        cx=min(worldRect.maxX-4-half,max(4+half,cx))
+        cx=min(worldRect.maxX-4-half,max(worldRect.minX+4+half,cx))
         ctx.saveGState();ctx.setBlendMode(.normal)
         ctx.setShadow(offset:.zero,blur:CGFloat(size)*0.4,color:fill.withAlphaComponent(a*0.55).cgColor)
         ctx.translateBy(x:cx,y:cy);ctx.scaleBy(x:scale,y:scale)
