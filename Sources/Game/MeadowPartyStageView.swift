@@ -14,12 +14,28 @@ final class MeadowPartyStageView:UIView {
     private(set) var zoom=1.0
     private var worldWidth:Double { 1000*zoom }
     private var worldHeight:Double { 600*zoom }
-    private var plates:[UIImageView]=[],sidePlates:[UIImageView]=[]
+    private var plates:[UIImageView]=[]
     /// Ground marks under the picked ally and enemy (below the characters).
     private let friendMarker=MeadowTargetMarkerView(),foeMarker=MeadowTargetMarkerView()
-    /// World units per point when the camera is at rest: the world fills the pane's width, but on a wide pane (the map drawer closed) it fits
-    /// the height the formation needs instead, and mirrored copies of the plates fill the sides.
-    private var baseScale:CGFloat { min(bounds.width/CGFloat(worldWidth),bounds.height/CGFloat(620*zoom)) }
+    /// World units per point when the camera is at rest: the world always fills the pane's width.
+    private var baseScale:CGFloat { bounds.width/CGFloat(worldWidth) }
+    /// The world y at the middle of the pane. Normally the world's own middle; on a wide pane (the map drawer closed) less height is in
+    /// view, so the view is centred on where the units stand (heads to feet), without leaving the plates.
+    private var viewCentreY:Double=300
+    private func updateViewCentre() {
+        let h=worldHeight
+        guard bounds.width>0,bounds.height>0 else { viewCentreY=h/2;return }
+        let visible=Double(bounds.height/baseScale)
+        let feet=renderIDs.compactMap { id in PartyVisual.foot(id).map { (id,$0.y) } }
+        var centre=h/2
+        if let top=feet.map({ $0.1-($0.0.hasPrefix("p") ? 215:290) }).min(),let bottom=feet.map({ $0.1+34 }).max(),top<h/2-visible/2 || bottom>h/2+visible/2 {
+            let low = -159*zoom+visible/2,high=758*zoom-visible/2
+            centre=low<high ? min(high,max(low,(top+bottom)/2)):h/2
+        }
+        viewCentreY=centre
+        let origin=CGFloat(centre-h/2)
+        if world.bounds.origin.y != origin { world.bounds.origin.y=origin }
+    }
     /// PvP: the hero team on the right (mirrored).
     private var rivalIDs:[String]=[]
     private var actors:[String:MeadowBattleActorView]=[:]
@@ -31,7 +47,9 @@ final class MeadowPartyStageView:UIView {
     private var contactAngle:[String:Double]=[:]
     private var labels:[String:MeadowBattleVitalsView]=[:]
     private var monsterFlash:[String:UIImageView]=[:]
-    private let diceView=MeadowBattleDiceView()
+    private let diceView=MeadowBattleDiceView(),dicePlate=UIView()
+    /// Floating captions for actions ("P1 · 符文斩"): they fade in above the actor, drift up and fade out.
+    private var captions:[UILabel]=[]
     private var catalog=try? GameCatalog.initial()
     private var current:String?
     /// The targets picked in the battle UI (their health bars stay in full view).
@@ -86,7 +104,6 @@ final class MeadowPartyStageView:UIView {
             let image=MeadowBattlePlateProcessor.image(named:name,role:[.farForest,.ground,.midground,.foreground][i])
             let view=UIImageView(image:image);view.frame=CGRect(x:0,y:-159,width:1000,height:1000*1201/1309)
             view.layer.zPosition=i==3 ? 900:CGFloat(-100+i);world.addSubview(view);plates.append(view)
-            for _ in 0..<2 { let side=UIImageView(image:image);side.layer.zPosition=view.layer.zPosition;world.addSubview(side);sidePlates.append(side) }
         }
         dim.backgroundColor = .black;dim.frame=CGRect(x:0,y:-500,width:1000,height:1600);dim.layer.zPosition=100;dim.isUserInteractionEnabled=false;world.addSubview(dim)
         // Pane-wide colour wash for skill light and screen flashes: same coverage as `dim`, so neither has an edge at the world rectangle.
@@ -94,11 +111,13 @@ final class MeadowPartyStageView:UIView {
         for marker in [friendMarker,foeMarker] { marker.layer.zPosition=150;world.addSubview(marker) }
         for bar in [barTop,barBottom] { bar.backgroundColor = .black;bar.isUserInteractionEnabled=false;bar.frame = .zero;addSubview(bar) }
         for id in renderIDs { installUnit(id) }
-        diceView.layer.zPosition=1200;world.addSubview(diceView)
         for ghost in afterimages { ghost.isHidden=true;ghost.isUserInteractionEnabled=false;ghost.layer.magnificationFilter = .nearest;world.addSubview(ghost) }
         fx.frame=fx.worldRect;fx.contentScaleFactor=fx.drawScale;fx.layer.zPosition=1000;world.addSubview(fx)
         if let view=MeadowSkillGPUView(worldRect:fx.worldRect) { view.layer.zPosition=1000;fx.layer.zPosition=1001;world.insertSubview(view,belowSubview:fx);gpu=view;fx.gpuDrawsSkills=true }
         fx.onFlash={ [weak self] flash in guard let self else { return };self.wash.backgroundColor=flash ?? self.washBase }
+        // The dice always roll in the same place: the top middle of the pane, on a dark plate, not above whoever acts.
+        dicePlate.backgroundColor=UIColor(red:0.04,green:0.07,blue:0.05,alpha:0.78);dicePlate.layer.cornerRadius=16;dicePlate.layer.borderWidth=1.5;dicePlate.layer.borderColor=MeadowPreviewPalette.gold.withAlphaComponent(0.8).cgColor
+        dicePlate.isUserInteractionEnabled=false;dicePlate.alpha=0;addSubview(dicePlate);addSubview(diceView)
         clock.onTick={ [weak self] delta in self?.advance(delta) }
         applyFormation(pvp:false)
     }
@@ -116,7 +135,7 @@ final class MeadowPartyStageView:UIView {
             let wind=UIImageView();wind.layer.magnificationFilter = .nearest;wind.layer.zPosition=950;winds[id]=wind;world.addSubview(wind)
             shadow=MeadowBattleGroundingView(image:image,soleY:240,contacts:[.init(point:CGPoint(x:84,y:240),radius:15),.init(point:CGPoint(x:172,y:240),radius:15),.init(point:CGPoint(x:230,y:240),radius:15),.init(point:CGPoint(x:314,y:240),radius:15)])
         }
-        shadows[id]=shadow;shadow.layer.zPosition=200;shadow.bounds=world.bounds;shadow.center=CGPoint(x:world.bounds.midX,y:world.bounds.midY);world.addSubview(shadow)
+        shadows[id]=shadow;shadow.layer.zPosition=200;shadow.bounds=CGRect(origin:.zero,size:world.bounds.size);shadow.center=CGPoint(x:world.bounds.width/2,y:world.bounds.height/2);world.addSubview(shadow)
         let label=MeadowBattleVitalsView();label.layer.zPosition=1100;labels[id]=label;world.addSubview(label)
     
     }
@@ -146,19 +165,34 @@ final class MeadowPartyStageView:UIView {
         let z=CGFloat(zoom),w=CGFloat(worldWidth),h=CGFloat(worldHeight)
         world.bounds=CGRect(x:0,y:0,width:w,height:h)
         for plate in plates { plate.frame=CGRect(x:0,y:-159*z,width:w,height:w*1201/1309) }
-        // Mirrored copies left and right (the seams match because each copy is flipped), for panes wider than the world.
-        for (i,side) in sidePlates.enumerated() {
-            side.transform=CGAffineTransform(scaleX:-1,y:1);side.bounds=CGRect(x:0,y:0,width:w,height:w*1201/1309)
-            side.center=CGPoint(x:i%2==0 ? -w/2:w*1.5,y:-159*z+w*1201/1309/2)
-        }
         dim.frame=CGRect(x:-w,y:-500*z,width:w*3,height:1600*z);wash.frame=dim.frame
-        for shadow in shadows.values { shadow.transform = .identity;shadow.bounds=world.bounds;shadow.center=CGPoint(x:w/2,y:h/2) }
+        for shadow in shadows.values { shadow.transform = .identity;shadow.bounds=CGRect(x:0,y:0,width:w,height:h);shadow.center=CGPoint(x:w/2,y:h/2) }
         let rect=CGRect(x:0,y:-200*z,width:w,height:w)
         fx.worldRect=rect;fx.drawScale=MeadowPartyEffectsView.baseDrawScale/z;fx.frame=rect;fx.contentScaleFactor=fx.drawScale
         gpu?.setWorldRect(rect)
-        cameraTransform=nil;poseKeys=[:];setNeedsLayout()
+        updateViewCentre();cameraTransform=nil;poseKeys=[:];setNeedsLayout()
     }
     required init?(coder:NSCoder) { fatalError("init(coder:) has not been implemented") }
+    /// The name of what is being done floats up from above the actor: fades in, drifts, fades out. Gold for the heroes, red for monsters.
+    private func caption(_ value:PartyIntent,before:GameState) {
+        guard let foot=PartyVisual.foot(value.actor),let unit=before.units[value.actor] else { return }
+        let skill=value.sourceSkillID.flatMap { id in try? catalog?.skill(id).name } ?? value.action.title
+        let who=unit.name.components(separatedBy:" · ").first ?? unit.name
+        let color:UIColor=unit.kind == .monster ? UIColor(red:1,green:0.55,blue:0.45,alpha:1):UIColor(red:1,green:0.88,blue:0.5,alpha:1)
+        let label=UILabel();label.isUserInteractionEnabled=false;label.textAlignment = .center
+        label.attributedText=NSAttributedString(string:who+" · "+skill,attributes:[.font:MeadowPreviewPalette.font(34,.heavy),.foregroundColor:color,.strokeColor:UIColor(red:0.07,green:0.05,blue:0.03,alpha:1),.strokeWidth:-5])
+        label.layer.shadowColor=UIColor.black.cgColor;label.layer.shadowOpacity=0.9;label.layer.shadowRadius=6;label.layer.shadowOffset = .zero
+        label.sizeToFit();label.bounds.size.width += 16
+        let top=foot.y-(unit.kind == .monster ? 330:262)
+        let x=min(worldWidth-Double(label.bounds.width)/2-8,max(Double(label.bounds.width)/2+8,foot.x))
+        label.center=CGPoint(x:x,y:top+18);label.alpha=0;label.transform=CGAffineTransform(scaleX:0.8,y:0.8);label.layer.zPosition=1150
+        captions.forEach { $0.removeFromSuperview() };captions=[label];world.addSubview(label)
+        UIView.animate(withDuration:0.28,delay:0,options:[.curveEaseOut]) { label.alpha=1;label.transform = .identity }
+        UIView.animate(withDuration:1.9,delay:0,options:[.curveEaseOut]) { label.center.y=top-26 }
+        UIView.animate(withDuration:0.55,delay:1.3,options:[.curveEaseIn],animations:{ label.alpha=0 }) { [weak self,weak label] _ in
+            label?.removeFromSuperview();self?.captions.removeAll { $0 === label }
+        }
+    }
     /// With many units on the field only the one acting, the picked targets and whoever was just hurt keep the full name-and-numbers header;
     /// everyone else shows a slim bar (the turn-order row above names them). The classic 2-hero battle keeps every header in full.
     private func compactVitals(_ id:String) {
@@ -207,6 +241,7 @@ final class MeadowPartyStageView:UIView {
     }
     func play(_ value:PartyIntent,before:GameState,confirmed:OperationReceipt?,onImpact:@escaping ()->OperationReceipt?,completion:@escaping ()->Void) {
         if value.action.isOffensive { MeadowBattleHaptics.prepare() }
+        caption(value,before:before)
         castDim=previewDarkness();dimFrom=0;dimTarget=0;dimChangedAt=sceneTime
         if let actor=before.units[value.actor],let target=before.units[value.target],let catalog {
             if diceAction != value.action || diceActor != value.actor { diceVisibleAt=sceneTime }
@@ -467,7 +502,7 @@ final class MeadowPartyStageView:UIView {
                 if key != poseKeys[id] { shadows[id]?.update(image:actor.poseSilhouette,soleY:actor.poseFootAnchorPx.y,contacts:actor.poseContacts.map { .init(point:$0,radius:12) });poseKeys[id]=key }
                 attached[id]?.update(shield:shownVitals.shield,preview:0,time:sceneTime,formation:shownVitals.shield==0 ? formation[id].flatMap { sceneTime-$0<1.0 ? sceneTime-$0:nil }:nil,formationBase:0,birth:birth[id].map { sceneTime-$0 },contact:contact[id].map { sceneTime-$0 },broken:broken[id].map { sceneTime-$0 },recovery:unit.isAlive ? recovery[id].map { sceneTime-$0 }:nil,recoveryTier:recoveryTier[id])
                 shadows[id]?.spriteFrame=spriteRect
-                labels[id]?.frame=CGRect(x:f.x-88,y:f.y-170,width:176,height:44);compactVitals(id)
+                labels[id]?.frame=CGRect(x:f.x-100,y:f.y-170,width:200,height:44);compactVitals(id)
             } else if let view=monsters[id] {
                 let species=MonsterVisualSpec.find(unit.templateID)
                 let s=CGFloat(species?.scale ?? PartyVisual.enemyScale)
@@ -525,7 +560,7 @@ final class MeadowPartyStageView:UIView {
                 attached[id]?.layer.zPosition=view.layer.zPosition+2
                 attached[id]?.update(shield:unit.isAlive ? shownVitals.shield:0,preview:0,time:sceneTime,formation:shownVitals.shield==0 ? formation[id].flatMap{sceneTime-$0<1.0 ? sceneTime-$0:nil}:nil,formationBase:0,birth:birth[id].map{sceneTime-$0},contact:contact[id].map{sceneTime-$0},broken:broken[id].map{sceneTime-$0},recovery:nil,recoveryTier:nil)
                 shadows[id]?.spriteFrame=species == nil ? view.frame:baseFrame.offsetBy(dx:shadowShift,dy:0)
-                labels[id]?.frame=CGRect(x:f.x-84,y:f.y-(species == nil ? 256*Double(s)+34:224*Double(s)+46),width:168,height:44);compactVitals(id)
+                labels[id]?.frame=CGRect(x:f.x-96,y:f.y-(species == nil ? 256*Double(s)+34:224*Double(s)+46),width:192,height:44);compactVitals(id)
             }
         }
         // Ground marks under the picked targets (hidden while an action plays).
@@ -558,8 +593,13 @@ final class MeadowPartyStageView:UIView {
         dim.backgroundColor=grade>0.004 ? gradeTint:.black
         dim.alpha=max(dim.alpha,CGFloat(grade))
         washBase=washColor;wash.backgroundColor=washColor
-        let anchor=PartyVisual.diceAnchor(actor:diceActor,intent:intent,age:age,shielded:meetsShield,diceCount:diceView.dice.count,monsterTemplateID:state.units[diceActor]?.templateID)
-        diceView.frame=CGRect(x:anchor.x-110,y:anchor.y,width:220,height:100)
+        let diceScale=max(0.9,min(1.7,bounds.width/620)),diceCount=max(1,diceView.dice.count)
+        diceView.transform = .identity;diceView.bounds=CGRect(x:0,y:0,width:220,height:100)
+        diceView.center=CGPoint(x:bounds.midX,y:14+50*diceScale);diceView.transform=CGAffineTransform(scaleX:diceScale,y:diceScale)
+        let diceShown = !diceView.dice.isEmpty && (diceExitAt.map { sceneTime-$0<0.3 } ?? true) && (intent != nil || focus != nil)
+        let plateWidth=min(bounds.width-24,(CGFloat(diceCount)*70+50)*diceScale)
+        dicePlate.frame=CGRect(x:bounds.midX-plateWidth/2,y:8,width:plateWidth,height:100*diceScale+8)
+        dicePlate.alpha += ((diceShown ? 1:0)-dicePlate.alpha)*0.25
         diceView.time=sceneTime;diceView.visibleAge=sceneTime-diceVisibleAt
         diceView.confirmationAge=diceConfirmedAt.map { sceneTime-$0 }
         diceView.resolvedAge=diceSettledAt.map { sceneTime-$0 };diceView.exitAge=diceExitAt.map { sceneTime-$0 };diceView.setNeedsDisplay()
@@ -637,9 +677,9 @@ final class MeadowPartyStageView:UIView {
         var shotX=CGFloat(0),shotY=CGFloat(0)
         if shot.weight>0 {
             // Slide toward the focus, but never further than the zoom lets the plates cover (the world is 1000Z wide, the plates run y -159Z...758Z).
-            let maxX=worldWidth/2*(1-1/(1+Double(totalZoom))),slackY=max(0,459*zoom-Double(bounds.height/(2*sceneScale)))+30
+            let maxX=worldWidth/2*(1-1/(1+Double(totalZoom))),slackY=max(0,min(viewCentreY+159*zoom,758*zoom-viewCentreY)-Double(bounds.height/(2*sceneScale)))+30
             shotX=CGFloat(min(maxX,max(-maxX,-(shot.focusX-worldWidth/2)*shot.weight)))*sceneScale
-            shotY=CGFloat(min(slackY,max(-slackY,-(shot.focusY-worldHeight/2)*0.8*shot.weight)))*sceneScale
+            shotY=CGFloat(min(slackY,max(-slackY,-(shot.focusY-viewCentreY)*0.8*shot.weight)))*sceneScale
         }
         var worldTransform=CGAffineTransform(translationX:(CGFloat(kick.dx+rattle.dx))*layoutUnit+shotX,y:(CGFloat(kick.dy+rattle.dy))*layoutUnit+shotY)
         worldTransform=worldTransform.rotated(by:CGFloat(kick.rotation+rattle.rotation)).scaledBy(x:sceneScale,y:sceneScale)
@@ -652,7 +692,7 @@ final class MeadowPartyStageView:UIView {
     /// UIKit lays this view out again whenever a subview changes size - and the camera's zoom changes the world's size every frame. Layout
     /// used to reset the world to its plain scale, which silently undid the whole camera (zoom, shake, director shot); it now keeps the camera.
     override func layoutSubviews() {
-        super.layoutSubviews();let scale=baseScale
+        super.layoutSubviews();let scale=baseScale;updateViewCentre()
         gpu?.setResolution(max(1,min(3,UIScreen.main.scale*scale*1.15)))
         world.center=CGPoint(x:bounds.midX,y:bounds.midY)
         if let camera=cameraTransform,cameraWidth==bounds.width+bounds.height*4096 { world.transform=camera } else { world.transform=CGAffineTransform(scaleX:scale,y:scale) }

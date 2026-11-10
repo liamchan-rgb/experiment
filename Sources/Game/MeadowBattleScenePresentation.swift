@@ -493,10 +493,12 @@ final class MeadowBattleActionPointsView:UIView {
 /// drains a moment later; the shield is a cyan cap along the bar's top edge (with its value by the numbers); at low health the bar pulses.
 final class MeadowBattleVitalsView: UIView {
     private let title=UILabel(),numbers=UILabel()
-    private let track=UIView(),ghost=UIView(),fill=UIView(),shieldFill=UIView(),gloss=UIView()
+    private let track=UIView(),ghost=UIView(),fill=UIView(),shieldFill=UIView(),gloss=UIView(),plate=UIView(),shieldTrack=UIView()
     private var hp:CGFloat=1,ward:CGFloat=0,ghostRatio:CGFloat=1,ghostTimer:Timer?
     override init(frame:CGRect) {
         super.init(frame:frame);isUserInteractionEnabled=false;isAccessibilityElement=true;backgroundColor = .clear
+        // A dark plate behind the words, so they read over any scenery.
+        plate.backgroundColor=UIColor(red:0.04,green:0.07,blue:0.05,alpha:0.82);plate.layer.cornerRadius=6;addSubview(plate)
         for label in [title,numbers] {
             label.layer.shadowColor=UIColor.black.cgColor;label.layer.shadowOpacity=1;label.layer.shadowRadius=2.5;label.layer.shadowOffset = .zero
             label.adjustsFontSizeToFitWidth=true;label.minimumScaleFactor=0.6;addSubview(label)
@@ -507,16 +509,20 @@ final class MeadowBattleVitalsView: UIView {
         ghost.backgroundColor=UIColor(red:1,green:0.93,blue:0.75,alpha:0.95)
         shieldFill.backgroundColor=UIColor(red:0.35,green:0.9,blue:1,alpha:1)
         gloss.backgroundColor=UIColor.white.withAlphaComponent(0.22)
-        addSubview(track);[ghost,fill,gloss,shieldFill].forEach(track.addSubview)
+        addSubview(track);[ghost,fill,gloss].forEach(track.addSubview)
+        // The shield keeps its own blue bar, under the health bar.
+        shieldTrack.backgroundColor=UIColor(red:0.05,green:0.06,blue:0.05,alpha:0.88);shieldTrack.layer.cornerRadius=3;shieldTrack.clipsToBounds=true
+        shieldTrack.layer.borderWidth=1;shieldTrack.layer.borderColor=UIColor(red:0.6,green:0.95,blue:1,alpha:0.9).cgColor
+        addSubview(shieldTrack);shieldTrack.addSubview(shieldFill)
     }
     required init?(coder:NSCoder) { fatalError("init(coder:) has not been implemented") }
     func show(name:String,hp value:Int,maximum:Int,shield:Int,maximumShield:Int=8) {
         let ratio=CGFloat(max(0,min(maximum,value)))/CGFloat(max(1,maximum))
         let outline:[NSAttributedString.Key:Any]=[.strokeColor:UIColor(red:0.06,green:0.05,blue:0.03,alpha:1),.strokeWidth:-4]
-        title.attributedText=NSAttributedString(string:name.replacingOccurrences(of:"▶ ",with:""),attributes:outline.merging([.font:MeadowPreviewPalette.font(15,.heavy),.foregroundColor:MeadowPreviewPalette.ink]) { a,_ in a })
-        let text=NSMutableAttributedString(string:"\(max(0,value))",attributes:outline.merging([.font:UIFont.monospacedDigitSystemFont(ofSize:16,weight:.heavy),.foregroundColor:UIColor.white]) { a,_ in a })
-        text.append(NSAttributedString(string:"/\(maximum)",attributes:outline.merging([.font:UIFont.monospacedDigitSystemFont(ofSize:11,weight:.bold),.foregroundColor:MeadowPreviewPalette.ink]) { a,_ in a }))
-        if shield>0 { text.append(NSAttributedString(string:" ◆\(shield)",attributes:outline.merging([.font:UIFont.monospacedDigitSystemFont(ofSize:13,weight:.heavy),.foregroundColor:UIColor(red:0.45,green:0.92,blue:1,alpha:1)]) { a,_ in a })) }
+        title.attributedText=NSAttributedString(string:name.replacingOccurrences(of:"▶ ",with:""),attributes:outline.merging([.font:MeadowPreviewPalette.font(17,.heavy),.foregroundColor:UIColor.white]) { a,_ in a })
+        let text=NSMutableAttributedString(string:"\(max(0,value))",attributes:outline.merging([.font:UIFont.monospacedDigitSystemFont(ofSize:18,weight:.heavy),.foregroundColor:UIColor.white]) { a,_ in a })
+        text.append(NSAttributedString(string:"/\(maximum)",attributes:outline.merging([.font:UIFont.monospacedDigitSystemFont(ofSize:14,weight:.bold),.foregroundColor:MeadowPreviewPalette.ink]) { a,_ in a }))
+        if shield>0 { text.append(NSAttributedString(string:" ◆\(shield)",attributes:outline.merging([.font:UIFont.monospacedDigitSystemFont(ofSize:15,weight:.heavy),.foregroundColor:UIColor(red:0.45,green:0.92,blue:1,alpha:1)]) { a,_ in a })) }
         numbers.attributedText=text
         fill.backgroundColor=ratio>0.5 ? UIColor(red:0.30,green:0.85,blue:0.36,alpha:1):ratio>0.25 ? UIColor(red:0.98,green:0.70,blue:0.20,alpha:1):UIColor(red:0.95,green:0.26,blue:0.22,alpha:1)
         ward=CGFloat(min(maximumShield,shield))/CGFloat(max(1,maximumShield))
@@ -540,25 +546,30 @@ final class MeadowBattleVitalsView: UIView {
         accessibilityLabel=name;accessibilityValue="生命\(value)/\(maximum)，护盾\(shield)";setNeedsLayout()
     }
     /// A slim bar without name and numbers (for crowded battles); the owner sizes the view.
-    var compact=false { didSet { if compact != oldValue { title.isHidden=compact;numbers.isHidden=compact;setNeedsLayout() } } }
+    var compact=false { didSet { if compact != oldValue { title.isHidden=compact;numbers.isHidden=compact;plate.isHidden=compact;setNeedsLayout() } } }
     private func layoutBars() {
         let w=track.bounds.width,h=track.bounds.height
         ghost.frame=CGRect(x:0,y:0,width:w*ghostRatio,height:h)
         fill.frame=CGRect(x:0,y:0,width:w*hp,height:h)
         gloss.frame=CGRect(x:0,y:0,width:w*hp,height:h*0.38)
-        shieldFill.frame=CGRect(x:0,y:0,width:w*ward,height:max(2,h*0.34));shieldFill.isHidden=ward<=0
+        shieldFill.frame=CGRect(x:0,y:0,width:shieldTrack.bounds.width*ward,height:shieldTrack.bounds.height);shieldTrack.isHidden=ward<=0
     }
     override func layoutSubviews() {
         super.layoutSubviews()
+        let w=bounds.width,h=bounds.height
         if compact {
             track.layer.cornerRadius=3;track.layer.borderWidth=1
-            track.frame=CGRect(x:0,y:max(0,bounds.height-9),width:bounds.width,height:min(9,bounds.height))
+            track.frame=CGRect(x:0,y:max(0,h-12),width:w,height:min(8,h))
+            shieldTrack.frame=CGRect(x:0,y:h-4,width:w,height:4)
         } else {
+            // Words on the plate (name left, numbers right), the health bar under it, the blue shield bar under that.
             track.layer.cornerRadius=5;track.layer.borderWidth=1.5
-            let nw=min(bounds.width*0.5,numbers.intrinsicContentSize.width+2)
-            numbers.frame=CGRect(x:bounds.width-nw-2,y:bounds.height-36,width:nw,height:21)
-            title.frame=CGRect(x:2,y:bounds.height-35,width:max(1,bounds.width-nw-8),height:20)
-            track.frame=CGRect(x:0,y:bounds.height-14,width:bounds.width,height:13)
+            let nw=min(w*0.55,numbers.intrinsicContentSize.width+2)
+            plate.frame=CGRect(x:0,y:h-44,width:w,height:24)
+            numbers.frame=CGRect(x:w-nw-5,y:h-44,width:nw,height:24)
+            title.frame=CGRect(x:6,y:h-44,width:max(1,w-nw-14),height:24)
+            track.frame=CGRect(x:0,y:h-19,width:w,height:12)
+            shieldTrack.frame=CGRect(x:0,y:h-6,width:w,height:6)
         }
         layoutBars()
     }
