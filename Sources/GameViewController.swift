@@ -64,6 +64,8 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
     private let resetButton = ParchmentButton(symbol: .reset)
     private let zoomButton = ParchmentButton(symbol: .zoom)
     private let shadowLabButton = UIButton(type: .system)
+    private var battleGainBase:GameState?
+    private let effectsLabButton = UIButton(type: .system)
     private let gaitTestButton = UIButton(type: .system)
     private let battlePreviewButton = UIButton(type: .system)
     private var battlePreviewView: MeadowBattlePreviewView?
@@ -145,6 +147,20 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
         if previewMap == nil { configureCampSave() }
         configureGaitControls()
         configureBattlePreview()
+        // The old entry points (light lab, gait test, the battle demos, the loadout screen) are gone from the home screen: only the random map
+        // and the effects review lab are left. (Their code stays for the campaign's own battles.)
+        for control in [shadowLabButton,gaitTestButton,battlePreviewButton,p1AppearanceButton,gaitPanel] as [UIView] { control.removeFromSuperview() }
+        var effectsStyle=labStyle
+        effectsStyle.title="特效审核"
+        effectsLabButton.configuration=effectsStyle
+        effectsLabButton.accessibilityIdentifier="openEffectsLab"
+        effectsLabButton.addAction(UIAction { [weak self] _ in
+            guard let self else{return}
+            let lab=MeadowEffectsLabViewController();lab.modalPresentationStyle = .fullScreen
+            self.present(lab,animated:true)
+        },for:.touchUpInside)
+        effectsLabButton.isHidden=previewMap != nil
+        view.addSubview(effectsLabButton)
         if let campaign {
             scene.campaign=campaign
             scene.onCampaignChanged={ [weak self] in DispatchQueue.main.async {self?.refreshCampaignStatus()} }
@@ -301,6 +317,7 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
         let spacing = button + 2
         titleButton.frame = CGRect(x: max(inset.left, 10) + 4, y: top, width: isPad ? 88 : 70, height: isPad ? 44 : 38)
         shadowLabButton.frame = CGRect(x: titleButton.frame.maxX + 8, y: top + 2, width: 96, height: button)
+        effectsLabButton.frame = CGRect(x: titleButton.frame.maxX + 8, y: top + 2, width: 96, height: button)
         gaitTestButton.frame = CGRect(x: (scene.gaitTest == nil ? shadowLabButton.frame.maxX : titleButton.frame.maxX) + 8,
                                       y: top + 2, width: 100, height: button)
         let battleX = battlePreviewActive ? titleButton.frame.maxX + 8 : gaitTestButton.frame.maxX + 8
@@ -719,7 +736,7 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
         battlePreviewView?.isHidden = !active
         if let campaign {
             guard !active || campaign.engine.state.battle != nil else{return}
-            battlePreviewView?.configureCampaign(engine:campaign.engine,onCommit:{ [weak self] _ in self?.scene.refreshCampaign() })
+            battlePreviewView?.configureCampaign(engine:campaign.engine,onCommit:{ [weak self] receipt in self?.scene.refreshCampaign();self?.trackBattleGains(receipt) })
         } else if active,let units=equipmentModel?.units { battlePreviewView?.configureEquipment(units) }
         battlePreviewView?.setActive(active)
         battlePreviewButton.isHidden = active
@@ -811,6 +828,22 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
         NotificationCenter.default.addObserver(self,selector:#selector(backgroundCampaign),name:UIApplication.willResignActiveNotification,object:nil)
         NotificationCenter.default.addObserver(self,selector:#selector(foregroundCampaign),name:UIApplication.didBecomeActiveNotification,object:nil)
     }
+    /// The "you received" card for whatever the heroes gained since `before` (nothing gained: no card).
+    private func showGains(title:String,subtitle:String?,since before:GameState,emptyText:String?=nil) {
+        guard let campaign else{return}
+        MeadowGainPopup.present(in:view,title:title,subtitle:subtitle,gains:MeadowGain.between(before,campaign.engine.state),catalog:campaign.engine.catalog,emptyText:emptyText)
+    }
+    /// Remembers the state a battle started from; when the battle ends, everything won in it is shown on one card.
+    private func trackBattleGains(_ receipt:OperationReceipt) {
+        if battleGainBase==nil,receipt.before.battle != nil{battleGainBase=receipt.before}
+        guard receipt.after.battle==nil,let base=battleGainBase ?? (receipt.before.battle != nil ? receipt.before:nil) else{return}
+        battleGainBase=nil
+        let won=receipt.after.players.contains(where:\.isAlive)
+        // After the last blow and its death effect have played.
+        DispatchQueue.main.asyncAfter(deadline:.now()+1.6){[weak self] in
+            self?.showGains(title:won ? "战斗胜利":"小队倒地",subtitle:won ? "战利品已放入各自行囊":nil,since:base,emptyText:won ? "这场战斗没有掉落物品。":"全员倒地，行程结束。")
+        }
+    }
     private func showCampaignMessage(_ text:String) {
         discoveryLabel.text=text;discoveryLabel.alpha=1
         discoveryLabel.layer.removeAllAnimations()
@@ -852,7 +885,8 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
         let alert=UIAlertController(title:node.name,message:message,preferredStyle:.alert)
         alert.addAction(UIAlertAction(title:"暂不交互",style:.cancel))
         alert.addAction(UIAlertAction(title:combat ? "开始战斗":"领取补给",style:.default){[weak self] _ in
-            do{try campaign.interactCurrentNode(actor:actor);self?.scene.refreshCampaign();self?.refreshCampaignStatus()}
+            do{let before=campaign.engine.state;try campaign.interactCurrentNode(actor:actor);self?.scene.refreshCampaign();self?.refreshCampaignStatus()
+                if !combat{self?.showGains(title:"获得补给",subtitle:node.name,since:before)}}
             catch{self?.showCampaignMessage(error.localizedDescription)}
         })
         present(alert,animated:true)
@@ -891,7 +925,8 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
             for (label,accept) in [("接受",true),("明确离开（结束事件）",false)] {
                 let id=UUID().uuidString
                 let action=UIAlertAction(title:label,style:accept ? .default:.destructive){[weak self] _ in
-                    do{try campaign.resolveSite(actor:actor,accept:accept,id:id);self?.scene.refreshCampaign();self?.refreshCampaignStatus();self?.showCampaignMessage("事件已保存。")}
+                    do{let before=campaign.engine.state;try campaign.resolveSite(actor:actor,accept:accept,id:id);self?.scene.refreshCampaign();self?.refreshCampaignStatus();self?.showCampaignMessage("事件已保存。")
+                        self?.showGains(title:title,subtitle:nil,since:before)}
                     catch{self?.showCampaignMessage("事件未保存，可重试："+error.localizedDescription)}
                 }
                 let maximum=(try? GameRules.attributes(unit,catalog:campaign.engine.catalog).maximumHealth) ?? unit.baseAttributes.maximumHealth
@@ -908,7 +943,8 @@ final class GameViewController: UIViewController, UIGestureRecognizerDelegate {
         let alert=UIAlertController(title:(buy ? "购买":"出售")+item.name,message:"\(campaign.engine.state.units[actor]?.name ?? actor) · \(buy ? "支付":"获得") \(price) 个人金币 · 1件\n只变更此成员的金币和行囊，取消不交易。",preferredStyle:.alert)
         alert.addAction(UIAlertAction(title:"取消",style:.cancel))
         alert.addAction(UIAlertAction(title:"确认交易",style:.default){[weak self] _ in
-            do{try campaign.tradeAtSite(actor:actor,item:item.id,buy:buy,id:id);self?.scene.refreshCampaign();self?.refreshCampaignStatus();self?.showCampaignMessage("交易已保存。")}
+            do{let before=campaign.engine.state;try campaign.tradeAtSite(actor:actor,item:item.id,buy:buy,id:id);self?.scene.refreshCampaign();self?.refreshCampaignStatus();self?.showCampaignMessage("交易已保存。")
+                self?.showGains(title:buy ? "已放入行囊":"出售所得",subtitle:buy ? "花费 \(price) 金币":item.name,since:before)}
             catch{self?.showCampaignMessage("交易未保存，可重试："+error.localizedDescription)}
         });presentSiteScreen(alert)
     }

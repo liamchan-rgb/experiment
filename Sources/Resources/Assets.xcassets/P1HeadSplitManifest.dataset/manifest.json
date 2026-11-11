@@ -1,0 +1,330 @@
+{
+ "cell": 256,
+ "columns": 13,
+ "defaults": {
+  "forester": {
+   "face.brows": "blue",
+   "face.eyes": "blue",
+   "face.mouth": "blue",
+   "face.nose": "blue",
+   "hair.front": "chestnut"
+  },
+  "wayfarer": {
+   "face.brows": "amber",
+   "face.eyes": "amber",
+   "face.mouth": "amber",
+   "face.nose": "amber",
+   "hair.front": "silver"
+  }
+ },
+ "groups": [
+  "Directions",
+  "Diagonals"
+ ],
+ "headParts": {
+  "face.brows": {
+   "amber": [
+    "P1HeadBrowsAmberDirections",
+    "P1HeadBrowsAmberDiagonals"
+   ],
+   "blue": [
+    "P1HeadBrowsBlueDirections",
+    "P1HeadBrowsBlueDiagonals"
+   ]
+  },
+  "face.eyes": {
+   "amber": [
+    "P1HeadEyesAmberDirections",
+    "P1HeadEyesAmberDiagonals"
+   ],
+   "blue": [
+    "P1HeadEyesBlueDirections",
+    "P1HeadEyesBlueDiagonals"
+   ]
+  },
+  "face.mouth": {
+   "amber": [
+    "P1HeadMouthAmberDirections",
+    "P1HeadMouthAmberDiagonals"
+   ],
+   "blue": [
+    "P1HeadMouthBlueDirections",
+    "P1HeadMouthBlueDiagonals"
+   ]
+  },
+  "face.nose": {
+   "amber": [
+    "P1HeadNoseAmberDirections",
+    "P1HeadNoseAmberDiagonals"
+   ],
+   "blue": [
+    "P1HeadNoseBlueDirections",
+    "P1HeadNoseBlueDiagonals"
+   ]
+  },
+  "hair.front": {
+   "chestnut": [
+    "P1HeadHairFrontChestnutDirections",
+    "P1HeadHairFrontChestnutDiagonals"
+   ],
+   "silver": [
+    "P1HeadHairFrontSilverDirections",
+    "P1HeadHairFrontSilverDiagonals"
+   ]
+  }
+ },
+ "rows": 4,
+ "schemaVersion": 1,
+ "stackOrder": [
+  "under",
+  "hair.back",
+  "body",
+  "face.eyes",
+  "face.brows",
+  "face.nose",
+  "face.mouth",
+  "hair.front"
+ ],
+ "states": {
+  "ForesterGreatSword": {
+   "armor": null,
+   "body": [
+    "P1SplitBodyForesterGreatSwordDirections",
+    "P1SplitBodyForesterGreatSwordDiagonals"
+   ],
+   "under": [
+    "P1SplitUnderForesterGreatSwordDirections",
+    "P1SplitUnderForesterGreatSwordDiagonals"
+   ],
+   "weapon": "greatSword"
+  },
+  "ForesterHuntingBow": {
+   "armor": null,
+   "body": [
+    "P1SplitBodyForesterHuntingBowDirections",
+    "P1SplitBodyForesterHuntingBowDiagonals"
+   ],
+   "under": [
+    "P1SplitUnderForesterHuntingBowDirections",
+    "P1SplitUnderForesterHuntingBowDiagonals"
+   ],
+   "weapon": "huntingBow"
+  },
+  "ForesterLegendaryStaff": {
+   "armor": null,
+   "body": [
+    "P1SplitBodyForesterLegendaryStaffDirections",
+    "P1SplitBodyForesterLegendaryStaffDiagonals"
+   ],
+   "under": [
+    "P1SplitUnderForesterLegendaryStaffDirections",
+    "P1SplitUnderForesterLegendaryStaffDiagonals"
+   ],
+   "weapon": "legendaryStaff"
+  },
+  "ForesterNone": {
+   "armor": null,
+   "body": [
+    "P1SplitBodyForesterNoneDirections",
+    "P1SplitBodyForesterNoneDiagonals"
+   ],
+   "under": [
+    "P1SplitUnderForesterNoneDirections",
+    "P1SplitUnderForesterNoneDiagonals"
+   ],
+   "weapon": "none"
+  },
+  "ForesterTrainingSword": {
+   "armor": null,
+   "body": [
+    "P1SplitBodyForesterTrainingSwordDirections",
+    "P1SplitBodyForesterTrainingSwordDiagonals"
+   ],
+   "under": [
+    "P1SplitUnderForesterTrainingSwordDirections",
+    "P1SplitUnderForesterTrainingSwordDiagonals"
+   ],
+   "weapon": "trainingSword"
+  },
+  "LeatherArmorGreatSword": {
+   "armor": "leatherArmor",
+   "body": [
+    "P1SplitBodyLeatherArmorGreatSwordDirections",
+    "P1SplitBodyLeatherArmorGreatSwordDiagonals"
+   ],
+   "under": [
+    "P1SplitUnderLeatherArmorGreatSwordDirections",
+    "P1SplitUnderLeatherArmorGreatSwordDiagonals"
+   ],
+   "weapon": "greatSword"
+  },
+  "LeatherArmorHuntingBow": {
+   "armor": "leatherArmor",
+   "body": [
+    "P1SplitBodyLeatherArmorHuntingBowDirections",
+    "P1SplitBodyLeatherArmorHuntingBowDiagonals"
+   ],
+   "under": [
+    "P1SplitUnderLeatherArmorHuntingBowDirections",
+    "P1SplitUnderLeatherArmorHuntingBowDiagonals"
+   ],
+   "weapon": "huntingBow"
+  },
+  "LeatherArmorLegendaryStaff": {
+   "armor": "leatherArmor",
+   "body": [
+    "P1SplitBodyLeatherArmorLegendaryStaffDirections",
+    "P1SplitBodyLeatherArmorLegendaryStaffDiagonals"
+   ],
+   "under": [
+    "P1SplitUnderLeatherArmorLegendaryStaffDirections",
+    "P1SplitUnderLeatherArmorLegendaryStaffDiagonals"
+   ],
+   "weapon": "legendaryStaff"
+  },
+  "LeatherArmorNone": {
+   "armor": "leatherArmor",
+   "body": [
+    "P1SplitBodyLeatherArmorNoneDirections",
+    "P1SplitBodyLeatherArmorNoneDiagonals"
+   ],
+   "under": [
+    "P1SplitUnderLeatherArmorNoneDirections",
+    "P1SplitUnderLeatherArmorNoneDiagonals"
+   ],
+   "weapon": "none"
+  },
+  "LeatherArmorTrainingSword": {
+   "armor": "leatherArmor",
+   "body": [
+    "P1SplitBodyLeatherArmorTrainingSwordDirections",
+    "P1SplitBodyLeatherArmorTrainingSwordDiagonals"
+   ],
+   "under": [
+    "P1SplitUnderLeatherArmorTrainingSwordDirections",
+    "P1SplitUnderLeatherArmorTrainingSwordDiagonals"
+   ],
+   "weapon": "trainingSword"
+  },
+  "RuneArmorGreatSword": {
+   "armor": "runeArmor",
+   "body": [
+    "P1SplitBodyRuneArmorGreatSwordDirections",
+    "P1SplitBodyRuneArmorGreatSwordDiagonals"
+   ],
+   "under": [
+    "P1SplitUnderRuneArmorGreatSwordDirections",
+    "P1SplitUnderRuneArmorGreatSwordDiagonals"
+   ],
+   "weapon": "greatSword"
+  },
+  "RuneArmorHuntingBow": {
+   "armor": "runeArmor",
+   "body": [
+    "P1SplitBodyRuneArmorHuntingBowDirections",
+    "P1SplitBodyRuneArmorHuntingBowDiagonals"
+   ],
+   "under": [
+    "P1SplitUnderRuneArmorHuntingBowDirections",
+    "P1SplitUnderRuneArmorHuntingBowDiagonals"
+   ],
+   "weapon": "huntingBow"
+  },
+  "RuneArmorLegendaryStaff": {
+   "armor": "runeArmor",
+   "body": [
+    "P1SplitBodyRuneArmorLegendaryStaffDirections",
+    "P1SplitBodyRuneArmorLegendaryStaffDiagonals"
+   ],
+   "under": [
+    "P1SplitUnderRuneArmorLegendaryStaffDirections",
+    "P1SplitUnderRuneArmorLegendaryStaffDiagonals"
+   ],
+   "weapon": "legendaryStaff"
+  },
+  "RuneArmorNone": {
+   "armor": "runeArmor",
+   "body": [
+    "P1SplitBodyRuneArmorNoneDirections",
+    "P1SplitBodyRuneArmorNoneDiagonals"
+   ],
+   "under": [
+    "P1SplitUnderRuneArmorNoneDirections",
+    "P1SplitUnderRuneArmorNoneDiagonals"
+   ],
+   "weapon": "none"
+  },
+  "RuneArmorTrainingSword": {
+   "armor": "runeArmor",
+   "body": [
+    "P1SplitBodyRuneArmorTrainingSwordDirections",
+    "P1SplitBodyRuneArmorTrainingSwordDiagonals"
+   ],
+   "under": [
+    "P1SplitUnderRuneArmorTrainingSwordDirections",
+    "P1SplitUnderRuneArmorTrainingSwordDiagonals"
+   ],
+   "weapon": "trainingSword"
+  },
+  "WayfarerGreatSword": {
+   "armor": null,
+   "body": [
+    "P1SplitBodyWayfarerGreatSwordDirections",
+    "P1SplitBodyWayfarerGreatSwordDiagonals"
+   ],
+   "under": [
+    "P1SplitUnderWayfarerGreatSwordDirections",
+    "P1SplitUnderWayfarerGreatSwordDiagonals"
+   ],
+   "weapon": "greatSword"
+  },
+  "WayfarerHuntingBow": {
+   "armor": null,
+   "body": [
+    "P1SplitBodyWayfarerHuntingBowDirections",
+    "P1SplitBodyWayfarerHuntingBowDiagonals"
+   ],
+   "under": [
+    "P1SplitUnderWayfarerHuntingBowDirections",
+    "P1SplitUnderWayfarerHuntingBowDiagonals"
+   ],
+   "weapon": "huntingBow"
+  },
+  "WayfarerLegendaryStaff": {
+   "armor": null,
+   "body": [
+    "P1SplitBodyWayfarerLegendaryStaffDirections",
+    "P1SplitBodyWayfarerLegendaryStaffDiagonals"
+   ],
+   "under": [
+    "P1SplitUnderWayfarerLegendaryStaffDirections",
+    "P1SplitUnderWayfarerLegendaryStaffDiagonals"
+   ],
+   "weapon": "legendaryStaff"
+  },
+  "WayfarerNone": {
+   "armor": null,
+   "body": [
+    "P1SplitBodyWayfarerNoneDirections",
+    "P1SplitBodyWayfarerNoneDiagonals"
+   ],
+   "under": [
+    "P1SplitUnderWayfarerNoneDirections",
+    "P1SplitUnderWayfarerNoneDiagonals"
+   ],
+   "weapon": "none"
+  },
+  "WayfarerTrainingSword": {
+   "armor": null,
+   "body": [
+    "P1SplitBodyWayfarerTrainingSwordDirections",
+    "P1SplitBodyWayfarerTrainingSwordDiagonals"
+   ],
+   "under": [
+    "P1SplitUnderWayfarerTrainingSwordDirections",
+    "P1SplitUnderWayfarerTrainingSwordDiagonals"
+   ],
+   "weapon": "trainingSword"
+  }
+ }
+}

@@ -1,0 +1,392 @@
+{
+ "assets": [
+  {
+   "id": "p1-b2-greatsword-v1",
+   "manifest": "Art/Parts/P1-v1/b2-equipment-v1/greatSword/asset.json"
+  },
+  {
+   "id": "p1-b2-leatherarmor-r2",
+   "manifest": "Art/Parts/P1-v1/b2-armor-r2/leatherArmor/asset.json"
+  },
+  {
+   "id": "p1-b2-leatherarmor-r3",
+   "manifest": "Art/Parts/P1-v1/b2-armor-r3/leatherArmor/asset.json"
+  },
+  {
+   "id": "p1-b2-leatherarmor-r4",
+   "manifest": "Art/Parts/P1-v1/b2-armor-r4/leatherArmor/asset.json"
+  },
+  {
+   "id": "p1-b2-leatherarmor-v1",
+   "manifest": "Art/Parts/P1-v1/b2-equipment-v1/leatherArmor/asset.json"
+  },
+  {
+   "id": "p1-b2-legendarystaff-v1",
+   "manifest": "Art/Parts/P1-v1/b2-equipment-v1/legendaryStaff/asset.json"
+  },
+  {
+   "id": "p1-b2-runearmor-r2",
+   "manifest": "Art/Parts/P1-v1/b2-armor-r2/runeArmor/asset.json"
+  },
+  {
+   "id": "p1-b2-runearmor-r3",
+   "manifest": "Art/Parts/P1-v1/b2-armor-r3/runeArmor/asset.json"
+  },
+  {
+   "id": "p1-b2-runearmor-r4",
+   "manifest": "Art/Parts/P1-v1/b2-armor-r4/runeArmor/asset.json"
+  },
+  {
+   "id": "p1-b2-runearmor-r5",
+   "manifest": "Art/Parts/P1-v1/b2-armor-r5/runeArmor/asset.json"
+  },
+  {
+   "id": "p1-b2-runearmor-v1",
+   "manifest": "Art/Parts/P1-v1/b2-equipment-v1/runeArmor/asset.json"
+  },
+  {
+   "id": "p1-b5-dragon-armor-v1",
+   "manifest": "Art/Parts/P1-v1/b5-set-armors-v1/dragonArmor/asset.json"
+  },
+  {
+   "id": "p1-b5-starlight-armor-v1",
+   "manifest": "Art/Parts/P1-v1/b5-set-armors-v1/starlightArmor/asset.json"
+  },
+  {
+   "id": "p1-down-back-scabbard-transitions-v1",
+   "manifest": "Art/Parts/P1-v1/down/transitions-v1/back-scabbard/asset.json"
+  },
+  {
+   "id": "p1-down-face-amber-transitions-v1",
+   "manifest": "Art/Parts/P1-v1/down/transitions-v1/face-amber/asset.json"
+  },
+  {
+   "id": "p1-down-face-blue-transitions-v1",
+   "manifest": "Art/Parts/P1-v1/down/transitions-v1/face-blue/asset.json"
+  },
+  {
+   "id": "p1-down-forester-transitions-v1",
+   "manifest": "Art/Parts/P1-v1/down/transitions-v1/forester/asset.json"
+  },
+  {
+   "id": "p1-down-hair-chestnut-transitions-v1",
+   "manifest": "Art/Parts/P1-v1/down/transitions-v1/hair-chestnut/asset.json"
+  },
+  {
+   "id": "p1-down-hair-silver-transitions-v1",
+   "manifest": "Art/Parts/P1-v1/down/transitions-v1/hair-silver/asset.json"
+  },
+  {
+   "id": "p1-down-hair-teal-crop-transitions-v1",
+   "manifest": "Art/Parts/P1-v1/down/transitions-v1/hair-teal-crop/asset.json"
+  },
+  {
+   "id": "p1-down-left-back-scabbard-v1",
+   "manifest": "Art/Parts/P1-v1/down-left/wardrobe-v1/back-scabbard/asset.json"
+  },
+  {
+   "id": "p1-down-left-forester-v1",
+   "manifest": "Art/Parts/P1-v1/down-left/wardrobe-v1/forester/asset.json"
+  },
+  {
+   "id": "p1-down-left-lower-v1",
+   "manifest": "Art/Parts/P1-v1/down-left/wardrobe-v1/lower/asset.json"
+  },
+  {
+   "id": "p1-down-left-wayfarer-v1",
+   "manifest": "Art/Parts/P1-v1/down-left/wardrobe-v1/wayfarer/asset.json"
+  },
+  {
+   "id": "p1-down-right-back-scabbard-v1",
+   "manifest": "Art/Parts/P1-v1/down-right/appearance-v1/back-scabbard/asset.json"
+  },
+  {
+   "id": "p1-down-right-forester-v1",
+   "manifest": "Art/Parts/P1-v1/down-right/appearance-v1/forester/asset.json"
+  },
+  {
+   "id": "p1-down-right-lower-v1",
+   "manifest": "Art/Parts/P1-v1/down-right/appearance-v1/lower/asset.json"
+  },
+  {
+   "id": "p1-down-right-wayfarer-v1",
+   "manifest": "Art/Parts/P1-v1/down-right/appearance-v1/wayfarer/asset.json"
+  },
+  {
+   "id": "p1-down-wayfarer-transitions-v1",
+   "manifest": "Art/Parts/P1-v1/down/transitions-v1/wayfarer/asset.json"
+  },
+  {
+   "id": "p1-eight-way-base-v1",
+   "manifest": "Art/Parts/P1-v1/eight-way-v1/base/asset.json"
+  },
+  {
+   "id": "p1-eight-way-face-amber-v1",
+   "manifest": "Art/Parts/P1-v1/eight-way-v1/face-amber/asset.json"
+  },
+  {
+   "id": "p1-eight-way-face-blue-v1",
+   "manifest": "Art/Parts/P1-v1/eight-way-v1/face-blue/asset.json"
+  },
+  {
+   "id": "p1-eight-way-forester-v1",
+   "manifest": "Art/Parts/P1-v1/eight-way-v1/forester/asset.json"
+  },
+  {
+   "id": "p1-eight-way-hair-chestnut-v1",
+   "manifest": "Art/Parts/P1-v1/eight-way-v1/hair-chestnut/asset.json"
+  },
+  {
+   "id": "p1-eight-way-hair-silver-v1",
+   "manifest": "Art/Parts/P1-v1/eight-way-v1/hair-silver/asset.json"
+  },
+  {
+   "id": "p1-eight-way-lower-v1",
+   "manifest": "Art/Parts/P1-v1/eight-way-v1/lower/asset.json"
+  },
+  {
+   "id": "p1-eight-way-wayfarer-v1",
+   "manifest": "Art/Parts/P1-v1/eight-way-v1/wayfarer/asset.json"
+  },
+  {
+   "id": "p1-eight-way-weapon-v1",
+   "manifest": "Art/Parts/P1-v1/eight-way-v1/weapon/asset.json"
+  },
+  {
+   "id": "p1-face-amber-down-left-v1",
+   "manifest": "Art/Parts/P1-v1/down-left/heads-v1/face-amber/asset.json"
+  },
+  {
+   "id": "p1-face-amber-down-right-v1",
+   "manifest": "Art/Parts/P1-v1/down-right/appearance-v1/face-amber/asset.json"
+  },
+  {
+   "id": "p1-face-amber-left",
+   "manifest": "Art/Parts/P1-v1/left/heads-v1/face-amber-left/asset.json"
+  },
+  {
+   "id": "p1-face-amber-v1",
+   "manifest": "Art/Parts/P1-v1/face-amber/asset.json"
+  },
+  {
+   "id": "p1-face-blue-down-left-v1",
+   "manifest": "Art/Parts/P1-v1/down-left/heads-v1/face-blue/asset.json"
+  },
+  {
+   "id": "p1-face-blue-down-right-v1",
+   "manifest": "Art/Parts/P1-v1/down-right/appearance-v1/face-blue/asset.json"
+  },
+  {
+   "id": "p1-face-blue-left",
+   "manifest": "Art/Parts/P1-v1/left/heads-v1/face-blue-left/asset.json"
+  },
+  {
+   "id": "p1-face-blue-v1",
+   "manifest": "Art/Parts/P1-v1/face-blue/asset.json"
+  },
+  {
+   "id": "p1-hair-chestnut-down-left-v1",
+   "manifest": "Art/Parts/P1-v1/down-left/heads-v1/hair-chestnut/asset.json"
+  },
+  {
+   "id": "p1-hair-chestnut-down-right-v1",
+   "manifest": "Art/Parts/P1-v1/down-right/appearance-v1/hair-chestnut/asset.json"
+  },
+  {
+   "id": "p1-hair-chestnut-left",
+   "manifest": "Art/Parts/P1-v1/left/heads-v1/hair-chestnut-left/asset.json"
+  },
+  {
+   "id": "p1-hair-chestnut-v1",
+   "manifest": "Art/Parts/P1-v1/hair-chestnut/asset.json"
+  },
+  {
+   "id": "p1-hair-silver-down-left-v1",
+   "manifest": "Art/Parts/P1-v1/down-left/heads-v1/hair-silver/asset.json"
+  },
+  {
+   "id": "p1-hair-silver-down-right-v1",
+   "manifest": "Art/Parts/P1-v1/down-right/appearance-v1/hair-silver/asset.json"
+  },
+  {
+   "id": "p1-hair-silver-left",
+   "manifest": "Art/Parts/P1-v1/left/heads-v1/hair-silver-left/asset.json"
+  },
+  {
+   "id": "p1-hair-silver-v1",
+   "manifest": "Art/Parts/P1-v1/hair-silver/asset.json"
+  },
+  {
+   "id": "p1-hair-teal-crop-v1",
+   "manifest": "Art/Parts/P1-v1/hair-teal-crop/asset.json"
+  },
+  {
+   "id": "p1-hair-teal-left",
+   "manifest": "Art/Parts/P1-v1/left/heads-v1/hair-teal-left/asset.json"
+  },
+  {
+   "id": "p1-hunting-bow-v1",
+   "manifest": "Art/Parts/P1-v1/hunting-bow-v1/asset.json"
+  },
+  {
+   "id": "p1-left-forester-v1",
+   "manifest": "Art/Parts/P1-v1/left/forester-v1/asset.json"
+  },
+  {
+   "id": "p1-left-forester-v2",
+   "manifest": "Art/Parts/P1-v1/left/wardrobe-repair-v2/forester/asset.json"
+  },
+  {
+   "id": "p1-left-traveler-lower-v1",
+   "manifest": "Art/Parts/P1-v1/left/traveler-lower-v1/asset.json"
+  },
+  {
+   "id": "p1-left-traveler-lower-v2",
+   "manifest": "Art/Parts/P1-v1/left/wardrobe-repair-v2/lower/asset.json"
+  },
+  {
+   "id": "p1-left-wayfarer-coat-v1",
+   "manifest": "Art/Parts/P1-v1/left/wayfarer-v1/asset.json"
+  },
+  {
+   "id": "p1-left-wayfarer-coat-v2",
+   "manifest": "Art/Parts/P1-v1/left/wardrobe-repair-v2/wayfarer/asset.json"
+  },
+  {
+   "id": "p1-neutral-up-left-r7-nape",
+   "manifest": "Art/Parts/P1-v1/upper/nape-v3/base-up-left/asset.json"
+  },
+  {
+   "id": "p1-neutral-up-left-r8-nape-gradient",
+   "manifest": "Art/Parts/P1-v1/upper/nape-v4/base-up-left/asset.json"
+  },
+  {
+   "id": "p1-neutral-up-right-r7-nape",
+   "manifest": "Art/Parts/P1-v1/upper/nape-v3/base-up-right/asset.json"
+  },
+  {
+   "id": "p1-neutral-up-right-r8-nape-gradient",
+   "manifest": "Art/Parts/P1-v1/upper/nape-v4/base-up-right/asset.json"
+  },
+  {
+   "id": "p1-outfit-forester-cover-v2",
+   "manifest": "Art/Parts/P1-v1/outfit-forester-cover-v2/asset.json"
+  },
+  {
+   "id": "p1-outfit-forester-v1",
+   "manifest": "Art/Parts/P1-v1/outfit-forester/asset.json"
+  },
+  {
+   "id": "p1-outfit-wayfarer-coat-v1",
+   "manifest": "Art/Parts/P1-v1/outfit-wayfarer-coat-v1/asset.json"
+  },
+  {
+   "id": "p1-right-back-scabbard-v1",
+   "manifest": "Art/Parts/P1-v1/right/appearance-v1/back-scabbard/asset.json"
+  },
+  {
+   "id": "p1-right-face-amber-v1",
+   "manifest": "Art/Parts/P1-v1/right/appearance-v1/face-amber/asset.json"
+  },
+  {
+   "id": "p1-right-face-blue-v1",
+   "manifest": "Art/Parts/P1-v1/right/appearance-v1/face-blue/asset.json"
+  },
+  {
+   "id": "p1-right-forester-v1",
+   "manifest": "Art/Parts/P1-v1/right/appearance-v1/forester/asset.json"
+  },
+  {
+   "id": "p1-right-hair-chestnut-v1",
+   "manifest": "Art/Parts/P1-v1/right/appearance-v1/hair-chestnut/asset.json"
+  },
+  {
+   "id": "p1-right-hair-silver-v1",
+   "manifest": "Art/Parts/P1-v1/right/appearance-v1/hair-silver/asset.json"
+  },
+  {
+   "id": "p1-right-lower-v1",
+   "manifest": "Art/Parts/P1-v1/right/appearance-v1/lower/asset.json"
+  },
+  {
+   "id": "p1-right-wayfarer-v1",
+   "manifest": "Art/Parts/P1-v1/right/appearance-v1/wayfarer/asset.json"
+  },
+  {
+   "id": "p1-up-back-scabbard-v1",
+   "manifest": "Art/Parts/P1-v1/up/appearance-v1/back-scabbard/asset.json"
+  },
+  {
+   "id": "p1-up-forester-v1",
+   "manifest": "Art/Parts/P1-v1/up/appearance-v1/forester/asset.json"
+  },
+  {
+   "id": "p1-up-hair-chestnut-v1",
+   "manifest": "Art/Parts/P1-v1/up/appearance-v1/hair-chestnut/asset.json"
+  },
+  {
+   "id": "p1-up-hair-silver-v1",
+   "manifest": "Art/Parts/P1-v1/up/appearance-v1/hair-silver/asset.json"
+  },
+  {
+   "id": "p1-up-lower-v1",
+   "manifest": "Art/Parts/P1-v1/up/appearance-v1/lower/asset.json"
+  },
+  {
+   "id": "p1-up-wayfarer-v1",
+   "manifest": "Art/Parts/P1-v1/up/appearance-v1/wayfarer/asset.json"
+  },
+  {
+   "id": "p1-upper-back-carry-v5",
+   "manifest": "Art/Parts/P1-v1/upper/back-carry-v5/asset.json"
+  },
+  {
+   "id": "p1-upper-back-carry-v6",
+   "manifest": "Art/Parts/P1-v1/upper/back-carry-v6/asset.json"
+  },
+  {
+   "id": "p1-upper-back-scabbard-v1",
+   "manifest": "Art/Parts/P1-v1/upper/wardrobe-v1/back-scabbard/asset.json"
+  },
+  {
+   "id": "p1-upper-forester-v1",
+   "manifest": "Art/Parts/P1-v1/upper/wardrobe-v1/forester/asset.json"
+  },
+  {
+   "id": "p1-upper-hair-chestnut-v1",
+   "manifest": "Art/Parts/P1-v1/upper/wardrobe-v1/hair-chestnut/asset.json"
+  },
+  {
+   "id": "p1-upper-hair-silver-v1",
+   "manifest": "Art/Parts/P1-v1/upper/wardrobe-v1/hair-silver/asset.json"
+  },
+  {
+   "id": "p1-upper-lower-v1",
+   "manifest": "Art/Parts/P1-v1/upper/wardrobe-v1/lower/asset.json"
+  },
+  {
+   "id": "p1-upper-lower-v2",
+   "manifest": "Art/Parts/P1-v1/upper/lower-v2/asset.json"
+  },
+  {
+   "id": "p1-upper-wayfarer-v1",
+   "manifest": "Art/Parts/P1-v1/upper/wardrobe-v1/wayfarer/asset.json"
+  },
+  {
+   "id": "p1-weapon-back-scabbard-left-v1",
+   "manifest": "Art/Parts/P1-v1/left/back-scabbard-v1/asset.json"
+  },
+  {
+   "id": "p1-weapon-short-sword-back-v1",
+   "manifest": "Art/Parts/P1-v1/weapon-short-sword-back-v1/asset.json"
+  },
+  {
+   "id": "p1-weapon-short-sword-v1",
+   "manifest": "Art/Parts/P1-v1/weapon-short-sword/asset.json"
+  },
+  {
+   "id": "p1-weapon-short-sword-v2",
+   "manifest": "Art/Parts/P1-v1/weapon-short-sword-v2/asset.json"
+  }
+ ]
+}
