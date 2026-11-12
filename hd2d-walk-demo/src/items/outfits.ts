@@ -1,6 +1,6 @@
 import type { OutfitDef } from '../character/types';
 
-/** 套装预设：只是一组「槽位 → 装备 id」，UI 的套装按钮由这里生成。 */
+/** 套装预设：只是一组「槽位 → 装备 id」。导出脚本按「每套 × 每把武器（含空手）」逐一导出。 */
 export const OUTFITS: OutfitDef[] = [
   {
     id: 'traveler',

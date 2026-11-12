@@ -14,6 +14,8 @@ import type { DrawCtx, ItemDef } from '../../character/types';
 
 /** 头发球的半径（比头大一圈，才有蓬松的体积），单位坐标 */
 const RX = 11.6, RY = 11;
+/** 前后方向的半径：比左右窄，侧面看头才是圆的而不是横着的长条 */
+const RZ = 10.2;
 /** 镜头俯视的角度：能多看到一点头顶 */
 const TILT = (18 * Math.PI) / 180;
 const CT = Math.cos(TILT), ST = Math.sin(TILT);
@@ -59,12 +61,13 @@ function buildLocks(): Lock[] {
     out.push({ phi: phi + j(4), a0: 5, a1: len + j(3), twist: 16 + j(9), flick: 1.05 + r() * 0.07, lift: 0, width: 2.9, tier: 0, tint: j(0.22) });
   }
   // 鬓角：垂到下颌，框住脸，发梢向外翘
-  for (const phi of [72, 95, -72, -95]) {
-    out.push({ phi: phi + j(5), a0: 5, a1: 116 + j(9), twist: j(12), flick: 1.16 + r() * 0.14, lift: 0, width: 3, tier: 0, tint: j(0.22) });
+  // 鬓角贴在耳朵前后（方位 ±92~110°），侧面不能盖到脸颊上
+  for (const phi of [94, 110, -94, -110]) {
+    out.push({ phi: phi + j(3), a0: 5, a1: 108 + j(6), twist: j(8), flick: 1.08 + r() * 0.08, lift: 0, width: 2.3, tier: 0, tint: j(0.22) });
   }
-  // 后发：垂到后颈，长短不齐，往外炸开
-  for (const phi of [118, 141, 164, -173, -150, -127]) {
-    out.push({ phi: phi + j(5), a0: 5, a1: 120 + j(12), twist: j(16), flick: 1.14 + r() * 0.2, lift: 0, width: 3.2, tier: 0, tint: j(0.22) });
+  // 后发：垂到后颈，长短不齐，发梢只微微外翘（翘太多侧面会往后拖出一大截）
+  for (const phi of [120, 142, 164, -173, -151, -129]) {
+    out.push({ phi: phi + j(5), a0: 5, a1: 126 + j(10), twist: j(14), flick: 1.04 + r() * 0.08, lift: 0, width: 3.2, tier: 0, tint: j(0.22) });
   }
   // 上层：短而翘的发束，叠在长发束上面，把轮廓打乱成尖尖的一圈
   for (let phi = -160; phi <= 180; phi += 45) {
@@ -85,8 +88,10 @@ interface Proj extends Pt {
 function project(pose: Pose, cx: number, cy: number, alphaDeg: number, phiDeg: number, rho: number): Proj {
   const a = alphaDeg * RAD, p = phiDeg * RAD;
   const w = Math.cos(a), f = Math.sin(a) * Math.cos(p), s = Math.sin(a) * Math.sin(p);
-  const X = s * pose.cos + f * pose.sin;
-  const n = f * pose.cos - s * pose.sin;
+  // 先按椭球压扁前后方向，再旋转到朝向
+  const sx = s, fz = (f * RZ) / RX;
+  const X = sx * pose.cos + fz * pose.sin;
+  const n = fz * pose.cos - sx * pose.sin;
   return { x: cx + RX * rho * X, y: cy - RY * rho * (w * CT - n * ST), near: n * CT + w * ST };
 }
 
@@ -110,22 +115,23 @@ function profile(s: number): number {
 
 /** 发际线：某个方位上，发根底色盖到多低的纬度（度） */
 function hairline(phiAbs: number): number {
-  if (phiAbs < 50) return 50;
-  if (phiAbs < 78) return 50 + ((phiAbs - 50) / 28) * 65;
+  if (phiAbs < 70) return 50;
+  if (phiAbs < 100) return 50 + ((phiAbs - 70) / 30) * 62;
   return 115 + ((phiAbs - 78) / 102) * 14;
 }
 
 function drawLocks(c: DrawCtx, back: boolean): void {
   const { g, pose } = c;
-  const cx = pose.head.x - pose.sin * 0.5, cy = pose.head.y - 1.2;
+  const cx = pose.head.x + pose.sin * 0.2, cy = pose.head.y - 1.2;
   c.pal('main');
   g.grit = 0.2;
   g.anchor(cx, cy);
 
   if (!back) {
     // 发根底色：把像素反投影回球面，落在发际线以内的就是头发
+    const rxView = Math.hypot(RX * pose.cos, RZ * pose.sin);
     g.fill(cx - RX, cy - RY, cx + RX, cy + RY, (u, v) => {
-      const X = (u - cx) / RX, a = (cy - v) / RY;
+      const X = (u - cx) / rxView, a = (cy - v) / RY;
       const q = 1 - X * X;
       if (q <= 0 || a * a > q) return -1;
       const sq = Math.sqrt(q);

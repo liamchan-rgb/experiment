@@ -75,6 +75,8 @@ export interface HandAnchor extends Joint {
   angle: number;
   /** 手持武器应画在身前还是身后 */
   weaponFront: boolean;
+  /** 竖握的长柄武器是否画在头前面 */
+  weaponOverHead: boolean;
 }
 
 export interface Arm {
@@ -159,9 +161,11 @@ export function makePose(dir: Dir5, frame: number, opts: PoseOptions = {}): Pose
     // 武器在局部坐标里的指向（side, up, fwd）
     let ls = 0.14 * sign, lu = 0.95, lf = 0.1;
     if (hold === 'up') {
-      // 竖握：上臂贴身，前臂抬到身前，手在身侧偏外
+      // 竖握：上臂贴身，前臂抬到身前，手在身侧偏外。
+      // 正侧面时杖头往前倾，从脸前面过去，否则竖直的杖会正好穿过脑袋。
       elbow = proj(8.6 * sign, HAND + 7 - bob, -1);
       j = proj(9.6 * sign, HAND + 5 - bob, 3.2 + 1.2 * s * sign);
+      if (Math.abs(cos) < 0.5) lf = 0.62;
     } else if (hold === 'down') {
       // 垂握：手臂自然下垂略向前，剑尖朝前下方，随步伐轻晃
       elbow = proj(8.5 * sign, HAND + 6.5 - bob, 0.5 * s * sign);
@@ -184,6 +188,8 @@ export function makePose(dir: Dir5, frame: number, opts: PoseOptions = {}): Pose
         front: shoulder.near >= -0.01,
         angle: Math.atan2(dy, dx),
         weaponFront: -7.8 * sign * sin + nr * 14 >= -0.5,
+        // 竖握武器在正侧面时画在头前面（weapon_front），其余朝向从头后面穿过（weapon_mid）
+        weaponOverHead: Math.abs(cos) < 0.5,
       },
     };
   };

@@ -13,3 +13,5 @@
 重生成运行资产：`python3 -m pip install Pillow`，然后 `python3 scripts/prepare-assets.py`。正常 Xcode 构建使用已提交资源，不需要 Pillow 或网络下载依赖。尺寸和基础 RGBA 预算见 `Art/Generated/LivingScene/asset-manifest.json`。
 
 视觉验收同时保存 iPhone、iPad 截图和 iPad 录像。`RuntimeMetrics.json` 包含帧率、实际进程驻留内存、基础纹理解码预算、独立物件数、探索状态及镜头倍率；模拟器结果不能作为真机性能结果。
+
+人物像素精灵的程序化制作管线在 `hd2d-walk-demo/`，制作标准（画风、坐标、图层、调色板，以及五官 / 发型 / 衣服 / 武器的替换规则和交接步骤）见 [CHARACTER_SPRITES.md](CHARACTER_SPRITES.md)。导出的 `export/ios/*Directions.png` 与现有 `HeroNDirections` 同格式。

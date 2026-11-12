@@ -32,18 +32,20 @@ export const navyScarf: ItemDef = {
       layer: 'scarf',
       draw: (c) => {
         const { g, pose } = c;
-        const hw = pose.torsoHalf + 2.2;
+        // 侧面看围巾只比脖子粗一圈，不能按正面宽度画，否则会前后各凸出一截
+        const hw = pose.torsoHalf + 2.2 - 1.5 * Math.abs(pose.sin);
+        const sx = CX + pose.sin * 0.5;
         const yc = pose.neckY + 1.5, hh = 2.8;
         c.pal('main');
         g.grit = 0.26;
         // 颈部一圈：一条厚实的圆筒，上亮下暗，带斜向的褶
-        g.fill(CX - hw, yc - hh, CX + hw, yc + hh, (u, v) => {
-          const nx = (u - CX) / hw, ny = (v - yc) / hh;
-          if (nx ** 4 + ny ** 4 > 1) return -1; // 圆角矩形
+        g.fill(sx - hw, yc - hh, sx + hw, yc + hh, (u, v) => {
+          const nx = (u - sx) / hw, ny = (v - yc) / hh;
+          if (Math.abs(nx) ** 2.6 + Math.abs(ny) ** 3 > 1) return -1; // 圆头，不是方筒
           const lam = ny * LY * 1.2 + nx * LX * 0.6 + Math.sqrt(Math.max(0, 1 - ny * ny)) * LZ * 0.9;
           return g.t(lam + Math.sin((u + v * 0.6) * 1.7) * 0.32, -0.02);
         });
-        g.fold(CX - hw + 1, yc - 1.2, CX + hw - 1.6, yc + 1, false); // 两圈之间的叠缝
+        g.fold(sx - hw + 1, yc - 1.2, sx + hw - 1.6, yc + 1, false); // 两圈之间的叠缝
 
         if (pose.cos > 0.3) {
           // 正面能看到围巾结和垂下的一小段，末端两道浅色条纹

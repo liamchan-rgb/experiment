@@ -81,7 +81,7 @@ export interface ItemDef {
   parts: PartDef[];
   /** 默认调色板，按键取用（'main'、'trim' …） */
   palettes: Record<string, Palette>;
-  /** 可选的换色方案（UI 会自动列出） */
+  /** 可选的换色方案（套装预设里按 id 引用） */
   variants?: ItemVariant[];
   /** 图层顺序覆盖：返回 { 图层: 新的 z 值 }，只影响本装备的部件 */
   layerOverride?: (dir: Dir5, frame: number) => Partial<Record<LayerId, number>>;

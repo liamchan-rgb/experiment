@@ -35,7 +35,7 @@ const EYE_FAR = ['00', '01', '12', '.2'];
 
 function head(c: DrawCtx): void {
   const { g, pose, dir } = c;
-  const hx = pose.head.x + pose.sin * 0.4, hy = pose.head.y;
+  const hx = pose.head.x + pose.sin * 0.9, hy = pose.head.y;
   g.grit = 0.07;
   g.anchor(hx, hy);
 
@@ -57,7 +57,9 @@ function head(c: DrawCtx): void {
     return Math.max(DARK, Math.min(LIGHT, g.t(lam * 0.62, 0.2)));
   });
 
-  // 五官按像素格摆，保证大小固定、左右对称
+  // 五官按像素格摆，保证大小固定、左右对称。
+  // 只画在脸已有的像素上（clip）：落到轮廓外的像素会被自动描边包一圈，变成脸上鼓出的小包。
+  g.clip = true;
   const S = g.S, k = Math.max(1, Math.round(S));
   const px = Math.round(hx * S), py = Math.round((hy + 0.4) * S);
   const dot = (i: number, j: number, sh: number) => g.cellsPx([String(sh)], px + i * k, py + j * k);
@@ -67,9 +69,9 @@ function head(c: DrawCtx): void {
     g.cellsPx(EYE_R, px + 3 * k, py);
     c.pal('blush');
     dot(-6, 4, 2); dot(-5, 4, 2);
-    dot(6, 4, 2); dot(7, 4, 2);
+    dot(5, 4, 2); dot(6, 4, 2);
     c.pal('skin');
-    dot(0, 5, 1); dot(1, 5, 1); // 嘴
+    dot(0, 5, 1); // 嘴（正面的对称轴在 px + 0.5，单像素的嘴正好居中）
     dot(-5, -2, 1); dot(-4, -2, 1); dot(-3, -1, 1); // 眉
     dot(5, -2, 1); dot(4, -2, 1); dot(3, -1, 1);
   } else if (dir === 'SE') {
@@ -83,7 +85,8 @@ function head(c: DrawCtx): void {
     dot(-2, -2, 1); dot(-1, -2, 1); dot(0, -1, 1);
   } else if (dir === 'E') {
     c.pal('skin');
-    g.ellipse(hx + HEAD_RX - 0.2, hy + 3.4, 1.1, 1.1, BASE); // 鼻尖
+    // 鼻子不往轮廓外加凸块，只在脸的前缘打一点阴影
+    g.dot(hx + HEAD_RX - 1.4, hy + 4.4, DARK);
     c.pal('eye');
     g.cellsPx(EYE_SIDE, px + 4 * k, py);
     c.pal('blush');
@@ -97,6 +100,7 @@ function head(c: DrawCtx): void {
   } else if (dir === 'NE') {
     g.ellipse(hx + 6.8, hy + 2.6, 1.3, 2.1, (lam) => (lam > 0.3 ? BASE : DARK)); // 只露出耳朵和一点脸颊
   }
+  g.clip = false;
 }
 
 export const body: ItemDef = {

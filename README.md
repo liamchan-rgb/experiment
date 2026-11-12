@@ -47,7 +47,7 @@ xcodebuild archive -project MeadowJourney.xcodeproj -scheme MeadowJourney \
 bash scripts/package-ipa.sh build/MeadowJourney.xcarchive build/MeadowJourney-unsigned.ipa
 ```
 
-资源说明见 [docs/ASSETS.md](docs/ASSETS.md)。静态检查：`python3 scripts/validate-project.py`。修改项目绑定后可运行 `python3 scripts/generate-project.py`。
+资源说明见 [docs/ASSETS.md](docs/ASSETS.md)。人物像素精灵的制作管线与标准见 [docs/CHARACTER_SPRITES.md](docs/CHARACTER_SPRITES.md)（工具在 `hd2d-walk-demo/`）。静态检查：`python3 scripts/validate-project.py`。修改项目绑定后可运行 `python3 scripts/generate-project.py`。
 
 ## 此次交付状态
 
