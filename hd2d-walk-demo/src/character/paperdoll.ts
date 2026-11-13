@@ -83,8 +83,9 @@ export function composeFrame(entries: LoadoutEntry[], dir: Dir5, frame: number, 
   const bodyPalettes = entries.find((e) => e.slot === 'body')?.palettes ?? {};
 
   entries.forEach((entry, ei) => {
+    // 弓拿在左手
     const hand =
-      entry.slot === 'weapon_main' ? pose.handR :
+      entry.slot === 'weapon_main' ? (entry.item.hold === 'bow' ? pose.handL : pose.handR) :
       entry.slot === 'weapon_off' ? pose.handL : undefined;
     const override = entry.item.layerOverride?.(dir, frame);
     const fallback = Object.values(entry.palettes)[0];
@@ -99,8 +100,7 @@ export function composeFrame(entries: LoadoutEntry[], dir: Dir5, frame: number, 
       let layer: LayerId;
       if (part.layer === 'weapon') {
         // 身后 → weapon_back；竖握的长柄武器要从头后面穿过去 → weapon_mid；其余在最前
-        layer = hand && !hand.weaponFront ? 'weapon_back'
-          : (entry.item.hold ?? 'up') === 'up' && !hand?.weaponOverHead ? 'weapon_mid' : 'weapon_front';
+        layer = hand && !hand.weaponFront ? 'weapon_back' : hand?.weaponMid ? 'weapon_mid' : 'weapon_front';
       }
       else if (typeof part.layer === 'function') layer = part.layer(ctx);
       else layer = part.layer;

@@ -1,7 +1,7 @@
 import type { Palette } from '../pixel/palette';
 import type { PixelLayer } from '../pixel/PixelLayer';
 import type { Brush } from '../pixel/Brush';
-import type { HandAnchor, Hold, Pose, Joint } from './rig';
+import type { ActionId, HandAnchor, Hold, Pose, Joint } from './rig';
 import type { LayerId } from './layers';
 
 /** 装备槽位 */
@@ -17,7 +17,7 @@ export interface DrawCtx {
   dir: Dir5;
   /** sheet 列号：0-1 待机，2-7 行走 */
   frame: number;
-  anim: 'idle' | 'walk';
+  anim: 'idle' | 'walk' | ActionId;
   /** 这一帧的骨架姿态（关节坐标、手部锚点等） */
   pose: Pose;
   /** 当前部件的临时图层（像素坐标），只写调色板索引 */
@@ -94,6 +94,10 @@ export interface ItemDef {
   layerOverride?: (dir: Dir5, frame: number) => Partial<Record<LayerId, number>>;
   /** 武器的握持方式：'up' 竖举（默认），'down' 剑尖朝下垂握。骨架会据此摆手臂和手部锚点 */
   hold?: Hold;
+  /** 普通攻击用哪个动作，不填按握持方式：down → slash，shoulder → heavy，bow → shoot，up → cast */
+  attack?: ActionId;
+  /** 对应桌游物品表（initial-content.json）里的物品 id */
+  gameItem?: string;
   /** 装备后隐藏哪些槽位 */
   hides?: Slot[];
   tail?: TailDef;

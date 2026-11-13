@@ -9,7 +9,8 @@
     "check": "tsc --noEmit",
     "build": "tsc --noEmit && vite build",
     "preview": "vite preview",
-    "hair-preview": "vite-node scripts/hair-preview.ts --"
+    "hair-preview": "vite-node scripts/hair-preview.ts --",
+    "action-preview": "vite-node scripts/action-preview.ts --"
   },
   "devDependencies": {
     "@types/node": "^22.20.5",

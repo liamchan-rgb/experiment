@@ -1,0 +1,53 @@
+{
+  "frames": {
+    "idle": [0, 1],
+    "walk": [2, 3, 4, 5, 6, 7],
+    "slash": [8, 9, 10, 11],
+    "heavy": [12, 13, 14, 15],
+    "shoot": [16, 17, 18, 19],
+    "cast": [20, 21, 22, 23]
+  },
+  "impactFrame": { "slash": 1, "heavy": 2, "shoot": 2, "cast": 2 },
+  "weaponAttack": {
+    "trainingSword": "slash",
+    "starlightBlade": "slash",
+    "greatSword": "heavy",
+    "dragonFangSword": "heavy",
+    "huntingBow": "shoot",
+    "legendaryStaff": "cast",
+    "unarmed": "slash"
+  },
+  "skills": {
+    "heavyStrike": "attack",
+    "ambush": "attack",
+    "runeSlash": "attack",
+    "dragonFlame": "cast",
+    "starlightPulse": "cast",
+    "breather": "cast",
+    "simpleGuard": "cast",
+    "support": "cast",
+    "rally": "cast",
+    "runeWard": "cast",
+    "battleRune": "cast",
+    "dragonScaleWard": "cast",
+    "dragonOrder": "cast",
+    "dragonSoulWard": "cast"
+  },
+  "items": {
+    "trainingSword": { "slot": "weapon_main", "sprite": "weapon_training_sword" },
+    "huntingBow": { "slot": "weapon_main", "sprite": "weapon_hunting_bow" },
+    "greatSword": { "slot": "weapon_main", "sprite": "weapon_great_sword" },
+    "legendaryStaff": { "slot": "weapon_main", "sprite": "weapon_legendary_staff" },
+    "starlightBlade": { "slot": "weapon_main", "sprite": "weapon_starlight_blade" },
+    "dragonFangSword": { "slot": "weapon_main", "sprite": "weapon_dragon_fang" },
+    "leatherArmor": { "slot": "top", "sprite": "top_leather_armor" },
+    "runeArmor": { "slot": "top", "sprite": "top_rune_armor" },
+    "starlightArmor": { "slot": "top", "sprite": "top_starlight_armor" },
+    "dragonArmor": { "slot": "top", "sprite": "top_dragon_armor" },
+    "powerBadge": null,
+    "actionRing": null,
+    "starlightCharm": null,
+    "dragonCharm": null
+  },
+  "notes": "skills 里的 attack = 用当前武器的普通攻击动作（剑挥砍、大剑重劈、弓射箭、权杖施法）；cast = 施法 / 鼓舞（没有法杖时举起武器或手）。怪物技能（石肤、再生、横扫、龙鳞、龙焰）不用人物动作。items 里 null 的是饰品：在 42×62 的小人上看不出来，不画。消耗品不显示。"
+}
