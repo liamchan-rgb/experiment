@@ -1,5 +1,7 @@
 # SideStore 安装与视觉验收
 
+[直接下载人物换装测试版 1.2.0 IPA](https://github.com/liamchan-rgb/experiment/raw/refs/heads/claude/hd2d-pixel-character-walk-s2pdwi/Downloads/MeadowJourney-v1.2.0-unsigned.ipa)（约 13.5 MB，SHA-256 `69667105…6c3fad`）：三位旅人由游戏内 Swift 烘焙器现场合成，改用场景式生命周期。Xcode 27.1 设备版编译，未在模拟器或真机上运行过。
+
 [直接下载动态版 1.1.0 IPA](https://github.com/liamchan-rgb/experiment/raw/refs/heads/main/Downloads/MeadowJourney-v1.1.0-unsigned.ipa)（约 15.8 MB）。
 
 在 Safari 保存到“文件”，然后 SideStore → My Apps → ＋，选择带 `v1.1.0` 的新 IPA 重签安装。安装名称为 MeadowJourney，版本为 1.1.0（build 3），需 iOS / iPadOS 15 及以上。包标识保持不变，可以更新此前安装的 Demo。
