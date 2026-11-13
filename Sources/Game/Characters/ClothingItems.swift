@@ -29,8 +29,8 @@ enum ClothingItems {
             H.torsoShape(c, rows: rows, flare: 2) { lam, _, r, _, _ in r <= hem ? -1 : g.t(lam, r > rows - 0.7 ? -0.35 : 0.3) }
             c.pal("main")
             g.clip = true
-            g.fold(Rig.cx - hw + 1, ny + 4.8, Rig.cx - hw + 3.8, ny + 7.4)
-            g.fold(Rig.cx + hw - 1, ny + 4.4, Rig.cx + hw - 3.4, ny + 7)
+            g.fold(SpriteRig.cx - hw + 1, ny + 4.8, SpriteRig.cx - hw + 3.8, ny + 7.4)
+            g.fold(SpriteRig.cx + hw - 1, ny + 4.4, SpriteRig.cx + hw - 3.4, ny + 7)
             if pose.cos > 0.3 {
                 let fx = H.frontX(c)
                 g.line(fx, ny + 3, fx, ny + hem - 0.6, BrushOp.darken)
@@ -43,15 +43,15 @@ enum ClothingItems {
                     g.dot(fx + 1.2, ny + r + 1, D)
                 }
             } else if pose.cos < -0.3 {
-                let bx = Rig.cx - hw * 0.4 * pose.sin
+                let bx = SpriteRig.cx - hw * 0.4 * pose.sin
                 g.line(bx, ny + 3.5, bx, ny + 7, BrushOp.darken)
                 g.rect(bx - 3.4, ny + 7.4, 6.8, 1.6) { _, v in v < ny + 8.1 ? Lt : D }
                 c.pal("metal")
                 g.dot(bx - 3, ny + 7.8, Hi)
                 g.dot(bx + 3, ny + 7.8, Lt)
             } else {
-                g.line(Rig.cx - 0.6, ny + 5, Rig.cx - 0.6, ny + hem - 1, BrushOp.darken)
-                g.line(Rig.cx + 0.6, ny + 8.6, Rig.cx + 3, ny + 8.6, BrushOp.lighten)
+                g.line(SpriteRig.cx - 0.6, ny + 5, SpriteRig.cx - 0.6, ny + hem - 1, BrushOp.darken)
+                g.line(SpriteRig.cx + 0.6, ny + 8.6, SpriteRig.cx + 3, ny + 8.6, BrushOp.lighten)
             }
             g.clip = false
         })
@@ -82,8 +82,8 @@ enum ClothingItems {
             let sway = walking ? msin(pose.phase + 1) : 0
             let hwTop = 6.6 * abs(cos) + 3 * abs(sin) + 1.2
             let hwBottom = hwTop + 3.8
-            let cx0 = Rig.cx - sin * 3.8
-            let y0 = pose.neckY - 0.5, y1 = Rig.footY - 6
+            let cx0 = SpriteRig.cx - sin * 3.8
+            let y0 = pose.neckY - 0.5, y1 = SpriteRig.footY - 6
             let folds = 2.2 + abs(cos) * 1.4
             g.grit = 0.24
             g.fill(cx0 - hwBottom - 6, y0, cx0 + hwBottom + 6, y1 + 2) { u, v in
@@ -103,7 +103,7 @@ enum ClothingItems {
                     c.pal("main")
                     return ridge > 0.3 ? D : O
                 }
-                var lam = 0.18 + nx * Light.x * 0.9 + ridge * 0.75
+                var lam = 0.18 + nx * SpriteLight.x * 0.9 + ridge * 0.75
                 if t < 0.12 { lam -= 0.6 }
                 let dh = hem - v
                 if dh > 1.4 && dh < 3.2 {
@@ -120,14 +120,14 @@ enum ClothingItems {
             let ny = pose.neckY
             let hw = pose.torsoHalf + 2.9
             let y0 = ny - 2, yb = ny + 4.6
-            g.fill(Rig.cx - hw, y0, Rig.cx + hw, yb + 1.4) { u, v in
-                let nx = (u - Rig.cx) / hw
+            g.fill(SpriteRig.cx - hw, y0, SpriteRig.cx + hw, yb + 1.4) { u, v in
+                let nx = (u - SpriteRig.cx) / hw
                 if abs(nx) > 1 { return -1 }
                 let top = y0 + 2.9 * (1 - (1 - nx * nx).squareRoot())
                 let bottom = yb + 0.7 * mcos(nx * hw * 0.9)
                 if v < top || v > bottom { return -1 }
                 let k = (v - y0) / (yb - y0)
-                let lam = nx * Light.x + (k * 1.5 - 0.75) * Light.y + (1 - nx * nx).squareRoot() * Light.z * 0.85
+                let lam = nx * SpriteLight.x + (k * 1.5 - 0.75) * SpriteLight.y + (1 - nx * nx).squareRoot() * SpriteLight.z * 0.85
                 let db = bottom - v
                 if db > 0.6 && db < 2 {
                     c.pal("trim")
@@ -156,15 +156,15 @@ enum ClothingItems {
             }
             g.clip = true
             c.pal("main")
-            g.fold(Rig.cx - hw + 1, ny + 4.6, Rig.cx - hw + 3.6, ny + 7.2)
-            g.fold(Rig.cx + hw - 1, ny + 4.2, Rig.cx + hw - 3.2, ny + 6.8)
+            g.fold(SpriteRig.cx - hw + 1, ny + 4.6, SpriteRig.cx - hw + 3.6, ny + 7.2)
+            g.fold(SpriteRig.cx + hw - 1, ny + 4.2, SpriteRig.cx + hw - 3.2, ny + 6.8)
             if pose.cos > 0.3 {
                 let fx = H.frontX(c)
                 c.pal("trim")
                 if g.S >= 0.8 { g.line(fx, ny + 4.6, fx, ny + 7.6, B) }
                 g.rect(fx - 1.2, ny + 7.8, 2.4, 2.4) { u, v in u < fx - 0.4 || v < ny + 8.5 ? Hi : D }
             } else {
-                g.line(Rig.cx, ny + 4, Rig.cx, ny + 7.6, BrushOp.darken)
+                g.line(SpriteRig.cx, ny + 4, SpriteRig.cx, ny + 7.6, BrushOp.darken)
             }
             g.clip = false
         })
@@ -204,14 +204,14 @@ enum ClothingItems {
             let g = c.g, pose = c.pose
             let hw = pose.torsoHalf - 0.2, y = pose.legs[0].hip.y
             c.pal("main")
-            g.fill(Rig.cx - hw, y - 4.5, Rig.cx + hw, y + 3) { u, v in
-                let nx = (u - Rig.cx) / hw
+            g.fill(SpriteRig.cx - hw, y - 4.5, SpriteRig.cx + hw, y + 3) { u, v in
+                let nx = (u - SpriteRig.cx) / hw
                 if abs(nx) > 1 || v < y - 4.5 { return -1 }
                 if v > y + 1 + 1.4 * (1 - abs(nx)) { return -1 }
-                return g.t(nx * Light.x + (1 - nx * nx).squareRoot() * Light.z, -0.15)
+                return g.t(nx * SpriteLight.x + (1 - nx * nx).squareRoot() * SpriteLight.z, -0.15)
             }
             if abs(pose.sin) < 0.9 {
-                let sx = Rig.cx + pose.sin * 2.2
+                let sx = SpriteRig.cx + pose.sin * 2.2
                 g.clip = true
                 g.line(sx, y - 1, sx, y + 2.2, BrushOp.darken)
                 g.clip = false
@@ -249,13 +249,13 @@ enum ClothingItems {
                     let d = nx * nx + ny * ny
                     if d > 1 || v > sole { return -1 }
                     if v > sole - 0.8 { return O }
-                    return g.t(nx * Light.x + ny * Light.y + (1 - d).squareRoot() * Light.z, fb)
+                    return g.t(nx * SpriteLight.x + ny * SpriteLight.y + (1 - d).squareRoot() * SpriteLight.z, fb)
                 }
                 g.capsule(x, y - 5.2, x, y - 2.4, 2.8, 2.9) { lam, _, _, _, _ in g.t(lam, fb) }
                 g.fill(x - 3.6, y - 7, x + 3.6, y - 4.6) { u, v in
                     let nx = (u - x) / 3.5
                     if abs(nx) > 1 || v < y - 6.9 || v > y - 4.7 { return -1 }
-                    return g.t(nx * Light.x + (1 - nx * nx).squareRoot() * Light.z, fb + (v > y - 5.4 ? -0.3 : 0.3))
+                    return g.t(nx * SpriteLight.x + (1 - nx * nx).squareRoot() * SpriteLight.z, fb + (v > y - 5.4 ? -0.3 : 0.3))
                 }
                 g.clip = true
                 g.line(x - 2.8, y - 4.4, x + 3, y - 4.4, BrushOp.darken)
@@ -292,19 +292,19 @@ enum ClothingItems {
         let part = PartDef(layer: .fixed(.scarf), draw: { c in
             let g = c.g, pose = c.pose
             let hw = pose.torsoHalf + 2.2 - 1.5 * abs(pose.sin)
-            let sx = Rig.cx + pose.sin * 0.5
+            let sx = SpriteRig.cx + pose.sin * 0.5
             let yc = pose.neckY + 2.1, hh = 2.6
             c.pal("main")
             g.grit = 0.26
             g.fill(sx - hw, yc - hh, sx + hw, yc + hh) { u, v in
                 let nx = (u - sx) / hw, ny = (v - yc) / hh
                 if pow(abs(nx), 2.6) + pow(abs(ny), 3) > 1 { return -1 }
-                let lam = ny * Light.y * 1.2 + nx * Light.x * 0.6 + max(0, 1 - ny * ny).squareRoot() * Light.z * 0.9
+                let lam = ny * SpriteLight.y * 1.2 + nx * SpriteLight.x * 0.6 + max(0, 1 - ny * ny).squareRoot() * SpriteLight.z * 0.9
                 return g.t(lam + msin((u + v * 0.6) * 1.7) * 0.32, -0.02)
             }
             g.fold(sx - hw + 1, yc - 1.2, sx + hw - 1.6, yc + 1, highlight: false)
             if pose.cos > 0.3 {
-                let kx = Rig.cx + (hw - 3.8) * (0.3 + pose.sin * 0.6)
+                let kx = SpriteRig.cx + (hw - 3.8) * (0.3 + pose.sin * 0.6)
                 g.capsule(kx + 0.2, yc + 2.8, kx + 0.8, yc + 9.4, 1.5, 1.8) { lam, _, t, _, _ in
                     (t > 0.68 && t < 0.78) || (t > 0.88 && t < 0.97) ? (lam > 0.2 ? Hi : Lt) : g.t(lam)
                 }
@@ -353,7 +353,7 @@ enum ClothingItems {
             g.fill(p.x - hw, p.y - hh, p.x + hw, p.y + hh) { u, v in
                 let nx = (u - p.x) / hw, ny = (v - p.y) / hh
                 if pow(nx, 4) + pow(ny, 4) > 1 { return -1 }
-                let lam = nx * Light.x + (1 - nx * nx).squareRoot() * Light.z
+                let lam = nx * SpriteLight.x + (1 - nx * nx).squareRoot() * SpriteLight.z
                 let flap = -0.05 + 0.3 * mcos(nx * 1.4)
                 if ny < flap { return ny > flap - 0.2 ? D : g.t(lam, 0.3) }
                 return g.t(lam, -0.3)

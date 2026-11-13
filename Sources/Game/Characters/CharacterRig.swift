@@ -17,7 +17,7 @@ enum Hold: String {
     case up, down
 }
 
-enum Rig {
+enum SpriteRig {
     static let unitW = 64.0
     static let unitH = 96.0
     /// 身体中轴（镜像轴）
@@ -111,13 +111,13 @@ struct CharacterPose {
     var handL: HandAnchor { armL.hand }
 
     /// 局部坐标 → 精灵坐标
-    func proj(_ side: Double, _ up: Double, _ fwd: Double, _ tilt: Double = Rig.tilt) -> Joint {
+    func proj(_ side: Double, _ up: Double, _ fwd: Double, _ tilt: Double = SpriteRig.tilt) -> Joint {
         let near = fwd * cos - side * sin
-        return Joint(x: Rig.cx + side * cos + fwd * sin, y: Rig.footY - up + near * tilt, near: near)
+        return Joint(x: SpriteRig.cx + side * cos + fwd * sin, y: SpriteRig.footY - up + near * tilt, near: near)
     }
 
     init(dir: Dir5, frame: Int, armedR: Hold? = nil, armedL: Hold? = nil) {
-        let (sn, cs) = Rig.trig(dir)
+        let (sn, cs) = SpriteRig.trig(dir)
         self.dir = dir
         self.sin = sn
         self.cos = cs
@@ -140,34 +140,34 @@ struct CharacterPose {
         self.bob = bob
         let lean = walking ? 1.0 : 0.0
 
-        func proj(_ side: Double, _ up: Double, _ fwd: Double, _ tilt: Double = Rig.tilt) -> Joint {
+        func proj(_ side: Double, _ up: Double, _ fwd: Double, _ tilt: Double = SpriteRig.tilt) -> Joint {
             let near = fwd * cs - side * sn
-            return Joint(x: Rig.cx + side * cs + fwd * sn, y: Rig.footY - up + near * tilt, near: near)
+            return Joint(x: SpriteRig.cx + side * cs + fwd * sn, y: SpriteRig.footY - up + near * tilt, near: near)
         }
 
-        head = proj(walking ? 0 : -0.3, Rig.head - bob, lean)
+        head = proj(walking ? 0 : -0.3, SpriteRig.head - bob, lean)
 
         func arm(_ sign: Double, _ hold: Hold?) -> Arm {
-            let shoulder = proj(7.2 * sign, Rig.shoulder - bob, lean * 0.6, 0.12)
+            let shoulder = proj(7.2 * sign, SpriteRig.shoulder - bob, lean * 0.6, 0.12)
             var j: Joint, elbow: Joint
             var ls = 0.14 * sign, lu = 0.95, lf = 0.1
             switch hold {
             case .up?:
-                elbow = proj(8.6 * sign, Rig.hand + 7 - bob, -1)
-                j = proj(9.6 * sign, Rig.hand + 5 - bob, 3.2 + 1.2 * s * sign)
+                elbow = proj(8.6 * sign, SpriteRig.hand + 7 - bob, -1)
+                j = proj(9.6 * sign, SpriteRig.hand + 5 - bob, 3.2 + 1.2 * s * sign)
                 if abs(cs) < 0.5 { lf = 0.62 }
             case .down?:
-                elbow = proj(8.5 * sign, Rig.hand + 6.5 - bob, 0.5 * s * sign)
-                j = proj(8.8 * sign, Rig.hand + 1.5 - bob, 2.6 + 1.6 * s * sign)
+                elbow = proj(8.5 * sign, SpriteRig.hand + 6.5 - bob, 0.5 * s * sign)
+                j = proj(8.8 * sign, SpriteRig.hand + 1.5 - bob, 2.6 + 1.6 * s * sign)
                 ls = 0.5 * sign; lu = -0.55; lf = 0.65
             case nil:
                 let swing = walking ? 4.5 * s * sign : sign < 0 ? 1.4 : -0.6
-                elbow = proj(8.3 * sign, (Rig.shoulder + Rig.hand) / 2 + 0.5 - bob, swing * 0.35 - 1.2)
-                j = proj(7.8 * sign, Rig.hand - bob + abs(swing) * 0.15, swing + 0.8)
+                elbow = proj(8.3 * sign, (SpriteRig.shoulder + SpriteRig.hand) / 2 + 0.5 - bob, swing * 0.35 - 1.2)
+                j = proj(7.8 * sign, SpriteRig.hand - bob + abs(swing) * 0.15, swing + 0.8)
             }
             let dx = ls * cs + lf * sn
             let nr = lf * cs - ls * sn
-            let dy = -lu + nr * Rig.tilt
+            let dy = -lu + nr * SpriteRig.tilt
             return Arm(shoulder: shoulder, elbow: elbow, hand: HandAnchor(
                 x: j.x, y: j.y, near: j.near,
                 front: shoulder.near >= -0.01,
@@ -179,7 +179,7 @@ struct CharacterPose {
         armL = arm(1, armedL)
 
         func leg(_ sign: Double) -> Leg {
-            let hip = proj(2.8 * sign, Rig.hip - bob, 0, 0)
+            let hip = proj(2.8 * sign, SpriteRig.hip - bob, 0, 0)
             if !walking {
                 return Leg(hip: hip, foot: sign < 0 ? proj(-3.6, 0, 1.5) : proj(3, 0, -0.4))
             }
@@ -190,8 +190,8 @@ struct CharacterPose {
         let legR = leg(-1), legL = leg(1)
         legs = legR.foot.near <= legL.foot.near ? [legR, legL] : [legL, legR]
 
-        neckY = Rig.footY - Rig.neck + bob
-        neckUp = Rig.neck - bob
+        neckY = SpriteRig.footY - SpriteRig.neck + bob
+        neckUp = SpriteRig.neck - bob
         torsoHalf = 6.5 - 1.9 * abs(sn)
     }
 }

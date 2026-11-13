@@ -28,7 +28,7 @@ enum BodyItem {
     private static func head(_ c: DrawContext) {
         let g = c.g, pose = c.pose, dir = c.dir
         let hx = pose.head.x + pose.sin * 0.9, hy = pose.head.y
-        let rx0 = Rig.headRX, ry0 = Rig.headRY
+        let rx0 = SpriteRig.headRX, ry0 = SpriteRig.headRY
         g.grit = 0.07
         g.anchor(hx, hy)
         c.pal("skin")
@@ -45,7 +45,7 @@ enum BodyItem {
             let shape = lower ? pow(abs(nx), 2) + pow(abs(ny), 2.3) : nx * nx + ny * ny
             if shape > 1 { return -1 }
             let d = min(1, nx * nx + ny * ny)
-            let lam = nx * Light.x + ny * Light.y + (1 - d).squareRoot() * Light.z
+            let lam = nx * SpriteLight.x + ny * SpriteLight.y + (1 - d).squareRoot() * SpriteLight.z
             if dy < -3.4 { return Shade.dark }
             return max(Shade.dark, min(Shade.light, g.t(lam * 0.62, 0.2)))
         }

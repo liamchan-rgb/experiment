@@ -77,7 +77,7 @@ final class CharacterCatalog {
     }
 
     /// 按预设穿戴好一套装备。找不到的 id 直接报错，避免悄悄画出缺件的角色。
-    func equipment(for p: CharacterPreset) throws -> Equipment {
+    func equipment(for p: CharacterPreset) throws -> SpriteEquipment {
         func need(_ id: String) throws -> ItemDef {
             guard let it = item(id) else { throw BuildError.missingItem(id, preset: p.id) }
             return it
@@ -85,7 +85,7 @@ final class CharacterCatalog {
         guard let outfit = Self.outfits.first(where: { $0.id == p.outfit }) else {
             throw BuildError.missingOutfit(p.outfit, preset: p.id)
         }
-        let eq = Equipment(body: BodyItem.body)
+        let eq = SpriteEquipment(body: BodyItem.body)
         if let skin = p.skin, let tone = BodyItem.skinTones[skin] { eq.setBodyPalette(tone) }
         eq.equip(.hair, try need(p.hair))
         eq.equip(.face, try need(p.face))

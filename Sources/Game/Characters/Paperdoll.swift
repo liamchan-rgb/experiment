@@ -32,7 +32,7 @@ enum Paperdoll {
 
     /// 把一组装备合成为某方向某帧的一张像素图
     static func composeFrame(_ entries: [LoadoutEntry], dir: Dir5, frame: Int, into out: PixelLayer) {
-        let S = Rig.spriteScale
+        let S = SpriteRig.spriteScale
         let tmp = PixelLayer(out.w, out.h)
         let brush = SpriteBrush(tmp, S)
         let taps = shadowTaps(scale: S)
@@ -77,7 +77,7 @@ enum Paperdoll {
             brush.clip = false
             brush.grit = 0.16
             brush.dither = true
-            brush.anchor(Rig.cx, pose.neckY)
+            brush.anchor(SpriteRig.cx, pose.neckY)
             if let frames = part.frames, let rows = frames[dir] {
                 ctx.pal(part.paletteKey)
                 let a = part.anchor?(ctx) ?? SpritePoint(x: pose.proj(0, 0, 0).x, y: pose.neckY)

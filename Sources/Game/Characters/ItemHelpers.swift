@@ -36,20 +36,20 @@ enum ItemHelpers {
                            _ shade: (Double, Double, Double, Double, Double) -> Double) {
         let g = c.g, pose = c.pose
         let ny = pose.neckY, hw0 = pose.torsoHalf + pad
-        g.fill(Rig.cx - hw0 - flare - 1, ny, Rig.cx + hw0 + flare + 1, ny + rows) { u, v in
+        g.fill(SpriteRig.cx - hw0 - flare - 1, ny, SpriteRig.cx + hw0 + flare + 1, ny + rows) { u, v in
             let r = v - ny
             if r < 0 || r > rows { return -1 }
             var hw = hw0
             if r < 2.4 { hw -= (2.4 - r) * (2.4 - r) * 0.35 }
             if r > rows - 7 { hw += (flare * (r - (rows - 7))) / 7 }
-            let nx = (u - Rig.cx) / hw
+            let nx = (u - SpriteRig.cx) / hw
             if abs(nx) > 1 { return -1 }
-            return shade(nx * Light.x + (1 - nx * nx).squareRoot() * Light.z + 0.05, nx, r, u, v)
+            return shade(nx * SpriteLight.x + (1 - nx * nx).squareRoot() * SpriteLight.z + 0.05, nx, r, u, v)
         }
     }
 
     /// 能看到正面时，门襟 / 领口中线所在的横坐标
-    static func frontX(_ c: DrawContext) -> Double { Rig.cx + c.pose.torsoHalf * 0.72 * c.pose.sin }
+    static func frontX(_ c: DrawContext) -> Double { SpriteRig.cx + c.pose.torsoHalf * 0.72 * c.pose.sin }
 
     /// 两只袖子（各占一个部件，近侧手臂压在躯干前、远侧被挡住）
     static func sleeveParts(key: String = "main", cuffKey: String?, length: Double = 0.72, radius: Double = 2) -> [PartDef] {

@@ -46,7 +46,7 @@ enum HairKit {
     }
 
     /// 发型整体相对头的大小
-    private static let hs = Rig.headRX / 10.4
+    private static let hs = SpriteRig.headRX / 10.4
     private static let rx = 11.6 * hs, ry = 11 * hs
     /// 前后方向的半径：比左右窄，侧面看头才是圆的
     private static let rz = 10.2 * hs

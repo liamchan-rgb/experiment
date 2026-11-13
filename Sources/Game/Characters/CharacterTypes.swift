@@ -110,7 +110,7 @@ struct LoadoutEntry {
 }
 
 /// 装备系统：只管「哪个槽位穿着什么、用什么颜色」
-final class Equipment {
+final class SpriteEquipment {
     private struct Equipped {
         var item: ItemDef
         var overrides: [String: SpritePalette] = [:]

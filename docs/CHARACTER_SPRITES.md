@@ -336,7 +336,7 @@ look.variants[.top] = "green"                     // 各槽位的换色方案
 gameScene.setAppearance(look, forTraveler: 0)     // 立即重新烘焙生效
 ```
 
-`setAppearance` 遇到找不到的装备 id 会返回 `false`，外观保持不变。底层接口是 `CharacterCatalog.equipment(for:)` → `Equipment`（`equip / unequip / setVariant / setPalette / setBodyPalette`）→ `SpriteBaker.atlas(_:)`。
+`setAppearance` 遇到找不到的装备 id 会返回 `false`，外观保持不变。底层接口是 `CharacterCatalog.equipment(for:)` → `SpriteEquipment`（`equip / unequip / setVariant / setPalette / setBodyPalette`）→ `SpriteBaker.atlas(_:)`。
 
 - **纹理**：一律用 `.nearest` 采样，像素画缩放时不发糊。
 - **性能**：一次换装只烘焙图集用到的 12 帧（3 个方向 × 4 帧），不是全部 40 帧。

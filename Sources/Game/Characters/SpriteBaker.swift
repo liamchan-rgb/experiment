@@ -15,19 +15,19 @@ enum SpriteBaker {
 
     /// 合成一帧，返回该帧的索引色图层
     static func frame(_ entries: [LoadoutEntry], dir: Dir5, col: Int) -> PixelLayer {
-        let layer = PixelLayer(Rig.sprW, Rig.sprH)
+        let layer = PixelLayer(SpriteRig.sprW, SpriteRig.sprH)
         Paperdoll.composeFrame(entries, dir: dir, frame: col, into: layer)
         return layer
     }
 
     /// 兼容游戏现有格式的 4×4 图集（整数倍最近邻放大）
-    static func atlas(_ equipment: Equipment) -> CGImage? {
+    static func atlas(_ equipment: SpriteEquipment) -> CGImage? {
         let entries = equipment.resolve()
-        let S = Rig.spriteScale, w = Rig.sprW, h = Rig.sprH
+        let S = SpriteRig.spriteScale, w = SpriteRig.sprW, h = SpriteRig.sprH
         let size = atlasCell * 4
-        let k = max(1, Int(min(Double(atlasCell - 16) / Double(w), Double(atlasFootY) / (Rig.footY * S + 1)).rounded(.down)))
-        let ox = Int(jsRound(Double(atlasCell) / 2 - Rig.cx * S * Double(k)))
-        let oy = Int(jsRound(Double(atlasFootY) - (Rig.footY * S + 1) * Double(k)))
+        let k = max(1, Int(min(Double(atlasCell - 16) / Double(w), Double(atlasFootY) / (SpriteRig.footY * S + 1)).rounded(.down)))
+        let ox = Int(jsRound(Double(atlasCell) / 2 - SpriteRig.cx * S * Double(k)))
+        let oy = Int(jsRound(Double(atlasFootY) - (SpriteRig.footY * S + 1) * Double(k)))
 
         var cache: [String: [UInt8]] = [:]
         func small(_ dir: Dir5, _ col: Int) -> [UInt8] {
@@ -68,9 +68,9 @@ enum SpriteBaker {
     }
 
     /// 原生 sheet：5 行（S/SE/E/NE/N）× 8 列（待机 0-1、行走 2-7），每格 sprW×sprH
-    static func sheet(_ equipment: Equipment) -> CGImage? {
+    static func sheet(_ equipment: SpriteEquipment) -> CGImage? {
         let entries = equipment.resolve()
-        let w = Rig.sprW, h = Rig.sprH, cols = Rig.framesPerDir
+        let w = SpriteRig.sprW, h = SpriteRig.sprH, cols = SpriteRig.framesPerDir
         var out = [UInt8](repeating: 0, count: w * cols * h * Dir5.allCases.count * 4)
         for (r, dir) in Dir5.allCases.enumerated() {
             for col in 0..<cols {

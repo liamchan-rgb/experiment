@@ -9,7 +9,7 @@ struct SpritePoint {
     var y: Double
 }
 
-enum Light {
+enum SpriteLight {
     /// 光源方向（指向光源，左上偏前）
     static let x = -0.56, y = -0.62, z = 0.55
 }
@@ -33,7 +33,7 @@ func shadeOf(_ v: Double) -> Double {
 }
 
 /// 量化到最近的 1/4 阶（不抖动）
-func tone(_ lam: Double, _ bias: Double = 0) -> Double {
+func spriteTone(_ lam: Double, _ bias: Double = 0) -> Double {
     jsRound(shadeOf(lam + bias) * Shade.sub) / Shade.sub
 }
 
@@ -126,7 +126,7 @@ final class SpriteBrush {
             let nx = (u - cx) / rx, ny = (v - cy) / ry
             let d = nx * nx + ny * ny
             if d > 1 { return -1 }
-            return shade(nx * Light.x + ny * Light.y + (1 - d).squareRoot() * Light.z, nx, ny, u, v)
+            return shade(nx * SpriteLight.x + ny * SpriteLight.y + (1 - d).squareRoot() * SpriteLight.z, nx, ny, u, v)
         }
     }
 
@@ -143,7 +143,7 @@ final class SpriteBrush {
         let len = len2.squareRoot()
         var px = -dy / len, py = dx / len
         if px + py < 0 { px = -px; py = -py }
-        let pl = px * Light.x + py * Light.y
+        let pl = px * SpriteLight.x + py * SpriteLight.y
         let r = max(ra, rb)
         fill(min(ax, bx) - r, min(ay, by) - r, max(ax, bx) + r, max(ay, by) + r) { u, v in
             let t = ((u - ax) * dx + (v - ay) * dy) / len2
@@ -152,7 +152,7 @@ final class SpriteBrush {
             let ex = u - (ax + dx * tc), ey = v - (ay + dy * tc)
             if ex * ex + ey * ey > rr * rr { return -1 }
             let o = max(-1, min(1, (ex * px + ey * py) / rr))
-            return shade(o * pl + (1 - o * o).squareRoot() * Light.z, o, t, u, v)
+            return shade(o * pl + (1 - o * o).squareRoot() * SpriteLight.z, o, t, u, v)
         }
     }
 
@@ -188,12 +188,12 @@ final class SpriteBrush {
                 if px + py < 0 { px = -px; py = -py }
                 bs = (cum[i] + l * tc) / total
                 bo = ex * px + ey * py
-                bl = px * Light.x + py * Light.y
+                bl = px * SpriteLight.x + py * SpriteLight.y
             }
             let hw = halfW(bs)
             if hw <= 0 || best > hw * hw { return -1 }
             let o = max(-1, min(1, bo / hw))
-            return shade(o * bl + (1 - o * o).squareRoot() * Light.z, o, bs, u, v)
+            return shade(o * bl + (1 - o * o).squareRoot() * SpriteLight.z, o, bs, u, v)
         }
     }
 
