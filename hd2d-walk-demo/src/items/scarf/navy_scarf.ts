@@ -35,7 +35,7 @@ export const navyScarf: ItemDef = {
         // 侧面看围巾只比脖子粗一圈，不能按正面宽度画，否则会前后各凸出一截
         const hw = pose.torsoHalf + 2.2 - 1.5 * Math.abs(pose.sin);
         const sx = CX + pose.sin * 0.5;
-        const yc = pose.neckY + 1.5, hh = 2.8;
+        const yc = pose.neckY + 2.1, hh = 2.6; // 颈圈上缘低于下巴，圆下巴不会被切平
         c.pal('main');
         g.grit = 0.26;
         // 颈部一圈：一条厚实的圆筒，上亮下暗，带斜向的褶

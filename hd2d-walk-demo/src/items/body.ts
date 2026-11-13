@@ -47,10 +47,14 @@ function head(c: DrawCtx): void {
   // 头：椭球，下半张脸收窄成下巴；额头落在刘海的阴影里
   g.fill(hx - HEAD_RX - 1, hy - HEAD_RY - 1, hx + HEAD_RX + 1, hy + HEAD_RY + 1, (u, v) => {
     const dx = u - hx, dy = v - hy;
-    const rx = dy > 0 ? HEAD_RX * (1 - 0.17 * (dy / HEAD_RY) * (dy / HEAD_RY)) : HEAD_RX;
-    const nx = dx / rx, ny = dy / HEAD_RY;
-    const d = nx * nx + ny * ny;
-    if (d > 1) return -1;
+    // 圆脸：下巴几乎不收窄，下半张脸短一点；下半部接近正圆，下巴两角是圆弧而不是方角
+    const lower = dy > 0;
+    const rx = lower ? HEAD_RX * (1.05 - 0.05 * (dy / HEAD_RY) * (dy / HEAD_RY)) : HEAD_RX; // 脸颊处略鼓
+    const ry = lower ? HEAD_RY * 0.84 : HEAD_RY; // 下巴的弧线收在围巾上方，才看得出是圆的
+    const nx = dx / rx, ny = dy / ry;
+    const shape = lower ? Math.abs(nx) ** 2 + Math.abs(ny) ** 2.3 : nx * nx + ny * ny;
+    if (shape > 1) return -1;
+    const d = Math.min(1, nx * nx + ny * ny);
     const lam = nx * LX + ny * LY + Math.sqrt(1 - d) * LZ;
     if (dy < -3.4) return DARK; // 刘海的阴影
     // 脸上的过渡要柔：压缩光照范围，只落在 暗部..亮部 之间

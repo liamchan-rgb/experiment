@@ -63,9 +63,9 @@ function buildLocks(): Lock[] {
     out.push({ phi: phi + j(4), a0: 5, a1: len + j(3), twist: 16 + j(9), flick: 1.05 + r() * 0.07, lift: 0, width: 2.9, tier: 0, tint: j(0.22) });
   }
   // 鬓角：垂到下颌，框住脸，发梢向外翘
-  // 鬓角贴在耳朵前后（方位 ±92~110°），侧面不能盖到脸颊上
+  // 鬓角贴在耳朵前后（方位 ±92~110°），侧面不能盖到脸颊上；只垂到脸颊上半，露出下半边圆圆的脸颊
   for (const phi of [94, 110, -94, -110]) {
-    out.push({ phi: phi + j(3), a0: 5, a1: 108 + j(6), twist: j(8), flick: 1.08 + r() * 0.08, lift: 0, width: 2.3, tier: 0, tint: j(0.22) });
+    out.push({ phi: phi + j(3), a0: 5, a1: 94 + j(5), twist: j(8), flick: 1.08 + r() * 0.08, lift: 0, width: 2.3, tier: 0, tint: j(0.22) });
   }
   // 后发：垂到后颈，长短不齐，发梢只微微外翘（翘太多侧面会往后拖出一大截）
   for (const phi of [120, 142, 164, -173, -151, -129]) {
@@ -118,7 +118,7 @@ function profile(s: number): number {
 /** 发际线：某个方位上，发根底色盖到多低的纬度（度） */
 function hairline(phiAbs: number): number {
   if (phiAbs < 70) return 50;
-  if (phiAbs < 100) return 50 + ((phiAbs - 70) / 30) * 62;
+  if (phiAbs < 100) return 50 + ((phiAbs - 70) / 30) * 45; // 耳前：发根只盖到脸颊上半
   return 115 + ((phiAbs - 78) / 102) * 14;
 }
 
