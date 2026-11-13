@@ -52,6 +52,11 @@ final class CharacterSpriteTests: XCTestCase {
             let baked = try XCTUnwrap(SpriteBaker.atlas(try catalog.equipment(for: preset)))
             let exported = try XCTUnwrap(UIImage(named: "Hero\(index + 1)Directions")?.cgImage)
             let diff = Self.difference(Self.rgba(baked), Self.rgba(exported))
+            print("[character-parity] \(preset.id): \(diff.mismatched) / \(diff.opaque) pixels differ from the web export")
+            let attachment = XCTAttachment(image: UIImage(cgImage: baked))
+            attachment.name = "baked-\(preset.id)"
+            attachment.lifetime = .keepAlways
+            add(attachment)
             // 两端浮点数学函数在最后一位上可能有出入，允许极少数像素落到相邻的明暗阶
             XCTAssertLessThan(Double(diff.mismatched), Double(diff.opaque) * 0.02,
                               "\(preset.id): \(diff.mismatched) / \(diff.opaque) 个像素与网页端导出不一致")
