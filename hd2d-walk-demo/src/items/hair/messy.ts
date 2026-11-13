@@ -4,7 +4,7 @@ import type { Pose } from '../../character/rig';
 import type { DrawCtx, ItemDef } from '../../character/types';
 
 /**
- * 蓬松乱发 —— 一缕一缕画出来的。
+ * 蓬松短发 —— 少量宽发束，读成一整块。
  *
  * 把头发看成贴在一个球面上的许多发束：每束从头顶的发旋出发，沿经线往下长到某个纬度，
  * 发梢向外翘一点、朝同一侧拧一点（斜刘海）。按角色朝向把球面投影到屏幕，5 个方向自然一致：
@@ -58,22 +58,24 @@ function buildLocks(): Lock[] {
   const r = rng(77123);
   const j = (amp: number) => (r() * 2 - 1) * amp;
   const out: Lock[] = [];
-  // 刘海：盖住额头但不压住眼睛，整体朝一侧斜；中间一缕长一点
-  for (const [phi, len] of [[-58, 60], [-37, 64], [-16, 71], [5, 62], [26, 65], [48, 60]]) {
-    out.push({ phi: phi + j(4), a0: 5, a1: len + j(3), twist: 16 + j(9), flick: 1.05 + r() * 0.07, lift: 0, width: 2.9, tier: 0, tint: j(0.22) });
+  // 低像素密度下发型越简单越好看：少而宽的几大缕，靠整体受光分出大块亮面和暗面，
+  // 不做一缕一缕深浅不同的细碎层次（那些在 40 像素的头上只会变成噪点）。
+
+  // 刘海：4 缕宽发束盖住额头，整体朝一侧斜；中间一缕略长
+  for (const [phi, len] of [[-48, 64], [-17, 73], [14, 65], [44, 62]]) {
+    out.push({ phi: phi + j(3), a0: 5, a1: len + j(2), twist: 16, flick: 1.06, lift: 0, width: 3.3, tier: 0, tint: 0 });
   }
-  // 鬓角：垂到下颌，框住脸，发梢向外翘
-  // 鬓角贴在耳朵前后（方位 ±92~110°），侧面不能盖到脸颊上；只垂到脸颊上半，露出下半边圆圆的脸颊
-  for (const phi of [94, 110, -94, -110]) {
-    out.push({ phi: phi + j(3), a0: 5, a1: 94 + j(5), twist: j(8), flick: 1.08 + r() * 0.08, lift: 0, width: 2.3, tier: 0, tint: j(0.22) });
+  // 鬓角：左右各一缕，贴在耳前，只垂到脸颊上半
+  for (const phi of [100, -100]) {
+    out.push({ phi, a0: 5, a1: 96, twist: 0, flick: 1.08, lift: 0, width: 3.4, tier: 0, tint: 0 });
   }
-  // 后发：垂到后颈，长短不齐，发梢只微微外翘（翘太多侧面会往后拖出一大截）
-  for (const phi of [120, 142, 164, -173, -151, -129]) {
-    out.push({ phi: phi + j(5), a0: 5, a1: 126 + j(10), twist: j(14), flick: 1.04 + r() * 0.08, lift: 0, width: 3.2, tier: 0, tint: j(0.22) });
+  // 后发：4 缕宽发束垂到后颈，发梢只微微外翘
+  for (const phi of [128, 160, -168, -136]) {
+    out.push({ phi: phi + j(4), a0: 5, a1: 126 + j(6), twist: j(8), flick: 1.06, lift: 0, width: 3.8, tier: 0, tint: 0 });
   }
-  // 上层：短而翘的发束，叠在长发束上面，把轮廓打乱成尖尖的一圈
-  for (let phi = -160; phi <= 180; phi += 45) {
-    out.push({ phi: phi + j(14), a0: 3, a1: 50 + j(12), twist: 12 + j(24), flick: 1.2 + r() * 0.22, lift: 0.05, width: 2.8, tier: 1, tint: j(0.25) });
+  // 头顶三撮短翘发：只为了让轮廓不是一个光滑的圆，明暗和整体一致，不另做层次
+  for (const phi of [-150, -40, 75]) {
+    out.push({ phi, a0: 3, a1: 40, twist: 18, flick: 1.18, lift: 0.04, width: 2.6, tier: 1, tint: 0 });
   }
   // 头顶的呆毛
   out.push({ phi: 30, a0: 0, a1: 34, twist: 40, flick: 1.6, lift: 0.04, width: 0.9, tier: 2, tint: 0 });
@@ -126,8 +128,15 @@ function drawLocks(c: DrawCtx, back: boolean): void {
   const { g, pose } = c;
   const cx = pose.head.x + pose.sin * 0.2, cy = pose.head.y - 1.2;
   c.pal('main');
-  g.grit = 0.2;
+  g.grit = 0.1;
   g.anchor(cx, cy);
+  // 整个头的受光：左上亮、右下暗。头发的明暗主要由它决定，大块面
+  const headLight = (u: number, v: number) => -((u - cx) / RX) * 0.62 + ((cy - v) / RY) * 0.7;
+  // 天使环：画面上一道向两侧下弯的弧形光带，只在受光的左上那一侧出现
+  const ring = (u: number, v: number) => {
+    const x = (u - cx) / RX, y = (cy - v) / RY - 0.16 * x * x;
+    return y > 0.3 && y < 0.46 && headLight(u, v) > 0.12;
+  };
 
   if (!back) {
     // 发根底色：把像素反投影回球面，落在发际线以内的就是头发
@@ -142,7 +151,9 @@ function drawLocks(c: DrawCtx, back: boolean): void {
       const s = X * pose.cos - n * pose.sin, f = X * pose.sin + n * pose.cos;
       const alpha = Math.acos(Math.max(-1, Math.min(1, w))) / RAD;
       const phi = Math.abs(Math.atan2(s, f)) / RAD;
-      return alpha < hairline(phi) ? OUTLINE : -1;
+      // 底色也按整体受光着色（偏暗），发束之间的缝隙不会是一个个黑点
+      if (alpha >= hairline(phi)) return -1;
+      return ring(u, v) ? LIGHT : g.t(headLight(u, v) * 0.9 - 0.55);
     });
   }
 
@@ -156,16 +167,14 @@ function drawLocks(c: DrawCtx, back: boolean): void {
   for (const { k, pts } of items) {
     g.ribbon(pts, (s) => k.width * HS * profile(s), (lam, o, s, u, v) => {
       if (k.tier === 2) return o > 0.2 ? DARK : s > 0.5 ? LIGHT : BASE;
-      // 整个头的受光：左上亮、右下暗
-      const gl = -((u - cx) / RX) * 0.56 + ((cy - v) / RY) * 0.62;
-      let sh = g.t(lam * 0.85 + gl * 0.6 - 0.3 + k.tint + (back ? -0.5 : 0));
-      // 一圈高光带（天使环）：只出现在受光一侧发束的亮面上
-      const alpha = k.a0 + (k.a1 - k.a0) * s;
-      if (!back && alpha > 36 && alpha < 50 && gl > 0.05 && o < -0.05 && o > -0.75 && sh >= BASE) sh = HI;
-      // 每束右下缘一道深色的缝，把相邻发束分开
-      if (o > 0.66) sh = OUTLINE;
-      else if (o > 0.36) sh = Math.max(DARK, sh - 1);
-      if (s > 0.85) sh = Math.max(DARK, sh - 1); // 发梢
+      const gl = headLight(u, v);
+      // 以整体受光为主，发束自身的圆柱光照只占一小部分
+      let sh = g.t(gl * 0.95 + lam * 0.3 - 0.22 + (back ? -0.45 : 0));
+      // 一道干净的高光带（天使环）
+      if (ring(u, v) && o < 0.6) sh = gl > 0.42 ? HI : Math.max(sh + 1, LIGHT + 0.5);
+      // 发束之间只用暗一档的缝分开，不用深描边
+      if (o > 0.72 && s > 0.25) sh = Math.max(OUTLINE + 0.5, sh - 1.5);
+      if (s > 0.9) sh = Math.max(DARK, sh - 0.5); // 发梢略暗
       return sh;
     });
   }
