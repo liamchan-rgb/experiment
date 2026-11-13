@@ -60,6 +60,8 @@ export interface PartDef {
    * 保证不会画到轮廓外。这类部件不描边、不投接触阴影。
    */
   mask?: 'below';
+  /** 本部件压在其他部件上的那段内描边用哪一阶，默认 INNER_LINE（0.75） */
+  innerLine?: number;
 }
 
 /** 围巾尾 / 飘带之类的次级运动定义（运行时由弹簧驱动，不烘焙进 sheet） */

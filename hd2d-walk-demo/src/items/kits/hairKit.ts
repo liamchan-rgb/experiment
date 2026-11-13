@@ -30,6 +30,43 @@ export interface LockData {
   width: number;
   /** 0 发束 / 1 头顶短翘发 / 2 呆毛，默认 0 */
   tier?: number;
+  /** 发梢收尖的指数：越小越尖（0.8 ≈ 尖角，1.7 ≈ 圆钝），默认 1.7 */
+  tip?: number;
+  /** 从发束全长的哪个位置开始收尖，默认 0.55；长发设大一些，发梢以前保持宽度 */
+  taper?: number;
+  /** 发束离开头部后再往下垂多长（单位），用于长发、马尾，默认 0 */
+  drop?: number;
+  /** 下垂段向外张开多少（单位），默认 0 */
+  spread?: number;
+}
+
+/** 发型整体的画法参数（都可不写，默认是最初的简化画法） */
+export interface HairStyle {
+  /** 每束自身的立体明暗权重：大 = 一束一束的体积感强，默认 0.3 */
+  clump?: number;
+  /** 整颗头左上亮右下暗的权重，默认 0.95 */
+  global?: number;
+  /** 一道弧形的天使环高光，默认 true */
+  ring?: boolean;
+  /** 每束受光一侧顺着发束走向的高光条，默认 false */
+  streaks?: boolean;
+  /** 颗粒噪声，默认 0.1 */
+  grit?: number;
+  /** 色阶交界做有序抖动，默认 true；关掉后每束是干净的色块，更像手绘发束 */
+  dither?: boolean;
+  /** 补上发束之间漏出的单个空像素（避免出现黑点），默认 false */
+  closeHoles?: boolean;
+  /** 发束之间的缝最暗压到哪一阶，默认 0.5（接近描边色）；设成 1 只到暗部色，不会出现黑点 */
+  seamFloor?: number;
+  /** 整个发型最暗到哪一阶，默认 0 */
+  floor?: number;
+  /** 发束压在头后发束 / 身体上的那段内描边用哪一阶，默认跟全身一样 0.75；深色头发设大一些，避免出现黑块 */
+  innerLine?: number;
+}
+
+/** 所有发型通用的发色表：Resources/CharacterParts/hair-colors.json */
+export interface HairColorsData {
+  colors: PaletteVariantData[];
 }
 
 export interface PaletteVariantData {
@@ -48,6 +85,7 @@ export interface HairData {
   /** 发际线：[[方位绝对值, 纬度], ...]，按方位分段线性；同一方位出现两次表示在此处跳变 */
   hairline: [number, number][];
   locks: LockData[];
+  style?: HairStyle;
 }
 
 /** 发型整体相对头的大小：头放大时一起放大，发束宽度也跟着变 */
@@ -87,12 +125,22 @@ function lockPath(pose: Pose, cx: number, cy: number, k: Lock, i: number): Proj[
     const rho = 1 + k.lift + (k.flick - 1 + swing * 0.03) * s * s * s;
     pts.push(project(pose, cx, cy, k.a0 + (k.a1 - k.a0 + swing * 2.5) * s, k.phi + (k.twist + swing * 4) * s * s, rho));
   }
+  if (k.drop > 0) {
+    // 长发 / 马尾：离开头部后继续往下垂，向外张开一点，走路时随步子摆
+    const last = pts[N];
+    const out = Math.abs(last.x - cx) < 0.5 ? 0 : Math.sign(last.x - cx);
+    const M = 8;
+    for (let m = 1; m <= M; m++) {
+      const t = m / M;
+      pts.push({ x: last.x + k.spread * out * t * t + swing * 0.9 * t * t, y: last.y + k.drop * t, near: last.near });
+    }
+  }
   return pts;
 }
 
 /** 发束的粗细：根部细，中段最粗，发梢收尖 */
-function profile(s: number): number {
-  return s < 0.55 ? 0.5 + 0.5 * (s / 0.55) : Math.max(0, 1 - Math.pow((s - 0.55) / 0.45, 1.7));
+function profile(s: number, taper = 0.55, tip = 1.7): number {
+  return s < taper ? 0.5 + 0.5 * Math.min(1, s / 0.55) : Math.max(0, 1 - Math.pow((s - taper) / (1 - taper), tip));
 }
 
 /** 发际线分段线性插值 */
@@ -104,11 +152,16 @@ export function hairlineAt(points: [number, number][], phiAbs: number): number {
   return points[points.length - 1][1];
 }
 
-function drawLocks(c: DrawCtx, locks: Lock[], hairline: [number, number][], back: boolean): void {
+/** front：头前面那一侧；back：头后面、被头挡住；behind：头后面且垂下来的长发，画在身体后面 */
+type LockSet = 'front' | 'back' | 'behind';
+
+function drawLocks(c: DrawCtx, locks: Lock[], hairline: [number, number][], set: LockSet, style: Required<HairStyle>): void {
+  const back = set !== 'front';
   const { g, pose } = c;
   const cx = pose.head.x + pose.sin * 0.2, cy = pose.head.y - 1.2;
   c.pal('main');
-  g.grit = 0.1;
+  g.grit = style.grit;
+  g.dither = style.dither;
   g.anchor(cx, cy);
   // 整个头的受光：左上亮、右下暗。头发的明暗主要由它决定，大块面
   const headLight = (u: number, v: number) => -((u - cx) / RX) * 0.62 + ((cy - v) / RY) * 0.7;
@@ -118,7 +171,7 @@ function drawLocks(c: DrawCtx, locks: Lock[], hairline: [number, number][], back
     return y > 0.3 && y < 0.46 && headLight(u, v) > 0.12;
   };
 
-  if (!back) {
+  if (set === 'front') {
     // 发根底色：把像素反投影回球面，落在发际线以内的就是头发
     const rxView = Math.hypot(RX * pose.cos, RZ * pose.sin);
     g.fill(cx - RX, cy - RY, cx + RX, cy + RY, (u, v) => {
@@ -133,7 +186,7 @@ function drawLocks(c: DrawCtx, locks: Lock[], hairline: [number, number][], back
       const phi = Math.abs(Math.atan2(s, f)) / RAD;
       if (alpha >= hairlineAt(hairline, phi)) return -1;
       // 底色也按整体受光着色（偏暗），发束之间的缝隙不会是一个个黑点
-      return ring(u, v) ? LIGHT : g.t(headLight(u, v) * 0.9 - 0.55);
+      return ring(u, v) && style.ring ? LIGHT : Math.max(style.floor, g.t(headLight(u, v) * 0.9 - 0.55));
     });
   }
 
@@ -141,19 +194,28 @@ function drawLocks(c: DrawCtx, locks: Lock[], hairline: [number, number][], back
     const pts = lockPath(pose, cx, cy, k, i);
     return { k, pts, depth: pts[8].near + k.tier * 0.6 };
   })
-    .filter((it) => (it.pts[8].near < -0.12) === back)
+    .filter((it) => {
+      const isBack = it.pts[8].near < -0.12;
+      if (set === 'front') return !isBack;
+      return isBack && (set === 'behind') === it.k.drop > 0;
+    })
     .sort((p, q) => p.depth - q.depth);
 
   for (const { k, pts } of items) {
-    g.ribbon(pts, (s) => k.width * HS * profile(s), (lam, o, s, u, v) => {
+    g.ribbon(pts, (s) => k.width * HS * profile(s, k.taper, k.tip), (lam, o, s, u, v) => {
       if (k.tier === 2) return o > 0.2 ? DARK : s > 0.5 ? LIGHT : BASE;
       const gl = headLight(u, v);
-      // 以整体受光为主，发束自身的圆柱光照只占一小部分
-      let sh = g.t(gl * 0.95 + lam * 0.3 - 0.22 + (back ? -0.45 : 0));
+      // 整颗头的受光 + 发束自身的圆柱光照，比例由 style 决定
+      let sh = g.t(gl * style.global + lam * style.clump - 0.22 + (back ? -0.45 : 0));
       // 一道干净的高光带（天使环）
-      if (ring(u, v) && o < 0.6) sh = gl > 0.42 ? HI : Math.max(sh + 1, LIGHT + 0.5);
+      if (style.ring && ring(u, v) && o < 0.6) sh = gl > 0.42 ? HI : Math.max(sh + 1, LIGHT + 0.5);
+      // 顺着发束走向的高光条：只在受光一侧、发束的上半段
+      if (style.streaks && set === 'front' && o > -0.75 && o < -0.2 && s > 0.08 && s < 0.7 && gl > -0.3) {
+        sh = gl > 0.25 && s > 0.15 && s < 0.45 ? HI : Math.max(sh + 1, LIGHT);
+      }
       // 发束之间只用暗一档的缝分开，不用深描边
-      if (o > 0.72 && s > 0.25) sh = Math.max(OUTLINE + 0.5, sh - 1.5);
+      if (o > 0.72 && s > 0.25) sh = Math.max(style.seamFloor, sh - 1.5);
+      sh = Math.min(HI, Math.max(style.floor, sh)); // 不能超过最亮阶，否则查表越界成黑点
       if (s > 0.9) sh = Math.max(DARK, sh - 0.5); // 发梢略暗
       return sh;
     });
@@ -166,11 +228,15 @@ export function variantPalette(id: string, v: PaletteVariantData): Palette {
   throw new Error(`variant ${id}: needs palette or base`);
 }
 
-export function makeHair(d: HairData): ItemDef {
+export function makeHair(d: HairData, shared: PaletteVariantData[] = []): ItemDef {
   const locks: Lock[] = d.locks.map((k) => ({
-    a0: 5, twist: 0, flick: 1.06, lift: 0, tier: 0, ...k,
+    a0: 5, twist: 0, flick: 1.06, lift: 0, tier: 0, tip: 1.7, taper: 0.55, drop: 0, spread: 0, ...k,
   }));
-  const variants: ItemVariant[] = (d.variants ?? []).map((v) => ({
+  const style: Required<HairStyle> = { clump: 0.3, global: 0.95, ring: true, streaks: false, grit: 0.1, dither: true, closeHoles: false, seamFloor: OUTLINE + 0.5, floor: OUTLINE, innerLine: 0.75, ...d.style };
+  // 发色：发型自带的换色方案 + 通用发色表里它没有的颜色，所以任何发型都能换全部颜色
+  const own = d.variants ?? [];
+  const all = [...own, ...shared.filter((c) => !own.some((v) => v.id === c.id))];
+  const variants: ItemVariant[] = all.map((v) => ({
     id: v.id, name: v.name, palettes: { main: variantPalette(`${d.id}-${v.id}`, v) },
   }));
   return {
@@ -180,8 +246,9 @@ export function makeHair(d: HairData): ItemDef {
     palettes: { main: pal(`${d.id}-main`, ...d.palette) },
     variants,
     parts: [
-      { layer: 'hair_back', draw: (c) => drawLocks(c, locks, d.hairline, true) },
-      { layer: 'hair', draw: (c) => drawLocks(c, locks, d.hairline, false) },
+      { layer: 'cape', innerLine: d.style?.innerLine, draw: (c) => { drawLocks(c, locks, d.hairline, 'behind', style); if (style.closeHoles) c.L.closeHoles(style.seamFloor); } },
+      { layer: 'hair_back', innerLine: d.style?.innerLine, draw: (c) => { drawLocks(c, locks, d.hairline, 'back', style); if (style.closeHoles) c.L.closeHoles(style.seamFloor); } },
+      { layer: 'hair', innerLine: d.style?.innerLine, draw: (c) => { drawLocks(c, locks, d.hairline, 'front', style); if (style.closeHoles) c.L.closeHoles(style.seamFloor); } },
     ],
   };
 }

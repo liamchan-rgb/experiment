@@ -137,6 +137,7 @@ export function composeFrame(entries: LoadoutEntry[], dir: Dir5, frame: number, 
       tmp.outline();
       out.castShadow(tmp, shadowTaps());
     }
-    tmp.drawOnto(out, 0, 0, INNER_LINE);
+    tmp.drawOnto(out, 0, 0, part.innerLine ?? INNER_LINE);
+    if (part.innerLine !== undefined) out.fillInteriorOutlines(part.innerLine, tmp.palettes);
   }
 }

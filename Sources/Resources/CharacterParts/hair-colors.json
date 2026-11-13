@@ -1,0 +1,14 @@
+{
+  "colors": [
+    { "id": "brown", "name": "棕色", "palette": ["#1c100c", "#4a2a1a", "#7c4a2a", "#b47c42", "#ecc27a"] },
+    { "id": "chestnut", "name": "栗红", "palette": ["#1e0c0a", "#4e1e16", "#86362a", "#c0603e", "#f0a070"] },
+    { "id": "black", "name": "墨黑", "palette": ["#08080e", "#1a1a26", "#30323e", "#52566a", "#9098b0"] },
+    { "id": "blonde", "name": "金色", "palette": ["#4a2c10", "#96641e", "#d4a036", "#f2cc5e", "#fff2ac"] },
+    { "id": "silver", "name": "银白", "palette": ["#2e3246", "#6a7088", "#a8b0c2", "#d8dee8", "#ffffff"] },
+    { "id": "red", "name": "赤红", "base": "#b03a26" },
+    { "id": "teal", "name": "青绿", "base": "#2a8e84" },
+    { "id": "navy", "name": "深蓝", "base": "#2c3e7a" },
+    { "id": "pink", "name": "樱粉", "base": "#d77a98" },
+    { "id": "violet", "name": "紫", "base": "#6a4aa8" }
+  ]
+}

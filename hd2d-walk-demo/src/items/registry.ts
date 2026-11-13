@@ -1,5 +1,5 @@
 import type { ItemDef, Slot } from '../character/types';
-import { makeHair, type HairData } from './kits/hairKit';
+import { makeHair, type HairColorsData, type HairData } from './kits/hairKit';
 import { makeFace, type FaceData } from './kits/faceKit';
 
 /**
@@ -11,6 +11,10 @@ const modules = import.meta.glob('./*/*.ts', { eager: true }) as Record<string, 
 const hairFiles = import.meta.glob('../../../Sources/Resources/CharacterParts/hair/*.json', {
   eager: true, import: 'default',
 }) as Record<string, HairData>;
+const colorFiles = import.meta.glob('../../../Sources/Resources/CharacterParts/hair-colors.json', {
+  eager: true, import: 'default',
+}) as Record<string, HairColorsData>;
+const sharedHairColors = Object.values(colorFiles)[0]?.colors ?? [];
 const faceFiles = import.meta.glob('../../../Sources/Resources/CharacterParts/face/*.json', {
   eager: true, import: 'default',
 }) as Record<string, FaceData>;
@@ -29,7 +33,7 @@ for (const path of Object.keys(modules).sort()) {
   if (path.startsWith('./kits/')) continue;
   for (const exported of Object.values(modules[path])) if (isItem(exported)) add(exported, path);
 }
-for (const path of Object.keys(hairFiles).sort()) add(makeHair(hairFiles[path]), path);
+for (const path of Object.keys(hairFiles).sort()) add(makeHair(hairFiles[path], sharedHairColors), path);
 for (const path of Object.keys(faceFiles).sort()) add(makeFace(faceFiles[path]), path);
 
 export function getItem(id: string): ItemDef | undefined {

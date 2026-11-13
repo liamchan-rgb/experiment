@@ -145,9 +145,56 @@ export class PixelLayer {
         const down = y < h - 1 && src[i + w] > 0;
         if (!left && !up && !right && !down) continue;
         // 只挨着右边 / 下边的形状 → 这个描边像素在形状的受光侧
-        const lit = !left && !up;
+        // 两侧都有像素、上方空着的凹口（发尖之间的缝）也按受光处理，不然会在头顶留下一个个黑点
+        const lit = !up && (!left || right);
         idx[i] = shadeCode(lit ? SOFT_OUTLINE : OUTLINE);
         pid[i] = pid[left ? i - 1 : up ? i - w : right ? i + 1 : i + w];
+      }
+    }
+  }
+
+  /**
+   * 补洞：被三面包围、或被左右 / 上下夹住的空像素，用相邻像素的调色板按暗部色补上（做两遍）。
+   * 发束之间常会漏出一两个空像素，不补的话描边会把它们包成一个个黑点。
+   */
+  closeHoles(shade = DARK, passes = 2): void {
+    const { w, h, idx, pid } = this;
+    for (let pass = 0; pass < passes; pass++) {
+      const src = idx.slice();
+      for (let y = 1; y < h - 1; y++) {
+        for (let x = 1; x < w - 1; x++) {
+          const i = y * w + x;
+          if (src[i]) continue;
+          const l = src[i - 1], r = src[i + 1], u = src[i - w], d = src[i + w];
+          const count = (l ? 1 : 0) + (r ? 1 : 0) + (u ? 1 : 0) + (d ? 1 : 0);
+          // 三面包围，或者左右 / 上下两面夹住的细缝
+          if (count < 3 && !(l && r) && !(u && d)) continue;
+          idx[i] = shadeCode(shade);
+          pid[i] = pid[l ? i - 1 : r ? i + 1 : u ? i - w : i + w];
+        }
+      }
+    }
+  }
+
+  /**
+   * 清理内部描边：四邻都不空、且至少两邻是本体像素的描边像素，说明它已经不在轮廓上了
+   * （比如前后两层发束的描边叠在一起），改成 shade 阶。只处理调色板在 only 里的像素，
+   * 不会动到五官里刻意画的深色。
+   */
+  fillInteriorOutlines(shade: number, only: Palette[]): void {
+    const { w, h, idx, pid, palettes } = this;
+    const OUT = shadeCode(OUTLINE), SOFT = shadeCode(SOFT_OUTLINE);
+    const body = (v: number) => v > 0 && v !== OUT && v !== SOFT;
+    const src = idx.slice();
+    for (let y = 1; y < h - 1; y++) {
+      for (let x = 1; x < w - 1; x++) {
+        const i = y * w + x;
+        if ((src[i] !== OUT && src[i] !== SOFT) || !only.includes(palettes[pid[i]])) continue;
+        const n = [src[i - 1], src[i + 1], src[i - w], src[i + w]];
+        // 四邻都不空（不挨着外面），且至少两邻是本体：双层描边里靠内的那一圈也算
+        if (n.every((v) => v > 0) && n.filter(body).length >= 2) {
+          idx[i] = shadeCode(src[i] === OUT ? shade : shade + 0.5);
+        }
       }
     }
   }
