@@ -48,7 +48,7 @@ function cape(c: DrawCtx): void {
     let lam = 0.18 + nx * LX * 0.9 + ridge * 0.75;
     if (t < 0.12) lam -= 0.6; // 肩披投下的阴影
     const dh = hem - v;
-    if (dh > 1.7 && dh < 3) {
+    if (dh > 1.4 && dh < 3.2) {
       c.pal('trim'); // 下摆的金边
       return g.t(lam, 0.25);
     }
@@ -66,12 +66,12 @@ function mantle(c: DrawCtx): void {
     const nx = (u - CX) / hw;
     if (Math.abs(nx) > 1) return -1;
     const top = y0 + 2.9 * (1 - Math.sqrt(1 - nx * nx)); // 圆肩
-    const bottom = yb + 0.7 * Math.cos(nx * hw * 1.7); // 扇形下缘
+    const bottom = yb + 0.7 * Math.cos(nx * hw * 0.9); // 扇形下缘（频率低一点，低密度下才不会碎成一格一格）
     if (v < top || v > bottom) return -1;
     const k = (v - y0) / (yb - y0);
     const lam = nx * LX + (k * 1.5 - 0.75) * LY + Math.sqrt(1 - nx * nx) * LZ * 0.85;
     const db = bottom - v;
-    if (db > 0.8 && db < 1.8) {
+    if (db > 0.6 && db < 2) {
       c.pal('trim'); // 金色滚边
       return g.t(lam, 0.2);
     }
@@ -120,7 +120,7 @@ export const redCloak: ItemDef = {
         if (pose.cos > 0.3) {
           const fx = frontX(c);
           c.pal('trim');
-          g.line(fx, ny + 4.6, fx, ny + 7.6, BASE); // 前襟的金线
+          if (g.S >= 0.8) g.line(fx, ny + 4.6, fx, ny + 7.6, BASE); // 前襟的金线：像素太少时只是噪点，不画
           g.rect(fx - 1.2, ny + 7.8, 2.4, 2.4, (u, v) => (u < fx - 0.4 || v < ny + 8.5 ? HI : DARK)); // 带扣
         } else {
           g.line(CX, ny + 4, CX, ny + 7.6, DARKEN);

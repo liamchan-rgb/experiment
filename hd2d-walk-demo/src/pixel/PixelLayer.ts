@@ -1,4 +1,4 @@
-import { Palette, paletteRGB, shadeCode, OUTLINE, SOFT_OUTLINE, DARK, HI } from './palette';
+import { Palette, paletteRGB, shadeCode, OUTLINE, SOFT_OUTLINE, DARK, HI, SUB } from './palette';
 
 /**
  * 索引色像素图层。
@@ -6,7 +6,7 @@ import { Palette, paletteRGB, shadeCode, OUTLINE, SOFT_OUTLINE, DARK, HI } from 
  * 所有绘制原语都按整数像素落点，不做抗锯齿。
  */
 export class PixelLayer {
-  /** 0 = 空；否则 = shade × 2 + 1（支持半阶） */
+  /** 0 = 空；否则 = shade × SUB + 1（支持 1/SUB 阶） */
   readonly idx: Uint8Array;
   /** 该像素使用的调色板在 palettes 中的下标 */
   readonly pid: Uint8Array;
@@ -55,7 +55,7 @@ export class PixelLayer {
     if (x < 0 || y < 0 || x >= this.w || y >= this.h) return;
     const i = y * this.w + x;
     if (!this.idx[i]) return;
-    const v = (this.idx[i] - 1) / 2;
+    const v = (this.idx[i] - 1) / SUB;
     if (v < DARK || v > HI) return;
     this.idx[i] = shadeCode(Math.max(DARK, Math.min(HI, v + delta)));
   }
@@ -64,7 +64,7 @@ export class PixelLayer {
   get(x: number, y: number): number {
     if (x < 0 || y < 0 || x >= this.w || y >= this.h) return -1;
     const v = this.idx[y * this.w + x];
-    return v ? (v - 1) / 2 : -1;
+    return v ? (v - 1) / SUB : -1;
   }
 
   rect(x: number, y: number, w: number, h: number, shade: number): void {
@@ -149,6 +149,56 @@ export class PixelLayer {
         idx[i] = shadeCode(lit ? SOFT_OUTLINE : OUTLINE);
         pid[i] = pid[left ? i - 1 : up ? i - w : right ? i + 1 : i + w];
       }
+    }
+  }
+
+  /**
+   * 背光侧反光：贴着右缘 / 下缘轮廓的暗部像素提亮一点（来自地面和环境的反射光）。
+   * 形体的明暗就成了 亮 → 暗 → 更暗 → 微亮，比一路暗到描边更有体积。
+   * 在描边之前调用。
+   */
+  bounce(amount = 0.5, lo = 0.6, hi = 1.9): void {
+    const { w, h, idx } = this;
+    const src = idx.slice();
+    for (let y = 0; y < h; y++) {
+      for (let x = 0; x < w; x++) {
+        const i = y * w + x;
+        if (!src[i]) continue;
+        const edge = (x === w - 1 || !src[i + 1]) || (y === h - 1 || !src[i + w]);
+        if (!edge) continue;
+        const v = (src[i] - 1) / SUB;
+        if (v < lo || v > hi) continue;
+        idx[i] = shadeCode(Math.min(hi, v + amount));
+      }
+    }
+  }
+
+  /**
+   * 接触阴影：src（刚画好的上层部件）在本层（已合成的下层）投下一道柔和的阴影。
+   * 光源在左上，所以阴影落在部件的右下方，离得越远越淡。
+   * 只压暗本层原有、且没被 src 盖住的像素；描边色不再变暗。
+   */
+  castShadow(src: PixelLayer, taps: [number, number, number][]): void {
+    const { w, h } = this;
+    const dark = new Float32Array(w * h);
+    for (let y = 0; y < h; y++) {
+      for (let x = 0; x < w; x++) {
+        const v = src.idx[y * w + x];
+        // 描边像素不投影：只算部件本体，阴影边缘才不会多出一圈
+        if (!v || v === shadeCode(OUTLINE) || v === shadeCode(SOFT_OUTLINE)) continue;
+        for (const [dx, dy, k] of taps) {
+          const tx = x + dx, ty = y + dy;
+          if (tx < 0 || ty < 0 || tx >= w || ty >= h) continue;
+          const ti = ty * w + tx;
+          if (dark[ti] < k) dark[ti] = k;
+        }
+      }
+    }
+    for (let i = 0; i < dark.length; i++) {
+      if (!dark[i] || src.idx[i] || !this.idx[i]) continue;
+      const v = (this.idx[i] - 1) / SUB;
+      if (v <= OUTLINE + 0.25 || v > HI) continue;
+      this.idx[i] = shadeCode(Math.max(0.25, v - dark[i]));
     }
   }
 

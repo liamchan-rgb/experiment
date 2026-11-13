@@ -13,9 +13,11 @@ import type { DrawCtx, ItemDef } from '../../character/types';
  */
 
 /** 头发球的半径（比头大一圈，才有蓬松的体积），单位坐标 */
-const RX = 11.6, RY = 11;
+/** 发型整体相对头的大小：头放大时一起放大，发束宽度也跟着变 */
+const HS = 11.6 / 10.4;
+const RX = 11.6 * HS, RY = 11 * HS;
 /** 前后方向的半径：比左右窄，侧面看头才是圆的而不是横着的长条 */
-const RZ = 10.2;
+const RZ = 10.2 * HS;
 /** 镜头俯视的角度：能多看到一点头顶 */
 const TILT = (18 * Math.PI) / 180;
 const CT = Math.cos(TILT), ST = Math.sin(TILT);
@@ -152,7 +154,7 @@ function drawLocks(c: DrawCtx, back: boolean): void {
     .sort((p, q) => p.depth - q.depth);
 
   for (const { k, pts } of items) {
-    g.ribbon(pts, (s) => k.width * profile(s), (lam, o, s, u, v) => {
+    g.ribbon(pts, (s) => k.width * HS * profile(s), (lam, o, s, u, v) => {
       if (k.tier === 2) return o > 0.2 ? DARK : s > 0.5 ? LIGHT : BASE;
       // 整个头的受光：左上亮、右下暗
       const gl = -((u - cx) / RX) * 0.56 + ((cy - v) / RY) * 0.62;

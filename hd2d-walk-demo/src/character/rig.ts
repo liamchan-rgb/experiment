@@ -18,10 +18,10 @@ export const FOOT_Y = 90;
 
 /**
  * 精灵倍率：实际像素 = 单位 × SPRITE_SCALE。
- * 0.8 → 每帧 51×77 像素，角色约 43 像素高：颗粒粗，接近经典 HD-2D 小人的密度；
+ * 0.65 → 每帧 42×62 像素，角色约 36 像素高：颗粒粗，接近经典 HD-2D 小人的密度；
  * 调大就多出细节，装备数据不用改。
  */
-export let SPRITE_SCALE = 0.8;
+export let SPRITE_SCALE = 0.65;
 /** 每帧的像素大小 */
 export let SPR_W = Math.round(UNIT_W * SPRITE_SCALE);
 export let SPR_H = Math.round(UNIT_H * SPRITE_SCALE);
@@ -47,16 +47,16 @@ const TRIG: Record<Dir5, [number, number]> = {
 };
 
 /**
- * 身体比例（从脚底往上的高度，单位）。Q 版约 2.3 头身：头大、身体短、手脚小。
+ * 身体比例（从脚底往上的高度，单位）。Q 版约 2.1 头身：头大、身体短、手脚小。
  */
 const HIP = 16;
 const HAND = 17;
 const SHOULDER = 29;
 const NECK = 30;
-const HEAD = 40.5;
+const HEAD = 41.8;
 /** 头的半径 */
-export const HEAD_RX = 10.4;
-export const HEAD_RY = 9.8;
+export const HEAD_RX = 11.6;
+export const HEAD_RY = 10.9;
 
 /** 俯视带来的纵向错位：离镜头近的点在屏幕上更低 */
 const TILT = 0.35;

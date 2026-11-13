@@ -9,8 +9,8 @@ const blue = pal('jacket-blue', '#0c1430', '#1c3464', '#2f589e', '#5288cc', '#a0
 const trim = pal('trim-white', '#3c4258', '#8088a0', '#c2c4c8', '#ece8dc', '#fffcf2');
 const metal = pal('button-gold', '#3e2408', '#8a5c16', '#d8a430', '#f6d86c', '#fff6c0');
 
-const ROWS = 12.6;
-const HEM = 2;
+const ROWS = 13.2;
+const HEM = 3;
 
 export const travelerJacket: ItemDef = {
   id: 'top_traveler',

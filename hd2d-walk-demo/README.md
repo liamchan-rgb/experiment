@@ -6,7 +6,7 @@
 
 ```bash
 npm install
-npm run dev      # 预览全部套装的 sheet；参数 ?scale=4&s=0.8&weapon=weapon_staff
+npm run dev      # 预览全部套装的 sheet；参数 ?scale=4&s=0.65&weapon=weapon_staff
 npm run export   # 输出到 export/（ios 图集 + 原生 sheet + JSON）
 npm run check    # 类型检查
 ```

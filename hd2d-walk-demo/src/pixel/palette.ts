@@ -21,9 +21,12 @@ export const HI = 4;
 /** 受光侧（左、上）的浅描边：由描边色和暗部色混合得到，不需要在调色板里手写 */
 export const SOFT_OUTLINE = 5;
 
-/** 明暗阶 → 图层里存的编号（1..9 是九阶色，11 是浅描边；0 留给空像素） */
+/** 相邻两个手写色之间细分成几档：4 → 0, 0.25, 0.5, 0.75, 1 … 共 17 阶过渡 */
+export const SUB = 4;
+
+/** 明暗阶 → 图层里存的编号（1..17 是 17 阶色，21 是浅描边；0 留给空像素） */
 export function shadeCode(shade: number): number {
-  return Math.round(shade * 2) + 1;
+  return Math.round(shade * SUB) + 1;
 }
 
 export function pal(id: string, ...colors: string[]): Palette {
@@ -91,20 +94,51 @@ export function ramp(id: string, base: string): Palette {
 
 const rgbCache = new WeakMap<Palette, Uint8Array>();
 
+// ---- OKLab：感知均匀的色彩空间，插值出来的过渡色亮度均匀、色相不发灰 ----
+const toLin = (c: number) => (c <= 0.04045 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4);
+const toSrgb = (c: number) => (c <= 0.0031308 ? c * 12.92 : 1.055 * c ** (1 / 2.4) - 0.055);
+
+function rgbToOklab([r8, g8, b8]: [number, number, number]): [number, number, number] {
+  const r = toLin(r8 / 255), g = toLin(g8 / 255), b = toLin(b8 / 255);
+  const l = Math.cbrt(0.4122214708 * r + 0.5363325363 * g + 0.0514459929 * b);
+  const m = Math.cbrt(0.2119034982 * r + 0.6806995451 * g + 0.1073969566 * b);
+  const s = Math.cbrt(0.0883024619 * r + 0.2817188376 * g + 0.6299787005 * b);
+  return [
+    0.2104542553 * l + 0.793617785 * m - 0.0040720468 * s,
+    1.9779984951 * l - 2.428592205 * m + 0.4505937099 * s,
+    0.0259040371 * l + 0.7827717662 * m - 0.808675766 * s,
+  ];
+}
+
+function oklabToRgb([L, A, B]: [number, number, number]): [number, number, number] {
+  const l = (L + 0.3963377774 * A + 0.2158037573 * B) ** 3;
+  const m = (L - 0.1055613458 * A - 0.0638541728 * B) ** 3;
+  const s = (L - 0.0894841775 * A - 1.291485548 * B) ** 3;
+  const r = 4.0767416621 * l - 3.3077115913 * m + 0.2309699292 * s;
+  const g = -1.2684380046 * l + 2.6097574011 * m - 0.3413193965 * s;
+  const b = -0.0041960863 * l - 0.7034186147 * m + 1.707614701 * s;
+  const to8 = (v: number) => Math.max(0, Math.min(255, Math.round(toSrgb(Math.max(0, Math.min(1, v))) * 255)));
+  return [to8(r), to8(g), to8(b)];
+}
+
 /**
- * 调色板解析成 RGB 字节表（缓存）：下标 = shade × 2。
- * 0,2,4,6,8 是手写的五阶，1,3,5,7 是自动插出的过渡色，10 是浅描边。
+ * 调色板解析成 RGB 字节表（缓存）：下标 = shade × SUB。
+ * 手写的五阶落在 0, 4, 8, 12, 16；中间的过渡色在 OKLab 里插值，
+ * 两端颜色的色相差（暗部偏冷、亮部偏暖）会被平滑地带过去。下标 20 是浅描边。
  */
 export function paletteRGB(p: Palette): Uint8Array {
   let out = rgbCache.get(p);
   if (!out) {
-    out = new Uint8Array(11 * 3);
-    const base = p.colors.map(hexToRgb);
-    for (let i = 0; i < 9; i++) {
-      const a = base[i >> 1], b = base[Math.min(4, (i + 1) >> 1)];
-      for (let k = 0; k < 3; k++) out[i * 3 + k] = Math.round((a[k] + b[k]) / 2);
+    const n = SOFT_OUTLINE * SUB + 1;
+    out = new Uint8Array(n * 3);
+    const base = p.colors.map((c) => rgbToOklab(hexToRgb(c)));
+    for (let i = 0; i <= 4 * SUB; i++) {
+      const k = Math.min(3, Math.floor(i / SUB)), f = i / SUB - k;
+      const a = base[k], b = base[k + 1];
+      out.set(oklabToRgb([a[0] + (b[0] - a[0]) * f, a[1] + (b[1] - a[1]) * f, a[2] + (b[2] - a[2]) * f]), i * 3);
     }
-    for (let k = 0; k < 3; k++) out[30 + k] = Math.round(base[0][k] * 0.55 + base[1][k] * 0.45);
+    const soft = oklabToRgb(base[0].map((v, k) => v * 0.55 + base[1][k] * 0.45) as [number, number, number]);
+    out.set(soft, SOFT_OUTLINE * SUB * 3);
     rgbCache.set(p, out);
   }
   return out;

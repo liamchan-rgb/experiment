@@ -1,6 +1,6 @@
 /**
  * 调试页：把每套预设烘焙出的整张 sprite sheet 放大显示。
- * 打开 /?scale=4&s=0.8&weapon=weapon_staff （scale = 放大倍数，s = 精灵倍率）
+ * 打开 /?scale=4&s=0.65&weapon=weapon_staff （scale = 放大倍数，s = 精灵倍率）
  */
 import { Equipment } from './character/equipment';
 import { bakeSheet } from './pixel/bake';

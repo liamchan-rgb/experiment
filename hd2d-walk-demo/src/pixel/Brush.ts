@@ -1,5 +1,5 @@
 import { PixelLayer } from './PixelLayer';
-import { HI, OUTLINE } from './palette';
+import { HI, OUTLINE, SUB } from './palette';
 
 /**
  * Brush：在「单位坐标」里画连续形状，再落到像素格上。
@@ -18,18 +18,25 @@ export const LIGHTEN = -11;
 export const ERASE = -12;
 
 /**
- * 把光照强度（约 -1..1）量化成明暗阶，精确到半阶（共 9 档过渡）。
- * 最暗的一档直接用描边色：深阴影和轮廓线融成一片，形体更有分量。
+ * 光照强度（约 -1..1）→ 连续的明暗阶 0..4。
+ * 最暗一段从描边色过渡到暗部：深阴影和轮廓融在一起，形体更有分量。
  */
 const TONE_X = [-1.03, -0.41, 0.21, 0.71, 1.09];
-export function tone(lam: number, bias = 0): number {
-  const v = lam + bias;
+export function shadeOf(v: number): number {
   if (v <= TONE_X[0]) return OUTLINE;
   for (let i = 1; i < 5; i++) {
-    if (v < TONE_X[i]) return Math.round((i - 1 + (v - TONE_X[i - 1]) / (TONE_X[i] - TONE_X[i - 1])) * 2) / 2;
+    if (v < TONE_X[i]) return i - 1 + (v - TONE_X[i - 1]) / (TONE_X[i] - TONE_X[i - 1]);
   }
   return HI;
 }
+
+/** 量化到最近的 1/SUB 阶（不抖动）。 */
+export function tone(lam: number, bias = 0): number {
+  return Math.round(shadeOf(lam + bias) * SUB) / SUB;
+}
+
+/** 4×4 Bayer 有序抖动阈值，0..1 */
+const BAYER = [0, 8, 2, 10, 12, 4, 14, 6, 3, 11, 1, 9, 15, 7, 13, 5].map((v) => (v + 0.5) / 16);
 
 /** 整数格点上的哈希噪声，0..1 */
 function hash2(x: number, y: number): number {
@@ -76,9 +83,26 @@ export class Brush {
     return (blotch * 2 - 1) * 0.85 + (hash2(x + 31, y - 17) * 2 - 1) * 0.22;
   }
 
-  /** 带粗粝感的量化：在 fill / ellipse / capsule 等的回调里用它代替 tone() */
+  /**
+   * 是否在相邻两档色之间做有序抖动。开着时色阶交界处是交错的像素，
+   * 而不是一条硬边，过渡更顺，又保留像素画的颗粒。
+   */
+  dither = true;
+
+  /** 自上而下的整体光照渐变幅度（光照单位）：头顶 +vgrad，脚底 −vgrad */
+  vgrad = 0.24;
+
+  /**
+   * 带粗粝感的量化：在 fill / ellipse / capsule 等的回调里用它代替 tone()。
+   * 光照 + 斑块噪声 → 连续明暗阶 → 按 Bayer 阈值落到相邻的两档之一。
+   */
   t(lam: number, bias = 0): number {
-    return tone(lam + this.noise() * this.grit, bias);
+    // 自上而下的整体光照：头顶最亮，往脚下渐暗。大块面上因此有平滑的明暗过渡
+    const vert = this.vgrad * (1 - (2 * this.cj) / this.L.h);
+    const x = shadeOf(lam + bias + vert + this.noise() * this.grit) * SUB;
+    if (!this.dither) return Math.round(x) / SUB;
+    const i = (((this.ci - this.ax) % 4) + 4) % 4, j = (((this.cj - this.ay) % 4) + 4) % 4;
+    return Math.min(4 * SUB, Math.floor(x + BAYER[j * 4 + i])) / SUB;
   }
 
   private put(i: number, j: number, s: number): void {

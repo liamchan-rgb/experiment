@@ -19,6 +19,28 @@ function holdOf(entries: LoadoutEntry[], slot: Slot): Hold | undefined {
   return e ? e.item.hold ?? 'up' : undefined;
 }
 
+/**
+ * 接触阴影的采样点：[dx, dy, 压暗多少阶]（像素）。
+ * 朝右下方投出 1–2 个单位，紧贴处最深，往外渐淡。
+ */
+let tapsCache: { S: number; taps: [number, number, number][] } | undefined;
+function shadowTaps(): [number, number, number][] {
+  if (tapsCache?.S === SPRITE_SCALE) return tapsCache.taps;
+  // 部件自己的描边占掉紧贴的一圈，所以阴影从第 2 像素起才落到下层上
+  const reach = Math.max(2, Math.round(2.8 * SPRITE_SCALE));
+  const taps: [number, number, number][] = [];
+  for (let dy = 0; dy <= reach; dy++) {
+    for (let dx = 0; dx <= reach; dx++) {
+      if (!dx && !dy) continue;
+      const d = Math.hypot(dx * 0.8, dy); // 主要往下投，略偏右
+      if (d > reach) continue;
+      taps.push([dx, dy, 0.85 * (1 - (d - 1) / reach)]);
+    }
+  }
+  tapsCache = { S: SPRITE_SCALE, taps };
+  return taps;
+}
+
 const SLOT_ORDER: (Slot | 'body')[] = [
   'body', 'bottom', 'shoes', 'top', 'bag', 'scarf', 'hair', 'weapon_off', 'weapon_main',
 ];
@@ -90,6 +112,7 @@ export function composeFrame(entries: LoadoutEntry[], dir: Dir5, frame: number, 
     tmp.clear();
     brush.clip = false;
     brush.grit = 0.16;
+    brush.dither = true;
     brush.anchor(CX, pose.neckY); // 默认让噪声纹理跟着上身走
     if (part.frames) {
       const rows = part.frames[dir];
@@ -100,7 +123,11 @@ export function composeFrame(entries: LoadoutEntry[], dir: Dir5, frame: number, 
       }
     }
     part.draw?.(ctx);
-    if (part.outline !== false) tmp.outline();
+    if (part.outline !== false) {
+      tmp.bounce();
+      tmp.outline();
+      out.castShadow(tmp, shadowTaps());
+    }
     tmp.drawOnto(out);
   }
 }
