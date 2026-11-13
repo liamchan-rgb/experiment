@@ -14,6 +14,8 @@ interface Equipped {
  */
 export class Equipment {
   private slots = new Map<Slot, Equipped>();
+  /** 身体调色板的覆盖（比如肤色 skin） */
+  private bodyOverrides: Record<string, Palette> = {};
 
   constructor(private body: ItemDef) {}
 
@@ -42,6 +44,11 @@ export class Equipment {
     }
   }
 
+  /** 替换身体的调色板，目前只有 'skin'（肤色）。五官的嘴和眉跟着一起变。 */
+  setBodyPalette(palette: Palette, key = 'skin'): void {
+    this.bodyOverrides[key] = palette;
+  }
+
   /** 应用装备自带的换色方案。 */
   setVariant(slot: Slot, variantId: string): void {
     const e = this.slots.get(slot);
@@ -56,7 +63,7 @@ export class Equipment {
   resolve(): LoadoutEntry[] {
     const hidden = new Set<Slot>();
     for (const e of this.slots.values()) e.item.hides?.forEach((s) => hidden.add(s));
-    const out: LoadoutEntry[] = [{ slot: 'body', item: this.body, palettes: this.body.palettes }];
+    const out: LoadoutEntry[] = [{ slot: 'body', item: this.body, palettes: { ...this.body.palettes, ...this.bodyOverrides } }];
     for (const slot of SLOTS) {
       const e = this.slots.get(slot);
       if (!e || hidden.has(slot)) continue;

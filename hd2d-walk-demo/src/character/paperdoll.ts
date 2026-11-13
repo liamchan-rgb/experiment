@@ -45,7 +45,7 @@ function shadowTaps(): [number, number, number][] {
 export const INNER_LINE = 0.75;
 
 const SLOT_ORDER: (Slot | 'body')[] = [
-  'body', 'bottom', 'shoes', 'top', 'bag', 'scarf', 'hair', 'weapon_off', 'weapon_main',
+  'body', 'face', 'bottom', 'shoes', 'top', 'bag', 'scarf', 'hair', 'weapon_off', 'weapon_main',
 ];
 
 let tmp = new PixelLayer(SPR_W, SPR_H);
@@ -79,6 +79,8 @@ export function composeFrame(entries: LoadoutEntry[], dir: Dir5, frame: number, 
     armedL: holdOf(entries, 'weapon_off'),
   });
   const cmds: { z: number; order: number; part: PartDef; ctx: DrawCtx }[] = [];
+  // 装备里找不到的调色板键，回落到身体的调色板（比如五官的嘴和眉用 skin，换肤色时一起变）
+  const bodyPalettes = entries.find((e) => e.slot === 'body')?.palettes ?? {};
 
   entries.forEach((entry, ei) => {
     const hand =
@@ -91,7 +93,7 @@ export function composeFrame(entries: LoadoutEntry[], dir: Dir5, frame: number, 
       const ctx: DrawCtx = {
         dir, frame, anim: pose.anim, pose, L: tmp, g: brush, hand,
         pal: (key = 'main') => {
-          tmp.use(entry.palettes[key] ?? fallback);
+          tmp.use(entry.palettes[key] ?? bodyPalettes[key] ?? fallback);
         },
       };
       let layer: LayerId;
@@ -126,6 +128,10 @@ export function composeFrame(entries: LoadoutEntry[], dir: Dir5, frame: number, 
       }
     }
     part.draw?.(ctx);
+    if (part.mask === 'below') {
+      tmp.drawOnto(out, 0, 0, undefined, true);
+      continue;
+    }
     if (part.outline !== false) {
       tmp.bounce();
       tmp.outline();

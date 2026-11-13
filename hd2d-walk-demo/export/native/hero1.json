@@ -1,5 +1,5 @@
 {
- "name": "red_cloak_unarmed",
+ "name": "hero1",
  "spriteScale": 0.65,
  "frameSize": {
   "w": 42,
@@ -43,33 +43,48 @@
  },
  "equipment": [
   {
+   "slot": "face",
+   "id": "face_round",
+   "palettes": {
+    "eye": "face_round-eye",
+    "blush": "face_round-blush"
+   }
+  },
+  {
    "slot": "hair",
    "id": "hair_messy",
    "palettes": {
-    "main": "hair-brown"
+    "main": "hair_messy-main"
    }
   },
   {
    "slot": "top",
-   "id": "top_red_cloak",
+   "id": "top_traveler",
    "palettes": {
-    "main": "cloak-red",
-    "trim": "trim-gold",
-    "belt": "belt-leather"
+    "main": "jacket-blue",
+    "trim": "trim-white",
+    "metal": "button-gold"
    }
   },
   {
    "slot": "bottom",
    "id": "bottom_trousers",
    "palettes": {
-    "main": "trousers-brown"
+    "main": "trousers-dark"
    }
   },
   {
    "slot": "shoes",
    "id": "shoes_boots",
    "palettes": {
-    "main": "boots-black"
+    "main": "boots-brown"
+   }
+  },
+  {
+   "slot": "scarf",
+   "id": "scarf_navy",
+   "palettes": {
+    "main": "scarf-navy"
    }
   },
   {
@@ -78,6 +93,15 @@
    "palettes": {
     "main": "satchel-leather",
     "metal": "satchel-brass"
+   }
+  },
+  {
+   "slot": "weapon_main",
+   "id": "weapon_short_sword",
+   "palettes": {
+    "blade": "steel",
+    "hilt": "hilt-gold",
+    "grip": "grip-leather"
    }
   }
  ],
@@ -88,9 +112,9 @@
     "col": 0,
     "bob": 0,
     "hand_R": {
-     "x": 15.73,
-     "y": 47.81,
-     "angle": -1.72,
+     "x": 15.08,
+     "y": 47.07,
+     "angle": 2.14,
      "weaponFront": true
     },
     "hand_L": {
@@ -98,6 +122,11 @@
      "y": 47.44,
      "angle": -1.42,
      "weaponFront": true
+    },
+    "scarfTail": {
+     "x": 22.36,
+     "y": 38.14,
+     "front": false
     }
    },
    {
@@ -105,9 +134,9 @@
     "col": 1,
     "bob": 1,
     "hand_R": {
-     "x": 15.73,
-     "y": 48.46,
-     "angle": -1.72,
+     "x": 15.08,
+     "y": 47.72,
+     "angle": 2.14,
      "weaponFront": true
     },
     "hand_L": {
@@ -115,6 +144,11 @@
      "y": 48.09,
      "angle": -1.42,
      "weaponFront": true
+    },
+    "scarfTail": {
+     "x": 22.36,
+     "y": 38.79,
+     "front": false
     }
    },
    {
@@ -122,9 +156,9 @@
     "col": 2,
     "bob": 0,
     "hand_R": {
-     "x": 15.73,
-     "y": 46.9,
-     "angle": -1.72,
+     "x": 15.08,
+     "y": 46.88,
+     "angle": 2.14,
      "weaponFront": true
     },
     "hand_L": {
@@ -132,6 +166,11 @@
      "y": 47.92,
      "angle": -1.42,
      "weaponFront": true
+    },
+    "scarfTail": {
+     "x": 22.36,
+     "y": 38.14,
+     "front": false
     }
    },
    {
@@ -139,9 +178,9 @@
     "col": 3,
     "bob": 1,
     "hand_R": {
-     "x": 15.73,
-     "y": 46.82,
-     "angle": -1.72,
+     "x": 15.08,
+     "y": 47.35,
+     "angle": 2.14,
      "weaponFront": true
     },
     "hand_L": {
@@ -149,6 +188,11 @@
      "y": 48.87,
      "angle": -1.42,
      "weaponFront": true
+    },
+    "scarfTail": {
+     "x": 22.36,
+     "y": 38.79,
+     "front": false
     }
    },
    {
@@ -156,9 +200,9 @@
     "col": 4,
     "bob": 0,
     "hand_R": {
-     "x": 15.73,
-     "y": 46.9,
-     "angle": -1.72,
+     "x": 15.08,
+     "y": 46.88,
+     "angle": 2.14,
      "weaponFront": true
     },
     "hand_L": {
@@ -166,6 +210,11 @@
      "y": 47.92,
      "angle": -1.42,
      "weaponFront": true
+    },
+    "scarfTail": {
+     "x": 22.36,
+     "y": 38.14,
+     "front": false
     }
    },
    {
@@ -173,9 +222,9 @@
     "col": 5,
     "bob": 0,
     "hand_R": {
-     "x": 15.73,
-     "y": 47.92,
-     "angle": -1.72,
+     "x": 15.08,
+     "y": 47.25,
+     "angle": 2.14,
      "weaponFront": true
     },
     "hand_L": {
@@ -183,6 +232,11 @@
      "y": 46.9,
      "angle": -1.42,
      "weaponFront": true
+    },
+    "scarfTail": {
+     "x": 22.36,
+     "y": 38.14,
+     "front": false
     }
    },
    {
@@ -190,9 +244,9 @@
     "col": 6,
     "bob": 1,
     "hand_R": {
-     "x": 15.73,
-     "y": 48.87,
-     "angle": -1.72,
+     "x": 15.08,
+     "y": 48.08,
+     "angle": 2.14,
      "weaponFront": true
     },
     "hand_L": {
@@ -200,6 +254,11 @@
      "y": 46.82,
      "angle": -1.42,
      "weaponFront": true
+    },
+    "scarfTail": {
+     "x": 22.36,
+     "y": 38.79,
+     "front": false
     }
    },
    {
@@ -207,9 +266,9 @@
     "col": 7,
     "bob": 0,
     "hand_R": {
-     "x": 15.73,
-     "y": 47.92,
-     "angle": -1.72,
+     "x": 15.08,
+     "y": 47.25,
+     "angle": 2.14,
      "weaponFront": true
     },
     "hand_L": {
@@ -217,6 +276,11 @@
      "y": 46.9,
      "angle": -1.42,
      "weaponFront": true
+    },
+    "scarfTail": {
+     "x": 22.36,
+     "y": 38.14,
+     "front": false
     }
    }
   ],
@@ -226,9 +290,9 @@
     "col": 0,
     "bob": 0,
     "hand_R": {
-     "x": 18.23,
-     "y": 48.92,
-     "angle": -1.6,
+     "x": 17.95,
+     "y": 48.31,
+     "angle": 1.44,
      "weaponFront": true
     },
     "hand_L": {
@@ -236,6 +300,11 @@
      "y": 46.17,
      "angle": -1.4,
      "weaponFront": false
+    },
+    "scarfTail": {
+     "x": 19.51,
+     "y": 38.1,
+     "front": false
     }
    },
    {
@@ -243,9 +312,9 @@
     "col": 1,
     "bob": 1,
     "hand_R": {
-     "x": 18.23,
-     "y": 49.57,
-     "angle": -1.6,
+     "x": 17.95,
+     "y": 48.96,
+     "angle": 1.44,
      "weaponFront": true
     },
     "hand_L": {
@@ -253,6 +322,11 @@
      "y": 46.82,
      "angle": -1.4,
      "weaponFront": false
+    },
+    "scarfTail": {
+     "x": 19.51,
+     "y": 38.75,
+     "front": false
     }
    },
    {
@@ -260,9 +334,9 @@
     "col": 2,
     "bob": 0,
     "hand_R": {
-     "x": 16.55,
-     "y": 48.25,
-     "angle": -1.6,
+     "x": 17.58,
+     "y": 48.18,
+     "angle": 1.44,
      "weaponFront": true
     },
     "hand_L": {
@@ -270,6 +344,11 @@
      "y": 46.47,
      "angle": -1.4,
      "weaponFront": false
+    },
+    "scarfTail": {
+     "x": 19.51,
+     "y": 38.1,
+     "front": false
     }
    },
    {
@@ -277,9 +356,9 @@
     "col": 3,
     "bob": 1,
     "hand_R": {
-     "x": 15.51,
-     "y": 48.32,
-     "angle": -1.6,
+     "x": 17.21,
+     "y": 48.7,
+     "angle": 1.44,
      "weaponFront": true
     },
     "hand_L": {
@@ -287,6 +366,11 @@
      "y": 47.26,
      "angle": -1.4,
      "weaponFront": false
+    },
+    "scarfTail": {
+     "x": 19.51,
+     "y": 38.75,
+     "front": false
     }
    },
    {
@@ -294,9 +378,9 @@
     "col": 4,
     "bob": 0,
     "hand_R": {
-     "x": 16.55,
-     "y": 48.25,
-     "angle": -1.6,
+     "x": 17.58,
+     "y": 48.18,
+     "angle": 1.44,
      "weaponFront": true
     },
     "hand_L": {
@@ -304,6 +388,11 @@
      "y": 46.47,
      "angle": -1.4,
      "weaponFront": false
+    },
+    "scarfTail": {
+     "x": 19.51,
+     "y": 38.1,
+     "front": false
     }
    },
    {
@@ -311,9 +400,9 @@
     "col": 5,
     "bob": 0,
     "hand_R": {
-     "x": 18.62,
-     "y": 48.98,
-     "angle": -1.6,
+     "x": 18.32,
+     "y": 48.44,
+     "angle": 1.44,
      "weaponFront": true
     },
     "hand_L": {
@@ -321,6 +410,11 @@
      "y": 45.74,
      "angle": -1.4,
      "weaponFront": false
+    },
+    "scarfTail": {
+     "x": 19.51,
+     "y": 38.1,
+     "front": false
     }
    },
    {
@@ -328,9 +422,9 @@
     "col": 6,
     "bob": 1,
     "hand_R": {
-     "x": 19.65,
-     "y": 49.77,
-     "angle": -1.6,
+     "x": 18.69,
+     "y": 49.22,
+     "angle": 1.44,
      "weaponFront": true
     },
     "hand_L": {
@@ -338,6 +432,11 @@
      "y": 45.81,
      "angle": -1.4,
      "weaponFront": false
+    },
+    "scarfTail": {
+     "x": 19.51,
+     "y": 38.75,
+     "front": false
     }
    },
    {
@@ -345,9 +444,9 @@
     "col": 7,
     "bob": 0,
     "hand_R": {
-     "x": 18.62,
-     "y": 48.98,
-     "angle": -1.6,
+     "x": 18.32,
+     "y": 48.44,
+     "angle": 1.44,
      "weaponFront": true
     },
     "hand_L": {
@@ -355,6 +454,11 @@
      "y": 45.74,
      "angle": -1.4,
      "weaponFront": false
+    },
+    "scarfTail": {
+     "x": 19.51,
+     "y": 38.1,
+     "front": false
     }
    }
   ],
@@ -364,9 +468,9 @@
     "col": 0,
     "bob": 0,
     "hand_R": {
-     "x": 22.23,
-     "y": 49.09,
-     "angle": -1.46,
+     "x": 22.49,
+     "y": 48.48,
+     "angle": 0.84,
      "weaponFront": true
     },
     "hand_L": {
@@ -374,6 +478,11 @@
      "y": 45.62,
      "angle": -1.47,
      "weaponFront": false
+    },
+    "scarfTail": {
+     "x": 17.42,
+     "y": 38.78,
+     "front": false
     }
    },
    {
@@ -381,9 +490,9 @@
     "col": 1,
     "bob": 1,
     "hand_R": {
-     "x": 22.23,
-     "y": 49.74,
-     "angle": -1.46,
+     "x": 22.49,
+     "y": 49.13,
+     "angle": 0.84,
      "weaponFront": true
     },
     "hand_L": {
@@ -391,6 +500,11 @@
      "y": 46.27,
      "angle": -1.47,
      "weaponFront": false
+    },
+    "scarfTail": {
+     "x": 17.42,
+     "y": 39.43,
+     "front": false
     }
    },
    {
@@ -398,9 +512,9 @@
     "col": 2,
     "bob": 0,
     "hand_R": {
-     "x": 19.86,
-     "y": 49.01,
-     "angle": -1.46,
+     "x": 21.97,
+     "y": 48.48,
+     "angle": 0.84,
      "weaponFront": true
     },
     "hand_L": {
@@ -408,6 +522,11 @@
      "y": 45.46,
      "angle": -1.47,
      "weaponFront": false
+    },
+    "scarfTail": {
+     "x": 17.42,
+     "y": 38.78,
+     "front": false
     }
    },
    {
@@ -415,9 +534,9 @@
     "col": 3,
     "bob": 1,
     "hand_R": {
-     "x": 18.4,
-     "y": 49.44,
-     "angle": -1.46,
+     "x": 21.45,
+     "y": 49.13,
+     "angle": 0.84,
      "weaponFront": true
     },
     "hand_L": {
@@ -425,6 +544,11 @@
      "y": 45.89,
      "angle": -1.47,
      "weaponFront": false
+    },
+    "scarfTail": {
+     "x": 17.42,
+     "y": 39.43,
+     "front": false
     }
    },
    {
@@ -432,9 +556,9 @@
     "col": 4,
     "bob": 0,
     "hand_R": {
-     "x": 19.86,
-     "y": 49.01,
-     "angle": -1.46,
+     "x": 21.97,
+     "y": 48.48,
+     "angle": 0.84,
      "weaponFront": true
     },
     "hand_L": {
@@ -442,6 +566,11 @@
      "y": 45.46,
      "angle": -1.47,
      "weaponFront": false
+    },
+    "scarfTail": {
+     "x": 17.42,
+     "y": 38.78,
+     "front": false
     }
    },
    {
@@ -449,9 +578,9 @@
     "col": 5,
     "bob": 0,
     "hand_R": {
-     "x": 22.78,
-     "y": 49.01,
-     "angle": -1.46,
+     "x": 23.01,
+     "y": 48.48,
+     "angle": 0.84,
      "weaponFront": true
     },
     "hand_L": {
@@ -459,6 +588,11 @@
      "y": 45.46,
      "angle": -1.47,
      "weaponFront": false
+    },
+    "scarfTail": {
+     "x": 17.42,
+     "y": 38.78,
+     "front": false
     }
    },
    {
@@ -466,9 +600,9 @@
     "col": 6,
     "bob": 1,
     "hand_R": {
-     "x": 24.24,
-     "y": 49.44,
-     "angle": -1.46,
+     "x": 23.53,
+     "y": 49.13,
+     "angle": 0.84,
      "weaponFront": true
     },
     "hand_L": {
@@ -476,6 +610,11 @@
      "y": 45.89,
      "angle": -1.47,
      "weaponFront": false
+    },
+    "scarfTail": {
+     "x": 17.42,
+     "y": 39.43,
+     "front": false
     }
    },
    {
@@ -483,9 +622,9 @@
     "col": 7,
     "bob": 0,
     "hand_R": {
-     "x": 22.78,
-     "y": 49.01,
-     "angle": -1.46,
+     "x": 23.01,
+     "y": 48.48,
+     "angle": 0.84,
      "weaponFront": true
     },
     "hand_L": {
@@ -493,6 +632,11 @@
      "y": 45.46,
      "angle": -1.47,
      "weaponFront": false
+    },
+    "scarfTail": {
+     "x": 17.42,
+     "y": 38.78,
+     "front": false
     }
    }
   ],
@@ -502,9 +646,9 @@
     "col": 0,
     "bob": 0,
     "hand_R": {
-     "x": 25.4,
-     "y": 48.21,
-     "angle": -1.39,
+     "x": 26.04,
+     "y": 47.47,
+     "angle": 0.56,
      "weaponFront": true
     },
     "hand_L": {
@@ -512,6 +656,11 @@
      "y": 46.1,
      "angle": -1.6,
      "weaponFront": false
+    },
+    "scarfTail": {
+     "x": 17.31,
+     "y": 39.78,
+     "front": true
     }
    },
    {
@@ -519,9 +668,9 @@
     "col": 1,
     "bob": 1,
     "hand_R": {
-     "x": 25.4,
-     "y": 48.86,
-     "angle": -1.39,
+     "x": 26.04,
+     "y": 48.12,
+     "angle": 0.56,
      "weaponFront": true
     },
     "hand_L": {
@@ -529,6 +678,11 @@
      "y": 46.75,
      "angle": -1.6,
      "weaponFront": false
+    },
+    "scarfTail": {
+     "x": 17.31,
+     "y": 40.43,
+     "front": true
     }
    },
    {
@@ -536,9 +690,9 @@
     "col": 2,
     "bob": 0,
     "hand_R": {
-     "x": 23.72,
-     "y": 48.72,
-     "angle": -1.39,
+     "x": 25.67,
+     "y": 47.6,
+     "angle": 0.56,
      "weaponFront": true
     },
     "hand_L": {
@@ -546,6 +700,11 @@
      "y": 45.49,
      "angle": -1.6,
      "weaponFront": false
+    },
+    "scarfTail": {
+     "x": 17.31,
+     "y": 39.78,
+     "front": true
     }
    },
    {
@@ -553,9 +712,9 @@
     "col": 3,
     "bob": 1,
     "hand_R": {
-     "x": 22.68,
-     "y": 49.51,
-     "angle": -1.39,
+     "x": 25.3,
+     "y": 48.38,
+     "angle": 0.56,
      "weaponFront": true
     },
     "hand_L": {
@@ -563,6 +722,11 @@
      "y": 45.55,
      "angle": -1.6,
      "weaponFront": false
+    },
+    "scarfTail": {
+     "x": 17.31,
+     "y": 40.43,
+     "front": true
     }
    },
    {
@@ -570,9 +734,9 @@
     "col": 4,
     "bob": 0,
     "hand_R": {
-     "x": 23.72,
-     "y": 48.72,
-     "angle": -1.39,
+     "x": 25.67,
+     "y": 47.6,
+     "angle": 0.56,
      "weaponFront": true
     },
     "hand_L": {
@@ -580,6 +744,11 @@
      "y": 45.49,
      "angle": -1.6,
      "weaponFront": false
+    },
+    "scarfTail": {
+     "x": 17.31,
+     "y": 39.78,
+     "front": true
     }
    },
    {
@@ -587,9 +756,9 @@
     "col": 5,
     "bob": 0,
     "hand_R": {
-     "x": 25.79,
-     "y": 47.99,
-     "angle": -1.39,
+     "x": 26.41,
+     "y": 47.34,
+     "angle": 0.56,
      "weaponFront": true
     },
     "hand_L": {
@@ -597,6 +766,11 @@
      "y": 46.21,
      "angle": -1.6,
      "weaponFront": false
+    },
+    "scarfTail": {
+     "x": 17.31,
+     "y": 39.78,
+     "front": true
     }
    },
    {
@@ -604,9 +778,9 @@
     "col": 6,
     "bob": 1,
     "hand_R": {
-     "x": 26.82,
-     "y": 48.06,
-     "angle": -1.39,
+     "x": 26.78,
+     "y": 47.86,
+     "angle": 0.56,
      "weaponFront": true
     },
     "hand_L": {
@@ -614,6 +788,11 @@
      "y": 47,
      "angle": -1.6,
      "weaponFront": false
+    },
+    "scarfTail": {
+     "x": 17.31,
+     "y": 40.43,
+     "front": true
     }
    },
    {
@@ -621,9 +800,9 @@
     "col": 7,
     "bob": 0,
     "hand_R": {
-     "x": 25.79,
-     "y": 47.99,
-     "angle": -1.39,
+     "x": 26.41,
+     "y": 47.34,
+     "angle": 0.56,
      "weaponFront": true
     },
     "hand_L": {
@@ -631,6 +810,11 @@
      "y": 46.21,
      "angle": -1.6,
      "weaponFront": false
+    },
+    "scarfTail": {
+     "x": 17.31,
+     "y": 39.78,
+     "front": true
     }
    }
   ],
@@ -640,9 +824,9 @@
     "col": 0,
     "bob": 0,
     "hand_R": {
-     "x": 25.87,
-     "y": 46.81,
-     "angle": -1.43,
+     "x": 26.52,
+     "y": 45.88,
+     "angle": 0.57,
      "weaponFront": false
     },
     "hand_L": {
@@ -650,6 +834,11 @@
      "y": 47.35,
      "angle": -1.71,
      "weaponFront": false
+    },
+    "scarfTail": {
+     "x": 19.24,
+     "y": 40.51,
+     "front": true
     }
    },
    {
@@ -657,9 +846,9 @@
     "col": 1,
     "bob": 1,
     "hand_R": {
-     "x": 25.87,
-     "y": 47.46,
-     "angle": -1.43,
+     "x": 26.52,
+     "y": 46.53,
+     "angle": 0.57,
      "weaponFront": false
     },
     "hand_L": {
@@ -667,6 +856,11 @@
      "y": 48,
      "angle": -1.71,
      "weaponFront": false
+    },
+    "scarfTail": {
+     "x": 19.24,
+     "y": 41.16,
+     "front": true
     }
    },
    {
@@ -674,9 +868,9 @@
     "col": 2,
     "bob": 0,
     "hand_R": {
-     "x": 25.87,
-     "y": 47.56,
-     "angle": -1.43,
+     "x": 26.52,
+     "y": 46.07,
+     "angle": 0.57,
      "weaponFront": false
     },
     "hand_L": {
@@ -684,6 +878,11 @@
      "y": 46.54,
      "angle": -1.71,
      "weaponFront": false
+    },
+    "scarfTail": {
+     "x": 19.24,
+     "y": 40.51,
+     "front": true
     }
    },
    {
@@ -691,9 +890,9 @@
     "col": 3,
     "bob": 1,
     "hand_R": {
-     "x": 25.87,
-     "y": 48.5,
-     "angle": -1.43,
+     "x": 26.52,
+     "y": 46.9,
+     "angle": 0.57,
      "weaponFront": false
     },
     "hand_L": {
@@ -701,6 +900,11 @@
      "y": 46.46,
      "angle": -1.71,
      "weaponFront": false
+    },
+    "scarfTail": {
+     "x": 19.24,
+     "y": 41.16,
+     "front": true
     }
    },
    {
@@ -708,9 +912,9 @@
     "col": 4,
     "bob": 0,
     "hand_R": {
-     "x": 25.87,
-     "y": 47.56,
-     "angle": -1.43,
+     "x": 26.52,
+     "y": 46.07,
+     "angle": 0.57,
      "weaponFront": false
     },
     "hand_L": {
@@ -718,6 +922,11 @@
      "y": 46.54,
      "angle": -1.71,
      "weaponFront": false
+    },
+    "scarfTail": {
+     "x": 19.24,
+     "y": 40.51,
+     "front": true
     }
    },
    {
@@ -725,9 +934,9 @@
     "col": 5,
     "bob": 0,
     "hand_R": {
-     "x": 25.87,
-     "y": 46.54,
-     "angle": -1.43,
+     "x": 26.52,
+     "y": 45.7,
+     "angle": 0.57,
      "weaponFront": false
     },
     "hand_L": {
@@ -735,6 +944,11 @@
      "y": 47.56,
      "angle": -1.71,
      "weaponFront": false
+    },
+    "scarfTail": {
+     "x": 19.24,
+     "y": 40.51,
+     "front": true
     }
    },
    {
@@ -742,9 +956,9 @@
     "col": 6,
     "bob": 1,
     "hand_R": {
-     "x": 25.87,
-     "y": 46.46,
-     "angle": -1.43,
+     "x": 26.52,
+     "y": 46.17,
+     "angle": 0.57,
      "weaponFront": false
     },
     "hand_L": {
@@ -752,6 +966,11 @@
      "y": 48.5,
      "angle": -1.71,
      "weaponFront": false
+    },
+    "scarfTail": {
+     "x": 19.24,
+     "y": 41.16,
+     "front": true
     }
    },
    {
@@ -759,9 +978,9 @@
     "col": 7,
     "bob": 0,
     "hand_R": {
-     "x": 25.87,
-     "y": 46.54,
-     "angle": -1.43,
+     "x": 26.52,
+     "y": 45.7,
+     "angle": 0.57,
      "weaponFront": false
     },
     "hand_L": {
@@ -769,8 +988,25 @@
      "y": 47.56,
      "angle": -1.71,
      "weaponFront": false
+    },
+    "scarfTail": {
+     "x": 19.24,
+     "y": 40.51,
+     "front": true
     }
    }
   ]
- ]
+ ],
+ "scarfTail": {
+  "segments": 7,
+  "segmentLength": 1.76,
+  "palette": [
+   "#05081a",
+   "#111c44",
+   "#22346e",
+   "#3c549c",
+   "#7c94d4"
+  ],
+  "note": "运行时弹簧链，算法见 src/character/scarfPhysics.ts"
+ }
 }

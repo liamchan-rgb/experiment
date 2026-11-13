@@ -8,9 +8,14 @@ import { armLayer, armOf, drawArm, farBias, torsoShape } from './shared';
  * 身体底模（皮肤 + 脸）。不属于任何装备槽位，永远在最底下。
  */
 const skin = pal('skin', '#4a2620', '#a86450', '#dc9e7c', '#f4caa2', '#fff0d6');
-/** 0 眼线  1 瞳孔  2 虹膜  3 虹膜亮部  4 眼白 / 高光 */
-const eye = pal('eye', '#17101e', '#1e3a5c', '#3e9aa8', '#8ad8d8', '#ffffff');
-const blushPal = pal('blush', '#a85048', '#cc7466', '#e08a78', '#f0a894', '#fcd0c8');
+
+/** 可选肤色：Equipment.setBodyPalette(SKIN_TONES.tan) */
+export const SKIN_TONES = {
+  fair: skin,
+  light: pal('skin-light', '#54302a', '#bc7c66', '#eab896', '#fadcbe', '#fff4e4'),
+  tan: pal('skin-tan', '#3a1e14', '#8a4e34', '#c07a52', '#e0a476', '#f6d0a8'),
+  deep: pal('skin-deep', '#24120c', '#5a3020', '#8a5236', '#b47a54', '#dcaa82'),
+};
 
 function arm(side: 'R' | 'L'): PartDef {
   return {
@@ -26,12 +31,6 @@ function arm(side: 'R' | 'L'): PartDef {
     },
   };
 }
-
-// 眼睛：一格一格摆（一格 = 一个像素）。0 眼线 1 瞳孔 2 虹膜 3 虹膜亮部 4 高光
-const EYE_L = ['000', '041', '012', '.23'];
-const EYE_R = ['000', '140', '210', '32.'];
-const EYE_SIDE = ['00', '41', '12', '23'];
-const EYE_FAR = ['00', '01', '12', '.2'];
 
 function head(c: DrawCtx): void {
   const { g, pose, dir } = c;
@@ -61,45 +60,14 @@ function head(c: DrawCtx): void {
     return Math.max(DARK, Math.min(LIGHT, g.t(lam * 0.62, 0.2)));
   });
 
-  // 五官按像素格摆，保证大小固定、左右对称。
-  // 只画在脸已有的像素上（clip）：落到轮廓外的像素会被自动描边包一圈，变成脸上鼓出的小包。
+  // 五官（眼、眉、嘴、腮红）在 face 槽位，见 items/kits/faceKit.ts。
+  // 这里只画属于头型本身的东西：侧面鼻子的阴影和耳朵。只画在脸已有的像素上（clip）。
   g.clip = true;
-  const S = g.S, k = Math.max(1, Math.round(S));
-  const px = Math.round(hx * S), py = Math.round((hy + 0.4) * S);
-  const dot = (i: number, j: number, sh: number) => g.cellsPx([String(sh)], px + i * k, py + j * k);
-  if (dir === 'S') {
-    c.pal('eye');
-    g.cellsPx(EYE_L, px - 5 * k, py);
-    g.cellsPx(EYE_R, px + 3 * k, py);
-    c.pal('blush');
-    dot(-6, 4, 2); dot(-5, 4, 2);
-    dot(5, 4, 2); dot(6, 4, 2);
-    c.pal('skin');
-    dot(0, 5, 1); // 嘴（正面的对称轴在 px + 0.5，单像素的嘴正好居中）
-    dot(-5, -2, 1); dot(-4, -2, 1); dot(-3, -1, 1); // 眉
-    dot(5, -2, 1); dot(4, -2, 1); dot(3, -1, 1);
-  } else if (dir === 'SE') {
-    c.pal('eye');
-    g.cellsPx(EYE_L, px - 2 * k, py);
-    g.cellsPx(EYE_FAR, px + 5 * k, py);
-    c.pal('blush');
-    dot(-3, 4, 2); dot(-2, 4, 2);
-    c.pal('skin');
-    dot(3, 5, 1); dot(4, 5, 1);
-    dot(-2, -2, 1); dot(-1, -2, 1); dot(0, -1, 1);
-  } else if (dir === 'E') {
+  if (dir === 'E') {
     c.pal('skin');
     // 鼻子不往轮廓外加凸块，只在脸的前缘打一点阴影
     g.dot(hx + HEAD_RX - 1.4, hy + 4.4, DARK);
-    c.pal('eye');
-    g.cellsPx(EYE_SIDE, px + 4 * k, py);
-    c.pal('blush');
-    dot(2, 4, 2); dot(3, 4, 2);
-    c.pal('skin');
-    dot(6, 5, 1);
-    dot(4, -2, 1); dot(5, -2, 1);
-    // 耳朵
-    g.ellipse(hx - 0.8, hy + 2.6, 1.6, 2.2, (lam) => (lam > 0.3 ? BASE : DARK));
+    g.ellipse(hx - 0.8, hy + 2.6, 1.6, 2.2, (lam) => (lam > 0.3 ? BASE : DARK)); // 耳朵
     g.dot(hx - 0.8, hy + 2.6, DARK);
   } else if (dir === 'NE') {
     g.ellipse(hx + 6.8, hy + 2.6, 1.3, 2.1, (lam) => (lam > 0.3 ? BASE : DARK)); // 只露出耳朵和一点脸颊
@@ -111,7 +79,7 @@ export const body: ItemDef = {
   id: 'body',
   name: '身体',
   slot: 'top', // 占位：身体不走槽位，由 Equipment 固定放在最底层
-  palettes: { skin, eye, blush: blushPal },
+  palettes: { skin },
   parts: [
     arm('L'),
     arm('R'),

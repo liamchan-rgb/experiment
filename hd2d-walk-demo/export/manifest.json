@@ -1,0 +1,142 @@
+{
+  "spriteScale": 0.65,
+  "characters": [
+    {
+      "id": "hero1",
+      "name": "旅人",
+      "ios": "ios/Hero1Directions.png",
+      "native": "native/hero1.png",
+      "skin": "fair",
+      "equipment": [
+        {
+          "slot": "face",
+          "id": "face_round",
+          "variant": null
+        },
+        {
+          "slot": "hair",
+          "id": "hair_messy",
+          "variant": null
+        },
+        {
+          "slot": "top",
+          "id": "top_traveler",
+          "variant": "blue"
+        },
+        {
+          "slot": "bottom",
+          "id": "bottom_trousers",
+          "variant": "dark"
+        },
+        {
+          "slot": "shoes",
+          "id": "shoes_boots",
+          "variant": "brown"
+        },
+        {
+          "slot": "scarf",
+          "id": "scarf_navy",
+          "variant": "navy"
+        },
+        {
+          "slot": "bag",
+          "id": "bag_satchel",
+          "variant": null
+        },
+        {
+          "slot": "weapon_main",
+          "id": "weapon_short_sword",
+          "variant": null
+        }
+      ]
+    },
+    {
+      "id": "hero2",
+      "name": "红斗篷",
+      "ios": "ios/Hero2Directions.png",
+      "native": "native/hero2.png",
+      "skin": "light",
+      "equipment": [
+        {
+          "slot": "face",
+          "id": "face_smile",
+          "variant": null
+        },
+        {
+          "slot": "hair",
+          "id": "hair_neat",
+          "variant": "black"
+        },
+        {
+          "slot": "top",
+          "id": "top_red_cloak",
+          "variant": "red"
+        },
+        {
+          "slot": "bottom",
+          "id": "bottom_trousers",
+          "variant": "brown"
+        },
+        {
+          "slot": "shoes",
+          "id": "shoes_boots",
+          "variant": "black"
+        },
+        {
+          "slot": "bag",
+          "id": "bag_satchel",
+          "variant": null
+        },
+        {
+          "slot": "weapon_main",
+          "id": "weapon_staff",
+          "variant": null
+        }
+      ]
+    },
+    {
+      "id": "hero3",
+      "name": "林间行者",
+      "ios": "ios/Hero3Directions.png",
+      "native": "native/hero3.png",
+      "skin": "tan",
+      "equipment": [
+        {
+          "slot": "face",
+          "id": "face_round",
+          "variant": "amber"
+        },
+        {
+          "slot": "hair",
+          "id": "hair_messy",
+          "variant": "blonde"
+        },
+        {
+          "slot": "top",
+          "id": "top_traveler",
+          "variant": "green"
+        },
+        {
+          "slot": "bottom",
+          "id": "bottom_trousers",
+          "variant": "dark"
+        },
+        {
+          "slot": "shoes",
+          "id": "shoes_boots",
+          "variant": "brown"
+        },
+        {
+          "slot": "scarf",
+          "id": "scarf_navy",
+          "variant": "cream"
+        },
+        {
+          "slot": "bag",
+          "id": "bag_satchel",
+          "variant": null
+        }
+      ]
+    }
+  ]
+}

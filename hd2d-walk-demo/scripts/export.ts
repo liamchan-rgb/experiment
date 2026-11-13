@@ -4,28 +4,26 @@
  *   npm run export            → 默认 SPRITE_SCALE
  *   npm run export -- 1       → 指定精灵倍率
  *
- * 每个「套装 × 武器」组合输出三样东西到 export/：
+ * 每个角色预设（src/items/characters.ts）输出三样东西到 export/：
  *   native/<name>.png   原生 sheet：5 行（S/SE/E/NE/N）× 8 列（待机 0-1、行走 2-7），每格 SPR_W×SPR_H
  *   native/<name>.json  元数据：帧尺寸、脚底锚点、每帧手部锚点、围巾尾挂点、帧率
- *   ios/<Name>Directions.png  兼容游戏现有格式的 1536×1536 图集：4×4，每格 384×384，
+ *   ios/<Hero1>Directions.png 兼容游戏现有格式的 1536×1536 图集：4×4，每格 384×384，
  *                             行 = 正面/左/背面/右，列 = 待机/左脚/过渡/右脚，脚底在 y=336
  *
- * 装备从 src/items 自动收集，新增装备不用改这个脚本。
+ * 另外写一份 manifest.json，列出每个角色用了哪些装备和换色。
+ * 装备从 src/items 和 CharacterParts 自动收集，新增装备不用改这个脚本。
  */
 import { mkdirSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { PixelLayer } from '../src/pixel/PixelLayer';
 import { composeFrame } from '../src/character/paperdoll';
-import { Equipment } from '../src/character/equipment';
+import type { Equipment } from '../src/character/equipment';
 import {
   CX, DIRS5, FOOT_Y, FRAMES_PER_DIR, IDLE_FRAMES, SPRITE_SCALE, SPR_H, SPR_W, WALK_FRAMES, makePose, setSpriteScale,
 } from '../src/character/rig';
 import { Animator } from '../src/character/animator';
-import type { ItemDef, OutfitDef, Slot } from '../src/character/types';
-import { body } from '../src/items/body';
-import { getItem, itemsFor } from '../src/items/registry';
-import { OUTFITS } from '../src/items/outfits';
+import { CHARACTERS, buildEquipment } from '../src/items/characters';
 import { Image } from './png';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..', 'export');
@@ -42,18 +40,6 @@ const IOS_ROWS = [
 const IOS_COLS = [0, 6, 5, 3];
 const IOS_CELL = 384;
 const IOS_FOOT_Y = 336;
-
-function dress(outfit: OutfitDef, weapon?: ItemDef): Equipment {
-  const eq = new Equipment(body);
-  eq.equip('hair', itemsFor('hair')[0]);
-  for (const [slot, id] of Object.entries(outfit.slots) as [Slot, string | null][]) {
-    const item = id ? getItem(id) : undefined;
-    if (item) eq.equip(slot, item);
-  }
-  for (const [slot, v] of Object.entries(outfit.variants ?? {}) as [Slot, string][]) eq.setVariant(slot, v);
-  if (weapon) eq.equip('weapon_main', weapon);
-  return eq;
-}
 
 function frameImage(eq: Equipment, dir: (typeof DIRS5)[number], col: number): Image {
   const L = new PixelLayer(SPR_W, SPR_H);
@@ -133,16 +119,24 @@ function exportOne(name: string, eq: Equipment): void {
     });
   });
   mkdirSync(join(root, 'ios'), { recursive: true });
-  const iosName = name.replace(/(^|_)(\w)/g, (_m, _s, ch: string) => ch.toUpperCase());
+  const iosName = name.charAt(0).toUpperCase() + name.slice(1);
   writeFileSync(join(root, 'ios', `${iosName}Directions.png`), atlas.png());
   console.log(`${name}: native ${sheet.w}×${sheet.h}, ios 1536×1536 (×${k})`);
 }
 
-const weapons: (ItemDef | undefined)[] = [undefined, ...itemsFor('weapon_main')];
-for (const outfit of OUTFITS) {
-  for (const w of weapons) {
-    const name = [outfit.id, w ? w.id.replace(/^weapon_/, '') : 'unarmed'].join('_');
-    exportOne(name, dress(outfit, w));
-  }
-}
+const manifest = CHARACTERS.map((p) => {
+  const eq = buildEquipment(p);
+  exportOne(p.id, eq);
+  return {
+    id: p.id,
+    name: p.name,
+    ios: `ios/${p.id.charAt(0).toUpperCase() + p.id.slice(1)}Directions.png`,
+    native: `native/${p.id}.png`,
+    skin: p.skin ?? 'fair',
+    equipment: eq.resolve().filter((e) => e.slot !== 'body').map((e) => ({
+      slot: e.slot, id: e.item.id, variant: eq.variantOf(e.slot as never) ?? null,
+    })),
+  };
+});
+writeFileSync(join(root, 'manifest.json'), JSON.stringify({ spriteScale: SPRITE_SCALE, characters: manifest }, null, 2));
 console.log(`精灵倍率 ${SPRITE_SCALE}，每帧 ${SPR_W}×${SPR_H}，输出到 ${root}`);

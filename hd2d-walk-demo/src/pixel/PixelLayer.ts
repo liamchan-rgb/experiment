@@ -209,8 +209,10 @@ export class PixelLayer {
    * 说明这一段是部件之间的内部线条，不是人物外轮廓，就改用本部件自己的暗部色
    * （深描边 → innerLine 阶，浅描边 → 再亮半阶）。外轮廓仍保留深描边。
    * 小尺寸精灵里描边占比很高，换成有颜色的内线后，色阶过渡才有空间显出来。
+   *
+   * maskBelow：只画在 dst 已有的本体像素上（五官等贴在表面的细节）。
    */
-  drawOnto(dst: PixelLayer, ox = 0, oy = 0, innerLine?: number): void {
+  drawOnto(dst: PixelLayer, ox = 0, oy = 0, innerLine?: number, maskBelow = false): void {
     const OUT = shadeCode(OUTLINE), SOFT = shadeCode(SOFT_OUTLINE);
     const map = this.palettes.map((p) => {
       let i = dst.palettes.indexOf(p);
@@ -230,6 +232,8 @@ export class PixelLayer {
         if (tx < 0 || tx >= dst.w) continue;
         const di = ty * dst.w + tx;
         const under = dst.idx[di];
+        // maskBelow：只写在 dst 已有的本体像素上（不含描边）
+        if (maskBelow && (!under || under === OUT || under === SOFT)) continue;
         if (innerLine !== undefined && (v === OUT || v === SOFT) && under && under !== OUT && under !== SOFT) {
           dst.idx[di] = shadeCode(v === OUT ? innerLine : innerLine + 0.5);
         } else {

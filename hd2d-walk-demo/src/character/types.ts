@@ -5,8 +5,8 @@ import type { HandAnchor, Hold, Pose, Joint } from './rig';
 import type { LayerId } from './layers';
 
 /** 装备槽位 */
-export type Slot = 'hair' | 'top' | 'bottom' | 'shoes' | 'scarf' | 'bag' | 'weapon_main' | 'weapon_off';
-export const SLOTS: Slot[] = ['hair', 'top', 'bottom', 'shoes', 'scarf', 'bag', 'weapon_main', 'weapon_off'];
+export type Slot = 'face' | 'hair' | 'top' | 'bottom' | 'shoes' | 'scarf' | 'bag' | 'weapon_main' | 'weapon_off';
+export const SLOTS: Slot[] = ['face', 'hair', 'top', 'bottom', 'shoes', 'scarf', 'bag', 'weapon_main', 'weapon_off'];
 
 /** 手绘的 5 个方向；另外 3 个由水平镜像得到 */
 export type Dir5 = 'S' | 'SE' | 'E' | 'NE' | 'N';
@@ -55,6 +55,11 @@ export interface PartDef {
   paletteKey?: string;
   /** 是否自动描边，默认 true */
   outline?: boolean;
+  /**
+   * 'below'：只画在下面已经合成好的本体像素上（不含描边），用于五官、刺绣这类贴在表面的细节，
+   * 保证不会画到轮廓外。这类部件不描边、不投接触阴影。
+   */
+  mask?: 'below';
 }
 
 /** 围巾尾 / 飘带之类的次级运动定义（运行时由弹簧驱动，不烘焙进 sheet） */
