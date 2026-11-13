@@ -202,8 +202,16 @@ export class PixelLayer {
     }
   }
 
-  /** 把本层盖到 dst 上（非空像素覆盖）。可带偏移。 */
-  drawOnto(dst: PixelLayer, ox = 0, oy = 0): void {
+  /**
+   * 把本层盖到 dst 上（非空像素覆盖）。可带偏移。
+   *
+   * innerLine：内描边改色。本层的描边像素如果落在 dst 已有的「本体」像素上，
+   * 说明这一段是部件之间的内部线条，不是人物外轮廓，就改用本部件自己的暗部色
+   * （深描边 → innerLine 阶，浅描边 → 再亮半阶）。外轮廓仍保留深描边。
+   * 小尺寸精灵里描边占比很高，换成有颜色的内线后，色阶过渡才有空间显出来。
+   */
+  drawOnto(dst: PixelLayer, ox = 0, oy = 0, innerLine?: number): void {
+    const OUT = shadeCode(OUTLINE), SOFT = shadeCode(SOFT_OUTLINE);
     const map = this.palettes.map((p) => {
       let i = dst.palettes.indexOf(p);
       if (i < 0) {
@@ -221,7 +229,12 @@ export class PixelLayer {
         const tx = x + ox;
         if (tx < 0 || tx >= dst.w) continue;
         const di = ty * dst.w + tx;
-        dst.idx[di] = v;
+        const under = dst.idx[di];
+        if (innerLine !== undefined && (v === OUT || v === SOFT) && under && under !== OUT && under !== SOFT) {
+          dst.idx[di] = shadeCode(v === OUT ? innerLine : innerLine + 0.5);
+        } else {
+          dst.idx[di] = v;
+        }
         dst.pid[di] = map[this.pid[y * this.w + x]];
       }
     }

@@ -41,6 +41,9 @@ function shadowTaps(): [number, number, number][] {
   return taps;
 }
 
+/** 部件之间的内描边用哪一阶（见 PixelLayer.drawOnto）：0.75 = 介于描边色和暗部之间 */
+export const INNER_LINE = 0.75;
+
 const SLOT_ORDER: (Slot | 'body')[] = [
   'body', 'bottom', 'shoes', 'top', 'bag', 'scarf', 'hair', 'weapon_off', 'weapon_main',
 ];
@@ -128,6 +131,6 @@ export function composeFrame(entries: LoadoutEntry[], dir: Dir5, frame: number, 
       tmp.outline();
       out.castShadow(tmp, shadowTaps());
     }
-    tmp.drawOnto(out);
+    tmp.drawOnto(out, 0, 0, INNER_LINE);
   }
 }
