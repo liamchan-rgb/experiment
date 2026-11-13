@@ -15,6 +15,146 @@
 			"isa" = "PBXBuildFile";
 			"fileRef" = 12BE6F43C250EA1C0ABFBF32;
 		};
+		EE5F738D4967D3949B574FA4 = {
+			"isa" = "PBXFileReference";
+			"lastKnownFileType" = "sourcecode.swift";
+			"path" = "Game/Characters/BodyItem.swift";
+			"sourceTree" = "<group>";
+		};
+		22D7C84A68B940F09E5F82A1 = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = EE5F738D4967D3949B574FA4;
+		};
+		3F8FE5CDFAE3BF4F1C6184A9 = {
+			"isa" = "PBXFileReference";
+			"lastKnownFileType" = "sourcecode.swift";
+			"path" = "Game/Characters/CharacterCatalog.swift";
+			"sourceTree" = "<group>";
+		};
+		8AD3BE5045CEFFAB14A229FA = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = 3F8FE5CDFAE3BF4F1C6184A9;
+		};
+		7E58441AF4A8E5C36ADBE092 = {
+			"isa" = "PBXFileReference";
+			"lastKnownFileType" = "sourcecode.swift";
+			"path" = "Game/Characters/CharacterRig.swift";
+			"sourceTree" = "<group>";
+		};
+		05880DC359C63E1009894653 = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = 7E58441AF4A8E5C36ADBE092;
+		};
+		2461FEEAF90F9DFFBB763CF3 = {
+			"isa" = "PBXFileReference";
+			"lastKnownFileType" = "sourcecode.swift";
+			"path" = "Game/Characters/CharacterTypes.swift";
+			"sourceTree" = "<group>";
+		};
+		CA5F74591866970F7AF7781A = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = 2461FEEAF90F9DFFBB763CF3;
+		};
+		B6C54C0A17E386B0EBCB0ECF = {
+			"isa" = "PBXFileReference";
+			"lastKnownFileType" = "sourcecode.swift";
+			"path" = "Game/Characters/ClothingItems.swift";
+			"sourceTree" = "<group>";
+		};
+		2EDBBE1D3464498BA5F8B764 = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = B6C54C0A17E386B0EBCB0ECF;
+		};
+		6E75934C971C725B00D56682 = {
+			"isa" = "PBXFileReference";
+			"lastKnownFileType" = "sourcecode.swift";
+			"path" = "Game/Characters/FaceKit.swift";
+			"sourceTree" = "<group>";
+		};
+		1F46B57267AFEA2D0DDDE103 = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = 6E75934C971C725B00D56682;
+		};
+		3B40DB020225B331714B4222 = {
+			"isa" = "PBXFileReference";
+			"lastKnownFileType" = "sourcecode.swift";
+			"path" = "Game/Characters/HairKit.swift";
+			"sourceTree" = "<group>";
+		};
+		738D96BA42B0AFBE0B514855 = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = 3B40DB020225B331714B4222;
+		};
+		2EDEF5D172B350A18AD5177E = {
+			"isa" = "PBXFileReference";
+			"lastKnownFileType" = "sourcecode.swift";
+			"path" = "Game/Characters/ItemHelpers.swift";
+			"sourceTree" = "<group>";
+		};
+		A29D8006F7981E45EA2B7DD9 = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = 2EDEF5D172B350A18AD5177E;
+		};
+		6D68E7010CAACA672FA44A70 = {
+			"isa" = "PBXFileReference";
+			"lastKnownFileType" = "sourcecode.swift";
+			"path" = "Game/Characters/Paperdoll.swift";
+			"sourceTree" = "<group>";
+		};
+		26F0539A0C5CA7A90721E6B8 = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = 6D68E7010CAACA672FA44A70;
+		};
+		F337A9F9816DF8ECB8CF32B9 = {
+			"isa" = "PBXFileReference";
+			"lastKnownFileType" = "sourcecode.swift";
+			"path" = "Game/Characters/PixelLayer.swift";
+			"sourceTree" = "<group>";
+		};
+		AE0DDB9336B28081107F9015 = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = F337A9F9816DF8ECB8CF32B9;
+		};
+		8423FF55EE8072AB2D971737 = {
+			"isa" = "PBXFileReference";
+			"lastKnownFileType" = "sourcecode.swift";
+			"path" = "Game/Characters/SpriteBaker.swift";
+			"sourceTree" = "<group>";
+		};
+		45A7B25CC905E21CF870CACA = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = 8423FF55EE8072AB2D971737;
+		};
+		417AD0694D004156AE42B6F5 = {
+			"isa" = "PBXFileReference";
+			"lastKnownFileType" = "sourcecode.swift";
+			"path" = "Game/Characters/SpriteBrush.swift";
+			"sourceTree" = "<group>";
+		};
+		999A24DFE34458C27F95B3F4 = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = 417AD0694D004156AE42B6F5;
+		};
+		BD594F7C32F477B9AB9D5379 = {
+			"isa" = "PBXFileReference";
+			"lastKnownFileType" = "sourcecode.swift";
+			"path" = "Game/Characters/SpritePalette.swift";
+			"sourceTree" = "<group>";
+		};
+		D5E6A6D8B790C0EC923DCBC3 = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = BD594F7C32F477B9AB9D5379;
+		};
+		9AEADA8FF219C6BA14BDB666 = {
+			"isa" = "PBXFileReference";
+			"lastKnownFileType" = "sourcecode.swift";
+			"path" = "Game/Characters/WeaponItems.swift";
+			"sourceTree" = "<group>";
+		};
+		8620EF30CD687563E8C0AA7A = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = 9AEADA8FF219C6BA14BDB666;
+		};
 		F1DA447D6A7A060E6C4C4E80 = {
 			"isa" = "PBXFileReference";
 			"lastKnownFileType" = "sourcecode.swift";
@@ -123,6 +263,12 @@
 			"path" = "Resources/SceneMap.json";
 			"sourceTree" = "<group>";
 		};
+		BAD1F2D646225F5DF2CBD30F = {
+			"isa" = "PBXFileReference";
+			"lastKnownFileType" = "folder";
+			"path" = "Resources/CharacterParts";
+			"sourceTree" = "<group>";
+		};
 		4E783A9E10D2A8ABA38CD11C = {
 			"isa" = "PBXFileReference";
 			"explicitFileType" = "wrapper.application";
@@ -150,6 +296,12 @@
 			"path" = "TrailTests.swift";
 			"sourceTree" = "<group>";
 		};
+		A3AC86ADCA80D5ABA09C1F5D = {
+			"isa" = "PBXFileReference";
+			"lastKnownFileType" = "sourcecode.swift";
+			"path" = "CharacterSpriteTests.swift";
+			"sourceTree" = "<group>";
+		};
 		1E6B3F2252EAEDFDCDFE0E55 = {
 			"isa" = "PBXFileReference";
 			"lastKnownFileType" = "sourcecode.swift";
@@ -162,6 +314,20 @@
 			"sourceTree" = "<group>";
 			"children" = (
 				12BE6F43C250EA1C0ABFBF32,
+				EE5F738D4967D3949B574FA4,
+				3F8FE5CDFAE3BF4F1C6184A9,
+				7E58441AF4A8E5C36ADBE092,
+				2461FEEAF90F9DFFBB763CF3,
+				B6C54C0A17E386B0EBCB0ECF,
+				6E75934C971C725B00D56682,
+				3B40DB020225B331714B4222,
+				2EDEF5D172B350A18AD5177E,
+				6D68E7010CAACA672FA44A70,
+				F337A9F9816DF8ECB8CF32B9,
+				8423FF55EE8072AB2D971737,
+				417AD0694D004156AE42B6F5,
+				BD594F7C32F477B9AB9D5379,
+				9AEADA8FF219C6BA14BDB666,
 				F1DA447D6A7A060E6C4C4E80,
 				269650C38F8DD9DB3EA6712D,
 				A05AAE886C1A644A2AF1E17A,
@@ -174,6 +340,7 @@
 				3685E330EC5277A9DD5661C6,
 				59BD0A3FF43B32849B319E64,
 				9D2CA8BB80F6B45E61F8F68A,
+				BAD1F2D646225F5DF2CBD30F,
 			);
 		};
 		A619C04D8A87AB070162A099 = {
@@ -182,6 +349,7 @@
 			"sourceTree" = "<group>";
 			"children" = (
 				78EB49E2E61F4F6BA66DC0CB,
+				A3AC86ADCA80D5ABA09C1F5D,
 			);
 		};
 		0F2612BBE722F8B97292B1A7 = {
@@ -219,6 +387,10 @@
 		DC6E2079C400C6682BC65BAF = {
 			"isa" = "PBXBuildFile";
 			"fileRef" = 9D2CA8BB80F6B45E61F8F68A;
+		};
+		DCE0EF7D60997068144165FA = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = BAD1F2D646225F5DF2CBD30F;
 		};
 		9E376739A3B9742C9CF18DEB = {
 			"isa" = "XCBuildConfiguration";
@@ -285,6 +457,20 @@
 			"buildActionMask" = 2147483647;
 			"files" = (
 				A9B47589F1C47027677602E0,
+				22D7C84A68B940F09E5F82A1,
+				8AD3BE5045CEFFAB14A229FA,
+				05880DC359C63E1009894653,
+				CA5F74591866970F7AF7781A,
+				2EDBBE1D3464498BA5F8B764,
+				1F46B57267AFEA2D0DDDE103,
+				738D96BA42B0AFBE0B514855,
+				A29D8006F7981E45EA2B7DD9,
+				26F0539A0C5CA7A90721E6B8,
+				AE0DDB9336B28081107F9015,
+				45A7B25CC905E21CF870CACA,
+				999A24DFE34458C27F95B3F4,
+				D5E6A6D8B790C0EC923DCBC3,
+				8620EF30CD687563E8C0AA7A,
 				A0A1CFB1B359C88FE613E3FB,
 				435A1C7E2595EA1985DE130C,
 				EAE0075545ABB42C40815692,
@@ -310,6 +496,7 @@
 			"files" = (
 				716E9590E60B3AFA6E62BF18,
 				DC6E2079C400C6682BC65BAF,
+				DCE0EF7D60997068144165FA,
 			);
 			"runOnlyForDeploymentPostprocessing" = 0;
 		};
@@ -345,6 +532,10 @@
 		BF71C53CAE7B14794151F420 = {
 			"isa" = "PBXBuildFile";
 			"fileRef" = 78EB49E2E61F4F6BA66DC0CB;
+		};
+		62F880F3C1CA77175767A545 = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = A3AC86ADCA80D5ABA09C1F5D;
 		};
 		A3F457D24C46F2E4EB780BCC = {
 			"isa" = "XCBuildConfiguration";
@@ -403,6 +594,7 @@
 			"buildActionMask" = 2147483647;
 			"files" = (
 				BF71C53CAE7B14794151F420,
+				62F880F3C1CA77175767A545,
 			);
 			"runOnlyForDeploymentPostprocessing" = 0;
 		};

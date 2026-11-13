@@ -35,4 +35,22 @@ assert len(definition['roads']) >= 4
 for prop in definition['props']:
     assert (root / 'Sources/Resources/Assets.xcassets' / (prop['asset'] + '.imageset')).is_dir()
 assert not (root / 'Sources/Resources/Assets.xcassets/MapBackground.imageset').exists(), 'Flattened scene must not ship'
-print('Project paths, Swift file references, asset bindings, orientations and shared test scheme valid.')
+# 人物部件数据：以文件夹引用打包，每个 JSON 可解析且 id 唯一，眼睛引用的图案都存在
+assert 'Resources/CharacterParts' in pbx, 'CharacterParts folder must be bundled'
+for path in (root / 'Tests').glob('*.swift'):
+    assert path.name in pbx, f'Unbound test file: {path}'
+part_ids = set()
+for kind in ('hair', 'face'):
+    files = sorted((root / 'Sources/Resources/CharacterParts' / kind).glob('*.json'))
+    assert files, f'No {kind} data'
+    for path in files:
+        data = json.loads(path.read_text())
+        assert data['id'] not in part_ids, f'Duplicate part id: {data["id"]}'
+        part_ids.add(data['id'])
+        if kind == 'hair':
+            assert len(data['palette']) == 5 and data['locks'] and len(data['hairline']) >= 2, path
+        else:
+            for view in data['views'].values():
+                for name, _, _ in view.get('eyes', []):
+                    assert name.rstrip('!') in data['patterns'], f'{path}: unknown eye pattern {name}'
+print('Project paths, Swift file references, asset bindings, character parts, orientations and shared test scheme valid.')

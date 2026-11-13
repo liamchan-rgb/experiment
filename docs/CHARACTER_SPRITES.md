@@ -1,6 +1,11 @@
 # 人物像素精灵制作标准
 
-本文是 `hd2d-walk-demo/` 人物管线的制作标准，交接给 MeadowJourney（iPad / SpriteKit）使用。人物全部由代码在运行前绘制，不使用外部图片素材。改形状、换衣服、换发型、改五官，都按本文的约定写数据文件，再执行 `npm run export` 出图。
+本文是人物像素精灵的制作标准。人物全部由代码绘制，不使用外部图片素材，同一套算法有两份实现：
+
+- **网页制作工具** `hd2d-walk-demo/`（TypeScript）：用来设计、预览、导出。
+- **游戏内烘焙器** `Sources/Game/Characters/`（Swift）：MeadowJourney 启动时现场合成人物，支持运行时换装。
+
+改形状、换衣服、换发型、改五官，都按本文的约定写数据或代码，两端保持一致（见第 8 节）。
 
 - 工具：`hd2d-walk-demo/`，Vite + TypeScript，依赖只在开发期使用。
 - 预览：`npm run dev` 打开首页，地址参数 `?scale=4&s=0.65&weapon=weapon_staff`。
@@ -302,30 +307,74 @@ export const myItem: ItemDef = {
 - [ ] 遮挡关系正确：近侧手臂在身前，远侧在身后；武器的前后层正确；斗篷背面盖住身体。
 - [ ] 颜色只来自调色板（9 阶加浅描边），没有纯黑。
 - [ ] `npm run export` 能出图，iOS 图集中脚底落在 y = 336。
+- [ ] 导出的 `Hero*Directions.png` 已拷进 Assets；Swift 端已同步，`CharacterSpriteTests` 全部通过。
 
-## 8. 交接到 iPad 游戏
+## 8. iPad 游戏：实时换装
+
+人物不再依赖预先画好的图片：游戏启动时，Swift 版烘焙器按角色预设现场合成三位旅人的图集，运行时也可以随时换装。
+
+### 8.1 组成
+
+| 位置 | 内容 |
+| --- | --- |
+| `Sources/Game/Characters/` | Swift 版烘焙器：调色板（OKLab 17 阶）、像素图层、画笔、骨架、纸娃娃合成、衣服与武器、发型引擎、五官引擎、装备目录与角色预设、图集烘焙 |
+| `Sources/Resources/CharacterParts/` | 发型、五官 JSON，以文件夹引用整体打包进 App；网页工具读同一份 |
+| `Sources/Resources/Assets.xcassets/HeroNDirections` | 网页工具导出的同格式图集，只在现场烘焙失败时作为回退 |
+| `Tests/CharacterSpriteTests.swift` | 数据解码、预设完整性、图集格式、换装生效，以及与网页端出图的一致性测试 |
+
+两端文件一一对应：`SpritePalette` ↔ `palette.ts`，`PixelLayer` ↔ `PixelLayer.ts`，`SpriteBrush` ↔ `Brush.ts`，`CharacterRig` ↔ `rig.ts`，`Paperdoll` ↔ `paperdoll.ts`，`ItemHelpers` ↔ `shared.ts`，`BodyItem` ↔ `body.ts`，`ClothingItems` / `WeaponItems` ↔ `items/*`，`HairKit` / `FaceKit` ↔ `kits/*`，`CharacterCatalog` ↔ `registry.ts` + `outfits.ts` + `characters.ts`，`SpriteBaker` ↔ `scripts/export.ts`。
+
+### 8.2 换装接口
+
+```swift
+var look = CharacterCatalog.characters[0]          // 从预设出发
+look.hair = "hair_neat"                           // 发型（CharacterParts/hair 里的 id）
+look.face = "face_smile"                          // 五官（CharacterParts/face 里的 id）
+look.skin = "tan"                                 // 肤色：fair / light / tan / deep
+look.weapon = "weapon_staff"                      // 武器，nil = 空手
+look.variants[.top] = "green"                     // 各槽位的换色方案
+gameScene.setAppearance(look, forTraveler: 0)     // 立即重新烘焙生效
+```
+
+`setAppearance` 遇到找不到的装备 id 会返回 `false`，外观保持不变。底层接口是 `CharacterCatalog.equipment(for:)` → `Equipment`（`equip / unequip / setVariant / setPalette / setBodyPalette`）→ `SpriteBaker.atlas(_:)`。
+
+- **纹理**：一律用 `.nearest` 采样，像素画缩放时不发糊。
+- **性能**：一次换装只烘焙图集用到的 12 帧（3 个方向 × 4 帧），不是全部 40 帧。
+- **尺寸**：图集格式与原来相同（1536 × 1536，4 × 4，脚底在 y = 336，`anchorPoint = (0.5, 0.125)`）。显示尺寸 64 × 64 时人物约 30 pt 高。
+
+### 8.3 两端保持一致
+
+| 改什么 | 网页工具 | Swift |
+| --- | --- | --- |
+| 发型、五官 | 改 / 加 `CharacterParts` 里的 JSON | 自动生效，同一份文件 |
+| 衣服、武器 | `src/items/<分类>/*.ts` | `ClothingItems` / `WeaponItems` 里加对应实现，并在 `CharacterCatalog` 登记 |
+| 角色预设 | `src/items/characters.ts` | `CharacterCatalog.characters` |
+| 引擎算法（光照、描边、抖动等） | `src/pixel`、`src/character` | 对应文件同步修改 |
+
+移植时最容易出错的地方：JS 的 `Math.round` 对负的 .5 往大取整（Swift 版用 `jsRound`）；哈希噪声依赖 32 位整数溢出（`&*`、`&+`）；接触阴影的缓冲是 32 位浮点；排序要稳定（深度相同时保持原顺序）。
+
+**一致性测试**：`testBakedAtlasesMatchWebExport` 把游戏现场烘焙的图集与资源里网页端导出的 `HeroNDirections` 逐像素比对，不一致的像素须少于 2%（容许两端数学库在最后一位上的差异）。所以：
+
+1. 改了网页端的任何东西，执行 `npm run export`，再把 `export/ios/Hero*Directions.png` 拷进对应的 imageset。
+2. 再同步修改 Swift 端，跑单元测试。测试失败说明两端走偏了。
+
+### 8.4 导出文件
 
 `npm run export` 对每个角色预设（见 6.6）输出以下文件，另附一份 `manifest.json` 列出各角色的装备和换色，都已提交在 `hd2d-walk-demo/export/`：
 
 | 文件 | 内容 |
 | --- | --- |
-| `ios/Hero<N>Directions.png` | 1536 × 1536，4 × 4，每格 384 × 384，与现有 `HeroNDirections` 格式一致。行：正面、左、背面、右。列：待机、左脚在前、过渡、右脚在前，对应原生第 0 / 6 / 5 / 3 列。5 倍最近邻放大，脚底在 y = 336 |
-| `native/<name>.png` | 原生 sheet：5 行 × 8 列，每格 42 × 62 |
+| `ios/Hero<N>Directions.png` | 1536 × 1536，4 × 4，每格 384 × 384，与游戏格式一致。行：正面、左、背面、右。列：待机、左脚在前、过渡、右脚在前，对应原生第 0 / 6 / 5 / 3 列。5 倍最近邻放大，脚底在 y = 336 |
+| `native/<name>.png` | 原生 sheet：5 行 × 8 列，每格 42 × 62（Swift 端：`SpriteBaker.sheet(_:)`） |
 | `native/<name>.json` | 帧尺寸、脚底锚点、镜像规则、帧率、装备与调色板、每帧双手锚点与 `bob`、围巾尾挂点与参数 |
-
-**直接替换现有人物**（不改游戏逻辑）：
-
-1. 把 `ios/*Directions.png` 放进 `Sources/Resources/Assets.xcassets/Hero1Directions.imageset` 等位置，替换原图，并保持 imageset 的文件名约定。
-2. 在 `GameScene.buildActors()` 中，把人物纹理的 `texture.filteringMode = .linear` 改成 **`.nearest`**。否则像素画在缩放时会被糊掉。
-3. 不需要改其他参数：现有 `anchorPoint = (0.5, 0.125)` 正好对应 y = 336，显示尺寸 64 × 64 时人物约 30 pt 高，和原来的人物差不多。
 
 **升级到 8 方向 / 6 帧行走**（可选）：
 
-1. 用 `native/*.png`，按 JSON 中的 `frameSize` 切帧。`anchorPoint = (pivot.x / w, 1 − pivot.y / h)`。
+1. 用原生 sheet，按 JSON 中的 `frameSize` 切帧。`anchorPoint = (pivot.x / w, 1 − pivot.y / h)`。
 2. W、NW、SW 用 E、NE、SE 的帧，并设 `xScale = -1`。
 3. 行走动画按 `fps.walk`（10 fps）循环第 2–7 列，待机按 `fps.idle`（1.6 fps）循环第 0–1 列。
 
-**围巾尾**：
+**围巾尾（游戏端尚未接入）**：
 
 - 数据：JSON 的 `frames[行][列].scarfTail` 是每帧的挂点（像素坐标，`front` 表示画在身前还是身后）。顶层的 `scarfTail` 给出节数、每节长度和调色板。
 - 算法（`src/character/scarfPhysics.ts`）是一条 Verlet 质点链：
@@ -334,5 +383,3 @@ export const myItem: ItemDef = {
   - 速度阻尼为每秒保留 2%，约束迭代 4 次。
   - 画成一条带子：根部粗，末端细，靠近末端有两道浅色条纹，外加 1px 描边。
 - 在 Swift 里每帧更新质点，用 `SKShapeNode`，或者先画到一张小纹理上再按最近邻显示，放在人物节点前面或后面。
-
-新增装备后，重新执行 `npm run export`，再把对应的 PNG 拷进 Assets 即可。

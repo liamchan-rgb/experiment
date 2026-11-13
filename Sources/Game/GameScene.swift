@@ -90,23 +90,45 @@ final class GameScene: SKScene {
         world.addChild(destinationRing)
     }
 
+    /// 人物图集：按 CharacterCatalog 里的角色预设现场烘焙（可换装）；烘焙失败时回退到资源里的同格式图集。
+    private func heroAtlas(_ index: Int) -> SKTexture {
+        let presets = CharacterCatalog.characters
+        if index < presets.count, let baked = SpriteBaker.atlasTexture(for: presets[index]) { return baked }
+        let fallback = world.texture("Hero\(index + 1)Directions")
+        fallback.filteringMode = .nearest
+        return fallback
+    }
+
+    /// 4×4 图集 → [方向][帧]。像素画用最近邻采样，缩放时不发糊。
+    private static func directionFrames(_ atlas: SKTexture) -> [[SKTexture]] {
+        (0..<4).map { row in
+            (0..<4).map { column in
+                let texture = SKTexture(rect: CGRect(x: CGFloat(column) / 4, y: CGFloat(3 - row) / 4,
+                                                    width: 0.25, height: 0.25), in: atlas)
+                texture.filteringMode = .nearest
+                return texture
+            }
+        }
+    }
+
+    /// 运行时换装：给第 index 位旅人换一套外观（衣服、发型、五官、肤色、武器、配色），立即重新烘焙生效。
+    /// 返回 false 表示预设里有找不到的装备，外观保持不变。
+    @discardableResult
+    func setAppearance(_ preset: CharacterPreset, forTraveler index: Int) -> Bool {
+        guard frames.indices.contains(index), let atlas = SpriteBaker.atlasTexture(for: preset) else { return false }
+        frames[index] = Self.directionFrames(atlas)
+        let texture = frames[index][facing[index]][0]
+        actors[index].texture = texture
+        actorShadows[index].texture = texture
+        return true
+    }
+
     private func buildActors() {
         for index in 0..<3 {
-            let atlas = world.texture("Hero\(index + 1)Directions")
-            var directions: [[SKTexture]] = []
-            for row in 0..<4 {
-                directions.append((0..<4).map { column in
-                    let texture = SKTexture(rect: CGRect(x: CGFloat(column) / 4,
-                                                        y: CGFloat(3 - row) / 4,
-                                                        width: 0.25, height: 0.25), in: atlas)
-                    texture.filteringMode = .linear
-                    return texture
-                })
-            }
-            frames.append(directions)
+            frames.append(Self.directionFrames(heroAtlas(index)))
             let root = SKNode()
             root.name = "hero-\(index)"
-            let sprite = SKSpriteNode(texture: directions[0][0], size: CGSize(width: 64, height: 64))
+            let sprite = SKSpriteNode(texture: frames[index][0][0], size: CGSize(width: 64, height: 64))
             sprite.anchorPoint = CGPoint(x: 0.5, y: 0.125)
             sprite.name = root.name
             sprite.zPosition = 1
@@ -114,7 +136,7 @@ final class GameScene: SKScene {
             world.addChild(root)
             actorRoots.append(root)
             actors.append(sprite)
-            let shadow = SKSpriteNode(texture: directions[0][0], size: CGSize(width: 43, height: 34))
+            let shadow = SKSpriteNode(texture: frames[index][0][0], size: CGSize(width: 43, height: 34))
             shadow.anchorPoint = sprite.anchorPoint
             shadow.shader = world.effects.shadow
             shadow.zRotation = -2.2

@@ -40,7 +40,9 @@ for path in sorted((ROOT / 'Sources').rglob('*.swift')):
 assets = file('assets', 'Resources/Assets.xcassets', 'folder.assetcatalog')
 info = file('info', 'Resources/Info.plist', 'text.plist.xml')
 scene_map = file('scene-map', 'Resources/SceneMap.json', 'text.json')
-source_refs += [assets, info, scene_map]
+# 人物部件数据（发型、五官 JSON），以文件夹引用整体打包，网页制作工具读同一份
+character_parts = file('character-parts', 'Resources/CharacterParts', 'folder')
+source_refs += [assets, info, scene_map, character_parts]
 app = obj('app-product', 'PBXFileReference', explicitFileType='wrapper.application',
           path='MeadowJourney.app', sourceTree='BUILT_PRODUCTS_DIR', includeInIndex=0)
 unit = obj('unit-product', 'PBXFileReference', explicitFileType='wrapper.cfbundle',
@@ -48,9 +50,11 @@ unit = obj('unit-product', 'PBXFileReference', explicitFileType='wrapper.cfbundl
 ui = obj('ui-product', 'PBXFileReference', explicitFileType='wrapper.cfbundle',
          path='MeadowJourneyUITests.xctest', sourceTree='BUILT_PRODUCTS_DIR', includeInIndex=0)
 unit_ref = file('unit-source', 'TrailTests.swift', 'sourcecode.swift')
+unit_refs = [unit_ref] + [file('unit-source:' + path.name, path.name, 'sourcecode.swift')
+                          for path in sorted((ROOT / 'Tests').glob('*.swift')) if path.name != 'TrailTests.swift']
 ui_ref = file('ui-source', 'JourneyUITests.swift', 'sourcecode.swift')
 sources_group = obj('sources-group', 'PBXGroup', path='Sources', sourceTree='<group>', children=source_refs)
-tests_group = obj('tests-group', 'PBXGroup', path='Tests', sourceTree='<group>', children=[unit_ref])
+tests_group = obj('tests-group', 'PBXGroup', path='Tests', sourceTree='<group>', children=unit_refs)
 ui_group = obj('ui-group', 'PBXGroup', path='UITests', sourceTree='<group>', children=[ui_ref])
 products_group = obj('products-group', 'PBXGroup', name='Products', sourceTree='<group>', children=[app, unit, ui])
 main_group = obj('main-group', 'PBXGroup', sourceTree='<group>', children=[sources_group, tests_group, ui_group, products_group])
@@ -102,10 +106,11 @@ def target(key, name, product, sources, product_type, resources=None, settings=N
 
 
 target('app-target', 'MeadowJourney', app, source_builds, 'com.apple.product-type.application',
-       resources=[build_file('assets-build', assets), build_file('scene-map-build', scene_map)], settings=app_settings)
-for key, name, product, source, kind in [
-    ('unit-target', 'MeadowJourneyTests', unit, unit_ref, 'unit-test'),
-    ('ui-target', 'MeadowJourneyUITests', ui, ui_ref, 'ui-testing')
+       resources=[build_file('assets-build', assets), build_file('scene-map-build', scene_map),
+                  build_file('character-parts-build', character_parts)], settings=app_settings)
+for key, name, product, sources, kind in [
+    ('unit-target', 'MeadowJourneyTests', unit, unit_refs, 'unit-test'),
+    ('ui-target', 'MeadowJourneyUITests', ui, [ui_ref], 'ui-testing')
 ]:
     proxy = obj(key + ':proxy', 'PBXContainerItemProxy', containerPortal=ref('project'), proxyType=1,
                 remoteGlobalIDString=ref('app-target'), remoteInfo='MeadowJourney')
@@ -118,7 +123,9 @@ for key, name, product, source, kind in [
         settings['BUNDLE_LOADER'] = '$(TEST_HOST)'
     else:
         settings['TEST_TARGET_NAME'] = 'MeadowJourney'
-    target(key, name, product, [build_file(key + ':build', source)], 'com.apple.product-type.bundle.' + kind,
+    builds = [build_file(key + ':build', sources[0])] + [
+        build_file(key + ':build:' + str(i), source) for i, source in enumerate(sources[1:], 1)]
+    target(key, name, product, builds, 'com.apple.product-type.bundle.' + kind,
            settings=settings, dependencies=[dependency])
 
 obj('project', 'PBXProject', attributes={'LastUpgradeCheck': '1640',
