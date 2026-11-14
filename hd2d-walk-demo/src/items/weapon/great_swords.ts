@@ -23,7 +23,7 @@ export const greatSword: ItemDef = {
   palettes: { blade: steel, hilt: iron, grip: leather, fx: swish },
   parts: [
     { layer: 'weapon', draw: (c) => drawSword(c, GREAT) },
-    trailPart(19, 31),
+    trailPart(9, 34),
     fxPart((f) => at(f, 28), 'fx', 0.9),
   ],
 };
@@ -44,7 +44,7 @@ export const dragonFangSword: ItemDef = {
   palettes: { blade: bone, hilt: crimson, grip: wrap, gem: ember, fx: ember },
   parts: [
     { layer: 'weapon', draw: (c) => drawSword(c, FANG, true) },
-    trailPart(18, 29),
+    trailPart(9, 32),
     fxPart((f) => at(f, 26), 'fx', 1),
   ],
 };

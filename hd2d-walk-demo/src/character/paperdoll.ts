@@ -1,7 +1,8 @@
 import { PixelLayer } from '../pixel/PixelLayer';
+import { shadeCode, OUTLINE, SOFT_OUTLINE, HI, LIGHT } from '../pixel/palette';
 import type { Palette } from '../pixel/palette';
 import { Z, type LayerId } from './layers';
-import { makePose, SPR_W, SPR_H, SPRITE_SCALE, CX } from './rig';
+import { makePose, SPR_W, SPR_H, SPRITE_SCALE, CX, FOOT_Y } from './rig';
 import { Brush } from '../pixel/Brush';
 import type { Hold } from './rig';
 import type { Dir5, DrawCtx, ItemDef, PartDef, Slot } from './types';
@@ -139,5 +140,45 @@ export function composeFrame(entries: LoadoutEntry[], dir: Dir5, frame: number, 
     }
     tmp.drawOnto(out, 0, 0, part.innerLine ?? INNER_LINE);
     if (part.innerLine !== undefined) out.fillInteriorOutlines(part.innerLine, tmp.palettes);
+  }
+  if (pose.lying) layDown(out, pose.lying.lift);
+  if (pose.flash) flashWhite(out);
+}
+
+/** 受击闪白：轮廓保留深色描边，其余像素全部提到最亮阶，再往白里推一点（像被打中那一瞬间的曝光） */
+function flashWhite(out: PixelLayer): void {
+  const OUT = shadeCode(OUTLINE), SOFT = shadeCode(SOFT_OUTLINE), TOP = shadeCode(HI);
+  for (let i = 0; i < out.idx.length; i++) {
+    const v = out.idx[i];
+    if (!v || v === OUT) continue;
+    out.idx[i] = v === SOFT ? shadeCode(LIGHT) : TOP;
+  }
+}
+
+/**
+ * 倒地：把画好的人整个顺时针转 90°（头朝前、脸朝下），贴着地面线放，左右对着中轴。
+ * 90° 转像素图不会糊；人比画布宽时让头那一侧完整，脚那一侧被裁掉一点。
+ */
+function layDown(out: PixelLayer, lift: number): void {
+  const { w: W, h: H } = out;
+  const src = out.idx.slice(), spid = out.pid.slice();
+  let x0 = W, y0 = H, x1 = -1, y1 = -1;
+  for (let y = 0; y < H; y++) for (let x = 0; x < W; x++) {
+    if (!src[y * W + x]) continue;
+    if (x < x0) x0 = x; if (x > x1) x1 = x; if (y < y0) y0 = y; if (y > y1) y1 = y;
+  }
+  if (x1 < 0) return;
+  const bw = y1 - y0 + 1, bh = x1 - x0 + 1;
+  let ox = Math.round(CX * SPRITE_SCALE - bw / 2);
+  if (ox + bw > W) ox = W - bw;
+  const oy = Math.round(FOOT_Y * SPRITE_SCALE - lift * SPRITE_SCALE) - bh;
+  out.idx.fill(0);
+  for (let y = y0; y <= y1; y++) for (let x = x0; x <= x1; x++) {
+    const v = src[y * W + x];
+    if (!v) continue;
+    const nx = ox + (y1 - y), ny = oy + (x - x0);
+    if (nx < 0 || ny < 0 || nx >= W || ny >= H) continue;
+    out.idx[ny * W + nx] = v;
+    out.pid[ny * W + nx] = spid[y * W + x];
   }
 }

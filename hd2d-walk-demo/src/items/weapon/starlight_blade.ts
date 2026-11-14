@@ -32,7 +32,7 @@ export const starlightBlade: ItemDef = {
         c.g.dot(b.x, b.y, HI);
       },
     },
-    trailPart(12, 21),
+    trailPart(6, 23),
     fxPart((f) => at(f, 19), 'fx', 0.9),
   ],
 };

@@ -21,7 +21,7 @@ export const shortSword: ItemDef = {
   palettes: { blade: steel, hilt, grip, fx: swish },
   parts: [
     { layer: 'weapon', draw: (c) => drawSword(c, SHORT) },
-    trailPart(11, 20),
+    trailPart(6, 22),
   ],
 };
 
@@ -39,6 +39,6 @@ export const trainingSword: ItemDef = {
   palettes: { blade: iron, hilt: ramp('hilt-iron', '#6a6a70'), grip: wood, fx: swish },
   parts: [
     { layer: 'weapon', draw: (c) => drawSword(c, TRAINING) },
-    trailPart(10, 18),
+    trailPart(5, 20),
   ],
 };

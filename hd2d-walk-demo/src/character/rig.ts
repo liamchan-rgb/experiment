@@ -1,4 +1,5 @@
 import type { Dir5, Dir8 } from './types';
+import { captured, type CapturedKey } from './mocap';
 
 /**
  * 骨架（Rig）：给出每个方向、每一帧的关节位置和手部锚点（都是单位坐标，可以是小数）。
@@ -33,30 +34,38 @@ export function setSpriteScale(s: number): void {
 }
 
 export const DIRS5: Dir5[] = ['S', 'SE', 'E', 'NE', 'N'];
-/** 战斗动作：每个 4 帧，接在战斗待机后面 */
-export type ActionId = 'slash' | 'heavy' | 'shoot' | 'cast';
-export const ACTIONS: ActionId[] = ['slash', 'heavy', 'shoot', 'cast'];
-export const ACTION_LEN = 4;
-export const IDLE_FRAMES = [0, 1];
-export const WALK_FRAMES = [2, 3, 4, 5, 6, 7];
-/** 战斗待机：两脚前后分开、压低重心、武器指向敌人，2 帧呼吸。姿势随武器种类变 */
-export const READY_FRAMES = [8, 9];
-const ACTION_BASE = 10;
-/** 每个动作在 sheet 里的列号：挥砍 10–13，重劈 14–17，射箭 18–21，施法 22–25 */
-export const ACTION_FRAMES: Record<ActionId, number[]> = Object.fromEntries(
-  ACTIONS.map((a, i) => [a, Array.from({ length: ACTION_LEN }, (_, k) => ACTION_BASE + i * ACTION_LEN + k)]),
-) as Record<ActionId, number[]>;
-/** 战斗反应：格挡、受击、胜利、倒下，各 2 帧，接在攻击动作后面 */
+/**
+ * sheet 每一行的列：先是普通待机、行走，然后是战斗用的各段动画（长度不一）。
+ * 挥砍 / 重劈 / 突进斩、受击取自原型动作包的动作捕捉（见 mocap.ts），8 帧左右；射箭、施法仍是手调的 4 帧。
+ */
+export type ActionId = 'slash' | 'heavy' | 'dash' | 'shoot' | 'cast';
+export const ACTIONS: ActionId[] = ['slash', 'heavy', 'dash', 'shoot', 'cast'];
 export type ExtraId = 'guard' | 'hurt' | 'victory' | 'defeat';
 export const EXTRAS: ExtraId[] = ['guard', 'hurt', 'victory', 'defeat'];
-const EXTRA_BASE = ACTION_BASE + ACTIONS.length * ACTION_LEN;
-/** 格挡 26–27，受击 28–29，胜利 30–31，倒下 32–33 */
-export const EXTRA_FRAMES: Record<ExtraId, number[]> = Object.fromEntries(
-  EXTRAS.map((a, i) => [a, [EXTRA_BASE + i * 2, EXTRA_BASE + i * 2 + 1]]),
-) as Record<ExtraId, number[]>;
-export const FRAMES_PER_DIR = EXTRA_BASE + EXTRAS.length * 2;
-
 export type AnimId = 'idle' | 'walk' | 'ready' | ActionId | ExtraId;
+
+/** 每段动画的帧数，顺序就是 sheet 里的顺序 */
+export const CLIP_LENGTHS: [AnimId, number][] = [
+  ['idle', 2], ['walk', 6], ['ready', 2],
+  ['slash', 8], ['heavy', 8], ['dash', 8], ['shoot', 4], ['cast', 4],
+  ['guard', 2], ['hurt', 6], ['victory', 2], ['defeat', 6],
+];
+/** 动画名 → sheet 列号 */
+export const CLIP_FRAMES: Record<AnimId, number[]> = (() => {
+  const out = {} as Record<AnimId, number[]>;
+  let at = 0;
+  for (const [id, n] of CLIP_LENGTHS) { out[id] = Array.from({ length: n }, (_, k) => at + k); at += n; }
+  return out;
+})();
+export const FRAMES_PER_DIR = CLIP_LENGTHS.reduce((n, [, k]) => n + k, 0);
+export const IDLE_FRAMES = CLIP_FRAMES.idle;
+export const WALK_FRAMES = CLIP_FRAMES.walk;
+/** 战斗待机：两脚前后分开、压低重心、武器指向敌人，2 帧呼吸。姿势随武器种类变 */
+export const READY_FRAMES = CLIP_FRAMES.ready;
+export const ACTION_FRAMES = Object.fromEntries(ACTIONS.map((a) => [a, CLIP_FRAMES[a]])) as Record<ActionId, number[]>;
+export const EXTRA_FRAMES = Object.fromEntries(EXTRAS.map((a) => [a, CLIP_FRAMES[a]])) as Record<ExtraId, number[]>;
+/** 攻击 / 施法的「出手帧」（动画内序号）：战斗里伤害数字、箭、法术对准它 */
+export const IMPACT_FRAME: Record<ActionId, number> = { slash: 2, heavy: 3, dash: 3, shoot: 2, cast: 2 };
 
 /**
  * 8 相位的行走（不在 sheet 里，按需烘焙）：iPad 地图的行走图集是 8 个相位，
@@ -68,12 +77,12 @@ export const WALK8_FRAMES = Array.from({ length: 8 }, (_, i) => WALK8_BASE + i);
 /** sheet 列号 → 动画名和动画内的帧序号 */
 export function frameInfo(frame: number): { anim: AnimId; t: number; walk8?: boolean } {
   if (frame >= WALK8_BASE && frame < WALK8_BASE + 8) return { anim: 'walk', t: frame - WALK8_BASE, walk8: true };
-  if (frame < 2) return { anim: 'idle', t: frame };
-  if (frame < 8) return { anim: 'walk', t: frame - 2 };
-  if (frame < ACTION_BASE) return { anim: 'ready', t: frame - 8 };
-  if (frame >= EXTRA_BASE) return { anim: EXTRAS[Math.floor((frame - EXTRA_BASE) / 2)], t: (frame - EXTRA_BASE) % 2 };
-  const k = frame - ACTION_BASE;
-  return { anim: ACTIONS[Math.floor(k / ACTION_LEN)], t: k % ACTION_LEN };
+  let at = 0;
+  for (const [id, n] of CLIP_LENGTHS) {
+    if (frame < at + n) return { anim: id, t: frame - at };
+    at += n;
+  }
+  return { anim: 'idle', t: 0 };
 }
 
 /** 朝向角：S = 面向镜头 */
@@ -173,6 +182,10 @@ export interface Pose {
   legs: [Leg, Leg];
   /** 动作特效：'glow' 蓄力 / 'burst' 释放 / 'arrow' 搭箭 / 'loose' 放箭，武器按需画 */
   fx?: 'glow' | 'burst' | 'arrow' | 'loose';
+  /** 倒地：合成好的整张图顺时针转 90°（脸朝下趴着），lift = 离地多少单位 */
+  lying?: { lift: number };
+  /** 受击的第一帧：整个人闪白 */
+  flash?: boolean;
 }
 
 /**
@@ -194,6 +207,20 @@ interface ActKey {
   /** 这一帧有挥砍拖影：从上一帧的武器指向扫过来 */
   trail?: boolean;
   fx?: Pose['fx'];
+  /** 动作捕捉的帧：前倾、下蹲、脚的位置都是绝对值，不再叠加站姿 */
+  absolute?: boolean;
+  /** 颈 / 髋的前后偏移（局部 fwd），不写就由 lean 推算 */
+  neckF?: number;
+  hipF?: number;
+  /** 右脚 / 左脚的局部坐标，不写就按站姿 + step */
+  feet?: [V3, V3];
+  /** 倒地：整个人画好后顺时针转 90°，脸朝下趴在地上 */
+  lying?: boolean;
+}
+
+/** 动作捕捉的关键帧 → ActKey */
+function fromCapture(list: CapturedKey[]): ActKey[] {
+  return list.map((k) => ({ R: k.R, L: k.L, dir: k.dir, lean: 0, bob: k.bob, step: 0, trail: k.trail, absolute: true, neckF: k.neckF, hipF: k.hipF, feet: k.feet }));
 }
 
 /**
@@ -204,18 +231,10 @@ interface ActKey {
  *   cast  施法 / 鼓舞：蓄力 → 高举 → 前推释放 → 回位（没有法杖时就是举起武器或手）
  */
 const ACTION_KEYS: Record<ActionId, ActKey[]> = {
-  slash: [
-    { R: [-8.5, 36, -3], L: [6, 22, 5], dir: [-0.15, 0.75, -0.65], lean: -0.5, bob: 0, step: 1 },
-    { R: [-4, 30, 9], L: [7.5, 20, -2], dir: [0.1, 0.25, 1], lean: 1.5, bob: 0.5, step: 3, trail: true },
-    { R: [-1, 22, 8], L: [8, 19, -3], dir: [0.55, -0.6, 0.55], lean: 2.2, bob: 1.5, step: 4, trail: true },
-    { R: [-6, 21, 6], L: [5.5, 23, 4], dir: [0.2, 0.3, 0.93], lean: 1, bob: 0.5, step: 1 },
-  ],
-  heavy: [
-    { R: [-3, 37, -2], L: [0, 0, 0], dir: [0.05, 0.55, -0.83], lean: -1, bob: 0, step: 1 },
-    { R: [-2, 31, 8], L: [0, 0, 0], dir: [0.05, 0.6, 0.8], lean: 1.5, bob: 0.5, step: 3, trail: true },
-    { R: [-1, 20, 9], L: [0, 0, 0], dir: [0.05, -0.45, 0.9], lean: 2.8, bob: 2.5, step: 5, trail: true, fx: 'burst' },
-    { R: [-3, 21, 6], L: [0, 0, 0], dir: [0.1, 0.4, 0.9], lean: 1, bob: 1, step: 1.5 },
-  ],
+  // 挥砍 / 重劈 / 突进斩：动作捕捉（原型动作包的 Attack1 / Attack3 / Dash Attack）
+  slash: fromCapture(captured('attack1', { crouch: 1.6, reach: 1.3 })),
+  heavy: fromCapture(captured('attack3', { crouch: 2.2, leanGain: 1.1, reach: 1.3 })).map((k, i) => (i === 3 ? { ...k, fx: 'burst' as const } : k)),
+  dash: fromCapture(captured('dash', { crouch: 1.8, leanGain: 1.15, reach: 1.3 })),
   shoot: [
     { R: [-3, 27, 8], L: [5, 27, 9], dir: [0, 1, 0.1], lean: 0.3, bob: 0, step: 2, fx: 'arrow' },
     { R: [-5, 30, -1], L: [3.5, 27, 12], dir: [0, 1, 0.05], lean: 0.5, bob: 0, step: 2, fx: 'arrow' },
@@ -286,24 +305,38 @@ function extraKey(anim: ExtraId, t: number, hold: Hold | 'none'): ActKey {
       if (hold === 'up') return { R: [-4, 26, 7], L: [5, 26, 7], dir: [0.9, 0.45, 0.1], ...base };
       return { R: [-3, 26, 7.5], L: [4, 25, 6], dir: [0.95, 0.3, 0.1], ...base };
     }
-    case 'hurt': {
-      const base = { lean: two ? -1.4 : -2.6, bob: two ? 1 : 0.4, step: two ? -1.5 : -2.5 };
-      if (hold === 'bow') return { R: [-8.5, 25, -3], L: [8, 23, 2], dir: [0.1, 1, -0.2], ...base };
-      return { R: [-9, 24, -3], L: [8.5, 25, -3], dir: [0.3, -0.5, -0.8], ...base };
-    }
+    case 'hurt':
+      // 动作捕捉（原型动作包的 Hurt），8 帧里取 6 帧
+      return HURT_KEYS[Math.min(HURT_KEYS.length - 1, t)];
     case 'victory': {
       const base = { lean: 0.2, bob: two ? 0.6 : 0, step: -2.6 };
       if (hold === 'bow') return { R: [-6, 25, 3], L: [5, 38, 2], dir: [0, 1, 0.05], ...base };
       if (hold === 'none') return { R: [-6, 39, 1], L: [6, 23, 3], dir: [0.14, 0.95, 0.1], ...base };
       return { R: [-6, 38, 2], L: [6, 23, 3], dir: [0.08, 1, 0.12], ...base };
     }
-    case 'defeat': {
-      const base = { lean: two ? 4.4 : 3.4, bob: two ? 7 : 6, step: -1 };
-      if (hold === 'bow') return { R: [-7, 9, 4], L: [6, 10, 6], dir: [0, 1, 0.3], ...base };
-      return { R: [-7, 11, 6], L: [6.5, 10, 4], dir: [0.2, -0.9, 0.35], ...base };
-    }
+    case 'defeat':
+      // 参照原型动作包的 Die：踉跄前扑 → 膝盖一软往前栽 → 扑倒在地（转 90°）→ 弹一下 → 趴着不动
+      return DEFEAT_KEYS[Math.min(DEFEAT_KEYS.length - 1, t)];
   }
 }
+
+const HURT_KEYS: ActKey[] = fromCapture(captured('hurt', { pick: [0, 1, 2, 3, 5, 7], crouch: 1.2 }));
+
+/** 倒下：前两帧是骨架姿势，后面是「直挺挺、双手前伸」的姿势转 90° 趴在地上（lift = 离地多少） */
+const LIE: Omit<ActKey, 'bob'> = {
+  R: [-5.5, 40, 1.5], L: [5.5, 39, 1], dir: [0.05, 1, 0.05], lean: 0, step: 0, absolute: true, neckF: 0.5, hipF: 0,
+  feet: [[-2.6, 0, -0.6], [2.6, 0, 0.6]], lying: true,
+};
+const DEFEAT_KEYS: ActKey[] = [
+  { R: [-6, 18, 9], L: [6, 19, 8], dir: [0.2, -0.5, 0.85], lean: 0, bob: 2.4, step: 0, absolute: true, neckF: 4.5, hipF: -1.2,
+    feet: [[-3.2, 0, -5], [3.2, 0, 4.5]] },
+  { R: [-6, 12, 11], L: [6, 13, 10], dir: [0.2, -0.8, 0.6], lean: 0, bob: 6.5, step: 0, absolute: true, neckF: 6, hipF: -2,
+    feet: [[-3.2, 0, -6], [3.2, 0, 3]] },
+  { ...LIE, bob: -3 },
+  { ...LIE, bob: 0 },
+  { ...LIE, bob: -1 },
+  { ...LIE, bob: 0 },
+];
 
 /** 双手武器（重劈）：左手握在右手前面一点的剑柄上 */
 const TWO_HAND_GAP = 2.6;
@@ -336,15 +369,16 @@ export function makePose(dir: Dir5, frame: number, opts: PoseOptions = {}): Pose
     c = Math.cos(phase);
     bob = t % (n / 2) === 1 ? 1 : 0; // 迈到最大步幅时身体下沉
   } else if (act) {
-    bob = act.bob + stance.crouch; // 战斗中重心一直压低
+    // 战斗中重心一直压低（动作捕捉的帧自带下蹲）；倒地的帧是站直了再转 90°，bob 另作离地高度
+    bob = act.lying ? 0 : act.absolute ? act.bob : act.bob + stance.crouch;
   } else {
     bob = t === 1 ? 1 : 0; // 呼吸
   }
   // 走路时上身前倾一点；站着时重心偏向一条腿，不是立正
   // 前倾：战斗中以站姿的前倾为底，动作在此基础上再加
-  const lean = act ? act.lean + (anim === 'ready' || isExtra ? 0 : stance.key.lean * 0.5) : walking ? 1 : 0;
+  const lean = act ? act.lean + (anim === 'ready' || isExtra || act.absolute ? 0 : stance.key.lean * 0.5) : walking ? 1 : 0;
   /** 颈部、髋部的前后偏移（局部 fwd）：上身整体前倒，屁股往后坐一点 */
-  const neckF = lean * 0.95, hipF = -lean * 0.3;
+  const neckF = act?.neckF ?? lean * 0.95, hipF = act?.hipF ?? -lean * 0.3;
 
   const proj = (side: number, up: number, fwd: number, tilt = TILT): Joint => {
     const near = fwd * cos - side * sin;
@@ -449,7 +483,7 @@ export function makePose(dir: Dir5, frame: number, opts: PoseOptions = {}): Pose
     let fs: number, fu: number, ff: number;
     if (act) {
       // 战斗站姿：左脚在前、右脚在后，攻击时前脚再往前跨
-      [fs, fu, ff] = sign < 0 ? [-3.4, 0, -stance.back - act.step * 0.3] : [3.4, 0, stance.front + act.step * 0.6];
+      [fs, fu, ff] = act.feet ? act.feet[sign < 0 ? 0 : 1] : sign < 0 ? [-3.4, 0, -stance.back - act.step * 0.3] : [3.4, 0, stance.front + act.step * 0.6];
     } else if (!walking) {
       // 稍息：右脚略向前、向外
       [fs, fu, ff] = sign < 0 ? [-3.6, 0, 1.5] : [3, 0, -0.4];
@@ -485,6 +519,8 @@ export function makePose(dir: Dir5, frame: number, opts: PoseOptions = {}): Pose
     handL: armL.hand,
     legs,
     fx: act?.fx,
+    lying: act?.lying ? { lift: Math.max(0, -act.bob) } : undefined,
+    flash: anim === 'hurt' && t === 0,
   };
 }
 
