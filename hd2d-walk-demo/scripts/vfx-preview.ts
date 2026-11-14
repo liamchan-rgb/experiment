@@ -223,6 +223,31 @@ interface Hero {
 }
 
 const bakeCache = new Map<string, Uint8ClampedArray>();
+/**
+ * pixelfx 的特效默认描一个自带的木头假人（actor：遮罩 + 像素），hit-flash 会把它整个画出来（白闪后变成灰色「石像」），
+ * heal / blessing / rage / burning 沿它的轮廓发光。这里换成我们角色当前这一帧的遮罩和像素，特效就贴在真正的人物身上。
+ */
+const actorCache = new Map<string, unknown>();
+function actorOf(h: Hero, frame: number, flip: boolean, dy: number): unknown {
+  const key = `${h.slot}|${frame}|${flip}|${dy}`;
+  const hit = actorCache.get(key);
+  if (hit) return hit;
+  const rgba = heroFrame(h, frame);
+  let x0 = SPR_W, y0 = SPR_H, x1 = -1, y1 = -1;
+  for (let y = 0; y < SPR_H; y++) for (let x = 0; x < SPR_W; x++) if (rgba[(y * SPR_W + x) * 4 + 3]) { x0 = Math.min(x0, x); x1 = Math.max(x1, x); y0 = Math.min(y0, y); y1 = Math.max(y1, y); }
+  const w = x1 - x0 + 1, hh = y1 - y0 + 1, data = new Uint8Array(w * hh), pixels = new Uint32Array(w * hh);
+  for (let y = 0; y < hh; y++) for (let x = 0; x < w; x++) {
+    const sx = flip ? x1 - x : x0 + x, o = ((y0 + y) * SPR_W + sx) * 4;
+    if (!rgba[o + 3]) continue;
+    data[y * w + x] = 1;
+    pixels[y * w + x] = (rgba[o] | (rgba[o + 1] << 8) | (rgba[o + 2] << 16) | (255 << 24)) >>> 0;
+  }
+  // 局部坐标：原点是脚底（特效被往下挪了 dy，身体就相对往上 dy）
+  const lx = flip ? Math.round(FOOT.x) - x1 - 1 : x0 - Math.round(FOOT.x), ly = y0 - Math.round(FOOT.y) - dy;
+  const a = { mask: { w, h: hh, data }, pixels, x: lx, y: ly, w, h: hh, k: 2, head: [0, ly], chest: [0, ly + Math.round(hh * 0.45)] };
+  actorCache.set(key, a);
+  return a;
+}
 function heroFrame(h: Hero, frame: number): Uint8ClampedArray {
   const key = `${h.slot}|${frame}`;
   const hit = bakeCache.get(key);
@@ -328,7 +353,8 @@ function footOf(s: Scene, slot: string, t: number): Pt {
   if (s.hit && s.hit.target === slot) dx += (s.hit.dir * knockback(t - s.hit.at, s.hit.tier)) / U;
   return { x: base.x + dx, y: base.y };
 }
-const at = (slot: string, dy = 0) => (s: Scene, t: number) => [{ ...footOf(s, slot, t), y: footOf(s, slot, t).y + dy }];
+/** 放在某个角色脚下（dy 往下为正）。记下是谁：特效要「描角色身体」时用这个角色自己的像素 */
+const at = (slot: string, dy = 0) => Object.assign((s: Scene, t: number) => [{ ...footOf(s, slot, t), y: footOf(s, slot, t).y + dy }], { slot, dy });
 
 // 调色板（暗 → 亮）
 const PAL = {
@@ -511,7 +537,7 @@ function scenes(): Scene[] {
     monsters: enemies,
     events: [
       { fx: 'melee/claw-swipe', at: I - 0.2, where: (s, t) => [{ x: FEET.p1.x + 26, y: FEET.p1.y }], opts: { flip: true } },
-      { fx: 'impacts/hit-flash', at: I, where: at('p1') },
+      { fx: 'impacts/hit-spark', at: I, where: at('p1', -14), opts: { flip: true } },
     ],
     hit: { at: I, tier: 'medium', target: 'p1', dir: -1 },
   });
@@ -629,7 +655,7 @@ function scenes(): Scene[] {
     monsters: foes(STAND.troll),
     events: [
       { fx: 'impacts/blunt-hit', at: I, where: at('p1', -14), opts: { flip: true } },
-      { fx: 'impacts/hit-flash', at: I, where: at('p1'), opts: { palette: PAL.down } },
+      { fx: 'impacts/hit-spark', at: I, where: at('p1', -14), opts: { flip: true } },
       { fx: 'impacts/heavy-landing', at: I + 0.5, where: at('p1') },
       { fx: 'spawn/poof', at: I + 0.5, where: at('p1'), opts: { palette: PAL.down } },
     ],
@@ -743,12 +769,12 @@ function scenes(): Scene[] {
   const onP1 = (dx = 0, dy = 0) => () => [{ x: FEET.p1.x + dx, y: FEET.p1.y + dy }];
   S(monsterHit('hitSlime', '史莱姆撞击', STAND.slime, 'light', [
     { fx: 'nature/acid-splash', at: I - 0.05, where: onP1(4), opts: { flip: true } },
-    { fx: 'impacts/hit-flash', at: I, where: at('p1'), opts: { palette: PAL.goo } },
+    { fx: 'impacts/hit-spark', at: I, where: at('p1', -14), opts: { flip: true } },
   ]));
   S(monsterHit('hitWolf', '狼连爪', STAND.wolf, 'medium', [
     { fx: 'melee/claw-swipe', at: I - 0.42, where: onP1(26), opts: { flip: true } },
     { fx: 'melee/claw-swipe', at: I - 0.2, where: onP1(24, -4), opts: { flip: true, seed: 5 } },
-    { fx: 'impacts/hit-flash', at: I, where: at('p1') },
+    { fx: 'impacts/hit-spark', at: I, where: at('p1', -14), opts: { flip: true } },
   ]));
   S(monsterHit('hitArrowM', '箭射中英雄', STAND.goblin, 'light', [
     { fx: 'projectiles/arrow', at: I - 0.25, stop: I, follow: true, where: fly('m1', 'p1', I - 0.25, I, 4, 22), opts: { flip: true } },
@@ -882,7 +908,9 @@ async function render(s: Scene): Promise<void> {
       if (spawned.has(ev) || t + 1e-6 < ev.at) continue;
       spawned.add(ev);
       const m = await mod(ev.fx);
-      ev.where(s, t).forEach((p, i) => live.push({ ev, i, inst: (createFx as Function)(m, { ...ev.opts, x: p.x + (ev.dx ?? 0), y: p.y + (ev.dy ?? 0) }) }));
+      const on = (ev.where as { slot?: string }).slot, hero = on ? s.heroes.find((x) => x.slot === on) : undefined;
+      const actor = hero ? actorOf(hero, (hero.anim ?? readyLoop)(t), !!ev.opts?.flip, (ev.where as { dy: number }).dy + (ev.dy ?? 0)) : undefined;
+      ev.where(s, t).forEach((p, i) => live.push({ ev, i, inst: (createFx as Function)(m, { ...ev.opts, ...(actor ? { actor } : {}), x: p.x + (ev.dx ?? 0), y: p.y + (ev.dy ?? 0) }) }));
     }
     clearFrame(frame);
     for (const m of monsters) {
@@ -893,6 +921,8 @@ async function render(s: Scene): Promise<void> {
     }
     for (const l of live) {
       if (l.ev.follow) { const p = l.ev.where(s, t)[l.i]; l.inst.options.x = p.x; l.inst.options.y = p.y; }
+      const on = (l.ev.where as { slot?: string; dy?: number }).slot, hero = on ? s.heroes.find((x) => x.slot === on) : undefined;
+      if (hero) l.inst.options.actor = actorOf(hero, (hero.anim ?? readyLoop)(frozen && s.hit ? s.hit.at : t), !!l.inst.options.flip, (l.ev.where as { dy: number }).dy + (l.ev.dy ?? 0));
       l.inst.draw(frame, l.ev.behind ? undefined : 'back');
     }
     for (const m of monsters) if (m.dieAt === undefined || t < m.dieAt) m.inst.draw(frame, 'front');
