@@ -2,7 +2,7 @@
 把 scripts/icon-export.ts 的输出写进游戏的素材目录（Assets.xcassets）：
   PixelIcon<Id>.imageset     静态图标，32 → 512（16 倍最近邻，和原来的图标一样大）
   PixelIconFX<Id>.imageset   稀有以上：24 帧发光动画横排，每帧 32 → 192
-  另外把已有的旧图标（MeadowParty… / Meadow…Icon，按物品 id 对应）换成新图，直接按名字取图的界面也统一画风。
+  旧图标素材（MeadowParty… / Meadow…Icon）有哈希校验，保持不动；游戏里取图的地方改成先找 PixelIcon<Id>。
 用法：python3 tools/icon_export.py <导出目录> <Assets.xcassets>
 """
 import json, os, sys
@@ -11,13 +11,6 @@ from PIL import Image
 src, cat = sys.argv[1], sys.argv[2]
 meta = json.load(open(os.path.join(src, 'icons.json')))
 N, F = meta['size'], meta['frames']
-OLD = {
-    'trainingSword': 'MeadowPartyTrainingSword', 'huntingBow': 'MeadowPartyHuntingBow', 'greatSword': 'MeadowPartyGreatSword',
-    'legendaryStaff': 'MeadowPartyLegendaryStaff', 'leatherArmor': 'MeadowLeatherArmorIcon', 'runeArmor': 'MeadowRuneArmorIcon',
-    'powerBadge': 'MeadowPowerBadge', 'actionRing': 'MeadowActionRing', 'smallPotion': 'MeadowPartySmallPotion',
-    'largePotion': 'MeadowPartyLargePotion', 'shieldPotion': 'MeadowPartyShieldPotion', 'revivalStone': 'MeadowPartyRevivalStone',
-}
-
 
 def imageset(name, img):
     d = os.path.join(cat, name + '.imageset')
@@ -35,8 +28,6 @@ for it in meta['icons']:
     cap = i[0].upper() + i[1:]
     still = Image.frombytes('RGBA', (N, N), open(os.path.join(src, i + '.rgba'), 'rb').read()).resize((N * 16, N * 16), Image.NEAREST)
     imageset('PixelIcon' + cap, still)
-    if i in OLD and os.path.isdir(os.path.join(cat, OLD[i] + '.imageset')):
-        imageset(OLD[i], still)
     if it['animated']:
         raw = open(os.path.join(src, i + '-fx.rgba'), 'rb').read()
         strip = Image.new('RGBA', (N * 6 * F, N * 6))
