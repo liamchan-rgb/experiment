@@ -1,6 +1,5 @@
 import { pal, ramp } from '../../pixel/palette';
 import { LX, LZ, DARKEN } from '../../pixel/Brush';
-import { CX } from '../../character/rig';
 import type { ItemDef, PartDef } from '../../character/types';
 import { farBias } from '../shared';
 
@@ -45,15 +44,16 @@ export const trousers: ItemDef = {
       draw: (c) => {
         const { g, pose } = c;
         const hw = pose.torsoHalf - 0.2, y = pose.legs[0].hip.y;
+        const hx = (pose.legs[0].hip.x + pose.legs[1].hip.x) / 2;
         c.pal('main');
-        g.fill(CX - hw, y - 4.5, CX + hw, y + 3, (u, v) => {
-          const nx = (u - CX) / hw;
+        g.fill(hx - hw, y - 4.5, hx + hw, y + 3, (u, v) => {
+          const nx = (u - hx) / hw;
           if (Math.abs(nx) > 1 || v < y - 4.5) return -1;
           if (v > y + 1 + 1.4 * (1 - Math.abs(nx))) return -1; // 下缘中间收成裆部
           return g.t(nx * LX + Math.sqrt(1 - nx * nx) * LZ, -0.15); // 整个在上衣的阴影里
         });
         if (Math.abs(pose.sin) < 0.9) {
-          const sx = CX + pose.sin * 2.2;
+          const sx = hx + pose.sin * 2.2;
           g.clip = true;
           g.line(sx, y - 1, sx, y + 2.2, DARKEN); // 裆部的分缝
           g.clip = false;

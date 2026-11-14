@@ -1,6 +1,5 @@
 import { pal, BASE, DARK, HI, LIGHT, OUTLINE } from '../../pixel/palette';
 import { DARKEN, LIGHTEN } from '../../pixel/Brush';
-import { CX } from '../../character/rig';
 import type { DrawCtx, ItemDef, PartDef } from '../../character/types';
 import { armLayer, armOf, farBias, frontX, sleeveParts, torsoShape } from '../shared';
 
@@ -99,18 +98,18 @@ export const leatherArmor: ItemDef = {
         });
         g.clip = true;
         // 缝线：接缝上方一排亮点
-        for (let u = CX - hw + 1; u < CX + hw - 0.5; u += 1.6) g.dot(u, ny + 6.2, LIGHTEN);
+        for (let u = pose.torsoX(6) - hw + 1; u < pose.torsoX(6) + hw - 0.5; u += 1.6) g.dot(u, ny + 6.2, LIGHTEN);
         if (pose.cos > -0.3) {
           // 斜挎的皮带：左肩到右腰
           c.pal('strap');
           const s = pose.cos;
-          g.fill(CX - hw - 1, ny + 2, CX + hw + 1, ny + 12, (u, v) => {
+          g.fill(pose.torsoX(6) - hw - 1, ny + 2, pose.torsoX(6) + hw + 1, ny + 12, (u, v) => {
             const k = (v - ny - 2.5) / 9;
-            const mid = CX + hw * 0.9 * s * (0.8 - 1.7 * k) + pose.sin * hw * 0.5;
+            const mid = pose.torsoX(6) + hw * 0.9 * s * (0.8 - 1.7 * k) + pose.sin * hw * 0.5;
             return Math.abs(u - mid) < 1.1 ? (u < mid - 0.3 ? LIGHT : BASE) : -1;
           });
           c.pal('metal');
-          const bx = CX + hw * 0.9 * s * (0.8 - 1.7 * 0.35) + pose.sin * hw * 0.5;
+          const bx = pose.torsoX(6) + hw * 0.9 * s * (0.8 - 1.7 * 0.35) + pose.sin * hw * 0.5;
           g.dot(bx, ny + 5.7, HI);
         }
         g.clip = false;
@@ -163,11 +162,11 @@ export const runeArmor: ItemDef = {
           g.dot(fx + 2.6, ny + 5.4, BASE);
           g.line(fx - 1.6, ny + 9.4, fx + 1.6, ny + 9.4, LIGHT);
         } else if (pose.cos < -0.3) {
-          const bx = CX - pose.torsoHalf * 0.4 * pose.sin;
+          const bx = pose.torsoX(5) - pose.torsoHalf * 0.4 * pose.sin;
           g.line(bx - 2.4, ny + 5, bx + 2.4, ny + 5, LIGHT);
           g.dot(bx, ny + 5, HI);
         } else {
-          g.line(CX + 0.6 * pose.sin, ny + 4, CX + 0.6 * pose.sin, ny + 6.6, LIGHT);
+          g.line(pose.torsoX(5) + 0.6 * pose.sin, ny + 4, pose.torsoX(5) + 0.6 * pose.sin, ny + 6.6, LIGHT);
         }
         g.clip = false;
       },
@@ -236,7 +235,7 @@ export const starlightArmor: ItemDef = {
         } else if (pose.cos < -0.3) {
           c.pal('trim');
           g.clip = true;
-          g.line(CX - 2, ny + 4.6, CX + 2, ny + 4.6, LIGHT);
+          g.line(pose.torsoX(5) - 2, ny + 4.6, pose.torsoX(5) + 2, ny + 4.6, LIGHT);
           g.clip = false;
         }
       },
@@ -292,7 +291,7 @@ export const dragonArmor: ItemDef = {
           g.clip = false;
         }
         g.clip = true;
-        g.line(CX - 0.4, ny + 3, CX - 0.4, ny + 3, DARKEN);
+        g.line(pose.torsoX(3) - 0.4, ny + 3, pose.torsoX(3) - 0.4, ny + 3, DARKEN);
         g.clip = false;
       },
     },

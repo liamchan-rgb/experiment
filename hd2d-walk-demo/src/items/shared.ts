@@ -51,13 +51,14 @@ export function torsoShape(
 ): void {
   const { g, pose } = c;
   const ny = pose.neckY, flare = opts.flare ?? 1, hw0 = pose.torsoHalf + (opts.pad ?? 0);
-  g.fill(CX - hw0 - flare - 1, ny, CX + hw0 + flare + 1, ny + rows, (u, v) => {
+  const shift = Math.abs(pose.torsoX(0) - pose.torsoX(rows));
+  g.fill(CX - hw0 - flare - 1 - shift, ny, CX + hw0 + flare + 1 + shift, ny + rows, (u, v) => {
     const r = v - ny;
     if (r < 0 || r > rows) return -1;
     let hw = hw0;
     if (r < 2.4) hw -= (2.4 - r) * (2.4 - r) * 0.35;
     if (r > rows - 7) hw += (flare * (r - (rows - 7))) / 7;
-    const nx = (u - CX) / hw;
+    const nx = (u - pose.torsoX(r)) / hw;
     if (Math.abs(nx) > 1) return -1;
     return shade(nx * LX + Math.sqrt(1 - nx * nx) * LZ + 0.05, nx, r, u, v);
   });
@@ -65,7 +66,7 @@ export function torsoShape(
 
 /** 能看到正面时，门襟 / 领口中线所在的横坐标 */
 export function frontX(c: DrawCtx): number {
-  return CX + c.pose.torsoHalf * 0.72 * c.pose.sin;
+  return c.pose.torsoX(5) + c.pose.torsoHalf * 0.72 * c.pose.sin;
 }
 
 /**

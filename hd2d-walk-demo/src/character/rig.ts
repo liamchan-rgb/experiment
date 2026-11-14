@@ -142,6 +142,11 @@ export interface Pose {
   neckUp: number;
   /** 躯干半宽（随朝向变窄） */
   torsoHalf: number;
+  /**
+   * 躯干中线在颈下 r 个单位处的横坐标。前倾时整个上身（颈、肩、胸）一起往前倒，
+   * 髋部略往后坐，躯干是一条斜线而不是直的；画躯干、衣服细节都用它代替 CX。
+   */
+  torsoX(r: number): number;
   armR: Arm;
   armL: Arm;
   /** 手部锚点（= armR.hand / armL.hand），武器按它绘制 */
@@ -222,28 +227,28 @@ interface Stance {
 const STANCES: Record<Hold | 'none', Stance> = {
   // 单手剑：侧身，剑尖斜指前上方，左手护在胸前
   down: {
-    front: 5, back: 4.2, crouch: 2,
-    key: { R: [-6, 22, 6], L: [5.5, 24, 4.5], dir: [0.15, 0.45, 0.88], lean: 0.9, bob: 0, step: 0 },
+    front: 5.6, back: 4.8, crouch: 2.8,
+    key: { R: [-6, 22, 6], L: [5.5, 24, 4.5], dir: [0.15, 0.45, 0.88], lean: 2.4, bob: 0, step: 0 },
   },
   // 双手大剑：最宽最低的马步，双手握剑斜架在身前
   shoulder: {
-    front: 6, back: 5.2, crouch: 2.8,
-    key: { R: [-3, 21, 5], L: [0, 0, 0], dir: [0.1, 0.72, 0.68], lean: 0.6, bob: 0, step: 0 },
+    front: 6.6, back: 5.8, crouch: 3.6,
+    key: { R: [-3, 21, 5], L: [0, 0, 0], dir: [0.1, 0.72, 0.68], lean: 2, bob: 0, step: 0 },
   },
   // 弓：侧身拉开距离，弓压低指向前方，右手搭在弦上
   bow: {
-    front: 4.2, back: 4.8, crouch: 1.5,
-    key: { R: [-4, 24, 2.5], L: [5, 22, 8], dir: [0, 1, 0.3], lean: 0.4, bob: 0, step: 0 },
+    front: 4.6, back: 5.4, crouch: 2,
+    key: { R: [-4, 24, 2.5], L: [5, 22, 8], dir: [0, 1, 0.3], lean: 1.3, bob: 0, step: 0 },
   },
   // 法杖：杖身前倾，左手张开在身前准备施法
   up: {
-    front: 3.8, back: 3.2, crouch: 1.3,
-    key: { R: [-7, 24, 5], L: [6, 25, 7], dir: [0.05, 0.9, 0.42], lean: 0.6, bob: 0, step: 0 },
+    front: 4.2, back: 3.8, crouch: 1.7,
+    key: { R: [-7, 24, 5], L: [6, 25, 7], dir: [0.05, 0.9, 0.42], lean: 1.6, bob: 0, step: 0 },
   },
   // 空手：双拳举在胸前
   none: {
-    front: 4.4, back: 3.6, crouch: 1.7,
-    key: { R: [-4, 26, 6], L: [4.5, 27, 7.5], dir: [0.14, 0.95, 0.1], lean: 0.9, bob: 0, step: 0 },
+    front: 5, back: 4.2, crouch: 2.3,
+    key: { R: [-4, 26, 6], L: [4.5, 27, 7.5], dir: [0.14, 0.95, 0.1], lean: 2.2, bob: 0, step: 0 },
   },
 };
 
@@ -280,14 +285,17 @@ export function makePose(dir: Dir5, frame: number, opts: PoseOptions = {}): Pose
     bob = t === 1 ? 1 : 0; // 呼吸
   }
   // 走路时上身前倾一点；站着时重心偏向一条腿，不是立正
-  const lean = act ? act.lean : walking ? 1 : 0;
+  // 前倾：战斗中以站姿的前倾为底，动作在此基础上再加
+  const lean = act ? act.lean + (anim === 'ready' ? 0 : stance.key.lean * 0.5) : walking ? 1 : 0;
+  /** 颈部、髋部的前后偏移（局部 fwd）：上身整体前倒，屁股往后坐一点 */
+  const neckF = lean * 0.95, hipF = -lean * 0.3;
 
   const proj = (side: number, up: number, fwd: number, tilt = TILT): Joint => {
     const near = fwd * cos - side * sin;
     return { x: CX + side * cos + fwd * sin, y: FOOT_Y - up + near * tilt, near };
   };
 
-  const head = proj(walking || act ? 0 : -0.3, HEAD - bob, lean);
+  const head = proj(walking || act ? 0 : -0.3, HEAD - bob, neckF + lean * 0.25);
 
   /** 局部方向 → 画面角度、缩短比例 */
   const screenDir = (d: V3) => {
@@ -300,7 +308,7 @@ export function makePose(dir: Dir5, frame: number, opts: PoseOptions = {}): Pose
   };
 
   const arm = (sign: -1 | 1, hold: Hold | undefined): Arm => {
-    const shoulder = proj(7.2 * sign, SHOULDER - bob, lean * 0.6, 0.12);
+    const shoulder = proj(7.2 * sign, SHOULDER - bob, neckF * 0.95, 0.12);
     let j: Joint, elbow: Joint;
     // 武器在局部坐标里的指向（side, up, fwd）
     let wd: V3 = [0.14 * sign, 0.95, 0.1];
@@ -315,9 +323,9 @@ export function makePose(dir: Dir5, frame: number, opts: PoseOptions = {}): Pose
       if (sign > 0 && twoHand) {
         p = [act.R[0] + act.dir[0] * TWO_HAND_GAP, act.R[1] + act.dir[1] * TWO_HAND_GAP, act.R[2] + act.dir[2] * TWO_HAND_GAP];
       }
-      j = proj(p[0], p[1] - bob, p[2]);
+      j = proj(p[0], p[1] - bob, p[2] + neckF * 0.7);
       // 肘：肩和手的中点，往外、往下撇一点
-      elbow = proj((7.2 * sign + p[0]) / 2 + 1.4 * sign, (SHOULDER + p[1]) / 2 - 1.6 - bob, (lean * 0.6 + p[2]) / 2 - 0.8);
+      elbow = proj((7.2 * sign + p[0]) / 2 + 1.4 * sign, (SHOULDER + p[1]) / 2 - 1.6 - bob, (neckF * 1.7 + p[2]) / 2 - 0.8);
       if (isBowArm) wd = act.dir.map((v, i) => (i === 0 ? v * sign : v)) as V3;
       else if (sign < 0) {
         wd = act.dir;
@@ -326,8 +334,8 @@ export function makePose(dir: Dir5, frame: number, opts: PoseOptions = {}): Pose
       }
     } else if (act && sign > 0) {
       // 动作帧里不拿武器的左手
-      j = proj(act.L[0], act.L[1] - bob, act.L[2]);
-      elbow = proj((7.2 + act.L[0]) / 2 + 1.4, (SHOULDER + act.L[1]) / 2 - 1.6 - bob, (lean * 0.6 + act.L[2]) / 2 - 0.8);
+      j = proj(act.L[0], act.L[1] - bob, act.L[2] + neckF * 0.7);
+      elbow = proj((7.2 + act.L[0]) / 2 + 1.4, (SHOULDER + act.L[1]) / 2 - 1.6 - bob, (neckF * 1.7 + act.L[2]) / 2 - 0.8);
     } else if (hold === 'up') {
       // 竖握：上臂贴身，前臂抬到身前，手在身侧偏外。
       // 正侧面时杖头往前倾，从脸前面过去，否则竖直的杖会正好穿过脑袋。
@@ -380,7 +388,7 @@ export function makePose(dir: Dir5, frame: number, opts: PoseOptions = {}): Pose
 
   const leg = (id: 'R' | 'L', sign: -1 | 1): Leg => {
     const hipUp = HIP - bob;
-    const hip = proj(2.8 * sign, hipUp, 0, 0);
+    const hip = proj(2.8 * sign, hipUp, hipF, 0);
     // 先求脚的局部坐标（side, up, fwd），再算膝盖
     let fs: number, fu: number, ff: number;
     if (act) {
@@ -396,11 +404,11 @@ export function makePose(dir: Dir5, frame: number, opts: PoseOptions = {}): Pose
     }
     // 膝盖：大腿和小腿一样长，髋到脚的距离不够腿长时膝盖往前顶出去（下蹲、跨步时腿是弯的）
     const LEG = 8.2;
-    const ds = fs - 2.8 * sign, du = fu - hipUp, df = ff;
+    const ds = fs - 2.8 * sign, du = fu - hipUp, df = ff - hipF;
     const dist = Math.hypot(ds, du, df);
     const bend = Math.sqrt(Math.max(0, LEG * LEG - (dist / 2) ** 2));
     // 弯曲方向：大致朝前，后脚的膝盖也朝前（往下压）
-    const knee = proj(2.8 * sign + ds / 2, hipUp + du / 2, df / 2 + bend * 0.9, 0.2);
+    const knee = proj(2.8 * sign + ds / 2, hipUp + du / 2, hipF + df / 2 + bend * 0.9, 0.2);
     return { id, hip, knee, foot: proj(fs, fu, ff) };
   };
   const legR = leg('R', -1), legL = leg('L', 1);
@@ -412,6 +420,10 @@ export function makePose(dir: Dir5, frame: number, opts: PoseOptions = {}): Pose
     neckY: FOOT_Y - NECK + bob,
     neckUp: NECK - bob,
     torsoHalf: 6.5 - 1.9 * Math.abs(sin),
+    torsoX: (r: number) => {
+      const k = Math.max(0, Math.min(1, r / (NECK - HIP)));
+      return CX + (neckF + (hipF - neckF) * k) * sin;
+    },
     armR, armL,
     handR: armR.hand,
     handL: armL.hand,

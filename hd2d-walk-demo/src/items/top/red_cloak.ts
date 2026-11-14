@@ -1,6 +1,6 @@
 import { pal, ramp, BASE, DARK, HI, LIGHT, OUTLINE } from '../../pixel/palette';
 import { LX, LY, LZ, DARKEN } from '../../pixel/Brush';
-import { CX, FOOT_Y } from '../../character/rig';
+import { FOOT_Y } from '../../character/rig';
 import { Z } from '../../character/layers';
 import type { DrawCtx, ItemDef } from '../../character/types';
 import { frontX, sleeveParts, torsoShape } from '../shared';
@@ -23,7 +23,7 @@ function cape(c: DrawCtx): void {
   const sway = walking ? Math.sin(pose.phase + 1) : 0;
   const hwTop = 6.6 * Math.abs(cos) + 3 * Math.abs(sin) + 1.2;
   const hwBottom = hwTop + 3.8;
-  const cx0 = CX - sin * 3.8;
+  const cx0 = pose.torsoX(3) - sin * 3.8;
   const y0 = pose.neckY - 0.5, y1 = FOOT_Y - 6;
   const folds = 2.2 + Math.abs(cos) * 1.4; // 能看到几道大褶
 
@@ -62,8 +62,9 @@ function mantle(c: DrawCtx): void {
   const ny = pose.neckY;
   const hw = pose.torsoHalf + 2.9;
   const y0 = ny - 2, yb = ny + 4.6;
-  g.fill(CX - hw, y0, CX + hw, yb + 1.4, (u, v) => {
-    const nx = (u - CX) / hw;
+  const mx = pose.torsoX(1);
+  g.fill(mx - hw, y0, mx + hw, yb + 1.4, (u, v) => {
+    const nx = (u - mx) / hw;
     if (Math.abs(nx) > 1) return -1;
     const top = y0 + 2.9 * (1 - Math.sqrt(1 - nx * nx)); // 圆肩
     const bottom = yb + 0.7 * Math.cos(nx * hw * 0.9); // 扇形下缘（频率低一点，低密度下才不会碎成一格一格）
@@ -115,15 +116,15 @@ export const redCloak: ItemDef = {
           r < 8 || r > 9.8 ? -1 : r < 8.6 ? LIGHT : r > 9.3 ? OUTLINE : g.t(lam, -0.25));
         g.clip = true;
         c.pal('main');
-        g.fold(CX - hw + 1, ny + 4.6, CX - hw + 3.6, ny + 7.2);
-        g.fold(CX + hw - 1, ny + 4.2, CX + hw - 3.2, ny + 6.8);
+        g.fold(pose.torsoX(5) - hw + 1, ny + 4.6, pose.torsoX(5) - hw + 3.6, ny + 7.2);
+        g.fold(pose.torsoX(5) + hw - 1, ny + 4.2, pose.torsoX(5) + hw - 3.2, ny + 6.8);
         if (pose.cos > 0.3) {
           const fx = frontX(c);
           c.pal('trim');
           if (g.S >= 0.8) g.line(fx, ny + 4.6, fx, ny + 7.6, BASE); // 前襟的金线：像素太少时只是噪点，不画
           g.rect(fx - 1.2, ny + 7.8, 2.4, 2.4, (u, v) => (u < fx - 0.4 || v < ny + 8.5 ? HI : DARK)); // 带扣
         } else {
-          g.line(CX, ny + 4, CX, ny + 7.6, DARKEN);
+          g.line(pose.torsoX(5), ny + 4, pose.torsoX(5), ny + 7.6, DARKEN);
         }
         g.clip = false;
       },

@@ -1,6 +1,5 @@
 import { pal, ramp, HI, LIGHT } from '../../pixel/palette';
 import { LX, LY, LZ } from '../../pixel/Brush';
-import { CX } from '../../character/rig';
 import type { ItemDef } from '../../character/types';
 
 /**
@@ -34,7 +33,7 @@ export const navyScarf: ItemDef = {
         const { g, pose } = c;
         // 侧面看围巾只比脖子粗一圈，不能按正面宽度画，否则会前后各凸出一截
         const hw = pose.torsoHalf + 2.2 - 1.5 * Math.abs(pose.sin);
-        const sx = CX + pose.sin * 0.5;
+        const sx = pose.torsoX(0) + pose.sin * 0.5;
         const yc = pose.neckY + 2.1, hh = 2.6; // 颈圈上缘低于下巴，圆下巴不会被切平
         c.pal('main');
         g.grit = 0.26;
@@ -49,7 +48,7 @@ export const navyScarf: ItemDef = {
 
         if (pose.cos > 0.3) {
           // 正面能看到围巾结和垂下的一小段，末端两道浅色条纹
-          const kx = CX + (hw - 3.8) * (0.3 + pose.sin * 0.6);
+          const kx = pose.torsoX(0) + (hw - 3.8) * (0.3 + pose.sin * 0.6);
           g.capsule(kx + 0.2, yc + 2.8, kx + 0.8, yc + 9.4, 1.5, 1.8, (lam, _o, t) =>
             (t > 0.68 && t < 0.78) || (t > 0.88 && t < 0.97) ? (lam > 0.2 ? HI : LIGHT) : g.t(lam));
           g.ellipse(kx, yc + 2.2, 2.1, 2, (lam) => g.t(lam, 0.08));

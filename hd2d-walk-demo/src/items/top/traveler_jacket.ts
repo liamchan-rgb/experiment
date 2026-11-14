@@ -1,6 +1,5 @@
 import { pal, ramp, BASE, DARK, HI, LIGHT, OUTLINE } from '../../pixel/palette';
 import { DARKEN, LIGHTEN } from '../../pixel/Brush';
-import { CX } from '../../character/rig';
 import type { ItemDef } from '../../character/types';
 import { frontX, sleeveParts, torsoShape } from '../shared';
 
@@ -44,8 +43,8 @@ export const travelerJacket: ItemDef = {
         c.pal('main');
         g.clip = true;
         // 衣褶：从腋下往腰间收
-        g.fold(CX - hw + 1, ny + 4.8, CX - hw + 3.8, ny + 7.4);
-        g.fold(CX + hw - 1, ny + 4.4, CX + hw - 3.4, ny + 7);
+        g.fold(pose.torsoX(6) - hw + 1, ny + 4.8, pose.torsoX(6) - hw + 3.8, ny + 7.4);
+        g.fold(pose.torsoX(6) + hw - 1, ny + 4.4, pose.torsoX(6) + hw - 3.4, ny + 7);
         
 
         if (pose.cos > 0.3) {
@@ -62,15 +61,15 @@ export const travelerJacket: ItemDef = {
           }
         } else if (pose.cos < -0.3) {
           // 背面：后中缝 + 腰间的半腰带
-          const bx = CX - hw * 0.4 * pose.sin;
+          const bx = pose.torsoX(5) - hw * 0.4 * pose.sin;
           g.line(bx, ny + 3.5, bx, ny + 7, DARKEN);
           g.rect(bx - 3.4, ny + 7.4, 6.8, 1.6, (_u, v) => (v < ny + 8.1 ? LIGHT : DARK));
           c.pal('metal');
           g.dot(bx - 3, ny + 7.8, HI);
           g.dot(bx + 3, ny + 7.8, LIGHT);
         } else {
-          g.line(CX - 0.6, ny + 5, CX - 0.6, ny + hem - 1, DARKEN); // 侧缝
-          g.line(CX + 0.6, ny + 8.6, CX + 3, ny + 8.6, LIGHTEN); // 口袋
+          g.line(pose.torsoX(7) - 0.6, ny + 5, pose.torsoX(7) - 0.6, ny + hem - 1, DARKEN); // 侧缝
+          g.line(pose.torsoX(8) + 0.6, ny + 8.6, pose.torsoX(8) + 3, ny + 8.6, LIGHTEN); // 口袋
         }
         g.clip = false;
       },
