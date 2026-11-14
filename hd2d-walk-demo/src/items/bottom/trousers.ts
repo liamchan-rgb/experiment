@@ -16,9 +16,11 @@ const leg = (i: 0 | 1): PartDef => ({
     const fx = l.foot.x, fy = l.foot.y - 5;
     c.pal('main');
     g.anchor(fx, fy);
-    g.capsule(l.hip.x, l.hip.y, fx, fy, 2.8, 2.5, (lam) => g.t(lam, fb + 0.05));
+    // 大腿 + 小腿两段，膝盖处能弯
+    g.capsule(l.hip.x, l.hip.y, l.knee.x, l.knee.y, 2.5, 2.1, (lam) => g.t(lam, fb + 0.05));
+    g.capsule(l.knee.x, l.knee.y, fx, fy, 2.1, 1.95, (lam) => g.t(lam, fb + 0.05));
     // 膝盖和裤脚的褶
-    const kx = (l.hip.x + fx) / 2, ky = (l.hip.y + fy) / 2;
+    const kx = l.knee.x, ky = l.knee.y;
     g.fold(kx - 1.8, ky, kx + 1.4, ky + 0.7);
     g.fold(fx - 1.8, fy - 1.4, fx + 1.6, fy - 0.8, false);
   },

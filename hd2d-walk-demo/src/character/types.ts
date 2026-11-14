@@ -1,7 +1,7 @@
 import type { Palette } from '../pixel/palette';
 import type { PixelLayer } from '../pixel/PixelLayer';
 import type { Brush } from '../pixel/Brush';
-import type { ActionId, HandAnchor, Hold, Pose, Joint } from './rig';
+import type { ActionId, AnimId, HandAnchor, Hold, Pose, Joint } from './rig';
 import type { LayerId } from './layers';
 
 /** 装备槽位 */
@@ -17,7 +17,7 @@ export interface DrawCtx {
   dir: Dir5;
   /** sheet 列号：0-1 待机，2-7 行走 */
   frame: number;
-  anim: 'idle' | 'walk' | ActionId;
+  anim: AnimId;
   /** 这一帧的骨架姿态（关节坐标、手部锚点等） */
   pose: Pose;
   /** 当前部件的临时图层（像素坐标），只写调色板索引 */

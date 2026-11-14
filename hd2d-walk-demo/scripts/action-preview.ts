@@ -1,12 +1,12 @@
 /**
- * 战斗动作 / 装备预览：每行一套「护甲 + 武器」，先是正面和右前的待机，再是这把武器的攻击动作
+ * 战斗动作 / 装备预览：每行一套「护甲 + 武器」，先是右侧的普通待机做对比，再是战斗待机（正面、右前、右侧两帧），然后是这把武器的攻击动作
  * （右侧 4 帧 = 战斗场景里的朝向，右前 4 帧），最后是施法 / 鼓舞动作的右侧 4 帧。
  *   npm run action-preview -- <输出.png>
  */
 import { writeFileSync } from 'node:fs';
 import { PixelLayer } from '../src/pixel/PixelLayer';
 import { composeFrame } from '../src/character/paperdoll';
-import { ACTION_FRAMES, SPR_H, SPR_W, type ActionId } from '../src/character/rig';
+import { ACTION_FRAMES, READY_FRAMES, SPR_H, SPR_W, type ActionId } from '../src/character/rig';
 import type { Dir5 } from '../src/character/types';
 import { CHARACTERS, buildEquipment, type CharacterPreset } from '../src/items/characters';
 import { getItem } from '../src/items/registry';
@@ -23,7 +23,7 @@ const rows: { label: string; p: CharacterPreset; top?: string }[] = [
 ];
 
 const Z = 4, PAD = 2;
-const head: [Dir5, number][] = [['S', 0], ['SE', 0]];
+const head: [Dir5, number][] = [['E', 0], ['S', READY_FRAMES[0]], ['SE', READY_FRAMES[0]], ['E', READY_FRAMES[0]], ['E', READY_FRAMES[1]]];
 function rowCells(attack: ActionId): [Dir5, number][] {
   return [
     ...head,

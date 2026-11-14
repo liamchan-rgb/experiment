@@ -91,7 +91,8 @@ export const body: ItemDef = {
         c.pal('skin');
         for (const leg of c.pose.legs) {
           const fb = farBias(c, leg.foot);
-          g.capsule(leg.hip.x, leg.hip.y, leg.foot.x, leg.foot.y - 1.5, 2.2, 1.8, (lam) => g.t(lam, fb));
+          g.capsule(leg.hip.x, leg.hip.y, leg.knee.x, leg.knee.y, 2, 1.7, (lam) => g.t(lam, fb));
+          g.capsule(leg.knee.x, leg.knee.y, leg.foot.x, leg.foot.y - 1.5, 1.7, 1.5, (lam) => g.t(lam, fb));
         }
       },
     },
