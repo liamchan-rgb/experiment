@@ -3,7 +3,7 @@
 
 用法：python3 tools/vfx_gif.py <vfx-preview 输出目录> <营地素材目录> [放大倍数] [场景 id,...]
 营地素材目录里要有 MeadowCampWideFarForest / Ground / Midground 三张（桌游仓库 Assets.xcassets 里的）。
-另外输出 skills.gif / hits.gif 两张拼图。
+另外按 GROUPS 输出几张拼图（skills / shields / support / hits / monster-hits / deaths）。
 """
 import glob, json, math, os, subprocess, sys
 from PIL import Image, ImageDraw
@@ -92,8 +92,14 @@ for sid in ids:
     save_gif(os.path.join(src, sid + '.gif'), frames, meta['fps'])
     print(sid, len(frames))
 
-SKILLS = ['runeSlash', 'dragonFlame', 'starlightPulse', 'runeWard', 'battleRune', 'dragonScaleWard', 'dragonOrder', 'rally']
-HITS = ['hitBlade', 'hitGreat', 'hitBow', 'hitStaff', 'hitAmbush', 'hitClaw', 'hitWard']
+GROUPS = {
+    'skills': ['runeSlash', 'dragonFlame', 'starlightPulse', 'battleRune', 'dragonOrder', 'rally', 'sweep', 'natural20'],
+    'shields': ['runeWard', 'dragonScaleWard', 'dragonSoulWard', 'shieldDome', 'shieldShell', 'shieldShellHit', 'hitWard', 'shieldBreak'],
+    'support': ['healMicro', 'healStandard', 'healStrong', 'buffAura', 'playerDown', 'downAura', 'revive'],
+    'hits': ['hitBlade', 'hitGreat', 'hitBow', 'hitStaff', 'hitAmbush', 'projBow', 'projStaff'],
+    'monster-hits': ['hitClaw', 'hitSlime', 'hitWolf', 'hitArrowM', 'hitStone', 'hitTroll', 'hitDragon', 'projArcher', 'projDragon'],
+    'deaths': ['deathSlime', 'deathWolf', 'deathGoblin', 'deathStone', 'deathTroll', 'deathDragon', 'deathBurst'],
+}
 
 
 def mosaic(name, group, cols, scale):
@@ -118,5 +124,5 @@ def mosaic(name, group, cols, scale):
     print(name, len(out))
 
 
-mosaic('skills.gif', SKILLS, 2, 2)
-mosaic('hits.gif', HITS, 2, 2)
+for name, group in GROUPS.items():
+    mosaic(name + '.gif', group, 2, 2)

@@ -55,11 +55,37 @@ const INFO: Record<string, { duration: number; release: number; dim: number; tin
   dragonFlame: { duration: 2.2, release: 0.46, dim: 0.34, tint: [1, 0.78, 0.62] },
   dragonOrder: { duration: 2.1, release: 0.56, dim: 0.32, tint: [1, 0.78, 0.72] },
   rally: { duration: 2.0, release: 0.56, dim: 0.24, tint: [1, 0.94, 0.8] },
+  healMicro: { duration: 1.35, release: 0.1, dim: 0.26, tint: [0.82, 0.96, 0.86] },
+  healStandard: { duration: 1.8, release: 0.1, dim: 0.28, tint: [0.8, 0.96, 0.85] },
+  healStrong: { duration: 2.3, release: 0.1, dim: 0.32, tint: [0.78, 0.95, 0.84] },
+  sweep: { duration: 2.0, release: 1.048, dim: 0.26, tint: [0.82, 0.9, 1] },
+  natural20: { duration: 2.8, release: 0.05, dim: 0.5, tint: [1, 0.92, 0.7] },
+  shieldDome: { duration: 1.9, release: 0.46, dim: 0.26, tint: [0.8, 0.92, 1] },
+  shieldShell: { duration: 3.0, release: 0.5, dim: 0, tint: [1, 1, 1] },
+  shieldShellHit: { duration: 3.0, release: 0.5, dim: 0, tint: [1, 1, 1] },
+  shieldBreak: { duration: 1.2, release: 0.03, dim: 0, tint: [1, 1, 1] },
+  deathSlime: { duration: 1.8, release: 0.04, dim: 0, tint: [1, 1, 1] },
+  deathWolf: { duration: 1.8, release: 0.04, dim: 0, tint: [1, 1, 1] },
+  deathGoblin: { duration: 1.8, release: 0.04, dim: 0, tint: [1, 1, 1] },
+  deathStone: { duration: 2.0, release: 0.04, dim: 0, tint: [1, 1, 1] },
+  deathTroll: { duration: 1.8, release: 0.04, dim: 0, tint: [1, 1, 1] },
+  deathDragon: { duration: 2.4, release: 0.04, dim: 0, tint: [1, 1, 1] },
+  deathBurst: { duration: 1.8, release: 0.04, dim: 0, tint: [1, 1, 1] },
+  playerDown: { duration: 2.2, release: 0.05, dim: 0, tint: [1, 1, 1] },
+  buffAura: { duration: 3.0, release: 0.3, dim: 0, tint: [1, 1, 1] },
+  revive: { duration: 1.8, release: 0.3, dim: 0, tint: [1, 1, 1] },
+  downAura: { duration: 3.0, release: 0.5, dim: 0, tint: [1, 1, 1] },
+  projBow: { duration: 0.54, release: 0.19, dim: 0, tint: [1, 1, 1] },
+  projStaff: { duration: 1.05, release: 0.7, dim: 0, tint: [1, 1, 1] },
+  projArcher: { duration: 0.57, release: 0.22, dim: 0, tint: [1, 1, 1] },
+  projDragon: { duration: 0.57, release: 0.22, dim: 0, tint: [1, 1, 1] },
 };
+/** 游戏里的「打击类」：没有技能镜头、导演镜头和压暗，只有震屏（MeadowSkillProcedural.isBlow） */
+const isBlow = (id: string) => id.startsWith('hit') || id.startsWith('proj') || id.startsWith('shieldShell') || id.startsWith('death') || id === 'downAura' || id === 'buffAura' || id === 'shieldBreak';
 
 function skillCamera(id: string, t: number, dir: number): Cam {
   const i = INFO[id];
-  if (!i || t < 0 || t >= i.duration) return ZERO;
+  if (!i || t < 0 || t >= i.duration || isBlow(id)) return ZERO;
   const c = { ...ZERO };
   switch (id) {
     case 'starlightPulse':
@@ -98,15 +124,31 @@ function skillCamera(id: string, t: number, dir: number): Cam {
         c.zoom += Math.max(0, thump(t, t0, amp, 12, 0)); c.dy += -thump(t, t0, 1.6 + k, 14, 40, 0.5);
       });
       break;
+    case 'playerDown':
+      c.zoom = Math.max(0, thump(t, 0, 0.06, 4, 0)); c.dx = dir * thump(t, 0, 10, 4, 30); c.dy = -thump(t, 0, 8, 4.5, 36, 0.6); c.rot = -dir * thump(t, 0, 0.016, 4, 22); break;
+    case 'natural20': {
+      c.zoom = Math.max(0, thump(t, 0, 0.07, 5, 0)); c.dx = dir * thump(t, 0, 12, 4.5, 34); c.dy = -thump(t, 0, 8, 5, 40, 0.6);
+      c.rot = dir * thump(t, 0, 0.02, 5, 24);
+      const r = t - 0.4;
+      if (r >= 0 && r < 1.2) c.dy += 1.2 * Math.sin(t * 53) * (1 - r / 1.2);
+      break;
+    }
+    case 'sweep':
+      c.dx = dir * thump(t, 1.048, 6, 9, 30); c.dy = -thump(t, 1.048, 2.4, 10, 40, 0.6);
+      c.zoom = Math.max(0, thump(t, 1.048, 0.035, 7, 0)); c.rot = dir * thump(t, 1.048, 0.006, 9, 26); break;
+    default:
+      c.zoom = 0.006 * Math.sin((Math.PI * t) / i.duration);
   }
   return c;
 }
 
 function trauma(id: string, t: number): number {
   const i = INFO[id];
-  if (!i || t < 0) return 0;
+  if (!i || t < 0 || id.startsWith('hit') || id.startsWith('proj') || id.startsWith('heal') || id.startsWith('shieldShell') || id === 'downAura' || id === 'buffAura' || id === 'shieldDome') return 0;
   const table: Record<string, [number, number]> = {
     dragonFlame: [0.95, 3.2], runeSlash: [0.7, 4.5], starlightPulse: [0.5, 4], dragonScaleWard: [0.5, 4], dragonOrder: [0.5, 4],
+    natural20: [1.0, 1.7], playerDown: [0.9, 2.6], sweep: [0.8, 4.0], shieldBreak: [0.6, 4.5],
+    deathDragon: [0.8, 3.0], deathTroll: [0.6, 3.6], deathStone: [0.7, 3.4], deathSlime: [0.4, 4.5], deathWolf: [0.4, 4.5], deathGoblin: [0.4, 4.5], deathBurst: [0.4, 4.5],
   };
   const [amp, rate] = table[id] ?? [0.42, 4.5];
   const r = t - i.release;
@@ -124,7 +166,17 @@ function shake(tr: number, time: number): Cam {
 /** 导演镜头：蓄力时推近施法者，出手时摇向目标，之后慢慢拉开（舞台坐标） */
 function shot(id: string, t: number, caster: Pt, targets: Pt[]): { fx: number; fy: number; w: number; zoom: number } {
   const i = INFO[id];
-  if (!i || t < 0 || t >= i.duration || !targets.length) return { fx: 500, fy: 300, w: 0, zoom: 0 };
+  if (!i || t < 0 || t >= i.duration || !targets.length || id.startsWith('heal') || isBlow(id)) return { fx: 500, fy: 300, w: 0, zoom: 0 };
+  const mx = targets.reduce((a, p) => a + p.x, 0) / targets.length, my = targets.reduce((a, p) => a + p.y, 0) / targets.length;
+  if (id === 'playerDown') {
+    // 倒地：镜头慢慢推向倒下的人，停一会儿（脚底往上 30 单位；这里传进来的是胸口 = 脚底往上 73）
+    const w = smooth(t / 0.2) * (1 - smooth((t - 1.0) / 0.8));
+    return { fx: mx, fy: my + 43, w, zoom: w * 0.22 };
+  }
+  if (id === 'natural20') {
+    const w = smooth(t / 0.12) * (1 - smooth((t - 1.3) / 0.9));
+    return { fx: mx, fy: my, w, zoom: w * 0.34 };
+  }
   const rel = Math.max(0.2, i.release);
   const tx = targets.reduce((a, p) => a + p.x, 0) / targets.length, ty = targets.reduce((a, p) => a + p.y, 0) / targets.length;
   const spread = Math.max(...targets.map((p) => Math.abs(p.x - tx)));
@@ -218,7 +270,9 @@ const look = {
 /** 特效模块缓存 */
 const mods = new Map<string, unknown>();
 const loaders = import.meta.glob('../vendor/pixelfx/src/fx/*/*.js');
+const OURS: Record<string, () => Promise<unknown>> = { 'our/aegis': () => import('../src/vfx/aegis') };
 async function mod(id: string): Promise<unknown> {
+  if (!mods.has(id) && OURS[id]) mods.set(id, await OURS[id]());
   if (!mods.has(id)) {
     const load = loaders[`../vendor/pixelfx/src/fx/${id}.js`];
     if (!load) throw new Error(`pixelfx effect ${id} not found`);
@@ -251,13 +305,20 @@ interface Scene {
   duration: number;
   kind: 'skill' | 'hit';
   heroes: Hero[];
-  monsters: { slot: string; fx: string; opts?: Record<string, unknown> }[];
+  monsters: Monster[];
   caster: string;
   targets: string[];
   events: FxEvent[];
   /** 命中：哪一刻命中、多重、打的是谁 */
   hit?: { at: number; tier: Tier; target: string; dir: number };
+  /** 镜头 / 压暗按游戏里哪个特效 id 来（默认 = id），从场景的第几秒开始（前面留给出手动作） */
+  cue?: string;
+  cueAt?: number;
+  /** 镜头方向（+1 往右） */
+  dir?: number;
 }
+type Death = 'melt' | 'dust' | 'shatter' | 'burst' | 'crumble';
+interface Monster { slot: string; fx: string; opts?: Record<string, unknown>; dieAt?: number; death?: Death; edge?: string }
 
 /** 一个角色当前的脚底位置（像素），含前冲和被击退 */
 function footOf(s: Scene, slot: string, t: number): Pt {
@@ -280,6 +341,11 @@ const PAL = {
   steel: ['#101420', '#2a3448', '#566880', '#94a8c0', '#cad8e8', '#f0f6ff', '#ffffff'],
   ice: ['#081a30', '#103a6a', '#1e6ab0', '#3ca0e6', '#80d0ff', '#d0f2ff', '#ffffff'],
   magenta: ['#2a0420', '#6a0c50', '#b01e8a', '#f04ab8', '#ff8ad8', '#ffd0f0', '#ffffff'],
+  heal: ['#08261a', '#0e4228', '#1a7a44', '#2eb862', '#6ee896', '#b8ffd0', '#e8fff0', '#ffffff'],
+  sweep: ['#081436', '#14328c', '#2a64d0', '#5ca8ff', '#9ad2ff', '#d8f0ff', '#ffffff'],
+  fury: ['#2a0806', '#6a160a', '#b83214', '#f0602a', '#ff9a4a', '#ffd890', '#ffffff'],
+  down: ['#140c14', '#2e1c28', '#5a3448', '#8a5068', '#b8889a', '#e8d0d8', '#ffffff'],
+  goo: ['#0c1e10', '#1a4224', '#2e7a3a', '#4cb050', '#8ae07a', '#d0ffc0', '#ffffff'],
 };
 
 // ---------------------------------------------------------------- 场景
@@ -351,7 +417,7 @@ function scenes(): Scene[] {
       monsters: enemies,
       events: [
         ...ALL_P.map((p) => ({ fx: 'arcane/rune-circle', at: 0.15, where: at(p), stop: 2.0, opts: { palette: PAL.rune } }) as FxEvent),
-        ...ALL_P.map((p) => ({ fx: 'holy/divine-shield', at: rel, where: at(p), stop: 2.1, opts: { palette: PAL.rune } }) as FxEvent),
+        ...ALL_P.map((p, k) => ({ fx: 'our/aegis', at: rel + 0.08 * k, where: at(p), stop: 2.1, opts: { palette: PAL.rune, seed: k } }) as FxEvent),
       ],
     });
   }
@@ -378,7 +444,7 @@ function scenes(): Scene[] {
       events: [
         { fx: 'arcane/spell-charge', at: 0, where: at('p1'), stop: rel, opts: { palette: PAL.amber } },
         ...ALL_P.map((p) => ({ fx: 'holy/heal', at: rel - 0.1, where: at(p), opts: { palette: PAL.amber } }) as FxEvent),
-        ...ALL_P.map((p) => ({ fx: 'holy/divine-shield', at: rel + 0.1, where: at(p), stop: 2.0, opts: { palette: PAL.amber } }) as FxEvent),
+        ...ALL_P.map((p, k) => ({ fx: 'our/aegis', at: rel + 0.1 + 0.08 * k, where: at(p), stop: 2.0, opts: { palette: PAL.amber, seed: k } }) as FxEvent),
       ],
     });
   }
@@ -455,13 +521,344 @@ function scenes(): Scene[] {
     heroes: party({ slot: 'p1', preset: look.heavy, top: 'top_rune_armor', anim: (t) => (t >= I - 0.05 && t < I + 0.5 ? CLIP_FRAMES.guard[t < I + 0.15 ? 0 : 1] : readyLoop(t)) }, ally('p4', look.mage, 'top_rune_armor'), ally('p2', look.ranger, 'top_leather_armor')),
     monsters: enemies,
     events: [
-      { fx: 'holy/divine-shield', at: 0, where: at('p1'), stop: 1.5, opts: { palette: PAL.ice } },
-      { fx: 'melee/claw-swipe', at: I - 0.2, where: (s, t) => [{ x: FEET.p1.x + 26, y: FEET.p1.y }], opts: { flip: true } },
-      { fx: 'impacts/shield-block', at: I, where: (s, t) => [{ x: FEET.p1.x + 8, y: FEET.p1.y }], opts: { flip: true, palette: PAL.ice } },
+      { fx: 'our/aegis', at: 0, where: at('p1'), stop: 1.5, opts: { palette: PAL.ice, form: 0, hitAt: I, hitAngle: -0.3 } },
+      { fx: 'melee/claw-swipe', at: I - 0.2, where: (s, t) => [{ x: FEET.p1.x + 36, y: FEET.p1.y }], opts: { flip: true } },
     ],
     hit: { at: I, tier: 'light', target: 'p1', dir: -1 },
   });
+
+  // ================================================================ 其余特效
+  const hurtAt = (at: number, h: Hero): Hero => ({ ...h, anim: (t) => (t >= at && t < at + 6 / 12 ? CLIP_FRAMES.hurt[Math.floor((t - at) * 12)] : readyLoop(t)) });
+  const defeat = CLIP_FRAMES.defeat, lying = defeat[defeat.length - 1];
+  const fallAt = (at: number) => (t: number) => (t < at ? readyLoop(t) : t < at + 0.06 ? CLIP_FRAMES.hurt[0] : defeat[Math.min(defeat.length - 1, Math.floor((t - at - 0.06) * 10))]);
+  const allies = (): [Hero, Hero] => [ally('p4', look.mage, 'top_rune_armor'), ally('p2', look.ranger, 'top_leather_armor')];
+  const p1 = (preset: CharacterPreset, top: string, anim?: (t: number) => number, travel?: (t: number) => number): Hero => ({ slot: 'p1', preset, top, anim: anim ?? readyLoop, travel });
+  /** 怪物占位：游戏里是自己的怪物图，这里用 pixelfx 的小怪代替，m1 换成对应的那只 */
+  const STAND: Record<string, Monster> = {
+    slime: { slot: 'm1', fx: 'critters/slime', opts: { palette: PAL.goo.slice(0, 6) }, edge: '#d0ffc0' },
+    wolf: { slot: 'm1', fx: 'critters/bat', opts: { palette: ['#0e0c10', '#24202a', '#403a48', '#605a6a', '#8a8494', '#b8b4c0', '#e8e6ee'], hover: 18 }, edge: '#ffe0a0' },
+    goblin: { slot: 'm1', fx: 'critters/eyeball', opts: { seed: 3 }, edge: '#ffd0a0' },
+    stone: { slot: 'm1', fx: 'critters/slime', opts: { palette: ['#141418', '#2e2e38', '#4e4e5c', '#76768a', '#a0a0b4', '#d0d0e0'], hop: 6, seed: 7 }, edge: '#f0f0ff' },
+    troll: { slot: 'm1', fx: 'critters/ghost', opts: { palette: ['#0c1a10', '#1a3420', '#2e5a34', '#4e8a50', '#80b878', '#c0e0b0', '#ffffff'], hover: 6, seed: 5 }, edge: '#e0ffc0' },
+    dragon: { slot: 'm1', fx: 'critters/flying-skull', opts: { seed: 2 }, edge: '#ffd890' },
+  };
+  const foes = (m1: Monster, extra: Partial<Monster> = {}) => [{ ...m1, ...extra }, enemies[1], enemies[2]];
+
+  // ---- 护盾
+  {
+    const rel = INFO.dragonSoulWard.release;
+    S({
+      id: 'dragonSoulWard', name: '龙魂守护', duration: 2.0, kind: 'skill', caster: 'p1', targets: ALL_P,
+      heroes: party(p1(look.dragon, 'top_dragon_armor', clip('cast', rel)), ...allies()),
+      monsters: enemies,
+      events: [
+        { fx: 'arcane/spell-charge', at: 0, where: at('p1'), stop: rel, opts: { palette: PAL.ice } },
+        { fx: 'holy/feather-burst', at: rel, where: at('p1', -20), opts: { palette: PAL.ice } },
+        ...ALL_P.map((p, k) => ({ fx: 'our/aegis', at: rel + 0.06 * k, where: at(p), stop: 1.8, opts: { palette: PAL.ice, rx: 18, ry: 24, form: 0.3, seed: k } }) as FxEvent),
+      ],
+    });
+  }
+  {
+    const rel = INFO.shieldDome.release;
+    S({
+      id: 'shieldDome', name: '护盾（防御 / 护盾药水）', duration: 1.9, kind: 'skill', caster: 'p1', targets: ['p1'],
+      heroes: party(p1(look.heavy, 'top_rune_armor', (t) => (t >= rel - 0.1 && t < 1.5 ? CLIP_FRAMES.guard[t < rel + 0.1 ? 0 : 1] : readyLoop(t))), ...allies()),
+      monsters: enemies,
+      events: [{ fx: 'our/aegis', at: rel - 0.2, where: at('p1'), stop: 1.7, opts: { palette: PAL.ice } }],
+    });
+  }
+  S({
+    id: 'shieldShell', name: '护盾持续', duration: 3.0, kind: 'skill', caster: 'p1', targets: ['p1'],
+    heroes: party(p1(look.heavy, 'top_rune_armor'), ...allies()), monsters: enemies,
+    events: [{ fx: 'our/aegis', at: 0, where: at('p1'), stop: 2.8, opts: { palette: PAL.ice, form: 0.5 } }],
+  });
+  S({
+    id: 'shieldShellHit', name: '护盾挨打', duration: 2.2, kind: 'hit', caster: 'm1', targets: ['p1'], cue: 'shieldShellHit',
+    heroes: party(p1(look.heavy, 'top_rune_armor', (t) => (t >= I - 0.05 && t < I + 0.5 ? CLIP_FRAMES.guard[t < I + 0.15 ? 0 : 1] : readyLoop(t))), ...allies()),
+    monsters: foes(STAND.wolf),
+    events: [
+      { fx: 'our/aegis', at: 0, where: at('p1'), stop: 2.0, opts: { palette: PAL.ice, form: 0, hitAt: I, hitAngle: -0.35 } },
+      { fx: 'melee/claw-swipe', at: I - 0.2, where: () => [{ x: FEET.p1.x + 36, y: FEET.p1.y }], opts: { flip: true } },
+    ],
+    hit: { at: I, tier: 'light', target: 'p1', dir: -1 },
+  });
+  S({
+    id: 'shieldBreak', name: '护盾被打碎', duration: 1.9, kind: 'hit', caster: 'm1', targets: ['p1'], cueAt: I,
+    heroes: party(hurtAt(I, p1(look.heavy, 'top_rune_armor')), ...allies()),
+    monsters: foes(STAND.troll),
+    events: [
+      { fx: 'our/aegis', at: 0, where: at('p1'), stop: 1.8, opts: { palette: PAL.ice, form: 0, breakAt: I } },
+      { fx: 'impacts/blunt-hit', at: I, where: at('p1', -14), opts: { flip: true } },
+    ],
+    hit: { at: I, tier: 'heavy', target: 'p1', dir: -1 },
+  });
+
+  // ---- 治疗 / 增益 / 倒地 / 复活
+  S({
+    id: 'healMicro', name: '小治疗', duration: 1.35, kind: 'skill', caster: 'p4', targets: ['p1'],
+    heroes: party(p1(look.adventurer, 'top_leather_armor'), ally('p4', look.mage, 'top_rune_armor'), ally('p2', look.ranger, 'top_leather_armor')), monsters: enemies,
+    events: [{ fx: 'holy/heal', at: 0.05, where: at('p1'), opts: { palette: PAL.heal } }],
+  });
+  S({
+    id: 'healStandard', name: '治疗', duration: 1.8, kind: 'skill', caster: 'p4', targets: ['p1'],
+    heroes: party(p1(look.adventurer, 'top_leather_armor'), ally('p4', look.mage, 'top_rune_armor'), ally('p2', look.ranger, 'top_leather_armor')), monsters: enemies,
+    events: [
+      { fx: 'nature/healing-bloom', at: 0, where: at('p1') },
+      { fx: 'holy/heal', at: 0.25, where: at('p1'), opts: { palette: PAL.heal } },
+    ],
+  });
+  S({
+    id: 'healStrong', name: '大治疗（全队）', duration: 2.3, kind: 'skill', caster: 'p4', targets: ALL_P,
+    heroes: party(p1(look.adventurer, 'top_leather_armor'), { slot: 'p4', preset: look.mage, top: 'top_rune_armor', anim: clip('cast', 0.15) }, ally('p2', look.ranger, 'top_leather_armor')), monsters: enemies,
+    events: [
+      { fx: 'holy/heal-aoe', at: 0, where: () => [{ x: (FEET.p1.x + FEET.p2.x + FEET.p4.x) / 3, y: FEET.p1.y + 6 }], opts: { reach: 70 } },
+      ...ALL_P.map((p, k) => ({ fx: 'holy/heal', at: 0.35 + 0.1 * k, where: at(p), opts: { palette: PAL.heal } }) as FxEvent),
+    ],
+  });
+  S({
+    id: 'buffAura', name: '增益光环（持续）', duration: 3.0, kind: 'skill', caster: 'p1', targets: ['p1'],
+    heroes: party(p1(look.heavy, 'top_rune_armor'), ...allies()), monsters: enemies,
+    events: [
+      { fx: 'status/rage', at: 0.3, where: at('p1'), stop: 2.7, opts: { palette: PAL.fury } },
+      { fx: 'holy/blessing', at: 0.3, where: at('p1'), opts: { palette: PAL.fury } },
+    ],
+  });
+  S({
+    id: 'playerDown', name: '英雄倒地', duration: 2.4, kind: 'hit', caster: 'm1', targets: ['p1'], cueAt: I, dir: -1,
+    heroes: party({ ...p1(look.adventurer, 'top_leather_armor'), anim: fallAt(I) }, ...allies()),
+    monsters: foes(STAND.troll),
+    events: [
+      { fx: 'impacts/blunt-hit', at: I, where: at('p1', -14), opts: { flip: true } },
+      { fx: 'impacts/hit-flash', at: I, where: at('p1'), opts: { palette: PAL.down } },
+      { fx: 'impacts/heavy-landing', at: I + 0.5, where: at('p1') },
+      { fx: 'spawn/poof', at: I + 0.5, where: at('p1'), opts: { palette: PAL.down } },
+    ],
+    hit: { at: I, tier: 'heavy', target: 'p1', dir: -1 },
+  });
+  S({
+    id: 'downAura', name: '倒地等待复活（持续）', duration: 3.0, kind: 'skill', caster: 'p1', targets: ['p1'],
+    heroes: party({ ...p1(look.adventurer, 'top_leather_armor'), anim: () => lying }, ...allies()), monsters: enemies,
+    events: [
+      { fx: 'arcane/rune-circle', at: 0.2, where: at('p1'), stop: 2.8, opts: { palette: PAL.gold } },
+      { fx: 'pickups/crystal-shard', at: 0.5, where: at('p1', -14), stop: 2.8, opts: { palette: PAL.gold } },
+    ],
+  });
+  S({
+    id: 'revive', name: '复活', duration: 2.2, kind: 'skill', caster: 'p1', targets: ['p1'], cueAt: 0.2,
+    heroes: party({ ...p1(look.adventurer, 'top_leather_armor'), anim: (t) => (t < 0.75 ? lying : t < 0.75 + defeat.length / 10 ? defeat[defeat.length - 1 - Math.floor((t - 0.75) * 10)] : t < 1.6 ? CLIP_FRAMES.victory[Math.floor(t * 4) % 2] : readyLoop(t)) }, ...allies()),
+    monsters: enemies,
+    events: [
+      { fx: 'holy/holy-pillar', at: 0.2, where: at('p1'), stop: 1.3, opts: { palette: PAL.gold } },
+      { fx: 'holy/feather-burst', at: 0.75, where: at('p1', -18), opts: { palette: PAL.gold } },
+      { fx: 'holy/heal', at: 1.0, where: at('p1'), opts: { palette: PAL.gold.concat('#ffffff') } },
+    ],
+  });
+
+  // ---- 攻击：横扫、天命 20、远程飞行物
+  {
+    const rel = INFO.sweep.release;
+    S({
+      id: 'sweep', name: '横扫（全体）', duration: 2.0, kind: 'skill', caster: 'p1', targets: ALL_M,
+      heroes: party(p1(look.heavy, 'top_rune_armor', clip('heavy', rel), dashTo(FEET.m3, FEET.p1, rel)), ...allies()),
+      monsters: enemies,
+      events: [
+        { fx: 'melee/heavy-cleave', at: rel - 0.28, where: at('p1'), opts: { palette: PAL.sweep } },
+        { fx: 'melee/spin-slash', at: rel - 0.05, where: () => [{ x: (FEET.m1.x + FEET.m2.x + FEET.m3.x) / 3, y: FEET.m1.y + 12 }], opts: { palette: PAL.sweep } },
+        ...ALL_M.map((m, k) => ({ fx: 'impacts/hit-spark', at: rel + 0.04 * k, where: at(m, -10), opts: { palette: PAL.sweep } }) as FxEvent),
+      ],
+    });
+  }
+  S({
+    id: 'natural20', name: '天命 20（暴击结算）', duration: 3.4, kind: 'skill', caster: 'p1', targets: ['m1'], cueAt: I,
+    heroes: party(p1(look.star, 'top_starlight_armor', clip('slash', I, 1 / 13), dashTo(FEET.m1, FEET.p1, I, 0.9)), ...allies()),
+    monsters: foes(STAND.dragon, { dieAt: I + 1.2, death: 'burst' }),
+    events: [
+      { fx: 'holy/sunburst', at: I, where: at('m1', -18), behind: true, stop: I + 1.8, opts: { palette: PAL.gold } },
+      { fx: 'melee/sword-slash', at: I - 0.12, where: at('p1'), opts: { palette: PAL.gold } },
+      { fx: 'impacts/crit-hit', at: I, where: at('m1', -12), opts: { palette: PAL.gold } },
+      { fx: 'ui/crit-number', at: I + 0.1, where: at('m1', -44), opts: { text: '20!', label: 'NAT', palette: PAL.gold.concat('#ffffff') } },
+      { fx: 'explosions/small-explosion', at: I + 1.2, where: at('m1'), stop: I + 2.4, opts: { size: 0.6 } },
+    ],
+    hit: { at: I, tier: 'heavy', target: 'm1', dir: 1 },
+  });
+  /** 飞行物：from → to 的抛物线（像素），k = 0..1 */
+  const fly = (from: string, to: string, t0: number, t1: number, arc = 6, lift = 26) => (s: Scene, t: number) => {
+    const k = clamp01((t - t0) / (t1 - t0)), a = footOf(s, from, t), b = footOf(s, to, t), sgn = Math.sign(b.x - a.x);
+    return [{ x: a.x + sgn * 12 + (b.x - a.x - sgn * 22) * k, y: a.y - lift + (b.y - a.y + lift - 14) * k - Math.sin(k * Math.PI) * arc }];
+  };
+  {
+    const L = 0.5, A = L + 0.19;
+    S({
+      id: 'projBow', name: '箭（飞行）', duration: 1.5, kind: 'hit', caster: 'p1', targets: ['m1'], cueAt: L,
+      heroes: party(p1(look.ranger, 'top_leather_armor', clip('shoot', L)), ...allies()), monsters: enemies,
+      events: [
+        { fx: 'projectiles/arrow', at: L, stop: A, follow: true, where: fly('p1', 'm1', L, A, 4, 30) },
+        { fx: 'impacts/hit-spark', at: A, where: at('m1', -12), opts: { palette: PAL.gold } },
+      ],
+      hit: { at: A, tier: 'light', target: 'm1', dir: 1 },
+    });
+  }
+  {
+    const L = 0.3, F = L + 0.49, A = F + 0.21;
+    S({
+      id: 'projStaff', name: '法球（蓄力 + 飞行）', duration: 1.7, kind: 'hit', caster: 'p1', targets: ['m1'], cueAt: L,
+      heroes: party(p1(look.mage, 'top_rune_armor', clip('cast', F)), ...allies()), monsters: enemies,
+      events: [
+        { fx: 'arcane/spell-charge', at: L, where: at('p1'), stop: F, opts: { palette: PAL.magenta } },
+        { fx: 'projectiles/plasma-shot', at: F, stop: A, follow: true, where: fly('p1', 'm1', F, A, 2, 32), opts: { palette: PAL.magenta.concat('#ffffff') } },
+        { fx: 'arcane/mana-burst', at: A, where: at('m1'), opts: { palette: PAL.magenta } },
+      ],
+      hit: { at: A, tier: 'medium', target: 'm1', dir: 1 },
+    });
+  }
+  {
+    const L = 0.5, A = L + 0.22;
+    S({
+      id: 'projArcher', name: '怪物射箭', duration: 1.6, kind: 'hit', caster: 'm1', targets: ['p1'], cueAt: L,
+      heroes: party(hurtAt(A, p1(look.adventurer, 'top_leather_armor')), ...allies()), monsters: foes(STAND.goblin),
+      events: [
+        { fx: 'projectiles/arrow', at: L, stop: A, follow: true, where: fly('m1', 'p1', L, A, 4, 22), opts: { flip: true } },
+        { fx: 'impacts/hit-spark', at: A, where: at('p1', -14), opts: { flip: true } },
+      ],
+      hit: { at: A, tier: 'light', target: 'p1', dir: -1 },
+    });
+    S({
+      id: 'projDragon', name: '怪物吐火球', duration: 1.8, kind: 'hit', caster: 'm1', targets: ['p1'], cueAt: L,
+      heroes: party(hurtAt(A, p1(look.adventurer, 'top_leather_armor')), ...allies()), monsters: foes(STAND.dragon),
+      events: [
+        { fx: 'fire/fireball', at: L, stop: A, follow: true, where: fly('m1', 'p1', L, A, 3, 26), opts: { flip: true, radius: 4 } },
+        { fx: 'impacts/blunt-hit', at: A, where: at('p1', -14), opts: { flip: true } },
+        { fx: 'status/burning', at: A, where: at('p1'), stop: 1.5 },
+      ],
+      hit: { at: A, tier: 'medium', target: 'p1', dir: -1 },
+    });
+  }
+
+  // ---- 怪物打人
+  const monsterHit = (id: string, name: string, who: Monster, tier: Tier, events: FxEvent[], duration = 1.7): Scene => ({
+    id, name, duration, kind: 'hit', caster: 'm1', targets: ['p1'],
+    heroes: party(hurtAt(I, p1(look.adventurer, 'top_leather_armor')), ...allies()), monsters: foes(who), events,
+    hit: { at: I, tier, target: 'p1', dir: -1 },
+  });
+  const onP1 = (dx = 0, dy = 0) => () => [{ x: FEET.p1.x + dx, y: FEET.p1.y + dy }];
+  S(monsterHit('hitSlime', '史莱姆撞击', STAND.slime, 'light', [
+    { fx: 'nature/acid-splash', at: I - 0.05, where: onP1(4), opts: { flip: true } },
+    { fx: 'impacts/hit-flash', at: I, where: at('p1'), opts: { palette: PAL.goo } },
+  ]));
+  S(monsterHit('hitWolf', '狼连爪', STAND.wolf, 'medium', [
+    { fx: 'melee/claw-swipe', at: I - 0.42, where: onP1(26), opts: { flip: true } },
+    { fx: 'melee/claw-swipe', at: I - 0.2, where: onP1(24, -4), opts: { flip: true, seed: 5 } },
+    { fx: 'impacts/hit-flash', at: I, where: at('p1') },
+  ]));
+  S(monsterHit('hitArrowM', '箭射中英雄', STAND.goblin, 'light', [
+    { fx: 'projectiles/arrow', at: I - 0.25, stop: I, follow: true, where: fly('m1', 'p1', I - 0.25, I, 4, 22), opts: { flip: true } },
+    { fx: 'impacts/hit-spark', at: I, where: at('p1', -14), opts: { flip: true } },
+  ]));
+  S(monsterHit('hitStone', '石像重拳', STAND.stone, 'heavy', [
+    { fx: 'impacts/blunt-hit', at: I, where: at('p1', -12), opts: { flip: true } },
+    { fx: 'impacts/heavy-landing', at: I, where: at('p1') },
+  ]));
+  S(monsterHit('hitTroll', '巨魔砸地', STAND.troll, 'heavy', [
+    { fx: 'impacts/ground-slam', at: I - 0.1, where: onP1(10), stop: 1.6, opts: { flip: true, reach: 50 } },
+    { fx: 'impacts/blunt-hit', at: I, where: at('p1', -12), opts: { flip: true } },
+  ], 1.9));
+  S(monsterHit('hitDragon', '龙爪 + 火', STAND.dragon, 'heavy', [
+    { fx: 'melee/claw-swipe', at: I - 0.2, where: onP1(26), opts: { flip: true, palette: PAL.fire } },
+    { fx: 'explosions/small-explosion', at: I, where: onP1(-2), stop: 1.5, opts: { size: 0.45 } },
+  ], 1.9));
+
+  // ---- 怪物死亡（先挨一下，再死）
+  const death = (id: string, name: string, who: Monster, style: Death, events: FxEvent[], duration = 2.2, hero: Hero = p1(look.adventurer, 'top_leather_armor', clip('slash', I, 1 / 13), dashTo(FEET.m1, FEET.p1, I, 0.5))): Scene => ({
+    id, name, duration, kind: 'hit', caster: 'p1', targets: ['m1'], cueAt: I + 0.1,
+    heroes: party(hero, ...allies()), monsters: foes(who, { dieAt: I + 0.1, death: style }),
+    events: [{ fx: 'impacts/hit-spark', at: I, where: at('m1', -10), opts: { palette: PAL.steel } }, ...events],
+    hit: { at: I, tier: 'medium', target: 'm1', dir: 1 },
+  });
+  const onM1 = (dy = 0) => at('m1', dy);
+  S(death('deathSlime', '史莱姆死亡', STAND.slime, 'melt', [
+    { fx: 'nature/acid-splash', at: I + 0.1, where: onM1(), opts: { palette: PAL.goo.concat('#ffffff') } },
+  ]));
+  S(death('deathWolf', '狼死亡', STAND.wolf, 'dust', [
+    { fx: 'spawn/poof', at: I + 0.35, where: onM1() },
+  ]));
+  S(death('deathGoblin', '哥布林死亡', STAND.goblin, 'dust', [
+    { fx: 'spawn/poof', at: I + 0.3, where: onM1() },
+    { fx: 'spawn/coin-drop', at: I + 0.45, where: onM1() },
+  ]));
+  S(death('deathStone', '石像死亡（碎裂）', STAND.stone, 'shatter', [
+    { fx: 'impacts/heavy-landing', at: I + 0.55, where: onM1() },
+  ], 2.4));
+  S(death('deathTroll', '巨魔死亡（倒塌）', STAND.troll, 'crumble', [
+    { fx: 'impacts/heavy-landing', at: I + 0.45, where: onM1() },
+    { fx: 'spawn/poof', at: I + 0.5, where: onM1() },
+  ]));
+  S(death('deathDragon', '龙死亡（爆开）', STAND.dragon, 'burst', [
+    { fx: 'explosions/small-explosion', at: I + 0.1, where: onM1(), stop: I + 1.9, opts: { size: 0.8 } },
+    { fx: 'holy/feather-burst', at: I + 0.4, where: onM1(-20), opts: { palette: PAL.fire } },
+  ], 2.9));
+  S(death('deathBurst', '通用死亡', { ...enemies[0], edge: '#d0ffc0' }, 'dust', [
+    { fx: 'spawn/poof', at: I + 0.15, where: onM1() },
+  ]));
   return list;
+}
+
+// ---------------------------------------------------------------- 怪物死亡（拿怪物自己的像素做消散，形状才对）
+
+const hash = (x: number, y: number, k = 0) => { const v = Math.sin(x * 127.1 + y * 311.7 + k * 74.7) * 43758.5453; return v - Math.floor(v); };
+let scratch: ReturnType<typeof createFrame> | null = null;
+function dying(frame: ReturnType<typeof createFrame>, m: Monster & { inst: { draw(f: unknown, l?: string): void } }, r: number, foot: Pt): void {
+  scratch ??= createFrame(W, H);
+  clearFrame(scratch);
+  m.inst.draw(scratch, 'back'); m.inst.draw(scratch, 'front');
+  const rgba = composite(scratch, new Uint8ClampedArray(W * H * 4), null);
+  const style = m.death ?? 'dust';
+  const len = style === 'shatter' ? 1.1 : style === 'melt' ? 0.9 : 0.75;
+  const k = clamp01(r / len);
+  const e = m.edge ?? '#ffe0a0';
+  const edge = (parseInt(e.slice(1, 3), 16) | (parseInt(e.slice(3, 5), 16) << 8) | (parseInt(e.slice(5, 7), 16) << 16) | (255 << 24)) >>> 0;
+  const put = (X: number, Y: number, c: number) => {
+    X = Math.round(X); Y = Math.round(Y);
+    if (X < 0 || Y < 0 || X >= W || Y >= H) return;
+    frame.color[Y * W + X] = c;
+  };
+  const toC = (o: number) => ((rgba[o] | (rgba[o + 1] << 8) | (rgba[o + 2] << 16) | (255 << 24)) >>> 0);
+  const flash = r < 0.08;
+  for (let y = 0; y < H; y++) for (let x = 0; x < W; x++) {
+    const o = (y * W + x) * 4;
+    if (rgba[o + 3] < 40) continue;
+    const c = flash ? 0xffffffff : toC(o);
+    const ly = foot.y - y, lx = x - foot.x; // 离地高度、离中心
+    if (style === 'shatter') {
+      // 碎成 3×3 的块：往外飞、受重力落地（crumble = 原地塌下去）
+      const bx = Math.floor(x / 3), by = Math.floor(y / 3), h1 = hash(bx, by), h2 = hash(bx, by, 1);
+      const start = 0.05 + h1 * 0.1;
+      const q = Math.max(0, r - start);
+      if (q > 0 && q > 0.75 + h2 * 0.4) continue;
+      const vx = (lx / 8 + (h1 - 0.5) * 2) * 26, vy = -30 - h2 * 40;
+      const yy = Math.min(foot.y - 1 - h2 * 2, y + vy * q + 160 * q * q);
+      put(x + vx * q, yy, q > 0 && q < 0.06 ? edge : c);
+    } else if (style === 'melt' || style === 'crumble') {
+      // melt：化成一滩（往下塌、越往下越宽）；crumble：整个往下沉、往前栽（巨魔倒地）
+      const sink = style === 'melt' ? k * k : k ** 1.6;
+      const spread = style === 'melt' ? 0.9 : 0.25;
+      const yy = foot.y - ly * (1 - sink * (style === 'melt' ? 1 : 0.75)), xx = foot.x + lx * (1 + sink * spread) - (style === 'crumble' ? sink * ly * 0.3 : 0);
+      // 塌到一半以后才开始抖动消失
+      const fade = clamp01((r - len * 0.6) / (len * 0.9));
+      if (fade > 0 && hash(x, y) < fade) continue;
+      // 横向拉宽后每个像素填满它占的宽度，不留竖条缝
+      const wpx = 1 + sink * spread;
+      for (let q = 0; q < Math.ceil(wpx) + 1; q++) put(xx + (lx >= 0 ? q : -q) * 0.999, yy, c);
+    } else {
+      // 灰化：噪声消散，消散前沿一圈亮边，碎屑往上飘
+      const n = hash(x, y) * 0.7 + (ly / 40) * 0.3;
+      const p = k * 1.1;
+      if (n < p - 0.08) {
+        if (n > p - 0.3 && hash(x, y, 2) < 0.25) put(x + Math.sin(y + r * 6) * 2, y - (p - n) * 60, style === 'burst' ? 0xffffffff : edge);
+        continue;
+      }
+      put(x, y, n < p ? edge : c);
+    }
+  }
 }
 
 // ---------------------------------------------------------------- 渲染
@@ -491,13 +888,14 @@ async function render(s: Scene): Promise<void> {
     for (const m of monsters) {
       const p = footOf(s, m.slot, t);
       m.inst.options.x = p.x; m.inst.options.y = p.y;
-      m.inst.draw(frame, 'back');
+      if (m.dieAt !== undefined && t >= m.dieAt) dying(frame, m, t - m.dieAt, p);
+      else m.inst.draw(frame, 'back');
     }
     for (const l of live) {
       if (l.ev.follow) { const p = l.ev.where(s, t)[l.i]; l.inst.options.x = p.x; l.inst.options.y = p.y; }
       l.inst.draw(frame, l.ev.behind ? undefined : 'back');
     }
-    for (const m of monsters) m.inst.draw(frame, 'front');
+    for (const m of monsters) if (m.dieAt === undefined || t < m.dieAt) m.inst.draw(frame, 'front');
     // 人物（按脚的前后排序）
     const heroes = [...s.heroes].sort((a, b) => FEET[a.slot].y - FEET[b.slot].y);
     for (const h of heroes) {
@@ -526,17 +924,17 @@ async function render(s: Scene): Promise<void> {
     effT += step;
 
     // 镜头
-    const dir = s.kind === 'hit' && s.hit ? s.hit.dir : 1;
+    const dir = s.dir ?? (s.hit ? s.hit.dir : 1);
     let cam = ZERO, dim = 0, tint: [number, number, number] = [1, 1, 1], sh = { fx: 500, fy: 300, w: 0, zoom: 0 };
-    if (s.kind === 'skill') {
-      cam = add(skillCamera(s.id, t, dir), shake(trauma(s.id, t), t));
-      const i = INFO[s.id];
-      dim = i.dim * ambient(s.id, t); tint = i.tint;
+    const cue = s.cue ?? s.id, ct = t - (s.cueAt ?? 0);
+    if (INFO[cue]) {
+      cam = add(skillCamera(cue, ct, dir), shake(trauma(cue, ct), t));
+      const i = INFO[cue];
+      if (!isBlow(cue)) { dim = i.dim * ambient(cue, ct); tint = i.tint; }
       const toStage = (slot: string) => ({ x: FEET[slot].x * U, y: (FEET[slot].y - 22) * U });
-      sh = shot(s.id, t, toStage(s.caster), s.targets.map(toStage));
-    } else if (s.hit) {
-      cam = hitCamera(t - s.hit.at, s.hit.tier, dir);
+      sh = shot(cue, ct, toStage(s.caster), s.targets.map(toStage));
     }
+    if (s.hit) cam = add(cam, hitCamera(t - s.hit.at, s.hit.tier, dir));
     meta.push({ t, dx: cam.dx / U, dy: cam.dy / U, zoom: cam.zoom + sh.zoom, rot: cam.rot, fx: sh.fx / U, fy: sh.fy / U, w: sh.w, dim, tint });
   }
   writeFileSync(`${outDir}/${s.id}.rgba`, bytes);
