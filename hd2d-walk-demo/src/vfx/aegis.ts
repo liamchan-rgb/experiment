@@ -61,7 +61,8 @@ function shell(p: Painter, t: number, o: Opts, back: boolean): void {
   // 生成：从地面往上长，切口高度（屏幕 y）
   const cut = -(form * (ry * 2 + 4)) + 2;
   const flash = o.form > 0 ? Math.max(0, 1 - Math.abs(t - o.form) / 0.12) : 0;
-  const sheen = -1.6 + 3.2 * (((t * 0.42) % 1.6) / 1.6);
+  // 所有周期都整除 4 秒：已经长好的护盾（form = 0）每 4 秒无缝循环，游戏里拿来做常驻护盾
+  const sheen = -1.6 + 3.2 * (((t * 0.4) % 1.6) / 1.6);
   const hitR = o.hitAt >= 0 && t >= o.hitAt ? (t - o.hitAt) * 55 : -1;
   const hx = Math.cos(o.hitAngle) * rx, hy = cy + Math.sin(o.hitAngle) * ry;
   const ripple0 = (x: number, y: number) => (hitR >= 0 ? Math.max(0, 1 - Math.abs(Math.hypot(x - hx, y - hy) - hitR) / 2) * Math.max(0, 1 - hitR / 30) : 0);
@@ -111,8 +112,8 @@ function shell(p: Painter, t: number, o: Opts, back: boolean): void {
       p.px(Math.cos(3.42) * rx * 0.6, cy + Math.sin(3.42) * ry * 0.6, WHITE);
       // 两颗沿边缘追逐的星芒
       for (const off of [0, Math.PI]) {
-        const g = t * 1.6 + off + 0.8;
-        sparkle(p, Math.cos(g) * rx, cy + Math.sin(g) * ry, 1 + Math.round(1 + Math.sin(t * 5 + off)), WHITE, C[6], 0.35);
+        const g = t * (Math.PI / 2) + off + 0.8;
+        sparkle(p, Math.cos(g) * rx, cy + Math.sin(g) * ry, 1 + Math.round(1 + Math.sin(t * (2.5 * Math.PI) + off)), WHITE, C[6], 0.35);
       }
     }
     if (hitR >= 0 && hitR < 12) {

@@ -530,3 +530,12 @@ pixelfx 的 divine-shield 是一个布满经纬线的大球，放在 Q 版小人
 
 怪物死亡用怪物自己的像素做消散（形状才对）：史莱姆化成一滩、狼 / 哥布林灰化飘散、石像碎块飞散落地、巨魔往前栽倒下沉、龙白闪后灰化 + 爆炸。
 预览里的怪物是 pixelfx 小怪占位（游戏里用自己的怪物图）。
+
+### 13.2 接入游戏（v0.30.0）
+
+- 人物：`npm run runtime` → 桌游 `Resources/pixel-baker.js`；`info().impact` 给出手帧，游戏按帧数和出手帧排动作时间。
+- 图标：`npx vite-node scripts/icon-export.ts <dir>` → `python3 tools/icon_export.py <dir> <Assets.xcassets>`（PixelIcon<Id> / PixelIconFX<Id>）。
+- 特效：`npx vite-node scripts/vfx-export.ts <dir>` → `python3 tools/vfx_export.py <dir> <Assets.xcassets>`（PixelFX_* 片段 + PixelFXRecipes 配方）。
+  配方按游戏特效 id 写在 `scripts/vfx-export.ts` 的 RECIPES 里，按「往右打」写，游戏方向为 -1 时镜像；
+  会描身体的特效（治疗、祝福、怒气、燃烧）用通用人物轮廓、不带像素颜色预渲染，所有人共用。
+  护盾的待机所有周期都整除 4 秒，可以无缝循环。

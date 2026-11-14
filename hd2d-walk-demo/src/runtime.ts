@@ -15,7 +15,7 @@ import { composeFrame } from './character/paperdoll';
 import { Equipment } from './character/equipment';
 import {
   ACTION_FRAMES, CX, DIRS5, FOOT_Y, FRAMES_PER_DIR, IDLE_FRAMES, READY_FRAMES, SPRITE_SCALE, SPR_H, SPR_W, WALK_FRAMES,
-  EXTRA_FRAMES, WALK8_FRAMES, makePose, type Hold,
+  EXTRA_FRAMES, WALK8_FRAMES, IMPACT_FRAME, makePose, type Hold,
 } from './character/rig';
 import type { Dir5, Slot } from './character/types';
 import { SLOTS } from './character/types';
@@ -76,7 +76,7 @@ function info(): string {
     variants: (it.variants ?? []).map((v) => ({ id: v.id, name: v.name })),
   }));
   return JSON.stringify({
-    sprW: SPR_W, sprH: SPR_H, scale: SPRITE_SCALE, framesPerDir: FRAMES_PER_DIR,
+    sprW: SPR_W, sprH: SPR_H, scale: SPRITE_SCALE, framesPerDir: FRAMES_PER_DIR, impact: IMPACT_FRAME,
     dirs: DIRS5, footPx: [CX * SPRITE_SCALE, FOOT_Y * SPRITE_SCALE],
     frames: { idle: IDLE_FRAMES, walk: WALK_FRAMES, walk8: WALK8_FRAMES, ready: READY_FRAMES, ...ACTION_FRAMES, ...EXTRA_FRAMES },
     items: Object.fromEntries((['hair', 'face', 'top', 'bottom', 'shoes', 'scarf', 'bag', 'weapon_main'] as Slot[]).map((s) => [s, list(s)])),
