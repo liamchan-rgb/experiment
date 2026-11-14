@@ -4,4 +4,6 @@
   Used as motion reference: the colour-coded frames were measured (`tools/extract_mocap.py` → `src/character/mocap.json`)
   and retargeted onto our own chibi rig (`src/character/mocap.ts`) for the slash, heavy, dash and hurt animations
   and the timing of the fall. No pixels from the pack are drawn in our sprites.
-- Effect techniques (additive pixel light, glints, shine sweep) follow [pixelfx](https://github.com/patch-gg/pixelfx) by Patch, MIT License.
+- [pixelfx](https://github.com/patch-gg/pixelfx) by Patch (and Hugo Duprez's Sprite Fusion effects it adapts), MIT License.
+  Vendored under `vendor/pixelfx` (with its LICENSE and NOTICE) and recoloured / combined for the skill effects in
+  `scripts/vfx-preview.ts`; the icon glow techniques also follow it.

@@ -12,7 +12,8 @@
     "hair-preview": "vite-node scripts/hair-preview.ts --",
     "action-preview": "vite-node scripts/action-preview.ts --",
     "runtime": "vite build --config vite.runtime.config.ts",
-    "icon-preview": "vite-node scripts/icon-preview.ts --"
+    "icon-preview": "vite-node scripts/icon-preview.ts --",
+    "vfx-preview": "vite-node scripts/vfx-preview.ts --"
   },
   "devDependencies": {
     "@types/node": "^22.20.5",
