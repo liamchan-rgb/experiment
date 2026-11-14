@@ -1,0 +1,213 @@
+{
+  "id": "hair_bun",
+  "name": "盘发",
+  "palette": [
+    "#100a0c",
+    "#2a1a1c",
+    "#4a2e2e",
+    "#7a4a44",
+    "#b07a6a"
+  ],
+  "style": {
+    "clump": 0.7,
+    "global": 0.75,
+    "ring": true,
+    "streaks": true,
+    "grit": 0.04,
+    "dither": false,
+    "closeHoles": true,
+    "seamFloor": 1.5,
+    "floor": 1,
+    "innerLine": 1.25
+  },
+  "hairline": [
+    [
+      0,
+      46
+    ],
+    [
+      60,
+      50
+    ],
+    [
+      100,
+      94
+    ],
+    [
+      100,
+      112
+    ],
+    [
+      180,
+      118
+    ]
+  ],
+  "locks": [
+    {
+      "phi": -40,
+      "a1": 66,
+      "twist": 26,
+      "flick": 1.14,
+      "width": 3.2,
+      "tip": 0.65
+    },
+    {
+      "phi": -12,
+      "a1": 62,
+      "twist": 30,
+      "flick": 1.14,
+      "width": 3.4,
+      "tip": 0.65
+    },
+    {
+      "phi": 16,
+      "a1": 58,
+      "twist": 30,
+      "flick": 1.16,
+      "width": 3.0,
+      "tip": 0.65
+    },
+    {
+      "phi": -96,
+      "a1": 100,
+      "twist": 6,
+      "flick": 1.12,
+      "width": 3.2,
+      "tip": 0.8,
+      "taper": 0.7,
+      "drop": 5,
+      "spread": 0.4
+    },
+    {
+      "phi": 96,
+      "a1": 100,
+      "twist": -6,
+      "flick": 1.12,
+      "width": 3.2,
+      "tip": 0.8,
+      "taper": 0.7,
+      "drop": 5,
+      "spread": 0.4
+    },
+    {
+      "phi": 56,
+      "a1": 70,
+      "twist": 60,
+      "flick": 1.06,
+      "width": 3.4,
+      "tip": 0.65
+    },
+    {
+      "phi": -70,
+      "a1": 74,
+      "twist": -50,
+      "flick": 1.06,
+      "width": 3.4,
+      "tip": 0.65
+    },
+    {
+      "phi": 130,
+      "a1": 112,
+      "twist": 30,
+      "flick": 1.04,
+      "width": 4.2,
+      "tip": 0.65
+    },
+    {
+      "phi": -130,
+      "a1": 112,
+      "twist": -30,
+      "flick": 1.04,
+      "width": 4.2,
+      "tip": 0.65
+    },
+    {
+      "phi": 160,
+      "a1": 108,
+      "twist": 14,
+      "flick": 1.04,
+      "width": 4.4,
+      "tip": 0.65
+    },
+    {
+      "phi": -160,
+      "a1": 108,
+      "twist": -14,
+      "flick": 1.04,
+      "width": 4.4,
+      "tip": 0.65
+    },
+    {
+      "phi": 150,
+      "a0": 30,
+      "a1": 52,
+      "flick": 0.92,
+      "lift": 0.62,
+      "width": 3.3,
+      "tier": 1,
+      "tip": 1.8,
+      "taper": 0.45,
+      "twist": 0
+    },
+    {
+      "phi": 180,
+      "a0": 28,
+      "a1": 54,
+      "flick": 0.92,
+      "lift": 0.62,
+      "width": 3.3,
+      "tier": 1,
+      "tip": 1.8,
+      "taper": 0.45,
+      "twist": 0
+    },
+    {
+      "phi": -150,
+      "a0": 30,
+      "a1": 52,
+      "flick": 0.92,
+      "lift": 0.62,
+      "width": 3.3,
+      "tier": 1,
+      "tip": 1.8,
+      "taper": 0.45,
+      "twist": 0
+    },
+    {
+      "phi": 165,
+      "a0": 24,
+      "a1": 44,
+      "flick": 0.92,
+      "lift": 0.62,
+      "width": 3.3,
+      "tier": 1,
+      "tip": 1.8,
+      "taper": 0.45,
+      "twist": 0
+    },
+    {
+      "phi": -165,
+      "a0": 24,
+      "a1": 44,
+      "flick": 0.92,
+      "lift": 0.62,
+      "width": 3.3,
+      "tier": 1,
+      "tip": 1.8,
+      "taper": 0.45,
+      "twist": 0
+    },
+    {
+      "phi": 180,
+      "a0": 40,
+      "a1": 60,
+      "flick": 0.92,
+      "lift": 0.62,
+      "width": 3.3,
+      "tier": 1,
+      "tip": 1.8,
+      "taper": 0.45,
+      "twist": 0
+    }
+  ]
+}

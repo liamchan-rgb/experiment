@@ -1,0 +1,154 @@
+{
+  "id": "hair_side_tail",
+  "name": "侧马尾",
+  "palette": [
+    "#1e0c0a",
+    "#4e2410",
+    "#8a4a1e",
+    "#c88a3a",
+    "#f2c878"
+  ],
+  "style": {
+    "clump": 0.7,
+    "global": 0.75,
+    "ring": true,
+    "streaks": true,
+    "grit": 0.04,
+    "dither": false,
+    "closeHoles": true,
+    "seamFloor": 1.5,
+    "floor": 1,
+    "innerLine": 1.25
+  },
+  "hairline": [
+    [
+      0,
+      46
+    ],
+    [
+      60,
+      50
+    ],
+    [
+      100,
+      94
+    ],
+    [
+      100,
+      112
+    ],
+    [
+      180,
+      118
+    ]
+  ],
+  "locks": [
+    {
+      "phi": -40,
+      "a1": 66,
+      "twist": 26,
+      "flick": 1.14,
+      "width": 3.2,
+      "tip": 0.65
+    },
+    {
+      "phi": -12,
+      "a1": 62,
+      "twist": 30,
+      "flick": 1.14,
+      "width": 3.4,
+      "tip": 0.65
+    },
+    {
+      "phi": 16,
+      "a1": 58,
+      "twist": 30,
+      "flick": 1.16,
+      "width": 3.0,
+      "tip": 0.65
+    },
+    {
+      "phi": -96,
+      "a1": 100,
+      "twist": 6,
+      "flick": 1.12,
+      "width": 3.2,
+      "tip": 0.8,
+      "taper": 0.7,
+      "drop": 5,
+      "spread": 0.4
+    },
+    {
+      "phi": 96,
+      "a1": 100,
+      "twist": -6,
+      "flick": 1.12,
+      "width": 3.2,
+      "tip": 0.8,
+      "taper": 0.7,
+      "drop": 5,
+      "spread": 0.4
+    },
+    {
+      "phi": 56,
+      "a1": 70,
+      "twist": 60,
+      "flick": 1.06,
+      "width": 3.4,
+      "tip": 0.65
+    },
+    {
+      "phi": -70,
+      "a1": 74,
+      "twist": -50,
+      "flick": 1.06,
+      "width": 3.4,
+      "tip": 0.65
+    },
+    {
+      "phi": 130,
+      "a1": 112,
+      "twist": 30,
+      "flick": 1.04,
+      "width": 4.2,
+      "tip": 0.65
+    },
+    {
+      "phi": -130,
+      "a1": 112,
+      "twist": -30,
+      "flick": 1.04,
+      "width": 4.2,
+      "tip": 0.65
+    },
+    {
+      "phi": 160,
+      "a1": 108,
+      "twist": 14,
+      "flick": 1.04,
+      "width": 4.4,
+      "tip": 0.65
+    },
+    {
+      "phi": -160,
+      "a1": 108,
+      "twist": -14,
+      "flick": 1.04,
+      "width": 4.4,
+      "tip": 0.65
+    },
+    {
+      "phi": -128,
+      "a0": 62,
+      "a1": 86,
+      "flick": 1.2,
+      "lift": 0.1,
+      "width": 2.9,
+      "taper": 0.82,
+      "tip": 1.0,
+      "drop": 18,
+      "spread": 0.8,
+      "twist": 0
+    }
+  ]
+}

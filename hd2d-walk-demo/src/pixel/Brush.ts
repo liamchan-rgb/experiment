@@ -193,21 +193,29 @@ export class Brush {
       wmax = Math.max(wmax, halfW(cum[i] / total));
     }
     wmax = Math.max(wmax, halfW(0.5)) * 1.15;
+    // 每段的常量先算好（和逐像素现算的结果完全一样，只是不用每个像素重复开方）
+    const SX = new Float64Array(n), SY = new Float64Array(n), SDX = new Float64Array(n), SDY = new Float64Array(n);
+    const SL2 = new Float64Array(n), SL = new Float64Array(n), SPX = new Float64Array(n), SPY = new Float64Array(n);
+    for (let i = 0; i < n; i++) {
+      const a = pts[i], b = pts[i + 1];
+      const dx = b.x - a.x, dy = b.y - a.y;
+      const l2 = dx * dx + dy * dy || 1e-6;
+      const l = Math.sqrt(l2);
+      let px = -dy / l, py = dx / l;
+      if (px + py < 0) { px = -px; py = -py; }
+      SX[i] = a.x; SY[i] = a.y; SDX[i] = dx; SDY[i] = dy; SL2[i] = l2; SL[i] = l; SPX[i] = px; SPY[i] = py;
+    }
     this.fill(x0 - wmax, y0 - wmax, x1 + wmax, y1 + wmax, (u, v) => {
       let best = Infinity, bs = 0, bo = 0, bl = 0;
       for (let i = 0; i < n; i++) {
-        const a = pts[i], b = pts[i + 1];
-        const dx = b.x - a.x, dy = b.y - a.y;
-        const l2 = dx * dx + dy * dy || 1e-6;
-        const tc = Math.max(0, Math.min(1, ((u - a.x) * dx + (v - a.y) * dy) / l2));
-        const ex = u - (a.x + dx * tc), ey = v - (a.y + dy * tc);
+        const ax = SX[i], ay = SY[i], dx = SDX[i], dy = SDY[i];
+        const tc = Math.max(0, Math.min(1, ((u - ax) * dx + (v - ay) * dy) / SL2[i]));
+        const ex = u - (ax + dx * tc), ey = v - (ay + dy * tc);
         const d = ex * ex + ey * ey;
         if (d >= best) continue;
         best = d;
-        const l = Math.sqrt(l2);
-        let px = -dy / l, py = dx / l;
-        if (px + py < 0) { px = -px; py = -py; }
-        bs = (cum[i] + l * tc) / total;
+        const px = SPX[i], py = SPY[i];
+        bs = (cum[i] + SL[i] * tc) / total;
         bo = ex * px + ey * py;
         bl = px * LX + py * LY;
       }

@@ -12,6 +12,14 @@ export class PixelLayer {
   readonly pid: Uint8Array;
   readonly palettes: Palette[] = [];
   private cur = 0;
+  /**
+   * 写过像素的包围盒（含边界；空图层时 x1 < x0）。描边、投影、合成这些逐像素的步骤只扫这个范围：
+   * 一个部件通常只占画布的一小块，结果和扫整张完全一样，只是快得多（游戏里用无 JIT 的 JavaScriptCore 跑）。
+   */
+  x0 = 0;
+  y0 = 0;
+  x1 = -1;
+  y1 = -1;
 
   constructor(readonly w: number, readonly h: number) {
     this.idx = new Uint8Array(w * h);
@@ -22,7 +30,20 @@ export class PixelLayer {
     this.idx.fill(0);
     this.palettes.length = 0;
     this.cur = 0;
+    this.x0 = this.y0 = 0;
+    this.x1 = this.y1 = -1;
     return this;
+  }
+
+  /** 把 (x, y) 并进包围盒 */
+  touch(x: number, y: number): void {
+    if (this.x1 < this.x0) {
+      this.x0 = this.x1 = x;
+      this.y0 = this.y1 = y;
+      return;
+    }
+    if (x < this.x0) this.x0 = x; else if (x > this.x1) this.x1 = x;
+    if (y < this.y0) this.y0 = y; else if (y > this.y1) this.y1 = y;
   }
 
   /** 选择后续绘制使用的调色板。 */
@@ -48,6 +69,7 @@ export class PixelLayer {
     }
     this.idx[i] = shadeCode(shade);
     this.pid[i] = this.cur;
+    this.touch(x, y);
   }
 
   /** 把已有像素调亮 / 调暗 delta 阶（保持调色板不变，限制在 暗部..高光 之间）。 */
@@ -134,9 +156,12 @@ export class PixelLayer {
    */
   outline(): void {
     const { w, h, idx, pid } = this;
+    if (this.x1 < this.x0) return;
     const src = idx.slice();
-    for (let y = 0; y < h; y++) {
-      for (let x = 0; x < w; x++) {
+    const X0 = Math.max(0, this.x0 - 1), X1 = Math.min(w - 1, this.x1 + 1);
+    const Y0 = Math.max(0, this.y0 - 1), Y1 = Math.min(h - 1, this.y1 + 1);
+    for (let y = Y0; y <= Y1; y++) {
+      for (let x = X0; x <= X1; x++) {
         const i = y * w + x;
         if (src[i]) continue;
         const left = x > 0 && src[i - 1] > 0;
@@ -151,6 +176,7 @@ export class PixelLayer {
         pid[i] = pid[left ? i - 1 : up ? i - w : right ? i + 1 : i + w];
       }
     }
+    this.x0 = X0; this.x1 = X1; this.y0 = Y0; this.y1 = Y1;
   }
 
   /**
@@ -159,10 +185,13 @@ export class PixelLayer {
    */
   closeHoles(shade = DARK, passes = 2): void {
     const { w, h, idx, pid } = this;
+    // 补上的像素一定在两侧都有像素的位置，所以不会超出包围盒
+    const X0 = Math.max(1, this.x0), X1 = Math.min(w - 2, this.x1);
+    const Y0 = Math.max(1, this.y0), Y1 = Math.min(h - 2, this.y1);
     for (let pass = 0; pass < passes; pass++) {
       const src = idx.slice();
-      for (let y = 1; y < h - 1; y++) {
-        for (let x = 1; x < w - 1; x++) {
+      for (let y = Y0; y <= Y1; y++) {
+        for (let x = X0; x <= X1; x++) {
           const i = y * w + x;
           if (src[i]) continue;
           const l = src[i - 1], r = src[i + 1], u = src[i - w], d = src[i + w];
@@ -207,8 +236,8 @@ export class PixelLayer {
   bounce(amount = 0.5, lo = 0.6, hi = 1.9): void {
     const { w, h, idx } = this;
     const src = idx.slice();
-    for (let y = 0; y < h; y++) {
-      for (let x = 0; x < w; x++) {
+    for (let y = Math.max(0, this.y0); y <= this.y1; y++) {
+      for (let x = Math.max(0, this.x0); x <= this.x1; x++) {
         const i = y * w + x;
         if (!src[i]) continue;
         const edge = (x === w - 1 || !src[i + 1]) || (y === h - 1 || !src[i + w]);
@@ -227,9 +256,16 @@ export class PixelLayer {
    */
   castShadow(src: PixelLayer, taps: [number, number, number][]): void {
     const { w, h } = this;
-    const dark = new Float32Array(w * h);
-    for (let y = 0; y < h; y++) {
-      for (let x = 0; x < w; x++) {
+    if (src.x1 < src.x0) return;
+    if (!this.dark || this.dark.length !== w * h) this.dark = new Float32Array(w * h);
+    const dark = this.dark;
+    // 只看 src 的包围盒；阴影最远投到右下 reach 个像素
+    let reach = 0;
+    for (const [dx, dy] of taps) reach = Math.max(reach, dx, dy);
+    const RX1 = Math.min(w - 1, src.x1 + reach), RY1 = Math.min(h - 1, src.y1 + reach);
+    for (let y = src.y0; y <= RY1; y++) dark.fill(0, y * w + src.x0, y * w + RX1 + 1);
+    for (let y = src.y0; y <= src.y1; y++) {
+      for (let x = src.x0; x <= src.x1; x++) {
         const v = src.idx[y * w + x];
         // 描边像素不投影：只算部件本体，阴影边缘才不会多出一圈
         if (!v || v === shadeCode(OUTLINE) || v === shadeCode(SOFT_OUTLINE)) continue;
@@ -241,13 +277,18 @@ export class PixelLayer {
         }
       }
     }
-    for (let i = 0; i < dark.length; i++) {
-      if (!dark[i] || src.idx[i] || !this.idx[i]) continue;
-      const v = (this.idx[i] - 1) / SUB;
-      if (v <= OUTLINE + 0.25 || v > HI) continue;
-      this.idx[i] = shadeCode(Math.max(0.25, v - dark[i]));
+    for (let y = src.y0; y <= RY1; y++) {
+      for (let x = src.x0; x <= RX1; x++) {
+        const i = y * w + x;
+        if (!dark[i] || src.idx[i] || !this.idx[i]) continue;
+        const v = (this.idx[i] - 1) / SUB;
+        if (v <= OUTLINE + 0.25 || v > HI) continue;
+        this.idx[i] = shadeCode(Math.max(0.25, v - dark[i]));
+      }
     }
   }
+  /** castShadow 的暂存（复用，避免每个部件都分配一次） */
+  private dark?: Float32Array;
 
   /**
    * 把本层盖到 dst 上（非空像素覆盖）。可带偏移。
@@ -269,10 +310,10 @@ export class PixelLayer {
       }
       return i;
     });
-    for (let y = 0; y < this.h; y++) {
+    for (let y = Math.max(0, this.y0); y <= this.y1; y++) {
       const ty = y + oy;
       if (ty < 0 || ty >= dst.h) continue;
-      for (let x = 0; x < this.w; x++) {
+      for (let x = Math.max(0, this.x0); x <= this.x1; x++) {
         const v = this.idx[y * this.w + x];
         if (!v) continue;
         const tx = x + ox;
@@ -287,6 +328,7 @@ export class PixelLayer {
           dst.idx[di] = v;
         }
         dst.pid[di] = map[this.pid[y * this.w + x]];
+        dst.touch(tx, ty);
       }
     }
   }

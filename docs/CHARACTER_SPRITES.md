@@ -49,7 +49,17 @@
 ## 3. 方向、帧与镜像
 
 - 原生 sheet 有 5 行，依次是 S（正面）、SE、E（右侧）、NE、N（背面）。
-- 每行 8 列：0–1 为待机（呼吸起伏 1 单位），2–7 为行走六帧。行走相位为 `(t + 0.5) / 6`，步幅最大时身体下沉 1 单位。
+- 每行 34 列（列号在 `rig.ts` 和 `Sources/Resources/CharacterParts/actions.json` 里，两边一致）：
+
+  | 列 | 动画 | 说明 |
+  | --- | --- | --- |
+  | 0–1 | 普通待机 | 呼吸起伏 1 单位，地图上站着用 |
+  | 2–7 | 行走 | 六帧，相位 `(t + 0.5) / 6`，步幅最大时身体下沉 1 单位 |
+  | 8–9 | 战斗待机 | 按武器的战斗站姿 + 呼吸，战斗场景里替代普通待机（见第 9 节） |
+  | 10–13 / 14–17 / 18–21 / 22–25 | 挥砍 / 重劈 / 射箭 / 施法 | 每个 4 帧，从战斗站姿出手、回到战斗站姿 |
+  | 26–27 / 28–29 / 30–31 / 32–33 | 格挡 / 受击 / 胜利 / 倒下 | 每个 2 帧 |
+
+  另有不在 sheet 里的虚拟帧 100–107：8 相位行走，给 iPad 地图的 8 相位行走图集用（用 6 帧凑 8 相位会一顿一顿）。
 - NW、W、SW 由 NE、E、SE 整帧水平翻转得到，翻转轴为帧宽 / 2，与 `CX` 的偏差在 0.1 像素以内。
 - 镜像后武器会换到另一只手，这是约定的取舍。
 - 帧率：待机 1.6 fps，行走 10 fps，见 `Animator`。
@@ -278,7 +288,13 @@ export const myItem: ItemDef = {
 
 - 按手部锚点画：`c.hand` 给出坐标和 `angle`，用 `g.axis(x, y, dx, dy, t0, t1, half, fn)` 沿武器方向绘制，`t` 为沿杆距离，`o` 为横向偏移。
 - `hold: 'up'`（法杖类）：竖握在身侧，正侧面时杖头前倾、从脸前经过。图层自动选择：身后 → `weapon_back`；正侧面 → `weapon_front`；其余方向 → `weapon_mid`。杆长不超过手上方 40 单位，杖头不出画布。
-- `hold: 'down'`（剑类）：手臂下垂，剑尖朝前下方。身前 → `weapon_front`，身后 → `weapon_back`。
+- `hold: 'down'`（单手剑）：手臂下垂，剑尖朝前下方。身前 → `weapon_front`，身后 → `weapon_back`。
+- `hold: 'shoulder'`（双手大剑）：平时扛在右肩，战斗时双手握。剑身过头时画在 `weapon_mid`（头后）。
+- `hold: 'bow'`（弓）：弓在**左手**（`c.hand` 自动换成左手锚点），右手空出来拉弦；拉弓时弓压在脸前（`weapon_front`）。
+- 武器长度一律乘 `c.hand.reach`（指向镜头时变短，0.5–1），用 `kits/weaponKit.ts` 的 `along()` 画就自动处理了；剑统一用 `makeSword` / `drawSword` 参数化。
+- 挥砍拖影 `trailPart(内半径, 外半径)`、蓄力 / 释放闪光 `fxPart(位置)` 是不描边的独立部件，调色板键 `fx`。
+- `attack` 指定普通攻击用哪个动作，不写就按握持方式：down → 挥砍，shoulder → 重劈，bow → 射箭，up → 施法。
+- `gameItem` 写桌游物品表（`initial-content.json`）里对应的物品 id。
 - 主手为 `weapon_main`（右手），副手为 `weapon_off`（左手），副手槽也可以装主手武器。
 
 ### 6.6 角色预设（`src/items/characters.ts`）
@@ -309,7 +325,10 @@ export const myItem: ItemDef = {
 - [ ] `npm run export` 能出图，iOS 图集中脚底落在 y = 336。
 - [ ] 导出的 `Hero*Directions.png` 已拷进 Assets；Swift 端已同步，`CharacterSpriteTests` 全部通过。
 
-## 8. iPad 游戏：实时换装
+## 8. iPad 游戏：实时换装（MeadowJourney，Swift 移植版）
+
+> 这一节是早期给 MeadowJourney 做的 Swift 手工移植，只覆盖到行走、没有战斗动作和后来加的发型 / 装备，已经不再同步。
+> 桌游 App 用的是第 10 节的 JavaScriptCore 方案：直接执行网页工具打包出来的同一份代码，不需要移植。
 
 人物不再依赖预先画好的图片：游戏启动时，Swift 版烘焙器按角色预设现场合成三位旅人的图集，运行时也可以随时换装。
 
@@ -383,3 +402,63 @@ gameScene.setAppearance(look, forTraveler: 0)     // 立即重新烘焙生效
   - 速度阻尼为每秒保留 2%，约束迭代 4 次。
   - 画成一条带子：根部粗，末端细，靠近末端有两道浅色条纹，外加 1px 描边。
 - 在 Swift 里每帧更新质点，用 `SKShapeNode`，或者先画到一张小纹理上再按最近邻显示，放在人物节点前面或后面。
+
+## 9. 战斗动作与站姿
+
+动作全部在 `rig.ts` 里用局部 3D 坐标写关键帧（右手 / 左手位置、武器指向、前倾、下沉、跨步），5 个方向共用一份。
+
+**战斗站姿**（`STANCES`，按右手武器的握持方式）：两脚前后分开、膝盖弯曲、上身整体前倾（头、颈、肩、胸一起倒，髋部略往后坐，躯干中线是一条斜线，衣服细节用 `pose.torsoX(r)` 跟着走）。
+
+| 握持 | 站姿 |
+| --- | --- |
+| 单手剑 down | 侧身弓步，剑尖斜指前上方，左手护在胸前，前倾最明显 |
+| 双手大剑 shoulder | 最宽最低的马步，双手握剑斜架在身前 |
+| 弓 bow | 侧身拉开距离，后脚更远，弓压低指向前方，右手搭弦 |
+| 法杖 up | 步幅、前倾都克制，杖身前倾，左手张开 |
+| 空手 | 压低重心，双拳举在胸前 |
+
+**动作**：攻击动作在站姿的前倾、下蹲上再叠加；战斗反应（格挡、受击、胜利、倒下）的前倾是绝对值，不叠加。
+
+| 动作 | 4 帧 / 2 帧 | 出手帧 |
+| --- | --- | --- |
+| 挥砍 slash | 举剑 → 横斩（拖影）→ 收势（拖影）→ 回位 | 第 1 帧 |
+| 重劈 heavy | 高举过头 → 下劈（拖影）→ 砸地（拖影 + 冲击闪光）→ 回位 | 第 2 帧 |
+| 射箭 shoot | 举弓搭箭 → 满弦 → 放箭（箭影）→ 回位 | 第 2 帧 |
+| 施法 cast | 蓄力（闪光）→ 高举（闪光）→ 前推释放（爆闪）→ 回位 | 第 2 帧 |
+| 格挡 guard | 武器横架在身前 → 被震得往后一缩 | |
+| 受击 hurt | 上身后仰、双手甩开 → 缓回来一点 | |
+| 胜利 victory | 武器 / 拳头高举，两帧轻微起伏 | |
+| 倒下 defeat | 单膝跪地、武器拄地 → 头垂得更低 | |
+
+**技能 → 动作**（`actions.json` 的 `skills`）：伤害技能（强击、突袭、符文斩）用当前武器的普通攻击；其余（龙焰、星辉脉冲、治疗、护盾、鼓舞类）用施法。没有法杖的人施法时举起武器或手。
+
+**腿和脚**：腿有膝关节（大腿、小腿等长，髋到脚的距离不够腿长时膝盖往前顶），靴子和裤腿要细，否则跨步、下蹲会糊成一团。新做鞋子时脚掌半宽不超过 2.2 单位，靴口半宽不超过 2.7 单位。
+
+预览：`npm run action-preview -- 输出.png`（每种武器一行：普通待机、战斗待机、攻击、施法）。
+
+## 10. 桌游 App 接入（JavaScriptCore）
+
+桌游 App（classroom-boardgame）的地图和战斗人物都已经换成像素人物，画法就是这个网页工具：
+
+1. `npm run runtime` 把 `src/runtime.ts` 打成一个不依赖 DOM 的文件 `dist-runtime/pixel-baker.js`（发型、五官 JSON 一起打进去）。
+2. 拷到 `native/ClassroomProbe/Resources/pixel-baker.js`。App 里 `PixelBaker.swift` 用 JavaScriptCore 执行它：`info()` 给出帧尺寸、动画列号、装备清单；`bake(spec)` 返回指定方向 × 指定帧的 RGBA；`feetAt` / `handAt` 给出落脚点和武器手位置。
+3. JavaScriptCore 在 App 里没有 JIT，一整张 sheet 约 2.5 秒，所以只烘需要的部分（地图：5 个方向 × 待机 + 8 相位行走；战斗：右侧的战斗帧），结果按「脚本摘要 + 规格」缓存到 Caches/PixelHeroes，第二次起直接读盘。
+4. 引擎里逐像素的步骤（描边、接触阴影、合成、补洞）只扫部件的包围盒，发束的线段常量预先算好，出图和逐像素算完全一致（改这些地方要用 `sha1` 比对整张 sheet 验证）。
+
+**游戏外观 → 像素装备**（`PixelHero.swift` 的 `PixelHeroLook`）：
+
+| 游戏 | 像素人物 |
+| --- | --- |
+| 体型 forester / wayfarer | 栗色蓬松短发 + 蓝瞳 + 蓝色旅人装 / 银色利落短发 + 琥珀瞳 + 红色斗篷装；没有自定义外观的 2、3 号旅人用两套预设（墨绿斗篷、林间行者） |
+| 发型：短碎 / 偏分 / 小束 / 长发 / 侧马尾 / 盘发 | hair_messy / hair_swept / hair_tied / hair_long / hair_side_tail / hair_bun，发色跟体型 |
+| 五官：蓝瞳 / 琥珀 / 绿瞳 / 紫瞳 | face_round 的 blue / amber / green / violet |
+| 护甲 leatherArmor / runeArmor / starlightArmor / dragonArmor | top_leather_armor / top_rune_armor / top_starlight_armor / top_dragon_armor（穿护甲时不戴围巾、挎包） |
+| 武器 trainingSword / huntingBow / greatSword / legendaryStaff / starlightBlade / dragonFangSword | weapon_training_sword / weapon_hunting_bow / weapon_great_sword / weapon_legendary_staff / weapon_starlight_blade / weapon_dragon_fang |
+| 饰品、消耗品 | 不画（42 × 62 的小人上看不出来） |
+
+**地图**：图集格式和原来一样（13 列 × 4 行 × 256 px：列 0 待机、1–8 行走 8 相位、9–12 起步 / 停步；行顺序 下 左 上 右 / 右下 左下 左上 右上），4 倍整数放大，脚底在格子 (128, 224)。所以 SpriteKit、投影、深度渲染都不用改，只是图集名换成 `Pixel|体型|护甲|武器|发型|五官|半张`。
+
+**战斗**：`MeadowBattleActorView` 的像素模式整个人物一张图，脚底对准原来的 (123, 214)，画布上方多留 64 px 给举过头顶的武器。动画对应：idle → 战斗待机，attack → 武器的攻击动作，guard → 自己放技能时施法 / 被打时格挡，hit → 受击，victory → 胜利，defeat → 倒下。出手帧对准命中、放箭、释放的时刻（战斗场景按技能算好传给人物），箭和法术从新人物的弓、杖头位置发出。
+
+**改了网页工具之后**：`npm run runtime`，把 `pixel-baker.js` 拷进桌游仓库，打包。不用改 Swift。
+
