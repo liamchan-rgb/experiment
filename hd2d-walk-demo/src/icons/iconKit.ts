@@ -25,8 +25,11 @@ export interface IconCtx {
   use(p: Palette): void;
 }
 
-/** 一个部件：单独画、单独描边，再叠到图标上（叠的地方自动变成有颜色的内描边） */
-export type Piece = (c: IconCtx) => void;
+/**
+ * 一个部件：单独画、单独描边，再叠到图标上（叠的地方自动变成有颜色的内描边）。
+ * 写成 { draw, outline: false } 就不描边、不投影（火焰、星屑这类本身就是光的东西）。
+ */
+export type Piece = ((c: IconCtx) => void) | { draw: (c: IconCtx) => void; outline?: boolean };
 
 export interface IconFx {
   /** 光晕颜色 */
@@ -59,16 +62,22 @@ export function drawIcon(def: IconDef): PixelLayer {
   g.vgrad = 0.18;
   const taps: [number, number, number][] = [[1, 1, 0.8], [1, 0, 0.45], [0, 1, 0.55], [2, 1, 0.3], [1, 2, 0.35]];
   for (const piece of def.pieces) {
+    const draw = typeof piece === 'function' ? piece : piece.draw;
+    const outlined = typeof piece === 'function' || piece.outline !== false;
     tmp.clear();
     g.clip = false;
     g.grit = 0.08;
     g.dither = true;
     g.anchor(0, 0);
-    piece({ g, L: tmp, use: (p) => tmp.use(p) });
-    tmp.bounce(0.4);
-    tmp.outline();
-    out.castShadow(tmp, taps);
-    tmp.drawOnto(out, 0, 0, INNER_LINE);
+    draw({ g, L: tmp, use: (p) => tmp.use(p) });
+    if (outlined) {
+      tmp.bounce(0.4);
+      tmp.outline();
+      out.castShadow(tmp, taps);
+      tmp.drawOnto(out, 0, 0, INNER_LINE);
+    } else {
+      tmp.drawOnto(out, 0, 0);
+    }
   }
   return out;
 }
@@ -131,9 +140,9 @@ export const FPS = 12;
 
 const RARITY: Record<Rarity, { halo: number; glints: number; shine: boolean; particles: boolean }> = {
   common: { halo: 0, glints: 0, shine: false, particles: false },
-  rare: { halo: 0.24, glints: 2, shine: true, particles: false },
-  epic: { halo: 0.5, glints: 3, shine: true, particles: false },
-  legendary: { halo: 0.85, glints: 4, shine: true, particles: true },
+  rare: { halo: 0.2, glints: 2, shine: true, particles: false },
+  epic: { halo: 0.38, glints: 3, shine: true, particles: false },
+  legendary: { halo: 0.58, glints: 4, shine: true, particles: true },
 };
 
 /**
@@ -185,7 +194,7 @@ export function iconFrame(def: IconDef, base: PixelLayer, t: number): Uint8Clamp
         const xx = x + dx, yy = y + dy;
         if (xx >= 0 && yy >= 0 && xx < W && yy < H && body(xx, yy)) near = Math.min(near, Math.hypot(dx, dy));
       }
-      if (near < 3.5) add(x, y, glow, spec.halo * pulse * (1 - near / 3.5) * 1.1);
+      if (near < 3) add(x, y, glow, spec.halo * pulse * (1 - near / 3) * 0.9);
     }
   }
 

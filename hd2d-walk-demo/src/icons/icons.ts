@@ -1,6 +1,7 @@
 import { pal, ramp, type Palette, OUTLINE, DARK, BASE, LIGHT, HI } from '../pixel/palette';
 import { getItem } from '../items/registry';
-import { bar, gem, lit, metal, sphere, type IconCtx, type IconDef, type Piece } from './iconKit';
+import { bar, gem, lit, sphere, type IconCtx, type IconDef, type Piece } from './iconKit';
+import { WEAPON_ICONS } from './weapons';
 
 /**
  * 桌游物品表（initial-content.json）里全部 18 件物品的图标。
@@ -16,184 +17,6 @@ const P = (item: string, key: string): Palette => {
 };
 
 // 斜放的方向：从左下指向右上
-const DX = Math.SQRT1_2, DY = -Math.SQRT1_2;
-/** 斜线上的一点：t 沿着方向，o 往右下偏 */
-const at = (x: number, y: number, t: number, o = 0) => ({ x: x + DX * t - DY * o, y: y + DY * t + DX * o });
-
-interface SwordSpec {
-  /** 护手中心 */
-  gx: number; gy: number;
-  blade: number; half: number; tip: number;
-  grip: number; gripHalf: number;
-  guard: number; guardHalf: number;
-  pommel: number;
-  curve?: number;
-  core?: 'fuller' | 'glow';
-  pal: { blade: Palette; hilt: Palette; grip: Palette; gem?: Palette };
-  /** 护手两端往剑尖翘多少 */
-  wing?: number;
-}
-
-function sword(s: SwordSpec): Piece[] {
-  const bladeEnd = at(s.gx, s.gy, s.blade);
-  const gripEnd = at(s.gx, s.gy, -s.grip);
-  return [
-    // 握柄（缠皮 / 木柄，一圈一圈的）
-    (c) => {
-      c.use(s.pal.grip);
-      bar(c, gripEnd.x, gripEnd.y, s.gx, s.gy, s.gripHalf, (t, o) => (o > s.gripHalf * 0.4 ? DARK : Math.floor(t * 0.9) % 2 ? BASE : LIGHT));
-    },
-    // 剑身
-    (c) => {
-      c.use(s.pal.blade);
-      bar(c, s.gx, s.gy, bladeEnd.x, bladeEnd.y, s.half + Math.abs(s.curve ?? 0) + 0.5, (t, o, len) => {
-        const k = t / len, shift = (s.curve ?? 0) * k * k;
-        const w = t < len - s.tip ? s.half : (s.half * (len - t)) / s.tip;
-        const q = o - shift;
-        if (Math.abs(q) > w + 0.15) return -1;
-        if (s.core === 'glow' && Math.abs(q) < w * 0.35 && t > 1.5) return HI;
-        if (s.core === 'fuller' && Math.abs(q) < 0.55 && t > 2 && t < len - s.tip - 1) return q < 0 ? DARK : 1.25;
-        return metal(q, w);
-      });
-    },
-    // 护手
-    (c) => {
-      c.use(s.pal.hilt);
-      const a = at(s.gx, s.gy, s.wing ?? 0, -s.guard), b = at(s.gx, s.gy, s.wing ?? 0, s.guard);
-      c.g.fill(Math.min(a.x, b.x) - 3, Math.min(a.y, b.y) - 3, Math.max(a.x, b.x) + 3, Math.max(a.y, b.y) + 3, (u, v) => {
-        const du = u - s.gx, dv = v - s.gy;
-        const along = du * DX + dv * DY, across = du * -DY + dv * DX;
-        const bend = (s.wing ?? 0) * (across / s.guard) ** 2;
-        if (Math.abs(across) > s.guard || Math.abs(along - bend) > s.guardHalf) return -1;
-        return across < -s.guard * 0.4 ? HI : across < s.guard * 0.2 ? LIGHT : along - bend < 0 ? BASE : DARK;
-      });
-      if (s.pal.gem) {
-        c.use(s.pal.gem);
-        gem(c, s.gx, s.gy, 1.6);
-      }
-    },
-    // 配重球
-    (c) => {
-      c.use(s.pal.hilt);
-      const p = at(s.gx, s.gy, -s.grip - s.pommel * 0.7);
-      c.g.ellipse(p.x, p.y, s.pommel, s.pommel, (lam) => sphere(lam));
-    },
-  ];
-}
-
-// ---------------------------------------------------------------- 武器
-
-const trainingSword: IconDef = {
-  id: 'trainingSword', name: '训练短剑', rarity: 'common',
-  pieces: sword({
-    gx: 12, gy: 20, blade: 14.5, half: 1.9, tip: 2.4, grip: 4.5, gripHalf: 1.2, guard: 3.8, guardHalf: 1.1, pommel: 1.5, core: 'fuller',
-    pal: { blade: P('weapon_training_sword', 'blade'), hilt: P('weapon_training_sword', 'hilt'), grip: P('weapon_training_sword', 'grip') },
-  }),
-};
-
-const greatSword: IconDef = {
-  id: 'greatSword', name: '重剑', rarity: 'rare',
-  pieces: sword({
-    gx: 9, gy: 23, blade: 22.5, half: 3.8, tip: 4.2, grip: 6.5, gripHalf: 1.4, guard: 7, guardHalf: 1.6, pommel: 2.1, core: 'fuller', wing: 1.2,
-    pal: { blade: P('weapon_great_sword', 'blade'), hilt: P('weapon_great_sword', 'hilt'), grip: P('weapon_great_sword', 'grip') },
-  }),
-  fx: { glow: '#cfe0ff' },
-};
-
-const starlightBlade: IconDef = {
-  id: 'starlightBlade', name: '星辉刃', rarity: 'legendary',
-  pieces: sword({
-    gx: 11, gy: 21, blade: 18, half: 2.4, tip: 5, grip: 5, gripHalf: 1.2, guard: 4.8, guardHalf: 1.2, pommel: 1.7, core: 'glow', wing: 1.8,
-    pal: { blade: P('weapon_starlight_blade', 'blade'), hilt: P('weapon_starlight_blade', 'hilt'), grip: P('weapon_starlight_blade', 'grip'), gem: P('weapon_starlight_blade', 'gem') },
-  }),
-  fx: { glow: '#6cc8ff', sparkle: '#c8f2ff', particles: 'stars' },
-};
-
-const dragonFangSword: IconDef = {
-  id: 'dragonFangSword', name: '龙牙剑', rarity: 'legendary',
-  pieces: sword({
-    gx: 10, gy: 22, blade: 20.5, half: 2.6, tip: 11, grip: 5.5, gripHalf: 1.3, guard: 5.8, guardHalf: 1.5, pommel: 1.8, curve: -2.2, wing: 2.6,
-    pal: { blade: P('weapon_dragon_fang', 'blade'), hilt: P('weapon_dragon_fang', 'hilt'), grip: P('weapon_dragon_fang', 'grip'), gem: P('weapon_dragon_fang', 'gem') },
-  }),
-  fx: { glow: '#ff7a2a', sparkle: '#ffb050', particles: 'embers' },
-};
-
-const huntingBow: IconDef = {
-  id: 'huntingBow', name: '猎弓', rarity: 'common',
-  pieces: [
-    // 弓身：一道往右下鼓的弧，两端收细、往回勾
-    (c) => {
-      c.use(P('weapon_hunting_bow', 'wood'));
-      const pts = Array.from({ length: 15 }, (_, i) => {
-        const s = i / 14 - 0.5; // -0.5..0.5
-        const bulge = 6.5 * (1 - 4 * s * s) - 1.2 * Math.max(0, Math.abs(s) * 2 - 0.85) * 8;
-        const along = s * 25;
-        return at(16, 16, along, bulge);
-      });
-      c.g.ribbon(pts, (s) => 1.9 - 1.1 * Math.abs(s - 0.5) * 2, (lam, o) => (o < -0.3 ? LIGHT : o > 0.45 ? DARK : lam > 0.6 ? HI : BASE));
-    },
-    // 握把缠绳
-    (c) => {
-      c.use(P('weapon_hunting_bow', 'wrap'));
-      const m = at(16, 16, 0, 6.5);
-      bar(c, m.x - DX * 2.4, m.y - DY * 2.4, m.x + DX * 2.4, m.y + DY * 2.4, 2.1, (t, o) => (o > 0.6 ? DARK : Math.floor(t) % 2 ? BASE : LIGHT));
-    },
-    // 弓弦
-    (c) => {
-      c.use(P('weapon_hunting_bow', 'string'));
-      const a = { x: 16 - DX * 12.2, y: 16 - DY * 12.2 }, b = { x: 16 + DX * 12.2, y: 16 + DY * 12.2 };
-      c.g.line(a.x, a.y, b.x, b.y, LIGHT);
-    },
-  ],
-};
-
-const legendaryStaff: IconDef = {
-  id: 'legendaryStaff', name: '传奇权杖', rarity: 'legendary',
-  pieces: [
-    // 深色杖身缠金色螺旋
-    (c) => {
-      c.use(P('weapon_legendary_staff', 'shaft'));
-      bar(c, 4.5, 28.5, 20, 13, 1.25, (_t, o) => (o < -0.3 ? LIGHT : o > 0.5 ? DARK : BASE));
-      c.use(P('weapon_legendary_staff', 'gold'));
-      c.g.clip = true;
-      bar(c, 4.5, 28.5, 20, 13, 1.25, (t, o) => (Math.abs(((t * 0.7 + o * 0.9 + 20) % 2.4) - 1.2) < 0.45 ? (o < 0 ? HI : LIGHT) : -1));
-      c.g.clip = false;
-      bar(c, 3.5, 29.5, 5.4, 27.6, 1.6, (_t, o) => (o < 0 ? LIGHT : BASE));
-    },
-    // 金翼杖头
-    (c) => {
-      c.use(P('weapon_legendary_staff', 'gold'));
-      const hx = 22.5, hy = 10.5;
-      for (const side of [-1, 1]) {
-        c.g.fill(hx - 9, hy - 9, hx + 9, hy + 9, (u, v) => {
-          const du = u - hx, dv = v - hy;
-          const along = du * DX + dv * DY, across = (du * -DY + dv * DX) * side;
-          if (along < -5.5 || along > 4.5) return -1;
-          const outer = 3.6 + 2.8 * Math.cos(((along + 0.5) / 5) * 1.3) - Math.max(0, along - 2.5) * 1.2;
-          if (across < 2.6 || across > outer) return -1;
-          const feather = Math.abs(((across * 1.1 + along * 0.7 + 20) % 1.8) - 0.9) < 0.25;
-          return feather ? BASE : lit(-across * side * DY, across * side * DX) > 0.3 ? HI : LIGHT;
-        });
-      }
-    },
-    // 大宝石
-    (c) => {
-      c.use(P('weapon_legendary_staff', 'gem'));
-      c.g.ellipse(22.5, 10.5, 3.6, 3.6, (lam) => sphere(lam));
-      c.g.dot(21.4, 9.2, HI);
-    },
-    // 浮空金环
-    (c) => {
-      c.use(P('weapon_legendary_staff', 'gold'));
-      c.g.fill(17, 1, 30, 9, (u, v) => {
-        const ex = (u - 25.5) / 4.6, ey = (v - 4.6) / 1.8;
-        const d = Math.hypot(ex, ey);
-        return Math.abs(d - 1) < 0.24 ? (ey < 0 ? HI : LIGHT) : -1;
-      });
-    },
-  ],
-  fx: { glow: '#ff5ab4', sparkle: '#ffd0f0', particles: 'motes', center: [20, 12] },
-};
 
 // ---------------------------------------------------------------- 护甲（正面）
 
@@ -602,7 +425,7 @@ const revivalStone: IconDef = {
 };
 
 export const ICONS: IconDef[] = [
-  trainingSword, huntingBow, greatSword, legendaryStaff, starlightBlade, dragonFangSword,
+  ...WEAPON_ICONS,
   leatherArmor, runeArmor, starlightArmor, dragonArmor,
   powerBadge, actionRing, starlightCharm, dragonCharm,
   smallPotion, largePotion, shieldPotion, revivalStone,
