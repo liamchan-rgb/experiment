@@ -47,7 +47,7 @@ export type AnimId = 'idle' | 'walk' | 'ready' | ActionId | ExtraId;
 /** 每段动画的帧数，顺序就是 sheet 里的顺序 */
 export const CLIP_LENGTHS: [AnimId, number][] = [
   ['idle', 2], ['walk', 6], ['ready', 2],
-  ['slash', 8], ['heavy', 8], ['dash', 8], ['shoot', 4], ['cast', 4],
+  ['slash', 8], ['heavy', 8], ['dash', 8], ['shoot', 8], ['cast', 8],
   ['guard', 2], ['hurt', 6], ['victory', 2], ['defeat', 6],
 ];
 /** 动画名 → sheet 列号 */
@@ -65,7 +65,7 @@ export const READY_FRAMES = CLIP_FRAMES.ready;
 export const ACTION_FRAMES = Object.fromEntries(ACTIONS.map((a) => [a, CLIP_FRAMES[a]])) as Record<ActionId, number[]>;
 export const EXTRA_FRAMES = Object.fromEntries(EXTRAS.map((a) => [a, CLIP_FRAMES[a]])) as Record<ExtraId, number[]>;
 /** 攻击 / 施法的「出手帧」（动画内序号）：战斗里伤害数字、箭、法术对准它 */
-export const IMPACT_FRAME: Record<ActionId, number> = { slash: 2, heavy: 3, dash: 3, shoot: 2, cast: 2 };
+export const IMPACT_FRAME: Record<ActionId, number> = { slash: 2, heavy: 3, dash: 3, shoot: 4, cast: 4 };
 
 /**
  * 8 相位的行走（不在 sheet 里，按需烘焙）：iPad 地图的行走图集是 8 个相位，
@@ -218,6 +218,38 @@ interface ActKey {
   lying?: boolean;
 }
 
+const F = (r: number, l: number, rs = -3.2, ls = 3.2): [V3, V3] => [[rs, 0, r], [ls, 0, l]];
+
+function shotKeys(): ActKey[] {
+  const k = (R: V3, L: V3, dir: V3, neckF: number, bob: number, feet: [V3, V3], fx?: Pose['fx'], hipF = -0.4): ActKey =>
+    ({ R, L, dir, lean: 0, bob, step: 0, absolute: true, neckF, hipF, feet, fx });
+  return [
+    k([-6, 31, -3], [5, 21, 7], [0, 1, 0.3], 1, 2.6, F(-5.4, 4.6)),
+    k([-3, 27, 6], [4.5, 26, 10], [0, 1, 0.12], 1.7, 2.2, F(-5.4, 5.6)),
+    k([-5, 30, 0], [3.5, 28, 12], [0, 1, 0.05], 1, 2.8, F(-5.4, 5.6), 'arrow'),
+    k([-5.5, 30.5, -2.2], [3.5, 28.5, 12.5], [0, 1, 0.04], 0.8, 3.1, F(-5.6, 5.6), 'arrow'),
+    k([-8.5, 32, -6.5], [3.5, 30, 11.5], [0, 1, -0.06], 0, 2.3, F(-6.4, 5.2), 'loose', -0.9),
+    k([-8.5, 28, -5], [4, 27, 10], [0, 1, 0.05], 0.4, 2.2, F(-6.2, 5)),
+    k([-6, 25, 0], [4.5, 24, 9], [0, 1, 0.2], 0.9, 2.1, F(-5.6, 4.8)),
+    k([-4, 24, 2.5], [5, 22, 8], [0, 1, 0.3], 1.2, 2, F(-5.4, 4.6)),
+  ];
+}
+
+function castKeys(): ActKey[] {
+  const k = (R: V3, L: V3, dir: V3, neckF: number, bob: number, feet: [V3, V3], fx?: Pose['fx'], hipF = -0.3, trail = false): ActKey =>
+    ({ R, L, dir, lean: 0, bob, step: 0, absolute: true, neckF, hipF, feet, fx, trail });
+  return [
+    k([-7, 21, 1], [4, 25, 5], [0.05, 0.8, -0.5], 0.4, 3.2, F(-4, 3.8), 'glow'),
+    k([-7.5, 27, -3], [5, 28, 8], [0.05, 0.95, -0.3], 0, 2, F(-4, 3.8), 'glow'),
+    k([-6.5, 37, 0], [6, 32, 6], [0.05, 1, 0.1], -0.6, 0.6, F(-3.2, 3), 'glow', 0.2),
+    k([-6, 39, 2], [6.5, 34, 4], [0.05, 1, 0.25], -0.8, 0.2, F(-3.2, 3), 'glow', 0.3),
+    k([-5, 30, 11], [7, 24, 1], [0.05, 0.5, 0.86], 3.2, 2.6, F(-5.6, 6.4), 'burst', -1, true),
+    k([-5, 27, 10], [7, 23, 0], [0.05, 0.45, 0.9], 2.8, 3, F(-5.6, 6.4), 'burst', -1),
+    k([-6.5, 25, 7], [6, 25, 5], [0.05, 0.8, 0.55], 1.6, 2.2, F(-4.6, 5)),
+    k([-7, 24, 5], [6, 25, 7], [0.05, 0.9, 0.42], 1.5, 1.7, F(-3.8, 4.2)),
+  ];
+}
+
 /** 动作捕捉的关键帧 → ActKey */
 function fromCapture(list: CapturedKey[]): ActKey[] {
   return list.map((k) => ({ R: k.R, L: k.L, dir: k.dir, lean: 0, bob: k.bob, step: 0, trail: k.trail, absolute: true, neckF: k.neckF, hipF: k.hipF, feet: k.feet }));
@@ -235,18 +267,12 @@ const ACTION_KEYS: Record<ActionId, ActKey[]> = {
   slash: fromCapture(captured('attack1', { crouch: 1.6, reach: 1.3 })),
   heavy: fromCapture(captured('attack3', { crouch: 2.2, leanGain: 1.1, reach: 1.3 })).map((k, i) => (i === 3 ? { ...k, fx: 'burst' as const } : k)),
   dash: fromCapture(captured('dash', { crouch: 1.8, leanGain: 1.15, reach: 1.3 })),
-  shoot: [
-    { R: [-3, 27, 8], L: [5, 27, 9], dir: [0, 1, 0.1], lean: 0.3, bob: 0, step: 2, fx: 'arrow' },
-    { R: [-5, 30, -1], L: [3.5, 27, 12], dir: [0, 1, 0.05], lean: 0.5, bob: 0, step: 2, fx: 'arrow' },
-    { R: [-7.5, 31, -4], L: [3.5, 27, 12], dir: [0, 1, 0.05], lean: 0.3, bob: 0, step: 2, fx: 'loose' },
-    { R: [-4.5, 23, 2], L: [5, 23, 8], dir: [0, 1, 0.28], lean: 0.4, bob: 0, step: 0.5 },
-  ],
-  cast: [
-    { R: [-8, 25, 5], L: [5, 25, 7], dir: [0, 1, 0.15], lean: 0.3, bob: 1, step: 1, fx: 'glow' },
-    { R: [-7, 36, 4], L: [6, 27, 8], dir: [0.05, 0.92, 0.35], lean: 0.5, bob: 0, step: 1, fx: 'glow' },
-    { R: [-5, 31, 10], L: [7.5, 22, 2], dir: [0.05, 0.55, 0.85], lean: 1.5, bob: 0.5, step: 2, fx: 'burst' },
-    { R: [-7, 24, 5], L: [6, 25, 7], dir: [0.05, 0.9, 0.4], lean: 0.6, bob: 0, step: 0.5 },
-  ],
+  // 射箭（8 帧，手调，节奏参照动作捕捉）：伸手到背后取箭 → 举弓上步 → 拉弦 → 满弦定住 →
+  // 放箭（右手往后甩开、身体后坐、弓往上一扬）→ 收势 → 回位
+  shoot: shotKeys(),
+  // 施法（8 帧）：下蹲蓄力 → 杖往后上方抡 → 高举过头、上身后仰 → 顶点定住 →
+  // 上步前推释放（爆闪）→ 前倾收势 → 回位
+  cast: castKeys(),
 };
 
 /**

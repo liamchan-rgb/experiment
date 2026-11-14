@@ -39,10 +39,7 @@ function head(c: DrawCtx): void {
   g.anchor(hx, hy);
 
   c.pal('skin');
-  // 脖子：整个在下巴的阴影里
-  const nx0 = pose.head.x - pose.sin * 0.6;
-  g.rect(nx0 - 1.9, hy + 7, 3.8, 5.2, (_u, v) => (v < hy + 10.4 ? OUTLINE : DARK));
-
+  // 脖子画在躯干层（见 neck()），被衣领盖住，只露出下巴和衣领之间那一小段
   // 头：椭球，下半张脸收窄成下巴；额头落在刘海的阴影里
   g.fill(hx - HEAD_RX - 1, hy - HEAD_RY - 1, hx + HEAD_RX + 1, hy + HEAD_RY + 1, (u, v) => {
     const dx = u - hx, dy = v - hy;
@@ -75,6 +72,25 @@ function head(c: DrawCtx): void {
   g.clip = false;
 }
 
+/**
+ * 脖子：从下巴里面一点画到衣领下面，整个在下巴的阴影里。
+ * 放在躯干层而不是头层：衣服（上衣、护甲）在躯干层之上，会把脖子盖住，
+ * 前倾、下蹲时脖子也不会画到衣领外面去，侧面看不会显得脖子很长。
+ */
+function neck(c: DrawCtx): void {
+  const { g, pose } = c;
+  const hy = pose.head.y;
+  // 头和衣领之间的连线：上端跟着头，下端跟着躯干顶部（前倾时脖子是斜的）
+  const topX = pose.head.x - pose.sin * 0.6, botX = pose.torsoX(0);
+  const top = hy + 7, bottom = pose.neckY + 2;
+  g.fill(Math.min(topX, botX) - 2.2, top, Math.max(topX, botX) + 2.2, bottom, (u, v) => {
+    const k = (v - top) / Math.max(0.1, bottom - top);
+    const cx = topX + (botX - topX) * k;
+    if (Math.abs(u - cx) > 1.9) return -1;
+    return v < hy + 10.4 ? OUTLINE : DARK;
+  });
+}
+
 export const body: ItemDef = {
   id: 'body',
   name: '身体',
@@ -101,6 +117,7 @@ export const body: ItemDef = {
       draw: (c) => {
         c.g.grit = 0.08;
         c.pal('skin');
+        neck(c);
         torsoShape(c, 12.5, { flare: 0, pad: -0.3 }, (lam) => c.g.t(lam));
       },
     },
