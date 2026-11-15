@@ -467,7 +467,8 @@ export function makePose(dir: Dir5, frame: number, opts: PoseOptions = {}): Pose
       // 扛在肩上：手在胸前握柄，剑身越过右肩往后上方
       elbow = proj(8.4 * sign, HAND + 6 - bob, 1.5);
       j = proj(5.5 * sign, HAND + 5 - bob, 4 + 0.6 * s * sign);
-      wd = [0.15 * sign, 0.7, -0.7];
+      // 剑身斜着伸出肩外（正面、斜前方也看得见，不会整把藏在头后面）
+      wd = [0.55 * sign, 0.72, -0.45];
     } else if (hold === 'bow') {
       // 弓垂在身侧：弓身竖直，随步伐轻晃
       elbow = proj(8.4 * sign, (SHOULDER + HAND) / 2 + 0.5 - bob, -0.6);

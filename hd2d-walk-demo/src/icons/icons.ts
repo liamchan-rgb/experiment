@@ -139,7 +139,7 @@ const runeArmor: IconDef = {
 };
 
 const starlightArmor: IconDef = {
-  id: 'starlightArmor', name: '星辉甲', rarity: 'legendary',
+  id: 'starlightArmor', name: '星辉甲', rarity: 'epic',
   pieces: armor({
     main: P('top_starlight_armor', 'main'), trim: P('top_starlight_armor', 'trim'), cloth: P('top_starlight_armor', 'cloth'),
     shine: 1.4, pauldron: 'both', skirt: true,
@@ -253,7 +253,7 @@ const actionRing: IconDef = {
 };
 
 const starlightCharm: IconDef = {
-  id: 'starlightCharm', name: '星辉饰品', rarity: 'legendary',
+  id: 'starlightCharm', name: '星辉饰品', rarity: 'epic',
   pieces: [
     // 银链
     (c) => {

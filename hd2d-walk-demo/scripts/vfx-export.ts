@@ -278,6 +278,25 @@ for (const [game, evs] of Object.entries(RECIPES)) {
   }
   recipes[game] = list;
 }
+/** 掉落动画用的片段（没有配方，游戏的掉落动画直接播）：金币、稀有度光柱、拾取爆光 */
+const TIER = {
+  Rare: ['#06142e', '#0c2c6a', '#1650b0', '#2a7ae6', '#4aa8ff', '#9ad2ff', '#d8f0ff', '#ffffff'],
+  Epic: ['#140a24', '#2c1250', '#4b1d86', '#7330c0', '#a050f0', '#c890ff', '#ecd4ff', '#ffffff'],
+  Legendary: ['#2a1204', '#5a2a06', '#a0520c', '#e08a18', '#ffb030', '#ffd870', '#fff4c0', '#ffffff'],
+};
+const LOOT: Record<string, { fx: string; opts: Record<string, unknown> }> = {
+  coinSpin: { fx: 'pickups/coin-spin', opts: {} },
+  collectGold: { fx: 'pickups/collect-burst', opts: { palette: ['#1e1206', '#4a2c08', '#86520c', '#c48412', '#f0b424', '#ffe066', '#fff6c4', '#ffffff'] } },
+  ...Object.fromEntries(Object.entries(TIER).flatMap(([tier, palette]) => [
+    [`lootBeam${tier}`, { fx: 'pickups/loot-beam', opts: { palette } }],
+    [`collect${tier}`, { fx: 'pickups/collect-burst', opts: { palette } }],
+  ])),
+};
+for (const [name, l] of Object.entries(LOOT)) {
+  const clip = await renderClip(name, l.fx, l.opts, undefined);
+  clips.set(name, clip);
+  console.log(`${clip.id}: ${clip.n} frames ${clip.w}x${clip.h}${clip.loop ? ' loop' : ''}`);
+}
 for (const [name, s] of Object.entries(SHIELD)) {
   const clip = await renderClip(name, 'our/aegis', s.opts, undefined, s.seconds);
   if (name === 'shieldIdle') clip.loop = true;

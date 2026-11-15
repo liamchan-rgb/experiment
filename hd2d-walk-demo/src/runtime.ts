@@ -7,6 +7,7 @@
  *   bake(specJSON)      → Uint8Array：RGBA。spec.dirs × spec.frames 排成 行 × 列（不写 = 5 个方向 × 全部帧）。
  *                         游戏里只烘需要的部分：地图要 5 个方向的待机 + 行走，战斗只要右侧的战斗帧。
  *                         没有 JIT 的 JavaScriptCore 里一整张约 2.5 秒，只烘需要的帧约 1 秒，结果缓存到磁盘。
+ *   bakeFx(specJSON)    → Uint8Array：装备特效叠加层（4 相位），没有特效时长度 0
  *   feet(holdOrEmpty)   → JSON：每个方向每一帧两只脚的像素坐标（地图投影 / 战斗落脚点用）
  *   anchors(specJSON)   → JSON：战斗用的发射点（弓弦、法杖宝珠）在各帧的像素坐标
  */
@@ -122,4 +123,36 @@ function hands(hold: string): string {
   })));
 }
 
-(globalThis as unknown as { PixelBaker: unknown }).PixelBaker = { info, bake, feet, hands, feetAt, handAt };
+/**
+ * 装备特效叠加层（PartDef.glow：权杖光芒、龙牙剑火苗……）：同样的方向 / 帧，每帧 4 个相位，
+ * 只留「加了特效以后变了的像素」（被身体挡住的特效自然不出现）。排成 行 = 方向 × 4 + 相位、列 = 帧。
+ * 这身装备没有特效就返回长度 0。游戏按时间循环相位，叠在人物上面，站着不动时特效也在动。
+ */
+function bakeFx(specJSON: string): Uint8Array {
+  const spec = JSON.parse(specJSON) as BakeSpec;
+  const entries = equipment(spec).resolve();
+  if (!entries.some((e) => e.item.parts.some((p) => p.glow))) return new Uint8Array(0);
+  const dirs = spec.dirs ?? DIRS5;
+  const cols = spec.frames ?? Array.from({ length: FRAMES_PER_DIR }, (_, i) => i);
+  const P = 4, W = SPR_W * cols.length, H = SPR_H * dirs.length * P;
+  const out = new Uint8Array(W * H * 4);
+  const plain = new Uint8ClampedArray(SPR_W * SPR_H * 4), lit = new Uint8ClampedArray(SPR_W * SPR_H * 4);
+  const L = new PixelLayer(SPR_W, SPR_H);
+  dirs.forEach((dir, r) => {
+    cols.forEach((f, c) => {
+      L.clear(); composeFrame(entries, dir, f, L, { glow: false }); L.toRGBA(plain);
+      for (let ph = 0; ph < P; ph++) {
+        L.clear(); composeFrame(entries, dir, f, L, { phase: ph }); L.toRGBA(lit);
+        for (let y = 0; y < SPR_H; y++) for (let x = 0; x < SPR_W; x++) {
+          const i = (y * SPR_W + x) * 4;
+          if (lit[i + 3] === 0) continue;
+          if (lit[i] === plain[i] && lit[i + 1] === plain[i + 1] && lit[i + 2] === plain[i + 2] && lit[i + 3] === plain[i + 3]) continue;
+          out.set(lit.subarray(i, i + 4), (((r * P + ph) * SPR_H + y) * W + c * SPR_W + x) * 4);
+        }
+      }
+    });
+  });
+  return out;
+}
+
+(globalThis as unknown as { PixelBaker: unknown }).PixelBaker = { info, bake, bakeFx, feet, hands, feetAt, handAt };

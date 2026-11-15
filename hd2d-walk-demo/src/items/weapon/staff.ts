@@ -1,4 +1,5 @@
 import { pal, ramp, BASE, DARK, HI, LIGHT } from '../../pixel/palette';
+import { scepterRays } from '../kits/gearFx';
 import type { DrawCtx, ItemDef } from '../../character/types';
 import { along, at, frameOf, fxPart, type Frame } from '../kits/weaponKit';
 
@@ -104,7 +105,7 @@ function drawScepter(c: DrawCtx): void {
     });
   }
   c.pal('gem');
-  orb(c, hx, hy, 2.6);
+  orb(c, hx, hy, 3.1);
   c.pal('gold');
   // 浮空的金环：宝石上方一道细椭圆弧
   const ring = at(f, 43.2);
@@ -123,6 +124,7 @@ export const legendaryStaff: ItemDef = {
   palettes: { shaft: shaftDark, gold: royal, gem: ruby, fx: ruby },
   parts: [
     { layer: 'weapon', draw: drawScepter },
+    scepterRays,
     fxPart((f: Frame) => at(f, 37.5), 'fx', 1.2),
   ],
 };

@@ -263,7 +263,7 @@ const legendaryStaff: IconDef = {
 // ---------------------------------------------------------------- 星辉刃（传说）
 
 const starlightBlade: IconDef = {
-  id: 'starlightBlade', name: '星辉刃', rarity: 'legendary',
+  id: 'starlightBlade', name: '星辉刃', rarity: 'epic',
   pieces: [
     // 深蓝握柄缠银线，末端一颗小四角星
     (c) => space(c, 9.5, 22.5, (t, o) => {

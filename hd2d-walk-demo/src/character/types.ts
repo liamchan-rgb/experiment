@@ -28,6 +28,8 @@ export interface DrawCtx {
   pal(key?: string): void;
   /** 武器槽位专用：所在手的锚点（weapon_main → hand_R，weapon_off → hand_L） */
   hand?: HandAnchor;
+  /** 装备特效的动画相位 0-3（见 PartDef.glow） */
+  phase: number;
 }
 
 export type AnchorName = 'head' | 'torso' | 'hip' | 'hand_R' | 'hand_L';
@@ -62,6 +64,11 @@ export interface PartDef {
   mask?: 'below';
   /** 本部件压在其他部件上的那段内描边用哪一阶，默认 INNER_LINE（0.75） */
   innerLine?: number;
+  /**
+   * 装备特效（宝石光芒、火苗、星点……）：不描边；用 c.phase（0-3）做动画。
+   * 游戏战斗里单独烘成一层 4 相位的叠加图，按时间循环播放（静止时也会动）；普通 sheet 里按帧号取相位。
+   */
+  glow?: boolean;
 }
 
 /** 围巾尾 / 飘带之类的次级运动定义（运行时由弹簧驱动，不烘焙进 sheet） */

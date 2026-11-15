@@ -2,6 +2,7 @@ import { PixelLayer } from '../pixel/PixelLayer';
 import { Brush, LX, LY } from '../pixel/Brush';
 import { paletteRGB, type Palette, HI, LIGHT } from '../pixel/palette';
 import { INNER_LINE } from '../character/paperdoll';
+import { THEMES, type ThemeApi } from './iconThemes';
 
 /**
  * 物品图标：32 × 32 像素，和人物用同一套画笔、描边、内描边、接触阴影和调色板（直接取自对应装备），
@@ -180,12 +181,15 @@ export function iconFrame(def: IconDef, base: PixelLayer, t: number): Uint8Clamp
   };
   const WHITE: [number, number, number] = [255, 255, 255];
   const body = (x: number, y: number) => base.idx[y * W + x] > 0;
+  // 有主题特效的物品：轮廓光晕只留一层淡淡的底光，重点交给主题（iconThemes.ts）
+  const theme = THEMES[def.id];
+  const haloK = theme ? 0.35 : 1;
 
   // 呼吸的光晕：外圈一层淡的，贴着物品一层亮的（只在物品周围，不是一个大圆片）
   if (spec.halo > 0) {
     const pulse = 0.72 + 0.28 * Math.sin(t * Math.PI * 2);
     const R = fx.radius ?? 15;
-    glowAt(cx, cy, R, glow, spec.halo * 0.55 * pulse);
+    glowAt(cx, cy, R, glow, spec.halo * 0.55 * pulse * haloK);
     // 沿着轮廓的一圈光：离物品像素越近越亮
     for (let y = 0; y < H; y++) for (let x = 0; x < W; x++) {
       if (body(x, y)) continue;
@@ -194,7 +198,7 @@ export function iconFrame(def: IconDef, base: PixelLayer, t: number): Uint8Clamp
         const xx = x + dx, yy = y + dy;
         if (xx >= 0 && yy >= 0 && xx < W && yy < H && body(xx, yy)) near = Math.min(near, Math.hypot(dx, dy));
       }
-      if (near < 3) add(x, y, glow, spec.halo * pulse * (1 - near / 3) * 0.9);
+      if (near < 3) add(x, y, glow, spec.halo * pulse * (1 - near / 3) * 0.9 * haloK);
     }
   }
 
@@ -225,7 +229,7 @@ export function iconFrame(def: IconDef, base: PixelLayer, t: number): Uint8Clamp
     if (!body(x - 1, y) || !body(x + 1, y) || !body(x, y - 1) || !body(x, y + 1)) outline.push([x, y]);
   }
   const seed = def.id.length * 31 + def.id.charCodeAt(0);
-  for (let i = 0; i < spec.glints && outline.length; i++) {
+  for (let i = 0; i < (theme ? Math.min(1, spec.glints) : spec.glints) && outline.length; i++) {
     const life = 0.22, start = (i + 0.35) / spec.glints;
     const age = (((t - start) % 1) + 1) % 1;
     if (age > life) continue;
@@ -241,7 +245,23 @@ export function iconFrame(def: IconDef, base: PixelLayer, t: number): Uint8Clamp
   }
 
   // 专属粒子
-  if (spec.particles && fx.particles) {
+  if (theme) {
+    const ids = base.palettes.map((p) => p.id);
+    const api: ThemeApi = {
+      t, base, add, glowAt, setPx,
+      find: (...want: string[]) => {
+        const keep = new Set(ids.map((id, i) => (want.includes(id) ? i : -1)).filter((i) => i >= 0));
+        const pts: [number, number][] = [];
+        for (let y = 0; y < H; y++) for (let x = 0; x < W; x++) {
+          const v = base.idx[y * W + x];
+          if (v > 3 && keep.has(base.pid[y * W + x])) pts.push([x, y]);
+        }
+        return pts;
+      },
+      rand: (i: number, k = 0) => rand(i, seed, k),
+    };
+    theme(api);
+  } else if (spec.particles && fx.particles) {
     const n = fx.particles === 'embers' ? 7 : 6;
     for (let i = 0; i < n; i++) {
       const phase = (t + i / n) % 1;

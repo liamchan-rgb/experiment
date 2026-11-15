@@ -69,7 +69,9 @@ function anchorPoint(part: PartDef, c: DrawCtx): { x: number; y: number } {
  * 把一组装备合成为某方向某帧的一张像素图。
  * 每个部件先画到临时层 → 自动描边 → 按 z 从后到前叠到 out 上。
  */
-export function composeFrame(entries: LoadoutEntry[], dir: Dir5, frame: number, out: PixelLayer): void {
+/** opts.glow = false：不画装备特效（PartDef.glow）；opts.phase：特效相位（默认按帧号） */
+export function composeFrame(entries: LoadoutEntry[], dir: Dir5, frame: number, out: PixelLayer, opts: { glow?: boolean; phase?: number } = {}): void {
+  const phase = opts.phase ?? frame % 4;
   if (tmp.w !== SPR_W || brush.S !== SPRITE_SCALE) {
     // 倍率变了：换一张临时图层
     tmp = new PixelLayer(SPR_W, SPR_H);
@@ -92,8 +94,9 @@ export function composeFrame(entries: LoadoutEntry[], dir: Dir5, frame: number, 
     const fallback = Object.values(entry.palettes)[0];
 
     entry.item.parts.forEach((part, pi) => {
+      if (part.glow && opts.glow === false) return;
       const ctx: DrawCtx = {
-        dir, frame, anim: pose.anim, pose, L: tmp, g: brush, hand,
+        dir, frame, anim: pose.anim, pose, L: tmp, g: brush, hand, phase,
         pal: (key = 'main') => {
           tmp.use(entry.palettes[key] ?? bodyPalettes[key] ?? fallback);
         },
@@ -133,12 +136,12 @@ export function composeFrame(entries: LoadoutEntry[], dir: Dir5, frame: number, 
       tmp.drawOnto(out, 0, 0, undefined, true);
       continue;
     }
-    if (part.outline !== false) {
+    if (part.outline !== false && !part.glow) {
       tmp.bounce();
       tmp.outline();
       out.castShadow(tmp, shadowTaps());
     }
-    tmp.drawOnto(out, 0, 0, part.innerLine ?? INNER_LINE);
+    tmp.drawOnto(out, 0, 0, part.glow ? undefined : part.innerLine ?? INNER_LINE);
     if (part.innerLine !== undefined) out.fillInteriorOutlines(part.innerLine, tmp.palettes);
   }
   if (pose.lying) layDown(out, pose.lying.lift);

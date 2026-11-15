@@ -539,3 +539,12 @@ pixelfx 的 divine-shield 是一个布满经纬线的大球，放在 Q 版小人
   配方按游戏特效 id 写在 `scripts/vfx-export.ts` 的 RECIPES 里，按「往右打」写，游戏方向为 -1 时镜像；
   会描身体的特效（治疗、祝福、怒气、燃烧）用通用人物轮廓、不带像素颜色预渲染，所有人共用。
   护盾的待机所有周期都整除 4 秒，可以无缝循环。
+
+### 13.3 稀有装备的主题特效、身上的特效层、掉落用片段（v0.31.0）
+
+- 图标：`src/icons/iconThemes.ts` 按物品写主题特效（按调色板找宝石 / 刃 / 符文等重点部位），有主题时轮廓光晕只留淡底光。
+  品级：普通 / 稀有 / 史诗（星辉套装）/ 传说（龙纹套装、传奇权杖）。
+- 身上：`PartDef.glow` 的部件是装备特效（`src/items/kits/gearFx.ts`：权杖光芒、龙牙剑火苗、星辉刃星点、重剑红宝石、
+  符文甲流光、星辉甲星芒、龙纹甲护肩火），用 `c.phase`（0-3）做动画。普通 sheet 按帧号取相位；
+  runtime 的 `bakeFx` 单独烘 4 相位的叠加层（只含特效像素，被身体挡住的不出现），游戏战斗里按时间循环。
+- 掉落：`scripts/vfx-export.ts` 另外导出 coinSpin、lootBeamRare/Epic/Legendary、collectGold/Rare/Epic/Legendary 片段。

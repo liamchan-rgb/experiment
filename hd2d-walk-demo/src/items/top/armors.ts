@@ -2,6 +2,7 @@ import { pal, BASE, DARK, HI, LIGHT, OUTLINE } from '../../pixel/palette';
 import { DARKEN, LIGHTEN } from '../../pixel/Brush';
 import type { DrawCtx, ItemDef, PartDef } from '../../character/types';
 import { armLayer, armOf, farBias, frontX, sleeveParts, torsoShape } from '../shared';
+import { crestBurst, pauldronFlames, runeFlow } from '../kits/gearFx';
 
 /**
  * 桌游物品表里的四件护甲（armor 槽 → 纸娃娃的 top 槽）：
@@ -173,6 +174,7 @@ export const runeArmor: ItemDef = {
     },
     ...sleeveParts({ key: 'cloth', cuffKey: 'trim', r: 2 }),
     ...pauldrons({ key: 'main', trimKey: 'trim', r: 3.1 }),
+    runeFlow,
     {
       // 护肩上的符点（不描边，亮的）
       layer: 'arm_front',
@@ -222,13 +224,13 @@ export const starlightArmor: ItemDef = {
           return metal(c, lam, r < 3.4 ? -0.4 : 0.1);
         });
         if (pose.cos > 0.3) {
-          // 胸口的星形纹章
-          const fx = frontX(c), y = ny + 5.6;
+          // 胸口的星形纹章（和图标一样醒目）
+          const fx = frontX(c), y = ny + 5.4;
           c.pal('gem');
           g.clip = true;
-          g.fill(fx - 2.4, y - 2.4, fx + 2.4, y + 2.4, (u, v) => {
+          g.fill(fx - 3.4, y - 3.4, fx + 3.4, y + 3.4, (u, v) => {
             const ax = Math.abs(u - fx), ay = Math.abs(v - y);
-            if (ax + ay > 2.6 || Math.min(ax, ay) > 0.5) return -1;
+            if (ax + ay > 3.4 || Math.min(ax, ay) > 0.6) return -1;
             return ax + ay < 1 ? HI : u < fx || v < y ? LIGHT : BASE;
           });
           g.clip = false;
@@ -240,8 +242,14 @@ export const starlightArmor: ItemDef = {
         }
       },
     },
+    {
+      // 金腰带（图标上的那道金边），侧面背面也看得见
+      layer: 'top',
+      draw: (c) => belt(c, 8.4, 9.9, 'trim', 'gem'),
+    },
     ...sleeveParts({ key: 'cloth', cuffKey: 'main', r: 2 }),
-    ...pauldrons({ key: 'main', trimKey: 'trim', r: 3.2 }),
+    ...pauldrons({ key: 'main', trimKey: 'trim', r: 3.6 }),
+    crestBurst,
   ],
 };
 
@@ -256,7 +264,7 @@ export const dragonArmor: ItemDef = {
   name: '龙纹甲',
   slot: 'top',
   gameItem: 'dragonArmor',
-  palettes: { main: crimson, trim: dragonGold, cloth: charcoal },
+  palettes: { main: crimson, trim: dragonGold, cloth: charcoal, fx: pal('dragon-flame', '#7a1c0c', '#d04a18', '#f6902c', '#ffd060', '#fff6c8') },
   parts: [
     {
       layer: 'top',
@@ -296,6 +304,7 @@ export const dragonArmor: ItemDef = {
       },
     },
     ...sleeveParts({ key: 'cloth', cuffKey: 'trim', r: 2 }),
-    ...pauldrons({ key: 'main', trimKey: 'trim', r: 3.3, spikes: true }),
+    ...pauldrons({ key: 'main', trimKey: 'trim', r: 3.7, spikes: true }),
+    ...pauldronFlames,
   ],
 };
