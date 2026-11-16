@@ -5,7 +5,13 @@
  *
  * 坐标（米）：x 向右（左边英雄、右边怪物），z 朝镜头，y 向上。Q 版人物约 1.6 米高，战斗舞台约 x ∈ [-5, 5]、z ∈ [-1.5, 2.5]；
  * 模型是真实尺寸（树 7 米），小植物按人物比例缩小。
- * 页面参数：?w=宽&h=高&t=时间（风吹草动的相位）&cam=镜头推近（0..1）
+ * 页面参数：?w=宽&h=高&t=时间（风吹草动的相位）&cam=镜头推近（0..1）&px=像素化倍数（1 = 不像素化）
+ *
+ * 像素风滤镜（px > 1）：整个场景按 w/px × h/px 的低分辨率渲染，截图后最近邻放大回去，每个场景像素是 px × px 的方块。
+ *   px = 3（1920 宽时）= 人物像素密度的 2 倍：比人物精细，但在同一个像素网格上。
+ *   描边：按深度 / 法线的跳变画深色外轮廓和内轮廓（RenderPixelatedPass）；
+ *   明暗分档：亮度量化成 6 档，交界处用 4×4 Bayer 有序抖动（和人物、图标的画法一样）；
+ *   限色：每个通道量化，暗部偏冷紫、亮部偏暖，饱和度略提。
  */
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
@@ -14,9 +20,11 @@ import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
 import { ShaderPass } from 'three/addons/postprocessing/ShaderPass.js';
 import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js';
 import { OutputPass } from 'three/addons/postprocessing/OutputPass.js';
+import { RenderPixelatedPass } from 'three/addons/postprocessing/RenderPixelatedPass.js';
 
 const q = new URLSearchParams(location.search);
-const W = +(q.get('w') ?? 1920), H = +(q.get('h') ?? 1152), T = +(q.get('t') ?? 0), CAM = +(q.get('cam') ?? 0);
+const W = +(q.get('w') ?? 1920), H = +(q.get('h') ?? 1152), T = +(q.get('t') ?? 0), CAM = +(q.get('cam') ?? 0), PX = +(q.get('px') ?? 1);
+const RW = Math.round(W / PX), RH = Math.round(H / PX);
 
 // 可复现的随机数
 let seed = 7;
@@ -24,7 +32,7 @@ const rnd = () => { seed = (seed * 16807) % 2147483647; return (seed - 1) / 2147
 const range = (a, b) => a + (b - a) * rnd();
 
 const renderer = new THREE.WebGLRenderer({ antialias: true, preserveDrawingBuffer: true });
-renderer.setSize(W, H);
+renderer.setSize(RW, RH);
 renderer.setPixelRatio(1);
 renderer.shadowMap.enabled = true;
 renderer.shadowMap.type = THREE.PCFSoftShadowMap;
@@ -189,9 +197,12 @@ for (const m of placed) { const k = m.position.x * 0.4 + m.position.z * 0.3; m.r
 
 // ---------------------------------------------------------------- 后期
 const composer = new EffectComposer(renderer);
-composer.setSize(W, H);
-composer.addPass(new RenderPass(scene, camera));
-composer.addPass(new UnrealBloomPass(new THREE.Vector2(W, H), 0.32, 0.55, 0.82));
+composer.setSize(RW, RH);
+if (PX > 1) {
+  const pix = new RenderPixelatedPass(1, scene, camera, { normalEdgeStrength: 0.7, depthEdgeStrength: 2.2 });
+  composer.addPass(pix);
+} else composer.addPass(new RenderPass(scene, camera));
+composer.addPass(new UnrealBloomPass(new THREE.Vector2(RW, RH), 0.32, 0.55, 0.82));
 // 移轴景深：屏幕上 focus 那一横带清晰（战斗舞台），往上、往下越来越虚（两遍可分离模糊）
 const tilt = (dir) => new ShaderPass({
   uniforms: { tDiffuse: { value: null }, dir: { value: dir }, focus: { value: 0.6 }, band: { value: 0.16 }, amount: { value: 4.0 } },
@@ -206,8 +217,12 @@ const tilt = (dir) => new ShaderPass({
       gl_FragColor = sum / wsum;
     }`,
 });
-composer.addPass(tilt(new THREE.Vector2(1 / W, 0)));
-composer.addPass(tilt(new THREE.Vector2(0, 1 / H)));
+const tiltX = tilt(new THREE.Vector2(1 / RW, 0)), tiltY = tilt(new THREE.Vector2(0, 1 / RH));
+// 低分辨率时每个像素更大，模糊步长相应缩小，虚化的范围不变
+// 像素模式下几乎不虚化（像素画靠雾和明暗分远近，糊掉的像素会显得脏）
+for (const t of [tiltX, tiltY]) t.uniforms.amount.value = PX > 1 ? 0.55 : 4.0;
+composer.addPass(tiltX);
+composer.addPass(tiltY);
 // 调色 + 暗角：暗部偏冷、亮部偏暖，四周压暗，舞台中间最亮
 composer.addPass(new ShaderPass({
   uniforms: { tDiffuse: { value: null } },
@@ -225,6 +240,31 @@ composer.addPass(new ShaderPass({
     }`,
 }));
 composer.addPass(new OutputPass());
+if (PX > 1) composer.addPass(new ShaderPass({
+  // 像素画的明暗分档 + 有序抖动 + 限色（在显示色彩空间里做，OutputPass 之后）
+  uniforms: { tDiffuse: { value: null }, res: { value: new THREE.Vector2(RW, RH) } },
+  vertexShader: 'varying vec2 vUv; void main(){ vUv = uv; gl_Position = projectionMatrix * modelViewMatrix * vec4(position,1.0); }',
+  fragmentShader: `uniform sampler2D tDiffuse; uniform vec2 res; varying vec2 vUv;
+    float bayer(vec2 p){
+      int x = int(mod(p.x, 4.0)), y = int(mod(p.y, 4.0)), i = x + y * 4;
+      int m[16] = int[16](0,8,2,10,12,4,14,6,3,11,1,9,15,7,13,5);
+      return (float(m[i]) + 0.5) / 16.0 - 0.5;
+    }
+    void main(){
+      vec3 c = texture2D(tDiffuse, vUv).rgb;
+      float d = bayer(floor(vUv * res));
+      float L = dot(c, vec3(0.299, 0.587, 0.114));
+      // 明暗量化成 6 档，交界抖动
+      float Lq = floor(L * 6.0 + 0.5 + d * 0.5) / 6.0;
+      c *= clamp(Lq / max(L, 0.03), 0.35, 1.8);
+      // 暗部偏冷紫、亮部偏暖（像素画常用的色相偏移）
+      c = mix(c, c * vec3(0.82, 0.86, 1.18), clamp(0.55 - Lq, 0.0, 0.55) * 0.6);
+      c = mix(c, c * vec3(1.08, 1.03, 0.88), clamp(Lq - 0.6, 0.0, 0.4) * 0.6);
+      float g = dot(c, vec3(0.333)); c = mix(vec3(g), c, 1.15);
+      // 最终限色（约 48 色）在截图后做：按整张图挑一套调色板，每块表面落成几块干净的色块
+      gl_FragColor = vec4(c, 1.0);
+    }`,
+}));
 composer.render();
 
 // 告诉外面：舞台上几个站位在屏幕上的像素位置（合成像素人物时用）
