@@ -103,10 +103,11 @@ export function toonMaterial(src, kind, opt) {
     }
     // 叶片是双面卡片：背面不翻法线（用重写过的球形法线，整团叶子明暗连续）
     if (kind !== 'solid') sh.fragmentShader = sh.fragmentShader.replace('#include <normal_fragment_begin>',
-      THREE.ShaderChunk.normal_fragment_begin.replace('normal *= faceDirection;', ''));
+      THREE.ShaderChunk.normal_fragment_begin.replace('normal *= faceDirection;', ''));    // 额外的着色补丁（例如魔像石头的程序化手绘表面）
+    if (src.userData.toonPatch) src.userData.toonPatch(sh, m);
   };
   if (src.userData.recolor) m.color.setRGB(1, 1, 1);
-  m.customProgramCacheKey = () => 'toon-' + kind + (src.map ? '-map' : '') + (src.userData.recolor ? '-re' : '') + (src.vertexColors ? '-vc' : '');
+  m.customProgramCacheKey = () => 'toon-' + kind + (src.map ? '-map' : '') + (src.userData.recolor ? '-re' : '') + (src.vertexColors ? '-vc' : '') + (src.userData.toonPatch ? '-patch-' + src.name : '');
   return m;
 }
 

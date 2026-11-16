@@ -1,17 +1,20 @@
 /**
- * 苔石魔像（代码建模，精细版）。
- *   石块：二十面体细分 4 级（每块约 5 千个三角形），依次做
- *     ① 低频起伏（整体不圆）② 随机平面「凿切」（出现平整的切面和硬棱，像雕凿过的石头）
- *     ③ 脊状噪声刻裂缝 ④ 高频小坑；
- *   苔藓：朝上的区域按噪声长出一层鼓起来的苔垫（几何上真的凸出来），颜色深浅斑驳；
- *   顶点色：石色斑驳、裂缝和下面压暗、棱上提亮一点；
- *   细节件：拳头的指节、脚趾、腰间嵌石、眼窝、六棱柱水晶（胸口心核 + 背上一簇 + 肩上碎晶）、
- *     从心核沿胸口表面蔓延的发光裂纹（射线贴着身体表面走）、肩上垂下的藤蔓（带小叶子）、
- *     素材包的蘑菇和草。
- * 朝 +z，脚底 y = 0，约 2.7 米高。update(t) 播放 2.4 秒循环的待机动作。
+ * 苔石魔像（代码建模，第三版：参考素材包石头的做法）
+ *
+ * 素材包的石头 = 形体干净的模型 + 烘焙的手绘贴图（淡紫灰石面、亮的棱边、暗的缝隙、缝里和顶上长苔藓）。这里用代码做同样的两件事：
+ *
+ * 1. 形体：每个能动的部件（躯干连头、左右手臂、下身连腿脚）是「一整块」——用有向距离场（SDF）把椭球
+ *    平滑并在一起（smooth union，接缝是雕出来的过渡，不是球插球），再用随机平面「凿」出切面和硬棱，
+ *    眼窝、心核的凹坑是直接挖出来的；最后用 marching cubes 转成网格，法线取距离场梯度（棱是利的）。
+ * 2. 表面：不靠顶点色（会糊），在着色器里逐像素画：
+ *    石色斑驳 + 细裂纹 → 凸棱提亮（曲率，来自距离场的拉普拉斯）→ 凹处压暗 →
+ *    朝上和凹处长苔藓（硬边 + 黄绿色毛边 + 小斑点）→ 躯干上从心核往外的发光裂纹（自发光，会脉动）。
+ *
+ * 朝 +z，脚底 y = 0，约 2.7 米高。update(t) 播放 2.4 秒循环的待机。
  */
 import * as THREE from 'three';
-import { mergeVertices, mergeGeometries } from 'three/addons/utils/BufferGeometryUtils.js';
+import { MarchingCubes } from 'three/addons/objects/MarchingCubes.js';
+import { mergeGeometries } from 'three/addons/utils/BufferGeometryUtils.js';
 
 // ---------------------------------------------------------------- 噪声 / 随机
 function hash3(x, y, z, s) { const h = Math.sin(x * 127.1 + y * 311.7 + z * 74.7 + s * 19.19) * 43758.5453; return h - Math.floor(h); }
@@ -22,248 +25,271 @@ function vnoise(x, y, z, s = 0) {
   const c = (dx, dy, dz) => hash3(xi + dx, yi + dy, zi + dz, s);
   return L(L(L(c(0, 0, 0), c(1, 0, 0), u), L(c(0, 1, 0), c(1, 1, 0), u), v), L(L(c(0, 0, 1), c(1, 0, 1), u), L(c(0, 1, 1), c(1, 1, 1), u), v), w);
 }
-const fbm = (x, y, z, s) => vnoise(x, y, z, s) * 0.55 + vnoise(x * 2.1, y * 2.1, z * 2.1, s + 1) * 0.3 + vnoise(x * 4.3, y * 4.3, z * 4.3, s + 2) * 0.15;
-const ridged = (x, y, z, s) => 1 - Math.abs(fbm(x, y, z, s) * 2 - 1);
 function mulberry(a) { return () => { a |= 0; a = (a + 0x6D2B79F5) | 0; let t = Math.imul(a ^ (a >>> 15), 1 | a); t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t; return ((t ^ (t >>> 14)) >>> 0) / 4294967296; }; }
 
-// ---------------------------------------------------------------- 材质
-const STONE_A = new THREE.Color('#b0a38c'), STONE_B = new THREE.Color('#d2c5aa'), STONE_DARK = new THREE.Color('#5e5852'), STONE_EDGE = new THREE.Color('#d6cbb4');
-const MOSS_A = new THREE.Color('#4a7429'), MOSS_B = new THREE.Color('#7da540'), MOSS_DARK = new THREE.Color('#33531f');
-const STONE_MAT = new THREE.MeshStandardMaterial({ vertexColors: true, roughness: 0.95, name: 'GolemStone' });
-const GLOW = '#7ff0d0';
+// ---------------------------------------------------------------- SDF
+const smin = (a, b, k) => { const h = Math.max(k - Math.abs(a - b), 0) / k; return Math.min(a, b) - h * h * k * 0.25; };
+const smax = (a, b, k) => -smin(-a, -b, k);
+/**
+ * 一个「石块」原件：椭球 + 若干凿切平面。
+ * { c: 中心, r: 三轴半径, rot: 欧拉角, cuts: 切面数, k: 和前面的融合半径（0 = 硬接）, seed, sub: true = 挖掉 }
+ */
+function prim(o) {
+  const q = new THREE.Quaternion().setFromEuler(new THREE.Euler(...(o.rot ?? [0, 0, 0])));
+  const inv = q.clone().invert(), e = inv.elements ?? null;
+  const m = new THREE.Matrix4().makeRotationFromQuaternion(inv).elements;
+  const [rx, ry, rz] = o.r, rand = mulberry((o.seed ?? 1) * 7919 + 3);
+  const planes = [];
+  for (let i = 0; i < Math.round((o.cuts ?? 0) * 1.7); i++) {
+    const n = new THREE.Vector3(rand() * 2 - 1, rand() * 2 - 1, rand() * 2 - 1).normalize();
+    const support = Math.hypot(rx * n.x, ry * n.y, rz * n.z);
+    planes.push([n.x, n.y, n.z, support * (0.64 + rand() * 0.18)]);
+  }
+  const [cx, cy, cz] = o.c;
+  return {
+    k: o.k ?? 0.1, sub: !!o.sub,
+    d(x, y, z) {
+      const px = x - cx, py = y - cy, pz = z - cz;
+      const lx = m[0] * px + m[4] * py + m[8] * pz, ly = m[1] * px + m[5] * py + m[9] * pz, lz = m[2] * px + m[6] * py + m[10] * pz;
+      const k0 = Math.hypot(lx / rx, ly / ry, lz / rz), k1 = Math.hypot(lx / (rx * rx), ly / (ry * ry), lz / (rz * rz));
+      let d = k0 * (k0 - 1) / Math.max(k1, 1e-6);
+      for (const [nx, ny, nz, off] of planes) d = smax(d, nx * lx + ny * ly + nz * lz - off, 0.012);
+      return d;
+    },
+  };
+}
+/** 把一组原件合成一个 SDF（加一点表面起伏） */
+function body(prims, seed, bump = 1) {
+  return (x, y, z) => {
+    let d = 1e9;
+    for (const p of prims) {
+      const v = p.d(x, y, z);
+      if (p.sub) d = smax(d, -v, p.k); else d = d > 1e8 ? v : smin(d, v, p.k);
+    }
+    // 表面起伏：大的轻微鼓包 + 很小的凿痕
+    return d + ((vnoise(x * 3.2, y * 3.2, z * 3.2, seed) - 0.5) * 0.035 + (vnoise(x * 11, y * 11, z * 11, seed + 1) - 0.5) * 0.008) * bump;
+  };
+}
+/** SDF → 网格（marching cubes），法线 = 距离场梯度，曲率 = 拉普拉斯 */
+function mesh(sdf, center, half, res, material) {
+  const mc = new MarchingCubes(res, new THREE.MeshBasicMaterial(), false, false, 400000);
+  mc.isolation = 0;
+  const f = mc.field;
+  for (let zi = 0; zi < res; zi++) for (let yi = 0; yi < res; yi++) for (let xi = 0; xi < res; xi++) {
+    const x = center[0] + ((xi - res / 2) / (res / 2)) * half, y = center[1] + ((yi - res / 2) / (res / 2)) * half, z = center[2] + ((zi - res / 2) / (res / 2)) * half;
+    f[zi * res * res + yi * res + xi] = -sdf(x, y, z);
+  }
+  mc.update();
+  const n = mc.count, pos = new Float32Array(n * 3), nrm = new Float32Array(n * 3), curv = new Float32Array(n);
+  const e = 0.006, ec = 0.035;
+  for (let i = 0; i < n; i++) {
+    const x = center[0] + mc.positionArray[i * 3] * half, y = center[1] + mc.positionArray[i * 3 + 1] * half, z = center[2] + mc.positionArray[i * 3 + 2] * half;
+    pos[i * 3] = x; pos[i * 3 + 1] = y; pos[i * 3 + 2] = z;
+    let gx = sdf(x + e, y, z) - sdf(x - e, y, z), gy = sdf(x, y + e, z) - sdf(x, y - e, z), gz = sdf(x, y, z + e) - sdf(x, y, z - e);
+    const l = Math.hypot(gx, gy, gz) || 1;
+    nrm[i * 3] = gx / l; nrm[i * 3 + 1] = gy / l; nrm[i * 3 + 2] = gz / l;
+    const d0 = sdf(x, y, z);
+    curv[i] = (sdf(x + ec, y, z) + sdf(x - ec, y, z) + sdf(x, y + ec, z) + sdf(x, y - ec, z) + sdf(x, y, z + ec) + sdf(x, y, z - ec) - 6 * d0) / (ec * ec);
+  }
+  // marching cubes 的三角形绕向和 three 的正面相反时翻一下（用第一个三角形的面法线和梯度比）
+  const g = new THREE.BufferGeometry();
+  g.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+  g.setAttribute('normal', new THREE.BufferAttribute(nrm, 3));
+  g.setAttribute('aCurv', new THREE.BufferAttribute(curv, 1));
+  const a = new THREE.Vector3(...pos.slice(0, 3)), b = new THREE.Vector3(...pos.slice(3, 6)), c = new THREE.Vector3(...pos.slice(6, 9));
+  const fn = new THREE.Vector3().crossVectors(b.sub(a), c.sub(a));
+  if (fn.dot(new THREE.Vector3(...nrm.slice(0, 3))) < 0) {
+    const idx = []; for (let i = 0; i < n; i += 3) idx.push(i, i + 2, i + 1);
+    g.setIndex(idx);
+  }
+  const me = new THREE.Mesh(g, material);
+  me.castShadow = true; me.receiveShadow = false;
+  return me;
+}
+
+// ---------------------------------------------------------------- 石头表面（卡通材质的着色补丁）
+const GLOW = new THREE.Color('#7ff0d0');
+function stoneMaterial(name, core) {
+  const mat = new THREE.MeshStandardMaterial({ color: '#ffffff', roughness: 1, name });
+  mat.userData.toonPatch = (sh, toonMat) => {
+    sh.uniforms.glowAmt = { value: toonMat.userData.glowAmt ?? 1 };
+    sh.uniforms.coreP = { value: new THREE.Vector3(...(core ?? [0, -100, 0])) };
+    sh.uniforms.glowCol = { value: GLOW.clone() };
+    toonMat.userData.shader = sh;
+    sh.vertexShader = sh.vertexShader
+      .replace('#include <common>', '#include <common>\nattribute float aCurv; varying float vCurv; varying vec3 vOP; varying vec3 vWN;')
+      .replace('#include <begin_vertex>', '#include <begin_vertex>\nvCurv = aCurv; vOP = position; vWN = normalize(mat3(modelMatrix) * normal);');
+    sh.fragmentShader = sh.fragmentShader
+      .replace('#include <common>', /* glsl */`#include <common>
+        varying float vCurv; varying vec3 vOP; varying vec3 vWN;
+        uniform float glowAmt; uniform vec3 coreP, glowCol;
+        float h3(vec3 p){ p = fract(p * 0.3183099 + 0.1); p *= 17.0; return fract(p.x * p.y * p.z * (p.x + p.y + p.z)); }
+        float n3(vec3 x){ vec3 i = floor(x), f = fract(x); f = f * f * (3.0 - 2.0 * f);
+          return mix(mix(mix(h3(i), h3(i + vec3(1,0,0)), f.x), mix(h3(i + vec3(0,1,0)), h3(i + vec3(1,1,0)), f.x), f.y),
+                     mix(mix(h3(i + vec3(0,0,1)), h3(i + vec3(1,0,1)), f.x), mix(h3(i + vec3(0,1,1)), h3(i + vec3(1,1,1)), f.x), f.y), f.z); }
+        float fb(vec3 p){ return n3(p) * 0.5 + n3(p * 2.03) * 0.25 + n3(p * 4.07) * 0.15 + n3(p * 8.3) * 0.1; }
+        vec3 srgb(vec3 c){ return pow(c, vec3(2.2)); }
+      `)
+      .replace('#include <map_fragment>', /* glsl */`
+        vec3 P = vOP;
+        // 石面：淡紫灰，大块明暗 + 刷子一样的条纹
+        vec3 sDark = srgb(vec3(0.52, 0.49, 0.48)), sMid = srgb(vec3(0.68, 0.64, 0.62)), sLight = srgb(vec3(0.80, 0.77, 0.74));
+        float big = fb(P * 2.2);
+        vec3 stone = mix(sDark, sMid, smoothstep(0.25, 0.5, big));
+        stone = mix(stone, sLight, smoothstep(0.55, 0.72, big));
+        stone *= 0.93 + 0.1 * n3(P * vec3(4.0, 16.0, 4.0));
+        // 细裂纹（硬的细线）
+        // 少量细裂纹，只在局部出现
+        float cr = abs(fb(P * 2.6 + 11.0) - 0.5);
+        stone *= mix(0.72, 1.0, max(smoothstep(0.005, 0.013, cr), step(0.32, n3(P * 1.3 + 5.0))));
+        // 凸棱提亮、凹处压暗（曲率来自距离场）
+        float convex = smoothstep(7.0, 16.0, vCurv), concave = smoothstep(-2.0, -9.0, vCurv);
+        stone = mix(stone, srgb(vec3(0.88, 0.87, 0.92)), convex * 0.85);
+        stone *= 1.0 - concave * 0.45;
+        // 苔藓：朝上 + 凹处，硬边，边上一圈黄绿毛边，里面有小斑点
+        float m = vWN.y * 0.85 + concave * 0.45 + (fb(P * 2.6 + 3.0) - 0.5) * 0.9 - convex * 0.3;
+        float moss = smoothstep(0.50, 0.53, m), fringe = smoothstep(0.44, 0.47, m) - moss;
+        vec3 mossC = mix(srgb(vec3(0.27, 0.42, 0.15)), srgb(vec3(0.42, 0.60, 0.20)), smoothstep(0.3, 0.7, fb(P * 7.0)));
+        mossC = mix(mossC, srgb(vec3(0.55, 0.70, 0.28)), step(0.78, n3(P * 30.0)) * 0.7);
+        vec3 col = mix(stone, srgb(vec3(0.66, 0.72, 0.36)), fringe * 0.9);
+        col = mix(col, mossC, moss);
+        diffuseColor.rgb *= col;
+      `)
+      .replace('#include <emissivemap_fragment>', /* glsl */`#include <emissivemap_fragment>
+        // 心核发出的发光裂纹：只在心核附近、沿另一套裂纹走，越远越淡
+        float gl = abs(fb(vOP * 2.4 + 37.0) - 0.5);
+        float fall = 1.0 - smoothstep(0.12, 0.75, distance(vOP, coreP));
+        float line = 1.0 - smoothstep(0.012, 0.03, gl);
+        totalEmissiveRadiance += glowCol * glowAmt * line * fall * 2.2;
+        totalEmissiveRadiance += glowCol * glowAmt * smoothstep(0.35, 0.0, distance(vOP, coreP)) * 0.25;
+      `);
+  };
+  return mat;
+}
+
+// ---------------------------------------------------------------- 发光件、藤蔓
 const CRYSTAL_MAT = new THREE.MeshStandardMaterial({ color: '#58cdb8', emissive: GLOW, emissiveIntensity: 1.6, roughness: 0.35, name: 'GolemCrystal' });
-const SEAM_MAT = new THREE.MeshStandardMaterial({ color: '#bfffee', emissive: GLOW, emissiveIntensity: 2.2, name: 'GolemSeam' });
 const EYE_MAT = new THREE.MeshStandardMaterial({ color: '#effffa', emissive: GLOW, emissiveIntensity: 3.2, name: 'GolemEye' });
-const SOCKET_MAT = new THREE.MeshStandardMaterial({ color: '#1f2226', roughness: 1, name: 'GolemSocket' });
 const VINE_MAT = new THREE.MeshStandardMaterial({ color: '#4d7a2a', roughness: 0.9, name: 'GolemVine' });
 const LEAF_MAT = new THREE.MeshStandardMaterial({ color: '#79a83a', roughness: 0.9, side: THREE.DoubleSide, name: 'GolemLeaf' });
 
-/**
- * 一块石头。r 半径，s 三轴缩放，rot 旋转，at 位置（父节点坐标；苔藓按这个坐标系的「上」长）。
- * o.cuts 凿切面数，o.lump 起伏，o.crack 裂缝深浅，o.moss 苔藓多少（0..1），o.detail 细分级数
- */
-function rock(r, s, rot, at, seed, o = {}) {
-  const { cuts = 7, lump = 0.14, crack = 1, moss = 0.5, detail = 4 } = o;
-  let g = new THREE.IcosahedronGeometry(1, detail);
-  g.deleteAttribute('normal'); g.deleteAttribute('uv');
-  g = mergeVertices(g);
-  const rand = mulberry(seed * 7919 + 13);
-  const planes = [];
-  for (let k = 0; k < cuts; k++) {
-    const n = new THREE.Vector3(rand() * 2 - 1, rand() * 2 - 1, rand() * 2 - 1).normalize();
-    planes.push([n, 0.7 + rand() * 0.2]);
-  }
-  const p = g.attributes.position, v = new THREE.Vector3(), crackV = new Float32Array(p.count);
-  for (let i = 0; i < p.count; i++) {
-    v.fromBufferAttribute(p, i);
-    v.multiplyScalar(1 + (fbm(v.x * 1.3, v.y * 1.3, v.z * 1.3, seed) - 0.5) * 2 * lump);
-    for (const [n, off] of planes) { const d = v.dot(n) - off; if (d > 0) v.addScaledVector(n, -d); }
-    const c = Math.pow(ridged(v.x * 2.6, v.y * 2.6, v.z * 2.6, seed + 40), 12);
-    crackV[i] = c;
-    v.multiplyScalar(1 - c * 0.06 * crack + (vnoise(v.x * 11, v.y * 11, v.z * 11, seed + 50) - 0.5) * 0.022);
-    p.setXYZ(i, v.x, v.y, v.z);
-  }
-  g.applyMatrix4(new THREE.Matrix4().compose(new THREE.Vector3(...at), new THREE.Quaternion().setFromEuler(new THREE.Euler(...rot)), new THREE.Vector3(...s).multiplyScalar(r)));
-  g.computeVertexNormals();
-  // 苔垫：朝上的区域按噪声鼓起来一层
-  const nrm = g.attributes.normal, mossV = new Float32Array(p.count);
-  if (moss > 0) {
-    for (let i = 0; i < p.count; i++) {
-      v.fromBufferAttribute(p, i);
-      const ny = nrm.getY(i);
-      const m = ny - 0.15 + (fbm(v.x * 2.4, v.y * 2.4, v.z * 2.4, seed + 9) - 0.5) * 0.9 - (1 - moss);
-      const a = THREE.MathUtils.smoothstep(m, 0.0, 0.18);
-      mossV[i] = a;
-      if (a > 0) {
-        const puff = (0.018 + vnoise(v.x * 14, v.y * 14, v.z * 14, seed + 60) * 0.03) * a;
-        p.setXYZ(i, v.x + nrm.getX(i) * puff, v.y + nrm.getY(i) * puff, v.z + nrm.getZ(i) * puff);
-      }
-    }
-    g.computeVertexNormals();
-  }
-  // 顶点色
-  const col = new Float32Array(p.count * 3), c = new THREE.Color(), mc = new THREE.Color();
-  for (let i = 0; i < p.count; i++) {
-    v.fromBufferAttribute(p, i);
-    const ny = nrm.getY(i);
-    c.copy(STONE_A).lerp(STONE_B, fbm(v.x * 2.5, v.y * 2.5, v.z * 2.5, seed + 5));
-    if (ny < -0.2) c.lerp(STONE_DARK, Math.min(1, (-ny - 0.2) * 1.1));
-    c.lerp(STONE_DARK, Math.min(1, crackV[i] * 1.6));
-    // 小块浅色风化斑
-    if (vnoise(v.x * 7, v.y * 7, v.z * 7, seed + 70) > 0.78) c.lerp(STONE_EDGE, 0.45);
-    if (mossV[i] > 0) {
-      mc.copy(MOSS_A).lerp(MOSS_B, fbm(v.x * 6, v.y * 6, v.z * 6, seed + 3));
-      if (mossV[i] < 0.5) mc.lerp(MOSS_DARK, 0.5); // 苔垫边缘深一点
-      c.lerp(mc, Math.min(1, mossV[i] * 1.6));
-    }
-    c.toArray(col, i * 3);
-  }
-  g.setAttribute('color', new THREE.BufferAttribute(col, 3));
-  const m = new THREE.Mesh(g, STONE_MAT);
-  // 不接收投影：凹凸表面的自阴影在卡通分档下会变成一块块脏斑；站在树荫里也保持亮、好认（和像素人物一致）
-  m.castShadow = true; m.receiveShadow = false;
+function crystal(h, r, at, rot) {
+  const b = new THREE.CylinderGeometry(r, r * 0.85, h, 6, 1); b.translate(0, h / 2, 0);
+  const t = new THREE.ConeGeometry(r, r * 1.6, 6, 1); t.translate(0, h + r * 0.8, 0);
+  const g = mergeGeometries([b.toNonIndexed(), t.toNonIndexed()]); g.deleteAttribute('uv'); g.computeVertexNormals();
+  const m = new THREE.Mesh(g, CRYSTAL_MAT); m.position.set(...at); m.rotation.set(...rot); m.castShadow = true;
   return m;
 }
-
-/** 六棱柱水晶（尖头），平面法线 */
-function crystal(h, r, at, rot, mat = CRYSTAL_MAT) {
-  const body = new THREE.CylinderGeometry(r, r * 0.85, h, 6, 1); body.translate(0, h / 2, 0);
-  const tip = new THREE.ConeGeometry(r, r * 1.6, 6, 1); tip.translate(0, h + r * 0.8, 0);
-  let g = mergeGeometries([body.toNonIndexed(), tip.toNonIndexed()]);
-  g.deleteAttribute('uv'); g.computeVertexNormals();
-  const m = new THREE.Mesh(g, mat);
-  m.position.set(...at); m.rotation.set(...rot); m.castShadow = true;
-  return m;
-}
-
-/** 发光裂纹：从 start 出发，在 mesh 正面表面上随机游走（每一步从前方打射线贴到表面） */
-function seams(mesh, start, n, seed) {
-  const rand = mulberry(seed), ray = new THREE.Raycaster(), group = new THREE.Group();
-  mesh.updateMatrixWorld(true);
-  const surf = (x, y) => {
-    ray.set(new THREE.Vector3(x, y, 4), new THREE.Vector3(0, 0, -1));
-    const h = ray.intersectObject(mesh, false)[0];
-    return h ? h.point.addScaledVector(h.face.normal, 0.004) : null;
-  };
-  for (let k = 0; k < n; k++) {
-    let a = (k / n) * Math.PI * 2 + rand() * 0.6, x = start[0], y = start[1];
-    const pts = [];
-    const steps = 7 + Math.floor(rand() * 6);
-    for (let i = 0; i < steps; i++) {
-      const pnt = surf(x, y); if (!pnt) break;
-      pts.push(pnt);
-      a += (rand() - 0.5) * 1.1; const st = 0.045 + rand() * 0.04;
-      x += Math.cos(a) * st; y += Math.sin(a) * st;
-    }
-    if (pts.length < 3) continue;
-    const curve = new THREE.CatmullRomCurve3(pts);
-    // 越往外越细：分两段，外段细一半
-    const tube = new THREE.TubeGeometry(curve, pts.length * 4, 0.014, 5, false);
-    const rad = tube.attributes.position, cnt = rad.count, ring = 6;
-    for (let i = 0; i < cnt; i++) {
-      const seg = Math.floor(i / ring) / (cnt / ring), ctr = curve.getPoint(Math.min(1, seg));
-      const t = 1 - seg * 0.7;
-      rad.setXYZ(i, ctr.x + (rad.getX(i) - ctr.x) * t, ctr.y + (rad.getY(i) - ctr.y) * t, ctr.z + (rad.getZ(i) - ctr.z) * t);
-    }
-    tube.computeVertexNormals();
-    group.add(new THREE.Mesh(tube, SEAM_MAT));
-  }
-  return group;
-}
-
-/** 藤蔓：一条管子 + 交替的小叶片 */
 function vine(points, seed) {
   const rand = mulberry(seed), curve = new THREE.CatmullRomCurve3(points.map((p) => new THREE.Vector3(...p)));
   const group = new THREE.Group();
-  const tube = new THREE.Mesh(new THREE.TubeGeometry(curve, 40, 0.022, 6, false), VINE_MAT); tube.castShadow = true;
-  group.add(tube);
+  const tube = new THREE.Mesh(new THREE.TubeGeometry(curve, 40, 0.022, 6, false), VINE_MAT); tube.castShadow = true; group.add(tube);
   const leafGeo = new THREE.SphereGeometry(0.07, 8, 5); leafGeo.scale(1, 0.25, 0.55);
-  const L = curve.getLength(), n = Math.floor(L / 0.07);
+  const n = Math.floor(curve.getLength() / 0.07);
   for (let i = 1; i < n; i++) {
     const t = i / n, pt = curve.getPoint(t), tan = curve.getTangent(t);
     const side = new THREE.Vector3().crossVectors(tan, new THREE.Vector3(0, 0, 1)).normalize().multiplyScalar(i % 2 ? 1 : -1);
-    const leaf = new THREE.Mesh(leafGeo, LEAF_MAT);
-    const sc = 0.7 + rand() * 0.6 - t * 0.3;
-    leaf.scale.setScalar(sc);
-    leaf.position.copy(pt).addScaledVector(side, 0.05 * sc);
+    const leaf = new THREE.Mesh(leafGeo, LEAF_MAT), sc = 0.7 + rand() * 0.6 - t * 0.3;
+    leaf.scale.setScalar(sc); leaf.position.copy(pt).addScaledVector(side, 0.05 * sc);
     leaf.lookAt(pt.clone().addScaledVector(side, 1)); leaf.rotateX(Math.PI / 2 + (rand() - 0.5) * 0.8); leaf.rotateZ((rand() - 0.5) * 0.8);
-    leaf.castShadow = true;
-    group.add(leaf);
+    leaf.castShadow = true; group.add(leaf);
   }
   return group;
 }
 
-/** model(name)：素材包模型加载函数（点缀用的蘑菇、草） */
-export async function buildGolem(model) {
+// ---------------------------------------------------------------- 组装
+export async function buildGolem(model, { res = 1 } = {}) {
+  const R = (n) => Math.round(n * res);
   const root = new THREE.Group(); root.name = 'golem';
-  // 腿 + 脚 + 脚趾
+  const STONE = stoneMaterial('GolemStone'), CORE_AT = [0, 0.64, 0.6];
+  const STONE_CORE = stoneMaterial('GolemStoneCore', CORE_AT);
+
+  // 下身：骨盆 + 两条腿 + 脚 + 脚趾（一整块）
+  const lower = [prim({ c: [0, 0.82, -0.02], r: [0.62, 0.3, 0.42], cuts: 6, seed: 2 })];
   for (const sx of [-1, 1]) {
-    root.add(rock(0.36, [1, 1.35, 1], [0, 0, sx * 0.1], [sx * 0.48, 0.55, -0.05], 11 + sx, { moss: 0.2 }));
-    root.add(rock(0.42, [1.15, 0.55, 1.35], [0, sx * 0.2, 0], [sx * 0.52, 0.16, 0.08], 21 + sx, { moss: 0.25, cuts: 9 }));
-    for (let k = -1; k <= 1; k++) root.add(rock(0.12, [1, 0.75, 1.2], [0.2, 0, 0], [sx * 0.52 + k * 0.17 + sx * 0.04, 0.09, 0.58 - Math.abs(k) * 0.05], 25 + sx * 3 + k, { moss: 0, detail: 3 }));
+    lower.push(prim({ c: [sx * 0.47, 0.52, -0.04], r: [0.34, 0.46, 0.34], rot: [0, 0, sx * 0.1], cuts: 6, seed: 10 + sx, k: 0.14 }));
+    lower.push(prim({ c: [sx * 0.52, 0.17, 0.1], r: [0.46, 0.22, 0.56], rot: [0, sx * 0.2, 0], cuts: 7, seed: 20 + sx, k: 0.12 }));
+    lower.push(prim({ c: [sx * 0.56, 0.13, 0.55], r: [0.36, 0.13, 0.2], cuts: 4, seed: 30 + sx, k: 0.08 })); // 脚尖一块
   }
-  // 上身：绕腰（y = 0.95）转，前倾
+  root.add(mesh(body(lower, 5), [0, 0.6, 0.15], 1.12, R(96), STONE));
+
+  // 躯干 + 头（一整块）：前倾的大胸、腰、眉骨、鼻、下巴；挖出眼窝和心核的坑
   const torso = new THREE.Group(); torso.position.set(0, 0.95, 0); root.add(torso);
-  const body = rock(0.92, [1.18, 1.0, 0.86], [0.25, 0, 0], [0, 0.66, -0.05], 3, { moss: 0.65, cuts: 9 });
-  torso.add(body);
-  torso.add(rock(0.55, [1.3, 0.7, 0.9], [0.1, 0, 0], [0, 0.02, 0.05], 4, { moss: 0.15 }));
-  // 腰间一圈嵌石
-  for (let k = 0; k < 7; k++) {
-    const a = -1.5 + k * 0.5;
-    torso.add(rock(0.15 + (k % 3) * 0.03, [1.2, 0.8, 0.7], [0, a, 0.2], [Math.sin(a) * 0.68, 0.1 + (k % 2) * 0.06, Math.cos(a) * 0.48], 80 + k, { moss: 0.3, detail: 3 }));
-  }
-  // 心核 + 从心核蔓延的发光裂纹
-  const coreAt = [0, 0.62, 0.66];
-  torso.add(crystal(0.3, 0.12, coreAt, [0.25 + Math.PI / 2 * 0.15, 0.4, 0]));
-  torso.add(crystal(0.18, 0.08, [0.1, 0.58, 0.66], [0.6, 0.2, -0.7]));
-  torso.add(crystal(0.16, 0.07, [-0.1, 0.6, 0.66], [0.5, -0.3, 0.8]));
-  torso.add(seams(body, [coreAt[0], coreAt[1] + 0.12], 6, 5));
-  // 背上一簇水晶 + 肩上碎晶
-  const back = [[0, 1.2, -0.5, 0.55, 0.13, -0.5, 0, 0], [0.3, 1.08, -0.58, 0.4, 0.1, -0.7, 0, -0.45], [-0.3, 1.1, -0.56, 0.46, 0.11, -0.6, 0, 0.45], [0.12, 0.85, -0.76, 0.3, 0.08, -1.0, 0, 0.2], [-0.15, 0.95, -0.72, 0.26, 0.07, -0.9, 0, -0.3], [0.45, 0.9, -0.6, 0.22, 0.06, -0.8, 0, -0.8]];
-  for (const [x, y, z, h, r, rx, ry, rz] of back) torso.add(crystal(h, r, [x, y, z], [rx, ry, rz]));
-  // 头：眉骨、鼻梁、下巴、眼窝 + 发光的眼
-  const head = new THREE.Group(); head.position.set(0, 1.38, 0.5); torso.add(head);
-  head.add(rock(0.48, [1.12, 0.86, 1.0], [0, 0, 0], [0, 0, 0], 7, { moss: 0.7, cuts: 8 }));
-  head.add(rock(0.36, [1.5, 0.42, 0.62], [-0.15, 0, 0], [0, 0.17, 0.3], 8, { moss: 0.8, lump: 0.1 }));
-  head.add(rock(0.13, [0.8, 1.2, 0.9], [0.3, 0, 0], [0, -0.04, 0.44], 10, { moss: 0, detail: 3 }));
-  head.add(rock(0.27, [1.45, 0.55, 0.8], [0.2, 0, 0], [0, -0.27, 0.26], 9, { moss: 0 }));
+  const tp = [
+    prim({ c: [0, 0.66, -0.05], r: [1.02, 0.92, 0.76], rot: [0.25, 0, 0], cuts: 9, seed: 3 }),
+    prim({ c: [0, 0.08, 0.04], r: [0.68, 0.38, 0.46], cuts: 6, seed: 4, k: 0.16 }),
+    prim({ c: [0, 1.36, 0.48], r: [0.5, 0.4, 0.46], cuts: 8, seed: 7, k: 0.16 }),
+    prim({ c: [0, 1.5, 0.78], r: [0.5, 0.13, 0.2], rot: [-0.2, 0, 0], cuts: 4, seed: 8, k: 0.06 }),
+    prim({ c: [0, 1.32, 0.9], r: [0.09, 0.15, 0.11], rot: [0.3, 0, 0], cuts: 3, seed: 9, k: 0.05 }),
+    prim({ c: [0, 1.1, 0.72], r: [0.36, 0.14, 0.22], rot: [0.2, 0, 0], cuts: 4, seed: 6, k: 0.07 }),
+    prim({ c: [-0.19, 1.38, 0.88], r: [0.15, 0.1, 0.12], sub: true, k: 0.04 }),
+    prim({ c: [0.19, 1.38, 0.88], r: [0.15, 0.1, 0.12], sub: true, k: 0.04 }),
+    prim({ c: CORE_AT, r: [0.2, 0.24, 0.16], sub: true, k: 0.06 }),
+  ];
+  torso.add(mesh(body(tp, 15), [0, 0.75, 0.15], 1.25, R(120), STONE_CORE));
+  // 心核水晶簇（坐在坑里）、眼睛、背上水晶
+  torso.add(crystal(0.3, 0.1, [0, 0.52, 0.58], [0.35, 0.4, 0]));
+  torso.add(crystal(0.2, 0.07, [0.08, 0.52, 0.58], [0.7, 0.2, -0.7]));
+  torso.add(crystal(0.18, 0.065, [-0.08, 0.53, 0.58], [0.6, -0.3, 0.8]));
   const eyes = [];
   for (const sx of [-1, 1]) {
-    const so = new THREE.Mesh(new THREE.SphereGeometry(0.12, 16, 10), SOCKET_MAT); so.scale.set(1.35, 0.8, 0.5); so.position.set(sx * 0.19, 0.04, 0.4); head.add(so);
-    const e = new THREE.Mesh(new THREE.SphereGeometry(0.075, 16, 10), EYE_MAT);
-    e.scale.set(1.5, 0.85, 0.5); e.position.set(sx * 0.19, 0.04, 0.45); head.add(e); eyes.push(e);
+    const e = new THREE.Mesh(new THREE.SphereGeometry(0.085, 16, 10), EYE_MAT);
+    e.scale.set(1.4, 0.7, 0.6); e.position.set(sx * 0.19, 1.38, 0.86); torso.add(e); eyes.push(e);
   }
-  // 手臂：肩 → 上臂 → 前臂 → 拳头 + 指节 + 拇指；肩上碎晶
+  const back = [[0, 1.2, -0.5, 0.55, 0.13, -0.5, 0, 0], [0.3, 1.08, -0.58, 0.4, 0.1, -0.7, 0, -0.45], [-0.3, 1.1, -0.56, 0.46, 0.11, -0.6, 0, 0.45], [0.12, 0.85, -0.76, 0.3, 0.08, -1.0, 0, 0.2], [-0.15, 0.95, -0.72, 0.26, 0.07, -0.9, 0, -0.3]];
+  for (const [x, y, z, h, r, rx, ry, rz] of back) torso.add(crystal(h, r, [x, y, z], [rx, ry, rz]));
+
+  // 手臂（各一整块）：肩甲 → 上臂 → 前臂 → 拳头 + 指节 + 拇指
   const arms = [];
   for (const sx of [-1, 1]) {
-    const sh = new THREE.Group(); sh.position.set(sx * 1.02, 1.08, 0.05); torso.add(sh); arms.push(sh);
-    sh.add(rock(0.5, [1.1, 0.95, 1.0], [0, 0, sx * 0.3], [sx * 0.05, 0.05, 0], 31 + sx, { moss: 0.8, cuts: 9 }));
-    sh.add(rock(0.3, [1, 1.45, 1], [0.1, 0, sx * 0.12], [sx * 0.1, -0.52, 0.05], 41 + sx, { moss: 0.2 }));
-    sh.add(rock(0.36, [1.05, 1.3, 1.05], [-0.15, 0, sx * 0.05], [sx * 0.14, -1.0, 0.14], 51 + sx, { moss: 0.25 }));
-    const fist = new THREE.Group(); fist.position.set(sx * 0.16, -1.5, 0.22); fist.rotation.set(0.2, sx * 0.3, 0); sh.add(fist);
-    fist.add(rock(0.5, [1.12, 0.95, 1.1], [0, 0, 0], [0, 0, 0], 61 + sx, { moss: 0.4, cuts: 9 }));
-    for (let k = 0; k < 4; k++) fist.add(rock(0.13, [1, 0.95, 1.1], [0, 0, 0], [(k - 1.5) * 0.2, -0.16 + Math.abs(k - 1.5) * 0.03, 0.47], 70 + k + sx * 5, { moss: 0, detail: 3 }));
-    fist.add(rock(0.13, [1, 1.3, 1], [0, 0, sx * -0.5], [sx * -0.42, 0.02, 0.36], 78 + sx, { moss: 0, detail: 3 }));
-    sh.add(crystal(0.22, 0.06, [sx * 0.2, 0.38, -0.2], [-0.4, 0, sx * -0.5]));
-    sh.add(crystal(0.15, 0.045, [sx * 0.32, 0.3, -0.12], [-0.2, 0, sx * -0.9]));
+    const sh = new THREE.Group(); sh.position.set(sx * 1.0, 1.08, 0.05); torso.add(sh); arms.push(sh);
+    const ap = [
+      prim({ c: [sx * 0.06, 0.06, 0], r: [0.56, 0.48, 0.52], rot: [0, 0, sx * 0.3], cuts: 9, seed: 40 + sx }),
+      prim({ c: [sx * 0.1, -0.52, 0.05], r: [0.28, 0.42, 0.28], rot: [0.1, 0, sx * 0.12], cuts: 5, seed: 42 + sx, k: 0.07 }),
+      prim({ c: [sx * 0.14, -1.0, 0.14], r: [0.35, 0.45, 0.36], rot: [-0.15, 0, sx * 0.05], cuts: 6, seed: 44 + sx, k: 0.06 }),
+      prim({ c: [sx * 0.16, -1.5, 0.22], r: [0.54, 0.46, 0.54], rot: [0.2, sx * 0.3, 0], cuts: 8, seed: 46 + sx, k: 0.06 }),
+    ];
+    const fq = new THREE.Quaternion().setFromEuler(new THREE.Euler(0.2, sx * 0.3, 0));
+    for (let k = 0; k < 4; k++) {
+      const off = new THREE.Vector3((k - 1.5) * 0.2, -0.17 + Math.abs(k - 1.5) * 0.03, 0.47).applyQuaternion(fq);
+      ap.push(prim({ c: [sx * 0.16 + off.x, -1.5 + off.y, 0.22 + off.z], r: [0.13, 0.14, 0.14], cuts: 4, seed: 50 + k + sx * 5, k: 0.1 }));
+    }
+    const th = new THREE.Vector3(-sx * 0.44, 0.02, 0.32).applyQuaternion(fq);
+    ap.push(prim({ c: [sx * 0.16 + th.x, -1.5 + th.y, 0.22 + th.z], r: [0.14, 0.19, 0.14], rot: [0, 0, sx * -0.5], cuts: 4, seed: 60 + sx, k: 0.1 }));
+    sh.add(mesh(body(ap, 25 + sx), [sx * 0.12, -0.7, 0.15], 1.35, R(124), STONE));
+    sh.add(crystal(0.22, 0.06, [sx * 0.2, 0.42, -0.2], [-0.4, 0, sx * -0.5]));
+    sh.add(crystal(0.15, 0.045, [sx * 0.34, 0.33, -0.12], [-0.2, 0, sx * -0.9]));
   }
-  // 藤蔓：从右肩顶垂到上臂外侧，从头侧垂下一小段
-  arms[1].add(vine([[0.05, 0.5, 0.2], [0.35, 0.35, 0.36], [0.48, 0.0, 0.36], [0.45, -0.35, 0.34], [0.4, -0.6, 0.38]], 3));
-  head.add(vine([[-0.35, 0.25, 0.15], [-0.52, 0.0, 0.2], [-0.55, -0.25, 0.22]], 4));
-  // 点缀：蘑菇、草、小蕨（素材包，同一套卡通材质）
+  arms[1].add(vine([[0.05, 0.5, 0.2], [0.38, 0.35, 0.36], [0.5, 0.0, 0.34], [0.46, -0.35, 0.32], [0.42, -0.62, 0.36]], 3));
+
+  // 点缀（素材包）
   const deco = async (name, parent, at, s, ry = 0, rx = 0, rz = 0) => {
     const m = await model(name); m.position.set(...at); m.scale.setScalar(s); m.rotation.set(rx, ry, rz); parent.add(m); return m;
   };
   await Promise.all([
-    deco('Mushroom_Laetiporus', arms[0], [-0.3, 0.2, 0.25], 0.5, -1.2, 0, 0.5),
-    deco('Mushroom_Common', arms[1], [0.18, 0.4, 0.05], 0.45, 0.5),
-    deco('Mushroom_Common', head, [0.3, 0.32, -0.1], 0.3, 1.5),
-    deco('Grass_Common_Short', arms[1], [0.0, 0.42, -0.12], 0.32, 1.0),
-    deco('Grass_Wispy_Short', arms[0], [0.05, 0.44, -0.05], 0.3, 0.3),
-    deco('Grass_Common_Short', head, [-0.05, 0.36, -0.05], 0.3, 0.2),
+    deco('Mushroom_Laetiporus', arms[0], [-0.32, 0.2, 0.25], 0.5, -1.2, 0, 0.5),
+    deco('Mushroom_Common', arms[1], [0.2, 0.44, 0.05], 0.42, 0.5),
+    deco('Grass_Common_Short', arms[1], [0.0, 0.46, -0.12], 0.3, 1.0),
+    deco('Grass_Wispy_Short', arms[0], [0.05, 0.48, -0.05], 0.28, 0.3),
+    deco('Grass_Common_Short', torso, [-0.05, 1.72, 0.4], 0.28, 0.2),
     deco('Fern_1', torso, [-0.45, 1.25, -0.2], 0.08, 0.6),
-    deco('Grass_Wispy_Short', torso, [0.4, 1.32, 0.0], 0.3, 2.1),
-    deco('Clover_1', fist0(arms[0]), [0.1, 0.4, 0.0], 0.5, 0.4),
   ]);
 
   const PERIOD = 2.4;
   root.userData.update = (t) => {
     const ph = (t / PERIOD) * Math.PI * 2, b = Math.sin(ph);
     torso.position.y = 0.95 + b * 0.035;
-    torso.rotation.x = b * 0.025;
-    head.rotation.set(Math.sin(ph + 0.6) * 0.04, Math.sin(ph) * 0.1, 0);
+    torso.rotation.set(b * 0.025, Math.sin(ph) * 0.03, 0);
     arms.forEach((a, i) => { a.rotation.x = Math.sin(ph + i * Math.PI) * 0.06 - b * 0.02; a.rotation.z = (i ? 1 : -1) * b * 0.03; });
     const pulse = 0.5 + 0.5 * Math.sin(ph * 2);
-    // 材质会被换成卡通材质，按名字找
     root.traverse((o) => {
       if (!o.isMesh) return;
       if (o.material.name === 'GolemCrystal') o.material.emissiveIntensity = 1.1 + pulse * 1.0;
-      if (o.material.name === 'GolemSeam') o.material.emissiveIntensity = 1.4 + pulse * 1.6;
+      if (/GolemStone/.test(o.material.name)) { const g = 0.55 + pulse * 0.6; o.material.userData.glowAmt = g; const sh = o.material.userData.shader; if (sh) sh.uniforms.glowAmt.value = g; }
     });
     const k = (t / PERIOD) % 1, blink = k > 0.62 && k < 0.72 ? Math.sin((k - 0.62) / 0.1 * Math.PI) : 0;
-    eyes.forEach((e) => { e.scale.y = 0.85 * (1 - blink * 0.9); });
+    eyes.forEach((e) => { e.scale.y = 0.7 * (1 - blink * 0.9); });
   };
   root.userData.update(0);
   return root;
 }
-const fist0 = (sh) => sh.children.find((c) => c.isGroup);
