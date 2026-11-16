@@ -21,6 +21,7 @@ import { ShaderPass } from 'three/addons/postprocessing/ShaderPass.js';
 import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js';
 import { OutputPass } from 'three/addons/postprocessing/OutputPass.js';
 import { RenderPixelatedPass } from 'three/addons/postprocessing/RenderPixelatedPass.js';
+import { classify, rewriteNormals, toonMaterial, ndMaterial, edgePass } from './toon.js';
 
 const q = new URLSearchParams(location.search);
 const W = +(q.get('w') ?? 1920), H = +(q.get('h') ?? 1152), T = +(q.get('t') ?? 0), CAM = +(q.get('cam') ?? 0), PX = +(q.get('px') ?? 1);
@@ -32,6 +33,8 @@ const RW = Math.round(W / PX), RH = Math.round(H / PX);
  *   depth         全分辨率深度图（RGB 打包），给外面按真实距离加雾、景深、光——这些不像素化，是平滑的
  */
 const MODE = q.get('mode') ?? 'final';
+/** style：hd2d（默认，写实光照 + 后期）| toon（卡通渲染：光照分 3 档、冷色阴影、按深度 / 法线突变画手绘描边，见 toon.js） */
+const STYLE = q.get('style') ?? 'hd2d', TOON = STYLE === 'toon';
 
 // 可复现的随机数
 let seed = 7;
@@ -43,8 +46,8 @@ renderer.setSize(MODE === 'depth' ? W : RW, MODE === 'depth' ? H : RH);
 renderer.setPixelRatio(1);
 renderer.shadowMap.enabled = true;
 renderer.shadowMap.type = THREE.PCFSoftShadowMap;
-renderer.toneMapping = THREE.ACESFilmicToneMapping;
-renderer.toneMappingExposure = 1.15;
+renderer.toneMapping = TOON ? THREE.NeutralToneMapping : THREE.ACESFilmicToneMapping;
+renderer.toneMappingExposure = TOON ? 1.0 : 1.15;
 document.body.appendChild(renderer.domElement);
 
 const scene = new THREE.Scene();
@@ -137,13 +140,25 @@ async function model(name) {
         // 树皮、石头贴图偏暗：提亮；红叶往橙黄偏（秋色，不要血红）
         if (/bark/i.test(m.name)) m.color.setRGB(1.9, 1.75, 1.6);
         if (/rock/i.test(m.name)) m.color.setRGB(1.55, 1.6, 1.5);
-        if (/TwistedTree/i.test(m.name) && foliage) m.color.setRGB(1.5, 1.25, 0.55);
+        if (/TwistedTree/i.test(m.name) && foliage) { if (TOON) m.color.setRGB(1.25, 1.5, 0.5); else m.color.setRGB(1.5, 1.25, 0.55); }
         m.roughness = 0.9; m.metalness = 0;
       }
     });
     return g.scene;
   });
-  return (await cache[name]).clone(true);
+  const sc = await cache[name];
+  if (TOON && !sc.userData.toon) {
+    sc.userData.toon = true;
+    sc.traverse((o) => {
+      if (!o.isMesh) return;
+      const m = Array.isArray(o.material) ? o.material[0] : o.material;
+      m.userData.kind = classify(name, m);
+      rewriteNormals(o, m.userData.kind);
+      // 草花朝上的法线 → 接收投影后和地面上的影子连成一片
+      if (m.userData.kind === 'grass') o.receiveShadow = true;
+    });
+  }
+  return sc.clone(true);
 }
 const placed = [];
 async function put(name, x, z, s = 1, rot = rnd() * Math.PI * 2, opts = {}) {
@@ -199,6 +214,29 @@ for (let i = 0; i < 260; i++) {
 for (let i = 0; i < 90; i++) { const x = range(-7, 7), z = range(4.6, 6.4); if (Math.abs(x) < 2.6 && rnd() < 0.75) continue; P(pick(['Grass_Common_Tall', 'Grass_Wispy_Tall', 'Plant_7_Big', 'Flower_3_Group']), x, z, range(0.45, 0.7), undefined, { sway: true }); }
 
 await Promise.all(jobs);
+let tND = null;
+if (TOON) {
+  // 材质换成卡通材质（同一个源材质只换一次）；另备一套「法线 + 深度」材质给描边用
+  const sunLum = (0.299 * sun.color.r + 0.587 * sun.color.g + 0.114 * sun.color.b) * sun.intensity;
+  const opt = { sunLum, ambientTint: new THREE.Color('#b4c2e6').multiplyScalar(2.5), bands: [0.16, 0.5], mid: 0.5 };
+  const toonCache = new Map(), ndCache = new Map(), meshes = [];
+  scene.traverse((o) => {
+    if (!o.isMesh) return;
+    const src = Array.isArray(o.material) ? o.material[0] : o.material;
+    const kind = src.userData.kind ?? 'solid';
+    if (!toonCache.has(src)) { toonCache.set(src, toonMaterial(src, kind, opt)); ndCache.set(src, ndMaterial(src, kind, camera.far)); }
+    o.material = toonCache.get(src); o.userData.nd = ndCache.get(src); meshes.push(o);
+  });
+  for (const m of placed) { const k = m.position.x * 0.4 + m.position.z * 0.3; m.rotation.z = Math.sin(T * 2.2 + k) * 0.06; }
+  tND = new THREE.WebGLRenderTarget(W, H, { type: THREE.FloatType, minFilter: THREE.NearestFilter, magFilter: THREE.NearestFilter });
+  const keep = meshes.map((o) => o.material), bg = scene.background, fog = scene.fog;
+  meshes.forEach((o) => { o.material = o.userData.nd; });
+  scene.background = null; scene.fog = null;
+  renderer.setRenderTarget(tND); renderer.setClearColor(new THREE.Color(0.5, 0.5, 1), 1); renderer.clear(); renderer.render(scene, camera);
+  renderer.setRenderTarget(null); renderer.setClearColor(0x000000, 0);
+  meshes.forEach((o, i) => { o.material = keep[i]; });
+  scene.background = bg; scene.fog = fog;
+}
 if (MODE !== 'final') scene.fog = null;
 // 风：草和前景植物轻轻摆（按 t 参数，逐帧渲染时可以出动画）
 for (const m of placed) { const k = m.position.x * 0.4 + m.position.z * 0.3; m.rotation.z = Math.sin(T * 2.2 + k) * 0.06; }
@@ -218,11 +256,14 @@ if (MODE === 'depth') {
 }
 const composer = new EffectComposer(renderer);
 composer.setSize(RW, RH);
-if (PX > 1) {
+if (TOON) {
+  composer.addPass(new RenderPass(scene, camera));
+  composer.addPass(edgePass(tND.texture, W, H, camera.far));
+} else if (PX > 1) {
   const pix = new RenderPixelatedPass(1, scene, camera, { normalEdgeStrength: 0.7, depthEdgeStrength: 2.2 });
   composer.addPass(pix);
 } else composer.addPass(new RenderPass(scene, camera));
-if (MODE === 'final') composer.addPass(new UnrealBloomPass(new THREE.Vector2(RW, RH), 0.32, 0.55, 0.82));
+if (MODE === 'final') composer.addPass(new UnrealBloomPass(new THREE.Vector2(RW, RH), TOON ? 0.15 : 0.32, 0.55, TOON ? 0.9 : 0.82));
 // 移轴景深：屏幕上 focus 那一横带清晰（战斗舞台），往上、往下越来越虚（两遍可分离模糊）
 const tilt = (dir) => new ShaderPass({
   uniforms: { tDiffuse: { value: null }, dir: { value: dir }, focus: { value: 0.6 }, band: { value: 0.16 }, amount: { value: 4.0 } },
@@ -241,7 +282,7 @@ const tiltX = tilt(new THREE.Vector2(1 / RW, 0)), tiltY = tilt(new THREE.Vector2
 // 低分辨率时每个像素更大，模糊步长相应缩小，虚化的范围不变
 // 像素模式下几乎不虚化（像素画靠雾和明暗分远近，糊掉的像素会显得脏）
 for (const t of [tiltX, tiltY]) t.uniforms.amount.value = PX > 1 ? 0.55 : 4.0;
-if (MODE === 'final') { composer.addPass(tiltX); composer.addPass(tiltY); }
+if (MODE === 'final' && !TOON) { composer.addPass(tiltX); composer.addPass(tiltY); }
 // 调色 + 暗角：暗部偏冷、亮部偏暖，四周压暗，舞台中间最亮
 if (MODE === 'final') composer.addPass(new ShaderPass({
   uniforms: { tDiffuse: { value: null } },
