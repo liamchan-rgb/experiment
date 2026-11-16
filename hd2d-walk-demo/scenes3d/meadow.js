@@ -153,6 +153,7 @@ async function model(name) {
       if (!o.isMesh) return;
       const m = Array.isArray(o.material) ? o.material[0] : o.material;
       m.userData.kind = classify(name, m);
+      if (/TwistedTree/i.test(m.name) && m.userData.kind !== 'solid') m.userData.recolor = /Bush/.test(name) ? '#4f8a2c' : '#e8a03a';
       rewriteNormals(o, m.userData.kind);
       // 草花朝上的法线 → 接收投影后和地面上的影子连成一片
       if (m.userData.kind === 'grass') o.receiveShadow = true;

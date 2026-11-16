@@ -80,20 +80,32 @@ export function toonMaterial(src, kind, opt) {
     // 贴图「压平」：树皮、石头、地面的手绘细节和高频噪点会和分档光照打架，
     // 混一部分低精度 mip（相当于取局部平均色），表面变成更干净的色块，大的花纹还在
     if (kind === 'solid' && src.map) {
-      sh.uniforms.flatAmt = { value: opt.flatten ?? 0.55 };
+      sh.uniforms.flatAmt = { value: opt.flatten ?? 0.72 };
       sh.fragmentShader = sh.fragmentShader.replace('#include <map_fragment>', /* glsl */`
         #ifdef USE_MAP
           vec4 sampledDiffuseColor = texture2D( map, vMapUv );
-          sampledDiffuseColor.rgb = mix( sampledDiffuseColor.rgb, texture2D( map, vMapUv, 3.5 ).rgb, flatAmt );
+          sampledDiffuseColor.rgb = mix( sampledDiffuseColor.rgb, texture2D( map, vMapUv, 4.5 ).rgb, flatAmt );
           diffuseColor *= sampledDiffuseColor;
         #endif
       `).replace('uniform float sunLum, mid;', 'uniform float sunLum, mid, flatAmt;');
+    }
+    // 换色：素材包自带的深红叶子（TwistedTree / 灌木）太刺眼——取贴图红通道当明暗花纹，填上新颜色
+    if (src.userData.recolor && src.map) {
+      sh.uniforms.recolor = { value: new THREE.Color(src.userData.recolor) };
+      sh.fragmentShader = sh.fragmentShader.replace('#include <map_fragment>', /* glsl */`
+        #ifdef USE_MAP
+          vec4 sampledDiffuseColor = texture2D( map, vMapUv );
+          sampledDiffuseColor.rgb = recolor * clamp(sampledDiffuseColor.r / 0.40, 0.0, 1.6);
+          diffuseColor *= sampledDiffuseColor;
+        #endif
+      `).replace('uniform float sunLum, mid;', 'uniform float sunLum, mid; uniform vec3 recolor;');
     }
     // 叶片是双面卡片：背面不翻法线（用重写过的球形法线，整团叶子明暗连续）
     if (kind !== 'solid') sh.fragmentShader = sh.fragmentShader.replace('#include <normal_fragment_begin>',
       THREE.ShaderChunk.normal_fragment_begin.replace('normal *= faceDirection;', ''));
   };
-  m.customProgramCacheKey = () => 'toon-' + kind + (src.map ? '-map' : '');
+  if (src.userData.recolor) m.color.setRGB(1, 1, 1);
+  m.customProgramCacheKey = () => 'toon-' + kind + (src.map ? '-map' : '') + (src.userData.recolor ? '-re' : '');
   return m;
 }
 
@@ -122,7 +134,7 @@ export function edgePass(tND, W, H, far, o = {}) {
   const pass = new ShaderPass({
     uniforms: {
       tDiffuse: { value: null }, tND: { value: tND }, res: { value: new THREE.Vector2(W, H) }, far: { value: far },
-      width: { value: o.width ?? 1.0 }, ink: { value: new THREE.Color(o.ink ?? '#4a3f66') },
+      width: { value: o.width ?? 1.35 }, ink: { value: new THREE.Color(o.ink ?? '#4a3f66') },
     },
     vertexShader: 'varying vec2 vUv; void main(){ vUv = uv; gl_Position = projectionMatrix * modelViewMatrix * vec4(position,1.0); }',
     fragmentShader: /* glsl */`
@@ -135,7 +147,7 @@ export function edgePass(tND, W, H, far, o = {}) {
         vec2 px = 1.0 / res, P = vUv * res;
         // 手抖：采样位置跟着低频噪声轻轻漂，线条不是死贴着几何边
         vec2 wob = vec2(noise(P / 34.0), noise(P / 34.0 + 17.3)) - 0.5;
-        vec2 uv = vUv + wob * px * 2.6;
+        vec2 uv = vUv + wob * px * 3.4;
         vec4 c0 = texture2D(tND, uv);
         float d0 = c0.a * far;
         // 笔压：粗细按噪声起伏；近处的线粗、远处细
@@ -160,7 +172,10 @@ export function edgePass(tND, W, H, far, o = {}) {
         vec3 col = texture2D(tDiffuse, vUv).rgb;
         // 线色：底色压暗再往墨色（冷紫）靠——彩色墨线
         vec3 line = mix(col * 0.32, ink * 0.25, 0.45);
-        gl_FragColor = vec4(mix(col, line, clamp(e, 0.0, 1.0)), 1.0);
+        col = mix(col, line, clamp(e, 0.0, 1.0));
+        // 整体饱和度收一点（高饱和的花草最明显）
+        float L = dot(col, vec3(0.2126, 0.7152, 0.0722));
+        gl_FragColor = vec4(mix(vec3(L), col, 0.86), 1.0);
       }`,
   });
   // ShaderPass 会克隆 uniforms（贴图被克隆后和渲染目标断开），这里重新指回去
