@@ -55,3 +55,14 @@ index.html?style=toon&monster=golem&shot=monster  # 近景；&rot= 转朝向，&
   - 朝上和凹处的苔藓：硬边，加一圈黄绿毛边；
   - 从心核往外的发光裂纹，会脉动。
 - 通过 `toon.js` 的 `userData.toonPatch` 挂进同一套卡通光照和描边。
+
+### 参照：Bestiary 怪物包（Quaternius，QAL 授权：可用于游戏，不能把模型本身再分发）
+模型文件不进仓库。要对比时，从 release `art-pack-2` 下载 zip，解压后把 `Exports/GLB (Godot-Unreal)` 链接成 `scenes3d/bestiary`，然后打开：
+```
+index.html?style=toon&monster=golem&shot=monster&ref=bestiary
+```
+这样会把 Puglin 和 Imp 放在魔像两边。
+按包里怪物的观感调了魔像表面：
+- 中等明度、内部对比低的固有色，上亮下暗，没有亮边；
+- 苔藓是暗橄榄绿、软过渡；
+- 细节改成雕刻式凹凸（裂缝刻进去、凿痕），不再画成颜色线。

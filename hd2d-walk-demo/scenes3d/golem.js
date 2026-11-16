@@ -40,10 +40,10 @@ function prim(o) {
   const m = new THREE.Matrix4().makeRotationFromQuaternion(inv).elements;
   const [rx, ry, rz] = o.r, rand = mulberry((o.seed ?? 1) * 7919 + 3);
   const planes = [];
-  for (let i = 0; i < Math.round((o.cuts ?? 0) * 1.7); i++) {
+  for (let i = 0; i < Math.round((o.cuts ?? 0) * 1.2); i++) {
     const n = new THREE.Vector3(rand() * 2 - 1, rand() * 2 - 1, rand() * 2 - 1).normalize();
     const support = Math.hypot(rx * n.x, ry * n.y, rz * n.z);
-    planes.push([n.x, n.y, n.z, support * (0.64 + rand() * 0.18)]);
+    planes.push([n.x, n.y, n.z, support * (0.7 + rand() * 0.18)]);
   }
   const [cx, cy, cz] = o.c;
   return {
@@ -53,7 +53,7 @@ function prim(o) {
       const lx = m[0] * px + m[4] * py + m[8] * pz, ly = m[1] * px + m[5] * py + m[9] * pz, lz = m[2] * px + m[6] * py + m[10] * pz;
       const k0 = Math.hypot(lx / rx, ly / ry, lz / rz), k1 = Math.hypot(lx / (rx * rx), ly / (ry * ry), lz / (rz * rz));
       let d = k0 * (k0 - 1) / Math.max(k1, 1e-6);
-      for (const [nx, ny, nz, off] of planes) d = smax(d, nx * lx + ny * ly + nz * lz - off, 0.012);
+      for (const [nx, ny, nz, off] of planes) d = smax(d, nx * lx + ny * ly + nz * lz - off, 0.035);
       return d;
     },
   };
@@ -115,14 +115,16 @@ function stoneMaterial(name, core) {
     sh.uniforms.glowAmt = { value: toonMat.userData.glowAmt ?? 1 };
     sh.uniforms.coreP = { value: new THREE.Vector3(...(core ?? [0, -100, 0])) };
     sh.uniforms.glowCol = { value: GLOW.clone() };
+    sh.uniforms.golemFloor = { value: toonMat.userData.floorY ?? 0 };
+    sh.uniforms.bumpK = { value: 0.035 };
     toonMat.userData.shader = sh;
     sh.vertexShader = sh.vertexShader
-      .replace('#include <common>', '#include <common>\nattribute float aCurv; varying float vCurv; varying vec3 vOP; varying vec3 vWN;')
-      .replace('#include <begin_vertex>', '#include <begin_vertex>\nvCurv = aCurv; vOP = position; vWN = normalize(mat3(modelMatrix) * normal);');
+      .replace('#include <common>', '#include <common>\nattribute float aCurv; varying float vCurv; varying vec3 vOP; varying vec3 vWN; varying vec3 vWP;')
+      .replace('#include <begin_vertex>', '#include <begin_vertex>\nvCurv = aCurv; vOP = position; vWN = normalize(mat3(modelMatrix) * normal); vWP = (modelMatrix * vec4(position, 1.0)).xyz;');
     sh.fragmentShader = sh.fragmentShader
       .replace('#include <common>', /* glsl */`#include <common>
-        varying float vCurv; varying vec3 vOP; varying vec3 vWN;
-        uniform float glowAmt; uniform vec3 coreP, glowCol;
+        varying float vCurv; varying vec3 vOP; varying vec3 vWN; varying vec3 vWP;
+        uniform float glowAmt, golemFloor, bumpK; uniform vec3 coreP, glowCol;
         float h3(vec3 p){ p = fract(p * 0.3183099 + 0.1); p *= 17.0; return fract(p.x * p.y * p.z * (p.x + p.y + p.z)); }
         float n3(vec3 x){ vec3 i = floor(x), f = fract(x); f = f * f * (3.0 - 2.0 * f);
           return mix(mix(mix(h3(i), h3(i + vec3(1,0,0)), f.x), mix(h3(i + vec3(0,1,0)), h3(i + vec3(1,1,0)), f.x), f.y),
@@ -131,34 +133,46 @@ function stoneMaterial(name, core) {
         vec3 srgb(vec3 c){ return pow(c, vec3(2.2)); }
       `)
       .replace('#include <map_fragment>', /* glsl */`
+        // 参照 Bestiary 怪物的上色：中等明度、饱和的固有色，内部对比低；
+        // 明暗靠大的色区渐变（上亮下暗、凹处暗）而不是亮边，细节交给雕刻（下面的凹凸）
         vec3 P = vOP;
-        // 石面：淡紫灰，大块明暗 + 刷子一样的条纹
-        vec3 sDark = srgb(vec3(0.52, 0.49, 0.48)), sMid = srgb(vec3(0.68, 0.64, 0.62)), sLight = srgb(vec3(0.80, 0.77, 0.74));
-        float big = fb(P * 2.2);
-        vec3 stone = mix(sDark, sMid, smoothstep(0.25, 0.5, big));
-        stone = mix(stone, sLight, smoothstep(0.55, 0.72, big));
-        stone *= 0.93 + 0.1 * n3(P * vec3(4.0, 16.0, 4.0));
-        // 细裂纹（硬的细线）
-        // 少量细裂纹，只在局部出现
+        vec3 sDark = srgb(vec3(0.42, 0.40, 0.37)), sMid = srgb(vec3(0.58, 0.55, 0.50)), sLight = srgb(vec3(0.67, 0.63, 0.57));
+        float big = fb(P * 1.6);
+        vec3 stone = mix(sDark, sMid, smoothstep(0.2, 0.55, big));
+        stone = mix(stone, sLight, smoothstep(0.55, 0.8, big) * 0.7);
+        // 上亮下暗（像烘焙的环境光遮蔽）
+        stone *= mix(0.72, 1.06, smoothstep(0.1, 2.3, vWP.y - golemFloor));
+        float convex = smoothstep(8.0, 18.0, vCurv), concave = smoothstep(-2.0, -10.0, vCurv);
+        stone = mix(stone, stone * 1.18, convex * 0.5);
+        stone *= 1.0 - concave * 0.4;
         float cr = abs(fb(P * 2.6 + 11.0) - 0.5);
-        stone *= mix(0.72, 1.0, max(smoothstep(0.005, 0.013, cr), step(0.32, n3(P * 1.3 + 5.0))));
-        // 凸棱提亮、凹处压暗（曲率来自距离场）
-        float convex = smoothstep(7.0, 16.0, vCurv), concave = smoothstep(-2.0, -9.0, vCurv);
-        stone = mix(stone, srgb(vec3(0.88, 0.87, 0.92)), convex * 0.85);
-        stone *= 1.0 - concave * 0.45;
-        // 苔藓：朝上 + 凹处，硬边，边上一圈黄绿毛边，里面有小斑点
-        float m = vWN.y * 0.85 + concave * 0.45 + (fb(P * 2.6 + 3.0) - 0.5) * 0.9 - convex * 0.3;
-        float moss = smoothstep(0.50, 0.53, m), fringe = smoothstep(0.44, 0.47, m) - moss;
-        vec3 mossC = mix(srgb(vec3(0.27, 0.42, 0.15)), srgb(vec3(0.42, 0.60, 0.20)), smoothstep(0.3, 0.7, fb(P * 7.0)));
-        mossC = mix(mossC, srgb(vec3(0.55, 0.70, 0.28)), step(0.78, n3(P * 30.0)) * 0.7);
-        vec3 col = mix(stone, srgb(vec3(0.66, 0.72, 0.36)), fringe * 0.9);
-        col = mix(col, mossC, moss);
+        float crack = (1.0 - smoothstep(0.004, 0.02, cr)) * (1.0 - step(0.4, n3(P * 1.3 + 5.0)));
+        stone *= 1.0 - crack * 0.35;
+        // 苔藓：暗橄榄绿，软过渡，长在朝上和凹处
+        float m = vWN.y * 0.8 + concave * 0.5 + (fb(P * 2.2 + 3.0) - 0.5) * 0.9 - convex * 0.2;
+        float moss = smoothstep(0.42, 0.6, m);
+        vec3 mossC = mix(srgb(vec3(0.30, 0.38, 0.14)), srgb(vec3(0.44, 0.52, 0.19)), smoothstep(0.3, 0.75, fb(P * 5.0)));
+        vec3 col = mix(stone, mossC, moss);
         diffuseColor.rgb *= col;
+      `)
+      .replace('#include <normal_fragment_maps>', /* glsl */`#include <normal_fragment_maps>
+        {
+          // 雕刻细节（程序化凹凸）：裂缝刻进去、表面有凿痕和小坑，苔藓处是软的小鼓包
+          vec3 Q = vOP;
+          float c2 = abs(fb(Q * 2.6 + 11.0) - 0.5);
+          float h = -(1.0 - smoothstep(0.004, 0.03, c2)) * (1.0 - step(0.4, n3(Q * 1.3 + 5.0))) * 1.0
+                    + fb(Q * 6.0) * 0.4 + n3(Q * 18.0) * 0.06;
+          vec2 dh = vec2(dFdx(h), dFdy(h)) * bumpK;
+          vec3 sp = -vViewPosition;
+          vec3 sx = dFdx(sp), sy = dFdy(sp), R1 = cross(sy, normal), R2 = cross(normal, sx);
+          float det = dot(sx, R1);
+          normal = normalize(abs(det) * normal - sign(det) * (dh.x * R1 + dh.y * R2));
+        }
       `)
       .replace('#include <emissivemap_fragment>', /* glsl */`#include <emissivemap_fragment>
         // 心核发出的发光裂纹：只在心核附近、沿另一套裂纹走，越远越淡
         float gl = abs(fb(vOP * 2.4 + 37.0) - 0.5);
-        float fall = 1.0 - smoothstep(0.12, 0.75, distance(vOP, coreP));
+        float fall = 1.0 - smoothstep(0.1, 0.5, distance(vOP, coreP));
         float line = 1.0 - smoothstep(0.012, 0.03, gl);
         totalEmissiveRadiance += glowCol * glowAmt * line * fall * 2.2;
         totalEmissiveRadiance += glowCol * glowAmt * smoothstep(0.35, 0.0, distance(vOP, coreP)) * 0.25;

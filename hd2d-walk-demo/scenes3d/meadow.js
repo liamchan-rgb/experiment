@@ -230,6 +230,18 @@ if (MONSTER === 'golem') {
     camera.position.set(gx - 1.2, 2.4, gz + 9.0); camera.lookAt(tgt);
   }
 }
+// ref=bestiary：把 Bestiary 包里的两只怪物（Imp、Puglin）放在魔像旁边做观感参照（模型不进仓库，见 README）
+if (q.get('ref') === 'bestiary') {
+  const gl = new GLTFLoader().setPath('bestiary/');
+  for (const [name, x, z, h, ry] of [['Puglin', 0.9, 1.3, 1.25, -0.5], ['Imp', 4.6, 1.6, 1.7, -1.0]]) {
+    const g = (await gl.loadAsync(name + '.glb')).scene;
+    const box = new THREE.Box3().setFromObject(g), size = box.getSize(new THREE.Vector3());
+    g.scale.setScalar(h / size.y);
+    g.position.set(x, heightAt(x, z) - box.min.y * (h / size.y), z); g.rotation.y = ry;
+    g.traverse((o) => { if (o.isMesh) { o.castShadow = true; o.frustumCulled = false; const m = o.material; if (m.map) m.map.colorSpace = THREE.SRGBColorSpace; m.userData.kind = 'solid'; } });
+    scene.add(g);
+  }
+}
 let tND = null;
 if (TOON) {
   // 材质换成卡通材质（同一个源材质只换一次）；另备一套「法线 + 深度」材质给描边用

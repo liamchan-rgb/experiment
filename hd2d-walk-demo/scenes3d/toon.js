@@ -49,6 +49,7 @@ export function toonMaterial(src, kind, opt) {
     color: src.color?.clone() ?? new THREE.Color(1, 1, 1), map: src.map ?? null,
     alphaTest: src.alphaTest ?? 0, side: src.side ?? THREE.FrontSide, transparent: false,
     vertexColors: !!src.vertexColors, emissive: src.emissive?.clone() ?? new THREE.Color(0), emissiveIntensity: src.emissiveIntensity ?? 1, name: src.name,
+    normalMap: src.normalMap ?? null, normalScale: src.normalScale?.clone() ?? new THREE.Vector2(1, 1), emissiveMap: src.emissiveMap ?? null,
   });
   m.userData.kind = kind;
   m.onBeforeCompile = (sh) => {
@@ -107,7 +108,7 @@ export function toonMaterial(src, kind, opt) {
     if (src.userData.toonPatch) src.userData.toonPatch(sh, m);
   };
   if (src.userData.recolor) m.color.setRGB(1, 1, 1);
-  m.customProgramCacheKey = () => 'toon-' + kind + (src.map ? '-map' : '') + (src.userData.recolor ? '-re' : '') + (src.vertexColors ? '-vc' : '') + (src.userData.toonPatch ? '-patch-' + src.name : '');
+  m.customProgramCacheKey = () => 'toon-' + kind + (src.map ? '-map' : '') + (src.userData.recolor ? '-re' : '') + (src.vertexColors ? '-vc' : '') + (src.userData.toonPatch ? '-patch-' + src.name : '') + (src.normalMap ? '-nm' : '') + (src.emissiveMap ? '-em' : '');
   return m;
 }
 
