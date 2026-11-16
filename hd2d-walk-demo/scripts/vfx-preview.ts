@@ -21,17 +21,25 @@ mkdirSync(outDir, { recursive: true });
 
 /** 游戏战斗舞台 1000 × 600（布局单位）；人物放大 4 倍 × heroScale 0.83 → 1 个精灵像素 = 3.32 单位 */
 const U = 4 * 0.83;
-const W = Math.round(1000 / U), H = Math.round(600 / U);
+/**
+ * VFX_STAGE（JSON）：换一个舞台——宽高（精灵像素）和各站位的脚底（精灵像素）。
+ * 用在 3D 场景里：场景截图按 1 精灵像素 = N 屏幕像素对齐，人物 + 特效层透明输出，再叠到 3D 帧上（tools/golem_skill.py）。
+ * 设置了 VFX_STAGE 时额外有「打魔像」的场景（golem*），目标 m1 是 3D 的苔石魔像（这里不画怪物）。
+ */
+const STAGE: { w: number; h: number; feet: Record<string, [number, number]> } | null = process.env.VFX_STAGE ? JSON.parse(process.env.VFX_STAGE) : null;
+const W = STAGE?.w ?? Math.round(1000 / U), H = STAGE?.h ?? Math.round(600 / U);
 const FPS = 20;
 const FOOT = { x: 20.8, y: 58.5 };
 
 type Pt = { x: number; y: number };
 const px = (x: number, y: number): Pt => ({ x: x / U, y: y / U });
 /** 课堂默认站位（PartyVisual.classicFeet） */
-const FEET: Record<string, Pt> = {
-  p1: px(165, 420), p2: px(315, 505), p4: px(280, 315),
-  m1: px(650, 395), m2: px(835, 510), m3: px(600, 585),
-};
+const FEET: Record<string, Pt> = STAGE
+  ? Object.fromEntries(Object.entries(STAGE.feet).map(([k, [x, y]]) => [k, { x, y }]))
+  : {
+    p1: px(165, 420), p2: px(315, 505), p4: px(280, 315),
+    m1: px(650, 395), m2: px(835, 510), m3: px(600, 585),
+  };
 
 // ---------------------------------------------------------------- 游戏的镜头（MeadowSkillProcedural / MeadowBattleHitFeel 的移植）
 
@@ -275,8 +283,8 @@ function clip(name: AnimId, impactAt: number, dt = 1 / 12): (t: number) => numbe
 }
 const readyLoop = (t: number) => CLIP_FRAMES.ready[Math.floor(t * 2.5) % 2];
 /** 近战前冲：出手前 0.4 秒冲到目标前，动作结束后退回 */
-function dashTo(target: Pt, home: Pt, impact: number, back = 0.9): (t: number) => number {
-  const dist = (target.x - home.x) * U - 95;
+function dashTo(target: Pt, home: Pt, impact: number, back = 0.9, gap = 95): (t: number) => number {
+  const dist = (target.x - home.x) * U - gap;
   return (t) => dist * (smooth((t - (impact - 0.45)) / 0.25) - smooth((t - (impact + back)) / 0.3));
 }
 
@@ -825,6 +833,41 @@ function scenes(): Scene[] {
   S(death('deathBurst', '通用死亡', { ...enemies[0], edge: '#d0ffc0' }, 'dust', [
     { fx: 'spawn/poof', at: I + 0.15, where: onM1() },
   ]));
+  // ---- 打 3D 苔石魔像（只在 VFX_STAGE 下）：魔像约 2.7 米（≈ 80 精灵像素高、60 宽），命中点打在胸口
+  if (STAGE) {
+    const chest = -46, gap = 34 * U;
+    {
+      const rel = INFO.runeSlash.release;
+      S({
+        id: 'golemRuneSlash', name: '符文斩 → 魔像', duration: 2.6, kind: 'skill', caster: 'p1', targets: ['m1'], cue: 'runeSlash',
+        heroes: party({ slot: 'p1', preset: look.spellblade, top: 'top_rune_armor', anim: clip('slash', rel), travel: dashTo(FEET.m1, FEET.p1, rel, 0.9, gap) }, ally('p4', look.mage, 'top_rune_armor'), ally('p2', look.ranger, 'top_leather_armor')),
+        monsters: [],
+        events: [
+          { fx: 'arcane/rune-circle', at: 0.05, where: at('p1'), stop: rel + 0.3, opts: { palette: PAL.rune } },
+          { fx: 'arcane/spell-charge', at: 0.2, where: at('p1'), follow: true, stop: rel - 0.05, opts: { palette: PAL.rune } },
+          { fx: 'melee/double-slash', at: rel - 0.12, where: at('p1'), dy: -6, opts: { palette: PAL.rune } },
+          { fx: 'impacts/crit-hit', at: rel, where: at('m1', chest), opts: { palette: PAL.rune } },
+          { fx: 'impacts/hit-spark', at: rel + 0.02, where: at('m1', chest + 8), opts: { palette: PAL.steel } },
+        ],
+        hit: { at: rel, tier: 'heavy', target: 'm1', dir: 1 },
+      });
+    }
+    {
+      const rel = INFO.dragonFlame.release;
+      S({
+        id: 'golemDragonFlame', name: '龙焰 → 魔像', duration: 2.4, kind: 'skill', caster: 'p1', targets: ['m1'], cue: 'dragonFlame',
+        heroes: party({ slot: 'p1', preset: look.dragon, top: 'top_dragon_armor', anim: clip('cast', rel) }, ally('p4', look.mage, 'top_rune_armor'), ally('p2', look.ranger, 'top_leather_armor')),
+        monsters: [],
+        events: [
+          { fx: 'arcane/spell-charge', at: 0, where: at('p1'), stop: rel, opts: { palette: PAL.fire } },
+          { fx: 'fire/fire-breath', at: rel - 0.05, where: at('p1', -28), dx: 12, stop: 1.55, opts: { palette: PAL.fire, spread: 0.22, speed: 420, angle: 0.12 } },
+          { fx: 'impacts/blunt-hit', at: rel + 0.2, where: at('m1', chest) },
+          { fx: 'status/burning', at: rel + 0.35, where: at('m1', -6), stop: 2.2, opts: { scale: 2 } },
+        ],
+        hit: { at: rel + 0.2, tier: 'medium', target: 'm1', dir: 1 },
+      });
+    }
+  }
   return list;
 }
 

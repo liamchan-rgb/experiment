@@ -113,6 +113,7 @@ function stoneMaterial(name, core) {
   const mat = new THREE.MeshStandardMaterial({ color: '#ffffff', roughness: 1, name });
   mat.userData.toonPatch = (sh, toonMat) => {
     sh.uniforms.glowAmt = { value: toonMat.userData.glowAmt ?? 1 };
+    sh.uniforms.flashAmt = { value: toonMat.userData.flash ?? 0 };
     sh.uniforms.coreP = { value: new THREE.Vector3(...(core ?? [0, -100, 0])) };
     sh.uniforms.glowCol = { value: GLOW.clone() };
     sh.uniforms.golemFloor = { value: toonMat.userData.floorY ?? 0 };
@@ -124,7 +125,7 @@ function stoneMaterial(name, core) {
     sh.fragmentShader = sh.fragmentShader
       .replace('#include <common>', /* glsl */`#include <common>
         varying float vCurv; varying vec3 vOP; varying vec3 vWN; varying vec3 vWP;
-        uniform float glowAmt, golemFloor, bumpK; uniform vec3 coreP, glowCol;
+        uniform float glowAmt, flashAmt, golemFloor, bumpK; uniform vec3 coreP, glowCol;
         float h3(vec3 p){ p = fract(p * 0.3183099 + 0.1); p *= 17.0; return fract(p.x * p.y * p.z * (p.x + p.y + p.z)); }
         float n3(vec3 x){ vec3 i = floor(x), f = fract(x); f = f * f * (3.0 - 2.0 * f);
           return mix(mix(mix(h3(i), h3(i + vec3(1,0,0)), f.x), mix(h3(i + vec3(0,1,0)), h3(i + vec3(1,1,0)), f.x), f.y),
@@ -146,7 +147,7 @@ function stoneMaterial(name, core) {
         stone = mix(stone, stone * 1.18, convex * 0.5);
         stone *= 1.0 - concave * 0.4;
         float cr = abs(fb(P * 2.6 + 11.0) - 0.5);
-        float crack = (1.0 - smoothstep(0.004, 0.02, cr)) * (1.0 - step(0.4, n3(P * 1.3 + 5.0)));
+        float crack = (1.0 - smoothstep(0.004, 0.015, cr)) * (1.0 - step(0.22, n3(P * 1.3 + 5.0)));
         stone *= 1.0 - crack * 0.35;
         // 苔藓：暗橄榄绿，软过渡，长在朝上和凹处
         float m = vWN.y * 0.8 + concave * 0.5 + (fb(P * 2.2 + 3.0) - 0.5) * 0.9 - convex * 0.2;
@@ -160,7 +161,7 @@ function stoneMaterial(name, core) {
           // 雕刻细节（程序化凹凸）：裂缝刻进去、表面有凿痕和小坑，苔藓处是软的小鼓包
           vec3 Q = vOP;
           float c2 = abs(fb(Q * 2.6 + 11.0) - 0.5);
-          float h = -(1.0 - smoothstep(0.004, 0.03, c2)) * (1.0 - step(0.4, n3(Q * 1.3 + 5.0))) * 1.0
+          float h = -(1.0 - smoothstep(0.004, 0.02, c2)) * (1.0 - step(0.22, n3(Q * 1.3 + 5.0))) * 0.5
                     + fb(Q * 6.0) * 0.4 + n3(Q * 18.0) * 0.06;
           vec2 dh = vec2(dFdx(h), dFdy(h)) * bumpK;
           vec3 sp = -vViewPosition;
@@ -176,6 +177,8 @@ function stoneMaterial(name, core) {
         float line = 1.0 - smoothstep(0.012, 0.03, gl);
         totalEmissiveRadiance += glowCol * glowAmt * line * fall * 2.2;
         totalEmissiveRadiance += glowCol * glowAmt * smoothstep(0.35, 0.0, distance(vOP, coreP)) * 0.25;
+        // 挨打白闪
+        totalEmissiveRadiance += vec3(1.0, 0.97, 0.92) * flashAmt * 1.4;
       `);
   };
   return mat;
@@ -183,6 +186,7 @@ function stoneMaterial(name, core) {
 
 // ---------------------------------------------------------------- 发光件、藤蔓
 const CRYSTAL_MAT = new THREE.MeshStandardMaterial({ color: '#58cdb8', emissive: GLOW, emissiveIntensity: 1.6, roughness: 0.35, name: 'GolemCrystal' });
+const MOUTH_MAT = new THREE.MeshStandardMaterial({ color: '#2a5a50', emissive: GLOW, emissiveIntensity: 0.55, name: 'GolemMouth' });
 const EYE_MAT = new THREE.MeshStandardMaterial({ color: '#effffa', emissive: GLOW, emissiveIntensity: 3.2, name: 'GolemEye' });
 const VINE_MAT = new THREE.MeshStandardMaterial({ color: '#4d7a2a', roughness: 0.9, name: 'GolemVine' });
 const LEAF_MAT = new THREE.MeshStandardMaterial({ color: '#79a83a', roughness: 0.9, side: THREE.DoubleSide, name: 'GolemLeaf' });
@@ -232,12 +236,23 @@ export async function buildGolem(model, { res = 1 } = {}) {
   const tp = [
     prim({ c: [0, 0.66, -0.05], r: [1.02, 0.92, 0.76], rot: [0.25, 0, 0], cuts: 9, seed: 3 }),
     prim({ c: [0, 0.08, 0.04], r: [0.68, 0.38, 0.46], cuts: 6, seed: 4, k: 0.16 }),
-    prim({ c: [0, 1.36, 0.48], r: [0.5, 0.4, 0.46], cuts: 8, seed: 7, k: 0.16 }),
-    prim({ c: [0, 1.5, 0.78], r: [0.5, 0.13, 0.2], rot: [-0.2, 0, 0], cuts: 4, seed: 8, k: 0.06 }),
-    prim({ c: [0, 1.32, 0.9], r: [0.09, 0.15, 0.11], rot: [0.3, 0, 0], cuts: 3, seed: 9, k: 0.05 }),
-    prim({ c: [0, 1.1, 0.72], r: [0.36, 0.14, 0.22], rot: [0.2, 0, 0], cuts: 4, seed: 6, k: 0.07 }),
-    prim({ c: [-0.19, 1.38, 0.88], r: [0.15, 0.1, 0.12], sub: true, k: 0.04 }),
-    prim({ c: [0.19, 1.38, 0.88], r: [0.15, 0.1, 0.12], sub: true, k: 0.04 }),
+    // 头：大、方下巴，压得很低（脖子埋在肩里）
+    prim({ c: [0, 1.36, 0.5], r: [0.56, 0.44, 0.5], cuts: 8, seed: 7, k: 0.16 }),
+    // 眉骨：又厚又往前突，压住眼睛（凶相）
+    prim({ c: [0, 1.52, 0.86], r: [0.56, 0.14, 0.2], rot: [-0.25, 0, 0], cuts: 4, seed: 8, k: 0.06 }),
+    prim({ c: [-0.2, 1.5, 0.9], r: [0.2, 0.1, 0.14], rot: [-0.2, 0, 0.35], cuts: 3, seed: 18, k: 0.05 }),
+    prim({ c: [0.2, 1.5, 0.9], r: [0.2, 0.1, 0.14], rot: [-0.2, 0, -0.35], cuts: 3, seed: 19, k: 0.05 }),
+    // 鼻梁
+    prim({ c: [0, 1.33, 0.98], r: [0.1, 0.15, 0.11], rot: [0.3, 0, 0], cuts: 3, seed: 9, k: 0.05 }),
+    // 下颚：宽、往前探（地包天）
+    prim({ c: [0, 1.06, 0.82], r: [0.44, 0.17, 0.28], rot: [0.15, 0, 0], cuts: 5, seed: 6, k: 0.07 }),
+    // 獠牙：下颚两侧往上翘
+    prim({ c: [-0.25, 1.24, 1.0], r: [0.075, 0.17, 0.07], rot: [0.25, 0, 0.3], cuts: 3, seed: 21, k: 0.02 }),
+    prim({ c: [0.25, 1.24, 1.0], r: [0.075, 0.17, 0.07], rot: [0.25, 0, -0.3], cuts: 3, seed: 22, k: 0.02 }),
+    // 挖：眼窝、嘴（张开的一条缝，里面有光）
+    prim({ c: [-0.2, 1.39, 0.92], r: [0.15, 0.09, 0.12], sub: true, k: 0.04 }),
+    prim({ c: [0.2, 1.39, 0.92], r: [0.15, 0.09, 0.12], sub: true, k: 0.04 }),
+    prim({ c: [0, 1.18, 0.98], r: [0.26, 0.06, 0.14], sub: true, k: 0.03 }),
     prim({ c: CORE_AT, r: [0.2, 0.24, 0.16], sub: true, k: 0.06 }),
   ];
   torso.add(mesh(body(tp, 15), [0, 0.75, 0.15], 1.25, R(120), STONE_CORE));
@@ -248,8 +263,11 @@ export async function buildGolem(model, { res = 1 } = {}) {
   const eyes = [];
   for (const sx of [-1, 1]) {
     const e = new THREE.Mesh(new THREE.SphereGeometry(0.085, 16, 10), EYE_MAT);
-    e.scale.set(1.4, 0.7, 0.6); e.position.set(sx * 0.19, 1.38, 0.86); torso.add(e); eyes.push(e);
+    e.scale.set(1.4, 0.65, 0.6); e.position.set(sx * 0.2, 1.39, 0.9); torso.add(e); eyes.push(e);
   }
+  // 嘴里的光（比眼睛暗）
+  const mouth = new THREE.Mesh(new THREE.SphereGeometry(0.1, 16, 8), MOUTH_MAT);
+  mouth.scale.set(1.8, 0.32, 0.6); mouth.position.set(0, 1.18, 0.86); torso.add(mouth);
   const back = [[0, 1.2, -0.5, 0.55, 0.13, -0.5, 0, 0], [0.3, 1.08, -0.58, 0.4, 0.1, -0.7, 0, -0.45], [-0.3, 1.1, -0.56, 0.46, 0.11, -0.6, 0, 0.45], [0.12, 0.85, -0.76, 0.3, 0.08, -1.0, 0, 0.2], [-0.15, 0.95, -0.72, 0.26, 0.07, -0.9, 0, -0.3]];
   for (const [x, y, z, h, r, rx, ry, rz] of back) torso.add(crystal(h, r, [x, y, z], [rx, ry, rz]));
 
@@ -290,11 +308,19 @@ export async function buildGolem(model, { res = 1 } = {}) {
   ]);
 
   const PERIOD = 2.4;
-  root.userData.update = (t) => {
+  /** t：待机时间；hit：命中后的秒数（< 0 = 没挨打）。命中顿帧 0.1 秒里整只白闪，之后往后仰、被推开再回来 */
+  root.userData.update = (t, hit = -1) => {
     const ph = (t / PERIOD) * Math.PI * 2, b = Math.sin(ph);
-    torso.position.y = 0.95 + b * 0.035;
-    torso.rotation.set(b * 0.025, Math.sin(ph) * 0.03, 0);
-    arms.forEach((a, i) => { a.rotation.x = Math.sin(ph + i * Math.PI) * 0.06 - b * 0.02; a.rotation.z = (i ? 1 : -1) * b * 0.03; });
+    const r = hit - 0.1, recoil = hit < 0.1 ? 0 : (1 - Math.exp(-r * 28)) * Math.exp(-r * 4.2);
+    const flash = hit >= 0 && hit < 0.12 ? 1 : hit >= 0.12 && hit < 0.2 ? 0.35 : 0;
+    // 被推开：脚站着不动，上半身往后（自己的 -z）挫
+    torso.position.set(0, 0.95 + b * 0.035 - recoil * 0.05, -recoil * 0.3);
+    torso.rotation.set(b * 0.025 - recoil * 0.28, Math.sin(ph) * 0.03 + recoil * 0.08, recoil * 0.05);
+    arms.forEach((a, i) => { a.rotation.x = Math.sin(ph + i * Math.PI) * 0.06 - b * 0.02 + recoil * 0.35; a.rotation.z = (i ? 1 : -1) * (b * 0.03 + recoil * 0.25); });
+    root.traverse((o) => {
+      if (!o.isMesh || !/GolemStone/.test(o.material.name)) return;
+      o.material.userData.flash = flash; const sh = o.material.userData.shader; if (sh) sh.uniforms.flashAmt.value = flash;
+    });
     const pulse = 0.5 + 0.5 * Math.sin(ph * 2);
     root.traverse((o) => {
       if (!o.isMesh) return;

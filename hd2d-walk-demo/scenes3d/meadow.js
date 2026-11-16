@@ -242,7 +242,7 @@ if (q.get('ref') === 'bestiary') {
     scene.add(g);
   }
 }
-let tND = null;
+let tND = null, drawND = () => {};
 if (TOON) {
   // 材质换成卡通材质（同一个源材质只换一次）；另备一套「法线 + 深度」材质给描边用
   const sunLum = (0.299 * sun.color.r + 0.587 * sun.color.g + 0.114 * sun.color.b) * sun.intensity;
@@ -255,20 +255,26 @@ if (TOON) {
     if (!toonCache.has(src)) { toonCache.set(src, toonMaterial(src, kind, opt)); ndCache.set(src, ndMaterial(src, kind, camera.far)); }
     o.material = toonCache.get(src); o.userData.nd = ndCache.get(src); meshes.push(o);
   });
-  for (const m of placed) { const k = m.position.x * 0.4 + m.position.z * 0.3; m.rotation.z = Math.sin(T * (Math.PI * 2 / 2.4) + k) * 0.06; } // 2.4 秒一循环（和魔像待机同周期，动图能无缝循环）
-  golem?.userData.update(T);
   tND = new THREE.WebGLRenderTarget(W, H, { type: THREE.FloatType, minFilter: THREE.NearestFilter, magFilter: THREE.NearestFilter });
-  const keep = meshes.map((o) => o.material), bg = scene.background, fog = scene.fog;
-  meshes.forEach((o) => { o.material = o.userData.nd; });
-  scene.background = null; scene.fog = null;
-  renderer.setRenderTarget(tND); renderer.setClearColor(new THREE.Color(0.5, 0.5, 1), 1); renderer.clear(); renderer.render(scene, camera);
-  renderer.setRenderTarget(null); renderer.setClearColor(0x000000, 0);
-  meshes.forEach((o, i) => { o.material = keep[i]; });
-  scene.background = bg; scene.fog = fog;
+  drawND = () => {
+    const keep = meshes.map((o) => o.material), bg = scene.background, fog = scene.fog;
+    meshes.forEach((o) => { o.material = o.userData.nd; });
+    scene.background = null; scene.fog = null;
+    renderer.setRenderTarget(tND); renderer.setClearColor(new THREE.Color(0.5, 0.5, 1), 1); renderer.clear(); renderer.render(scene, camera);
+    renderer.setRenderTarget(null); renderer.setClearColor(0x000000, 0);
+    meshes.forEach((o, i) => { o.material = keep[i]; });
+    scene.background = bg; scene.fog = fog;
+  };
 }
+/** 摆姿势：风吹草动 + 魔像待机（t 秒）+ 挨打（hit = 命中后的秒数，负数 = 没挨打） */
+const HIT = q.has('hit') ? +q.get('hit') : -1;
+const pose = (t, hit) => {
+  for (const m of placed) { const k = m.position.x * 0.4 + m.position.z * 0.3; m.rotation.z = Math.sin(t * (Math.PI * 2 / 2.4) + k) * 0.06; } // 2.4 秒一循环（和魔像待机同周期，动图能无缝循环）
+  golem?.userData.update(t, hit);
+};
+pose(T, HIT);
+drawND();
 if (MODE !== 'final') scene.fog = null;
-// 风：草和前景植物轻轻摆（按 t 参数，逐帧渲染时可以出动画）
-for (const m of placed) { const k = m.position.x * 0.4 + m.position.z * 0.3; m.rotation.z = Math.sin(T * (Math.PI * 2 / 2.4) + k) * 0.06; } // 2.4 秒一循环（和魔像待机同周期，动图能无缝循环）
 
 // ---------------------------------------------------------------- 后期
 if (MODE === 'depth') {
@@ -360,4 +366,6 @@ if (MODE !== 'depth') composer.render();
 const proj = (x, z) => { const v = new THREE.Vector3(x, heightAt(x, z), z).project(camera); return [(v.x + 1) / 2 * W, (1 - v.y) / 2 * H]; };
 window.stage = { p1: proj(-3.6, 0.6), p2: proj(-2.2, 2.0), p4: proj(-2.4, -0.8), m1: proj(2.6, 0.2), m2: proj(4.0, 1.9), m3: proj(2.0, 2.4), unit: Math.abs(proj(1, 1)[0] - proj(0, 1)[0]) };
 window.camInfo = { near: camera.near, far: camera.far };
+/** 逐帧出动画时用：同一个页面里换时间重画（不用每帧重新搭场景、重算魔像网格） */
+window.renderAt = (t, hit = -1) => { pose(t, hit); drawND(); composer.render(); };
 window.done = true;

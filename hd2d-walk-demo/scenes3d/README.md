@@ -66,3 +66,16 @@ index.html?style=toon&monster=golem&shot=monster&ref=bestiary
 - 中等明度、内部对比低的固有色，上亮下暗，没有亮边；
 - 苔藓是暗橄榄绿、软过渡；
 - 细节改成雕刻式凹凸（裂缝刻进去、凿痕），不再画成颜色线。
+
+## 像素人物在 3D 场景里打技能
+
+```
+# 1. 人物 + 特效层：舞台 320×192 精灵像素（1 精灵像素 = 6 屏幕像素），站位是 3D 舞台的投影 ÷ 6
+VFX_STAGE='{"w":320,"h":192,"feet":{"p1":[58.5,125],"p4":[98.8,112.2],"p2":[90.7,141],"m1":[231,121.2],"m2":[285,140],"m3":[225,146]}}' \
+  npx vite-node scripts/vfx-preview.ts -- <输出目录> golemRuneSlash,golemDragonFlame
+# 2. 3D 背景逐帧：同一个页面里 window.renderAt(t, 命中后秒数)，魔像命中时白闪、上身后挫
+# 3. 合成 + 游戏镜头：
+python3 tools/golem_skill.py <背景帧目录> <输出目录> golemRuneSlash 6 out.mp4
+```
+- 符文斩命中在 1.048 秒，龙焰命中在 0.66 秒。
+- 预览：`vfx-preview/golemRuneSlash.mp4`、`vfx-preview/golemDragonFlame.mp4`。
