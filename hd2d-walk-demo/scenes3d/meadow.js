@@ -21,6 +21,7 @@ import { ShaderPass } from 'three/addons/postprocessing/ShaderPass.js';
 import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js';
 import { OutputPass } from 'three/addons/postprocessing/OutputPass.js';
 import { RenderPixelatedPass } from 'three/addons/postprocessing/RenderPixelatedPass.js';
+import { buildGolem } from './golem.js';
 import { classify, rewriteNormals, toonMaterial, ndMaterial, edgePass } from './toon.js';
 
 const q = new URLSearchParams(location.search);
@@ -35,6 +36,8 @@ const RW = Math.round(W / PX), RH = Math.round(H / PX);
 const MODE = q.get('mode') ?? 'final';
 /** style：hd2d（默认，写实光照 + 后期）| toon（卡通渲染：光照分 3 档、冷色阴影、按深度 / 法线突变画手绘描边，见 toon.js） */
 const STYLE = q.get('style') ?? 'hd2d', TOON = STYLE === 'toon';
+/** monster=golem：在怪物站位 m1 放代码建模的苔石魔像；shot=monster：镜头推到怪物近景；rot=朝向（弧度，转台用） */
+const MONSTER = q.get('monster'), SHOT = q.get('shot'), ROT = q.get('rot');
 
 // 可复现的随机数
 let seed = 7;
@@ -215,6 +218,18 @@ for (let i = 0; i < 260; i++) {
 for (let i = 0; i < 90; i++) { const x = range(-7, 7), z = range(4.6, 6.4); if (Math.abs(x) < 2.6 && rnd() < 0.75) continue; P(pick(['Grass_Common_Tall', 'Grass_Wispy_Tall', 'Plant_7_Big', 'Flower_3_Group']), x, z, range(0.45, 0.7), undefined, { sway: true }); }
 
 await Promise.all(jobs);
+let golem = null;
+if (MONSTER === 'golem') {
+  golem = await buildGolem(model);
+  const gx = 2.6, gz = 0.2;
+  golem.position.set(gx, heightAt(gx, gz), gz);
+  golem.rotation.y = ROT != null ? +ROT : -0.75; // 面朝左前方（英雄那边）
+  scene.add(golem);
+  if (SHOT === 'monster') {
+    const tgt = new THREE.Vector3(gx, 1.25, gz);
+    camera.position.set(gx - 1.2, 2.4, gz + 9.0); camera.lookAt(tgt);
+  }
+}
 let tND = null;
 if (TOON) {
   // 材质换成卡通材质（同一个源材质只换一次）；另备一套「法线 + 深度」材质给描边用
@@ -228,7 +243,8 @@ if (TOON) {
     if (!toonCache.has(src)) { toonCache.set(src, toonMaterial(src, kind, opt)); ndCache.set(src, ndMaterial(src, kind, camera.far)); }
     o.material = toonCache.get(src); o.userData.nd = ndCache.get(src); meshes.push(o);
   });
-  for (const m of placed) { const k = m.position.x * 0.4 + m.position.z * 0.3; m.rotation.z = Math.sin(T * 2.2 + k) * 0.06; }
+  for (const m of placed) { const k = m.position.x * 0.4 + m.position.z * 0.3; m.rotation.z = Math.sin(T * (Math.PI * 2 / 2.4) + k) * 0.06; } // 2.4 秒一循环（和魔像待机同周期，动图能无缝循环）
+  golem?.userData.update(T);
   tND = new THREE.WebGLRenderTarget(W, H, { type: THREE.FloatType, minFilter: THREE.NearestFilter, magFilter: THREE.NearestFilter });
   const keep = meshes.map((o) => o.material), bg = scene.background, fog = scene.fog;
   meshes.forEach((o) => { o.material = o.userData.nd; });
@@ -240,7 +256,7 @@ if (TOON) {
 }
 if (MODE !== 'final') scene.fog = null;
 // 风：草和前景植物轻轻摆（按 t 参数，逐帧渲染时可以出动画）
-for (const m of placed) { const k = m.position.x * 0.4 + m.position.z * 0.3; m.rotation.z = Math.sin(T * 2.2 + k) * 0.06; }
+for (const m of placed) { const k = m.position.x * 0.4 + m.position.z * 0.3; m.rotation.z = Math.sin(T * (Math.PI * 2 / 2.4) + k) * 0.06; } // 2.4 秒一循环（和魔像待机同周期，动图能无缝循环）
 
 // ---------------------------------------------------------------- 后期
 if (MODE === 'depth') {

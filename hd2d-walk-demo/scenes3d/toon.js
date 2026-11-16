@@ -48,6 +48,7 @@ export function toonMaterial(src, kind, opt) {
   const m = new THREE.MeshToonMaterial({
     color: src.color?.clone() ?? new THREE.Color(1, 1, 1), map: src.map ?? null,
     alphaTest: src.alphaTest ?? 0, side: src.side ?? THREE.FrontSide, transparent: false,
+    vertexColors: !!src.vertexColors, emissive: src.emissive?.clone() ?? new THREE.Color(0), emissiveIntensity: src.emissiveIntensity ?? 1, name: src.name,
   });
   m.userData.kind = kind;
   m.onBeforeCompile = (sh) => {
@@ -105,7 +106,7 @@ export function toonMaterial(src, kind, opt) {
       THREE.ShaderChunk.normal_fragment_begin.replace('normal *= faceDirection;', ''));
   };
   if (src.userData.recolor) m.color.setRGB(1, 1, 1);
-  m.customProgramCacheKey = () => 'toon-' + kind + (src.map ? '-map' : '') + (src.userData.recolor ? '-re' : '');
+  m.customProgramCacheKey = () => 'toon-' + kind + (src.map ? '-map' : '') + (src.userData.recolor ? '-re' : '') + (src.vertexColors ? '-vc' : '');
   return m;
 }
 
