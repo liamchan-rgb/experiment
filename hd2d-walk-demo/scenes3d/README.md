@@ -13,3 +13,12 @@ python3 -m http.server 8765 --bind 127.0.0.1   # 在 scenes3d 里
 然后用无头 Chromium（Playwright，`--use-angle=swiftshader`）打开 `index.html?w=1920&h=1152&t=0&cam=0` 截图；`window.stage` 给出各站位的屏幕坐标。
 
 `meadow.js`：林间营地。地面贴图程序生成，树石草花按规则摆放（舞台中间留空），太阳 + 软阴影 + 雾，后期移轴景深、泛光、调色、暗角。
+
+## 像素风（物体像素化，雾 / 景深 / 光不像素化）
+
+```
+index.html?w=1920&h=1152&px=6&mode=albedo   # 低分辨率像素块：物体本身（描边、明暗分档），无雾
+index.html?w=1920&h=1152&px=6&mode=depth    # 全分辨率深度（RGB 打包）
+python3 tools/scene_compose.py albedo.png depth.png 0.3 200 out.png 40
+```
+`px=6` 时场景像素和人物像素一样大（1920 宽）。合成时物体限色、最近邻放大，雾、景深、光池、光束、泛光、暗角在全分辨率上按真实距离平滑叠加。

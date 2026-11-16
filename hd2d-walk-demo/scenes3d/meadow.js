@@ -25,6 +25,13 @@ import { RenderPixelatedPass } from 'three/addons/postprocessing/RenderPixelated
 const q = new URLSearchParams(location.search);
 const W = +(q.get('w') ?? 1920), H = +(q.get('h') ?? 1152), T = +(q.get('t') ?? 0), CAM = +(q.get('cam') ?? 0), PX = +(q.get('px') ?? 1);
 const RW = Math.round(W / PX), RH = Math.round(H / PX);
+/**
+ * mode：
+ *   final（默认）  一次出完整画面（雾、景深、光都在页面里做；px > 1 时连雾一起像素化）
+ *   albedo        只要「物体本身」：px 倍的低分辨率像素块（描边、明暗分档），关掉雾、景深、泛光、暗角
+ *   depth         全分辨率深度图（RGB 打包），给外面按真实距离加雾、景深、光——这些不像素化，是平滑的
+ */
+const MODE = q.get('mode') ?? 'final';
 
 // 可复现的随机数
 let seed = 7;
@@ -32,7 +39,7 @@ const rnd = () => { seed = (seed * 16807) % 2147483647; return (seed - 1) / 2147
 const range = (a, b) => a + (b - a) * rnd();
 
 const renderer = new THREE.WebGLRenderer({ antialias: true, preserveDrawingBuffer: true });
-renderer.setSize(RW, RH);
+renderer.setSize(MODE === 'depth' ? W : RW, MODE === 'depth' ? H : RH);
 renderer.setPixelRatio(1);
 renderer.shadowMap.enabled = true;
 renderer.shadowMap.type = THREE.PCFSoftShadowMap;
@@ -192,17 +199,30 @@ for (let i = 0; i < 260; i++) {
 for (let i = 0; i < 90; i++) { const x = range(-7, 7), z = range(4.6, 6.4); if (Math.abs(x) < 2.6 && rnd() < 0.75) continue; P(pick(['Grass_Common_Tall', 'Grass_Wispy_Tall', 'Plant_7_Big', 'Flower_3_Group']), x, z, range(0.45, 0.7), undefined, { sway: true }); }
 
 await Promise.all(jobs);
+if (MODE !== 'final') scene.fog = null;
 // 风：草和前景植物轻轻摆（按 t 参数，逐帧渲染时可以出动画）
 for (const m of placed) { const k = m.position.x * 0.4 + m.position.z * 0.3; m.rotation.z = Math.sin(T * 2.2 + k) * 0.06; }
 
 // ---------------------------------------------------------------- 后期
+if (MODE === 'depth') {
+  // 每个网格换成深度材质（保留叶片的镂空），全分辨率渲染，RGB 打包深度
+  scene.background = new THREE.Color(0xffffff);
+  scene.traverse((o) => {
+    if (!o.isMesh) return;
+    const src = Array.isArray(o.material) ? o.material[0] : o.material;
+    o.material = new THREE.MeshDepthMaterial({ depthPacking: THREE.RGBDepthPacking, map: src.map ?? null, alphaTest: src.alphaTest ?? 0, side: src.side });
+  });
+  renderer.toneMapping = THREE.NoToneMapping;
+  renderer.outputColorSpace = THREE.LinearSRGBColorSpace;
+  renderer.render(scene, camera);
+}
 const composer = new EffectComposer(renderer);
 composer.setSize(RW, RH);
 if (PX > 1) {
   const pix = new RenderPixelatedPass(1, scene, camera, { normalEdgeStrength: 0.7, depthEdgeStrength: 2.2 });
   composer.addPass(pix);
 } else composer.addPass(new RenderPass(scene, camera));
-composer.addPass(new UnrealBloomPass(new THREE.Vector2(RW, RH), 0.32, 0.55, 0.82));
+if (MODE === 'final') composer.addPass(new UnrealBloomPass(new THREE.Vector2(RW, RH), 0.32, 0.55, 0.82));
 // 移轴景深：屏幕上 focus 那一横带清晰（战斗舞台），往上、往下越来越虚（两遍可分离模糊）
 const tilt = (dir) => new ShaderPass({
   uniforms: { tDiffuse: { value: null }, dir: { value: dir }, focus: { value: 0.6 }, band: { value: 0.16 }, amount: { value: 4.0 } },
@@ -221,10 +241,9 @@ const tiltX = tilt(new THREE.Vector2(1 / RW, 0)), tiltY = tilt(new THREE.Vector2
 // 低分辨率时每个像素更大，模糊步长相应缩小，虚化的范围不变
 // 像素模式下几乎不虚化（像素画靠雾和明暗分远近，糊掉的像素会显得脏）
 for (const t of [tiltX, tiltY]) t.uniforms.amount.value = PX > 1 ? 0.55 : 4.0;
-composer.addPass(tiltX);
-composer.addPass(tiltY);
+if (MODE === 'final') { composer.addPass(tiltX); composer.addPass(tiltY); }
 // 调色 + 暗角：暗部偏冷、亮部偏暖，四周压暗，舞台中间最亮
-composer.addPass(new ShaderPass({
+if (MODE === 'final') composer.addPass(new ShaderPass({
   uniforms: { tDiffuse: { value: null } },
   vertexShader: 'varying vec2 vUv; void main(){ vUv = uv; gl_Position = projectionMatrix * modelViewMatrix * vec4(position,1.0); }',
   fragmentShader: `uniform sampler2D tDiffuse; varying vec2 vUv;
@@ -255,7 +274,7 @@ if (PX > 1) composer.addPass(new ShaderPass({
       float d = bayer(floor(vUv * res));
       float L = dot(c, vec3(0.299, 0.587, 0.114));
       // 明暗量化成 6 档，交界抖动
-      float Lq = floor(L * 6.0 + 0.5 + d * 0.5) / 6.0;
+      float Lq = floor(L * 6.0 + 0.5 + d * 0.22) / 6.0;
       c *= clamp(Lq / max(L, 0.03), 0.35, 1.8);
       // 暗部偏冷紫、亮部偏暖（像素画常用的色相偏移）
       c = mix(c, c * vec3(0.82, 0.86, 1.18), clamp(0.55 - Lq, 0.0, 0.55) * 0.6);
@@ -265,9 +284,10 @@ if (PX > 1) composer.addPass(new ShaderPass({
       gl_FragColor = vec4(c, 1.0);
     }`,
 }));
-composer.render();
+if (MODE !== 'depth') composer.render();
 
 // 告诉外面：舞台上几个站位在屏幕上的像素位置（合成像素人物时用）
 const proj = (x, z) => { const v = new THREE.Vector3(x, heightAt(x, z), z).project(camera); return [(v.x + 1) / 2 * W, (1 - v.y) / 2 * H]; };
 window.stage = { p1: proj(-3.6, 0.6), p2: proj(-2.2, 2.0), p4: proj(-2.4, -0.8), m1: proj(2.6, 0.2), m2: proj(4.0, 1.9), m3: proj(2.0, 2.4), unit: Math.abs(proj(1, 1)[0] - proj(0, 1)[0]) };
+window.camInfo = { near: camera.near, far: camera.far };
 window.done = true;
